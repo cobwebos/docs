@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: b7c7bfffb5ddf947dc9bd25e6828e2816a7325cd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4f5163ba448e4cc7e18b0e794a44003ce5ab1dce
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559740"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516764"
 ---
 # <a name="speech-services-for-telephony-data"></a>用于处理电话数据的语音服务
 
@@ -56,10 +56,10 @@ ms.locfileid: "68559740"
 ### <a name="silence-non-talk"></a>静默（无对话）
 在支持通话中，有 35% 的时间双方无对话也是常用的事。 出现无对话的情况包括：座席正在查阅以往与客户之间展开的案例历史记录、座席正在使用工具访问客户的桌面和执行功能、客户正在等待转接电话，等等。 衡量通话中出现静默的时间极其重要，因为在此类场景中，及时对重要客户灵敏做出回复以及何时可以出现静默都是有绩效分数的。
 
-### <a name="translation"></a>转换
+### <a name="translation"></a>翻译
 某些公司正在试验提供从外语支持呼叫翻译的听录内容，使交付经理能够了解其客户的全球体验。 我们的[翻译](translation.md)功能非常优秀。 我们可以将大量区域中的音频翻译成音频，或者将音频翻译成文本。
 
-### <a name="text-to-speech"></a>文本到语音
+### <a name="text-to-speech"></a>文本转语音
 在实现可与客户交互的机器人时，[文本转语音](text-to-speech.md)是另一个重要的方面。 典型的流程是客户讲话、将客户的语音转录为文本、分析文本中的意向、基于识别的意向合成响应，然后向客户呈现一个资产，或者生成合成的语音响应。 当然，所有这些步骤必须快速完成 – 因此，这些系统的成功与否与延迟密切相关。
 
 考虑到涉及的[语音转文本](speech-to-text.md)、[LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)、[Bot Framework](https://dev.botframework.com/)、[文本转语音](text-to-speech.md)等各种技术，我们的端到端延迟非常低。
@@ -78,9 +78,9 @@ ms.locfileid: "68559740"
 
 为了批量听录音频，我们开发了[批量听录 API](batch-transcription.md)。 批量听录 API 旨在以异步方式听录大量的音频数据。 在听录呼叫中心数据方面，我们的解决方案基于以下支柱：
 
-* **准确度**：我们通过第四代统一模型提供无可比拟的听录质量。
-* **延迟**：我们知道，在执行批量听录时，需要保证听录的速度。 通过[批量听录 API](batch-transcription.md) 启动的听录作业将立即排入队列，一旦开始运行该作业，其执行速度比实时听录更快。
-* **安全性**：我们知道，通话中可能包含敏感数据。 请放心，保证安全是我们的最高优先事务之一。 我们的服务已通过 ISO、SOC、HIPAA 和 PCI 认证。
+* **准确性**：对于第四代统一模型，我们提供了无与伦比的脚本质量。
+* **延迟**：我们知道，在批量转录时，转录需要快速完成。 通过[批量听录 API](batch-transcription.md) 启动的听录作业将立即排入队列，一旦开始运行该作业，其执行速度比实时听录更快。
+* **安全性**：我们理解调用可能包含敏感数据。 请放心，保证安全是我们的最高优先事务之一。 我们的服务已通过 ISO、SOC、HIPAA 和 PCI 认证。
 
 呼叫中心每天生成大量的音频数据。 如果你的企业将电话数据存储在某个中心位置（例如 Azure 存储），则你可以使用[批量听录 API](batch-transcription.md) 以异步方式请求和接收听录内容。
 
@@ -110,7 +110,7 @@ ms.locfileid: "68559740"
 
 有多种 IVR 或电话服务产品（例如 Genesys 或 AudioCodes）可以提供集成功能，利用这些功能可与 Azure 服务建立入站和出站音频直通连接。 简单而言，自定义的 Azure 服务可以提供一个特定的接口用于定义电话呼叫会话（例如“呼叫开始”或“呼叫结束”），并公开一个 WebSocket API 用于接收与语音服务一起使用的入站流音频。 出站响应（例如对话听录或者与 Bot Framework 的连接）可与 Microsoft 文本转语音服务合成，并返回到 IVR 进行播放。
 
-另一种方案是直接 SIP 集成。 Azure 服务连接到 SIP 服务器，因此可以获取要在语音转文本和文本转语音阶段使用的入站流和出站流。 若要连接到 SIP 服务器，可以使用市售的软件产品/服务，例如 Ozeki SDK，或[团队呼叫和会议 API](https://docs.microsoft.com/graph/api/resources/calls-api-overview?view=graph-rest-beta)（目前为 Beta 版），它们都旨在支持此类音频呼叫方案。
+另一种方案是直接 SIP 集成。 Azure 服务连接到 SIP 服务器，因此可以获取要在语音转文本和文本转语音阶段使用的入站流和出站流。 若要连接到 SIP 服务器，可以使用市售的软件产品/服务，例如 Ozeki SDK，或[团队呼叫和会议 API](/graph/api/resources/communications-api-overview)（目前为 Beta 版），它们都旨在支持此类音频呼叫方案。
 
 ## <a name="customize-existing-experiences"></a>自定义现有体验
 
@@ -123,7 +123,7 @@ Azure 语音服务能够很好地与内置模型配合工作，但是，你可�
 | | [发音模型](how-to-customize-pronunciation.md) | 借助自定义发音模型，可以定义语音形式以及字词或术语的显示。 它适用于处理自定义术语，如产品名称或首字母缩略词。 只需使用发音文件（简单的 .txt 文件）即可。 |
 | 文本转语音 | [语音字体](how-to-customize-voice-font.md) | 使用自定义语音字体可为自有品牌创建可识别的独一无二的声音。 只需使用少量的数据即可开始创建。 提供的数据越多，语音字体就越自然，且越接近人类语音。 |
 
-## <a name="sample-code"></a>示例代码
+## <a name="sample-code"></a>代码示例
 
 GitHub 中提供了每个 Azure 语音服务的示例代码。 这些示例涵盖了常见方案，例如，从文件或流中读取音频、连续和单次识别，以及使用自定义模型。 使用以下链接查看 SDK 和 REST 示例：
 
@@ -135,9 +135,9 @@ GitHub 中提供了每个 Azure 语音服务的示例代码。 这些示例涵�
 
 * [语音 SDK](speech-sdk-reference.md)
 * [语音设备 SDK](speech-devices-sdk.md)
-* [REST API：语音转文本](rest-speech-to-text.md)
-* [REST API：文本转语音](rest-text-to-speech.md)
-* [REST API：批量听录和自定义](https://westus.cris.ai/swagger/ui/index)
+* [REST API：语音到文本](rest-speech-to-text.md)
+* [REST API：文本到语音转换](rest-text-to-speech.md)
+* [REST API：批处理脚本和自定义](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 向必应视频搜索 API 发送搜索请求
+title: 使用必应视频搜索 API 搜索视频
 titleSuffix: Azure Cognitive Services
 description: 了解如何向必应视频搜索 API 发送搜索查询。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: b565ad8be1d8529d3650ec36fe7c4d61f6c5dc8f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e3314efe0ea0367eb852fd17aadece17026ff4bb
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879088"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512412"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>使用必应视频搜索 API 来搜索视频
 
@@ -37,7 +37,7 @@ Host: api.cognitive.microsoft.com
 
 所有请求必须从服务器发出。
 
-如果是首次调用任何必应 API，请勿添加客户端 ID 请求头。 只有在以前调用过必应 API 且必应针对用户和设备组合返回了客户端 ID 的情况下，才包括客户端 ID。
+如果是首次调用任何必应 API，请勿添加客户端 ID 请求头。 只有在以前调用过必应 API 且必应针对用户和设备组合返回了客户端 ID 的情况下，才应包括客户端 ID。
 
 若要从特定的域获取视频，请使用 [site:](https://msdn.microsoft.com/library/ff795613.aspx) 查询运算符。
 

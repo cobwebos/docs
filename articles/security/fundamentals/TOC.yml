@@ -49,16 +49,6 @@
             - name: 关于 Azure 磁盘加密
               displayName: 'BitLocker, bek'
               href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview'
-            - name: 快速入门
-              items:
-                - name: 使用 Azure CLI 加密 Linux VM
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-cli-quickstart'
-                - name: 使用 Azure PowerShell 加密 Linux VM
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-powershell-quickstart'
-                - name: 使用 Azure CLI 加密 Windows VM
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-cli-quickstart'
-                - name: 使用 Azure PowerShell 加密 Windows VM
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-powershell-quickstart'
             - name: Azure 磁盘加密
               items:
                 - name: 磁盘加密先决条件
@@ -151,8 +141,6 @@
           href: network-best-practices.md
         - name: DDoS 保护
           href: ddos-best-practices.md
-        - name: 边界安全
-          href: network-best-practices.md
 - name: 应用程序
   items:
     - name: PaaS
@@ -185,9 +173,6 @@
   items:
     - name: 审核和日志记录
       items:
-        - name: 安全管理
-          displayName: 'vulnerability, incident, virus,'
-          href: 'https://docs.microsoft.com/azure/security-center/security-center-intro?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
         - name: 远程管理安全
           href: management.md
         - name: Azure 日志集成
@@ -199,9 +184,6 @@
             - name: 集成 Azure AD 审核日志
               displayName: active directory
               href: azure-log-integration-ad.md
-            - name: 集成安全中心警报
-              displayName: splunk
-              href: 'https://docs.microsoft.com/azure/security-center/security-center-export-data-to-siem?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
             - name: 集成 Key Vault 中的日志
               displayName: keyvault
               href: azure-log-integration-keyvault-eventhub.md

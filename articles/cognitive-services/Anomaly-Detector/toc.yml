@@ -8,14 +8,6 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: REST API
-      items:
-        - name: '使用 C#'
-          href: quickstarts/detect-data-anomalies-csharp.md
-        - name: 使用 Java
-          href: quickstarts/detect-data-anomalies-java.md
-        - name: 使用 Python
-          href: quickstarts/detect-data-anomalies-python.md
     - name: 客户端库
       items:
         - name: '使用 C#'
@@ -24,6 +16,14 @@
           href: quickstarts/detect-data-anomalies-python-sdk.md
         - name: 使用 Node.js
           href: quickstarts/detect-data-anomalies-nodejs-sdk.md
+    - name: REST API
+      items:
+        - name: '使用 C#'
+          href: quickstarts/detect-data-anomalies-csharp.md
+        - name: 使用 Java
+          href: quickstarts/detect-data-anomalies-java.md
+        - name: 使用 Python
+          href: quickstarts/detect-data-anomalies-python.md
 - name: 教程
   items:
     - name: 使用 Power BI 将异常成批可视化

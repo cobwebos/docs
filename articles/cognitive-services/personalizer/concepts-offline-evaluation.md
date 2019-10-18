@@ -1,5 +1,5 @@
 ---
-title: 脱机评估 - 个性化体验创建服务
+title: 使用脱机计算方法-Personalizer
 titleSuffix: Azure Cognitive Services
 description: 在本 C# 快速入门中使用个性化体验创建服务创建反馈循环。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 5e9e745d73623e03e2530e1712a50e6670ee7ed3
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: f382c07dea75cb534632061c986dd8044c4aafa9
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662854"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515587"
 ---
 # <a name="offline-evaluation"></a>脱机评估
 
@@ -48,15 +48,15 @@ ms.locfileid: "68662854"
 
 个性化体验创建服务可以使用脱机评估过程来自动发现更佳的学习策略。
 
-执行脱机评估后，可以看到个性化体验创建服务使用新策略与使用当前联机策略时的比较有效性。 然后, 你可以应用该学习策略, 使其立即在 Personalizer 中生效, 方法是在模型和策略面板中下载它并将其上传。 你还可以下载它以供将来分析或使用。
+执行脱机评估后，可以看到个性化体验创建服务使用新策略与使用当前联机策略时的比较有效性。 然后，你可以应用该学习策略，使其立即在 Personalizer 中生效，方法是在模型和策略面板中下载它并将其上传。 你还可以下载它以供将来分析或使用。
 
 ## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>了解脱机评估结果的相关性
 
-运行脱机评估时，分析结果的置信边界极其重要。  如果边界较宽，则表示应用程序未收到足够的数据，因此无法进行精确或有意义的奖励评估。 随着系统累积的数据越来越多且运行脱机评估的时间越来越长，置信间隔会变得更窄。
+运行脱机评估时，分析结果的置信边界极其重要。 如果边界较宽，则表示应用程序未收到足够的数据，因此无法进行精确或有意义的奖励评估。 随着系统累积的数据越来越多且运行脱机评估的时间越来越长，置信间隔会变得更窄。
 
 ## <a name="how-offline-evaluations-are-done"></a>如何执行脱机评估
 
-脱机评估是使用一种称作“反事实评估”的方法执行的。  
+脱机评估是使用一种称作“反事实评估”的方法执行的。 
 
 个性化体验创建服务基于这种假设：用户行为（即奖励）无法以回溯方式预测（如果用户反映的事物不同于他们看到的事物，则个性化体验创建服务不知道发生了什么情况），而只能从测得的奖励中学习。 
 
@@ -91,12 +91,12 @@ ms.locfileid: "68662854"
 我们建议查看特征评估并提出以下问题：
 
 * 应用程序或系统可以连同更有效的特征线一起提供其他哪些附加特征？
-* 可以删除哪些低效的特征？ 低效特征会增大机器学习中的干扰。 
+* 可以删除哪些低效的特征？ 低效特征会增大机器学习中的干扰。
 * 是否意外包含了任何特征？ 示例包括：个人身份信息 (PII)、重复的 ID，等等。
 * 出于法规或负责使用方面的考量，是否不应使用任何不需要的特征进行个性化？ 是否有特征可以代理（即，紧密镜像或关联）不需要的特征？
 
 
 ## <a name="next-steps"></a>后续步骤
 
-[配置 Personalizer](how-to-settings.md)
+[配置 Personalizer](how-to-settings.md) 
 [运行脱机评估](how-to-offline-evaluation.md)了解[Personalizer 的工作方式](how-personalizer-works.md)

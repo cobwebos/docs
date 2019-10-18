@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 10/12/2019
 ms.author: diberry
-ms.openlocfilehash: a63b6773a7546f8add0b2f2ab6280801e90bccca
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 8f00ffeff4eb353fa70aa7df60b14c97d4b8e724
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248637"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554874"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>使用 GenerateAnswer API 和元数据获取答案
 
@@ -48,7 +48,7 @@ QnA Maker 使你能够以键和值对的形式向问题和答案集添加元数�
 获取终结点详细信息：
 1. 登录到 [https://www.qnamaker.ai](https://www.qnamaker.ai)。
 1. 在**知识库**中，选择 "**查看**知识库" 代码。
-    ![Screenshot of My 知识库 @ no__t-1
+    我的知识库 ](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png) ![Screenshot
 1. 获取 GenerateAnswer 终结点的详细信息。
 
     ![终结点详细信息的屏幕截图](../media/qnamaker-how-to-metadata-usage/view-code.png)
@@ -73,7 +73,7 @@ GenerateAnswer URL 具有以下格式：
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-请记住，将 `Authorization` 的 HTTP 标头属性设置为带有尾随空格的字符串 `EndpointKey`，然后在 "**设置**" 页上找到终结点键。
+请记住，使用带有尾随空格的字符串 `EndpointKey` 的值设置 `Authorization` 的 HTTP 标头属性，然后在 "**设置**" 页上找到终结点键。
 
 示例 JSON 正文如下所示：
 
@@ -83,6 +83,7 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
     "top": 6,
     "isTest": true,
     "scoreThreshold": 30,
+    "rankerType": "" // values: QuestionOnly
     "strictFilters": [
     {
         "name": "category",
@@ -92,7 +93,9 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 }
 ```
 
-以前的 JSON 只请求 30% 或高于阈值分数的答案。 
+了解有关[rankerType](../concepts/best-practices.md#choosing-ranker-type)的详细信息。
+
+以前的 JSON 只请求30% 或高于阈值分数的答案。 
 
 <a name="generateanswer-response"></a>
 
@@ -122,7 +125,7 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 }
 ```
 
-之前的 JSON 响应，分数为 38.5%。 
+之前的 JSON 响应，分数为38.5%。 
 
 ## <a name="use-qna-maker-with-a-bot-in-c"></a>将 QnA Maker 与机器人配合使用C#
 
@@ -141,7 +144,7 @@ qnaOptions.ScoreThreshold = 0.3F;
 var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnContext, qnaOptions);
 ```
 
-以前的 JSON 只请求 30% 或高于阈值分数的答案。 
+以前的 JSON 只请求30% 或高于阈值分数的答案。 
 
 支持机器人有[一个示例](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418)。
 
@@ -161,7 +164,7 @@ var qnaMakerOptions = {
 var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOptions);
 ```
 
-以前的 JSON 只请求 30% 或高于阈值分数的答案。 
+以前的 JSON 只请求30% 或高于阈值分数的答案。 
 
 支持机器人有[一个示例](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36)。
 
@@ -227,7 +230,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 ## <a name="match-questions-only-by-text"></a>仅匹配问题，按文本
 
-默认情况下，QnA Maker 搜索问题和答案。 如果只想搜索问题，以生成答案，请在 GenerateAnswer 请求的 POST 正文中使用 `RankerType=QuestionOnly`。
+默认情况下，QnA Maker 搜索问题和答案。 如果只想搜索问题，以生成答案，请使用 GenerateAnswer 请求的 POST 正文中的 `RankerType=QuestionOnly`。
 
 您可以使用 `isTest=false` 或使用 `isTest=true` 在测试 kb 中搜索已发布的 kb。
 
@@ -244,7 +247,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 |代码|说明|
 |:--|--|
-|2xx|成功|
+|2xx|Success|
 |400|请求的参数不正确，这意味着所需的参数缺失、格式错误或太大|
 |400|请求的正文不正确，这意味着 JSON 缺失、格式错误或太大|
 |401|密钥无效|

@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 7e79d3119f5d2d0fe1894de0ab9535dd988706f8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: e1e89612ee48aaf5ee9bda51f954add426bf6720
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935204"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516797"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>迁移到 Azure 创作资源的步骤
 
 从语言理解（LUIS）门户中，迁移所有拥有的应用以使用 Azure 创作资源。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * **（可选**）通过导出每个应用或使用导出[API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)，从 LUIS 门户的 "应用" 列表备份应用。
 * **还可以选择**保存每个应用的 collaborator's 列表。 在迁移过程中，可向所有协作者发送电子邮件。
@@ -91,14 +91,14 @@ ms.locfileid: "70935204"
 
     不需要知道创作资源的密钥即可继续在 LUIS 门户中编辑应用。 如果计划以编程方式编辑应用，则需要创作密钥值。 这些值显示在 LUIS 门户中的 "**管理-> Azure 资源**" 页上，也可以在资源的 "**密钥**" 页上的 "Azure 门户中找到。  
 
-1. 在访问你的应用程序之前，请选择 "订阅" 和 "LUIS 创作资源"，查看你可以创作的应用。
+1. 在访问应用之前，请选择 "订阅" 和 "LUIS 创作资源"，以查看可以创作的应用。
 
     ![选择 "订阅" 和 "LUIS 创作资源"，查看你可以创作的应用。](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
 
 
 ## <a name="app-contributor-begins-the-migration-process"></a>应用参与者开始迁移过程
 
-按照与应用所有者相同的步骤进行迁移。 此过程将创建一个类型`LUIS.Authoring`的新创作资源。 
+按照与应用所有者相同的步骤进行迁移。 此过程将创建一个 `LUIS.Authoring` 的新创作资源。 
 
 你需要迁移你的帐户，以便作为参与者添加到其他人拥有的迁移应用程序。  
 
@@ -110,7 +110,7 @@ ms.locfileid: "70935204"
 
 ## <a name="troubleshooting-errors-with-the-migration-process"></a>排查迁移过程错误
 
-如果在迁移过程`MissingSubscriptionRegistration`中在 LUIS 门户中收到包含红色通知栏的错误，请在[Azure 门户](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)或[Azure CLI](luis-how-to-azure-subscription.md#create-resources-in-azure-cli)中创建认知服务资源。 详细了解[导致此错误的原因](../../azure-resource-manager/resource-manager-register-provider-errors.md#cause)。
+如果在迁移过程中，在 LUIS 门户中收到 `MissingSubscriptionRegistration` 错误，并在迁移过程中出现红色通知栏，请在[Azure 门户](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)或[Azure CLI](luis-how-to-azure-subscription.md#create-resources-in-azure-cli)中创建认知服务资源。 详细了解[导致此错误的原因](../../azure-resource-manager/resource-manager-register-provider-errors.md#cause)。
 
 ## <a name="next-steps"></a>后续步骤
 

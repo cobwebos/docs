@@ -1,5 +1,5 @@
 ---
-title: 向必应视频搜索 API 发送搜索请求
+title: 将搜索请求发送到必应视频搜索 API
 titleSuffix: Azure Cognitive Services
 description: 了解如何向必应视频搜索 API 发送搜索查询。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahill
-ms.openlocfilehash: ba2036c58ae54cc665623e63129ecea6c530b27d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 96f92f0dc1e9e0c6c409fe17680fc57412e2b7d3
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878983"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512514"
 ---
 # <a name="sending-search-requests-to-the-bing-video-search-api"></a>向必应视频搜索 API 发送搜索请求
 
@@ -39,10 +39,10 @@ https://api.cognitive.microsoft.com/bing/v7.0/videos/search
    
 请求必须使用 HTTPS 协议。
 
-建议所有请求都源自服务器。 如果将密钥作为客户端应用的一部分进行分发，会让恶意第三方有更多机会来访问密钥。 另外，从服务器执行调用还会提供 API 的将来版本的单一升级点。
+我们建议所有请求都源自一个服务器。 如果将密钥作为客户端应用的一部分进行分发，会让恶意第三方有更多机会来访问密钥。 另外，从服务器执行调用还会提供 API 的将来版本的单一升级点。
 
   
-请求必须指定包含用户搜索词的 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) 查询参数。 尽管是可选的，但请求还应该指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#mkt) 查询参数，该参数标识你希望结果来自的市场。 有关可选查询参数（例如 `pricing`）的列表，请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query-parameters)。 所有查询参数值都必须是 URL 编码。  
+请求必须指定 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) 查询参数，其中包含用户的搜索词。 尽管是可选的，但请求还应该指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#mkt) 查询参数，该参数标识你希望结果来自的市场。 有关可选查询参数（例如 `pricing`）的列表，请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query-parameters)。 所有查询参数值都必须是 URL 编码。  
   
 请求必须指定 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#subscriptionkey) 标头。 尽管可视需要添加，但仍建议还指定以下请求头：  
   
@@ -57,7 +57,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/videos/search
 
 ## <a name="example-search-request"></a>示例搜索请求
 
-下面显示了包含所有建议的查询参数和标头的搜索请求。 如果是第一次调用任何必应 API，请勿包括客户端 ID 标头。 只有在以前调用过必应 API 且必应针对用户和设备组合返回了客户端 ID 的情况下，才包括客户端 ID。 
+下面显示了包含所有建议的查询参数和标头的搜索请求。 如果是首次调用任何必应 API，请勿添加客户端 ID 请求头。 只有在以前调用过必应 API 且必应针对用户和设备组合返回了客户端 ID 的情况下，才应包括客户端 ID。 
   
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies&mkt=en-us HTTP/1.1  
@@ -71,7 +71,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="example-json-response"></a>示例 JSON 响应
 
-下面的示例展示了对上一请求的响应。 此示例还展示了必应专用响应头。
+下面显示了对上一个请求的响应。 该示例还展示了特定于必应的响应标头。
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 

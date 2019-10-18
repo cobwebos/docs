@@ -1,5 +1,5 @@
 ---
-title: 脱机评估-Personalizer
+title: 如何执行脱机评估-Personalizer
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用脱机评估分析学习循环
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: diberry
-ms.openlocfilehash: a157b36ad2b4f5a7f2e50a9609d8acd621efd5a8
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: bd57880b11f56b13b4225652071593d29dcc6280
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884481"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515225"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>使用脱机评估来分析学习循环
 
@@ -26,7 +26,7 @@ ms.locfileid: "70884481"
 请阅读[脱机评估](concepts-offline-evaluation.md)了解详细信息。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 已配置的 Personalizer 循环
 * Personalizer 循环必须具有包含一定数量的数据，即大概建议在其日志中至少50000个事件，以获得有意义的评估结果。 （可选）还可以事先导出学习策略文件，以便在同一项评估中进行比较和测试。
@@ -35,7 +35,7 @@ ms.locfileid: "70884481"
 
 1. 在[Azure 门户](https://azure.microsoft.com/free/)中，找到个性化资源。
 1. 在 Azure 门户中，请参阅 "**评估**" 部分，并选择 "**创建评估**"。
-    ![在 Azure 门户中，请参阅 "评估" 部分，并选择 "创建评估"。](./media/offline-evaluation/create-new-offline-evaluation.png)
+    ![In Azure 门户，请参阅 "评估" 部分，并选择 "创建评估"。](./media/offline-evaluation/create-new-offline-evaluation.png)
 1. 选择以下设置：
 
     * 计算名称
@@ -54,11 +54,11 @@ ms.locfileid: "70884481"
 
 学习策略的比较包括：
 
-* **联机策略**：个性化体验创建服务中当前使用的学习策略
-* **基线**：应用程序的默认设置（由排名调用中发送的第一个操作确定）
-* **随机策略**：一个假想的排名行为，始终从提供的操作中返回随机操作选项。
-* **自定义策略**：启动评估时上传的附加学习策略。
-* **优化策略**：如果使用发现优化策略的选项启动了评估，则也会比较该策略，你可以下载该策略，或将其设为联机学习策略，以替换当前策略。
+* **联机策略**： Personalizer 中使用的当前学习策略
+* **基线**：应用程序的默认值（由排名调用中发送的第一个操作确定），
+* **随机策略**：一个虚排名行为，始终从提供的操作返回随机选择的操作。
+* **自定义策略**：启动评估时上传的其他学习策略。
+* **优化策略**：如果计算是使用发现优化策略的选项启动的，则还将进行比较，并且你将能够下载它或使其成为联机学习策略，并替换当前的策略。
 
 ![脱机计算设置的结果图表](./media/offline-evaluation/evaluation-results.png)
 
