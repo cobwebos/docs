@@ -59,7 +59,7 @@ yarn add dotenv
 
 接下来，编写后端 API 以检索 Azure AD 身份验证令牌。
 
-此部分需要来自上面的 Azure AD 身份验证配置先决条件步骤的一些值。 请回头参考保存的该会话的文本文件。
+此部分需要上述 Azure AD 身份验证配置先决条件步骤中的一些值。 请回头参考保存的该会话的文本文件。
 
 ````text
 TenantId     => Azure subscription TenantId
@@ -77,7 +77,7 @@ CLIENT_SECRET={YOUR_CLIENT_SECRET}
 SUBDOMAIN={YOUR_SUBDOMAIN}
 ```
 
-请确保不要将此文件提交到源代码管理中，因为它包含不应公开的秘密。
+请确保不要将此文件提交到源代码管理中，因为它包含不应公开的机密。
 
 接下来，打开 app.js 并将以下内容添加到文件顶部  。 这会将 .env 文件中定义的属性作为环境变量加载到 Node 中。
 
@@ -128,7 +128,7 @@ module.exports = router;
 
 ```
 
-**getimmersivereaderlaunchparams** API 终结点应该以某种形式的身份验证（例如，[OAuth](https://oauth.net/2/)）进行保护，以防止未经授权的用户获取令牌以用于你的沉浸式阅读器服务和计费；该工作超出了本教程的范围。
+**getimmersivereaderlaunchparams** API 终结点应该以某种形式的身份验证（例如，[OAuth](https://oauth.net/2/)）进行保护，以防止未经授权的用户获取令牌以用于你的沉浸式阅读器服务和计费；该内容超出了本教程的范围。
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>启动沉浸式阅读器以显示示例内容
 
@@ -183,7 +183,7 @@ module.exports = router;
             }
     ```
 
-3. 我们的网络应用现已准备就绪。 运行以下命令以启动该应用：
+3. 我们的 Web 应用现已准备就绪。 运行以下命令以启动该应用：
 
     ```bash
     npm start

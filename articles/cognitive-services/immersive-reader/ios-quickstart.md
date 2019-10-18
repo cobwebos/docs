@@ -18,7 +18,7 @@ ms.locfileid: "69899536"
 ---
 # <a name="quickstart-create-an-ios-app-that-launches-the-immersive-reader-swift"></a>快速入门：创建用于启动沉浸式阅读器的 iOS 应用 (Swift)
 
-[沉浸式读取器](https://www.onenote.com/learningtools)是一款经过广泛设计的工具，它实现了可靠的技术以提高阅读理解能力。
+[沉浸式阅读器](https://www.onenote.com/learningtools)是一款经过广泛设计的工具，它实现了可靠的技术以提高阅读理解能力。
 
 在本快速入门中，你将从头开始构建一个 iOS 应用，并使用沉浸式阅读器 SDK 集成沉浸式阅读器。 本快速入门的完整工作示例可在[此处](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/samples/quickstart-swift)找到。
 
@@ -59,7 +59,7 @@ ms.locfileid: "69899536"
 
 ## <a name="acquire-an-azure-ad-authentication-token"></a>获取 Azure AD 身份验证令牌
 
-此部分需要来自上面的 Azure AD 身份验证配置先决条件步骤的一些值。 请回头参考保存的该会话的文本文件。
+此部分需要上述 Azure AD 身份验证配置先决条件步骤中的一些值。 请回头参考保存的该会话的文本文件。
 
 ````text
 TenantId     => Azure subscription TenantId

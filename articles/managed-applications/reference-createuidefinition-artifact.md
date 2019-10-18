@@ -1,5 +1,5 @@
 ---
-title: Azure 托管应用程序 createUiDefinition 项目引用
+title: Azure 托管应用程序 createUiDefinition 项目
 description: 说明如何为 Azure 托管应用程序创建 createUiDefinition 项目。 文件名为 createUiDefinition。
 services: managed-applications
 ms.service: managed-applications
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: 09364a849926fc829a890bfcdc8b760c7c7e189c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: HT
+ms.openlocfilehash: 3e952476373d1692494d06f22dfeb202cab6d6d7
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330195"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528969"
 ---
 # <a name="reference-user-interface-elements-artifact"></a>参考：用户界面元素项目
 

@@ -33,7 +33,7 @@ ms.locfileid: "71326439"
 * 为 Azure Active Directory (Azure AD) 身份验证配置的沉浸式阅读器资源。 按照[这些说明](./azure-active-directory-authentication.md)进行设置。 在配置环境属性时，将需要在此处创建的一些值。 将会话的输出保存到文本文件中，以供将来参考。
 * [Git](https://git-scm.com/)
 * [沉浸式阅读器 SDK](https://github.com/microsoft/immersive-reader-sdk)
-* [Python](https://www.python.org/downloads/) 和 [pip](https://docs.python.org/3/installing/index.html) 从 Python 3.4 开始，Python 二进制安装程序默认随附 pip。
+* [Python](https://www.python.org/downloads/) 和 [pip](https://docs.python.org/3/installing/index.html)。 从 Python 3.4 开始，Python 二进制安装程序默认随附 pip。
 * [Flask](https://flask.palletsprojects.com/en/1.0.x/)
 * [Jinja](http://jinja.pocoo.org/docs/2.10/)
 * [virtualenv](https://virtualenv.pypa.io/en/latest/) 和 [virtualenvwrapper-win for Windows](https://pypi.org/project/virtualenvwrapper-win/)，或 [virtualenvwrapper for OSX](https://virtualenvwrapper.readthedocs.io/en/latest/)
@@ -44,7 +44,7 @@ ms.locfileid: "71326439"
 
 编写后端 API 以检索 Azure AD 身份验证令牌。
 
-此部分需要来自上面的 Azure AD 身份验证配置先决条件步骤的一些值。 请回头参考保存的该会话的文本文件。
+此部分需要上述 Azure AD 身份验证配置先决条件步骤中的一些值。 请回头参考保存的该会话的文本文件。
 
 ````text
 TenantId     => Azure subscription TenantId
@@ -62,9 +62,9 @@ CLIENT_SECRET={YOUR_CLIENT_SECRET}
 SUBDOMAIN={YOUR_SUBDOMAIN}
 ```
 
-请确保不要将此文件提交到源代码管理中，因为它包含不应公开的秘密。
+请确保不要将此文件提交到源代码管理中，因为它包含不应公开的机密。
 
-**getimmersivereadertoken** API 终结点应该以某种形式的身份验证（例如，[OAuth](https://oauth.net/2/)）进行保护，以防止未经授权的用户获取令牌以用于你的沉浸式阅读器服务和计费；该工作超出了本教程的范围。
+**getimmersivereadertoken** API 终结点应该以某种形式的身份验证（例如，[OAuth](https://oauth.net/2/)）进行保护，以防止未经授权的用户获取令牌以用于你的沉浸式阅读器服务和计费；该内容超出了本教程的范围。
 
 ## <a name="create-a-python-web-app-on-windows"></a>在 Windows 中创建 Python Web 应用
 
@@ -224,7 +224,7 @@ sudo nano /etc/paths
 
 - 根据提示输入密码。
 - 将 pip 安装路径添加到 PATH 变量中。
-- 转到文件的底部，输入要添加为列表中最后一个项的路径，例如 `PATH=$PATH:/usr/local/bin`。
+- 转到文件的底部，输入要添加的路径（作为列表中最后一项），例如`PATH=$PATH:/usr/local/bin`。
 - 按 Ctrl-X 退出。
 - 输入 `Y` 以保存修改的缓冲区。
 - 就这么简单！ 若要进行测试，请在新的终端窗口中键入 `echo $PATH`。
