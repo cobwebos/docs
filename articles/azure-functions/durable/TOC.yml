@@ -1,5 +1,5 @@
 - name: Durable Functions 文档
-  href: durable-functions-overview.md
+  href: index.yml
 - name: 概述
   items:
     - name: 关于 Azure Functions
@@ -34,7 +34,7 @@
 - name: 示例
   items:
     - name: 代码示例
-      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=functions&sort=0&term=durable+'
+      href: /samples/browse/?products=azure-functions&term=durable
     - name: Azure CLI
       href: ../functions-cli-samples.md
 - name: 概念
@@ -81,6 +81,8 @@
       href: durable-functions-bindings.md
     - name: HTTP API
       href: durable-functions-http-api.md
+    - name: Durable 扩展 API
+      href: /dotnet/api/microsoft.azure.webjobs.extensions.durabletask?view=azure-dotnet-preview
 - name: 操作指南
   items:
     - name: 开发

@@ -1,0 +1,110 @@
+### YamlMime:Landing
+title: Azure Durable Functions 文档
+summary: Durable Functions 是 Azure Functions 的一个扩展，可用于在无服务器计算环境中编写有状态函数。
+metadata:
+  title: Azure Durable Functions 文档
+  description: Durable Functions 是 Azure Functions 的一个扩展，可用于在无服务器计算环境中编写有状态函数。
+  ms.service: azure-functions
+  ms.topic: landing-page
+  author: ggailey777
+  ms.author: azfundocs
+  ms.date: 10/04/2019
+  ms.openlocfilehash: f0f47c8d997a3d02ad3bae1bc4634f4c7ad2155c
+  ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 10/17/2019
+  ms.locfileid: "72529680"
+landingContent:
+- title: 关于 Durable Functions
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Durable Functions？
+      url: durable-functions-overview.md
+    - text: 比较无服务器选项
+      url: ../functions-compare-logic-apps-ms-flow-webjobs.md
+  - linkListType: concept
+    links:
+    - text: 持久函数类型
+      url: durable-functions-types-features-overview.md
+  - linkListType: video
+    links:
+    - text: 突破无服务器障碍
+      url: https://azure.microsoft.com/resources/videos/break-through-the-serverless-barriers-with-durable-functions/
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建持久函数 (C#)
+      url: durable-functions-create-first-csharp.md
+    - text: 创建第一个函数 (JavaScript)
+      url: quickstart-js-vscode.md
+  - linkListType: learn
+    links:
+    - text: 创建长时间运行的无服务器工作流
+      url: /learn/modules/create-long-running-serverless-workflow-with-durable-functions/
+  - linkListType: video
+    links:
+    - text: 观看如何入门
+      url: https://azure.microsoft.com/resources/videos/azure-friday-durable-functions-in-azure-functions/
+- title: 关键概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 业务流程
+      url: durable-functions-orchestrations.md
+    - text: 有状态实体
+      url: durable-functions-entities.md
+    - text: HTTP 功能
+      url: durable-functions-http-features.md
+    - text: 任务中心
+      url: durable-functions-task-hubs.md
+    - text: 版本控制
+      url: durable-functions-versioning.md
+  - linkListType: video
+    links:
+    - text: 无服务器实体、业务流程和有状态函数
+      url: https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B206
+- title: 应用程序模式
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 函数链
+      url: durable-functions-sequence.md
+    - text: 异步 HTTP API
+      url: durable-functions-create-first-csharp.md
+    - text: 扇出/扇入
+      url: durable-functions-cloud-backup.md
+    - text: 监视器
+      url: durable-functions-monitor.md
+    - text: 人机交互
+      url: durable-functions-phone-verification.md
+    - text: 聚合器
+      url: durable-functions-entities.md
+- title: 性能和监视
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 诊断
+      url: durable-functions-diagnostics.md
+  - linkListType: concept
+    links:
+    - text: 监视函数
+      url: ../functions-monitoring.md
+    - text: 网络注意事项
+      url: ../functions-networking-options.md
+- title: 示例
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Durable Functions 示例
+      url: /samples/browse/?products=azure-functions&term=durable
+    - text: Azure 无服务器社区库
+      url: https://www.serverlesslibrary.net/
+    - text: Azure 资源管理器模板
+      url: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Web&term=functions
+  - linkListType: how-to-guide
+    links:
+    - text: Azure CLI 示例
+      url: ../functions-cli-samples.md

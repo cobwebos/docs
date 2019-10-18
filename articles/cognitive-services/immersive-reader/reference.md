@@ -10,14 +10,14 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: b25a002cb1e2563ab97a2081c6b6a05362b66779
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 1908ed916d61c7a65b1f0061c0fe8d8a08b5e41c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338519"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388096"
 ---
-# <a name="immersive-reader-sdk-reference"></a>沉浸式读者 SDK 参考
+# <a name="immersive-reader-sdk-reference-guide"></a>沉浸式读者 SDK 参考指南
 
 沉浸式读者 SDK 是一个 JavaScript 库，可用于将沉浸式读者集成到 web 应用程序中。
 
@@ -39,20 +39,20 @@ SDK 公开函数：
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
 ```
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 姓名 | 类型 | 描述 |
+| 名称 | Type | 描述 |
 | ---- | ---- |------------ |
-| `token` | string | Azure AD 身份验证令牌。 请参阅[Azure AD authentication 操作方法](./azure-active-directory-authentication.md)。 |
-| `subdomain` | string | Azure 中沉浸式读者资源的自定义子域。 请参阅[Azure AD authentication 操作方法](./azure-active-directory-authentication.md)。 |
+| `token` | 字符串 | Azure AD 身份验证令牌。 请参阅[Azure AD authentication 操作方法](./azure-active-directory-authentication.md)。 |
+| `subdomain` | 字符串 | Azure 中沉浸式读者资源的自定义子域。 请参阅[Azure AD authentication 操作方法](./azure-active-directory-authentication.md)。 |
 | `content` | [内容](#content) | 一个对象，该对象包含要在沉浸式读取器中显示的内容。 |
 | `options` | [选项](#options) | 用于配置沉浸式读者的某些行为的选项。 可选。 |
 
-### <a name="returns"></a>返回
+### <a name="returns"></a>返回值
 
 返回一个 `Promise<HTMLDivElement>`，它可解析沉浸式读取器的加载时间。 @No__t-0 解析为 @no__t 1 元素，该元素的子元素是包含沉浸式读者页的 @no__t 2 元素。
 
-### <a name="exceptions"></a>Exceptions
+### <a name="exceptions"></a>例外
 
 如果无法加载沉浸式读取器，则将使用[@no__t 2](#error)对象拒绝返回的 @no__t。 有关详细信息，请参阅[错误代码](#error-codes)。
 
@@ -78,9 +78,9 @@ close(): void;
 renderButtons(options?: RenderButtonsOptions): void;
 ```
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 姓名 | 类型 | 描述 |
+| 名称 | Type | 描述 |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | 用于配置 renderButtons 函数的某些行为的选项。 可选。 |
 
@@ -115,7 +115,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 | --------- | ----------- |
 | text/plain | 纯文本。 |
 | text/html | HTML 内容。 [了解详细信息](#html-support)|
-| application/mathml+xml | 数学标记语言（MathML）。 [了解详细信息](https://developer.mozilla.org/en-US/docs/Web/MathML)。
+| application/mathml + xml | 数学标记语言（MathML）。 [了解详细信息](https://developer.mozilla.org/en-US/docs/Web/MathML)。
 | application/vnd.apple.mpegurl. vnd.openxmlformats-officedocument.spreadsheetml.sheet. wordprocessingml | Microsoft Word .docx 格式的文档。
 
 ### <a name="html-support"></a>HTML 支持
@@ -155,7 +155,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 }
 ```
 
-### <a name="error"></a>Error
+### <a name="error"></a>错误
 
 包含有关错误的信息。
 
@@ -173,7 +173,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 | BadArgument | 提供的参数无效，有关详细信息，请参阅 `message`。 |
 | 超时 | 沉浸式读取器无法在指定的超时内加载。 |
 | TokenExpired | 提供的令牌已过期。 |
-| 已终止 | 超出了调用速率限制。 |
+| 受到 | 超出了调用速率限制。 |
 
 ## <a name="launching-the-immersive-reader"></a>启动沉浸式阅读器
 
@@ -187,7 +187,7 @@ SDK 为启动沉浸式阅读器的按钮提供默认样式。 使用 @no__t 类�
 
 使用以下属性来配置按钮的外观。
 
-| 特性 | 描述 |
+| 属性 | 描述 |
 | --------- | ----------- |
 | `data-button-style` | 设置按钮的样式。 可以是 `icon`、`text` 或 `iconAndText`。 默认为 `icon`。 |
 | `data-locale` | 设置区域设置。 例如 `en-US` 或 `fr-FR`。 默认值为英语 `en`。 |
@@ -206,4 +206,4 @@ SDK 为启动沉浸式阅读器的按钮提供默认样式。 使用 @no__t 类�
 ## <a name="next-steps"></a>后续步骤
 
 * 探索 [GitHub 上的沉浸式阅读器 SDK](https://github.com/microsoft/immersive-reader-sdk)
-* [快速入门：创建用于启动沉浸式读取器（C#） ](./quickstart.md) 的 web 应用
+* [快速入门：创建用于启动沉浸式读者（C#）的 web 应用](./quickstart.md)

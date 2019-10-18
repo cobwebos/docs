@@ -49,6 +49,8 @@
       href: manage-stale-devices.md
     - name: 启用企业状态漫游
       href: enterprise-state-roaming-enable.md
+    - name: 虚拟桌面基础结构
+      href: howto-device-identity-virtual-desktop-infrastructure.md
     - name: 部署 Azure 托管工作站
       href: howto-azure-managed-workstation.md
     - name: 排查设备标识问题
