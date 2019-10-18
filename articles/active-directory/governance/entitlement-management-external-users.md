@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcf4a0272e21a1fba3cf9adbd9158492e4318578
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 419970985b9531ffab348491730aaf6c00e143b1
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72452986"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527103"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 授权管理（预览版）中为外部用户控制访问权限
 
@@ -90,12 +90,15 @@ Azure AD 的权利管理利用[Azure AD 企业到企业（B2B）](../b2b/what-is
 
 1. 当外部用户失去其对任何访问包的最后一次分配时，如果想要阻止它们登录到此目录，请将 "**阻止外部用户登录到此目录**" 设置为 **"是"** 。
 
-1. 当外部用户丢失其对任何访问包的最后一次分配时，如果你想要在目录中删除其来宾用户帐户，请将 "**删除外部用户**" 设置为 **"是"** 。
+    > [!NOTE]
+    > 如果阻止用户登录到此目录，则用户将无法在此目录中重新请求访问包或请求其他访问权限。 如果以后需要请求访问其他访问包，请不要配置阻止它们登录。
+
+1. 当外部用户失去其对任何访问包的最后一次分配时，如果你想要在此目录中删除其来宾用户帐户，请将 "**删除外部用户**" 设置为 **"是"** 。
 
     > [!NOTE]
-    > 权利管理仅删除通过授权管理进行邀请的帐户。 另请注意，将阻止用户登录并从目录中删除用户，即使该用户已添加到目录中未访问包分配的资源。 如果在接收访问包分配之前，来宾在目录中存在，则会保留。 但是，如果来宾是通过访问包分配进行邀请的，并且在收到邀请之后还将其分配给 OneDrive for business 或 SharePoint Online 站点，则它们仍会被删除。
+    > 权利管理仅删除通过授权管理进行邀请的帐户。 另请注意，将阻止用户登录并从该目录中删除该用户，即使该用户已添加到此目录中未访问包分配的资源。 如果在接收访问包分配之前来宾在此目录中存在，则会保留。 但是，如果来宾是通过访问包分配进行邀请的，并且在收到邀请之后还将其分配给 OneDrive for business 或 SharePoint Online 站点，则它们仍会被删除。
 
-1. 如果要删除目录中的来宾用户帐户，可以设置删除之前的天数。 如果要在来宾用户帐户丢失其最后一次分配到任何访问包时立即将其删除，请设置将**此目录中的外部用户删除到0前的天数**。
+1. 如果要删除此目录中的来宾用户帐户，可以设置删除之前的天数。 如果要在来宾用户帐户丢失其最后一次分配到任何访问包时立即将其删除，请设置将**此目录中的外部用户删除到0前的天数**。
 
 1. 单击“保存”。
 
@@ -113,6 +116,6 @@ Azure AD 的权利管理利用[Azure AD 企业到企业（B2B）](../b2b/what-is
 
 ## <a name="next-steps"></a>后续步骤
 
-- [对于不在你的目录中的用户](entitlement-management-access-package-create.md#for-users-not-in-your-directory)
+- [对于不在你的目录中的用户](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
 - [创建和管理资源的目录](entitlement-management-catalog-create.md)
 - [委托和角色](entitlement-management-delegate.md)

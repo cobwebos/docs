@@ -9,20 +9,20 @@ ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: f65e3c4f9582fcc5c28412d44e513fa6bcb9e870
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/17/2019
 ms.locfileid: "71262331"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>使用资源管理器模板在 Azure 中创建诊断设置
 Azure 中的[平台日志](platform-logs-overview.md)提供有关 azure 资源及其所依赖的 azure 平台的详细诊断和审核信息。 本文详细介绍了如何使用[Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)来配置诊断设置，以便将平台日志收集到不同的目标。 这样，便可以在创建资源时自动开始收集平台日志。
 
 
-## <a name="resource-manager-template"></a>资源管理器模板
+## <a name="resource-manager-template"></a>Resource Manager 模板
 资源管理器模板中有两个部分，需要对其进行编辑以创建诊断设置。 以下部分介绍了这些部分。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 根据诊断设置的[目标](diagnostic-settings.md#destinations)，将参数添加到存储帐户名称、事件中心授权规则 id 和 Log Analytics 工作区 ID 的参数 blob。
    
 ```json
@@ -59,7 +59,7 @@ Azure 中的[平台日志](platform-logs-overview.md)提供有关 azure 资源�
 ```
 
 ### <a name="resources"></a>资源
-在要为其创建诊断设置的资源的资源数组中，添加类型`[resource namespace]/providers/diagnosticSettings`为的资源。 "属性" 部分遵循[诊断设置-创建或更新](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)中所述的格式。 添加属性，以便在[资源支持度量值](metrics-supported.md)时将资源度量收集到相同的目标。 `metrics`
+在要为其创建诊断设置的资源的资源数组中，添加一个 `[resource namespace]/providers/diagnosticSettings` 类型的资源。 "属性" 部分遵循[诊断设置-创建或更新](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)中所述的格式。 添加 `metrics` 属性，以便在[资源支持度量值](metrics-supported.md)时将资源度量收集到相同的目标。
    
 ```json
 "resources": [

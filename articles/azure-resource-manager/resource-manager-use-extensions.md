@@ -1,5 +1,5 @@
 ---
-title: 使用扩展提供部署后配置 - Azure |Microsoft Docs
+title: 使用扩展的 Azure 部署后配置
 description: 了解如何使用 Azure 资源管理器模板扩展提供部署后配置。
 services: azure-resource-manager
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/14/2018
 ms.author: jgao
-ms.openlocfilehash: eb46966c3a28b3fa4c2b23668109b7c5d23a609b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ccac91553d43a98bdef20abe451e7abec139dbaf
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60390862"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533744"
 ---
 # <a name="provide-post-deployment-configurations-by-using-extensions"></a>使用扩展提供部署后配置
 
@@ -33,12 +33,12 @@ ms.locfileid: "60390862"
 - [Microsoft.Sql servers/databases/extensions](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions) 
 - [Microsoft.Web/sites/siteextensions](https://docs.microsoft.com/azure/templates/microsoft.web/2016-08-01/sites/siteextensions)
 
-若要找出可用的扩展，请浏览到[模板参考](https://docs.microsoft.com/azure/templates/)。 在“按标题筛选”  中，输入“扩展”  。
+若要找出可用的扩展，请浏览到[模板参考](https://docs.microsoft.com/azure/templates/)。 在“按标题筛选”中，输入“扩展”。
 
 若要了解如何使用这些扩展，请参阅：
 
-- [教程：使用 Azure 资源管理器模板部署虚拟机扩展](./resource-manager-tutorial-deploy-vm-extensions.md)。
-- [教程：使用 Azure 资源管理器模板导入 SQL BACPAC 文件](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)
+- [教程：通过 Azure 资源管理器模板部署虚拟机扩展](./resource-manager-tutorial-deploy-vm-extensions.md)。
+- [教程：通过 Azure 资源管理器模板导入 SQL BACPAC 文件](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)
 
 ## <a name="next-steps"></a>后续步骤
 

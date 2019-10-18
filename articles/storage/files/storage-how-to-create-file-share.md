@@ -7,21 +7,24 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 000dacb7530b52784a68663d295fde9784d50e29
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 3b30df7410f56c203eb600089cce130a8de23d1b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013563"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514604"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>在 Azure 文件中创建文件共享
-可以使用  [Azure 门户](https://portal.azure.com/)、Azure 存储 PowerShell cmdlet、Azure 存储客户端库或 Azure 存储 REST API 来创建 Azure 文件共享。 本教程介绍：
+可以使用  [Azure 门户](https://portal.azure.com/)、Azure 存储 PowerShell cmdlet、Azure 存储客户端库或 Azure 存储 REST API 来创建 Azure 文件共享。 在本教程中，你将学习：
 * 如何使用 Azure 门户创建 Azure 文件共享
 * [如何使用 Powershell 创建 Azure 文件共享](#create-file-share-through-powershell)
 * [如何使用 CLI 创建 Azure 文件共享](#create-file-share-through-command-line-interface-cli)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要创建 Azure 文件共享，可以使用已存在的存储帐户，也可以[创建新的 Azure 存储帐户](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 若要使用 PowerShell 创建 Azure 文件共享，需提供存储帐户的帐户密钥和名称。 如果计划使用 Powershell 或 CLI，则需存储帐户密钥。
+
+> [!NOTE]
+> 如果你想要创建大于 5 TiB 的文件共享，请参阅我们的文章[启用大型文件共享](storage-files-how-to-create-large-file-share.md)。
 
 ## <a name="create-a-file-share-through-the-azure-portal"></a>通过 Azure 门户创建文件共享
 1. **转到 Azure 门户中的“存储帐户”边栏选项卡**：    
@@ -30,14 +33,14 @@ ms.locfileid: "70013563"
 2. 单击”添加文件共享”按钮：    
     ![单击”添加文件共享”按钮](./media/storage-how-to-create-file-share/create-file-share-portal2.png)
 
-3. **提供名称和配额。配额目前的最大值为 5 TiB**：    
+3. **提供名称和配额**：    
     ![为新的文件共享提供名称和所需配额](./media/storage-how-to-create-file-share/create-file-share-portal3.png)
 
-4. **查看新的文件共享**：![查看新的文件共享](./media/storage-how-to-create-file-share/create-file-share-portal4.png)
+4. 查看新的文件共享：![查看新的文件共享](./media/storage-how-to-create-file-share/create-file-share-portal4.png)
 
-5. **上传文件**：![上传文件](./media/storage-how-to-create-file-share/create-file-share-portal5.png)
+5. 上传文件：![上传文件](./media/storage-how-to-create-file-share/create-file-share-portal5.png)
 
-6. **浏览到文件共享并管理目录和文件**：![浏览文件共享](./media/storage-how-to-create-file-share/create-file-share-portal6.png)
+6. 浏览到文件共享并管理目录和文件：![浏览文件共享](./media/storage-how-to-create-file-share/create-file-share-portal6.png)
 
 
 ## <a name="create-file-share-through-powershell"></a>通过 PowerShell 创建文件共享
@@ -46,7 +49,7 @@ ms.locfileid: "70013563"
 > [!Note]  
 > 建议下载并安装最新的 Azure PowerShell 模块或升级到最新模块。
 
-1. **创建新的存储帐户:** 存储帐户是一个存储共享池, 你可以在其中部署 Azure 文件共享和其他存储资源, 例如 blob 或队列。
+1. **创建新的存储帐户：** 存储帐户是一个存储共享池，你可以在其中部署 Azure 文件共享和其他存储资源，例如 blob 或队列。
 
     ```PowerShell
     $resourceGroup = "myresourcegroup"

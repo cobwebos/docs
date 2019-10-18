@@ -13,24 +13,21 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94c2ac1d662851b5a0b44ec475becb5f5e0403c4
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 4e29aacb1357509e2b000a9d05c5ced8f9a30dce
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146398"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517159"
 ---
 # <a name="bulk-download-members-of-a-group-preview-in-azure-active-directory"></a>在 Azure Active Directory 中批量下载组的成员（预览）
 
 使用 Azure Active Directory （Azure AD）门户，你可以将组织中组的成员批量下载到逗号分隔值（CSV）文件中。
 
-> [!NOTE]
-> Azure AD 批量操作是 Azure AD 的公共预览功能，适用于任何付费的 Azure AD 许可计划。 有关预览版使用条款的详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 ## <a name="to-bulk-download-group-membership"></a>大容量下载组成员身份
 
 1. 使用组织中的用户管理员帐户登录到[Azure 门户](https://portal.azure.com)。 组所有者还可以批量下载它们所拥有的组的成员。
-1. 在 Azure AD 中，选择 "**组** > " "**所有组**"。
+1. 在 Azure AD 中，选择 "**组**"  > **所有组**"。
 1. 打开要下载其成员身份的组，然后选择 "**成员**"。
 1. 在 "**成员**" 页上，选择 "**下载成员**" 以下载列出组成员的 CSV 文件。
 

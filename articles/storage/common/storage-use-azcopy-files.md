@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 361b16ff074baaf0118ccfe6d3c2a20f0e66c623
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 8f86839a11afca746b228aa9b9c25c9813b69ec7
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273909"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528682"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>用 AzCopy 和文件存储传输数据 
 
@@ -44,7 +44,7 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户中复制 blob �
 > * 上传特定文件
 
 > [!NOTE]
-> AzCopy 不会自动计算和存储文件的 md5 哈希代码。 如果希望 AzCopy 执行此操作，请将 `--put-md5` 标志追加到每个复制命令。 这样，在下载文件时，AzCopy 将计算已下载数据的 MD5 哈希，并验证存储在文件 `Content-md5` 属性中的 MD5 哈希是否与计算所得的哈希匹配。
+> AzCopy 不会自动计算和存储文件的 md5 哈希代码。 如果希望 AzCopy 执行此操作，请将 `--put-md5` 标志追加到每个复制命令。 这样一来，文件下载时，AzCopy 将计算已下载数据的 MD5 哈希值，并验证存储在文件的 `Content-md5` 属性中的 MD5 哈希是否与计算所得的哈希匹配。
 
 有关详细的参考文档，请参阅[azcopy copy](storage-ref-azcopy-copy.md)。
 
@@ -84,7 +84,7 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户中复制 blob �
 | **示例** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
 
 > [!NOTE]
-> 追加 `--recursive` 标志以上载所有子目录中的文件。
+> 追加 `--recursive` 标志以便上传所有子目录中的文件。
 
 ### <a name="upload-specific-files"></a>上传特定文件
 
@@ -99,9 +99,9 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户中复制 blob �
 | **语法** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name>' --include-path <semicolon-separated-file-list>` |
 | **示例** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare' --include-path 'photos;documents\myFile.txt'` |
 
-在此示例中，AzCopy 传输 `C:\myDirectory\photos` 目录和 @no__t 1 文件。 需要包含 `--recursive` 选项以传输 @no__t 目录中的所有文件。
+在此示例中，AzCopy 传输 `C:\myDirectory\photos` 目录和 `C:\myDirectory\documents\myFile.txt` 文件。 需要包含 `--recursive` 选项以传输 `C:\myDirectory\photos` 目录中的所有文件。
 
-还可以通过使用 `--exclude-path` 选项排除文件。 若要了解详细信息，请参阅[azcopy 复制](storage-ref-azcopy-copy.md)参考文档。
+你还可以使用 "`--exclude-path`" 选项排除文件。 若要了解详细信息，请参阅[azcopy 复制](storage-ref-azcopy-copy.md)参考文档。
 
 #### <a name="use-wildcard-characters"></a>使用通配符
 
@@ -112,9 +112,9 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户中复制 blob �
 | **语法** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
 | **示例** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare' --include-pattern 'myFile*.txt;*.pdf*'` |
 
-还可以通过使用 `--exclude-pattern` 选项排除文件。 若要了解详细信息，请参阅[azcopy 复制](storage-ref-azcopy-copy.md)参考文档。
+你还可以使用 "`--exclude-pattern`" 选项排除文件。 若要了解详细信息，请参阅[azcopy 复制](storage-ref-azcopy-copy.md)参考文档。
 
-@No__t-0 和 @no__t 1 选项仅适用于文件名，而不适用于路径。  如果要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 以获取所有文本文件。
+@No__t_0 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  如果要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 以获取所有文本文件。
 
 ## <a name="download-files"></a>下载文件
 
@@ -129,7 +129,7 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户中复制 blob �
 > * 下载特定文件
 
 > [!NOTE]
-> 如果文件的 `Content-md5` 属性值包含哈希，则 AzCopy 将计算已下载数据的 MD5 哈希值，并验证存储在文件的 @no__t 属性中的 MD5 哈希是否与计算所得的哈希匹配。 如果这些值不匹配，则下载将失败，除非通过将 `--check-md5=NoCheck` 或 `--check-md5=LogOnly` 追加到复制命令来重写此行为。
+> 如果文件的 `Content-md5` 属性值包含哈希，则 AzCopy 将计算已下载数据的 MD5 哈希，并验证存储在文件的 `Content-md5` 属性中的 MD5 哈希是否与计算的哈希匹配。 如果这些值不匹配，则下载将失败，除非通过将 `--check-md5=NoCheck` 或 `--check-md5=LogOnly` 追加到复制命令来重写此行为。
 
 有关详细的参考文档，请参阅[azcopy copy](storage-ref-azcopy-copy.md)。
 
@@ -174,9 +174,9 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户中复制 blob �
 | **语法** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
 | **示例** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
 
-在此示例中，AzCopy 传输 `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` 目录和 @no__t 1 文件。 需要包含 `--recursive` 选项以传输 @no__t 目录中的所有文件。
+在此示例中，AzCopy 传输 `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` 目录和 `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/documents/myFile.txt` 文件。 需要包含 `--recursive` 选项以传输 `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` 目录中的所有文件。
 
-还可以通过使用 `--exclude-path` 选项排除文件。 若要了解详细信息，请参阅[azcopy 复制](storage-ref-azcopy-copy.md)参考文档。
+你还可以使用 "`--exclude-path`" 选项排除文件。 若要了解详细信息，请参阅[azcopy 复制](storage-ref-azcopy-copy.md)参考文档。
 
 #### <a name="use-wildcard-characters"></a>使用通配符
 
@@ -187,9 +187,9 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户中复制 blob �
 | **语法** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
 | **示例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 
-还可以通过使用 `--exclude-pattern` 选项排除文件。 若要了解详细信息，请参阅[azcopy 复制](storage-ref-azcopy-copy.md)参考文档。
+你还可以使用 "`--exclude-pattern`" 选项排除文件。 若要了解详细信息，请参阅[azcopy 复制](storage-ref-azcopy-copy.md)参考文档。
 
-@No__t-0 和 @no__t 1 选项仅适用于文件名，而不适用于路径。  如果要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 以获取所有文本文件。
+@No__t_0 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  如果要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 以获取所有文本文件。
 
 ## <a name="copy-files-between-storage-accounts"></a>在存储帐户之间复制文件
 
@@ -237,34 +237,34 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 
 ## <a name="synchronize-files"></a>同步文件
 
-可以将本地文件系统的内容与文件共享进行同步。 同步是单向的。 换句话说，您可以选择这两个终结点中的哪一个是源，哪一个是目标。 同步还使用服务器到服务器 Api。
+你可以将文件共享的内容与另一个文件共享进行同步。 你还可以将文件共享中的目录内容与位于另一个文件共享中的目录的内容进行同步。 同步是单向的。 换句话说，您可以选择这两个终结点中的哪一个是源，哪一个是目标。 同步还使用服务器到服务器 Api。
 
 > [!NOTE]
 > 目前，只有没有分层命名空间的帐户才支持此方案。 当前版本的 AzCopy 不在 Azure 文件和 Blob 存储之间同步。
 
-[Sync](storage-ref-azcopy-sync.md)命令比较文件名和上次修改时间戳。 将 `--delete-destination` 可选标志设置为值为 `true` 或 `prompt`，以便在目标目录中删除文件时删除目标目录中的文件。
+[Sync](storage-ref-azcopy-sync.md)命令比较文件名和上次修改时间戳。 将 `--delete-destination` 可选标志设置为 `true` 或 `prompt` 的值，以便在目标目录中删除文件时删除这些文件。
 
 如果将 `--delete-destination` 标志设置为 `true` AzCopy 将删除文件而不提供提示。 如果希望在 AzCopy 删除文件之前出现提示，请将 `--delete-destination` 标志设置为 `prompt`。
 
 有关详细的参考文档，请参阅[azcopy 同步](storage-ref-azcopy-sync.md)。
 
-### <a name="update-a-file-share-with-changes-to-a-local-file-system"></a>使用对本地文件系统的更改更新文件共享
+### <a name="update-a-file-share-with-changes-to-another-file-share"></a>使用对其他文件共享所做的更改更新文件共享
 
-在这种情况下，文件共享是目标，本地文件系统是源。
-
-|    |     |
-|--------|-----------|
-| **语法** | `azcopy sync '<local-directory-path>' 'https://<storage-account-name>.file.core.windows.net/<file-share-name>' --recursive` |
-| **示例** | `azcopy sync 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/mycontainer' --recursive` |
-
-### <a name="update-a-local-file-system-with-changes-to-a-file-share"></a>使用对文件共享的更改更新本地文件系统
-
-在这种情况下，本地文件系统是目标，文件共享是源。
+此命令中显示的第一个文件共享是源。 第二个是目标。
 
 |    |     |
 |--------|-----------|
-| **语法** | `azcopy sync 'https://<storage-account-name>.file.core.windows.net/<file-share-name>' 'C:\myDirectory' --recursive` |
-| **示例** | `azcopy sync 'https://mystorageaccount.file.core.windows.net/mycontainer' 'C:\myDirectory' --recursive` |
+| **语法** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>' --recursive` |
+| **示例** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myfileshare' --recursive` |
+
+### <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>使用对其他文件共享中的目录的更改更新目录
+
+此命令中显示的第一个目录是源。 第二个是目标。
+
+|    |     |
+|--------|-----------|
+| **语法** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name>' --recursive` |
+| **示例** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myFileShare/myDirectory' --recursive` |
 
 ## <a name="next-steps"></a>后续步骤
 

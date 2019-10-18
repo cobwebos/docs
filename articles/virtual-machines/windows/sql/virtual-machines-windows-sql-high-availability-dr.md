@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: 2e6df3c9dc80700faa23aa85c66fd42260ee2606
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: HT
+ms.openlocfilehash: ef67609f4448dc7ce4d1676d7212890e1fe6561f
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330079"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529495"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的高可用性和灾难恢复
 
@@ -49,8 +49,8 @@ Azure 支持的 SQL Server HADR 技术包括：
 
 | 技术 | 示例体系结构 |
 | --- | --- |
-| **可用性组** |在同一区域的 Azure VM 中运行的可用性副本提供高可用性。 为了实现更高的冗余和可用性，Azure Vm 可以部署在不同的[可用性区域](https://docs.microsoft.com/en-us/azure/availability-zones/az-overview)中，如[此处](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)所述。 如果可用性组中的 SQL Server Vm 部署在可用性区域中，请使用以下文章中所述的适用于侦听器的[标准负载均衡器](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-standard-overview)- [AZURE SQL VM CLI](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-availability-group-cli) & [azure 快速入门模板](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-availability-group-quickstart-template)。 需要配置域控制器 VM，因为 Windows 故障转移群集需要 Active Directory 域。<br/> ![可用性组](./media/virtual-machines-windows-sql-high-availability-dr/azure-only-ha-always-on.png)<br/>有关详细信息，请参阅[在 Azure 中配置可用性组 (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)。 |
-| **故障转移群集实例** |可通过 3 种不同的方式创建需要共享存储的故障转移群集实例 (FCI)。<br/><br/>1. 使用 Windows Server 2016 在包含附加存储的 Azure Vm 中运行的双节点故障转移群集[存储空间直通 \(S2D @ no__t-2](virtual-machines-windows-portal-sql-create-failover-cluster.md)以提供基于软件的虚拟 SAN。<br/><br/>2. 使用第三方群集解决方案支持的存储在 Azure Vm 中运行的双节点故障转移群集。 有关使用 SIOS DataKeeper 的具体示例，请参阅[使用故障转移群集和第三方软件 SIOS Datakeeper 的文件共享的高可用性](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)。<br/><br/>3. 通过 ExpressRoute 在具有远程 iSCSI 目标共享块存储的 Azure Vm 中运行的双节点故障转移群集。 例如，NetApp 专用存储 (NPS) 使用 Equinix 通过 ExpressRoute 向 Azuer VM 公开 iSCSI 目标。<br/><br/>对于第三方共享存储和数据复制解决方案，如有任何关于在故障转移时访问数据的问题，请联系供应商。<br/><br/>请注意，目前尚不支持在 [Azure 文件存储](https://azure.microsoft.com/services/storage/files/)外部使用 FCI，因为此解决方案不使用高级存储。 我们正在努力很快支持此功能。 |
+| **可用性组** |在同一区域的 Azure VM 中运行的可用性副本提供高可用性。  需要配置域控制器 VM，因为 Windows 故障转移群集需要 Active Directory 域。<br/><br/> 为了实现更高的冗余和可用性，Azure Vm 可以部署在不同的[可用性区域](../../../availability-zones/az-overview.md)中，如[可用性组概述](virtual-machines-windows-portal-sql-availability-group-overview.md)中所述。 如果可用性组中的 SQL Server Vm 部署在可用性区域中，请使用以下文章中所述的适用于侦听器的[标准负载均衡器](../../../load-balancer/load-balancer-standard-overview.md)- [AZURE SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) & [azure 快速入门模板](virtual-machines-windows-sql-availability-group-quickstart-template.md)。<br/> ![可用性组](./media/virtual-machines-windows-sql-high-availability-dr/azure-only-ha-always-on.png)<br/>有关详细信息，请参阅[在 Azure 中配置可用性组 (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)。 |
+| **故障转移群集实例** |可通过4种不同的方式创建需要共享存储的故障转移群集实例（FCI）。<br/><br/>1. 使用 Windows Server 2016 在 Azure Vm 中运行的双节点故障转移群集[存储空间直通 \(S2D \)](virtual-machines-windows-portal-sql-create-failover-cluster.md)提供基于软件的虚拟 SAN。<br/><br/> 2. 使用[高级文件共享](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md)在 Azure vm 中运行的双节点故障转移群集。 高级文件共享是完全支持的、与故障转移群集实例完全支持的、低延迟文件共享。<br/><br/>3. 使用第三方群集解决方案支持的存储在 Azure Vm 中运行的双节点故障转移群集。 有关使用 SIOS DataKeeper 的具体示例，请参阅[使用故障转移群集和第三方软件 SIOS Datakeeper 的文件共享的高可用性](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)。<br/><br/>4. 通过 ExpressRoute 在具有远程 iSCSI 目标共享块存储的 Azure Vm 中运行的双节点故障转移群集。 例如，NetApp 专用存储 (NPS) 使用 Equinix 通过 ExpressRoute 向 Azuer VM 公开 iSCSI 目标。<br/><br/>对于第三方共享存储和数据复制解决方案，如有任何关于在故障转移时访问数据的问题，请联系供应商。<br/><br/>请注意，目前尚不支持在 [Azure 文件存储](https://azure.microsoft.com/services/storage/files/)外部使用 FCI，因为此解决方案不使用高级存储。 我们正在努力很快支持此功能。 |
 
 ## <a name="azure-only-disaster-recovery-solutions"></a>仅限 Azure：灾难恢复解决方案
 可将可用性组、数据库镜像或备份和还原与存储 Blob 配合使用，为 Azure 中的 SQL Server 数据库提供灾难恢复解决方案。

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: ee7bbff8ab501a1159030a8ee9c57f1c5a64ea22
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: b69eda59c9c8032510df036d3aa0d160105fbc16
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286548"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533171"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知问题和故障排除 Azure 机器学习
 
@@ -37,13 +37,13 @@ ms.locfileid: "72286548"
  
 在修复之前，可以将数据集连接到任何数据转换模块（选择数据集中的列，编辑元数据，拆分数据等）并运行试验。 然后，可以可视化数据集。 
 
-下图显示了如何 @no__t： 0visulize-data @ no__t-1
+下图显示了如何： ![visulize 数据 ](./media/resource-known-issues/aml-visualize-data.png)
 
 ## <a name="sdk-installation-issues"></a>SDK 安装问题
 
 **错误消息：无法卸载 'PyYAML'**
 
-适用于 Python 的 Azure 机器学习 SDK：PyYAML 是 distutils 安装的项目。 因此，在部分卸载的情况下，我们无法准确确定哪些文件属于它。 若要在忽略此错误的同时继续安装 SDK，请使用：
+用于 Python 的 Azure 机器学习 SDK： PyYAML 是 distutils 安装的项目。 因此，在部分卸载的情况下，我们无法准确确定哪些文件属于它。 若要在忽略此错误的同时继续安装 SDK，请使用：
 
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
@@ -73,7 +73,7 @@ conda create -n <env-name> python=3.7.3
 
 你将无法在 FPGA 上部署模型，直到已请求并获得 FPGA 配额批准为止。 若要请求访问权限，请填写配额请求表单： https://aka.ms/aml-real-time-ai
 
-## <a name="automated-machine-learning"></a>自动化机器学习
+## <a name="automated-machine-learning"></a>自动执行机器学习
 
 Tensor Flow 自动化机器学习当前不支持 Tensor 流版本1.13。 安装此版本将导致包依赖关系停止工作。 我们正在努力解决此问题。 
 
@@ -87,7 +87,7 @@ Databricks 和 Azure 机器学习问题。
 
 ### <a name="failure-when-installing-packages"></a>安装包时失败
 
-安装更多包时，Azure 机器学习 SDK 安装在 Azure Databricks 上失败。 某些包（如 `psutil`）可能会导致冲突。 若要避免安装错误，请通过冻结库版本来安装包。 此问题与 Databricks 相关，不适用于 Azure 机器学习 SDK。 其他库也可能会遇到此问题。 例如：
+安装更多包时，Azure 机器学习 SDK 安装在 Azure Databricks 上失败。 某些包（如 `psutil`）可能会导致冲突。 若要避免安装错误，请通过冻结库版本来安装包。 此问题与 Databricks 相关，不适用于 Azure 机器学习 SDK。 其他库也可能会遇到此问题。 示例：
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -101,7 +101,7 @@ psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
 
 ### <a name="10-iterations-for-automated-machine-learning"></a>自动机器学习 > 10 次迭代
 
-在自动机器学习设置中，如果有10个以上的迭代，请将 `show_output` 设置为提交运行时 `False`。
+在自动机器学习设置中，如果迭代次数超过10个，则在提交运行时，将 `show_output` 设置为 `False`。
 
 ### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Azure 机器学习 SDK/自动机器学习的小组件
 
@@ -128,9 +128,9 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 
 ### <a name="failtosendfeather"></a>FailToSendFeather
 
-如果在 Azure Databricks 群集上读取数据时看到 `FailToSendFeather` 错误，请参阅以下解决方案：
+如果在 Azure Databricks 群集上读取数据时出现 `FailToSendFeather` 错误，请参阅以下解决方案：
 
-* 将 `azureml-sdk[automl_databricks]` 包升级到最新版本。
+* 将 `azureml-sdk[automl]` 包升级到最新版本。
 * 添加 `azure-dataprep` 版本1.1.8 或更高版本。
 * 添加 `pyarrow` 版本0.11 或更高版本。
 
@@ -171,7 +171,7 @@ Azure 机器学习工作区中的某些操作不会将信息记录到__活动日
 
 ## <a name="overloaded-azurefile-storage"></a>重载的 AzureFile 存储
 
-如果收到错误 `Unable to upload project files to working directory in AzureFile because the storage is overloaded`，请应用以下解决方法。
+如果收到 `Unable to upload project files to working directory in AzureFile because the storage is overloaded` 错误，请应用以下解决方法。
 
 如果对其他工作负荷（如数据传输）使用文件共享，则建议使用 blob，以便可以自由地使用文件共享来提交运行。 你还可以在两个不同的工作区之间拆分工作负荷。
 
@@ -211,14 +211,14 @@ compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceNa
 compute_target.wait_for_completion(show_output=True)
 ```
 
-如果不再具有 SSL 证书和私钥，或者使用的是 Azure 机器学习生成的证书，则可以在分离群集之前通过使用 `kubectl` 并检索机密 @no__t 来检索这些文件。
+如果不再具有 SSL 证书和私钥，或者使用的是 Azure 机器学习生成的证书，则可以在分离群集之前通过使用 `kubectl` 和 `azuremlfessl` 检索机密来检索这些文件。
 
 ```bash
 kubectl get secret/azuremlfessl -o yaml
 ```
 
 >[!Note]
->Kubernetes 以64编码格式存储密码。 在向 @no__t 提供 @no__t 机密之前，需要先对其进行64解码，然后再对其进行 @no__t 解码。 
+>Kubernetes 以64编码格式存储密码。 在向 `attach_config.enable_ssl` 提供机密之前，需要对 `cert.pem` 和机密的 `key.pem` 组件进行64解码。 
 
 ## <a name="recommendations-for-error-fix"></a>错误修复建议
 基于常规观察，以下是 Azure ML 建议，用于修复 Azure ML 中的一些常见错误。
@@ -226,7 +226,7 @@ kubectl get secret/azuremlfessl -o yaml
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors （没有名为的模块）
 如果在 Azure ML 中提交试验时运行到 ModuleErrors 中，则表示训练脚本需要安装一个包，但不会添加它。 提供包名称后，Azure ML 会在用于定型的环境中安装包。 
 
-如果使用[估算](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators)提交试验，则可以通过估计器中的 `pip_packages` 或 `conda_packages` 参数在要安装包的源中指定包名称。 你还可以使用 `pip_requirements_file` 参数，通过 `conda_dependencies_file`or 列出 txt 文件中的所有 pip 要求来指定具有所有依赖项的 docker-compose.override.yml 文件。
+如果使用[估算](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators)提交试验，则可以通过基于要安装包的源中的估计器 `pip_packages` 或 `conda_packages` 参数指定包名称。 你还可以使用 `conda_dependencies_file`or 列出所有依赖项的 docker-compose.override.yml 文件，并使用 `pip_requirements_file` 参数列出 txt 文件中的所有 pip 要求。
 
 Azure ML 还为 Tensorflow、PyTorch、Chainer 和 Spark-sklearn 提供框架特定的估算。 使用这些估算将确保在用于定型的环境中代表您安装框架依赖项。 您可以选择指定额外的依赖项，如上所述。 
  
@@ -239,4 +239,4 @@ Azure ML 还为 Tensorflow、PyTorch、Chainer 和 Spark-sklearn 提供框架特
 此异常应来自训练脚本。 你可以查看 Azure 门户的日志文件，以获取有关特定名称（未定义）或属性错误的详细信息。 从 SDK，你可以使用 `run.get_details()` 来查看错误消息。 这还将列出为运行生成的所有日志文件。 请确保查看训练脚本，并修复错误，然后重试。 
 
 ### <a name="horovod-is-shutdown"></a>Horovod 关闭
-在大多数情况下，此异常表示某个进程中存在导致 horovod 关闭的基础异常。 MPI 作业中的每个排名都在 Azure ML 中获得专用的日志文件。 这些日志命名为 `70_driver_logs`。 对于分布式培训，日志名称的后缀为 `_rank` 以便于区分日志。 若要查找导致 horovod 关闭的确切错误，请浏览所有日志文件，并在 driver_log 文件的末尾查找 `Traceback`。 其中一项文件会为你带来实际的基础异常。 
+在大多数情况下，此异常表示某个进程中存在导致 horovod 关闭的基础异常。 MPI 作业中的每个排名都在 Azure ML 中获得专用的日志文件。 这些日志命名为 `70_driver_logs`。 对于分布式培训，日志名称以 `_rank` 为后缀，以方便区分日志。 若要查找导致 horovod 关闭的确切错误，请浏览所有日志文件，并在 driver_log 文件的末尾查找 `Traceback`。 其中一项文件会为你带来实际的基础异常。 

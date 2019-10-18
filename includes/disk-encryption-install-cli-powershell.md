@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: b1da7b69db20b036b69add5604f80896e5d35587
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 05794a046fdcb15a91145a75717a6a454d15a8da
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245027"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72511448"
 ---
-可以通过[Azure CLI](/cli/azure)和[Azure PowerShell](/azure/new-azureps-module-az)来启用和管理 Azure 磁盘加密。 为此，必须在本地安装工具并连接到 Azure 订阅。
+可以通过[Azure CLI](/cli/azure)和[Azure PowerShell](/powershell/azure/new-azureps-module-az)来启用和管理 Azure 磁盘加密。 为此，必须在本地安装工具并连接到 Azure 订阅。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -43,7 +43,7 @@ az account set --subscription "<subscription name or ID>"
 有关详细信息，请参阅 [Azure CLI 2.0 入门](/cli/azure/get-started-with-azure-cli)。 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell az 模块](/azure/new-azureps-module-az)提供一组 cmdlet，这些 Cmdlet 使用[azure 资源管理器](/azure/azure-resource-manager/resource-group-overview)模型来管理 azure 资源。 你可以在浏览器中将其与[Azure Cloud Shell](/azure/cloud-shell/overview)一起使用，也可以按照[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)中的说明将其安装在本地计算机上。 
+[Azure PowerShell az 模块](/powershell/azure/new-azureps-module-az)提供一组 cmdlet，这些 Cmdlet 使用[azure 资源管理器](/azure/azure-resource-manager/resource-group-overview)模型来管理 azure 资源。 你可以在浏览器中将其与[Azure Cloud Shell](/azure/cloud-shell/overview)一起使用，也可以按照[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)中的说明将其安装在本地计算机上。 
 
 如果已在本地安装 PowerShell，请确保使用最新版本的 Azure PowerShell SDK 来配置 Azure 磁盘加密。 下载最新版本的 [Azure PowerShell 版本](https://github.com/Azure/azure-powershell/releases)。
 

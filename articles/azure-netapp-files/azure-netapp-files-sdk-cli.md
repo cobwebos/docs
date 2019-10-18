@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: b-juche
-ms.openlocfilehash: 09a1e48d2eb9ab9b117cb1b1161d5137607400ad
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 290fc279a7d2ff2369758c170b3fb64635ee01af
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212100"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532275"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp 文件 SDK 和 CLI 工具
 
@@ -42,7 +42,7 @@ ms.locfileid: "71212100"
 
 下表列出了支持的 CLI 工具及其命令参考。   
 
-|    Tool    |    命令参考    |
+|    工具    |    命令参考    |
 |------------------|--------------------------------------------|
 |    Azure CLI  |    [az netappfiles](https://docs.microsoft.com/cli/azure/netappfiles?view=azure-cli-latest)    |
 |    PowerShell   |    [Azure NetApp 文件的 Azure PowerShell](https://docs.microsoft.com/powershell/module/az.netappfiles/?view=azps-2.5.0#netapp_files)    |
@@ -53,7 +53,7 @@ ms.locfileid: "71212100"
 
 |    语言/工具    |    代码示例文档    |
 |------------------|--------------------------------------------|
-|    .NET   |    [适用于的 Azure NetApp 文件 SDK 示例。NETCore](https://docs.microsoft.com/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-netcore/)    |    
+|    .NET   |    [适用于的 Azure NetApp 文件 SDK 示例。NETCore](https://docs.microsoft.com/en-us/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-net-core/) |    
 |    Python    |    [适用于 Python 的 Azure NetApp 文件 SDK 示例](https://docs.microsoft.com/samples/azure-samples/netappfiles-python-sdk-sample/azure-netappfiles-sdk-sample-for-python/)    |
 
 ## <a name="next-steps"></a>后续步骤   

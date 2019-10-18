@@ -1,17 +1,17 @@
 ---
-title: 将 Azure 资源部署到多个订阅和资源组 | Microsoft Docs
+title: 部署 Azure 资源跨订阅 & 资源组
 description: 介绍如何在部署期间将多个 Azure 订阅和资源组作为目标。
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 33b0a998206b68f1807f5bfa3c3f39164798842c
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c90096043f54eb8db5834fbe83ed1d6ae710d371
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205474"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528331"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>将 Azure 资源部署到多个订阅或资源组
 
@@ -43,7 +43,7 @@ ms.locfileid: "67205474"
 ]
 ```
 
-如果资源组位于同一订阅中，则可以删除“subscriptionId”值  。
+如果资源组位于同一订阅中，则可以删除“subscriptionId”值。
 
 以下示例部署两个存储帐户 - 一个在部署期间指定的资源组中，另一个在 `secondResourceGroup` 参数指定的资源组中：
 
@@ -169,7 +169,7 @@ ms.locfileid: "67205474"
 
 ### <a name="powershell"></a>PowerShell
 
-对于 PowerShell，若要将两个存储帐户部署到同一订阅中的两个资源组，请使用： 
+对于 PowerShell，若要将两个存储帐户部署到同一订阅中的两个资源组，请使用：
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -186,7 +186,7 @@ New-AzResourceGroupDeployment `
   -secondStorageLocation eastus
 ```
 
-对于 PowerShell，若要将两个存储帐户部署到两个订阅，请使用： 
+对于 PowerShell，若要将两个存储帐户部署到两个订阅，请使用：
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -210,7 +210,7 @@ New-AzResourceGroupDeployment `
   -secondSubscriptionID $secondSub
 ```
 
-对于 PowerShell，若要测试如何解析父模板、内联模板和链接模板的资源组对象，请使用： 
+对于 PowerShell，若要测试如何解析父模板、内联模板和链接模板的资源组对象，请使用：
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name parentGroup -Location southcentralus
@@ -255,7 +255,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="azure-cli"></a>Azure CLI
 
-对于 Azure CLI，若要将两个存储帐户部署到同一订阅中的两个资源组，请使用： 
+对于 Azure CLI，若要将两个存储帐户部署到同一订阅中的两个资源组，请使用：
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -270,7 +270,7 @@ az group deployment create \
   --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
 ```
 
-对于 Azure CLI，若要将两个存储帐户部署到两个订阅，请使用： 
+对于 Azure CLI，若要将两个存储帐户部署到两个订阅，请使用：
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -292,7 +292,7 @@ az group deployment create \
   --parameters storagePrefix=storage secondResourceGroup=$secondRG secondStorageLocation=eastus secondSubscriptionID=$secondSub
 ```
 
-对于 Azure CLI，若要测试如何解析父模板、内联模板和链接模板的资源组对象，请使用： 
+对于 Azure CLI，若要测试如何解析父模板、内联模板和链接模板的资源组对象，请使用：
 
 ```azurecli-interactive
 az group create --name parentGroup --location southcentralus

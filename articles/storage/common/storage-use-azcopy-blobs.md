@@ -8,23 +8,23 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f1b18601629db12d4f9e75f180488e91b6a6857a
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 736957ec68f592da74fc6903acade1150d253467
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274869"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527033"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>用 AzCopy 和 Blob 存储传输数据
 
 AzCopy 是一个命令行实用工具，可用于在存储帐户之间复制数据。 本文包含适用于 Blob 存储的示例命令。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始体验
 
 请参阅[AzCopy 文章入门](storage-use-azcopy-v10.md)，下载 AzCopy 并了解你可以向存储服务提供授权凭据的方式。
 
 > [!NOTE]
-> 本文中的示例假设已通过使用 `AzCopy login` 命令对标识进行身份验证。 然后，AzCopy 使用 Azure AD 帐户来授权访问 Blob 存储中的数据。
+> 本文中的示例假设已使用 `AzCopy login` 命令对标识进行身份验证。 然后，AzCopy 使用 Azure AD 帐户来授权访问 Blob 存储中的数据。
 >
 > 如果你希望使用 SAS 令牌来授予对 blob 数据的访问权限，则可以将该令牌附加到每个 AzCopy 命令中的资源 URL。
 >
@@ -32,7 +32,7 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户之间复制数�
 
 ## <a name="create-a-container"></a>创建容器
 
-可以使用[azcopy make](storage-ref-azcopy-make.md)命令创建容器。 本节中的示例将创建一个名为 @no__t 的容器。
+可以使用[azcopy make](storage-ref-azcopy-make.md)命令创建容器。 本节中的示例将创建一个名为 `mycontainer` 的容器。
 
 |    |     |
 |--------|-----------|
@@ -55,7 +55,7 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户之间复制数�
 > * 上传特定文件
 
 > [!NOTE]
-> AzCopy 不会自动计算和存储文件的 md5 哈希代码。 如果希望 AzCopy 执行此操作，请将 `--put-md5` 标志追加到每个复制命令。 这样一来，在下载 blob 时，AzCopy 会计算已下载数据的 MD5 哈希，并验证存储在 blob 的 `Content-md5` 属性中的 MD5 哈希是否与计算所得的哈希匹配。
+> AzCopy 不会自动计算和存储文件的 md5 哈希代码。 如果希望 AzCopy 执行此操作，请将 `--put-md5` 标志追加到每个复制命令。 这样一来，在下载 blob 时，AzCopy 会计算已下载数据的 MD5 哈希，并验证存储在 blob `Content-md5` 属性中的 MD5 哈希是否与计算所得的哈希匹配。
 
 有关详细的参考文档，请参阅[azcopy copy](storage-ref-azcopy-copy.md)。
 
@@ -70,7 +70,7 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户之间复制数�
 还可以通过在文件路径或文件名中的任意位置使用通配符（*）来上传文件。 例如： `'C:\myDirectory\*.txt'` 或 `C:\my*\*.txt`。
 
 > [!NOTE]
-> 默认情况下，AzCopy 将数据上传到块 Blob 中。 若要将文件作为追加 Blob 或页 Blob 上传，请使用 `--blob-type=[BlockBlob|PageBlob|AppendBlob]` 标志。
+> 默认情况下，AzCopy 将数据上传到块 blob。 若要将文件上传为追加 Blob 或页 Blob，请使用标志 `--blob-type=[BlockBlob|PageBlob|AppendBlob]`。
 
 ### <a name="upload-a-directory"></a>上传目录
 
@@ -102,7 +102,7 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户之间复制数�
 | **示例**（分层命名空间） | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory'` |
 
 > [!NOTE]
-> 追加 `--recursive` 标志以上载所有子目录中的文件。
+> 追加 `--recursive` 标志以便上传所有子目录中的文件。
 
 ### <a name="upload-specific-files"></a>上传特定文件
 
@@ -118,9 +118,9 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户之间复制数�
 | **示例** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
 | **示例**（分层命名空间） | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
 
-在此示例中，AzCopy 传输 `C:\myDirectory\photos` 目录和 @no__t 1 文件。 需要包含 `--recursive` 选项以传输 @no__t 目录中的所有文件。
+在此示例中，AzCopy 传输 `C:\myDirectory\photos` 目录和 `C:\myDirectory\documents\myFile.txt` 文件。 需要包含 `--recursive` 选项以传输 `C:\myDirectory\photos` 目录中的所有文件。
 
-还可以通过使用 `--exclude-path` 选项排除文件。 若要了解详细信息，请参阅[azcopy 复制](storage-ref-azcopy-copy.md)参考文档。
+你还可以使用 "`--exclude-path`" 选项排除文件。 若要了解详细信息，请参阅[azcopy 复制](storage-ref-azcopy-copy.md)参考文档。
 
 
 #### <a name="use-wildcard-characters"></a>使用通配符
@@ -133,9 +133,9 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户之间复制数�
 | **示例** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
 | **示例**（分层命名空间） | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
 
-还可以通过使用 `--exclude-pattern` 选项排除文件。 若要了解详细信息，请参阅[azcopy 复制](storage-ref-azcopy-copy.md)参考文档。
+你还可以使用 "`--exclude-pattern`" 选项排除文件。 若要了解详细信息，请参阅[azcopy 复制](storage-ref-azcopy-copy.md)参考文档。
 
-@No__t-0 和 @no__t 1 选项仅适用于文件名，而不适用于路径。  如果要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 以获取所有文本文件。
+@No__t_0 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  如果要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 以获取所有文本文件。
 
 ## <a name="download-files"></a>下载文件
 
@@ -150,7 +150,7 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户之间复制数�
 > * 下载特定文件
 
 > [!NOTE]
-> 如果 blob 的 `Content-md5` 属性值包含哈希，则 AzCopy 将计算已下载数据的 MD5 哈希，并验证存储在 blob 的 @no__t 属性中的 MD5 哈希是否与计算所得的哈希匹配。 如果这些值不匹配，则下载将失败，除非通过将 `--check-md5=NoCheck` 或 `--check-md5=LogOnly` 追加到复制命令来重写此行为。
+> 如果 blob 的 `Content-md5` 属性值包含哈希，则 AzCopy 将计算已下载数据的 MD5 哈希，并验证存储在 blob 的 `Content-md5` 属性中的 MD5 哈希是否与计算的哈希匹配。 如果这些值不匹配，则下载将失败，除非通过将 `--check-md5=NoCheck` 或 `--check-md5=LogOnly` 追加到复制命令来重写此行为。
 
 有关详细的参考文档，请参阅[azcopy copy](storage-ref-azcopy-copy.md)。
 
@@ -201,9 +201,9 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户之间复制数�
 | **示例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
 | **示例**（分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt'--recursive` |
 
-在此示例中，AzCopy 传输 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` 目录和 @no__t 1 文件。 需要包含 `--recursive` 选项以传输 @no__t 目录中的所有文件。
+在此示例中，AzCopy 传输 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` 目录和 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt` 文件。 需要包含 `--recursive` 选项以传输 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` 目录中的所有文件。
 
-还可以通过使用 `--exclude-path` 选项排除文件。 若要了解详细信息，请参阅[azcopy 复制](storage-ref-azcopy-copy.md)参考文档。
+你还可以使用 "`--exclude-path`" 选项排除文件。 若要了解详细信息，请参阅[azcopy 复制](storage-ref-azcopy-copy.md)参考文档。
 
 #### <a name="use-wildcard-characters"></a>使用通配符
 
@@ -215,9 +215,9 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户之间复制数�
 | **示例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 | **示例**（分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 
-还可以通过使用 `--exclude-pattern` 选项排除文件。 若要了解详细信息，请参阅[azcopy 复制](storage-ref-azcopy-copy.md)参考文档。
+你还可以使用 "`--exclude-pattern`" 选项排除文件。 若要了解详细信息，请参阅[azcopy 复制](storage-ref-azcopy-copy.md)参考文档。
 
-@No__t-0 和 @no__t 1 选项仅适用于文件名，而不适用于路径。  如果要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 以获取所有文本文件。
+@No__t_0 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  如果要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 以获取所有文本文件。
 
 ## <a name="copy-blobs-between-storage-accounts"></a>在存储帐户之间复制 blob
 
@@ -230,7 +230,7 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 >
 > - 仅支持没有分层命名空间的帐户。
 > - 必须向每个源 URL 追加一个 SAS 令牌。 如果使用 Azure Active Directory （AD）提供授权凭据，则只能从目标 URL 中省略 SAS 令牌。
->-  高级块 blob 存储帐户不支持访问层。 通过将 @no__t 设置为 `false` （例如： `--s2s-preserve-access-tier=false`），从复制操作中省略 blob 的访问层。
+>-  高级块 blob 存储帐户不支持访问层。 通过将 `s2s-preserve-access-tier` 设置为 `false` （例如： `--s2s-preserve-access-tier=false`），从复制操作中省略 blob 的访问层。
 
 本部分包含以下示例：
 
@@ -272,12 +272,12 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 
 ## <a name="synchronize-files"></a>同步文件
 
-你可以使用 blob 容器同步本地文件系统的内容。 同步是单向的。 换句话说，您可以选择这两个终结点中的哪一个是源，哪一个是目标。 同步还使用服务器到服务器 Api。
+你可以使用 blob 容器同步本地文件系统的内容。 你还可以将容器和虚拟目录彼此同步。 同步是单向的。 换句话说，您可以选择这两个终结点中的哪一个是源，哪一个是目标。 同步还使用服务器到服务器 Api。
 
 > [!NOTE]
 > 目前，只有没有分层命名空间的帐户才支持此方案。 当前版本的 AzCopy 不在其他源和目标之间同步（例如：文件存储或 Amazon Web Services （AWS） S3 存储桶）。
 
-[Sync](storage-ref-azcopy-sync.md)命令比较文件名和上次修改时间戳。 将 `--delete-destination` 可选标志设置为值为 `true` 或 `prompt`，以便在目标目录中删除文件时删除目标目录中的文件。
+[Sync](storage-ref-azcopy-sync.md)命令比较文件名和上次修改时间戳。 将 `--delete-destination` 可选标志设置为 `true` 或 `prompt` 的值，以便在目标目录中删除文件时删除这些文件。
 
 如果将 `--delete-destination` 标志设置为 `true` AzCopy 将删除文件而不提供提示。 如果希望在 AzCopy 删除文件之前出现提示，请将 `--delete-destination` 标志设置为 `prompt`。
 
@@ -305,13 +305,31 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 | **示例** | `azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myDirectory' --recursive` |
 |
 
+### <a name="update-a-container-with-changes-in-another-container"></a>使用其他容器中的更改更新容器
+
+此命令中显示的第一个容器为源。 第二个是目标。
+
+|    |     |
+|--------|-----------|
+| **语法** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
+| **示例** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
+
+### <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>使用对其他文件共享中的目录的更改更新目录
+
+此命令中显示的第一个目录是源。 第二个是目标。
+
+|    |     |
+|--------|-----------|
+| **语法** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive` |
+| **示例** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive` |
+
 ## <a name="next-steps"></a>后续步骤
 
 在以下文章中查找更多示例：
 
 - [AzCopy 入门](storage-use-azcopy-v10.md)
 
-- [教程：使用 AzCopy @ no__t 将本地数据迁移到云存储
+- [教程：使用 AzCopy 将本地数据迁移到云存储](storage-use-azcopy-migrate-on-premises-data.md)
 
 - [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
 

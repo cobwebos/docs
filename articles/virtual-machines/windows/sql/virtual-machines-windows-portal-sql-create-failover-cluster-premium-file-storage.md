@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 39f04005776f3b451ad7c64c76f9aa5d8c4a7768
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: HT
+ms.openlocfilehash: b281344084cb558ab490e9e3c24774311ede7866
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330086"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529436"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置具有高级文件共享的 SQL Server 故障转移群集实例
 
@@ -45,7 +45,7 @@ ms.locfileid: "72330086"
 - [Azure 资源组](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> 目前，仅支持将 Azure 虚拟机上的故障转移群集实例 SQL Server [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)的[轻型](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider)管理模式。 从参与故障转移群集的 Vm 中卸载完全扩展，然后将其注册到 `lightweight` 模式下的 SQL VM 资源提供程序。 完整扩展支持诸如自动备份、修补和高级门户管理之类的功能。 在轻型管理模式下重新安装代理后，这些功能对 SQL Vm 不起作用。
+> 目前，仅支持将 Azure 虚拟机上的故障转移群集实例 SQL Server [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)的[轻型](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider)管理模式。 若要从完全扩展模式更改为轻型，请删除 correspinding Vm 的 "SQL 虚拟机" 资源，然后在 `lightweight` 模式下将其注册到 SQL VM 资源提供程序。 当使用 Azure 门户删除 "SQL 虚拟机" 资源时，请确保取消选择实际的虚拟机。 完整扩展支持诸如自动备份、修补和高级门户管理之类的功能。 在轻型管理模式下重新安装代理后，这些功能对 SQL Vm 不起作用。
 
 ### <a name="workload-consideration"></a>工作负荷注意事项
 
@@ -344,8 +344,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
    参阅下图：
 
    ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)
-
-   ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)
+   
 
 ### <a name="configure-the-load-balancer-backend-pool"></a>配置负载均衡器后端池
 
@@ -416,7 +415,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
    - `<Cluster Network Name>`：Windows Server 故障转移群集的网络名称。 在“故障转移群集管理器” > “网络”中，右键单击网络，然后单击“属性”。 正确的值位于“常规”选项卡的“名称”下。 
 
-   - `<SQL Server FCI IP Address Resource Name>`：SQL Server FCI IP 地址资源名称。 在**故障转移群集管理器**@no__t SQL Server "**角色**" 下的 "服务器名称" 下，右键单击 "**服务器名称**" 下的 "IP 地址" 资源，然后单击 "**属性**"。 正确的值位于“常规”选项卡的“名称”下。 
+   - `<SQL Server FCI IP Address Resource Name>`：SQL Server FCI IP 地址资源名称。 在**故障转移群集管理器** >  SQL Server "**角色**" 下的 "服务器名称" 下，右键单击 "**服务器名称**" 下的 "IP 地址" 资源，然后单击 "**属性**"。 正确的值位于“常规”选项卡的“名称”下。 
 
    - `<ILBIP>`：ILB IP 地址。 在 Azure 门户中将此地址配置为 ILB 前端地址。 这也是 SQL Server FCI IP 地址。 可在“故障转移群集管理器”中找到该地址，它与 `<SQL Server FCI IP Address Resource Name>` 位于同一属性页。  
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 192d1a7b3bb10395aa662a4b915fe0189b1306b5
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: f7e264be9a02514972f9c9702adec8fa55a157bd
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434034"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529377"
 ---
 # <a name="use-ai-to-understand-blob-data"></a>使用 AI 了解 Blob 数据
 
@@ -40,7 +40,7 @@ AI 扩充创建作为文本捕获的新信息，并将其存储在字段中。 �
 
 介于之间为管道体系结构本身。 管道基于*索引器*功能，可以为其分配*技能组合*，该功能由提供 AI 的一项或多项*技能*组成。 管道的用途是生成*丰富的文档*，这些文档输入作为原始内容，但通过管道移动时选取其他结构、上下文和信息。 在编制索引期间，会使用已扩充的文档，以创建要在全文搜索或探索和分析中使用的反转索引和其他结构。
 
-## <a name="start-with-services-and-data"></a>从服务和数据开始
+## <a name="start-with-services"></a>从服务开始
 
 需要 Azure 搜索和 Azure Blob 存储。 在 Blob 存储中，需要一个提供源内容的容器。
 

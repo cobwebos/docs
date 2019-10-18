@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
 ms.openlocfilehash: fc0b447630b5e1ac360b1d84869cea02186672fc
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 10/17/2019
 ms.locfileid: "71036623"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>在应用程序中嵌入视频索引器小组件
@@ -29,36 +29,36 @@ ms.locfileid: "71036623"
 
 认知见解小组件包括从视频索引过程中提取的所有视觉对象。 认知见解小组件支持以下可选 URL 参数。
 
-|姓名|定义|描述|
+|名称|定义|描述|
 |---|---|---|
-|`widgets`|用逗号分隔的字符串|允许您控制要呈现的见解。 <br/> 示例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`仅呈现人员和品牌 UI 见解。<br/>可用选项：people、keywords、annotations、brands、sentiments、transcript、search。<br/>请注意， `widgets`在版本2中不支持 URL 参数。<br/>|
-|`locale`|短语言代码|控制 insights 语言。 默认值为 `en`。 <br/> 例如：`locale=de`。|
-|`tab`|默认选定的选项卡|控制默认呈现的 "**见解**" 选项卡。 <br/> 示例： `tab=timeline`在选择 "**时间线**" 选项卡的情况上呈现见解。|
+|`widgets`|用逗号分隔的字符串|允许您控制要呈现的见解。 <br/> 示例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` 仅呈现人员和品牌 UI 见解。<br/>可用选项：people、keywords、annotations、brands、sentiments、transcript、search。<br/>请注意，在版本2中不支持 `widgets` URL 参数。<br/>|
+|`locale`|短语言代码|控制 insights 语言。 默认值为 `en`。 <br/> 示例：`locale=de`。|
+|`tab`|默认选定的选项卡|控制默认呈现的 "**见解**" 选项卡。 <br/> 示例： `tab=timeline` 在选中 "**时间线**" 选项卡的情况中呈现见解。|
 
 ### <a name="player-widget"></a>播放器小组件
 
 可使用播放机小组件通过自适应比特率流式传输视频。 播放机小组件支持以下可选 URL 参数。
 
-|姓名|定义|描述|
+|名称|定义|描述|
 |---|---|---|
-|`t`|开始时间（秒）|使播放机从指定的时间点开始播放。<br/> 例如：`t=60`。|
-|`captions`|语言代码|在加载小组件时提取指定语言的标题，在 "**标题**" 菜单中可用。<br/> 例如：`captions=en-US`。|
-|`showCaptions`|布尔值|使播放器与已启用的字幕一起加载。<br/> 例如：`showCaptions=true`。|
-|`type`||激活音频播放器外观（视频部分被删除）。<br/> 例如：`type=audio`。|
-|`autoplay`|布尔值|指示播放机是否应在加载时开始播放视频。 默认值为 `true`。<br/> 例如：`autoplay=false`。|
-|`language`|语言代码|控制播放器语言。 默认值为 `en-US`。<br/>例如：`language=de-DE`。|
+|`t`|开始时间（秒）|使播放机从指定的时间点开始播放。<br/> 示例：`t=60`。|
+|`captions`|语言代码|在加载小组件时提取指定语言的标题，在 "**标题**" 菜单中可用。<br/> 示例：`captions=en-US`。|
+|`showCaptions`|布尔值|使播放器与已启用的字幕一起加载。<br/> 示例：`showCaptions=true`。|
+|`type`||激活音频播放器外观（视频部分被删除）。<br/> 示例：`type=audio`。|
+|`autoplay`|布尔值|指示播放机是否应在加载时开始播放视频。 默认值为 `true`。<br/> 示例：`autoplay=false`。|
+|`language`|语言代码|控制播放器语言。 默认值为 `en-US`。<br/>示例：`language=de-DE`。|
 
 ### <a name="editor-widget"></a>编辑器小组件
 
 您可以使用编辑器小组件来创建新项目并管理视频见解。 编辑器小组件支持以下可选 URL 参数。
 
-|姓名|定义|描述|
+|名称|定义|描述|
 |---|---|---|
-|`accessToken`<sup>*</sup>|String|提供对仅用于嵌入小组件的帐户的视频的访问。<br> 编辑器小组件要求`accessToken`参数。|
-|`language`|语言代码|控制播放器语言。 默认值为 `en-US`。<br/>例如：`language=de-DE`。|
-|`locale`|短语言代码|控制 insights 语言。 默认值为 `en`。<br/>例如：`language=de`。|
+|`accessToken`<sup>*</sup>|字符串|提供对仅用于嵌入小组件的帐户的视频的访问。<br> 编辑器小组件需要 `accessToken` 参数。|
+|`language`|语言代码|控制播放器语言。 默认值为 `en-US`。<br/>示例：`language=de-DE`。|
+|`locale`|短语言代码|控制 insights 语言。 默认值为 `en`。<br/>示例：`language=de`。|
 
-<sup>*</sup>所有者应小心提供`accessToken` 。
+<sup>*</sup>所有者应提供 `accessToken`。
 
 ## <a name="embedding-public-content"></a>嵌入公共内容
 
@@ -76,7 +76,7 @@ ms.locfileid: "71036623"
     ![小组件](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
 
 > [!NOTE]
-> 如果在共享视频 url 时遇到问题，请将`location`参数添加到链接中。 应将参数设置为[视频索引器所在的 Azure 区域](regions.md)。 例如：`https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`。
+> 如果在共享视频 Url 时遇到问题，请将 `location` 参数添加到该链接。 应将参数设置为[视频索引器所在的 Azure 区域](regions.md)。 例如：`https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`。
 
 ## <a name="embedding-private-content"></a>嵌入专用内容
 
@@ -88,7 +88,7 @@ ms.locfileid: "71036623"
 - [获取 Insights 小组件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget)API。<br/>
 - [获取视频访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?)。 将其作为查询参数添加到 URL。 指定此 URL 作为 iframe 的**src**值，如前面所示。
 
-若要在嵌入的小组件中提供编辑见解功能，必须传递包含编辑权限的访问令牌。 使用 "[获取 Insights 小组件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget)" 或 " `&allowEdit=true`[获取视频访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?)"。 
+若要在嵌入的小组件中提供编辑见解功能，必须传递包含编辑权限的访问令牌。 使用 "[获取 Insights 小组件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget)" 或 "[获取视频访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?)" `&allowEdit=true`。 
 
 ## <a name="widgets-interaction"></a>小组件交互
 
@@ -235,7 +235,7 @@ ms.locfileid: "71036623"
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`
 
-iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<YourTitle>` 即可。 （它自定义 HTML \<标题 > 值）。
+iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<YourTitle>` 即可。 （它自定义 HTML \<title > 值）。
     
 例如，如果需要为 iframe 窗口提供标题“MyInsights”，则 URL 将如下所示：
 
@@ -253,16 +253,16 @@ iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<You
 
 默认情况下，视频索引器播放器具有自动生成的隐藏式字幕，它们基于视频记录。 此脚本是从视频中提取的，其中包含上传视频时选择的源语言。
 
-如果要使用其他语言嵌入，可以将添加`&captions=< Language | ”all” | “false” >`到嵌入播放机 URL。 如果需要所有可用语言标题中的标题，请使用值`all`。 如果需要默认显示字幕，则可传递 `&showCaptions=true`。
+如果要使用其他语言嵌入，可以将 `&captions=< Language | ”all” | “false” >` 添加到嵌入播放机 URL。 如果需要所有可用语言标题中的标题，请使用值 `all`。 如果需要默认显示字幕，则可传递 `&showCaptions=true`。
 
 然后，嵌入 URL 将如下所示： 
 
 `https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian`
 
-如果要禁用标题，可以将`captions`参数值作为`false`传递。
+若要禁用标题，可以将 `captions` 参数值作为 `false` 传递。
 
 #### <a name="autoplay"></a>功能
-默认情况下，播放机将开始播放视频。 您可以选择不传递`&autoplay=false`到前面的嵌入 URL。
+默认情况下，播放机将开始播放视频。 你可以选择不通过将 `&autoplay=false` 传递到前面的嵌入 URL。
 
 ## <a name="next-steps"></a>后续步骤
 

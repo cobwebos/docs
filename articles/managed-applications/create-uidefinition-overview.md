@@ -1,5 +1,5 @@
 ---
-title: CreateUiDefinition Azure 托管应用程序的创建体验 |Microsoft Docs
+title: CreateUiDefinition-Azure 托管应用程序
 description: 描述如何为 Azure 门户创建用户界面定义。 定义 Azure 托管应用程序时使用。
 services: managed-applications
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7177b9513a1e51bc24672a69935a0e9430292537
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: HT
+ms.openlocfilehash: 9009d6a54c27617dd0d1d53369405555becde59d
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332707"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529331"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition Azure 托管应用程序的创建体验
 
@@ -46,7 +46,7 @@ CreateUiDefinition 始终包含三个属性：
 * 版本
 * 参数
 
-处理程序应始终 `Microsoft.Azure.CreateUIDef`，并且最新支持的版本 @no__t 为-1。
+应始终 `Microsoft.Azure.CreateUIDef` 处理程序，并且 `0.1.2-preview` 最新的受支持版本。
 
 parameters 属性的架构取决于所指定的 handler 和 version 的组合。 对于托管应用程序，支持的属性为 `basics`、`steps` 和 `outputs`。 basics 和 steps 属性包含要在 Azure 门户中显示的[元素](create-uidefinition-elements.md)，例如文本框和下拉列表。 outputs 属性用来将指定元素的输出值映射到 Azure 资源管理器部署模板的参数。
 

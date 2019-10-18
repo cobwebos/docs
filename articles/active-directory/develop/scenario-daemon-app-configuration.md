@@ -1,6 +1,6 @@
 ---
-title: 调用 Web API 的守护程序应用（应用配置）- Microsoft 标识平台
-description: 了解如何构建调用 Web API 的守护程序应用（应用配置）
+title: 后台应用程序调用 web Api （应用配置）-Microsoft 标识平台
+description: 了解如何生成可调用 web Api 的后台程序应用（应用配置）
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,41 +16,41 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 394137a1b7901a3272e36f6a6d74944b87f30082
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 76337c471a4032f879bee8382b2d958f6600671e
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056484"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527066"
 ---
-# <a name="daemon-app-that-calls-web-apis---code-configuration"></a>调用 Web API 的守护程序应用 - 代码配置
+# <a name="daemon-app-that-calls-web-apis---code-configuration"></a>用于调用 web Api 的后台应用程序-代码配置
 
-了解如何为调用 Web API 的守护程序应用程序配置代码。
+了解如何为后台应用程序配置调用 web Api 的代码。
 
-## <a name="msal-libraries-supporting-daemon-apps"></a>支持守护程序应用的 MSAL 库
+## <a name="msal-libraries-supporting-daemon-apps"></a>支持后台应用程序的 MSAL 库
 
-支持守护程序应用的 Microsoft 库包括：
+支持后台程序应用的 Microsoft 库包括：
 
   MSAL 库 | 描述
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持用于构建守护程序应用程序的平台为 .NET Framework 和 .NET Core 平台（不包括 UWP、Xamarin.iOS 和 Xamarin.Android，因为这些平台用于构建公共客户端应用程序）
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL.Python | 开发中 -目前为公共预览版
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL.Java | 正在进行开发 - 采用公共预览版
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持构建后台应用程序的平台是 .NET Framework 和 .NET Core 平台（而不是 UWP、Xamarin 和 Xamarin，因为这些平台用于构建公共客户端应用程序）
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL.Python | 正在进行开发-公开预览版
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL..Java | 正在进行开发-公开预览版
 
-## <a name="configuration-of-the-authority"></a>配置颁发机构
+## <a name="configuration-of-the-authority"></a>颁发机构的配置
 
-考虑到后台应用程序不使用委派的权限, 但应用程序权限, 其*支持的帐户类型*不能是*任何组织目录和个人 Microsoft 帐户中的帐户 (例如, Skype、Xbox、Outlook.com)* 。 事实上, 没有任何租户管理员向适用于 Microsoft 个人帐户的后台应用程序授予许可。 你需要选择组织中的*帐户*或*任何组织中的帐户*。
+考虑到后台应用程序不使用委派的权限，但应用程序权限，其*支持的帐户类型*不能是*任何组织目录和个人 Microsoft 帐户中的帐户（例如，Skype、Xbox、Outlook.com）* 。 事实上，没有任何租户管理员向适用于 Microsoft 个人帐户的后台应用程序授予许可。 你需要选择组织中的*帐户*或*任何组织中的帐户*。
 
-因此, 应用程序配置中指定的颁发机构应为 "租户" (指定租户 ID 或与组织关联的域名)。
+因此，应用程序配置中指定的颁发机构应为 "租户" （指定租户 ID 或与组织关联的域名）。
 
-如果你是 ISV 并希望提供多租户工具，则可使用 `organizations`。 但请记住，你还需向客户说明如何授予管理员同意。 有关详细信息，请参阅[请求整个租户的许可](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。 目前，MSAL： `organizations`仅当客户端凭据为应用程序机密（而不是证书）时才允许使用。
+如果你是 ISV 并想要提供多租户工具，则可以使用 `organizations`。 但请记住，你还需要向客户说明如何授予管理员同意。 有关详细信息，请参阅[请求整个租户的同意](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。 目前 MSAL：仅当客户端凭据为应用程序机密（而不是证书）时，才允许使用 `organizations`。
 
 ## <a name="application-configuration-and-instantiation"></a>应用程序配置和实例化
 
-在 MSAL 库中，客户端凭据（机密或证书）是作为机密客户端应用程序构造的参数传递的。
+在 MSAL 库中，客户端凭据（机密或证书）作为机密客户端应用程序构造的参数进行传递。
 
 > [!IMPORTANT]
-> 即使应用程序是作为服务运行的控制台应用程序，如果它是守护程序应用程序，则也需要是机密客户端应用程序。
+> 即使你的应用程序是运行为服务的控制台应用程序，如果该应用程序是后台应用程序，则它需要是机密的客户端应用程序。
 
 ### <a name="configuration-file"></a>配置文件
 
@@ -103,7 +103,7 @@ ms.locfileid: "71056484"
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-下面是 msal4j 开发示例中用于配置示例的类：[TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
+下面是 msal4j 开发示例中用于配置示例的类： [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
 
 ```Java
 public class TestData {
@@ -126,14 +126,14 @@ public class TestData {
 - 添加、引用或导入 MSAL 包（具体取决于语言）
 - 然后，根据你使用的是客户端机密还是证书（或作为高级方案，有符号断言），构造将有所不同
 
-此守护程序应用程序将由 `IConfidentialClientApplication` 呈现
+守护程序应用程序将由 `IConfidentialClientApplication`
 
 #### <a name="reference-the-package"></a>引用包
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-向应用程序添加 [Microsoft.IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet 包。
-在 MSAL.NET 中，机密客户端应用程序由`IConfidentialClientApplication`接口表示。
+将[IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet 包添加到应用程序。
+在 MSAL.NET 中，机密客户端应用程序由 `IConfidentialClientApplication` 接口表示。
 在源代码中使用 MSAL.NET 命名空间
 
 ```CSharp
@@ -200,7 +200,7 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
 
 #### <a name="instantiate-the-confidential-client-application-with-client-certificate"></a>实例化包含客户端证书的机密客户端应用程序
 
-下面的代码演示如何使用证书来生成应用程序：
+下面是用证书构建应用程序的代码：
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -269,7 +269,7 @@ MSAL.NET 提供了两种方法来向机密客户端应用提供签名断言：
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-使用`WithClientAssertion`时，需要提供已签名的 JWT。 [客户端断言](msal-net-client-assertions.md)详细介绍了这一高级方案
+使用 `WithClientAssertion` 时，需要提供已签名的 JWT。 [客户端断言](msal-net-client-assertions.md)详细介绍了这一高级方案
 
 ```CSharp
 string signedClientAssertion = ComputeAssertion();
@@ -278,7 +278,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-使用`WithClientClaims`时，MSAL.NET 会自行计算一个签名断言，其中包含 Azure AD 以及要发送的附加客户端声明所需的声明。
+使用 `WithClientClaims` 时，MSAL.NET 会将其自身计算为包含 Azure AD 所需的声明以及要发送的其他客户端声明的签名断言。
 下面是有关如何执行此操作的代码片段：
 
 ```CSharp
@@ -295,7 +295,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-在 MSAL Python 中，你可以使用将由此`ConfidentialClientApplication`私钥签名的声明提供客户端声明。
+在 MSAL Python 中，你可以使用将由此 `ConfidentialClientApplication` 的私钥签名的声明提供客户端声明。
 
 ```Python
 config = json.load(open(sys.argv[1]))
@@ -321,5 +321,19 @@ msal4j 是公开预览版。 尚不支持签名断言
 
 ## <a name="next-steps"></a>后续步骤
 
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+
 > [!div class="nextstepaction"]
-> [守护程序应用 - 获取应用的令牌](./scenario-daemon-acquire-token.md)
+> [后台应用程序-正在获取应用程序的令牌](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=dotnet)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [后台应用程序-正在获取应用程序的令牌](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=python)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [后台应用程序-正在获取应用程序的令牌](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=java)
+
+---

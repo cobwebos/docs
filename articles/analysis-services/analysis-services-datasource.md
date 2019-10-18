@@ -4,15 +4,15 @@ description: 介绍 Azure Analysis Services 中数据模型支持的数据源。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 79346f0bf80386fb83f55daccda8790652ff8541
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c6043d9e18c364073ad1ea46e26335577e0ec3b2
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298634"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512460"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -24,16 +24,16 @@ ms.locfileid: "72298634"
 |---------|---------|---------|
 |Azure SQL 数据库<sup>[2](#azsqlmanaged)</sup>     |   是      |    是      |
 |Azure SQL 数据仓库     |   是      |   是       |
-|Azure Blob 存储<sup>[1](#tab1400a)</sup>     |   是       |    否      |
-|Azure 表存储<sup>[1](#tab1400a)</sup>    |   是       |    否      |
-|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  是        |  否        |
-|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   是       |    否      |
-|Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     是     |   否       |
-|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   是       |   否       |
+|Azure Blob 存储<sup>[1](#tab1400a)</sup>     |   是       |    No      |
+|Azure 表存储<sup>[1](#tab1400a)</sup>    |   是       |    No      |
+|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  是        |  No        |
+|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   是       |    No      |
+|Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     是     |   No       |
+|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   是       |   No       |
 ||||
 
 <a name="tab1400a">1</a> - 仅限表格 1400 和更高模型。   
-<a name="azsqlmanaged">2</a> - 支持 Azure SQL 数据库托管实例。 由于托管实例使用专用 IP 地址在 Azure VNet 中运行，因此必须在实例上启用公共终结点。 如果未启用，则需要本地数据网关。    
+<a name="azsqlmanaged">2</a> - 支持 Azure SQL 数据库托管实例。 由于托管实例在使用专用 IP 地址的 Azure VNet 中运行，因此必须在实例上启用公共终结点。 如果未启用，则需要本地数据网关。    
 <a name="databricks">3</a> - 目前不支持使用 Spark 连接器的 Azure Databricks。   
 <a name="gen2">4</a> - 目前不支持 ADLS Gen2。
 
@@ -51,7 +51,7 @@ ms.locfileid: "72298634"
 |  --- | --- | --- |
 | SQL Server |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据提供程序 |
 | SQL Server 数据仓库 |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据提供程序 |
-| Oracle | 用于 Oracle 的 OLE DB 提供程序、用于 .NET 的 Oracle 数据提供程序 |用于 .Net 的 Oracle 数据提供程序 |
+| Oracle | 适用于 Oracle 的 OLE DB 提供程序、用于 .NET 的 Oracle 数据提供程序 |用于 .Net 的 Oracle 数据提供程序 |
 | Teradata |用于 Teradata 的 OLE DB 提供程序、用于 .NET 的 Teradata 数据提供程序 |用于 .Net 的 Teradata 数据提供程序 |
 | | | |
 
@@ -80,18 +80,18 @@ ms.locfileid: "72298634"
 |Salesforce 报表<sup>[1](#tab1400b)</sup> |
 |SAP HANA<sup>[1](#tab1400b)</sup>    |  
 |SAP Business Warehouse<sup>[1](#tab1400b)</sup>    |  
-|SharePoint 列表<sup>[1](#tab1400b)</sup>、<sup>[2](#filesSP)</sup>     |   
+|SharePoint 列表<sup>[1](#tab1400b)</sup>、 <sup>[2](#filesSP)</sup>     |   
 |Sybase 数据库     |  
 |TXT 文件  |
 |XML 表<sup>[1](#tab1400b)</sup>    |  
 ||
  
 <a name="tab1400b">1</a> - 仅限表格 1400 和更高模型。   
-<a name="filesSP">2</a> - 不支持本地 SharePoint 中的文件。
+<a name="filesSP">2</a> -不支持本地 SharePoint 中的文件。
 
 ## <a name="specifying-a-different-provider"></a>指定不同的提供程序
 
-连接到某些数据源时，Azure Analysis Services 中的数据模型可能需要不同的数据提供程序。 在某些情况下，使用本机提供程序（如 SQL Server Native Client (SQLNCLI11)）连接到数据源的表格模型可能返回错误。 如果使用 SQLOLEDB 之外的本机提供程序，可能会看到错误消息：**未注册提供程序“SQLNCLI11.1”** 。 或者，在某个 DirectQuery 模型连接到本地数据源时，如果使用了本机提供程序，则可能会看到错误消息：**创建 OLE DB 行集时出错。“LIMIT”附近的语法不正确**。
+连接到某些数据源时，Azure Analysis Services 中的数据模型可能需要不同的数据提供程序。 在某些情况下，使用本机提供程序（如 SQL Server Native Client (SQLNCLI11)）连接到数据源的表格模型可能返回错误。 如果使用 SQLOLEDB 之外的本机提供程序，则可能会看到错误消息：**未注册提供程序“SQLNCLI11.1”** 。 或者，如果你有一个 DirectQuery 模型连接到本地数据源并且使用本机提供程序，则可能会看到错误消息：**创建 OLE DB 行集时出错。"LIMIT" 附近有语法错误**。
 
 将本地 SQL Server Analysis Services 表格模型迁移到 Azure Analysis Services 时，可能需要更改提供程序。
 

@@ -1,6 +1,6 @@
 ---
 title: 如何使用用于 VM 的 Azure Monitor（预览版）查看应用依赖项 | Microsoft Docs
-description: 映射是 Vm 的 Azure Monitor 的一项功能。 它会自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文提供有关如何在各种方案中使用的映射功能的详细信息。
+description: Map 是用于 VM 的 Azure Monitor 的一项功能。 它会自动发现 Windows 和 Linux 系统上的应用程序组件，并映射服务之间的通信。 本文提供了有关如何在各种情况下使用地图功能的详细信息。
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -11,133 +11,134 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/09/2019
+ms.date: 10/15/2019
 ms.author: magoedte
-ms.openlocfilehash: f6273e9b6c7ed0c4685479976343497f01201b0b
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
-ms.translationtype: MT
+ms.openlocfilehash: 456ed0a48db015d3c95827942a576e6916095131
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206765"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515437"
 ---
-# <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>为 Vm （预览版） 使用 Azure Monitor 的映射功能来了解应用程序组件
-在 Azure 监视器中的 Vm，可以查看发现的应用程序组件，在 Windows 和 Linux 虚拟机 (Vm) 在 Azure 或你的环境中运行。 您可以观察两种方法中的虚拟机。 查看映射直接从 VM 或查看从 Azure Monitor 来查看组件间的 Vm 组的映射。 本文将帮助你了解这两个查看方法以及如何使用地图功能。 
+# <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>使用用于 VM 的 Azure Monitor （预览版）的地图功能了解应用程序组件
+在用于 VM 的 Azure Monitor 中，可以查看在 Azure 或环境中运行的 Windows 和 Linux 虚拟机（Vm）上发现的应用程序组件。 可以通过两种方式观察 Vm。 直接从 VM 查看地图，或从 Azure Monitor 查看地图，查看跨 Vm 组的组件。 本文将帮助你了解这两种查看方法，以及如何使用地图功能。 
 
-有关配置用于 VM 的 Azure Monitor 的信息，请参阅[启用用于 VM 的 Azure Monitor](vminsights-enable-overview.md)。
+有关配置适用于 VM 的 Azure Monitor 的信息，请参阅[启用适用于 VM 的 Azure Monitor](vminsights-enable-overview.md)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="introduction-to-the-map-experience"></a>地图体验简介
-在开始编写地图体验之前, 应该了解如何显示和直观显示信息。 无论是直接从 VM 或 Azure Monitor，请选择映射功能，映射功能提供了一致的体验。 唯一的区别是通过 Azure Monitor，一个代码图显示的多层应用程序或群集的所有成员。
+在深入探讨地图体验之前，您应该了解它如何呈现和可视化信息。 无论是直接从 VM 选择地图功能还是从 Azure Monitor 中选择地图功能，地图功能都可以提供一致的体验。 唯一的区别是，从 Azure Monitor 中，一个映射显示多层应用程序或群集的所有成员。
 
-地图功能通过发现正在运行的进程具有直观显示 VM 依赖项： 
+映射功能通过发现正在运行的进程来直观显示 VM 依赖项： 
 
-- 活动的网络服务器之间的连接。
+- 服务器之间的活动网络连接。
 - 入站和出站连接延迟。
-- 跨任何 TCP 连接的体系结构指定的时间范围内的端口。  
+- 在指定时间范围内跨任何 TCP 连接的体系结构的端口。  
  
-展开以显示进程详细信息和与 VM 通信的进程的 VM。 客户端组显示连接到 VM 的前端客户端的计数。 服务器端口组显示 VM 连接到后端服务器的计数。 展开要查看详细的列表，通过该端口连接的服务器的服务器端口组。  
+展开 VM 以显示进程详细信息，并且仅显示与 VM 通信的进程。 客户端组显示连接到 VM 的前端客户端的计数。 服务器端口组显示 VM 连接到的后端服务器的计数。 展开服务器端口组，查看通过该端口连接的服务器的详细列表。  
 
-当你选择的 VM，**属性**右侧窗格中的显示 VM 的属性。 属性包括系统信息报告的操作系统、 Azure VM 和圆环图，其中总结了已发现的连接的属性。 
+选择 VM 时，右侧的 "**属性**" 窗格将显示 vm 的属性。 属性包括操作系统报告的系统信息、Azure VM 的属性，以及汇总发现的连接的圆环图。 
 
-![属性窗格](./media/vminsights-maps/properties-pane-01.png)
+!["属性" 窗格](./media/vminsights-maps/properties-pane-01.png)
 
-在窗格的右侧，选择**日志事件**以显示 VM 已发送到 Azure Monitor 的数据的列表。 此数据是可用于查询。  选择要打开的任何记录类型**日志**页上，将出现该记录类型的结果。 您还看到筛选针对 VM 的预配置的查询。  
+在窗格的右侧，选择 "**日志事件**" 以显示 VM 发送到 Azure Monitor 的数据列表。 此数据可用于查询。  选择 "任何记录类型" 打开 "**日志**" 页，您可以在其中看到该记录类型的结果。 还会看到根据 VM 筛选的预配置查询。  
 
-![日志事件窗格](./media/vminsights-maps/properties-pane-logs-01.png)
+!["日志事件" 窗格](./media/vminsights-maps/properties-pane-logs-01.png)
 
-关闭**日志**页上，又回到**属性**窗格。 选择**警报**以查看 VM 运行状况条件的警报。 地图功能与 Azure 警报，可显示所选的时间范围内所选服务器的警报。 服务器将显示当前警报的图标和**机警报**窗格会列出警报。 
+关闭 "**日志**" 页并返回到 "**属性**" 窗格。 在其中，选择 "**警报**" 以查看 VM 运行状况-条件警报。 地图功能与 Azure 警报集成，以显示所选时间范围内所选服务器的警报。 服务器显示当前警报的图标，"**计算机警报**" 窗格会列出警报。 
 
-![警报窗格](./media/vminsights-maps/properties-pane-alerts-01.png)
+!["警报" 窗格](./media/vminsights-maps/properties-pane-alerts-01.png)
 
-若要使显示相关警报的映射功能，创建适用于特定计算机的警报规则：
+若要使地图功能显示相关警报，请创建适用于特定计算机的警报规则：
 
-- 按计算机包括组警报子句 (例如，**由 Computer interval 1minute**)。
-- 基本指标警报。
+- 包括子句以便按计算机对警报进行分组（例如，**按计算机时间间隔1分钟**）。
+- 基于指标的警报。
 
-有关 Azure 警报和创建警报规则的详细信息，请参阅[统一 Azure Monitor 中的警报](../../azure-monitor/platform/alerts-overview.md)。
+有关 Azure 警报和创建警报规则的详细信息，请参阅[Azure Monitor 中的统一警报](../../azure-monitor/platform/alerts-overview.md)。
 
-在右上角**图例**选项描述在代码图上的符号和角色。 要深入了解在您的映射和以移动该工具栏，在右下角中使用缩放控件。 可以设置的缩放级别，并适合映射到页的大小。  
+在右上角，**图例**选项描述了地图上的符号和角色。 若要深入了解地图并四处移动，请使用右下角的缩放控件。 可以设置缩放级别，并将地图调整到页面大小。  
 
 ## <a name="connection-metrics"></a>连接指标
-**连接**窗格显示所选连接从虚拟机的标准指标通过 TCP 端口。 指标包括响应时间、每分钟的请求数、流量吞吐量和链接。  
+"**连接**" 窗格显示通过 TCP 端口从 VM 选择的连接的标准指标。 指标包括响应时间、每分钟的请求数、流量吞吐量和链接。  
 
-![在连接窗格上的网络连接图表](./media/vminsights-maps/map-group-network-conn-pane-01.png)  
+!["连接" 窗格中的网络连接图](./media/vminsights-maps/map-group-network-conn-pane-01.png)  
 
 ### <a name="failed-connections"></a>失败的连接
-映射将显示有关进程和计算机的连接失败。 红色虚线指示客户端系统无法访问进程或端口。 对于使用依赖关系代理的系统，该代理报告的失败的连接尝试。 地图功能通过观察无法建立连接的 TCP 套接字监视进程。 此失败可能是因为防火墙，客户端或服务器或不可用的远程服务中的配置错误。
+该地图显示进程和计算机的失败连接。 红色虚线表示客户端系统无法访问进程或端口。 对于使用依赖关系代理的系统，代理会报告失败的连接尝试。 映射功能通过观察无法建立连接的 TCP 套接字来监视进程。 此失败的原因可能是防火墙、客户端或服务器中的配置错误或远程服务不可用。
 
-![在地图上失败的连接](./media/vminsights-maps/map-group-failed-connection-01.png)
+![地图上的连接失败](./media/vminsights-maps/map-group-failed-connection-01.png)
 
-了解失败的连接可以帮助您进行故障排除、 验证迁移、 分析安全性，并了解该服务的整体体系结构。 失败的连接有时无害，但它们通常指向问题。 例如，连接可能会失败或故障转移环境突然变得无法访问时两个应用程序层能云迁移后与彼此通信时。
+了解失败的连接可帮助进行故障排除，验证迁移，分析安全性，并了解服务的总体体系结构。 失败的连接有时会无害，但通常会指出问题。 例如，如果故障转移环境突然变为不可访问，或两个应用程序层在云迁移后无法相互通信，则连接可能会失败。
 
 ### <a name="client-groups"></a>客户端组
 在映射中，客户端组表示连接到映射的计算机的客户端计算机。 单个客户端组表示单个进程或计算机的客户端。
 
-![在地图上一个客户端组](./media/vminsights-maps/map-group-client-groups-01.png)
+![地图上的客户端组](./media/vminsights-maps/map-group-client-groups-01.png)
 
-若要查看受监视的客户端和客户端组中的系统的 IP 地址，选择的组。 下面显示的组的内容。  
+若要查看客户端组中系统的监视的客户端和 IP 地址，请选择该组。 组的内容如下所示。  
 
-![在地图上的 IP 地址的客户端组的列表](./media/vminsights-maps/map-group-client-group-iplist-01.png)
+![客户组在映射上的 IP 地址列表](./media/vminsights-maps/map-group-client-group-iplist-01.png)
 
-如果组包括监视和未受监视的客户端，则可以选择组的圆环图图表以筛选客户端的相应部分。
+如果组包括监视和未监视的客户端，则可以选择组的圆环图的相应部分来筛选客户端。
 
 ### <a name="server-port-groups"></a>服务器端口组
-服务器端口组表示具有的服务器上的端口的入站连接从映射的计算机。 组包含服务器端口，以及到该端口已连接的服务器数的计数。 选择要查看各个服务器和连接的组。 
+服务器端口组表示服务器上的端口，这些端口具有来自映射计算机的入站连接。 该组包含服务器端口，以及连接到该端口的服务器的数目。 选择组以查看各个服务器和连接。 
 
-![在地图上为服务器端口组](./media/vminsights-maps/map-group-server-port-groups-01.png)  
+![地图上的服务器端口组](./media/vminsights-maps/map-group-server-port-groups-01.png)  
 
-如果组中包含的监视和未受监视服务器，则可以选择组的圆环图以筛选在服务器的相应部分。
+如果组包括监视和未监视的服务器，您可以选择组的圆环图的相应部分来筛选服务器。
 
-## <a name="view-a-map-from-a-vm"></a>查看从 VM 的映射 
+## <a name="view-a-map-from-a-vm"></a>查看 VM 的地图 
 
-若要直接从 VM 的 vm 访问 Azure 监视器：
+直接从 VM 访问用于 VM 的 Azure Monitor：
 
-1. 在 Azure 门户中，选择“虚拟机”  。 
-2. 从列表中，选择 VM。 在中**监视**部分中，选择**Insights （预览版）** 。  
-3. 选择“映射”选项卡  。
+1. 在 Azure 门户中，选择“虚拟机”。 
+2. 从列表中选择一个 VM。 在 "**监视**" 部分，选择 "**见解（预览版）** "。  
+3. 选择“映射”选项卡。
 
-地图可视化 VM 的依赖项通过发现正在运行进程组和指定的时间范围内有活动网络连接的进程。  
+该地图通过发现在指定时间范围内具有活动的网络连接的运行中进程组和进程，直观显示 VM 的依赖关系。  
 
-默认情况下，映射显示最近 30 分钟。 如果想要查看依赖关系在过去，您可以查询历史时间范围的最多一小时。 若要运行查询，请使用**TimeRange**中左上角选择器。 例如，发生事件期间，或者若要查看更改前的状态，则可以运行查询。  
+默认情况下，映射显示最近 30 分钟。 如果要了解依赖关系在过去的情况，可以查询最多一小时的历史时间范围。 若要运行查询，请使用左上角的**TimeRange**选择器。 例如，你可以在事件期间运行查询，或在更改前查看状态。  
 
 ![直接 VM 映射概述](./media/vminsights-maps/map-direct-vm-01.png)
 
-## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>查看从虚拟机规模集的映射
+## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>从虚拟机规模集查看地图
 
-若要直接从虚拟机规模集的 Vm 访问 Azure 监视器：
+若要直接从虚拟机规模集访问用于 VM 的 Azure Monitor：
 
-1. 在 Azure 门户中，选择**虚拟机规模集**。
-2. 从列表中，选择 VM。 然后在**监视**部分中，选择**Insights （预览版）** 。  
-3. 选择“映射”选项卡  。
+1. 在 Azure 门户中，选择 "**虚拟机规模集**"。
+2. 从列表中选择一个 VM。 然后在 "**监视**" 部分，选择 "**见解（预览版）** "。  
+3. 选择“映射”选项卡。
 
-代码图直观显示规模集作为组的依赖项的组节点中的所有实例。 展开的节点中列出规模集中的实例。 您可以一次滚动浏览这些实例 10。 
+地图将规模集中的所有实例直观显示为组节点以及组的依赖项。 展开的节点会列出规模集中的实例。 你可以一次滚动这些实例10个。 
 
-若要加载特定实例的映射，首先选择该实例在地图上。 然后选择**省略号**右侧的按钮 （...），然后选择**加载服务器映射**。 在映射中显示，您将看到进程组和指定的时间范围内具有活动的网络连接的进程。 
+若要为特定实例加载映射，请先在映射上选择该实例。 然后选择右侧的**省略号**按钮（...），然后选择 "**加载服务器映射**"。 在显示的地图中，可以看到在指定时间范围内具有活动的网络连接的进程组和进程。 
 
-默认情况下，映射显示最近 30 分钟。 如果想要查看依赖关系在过去，您可以查询历史时间范围的最多一小时。 若要运行查询，请使用**TimeRange**选择器。 例如，发生事件期间，或者若要查看更改前的状态，则可以运行查询。
+默认情况下，映射显示最近 30 分钟。 如果要了解依赖关系在过去的情况，可以查询最多一小时的历史时间范围。 若要运行查询，请使用**TimeRange**选择器。 例如，你可以在事件期间运行查询，或在更改前查看状态。
 
 ![直接 VM 映射概述](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
->您还可以访问一个特定实例的映射**实例**为虚拟机规模集的视图。 在中**设置**部分中，转到**实例** > **Insights （预览版）** 。
+>你还可以从虚拟机规模集的**实例**视图访问特定实例的映射。 在 "**设置**" 部分中，参阅 "**实例** > **Insights （预览版）** "。
 
-## <a name="view-a-map-from-azure-monitor"></a>查看从 Azure Monitor 的映射
-在 Azure 监视器中，映射功能提供了你的 Vm 和它们的依赖项的全局视图。 若要访问 Azure Monitor 中的映射功能：
+## <a name="view-a-map-from-azure-monitor"></a>从 Azure Monitor 查看地图
 
-1. 在 Azure 门户中选择“监视”。  
-2. 在中**Insights**部分中，选择**虚拟机 （预览版）** 。
-3. 选择“映射”选项卡  。
+在 Azure Monitor 中，地图功能提供了 Vm 及其依赖项的全局视图。 若要访问中的映射功能 Azure Monitor：
 
-   ![多个 Vm 的 azure 监视器摘要图](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
+1. 在 Azure 门户中选择“监视”。 
+2. 在 "**见解**" 部分，选择 "**虚拟机（预览版）** "。
+3. 选择“映射”选项卡。
 
-通过选择一个工作区**工作区**在页面顶部的选择器。 如果有多个 Log Analytics 工作区，选择工作区的启用了该解决方案，并且已向其报告的 Vm。 
+   ![Azure Monitor 多个 Vm 的概述图](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
 
-**组**选择器返回订阅、 资源组[计算机组](../../azure-monitor/platform/computer-groups.md)，和的计算机与所选工作区相关的虚拟机规模集。 你的选择仅适用于映射功能，不会延续到性能或运行状况。
+使用页面顶部的**工作区**选择器选择工作区。 如果有多个 Log Analytics 工作区，请选择通过解决方案启用的工作区，并为其提供向其报告的 Vm。 
 
-默认情况下，映射显示最近 30 分钟。 如果想要查看依赖关系在过去，您可以查询历史时间范围的最多一小时。 若要运行查询，请使用**TimeRange**选择器。 例如，发生事件期间，或者若要查看更改前的状态，则可以运行查询。  
+**组**选择器将返回与所选工作区相关的订阅、资源组、[计算机组](../../azure-monitor/platform/computer-groups.md)和虚拟机规模集。 你的选择仅适用于地图功能，且不会执行性能或运行状况。
+
+默认情况下，映射显示最近 30 分钟。 如果要了解依赖关系在过去的情况，可以查询最多一小时的历史时间范围。 若要运行查询，请使用**TimeRange**选择器。 例如，你可以在事件期间运行查询，或在更改前查看状态。  
 
 ## <a name="next-steps"></a>后续步骤
-- 若要了解如何使用运行状况的功能，请参阅[查看 Azure VM 运行状况](vminsights-health.md)。 
-- 若要标识瓶颈，检查性能，并了解 Vm 的整体利用率，请参阅[Vm 的 Azure Monitor 来查看性能状态](vminsights-performance.md)。 
+
+若要确定瓶颈、查看性能并了解 Vm 的总体利用率，请参阅[查看用于 VM 的 Azure Monitor 的性能状态](vminsights-performance.md)。 

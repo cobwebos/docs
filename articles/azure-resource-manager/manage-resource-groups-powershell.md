@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 管理 Azure 资源管理器组 |Microsoft Docs
+title: 管理资源组-Azure PowerShell
 description: 使用 Azure PowerShell 通过 Azure 资源管理器管理资源组。 说明如何创建、列出和删除资源组。
 services: azure-resource-manager
 documentationcenter: ''
@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 1e057bc484a0b526927654fafa8f88ae4a5b4deb
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 5a9768a3c4f398b3c3f88e2321f6df1a1b6fc8b7
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390409"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532174"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure 资源管理器资源组
 
@@ -199,7 +199,7 @@ Export-AzResourceGroup `
 }
 ```
 
-如果在导出模板时使用 @no__t 参数，则不会在模板中包括资源名称的参数。 而是直接将资源名称设置为其当前值。 在部署过程中无法自定义该名称。
+如果在导出模板时使用 `-SkipResourceNameParameterization` 参数，则不会在模板中包括资源名称的参数。 而是直接将资源名称设置为其当前值。 在部署过程中无法自定义该名称。
 
 ```json
 "resources": [

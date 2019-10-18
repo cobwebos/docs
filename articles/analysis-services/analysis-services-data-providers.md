@@ -4,19 +4,19 @@ description: 介绍了客户端应用程序和工具连接 Azure Analysis Servic
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1ea14f141ed4fa698a21da8030878b04a81f1d08
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 89f8ffc58458ce75d1acd897f224f61bab9158b4
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298663"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512775"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>用于连接到 Azure Analysis Services 的客户端库
 
-客户端应用程序和工具连接到 Analysis Services 服务器时需要使用客户端库。 Microsoft 客户端应用程序（例如 Power BI Desktop、Excel、SQL Server Management Studio (SSMS) 和 SQL Server Data Tools (SSDT)）会安装全部三个客户端库并通过定期的应用程序更新来更新它们。 在某些情况下，可能需要安装较新版本的客户端库。 自定义客户端应用程序还需要安装客户端库。
+客户端应用程序和工具连接到 Analysis Services 服务器时需要使用客户端库。 Microsoft 客户端应用程序（如 Power BI Desktop、Excel、SQL Server Management Studio （SSMS）和 SQL Server Data Tools （SSDT））安装所有三个客户端库，并随常规应用程序更新一起更新它们。 在某些情况下，可能需要安装较新版本的客户端库。 自定义客户端应用程序还需要安装客户端库。
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>下载最新客户端库 (Windows Installer)  
 
@@ -29,9 +29,9 @@ ms.locfileid: "72298663"
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO 和 ADOMD（NuGet 包）
 
-Analysis Services Management Objects (AMO) 和 ADOMD 客户端库在 [NuGet.org](https://www.nuget.org/) 上作为可安装的程序包提供。建议你迁移到 NuGet 引用而非使用 Windows Installer。 
+Analysis Services 管理对象（AMO）和 ADOMD 客户端库作为[NuGet.org](https://www.nuget.org/)中的可安装包提供。建议你迁移到 NuGet 引用，而不是使用 Windows Installer。 
 
-|package  | 产品版本  | 
+|程序包  | 产品版本  | 
 |---------|---------|
 |[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.0.9     |
 |[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.0.9      |
@@ -44,7 +44,7 @@ Analysis Services 利用三个客户端库（也称为数据提供程序）。 A
 
 Microsoft 客户端应用程序（例如 Power BI Desktop 和 Excel）会安装所有这三个客户端库，有新版本可用时，会更新这些库。 某些客户端库可能不是 Azure Analysis Services 所需要的最新版本，具体取决于更新的版本或频率。 这同样适用于自定义应用程序或其他界面，例如 AsCmd、TOM、ADOMD.NET。 这些应用程序需要手动或以编程方式安装库。 用于手动安装的客户端库作为可分发程序包包含在 SQL Server 功能包中。 但是，这些客户端库与 SQL Server 版本关联，可能不是最新的。  
 
-用于客户端连接的客户端库不同于从 Azure Analysis Services 服务器连接到数据源时所需的数据提供程序。 若要详细了解数据源连接，请参阅[数据源连接](analysis-services-datasource.md)。
+进行客户端连接的客户端库不同于从 Azure Analysis Services 服务器连接到数据源时需要的数据提供程序。 若要详细了解数据源连接，请参阅[数据源连接](analysis-services-datasource.md)。
 
 ## <a name="client-library-types"></a>客户端库类型
 

@@ -7,12 +7,12 @@ services: service-health
 ms.service: service-health
 ms.topic: article
 ms.date: 05/10/2019
-ms.openlocfilehash: a6f6288aebe599db794a7f15fc733563d26c66cc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3e3c83b7233ad4da263dec31c6012209ebaca0fe
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067094"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515850"
 ---
 # <a name="service-health-overview"></a>服务运行状况概述
 
@@ -27,7 +27,7 @@ ms.locfileid: "67067094"
 3. **运行状况通告** - Azure 服务中发生的、需要引以注意的更改。 示例包括已弃用某些 Azure 功能，或超出了使用配额。
 
 > [!NOTE]
-> 若要查看服务运行状况事件，用户必须具有订阅读者角色。
+> 若要查看服务运行状况事件，必须[向用户授予对订阅的 "读取者" 角色](../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="get-started-with-service-health"></a>服务运行状况入门
 
@@ -37,11 +37,11 @@ ms.locfileid: "67067094"
 
 ## <a name="see-current-issues-which-impact-your-services"></a>查看当前影响了服务的问题
 
-“服务问题”视图显示 Azure 服务中当前正在影响资源的所有问题。  可以了解问题的开始时间，以及受影响的服务和区域。 还可以阅读最新的更新，了解 Azure 正在采取哪些措施来解决问题。 
+“服务问题”视图显示 Azure 服务中当前正在影响资源的所有问题。 可以了解问题的开始时间，以及受影响的服务和区域。 还可以阅读最新的更新，了解 Azure 正在采取哪些措施来解决问题。 
 
 ![管理服务问题](./media/service-health-overview/azure-service-health-overview-2.png)
 
-选择“潜在影响”选项卡查看自己拥有的、可能被问题影响的特定资源列表。  可以下载这些资源的 CSV 列表，以便与团队共享。
+选择“潜在影响”选项卡查看自己拥有的、可能被问题影响的特定资源列表。 可以下载这些资源的 CSV 列表，以便与团队共享。
 
 ![管理服务问题 - 影响](./media/service-health-overview/azure-service-health-overview-4.png)
 
@@ -71,4 +71,4 @@ ms.locfileid: "67067094"
 
 ## <a name="next-steps"></a>后续步骤
 
-设置警报，以便收到运行状况问题的通知。 有关详细信息，请参阅[的最佳实践设置 Azure 服务运行状况警报](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s)。 
+设置警报，以便收到运行状况问题的通知。 有关详细信息，请参阅[设置 Azure 服务运行状况警报的最佳实践](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s)。 

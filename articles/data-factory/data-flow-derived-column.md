@@ -1,17 +1,17 @@
 ---
-title: 映射数据流中的派生列转换-Azure 数据工厂 |Microsoft Docs
+title: Azure 数据工厂映射数据流中的派生列转换 |Microsoft Docs
 description: 了解如何在 Azure 数据工厂中大规模转换数据以及映射数据流派生列转换。
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 5a4ee90717d46fe593d9e10083b349e069216dac
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 60451fa6152590ed0fde51be436c867f39906acf
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436765"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514815"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>映射数据流中的派生列转换
 
@@ -46,7 +46,9 @@ ms.locfileid: "72436765"
 
 ### <a name="example"></a>示例
 
-下面的示例是一个名为 `CleanData` 的派生列，它采用传入流 `MoviesYear` 并创建两个派生列。 第一个派生列将分级值为的列 @no__t 替换为整数类型。 第二个派生列是与名称以 "电影" 开头的每个列匹配的模式。 对于每个匹配的列，它将创建一个 @no__t 为-0 的列，该列等于前缀为 "movie_" 的匹配列的值。 在数据工厂 UX 中，此转换如下图所示：
+下面的示例是一个名为 `CleanData` 的派生列，它采用传入流 `MoviesYear` 并创建两个派生列。 第一个派生列将分级值为的列 `Rating` 替换为整数类型。 第二个派生列是与名称以 "电影" 开头的每个列匹配的模式。 对于每个匹配的列，它将创建一个列 `movie`，该列等于前缀为 "movie_" 的匹配列的值。 
+
+在数据工厂 UX 中，此转换如下图所示：
 
 ![派生示例](media/data-flow/derive-script1.png "派生示例")
 

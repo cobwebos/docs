@@ -1,5 +1,5 @@
 ---
-title: 映射数据流中的聚合转换-Azure 数据工厂 |Microsoft Docs
+title: Azure 数据工厂映射数据流中的聚合转换 |Microsoft Docs
 description: 了解如何在 Azure 数据工厂中大规模聚合数据以及映射数据流聚合转换。
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 3f2a3219a731133ecaedf30fec1854f1a128caa3
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: add548a184440c408b8b74e131f2249b4f616ddc
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431605"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514828"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>映射数据流中的聚合转换 
 
@@ -68,7 +68,9 @@ ms.locfileid: "72431605"
 
 ### <a name="example"></a>示例
 
-下面的示例使用传入的流 `MoviesYear` 并按列 `year` 对行进行分组。 转换将创建一个聚合列 `avgrating`，其计算结果为 `Rating` 列的平均值。 此聚合转换的名称为 `AvgComedyRatingsByYear`。 在数据工厂 UX 中，此转换如下图所示：
+下面的示例使用传入的流 `MoviesYear` 并按列 `year` 对行进行分组。 转换将创建一个聚合列 `avgrating`，其计算结果为 `Rating` 列的平均值。 此聚合转换的名称为 `AvgComedyRatingsByYear`。
+
+在数据工厂 UX 中，此转换如下图所示：
 
 ![按示例分组](media/data-flow/agg-script1.png "按示例分组")
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: e145c7af3ff3cdd6d3cca2a7b0da0fdc23a418b7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 398da52ba424c08bd1bbdc6f02641109e136f45c
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245248"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72511449"
 ---
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -33,7 +33,7 @@ az group create --name "myResourceGroup" --location eastus
 New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 ```
 
-## <a name="create-a-key-vault"></a>创建 key vault
+## <a name="create-a-key-vault"></a>创建密钥保管库
 
 *如果已有密钥保管库，则可以跳到[设置密钥保管库高级访问策略](#set-key-vault-advanced-access-policies)。*
 
@@ -59,7 +59,7 @@ az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myReso
 ```azurepowershell-interactive
 New-AzKeyvault -name "<your-unique-keyvault-name>" -ResourceGroupName "myResourceGroup" -Location "eastus" -EnabledForDiskEncryption
 ```
-### <a name="resource-manager-template"></a>资源管理器模板
+### <a name="resource-manager-template"></a>Resource Manager 模板
 
 你还可以使用[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)创建密钥保管库。
 
@@ -89,15 +89,15 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
      az keyvault update --name "<your-unique-keyvault-name>" --resource-group "MyResourceGroup" --enabled-for-deployment "true"
      ``` 
 
- - **根据需要为模板部署启用 Key Vault：** 允许资源管理器从保管库中检索机密。
+ - **根据需要为模板部署启用 Key Vault**：允许资源管理器从保管库中检索机密。
      ```azurecli-interactive  
      az keyvault update --name "<your-unique-keyvault-name>" --resource-group "MyResourceGroup" --enabled-for-template-deployment "true"
      ```
 
 ###  <a name="azure-powershell"></a>Azure PowerShell
- 使用 Key Vault PowerShell cmdlet [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) 为 Key Vault 启用磁盘加密。
+ 使用密钥保管库 PowerShell cmdlet [AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy)为密钥保管库启用磁盘加密。
 
-  - **为磁盘加密启用 Key Vault：** 若要启用 Azure 磁盘加密，需要使用 EnabledForDiskEncryption。
+  - **为磁盘加密启用 Key Vault：** 需要使用 EnabledForDiskEncryption 来启用 Azure 磁盘加密。
       
      ```azurepowershell-interactive 
      Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForDiskEncryption
@@ -109,7 +109,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
       Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForDeployment
      ```
 
-  - **根据需要为模板部署启用 Key Vault：** 在模板部署中引用此 Key Vault 时，使 Azure 资源管理器能够从此 Key Vault 中获取机密。
+  - **根据需要为模板部署启用 Key Vault：** 在模板部署中引用此 Key Vault 时，使 Azure 资源管理器模板能够从此 Key Vault 中检索机密。
 
      ```azurepowershell-interactive             
      Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForTemplateDeployment
@@ -131,7 +131,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 
 可以使用 Azure CLI [az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create)命令、Azure PowerShell [AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 或[Azure 门户](https://portal.azure.com/)生成新的 KEK。 必须生成 RSA 密钥类型;Azure 磁盘加密尚不支持使用椭圆曲线密钥。
 
-可以改为从本地密钥管理 HSM 导入 KEK。 有关详细信息，请参阅 [Key Vault 文档](/key-vault/key-vault-hsm-protected-keys)。 
+可以改为从本地密钥管理 HSM 导入 KEK。 有关详细信息，请参阅 [Key Vault 文档](/azure/key-vault/key-vault-hsm-protected-keys)。
 
 必须对密钥保管库 KEK Url 进行版本控制。 Azure 会强制实施这项版本控制限制。 有关有效的机密和 KEK URL，请参阅以下示例：
 

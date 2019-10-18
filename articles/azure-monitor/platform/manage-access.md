@@ -1,6 +1,6 @@
 ---
 title: 管理 Azure Monitor 中的 Log Analytics 工作区 | Microsoft Docs
-description: 可以使用资源、工作区或表级权限管理对 Azure Monitor 中的 Log Analytics 工作区中存储的数据的访问。 本文详细介绍如何完成这些操作。
+description: 可以使用资源、工作区或表级权限管理对 Azure Monitor 中的 Log Analytics 工作区中存储的数据的访问。 本文详细介绍了如何完成此操作。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 010f7bb2f19eed757da3f62011b69e1f09ddadf0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2f9c50053fca73aeee0ed9a286b4c286486bac86
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329413"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532325"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理 Azure Monitor 中的日志数据和工作区的访问权限
 
@@ -71,7 +71,7 @@ DefaultWorkspace21532: False
 如果值为 `False`，则表示使用工作区上下文访问模式配置工作区。  值 `True` 表示工作区配置为具有资源上下文访问模式。
 
 > [!NOTE]
-> 如果在未使用布尔值的情况下返回工作区且为空白，则这还会与 @no__t 值的结果相匹配。
+> 如果在未使用布尔值的情况下返回工作区且为空白，则这还会与 `False` 值的结果相匹配。
 >
 
 使用以下脚本将特定工作区的访问控制模式设置为资源上下文权限：
@@ -148,7 +148,7 @@ Log Analytics 读者角色包括以下 Azure 操作：
 
 Log Analytics 参与者角色的成员可以：
 
-* 读取 Log Analytics 读取器可以的所有监视数据
+* 包括*Log Analytics 读取者角色*的所有权限，使用户能够读取所有监视数据
 * 创建和配置自动化帐户
 * 添加和删除管理解决方案
 
@@ -187,7 +187,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 * 资源组 - 访问资源组中的所有工作区
 * 资源 - 仅访问指定工作区
 
-你应在资源级别（工作区）执行分配，以确保正确的访问控制。  使用[自定义角色](../../role-based-access-control/custom-roles.md)，创建具有所需的特定权限的角色。
+建议在资源级别（工作区）执行分配，以确保正确的访问控制。 使用[自定义角色](../../role-based-access-control/custom-roles.md)，创建具有所需的特定权限的角色。
 
 ### <a name="resource-permissions"></a>资源权限
 
@@ -198,7 +198,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>示例：<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | 能够查看资源的所有日志数据。  |
 | `Microsoft.Insights/diagnosticSettings/write` | 能够将诊断设置配置为允许设置此资源的日志。 |
 
-`/read` 权限通常是从包含 _\*/读取或_ _@no__t_权限的角色（例如内置[读取器](../../role-based-access-control/built-in-roles.md#reader)和[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色）授予的。 请注意，包括特定操作或专用内置角色的自定义角色可能不包括此权限。
+`/read` 权限通常从包含 _\*/read 或_ _\*_ 权限的角色（例如内置的 "[读取](../../role-based-access-control/built-in-roles.md#reader)者" 和 "[参与者](../../role-based-access-control/built-in-roles.md#contributor)" 角色）中授予。 包括特定操作或专用内置角色的自定义角色可能不包括此权限。
 
 如果要为不同的表创建不同的访问控制，请参阅下面[的定义每个表的访问控制](#table-level-rbac)。
 
@@ -208,7 +208,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
     * 将工作区访问控制模式配置为**使用工作区或资源权限**
 
-    * 向用户授予对其资源的 @no__t 0 或 @no__t 权限。 如果已在工作区中为其分配了[Log Analytics 读取](../../role-based-access-control/built-in-roles.md#reader)者角色，则该角色就已足够。
+    * 向用户授予对其资源 `*/read` 或 `Microsoft.Insights/logs/*/read` 权限。 如果已在工作区中为其分配了[Log Analytics 读取](../../role-based-access-control/built-in-roles.md#reader)者角色，则该角色就已足够。
 
 2. 若要授予用户对其资源中的日志数据的访问权限并将其资源配置为向工作区发送日志，请执行以下操作：
 
@@ -216,7 +216,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
     * 向用户授予对工作区的以下权限： `Microsoft.OperationalInsights/workspaces/read` 和 `Microsoft.OperationalInsights/workspaces/sharedKeys/action`。 如果具有这些权限，用户将无法执行任何工作区级查询。 它们只能枚举工作区，并将其用作诊断设置或代理配置的目标。
 
-    * 向用户授予对其资源的以下权限： `Microsoft.Insights/logs/*/read` 和 `Microsoft.Insights/diagnosticSettings/write`。 如果已为其分配 "[参与者 Log Analytics](../../role-based-access-control/built-in-roles.md#contributor) " 角色，则分配有 "读取者" 角色，或对此资源授予了 @no__t 1 权限，这就足够了。
+    * 向用户授予对其资源的以下权限： `Microsoft.Insights/logs/*/read` 和 `Microsoft.Insights/diagnosticSettings/write`。 如果已为其分配 "[参与者 Log Analytics](../../role-based-access-control/built-in-roles.md#contributor) " 角色，则分配有 "读取者" 角色，或授予对此资源的 `*/read` 权限，这就足够了。
 
 3. 若要授予用户对其资源中的日志数据的访问权限，而不能读取安全事件和发送数据，请执行以下操作：
 
@@ -224,7 +224,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
     * 向用户授予对其资源的以下权限： `Microsoft.Insights/logs/*/read`。
 
-    * 添加以下 NonAction 以阻止用户读取 SecurityEvent 类型： `Microsoft.Insights/logs/SecurityEvent/read`。 NonAction 应与提供读取权限的操作具有相同的自定义角色（`Microsoft.Insights/logs/*/read`）。 如果用户从分配给此资源的另一个角色或向订阅或资源组中继承读取操作，则他们将能够读取所有日志类型。 如果它们继承了 @no__t 为例（例如，具有 "读取者" 或 "参与者" 角色），则也是如此。
+    * 添加以下 NonAction 以阻止用户读取 SecurityEvent 类型： `Microsoft.Insights/logs/SecurityEvent/read`。 NonAction 应与提供读取权限的操作具有相同的自定义角色（`Microsoft.Insights/logs/*/read`）。 如果用户从分配给此资源的另一个角色或向订阅或资源组中继承读取操作，则他们将能够读取所有日志类型。 如果它们继承 `*/read` （例如，具有读取者或参与者角色），则也是如此。
 
 4. 若要授予用户对其资源中的日志数据的访问权限并读取所有 Azure AD 登录并从工作区读取更新管理解决方案日志数据，请执行以下操作：
 
@@ -293,7 +293,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 * 如果用户被授予每个表的访问权限，但没有其他权限，则他们可以从 API 访问日志数据，但不能从 Azure 门户访问日志数据。 若要从 Azure 门户提供访问权限，请使用 Log Analytics 读取器作为其基本角色。
 * 无论其他任何权限设置如何，订阅管理员都可以访问所有数据类型。
 * 工作区所有者的处理方式与针对每个表的访问控制的其他任何用户一样。
-* 应为安全组而不是单个用户分配角色，以减少分配的数量。 这还将帮助你使用现有组管理工具来配置和验证访问权限。
+* 建议为安全组而不是单个用户分配角色，以减少分配的数量。 这还将帮助你使用现有组管理工具来配置和验证访问权限。
 
 ## <a name="next-steps"></a>后续步骤
 

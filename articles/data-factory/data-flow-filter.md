@@ -1,37 +1,58 @@
 ---
-title: Azure 数据工厂映射数据流筛选器转换
-description: Azure 数据工厂映射数据流筛选器转换
+title: Azure 数据工厂映射数据流中的筛选转换 |Microsoft Docs
+description: 使用 Azure 数据工厂映射数据流中的筛选器转换筛选出行
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/03/2019
-ms.openlocfilehash: 2afe079c346a15ec212664ce022ac5e2926b12d4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 10/16/2019
+ms.openlocfilehash: a4dd53f37a8a963d05a3ad9c49769528e945f6a1
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387814"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527373"
 ---
-# <a name="azure-data-factory-filter-transformation"></a>Azure 数据工厂筛选器转换
+# <a name="filter-transformation-in-mapping-data-flow"></a>映射数据流中的筛选转换
 
+筛选器转换允许基于条件进行行筛选。 输出流包括与筛选条件匹配的所有行。 筛选器转换类似于 SQL 中的 WHERE 子句。
 
+## <a name="configuration"></a>配置
 
-筛选器转换提供行筛选功能。 生成定义筛选器条件的表达式。 单击文本框，启动表达式生成器。 在表达式生成器中，生成筛选器表达式，控制当前数据流中允许传递（筛选）到下一转换的行。 将筛选器转换视为 SQL 语句的 WHERE 子句。
+使用 "数据流表达式生成器" 输入筛选条件的表达式。 若要打开 "表达式生成器"，请单击蓝色框。 筛选条件的类型必须为布尔值。 有关如何创建表达式的详细信息，请参阅[表达式生成器](concepts-data-flow-expression-builder.md)文档。
 
-## <a name="filter-on-loan_status-column"></a>筛选 loan_status 列：
+![筛选转换](media/data-flow/filter1.png "筛选转换")
+
+## <a name="data-flow-script"></a>数据流脚本
+
+### <a name="syntax"></a>语法
 
 ```
-in([‘Default’, ‘Charged Off’, ‘Fully Paid’], loan_status).
+<incomingStream>
+    filter(
+        <conditionalExpression>
+    ) ~> <filterTransformationName>
 ```
 
-“电影”演示的“年份”列中的筛选器：
+### <a name="example"></a>示例
+
+下面的示例是一个名为 `FilterBefore1960` 的有条件拆分转换，它采用传入流 `CleanData`。 筛选条件是 `year <= 1960` 的表达式。
+
+在数据工厂 UX 中，此转换如下图所示：
+
+![筛选转换](media/data-flow/filter1.png "筛选转换")
+
+此转换的数据流脚本位于下面的代码片段中：
 
 ```
-year > 1980
+CleanData
+    filter(
+        year <= 1960
+    ) ~> FilterBefore1960
+
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-尝试列筛选转换，[选择转换](data-flow-select.md)
+用[select 转换](data-flow-select.md)筛选出列

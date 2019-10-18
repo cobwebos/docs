@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: cc827f52d227ee36620bd215dfcba96b433804d3
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 6fecd143055da2829ac49cee4f50d448a37a6e1b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103061"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514882"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件](storage-files-introduction.md)在云端提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -24,7 +24,7 @@ ms.locfileid: "71103061"
 3. [Azure 文件 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)。 
 4. Microsoft 支持部门。 若要创建新的支持请求，请在 Azure 门户中的“帮助”选项卡上，选择“帮助和支持”按钮，然后选择“新建支持请求”。
 
-## <a name="general"></a>常规
+## <a name="general"></a>一般信息
 * <a id="why-files-useful"></a>
   **Azure 文件如何发挥作用？**  
    你可以使用 Azure 文件在云中创建文件共享，而无需应对物理服务器、设备或装置的开销。 诸如应用操作系统更新和更换损坏的磁盘等琐碎枯燥的工作，我们可为你逐一代劳。 若要详细了解 Azure 文件适用的应用场景，请参阅[为何 Azure 文件很有用](storage-files-introduction.md#why-azure-files-is-useful)。
@@ -78,7 +78,7 @@ ms.locfileid: "71103061"
     > 不能从 Blob 存储帐户或*高级*常规用途（GPv1 或 GPv2）存储帐户创建 Azure 文件共享。 标准 Azure 文件共享必须仅在*标准*常规用途帐户中创建，并且只能在 FileStorage 存储帐户中创建高级 azure 文件共享。 *高级*常规用途（GPv1 和 GPv2）存储帐户仅适用于高级页 blob。 
 
 * <a id="give-us-feedback"></a>
-  **我非常希望可以将某项特定功能添加到 Azure 文件。你们会添加它吗？**  
+  **我确实要查看已添加到 Azure 文件的特定功能。你可以添加它吗？**  
     Azure 文件团队非常乐于听取你针对我们服务提供的任何反馈。 请在 [Azure 文件 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) 上进行功能请求投票！ 希望我们提供的众多新功能能够满足你的需求。
 
 ## <a name="azure-file-sync"></a>Azure 文件同步
@@ -89,10 +89,10 @@ ms.locfileid: "71103061"
 
 * <a id="cross-domain-sync"></a>
   **是否可以在同一个同步组中同时包含已加入域的服务器和未加入域的服务器？**  
-    是。 同步组可以包含具有不同的 Active Directory 成员身份的服务器终结点，即使它们未加入域。 虽然从严格意义上讲这种配置可用，但不建议将此作为常规配置，因为在某个服务器上为文件和文件夹定义的访问控制列表 (ACL) 可能无法由同步组中的其他服务器实施。 为获得最佳结果，建议在同一个 Active Directory 林中的服务器之间、在不同 Active Directory 林中但已建立信任关系的服务器之间，或未加入域的服务器之间进行同步。 我们建议你避免混合使用这些配置。
+    可以。 同步组可以包含具有不同的 Active Directory 成员身份的服务器终结点，即使它们未加入域。 虽然从严格意义上讲这种配置可用，但不建议将此作为常规配置，因为在某个服务器上为文件和文件夹定义的访问控制列表 (ACL) 可能无法由同步组中的其他服务器实施。 为获得最佳结果，建议在同一个 Active Directory 林中的服务器之间、在不同 Active Directory 林中但已建立信任关系的服务器之间，或未加入域的服务器之间进行同步。 我们建议你避免混合使用这些配置。
 
 * <a id="afs-change-detection"></a>
-  **我通过 SMB 或门户在 Azure 文件共享中直接创建了一个文件。多久后该文件才会同步到同步组中的服务器上？**  
+  **我使用 SMB 或门户在 Azure 文件共享中直接创建了一个文件。文件同步到同步组中的服务器需要多长时间？**  
     [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
 * <a id="afs-conflict-resolution"></a>**如果在两个服务器上几乎同时对同一文件进行了更改后，会发生什么情况？**  
@@ -114,7 +114,7 @@ ms.locfileid: "71103061"
   **如何分辨文件是否已被分层？**  
   请参阅[了解云分层](storage-sync-cloud-tiering.md#is-my-file-tiered)。
 
-* <a id="afs-recall-file"></a>**我想要使用的一个文件已被分层。如何将文件召回到磁盘以在本地使用？**  
+* <a id="afs-recall-file"></a>**我要使用的文件已分层。如何将文件撤回到磁盘以在本地使用它？**  
   请参阅[了解云分层](storage-sync-cloud-tiering.md#afs-recall-file)。
 
 * <a id="afs-force-tiering"></a>
@@ -151,7 +151,7 @@ ms.locfileid: "71103061"
     在 Azure 文件同步代理版本 3 之前，Azure 文件同步阻止将分层文件移到服务器终结点之外但位于服务器终结点所在卷上的其他位置。 复制操作、非分层文件的移动操作以及将分层文件移到其他卷的操作不受影响。 这种行为的原因在于以下隐含假设：文件资源管理器和其他 Windows API 在同一卷上的移动操作是（近乎）即时重命名操作。 这意味着，移动会使文件资源管理器或其他移动方法（如命令行或 PowerShell）看起来没有响应，而 Azure 文件同步会从云中召回数据。 从 [Azure 文件同步代理版本 3.0.12.0](storage-files-release-notes.md#supported-versions) 开始，Azure 文件同步将允许将分层文件移到服务器终结点之外。 我们通过允许分层文件作为服务器终结点之外的分层文件存在，然后在后台召回该文件以避免前面提到的负面影响。 这意味着在同一卷上的移动是即时的，在移动完成后，我们要完成将文件召回到磁盘的所有工作。 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
-  **服务器上的 Azure 文件同步（同步、云分层等）出现问题。是否应删除并重新创建服务器终结点？**  
+   我的**服务器上的 Azure 文件同步（同步、云分层等）出现问题。是否应删除并重新创建服务器终结点？**  
     [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
     
 * <a id="afs-resource-move"></a>
@@ -168,7 +168,7 @@ ms.locfileid: "71103061"
     
 ## <a name="security-authentication-and-access-control"></a>安全性、身份验证和访问控制
 * <a id="ad-support"></a>
-**Azure 文件是否支持基于标识的身份验证和访问控制？**  
+**是 Azure 文件支持的基于身份的身份验证和访问控制？**  
     
     是的，Azure 文件支持 Azure AD 域服务（Azure AD DS）利用基于标识的身份验证和访问控制。 使用 Azure 文件的 SMB Azure AD DS 身份验证，可让已加入域的 Windows Vm Azure AD Windows Vm 使用 Azure AD 凭据访问共享、目录和文件。 有关更多详细信息，请参阅[Azure 文件概述 Azure Active Directory 域服务（AZURE AD DS）身份验证支持 SMB 访问](storage-files-active-directory-overview.md)。 
 
@@ -181,7 +181,7 @@ ms.locfileid: "71103061"
     若要全面表示 Azure 存储服务支持的所有协议，可以参阅[授权访问 Azure 存储](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
 
 * <a id="ad-support-devices"></a>
-**Azure 文件 Azure AD DS 身份验证是否支持使用连接到 Azure AD 的设备中的 Azure AD 凭据进行 SMB 访问？**
+**Azure 文件 AZURE AD DS 身份验证是否支持使用已加入或注册 Azure AD 的设备中的 Azure AD 凭据进行 SMB 访问？**
 
     不支持。不支持该方案。
 
@@ -196,24 +196,24 @@ ms.locfileid: "71103061"
     如果部署了文件共享的订阅与 VM 所加入到的 Azure AD 域服务部署相同的 Azure AD 租户相关联，则可以使用相同的 Azure AD 凭据访问 Azure 文件存储。 限制不是针对订阅，而是针对关联的 Azure AD 租户的。    
     
 * <a id="ad-support-subscription"></a>
-**能否使用不同于与文件共享关联的主租户的 Azure AD 租户来启用 Azure 文件 Azure AD DS 身份验证？**
+ 是否**可以使用不同于与文件共享关联的主租户的 Azure AD 租户来启用 Azure 文件 AZURE AD DS 身份验证？**
 
     不能，Azure 文件仅支持与与文件共享位于同一订阅中的 Azure AD 租户 Azure AD DS 集成。 只有一个订阅可以与 Azure AD 租户相关联。
 
 * <a id="ad-linux-vms"></a>
-**Azure 文件 Azure AD DS 身份验证是否支持 Linux Vm？**
+**Azure 文件 AZURE AD DS 身份验证是否支持 Linux vm？**
 
     否，不支持从 Linux Vm 进行身份验证。
 
 * <a id="ad-aad-smb-afs"></a>
-**能否在 Azure 文件同步管理的文件共享上利用 Azure 文件 Azure AD DS 身份验证？**
+**能否在 Azure 文件同步管理的文件共享上利用 Azure 文件 AZURE AD DS 身份验证？**
 
-    不可以。Azure 文件不支持在由 Azure 文件同步管理的文件共享上保留 NTFS ACL。Azure 文件同步将保留转自本地文件服务器的文件 ACL。针对 Azure 文件本机配置的任何 NTFS ACL 都将由 Azure 文件同步服务所覆盖。 此外，Azure 文件不支持使用 Azure AD 凭据进行身份验证，以访问 Azure 文件同步服务管理的文件共享。
+    不能，Azure 文件不支持在 Azure 文件同步管理的文件共享上保留 NTFS Acl。Azure 文件同步保留从本地文件服务器执行的文件 Acl。在本机上针对 Azure 文件配置的任何 NTFS Acl 都将被 Azure 文件同步服务覆盖。 此外，Azure 文件不支持使用 Azure AD 凭据进行身份验证，以访问 Azure 文件同步服务管理的文件共享。
 
 * <a id="encryption-at-rest"></a>
 **如何确保已静态加密 Azure 件共享？**  
 
-    是。 有关详细信息，请参阅 [Azure 存储服务加密](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+    可以。 有关详细信息，请参阅[Azure 存储服务加密](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 * <a id="access-via-browser"></a>
 **如何使用 Web 浏览器提供对特定文件的访问权限？**  
@@ -228,7 +228,7 @@ ms.locfileid: "71103061"
 * <a id="ip-restrictions"></a>
 **是否对 Azure 文件共享实现 IP 限制？**  
 
-    是。 可以在存储帐户级别对 Azure 文件共享的权限进行限制。 有关详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+    可以。 可以在存储帐户级别对 Azure 文件共享的权限进行限制。 有关详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 * <a id="data-compliance-policies"></a>
 **Azure 文件支持哪些数据符合性策略？**  
@@ -238,14 +238,14 @@ ms.locfileid: "71103061"
 ## <a name="on-premises-access"></a>本地访问
 
 * <a id="port-445-blocked"></a>
-**我的 ISP 或 IT 部门阻止了端口 445，导致 Azure 文件装载失败。我该怎样做？**
+**我的 ISP 或阻止 Azure 文件装载失败的端口445。我该怎么办？**
 
-    可以在此处了解[如何通过各种方式来解决端口 445 被阻止的问题](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)。 Azure 文件存储只允许使用 SMB 3.0（带加密支持）从区域或数据中心外部进行连接。 SMB 3.0 协议引入了许多安全功能，其中包括通道加密，可以通过 Internet 很安全地使用。 不过，有可能端口 445 因为历史原因（在较低的 SMB 版本中发现了漏洞）已被阻止。 理想情况下，只应阻止端口传输 SMB 1.0 流量，在所有客户端上都应关闭 SMB 1.0。
+    可在此处了解[阻止端口445的各种方法](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)。 Azure 文件仅允许从区域或数据中心外使用 SMB 3.0 （具有加密支持）的连接。 SMB 3.0 协议引入了许多安全功能，包括通过 internet 使用非常安全的通道加密。 然而，由于在较低的 SMB 版本中发现漏洞的原因，可能会阻止端口445。 在理想情况下，仅应为 SMB 1.0 流量阻止该端口，并且应在所有客户端上关闭 SMB 1.0。
 
 * <a id="expressroute-not-required"></a>
 **必须使用 Azure ExpressRoute 才能在本地连接到 Azure 文件或使用 Azure 文件同步吗？**  
 
-    否。 ExpressRoute 不是访问 Azure 文件共享的必要条件。 如果要直接在本地装载 Azure 文件共享，则只需打开端口 445（TCP 出站）即可进行 Internet 访问（这是 SMB 用于进行通信的端口）。 如果正在使用 Azure 文件同步，则只需端口 443（TCP 出站）即可进行 HTTPS 访问（无需 SMB）。 但是，你可以将 ExpressRoute 与这些访问选项中任意一项一起使用。
+    不。 ExpressRoute 不是访问 Azure 文件共享的必要条件。 如果要直接在本地装载 Azure 文件共享，则只需打开端口 445（TCP 出站）即可进行 Internet 访问（这是 SMB 用于进行通信的端口）。 如果正在使用 Azure 文件同步，则只需端口 443（TCP 出站）即可进行 HTTPS 访问（无需 SMB）。 但是，你可以将 ExpressRoute 与这些访问选项中任意一项一起使用。
 
 * <a id="mount-locally"></a>
 **如何才能在本地计算机上装载 Azure 文件共享？**  
@@ -259,7 +259,7 @@ ms.locfileid: "71103061"
 
 ## <a name="share-snapshots"></a>共享快照
 
-### <a name="share-snapshots-general"></a>共享快照：常规
+### <a name="share-snapshots-general"></a>共享快照：常规问题
 * <a id="what-are-snaphots"></a>
 **什么是文件共享快照？**  
     可以使用 Azure 文件共享快照创建只读版本的文件共享。 另外，也可以使用 Azure 文件将早期版本的内容复制回 Azure 或本地中的同一个共享或备用位置中，以做进一步修改。 若要了解有关共享快照的详细信息，请参阅[共享快照概述](storage-snapshots-files.md)。
@@ -274,7 +274,7 @@ ms.locfileid: "71103061"
 
 * <a id="snapshot-limits"></a>
 **对我可使用的共享快照数有限制吗？**  
-    是。 Azure 文件可以最多保留 200 张共享快照。 共享快照不计入共享配额，因此，对所有共享快照使用的总空间没有单独的共享限制。 存储帐户限制仍然适用。 在达到 200 个共享快照之后，必须删除旧的共享快照才可创建新的共享快照。
+    可以。 Azure 文件可以最多保留 200 张共享快照。 共享快照不计入共享配额，因此，对所有共享快照使用的总空间没有单独的共享限制。 存储帐户限制仍然适用。 在达到 200 个共享快照之后，必须删除旧的共享快照才可创建新的共享快照。
 
 * <a id="snapshot-cost"></a>
 **共享快照的费用是多少？**  
@@ -315,7 +315,7 @@ ms.locfileid: "71103061"
 
 * <a id="restore-snapshotted-file-to-other-share"></a>
 **是否可以将数据从共享快照还原到不同的存储帐户？**  
-    是。 可以将共享快照文件复制到原始位置或备用位置，其中包括位于同一区域或不同区域的相同/不同的存储帐户。 你还可以将文件复制到本地位置或任何其他云。    
+    可以。 可以将共享快照文件复制到原始位置或备用位置，其中包括位于同一区域或不同区域的相同/不同的存储帐户。 你还可以将文件复制到本地位置或任何其他云。    
   
 ### <a name="clean-up-share-snapshots"></a>清除共享快照
 * <a id="delete-share-keep-snapshots"></a>
@@ -343,20 +343,25 @@ ms.locfileid: "71103061"
     有关 Azure 文件的可伸缩性和性能目标的信息，请参阅 [Azure 文件可伸缩性和性能目标](storage-files-scale-targets.md)。
 
 * <a id="need-larger-share"></a>
-**哪些大小适用于 Azure 文件共享？**  
-    Azure 文件共享大小（高级和标准）最多可以扩展到 100 TiB。 高级文件共享的最大大小为 100 TiB，可作为 GA 提供。 标准文件共享的大小最多为5个 TiB 作为 GA 产品提供，而大小最高可达 100 TiB。 请参阅 "规划指南" 中的 "[更大的文件共享（标准层）](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) " 一节，了解有关 "标准" 层的更大文件共享预览的载入说明。
+**适用于 Azure 文件共享的大小？**  
+    Azure 文件共享大小（高级和标准）最多可以扩展到 100 TiB。 请参阅 "规划指南" 中的 "[更大的文件共享（标准层）](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) " 一节，了解如何向标准层的大型文件共享规划指南。
+
+* <a id="lfs-performance-impact"></a>
+**扩展文件共享配额是否会影响我的工作负荷或 Azure 文件同步？**
+    
+    不。 扩展配额不会影响工作负荷或 Azure 文件同步。
 
 * <a id="open-handles-quota"></a>
 **多少个客户端可以同时访问同一文件？**    
     单个文件有 2000 个打开句柄配额。 当你拥有 2000 个打开句柄时，会显示一条错误消息，指示已达到此配额。
 
-* <a id="zip-slow-performance"></a>
-**解压 Azure 文件中的文件时性能较慢。我该怎样做？**  
+* <a id="zip-slow-performance"></a>在**将文件解压缩到 Azure 文件中时，性能会变慢 
+。我该怎么办？**  
     若要将大量文件传输到 Azure 文件，建议使用 AzCopy（Windows 版；Linux 和 Unix 预览版）或 Azure Powershell。 这些工具已针对网络传输进行了优化。
 
 * <a id="slow-perf-windows-81-2012r2"></a>
 **为什么在 Windows Server 2012 R2 或 Windows 8.1 上装载了 Azure 文件共享后性能较慢？**  
-    在 Windows Server 2012 R2 和 Windows 8.1 上装载 Azure 文件共享后，有一个已知的问题。 在 2014 年 4 月的 Windows 8.1 和 Windows Server 2012 R2 累积更新中已修补了此问题。 请确保 Windows Server 2012 R2 和 Windows 8.1 的所有实例均应用了此修补程序，以获得最佳性能。 （你应始终通过 Windows 更新获取 Windows 修补程序。）有关更多信息，请查看相关的 Microsoft 识库文章[从 Windows 8.1 或 Server 2012 R2 访问 Azure 文件时性能降低](https://support.microsoft.com/kb/3114025)。
+    在 Windows Server 2012 R2 和 Windows 8.1 上装载 Azure 文件共享后，有一个已知的问题。 在 2014 年 4 月的 Windows 8.1 和 Windows Server 2012 R2 累积更新中已修补了此问题。 请确保 Windows Server 2012 R2 和 Windows 8.1 的所有实例均应用了此修补程序，以获得最佳性能。 （应始终通过 Windows 更新接收 Windows 修补程序。）有关详细信息，请参阅关联的 Microsoft 知识库文章[从 Windows 8.1 或服务器 2012 R2 访问 Azure 文件时性能降低](https://support.microsoft.com/kb/3114025)。
 
 ## <a name="features-and-interoperability-with-other-services"></a>功能以及与其他服务的互操作性
 * <a id="cluster-witness"></a>
@@ -372,14 +377,14 @@ ms.locfileid: "71103061"
     现在不行。
 
 * <a id="nested-shares"></a>
-**是否可以设置嵌套共享？也就是说，能否在共享下使用共享？**  
-    否。 文件共享是可以装载的虚拟驱动程序，因此不支持嵌套共享。
+**是否可以设置嵌套共享？换句话说，共享下的共享？**  
+    不。 文件共享是可以装载的虚拟驱动程序，因此不支持嵌套共享。
 
 * <a id="ibm-mq"></a>
 **如何将 Azure 文件与 IBM MQ 配合使用？**  
     IBM 已发布相关文档，帮助 IBM MQ 客户通过 IBM 服务配置 Azure 文件。 有关更多信息，请参阅[如何通过 Microsoft Azure 文件服务设置 IBM MQ 多实例队列管理器](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service)。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [在 Windows 中排查 Azure 文件问题](storage-troubleshoot-windows-file-connection-problems.md)
 * [在 Linux 中排查 Azure 文件问题](storage-troubleshoot-linux-file-connection-problems.md)
 * [对 Azure 文件同步进行故障排除](storage-sync-files-troubleshoot.md)

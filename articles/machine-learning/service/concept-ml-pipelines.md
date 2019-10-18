@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 09/14/2019
-ms.openlocfilehash: d53f422a38c21163fccb1f60eb957b014b54ad74
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 0465dcba5130f3b2dc5c615c884bfa0d3b138eb7
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273972"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514935"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什么是 Azure 机器学习管道？
 
 Azure 机器学习管道使你可以在机器学习项目中创建工作流。 这些工作流有多个优点： 
 
 + 简易性
-+ Speed
++ 速度
 + 可重复性
 + 灵活性
 + 版本控制和跟踪
@@ -40,7 +40,7 @@ Azure 机器学习管道使你可以在机器学习项目中创建工作流。 �
 
 Azure 云提供多个其他管道，每个都有不同的用途。 下表列出了不同的管道以及它们的用途：
 
-| 管道 | 作用 | 规范管道 |
+| 管道 | 它的作用 | 规范管道 |
 | ---- | ---- | ---- |
 | Azure 机器学习管道 | 定义可重复使用的机器学习工作流，可用作机器学习方案的模板。 | 数据 > 模型 |
 | [Azure 数据工厂管道](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | 对执行任务所需的数据移动、转换和控制活动进行分组。  | 数据 > 数据 |
@@ -85,11 +85,11 @@ Azure ML 管道使用排序的一系列步骤来执行完整的逻辑工作流�
 
 此外，如果您选择，步骤的输出可能会重复使用。 如果将重新使用指定为可能性，并且没有上游依赖关系触发重新计算，则管道服务将使用该步骤结果的缓存版本。 此类重复使用会大幅缩短开发时间。 如果你有一个复杂的数据准备任务，你可能会更频繁地重新运行它，而不是严格必要的。 管道缓解了这一点：如有必要，将会运行该步骤，否则将不会。
 
-所有这些依赖关系分析、业务流程和激活均由 Azure 机器学习在实例化[管道](https://docs.microsoft.com/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)?view=azure-ml-py)对象时进行处理，并将其传递给 `Experiment`，并调用 `submit()`。 
+所有这些依赖关系分析、业务流程和激活都是在实例化[管道](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class))对象、将其传递到 `Experiment` 并调用 `submit()` 时 Azure 机器学习处理的。 
 
 ### <a name="coordinating-the-steps-involved"></a>协调所涉及的步骤
 
-创建并运行 @no__t 0 对象时，会执行以下高级步骤：
+创建和运行 `Pipeline` 对象时，会执行以下高级步骤：
 
 + 对于每个步骤，该服务将计算以下各项的要求：
     + 硬件计算资源
@@ -99,7 +99,7 @@ Azure ML 管道使用排序的一系列步骤来执行完整的逻辑工作流�
 + 服务确定步骤间的依赖关系，从而生成动态执行图
 + 当执行关系图中的每个节点运行时：
     + 此服务配置必要的硬件和软件环境（可能重复使用现有资源）
-    + 该步骤将运行，并向其包含 `Experiment` 对象提供日志记录和监视信息
+    + 该步骤将运行，向其包含的 `Experiment` 对象提供日志记录和监视信息
     + 步骤完成后，会将其输出准备为下一步和/或写入存储的输入
     + 不再需要的资源将完成并分离
 
@@ -107,7 +107,7 @@ Azure ML 管道使用排序的一系列步骤来执行完整的逻辑工作流�
 
 ## <a name="how-do-i-build-azure-ml-pipelines-using-the-python-sdk"></a>使用 Python SDK 如何实现生成 Azure ML 管道？
 
-在[Azure 机器学习 PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)中，管道是在 @no__t 1 模块中定义的 Python 对象。 [管道](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py)对象包含一个或多个[PipelineStep](https://docs.microsoft.com/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py)对象的有序序列。 @No__t-0 类是抽象类，而实际步骤则为子类，如[EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py)、 [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)或[DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)。 [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py)类保存可在管道间共享的可重复使用的步骤序列。 @No__t-0 作为 @no__t 的一部分运行。
+在[Azure 机器学习 PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)中，管道是在 `azureml.pipeline.core` 模块中定义的 Python 对象。 [管道](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class))对象包含一个或多个[PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep)对象的有序序列。 @No__t_0 类是抽象的，而实际步骤则为子类，如[EstimatorStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep)、 [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep)或[DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep)。 [ModuleStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep)类保存可在管道间共享的可重复使用的步骤序列。 @No__t_0 作为 `Experiment` 的一部分运行。
 
 Azure ML 管道与 Azure 机器学习工作区关联，管道步骤与该工作区中可用的计算目标相关联。 有关详细信息，请参阅[创建和管理 Azure 门户中的 Azure 机器学习工作区](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace)或[Azure 机器学习中的计算目标？](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target)。
 
@@ -117,14 +117,14 @@ Azure ML 管道与 Azure 机器学习工作区关联，管道步骤与该工作�
 
 管道内的步骤可能依赖于其他步骤。 Azure ML 管道服务执行分析和协调这些依赖项的工作。 生成的 "执行关系图" 中的节点是处理步骤。 每个步骤都可能涉及创建或重复使用硬件和软件的特定组合、重复使用缓存的结果等。 服务的此执行关系图的业务流程和优化可显著提高 ML 阶段并降低成本。 
 
-由于步骤独立运行，因此必须在外部定义用于保存在步骤之间流动的输入和输出数据的对象。 这是[DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)、 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)和关联类的角色。 这些数据对象与封装其存储配置的数据[存储](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py)对象相关联。 @No__t-0 基类始终使用 `name` 字符串、@no__t 列表和 `outputs` 的列表创建。 通常，它还具有 @no__t 的列表，并且通常会有一个 @no__t 列表。 子类通常还会有其他参数（例如 `PythonScriptStep` 需要运行脚本的文件名和路径）。 
+由于步骤独立运行，因此必须在外部定义用于保存在步骤之间流动的输入和输出数据的对象。 这是[DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)、 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)和关联类的角色。 这些数据对象与封装其存储配置的数据[存储](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py)对象相关联。 始终使用 `name` 字符串、`inputs` 列表和 `outputs` 列表创建 `PipelineStep` 的基类。 通常情况下，它还具有 `arguments` 的列表，并且通常会有一个 `resource_inputs` 列表。 子类通常还会有其他参数（例如，`PythonScriptStep` 需要要运行的脚本的文件名和路径）。 
 
 执行图是非循环的，但管道可以按重复计划运行，并且可以运行 Python 脚本，这些脚本可以将状态信息写入文件系统，从而能够创建复杂的配置文件。 如果设计管道，使某些步骤可以并行或异步运行，Azure 机器学习会以透明方式处理扇出和扇入的依赖项分析和协调。 通常，您不必关心执行关系图的详细信息，但可通过 "[管道](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py#attributes)" 属性获得。 
 
 
 ### <a name="a-simple-python-pipeline"></a>简单的 Python 管道
 
-此代码段显示了创建和运行基本 @no__t 所需的对象和调用：
+此代码段显示了创建和运行基本 `Pipeline` 所需的对象和调用：
 
 ```python
 ws = Workspace.from_config() 
@@ -157,7 +157,7 @@ pipeline_run = experiment.submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-代码段开头为常见的 Azure 机器学习对象、`Workspace`、`Datastore`、 [ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py)和 @no__t。 然后，该代码创建对象以容纳 `input_data` 并 `output_data`。 数组 `steps` 保存单个元素 @no__t，该元素将使用数据对象并在 `compute_target` 上运行。 然后，该代码将实例化 @no__t 0 对象本身，并传入工作区和步骤数组。 对 @no__t 的调用开始 Azure ML 管道的运行。 在管道完成之前对 @no__t 块的调用。 
+代码段开头为常见的 Azure 机器学习对象、`Workspace`、`Datastore`、 [ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py)和 `Experiment`。 然后，该代码将创建用于保存 `input_data` 和 `output_data` 的对象。 数组 `steps` 保存单个元素、将使用数据对象并在 `compute_target` 上运行的 `PythonScriptStep`。 然后，该代码将实例化 `Pipeline` 对象本身，并传入工作区和步骤数组。 调用 `experiment.submit(pipeline)` 会开始 Azure ML 管道的运行。 在管道完成之前，对 `wait_for_completion()` 的调用会被阻止。 
 
 ## <a name="best-practices-when-choosing-to-use-azure-ml-pipelines"></a>选择使用 Azure ML 管道的最佳做法是什么？
 
@@ -177,7 +177,7 @@ pipeline_run.wait_for_completion()
 
 * 管道步骤之间的繁重耦合。 如果重构依赖步骤通常需要修改上一个步骤的输出，则可能是单独的步骤的成本要低于权益。 步骤过于耦合的另一个提示是不是数据的步骤的参数，而是用于控制处理的标志。 
 
-* 提前优化计算资源。 例如，有几个阶段用于数据准备，一阶段通常会看到 "哦，这里可以使用 `MpiStep` 进行并行编程，而在这里，我可以将 `PythonScriptStep` 用于不太强大的计算目标，等等。 而且，在很长一段时间内，创建如这样的细化步骤可能会很有价值，尤其是在有可能使用缓存的结果而不是始终重新计算时。 但管道并不旨在代替 `multiprocessing` 模块。 
+* 提前优化计算资源。 例如，有几个阶段可用于进行数据准备，其中一阶段经常会出现 "哦，这里，我可以将 `MpiStep` 用于并行编程，但此处可以使用具有不太强大计算目标的 `PythonScriptStep`"等。 而且，在很长一段时间内，创建如这样的细化步骤可能会很有价值，尤其是在有可能使用缓存的结果而不是始终重新计算时。 但管道并不旨在代替 `multiprocessing` 模块。 
 
 在项目很大或更接近部署之前，您的管道应该更粗糙，而不是细化。 如果你将 ML 项目视为涉及_阶段_和管道，以提供完整的工作流来使你逐步完成某个特定阶段，则会出现正确的路径。 
 
@@ -196,7 +196,7 @@ pipeline_run.wait_for_completion()
 
 ## <a name="next-steps"></a>后续步骤
 
-Azure ML 管道是一项功能强大的工具，可在早期开发阶段开始交付价值。 随着团队和项目的增长，该值也随之增加。 本文介绍了如何通过 Azure 机器学习 Python SDK 指定管道，并在 Azure 上安排了管道。 您已经了解了一些基本的源代码，并介绍了一些可用的 @no__t 0 类。 你应了解何时使用 Azure ML 管道以及 Azure 如何运行它们。 
+Azure ML 管道是一项功能强大的工具，可在早期开发阶段开始交付价值。 随着团队和项目的增长，该值也随之增加。 本文介绍了如何通过 Azure 机器学习 Python SDK 指定管道，并在 Azure 上安排了管道。 您已经了解了一些基本的源代码，并介绍了一些可用的 `PipelineStep` 类。 你应了解何时使用 Azure ML 管道以及 Azure 如何运行它们。 
 
 
 + 了解如何[创建你的第一个管道](how-to-create-your-first-pipeline.md)。

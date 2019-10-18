@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: b6de3a520150a95316371c4454fd2537f2beab5d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: HT
+ms.openlocfilehash: 275598aa50c252512348f4a04543e1beaf538626
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331142"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529484"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure 安全中心提供支持的功能
 
@@ -96,14 +96,14 @@ Azure 安全中心支持以下 PaaS 资源：
 |MySQL*|✔| ✔|
 |CosmosDB|X| ✔|
 |Blob 存储|✔| ✔|
-|存储帐户|✔| NA|
+|存储帐户|✔| X|
 |应用服务|✔| ✔|
 |函数|✔| X|
 |云服务|✔| X|
-|VNet|✔| NA|
-|子网|✔| NA|
-|NIC|✔| NA|
-|NSG|✔| NA|
+|VNet|✔| X|
+|子网|✔| X|
+|NIC|✔| X|
+|NSG|✔| X|
 |Subscription|✔ * *| ✔|
 |批处理帐户|✔| X|
 |Service fabric 帐户|✔| X|
@@ -114,14 +114,14 @@ Azure 安全中心支持以下 PaaS 资源：
 |流分析|✔| X|
 |事件中心命名空间|✔| X|
 |Logic Apps|✔| X|
-|Redis|✔| NA|
+|Redis|✔| X|
 |Data Lake 分析|✔| X|
 |Data Lake Store|✔| X|
 |密钥保管库|✔| X|
 
 \* 公共预览版目前支持这些功能。
 
-\* @ no__t Azure Active Directory （Azure AD）建议仅适用于标准订阅。
+\* \* Azure Active Directory （Azure AD）建议仅适用于标准订阅。
 
 ## <a name="next-steps"></a>后续步骤
 

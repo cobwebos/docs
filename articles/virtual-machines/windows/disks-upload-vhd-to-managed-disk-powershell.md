@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 88b5cacf432e467c893dac6fc5839c468b2eafbd
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: d193dcd0c0539c2daa7220d915fdc3e02c8ea798
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828662"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512440"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>使用 Azure PowerShell 将 vhd 上传到 Azure
 
@@ -23,11 +23,11 @@ ms.locfileid: "71828662"
 
 目前，标准 HDD、标准 SSD 和高级 SSD 托管磁盘支持直接上传。 它尚不支持超 Ssd。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 下载最新[版本的 AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)。
 - [安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
-- 如果要从-pem 上传 vhd：已[为 Azure 准备](prepare-for-upload-vhd-image.md)的、本地存储的 vhd。
+- 如果要从-pem 上传 vhd：已[为 Azure 准备](prepare-for-upload-vhd-image.md)的 vhd，本地存储。
 - 如果要执行复制操作，请使用 Azure 中的托管磁盘。
 
 ## <a name="create-an-empty-managed-disk"></a>创建一个空托管磁盘
@@ -39,9 +39,9 @@ ms.locfileid: "71828662"
 - ReadToUpload，这意味着磁盘已准备好接收上载，但未生成[安全访问签名](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)（SAS）。
 - ActiveUpload，这意味着磁盘已准备好接收上传并且已生成 SAS。
 
-无论在哪种状态中，托管磁盘都将按[标准 HDD 定价](https://azure.microsoft.com/pricing/details/managed-disks/)计费，而不考虑实际的磁盘类型。 例如，P10 将按 S10 计费。 在托管磁盘上调用`revoke-access`之前，此值为 true，这是将磁盘附加到虚拟机所必需的。
+无论在哪种状态中，托管磁盘都将按[标准 HDD 定价](https://azure.microsoft.com/pricing/details/managed-disks/)计费，而不考虑实际的磁盘类型。 例如，P10 将按 S10 计费。 在对托管磁盘调用 `revoke-access` 之前，此设置为 true，这是将磁盘附加到虚拟机所必需的。
 
-在创建用于上传的空标准 HDD 之前，需要要上传的 vhd 的文件大小（以字节为单位）。 示例代码将为您提供该代码，但您自己可以使用： `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`。 指定 **-UploadSizeInBytes**参数时，将使用此值。
+在创建用于上传的空标准 HDD 之前，需要要上传的 vhd 的文件大小（以字节为单位）。 示例代码将为您提供该代码，您可以自行使用： `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`。 指定 **-UploadSizeInBytes**参数时，将使用此值。
 
 现在，在本地 shell 上，通过在 **-CreateOption**参数中指定**上传**设置以及[AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) cmdlet 中的 **-UploadSizeInBytes**参数来创建一个空的标准 HDD 进行上传。 然后调用[AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0)创建磁盘：
 
@@ -77,7 +77,7 @@ $disk = Get-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
 ```
 
-如果在上传过程中 SAS 过期，但尚未调用`revoke-access` ，则可以通过再次使用`grant-access`来获取新的 sas 以继续上传。
+如果在上传过程中 SAS 过期，并且尚未调用 `revoke-access`，则可以获取新的 SAS，使用 `grant-access` 继续上传。
 
 上传完成后，不再需要将任何数据写入磁盘，请撤销 SAS。 吊销 SAS 将更改托管磁盘的状态，并允许你将磁盘附加到 VM。
 
@@ -94,7 +94,7 @@ Revoke-AzDiskAccess -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
 > [!IMPORTANT]
 > 如果要提供 Azure 中托管磁盘的磁盘大小（以字节为单位），则需要添加512的偏移量。 这是因为在返回磁盘大小时，Azure 会省略页脚。 如果不执行此操作，该副本将失败。 以下脚本已为你执行此功能。
 
-使用你的值替换 `<sourceResourceGroupHere>`，`<sourceDiskNameHere>`，`<targetDiskNameHere>`，`<targetResourceGroupHere>`，`<yourOSTypeHere>`，`<yourTargetLocationHere>` （位置值的示例是 uswest2），然后运行以下脚本，以便复制托管磁盘。
+使用你的值替换 `<sourceResourceGroupHere>`、`<sourceDiskNameHere>`、`<targetDiskNameHere>`、`<targetResourceGroupHere>`、`<yourOSTypeHere>` 和 `<yourTargetLocationHere>` （位置值的示例是 uswest2），然后运行以下脚本，以便复制托管磁盘。
 
 ```powershell
 
@@ -128,4 +128,4 @@ Revoke-AzDiskAccess -ResourceGroupName $targetRG -DiskName $targetDiskName
 
 现在已成功将 vhd 上传到托管磁盘，可以将磁盘附加到 VM 并开始使用它。
 
-若要了解如何将磁盘附加到 VM，请参阅主题的文章：[使用 PowerShell 将数据磁盘附加到 WINDOWS VM](attach-disk-ps.md)。
+若要了解如何将数据磁盘附加到 VM，请参阅主题：[使用 PowerShell 将数据磁盘附加到 WINDOWS VM](attach-disk-ps.md)。 若要将磁盘用作 OS 磁盘，请参阅[从专用磁盘创建 WINDOWS VM](create-vm-specialized.md#create-the-new-vm)。
