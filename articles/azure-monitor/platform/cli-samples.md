@@ -1,19 +1,18 @@
 ---
 title: Azure Monitor CLI 快速入门示例
 description: Azure 监视器功能的示例 CLI 命令。 Azure 监视器是一项 Microsoft Azure 服务，允许用户发送警报通知、基于所配置的遥测数据调用 Web URL 和自动缩放云服务、虚拟机和 Web 应用。
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 05/16/2018
-ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: fa3293346fee6f6666db01dab5587dd760df84b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 05/16/2018
+ms.openlocfilehash: 48ce748a95f58abb060cd6f54ac29c877356f5de
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60740877"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555583"
 ---
 # <a name="azure-monitor-cli-quick-start-samples"></a>Azure Monitor CLI 快速入门示例
 本文演示有助于访问 Azure 监视器功能的示例命令行接口 (CLI) 命令。 使用 Azure 监视器，可以基于配置的遥测数据值自动缩放云服务、虚拟机和 Web 应用以及发送警报通知或调用 Web URL。
@@ -185,7 +184,7 @@ az monitor diagnostic-settings delete --name <diagnostic name> \
     --resource <target resource ID>
 ```
 
-## <a name="autoscale"></a>自动缩放
+## <a name="autoscale"></a>自动扩展
 
 按照此部分中的信息使用自动缩放设置。 需要修改这些示例。
 

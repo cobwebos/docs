@@ -1,83 +1,77 @@
 ---
 title: 如何从用于 VM 的 Azure Monitor（预览版）查询日志 | Microsoft Docs
-description: 为 Vm 解决方案的 azure Monitor 收集指标和日志数据和这篇文章介绍记录并包含的示例查询。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
+description: 用于 VM 的 Azure Monitor 解决方案将指标和日志数据收集到，本文将介绍这些记录，并提供示例查询。
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/10/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 23ce57add0d55ba5901e2f5fcf82b3279d349cdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 04/10/2019
+ms.openlocfilehash: 7363f1ec11974dab3e0c0149c18ac4f0bf1c86ee
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66472590"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555185"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>如何从用于 VM 的 Azure Monitor（预览版）查询日志
-适用于 Vm 的 azure Monitor 收集性能和连接指标、 计算机和进程清单数据和运行状况状态信息并将其转发到 Azure Monitor 中的 Log Analytics 工作区。  此数据是可用于[查询](../../azure-monitor/log-query/log-query-overview.md)Azure 监视器中。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
+用于 VM 的 Azure Monitor 收集性能和连接指标、计算机和进程清单数据以及健康状况信息，并将其转发到 Azure Monitor 中的 Log Analytics 工作区。  此数据可用于在 Azure Monitor 中进行[查询](../../azure-monitor/log-query/log-query-overview.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
 
 ## <a name="map-records"></a>映射记录
 除了在进程或计算机启动或载入到用于 VM 的 Azure Monitor 映射功能时生成的记录以外，还会针对每个唯一计算机和进程每小时生成一条记录。 这些记录的属性在下表中列出。 ServiceMapComputer_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中计算机资源的字段。 ServiceMapProcess_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中进程资源的字段。 ResourceName_s 字段与相应的 Azure Resource Manager 资源中的名称字段匹配。 
 
 包含内部生成的可用于标识唯一进程和计算机的属性：
 
-- 计算机：使用 ResourceId 或 ResourceName_s 来唯一标识 Log Analytics 工作区中的计算机   。
-- 进程：使用 ResourceId 来唯一标识 Log Analytics 工作区中的进程  。 *ResourceName_s* 在运行该进程的计算机 (MachineResourceName_s) 的上下文中唯一 
+- 计算机：使用 *ResourceId* 或 *ResourceName_s* 唯一标识 Log Analytics 工作区中的计算机。
+- 进程：使用 *ResourceId* 唯一标识 Log Analytics 工作区中的进程。 *ResourceName_s* 在运行该进程的计算机 (MachineResourceName_s) 的上下文中唯一 
 
 由于在指定的时间范围内，指定的进程和计算机可能存在多条记录，因此针对同一个计算机或进程的查询可能返回多条记录。 若要仅添加最新记录，请在查询中添加“| dedup ResourceId”。
 
 ### <a name="connections-and-ports"></a>连接和端口
-连接指标功能引入了 Azure Monitor 日志-VMConnection 和 VMBoundPort 中的两个新表。 这些表提供有关 （入站和出站） 的计算机的连接，以及在服务器的信息是打开/活动在其上的端口。 通过提供时间窗口期间获取的特定指标的方法的 Api 还公开 ConnectionMetrics。 TCP 连接所得*接受*侦听套接字上将入站，而创建的那些*连接*到给定的 IP 和端口均为出站。 连接方向由 Direction 属性表示，可将其设置为 **inbound** 或 **outbound**。 
+连接指标功能在 Azure Monitor 日志中引入了两个新的表-VMConnection 和 VMBoundPort。 这些表提供有关计算机的连接（入站和出站）的信息，以及在其上打开/活动的服务器端口的信息。 ConnectionMetrics 还通过可提供在时间范围内获取特定指标的方法的 Api 公开。 由于侦听套接字上的*接受*导致的 TCP 连接是入站的，而通过*连接*到给定的 IP 和端口创建的连接是出站的。 连接方向由 Direction 属性表示，可将其设置为 **inbound** 或 **outbound**。 
 
-依赖关系代理报告的数据生成这些表中的记录。 每个记录表示在 1 分钟的时间间隔内观察值。 TimeGenerated 属性表示时间间隔的开始时间。 每条记录包含用于识别相应实体（即连接或端口）以及与该实体关联的指标的信息。 目前，只会报告使用“基于 IPv4 的 TCP”发生的网络活动。 
+这些表中的记录是从 Dependency Agent 报告的数据生成的。 每条记录表示一分钟时间间隔内的观察。 TimeGenerated 属性表示时间间隔的开始时间。 每条记录包含用于识别相应实体（即连接或端口）以及与该实体关联的指标的信息。 目前，只会报告使用“基于 IPv4 的 TCP”发生的网络活动。 
 
 #### <a name="common-fields-and-conventions"></a>公共字段和约定 
-以下字段和约定适用于 VMConnection 和 VMBoundPort: 
+以下字段和约定适用于 VMConnection 和 VMBoundPort： 
 
-- 计算机：报告计算机的名称完全限定域名 
-- AgentID:具有 Log Analytics 代理的计算机的唯一标识符  
-- 计算机:机公开的 ServiceMap Azure 资源管理器资源的名称。 它是在窗体*m-{GUID}* ，其中*GUID*作为 AgentID 的同一个 guid  
-- 进程：进程由 ServiceMap Azure 资源管理器资源的名称。 它是在窗体*p-{十六进制字符串}* 。 进程是计算机范围内唯一的若要跨计算机生成唯一的进程 ID，组合计算机和进程的字段。 
-- ProcessName:报告的过程可执行文件名称。
-- 所有 IP 地址都的字符串格式 IPv4 规范，例如*13.107.3.160* 
+- 计算机：报告计算机的完全限定的域名 
+- AgentID：具有 Log Analytics 代理的计算机的唯一标识符  
+- 计算机： ServiceMap 公开的计算机的 Azure 资源管理器资源的名称。 它的格式为*m-{GUID}* ，其中*guid*与 AgentID 的 guid 相同  
+- 进程： ServiceMap 公开的进程的 Azure 资源管理器资源的名称。 其形式为*p-{十六进制字符串}* 。 进程在计算机作用域内是唯一的，在计算机之间生成唯一的进程 ID，组合计算机和进程字段。 
+- ProcessName：报告进程的可执行文件名称。
+- 所有 IP 地址都是 IPv4 规范格式的字符串，例如*13.107.3.160* 
 
-为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内对以下属性共用相同值的物理网络连接聚合到 VMConnection  中的一个逻辑记录内。 
+为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内对以下属性共用相同值的物理网络连接聚合到 VMConnection 中的一个逻辑记录内。 
 
-| 属性 | 描述 |
+| properties | 描述 |
 |:--|:--|
 |Direction |连接方向，值为 *inbound* 或 *outbound* |
-|Machine |计算机 FQDN |
-|Process |进程或进程组的标识，状态为正在启动/接受连接 |
+|计算机 |计算机 FQDN |
+|流程 |进程或进程组的标识，状态为正在启动/接受连接 |
 |SourceIp |源的 IP 地址 |
 |DestinationIp |目标的 IP 地址 |
 |DestinationPort |目标的端口号 |
-|Protocol |用于连接的协议。  值为 *tcp*。 |
+|协议 |用于连接的协议。  值为 *tcp*。 |
 
 为了帮助你权衡分组造成的影响，以下记录属性中提供了有关分组的物理连接数的信息：
 
-| 属性 | 描述 |
+| properties | 描述 |
 |:--|:--|
 |LinksEstablished |在报告时间范围内建立的物理网络连接数 |
 |LinksTerminated |在报告时间范围内终止的物理网络连接数 |
 |LinksFailed |在报告时间范围内失败的物理网络连接数 此信息目前仅适用于出站连接。 |
 |LinksLive |在报告时间范围结束时打开的物理网络连接数|
 
-#### <a name="metrics"></a>度量值
+#### <a name="metrics"></a>指标
 
 除了连接计数指标以外，以下记录属性中还包含了有关在给定逻辑连接或网络端口上发送和接收的数据量的信息：
 
-| 属性 | 描述 |
+| properties | 描述 |
 |:--|:--|
 |BytesSent |在报告时间范围内发送的字节总数 |
 |BytesReceived |在报告时间范围内接收的字节总数 |
-|Responses |在报告时间范围内观测到的响应数。 
+|响应 |在报告时间范围内观测到的响应数。 
 |ResponseTimeMax |在报告时间范围内观测到的最大响应时间（毫秒）。 如果无值，则该属性为空。|
 |ResponseTimeMin |在报告时间范围内观测到的最小响应时间（毫秒）。 如果无值，则该属性为空。|
 |ResponseTimeSum |在报告时间范围内观测到的所有响应时间的和（毫秒）。 如果无值，则该属性为空。|
@@ -91,7 +85,7 @@ ms.locfileid: "66472590"
 1. 如果进程在相同的 IP 地址上接受连接，但通过多个网络接口接受连接，则为每个接口单独报告一条记录。 
 2. 带通配符 IP 的记录不包含任何活动。 包含此类记录的目的是表示在计算机上为入站流量开放了某个端口这一事实。
 3. 为了降低详细程度和数据量，存在带有特定 IP 地址的匹配记录（适用于相同的进程、端口和协议）时，将省略带通配符 IP 的记录。 省略了通配符 IP 记录后，具有特定 IP 地址的 IsWildcardBind 记录属性将设置为“True”，表示已通过报告计算机的每个接口公开了该端口。
-4. 绑定仅在特定接口的端口具有设置为 IsWildcardBind *False*。
+4. 仅在特定接口上绑定的端口的 IsWildcardBind 设置为*False*。
 
 #### <a name="naming-and-classification"></a>命名和分类
 为提供方便，RemoteIp 属性中包含了连接的远程端的 IP 地址。 对于入站连接，RemoteIp 与 SourceIp 相同；对于出站连接，RemoteIp 与 DestinationIp 相同。 RemoteDnsCanonicalNames 属性表示计算机针对 RemoteIp 报告的 DNS 规范名称。 RemoteDnsQuestions 和 RemoteClassification 属性保留供将来使用。 
@@ -99,61 +93,61 @@ ms.locfileid: "66472590"
 #### <a name="geolocation"></a>地理位置
 *VMConnection* 还包含以下记录属性中每个连接记录的远程端的地理位置信息： 
 
-| 属性 | 描述 |
+| properties | 描述 |
 |:--|:--|
-|RemoteCountry |承载 RemoteIp 国家/地区的名称。  例如 *United States* |
+|RemoteCountry |托管 RemoteIp 的国家/地区的名称。  例如 *United States* |
 |RemoteLatitude |地理位置的纬度。 例如 *47.68* |
 |RemoteLongitude |地理位置的经度。 例如 *-122.12* |
 
 #### <a name="malicious-ip"></a>恶意 IP
 将会根据一组 IP 检查 *VMConnection* 表中的每个 RemoteIp 属性，以识别已知的恶意活动。 如果 RemoteIp 识别为恶意，则会在以下记录属性中填充以下属性（如果未将该 IP 视为恶意，则这些属性为空）：
 
-| 属性 | 描述 |
+| properties | 描述 |
 |:--|:--|
 |MaliciousIp |RemoteIp 地址 |
-|IndicatorThreadType |检测到的威胁标志是以下值之一：Botnet  、C2  、CryptoMining  、Darknet  、DDos  、MaliciousUrl  、Malware  、Phishing  、Proxy  、PUA  和 Watchlist  。   |
-|Description |观察到的威胁说明。 |
-|TLPLevel |交通信号灯协议 (TLP) 级别是以下定义值之一：White  、Green  、Amber  和 Red  。 |
-|Confidence |值介于 0 和 100  之间。 |
-|Severity |值介于 0 和 5  之间，其中 5  表示最严重，0  表示毫不严重。 默认值为 3  。  |
+|IndicatorThreadType |检测到的威胁标志是以下值之一：Botnet、C2、CryptoMining、Darknet、DDos、MaliciousUrl、Malware、Phishing、Proxy、PUA 和 Watchlist。   |
+|描述 |观察到的威胁说明。 |
+|TLPLevel |交通信号灯协议 (TLP) 级别是以下定义值之一：White、Green、Amber 和 Red。 |
+|置信度 |值介于 0 和 100 之间。 |
+|Severity |值介于 0 和 5 之间，其中 5 表示最严重，0 表示毫不严重。 默认值为 3。  |
 |FirstReportedDateTime |提供程序第一次报告指标。 |
 |LastReportedDateTime |Interflow 最后一次看到指标。 |
-|IsActive |使用值 True  或 False  指明是否停用标志。 |
+|IsActive |使用值 True 或 False 指明是否停用标志。 |
 |ReportReferenceLink |与给定可观测结果相关的报告的链接。 |
 |AdditionalInformation |提供观测到的威胁的其他信息（若有）。 |
 
 ### <a name="ports"></a>端口 
-在计算机上的主动接受传入的流量或可能无法接受流量，但报告的时间窗口，期间处于空闲状态的端口将写入 VMBoundPort 表。  
+计算机上的端口主动接受传入流量，或可能接受流量，但在报告时间窗口期间处于空闲状态时，它们将写入 VMBoundPort 表。  
 
-由以下字段标识 VMBoundPort 中的每个记录： 
+VMBoundPort 中的每个记录都由以下字段标识： 
 
-| 属性 | 描述 |
+| properties | 描述 |
 |:--|:--|
-|Process | 进程 （或组的进程） 端口与之关联的标识。|
-|Ip | 端口的 IP 地址 (可以是通配符 IP *0.0.0.0*) |
+|流程 | 与端口关联的进程（或进程组）的标识。|
+|Lip | 端口 IP 地址（可以是通配符 IP， *0.0.0.0*） |
 |Port |端口号 |
-|Protocol | 协议。  示例中， *tcp*或*udp* (仅*tcp*目前支持)。|
+|协议 | 协议。  例如， *tcp*或*udp* （当前仅支持*tcp* ）。|
  
-标识一个端口派生自上述五个字段，存储在 PortId 属性。 此属性可用于快速查找记录特定端口的各时间。 
+标识 a 端口派生自上述五个字段，存储在 PortId 属性中。 此属性可用于跨时间快速查找特定端口的记录。 
 
-#### <a name="metrics"></a>度量值 
-端口记录包含度量值表示与之关联的连接。 目前，报告以下度量值 （在上一节中介绍的每个指标的详细信息）： 
+#### <a name="metrics"></a>指标 
+端口记录包含表示与之关联的连接的指标。 目前报告了以下指标（每个指标的详细信息将在上一节中介绍）： 
 
-- BytesSent 和 BytesReceived 
-- LinksEstablished，LinksTerminated，LinksLive 
-- ResposeTime，ResponseTimeMin，ResponseTimeMax ResponseTimeSum 
+- 内 bytessent 和 BytesReceived 
+- LinksEstablished, LinksTerminated, LinksLive 
+- ResposeTime, ResponseTimeMin, ResponseTimeMax, ResponseTimeSum 
 
 考虑的几个要点：
 
 - 如果进程在相同的 IP 地址上接受连接，但通过多个网络接口接受连接，则为每个接口单独报告一条记录。  
 - 带通配符 IP 的记录不包含任何活动。 包含此类记录的目的是表示在计算机上为入站流量开放了某个端口这一事实。 
-- 为了降低详细程度和数据量，存在带有特定 IP 地址的匹配记录（适用于相同的进程、端口和协议）时，将省略带通配符 IP 的记录。 如果省略通配符 IP 记录，则*IsWildcardBind*具有特定 IP 地址的记录的属性将设置为*True*。  这表示通过报告的计算机的每个接口公开的端口。 
-- 绑定仅在特定接口的端口具有设置为 IsWildcardBind *False*。 
+- 为了降低详细程度和数据量，存在带有特定 IP 地址的匹配记录（适用于相同的进程、端口和协议）时，将省略带通配符 IP 的记录。 省略通配符 IP 记录时，具有特定 IP 地址的记录的*IsWildcardBind*属性将设置为*True*。  这表明该端口是在报表计算机的每个接口上公开的。 
+- 仅在特定接口上绑定的端口的 IsWildcardBind 设置为*False*。 
 
-### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL 记录
+### <a name="servicemapcomputer_cl-records"></a>ServiceMapComputer_CL 记录
 类型为 *ServiceMapComputer_CL* 的记录包含具有依赖项代理的服务器的库存数据。 这些记录的属性在下表中列出：
 
-| 属性 | 说明 |
+| properties | 描述 |
 |:--|:--|
 | Type | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
@@ -175,10 +169,10 @@ ms.locfileid: "66472590"
 | VirtualMachineName_s | VM 的名称 |
 | BootTime_t | 引导时间 |
 
-### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL 类型记录
+### <a name="servicemapprocess_cl-type-records"></a>ServiceMapProcess_CL 类型记录
 类型为 *ServiceMapProcess_CL* 的记录包含具有依赖项代理的服务器上 TCP 连接进程的库存数据。 这些记录的属性在下表中列出：
 
-| 属性 | 说明 |
+| properties | 描述 |
 |:--|:--|
 | Type | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
@@ -197,7 +191,7 @@ ms.locfileid: "66472590"
 | CommandLine_s | 命令行 |
 | ExecutablePath_s | 可执行文件的路径 |
 | WorkingDirectory_s | 工作目录 |
-| UserName | 执行进程所用的帐户 |
+| Username | 执行进程所用的帐户 |
 | UserDomain | 执行进程所在的域 |
 
 ## <a name="sample-log-searches"></a>示例日志搜索
@@ -290,7 +284,7 @@ VMBoundPort
 | distinct Port, ProcessName
 ```
 
-### <a name="number-of-open-ports-across-machines"></a>在计算机之间打开端口数
+### <a name="number-of-open-ports-across-machines"></a>计算机上的打开端口数
 ```kusto
 VMBoundPort
 | where Ip != "127.0.0.1"
@@ -299,7 +293,7 @@ VMBoundPort
 | order by OpenPorts desc
 ```
 
-### <a name="score-processes-in-your-workspace-by-the-number-of-ports-they-have-open"></a>它们具有的端口数目来打开评分工作区中的进程
+### <a name="score-processes-in-your-workspace-by-the-number-of-ports-they-have-open"></a>按打开的端口数对工作区中的进程进行评分
 ```kusto
 VMBoundPort
 | where Ip != "127.0.0.1"
@@ -309,7 +303,7 @@ VMBoundPort
 ```
 
 ### <a name="aggregate-behavior-for-each-port"></a>每个端口的聚合行为
-此查询可以然后使用要评分的端口由活动，例如，大多数的入站/出站流量的端口，与大多数连接的端口
+然后，可以使用此查询按活动为端口评分，例如，包含最多入站/出站流量的端口、具有最多连接的端口
 ```kusto
 // 
 VMBoundPort
@@ -362,5 +356,5 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 如果您不熟悉 Azure Monitor 中编写日志查询，请查看[如何使用 Log Analytics](../../azure-monitor/log-query/get-started-portal.md)在 Azure 门户中编写日志查询。
+* 如果不熟悉如何在 Azure Monitor 中编写日志查询，请查看[如何使用](../../azure-monitor/log-query/get-started-portal.md)Azure 门户中 Log Analytics 来编写日志查询。
 * 了解如何[编写搜索查询](../../azure-monitor/log-query/search-queries.md)。

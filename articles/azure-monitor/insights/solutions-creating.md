@@ -1,31 +1,25 @@
 ---
 title: 在 Azure 中生成管理解决方案 | Microsoft Docs
 description: 管理解决方案包括 Azure 中打包的管理方案，客户可将其添加到 Log Analytics 工作区。  本文提供有关如何创建要在自己的环境中使用或可供客户使用的管理解决方案的详细信息。
-services: monitoring
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/20/2017
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
+ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ef1af4d3d27bc098341a4de716e293557baa946a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 97472a65af6eb2c5c2da93d93f38450cc021f680
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595807"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555288"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>在 Azure 中设计和生成管理解决方案（预览）
 > [!NOTE]
-> 这是在 Azure 中创建管理解决方案（当前处于预览状态）的初步文档。 如下所述的全部架构均会有变动。
+> 这是在 Azure 中创建管理解决方案的初步文档，当前仅提供预览版。 如下所述的全部架构均会有变动。
 
-[管理解决方案]( solutions.md)提供打包的管理方案，客户可将其添加到 Log Analytics 工作区。  本文提供了一个基本的流程，方便用户设计和生成符合最常见要求的管理解决方案。  如果不了解如何生成管理解决方案，则可一开始就使用此流程，并在要求提高以后利用相关概念生成更复杂的解决方案。
+[管理解决方案]( solutions.md)提供打包的管理方案，客户可将其添加到 Log Analytics 工作区。  本文提供了一个基本的流程，方便用户设计和生成符合最常见要求的管理解决方案。  如果不了解如何生成管理解决方案，则可一开始就使用此流程，然后在要求提高以后利用相关概念生成更复杂的解决方案。
 
 ## <a name="what-is-a-management-solution"></a>管理解决方案是什么？
 
@@ -34,7 +28,7 @@ ms.locfileid: "60595807"
 基本策略是通过在 Azure 环境中生成各个组件来启动管理解决方案。  功能正常以后，即可将其打包到[管理解决方案文件]( solutions-solution-file.md)中。 
 
 
-## <a name="design-your-solution"></a>设计解决方案
+## <a name="design-your-solution"></a>设计你的解决方案
 管理解决方案的最常见模式如下图所示。  下面介绍了此模式中的不同组件。
 
 ![管理解决方案概述](media/solutions-creating/solution-overview.png)

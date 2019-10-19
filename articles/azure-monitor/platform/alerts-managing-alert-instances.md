@@ -1,19 +1,18 @@
 ---
 title: 管理 Azure Monitor 中的警报实例
 description: 管理整个 Azure 中的警报实例
-author: anantr
-services: monitoring
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 91a770b522011f3955ae0956e289886eb204cf47
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.topic: conceptual
+author: anantr
+ms.author: robb
+ms.date: 09/24/2018
+ms.openlocfilehash: 955ed75f8253798e6970c02b0abf5794298ae6da
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702910"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555642"
 ---
 # <a name="manage-alert-instances-with-unified-alerts"></a>用统一警报管理警报实例
 随着 Azure Monitor 的[统一警报体验](https://aka.ms/azure-alerts-overview)，你可以在 Azure 上查看所有不同类型的警报。 这跨多个订阅，在一个窗格中。 本文介绍如何查看警报实例，以及如何查找特定的警报实例进行故障排除。
@@ -26,7 +25,7 @@ ms.locfileid: "71702910"
 可以通过以下任一方式来切换到 "警报" 页：
 
    + 在[Azure 门户](https://portal.azure.com/)中，选择 "**监视** > **警报**"。  
-     ![监视器警报的屏幕截图](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
+     监视警报 ](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg) 的 ![Screenshot
   
    + 使用特定资源的上下文。 打开资源，中转到 "**监视**" 部分，然后选择 "**警报**"。 预先筛选登陆页面，查找特定资源的警报。
    
@@ -39,7 +38,7 @@ ms.locfileid: "71702910"
 ## <a name="find-alert-instances"></a>查找警报实例
 
 "**警报摘要**" 页面提供了跨 Azure 的所有警报实例的概述。 您可以通过选择**多个订阅**（最多为5个），或通过跨**资源组**、特定**资源**或**时间范围**进行筛选来修改 "摘要" 视图。 选择 "**警报总数**" 或任何 "严重性" 带区，以跳到警报的列表视图。     
-   !["警报摘要" 页的屏幕截图](media/alerts-managing-alert-instances/alerts-summary.jpg)
+   警报摘要页 ![Screenshot ](media/alerts-managing-alert-instances/alerts-summary.jpg)
  
 在 "**所有警报**" 页上，将列出所有 Azure 上的警报实例。 如果是从警报通知进入到门户中，则可以使用可用的筛选器在该特定的警报实例上收缩范围。
 
@@ -54,5 +53,5 @@ ms.locfileid: "71702910"
    >  如果通过选择任何严重性区段进入了页面，则会为该严重性预筛选列表。
  
 选择任何警报实例将打开 "**警报详细信息**" 页，使您可以查看有关该特定警报实例的更多详细信息。   
-   ![警报详细信息页的屏幕截图](media/alerts-managing-alert-instances/alert-details.jpg)  
+   警报详细信息页 ![Screenshot ](media/alerts-managing-alert-instances/alert-details.jpg)  
 

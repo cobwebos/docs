@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: c513a7fe4df14ee21f4b26993a5eddb93bb90eac
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: dca032cceb4f1561d7ee8b35de502f8f5259cfe8
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533308"
+ms.locfileid: "72553632"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 
@@ -315,6 +315,8 @@ Azure Databricks 如何处理 Azure 机器学习：
 
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>将正确的 SDK 安装到 Databricks 库
 群集运行后，[创建一个库](https://docs.databricks.com/user-guide/libraries.html#create-a-library)，将合适的 Azure 机器学习 SDK 包附加到群集。
+
+1. 右键单击要将库存储到的当前工作区文件夹。 选择 "**创建** > **库**"。
 
 1. **仅选择一个**选项（不支持其他 SDK 安装）
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 8ba50e5b55e31c6542e81879068bf231918ce1b0
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 1ec241e261a7710b7a5b92d88f147ce8d148602b
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244884"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554045"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>利用 Azure Monitor 监视 Azure 资源
 如果你有依赖于 Azure 资源的关键应用程序和业务流程，则需要监视这些资源的可用性、性能和操作。 本文介绍 Azure 资源生成的监视数据，以及如何使用 Azure Monitor 的功能对此数据进行分析和发出警报。
@@ -92,7 +92,7 @@ Azure 中的资源生成的[日志](../platform/data-platform-logs.md)和[指标
 - 有关使用指标资源管理器的基本知识，请参阅[Azure 指标资源管理器](../platform/metrics-getting-started.md)入门。
 - 请参阅[Azure 指标资源管理器的高级功能](../platform/metrics-charts.md)，了解指标资源管理器的高级功能，如使用多个度量值以及应用筛选器和拆分。
 
-![度量值](media/monitor-azure-resource/metrics.png)
+![指标](media/monitor-azure-resource/metrics.png)
 
 
 ## <a name="analyzing-logs"></a>分析日志
@@ -140,7 +140,7 @@ Azure Monitor 日志合并了来自多个服务和其他数据源的日志和指
 
 - 请参阅每个服务的监视文档，以确定是否有见解或解决方案可用。
 
-![洞察力](media/monitor-azure-resource/insights.png)
+![见解](media/monitor-azure-resource/insights.png)
 
 ## <a name="next-steps"></a>后续步骤
 

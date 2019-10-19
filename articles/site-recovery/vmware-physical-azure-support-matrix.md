@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 75b2c08ab02ef41ee4d196d8f81c633aeb46a14e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 7d46773ce45cb3ef8b70d3c6074b9f1c771e9e24
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390053"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554636"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -76,8 +76,8 @@ Windows Server 2008 SP2 或更高版本（64位/32 位） |  仅支持迁移。 
 Windows 10、Windows 8.1、Windows 8 | 。
 带 SP1 的 Windows 7 64 位 | 从[更新汇总 36](https://support.microsoft.com/help/4503156) （移动服务版本9.22）开始支持。 </br></br> 在移动服务代理的版本9:30 （预计从11月2019版开始），需要在 Windows 7 SP1 计算机上安装[服务堆栈更新（SSU）](https://support.microsoft.com/help/4490628)和[sha-1 更新](https://support.microsoft.com/help/4474419)。  2019年9月不支持 SHA-1，如果未启用 SHA-1 代码签名，则代理扩展不会按预期安装/升级。 详细了解[sha-1 升级和要求](https://aka.ms/SHA-2KB)。
 Linux | 仅支持64位系统。 不支持32位系统。<br/><br/>每个 Linux 服务器都应安装[linux Integration Services （.lis）组件](https://www.microsoft.com/download/details.aspx?id=55106)。 在测试故障转移/故障转移后，需要在 Azure 中启动该服务器。 如果缺少 .LIS 组件，请确保在为要在 Azure 中启动的计算机启用复制之前安装[组件](https://www.microsoft.com/download/details.aspx?id=55106)。 <br/><br/> Site Recovery 会协调故障转移，以在 Azure 中运行 Linux 服务器。 但是，Linux 供应商可能会限制仅支持尚未达到使用寿命的分发版本。<br/><br/> 在 Linux 发行版中，仅支持属于分发次要版本/更新的原版内核。<br/><br/> 不支持跨主要 Linux 发行版升级受保护的计算机。 若要升级，请禁用复制，升级操作系统，然后再重新启用复制。<br/><br/> [详细了解](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)Azure 中对 Linux 和开源技术的支持。
-Linux Red Hat Enterprise | 5.2 到 5.11 @ no__t-0<br/> 6.1 到 6.10 @ no__t-0<br/> 7.0 至7。6<br/> <br/> 运行 Red Hat Enterprise Linux 5.2-5.11 & 6.1-6.10 的服务器未预装[Linux Integration Services （.lis）组件](https://www.microsoft.com/download/details.aspx?id=55106)。 请确保在启用复制之前安装[组件](https://www.microsoft.com/download/details.aspx?id=55106)，以便在 Azure 中启动计算机。
-Linux：CentOS | 5.2 到 5.11 @ no__t-0<br/> 6.1 到 6.10 @ no__t-0<br/> 7.0 至7。6<br/> <br/> 运行 CentOS 5.2-5.11 & 6.1-6.10 的服务器未预装[Linux Integration Services （.lis）组件](https://www.microsoft.com/download/details.aspx?id=55106)。 请确保在启用复制之前安装[组件](https://www.microsoft.com/download/details.aspx?id=55106)，以便在 Azure 中启动计算机。
+Linux Red Hat Enterprise | 5.2 到 5.11 </b><br/> 6.1 到 6.10 </b><br/> 7.0 至7。7<br/> <br/> 运行 Red Hat Enterprise Linux 5.2-5.11 & 6.1-6.10 的服务器未预装[Linux Integration Services （.lis）组件](https://www.microsoft.com/download/details.aspx?id=55106)。 请确保在启用复制之前安装[组件](https://www.microsoft.com/download/details.aspx?id=55106)，以便在 Azure 中启动计算机。
+Linux：CentOS | 5.2 到 5.11 </b><br/> 6.1 到 6.10 </b><br/> 7.0 至7。7<br/> <br/> 运行 CentOS 5.2-5.11 & 6.1-6.10 的服务器未预装[Linux Integration Services （.lis）组件](https://www.microsoft.com/download/details.aspx?id=55106)。 请确保在启用复制之前安装[组件](https://www.microsoft.com/download/details.aspx?id=55106)，以便在 Azure 中启动计算机。
 Ubuntu | Ubuntu 14.04 LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 [（查看支持的内核版本）](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1、SP2、SP3、SP4 [（查看支持的内核版本）](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3、SUSE Linux Enterprise Server 11 SP4<br/> 不支持从 SUSE Linux Enterprise Server 11 SP3 升级到 SP4 的复制计算机。 若要升级，请禁用复制，并在升级后重新启用。

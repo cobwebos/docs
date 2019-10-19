@@ -1,20 +1,18 @@
 ---
 title: 使用 Grafana 监视 Azure 服务和应用程序
 description: 路由 Azure Monitor 和 Application Insights 数据，以便在 Grafana 中进行查看。
-services: azure-monitor
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: ''
+ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 11/06/2017
-ms.topic: conceptual
-ms.service: azure-monitor
-ms.subservice: ''
-ms.openlocfilehash: b9a9d0a16a31d06d0d4edc1b6f0617a5771b179e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f5464710d5c7908eeec5dd917bfeff4756ff4e80
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872832"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552093"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>在 Grafana 中监控 Azure 服务
 你现在可以使用 [Azure Monitor 数据源插件](https://grafana.com/plugins/grafana-azure-monitor-datasource)从 [Grafana](https://grafana.com/) 监控 Azure 服务和应用程序。 该插件收集 Azure Monitor 所收集的应用程序性能数据，包括各种日志和指标。 随后，可以在 Grafana 仪表板上显示此数据。
@@ -51,7 +49,7 @@ ms.locfileid: "69872832"
 
     ![Grafana 登录屏幕](./media/grafana-plugin/grafana-login-screen.png)
 
-2. 使用用户名 admin 和之前创建的 Grafana 服务器管理员密码登录。 如果使用本地安装程序，默认密码将为 admin，并要求你在首次登陆时更改密码。
+2. 用用户名*admin*和前面创建的 Grafana 服务器管理员密码登录。 如果使用本地安装程序，默认密码将为 admin，并要求你在首次登陆时更改密码。
 
 ## <a name="configure-data-source-plugin"></a>配置数据源插件
 
@@ -69,7 +67,7 @@ ms.locfileid: "69872832"
     Log Analytics API 需要 [Log Analytics 读者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader)，其中包括读者角色权限并向其添加。
 
 4. 为要使用的 API 提供连接详细信息。 可以连接到所有或其中部分。 
-    * 如果连接到两个指标并登录 Azure Monitor，可以通过选择“与 Azure Monitor API 相同的详细信息”重复使用相同的凭据。
+    * 如果在 Azure Monitor 中同时连接到指标和日志，可以通过选择与**AZURE MONITOR API 相同的详细信息**来重复使用相同的凭据。
     * 配置插件时，可以指示插件要监控哪个 Azure 云（公共、Azure 美国政府、Azure 德国或 Azure 中国）。
     * 如果使用 Application Insights，还可以包含Application Insights API 和应用程序 ID，以收集基于 Application Insights 的指标。 有关详细信息，请参阅[获取 API 密钥和应用程序 ID](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)。
 
@@ -96,7 +94,7 @@ ms.locfileid: "69872832"
 4. 选择已配置的 Azure Monitor 数据源。
    * 收集 Azure Monitor 指标 - 在服务下拉列表中选择“Azure Monitor”。 随即将显示选择器列表，可在其中选择此图表中要监视的资源和指标。 若要收集 VM 的指标，请使用命名空间 Microsoft.Compute/VirtualMachines。 选择 VM 和指标后，即可开始在仪表板中查看其数据。
      ![适用于 Azure Monitor 的 Grafana 图形配置](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
-   * 收集 Azure Monitor 日志数据 - 在下拉列表中选择“Azure Log Analytics”。 选择要查询的工作区并设置查询文本。 可在此处复制已有的任何日志查询，或新建一个查询。 在查询中键入时，IntelliSense 将显示并建议自动完成选项。 选择可视化类型“时间序列表”，并运行查询。
+   * 收集 Azure Monitor 日志数据-选择 "服务" 下拉列表中的 " **Azure Log Analytics** "。 选择要查询的工作区并设置查询文本。 可以在此处复制已有的任何日志查询，也可以创建一个新查询。 在查询中键入时，IntelliSense 将显示并建议自动完成选项。 选择可视化类型“时间序列表”，并运行查询。
     
      > [!NOTE]
      >

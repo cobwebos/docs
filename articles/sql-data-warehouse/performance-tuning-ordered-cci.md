@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 0aecb2309743ffecc2fb68435192224c6c690aee
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
-ms.translationtype: MT
+ms.openlocfilehash: 0acdf1496151df57d4097ce5bc71d782dc465873
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035103"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554549"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>具有有序聚集列存储索引的性能优化  
 
@@ -119,16 +119,20 @@ OPTION (MAXDOP 1);
 ## <a name="create-ordered-cci-on-large-tables"></a>对大型表创建按序的 CCI
 创建按序的 CCI 是一种脱机操作。  对于没有分区的表，用户在按序的 CCI 创建过程完成之前，不能访问数据。   对于已分区表，因为引擎按分区创建按序排序的 CCI 分区，所以用户仍可以访问未处理顺序的 CCI 的分区中的数据。   可以使用此选项最大限度地减少在大表上排序的 CCI 创建过程中的停机时间： 
 
-1.  在目标大型表（称为表 A）上创建分区。
-2.  创建具有与表 A 相同的表和分区架构的空顺序 CCI 表（称为表 B）。
+1.  在目标大表上创建分区（称为 Table_A）。
+2.  创建具有与表 A 相同的表和分区架构的空顺序 CCI 表（称为 Table_B）。
 3.  将一个分区从表 A 切换到表 B。
-4.  在表 B 上运行 ALTER INDEX < Ordered_CCI_Index > REBUILD PARTITION = < Partition_ID > 以重新生成已切换的分区。  
-5.  为表 A 中的每个分区重复步骤3和4。
-6.  将所有分区从表 A 切换到表 B 并重新生成后，删除表 A 并将表 B 重命名为表 A。 
+4.  在表 B 上的 < Table_B > REBUILD PARTITION = < Partition_ID > 上运行 ALTER INDEX < Ordered_CCI_Index >，以重新生成已切换的分区。  
+5.  对 Table_A 中的每个分区重复步骤3和4。
+6.  将所有分区从 Table_A 切换到 Table_B，并已重新生成后，请删除 Table_A，并重命名 Table_B 到 Table_A。 
+
+>[!NOTE]
+>在 Azure SQL 数据仓库中有序聚集列存储索引（CCI）的预览期间，如果通过 CREATE 聚集列存储索引在已分区表上创建或重新生成了顺序的 CCI，则可能会生成重复的数据。 不会丢失任何数据。 即将推出此问题的修补程序。 为解决此问题，用户可以使用 CTAS 命令在已分区表上创建按序的 CCI
+
 
 ## <a name="examples"></a>示例
 
-**A.检查有序列和顺序序号：**
+**答：若要检查有序列和顺序序号：**
 ```sql
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
 FROM sys.index_columns i 
@@ -136,7 +140,7 @@ JOIN sys.columns c ON i.object_id = c.object_id AND c.column_id = i.column_id
 WHERE column_store_order_ordinal <>0
 ```
 
-**B.若要更改列序号，请在订单列表中添加或删除列，或更改为有序的 CCI：**
+**B. 若要更改列序号，请在订单列表中添加或删除列，或更改为按序的 CCI：**
 ```sql
 CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales
 ORDER (ProductKey, SalesAmount)

@@ -1,26 +1,25 @@
 ---
 title: Azure Monitor 的常见警报架构定义
 description: 了解 Azure Monitor 的常见警报架构定义
-author: anantr
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/14/2019
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 9e2c3849cca392539b96f47d8d7c32815851cf78
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.topic: conceptual
+author: anantr
+ms.author: robb
+ms.date: 03/14/2019
+ms.openlocfilehash: d1d822a5e7dadffd6be841e51ac407995adba2ea
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702884"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552550"
 ---
 # <a name="common-alert-schema-definitions"></a>常见警报架构定义
 
 本文介绍 Azure Monitor 的[常见警报架构定义](https://aka.ms/commonAlertSchemaDocs)，包括 Webhook、Azure 逻辑应用、Azure Functions 和 Azure 自动化 runbook 的架构定义。 
 
 任何警报实例都描述受影响的资源和警报的原因。 以下部分中的常见架构介绍了这些实例：
-* **概要**：一组标准化字段，它们在所有警报类型中通用，它们描述了警报所处的资源以及其他常见的警报元数据（例如严重性或说明）。 
+* **Essentials**：一组标准化字段，这些字段在所有警报类型中通用，它们描述了警报所处的资源以及其他常见的警报元数据（例如严重性或说明）。 
 * **警报上下文**：描述警报原因的一组字段，其中的字段根据警报类型而变化。 例如，指标警报在警报上下文中包含诸如 "指标名称" 和 "指标" 值之类的字段，而活动日志警报包含有关生成警报的事件的信息。 
 
 **示例警报负载**
@@ -72,23 +71,23 @@ ms.locfileid: "71702884"
 }
 ```
 
-## <a name="essentials"></a>软件包
+## <a name="essentials"></a>要素
 
 | 字段 | 描述|
 |:---|:---|
 | alertId | 用于唯一标识警报实例的 GUID。 |
-| alertRule | 生成警报实例的警报规则的名称。 |
-| severity | 警报的严重性。 可能的值：Sev0、Sev1、Sev2、Sev3 或 Sev4。 |
-| signalType | 标识在其上定义了警报规则的信号。 可能的值："指标"、"日志" 或 "活动日志"。 |
+| Add-alertrule | 生成警报实例的警报规则的名称。 |
+| Severity | 警报的严重性。 可能的值： Sev0、Sev1、Sev2、Sev3 或 Sev4。 |
+| signalType | 标识在其上定义警报规则的信号。 可能的值： "指标"、"日志" 或 "活动日志"。 |
 | monitorCondition | 当警报触发时，警报的监视条件将被设置为 "已**触发**"。 当导致触发警报的基础条件清除时，监视条件设置为 "**已解决**"。   |
-| monitoringService | 已生成警报的监视服务或解决方案。 警报上下文的字段由监视服务规定。 |
+| monitoringService | 生成警报的监视服务或解决方案。 警报上下文的字段由监视服务决定。 |
 | alertTargetIds | 受警报目标的 Azure 资源管理器 Id 的列表。 对于在 Log Analytics 工作区或 Application Insights 实例上定义的日志警报，该警报是各自的工作区或应用程序。 |
 | originAlertId | 警报实例的 ID，该 ID 由生成它的监视服务生成。 |
 | firedDateTime | 以协调世界时（UTC）触发警报实例的日期和时间。 |
-| resolvedDateTime | 警报实例的监视器条件设置为在 UTC 中**解决**的日期和时间。 当前仅适用于指标警报。|
+| resolvedDateTime | 警报实例的监视器条件设置为在 UTC 中**解决**的日期和时间。 目前仅适用于指标警报。|
 | description | 警报规则中定义的说明。 |
 |essentialsVersion| Essentials 部分的版本号。|
-|alertContextVersion | `alertContext`部分的版本号。 |
+|alertContextVersion | @No__t_0 部分的版本号。 |
 
 **示例值**
 ```json
@@ -152,7 +151,7 @@ ms.locfileid: "71702884"
 ### <a name="log-alerts"></a>日志警报
 
 > [!NOTE]
-> 对于定义了自定义 JSON 有效负载的日志警报，启用通用架构会将负载架构恢复为如下所述的模式。 对于启用了通用架构的警报，每个警报的大小上限为 256 KB。 如果搜索结果导致警报大小超过此阈值，则不会将其嵌入日志警报有效负载。 可以通过检查标志`IncludedSearchResults`来确定这一点。 如果不包含搜索结果，则应将搜索查询与[LOG ANALYTICS API](https://docs.microsoft.com/rest/api/loganalytics/query/get)一起使用。 
+> 对于定义了自定义 JSON 有效负载的日志警报，启用通用架构会将负载架构恢复为如下所述的模式。 对于启用了通用架构的警报，每个警报的大小上限为 256 KB。 如果搜索结果导致警报大小超过此阈值，则不会将其嵌入日志警报有效负载。 可以通过检查标志 `IncludedSearchResults` 来确定这一点。 如果不包含搜索结果，则应将搜索查询与[LOG ANALYTICS API](https://docs.microsoft.com/rest/api/loganalytics/query/get)一起使用。 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 

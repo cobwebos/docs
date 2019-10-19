@@ -3,30 +3,30 @@ title: 将 Apache Flink 用于 Apache Kafka - Azure事件中心 | Microsoft Docs
 description: 本文提供了有关如何将 Apache Flink 连接到已启用 Apache Kafka 的 Azure 事件中心的信息
 services: event-hubs
 documentationcenter: ''
-author: basilhariri
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.author: bahariri
-ms.openlocfilehash: dc4a982dde62f62eb8f2d91a61fd70ba79fa13d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: shvija
+ms.openlocfilehash: 881546a97b01bef993cc24c6b868ec97ddf5ac36
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821430"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555712"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>将 Apache Flink 与适用于 Apache Kafka 的 Azure 事件中心配合使用
 本教程演示如何在不更改协议客户端或运行自己的群集的情况下，将 Apache Flink 连接到已启用 Kafka 的事件中心。 Azure 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html)。
 
 使用 Apache Kafka 的主要优势之一是它可连接的框架的生态系统。 已启用 Kafka 的事件中心将 Kafka 的灵活性与 Azure 生态系统的扩展性、一致性和支持结合在一起。
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 > [!div class="checklist"]
 > * 创建事件中心命名空间
 > * 克隆示例项目
-> * 运行 Flink 制造者 
+> * 运行 Flink 生产者 
 > * 运行 Flink 使用者
 
 > [!NOTE]
@@ -59,7 +59,7 @@ git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
 cd azure-event-hubs-for-kafka/tutorials/flink
 ```
 
-## <a name="run-flink-producer"></a>运行 Flink 制造者
+## <a name="run-flink-producer"></a>运行 Flink 生产者
 
 使用提供的 Flink 制造者事例，将消息发送到事件中心服务。
 
@@ -67,7 +67,7 @@ cd azure-event-hubs-for-kafka/tutorials/flink
 
 #### <a name="producerconfig"></a>producer.config
 
-更新 `producer/src/main/resources/producer.config` 中的 `bootstrap.servers` 和 `sasl.jaas.config` 值，以使用正确的身份验证将制造者定向到事件中心 Kafka 终结点。
+更新 `producer/src/main/resources/producer.config` 中的 `bootstrap.servers` 和 `sasl.jaas.config` 值，以使用正确的身份验证将生产者定向到事件中心 Kafka 终结点。
 
 ```xml
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -81,7 +81,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 ### <a name="run-producer-from-the-command-line"></a>通过命令行运行生产者
 
-若要通过命令行运行制造者，生成 JAR，然后在 Maven 内运行（或使用 Maven 生成 JAR，然后通过向 classpath 添加必要的 Kafka JAR 在 Java 中运行）：
+若要通过命令行运行生产者，生成 JAR，然后从 Maven 中运行（或使用 Maven 生成 JAR，然后通过向 classpath 添加必要的 Kafka JAR 在 Java 中运行）：
 
 ```shell
 mvn clean package
@@ -112,7 +112,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 ### <a name="run-consumer-from-the-command-line"></a>通过命令行运行使用者
 
-若要通过命令行运行使用者，生成 JAR，然后在 Maven 内运行（或使用 Maven 生成 JAR，然后通过向 classpath 添加必要的 Kafka JAR 在 Java 中运行）：
+若要通过命令行运行使用者，生成 JAR，然后从 Maven 中运行（或使用 Maven 生成 JAR，然后通过向 classpath 添加必要的 Kafka JAR 在 Java 中运行）：
 
 ```shell
 mvn clean package
@@ -129,7 +129,7 @@ mvn exec:java -Dexec.mainClass="FlinkTestConsumer"
 > [!div class="checklist"]
 > * 创建事件中心命名空间
 > * 克隆示例项目
-> * 运行 Flink 制造者 
+> * 运行 Flink 生产者 
 > * 运行 Flink 使用者
 
 若要详细了解事件中心和适用于 Kafka 的事件中心，请参阅以下主题：  

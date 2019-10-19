@@ -1,6 +1,6 @@
 ---
 title: 配置 Azure Active Directory 身份验证 - SQL | Microsoft Docs
-description: 配置 Azure AD 后，了解如何使用 Azure Active Directory 身份验证连接到 SQL 数据库、托管实例和 SQL 数据仓库。
+description: 了解如何使用 Azure Active Directory Authentication 连接到 SQL 数据库、托管实例和 SQL 数据仓库-配置 Azure AD 后。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 03/12/2019
-ms.openlocfilehash: 11e3a9931d424433f2e3fd1f64e2e95a5835b65c
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.date: 10/16/2019
+ms.openlocfilehash: 82409bbe2f40e42a8331cd801649b93987a923d2
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960468"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550703"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>使用 SQL 配置和管理 Azure Active Directory 身份验证
 
-本文介绍如何创建和填充 Azure AD，然后通过 Azure [SQL 数据库](sql-database-technical-overview.md)、[托管实例](sql-database-managed-instance.md)和 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)使用 Azure AD。 有关概述，请参阅 [Azure Active Directory 身份验证](sql-database-aad-authentication.md)。
+本文介绍如何创建和填充 Azure AD，以及如何在 Azure [Sql 数据库](sql-database-technical-overview.md)、[托管实例](sql-database-managed-instance.md)和[SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)中使用 Azure AD。 有关概述，请参阅 [Azure Active Directory 身份验证](sql-database-aad-authentication.md)。
 
 > [!NOTE]
 > 本文适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
@@ -29,7 +29,7 @@ ms.locfileid: "71960468"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
+> Azure SQL 数据库仍支持 PowerShell Azure 资源管理器模块，但所有将来的开发都适用于 Az .Sql 模块。 有关这些 cmdlet，请参阅[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令的参数完全相同。
 
 ## <a name="create-and-populate-an-azure-ad"></a>创建并填充 Azure AD
 
@@ -42,7 +42,7 @@ ms.locfileid: "71960468"
 1. 通过将目录设为托管数据库的 Azure 订阅的一个受信任目录，将 Azure 订阅关联到 Azure Active Directory。 有关详细信息，请参阅 [Azure 订阅与 Azure AD 的关联方式](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 2. 在 Azure 门户中使用目录切换器切换到与域关联的订阅。
 
-   **其他信息：** 每个 Azure 订阅都与某个 Azure AD 实例存在信任关系。 这意味着，此订阅信任该目录对用户、服务和设备执行身份验证。 多个订阅可以信任同一个目录，但一个订阅只能信任一个目录。 订阅与目录之间的这种信任关系不同于订阅与 Azure 中所有其他资源（网站、数据库等）之间的信任关系，在后一种关系中，这些资源更像是订阅的子资源。 如果某个订阅过期，则对该订阅关联的其他那些资源的访问权限也将终止。 但是，目录将保留在 Azure 中，并且可以将另一个订阅与该目录相关联，然后继续管理目录用户。 有关资源的详细信息，请参阅[了解 Azure 中的资源访问](../active-directory/active-directory-b2b-admin-add-users.md)。 若要详细了解此受信任关系，请参阅[如何将 Azure 订阅关联或添加到 Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
+   **其他信息：** 每个 Azure 订阅都与某个 Azure AD 实例存在信任关系。 这意味着，此订阅信任该目录对用户、服务和设备执行身份验证。 多个订阅可以信任同一个目录，但一个订阅只能信任一个目录。 订阅与目录之间的这种信任关系不同于订阅与 Azure 中所有其他资源（网站、数据库等）之间的信任关系，在后一种关系中，这些资源更像是订阅的子资源。 如果某个订阅过期，则对该订阅关联的其他那些资源的访问权限也将终止。 但是，目录将保留在 Azure 中，并且可以将另一个订阅与该目录相关联，并继续管理目录用户。 有关资源的详细信息，请参阅[了解 Azure 中的资源访问](../active-directory/active-directory-b2b-admin-add-users.md)。 若要详细了解此受信任关系，请参阅[如何将 Azure 订阅关联或添加到 Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 
 ## <a name="create-an-azure-ad-administrator-for-azure-sql-server"></a>为 Azure SQL Server 创建 Azure AD 管理员
 
@@ -56,15 +56,15 @@ ms.locfileid: "71960468"
 ## <a name="provision-an-azure-active-directory-administrator-for-your-managed-instance"></a>为托管实例预配 Azure Active Directory 管理员
 
 > [!IMPORTANT]
-> 如果正在预配托管实例，请执行以下步骤。 仅可在 Azure AD 中由全局/公司管理员执行此操作。 以下步骤介绍在目录中为具有不同权限的用户授予权限的过程。
+> 如果要设置托管实例，只需要执行以下步骤。 只有全局/公司管理员或 Azure AD 中的特权角色管理员才能执行此操作。 以下步骤介绍在目录中为具有不同权限的用户授予权限的过程。
 
-托管实例需要权限来读取 Azure AD，以成功完成诸如通过安全组成员资格验证用户身份或创建新用户等任务。 为此，需要授予托管实例读取 Azure AD 的权限。 有两种方法来完成此操作：从门户和 PowerShell。 以下是两种方法的步骤。
+托管实例需要权限来读取 Azure AD 以成功完成任务，如通过安全组成员身份或创建新用户进行身份验证。 为此，需要向托管实例授予读取 Azure AD 的权限。 有两种方法来完成此操作：从门户和 PowerShell。 以下是两种方法的步骤。
 
 1. 在 Azure 门户右上角，选择你的连接，以下拉可能的 Active Directory 列表。
 2. 选择正确的 Active Directory 作为默认的 Azure AD。
 
-   此步骤将与 Active Directory 关联的订阅链接到托管实例，确保为 Azure AD 和托管实例使用相同的订阅。
-3. 导航到托管实例，并选择想要用于 Azure AD 集成的托管实例。
+   此步骤将与 Active Directory 关联的订阅链接到托管实例，确保 Azure AD 和托管实例都使用同一订阅。
+3. 导航到 "托管实例"，然后选择要用于 Azure AD 集成的实例。
 
    ![aad](./media/sql-database-aad-authentication/aad.png)
 
@@ -73,8 +73,8 @@ ms.locfileid: "71960468"
     ![授予权限 - 门户](./media/sql-database-aad-authentication/grant-permissions.png)
 
     ```powershell
-    # Gives Azure Active Directory read permission to a Service Principal representing the Managed Instance.
-    # Can be executed only by a "Company Administrator" or "Global Administrator" type of user.
+    # Gives Azure Active Directory read permission to a Service Principal representing the managed instance.
+    # Can be executed only by a "Company Administrator", "Global Administrator", or "Privileged Role Administrator" type of user.
 
     $aadTenant = "<YourTenantId>" # Enter your tenant ID
     $managedInstanceName = "MyManagedInstance"
@@ -128,9 +128,9 @@ ms.locfileid: "71960468"
 
 5. 成功完成操作后，右上角会显示以下通知：
 
-    ![success](./media/sql-database-aad-authentication/success.png)
+    ![成功](./media/sql-database-aad-authentication/success.png)
 
-6. 现在即可为托管实例选择 Azure AD 管理员。 为此，请在“Active Directory 管理员”页上选择“设置管理员”命令。
+6. 现在，你可以为托管实例选择 Azure AD 管理员。 为此，请在“Active Directory 管理员”页上选择“设置管理员”命令。
 
     ![设置管理员](./media/sql-database-aad-authentication/set-admin.png)
 
@@ -146,10 +146,58 @@ ms.locfileid: "71960468"
 
     更改管理员的过程可能需要几分钟时间。 然后，新管理员将出现在“Active Directory 管理员”框中。
 
-在为托管实例预配 Azure AD 管理员之后，即可开始使用 <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> 语法创建 Azure AD 服务器主体（登录名）（**公共预览版**）。 有关详细信息，请参阅[托管实例概述](sql-database-managed-instance.md#azure-active-directory-integration)。
+为托管实例预配 Azure AD 管理员后，可以开始使用<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>语法创建 Azure AD 服务器主体（登录名）（**公共预览版**）。 有关详细信息，请参阅[托管实例概述](sql-database-managed-instance.md#azure-active-directory-integration)。
 
 > [!TIP]
 > 之后如需删除管理员，请在“Active Directory 管理员”页顶部，选择“删除管理员”，然后选择“保存”。
+
+### <a name="powershell-for-sql-managed-instance"></a>适用于 SQL 托管实例的 PowerShell
+
+若要运行 PowerShell cmdlet，需要已安装并运行 Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 若要预配 Azure AD 管理员，请执行以下 Azure PowerShell 命令：
+
+- Connect-AzAccount
+- AzSubscription
+
+用于预配和管理 SQL 托管实例 Azure AD 管理员的 cmdlet：
+
+| Cmdlet 名称 | 描述 |
+| --- | --- |
+| [AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |为当前订阅中的 SQL 托管实例预配 Azure AD 管理员。 （必须来自当前订阅）|
+| [AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |删除当前订阅中 SQL 托管实例的 Azure AD 管理员。 |
+| [AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlinstanceactivedirectoryadministrator) |返回有关当前订阅中 SQL 托管实例的 Azure AD 管理员的信息。|
+
+### <a name="powershell-examples-for-managed-instance"></a>托管实例的 PowerShell 示例
+
+以下命令获取有关名为 ManagedInstance01 的托管实例的 Azure AD 管理员的信息，该实例与名为 ResourceGroup01 的资源组关联。
+
+```powershell
+Get-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
+```
+
+以下命令为名为 ManagedInstance01 的托管实例预配名为 Dba 的 Azure AD 管理员组。 此服务器与资源组 ResourceGroup01 关联。
+
+```powershell
+Set-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -DisplayName "DBAs" -ObjectId "40b79501-b343-44ed-9ce7-da4c8cc7353b"
+```
+
+以下命令将删除名为 ManagedInstanceName01 的托管实例的 Azure AD 管理员，并将其与资源组 ResourceGroup01 相关联。
+
+```powershell
+Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstanceName01" -Confirm -PassThru
+```
+
+### <a name="cli-for-sql-managed-instance"></a>SQL 托管实例的 CLI
+
+还可以通过调用以下 CLI 命令，为 SQL 托管实例预配 Azure AD 管理员：
+
+| 命令 | 描述 |
+| --- | --- |
+|[az sql mi ad-管理创建](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) |为 SQL 托管实例预配 Azure Active Directory 管理员。 （必须来自当前订阅） |
+|[az sql mi ad-管理员删除](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) |删除 SQL 托管实例的 Azure Active Directory 管理员。 |
+|[az sql mi ad-管理员列表](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-list) |返回有关当前为 SQL 托管实例配置的 Azure Active Directory 管理员的信息。 |
+|[az sql mi ad-管理更新](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-update) |为 SQL 托管实例更新 Active Directory 管理员。 |
+
+有关 CLI 命令的详细信息，请参阅[az sql mi](https://docs.microsoft.com/cli/azure/sql/mi)。 
 
 ## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>为 Azure SQL 数据库服务器预配 Azure Active Directory 管理员
 
@@ -172,7 +220,7 @@ ms.locfileid: "71960468"
 3. 在“SQL Server”页上，选择“Active Directory 管理员”。
 4. 在“Active Directory 管理员”页上选择“设置管理员”。![选择 active directory](./media/sql-database-aad-authentication/select-active-directory.png)  
 
-5. 在“添加管理员”页中，搜索某位用户，选择该用户或组作为管理员，然后选择“选择”。 （“Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 （请参阅[将 Azure Active Directory 身份验证与使用 SQL 数据库或 SQL 数据仓库进行身份验证结合使用](sql-database-aad-authentication.md)的“Azure AD 功能和限制”部分中支持的管理员列表。）基于角色的访问控制 (RBAC) 仅适用于该门户，不会传播到 SQL Server。
+5. 在“添加管理员”页中，搜索某位用户，选择该用户或组作为管理员，然后选择“选择”。 （“Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 （请参阅在[使用 Sql 数据库或 Sql 数据仓库进行身份验证时使用 Azure Active Directory 身份验证](sql-database-aad-authentication.md)的**Azure AD 功能和限制**部分中受支持的管理员列表。）基于角色的访问控制（RBAC）仅适用于该门户，不会传播到 SQL Server。
     ![选择管理员](./media/sql-database-aad-authentication/select-admin.png)  
 
 6. 在“Active Directory 管理员”页顶部，选择“保存”。
@@ -185,22 +233,24 @@ ms.locfileid: "71960468"
 
 之后如需删除管理员，请在“Active Directory 管理员”页顶部，选择“删除管理员”，然后选择“保存”。
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell-for-azure-sql-database-and-azure-sql-data-warehouse"></a>适用于 Azure SQL 数据库和 Azure SQL 数据仓库的 PowerShell
 
 若要运行 PowerShell cmdlet，需要已安装并运行 Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 若要预配 Azure AD 管理员，请执行以下 Azure PowerShell 命令：
 
 - Connect-AzAccount
-- Select-AzSubscription
+- AzSubscription
 
-用于预配和管理 Azure AD 管理员的 Cmdlet：
+用于预配和管理 Azure SQL 数据库和 Azure SQL 数据仓库 Azure AD 管理员的 cmdlet：
 
 | Cmdlet 名称 | 描述 |
 | --- | --- |
-| [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |为 Azure SQL Server 或 Azure SQL 数据仓库预配 Azure Active Directory 管理员。 （必须来自当前订阅。） |
-| [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |为 Azure SQL Server 或 Azure SQL 数据仓库删除 Azure Active Directory 管理员。 |
-| [Get-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |返回有关为 Azure SQL Server 或 Azure SQL 数据仓库配置的当前 Azure Active Directory 管理员的信息。 |
+| [AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |为 Azure SQL Server 或 Azure SQL 数据仓库预配 Azure Active Directory 管理员。 （必须来自当前订阅） |
+| [AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |为 Azure SQL Server 或 Azure SQL 数据仓库删除 Azure Active Directory 管理员。 |
+| [AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |返回有关为 Azure SQL Server 或 Azure SQL 数据仓库配置的当前 Azure Active Directory 管理员的信息。 |
 
-使用 PowerShell 命令 get-help 可查看其中每个命令的详细信息，例如 ``get-help Set-AzSqlServerActiveDirectoryAdministrator``。
+使用 PowerShell 命令 get-help 可查看有关每个命令的详细信息。 例如，``get-help Set-AzSqlServerActiveDirectoryAdministrator`` 。
+
+### <a name="powershell-examples-for-azure-sql-database-and-azure-sql-data-warehouse"></a>适用于 Azure SQL 数据库和 Azure SQL 数据仓库的 PowerShell 示例
 
 以下脚本为名为 Group-23 的资源组中的 demo_server 服务器预配名为 DBA_Group 的 Azure AD 管理员组（对象 ID `40b79501-b343-44ed-9ce7-da4c8cc7353f`）：
 
@@ -236,20 +286,21 @@ Get-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Serve
 Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
 ```
 
-也可以使用 REST API 预配 Azure Active Directory 管理员。 有关详细信息，请参阅 [Azure SQL 数据库的 Azure SQL 数据库操作的 Service Management REST API 参考和操作](https://docs.microsoft.com/rest/api/sql/)
+> [!NOTE]
+> 也可以使用 REST API 预配 Azure Active Directory 管理员。 有关详细信息，请参阅 [Azure SQL 数据库的 Azure SQL 数据库操作的 Service Management REST API 参考和操作](https://docs.microsoft.com/rest/api/sql/)
 
-### <a name="cli"></a>CLI  
+### <a name="cli-for-azure-sql-database-and-azure-sql-data-warehouse"></a>适用于 Azure SQL 数据库和 Azure SQL 数据仓库的 CLI
 
 也可以通过调用以下 CLI 命令来预配 Azure AD 管理员：
 
-| Command | 描述 |
+| 命令 | 描述 |
 | --- | --- |
-|[az sql server ad-admin create](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) |为 Azure SQL Server 或 Azure SQL 数据仓库预配 Azure Active Directory 管理员。 （必须来自当前订阅。） |
+|[az sql server ad-admin create](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) |为 Azure SQL Server 或 Azure SQL 数据仓库预配 Azure Active Directory 管理员。 （必须来自当前订阅） |
 |[az sql server ad-admin delete](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) |为 Azure SQL Server 或 Azure SQL 数据仓库删除 Azure Active Directory 管理员。 |
 |[az sql server ad-admin list](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) |返回有关为 Azure SQL Server 或 Azure SQL 数据仓库配置的当前 Azure Active Directory 管理员的信息。 |
 |[az sql server ad-admin update](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) |为 Azure SQL Server 或 Azure SQL 数据仓库更新 Azure Active Directory 管理员。 |
 
-有关 CLI 命令的详细信息，请参阅 [SQL - az sql](https://docs.microsoft.com/cli/azure/sql/server)。  
+有关 CLI 命令的详细信息，请参阅[az sql server](https://docs.microsoft.com/cli/azure/sql/server)。
 
 ## <a name="configure-your-client-computers"></a>配置客户端计算机
 
@@ -263,12 +314,12 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 - 安装 [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 或 [SQL Server Data Tools for Visual Studio 2015](https://msdn.microsoft.com/library/mt204009.aspx) 符合 .NET Framework 4.6 要求。
 - SSMS 安装 **ADALSQL.DLL** 的 x86 版本。
 - SSDT 安装 **ADALSQL.DLL** 的 amd64 版本。
-- [Visual Studio 下载](https://www.visualstudio.com/downloads/download-visual-studio-vs) 提供的最新 Visual Studio 符合 .NET Framework 4.6 要求，但并未安装必需的 amd64 版本的 **ADALSQL.DLL**。
+- [Visual Studio 下载](https://www.visualstudio.com/downloads/download-visual-studio-vs)提供的最新 Visual Studio 符合 .NET Framework 4.6 要求，但并未安装必需的 amd64 版本的 **ADALSQL.DLL**。
 
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>在映射到 Azure AD 标识的数据库中创建包含的数据库用户
 
 >[!IMPORTANT]
->托管实例现在支持 Azure AD 服务器主体（登录名）（**公共预览版**），因此可从 Azure AD 用户、组或应用程序创建登录名。 使用 Azure AD 服务器主体（登录名）能够对托管实例进行身份验证，而无需将数据库用户作为包含的数据库用户创建。 有关详细信息，请参阅[托管实例概述](sql-database-managed-instance.md#azure-active-directory-integration)。 有关创建 Azure AD 服务器主体（登录名）的语法，请参阅 <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>。
+>托管实例现在支持 Azure AD 服务器主体（登录）（**公共预览版**），使你能够从 Azure AD 用户、组或应用程序创建登录名。 Azure AD 服务器主体（登录名）提供了对托管实例进行身份验证的功能，而无需以包含数据库用户的身份创建数据库用户。 有关详细信息，请参阅[托管实例概述](sql-database-managed-instance.md#azure-active-directory-integration)。 有关创建 Azure AD 服务器主体（登录名）的语法，请参阅 <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>。
 
 Azure Active Directory 身份验证要求以包含的数据库用户的身份创建数据库用户。 基于 Azure AD 标识的包含的数据库用户是在 master 数据库中不具有登录名的数据库用户，它映射到与数据库相关联的 Azure AD 目录中的标识。 Azure AD 标识可以是单独的用户帐户，也可以是组。 有关包含的数据库用户的详细信息，请参阅[包含的数据库用户 - 使数据库可移植](https://msdn.microsoft.com/library/ff929188.aspx)。
 
@@ -285,7 +336,7 @@ CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
 
 *Azure_AD_principal_name* 可以是 Azure AD 用户的用户主体名称，也可以是 Azure AD 组的显示名称。
 
-**示例：** 创建代表 Azure AD 联合或托管域用户的包含的数据库用户：
+**示例：** 若要创建代表 Azure AD 联合或托管域用户的包含的数据库用户：
 
 ```sql
 CREATE USER [bob@contoso.com] FROM EXTERNAL PROVIDER;
@@ -354,7 +405,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 对于本机或联合身份验证 Azure AD 用户，请使用此方法通过 Azure AD 向 SQL DB/DW 进行身份验证。 本机用户是指以显式方式在 Azure AD 中创建并使用用户名和密码进行身份验证的用户，而联合用户则是指其域与 Azure AD 联合的 Windows 用户。 当用户需要使用其 Windows 凭据（例如使用远程访问），但其本地计算机未加入域时，可以使用后一方法（用户和密码）。 在这种情况下，Windows 用户可以指定其域帐户和密码，然后使用联合凭据向 SQL DB/DW 进行身份验证。
 
 1. 启动 Management Studio 或 Data Tools 后，在“连接到服务器”（或“连接到数据库引擎”）对话框的“身份验证”框中，选择“Active Directory - 密码”。
-2. 在“用户名”框中，以 **username\@domain.com** 格式键入 Azure Active Directory 用户名。 用户名必须是来自 Azure Active Directory 的帐户或来自与 Azure Active Directory 联合的域的帐户。
+2. 在 "**用户名**" 框中，键入**用户名 \@domain .com**格式的 Azure Active Directory 用户名。 用户名必须是来自 Azure Active Directory 的帐户或来自与 Azure Active Directory 联合的域的帐户。
 3. 在“密码”框中，为 Azure Active Directory 帐户或联合域帐户键入用户密码。
 
     ![选择 AD 密码身份验证][12]
@@ -396,7 +447,7 @@ conn.Open();
 
 此身份验证方法允许从 Azure Active Directory (AAD) 获取令牌，使中间层服务能够连接到 Azure SQL 数据库或 Azure SQL 数据仓库。 这样，便可以实现包含基于证书的身份验证的复杂方案。 必须完成四个基本步骤才能使用 Azure AD 令牌身份验证：
 
-1. 在 Azure Active Directory 中注册应用程序，并获取代码的客户端 ID。
+1. 向 Azure Active Directory 注册应用程序，并获取代码的客户端 ID。
 2. 创建代表应用程序的数据库用户。 （前面在步骤 6 中已完成。）
 3. 在运行应用程序的客户端计算机上创建证书。
 4. 为应用程序添加用作密钥的证书。
@@ -417,7 +468,7 @@ conn.Open();
 以下语句使用版本 13.1 的 sqlcmd 进行连接，该版本可从[下载中心](https://go.microsoft.com/fwlink/?LinkID=825643)下载。
 
 > [!NOTE]
-> 带 `-G` 的 `sqlcmd` 命令不适用于系统标识，它需要用户主体登录名。
+> 使用 `-G` 命令 `sqlcmd` 不能与系统标识一起使用，并且需要用户主体登录名。
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  

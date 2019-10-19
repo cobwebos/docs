@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
-ms.openlocfilehash: f6323501fc0078677c4c0e2cd0e43a15583df29b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
-ms.translationtype: HT
+ms.openlocfilehash: 3e6af57840cf60516aba994a6b5728bfb7b35f09
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513981"
+ms.locfileid: "72553522"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>性能优化和结果集缓存  
 启用结果集缓存后，Azure SQL 数据仓库会自动缓存用户数据库中的查询结果以供重复使用。  这允许后续查询执行直接从持久缓存中获取结果，因此不需要重新计算。   结果集缓存提高了查询性能，并减少了计算资源的使用。  此外，使用缓存的结果集的查询不使用任何并发槽，因此不会对现有并发限制进行计数。 为安全，如果用户具有与创建缓存结果相同的数据访问权限，则用户只能访问缓存的结果。  
@@ -34,11 +34,10 @@ ms.locfileid: "72513981"
 为数据库启用结果集缓存后，将缓存所有查询的结果，直到缓存已满，但以下查询除外：
 - 使用非确定性函数（如 DateTime）的查询。 Now （）
 - 使用用户定义函数的查询
+- 使用启用了行级别安全性的表或列级安全的查询
 - 查询返回行大小大于64KB 的数据
 
 在创建结果缓存时，具有大型结果集的查询（例如 > 1000000 行）在第一次运行期间可能会遇到较慢的性能。
-
-结果集缓存不支持行级别安全性。  
 
 ## <a name="when-cached-results-are-used"></a>使用缓存结果时
 

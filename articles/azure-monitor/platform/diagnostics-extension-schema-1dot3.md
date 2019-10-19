@@ -1,20 +1,18 @@
 ---
 title: Azure 诊断扩展 1.3 及更高版本的配置架构
 description: Microsoft Azure SDK 2.4 及更高版本中附带了 Azure 诊断 1.3 及更高版本的架构。
-services: azure-monitor
-author: rboucher
 ms.service: azure-monitor
-ms.devlang: dotnet
-ms.topic: reference
-ms.date: 09/20/2018
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: e303fe5ca1869249d57373aab9c60a5f92b7ea9c
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.topic: reference
+author: rboucher
+ms.author: robb
+ms.date: 09/20/2018
+ms.openlocfilehash: 1d378571a02f30c223338eef5c7d142ed02ff4c8
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735102"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555547"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure 诊断 1.3 及更高版本的配置架构
 > [!NOTE]
@@ -443,9 +441,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration 元素
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration*
 
- 必填
+ 需要
 
-|特性|描述|  
+|属性|描述|  
 |----------------|-----------------|  
 | **overallQuotaInMB** | 由 Azure 诊断收集的各类诊断数据使用的最大本地磁盘空间量。 默认设置是 4096 MB。<br />
 |**useProxyServer** | 将 Azure 诊断配置为使用在 IE 设置中设置的代理服务器设置。|
@@ -472,7 +470,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  启用故障转储收集。  
 
-|特性|描述|  
+|属性|描述|  
 |----------------|-----------------|  
 |**containerName**|可选。 Azure 存储帐户中用于存储故障转储的 blob 容器的名称。|  
 |**crashDumpType**|可选。  将 Azure 诊断配置为收集少量或完整故障转储。|  
@@ -483,7 +481,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**CrashDumpConfiguration**|必需。 定义每个进程的配置值。<br /><br /> 还必需以下属性：<br /><br /> **processName** - 希望 Azure 诊断为其收集故障转储的进程的名称。|  
 
 ## <a name="directories-element"></a>Directories 元素
- *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Directories*
+ *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration -  Directories*
 
  启用收集目录内容、IIS 失败的访问请求日志和/或 IIS 日志。  
 
@@ -543,7 +541,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |子元素|描述|  
 |--------------------|-----------------|  
 |**DefaultEvents**|可选属性：<br/><br/> **eventDestination** -存储事件的表的名称|  
-|**Event**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
+|**事件**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
 
 
 
@@ -553,7 +551,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |子元素|描述|  
 |--------------------|-----------------|  
 |**DefaultEvents**|可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
-|**Event**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
+|**事件**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
 
 
 
@@ -581,7 +579,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |子元素|描述|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|需要以下属性：<br /><br /> - **counterSpecifier** - 性能计数器的名称。 例如， `\Processor(_Total)\% Processor Time` 。 若要获取性能计数器列表，请在主机上运行 `typeperf` 命令。<br /><br /> - **sampleRate** - 应对计数器进行采样的频率。<br /><br /> 可选属性：<br /><br /> **unit** - 计数器的度量单位。|
+|**PerformanceCounterConfiguration**|需要以下属性：<br /><br /> - **counterSpecifier** - 性能计数器的名称。 例如，`\Processor(_Total)\% Processor Time` 。 若要获取性能计数器列表，请在主机上运行 `typeperf` 命令。<br /><br /> - **sampleRate** - 应对计数器进行采样的频率。<br /><br /> 可选属性：<br /><br /> **unit** - 计数器的度量单位。|
 |**sinks** | 在 1.5 中添加。 可选。 指向同时要发送诊断数据的接收器位置。 例如 Azure Monitor 或事件中心。|    
 
 
@@ -608,7 +606,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  定义基本 Azure 日志的缓冲区配置。  
 
-|特性|类型|描述|  
+|属性|Type|描述|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|可选。 指定可用于存储指定数据的文件系统存储最大容量。<br /><br /> 默认值为 0。|  
 |**scheduledTransferLogLevelFilter**|**string**|可选。 指定传输的日志条目的最低严重级别。 默认值是“未定义”，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”、“信息”、“警告”、“错误”和“严重”。|  
@@ -640,14 +638,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  定义向其中发送诊断数据的位置。 例如，Application Insights 服务。  
 
-|特性|类型|描述|  
+|属性|Type|描述|  
 |---------------|----------|-----------------|  
-|**name**|string|标识 sinkname 的字符串。|  
+|name|字符串|标识 sinkname 的字符串。|  
 
-|元素|类型|描述|  
+|元素|Type|描述|  
 |-------------|----------|-----------------|  
-|**Application Insights**|string|仅在将数据发送到 Application Insights 时使用。 包含有权访问的有效 Application Insights 帐户的检测密钥。|  
-|**通道**|string|每个对应一个流处理的其他筛选|  
+|**Application Insights**|字符串|仅在将数据发送到 Application Insights 时使用。 包含有权访问的有效 Application Insights 帐户的检测密钥。|  
+|**通道**|字符串|每个对应一个流处理的其他筛选|  
 
 ## <a name="channels-element"></a>Channels 元素  
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels*
@@ -656,9 +654,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  定义通过接收器的日志数据流的筛选器。  
 
-|元素|类型|描述|  
+|元素|Type|描述|  
 |-------------|----------|-----------------|  
-|**Channel**|string|在此页的其他位置查看说明。|  
+|**Channel**|字符串|在此页的其他位置查看说明。|  
 
 ## <a name="channel-element"></a>Channel 元素
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels - Channel*
@@ -667,10 +665,10 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  定义向其中发送诊断数据的位置。 例如，Application Insights 服务。  
 
-|特性|类型|描述|  
+|属性|Type|描述|  
 |----------------|----------|-----------------|  
 |**logLevel**|**string**|指定传输的日志条目的最低严重级别。 默认值是“未定义”，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”、“信息”、“警告”、“错误”和“严重”。|  
-|**name**|**string**|要引用的通道的唯一名称|  
+|name|**string**|要引用的通道的唯一名称|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig 元素
@@ -684,7 +682,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |子元素|描述|  
 |--------------------|-----------------|  
-|**StorageAccount**|要使用的存储帐户。 需要以下属性<br /><br /> - **name** - 存储帐户的名称。<br /><br /> - **key** - 存储帐户的密钥。<br /><br /> - **endpoint** - 用于访问存储帐户的终结点。 <br /><br /> -**sasToken**（在 1.8.1 中添加）- 可以在专用配置中指定 SAS 令牌而非存储帐户密钥。如果提供了此项，则会忽略存储帐户密钥。 <br />对 SAS 令牌的要求： <br />- 仅支持帐户 SAS 令牌 <br />- *b*、*t* 服务类型是必需的。 <br /> - *a*、*c*、*u*、*w* 权限是必需的。 <br /> - *c*、*o* 资源类型是必需的。 <br /> - 仅支持 HTTPS 协议 <br /> - 起始时间和到期时间必须有效。|  
+|**StorageAccount**|要使用的存储帐户。 需要以下属性<br /><br /> - **name** - 存储帐户的名称。<br /><br /> - **key** - 存储帐户的密钥。<br /><br /> - **endpoint** - 用于访问存储帐户的终结点。 <br /><br /> -**sasToken** （已添加1.8.1）-可以在专用配置中指定 SAS 令牌而非存储帐户密钥。如果提供，则忽略存储帐户密钥。 <br />对 SAS 令牌的要求： <br />- 仅支持帐户 SAS 令牌 <br />- *b*、*t* 服务类型是必需的。 <br /> - *a*、*c*、*u*、*w* 权限是必需的。 <br /> - *c*、*o* 资源类型是必需的。 <br /> - 仅支持 HTTPS 协议 <br /> - 起始时间和到期时间必须有效。|  
 
 
 ## <a name="isenabled-element"></a>IsEnabled 元素  

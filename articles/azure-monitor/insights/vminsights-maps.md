@@ -1,24 +1,18 @@
 ---
 title: 如何使用用于 VM 的 Azure Monitor（预览版）查看应用依赖项 | Microsoft Docs
 description: Map 是用于 VM 的 Azure Monitor 的一项功能。 它会自动发现 Windows 和 Linux 系统上的应用程序组件，并映射服务之间的通信。 本文提供了有关如何在各种情况下使用地图功能的详细信息。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/15/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 456ed0a48db015d3c95827942a576e6916095131
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
-ms.translationtype: HT
+ms.date: 10/15/2019
+ms.openlocfilehash: f886ce4ed1b9396cf90bf98626e0cfd2424b2eac
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515437"
+ms.locfileid: "72553785"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>使用用于 VM 的 Azure Monitor （预览版）的地图功能了解应用程序组件
 在用于 VM 的 Azure Monitor 中，可以查看在 Azure 或环境中运行的 Windows 和 Linux 虚拟机（Vm）上发现的应用程序组件。 可以通过两种方式观察 Vm。 直接从 VM 查看地图，或从 Azure Monitor 查看地图，查看跨 Vm 组的组件。 本文将帮助你了解这两种查看方法，以及如何使用地图功能。 

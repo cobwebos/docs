@@ -1,18 +1,18 @@
 ---
 title: Azure Monitor 即将停用指标和自动缩放的经典部署模型 API
 description: 指标和自动缩放经典 API（也称为 Azure 服务管理 (ASM) 或 RDFE 部署模型）即将停用
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.date: 11/19/2018
+author: rboucher
 ms.author: robb
-ms.openlocfilehash: ce54b63aa7831ed40a8592d536c43fc83fdc5567
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/19/2018
+ms.openlocfilehash: 7a93419ee84e6a50ce07cefa941a8df9f85b7b6e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60709977"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552193"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor 即将停用指标和自动缩放的经典部署模型 API
 
@@ -61,7 +61,7 @@ ms.locfileid: "60709977"
 - 维度支持
 - 在所有服务中保持一致的 1 分钟指标粒度 
 - 更方便的查询
-- 更长的数据保留期（保留指标 93 天，而不是30 天） 
+- 更高的数据保留期（93天，指标与30天） 
 
 总体而言，与 Azure 中的其他所有服务一样，基于资源管理器的 Azure Monitor API 提供更好的性能、可伸缩性和可靠性。 
 
@@ -75,9 +75,9 @@ ms.locfileid: "60709977"
 
 对前面所列的经典 API 发出任何调用将会失败，并返回如下所示的错误消息：
 
-对于自动缩放：“此 API 已弃用。  请使用 Azure 门户、Azure Monitor SDK、PowerShell、CLI 或资源管理器模板管理自动缩放设置。”  
+对于自动缩放：*此 API 已弃用。使用 Azure 门户、Azure Monitor SDK、PowerShell、CLI 或资源管理器模板来管理自动缩放设置*。  
 
-对于指标：“此 API 已弃用。  请使用 Azure 门户、Azure Monitor SDK、PowerShell 或 CLI 查询指标。”
+对于指标：*此 API 已弃用。使用 Azure 门户，Azure Monitor SDK、PowerShell、CLI 查询指标*。
 
 ## <a name="email-notifications"></a>电子邮件通知
 

@@ -1,19 +1,18 @@
 ---
 title: 虚拟机、云服务和 Web 应用自动缩放概述
 description: Microsoft Azure 中的自动缩放。 适用于虚拟机、虚拟机规模集、云服务和 Web 应用。
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: 3c70d11b83a116a9ce29ce202edeac6fe9464674
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 09/24/2018
+ms.openlocfilehash: 2aeb0bc174eb5a94d485f4eafe000ecb3f693e5f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959052"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552291"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Microsoft Azure 虚拟机、云服务和 Web 应用自动缩放概述
 本文介绍了 Microsoft Azure 自动缩放是什么、其对用户的好处，以及如何开始使用它。  
@@ -43,7 +42,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 ## <a name="custom-metrics"></a>自定义指标
 还可以利用应用程序可以发出的自己的自定义指标。 如果已将应用程序配置为向 Application Insights 发送指标，则可以利用这些指标来决定是否要进行缩放。
 
-## <a name="time"></a>Time
+## <a name="time"></a>时间
 基于计划的规则以 UTC 为基础。 设置规则时，必须正确设置时区。  
 
 ## <a name="rules"></a>规则
@@ -89,7 +88,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 ## <a name="horizontal-vs-vertical-scaling"></a>水平缩放和垂直缩放
 自动缩放仅以横向方式调整资源的规模，即只增加（“放”）或减少（“缩”）VM 实例的数目。  横向缩放在使用云服务的情况下更为灵活，因为这样可以运行数千个处理负载的 VM。
 
-纵向缩放与此不同。 它保持 VM 数量不变，但会增强（“提高”）或削弱（“降低”）VM 的功能。 功能按内存、CPU 速度、磁盘空间等指标衡量。垂直缩放有更多的限制。 具体取决于更大型硬件的可用性，此可用性会快速达到上限，并因区域而异。 纵向缩放通常还需要停止和重新启动 VM。
+纵向缩放与此不同。 它保持 VM 数量不变，但会增强（“提高”）或削弱（“降低”）VM 的功能。 幂按内存、CPU 速度、磁盘空间等度量。 垂直缩放具有更多限制。 具体取决于更大型硬件的可用性，此可用性会快速达到上限，并因区域而异。 纵向缩放通常还需要停止和重新启动 VM。
 
 
 ## <a name="methods-of-access"></a>访问方法
@@ -103,7 +102,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 ## <a name="supported-services-for-autoscale"></a>支持进行自动缩放的服务
 | 服务 | 架构和文档 |
 | --- | --- |
-| Web Apps |[缩放 Web 应用](../../azure-monitor/platform/autoscale-get-started.md) |
+| Web 应用 |[缩放 Web 应用](../../azure-monitor/platform/autoscale-get-started.md) |
 | 云服务 |[自动缩放云服务](../../cloud-services/cloud-services-how-to-scale-portal.md) |
 | 虚拟机：经典 |[缩放经典虚拟机可用性集](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
 | 虚拟机：Windows 规模集 |[缩放 Windows 中的虚拟机规模集](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |

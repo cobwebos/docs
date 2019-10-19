@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 843cac8c7a5e6c80b7663df2a48079dd307b7d5a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: f0b66806138311508725d377b59b83c1b1365674
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72383512"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553543"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>用于将 Azure VM 从一个区域复制到另一个区域的支持矩阵
 
@@ -102,8 +102,8 @@ Windows 8 （x64） | 。
 
 **操作系统** | **详细信息**
 --- | ---
-Red Hat Enterprise Linux | 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6  
-CentOS | 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6
+Red Hat Enterprise Linux | 6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、7。7 
+CentOS | 6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、7。7
 Ubuntu 14.04 LTS Server | [受支持的内核版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Ubuntu 16.04 LTS Server | [受支持的内核版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> 使用基于密码的身份验证和登录的 Ubuntu 服务器，以及用于配置云 Vm 的云初始化包，可能会在故障转移时禁用基于密码的登录（具体取决于 cloudinit 配置）。 可以在虚拟机上重新启用基于密码的登录，方法是从 Azure 门户中故障转移的 VM 的支持 > 疑难解答 > 设置 "菜单重置密码。
 Debian 7 | [受支持的内核版本](#supported-debian-kernel-versions-for-azure-virtual-machines)

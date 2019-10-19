@@ -1,19 +1,18 @@
 ---
 title: 管理警报和智能组状态
 description: 管理警报和智能组实例的状态
-author: anantr
-services: monitoring
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: f72abd1168d14cae703f7fcfc7b58eaa56bdc592
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.topic: conceptual
+author: anantr
+ms.author: robb
+ms.date: 09/24/2018
+ms.openlocfilehash: fd2a2a4b7d5033ecd35d02baa240bc7586e7a25d
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702938"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555669"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>管理警报和智能组状态
 Azure Monitor 中的警报现在具有[警报状态和监视条件](https://aka.ms/azure-alerts-overview)，与此类似，智能组具有[智能组状态](https://aka.ms/smart-groups)。 现在，在与相应警报或智能组相关联的历史记录中捕获对状态的更改。 本文将指导完成更改状态（包括警报和智能组）的过程。
@@ -43,7 +42,7 @@ Azure Monitor 中的警报现在具有[警报状态和监视条件](https://aka.
 1. 单击“更改状态”后，随即打开弹出窗口，可在其中选择状态（“新建/已确认/已关闭”）并在必要时输入注释。 
 ![监视](./media/alerts-managing-alert-states/state-sg-change.jpg)
    > [!NOTE]
-   >  更改智能组状态不会更改各个成员警报的状态。
+   >  更改智能组状态不会更改单个成员警报状态。
 
 1. 完成此操作后，状态更改将记录在相应智能组的历史记录中。 打开相应的“详细信息”页面并查看历史记录部分即可查看此记录。     
 ![监视](./media/alerts-managing-alert-states/state-sg-history.jpg)

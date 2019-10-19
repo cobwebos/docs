@@ -1,28 +1,22 @@
 ---
 title: Azure 中管理解决方案的最佳做法 | Microsoft Docs
 description: ''
-services: operations-management-suite
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/27/2017
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: a4f982f6265d1c8cab2ae666b9d6e2e33beb5064
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.date: 04/27/2017
+ms.openlocfilehash: 28ae01fe28b1b2d6af95567e529c7c9ae17920e4
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672924"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553932"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>在 Azure 中创建管理解决方案的最佳做法（预览版）
 > [!NOTE]
-> 这是在 Azure 中创建管理解决方案（当前处于预览状态）的初步文档。 如下所述的全部架构均会有变动。  
+> 这是在 Azure 中创建管理解决方案的初步文档，当前仅提供预览版。 如下所述的全部架构均会有变动。  
 
 本文提供在 Azure 中[创建管理解决方案文件](solutions-solution-file.md)的最佳做法。  发现其他最佳做法后，将更新此信息。
 
@@ -38,7 +32,7 @@ ms.locfileid: "67672924"
 - 在解决方案中包括 [IngestionAPI 模块](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5)，以供将数据写入到 Log Analytics 存储库的 runbook 使用。  将解决方案配置为[引用](solutions-solution-file.md#solution-resource)此资源，以便在删除了解决方案后，此资源仍保留。  这就可以让多个解决方案共享此模块。
 - 使用[自动化变量](../../automation/automation-schedules.md)为解决方案提供用户以后可能要更改的值。  即使解决方案配置为包含该变量，则仍可以更改该变量的值。
 
-## <a name="views"></a>Views
+## <a name="views"></a>视图
 - 所有解决方案都应包含在用户门户中显示的单一视图。  该视图可以包含多个[可视化效果部件](../../azure-monitor/platform/view-designer-parts.md)以演示不同数据集。
 - 向解决方案中的任何视图添加[数据流验证](../../azure-monitor/platform/view-designer-tiles.md)消息，以针对需要为待收集的所需数据而配置的数据源向用户提供指示。
 - 将解决方案配置为[包含](solutions-solution-file.md#solution-resource)该视图，因此如果删除解决方案，它也会被删除。

@@ -7,16 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 1d6560613294584c77f002e2380065d64ea143f7
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 8c2764535515d0aeb1eb65a1621148fa58317cac
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387973"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553696"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>映射数据流中的架构偏差
-
-
 
 通常情况下，源经常更改元数据。 可以动态添加、删除或更改字段、列和类型。 如果不处理架构偏移，数据流就会受到上游数据源更改的影响。 当传入的列和字段发生更改时，典型的 ETL 模式将失败，因为它们往往绑定到这些源名称。
 
@@ -31,6 +29,8 @@ Azure 数据工厂以本机方式支持灵活的架构，这些架构从执行�
 需要在数据流中做出体系结构方面的决策，使整个流接受架构偏差。 这样做可以防范源中发生架构更改。 但是，在整个数据流中，将丢失列和类型的早期绑定。 Azure 数据工厂将架构偏差处理为后期绑定流，因此，在生成转换时，在整个流的架构视图中，偏移列的名称将不可用。
 
 ## <a name="schema-drift-in-source"></a>源中的架构偏差
+
+从源定义进入数据流的列在源投影中不存在时定义为 "偏移"。 您可以从源转换的 "投影" 选项卡中查看源投影。 为源选择数据集时，ADF 会自动从数据集中获取架构，并通过该数据集架构定义创建项目。
 
 在源转换中，架构偏移定义为读取未定义数据集架构的列。 若要启用架构偏移，请选中 "允许在源转换中使用**架构偏移**"。
 
@@ -52,7 +52,7 @@ Azure 数据工厂以本机方式支持灵活的架构，这些架构从执行�
 
 当数据流包含偏移列时，可以使用以下方法在转换中访问它们：
 
-* 使用 @no__t 0 和 `byName` 表达式按名称或位置号显式引用列。
+* 使用 `byPosition` 和 `byName` 表达式按名称或位置号显式引用列。
 * 添加派生列或聚合转换中的列模式，以匹配任何名称、流、位置或类型的组合
 * 在 Select 或 Sink 转换中添加基于规则的映射，以便通过模式将偏移列与列别名匹配
 

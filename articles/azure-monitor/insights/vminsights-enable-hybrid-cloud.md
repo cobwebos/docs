@@ -1,24 +1,18 @@
 ---
 title: 为混合环境启用 Azure Monitor （预览版） |Microsoft Docs
 description: 本文介绍如何为包含一个或多个虚拟机的混合云环境启用用于 VM 的 Azure Monitor。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/15/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: f4c483c36dc7a19e3e16dcaabab10af03cdfe17e
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
-ms.translationtype: HT
+ms.date: 10/15/2019
+ms.openlocfilehash: e9e5504125920cedaf383f8fa4299a4b1b1d60ed
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515514"
+ms.locfileid: "72553870"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>启用混合环境的用于 VM 的 Azure Monitor （预览版）
 

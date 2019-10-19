@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 19a817124afb9afcee25b5f2bff73b8a17e16519
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: d555c51838f3595367e931341a3cf6161857faef
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431275"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554602"
 ---
 # <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>设置 Azure HDInsight 中 Apache Kafka 的安全套接字层（SSL）加密和身份验证
 
@@ -49,7 +49,7 @@ Kafka SSL 代理安装程序将按以下方式使用四个 HDInsight 群集 Vm�
 使用以下详细说明来完成代理安装：
 
 > [!Important]
-> 在以下代码片段中，wnX 是三个工作节点之一的缩写，应根据需要将其替换为 `wn0` @no__t 或 @no__t。 `WorkerNode0_Name` 和 `HeadNode0_Name` 应替换为各自计算机的名称，如 `wn0-abcxyz` 或 `hn0-abcxyz`。
+> 在以下代码片段中，wnX 是三个工作节点之一的缩写，应根据需要将其替换为 `wn0`、`wn1` 或 `wn2`。 `WorkerNode0_Name` 和 `HeadNode0_Name` 应替换为各自计算机的名称，如 `wn0-abcxyz` 或 `hn0-abcxyz`。
 
 1. 在头节点0上执行初始安装，对于 HDInsight，它将填充证书颁发机构（CA）的角色。
 
@@ -76,6 +76,12 @@ Kafka SSL 代理安装程序将按以下方式使用四个 HDInsight 群集 Vm�
     keytool -genkey -keystore kafka.server.keystore.jks -validity 365 -storepass "MyServerPassword123" -keypass "MyServerPassword123" -dname "CN=FQDN_WORKER_NODE" -storetype pkcs12
     keytool -keystore kafka.server.keystore.jks -certreq -file cert-file -storepass "MyServerPassword123" -keypass "MyServerPassword123"
     scp cert-file sshuser@HeadNode0_Name:~/ssl/wnX-cert-sign-request
+    ```
+
+1. 在 CA 计算机上，运行以下命令以创建 ca 证书和 ca 密钥文件：
+
+    ```bash
+    openssl req -new -newkey rsa:4096 -days 365 -x509 -subj "/CN=Kafka-Security-CA" -keyout ca-key -out ca-cert -nodes
     ```
 
 1. 更改为 CA 计算机并签署所有接收到的证书签名请求：
@@ -128,30 +134,18 @@ Kafka SSL 代理安装程序将按以下方式使用四个 HDInsight 群集 Vm�
 
     ![在 Ambari 中编辑 kafka ssl 配置属性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. 运行以下命令，将配置属性添加到 Kafka `server.properties` 文件以播发 IP 地址而不是完全限定的域名（FQDN）。
+1. 在 "**高级 kafka** " 下，将以下行添加到**kafka 模板**属性的末尾。
 
-    ```bash
-    IP_ADDRESS=$(hostname -i)
-    echo advertised.listeners=$IP_ADDRESS
-    sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092,SSL://$IP_ADDRESS:9093" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.keystore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.key.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    ```
-
-1. 若要验证前面所做的更改是否正确，可以选择性地检查以下行是否在 Kafka `server.properties` 文件中存在。
-
-    ```bash
-    advertised.listeners=PLAINTEXT://10.0.0.11:9092,SSL://10.0.0.11:9093
+    ```config
+    # Needed to configure IP address advertising
     ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks
     ssl.keystore.password=MyServerPassword123
     ssl.key.password=MyServerPassword123
     ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks
     ssl.truststore.password=MyServerPassword123
     ```
+
+    ![编辑 Ambari 中的 kafka 模板属性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png)
 
 1. 重启所有 Kafka 代理。
 1. 使用 "创建者" 和 "使用者" 选项启动管理客户端，验证创建者和使用者是否在端口9093上工作。

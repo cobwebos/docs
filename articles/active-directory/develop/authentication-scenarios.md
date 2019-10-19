@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2201b7701dae90b43a01a6fb45decd94e45bab74
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 40d0cd29452b5473d16851451a88c93e78ef3f36
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430013"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554421"
 ---
 # <a name="authentication-basics"></a>身份验证基础知识
 
@@ -35,7 +35,7 @@ ms.locfileid: "72430013"
 
 **授权**是指向经过身份验证的参与方授予执行某些操作的权限。 它指定了允许访问的数据，以及可以对该数据执行的操作。 授权有时缩写为 AuthZ。
 
-应用程序不是创建每个应用程序来维护其自己的用户名和密码信息，而是在有多个应用程序时产生较高的管理负担，并需要在其中添加或删除用户，应用程序可以将该责任委派给集中式标识提供者。
+应用程序不是创建每个应用程序来维护自己的用户名和密码信息，而是需要在多个应用程序中添加或删除用户时，这会产生较高的管理负担，应用可以将该责任委派给一个集中的标识提供者。
 
 Azure Active Directory （Azure AD）是云中集中的标识提供者。 将身份验证和授权委派给它可以实现这样的方案：要求用户位于特定位置、使用多重身份验证的条件性访问策略，以及允许用户登录一次，然后自动登录到共享同一集中式目录的所有 web 应用。 此功能称为单一登录（SSO）。
 
@@ -43,7 +43,7 @@ Azure Active Directory （Azure AD）是云中集中的标识提供者。 将身
 
 Microsoft 标识平台通过提供标识即服务简化了应用程序开发人员的身份验证，并支持行业标准协议（例如 OAuth 2.0 和 OpenID Connect），并提供了不同的开源库有助于快速开始编码的平台。 开发人员可以通过它来生成应用程序，以便进行所有 Microsoft 标识的登录，以及获取令牌来调用 Microsoft Graph、其他 Microsoft API 或者开发人员生成的 API。 有关详细信息，请参阅[Microsoft 标识平台演变](about-microsoft-identity-platform.md)。
 
-## <a name="tenants"></a>租户
+### <a name="tenants"></a>租户
 
 云标识提供者可为许多组织提供服务。 为了使不同组织中的用户保持独立，Azure AD 分为租户，每个组织一个租户。
 
@@ -76,7 +76,7 @@ Azure AD 还提供 Azure Active Directory B2C 以便组织可以使用诸如 Goo
 
 访问令牌作为 `Authenticate` 标头中的持有者令牌传递到 Web API。 应用可向 STS 提供刷新令牌，如果未吊销用户对应用的访问权限，它将返回一个新的访问令牌和一个新的刷新令牌。 这就是如何处理离开企业的用户的方案。 当 STS 收到刷新令牌时，如果用户不再获得授权，则不会发出其他有效的访问令牌。
 
-### <a name="applications"></a>应用程序
+## <a name="application-model"></a>应用程序模型
 
 应用程序可以自行登录或将登录委托给标识提供者。 若要了解 Azure AD 支持的登录方案，请参阅[身份验证流和应用程序方案](authentication-flows-app-scenarios.md)。
 
@@ -90,18 +90,16 @@ Azure AD 还提供 Azure Active Directory B2C 以便组织可以使用诸如 Goo
 
 注册后，将为应用程序提供一个 GUID，应用程序会在请求令牌时与 Azure AD 共享该 GUID。 如果应用是机密客户端应用程序，它还会共享机密或公钥，具体取决于是否使用了证书或机密。
 
-### <a name="application-model"></a>应用程序模型
-
 Microsoft 标识平台使用满足以下两个主要功能的模型来表示应用程序：
 
-**根据应用程序所支持的身份验证协议来识别应用程序，并提供身份验证所需的所有标识符、Url、机密和相关信息。**
+根据应用程序所支持的身份验证协议来识别应用程序，并提供身份验证所需的所有标识符、Url、机密和相关信息。
 Microsoft 标识平台：
 
 * 保存支持在运行时进行身份验证所需的所有数据。
 * 保存所有数据以确定应用可能需要访问的资源，以及在什么情况下应满足给定请求。
 * 提供基础结构，用于实现应用程序开发人员租户内的应用程序预配和任何其他 Azure AD 租户。
 
-**处理令牌请求时间期间的用户同意，并协助跨租户动态预配应用**许可是资源所有者授权客户端应用程序以访问特定权限、代表资源所有者访问受保护资源的过程。 Microsoft 标识平台：
+处理令牌请求时间期间的用户同意，并促进在租户许可范围内动态预配应用程序，使资源所有者授权客户端应用程序访问受保护的资源（在特定权限下）代表资源所有者。 Microsoft 标识平台：
 
 * 使用户和管理员能够动态地同意或拒绝应用以他们的名义访问资源。
 * 使管理员能够最终决定允许执行哪些应用、哪些用户可以使用特定的应用，以及如何访问目录资源。
@@ -154,7 +152,7 @@ Web 应用开发人员可以指示是所有页面还是仅某些页面都要求�
 - 重定向由 web 应用以重定向 URI 的形式提供。 此重定向 URI 已注册到 Azure AD 应用程序对象。 可能有多个重定向 Uri，因为应用程序可能会部署到多个 Url。 因此，web 应用还需要指定要使用的重定向 URi。
 - Azure AD 验证 web 应用发送的重定向 URI 是否是应用的已注册重定向 Uri 之一。
 
-## <a name="generalization-to-desktop-and-mobile-apps"></a>通用化到桌面和移动应用
+## <a name="desktop-and-mobile-app-sign-in-flow-with-azure-ad"></a>桌面和移动应用登录流与 Azure AD
 
 上面所述的流适用于桌面和移动应用程序，但略有不同。
 

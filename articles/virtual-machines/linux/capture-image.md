@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 328748b9dd81834b9c69f81bc0bda60c9ad12cb0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0767031ff6eee59de6cf447464328f66c50ef71a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879956"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552794"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>如何创建虚拟机或 VHD 的映像
 
@@ -30,9 +30,7 @@ ms.locfileid: "68879956"
 
 若要创建一份现有 Linux VM 的副本以用于备份或调试，或从本地 VM 上传专用 Linux VHD，请参阅[上传自定义磁盘映像并根据该映像创建 Linux VM](upload-vhd.md)。  
 
-你可以使用**AZURE VM 映像生成器 (公共预览版)** 服务构建自定义映像, 无需了解任何工具或安装生成管道, 只需提供映像配置, 映像生成器就会创建映像。 有关详细信息, 请参阅[通过 AZURE VM 映像生成器入门](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)。
-
-另外, 请使用**Packer**创建自定义配置。 有关详细信息，请参阅[如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像](build-image-with-packer.md)。
+你可以使用**AZURE VM 映像生成器（公共预览版）** 服务构建自定义映像，无需了解任何工具或安装生成管道，只需提供映像配置，映像生成器就会创建映像。 有关详细信息，请参阅[通过 AZURE VM 映像生成器入门](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)。
 
 创建映像前需要以下项：
 
@@ -42,10 +40,10 @@ ms.locfileid: "68879956"
 
 ## <a name="prefer-a-tutorial-instead"></a>要改用教程吗？
 
-有关本文的用于测试、评估或了解 Azure 中的 VM 的简化版本，请参阅[使用 CLI 创建 Azure VM 的自定义映像](tutorial-custom-images.md)。  否则, 请继续阅读此处以获取完整的图片。
+有关本文的用于测试、评估或了解 Azure 中的 VM 的简化版本，请参阅[使用 CLI 创建 Azure VM 的自定义映像](tutorial-custom-images.md)。  否则，请继续阅读此处以获取完整的图片。
 
 
-## <a name="step-1-deprovision-the-vm"></a>步骤 1：取消设置 VM
+## <a name="step-1-deprovision-the-vm"></a>步骤 1：取消预配 VM
 首先，使用 Azure VM 代理取消预配 VM 以删除计算机特定文件和数据。 在源 Linux VM 上，使用带 `-deprovision+user` 参数的 `waagent` 命令。 有关详细信息，请参阅 [Azure Linux 代理用户指南](../extensions/agent-linux.md)。
 
 1. 使用 SSH 客户端连接到 Linux VM。
@@ -71,7 +69,7 @@ ms.locfileid: "68879956"
       --name myVM
     ```
     
-    等待 VM 完全解除分配, 然后再继续。 完成此命令可能需要几分钟。  虚拟机在解除分配期间关闭。
+    等待 VM 完全解除分配，然后再继续。 完成此命令可能需要几分钟。  虚拟机在解除分配期间关闭。
 
 2. 使用 [az vm generalize](/cli/azure/vm) 将 VM 标记为通用化。 以下示例将名为 myResourceGroup 的资源组中名为 myVM 的 VM 标记为通用化。
    

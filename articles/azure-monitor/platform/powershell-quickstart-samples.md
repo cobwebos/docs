@@ -1,19 +1,18 @@
 ---
 title: Azure 监视器 PowerShell 快速入门示例
 description: 使用 PowerShell 访问 Azure Monitor 功能，如自动缩放、警报、webhook 和搜索活动日志。
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 2/14/2018
-ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: 886eb8578e004eba3b6fabc1deb42db0fb7fac70
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 2/14/2018
+ms.openlocfilehash: d1aa4b4e2d72f10ca73616bc7e69b0d02f13a501
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350241"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72551850"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure 监视器 PowerShell 快速入门示例
 本文给出了示例 PowerShell 命令，可帮助用户访问 Azure 监视器的功能。
@@ -55,9 +54,9 @@ Set-AzContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log-for-a-subscription"></a>检索订阅的活动日志
-使用 [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) cmdlet。  下面是一些常见示例。 活动日志保留过去 90 天的操作。 使用此时间之前的日期会生成错误消息。  
+使用[AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) cmdlet。  下面是一些常见示例。 活动日志包含最后90天的操作。 在此时间之前使用日期将导致错误消息。  
 
-查看当前日期/时间，以确认要在以下命令中使用的时间：
+请参阅以下命令中的当前日期/时间，验证要使用的时间：
 ```powershell
 Get-Date
 ```
@@ -101,7 +100,7 @@ Get-AzLog -MaxRecord 10
 `Get-AzLog` 支持许多其他参数。 有关更多信息，请参阅 `Get-AzLog` 参考。
 
 > [!NOTE]
-> `Get-AzLog` 仅提供 15 天的历史记录。 使用 **-MaxRecords** 参数可查询 15 天之外的最后 N 个事件。 要访问超过 15 天的事件，请使用 REST API 或 SDK （使用 SDK 的 C# 示例）。 如果不包括 **StartTime**，则默认值为 **EndTime** 减去一小时。 如果不包括 **EndTime**，则默认值为当前时间。 所有时间均是 UTC 时间。
+> `Get-AzLog` 仅提供 15 天的历史记录。 使用 **-MaxRecords**参数可查询最近 N 个事件，超过15天。 要访问超过 15 天的事件，请使用 REST API 或 SDK （使用 SDK 的 C# 示例）。 如果不包括 **StartTime**，则默认值为 **EndTime** 减去一小时。 如果不包括 **EndTime**，则默认值为当前时间。 所有时间均是 UTC 时间。
 > 
 > 
 
@@ -150,17 +149,17 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 
 下表描述了用于使用指标创建警报的参数和值。
 
-| 参数 | value |
+| 参数 | 值 |
 | --- | --- |
-| 姓名 |simpletestdiskwrite |
-| 此警报规则的位置 |East US |
+| 名称 |simpletestdiskwrite |
+| 此警报规则的位置 |美国东部 |
 | resourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| 创建的警报的 MetricName |\PhysicalDisk(_Total)\Disk Writes/sec。See the `Get-MetricDefinitions` cmdlet about how to retrieve the exact metric names |
-| 运算符 |GreaterThan |
-| 阈值（此指标的计数/秒） |1 |
+| 创建的警报的 MetricName |\PhysicalDisk(_Total)\Disk Writes/sec。有关如何检索精确指标名称的信息，请参阅 `Get-MetricDefinitions` cmdlet |
+| operator |GreaterThan |
+| 阈值（此指标的计数/秒） |第 |
 | WindowSize（hh:mm:ss 格式） |00:05:00 |
-| 聚合（在这种情况下使用平均计数的指标的统计信息） |Average |
+| 聚合（在这种情况下使用平均计数的指标的统计信息） |平均值 |
 | 自定义电子邮件（字符串数组） |'foo@example.com','bar@example.com' |
 | 向所有者、参与者和读者发送电子邮件 |-SendToServiceOwners |
 
@@ -229,7 +228,7 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 
 1. 创建规则。
 2. 创建配置文件，将之前创建的规则映射到该配置文件。
-3. 可选：通过配置 webhook 和电子邮件属性，创建自动缩放通知。
+3. 可选︰通过配置 webhook 和电子邮件属性，创建自动缩放通知。
 4. 通过映射在前面步骤中创建的配置文件和通知，创建自动缩放设置，并使用目标资源上的名称。
 
 以下示例演示了如何使用 CPU 使用率指标为基于 Windows 操作系统的虚拟机规模集创建自动缩放设置。
@@ -310,7 +309,7 @@ Remove-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
 ## <a name="manage-log-profiles-for-activity-log"></a>管理活动日志的日志配置文件
-可以创建*日志配置文件*并从活动日志中将数据导出到存储帐户，并且可以为其配置数据保留期。 也可以选择将数据流式传输到事件中心。 目前仅预览版中具有此功能，并且每个订阅只能创建一个日志配置文件。 可以对当前订阅使用以下 cmdlet 来创建和管理日志配置文件。 也可以选择特定的订阅。 虽然 PowerShell 默认为当前订阅，但可以使用 `Set-AzContext` 随时对此进行更改。 可以配置活动日志以将数据路由到该订阅中的任何存储帐户或事件中心。 以 JSON 格式将数据写为 blob 文件。
+可以创建日志配置文件并将数据从活动日志中导出到存储帐户，并且可以为其配置数据保留期。 也可以选择将数据流式传输到事件中心。 目前仅预览版中具有此功能，并且每个订阅只能创建一个日志配置文件。 可以对当前订阅使用以下 cmdlet 来创建和管理日志配置文件。 也可以选择特定的订阅。 虽然 PowerShell 默认为当前订阅，但可以使用 `Set-AzContext` 随时对此进行更改。 可以配置活动日志以将数据路由到该订阅中的任何存储帐户或事件中心。 以 JSON 格式将数据写为 blob 文件。
 
 ### <a name="get-a-log-profile"></a>获取日志配置文件
 若要提取现有日志配置文件，请使用 `Get-AzLogProfile` cmdlet。

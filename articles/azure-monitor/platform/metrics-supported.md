@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 4e2cd3b66385d37815d0fc51a70ca31aba25db29
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
-ms.translationtype: HT
+ms.openlocfilehash: aab5d9a4cb7527e8a2085f826febc64bbd74854c
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528609"
+ms.locfileid: "72551962"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor 支持的指标
 
@@ -1437,68 +1437,78 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|计价单位|聚合类型|描述|维度|
 |---|---|---|---|---|---|
-|cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|无维度|
-|physical_data_read_percent|数据 IO 百分比|百分比|平均值|数据 IO 百分比|无维度|
-|log_write_percent|日志 IO 百分比|百分比|平均值|日志 IO 百分比。 不适用于数据仓库。|无维度|
-|dtu_consumption_percent|DTU 百分比|百分比|平均值|DTU 百分比。 适用于基于 DTU 的数据库。|无维度|
-|存储|已用数据空间|字节|最大值|数据库总大小。 不适用于数据仓库。|无维度|
-|connection_successful|成功的连接数|计数|总计|成功的连接数|无维度|
-|connection_failed|失败的连接数|计数|总计|失败的连接数|无维度|
-|blocked_by_firewall|被防火墙阻止|计数|总计|被防火墙阻止|无维度|
-|deadlock|死锁数|计数|总计|死锁. 不适用于数据仓库。|无维度|
-|storage_percent|已用数据空间百分比|百分比|最大值|数据库大小百分比。 不适用于数据仓库或超大规模数据库。|无维度|
-|xtp_storage_percent|内存中 OLTP 存储百分比|百分比|平均值|内存中 OLTP 存储百分比。 不适用于数据仓库。|无维度|
-|workers_percent|辅助角色百分比|百分比|平均值|辅助角色百分比。 不适用于数据仓库。|无维度|
-|sessions_percent|会话百分比|百分比|平均值|会话百分比。 不适用于数据仓库。|无维度|
-|dtu_limit|DTU 限制|计数|平均值|DTU 限制。 适用于基于 DTU 的数据库。|无维度|
-|dtu_used|已用的 DTU|计数|平均值|使用的 DTU。 适用于基于 DTU 的数据库。|无维度|
-|cpu_limit|CPU 限制|计数|平均值|CPU 限制。 适用于基于 vCore 的数据库。|无维度|
-|cpu_used|使用的 CPU|计数|平均值|使用的 CPU。 适用于基于 vCore 的数据库。|无维度|
-|dwu_limit|DWU 限制|计数|最大值|DWU 限制。 仅适用于数据仓库。|无维度|
-|dwu_consumption_percent|DWU 百分比|百分比|最大值|DWU 百分比。 仅适用于数据仓库。|无维度|
-|dwu_used|已用的 DWU|计数|最大值|使用的 DWU。 仅适用于数据仓库。|无维度|
-|dw_cpu_percent|DW 节点级别 CPU 百分比|百分比|平均值|DW 节点级别 CPU 百分比|DwLogicalNodeId|
-|dw_physical_data_read_percent|DW 节点级别数据 IO 百分比|百分比|平均值|DW 节点级别数据 IO 百分比|DwLogicalNodeId|
-|cache_hit_percent|缓存命中百分比|百分比|最大值|缓存命中百分比。 仅适用于数据仓库。|无维度|
-|cache_used_percent|缓存使用百分比|百分比|最大值|已用缓存百分比。 仅适用于数据仓库。|无维度|
-|local_tempdb_usage_percent|本地 tempdb 百分比|百分比|平均值|本地 tempdb 百分比。 仅适用于数据仓库。|无维度|
+|allocated_data_storage|已分配数据空间|字节|平均值|已分配数据空间。 不适用于数据仓库。|无维度|
 |app_cpu_billed|应用 CPU 计费|计数|总计|应用 CPU 计费。 适用于无服务器数据库。|无维度|
 |app_cpu_percent|应用 CPU 百分比|百分比|平均值|应用 CPU 百分比。 适用于无服务器数据库。|无维度|
 |app_memory_percent|应用内存已用百分比|百分比|平均值|应用内存已用百分比。 适用于无服务器数据库。|无维度|
-|allocated_data_storage|已分配数据空间|字节|平均值|已分配数据空间。 不适用于数据仓库。|无维度|
+|blocked_by_firewall|被防火墙阻止|计数|总计|被防火墙阻止|无维度|
+|cache_hit_percent|缓存命中百分比|百分比|最大值|缓存命中百分比。 仅适用于数据仓库。|无维度|
+|cache_used_percent|缓存使用百分比|百分比|最大值|已用缓存百分比。 仅适用于数据仓库。|无维度|
+|connection_failed|失败的连接数|计数|总计|失败的连接数|无维度|
+|connection_successful|成功的连接数|计数|总计|成功的连接数|无维度|
+|cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|无维度|
+|cpu_limit|CPU 限制|计数|平均值|CPU 限制。 适用于基于 vCore 的数据库。|无维度|
+|cpu_used|使用的 CPU|计数|平均值|使用的 CPU。 适用于基于 vCore 的数据库。|无维度|
+|deadlock|死锁数|计数|总计|死锁. 不适用于数据仓库。|无维度|
+|dtu_limit|DTU 限制|计数|平均值|DTU 限制。 适用于基于 DTU 的数据库。|无维度|
+|dtu_consumption_percent|DTU 百分比|百分比|平均值|DTU 百分比。 适用于基于 DTU 的数据库。|无维度|
+|dtu_used|已用的 DTU|计数|平均值|使用的 DTU。 适用于基于 DTU 的数据库。|无维度|
+|dw_cpu_percent|DW 节点级别 CPU 百分比|百分比|平均值|DW 节点级别 CPU 百分比|DwLogicalNodeId|
+|dw_physical_data_read_percent|DW 节点级别数据 IO 百分比|百分比|平均值|DW 节点级别数据 IO 百分比|DwLogicalNodeId|
+|dwu_consumption_percent|DWU 百分比|百分比|最大值|DWU 百分比。 仅适用于数据仓库。|无维度|
+|dwu_limit|DWU 限制|计数|最大值|DWU 限制。 仅适用于数据仓库。|无维度|
+|dwu_used|已用的 DWU|计数|最大值|使用的 DWU。 仅适用于数据仓库。|无维度|
+|local_tempdb_usage_percent|本地 tempdb 百分比|百分比|平均值|本地 tempdb 百分比。 仅适用于数据仓库。|无维度|
+|log_write_percent|日志 IO 百分比|百分比|平均值|日志 IO 百分比。 不适用于数据仓库。|无维度|
+|physical_data_read_percent|数据 IO 百分比|百分比|平均值|数据 IO 百分比|无维度|
+|sessions_percent|会话百分比|百分比|平均值|会话百分比。 不适用于数据仓库。|无维度|
+|sqlserver_process_core_percent|SQL Server 处理核心百分比|百分比|最大值|此指标是占位符，此时不填充。|无维度|
+|sqlserver_process_memory_percent|SQL Server 处理内存百分比|百分比|最大值|此指标是占位符，此时不填充。|无维度|
+|存储|已用数据空间|字节|最大值|数据库总大小。 不适用于数据仓库。|无维度|
+|storage_percent|已用数据空间百分比|百分比|最大值|数据库大小百分比。 不适用于数据仓库或超大规模数据库。|无维度|
+|tempdb_data_size|Tempdb 数据文件大小（Kb）|计数|最大值|Tempdb 数据文件大小（Kb）。 不适用于数据仓库。 对于基于 DTU 的购买模型，此指标适用于使用 vCore 购买模型的数据库或 100 DTU 和更高版本。|无维度|
+|tempdb_log_size|Tempdb 日志文件大小（Kb）|计数|最大值|Tempdb 日志文件大小（Kb）。 不适用于数据仓库。 对于基于 DTU 的购买模型，此指标适用于使用 vCore 购买模型的数据库或 100 DTU 和更高版本。|无维度|
+|tempdb_log_used_percent|使用的 Tempdb 百分比日志|百分比|最大值|使用的 Tempdb 百分比日志。 不适用于数据仓库。 对于基于 DTU 的购买模型，此指标适用于使用 vCore 购买模型的数据库或 100 DTU 和更高版本。|无维度|
+|workers_percent|辅助角色百分比|百分比|平均值|辅助角色百分比。 不适用于数据仓库。|无维度|
+|xtp_storage_percent|内存中 OLTP 存储百分比|百分比|平均值|内存中 OLTP 存储百分比。 不适用于数据仓库。|无维度|
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
 |指标|指标显示名称|计价单位|聚合类型|描述|维度|
 |---|---|---|---|---|---|
-|cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|无维度|
-|physical_data_read_percent|数据 IO 百分比|百分比|平均值|数据 IO 百分比|无维度|
-|log_write_percent|日志 IO 百分比|百分比|平均值|日志 IO 百分比|无维度|
-|dtu_consumption_percent|DTU 百分比|百分比|平均值|DTU 百分比。 适用于基于 DTU 的弹性池。|无维度|
-|storage_percent|已用数据空间百分比||百分比|平均值|存储百分比|无维度|
-|workers_percent|辅助角色百分比|百分比|平均值|辅助角色百分比|无维度|
-|sessions_percent|会话百分比|百分比|平均值|会话百分比|无维度|
-|eDTU_limit|eDTU 限制|计数|平均值|eDTU 限制。 适用于基于 DTU 的弹性池。|无维度|
-|storage_limit|数据最大大小|字节|平均值|存储限制|无维度|
-|eDTU_used|已用的 eDTU|计数|平均值|使用的 eDTU。 适用于基于 DTU 的弹性池。|无维度|
-|storage_used|已用数据空间|字节|平均值|已用存储|无维度|
-|xtp_storage_percent|内存中 OLTP 存储百分比|百分比|平均值|内存中 OLTP 存储百分比|无维度|
-|cpu_limit|CPU 限制|计数|平均值|CPU 限制。 适用于基于 vCore 的弹性池。|无维度|
-|cpu_used|使用的 CPU|计数|平均值|使用的 CPU。 适用于基于 vCore 的弹性池。|无维度|
 |allocated_data_storage|已分配数据空间|字节|平均值|已分配数据空间|无维度|
 |allocated_data_storage_percent|已分配的数据空间百分比|百分比|最大值|已分配的数据空间百分比|无维度|
+|cpu_limit|CPU 限制|计数|平均值|CPU 限制。 适用于基于 vCore 的弹性池。|无维度|
+|cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|无维度|
+|cpu_used|使用的 CPU|计数|平均值|使用的 CPU。 适用于基于 vCore 的弹性池。|无维度|
+|dtu_consumption_percent|DTU 百分比|百分比|平均值|DTU 百分比。 适用于基于 DTU 的弹性池。|无维度|
+|eDTU_limit|eDTU 限制|计数|平均值|eDTU 限制。 适用于基于 DTU 的弹性池。|无维度|
+|eDTU_used|已用的 eDTU|计数|平均值|使用的 eDTU。 适用于基于 DTU 的弹性池。|无维度|
+|log_write_percent|日志 IO 百分比|百分比|平均值|日志 IO 百分比|无维度|
+|physical_data_read_percent|数据 IO 百分比|百分比|平均值|数据 IO 百分比|无维度|
+|sessions_percent|会话百分比|百分比|平均值|会话百分比|无维度|
+|storage_limit|数据最大大小|字节|平均值|存储限制|无维度|
+|storage_percent|已用数据空间百分比||百分比|平均值|存储百分比|无维度|
+|storage_used|已用数据空间|字节|平均值|已用存储|无维度|
+|sqlserver_process_core_percent|SQL Server 处理核心百分比|百分比|最大值|此指标是占位符，此时不填充。|无维度|
+|sqlserver_process_memory_percent|SQL Server 处理内存百分比|百分比|最大值|此指标是占位符，此时不填充。|无维度|
+|tempdb_data_size|Tempdb 数据文件大小（Kb）|计数|最大值|Tempdb 数据文件大小（Kb）。 不适用于数据仓库。 对于基于 DTU 的购买模型，此指标适用于使用 vCore 购买模型的数据库或 100 DTU 和更高版本。|无维度|
+|tempdb_log_size|Tempdb 日志文件大小（Kb）|计数|最大值|Tempdb 日志文件大小（Kb）。 不适用于数据仓库。 对于基于 DTU 的购买模型，此指标适用于使用 vCore 购买模型的数据库或 100 DTU 和更高版本。|无维度|
+|tempdb_log_used_percent|使用的 Tempdb 百分比日志|百分比|最大值|使用的 Tempdb 百分比日志。 不适用于数据仓库。 对于基于 DTU 的购买模型，此指标适用于使用 vCore 购买模型的数据库或 100 DTU 和更高版本。|无维度|
+|workers_percent|辅助角色百分比|百分比|平均值|辅助角色百分比|无维度|
+|xtp_storage_percent|内存中 OLTP 存储百分比|百分比|平均值|内存中 OLTP 存储百分比|无维度|
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
 |指标|指标显示名称|计价单位|聚合类型|描述|维度|
 |---|---|---|---|---|---|
-|virtual_core_count|虚拟核心计数|计数|平均值|虚拟核心计数|无维度|
 |avg_cpu_percent|CPU 平均百分比|百分比|平均值|CPU 平均百分比|无维度|
+|io_bytes_read|已读取的 IO 字节数|字节|平均值|已读取的 IO 字节数|无维度|
+|io_requests|IO 请求计数|计数|平均值|IO 请求计数|无维度|
+|io_bytes_written|已写入的 IO 字节数|字节|平均值|已写入的 IO 字节数|无维度|
 |reserved_storage_mb|预留的存储空间|计数|平均值|预留的存储空间|无维度|
 |storage_space_used_mb|已使用的存储空间|计数|平均值|已使用的存储空间|无维度|
-|io_requests|IO 请求计数|计数|平均值|IO 请求计数|无维度|
-|io_bytes_read|已读取的 IO 字节数|字节|平均值|已读取的 IO 字节数|无维度|
-|io_bytes_written|已写入的 IO 字节数|字节|平均值|已写入的 IO 字节数|无维度|
+|virtual_core_count|虚拟核心计数|计数|平均值|虚拟核心计数|无维度|
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 

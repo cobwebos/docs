@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 55ff134bfa76634250b7495120432d7310b07c06
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 4674dede5912dc1dc64bd0e092e28461f30bebcd
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431874"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554220"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -83,7 +83,7 @@ Azure 在[Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-man
 
 * 转到“使用情况和预估成本”页查看每日数据量图表。 
 * 在指标资源管理器中，添加新图表。 对于图表指标，选择“数据点容量”。 启用“分组”，并按数据类型分组。
-* 使用 @no__t 数据类型。 例如，若要查看最后一天的数据量引入，则查询如下：
+* 使用 `systemEvents` 数据类型。 例如，若要查看最后一天的数据量引入，则查询如下：
 
 ```kusto
 systemEvents 
@@ -134,7 +134,7 @@ systemEvents
 
 ![调整每日遥测数据量上限](./media/pricing/pricing-003.png)
 
-若要[通过 Azure 资源管理器更改每日上限](../../azure-monitor/app/powershell.md)，要更改的属性为 `dailyQuota`。  你还可以通过 Azure 资源管理器将 @no__t 设置为 `warningThreshold`。 
+若要[通过 Azure 资源管理器更改每日上限](../../azure-monitor/app/powershell.md)，要更改的属性为 `dailyQuota`。  你还可以通过 Azure 资源管理器设置 `dailyQuotaResetTime` 和每日 cap 的 `warningThreshold`。 
 
 ## <a name="sampling"></a>采样
 [采样](../../azure-monitor/app/sampling.md)是一种方法，可降低向应用发送遥测的速率，同时仍可在诊断搜索过程中查找相关事件。 此外，还可保留正确的事件计数。
@@ -170,7 +170,7 @@ Application Insights 资源的默认保留期为90天。 可以为每个 Applica
 
 ![调整每日遥测数据量上限](./media/pricing/pricing-005.png)
 
-还可以使用 Powershell 以[编程](powershell.md)方式使用 `retentionInDays` 参数设置保留。 此外，如果将数据保留期设置为30天，则可以使用 `immediatePurgeDataOn30Days` 参数触发立即清除旧数据，这对于符合性相关的方案可能很有用。 此清除功能仅通过 Azure 资源管理器公开，并应小心使用。 
+还可以使用 Powershell 以[编程](powershell.md#set-the-data-retention)方式使用 `retentionInDays` 参数设置保留。 此外，如果将数据保留期设置为30天，则可以使用 `immediatePurgeDataOn30Days` 参数触发立即清除旧数据，这对于符合性相关的方案可能很有用。 此清除功能仅通过 Azure 资源管理器公开，并应小心使用。 
 
 当计费在12月2019年初开始更长的保留期时，保存时间超过90天的数据将按当前为 Azure Log Analytics 数据保留计费的相同费率计费。 有关详细信息，请参阅[Azure Monitor 定价 "页](https://azure.microsoft.com/pricing/details/monitor/)。 通过[投票此建议](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)，随时了解可变保留进度。 
 

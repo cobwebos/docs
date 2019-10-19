@@ -1,20 +1,18 @@
 ---
 title: 容器区域映射的 Azure Monitor
 description: 本文介绍容器 Azure Monitor、Log Analytics 工作区和自定义指标之间支持的区域映射。
-services: azure-monitor
 ms.service: azure-monitor
-ms.workload: infrastructure-services
+ms.subservice: ''
+ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 06/26/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: ca77277c8d8d405b8fe81f612a8d7600d3c937ab
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: f22c62dddf2e38fa2c9471ce98b49a8aa32390b3
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388186"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554024"
 ---
 # <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>容器 Azure Monitor 支持区域映射
 

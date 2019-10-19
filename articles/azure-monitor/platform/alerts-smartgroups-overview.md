@@ -1,19 +1,18 @@
 ---
 title: 智能组
 description: 智能组是警报的聚合，可帮助你降低警报噪音
-author: anantr
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 05/15/2018
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 08657163eb170b8d3185ce15bd724f1f55bbe2bd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.topic: conceptual
+author: anantr
+ms.author: robb
+ms.date: 05/15/2018
+ms.openlocfilehash: 83ea68ad92a6c78ccf56483e1f0c2cbcbcd7d22a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702861"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552352"
 ---
 # <a name="smart-groups"></a>智能组
 处理警报时面临的一个常见难题是筛选噪音以找出真正重要的事项 - 智能组旨在解决该问题。  
@@ -29,9 +28,9 @@ ms.locfileid: "71702861"
 
 支持以下智能组状态。
 
-| 状态 | 描述 |
+| 状况 | 描述 |
 |:---|:---|
-| 新建 | 只是检测到了问题，但尚未审查问题。 |
+| 新 | 只是检测到了问题，但尚未审查问题。 |
 | 已确认 | 管理员已审查智能组，并已开始进行处理。 |
 | 已关闭 | 问题已解决。 关闭某个智能组后，可通过将其更改为另一种状态来重新打开它。 |
 
@@ -49,7 +48,7 @@ ms.locfileid: "71702861"
 
 “智能组详细信息”页包括以下部分。
 
-| 节 | 描述 |
+| 部分 | 描述 |
 |:---|:---|
 | 警报 | 列出智能组中包含的各个警报。 选择某个警报会打开它的“警报详细信息”页。 |
 | 历史记录 | 列出智能组执行的每个操作，以及对智能组进行的任何更改。 目前仅限状态更改和警报成员身份更改。 |

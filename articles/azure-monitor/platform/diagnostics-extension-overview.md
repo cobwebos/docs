@@ -1,18 +1,18 @@
 ---
 title: Azure 诊断扩展概述
 description: 使用 Azure 诊断在云服务、虚拟机和 Service Fabric 中进行调试、性能度量、监视和流量分析
-author: rboucher
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 02/13/2019
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: e0325a3bda912c95d8d27646bc1e80fff5ce10a8
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 02/13/2019
+ms.openlocfilehash: d1721411b57fc3542af48fc5f48eca7e4a2d06c8
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639427"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552148"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>什么是 Azure 诊断扩展
 Azure 诊断扩展是 Azure 中可对部署的应用程序启用诊断数据收集的代理。 可以使用于自许多不同源的诊断扩展。 目前支持 Azure 云服务（经典）Web 和辅助角色、虚拟机、虚拟机规模集，以及 Service Fabric。 其他 Azure 服务具有不同的诊断方法。 请参阅 [Azure 中的监控概述](../../azure-monitor/overview.md)。
@@ -52,7 +52,7 @@ Azure 诊断扩展可收集以下类型的数据：
 若要详细了解如何配置此接收器，请参阅 [Azure 诊断架构文档](diagnostics-extension-schema-1dot3.md)。
 
 ## <a name="costs"></a>成本
-上述每个选项都可能产生费用。 一定要研究它们，以避免意外的账单。  Application Insights、事件中心和 Azure 存储具有与引入和存储时间相关联的单独成本。 特别是，Azure 存储将永久保存任何数据，因此你可能希望在一段时间后清除旧数据以降低成本。    
+上述每个选项可能会产生成本。 务必调查它们以避免意外的帐单。  Application Insights、事件中心和 Azure 存储具有与引入和存储时间相关的不同成本。 具体而言，Azure 存储会永久保存所有数据，这样，在特定时间段后，你可能希望清除旧数据，从而降低成本。    
 
 ## <a name="versioning-and-configuration-schema"></a>版本控制和配置架构
 请参阅 [Azure 诊断版本历史记录和架构](diagnostics-extension-schema.md)。

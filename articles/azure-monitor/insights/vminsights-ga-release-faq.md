@@ -1,21 +1,18 @@
 ---
 title: 用于 VM 的 Azure Monitor （GA）常见问题 |Microsoft Docs
 description: 用于 VM 的 Azure Monitor 是 Azure 中的一个解决方案，它合并了 Azure VM 操作系统的运行状况和性能监视、应用程序组件及其与其他资源的依赖关系的自动发现功能，并映射这些组件和资源之间的通信。 本文解答了有关 GA 版本的常见问题。
-services: azure-monitor
-author: mgoedtel
-manager: carmonm
-editor: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 10/07/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: cb21d3bed1efc8f6ee7e16a0976ce46d03404983
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.date: 10/07/2019
+ms.openlocfilehash: 523fb2d3a3b148afc9219e666c2fbe7fa40d58ad
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275960"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553801"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>用于 VM 的 Azure Monitor 公开发布（GA）常见问题
 
@@ -25,9 +22,9 @@ ms.locfileid: "72275960"
 
 我们发布了11月用于 VM 的 Azure Monitor 的新版本。 在此版本后为 Vm 启用 Azure 监视器的客户会自动收到新版本，但会提示已在使用用于 VM 的 Azure Monitor 的现有客户进行升级。  如果跨多个工作区进行大型部署，则此 FAQ 和我们的文档将提供有关执行批量升级的指导。
 
-通过此升级，用于 VM 的 Azure Monitor 性能数据集现在存储在与[容器 Azure Monitor](container-insights-overview.md)相同的 @no__t 表中，并使您可以更轻松地查询这两个数据集。 此外，还可以存储我们在以前使用的表中无法存储的多个不同的数据集。  我们还将更新性能视图以使用此新表。
+通过此升级，用于 VM 的 Azure Monitor 性能数据集现在与[容器 Azure Monitor](container-insights-overview.md)存储在同一 `InsightsMetrics` 表中，并使您可以更轻松地查询这两个数据集。 此外，还可以存储我们在以前使用的表中无法存储的多个不同的数据集。  我们还将更新性能视图以使用此新表。
 
-我们正在迁移到新的连接数据集数据类型。 目前存储在 `ServiceMapComputer_CL` 中的数据和使用自定义日志表 `ServiceMapProcess_CL` 的数据将移到名为 `VMComputer` 和 `VMProcess` 的专用数据类型。  通过迁移到专用数据类型，我们可以为数据引入提供这些优先级，表架构将在所有客户之间进行标准化。
+我们正在迁移到新的连接数据集数据类型。 目前存储在使用自定义日志表的 `ServiceMapComputer_CL` 和 `ServiceMapProcess_CL` 中的数据将移到名为 `VMComputer` 和 `VMProcess` 的专用数据类型。  通过迁移到专用数据类型，我们可以为数据引入提供这些优先级，表架构将在所有客户之间进行标准化。
 
 我们认识到，请求现有客户升级会导致工作流中断，这就是我们在公共预览版中（而不是在以后到达 GA 之后）完成此操作的原因。
 
@@ -35,7 +32,7 @@ ms.locfileid: "72275960"
 
 目前，当你完成用于 VM 的 Azure Monitor 的载入过程时，将在你选择用于存储监视数据的工作区上启用服务映射解决方案，然后为我们从 Vm 收集的数据配置性能计数器。 在未来的几周内，我们将发布名为**VMInsights**的新解决方案，其中包含用于数据收集的其他功能，以及用于在 Log Analytics 中存储此数据的新位置。
 
-当前在工作区中使用性能计数器的过程将数据发送到 Log Analytics 中的 Perf 表。  这一新的解决方案会将数据发送到名为 `InsightsMetrics` 的表，用于容器 Azure Monitor。 此表架构使我们可以存储与 Perf 表格式不兼容的其他度量值和服务数据集。
+当前在工作区中使用性能计数器的过程将数据发送到 Log Analytics 中的 Perf 表。  这一新的解决方案会将数据发送到名为 `InsightsMetrics` 的表，该表也由容器 Azure Monitor 使用。 此表架构使我们可以存储与 Perf 表格式不兼容的其他度量值和服务数据集。
 
 ## <a name="what-should-i-do-about-the-performance-counters-on-my-workspace-if-i-install-the-vminsights-solution"></a>如果安装 VMInsights 解决方案，我应该如何处理我的工作区中的性能计数器？
 
@@ -46,11 +43,11 @@ ms.locfileid: "72275960"
 [!NOTE]
 >如果有在 Perf 表中引用这些计数器的警报规则，则需要将其更新为引用 `InsightsMetrics` 表中的新数据。  请参阅我们的文档，以了解可用于引用此表的示例日志查询。
 
-如果决定保持启用性能计数器，则将根据 [Log Analytics 定价 [（ https://azure.microsoft.com/pricing/details/monitor/) ）对数据引入进行计费，并将其保留到 Perf 表中。
+如果决定保持启用性能计数器，则将根据 [Log Analytics 定价 [（ https://azure.microsoft.com/pricing/details/monitor/) ，为数据引入计费，并将其保留到 Perf 表中。
 
 ## <a name="how-will-this-change-affect-my-alert-rules"></a>此更改如何影响我的警报规则？
 
-如果你创建了[日志警报](../platform/alerts-unified-log.md)来查询在工作区上启用的针对性能计数器的 @no__t 1 表，则应更新这些规则以改为引用 @no__t 2 表。 本指南还适用于使用 `ServiceMapComputer_CL` 和 `ServiceMapProcess_CL` 的任何日志搜索规则，因为这些数据集将移到 `VMComputer` 和 @no__t 3 表。
+如果你创建了[日志警报](../platform/alerts-unified-log.md)来查询针对工作区上启用的性能计数器的 `Perf` 表，则应更新这些规则以改为引用 `InsightsMetrics` 表。 本指南还适用于使用 `ServiceMapComputer_CL` 和 `ServiceMapProcess_CL` 的任何日志搜索规则，因为这些数据集将移到 `VMComputer` 和 `VMProcess` 表。
 
 我们将更新此 FAQ 和我们的文档，以包含我们收集的数据集的示例日志搜索警报规则。
 
@@ -68,21 +65,21 @@ ms.locfileid: "72275960"
 
 从 `ServiceMapComputer_CL` 和 `ServiceMapProcess_CL` 移动数据所做的更改将同时影响服务映射和用于 VM 的 Azure Monitor，因此仍需要规划此更新。
 
-如果你选择不升级到**VMInsights**解决方案，我们将继续提供引用 @no__t 1 表中的数据的旧版本的性能工作簿。  
+如果你选择不升级到**VMInsights**解决方案，我们将继续提供引用 `Perf` 表中的数据的旧版本的性能工作簿。  
 
 ## <a name="will-the-service-map-data-sets-also-be-stored-in-insightsmetrics"></a>服务映射数据集也会存储在 InsightsMetrics 中吗？
 
-如果同时使用这两种解决方案，则将不会复制数据集。 这两个产品/服务都共享将存储在 @no__t 0 （以前称为 ServiceMapComputer_CL）中的数据集，`VMProcess` （以前称为 ServiceMapProcess_CL）、`VMConnection` @no__t 和用于存储所收集的地图数据集的表。  
+如果同时使用这两种解决方案，则将不会复制数据集。 这两种产品都共享将存储在 `VMComputer` （以前称为 ServiceMapComputer_CL）、`VMProcess` （以前称为 ServiceMapProcess_CL）、`VMConnection` 和 `VMBoundPort` 表中的数据集，以存储我们收集的地图数据集。  
 
-@No__t-0 表将用于存储收集的 VM、进程和服务数据集，并且仅当你使用用于 VM 的 Azure Monitor 时才会填充这些数据集。
+@No__t_0 表将用于存储收集的 VM、进程和服务数据集，并且仅当你使用用于 VM 的 Azure Monitor 时才会填充这些数据集。
 
 ## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-on-my-workspace"></a>如果我的工作区中有服务映射和 VMInsights 解决方案，是否会向我收费？
 
-不需要，这两个解决方案共享我们在 `VMComputer` （以前称为 ServiceMapComputer_CL）中存储的地图数据集，`VMProcess` （以前称为 ServiceMapProcess_CL）、`VMConnection` 和 @no__t。  如果工作区中同时具有两个解决方案，则不会对此数据收费。
+不是，这两个解决方案共享存储在 `VMComputer` （以前称为 ServiceMapComputer_CL）、`VMProcess` （以前称为 ServiceMapProcess_CL）、`VMConnection` 和 `VMBoundPort` 的地图数据集。  如果工作区中同时具有两个解决方案，则不会对此数据收费。
 
 ## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data-in-log-analytics"></a>如果删除服务映射或 VMInsights 解决方案，它将在 Log Analytics 中删除我的数据？
 
-不需要，这两个解决方案共享我们在 `VMComputer` （以前称为 ServiceMapComputer_CL）中存储的地图数据集，`VMProcess` （以前称为 ServiceMapProcess_CL）、`VMConnection` 和 @no__t。  如果删除其中一个解决方案，则这些数据集会注意到，仍存在一个使用数据的解决方案，并且该解决方案仍处于 Log Analytics 中。  需要从工作区中删除这两个解决方案，以便将数据从 Log Analytics 工作区中删除。
+不是，这两个解决方案共享存储在 `VMComputer` （以前称为 ServiceMapComputer_CL）、`VMProcess` （以前称为 ServiceMapProcess_CL）、`VMConnection` 和 `VMBoundPort` 的地图数据集。  如果删除其中一个解决方案，则这些数据集会注意到，仍存在一个使用数据的解决方案，并且该解决方案仍处于 Log Analytics 中。  需要从工作区中删除这两个解决方案，以便将数据从 Log Analytics 工作区中删除。
 
 ## <a name="when-will-this-update-be-released"></a>何时会发布此更新？
 
@@ -108,7 +105,7 @@ ms.locfileid: "72275960"
 
 若要访问该功能，可以将以下功能标志添加 `feature.vmhealth=true` 到门户 URL [https://portal.azure.com](https://portal.azure.com)。 示例 `https://portal.azure.com/?feature.vmhealth=true`。
 
-你还可以使用此短 url 来自动设置功能标志： [https://aka.ms/vmhealthpreview](https://aka.ms/vmhealthpreview)。
+你还可以使用此短 url，它会自动设置功能标志： [https://aka.ms/vmhealthpreview](https://aka.ms/vmhealthpreview)。
 
 作为现有客户，你可以继续在连接到使用运行状况功能的现有工作区设置的 Vm 上使用运行状况功能。  
 

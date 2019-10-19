@@ -1,24 +1,18 @@
 ---
 title: 管理解决方案中的视图 | Microsoft Docs
 description: '管理解决方案通常包括一个或多个用来可视化数据的视图。  本文介绍如何导出视图设计器所创建的视图，并将其包含在管理解决方案中。 '
-services: monitoring
-documentationcenter: ''
-author: bwren
-manager: jwhit
-editor: tysonn
-ms.assetid: 570b278c-2d47-4e5a-9828-7f01f31ddf8c
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/16/2018
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: cefb83d5336bb99fd09001b5ea369a0b8fc4b942
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/16/2018
+ms.openlocfilehash: 473d10bbec6ca056554f7223800a32e9ca93578e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60596635"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553898"
 ---
 # <a name="views-in-management-solutions-preview"></a>管理解决方案（预览版）中的视图
 > [!NOTE]
@@ -89,14 +83,14 @@ ms.locfileid: "60596635"
 * 变量应在解决方案中进行定义，并在适当的属性中使用。
 
 ### <a name="log-analytics-api-version"></a>Log Analytics API 版本
-资源管理器模板中定义的所有 Log Analytics 资源均包含 apiVersion  属性，该属性将定义资源应使用的 API 版本。  对于使用[旧版查询语言和升级版查询语言](../../azure-monitor/log-query/log-query-overview.md)的具有查询的视图，此版本有所不同。  
+资源管理器模板中定义的所有 Log Analytics 资源均包含 apiVersion属性，该属性将定义资源应使用的 API 版本。  对于使用[旧版查询语言和升级版查询语言](../../azure-monitor/log-query/log-query-overview.md)的具有查询的视图，此版本有所不同。  
 
  下表指定了旧版和升级版工作区中视图的 Log Analytics API 版本： 
 
 | 工作区版本 | API 版本 | Query |
 |:---|:---|:---|
-| v1（旧版）   | 2015-11-01-preview | 旧版格式。<br> 示例：Type=Event EventLevelName = Error  |
-| v2（升级版） | 2015-11-01-preview | 旧版格式。  在安装时转换为升级版格式。<br> 示例：Type=Event EventLevelName = Error<br>转换为：Event &#124; where EventLevelName == "Error"  |
+| v1（旧版）   | 2015-11-01-预览版 | 旧版格式。<br> 示例：Type=Event EventLevelName = Error  |
+| v2（升级版） | 2015-11-01-预览版 | 旧版格式。  在安装时转换为升级版格式。<br> 示例：Type=Event EventLevelName = Error<br>转换为：Event &#124; where EventLevelName == "Error"  |
 | v2（升级版） | 2017-03-03-preview | 升级版格式。 <br>示例：Event &#124; where EventLevelName == "Error"  |
 
 
@@ -104,7 +98,7 @@ ms.locfileid: "60596635"
 导出的视图文件中的视图资源会在 **properties** 属性中包含两个元素，名称分别为**仪表板**和 **OverviewTile**它们包含视图的详细配置。  将这两个元素及其内容复制解决方案文件中的视图资源的 **properties** 元素。
 
 ## <a name="example"></a>示例
-例如，下面的示例演示包含视图的简单解决方案文件。  由于空间原因，省略号 (...) 表示**仪表板**和 **OverviewTile** 内容。
+例如，下面的示例演示包含视图的简单解决方案文件。  由于空间原因，会显示省略号 (...) 以表示 **Dashboard** 和 **OverviewTile** 内容。
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",

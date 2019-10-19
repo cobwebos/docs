@@ -1,35 +1,29 @@
 ---
-title: 监视已部署的 Azure Kubernetes 服务 (AKS) 群集 | Microsoft Docs
-description: 了解如何使用用于容器的 Azure Monitor 启用对订阅中已部署的 Azure Kubernetes 服务 (AKS) 群集的监视。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
+title: 监视 Azure Kubernetes 服务（AKS）群集已部署 |Microsoft Docs
+description: 了解如何使用已部署在订阅中的容器 Azure Monitor 来监视 Azure Kubernetes Service （AKS）群集。
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/12/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 0153d39e1307458baa920d8e9107c8931242014e
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.date: 09/12/2019
+ms.openlocfilehash: e9837aaf538648fe24a762f83a2e855f432df2a5
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996268"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555461"
 ---
-# <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>启用对已部署的 Azure Kubernetes 服务 (AKS) 群集的监视
+# <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>启用已部署的 Azure Kubernetes Service （AKS）群集的监视
 
-本文介绍如何设置用于容器的 Azure Monitor，以监视订阅中已部署的 [Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/)上托管的托管 Kubernetes 群集。
+本文介绍如何设置容器的 Azure Monitor，以监视托管在[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/)上并且已在订阅中部署的托管 Kubernetes 群集。
 
-可以使用下述支持的方法之一，以便启用对已部署的 AKS 群集的监视：
+可以使用受支持的方法之一来启用已部署的 AKS 群集的监视：
 
 * Azure CLI
 * Terraform
-* [使用 Azure Monitor](#enable-from-azure-monitor-in-the-portal)，或者在 Azure 门户中[直接使用 AKS 群集](#enable-directly-from-aks-cluster-in-the-portal) 
-* 通过 Azure PowerShell cmdlet `New-AzResourceGroupDeployment` 来使用[提供的 Azure 资源管理器模板](#enable-using-an-azure-resource-manager-template)，或者使用 Azure CLI。 
+* [从 Azure Monitor](#enable-from-azure-monitor-in-the-portal)或[直接从 AZURE 门户中的 AKS 群集](#enable-directly-from-aks-cluster-in-the-portal) 
+* 通过使用 Azure PowerShell cmdlet `New-AzResourceGroupDeployment` 或 Azure CLI 来[提供 Azure 资源管理器模板](#enable-using-an-azure-resource-manager-template)。 
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -51,7 +45,7 @@ provisioningState       : Succeeded
 
 ### <a name="integrate-with-an-existing-workspace"></a>与现有工作区集成
 
-如果要将与现有工作区集成，请执行以下步骤，以首先确定`--workspace-resource-id`参数所需的 Log Analytics 工作区的完整资源 ID，然后运行命令来启用监视外接程序指定的工作区。  
+如果要将与现有工作区集成，请执行以下步骤，以首先确定 `--workspace-resource-id` 参数所需的 Log Analytics 工作区的完整资源 ID，然后运行命令，针对指定的工作区。  
 
 1. 使用以下命令列出有权访问的所有订阅：
 
@@ -83,7 +77,7 @@ provisioningState       : Succeeded
 
     在输出中找到工作区名称，然后将该 Log Analytics 工作区的完整资源 ID 复制到字段**id**下。
  
-4. 运行以下命令以启用监视外接程序，并替换`--workspace-resource-id`参数的值。 字符串值必须在双引号内：
+4. 运行以下命令以启用监视外接程序，并替换 `--workspace-resource-id` 参数的值。 字符串值必须在双引号内：
 
     ```azurecli
     az aks enable-addons -a monitoring -n ExistingManagedCluster -g ExistingManagedClusterRG --workspace-resource-id  “/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>”
@@ -110,7 +104,7 @@ provisioningState       : Succeeded
 
 2. 按照 Terraform 文档中的步骤添加 [ azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html)。
 
-## <a name="enable-from-azure-monitor-in-the-portal"></a>在门户中通过 Azure Monitor 来启用 
+## <a name="enable-from-azure-monitor-in-the-portal"></a>从门户中的 Azure Monitor 启用 
 
 要启用 Azure Monitor 对 Azure 门户中的 AKS 群集的监视，请执行以下操作：
 
@@ -132,9 +126,9 @@ provisioningState       : Succeeded
  
 启用监视后，可能需要约 15 分钟才能查看群集的运行状况指标。 
 
-## <a name="enable-directly-from-aks-cluster-in-the-portal"></a>在门户中直接使用 AKS 群集来启用
+## <a name="enable-directly-from-aks-cluster-in-the-portal"></a>直接从门户中的 AKS 群集启用
 
-若要在 Azure 门户中直接使用某个 AKS 群集来启用监视，请执行以下操作：
+若要直接从 Azure 门户中的一个 AKS 群集启用监视，请执行以下操作：
 
 1. 在 Azure 门户中，选择“所有服务”。 
 
@@ -158,7 +152,7 @@ provisioningState       : Succeeded
  
 启用监视后，可能需要约 15 分钟才能查看群集的运行数据。 
 
-## <a name="enable-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板来启用
+## <a name="enable-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板启用
 
 此方法包含两个 JSON 模板。 一个模板指定用于启用监视的配置，另一个模板包含参数值，通过配置这些参数值可指定：
 
@@ -169,7 +163,7 @@ provisioningState       : Succeeded
 >模板需要部署在群集所在的资源组中。
 >
 
-必须创建 Log Analytics 工作区，然后才能使用 Azure PowerShell 或 CLI 来启用监视。 若要创建工作区，可通过 [Azure 资源管理器](../../azure-monitor/platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或在 [Azure 门户](../../azure-monitor/learn/quick-create-workspace.md)中进行设置。
+使用 Azure PowerShell 或 CLI 启用监视之前，必须先创建 Log Analytics 工作区。 若要创建工作区，可通过 [Azure 资源管理器](../../azure-monitor/platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或在 [Azure 门户](../../azure-monitor/learn/quick-create-workspace.md)中进行设置。
 
 如果不熟悉使用模板部署资源的概念，请参阅：
 
@@ -177,7 +171,7 @@ provisioningState       : Succeeded
 
 * [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.59 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
+如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 版本2.0.59 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
 
 ### <a name="create-and-execute-a-template"></a>创建和执行模板
 
@@ -266,9 +260,9 @@ provisioningState       : Succeeded
     }
     ```
 
-4. 使用 AKS 群集的“AKS 概述”页面中的值，编辑 **aksResourceId** 和 **aksResourceLocation** 的值。 **workspaceResourceId** 的值是 Log Analytics 工作区的完整资源 ID，其中包含工作区名称。 
+4. 使用 AKS 群集的**AKS 概述**页上的值编辑**aksResourceId**和**aksResourceLocation**的值。 **workspaceResourceId** 的值是 Log Analytics 工作区的完整资源 ID，其中包含工作区名称。 
 
-    编辑 **aksResourceTagValues** 的值，以匹配为 AKS 群集指定的现有标记值。
+    编辑**aksResourceTagValues**的值以匹配为 AKS 群集指定的现有标记值。
 
 5. 将此文件以“existingClusterParam.json”文件名保存到本地文件夹。
 
@@ -286,7 +280,7 @@ provisioningState       : Succeeded
        provisioningState       : Succeeded
        ```
 
-   * 若要使用 Azure CLI 进行部署，请运行下列命令：
+   * 若要 Azure CLI 部署，请运行以下命令：
     
        ```azurecli
        az login

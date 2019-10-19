@@ -1,30 +1,24 @@
 ---
 title: 使用 Azure 中的服务映射解决方案 | Microsoft Docs
 description: 服务映射是 Azure 中的解决方案，可自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文提供了有关在环境中部署服务映射并在各种方案中使用它的详细信息。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: 3ceb84cc-32d7-4a7a-a916-8858ef70c0bd
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 98bf38a6c293f6d339413b5395bb32d74bcb30c0
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 07/24/2019
+ms.openlocfilehash: 00bb58c88b7dc535bf76e1a96e9748a2c366b338
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905720"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553996"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
 
-服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 使用服务映射，可按所需方式查看服务器：将其视为提供重要服务的互连系统。 服务映射显示 TCP 连接的任何体系结构中服务器、进程、入站和出站连接延迟和端口之间的连接，只需安装代理，无需任何其他配置。
+服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 使用服务映射，可按所需方式查看服务器：将其视为提供重要服务的互连系统。 服务映射显示 TCP 连接的任何体系结构中服务器之间的连接、进程、入站和出站连接延迟及端口，只需安装代理，无需任何其他配置。
 
-本指南介绍载入和使用服务映射的详细信息。 有关配置此解决方案的必备组件的信息, 请参阅[启用用于 VM 的 Azure Monitor 概述](vminsights-enable-overview.md#prerequisites)。 总而言之, 需要以下各项:
+本指南介绍载入和使用服务映射的详细信息。 有关配置此解决方案的必备组件的信息，请参阅[启用用于 VM 的 Azure Monitor 概述](vminsights-enable-overview.md#prerequisites)。 总而言之，需要以下各项：
 
 * 用于启用此解决方案的 Log Analytics 工作区。
 
@@ -33,7 +27,7 @@ ms.locfileid: "69905720"
 * 安装在 Windows 计算机或 Linux 服务器上的依赖关系代理。
 
 >[!NOTE]
->如果已部署服务映射，现在还可以在面向 VM 的 Azure Monitor 中查看映射，其中包括监视 VM 运行状况和性能的附加功能。 若要了解详细信息，请参阅[面向 VM 的 Azure Monitor 概述](../../azure-monitor/insights/vminsights-overview.md)。 若要了解服务映射解决方案与用于 VM 的 Azure Monitor 地图功能之间的差异, 请参阅以下[常见问题解答](vminsights-faq.md#how-is-azure-monitor-for-vms-map-feature-different-from-service-map)。
+>如果已部署服务映射，现在还可以在面向 VM 的 Azure Monitor 中查看映射，其中包括监视 VM 运行状况和性能的附加功能。 若要了解详细信息，请参阅[面向 VM 的 Azure Monitor 概述](../../azure-monitor/insights/vminsights-overview.md)。 若要了解服务映射解决方案与用于 VM 的 Azure Monitor 地图功能之间的差异，请参阅以下[常见问题解答](vminsights-faq.md#how-is-azure-monitor-for-vms-map-feature-different-from-service-map)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -41,12 +35,12 @@ ms.locfileid: "69905720"
 
 ## <a name="enable-service-map"></a>启用服务映射
 
-1. 从[Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview)或使用[从解决方案库添加监视解决方案](solutions.md)中所述的过程, 启用服务映射解决方案。
-1. 在[Windows 上安装依赖关系代理](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows), 或在要从中获取数据的每台计算机上[安装 Linux 上的依赖关系](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux)代理。 依赖关系代理可以监视与直接邻居之间的连接，因此不需要在每台计算机上都具有代理。
+1. 从[Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview)或使用[从解决方案库添加监视解决方案](solutions.md)中所述的过程，启用服务映射解决方案。
+1. 在[Windows 上安装依赖关系代理](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows)，或在要从中获取数据的每台计算机上[安装 Linux 上的依赖关系](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux)代理。 依赖关系代理可以监视与直接邻居之间的连接，因此不需要在每台计算机上都具有代理。
 
 在 Azure 门户从 Log Analytics 工作区访问服务映射，并选择左窗格中的“解决方案”选项。<br><br> ![选择工作区中的“解决方案”选项](./media/service-map/select-solution-from-workspace.png)。<br> 从解决方案列表中选择“ServiceMap(workspaceName)”，并在服务映射解决方案概述页面单击“服务映射摘要”标题。<br><br> ![服务映射摘要标题](./media/service-map/service-map-summary-tile.png)。
 
-## <a name="use-cases-make-your-it-processes-dependency-aware"></a>用例：使 IT 进程依赖关系具有感知
+## <a name="use-cases-make-your-it-processes-dependency-aware"></a>用例：使 IT 进程感知依赖关系
 
 ### <a name="discovery"></a>发现
 
@@ -320,8 +314,8 @@ Linux：
 
 包含内部生成的可用于标识唯一进程和计算机的属性：
 
-- 计算机：使用 ResourceId 或 ResourceName_s 来唯一标识 Log Analytics 工作区中的计算机。
-- 进程：使用 ResourceId 来唯一标识 Log Analytics 工作区中的进程。 *ResourceName_s* 在运行该进程的计算机 (MachineResourceName_s) 的上下文中唯一 
+- 计算机：使用 *ResourceId* 或 *ResourceName_s* 唯一标识 Log Analytics 工作区中的计算机。
+- 进程：使用 *ResourceId* 唯一标识 Log Analytics 工作区中的进程。 *ResourceName_s* 在运行该进程的计算机 (MachineResourceName_s) 的上下文中唯一 
 
 由于在指定的时间范围内，指定的进程和计算机可能存在多条记录，因此针对同一个计算机或进程的查询可能返回多条记录。 若要仅添加最新记录，请在查询中添加“| dedup ResourceId”。
 
@@ -333,7 +327,7 @@ Linux：
 
 为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内共享以下属性相同值的物理网络连接将聚合到 *VMConnection* 中的单个逻辑记录内。 
 
-| 属性 | 描述 |
+| properties | 描述 |
 |:--|:--|
 | `Direction` |连接方向，值为 *inbound* 或 *outbound* |
 | `Machine` |计算机 FQDN |
@@ -345,7 +339,7 @@ Linux：
 
 为了帮助你权衡分组造成的影响，以下记录属性中提供了有关分组的物理连接数的信息：
 
-| 属性 | 描述 |
+| properties | 描述 |
 |:--|:--|
 | `LinksEstablished` |在报告时间范围内建立的物理网络连接数 |
 | `LinksTerminated` |在报告时间范围内终止的物理网络连接数 |
@@ -356,7 +350,7 @@ Linux：
 
 除了连接计数指标以外，以下记录属性中还包含了有关在给定逻辑连接或网络端口上发送和接收的数据量的信息：
 
-| 属性 | 描述 |
+| properties | 描述 |
 |:--|:--|
 | `BytesSent` |在报告时间范围内发送的字节总数 |
 | `BytesReceived` |在报告时间范围内接收的字节总数 |
@@ -384,7 +378,7 @@ Linux：
 
 *VMConnection* 还包含以下记录属性中每个连接记录的远程端的地理位置信息： 
 
-| 属性 | 描述 |
+| properties | 描述 |
 |:--|:--|
 | `RemoteCountry` |托管 RemoteIp 的国家/地区的名称。  例如 *United States* |
 | `RemoteLatitude` |地理位置的纬度。  例如 *47.68* |
@@ -394,7 +388,7 @@ Linux：
 
 将会根据一组 IP 检查 *VMConnection* 表中的每个 RemoteIp 属性，以识别已知的恶意活动。 如果 RemoteIp 识别为恶意，则会在以下记录属性中填充以下属性（如果未将该 IP 视为恶意，则这些属性为空）：
 
-| 属性 | 描述 |
+| properties | 描述 |
 |:--|:--|
 | `MaliciousIp` |RemoteIp 地址 |
 | `IndicatorThreadType` |检测到的威胁标志是以下值之一：Botnet、C2、CryptoMining、Darknet、DDos、MaliciousUrl、Malware、Phishing、Proxy、PUA 和 Watchlist。   |
@@ -412,7 +406,7 @@ Linux：
 
 类型为 *ServiceMapComputer_CL* 的记录包含具有服务映射代理的服务器的清单数据。 这些记录的属性在下表中列出：
 
-| 属性 | 描述 |
+| properties | 描述 |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -438,7 +432,7 @@ Linux：
 
 类型为 *ServiceMapProcess_CL* 的记录包含具有服务映射代理的服务器上 TCP 连接进程的清单数据。 这些记录的属性在下表中列出：
 
-| 属性 | 描述 |
+| properties | 描述 |
 |:--|:--|
 | `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -549,7 +543,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 “服务映射”中的所有服务器、进程和依赖项数据均可通过[服务映射 REST API](https://docs.microsoft.com/rest/api/servicemap/) 获取。
 
-## <a name="diagnostic-and-usage-data"></a>诊断和使用数据
+## <a name="diagnostic-and-usage-data"></a>诊断和使用情况数据
 
 Microsoft 通过使用服务映射服务，自动收集使用情况和性能数据。 Microsoft 使用此数据提供和改进服务映射服务的质量、安全性和完整性。 数据包括有关软件配置的信息（如操作系统和版本）、IP 地址、DNS 名称和工作站名称，以便提供准确高效的故障排除功能。 Microsoft 不收集姓名、地址或其他联系信息。
 
@@ -559,20 +553,20 @@ Microsoft 通过使用服务映射服务，自动收集使用情况和性能数�
 
 详细了解 Log Analytics 中的[日志搜索](../../azure-monitor/log-query/log-query-overview.md)，以检索服务映射收集的数据。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果安装或运行服务映射时遇到任何问题，可通过本部分内容获得帮助。 如果仍然无法解决问题，请联系 Microsoft 支持部门。
 
 ### <a name="dependency-agent-installation-problems"></a>Dependency Agent 安装问题
 
 #### <a name="installer-prompts-for-a-reboot"></a>安装程序提示重新启动
-依赖关系代理*通常*不需要在安装或删除时重新启动。 在极少数的某些情况下，Windows Server 需要重启才能继续安装。 这种情况发生在依赖项, 通常C++是由于锁定了文件而需要重新启动。
+依赖关系代理*通常*不需要在安装或删除时重新启动。 在极少数的某些情况下，Windows Server 需要重启才能继续安装。 这种情况发生在依赖项，通常C++是由于锁定了文件而需要重新启动。
 
-#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>出现消息“无法安装 Dependency Agent:Visual Studio 运行时库安装失败(code = [code_number])”
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>将显示“无法安装 Dependency Agent: Visual Studio 运行时库安装失败 (code = [code_number])”消息
 
 Microsoft Dependency Agent 基于 Microsoft Visual Studio 运行时库。 如果安装库时出现问题，将收到一条消息。 
 
-运行时库安装程序在 %LOCALAPPDATA%\temp 文件夹中创建日志。 该文件为`dd_vcredist_arch_yyyymmddhhmmss.log`, 其中 `x86` `amd64` , *yyyymmddhhmmss*是创建日志时的日期和时间 (24 小时制)。 该日志提供有关阻止安装的问题的详细信息。
+运行时库安装程序在 %LOCALAPPDATA%\temp 文件夹中创建日志。 文件是 `dd_vcredist_arch_yyyymmddhhmmss.log` 的 *，其中，* `x86` 或 `amd64`， *yyyymmddhhmmss*是创建日志时的日期和时间（24小时制）。 该日志提供有关阻止安装的问题的详细信息。
 
 首先安装[最新的运行时库](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)可能会很有用。
 
@@ -580,32 +574,32 @@ Microsoft Dependency Agent 基于 Microsoft Visual Studio 运行时库。 如果
 
 | 代码 | 描述 | 分辨率 |
 |:--|:--|:--|
-| 0x17 | 库安装程序需要尚未安装的 Windows 更新。 | 查看最新的库安装程序日志。<br><br>如果对的引用`Windows8.1-KB2999226-x64.msu`后跟一行`Error 0x80240017: Failed to execute MSU package,` , 则无需安装 KB2999226。 按照[Windows 的通用 C 运行时中](https://support.microsoft.com/kb/2999226)的先决条件部分中的说明进行操作。 可能需要运行 Windows 更新并重新启动多次，才能安装好必备组件。<br><br>再次运行 Microsoft Dependency Agent 安装程序。 |
+| 0x17 | 库安装程序需要尚未安装的 Windows 更新。 | 查看最新的库安装程序日志。<br><br>如果对 `Windows8.1-KB2999226-x64.msu` 的引用后跟一行 `Error 0x80240017: Failed to execute MSU package,` 则没有安装 KB2999226 的先决条件。 按照[Windows 的通用 C 运行时中](https://support.microsoft.com/kb/2999226)的先决条件部分中的说明进行操作。 可能需要运行 Windows 更新并重新启动多次，才能安装好必备组件。<br><br>再次运行 Microsoft Dependency Agent 安装程序。 |
 
 ### <a name="post-installation-issues"></a>安装后的问题
 
 #### <a name="server-doesnt-appear-in-service-map"></a>服务映射中不显示服务器
 
-如果依赖关系代理安装已成功, 但在服务映射解决方案中看不到计算机:
+如果依赖关系代理安装已成功，但在服务映射解决方案中看不到计算机：
 * Dependency Agent 是否已安装成功？ 可通过检查是否已安装并运行服务来验证这一点。<br><br>
-Windows：查找名为 " **Microsoft 依赖关系代理**" 的服务。
-Linux：查找正在运行的进程**microsoft 依赖关系代理**。
+**Windows**：查找名为 " **Microsoft 依赖关系代理**" 的服务。
+**Linux**：查找正在运行的进程**microsoft 依赖关系代理**。
 
-* 你是否处于[Log Analytics 免费层](https://azure.microsoft.com/pricing/details/monitor/)？ 免费计划最多允许五个独特的服务映射机。 任何后续计算机不会出现在服务映射中, 即使之前的五个不再发送数据。
+* 你是否处于[Log Analytics 免费层](https://azure.microsoft.com/pricing/details/monitor/)？ 免费计划最多允许五个独特的服务映射机。 任何后续计算机不会出现在服务映射中，即使之前的五个不再发送数据。
 
-* 服务器是否发送日志和性能数据来 Azure Monitor 日志？ 请参阅 Azure Monitor\Logs 并为你的计算机运行以下查询: 
+* 服务器是否发送日志和性能数据来 Azure Monitor 日志？ 请参阅 Azure Monitor\Logs 并为你的计算机运行以下查询： 
 
     ```kusto
     Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-结果中是否有多种不同的事件？ 是否为最新数据？ 如果是这样, 则 Log Analytics 代理正在正常运行, 并且与工作区通信。 如果没有, 请检查计算机上的代理:[适用于 Windows 的 Log Analytics 代理故障排除](../platform/agent-windows-troubleshoot.md)或[适用于 Linux 的 Log Analytics 代理故障排除](../platform/agent-linux-troubleshoot.md)。
+结果中是否有多种不同的事件？ 是否为最新数据？ 如果是这样，则 Log Analytics 代理正在正常运行，并且与工作区通信。 如果没有，请检查计算机上的代理：[用于 Windows 的 Log Analytics 代理故障排除](../platform/agent-windows-troubleshoot.md)或[用于 Linux 的 Log Analytics 代理故障排除](../platform/agent-linux-troubleshoot.md)。
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>服务器会在服务映射中显示，但没有任何进程
 
-如果你在服务映射中看到你的计算机, 但它没有进程或连接数据, 则表明依赖关系代理已安装并正在运行, 但内核驱动程序未加载。 
+如果你在服务映射中看到你的计算机，但它没有进程或连接数据，则表明依赖关系代理已安装并正在运行，但内核驱动程序未加载。 
 
-检查 (Windows) 或`/var/opt/microsoft/dependency-agent/log/service.log file` (Linux)。 `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` 文件的最后几行应指出为何未加载内核。 例如，如果更新内核，则内核在 Linux 上可能不受支持。
+检查 `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` （Windows）或 `/var/opt/microsoft/dependency-agent/log/service.log file` （Linux）。 文件的最后几行应指出为何未加载内核。 例如，如果更新内核，则内核在 Linux 上可能不受支持。
 
 ## <a name="feedback"></a>反馈
 

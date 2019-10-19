@@ -1,24 +1,18 @@
 ---
 title: 监视 Azure 存储服务的存储 Azure Monitor （预览版） |Microsoft Docs
 description: 本文介绍存储功能的 Azure Monitor，该功能可让存储管理员快速了解 Azure 存储帐户的性能和利用率问题。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/15/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 1ab49d17ebf10a1ae0277768ddbd1878195d835d
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.date: 08/15/2019
+ms.openlocfilehash: e5738b9f7cca03898d3bb5c593004bb316aa0b23
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212764"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553880"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>监视存储服务的存储 Azure Monitor （预览版）
 
@@ -213,7 +207,7 @@ ms.locfileid: "71212764"
 
 ### <a name="modify-the-availability-threshold"></a>修改可用性阈值
 
-在此示例中，我们将使用存储帐户容量工作簿，并演示如何修改可用性阈值。 默认情况下，会将磁贴和网格报表百分比可用性配置为最小阈值为90，最大阈值为99。 我们将**按 API 名称**网格将可用性**百分比**的最小阈值值更改为 85%，这意味着，如果阈值小于 85%，则运行状况状态将更改为 "严重"。 
+在此示例中，我们将使用存储帐户容量工作簿，并演示如何修改可用性阈值。 默认情况下，会将磁贴和网格报表百分比可用性配置为最小阈值为90，最大阈值为99。 我们将**按 API 名称**网格将可用性**百分比**的最小阈值值更改为85%，这意味着，如果阈值小于85%，则运行状况状态将更改为 "严重"。 
 
 1. 从门户中选择**存储帐户**，然后从列表中选择一个存储帐户。
 
@@ -233,7 +227,7 @@ ms.locfileid: "71212764"
 
 7. 选择命令栏中的 "**另存为**"，以保存工作簿的副本和自定义项，然后单击 "**完成编辑**" 以返回到读取模式。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 本部分将帮助你诊断和解决在使用 Azure Monitor 进行存储（预览版）时可能遇到的一些常见问题。 使用下面的列表来查找与具体问题相关的信息。
 
