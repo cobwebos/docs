@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Azure Notebooks 文档
 metadata:
-  title: Azure Notebooks 文档 - 快速入门、教程和指南 | Microsoft Docs
+  title: Azure Notebooks 文档
   description: 了解如何通过托管的 Azure Notebooks 服务创建、运行和共享 Jupyter 笔记本。
   services: notebooks
   author: kraigb

@@ -170,6 +170,7 @@
       items:
         - name: 使用管道的 VS 项目
           href: vs-resource-groups-project-devops-pipelines.md
+          displayName: DevOps
     - name: 导出模板
       href: export-template-portal.md
     - name: 移动
