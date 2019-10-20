@@ -1,6 +1,6 @@
 ---
-title: 调用 Web API 的 Web 应用（登录）- Microsoft 标识平台
-description: 了解如何构建调用 Web API 的 Web 应用（登录）
+title: 用于调用 web Api 的 web 应用（登录）-Microsoft 标识平台
+description: 了解如何生成可调用 web Api 的 Web 应用（登录）
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,28 +15,28 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3036f8cb72f2a07673743a77e8be37614002563f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2cb0190f76ddce79012a5bf97e2d813f40f9f018
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720202"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596367"
 ---
-# <a name="web-app-that-calls-web-apis---sign-in"></a>用于调用 Web API 的 Web 应用 - 登录
+# <a name="web-app-that-calls-web-apis---sign-in"></a>用于调用 web Api 的 web 应用-登录
 
-你已经知道如何向 Web 应用添加登录。 你在[用于登录用户的 Web 应用 - 添加登录](scenario-web-app-sign-user-sign-in.md)中学习它。
+你已经了解如何将登录添加到 web 应用。 你将在登录[用户-添加登录的 Web 应用](scenario-web-app-sign-user-sign-in.md)中了解相关情况。
 
-这里的不同之处在于，当用户从此应用程序或任何其他应用程序中注销以后，你需要从令牌缓存中删除与用户相关联的令牌。
+此处的区别在于，当用户从该应用程序或从任何应用程序中注销时，你想要从令牌缓存中删除与用户关联的令牌。
 
 ## <a name="intercepting-the-callback-after-sign-out---single-sign-out"></a>在注销后截获回调-单一登录
 
-应用程序可以拦截 `logout` 后事件，例如，清除与已注销帐户相关联的令牌缓存的条目。Web 应用将在缓存中存储用户的访问令牌。 拦截 `logout` 后回叫后，Web 应用程序即可从令牌缓存中删除用户。
+例如，你的应用程序可以在 `logout` 事件后截获，以清除与注销的帐户相关联的令牌缓存条目。Web 应用将在缓存中存储用户的访问令牌。 在 `logout` 回调后截获，使 web 应用程序能够从令牌缓存中删除用户。
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 [WebAppServiceCollectionExtensions # L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157)的 `AddMsal()` 方法阐释了此机制。
 
-为应用程序注册的**注销 Url**允许实现单一注销。Microsoft 标识平台 `logout` 终结点会调用注册到应用程序的**注销 URL**。 如果注销是从你的 Web 应用或者另一 Web 应用或浏览器启动的，则会发生此调用。 有关详细信息，请参阅[单一登录](v2-protocols-oidc.md#single-sign-out)。
+为应用程序注册的**注销 Url**允许实现单一注销。Microsoft 标识平台 `logout` 终结点将调用注册到你的应用程序的**注销 URL** 。 如果从 web 应用或其他 web 应用或浏览器启动注销，则会发生此调用。 有关详细信息，请参阅[单一登录](v2-protocols-oidc.md#single-sign-out)。
 
 ```CSharp
 public static class WebAppServiceCollectionExtensions
@@ -80,5 +80,24 @@ Python 示例不会在全局注销时删除缓存中的帐户
 
 ## <a name="next-steps"></a>后续步骤
 
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+
 > [!div class="nextstepaction"]
-> [获取 Web 应用的令牌](scenario-web-app-call-api-acquire-token.md)
+> [正在获取 web 应用的令牌](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnetcore)
+
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+> [!div class="nextstepaction"]
+> [正在获取 web 应用的令牌](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnet)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [正在获取 web 应用的令牌](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=java)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [正在获取 web 应用的令牌](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=python)
+
+---

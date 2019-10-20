@@ -1,18 +1,18 @@
 ---
-title: 使用 AzCopy v10 将数据复制或移到 Azure 存储 | Microsoft Docs
+title: 使用 AzCopy v10 将数据复制或移动到 Azure 存储 |Microsoft Docs
 description: AzCopy 是一个命令行实用工具，可用于在存储帐户之间复制数据。 本文将帮助你下载 AzCopy，连接到你的存储帐户，然后传输文件。
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: f4523b2aa580d0fd237c15e23b06b44593cbf055
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: d26535d18233533d1d72c02ad997008cba536fce
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274639"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595173"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -49,11 +49,11 @@ tar -xf azcopy.tar.gz
 
 ## <a name="run-azcopy"></a>运行 AzCopy
 
-为方便起见，请考虑将 AzCopy 可执行文件的目录位置添加到系统路径，以方便使用。 这样，你就可以在系统上的任何目录中键入 `azcopy`。
+为方便起见，请考虑将 AzCopy 可执行文件的目录位置添加到系统路径，以方便使用。 这样就可以在系统上的任何目录中键入 `azcopy`。
 
 如果选择不将 AzCopy 目录添加到路径，则必须将目录更改为 AzCopy 可执行文件的位置，然后在 Windows PowerShell 命令提示符中键入 `azcopy` 或 `.\azcopy`。
 
-若要查看命令列表，请键入 `azcopy -h`，然后按 ENTER 键。
+若要查看命令列表，请键入 `azcopy -h` 然后按 ENTER 键。
 
 若要了解特定命令，只需包含命令的名称（例如： `azcopy list -h`）。
 
@@ -74,7 +74,7 @@ tar -xf azcopy.tar.gz
 |**Blob 存储（分层命名空间）** | Azure AD & SAS |
 |**文件存储** | 仅 SAS |
 
-### <a name="option-1-use-azure-active-directory"></a>选项 1：使用 Azure Active Directory
+### <a name="option-1-use-azure-active-directory"></a>选项1：使用 Azure Active Directory
 
 通过使用 Azure Active Directory，你可以提供一次凭据，而无需向每个命令追加 SAS 令牌。  
 
@@ -96,8 +96,8 @@ tar -xf azcopy.tar.gz
 
 - 容器（文件系统）
 - 存储帐户
-- 资源组
-- 订阅
+- Resource group
+- Subscription
 
 若要了解如何验证和分配角色，请参阅[在 Azure 门户中使用 RBAC 授予对 Azure blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
@@ -140,7 +140,7 @@ azcopy login --tenant-id=<tenant-id>
 
 你可以使用客户端机密或使用与服务主体的应用注册关联的证书的密码登录到你的帐户。
 
-若要了解有关创建服务主体的详细信息，请参阅 [How to：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
+若要详细了解如何创建服务主体，请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
 
 若要了解有关服务主体的详细信息，请参阅[Azure Active Directory 中的应用程序和服务主体对象](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
 
@@ -166,7 +166,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 azcopy login --service-principal --application-id <application-id> --tenant-id=<tenant-id>
 ```
 
-将 `<application-id>` 占位符替换为服务主体的应用注册的应用程序 ID。 将 `<tenant-id>` 占位符替换为存储帐户所属组织的租户 ID。 若要查找租户 ID，请在 Azure 门户中选择 " **Azure Active Directory > 属性 > 目录 ID** "。 
+将 `<application-id>` 占位符替换为服务主体应用注册的应用程序 ID。 将 `<tenant-id>` 占位符替换为存储帐户所属组织的租户 ID。 若要查找租户 ID，请在 Azure 门户中选择 " **Azure Active Directory > 属性 > 目录 ID** "。 
 
 ##### <a name="using-a-certificate"></a>使用证书
 
@@ -191,7 +191,7 @@ $env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"
 azcopy login --service-principal --certificate-path <path-to-certificate-file> --tenant-id=<tenant-id>
 ```
 
-将 @no__t 0 占位符替换为证书文件的相对或完全限定路径。 AzCopy 保存此证书的路径，但它并不保存证书的副本，因此请确保将该证书保留下来。 将 `<tenant-id>` 占位符替换为存储帐户所属组织的租户 ID。 若要查找租户 ID，请在 Azure 门户中选择 " **Azure Active Directory > 属性 > 目录 ID** "。
+将 `<path-to-certificate-file>` 占位符替换为证书文件的相对或完全限定路径。 AzCopy 保存此证书的路径，但它并不保存证书的副本，因此请确保将该证书保留下来。 将 `<tenant-id>` 占位符替换为存储帐户所属组织的租户 ID。 若要查找租户 ID，请在 Azure 门户中选择 " **Azure Active Directory > 属性 > 目录 ID** "。
 
 > [!NOTE]
 > 请考虑使用本示例中所示的提示。 这样，你的密码就不会出现在控制台的命令历史记录中。 
@@ -240,7 +240,7 @@ azcopy login --identity --identity-resource-id "<resource-id>"
 
 将 `<resource-id>` 占位符替换为用户分配的托管标识的资源 ID。
 
-### <a name="option-2-use-a-sas-token"></a>选项 2：使用 SAS 令牌
+### <a name="option-2-use-a-sas-token"></a>选项2：使用 SAS 令牌
 
 可以将 SAS 令牌追加到在 AzCopy 命令中使用的每个源或目标 URL。
 
@@ -276,32 +276,32 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 若要获取该链接，请运行以下命令：
 
-| 操作系统  | Command |
+| 操作系统  | 命令 |
 |--------|-----------|
 | **Linux** | `curl -v https://aka.ms/downloadazcopy-v10-linux` |
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).RawContent` |
 
 > [!NOTE]
-> 对于 Linux，`tar` 命令 `--strip-components=1` 删除包含版本名称的顶层文件夹，而改为将二进制文件直接提取到当前文件夹中。 这样，只需要更新 @no__t URL，就可以使用 @no__t 的新版本更新脚本。
+> 对于 Linux，`--strip-components=1` 在 `tar` 命令中删除包含版本名称的顶层文件夹，然后将二进制文件直接提取到当前文件夹中。 这样，只需要更新 `wget` URL，就可以使用 `azcopy` 的新版本更新脚本。
 
 该 URL 显示在此命令的输出中。 然后，你的脚本可以通过使用该 URL 来下载 AzCopy。
 
-| 操作系统  | Command |
+| 操作系统  | 命令 |
 |--------|-----------|
 | **Linux** | `wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |
 
 ### <a name="escape-special-characters-in-sas-tokens"></a>转义 SAS 令牌中的特殊字符
 
-在具有 `.cmd` 扩展的批处理文件中，必须对 SAS 令牌中显示的 `%` 字符进行转义。 为此，可以在 SAS 令牌字符串中的现有 `%` 字符旁添加一个加法 `%` 字符。
+在具有 `.cmd` 扩展名的批处理文件中，必须转义 SAS 令牌中显示的 `%` 字符。 为此，可在 SAS 令牌字符串中现有 `%` 字符的旁边添加一个添加 `%` 字符。
 
 ## <a name="use-azcopy-in-storage-explorer"></a>在存储资源管理器中使用 AzCopy
 
 如果要利用 AzCopy 的性能优势，但更喜欢使用存储资源管理器而不是命令行来与文件交互，请在存储资源管理器中启用 AzCopy。
 
-在存储资源管理器中，选择 "**预览**" ->**使用 AzCopy 进行改进的 Blob 上传和下载**。
+在存储资源管理器中，选择 "**预览**" ->**使用 AzCopy 改进 Blob 上传和下载**。
 
-![在 Azure 存储资源管理器中启用 AzCopy 作为传输引擎](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
+![在 Azure 存储资源管理器中将 AzCopy 作为传输引擎启用](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
 
 > [!NOTE]
 > 如果在存储帐户上启用了分层命名空间，则不需要启用此设置。 这是因为存储资源管理器会在具有分层命名空间的存储帐户上自动使用 AzCopy。  

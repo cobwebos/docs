@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: 25d8588f8e2c968dc2516938263aaa7d6ddcff13
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 01a1dba18e21a38695146560bbf85cf1a042ba02
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387855"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596579"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure 数据工厂映射数据流查找转换
 
@@ -29,6 +29,20 @@ ms.locfileid: "72387855"
 
 进行查找转换后，可以使用 expression 函数 `isMatch()` 根据查找是否导致行匹配，来检查每个匹配行的结果，以检查每个匹配行的结果。
 
+![查找模式](media/data-flow/lookup111.png "查找模式")
+
+使用查找转换后，可以在 ```isMatch()``` 函数上添加有条件拆分转换拆分。 在上面的示例中，匹配行经过最顶部的流，而不匹配的行则流过 ```NoMatch``` 流。
+
+## <a name="first-or-last-value"></a>第一个或最后一个值
+
+如果有多个匹配项与查找相匹配，则可能需要选取第一个或最后一个匹配项来减少多个匹配行。 您可以在查找后使用聚合转换来执行此操作。
+
+在这种情况下，会使用一个名为 ```PickFirst``` 的聚合转换选取查找匹配项中的第一个值。
+
+![查找聚合](media/data-flow/lookup333.png "查找聚合")
+
+![首先查找](media/data-flow/lookup444.png "首先查找")
+
 ## <a name="optimizations"></a>优化
 
 在数据工厂中，数据流在扩展的 Spark 环境中执行。 如果数据集适合工作节点内存空间，则可以优化查找性能。
@@ -45,4 +59,5 @@ ms.locfileid: "72387855"
 
 ## <a name="next-steps"></a>后续步骤
 
-[联接](data-flow-join.md)和[存在](data-flow-exists.md)转换在 ADF 映射数据流中执行类似任务。 接下来，请查看这些转换。
+* [联接](data-flow-join.md)和[存在](data-flow-exists.md)转换在 ADF 映射数据流中执行类似任务。 接下来，请查看这些转换。
+* 使用带有 ```isMatch()``` 的有[条件拆分](data-flow-conditional-split.md)拆分匹配和不匹配值的行

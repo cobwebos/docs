@@ -1,77 +1,127 @@
 ---
-title: Azure 数据工厂数据流“联接”转换
-description: Azure 数据工厂数据流“联接”转换
+title: Azure 数据工厂映射数据流中的联接转换 |Microsoft Docs
+description: 使用 Azure 数据工厂映射数据流中的联接转换合并两个数据源中的数据
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/07/2019
-ms.openlocfilehash: da6c3c90ebbeffcf468aad3809da097976d8ef0d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 10/17/2019
+ms.openlocfilehash: 78de9f2bedfc36add567053e1de47e8893bfaf3c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387237"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597051"
 ---
-# <a name="mapping-data-flow-join-transformation"></a>映射数据流联接转换
+# <a name="join-transformation-in-mapping-data-flow"></a>映射数据流中的联接转换
 
-
-
-在数据流中使用联接来组合两个表中的数据。 单击将成为左侧关系的转换，并从工具箱中添加一个“联接”转换。 在“联接”转换内，你将从数据流中选择要成为右侧关系的另一个数据流。
-
-![联接转换](media/data-flow/join.png "Join")
+使用联接转换可以在映射数据流中合并两个源或流中的数据。 输出流将包含这两个源中的所有列，这些列基于联接条件进行匹配。 
 
 ## <a name="join-types"></a>联接类型
 
-对于联接转换，选择 "联接类型" 是必需的。
+映射数据流当前支持五种不同的联接类型。
 
 ### <a name="inner-join"></a>内部联接
 
-内部联接将仅传递与两个表中的列条件相匹配的行。
+内部联接仅输出在两个表中具有匹配值的行。
 
 ### <a name="left-outer"></a>左外部
 
-除了内部联接返回的所有行之外，还会传递左侧流中不满足联接条件的所有行，并将来自另一个表的输出列设置为 NULL。
+左外部联接返回左侧流中的所有行，并匹配正确流中的记录。 如果左侧流中的某一行没有匹配项，则正确流中的输出列将设置为 NULL。 输出将是内部联接返回的行以及左侧流中不匹配的行。
 
 ### <a name="right-outer"></a>右外部
 
-除了内部联接返回的所有行之外，还会传递右侧流中不满足联接条件的所有行，并将与另一个表对应的输出列设置为 NULL。
+左外部联接返回右侧流中的所有行，并匹配左侧流中的记录。 如果右侧流中的某一行没有匹配项，则正确流中的输出列将设置为 NULL。 输出将是内部联接返回的行以及右侧流中不匹配的行。
 
 ### <a name="full-outer"></a>完全外部
 
-完全外部生成的所有列和行均为空值，对于其他表中不存在的列。
+完全外部联接输出的所有列和行都不匹配列的 NULL 值。
 
 ### <a name="cross-join"></a>交叉联接
 
-使用表达式指定两个流的叉积。 您可以使用此来创建自定义联接条件。
+交叉联接根据条件输出两个流的叉积。 如果要使用不相等的条件，请将自定义表达式指定为交叉联接条件。 输出流将为满足联接条件的所有行。 若要创建输出每个行组合的笛卡尔积，请将 `true()` 指定为联接条件。
 
-## <a name="specify-join-conditions"></a>指定联接条件
+## <a name="configuration"></a>配置
 
-左联接条件来自连接到联接左侧的数据流。 左联接条件是在底部连接到你的联接的第二个数据流，这将是到另一个流的直接连接器，或者是对另一个流的引用。
+1. 在右侧的 "**流**" 下拉列表中选择要连接的数据流。
+1. 选择**联接类型**
+1. 选择要在其上匹配的键列作为联接条件。 默认情况下，数据流在每个流中的一列之间查找相等性。 若要通过计算值进行比较，请将鼠标悬停在列下拉列表中，然后选择 "**计算列**"。
 
-需要输入至少 1 (1..n) 个联接条件。 它们可以是从下拉菜单中选择的直接引用的字段，也可以是表达式。
+![联接转换](media/data-flow/join.png "Join")
 
-## <a name="join-performance-optimizations"></a>联接性能优化
+## <a name="optimizing-join-performance"></a>优化联接性能
 
-与 SSIS 等工具中的“合并联接”不同，ADF 数据流中的联接不是必需的合并联接操作。 因此，不需要首先对联接键进行排序。 将基于 Spark 中的最佳联接操作执行联接操作：广播/映射端联接：
+与 SSIS 之类的工具中的合并联接不同，联接转换不是强制的合并联接操作。 联接键无需排序。 联接操作是基于 Spark 中的最佳联接操作（广播或映射端联接）进行的。
 
 ![联接转换优化](media/data-flow/joinoptimize.png "联接优化")
 
-如果可以将数据集装入工作节点内存，则可以优化联接性能。 你还可以在联接操作中指定数据分区，以创建能够更好地容纳到每个辅助角色的内存中的数据集。
+如果其中一个或两个数据流适合工作节点内存，则通过在 "优化" 选项卡中启用**广播**，进一步优化性能。你还可以对联接操作上的数据进行重新分区，使其更适合于每个工作线程的内存。
 
 ## <a name="self-join"></a>自联接
 
-可以通过使用“选择”转换为现有流指定别名，在 ADF 数据流中实现自联接条件。 首先，从流中创建一个“新分支”，然后添加一个“选择”转换来为整个原始流指定别名。
+若要将数据流自行联接，请使用 select 转换作为现有流的别名。 单击转换旁边的加号图标，然后选择 "**新建分支**"，创建一个新分支。 添加一个选择转换以对原始流使用别名。 添加联接转换，并选择原始流作为**左侧流**，并选择 "转换为**正确流**"。
 
 ![自联接](media/data-flow/selfjoin.png "自联接")
 
-在上面的关系图中，选择转换位于顶部。 它所做的所有工作就是将原始流的别名指定为“OrigSourceBatting”。 在它下方突出显示的“联接”转换中，你可以看到我们将此“选择别名”流用作右侧联接，以便可以在内部联接的左侧和右侧引用同一个键。
+## <a name="testing-join-conditions"></a>测试联接条件
 
-## <a name="composite-and-custom-keys"></a>复合和自定义键
+在调试模式下使用数据预览来测试联接转换时，请使用一组少量的已知数据。 在对大型数据集中的行进行采样时，无法预测将读取哪些行和键用于测试。 结果是非确定性的，这意味着联接条件可能不会返回任何匹配项。
 
-您可以在联接转换内进行动态构建自定义键和组合键。 为其他联接列添加行，每个关系行旁边有一个加号（+）。 或在 "表达式生成器" 中为动态联接值计算一个新键值。
+## <a name="data-flow-script"></a>数据流脚本
+
+### <a name="syntax"></a>语法
+
+```
+<leftStream>, <rightStream>
+    join(
+        <conditionalExpression>,
+        joinType: { 'inner'> | 'outer' | 'left_outer' | 'right_outer' | 'cross' }
+        broadcast: { 'none' | 'left' | 'right' | 'both' }
+    ) ~> <joinTransformationName>
+```
+
+### <a name="inner-join-example"></a>内部联接示例
+
+下面的示例是一个名为 `JoinMatchedData` 的联接转换，它采用 `TripData` 和右流 `TripFare` 的左流。  联接条件是表达式 `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` 如果每个流中的 `hack_license`、`medallion`、`vendor_id` 和 `pickup_datetime` 列匹配，则返回 true。 @No__t_0 是 `'inner'` 的。 我们只启用左侧流中的广播，因此 `broadcast` 的值 `'left'`。
+
+在数据工厂 UX 中，此转换如下图所示：
+
+![联接示例](media/data-flow/join-script1.png "联接示例")
+
+此转换的数据流脚本位于下面的代码片段中：
+
+```
+TripData, TripFare
+    join(
+        hack_license == { hack_license}
+        && TripData@medallion == TripFare@medallion
+        && vendor_id == { vendor_id}
+        && pickup_datetime == { pickup_datetime},
+        joinType:'inner',
+        broadcast: 'left'
+    )~> JoinMatchedData
+```
+
+### <a name="cross-join-example"></a>交叉联接示例
+
+下面的示例是一个名为 `CartesianProduct` 的联接转换，它采用 `TripData` 和右流 `TripFare` 的左流。 此转换采用两个流，并返回其行的笛卡尔积。 联接条件是 `true()` 的，因为它会输出完整的笛卡尔积。 @No__t_1 中的 `joinType`。 我们只启用左侧流中的广播，因此 `broadcast` 的值 `'left'`。
+
+在数据工厂 UX 中，此转换如下图所示：
+
+![联接示例](media/data-flow/join-script2.png "联接示例")
+
+此转换的数据流脚本位于下面的代码片段中：
+
+```
+TripData, TripFare
+    join(
+        true(),
+        joinType:'cross',
+        broadcast: 'left'
+    )~> CartesianProduct
+```
 
 ## <a name="next-steps"></a>后续步骤
 
-联接数据后，可以[创建新列](data-flow-derived-column.md)并将[数据接收到目标数据存储](data-flow-sink.md)。
+联接数据后，创建一个[派生列](data-flow-derived-column.md)并将数据[接收](data-flow-sink.md)到目标数据存储区。

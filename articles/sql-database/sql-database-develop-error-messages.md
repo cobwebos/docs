@@ -12,16 +12,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/02/2019
-ms.openlocfilehash: 19febc5a0a6e4a72cfebfaecd917185538130152
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 8d4e7fa314ce3a5f8534e7742880114ccc7f7144
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035034"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598147"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL 数据库客户端应用程序的 SQL 错误代码：数据库连接错误和其他问题
 
-本文列出了 SQL 数据库客户端应用程序的 SQL 错误代码，包括数据库连接错误、暂时性错误（也称为暂时性故障）、资源调控错误、数据库复制问题、弹性池和其他错误。 大多数类别特定于 Azure SQL 数据库，并不适用于 Microsoft SQL Server。 另请参阅[系统错误消息](https://technet.microsoft.com/library/cc645603(v=sql.105).aspx)。
+本文列出了 SQL 数据库客户端应用程序的 SQL 错误代码，包括数据库连接错误、暂时性错误（也称为暂时性故障）、资源调控错误、数据库复制问题、弹性池和其他错误。 大多数类别特定于 Azure SQL 数据库，并不适用于 Microsoft SQL Server。 另请参阅[系统错误消息](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-ver15)。
 
 ## <a name="database-connection-errors-transient-errors-and-other-temporary-errors"></a>数据库连接错误、暂时性错误和其他临时错误
 
@@ -38,7 +38,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 * 服务器 &lt;Azure_instance&gt; 上的数据库 &lt;db_name&gt; 当前不可用。 请稍后重试连接。 如果问题仍然存在，请与客户支持人员联系，并向其提供会话跟踪 ID &lt;session_id&gt;
 * 服务器 &lt;Azure_instance&gt; 上的数据库 &lt;db_name&gt; 当前不可用。 请稍后重试连接。 如果问题仍然存在，请与客户支持人员联系，并向其提供会话跟踪 ID &lt;session_id&gt;。 （Microsoft SQL Server，错误：40613）
 * 远程主机强行关闭了现有连接。
-* System.Data.Entity.Core.EntityCommandExecutionException：执行命令定义时出错了。 有关详细信息，请参阅“内部异常”。 ---> System.Data.SqlClient.SqlException：在接收来自服务器的结果时发生传输级错误。 （提供程序：会话提供程序，错误：19 - 物理连接不可用）
+* System.Data.Entity.Core.EntityCommandExecutionException：执行命令定义时出错。 有关详细信息，请参阅“内部异常”。 ---> System.Data.SqlClient.SqlException：在接收来自服务器的结果时发生传输级错误。 （提供程序：会话提供程序，错误：19 - 物理连接不可用）
 * 到辅助数据库的连接尝试失败，因为该数据库正处于重新配置过程中，并且当在主数据库上进行活动的事务时，它正忙于应用新页。 
 
 有关重试逻辑的代码示例，请参阅：
@@ -52,15 +52,15 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 
 以下错误为暂时性错误，并且应在应用程序逻辑中重试： 
 
-| 错误代码 | 严重性 | 描述 |
+| 错误代码 | Severity | 描述 |
 | ---:| ---:|:--- |
-| 4060 |16 |无法打开该登录请求的数据库“%.&#x2a;ls”。 登录失败。 有关详细信息，请参阅[错误 4000 到 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
-| 40197 |17 |该服务在处理你的请求时遇到错误。 请重试。 错误代码 %d。<br/><br/>当服务由于软件或硬件升级、硬件故障或任何其他故障转移问题而关闭时，将收到此错误。 [错误40197的消息中嵌入](sql-database-develop-error-messages.md#embedded-error-codes)的错误代码（% d）提供有关所发生的故障或故障转移类型的其他信息。 错误 40197 的消息中嵌入的错误代码的一些示例有 40020、40143、40166 和 40540。<br/><br/>重新连接到 SQL 数据库服务器会将你自动连接到数据库的正常运行副本。 应用程序必须捕获错误 40197、记录该消息中嵌入的错误代码 (%d) 以供进行故障排除，并尝试重新连接到 SQL 数据库，直到资源可用且再次建立连接为止。 有关详细信息，请参阅[暂时性错误](sql-database-connectivity-issues.md#transient-errors-transient-faults)。|
-| 40501 |20 |服务当前正忙。 请在 10 秒钟后重试请求。 事件 ID：%ls。 代码：%d。 有关详细信息，请参阅： <br/>&bull; &nbsp;[数据库服务器资源限制](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[单一数据库的基于 DTU 的限制](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[单一数据库的基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。|
-| 40613 |17 |数据库“%.&#x2a;ls”（在服务器“%.&#x2a;ls”上）当前不可用。 请稍后重试连接。 如果问题仍然存在，请与客户支持人员联系，并向其提供“%.&#x2a;ls”的会话追踪 ID。<br/><br/> 如果已建立到数据库的现有专用管理员连接 (DAC)，则可能发生此错误。 有关详细信息，请参阅[暂时性错误](sql-database-connectivity-issues.md#transient-errors-transient-faults)。|
-| 49918 |16 |无法处理请求。 没有足够的资源来处理请求。<br/><br/>服务当前正忙。 请稍后重试请求。 有关详细信息，请参阅： <br/>&bull; &nbsp;[数据库服务器资源限制](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[单一数据库的基于 DTU 的限制](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[单一数据库的基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。 |
-| 49919 |16 |无法处理创建或更新请求。 订阅“%ld”有太多创建或更新操作正在进行。<br/><br/>服务正忙于为订阅或服务器处理多个创建或更新请求。 为了优化资源，当前阻止了请求。 请查询 [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) 以了解挂起的操作。 请等到挂起的创建或更新请求完成后，或删除其中一个挂起的请求，再重试请求。 有关详细信息，请参阅： <br/>&bull; &nbsp;[数据库服务器资源限制](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[单一数据库的基于 DTU 的限制](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[单一数据库的基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。 |
-| 49920 |16 |无法处理请求。 订阅“%ld”有太多操作正在进行。<br/><br/>服务正忙于为此订阅处理多个请求。 为了优化资源，当前阻止了请求。 请查询 [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) 以了解操作状态。 请等到挂起的请求完成，或删除其中一个挂起的请求，并重试请求。 有关详细信息，请参阅： <br/>&bull; &nbsp;[数据库服务器资源限制](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[单一数据库的基于 DTU 的限制](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[单一数据库的基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。 |
+| 4060 |16 |无法打开该登录请求的数据库“%.&#x2a;ls”。 登录失败。 有关详细信息，请参阅[错误4000到 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
+| 40197 |17 |该服务在处理请求时遇到错误。 请稍后重试。 错误代码 %d。<br/><br/>当服务由于软件或硬件升级、硬件故障或任何其他故障转移问题而关闭时，将收到此错误。 [错误40197的消息中嵌入](sql-database-develop-error-messages.md#embedded-error-codes)的错误代码（% d）提供有关所发生的故障或故障转移类型的其他信息。 错误 40197 的消息中嵌入的错误代码的一些示例有 40020、40143、40166 和 40540。<br/><br/>重新连接到 SQL 数据库服务器会将你自动连接到数据库的正常运行副本。 应用程序必须捕获错误 40197、记录该消息中嵌入的错误代码 (%d) 以供进行故障排除，并尝试重新连接到 SQL 数据库，直到资源可用且再次建立连接为止。 有关详细信息，请参阅[暂时性错误](sql-database-connectivity-issues.md#transient-errors-transient-faults)。|
+| 40501 |20 |服务当前正忙。 请在 10 秒钟后重试请求。 事件 ID：%ls。 代码：%d。 有关详细信息，请参阅： <br/>&bull; &nbsp;[数据库服务器资源限制](sql-database-resource-limits-database-server.md)<br/>[为单一数据库 &bull; &nbsp; 基于 DTU 的限制](sql-database-service-tiers-dtu.md)<br/>[为弹性池 &bull; &nbsp; 基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>[针对单个数据库 &bull; &nbsp; 基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>[针对弹性池 &bull; &nbsp; 基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。|
+| 40613 |17 |数据库“%.&#x2a;ls”（在服务器“%.&#x2a;ls”上）当前不可用。 请稍后重试连接。 如果问题仍然存在，请与客户支持人员联系，并向其提供“%.&#x2a;ls”的会话追踪 ID。<br/><br/> 如果已经为数据库建立了现有的专用管理员连接（DAC），则可能出现此错误。 有关详细信息，请参阅[暂时性错误](sql-database-connectivity-issues.md#transient-errors-transient-faults)。|
+| 49918 |16 |无法处理请求。 没有足够的资源来处理请求。<br/><br/>服务当前正忙。 请稍后重试请求。 有关详细信息，请参阅： <br/>&bull; &nbsp;[数据库服务器资源限制](sql-database-resource-limits-database-server.md)<br/>[为单一数据库 &bull; &nbsp; 基于 DTU 的限制](sql-database-service-tiers-dtu.md)<br/>[为弹性池 &bull; &nbsp; 基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>[针对单个数据库 &bull; &nbsp; 基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>[针对弹性池 &bull; &nbsp; 基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。 |
+| 49919 |16 |无法处理创建或更新请求。 订阅“%ld”有太多创建或更新操作正在进行。<br/><br/>服务正忙于为订阅或服务器处理多个创建或更新请求。 为了优化资源，当前阻止了请求。 请查询 [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) 以了解挂起的操作。 请等到挂起的创建或更新请求完成后，或删除其中一个挂起的请求，再重试请求。 有关详细信息，请参阅： <br/>&bull; &nbsp;[数据库服务器资源限制](sql-database-resource-limits-database-server.md)<br/>[为单一数据库 &bull; &nbsp; 基于 DTU 的限制](sql-database-service-tiers-dtu.md)<br/>[为弹性池 &bull; &nbsp; 基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>[针对单个数据库 &bull; &nbsp; 基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>[针对弹性池 &bull; &nbsp; 基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。 |
+| 49920 |16 |无法处理请求。 订阅“%ld”有太多操作正在进行。<br/><br/>服务正忙于为此订阅处理多个请求。 为了优化资源，当前阻止了请求。 请查询 [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) 以了解操作状态。 请等到挂起的请求完成，或删除其中一个挂起的请求，并重试请求。 有关详细信息，请参阅： <br/>&bull; &nbsp;[数据库服务器资源限制](sql-database-resource-limits-database-server.md)<br/>[为单一数据库 &bull; &nbsp; 基于 DTU 的限制](sql-database-service-tiers-dtu.md)<br/>[为弹性池 &bull; &nbsp; 基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>[针对单个数据库 &bull; &nbsp; 基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>[针对弹性池 &bull; &nbsp; 基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。 |
 | 4221 |16 |由于等待“HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING”的时间过长，登录以读取次要副本失败。 副本不可用于登录，因为回收副本时缺少正在进行中的事务的行版本。 可以通过回滚或提交主要副本上的活动事务来解决此问题。 通过避免在主要副本上长时间写入事务，可以将此状况的发生次数降到最低。 |
 
 ## <a name="embedded-error-codes"></a>嵌入的错误代码
@@ -71,7 +71,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 The service has encountered an error processing your request. Please try again. Error code %d.
 ```
 
-| 错误代码 | 严重性 | 描述 | 
+| 错误代码 | Severity | 描述 | 
 | ---:| ---:|:---|
 |  1104 |17 |TEMPDB 在溢出期间用尽了空间。 通过删除对象和/或重写查询来创建空间，以消耗更少的行。 如果此问题仍然存在，请考虑升级到更高的服务级别目标。|
 | 40020 |16 |数据库处于转换中，正在终止事务。|
@@ -79,7 +79,7 @@ The service has encountered an error processing your request. Please try again. 
 | 40166 |16 |正在进行 CloudDB 重新配置，并中止所有新用户事务。|
 | 40540 |16 |事务已中止，因为数据库已移动到只读模式。 这是一种暂时性的情况，请重试该操作。|
 
-有关其他嵌入错误的详细信息，请参阅 `sys.messages`：
+有关其他嵌入错误的详细信息，请参阅查询 `sys.messages`：
 
 ```sql
 SELECT * FROM sys.[messages] WHERE [message_id] = <error_code>
@@ -89,7 +89,7 @@ SELECT * FROM sys.[messages] WHERE [message_id] = <error_code>
 
 在 Azure SQL 数据库中复制数据库时，可能会发生以下错误。 有关详细信息，请参阅[复制 Azure SQL 数据库](sql-database-copy.md)。
 
-| 错误代码 | 严重性 | 描述 |
+| 错误代码 | Severity | 描述 |
 | ---:| ---:|:--- |
 | 40635 |16 |IP 地址为“%.&#x2a;ls”的客户端已暂时禁用。 |
 | 40637 |16 |创建数据库副本当前处于禁用状态。 |
@@ -118,32 +118,32 @@ SELECT * FROM sys.[messages] WHERE [message_id] = <error_code>
 
 * 有关详细信息，请参阅：
   * [数据库服务器资源限制](sql-database-resource-limits-database-server.md)
-  * [单一数据库的基于 DTU 的限制](sql-database-service-tiers-dtu.md)
+  * [单个数据库的基于 DTU 的限制](sql-database-service-tiers-dtu.md)
   * [弹性池的基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)
-  * [单一数据库的基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)
-  * [弹性池的基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)
+  * [针对单一数据库的基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)
+  * [针对弹性池的基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)
   * [托管实例资源限制](sql-database-managed-instance-resource-limits.md)。 
 
-| 错误代码 | 严重性 | 描述 |
+| 错误代码 | Severity | 描述 |
 | ---:| ---:|:--- |
-| 10928 |20 |资源 ID：%d。 数据库的 %s 限制是 %d 且已达到该限制。 有关详细信息，请参阅[单一数据库和共用数据库的 SQL 数据库资源限制](sql-database-resource-limits-database-server.md)。<br/><br/>资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。<br/><br/>有关此错误以及如何解决此错误的详细信息，请参阅： <br/>&bull; &nbsp;[数据库服务器资源限制](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[单一数据库的基于 DTU 的限制](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[单一数据库的基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。 |
-| 10929 |20 |资源 ID：%d。 %s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。 有关详细信息，请参阅： <br/>&bull; &nbsp;[数据库服务器资源限制](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[单一数据库的基于 DTU 的限制](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[单一数据库的基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。 <br/>否则，请稍后重试。 |
-| 40544 |20 |数据库已达到大小配额。 请将数据分区或删除、删除索引或查阅文档以找到可能的解决方案。 有关数据库缩放的信息，请参阅[缩放单一数据库资源](sql-database-single-database-scale.md)和[缩放弹性池资源](sql-database-elastic-pool-scale.md)。|
+| 10928 |20 |资源 ID：%d。 数据库的 %s 限制是 %d 且已达到该限制。 有关详细信息，请参阅[单一数据库和共用数据库的 SQL 数据库资源限制](sql-database-resource-limits-database-server.md)。<br/><br/>资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。<br/><br/>有关此错误以及如何解决此错误的详细信息，请参阅： <br/>&bull; &nbsp;[数据库服务器资源限制](sql-database-resource-limits-database-server.md)<br/>[为单一数据库 &bull; &nbsp; 基于 DTU 的限制](sql-database-service-tiers-dtu.md)<br/>[为弹性池 &bull; &nbsp; 基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>[针对单个数据库 &bull; &nbsp; 基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>[针对弹性池 &bull; &nbsp; 基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。 |
+| 10929 |20 |资源 ID：%d。 %s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。 有关详细信息，请参阅： <br/>&bull; &nbsp;[数据库服务器资源限制](sql-database-resource-limits-database-server.md)<br/>[为单一数据库 &bull; &nbsp; 基于 DTU 的限制](sql-database-service-tiers-dtu.md)<br/>[为弹性池 &bull; &nbsp; 基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>[针对单个数据库 &bull; &nbsp; 基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>[针对弹性池 &bull; &nbsp; 基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。 <br/>否则，请稍后重试。 |
+| 40544 |20 |数据库已达到大小配额。 请将数据分区或删除、删除索引或查阅文档以找到可能的解决方案。 对于数据库缩放，请参阅[缩放单一数据库资源](sql-database-single-database-scale.md)和[缩放弹性池资源](sql-database-elastic-pool-scale.md)。|
 | 40549 |16 |由于有长时间运行的事务，已终止会话。 请尝试缩短事务运行时间。 有关批处理的信息，请参阅[如何使用批处理来改善 SQL 数据库应用程序的性能](sql-database-use-batching-to-improve-performance.md)。|
 | 40550 |16 |由于会话获取的锁过多，已终止该会话。 请尝试在单个事务中读取或修改更少的行。 有关批处理的信息，请参阅[如何使用批处理来改善 SQL 数据库应用程序的性能](sql-database-use-batching-to-improve-performance.md)。|
-| 40551 |16 |由于过度使用 `TEMPDB`，已终止该会话。 请尝试修改查询以减少使用临时表空间。<br/><br/>如果在使用临时对象，则通过在会话不再需要临时对象后删除这些临时对象，可以节省 `TEMPDB` 数据库中的空间。 若要详细了解如何在 SQL 数据库中使用 tempdb，请参阅 [SQL 数据库中的 Tempdb 数据库](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)。|
-| 40552 |16 |由于过度使用事务日志空间，已终止该会话。 请尝试在单个事务中修改更少的行。 有关批处理的信息，请参阅[如何使用批处理来改善 SQL 数据库应用程序的性能](sql-database-use-batching-to-improve-performance.md)。<br/><br/>如果在使用 `bcp.exe` 实用程序或 `System.Data.SqlClient.SqlBulkCopy` 类执行大容量插入，则可尝试使用 `-b batchsize` 或 `BatchSize` 选项来限制在各事务中复制到服务器的行数。 如果正在使用 `ALTER INDEX` 语句重新生成索引，请尝试使用 `REBUILD WITH ONLINE = ON` 选项。 有关 vCore 购买模型的事务日志大小的信息，请参阅： <br/>&bull; &nbsp;[单一数据库的基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。|
-| 40553 |16 |由于过度使用内存，已终止该会话。 请尝试修改查询以处理更少的行。<br/><br/>在 Transact-SQL 代码中减少 `ORDER BY` 和 `GROUP BY` 操作的数目可以降低查询的内存需求。 有关数据库缩放的信息，请参阅[缩放单一数据库资源](sql-database-single-database-scale.md)和[缩放弹性池资源](sql-database-elastic-pool-scale.md)。|
+| 40551 |16 |由于过度使用 `TEMPDB`，已终止该会话。 请尝试修改查询以减少使用临时表空间。<br/><br/>如果在使用临时对象，则通过在会话不再需要临时对象后删除这些临时对象，可以节省 `TEMPDB` 数据库中的空间。 有关 SQL 数据库中 tempdb 使用情况的详细信息，请参阅[Sql 数据库中的 tempdb 数据库](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)。|
+| 40552 |16 |由于过度使用事务日志空间，已终止该会话。 请尝试在单个事务中修改更少的行。 有关批处理的信息，请参阅[如何使用批处理来改善 SQL 数据库应用程序的性能](sql-database-use-batching-to-improve-performance.md)。<br/><br/>如果在使用 `bcp.exe` 实用程序或 `System.Data.SqlClient.SqlBulkCopy` 类执行大容量插入，则可尝试使用 `-b batchsize` 或 `BatchSize` 选项来限制在各事务中复制到服务器的行数。 如果正在使用 `ALTER INDEX` 语句重新生成索引，请尝试使用 `REBUILD WITH ONLINE = ON` 选项。 有关 vCore 购买模型的事务日志大小的详细信息，请参阅： <br/>[针对单个数据库 &bull; &nbsp; 基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>[针对弹性池 &bull; &nbsp; 基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。|
+| 40553 |16 |由于过度使用内存，已终止该会话。 请尝试修改查询以处理更少的行。<br/><br/>在 Transact-SQL 代码中减少 `ORDER BY` 和 `GROUP BY` 操作的数目可以降低查询的内存需求。 对于数据库缩放，请参阅[缩放单一数据库资源](sql-database-single-database-scale.md)和[缩放弹性池资源](sql-database-elastic-pool-scale.md)。|
 
 ## <a name="elastic-pool-errors"></a>弹性池错误
 
 以下错误与创建和使用弹性池有关：
 
-| 错误代码 | 严重性 | 描述 | 纠正措施 |
+| 错误代码 | Severity | 描述 | 纠正措施 |
 |:--- |:--- |:--- |:--- |
-| 1132 | 17 |弹性池已达到其存储限制。 弹性池的存储使用不能超过 (%d) MB。 达到弹性池的存储限制时，尝试向数据库写入数据。 有关资源限制的信息，请参阅： <br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)。 <br/> |在可能的情况下，考虑增加弹性池的 DTU 数并/或将存储添加到弹性池，以便提高其存储限制、减少弹性池中各数据库使用的存储，或者从弹性池中删除数据库。 有关弹性池缩放的信息，请参阅[缩放弹性池资源](sql-database-elastic-pool-scale.md)。|
-| 10929 | 16 |%s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 有关资源限制的信息，请参阅： <br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)。 <br/> 否则，请稍后重试。 每个数据库的 DTU/vCore 最小值；每个数据库的 DTU/vCore 最大值。 弹性池中所有数据库上尝试的并发辅助进程（请求）总数超过池限制。 |在可能的情况下，考虑增加弹性池的 DTU 数或 vCores 数，以便提高其辅助角色限制，或者从弹性池中删除数据库。 |
-| 40844 | 16 |弹性池中数据库“%ls”（位于服务器“%ls”上）是“%ls”版本的数据库，不能有连续的复制关系。  |不可用 |
+| 1132 | 17 |弹性池已达到其存储限制。 弹性池的存储使用不能超过 (%d) MB。 达到弹性池的存储限制时，尝试向数据库写入数据。 有关资源限制的信息，请参阅： <br/>[为弹性池 &bull; &nbsp; 基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>[为弹性池 &bull; &nbsp; 基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)。 <br/> |在可能的情况下，考虑增加弹性池的 DTU 数并/或将存储添加到弹性池，以便提高其存储限制、减少弹性池中各数据库使用的存储，或者从弹性池中删除数据库。 有关弹性池缩放，请参阅[缩放弹性池资源](sql-database-elastic-pool-scale.md)。|
+| 10929 | 16 |%s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 有关资源限制的信息，请参阅： <br/>[为弹性池 &bull; &nbsp; 基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>[为弹性池 &bull; &nbsp; 基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)。 <br/> 否则，请稍后重试。 每个数据库的 DTU/vCore 最小值；每个数据库的 DTU/vCore 最大值。 弹性池中所有数据库上尝试的并发辅助进程（请求）总数超过池限制。 |在可能的情况下，考虑增加弹性池的 DTU 数或 vCores 数，以便提高其辅助角色限制，或者从弹性池中删除数据库。 |
+| 40844 | 16 |弹性池中数据库“%ls”（位于服务器“%ls”上）是“%ls”版本的数据库，不能有连续的复制关系。  |N/A |
 | 40857 | 16 |找不到服务器“%ls”的弹性池，弹性池名称：“%ls”。 指定的弹性池在指定的服务器中不存在。 | 提供有效的弹性池名称。 |
 | 40858 | 16 |弹性池“%ls”已存在于服务器“%ls”中。 指定的弹性池已存在于指定的 SQL 数据库服务器中。 | 提供新弹性池名称。 |
 | 40859 | 16 |弹性池不支持服务层级“%ls”。 进行弹性池预配时，不支持指定服务层级。 |提供正确的版本，或者将服务层级留空以使用默认服务层级。 |
@@ -173,7 +173,7 @@ SELECT * FROM sys.[messages] WHERE [message_id] = <error_code>
 
 以下错误不属于前面的任何类别。
 
-| 错误代码 | 严重性 | 描述 |
+| 错误代码 | Severity | 描述 |
 | ---:| ---:|:--- |
 | [15006](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-15000-to-15999) |16 |(AdministratorLogin) 不是有效的名称，因为它包含无效字符。|
 | [18452](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |登录失败。 该登录来自不受信任的域，不能用于 Windows 身份验证。%.&#x2a;ls（此版本的 SQL Server 不支持 Windows 登录。） |
@@ -236,7 +236,7 @@ SELECT * FROM sys.[messages] WHERE [message_id] = <error_code>
 | 40651 |16 |无法创建服务器，因为订阅 (subscription-id) 已禁用。 |
 | 40652 |16 |无法移动或创建服务器。 订阅 (subscription-id) 将超过服务器配额。 |
 | 40671 |17 |网关与管理服务之间的通信失败。 请稍后重试。 |
-| 40852 |16 |无法在服务器“%.\*ls”中打开登录请求的数据库“%.\*ls”。 仅允许使用已启用安全性的连接字符串访问数据库。 要访问此数据库，请将连接字符串修改为在服务器 FQDN 中包含“secure”。也就是说，'server name'.database.windows.net 应修改为 'server name'.database`secure`.windows.net。 |
+| 40852 |16 |无法在服务器“%.\*ls”中打开登录请求的数据库“%.\*ls”。 仅允许使用已启用安全性的连接字符串访问数据库。 若要访问此数据库，请将连接字符串修改为在服务器 FQDN 中包含“secure”。也就是说，'server name'.database.windows.net 应修改为 'server name'.database.`secure`.windows.net。 |
 | 40914 | 16 | 无法打开登录时请求的服务器‘[服务器-名称]’。 不允许客户端访问服务器。<br /><br />若要修复，请考虑添加[虚拟网络规则](sql-database-vnet-service-endpoint-rule-overview.md)。 |
 | 45168 |16 |SQL Azure 系统负载过小，正在设置单个 SQL 数据库服务器的并发数据库 CRUD 操作（例如创建数据库）数的上限。 在错误消息中指定的服务器已超过最大并发连接数。 请稍后重试。 |
 | 45169 |16 |SQL Azure 系统负载过小，正在设置单个订阅的并发服务器 CRUD 操作（例如创建服务器）数的上限。 在错误消息中指定的订阅已超过最大并发连接数，已拒绝请求。 请稍后重试。 |

@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 5d69e29c83bcbe433b800d6877ba1c7440eceedc
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e92471bd467557f3ac8eb0404d672355ccab8449
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387984"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597124"
 ---
 # <a name="monitor-data-flows"></a>监视数据流
 
@@ -24,7 +24,7 @@ ms.locfileid: "72387984"
 
 ![数据流监视](media/data-flow/mon001.png "数据流监视")
 
-你将在此级别上看到统计信息，其中包括运行时间和状态。 活动级别的运行 ID 不同于管道级别的运行 ID。 上一级别的运行 ID 适用于管道。 单击眼镜图标可以查看有关数据流执行的深入详细信息。
+你将在此级别上查看统计信息，并包括运行时间和状态。 活动级别的运行 ID 不同于管道级别的运行 ID。 上一级别的运行 ID 适用于管道。 单击眼镜图标可以查看有关数据流执行的深入详细信息。
 
 ![数据流监视](media/data-flow/mon002.png "数据流监视")
 
@@ -47,6 +47,11 @@ ms.locfileid: "72387984"
   * 计算：使用列进行条件处理，或在数据流中的表达式内使用该列，但不要将其置于接收器中
   * 派生：列是在流中生成的新列，即源中不存在此列
   * 已映射：列源自源，并将其映射到接收器字段
+  * 数据流状态：执行的当前状态
+  * 群集启动时间：获取用于数据流执行的 JIT Spark 计算环境的时间量
+  * 转换数：在流中执行了多少个转换步骤
+  
+![Acit 数据流监视](media/data-flow/monitornew.png "数据流监视新增")  
   
 ## <a name="monitor-icons"></a>监视图标
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 9cb86d65c84f9a315541172f5d0efa77eee3e7ed
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: d6530eb95dc26b9abe4bb27146b16eb2952e9f9b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529309"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595672"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -49,6 +49,8 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
   * 虚拟网络需要四个*空*子网，以便在 ISE 中创建和部署资源。 你可以提前创建这些子网，也可以等待，直到创建了你可以在其中创建子网的 ISE。 了解有关[子网要求](#create-subnet)的详细信息。
 
   * 子网名称必须以字母字符或下划线开头，不能使用以下字符： `<`、`>`、`%`、`&`、`\\`、`?`、`/`。 
+  
+  * 如果要通过 Azure 资源管理器模板部署 ISE，请首先确保将一个空子网委托给 integrationServiceEnvironment/。 通过 Azure 门户部署时，无需执行此委派。
 
   * 请确保虚拟网络[提供这些端口](#ports)，使 ISE 正常工作并保持可访问。
 

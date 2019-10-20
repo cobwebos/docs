@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 65cd59933fa31d870a507cbe80b454934c9008d0
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 626f446c18acf1f07f458fb1b4238f182546e479
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265103"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596931"
 ---
 # <a name="my-first-python-runbook"></a>我的第一个 Python Runbook
 
@@ -27,11 +27,11 @@ ms.locfileid: "71265103"
 本教程介绍了如何在 Azure 自动化中创建 [Python Runbook](automation-runbook-types.md#python-runbooks)。 首先从测试和发布的简单 Runbook 开始。 然后，通过修改 Runbook 来实际管理 Azure 资源，这种情况下会启动 Azure 虚拟机。 最后，通过添加 Runbook 参数使此 Runbook 更稳健。
 
 > [!NOTE]
-> 不支持使用 Webhook 启动 Python runbook。
+> 不支持使用 webhook 来启动 Python runbook。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-要完成本教程，需要以下各项：
+若要完成本教程，需要以下各项：
 
 - Azure 订阅。 如果还没有帐户，可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [自动化帐户](automation-offering-get-started.md) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。 此帐户必须有权启动和停止虚拟机。
@@ -81,7 +81,7 @@ print("Hello World!")
 1. 单击“发布”以发布该 Runbook，并在出现提示时单击“是”。
 1. 如果向左滚动以在“Runbook”窗格中查看该 Runbook，它会显示“已发布”的“创作状态”。
 1. 向右滚动查看“MyFirstRunbook-Python”窗格。
-   顶部的选项允许我们启动 Runbook、查看 Runbook、计划其在将来的某个时刻启动。
+   顶部的选项允许我们启动 runbook、查看 runbook 或计划在将来的某个时间启动。
 2. 如果想要启动 Runbook，请单击“启动”，并在“启动 Runbook”边栏选项卡打开时单击“确定”。
 3. 此时会为你创建的 Runbook 作业打开作业窗格。 可以关闭此窗格，但在此示例中，将它保持打开状态，以便查看该作业的进度。
 1. 作业状态显示在“作业摘要”中并且与测试该 Runbook 时看到的状态相匹配。
@@ -205,6 +205,30 @@ async_vm_start.wait()
 ![输入参数值](media/automation-first-runbook-textual-python/runbook-python-params.png)
 
 单击“确定”启动 Runbook。 Runbook 运行，并启动指定的 VM。
+
+## <a name="error-handling-in-python"></a>Python 中的错误处理
+
+你还可以使用以下约定从 Python runbook 检索各种流，包括**警告**、**错误**和**调试**流。
+
+```python
+print("Hello World output") 
+print("ERROR: - Hello world error")
+print("WARNING: - Hello world warning")
+print("DEBUG: - Hello world debug")
+print("VERBOSE: - Hello world verbose")
+```
+
+下面的示例演示了在 `try...except` 块中使用的此约定。
+
+```python
+try:
+    raise Exception('one', 'two')
+except Exception as detail:
+    print 'ERROR: Handling run-time error:', detail
+```
+
+> [!NOTE]
+> 在 Azure 自动化中不支持**sys.databases** 。
 
 ## <a name="next-steps"></a>后续步骤
 

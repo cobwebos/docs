@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 10/17/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 664307b64d5a2869130df9ab123119d869f36e21
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1f02cf3abaae7d67ba3d204dc9419d9fbfa4a86d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374485"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597078"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解并使用范围
 
@@ -132,6 +132,7 @@ Microsoft 客户协议计费帐户具有以下作用域：
 
 与 EA 计费范围不同，客户协议计费_帐户绑定_到单个目录，并且不能跨多个 Azure AD 目录拥有订阅。
 
+客户协议计费范围不适用于合作伙伴。 合作伙伴角色和权限在[分配用户角色和权限](/partner-center/permissions-overview)中进行了介绍。
 
 客户协议计费范围支持下列角色：
 
@@ -159,11 +160,25 @@ Azure 订阅嵌套在 "发票" 部分下，例如它们在 "EA 注册帐户" 下
 
 ## <a name="cloud-solution-provider-csp-scopes"></a>云解决方案提供程序（CSP）范围
 
-目前，成本管理不支持云解决方案提供商（CSP）合作伙伴。 相反，你可以使用[合作伙伴中心](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)。
+对于包含 Microsoft 客户协议的客户，Csp 支持以下范围：
+
+- **计费帐户**-表示针对多个 Microsoft 产品和服务的客户协议。 客户协议计费帐户的功能与 EA 注册不同。 EA 注册更接近于计费配置文件。
+
+    资源类型： `Microsoft.Billing/billingAccounts (accountType = Organization)`
+
+- **计费配置文件**-定义发票中包含的订阅。 计费配置文件在功能上等同于 EA 注册，因为这是生成发票的范围。 同样，不基于使用情况的采购（如 Marketplace 和预订）仅在此范围内可用。
+
+    资源类型： `Microsoft.Billing/billingAccounts/billingProfiles`
+
+- **Customer** -表示与特定客户关联的一组订阅，由合作伙伴载入到 Microsoft 客户协议。
+
+只有拥有*全局管理员*和*管理代理*角色的用户才能直接在合作伙伴的 Azure 租户中管理和查看计费帐户、计费配置文件和客户的成本。 有关合作伙伴中心角色的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。
+
+如果客户有 Microsoft 客户协议，Azure 成本管理仅支持 CSP 合作伙伴客户。 对于尚不是 Microsoft 客户协议的 CSP 支持的客户，请参阅[合作伙伴中心](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)。
 
 ## <a name="switch-between-scopes-in-cost-management"></a>在成本管理中切换范围
 
-Azure 门户中的所有成本管理视图都包含视图左上角的 "**范围**选择" 欣然。 使用它可以快速更改范围。 单击 "**作用域**" 欣然打开 "作用域选取器"。 它显示了计费帐户、根管理组以及未嵌套在根管理组下的任何订阅。 若要选择一个范围，请单击背景以突出显示它，然后单击底部的 "**选择**"。 若要深入到嵌套的作用域（如订阅中的资源组），请单击 "作用域名称" 链接。 若要选择任何嵌套级别的父作用域，请单击 "范围选取器" 顶部的 "**选择此 &lt;scope @ no__t-2** "。
+Azure 门户中的所有成本管理视图都包含视图左上角的 "**范围**选择" 欣然。 使用它可以快速更改范围。 单击 "**作用域**" 欣然打开 "作用域选取器"。 它显示了计费帐户、根管理组以及未嵌套在根管理组下的任何订阅。 若要选择一个范围，请单击背景以突出显示它，然后单击底部的 "**选择**"。 若要深入到嵌套的作用域（如订阅中的资源组），请单击 "作用域名称" 链接。 若要选择任何嵌套级别的父作用域，请单击 " **&lt;scope &gt;** "。
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>标识作用域的资源 ID
 

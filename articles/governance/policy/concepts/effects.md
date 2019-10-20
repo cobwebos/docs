@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 78a5b180d6e1531ca3ea15fbd6ec040a90d75e5c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9a21242cbb16466ed4c12746ff64bd7352925fed
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330772"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592797"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -67,7 +67,7 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 
 ### <a name="append-examples"></a>“附加”示例
 
-示例1：使用包含数组**值**的非 **[\*]** [别名](definition-structure.md#aliases)的单个**字段/值**对来设置存储帐户上的 IP 规则。 如果非 **[\*]** 别名是数组，该效果将以整个数组的形式附加**值**。 如果数组已存在，该冲突会导致拒绝事件发生。
+示例1：使用带有数组**值**的非 **[\*]** [别名](definition-structure.md#aliases)的单**字段/值**对来设置存储帐户上的 IP 规则。 如果非 **[\*]** 别名是数组，该效果将以整个数组的形式附加**值**。 如果数组已存在，该冲突会导致拒绝事件发生。
 
 ```json
 "then": {
@@ -82,7 +82,7 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 }
 ```
 
-示例2：使用带有数组**值**的 **[@no__t** ）[别名](definition-structure.md#aliases)的单个**字段/值**对来设置存储帐户上的 IP 规则。 通过使用 **[\*]** 别名，该效果会将**值**附加到可能预先存在的数组。 如果数组尚不存在，则将创建它。
+示例2：使用带有数组**值**的 **[\*]** [别名](definition-structure.md#aliases)的单个**字段/值**对，以便在存储帐户上设置 IP 规则。 通过使用 **[\*]** 别名，该效果会将**值**附加到可能预先存在的数组。 如果数组尚不存在，则将创建它。
 
 ```json
 "then": {
@@ -99,7 +99,7 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 
 ## <a name="modify"></a>修改
 
-Modify 用于在创建或更新时在资源上添加、更新或删除标记。 常见的示例是在 costCenter 等资源上更新标记。 除非目标资源为资源组，否则修改策略应始终将 @no__t 设置为_索引_。 可以使用[修正任务](../how-to/remediate-resources.md)来修正现有的不合规资源。 单个修改规则可以有任意数量的操作。
+Modify 用于在创建或更新时在资源上添加、更新或删除标记。 常见的示例是在 costCenter 等资源上更新标记。 除非目标资源为资源组，否则修改策略应始终将 `mode` 设置为_索引_。 可以使用[修正任务](../how-to/remediate-resources.md)来修正现有的不合规资源。 单个修改规则可以有任意数量的操作。
 
 > [!IMPORTANT]
 > Modify 当前仅用于标记。 如果你正在管理标记，则建议使用修改，而不是将追加作为修改提供其他操作类型和修正现有资源的能力。 但是，如果无法创建托管标识，则建议使用 Append。
@@ -152,7 +152,7 @@ Modify 用于在创建或更新时在资源上添加、更新或删除标记。 
         {
             "operation": "addOrReplace",
             "field": "tags['Dept']",
-            "field": "[parameters('DeptName')]"
+            "value": "[parameters('DeptName')]"
         }
     ]
 }
@@ -168,7 +168,7 @@ Modify 用于在创建或更新时在资源上添加、更新或删除标记。 
 
 ### <a name="modify-examples"></a>修改示例
 
-示例1：添加 @no__t 的标记，并将现有 @no__t 1 标记替换为 "Test"：
+示例1：添加 `environment` 标记并将现有 `environment` 标记替换为 "Test"：
 
 ```json
 "then": {
@@ -188,7 +188,7 @@ Modify 用于在创建或更新时在资源上添加、更新或删除标记。 
 }
 ```
 
-示例2：删除 @no__t 的标记并添加 @no__t 标记，或将现有的 `environment` 标记替换为参数化值：
+示例2：删除 `env` 标记并添加 `environment` 标记，或将现有 `environment` 标记替换为参数化值：
 
 ```json
 "then": {
@@ -242,7 +242,7 @@ Modify 用于在创建或更新时在资源上添加、更新或删除标记。 
 
 ### <a name="audit-evaluation"></a>“审核”评估
 
-Audit 是在创建或更新资源的过程中由 Azure 策略检查的最后一个影响。 然后，Azure 策略将资源发送到资源提供程序。 “审核”对于资源请求和评估周期的工作方式相同。 Azure 策略将 @no__t 0 操作添加到活动日志，并将资源标记为不合规。
+Audit 是在创建或更新资源的过程中由 Azure 策略检查的最后一个影响。 然后，Azure 策略将资源发送到资源提供程序。 “审核”对于资源请求和评估周期的工作方式相同。 Azure 策略将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志，并将资源标记为不合规。
 
 ### <a name="audit-properties"></a>“审核”属性
 
@@ -275,7 +275,7 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
   - 如果**详细信息**为，则 type 是**if**条件资源下面的资源类型，策略在计算资源的作用域内查询此**类型**的资源。 否则，策略查询将与计算资源位于同一资源组中。
 - **Name**（可选）
   - 指定要匹配的资源的确切名称，并使策略提取一个特定资源，而不是指定类型的所有资源。
-  - **如果**When 的条件值为，则键入，然后按_要求_**键入** **Name** ，并且必须 `[field('name')]`。 但是，应考虑使用[审核](#audit)效果。
+  - 如果 When 的条件值为，**则** **键入**，然后按 "**名称**" 是_必需_的，并且必须 `[field('name')]`。 但是，应考虑使用[审核](#audit)效果。
 - **ResourceGroupName**（可选）
   - 允许相关资源的匹配来自不同的资源组。
   - 如果 **type** 是 **if** 条件资源下的一个资源，则不适用。
@@ -346,7 +346,7 @@ DeployIfNotExists 效果的 "**详细信息**" 属性包含定义要匹配的相
   - 首先尝试提取 if条件资源下的资源，然后在与 if 条件资源相同的资源组中进行查询。
 - **Name**（可选）
   - 指定要匹配的资源的确切名称，并使策略提取一个特定资源，而不是指定类型的所有资源。
-  - **如果**When 的条件值为，则键入，然后按_要求_**键入** **Name** ，并且必须 `[field('name')]`。
+  - 如果 When 的条件值为，**则** **键入**，然后按 "**名称**" 是_必需_的，并且必须 `[field('name')]`。
 - **ResourceGroupName**（可选）
   - 允许相关资源的匹配来自不同的资源组。
   - 如果 **type** 是 **if** 条件资源下的一个资源，则不适用。

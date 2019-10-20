@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 4a621f8976efe395014c073a6bd7c5d09d19d915
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3717199d2fa342fff5996d97bc5cdaf6da6e9880
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671077"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595202"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure 存储中的灾难恢复和存储帐户故障转移（预览版）
 
@@ -47,16 +47,16 @@ Azure 存储支持异地冗余存储帐户故障转移（预览版）。 通过�
 
 请务必从一开始就设计高可用性应用程序。 有关设计应用程序和计划灾难恢复方面的指导，请参阅以下 Azure 资源：
 
-* [设计适用于 Azure 的可复原应用程序](https://docs.microsoft.com/azure/architecture/resiliency/)：概述了在 Azure 中生成高可用性应用程序的关键概念。
-* [可用性清单](https://docs.microsoft.com/azure/architecture/checklist/availability)：用于验证应用程序是否实现高可用性最佳设计做法的清单。
-* [设计使用 RA-GRS 的高可用性应用程序](storage-designing-ha-apps-with-ragrs.md)：有关生成利用 RA-GRS 的应用程序的设计指南。
-* [教程：生成使用 Blob 存储的高可用性应用程序](../blobs/storage-create-geo-redundant-storage.md)：介绍了如何生成在模拟故障和恢复时自动切换终结点的高可用性应用程序的教程。 
+* [设计适用于 azure 的弹性应用程序](https://docs.microsoft.com/azure/architecture/resiliency/)：概述在 azure 中构建高度可用的应用程序的关键概念。
+* [可用性清单](https://docs.microsoft.com/azure/architecture/checklist/availability)：用于验证应用程序是否实现了高可用性最佳设计实践的检查表。
+* [使用 GRS 设计高度可用的应用程序](storage-designing-ha-apps-with-ragrs.md)：用于构建应用程序以利用 GRS 的设计指南。
+* [教程：使用 Blob 存储构建高度可用的应用程序](../blobs/storage-create-geo-redundant-storage.md)：演示如何构建高度可用的应用程序，该应用程序可在发生故障时自动切换到终结点，并模拟恢复。 
 
 此外，还请注意下面这些可保持 Azure 存储数据高可用性的最佳做法：
 
-* **磁盘：** 利用 [Azure 备份](https://azure.microsoft.com/services/backup/)备份 Azure 虚拟机使用的 VM 磁盘。 还建议在发生区域灾难时使用 [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) 保护 VM。
-* **块 blob：** 启用[软删除](../blobs/storage-blob-soft-delete.md)以防发生对象级删除和覆盖，或使用 [AzCopy](storage-use-azcopy.md)、[Azure PowerShell](storage-powershell-guide-full.md) 或 [Azure 数据移动库](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)将块 blob 复制到其他区域中的另一个存储帐户内。
-* **文件：** 使用 [AzCopy](storage-use-azcopy.md) 或 [Azure PowerShell](storage-powershell-guide-full.md) 将文件复制到其他区域中的另一个存储帐户内。
+* **磁盘：** 使用[Azure 备份](https://azure.microsoft.com/services/backup/)来备份 Azure 虚拟机所用的 VM 磁盘。 还建议在发生区域灾难时使用 [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) 保护 VM。
+* **块 blob：** 启用[软删除](../blobs/storage-blob-soft-delete.md)，通过[AzCopy](storage-use-azcopy.md)、 [Azure PowerShell](storage-powershell-guide-full.md)或[Azure 数据移动库](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)，防止对象级删除和覆盖，或将块 blob 复制到其他区域中的其他存储帐户。
+* **文件：** 使用[AzCopy](storage-use-azcopy.md)或[Azure PowerShell](storage-powershell-guide-full.md)将文件复制到不同区域中的其他存储帐户。
 * **表：** 使用 [AzCopy](storage-use-azcopy.md) 将表数据导出到其他区域中的另一个存储帐户内。
 
 ## <a name="track-outages"></a>跟踪服务中断
@@ -119,8 +119,14 @@ Microsoft 还建议将应用程序设计为，可以应对可能出现的写入�
 
 对于在 Azure 资源管理器部署中使用 GRS 或 GRS 的所有客户，可通过预览版使用帐户故障转移。 支持常规用途 v1、常规用途 v2 和 Blob 存储帐户类型。 目前，帐户故障转移适用于下面这些区域：
 
-- 美国西部 2
+- 亚洲东部
+- 亚洲东南部
+- 澳大利亚东部
+- 澳大利亚东南部
+- 美国中部
+- 美国东部 2
 - 美国中西部
+- 美国西部 2
 
 此预览版仅用于非生产用途。 生产服务级别协议 (SLA) 当前不可用。
 
@@ -167,7 +173,7 @@ Azure 虚拟机 (VM) 不会在帐户故障转移过程中进行故障转移。 �
 ### <a name="unsupported-features-or-services"></a>不支持的功能或服务
 帐户故障转移（预览版）不支持以下功能或服务：
 
-- Azure 文件同步不支持存储帐户故障转移。 不得对包含 Azure 文件共享且用作 Azure 文件同步中云终结点的存储帐户执行故障转移。 执行此操作将导致同步停止工作，并且还可能导致新分层的文件出现意外数据丢失。  
+- Azure 文件同步不支持存储帐户故障转移。 不得对包含 Azure 文件共享且用作 Azure 文件同步中云终结点的存储帐户执行故障转移。 否则，将会导致同步停止，并且可能还会在有新分层文件的情况下导致意外数据丢失。  
 - 无法对包含已存档 blob 的存储帐户执行故障转移。 请在你不打算执行故障转移的单独存储帐户中维护已存档 blob。
 - 无法对包含高级块 blob 的存储帐户执行故障转移。 支持高级块 blob 的存储帐户暂不支持异地冗余。
 - 故障转移完成后，以下功能将在初始启用时停止工作：[事件订阅](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview)、[生命周期策略](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)[存储分析日志记录](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging)。
@@ -180,8 +186,8 @@ Azure 虚拟机 (VM) 不会在帐户故障转移过程中进行故障转移。 �
 
 在由于重大灾难而导致区域丢失的极端情况下，Microsoft 可能会启动区域故障转移。 在此情况下，不需要采取任何操作。 在 Microsoft 托管的故障转移完成之前，你对存储帐户不拥有写入访问权限。 如果存储帐户已配置 RA-GRS，应用程序可以从次要区域读取数据。 
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [启动帐户故障转移（预览版）](storage-initiate-account-failover.md)
 * [使用 RA-GRS 设计高度可用的应用程序](storage-designing-ha-apps-with-ragrs.md)
-* [教程：生成使用 Blob 存储的高可用性应用程序](../blobs/storage-create-geo-redundant-storage.md) 
+* [教程：使用 Blob 存储构建高度可用的应用程序](../blobs/storage-create-geo-redundant-storage.md) 

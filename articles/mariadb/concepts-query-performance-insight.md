@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 709428d420c7d5f725d1b7df85e4860aec765b48
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: b1007080c907eecc940b57184954c793b85f5eec
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950664"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595588"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的 Query Performance Insight
 
@@ -32,13 +32,13 @@ Query Performance Insight 可帮助你快速确定运行时间最长的查询、
 ### <a name="wait-statistics"></a>等待统计信息
 
 - 了解查询的等待性质
-- 了解资源等待趋势以及发生资源争用的位置
+- 了解资源等待和资源争用的存在趋势
 
 ## <a name="permissions"></a>权限
 
 查看 Query Performance Insight 中查询文本所需的“所有者”或“参与者”权限。 读者可以查看图表和表格，但不能查看查询文本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要运行 Query Performance Insight，数据必须存在于[查询存储](concepts-query-store.md)中。
 
@@ -46,20 +46,20 @@ Query Performance Insight 可帮助你快速确定运行时间最长的查询、
 
 Azure 门户中的 [Query Performance Insight](concepts-query-performance-insight.md) 视图将显示来自查询存储的关键信息的可视化效果。
 
-在 Azure Database for MariaDB 服务器的 "门户" 页上, 选择菜单栏的 "**智能性能**" 部分下的 " **Query Performance Insight** "。
+在 Azure Database for MariaDB 服务器的 "门户" 页上，选择菜单栏的 "**智能性能**" 部分下的 " **Query Performance Insight** "。
 
 ### <a name="long-running-queries"></a>长时间运行的查询
 
-"**长时间运行的查询**" 选项卡按每次执行的平均持续时间显示前5个查询, 按15分钟的间隔进行聚合。 您可以通过从 "**查询数**" 下拉箭头中进行选择来查看更多查询。 执行此操作时，特定查询 ID 的图表颜色可能会更改。
+"**长时间运行的查询**" 选项卡按每次执行的平均持续时间显示前5个查询，按15分钟的间隔进行聚合。 您可以通过从 "**查询数**" 下拉箭头中进行选择来查看更多查询。 执行此操作时，特定查询 ID 的图表颜色可能会更改。
 
-可以在图表中单击并拖动以缩小到特定的时间窗口。 或者, 使用 "放大" 和 "缩小" 图标分别查看较小或更大的时间段。
+可以在图表中单击并拖动以缩小到特定的时间窗口。 或者，使用 "放大" 和 "缩小" 图标分别查看较小或更大的时间段。
 
 ![Query Performance Insight 长时间运行的查询](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
 
 ### <a name="wait-statistics"></a>等待统计信息 
 
 > [!NOTE]
-> 等待统计信息用于排查查询性能问题。 建议仅出于故障排除目的启用此功能。
+> 等待统计信息用于排查查询性能问题。 建议仅出于故障排除目的启用此功能。 <br>如果收到错误消息，请在 Azure 门户 ""*DBforMariaDB 遇到的问题 ";无法完成请求。如果此问题仍然存在或意外出现，请与支持人员联系以了解此信息。* " 查看等待统计信息时，请使用较短的时间段。
 
 "等待统计信息" 提供执行特定查询期间发生的等待事件的视图。 详细了解[MySQL 引擎文档](https://go.microsoft.com/fwlink/?linkid=2098206)中的等待事件类型。
 

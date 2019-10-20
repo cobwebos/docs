@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad2f56388b49692d799202d06ed3dc0123f272e5
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: ad7bdfd3abc4d3b4b672f5471ea826d4cef0f3fc
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294358"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596886"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>优化 Azure Functions 的性能和可靠性
 
-本文为提高[无服务器](https://azure.microsoft.com/solutions/serverless/)函数应用的性能和可靠性提供了指南。 
+本文为提高[无服务器](https://azure.microsoft.com/solutions/serverless/)函数应用的性能和可靠性提供了指南。  
 
 ## <a name="general-best-practices"></a>常规最佳做法
 
@@ -60,7 +60,7 @@ ms.locfileid: "72294358"
 1. 在 DB 中进行 10,000 行的查询。
 2. 为每行创建队列消息，从而处理下一行。
  
-根据系统复杂程度，可能有：行为有误的相关下游服务，网络故障或已达配额限制等等。所有这些可在任何时间影响用户的函数。 需设计函数，使其做好该准备。
+根据系统的复杂程度，你可能会遇到以下情况：所涉及的下游服务的行为错误、网络中断或达到了配额限制等。所有这些都可能会影响你的函数。 需设计函数，使其做好该准备。
 
 如果将 5,000 个那些项插入到队列中进行处理，然后发生故障，代码将如何响应？ 跟踪已完成的一组中的项。 否则，下次可能再次插入它们。 这会严重影响工作流。 
 
@@ -82,7 +82,7 @@ Function App 中的各函数共享资源。 例如，共享内存。 如果生�
 
 请注意在生产 Function App 中加载的内容。 将内存平均分配给应用中的每个函数。
 
-如果在多个 .NET 函数中引用共享程序集，请将其放在常用的共享文件夹中。 如果使用 C# 脚本 (.csx)，请使用类似于以下示例的语句引用程序集： 
+如果有多个 .NET 函数引用的共享程序集，请将其放在公共共享文件夹中。 如果使用 C# 脚本 (.csx)，请使用类似于以下示例的语句引用程序集： 
 
     #r "..\Shared\MyAssembly.dll". 
 

@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/17/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 5b6ec913226f44a47bfa5c734e0c20ef3a87ca67
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 1480418a70166887e7327452d407f78c2c992378
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329431"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597301"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志管理使用情况和成本
 
@@ -268,7 +268,7 @@ union withsource = tt *
 
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
 ```
 
 请注意，子句“where IsBillable = true”从某些解决方案中筛选掉没有引入费用的数据类型。 
@@ -278,12 +278,12 @@ Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
 | where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
 ```
 
 ### <a name="data-volume-by-computer"></a>按计算机的数据量
 
-若要查看每台计算机的可计费事件引入**大小**，请使用 `_BilledSize` 属性，该[属性](log-standard-properties.md#_billedsize)以字节为单位：
+若要查看每台计算机的可计费事件引入**大小**，请使用 `_BilledSize` 属性，该[属性](log-standard-properties.md#_billedsize)以字节为单位提供大小：
 
 ```kusto
 union withsource = tt * 
@@ -292,7 +292,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by  computerName | sort by Bytes nulls last
 ```
 
-@No__t-0[属性](log-standard-properties.md#_isbillable)指定引入数据是否会产生费用。
+@No__t_0[属性](log-standard-properties.md#_isbillable)指定引入数据是否会产生费用。
 
 若要查看每台计算机引入的可**计费**事件计数，请使用 
 
@@ -322,7 +322,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
 ```
 
-对于在 Azure 中托管的节点的数据，可以获取__每个 azure 订阅__的可计费事件引入的**大小**，分析 `_ResourceId` 属性，如下所示：
+对于 Azure 中托管的节点的数据，可以获取__每个 azure 订阅__的可计费事件引入的**大小**，将 `_ResourceId` 属性分析为：
 
 ```kusto
 union withsource = tt * 
@@ -332,7 +332,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
 ```
 
-将 @no__t 0 更改为 `resourceGroup` 将按 Azure 资源组显示可计费引入数据量。 
+将 `subscriptionId` 更改为 `resourceGroup` 会按 Azure 资源组显示可计费引入数据量。 
 
 
 > [!NOTE]
@@ -428,7 +428,7 @@ Azure 警报支持使用搜索查询的[日志警报](alerts-unified-log.md)。
 ```kusto
 union withsource = $table Usage 
 | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
-| extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type 
+| extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type 
 | where DataGB > 100
 ```
 
@@ -438,7 +438,7 @@ union withsource = $table Usage
 union withsource = $table Usage 
 | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
 | extend Type = $table 
-| summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type 
+| summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type 
 | where EstimatedGB > 100
 ```
 
@@ -451,7 +451,7 @@ union withsource = $table Usage
 - **定义警报条件**将 Log Analytics 工作区指定为资源目标。
 - **警报条件**指定下列项：
    - **信号名称**选择“自定义日志搜索”。
-   - 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
+   - 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type | where DataGB > 100`
    - **警报逻辑** **基于** *结果数*，**条件** *大于* **阈值** *0*
    - 将“时间段”设置为 1440 分钟，“警报频率”设置为每 60 分钟，因为使用情况数据一小时才更新一次。
 - **定义警报详细信息**指定以下项：
@@ -465,7 +465,7 @@ union withsource = $table Usage
 - **定义警报条件**将 Log Analytics 工作区指定为资源目标。
 - **警报条件**指定下列项：
    - **信号名称**选择“自定义日志搜索”。
-   - 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
+   - 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type | where EstimatedGB > 100`
    - **警报逻辑** **基于** *结果数*，**条件** *大于* **阈值** *0*
    - 将“时间段”设置为 180 分钟，“警报频率”设置为每 60 分钟，因为使用情况数据一小时才更新一次。
 - **定义警报详细信息**指定以下项：

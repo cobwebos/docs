@@ -1,27 +1,22 @@
 ---
-title: Azure Monitor 服务限制 | Microsoft Docs
-description: 列出了 Azure Monitor 在不同区域中的限制。
-author: bwren
-manager: carmonm
-editor: tysonn
-services: azure-monitor
-documentationcenter: azure-monitor
+title: Azure Monitor 服务限制 |Microsoft Docs
+description: 列出 Azure Monitor 的不同区域中的限制。
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/10/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 0386700c238c213fd9cde3ca1b49e5e598d05bfd
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.date: 06/10/2019
+ms.openlocfilehash: 37401a8eb2a8da82cef4854ab41e40b81ba429fa
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405661"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597273"
 ---
 # <a name="azure-monitor-service-limits"></a>Azure Monitor 服务限制
 
-本文列出了 Azure Monitor 在不同区域中的限制。
+本文列出了 Azure Monitor 的不同方面的限制。
 
 ## <a name="alerts"></a>警报
 
@@ -46,5 +41,5 @@ ms.locfileid: "68405661"
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)
-- [在 Azure Monitor 中监视使用情况和预估成本](platform/usage-estimated-costs.md)
+- [监视 Azure Monitor 中的使用情况和估计成本](platform/usage-estimated-costs.md)
 - [管理 Application Insights 的使用情况和成本](app/pricing.md)

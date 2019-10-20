@@ -1,6 +1,6 @@
 ---
-title: 配置 NFS 卷使用 Azure NetApp 文件的导出策略 |Microsoft Docs
-description: 介绍如何配置导出策略来控制对 NFS 卷使用 Azure NetApp 文件访问
+title: 使用 Azure NetApp 文件配置 NFS 卷的导出策略 |Microsoft Docs
+description: 介绍如何使用 Azure NetApp 文件配置导出策略，以控制对 NFS 卷的访问
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,22 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 10/18/2019
 ms.author: b-juche
-ms.openlocfilehash: 8cda5921a1aec86d28beabbd9cea5b07a203a0e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d73ac199df03f4d789db0634be1e926afc77e623
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61086141"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597556"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>为 NFS 卷配置导出策略
 
-你可以配置导出策略来控制对 Azure NetApp 文件卷的访问。 导出策略是仅对 NFS 卷的支持。 
+你可以配置导出策略来控制对 Azure NetApp 文件卷的访问。 Azure NetApp 文件导出策略仅支持 NFS 卷。  支持 NFSv3 和 NFSv4。 
 
 ## <a name="steps"></a>Steps 
 
-1.  从“管理卷”边栏选项卡中单击“创建导出策略”  边栏选项卡。 
+1.  从“管理卷”边栏选项卡中单击“创建导出策略”边栏选项卡。 
 
 2.  为以下字段指定信息来创建导出策略规则：   
     *  **索引**   
@@ -39,15 +39,11 @@ ms.locfileid: "61086141"
         * IPv4 地址，例如 `10.1.12.24` 
         * 带有以位数表示的子网掩码的 IPv4 地址，例如 `10.1.12.10/4`
 
-    * **Access**  
+    * **访问**  
         选择以下访问权限类型之一：  
         * 无访问权限 
         * 读取和写入
         * 只读
-
-    * **协议**   
-        指定要用于导出策略的协议。   
-        目前，Azure NetApp 文件导出策略支持仅 NFSv3。
 
     ![导出策略](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 

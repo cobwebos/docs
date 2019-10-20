@@ -1,6 +1,6 @@
 ---
 title: 用于 Azure Notebooks 的用户个人资料和 ID
-description: 如何使用 Azure Notebooks 创建和管理用户个人资料和用户 ID。
+description: 如何创建和管理 Azure Notebooks 的用户配置文件和用户 ID，该配置文件将成为共享笔记本的 URL 的一部分。
 services: app-service
 documentationcenter: ''
 author: kraigb
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 1fddefeb2a54ae775a9016799ffff1963eab247e
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 3985e3d5fbe6e24014694665557f13bcc9a35a25
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970146"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598212"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>用于 Azure Notebooks 的个人资料和用户 ID
 
@@ -27,8 +27,8 @@ ms.locfileid: "71970146"
 
 用于共享项目和笔记本的 URL 中包含用户 ID。 下表介绍了不同的 URL 模式：
 
-- `https://notebooks.azure.com/<user_id>`：个人资料页。
-- `https://notebooks.azure.com/<user_id>/projects`：项目。 你可查看所有项目；其他用户只能查看你的公共项目。
+- `https://notebooks.azure.com/<user_id>`：配置文件页面。
+- `https://notebooks.azure.com/<user_id>/projects`：你的项目。 你可查看所有项目；其他用户只能查看你的公共项目。
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>`：项目文件。
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`：特定项目的克隆。
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`：特定笔记本或文件的 HTML 预览。
@@ -56,14 +56,14 @@ ms.locfileid: "71970146"
 
 要编辑个人资料，请在个人资料页上使用“编辑个人资料信息”命令。 个人资料各部分如下：
 
-| 节 | 内容 |
+| 部分 | 内容 |
 | --- | --- |
 | 个人资料照片 | 个人资料页上显示的图像。 |
 | 帐户信息 | 显示名称、用户 ID 和公共电子邮件帐户。 此处的电子邮件帐户为其他用户提供了与你联系的方式，并且可以与用于登录 Azure Notebooks 的[帐户](azure-notebooks-user-account.md)不同。 |
 | 个人资料信息 | 所在位置、公司、职位、网站和简短的自我描述。 |
 | 个人社交资料 | GItHub、Twitter 和 Facebook ID（如果想共享）。 |
-| 隐私设置 | 提供两个命令：<ul><li>**导出我的个人资料**：创建和下载 .zip 文件，其中包含 Azure Notebooks 在你的个人资料中保存的所有信息（包括照片、个人资料信息和安全日志）。</li><li>**删除我的帐户**：永久删除存储在 Azure Notebooks 中的所有个人信息。</li></ul> |
-| 启用网站功能 | 你可以控制 Azure Notebooks 行为的各个方面：<ul><li>**统一的 Notebook 前端**：确保更快地启动笔记本并获得更好的持久性。</li><li>**默认在 JupyterLab 中运行**：默认情况下，Azure Notebooks 将提供适合大多数用户的简单用户界面。 JupyterLab 为经验丰富的用户提供内容更丰富，但操作更复杂的界面。</li><li>**VNext 网站**：启用本文档中显示的现代化 Web 布局。</li></ul> |
+| 隐私设置 | 提供两个命令：<ul><li>**导出我的个人资料**：创建和下载 .zip 文件，其中包含 Azure Notebooks 在你的个人资料中保存的所有信息（包括照片、个人资料信息和安全日志）。</li><li>**删除我的帐户**：永久删除 Azure Notebooks 中存储的所有个人信息。</li></ul> |
+| 启用网站功能 | 你可以控制 Azure Notebooks 行为的各个方面：<ul><li>**统一的 Notebook 前端**：确保更快地启动笔记本并获得更好的持久性。</li><li>**默认情况下在 JupyterLab 中运行**：默认情况下，Azure Notebooks 提供适用于大多数用户的简单用户界面。 JupyterLab 为经验丰富的用户提供内容更丰富，但操作更复杂的界面。</li><li>**VNext 网站**：启用本文档中显示的现代化 Web 布局。</li></ul> |
 
 ## <a name="next-steps"></a>后续步骤  
 

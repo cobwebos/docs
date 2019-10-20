@@ -1,23 +1,18 @@
 ---
 title: Azure Monitor 术语更新 | Microsoft Docs
 description: 介绍最近对 Azure Monitor 服务进行的术语更改。
-author: bwren
-manager: carmonm
-editor: tysonn
-services: azure-monitor
-documentationcenter: azure-monitor
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/08/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: dc7d839c81edd67d69e1525d219f87ee70f17502
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 10/08/2019
+ms.openlocfilehash: 5324c17cdf2593d8e1022e6ddbf52b4e24ee64e8
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300520"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597810"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor 命名和术语更改
 最近对 Azure Monitor 进行了重要更改，整合了不同的服务，目的是为 Azure 客户简化监视过程。 本文介绍最近在 Azure Monitor 文档中所做的名称和术语更改。
@@ -29,7 +24,7 @@ ms.locfileid: "72300520"
 将不同的服务合并到 Azure Monitor 下以后，我们将执行下一步，修改文档中的术语，以便更好地描述 Azure Monitor 服务及其不同的组件。 
 
 ### <a name="log-analytics"></a>Log Analytics
-Azure Monitor 日志数据仍然存储在 Log Analytics 工作区中，并仍然由同一 Log Analytics 服务收集并分析，但我们会在许多位置将术语 _Log Analytics_ 更改为“Azure Monitor 日志”。 此术语更好地反映了它在 Azure Monitor 中的角色，并提供了与 [Azure Monitor 中的指标](platform/data-platform-metrics.md)更好的一致性。
+Azure Monitor 日志数据仍然存储在 Log Analytics 工作区中，并仍然由同一 Log Analytics 服务收集并分析，但我们会在许多位置将术语 _Log Analytics_ 更改为“Azure Monitor 日志”。 此术语可以更好地反映其在 Azure Monitor 中的角色，并与[Azure Monitor 中的指标](platform/data-platform-metrics.md)提供更好的一致性。
 
 术语 _Log Analytics_ 现在主要应用于 Azure 门户中的页面，用于编写和运行查询以及分析日志数据。 它在功能上相当于[指标资源管理器](platform/metrics-charts.md)，后者是 Azure 门户中的页面，用于分析指标数据。
 
@@ -55,7 +50,7 @@ Operations Management Suite (OMS) 之前捆绑到以下 Azure 管理服务，用
 - Azure 自动化
 - Azure 备份
 - Log Analytics
-- Site Recovery
+- Azure Site Recovery
 
 [已经为这些服务引入了新的定价](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)，并且 OMS 捆绑不再可供新客户使用。 之前属于 OMS 的一部分的服务未发生更改，只是如上所述整合到了 Azure Monitor 中。 
 

@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: pabutler
-ms.openlocfilehash: 3d97fd167f0f946239d4de24bb180796ebb498d3
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: cd61a30ccc9de08c3f0950d811d0d10ec5cd842a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885868"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598380"
 ---
-# <a name="private-offers"></a>专用套餐
+# <a name="private-offers"></a>专用产品/服务
 
 [Microsoft Azure 市场](https://azuremarketplace.microsoft.com/)中的专用套餐可让发布者创建仅向目标客户显示的 SKU。
 
@@ -49,6 +49,9 @@ ms.locfileid: "70885868"
 ![[专用套餐]](./media/marketplace-publishers-guide/private-offer.png)
 
 专用套餐也会显示在搜索结果中。 只需查看“专用”徽章即可。
+
+>[!Note]
+>通过云解决方案提供商计划（CSP）的分销商建立的订阅不支持专用产品/服务。
 
 ## <a name="next-steps"></a>后续步骤
 

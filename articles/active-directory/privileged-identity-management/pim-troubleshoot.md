@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 10/18/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b7fc3508f7f672e277577f92218ff1860b676cb
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: f54382d652c3fc59b8ff462d41ec8c0fbdbe8498
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72559471"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596692"
 ---
 # <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>排查 Privileged Identity Management 的问题
 
@@ -28,7 +28,7 @@ Azure Active Directory （Azure AD）中的 Privileged Identity Management （PI
 
 ### <a name="problem"></a>问题
 
-当你尝试使用户符合 Azure AD 管理员角色并且无法访问 Privileged Identity Management 下的 Azure 资源时，你会收到授权错误。 即使你是全局管理员和订阅的所有者，也无法使用 Privileged Identity Management 访问 Azure 资源。
+作为 Azure 资源的活动所有者或用户访问管理员，你可以查看 Privileged Identity Management 中的资源，但不能执行任何操作，例如进行符合条件的分配或查看资源的角色分配列表概述页。 其中任何一个操作都会导致授权错误。
 
 ### <a name="cause"></a>原因
 

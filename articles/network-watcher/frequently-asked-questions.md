@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: ef46c1a631a79dd1c50b2bf7d263538298de233f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3305590f2d8abf0d894bc1df42b84edcc96a2b2d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333308"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598224"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>有关 Azure 网络观察程序的常见问题解答（FAQ）
 [Azure 网络观察](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)程序服务提供了一套工具，用于监视、诊断、查看指标，并为 Azure 虚拟网络中的资源启用或禁用日志。 本文解答了有关该服务的常见问题。
@@ -54,16 +54,26 @@ ms.locfileid: "72333308"
 ### <a name="which-regions-is-network-watcher-available-in"></a>哪些区域是可用的网络观察程序？
 可以在[Azure 服务可用性页](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)上查看最新的区域可用性
 
+### <a name="what-are-resource-limits-on-network-watcher"></a>什么是网络观察程序的资源限制？
+有关所有限制，请参阅[服务限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#network-watcher-limits)页。  
+
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>为什么每个区域只允许一个网络观察程序实例？
+仅需为订阅启用一次网络观察程序，才能使用它的功能，这并不是服务限制。
+
 ## <a name="nsg-flow-logs"></a>NSG 流日志
 
 ### <a name="what-does-nsg-flow-logs-do"></a>NSG 流日志有什么作用？
 可以通过[网络安全组（nsg）](https://docs.microsoft.com/azure/virtual-network/security-overview)合并和管理 Azure 网络资源。 NSG Flow 日志使你可以记录有关通过 Nsg 的所有流量的5元组流信息。 将原始流日志写入 Azure 存储帐户，以便可以根据需要进一步处理、分析、查询或导出这些日志。
 
-### <a name="are-there-caveats-for-using-nsg-flow-logs"></a>使用 NSG 流日志是否有警告？
+### <a name="are-there-any-caveats-to-using-nsg-flow-logs"></a>使用 NSG 流日志是否需要注意？
 不存在使用 NSG 流日志的先决条件。 但是，有两个限制
 - **VNET 中不得存在服务终结点**： NSG 流日志是从 vm 上的代理发送到存储帐户。 但是，现在只能将日志直接发送到存储帐户，并且不能使用添加到 VNET 的服务终结点。
 
-可通过两种方法解决此问题：
+- **不能防火墙处理存储帐户**：由于内部限制，必须通过公共 Internet 访问存储帐户，才能使用 NSG 流日志。 流量仍会在内部通过 Azure 路由，并且不会面临额外的出口费用。
+
+有关如何解决这些问题的说明，请参阅接下来的两个问题。 这两项限制都预计会在2020年1月进行处理。
+
+### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints"></a>如何实现将 NSG 流日志用于服务终结点？
 
 *选项1：重新配置 NSG 流日志，以发送到没有 VNET 终结点的 Azure 存储帐户*
 
@@ -88,8 +98,7 @@ ms.locfileid: "72333308"
 
 如果 Microsoft.Storage 服务终结点是必需项，则需禁用 NSG 流日志。
 
-
-- **存储帐户不能是防火墙处理**的：由于内部限制，必须通过公共 Internet 访问存储帐户才能使用 NSG 流日志。 流量仍会在内部通过 Azure 路由，并且不会面临额外的出口费用。
+### <a name="how-do-i-disable-the--firewall-on-my-storage-account"></a>如何实现禁用存储帐户上的防火墙？
 
 通过启用 "所有网络" 访问存储帐户可以解决此问题：
 
@@ -97,8 +106,6 @@ ms.locfileid: "72333308"
 * 在门户的全局搜索框中键入存储帐户的名称，导航到存储帐户
 * 在“设置”部分，选择“防火墙和虚拟网络”
 * 选择“所有网络”，然后进行保存。 如果已选中，则不需进行更改。  
-
-这两项限制都预计会在2020年1月进行处理。
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>流日志版本 1 & 2 之间有何区别？
 流日志版本2引入了*流状态*& 存储有关传输的字节和数据包的信息。 [了解详细信息](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)。

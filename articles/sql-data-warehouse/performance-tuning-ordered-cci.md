@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 0acdf1496151df57d4097ce5bc71d782dc465873
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: 37d8f17e825daa3a1c160509b1a38f8c70256d1c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554549"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595367"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>具有有序聚集列存储索引的性能优化  
 
@@ -125,10 +125,6 @@ OPTION (MAXDOP 1);
 4.  在表 B 上的 < Table_B > REBUILD PARTITION = < Partition_ID > 上运行 ALTER INDEX < Ordered_CCI_Index >，以重新生成已切换的分区。  
 5.  对 Table_A 中的每个分区重复步骤3和4。
 6.  将所有分区从 Table_A 切换到 Table_B，并已重新生成后，请删除 Table_A，并重命名 Table_B 到 Table_A。 
-
->[!NOTE]
->在 Azure SQL 数据仓库中有序聚集列存储索引（CCI）的预览期间，如果通过 CREATE 聚集列存储索引在已分区表上创建或重新生成了顺序的 CCI，则可能会生成重复的数据。 不会丢失任何数据。 即将推出此问题的修补程序。 为解决此问题，用户可以使用 CTAS 命令在已分区表上创建按序的 CCI
-
 
 ## <a name="examples"></a>示例
 

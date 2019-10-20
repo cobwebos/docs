@@ -5,85 +5,54 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 10/17/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 59de768e75a88d7cfa5b68fa306d0e83f1aa0ba3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: c75a13a20c1dbb222db69145e24838deb111fb66
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671324"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595218"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>使用 .NET （预览版）为容器或 blob 创建用户委托 SAS
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-本文介绍如何使用 Azure Active Directory （Azure AD）凭据为带有[用于 .net 的 Azure 存储客户端库](https://www.nuget.org/packages/Azure.Storage.Blobs)的容器或 blob 创建用户委托 SAS。
+本文介绍如何使用 Azure Active Directory （Azure AD）凭据为带有用于 .NET 的 Azure 存储客户端库的容器或 blob 创建用户委托 SAS。
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
+## <a name="authenticate-with-the-azure-identity-library-preview"></a>用 Azure 标识库进行身份验证（预览版）
+
+适用于 .NET 的 Azure 标识客户端库（预览版）对安全主体进行身份验证。 当你的代码在 Azure 中运行时，安全主体是 Azure 资源的托管标识。
+
+当代码在开发环境中运行时，可以自动处理身份验证，或者可能需要浏览器登录，具体取决于所使用的工具。 Microsoft Visual Studio 支持单一登录（SSO），以便 active Azure AD 用户帐户自动用于身份验证。 有关 SSO 的详细信息，请参阅[对应用程序的单一登录](../../active-directory/manage-apps/what-is-single-sign-on.md)。
+
+其他开发工具可能会提示您通过 web 浏览器登录。 你还可以使用服务主体从开发环境进行身份验证。 有关详细信息，请参阅[在门户中为 Azure 应用创建标识](../../active-directory/develop/howto-create-service-principal-portal.md)。
+
+进行身份验证后，Azure 标识客户端库将获取令牌凭据。 然后，在创建的服务客户端对象中封装此令牌凭据，以对 Azure 存储空间执行操作。 库通过获取适当的令牌凭据，无缝地处理这种情况。
+
+有关 Azure 标识客户端库的详细信息，请参阅[适用于 .net 的 Azure 标识客户端库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)。
+
+## <a name="assign-rbac-roles-for-access-to-data"></a>为访问数据分配 RBAC 角色
+
+当 Azure AD 安全主体尝试访问 blob 数据时，该安全主体必须具有对资源的权限。 无论安全主体是 Azure 中的托管标识还是在开发环境中运行代码的 Azure AD 用户帐户，都必须为安全主体分配允许访问 Azure 存储中的 blob 数据的 RBAC 角色。 有关通过 RBAC 分配权限的信息，请参阅[使用 Azure Active Directory 授予对 Azure blob 和队列的访问](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)权限中标题为**访问权限分配 RBAC 角色**的部分。
+
 ## <a name="install-the-preview-packages"></a>安装预览包
 
-本文中的示例使用适用于 Blob 存储的 Azure 存储客户端库的最新预览版本。 若要安装预览版包，请从 NuGet 包管理器控制台运行以下命令：
+本文中的示例使用[适用于 Blob 存储的 Azure 存储客户端库](https://www.nuget.org/packages/Azure.Storage.Blobs)的最新预览版本。 若要安装预览版包，请从 NuGet 包管理器控制台运行以下命令：
 
-```
+```powershell
 Install-Package Azure.Storage.Blobs -IncludePrerelease
 ```
 
-本文中的示例还使用[适用于 .net 的 Azure 标识客户端库](https://www.nuget.org/packages/Azure.Identity/)的最新预览版本通过 Azure AD 凭据进行身份验证。 Azure 标识客户端库对安全主体进行身份验证。 然后，经过身份验证的安全主体可创建用户委托 SAS。 有关 Azure 标识客户端库的详细信息，请参阅[适用于 .net 的 Azure 标识客户端库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)。
+本文中的示例还使用[适用于 .net 的 Azure 标识客户端库](https://www.nuget.org/packages/Azure.Identity/)的最新预览版本通过 Azure AD 凭据进行身份验证。 若要安装预览版包，请从 NuGet 包管理器控制台运行以下命令：
 
-```
+```powershell
 Install-Package Azure.Identity -IncludePrerelease
 ```
-
-## <a name="create-a-service-principal"></a>创建服务主体
-
-若要通过 Azure 标识客户端库对 Azure AD 凭据进行身份验证，请使用服务主体或托管标识作为安全主体，具体取决于代码的运行位置。 如果你的代码在开发环境中运行，请使用服务主体进行测试。 如果你的代码在 Azure 中运行，请使用托管标识。 本文假设您正在从开发环境运行代码，并演示如何使用服务主体来创建用户委托 SAS。
-
-若要创建具有 Azure CLI 的服务主体并分配一个 RBAC 角色，请调用[az ad sp create for rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac)命令。 提供要分配给新服务主体的 Azure 存储数据访问角色。 角色必须包含 storageAccounts/ **/blobServices/generateUserDelegationKey**操作。 有关为 Azure 存储提供的内置角色的详细信息，请参阅[azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)。
-
-此外，请提供角色分配的作用域。 服务主体将创建用户委托密钥，该密钥是在存储帐户级别执行的操作，因此角色分配的作用域应为存储帐户、资源组或订阅的级别。 有关创建用户委托 SAS 的 RBAC 权限的详细信息，请参阅[创建用户委托 sas （REST API）](/rest/api/storageservices/create-user-delegation-sas)中的**使用 rbac 分配权限**部分。
-
-如果你没有足够的权限将角色分配给服务主体，你可能需要请求帐户所有者或管理员执行角色分配。
-
-下面的示例使用 Azure CLI 创建新服务主体，并使用帐户范围将**存储 Blob 数据读取器**角色分配给它
-
-```azurecli-interactive
-az ad sp create-for-rbac \
-    --name <service-principal> \
-    --role "Storage Blob Data Reader" \
-    --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
-```
-
-@No__t-0 命令返回 JSON 格式的服务主体属性列表。 复制这些值，以便在下一步中使用它们来创建必要的环境变量。
-
-```json
-{
-    "appId": "generated-app-ID",
-    "displayName": "service-principal-name",
-    "name": "http://service-principal-uri",
-    "password": "generated-password",
-    "tenant": "tenant-ID"
-}
-```
-
-> [!IMPORTANT]
-> 传播 RBAC 角色分配可能需要花费几分钟时间。
-
-## <a name="set-environment-variables"></a>设置环境变量。
-
-Azure 标识客户端库会在运行时读取三个环境变量中的值，以对服务主体进行身份验证。 下表介绍了为每个环境变量设置的值。
-
-|环境变量|ReplTest1
-|-|-
-|`AZURE_CLIENT_ID`|服务主体的应用 ID
-|`AZURE_TENANT_ID`|服务主体的 Azure AD 租户 ID
-|`AZURE_CLIENT_SECRET`|为服务主体生成的密码
-
-> [!IMPORTANT]
-> 设置环境变量后，请关闭并重新打开控制台窗口。 如果你使用的是 Visual Studio 或其他开发环境，则可能需要重新启动开发环境才能注册新的环境变量。
 
 ## <a name="add-using-directives"></a>添加 using 指令
 
@@ -100,11 +69,11 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 ```
 
-## <a name="authenticate-the-service-principal"></a>对服务主体进行身份验证
+## <a name="get-an-authenticated-token-credential"></a>获取经过身份验证的令牌凭据
 
-若要对服务主体进行身份验证，请创建[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential)类的实例。 @No__t-0 构造函数读取您之前创建的环境变量。
+若要获取代码可用于向 Azure 存储授权请求的令牌凭据，请创建[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential)类的实例。
 
-以下代码片段演示如何获取经过身份验证的凭据，并使用它来创建 Blob 存储服务客户端
+下面的代码段演示如何获取经过身份验证的令牌凭据，并使用它来创建 Blob 存储服务客户端：
 
 ```csharp
 string blobEndpoint = string.Format("https://{0}.blob.core.windows.net", accountName);
@@ -165,7 +134,7 @@ UriBuilder fullUri = new UriBuilder()
 };
 ```
 
-## <a name="example-get-a-user-delegation-sas"></a>例如：获取用户委托 SAS
+## <a name="example-get-a-user-delegation-sas"></a>示例：获取用户委托 SAS
 
 以下示例方法显示了用于对安全主体进行身份验证和创建用户委托 SAS 的完整代码：
 
@@ -221,7 +190,7 @@ async static Task<Uri> GetUserDelegationSasBlob(string accountName, string conta
 }
 ```
 
-## <a name="example-read-a-blob-with-a-user-delegation-sas"></a>例如：使用用户委托 SAS 读取 blob
+## <a name="example-read-a-blob-with-a-user-delegation-sas"></a>示例：使用用户委托 SAS 读取 blob
 
 下面的示例从模拟的客户端应用程序测试在上一个示例中创建的用户委托 SAS。 如果 SAS 有效，则客户端应用程序能够读取 blob 的内容。 如果 SAS 无效，例如，如果它已过期，Azure 存储将返回错误代码403（禁止访问）。
 
@@ -273,7 +242,7 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [获取用户委派密钥操作](/rest/api/storageservices/get-user-delegation-key)
 - [创建用户委派 SAS （REST API）](/rest/api/storageservices/create-user-delegation-sas)

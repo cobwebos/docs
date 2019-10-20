@@ -12,15 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/15/2019
 ms.author: kumud
-ms.openlocfilehash: 69221216027b6238bdfa2f258acef99b5d933176
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 76d1ba2717ac3c8ac8e86687ef1754a8790f3e4d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72518559"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595085"
 ---
 # <a name="reserve-public-ipv6-address-prefix"></a>保留公共 IPv6 地址前缀
 使用适用于 Azure 虚拟网络（VNet）的 IPv6，可以在 Azure 中使用 IPv6 和 IPv4 连接在虚拟网络中托管应用程序，以及与 Internet 建立连接。 除了保留单个 IPv6 地址外，你还可以保留一个连续的 Azure IPv6 地址范围（称为 IP 前缀）供你使用。 本文介绍如何使用 Azure PowerShell 和 CLI 创建 IPv6 公共 IP 地址和地址范围。
+
+> [!Important]
+> Azure 虚拟网络的 IPv6 目前为公共预览版。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="create-a-single-reserved-ipv6-public-ip"></a>创建单个保留 IPv6 公共 IP
 

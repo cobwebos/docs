@@ -1,6 +1,6 @@
 ---
-title: 调用 Web API 的守护程序应用（调用 Web API）- Microsoft 标识平台
-description: 了解如何构建调用 Web API 的守护程序应用（调用 Web API）
+title: 后台应用程序调用 web Api （调用 web Api）-Microsoft 标识平台
+description: 了解如何生成可调用 web Api 的后台应用程序（调用 web Api）
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,18 +16,18 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eacb574f20abeb63a9d0ab8caf534eb7abb9784
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a7a67e98d87850e2fc90df3ce7ba15e5e60da517
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056347"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596748"
 ---
-# <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>调用 Web API 的守护程序应用 - 从应用调用 Web API
+# <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>用于调用 web Api 的后台应用程序-从应用程序调用 web API
 
-守护程序应用可以从 .NET 守护程序应用程序调用 Web API，也可以调用多个预先批准的 Web API。
+守护程序应用可以从 .NET 后台程序应用程序调用 web API，或调用多个预先批准的 web Api。
 
-## <a name="calling-a-web-api-from-a-net-daemon-application"></a>从 .NET 守护程序应用程序调用 Web API
+## <a name="calling-a-web-api-from-a-net-daemon-application"></a>从 .NET 后台程序应用程序调用 web API
 
 下面介绍如何使用令牌来调用 API
 
@@ -66,11 +66,25 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ---
 
-## <a name="calling-several-apis"></a>调用多个 API
+## <a name="calling-several-apis"></a>调用多个 Api
 
-对于守护程序应用，需要预先批准调用的 Web API。 守护程序应用不会有任何增量许可（没有用户交互）。 租户管理员需要预先同意应用程序和所有 API 权限。 如果要调用多个 API，则每次调用 `AcquireTokenForClient` 时都需要为每个资源获取一个令牌。 MSAL 将使用应用程序令牌缓存来避免不必要的服务调用。
+对于后台应用程序，你调用的 web Api 需要预先批准。 守护程序应用不会有任何增量许可（无用户交互）。 租户管理员需要预先同意该应用程序和所有 API 权限。 如果要调用多个 Api，则每次调用 `AcquireTokenForClient` 时，都需要为每个资源获取令牌。 MSAL 将使用应用程序令牌缓存，以避免不必要的服务调用。
 
 ## <a name="next-steps"></a>后续步骤
 
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+
 > [!div class="nextstepaction"]
-> [守护程序应用 - 移到生产环境](./scenario-daemon-production.md)
+> [后台应用程序-移动到生产环境](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=dotnet)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [后台应用程序-移动到生产环境](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=python)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [后台应用程序-移动到生产环境](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=java)
+
+---

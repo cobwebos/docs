@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 1fff9c076349d98d7a72c4bf69edb0a2795ac88f
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 75b8ea5e8dcaed533eac424bb8df1d1862889490
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937378"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592385"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -22,15 +22,15 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
  专用终结点指定以下属性： 
 
 
-|属性  |Description |
+|properties  |描述 |
 |---------|---------|
-|姓名    |    资源组中的唯一名称。      |
-|Subnet    |  要从虚拟网络部署和分配专用 IP 地址的子网。 如需子网要求，请参阅本文中的限制部分。         |
+|名称    |    资源组中的唯一名称。      |
+|子网    |  要从虚拟网络部署和分配专用 IP 地址的子网。 如需子网要求，请参阅本文中的限制部分。         |
 |专用链接资源    |   从可用类型列表中使用资源 ID 或别名连接的专用链接资源。 将为发送到此资源的所有流量生成唯一的网络标识符。       |
 |目标 subresource   |      要连接的 subresource。 每个专用链接资源类型都有不同的选项可根据首选项进行选择。    |
 |连接批准方法    |  自动或手动。 根据基于角色的访问控制（RBAC）权限，可以自动批准专用终结点。 如果尝试在没有 RBAC 的情况下连接到专用链接资源，请使用手动方法来允许资源所有者批准连接。        |
 |请求消息     |  你可以为请求的连接指定手动审批的消息。 此消息可用于标识特定请求。        |
-|连接状态   |   一个只读属性，指定私有终结点是否处于活动状态。 只有处于已批准状态的私有终结点才能用于发送流量。 可用的附加状态： <br>-**已批准**：连接已自动或已手动批准，并已准备好使用。</br><br>-**挂起**：连接是手动创建的，由专用链接资源所有者等待批准。</br><br>-已**拒绝**：专用链接资源所有者拒绝了连接。</br><br>-**断开连接**：专用链接资源所有者已删除连接。 专用终结点将变为信息性，应将其删除以进行清理。 </br>|
+|连接状态   |   一个只读属性，指定私有终结点是否处于活动状态。 只有处于已批准状态的私有终结点才能用于发送流量。 可用的附加状态： <br>-**批准**：已自动或手动批准连接，并且已准备好使用。</br><br>-**挂起**：连接是手动创建的，由专用链接资源所有者等待批准。</br><br>**拒绝**-：连接被私有链接资源所有者拒绝。</br><br>-**断开**连接：连接已被专用链接资源所有者删除。 专用终结点将变为信息性，应将其删除以进行清理。 </br>|
 
 下面是有关专用终结点的一些重要详细信息： 
 - 专用终结点允许使用者之间的连接与同一 VNet 中的突破对等互连 Vnet，全局对等互连 Vnet 和本地使用[VPN](https://azure.microsoft.com/services/vpn-gateway/)或[Express Route](https://azure.microsoft.com/services/expressroute/)提供的服务以及通过专用链接提供支持的服务。
@@ -52,7 +52,7 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
  
 |专用链接资源名称  |资源类型   |子资源  |
 |---------|---------|---------|
-|**专用链接服务**（您自己的服务）   |  PrivateLinkServices/网络       | 空 |
+|**专用链接服务**（你自己的服务）   |  PrivateLinkServices/网络       | empty |
 |**Azure SQL 数据库** | Microsoft.Sql/servers    |  Sql Server （sqlServer）        |
 |**Azure SQL 数据仓库** | Microsoft.Sql/servers    |  Sql Server （sqlServer）        |
 |**Azure 存储**  | Microsoft.Storage/storageAccounts    |  Blob （blob、blob_secondary）<BR> Table （table，table_secondary）<BR> Queue （queue，queue_secondary）<BR> 文件（file，file_secondary）<BR> Web （web、web_secondary）        |
@@ -66,7 +66,7 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
  
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>使用审批工作流访问专用链接资源 
 可以使用以下连接批准方法连接到专用链接资源：
-- 当你拥有或具有特定专用链接资源的权限时**自动**批准。 所需的权限基于专用链接资源类型，格式如下：@No__t-0Provider >/< resource_type >/privateEndpointConnectionApproval/action
+- 当你拥有或具有特定专用链接资源的权限时**自动**批准。 所需的权限基于专用链接资源类型，格式如下： Microsoft。\<Provider >/< resource_type >/privateEndpointConnectionApproval/action
 - 当你没有必需的权限，并且想要请求访问时，**手动**请求。 将启动审批工作流。 专用终结点和后续的专用终结点连接将在 "挂起" 状态下创建。 专用链接资源所有者负责批准连接。 获得批准后，会启用专用终结点以正常发送流量，如以下审批工作流关系图中所示。  
 
 ![工作流审批](media/private-endpoint-overview/private-link-paas-workflow.png)
@@ -119,9 +119,9 @@ Azure 会在公共 DNS 上创建规范名称 DNS 记录（CNAME），以将解�
 下表列出了使用专用终结点时的已知限制： 
 
 
-|限制 |描述 |缓解  |
+|限制 |描述 |缓解措施  |
 |---------|---------|---------|
-|网络安全组（NSG）规则不适用于专用终结点    |专用终结点不支持 NSG。 尽管包含专用终结点的子网可以有与之关联的 NSG，但这些规则对专用终结点处理的流量不起作用。 必须[禁用网络策略强制](disable-private-endpoint-network-policy.md)，才能在子网中部署专用终结点。 NSG 仍在同一子网上托管的其他工作负荷上强制实施。   | 在源客户端上使用 NSG 规则控制流量。        |
+|网络安全组（NSG）规则和用户定义的路由不适用于专用终结点    |专用终结点不支持 NSG。 尽管包含专用终结点的子网可以有与之关联的 NSG，但这些规则对专用终结点处理的流量不起作用。 必须[禁用网络策略强制](disable-private-endpoint-network-policy.md)，才能在子网中部署专用终结点。 NSG 仍在同一子网上托管的其他工作负荷上强制实施。 任何客户端子网上的路由都将使用/32 前缀，更改默认路由行为时需要类似的 UDR  | 在源客户端上使用 NSG 规则控制流量。 部署具有/32 前缀的各个路由以替代专用终结点路由        |
 |无法在针对服务终结点或专用工作负荷启用的子网中创建专用终结点    |无法在为服务终结点或委派到专用工作负荷的子网启用的子网上部署专用终结点|  创建一个单独的子网来部署专用终结点。        |
 |专用终结点只能映射到同一区域中的专用链接服务（客户拥有）    |   不支持从其他区域连接到专用链接服务（你自己的）       |  预览期间，必须在同一区域中部署专用链接服务。        |
 |  不支持仅具有专用终结点的对等互连虚拟网络   |   不支持在不使用任何其他工作负荷的情况下连接到对等互连虚拟网络上的专用终结点       | 在对等互连虚拟网络上部署单个 VM，以启用连接 |

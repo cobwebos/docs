@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: dca032cceb4f1561d7ee8b35de502f8f5259cfe8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: 5080ec4db46f717a9e9ecdcdfbea42fbe43c349d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553632"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598426"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 
@@ -353,8 +353,7 @@ SDK for Databricks **_无需_** 自动机器学习 ![Azure 机器学习 Sdk for 
 ### <a name="start-exploring"></a>开始浏览
 
 试用：
-+ 下载 Azure Databricks/Azure 机器学习 SDK 的[笔记本存档文件](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc)，并将[该存档文件导入](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive)到 Databricks 群集。
-  虽然有许多示例笔记本可用，但**仅[这些示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks)适用于 Azure Databricks。**
++ 虽然有许多示例笔记本可用，但**仅[这些示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks)适用于 Azure Databricks。**
 
 + 了解如何[使用 Databricks 作为训练计算创建管道](how-to-create-your-first-pipeline.md)。
 

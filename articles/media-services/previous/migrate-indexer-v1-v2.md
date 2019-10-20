@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 329c7191482787f25cfddfd8c4d70074df9a7c1f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2b8553c4c4b27e70eb5e4aeff447da9526c4ed1e
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719966"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598298"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>从媒体索引器和媒体索引器2迁移到视频索引器
 
@@ -29,7 +29,7 @@ Azure 媒体服务视频索引器是基于 Azure 媒体分析、Azure 搜索、�
 可以通过使用[Azure 媒体服务 v3 分析器预设](../latest/analyzing-video-audio-files-concept.md)或直接使用[视频索引器 api](https://api-portal.videoindexer.ai/)从视频和音频文件中提取见解。 目前，视频索引器 Api 提供的功能与媒体服务 v3 Api 提供的功能重叠。
 
 > [!NOTE]
-> 如需了解何时要使用视频索引器与媒体服务分析器预设，请查看[比较文档](../video-indexer/compare-video-indexer-with-media-services-presets.md)。 
+> 若要了解何时需要使用视频索引器与媒体服务分析器预设，请查看[比较文档](../video-indexer/compare-video-indexer-with-media-services-presets.md)。 
 
 本文介绍了从 Azure Media Indexer 和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器的步骤。  
 
@@ -37,7 +37,7 @@ Azure 媒体服务视频索引器是基于 Azure 媒体分析、Azure 搜索、�
 
 |如果需要  |然后在受影响的域控制器上，运行 |
 |---|---|
-|一种为隐藏式字幕文件格式的媒体文件格式提供语音到文本脚本的解决方案：VTT、SRT 或 TTML<br/>以及其他音频见解，如关键字、主题推断、声音事件、发言人 diarization、实体提取和转换| 更新应用程序，以通过视频索引器 v2 REST API 或 Azure 媒体服务 v3 音频分析器预设使用 Azure 视频索引器功能。|
+|一种为隐藏式字幕文件格式的媒体文件格式提供语音到文本脚本的解决方案： VTT、SRT 或 TTML<br/>以及其他音频见解，如关键字、主题推断、声音事件、发言人 diarization、实体提取和转换| 更新应用程序，以通过视频索引器 v2 REST API 或 Azure 媒体服务 v3 音频分析器预设使用 Azure 视频索引器功能。|
 |语音到文本功能| 直接使用认知服务语音 API。|  
 
 ## <a name="getting-started-with-video-indexer"></a>视频索引器入门
@@ -50,13 +50,13 @@ Azure 媒体服务视频索引器是基于 Azure 媒体分析、Azure 搜索、�
 
 凭借 AudioAnalyzerPreset 能够从音频或视频文件中提取多个音频见解。 输出包括音频稿本的 VTT 或 TTML 文件和一个 JSON 文件（包含所有其他音频见解）。 音频见解包括关键字、扬声器索引和语音情绪分析。 AudioAnalyzerPreset 还支持特定语言的语言检测。 有关详细信息，请参阅[转换](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)。
 
-### <a name="get-started"></a>入门
+### <a name="get-started"></a>开始体验
 
 若要开始，请参阅：
 
 * [教程](../latest/analyze-videos-tutorial-with-api.md)
-* AudioAnalyzerPreset 示例：[JAVA sdk](https://github.com/Azure-Samples/media-services-v3-java/tree/master/AudioAnalytics/AudioAnalyzer)或[.net sdk](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer)
-* VideoAnalyzerPreset 示例：[JAVA sdk](https://github.com/Azure-Samples/media-services-v3-java/tree/master/VideoAnalytics/VideoAnalyzer)或[.net sdk](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/VideoAnalytics/VideoAnalyzer)
+* AudioAnalyzerPreset 示例： [JAVA sdk](https://github.com/Azure-Samples/media-services-v3-java/tree/master/AudioAnalytics/AudioAnalyzer)或[.net sdk](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer)
+* VideoAnalyzerPreset 示例： [JAVA sdk](https://github.com/Azure-Samples/media-services-v3-java/tree/master/VideoAnalytics/VideoAnalyzer)或[.net sdk](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/VideoAnalytics/VideoAnalyzer)
 
 ## <a name="getting-started-with-cognitive-services-speech-services"></a>认知服务语音服务入门
 
@@ -77,9 +77,9 @@ Azure 媒体服务视频索引器是基于 Azure 媒体分析、Azure 搜索、�
 * 将不再支持音频索引 Blob （AIB）文件。 此功能特定于索引器1技术，不再提供。  
 * 认知服务语音服务不支持关键字提取。 不过，视频索引器和媒体服务 v3 AudioAnalyzerPreset 都提供一组更可靠的一组 JSON 文件格式的关键字。 
 
-## <a name="contact-us"></a>联系我们 
+## <a name="need-help"></a>需要帮助？
 
-如果你对 Azure Media Indexer 1 和 Azure Media Indexer 2 或迁移到任何其他服务有任何疑问，请通过amshelp@microsoft.com 
+可以通过导航到 "[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)" 来打开支持票证
 
 ## <a name="next-steps"></a>后续步骤
 

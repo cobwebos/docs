@@ -4,20 +4,20 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: de3fd8dc0d45ea10e64af8e2258682a9e98639dc
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: e61b804c20063e87c19df4484291f81fdbb03a7b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67173331"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72600838"
 ---
 >[!NOTE]
 >对于不固定的资源，请打开支持票证，要求增加配额。 不要创建其他 Azure 媒体服务帐户，尝试获得更高的限制。
 
-| Resource | 默认限制 | 
+| 资源 | 默认限制 | 
 | --- | --- | 
 | 单个订阅中的 Azure 媒体服务帐户 | 25（固定） |
-| 每个媒体服务帐户的媒体保留单位数 |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
+| 每个媒体服务帐户的媒体保留单位数 |25 (S1)<br/>10（S2，S3）<sup>1</sup> | 
 | 每个媒体服务帐户的作业数 | 50,000<sup>2</sup> |
 | 每个作业的链接任务数 | 30（固定） |
 | 每个媒体服务帐户的资产 | 1,000,000|
@@ -52,7 +52,7 @@ ms.locfileid: "67173331"
 
 <sup>7</sup>单个 blob 支持的最大大小目前在 Azure Blob 存储中最多为 5 TB。 根据服务使用的 VM 大小，更多限制适用于 Media Services。 大小限制适用于你上传的文件，还适用于由于媒体服务处理（编码或分析）而生成的文件。 如果源文件大于 260 GB，作业可能会失败。 
 
-下表显示了媒体保留单位 S1、S2 和 S3 的限制。 如果源文件大于表中定义的限制，则编码作业将失败。 如果对长时间的4K 分辨率源进行编码，则需要使用 S3 媒体保留单位来实现所需的性能。 如果你的4k 内容大于 S3 媒体保留单位的 260 GB 限制， amshelp@microsoft.com请联系我们以获取支持你的方案的可能的缓解措施。
+下表显示了媒体保留单位 S1、S2 和 S3 的限制。 如果源文件大于表中定义的限制，则编码作业将失败。 如果对长时间的4K 分辨率源进行编码，则需要使用 S3 媒体保留单位来实现所需的性能。 如果你的4K 内容大于 S3 媒体保留单位的 260 GB 限制，请打开支持票证。
 
 |媒体保留单位类型   |最大输入大小（GB）|
 |---|---|

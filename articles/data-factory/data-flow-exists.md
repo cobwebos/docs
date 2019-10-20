@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: dfd304b0c15b325208daba104bb79863fcd3f53f
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 79bdfc84310686b2648e12d73d783de049e9d2fa
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527444"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596511"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>映射数据流中存在转换
 
@@ -20,11 +20,10 @@ Exists 转换是一个行筛选转换，用于检查数据是否存在于另一�
 
 ## <a name="configuration"></a>配置
 
-在 "**正确的流**" 下拉列表中选择要检查是否存在的数据流。
-
-指定是否要在**存在类型**设置中查找数据。
-
-选择要作为存在条件进行比较的键列。 默认情况下，数据流在每个流中的一列之间查找相等性。 若要通过计算值比较，请将鼠标悬停在列下拉列表并选择 "**计算列**"。
+1. 在 "**正确的流**" 下拉列表中选择要检查是否存在的数据流。
+1. 指定是否要在**存在类型**设置中查找数据。
+1. 选择是否需要**自定义表达式**。
+1. 选择要作为存在条件进行比较的键列。 默认情况下，数据流在每个流中的一列之间查找相等性。 若要通过计算值进行比较，请将鼠标悬停在列下拉列表中，然后选择 "**计算列**"。
 
 ![存在设置](media/data-flow/exists.png "存在1")
 

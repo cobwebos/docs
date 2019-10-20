@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: b8d3a26d015c129a04e54ba9633aa5d1ccfcacf8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f241ac3e1369e32a1f2a4b9ac80492094105ff8c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "69016108"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598352"
 ---
 # <a name="azure-media-services-community"></a>Azure 媒体服务社区  
 
@@ -32,9 +32,9 @@ ms.locfileid: "69016108"
 
 ### <a name="twitter"></a>Twitter
 
-你可以使用[@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) twitter 句柄与我们联系或关注 twitter 上的更新。 [@AzureSupport](https://twitter.com/azuresupport)使用 twitter 句柄请求 twitter 上的支持。  
+你可以使用[@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) twitter 句柄与我们联系或关注 twitter 上的更新。 使用[@AzureSupport](https://twitter.com/azuresupport) twitter 句柄请求 twitter 上的支持。  
 
-### <a name="online-forums"></a>在线论坛
+### <a name="online-forums"></a>联机论坛
 
 可以使用以下论坛提问有关当前产品和功能的问题。
 
@@ -45,10 +45,6 @@ ms.locfileid: "69016108"
 团队还可以监控使用 Azure 媒体服务标记 Stack Overflow 的问题。
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
-
-## <a name="contact-the-team"></a>与团队联系
-
-Azure 媒体服务主要支持电子邮件: **amshelp\@microsoft.com**。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f65e3c4f9582fcc5c28412d44e513fa6bcb9e870
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 303682a9d7b3c3fe8ba6c8dd6fe2a44741bcafce
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71262331"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597291"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>使用资源管理器模板在 Azure 中创建诊断设置
 Azure 中的[平台日志](platform-logs-overview.md)提供有关 azure 资源及其所依赖的 azure 平台的详细诊断和审核信息。 本文详细介绍了如何使用[Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)来配置诊断设置，以便将平台日志收集到不同的目标。 这样，便可以在创建资源时自动开始收集平台日志。
@@ -53,7 +53,7 @@ Azure 中的[平台日志](platform-logs-overview.md)提供有关 azure 资源�
 "workspaceId":{
   "type": "string",
   "metadata": {
-    "description": "Azure Resource ID of the Log Analytics workspace for the Log Analytics workspace to which logs will be sent."
+    "description": "Azure Resource ID of the Log Analytics workspace to which logs will be sent."
   }
 }
 ```

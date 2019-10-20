@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fa3e3c6d89657d328182da667c153f14f70bbd7e
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6361814a30cc7d1bc9703dae8ddb14d955c1582d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514659"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598042"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -219,13 +219,13 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 |美国西部 *        |LRS     |
 |美国西部 2      |LRS、ZRS|
 
-新帐户支持 \*，并非所有现有帐户都完成了升级过程。
+新帐户支持 \*，并非所有现有帐户都完成了升级过程。 可以通过尝试[启用大型文件共享](storage-files-how-to-create-large-file-share.md)来检查现有存储帐户是否已完成升级过程。
 
 若要帮助我们确定新的区域和功能的优先级，请填写此[调查](https://aka.ms/azurefilesatscalesurvey)。
 
 ### <a name="enable-and-create-larger-file-shares"></a>启用和创建更大的文件共享
 
-若要开始使用较大的文件共享，请参阅我们的文章[启用大型文件共享](storage-files-how-to-create-large-file-share.md)。
+若要开始使用较大的文件共享，请参阅文章[如何启用和创建大型文件共享](storage-files-how-to-create-large-file-share.md)。
 
 ## <a name="data-growth-pattern"></a>数据增长模式
 

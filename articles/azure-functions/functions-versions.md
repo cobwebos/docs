@@ -1,49 +1,55 @@
 ---
 title: Azure Functions 运行时版本概述
 description: Azure Functions 支持多个版本的运行时。 了解这些版本之间的差异以及如何选择最适合你的版本。
-services: functions
-documentationcenter: ''
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 10/03/2018
+ms.date: 10/10/2019
 ms.author: glenga
-ms.openlocfilehash: 6988fb547b07f81891efea3caad8bf34f4c8a476
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ca7006bb842cbe235d2e982e611613e1fd74ed9
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61036197"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597369"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
- Azure Functions 运行时有两个主版本：1.x 和 2.x。 当前版本为 2.x，其中可使用新功能并在进行改进，但两个版本都支持生产方案。  下面详细介绍了两个版本的一些区别、如何创建每个版本以及从 1.x 升级到 2.x。
+Azure Functions 运行时的主版本与运行时所基于的 .NET 版本相关。 下表指明了运行时的当前版本、发布级别以及相关的 .NET 版本。 
 
-> [!NOTE]
-> 本文引用了云服务 Azure Functions。 如需深入了解可运行本地 Azure Functions 的预览产品，请参阅 [Azure Functions 运行时概述](functions-runtime-overview.md)。
+| 运行时版本 | 版本级别<sup>1</sup> | .NET 版本 | 
+| --------------- | ------------- | ------------ |
+| 3.x  | 预览版 | .NET Core 2。x | 
+| 2.x | GA | .NET Core 2.2 |
+| 1.x | GA<sup>2</sup> | .NET Framework 4.6<sup>3</sup> |
 
-## <a name="cross-platform-development"></a>跨平台开发
+<sup>1</sup>生产方案支持 GA 版本。   
+<sup>2</sup>版本1.x 处于维护模式。 仅在更高版本中提供增强功能。   
+<sup>3</sup>仅支持在 Azure 门户或本地 Windows 计算机上进行开发。
 
-2\.x 版运行时在 .NET Core 2 上运行，因此，它可以在 .NET Core 支持的所有平台（包括 macOS 和 Linux）上运行。 在 .NET Core 上运行可以实现跨平台开发和托管方案。
+>[!NOTE]  
+> 函数运行时的版本1.x 为预览版，不支持生产环境。 有关试用版本1.x 的详细信息，请参阅[此公告](https://dev.to/azure/develop-azure-functions-using-net-core-3-0-gcm)。
 
-相比之下，1.x 版运行时仅支持 Azure 门户或 Windows 计算机上的开发和托管。
+本文详细介绍了不同版本之间的一些差异，如何创建每个版本，以及如何更改版本。
 
 ## <a name="languages"></a>Languages
 
-2\.x 版运行时使用新的语言扩展性模型。 在版本 2.x 中，函数应用中的所有函数必须共享相同的语言。 函数应用中的函数语言是在创建应用时选择的。
+从版本2.x 开始，运行时使用语言扩展性模型，函数应用中的所有函数必须共享同一语言。 函数应用中的函数语言是在创建应用时选择的，并且在[函数 \_WORKER \_RUNTIME](functions-app-settings.md#functions_worker_runtime)设置中进行维护。 
 
-Azure Functions 1.x 试验性语言不会更新为使用新模型，因此它们在 2.x 中不受支持。 下表指示每个运行时版本目前支持的编程语言。
+Azure Functions 1.x 的实验性语言不能使用新模型，因此在2.x 中不受支持。 下表指示每个运行时版本目前支持的编程语言。
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
 有关详细信息，请参阅[支持的语言](supported-languages.md)。
 
-## <a name="creating-1x-apps"></a>在版本 1.x 上运行
+## <a name="creating-1x-apps"></a>在特定版本上运行
 
-默认情况下，在 Azure 门户中创建的函数应用设置为版本 2.x。 应尽可能地使用此运行时版本，因为其中包含投资开发的新功能。 如果需要，你仍可以在版本 1.x 运行时中运行函数应用。 只能在创建函数应用之后、添加任何函数之前更改运行时版本。 若要了解如何将运行时版本固定为 1.x，请参阅[查看和更新当前运行时版本](set-runtime-version.md#view-and-update-the-current-runtime-version)。
+默认情况下，在 Azure 门户和 Azure CLI 中创建的函数应用被设置为版本2.x。 如果可能，应使用此运行时版本。 如果需要，你仍可以在版本 1.x 运行时中运行函数应用。 只能在创建函数应用之后、添加任何函数之前更改运行时版本。 若要了解如何将运行时版本固定为 1.x，请参阅[查看和更新当前运行时版本](set-runtime-version.md#view-and-update-the-current-runtime-version)。
 
-## <a name="migrating-from-1x-to-2x"></a>从 1.x 迁移到 2.x
+你还可以升级到运行时的版本1.x，该版本是预览版。 如果需要能够在 .NET Core 2.x 上运行函数，请执行此操作。 若要了解如何升级到3.x，请参阅[查看和更新当前运行时版本](set-runtime-version.md#view-and-update-the-current-runtime-version)。
+
+## <a name="migrating-from-1x-to-later-versions"></a>从1.x 迁移到更高版本
 
 可以选择迁移所编写的现有应用，以使用 1.x 版运行时，而不使用版本 2.x。 需要做出的大多数更改与语言运行时的更改相关，例如，.NET Framework 4.7 与 .NET Core 2 之间的 C# API 更改。 还需要确保代码和库与所选的语言运行时兼容。 最后，请务必注意触发器、绑定和以下突出显示功能中的任何更改。 为获得最佳迁移结果，应该为版本 2.x 创建一个新函数应用，并将现有的 1.x 版函数代码移植到新应用。  
 
@@ -113,7 +119,7 @@ Azure 中已发布的应用使用的 Functions 运行时版本由 [`FUNCTIONS_EX
 
 ## <a name="bindings"></a>绑定
 
-2\.x 版运行时使用新的[绑定扩展性模型](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)，该模型提供以下优势：
+从版本2.x 开始，运行时使用新的[绑定扩展性模型](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)，该模型具有以下优势：
 
 * 支持第三方绑定扩展。
 

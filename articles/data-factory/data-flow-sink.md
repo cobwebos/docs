@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 5fc9262dd53f390dbc43646626cc324d8655f1de
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 124b52d920ef36b373eef895187727499068f3eb
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387777"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596523"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>数据流的接收器转换
 
@@ -61,6 +61,10 @@ ms.locfileid: "72387777"
 当你选择 "基于规则的映射" 时，将指示 ADF 评估匹配的表达式，以匹配传入模式规则并定义传出字段名称。 可以添加基于字段和基于规则的映射的任意组合。 然后，在运行时，将基于源传入的元数据在运行时生成字段名称。 在调试过程中，可以使用 "数据预览" 窗格查看生成的字段的名称。
 
 有关模式匹配的详细信息位于[列模式文档](concepts-data-flow-column-pattern.md)中。
+
+通过展开行并在 "名称匹配：" 旁边输入正则表达式，还可以输入正则表达式模式。
+
+![Regex 映射](media/data-flow/scdt1g4.png "Regex 映射")
 
 ## <a name="file-name-options"></a>文件名选项
 

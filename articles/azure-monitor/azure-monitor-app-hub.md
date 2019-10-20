@@ -3,19 +3,18 @@ layout: HubPage
 hide_bc: false
 title: Azure Monitor Application Insights 文档 - 教程和 API 参考 | Microsoft Docs
 description: Azure Monitor Application Insights 提供深度代码级的应用程序性能监视。
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
 ms.service: application-insights
-ms.topic: landing-page
-ms.date: 01/15/2019
+ms.subservice: ''
+ms.topic: hub-page
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 6f35bf82e1c3275772bc9f5ccdcaceed024bd7d9
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.date: 01/15/2019
+ms.openlocfilehash: 254cd4e67c0c64ba9b21133e957ae2cacfefe7a7
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967789"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596819"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -64,7 +63,7 @@ ms.locfileid: "68967789"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>新增功能</h3>
+                                                        <h3>新功能</h3>
                                                         <p>
                                                             <a href="./app/azure-vm-vmss-apps.md">无代码置备监视 Azure VM 和 Azure 虚拟机规模集应用程序</a><br>
                                                             <a href="./app/kubernetes.md">监视 Kubernetes 应用程序</a><br>

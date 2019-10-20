@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: ff3d7d1272f9067f6bf9791c7964f8bf5f71945b
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 9155df315a5afb9a0fa7722c955333a47a73085a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709334"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596840"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中测试代码的策略
 
@@ -35,7 +35,7 @@ ms.locfileid: "71709334"
 
 ![使用 Visual Studio 中的 C# 测试 Azure Functions](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
-### <a name="setup"></a>安装
+### <a name="setup"></a>设置
 
 若要设置环境，请创建一个函数和测试应用。 以下步骤可帮助你创建用于支持测试的应用和函数：
 
@@ -43,7 +43,7 @@ ms.locfileid: "71709334"
 2. [从模板创建 HTTP 函数](./functions-create-first-azure-function.md)并将其命名为 *HttpTrigger*。
 3. [从模板创建计时器函数](./functions-create-scheduled-function.md)并将其命名为 *TimerTrigger*。
 4. 单击“文件”>“新建”>“项目”>“Visual C#”>“.NET Core”>“xUnit 测试项目”，在 Visual Studio 中[创建 xUnit 测试应用](https://xunit.github.io/docs/getting-started-dotnet-core)，并将其命名为“Functions.Test”。 
-5. 使用 Nuget 从测试应用 [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 添加引用
+5. 使用 Nuget 从测试应用[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)添加引用
 6. [从 *Functions.Test* 应用引用 *Functions* 应用](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017)。
 
 ### <a name="create-test-classes"></a>创建测试类
@@ -54,7 +54,7 @@ ms.locfileid: "71709334"
 
 `ListLogger` 类用于实现 `ILogger` 接口并保存在消息的内部列表中，以便在测试期间用于评估。
 
-**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **NullScope.cs**，然后输入以下代码：
+**右键单击**"*函数*"，然后选择 "**添加 > 类，将**其命名为**NullScope.cs** ，然后输入以下代码：
 
 ```csharp
 using System;
@@ -72,7 +72,7 @@ namespace Functions.Tests
 }
 ```
 
-接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **ListLogger.cs**，然后输入以下代码：
+接下来，**右键单击**"*函数*"，然后选择 "**添加 > 类**"，将其命名为**ListLogger.cs** ，然后输入以下代码：
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -110,11 +110,11 @@ namespace Functions.Tests
 
 `ListLogger` 类实现 `ILogger` 接口收缩的以下成员：
 
-- **BeginScope**：范围将上下文添加到日志记录。 在本例中，测试只是指向 `NullScope` 类中的静态实例，使测试能够正常运行。
+- **BeginScope**：作用域将上下文添加到日志记录。 在这种情况下，测试只指向 `NullScope` 类上的静态实例，以允许测试正常运行。
 
-- **IsEnabled**：提供 `false` 的默认值。
+- **IsEnabled**：提供默认值 `false`。
 
-- **Log**：此方法使用提供的 `formatter` 函数来设置消息格式，然后将生成的文本添加到 `Logs` 集合。
+- **日志**：此方法使用提供的 `formatter` 函数来设置消息的格式，然后将生成的文本添加到 `Logs` 集合。
 
 `Logs` 集合是 `List<string>` 的实例，在构造函数中初始化。
 
@@ -195,13 +195,13 @@ namespace Functions.Tests
 ```
 `TestFactory` 类实现以下成员：
 
-- **Data**：此属性返回示例数据的 [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) 集合。 键/值对表示传入查询字符串中的值。
+- **数据**：此属性返回示例数据的[IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable)集合。 键/值对表示传入查询字符串中的值。
 
-- **CreateDictionary**：此方法接受键/值对作为参数，并返回新的 `Dictionary` 用于创建 `QueryCollection` 来表示查询字符串值。
+- **CreateDictionary**：此方法接受键/值对作为参数，并返回一个新的 `Dictionary`，用于创建 `QueryCollection` 来表示查询字符串值。
 
 - **CreateHttpRequest**：此方法创建使用给定查询字符串参数初始化的 HTTP 请求。
 
-- **CreateLogger**：此方法基于记录器类型返回用于测试的记录器类。 `ListLogger` 跟踪可在测试中评估的记录消息。
+- **CreateLogger**：根据记录器类型，此方法返回用于测试的记录器类。 `ListLogger` 跟踪可在测试中评估的记录消息。
 
 接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **FunctionsTests.cs**，然后输入以下代码：
 
@@ -246,13 +246,13 @@ namespace Functions.Tests
 ```
 在此类中实现的成员包括：
 
-- **Http_trigger_should_return_known_string**：此测试创建对 HTTP 函数发出的、其查询字符串值为 `name=Bill` 的请求，并检查是否返回了预期的响应。
+- **Http_trigger_should_return_known_string**：此测试使用查询字符串值 `name=Bill` 向 Http 函数创建请求，并检查是否返回了预期的响应。
 
-- **Http_trigger_should_return_string_from_member_data**：此测试使用 xUnit 属性为 HTTP 函数提供示例数据。
+- **Http_trigger_should_return_string_from_member_data**：此测试使用 xUnit 特性向 Http 函数提供示例数据。
 
-- **Timer_should_log_message**：此测试创建 `ListLogger` 的实例并将其传递给计时器函数。 运行该函数后，将检查日志以确保存在预期的消息。
+- **Timer_should_log_message**：此测试创建 `ListLogger` 实例，并将其传递给计时器函数。 运行该函数后，将检查日志以确保存在预期的消息。
 
-如果要在测试中访问应用程序设置，可以使用 [System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)。
+如果要在测试中访问应用程序设置，可以使用[GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)。
 
 ### <a name="run-tests"></a>运行测试
 
@@ -270,7 +270,7 @@ namespace Functions.Tests
 
 ![使用 VS Code 中的 JavaScript 测试 Azure Functions](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
 
-### <a name="setup"></a>安装
+### <a name="setup"></a>设置
 
 若要设置环境，请运行 `npm init`，在空文件夹中初始化新的 Node.js 应用。
 
@@ -363,7 +363,8 @@ npm test
   "type": "node",
   "request": "launch",
   "name": "Jest Tests",
-  "program": "${workspaceRoot}\\node_modules\\jest\\bin\\jest.js",
+  "disableOptimisticBPs": true,
+  "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
   "args": [
       "-i"
   ],

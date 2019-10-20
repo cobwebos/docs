@@ -1,10 +1,10 @@
 ---
-title: Azure 安全性简介 | Microsoft Docs
+title: Azure 安全性简介 |Microsoft Docs
 description: 了解 Azure 安全性以及其服务和工作原理。
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: c01931268642aebbf87c54080c292b105af15665
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: ed345fdf564c62e2d323b33013da784344c7a461
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262760"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595394"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
 我们知道，安全是云中的首要任务，及时找到有关 Azure 安全性的准确信息极其重要。 将 Azure 用于应用程序和服务的最合理原因之一是可以利用其各种安全工具和功能。 这些工具和功能可帮助在安全的 Azure 平台上创建安全的解决方案。 Microsoft Azure 提供具备保密性、完整性和可用性的客户数据，同时还能实现透明的问责制。
 
-为帮助客户从客户和 Microsoft 操作两个角度更好地了解在 Microsoft Azure 中实施的安全控件集合，特编写本白皮书《Azure 安全性简介》，以全面了解 Microsoft Azure 的安全性。
+本文全面介绍了 Azure 的安全性。
 
 ### <a name="azure-platform"></a>Azure 平台
 Azure 是一个公有云服务平台，支持极为广泛的操作系统、编程语言、框架、工具、数据库和设备选择。 它可运行与 Docker 集成的 Linux 容器；使用 JavaScript、Python、.NET、PHP、Java 和 Node.js 生成应用；生成适用于 iOS、Android 和 Windows 设备的后端。
@@ -40,39 +40,27 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 > [!Note]
 > 本文档重点介绍面向客户的控件，客户可以使用这些控件自定义和提高应用程序和服务的安全性。
 >
-> 我们还提供一些概述信息，但是若要深入了解 Microsoft 如何保护 Azure 平台本身，请参阅 [Microsoft 信任中心](https://www.microsoft.com/TrustCenter/default.aspx)中提供的信息。
+> 有关 Microsoft 如何保护 Azure 平台本身的信息，请参阅[azure 基础结构安全](infrastructure.md)。
 
-### <a name="abstract"></a>摘要
-最初，成本节约和灵活创新是公有云迁移的驱动力。 一段时间以来，安全性是主要关注的问题，甚至可以说是影响公有云迁移的关键因素。 然而，公有云安全性已经从主要关注点转换为云迁移的驱动力之一。 促成这种转换的原因是大型公有云服务提供商保护应用程序和基于云的资产数据的卓越能力。
+## <a name="summary-of-azure-security-capabilities"></a>Azure 安全功能摘要
 
-Azure 的基础结构（从设备到应用程序）经过设计，可同时托管数百万的客户，并为企业提供可靠的基础，使之能够满足其安全需求。 此外，Azure 还提供广泛的可配置安全选项以及对这些选项进行控制的功能，方便用户自定义安全措施来满足部署的独特要求，进而满足 IT 控制策略并遵守外部法规。
+### <a name="features-to-secure-the-azure-platform"></a>用于保护 Azure 平台的功能
+以下功能是你可以查看的功能，可确保以安全的方式管理 Azure 平台。 提供了一些链接，进一步向下钻取 Microsoft 如何解决四个方面的客户信任问题：安全平台、隐私 & 控件、合规性和透明度。
 
-本文概述了 Microsoft 在 Microsoft Azure 云平台中确保安全性的方法：
-* Microsoft 实施的安全功能可保护 Azure 基础结构、客户数据和应用程序的安全。
-* Azure 服务和安全功能可用于管理 Azure 订阅中的服务安全和数据。
-
-## <a name="summary-azure-security-capabilities"></a>Azure 安全功能汇总
-下表简要描述了 Microsoft 为保护 Azure 基础结构、客户数据和应用程序的安全而实现的安全功能。
-### <a name="security-features-implemented-to-secure-the-azure-platform"></a>为保护 Azure 平台而实现的安全功能：
-以下列出的功能可以用于确保以安全的方式管理 Azure 平台。 提供了相应链接，方便用户进一步了解 Microsoft 如何从四个方面解决客户信任问题：安全平台、隐私和控制、符合性和透明度。
-
-
-| [安全平台](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [隐私和控制](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[合规性](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [透明度](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
+| [安全平台](https://www.microsoft.com/trustcenter/Security/default.aspx)  | [隐私和控制](https://www.microsoft.com/trustcenter/Privacy/default.aspx)  |[合规性](https://www.microsoft.com/trustcenter/Compliance/default.aspx)   | [透明度](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
-| [安全开发周期](https://www.microsoft.com/en-us/sdl/)，内部审核 | [随时进行数据管理](https://www.microsoft.com/en-us/trustcenter/Privacy/You-own-your-data) | [信任中心](https://www.microsoft.com/en-us/trustcenter/default.aspx) |[Microsoft 如何保护 Azure 服务中的客户数据](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
-| [强制性安全培训、背景检查](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [控制数据位置](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [通用控制中心](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Microsoft 如何管理 Azure 服务中的数据位置](https://azuredatacentermap.azurewebsites.net/)|
-| [渗透测试](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx)，[入侵检测，DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement)，[审核和日志记录](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [根据条件提供数据访问](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [云服务审慎调查清单](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[Microsoft 中的哪些人员可以根据哪些条款访问数据](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
-| [最先进的数据中心](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)、物理安全性、[安全网络](network-overview.md) | [响应执法部门](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [服务、位置和行业的符合性](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Microsoft 如何保护 Azure 服务中的客户数据](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
-|  [安全事件响应](https://aka.ms/SecurityResponsepaper)，[共担责任](https://aka.ms/sharedresponsibility) |[严格的隐私标准](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [查看 Azure 服务和透明度中心的认证](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
+| [安全开发周期](https://www.microsoft.com/sdl/)，内部审核 | [随时进行数据管理](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data) | [信任中心](https://www.microsoft.com/trustcenter/default.aspx) |[Microsoft 如何保护 Azure 服务中的客户数据](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
+| [强制性安全培训、背景检查](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [控制数据位置](https://www.microsoft.com/trustcenter/Privacy/Where-your-data-is-located) |  [通用控制中心](https://www.microsoft.com/trustcenter/Common-Controls-Hub) |[Microsoft 如何管理 Azure 服务中的数据位置](https://azuredatacentermap.azurewebsites.net/)|
+| [渗透测试](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx)，[入侵检测，DDoS](https://www.microsoft.com/trustcenter/Security/ThreatManagement)，[审核和日志记录](https://www.microsoft.com/trustcenter/Security/AuditingAndLogging) | [根据条件提供数据访问](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [云服务审慎调查清单](https://www.microsoft.com/trustcenter/Compliance/Due-Diligence-Checklist) |[Microsoft 中的哪些人员可以根据哪些条款访问数据](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
+| [最先进的数据中心](https://www.microsoft.com/cloud-platform/global-datacenters)、物理安全性、[安全网络](network-overview.md) | [响应执法部门](https://www.microsoft.com/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [服务、位置和行业的符合性](https://www.microsoft.com/trustcenter/Compliance/default.aspx) |[Microsoft 如何保护 Azure 服务中的客户数据](https://www.microsoft.com/trustcenter/Transparency/default.aspx)|
+|  [安全事件响应](https://aka.ms/SecurityResponsepaper)，[共担责任](https://aka.ms/sharedresponsibility) |[严格的隐私标准](https://www.microsoft.com/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [查看 Azure 服务和透明度中心的认证](https://www.microsoft.com/trustcenter/Compliance/default.aspx)|
 
-
-
-### <a name="security-features-offered-by-azure-to-secure-data-and-application"></a>Azure 为保护数据和应用程序而提供的安全功能
+### <a name="features-to-secure-data-and-application"></a>用于保护数据和应用程序的功能
 根据云服务模型，负责管理应用程序或服务的安全的人员需承担各种不同的责任。 Azure 平台中提供的功能可帮助用户通过内置功能以及可部署到 Azure 订阅中的合作伙伴解决方案来履行这些职责。
 
-内置功能分为六 (6) 个功能区：操作、应用程序、存储、网络、计算和标识。 摘要信息对这六 (6) 个区域内 Azure 平台提供的特性和功能进行了详细介绍。
+内置功能分为六个功能区域：操作、应用程序、存储、网络、计算和标识。 有关此六个领域中的 Azure 平台提供的功能的更多详细信息，请访问摘要信息。
 
-## <a name="operations"></a>操作
+## <a name="operations"></a>Operations
 本部分提供了关于安全操作中主要特性的其他信息以及有关这些功能的摘要信息。
 
 ### <a name="security-and-audit-dashboard"></a>“安全和审核”仪表板
@@ -80,7 +68,7 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 
 此外，检测到特定事件时，可以将安全性和符合性配置为[自动执行特定操作](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/)。
 
-### <a name="azure-resource-manager"></a>Azure 资源管理器
+### <a name="azure-resource-manager"></a>Azure Resource Manager
 可以使用 [Azure 资源管理器](../../azure-resource-manager/resource-manager-deployment-model.md)以组的方式处理解决方案中的资源。 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用 [Azure 资源管理器模板](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/)来完成部署，该模板适用于测试、过渡和生产等不同环境。 Resource Manager 提供安全、审核和标记功能，以帮助你在部署后管理资源。
 
 基于 Azure 资源管理器模板的部署因其标准的安全控制设置，有助于提高 Azure 中部署的解决方案的安全性，并且还可以集成到基于标准化模板的部署中。 这样可以降低手动部署期间可能发生的安全配置错误风险。
@@ -104,9 +92,9 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 [Azure 顾问](../../advisor/index.yml)是一种个性化的云顾问，可帮助优化 Azure 部署。 它分析资源配置和使用情况遥测数据。 然后，它推荐解决方案，帮助提高资源的[性能](../../advisor/advisor-performance-recommendations.md)、[安全性](../../advisor/advisor-security-recommendations.md)和[高可用性](../../advisor/advisor-high-availability-recommendations.md)，同时寻找机会[减少总体 Azure 支出](../../advisor/advisor-cost-recommendations.md)。 Azure 顾问提供安全建议，可显著提高在 Azure 中部署的解决方案的总体安全状况。 这些建议来自于 [Azure 安全中心](../../security-center/security-center-intro.md)执行的安全分析。
 
 ### <a name="azure-security-center"></a>Azure 安全中心
-[Azure 安全中心](../../security-center/security-center-intro.md)有助于预防、检测和响应威胁，同时增加 Azure 资源的可见性和安全可控性。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
+[安全中心](../../security-center/security-center-intro.md)有助于预防、检测和响应威胁，同时提高 Azure 资源的可见性并控制其安全性。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
 
-此外，Azure 安全中心通过提供单个仪表板实现可立即执行的警报和建议，从而帮助进行安全操作。 通常，只需在 Azure 安全中心控制台中单击一下就可修复问题。
+此外，安全中心还提供了一个仪表板，该仪表板显示可立即采取措施的警报和建议。 通常，只需要在安全中心控制台中单击即可解决问题。
 ## <a name="applications"></a>应用程序
 本部分提供了关于应用程序安全中主要特性的其他信息以及有关这些功能的摘要信息。
 
@@ -119,7 +107,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 ### <a name="web-application-firewall"></a>Web 应用程序防火墙
 [Azure 应用程序网关](https://azure.microsoft.com/services/application-gateway/)中的 Web 应用程序防火墙 (WAF) 可帮助保护 Web 应用程序，使其免受常见基于 Web 的攻击威胁，例如 SQL 注入、跨站点脚本攻击和会话劫持。 同时预先配置保护，免受 [Open Web Application Security Project (OWASP) 标识为前 10 种常见漏洞](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)的威胁攻击。
 
-### <a name="authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权
+### <a name="authentication-and-authorization-in-azure-app-service"></a>在 Azure App Service 中执行身份验证和授权
 [应用服务身份验证/授权](../../app-service/overview-authentication-authorization.md)是一项功能，方便应用程序登录用户，避免在应用后端更改代码。 该功能可以方便地保护应用程序和处理每个用户的数据。
 
 ### <a name="layered-security-architecture"></a>分层安全体系结构
@@ -150,7 +138,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 -   应用程序错误（显示异常事件）
 -   性能（显示性能事件）
 
-## <a name="storage"></a>存储
+## <a name="storage"></a>存储空间
 本部分提供了关于 Azure 存储安全中主要特性的其他信息以及有关这些功能的摘要信息。
 
 ### <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
@@ -177,7 +165,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 -   [Azure 磁盘加密](../azure-security-disk-encryption-overview.md)允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。
 
 ### <a name="storage-analytics"></a>存储分析
-[Azure 存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)执行日志记录并为存储帐户提供指标数据。 可以使用此数据跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。 存储分析记录成功和失败的存储服务请求的详细信息。 可以使用该信息监视各个请求和诊断存储服务问题。 将最大程度地记录请求。 将记录以下类型的已经过身份验证的请求：
+[Azure 存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)执行日志记录并为存储帐户提供指标数据。 你可以使用该数据跟踪请求、分析使用趋势以及诊断存储器帐户存在的问题。 存储分析记录成功和失败的存储服务请求的详细信息。 可以使用该信息监视各个请求和诊断存储服务问题。 将最大程度地记录请求。 将记录以下类型的已经过身份验证的请求：
 -   成功的请求。
 
 -   失败的请求，包括超时、限制、网络、授权和其他错误。
@@ -190,6 +178,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 [跨源资源共享 (CORS)](https://docs.microsoft.com/rest/api/storageservices/fileservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) 是一种允许域授予彼此资源访问权限的机制。 用户代理发送额外的标头，以确保允许从特定域中加载的 JavaScript 代码访问位于另一个域的资源。 然后，后一个域使用额外标头进行回复，允许或拒绝原始域访问其资源。
 
 Azure 存储服务现支持 CORS，因此，为服务设置 CORS 规则后，便会对从另一个域对服务发出的经过正确验证的请求进行评估，以根据指定的规则确定是否允许该请求。
+
 ## <a name="networking"></a>网络
 本部分提供了关于 Azure 网络安全中主要特性的其他信息以及有关这些功能的摘要信息。
 
@@ -212,7 +201,6 @@ Azure 存储服务现支持 CORS，因此，为服务设置 CORS 规则后，便
 虽然网络安全组、用户定义的路由和强制隧道在 [OSI 模型](https://en.wikipedia.org/wiki/OSI_model)的网络层和传输层为用户提供了一定程度的安全性，但有时可能想要启用堆栈的更高级别安全性。 可以使用 Azure 合作伙伴安全设备解决方案访问这些增强的网络安全功能。 通过访问 [Azure 市场](https://azure.microsoft.com/marketplace/)并搜索“安全”和“网络安全”，可以找到最新的 Azure 合作伙伴网络安全解决方案。
 
 ### <a name="azure-virtual-network"></a>Azure 虚拟网络
-
 Azure 虚拟网络 (VNet) 是自己的网络在云中的表示形式。 它是对专用于订阅的 Azure 网络结构进行的逻辑隔离。 可以完全控制该网络中的 IP 地址块、DNS 设置、安全策略和路由表。 可以将 VNet 细分成各个子网，并在 Azure 虚拟网络上放置 Azure IaaS 虚拟机 (VM) 和/或[云服务（PaaS 角色实例）](../../cloud-services/cloud-services-choose-me.md)。
 
 此外，也可以使用 Azure 中提供的[连接选项](../../vpn-gateway/index.yml)之一，将虚拟网络连接到本地网络。 实际上，可以将网络扩展到 Azure，对 IP 地址块进行完全的控制，并享受企业级 Azure 带来的好处。
@@ -268,19 +256,19 @@ Web 应用程序防火墙是 [Azure 应用程序网关](../../application-gatewa
 
 -   检测常见应用程序错误配置（即 Apache、IIS 等）
 
-
 可防止 Web 攻击的集中式 Web 应用程序防火墙，可简化安全管理，并可针对入侵威胁为应用程序提供更好的保障。 相较保护每个单独的 Web 应用程序，WAF 解决方案还可通过在中央位置修补已知漏洞，更快地响应安全威胁。 现有应用程序网关可以轻松地转换为带有 Web 应用程序防火墙的应用程序网关。
 
-### <a name="traffic-manager"></a>通信管理器
-使用 Microsoft [Azure 流量管理器](../../traffic-manager/traffic-manager-overview.md)，可以控制用户流量在不同数据中心内的服务终结点上的分布。 流量管理器支持的服务终结点包括 Azure VM、Web 应用和云服务。 也可将流量管理器用于外部的非 Azure 终结点。 流量管理器根据[流量路由方法](../../traffic-manager/traffic-manager-routing-methods.md)和终结点的运行状况，使用域名系统 (DNS) 将客户端请求定向到最合适的终结点。
+### <a name="traffic-manager"></a>流量管理器
+使用 Microsoft [Azure 流量管理器](../../traffic-manager/traffic-manager-overview.md)，可以控制用户流量在不同数据中心内的服务终结点上的分布。 流量管理器支持的服务终结点包括 Azure VM、Web 应用和云服务。 还可通过外部非 Azure 终结点使用流量管理器。 流量管理器根据[流量路由方法](../../traffic-manager/traffic-manager-routing-methods.md)和终结点的运行状况，使用域名系统 (DNS) 将客户端请求定向到最合适的终结点。
 
 流量管理器提供多种流量路由方法来满足不同的应用程序需求、终结点运行状况[监视](../../traffic-manager/traffic-manager-monitoring.md)和自动故障转移。 流量管理器能够灵活应对故障，包括整个 Azure 区域的故障。
+
 ### <a name="azure-load-balancer"></a>Azure 负载均衡器
 [Azure 负载均衡器](../../load-balancer/load-balancer-overview.md) 可提高应用程序的可用性和网络性能。 它是第 4 层（TCP、UDP）类型的负载均衡器，可在负载均衡集中定义的运行状况良好的服务实例之间分配传入流量。 可以将 Azure 负载均衡器配置为：
 
 -   对传入到虚拟机的 Internet 流量进行负载均衡。 此配置称为[面向 Internet 的负载均衡](../../load-balancer/load-balancer-overview.md#publicloadbalancer)。
 
--   对虚拟网络中虚拟机之间的流量、云服务中虚拟机之间的流量或本地计算机和跨界虚拟网络中虚拟机之间的流量进行负载均衡。 此配置称为[内部负载均衡](../../load-balancer/load-balancer-overview.md#internalloadbalancer)。 
+-   对虚拟网络中虚拟机之间的流量、云服务中虚拟机之间的流量或本地计算机和跨界虚拟网络中虚拟机之间的流量进行负载均衡。 此配置称为[内部负载均衡](../../load-balancer/load-balancer-overview.md#internalloadbalancer)。
 
 - 将外部流量转发到特定的虚拟机
 
@@ -289,18 +277,18 @@ Web 应用程序防火墙是 [Azure 应用程序网关](../../application-gatewa
 
 ### <a name="azure-dns"></a>Azure DNS
 [域名系统](https://technet.microsoft.com/library/bb629410.aspx)或 DNS 负责将网站或服务名称转换（或解析）为它的 IP 地址。 [Azure DNS](../../dns/dns-overview.md) 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。 DNS 支持“CIA”安全三因素的可用性方面。
+
 ### <a name="azure-monitor-logs-nsgs"></a>Azure Monitor 日志 Nsg
 可以为 NSG 启用以下诊断日志类别：
+
 -   事件：包含根据 MAC 地址向 VM 和实例角色应用的 NSG 规则条目。 每隔 60 秒收集一次这些规则的状态。
 
 -   规则计数器：包含应用每个 NSG 规则以拒绝或允许流量的次数的条目。
 
-### <a name="azure-security-center"></a>Azure 安全中心
-
+### <a name="security-center"></a>安全中心
 [Azure 安全中心](../../security-center/security-center-intro.md)会持续分析 azure 资源的安全状态，以了解网络安全最佳实践。 当安全中心识别到潜在的安全漏洞时，它会创建[建议](../../security-center/security-center-recommendations.md)，指导你完成配置所需控件的过程，以强化和保护资源。
 
 ## <a name="compute"></a>计算
-
 本部分提供了关于此区域中主要特性的其他信息以及有关这些功能的摘要信息。
 
 ### <a name="antimalware--antivirus"></a>反恶意软件和防病毒软件
@@ -326,23 +314,20 @@ Azure 密钥保管库 (AKV) 服务专用于在一个高度可用的安全位置�
 [Azure 磁盘加密](../azure-security-disk-encryption-overview.md)是用于加密 Windows 和 Linux IaaS 虚拟机磁盘的新功能。 它应用 Windows 的行业标准 BitLocker 功能和 Linux 的 DM-Crypt 功能，为 OS 和数据磁盘提供卷加密。 该解决方案与 Azure Key Vault 集成，帮助用户控制和管理 Key Vault 订阅中的磁盘加密密钥和机密。 此解决方案还可确保虚拟机磁盘上的所有数据在 Azure 存储中静态加密。
 
 ### <a name="virtual-networking"></a>虚拟网络
-虚拟机需要网络连接。 为了满足该要求，Azure 需要虚拟机连接到 Azure 虚拟网络。 Azure 虚拟网络是一个构建于物理 Azure 网络结构之上的逻辑构造。 每个逻辑[ Azure 虚拟网络](../../virtual-network/virtual-networks-overview.md)都独立于所有其他 Azure 虚拟网络。 这种隔离可帮助确保部署中的网络流量对于其他 Microsoft Azure 客户不可访问。
+虚拟机需要网络连接。 要支持该要求，Azure 要求将虚拟机连接到 Azure 虚拟网络。 Azure 虚拟网络是一个构建于物理 Azure 网络结构之上的逻辑构造。 每个逻辑[ Azure 虚拟网络](../../virtual-network/virtual-networks-overview.md)都独立于所有其他 Azure 虚拟网络。 这种隔离可帮助确保部署中的网络流量对于其他 Microsoft Azure 客户不可访问。
 
 ### <a name="patch-updates"></a>修补程序更新
 修补程序更新可以减少必须在企业中部署的软件更新数目并提高监视符合性的能力，从而提供查找及修复潜在问题的基础并简化软件更新管理过程。
 
 ### <a name="security-policy-management-and-reporting"></a>安全策略管理和报告
-[Azure 安全中心](../../security-center/security-center-intro.md)帮助预防、检测和响应威胁，同时提高 Azure 资源安全性的可见性和控制力度。 它提供对 Azure 订阅的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
+[安全中心](../../security-center/security-center-intro.md)帮助你预防、检测和应对威胁，并使你能够更好地查看和控制 Azure 资源的安全性。 它提供对 Azure 订阅的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
 
-### <a name="azure-security-center"></a>Azure 安全中心
-安全中心有助于预防、检测和响应威胁，同时增加 Azure 资源的可见性和安全可控性。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
-
-## <a name="identity-and-access-management"></a>标识和访问管理
-
+## <a name="identity-and-access-management"></a>身份和访问管理
 保护系统、应用程序和以基于标识的访问控制开始的数据。 Microsoft 企业产品和服务内置的标识和访问管理功能有助于保护组织和个人信息免受未经授权的访问，同时向合法用户提供随时随地访问权限。
 
 ### <a name="secure-identity"></a>安全标识
 Microsoft 在其产品和服务中使用多种安全实践和技术来管理标识和访问权限。
+
 -   [多重身份验证](https://azure.microsoft.com/services/multi-factor-authentication/)要求用户在本地和云中使用多种方法进行访问。 它提供强大的身份验证和一系列简单的验证选项，同时满足用户对简单登录过程的需求。
 
 -   [Microsoft Authenticator ](https://aka.ms/authenticator) 提供了一种用户友好型多重身份验证体验，它可与 Microsoft Azure Active Directory 和 Microsoft 帐户兼容，并支持可穿戴设备和基于指纹的批准。
@@ -378,14 +363,7 @@ Microsoft 在其产品和服务中使用多种安全实践和技术来管理标�
 - [Azure Active Directory 应用程序代理](https://azure.microsoft.com/documentation/articles/active-directory-application-proxy-get-started/)为本地托管的 Web 应用程序提供 SSO 和安全远程访问。
 
 ## <a name="next-steps"></a>后续步骤
-- [Microsoft Azure 安全入门](https://docs.microsoft.com/azure/security)
 
-可以用来确保 Azure 中服务和数据安全性的 Azure 服务和功能
+- 了解你[在云中的共同责任](shared-responsibility.md)。
 
-- [Azure 安全中心](https://azure.microsoft.com/services/security-center/)
-
-预防、检测和响应威胁，同时增加 Azure 资源安全性的可见性以及控制力度
-
-- [在 Azure 安全中心进行安全运行状况监视](../../security-center/security-center-monitoring.md)
-
-Azure 安全中心的监视功能，用于监视策略符合性。
+- 了解[Azure 安全中心](https://azure.microsoft.com/services/security-center/)如何帮助你预防、检测和响应威胁，同时提高 azure 资源的可见性并控制其安全性。

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 10/18/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f6e1ab2c2b02ab4279e95840135bdc87710cd66
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: 56e5fb986431ec47a34b81491bc61b4c38a24e31
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551655"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592892"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -224,12 +224,14 @@ In | 有权执行的操作
 > [!NOTE]
 > 全局读者角色有一些限制，
 >
->* SharePoint 管理中心-SharePoint 管理中心不支持全局读者角色。 你不会在[Microsoft 365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage)中的 "管理中心" 下的左窗格中看到 "SharePoint"，你会在尝试转到*https：//{Azure AD 组织名称}* 时拒绝访问。
+>* SharePoint 管理中心-SharePoint 管理中心不支持全局读者角色。 在[Microsoft 365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage)"中的" 管理中心 "下，不会在左窗格中看到" SharePoint "。
+>* [Onedrive 管理中心](https://admin.onedrive.com/)-onedrive 管理中心不支持全局读者角色。
 >* [Azure AD 门户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)-全局读取器无法读取企业应用的预配模式。
 >* [M365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage)-全局读者无法读取客户密码箱请求。 在 M365 管理中心的左窗格中，你将找不到 "**支持**" 下的 "**客户密码箱请求**" 选项卡。
 >* [M365 安全中心](https://security.microsoft.com/homepage)-全球读者无法读取敏感度和保留标签。 在 M365 安全中心的左窗格中找不到**灵敏度标签**、**保留标签**和**标签分析**选项卡。
 >* [团队管理员中心](https://admin.teams.microsoft.com)-全球读者无法阅读**团队生命周期**、**分析 & 报表**、 **IP 电话设备管理**和**应用程序目录**。
 >* [Privileged Access Management （PAM）](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview)不支持全局读者角色。
+>* [Azure 信息保护](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)-仅支持适用于[管理中心](https://docs.microsoft.com/azure/information-protection/reports-aip)的全球读取器，以及当你的租户不在[统一的标签平台](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)上时。
 >
 > 这些功能目前正在开发中。
 >

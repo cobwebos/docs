@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1ebf4feb0687d9580bba29cd8213030e542a06da
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 1bfd156f9fbdb69766e4588a342a695fbd79ca3a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268844"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595297"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
@@ -84,7 +84,7 @@ ms.locfileid: "71268844"
 
 [适用于 Key Vault 的 Azure PowerShell](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
 
-### <a name="quick-start-guides"></a>快速入门指南
+### <a name="quickstart-guides"></a>快速入门指南
 
 - [创建密钥保管库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
 - [Node.js 中的 Key Vault 入门](https://github.com/Azure-Samples/key-vault-node-getting-started)
@@ -98,7 +98,7 @@ ms.locfileid: "71268844"
 
 ## <a name="how-tos"></a>操作方法
 
-以下文章和方案提供了特定于任务的指导，以便使用 Azure Key Vault：
+以下文章和方案提供了特定于任务的指导，方便你使用 Azure Key Vault：
 
 - [订阅移动后更改密钥保管库租户 ID](key-vault-subscription-move-fix.md) - 将 Azure 订阅从租户 A 移到租户 B 时，租户 B.中的主体（用户和应用程序）无法访问现有的密钥保管库。使用本指南解决此问题。
 - [访问位于防火墙后面的密钥保管库](key-vault-access-behind-firewall.md) -若要访问密钥保管库，密钥保管库客户端应用程序必须能够访问各种功能的多个终结点。
@@ -117,7 +117,7 @@ ms.locfileid: "71268844"
 
 这些文章介绍了使用 Key Vault 或与之集成的其他方案和服务。
 
-- [Azure 磁盘加密](../security/azure-security-disk-encryption.md)利用 Windows 的行业标准 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，为 OS 和数据磁盘提供卷加密。 该解决方案与 Azure 密钥保管库集成，可帮助你控制和管理密钥保管库订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储空间中静态加密。
+- [Azure 磁盘加密](../security/fundamentals/encryption-overview.md)利用 Windows 的行业标准 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，为 OS 和数据磁盘提供卷加密。 该解决方案与 Azure 密钥保管库集成，可帮助你控制和管理密钥保管库订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储空间中静态加密。
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) 提供了对帐户中存储的数据进行加密的选项。 对于密钥管理，Data Lake Store 提供两种用于管理主加密密钥 (MEK) 的模式，这两种模式可用于解密在 Data Lake Store 中存储的任何数据。 可以让 Data Lake Store 代为管理 MEK，或选择使用 Azure 密钥保管库帐户保留 MEK 所有权。 创建 Data Lake Store 帐户时可以指定密钥管理模式。
 - [Azure 信息保护](/azure/information-protection/plan-implement-tenant-key)允许管理自己的租户密钥。 例如，不是由 Microsoft 管理租户密钥（默认设置），可以管理自己的租户密钥，以遵守适用于组织的具体规定。 管理自己的租户密钥也称为自带密钥（简称 BYOK）。
 
