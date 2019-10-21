@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: larryfr
-ms.openlocfilehash: 65956ab9fa182794b4cb9ac1fc1800198f2dcdaa
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 025779edd1400c65d10788def17529e84349d582
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561114"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515742"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>教程：结合使用自定义视觉服务 ONNX 模型和 Windows ML（预览版）
 
@@ -31,9 +31,9 @@ ms.locfileid: "68561114"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Windows 10 17738 或更高版本
+* Windows 10 版本 1809 或更高版本
 
-* 适用于内部版本 17738 或更高版本的 Windows SDK
+* 适用于内部版本 17763 或更高版本的 Windows SDK
 
 * 启用了“通用 Windows 平台开发”工作负载的 Visual Studio 2017 版本 15.7 或更高版本  。
 
@@ -45,7 +45,7 @@ ms.locfileid: "68561114"
 
 ## <a name="get-the-example-code"></a>获取示例代码
 
-可以从 [https://github.com/Azure-Samples/cognitive-services-onnx12-customvision-sample/](https://github.com/Azure-Samples/cognitive-services-onnx12-customvision-sample/) 获取此示例应用。
+可以从 [https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample](https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample) 获取此示例应用。
 
 ## <a name="run-the-example"></a>运行示例
 
@@ -59,7 +59,7 @@ ms.locfileid: "68561114"
 
 1. 使用自定义视觉服务[创建和训练](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)一个分类器。 若要导出模型，请选择一个“压缩”域，例如“常规(压缩)”。   若要导出现有的分类器，请选择右上角的齿轮图标，将域转换为压缩域。 在“设置”中，选择一个压缩模型，进行保存，然后训练项目。   
 
-1. 转到“性能”选项卡即可[导出模型](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)。选择一个使用压缩域训练的迭代，此时会显示“导出”按钮。 选择“导出”、“ONNX”、“ONNX1.2”，然后选择“导出”。     文件就绪以后，请选择“下载”按钮  。
+1. 转到“性能”选项卡即可[导出模型](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)。选择一个使用压缩域训练的迭代，此时会显示“导出”按钮。 选择“导出”、“ONNX”，然后选择“导出”。    文件就绪以后，请选择“下载”按钮  。
 
 1. 将 ONNX 文件拖到项目的 __Assets__ 文件夹中。 
 

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 10/10/2019
 ms.author: juliako
-ms.openlocfilehash: fca8dc31a0f909a1602819a2830d9bebbbda0c88
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9d89247740852b7bfc185fbcf864947efe30ef0f
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799317"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372342"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>快速入门：如何注册并上传第一个视频
 
@@ -29,8 +29,11 @@ ms.locfileid: "65799317"
 
 ## <a name="upload-a-video-using-the-video-indexer-website"></a>使用视频索引器网站上传视频
 
+> [!NOTE]
+> 视频的名称长度不得超过 80 个字符。
+
 1. 登录到[视频索引器](https://www.videoindexer.ai/)网站。
-2. 若要上传视频，请按“上传”按钮或链接。
+2. 若要上传视频，请按“上传”按钮或链接。 
 
     ![上载](./media/video-indexer-get-started/video-indexer-upload.png)
 

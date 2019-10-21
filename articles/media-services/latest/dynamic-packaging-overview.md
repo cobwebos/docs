@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/10/2019
+ms.date: 10/03/2019
 ms.author: juliako
-ms.openlocfilehash: 152a767ad1aa2494579f15dd8051c6bc1f718a92
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: af6542757e75d7d6226c2470adf3c2b51d60875a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910251"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383532"
 ---
 # <a name="dynamic-packaging"></a>动态打包
 
@@ -236,11 +236,30 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 ### <a name="signaling-audio-description-tracks"></a>发出音频描述轨道的信号
 
-客户可以将音轨批注为清单中的音频描述。 为此，他们会在 .ism 文件中添加“accessibility”和“role”参数。 如果音轨具有值为“description”的参数“accessibility”和值为“alternate”的参数“role”，则媒体服务将识别音频描述。 如果媒体服务检测到 .ism 文件中的音频描述，则将音频描述信息作为 `Accessibility="description"` 和 `Role="alternate"` 属性传递给客户端清单，并将其传递到 `StreamIndex` 元素中。
+可以向视频中添加旁白轨道，以帮助视力受损的客户通过倾听旁白来跟随视频录制。 需要将音轨批注为清单中的音频描述。 为此，请将“accessibility”和“role”参数添加到 .ism 文件中。 你有责任正确设置这些参数，以将音频轨道作为音频描述发信号。 例如，将 `<param name="accessibility" value="description" />` 和 `<param name="role" value="alternate"` 添加到特定音频轨道的 .ism 文件中。 
 
-如果在 .ism 文件中设置了“accessibility”=“description”和“role”=“alternate”的组合，则 DASH 清单和 Smooth 清单会携带“accessibility”和“role”参数中设置的值。 客户有责任将这两个值设置正确，并将音轨标记为音频描述。 根据 DASH 规范，“accessibility”=“description”和“role”=“alternate”一起设置意味着音轨是音频描述。
+有关详细信息，请参阅[如何发出描述性音轨信号](signal-descriptive-audio-howto.md)示例。
 
-对于 HLS v7 及更高版本 (`format=m3u8-cmaf`)，仅当在 .ism 文件中设置了“accessibility”=“description”和“role”=“alternate”的组合时，其播放列表才会带有 `CHARACTERISTICS="public.accessibility.describes-video"`。 
+#### <a name="smooth-streaming-manifest"></a>平滑流式处理清单
+
+如果正在播放平滑流式处理流，则清单将在该音频轨道的 `Accessibility` 和 `Role` 属性中携带值。例如，`Role="alternate" Accessibility="description"` 将添加到 `StreamIndex` 元素中，以指示它是音频描述。
+
+#### <a name="dash-manifest"></a>DASH 清单
+
+对于 DASH 清单，将添加以下两个元素以发出音频描述信号：
+
+```xml
+<Accessibility schemeIdUri="urn:mpeg:dash:role:2011" value="description"/>
+<Role schemeIdUri="urn:mpeg:dash:role:2011" value="alternate"/>
+```
+
+#### <a name="hls-playlist"></a>HLS 播放列表
+
+对于 HLS v7 及更高版本 `(format=m3u8-cmaf)`，当音频描述跟踪收到信号时，其播放列表将携带 `AUTOSELECT=YES,CHARACTERISTICS="public.accessibility.describes-video"`。
+
+#### <a name="example"></a>示例
+
+有关详细信息，请参阅[如何发出音频描述轨道信号](signal-descriptive-audio-howto.md)。
 
 ## <a name="dynamic-manifest"></a>动态清单
 

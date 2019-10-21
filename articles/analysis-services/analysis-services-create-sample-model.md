@@ -2,18 +2,17 @@
 title: 教程 - 将示例模型添加到 Azure Analysis Services 服务器 | Microsoft Docs
 description: 本教程介绍如何在 Azure Analysis Services 中添加示例模型。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 03/13/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 32c46f0a488d775275b3a367aa2913f034569041
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c6679e8075afd2f25e4baf73c79c35907ded4e2b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903923"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512867"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>教程：从门户添加示例模型
 
@@ -40,15 +39,15 @@ ms.locfileid: "57903923"
 
 ## <a name="add-a-sample-model"></a>添加示例模型
 
-1. 在服务器“概述”中，单击“新建模型”。
+1. 在服务器“概述”  中，单击“新建模型”  。
 
     ![创建示例模型](./media/analysis-services-create-sample-model/aas-create-sample-new-model.png)
 
-2. 在“新建模型” > “选择数据源”中，确认已选中“示例数据”，然后单击“添加”。
+2. 在“新建模型” > “选择数据源”中，确认已选中“示例数据”，然后单击“添加”。    
 
     ![选择“示例数据”](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
-3. 在“概述”中，确认是否添加了 `adventureworks` 示例模型。
+3. 在“概述”  中，确认是否添加了 `adventureworks` 示例模型。
 
     ![选择“示例数据”](./media/analysis-services-create-sample-model/aas-create-sample-verify.png)
 
@@ -59,13 +58,13 @@ ms.locfileid: "57903923"
 
 下面的步骤介绍了如何使用 SSMS 从服务器中删除模型。
 
-1. 在 SSMS >“对象资源管理器”中，单击“连接” > “Analysis Services”。
+1. 在 SSMS >“对象资源管理器”  中，单击“连接”   > “Analysis Services”  。
 
-2. 在“连接到服务器”中，粘贴服务器名称，然后在“身份验证”中选择“Active Directory - 支持 MFA 的通用身份验证”，输入你的用户名，然后单击“连接”。
+2. 在“连接到服务器”  中，粘贴服务器名称，然后在“身份验证”  中选择“Active Directory - 支持 MFA 的通用身份验证”  ，输入你的用户名，然后单击“连接”  。
 
     ![登录](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
 
-3. 在“对象资源管理器”中，右键单击 `adventureworks` 示例数据库，然后单击“删除”。
+3. 在“对象资源管理器”中，右键单击 `adventureworks` 示例数据库，然后单击“删除”。  
 
     ![删除示例数据库](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-delete.png)
 

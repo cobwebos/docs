@@ -9,20 +9,20 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: overview
-ms.date: 09/24/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0c832e272029dc110e156ef89deb908fec02f1b2
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 62a4b08eae1b21536b6dfb47c3d9d3470e59ef0b
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981200"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298899"
 ---
 # <a name="what-is-azure-time-series-insights"></a>什么是 Azure 时序见解？
 
 Azure 时序见解用于存储、可视化和查询大量时序数据（例如 IoT 设备所生成的数据）。 如果你想要在云中存储、管理、查询或可视化时序数据，则时序见解可能会很适合你。 
 
-![时序见解流程图](media/overview/time-series-insights-flowchart.png)
+[![时序见解流程图](media/overview/time-series-insights-flowchart.png)](media/overview/time-series-insights-flowchart.png#lightbox)
 
 时序见解包含四个关键作业：
 

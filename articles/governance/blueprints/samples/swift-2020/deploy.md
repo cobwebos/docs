@@ -1,17 +1,17 @@
 ---
 title: 示例 - SWIFT CSP-CSCF v2020 蓝图 - 部署步骤
-description: SWIFT CSP-CSCF v2020 蓝图示例的部署步骤。
+description: SWIFT CSP-CSCF v2020 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 09/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 7584653fb83b561f9dd19b11c6a080c038ab6586
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 27ef4c6db6ebeb6f0180d6b4bbec2f228f70393b
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243803"
+ms.locfileid: "72248993"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>部署 SWIFT CSP-CSCF v2020 蓝图示例
 

@@ -3,8 +3,8 @@ title: 将 Azure 应用配置与 .NET Framework 结合使用的快速入门| Mic
 description: 将 Azure 应用配置与 .NET Framework 应用结合使用的快速入门
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
-manager: balans
+author: lisaguthrie
+manager: maiye
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,14 +12,14 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: .NET
 ms.workload: tbd
-ms.date: 02/24/2019
-ms.author: yegu
-ms.openlocfilehash: 8aa8c8132220965d55097c4fed8ba1b2e9501301
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 10/09/2019
+ms.author: lcozzens
+ms.openlocfilehash: 17b2e7272d499ce99d40d2ee52de1c7a5a1d0d04
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326527"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329795"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 .NET Framework 应用
 
@@ -29,7 +29,7 @@ ms.locfileid: "68326527"
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET Framework 4.7.1](https://dotnet.microsoft.com/download)
+- [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
 
@@ -47,7 +47,9 @@ ms.locfileid: "68326527"
 
 1. 启动 Visual Studio，并选择“文件” > “新建” > “项目”    。
 
-2. 在“新建项目”中，选择“已安装” > “Visual C#” > “Windows 桌面版”     。 选择“控制台应用 (.NET Framework)”，并输入项目的名称  。 选择“.NET Framework 4.7.1”或更高版本，并选择“确定”   。
+1. 在**创建新项目**中，针对“控制台”  项目类型进行筛选，然后单击“控制台应用(.NET Framework)”  。 单击“下一步”。 
+
+1. 在**配置新项目**中，输入项目名称。 在“框架”  下，选择“.NET Framework 4.7.1”  或更高版本。 单击“创建”。 
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
@@ -56,9 +58,10 @@ ms.locfileid: "68326527"
     ```
     Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 preview or later
     Microsoft.Configuration.ConfigurationBuilders.Environment 2.0.0 preview or later
+    System.Configuration.ConfigurationManager version 4.6.0 or later
     ```
 
-2. 如下所述，更新项目的 App.config 文件  ：
+1. 如下所述，更新项目的 App.config 文件  ：
 
     ```xml
     <configSections>
@@ -80,12 +83,12 @@ ms.locfileid: "68326527"
 
    从环境变量 `ConnectionString` 中读取应用程序配置存储区的连接字符串。 在 `appSettings` 部分的 `configBuilders` 属性中，在 `MyConfigStore` 之前添加 `Environment` 配置生成器。
 
-3. 打开 Program.cs 并更新 `Main` 方法，以通过调用 `ConfigurationManager` 来使用应用程序配置  。
+1. 打开 Program.cs 并更新 `Main` 方法，以通过调用 `ConfigurationManager` 来使用应用程序配置  。
 
     ```csharp
     static void Main(string[] args)
     {
-        string message = ConfigurationManager.AppSettings["TestApp:Settings:Message"];
+        string message = System.Configuration.ConfigurationManager.AppSettings["TestApp:Settings:Message"];
 
         Console.WriteLine(message);
     }
@@ -101,7 +104,7 @@ ms.locfileid: "68326527"
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-2. 重启 Visual Studio 以便使所做更改生效。 按 Ctrl+F5 生成并运行控制台应用。
+1. 重启 Visual Studio 以便使所做更改生效。 按 Ctrl+F5 生成并运行控制台应用。
 
 ## <a name="clean-up-resources"></a>清理资源
 

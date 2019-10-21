@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: a5c4ffde886735e096c4c4a96a648c997d1e7dec
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 7187bc7a42971a86b31d663f0a3754a061a2421a
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050164"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515052"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>快速入门：通过 IoT 中心设备流在 C 中与设备应用程序通信（预览）
 
@@ -122,10 +122,10 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
    > [!NOTE]
    > * 请将 *YourIoTHubName* 占位符替换为你为 IoT 中心选择的名称。
-   > * 如示例中所示使用 *MyDevice*。 它是为注册的设备提供的名称。 如果为设备选择其他名称，请在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   > * 对于正在注册的设备的名称，建议使用 *MyDevice*，如下所示。 如果为设备选择其他名称，请在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 1. 若要获取刚刚注册的设备的*设备连接字符串*，请在 Cloud Shell 中运行以下命令：
@@ -134,10 +134,10 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
    > 请将 *YourIoTHubName* 占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
-    请记下设备连接字符串，稍后需要在本快速入门中用到它。 如以下示例所示：
+    请记下返回的设备连接字符串，以便稍后在此快速入门中使用。 如以下示例所示：
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -149,14 +149,14 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 若要运行设备端应用程序，请执行以下步骤：
 
-1. 编辑 *iothub_client/samples/iothub_client_c2d_streaming_sample* 文件夹中的 *iothub_client_c2d_streaming_sample.c* 源文件并提供设备连接字符串，以提供设备凭据。
+1. 通过编辑 `iothub_client/samples/iothub_client_c2d_streaming_sample` 文件夹中的 **iothub_client_c2d_streaming_sample.c** 源文件并添加设备连接字符串来提供设备凭据。
 
    ```C
    /* Paste in your iothub connection string  */
-   static const char* connectionString = "[device connection string]";
+   static const char* connectionString = "{DeviceConnectionString}";
    ```
 
-1. 按如下所示编译代码：
+1. 使用以下命令编译代码：
 
    ```bash
    # In Linux
@@ -186,7 +186,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 ### <a name="run-the-service-side-application"></a>运行服务端应用程序
 
-如前所述，IoT 中心 C SDK 仅支持设备端的设备流。 若要生成并运行服务端应用程序，请遵照下列其中一篇快速入门中的说明：
+如前所述，IoT 中心 C SDK 仅支持设备端的设备流。 若要生成和运行随附的服务端应用程序，请按照以下快速入门之一中的说明进行操作：
 
 * [通过 IoT 中心设备流使用 C# 与设备应用进行通信](./quickstart-device-streams-echo-csharp.md)
 
@@ -198,7 +198,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，我们设置了 IoT 中心、注册了设备、在设备上的 C# 应用程序和服务端上的其他应用之间建立了设备流，并已使用该流在应用程序之间来回发送数据。
+在本快速入门中，我们设置了 IoT 中心、注册了设备、在设备上的 C 应用程序和服务端上的其他应用程序之间建立了设备流，并已使用该流在应用程序之间来回发送数据。
 
 若要详细了解设备流，请参阅：
 

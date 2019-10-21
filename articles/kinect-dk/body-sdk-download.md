@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect, sdk, 下载更新, 最新, 可用, 安装, 人体, 跟踪
-ms.openlocfilehash: 1a55e9873d55cdc26cd7de0a082142e6a5fb4b1b
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 7f3e2762a0a2214c24f30e230e615922b9926100
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949576"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299013"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>下载 Azure Kinect 人体跟踪 SDK
 
@@ -28,6 +28,7 @@ ms.locfileid: "71949576"
 
 版本       | 下载
 --------------|----------
+0.9.4 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=100415) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.4)
 0.9.3 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=100307) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.3)
 0.9.2 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=100128) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.2)
 0.9.1 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=100063) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.1)
@@ -49,9 +50,14 @@ ms.locfileid: "71949576"
 如果该命令成功，则表示 SDK 可供使用。
 
 > [!NOTE]
-> 安装 SDK 时，请记住要安装到的路径。 例如，“C:\Program Files\Azure Kinect Body Tracking SDK 0.9.2”。 你将要在此路径中查找文章中参考的示例。
+> 安装 SDK 时，请记住要安装到的路径。 例如，“C:\Program Files\Azure Kinect Body Tracking SDK 0.9.4”。 你将要在此路径中查找文章中参考的示例。
 
 ## <a name="change-log"></a>更改日志
+
+### <a name="v094"></a>v0.9.4
+* [功能] 添加手关节支持。 SDK 将为每只手提供三个附加关节的信息：手、手指尖、拇指。
+* [功能] 为每个检测到的关节添加预测置信度。
+* [功能] 添加 CPU 模式支持。 通过更改 `k4abt_tracker_configuration_t` 中的 `cpu_only_mode` 值，现在 SDK 可以在 CPU 模式下运行，这不需要用户具有功能强大的图形卡。
 
 ### <a name="v093"></a>v0.9.3
 * [功能] 发布新的 DNN 模型 dnn_model_2_0.onnx，该模型大大提高了人体跟踪的可靠性。

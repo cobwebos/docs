@@ -1,17 +1,17 @@
 ---
-title: 示例 - 审核服务器级别的威胁检测设置
+title: 示例 - 审核服务器级别的威胁检测
 description: 此示例策略定义会对那些未设置成指定状态的 SQL Server 安全警报策略进行审核。
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 25504b558a930ae6dcea710ee850ae296c63c4ae
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0c5cfe2d30668102a356224b5efd141746ab0866
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977252"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254764"
 ---
 # <a name="sample---audit-server-level-threat-detection-setting"></a>示例 - 审核服务器级别的威胁检测设置
 

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
-ms.custom: mvc, seo-javascript-september2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 monikerRange: vsts
-ms.openlocfilehash: 9fc276626d2a863f7f2e53cd7312ab8b3be513dd
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 11edeb35119e2c598fd83fd89c65ba4dc4679650
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815770"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256102"
 ---
 #  <a name="quickstart-create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-projects"></a>快速入门：使用 Azure DevOps Projects 创建用于 Node.js 的 Azure Pipelines 中的 CI/CD 管道
 
@@ -37,7 +37,7 @@ DevOps Projects 在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的
 
 1. 在左窗格中选择“创建资源”，然后搜索“DevOps Projects”。   
 
-    ![开始“持续交付”配置](_img/azure-devops-project-nodejs/fullbrowser.png)
+    ![创建持续交付配置资源](_img/azure-devops-project-nodejs/create-azure-resource.png)
 
 ## <a name="select-a-sample-application-and-azure-service"></a>选择示例应用程序和 Azure 服务
 
@@ -60,7 +60,7 @@ DevOps Projects 在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的
      
 3. 选择“浏览”，查看正在运行的应用程序。 
 
-    ![仪表板视图](_img/azure-devops-project-nodejs/dashboardnopreview.png) 
+    ![CI/CD 管道的仪表板视图](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
     
 DevOps Projects 自动配置了 CI 生成和发布触发器。  现在可以与 Node.js 应用团队协作，通过 CI/CD 过程自动将最新工作部署到网站。
 

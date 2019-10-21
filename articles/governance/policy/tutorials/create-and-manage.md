@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-policy
-ms.openlocfilehash: 82c56a01d7f14f1eeae26dfa784f3545552bf6b9
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 43d39039d01b22e7d918755e9557d6a1030ef7a8
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981392"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302862"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>教程：创建和管理策略以强制实施符合性
 
@@ -390,7 +390,7 @@ az policy definition list
 
 1. 选择“Azure Policy”页左侧的“符合性”  。
 
-1. 找到“获取源”  计划。 可能仍处于“未启动”符合性状态   。
+1. 找到“保证安全”  计划。 可能仍处于“未启动”符合性状态   。
    单击计划，获取有关分配进度的完整详细信息。
 
    ![计划符合性页 - 评估未启动](../media/create-and-manage/compliance-status-not-started.png)

@@ -5,15 +5,15 @@ services: azure-resource-manager
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.date: 05/31/2019
+ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 17e27fcbd0e31c8602869be3d884888fe4fe7db0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b381c4be5d0c56e14ccd01657542ef3bff2f8894
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095815"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285683"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>教程：在 Azure 部署管理器（公共预览版）中使用运行状况检查
 
@@ -38,8 +38,8 @@ ms.locfileid: "70095815"
 
 其他资源：
 
-- [Azure 部署管理器 REST API 参考](https://docs.microsoft.com/rest/api/deploymentmanager/)。
-- [Azure 部署管理器示例](https://github.com/Azure-Samples/adm-quickstart)。
+* [Azure 部署管理器 REST API 参考](https://docs.microsoft.com/rest/api/deploymentmanager/)。
+* [Azure 部署管理器示例](https://github.com/Azure-Samples/adm-quickstart)。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -48,7 +48,16 @@ ms.locfileid: "70095815"
 若要完成本文，需要做好以下准备：
 
 * 完成[将 Azure 部署管理器与资源管理器模板配合使用](./deployment-manager-tutorial.md)教程。
-* 下载本教程使用的[模板和项目](https://armtutorials.blob.core.windows.net/admtutorial/ADMTutorial.zip)。
+
+## <a name="install-the-artifacts"></a>安装项目
+
+下载[模板和项目](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMTutorial.zip)并在本地解压缩（如果尚未这样做）。 然后，运行在[准备项目](./deployment-manager-tutorial.md#prepare-the-artifacts)处找到的 PowerShell 脚本。 此脚本创建一个资源组，创建一个存储容器，创建一个 blob 容器，上传已下载的文件，然后创建一个 SAS 令牌。
+
+使用 SAS 令牌创建 URL 的副本。 需使用此 URL 来填充两个参数文件（拓扑参数文件和实施参数文件）中的字段。
+
+打开 CreateADMServiceTopology.Parameters.json，并更新 **projectName** 和 **artifactSourceSASLocation** 的值。
+
+打开 CreateADMRollout.Parameters.json，并更新 **projectName** 和 **artifactSourceSASLocation** 的值。
 
 ## <a name="create-a-health-check-service-simulator"></a>创建运行状况检查服务模拟器
 
@@ -56,22 +65,13 @@ ms.locfileid: "70095815"
 
 以下两个文件用于部署 Azure 函数。 无需下载这些文件即可完成本教程。
 
-* 资源管理器模板位于 [https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json)。 你将部署此模板以创建 Azure 函数。
-* Azure 函数源代码的 zip 文件 [https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip)。 资源管理器模板将调用此 zip 文件。
+* 资源管理器模板位于 [https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json)。 你将部署此模板以创建 Azure 函数。
+* Azure 函数源代码的 zip 文件 [https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip)。 资源管理器模板将调用此 zip 文件。
 
 若要部署 Azure 函数，请选择“尝试”打开 Azure Cloud shell，然后在 shell 窗口中粘贴以下脚本。   若要粘贴代码，请右键单击 shell 窗口并选择“粘贴”  。
 
-> [!IMPORTANT]
-> PowerShell 脚本中的 **projectName** 用于生成要在本教程中部署的 Azure 服务的名称。 不同 Azure 服务对名称的要求各不相同。 为确保成功部署，请选择仅包含小写字母和数字且长度不超过 12 个字符的名称。
-> 保存项目名称的副本。 整篇教程都会使用相同的项目名称。
-
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$resourceGroupName = "${projectName}rg"
-
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json" -projectName $projectName
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json" -projectName $projectName
 ```
 
 若要验证和测试 Azure 函数：
@@ -107,9 +107,9 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="revise-the-rollout-template"></a>修订实施模板
 
-本部分旨在介绍如何在实施模板中包含运行状况检查步骤。 无需创建自己的 CreateADMRollout.json 文件即可完成本教程。 修订的实施模板将在用于后续部分的存储帐户中共享。
+本部分旨在介绍如何在实施模板中包含运行状况检查步骤。
 
-1. 打开 **CreateADMRollout.json**。 此 JSON 文件是下载内容的一部分。  请参阅[先决条件](#prerequisites)。
+1. 打开在[将 Azure 部署管理器与资源管理器模板一起使用](./deployment-manager-tutorial.md)中创建的 **CreateADMRollout.json**。 此 JSON 文件是下载内容的一部分。  请参阅[先决条件](#prerequisites)。
 1. 额外添加两个参数：
 
     ```json
@@ -233,26 +233,14 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="deploy-the-topology"></a>部署拓扑
 
-为了简化本教程，拓扑模板和项目将在以下位置共享，因此你不需要准备自己的副本。 若要使用自己的副本，请遵照以下文档中的说明操作：[教程：将 Azure 部署管理器与资源管理器模板配合使用](./deployment-manager-tutorial.md)。
+运行以下 PowerShell 脚本以部署拓扑。 你需要在[将 Azure 部署管理器与资源管理器模板一起使用](./deployment-manager-tutorial.md)中使用的相同的 **CreateADMServiceTopology.json** 和 **CreateADMServiceTopology.Parameters.json**。
 
-* 拓扑模板：https:\//armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json
-* 项目存储：https:\//armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
-
-若要部署拓扑，请选择“尝试”打开 Cloud shell，然后粘贴 PowerShell 脚本  。
-
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$resourceGroupName = "${projectName}rg"
-$artifactLocation = "https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore?st=2019-05-06T03%3A57%3A31Z&se=2020-05-07T03%3A57%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=gOh%2Bkhi693rmdxiZFQ9xbKZMU1kbLJDqXw7EP4TaGlI%3D" | ConvertTo-SecureString -AsPlainText -Force
-
+```azurepowershell
 # Create the service topology
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMServiceTopology.json" `
-    -namePrefix $projectName `
-    -azureResourceLocation $location `
-    -artifactSourceSASLocation $artifactLocation
+    -TemplateFile "$filePath\ADMTemplates\CreateADMServiceTopology.json" `
+    -TemplateParameterFile "$filePath\ADMTemplates\CreateADMServiceTopology.Parameters.json"
 ```
 
 使用 Azure 门户验证是否已成功创建服务拓扑和带下划线的资源：
@@ -263,32 +251,18 @@ New-AzResourceGroupDeployment `
 
 ## <a name="deploy-the-rollout-with-the-unhealthy-status"></a>部署状态不正常的实施方案
 
-为了简化本教程，修订的推出模板将在以下位置共享，因此你不需要准备自己的副本。 若要使用自己的副本，请遵照以下文档中的说明操作：[教程：将 Azure 部署管理器与资源管理器模板配合使用](./deployment-manager-tutorial.md)。
-
-* 拓扑模板：https:\//armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json
-* 项目存储：https:\//armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
-
-使用在[创建运行状况检查服务模拟器](#create-a-health-check-service-simulator)中创建的不正常状态 URL。 对于 **managedIdentityID**，请参阅[创建用户分配的托管标识](./deployment-manager-tutorial.md#create-the-user-assigned-managed-identity)。
+使用在[创建运行状况检查服务模拟器](#create-a-health-check-service-simulator)中创建的不正常状态 URL。 你需要修订的 **CreateADMServiceTopology.json** 和在[将 Azure 部署管理器与资源管理器模板一起使用](./deployment-manager-tutorial.md)中使用的相同的 **CreateADMServiceTopology.Parameters.json**。
 
 ```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$managedIdentityID = Read-Host -Prompt "Enter a user-assigned managed identity"
 $healthCheckUrl = Read-Host -Prompt "Enter the health check Azure function URL"
 $healthCheckAuthAPIKey = $healthCheckUrl.Substring($healthCheckUrl.IndexOf("?code=")+6, $healthCheckUrl.Length-$healthCheckUrl.IndexOf("?code=")-6)
 $healthCheckUrl = $healthCheckUrl.Substring(0, $healthCheckUrl.IndexOf("?"))
 
-$resourceGroupName = "${projectName}rg"
-$artifactLocation = "https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore?st=2019-05-06T03%3A57%3A31Z&se=2020-05-07T03%3A57%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=gOh%2Bkhi693rmdxiZFQ9xbKZMU1kbLJDqXw7EP4TaGlI%3D" | ConvertTo-SecureString -AsPlainText -Force
-
 # Create the rollout
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json" `
-    -namePrefix $projectName `
-    -azureResourceLocation $location `
-    -artifactSourceSASLocation $artifactLocation `
-    -managedIdentityID $managedIdentityID `
+    -TemplateFile "$filePath\ADMTemplates\CreateADMRollout.json" `
+    -TemplateParameterFile "$filePath\ADMTemplates\CreateADMRollout.Parameters.json" `
     -healthCheckUrl $healthCheckUrl `
     -healthCheckAuthAPIKey $healthCheckAuthAPIKey
 ```
@@ -388,9 +362,9 @@ Tags                    :
 1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
 2. 使用“按名称筛选”字段来缩小本教程创建的资源组的范围。  应有 3-4 个资源组：
 
-    * **&lt;namePrefix>rg**：包含部署管理器资源。
-    * **&lt;namePrefix>ServiceWUSrg**：包含 ServiceWUS 定义的资源。
-    * **&lt;namePrefix>ServiceEUSrg**：包含 ServiceEUS 定义的资源。
+    * **&lt;projectName>rg**：包含部署管理器资源。
+    * **&lt;projectName>ServiceWUSrg**：包含 ServiceWUS 定义的资源。
+    * **&lt;projectName>ServiceEUSrg**：包含 ServiceEUS 定义的资源。
     * 用户定义的托管标识的资源组。
 3. 选择资源组名称。
 4. 在顶部菜单中选择“删除资源组”。 

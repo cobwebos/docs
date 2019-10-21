@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 05/25/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: b262a06bc3d80bd1f8105c6629bbc07e6ccd34eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c00c1ecf001162964b01a3e858534fa502b7484c
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077157"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285841"
 ---
 # <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
 
@@ -22,7 +22,7 @@ ms.locfileid: "67077157"
 
 可以使用筛选器将特定事件路由到不同的终结点，多播到多个终结点，并确保事件可靠传送。
 
-部署 Azure 事件网格是为了通过本机分布在每个区域中的多个容错域和可用性区域（在支持它们的区域中）来最大限度地提高可用性。 目前，Azure 事件网格可在所有公共区域中使用。 它尚未在 Azure 德国、Azure 中国世纪互联或 Azure 政府云中提供。
+部署 Azure 事件网格是为了通过本机分布在每个区域中的多个容错域和可用性区域（在支持它们的区域中）来最大限度地提高可用性。 有关事件网格支持的区域列表，请参阅[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)。
 
 本文将对 Azure 事件网格进行简要概述。 若要开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。 
 

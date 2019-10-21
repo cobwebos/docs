@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 10/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 5327b01fdc3d350c547a2992341102832c0486c4
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0ce44429c7222e4eaa0ef523dadf0fa08723e975
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71975240"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72327899"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker 中的新增功能
 
@@ -24,6 +24,10 @@ ms.locfileid: "71975240"
 ## <a name="release-notes"></a>发行说明 
 
 了解 QnA Maker 的新增功能。
+
+### <a name="october-2019"></a>2019 年 10 月
+
+* 为 QnA Maker 服务中的所有知识库[显式设置语言](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base)。 
 
 ### <a name="september-2019"></a>2019 年 9 月
 

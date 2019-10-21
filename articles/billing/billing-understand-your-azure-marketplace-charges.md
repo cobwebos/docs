@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43986ce57b8d320beeae748d3b848cf9ef38744d
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2803f8d659726ac95bcefa6191a816ed2b2dcb2d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718725"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375422"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>了解 Azure 外部服务收费
 外部服务由 Azure 市场中的第三方软件供应商发布。 例如，SendGrid 是可以在 Azure 中购买的外部服务，但不是 Microsoft 发布的。 某些 Microsoft 产品也通过 Azure 市场销售。
 
 ## <a name="how-external-services-are-billed"></a>外部服务的计费方式
 
-- 如果你签订了 [Microsoft 客户协议](#check-access)，则第三方服务将与其他 Azure 服务一起计费。
-- 如果你未签订 Microsoft 客户协议，则外部服务将与 Azure 服务分开计费。
+- 如果你签订了 Microsoft 客户协议 (MCA) 或 Microsoft 合作伙伴协议 (MPA)，则第三方服务将与其他 Azure 服务一起计费。 [检查计费帐户类型](#check-billing-account-type)，查看你是否有权访问 MCA 或 MPA。
+- 如果你未签订 MCA 或 MPA，则外部服务将与 Azure 服务分开计费。
 - 每个外部服务都有不同的计费模型。 某些服务按即用即付方式计费，而其他服务则按月收取固定费用。
 - 购买外部服务时不能使用每月的免费信用额度。 如果所使用的 Azure 订阅包含[免费额度](https://azure.microsoft.com/pricing/spending-limits/)，则不能将其应用于外部服务费用。 预配新的外部服务或资源时，会显示警告：
 
@@ -48,11 +48,11 @@ You can view a list of the external services that are on each subscription withi
 
     ![View external services billing history](./media/billing-understand-your-azure-marketplace-charges/billing-overview-blade.png) -->
 
-## <a name="view-and-download-invoices"></a>查看和下载发票
+## <a name="view-and-download-invoices-for-external-services"></a>查看和下载适用于外部服务的发票
 
-如果你签订了 [Microsoft 客户协议](#check-access)，则第三方费用与 Azure 费用在同一发票上。 了解如何从 Azure 门户[查看和下载 Azure 发票](billing-download-azure-invoice.md)以查看第三方费用。
+如果你签订了 Microsoft 客户协议 (MCA) 或 Microsoft 合作伙伴协议 (MPA)，则第三方服务将与其他 Azure 服务一起计费。 [检查计费帐户类型](#check-billing-account-type)，查看你是否有权访问 MCA 或 MPA。 如果你有权访问，请参阅[在 Azure 门户中查看和下载发票](billing-download-azure-invoice.md)以查看第三方费用。
 
-如果你未签订 Microsoft 客户协议，则会收到单独的第三方费用发票。 可以按照以下步骤从 Azure 门户查看和下载 Azure 市场发票：
+如果你未签订 MCA 或 MPA，则会收到单独的第三方费用发票。 可以按照以下步骤从 Azure 门户查看和下载 Azure 市场发票：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 搜索“成本管理 + 计费”  。
@@ -108,8 +108,8 @@ EA 客户可以在 EA 门户中查看外部服务支出和下载报表。 若要
     ![删除资源](./media/billing-understand-your-azure-marketplace-charges/delete-resource.PNG)
 1. 单击“删除”  。
 
-## <a name="check-access"></a>检查访问权限
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-billing-account-type"></a>检查计费帐户类型
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 

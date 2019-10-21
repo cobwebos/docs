@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/04/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 74a47bc5fc6dbcadef5e1a0da88eb93056334703
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 59770bccec57220560eeb5a5204e574ce172fc80
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244881"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296477"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>快速入门：使用 Azure 门户启动 Azure Spring Cloud 应用程序
 
@@ -57,9 +57,11 @@ az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-c
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>在 Azure 门户中预配服务实例
 
-1. 在 Web 浏览器中，打开 [Azure 门户](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=AppPlatformExtension)并登录到你的帐户。
+1. 在 Web 浏览器中，打开[此指向 Azure 门户中 Azure Spring Cloud 的链接](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=AppPlatformExtension#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home/searchQuery/Azure%20Spring%20Cloud)。
 
-1. 搜索 **Azure Spring Cloud** 并将其选中，转到概述页。 选择“创建”按钮开始预配。 
+    ![ASC 门户的屏幕截图](media/spring-cloud-quickstart-launch-app-portal/goto-portal.png)
+
+1. 选择“Azure Spring Cloud”  以转到概述页。 然后，选择“创建”按钮以开始预配  。
 
 1. 根据以下指导填写表单：
     - 服务名称：指定服务实例的名称。  该名称必须为 4 到 32 个字符，只能包含小写字母、数字及连字符。  服务名称的第一个字符必须是字母，最后一个字符必须是字母或数字。
@@ -74,6 +76,8 @@ az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-c
 1. 转到服务的“概览”页，选择“配置服务器”。  
 
 1. 在“默认存储库”部分，将“URI”设置为“https://github.com/Azure-Samples/piggymetrics”，将“标签”设置为“config”，然后选择“应用”以保存更改。    
+
+    ![ASC 门户的屏幕截图](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>生成并部署微服务应用程序
 
@@ -130,10 +134,15 @@ az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-c
 
 ## <a name="assign-a-public-endpoint-to-gateway"></a>将公共终结点分配到网关
 
-1. 打开“应用程序仪表板”页。 
-2. 选择 `gateway` 应用程序以显示“应用程序详细信息”页。 
-3. 选择“分配域”，将一个公共终结点分配到网关。  这可能需要花费几分钟时间。 
-4. 在浏览器中输入分配的公共 IP 以查看正在运行的应用程序。
+1. 打开左侧菜单中的“应用”  选项卡。
+2. 选择 `gateway` 应用程序以显示“概述”  页。
+3. 选择“分配域”，将一个公共终结点分配到网关。  这可能需要花费几分钟时间。
+
+    ![ASC 门户的屏幕截图](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
+
+1. 在浏览器中输入分配的公共终结点（标记为 **URL**）以查看正在运行的应用程序。
+
+    ![ASC 门户的屏幕截图](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
 
 
 ## <a name="next-steps"></a>后续步骤

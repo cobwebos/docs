@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 06/20/2019
-ms.openlocfilehash: 03163d75681bee7434e2b7576a678b1094d47b94
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: cda3b0db1a4f1b098d8ea57887a047fcdef04243
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973713"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286491"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos 模拟器 - 发行说明和下载信息
 
@@ -25,6 +25,10 @@ ms.locfileid: "71973713"
 |**入门**|[使用 Azure Cosmos 模拟器在本地开发](local-emulator.md)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="270"></a>2.7.0
+
+- 此版本修复了一个回归，该回归阻止用户在使用基于 .Net Core 或 x86 .NET 的客户端时从模拟器对 SQL API 帐户执行查询。
 
 ### <a name="246"></a>2.4.6
 

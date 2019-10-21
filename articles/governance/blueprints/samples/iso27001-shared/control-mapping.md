@@ -1,17 +1,17 @@
 ---
-title: 示例 - ISO 27001 共享服务蓝图 - 控制映射
-description: ISO 27001 共享服务蓝图示例到 Azure Policy 和 RBAC 的控制映射。
+title: ISO 27001 共享服务蓝图示例 - 控制映射
+description: ISO 27001 共享服务蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 9ec44b4207cb3489205a646429f7fdd5ff2f3f90
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 39dc91fc521698edc725c43818ac361b969aee9a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981577"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297593"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共享服务蓝图示例的控制映射
 

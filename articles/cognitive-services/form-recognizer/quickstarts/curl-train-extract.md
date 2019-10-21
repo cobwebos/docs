@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: b889be6f881894b2666ed47304f6b61e7c776474
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 0b357a36afc44ceac8ed2c951e0f25901be9d93d
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073711"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264376"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>快速入门：使用 REST API 和 cURL 训练表单识别器模型并提取表单数据
 
@@ -26,7 +26,7 @@ ms.locfileid: "71073711"
 若要完成本快速入门，必须具备以下条件：
 - 有权访问表单识别器受限访问预览版。 若要访问预览版，请填写并提交[表单识别器访问请求](https://aka.ms/FormRecognizerRequestAccess)表单。
 - 已安装 [cURL](https://curl.haxx.se/windows/)。
-- 至少有五个相同类型的表单。 你将使用这些数据来训练模型。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将数据上传到 Azure 存储帐户中 blob 存储容器的根目录。
+- 至少有五个相同类型的表单。 你将使用这些数据来训练模型。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将训练文件上传到 Azure 存储帐户中 blob 存储容器的根目录。
 
 ## <a name="create-a-form-recognizer-resource"></a>创建表单识别器资源
 
@@ -95,7 +95,7 @@ curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "C
 
 1. 将 `<Endpoint>` 替换为从表单识别器订阅密钥中获取的终结点。 可以在表单识别器资源的“概览”选项卡中找到该终结点。 
 1. 将 `<modelID>` 替换为在上一部分收到的模型 ID。
-1. 将 `<path to your form>` 替换为表单的文件路径（例如，C:\temp\file.pdf）。
+1. 将 `<path to your form>` 替换为表单的文件路径（例如，C:\temp\file.pdf）。 对于本快速入门，可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)的 **Test** 文件夹下的文件。
 1. 将 `<file type>` 替换为文件类型。 支持的类型：`application/pdf`、`image/jpeg`、`image/png`。
 1. 将 `<subscription key>` 替换为订阅密钥。
 

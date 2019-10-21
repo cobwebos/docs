@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 4409f04f9fd370b862ee62f9595ffca9fe6e4406
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 947ca0b603483479479285ff14636240d2ac7433
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802526"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515186"
 ---
-# <a name="quickstart-personalize-client-library-for-python"></a>快速入门：让适用于 Python 的客户端库个性化
+# <a name="quickstart-personalizer-client-library-for-python"></a>快速入门：适用于 Python 的个性化体验创建服务客户端库
 
 在本 python 快速入门中使用个性化体验创建服务显示个性化内容。
 

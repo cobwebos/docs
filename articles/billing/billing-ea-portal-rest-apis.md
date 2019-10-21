@@ -4,16 +4,16 @@ description: 本文介绍可用于 Azure 企业注册的 REST API。
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: a8cf0d2eb87a823ee4b1d27484e7ea8d89c1abfc
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 70e1e988ad3abdb90ecb60d33830f03f8dffb127
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105440"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329329"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise REST API
 
@@ -95,7 +95,11 @@ Microsoft 企业 Azure 客户可以通过 REST API 获取使用情况和计费�
 
 ### <a name="test-enrollment-for-development"></a>用于开发的测试注册
 
-没有 Azure 企业注册并想要访问 API 的合作伙伴或开发人员可以使用测试注册。 该注册名为 _EnrollmentNumber 100_。 然后，可以[使用注册访问密钥进行测试](https://automaticbillingspec.blob.core.windows.net/spec/TestEnrollmentUsageApiKey.txt)，以调用 API 并查看示例数据。
+没有 Azure 企业注册并想要访问 API 的合作伙伴或开发人员可以使用测试注册。 注册名称为 _EnrollmentNumber 100_，可以查找并测试直到 2018 年 6 月的使用信息。 然后，可以使用以下密钥调用 API 并查看示例数据。
+
+```
+eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpoeXA2UU9DWlZmY1pmdmhDVGR1OFdxeTJ5byJ9.eyJFbnJvbGxtZW50TnVtYmVyIjoiMTAwIiwiSWQiOiI1ZTc2ZmNiMy0xN2I4LTQ5ZDItYjdkOC0zMDU0YjUwOWY0MWYiLCJSZXBvcnRWaWV3IjoiU3lzdGVtIiwiUGFydG5lcklkIjoiIiwiRGVwYXJ0bWVudElkIjoiIiwiQWNjb3VudElkIjoiIiwiaXNzIjoiZWEubWljcm9zb2Z0YXp1cmUuY29tIiwiYXVkIjoiY2xpZW50LmVhLm1pY3Jvc29mdGF6dXJlLmNvbSIsImV4cCI6MTU4NjM5MDA2OSwibmJmIjoxNTcwNTc4ODY5fQ.lENR5pCBph6iZCVexUlN1b-j7StaILCyBewVHoILD-_fn8S2o2bHY1qUseGOkBwNlaFQfk2OZIo-jQYvnf3eP3UNrNVTCINT0APbc1RqgwSjZSxugVVHH9jnSzEjONkJaSKmi4tlidk6zkF1-uY-TPJkKxYN_9ar7BgLshF9JGXk7t8OZhxSCxDZc-smntu6ORFDl4gRZZVBKXhqOGjOAdYX5tPiGDF2Bxb68RSzh9Xyr5PXxKLx5yivZzUdo0-GFHo13V9w6a5VQM4R1w4_ro8jF8WAo3mpGZ_ovx_U5IY6zMNmi_AoA1mUyvTGotgcu94RragutoJRxAGHbNJZ0Q
+```
 
 ### <a name="azure-service-catalog"></a>Azure 服务目录
 

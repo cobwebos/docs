@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4a57c6d4a9034d9145058e9137759c2cea19aa6
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: da81d5603eb26ae3b209bbbc01a8d6fc31e1ba3a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978673"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72381988"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>什么是 Azure 时序见解预览版？
 
@@ -45,7 +45,7 @@ IoT 数据通常仅在第一方数据源（如 CRM 或 ERP）提供的其他数�
 
 典型的 IoT 数据流如下图所示。
 
-  ![IoT 数据流][1]
+  [![IoT 数据流](media/v2-update-overview/overview-one.png)](media/v2-update-overview/overview-one.png#lightbox)
 
 ## <a name="azure-time-series-insights-for-industrial-iot"></a>适用于行业 IoT 的 Azure 时序见解
 
@@ -70,7 +70,7 @@ IoT 数据通常仅在第一方数据源（如 CRM 或 ERP）提供的其他数�
 
 此高级数据流关系图显示了更新。
 
-  ![关键功能][2]
+  [![关键功能](media/v2-update-overview/overview-two.png)](media/v2-update-overview/overview-two.png#lightbox)
 
 由于引入了这些关键的行业 IoT 功能，时序见解具有下述主要优势。
 
@@ -94,7 +94,3 @@ IoT 数据通常仅在第一方数据源（如 CRM 或 ERP）提供的其他数�
 
 > [!div class="nextstepaction"]
 > [Azure 时序见解预览版用例](./time-series-insights-update-use-cases.md)
-
-<!-- Images -->
-[1]: media/v2-update-overview/overview-one.png
-[2]: media/v2-update-overview/overview-two.png

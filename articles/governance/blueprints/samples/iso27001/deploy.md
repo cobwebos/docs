@@ -1,17 +1,17 @@
 ---
-title: 示例 - ISO 27001 蓝图 - 部署步骤
-description: 部署 ISO 27001 蓝图示例的步骤。
+title: ISO 27001 蓝图示例 - 部署步骤
+description: 独立 ISO 27001 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: fc91206f63d4a53113642f3258eb36cd47c5ba5a
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 00e1f7bf0ff783a82d7a8458c44c8c50322632b3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981547"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299086"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>部署 ISO 27001 蓝图示例
 

@@ -5,15 +5,15 @@ services: azure-resource-manager
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.date: 05/23/2019
+ms.date: 10/10/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 97d9aa1ed9440011fdaab3aa8eb9d3942b5a8acf
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 3f10093b1d3087e87279258d04d86fc3d47ba313
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170363"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285877"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>教程：将 Azure 部署管理器与资源管理器模板配合使用（公共预览版）
 
@@ -61,8 +61,6 @@ ms.locfileid: "72170363"
     ```powershell
     Install-Module -Name Az.DeploymentManager
     ```
-
-* [Microsoft Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。 Azure 存储资源管理器不是必需的，但可以简化操作。
 
 ## <a name="understand-the-scenario"></a>了解方案
 
@@ -135,16 +133,55 @@ ms.locfileid: "72170363"
 
 模板项目由服务拓扑模板使用，二进制项目由实施模板使用。 拓扑模板和实施模板都定义一个项目源 Azure 资源，该资源用于将资源管理器指向部署中使用的模板和二进制项目。 为了简化本教程，将使用一个存储帐户来存储模板项目和二进制项目。 这两个项目源指向同一个存储帐户。
 
-1. 创建 Azure 存储帐户。 有关说明，请参阅[快速入门：使用 Azure 门户上传、下载和列出 Blob](../storage/blobs/storage-quickstart-blobs-portal.md)。
-2. 在存储帐户中创建 Blob 容器。
-3. 将两个文件夹（binaries 和 templates）及其内容复制到 Blob 容器。 [Microsoft Azure 存储资源管理器](https://go.microsoft.com/fwlink/?LinkId=708343&clcid=0x409)支持拖放功能。
-4. 遵照以下说明获取容器的 SAS 位置：
+运行以下 PowerShell 脚本以创建一个资源组，创建一个存储容器，创建一个 blob 容器，上传下载的文件，然后创建一个 SAS 令牌。
 
-    1. 在 Azure 存储资源管理器中，导航到 Blob 容器。
-    2. 在左窗格中右键单击 Blob 容器，然后选择“获取共享访问签名”。 
-    3. 配置“开始时间”和“过期时间”。  
-    4. 选择“创建”  。
-    5. 复制 URL。 需使用此 URL 来填充两个参数文件（[拓扑参数文件](#topology-parameters-file)和[实施参数文件](#rollout-parameters-file)）中的字段。
+> [!IMPORTANT]
+> PowerShell 脚本中的 **projectName** 用于生成要在本教程中部署的 Azure 服务的名称。 不同 Azure 服务对名称的要求各不相同。 为确保成功部署，请选择仅包含小写字母和数字且长度不超过 12 个字符的名称。
+> 保存项目名称的副本。 整篇教程都会使用相同的项目名称。
+
+```azurepowershell
+$projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+$filePath = Read-Host -Prompt "Enter the folder that contains the downloaded files"
+
+
+$resourceGroupName = "${projectName}rg"
+$storageAccountName = "${projectName}store"
+$containerName = "admfiles"
+$filePathArtifacts = "${filePath}\ArtifactStore"
+
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+$storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroupName `
+  -Name $storageAccountName `
+  -Location $location `
+  -SkuName Standard_RAGRS `
+  -Kind StorageV2
+
+$storageContext = $storageAccount.Context
+
+$storageContainer = New-AzStorageContainer -Name $containerName -Context $storageContext -Permission Off
+
+
+$filesToUpload = Get-ChildItem $filePathArtifacts -Recurse -File
+
+foreach ($x in $filesToUpload) {
+    $targetPath = ($x.fullname.Substring($filePathArtifacts.Length + 1)).Replace("\", "/")
+
+    Write-Verbose "Uploading $("\" + $x.fullname.Substring($filePathArtifacts.Length + 1)) to $($storageContainer.CloudBlobContainer.Uri.AbsoluteUri + "/" + $targetPath)"
+    Set-AzStorageBlobContent -File $x.fullname -Container $storageContainer.Name -Blob $targetPath -Context $storageContext | Out-Null
+}
+
+$token = New-AzStorageContainerSASToken -name $containerName -Context $storageContext -Permission rl -ExpiryTime (Get-date).AddMonths(1)  -Protocol HttpsOrHttp
+
+$url = $storageAccount.PrimaryEndpoints.Blob + $containerName + $token
+
+Write-Host $url
+```
+
+使用 SAS 令牌创建 URL 的副本。 需使用此 URL 来填充两个参数文件（拓扑参数文件和实施参数文件）中的字段。
+
+从 Azure 门户中打开容器，并验证是否同时上传了 **binaries** 和 **templates** 文件夹和文件。
 
 ## <a name="create-the-user-assigned-managed-identity"></a>创建用户分配的托管标识
 
@@ -176,9 +213,7 @@ ms.locfileid: "72170363"
 
 模板包含以下参数：
 
-![Azure 部署管理器教程 - 拓扑模板参数](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-topology-template-parameters.png)
-
-* **namePrefix**：此前缀用于创建部署管理器资源的名称。 例如，如果使用“jdoe”前缀，则服务拓扑名称为 **jdoe**ServiceTopology。  资源名称在此模板的 variables 节中定义。
+* **projectName**：此名称用于创建部署管理器资源的名称。 例如，如果使用“jdoe”，则服务拓扑名称为 **jdoe**ServiceTopology。  资源名称在此模板的 variables 节中定义。
 * **azureResourcelocation**：为了简化教程，除非另行指定，否则所有资源共享此位置。 目前，只能在“美国中部”或“美国东部 2”区域中创建 Azure 部署管理器资源。  
 * **artifactSourceSASLocation**：存储要部署的服务单元模板和参数文件的 Blob 容器的 SAS URI。  请参阅[准备项目](#prepare-the-artifacts)。
 * **templateArtifactRoot**：与存储模板和参数的 Blob 容器之间的偏移路径。 默认值为 **templates/1.0.0.0**。 除非你要更改[准备项目](#prepare-the-artifacts)中所述的文件夹结构，否则请不要更改此值。 本教程使用相对路径。  完整路径是通过连接 **artifactSourceSASLocation**、**templateArtifactRoot** 和 **templateArtifactSourceRelativePath**（或 **parametersArtifactSourceRelativePath**）来构造的。
@@ -215,14 +250,13 @@ variables 节定义资源的名称、“WUS 服务”和“EUS 服务”这两�
 1. 在 Visual Studio Code 或任何文本编辑器中打开 **\ADMTemplates\CreateADMServiceTopology.Parameters**。
 2. 填充参数值：
 
-    * **namePrefix**：输入包含 4-5 个字符的字符串。 此前缀用于创建唯一的 Azure 资源名称。
+    * **projectName**：输入包含 4-5 个字符的字符串。 此名称用于创建唯一的 Azure 资源名称。
     * **azureResourceLocation**：如果你不熟悉 Azure 位置，请在本教程中使用 **centralus**。
     * **artifactSourceSASLocation**：输入用于存储要部署的服务单元模板和参数文件的根目录（Blob 容器）的 SAS URI。  请参阅[准备项目](#prepare-the-artifacts)。
     * **templateArtifactRoot**：除非你要更改项目的文件夹结构，否则请在本教程中使用 **templates/1.0.0.0**。
-    * **targetScriptionID**：输入 Azure 订阅 ID。
 
 > [!IMPORTANT]
-> 拓扑模板和实施模板共享一些通用参数。 这些参数的值必须相同。 这些参数是：**namePrefix**、**azureResourceLocation** 和 **artifactSourceSASLocation**（在本教程中，这两个项目源共享同一个存储帐户）。
+> 拓扑模板和实施模板共享一些通用参数。 这些参数的值必须相同。 这些参数是：**projectName**、**azureResourceLocation** 和 **artifactSourceSASLocation**（在本教程中，这两个项目源共享同一个存储帐户）。
 
 ## <a name="create-the-rollout-template"></a>创建实施模板
 
@@ -234,7 +268,7 @@ variables 节定义资源的名称、“WUS 服务”和“EUS 服务”这两�
 
 ![Azure 部署管理器教程 - 实施模板参数](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-parameters.png)
 
-* **namePrefix**：此前缀用于创建部署管理器资源的名称。 例如，如果使用“jdoe”前缀，则实施名称为 **jdoe**Rollout。  名称在模板的 variables 节中定义。
+* **projectName**：此名称用于创建部署管理器资源的名称。 例如，如果使用“jdoe”，则实施名称为 **jdoe**Rollout。  名称在模板的 variables 节中定义。
 * **azureResourcelocation**：为了简化教程，除非另行指定，否则所有部署管理器资源共享此位置。 目前，只能在“美国中部”或“美国东部 2”区域中创建 Azure 部署管理器资源。  
 * **artifactSourceSASLocation**：存储要部署的服务单元模板和参数文件的根目录（Blob 容器）的 SAS URI。  请参阅[准备项目](#prepare-the-artifacts)。
 * **binaryArtifactRoot**：默认值为 **binaries/1.0.0.0**。 除非你要更改[准备项目](#prepare-the-artifacts)中所述的文件夹结构，否则请不要更改此值。 本教程使用相对路径。  完整路径是通过连接 CreateWebApplicationParameters.json 中指定的 **artifactSourceSASLocation**、**binaryArtifactRoot** 和 **deployPackageUri** 来构造的。  请参阅[准备项目](#prepare-the-artifacts)。
@@ -276,7 +310,7 @@ variables 节定义资源的名称。 请确保服务拓扑名称、服务名称
 1. 在 Visual Studio Code 或任何文本编辑器中打开 **\ADMTemplates\CreateADMRollout.Parameters**。
 2. 填充参数值：
 
-    * **namePrefix**：输入包含 4-5 个字符的字符串。 此前缀用于创建唯一的 Azure 资源名称。
+    * **projectName**：输入包含 4-5 个字符的字符串。 此名称用于创建唯一的 Azure 资源名称。
     * **azureResourceLocation**：目前，只能在“美国中部”或“美国东部 2”区域中创建 Azure 部署管理器资源。  
     * **artifactSourceSASLocation**：输入用于存储要部署的服务单元模板和参数文件的根目录（Blob 容器）的 SAS URI。  请参阅[准备项目](#prepare-the-artifacts)。
     * **binaryArtifactRoot**：除非你要更改项目的文件夹结构，否则请在本教程中使用 **binaries/1.0.0.0**。
@@ -287,7 +321,7 @@ variables 节定义资源的名称。 请确保服务拓扑名称、服务名称
         ```
 
 > [!IMPORTANT]
-> 拓扑模板和实施模板共享一些通用参数。 这些参数的值必须相同。 这些参数是：**namePrefix**、**azureResourceLocation** 和 **artifactSourceSASLocation**（在本教程中，这两个项目源共享同一个存储帐户）。
+> 拓扑模板和实施模板共享一些通用参数。 这些参数的值必须相同。 这些参数是：**projectName**、**azureResourceLocation** 和 **artifactSourceSASLocation**（在本教程中，这两个项目源共享同一个存储帐户）。
 
 ## <a name="deploy-the-templates"></a>部署模板
 
@@ -296,19 +330,14 @@ variables 节定义资源的名称。 请确保服务拓扑名称、服务名称
 1. 运行脚本以部署服务拓扑。
 
     ```azurepowershell
-    $resourceGroupName = "<Enter a Resource Group Name>"
-    $location = "Central US"
-    $filePath = "<Enter the File Path to the Downloaded Tutorial Files>"
-
-    # Create a resource group
-    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
-
     # Create the service topology
     New-AzResourceGroupDeployment `
         -ResourceGroupName $resourceGroupName `
         -TemplateFile "$filePath\ADMTemplates\CreateADMServiceTopology.json" `
         -TemplateParameterFile "$filePath\ADMTemplates\CreateADMServiceTopology.Parameters.json"
     ```
+
+    如果从与运行[准备项目](#prepare-the-artifacts)脚本的 PowerShell 会话不同的 PowerShell 会话中运行此脚本，则需要首先重新填充变量，其中包括 **$resourceGroupName** 和 **$filePath**。
 
     > [!NOTE]
     > `New-AzResourceGroupDeployment` 是异步调用。 成功消息只意味着部署已成功开始。 若要验证部署，请参阅此过程的步骤 2 和步骤 4。
@@ -333,7 +362,7 @@ variables 节定义资源的名称。 请确保服务拓扑名称、服务名称
 
     ```azurepowershell
     # Get the rollout status
-    $rolloutname = "<Enter the Rollout Name>" # "adm0925Rollout" is the rollout name used in this tutorial
+    $rolloutname = "${projectName}Rollout" # "adm0925Rollout" is the rollout name used in this tutorial
     Get-AzDeploymentManagerRollout `
         -ResourceGroupName $resourceGroupName `
         -Name $rolloutName `
@@ -424,9 +453,9 @@ variables 节定义资源的名称。 请确保服务拓扑名称、服务名称
 1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
 2. 使用“按名称筛选”字段来缩小本教程创建的资源组的范围。  应有 3-4 个资源组：
 
-    * **&lt;namePrefix>rg**：包含部署管理器资源。
-    * **&lt;namePrefix>ServiceWUSrg**：包含 ServiceWUS 定义的资源。
-    * **&lt;namePrefix>ServiceEUSrg**：包含 ServiceEUS 定义的资源。
+    * **&lt;projectName>rg**：包含部署管理器资源。
+    * **&lt;projectName>ServiceWUSrg**：包含 ServiceWUS 定义的资源。
+    * **&lt;projectName>ServiceEUSrg**：包含 ServiceEUS 定义的资源。
     * 用户定义的托管标识的资源组。
 3. 选择资源组名称。
 4. 在顶部菜单中选择“删除资源组”。 

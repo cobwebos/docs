@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
-ms.openlocfilehash: f89f9a08feb2ea2bcb7a9e8180002557df1d2b56
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e652237e6faa705aa3ea09e7cf80c4eb692acc98
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300308"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375591"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>添加、更新或删除用于 Azure 的信用卡
 
@@ -131,7 +131,7 @@ ms.locfileid: "71300308"
 1. 选择现有卡或添加新卡。
 
 ## <a name="troubleshooting"></a>故障排除
-如果在添加或更新信用卡时遇到错误，请尝试以专用模式打开浏览器。
+我们不支持虚拟卡或预付卡。 如果在添加或更新有效信用卡时遇到错误，请尝试以专用模式打开浏览器。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 以下部分回答了一些有关如何更改信用卡信息的常见问题。

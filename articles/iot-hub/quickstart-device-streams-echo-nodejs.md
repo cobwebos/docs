@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: e85f2ea849aca9deeb92da7d7b2381d6c2b1b725
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: c7257ec35f9a53f84edebd5e15b7144c49daf682
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802444"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514959"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>快速入门：通过 IoT 中心设备流在 Node.js 中与设备应用程序通信（预览）
 
@@ -58,7 +58,7 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 node --version
 ```
 
-运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
+运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 命令添加到 Azure CLI。
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
@@ -82,10 +82,10 @@ az extension add --name azure-cli-iot-ext
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
-   **MyDevice**：这是为注册的设备提供的名称。 如示例中所示使用 MyDevice。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   **MyDevice**：这是所注册的设备的名称。 建议使用 **MyDevice**，如图所示。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 2. 还需一个服务连接字符串，以便后端应用程序能够连接到 IoT 中心并检索消息  。 以下命令检索 IoT 中心的服务连接字符串：
@@ -93,10 +93,10 @@ az extension add --name azure-cli-iot-ext
     **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
     ```
 
-    记下返回的值，如下所示：
+    请记下返回的服务连接字符串，以便稍后在此快速入门中使用。 如以下示例所示：
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
@@ -106,7 +106,7 @@ az extension add --name azure-cli-iot-ext
 
 ### <a name="run-the-device-side-application"></a>运行设备端应用程序
 
-如前所述，IoT 中心 Node.js SDK 仅支持服务端的设备流。 对于设备端应用程序，请使用以下快速入门之一附带的设备程序：
+如前所述，IoT 中心 Node.js SDK 仅支持服务端的设备流。 对于设备端应用程序，请使用这些快速入门中提供的随附设备程序之一：
 
    * [通过 IoT 中心设备流使用 C 与设备应用进行通信](./quickstart-device-streams-echo-c.md)
 
@@ -116,21 +116,21 @@ az extension add --name azure-cli-iot-ext
 
 ### <a name="run-the-service-side-application"></a>运行服务端应用程序
 
-假设设备端应用程序正在运行，请遵循以下步骤运行以 Node.js 编写的服务端应用程序：
+假设设备端应用程序正在运行，请在本地终端窗口中按照以下步骤使用 Node.js 运行服务端应用程序：
 
 * 以环境变量的形式提供服务凭据和设备 ID。
  
    ```cmd/sh
    # In Linux
-   export IOTHUB_CONNECTION_STRING="<provide_your_service_connection_string>"
+   export IOTHUB_CONNECTION_STRING="{ServiceConnectionString}"
    export STREAMING_TARGET_DEVICE="MyDevice"
 
    # In Windows
-   SET IOTHUB_CONNECTION_STRING=<provide_your_service_connection_string>
+   SET IOTHUB_CONNECTION_STRING={ServiceConnectionString}
    SET STREAMING_TARGET_DEVICE=MyDevice
    ```
   
-   将 `MyDevice` 更改为你给设备选择的设备 ID。
+   更改 ServiceConnectionString 占位符以匹配服务连接字符串，并更改 **MyDevice** 以匹配设备 ID（如果你给自己的设备起了不同的名称）。
 
 * 导航到解压缩的项目文件夹中的 `Quickstarts/device-streams-service`，并使用节点来运行示例。
 
@@ -158,7 +158,7 @@ az extension add --name azure-cli-iot-ext
 
 在本快速入门中，你设置了一个 IoT 中心、注册了一个设备、在设备和服务端的应用程序之间建立了一个设备流，并通过该流在应用程序之间来回发送数据。
 
-请使用以下链接详细了解设备流：
+使用以下链接详细了解设备流：
 
 > [!div class="nextstepaction"]
 > [设备流概述](./iot-hub-device-streams-overview.md) 

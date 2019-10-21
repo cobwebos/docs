@@ -10,18 +10,18 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: d125328d903b419aa81c54ffecf1f549d4cb4fe2
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: d607608167e1287c7df35157ccb9870f40f22943
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330792"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516707"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>快速入门：控制连接到 IoT 中心的设备 (Android)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入云，并从云管理设备。 在本快速入门中，会使用直接方法来控制连接到 IoT 中心的模拟设备  。 可使用直接方法远程更改连接到 IoT 中心的设备的行为。
+IoT 中心是一项 Azure 服务，使你可以从云管理 IoT 设备，并将大量设备遥测引入云以进行存储或处理。 在本快速入门中，会使用直接方法来控制连接到 IoT 中心的模拟设备  。 可使用直接方法远程更改连接到 IoT 中心的设备的行为。
 
 本快速入门使用两个预先编写的 Java 应用程序：
 
@@ -63,11 +63,11 @@ IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入�
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
-   **MyAndroidDevice**：此值是为注册的设备提供的名称。 请按显示的方法使用 MyAndroidDevice。 如果为设备选择其他名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   **MyAndroidDevice**：这是所注册的设备的名称。 建议使用 **MyAndroidDevice**，如图所示。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
     az iot hub device-identity create \
-      --hub-name YourIoTHubName --device-id MyAndroidDevice
+      --hub-name {YourIoTHubName} --device-id MyAndroidDevice
     ```
 
 2. 在 Azure Cloud Shell 中运行以下命令，以获取刚注册设备的_设备连接字符串_：
@@ -76,7 +76,7 @@ IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入�
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
-      --hub-name YourIoTHubName \
+      --hub-name {YourIoTHubName} \
       --device-id MyAndroidDevice \
       --output table
     ```
@@ -94,14 +94,14 @@ IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入�
 **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
 ```azurecli-interactive
-az iot hub show-connection-string --name YourIoTHubName --policy-name service --output table
+az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
 ```
 
 记下如下所示的服务连接字符串：
 
 `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
-稍后会在快速入门中用到此值。 服务连接字符串与设备连接字符串不同。
+稍后会在快速入门中用到此值。 此服务连接字符串与你在上一步中记录的设备连接字符串不同。
 
 ## <a name="listen-for-direct-method-calls"></a>侦听直接方法调用
 
@@ -135,14 +135,14 @@ az iot hub show-connection-string --name YourIoTHubName --policy-name service --
 
 ## <a name="read-the-telemetry-from-your-hub"></a>从中心读取遥测数据
 
-在本部分，将使用具有 [IoT 扩展](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest)的 Azure Cloud Shell 监视 Android 设备发送的设备消息。
+在本部分中，将使用具有 [IoT 扩展](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest)的 Azure Cloud Shell 监视 Android 设备发送的消息。
 
 1. 通过 Azure Cloud Shell 运行以下命令以建立连接并从 IoT 中心读取消息：
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli-interactive
-    az iot hub monitor-events --hub-name YourIoTHubName --output table
+    az iot hub monitor-events --hub-name {YourIoTHubName} --output table
     ```
 
     以下屏幕截图显示了 IoT 中心接收 Android 设备发送的遥测数据后的输出：
@@ -157,13 +157,13 @@ az iot hub show-connection-string --name YourIoTHubName --policy-name service --
 
 请在单独的物理 Android 设备或 Android 模拟器上运行此应用。
 
-IoT 中心后端服务应用程序通常在云中运行，这样可以更轻松地减轻与敏感的连接字符串相关联的风险。该字符串控制某个 IoT 中心的所有设备。 在此示例中，我们将它作为 Android 应用运行，仅仅是为了演示。 其他语言版本的本快速入门提供其他与后端服务应用程序更匹配的示例。
+IoT 中心后端服务应用程序通常在云中运行，这样可以更轻松地减轻与敏感的连接字符串相关联的风险。该字符串控制某个 IoT 中心的所有设备。 在此示例中，我们将它作为 Android 应用运行，仅仅是为了演示。 其他语言版本的本快速入门提供与典型后端服务应用程序更匹配的示例。
 
 1. 在 Android Studio 中打开 GitHub 服务示例 Android 项目。 此项目位于克隆的或下载的 [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存储库副本的以下目录中。
 
         \azure-iot-samples-java\iot-hub\Samples\service\AndroidSample
 
-2. 在 Android Studio 中打开示例项目的 *gradle.properties*，将 **ConnectionString** 和 **DeviceId** 属性的值更新为此前记下的服务连接字符串和已注册的 Android 设备 ID。
+2. 在 Android Studio 中，打开示例项目的 *gradle.properties*。 将 **ConnectionString** 和 **DeviceId** 属性的值更新为此前记下的服务连接字符串和已注册的 Android 设备 ID。
 
     ```
     ConnectionString=HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}

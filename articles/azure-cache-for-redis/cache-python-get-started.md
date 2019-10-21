@@ -1,5 +1,5 @@
 ---
-title: 创建使用 Azure Redis 缓存的 Python 应用快速入门 | Microsoft Docs
+title: 快速入门：创建使用 Azure Redis 缓存的 Python 应用
 description: 本快速入门介绍如何创建使用 Azure Redis 缓存的 Python 应用
 services: cache
 documentationcenter: ''
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: fcb5d74305375c9883f2d601a2ab7d2d9a50b9cb
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.custom:
+- mvc
+- seo-python-october2019
+ms.openlocfilehash: 5367896c931bf7c5f52b0874d49ede2fc78614ab
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743937"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72435532"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>快速入门：将 Azure Redis 缓存与 Python 配合使用
+# <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>快速入门：创建使用 Azure Redis 缓存的 Python 应用
 
-在本快速入门中，会将 Azure Redis 缓存合并到 Python 应用中，以便能够访问 Azure 中的任何应用程序都可以访问的安全专用缓存。
+在本文中，会将 Azure Redis 缓存合并到 Python 应用中，以便能够访问 Azure 中的任何应用程序都可以访问的安全专用缓存。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,7 +48,7 @@ ms.locfileid: "70743937"
     pip3 install redis
 ```
 
-![安装 redis-py](./media/cache-python-get-started/cache-python-install-redis-py.png)
+![将 redis-py Python 接口安装到 Azure Redis 缓存](./media/cache-python-get-started/cache-python-install-redis-py.png)
 
 
 ## <a name="read-and-write-to-the-cache"></a>从缓存中读取数据以及向其中写入数据
@@ -98,7 +100,7 @@ for c in result:
 
 使用 Python 运行该脚本。
 
-![完成的 Python 测试](./media/cache-python-get-started/cache-python-completed.png)
+![运行 Python 脚本以测试 Azure Redis 缓存中的缓存访问](./media/cache-python-get-started/cache-python-completed.png)
 
 
 ## <a name="clean-up-resources"></a>清理资源
@@ -115,7 +117,7 @@ for c in result:
 
 在“按名称筛选...”文本框中，输入资源组的名称  。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，选择“...”，然后选择“删除资源组”   。
 
-![删除](./media/cache-web-app-howto/cache-delete-resource-group.png)
+![删除 Azure Redis 缓存的快速入门资源组](./media/cache-web-app-howto/delete-your-resource-group-for-azure-cache-for-redis.png)
 
 系统会要求确认是否删除资源组。 重新键入资源组的名称进行确认，然后选择“删除”  。
 

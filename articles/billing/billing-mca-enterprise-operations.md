@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b6d1de1ee24ce9ca67d3bd8fa514ec9ea7a5c771
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ca0f83628edeef9e55ebc81798d0229791b80a7a
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709541"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375507"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>完成 Microsoft 客户协议计费帐户中的企业协议任务
 
@@ -27,7 +27,7 @@ ms.locfileid: "71709541"
 
 下图描绘了计费在新计费帐户中的组织方式。
 
-![ea-mca-post-transition-hierarchy 插图](./media/billing-mca-setup-account/mca-post-transition-hierarchy.png)
+![ea-mca-post-transition-hierarchy 插图](./media/mca-setup-account/mca-post-transition-hierarchy.png)
 
 | 企业协议   | Microsoft 客户协议    |
 |------------------------|--------------------------------------------------------|
@@ -72,9 +72,9 @@ ms.locfileid: "71709541"
 
 将为计费帐户中的每个计费配置文件生成每月发票。 对于每个发票，可以下载 Azure 使用情况和费用 csv 文件、价目表和税务文档（如果适用）。 还可以下载 Azure 使用情况和费用 csv 文件来了解当月的费用。
 
-若要了解如何下载 Azure 使用情况和费用 csv 文件，请参阅[下载 Microsoft 客户协议的使用情况](billing-download-azure-daily-usage.md#download-usage-for-your-microsoft-customer-agreement)。
+若要了解如何下载 Azure 使用情况和费用 csv 文件，请参阅[下载 Microsoft 客户协议的使用情况](billing-download-azure-daily-usage.md)。
 
-若要了解如何下载价目表，请参阅[下载 Microsoft 客户协议的定价](billing-ea-pricing.md#microsoft-customer-agreement-pricing)。
+若要了解如何下载价目表，请参阅[下载 Microsoft 客户协议的定价](billing-ea-pricing.md)。
 
 若要了解如何下载税务文档，请参阅[查看 Microsoft 客户协议的税务文档](billing-mca-download-tax-document.md#view-and-download-tax-documents)。
 
@@ -90,7 +90,7 @@ ms.locfileid: "71709541"
 
 ### <a name="create-a-new-account"></a>创建新帐户
 
-为用户分配对发票科目的 Azure 订阅创建者角色，使他们有权创建 Azure 订阅，这类似于使用企业协议注册中创建的帐户。 有关详细信息，请参阅[为其他人授予创建 Azure 订阅的权限](billing-mca-create-subscription.md#give-others-permission)。
+为用户分配对发票科目的 Azure 订阅创建者角色，使他们有权创建 Azure 订阅，这类似于使用企业协议注册中创建的帐户。 有关分配角色的详细信息，请参阅[在 Azure 门户中管理计费角色](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
 
 ## <a name="changes-for-department-administrators"></a>部门管理员的变化
 
@@ -116,7 +116,7 @@ ms.locfileid: "71709541"
 
 ### <a name="create-a-new-account-in-your-department"></a>在部门中创建新帐户
 
-为用户分配 Azure 订阅创建者角色，该角色针对为部门创建的发票科目。 有关详细信息，请参阅[为其他人授予创建 Azure 订阅的权限](billing-mca-create-subscription.md#give-others-permission)。
+为用户分配 Azure 订阅创建者角色，该角色针对为部门创建的发票科目。 有关分配角色的详细信息，请参阅[在 Azure 门户中管理计费角色](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
 
 ### <a name="view-charges-for-accounts-in-your-departments"></a>查看部门中帐户的费用
 

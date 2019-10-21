@@ -1,5 +1,5 @@
 ---
-title: 快速入门：通过 Microsoft 基因组学运行工作流
+title: 快速入门：运行工作流
 description: 本快速入门演示如何将输入数据加载到 Azure Blob 存储中并通过 Microsoft 基因组学服务运行工作流。
 services: genomics
 author: grhuynh
@@ -8,12 +8,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
-ms.openlocfilehash: b2d68f878aed5ce400214b6bdf6e1c0d713043bb
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: e7c90cc0ce85f2a90cc2ddc2cd086fd2626f4d96
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670745"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248542"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>快速入门：通过 Microsoft 基因组学服务运行工作流
 
@@ -38,7 +38,7 @@ ms.locfileid: "67670745"
 
  |**设置**          |  **建议的值**  | **字段说明** |
  |:-------------       |:-------------         |:----------            |
- |订阅         | 订阅名称|这是 Azure 服务的计费单位 - 有关订阅的详细信息，请参阅[订阅](https://account.azure.com/Subscriptions) |      
+ |Subscription         | 订阅名称|这是 Azure 服务的计费单位 - 有关订阅的详细信息，请参阅[订阅](https://account.azure.com/Subscriptions) |      
  |资源组       | MyResourceGroup       |  可以通过资源组将多个 Azure 资源（存储帐户、基因组学帐户等）分到一个组中，方便管理。 有关详细信息，请参阅[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)。 请参阅[命名规则](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的资源组名称 |
  |帐户名         | MyGenomicsAccount     |选择唯一的帐户标识符。 请参阅[命名规则](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称 |
  |位置                   | 美国西部 2                    |    在美国西部 2、西欧和东南亚提供服务 |
@@ -112,12 +112,12 @@ Microsoft 基因组学服务要求将输入作为块 Blob 存储在 Azure 存储
 
 ![存储的“创建”边栏选项卡](./media/quickstart-run-genomics-workflow-portal/genomics-storage-create-blade.png "存储的“创建”边栏选项卡")
 
-为存储帐户配置以下信息，如上图所示。 对存储帐户使用大多数标准选项，仅指定帐户是 Blob 存储帐户，不是常规用途帐户。 Blob 存储帐户的下载和上传速度是常规用途帐户的 2-5 倍。  建议使用默认的部署模型，即资源管理器。  
+为存储帐户配置以下信息，如上图所示。 对存储帐户使用大多数标准选项，仅指定帐户是 Blob 存储帐户，不是常规用途帐户。 Blob 存储帐户的下载和上传速度是常规用途帐户的 2-5 倍。  建议使用默认的部署模型，即 Azure 资源管理器。  
 
 
  |**设置**          |  **建议的值**  | **字段说明** |
  |:-------------------------       |:-------------         |:----------            |
- |订阅         | Azure 订阅 |有关订阅的详细信息，请参阅[订阅](https://account.azure.com/Subscriptions) |      
+ |Subscription         | Azure 订阅 |有关订阅的详细信息，请参阅[订阅](https://account.azure.com/Subscriptions) |      
  |资源组       | MyResourceGroup       |  可以选择同一资源组作为基因组学帐户。 请参阅[命名规则](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的资源组名称 |
  |存储帐户名称         | MyStorageAccount     |选择唯一的帐户标识符。 请参阅[命名规则](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称 |
  |位置                  | 美国西部 2                  | 使用的位置与基因组学帐户的位置相同，目的是降低传出费用和延迟。  | 
@@ -139,7 +139,7 @@ Microsoft 基因组学服务要求使用双端读数作为输入文件。 进行
 [https://msgensampledata.blob.core.windows.net/small/chr21_2.fq.gz](https://msgensampledata.blob.core.windows.net/small/chr21_2.fq.gz)
 
 
-需要在存储帐户中为输入数据创建一个 Blob 容器，为输出数据创建另一个 Blob 容器。  请将输入数据上传到输入 Blob 容器中。 执行此操作可以使用各种工具，包括 [Microsoft Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)、[blobporter](https://github.com/Azure/blobporter) 或 [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
+需要在存储帐户中为输入数据创建一个 Blob 容器，为输出数据创建另一个 Blob 容器。  请将输入数据上传到输入 Blob 容器中。 执行此操作可以使用各种工具，包括 [Microsoft Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)、[BlobPorter](https://github.com/Azure/blobporter) 或 [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
 
 
 

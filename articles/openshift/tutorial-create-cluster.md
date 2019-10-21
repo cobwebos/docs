@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 05/14/2019
-ms.openlocfilehash: 4c186787af08a565dc100dfbd79d166688d89d8f
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 01319de8fd72875ca35bb7a869a6eaedee62f2a7
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013443"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285529"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>教程：创建 Azure Red Hat OpenShift 群集
 
@@ -126,6 +126,9 @@ VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query i
 ### <a name="create-the-cluster"></a>创建群集
 
 现在已准备好创建群集。 以下命令将在指定的 Azure AD 租户中创建群集、指定要用作安全主体的 Azure AD 应用对象和机密，以及包含对群集具有管理访问权限的成员的安全组。
+
+> [!IMPORTANT]
+> 在创建群集之前，请确保已正确添加 Azure AD 应用的适当权限，如[此处所说明](howto-aad-app-configuration.md#add-api-permissions)
 
 如果**没有**将群集对等互连到虚拟网络，请使用以下命令：
 

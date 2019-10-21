@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 07/01/2019
 ms.author: amberb
-ms.openlocfilehash: a271f03788bc7b831e6d8daff3d53503db5a2710
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 4b2533131407081b97bb491895d96cf566442090
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67491039"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375444"
 ---
 检查协议类型以确定计费帐户的类型
  
@@ -23,7 +23,7 @@ ms.locfileid: "67491039"
  
     ![显示“属性”页中的 Microsoft 客户协议的屏幕截图](./media/billing-check-account-type/billing-mca-property.png)
     
-    “属性”页上的“计费帐户类型”  确定帐户类型。 它可以是 Microsoft 联机服务计划、企业协议或 Microsoft 客户协议。 若要了解有关计费帐户类型的详细信息，请参阅[在 Azure 门户中查看计费帐户](../articles/billing/billing-view-all-accounts.md)。  
+    “属性”页上的“计费帐户类型”  确定帐户类型。 它可以是 Microsoft 联机服务计划、企业协议、Microsoft 客户协议或 Microsoft 合作伙伴协议。 若要了解有关计费帐户类型的详细信息，请参阅[在 Azure 门户中查看计费帐户](../articles/billing/billing-view-all-accounts.md)。  
  
 4. 如果有权访问多个计费范围，请从左侧选择“计费帐户”或“所有计费范围”   。 检查“计费帐户类型”  列中的类型。
  

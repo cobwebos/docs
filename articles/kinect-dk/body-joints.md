@@ -8,12 +8,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, 移植, 人体, 跟踪, 关节, 层次结构, 骨骼, 连接
-ms.openlocfilehash: 286252bbddc5b02e18d2d06ecb18b8876f9d6434
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 5b6b6a255f873ee9c9790c39dac99a2b8e640c5d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232456"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293433"
 ---
 # <a name="azure-kinect-body-tracking-joints"></a>Azure Kinect 人体跟踪关节
 
@@ -31,7 +31,7 @@ Azure Kinect 人体跟踪可以同时跟踪多个人体。 每个人体包括帧
 
 ## <a name="joint-hierarchy"></a>关节层次结构
 
-骨架包括 26 个关节，层次结构按照从人体中心向四肢的流向分布。 每个连接（骨骼）将父关节与子关节链接起来。 该图演示了关节位置以及相对于人体的连接。
+骨架包括 32 个关节，关节层次结构按照从人体中心向四肢的流向分布。 每个连接（骨骼）将父关节与子关节链接起来。 该图演示了关节位置以及相对于人体的连接。
 
 ![关节层次结构](./media/concepts/joint-hierarchy.png)
 
@@ -47,24 +47,30 @@ Azure Kinect 人体跟踪可以同时跟踪多个人体。 每个人体包括帧
 | 5    |SHOULDER_LEFT  | CLAVICLE_LEFT  |
 | 6    |ELBOW_LEFT     | SHOULDER_LEFT  |
 | 7    |WRIST_LEFT     | ELBOW_LEFT     |
-| 8    |CLAVICLE_RIGHT | SPINE_CHEST    |
-| 9    |SHOULDER_RIGHT | CLAVICLE_RIGHT |
-| 10   |ELBOW_RIGHT    | SHOULDER_RIGHT |
-| 11   |WRIST_RIGHT    | ELBOW_RIGHT    |
-| 12   |HIP_LEFT       | PELVIS         |
-| 13   |KNEE_LEFT      | HIP_LEFT       |
-| 14   |ANKLE_LEFT     | KNEE_LEFT      |
-| 15   |FOOT_LEFT      | ANKLE_LEFT     |
-| 16   |HIP_RIGHT      | PELVIS         |
-| 17   |KNEE_RIGHT     | HIP_RIGHT      |
-| 18   |ANKLE_RIGHT    | KNEE_RIGHT     |
-| 19   |FOOT_RIGHT     | ANKLE_RIGHT    |
-| 20   |HEAD           | NECK           |
-| 21   |NOSE           | HEAD           |
-| 22   |EYE_LEFT       | HEAD           |
-| 23   |EAR_LEFT       | HEAD           |
-| 24   |EYE_RIGHT      | HEAD           |
-| 25   |EAR_RIGHT      | HEAD           |
+| 8    |HAND_LEFT      | WRIST_LEFT     |
+| 9    |HANDTIP_LEFT   | HAND_LEFT      |
+| 10   |THUMB_LEFT     | WRIST_LEFT     |
+| 11   |CLAVICLE_RIGHT | SPINE_CHEST    |
+| 12   |SHOULDER_RIGHT | CLAVICLE_RIGHT |
+| 13   |ELBOW_RIGHT    | SHOULDER_RIGHT |
+| 14   |WRIST_RIGHT    | ELBOW_RIGHT    |
+| 15   |HAND_RIGHT     | WRIST_RIGHT    |
+| 16   |HANDTIP_RIGHT  | HAND_RIGHT     |
+| 17   |THUMB_RIGHT    | WRIST_RIGHT    |
+| 18   |HIP_LEFT       | PELVIS         |
+| 19   |KNEE_LEFT      | HIP_LEFT       |
+| 20   |ANKLE_LEFT     | KNEE_LEFT      |
+| 21   |FOOT_LEFT      | ANKLE_LEFT     |
+| 22   |HIP_RIGHT      | PELVIS         |
+| 23   |KNEE_RIGHT     | HIP_RIGHT      |
+| 24   |ANKLE_RIGHT    | KNEE_RIGHT     |
+| 25   |FOOT_RIGHT     | ANKLE_RIGHT    |
+| 26   |HEAD           | NECK           |
+| 27   |NOSE           | HEAD           |
+| 28   |EYE_LEFT       | HEAD           |
+| 29   |EAR_LEFT       | HEAD           |
+| 30   |EYE_RIGHT      | HEAD           |
+| 31   |EAR_RIGHT      | HEAD           |
 
 ## <a name="next-steps"></a>后续步骤
 

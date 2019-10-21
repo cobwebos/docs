@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 85471323a7f8918d80b7c0944fe5c255e9fa836a
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: cc01b12e493f3e0d3cd63786c27819d4704f97f4
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "69018922"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263873"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中运行应用程序
 
@@ -115,7 +115,7 @@ azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   6
 
 ![Azure 上的 Kubernetes 群集映像](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-如果应用程序未加载，可能是因为映像注册表存在授权问题。 若要查看容器的状态，请使用 `kubectl get pods` 命令。 如果无法拉取容器映像，请参阅[允许使用 Kubernetes 机密访问容器注册表](https://docs.microsoft.com/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret)。
+如果应用程序未加载，可能是因为映像注册表存在授权问题。 若要查看容器的状态，请使用 `kubectl get pods` 命令。 如果无法拉取容器映像，请参阅[使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证](cluster-container-registry-integration.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

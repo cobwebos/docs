@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdb1ae92b17bef281e3b82a8c1a21344fa37f0da
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dce3fea1427632f37d826b79016e3aa3e22dad5f
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345530"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264174"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入门：从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph API
 
@@ -266,7 +266,7 @@ self.applicationContext!.acquireTokenSilent(with: silentParams) { (result, error
 > |其中： ||
 > |---------|---------|
 > | `scopes` | 包含所请求的作用域（即针对 Microsoft Graph 的 `[ "user.read" ]` 或针对自定义 Web API (`api://<Application ID>/access_as_user`) 的 `[ "<Application ID URL>/scope" ]`） |
-> | `account` | 请求令牌时对应的帐户。 本快速入门是单帐户应用程序。若要构建多帐户应用，需定义相关逻辑来标识用于令牌请求 `applicationContext.account(forHomeAccountId: self.homeAccountId)` 的具体帐户 |
+> | `account` | 请求令牌时对应的帐户。 本快速入门介绍单帐户应用程序。 如果要构建多帐户应用，则需要使用 `applicationContext.account(forHomeAccountId: self.homeAccountId)` 定义相关逻辑以标识用于令牌请求的帐户 |
 
 ## <a name="next-steps"></a>后续步骤
 

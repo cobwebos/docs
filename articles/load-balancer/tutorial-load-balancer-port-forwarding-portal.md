@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: ee4ed818364d04f03caedc8b876ea29c41cb59b7
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: aa4837ec1fd8ef19eb6d0c77f946ef358becd542
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273445"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72428222"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>教程：使用门户在 Azure 负载均衡器中配置端口转发
 
@@ -53,7 +53,7 @@ ms.locfileid: "68273445"
     | Resource group         | 选择“新建”并在文本框中键入 MyResourceGroupLB   。|
     | Name                   | *myLoadBalancer*                                   |
     | 区域         | 选择“西欧”  。                                        |
-    | Type          | 选择“公共”。                                         |
+    | 类型          | 选择“公共”。                                         |
     | SKU           | 选择“标准”  。                          |
     | 公共 IP 地址 | 选择“新建”。  |
     | 公共 IP 地址名称              | 在文本框中键入 myPublicIP  。   |
@@ -94,7 +94,7 @@ ms.locfileid: "68273445"
    - **密码**：键入“Azure1234567”  。 
      在“确认密码”  字段中，重新键入该密码。
    
-1. 选择“网络”选项卡，或选择  **“下一步:磁盘”，然后选择“下一步:网络”** 。 
+1. 选择“网络”选项卡，或选择   “下一步:磁盘”，然后选择“下一步:网络”  。 
    
    确保选中以下项：
    - **虚拟网络**：**MyVNet**
@@ -235,6 +235,7 @@ ms.locfileid: "68273445"
    - **名称**：键入“MyNATRuleVM1”  。
    - **端口**：键入 4221  。
    - **目标虚拟机**：从下拉列表中选择“MyVM1”  。
+   - **网络 IP 配置** ：从下拉列表中选择“ipconfig1”  。
    - **端口映射**：选择“自定义”  。
    - **目标端口**：键入 3389  。
    

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中心和 Firebase Cloud Messaging 将通知推送到 Android 应用 | Microsoft Docs
+title: 使用 Azure 通知中心和 Firebase Cloud Messaging 将推送通知发送到 Android | Microsoft Docs
 description: 本教程介绍如何使用 Azure 通知中心和 Google Firebase Cloud Messaging 将通知推送到 Android 设备。
 services: notification-hubs
 documentationcenter: android
@@ -18,14 +18,14 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: c40b2e236051d8888d1b9135a2c5259000798319
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 1af109405118754daa08adf848f1da3f04534455
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212301"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387501"
 ---
-# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>教程：使用 Azure 通知中心和 Google Firebase Cloud Messaging 将通知推送到 Android 设备
+# <a name="tutorial-send-push-notifications-to-android-devices-using-google-firebase-cloud-messaging"></a>教程：使用 Google Firebase Cloud Messaging 将推送通知发送到 Android 设备
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 

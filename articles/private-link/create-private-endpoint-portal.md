@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 95dbe2b9ccfdc0a900ba53668869e3872b6e51d5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d8d7c0232110d3d5b040debc3a24941988d4ee29
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030308"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372240"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>使用 Azure 门户创建专用终结点
 
-专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 本快速入门介绍如何使用 Azure PowerShell 在 Azure 虚拟网络中创建一个 VM，以及一个包含 Azure 专用终结点的 SQL 数据库服务器。 然后，你可以从该 VM 安全访问该 SQL 数据库服务器。
+专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 本快速入门介绍如何使用 Azure 门户在 Azure 虚拟网络中创建一个 VM，以及一个包含 Azure 专用终结点的 SQL 数据库服务器。 然后，可以从该 VM 安全访问该 SQL 数据库服务器。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -115,8 +115,8 @@ ms.locfileid: "72030308"
     | **实例详细信息** |  |
     | 数据库名称  | 输入 *mydatabase*。 如果此名称已被使用，请创建唯一的名称。 |
     |||
-5. 在“服务器”中选择“新建”。 ****  
-6. 在“新建服务器”中，输入或选择以下信息 **** ：
+5. 在“服务器”  中，选择“新建”  。 
+6. 在“新建服务器”中，输入或选择以下信息  ：
 
     | 设置 | 值 |
     | ------- | ----- |
@@ -125,9 +125,9 @@ ms.locfileid: "72030308"
     | 密码 | 输入所选密码。 密码长度必须至少为 8 个字符，且符合定义的要求。 |
     | 位置 | 选择要将 SQL 服务器放到的 Azure 区域。 |
     
-7. 选择“确定”。 **** 
-8. 选择“查看 + 创建”。 **** 随后你会转到“查看 + 创建”页，Azure 将在其中验证配置 **** 。 
-9. 看到“验证通过”消息时，选择“创建” **** 。 
+7. 选择“确定”  。 
+8. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置  。 
+9. 当看到 验证通过的 消息时，选择“创建”  。 
 10. 看到“验证通过”消息时选择“创建”。 
 
 ## <a name="create-a-private-endpoint"></a>创建专用终结点
@@ -147,18 +147,18 @@ ms.locfileid: "72030308"
     | Name | 输入 * myPrivateEndpoint*。 如果此名称已被使用，请创建唯一的名称。 |
     |区域|选择“WestCentralUS”。 |
     |||
-5. 选择“下一步: **** 资源”。
-6. 在“创建专用终结点 - 资源”中，输入或选择以下信息： ****
+5. 在完成时选择“下一步:  资源”。
+6. 在“创建专用终结点 - 资源”中，输入或选择以下信息： 
 
     | 设置 | 值 |
     | ------- | ----- |
     |连接方法  | 选择“连接到我的目录中的 Azure 资源”。|
     | Subscription| 选择订阅。 |
-    | 资源类型 | 选择“Microsoft.Sql/servers”。 **** |
+    | 资源类型 | 选择“Microsoft.Sql/servers”  。 |
     | 资源 |选择“myServer” |
     |目标子资源 |选择“sqlServer” |
     |||
-7. 选择“下一步: **** 配置”。
+7. 在完成时选择“下一步:  配置”。
 8. 在“创建专用终结点(预览版) - 配置”中，输入或选择以下信息： 
 
     | 设置 | 值 |
@@ -167,12 +167,12 @@ ms.locfileid: "72030308"
     | 虚拟网络| 选择“MyVirtualNetwork”。  |
     | 子网 | 选择“mySubnet”。 ** |
     |**专用 DNS 集成**||
-    |与专用 DNS 区域集成 |选择“是”。 **** |
+    |与专用 DNS 区域集成 |请选择“是”。  |
     |专用 DNS 区域 |选择“(New)privatelink.database.windows.net”  |
     |||
 
-1. 选择“查看 + 创建”。 **** 随后你会转到“查看 + 创建”页，Azure 将在其中验证配置 **** 。 
-2. 看到“验证通过”消息时，选择“创建”。 ****   **** 
+1. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置  。 
+2. 看到“验证通过”消息时，选择“创建”   。 
  
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>使用远程桌面 (RDP) 连接到 VM
 
@@ -217,26 +217,26 @@ ms.locfileid: "72030308"
     ```
 3. 安装 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)。
 
-4. 在“连接服务器”中，输入或选择以下信息 **** ：
+4. 在“连接服务器”中，输入或选择以下信息  ：
 
     | 设置 | 值 |
     | ------- | ----- |
     | 服务器类型| 选择“数据库引擎”。 |
     | 服务器名称| 选择“myserver.database.windows.net”。  |
-    | 用户名 | 输入创建 SQL 服务器期间提供的密码。 |
+    | 用户名 | 以 username@servername 形式输入用户名，这是在 SQL Server 创建过程中提供的。 |
     |密码 |输入创建 SQL 服务器期间提供的密码。 |
     |记住密码|请选择“是”。 |
     |||
-1. 选择“连接”。 ****
+1. 选择“连接”  。
 2. 浏览左侧菜单中的数据库。
 3. （可选）创建或查询 mydatabase 中的信息。
 4. 关闭与  *myVm* 建立的远程桌面连接。 
 
 ## <a name="clean-up-resources"></a>清理资源 
 用完专用终结点、SQL 服务器和 VM 之后，请删除资源组及其包含的所有资源： 
-1. 在门户顶部的“搜索”框中输入  *myResourceGroup*，然后选择从搜索结果中选择“myResourceGroup”。  ****   **   
-2. 选择“删除资源组”。 **** 
-3. 在“键入资源组名称”中输入 myResourceGroup，然后选择“删除”。 ****   ****
+1. 在门户顶部的“搜索”框中输入“myResourceGroup” **  ，然后从搜索结果中选择“myResourceGroup”。   **   
+2. 选择“删除资源组”  。 
+3. 对于“键入资源组名称”，请输入“myResourceGroup”，然后选择“删除”   。
 
 ## <a name="next-steps"></a>后续步骤
 

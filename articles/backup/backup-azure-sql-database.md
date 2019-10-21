@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1482ac4b885507e37ba5972065810682c19bebed
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 202d608e5d994cabd3d7e2e9a0887c8aab75af31
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958467"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72437831"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>关于 Azure VM 中的 SQL Server 备份
 
@@ -24,7 +24,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 * 指定要保护的 SQL Server VM 并查询其中的数据库后，Azure 备份服务将在此 VM 上以 `AzureBackupWindowsWorkload` 扩展名安装工作负荷备份扩展。
 * 此扩展包含协调器和 SQL 插件。 协调器负责触发多种操作（如配置备份、备份和还原）的工作流，插件负责实际数据流。
-* 为了能够发现此 VM 上的数据库，Azure 备份将创建帐户 `NT SERVICE\AzureWLBackupPluginSvc`。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。 Azure 备份利用 `NT AUTHORITY\SYSTEM` 帐户进行数据库发现/查询，因此此帐户需是 SQL 上的公共登录名。 如果 SQL Server VM 不是从 Azure 市场创建的，你可能会收到错误 **UserErrorSQLNoSysadminMembership**。 如果发生此错误，请[遵照这些说明](#set-vm-permissions)予以解决。
+* 为了能够发现此 VM 上的数据库，Azure 备份将创建帐户 `NT SERVICE\AzureWLBackupPluginSvc`。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。 `NT SERVICE\AzureWLBackupPluginSvc` 帐户是[虚拟服务帐户](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)，因此不需要任何密码管理。 Azure 备份利用 `NT AUTHORITY\SYSTEM` 帐户进行数据库发现/查询，因此此帐户需是 SQL 上的公共登录名。 如果 SQL Server VM 不是从 Azure 市场创建的，你可能会收到错误 **UserErrorSQLNoSysadminMembership**。 如果发生此错误，请[遵照这些说明](#set-vm-permissions)予以解决。
 * 在所选数据库上触发配置保护后，备份服务将使用备份计划和其他策略详细信息设置协调器，扩展将这些详细信息本地缓存在 VM 上。
 * 在计划的时间，协调器与插件通信，并开始使用 VDI 从 SQL 服务器流式处理备份数据。  
 * 插件将数据直接发送到恢复服务保管库，因此不需要暂存位置。 Azure 备份服务在存储帐户中加密和存储数据。
@@ -62,32 +62,33 @@ Azure 备份最近已宣布对 [EOS SQL Sever](https://docs.microsoft.com/azure/
 
 ## <a name="feature-consideration-and-limitations"></a>功能注意事项和限制
 
-- SQL Server 备份可配置在 Azure 门户或 PowerShell 中  。 我们不支持 CLI。
-- 此解决方案在 Azure 资源管理器 VM 和经典 VM 这两种[部署](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)上均受支持。
-- 运行 SQL Server 的 VM 需要建立 Internet 连接才能访问 Azure 公共 IP 地址。
-- 不支持 SQL Server **故障转移群集实例 (FCI)** 和 SQL Server Always on 故障转移群集实例。
-- 不支持对镜像数据库和数据库快照执行备份和还原操作。
-- 使用多个备份解决方案来备份独立的 SQL Server 实例或 SQL Always On 可用性组可能导致备份失败，请避免执行此操作。
-- 如果通过相同或不同的解决方案单独备份可用性组的两个节点，可能也会导致备份失败。
-- Azure 备份支持只读数据库的仅完整备份和仅复制完整备份类型 
-- 无法保护包含大量文件的数据库。 支持的最大文件数约为 1000  。  
-- 在一个保管库中最多可以备份约 2000 个 SQL Server 数据库  。 如果有大量数据库，可创建多个保管库。
-- 一次最多可配置 50 个数据库的备份；此限制有助于优化备份负载  。
-- 我们支持最高 2 TB 大小的数据库；对于超过此大小的数据库，可能会出现性能问题  。
-- 若要了解每个服务器可以保护多少个数据库，我们需要考虑带宽、VM 大小、备份频率、数据库大小等因素。[下载](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)资源规划器，它根据 VM 资源和备份策略提供每个服务器可以具有的大致数据库数。
-- 对于可用性组，将基于几个因素从不同节点获取备份。 下面概述了可用性组的备份行为。
+* SQL Server 备份可配置在 Azure 门户或 PowerShell 中  。 我们不支持 CLI。
+* 此解决方案在 Azure 资源管理器 VM 和经典 VM 这两种[部署](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)上均受支持。
+* 运行 SQL Server 的 VM 需要建立 Internet 连接才能访问 Azure 公共 IP 地址。
+* 不支持 SQL Server **故障转移群集实例 (FCI)** 和 SQL Server Always on 故障转移群集实例。
+* 不支持对镜像数据库和数据库快照执行备份和还原操作。
+* 使用多个备份解决方案来备份独立的 SQL Server 实例或 SQL Always On 可用性组可能导致备份失败，请避免执行此操作。
+* 如果通过相同或不同的解决方案单独备份可用性组的两个节点，可能也会导致备份失败。
+* Azure 备份支持只读数据库的仅完整备份和仅复制完整备份类型 
+* 无法保护包含大量文件的数据库。 支持的最大文件数约为 1000  。  
+* 在一个保管库中最多可以备份约 2000 个 SQL Server 数据库  。 如果有大量数据库，可创建多个保管库。
+* 一次最多可配置 50 个数据库的备份；此限制有助于优化备份负载  。
+* 我们支持最高 2 TB 大小的数据库；对于超过此大小的数据库，可能会出现性能问题  。
+* 若要了解每个服务器可以保护多少个数据库，我们需要考虑带宽、VM 大小、备份频率、数据库大小等因素。[下载](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)资源规划器，它根据 VM 资源和备份策略提供每个服务器可以具有的大致数据库数。
+* 对于可用性组，将基于几个因素从不同节点获取备份。 下面概述了可用性组的备份行为。
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Always On 可用性组的备份行为
 
 建议只在 AG 的一个节点上配置备份。 应该始终在主节点所在的区域配置备份。 换句话说，必须始终确保主节点存在于进行备份配置的区域。 如果 AG 的所有节点位于进行备份配置的区域，则没有任何可担心的事情。
 
-**对于跨区域 AG**
-- 不管备份首选项如何，备份都不会发生在那些与备份配置不在同一区域的节点中。 这是因为跨区域备份不受支持。 如果只有两个节点，而辅助节点位于另一区域，则在这种情况下，备份会继续在主节点中进行（除非备份首选项为“仅限辅助节点”）。
-- 如果故障转移与备份配置不在同一区域进行，则已故障转移的区域中的节点上的备份会失败。
+#### <a name="for-cross-region-ag"></a>对于跨区域 AG
+
+* 不管备份首选项如何，备份都不会发生在那些与备份配置不在同一区域的节点中。 这是因为跨区域备份不受支持。 如果只有两个节点，而辅助节点位于另一区域，则在这种情况下，备份会继续在主节点中进行（除非备份首选项为“仅限辅助节点”）。
+* 如果故障转移与备份配置不在同一区域进行，则已故障转移的区域中的节点上的备份会失败。
 
 根据备份首选项和备份类型（完整/差异/日志/仅复制完整），从特定节点（主要/次要）获取备份。
 
-- **备份首选项：主要节点**
+* **备份首选项：主要节点**
 
 **备份类型** | **Node**
     --- | ---
@@ -96,7 +97,7 @@ Azure 备份最近已宣布对 [EOS SQL Sever](https://docs.microsoft.com/azure/
     日志 |  主要
     仅复制完整 |  主要
 
-- **备份首选项：仅次要节点**
+* **备份首选项：仅次要节点**
 
 **备份类型** | **Node**
 --- | ---
@@ -105,7 +106,7 @@ Azure 备份最近已宣布对 [EOS SQL Sever](https://docs.microsoft.com/azure/
 日志 |  辅助
 仅复制完整 |  辅助
 
-- **备份首选项：次要节点**
+* **备份首选项：次要节点**
 
 **备份类型** | **Node**
 --- | ---
@@ -114,7 +115,7 @@ Azure 备份最近已宣布对 [EOS SQL Sever](https://docs.microsoft.com/azure/
 日志 |  辅助
 仅复制完整 |  辅助
 
-- **无备份首选项**
+* **无备份首选项**
 
 **备份类型** | **Node**
 --- | ---
@@ -227,7 +228,6 @@ catch
     Write-Host $_.Exception|format-list -force
 }
 ```
-
 
 ## <a name="next-steps"></a>后续步骤
 

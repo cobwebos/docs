@@ -1,18 +1,18 @@
 ---
-title: Azure Lighthouse 的跨租户管理体验
+title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 09/25/2019
+ms.date: 10/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 17a32d50e2e0330218ff51b849cb4f3aeadb3d13
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 0c6fed9cd83f18df0fe0a77d57a76c60cd570c21
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309655"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300998"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -58,6 +58,7 @@ Azure 委派资源管理可更灵活地管理多个客户的资源，而无需�
 - 在 Microsoft Azure 门户中查看委托订阅的警报，或通过 REST API 调用以编程方式查看所有订阅中的警报
 - 查看委派订阅的活动日志详细信息
 - 日志分析：从多个租户中的远程客户工作区查询数据
+- 通过 Webhook 在服务提供商租户中创建触发自动化（例如 Azure Automation Runbook 或 Azure Functions）的客户租户警报
 
 [Azure Policy](https://docs.microsoft.com/azure/governance/policy/)：
 
@@ -65,7 +66,7 @@ Azure 委派资源管理可更灵活地管理多个客户的资源，而无需�
 - 在委派订阅中创建和编辑策略定义
 - 在委派订阅中分配客户定义的策略定义
 - 客户将看到由服务提供商和自己创建的策略
-- 如果客户为该策略分配配置了托管标识和 roleDefinitionIds，则可以修正客户租户中的 deployIfNotExists 分配 
+- 可以[修正 deployIfNotExists 或修改客户租户内的分配](../how-to/deploy-policy-remediation.md)
 
 [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/)：
 

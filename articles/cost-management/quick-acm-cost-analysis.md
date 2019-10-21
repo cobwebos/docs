@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/11/2019
+ms.date: 10/14/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 2ca0c0741ea543b30695303d473389979f2e1045
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f2e1d19f69b426cee870d2ede489b7c458404704
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855052"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374775"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入门：通过成本分析了解和分析成本
 
@@ -34,16 +34,7 @@ ms.locfileid: "68855052"
 
 成本分析支持各种 Azure 帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。
 
-对于[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 客户，必须至少对以下一个或多个范围具有读取权限才能查看成本数据。
-
-- 计费帐户
-- 部门
-- 注册帐户
-- 管理组
-- Subscription
-- Resource group
-
-若要详细了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](assign-access-acm-data.md)。
+若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](assign-access-acm-data.md)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -116,7 +107,7 @@ ms.locfileid: "68855052"
 
 ![显示上个月示例 Azure 服务成本的分组的每日汇总视图](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-默认情况下，成本分析会显示所有使用情况和应记购买成本（也称“实际成本”），并会将其显示在发票上。  查看实际成本适用于发票对帐。 但是，在观察成本中的支出异常和其他变化时，需警觉成本中的购买峰值。 若要抹平因预留购买成本导致的峰值，请切换到“摊销成本”。  
+默认情况下，成本分析会显示所有使用情况和应记购买成本（也称“实际成本”），并会将其显示在发票上。  查看实际成本适用于发票对帐。 但是，在观察成本中的支出异常和其他变化时，需警觉成本中的购买峰值。 若要抹平因预留购买成本导致的峰值，请切换到“摊销成本”。 
 
 ![在实际成本和摊销成本之间进行切换即可看到整个期间的预留购买，以及分配给那些使用了预留的资源的预留购买](./media/quick-acm-cost-analysis/metric-picker.png)
 
@@ -169,11 +160,11 @@ ms.locfileid: "68855052"
 
 ## <a name="saving-and-sharing-customized-views"></a>保存和共享自定义视图
 
-保存自定义视图并将其与他人共享，方法是将成本分析固定到 Azure 门户仪表板或复制成本分析的链接。 
+保存自定义视图并将其与他人共享，方法是将成本分析固定到 Azure 门户仪表板或复制成本分析的链接。
 
 若要固定成本分析，请选择右上角的图钉图标。 固定成本分析只会保存主图表或表视图。 共享仪表板，允许他人访问此磁贴。 请注意，这只共享仪表板配置，并不授予他人访问基础数据的权限。 如果你没有成本访问权限但有共享仪表板的访问权限，将会看到“拒绝访问”消息。
 
-若要共享成本分析链接，请选择边栏选项卡顶部的“共享”  。 随即会显示一个自定义 URL，单击此 URL 会打开针对此特定范围的特定视图。 如果你没有成本访问权限也没有获取此 URL，你将看到“拒绝访问”消息。 
+若要共享成本分析链接，请选择边栏选项卡顶部的“共享”  。 随即会显示一个自定义 URL，单击此 URL 会打开针对此特定范围的特定视图。 如果你没有成本访问权限也没有获取此 URL，你将看到“拒绝访问”消息。
 
 若要详细了解如何针对每个受支持的范围授予成本访问权限，请参阅[了解并使用范围](understand-work-scopes.md)。
 
@@ -183,14 +174,14 @@ ms.locfileid: "68855052"
 
 如果需要完整的非聚合数据集，请从计费帐户下载。 然后从门户左侧导航窗格中的服务列表中转到“成本管理 + 计费”  。 如果适用，请选择你的计费帐户。 转到“使用情况 + 费用”，然后选择所需计费周期的“下载”图标   。
 
-采用类似的方法自动接收成本数据。 使用[查询 API](/rest/api/cost-management/query) 进行较丰富的分析，包括动态筛选、分组和聚合，或者使用 [UsageDetails API](/rest/api/consumption/usageDetails) 获取完整的非聚合数据集。 这些 API 的正式发布版 (GA) 是 2019-01-01。 使用 **2019-04-01-preview** 可以在这些 API 中访问预览版预留和 Azure 市场购买。 
+采用类似的方法自动接收成本数据。 使用[查询 API](/rest/api/cost-management/query) 进行较丰富的分析，包括动态筛选、分组和聚合，或者使用 [UsageDetails API](/rest/api/consumption/usageDetails) 获取完整的非聚合数据集。 这些 API 的正式发布版 (GA) 是 2019-01-01。 使用 **2019-04-01-preview** 可以在这些 API 中访问预览版预留和 Azure 市场购买。
 
 例如，以下是一个按费用类型（使用情况、购买或退款）、发布者类型（Azure 或 Azure 市场）、资源组（如果是购买，则此项为空）和预留（如果不适用，则此项为空）细分的摊销成本的聚合视图。
 
 ```
 POST https://management.azure.com/{scope}/providers/Microsoft.CostManagement/query?api-version=2019-04-01-preview
 Content-Type: application/json
- 
+
 {
   "type": "AmortizedCost",
   "timeframe": "Custom",
@@ -221,7 +212,7 @@ GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDe
 ```
 
 如果需要实际成本，以便将购买显示为应记项，则请将 **type**/**metric** 更改为 **ActualCost**。 有关这些 API 的详细信息，请参阅[查询](/rest/api/cost-management/query)和 [UsageDetails](/rest/api/consumption/usageDetails) API 文档。 请注意，这两个已发布的文档均适用于 GA 版本。 但也适用于新的 type/metric 特性和已更改属性名称范围之外的“2019-04-01-preview”API 版本  。 （阅读下面有关属性名称的更多内容。）
- 
+
 成本管理 API 可跨资源的所有范围：通过 Azure RBAC 访问权限获取的资源组、订阅和管理组，通过 EA 门户访问权限获取的 EA 计费帐户（注册）、部门和注册帐户。 有关详细信息，包括如何确定范围 ID 或者如何管理访问权限，请参阅[了解并使用范围](understand-work-scopes.md)。
 
 ## <a name="next-steps"></a>后续步骤

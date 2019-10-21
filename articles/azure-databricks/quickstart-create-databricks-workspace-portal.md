@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
+title: 使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 description: 本快速入门介绍如何使用 Azure 门户创建 Azure Databricks 工作区和 Apache Spark 群集，以及如何运行 Spark 作业。
 services: azure-databricks
 ms.service: azure-databricks
@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 3570325880b4c8d8eb311f00477262126a2b18ad
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 21a3e8541441e6139c1c84138870b3ffaf3cacc1
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932570"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515809"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
@@ -54,8 +54,9 @@ ms.locfileid: "68932570"
     |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../azure-resource-manager/resource-group-overview.md)。 |
     |**位置**     | 选择“美国西部 2”  。 有关其他可用区域，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。        |
     |**定价层**     |  在“标准”、“高级”和“试用”之间进行选择。    有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
+    |**虚拟网络**     |  选择在自己的虚拟网络 (VNet) 中部署 Azure Databricks 工作区。 有关详细信息，请参阅[在 Azure 虚拟网络（VNet 注入）中部署 Azure Databricks](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)。        |
 
-    选择“固定到仪表板”  ，并单击“创建”  。
+    选择“创建”  。
 
 4. 创建工作区需要几分钟时间。 创建工作区时，可以在“通知”中查看部署状态。 
 
@@ -79,7 +80,7 @@ ms.locfileid: "68932570"
     除以下值外，接受其他所有默认值：
 
    * 输入群集的名称。
-   * 在本文中，请创建运行时为 **5.2** 的群集。
+   * 在本文中，请创建运行时为 **5.3** 的群集。
    * 请务必选中**在不活动超过 \_\_ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
     
      选择“创建群集”。  群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。

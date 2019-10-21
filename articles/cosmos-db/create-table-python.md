@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 358f55594037f4a468d31265f4e65a6ec4d7ef28
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.custom: seo-python-october2019
+ms.openlocfilehash: d4cfba26192eb097d06f82e18acb41c1f9640e66
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020142"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72437358"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>快速入门：使用 Python 和 Azure Cosmos DB 生成表 API 应用
 
@@ -84,7 +85,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择“连接字符串”  。 
 
-    ![在“连接字符串”窗格中查看并复制“连接字符串”](./media/create-table-python/connection-string.png)
+    ![在“连接字符串”设置中查看并复制“连接字符串”](./media/create-table-python/view-and-copy-connection-string-in-connection-string-settings.png)
 
 2. 使用右侧的按钮复制帐户名称。
 
@@ -94,7 +95,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 5. 将主键从门户复制到第 20 行的 STORAGE_ACCOUNT_KEY 值中。
 
-3. 保存 config.py 文件。
+6. 保存 config.py 文件。
 
 ## <a name="run-the-app"></a>运行应用
 

@@ -1,21 +1,21 @@
 ---
-title: 教程 - 从 Azure 成本管理创建和管理导出的数据 | Microsoft 文档
+title: 教程 - 从 Azure 成本管理创建和管理导出的数据
 description: 本文介绍如何创建和管理导出的 Azure 成本管理数据，以便在外部系统中使用。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/14/2019
+ms.date: 10/12/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 521a5f2543b9a4a84d50f8f0e53a6ae5108f760b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 070844cbf8f6a550b92d764ddb8a31afec12f437
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792877"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374595"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
@@ -50,8 +50,8 @@ ms.locfileid: "65792877"
 要创建或查看数据导出或计划导出，请在 Azure 门户中打开所需的作用域，然后在菜单中选择“成本分析”  。 例如，导航到“订阅”，从列表中选择订阅，然后在菜单中选择“成本分析”   。 在“成本分析”页的顶部，单击“导出”，然后选择导出选项  。 例如，单击“计划导出”  。  
 
 > [!NOTE]
-> 除了订阅之外，还可以针对资源组、帐户、部门和注册创建导出。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
->
+> - 除了订阅之外，还可以针对资源组、帐户、部门和注册创建导出。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
+>- 在计费帐户范围内或在客户的租户上以合作伙伴身份登录时，可以将数据导出到链接到合作伙伴存储帐户的 Azure 存储帐户。 但是，必须在 CSP 租户中具有活动订阅。
 >
 
 

@@ -7,12 +7,12 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: bb90a9dec161746356b8c13df448718c53626684
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b2c3fd9b59b371330e37dceb52b2e89b3db6c48e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70806347"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390162"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
@@ -40,11 +40,11 @@ ms.locfileid: "70806347"
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>谁有资格购买预留？
 
-若要购买某个计划，必须在企业订阅（MS-AZR-0017P 或 MS-AZR-0148P）或即用即付订阅（MS-AZR-0003P 或 MS-AZR-0023P）中有一个订阅所有者角色。 云解决方案提供商可使用 Azure 门户或 [合作伙伴中心](/partner-center/azure-reservations)购买 Azure 预留项。
+若要购买计划，必须在企业订阅（MS-AZR-0017P 或 MS-AZR-0148P）或即用即付订阅（MS-AZR-0003P 或 MS-AZR-0023P）或 Microsoft 客户协议订阅中具有订阅所有者角色。 云解决方案提供商可使用 Azure 门户或 [合作伙伴中心](/partner-center/azure-reservations)购买 Azure 预留项。
 
 企业协议 (EA) 客户可以通过在 EA 门户中禁用“添加预留实例”选项，将购买权限制为 EA 管理员。  EA 管理员必须是至少一个 EA 订阅的订阅所有者才能购买预留项。 对于希望通过一个核心团队为不同的成本中心购买预留项的企业而言，该选项非常有用。 购买后，核心团队可将成本中心所有者添加到预留项。 然后，所有者可将预留范围限定为其订阅。 购买预留项时，核心团队无需拥有订阅所有者访问权限。
 
-预留折扣仅适用于与通过企业、云解决方案提供商 (CSP)、采用即用即付费率的单个计划购买的订阅关联的资源。
+预留折扣仅适用于与通过企业、云解决方案提供商 (CSP)、采用即用即付费率的 Microsoft 客户协议和单个计划购买的订阅关联的资源。
 
 ## <a name="scope-reservations"></a>限定预留范围
 
@@ -56,7 +56,7 @@ ms.locfileid: "70806347"
 
 - **单个资源组范围** - 仅将预留折扣应用到所选资源组中匹配的资源。
 - **单个订阅范围** - 将预留折扣应用到所选订阅中匹配的资源。
-- **共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于企业协议客户，计费上下文为注册。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。
+- **共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于企业协议客户，计费上下文为注册。 对于 Microsoft 客户协议客户，计费范围为计费对象信息。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。
 
 对用途应用预留折扣时，Azure 将按以下顺序处理预留：
 
@@ -84,7 +84,7 @@ ms.locfileid: "70806347"
 
 可通过多种方式监视预留项的用量 - 通过 Azure 门户、API 或使用情况数据。 若要查看你有权访问的所有预留项，请在 Azure 门户中转到“预留项”。  预留项网格显示预留的最新记录的利用率百分比。 单击该预留可查看其长期利用率。
 
-如果你是企业协议客户，则还可以通过 [API](billing-reservation-apis.md#see-reservation-usage) 和[使用情况数据](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks)来获取预留项利用率。
+如果是企业协议客户或 Microsoft 客户协议客户，则还可以通过 [API](billing-reservation-apis.md#see-reservation-usage) 和[使用情况数据](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks)来获取预留项利用率。
 
 如果你发现范围限定为资源组的预留项的利用率偏低，可将预留范围更新为单个订阅，或者在计费上下文中共享该预留项。 还可以拆分预留项，并将最终的预留项应用到不同的资源组。
 
@@ -99,6 +99,7 @@ ms.locfileid: "70806347"
 预留折扣适用于以下符合条件的订阅和套餐类型。
 
 - 企业协议（套餐编号：MS-AZR-0017P 或 MS-AZR-0148P）
+- Microsoft 客户协议订阅。
 - 采用即用即付费率的单个计划（套餐编号：MS-AZR-0003P 或 MS-AZR-0023P）
 - CSP 订阅
 
@@ -106,7 +107,7 @@ ms.locfileid: "70806347"
 
 ## <a name="how-is-a-reservation-billed"></a>预留如何计费？
 
-预留通过与订阅绑定的付款方式付款。 如果订阅为“企业”订阅，则虚拟机预留实例费用会从货币承诺余额中扣除。 如果货币承诺余额不足以支付虚拟机预留实例的费用，则还会向你收取所欠费用。 如果你的订阅来自采用即用即付费率的单个计划，将立即从你帐户中的信用卡提前扣取购买费。 每月付款额将显示在发票上，并且每月将从你的信用卡扣费。 如果采用按发票计费的方式，则费用将显示在下一份发票上。
+预留通过与订阅绑定的付款方式付款。 预留成本将从货币承诺余额中扣除（如果可用）。 如果货币承诺余额不足以支付虚拟机预留实例的费用，则还会向你收取所欠费用。 如果你的订阅来自采用即用即付费率的单个计划，将立即从你帐户中的信用卡提前扣取购买费。 每月付款额将显示在发票上，并且每月将从你的信用卡扣费。 如果采用按发票计费的方式，则费用将显示在下一份发票上。
 
 ## <a name="how-reservation-discount-is-applied"></a>如何应用预留折扣
 
@@ -120,7 +121,7 @@ ms.locfileid: "70806347"
 
 如果虚拟机是在注册/帐户的不同订阅中运行，则请选择作为共享的范围。 共享范围允许跨订阅应用预留折扣。 可在购买预留后更改范围。 有关详细信息，请参阅[管理 Azure 预订](billing-manage-reserved-vm-instance.md)。
 
-预留折扣仅适用于与企业、CSP 或采用即用即付费率的订阅相关联的资源。 订阅中运行的其他产品/服务类型的资源无法获得预订折扣。
+预留折扣仅适用于与企业、Microsoft 客户协议、CSP 或采用即用即付费率的订阅相关联的资源。 订阅中运行的其他产品/服务类型的资源无法获得预订折扣。
 
 ## <a name="when-the-reservation-term-expires"></a>当预留期限过期时
 

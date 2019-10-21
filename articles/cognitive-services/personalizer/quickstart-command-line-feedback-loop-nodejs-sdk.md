@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: b7ea28f98340d3c3547b0ed66771b3982a03143d
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: ee647668e8b5826706e8d9bb8a82acaf53fd3d8c
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345252"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515204"
 ---
-# <a name="quickstart-personalize-client-library-for-nodejs"></a>快速入门：让适用于 Node.js 的客户端库个性化
+# <a name="quickstart-personalizer-client-library-for-nodejs"></a>快速入门：适用于 Node.js 的个性化体验创建服务客户端库
 
 在本 Node.js 快速入门中使用个性化体验创建服务显示个性化内容。
 

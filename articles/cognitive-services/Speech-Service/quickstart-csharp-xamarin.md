@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: jhakulin
 ms.custom: ''
-ms.openlocfilehash: 02031e8e2800329134eaf34f5f99c93a20b99aac
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c9467bac8b5998252c021faca4eb4177c42a1736
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803775"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387389"
 ---
 # <a name="quickstart-recognize-speech-using-cross-platform-xamarin-app-by-using-the-speech-sdk"></a>快速入门：使用语音 SDK 通过跨平台 Xamarin 应用识别语音
 
@@ -64,7 +64,9 @@ ms.locfileid: "71803775"
 
 1. 在 `OnRecognitionButtonClicked` 处理程序中，找到字符串 `YourServiceRegion` 并将其替换为与订阅关联的[区域](regions.md)。 （例如，将 `westus` 用于免费试用版订阅。）
 
-1. 接下来，需要创建一个 [Xamarin 服务](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)，用于从不同的平台项目（UWP、Android 和 iOS）查询麦克风权限。 为此，请在 `helloworld` 项目下添加新文件夹 `Services`，在该文件夹下创建新的 C# 源文件（右键单击 `Services` 文件夹并选择“添加” > “新建项” > “代码文件”，将该文件重命名为 `IMicrophoneService.cs`，然后将以下代码片段中的所有代码放入该文件：[!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]   
+1. 接下来，需要创建一个 [Xamarin 服务](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)，用于从不同的平台项目（UWP、Android 和 iOS）查询麦克风权限。 为此，请在 `helloworld` 项目下添加新文件夹 `Services`，在该文件夹下创建新的 C# 源文件（右键单击 `Services` 文件夹并选择“添加” > “新建项” > “代码文件”，将该文件重命名为 `IMicrophoneService.cs`，然后将以下代码片段中的所有代码放入该文件：   
+
+[!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
 ## <a name="add-sample-code-for-the-helloworldandroid-project"></a>添加 `helloworld.Android` 项目的示例代码
 

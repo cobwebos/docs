@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 9/11/2019
+ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: d7bc07ddce605838cf7aa966c6c94b85dad6b58c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: d3035572e629bc11207cc473b51e3edb4f6a5a13
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212216"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302817"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>快速入门：设置 Azure NetApp 文件并创建 NFS 卷 
 
@@ -242,7 +242,7 @@ ms.locfileid: "71212216"
        * 输入 **myvnet1** 作为 VNet 名称。
        * 指定设置的地址空间，例如 10.7.0.0/16
        * 输入 **myANFsubnet** 作为子网名称。
-       * 指定子网地址范围，例如 10.7.0.0/24。 请注意，不能与其他资源共享专用子网。
+       * 指定子网地址范围，例如 10.7.0.0/24。 不能与其他资源共享专用子网。
        * 选择“Microsoft.NetApp/volumes”作为子网委托。 
        * 单击“确定”以创建 VNet。 
    5. 在子网中，选择新建的 VNet (**myvnet1**) 作为委托子网。
@@ -251,11 +251,16 @@ ms.locfileid: "71212216"
 
       ![“创建虚拟网络”窗口](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)  
 
-4. 单击“协议”  ，然后选择“NFS”  作为该卷的协议类型。   
+4. 单击“协议”  ，然后完成以下操作： 
+    * 选择“NFS”  作为卷的协议类型。  
+    * 输入 **myfilepath1** 作为文件路径，该路径用于创建卷的导出路径。  
+    * 选择卷的 NFS 版本（**NFSv3** 或 **NFSv4.1**）。  
+      有关 NFS 版本，请参阅[注意事项](azure-netapp-files-create-volumes.md#considerations)和[最佳做法](azure-netapp-files-create-volumes.md#best-practice)。 
+      
+> [!IMPORTANT] 
+> 访问 NFSv4.1 功能需要加入允许列表。  若要请求加入允许列表，请将请求提交到 <anffeedback@microsoft.com>。 
 
-    输入 **myfilepath1** 作为文件路径，该路径用于创建卷的导出路径。 
-
-    ![为快速入门指定 NFS 协议](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
+  ![为快速入门指定 NFS 协议](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
 5. 单击“查看 + 创建”  。
 

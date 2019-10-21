@@ -1,5 +1,5 @@
 ---
-title: Azure 快速入门 - 使用 Python 在对象存储中创建 Blob | Microsoft Docs
+title: 快速入门：使用 Python 在 Azure Blob 存储中创建 blob
 description: 本快速入门将在对象 (Blob) 存储中创建存储帐户和容器。 然后，使用适用于 Python 的存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
 author: mhopkins-msft
 ms.author: mhopkins
@@ -7,16 +7,17 @@ ms.date: 09/11/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: a6c0ae8c63739d37ad8417d1dff2d0f7181e6ae9
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.custom: seo-python-october2019
+ms.openlocfilehash: 8a3f8b5f8944552c92ac5a1c1d5fb2eabffad2c9
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981214"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430148"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>快速入门：使用 Python 上传、下载和列出 Blob
+# <a name="quickstart-upload-download-and-list-blobs-in-azure-blob-storage-with-python"></a>快速入门：使用 Python 在 Azure Blob 存储中上传、下载和列出 blob
 
-本快速入门介绍如何使用 Python 上传、下载和列出 Azure Blob 存储的容器中的块 Blob。 Blob 是简单的对象，可用于存储大量的文本或二进制数据，其中包括图像、文档、流媒体和存档数据。 Azure 存储中的 Blob 不同于文件共享、无架构表和消息队列。  有关详细信息，请参阅 [Azure 存储简介](/azure/storage/common/storage-introduction)。
+本文介绍如何使用 Python 在 Azure Blob 存储的容器中上传、下载和列出块 Blob。 Blob 是简单的对象，可用于存储大量的文本或二进制数据，其中包括图像、文档、流媒体和存档数据。 Azure 存储中的 Blob 不同于文件共享、无架构表和消息队列。  有关详细信息，请参阅 [Azure 存储简介](/azure/storage/common/storage-introduction)。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

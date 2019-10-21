@@ -14,13 +14,13 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/21/2018
 ms.author: yegu
-ms.custom: mvc, seo-javascript-september2019
-ms.openlocfilehash: f46a4771f1db5e4040cb23b1a9236c91699b6ad5
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.openlocfilehash: bd31cf066b7844eeae02c24cb39ece686630b5ff
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057868"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329810"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>快速入门：将 Azure Redis 缓存与 Node.js 配合使用
 
@@ -113,7 +113,7 @@ node redistest.js
 
 在下面的示例中，可以看到 `Message` 键以前有一个缓存值，该值是使用 Azure 门户中的 Redis 控制台设置的。 应用更新了该缓存值。 应用还执行了 `PING` 和 `CLIENT LIST` 命令。
 
-![已完成的缓存应用](./media/cache-nodejs-get-started/cache-app-complete.png)
+![已完成的 Redis 缓存应用](./media/cache-nodejs-get-started/redis-cache-app-complete.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -129,7 +129,7 @@ node redistest.js
 
 在“按名称筛选”文本框中，输入资源组的名称  。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，选择“...”，然后选择“删除资源组”   。
 
-![删除](./media/cache-nodejs-get-started/cache-delete-resource-group.png)
+![删除 Azure 资源组](./media/cache-nodejs-get-started/redis-cache-delete-resource-group.png)
 
 系统会要求确认是否删除资源组。 重新键入资源组的名称进行确认，然后选择“删除”  。
 

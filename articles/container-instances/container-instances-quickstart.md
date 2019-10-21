@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 将 Docker 容器部署到 Azure 容器实例 - CLI
+title: 快速入门：将 Docker 容器部署到 Azure 容器实例 - Azure CLI
 description: 本快速入门将使用 Azure CLI 快速部署在隔离的 Azure 容器实例中运行的容器化 Web 应用
 services: container-instances
 author: dlepow
@@ -8,13 +8,16 @@ ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: danlep
-ms.custom: seodec18, mvc
-ms.openlocfilehash: b344e5fefdef6cd25dcafc0577b9fbbd7f0e398d
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.custom:
+- seo-python-october2019
+- seodec18
+- mvc
+ms.openlocfilehash: 65c067792499017a7e00fdbb6199e591981683f8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050621"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429194"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure 中部署容器实例
 
@@ -22,7 +25,7 @@ ms.locfileid: "70050621"
 
 本快速入门将使用 Azure CLI 部署一个独立的 Docker 容器，并使其应用程序可通过完全限定的域名 (FQDN) 使用。 在执行单个部署命令几秒钟之后，可以浏览到正在容器中运行的应用程序：
 
-![在浏览器中显示的已部署到 Azure 容器实例的应用][aci-app-browser]
+![在浏览器中显示已部署到 Azure 容器实例的应用][aci-app-browser]
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][azure-account]。
 
@@ -69,7 +72,7 @@ aci-demo.eastus.azurecontainer.io  Succeeded
 
 如果容器的 `ProvisioningState` 为 **Succeeded**，则在浏览器中转到其 FQDN。 如果看到类似于下图的网页，那么恭喜你！ 现已成功将 Docker 容器中运行的应用程序部署到 Azure。
 
-![浏览器屏幕截图，显示应用程序在 Azure 容器实例中运行][aci-app-browser]
+![在浏览器中显示已部署到 Azure 容器实例的应用][aci-app-browser]
 
 如果应用程序起初未显示，你可能需要在 DNS 传播时等待几秒钟，然后刷新浏览器。
 
@@ -155,7 +158,7 @@ az group delete --name myResourceGroup
 若要试用在 Azure 上的业务流程系统中运行容器的选项，请参阅 [Azure Kubernetes Service (AKS)][container-service] 快速入门。
 
 <!-- IMAGES -->
-[aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
+[aci-app-browser]: ./media/container-instances-quickstart/view-an-application-running-in-an-azure-container-instance.png
 
 <!-- LINKS - External -->
 [app-github-repo]: https://github.com/Azure-Samples/aci-helloworld.git

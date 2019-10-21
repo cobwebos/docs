@@ -1,17 +1,17 @@
 ---
-title: 示例 - ISO 27001 ASE/SQL 工作负荷蓝图 - 部署步骤
-description: ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例的部署步骤
+title: ISO 27001 ASE/SQL 工作负荷蓝图示例 - 部署步骤
+description: ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 4804e10488c537dbf997aba0ec49f784bc67457d
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: bd85a65d3e4d8aa1a16bb57dc5981d661a83d412
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981591"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297635"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>部署 ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例
 

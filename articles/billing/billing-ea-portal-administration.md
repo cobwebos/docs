@@ -4,16 +4,16 @@ description: 本文介绍管理员可在 Azure EA 门户中完成的常见任务
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 21e9d4af783ed5d9eb3ace1c8b5189163b89f8b0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f344436b1e1f1a97b981c1ead469d965b06a12ce
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035222"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329335"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 门户管理
 
@@ -62,7 +62,7 @@ Azure EA 帐户是 Azure EA 门户中的一个组织单位，用于管理订阅�
 
 转移生效日期可以是要转移到的注册的开始日期当日或之后的某个日期。 要转移到的注册称为目标注册。  转移帐户后，帐户中在转移生效日期之前的所有使用情况信息将保留在要从中转移的注册中。 要从中转移的注册称为源注册。   源注册的使用费根据货币承诺或超额计收。 在转移生效日期之后发生的使用费将转移到新注册并相应地收费。
 
-可将帐户转移的日期调后，只要不早于目标注册的开始日期即可。 或者，最晚可以调到源注册的生效开始日期。
+可以将注册转移的日期追溯到目标注册的起始日期。 或者，最晚可以调到源注册的生效开始日期。
 
 ### <a name="monetary-commitment"></a>货币承诺
 
@@ -212,12 +212,11 @@ Azure EA 门户可将一个帐户所有者的订阅转移到另一个帐户所�
 ![显示“添加联系人”框的示例 ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
 
 ## <a name="azure-sponsorship-offer"></a>Azure 赞助套餐
+
 Azure 赞助套餐是一个受限的 Microsoft Azure 赞助帐户。 它是 Microsoft 通过电子邮件邀请提供给有限的客户使用的套餐。 如果你符合 Microsoft Azure 赞助套餐的条件，你的帐户 ID 会收到一封邀请电子邮件。
+
 有关详细信息，请参阅：
 
-- 赞助套餐概述 - https://azure.microsoft.com/en-us/offers/ms-azr-0143p/
-- 赞助余额门户 - https://www.microsoftazuresponsorships.com/balance  
-- 赞助外部使用常见问题解答 - https://azuresponsorships-staging.azurewebsites.net/faq
 - 有关激活赞助的支持请求 - http://aka.ms/azrsponsorship
 
 ## <a name="next-steps"></a>后续步骤

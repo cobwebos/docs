@@ -10,19 +10,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ed69775de71a371153a888749efc9069389e61d5
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 90fa6b0db180ca93d9b57178c32c5e156ecc3bb0
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709684"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375804"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>创建 Azure 免费帐户包含的服务
 
-Azure 免费帐户包含数量有限的免费服务，使用期限为 12 个月。 有关详细信息，请参阅[什么是 Azure 免费帐户](https://azure.microsoft.com/free/free-account-faq/)。 Azure 跟踪每个服务的使用率，只要不超过限制，都不会对其收费。 在这些限制内，Azure 免费帐户允许灵活使用各种服务配置来满足需求。
+Azure 免费帐户包含数量有限的免费服务，使用期限为 12 个月。 在这些限制内，可以灵活地使用各种配置中的免费服务来满足需求。
 
 ## <a name="create-free-services-in-the-azure-portal"></a>在 Azure 门户中创建免费服务
-建议使用[免费服务页](https://go.microsoft.com/fwlink/?linkid=859151)创建新服务。 也可以登录到 [Azure 门户](https://portal.azure.com)，选择左侧的“所有服务”  ，搜索“免费服务”  。
+我们建议你使用[免费服务页](https://go.microsoft.com/fwlink/?linkid=859151)的链接创建免费服务。 或者可以登录 [Azure 门户](https://portal.azure.com)，并搜索“免费服务”  。 从免费服务页创建服务时，大多数字段都是预先选择的，以便轻松创建免费服务。
+
+![显示免费服务页的屏幕截图](./media/billing-create-free-services-included-free-account/billing-freeservices-grid.png)
 
 ## <a name="services-can-be-created-in-any-region"></a>可以在任意区域创建服务
 只要在限制内，就可以在提供服务的任意区域创建免费服务。 例如，通过免费 Azure 帐户获得每月 750 小时的免费 B1S Windows 虚拟机。 可以在提供 B 系列虚拟机的任意区域创建虚拟机。 只要不超过 750 小时，Azure 都不会收费。 例如，美国客户可以预配西欧的 B1S Windows 虚拟机，免费使用 750 小时。
@@ -37,5 +39,5 @@ Azure 免费帐户包含数量有限的免费服务，使用期限为 12 个月�
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
 ## <a name="next-steps"></a>后续步骤
-
+- 了解如何[检查 Azure 免费帐户中包含的免费服务的使用情况](billing-check-free-service-usage.md)。
 - 了解如何[避免 Azure 免费帐户产生费用](billing-avoid-charges-free-account.md)。

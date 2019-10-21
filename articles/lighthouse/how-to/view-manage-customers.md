@@ -1,5 +1,5 @@
 ---
-title: 查看和管理 Azure 门户中的客户及委派资源
+title: 查看和管理客户及委派资源
 description: 作为使用 Azure 委派资源管理的服务提供商，你可以通过转到 Azure 门户中的“我的客户”，查看所有委派的客户资源和订阅。
 author: JnHs
 ms.author: jenhayes
@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: acc90afa258fa7140cd7dfa8711dd64b554df45d
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 53aabc4dc6c0d3fcef28aab16ea598cbbf6dbd55
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810841"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302740"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>查看和管理客户及委派资源
 
@@ -37,7 +37,7 @@ ms.locfileid: "67810841"
 
 - 若要查看与客户关联的所有订阅、产品/服务和委派，请选择该客户的姓名。
 - 若要查看关于产品/服务及其委派的详细信息，请选择产品/服务名称。
-- 若要查看关于角色访问权限分配的详细信息，对于委派订阅或资源组，请选择“委派”列中的条目  。
+- 若要查看关于角色分配的更多详细信息，对于委托订阅或资源组，请选择“委托”列中的条目  。
 
 ## <a name="view-delegations"></a>查看委派
 

@@ -8,18 +8,16 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: 6ef6f4ae86f0f732164603bd8b38dc1bbef95dd9
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 383401c1486bcbebc39b64d5794f8bdc660d2778
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600144"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329638"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>使用 Visual Studio 将函数连接到 Azure 存储
 
-无需编写自己的集成代码，即可使用 Azure Functions 将函数连接到 Azure 服务和其他资源。 这些预定义的连接称为“绑定”。  绑定允许函数使用 Azure 服务和其他资源作为其输入和输出。
-
-函数执行由单个触发器启动。  触发器是一种特殊类型的输入绑定。 尽管一个函数只有一个触发器，但它可以有多个输入和输出绑定。 有关详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)。
+[!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
 本文介绍如何使用 Visual Studio 将在[前一篇快速入门文章]中创建的函数连接到 Azure 存储。 添加到此函数的输出绑定会将 HTTP 请求中的数据写入到 Azure 队列存储队列中的消息。 
 
@@ -31,7 +29,7 @@ ms.locfileid: "68600144"
 
  - 完成 [Visual Studio 快速入门的第 1 部分][./functions-create-first-function-vs-code.md]。 
 
-- 从 Visual Studio 登录到你的 Azure 订阅
+- 从 Visual Studio 登录到 Azure 订阅。
 
 ## <a name="download-the-function-app-settings"></a>下载函数应用设置
 

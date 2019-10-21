@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: a83980c3d4d03f53a19918ed213c965e50baa406
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: bf7b9b288a32d9f6cc2c9e0d7dba4b074c4bf878
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720056"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515712"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>教程：通过 Azure 门户使用虚拟网络对等互连连接虚拟网络
 
@@ -46,21 +46,18 @@ ms.locfileid: "71720056"
 
 1. 选择 Azure 门户左上角的“+ 创建资源”  。
 2. 选择“网络”，然后选择“虚拟网络”   。
-3. 输入或选择以下信息，接受剩下的默认设置，然后选择“创建”  ：
+3. 在“基本信息”  页上，输入或选择以下信息并接受其余设置的默认值：
 
     |设置|值|
     |---|---|
-    |Name|myVirtualNetwork1|
-    |地址空间|10.0.0.0/16|
-    |订阅| 选择订阅。|
+    |Subscription| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup  |
-    |位置| 选择“美国东部”  。|
-    |子网名称|Subnet1|
-    |子网地址范围|10.0.0.0/24|
-
-      ![创建虚拟网络](./media/tutorial-connect-virtual-networks-portal/create-virtual-network.png)
-
-4. 再次完成步骤 1-3，并做出以下更改：
+    |区域| 选择“美国东部”  。|
+    |Name|myVirtualNetwork1|
+    ![配置基本虚拟网络设置] (
+4. 在“IP 地址”  页上，为“地址空间”  字段输入 10.0.0.0/16。 单击下面的“添加子网”  按钮，并输入 Subnet1 作为**子网名称**，输入 10.0.0.0/24 作为**子网地址范围**。
+   
+5. 再次完成步骤 1-3，并做出以下更改：
 
     |设置|值|
     |---|---|
@@ -105,22 +102,26 @@ ms.locfileid: "71720056"
 
     |设置|值|
     |---|---|
+    |Resource group| 选择“使用现有”，然后选择“myResourceGroup”   。|
     |Name|myVM1|
+    |位置| 选择“美国东部”  。|
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
-    |资源组| 选择“使用现有”，然后选择“myResourceGroup”   。|
-    |位置| 选择“美国东部”  。|
-4. 在“选择大小”下选择 VM 大小  。
-5. 对于“设置”  选择以下值，然后选择“确定”  ：
+   
+4. 为“大小”  选项选择 VM 大小。
+5. 在“网络”  下选择以下值：
 
     |设置|值|
     |---|---|
-    |虚拟网络| myVirtualNetwork1 - 如果尚未选择它，请选择“虚拟网络”，然后在“选择虚拟网络”下选择“myVirtualNetwork1”。   |
-    |子网| Subnet1 - 如果尚未选择它，请选择“子网”  ，然后在“选择子网”  下选择“Subnet1”  。|
+    |虚拟网络| myVirtualNetwork1 - 如果尚未选择它，请选择“虚拟网络”，然后选择“myVirtualNetwork1”。  |
+    |子网| Subnet1 - 如果尚未选择它，请选择“子网”  ，然后选择“Subnet1”  。|
     
+
     ![虚拟机设置](./media/tutorial-connect-virtual-networks-portal/virtual-machine-settings.png)
- 
-6. 在“摘要”中的“创建”下，选择“创建”以启动 VM 部署    。
+   
+6. 选择“网络”  。 为“公共入站端口”  选项选择“允许选定端口”  。 为此下面的“选择入站端口”  选项选择 **RDP**。 
+
+7. 选择左下角的“查看 + 创建”  按钮开始 VM 部署。
 
 ### <a name="create-the-second-vm"></a>创建第二个 VM
 

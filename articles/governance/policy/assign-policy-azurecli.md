@@ -1,17 +1,17 @@
 ---
-title: 使用 Azure CLI 创建策略以识别不符合的资源
+title: 使用 Azure CLI 创建策略以审核资源
 description: 使用 Azure CLI 创建 Azure Policy 分配以识别不符合的资源。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: azure-policy
-ms.openlocfilehash: 06b35bc9a0222247df5b4ab5c513df504cd45cac
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: a7e65e304039c266f92f8068b796323197058cc1
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980854"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255941"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>快速入门：使用 Azure CLI 创建策略分配以识别不符合的资源
 

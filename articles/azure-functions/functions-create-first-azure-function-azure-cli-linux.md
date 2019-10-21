@@ -1,24 +1,21 @@
 ---
 title: 在 Azure 中的 Linux 上创建第一个函数
-description: 了解如何使用 Azure Functions Core Tools 和 Azure CLI 创建第一个托管在 Azure 中的 Linux 上的函数。
-services: functions
-keywords: ''
+description: 了解如何使用命令行工具、Azure Functions Core Tools 和 Azure CLI 创建第一个托管在 Azure 中的 Linux 上的函数。
 author: ggailey777
 ms.author: glenga
 ms.date: 03/12/2019
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc, fasttrack-edit
-ms.devlang: javascript
-manager: jeconnoc
-ms.openlocfilehash: 40a2d3ab4ec358b5b2d0105703cdc25cdb777c29
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+manager: gwallace
+ms.openlocfilehash: 34f4dc4b36f4efd75c5a7cd14b3214886955a403
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562984"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329674"
 ---
-# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli"></a>使用 Core Tools 和 Azure CLI 创建第一个在 Linux 上托管的函数
+# <a name="quickstart-create-your-first-function-hosted-on-linux-using-command-line-tools"></a>快速入门：使用命令行工具创建第一个在 Linux 上托管的函数
 
 Azure Functions 用于在[无服务器](https://azure.com/serverless) Linux 环境中执行代码，无需先创建 VM 或发布 Web 应用程序。 Linux 托管需要 [Functions 2.x 运行时](functions-versions.md)。 无服务器函数在[消耗计划](functions-scale.md#consumption-plan)中运行。
 
@@ -30,7 +27,7 @@ Azure Functions 用于在[无服务器](https://azure.com/serverless) Linux 环�
 
 运行此示例之前，必须做好以下准备：
 
-- 安装 [Azure Functions Core Tools](./functions-run-local.md#v2) 版本 2.6.666 或更高版本。
++ 安装 [Azure Functions Core Tools](./functions-run-local.md#v2) 版本 2.6.666 或更高版本。
 
 + 安装 [Azure CLI]( /cli/azure/install-azure-cli)。 本文需要 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可确定你拥有的版本。 你也可使用 [Azure Cloud Shell](https://shell.azure.com/bash)。
 

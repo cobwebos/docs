@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 09970468a277dcaf3f28b4f5065572568089a12e
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: d4edc634ad41042642b1d73f28ec61cb6dc15ac4
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038486"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433322"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
@@ -30,7 +30,7 @@ Azure Spring Cloud 通过集成 Azure Monitor、Application Insights 和 Log Ana
 
 ### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Azure Spring Cloud 提供哪些服务计划？
 
-Azure Spring Cloud 在预览期是免费的。
+Azure Spring Cloud 在预览期提供一个服务计划。
 
 资源 | 金额
 ------- | -------

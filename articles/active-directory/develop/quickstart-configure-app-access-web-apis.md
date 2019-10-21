@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937fca5698378a8c877b4a981557f87d06170e9a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5100af99046a03345230ed0468071766aae1c77b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879344"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389607"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>快速入门：将客户端应用程序配置为访问 Web API
 
@@ -80,8 +80,9 @@ ms.locfileid: "68879344"
 
 1. 若要从建议用于公共客户端（移动、桌面）的重定向 URI 中进行选择，请执行以下步骤：
     1. 找到“建议用于公共客户端(移动、桌面)的重定向 URI”部分。 
-    1. 通过复选框选择适用于应用程序的重定向 URI。
+    1. 通过复选框选择适用于应用程序的重定向 URI。 还可以输入自定义重定向 URI。 如果不确定要使用什么，请查看库文档。
 
+有一些限制适用于重定向 URI。 详细了解[重定向 URI 限制和限制](https://docs.microsoft.com/azure/active-directory/develop/reply-url)。
 > [!NOTE]
 > 尝试新的“身份验证设置”体验，在其中可以根据要面向的平台或设备配置应用程序的设置。 
 >

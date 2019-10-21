@@ -1,5 +1,5 @@
 ---
-title: 将客户载入到 Azure 委派资源管理 - Azure Lighthouse
+title: 将客户载入到 Azure 委派资源管理
 description: 了解如何将客户载入到 Azure 委派资源管理，使你能够通过自己的租户访问和管理其资源。
 author: JnHs
 ms.author: jenhayes
@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 09/30/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: f1d01a4b6b4e42261542cc64516a2e1c2bef56c0
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: e16747d74df7db0fb2ca2d4e0f07247258a980d7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958723"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299749"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>将客户载入到 Azure 委派资源管理
 
@@ -188,7 +188,7 @@ az role definition list --name "<roleName>" | grep name
     }
 }
 ```
-上面示例中的最后一个授权添加了具有用户访问管理员角色 (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) 的 principalId  。 分配此角色时，必须包含 delegatedRoleDefinitionIds 属性和一个/多个内置角色  。 在此授权中创建的用户能够将这些内置角色分配给托管标识。 请注意，通常与用户访问管理员角色关联的其他权限均不适用于此用户。
+上面示例中的最后一个授权添加了具有用户访问管理员角色 (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) 的 principalId  。 分配此角色时，必须包含 delegatedRoleDefinitionIds 属性和一个/多个内置角色  。 在此授权中创建的用户能够将这些内置角色分配给[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 请注意，通常与用户访问管理员角色关联的其他权限均不适用于此用户。
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>部署 Azure 资源管理器模板
 

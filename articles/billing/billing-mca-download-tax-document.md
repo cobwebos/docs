@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 中查看 Microsoft 客户协议税单
-description: 了解如何查看和下载 Microsoft 客户协议计费对象信息的税务收据。
+title: 查看 Azure 发票的税单
+description: 了解如何查看和下载计费对象信息的税务收据。
 author: bandersmsft
 manager: jureid
 tags: billing
@@ -12,35 +12,31 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 66d47ad1d67c963d70fb40e43eb077222ad8b360
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: c8c39a832f54cd5075b57507ead14cbcdff2bb53
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709805"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375521"
 ---
-# <a name="view-the-tax-documents-for-your-microsoft-customer-agreement"></a>查看 Microsoft 客户协议税单
+# <a name="view-and-download-tax-documents-for-your-azure-invoice"></a>查看和下载 Azure 发票的税单
 
-本文适用于 Microsoft 客户协议的计费帐户。 [检查是否有权访问 Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)。
+如果有权访问 Azure 门户中的发票，则可以下载 Azure 发票的税单。 只有特定角色才能访问发票，如帐户管理员。 如果签订了 Microsoft 客户协议，则必须是计费对象信息所有者、参与者、读者或发票管理者才能下载发票和税单。 如果签订了 Microsoft 合作伙伴协议，则必须在合作伙伴组织中具有全局管理员或管理员代理角色。 [检查计费帐户类型](#check-billing-account-type)以了解下载税单所需的权限。
 
 ## <a name="view-and-download-tax-documents"></a>查看和下载税单
 
-必须是计费对象信息的所有者、参与者、读者或发票管理者，才能查看和下载税单。 若要详细了解 Microsoft 客户协议的计费角色，请参阅[计费对象信息角色和任务](billing-understand-mca-roles.md#billing-profile-roles-and-tasks)。
-
-
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 搜索“成本管理 + 计费”  。
-1. 选择计费对象信息。
-1. 选择“发票”  。
+1. 搜索“成本管理 + 计费”。 
+1. 根据你的访问权限，可能需要选择一个计费帐户或计费对象信息。
+1. 在左侧菜单中，选择“账单”  下的“发票”  。
 1. 在发票网格中，找到与要下载的税单对应的发票行。
-1. 单击行末尾的省略号 (`...`)。
-7. 选择“税单”  。 根据计费对象信息的国家/地区，可能会看到每个发票有多个税单。
+1. 单击行末尾的下载图标或省略号 (`...`)。
+7. 在下载菜单中选择“税单”  。 根据计费对象信息的国家/地区，可能会看到每个发票有多个税单。
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查对 Microsoft 客户协议的访问权限
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-billing-account-type"></a>检查计费帐户类型
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-account-type.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
 - [查看和下载 Microsoft Azure 发票](billing-download-azure-invoice.md)
 - [查看和下载 Microsoft Azure 使用情况与费用](billing-download-azure-daily-usage.md)
-- [了解计费对象信息的发票上的费用](billing-mca-understand-your-bill.md)。

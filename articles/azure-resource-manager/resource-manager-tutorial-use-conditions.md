@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 资源管理器模板中使用条件 | Microsoft Docs
-description: 了解如何根据条件部署 Azure 资源。
+description: 了解如何根据条件部署 Azure 资源。 演示如何部署新资源或使用现有资源。
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 50c6c2a1f8be979d10b77793adb168e6bd276e49
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 5fa1db5131f555c92aa12fc01a109469c2cf819e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258870"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390195"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>教程：在 Azure 资源管理器模板中使用条件
 

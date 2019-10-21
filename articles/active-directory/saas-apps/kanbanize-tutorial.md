@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Kanbanize 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 Kanbanize 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Kanbanize 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/07/2019
+ms.date: 10/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69103ea0e6088b4a823df34ebd982c67e2502cb3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 7c5a3a096c5a44f681d23587837ae31fd1af33b2
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879498"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373232"
 ---
-# <a name="tutorial-integrate-kanbanize-with-azure-active-directory"></a>教程：将 Kanbanize 与 Azure Active Directory 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kanbanize"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Kanbanize 集成
 
 本教程介绍如何将 Kanbanize 与 Azure Active Directory (Azure AD) 集成。 将 Kanbanize 与 Azure AD 集成后，可以：
 
@@ -58,32 +58,32 @@ ms.locfileid: "68879498"
 1. 在“从库中添加”部分的搜索框中，键入 **Kanbanize**。 
 1. 在结果面板中选择“Kanbanize”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-single-sign-on-for-kanbanize"></a>配置和测试 Kanbanize 的 Azure AD 单一登录
 
 使用名为 **B.Simon** 的测试用户配置并测试 Kanbanize 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 Kanbanize 中的相关用户之间建立链接关系。
 
 若要配置并测试 Kanbanize 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-2. **[配置 Kanbanize SSO](#configure-kanbanize-sso)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Kanbanize 测试用户](#create-kanbanize-test-user)** - 在 Kanbanize 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-6. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+1. **[配置 Kanbanize SSO](#configure-kanbanize-sso)** - 在应用程序端配置单一登录设置。
+    1. **[创建 Kanbanize 测试用户](#create-kanbanize-test-user)** - 在 Kanbanize 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中的“Kanbanize”应用程序集成页上，找到“管理”部分并选择“单一登录”。   
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<subdomain>.kanbanize.com/`
+     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<subdomain>.kanbanize.com/`
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.kanbanize.com/saml/acs`
 
@@ -102,7 +102,7 @@ ms.locfileid: "68879498"
 
     ![image](common/edit-attribute.png)
 
-1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -110,23 +110,61 @@ ms.locfileid: "68879498"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="configure-kanbanize-sso"></a>配置 Kanbanize SSO
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
-1. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Kanbanize。
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-2. 转到页面右上角，单击“设置”  徽标。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
+1. 选择屏幕顶部的“新建用户”  。
+1. 在“用户”属性中执行以下步骤  ：
+   1. 在“名称”  字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
+   1. 单击“创建”。 
+
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分，你将通过授予 B.Simon 访问 Kanbanize 的权限，使其能够使用 Azure 单一登录。
+
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
+1. 在应用程序列表中，选择“Kanbanize”  。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+
+   ![“用户和组”链接](common/users-groups-blade.png)
+
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+
+    ![“添加用户”链接](common/add-assign-user.png)
+
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
+1. 在“添加分配”对话框中，单击“分配”按钮。  
+
+## <a name="configure-kanbanize-sso"></a>配置 Kanbanize SSO
+
+1. 若要在“Kanbanize”中自动执行配置，需要安装“我的应用安全登录浏览器扩展”，方法是单击“安装扩展”   。
+
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+2. 将扩展添加到浏览器后，单击“设置 Kanbanize”，此时会将你定向到 Kanbanize 应用程序  。 在此处，请提供管理员凭据以登录到 Kanbanize。 浏览器扩展会自动配置应用程序，并自动执行第 3-7 步。
+
+    ![设置配置](common/setup-sso.png)
+
+3. 若要手动设置 Kanbanize，请打开新的 Web 浏览器窗口，以管理员身份登录到 Kanbanize 公司站点，并执行以下步骤：
+
+4. 转到页面右上角，单击“设置”  徽标。
 
     ![Kanbanize 设置](./media/kanbanize-tutorial/tutorial-kanbanize-set.png)
 
-3. 在“管理面板”页上的菜单左侧，单击“集成”  ，然后启用“单一登录”  。
+5. 在“管理面板”页上的菜单左侧，单击“集成”  ，然后启用“单一登录”  。
 
     ![Kanbanize 集成](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
 
-4. 在“集成”部分下，单击“配置”  打开“单一登录集成”  页。
+6. 在“集成”部分下，单击“配置”  打开“单一登录集成”  页。
 
     ![Kanbanize 配置](./media/kanbanize-tutorial/tutorial-kanbanize-config.png)
 
-5. 在“单一登录集成”  页上的“配置”  下，执行以下步骤：
+7. 在“单一登录集成”  页上的“配置”  下，执行以下步骤：
 
     ![Kanbanize 集成](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
 
@@ -151,41 +189,11 @@ ms.locfileid: "68879498"
 
     i. 单击“保存设置”。 
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-
-在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
-
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
-
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分，你将通过授予 B.Simon 访问 Kanbanize 的权限，使其能够使用 Azure 单一登录。
-
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Kanbanize”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
-1. 在“添加分配”对话框中，单击“分配”按钮。  
-
 ### <a name="create-kanbanize-test-user"></a>创建 Kanbanize 测试用户
 
-在本部分，你将在 Kanbanize 中创建名为 B.Simon 的用户。 Kanbanize 支持默认已启用的实时用户预配。 此部分不存在任何操作项。 如果 Kanbanize 中尚不存在用户，身份验证后会创建一个新用户。 如果需要手动创建用户，请联系 [Kanbanize 客户端支持团队](mailto:support@ms.kanbanize.com)。
+本部分将在 Kanbanize 中创建一个名为 B.Simon 的用户。 Kanbanize 支持默认已启用的实时用户预配。 此部分不存在任何操作项。 如果 Kanbanize 中尚不存在用户，身份验证后会创建一个新用户。 如果需要手动创建用户，请联系 [Kanbanize 客户端支持团队](mailto:support@ms.kanbanize.com)。
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
@@ -198,4 +206,6 @@ ms.locfileid: "68879498"
 - [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [通过 Azure AD 试用 Kanbanize](https://aad.portal.azure.com/)
 

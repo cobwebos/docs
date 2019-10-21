@@ -1,5 +1,5 @@
 ---
-title: 有关使用 Azure Key Vault 从 Azure Databricks 访问 Azure Blob 存储的教程
+title: 使用密钥保管库访问 blob 存储 - Azure Databricks
 description: 本教程介绍如何使用 Key Vault 中存储的机密从 Azure Databricks 访问 Azure Blob 存储。
 author: mamccrea
 ms.author: mamccrea
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 45c5be8b203daf21697f3cb6dad4ecadb6449339
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 1e44a1f1be6dcadac937d641e00c99994af0c651
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976515"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274086"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>教程：使用 Azure Key Vault 从 Azure Databricks 访问 Azure Blob 存储
 

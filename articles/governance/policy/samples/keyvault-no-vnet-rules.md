@@ -1,17 +1,17 @@
 ---
-title: 示例 - 审核密钥保管库是否没有虚拟网络终结点
+title: 示例 - 没有 vNet 终结点的密钥保管库
 description: 此示例策略定义审核 Key Vault 保管库以检测没有虚拟网络服务终结点的实例。
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: ccfba0eae8d3c51cf153f58d554dc09b574d3873
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 7bcbcdf68b3c8f882a1e0fbb9953fea575f96556
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976967"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255723"
 ---
 # <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>示例 - 没有虚拟网络终结点的 Key Vault 保管库
 

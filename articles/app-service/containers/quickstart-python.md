@@ -1,5 +1,5 @@
 ---
-title: 在 Linux 上创建 Python 应用 - Azure 应用服务 | Microsoft Docs
+title: 快速入门：在 Linux 上创建 Python 应用 - Azure 应用服务
 description: 数分钟内在 Linux 上的 Azure 应用服务中部署第一个 Python hello world 应用。
 services: app-service\web
 documentationcenter: ''
@@ -13,20 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
+ms.custom: seo-python-october2019
 experimental: true
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 253e2e5015c2cb7a71386b88b4d86ac6bff6a0fe
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: e8ca84f233b3e6202a4647d15e07b36c2b8f1128
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242460"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433109"
 ---
-# <a name="create-a-python-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中创建 Python 应用
+# <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入门：在 Linux 上的 Azure 应用服务中创建 Python 应用
 
-在本快速入门中，需将简单的 Python 应用部署到 [Linux 上的应用服务](app-service-linux-intro.md)，该版本提供了一项高度可缩放、自我修补的 Web 托管服务。 由于是通过基于浏览器的交互式 Azure Cloud Shell 来使用 Azure 命令行接口 ([Azure CLI](/cli/azure/install-azure-cli))，因此可遵循使用 Mac、Linux 或 Windows 计算机的步骤。
+在本文中，需将简单的 Python 应用部署到 [Linux 上的应用服务](app-service-linux-intro.md)，该版本提供了一项高度可缩放、自我修补的 Web 托管服务。 由于是通过基于浏览器的交互式 Azure Cloud Shell 来使用 Azure 命令行接口 ([Azure CLI](/cli/azure/install-azure-cli))，因此可遵循使用 Mac、Linux 或 Windows 计算机的步骤。
 
-![在 Azure 中运行应用的示例](media/quickstart-python/hello-world-in-browser.png)
+![在 Azure 的应用服务中运行示例 Python 应用](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -71,7 +72,7 @@ flask run
 
 此时会看到来自示例应用的 Hello World!  消息显示在页面中。
 
-![本地运行应用的示例](media/quickstart-python/hello-world-in-browser.png)
+![在本地运行示例 Python 应用](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
 
 在终端窗口中，按 **Ctrl+C** 退出 Web 服务器。
 
@@ -154,7 +155,7 @@ http://<app-name>.azurewebsites.net
 
 Python 示例代码在包含内置映像的 Linux 上的应用服务中运行。
 
-![在 Azure 中运行应用的示例](media/quickstart-python/hello-world-in-browser.png)
+![在 Azure 中运行示例 Python 应用](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
 
 祝贺你！  现已将第一个 Python 应用部署到 Linux 应用服务。
 
@@ -162,7 +163,7 @@ Python 示例代码在包含内置映像的 Linux 上的应用服务中运行。
 
 在 Cloud Shell 中，输入 `code application.py` 以打开 Cloud Shell 编辑器。
 
-![对 application.py 进行编码](media/quickstart-python/code-applicationpy.png)
+![在 Cloud Shell 编辑器中打开 application.py](./media/quickstart-python/open-application-py-in-the-cloud-shell-editor.png)
 
  对 `return` 调用中的文本稍作更改：
 
@@ -180,7 +181,7 @@ az webapp up -n <app-name> -l <location-name>
 
 完成部署后，切换回**浏览到应用**步骤中打开的浏览器窗口，然后刷新页面。
 
-![已更新的在 Azure 中运行应用的示例](media/quickstart-python/hello-azure-in-browser.png)
+![在 Azure 中运行更新的示例 Python 应用](./media/quickstart-python/run-updated-hello-world-sample-python-app-in-browser.png)
 
 ## <a name="manage-your-new-azure-app"></a>管理新的 Azure 应用
 
@@ -188,11 +189,11 @@ az webapp up -n <app-name> -l <location-name>
 
 从左侧菜单中选择“应用程序服务”，并选择 Azure 应用的名称。 
 
-![在门户中导航到 Azure 应用](./media/quickstart-python/app-service-list.png)
+![在 Azure 门户的应用程序服务中导航到 Python 应用](./media/quickstart-python/navigate-to-app-in-app-services-in-the-azure-portal.png)
 
 这里我们可以看到应用的“概述”页。 并可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。
 
-![Azure 门户中的应用服务页](media/quickstart-python/app-service-detail.png)
+![在 Azure 门户的“概述”页中管理 Python 应用](./media/quickstart-python/manage-an-app-in-app-services-in-the-azure-portal.png)
 
 左侧菜单提供了用于配置应用的不同页面。 
 

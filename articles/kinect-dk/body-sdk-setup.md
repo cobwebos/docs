@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: kinect, azure, 传感器, 访问, 深度, sdk, 人体, 跟踪, 关节, 设置, cuda, nvidia
-ms.openlocfilehash: f555ef8aa9bedadb0a361083e16c39eadf4d4229
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 30170d5513cad772827f8be83677a03837d438b4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840408"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293435"
 ---
 # <a name="quickstart-set-up-azure-kinect-body-tracking"></a>快速入门：设置 Azure Kinect 人体跟踪
 
@@ -47,7 +47,10 @@ ms.locfileid: "68840408"
 
 启动 **Azure Kinect 人体跟踪查看器**来检查是否已正确设置人体跟踪 SDK。 该查看器是使用 SDK msi 安装程序安装的。 可以在开始菜单或 `<SDK Installation Path>\tools\k4abt_simple_3d_viewer.exe` 中找到它。
 
+如果没有足够强大的 GPU 但仍想测试结果，可以通过以下命令在命令行中启动 **Azure Kinect 人体跟踪查看器**：`<SDK Installation Path>\tools\k4abt_simple_3d_viewer.exe CPU`
+
 如果设置全都正确，应会显示一个窗口，其中包含 3D 点云和跟踪到的人体。
+
 
 ![人体跟踪 3D 查看器](./media/quickstarts/samples-simple3dviewer.png)
 

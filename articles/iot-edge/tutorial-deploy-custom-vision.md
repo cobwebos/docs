@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/25/2019
+ms.date: 10/15/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 55203c4b555b54514425b484b367f8b735e98e40
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b84ab9691064e7040e586ad82835f27fa5555920
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003916"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434645"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教程：在边缘使用自定义视觉服务进行图像分类
 
@@ -76,7 +76,7 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
    | ----- | ----- |
    | Name | 为项目提供一个名称，例如 **EdgeTreeClassifier**。 |
    | 说明 | 可选项目说明。 |
-   | 资源组 | 选择一个包含自定义视觉服务资源的 Azure 资源组，或者如果尚未添加 Azure 资源组，则选择“新建”  。 |
+   | 资源 | 选择一个包含自定义视觉服务资源的 Azure 资源组，或者如果尚未添加 Azure 资源组，则选择“新建”  。 |
    | 项目类型 | **分类** |
    | 分类类型 | **多类(一个图像一个标记)** |
    | 域 | **常规(精简)** |
@@ -142,8 +142,6 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
 可以通过解决方案以逻辑方式为单个 IoT Edge 部署开发和组织多个模块。 解决方案包含适用于一个或多个模块的代码，另外还包含部署清单，用于声明如何在 IoT Edge 设备上配置模块。 
 
-1. 在 Visual Studio Code 中选择“视图”   >   “终端”，打开 VS Code 集成终端。
-
 1. 选择“视图”   >   “命令面板”，打开 VS Code 命令面板。 
 
 1. 在“命令面板”中，输入并运行 **Azure IoT Edge:New IoT Edge Solution** 命令。 在命令面板中提供以下信息，以便创建解决方案： 
@@ -154,7 +152,7 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
    | 提供解决方案名称 | 输入解决方案的描述性名称（例如 **CustomVisionSolution**），或者接受默认名称。 |
    | 选择模块模板 | 选择“Python 模块”。  |
    | 提供模块名称 | 将模块命名为 **classifier**。<br><br>必须确保此模块名称为小写。 IoT Edge 在引用模块时区分大小写，而此解决方案使用的库会将所有请求格式化为小写。 |
-   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是在上一步预先填充的。 将 **localhost:5000** 替换为 Azure 容器注册表中的登录服务器值。 可以在 Azure 门户的容器注册表的“概览”页中检索登录服务器。 最终的字符串看起来类似于 \<注册表名称\>.azurecr.io/classifier。 |
+   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是在上一步预先填充的。 将 **localhost:5000** 替换为 Azure 容器注册表中的登录服务器值。 可以在 Azure 门户的容器注册表的“概览”页中检索登录服务器。<br><br>最终的字符串看起来类似于 \<注册表名称\>.azurecr.io/classifier  。 |
  
    ![提供 Docker 映像存储库](./media/tutorial-deploy-custom-vision/repository.png)
 
@@ -219,7 +217,7 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
    | 选择部署模板文件 | 选择 CustomVisionSolution 文件夹中的 deployment.template.json 文件。 |
    | 选择模块模板 | 选择“Python 模块”  |
    | 提供模块名称 | 将模块命名为 **cameraCapture** |
-   | 为模块提供 Docker 映像存储库 | 将 **localhost:5000** 替换为 Azure 容器注册表的登录服务器值。 最终的字符串看起来类似于 **\<registryname\>.azurecr.io/cameracapture**。 |
+   | 为模块提供 Docker 映像存储库 | 将 **localhost:5000** 替换为 Azure 容器注册表的登录服务器值。<br><br>最终的字符串看起来类似于 **\<registryname\>.azurecr.io/cameracapture**。 |
 
    VS Code 窗口会加载解决方案工作区中的新模块，并会更新 deployment.template.json 文件。 现在会看到两个模块文件夹：classifier 和 cameraCapture。 
 

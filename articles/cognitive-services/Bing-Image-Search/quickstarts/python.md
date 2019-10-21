@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/26/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9f43b056275ba83630e711ff1a512cb73e84216a
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 8dc7bc36b3d4b172521b0fbbf9aa09cf4d1a9b29
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034629"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390116"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>快速入门：使用必应图像搜索 REST API 和 Python 搜索图像
 
@@ -67,12 +67,13 @@ ms.locfileid: "70034629"
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
     ```
 
-2. 使用 `requests` 库调用必应图像搜索 API。 向请求添加标头和参数，并以 JSON 对象形式返回响应。 
+2. 使用 `requests` 库调用必应图像搜索 API。 向请求添加标头和参数，并以 JSON 对象形式返回响应。 从响应的 `thumbnailUrl` 字段获取几个缩略图图像的 URL。
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()
     search_results = response.json()
+    thumbnail_urls = [img["thumbnailUrl"] for img in search_results["value"][:16]]
     ```
 
 ## <a name="view-the-response"></a>查看响应
@@ -80,6 +81,8 @@ ms.locfileid: "70034629"
 1. 使用 matplotlib 库创建包含四个列和四个行的新图。 
 
 2. 循环访问该图的行和列，并使用 PIL 库的 `Image.open()` 方法将图像的缩略图添加到每个空间。 
+
+3. 使用 `plt.show()` 来绘制该图并显示图像。
 
     ```python
     f, axes = plt.subplots(4, 4)
@@ -90,9 +93,9 @@ ms.locfileid: "70034629"
             image = Image.open(BytesIO(image_data.content))        
             axes[i][j].imshow(image)
             axes[i][j].axis("off")
+    plt.show()
     ```
 
-3. 使用 `plt.show()` 来绘制该图并显示图像。
 
 ## <a name="example-json-response"></a>示例 JSON 响应
 

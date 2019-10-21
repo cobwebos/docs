@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: e7a63d09c3116c7504e9d409b32a44be140d8fe4
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 5739827f1f6cf65cfe5c4aa8303c9f37eb569854
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71074144"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264400"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>快速入门：使用 REST API 和 Python 训练表单识别器模型并提取表单数据
 
@@ -26,7 +26,7 @@ ms.locfileid: "71074144"
 若要完成本快速入门，必须具备以下条件：
 - 有权访问表单识别器受限访问预览版。 若要访问预览版，请填写并提交[表单识别器访问请求](https://aka.ms/FormRecognizerRequestAccess)表单。
 - 安装 [Python](https://www.python.org/downloads/)（若要在本地运行此示例）。
-- 至少有五个相同类型的表单。 你将使用这些数据来训练模型。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将数据上传到 Azure 存储帐户中 blob 存储容器的根目录。
+- 至少有五个相同类型的表单。 你将使用这些数据来训练模型。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将训练文件上传到 Azure 存储帐户中 blob 存储容器的根目录。
 
 ## <a name="create-a-form-recognizer-resource"></a>创建表单识别器资源
 
@@ -115,7 +115,7 @@ ms.locfileid: "71074144"
 接下来，分析某个文档并从中提取键值对和表。 请运行以下 Python 脚本，调用“模型 - 分析”API。  运行该命令之前，请进行以下更改：
 
 1. 将 `<Endpoint>` 替换为从表单识别器订阅密钥中获得的终结点。 可以在表单识别器资源的“概览”选项卡中找到该终结点。 
-1. 将 `<path to your form>` 替换为表单的文件路径（例如，C:\temp\file.pdf）。
+1. 将 `<path to your form>` 替换为表单的文件路径（例如，C:\temp\file.pdf）。 对于本快速入门，可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)的 **Test** 文件夹下的文件。
 1. 将 `<modelID>` 替换为在上一部分收到的模型 ID。
 1. 将 `<file type>` 替换为文件类型。 支持的类型：`application/pdf`、`image/jpeg`、`image/png`。
 1. 将 `<subscription key>` 替换为订阅密钥。

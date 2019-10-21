@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/07/2018
+ms.date: 10/16/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6d5452f23e830ca7a9ffe5ca5ed3d4aa12fb717
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a11c5489c97e1050e525c0b83c160c1360119b60
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66236049"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433173"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>教程：使用 Windows VM 系统分配托管标识访问 Azure SQL
 
@@ -103,7 +103,7 @@ VM 中运行的代码现在可使用其系统分配托管标识获取令牌，�
 
 Azure SQL 原本就支持 Azure AD 身份验证，因此可以直接接受使用 Azure 资源的托管标识获取的访问令牌。 使用**访问令牌**方法来与 SQL 建立连接。 在某种程度上，这是将 Azure SQL 与 Azure AD 集成，不同于在连接字符串中提供凭据。
 
-以下 .NET 代码示例使用访问令牌来与 SQL 建立连接。 此代码必须在 VM 上运行才能访问 VM 的系统分配托管标识的终结点。 使用访问令牌方法需要 **.NET Framework 4.6** 或更高版本。 相应地替换 AZURE-SQL-SERVERNAME 和 DATABASE 的值。 请注意，Azure SQL 的资源 ID 为“`https://database.windows.net/`”。
+以下 .NET 代码示例使用访问令牌来与 SQL 建立连接。 此代码必须在 VM 上运行才能访问 VM 的系统分配托管标识的终结点。 使用访问令牌方法需要 **.NET Framework 4.6** 或更高版本或 **.NET Core 2.2** 或更高版本。 相应地替换 AZURE-SQL-SERVERNAME 和 DATABASE 的值。 请注意，Azure SQL 的资源 ID 为“`https://database.windows.net/`”。
 
 ```csharp
 using System.Net;
