@@ -1,5 +1,5 @@
 ---
-title: 使用 Jenkins 和蓝/绿部署模式部署到 Azure Kubernetes 服务 (AKS)
+title: 使用 Jenkins 和蓝/绿部署模式部署到 Azure Kubernetes 服务
 description: 了解如何使用 Jenkins 和蓝/绿部署模式部署到 Azure Kubernetes 服务 (AKS)。
 ms.service: jenkins
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, 蓝绿部署, 持续交付, cd
@@ -7,13 +7,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/11/2018
-ms.openlocfilehash: 93f2ac284931ba664e0965e537e515c824e6f7a6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 10/09/2019
+ms.openlocfilehash: de9088333f69a22246fe5873d6e09ddb7ba3044a
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092287"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249394"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>使用 Jenkins 和蓝/绿部署模式部署到 Azure Kubernetes 服务 (AKS)
 
@@ -45,7 +45,7 @@ GitHub 上的 Microsoft 存储库中提供了一个演示如何使用 Jenkins �
 
     ![Microsoft GitHub 存储库中的示例应用屏幕截图](./media/jenkins-aks-blue-green-deployment/github-sample-msft.png)
 
-1. 选择页面右上角的“分叉”来创建存储库的分叉，然后遵照说明在 GitHub 帐户中创建该存储库的分叉。
+1. 选择页面右上角的“分叉”来创建存储库的分叉，然后遵照说明在 GitHub 帐户中创建该存储库的分叉。 
 
     ![用于分叉的 GitHub 选项屏幕截图](./media/jenkins-aks-blue-green-deployment/github-sample-msft-fork.png)
 
@@ -53,11 +53,11 @@ GitHub 上的 Microsoft 存储库中提供了一个演示如何使用 Jenkins �
 
     ![GitHub 帐户名称和注释的屏幕截图](./media/jenkins-aks-blue-green-deployment/github-sample-msft-forked.png)
 
-1. 选择“克隆或下载”。
+1. 选择“克隆或下载”  。
 
     ![用于克隆或下载存储库的 GitHub 选项屏幕截图](./media/jenkins-aks-blue-green-deployment/github-sample-clone.png)
 
-1. 在“使用 HTTPS 克隆”窗口中，选择“复制”图标。
+1. 在“使用 HTTPS 克隆”窗口中，选择“复制”图标。  
 
     ![用于将克隆 URL 复制到剪贴板的 GitHub 选项屏幕截图](./media/jenkins-aks-blue-green-deployment/github-sample-copy.png)
 
@@ -147,7 +147,7 @@ GitHub 上的 Microsoft 存储库中提供了一个演示如何使用 Jenkins �
     kubectl apply -f  test-endpoint-green.yml
     ```
 
-1. 更新公共和测试终结点的 DNS 名称。 创建 Kubernetes 群集时，还会创建采用 **MC_&lt;your-resource-group-name>_&lt;your-kubernetes-cluster-name>_&lt;your-location>** 命名模式的[附加资源组](https://github.com/Azure/AKS/issues/3)。
+1. 更新公共和测试终结点的 DNS 名称。 创建 Kubernetes 群集时，还会创建采用 **MC_&lt;your-resource-group-name> _&lt;your-kubernetes-cluster-name>_ &lt;your-location>** 命名模式的[附加资源组](https://github.com/Azure/AKS/issues/3)。
 
     在资源组中查找公共 IP。
 
@@ -215,14 +215,14 @@ GitHub 上的 Microsoft 存储库中提供了一个演示如何使用 Jenkins �
    
 1. 在 Jenkins 仪表板中执行以下步骤，以在 Jenkins 中安装插件：
 
-    1. 选择“管理 Jenkins”>“管理插件”>“可用”。
+    1. 选择“管理 Jenkins”>“管理插件”>“可用”。 
     1. 搜索并安装 Azure 容器服务插件。
 
-1. 添加用于管理 Azure 中的资源的凭据。 如果尚未安装“Azure 凭据”插件，请安装该插件。
+1. 添加用于管理 Azure 中的资源的凭据。 如果尚未安装“Azure 凭据”插件，请安装该插件。 
 
-1. 将 Azure 服务主体凭据添加为“Microsoft Azure 服务主体”类型。
+1. 将 Azure 服务主体凭据添加为“Microsoft Azure 服务主体”类型。 
 
-1. 将 Azure Docker 注册表用户名和密码（已在“创建容器注册表的实例”部分中获取）添加为“用户名和密码”类型。
+1. 将 Azure Docker 注册表用户名和密码（已在“创建容器注册表的实例”部分中获取）添加为“用户名和密码”类型。 
 
 ## <a name="edit-the-jenkinsfile"></a>编辑 Jenkinsfile
 
@@ -249,9 +249,9 @@ GitHub 上的 Microsoft 存储库中提供了一个演示如何使用 Jenkins �
     ```
 
 ## <a name="create-the-job"></a>创建作业
-1. 在“管道”类型中添加一个新作业。
+1. 在“管道”类型中添加一个新作业。 
 
-1. 选择“管道” > “定义” > “来自 SCM 的管道脚本”。
+1. 选择“管道” > “定义” > “来自 SCM 的管道脚本”。   
 
 1. 输入包含 &lt;your-forked-repo> 的 SCM 存储库 URL。
 
