@@ -57,6 +57,8 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
+    - name: Java 连接池
+      href: sample-scripts-java-connection-pooling.md
 - name: 概念
   items:
     - name: 数据库和服务器

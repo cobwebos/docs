@@ -83,6 +83,8 @@
           href: azure-pim-resource-rbac.md
         - name: 使用自定义角色
           href: pim-resource-roles-custom-role-policy.md
+    - name: 排查 PIM 问题
+      href: pim-troubleshoot.md
     - name: 访问评审
       items:
         - name: Azure AD 角色

@@ -39,6 +39,8 @@
           href: cache-best-practices.md
         - name: 适用于缓存的 Azure 体系结构最佳做法
           href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
+    - name: 故障转移和修补介绍
+      href: cache-failover.md
 - name: 操作指南
   items:
     - name: 计划

@@ -32,6 +32,8 @@
       items:
         - name: 向数据分配访问权限
           href: assign-access-acm-data.md
+        - name: 将成本分析用于常见任务
+          href: cost-analysis-common-uses.md
         - name: 使用成本警报
           href: cost-mgt-alerts-monitor-usage-spending.md
         - name: 设置和配置 AWS 集成

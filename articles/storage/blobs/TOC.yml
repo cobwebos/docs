@@ -248,6 +248,16 @@
               href: storage-blob-containers-list.md
             - name: 管理属性和元数据 (.NET)
               href: storage-blob-container-properties-metadata.md
+        - name: 创建并管理 blob
+          items:
+            - name: 列出 Blob (.NET)
+              href: storage-blobs-list.md
+            - name: 管理 Blob 属性和元数据 (.NET)
+              href: storage-blob-properties-metadata.md
+            - name: 复制 Blob (.NET)
+              href: storage-blob-copy.md
+            - name: 创建和管理 Blob 快照 (.NET)
+              href: storage-blob-snapshots.md
         - name: 保护 Blob 数据
           items:
             - name: 授予对 Blob 数据的访问权限

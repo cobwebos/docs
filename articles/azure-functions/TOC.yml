@@ -75,9 +75,9 @@
       href: functions-cli-samples.md
 - name: 概念
   items:
-    - name: 比较版本 1.x 和 2.x
+    - name: 比较运行时版本
       href: functions-versions.md
-      displayName: 'migrate, migration'
+      displayName: 'migrate, migration, v3'
     - name: 高级计划
       href: functions-premium-plan.md
     - name: 部署
