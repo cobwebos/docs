@@ -23,7 +23,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 10/16/2019
 ms.locfileid: "72389607"
 ---
-# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>快速入门：将客户端应用程序配置为访问 Web API
+# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>快速入门：配置客户端应用程序以访问 Web API
 
 为使 Web/机密客户端应用程序能够参与要求身份验证的授权流程（以及获取访问令牌），必须建立安全凭据。 Azure 门户支持的默认身份验证方法为“客户端 ID + 机密密钥”。
 
@@ -33,7 +33,7 @@ ms.locfileid: "72389607"
 * **委托的权限** - 客户端应用程序需要以登录用户的身份访问 Web API，但访问权限受所选权限的限制。 除非权限需要管理员许可，否则用户可以授予此类型的权限。
 
   > [!NOTE]
-  > 将委托权限添加到应用程序不会自动向租户中的用户授予许可。 除非管理员代表所有用户授予许可，否则用户仍必须在运行时手动同意添加的委派权限。
+  > 将委托权限添加到应用程序不会自动向租户中的用户授予许可。 除非管理员代表所有用户授予许可，否则用户仍必须在运行时手动同意添加的委托权限。
 
 本快速入门介绍如何将应用配置为执行以下操作：
 
@@ -175,7 +175,7 @@ ms.locfileid: "72389607"
     * **Microsoft API** - 用于选择 Microsoft API（例如 Microsoft Graph）的权限。
     * **组织使用的 API** - 用于选择由组织公开的 API 或组织已与之集成的 API 的权限。
     * **我的 API** - 用于选择你已经公开的 API 的权限。
-1. 选择 API 后，会看到“请求 API 权限”页。  如果 API 公开托管的权限和应用程序权限，请选择应用程序需要哪种类型的权限。
+1. 选择 API 后，会看到“请求 API 权限”页。  如果 API 公开委托的权限和应用程序权限，请选择应用程序需要哪种类型的权限。
 1. 完成后，请选择“添加权限”  。 此时会返回到“API 权限”页，其中的权限已保存并添加到表。 
 
 ## <a name="next-steps"></a>后续步骤
@@ -183,7 +183,7 @@ ms.locfileid: "72389607"
 了解下述其他相关的应用管理快速入门：
 
 * [将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)
-* [将应用程序配置为公开 Web API](quickstart-configure-app-expose-web-apis.md)
+* [配置应用程序以公开 Web API](quickstart-configure-app-expose-web-apis.md)
 * [修改应用程序支持的帐户](quickstart-modify-supported-accounts.md)
 * [删除注册到 Microsoft 标识平台的应用程序](quickstart-remove-app.md)
 

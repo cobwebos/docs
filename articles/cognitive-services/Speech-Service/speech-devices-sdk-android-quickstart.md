@@ -37,7 +37,7 @@ ms.locfileid: "68559102"
 
 * 获取[语音服务的 Azure 订阅密钥](get-started.md)
 
-* 如果计划使用对话听录，则必须使用[圆形麦克风设备](get-speech-devices-sdk.md)，该功能目前仅适用于“centralus”区域的“en-US”和“eastasia”区域的“zh-CN”。 必须在这些区域中的一个区域中具有语音键，才能使用对话听录。
+* 如果计划使用对话听录，则必须使用[圆形麦克风设备](get-speech-devices-sdk.md)，该功能目前仅适用于“centralus”区域的“en-US”和“eastasia”区域的“zh-CN”。 必须在这些区域中的一个区域中具有语音密钥，才能使用对话听录。
 
 * 如果计划使用语音服务来确定用户话语中的意向（或行动），则需[语言理解服务 (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) 订阅。 若要了解有关 LUIS 和意向识别的详细信息，请参阅[使用 LUIS C# 识别语音意向](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)。
 
@@ -160,7 +160,7 @@ ms.locfileid: "68559102"
    ```
 
    > [!NOTE]
-   > 此命令使用 Android Debug Bridge `adb.exe`，它是 Android Studio 安装的一部分。 此工具位于 C:\Users\[用户名]\AppData\Local\Android\Sdk\platform-tools 中。 可将该目录添加到你的路径，以便更轻松地调用 `adb`。 否则，必须在调用 `adb` 的每个命令中指定安装 adb.exe 的完整路径。
+   > 此命令使用 Android Debug Bridge `adb.exe`，它是 Android Studio 安装的一部分。 此工具位于 C:\Users\[用户名]\AppData\Local\Android\Sdk\platform-tools 中。 可将该目录添加到你的路径，以便更轻松地调用 `adb`。 否则，必须在调用 `adb` 必须在每个调用 adb 的命令中指定到 adb.exe 的完整安装路径。
    >
    > 如果看到 `no devices/emulators found` 错误，请检查 USB 电缆是否已连接，并确保使用了高品质的电缆。
    >
