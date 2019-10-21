@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2019
 ms.author: juliako
-ms.openlocfilehash: d25596884acdb356779eafa4348240239855ce37
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c402381534087f1e8cdab711bd1b2a34c78417f4
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308453"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675730"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>配置 Postman 以便进行媒体服务 REST API 调用
 
@@ -26,13 +26,13 @@ ms.locfileid: "70308453"
 
 开始开发之前，请查看[通过媒体服务 V3 api 进行开发](media-services-apis-overview.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。 
 - 获取[访问 API](access-api-cli-how-to.md) 所需的信息
 - 安装 [Postman](https://www.getpostman.com/) REST 客户端，以便执行一些 AMS REST 教程中所示的 REST API。 
 
-    我们使用的是 **Postman**，但任何 REST 工具都适用。 其他替代工具包括：带有 REST 插件的 **Visual Studio Code** 或 **Telerik Fiddler**。 
+    我们使用的是 **Postman**，但任何 REST 工具都适用。 其他适用的工具有：具有 REST 插件的 Visual Studio Code 或 Telerik Fiddler。 
 
 > [!IMPORTANT]
 > 查看[命名约定](media-services-apis-overview.md#naming-conventions)。
@@ -47,11 +47,9 @@ ms.locfileid: "70308453"
 
 ## <a name="configure-postman"></a>配置 Postman
 
-此部分配置 Postman。
-
 ### <a name="configure-the-environment"></a>配置环境 
 
-1. 打开 **Postman**。
+1. 打开**Postman**应用。
 2. 在屏幕的右侧，选择“管理环境”选项。
 
     ![管理环境](./media/develop-with-postman/postman-import-env.png)
@@ -80,7 +78,7 @@ ms.locfileid: "70308453"
 
 在开始操作 AMS v3 资源之前，需要获取并设置 Azure AD 令牌，以用于服务主体身份验证。
 
-1. 在 Postman 的左窗口中，选择“步骤 1: 获取 AAD 身份验证令牌”。
+1. 在 Postman 应用的左窗格中，选择 "步骤1：获取 AAD 身份验证令牌"。
 2. 然后，选择“获取适用于服务主体身份验证的 Azure AD 令牌”。
 3. 按“发送”。
 
@@ -94,7 +92,7 @@ ms.locfileid: "70308453"
 
     ![获取 AAD 令牌](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [将文件上传到媒体服务帐户 - REST](upload-files-rest-how-to.md)
 - [使用媒体服务创建筛选器 - REST](filters-dynamic-manifest-rest-howto.md)
@@ -103,4 +101,4 @@ ms.locfileid: "70308453"
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 REST 流式传输文件](stream-files-tutorial-with-rest.md)。  
-- [教程：基于 URL 对远程文件进行编码并流式传输视频 - REST](stream-files-tutorial-with-rest.md)
+- [教程：根据 URL 编码远程文件并流式传输视频-REST](stream-files-tutorial-with-rest.md)

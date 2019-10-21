@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: b-juche
-ms.openlocfilehash: d73ac199df03f4d789db0634be1e926afc77e623
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: d323bd0b9684cfe4930d8c779a6728fcfd3836fb
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597556"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674926"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>为 NFS 卷配置导出策略
 
@@ -27,7 +27,7 @@ ms.locfileid: "72597556"
 
 ## <a name="steps"></a>Steps 
 
-1.  从“管理卷”边栏选项卡中单击“创建导出策略”边栏选项卡。 
+1.  在 Azure NetApp 文件导航窗格中单击 "**导出策略**"。 
 
 2.  为以下字段指定信息来创建导出策略规则：   
     *  **索引**   

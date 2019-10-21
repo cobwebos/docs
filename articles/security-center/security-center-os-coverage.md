@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 1d13db922ae84e4032304a8865ba6fcdafa65748
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: bdb0322083f842922359f0c91da77f5df81613cb
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201637"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675811"
 ---
-# <a name="supported-platforms"></a>受支持的平台 
+# <a name="supported-platforms"></a>支持的平台 
 
 ## 虚拟机/服务器<a name="vm-server"></a>
 
@@ -41,15 +41,15 @@ ms.locfileid: "71201637"
 
 ### Windows server 操作系统<a name="os-windows"></a>
 
-* Windows Server 2019
-* Windows Server 2016
-* Windows Server 2012 R2
-* Windows Server 2012
-* Windows Server 2008 R2
-* Windows Server 2008
-
-> [!NOTE]
-> 与 Microsoft Defender ATP 集成仅支持 Windows Server 2012 R2 和 Windows Server 2016。
+[!div class="mx-tableFixed"]
+|OS|Azure 安全中心支持|支持与 Microsoft Defender ATP 集成|
+|---|---|---|
+|Windows Server 2019|✔|X|
+|Windows Server 2016|✔|✔|
+|Windows Server 2012 R2|✔|✔|
+|Windows Server 2012|✔|✔|
+|Windows Server 2008 R2|✔|✔|
+|Windows Server 2008|✔|✔|
 
 若要详细了解上面列出的 Windows 操作系统所支持的功能，请参阅[虚拟机/服务器支持的功能](security-center-services.md##vm-server-features)。
 
@@ -73,7 +73,7 @@ ms.locfileid: "71201637"
 * Ubuntu Linux 14.04 LTS 和 16.04 LTS
 
 > [!NOTE]
-> 由于受支持的 Linux 操作系统的列表不断变化, 因此, 如果需要, 请单击[此处](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems)查看受支持版本的最新列表, 以防自上次发布本主题以来发生了更改。
+> 由于受支持的 Linux 操作系统的列表不断变化，因此，如果需要，请单击[此处](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems)查看受支持版本的最新列表，以防自上次发布本主题以来发生了更改。
 
 若要详细了解上面列出的适用于 Linux 操作系统的支持功能，请参阅[虚拟机/服务器支持的功能](security-center-services.md##vm-server-features)。
 
@@ -95,23 +95,23 @@ Azure 安全中心支持以下 Azure PaaS 资源：
 * CosmosDB
 * 存储帐户
 * 应用服务
-* Functions
+* 函数
 * 云服务
 * VNet
-* Subnet
+* 子网
 * NIC
 * NSG
-* Batch 帐户
+* 批处理帐户
 * Service fabric 帐户
 * 自动化帐户
-* 负载均衡器
+* 负载均衡
 * 搜索
 * 服务总线命名空间
 * 流分析
 * 事件中心命名空间
-* 逻辑应用
+* Logic Apps
 * Redis
-* Data Lake Analytics
+* Data Lake 分析
 * Data Lake Store
 * 密钥保管库
 

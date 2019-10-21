@@ -6,21 +6,21 @@ author: lenadroid
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 647cb0573922bb53232dbce3f3a7a2557553d47d
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: c4fca9b8f4c8a01124074396985b1ec3f1c896c6
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263893"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675151"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 中运行 Apache Spark 作业
 
 [Apache Spark][apache-spark]是一种用于大规模数据处理的快速引擎。 从[Spark 2.3.0 版本][spark-latest-release]开始，Apache Spark 支持与 Kubernetes 群集进行本机集成。 Azure Kubernetes 服务 (AKS) 是 Azure 中运行的托管 Kubernetes 环境。 本文档详细说明如何在 Azure Kubernetes 服务 (AKS) 群集上准备和运行 Apache Spark 作业。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 为了完成本文中的步骤，需要具备以下各项。
 
@@ -43,10 +43,16 @@ Spark 用于大规模数据处理，要求根据 Spark 资源的要求调整 Kub
 az group create --name mySparkCluster --location eastus
 ```
 
-创建 AKS 群集，其中包含大小为 `Standard_D3_v2` 的节点。
+创建群集的服务主体。 创建后，将需要下一个命令的服务主体 appId 和密码。
 
 ```azurecli
-az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2
+az ad sp create-for-rbac --name SparkSP
+```
+
+创建具有 `Standard_D3_v2` 大小的节点的 AKS 群集，以及作为服务主体和客户端机密参数传递的 appId 和 password 的值。
+
+```azurecli
+az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
 ```
 
 连接到 AKS 群集。
@@ -64,7 +70,7 @@ az aks get-credentials --resource-group mySparkCluster --name mySparkCluster
 将 Spark 项目存储库克隆到开发系统。
 
 ```bash
-git clone -b branch-2.3 https://github.com/apache/spark
+git clone -b branch-2.4 https://github.com/apache/spark
 ```
 
 切换到克隆的存储库所在的目录，并将 Spark 源的路径保存到某个变量。
@@ -136,7 +142,7 @@ cd sparkpi
 
 ```bash
 touch project/assembly.sbt
-echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.6")' >> project/assembly.sbt
+echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.10")' >> project/assembly.sbt
 ```
 
 运行以下命令，将示例代码复制到新建的项目，并添加全部所需的依赖项。
@@ -151,7 +157,7 @@ cat <<EOT >> build.sbt
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.3.0" % "provided"
 EOT
 
-sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11",/' build.sbt
+sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11"/' build.sbt
 sed -ie 's/name.*/name := "SparkPi",/' build.sbt
 ```
 
@@ -214,6 +220,13 @@ kubectl proxy
 cd $sparkdir
 ```
 
+创建具有足够权限的服务帐户来运行作业。
+
+```bash
+kubectl create serviceaccount spark
+kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
+```
+
 使用 `spark-submit` 提交作业。
 
 ```bash
@@ -223,6 +236,7 @@ cd $sparkdir
   --name spark-pi \
   --class org.apache.spark.examples.SparkPi \
   --conf spark.executor.instances=3 \
+  --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
   --conf spark.kubernetes.container.image=$REGISTRY_NAME/spark:$REGISTRY_TAG \
   $jarUrl
 ```
@@ -313,7 +327,7 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
 ```
 
 > [!WARNING]
-> 从 Spark[文档][spark-docs]：“Kubernetes 计划程序当前处于实验阶段。 将来版本中可能在配置、容器映像和入口点方面有一些方行为更改。”
+> 从 Spark[文档][spark-docs]： "Kubernetes 计划程序当前正在试验。 将来版本中可能在配置、容器映像和入口点方面有一些方行为更改。”
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,16 +11,22 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: b69eda59c9c8032510df036d3aa0d160105fbc16
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: a3ba28960327f1e0a56b1ac838b2cb90ab6ac72a
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533171"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675637"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知问题和故障排除 Azure 机器学习
 
 本文可帮助你查找和更正使用 Azure 机器学习时遇到的错误或故障。
+
+## <a name="upcoming-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>即将推出 SR-IOV 升级到 AmlCompute 中的 NCv3 计算机
+
+Azure 计算将更新从11月提前开始的 NCv3 Sku，以支持所有 MPI 实现和版本，并提供适用于未受支持的虚拟机的 RDMA 谓词。 这将需要较短的停机时间-[详细了解 sr-iov 升级](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku)。
+
+作为 Azure 机器学习托管计算产品（AmlCompute）的客户，此时不需要进行任何更改。 根据[更新计划](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku)，你需要在训练中计划一个短暂的中断。 服务将负责更新群集节点上的 VM 映像，并自动扩展群集。 升级完成后，除了获得更高的带宽、延迟时间和更好的分布式应用程序性能之外，您还可以使用其他所有 MPI discibutions （如 OpenMPI 和 Pytorch）。
 
 ## <a name="visual-interface-issues"></a>视觉对象接口问题
 

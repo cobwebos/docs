@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 45bc55141c9f338ae2f69cf4ccefae3d2492b239
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 28502c49c0eebce84ffd5aa376e7b20bd52213c0
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336936"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674969"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -22,14 +22,14 @@ ms.locfileid: "71336936"
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
-按照以下基本步骤在本地计算机上开发函数并使用 Core Tools 将其发布到 Azure：
+在本地计算机上开发功能，并使用核心工具将其发布到 Azure 后，请遵循以下基本步骤：
 
 > [!div class="checklist"]
-> * [安装 Core Tools 和依赖项](#v2)。
-> * [从特定于语言的模板创建函数应用项目](#create-a-local-functions-project)。
-> * [注册触发器和绑定扩展](#register-extensions)。
-> * [定义存储和其他连接](#local-settings-file)。
-> * [从触发器和特定于语言的模板创建函数](#create-func)。
+> * [安装核心工具和依赖项。](#v2)
+> * [使用特定于语言的模板创建 function app 项目。](#create-a-local-functions-project)
+> * [注册触发器和绑定扩展。](#register-extensions)
+> * [定义存储和其他连接。](#local-settings-file)
+> * [从触发器和语言特定的模板创建函数。](#create-func)
 > * [在本地运行函数](#start)
 > * [将项目发布到 Azure](#publish)
 
@@ -52,7 +52,7 @@ Azure Functions Core Tools 有两个版本。 使用的版本取决于本地开�
 2\.x 版工具使用构建在 .NET Core 之上的 Azure Functions 运行时 2.x。 .NET Core 2.x 支持的所有平台（包括 [Windows](#windows-npm)、[macOS](#brew) 和 [Linux](#linux)）都支持此版本。 
 
 > [!IMPORTANT]
-> 可以使用[扩展捆绑包]绕过安装 .NET Core 2.x SDK 的要求。
+> 可以通过使用[扩展捆绑]来绕过安装 .net CORE 2.x SDK 的要求。
 
 #### <a name="windows-npm"></a>Windows
 
@@ -66,9 +66,9 @@ Azure Functions Core Tools 有两个版本。 使用的版本取决于本地开�
     npm install -g azure-functions-core-tools
     ```
 
-   npm 下载并安装 Core Tools 包可能需要几分钟的时间。
+   Npm 下载和安装核心工具包可能需要几分钟时间。
 
-1. 如果不打算使用[扩展捆绑包]，请安装[用于 Windows 的 .NET Core 2.x SDK](https://www.microsoft.com/net/download/windows)。
+1. 如果不打算使用[扩展捆绑]，请安装[.NET Core 2.X SDK for Windows](https://www.microsoft.com/net/download/windows)。
 
 #### <a name="brew"></a>带 Homebrew 的 MacOS
 
@@ -83,14 +83,14 @@ Azure Functions Core Tools 有两个版本。 使用的版本取决于本地开�
     brew install azure-functions-core-tools
     ```
 
-1. 如果不打算使用[扩展捆绑包]，请安装[用于 macOS 的 .NET Core 2.x SDK](https://www.microsoft.com/net/download/macos)。
+1. 如果不打算使用[扩展捆绑]，请安装[适用于 MacOS 的 .NET Core 2.x SDK](https://www.microsoft.com/net/download/macos)。
 
 
 #### <a name="linux"></a> 带 APT 的 Linux (Ubuntu/Debian)
 
 以下步骤使用 [APT](https://wiki.debian.org/Apt) 在 Ubuntu/Debian Linux 发行版上安装 Core Tools。 有关其他 Linux 发行版，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux)。
 
-1. 安装 Microsoft 包存储库 GPG 密钥，以验证包完整性：
+1. 安装 Microsoft package 存储库 GPG 密钥，验证包的完整性：
 
     ```bash
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
@@ -113,7 +113,7 @@ Azure Functions Core Tools 有两个版本。 使用的版本取决于本地开�
 
 1. 检查 `/etc/apt/sources.list.d/dotnetdev.list` 文件中列出的相应 Linux 版本字符串之一：
 
-    | Linux 分发版 | Version |
+    | Linux 分发版 | 版本 |
     | --------------- | ----------- |
     | Debian 10 | `buster` |
     | Debian 9 | `stretch` |
@@ -135,7 +135,7 @@ Azure Functions Core Tools 有两个版本。 使用的版本取决于本地开�
     sudo apt-get install azure-functions-core-tools
     ```
 
-1. 如果不打算使用[扩展捆绑包]，请安装[用于 Linux 的 .NET Core 2.x SDK](https://www.microsoft.com/net/download/linux)。
+1. 如果不打算使用[扩展捆绑]，请安装[适用于 Linux 的 .NET Core 2.x SDK](https://www.microsoft.com/net/download/linux)。
 
 ## <a name="create-a-local-functions-project"></a>创建本地 Functions 项目
 
@@ -160,7 +160,7 @@ python (preview)
 powershell (preview)
 ```
 
-使用向上/向下箭头键选择语言，然后按 Enter。 如果计划开发 JavaScript 或 TypeScript 函数，请选择“节点”，然后选择语言。 TypeScript 具有[一些其他要求](functions-reference-node.md#typescript)。 
+使用向上/向下箭头键选择语言，然后按 Enter。 如果打算开发 JavaScript 或 TypeScript 函数，请选择 "**节点**"，然后选择语言。 TypeScript 有[一些额外的要求](functions-reference-node.md#typescript)。 
 
 JavaScript 项目的输出如以下示例所示：
 
@@ -200,7 +200,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
-如果没有为 [`AzureWebJobsStorage`] 设置有效的存储连接字符串并且没有使用模拟器，则会显示以下错误消息：
+如果没有为[`AzureWebJobsStorage`]设置有效的存储连接字符串，并且未使用模拟器，则会显示以下错误消息：
 
 > local.settings.json 中的 AzureWebJobsStorage 缺少值。 该值对除 HTTP 以外的所有触发器都是必需的。 可运行“func azure functionapp fetch-app-settings \<functionAppName\>”或在 local.settings.json 中指定连接字符串。
 
@@ -288,11 +288,11 @@ func new --template "Queue Trigger" --name QueueTriggerJS
 
 ## <a name="start"></a>在本地运行函数
 
-若要运行 Functions 项目，请运行 Functions 主机。 主机会为项目中的所有函数启用触发器。 
+若要运行 Functions 项目，请运行 Functions 主机。 宿主为项目中的所有函数启用触发器。 
 
 ### <a name="version-2x"></a>版本 2.x
 
-在 2.x 版的运行时中，启动命令因项目语言而异。
+在运行时的版本2.x 中，start 命令因项目语言而异。
 
 #### <a name="c"></a>C\#
 
@@ -315,7 +315,7 @@ npm start
 
 ### <a name="version-1x"></a>版本 1.x
 
-1\.x 版的 Functions 运行时需要 `host` 命令，如下例所示：
+函数运行时的版本1.x 需要 `host` 命令，如以下示例中所示：
 
 ```command
 func host start
@@ -356,7 +356,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 若要在本地测试函数，请[启动 Functions 主机](#start)，并在本地服务器上使用 HTTP 请求调用终结点。 你调用的终结点要取决于函数的类型。
 
 >[!NOTE]
-> 本主题中的示例使用 cURL 工具从终端或命令提示符发送 HTTP 请求。 你可以使用所选的工具将 HTTP 请求发送到本地服务器。 默认情况下，cURL 工具在基于 Linux 的系统和 Windows 10 内部版本 17063 及更高版本上可用。 在较旧的 Windows 上，必须先下载并安装 [cURL 工具](https://curl.haxx.se/)。
+> 本主题中的示例使用 cURL 工具从终端或命令提示符发送 HTTP 请求。 你可以使用所选的工具将 HTTP 请求发送到本地服务器。 默认情况下，在基于 Linux 的系统和 Windows 10 版本17063及更高版本中，可以使用卷工具。 在较旧的 Windows 上，必须先下载并安装[卷工具](https://curl.haxx.se/)。
 
 有关测试函数的更多常规信息，请参阅[在 Azure Functions 中测试代码的策略](functions-test-a-function.md)。
 
@@ -429,7 +429,7 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 ## <a name="publish"></a>发布到 Azure
 
-Azure Functions Core Tools 支持两种类型的部署：通过 [Zip Deploy](functions-deployment-technologies.md#zip-deploy) 将函数项目文件直接部署到函数应用，以及[部署自定义 Docker 容器](functions-deployment-technologies.md#docker-container)。 必须已[在 Azure 订阅中创建了一个函数应用](functions-cli-samples.md#create)，你将向其部署代码。 应该生成需要编译的项目，以便可以部署二进制文件。
+Azure Functions Core Tools 支持两种类型的部署：通过[Zip](functions-deployment-technologies.md#zip-deploy)部署和[部署自定义 Docker 容器](functions-deployment-technologies.md#docker-container)将函数项目文件直接部署到 function app。 你必须已[在 Azure 订阅中创建了一个函数应用](functions-cli-samples.md#create)，以便将你的代码部署到该应用。 应该生成需要编译的项目，以便可以部署二进制文件。
 
 项目文件夹可能包含不应发布的特定于语言的文件和目录。 排除的项在根项目文件夹中的 funcignore 文件中列出。     
 
@@ -441,13 +441,13 @@ Azure Functions Core Tools 支持两种类型的部署：通过 [Zip Deploy](fun
 func azure functionapp publish <FunctionAppName>
 ```
 
-此命令发布到 Azure 中的现有函数应用。 如果尝试发布到订阅中不存在的 `<FunctionAppName>`，则会收到错误。 若要了解如何使用 Azure CLI 从命令提示符或终端窗口创建函数应用，请参阅[为无服务器执行创建函数应用](./scripts/functions-cli-create-serverless.md)。 默认情况下，此命令将应用部署为[从部署包运行](run-functions-from-deployment-package.md)。 若要禁用此建议的部署模式，请使用 `--nozip` 选项。
+此命令发布到 Azure 中的现有函数应用。 如果你尝试发布到你的订阅中不存在的 `<FunctionAppName>`，将会出现错误。 若要了解如何使用 Azure CLI 从命令提示符或终端窗口创建函数应用，请参阅[为无服务器执行创建函数应用](./scripts/functions-cli-create-serverless.md)。 默认情况下，此命令使用[远程生成](functions-deployment-technologies.md#remote-build)并部署你的应用程序，以便[从部署包中运行](run-functions-from-deployment-package.md)。 若要禁用此建议的部署模式，请使用 `--nozip` 选项。
 
 >[!IMPORTANT]
 > 在 Azure 门户中创建函数应用时，该应用默认使用 2.x 版函数运行时。 要让函数应用使用 1.x 版运行时，请遵照[在版本 1.x 上运行](functions-versions.md#creating-1x-apps)中的说明。
 > 无法为包含现有函数的函数应用更改运行时版本。
 
-以下发布选项同时适用于 1.x 和 2.x 版本：
+以下发布选项适用于这两个版本：1.x 和2.x：
 
 | 选项     | 描述                            |
 | ------------ | -------------------------------------- |
@@ -463,6 +463,7 @@ func azure functionapp publish <FunctionAppName>
 | **`--list-included-files`** | 基于 .funcignore 文件显示发布的文件列表。 |
 | **`--nozip`** | 关闭默认的 `Run-From-Package` 模式。 |
 | **`--build-native-deps`** | 发布 python 函数应用时跳过生成 .wheels 文件夹。 |
+| **`--build [-b]`** | 在部署到 Linux 函数应用时执行生成操作。 （接受：远程、本地） |
 | **`--additional-packages`** | 构建本机依赖项时要安装的包列表。 例如：`python3-dev libevent-dev`。 |
 | **`--force`** | 在某些情况下会忽略预发布验证。 |
 | **`--csx`** | 发布 C# 脚本 (.csx) 项目。 |
@@ -471,7 +472,7 @@ func azure functionapp publish <FunctionAppName>
 
 ### <a name="deployment-custom-container"></a>部署（自定义容器）
 
-Azure Functions 可让你在[自定义 Docker 容器](functions-deployment-technologies.md#docker-container)中部署函数项目。 有关详细信息，请参阅[使用自定义映像在 Linux 上创建函数](functions-create-function-linux-custom-image.md)。 自定义容器必须有一个 Dockerfile。 若要使用 Dockerfile 创建应用，请在 `func init` 中使用 -dockerfile 选项。
+Azure Functions 允许在[自定义 Docker 容器](functions-deployment-technologies.md#docker-container)中部署函数项目。 有关详细信息，请参阅[使用自定义映像在 Linux 上创建函数](functions-create-function-linux-custom-image.md)。 自定义容器必须有一个 Dockerfile。 若要创建具有 Dockerfile 的应用，请在 `func init` 上使用--Dockerfile 选项。
 
 ```bash
 func deploy
@@ -520,5 +521,5 @@ Azure Functions Core Tools 是[开源工具且托管在 GitHub 上](https://gith
 [Azure 门户]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
-[`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
-[扩展捆绑包]: functions-bindings-register.md#extension-bundles
+[AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage
+[扩展捆绑]: functions-bindings-register.md#extension-bundles

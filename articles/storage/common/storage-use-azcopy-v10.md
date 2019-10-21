@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: d26535d18233533d1d72c02ad997008cba536fce
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 37d8c483a1ef49a87205dcc848aae974f5b0e47e
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595173"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675866"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -294,6 +294,14 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 ### <a name="escape-special-characters-in-sas-tokens"></a>转义 SAS 令牌中的特殊字符
 
 在具有 `.cmd` 扩展名的批处理文件中，必须转义 SAS 令牌中显示的 `%` 字符。 为此，可在 SAS 令牌字符串中现有 `%` 字符的旁边添加一个添加 `%` 字符。
+
+### <a name="run-scripts-by-using-jenkins"></a>使用 Jenkins 运行脚本
+
+如果计划使用[Jenkins](https://jenkins.io/)来运行脚本，请确保将以下命令放在脚本的开头。
+
+```
+/usr/bin/keyctl new_session
+```
 
 ## <a name="use-azcopy-in-storage-explorer"></a>在存储资源管理器中使用 AzCopy
 

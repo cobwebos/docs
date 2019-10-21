@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: iainfou
-ms.openlocfilehash: c0744335dd13a0e8c35826c9b7da6fa71094e01e
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8cba2cbf8fcbad1acae8c36892308c3249fc4181
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72600028"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674907"
 ---
 # <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>预览-将 Azure AD 域服务从经典虚拟网络模型迁移到资源管理器
 
@@ -40,7 +40,7 @@ ms.locfileid: "72600028"
 
 使用此迁移过程移动 Azure AD DS 托管域时，无需将计算机重新加入托管域或删除 Azure AD DS 实例，并从头开始创建一个。 迁移过程结束时，Vm 将继续加入到 Azure AD DS 托管域。
 
-迁移后，Azure AD DS 提供了许多功能，这些功能仅适用于在资源管理器虚拟网络中使用的域，例如：
+迁移后，Azure AD DS 提供了许多功能，这些功能仅适用于使用资源管理器虚拟网络的域，例如：
 
 * 细化密码策略支持。
 * AD 帐户锁定保护。
@@ -55,7 +55,8 @@ ms.locfileid: "72600028"
 
 迁移 Azure AD DS 托管域的常见方案包括以下示例。
 
-[!NOTE] 在确认迁移成功之前，请不要转换经典虚拟网络。 如果在迁移和验证阶段出现问题，转换虚拟网络将删除回滚或还原 Azure AD DS 托管域的选项。
+> [!NOTE]
+> 在确认迁移成功之前，请不要转换经典虚拟网络。 如果在迁移和验证阶段出现任何问题，转换虚拟网络将删除回滚或还原 Azure AD DS 托管域的选项。
 
 ### <a name="migrate-azure-ad-ds-to-an-existing-resource-manager-virtual-network-recommended"></a>将 Azure AD DS 迁移到现有资源管理器虚拟网络（推荐）
 
@@ -133,7 +134,7 @@ Azure AD DS 通常使用地址范围内的前两个可用 IP 地址，但这并�
 
 ### <a name="roll-back-and-restore"></a>回滚和还原
 
-如果迁移未成功，则需要回滚或还原 Azure AD DS 托管域。 Rollback 是一项自助服务选项，可立即将托管域的状态返回到迁移尝试之前。 Azure 支持工程师还可以从备份中还原托管域，这是最后一种手段。 有关详细信息，请参阅[如何从失败的迁移回滚或还原](#roll-back-and-restore)。
+如果迁移未成功，则需要回滚或还原 Azure AD DS 托管域。 Rollback 是一项自助服务选项，可立即将托管域的状态返回到迁移尝试之前。 Azure 支持工程师还可以从备份中还原托管域，这是最后一种手段。 有关详细信息，请参阅[如何从失败的迁移回滚或还原](#roll-back-and-restore-from-migration)。
 
 ### <a name="restrictions-on-available-virtual-networks"></a>对可用虚拟网络的限制
 
@@ -153,9 +154,9 @@ Azure AD DS 托管域可以迁移到的虚拟网络有一些限制。 资源管�
 | 步骤    | 执行  | 估计时间  | 故障时间  | 要回滚/还原？ |
 |---------|--------------------|-----------------|-----------|-------------------|
 | [步骤 1-更新并找到新的虚拟网络](#update-and-verify-virtual-network-settings) | Azure 门户 | 15 分钟 | 无需停机 | N/A |
-| [步骤 2-为迁移准备 Azure AD DS 托管域](#prepare-the-managed-domain-for-migration) | PowerShell | 平均15到30分钟 | 此命令完成后，将启动 Azure AD DS 的停机时间。 | 回滚并可用还原 |
-| [步骤 3-将 Azure AD DS 托管域移动到现有虚拟网络](#migrate-the-managed-domain) | PowerShell | 平均时间为1到3小时 | 当完成此命令后，一个域控制器可用，中断时间结束。 | 仅还原 |
-| [步骤 4-测试并等待副本域控制器](#test-and-verify-connectivity-after-the-migration)| PowerShell 和 Azure 门户 | 1小时或更多，具体取决于测试数量 | 这两个域控制器都可用并且应正常工作。 | 仅还原 |
+| [步骤 2-为迁移准备 Azure AD DS 托管域](#prepare-the-managed-domain-for-migration) | PowerShell | 平均15到30分钟 | 此命令完成后，将启动 Azure AD DS 的停机时间。 | 回滚并可用还原。 |
+| [步骤 3-将 Azure AD DS 托管域移动到现有虚拟网络](#migrate-the-managed-domain) | PowerShell | 平均时间为1到3小时 | 当完成此命令后，一个域控制器可用，中断时间结束。 | 出现故障时，回滚（自助服务）和还原都可用。 |
+| [步骤 4-测试并等待副本域控制器](#test-and-verify-connectivity-after-the-migration)| PowerShell 和 Azure 门户 | 1小时或更多，具体取决于测试数量 | 这两个域控制器都可用并且应正常工作。 | 不适用。 成功迁移第一个 VM 后，就不会有回滚或还原选项。 |
 | [步骤 5-可选配置步骤](#optional-post-migration-configuration-steps) | Azure 门户和 Vm | N/A | 无需停机 | N/A |
 
 > [!IMPORTANT]
@@ -171,7 +172,7 @@ Azure AD DS 托管域可以迁移到的虚拟网络有一些限制。 资源管�
 
 1. 创建或选择现有资源管理器虚拟网络。
 
-    请确保 "网络设置" 不会阻止 Azure AD DS 所需的端口。 必须在经典虚拟网络和资源管理器虚拟网络上打开端口。 这些设置包括路由表和网络安全组。
+    请确保 "网络设置" 不会阻止 Azure AD DS 所需的端口。 必须在经典虚拟网络和资源管理器虚拟网络上打开端口。 这些设置包括路由表（尽管不建议使用路由表）和网络安全组。
 
     若要查看所需端口，请参阅[网络安全组和所需的端口][network-ports]。 若要最大程度地减少网络通信问题，建议在迁移成功完成后，等待并将网络安全组或路由表应用到资源管理器虚拟网络。
 
@@ -181,7 +182,7 @@ Azure AD DS 托管域可以迁移到的虚拟网络有一些限制。 资源管�
 1. （可选）如果你计划将其他资源移到资源管理器部署模型和虚拟网络，请确认可以迁移这些资源。 有关详细信息，请参阅[平台支持的从经典部署模型到资源管理器的 IaaS 资源迁移][migrate-iaas]。
 
     > [!NOTE]
-    > 请勿将经典虚拟网络转换为资源管理器虚拟网络。 如果你没有回滚或还原 Azure AD DS 托管域的选项。
+    > 请勿将经典虚拟网络转换为资源管理器虚拟网络。 如果这样做，则没有回滚或还原 Azure AD DS 托管域的选项。
 
 ## <a name="prepare-the-managed-domain-for-migration"></a>准备托管域以进行迁移
 
@@ -189,7 +190,7 @@ Azure PowerShell 用于为迁移准备 Azure AD DS 托管域。 这些步骤包�
 
 若要为迁移准备 Azure AD DS 托管域，请完成以下步骤：
 
-1. 从[PowerShell 库][powershell-script]安装 `Migrate-Aaads` 模块。 此 PowerShell 迁移脚本由 Azure AD 工程团队进行数字签名。
+1. 从[PowerShell 库][powershell-script]安装 `Migrate-Aaads` 脚本。 此 PowerShell 迁移脚本由 Azure AD 工程团队进行数字签名。
 
     ```powershell
     Install-Script -Name Migrate-Aadds
@@ -246,7 +247,7 @@ Migrate-Aadds `
 
 成功完成迁移后，可以在 Azure 门户或 Azure PowerShell 中查看第一个域控制器的 IP 地址。 还显示了第二个可用的域控制器上的时间估算。
 
-作为此阶段，你可以选择移动经典部署模型和虚拟网络中的其他现有资源。 或者，你可以在 Azure AD DS 迁移完成后将资源保留在经典部署模型中，并将虚拟网络对等互连。
+在此阶段，你可以选择移动经典部署模型和虚拟网络中的其他现有资源。 或者，你可以在 Azure AD DS 迁移完成后将资源保留在经典部署模型中，并将虚拟网络对等互连。
 
 ## <a name="test-and-verify-connectivity-after-the-migration"></a>迁移后测试并验证连接
 
@@ -266,7 +267,7 @@ Migrate-Aadds `
 1. 验证托管域的名称解析，如 `nslookup contoso.com`
     * 指定自己 Azure AD DS 托管域的 DNS 名称，以验证 DNS 设置是否正确以及是否可解决。
 
-完成迁移 cmdlet 后，第二个域控制器应在1-2 小时内可用。 若要查看第二个域控制器是否可用，请查看 Azure 门户中 Azure AD DS 托管域的**属性**页。 如果显示了两个 IP 地址，则第二个域控制器已准备就绪。
+迁移 cmdlet 完成后，第二个域控制器应在1-2 小时内可用。 若要查看第二个域控制器是否可用，请查看 Azure 门户中 Azure AD DS 托管域的**属性**页。 如果显示了两个 IP 地址，则第二个域控制器已准备就绪。
 
 ## <a name="optional-post-migration-configuration-steps"></a>可选迁移后配置步骤
 
@@ -294,16 +295,16 @@ Azure AD DS 公开了审核日志，以帮助排查和查看域控制器上的�
 
 #### <a name="creating-a-network-security-group"></a>创建网络安全组
 
-Azure AD DS 创建一个网络安全组，该安全组打开托管域所需的端口并阻止其他所有传入流量。 此网络安全组充当一层额外的保护措施，以锁定对托管域的访问。 此网络安全组应自动创建。 否则，或者需要打开其他端口，请查看以下步骤：
+Azure AD DS 需要使用网络安全组来保护托管域所需的端口，并阻止其他所有传入流量。 此网络安全组充当一层额外的保护措施，用于锁定对托管域的访问，但不会自动创建。 若要创建网络安全组并打开所需的端口，请查看以下步骤：
 
 1. 在 Azure 门户中，选择 Azure AD DS 资源。 在 "概述" 页上，如果没有与 Azure AD 域服务相关联，则会显示一个按钮来创建网络安全组。
 1. 如果使用安全 LDAP，请将规则添加到网络安全组，以允许*TCP*端口*636*的传入流量。 有关详细信息，请参阅[配置安全 LDAP][secure-ldap]。
 
-## <a name="roll-back-and-restore"></a>回滚和还原
+## <a name="roll-back-and-restore-from-migration"></a>回退并从迁移还原
 
 ### <a name="roll-back"></a>回滚
 
-如果在步骤2中准备迁移的 PowerShell cmdlet 失败，则 Azure AD DS 托管域可以回滚到原始配置。 此回滚需要原始经典虚拟网络。 请注意，在回滚后，IP 地址可能仍会更改。
+如果在步骤2中运行 PowerShell cmdlet 准备迁移时出现错误，或者在步骤3中的迁移本身中出现错误，则 Azure AD DS 托管域可回滚到原始配置。 此回滚需要原始经典虚拟网络。 请注意，在回滚后，IP 地址可能仍会更改。
 
 使用 *-Abort*参数运行 `Migrate-Aadds` cmdlet。 为您自己的 Azure AD DS 托管域提供 *-ManagedDomainFqdn* ，在上一部分中准备好，如*contoso.com*：
 
