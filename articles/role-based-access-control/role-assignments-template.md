@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b4eebf7dac4d388411f570b1546c96e3b82b2a98
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 5f57ea658df0569c4e69e476513863abe6940471
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950065"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692906"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>使用 RBAC 和 Azure 资源管理器模板管理对 Azure 资源的访问权限
 
@@ -78,7 +78,7 @@ az group deployment create --resource-group ExampleGroup --template-file rbac-te
 
 - 要为其分配角色的用户、组或应用程序的唯一标识符
 - 要分配的角色
-- 用于角色分配的唯一标识符；你也可以使用默认的标识符
+- 将用于角色分配的唯一标识符，或者可以使用默认标识符
 
 ```json
 {
@@ -139,7 +139,7 @@ $userid = (Get-AzADUser -DisplayName "{name}").id
 userid=$(az ad user show --upn-or-object-id "{email}" --query objectId --output tsv)
 ```
 
-角色分配范围是根据部署级别确定的。 下面是有关如何在资源组范围内启动部署的[AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)和[az group deployment](/cli/azure/group/deployment#az-group-deployment-create)的示例。
+角色分配的作用域是从部署级别确定的。 下面是有关如何在资源组范围内启动部署的[AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)和[az group deployment](/cli/azure/group/deployment#az-group-deployment-create)的示例。
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $userid -builtInRoleType Reader
@@ -160,11 +160,11 @@ az deployment create --location centralus --template-file rbac-test.json --param
 ```
 
 > [!NOTE]
-> 此模板不是幂等的，除非为每个模板部署的参数提供相同的 `roleNameGuid` 值。 如果未提供 `roleNameGuid`，则默认情况下将在每个部署上生成新的 GUID，并且后续部署将失败，并出现 `Conflict: RoleAssignmentExists` 错误。
+> 此模板不是幂等的，除非将同一 `roleNameGuid` 值作为模板的每个部署的参数提供。 如果未提供 `roleNameGuid`，则默认情况下将在每次部署时生成新的 GUID，并且后续部署将失败并出现 `Conflict: RoleAssignmentExists` 错误。
 
 ## <a name="create-a-role-assignment-at-a-resource-scope"></a>在资源范围中创建角色分配
 
-如果需要在资源级别创建角色分配，角色分配的格式将会不同。 需提供要将角色分配到的资源的资源提供程序命名空间和资源类型。 还需在角色分配名称中包含该资源的名称。
+如果需要在资源级别创建角色分配，则角色分配的格式不同。 提供资源提供程序命名空间和资源类型，以将角色分配到该资源。 还在角色分配的名称中包含资源的名称。
 
 对于角色分配的类型和名称，请使用以下格式：
 
@@ -232,7 +232,7 @@ az deployment create --location centralus --template-file rbac-test.json --param
         {
             "type": "Microsoft.Storage/storageAccounts/providers/roleAssignments",
             "apiVersion": "2018-09-01-preview",
-            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', guid(uniqueString(parameters('storageName'))))]",
+            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', guid(uniqueString(variables('storageName'))))]",
             "dependsOn": [
                 "[variables('storageName')]"
             ],
@@ -332,4 +332,4 @@ az group deployment create --resource-group ExampleGroup2 --template-file rbac-t
 - [快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
 - [了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)
 - [在订阅级别创建资源组和资源](../azure-resource-manager/deploy-to-subscription.md)
-- [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=rbac)
+- [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?term=rbac)

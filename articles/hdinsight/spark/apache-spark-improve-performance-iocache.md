@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.openlocfilehash: ecb393ea1f64897f17ce73170da1673886ef8916
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71266187"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>使用 Azure HDInsight IO 缓存提高 Apache Spark 工作负荷的性能
@@ -48,7 +48,7 @@ IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spar
 >[!NOTE]  
 > 即使进度栏显示已激活，但 IO 缓存实际上未启用，直到重新启动其他受影响的服务。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
   
 启用 IO 缓存后可能会收到运行 Spark 作业时出现的磁盘空间错误。 出现这些错误的原因是 Spark 还将本地磁盘存储用于在执行数据重组操作期间存储数据。 启用 IO 缓存并减少 Spark 存储空间后，Spark 可能会耗尽 SSD 空间。 IO 缓存所用的空间量默认为 SSD 空间总量的一半。 IO 缓存的磁盘空间使用量可以在 Ambari 中进行配置。 如果收到磁盘空间错误，请减少 IO 缓存所用的 SSD 空间量，并重新启动该服务。 若要更改为 IO 缓存设置的空间，请执行以下步骤：
 
@@ -64,13 +64,13 @@ IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spar
 
 1. 更改框中的值。
 
-    ![编辑 IO 缓存填充度百分比](./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png "编辑 IO 缓存填充度百分比")
+    ![编辑 IO 缓存填充百分比](./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png "编辑 IO 缓存填充百分比")
 
 1. 选择右上角的“保存”。
 
 1. 选择“重新启动” > “重新启动所有受影响的项”。
 
-    ![Apache Ambari 重新启动所有受影响]的(./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "重新启动所有受影响")的
+    ![Apache Ambari 重新启动所有受影响的](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "重新启动所有受影响的")
 
 1. 选择“确认全部重启”。
 
@@ -78,4 +78,4 @@ IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spar
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读关于 IO 缓存的更多信息，包括这篇博客文章中的性能基准：[Apache Spark jobs gain up to 9x speed up with HDInsight IO Cache](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)（Apache Spark 作业使用 HDInsight IO 缓存提升多达 9 倍的速度）
+- 阅读有关 IO 缓存的详细信息，包括以下博客文章中的性能基准：[Apache Spark 作业通过 HDInsight IO 缓存使速度加快 9 倍](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)

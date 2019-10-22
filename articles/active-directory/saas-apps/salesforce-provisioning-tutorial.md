@@ -16,19 +16,19 @@ ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64de004a1d9b3aa011c447fdded51658582586b0
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68825777"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>教程：为 Salesforce 配置自动用户预配
 
 本教程旨在介绍为了从 Azure AD 自动将用户帐户预配到 Salesforce 以及取消其预配而需要在 Salesforce 和 Azure AD 中执行的步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-在本教程中概述的方案假定已有以下各项：
+在本教程中概述的方案假定您已具有以下各项：
 
 * Azure Active Directory 租户
 * Salesforce.com 租户
@@ -76,21 +76,21 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 5. 在“管理员凭据”部分中，提供以下配置设置：
 
-    a. 在“管理员用户名”文本框中，键入在 Salesforce.com 中已分配“系统管理员”配置文件的 Salesforce 帐户名称。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“管理员用户名”文本框中，键入在 Salesforce.com 中已分配“系统管理员”配置文件的 Salesforce 帐户名称。
 
     b. 在“管理员密码”文本框中，键入此帐户的密码。
 
 6. 若要获取 Salesforce 安全令牌，请打开新选项卡并登录到同一个 Salesforce 管理员帐户。 在页面右上角单击你的名字，然后单击“设置”。
 
-    ![启用自动用户设置](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Enable automatic user provisioning")
+    ![启用自动用户预配](./media/salesforce-provisioning-tutorial/sf-my-settings.png "启用自动预配")
 
 7. 在左侧导航窗格中，单击“我的个人信息”展开相关部分，然后单击“重置我的安全令牌”。
   
-    ![启用自动用户设置](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Enable automatic user provisioning")
+    ![启用自动用户预配](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "启用自动预配")
 
 8. 在“重置安全令牌”页上，单击“重置安全令牌”按钮。
 
-    ![启用自动用户设置](./media/salesforce-provisioning-tutorial/sf-reset-token.png "Enable automatic user provisioning")
+    ![启用自动用户预配](./media/salesforce-provisioning-tutorial/sf-reset-token.png "启用自动预配")
 
 9. 查看与此管理员帐户关联的电子邮件收件箱。 查找来自 Salesforce.com 的包含新安全令牌的电子邮件。
 
@@ -113,7 +113,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 18. 单击“保存”。
 
 > [!NOTE]
-> 在 Salesforce 应用程序中设置用户后, 管理员需要为其配置特定于语言的设置。 有关语言配置的更多详细信息, 请参阅[此](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)文。
+> 在 Salesforce 应用程序中设置用户后，管理员需要为其配置特定于语言的设置。 有关语言配置的更多详细信息，请参阅[此](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)文。
 
 这会开始将“用户和组”部分中分配的任何用户和/或组初始同步到 Salesforce。 请注意，初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 Salesforce 应用执行的所有操作。
 
@@ -122,5 +122,5 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-tutorial)

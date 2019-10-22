@@ -12,10 +12,10 @@ author: shivp950
 ms.date: 05/10/2019
 ms.custom: seodec18
 ms.openlocfilehash: 511c737e160c0f0753e570314c9b29346972cb04
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71269253"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>在 Azure 门户中创建和管理 Azure 机器学习工作区
@@ -24,7 +24,7 @@ ms.locfileid: "71269253"
 
 ## <a name="create-a-workspace"></a>创建工作区
 
-必须有 Azure 订阅，才能创建工作区。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+必须有 Azure 订阅，才能创建工作区。 如果还没有 Azure 订阅，可以在开始前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
@@ -52,7 +52,7 @@ ms.locfileid: "71269253"
 1. 浏览筛选出的工作区列表。 筛选依据可包括订阅、资源组和位置。  
 
 1. 选择要显示其属性的工作区。
-   ![工作区属性](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
+   ![Workspace 属性 ](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
 
 ## <a name="delete-a-workspace"></a>创建工作区
 
@@ -69,4 +69,4 @@ ms.locfileid: "71269253"
 按照全长教程，了解如何使用工作区生成、定型和部署具有 Azure 机器学习的模型。
 
 > [!div class="nextstepaction"]
-> [教程：训练模型](tutorial-train-models-with-aml.md)
+> [教程：定型模型](tutorial-train-models-with-aml.md)

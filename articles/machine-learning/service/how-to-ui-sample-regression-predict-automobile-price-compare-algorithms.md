@@ -1,7 +1,7 @@
 ---
 title: '视觉对象接口示例 #3：回归到价格和比较算法'
 titleSuffix: Azure Machine Learning
-description: 本文说明如何在不使用可视界面编写代码的情况下生成复杂的机器学习试验。 了解如何定型和比较多个回归模型，以根据技术特征预测汽车的价格
+description: 本文说明如何在不使用可视界面编写代码的情况下生成复杂的机器学习管道。 了解如何定型和比较多个回归模型，以根据技术特征预测汽车的价格
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,34 +10,34 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: c40d76b87ca7437e25c567176b0309f08f3ca9f2
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 651644eaae910792aac2144531d09afc4cde7153
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131566"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692796"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>示例 2-回归：预测价格和比较算法
 
-了解如何在不编写代码的情况下使用可视界面构建复杂的机器学习试验。 本示例训练和比较多个回归模型，以根据其技术特征预测汽车的价格。 我们将为在此试验中做出的选择提供理由，以便您可以解决自己的机器学习问题。
+了解如何生成复杂的机器学习管道，而无需使用可视界面编写单行代码。 本示例训练和比较多个回归模型，以根据其技术特征预测汽车的价格。 我们将为在此管道中做出的选择提供基本原理，以便您能够应对自己的机器学习问题。
 
-如果只是开始使用机器学习，请查看此试验的[基本版本](how-to-ui-sample-regression-predict-automobile-price-basic.md)。
+如果只是开始使用机器学习，请查看此管道的[基本版本](how-to-ui-sample-regression-predict-automobile-price-basic.md)。
 
-下面是此试验的完成关系图：
+下面是此管道的完成关系图：
 
-[![试验图](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[管道的 ![Graph](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. 为示例2试验选择 "**打开**" 按钮：
+4. 选择示例2管道的 "**打开**" 按钮：
 
-    ![打开试验](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/open-sample2.png)
+    ![打开管道](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/open-sample2.png)
 
-## <a name="experiment-summary"></a>试验摘要
+## <a name="pipeline-summary"></a>管道摘要
 
-使用以下步骤来构建机器学习试验：
+使用以下步骤生成机器学习管道：
 
 1. 获取数据。
 1. 预先处理数据。
@@ -56,17 +56,15 @@ ms.locfileid: "71131566"
 
 ![数据预处理](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/data-processing.png)
 
-## <a name="train-the-model"></a>训练模型
+## <a name="train-the-model"></a>定型模型
 
 机器学习问题有所不同。 常见的机器学习任务包括分类、群集、回归和推荐器系统，其中每个系统都可能需要不同的算法。 选择的算法通常取决于用例的要求。 选取算法后，需要优化其参数，以训练更准确的模型。 然后，需要基于指标（如准确性、intelligibility 和效率）评估所有模型。
 
-由于此试验的目的是预测汽车价格，并且由于标签列（价格）包含实数，因此回归模型是一个不错的选择。 考虑到功能数量相对较小（小于100），并且这些功能不是稀疏的，决策边界可能是非线性的。
+由于此管道的目标是预测汽车价格，并且由于标签列（价格）包含实数，因此回归模型是一个不错的选择。 考虑到功能数量相对较小（小于100），并且这些功能不是稀疏的，决策边界可能是非线性的。
 
-由于此试验的目的是预测汽车价格，并且由于标签列（价格）包含实数，因此回归模型是一个不错的选择。 考虑到功能数量相对较小（小于100），并且这些功能不是稀疏的，决策边界可能是非线性的。
+为了比较不同算法的性能，我们使用两个非线性算法，**提升决策树回归**和**决策林回归**，以生成模型。 这两种算法都具有可更改的参数，但此示例使用此管道的默认值。
 
-为了比较不同算法的性能，我们使用两个非线性算法，**提升决策树回归**和**决策林回归**，以生成模型。 这两种算法都具有可更改的参数，但此示例使用此试验的默认值。
-
-使用**拆分数据**模块随机划分输入数据，以便定型数据集包含 70% 的原始数据，并且测试数据集包含 30% 的原始数据。
+使用**拆分数据**模块随机划分输入数据，以便定型数据集包含70% 的原始数据，并且测试数据集包含30% 的原始数据。
 
 ## <a name="test-evaluate-and-compare-the-models"></a>测试、评估和比较模型
 
@@ -74,7 +72,7 @@ ms.locfileid: "71131566"
 
 在对模型进行定型后，使用 "**评分模型**" 和 "**评估模型**" 模块来生成预测结果并对模型进行评估。 **评分模型**通过使用训练的模型生成测试数据集的预测。 然后，将评分传递到**评估模型**以生成评估指标。
 
-在此实验中，您将使用两个 "**评估模型**" 实例来比较两个模型对。
+在此管道中，使用两个 "**评估模型**" 实例来比较两个模型对。
 
 首先，比较定型数据集上的两种算法。
 其次，比较测试数据集上的两种算法。
@@ -100,3 +98,4 @@ ms.locfileid: "71131566"
 - [示例 4-分类：预测信用风险（区分成本）](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
 - [示例 5-分类：预测改动](how-to-ui-sample-classification-predict-churn.md)
 - [示例 6-分类：预测航班延迟](how-to-ui-sample-classification-predict-flight-delay.md)
+- [示例 7-文本分类：书籍评论](how-to-ui-sample-text-classification.md)

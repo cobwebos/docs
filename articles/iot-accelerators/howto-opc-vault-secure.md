@@ -9,17 +9,17 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: b5c886625c944e2f5501859e78506ca89ec3d765
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71203692"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>使用 OPC 保管库证书管理服务
 
 本文介绍如何注册应用程序，以及如何为 OPC UA 设备颁发已签名的应用程序证书。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="deploy-the-certificate-management-service"></a>部署证书管理服务
 
@@ -31,12 +31,12 @@ ms.locfileid: "71203692"
 
 ## <a name="secure-opc-ua-applications"></a>保护 OPC UA 应用程序
 
-### <a name="step-1-register-your-opc-ua-application"></a>步骤 1：注册 OPC UA 应用程序 
+### <a name="step-1-register-your-opc-ua-application"></a>步骤1：注册 OPC UA 应用程序 
 
 > [!IMPORTANT]
 > 注册应用程序需要编写者角色。
 
-1. 在处`https://myResourceGroup-app.azurewebsites.net`打开证书服务，并登录。
+1. 在 `https://myResourceGroup-app.azurewebsites.net` 打开证书服务，并登录。
 2. 请参阅**注册新**。 对于应用程序注册，用户需要至少分配编写者角色。
 2. 条目窗体遵循 OPC UA 中的命名约定。 例如，在以下屏幕截图中，会显示 OPC UA .NET Standard 堆栈中的[OPC Ua 引用服务器](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference)示例的设置：
 
@@ -44,7 +44,7 @@ ms.locfileid: "71203692"
 
 5. 选择 "**注册**"，在证书服务应用程序数据库中注册该应用程序。 工作流直接指导用户执行下一步，以请求应用程序的签名证书。
 
-### <a name="step-2-secure-your-application-with-a-ca-signed-application-certificate"></a>步骤 2：使用 CA 签名应用程序证书保护应用程序
+### <a name="step-2-secure-your-application-with-a-ca-signed-application-certificate"></a>步骤2：使用 CA 签名应用程序证书保护应用程序
 
 通过基于证书签名请求（CSR）颁发签名证书来保护 OPC UA 应用程序。 或者，你可以请求新的密钥对，这包括采用 PFX 或 PEM 格式的新私钥。 有关应用程序支持哪种方法的信息，请参阅 OPC UA 设备的文档。 通常情况下，建议使用 CSR 方法，因为它不需要通过线路传输私钥。
 
@@ -71,7 +71,7 @@ ms.locfileid: "71203692"
 8. 安全下载并存储私钥后，可以选择 "**删除私钥**"。 带有公钥的证书仍然可用，供将来使用。
 9. 由于使用的是 CA 签名证书，因此还应在此处下载 CA 证书和证书吊销列表（CRL）。
 
-现在，它依赖于 OPC UA 设备如何应用新的密钥对。 通常会将 CA 证书和 CRL 复制到`trusted`文件夹，而应用程序证书的公钥和私钥会应用`own`于证书存储区中的文件夹。 某些设备可能已支持服务器推送以实现证书更新。 请参阅 OPC UA 设备的文档。
+现在，它依赖于 OPC UA 设备如何应用新的密钥对。 通常会将 CA 证书和 CRL 复制到 `trusted` 文件夹，同时应用程序证书的公钥和私钥会应用于证书存储中的 `own` 文件夹。 某些设备可能已支持服务器推送以实现证书更新。 请参阅 OPC UA 设备的文档。
 
 #### <a name="request-a-new-certificate-with-a-csr"></a>使用 CSR 请求新证书 
 
@@ -96,9 +96,9 @@ ms.locfileid: "71203692"
 10. 安全下载并存储证书后，可以选择 "**删除证书**"。
 11. 由于使用的是 CA 签名证书，因此还应在此处下载 CA 证书和 CRL。
 
-现在，它依赖于 OPC UA 设备如何应用新证书。 通常会将 CA 证书和 CRL 复制到`trusted`文件夹，而应用程序证书将`own`应用于证书存储区中的文件夹。 某些设备可能已支持服务器推送以实现证书更新。 请参阅 OPC UA 设备的文档。
+现在，它依赖于 OPC UA 设备如何应用新证书。 通常会将 CA 证书和 CRL 复制到 `trusted` 文件夹中，同时应用程序证书应用于证书存储中的 `own` 文件夹。 某些设备可能已支持服务器推送以实现证书更新。 请参阅 OPC UA 设备的文档。
 
-### <a name="step-4-device-secured"></a>步骤 4：设备保护
+### <a name="step-4-device-secured"></a>步骤4：设备安全
 
 OPC UA 设备现在已准备好与受 CA 签名证书保护的其他 OPC UA 设备通信，无需进一步配置。
 

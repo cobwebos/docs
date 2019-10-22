@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 93681062b325756f720f6fe8280ee6b874fea284
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70072264"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Azure API 管理中的问题模板
@@ -32,7 +32,7 @@ ms.locfileid: "70072264"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="IssueList"></a> 问题列表  
+##  <a name="IssueList"></a>问题列表  
  **问题列表**模板可用于自定义开发人员门户中问题列表页的正文。  
   
  ![问题列表开发人员门户](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM 问题列表开发人员门户")  
@@ -89,20 +89,20 @@ ms.locfileid: "70072264"
 </div>
 ```
   
-### <a name="controls"></a>控件  
+### <a name="controls"></a>控制  
  `Issue list` 模板可使用以下[页面控件](api-management-page-controls.md)。  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>数据模型  
   
-|属性|类型|描述|  
+|properties|Type|描述|  
 |--------------|----------|-----------------|  
 |`Issues`|[问题](api-management-template-data-model-reference.md#Issue)实体的集合。|对当前用户可见的问题。|  
 |`Paging`|[分页](api-management-template-data-model-reference.md#Paging)实体。|应用程序集合的分页信息。|  
-|`IsAuthenticated`|boolean|当前用户是否登录到开发人员门户。|  
-|`CanReportIssues`|boolean|当前用户是否有权提出问题。|  
-|`Search`|string|此属性已弃用，不应使用。|  
+|`IsAuthenticated`|布尔值|当前用户是否登录到开发人员门户。|  
+|`CanReportIssues`|布尔值|当前用户是否有权提出问题。|  
+|`Search`|字符串|此属性已弃用，不应使用。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   

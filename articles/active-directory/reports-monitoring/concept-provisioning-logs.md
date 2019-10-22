@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d48aa3ead28ab0b0a22478a0c4183995483058a
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70983501"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 门户中预配报表（预览）
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 本主题简要介绍预配报表。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="who-can-access-the-data"></a>谁可以访问该数据？
 * 安全管理员、安全读者、报表读者、应用程序管理员和云应用程序管理员角色中的用户
@@ -48,9 +48,9 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-provisioning-activities"></a>访问预配活动需要哪些 Azure AD 许可证？
 
-租户必须具有与之关联的 Azure AD Premium 许可证，才能查看 "所有预配活动" 报表。 请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)来升级 Azure Active Directory 版本。 
+租户必须具有与之关联的 Azure AD Premium 许可证，才能查看 "所有预配活动" 报表。 请参阅[Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md)入门，升级 Azure Active Directory 版本。 
 
-## <a name="provisioning-logs"></a>“预配”日志
+## <a name="provisioning-logs"></a>预配日志
 
 预配日志提供以下问题的答案：
 
@@ -60,7 +60,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 可以通过在[Azure 门户](https://portal.azure.com)中**Azure Active Directory**边栏选项卡的 "**监视**" 部分选择 "**设置日志**" 来访问设置日志。 某些预配记录可能需要长达两个小时才能在门户中显示。
 
-![设置日志](./media/concept-provisioning-logs/access-provisioning-logs.png "设置日志")
+![设置日志](./media/concept-provisioning-logs/access-provisioning-logs.png "预配日志")
 
 
 设置日志有一个默认列表视图，其中显示：
@@ -85,22 +85,22 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 选择列表视图中的某个项可获得更详细的信息。
 
-![详细信息](./media/concept-provisioning-logs/steps.png "筛选器")
+![详细信息](./media/concept-provisioning-logs/steps.png "筛选")
 
 
 ## <a name="filter-provisioning-activities"></a>筛选预配活动
 
 若要将报告的数据缩小到适合您的级别，可以使用以下默认字段筛选预配数据。 请注意，筛选器中的值基于租户动态填充。 例如，如果租户中没有任何 create 事件，则不会有用于创建的筛选选项。
 
-- 标识
-- 操作
+- 身份标识
+- 行动
 - 源系统
 - 目标系统
 - 状态
-- Date
+- 日期
 
 
-![筛选器](./media/concept-provisioning-logs/filter.png "筛选器")
+![筛选器](./media/concept-provisioning-logs/filter.png "筛选")
 
 **标识**筛选器使你能够指定所关注的名称或标识。 此标识可以是用户、组、角色或其他对象。 可以按对象的名称或 ID 进行搜索。 该 ID 因情况而异。 例如，在将 Azure AD 的对象预配到 SalesForce 时，源 ID 是 Azure AD 中用户的对象 ID，而 TargetID 是 Salesforce 中用户的 ID。 从 Workday 预配到 Active Directory 时，源 ID 是 Workday 工作人员员工 ID。 请注意，用户的名称可能并不总是出现在标识列中。 始终会有一个 ID。 
 
@@ -110,21 +110,21 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 使用“状态”筛选器，可以选择：
 
-- 全部
+- 所有
 - Success
 - 失败
 - 已跳过
 
 **操作**筛选器可用于筛选：
 
-- 创建 
-- Update
-- DELETE
+- Create 
+- 更新
+- 删除
 - 禁用
 - 其他
 
 “日期”筛选器用于定义已返回数据的时间范围。  
-可能的值有：
+可能的值包括：
 
 - 1 个月
 - 7 天
@@ -152,7 +152,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 选择 "设置" 列表视图中的项时，可以获得有关此项的更多详细信息。
 详细信息按以下类别分组：
 
-- 步骤
+- Steps
 
 - 故障排除和建议
 
@@ -165,7 +165,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 "**步骤**" 选项卡概述了设置对象所需的步骤。 设置对象可能包含以下四个步骤： 
 
@@ -176,7 +176,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 
 
-![筛选器](./media/concept-provisioning-logs/steps.png "筛选器")
+![筛选器](./media/concept-provisioning-logs/steps.png "筛选")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>故障排除和建议

@@ -10,10 +10,10 @@ ms.date: 10/03/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 89f43227cfca3519a4985c5c961cf0b3c5774177
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71936909"
 ---
 # <a name="import-data-wizard-for-azure-search"></a>Azure 搜索的导入数据向导
@@ -58,17 +58,17 @@ Azure 门户在 Azure 搜索仪表板上提供了一个**导入数据**向导，
 
 **导入数据**向导使用 Azure 搜索索引器提供的内部逻辑连接到外部数据源，这些索引器可用于采样源、读取元数据、破解文档以读取内容和结构，以及将内容序列化为 JSON以后导入到 Azure 搜索。
 
-只能从单个表、数据库视图或等效的数据结构导入，但是，此结构可能包含分层的或嵌套的子结构。 有关详细信息，请参阅[如何为复杂类型建模](search-howto-complex-data-types.md)。
+您只能从单个表、数据库视图或等效的数据结构导入，但结构可能包含层次结构或嵌套的子结构。 有关详细信息，请参阅[如何为复杂类型建模](search-howto-complex-data-types.md)。
 
 在运行该向导之前应创建此单个表或视图，并且它必须包含内容。 出于明显原因，对空数据源运行 "**导入数据**" 向导并无意义。
 
-|  选择 | 描述 |
+|  选项 | 描述 |
 | ---------- | ----------- |
 | **现有数据源** |如果已在搜索服务中定义索引器，则可能具有可重复使用的现有数据源定义。 在 Azure 搜索中，索引器仅使用数据源对象。 您可以通过编程方式或通过**导入数据**向导来创建数据源对象，并根据需要重新使用它们。|
 | **示例**| Azure 搜索提供了两个教程和快速入门中使用的内置示例数据源：一个房地产 SQL 数据库和一个托管在 Cosmos DB 上的酒店数据库。 有关基于酒店样品的演练，请参阅在 Azure 门户快速入门[中创建索引](search-get-started-portal.md)。 |
 | [**Azure SQL 数据库**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |可以在此页上或通过 ADO.NET 连接字符串，指定服务名称、具有读取权限的数据库用户的凭据和数据库名称。 选择要查看或自定义属性的连接字符串选项。 <br/><br/>必须在此页上指定提供行集的表或视图。 连接成功后会显示此选项，并提供下拉列表以便可以进行选择。|
 | **Azure VM 上的 SQL Server** |指定完全限定的服务名、用户 ID 和密码以及数据库作为连接字符串。 若要使用此数据源，以前必须已在加密连接的本地存储中安装了证书。 如需说明，请参阅[与 Azure 搜索的 SQL VM 连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)。 <br/><br/>必须在此页上指定提供行集的表或视图。 连接成功后会显示此选项，并提供下拉列表以便可以进行选择。 |
-| [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|要求包括帐户、数据库和集合。 集合中的所有文档都将包含在索引中。 可以定义查询以平展或筛选行集，或者将查询留空。 在此向导中，不需要查询。|
+| [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|要求包括帐户、数据库和集合。 集合中的所有文档都将包含在索引中。 您可以定义一个查询以平展或筛选行集，或将查询留空。 不需要在此向导中进行查询。|
 | [**Azure Blob 存储**](search-howto-indexing-azure-blob-storage.md) |要求包括存储帐户和容器。 （可选）如果 blob 名称遵循用于分组的虚拟命名约定，可以将名称的虚拟目录部分指定为容器下的某个文件夹。 有关详细信息，请参阅[为 Blob 存储编制索引](search-howto-indexing-azure-blob-storage.md)。 |
 | [**Azure 表存储**](search-howto-indexing-azure-tables.md) |要求包括存储帐户和表名。 （可选）可以指定一个查询来检索表的子集。 有关详细信息，请参阅[为表存储编制索引](search-howto-indexing-azure-tables.md)。 |
 
@@ -76,7 +76,7 @@ Azure 门户在 Azure 搜索仪表板上提供了一个**导入数据**向导，
 
 在幕后，向导将创建、配置和调用以下对象。 向导运行完成后，可以在门户页中找到它的输出。 服务的 "概述" 页包含索引、索引器、数据源和技能集的列表。 可以在门户中以完整的 JSON 格式查看索引定义。 对于其他定义，可以使用[REST API](https://docs.microsoft.com/rest/api/searchservice/)获取特定的对象。
 
-| Object | 描述 | 
+| 对象 | 描述 | 
 |--------|-------------|
 | [数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | 将连接信息保存到源数据，包括凭据。 数据源对象专用于索引器。 | 
 | [索引](https://docs.microsoft.com/rest/api/searchservice/create-index) | 用于全文搜索和其他查询的物理数据结构。 | 
@@ -92,7 +92,7 @@ Azure 门户在 Azure 搜索仪表板上提供了一个**导入数据**向导，
 
 2. 在顶部服务概述页中，单击“导入数据”。
 
-   ![门户中的导入数据命令](./media/search-import-data-portal/import-data-cmd2.png "启动导入数据向导")
+   ![门户中的 "导入数据" 命令](./media/search-import-data-portal/import-data-cmd2.png "启动“导入数据”向导")
 
 还可以启动从其他 Azure 服务（包括 Azure Cosmos DB、Azure SQL 数据库和 Azure Blob 存储）**导入数据**。 在服务概述页上的左侧导航窗格中寻找“添加 Azure 搜索”。
 
@@ -106,7 +106,7 @@ Azure 门户在 Azure 搜索仪表板上提供了一个**导入数据**向导，
 
 1. 数据类型是否适合传入数据？ Azure 搜索支持[实体数据模型（EDM）数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)。 对于 Azure SQL 数据，存在布局等效值的[映射图](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#mapping-between-sql-and-azure-search-data-types)。 有关更多背景信息，请参阅[字段映射和转换](search-indexer-field-mappings.md)。
 
-1. 是否有一个可以用作*密钥*的字段？ 此字段必须为 Edm，并且它必须唯一标识文档。 对于关系数据，可以将其映射到主键。 对于 blob，它可能是 @no__t 0。 如果字段值包含空格或短划线，则必须在“高级选项”下的“创建索引器”步骤中设置“Base 64 编码密钥”选项以禁止验证检查这些字符。
+1. 是否有一个可以用作*密钥*的字段？ 此字段必须为 Edm，并且它必须唯一标识文档。 对于关系数据，可以将其映射到主键。 对于 blob，它可能是 `metadata-storage-path`。 如果字段值包含空格或短划线，则必须在“高级选项”下的“创建索引器”步骤中设置“Base 64 编码密钥”选项以禁止验证检查这些字符。
 
 1. 设置属性以确定该字段在索引中的使用方式。 
 

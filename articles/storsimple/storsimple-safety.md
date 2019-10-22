@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: alkohli
 ms.openlocfilehash: 4622a8575d7b6a38226ee3a980c05f143c128356
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68963540"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安装和运行 StorSimple 设备
@@ -41,7 +41,7 @@ ms.locfileid: "68963540"
 | ![注意图标](./media/storsimple-safety/IC740881.png) **NOTICE:** |指示应该给予重视但不涉及危险情况的信息。 |
 | ![电击图标](./media/storsimple-safety/IC740882.png) **Electrical Shock Hazard** |高电压 |
 | ![重物图标](./media/storsimple-safety/IC740883.png) **Heavy Weight** | |
-| ![用户不可维修的部件图标](./media/storsimple-safety/IC740879.png) **No User Serviceable Parts** |除非经过适当的培训，否则请勿接触。 |
+| ![用户不可维修的部件图标](./media/storsimple-safety/IC740879.png) **No User Serviceable Parts** |除非经过适当的培训，否则请勿访问。 |
 | ![阅读安全注意事项图标 ](./media/storsimple-safety/IC740885.png)**Read All Instructions First** | |
 | ![倾翻危险图标](./media/storsimple-safety/IC740886.png) **Tip Hazard** | |
 

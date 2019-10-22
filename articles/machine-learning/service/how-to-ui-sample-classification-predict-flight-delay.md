@@ -9,46 +9,44 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
-ms.date: 07/02/2019
-ms.openlocfilehash: 257f6034df7d1974f3964c4d07ca96d17c7fe509
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/23/2019
+ms.openlocfilehash: 6e65075b309ed12505ce6fffadac12af3f16344b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131644"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692566"
 ---
 # <a name="sample-6---classification-predict-flight-delays-using-r"></a>示例 6-分类：使用 R 预测航班延迟
 
-此试验使用历史航班和天气数据来预测计划的乘客航班是否将延迟15分钟以上。
+此管道使用历史航班和天气数据来预测计划的乘客航班是否将延迟15分钟以上。 此问题可作为分类问题来解决，可预测两个类：延迟或按时进行。
 
-此问题可作为分类问题进行解决，可预测两个类-延迟或按时进行。 若要生成分类器，此模型使用大量来自历史航班数据的示例。
+下面是此示例的最终管道图：
 
-下面是此示例的最终实验图：
+[管道的 ![Graph](media/how-to-ui-sample-classification-predict-flight-delay/pipeline-graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
-[![试验图](media/how-to-ui-sample-classification-predict-flight-delay/experiment-graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
-
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. 为示例6试验选择 "**打开**" 按钮：
+4. 选择示例6管道的 "**打开**" 按钮：
 
-    ![打开试验](media/how-to-ui-sample-classification-predict-flight-delay/open-sample6.png)
+    ![打开管道](media/how-to-ui-sample-classification-predict-flight-delay/open-sample6.png)
 
 ## <a name="get-the-data"></a>获取数据
 
-此试验使用**航班延迟数据**数据集。 它是来自美国的 TranStats 数据收集的一部分。运输部门。 数据集包含2013年4月到10月的航班延迟信息。 在将数据上传到可视界面之前，它已按如下方式预先处理：
+此示例使用**航班延迟数据**数据集。 这是美国运输部门的 TranStats 数据收集的一部分。 数据集包含2013年4月到10月的航班延迟信息。 已预先处理数据集，如下所示：
 
 * 筛选为包括大陆美国中70最繁忙的机场。
-* 对于取消的航班，将其重新标记为延迟15分钟以上。
+* 将已取消的航班标记为延迟15分钟以上。
 * 已筛选出转移航班。
 * 选定的14列。
 
-若要补充航班数据，请使用**天气数据集**。 天气数据包含来自 NOAA 的每小时基于居住的天气预报，并表示来自机场天气的天气预报，涵盖2013年4月10日的相同时间段。 在上传到 Azure ML 视觉对象界面之前，它已按如下所示进行预处理：
+若要补充航班数据，请使用**天气数据集**。 天气数据包含来自 NOAA 的每小时、基于居住的天气预报，表示来自机场天气的天气预报，涵盖与航班数据集相同的时间段。 它已预先处理，如下所示：
 
 * 天气工作站 Id 映射到相应的机场 Id。
 * 不与70最繁忙的机场关联的天气工作站已被删除。
-* 日期列拆分为单独的列：年、月和日。
+* 日期列拆分为单独的列： Year、Month 和 Day。
 * 已选择26列。
 
 ## <a name="pre-process-the-data"></a>预先处理数据
@@ -63,13 +61,13 @@ ms.locfileid: "71131644"
 
 ![编辑-元数据](media/how-to-ui-sample-classification-predict-flight-delay/edit-metadata.png)
 
-然后，使用 "选择数据集中的**列**" 模块从可能为目标 leakers 的数据集列中排除：**DepDelay**， **DepDel15**， **ArrDelay**，**已取消** **年**。 
+然后，使用 "**选择**数据集中的列" 模块从可能为 target Leakers： **DepDelay**、 **DepDel15**、 **ArrDelay**、**已取消** **年**的数据集列中排除。 
 
 若要将航班记录与每小时天气记录联接，请使用计划的出发时间作为联接键之一。 若要执行联接，必须将 CSRDepTime 列向下舍入到最接近的小时，这是在**执行 R 脚本**模块中完成的。 
 
 ### <a name="weather-data"></a>天气数据
 
-使用 "**项目列**" 模块排除具有大量缺失值的列。 这些列包含所有字符串值列：**ValueForWindCharacter**、 **WetBulbFarenheit**、 **WetBulbCelsius**、 **PressureTendency**、 **PressureChange**、 **SeaLevelPressure**和**StationPressure**。
+使用 "**项目列**" 模块排除具有大量缺失值的列。 这些列包含所有字符串值列： **ValueForWindCharacter**、 **WetBulbFarenheit**、 **WetBulbCelsius**、 **PressureTendency**、 **PressureChange**、 **SeaLevelPressure**和**StationPressure**.
 
 然后，将 "**清理缺失数据**" 模块应用到其余列以删除缺少数据的行。
 
@@ -107,10 +105,9 @@ ms.locfileid: "71131644"
 使用 "**双类逻辑回归**" 模块创建一个模型，并在定型数据集上训练该模型。 
 
 **训练模型**模块的结果是经过训练的分类模型，可用于对用于进行预测的新样本进行评分。 使用测试集生成定型模型的分数。 然后，使用 "**评估模型**" 模块来分析和比较模型的质量。
+管道运行管道后，可以通过单击输出端口并选择 "**可视化**" 来查看 "**评分模型**" 模块的输出。 输出包括评分标签和标签的概率。
 
-运行试验后，可通过单击输出端口并选择 "**可视化**" 来查看 "**评分模型**" 模块的输出。 输出包括评分标签和标签的概率。
-
-最后，要测试结果的质量，请将 "**评估模型**" 模块添加到试验画布，然后将左侧的输入端口连接到 "评分模型" 模块的输出。 运行试验，查看 "**评估模型**" 模块的输出，方法是单击输出端口并选择 "**可视化**"。
+最后，要测试结果的质量，请将 "**评估模型**" 模块添加到管道画布，然后将左侧的输入端口连接到 "评分模型" 模块的输出。 运行管道并查看 "**评估模型**" 模块的输出，方法是单击输出端口并选择 "**可视化**"。
 
 ## <a name="evaluate"></a>评估
 在测试集上，逻辑回归模型的 AUC 为0.631。
@@ -126,3 +123,4 @@ ms.locfileid: "71131644"
 - [示例 3-分类：预测信用风险](how-to-ui-sample-classification-predict-credit-risk-basic.md)
 - [示例 4-分类：预测信用风险（区分成本）](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
 - [示例 5-分类：预测改动](how-to-ui-sample-classification-predict-churn.md)
+- [示例 7-文本分类：书籍评论](how-to-ui-sample-text-classification.md)

@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
 ms.openlocfilehash: 1f6eeea85a348bb8e88a387fa0fc6bed55e41a5e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71262788"
 ---
-# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure 安全性与合规性蓝图：适用于英国官方工作负荷的 PaaS Web 应用程序托管
+# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure 安全性与符合性蓝图：适用于英国官方工作负载的 PaaS Web 应用程序托管
 
 ## <a name="azure-security-and-compliance-blueprints"></a>Azure 安全性和符合性蓝图
 
@@ -39,46 +39,46 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 
 此蓝图是一个基础体系结构。 我们的客户可以使用此蓝图作为其基于 Web 的官方分类工作负载的基础，并根据自己的要求扩展模板和资源。 此蓝图建立在[UK-OFFICAL Three-Tier IaaS Web 应用程序蓝图](https://aka.ms/ukofficial-iaaswa)的原则之上，为我们的客户提供[基础结构即服务 (IaaS)](https://azure.microsoft.com/overview/what-is-iaas/)和 PaaS 实现选项，用于托管基于 Web 的工作负载。
 
-要部署此蓝图，Azure 订阅是必需的。 如果没有 Azure 订阅，可以免费快速轻松地注册：Azure入门。 单击[此处](https://aka.ms/ukofficial-paaswa-repo/)获取部署说明。
+要部署此蓝图，Azure 订阅是必需的。 如果没有 Azure 订阅，则可以免费快速注册：Azure入门。 单击[此处](https://aka.ms/ukofficial-paaswa-repo/)获取部署说明。
 
 ## <a name="architecture-and-components"></a>体系结构和组件
 
 此蓝图在支持英国官方工作负载的 Azure 云环境中提供 Web 应用程序托管解决方案。 该体系结构提供了一个安全的环境，可以利用 Azure 平台即服务功能。 环境中部署了两个应用服务 Wep 应用（一个用于公共用户，另一个用于后台用户），这两个应用与 API 应用层一起为 Web 前端提供业务服务。 Azure SQL 数据库部署为应用程序的托管关系数据存储。 通过 TLS 1.2 对来自平台外部的这些组件以及所有这些组件之间的连接进行加密，以确保私密传输数据，并只有通过 Azure Active Directory 进行身份验证后才能访问数据。
 
-![适用于英国官方工作负载的 PaaS Web 应用程序托管参考体系结构图](images/ukofficial-paaswa-architecture.png?raw=true "PaaS Web Application Hosting for UK OFFICIAL Workloads reference architecture diagram")
+![适用于英国官方工作负载的 PaaS Web 应用程序参考体系结构示意图](images/ukofficial-paaswa-architecture.png?raw=true "适用于英国官方工作负载的 PaaS Web 应用程序参考体系结构示意图")
 
 作为部署体系结构的一部分，此解决方案还部署了安全存储供应、监控和日志记录、统一安全管理和高级威胁防护以及管理功能，以确保客户拥有保护和监控其环境所必需的所有工具。
 
-此解决方案使用以下 Azure 服务。 要详细了解部署体系结构，请参阅[部署体系结构](#deployment-architecture)部分。
+此解决方案使用以下 Azure 服务。 [部署体系结构](#deployment-architecture)部分提供了部署体系结构的详细信息。
 
 - Azure Active Directory
 - 应用服务
-- Web 应用
-- API 应用
+- Web 应用程序
+- API 应用程序
 - Azure DNS
 - Key Vault
 - Azure Monitor （日志）
 - Application Insights
-- Azure 资源管理器
+- Azure Resource Manager
 - Azure 安全中心
-- Azure SQL 数据库
-- Azure 存储
+- Azure SQL Database
+- Azure 存储器
 
 ## <a name="deployment-architecture"></a>部署体系结构
 
 以下部分详细描述了部署和实施要素。
 
-### <a name="security"></a>安全性
+### <a name="security"></a>“安全”
 
 #### <a name="identity-and-authentication"></a>标识和身份验证
 
 此蓝图确保通过目录和身份管理服务保护对资源的访问。 此体系结构充分利用[标识作为安全边界](../fundamentals/paas-deployments.md)。 
 
-以下技术在 Azure 环境中提供标识管理功能：
+以下技术在 Azure 环境中提供标识管理功能。
 
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) 是 Microsoft 提供的多租户、基于云的目录和标识管理服务。 解决方案的所有用户（包括访问 SQL 数据库的用户）都在 Azure Active Directory 中创建。
 - 使用 Azure AD 执行面向 Web 应用程序的操作员的身份验证和 Azure 资源管理的访问。 有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)。
-- 数据库列加密使用 Azure AD 对访问 Azure SQL 数据库的应用程序进行身份验证。 有关详细信息，请参阅 [Always Encrypted：保护 SQL 数据库中的敏感数据](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)。
+- 数据库列加密使用 Azure AD 对访问 Azure SQL 数据库的应用程序进行身份验证。 有关详细信息，请参阅[Always Encrypted：保护 SQL 数据库中的敏感数据](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)。
 - 为面向 Web 应用程序的用户配置公共访问。 要通过 Active Directory 或社交网络标识提供者创建并验证帐户，可根据需要集成 [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/)。
 - [Azure Active Directory 标识保护](../../active-directory/identity-protection/overview.md)可以检测潜在漏洞，为风险帐户提供建议，以增强组织标识的安全状况，配置对检测到的与组织标识相关的可疑操作的自动响应，调查可疑事件并采取适当措施解决这些问题。
 - [Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 可在 Azure 中实现极有针对性的访问管理。 订阅访问仅限于订阅管理员，Azure Key Vault 访问仅限于需要密钥管理访问权限的用户。
@@ -91,7 +91,7 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 
 #### <a name="security-and-malware-protection"></a>安全和恶意软件防护
 
-在 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)可集中查看所有 Azure 资源的安全状态。 可立即确认相应的安全控制措施是否部署到位且配置正确，并且可以快速识别任何需要关注的资源。
+[Azure 安全中心](https://azure.microsoft.com/services/security-center/)允许集中查看所有 Azure 资源的安全状况。 一眼就可验证适当的安全控制是否配置到位且配置正确，还可快速确认任何需要注意的资源。
 
 [Azure 顾问](https://docs.microsoft.com/azure/advisor/advisor-overview)是个性化的云顾问程序，可帮助遵循最佳做法来优化 Azure 部署。 它可分析资源配置和遥测使用情况，并推荐解决方案，有助于提高 Azure 资源的经济效益、性能、高可用性和安全性。
 
@@ -99,7 +99,7 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 
 ### <a name="paas-services-in-this-blueprint"></a>此蓝图中的 PaaS 服务
 
-#### <a name="azure-app-service"></a>Azure 应用服务
+#### <a name="azure-app-service"></a>Azure App Service
 
 Azure 应用服务为使用 Java、PHP、Node.js Python、HTML 和 C# 开发的 Web 应用程序提供了完全托管的 Web 托管环境，而无需管理基础架构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并允许从 [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) 或任何基于 Git 的存储库进行自动部署。
 
@@ -110,16 +110,16 @@ Azure 应用服务为使用 Java、PHP、Node.js Python、HTML 和 C# 开发的 
 此模板将部署以下应用服务功能：
 
 - [标准](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)应用服务计划层
-- 多个应用服务[部署槽位](https://docs.microsoft.com/azure/app-service/deploy-staging-slots)：开发、预览、QA、UAT 和生产（默认槽位）。
+- 多个应用服务[部署槽](https://docs.microsoft.com/azure/app-service/deploy-staging-slots)：开发、预览、QA、UAT 和生产（默认槽）。
 - [Azure 资源的托管标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity)连接到 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)（这还可以用于提供 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)的访问权限） 
 - 集成 [Azure Application Insights](../../azure-monitor/app/azure-web-apps.md)来监视性能
 - [诊断日志](../../azure-monitor/platform/resource-logs-overview.md) 
 - 指标[警报](../../azure-monitor/app/alerts.md) 
 - [Azure API 应用](https://azure.microsoft.com/services/app-service/api/) 
 
-#### <a name="azure-sql-database"></a>Azure SQL 数据库
+#### <a name="azure-sql-database"></a>Azure SQL Database
 
-SQL 数据库是 Microsoft Azure 中通用的关系数据库托管服务，支持关系数据、JSON、空间和 XML 等结构。 SQL 数据库提供托管的单一 SQL 数据库、[弹性池](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)中的托管 SQL 数据库以及 SQL [管理实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)（公共预览版）。 它可以实现[动态可缩放性能](../../sql-database/sql-database-purchase-models.md)，并提供[列存储索引](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)（用于极端分析和报告）和[内存中 OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory)（用于极端事务处理）等选项。 Microsoft 可无缝处理 SQL 代码库的所有修补和更新，并避开底层基础结构的所有管理。
+SQL 数据库是 Microsoft Azure 中通用的关系数据库托管服务，支持关系数据、JSON、空间和 XML 等结构。 SQL 数据库提供托管的单一 SQL 数据库、[弹性池](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)中的托管 SQL 数据库以及 SQL [管理实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)（公共预览版）。 它提供[动态可缩放性能](../../sql-database/sql-database-purchase-models.md)，并提供[列存储索引](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)（用于极端分析和报告）和[内存中 OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory)（用于极端事务处理）等选项。 Microsoft 可无缝处理 SQL 代码库的所有修补和更新，并避开底层基础结构的所有管理。
 
 此蓝图中的 Azure SQL 数据库
 
@@ -134,7 +134,7 @@ Azure SQL 数据库实例使用以下数据库安全措施：
 - [SQL 威胁检测](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)
 - [Always Encrypted 列](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)
 
-### <a name="azure-storage"></a>Azure 存储
+### <a name="azure-storage"></a>Azure 存储器
 
 Microsoft [Azure 存储](https://azure.microsoft.com/services/storage/)是 Microsoft 管理的云服务，提供高可用性、安全性、持久性、可扩展性和冗余性的存储。 Azure 存储包括 Blob 存储、文件存储和队列存储。
 
@@ -156,7 +156,7 @@ Microsoft [Azure 存储](https://azure.microsoft.com/services/storage/)是 Micro
 
 ### <a name="secrets-management"></a>机密管理
 
-#### <a name="azure-key-vault"></a>Azure Key Vault
+#### <a name="azure-key-vault"></a>Azure 密钥保管库
 
 [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) 用于保护应用程序密钥和机密，以确保第三方无法访问它们。 Key Vault 不适合用作用户密码的存储。 它被称为保管库，允许用户创建多个安全容器。 这些保管库受硬件安全模块 (HSM) 的支持。 保管库可以集中存储应用程序机密，降低安全信息意外丢失的可能性。 Key Vault 还控制并记录外界对其所存储内容的访问。 Azure Key Vault 负责处理传输层安全性 (TLS) 证书的请求和续订事宜，其提供的功能是可靠的证书生命周期管理解决方案所必需的。
 
@@ -201,7 +201,7 @@ Microsoft [Azure 存储](https://azure.microsoft.com/services/storage/)是 Micro
 
 此参考体系结构的数据流图可供[下载](https://aka.ms/ukofficial-paaswa-tm)，也可以在下面找到。 此模型有助于客户在做出修改时了解系统基础结构中存在的潜在风险点。
 
-![适用于英国官方工作负载威胁模型的 PaaS Web 应用程序托管](images/ukofficial-paaswa-threat-model.png?raw=true "PaaS Web Application Hosting for UK OFFICIAL Workloads threat model")
+![适用于英国官方工作负荷威胁模型的 PaaS Web 应用程序托管](images/ukofficial-paaswa-threat-model.png?raw=true "适用于英国官方工作负荷威胁模型的 PaaS Web 应用程序托管")
 
 ## <a name="ncsc-cloud-security-principles-compliance-documentation"></a>NCSC 云安全原则符合性文档
 
@@ -230,8 +230,8 @@ Crown Commercial Service（一家致力于改善政府商业和采购活动的�
 
 1.  将[此](https://aka.ms/ukofficial-paaswa-repo) GitHub 存储库克隆或下载到本地工作站。
 2.  查看[方法 1：Azure CLI 2（Express 版本）](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version)并执行提供的命令。
-3.  查看[方法 1a：Azure CLI 2（通过脚本参数配置部署）](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments)并执行提供的命令
-4.  查看[方法 2：Azure 门户部署过程](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process)并执行列出的命令
+3.  查看[方法 1a：（配置通过脚本参数部署）的 Azure CLI 2](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments)并执行提供的命令
+4.  查看[方法2： Azure 门户部署过程](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process)并执行列出的命令
 
 ## <a name="guidance-and-recommendations"></a>指导和建议
 

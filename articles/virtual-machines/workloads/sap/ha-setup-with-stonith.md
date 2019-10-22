@@ -14,19 +14,19 @@ ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0f23fe2aa17934b967e7aecf41687cc555b9552c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71212530"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>使用 STONITH 在 SUSE 中进行高可用性设置
 本文档将针对如何使用 STONITH 设备在 SUSE 操作系统上设置高可用性，进行详细的分步说明。
 
-**免责声明：** *本指南是通过测试成功运行的 Microsoft HANA 大型实例环境中的设置得出的。由于面向 HANA 大型实例的 Microsoft 服务管理团队不支持操作系统，因此，你可能需要联系 SUSE，以进一步了解操作系统层面的疑难解答或说明。* Microsoft 服务管理团队对 STONITH 设备进行设置并提供全力支持，可以对有关 STONITH 设备的问题进行疑难解答。
+**免责声明：** *本指南是通过测试成功运行的 Microsoft HANA 大型实例环境中的设置得出的。由于适用于 HANA 大型实例的 Microsoft 服务管理团队不支持操作系统，因此，你可能需要联系 SUSE，以便在操作系统层上进行进一步的故障排除或澄清。Microsoft 服务管理团队设置了 STONITH 设备，并完全支持并可参与 STONITH 设备问题的疑难解答。*
 ## <a name="overview"></a>概述
 要使用 SUSE 群集设置高可用性，必须满足以下先决条件。
-### <a name="pre-requisites"></a>先决条件
+### <a name="pre-requisites"></a>必备组件
 - 预配 HANA 大型实例
 - 注册操作系统
 - HANA 大型实例服务器已连接到 SMT 服务器以获取修补程序/包
@@ -63,7 +63,7 @@ ms.locfileid: "71212530"
 7.  将资源配置为群集
 8.  测试故障转移过程
 
-## <a name="1---identify-the-sbd-device"></a>1. 标识 SBD 设备
+## <a name="1---identify-the-sbd-device"></a>1. 确定 SBD 设备
 本部分将介绍如何在 Microsoft 服务管理团队配置 STONITH 后确定适用于设置的 SBD 设备。 本部分仅适用于现有客户。 如果你是新客户，Microsoft 服务管理团队会向你提供 SBD 设备名称，所以，可以跳过此部分。
 
 1.1 将 /etc/iscsi/initiatorname.isci 修改为 
@@ -75,7 +75,7 @@ Microsoft 服务管理会提供此字符串。 在这两个节点上修改文件
 
 ![initiatorname.png](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
-1.2 修改 /etc/iscsi/iscsid.conf：Set node.session.timeo.replacement_timeout=5 和 node.startup = automatic。 在这两个节点上修改文件。
+1.2 修改 /etc/iscsi/iscsid.conf: Set node.session.timeo.replacement_timeout=5 和 node.startup = automatic。 在这两个节点上修改文件。
 
 1.3 执行发现命令，它会显示四个会话。 在两个节点上都运行该脚本。
 
@@ -92,7 +92,7 @@ iscsiadm -m node -l
 ```
 ![iSCSIadmLogin.png](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
 
-1.5 执行重新扫描脚本：rescan-scsi-bus.sh。此脚本显示创建的新磁盘。  在两个节点上都运行该脚本。 应会看到一个大于零的 LUN 编号（例如：1、2 等）
+1.5 执行重新扫描脚本： *rescan-scsi-bus.sh*。 此脚本将显示为你创建的新磁盘。  在两个节点上都运行该脚本。 应会看到一个大于零的 LUN 编号（例如，1、2 等）
 
 ```
 rescan-scsi-bus.sh
@@ -154,7 +154,7 @@ zypper in SAPHanaSR SAPHanaSR-doc
 
 ![yast-key-file.png](media/HowToHLI/HASetupWithStonith/yast-key-file.png)
 
-单击“确定”
+单击 **“确定”**
 
 使用 Csync2 中的 IP 地址和预共享密钥执行身份验证。 使用 csync2 -k /etc/csync2/key_hagroup 生成密钥文件。 在创建文件 key_hagroup 后，应将其手动复制到群集的所有成员。 确保将文件从 node1 复制到 node2。
 
@@ -231,7 +231,7 @@ systemctl start pacemaker
 ```
 ![start-pacemaker.png](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
 
-如果 pacemaker 服务失败，请参阅“方案 5： Pacemaker 服务失败”
+如果 pacemaker 服务失败，请参阅“方案 5：Pacemaker 服务失败”。
 
 ## <a name="5---joining-the-cluster"></a>5. 加入群集
 本部分将介绍如何将节点加入到群集。
@@ -257,9 +257,9 @@ systemctl start pacemaker
 ```
 crm_mon
 ```
-![crm-mon 你还可以登录到 hawk 以检查群集状态*https://\<节点 IP >：7630。* ](media/HowToHLI/HASetupWithStonith/crm-mon.png) 默认用户是 hacluster，密码为 linux。 如果需要，可以使用 passwd命令更改密码。
+![crm "-mon" ](media/HowToHLI/HASetupWithStonith/crm-mon.png) 你还可以登录到 hawk 以检查群集状态*https://\<node IP >： 7630*。 默认用户是 hacluster，密码为 linux。 如果需要，可以使用 passwd命令更改密码。
 
-## <a name="7-configure-cluster-properties-and-resources"></a>7.配置群集属性和资源 
+## <a name="7-configure-cluster-properties-and-resources"></a>7. 配置群集属性和资源 
 本部分将介绍配置群集资源的步骤。
 在本示例中，设置以下资源，其余资源可以通过参考 SUSE HA 指南进行配置（如果需要）。 仅在其中一个节点中执行配置。 在主节点上执行该操作。
 
@@ -322,11 +322,11 @@ crm configure load update crm-vip.txt
 在运行命令 crm_mon 时，可以在那里看到两个资源。
 ![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-此外，你还可以在*https://\<节点 IP 地址 >： 7630/cib/live/state*中查看状态
+此外，还可以在*https://\<node IP 地址 >： 7630/cib/live/state*中查看状态
 
 ![hawlk-status-page.png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 
-## <a name="8-testing-the-failover-process"></a>8.测试故障转移过程
+## <a name="8-testing-the-failover-process"></a>8. 测试故障转移过程
 若要测试故障转移过程，请停止 node1 上的 pacemaker 服务，并将资源故障转移到 node2。
 ```
 Service pacemaker stop
@@ -334,17 +334,17 @@ Service pacemaker stop
 现在，停止 node2 上的 pacemaker 服务，资源已故障转移到 node1
 
 故障转移前  
-![Before-failover .png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+![Before-failover ](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
 
 故障转移后  
-![after-failover .png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
-![crm-mon-after-failover .png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
+![after-failover ](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![crm-mon-after-failover ](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
-## <a name="9-troubleshooting"></a>9.疑难解答
+## <a name="9-troubleshooting"></a>9. 疑难解答
 本部分将介绍几个在安装过程中可能会遇到的失败情景。 你不一定会遇到这些问题。
 
-### <a name="scenario-1-cluster-node-not-online"></a>方案 1：群集节点未联机
+### <a name="scenario-1-cluster-node-not-online"></a>情景 1：群集节点未联机
 如果任何节点在群集管理器中都未显示为联机，则可以尝试以下方法使其联机。
 
 启动 iSCSI 服务
@@ -533,7 +533,7 @@ cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
 
 ![ha-cluster-join-fix.png](media/HowToHLI/HASetupWithStonith/ha-cluster-join-fix.png)
 
-## <a name="10-general-documentation"></a>10.常规文档
+## <a name="10-general-documentation"></a>10. 常规文档
 可以在以下文章中找到有关 SUSE HA 设置的详细信息： 
 
 - [SAP HANA SR 性能优化方案](https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf )

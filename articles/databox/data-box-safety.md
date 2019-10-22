@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: alkohli
 ms.openlocfilehash: db6e2eadbf19d78a203a4d4ba6111ad88430b192
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68985944"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>安全安装和运行 Azure Data Box
@@ -40,8 +40,8 @@ ms.locfileid: "68985944"
 
 ![警告图标](./media/data-box-safety/warning_icon.png)![电击图标](./media/data-box-safety/electrical_shock_hazard_icon.png)![无用户可维修部件图标](./media/data-box-safety/no_user_serviceable_parts_icon.png)**小心** 
 
-* 检查收到的原始设备是否有损坏。 如果设备机箱损坏, 请[联系 Microsoft 支持部门](data-box-disk-contact-microsoft-support.md)获取更换。 请勿尝试操作设备。 
-* 设备上配备了防篡改螺丝。 如果怀疑设备出现故障, 请[联系 Microsoft 支持部门](data-box-disk-contact-microsoft-support.md)获取更换。 请勿尝试自行维修设备。 
+* 检查收到的原始设备是否有损坏。 如果设备机箱损坏，请[联系 Microsoft 支持部门](data-box-disk-contact-microsoft-support.md)获取更换。 请勿尝试操作设备。 
+* 设备上配备了防篡改螺丝。 如果怀疑设备出现故障，请[联系 Microsoft 支持部门](data-box-disk-contact-microsoft-support.md)获取更换。 请勿尝试自行维修设备。 
 * 设备不包含任何用户可维修部件。 内有危险电压、电流和能量。 请勿拆开机箱。 请将设备退回到 Microsoft 进行检修。
 
 ![警告图标](./media/data-box-safety/warning_icon.png)![重物图标](./media/data-box-safety/heavy_weight_hazard_icon.png) **WARNING!** 
@@ -77,9 +77,9 @@ ms.locfileid: "68985944"
 * 在移动之前，或者如果认为该设备出现了任何形式的损坏，请永久拔掉电源。
 * 根据以下电源规格提供带电力过载保护的合适电源：
 
-    - 电压：100 V AC 到 240 V AC
-    - 电流：最大 6 A
-    - 频率：50 Hz 到 60 Hz
+    - 电压：100V AC 到 240V AC
+    - 电流：最大 6A
+    - 频率：50Hz 到 60Hz
 
 ![警告图标](./media/data-box-safety/warning_icon.png)**小心：**
 
@@ -116,7 +116,7 @@ ms.locfileid: "68985944"
 
 ![注意图标](./media/data-box-safety/notice_icon.png) **NOTICE:** 
 
-本设备经测试符合 A 类数字设备的限制，并符合 FCC 规则第 15 部分。 这些限制旨在为商业环境中运行的设备提供合理的抗有害干扰保护。 本设备产生、使用并可能发射射频能量，如果不根据说明书安装和使用，可能会给无线电通信造成有害干扰。 在居民区操作本设备可能会造成有害干扰，在这种情况下，用户需要自费纠正干扰。
+本设备经测试符合 A 类数字设备的限制，并符合 FCC 规则第 15 部分。 这些限制旨在为商业环境中运行的设备提供合理的抗有害干扰保护。 本设备产生、使用并可能发射射频能量，如果不根据说明书安装和使用，可能会给无线电通信造成有害干扰。 在居住区，此设备的操作可能导致有害干扰，在这种情况下，用户将需要以自己的费用纠正干扰。
 
 本设备符合 FCC 规则第 15 部分，以及加拿大工业部许可证豁免 RSS 标准。 操作时需满足以下两个条件：(1) 本设备不会造成有害干扰；(2) 本设备必须接受任何干扰，包括可能导致设备意外运行的干扰。
 
@@ -142,7 +142,7 @@ Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
 
 ![电池处置图标](./media/data-box-safety/battery_disposal_icon.png)
 
-本产品、其电池或包装上的此符号表示本产品包含的任何电池不可当作家庭垃圾进行处置。 你需要负责将此废弃物递送到适当的电池以及电力和电子设备回收点。 由于电池以及电力和电子设备中可能包含有害物质，这种独立的回收和循环利用有助于保护自然资源，并防止不当的处置可能对人类健康和环境造成的不利后果。 有关电池以及电力和电子废弃物投放点的详细信息，请联系当地的市政办公室、家庭垃圾处置服务部门，或销售本产品的商店。 有关 WEEE 的其他信息，请与 erecycle\@microsoft.com 联系。
+本产品、其电池或包装上的此符号表示本产品包含的任何电池不可当作家庭垃圾进行处置。 你需要负责将此废弃物递送到适当的电池以及电力和电子设备回收点。 由于电池以及电力和电子设备中可能包含有害物质，这种独立的回收和循环利用有助于保护自然资源，并防止不当的处置可能对人类健康和环境造成的不利后果。 有关电池以及电力和电子废弃物投放点的详细信息，请联系当地的市政办公室、家庭垃圾处置服务部门，或销售本产品的商店。 有关 WEEE 的其他信息，请联系*erecycle \@microsoft。*
 
 本产品包含钮扣电池。
 

@@ -1,5 +1,5 @@
 ---
-title: 例如：多层分面 - Azure 搜索
+title: 示例：多级别方面-Azure 搜索
 description: 了解如何为多层分类生成分面结构，创建可以包含在应用程序页面中的嵌套式导航结构。
 author: HeidiSteen
 manager: nitinme
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.openlocfilehash: 9a56bba55f9b3a59126168bc2bbbd50927c3fc78
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70274086"
 ---
-# <a name="example-multi-level-facets-in-azure-search"></a>例如：Azure 搜索中的多层分面
+# <a name="example-multi-level-facets-in-azure-search"></a>示例： Azure 搜索中的多层方面
 
 Azure 搜索架构不显式支持多层分类类别，但你可以对其进行近似处理，方法是：在进行索引编制之前先处理内容，然后对结果应用某些特殊的处理。 
 
@@ -51,7 +51,7 @@ LEFT JOIN
 
 计数值必须足够高，否则无法返回所有可能的分类值。 AdventureWorks 数据包含 41 个不同的分类值，因此 `count:50` 已足够。
 
-  ![分面的筛选器](./media/search-example-adventureworks/facet-filter.png "分面的筛选器")
+  ![多面筛选器](./media/search-example-adventureworks/facet-filter.png "多面筛选器")
 
 ## <a name="build-the-structure-in-client-code"></a>在客户端代码中生成结构
 
@@ -84,7 +84,7 @@ categories.count = sum;
 
 **categories** 对象现在可以用来呈现计数准确的可折叠分类树：
 
-  ![多层分面筛选器](./media/search-example-adventureworks/multi-level-facet.png "多层分面筛选器")
+  ![多级多面筛选器](./media/search-example-adventureworks/multi-level-facet.png "多级多面筛选器")
 
  
 树中的每个链接应该应用相关的筛选器。 例如：
@@ -97,6 +97,6 @@ categories.count = sum;
 > [!TIP]
 > 查询速度受返回的分面数的影响。 若要支持极大的分类集，考虑添加可分面的 **Edm.String** 字段，用于保存每个文档的顶级分类值。 然后应用如上所述的相同方法，但在用户展开顶级节点时仅执行集合-分面查询（在根分类字段上进行筛选）。 或者，在不需要 100% 召回的情况下，直接将分面计数降至一个合理的数字，确保分面条目按计数排序。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-示例：[为 Azure 搜索的 AdventureWorks Inventory 数据库建模](search-example-adventureworks-modeling.md)
+[示例：针对 Azure 搜索为 AdventureWorks 清单数据库建模](search-example-adventureworks-modeling.md)

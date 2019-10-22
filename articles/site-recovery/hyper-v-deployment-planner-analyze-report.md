@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/20/2019
+ms.date: 10/21/2019
 ms.author: mayg
-ms.openlocfilehash: 7bfe382ac1a175aafb4944dffa8d12a372f4fb70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aafeeb59446ac914bba25874f74871fc5f189498
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772585"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693588"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>分析 Azure Site Recovery 部署规划器报告
 本文介绍 Azure Site Recovery 部署规划器针对 Hyper-V 到 Azure 方案生成的 Excel 报表中包含的工作表。
@@ -58,13 +58,13 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
 ### <a name="profiling-overview"></a>分析概述
 ![分析概述](media/hyper-v-deployment-planner-analyze-report/profiling-overview-h2a.png)
 
-**分析的虚拟机总数**：提供了分析数据的 VM 的总数。 如果 VMListFile 中包含未分析的任何 VM 的名称，则生成报表时不会考虑这些 VM，会将其从分析的 VM 总数中排除。
+**分析的虚拟机总数**：提供了其分析数据的 VM 总数。 如果 VMListFile 中包含未分析的任何 VM 的名称，则生成报表时不会考虑这些 VM，会将其从分析的 VM 总数中排除。
 
 **兼容的虚拟机数**：可以使用 Azure Site Recovery 在 Azure 中保护的 VM 数。 它是计算了所需网络带宽、存储帐户数、Azure 核心数的兼容 VM 总数。 “兼容的 VM”部分提供了每个兼容的 VM 的详细信息。
 
 **不兼容的虚拟机**：在保护方面与 Site Recovery 不兼容的已分析 VM 数。 “不兼容的 VM”部分说明了不兼容的原因。 如果 VMListFile 包含任何未分析 VM 的名称，则这些 VM 不计入不兼容 VM 的数目。 在“不兼容的 VM”部分的末尾，这些 VM 作为“找不到数据”类型列出。
 
-**所需 RPO**：以分钟为单位的所需恢复点目标。 针对以下三个 RPO 值生成报告：15 分钟（默认值）、30 分钟、60 分钟。 会根据你在工作表右上方“所需 RPO”下拉列表中所做的选择来更改报表中的带宽建议。  如果结合某个自定义值使用 -DesiredRPO 参数生成了报表，此自定义值会在“所需 RPO”下拉列表中显示为默认值。 
+**所需 RPO**：以分钟为单位的所需恢复点目标。 针对以下三个 RPO 值生成报告：15分钟（默认值）、30 分钟、60 分钟。 会根据你在工作表右上方“所需 RPO”下拉列表中所做的选择来更改报表中的带宽建议。 如果结合某个自定义值使用 -DesiredRPO 参数生成了报表，此自定义值会在“所需 RPO”下拉列表中显示为默认值。
 
 ### <a name="required-network-bandwidth-mbps"></a>所需的网络带宽 (Mbps)
 ![所需的网络带宽](media/hyper-v-deployment-planner-analyze-report/required-network-bandwidth-h2a.png)
@@ -127,13 +127,13 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
  
 可以按月或按年查看成本。 详细了解[支持的目标区域](./hyper-v-deployment-planner-cost-estimation.md#supported-target-regions)和[支持的货币](./hyper-v-deployment-planner-cost-estimation.md#supported-currencies)。
 
-**按组件显示成本**：总 DR 成本分为四个部分：计算成本、存储成本、网络成本和 Site Recovery 许可证成本。 成本计算取决于在复制和 DR 演练时相关资源的使用情况。 用于计算的资源包括计算、存储（高级和标准）、在本地站点和 Azure 之间配置的 ExpressRoute/VPN、Site Recovery 许可证。
+**按组件成本**：总 DR 成本分为四个部分：计算成本、存储成本、网络成本和 Site Recovery 许可证成本。 成本计算取决于在复制和 DR 演练时相关资源的使用情况。 用于计算的资源包括计算、存储（高级和标准）、在本地站点和 Azure 之间配置的 ExpressRoute/VPN、Site Recovery 许可证。
 
 **按状态成本**：总灾难恢复成本按两种不同的状态（“复制”和“DR 演练”）分类。 
 
-**复制成本**：复制期间产生的成本。 涵盖存储成本、网络成本、Site Recovery 许可证成本。 
+**复制成本**：复制期间产生的成本， 涵盖存储成本、网络成本、Site Recovery 许可证成本。 
 
-**DR 演练成本**：测试故障转移期间产生的成本。 Site Recovery 会在测试性故障转移期间启动 VM。 DR 演练成本涵盖正在运行的 VM 的计算和存储成本。 
+**DR 演练成本**：测试性故障转移期间产生的成本。 Site Recovery 会在测试性故障转移期间启动 VM。 DR 演练成本涵盖正在运行的 VM 的计算和存储成本。 
 
 **每月/年的 Azure 存储成本**：条形图表示针对高级和标准存储进行复制和 DR 演练时产生的总存储成本。 可以在[成本估算](hyper-v-deployment-planner-cost-estimation.md)表中查看每个 VM 的详细成本分析。
 
@@ -152,7 +152,7 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
 ## <a name="vm-storage-placement-recommendation"></a>VM-存储位置建议 
 ![VM-存储位置](media/hyper-v-deployment-planner-analyze-report/vm-storage-placement-h2a.png)
 
-**磁盘存储类型**：标准或高级存储帐户，用于复制“要放置的 VM”  列中所述的所有相应 VM。
+**磁盘存储类型**：标准或高级存储帐户，用于复制“要放置的 VM”列中所述的所有相应 VM。
 
 **建议的前缀**：建议的三字符前缀，可用于存储帐户的命名。 可以使用自己的前缀，而该工具的建议则遵循[存储帐户的分区命名约定](https://aka.ms/storage-performance-checklist)。
 
@@ -162,7 +162,7 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
 
 **建议的日志帐户名称**：在使用建议的前缀后出现的存储日志帐户名称。 将尖括号（< 和 >）中的名称替换为自定义输入。
 
-**位置摘要**：执行复制和测试故障转移或故障转移时，存储帐户中 VM 总负载的摘要。 摘要包括：
+**位置摘要**：执行复制和测试性故障转移或故障转移时，存储帐户中 VM 总负载的摘要。 摘要包括：
 
 * 映射到存储帐户的 VM 的总数。 
 * 放置在此存储帐户中的所有 VM 的总读/写 IOPS。
@@ -179,7 +179,7 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
 
 **VM 名称**：生成报表时在 VMListFile 中使用的 VM 名称。 此列还列出附加到 VM 的磁盘 (VHD)。 这些名称包括 Hyper-V 主机名，其中的 VM 是此工具在分析期间发现它们时放置的。
 
-**VM 兼容性**：值为“是”  和“是\*”  。 “是\*”针对 VM 适用于[高级 SSD](../virtual-machines/windows/disks-types.md) 的情况  。 在这里，所分析的高变动量磁盘或 IOPS 磁盘适合的高级磁盘大小大于映射到磁盘的大小。 存储帐户决定了根据大小对磁盘分类时，可将磁盘归入哪种高级存储磁盘类型： 
+**VM 兼容性**：值为“是”和“是\*”。 “是\*”针对 VM 适用于[高级 SSD](../virtual-machines/windows/disks-types.md) 的情况。 在这里，所分析的高变动量磁盘或 IOPS 磁盘适合的高级磁盘大小大于映射到磁盘的大小。 存储帐户决定了根据大小对磁盘分类时，可将磁盘归入哪种高级存储磁盘类型： 
 * <128 GB 为 P10。
 * 128 GB 到 256 GB 为 P15。
 * 256 GB 到 512 GB 为 P20。
@@ -187,7 +187,7 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
 * 1,025 GB 到 2,048 GB 为 P40。
 * 2,049 GB 到 4,095 GB 为 P50。
 
-例如，如果某个磁盘按工作负荷特征应归入 P20 或 P30 类别，但按大小应归入较低的高级存储磁盘类型，则此工具会将该 VM 标记为“是\*”。  该工具还建议根据建议的高级存储磁盘类型更改源磁盘大小，或者在故障转移后更改目标磁盘类型。
+例如，如果某个磁盘按工作负荷特征应归入 P20 或 P30 类别，但按大小应归入较低的高级存储磁盘类型，则此工具会将该 VM 标记为“是\*”。 该工具还建议根据建议的高级存储磁盘类型更改源磁盘大小，或者在故障转移后更改目标磁盘类型。
 
 **存储类型**：标准或高级。
 
@@ -195,9 +195,9 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
 
 **存储帐户**：此名称使用建议的存储帐户前缀。
 
-**峰值读/写 IOPS (包括增长系数)** ：磁盘上的峰值工作负载读/写 IOPS（默认为第 95 百分位），以及将来的增长系数（默认为 30%）。 VM 的总读/写 IOPS 并非总是 VM 的单个磁盘的读/写 IOPS 之和。 VM 的峰值读/写 IOPS 是单个磁盘在分析期间的每分钟读/写 IOPS 之和的峰值。
+**峰值读/写 IOPS (包括增长系数)** ：磁盘上的峰值工作负荷读/写 IOPS（默认为第 95 百分位），以及将来的增长系数（默认为 30%）。 VM 的总读/写 IOPS 并非总是 VM 的单个磁盘的读/写 IOPS 之和。 VM 的峰值读/写 IOPS 是单个磁盘在分析期间的每分钟读/写 IOPS 之和的峰值。
 
-**峰值数据变动量(MB/秒，包括增长系数)** ：磁盘上的峰值变动率（默认为第 95 百分位），以及将来的增长系数（默认为 30%）。 VM 的总数据变动量并非总是 VM 的单个磁盘的数据变动量之和。 VM 的峰值数据变动量是单个磁盘在分析期间的每分钟变动量之和的峰值。
+**以 MB/秒为单位的峰值数据变动量(包括增长系数)** ：磁盘上的峰值变动率（默认为第 95 百分位），以及将来的增长系数（默认为 30%）。 VM 的总数据变动量并非总是 VM 的单个磁盘的数据变动量之和。 VM 的峰值数据变动量是单个磁盘在分析期间的每分钟变动量之和的峰值。
 
 **Azure VM 大小**：适用于此本地 VM 的映射 Azure 云服务 VM 大小。 映射取决于本地 VM 的内存、磁盘/核心/NIC 数以及读/写 IOPS。 建议在符合所有本地 VM 特征的情况下，始终使用最小的 Azure VM 大小。
 
@@ -246,13 +246,13 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
 
 * 源 IOPS 超出了每个 VM 支持的存储 IOPS 限制，即 80,000。
 
-* 源 VM 平均数据变动量超出了支持的 Site Recovery 数据变动量限制，即平均 I/O 大小不能超过 10 MB/秒。
+* 源 VM 平均数据变动量超出了支持的 Site Recovery 数据变动限制为 20 MB/s （对于平均 i/o 大小）。
 
 * 源 VM 平均有效写入 IOPS 超出了支持的 Site Recovery IOPS 限制，即 840。
 
 * 计算出的快照存储超出了支持的快照存储限制，即 10 TB。
 
-**峰值读/写 IOPS (包括增长系数)** ：磁盘上的峰值工作负载 IOPS（默认为第 95 百分位），以及将来的增长系数（默认为 30%）。 VM 的总读/写 IOPS 并非总是 VM 的单个磁盘的读/写 IOPS 之和。 VM 的峰值读/写 IOPS 是单个磁盘在分析期间的每分钟读/写 IOPS 之和的峰值。
+**峰值读/写 IOPS (包括增长系数)** ：磁盘上的峰值工作负荷 IOPS（默认为第 95 百分位），以及将来的增长系数（默认为 30%）。 VM 的总读/写 IOPS 并非总是 VM 的单个磁盘的读/写 IOPS 之和。 VM 的峰值读/写 IOPS 是单个磁盘在分析期间的每分钟读/写 IOPS 之和的峰值。
 
 **峰值数据变动量(MB/秒，包括增长系数)** ：磁盘上的峰值变动率（默认为第 95 百分位），以及将来的增长系数（默认为 30%）。 请注意，VM 的总数据变动量并非总是 VM 的单个磁盘的数据变动量之和。 VM 的峰值数据变动量是单个磁盘在分析期间的每分钟变动量之和的峰值。
 
@@ -274,8 +274,8 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
 **复制存储目标** | **源 VM 平均 I/O 大小** |**源 VM 平均数据变动量** | **每天的总源 VM 数据变动量**
 ---|---|---|---
 标准存储 | 8 KB | 每个 VM 2 MB/秒 | 每个 VM 168 GB
-高级存储 | 8 KB  | 每个 VM 5 MB/秒 | 每个 VM 421 GB
-高级存储 | 16 KB 或更高| 每个 VM 的 20 MB/秒 | 每个 VM 1684 GB
+高级存储器 | 8 KB  | 每个 VM 5 MB/秒 | 每个 VM 421 GB
+高级存储器 | 16 KB 或更高| 每个 VM 20 MB/秒 | 每个虚拟机 1684 GB
 
 这些限制是在假设存在 30% 的 I/O 重叠的情况下给出的平均数。 Site Recovery 能够根据重叠率、较大的写入大小和实际工作负荷 I/O 行为处理更高的吞吐量。 上述数字假定通常情况下存在大约 5 分钟的积压工作。 也就是说，数据在上传后会在 5 分钟内进行处理并创建恢复点。
 

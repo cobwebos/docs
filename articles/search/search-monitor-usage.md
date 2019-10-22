@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
 ms.openlocfilehash: fe8061f8e99742f9dc5c1181235c4203aaad82ca
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72331217"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>在 Azure 搜索中监视资源使用情况和查询活动
@@ -84,7 +84,7 @@ Azure Monitor 日志和 Blob 存储都作为免费服务提供，因此你可以
 
    若要存档到 Blob 存储，只有存储帐户必须存在。 导出日志数据时，将根据需要创建容器和 blob。
 
-   ![配置 Blob 存储存档](./media/search-monitor-usage/configure-blob-storage-archive.png "配置 Blob 存储存档")
+   ![配置 blob 存储存档](./media/search-monitor-usage/configure-blob-storage-archive.png "配置 blob 存储存档")
 
 4. 保存配置文件。
 

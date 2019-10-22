@@ -1,7 +1,7 @@
 ---
 title: '视觉对象接口示例 #4：用于预测信用风险的分类（区分成本）'
 titleSuffix: Azure Machine Learning
-description: 本文介绍如何使用可视界面构建复杂的机器学习试验。 你将了解如何实现自定义 Python 脚本并比较多个模型，以选择最佳选项。
+description: 本文介绍如何使用视觉对象界面构建复杂的机器学习管道。 你将了解如何实现自定义 Python 脚本并比较多个模型，以选择最佳选项。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,52 +9,52 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/10/2019
-ms.openlocfilehash: c06da0fd325f6b79bc0e14c4e6a246497f86a900
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/23/2019
+ms.openlocfilehash: 7196e9522695a28a5560faa77860073bd08e25ee
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131904"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693521"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>示例 4-分类：预测信用风险（区分成本）
 
-本文介绍如何使用可视界面构建复杂的机器学习试验。 你将了解如何使用 Python 脚本实现自定义逻辑，并比较多个模型以选择最佳选项。
+本文介绍如何使用视觉对象界面构建复杂的机器学习管道。 你将了解如何使用 Python 脚本实现自定义逻辑，并比较多个模型以选择最佳选项。
 
 此示例训练一个分类器，以使用信用历史记录、年龄和信用卡号等信用额度预测信用风险。 不过，你可以应用本文中的概念，以解决你自己的机器学习问题。
 
 如果只是开始使用机器学习，可以先查看[基本分类器示例](how-to-ui-sample-classification-predict-credit-risk-basic.md)。
 
-下面是此试验的完成关系图：
+下面是此管道的完成关系图：
 
-[![试验图](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[管道的 ![Graph](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. 选择示例4试验的 "**打开**" 按钮：
+4. 选择示例4管道的 "**打开**" 按钮：
 
-    ![打开试验](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
+    ![打开管道](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
 
-## <a name="data"></a>Data
+## <a name="data"></a>数据
 
-此示例使用 UC Irvine 存储库中的德国信用卡数据集。 此数据集包含1000个包含20个功能的样本和1个标签。 每个示例表示一个人。 20种功能包括数字和分类功能。 有关数据集的详细信息，请参阅[UCI 网站](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29)。 最后一列是标签，表示信用风险，只有两个可能的值：高信用风险 = 2 和低信用风险 = 1。
+此示例使用 UC Irvine 存储库中的德国信用卡数据集。 它包含1000个包含20个功能的示例和1个标签。 每个示例表示一个人。 20种功能包括数字和分类功能。 有关数据集的详细信息，请参阅[UCI 网站](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29)。 最后一列是标签，表示信用风险，只有两个可能的值：高信用风险 = 2 和低信用风险 = 1。
 
-## <a name="experiment-summary"></a>试验摘要
+## <a name="pipeline-summary"></a>管道摘要
 
-在此实验中，您将比较两种不同的方法来生成模型，以解决此问题：
+在此管道中，你比较两种不同的方法来生成模型，以解决此问题：
 
 - 对原始数据集进行训练。
 - 使用复制的数据集进行训练。
 
-对于这两种方法，通过使用带有复制的测试数据集来评估模型，以确保结果与 cost 函数对齐。 用两种方法测试两个分类器：**双类支持向量机**和**双类提升决策树**。
+对于这两种方法，通过使用带有复制的测试数据集来评估模型，以确保结果与 cost 函数对齐。 用这两种方法测试两个分类器：**双类支持向量机**和**双类提升决策树**。
 
 错误分类低风险示例的成本为1，而错误分类高风险示例的成本为5。 我们使用**执行 Python 脚本**模块来考虑此错误分类成本。
 
-下面是实验图：
+下面是管道的关系图：
 
-[![试验图](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[管道的 ![Graph](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="data-processing"></a>数据处理
 
@@ -67,7 +67,7 @@ ms.locfileid: "71131904"
 由于低估风险的代价很高，因此，请设置错误分类的成本，如下所示：
 
 - 对于高风险的情况，分类不当为低风险：5
-- 对于低风险的情况，分类不当为高风险：1
+- 对于低风险情况，分类不当为高风险：1
 
 若要反映此成本函数，请生成新的数据集。 在新数据集中，每个高风险示例复制了五次，但低风险示例的数目不会改变。 在复制前将数据拆分为定型和测试数据集，以防止在两个集中都有相同的行。
 
@@ -87,13 +87,13 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 **执行 Python 脚本**模块会同时复制定型和测试数据集。
 
-### <a name="feature-engineering"></a>特征工程
+### <a name="feature-engineering"></a>特性工程
 
-**双类支持向量机**算法需要规范化的数据。 因此，请使用**规范化数据**模块将所有数值特征的范围与`tanh`转换进行标准化。 `tanh`转换将所有数字功能转换为0到1范围内的值，同时保留值的总体分布。
+**双类支持向量机**算法需要规范化的数据。 因此，请使用**规范化数据**模块将所有数值特征的范围标准化 `tanh` 转换。 @No__t_0 转换将所有数字功能转换为0到1范围内的值，同时保留值的总体分布。
 
 **双类支持向量机**模块处理字符串功能，将它们转换为分类特征，然后转换为具有值0或1的二进制特征。 因此，您不需要对这些功能进行规范化。
 
-## <a name="models"></a>Models
+## <a name="models"></a>模型
 
 由于您应用了两个分类器、**双类支持向量机**（SVM）和**双类提升决策树**，以及两个数据集，因此总共生成四个模型：
 
@@ -108,11 +108,11 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 1. 使用**训练模型**将算法应用于数据并创建实际模型。
 1. 使用**评分模型**，通过使用测试示例生成分数。
 
-下图显示了此试验的一部分，其中的原始和已复制定型集用于训练两种不同的 SVM 模型。 **训练模型**连接到定型集，**评分模型**连接到测试集。
+下图显示了此管道的一部分，在此管道中，原始和复制的定型集用于训练两种不同的 SVM 模型。 **训练模型**连接到定型集，**评分模型**连接到测试集。
 
-![试验图](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
+![管道图形](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
 
-在试验的评估阶段，你计算四个模型中每个模型的准确性。 对于此试验，使用 "**评估模型**" 来比较具有相同错误分类成本的示例。
+在管道的评估阶段，你计算四个模型中每个模型的准确性。 对于此管道，使用 "**评估模型**" 来比较具有相同错误分类成本的示例。
 
 "**评估模型**" 模块可以计算多达两个评分模型的性能指标。 因此，您可以使用一个 "**评估模型**" 实例来计算两个 SVM 模型，并使用另一个 "**评估模型**" 实例来计算两个提升决策树模型。
 
@@ -142,12 +142,14 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 ## <a name="results"></a>结果
 
-若要查看试验结果，您可以右键单击 "数据集" 模块中最后一个 "**选择列**" 的 "可视化输出"。
+若要查看管道的结果，可以右键单击 "数据集" 模块中最后一个 "**选择列**" 的 "可视化输出"。
 
 ![可视化输出](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/result.png)
 
 第一列列出用于生成模型的机器学习算法。
+
 第二列指示定型集的类型。
+
 第三列包含与成本相关的精度值。
 
 根据这些结果，您可以看到，通过**双类支持向量机**创建并在复制的定型数据集上训练的模型提供了最佳准确性。
@@ -165,3 +167,4 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 - [示例 3-分类：预测信用风险](how-to-ui-sample-classification-predict-credit-risk-basic.md)
 - [示例 5-分类：预测改动](how-to-ui-sample-classification-predict-churn.md)
 - [示例 6-分类：预测航班延迟](how-to-ui-sample-classification-predict-flight-delay.md)
+- [示例 7-文本分类：书籍评论](how-to-ui-sample-text-classification.md)

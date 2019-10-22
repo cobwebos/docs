@@ -9,16 +9,16 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 89539d42e9ac9456c7ee971f6ea607b6b2c6befa
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: a148f974671e0d909591cbf24a433384a7570842
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266324"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693288"
 ---
 # <a name="custom-web-api-skill"></a>“自定义 Web API”技能
 
-借助**自定义 Web API** 技能，可以通过调用提供自定义操作的 Web API 终结点来扩展认知搜索。 与内置技能类似，“自定义 Web API”技能也有输入和输出。 Web API 根据输入在索引器运行时接收 JSON 有效负载，并输出 JSON 有效负载作为响应，以及成功状态代码。 响应应包含自定义技能指定的输出。 其他任何响应都被视为错误，并且不会执行任何扩充。
+**自定义 WEB api**技能使你可以通过调用提供自定义操作的 Web API 终结点来扩展认知搜索。 与内置技能类似，“自定义 Web API”技能也有输入和输出。 根据输入，Web API 在索引器运行时接收 JSON 有效负载，并输出 JSON 负载作为响应，以及成功状态代码。 响应应包含自定义技能指定的输出。 其他任何响应都被视为错误，并且不会执行任何扩充。
 
 本文档进一步详细介绍了 JSON 有效负载的结构。
 
@@ -37,10 +37,10 @@ Microsoft.Skills.Custom.WebApiSkill
 
 | 参数名称     | 描述 |
 |--------------------|-------------|
-| URI | 将 _JSON_ 有效负载发送到的 Web API 的 URI。 只允许使用 https URI 方案 |
+| uri | _JSON_有效负载将发送到的 Web API 的 URI。 只允许使用 https URI 方案 |
 | httpMethod | 发送有效负载时使用的方法。 允许使用的方法为 `PUT` 或 `POST` |
 | httpHeaders | 键值对集合，其中键表示头名称，值表示发送到 Web API 的头值以及有效负载。 此集合中禁止使用以下头：`Accept`、`Accept-Charset`、`Accept-Encoding`、`Content-Length`、`Content-Type`、`Cookie`、`Host`、`TE`、`Upgrade`、`Via` |
-| 超时 | （可选）如果指定，表明执行 API 调用的 http 客户端的超时值。 必须将其格式化为 XSD“dayTimeDuration”值（[ISO 8601 持续时间](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)值的受限子集）。 例如，`PT60S` 表示 60 秒。 如果未设置，选择的是默认值 30 秒。 超时可以设置为最大值为230秒，最小值为1秒。 |
+| timeout | （可选）如果指定，表明执行 API 调用的 http 客户端的超时值。 必须将其格式化为 XSD“dayTimeDuration”值（[ISO 8601 持续时间](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)值的受限子集）。 例如，`PT60S` 表示 60 秒。 如果未设置，选择的是默认值 30 秒。 超时可以设置为最大值为230秒，最小值为1秒。 |
 | batchSize | （可选）表示每 API 调用发送多少个“数据记录”（请参阅下面的 JSON 有效负载结构）。 如果未设置，选择的是默认值 1000。 建议使用此参数在索引编制吞吐量和 API 负载之间进行适当取舍 |
 
 ## <a name="skill-inputs"></a>技能输入
@@ -138,10 +138,10 @@ Microsoft.Skills.Custom.WebApiSkill
 
 ## <a name="sample-output-json-structure"></a>示例输出 JSON 结构
 
-“输出”对应于 Web API 返回的响应。 Web API 应仅返回 _JSON_ 有效负载（通过查看 `Content-Type` 响应头进行验证），并且应遵循以下约束：
+"输出" 对应于从 Web API 返回的响应。 Web API 只应返回_JSON_有效负载（通过查看 `Content-Type` 的响应标头进行验证）并应满足以下限制：
 
 * 应有名为 `values` 且是对象数组的顶级实体。
-* 数组中的对象数量应与发送到 Web API 的对象数量相同。
+* 数组中的对象数应与发送到 Web API 的对象的数目相同。
 * 每个对象都应有：
    * `recordId` 属性
    * `data` 属性，这个对象中的字段是与 `output` 中“名称”匹配的扩充，且值被视为扩充。
@@ -200,8 +200,9 @@ Microsoft.Skills.Custom.WebApiSkill
 
 在 Web API 不可用或返回 HTTP 错误的情况下，包含 HTTP 错误的任何可用详细信息的易记错误都会添加到索引器执行历史记录。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
++ [强大技能：定制技能的存储库](https://aka.ms/powerskills)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [将自定义技能添加到认知搜索](cognitive-search-custom-skill-interface.md)
-+ 示例：[创建认知搜索的自定义技能](cognitive-search-create-custom-skill-example.md)
++ [示例：为认知搜索创建自定义技能](cognitive-search-create-custom-skill-example.md)

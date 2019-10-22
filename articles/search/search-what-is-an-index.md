@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
 ms.openlocfilehash: 0a26cfc578f12044cb5834f202a0fed5d0a30274
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69647366"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>在 Azure 搜索中创建基本索引
@@ -32,7 +32,7 @@ ms.locfileid: "69647366"
 
 2. 如果无法使用“导入数据”，仍可以使用“添加索引”页上的控件[在门户中创建初始索引](search-create-index-portal.md)，以及添加字段、数据类型和分配属性。 门户会显示不同数据类型可用的属性。 如果你不太熟悉索引设计，此功能非常有用。
 
-   ![“添加索引”页，其中按数据类型显示了属性](media/search-create-index-portal/field-attributes.png "“添加索引”页，其中按数据类型显示了属性")
+   ![添加索引页，按数据类型显示属性](media/search-create-index-portal/field-attributes.png "添加索引页，按数据类型显示属性")
   
    单击“创建”时，将在搜索服务中创建支持你的索引的所有物理结构。
 
@@ -46,7 +46,7 @@ ms.locfileid: "69647366"
 
 6. 继续使用代码来迭代设计。  
 
-由于物理结构是在服务中创建的，每当对现有的字段定义进行重大更改后，都必须[删除并重新创建索引](search-howto-reindex.md)。 这意味着，在开发期间，应该对频繁的重新生成做好规划。 可以考虑使用一部分数据来加快重新生成的速度。 
+由于物理结构是在服务中创建的，因此，如果对现有字段定义进行了重要更改，则需要[删除和重新创建索引](search-howto-reindex.md)。 这意味着，在开发期间，应该对频繁的重新生成做好规划。 可以考虑使用一部分数据来加快重新生成的速度。 
 
 迭代设计的建议方法是使用代码而不是门户。 如果依赖于使用门户创建索引定义，则每次重新生成都必须填充索引定义。 如果开发项目仍处于早期阶段，[Postman 和 REST API](search-get-started-postman.md) 等备选工具也有助于完成概念证明测试。 可对请求正文中的索引定义进行增量更改，然后将请求发送到服务，以使用更新的架构重新创建索引。
 
@@ -54,7 +54,7 @@ ms.locfileid: "69647366"
 
 从架构上讲，Azure 搜索索引由以下元素组成。 
 
-[*字段集合*](#fields-collection)通常是索引的最大组成部分，其中每个字段都已命名、类型化，并具有允许行为的属性（确定该字段的用法）。 其他元素包括[建议器](#suggesters)、[评分配置文件](#scoring-profiles)、[分析器](#analyzers)（其组成部分用于支持自定义项）、[CORS](#cors) 和[加密密钥](#encryption-key)选项。
+[*字段集合*](#fields-collection)通常是索引的最大组成部分，其中每个字段都已命名、类型化，并具有允许行为的属性（确定该字段的用法）。 其他元素包括[建议器](#suggesters)、[计分配置文件](#scoring-profiles)、包含组件部件的[分析器](#analyzers)，以支持自定义、 [CORS](#cors)和[加密密钥](#encryption-key)选项。
 
 ```json
 {
@@ -146,7 +146,7 @@ ms.locfileid: "69647366"
 定义架构时，必须在索引中指定每个字段的名称、类型和属性。 字段类型的作用是对该字段中存储的数据进行分类。 对各个字段设置属性的目的是指定字段的使用方式。 下表枚举了可以指定的类型和属性。
 
 ### <a name="data-types"></a>数据类型
-| type | 描述 |
+| Type | 描述 |
 | --- | --- |
 | *Edm.String* |全文搜索可以选择性地标记化（断词、词干提取等）的文本。 |
 | *Collection(Edm.String)* |全文搜索可以选择性标记化的字符串列表。 理论上，集合中的项目数没有上限，但集合的有效负载大小上限为 16 MB。 |
@@ -163,11 +163,11 @@ ms.locfileid: "69647366"
 
 索引中正好有一个字段必须指定为唯一标识每个文档的**键**字段。
 
-其他属性确定如何在应用程序中使用字段。 例如, 可**搜索**属性将分配给应包括在全文搜索中的每个字段。 
+其他属性确定如何在应用程序中使用字段。 例如，可**搜索**属性将分配给应包括在全文搜索中的每个字段。 
 
-用于生成索引的 Api 具有不同的默认行为。 对于[REST api](https://docs.microsoft.com/rest/api/searchservice/Create-Index), 默认情况下会启用大多数属性 (例如, 字符串字段的可**搜索**和可**检索**值), 并且如果要将其关闭, 通常只需要设置它们。 对于 .NET SDK, 相反的情况也是如此。 在未显式设置的任何属性上, 默认情况下将禁用相应的搜索行为, 除非您专门启用此操作。
+用于生成索引的 Api 具有不同的默认行为。 对于[REST api](https://docs.microsoft.com/rest/api/searchservice/Create-Index)，默认情况下会启用大多数属性（例如，字符串字段的可**搜索**和可**检索**值），并且如果要将其关闭，通常只需要设置它们。 对于 .NET SDK，相反的情况也是如此。 在未显式设置的任何属性上，默认情况下将禁用相应的搜索行为，除非您专门启用此操作。
 
-| 特性 | 描述 |
+| 属性 | 描述 |
 | --- | --- |
 | `key` |为每个文档提供唯一 ID 以便查找文档的字符串。 每个索引必须有一个 key。 只有一个字段可以是 key，并且此字段类型必须设置为 Edm.String。 |
 | `retrievable` |指定是否可以在搜索结果中返回字段。 |
@@ -181,23 +181,23 @@ ms.locfileid: "69647366"
 
 所选的属性会影响存储。 以下屏幕截图演示了各种属性组合产生的索引存储模式。
 
-索引基于[内置的房地产示例](search-get-started-portal.md)数据源，可在门户中对其编制索引和执行查询。 尽管未显示索引架构，但可以基于索引名称推断属性。 例如，只选择了 *realestate-searchable* 索引中的 **searchable** 属性，只选择了 *realestate-retrievable* 索引中的 **retrievable** 属性，等等。
+索引基于内置的房地产[示例](search-get-started-portal.md)数据源，可以在门户中对其进行索引和查询。 尽管未显示索引架构，但可以基于索引名称推断属性。 例如，只选择了 *realestate-searchable* 索引中的 **searchable** 属性，只选择了 *realestate-retrievable* 索引中的 **retrievable** 属性，等等。
 
 ![基于属性选择的索引大小](./media/search-what-is-an-index/realestate-index-size.png "基于属性选择的索引大小")
 
-尽管这些索引变体是人造的，但我们可以参考这些变体来对属性影响存储的方式进行广泛比较。 设置 **retrievable** 是否会增大索引大小？ 否。 将字段添加到**建议器**是否会增大索引大小？ 是的。
+尽管这些索引变体是人造的，但我们可以参考这些变体来对属性影响存储的方式进行广泛比较。 设置 **retrievable** 是否会增大索引大小？ 不。 将字段添加到**建议器**是否会增大索引大小？ 可以。
 
 支持筛选和排序的索引在比例上大于仅支持全文搜索的索引。 原因在于，筛选和排序操作基于精确匹配执行查询，因此文档将按原样存储。 相比之下，支持全文搜索和模糊搜索的可搜索字段使用倒排索引，而这些索引中填充了空间占用量比整个文档更小的标记化字词。
 
 > [!Note]
 > 存储体系结构被视为 Azure 搜索的实现细节，随时可能在不另行通知的情况下进行更改。 不保证将来仍会保持当前的行为。
 
-## <a name="suggesters"></a>建议器
+## <a name="suggesters"></a>建议
 建议器是定义要使用索引中的哪些字段来支持搜索中的自动填写或提前键入查询的架构部分。 当用户尝试键入搜索查询时，通常将部分搜索字符串发送到[建议 (REST API)](https://docs.microsoft.com/rest/api/searchservice/suggestions)，该 API 返回一组建议的短语。 
 
 添加到建议器的字段用于生成自动提示搜索词。 在索引编制期间创建所有搜索词，并单独存储它们。 有关创建建议器结构的详细信息，请参阅[添加建议器](index-add-suggesters.md)。
 
-## <a name="scoring-profiles"></a>评分配置文件
+## <a name="scoring-profiles"></a>计分配置文件
 
 [评分配置文件](index-add-scoring-profiles.md)是定义自定义评分行为，方便用户影响搜索结果中排名更高的项的架构部分。 计分配置文件由字段权重和函数组成。 若要使用它们，请在查询字符串上按名称指定配置文件。
 
@@ -213,15 +213,15 @@ ms.locfileid: "69647366"
 
 可为 CORS 设置以下选项：
 
-+ **allowedOrigins**（必需）：这是会被授予索引访问权限的来源的列表。 这意味着，将允许从这些来源提供的任何 JavaScript 代码查询索引（假设它提供正确的 api-key）。 每个来源通常采用 `protocol://<fully-qualified-domain-name>:<port>` 格式，不过往往会省略 `<port>`。 有关更多详细信息，请参阅[跨域资源共享 (Wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)。
++ **allowedOrigins** （必需）：这是将向其授予对索引的访问权限的来源列表。 这意味着，将允许从这些来源提供的任何 JavaScript 代码查询索引（假设它提供正确的 api-key）。 每个来源通常采用 `protocol://<fully-qualified-domain-name>:<port>` 格式，不过往往会省略 `<port>`。 有关更多详细信息，请参阅[跨域资源共享 (Wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)。
 
   若要允许访问所有来源，请将 `*` 作为单个项目包含在 **allowedOrigins** 数组中。 不建议对生产搜索服务采用这种做法，但它在开发和调试中却很有用。
 
-+ **maxAgeInSeconds**（可选）：浏览器使用此值确定缓存 CORS 预检响应的持续时间（以秒为单位）。 此值必须是非负整数。 此值越大，性能越好，但 CORS 策略更改生效所需的时间也越长。 如果未设置此值，将使用 5 分钟的默认持续时间。
++ **maxAgeInSeconds** （可选）：浏览器使用此值来确定缓存 CORS 预检响应的持续时间（以秒为单位）。 此值必须是非负整数。 此值越大，性能越好，但 CORS 策略更改生效所需的时间也越长。 如果未设置此值，将使用 5 分钟的默认持续时间。
 
 ## <a name="encryption-key"></a>加密密钥
 
-虽然默认情况下会使用 Microsoft 管理的密钥加密所有 Azure 搜索索引，但索引可以配置为使用密钥保管库中**客户管理的密钥**进行加密。 若要了解详细信息，请参阅[在 Azure 搜索中管理加密密钥](search-security-manage-encryption-keys.md)。
+虽然默认情况下使用 Microsoft 托管密钥对所有 Azure 搜索索引进行加密，但可以将索引配置为使用 Key Vault 中的**客户托管密钥**进行加密。 若要了解详细信息，请参阅[管理 Azure 搜索中的加密密钥](search-security-manage-encryption-keys.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

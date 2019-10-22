@@ -1,5 +1,5 @@
 ---
-title: 为查询和索引缩放分区与副本 - Azure 搜索
+title: 为查询和索引缩放分区和副本-Azure 搜索
 description: 在 Azure 搜索中调整分区和副本计算机资源，其中每个资源按照可计费搜索单位定价。
 author: HeidiSteen
 manager: nitinme
@@ -10,16 +10,16 @@ ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: c048dcf31d8f434f742d2da9351ef9b46f0a71d4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69650069"
 ---
-# <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>为 Azure 搜索中的查询和索引工作负荷缩放分区与副本
+# <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>在 Azure 搜索中缩放用于查询和索引工作负荷的分区和副本
 [选择定价层](search-sku-tier.md)并[预配搜索服务](search-create-service-portal.md)后，下一步是有选择性地增加服务使用的副本或分区数目。 每一层提供固定数量的计费单位。 本文介绍如何通过分配这些单位来实现最佳配置，根据查询执行、索引和存储的要求做出平衡。
 
-在[“基本”层](https://aka.ms/azuresearchbasic)或者某个[“标准”层或“内存优化”层](search-limits-quotas-capacity.md)中设置服务时，可以使用资源配置。 对于这些层中的服务，购买的容量以*搜索单位* (SU) 为增量，其中每个分区和副本被视为一个 SU。 
+在[基本层](https://aka.ms/azuresearchbasic)或某个[标准或存储优化层](search-limits-quotas-capacity.md)上设置服务时，可以使用资源配置。 对于这些层中的服务，购买的容量以*搜索单位* (SU) 为增量，其中每个分区和副本被视为一个 SU。 
 
 使用的 SU 越少，帐单费用也就相应地越少。 只要设置服务，就会产生费用。 如果暂时不使用某个服务，避免计费的唯一方法就是删除该服务，需要该服务时再重新创建。
 
@@ -27,9 +27,9 @@ ms.locfileid: "69650069"
 > 删除某个服务会删除该服务上的所有内容。 Azure 搜索中没有用于备份和还原持久化搜索数据的设施。 若要在新服务上重新部署现有索引，应当运行最初用来创建和加载该索引的程序。 
 
 ## <a name="terminology-replicas-and-partitions"></a>术语：副本和分区
-副本和分区是支持搜索服务的主要资源。
+副本和分区是恢复搜索服务的主要资源。
 
-| Resource | 定义 |
+| 资源 | 定义 |
 |----------|------------|
 |*分区* | 为读/写操作（例如在重建或刷新索引时）提供索引存储和 I/O。|
 |*副本* | 是搜索服务的实例，主要用于对查询操作进行负载均衡。 每个副本始终托管索引的一个副本。 如果有 12 个副本，服务中会加载每个索引的 12 个副本。|
@@ -42,31 +42,31 @@ ms.locfileid: "69650069"
 ## <a name="how-to-allocate-replicas-and-partitions"></a>如何分配副本和分区
 在 Azure 搜索中，最初为服务分配了由一个分区和一个副本组成的最低级别的资源。 如果层支持这样做，可以递增方式调整计算资源：需要更多的存储和 I/O 时增加分区，或者增加副本来应对较大的查询卷或提供较好的性能。 单个服务必须具有足够的资源才能处理所有工作负荷（索引和查询）。 无法在多个服务之间细分工作负荷。
 
-若要增加或更改副本和分区的分配，建议使用 Azure 门户。 该门户针对允许的组合强制实施限制，使其低于上限。 如果需要使用基于脚本或基于代码的预配方法，[Azure PowerShell](search-manage-powershell.md) 或[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/services) 是替代的解决方案。
+若要增加或更改副本和分区的分配，建议使用 Azure 门户。 门户对允许的最大限制的组合强制实施限制。 如果需要基于脚本或基于代码的预配方法， [Azure PowerShell](search-manage-powershell.md)或[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/services)是替代解决方案。
 
 一般而言，搜索应用程序所需的副本数多过分区数，尤其是在服务操作偏向于查询工作负荷的情况下。 [高可用性](#HA)部分将解释原因。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)，并选择搜索服务。
 
-2. 在“设置”中，打开“规模”页以修改副本和分区。 
+2. 在 "**设置**" 中，打开 "**缩放**" 页以修改副本和分区。 
 
-   以下屏幕截图显示了预配有一个副本和分区的标准服务。 底部的公式指示正在使用多少个搜索单位 (1)。 如果单位价格为 $100（非实际价格），则运行此服务的每月成本平均为 $100。
+   以下屏幕截图显示了一项预配的标准服务，其中包含一个副本和分区。 底部的公式指示正在使用的搜索单位数（1）。 如果单位价格为 $100 （而不是实际价格），则运行此服务的每月费用将平均为 $100。
 
-   ![显示当前值的“规模”页](media/search-capacity-planning/1-initial-values.png "显示当前值的“规模”页")
+   ![显示当前值的缩放页面](media/search-capacity-planning/1-initial-values.png "显示当前值的缩放页面")
 
-3. 使用滑块增加或减少分区数。 底部的公式指示正在使用多少个搜索单位。
+3. 使用滑块可以增加或减少分区数。 底部的公式指示正在使用的搜索单位数。
 
-   此示例各使用一个副本和分区将容量翻倍。 请注意搜索单位计数；现在有 4 个搜索单位，因为计费公式是副本数乘以分区数 (2 x 2)。 将容量翻倍不仅仅会使运行服务的成本翻倍。 如果搜索单位的成本是 $100，则新的每月费用将是 $400。
+   此示例将容量加倍，其中每个都有两个副本和分区。 请注意搜索单位数;因为计费公式是副本乘以分区（2 x 2），所以现在为四个。 增加容量比运行服务的成本要高得多。 如果搜索单位成本为 $100，则新的月度帐单现在为 $400。
 
-   有关每个层的当前单位成本，请访问[定价页](https://azure.microsoft.com/pricing/details/search/)。
+   有关每个层的当前每单位成本，请访问[定价页](https://azure.microsoft.com/pricing/details/search/)。
 
    ![添加副本和分区](media/search-capacity-planning/2-add-2-each.png "添加副本和分区")
 
-3. 单击“保存”以确认所做的更改。
+3. 单击 "**保存**" 以确认所做的更改。
 
-   ![确认对规模和计费所做的更改](media/search-capacity-planning/3-save-confirm.png "确认对规模和计费所做的更改")
+   ![确认对缩放和计费的更改](media/search-capacity-planning/3-save-confirm.png "确认对缩放和计费的更改")
 
-   更改容量需要花费几个小时才能完成。 一旦启动更改过程，就无法将其取消；系统不会实时监视副本和分区的调整。 但是，在更改过程中，会一直显示以下消息。
+   容量更改需要花费几个小时才能完成。 启动进程后，将无法进行取消操作，并且不会对副本和分区调整进行实时监视。 但是，当更改正在进行时，以下消息仍然可见。
 
    ![门户中的状态消息](media/search-capacity-planning/4-updating.png "门户中的状态消息")
 
@@ -82,17 +82,17 @@ ms.locfileid: "69650069"
 
 “基本”服务可以包含一个分区以及最多三个副本，上限为三个 SU。 唯一可调整的资源是副本。 至少需要两个副本才能实现查询的高可用性。
 
-所有“标准”和“存储优化”搜索服务可以采用副本和分区的以下组合，但不能超过 36 个 SU 的限制。 
+所有标准和存储优化搜索服务都可以根据 36-SU 限制，采用以下副本和分区的组合。 
 
 |   | **1 个分区** | **2 个分区** | **3 个分区** | **4 个分区** | **6 个分区** | **12 个分区** |
 | --- | --- | --- | --- | --- | --- | --- |
 | **1 个副本** |1 个 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 个副本** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 个副本** |3 SU |6 SU |9 SU |12 SU |18 SU |36 个 SU |
-| **4 个副本** |4 SU |8 SU |12 SU |16 SU |24 SU |不可用 |
-| **5 副本** |5 SU |10 SU |15 SU |20 SU |30 SU |不可用 |
-| **6 个副本** |6 SU |12 SU |18 SU |24 SU |36 个 SU |不可用 |
-| **12 副本** |12 SU |24 SU |36 个 SU |不可用 |不可用 |不可用 |
+| **4 个副本** |4 SU |8 SU |12 SU |16 SU |24 SU |N/A |
+| **5 副本** |5 SU |10 SU |15 SU |20 SU |30 SU |N/A |
+| **6 个副本** |6 SU |12 SU |18 SU |24 SU |36 个 SU |N/A |
+| **12 副本** |12 SU |24 SU |36 个 SU |N/A |N/A |N/A |
 
 Azure 网站上详细说明了 SU、定价和容量。 有关详细信息，请参阅 [Pricing Details](https://azure.microsoft.com/pricing/details/search/)（定价详细信息）。
 
@@ -114,7 +114,7 @@ Azure 网站上详细说明了 SU、定价和容量。 有关详细信息，请�
 
 Azure 搜索的服务级别协议 (SLA) 针对查询操作，以及由文档添加、更新或删除操作构成的索引更新。
 
-基本层最多能有一个分区和三个副本。 如果希望灵活地立即响应对索引编制和查询吞吐量的需求波动，请考虑使用标准层中的一个。  如果你发现存储要求的增长速度大大超过了可用的吞吐量，请考虑使用某个“存储优化”层。
+基本层最多能有一个分区和三个副本。 如果希望灵活地立即响应对索引编制和查询吞吐量的需求波动，请考虑使用标准层中的一个。  如果发现存储要求的增长速度快于查询吞吐量的增长速度，请考虑采用存储优化的一层。
 
 ### <a name="index-availability-during-a-rebuild"></a>重建期间的索引可用性
 
@@ -143,4 +143,4 @@ Azure 搜索的高可用性与查询以及不涉及重建索引的索引更新�
 
 ## <a name="next-steps"></a>后续步骤
 
-[选择 Azure 搜索的定价层](search-sku-tier.md)
+[为 Azure 搜索选择定价层](search-sku-tier.md)

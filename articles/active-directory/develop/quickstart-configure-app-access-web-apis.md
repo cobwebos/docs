@@ -187,6 +187,6 @@ ms.locfileid: "72389607"
 * [修改应用程序支持的帐户](quickstart-modify-supported-accounts.md)
 * [删除注册到 Microsoft 标识平台的应用程序](quickstart-remove-app.md)
 
-了解有关表示已注册应用程序和它们之间的关系的两个 Azure AD 对象的详细信息，请参阅[应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
+了解有关表示已注册应用程序的两个 Azure AD 对象及它们之间的关系的详细信息，请参阅[应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
 
 深入了解使用 Azure Active Directory 开发应用程序时应使用的品牌准则，请参阅[应用程序的品牌准则](howto-add-branding-in-azure-ad-apps.md)。

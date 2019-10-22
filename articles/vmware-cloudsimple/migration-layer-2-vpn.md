@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 34b26dd1b9b8990da9e84c8d7cfc993d8bbe85a7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72376310"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>使用第 2 层外延式网络迁移工作负荷
@@ -112,7 +112,7 @@ ms.locfileid: "72376310"
 
     ![选择活动-备用](media/l2vpn-fetch01.png)
 
-2. 选择 "**构造** >  个**节点**@no__t 3**边缘**"。 记下在上一步中标识的活动边缘 VM （Edge VM1）的管理 IP 地址。
+2. 选择 " **Fabric**  > **节点** > **边缘**"。 记下在上一步中标识的活动边缘 VM （Edge VM1）的管理 IP 地址。
 
     ![注意管理 IP](media/l2vpn-fetch02.png)
 
@@ -137,7 +137,7 @@ ms.locfileid: "72376310"
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>提取 L2VPN 所需的逻辑交换机 ID
 
 1. 登录到 " [NSX-T 管理器](https://nsx-t-manager-ip-address)"。
-2. 选择 "**网络**@no__t-**1" 交换机**@no__t **">" < \Logical 开关 @** "No__t-5 * * >**概述**"。
+2. 选择 "网络 ** >  交换机** > **交换机**>" < \Logical "" \>**概述**"。
 3. 记下 stretch 逻辑交换机的 UUID，在配置 L2VPN 时需要用到它。
 
     ![获取逻辑路由器输出](media/l2vpn-fetch-switch01.png)
@@ -154,20 +154,20 @@ ms.locfileid: "72376310"
 
 ### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>将环回接口 IP 播发到是网络
 
-1. 为环回接口网络创建空路由。 登录到 "NSX-T 管理器"，然后选择 "**网络** > **路由** > **路由器** > **提供程序-LR**@no__t 7**路由** >  个**静态路由**。 单击“添加”。 对于 "**网络**"，请输入环回接口 IP 地址。 对于 "**下一**跃点"，单击 "**添加**"，为下一个跃点指定 "Null"，并保留默认值1进行管理距离。
+1. 为环回接口网络创建空路由。 登录到 "NSX-T 管理器" 并选择 "**网络** > **路由** > **路由器** > **提供程序-LR**  > **路由** > **静态路由**。 单击“添加”。 对于 "**网络**"，请输入环回接口 IP 地址。 对于 "**下一**跃点"，单击 "**添加**"，为下一个跃点指定 "Null"，并保留默认值1进行管理距离。
 
     ![添加静态路由](media/l2vpn-routing-security01.png)
 
-2. 创建 IP 前缀列表。 登录到 "NSX-T 管理器"，然后选择 "**网络** > **路由** > **路由器** > **提供程序-LR**@no__t 7**路由** > **IP 前缀列表**。 单击“添加”。 输入名称以标识列表。 对于**前缀**，单击 "**添加**两次"。 在第一行中，输入 "0.0.0.0/0" 作为**网络**，为 "拒绝" 输入**操作**。 在第二行中，**选择**"**网络**" 和 "**允许** **操作**"。
+2. 创建 IP 前缀列表。 登录到 "NSX-T 管理器"，然后选择 "**网络** > **路由** > **路由器** > **提供商-LR**  > **路由** > **IP 前缀列表**。 单击“添加”。 输入名称以标识列表。 对于**前缀**，单击 "**添加**两次"。 在第一行中，输入 "0.0.0.0/0" 作为**网络**，为 "拒绝" 输入**操作**。 在第二行中，**选择**"**网络**" 和 "**允许** **操作**"。
 3. 将 IP 前缀列表附加到这两个 BGP 邻居（TOR）。 将 IP 前缀列表附加到 BGP 邻居可防止将默认路由播发到 TOR 交换机的 BGP。 但是，任何其他包含空路由的路由都将向 TOR 交换机公布环回接口 IP 地址。
 
     ![创建 IP 前缀列表](media/l2vpn-routing-security02.png)
 
-4. 登录到 "NSX-T 管理器"，然后选择 "**网络** > **路由** >  个**路由器** > **提供程序-LR**@no__t 7**路由** > **BGP**1 个**邻居**。 选择第一个相邻节点。 单击 "**编辑** > **地址系列**"。 对于 IPv4 系列，请编辑 "**输出筛选器**" 列，然后选择所创建的 IP 前缀列表。 单击“保存”。 对第二个邻居重复此步骤。
+4. 登录到 "NSX-T 管理器"，并选择 "**网络** > **路由** > **路由器** > **提供商-LR**  > **路由** ** > " 1** **邻居**"。 选择第一个相邻节点。 单击 "**编辑** > **地址系列**"。 对于 IPv4 系列，请编辑 "**输出筛选器**" 列，然后选择所创建的 IP 前缀列表。 单击“保存”。 对第二个邻居重复此步骤。
 
-    @no__t 0Attach IP prefix list 1 @ no__t ![Attach IP prefix list 2 @ no__t-3
+    ![Attach IP 前缀列表 1 ](media/l2vpn-routing-security03.png) ![Attach IP 前缀列表 2 ](media/l2vpn-routing-security04.png)
 
-5. 将空静态路由重新分发到 BGP。 若要将环回接口路由播发到是，必须将空静态路由重新分发到 BGP。 登录到 "NSX-T 管理器"，然后选择 "**网络** > **路由** > **路由器** > **提供商**@no__t @no__t- 选择 " **Route_Redistribution** "，然后单击 "**编辑**"。 选中 "**静态**" 复选框，然后单击 "**保存**"。
+5. 将空静态路由重新分发到 BGP。 若要将环回接口路由播发到是，必须将空静态路由重新分发到 BGP。 登录到 "NSX-T 管理器" 并选择 "**网络** > **路由** > **路由器** > **提供商-LR**  > **路由** > **邻居**1**路由重新分发**。 选择 " **Route_Redistribution** "，然后单击 "**编辑**"。 选中 "**静态**" 复选框，然后单击 "**保存**"。
 
     ![将空静态路由重新分发到 BGP](media/l2vpn-routing-security05.png)
 
@@ -430,7 +430,7 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
 2. 前往包含所有已提取文件的文件夹。 为大设备大小选择所有 vmdk （l2t 和 NSX-l2t-client-large），并选择 ""，并选择 ""，为超大大小的设备调整和 l2t。 单击“下一步”。
 
-    @no__t 0Select template @ no__t-1 ![Select template @ no__t-3
+    ![Select 模板 ](media/l2vpn-deploy-client02.png) ![Select 模板 ](media/l2vpn-deploy-client03.png)
 
 3. 输入 "NSX-T 独立客户端" 的名称，然后单击 "**下一步**"。
 
@@ -460,7 +460,8 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
     * **前缀长度**。 输入上行 VLAN/子网的前缀长度。
     * **CLI 管理员/启用/根用户密码**。 设置管理员/enable/root 帐户的密码。
 
-      @no__t 0Customize template @ no__t-1 @ no__t-2Customize template-no__t
+      ![Customize 模板 ](media/l2vpn-deploy-client08.png)
+       ![Customize 模板-详细 ](media/l2vpn-deploy-client09.png)
 
 7. 查看设置，然后单击 "**完成**"。
 

@@ -1,5 +1,5 @@
 ---
-title: 媒体服务实体的筛选、排序和分页 - Azure | Microsoft Docs
+title: 媒体服务实体的筛选、排序和分页-Azure |Microsoft Docs
 description: 本文讨论 Azure 媒体服务实体的筛选、排序和分页。
 services: media-services
 documentationcenter: ''
@@ -12,43 +12,43 @@ ms.topic: article
 ms.date: 10/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ed509ac8fea43a9c011bbbf76c1dc433cd78d43c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d13ff3944e53f103c03a92e03d217b0066bc97df
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298948"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693310"
 ---
-# <a name="filtering-ordering-paging-of-media-services-entities"></a>媒体服务实体的筛选、排序和分页
+# <a name="filtering-ordering-and-paging-of-media-services-entities"></a>媒体服务实体的筛选、排序和分页
 
 本主题讨论在列出 Azure 媒体服务 v3 实体时可用的 OData 查询选项和分页支持。
 
 ## <a name="considerations"></a>注意事项
 
-* 属于日期/时间类型的实体的属性始终采用 UTC 格式。
+* @No__t_0 类型的实体的属性始终采用 UTC 格式。
 * 发送请求之前，应对查询字符串中的空格进行 URL 编码。
 
 ## <a name="comparison-operators"></a>比较运算符
 
-可以使用以下运算符将字段与常量值进行比较：
+您可以使用下列运算符来比较字段和常量值：
 
-相等性运算符：
+相等运算符：
 
-- `eq`：测试某个字段是否**等于**某个常量值
-- `ne`：测试某个字段是否**不等于**某个常量值
+- `eq`：测试字段是否与常数值*相等*。
+- `ne`：测试字段是否*不等于*常数值。
 
 范围运算符：
 
-- `gt`：测试某个字段是否**大于**某个常量值
-- `lt`：测试某个字段是否**小于**某个常量值
-- `ge`：测试某个字段是否**大于或等于**某个常量值
-- `le`：测试某个字段是否**小于或等于**某个常量值
+- `gt`：测试字段是否*大于*常数值。
+- `lt`：测试字段是否*小于*常数值。
+- `ge`：测试字段是否*大于或等于*常数。 值
+- `le`：测试字段是否*小于或等于*常量值。
 
-## <a name="filter"></a>筛选器
+## <a name="filter"></a>筛选
 
-**$filter**使用筛选器提供 OData 筛选器参数，以便仅查找你感兴趣的对象。
+使用 `$filter` 提供 OData 筛选器参数，以便仅查找你感兴趣的对象。
 
-以下 REST 示例筛选资产的 alternateId：
+以下 REST 示例筛选资产的 `alternateId` 值：
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$filter=properties/alternateId%20eq%20'unique identifier'
@@ -63,30 +63,30 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 ## <a name="order-by"></a>排序依据
 
-**$orderby** -用于按指定的参数对返回的对象进行排序。 例如：    
+使用 `$orderby` 按指定的参数对返回的对象进行排序。 例如：    
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-若要按升序或降序对结果进行排序，请在字段名称后追加 `asc` 或 `desc`，并用空格分隔。 例如， `$orderby properties/created desc` 。
+若要按升序或降序对结果进行排序，请将 `asc` 或 `desc` 追加到字段名称中，用空格分隔。 例如：`$orderby properties/created desc`。
 
 ## <a name="skip-token"></a>跳过令牌
 
-**$skiptoken** -如果查询响应包含多个项，则服务将返回一个用于获取下一页结果的跳过标记（`@odata.nextLink`）。 这可用于逐页浏览整个结果集。
+如果查询响应包含许多项，则服务将返回 `$skiptoken` （`@odata.nextLink`）值，该值用于获取下一页结果。 使用它可对整个结果集进行分页。
 
-在媒体服务 v3 中，无法配置页面大小。 页面大小因实体类型而异，请参阅以下各个部分，了解详细信息。
+在媒体服务 v3 中，无法配置页面大小。 页大小因实体类型而异。 有关详细信息，请阅读以下各节。
 
-如果在逐页浏览集合时创建或删除实体，则会在返回的结果中反映此更改（如果这些更改位于集合中尚未下载的部分）。 
+如果在对集合进行分页时创建或删除实体，则所做的更改将反映在返回的结果中（如果这些更改位于尚未下载的集合的部分中）。 
 
 > [!TIP]
 > 应始终使用 `nextLink` 来枚举集合，而不是依赖于特定的页大小。
 >
-> 如果有多个实体页，则将仅显示 `nextLink`。
+> 仅当存在多个实体页时，才会显示 `nextLink` 值。
 
-考虑以下使用 $skiptoken 的示例。 请务必将 *amstestaccount* 替换为你的帐户名，并将 *api-version* 值设置为最新版本。
+请考虑以下使用 `$skiptoken` 的示例。 请务必将 *amstestaccount* 替换为你的帐户名，并将 *api-version* 值设置为最新版本。
 
-如果按如下所示请求列出资产：
+如果你请求如下资产列表：
 
 ```
 GET  https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01 HTTP/1.1
@@ -94,7 +94,7 @@ x-ms-client-request-id: dd57fe5d-f3be-4724-8553-4ceb1dbe5aab
 Content-Type: application/json; charset=utf-8
 ```
 
-将获得如下所示的响应：
+将返回类似于下面的响应：
 
 ```
 HTTP/1.1 200 OK
@@ -136,7 +136,7 @@ while (currentPage.NextPageLink != null)
 
 ## <a name="using-logical-operators-to-combine-query-options"></a>使用逻辑运算符合并查询选项
 
-媒体服务 v3 支持 "or" 和 "and" 逻辑运算符。 
+媒体服务 v3 支持**或**和**和逻辑运算符**。 
 
 以下 REST 示例检查作业的状态：
 
@@ -155,29 +155,29 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 下表显示了如何将筛选和排序选项应用于不同的实体：
 
-|实体名称|属性名|筛选器|顺序|
+|实体名称|属性名称|筛选|订单|
 |---|---|---|---|
-|[资产](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` 和 `desc`|
+|[资产](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`、`gt`、`lt`、`ge`、`le`|`asc` 和 `desc`|
 ||properties.alternateId |`eq`||
 ||properties.assetId |`eq`||
-||properties.created| `eq`, `gt`, `lt`| `asc` 和 `desc`|
+||properties.created| `eq`、`gt`、`lt`| `asc` 和 `desc`|
 |[内容密钥策略](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
 ||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
 ||properties.description    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`||
 ||properties.lastModified|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
-||properties.policyId|`eq`， `ne`||
+||properties.policyId|`eq`，`ne`||
 |[作业](https://docs.microsoft.com/rest/api/media/jobs)| name  | `eq`            | `asc` 和 `desc`|
-||properties.state        | `eq`， `ne`        |                         |
-||properties.created      | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
-||properties.lastModified | `gt`, `ge`, `lt`, `le` | `asc` 和 `desc`| 
+||properties.state        | `eq`，`ne`        |                         |
+||properties.created      | `gt`、`ge`、`lt`、`le`| `asc` 和 `desc`|
+||properties.lastModified | `gt`、`ge`、`lt`、`le` | `asc` 和 `desc`| 
 |[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
-||properties.created    |`eq`，`ne`，`ge`，`le`，`gt`，`lt`|`asc` 和 `desc`|
+||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
 ||properties.endTime    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
 |[流式处理策略](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
 ||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
 |[可转换](https://docs.microsoft.com/rest/api/media/transforms)| name | `eq`            | `asc` 和 `desc`|
-|| properties.created      | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
-|| properties.lastModified | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
+|| properties.created      | `gt`、`ge`、`lt`、`le`| `asc` 和 `desc`|
+|| properties.lastModified | `gt`、`ge`、`lt`、`le`| `asc` 和 `desc`|
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 验证连接 - ExpressRoute 故障排除指南：Azure | Microsoft Docs
+title: 验证连接性-ExpressRoute 故障排除指南： Azure |Microsoft Docs
 description: 本页说明如何对 ExpressRoute 线路的端到端连接进行故障排除和验证。
 services: expressroute
 author: rambk
@@ -9,10 +9,10 @@ ms.date: 09/26/2017
 ms.author: rambala
 ms.custom: seodec18
 ms.openlocfilehash: 026900e3dcbf7c20750bb8e17e44ba64897c9a30
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71123439"
 ---
 # <a name="verifying-expressroute-connectivity"></a>验证 ExpressRoute 连接
@@ -52,7 +52,7 @@ ms.locfileid: "71123439"
 如果使用“任意位置之间的连接 (IPVPN)”连接模型，PE（面向 MSEE）(4) 会与 MSEE (5) 建立 BGP 对等互连。 然后，路由通过 IPVPN 服务提供商网络传播回客户网络。
 
 > [!NOTE]
->为了确保 ExpressRoute 高可用性，Microsoft 要求在 MSEE (5) 和 PE-MSEE (4) 之间存在冗余性的 BGP 会话对。 另外还建议在客户网络和 PE-CE 之间设置冗余性的网络路径对。 但是，在“任意位置之间的连接 (IPVPN)”模型中，单个 CE 设备 (2) 可能会连接到一个或多个 PE (3)。
+>为了确保 ExpressRoute 高可用性，Microsoft 要求在 MSEE (5) 和 PE-MSEE (4) 之间存在冗余性的 BGP 会话对。 另外还建议在客户网络和 PE-CE 之间设置冗余性的网络路径对。 但是，在“任意位置之间的连接 (IPVPN)”连接模型中，单个 CE 设备 (2) 可能会连接到一个或多个 PE (3)。
 >
 >
 
@@ -157,7 +157,7 @@ ms.locfileid: "71123439"
     Sku                              : Standard
     Status                           : Enabled
 
-若要确认 ExpressRoute 线路是否正常运行，请特别注意以下字段：ServiceProviderProvisioningState：预配状态：Enabled
+若要确认 ExpressRoute 线路是否正常运行，请特别注意以下字段：ServiceProviderProvisioningState：已预配 状态：已启用
 
 > [!NOTE]
 > 如果*状态*为 "未启用"，请联系[Microsoft 支持部门][Support]。 如果“ServiceProviderProvisioningState”不是“已预配”，请与服务提供商联系。
@@ -165,7 +165,7 @@ ms.locfileid: "71123439"
 >
 
 ## <a name="validate-peering-configuration"></a>验证对等互连配置
-在服务提供商完成对 ExpressRoute 线路的预配以后，即可基于 MSEE-PR (4) 和 MSEE (5) 之间的 ExpressRoute 线路创建路由配置。 每条 ExpressRoute 线路可以启用一个、两个或三个路由上下文：Azure 专用对等互连（流向 Azure 中的专用虚拟网络）、Azure 公共对等互连（到 Azure 中的公共 IP 地址的流量）以及 Microsoft 对等互连（流量发送到 Office 365）。 有关如何创建和修改路由配置的详细信息，请参阅[创建和修改 ExpressRoute 线路的路由一][CreatePeering]文。
+在服务提供商完成对 ExpressRoute 线路的预配以后，即可基于 MSEE-PR (4) 和 MSEE (5) 之间的 ExpressRoute 线路创建路由配置。 每个 ExpressRoute 线路可以启用一个、两个或三个路由上下文： Azure 专用对等互连（流向 Azure 中的专用虚拟网络）、Azure 公共对等互连（到 Azure 中的公共 IP 地址的流量）以及 Microsoft 对等互连（流量发送到 Office 365）。 有关如何创建和修改路由配置的详细信息，请参阅[创建和修改 ExpressRoute 线路的路由一][CreatePeering]文。
 
 ### <a name="verification-via-the-azure-portal"></a>通过 Azure 门户进行验证
 
@@ -339,7 +339,7 @@ ms.locfileid: "71123439"
 >
 >
 
-对于特定的“专用”路由上下文，若要获取“主要”路径上的 MSEE 提供的完整路由表，请使用以下命令：
+对于特定的*专用* 路由上下文，若要获取*主要* 路径上的 MSEE 提供的完整路由表，请使用以下命令：
 
     Get-AzureDedicatedCircuitPeeringRouteTableInfo -AccessType Private -Path Primary -ServiceKey "*********************************"
 

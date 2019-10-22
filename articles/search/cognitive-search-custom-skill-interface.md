@@ -8,18 +8,18 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: b5529babfae37fa0d9f4de46018bb3b107ce4eae
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 2c4af40886a81cbf8f8e11318737db05f570a1f0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265828"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692194"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>如何将自定义技能添加到认知搜索管道
 
 Azure 搜索中的[认知搜索索引管道](cognitive-search-concept-intro.md)可以从[预定义技能](cognitive-search-predefined-skills.md)和自己创建并添加到管道中的[自定义技能](cognitive-search-custom-skill-web-api.md)进行装配。 本文介绍如何创建一个暴露接口的自定义技能，从而允许其包含在认知搜索管道中。 
 
-通过生成自定义技能，可插入对内容唯一的转换。 自定义技能独立执行，可应用所需的任何扩充步骤。 例如，可定义特定于域的自定义实体，生成自定义分类模型来区分商业和金融合同或文档，或者添加语音识别技能来深入了解相关内容的音频文件。 有关分步示例，请参阅[示例：为认知搜索](cognitive-search-create-custom-skill-example.md)创建自定义技能。
+通过生成自定义技能，可插入对内容唯一的转换。 自定义技能独立执行，可应用所需的任何扩充步骤。 例如，可定义特定于域的自定义实体，生成自定义分类模型来区分商业和金融合同或文档，或者添加语音识别技能来深入了解相关内容的音频文件。 有关分步示例，请参阅[示例：为认知搜索创建自定义技能](cognitive-search-create-custom-skill-example.md)。
 
  无论需要哪种自定义功能，都有一个简单明了的接口，可将自定义技能与其余扩充管道相连接。 [技能组合](cognitive-search-defining-skillset.md)中包含的唯一需求是，能够以可在技能组合内作为整体使用的方式接受输入并发出输出。 本文的重点是扩充管道所需的输入和输出格式。
 
@@ -36,7 +36,7 @@ Azure 搜索中的[认知搜索索引管道](cognitive-search-concept-intro.md)�
 
 目前，与自定义技能交互的唯一机制是通过 Web API 接口。 Web API 需求必须满足本节中所述的要求。
 
-### <a name="1--web-api-input-format"></a>1.Web API 输入格式
+### <a name="1--web-api-input-format"></a>1. Web API 输入格式
 
 Web API 必须接受要处理的一组记录。 每条记录都必须包含一个“属性包”，该属性包是提供给 Web API 的输入。 
 
@@ -81,7 +81,7 @@ Web API 必须接受要处理的一组记录。 每条记录都必须包含一�
 ```
 实际上，可能会调用服务的数百或数千条记录，而不仅仅是这里显示的三条记录。
 
-### <a name="2-web-api-output-format"></a>2.Web API 输出格式
+### <a name="2-web-api-output-format"></a>2. Web API 输出格式
 
 输出的格式是一组包含 recordId 和属性包的记录 
 
@@ -154,7 +154,8 @@ Web API 必须接受要处理的一组记录。 每条记录都必须包含一�
 
 ## <a name="next-steps"></a>后续步骤
 
-+ 示例：[创建认知搜索的自定义技能](cognitive-search-create-custom-skill-example.md)
++ [强大技能：定制技能的存储库](https://aka.ms/powerskills)
++ [示例：为认知搜索创建自定义技能](cognitive-search-create-custom-skill-example.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
-+ [创建技能组合 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [创建技能集 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [如何映射扩充的域](cognitive-search-output-field-mapping.md)
