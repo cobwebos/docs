@@ -1,53 +1,48 @@
 ---
 title: 新建 Azure Application Insights 资源 | Microsoft Docs
 description: 为新的实时应用程序手动设置 Application Insights 监视。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 878b007e-161c-4e36-8ab2-3d7047d8a92d
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 08/16/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: ae9c885b342664baf90f9c2b5702a092c9d838df
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.date: 08/16/2019
+ms.openlocfilehash: be68c70a105737f232741f02994da87c0c628bd7
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562839"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677502"
 ---
 # <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
-Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程序的数据。 因此，创建新资源是[设置 Application Insights 以监视新应用程序][start]中的一个环节。 创建新资源后，可以获取其检测密钥并使用它来配置 Application Insights SDK。 检测密钥会将遥测链接到资源。
+Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程序的数据。 因此创建新资源是[设置监视新应用程序 Application Insights][start]的一部分。 创建新资源后，可以获取其检测密钥，并使用它来配置 Application Insights SDK。 检测密钥会将遥测数据链接到资源。
 
-## <a name="sign-in-to-microsoft-azure"></a>登录 Microsoft Azure
+## <a name="sign-in-to-microsoft-azure"></a>登录到 Microsoft Azure
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
-登录 [Azure 门户](https://portal.azure.com)，并创建 Application Insights 资源：
+登录到[Azure 门户](https://portal.azure.com)，并创建 Application Insights 资源：
 
-![单击左上角的“+”号。 选择开发人员工具，然后选择“Application Insights”](./media/create-new-resource/new-app-insights.png)
+![单击左上角的 "+" 号。 选择开发人员工具后跟 Application Insights](./media/create-new-resource/new-app-insights.png)
 
-   | 设置        |  ReplTest1           | 说明  |
+   | 设置        |  Value           | 描述  |
    | ------------- |:-------------|:-----|
-   | **名称**      | 全局唯一值 | 标识所监视的应用的名称。 |
-   | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组或现有资源组的名称。 |
-   | **Location** | East US | 选择离你近的位置或离托管应用的位置近的位置。 |
+   | 名称      | 全局唯一值 | 标识要监视的应用程序的名称。 |
+   | **资源组**     | myResourceGroup      | 新的或现有资源组的名称以托管 App Insights 数据。 |
+   | 位置 | 美国东部 | 选择附近的位置，或接近应用程序的托管位置。 |
 
-在必填字段中输入适当的值，然后选择“查看 + 创建”。
+在必填字段中输入适当的值，然后选择 "**查看 + 创建**"。
 
-![在必填字段中输入值，然后选择“查看 + 创建”。](./media/create-new-resource/review-create.png)
+![在必填字段中输入值，然后选择 "查看 + 创建"。](./media/create-new-resource/review-create.png)
 
-创建应用后，将打开一个新窗格。 可以在此窗格中查看有关受监视应用程序的性能和使用情况数据。 
+创建应用后，将打开一个新窗格。 在此窗格中可以查看有关所监视的应用程序的性能和使用情况数据。 
 
 ## <a name="copy-the-instrumentation-key"></a>复制检测密钥
 
-检测密钥标识要将遥测数据与之关联的资源。 需要复制以将检测密钥添加到应用程序的代码中。
+检测密钥用于标识要与遥测数据关联的资源。 需要将检测密钥添加到应用程序的代码中。
 
 ![单击并复制检测密钥](./media/create-new-resource/instrumentation-key.png)
 
@@ -55,9 +50,9 @@ Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程�
 
 在应用中安装 Application Insights SDK。 此步骤在很大程度上依赖于应用程序的类型。
 
-使用检测密钥来配置[在应用程序中安装的 SDK][start]。
+使用检测密钥来配置在[应用程序中安装的 SDK][start]。
 
-SDK 包含无需编写任何其他代码即可发送遥测数据的标准模块。 若要跟踪用户操作或更细致地诊断问题，请[使用 API][api] 发送自己的遥测数据。
+SDK 包括发送遥测数据的标准模块，无需编写任何其他代码。 若要更详细地跟踪用户操作或诊断问题，请[使用 API][api]发送自己的遥测数据。
 
 ## <a name="creating-a-resource-automatically"></a>自动创建资源
 
@@ -98,19 +93,19 @@ SamplingPercentage :
 TenantId           : {subid}
 ```
 
-有关此 cmdlet 的完整 PowerShell 文档, 以及如何检索检测密钥的详细说明, 请参阅[Azure PowerShell 文档](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0)。
+有关此 cmdlet 的完整 PowerShell 文档，以及如何检索检测密钥的详细说明，请参阅[Azure PowerShell 文档](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0)。
 
-### <a name="azure-cli-preview"></a>Azure CLI (预览)
+### <a name="azure-cli-preview"></a>Azure CLI （预览）
 
-若要访问预览版 Application Insights 需要首先运行 Azure CLI 命令:
+若要访问预览版 Application Insights 需要首先运行 Azure CLI 命令：
 
 ```azurecli
  az extension add -n application-insights
 ```
 
-如果不运行此`az extension add`命令, 你将看到一条错误消息, 指出:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+如果不运行 `az extension add` 命令，将看到一条错误消息，指出： `az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
-现在, 可以运行以下内容来创建 Application Insights 资源:
+现在，可以运行以下内容来创建 Application Insights 资源：
 
 ```azurecli
 az monitor app-insights component create --app
@@ -155,7 +150,7 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 ```
 
-有关此命令的完整 Azure CLI 文档, 以及如何检索检测密钥的详细说明, 请参阅[Azure CLI 文档](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)。
+有关此命令的完整 Azure CLI 文档，以及如何检索检测密钥的详细说明，请参阅[Azure CLI 文档](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)。
 
 ## <a name="next-steps"></a>后续步骤
 * [诊断搜索](../../azure-monitor/app/diagnostic-search.md)

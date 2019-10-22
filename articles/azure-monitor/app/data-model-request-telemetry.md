@@ -1,23 +1,19 @@
 ---
 title: Azure Application Insights 遥测数据模型 - 请求遥测 | Microsoft Docs
 description: 适用于请求遥测的 Application Insights 数据模型
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: fef016d87cc60bc916fdcb08f92171e115221fe5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff7b52cbd88e4927db275dee4d7fbc4691ad076b
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900509"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677333"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>请求遥测：Application Insights 数据模型
 
@@ -25,11 +21,11 @@ ms.locfileid: "60900509"
 
 请求遥测使用自定义的 `properties` 和 `measurements` 支持标准可扩展性模型。
 
-## <a name="name"></a>Name
+## <a name="name"></a>名称
 
 请求的名称表示用于处理该请求的代码路径。 较小的基数值对请求分组更有利。 对于 HTTP 请求，该名称表示 HTTP 方法和 URL 路径模板，例如，不带实际 `id` 值的 `GET /values/{id}`。
 
-在字母大小写方面，Application Insights Web SDK 会“按原样”发送请求名称。 UI 上的分组区分大小写，因此 `GET /Home/Index` 被视为不同于 `GET /home/INDEX`，即使两者通常生成相同的控制器和操作执行。 原因在于，URL 往往[区分大小写](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)。 可能想要确定所有 `404` 是否发生在以大写形式键入的 URL 上。 你可以阅读更多按请求名称集合中的 ASP.NET Web SDK[博客文章](https://apmtips.com/blog/2015/02/23/request-name-and-url/)。
+在字母大小写方面，Application Insights Web SDK 会“按原样”发送请求名称。 UI 上的分组区分大小写，因此 `GET /Home/Index` 被视为不同于 `GET /home/INDEX`，即使两者通常生成相同的控制器和操作执行。 原因在于，URL 往往[区分大小写](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)。 可能想要确定所有 `404` 是否发生在以大写形式键入的 URL 上。 可以通过[博客文章](https://apmtips.com/blog/2015/02/23/request-name-and-url/)中的 ASP.NET Web SDK 在请求名称集合中阅读更多详细信息。
 
 最大长度：1024 个字符
 
@@ -45,7 +41,7 @@ ms.locfileid: "60900509"
 
 最大长度：2048 个字符
 
-## <a name="source"></a>source
+## <a name="source"></a>Source
 
 请求的源。 示例包括调用方的检测密钥或调用方的 IP 地址。 有关详细信息，请参阅[关联](../../azure-monitor/app/correlation.md)页。
 
@@ -82,6 +78,6 @@ ms.locfileid: "60900509"
 ## <a name="next-steps"></a>后续步骤
 
 - [编写自定义请求遥测](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)
-- 有关 Application Insights 的类型和数据模型，请参阅[数据模型](data-model.md)。
+- 请参阅[数据模型](data-model.md)，了解 Application Insights 的类型和数据模型。
 - 了解如何使用 Application Insights [配置 ASP.NET Core](../../azure-monitor/app/asp-net.md) 应用程序。
 - 查看 Application Insights 支持的[平台](../../azure-monitor/app/platforms.md)。

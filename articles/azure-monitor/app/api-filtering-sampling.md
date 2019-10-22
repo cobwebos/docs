@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights SDK 中的筛选和预处理 | Microsoft Docs
 description: 为 SDK 编写遥测处理器和遥测初始值设定项，以在将遥测发送到 Application Insights 门户之前筛选属性或将其添加到数据。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 38a9e454-43d5-4dba-a0f0-bd7cd75fb97b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 11/23/2016
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: cae035927217a7e2677cf6ebfcce1b53782e4c01
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.date: 11/23/2016
+ms.openlocfilehash: 1e02e227180bb0082dd87ab8f5d2fe64e19b60f2
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248732"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677812"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 中的筛选和预处理遥测 | Microsoft Azure
 
@@ -30,7 +25,7 @@ ms.locfileid: "72248732"
 
 开始之前：
 
-* 为应用程序安装适当的 SDK：[ASP.NET](asp-net.md)、 [ASP.NET CORE](asp-net-core.md)、[非 HTTP/辅助角色（适用于 .Net/.net Core](worker-service.md)或[Java](../../azure-monitor/app/java-get-started.md)）。
+* 为应用程序安装相应的 SDK： [ASP.NET](asp-net.md)、 [ASP.NET CORE](asp-net-core.md)、[非 HTTP/辅助角色（适用于 .Net/.net Core](worker-service.md)或[Java](../../azure-monitor/app/java-get-started.md)）。
 
 <a name="filtering"></a>
 
@@ -105,7 +100,7 @@ ms.locfileid: "72248732"
 > 注意将 .config 文件中的类型名称和任何属性名称匹配到代码中的类和属性名称。 如果 .config 文件引用不存在的类型或属性，该 SDK 在发送任何遥测时可能静默失败。
 >
 
-**或者，** 可以在代码中初始化筛选器。 在合适的初始化类中（例如 AppStart）在 `Global.asax.cs`-将处理器插入链：
+**或者，** 可以在代码中初始化筛选器。 在合适的初始化类中（例如 AppStart），在 `Global.asax.cs` 中插入处理器：
 
 ```csharp
 var builder = TelemetryConfiguration.Active.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
@@ -122,9 +117,9 @@ builder.Build();
 **ASP.NET Core/辅助角色服务应用**
 
 > [!NOTE]
-> 使用 `ApplicationInsights.config` 或使用 `TelemetryConfiguration.Active` 添加处理器对于 ASP.NET Core 应用程序无效，或者如果使用 WorkerService SDK，则无效。
+> 使用 `ApplicationInsights.config` 或 `TelemetryConfiguration.Active` 添加处理器对 ASP.NET Core 应用程序无效，或者如果使用 WorkerService SDK，则无效。
 
-对于使用[ASP.NET Core](asp-net-core.md#adding-telemetry-processors)或[WorkerService](worker-service.md#adding-telemetry-processors)编写的应用，添加新的 `TelemetryProcessor` 是通过在 `IServiceCollection` 上使用 @no__t 3 扩展方法完成的，如下所示。 此方法在 @no__t 1 类的 @no__t 0 方法中调用。
+对于使用[ASP.NET Core](asp-net-core.md#adding-telemetry-processors)或[WorkerService](worker-service.md#adding-telemetry-processors)编写的应用，通过在 `IServiceCollection` 上使用 `AddApplicationInsightsTelemetryProcessor` 扩展方法来添加新 `TelemetryProcessor`，如下所示。 此方法在 `Startup.cs` 类 `ConfigureServices` 方法中调用。
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -197,7 +192,7 @@ public void Process(ITelemetry item)
 }
 ```
 
-#### <a name="diagnose-dependency-issues"></a>诊断依赖项问题
+#### <a name="diagnose-dependency-issues"></a>诊断依赖性问题
 
 [本博客](https://azure.microsoft.com/blog/implement-an-application-insights-telemetry-processor/)介绍了通过自动将常规 Ping 发送到依赖项诊断依赖项问题的项目。
 
@@ -209,7 +204,7 @@ public void Process(ITelemetry item)
 
 例如，Web 包的 Application Insights 收集有关 HTTP 请求的遥测数据。 默认情况下，它标记为所有请求失败，并且响应代码 >= 400。 但是，如果希望将 400 视为成功，可以提供一个设置成功属性的遥测初始值设定项。
 
-如果提供了遥测初始值设定项，只要调用任何 Track*() 方法，就会调用它。 这包括标准遥测模块调用 @no__t 0 方法。 按照约定，这些模块不会设置已由初始值设定项设置的任何属性。 在调用遥测处理器之前调用遥测初始值设定项。 因此，通过初始值设定项完成的任何根据对处理器都可见。
+如果提供了遥测初始值设定项，只要调用任何 Track*() 方法，就会调用它。 这包括标准遥测模块调用 `Track()` 方法。 按照约定，这些模块不会设置已由初始值设定项设置的任何属性。 在调用遥测处理器之前调用遥测初始值设定项。 因此，通过初始值设定项完成的任何根据对处理器都可见。
 
 **定义初始值设定项**
 
@@ -252,7 +247,7 @@ namespace MvcWebRole.Telemetry
 }
 ```
 
-**ASP.NET 应用：加载初始值设定项**
+**ASP.NET apps：加载初始值设定项**
 
 在 ApplicationInsights.config 中：
 
@@ -278,12 +273,12 @@ protected void Application_Start()
 
 [查看此示例的详细信息。](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)
 
-@no__t 0ASP.NET 核心/辅助角色服务应用：加载初始值设定项**
+**ASP.NET Core/辅助角色服务应用：加载初始值设定项**
 
 > [!NOTE]
 > 使用 `ApplicationInsights.config` 或使用 `TelemetryConfiguration.Active` 添加初始值设定项对于 ASP.NET Core 应用程序无效，或者如果使用 WorkerService SDK，则无效。
 
-对于使用[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers)或[WorkerService](worker-service.md#adding-telemetryinitializers)编写的应用，通过将新的 @no__t 添加到依赖关系注入容器来添加新的，如下所示。 这是在 `Startup.ConfigureServices` 方法中完成的。
+对于使用[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers)或[WorkerService](worker-service.md#adding-telemetryinitializers)编写的应用，通过将新 `TelemetryInitializer` 添加到依赖关系注入容器来添加新，如下所示。 这是在 `Startup.ConfigureServices` 方法中完成的。
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;

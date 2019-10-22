@@ -1,23 +1,19 @@
 ---
 title: Azure Application Insights 遥测数据模型 - 指标遥测 | Microsoft Docs
 description: 适用于指标遥测的 Application Insights 数据模型
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 0973c86d055ff4ebbe7e5a3c4a2ca4e3dcabc6a0
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 816fa37ea052b18dab80bcc0d5c1528cd3d9a014
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60900454"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678132"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>指标遥测：Application Insights 数据模型
 
@@ -45,11 +41,11 @@ Application Insights 支持几个已知的指标名称。 这些指标已放入 
 
 想要在 Application Insights 门户和 UI 中看到的指标的名称。 
 
-## <a name="value"></a>ReplTest1
+## <a name="value"></a>Value
 
 度量的单个值。 要聚合的各个度量值的总和。
 
-## <a name="count"></a>Count
+## <a name="count"></a>计数
 
 聚合指标的指标权重。 不应为度量设置。
 
@@ -57,7 +53,7 @@ Application Insights 支持几个已知的指标名称。 这些指标已放入 
 
 聚合指标的最小值。 不应为度量设置。
 
-## <a name="max"></a>Max
+## <a name="max"></a>最多
 
 聚合指标的最大值。 不应为度量设置。
 
@@ -74,5 +70,5 @@ Application Insights 支持几个已知的指标名称。 这些指标已放入 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何使用[用于处理自定义事件和指标的 Application Insights API](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)。
-- 有关 Application Insights 的类型和数据模型，请参阅[数据模型](data-model.md)。
+- 请参阅[数据模型](data-model.md)，了解 Application Insights 的类型和数据模型。
 - 查看 Application Insights 支持的[平台](../../azure-monitor/app/platforms.md)。

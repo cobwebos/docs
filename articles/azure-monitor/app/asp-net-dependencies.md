@@ -1,49 +1,44 @@
 ---
 title: 在 Azure Application Insights 中跟踪依赖项 | Microsoft Docs
 description: 通过 Application Insights 监视本地或 Microsoft Azure web 应用程序的依赖项调用。
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: d15c4ca8-4c1a-47ab-a03d-c322b4bb2a9e
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 06/25/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 5e07243720872ff4555d4c000dcb7b0b7236e66f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.date: 06/25/2019
+ms.openlocfilehash: 7b23da81143a4ae66d9f25cd953c4a3952f27455
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126738"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678372"
 ---
-# <a name="dependency-tracking-in-azure-application-insights"></a>在 Azure Application Insights 中跟踪依赖项 
+# <a name="dependency-tracking-in-azure-application-insights"></a>Azure 应用程序 Insights 中的依赖关系跟踪 
 
-*依赖项*是应用调用的外部组件。 它通常是使用 HTTP、数据库或文件系统调用的服务。 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 可以度量依赖项调用的持续时间、调用结果是否失败，以及依赖项名称等附加信息。 可以调查特定的依赖项调用，并将其与请求和异常相关联。
+*依赖项*是应用调用的外部组件。 它通常是使用 HTTP、数据库或文件系统调用的服务。 [Application Insights](../../azure-monitor/app/app-insights-overview.md)度量依赖项调用的持续时间（不管是失败还是失败）以及附加信息（如依赖项的名称等）。 你可以调查特定的依赖项调用，并将它们与请求和异常相关联。
 
 ## <a name="automatically-tracked-dependencies"></a>自动跟踪的依赖项
 
-适用于 .NET 和 .NET Core 的 Application Insights SDK 随附了 `DependencyTrackingTelemetryModule`：一个自动收集依赖项的遥测模块。 根据链接的官方文档进行配置后，将自动为 [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) 和 [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) 应用程序启用此依赖项收集功能。`DependencyTrackingTelemetryModule` 作为[此](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet 包附送，使用 NuGet 包 `Microsoft.ApplicationInsights.Web` 或 `Microsoft.ApplicationInsights.AspNetCore` 时会自动打开它。
+适用于 .NET 和 .NET Core Application Insights Sdk 附带 `DependencyTrackingTelemetryModule`，这是一个自动收集依赖项的遥测模块。 根据链接的官方文档配置[ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)和[ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)应用程序时，将自动启用此依赖关系集合。 `DependencyTrackingTelemetryModule` 以[此](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/)nuget 包的形式提供，并且在使用任何一个 nuget 包 `Microsoft.ApplicationInsights.Web` 或 `Microsoft.ApplicationInsights.AspNetCore` 时，会自动将其关闭。
 
- `DependencyTrackingTelemetryModule` 目前会自动跟踪以下依赖项：
+ `DependencyTrackingTelemetryModule` 当前自动跟踪以下依赖项：
 
 |依赖项 |详细信息|
 |---------------|-------|
 |Http/Https | 本地或远程 http/https 调用 |
-|WCF 调用| 仅当使用基于 Http 的绑定时，才会自动跟踪。|
-|SQL | 使用 `SqlClient` 发出的调用。 请参阅[此文](#advanced-sql-tracking-to-get-full-sql-query)来捕获 SQL 查询。  |
-|[Azure 存储（Blob、表、队列）](https://www.nuget.org/packages/WindowsAzure.Storage/) | 使用 Azure 存储客户端发出的调用。 |
-|[事件中心客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1\.1.0 和更高版本。 |
-|[ServiceBus 客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 3\.0.0 和更高版本。 |
-|Azure Cosmos DB | 仅当使用 HTTP/HTTPS 时，才会自动跟踪。 Application Insights 不会捕获 TCP 模式。 |
+|WCF 调用| 仅当使用基于 Http 的绑定时才自动跟踪。|
+|SQL | 用 `SqlClient` 进行的调用。 请参阅[此](#advanced-sql-tracking-to-get-full-sql-query)了解捕获 SQL 查询。  |
+|[Azure 存储（Blob、表、队列）](https://www.nuget.org/packages/WindowsAzure.Storage/) | 通过 Azure 存储客户端发出的调用。 |
+|[EventHub 客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 版本1.1.0 和更高版本。 |
+|[ServiceBus 客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 版本3.0.0 和更高版本。 |
+|Azure Cosmos DB | 仅在使用 HTTP/HTTPS 时自动跟踪。 Application Insights 不会捕获 TCP 模式。 |
 
-如果缺少依赖项, 或使用不同的 SDK, 请确保它位于[自动收集的依赖项](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)的列表中。 如果依赖关系不是自动收集的, 则仍可以使用[跟踪依赖项调用](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)手动跟踪。
+如果缺少依赖项，或使用不同的 SDK，请确保它位于[自动收集的依赖项](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)的列表中。 如果依赖关系不是自动收集的，则仍可以使用[跟踪依赖项调用](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)手动跟踪。
 
-## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>在控制台应用中设置自动依赖项跟踪
+## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>在控制台应用程序中设置自动依赖项跟踪
 
-若要从 .NET/.NET Core 控制台应用自动跟踪依赖项，请安装 Nuget 包 `Microsoft.ApplicationInsights.DependencyCollector` 并初始化 `DependencyTrackingTelemetryModule`，如下所示：
+若要自动跟踪 .NET/.NET Core 控制台应用中的依赖项，请 `Microsoft.ApplicationInsights.DependencyCollector` 中安装 Nuget 包，并按如下所示初始化 `DependencyTrackingTelemetryModule`：
 
 ```csharp
     DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
@@ -54,18 +49,18 @@ ms.locfileid: "70126738"
 
 使用以下方法之一自动收集依赖项：
 
-* 围绕 select 方法使用字节代码检测。 （StatusMonitor 或 Azure Web 应用扩展中的 InstrumentationEngine）
+* 围绕 select 方法使用字节代码检测。 （InstrumentationEngine 为 StatusMonitor 或 Azure Web 应用扩展）
 * EventSource 回调
-* 最新 .NET/.NET Core SDK 中的 DiagnosticSource 回调
+* DiagnosticSource 回调（在最新的 .NET/.NET Core Sdk 中）
 
 ## <a name="manually-tracking-dependencies"></a>手动跟踪依赖项
 
-下面是不会自动收集的一些依赖项示例，需要手动跟踪它们。
+下面是依赖项的一些示例，它们不会自动收集，因此需要手动跟踪。
 
 * 仅当使用 [HTTP/HTTPS](../../cosmos-db/performance-tips.md#networking) 时，才会自动跟踪 Azure Cosmos DB。 Application Insights 不会捕获 TCP 模式。
 * Redis
 
-对于 SDK 不会自动收集的依赖项，可以通过标准自动收集模块使用的 [TrackDependency API](api-custom-events-metrics.md#trackdependency) 手动跟踪它们。
+对于不是由 SDK 自动收集的依赖项，你可以使用标准自动收集模块使用的[TRACKDEPENDENCY API](api-custom-events-metrics.md#trackdependency)手动跟踪这些依赖项。
 
 例如，如果使用未自行编写的程序集生成代码，可以对其所有调用进行计时，以了解它对响应时间所做的贡献。 若要使此数据显示在 Application Insights 中的依赖项图表中，请使用 `TrackDependency` 发送它。
 
@@ -85,68 +80,68 @@ ms.locfileid: "70126738"
     }
 ```
 
-或者，可以使用 `TelemetryClient` 提供的扩展方法 `StartOperation` 和 `StopOperation` 来手动跟踪依赖项，如[此处](custom-operations-tracking.md#outgoing-dependencies-tracking)所示
+另外，`TelemetryClient` 提供 `StartOperation` 和 `StopOperation` 的扩展方法，这些方法可用于手动跟踪依赖项，[如下所示](custom-operations-tracking.md#outgoing-dependencies-tracking)
 
-若要关闭标准依赖项跟踪模块，请在 ASP.NET 应用程序的 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 中删除对 DependencyTrackingTelemetryModule 的引用。 对于 ASP.NET Core 应用程序，请遵照[此处](asp-net-core.md#configuring-or-removing-default-telemetrymodules)的说明操作。
+如果要关闭标准依赖项跟踪模块，请在 ASP.NET 应用程序的[applicationinsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中删除对 DependencyTrackingTelemetryModule 的引用。 对于 ASP.NET Core 应用程序，请按照[此处](asp-net-core.md#configuring-or-removing-default-telemetrymodules)的说明进行操作。
 
-## <a name="tracking-ajax-calls-from-web-pages"></a>跟踪来自网页的 AJAX 调用
+## <a name="tracking-ajax-calls-from-web-pages"></a>跟踪网页中的 AJAX 调用
 
-对于网页, Application Insights JavaScript SDK 会自动将 AJAX 调用作为依赖项收集。
+对于网页，Application Insights JavaScript SDK 会自动将 AJAX 调用作为依赖项收集。
 
-## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>使用高级 SQL 跟踪获取完整的 SQL 查询
+## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>用于获取完整的 SQL 查询的高级 SQL 跟踪
 
-对于 SQL 调用，始终会收集服务器和数据库的名称，并将其存储为收集的 `DependencyTelemetry` 的名称。 有一个名为“data”的附加字段，其中可以包含完整的 SQL 查询文本。
+对于 SQL 调用，始终收集服务器和数据库的名称并将其存储为所收集 `DependencyTelemetry` 的名称。 还有一个名为 "data" 的字段，它可以包含完整的 SQL 查询文本。
 
-对于 ASP.NET Core 应用程序，无需执行额外的步骤即可获取完整的 SQL 查询。
+对于 ASP.NET Core 应用程序，获取完整的 SQL 查询无需执行其他步骤。
 
-对于 ASP.NET 应用程序，可以借助字节代码检测（需要检测引擎）收集完整的 SQL 查询。 这需要执行其他特定于平台的步骤，如下所述。
+对于 ASP.NET 应用程序，将收集完整的 SQL 查询，并附带需要检测引擎的字节代码检测。 需要其他特定于平台的步骤（如下所述）。
 
-| 平台 | 获取完整 SQL 查询所要执行的步骤 |
+| 平台 | 获取完整的 SQL 查询所需的步骤 |
 | --- | --- |
-| Azure Web 应用 |在 Web 应用控制面板中，[打开“Application Insights”边栏选项卡](../../azure-monitor/app/azure-web-apps.md)并启用“.NET”下的“SQL 命令” |
-| IIS 服务器（Azure VM、本地服务器，等等。） | 使用状态监视器 PowerShell 模块[安装检测引擎](../../azure-monitor/app/status-monitor-v2-api-enable-instrumentation-engine.md), 并重新启动 IIS。 |
+| Azure Web 应用 |在 web 应用控制面板中，[打开 "Application Insights" 边栏选项卡](../../azure-monitor/app/azure-web-apps.md)，并在 .net 下启用 SQL 命令。 |
+| IIS 服务器（Azure VM、本地等。） | 使用状态监视器 PowerShell 模块[安装检测引擎](../../azure-monitor/app/status-monitor-v2-api-enable-instrumentation-engine.md)，并重新启动 IIS。 |
 | Azure 云服务 | 添加[启动任务以安装 StatusMonitor](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> 您的应用程序应在生成时通过安装[ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)或[ASP.NET Core 应用程序](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)的 NuGet 包载入到 applicationinsights.config SDK |
 | IIS Express | 不支持
 
-在上述情况下，验证是否已正确安装该检测引擎的适当方法是验证收集的 `DependencyTelemetry` 的 SDK 版本是否为“rddp”。 “rdddsd”或“rddf”表示依赖项是通过 DiagnosticSource 或 EventSource 回调收集的，因此不会捕获完整的 SQL 查询。
+在上述情况下，正确安装检测引擎的正确方法是验证所收集 `DependencyTelemetry` 的 SDK 版本是否为 "rddp"。 "rdddsd" 或 "rddf" 指示依赖项是通过 DiagnosticSource 或 EventSource 回调收集的，因此不会捕获完整的 SQL 查询。
 
 ## <a name="where-to-find-dependency-data"></a>在何处查找依赖项数据
 
 * [应用程序地图](app-map.md)直观显示应用与相邻组件之间的依赖关系。
 * [事务诊断](transaction-diagnostics.md)显示统一的关联服务器数据。
-* [“浏览器”选项卡](javascript.md)显示从用户浏览器发出的 AJAX 调用。
+* [浏览器选项卡](javascript.md)显示来自用户浏览器的 AJAX 调用。
 * 单击缓慢或失败的请求可以检查其依赖性调用。
 * [Analytics](#logs-analytics) 可用于查询依赖性数据。
 
 ## <a name="diagnosis"></a>诊断慢速请求
 
-每个请求事件都与应用处理请求时跟踪的依赖项调用、异常和其他事件相关联。 因此，如果某些请求的执行状态不佳，可以判断其原因是否为某个依赖项的响应速度缓慢。
+每个请求事件都与在应用处理请求时跟踪的依赖项调用、异常和其他事件相关联。 因此，如果某些请求的操作错误，你可以确定其是否是由于依赖项的响应速度缓慢导致的。
 
 ### <a name="tracing-from-requests-to-dependencies"></a>从发往依赖项的请求开始跟踪
 
-打开“性能”选项卡，导航到顶部的操作旁边的“依赖项”选项卡。
+打开 "**性能**" 选项卡，然后导航到 "操作" 旁边的 "**依赖项**" 选项卡。
 
-单击整个选项卡下面的某个**依赖项名称**。 选择一个依赖项后，右侧会显示该依赖项的持续时间分布图。
+单击 "总体" 下的**依赖项名称**。 选择依赖项后，将在右侧显示该依赖项的分布的关系图。
 
-![在“性能”选项卡中，单击顶部的“依赖项”选项卡，然后单击图表中的某个依赖项名称](./media/asp-net-dependencies/2-perf-dependencies.png)
+![在 "性能" 选项卡中，单击顶部的 "依赖项" 选项卡，然后单击图表中的依赖关系名称](./media/asp-net-dependencies/2-perf-dependencies.png)
 
-单击右下方的蓝色“示例”按钮，然后单击某个示例以查看端到端的事务详细信息。
+单击右下方的蓝色 "**示例**" 按钮，然后单击示例以查看端到端事务详细信息。
 
-![单击示例查看端到端的事务详细信息](./media/asp-net-dependencies/3-end-to-end.png)
+![单击示例以查看端到端事务详细信息](./media/asp-net-dependencies/3-end-to-end.png)
 
 ### <a name="profile-your-live-site"></a>分析实时站点
 
-不知道时间花到哪去了？ [Application Insights 探查器](../../azure-monitor/app/profiler.md)将跟踪对实时站点的 HTTP 调用，并显示代码中有哪些函数花费了最长的时间。
+不知道时间花到哪去了？ [Application Insights 探查器](../../azure-monitor/app/profiler.md)跟踪对实时站点的 HTTP 调用，并显示代码中花费最长时间的函数。
 
-## <a name="failed-requests"></a>失败的请求数
+## <a name="failed-requests"></a>失败的请求
 
 失败的请求还可能与依赖项的失败调用相关联。
 
-我们可以转到左侧的“失败”选项卡，然后单击顶部的“依赖项”选项卡。
+可以跳到左侧的 "**失败**" 选项卡，然后单击顶部的 "**依赖项**" 选项卡。
 
 ![单击失败的请求图表](./media/asp-net-dependencies/4-fail.png)
 
-在此处可以查看失败的依赖项计数。 若要获取有关某个失败依赖项的更多详细信息，请尝试单击底部表中的依赖项名称。 可以单击右下方的蓝色“依赖项”按钮获取端到端的事务详细信息。
+可在此处查看失败的依赖项计数。 若要获取有关尝试失败的详细信息，请尝试单击底部表中的依赖关系名称。 你可以单击右下方的蓝色**依赖项**按钮，以获取端到端事务详细信息。
 
 ## <a name="logs-analytics"></a>日志（分析）
 
@@ -189,12 +184,12 @@ ms.locfileid: "70126738"
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*自动依赖项收集器如何报告依赖项的失败调用？*
+### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*自动依赖项收集器如何报告对依赖项的调用失败？*
 
-* 失败依赖项调用的“success”字段设置为 False。 `DependencyTrackingTelemetryModule` 不会报告 `ExceptionTelemetry`。 [此处](data-model-dependency-telemetry.md)介绍了依赖项的完整数据模型。
+* 失败的依赖项调用会将 "成功" 字段设置为 False。 `DependencyTrackingTelemetryModule` 不报告 `ExceptionTelemetry`。 [此处](data-model-dependency-telemetry.md)描述了依赖项的完整数据模型。
 
 ## <a name="open-source-sdk"></a>开源 SDK
-与每个 Application Insights SDK 一样，依赖项收集模块也是开源的。 请在[官方 GitHub 存储库](https://github.com/Microsoft/ApplicationInsights-dotnet-server)中阅读和贡献代码，或者报告问题。
+与每个 Application Insights SDK 一样，依赖关系收集模块也是开源的。 阅读和参与代码，或在[官方 GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet-server)存储库中报告问题。
 
 ## <a name="next-steps"></a>后续步骤
 

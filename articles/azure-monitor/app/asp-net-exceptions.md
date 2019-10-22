@@ -1,33 +1,28 @@
 ---
 title: 使用 Azure Application Insights 诊断 Web 应用中的故障和异常 | Microsoft Docs
 description: 从 ASP.NET 应用中捕获异常以及请求遥测。
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: d1e98390-3ce4-4d04-9351-144314a42aa2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/11/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: c8d46ddc834cb12aa63720673c83d745ab53ab4d
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.date: 07/11/2019
+ms.openlocfilehash: 90f03baa35d0bf2b63ec480a23db30409df3845f
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226878"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677761"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>使用 Application Insights 诊断 Web 应用中的异常
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 可报告实时 Web 应用中的异常。 可以将失败的请求与异常关联到客户端和服务器上的其他事件，从而快速诊断原因。
 
 ## <a name="set-up-exception-reporting"></a>设置异常报告
 * 若要报告服务器应用中的异常，请执行以下操作：
-  * Azure Web 应用：添加 [Application Insights 扩展](../../azure-monitor/app/azure-web-apps.md)
-  * Azure VM 和 Azure 虚拟机规模集 IIS 托管的应用:添加[应用程序监视扩展](../../azure-monitor/app/azure-vm-vmss-apps.md)
+  * 在 Azure Web 应用中添加 [Application Insights 扩展](../../azure-monitor/app/azure-web-apps.md)
+  * Azure VM 和 Azure 虚拟机规模集 IIS 托管的应用：添加[应用程序监视扩展](../../azure-monitor/app/azure-vm-vmss-apps.md)
   * 在应用代码中安装 [Application Insights SDK](../../azure-monitor/app/asp-net.md)，或者
-  * IIS Web 服务器：运行 [Application Insights 代理](../../azure-monitor/app/monitor-performance-live-website-now.md)；或者
+  * 在 IIS Web 服务器上运行 [Application Insights 代理](../../azure-monitor/app/monitor-performance-live-website-now.md)，或者
   * Java Web 应用：安装 [Java 代理](../../azure-monitor/app/java-agent.md)
 * 在网页中安装 [JavaScript 代码片段](../../azure-monitor/app/javascript.md)可以捕获浏览器异常。
 * 在某些应用程序框架中或者使用某些设置时，需要执行一些额外的步骤来捕获异常：
@@ -59,15 +54,15 @@ ms.locfileid: "68226878"
 
 ## <a name="diagnosing-failures-using-the-azure-portal"></a>使用 Azure 门户诊断故障
 Application Insights 附带了精选的 APM 体验，帮助你诊断所监视应用程序中的失败。 若要开始，请单击位于“调查”部分中的 Application Insights 资源菜单中的“失败”选项。
-此时应看到一个显示请求的失败率趋势的全屏视图，其中包括多少个请求将要失败以及多少个用户受到影响。 在右侧, 你将看到一些特定于所选失败操作的最有用的分发, 包括前三个响应代码、前三个异常类型以及前三个失败的依赖项类型。
+此时应看到一个显示请求的失败率趋势的全屏视图，其中包括多少个请求将要失败以及多少个用户受到影响。 在右侧，你将看到一些特定于所选失败操作的最有用的分发，包括前三个响应代码、前三个异常类型以及前三个失败的依赖项类型。
 
 ![失败会审视图（“操作”选项卡）](./media/asp-net-exceptions/failures0719.png)
 
-单击一次即可查看每个操作子集的代表性示例。 特别是, 若要诊断异常, 可以单击 "端到端事务详细信息" 选项卡显示的特定异常的计数, 如下所示:
+单击一次即可查看每个操作子集的代表性示例。 特别是，若要诊断异常，可以单击 "端到端事务详细信息" 选项卡显示的特定异常的计数，如下所示：
 
 ![端到端事务详细信息选项卡](./media/asp-net-exceptions/end-to-end.png)
 
-**或者,** 您可以通过切换到顶部的 "异常" 选项卡, 而不是查看特定失败操作的异常。 这里可以看到为所监视的应用收集的所有异常。
+**或者，** 您可以通过切换到顶部的 "异常" 选项卡，而不是查看特定失败操作的异常。 这里可以看到为所监视的应用收集的所有异常。
 
 *没有显示异常？请参阅[捕获异常](#exceptions)。*
 
@@ -82,7 +77,7 @@ Application Insights 附带了精选的 APM 体验，帮助你诊断所监视应
 * [TrackException()](#exceptions) 可发送堆栈跟踪。 [有关异常的详细信息](#exceptions)。
 * 如果已使用 Log4Net 或 NLog 等日志记录框架，可以[捕获这些日志](asp-net-trace-logs.md)并在诊断搜索中查看它们以及请求和异常数据。
 
-若要查看这些事件, 请从左侧菜单中打开 "[搜索](../../azure-monitor/app/diagnostic-search.md)", 选择下拉菜单**事件类型**, 然后选择 "自定义事件"、"跟踪" 或 "异常"。
+若要查看这些事件，请从左侧菜单中打开 "[搜索](../../azure-monitor/app/diagnostic-search.md)"，选择下拉菜单**事件类型**，然后选择 "自定义事件"、"跟踪" 或 "异常"。
 
 ![深入了解](./media/asp-net-exceptions/customevents.png)
 
@@ -491,7 +486,7 @@ Add the attribute to the service implementations:
 ## <a name="exception-performance-counters"></a>异常性能计数器
 如果在服务器上[安装了 Application Insights 代理](../../azure-monitor/app/monitor-performance-live-website-now.md)，可以获取 .NET 测量的异常率图表。 这包括经处理和未经处理的 .NET 异常。
 
-打开 "指标资源管理器" 选项卡, 添加新图表, 并选择 "性能计数器" 下列出的 "**异常率**"。
+打开 "指标资源管理器" 选项卡，添加新图表，并选择 "性能计数器" 下列出的 "**异常率**"。
 
 .NET Framework 通过对间隔中的异常数进行计数并除以间隔长度计算异常率。
 

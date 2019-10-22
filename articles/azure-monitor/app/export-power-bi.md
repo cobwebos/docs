@@ -1,23 +1,18 @@
 ---
 title: 从 Azure Application Insights 导出到 Power BI | Microsoft Docs
 description: 可以在 Power BI 中显示分析查询。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 7f13ea66-09dc-450f-b8f9-f40fdad239f2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 08/10/2018
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: a57393918992019844e2ff4ccc13d671f0b90ed5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/10/2018
+ms.openlocfilehash: 04848f763fe8246f8e10f563169c04ea37b0ed37
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900095"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677314"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>从 Application Insights 向 Power BI 馈送数据
 [Power BI](https://www.powerbi.com/) 是一套商业工具，可帮助分析数据及分享见解。 每个设备上都提供了丰富的仪表板。 可以结合许多源的数据，包括来自 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 的数据。
@@ -42,20 +37,20 @@ ms.locfileid: "60900095"
 ### <a name="export-an-analytics-query"></a>导出 Analytics 查询
 1. [打开 Analytics 并编写查询](../../azure-monitor/log-query/get-started-portal.md)。
 2. 测试并优化查询，直到对结果满意。 导出之前，请确保查询在 Analytics 中正常运行。
-3. 在“导出”菜单中，选择“Power BI (M)”。   保存文本文件。
+3. 在“导出”菜单中，选择“Power BI (M)”。 保存文本文件。
    
     ![Analytics 屏幕截图，其中突出显示了“导出”菜单](./media/export-power-bi/analytics-export-power-bi.png)
-4. 在 Power BI Desktop 中，选择“获取数据”   >   “空白查询”。 然后，在查询编辑器中的“视图”下面，选择“高级查询编辑器”。  
+4. 在 Power BI Desktop 中，选择“获取数据” > “空白查询”。 然后，在查询编辑器中的“视图”下面，选择“高级查询编辑器”。
 
     将导出的 M 语言脚本粘贴到高级编辑器中。
 
     ![Power BI Desktop 的屏幕截图，其中突出显示了“高级编辑器”](./media/export-power-bi/power-bi-import-analytics-query.png)
 
-5. 可能需要提供凭据才能让 Power BI 访问 Azure。 使用“组织帐户”和 Microsoft 帐户登录。 
+5. 可能需要提供凭据才能让 Power BI 访问 Azure。 使用“组织帐户”和 Microsoft 帐户登录。
    
     ![Power BI“查询设置”对话框的屏幕截图](./media/export-power-bi/power-bi-import-sign-in.png)
 
-    如果需要验证凭据，请使用查询编辑器中的“数据源设置”菜单命令。  请务必指定用于 Azure 的凭据，它可能不同于用于 Power BI 的凭据。
+    如果需要验证凭据，请使用查询编辑器中的“数据源设置”菜单命令。 请务必指定用于 Azure 的凭据，它可能不同于用于 Power BI 的凭据。
 6. 选择查询的可视化效果并选择 X 轴、Y 轴和分段维度的字段。
    
     ![Power BI Desktop 可视化选项的屏幕截图](./media/export-power-bi/power-bi-analytics-visualize.png)
@@ -66,11 +61,11 @@ ms.locfileid: "60900095"
 
 ### <a name="export-a-funnel"></a>导出漏斗图
 1. [生成漏斗图](../../azure-monitor/app/usage-funnels.md)。
-2. 选择“Power BI”。 
+2. 选择“Power BI”。
 
    ![Power BI 按钮的屏幕截图](./media/export-power-bi/button.png)
 
-3. 在 Power BI Desktop 中，选择“获取数据”   >   “空白查询”。 然后，在查询编辑器中的“视图”下面，选择“高级查询编辑器”。  
+3. 在 Power BI Desktop 中，选择“获取数据” > “空白查询”。 然后，在查询编辑器中的“视图”下面，选择“高级查询编辑器”。
 
    ![Power BI Desktop 的屏幕截图，其中突出显示了“空白查询”按钮](./media/export-power-bi/blankquery.png)
 
@@ -105,8 +100,8 @@ ms.locfileid: "60900095"
 
 1. 创建 [API 密钥](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)。
 2. 通过将 Azure 资源管理器 URL 替换为 Application Insights API，更新从分析中导出的 Power BI M 脚本。
-   * 替换**https:\//management.azure.com/subscriptions/...**
-   * 替换为 **https:\//api.applicationinsights.io/beta/apps/...**
+   * 替换**https： \//management.azure.com/subscriptions/**
+   * 对于， **https： \//api.applicationinsights.io/beta/apps/...**
 3. 最后，将凭据更新为基本凭据，再使用 API 密钥。
 
 **现有脚本**
@@ -126,11 +121,11 @@ ms.locfileid: "60900095"
 
 ### <a name="get-the-adapter"></a>获取适配器
 1. 登录到 [Power BI](https://app.powerbi.com/)。
-2. 打开“获取数据”  ![左下角的“获取数据”图标的屏幕截图](./media/export-power-bi/001.png)，“服务”  。
+2. 打开“获取数据”![左下角的“获取数据”图标的屏幕截图](./media/export-power-bi/001.png)，“服务”。
 
     ![从 Application Insights 数据源获取数据的屏幕截图](./media/export-power-bi/002.png)
 
-3. 选择 Application Insights 下的“立即获取”  。
+3. 选择 Application Insights 下的“立即获取”。
 
    ![从 Application Insights 数据源获取数据的屏幕截图](./media/export-power-bi/003.png)
 4. 提供 Application Insights 资源的详细信息，然后**登录**。

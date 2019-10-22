@@ -1,6 +1,6 @@
 ---
-title: 通过 Azure 服务总线发送和接收消息-Azure 逻辑应用
-description: 使用 Azure 服务总线和 Azure 逻辑应用设置企业云消息传送
+title: 与 Azure 服务总线交换消息-Azure 逻辑应用
+description: 在 Azure 逻辑应用中使用 Azure 服务总线发送和接收消息
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,16 +9,15 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 09/19/2019
-ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
 tags: connectors
-ms.openlocfilehash: f2034686e4a8de5e1ccc246f49337a6600bf441f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 0cf5486e77e69f83973f7e62669e5ab45d1c94a2
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71120910"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679191"
 ---
-# <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-with-azure-service-bus"></a>通过 azure 服务总线使用 Azure 逻辑应用在云中交换消息
+# <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure 逻辑应用和 Azure 服务总线在云中交换消息
 
 通过[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md)连接器，你可以创建自动任务和工作流，以便在组织的应用程序之间传输数据（例如销售和采购订单、日志和清单移动）。 连接器不仅会监视、发送和管理消息，而且还能对队列、会话、主题、订阅等执行操作，例如：
 
@@ -33,7 +32,7 @@ ms.locfileid: "71120910"
 
 [!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 

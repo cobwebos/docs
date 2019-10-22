@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: f59e449589c7f3027dc8a9daf9d8d12f04831dd7
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3b5e9a70f9eecbf187a6748073de009653061dc0
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960578"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679850"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>安装和使用 Azure IoT 浏览器
 
@@ -24,12 +24,12 @@ Azure IoT 浏览器是一种图形工具，用于与 IoT 即插即用预览版�
 - 安装和配置 Azure IoT 资源管理器工具。
 - 使用该工具与设备交互并对其进行测试。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要使用 Azure IoT 资源管理器工具，你需要：
 
 - Azure IoT 中心。 可以通过多种方式将 IoT 中心添加到 Azure 订阅，如[使用 Azure CLI 创建 iot 中心](../iot-hub/iot-hub-create-using-cli.md)。 需要 IoT 中心连接字符串才能运行 Azure IoT 资源管理器工具。 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 注册到 IoT 中心的设备。 你可以使用以下 Azure CLI 命令来注册设备。 请确保将 @no__t 0 和 @no__t 占位符替换为值：
+- 注册到 IoT 中心的设备。 你可以使用以下 Azure CLI 命令来注册设备。 请确保用值替换 `{YourIoTHubName}` 和 `{YourDeviceID}` 占位符：
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -73,27 +73,33 @@ IoT 即插即用设备的模型定义存储在公共存储库、公司存储库�
 
 - 选择 "**添加**" 以向中心注册新设备。 然后输入设备 ID。 使用默认设置自动生成身份验证密钥，并启用与中心的连接。
 - 选择一个设备，然后选择 "**删除**" 以删除设备标识。 请在完成此操作之前查看设备详细信息，以确保删除正确的设备标识。
-- 通过 `capabilityID` 和 `interfaceID` 进行查询。 添加 @no__t 0 或 `interfaceID` 作为参数，以便查询设备。
+- 通过 `capabilityID` 和 `interfaceID` 进行查询。 将 `capabilityID` 或 `interfaceID` 作为参数添加到查询设备。
 
 ## <a name="interact-with-a-device"></a>与设备交互
 
-在 "**设备**列表" 页上，选择 "**设备 ID** " 列中的值，查看已注册设备的详细信息页。 对于设备，有两个部分：**设备**和**数字**设备。
+在 "**设备**列表" 页上，选择 "**设备 ID** " 列中的值，查看已注册设备的详细信息页。 对于每个设备，有两个部分： "**设备**" 和 "**数字**"。
 
 ### <a name="device"></a>设备
 
-本部分包括**设备标识**、**设备**克隆和**遥测**选项卡。
+本部分包括**设备标识**、**设备**克隆、**遥测**、**直接方法**和**云到设备的消息**选项卡。
 
 - 可以在 "**设备标识**" 选项卡上查看和更新[设备标识](../iot-hub/iot-hub-devguide-identity-registry.md)信息。
 - 可以在 "**设备**克隆" 选项卡上访问[设备](../iot-hub/iot-hub-devguide-device-twins.md)克隆信息。
 - 如果设备已连接并主动发送数据，则可以在 "**遥测**" 选项卡上查看[遥测](../iot-hub/iot-hub-devguide-messages-read-builtin.md)数据。
+- 可以在 "**直接方法**" 选项卡上的设备上调用[直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)。
+- 可以在 "**云到设备的消息**" 选项卡上发送[云到设备的消息](../iot-hub/iot-hub-devguide-messages-c2d.md)。
 
 ### <a name="digital-twin"></a>数字输出
 
-您可以使用该工具来查看设备的数字克隆实例。 对于 IoT 即插即用设备，此文章中显示了与设备功能模型关联的所有接口。 选择接口以扩展其相应的[IoT 即插即用基元](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)。
+您可以使用该工具来查看设备的数字克隆实例。 对于 IoT 即插即用设备，此工具的此部分中将显示与设备功能模型关联的所有接口。 选择接口以扩展其相应的[IoT 即插即用基元](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)。
+
+### <a name="interface"></a>接口
+
+在 "**接口**" 页上，可以查看接口的 JSON 定义。
 
 #### <a name="properties"></a>属性
 
-您可以在 "**属性**" 页上查看接口中定义的只读属性。 可以在 "可**写属性**" 页上更新接口中定义的可写属性。
+您可以在 "**不可写属性**" 页上查看接口中定义的只读属性。 可以在 "可**写属性**" 页上更新接口中定义的可写属性：
 
 1. 请参阅**可写属性**页。
 1. 单击要更新的属性。

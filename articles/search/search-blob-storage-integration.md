@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: db54c7886f5256dab41325cd12f1b893be732d72
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 6d8ad27766e85568cc759af84cc586476ad3ef9a
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529049"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678439"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-search"></a>使用 Azure 搜索将全文搜索添加到 Azure blob 数据
 
@@ -70,5 +70,5 @@ Blob 索引器附带了配置参数，并且如果基础数据提供了足够的
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [设置 blob 索引器](search-howto-indexing-azure-blob-storage.md) 
++ [Azure 门户（Azure Blob 存储）上传、下载和列出 blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [设置 blob 索引器（Azure 搜索）](search-howto-indexing-azure-blob-storage.md) 

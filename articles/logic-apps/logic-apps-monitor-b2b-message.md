@@ -1,6 +1,6 @@
 ---
-title: 利用 Azure Monitor 日志监视 B2B 消息-Azure 逻辑应用 |Microsoft Docs
-description: 监视集成帐户和 Azure 逻辑应用的 AS2、X12 和 EDIFACT 消息，并设置 Azure Monitor 日志的诊断日志记录
+title: 通过 Azure Monitor-Azure 逻辑应用监视 B2B 消息
+description: 使用 Azure Monitor 在 Azure 逻辑应用中为 AS2、X12 和 EDIFACT 消息设置诊断日志记录
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,14 +9,14 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: a4a7f951d34455f2e333f2c11e30d24efdfd22c1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: e5c8e5f3d42f4e85406fcc7dd5a2f6602045c8ed
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261210"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680192"
 ---
-# <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>在 Azure 逻辑应用中用 Azure Monitor 日志监视 B2B 消息
+# <a name="set-up-diagnostics-logging-for-b2b-messages-in-azure-logic-apps-by-using-azure-monitor"></a>使用 Azure Monitor 在 Azure 逻辑应用中为 B2B 消息设置诊断日志记录
 
 在集成帐户中的贸易合作伙伴之间建立 B2B 通信后，这些合作伙伴可以交换消息。 若要检查此通信是否按预期方式工作，可以监视 AS2、X12 和 EDIFACT 消息，并使用[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)为集成帐户设置诊断日志记录。 此服务可监视云和本地环境，有助于保持其可用性和性能以及收集运行时详细信息和事件以进行更丰富的调试。 此外可以将此数据与其他服务一起使用，例如 Azure 存储和 Azure 事件中心。
 
@@ -25,7 +25,7 @@ ms.locfileid: "71261210"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 已设置诊断日志记录的逻辑应用。 了解[如何创建逻辑应用](quickstart-create-first-logic-app-workflow.md)以及[如何为逻辑应用设置日志记录](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)。
 
@@ -46,9 +46,9 @@ ms.locfileid: "71261210"
 1. 现可找到集成帐户并进行选择。 在筛选器列表中，选择应用到集成帐户的值。
 完成后，选择“添加诊断设置”。
 
-   | 属性 | 值 | 描述 | 
+   | properties | Value | 描述 | 
    |----------|-------|-------------|
-   | **订阅** | <*Azure-subscription-name*> | 与集成帐户关联的 Azure 订阅 | 
+   | 订阅 | <*Azure-subscription-name*> | 与集成帐户关联的 Azure 订阅 | 
    | **资源组** | <*Azure-resource-group-name*> | 集成帐户的 Azure 资源组 | 
    | **资源类型** | **集成帐户** | 要在其中启用日志记录的 Azure 资源类型 | 
    | **资源** | <integration-account-name> | 要在其中启用日志记录的 Azure 资源的名称 | 
@@ -88,9 +88,9 @@ ms.locfileid: "71261210"
 1. 现可找到集成帐户并进行选择。 在筛选器列表中，选择应用到集成帐户的值。
 完成后，选择“添加诊断设置”。
 
-   | 属性 | 值 | 描述 | 
+   | properties | Value | 描述 | 
    |----------|-------|-------------|
-   | **订阅** | <*Azure-subscription-name*> | 与集成帐户关联的 Azure 订阅 | 
+   | 订阅 | <*Azure-subscription-name*> | 与集成帐户关联的 Azure 订阅 | 
    | **资源组** | <*Azure-resource-group-name*> | 集成帐户的 Azure 资源组 | 
    | **资源类型** | **集成帐户** | 要在其中启用日志记录的 Azure 资源类型 | 
    | **资源** | <integration-account-name> | 要在其中启用日志记录的 Azure 资源的名称 | 
@@ -121,7 +121,7 @@ ms.locfileid: "71261210"
 
 ## <a name="use-diagnostic-data-with-other-services"></a>将诊断数据与其他服务一起使用
 
-结合使用 Azure Monitor 日志后，可以扩展将逻辑应用的诊断数据用于其他 Azure 服务的方式，例如： 
+除了 Azure Monitor 日志，你还可以扩展将逻辑应用的诊断数据与其他 Azure 服务配合使用的方式，例如： 
 
 * [在 Azure 存储中存档 Azure 诊断日志](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [将 Azure 诊断日志流式传输到 Azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 

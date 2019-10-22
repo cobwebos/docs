@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights 数据模型 | Microsoft Docs
 description: 介绍在 JSON 中通过连续导出导出的、用作筛选器的属性。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: cabad41c-0518-4669-887f-3087aef865ea
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/08/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 4f8fd0b317c17f142664d22291c23442dd49f970
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/08/2019
+ms.openlocfilehash: 8f84e3179a6f949e4a322a2218736fc9ebe60442
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053290"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677915"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights 导出数据模型
 此表列出了从 [Application Insights](../../azure-monitor/app/app-insights-overview.md) SDK 发送到门户的遥测属性。
@@ -119,7 +114,7 @@ ms.locfileid: "67053290"
 | context.custom.dimensions [0] |object [ ] |自定义属性参数设置的键-值字符串对。 键的最大长度为 100，值的最大长度为 1024。 如果唯一值超过 100 个，属性可搜索，但不可用于分段。 每个 ikey 最多有 200 个键。 |
 | context.custom.metrics [0] |object [ ] |自定义测量参数和 TrackMetrics 设置的键-值对。 键的最大长度为 100，值可以是数字。 |
 | context.data.eventTime |字符串 |UTC |
-| context.data.isSynthetic |boolean |请求似乎来自 Bot 或 Web 测试。 |
+| context.data.isSynthetic |布尔值 |请求似乎来自 Bot 或 Web 测试。 |
 | context.data.samplingRate |数字 |SDK 生成的、发送到门户的遥测百分比。 范围为 0.0-100.0。 |
 | context.device |对象 |客户端设备 |
 | context.device.browser |字符串 |IE、Chrome... |
@@ -146,19 +141,19 @@ ms.locfileid: "67053290"
 | context.operation.name |字符串 |URL 或请求名称 |
 | context.operation.parentId |字符串 |允许嵌套的相关项。 |
 | context.session.id |字符串 |一组来自相同源的操作的 ID。 如果在 30 分钟期限内没有操作，则表示会话结束。 |
-| context.session.isFirst |boolean | |
+| context.session.isFirst |布尔值 | |
 | context.user.accountAcquisitionDate |字符串 | |
 | context.user.accountId |字符串 | |
 | context.user.anonAcquisitionDate |字符串 | |
 | context.user.anonId |字符串 | |
 | context.user.authAcquisitionDate |字符串 |[经过身份验证的用户](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) |
 | context.user.authId |字符串 | |
-| context.user.isAuthenticated |boolean | |
+| context.user.isAuthenticated |布尔值 | |
 | context.user.storeRegion |字符串 | |
 | internal.data.documentVersion |字符串 | |
 | internal.data.id |字符串 | 将项引入到 Application Insights 时分配的唯一 ID |
 
-## <a name="events"></a>Events
+## <a name="events"></a>事件
 [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) 生成的自定义事件。
 
 | 路径 | Type | 说明 |
@@ -181,7 +176,7 @@ ms.locfileid: "67053290"
 | basicException [0] failedUserCodeMethod |字符串 | |
 | basicException [0] failedUserCodeAssembly |字符串 | |
 | basicException [0] handledAt |字符串 | |
-| basicException [0] hasFullStack |boolean | |
+| basicException [0] hasFullStack |布尔值 | |
 | basicException [0] id |字符串 | |
 | basicException [0] method |字符串 | |
 | basicException [0] message |字符串 |异常消息。 最大长度为 10k。 |
@@ -213,7 +208,7 @@ ms.locfileid: "67053290"
 
 | 路径 | Type | 说明 |
 | --- | --- | --- |
-| remoteDependency [0] async |boolean | |
+| remoteDependency [0] async |布尔值 | |
 | remoteDependency [0] baseName |字符串 | |
 | remoteDependency [0] commandName |字符串 |例如“home/index” |
 | remoteDependency [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如 4 =&gt; 25%。 |
@@ -222,7 +217,7 @@ ms.locfileid: "67053290"
 | remoteDependency [0] id |字符串 | |
 | remoteDependency [0] name |字符串 |URL。 最大长度为 250。 |
 | remoteDependency [0] resultCode |字符串 |源 HTTP 依赖项 |
-| remoteDependency [0] success |boolean | |
+| remoteDependency [0] success |布尔值 | |
 | remoteDependency [0] type |字符串 |Http、Sql... |
 | remoteDependency [0] url |字符串 |最大长度为 2000 |
 | remoteDependency [0] urlData.base |字符串 |最大长度为 2000 |
@@ -234,12 +229,12 @@ ms.locfileid: "67053290"
 
 | 路径 | Type | 说明 |
 | --- | --- | --- |
-| request [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如：4 =&gt; 25%. |
+| request [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如：4 =&gt; 25%。 |
 | request [0] durationMetric.value |数字 |从请求到响应花费的时间。 1e7 == 1s |
 | request [0] id |字符串 |操作 ID |
 | request [0] name |字符串 |GET/POST + URL 基。  最大长度为 250 |
 | request [0] responseCode |integer |发送到客户端的 HTTP 响应 |
-| request [0] success |boolean |默认值 == (responseCode &lt; 400) |
+| request [0] success |布尔值 |默认值 == (responseCode &lt; 400) |
 | request [0] url |字符串 |不包括主机 |
 | request [0] urlData.base |字符串 | |
 | request [0] urlData.hashTag |字符串 | |
@@ -296,7 +291,7 @@ ms.locfileid: "67053290"
 | availability [0] testRunId |字符串 | |
 | availability [0] testTimestamp |字符串 | |
 
-## <a name="metrics"></a>度量值
+## <a name="metrics"></a>指标
 由 TrackMetric() 生成。
 
 指标值出现在 context.custom.metrics[0] 中

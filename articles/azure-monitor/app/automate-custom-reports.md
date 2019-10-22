@@ -1,23 +1,19 @@
 ---
 title: 使用 Azure Application Insights 数据自动化自定义报表
 description: 使用 Azure Application Insights 数据自动化自定义每日/每周/每月报表
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: 3becf5ef579acdc52a51f9ad618e37460491c2ec
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 2b23374972a071421b59bedf0eb5b9358b37d7a9
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146746"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677627"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>使用 Azure Application Insights 数据自动化自定义报表
 
@@ -95,7 +91,7 @@ availabilityResults
 5. 选择“Application Insights 计划的摘要模板”。
 
      > [!NOTE]
-     > 默认情况下，使用运行时版本 2.x 创建函数应用。 必须以[Azure Functions 运行时版本1.x 为目标](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **，才能**使用 Application Insights 计划摘要模板。  ![运行时屏幕快照](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
+     > 默认情况下，将使用运行时版本2.x 创建函数应用。 必须以[Azure Functions 运行时版本1.x 为目标](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **，才能**使用 Application Insights 计划摘要模板。  ![runtime 屏幕快照 ](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
 
 
 
@@ -164,7 +160,7 @@ availabilityResults
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解如何创建 [Analytics 查询](../../azure-monitor/log-query/get-started-queries.md)。
+* 了解有关创建 [Analytics 查询](../../azure-monitor/log-query/get-started-queries.md)的详细信息。
 * 详细了解[采用编程方式查询 Application Insights 数据](https://dev.applicationinsights.io/)
 * 了解有关[逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)的详细信息。
 * 详细了解 [Microsoft Flow](https://ms.flow.microsoft.com)。

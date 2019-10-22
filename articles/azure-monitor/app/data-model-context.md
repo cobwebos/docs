@@ -1,23 +1,19 @@
 ---
 title: Azure Application Insights 遥测数据模型 - 遥测上下文 | Microsoft Docs
 description: Application Insights 遥测上下文数据模型
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 7c1f47c9b88bd68b326b3c8923ba5b81d425c3e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0351f4fe65745242da58d3c3fb2f9fbe5c722d06
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900704"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677454"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>遥测上下文：Application Insights 数据模型
 
@@ -82,7 +78,7 @@ ms.locfileid: "60900704"
 
 ## <a name="anonymous-user-id"></a>匿名用户 ID
 
-匿名用户 ID。表示应用程序的最终用户。 从服务发送遥测时，用户上下文与在服务中启用操作的用户有关。
+匿名用户 id。表示应用程序的最终用户。 从服务发送遥测时，用户上下文与在服务中启用操作的用户有关。
 
 [采样](../../azure-monitor/app/sampling.md)是最小化遥测收集量的一种技术。 采样算法尝试在所有相关遥测内部或外部采样。 匿名用户 ID 用于生成采样得分。 所以匿名用户 ID 应为随机值。 
 
@@ -93,7 +89,7 @@ ms.locfileid: "60900704"
 
 ## <a name="authenticated-user-id"></a>已经过身份验证的用户 ID
 
-已经过身份验证的用户 ID。与匿名用户 ID 相反，此字段表示具有友好名称的用户。 由于其 PII 信息，默认情况下，大多数 SDK 不收集它。
+经过身份验证的用户 id。与匿名用户 id 相反，此字段表示具有友好名称的用户。 由于其 PII 信息，默认情况下，大多数 SDK 不收集它。
 
 最大长度：1024
 
@@ -136,5 +132,5 @@ SDK 版本。 请参阅 https://github.com/Microsoft/ApplicationInsights-Home/bl
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[扩展和筛选遥测](../../azure-monitor/app/api-filtering-sampling.md)。
-- 有关 Application Insights 的类型和数据模型，请参阅[数据模型](data-model.md)。
+- 请参阅[数据模型](data-model.md)，了解 Application Insights 的类型和数据模型。
 - 查看标准上下文属性集合[配置](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)。

@@ -1,24 +1,19 @@
 ---
 title: 适用于控制台应用程序的 Azure Application Insights | Microsoft Docs
 description: 监视 Web 应用程序的可用性、性能和使用情况。
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 01/30/2019
 ms.reviewer: lmolkova
-ms.author: mbullwin
-ms.openlocfilehash: 53a765cd2e71b5b1eb1ac2c70506fd55aec6736e
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 1cafa78fb4fba28fbd0691e256efe482fc9664ef
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274127"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678204"
 ---
 # <a name="application-insights-for-net-console-applications"></a>适用于 .NET 控制台应用程序的 Application Insights
 
@@ -27,7 +22,7 @@ ms.locfileid: "72274127"
 需要 [Microsoft Azure](https://azure.com) 订阅。 使用 Microsoft 帐户登录，该帐户可能适用于 Windows、XBox Live 或其他 Microsoft 云服务。 团队可能拥有 Azure 组织订阅：要求所有者使用 Microsoft 帐户你将加入其中。
 
 > [!NOTE]
-> 有一个名为[WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)的新 BETA Application Insights SDK，可用于为任何控制台应用程序启用 Application Insights。 建议在[此处](../../azure-monitor/app/worker-service.md)使用此包和相关说明。 此包的目标为[`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)，因此可在 .net Core 2.0 或更高版本中使用，并 .NET Framework 4.7.2 或更高版本。
+> 有一个名为[WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)的新 BETA Application Insights SDK，可用于为任何控制台应用程序启用 Application Insights。 建议在[此处](../../azure-monitor/app/worker-service.md)使用此包和相关说明。 此包针对[`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)，因此可在 .net Core 2.0 或更高版本中使用，并 .NET Framework 4.7.2 或更高版本。
 此新包的稳定版本发布后，此文档将被弃用。
 
 ## <a name="getting-started"></a>入门
@@ -101,7 +96,7 @@ var telemetryClient = new TelemetryClient(configuration);
 
 ### <a name="configuring-telemetry-collection-from-code"></a>通过代码配置遥测集合
 > [!NOTE]
-> .NET Core 不支持读取配置文件。 可以考虑使用[适用于 ASP.NET Core 的 Application Insights SDK](../../azure-monitor/app/asp-net-core.md)
+> .NET Core 不支持读取配置文件。 可以考虑使用[APPLICATION INSIGHTS SDK ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 
 * 在应用程序启动期间创建并配置 `DependencyTrackingTelemetryModule` 实例 - 该实例必须是单一实例，并在应用程序生存期中保留。
 
@@ -130,13 +125,13 @@ module.Initialize(configuration);
 configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-如果使用普通 `TelemetryConfiguration()` 构造函数创建了配置，则还需要另外启用相关支持。 如果从文件读取配置，则**不需要它**，使用了 `TelemetryConfiguration.CreateDefault()` 或 `TelemetryConfiguration.Active`。
+如果使用纯 `TelemetryConfiguration()` 构造函数创建了配置，则还需要启用相关支持。 如果从文件中读取配置、使用 `TelemetryConfiguration.CreateDefault()` 或 `TelemetryConfiguration.Active`，则**不需要此方法**。
 
 ```csharp
 configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
 ```
 
-* 还可能需要安装并初始化性能计数器收集器模块，如[此处](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)所述
+* 你可能还希望安装和初始化性能计数器收集器模块，如[此处](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)所述
 
 
 #### <a name="full-example"></a>完整示例

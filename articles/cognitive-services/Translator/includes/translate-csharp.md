@@ -24,7 +24,7 @@ dotnet new console -o translate-sample
 cd translate-sample
 ```
 
-第一个命令执行两项操作。 它创建新的 .NET 控制台应用程序，并创建名为 `translate-sample` 的目录。 第二个目录转到项目的目录。
+第一个命令执行两项操作。 它创建新的 .NET 控制台应用程序，并创建名为 `translate-sample` 的目录。 第二个命令是切换至项目目录。
 
 接下来需安装 Json.Net。 在项目的目录中，运行以下命令：
 
@@ -59,7 +59,7 @@ using Newtonsoft.Json;
 
 ## <a name="create-classes-for-the-json-response"></a>为 JSON 响应创建类
 
-接下来，我们将创建一组在反序列化由文本翻译 API 返回的 JSON 响应时使用的类。
+接下来，我们将创建一组类，在反序列化文本翻译 API 返回的 JSON 响应时使用。
 
 ```csharp
 /// <summary>

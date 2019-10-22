@@ -1,23 +1,19 @@
 ---
 title: 使用 Azure Application Insights .NET SDK 跟踪自定义操作 | Microsoft Docs
 description: 使用 Azure Application Insights .NET SDK 跟踪自定义操作
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: d966ff3bc00d5190ebc163d4f4bfa35ba73d21ab
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: f05c8724fe87888c93230b4ca77a7a82fe9357c2
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087672"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677471"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 跟踪自定义操作
 
@@ -177,7 +173,7 @@ public async Task Enqueue(string payload)
 }
 ```
 
-#### <a name="process"></a>Process
+#### <a name="process"></a>流程
 ```csharp
 public async Task Process(BrokeredMessage message)
 {
@@ -214,7 +210,7 @@ public async Task Process(BrokeredMessage message)
 以下示例显示如何跟踪 [Azure 存储队列](../../storage/queues/storage-dotnet-how-to-use-queues.md)操作，并将生成者、使用者和 Azure 存储之间的遥测相关联。 
 
 存储队列具有一个 HTTP API。 用于 HTTP 请求的 Application Insights Dependency Collector 会跟踪对该队列的所有调用。
-它在 ASP.NET 和 ASP.NET Core 应用程序上默认配置。使用其他类型的应用程序时，可参阅[控制台应用程序文档](../../azure-monitor/app/console.md)
+默认情况下，它是在 ASP.NET 和 ASP.NET Core 应用程序上配置的，使用其他类型的应用程序，你可以参阅[控制台应用程序文档](../../azure-monitor/app/console.md)
 
 用户可能还想将 Application Insights 操作 ID 与存储请求 ID 相关联。 有关如何设置与获取存储请求客户端和服务器请求 ID 的信息，请参阅[对 Azure 存储进行监视、诊断和故障排除](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing)。
 
@@ -308,7 +304,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 }
 ```
 
-#### <a name="process"></a>Process
+#### <a name="process"></a>流程
 
 在以下示例中，通过类似于跟踪传入 HTTP 请求的方式跟踪传入消息：
 
@@ -354,13 +350,13 @@ public async Task Process(MessagePayload message)
 
 ### <a name="dependency-types"></a>依赖关系类型
 
-Application Insights 使用依赖关系类型 cusomize UI 体验。 对于队列，它会识别出`DependencyTelemetry`以下类型的，可提高[事务诊断体验](/azure/azure-monitor/app/transaction-diagnostics)：
-- `Azure queue`对于 Azure 存储队列
-- `Azure Event Hubs`对于 Azure 事件中心
-- `Azure Service Bus`对于 Azure 服务总线
+Application Insights 使用依赖关系类型 cusomize UI 体验。 对于队列，它会识别出以下类型的 `DependencyTelemetry`，它们可提高[事务诊断体验](/azure/azure-monitor/app/transaction-diagnostics)：
+- Azure 存储队列的 `Azure queue`
+- Azure 事件中心的 `Azure Event Hubs`
+- Azure 服务总线的 `Azure Service Bus`
 
 ### <a name="batch-processing"></a>批处理
-有些队列允许对一个请求的多条消息取消排队。 这类消息的处理可能彼此独立，而且属于不同的逻辑操作。 不能将`Dequeue`操作关联到正在处理的特定消息。
+有些队列允许对一个请求的多条消息取消排队。 这类消息的处理可能彼此独立，而且属于不同的逻辑操作。 不能将 `Dequeue` 操作关联到正在处理的特定消息。
 
 每条消息都应在自己的异步控制流中处理。 有关详细信息，请参阅[传出依赖项跟踪](#outgoing-dependencies-tracking)部分。
 
@@ -476,12 +472,12 @@ public async Task RunAllTasks()
 }
 ```
 
-## <a name="applicationinsights-operations-vs-systemdiagnosticsactivity"></a>ApplicationInsights 操作与 System.Diagnostics.Activity
-`System.Diagnostics.Activity` 表示分布式跟踪上下文，可供框架和库用于在进程内外创建和传播上下文，并关联遥测项。 活动与 `System.Diagnostics.DiagnosticSource` 配合使用，后者是框架/库之间的通知机制，用于通知有趣的事件（传入或传出请求、异常等）。
+## <a name="applicationinsights-operations-vs-systemdiagnosticsactivity"></a>Applicationinsights.config 操作与
+`System.Diagnostics.Activity` 表示分布式跟踪上下文，由框架和库用来创建和传播进程内部和外部的上下文，并关联遥测项。 活动与 `System.Diagnostics.DiagnosticSource`-框架/库之间的通知机制，通知感兴趣的事件（传入或传出请求、异常等）。
 
-活动是 Application Insights 中的“一类公民”，自动依赖项和请求集合特别依赖它们和 `DiagnosticSource` 事件。 如果在应用程序中创建活动，则不会创建 Application Insights 遥测。 Application Insights 需要接收 DiagnosticSource 事件并了解事件名称和有效负载，然后才能将活动转换为遥测。
+活动是 Application Insights 中的一流公民，自动依赖项和请求收集严重依赖于它们以及 `DiagnosticSource` 事件。 如果在应用程序中创建活动，则不会导致创建 Application Insights 遥测数据。 Application Insights 需要接收 DiagnosticSource 事件并了解将活动转换为遥测的事件名称和有效负载。
 
-每项 Application Insights 操作（请求或依赖）都涉及 `Activity` - 调用 `StartOperation` 时，它会在下面创建活动。 `StartOperation` 是建议的方法，用于手动跟踪请求或依赖项遥测，并确保一切都已关联。
+每个 Application Insights 操作（请求或依赖项）都涉及 `Activity`-调用 `StartOperation` 时，它将在下面创建活动。 建议手动跟踪请求或依赖项 telemetries，并确保所有内容都是相关的。 `StartOperation`
 
 ## <a name="next-steps"></a>后续步骤
 

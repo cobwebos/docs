@@ -1,6 +1,6 @@
 ---
-title: 异常处理和错误日志记录方案 — Azure 逻辑应用 | Microsoft Docs
-description: 下面是一个关于 Azure 逻辑应用中高级异常处理和错误日志记录的实际用例
+title: 异常处理 & 错误日志记录方案-Azure 逻辑应用
+description: Azure 逻辑应用中高级异常处理和错误日志记录的实际用例和方案
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,16 +10,16 @@ ms.reviewer: LADocs
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: ec01f738ee4943659de1b49ab8d52218e6a8fb79
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 7930d487d367ee19b869becae5017f80ea1df8cb
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385455"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680155"
 ---
-# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>方案:逻辑应用的异常处理和错误日志记录
+# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>方案：逻辑应用的异常处理和错误日志记录
 
-本方案介绍如何扩展逻辑应用以更好地支持异常处理。 我们已使用实际的用例回答了以下问题：“Azure 逻辑应用是否支持异常和错误处理？”
+本方案介绍如何扩展逻辑应用以更好地支持异常处理。 我们已经通过一个实际用例回答了“Azure 逻辑应用是否支持异常和错误处理？”的问题
 
 > [!NOTE]
 > 当前的 Azure 逻辑应用架构提供操作响应的标准模板。 此模板包括内部验证以及从 API 应用返回的错误响应。
@@ -40,9 +40,9 @@ ms.locfileid: "68385455"
 
 ## <a name="how-we-solved-the-problem"></a>我们如何解决问题
 
-我们选择 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") 作为日志和错误记录的存储库（Cosmos DB 将记录作为文档来引用）。 由于 Azure 逻辑应用具有用于所有响应的标准模板，因此我们不必创建自定义架构。 我们可以创建 API 应用以便对错误和日志记录进行**插入**和**查询**。 我们还可以在 API 应用中为各个操作定义架构。  
+我们选择[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB")作为日志和错误记录的存储库（Cosmos DB 将记录作为文档来引用）。 由于 Azure 逻辑应用具有用于所有响应的标准模板，因此我们不必创建自定义架构。 我们可以创建 API 应用以便对错误和日志记录进行**插入**和**查询**。 我们还可以在 API 应用中为各个操作定义架构。  
 
-另一个要求是清除特定日期之后的记录。 Cosmos DB 具有一个名为[生存时间](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) 的属性，使用该属性可以为每个记录或集合设置“生存时间”值。 这样便无需在 Cosmos DB 中手动删除记录。
+另一个要求是清除特定日期之后的记录。 Cosmos DB 具有一个名[为生存时间](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "生存时间")（TTL）的属性，这允许我们为每个记录或集合设置一个**生存时间**值。 这样便无需在 Cosmos DB 中手动删除记录。
 
 > [!IMPORTANT]
 > 若要完成本教程，需要创建一个 Cosmos DB 数据库和两个集合（日志记录和错误）。
@@ -93,7 +93,7 @@ ms.locfileid: "68385455"
 ```
 
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>Steps
 
 必须对来自 Dynamics CRM Online 门户的患者记录的源（请求）进行日志记录。
 
@@ -479,7 +479,7 @@ Azure Cosmos DB 中的每个文档都必须具有唯一 ID。 我们使用 `Pati
 
 ### <a name="source-code"></a>源代码
 
-逻辑应用异常管理 API 应用程序的源代码位于此 [GitHub 存储库](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "逻辑应用异常管理 API")中。
+此[GitHub 存储库](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "逻辑应用异常管理 API")中提供了逻辑应用异常管理 API 应用程序的源代码。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: B2B 集成帐户的灾难恢复 - Azure 逻辑应用 | Microsoft Docs
-description: 准备好在 Azure 逻辑应用中进行跨区域灾难恢复
+title: 集成帐户的灾难恢复-Azure 逻辑应用
+description: 在 Azure 逻辑应用中为集成帐户设置跨区域灾难恢复
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,16 +8,15 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/10/2017
-ms.openlocfilehash: ac29ef7f0599cc41924ba1a5a00e46b0292e7e9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 321bfb673bab748176d75db7bcf21d76ddf0c819
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967742"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680394"
 ---
-# <a name="cross-region-disaster-recovery-for-b2b-integration-accounts-in-azure-logic-apps"></a>Azure 逻辑应用中 B2B 集成帐户的跨区域灾难恢复
+# <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>在 Azure 逻辑应用中为集成帐户设置跨区域灾难恢复
 
 B2B 工作负荷涉及订单和发票等现金交易。 对于企业而言，在灾难事件中快速恢复以满足与合作伙伴达成一致意见的企业级 SLA，这非常重要。 本文演示为 B2B 工作负荷生成业务连续性计划。 
 
@@ -36,7 +35,7 @@ B2B 工作负荷涉及订单和发票等现金交易。 对于企业而言，在
 
 3. 为了从主要区域提取运行状态，请在次要区域中创建逻辑应用。 
 
-   此逻辑应用应该具有一个触发器和一个操作   。 
+   此逻辑应用应该具有一个触发器和一个操作。 
    触发器应连接到主要区域集成帐户，操作应连接到次要区域集成帐户。 
    基于时间间隔，触发器将轮询主要区域的运行状态表并提取新记录（如果有）。 操作会将这些新记录更新到次要区域集成帐户。 
    这有助于将主要区域的增量运行时状态获取到次要区域。
@@ -91,30 +90,30 @@ B2B 工作负荷涉及订单和发票等现金交易。 对于企业而言，在
 
 1. 在次要区域中创建[逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。    
 
-2. 搜索“X12”  ，然后选择“X12 - 当修改控制编号时”  。   
+2. 搜索“X12”，然后选择“X12 - 当修改控制编号时”。   
 
    ![搜索 X12](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn1.png)
 
    触发器提示与集成帐户建立连接。 
    触发器应已连接到主要区域集成帐户。
 
-3. 输入连接名称，从列表中选择“主要区域集成帐户”，并选择“创建”   。   
+3. 输入连接名称，从列表中选择“主要区域集成帐户”，并选择“创建”。   
 
    ![主要区域集成帐户名称](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
 
-4. “开始同步控制编号的 DateTime”设置是可选的。  “频率”可以设置为“天”  、“小时”  、“分钟”  或“秒”  ，中间要有间隔。    
+4. “开始同步控制编号的 DateTime”设置是可选的。 “频率”可以设置为“天”、“小时”、“分钟”或“秒”，中间要有间隔。   
 
    ![DateTime 和频率](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
-5. 选择“新建步骤”   > “添加操作”  。
+5. 选择“新建步骤” > “添加操作”。
 
    ![“新建步骤”、“添加操作”](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
-6. 搜索“X12”  ，然后选择“X12 - 添加或更新控制编号”  。   
+6. 搜索“X12”，然后选择“X12 - 添加或更新控制编号”。   
 
    ![添加或更新控制编号](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
-7. 要将操作连接到次要区域集成帐户，请选择“更改连接”   > “添加新连接”  ，显示可用集成帐户的列表。 输入连接名称，从列表中选择“次要区域集成帐户”，并选择“创建”   。 
+7. 要将操作连接到次要区域集成帐户，请选择“更改连接” > “添加新连接”，显示可用集成帐户的列表。 输入连接名称，从列表中选择“次要区域集成帐户”，并选择“创建”。 
 
    ![次要区域集成帐户名称](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
@@ -128,7 +127,7 @@ B2B 工作负荷涉及订单和发票等现金交易。 对于企业而言，在
 
    基于时间间隔，触发器将轮询主要区域收到的控制编号表并提取新记录。 
    该操作会更新次要区域集成帐户中的记录。 
-   如果没有更新，触发器状态显示为“已跳过”。    
+   如果没有更新，触发器状态显示为“已跳过”。   
 
    ![控制编号表](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12recevicedcn8.png)
 
@@ -146,30 +145,30 @@ EDI EDIFACT 文档的业务连续性基于控制编号。
 
 1. 在次要区域中创建[逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。    
 
-2. 搜索“EDIFACT”  ，然后选择“EDIFACT - 当修改控制编号时”  。
+2. 搜索“EDIFACT”，然后选择“EDIFACT - 当修改控制编号时”。
 
    ![搜索 EDIFACT](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactcn1.png)
 
    触发器提示与集成帐户建立连接。 
    触发器应已连接到主要区域集成帐户。 
 
-3. 输入连接名称，从列表中选择“主要区域集成帐户”，并选择“创建”   。    
+3. 输入连接名称，从列表中选择“主要区域集成帐户”，并选择“创建”。    
 
    ![主要区域集成帐户名称](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN2.png)
 
-4. “开始同步控制编号的 DateTime”设置是可选的。  “频率”可以设置为“天”  、“小时”  、“分钟”  或“秒”  ，中间要有间隔。     
+4. “开始同步控制编号的 DateTime”设置是可选的。 “频率”可以设置为“天”、“小时”、“分钟”或“秒”，中间要有间隔。    
 
    ![DateTime 和频率](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
-6. 选择“新建步骤”   > “添加操作”  。    
+6. 选择“新建步骤” > “添加操作”。    
 
    ![“新建步骤”、“添加操作”](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
-7. 搜索“EDIFACT”  ，然后选择“EDIFACT - 添加或更新控制编号”  。   
+7. 搜索“EDIFACT”，然后选择“EDIFACT - 添加或更新控制编号”。   
 
    ![添加或更新控制编号](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
-8. 要将操作连接到次要区域集成帐户，请选择“更改连接”   > “添加新连接”  ，显示可用集成帐户的列表。 输入连接名称，从列表中选择“次要区域集成帐户”，并选择“创建”   。
+8. 要将操作连接到次要区域集成帐户，请选择“更改连接” > “添加新连接”，显示可用集成帐户的列表。 输入连接名称，从列表中选择“次要区域集成帐户”，并选择“创建”。
 
    ![次要区域集成帐户名称](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
@@ -183,7 +182,7 @@ EDI EDIFACT 文档的业务连续性基于控制编号。
 
    基于时间间隔，触发器将轮询主要区域收到的控制编号表并提取新记录。
    操作会将这些记录更新到次要区域集成帐户中。 
-   如果没有更新，触发器状态显示为“已跳过”。 
+   如果没有更新，触发器状态显示为“已跳过”。
 
    ![控制编号表](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12recevicedcn8.png)
 
@@ -198,30 +197,30 @@ EDI EDIFACT 文档的业务连续性基于控制编号。
 
 1. 在次要区域中创建[逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。  
 
-2. 搜索“AS2”  ，并选择“AS2 - 当创建 MIC 值时”。    
+2. 搜索“AS2”，并选择“AS2 - 当创建 MIC 值时”。   
 
    ![搜索 AS2](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid1.png)
 
    触发器提示与集成帐户建立连接。 
    触发器应已连接到主要区域集成帐户。 
    
-3. 输入连接名称，从列表中选择“主要区域集成帐户”，并选择“创建”   。
+3. 输入连接名称，从列表中选择“主要区域集成帐户”，并选择“创建”。
 
    ![主要区域集成帐户名称](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
 
-4. “开始同步 MIC 值的 DateTime”设置是可选的。  “频率”可以设置为“天”  、“小时”  、“分钟”  或“秒”  ，中间要有间隔。    
+4. “开始同步 MIC 值的 DateTime”设置是可选的。 “频率”可以设置为“天”、“小时”、“分钟”或“秒”，中间要有间隔。   
 
    ![DateTime 和频率](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid3.png)
 
-5. 选择“新建步骤”   > “添加操作”  。  
+5. 选择“新建步骤” > “添加操作”。  
 
    ![“新建步骤”、“添加操作”](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid4.png)
 
-6. 搜索“AS2”，并选择“AS2 - 添加或更新 MIC 内容”   。  
+6. 搜索“AS2”，并选择“AS2 - 添加或更新 MIC 内容”。  
 
    ![MIC 添加或更新](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
 
-7. 要将操作连接到次要区域集成帐户，请选择“更改连接” > “添加新连接”，显示可用集成帐户的列表。   输入连接名称，从列表中选择“次要区域集成帐户”，并选择“创建”   。
+7. 要将操作连接到次要区域集成帐户，请选择“更改连接” > “添加新连接”，显示可用集成帐户的列表。 输入连接名称，从列表中选择“次要区域集成帐户”，并选择“创建”。
 
    ![次要区域集成帐户名称](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid6.png)
 
@@ -234,7 +233,7 @@ EDI EDIFACT 文档的业务连续性基于控制编号。
    ![动态内容](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid7.png)
 
    基于时间间隔，触发器将轮询主要区域表并提取新记录。 操作会将这些新记录更新到次要区域集成帐户。 
-   如果没有更新，触发器状态显示为“已跳过”。   
+   如果没有更新，触发器状态显示为“已跳过”。  
 
    ![主要区域表](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid8.png)
 

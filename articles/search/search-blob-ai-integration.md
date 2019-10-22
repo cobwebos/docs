@@ -1,5 +1,5 @@
 ---
-title: 使用 AI 了解 Blob 数据
+title: 使用 AI 了解 Blob 存储数据
 titleSuffix: Azure Search
 description: 在 Azure 搜索中使用 AI 扩充管道将语义、自然语言处理和图像分析添加到 Azure blob。
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: f7e264be9a02514972f9c9702adec8fa55a157bd
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 1a8840aca71daacc08cf85b178668e42ff9f796c
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529377"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678418"
 ---
-# <a name="use-ai-to-understand-blob-data"></a>使用 AI 了解 Blob 数据
+# <a name="use-ai-to-understand-blob-storage-data"></a>使用 AI 了解 Blob 存储数据
 
 Azure Blob 存储中的数据通常是多种非结构化内容，例如图像、长文本、Pdf 和 Office 文档。 通过使用 Azure 搜索中的 AI 功能，你可以通过多种方式了解并从 blob 中提取有价值的信息。 将 AI 应用于 blob 内容的示例包括：
 
@@ -112,7 +112,8 @@ AI 扩充的输出是 Azure 搜索上的搜索索引，或 Azure 存储中的[�
 
 使用 AI 扩充可以更多地充分利用 Azure 存储空间中的数据，包括以不同方式合并认知服务，以及在不存在方案的现有认知服务的情况下创作自定义技能。 可以通过以下链接了解更多信息。
 
-> [!div class="nextstepaction"]
-> [AI 扩充概述](cognitive-search-concept-intro.md) 
-> [在批注树中](cognitive-search-output-field-mapping.md)[创建技能组合](cognitive-search-defining-skillset.md)
->  映射节点
++ [Azure 门户（Azure Blob 存储）上传、下载和列出 blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [设置 blob 索引器（Azure 搜索）](search-howto-indexing-azure-blob-storage.md) 
++ [AI 扩充概述（Azure 搜索）](cognitive-search-concept-intro.md) 
++ [创建技能组合（Azure 搜索）](cognitive-search-defining-skillset.md)
++ [在批注树中映射节点（Azure 搜索）](cognitive-search-output-field-mapping.md)

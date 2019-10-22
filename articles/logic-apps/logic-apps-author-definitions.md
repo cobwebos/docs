@@ -1,21 +1,20 @@
 ---
-title: 创建、编辑或扩展逻辑应用定义的 JSON - Azure 逻辑应用 | Microsoft Docs
-description: 为 Azure 逻辑应用中的逻辑应用定义编写和扩展 JSON
+title: 创建、编辑或扩展逻辑应用定义-Azure 逻辑应用
+description: 如何在 Azure 逻辑应用中编写、编辑和扩展逻辑应用 JSON 定义
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: klam, jehollan, LADocs
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
+ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: a96cc56c85db6726bf2cdaff72904e76ecbaf087
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 03203a5fdb6d61ed95e96581a7e4a979c911cd02
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164649"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680022"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>为 Azure 逻辑应用中的逻辑应用定义创建、编辑或扩展 JSON
 
@@ -60,23 +59,23 @@ ms.locfileid: "70164649"
 
 5. 若要返回设计器视图，请在“代码视图”编辑器的底部选择“设计”。
 
-## <a name="parameters"></a>Parameters
+## <a name="parameters"></a>parameters
 
-部署生命周期通常具有不同的环境用于开发、测试、过渡和生产。 如果你有想要在不硬编码的情况下重复使用的值, 或根据你的部署需求而异的值, 则可以为工作流定义创建[Azure 资源管理器模板](../azure-resource-manager/resource-group-overview.md), 以便还可以自动执行逻辑应用部署. 
+部署生命周期通常具有不同的环境用于开发、测试、过渡和生产。 如果你有想要在不硬编码的情况下重复使用的值，或根据你的部署需求而异的值，则可以为工作流定义创建[Azure 资源管理器模板](../azure-resource-manager/resource-group-overview.md)，以便还可以自动执行逻辑应用部署. 
 
-请按照以下常规步骤将这些值参数化或定义并使用参数。 然后, 你可以在将这些值传递给模板的单独参数文件中提供值。 这样, 你就可以更轻松地更改这些值, 而无需更新和重新部署逻辑应用。 有关完整详细信息, [请参阅概述:利用 Azure 资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)自动部署逻辑应用。
+请按照以下常规步骤*将这些值参数化*或定义并使用参数。 然后，你可以在将这些值传递给模板的单独参数文件中提供值。 这样，你就可以更轻松地更改这些值，而无需更新和重新部署逻辑应用。 有关完整详细信息，请参阅[概述：利用 Azure 资源管理器模板自动部署逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。
 
-1. 在模板中, 定义模板参数和工作流定义参数, 分别用于接受在部署和运行时中使用的值。
+1. 在模板中，定义模板参数和工作流定义参数，分别用于接受在部署和运行时中使用的值。
 
-   模板参数在工作流定义之外的参数部分中定义, 而工作流定义参数则在工作流定义内的参数部分中定义。
+   模板参数在工作流定义之外的参数部分中定义，而工作流定义参数则在工作流定义内的参数部分中定义。
 
 1. 将硬编码值替换为引用这些参数的表达式。 模板表达式使用不同于工作流定义表达式的语法。
 
-   避免在部署时 (在运行时计算的工作流定义表达式内), 不使用模板表达式来使代码复杂化。 仅在工作流定义之外使用模板表达式。 仅使用工作流定义中的工作流定义表达式。
+   避免在部署时（在运行时计算的工作流定义表达式内），不使用模板表达式来使代码复杂化。 仅在工作流定义之外使用模板表达式。 仅使用工作流定义中的工作流定义表达式。
 
-   指定工作流定义参数的值时, 可以使用工作流定义之外的参数部分引用模板参数, 但仍会在逻辑应用的资源定义中引用模板参数。 这样, 便可以将模板参数值传递到工作流定义参数。
+   指定工作流定义参数的值时，可以使用工作流定义之外的参数部分引用模板参数，但仍会在逻辑应用的资源定义中引用模板参数。 这样，便可以将模板参数值传递到工作流定义参数。
 
-1. 在单独的[参数文件](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)中存储参数的值, 并将该文件包含在你的部署中。
+1. 在单独的[参数文件](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)中存储参数的值，并将该文件包含在你的部署中。
 
 ## <a name="process-strings-with-functions"></a>使用函数处理字符串
 

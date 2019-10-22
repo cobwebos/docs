@@ -4,23 +4,22 @@ description: 了解如何在不停机的情况下，将已分配到实时站点�
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: erikre
-editor: jimbe
+manager: gwallace
 tags: top-support-issue
 ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/28/2017
+ms.date: 10/21/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 703a151f801f65b968ecf93eaa97640c22a71bd2
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5f11173c7b7f7396a8cf5cda4b9c8975cd7bb38e
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073094"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679800"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>将活动 DNS 名称迁移到 Azure 应用服务
 
@@ -30,7 +29,7 @@ ms.locfileid: "70073094"
 
 如果你不担心 DNS 解析中的停机时间，请参阅[将现有的自定义 DNS 名称映射到 Azure 应用服务](app-service-web-tutorial-custom-domain.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本操作说明：
 
@@ -80,7 +79,7 @@ ms.locfileid: "70073094"
 
 键入已添加 TXT 记录的完全限定的域名，如 `www.contoso.com`。 对于通配符域（如 \*.contoso.com），可以使用与通配符域匹配的任何 DNS 名称。 
 
-选择**验证**。
+选择“验证”。
 
 “添加主机名”按钮会被激活。 
 
@@ -120,15 +119,21 @@ ms.locfileid: "70073094"
 
 对于 `contoso.com` 根域示例，重新映射 A 或 CNAME 记录，如下表中的示例所示： 
 
-| FQDN 示例 | 记录类型 | 主机 | ReplTest1 |
+| FQDN 示例 | 记录类型 | 主机 | Value |
 | - | - | - | - |
 | contoso.com（根域） | A | `@` | 在[复制应用的 IP 地址](#info)步骤中复制的 IP 地址 |
-| www\.contoso.com (sub) | CNAME | `www` | &lt;appname>.azurewebsites.net |
+| www \.contoso .com （sub） | CNAME | `www` | &lt;appname>.azurewebsites.net |
 | \*.contoso.com（通配符域） | CNAME | _\*_ | &lt;appname>.azurewebsites.net |
 
 保存设置。
 
 在 DNS 传播发生后，DNS 查询应立即开始解析应用服务应用。
+
+## <a name="active-domain-in-azure"></a>Azure 中的活动域
+
+可以在 Azure 中的订阅之间或在同一订阅中迁移活动自定义域。 但是，这种无停机时间的迁移需要在特定时间为源应用和目标应用分配相同的自定义域。 因此，需要确保两个应用未部署到相同的部署单元（在内部称为 web 空间）。 域名只能分配给每个部署单位中的一个应用。
+
+通过查看 `<deployment-unit>.ftp.azurewebsites.windows.net` 的 FTP/S URL 的域名，可以找到应用的部署单元。 检查并确保源应用与目标应用之间的部署单位不同。 应用的部署单位取决于其所在的[应用服务计划](overview-hosting-plans.md)。 它是在创建计划时由 Azure 随机选择的，无法更改。 仅当在[同一资源组*和*同一区域中创建](app-service-plan-manage.md#create-an-app-service-plan)两个计划时，Azure 才会确保两个计划处于相同的部署单元中，但它没有任何逻辑来确保计划处于不同的部署单元。 在不同的部署单元中创建计划的唯一方法是在新的资源组或区域中继续创建计划，直到获取不同的部署单元。
 
 ## <a name="next-steps"></a>后续步骤
 

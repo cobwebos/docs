@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 逻辑应用中将项目添加到 integration service 环境（ISEs）
-description: 将逻辑应用、自定义连接器和集成帐户添加到 integration service 环境（ISE），以访问 Azure 虚拟网络（Vnet），同时保持专用并独立于公用或 "全局" Azure
+title: 向 integration service 环境添加项目-Azure 逻辑应用
+description: 将逻辑应用、集成帐户和自定义连接器添加到 integration service 环境（ISE）以访问 Azure 虚拟网络（Vnet）
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,18 +9,18 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 6327f0c14b46ceaadbf7adaa58a70c32b39b7c2a
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 266c942adb62b187d39d2eac4a47455482bfadaa
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960492"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680512"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure 逻辑应用中将项目添加到 integration service 环境（ISE）
 
 创建[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)后，添加逻辑应用、集成帐户和连接器等项目，以便它们可以访问 Azure 虚拟网络中的资源。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -63,13 +63,13 @@ ms.locfileid: "71960492"
 
 若要创建使用 ISE 的集成帐户，请遵循以下步骤：
 
-1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 "**设置**" 下，选择 "**集成帐户**" @no__t "**添加**"。
+1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 "**设置**" 下，选择 "**集成帐户**"  >  "**添加**"。
 
    ![向 ISE 中添加新的集成帐户](./media/add-artifacts-integration-service-environment-ise/add-integration-account-to-ise.png)
 
    -或-
 
-   在 Azure 主菜单中，选择 "**创建资源** > **集成**@no__t 集成**帐户**"。
+   在 Azure 主菜单中，选择 "**创建资源**"  > **Integration**  > **集成帐户**"。
 
 1. 提供要用于集成帐户的名称、Azure 订阅、Azure 资源组（新的或现有的）和定价层。
 
@@ -105,7 +105,7 @@ ms.locfileid: "71960492"
 
 若要在 ISE 中使用自定义连接器，请直接在 ISE 中创建这些自定义连接器。
 
-1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 "**设置**" 下，选择 "**自定义连接器** > **添加**"。
+1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 "**设置**" 下，选择 "**自定义连接器**"  > **添加**"。
 
    ![创建自定义连接器](./media/add-artifacts-integration-service-environment-ise/add-custom-connector-to-ise.png)
 

@@ -19,4 +19,4 @@ ms.locfileid: "67173297"
 az group delete --name myResourceGroup
 ```
 
-此命令可能需要花费一分钟时间运行。
+此命令可能需要花费一点时间运行。

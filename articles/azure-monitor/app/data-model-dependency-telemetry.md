@@ -1,29 +1,25 @@
 ---
 title: Azure Application Insights 遥测数据模型 - 依赖项遥测 | Microsoft Docs
 description: 适用于依赖项遥测的 Application Insights 数据模型
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 3e3d6b8fdc9ac8dd28f73fecd6231e97a5645407
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e0923c20b11aa02f380af1faa6766d2346ad1fb2
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60901016"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677434"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依赖项遥测：Application Insights 数据模型
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的依赖项遥测表示受监视组件与远程组件（如 SQL 或 HTTP 终结点）的交互。
 
-## <a name="name"></a>Name
+## <a name="name"></a>名称
 
 通过此依赖项调用启动的命令的名称。 低基数值。 示例包括存储过程名称和 URL 路径模板。
 
@@ -45,7 +41,7 @@ ms.locfileid: "60901016"
 
 ## <a name="duration"></a>Duration
 
-请求持续时间，格式为：`DD.HH:MM:SS.MMMMMM`。 必须小于 `1000` 天。
+采用 `DD.HH:MM:SS.MMMMMM` 格式的请求持续时间。 必须小于 `1000` 天。
 
 ## <a name="result-code"></a>结果代码
 
@@ -69,5 +65,5 @@ ms.locfileid: "60901016"
 - 为 [.NET](../../azure-monitor/app/asp-net-dependencies.md) 设置依赖项跟踪。
 - 为 [Java](../../azure-monitor/app/java-agent.md) 设置依赖项跟踪。
 - [编写自定义依赖项遥测](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
-- 有关 Application Insights 的类型和数据模型，请参阅[数据模型](data-model.md)。
+- 请参阅[数据模型](data-model.md)，了解 Application Insights 的类型和数据模型。
 - 查看 Application Insights 支持的[平台](../../azure-monitor/app/platforms.md)。

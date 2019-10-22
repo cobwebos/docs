@@ -1,32 +1,27 @@
 ---
 title: 设置 Azure 应用程序 Insights 的可用性警报 |Microsoft Docs
 description: 在 Application Insights 中设置 Web 测试。 当网站不可用或响应速度缓慢时接收警报。
-services: application-insights
-documentationcenter: ''
-author: lgayhardt
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.author: lagayhar
-ms.openlocfilehash: 1d7527d6f52235c6b95ad2e336ea9f9ba85d6344
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: ea2bec541c13ec1615113cef184eb5ad502b158c
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114399"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678286"
 ---
 # <a name="availability-alerts"></a>可用性警报
 
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，它可以提醒你。
+[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果你的应用程序未响应，或响应速度太慢，则会发出警报。
 
 ## <a name="enable-alerts"></a>启用警报
 
-默认情况下，现在会自动启用警报，但为了完全配置警报，首先需要创建可用性测试。
+默认情况下，警报现在会自动启用，但为了完全配置警报，首先必须创建可用性测试。
 
 ![创建体验](./media/availability-alerts/create-test.png)
 
@@ -61,7 +56,7 @@ ms.locfileid: "70114399"
 
 ### <a name="alert-on-custom-analytics-queries"></a>根据自定义分析查询发出警报
 
-使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，可以根据[自定义日志查询](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log)发出警报。 借助自定义查询，可以在有助于获得最可靠的可用性问题信号的任意条件下发出警报。 如果使用 TrackAvailability SDK 发送自定义可用性结果, 这同样适用。
+使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，可以根据[自定义日志查询](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log)发出警报。 借助自定义查询，可以在有助于获得最可靠的可用性问题信号的任意条件下发出警报。 如果使用 TrackAvailability SDK 发送自定义可用性结果，这同样适用。
 
 > [!Tip]
 > 可用性数据的指标包括可能通过调用我们的 TrackAvailability SDK 提交的任何自定义可用性结果。 可以使用“根据指标发出警报”支持根据自定义可用性结果发出警报。
@@ -69,13 +64,13 @@ ms.locfileid: "70114399"
 
 ## <a name="automate-alerts"></a>自动执行警报
 
-若要使用 Azure 资源管理器模板自动执行此过程, 请参阅[使用资源管理器模板创建指标警报](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-availability-test-along-with-availability-test-alert)文档。
+若要使用 Azure 资源管理器模板自动执行此过程，请参阅[使用资源管理器模板创建指标警报](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-availability-test-along-with-availability-test-alert)文档。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 专用[故障排除文章](troubleshoot-availability.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [多步骤 Web 测试](availability-multistep.md)
-* [URL ping Web 测试](monitor-web-app-availability.md)
+* [多步骤 web 测试](availability-multistep.md)
+* [Url ping web 测试](monitor-web-app-availability.md)

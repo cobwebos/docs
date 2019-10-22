@@ -1,5 +1,5 @@
 ---
-title: 检查状态、设置日志记录并获取警报 - Azure 逻辑应用 | Microsoft Docs
+title: 检查状态、设置日志记录并获取警报-Azure 逻辑应用
 description: 针对 Azure 逻辑应用监视状态、记录诊断数据并设置警报
 services: logic-apps
 ms.service: logic-apps
@@ -8,14 +8,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: f6ece10c43c2c4a6bea92d14a8bf6fbdb49fd318
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 336e2ac93a954c35b7afc8dbb98dd1fca1838985
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261364"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680304"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>针对 Azure 逻辑应用监视状态、设置诊断日志记录，并启用警报
 
@@ -74,13 +73,13 @@ ms.locfileid: "71261364"
 
 ## <a name="turn-on-diagnostics-logging-for-your-logic-app"></a>为逻辑应用启用诊断日志记录
 
-若要在运行时详细信息和事件中进行更丰富的调试, 可以设置[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)的诊断日志记录。 Azure Monitor 是 Azure 中的一个服务，用于监视云和本地环境，帮助使其保持较高的可用性和性能。 
+若要在运行时详细信息和事件中进行更丰富的调试，可以设置[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)的诊断日志记录。 Azure Monitor 是 Azure 中的一项服务，用于监视云和本地环境，从而帮助你保持其可用性和性能。 
 
 在开始之前，需要具有一个 Log Analytics 工作区。 了解[如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择“逻辑应用”。 
 
-2. 在 "逻辑应用" 边栏选项卡上的 "**监视**" 下, 选择 "**诊断** > **诊断设置**"。
+2. 在 "逻辑应用" 边栏选项卡上的 "**监视**" 下，选择 "**诊断**>**诊断设置**"。
 
    ![依次转到“监视”、“诊断”、“诊断设置”](media/logic-apps-monitor-your-logic-apps/logic-app-diagnostics.png)
 
@@ -155,7 +154,7 @@ ms.locfileid: "71261364"
 
 ## <a name="extend-how-and-where-you-use-diagnostic-data-with-other-services"></a>扩展将诊断数据用于其他服务的方式和位置
 
-结合使用 Azure Monitor 日志后，可以扩展将逻辑应用的诊断数据用于其他 Azure 服务的方式，例如： 
+除了 Azure Monitor 日志，你还可以扩展将逻辑应用的诊断数据与其他 Azure 服务配合使用的方式，例如： 
 
 * [在 Azure 存储中存档 Azure 诊断日志](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [将 Azure 诊断日志流式传输到 Azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 
@@ -178,7 +177,7 @@ ms.locfileid: "71261364"
 
 要监视逻辑应用的特定指标或超出的阈值，请[在 Azure 中设置警报](../azure-monitor/platform/alerts-overview.md)。 了解 [Azure 中的指标](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。 
 
-若要设置警报而不[Azure Monitor 日志](../log-analytics/log-analytics-overview.md), 请执行以下步骤。 有关更高级的警报条件和操作，也可以[设置 Azure Monitor 日志](#azure-diagnostics)。
+若要设置警报而不[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)，请执行以下步骤。 对于更高级的警报条件和操作，也[设置 Azure Monitor 日志](#azure-diagnostics)。
 
 1. 在“逻辑应用”边栏选项卡菜单的“监视”下，选择“诊断” > “警报规则” > “添加警报”，如下所示：
 
@@ -270,7 +269,7 @@ ms.locfileid: "71261364"
     }
   }
   ```
-  下面是使用“初始化变量”操作的另一个示例。 该示例从操作的输入添加跟踪的属性，其中输入是数组，而不是记录。  
+  下面是使用 "**初始化变量**" 操作的另一个示例。 该示例从操作的输入中添加跟踪的属性，其中输入为数组，而不是记录。  
 
   ``` json
   "actions": { 
@@ -293,6 +292,6 @@ ms.locfileid: "71261364"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [自动完成逻辑应用部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [自动部署逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [具有 Enterprise Integration Pack 的 B2B 方案](../logic-apps/logic-apps-enterprise-integration-overview.md)
 * [监视 B2B 消息](../logic-apps/logic-apps-monitor-b2b-message.md)
