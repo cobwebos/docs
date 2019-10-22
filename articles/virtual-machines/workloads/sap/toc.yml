@@ -102,6 +102,8 @@
           href: sap-hana-high-availability-rhel.md
         - name: 排查 SAP HANA 横向扩展和 SLES 上的 Pacemaker 问题
           href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
+        - name: 在 SLES 上通过 Azure NetApp 文件使用备用节点横向扩展 SAP HANA
+          href: sap-hana-scale-out-standby-netapp-files-suse.md
     - name: SAP HANA 备份概述
       href: sap-hana-backup-guide.md
     - name: SAP HANA 文件级备份

@@ -13,33 +13,33 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/22/2019
+ms.date: 09/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: efe668e42e04942cc0d9fc99670057ab5bdd302a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 9151870836b1a616a79e54275ed185a425c11f0c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212123"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72385600"
 ---
-# <a name="tutorial-push-notifications-to-specific-windows-devices-running-universal-windows-platform-applications"></a>教程：向运行通用 Windows 平台应用程序的特定 Windows 设备推送通知
+# <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>教程：向运行通用 Windows 平台应用程序的特定设备发送通知
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 ## <a name="overview"></a>概述
 
-本教程演示如何使用 Azure 通知中心将突发新闻通知广播到 Windows 应用商店或 Windows Phone 8.1（非 Silverlight）应用程序。 如果要以 Windows Phone 8.1 Silverlight 为目标，请参阅 [Windows Phone](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) 版本。
+本教程演示如何使用 Azure 通知中心来广播突发新闻通知。 本教程涵盖 Windows 应用商店或 Windows Phone 8.1（非 Silverlight）应用程序。 如果你的目标是 Windows Phone 8.1 Silverlight，请参阅[使用 Azure 通知中心向特定 Windows Phone 设备推送通知](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md)。
 
-本教程介绍如何使用 Azure 通知中心将通知推送到运行通用 Windows 平台 (UWP) 应用程序的特定 Windows 设备。 完成本教程后，可注册感兴趣的突发新闻类别，之后你仅会收到这些类别的推送通知。
+本教程介绍如何使用 Azure 通知中心将通知推送到运行通用 Windows 平台 (UWP) 应用程序的特定 Windows 设备。 完成本教程后，可注册感兴趣的突发新闻类别， 之后你仅会收到这些类别的推送通知。
 
-在通知中心创建注册时，通过加入一个或多个*标记*来启用广播方案。 将通知发送到标记时，已注册该标记的所有设备将接收通知。 有关标记的详细信息，请参阅[注册中的标记](notification-hubs-tags-segment-push-message.md)。
+在通知中心创建注册时，可通过加入一个或多个标记来启用广播方案  。 将通知发送到标记时，已注册该标记的所有设备将接收通知。 有关标记的详细信息，请参阅[路由和标记表达式](notification-hubs-tags-segment-push-message.md)。
 
 > [!NOTE]
-> Visual Studio 2017 中不支持 Windows 应用商店和 Windows Phone 项目 8.1 及更早的版本。 有关详细信息，请参阅 [Visual Studio 2017 平台目标以及兼容性](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs)。
+> Visual Studio 2019 中不支持 Windows 应用商店和 Windows Phone 项目 8.1 及更早的版本。 有关详细信息，请参阅 [Visual Studio 2019 平台目标以及兼容性](/visualstudio/releases/2019/compatibility)。
 
-在本教程中，我们将执行以下步骤：
+在本教程中，你将执行以下任务：
 
 > [!div class="checklist"]
 > * 向移动应用添加类别选择
@@ -55,7 +55,7 @@ ms.locfileid: "71212123"
 
 第一步是向现有主页添加 UI 元素，以便用户选择要注册的类别。 所选类别会存储在设备上。 应用启动时，系统会将所选类别当做标记在通知中心创建设备注册。
 
-1. 打开 MainPage.xaml 项目文件，并复制 `Grid` 元素中的以下代码：
+1. 打开 *MainPage.xaml* 项目文件，并复制 `Grid` 元素中的以下代码：
 
     ```xml
     <Grid>
@@ -81,7 +81,9 @@ ms.locfileid: "71212123"
     </Grid>
     ```
 
-2. 在“解决方案资源管理器”中，右键单击项目，然后添加新类：  **Notifications**。 向类定义添加 **public** 修饰符，然后将以下 `using` 语句添加到新的代码文件：
+1. 在“解决方案资源管理器”  中，右键单击该项目，然后选择“添加”   >   “类”。 在“添加新项”中，将类命名为 *Notifications*，然后选择“添加”。   必要时向类定义添加 `public` 修饰符。
+
+1. 向新文件添加以下 `using` 语句：
 
     ```csharp
     using Windows.Networking.PushNotifications;
@@ -90,7 +92,7 @@ ms.locfileid: "71212123"
     using System.Threading.Tasks;
     ```
 
-3. 将以下代码复制到新的 `Notifications` 类：
+1. 将以下代码复制到新的 `Notifications` 类：
 
     ```csharp
     private NotificationHub hub;
@@ -134,14 +136,14 @@ ms.locfileid: "71212123"
 
     此类使用本地存储区存储此设备必须接收的新闻类别。 使用模板注册来注册类别时，应调用 `RegisterTemplateAsync` 方法，而不能调用 `RegisterNativeAsync`。
 
-    如果需要注册多个模板（例如一个模板针对 toast 通知，一个模板针对磁贴），请提供模板名称（例如“simpleWNSTemplateExample”）。 为模板命名以便更新或删除模板。
+    如果需要注册多个模板，请提供模板名称，例如 *simpleWNSTemplateExample*。 为模板命名以便更新或删除模板。 可以注册多个模板，一个用于 toast 通知，一个用于磁贴。
 
     >[!NOTE]
-    >如果一个设备使用同一标记注册多个模板，针对该标记的传入消息会导致系统向该设备发送多个通知（每个通知对应一个模板）。 当同一逻辑消息必定导致多个可视化通知时（例如，在 Windows 应用商店应用程序中同时显示徽章和 toast），此行为很有用。
+    > 通过通知中心，设备可使用同一标记注册多个模板。 在这种情况下，针对该标签的传入的邮件将导致系统向设备发送多个通知（每个通知对应一个模板）。 此过程可以在多个可视通知中显示同一消息，如显示为 Windows 应用商店应用中的徽章和 toast 通知。
 
     有关详细信息，请参阅[模板](notification-hubs-templates-cross-platform-push-messages.md)。
 
-4. 在 App.xaml.cs 项目文件中，将以下属性添加到 `App` 类：
+1. 在 *App.xaml.cs* 项目文件中，将以下属性添加到 `App` 类：
 
     ```csharp
     public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
@@ -149,18 +151,18 @@ ms.locfileid: "71212123"
 
     使用此属性创建和访问 `Notifications` 实例。
 
-    在代码中，将 `<hub name>` 和 `<connection string with listen access>` 占位符替换为通知中心的名称和之前获取的 *DefaultListenSharedAccessSignature* 的连接字符串。
+    在代码中，将 `<hub name>` 和 `<connection string with listen access>` 占位符替换为通知中心的名称和之前获取的 **DefaultListenSharedAccessSignature** 的连接字符串。
 
    > [!NOTE]
    > 使用客户端应用分发的凭据通常不安全，因此请使用客户端应用仅分发具有侦听访问权限的密钥  。 拥有侦听访问权限后，应用可注册通知，但是无法修改现有注册，也无法发送通知。 在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
 
-5. 在 `MainPage.xaml.cs` 文件中添加以下行：
+1. 在 *MainPage.xaml.cs* 文件中添加以下行：
 
     ```csharp
     using Windows.UI.Popups;
     ```
 
-6. 在 `MainPage.xaml.cs` 文件中添加以下方法：
+1. 在 *MainPage.xaml.cs* 文件中添加以下方法：
 
     ```csharp
     private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
@@ -181,7 +183,7 @@ ms.locfileid: "71212123"
     }
     ```
 
-    此方法创建一个类别列表并使用 `Notifications` 类将该列表存储在本地存储中。 它还会向通知中心注册相应的标记。 类别有更改时，会使用新类别重新创建注册。
+    此方法创建一个类别列表并使用 `Notifications` 类将该列表存储在本地存储中。 它还会向通知中心注册相应的标记。 类别更改时，会使用新类别重新创建注册。
 
 现在，应用可在设备的本地存储中存储一组类别。 每当用户更改类别选择时，应用都会向通知中心注册。
 
@@ -190,9 +192,9 @@ ms.locfileid: "71212123"
 本部分中将使用存储在本地存储中的类别，在启动时向通知中心注册。
 
 > [!NOTE]
-> 由于 Windows 通知服务 (WNS) 分配的通道 URI 随时可能更改，因此应该经常注册通知以避免通知失败。 此示例在每次应用程序启动时注册通知。 对于经常运行（一天一次以上）的应用，如果距上次注册时间不到一天，可以跳过注册，以节省带宽。
+> 由于 Windows 通知服务 (WNS) 分配的通道 URI 随时可能更改，因此应该经常注册通知以避免通知失败。 此示例在每次应用程序启动时注册通知。 对于经常运行（例如，一天一次以上）的应用，如果距上次注册时间不到一天，可以跳过注册，以节省带宽。
 
-1. 若要使用 `notifications` 类基于类别订阅，请打开 App.xaml.cs 文件，然后更新 `InitNotificationsAsync` 方法。
+1. 若要使用 `notifications` 类基于类别订阅，请打开 *App.xaml.cs* 文件，然后更新 `InitNotificationsAsync` 方法。
 
     ```csharp
     // *** Remove or comment out these lines ***
@@ -203,8 +205,8 @@ ms.locfileid: "71212123"
     var result = await notifications.SubscribeToCategories();
     ```
 
-    此过程可确保应用启动时会从本地存储区检索类别并请求注册这些类别。 你已在学习[通知中心入门][get-started]教程的过程中创建了 `InitNotificationsAsync` 方法。
-2. 在 `MainPage.xaml.cs` 项目文件的 `OnNavigatedTo` 方法中添加以下代码：
+    此过程可确保应用启动时会从本地存储区检索类别 并请求注册这些类别。 我们已在[使用 Azure 通知中心向通用 Windows 平台应用发送通知][get-started]教程中创建 `InitNotificationsAsync` 方法。
+2. 在 *MainPage.xaml.cs* 项目文件的 `OnNavigatedTo` 方法中添加以下代码：
 
     ```csharp
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -222,18 +224,19 @@ ms.locfileid: "71212123"
 
     此代码基于以前保存的类别状态更新主页。
 
-应用现已完成。 它可以在设备的本地存储中存储一组类别，当用户更改类别选择时，使用它向通知中心注册。 下一部分将定义一个后端，该后端可将类别通知发送到此应用。
+应用现已完成。 它可以在设备的本地存储中存储一组类别。 当用户更改类别选择时，保存的类别用于向通知中心注册。 下一部分将定义一个后端，该后端可将类别通知发送到此应用。
 
-## <a name="run-the-uwp-app"></a>运行 UWP 应用 
-1. 在 Visual Studio 中，选择 F5 编译并启动应用  。 应用 UI 提供了一组开关，可以使用它们选择要订阅的类别。
+## <a name="run-the-uwp-app"></a>运行 UWP 应用
 
-    ![突发新闻应用](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png)
+1. 在 Visual Studio 中，选择 F5 编译并启动应用。 应用 UI 提供了一组开关，可以使用它们选择要订阅的类别。
 
-2. 启用一个或多个类别切换，然后单击“订阅”  。
+   ![突发新闻应用](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breaking-news.png)
 
-    应用程序将所选类别转换为标签并针对所选标签从通知中心请求注册新设备。 返回注册的类别并显示在对话框中。
+1. 启用一个或多个类别切换，然后选择“订阅”  。
 
-    ![类别切换和订阅按钮](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png)
+   应用程序将所选类别转换为标签并针对所选标签从通知中心请求注册新设备。 应用在对话框中显示注册的类别。
+
+    ![类别切换和订阅按钮](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast.png)
 
 ## <a name="create-a-console-app-to-send-tagged-notifications"></a>创建一个控制台应用以发送带标记的通知
 
@@ -241,18 +244,14 @@ ms.locfileid: "71212123"
 
 ## <a name="run-the-console-app-to-send-tagged-notifications"></a>运行控制台应用以发送带标记的通知
 
-1. 运行上一部分中创建的应用。
-2. 所选类别的通知作为 toast 通知显示。 如果选择通知，则会看到第一个 UWP 应用窗口。 
-
-     ![Toast 通知](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png)
-
+运行上一部分中创建的应用。 所选类别的通知作为 toast 通知显示。
 
 ## <a name="next-steps"></a>后续步骤
 
 我们已通过本文了解了如何按类别广播突发新闻。 后端应用程序将带标记的通知推送到特定设备，这些设备已注册接收该标记的通知。 若要了解如何向特定用户推送通知而不管这些用户使用什么设备，请转到以下教程：
 
 > [!div class="nextstepaction"]
-> [推送本地化通知](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
+> [使用 Azure 通知中心向 Windows 应用推送本地化通知](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 
 <!-- Anchors. -->
 [Add category selection to the app]: #adding-categories

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 83339273d9161c3947df191d10e788980db39b28
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 4a6fd7dd40905a8a81a104c9d6ef22040ff88f15
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "67446035"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516313"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>快速入门：使用 Node.js 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案（预览）
 
@@ -76,10 +76,10 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
    > [!NOTE]
    > * 请将 *YourIoTHubName* 占位符替换为你为 IoT 中心选择的名称。
-   > * 如示例中所示使用 *MyDevice*。 它是为注册的设备提供的名称。 如果为设备选择其他名称，请在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   > * 对于正在注册的设备的名称，建议使用 *MyDevice*，如下所示。 如果为设备选择其他名称，请在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 1. 为使后端应用程序能够连接到 IoT 中心并检索消息，还需要一个服务连接字符串。  以下命令检索 IoT 中心的该字符串：
@@ -88,10 +88,10 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
    > 请将 *YourIoTHubName* 占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
     ```
 
-    请记下返回的值，因为稍后要在本快速入门中用到它。 如以下示例所示：
+   请记下返回的服务连接字符串，以便稍后在此快速入门中使用。 如以下示例所示：
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
@@ -110,25 +110,25 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 ### <a name="run-the-service-local-proxy-application"></a>运行服务本地代理应用程序
 
-当设备本地代理应用程序正在运行时，请按如下所述运行以 Node.js 编写的服务本地代理应用程序：
+当设备本地代理应用程序正在运行时，请在本地终端窗口中执行以下操作，以便运行以 Node.js 编写的服务本地代理应用程序：
 
 1. 对于环境变量，请提供服务凭据、运行 SSH 守护程序的目标设备 ID，以及设备上运行的代理的端口号。
 
    ```
    # In Linux
-   export IOTHUB_CONNECTION_STRING="<provide_your_service_connection_string>"
+   export IOTHUB_CONNECTION_STRING="{ServiceConnectionString}"
    export STREAMING_TARGET_DEVICE="MyDevice"
    export PROXY_PORT=2222
 
    # In Windows
-   SET IOTHUB_CONNECTION_STRING=<provide_your_service_connection_string>
+   SET IOTHUB_CONNECTION_STRING={ServiceConnectionString}
    SET STREAMING_TARGET_DEVICE=MyDevice
    SET PROXY_PORT=2222
    ```
 
-   更改上述值以匹配设备 ID 和连接字符串。
+   更改 ServiceConnectionString 占位符以匹配服务连接字符串，并更改 **MyDevice** 以匹配设备 ID（如果你给自己的设备起了不同的名称）。
 
-1. 转到解压缩的项目文件夹中的 *Quickstarts/device-streams-service* 目录，然后运行服务本地代理应用程序。
+1. 导航到解压缩的项目文件夹中的 `Quickstarts/device-streams-service` 目录。 使用以下代码运行服务本地代理应用程序：
 
    ```
    cd azure-iot-samples-node-streams-preview/iot-hub/Quickstarts/device-streams-service

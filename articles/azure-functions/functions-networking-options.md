@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 967988d802a1b3d33ff50f578650e44794015583
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9fe7147325b2e14a7ae6bb4b31aa941fb4059b11
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550860"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72690832"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
@@ -36,7 +36,7 @@ ms.locfileid: "72550860"
 |[& 专用站点访问的入站 IP 限制](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
 |[虚拟网络集成](#virtual-network-integration)|❌No|✅Yes （区域）|✅Yes （区域和网关）|✅Yes|
 |[虚拟网络触发器（非 HTTP）](#virtual-network-triggers-non-http)|❌No| ❌No|✅Yes|✅Yes|
-|[混合连接](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
+|[混合连接](#hybrid-connections)|❌No|✅Yes|✅Yes|✅Yes|
 |[出站 IP 限制](#outbound-ip-restrictions)|❌No| ❌No|❌No|✅Yes|
 
 
@@ -127,11 +127,11 @@ VNet 集成不支持某些功能，其中包括：
 
 ## <a name="hybrid-connections"></a>混合连接
 
-[混合连接](../service-bus-relay/relay-hybrid-connections-protocol.md)是 Azure 中继的一项功能，可用于访问其他网络中的应用程序资源。 使用混合连接可以从应用访问应用程序终结点。 不能使用它来访问应用程序。 混合连接可用于在[应用服务计划](functions-scale.md#app-service-plan)和[应用服务环境](../app-service/environment/intro.md)中运行的函数。
+[混合连接](../service-bus-relay/relay-hybrid-connections-protocol.md)是 Azure 中继的一项功能，可用于访问其他网络中的应用程序资源。 使用混合连接可以从应用访问应用程序终结点。 不能使用它来访问应用程序。 混合连接可用于除了消耗计划中运行的函数。
 
 在 Azure Functions 中使用时，每个混合连接与单个 TCP 主机和端口组合相关联。 这意味着混合连接的终结点可以位于任何操作系统和任何应用程序上，前提是你要访问 TCP 侦听端口。 混合连接功能不知道或不关心应用程序协议的定义，或者正在访问的内容。 它只提供网络访问。
 
-若要了解详细信息，请参阅支持应用服务计划中的功能的[混合连接应用服务文档](../app-service/app-service-hybrid-connections.md)。
+若要了解详细信息，请参阅[混合连接的应用服务文档](../app-service/app-service-hybrid-connections.md)，该文档通过相同的配置步骤支持函数。
 
 ## <a name="outbound-ip-restrictions"></a>出站 IP 限制
 

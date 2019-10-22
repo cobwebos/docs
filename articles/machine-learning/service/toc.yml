@@ -297,7 +297,15 @@
         - name: 数据输入和输出
           items:
             - name: 导入数据
-              href: ../algorithm-module-reference/import-data.md
+              items:
+                - name: 导入数据
+                  href: ../algorithm-module-reference/import-data.md
+                - name: 通过 HTTP 从 Web URL 导入
+                  href: ../algorithm-module-reference/import-from-web-url-via-http.md
+                - name: 从 Azure Blob 存储模块导入
+                  href: ../algorithm-module-reference/import-from-azure-blob-storage.md
+                - name: 从 Azure SQL 数据库导入
+                  href: ../algorithm-module-reference/import-from-azure-sql-database.md
             - name: 导出数据
               href: ../algorithm-module-reference/export-data.md
             - name: 手动输入数据
@@ -330,6 +338,10 @@
               href: ../algorithm-module-reference/normalize-data.md
             - name: 分区和采样
               href: ../algorithm-module-reference/partition-and-sample.md
+            - name: 剪切值
+              href: ../algorithm-module-reference/clip-values.md
+            - name: 应用 SQL 转换
+              href: ../algorithm-module-reference/apply-sql-transformation.md
         - name: 机器学习
           items:
             - name: 评分模型
@@ -382,6 +394,12 @@
               href: ../algorithm-module-reference/create-python-model.md
             - name: 执行 R 脚本
               href: ../algorithm-module-reference/execute-r-script.md
+        - name: 统计函数
+          items:
+            - name: 应用数学运算
+              href: ../algorithm-module-reference/apply-math-operation.md
+            - name: 汇总数据
+              href: ../algorithm-module-reference/summarize-data.md
         - name: 错误消息和代码
           href: ../algorithm-module-reference/machine-learning-module-error-codes.md
 - name: 资源

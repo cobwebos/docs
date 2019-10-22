@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 09/14/2019
-ms.openlocfilehash: 0465dcba5130f3b2dc5c615c884bfa0d3b138eb7
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.date: 10/10/2019
+ms.openlocfilehash: f5136084530c48815fd6a9f9e25b7358df00af07
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514935"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692523"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什么是 Azure 机器学习管道？
 
@@ -112,6 +112,14 @@ Azure ML 管道使用排序的一系列步骤来执行完整的逻辑工作流�
 Azure ML 管道与 Azure 机器学习工作区关联，管道步骤与该工作区中可用的计算目标相关联。 有关详细信息，请参阅[创建和管理 Azure 门户中的 Azure 机器学习工作区](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace)或[Azure 机器学习中的计算目标？](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target)。
 
 在 Azure 机器学习中，计算目标是发生 ML 阶段的环境。 软件环境可以是远程 VM、Azure 机器学习计算、Azure Databricks、Azure Batch 等。 硬件环境也可能会有很大差异，具体取决于 GPU 支持、内存、存储等。 你可以为每个步骤指定计算目标，这使你可以精细控制成本。 你可以使用更多或不太强大的资源来满足你的项目的特定操作、数据量和性能需求。 
+
+## <a name="how-do-i-build-pipelines-using-the-azure-machine-learning-visual-interface"></a>使用 Azure 机器学习可视界面如何实现生成管道？
+
+更喜欢可视化设计图面的开发人员可以使用 Azure 机器学习的可视化界面来创建管道。 你可以从工作区主页上的**可视界面**选择访问此工具。  通过视觉对象界面，可以将步骤拖放到设计图面上。 若要进行快速开发，可以在 ML 任务范围内使用现有模块;现有模块涵盖了从数据转换到算法选择、定型到部署的所有内容。 或者，你可以通过组合你自己在 Python 脚本中定义的步骤来创建完全自定义管道。
+
+在直观地设计管道时，步骤的输入和输出显示为可见。 您可以拖放数据连接，使您能够快速理解和修改管道的数据流。
+ 
+![Azure 机器学习视觉对象接口示例](./media/concept-ml-pipelines/visual-design-surface.gif)
 
 ### <a name="understanding-the-execution-graph"></a>了解执行图
 

@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 中避免意外的成本和管理计费
-description: 了解如何在 Azure 帐单上避免意外费用。 将成本跟踪和管理功能用于 Azure 订阅。
+description: 了解如何在 Azure 帐单上避免意外费用。 将成本跟踪和管理功能用于 Azure 帐户。
 author: bandersmsft
 manager: amberb
 tags: billing
@@ -11,110 +11,80 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: d6c287d5ead0095a4f7bb5ad754212b134f7103c
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 6f7a29adfbd145be11f9f6c91e8e66dd229fed62
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719807"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375677"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>通过 Azure 计费和成本管理来防止意外费用
 
 注册 Azure 时，可以采取几种措施来更好地了解自己的支出：
 
-- [定价计算器](https://azure.microsoft.com/pricing/calculator/)可在创建 Azure 资源之前提供成本估计。 
-
-- [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)可提供订阅的当前成本细分和预测。 
-
-- 如果要对不同项目或团队的成本进行分组和了解，请查看[资源标记](../azure-resource-manager/resource-group-using-tags.md)。 如果组织有希望使用的报告系统，请查看[计费 API](billing-usage-rate-card-overview.md)。
-
-- 如果订阅是通过企业协议 (EA) 创建的，则你可以在 Azure 门户中查看成本。 如果订阅是通过云解决方案提供商 (CSP) 或 Azure 赞助创建的，则以下某些功能可能不适用。 有关详细信息，请参阅[适用于 EA、CSP 和赞助的其他资源](#other-offers)。
-
-- 如果订阅是免费试用套餐、[Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)、Azure 开放许可 (AIO) 或 BizSpark，则在用完所有额度后，订阅将自动禁用。 了解[支出限制](#spending-limit)，避免意外禁用订阅。
-
-- 如果你已注册 [Azure 免费帐户](https://azure.microsoft.com/free/)，[可以免费使用某些最常用的 Azure 服务 12 个月](billing-create-free-services-included-free-account.md)。 请参考下面列出的建议，同时请参阅[避免为免费帐户付费](billing-avoid-charges-free-account.md)。
+- 在添加服务之前通过[定价计算器](https://azure.microsoft.com/pricing/calculator/)、Azure 价目表获取估算的成本，也可在添加服务时通过 Azure 门户这样做。
+- 通过[预算](../cost-management/tutorial-acm-create-budgets.md)、[警报](../cost-management/cost-mgt-alerts-monitor-usage-spending.md)和[成本分析](../cost-management/quick-acm-cost-analysis.md)监视成本。
+- 通过与[详细的使用情况文件](billing-download-azure-invoice-daily-usage-date.md)进行比较，查看发票上的费用。
+- 使用[计费](https://docs.microsoft.com/rest/api/billing/)和[消耗](https://docs.microsoft.com/rest/api/consumption/) API 将计费和成本数据与你自己的报表系统集成。
+- 将其他资源和工具用于企业协议 (EA)、云解决方案提供商 (CSP) 和 Azure 赞助客户。
+- [免费使用某些最常用的 Azure 服务 12 个月](billing-create-free-services-included-free-account.md)，这些服务可通过 [Azure 免费帐户](https://azure.microsoft.com/free/)获取。 请参考下面列出的建议，同时请参阅[避免为免费帐户付费](billing-avoid-charges-free-account.md)。
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>在添加 Azure 服务之前获取估计成本
 
-下面提供了有关使用以下工具估算成本的一些附加信息：
+通过以下工具之一估算使用 Azure 服务的成本：
 - Azure 定价计算器
+- Azure 价目表
 - Azure 门户
-- 支出限制
 
 以下部分中的插图以美元显示示例定价。
 
 ### <a name="estimate-cost-online-using-the-pricing-calculator"></a>使用定价计算器在线估计成本
 
-查看[定价计算器](https://azure.microsoft.com/pricing/calculator/)，获取感兴趣的服务的每月估计成本。 可以添加任何第一方 Azure 资源来获取估算成本。 在定价计算器中，可以更改货币类型。
+查看[定价计算器](https://azure.microsoft.com/pricing/calculator/)，获取要添加的服务的每月估算成本。 可以更改货币，以本地货币进行估算。
 
 ![定价计算器菜单的屏幕截图](./media/billing-getting-started/pricing-calc.png)
 
-例如，在定价计算器中，如果将某个 A1 Windows 虚拟机 (VM) 一直保持运行，则会按计算小时数以特定的每月金额估算其成本：
+可以查看任何第一方 Azure 服务的估算成本。 例如，在下面的屏幕截图中，如果 A1 Windows 虚拟机 (VM) 一直在运行，则其成本预计为 66.96 美元/月（按计算小时数算）：
 
 ![定价计算器的屏幕截图，其中显示了 A1 Windows VM 的每月预算成本](./media/billing-getting-started/pricing-calcvm.png)
 
 有关定价的详细信息，请参阅[定价常见问题解答](https://azure.microsoft.com/pricing/faq/)。 若要与 Azure 销售人员沟通，请拨打“常见问题解答”页顶部提供的电话号码。
 
+### <a name="view-and-download-azure-price-sheet"></a>查看和下载 Azure 价目表
+
+如果通过企业协议 (EA) 或 Microsoft 客户协议 (MCA) 访问 Azure，则可查看和下载 Azure 帐户的价目表。 价目表是一个 Excel 文件，其中包含所有 Azure 服务的价格。 有关详细信息，请参阅[查看和下载 Azure 定价](billing-ea-pricing.md)。
+
 ### <a name="review-estimated-costs-in-the-azure-portal"></a>在 Azure 门户中查看估算成本
 
-通常，在 Azure 门户中添加服务时，会有一个视图显示每月的估算成本（采用你的帐单货币）。 例如，选择 Windows VM 的大小时，可看到计算小时数的每月估计成本：
+可以在通过 Azure 门户添加服务时查看每月估算成本。 例如，选择 Windows VM 的大小时，可看到计算小时数的每月估计成本：
 
 ![示例：A1 Windows VM 及其每月估算成本](./media/billing-getting-started/vm-size-cost.png)
-
-### <a name="spending-limit"></a>检查支出限制是否为开启状态
-
-如果有使用信用额度的订阅，则将默认开启支出限制。 这样一来，当信用额度花完时，不再对信用卡计费。 请参阅 [Azure 产品/服务以及支出限制可用性的完整列表](https://azure.microsoft.com/support/legal/offer-details/)。
-
-但是，在达到支出限制时，服务将会禁用。 这意味着 VM 会被解除分配。 若要避免服务中断，必须关闭支出限制。 任何超额都将对保存的信用卡收费。
-
-若要查看支出限制是否为启用状态，请转到[帐户中心的订阅视图](https://account.windowsazure.com/Subscriptions)。 如果支出限制为“打开”，则会显示如下所示的横幅：
-
-![帐户中心中，显示支出限制为开启状态的警告信息的屏幕截图](./media/billing-getting-started/spending-limit-banner.png)
-
-单击该横幅，并按提示删除支出限制。 如果注册时未输入信用卡信息，则必须输入信息才能移除支出限制。 有关详细信息，请参阅 [Azure 支出限制 - 其工作原理以及如何将其启用或移除](https://azure.microsoft.com/pricing/spending-limits/)。
-
-## <a name="use-budgets-and-cost-alerts"></a>使用预算和成本警报
-
-可以创建[预算](../cost-management/tutorial-acm-create-budgets.md)来管理成本，并创建[警报](../cost-management/cost-mgt-alerts-monitor-usage-spending.md)以自动通知利益干系人支出异常和超支风险。 警报基于与预算和成本阈值相比的支出。
 
 ## <a name="monitor-costs-when-using-azure-services"></a>使用 Azure 服务时监视成本
 可以使用以下工具监视成本：
 
-- Tags
-- 成本细分和消耗率
+- 预算和成本警报
 - 成本分析
 
-### <a name="tags"></a> 将标记添加到资源以将计费数据分组
+### <a name="track-costs-with-budgets-and-cost-alerts"></a>通过预算和成本警报跟踪成本
 
-可以使用标记来对受支持服务的计费数据进行分组。 例如，如果为不同的团队运行多个 VM，可以使用标记按成本中心（例如人力资源、营销、财务等）或环境（例如生产、预生产、测试）将成本分类。
+创建[预算](../cost-management/tutorial-acm-create-budgets.md)来管理成本，并创建[警报](../cost-management/cost-mgt-alerts-monitor-usage-spending.md)来自动通知利益干系人支出异常和超支。 
 
-![显示在门户中设置标记的屏幕截图](./media/billing-getting-started/tags.png)
+### <a name="costs"></a> 使用成本分析探究和分析成本
 
-各标记显示了完全不同的成本报告视图。 例如，[成本分析视图](#costs)中会立即显示这些标记，而在详细使用情况 CSV 文件中，则需要在第一个计费期之后才会显示。
+运行 Azure 服务后，请定期检查成本以跟踪 Azure 支出。 可以使用成本分析了解 Azure 使用情况成本的来源。 
 
-有关详细信息，请参阅[使用标记来组织 Azure 资源](../azure-resource-manager/resource-group-using-tags.md)。
+1. 访问 [Azure 门户中的“成本管理 + 计费”页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade)。
 
-### <a name="costs"></a> 监视成本细分和消耗率
-
-运行 Azure 服务后，请定期检查费用。 可在 Azure 门户中查看当前支出和消耗率。
-
-1. 访问 [Azure 门户中的“订阅”](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并选择一个订阅。
-
-2. 如果你的订阅支持该功能，则你可以查看成本细分和消耗率。
-
-    ![Azure 门户中消耗率和明细的屏幕截图](./media/billing-getting-started/burn-rate.PNG)
-
-3. 在左侧列表中单击[“成本分析”](../cost-management/quick-acm-cost-analysis.md)，以按资源查看成本细分。 添加服务后，请等待 24 小时以显示数据。
+2. 单击屏幕左侧的“成本分析”，  按各种透视图（例如服务、位置和订阅）查看当前的成本细分。 添加服务或进行购买后，请等待 24 小时，以便系统显示数据。 默认情况下，成本分析显示你所在范围的成本。 例如，在下面的屏幕截图中，显示的是 Contoso 计费帐户的成本。 使用“范围”框可在成本分析中切换到不同的范围。 有关范围的详细信息，请参阅[了解并使用范围](../cost-management/understand-work-scopes.md#scopes)
 
     ![Azure 门户中成本分析视图的屏幕截图](./media/billing-getting-started/cost-analysis.png)
 
-4. 可按[标记](#tags)、资源类型、资源组和时间跨度等不同的属性进行筛选。 单击“应用”确认筛选条件；若要将视图导出为逗号分隔值 (.csv) 文件，请单击“下载”。  
+4. 可按各种属性（例如标记、资源类型和时间跨度）进行筛选。 单击“添加筛选器”，添加某个属性的筛选器，然后选择要筛选的值。  选择“导出”  ，将视图导出为逗号分隔值 (.csv) 文件。
 
-5. 此外，还可以单击资源，查看每日费用历史记录以及每天的资源成本。
+5. 此外，还可以单击图表的标签，查看该标签的每日支出历史记录。 例如：在下面的屏幕截图中，单击虚拟机会显示运行 VM 的每日成本。
 
     ![Azure 门户中费用历史记录视图的屏幕截图](./media/billing-getting-started/costhistory.png)
-
-将看到的成本与选择服务时看到的估算值进行比较。 如果看到的成本与估算值相差很大，请检查之前为资源选择的定价计划。
 
 ## <a name="optimize-and-reduce-costs"></a>优化和降低成本
 如果你不熟悉成本管理的原理，请阅读[如何使用 Azure 成本管理优化云投资](../cost-management/cost-mgt-best-practices.md)。
@@ -133,23 +103,25 @@ ms.locfileid: "71719807"
 
 ### <a name="turn-on-and-review-azure-advisor-recommendations"></a>启用和查看 Azure 顾问建议
 
-[Azure 顾问](../advisor/advisor-overview.md)可帮助你识别很少使用的资源，以此降低成本。 在 Azure 门户访问顾问：
+[Azure 顾问](../advisor/advisor-overview.md)可帮助你识别很少使用的资源，以此降低成本。 在 Azure 门户中搜索“顾问”  ：
 
 ![Azure 门户中的 Azure 顾问按钮的屏幕截图](./media/billing-getting-started/advisor-button.png)
 
-可在顾问仪表板的“成本”选项卡中获得可行的建议： 
+在左侧选择“成本”。  此时会在“成本”选项卡中显示可行的建议： 
 
 ![顾问成本建议示例的屏幕截图](./media/billing-getting-started/advisor-action.png)
 
 有关成本节省顾问建议的指导教程，请查看[根据建议优化成本](../cost-management/tutorial-acm-opt-recommendations.md)。
 
-## <a name="review-costs-against-your-latest-invoice"></a>根据最新的发票检查成本
+## <a name="review-charges-against-your-latest-invoice"></a>根据最新发票查看费用
 
-计费周期结束时，会提供最新的发票。 也可以[下载发票和详细使用情况文件](billing-download-azure-invoice-daily-usage-date.md)，以确保收费无误。 有关比较每日使用情况和发票的详细信息，请参阅[了解 Microsoft Azure 帐单](billing-understand-your-bill.md)。
+发票在计费周期结束时提供。 可以[下载发票和详细使用情况文件](billing-download-azure-invoice-daily-usage-date.md)并对其进行比较，确保收费无误。 有关比较每日使用情况和发票的详细信息，请参阅[了解 Microsoft Azure 帐单](billing-understand-your-bill.md)。
 
-### <a name="billing-api"></a>计费 API
+如果通过 Microsoft 客户协议 (MCA) 使用 Azure，也可[将发票与交易进行比较](billing-mca-understand-your-bill.md#view-transactions-for-an-invoice-in-the-azure-portal)，了解发票上的费用。
 
-使用 Azure 计费 API 以编程方式获取使用情况数据。 同时使用 RateCard API 和使用情况 API 获取计费使用情况。 有关详细信息，请参阅[深入了解 Microsoft Azure 资源消耗](billing-usage-rate-card-overview.md)。
+## <a name="integrate-with-billing-and-consumption-apis"></a>集成计费和消耗 API
+
+使用 Azure [计费](https://docs.microsoft.com/rest/api/billing/)和[消耗](https://docs.microsoft.com/rest/api/consumption/) API 以编程方式获取计费和成本数据。 同时使用 RateCard API 和使用情况 API 获取计费使用情况。 有关详细信息，请参阅[深入了解 Microsoft Azure 资源消耗](billing-usage-rate-card-overview.md)。
 
 ## <a name="other-offers"></a>其他资源和特殊情况
 
@@ -164,7 +136,7 @@ ms.locfileid: "71719807"
 
 如果管理大型组织的 IT，建议阅读 [Azure 企业基架](/azure/architecture/cloud-adoption-guide/subscription-governance)和[企业 IT 白皮书](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf)（.pdf 下载，仅英文版）。
 
-#### <a name="EA"></a> Azure 门户中的企业协议成本视图
+### <a name="EA"></a> Azure 门户中的企业协议成本视图
 
 企业成本视图目前为公共预览版。 注意事项：
 
@@ -175,21 +147,18 @@ ms.locfileid: "71719807"
     - 你是帐户所有者且你的注册管理员已禁用“AO 查看费用”设置。  请联系你的注册管理员以获取费用访问权限。
     - 你是部门管理员且你的注册管理员已禁用“DA 查看费用”设置。   联系你的注册管理员以获取访问权限。
     - 你是从某个渠道合作伙伴购买的 Azure，而该合作伙伴未发布定价信息。  
-- 如果你在企业门户中更新与成本访问相关的设置，则更改过几分钟后才会显示在 Azure 门户中。
+- 如果在企业门户中更新与成本、访问相关的设置，则更改过几分钟后才会显示在 Azure 门户中。
 - 支出限制和发票指南不适用于 EA 订阅。
 
 ### <a name="check-your-subscription-and-access"></a>查看订阅和访问权限
 
-若要查看成本，必须具有[对计费信息的订阅级访问权限](billing-manage-access.md)。 只有帐户管理员可以访问[帐户中心](https://account.azure.com/Subscriptions)、更改计费信息以及管理订阅。 帐户管理员是完成注册过程的人员。 有关详细信息，请参阅[添加或更改管理订阅或服务的 Azure 管理员角色](billing-add-change-azure-subscription-administrator.md)。
+若要查看成本，必须具有对成本或账单信息的帐户或订阅级别访问权限。 此访问权限因计费帐户的类型而异。 若要详细了解计费帐户并检查计费帐户的类型，请参阅[在 Azure 门户中查看计费帐户](billing-view-all-accounts.md)。
 
-若要查看你是否为帐户管理员，请转到 [Azure 门户中的“订阅”](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。 查看订阅列表并找到“我的角色”。  如果角色是“帐户管理员”，则表示你拥有完全特权。  如果显示“所有者”等其他角色，则表示你不拥有完全特权。 
+如果通过 Microsoft Online Service 计划 (MOSP) 计费帐户访问 Azure，请参阅[管理对 Azure 账单信息的访问权限](billing-manage-access.md)。
 
-![Azure 门户中订阅视图中的角色的屏幕截图](./media/billing-getting-started/sub-blade-view.PNG)
+如果通过企业协议 (EA) 计费帐户访问 Azure，请参阅[了解 Azure 中的 Azure 企业协议管理角色](billing-understand-ea-roles.md)。
 
-若要管理订阅以及更改计费信息，请[查找帐户管理员](billing-subscription-transfer.md#whoisaa)。请求帐户管理员来完成任务，或者[将订阅转移给你](billing-subscription-transfer.md)。
-
-当帐户管理员不再属于组织，并且需要管理帐单时，请[联系我们](https://go.microsoft.com/fwlink/?linkid=2083458)。
-
+如果通过 Microsoft 客户协议 (MCA) 计费帐户访问 Azure，请参阅[了解 Azure 中的 Microsoft 客户协议管理角色](billing-understand-mca-roles.md)。
 
 ### <a name="request-a-service-level-agreement-credit-for-a-service-incident"></a>请求服务事件的服务级别协议额度
 

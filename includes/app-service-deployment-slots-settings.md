@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: cephalin
 ms.openlocfilehash: e00db06346b19ef85eb77626eb2ed169d2224b6c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71129696"
 ---
 从另一个部署槽克隆配置时，可以编辑克隆的配置。 某些配置元素会在交换（而不是特定于插槽）后跟随内容，而其他配置元素会在交换（特定于槽）后保留在同一插槽中。 以下列表显示交换槽时会更改的设置。

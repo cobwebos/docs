@@ -1,5 +1,5 @@
 ---
-title: 执行 R 脚本:模块参考
+title: 执行 R 脚本：模块引用
 titleSuffix: Azure Machine Learning service
 description: 了解如何使用 Azure 机器学习服务中的执行 R 脚本模块来运行 R 代码。
 services: machine-learning
@@ -9,31 +9,31 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: 01fb3325bed889911c79a4f828afa27b86d746db
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 01d4e3a06b8c6a95374b9ee246864167e6d2ac85
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128810"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693769"
 ---
 # <a name="execute-r-script"></a>执行 R 脚本
 
-本文介绍如何使用 "**执行 r 脚本**" 模块在视觉界面试验中运行 r 代码。
+本文介绍如何使用 "**执行 r 脚本**" 模块在视觉界面管道中运行 R 代码。
 
-使用 R, 你可以执行现有模块当前不支持的任务, 例如: 
+使用 R，你可以执行现有模块当前不支持的任务，例如： 
 - 创建自定义数据转换
 - 使用你自己的度量值来评估预测
 - 使用在 visual interface 中未实现为独立模块的算法生成模型
 
 ## <a name="r-version-support"></a>R 版本支持
 
-Azure 机器学习 service 视觉对象接口使用 R 的 CRAN (全面 R 存档网络) 分发。当前使用的版本为 CRAN 3.5.1。
+Azure 机器学习 service 视觉对象接口使用 R 的 CRAN （全面 R 存档网络）分发。当前使用的版本为 CRAN 3.5.1。
 
 ## <a name="supported-r-packages"></a>支持的 R 包
 
-R 环境是预先安装的, 超过100个包。 有关完整列表, 请参阅[预安装 R 包](#pre-installed-r-packages)部分。
+R 环境是预先安装的，超过100个包。 有关完整列表，请参阅[预安装 R 包](#pre-installed-r-packages)部分。
 
-你还可以将以下代码添加到任何**执行 R 脚本**模块, 并查看已安装的包。
+你还可以将以下代码添加到任何**执行 R 脚本**模块，并查看已安装的包。
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -44,9 +44,9 @@ azureml_main <- function(dataframe1, dataframe2){
 ```
 
 ## <a name="installing-r-packages"></a>安装 R 程序包
-若要安装其他 R 包, 请`install.packages()`使用方法。 请确保指定 CRAN 存储库。 包是为每个**执行 r 脚本**模块安装的, 并且不在其他**执行 r 脚本**模块之间共享。
+若要安装其他 R 包，请使用 `install.packages()` 方法。 请确保指定 CRAN 存储库。 包是为每个**执行 r 脚本**模块安装的，并且不在其他**执行 r 脚本**模块之间共享。
 
-此示例演示如何安装 Zoo:
+此示例演示如何安装 Zoo：
 ```R
 # R version: 3.5.1
 # The script MUST contain a function named azureml_main
@@ -65,31 +65,31 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
  > [!NOTE]
-  > 安装之前, 请检查包是否已存在, 以避免重复安装。 类似`  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")`于上面的示例代码。 重复安装可能会导致 web 服务请求超时。     
+  > 安装之前，请检查包是否已存在，以避免重复安装。 类似于上面的示例代码 `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")`。 重复安装可能会导致 web 服务请求超时。     
 
 ## <a name="how-to-configure-execute-r-script"></a>如何配置执行 R 脚本
 
-**执行 R 脚本**模块包含可用作起始点的示例代码。 若要配置 "**执行 R 脚本**" 模块, 请提供一组输入和要执行的代码。
+**执行 R 脚本**模块包含可用作起始点的示例代码。 若要配置 "**执行 R 脚本**" 模块，请提供一组输入和要执行的代码。
 
 ![R-模块](media/module/execute-r-script.png)
 
-使用此模块加载时, 存储在可视化界面中的数据集将自动转换为 R 数据帧。
+使用此模块加载时，存储在可视化界面中的数据集将自动转换为 R 数据帧。
 
-1.  将**执行 R 脚本**模块添加到试验中。
+1.  将**执行 R 脚本**模块添加到管道。
 
   
 
-1. 连接脚本所需的任何输入。 输入是可选的, 可以包含数据和其他 R 代码。
+1. 连接脚本所需的任何输入。 输入是可选的，可以包含数据和其他 R 代码。
 
-    * **Dataset1**:将第一个输入作为`dataframe1`引用。 输入数据集的格式必须为 CSV、TSV、ARFF, 或者可以连接 Azure 机器学习数据集。
+    * **Dataset1**：引用 `dataframe1` 的第一个输入。 输入数据集的格式必须为 CSV、TSV、ARFF，或者可以连接 Azure 机器学习数据集。
 
-    * **Dataset2**:引用第二个输入`dataframe2`。 此数据集也必须设置为 CSV、TSV、ARFF 文件或 Azure 机器学习数据集格式。
+    * **Dataset2**：引用 `dataframe2` 的第二个输入。 此数据集也必须设置为 CSV、TSV、ARFF 文件或 Azure 机器学习数据集格式。
 
-    * **脚本捆绑包**:第三个输入接受 ZIP 文件。 压缩的文件可以包含多个文件和多个文件类型。
+    * **脚本捆绑包**：第三个输入接受 ZIP 文件。 压缩的文件可以包含多个文件和多个文件类型。
 
-1. 在 " **R 脚本**" 文本框中, 键入或粘贴有效的 R 脚本。
+1. 在 " **R 脚本**" 文本框中，键入或粘贴有效的 R 脚本。
 
-    为了帮助你入门, " **R 脚本**" 文本框中预先填充了可以编辑或替换的示例代码。
+    为了帮助你入门，" **R 脚本**" 文本框中预先填充了可以编辑或替换的示例代码。
     
 ```R
 # R version: 3.5.1
@@ -111,48 +111,48 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
- * 脚本必须包含名`azureml_main`为的函数, 这是此模块的入口点。
+ * 脚本必须包含名为 `azureml_main` 的函数，这是此模块的入口点。
 
- * 入口点函数最多可以包含两个输入参数: `Param<dataframe1>`和`Param<dataframe2>`
+ * 入口点函数最多可以包含两个输入参数： `Param<dataframe1>` 和 `Param<dataframe2>`
  
    > [!NOTE]
-    > 传递给 "**执行 R 脚本**" 模块的数据被引用`dataframe1`为`dataframe2`和, 这不同于`dataset2`Azure 机器学习 studio (studio 引用为`dataset1`)。 请检查以确保在脚本中正确 referneced 输入数据。  
+    > 传递给 "**执行 R 脚本**" 模块的数据被引用为 `dataframe1` 和 `dataframe2`，这不同于 Azure 机器学习 Studio （studio 引用为 `dataset1` `dataset2`）。 请检查以确保在脚本中正确 referneced 输入数据。  
  
     > [!NOTE]
-    >  现有 R 代码可能需要稍作更改才能在视觉界面试验中运行。 例如, 你以 CSV 格式提供的输入数据应显式转换为数据集, 然后才能在代码中使用它。 R 语言中使用的数据和列类型也不同于可视界面中所使用的数据和列类型的某些方式。
+    >  现有 R 代码可能需要稍作更改才能在视觉界面管道中运行。 例如，你以 CSV 格式提供的输入数据应显式转换为数据集，然后才能在代码中使用它。 R 语言中使用的数据和列类型也不同于可视界面中所使用的数据和列类型的某些方式。
 
-1.  **随机种子**:键入要在 R 环境中用作随机种子值的值。 此参数等效于在 R `set.seed(value)`代码中调用。  
+1.  **随机种子**：键入要在 R 环境中用作随机种子值的值。 此参数等效于在 R 代码中调用 `set.seed(value)`。  
 
-1. 运行试验。  
+1. 运行管道。  
 
 ## <a name="results"></a>结果
 
-**执行 r 脚本**模块可以返回多个输出, 但它们必须作为 R 数据帧提供。 数据帧会自动转换为视觉对象接口数据集, 以与其他模块兼容。
+**执行 r 脚本**模块可以返回多个输出，但它们必须作为 R 数据帧提供。 数据帧会自动转换为视觉对象接口数据集，以与其他模块兼容。
 
 来自 R 的标准消息和错误将返回到模块的日志中。
 
 ## <a name="sample-scripts"></a>示例脚本
 
-可以通过多种方式使用自定义 R 脚本来扩展试验。  本部分提供了常见任务的示例代码。
+可以通过多种方式使用自定义 R 脚本来扩展管道。  本部分提供了常见任务的示例代码。
 
 
 ### <a name="add-r-script-as-an-input"></a>添加 R 脚本作为输入
 
-**执行 r 脚本**模块支持任意 R 脚本文件作为输入。 为此, 必须将这些文件作为 ZIP 文件的一部分上传到你的工作区。
+**执行 r 脚本**模块支持任意 R 脚本文件作为输入。 为此，必须将这些文件作为 ZIP 文件的一部分上传到你的工作区。
 
-1. 若要将包含 R 代码的 ZIP 文件上传到工作区, 请单击 "**新建**", 再单击 "**数据集**", 然后选择 "**从本地文件**和**ZIP 文件**" 选项。  
+1. 若要将包含 R 代码的 ZIP 文件上传到工作区，请单击 "**新建**"，再单击 "**数据集**"，然后选择 "**从本地文件**和**ZIP 文件**" 选项。  
 
 1. 验证压缩文件是否在 "**保存的数据集**" 列表中可用。
 
 1.  将数据集连接到 "**脚本绑定**" 输入端口。
 
-1. ZIP 文件中包含的所有文件在试验运行时可用。 
+1. ZIP 文件中包含的所有文件都在管道运行时可用。 
 
-    如果脚本捆绑文件中包含目录结构, 则会保留结构。 但是, 您必须更改您的代码, 以便将 **/Script 捆绑**到该路径。
+    如果脚本捆绑文件中包含目录结构，则会保留结构。 但是，您必须更改您的代码，以便将 **/Script 捆绑**到该路径。
 
 ### <a name="process-data"></a>处理数据
 
-下面的示例演示如何缩放和规范化输入数据:
+下面的示例演示如何缩放和规范化输入数据：
 
 ```R
 # R version: 3.5.1
@@ -185,8 +185,8 @@ azureml_main <- function(dataframe1, dataframe2){
 
 此示例演示如何使用 ZIP 文件中的数据集作为**执行 R 脚本**模块的输入。
 
-1. 创建 CSV 格式的数据文件, 并将其命名为 "mydatafile"。
-1. 创建一个 ZIP 文件, 并将 CSV 文件添加到存档。
+1. 创建 CSV 格式的数据文件，并将其命名为 "mydatafile"。
+1. 创建一个 ZIP 文件，并将 CSV 文件添加到存档。
 1. 将压缩的文件上传到 Azure 机器学习工作区。 
 1. 将生成的数据集连接到**执行 R 脚本**模块的**ScriptBundle**输入。
 1. 使用以下代码从压缩文件中读取 CSV 数据。
@@ -202,7 +202,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ### <a name="replicate-rows"></a>复制行
 
-此示例演示如何复制数据集中的正记录来平衡示例:
+此示例演示如何复制数据集中的正记录来平衡示例：
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -219,9 +219,9 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ### <a name="pass-r-objects-between-execute-r-script-modules"></a>在执行 R 脚本模块之间传递 R 对象
 
-可以使用内部序列化机制在**执行 r 脚本**模块的实例之间传递 R 对象。 此示例假设你想要在两个`A` **执行 R 脚本**模块之间移动名为的 R 对象。
+可以使用内部序列化机制在**执行 r 脚本**模块的实例之间传递 R 对象。 此示例假设你要在两个**执行 R 脚本**模块之间移动名为 `A` 的 R 对象。
 
-1. 将第一个 "**执行 R 脚本**" 模块添加到试验中, 然后在 " **R 脚本**" 文本框中键入以下代码, 以`A`将序列化的对象创建为模块输出数据表中的列:  
+1. 将第一个 "**执行 R 脚本**" 模块添加到管道，然后在 " **R 脚本**" 文本框中键入以下代码，以创建一个序列化对象，`A` 作为模块输出数据表中的列：  
   
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -235,11 +235,11 @@ azureml_main <- function(dataframe1, dataframe2){
     }
     ```
 
-    已完成到整数类型的显式转换, 因为序列化函数以 R `Raw`格式输出数据, 而视觉对象接口不支持该格式。
+    已完成到整数类型的显式转换，因为序列化函数会输出 R `Raw` 格式的数据，而视觉对象接口不支持该格式。
 
-1. 添加**执行 R 脚本**模块的第二个实例, 并将其连接到上一个模块的输出端口。
+1. 添加**执行 R 脚本**模块的第二个实例，并将其连接到上一个模块的输出端口。
 
-1. 在 " **R 脚本**" 文本框中键入以下代码, 以从`A`输入数据表提取对象。 
+1. 在 " **R 脚本**" 文本框中键入以下代码，以从输入数据表提取对象 `A`。 
 
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -252,14 +252,14 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="pre-installed-r-packages"></a>预安装的 R 包
 
-可供使用的预安装 R 包的当前列表:
+可供使用的预安装 R 包的当前列表：
 
 |              |            | 
 |--------------|------------| 
-| package      | Version    | 
+| 程序包      | 版本    | 
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
-| precise-backports    | 1.1.4      | 
+| precise-backports    | 类库      | 
 | 基座         | 3.5.1      | 
 | base64enc    | 0.1-3      | 
 | BH           | 1.69.0-1   | 
@@ -272,16 +272,16 @@ azureml_main <- function(dataframe1, dataframe2){
 | 字        | 6.0-84     | 
 | caTools      | 1.17.1.2   | 
 | cellranger   | 1.1.0      | 
-| 类        | 7.3-15     | 
+| class        | 7.3-15     | 
 | cli          | 1.1.0      | 
 | clipr        | 0.6.0      | 
-| 群集      | 2.0.7-1    | 
+| cluster      | 2.0.7-1    | 
 | codetools    | 0.2-16     | 
 | colorspace   | 1.4-1      | 
 | 编译程序     | 3.5.1      | 
 | 起来       | 1.3.4      | 
-| curl         | 3.3        | 
-| data.table   | 1.12.2     | 
+| Curl         | 3.3        | 
+| 数据表   | 1.12.2     | 
 | datasets     | 3.5.1      | 
 | DBI          | 1.0.0      | 
 | dbplyr       | 1.4.1      | 
@@ -303,7 +303,7 @@ azureml_main <- function(dataframe1, dataframe2){
 | gplots       | 3.0.1.1    | 
 | 图形图像     | 3.5.1      | 
 | grDevices    | 3.5.1      | 
-| 网格         | 3.5.1      | 
+| 格         | 3.5.1      | 
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1      | 
 | 尚未        | 2.1.0      | 
@@ -320,10 +320,10 @@ azureml_main <- function(dataframe1, dataframe2){
 | 点阵      | 0.20-38    | 
 | lava         | 1.6.5      | 
 | lazyeval     | 0.2.2      | 
-| lubridate    | 1.7.4      | 
+| lubridate    | avro-mapred-1.7.4-hadoop2.jar      | 
 | magrittr     | 1.5        | 
-| markdown     | 1          | 
-| 成批         | 7.3-51.4   | 
+| markdown     | 第          | 
+| 成批         | 7.3-51。4   | 
 | 矩阵       | 1.2-17     | 
 | 方法      | 3.5.1      | 
 | mgcv         | 1.8-28     | 
@@ -333,7 +333,7 @@ azureml_main <- function(dataframe1, dataframe2){
 | munsell      | 0.5.0      | 
 | nlme         | 3.1-140    | 
 | nnet         | 7.3-12     | 
-| numDeriv     | 2016.8-1.1 | 
+| numDeriv     | 2016.8-1。1 | 
 | openssl      | 1.4        | 
 | 并行     | 3.5.1      | 
 | 支柱       | 1.4.1      | 
@@ -375,19 +375,19 @@ azureml_main <- function(dataframe1, dataframe2){
 | stats4       | 3.5.1      | 
 | stringi      | 1.4.3      | 
 | stringr      | 1.3.1      | 
-| 至关重要     | 2.44-1.1   | 
+| 至关重要     | 2.44-1。1   | 
 | sys          | 3.2        | 
 | tcltk        | 3.5.1      | 
 | tibble       | 2.1.3      | 
 | tidyr        | 0.8.3      | 
 | tidyselect   | 0.2.5      | 
 | tidyverse    | 1.2.1      | 
-| timeDate     | 3043.102   | 
+| Timedate.cpl     | 3043.102   | 
 | tinytex      | 0.13       | 
 | 工具        | 3.5.1      | 
 | tseries      | 0.10-47    | 
 | TTR          | 0.23-4     | 
-| utf8         | 1.1.4      | 
+| utf8         | 类库      | 
 | utils        | 3.5.1      | 
 | vctrs        | 0.1.0      | 
 | viridisLite  | 0.3.0      | 

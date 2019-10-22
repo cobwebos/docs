@@ -7,17 +7,16 @@ ms.custom: include file
 ms.topic: include
 author: sgilley
 ms.author: sgilley
-ms.date: 05/06/2019
-ms.openlocfilehash: 623e993dfbe6bbb3297fa6470865ab1a04f55b37
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 10/16/2019
+ms.openlocfilehash: 0071b0df2c2e173eced1722372f88b1de2708afa
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173367"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692361"
 ---
 >[!IMPORTANT]
 >可以使用你创建的、用作其他 Azure 机器学习服务教程和操作指南文章的先决条件的资源。
-
 
 ### <a name="delete-everything"></a>删除所有内容
 
@@ -49,6 +48,6 @@ ms.locfileid: "67173367"
 
 ### <a name="delete-individual-assets"></a>删除各项资产
 
-在创建试验的可视界面中删除各个资产，方法是将其选中，然后选择“删除”按钮。 
+在创建试验的可视界面中删除各个资产，方法是将其选中，然后选择“删除”按钮。  可以通过选择每个数据集并选择“注销”  ，从工作区中注销数据集。
 
-![删除试验](./media/aml-ui-cleanup/delete-experiment.png)
+![删除资产](./media/aml-ui-cleanup/delete-asset.png)

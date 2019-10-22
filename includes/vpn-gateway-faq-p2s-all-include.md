@@ -9,10 +9,10 @@ ms.date: 05/23/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3cffd2de0763ea6984b64b965ce1214951d3d569
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "67056482"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>在我的点到站点配置中，可以有多少 VPN 客户端终结点？
@@ -40,11 +40,11 @@ ms.locfileid: "67056482"
 
 Azure 支持三种类型的点到站点 VPN 选项：
 
-* 安全套接字隧道协议 (SSTP)。 SSTP 是 Microsoft 专有的基于 SSL 的解决方案，它可以穿透防火墙，因为大多数防火墙都打开 443 SSL 使用的出站 TCP 端口。
+* 安全套接字隧道协议 (SSTP)。 SSTP 是 Microsoft 专用的基于 SSL 的解决方案，它可以穿透防火墙，因为大多数防火墙都打开 443 SSL 使用的出站 TCP 端口。
 
-* OpenVPN。 OpenVPN 是一种基于 SSL 的解决方案，它可以穿透防火墙，因为大多数防火墙都打开 443 SSL 使用的出站 TCP 端口。
+* OpenVPN. OpenVPN 是一个基于 SSL 的解决方案，它可以穿透防火墙，因为大多数防火墙都打开 443 SSL 使用的出站 TCP 端口。
 
-* IKEv2 VPN。 IKEv2 VPN 是一种基于标准的 IPsec VPN 解决方案，不使用出站 UDP 端口 500 和 4500 以及 IP 协议。 50. 防火墙并非始终打开这些端口，因此，IKEv2 VPN 有可能无法穿过代理和防火墙。
+* IKEv2 VPN。 IKEv2 VPN 是一种基于标准的 IPsec VPN 解决方案，它使用出站 UDP 端口500和4500以及 IP 协议 no。 50。 防火墙并非始终打开这些端口，因此，IKEv2 VPN 有可能无法穿过代理和防火墙。
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>如果重新启动进行过点到站点配置的客户端计算机，是否会自动重新连接 VPN？
 
@@ -56,7 +56,7 @@ Azure 支持三种类型的点到站点 VPN 选项：
 
 ### <a name="can-i-have-site-to-site-and-point-to-site-configurations-coexist-for-the-same-virtual-network"></a>对于同一虚拟网络，站点到站点和点到站点配置能否共存？
 
-是的。 对于资源管理器部署模型，必须为网关使用 RouteBased VPN 类型。 对于经典部署模型，需要一个动态网关。 不支持将点到站点配置用于静态路由 VPN 网关或 PolicyBased VPN 网关。
+可以。 对于资源管理器部署模型，必须为网关使用 RouteBased VPN 类型。 对于经典部署模型，需要一个动态网关。 不支持将点到站点配置用于静态路由 VPN 网关或 PolicyBased VPN 网关。
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>能否将点到站点客户端配置为同时连接到多个虚拟网络？
 
@@ -72,13 +72,13 @@ Azure 支持三种类型的点到站点 VPN 选项：
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Azure 是否支持使用 Windows 的 IKEv2 VPN？
 
-在 Windows 10 和 Server 2016 上支持 IKEv2。 但是，若要使用 IKEv2，必须在本地安装更新并设置注册表项值。 在 Windows 10 之前的操作系统版本不受支持，并且只能使用 SSTP 或**OpenVPN® 协议**。
+在 Windows 10 和 Server 2016 上支持 IKEv2。 但是，若要使用 IKEv2，必须在本地安装更新并设置注册表项值。 Windows 10 之前的操作系统版本不受支持，只能使用 SSTP 或**OpenVPN®协议**。
 
 为运行 IKEv2 准备 Windows 10 或 Server 2016：
 
 1. 安装更新。
 
-   | OS 版本 | Date | 编号/链接 |
+   | OS 版本 | 日期 | 编号/链接 |
    |---|---|---|
    | Windows Server 2016<br>Windows 10 版本 1607 | 2018 年 1 月 17 日 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 版本 1703 | 2018 年 1 月 17 日 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |

@@ -1,30 +1,28 @@
 ---
-title: 使用 Java 和 Maven 发布函数 - Azure Functions
-description: 通过 Java 和 Maven 创建一个简单的 HTTP 触发函数，并将其发布到 Azure。
-services: functions
-documentationcenter: na
+title: 使用 Java 和 Maven 将函数发布到 Azure
+description: 通过 Java 和 Maven 创建一个 HTTP 触发的函数，并将其发布到 Azure。
 author: rloutlaw
-manager: justhe
-keywords: azure functions, functions, 事件处理, 计算, 无服务器体系结构
+manager: gwallace
 ms.service: azure-functions
 ms.topic: quickstart
-ms.devlang: java
 ms.date: 08/10/2018
-ms.author: routlaw
-ms.reviewer: glenga
+ms.author: glenga
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5447fdcfa86c35b7c5cf079ae8446c30785e893f
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 5c51e445aaa27f3f83627ccf0da8fb80e01f156c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299400"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329537"
 ---
-# <a name="quickstart-use-java-to-create-and-publish-a-function-to-azure-functions"></a>快速入门：使用 Java 创建函数并将其发布到 Azure Functions
+# <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>快速入门：使用 Java 和 Maven 创建函数并将其发布到 Azure
 
-本文将介绍如何使用 Maven 命令行工具生成 Java 函数并将该函数发布到 Azure Functions。 完成后，你的函数代码将在 Azure 中的[使用计划](functions-scale.md#consumption-plan)上运行，并可使用 HTTP 请求触发。
+本文介绍如何使用 Maven 命令行工具生成 Java 函数并将该函数发布到 Azure Functions。 完成后，函数代码会在 Azure 的[无服务器托管计划](functions-scale.md#consumption-plan)中运行，并由 HTTP 请求触发。
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+<!--
+> [!NOTE] 
+> You can also create a Kotlin-based Azure Functions project by using the azure-functions-kotlin-archetype instead. Visit the [GitHub repository](https://github.com/microsoft/azure-maven-archetypes/tree/develop/azure-functions-kotlin-archetype) for more information.
+-->
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,8 +30,12 @@ ms.locfileid: "71299400"
 
 - [Java 开发人员工具包](https://aka.ms/azure-jdks)版本 8
 - [Apache Maven](https://maven.apache.org) 版本 3.0 或更高版本
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) 版本 2.6.666 或更高版本
+- Azure 订阅。
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 
 > [!IMPORTANT]
 > JAVA_HOME 环境变量必须设置为 JDK 的安装位置，以完成本快速入门。
@@ -67,170 +69,124 @@ mvn archetype:generate ^
     "-DarchetypeArtifactId=azure-functions-archetype"
 ```
 
-Maven 会请求你提供所需的值以完成项目的生成。 有关 groupId  、artifactId  和 version  值，请参阅 [Maven 命名约定](https://maven.apache.org/guides/mini/guide-naming-conventions.html)参考。 AppName  值在 Azure 中必须唯一，以便 Maven 基于以前输入的 artifactId  生成默认应用名称。 PackageName  值确定所生成函数代码的 Java 包。
+Maven 会请求你提供所需的值，以在部署上完成项目的生成。 系统提示时提供以下值：
 
-下面的 `com.fabrikam.functions` 和 `fabrikam-functions` 标识符用作示例，目的是使本快速入门中后面的步骤更易读。 建议你在此步骤中向 Maven 提供你自己的值。
+| 值 | 说明 |
+| ----- | ----------- |
+| **groupId** | 一个值，用于按照 Java 的[包命名规则](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7)在所有项目中标识你的项目。 本快速入门中的示例使用 `com.fabrikam.functions`。 |
+| **artifactId** | 一个值，该值是 jar 的名称，没有版本号。 本快速入门中的示例使用 `fabrikam-functions`。 |
+| **version** | 选择默认值 `1.0-SNAPSHOT`。 |
+| **package** | 一个值，该值是所生成函数代码的 Java 包。 使用默认值。 本快速入门中的示例使用 `com.fabrikam.functions`。 |
+| **appName** | 全局唯一名称，用于标识 Azure 中的新函数应用。 请使用默认值，即 _artifactId_ 追加一个随机数字。 请记下该值，稍后需要它。 |
+| **appRegion** | 选择离你近或离函数访问的其他服务近的[区域](https://azure.microsoft.com/regions/)。 默认为 `westus`。 请运行以下 [Azure CLI] 命令，获取所有区域的列表：<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
+| **resourceGroup** | 要在其中创建函数应用的新[资源组](../azure-resource-manager/resource-group-overview.md)的名称。 请使用 `myResourceGroup`（由本快速入门中的示例使用）。 资源组必须对 Azure 订阅来说独一无二。|
 
-```Output
-Define value for property 'groupId' (should match expression '[A-Za-z0-9_\-\.]+'): com.fabrikam.functions
-Define value for property 'artifactId' (should match expression '[A-Za-z0-9_\-\.]+'): fabrikam-functions
-Define value for property 'version' 1.0-SNAPSHOT : 
-Define value for property 'package': com.fabrikam.functions
-Define value for property 'appName' fabrikam-functions-20170927220323382:
-Define value for property 'appRegion' westus: :
-Define value for property 'resourceGroup' java-functions-group: :
-Confirm properties configuration: Y
-```
+键入 `Y` 或按 Enter 进行确认。
 
-在此示例 `fabrikam-functions` 中，Maven 在新文件夹中创建名为 artifactId  的项目文件 项目中生成的准备运行代码是一个 [HTTP 触发的](/azure/azure-functions/functions-bindings-http-webhook)函数，该函数回显请求正文。 将 src/main/java/com/fabrikam/functions/Function.java 替换为以下代码  ： 
+Maven 在名为 artifactId  的新文件夹（在此示例中为 `fabrikam-functions`）中创建项目文件。 
 
-```java
-package com.fabrikam.functions;
-
-import java.util.*;
-import com.microsoft.azure.functions.annotation.*;
-import com.microsoft.azure.functions.*;
-
-public class Function {
-    /**
-     * This function listens at endpoint "/api/HttpTrigger-Java". Two ways to invoke it using "curl" command in bash:
-     * 1. curl -d "HTTP Body" {your host}/api/HttpTrigger-Java
-     * 2. curl {your host}/api/HttpTrigger-Java?name=HTTP%20Query
-     */
-    @FunctionName("HttpTrigger-Java")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = { HttpMethod.GET, HttpMethod.POST }, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
-            final ExecutionContext context) {
-        context.getLogger().info("Java HTTP trigger processed a request.");
-
-        // Parse query parameter
-        String query = request.getQueryParameters().get("name");
-        String name = request.getBody().orElse(query);
-
-        if (name == null) {
-            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Please pass a name on the query string or in the request body").build();
-        } else {
-            return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-        }
-    }
-}
-
-```
-
-## <a name="enable-extension-bundles"></a>启用扩展捆绑包
-
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+在文本编辑器中打开 *src/main/java* 路径中的新 Function.java 文件，查看生成的代码。 该代码是一个 [HTTP 触发的](functions-bindings-http-webhook.md)函数，用于回显请求的正文。 
 
 ## <a name="run-the-function-locally"></a>在本地运行函数
 
-将目录更改为新创建的项目文件夹（包含 host.json 和 pom.xml 文件的文件夹），并通过 Maven 生成并运行此函数：
+运行以下命令，将目录更改为新创建的项目文件夹，然后生成并运行函数项目：
 
-```CMD
+```console
 cd fabrikam-function
 mvn clean package 
 mvn azure-functions:run
 ```
 
-> [!NOTE]
-> 如果在使用 Java 9 时遇到 `javax.xml.bind.JAXBException` 异常，请参阅 [GitHub](https://github.com/jOOQ/jOOQ/issues/6477) 上的解决方法。
-
-当函数在本地系统上运行并且做好响应 HTTP 请求的准备时，将显示以下输出：
+在本地运行项目时，会看到 Azure Functions Core Tools 的如下所示的输出：
 
 ```Output
-Listening on http://localhost:7071
-Hit CTRL-C to exit...
+...
+
+Now listening on: http://0.0.0.0:7071
+Application started. Press Ctrl+C to shut down.
 
 Http Functions:
 
-   hello: http://localhost:7071/api/HttpTrigger-Java
+    HttpTrigger-Java: [GET,POST] http://localhost:7071/api/HttpTrigger-Java
+...
 ```
 
-使用 curl 在新的终端窗口中从命令行触发函数：
+使用 cURL 在新的终端窗口中从命令行触发函数：
 
 ```CMD
-curl -w "\n" http://localhost:7071/api/HttpTrigger-Java -d LocalFunction
-```
-
-```Output
-Hello LocalFunction!
-```
-
-在终端中使用 `Ctrl-C` 停止函数代码。
-
-## <a name="deploy-the-function-to-azure"></a>将函数部署到 Azure
-
-部署到 Azure Functions 的过程中会使用 Azure CLI 中的帐户凭据。 在继续操作之前[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
-
-```azurecli
-az login
-```
-
-使用 `azure-functions:deploy` Maven 目标将代码部署到新的函数应用。 这将执行一个启用了[“从包运行”模式的 Zip 部署](functions-deployment-technologies.md#zip-deploy)。
-
-> [!NOTE]
-> 使用 Visual Studio Code 来部署函数应用时，请记住选择非免费的订阅，否则会出现错误。 可以在 IDE 的左侧观察订阅。
-
-```azurecli
-mvn azure-functions:deploy
-```
-
-部署完成后，将显示可用于访问你的 Azure 函数应用的 URL：
-
-```output
-[INFO] Successfully deployed Function App with package.
-[INFO] Deleting deployment package from Azure Storage...
-[INFO] Successfully deleted deployment package fabrikam-function-20170920120101928.20170920143621915.zip
-[INFO] Successfully deployed Function App at https://fabrikam-function-20170920120101928.azurewebsites.net
-[INFO] ------------------------------------------------------------------------
-```
-
-使用 `cURL` 测试在 Azure 上运行的函数应用。 需更改以下示例中的 URL，使之与前一步骤中你自己的函数应用的已部署 URL 匹配。
-
-> [!NOTE]
-> 确保将“访问权限”  设置为 `Anonymous`。 选择默认级别 `Function` 时，需要在请求中提供[函数密钥](../azure-functions/functions-bindings-http-webhook.md#authorization-keys)才能访问函数终结点。
-
-```azurecli
-curl -w "\n" https://fabrikam-function-20170920120101928.azurewebsites.net/api/HttpTrigger-Java -d AzureFunctions
+curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
 ```Output
 Hello AzureFunctions!
 ```
+在本地运行时，不需要[功能键](functions-bindings-http-webhook.md#authorization-keys)。 在终端中使用 `Ctrl+C` 停止函数代码。
 
-## <a name="make-changes-and-redeploy"></a>进行更改并重新部署
+## <a name="deploy-the-function-to-azure"></a>将函数部署到 Azure
 
-编辑生成的项目中的 `src/main.../Function.java` 源文件来更改你的函数应用返回的文本。 更改以下行：
+首先部署函数应用时，会在 Azure 中创建函数应用和相关资源。 在部署之前，必须使用 [az login](/cli/azure/authenticate-azure-cli) Azure CLI 命令登录到 Azure 订阅。 
 
-```java
-return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+```azurecli
+az login
 ```
 
-更改为以下内容：
+> [!TIP]
+> 如果帐户可以访问多个订阅，请使用 [az account set](/cli/azure/account#az-account-set) 设置此会话的默认订阅。 
 
-```java
-return request.createResponseBuilder(HttpStatus.OK).body("Hi, " + name).build();
+使用以下 Maven 命令将项目部署到新的函数应用。 
+
+```azurecli
+mvn azure-functions:deploy
 ```
 
-保存更改。 运行 mvn 清理包，如以前一样通过从终端运行 `azure-functions:deploy` 进行重新部署。 函数应用将更新，并且以下请求：
+此 `azure-functions:deploy` Maven 目标在 Azure 中创建以下资源：
 
-```bash
-curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/HttpTrigger-Java
++ 资源组。 使用你提供的 _resourceGroup_ 命名。
++ 存储帐户。 Functions 所需。 此名称根据存储帐户名称要求随机生成。
++ 应用服务计划。 为指定 _appRegion_ 中的函数应用进行的无服务器托管。 此名称随机生成。
++ 函数应用。 函数应用是函数的部署和执行单元。 此名称是 _appName_ 追加一个随机生成的数字。 
+
+此部署还会在启用“从包运行”模式的情况下，使用 [zip deployment](functions-deployment-technologies.md#zip-deploy) 将项目文件打包并部署到新函数应用。
+
+部署完成后，会显示可用于访问函数应用终结点的 URL。 由于我们发布的 HTTP 触发器使用 `authLevel = AuthorizationLevel.FUNCTION`，因此你需要获取函数密钥，以便通过 HTTP 调用函数终结点。 若要获取函数密钥，最简单的方法是使用 [Azure 门户]。
+
+## <a name="get-the-http-trigger-url"></a>获取 HTTP 触发器 URL
+
+<!--- We can updates this to remove portal dependency after the Maven archetype returns the full URLs with keys on publish (https://github.com/microsoft/azure-maven-plugins/issues/571). -->
+
+可以从 Azure 门户获取通过函数密钥触发函数所需的 URL。 
+
+1. 浏览到 [Azure 门户]，登录，在页面顶部将函数应用的 _appName_ 键入“搜索”栏，  然后按 Enter。
+ 
+1. 在函数应用中展开“函数(只读)”，选择你的函数，然后选择右上角的“</> 获取函数 URL”。   
+
+    ![从 Azure 门户复制函数 URL](./media/functions-create-java-maven/get-function-url-portal.png)
+
+1. 选择“默认(函数密钥)”，然后选择“复制”   。 
+
+现在可以使用复制的 URL 来访问函数。
+
+## <a name="verify-the-function-in-azure"></a>在 Azure 中验证函数
+
+若要使用 `cURL` 验证在 Azure 上运行的函数应用，请将以下示例中的 URL 替换为从门户复制的 URL。
+
+```azurecli
+curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
-将具有更新的输出：
+这会向函数终结点发送一个 POST 请求，请求正文中包含 `AzureFunctions`。 会看到以下响应。
 
 ```Output
-Hi, AzureFunctionsTest
+Hello AzureFunctions!
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-你已使用简单的 HTTP 触发器创建 Java 函数应用，并将其部署到 Azure Functions。
+我们已使用 HTTP 触发的函数创建 Java 函数项目，在本地计算机上运行该项目，并将其部署到 Azure。 现在，通过以下方式扩展函数
 
-- 有关开发 Java 函数的详细信息，请查看 [Java 函数开发人员指南](functions-reference-java.md)。
-- 使用 `azure-functions:add` Maven 目标将具有不同触发器的其他函数添加到你的项目。
-- 使用 [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)、[IntelliJ](functions-create-maven-intellij.md) 和 [Eclipse](functions-create-maven-eclipse.md) 在本地编写并调试函数。 
-- 使用 Visual Studio Code 调试在 Azure 中部署的函数。 有关说明，请参阅 Visual Studio Code [无服务器 Java 应用程序](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)文档。
+> [!div class="nextstepaction"]
+> [添加 Azure 存储队列输出绑定](functions-add-output-binding-storage-queue-java.md)
 
-> [!NOTE] 
-> 也可以改用 azure-functions-kotlin-archetype 创建一个基于 Kotlin 的 Azure Functions 项目。 有关详细信息，请访问 [GitHub 存储库](https://github.com/microsoft/azure-maven-archetypes/tree/develop/azure-functions-kotlin-archetype)。
+
+[Azure CLI]: /cli/azure
+[Azure 门户]: https://portal.azure.com
