@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
 ms.openlocfilehash: 32ec97ce923c1cffd92fa6522f30abf7ea87fff7
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72331195"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>选择 Azure 搜索的定价层
@@ -41,7 +41,7 @@ ms.locfileid: "72331195"
 
 **免费**在群集上创建受限的搜索服务，与其他订阅者共享。 你可以完成小型项目，包括快速入门和教程，但无法缩放服务或运行大量工作负荷。 "**基本**" 和 "**标准**" 是最常用的可计费层，默认值为 "**标准**"。
 
-Azure 搜索(media/search-sku-tier/tiers.png "定价层 Azure 搜索")![定价层]
+![Azure 搜索定价层](media/search-sku-tier/tiers.png "Azure 搜索定价层")
 
 某些层针对某些类型的工作进行了优化。 例如，**标准3高密度（S3 HD）** 是 S3 的*托管模式*，其中基础硬件针对大量的小型索引进行了优化，适用于多租户方案。 S3 HD 与 S3 具有相同的单位费用，但硬件经过优化，可快速读取大量较小的索引中的文件。
 

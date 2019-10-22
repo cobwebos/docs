@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: ba49944011546db45d25cc87c2c4b93c8b99502a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71122685"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>在 Azure HDInsight 上 Apache Kafka 自带密钥
@@ -53,7 +53,7 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
 
    3. 创建密钥
 
-        a. 若要创建新密钥，请从“设置”下的“密钥”菜单中选择“生成/导入”。
+        a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 若要创建新密钥，请从“设置”下的“密钥”菜单中选择“生成/导入”。
 
         ![在 Azure Key Vault 中生成新密钥](./media/apache-kafka-byok/kafka-create-new-key.png "在 Azure Key Vault 中生成新密钥")
 
@@ -65,13 +65,13 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
 
         ![Apache kafka 密钥保管库密钥列表](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
 
-        d. 当你为 Kafka 群集加密使用自己的密钥时，需要提供密钥 URI。 复制“密钥标识符”并将其保存在某处，直到你准备好创建群集。
+        d.单击“下一步”。 当你为 Kafka 群集加密使用自己的密钥时，需要提供密钥 URI。 复制“密钥标识符”并将其保存在某处，直到你准备好创建群集。
 
         ![Apache kafka 获取密钥标识符](./media/apache-kafka-byok/kafka-get-key-identifier.png)
 
     4. 将托管标识添加到密钥保管库访问策略。
 
-        a. 创建新的 Azure Key Vault 访问策略。
+        a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 创建新的 Azure Key Vault 访问策略。
 
         ![创建新的 Azure Key Vault 访问策略](./media/apache-kafka-byok/add-key-vault-access-policy.png)
 
@@ -83,7 +83,7 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
 
         ![设置 Azure Key Vault 访问 policy1 的密钥权限](./media/apache-kafka-byok/add-key-vault-access-policy-keys.png "设置 Azure Key Vault 访问 policy1 的密钥权限")
 
-        d. 将“机密权限”设置为“获取”、“设置”和“删除”。
+        d.单击“下一步”。 将“机密权限”设置为“获取”、“设置”和“删除”。
 
         ![设置 Azure Key Vault 访问 policy2 的密钥权限](./media/apache-kafka-byok/add-key-vault-access-policy-secrets.png "设置 Azure Key Vault 访问 policy2 的密钥权限")
 
@@ -97,7 +97,7 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
 
    ![Azure 门户中的 Kafka 磁盘加密](./media/apache-kafka-byok/apache-kafka-byok-portal.png)
 
-   在群集创建期间，提供完整的密钥 URL，包括密钥版本。 例如， `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 。 还需要将托管标识分配给集群并提供密钥 URI。
+   在群集创建期间，提供完整的密钥 URL，包括密钥版本。 例如，`https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 。 还需要将托管标识分配给集群并提供密钥 URI。
 
 ## <a name="rotating-the-encryption-key"></a>旋转加密密钥
 
@@ -132,15 +132,15 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
 
 **是否可以让生成方/使用者应用程序同时使用 BYOK 集群和非 BYOK 集群？**
 
-   是。 使用 BYOK 对生成方/使用者应用程序没有任何影响。 加密发生在操作系统层。 无需对现有的生成方/使用者 Kafka 应用程序进行任何更改。
+   可以。 使用 BYOK 对生成方/使用者应用程序没有任何影响。 加密发生在操作系统层。 无需对现有的生成方/使用者 Kafka 应用程序进行任何更改。
 
 **是否还会加密操作系统磁盘/资源磁盘？**
 
-   否。 不会加密操作系统磁盘和资源磁盘。
+   不。 不会加密操作系统磁盘和资源磁盘。
 
 **如果纵向扩展群集，新代理是否会无缝支持 BYOK？**
 
-   是。 在纵向扩展期间，群集需要访问密钥保管库中的密钥。 相同的密钥用于加密群集中的所有托管磁盘。
+   可以。 在纵向扩展期间，群集需要访问密钥保管库中的密钥。 相同的密钥用于加密群集中的所有托管磁盘。
 
 **我的位置是否可以使用 BYOK？**
 

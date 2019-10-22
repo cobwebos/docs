@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
 ms.openlocfilehash: ac0109ff8c5dd7f6013acefbe5ee08a13494cb77
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71001768"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上 Apache Spark 群集的资源 
@@ -36,7 +36,7 @@ Spark History Server 是已完成和正在运行的 Spark 应用程序的 Web UI
 1. 从 [Azure 门户](https://portal.azure.com/)打开 Spark 群集。 有关详细信息，请参阅[列出和显示群集](../hdinsight-administer-use-portal-linux.md#showClusters)。
 2. 在“快速链接”中，单击“群集仪表板”，并单击“Spark History Server”。
 
-    ![Spark History Server](./media/apache-spark-resource-manager/launch-history-server.png "Spark History Server")
+    ![Spark 历史记录服务器](./media/apache-spark-resource-manager/launch-history-server.png "Spark History Server")
 
     出现提示时，输入 Spark 群集的管理员凭据。 也可以通过浏览到以下 URL 打开 Spark History Server：
 
@@ -107,7 +107,7 @@ Spark Thrift 服务器使用 Spark 动态执行器分配，因此未使用 `spar
 
 * 展开“高级 spark-thrift-sparkconf”类别可更新参数 `spark.dynamicAllocation.minExecutors`、`spark.dynamicAllocation.maxExecutors` 和 `spark.executor.memory`。
 
-    ![配置 Spark thrift 服务器](./media/apache-spark-resource-manager/spark-thrift-server-1.png "配置 Spark thrift 服务器")
+    ![配置 Spark thrift 服务器](./media/apache-spark-resource-manager/spark-thrift-server-1.png "配置 Spark Thrift 服务器")
 * 展开“自定义 spark-thrift-sparkconf”类别可更新参数 `spark.executor.cores`。
 
     ![配置 Spark thrift 服务器参数](./media/apache-spark-resource-manager/spark-thrift-server-2.png "配置 Spark thrift 服务器参数")
@@ -137,7 +137,7 @@ Spark Thrift 服务器驱动程序内存配置为头节点 RAM 大小的 25%，�
 ## <a name="restart-the-jupyter-service"></a>重新启动 Jupyter 服务
 启动 Ambari Web UI，如本文开头所示。 在左侧导航窗格中，依次单击“Jupyter”、“服务操作”和“全部重启”。 这会在所有头节点上启动 Jupyter 服务。
 
-![重启 Jupyter](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "重启 Jupyter")
+![重新启动 Jupyter](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "重新启动 Jupyter")
 
 ## <a name="monitor-resources"></a>监视资源
 启动 Yarn UI，如本文开头所示。 在屏幕顶部的“群集指标”表中，选中“已用内存”和“内存总计”列的值。 如果这 2 个值很接近，则可能资源不足，无法启动下一个应用程序。 这同样适用于“已用 VCore”和“VCore 总计”列。 此外，在主视图中，如果有应用程序保持“已接受”状态，而不转换为“正在运行”或“失败”状态，这也可能指示该应用程序未获得足够的资源来启动。
@@ -149,17 +149,17 @@ Spark Thrift 服务器驱动程序内存配置为头节点 RAM 大小的 25%，�
 
     ![终止 App1](./media/apache-spark-resource-manager/apache-ambari-kill-app1.png "终止 App1")
 
-2. 单击右上角的“终止应用程序”，然后单击“确定”。
+2. 单击右上角的“终止应用程序”，并单击“确定”。
 
     ![终止 App2](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "终止 App2")
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](apache-spark-job-debugging.md)
 
 ### <a name="for-data-analysts"></a>适用于数据分析师
 
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 来通过 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
 * [使用 HDInsight 中的 Apache Spark 分析网站日志](apache-spark-custom-library-website-log-analysis.md)
 * [使用 HDInsight 中的 Apache Spark 执行 Application Insight 遥测数据分析](apache-spark-analyze-application-insight-logs.md)
 * [使用 Caffe on Azure HDInsight Spark 进行分布式深度学习](apache-spark-deep-learning-caffe.md)
@@ -169,7 +169,7 @@ Spark Thrift 服务器驱动程序内存配置为头节点 RAM 大小的 25%，�
 * [使用 Scala 创建独立的应用程序](apache-spark-create-standalone-application.md)
 * [使用 Apache Livy 在 Apache Spark 群集中远程运行作业](apache-spark-livy-rest-interface.md)
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](apache-spark-intellij-tool-plugin.md)
-* [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Apache Spark 应用程序](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Apache Spark applications remotely（使用适用于 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Apache Spark 应用程序）](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [在 HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本](apache-spark-zeppelin-notebook.md)
 * [在 HDInsight 的 Apache Spark 群集中可用于 Jupyter Notebook 的内核](apache-spark-jupyter-notebook-kernels.md)
 * [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](apache-spark-jupyter-notebook-use-external-packages.md)

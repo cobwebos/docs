@@ -10,18 +10,18 @@ ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 8e325abf1f58458d2fa035c8c8f081173efb0e65
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69649898"
 ---
-# <a name="how-to-implement-faceted-navigation-in-azure-search"></a>如何在 Azure 搜索中实现分面导航
+# <a name="how-to-implement-faceted-navigation-in-azure-search"></a>如何在 Azure 搜索中实施分面导航
 分面导航是一种筛选机制，用于在搜索应用程序中提供自定向的深化导航。 术语“分面导航”可能让人觉得陌生，但我们以前也许用过它。 如以下示例所示，分面导航就是用于筛选结果的类别。
 
  ![Azure 搜索作业门户演示](media/search-faceted-navigation/azure-search-faceting-example.png "Azure 搜索作业门户演示")
 
-分面导航是一个备用的搜索入口点。 它可以方便地替代手动键入复杂的搜索表达式。 分面可帮助你查找所需的内容，同时确保获取相关结果。 作为开发人员，分面允许公开用于导航搜索索引的最有用的搜索条件。 在在线零售应用程序中，分面导航通常基于品牌、分类（童鞋）、尺寸、价格、受欢迎程度和评级生成。 
+分面导航是一个备用的搜索入口点。 它可以方便地替代手动键入复杂的搜索表达式。 分面可帮助你查找所需的内容，同时确保获取相关结果。 作为开发人员，您可以使用方面来公开用于导航搜索索引的最有用的搜索条件。 在在线零售应用程序中，分面导航通常基于品牌、分类（童鞋）、尺寸、价格、受欢迎程度和评级生成。 
 
 搜索技术不同，分面导航的实现也不同。 在 Azure 搜索中，分面导航在查询时生成，使用之前在架构中特性化的字段。
 
@@ -38,7 +38,7 @@ ms.locfileid: "69649898"
 
 -   从 [GitHub 上的 Azure 示例存储库](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)中下载代码。
 
-## <a name="get-started"></a>开始使用
+## <a name="get-started"></a>开始体验
 如果不熟悉搜索开发，对分面导航定义的最佳理解是它显示了自定向搜索的可能性。 它是一种基于预定义筛选的深化搜索体验，用于通过点击操作快速缩小搜索结果范围。 
 
 ### <a name="interaction-model"></a>交互模型
@@ -321,7 +321,7 @@ if (businessTitleFacet != "")
 
 由于分片体系结构，分面计数可能不准确。 每个搜索索引具有多个分片，每个分片报告按记录计数排序的前 N 个分面，并合并到单个结果中。 如果某些分片具有大量匹配值，而其他分片的值很少，你可能会发现某些分面值丢失或未计入结果中。
 
-尽管此行为可能随时更改，但如果现在遇到此行为，可通过以下方式解决它：人为地将 count:\<number> 扩大到较大的值，以强制从每个分片进行完整报告。 如果 count: 的值大于或等于字段中唯一值的数目，可保证获得准确结果。 但是，如果记录计数较高，性能可能会受到负面影响，因此请谨慎使用此选项。
+尽管此行为可能随时更改，但如果你目前遇到此行为，可以通过人为因为这样做的计数： \<number > 为一个较大的数字来强制执行从每个分片进行完整报告。 如果 count: 的值大于或等于字段中唯一值的数目，可保证获得准确结果。 但是，如果记录计数较高，性能可能会受到负面影响，因此请谨慎使用此选项。
 
 ### <a name="user-interface-tips"></a>用户界面提示
 **为分面导航中的每个字段添加标签**
@@ -379,23 +379,23 @@ Azure 搜索作业门户演示包含本文中参考的示例。
 
 1. 若要使用该演示应用的地图功能，请从[必应地图开发人员中心](https://www.bingmapsportal.com/)获取必应地图密钥。 请粘贴该密钥并覆盖 `index.cshtml` 页面中的现有密钥。 不使用 `Web.config` 文件中的 `BingApiKey` 设置。 
 
-2. 运行该应用程序。 学习可选的教程，或关闭该对话框。
+2. 运行应用程序。 学习可选的教程，或关闭该对话框。
    
 3. 输入搜索词（例如“分析师”），并单击“搜索”图标。 快速执行查询。
    
    分面导航结构也与搜索结果一起返回。 在搜索结果页面中，分面导航结构包括每个分面结果的计数。 未选择任何分面，因此将返回所有匹配的结果。
    
-   ![在选择分面之前搜索结果](media/search-faceted-navigation/faceted-search-before-facets.png "在选择分面之前搜索结果")
+   ![选择 facet 之前搜索结果](media/search-faceted-navigation/faceted-search-before-facets.png "在选择分面之前搜索结果")
 
 4. 单击某个职称、工位或最低薪水。 分面在初始搜索时为 null，但当对它们设置值时，将从搜索结果中剪裁掉不再匹配的项。
    
-   ![在选择分面之后搜索结果](media/search-faceted-navigation/faceted-search-after-facets.png "在选择分面之后搜索结果")
+   ![选择 facet 后的搜索结果](media/search-faceted-navigation/faceted-search-after-facets.png "在选择分面之后搜索结果")
 
 5. 若要清除分面查询以便可以尝试不同的查询行为，请单击所选分面后面的 `[X]` 来清除分面。
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>了解详情
+## <a name="learn-more"></a>了解更多
 观看 [Azure 搜索深入研究](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)。 在 45:25，演示了如何实现分面。
 
 有关分面导航设计准则的更多见解，建议查看以下链接：

@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.openlocfilehash: 687fde2e203ed471e2f0164f1f4a670de4afc74e
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71677088"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集
@@ -21,11 +21,11 @@ ms.locfileid: "71677088"
 
 Azure 门户是一种基于 Web 的管理工具，用于管理 Microsoft Azure 云中托管的服务和资源。 本文介绍如何使用门户创建基于 Linux 的 Azure HDInsight 群集。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-* **Azure 订阅**。 请参阅 [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)（如何获取用于在 HDInsight 中测试 Hadoop 的 Azure 免费试用版）。
+* 一个 Azure 订阅。 请参阅 [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)（如何获取用于在 HDInsight 中测试 Hadoop 的 Azure 免费试用版）。
 * **一个新式 Web 浏览器**。 Azure 门户使用 HTML5 和 JavaScript， 可能无法在旧版 Web 浏览器中正常运行。
 
 ## <a name="create-clusters"></a>创建群集
@@ -73,7 +73,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 1. 在“2 安全性 + 网络”中，可以使用所提供的下拉菜单将群集连接到虚拟网络。 如果要将群集放入虚拟网络，请选择 Azure 虚拟网络和子网。 有关将 HDInsight 与虚拟网络配合使用的信息，请参阅为[Azure HDInsight 群集计划虚拟网络部署](hdinsight-plan-virtual-network-deployment.md)。 本文包含虚拟网络的特定配置要求。
 
-    如果要使用“企业安全性套餐”，请按以下说明操作：[使用 Azure Active Directory 域服务配置具有企业安全性套餐的 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds)。
+    如果要使用**企业安全性套餐**，请按照以下说明进行操作：[使用 Azure Active Directory 域服务配置包含企业安全性套餐的 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds)。
 
     选择“下一步”转到下一页。
 
@@ -81,10 +81,10 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
      ![HDInsight 创建群集存储](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-storage.png "在 Azure 门户中创建新群集")
 
-     | 存储                                      | 描述 |
+     | 存储空间                                      | 描述 |
      |----------------------------------------------|-------------|
      | **将 Azure 存储 Blob 作为默认存储**   | <ul><li>对于“主存储类型”，选择“Azure 存储”。 如果要指定属于 Azure 订阅的存储帐户，则请选择“我的订阅”作为“选择方法”， 然后选择存储帐户。 否则，请选择“访问密钥”， 然后提供想要从 Azure 订阅外部选择的存储帐户的信息。</li><li>对于“默认容器”，请选择门户建议的默认容器名称或自行指定。</li><li>如果 Azure Blob 存储为默认存储，则也可选择“其他存储帐户”，以指定要与群集关联的其他存储帐户。 对于“Azure 存储密钥”，请选择“添加存储密钥”。 然后，可以从 Azure 订阅或其他订阅提供一个存储帐户。 提供存储帐户访问密钥。</li><li>如果 Blob 存储为默认存储，则也可选择“Data Lake Storage 访问权限”，将 Azure Data Lake Storage 指定为其他存储。 有关详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。</li></ul> |
-     | **将 Azure Data Lake Storage 作为默认存储** | 对于“主存储类型”，请选择“Azure Data Lake Storage Gen1”或“Azure Data Lake Storage Gen2”， 然后参阅文章[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)以获取说明。 |
+     | **将 Azure Data Lake Storage 作为默认存储** | 对于“主存储类型”，请选择“Azure Data Lake Storage Gen1”或“Azure Data Lake Storage Gen2”， 然后参阅文章[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)了解相关说明。 |
      | **外部元存储**                      | 以选项的方式指定一个 SQL 数据库，用于保存与群集关联的 Apache Hive 和 Apache Oozie 元数据。 对于“为 Hive 选择 SQL 数据库”选项，请选择一个 SQL 数据库， 然后为数据库提供用户名和密码。 为 Oozie 元数据重复以上这些步骤。<br><br>将 Azure SQL 数据库用于元存储时的一些注意事项如下所示： <ul><li>用于元存储的 Azure SQL 数据库必须允许连接到其他 Azure 服务，包括 Azure HDInsight。 在 Azure SQL 数据库仪表板的右侧选择服务器名称。 此服务器是运行 SQL 数据库实例的服务器。 进入服务器视图以后，选择“配置”。 然后，对于“Azure 服务”，请选择“是”。 再选择“保存”。</li><li>创建元存储时，请勿使用短划线或连字符来命名数据库。 这些字符可能导致群集创建过程失败。</li></ul> |
 
      > [!WARNING]  
@@ -167,5 +167,5 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 * [使用 Scala 创建独立的应用程序](spark/apache-spark-create-standalone-application.md)
 * [使用 Apache Livy 在 Apache Spark 群集中远程运行作业](spark/apache-spark-livy-rest-interface.md)
-* [Apache Spark 与 BI：将 HDInsight 中的 Spark 与 BI 工具配合使用来执行交互式数据分析](spark/apache-spark-use-bi-tools.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](spark/apache-spark-use-bi-tools.md)
+* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](spark/apache-spark-machine-learning-mllib-ipython.md)

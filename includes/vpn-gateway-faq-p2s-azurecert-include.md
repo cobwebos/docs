@@ -9,21 +9,21 @@ ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 93f6bc8533218af7f0e6dcd1c5f7be6fe8c00e29
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69520815"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>我是否可以使用自己的内部 PKI 根 CA 为点到站点连接生成证书？
 
-是的。 以前只可使用自签名根证书。 仍可上传 20 个根证书。
+可以。 以前只可使用自签名根证书。 仍可上传 20 个根证书。
 
 ### <a name="can-i-use-certificates-from-azure-key-vault"></a>是否可以使用 Azure Key Vault 的证书？
 
-否。
+不。
 
 ### <a name="what-tools-can-i-use-to-create-certificates"></a>可以使用哪些工具来创建证书？
 

@@ -1,47 +1,43 @@
 ---
 title: 使用 Microsoft Flow自动执行 Azure Application Insights 过程
 description: 了解如何通过 Microsoft Flow 使用 Application Insights 连接器快速自动执行可重复的过程。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 08/29/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 541d5b70ee56d62831f0947e64b9522e17a07dd9
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.date: 08/29/2019
+ms.openlocfilehash: ff0896498c0270b8eb43b762228916985f924def
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194929"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678323"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>使用 Microsoft Flow 的连接器自动执行 Azure Application Insights 过程
 
-你是否发现自己曾对遥测数据重复运行相同的查询，用于检查你的服务是否正常运行？ 是否希望自动执行这些查询以查找趋势和异常，然后针对这些信息构建你自己的工作流？ 适用于 Microsoft Flow 的 Azure 应用程序 Insights 连接器是用于实现这些目的的合适工具。
+你是否发现自己对遥测数据重复运行相同的查询以检查服务是否正常运行？ 是否希望自动执行这些查询以查找趋势和异常，然后针对这些信息构建你自己的工作流？ 适用于 Microsoft Flow 的 Azure 应用程序 Insights 连接器是用于实现这些目的的合适工具。
 
 通过这种集成，现在无需编写任何代码就可自动执行许多过程。 使用 Application Insights 操作创建流后，它自动运行 Application Insights Analytics 查询。
 
-也可以添加其他操作。 Microsoft Flow 可以实现数百个操作。 例如，可以使用 Microsoft Flow 自动发送电子邮件通知，或在 Azure DevOps 中创建 bug。 还可使用适用于 Microsoft Flow 连接器的众多[模板](https://ms.flow.microsoft.com/connectors/shared_applicationinsights/?slug=azure-application-insights)之一。 这些模板可加快创建流的过程。
+你也可以添加其他操作。 Microsoft Flow 可以实现数百个操作。 例如，可以使用 Microsoft Flow 自动发送电子邮件通知，或在 Azure DevOps 中创建 bug。 还可使用适用于 Microsoft Flow 连接器的众多[模板](https://ms.flow.microsoft.com/connectors/shared_applicationinsights/?slug=azure-application-insights)之一。 这些模板可加快创建流的过程。
 
 <!--The Application Insights connector also works with [Azure Power Apps](https://powerapps.microsoft.com/) and [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/?v=17.23h). -->
 
 ## <a name="create-a-flow-for-application-insights"></a>创建 Application Insights 流
 
-在本教程中, 您将学习如何创建一个流, 该流使用分析 autocluster 算法对 web 应用程序的数据中的属性进行分组。 此流通过电子邮件自动发送结果，这只是如何结合使用 Microsoft Flow 和 Application Insights Analytics 的一个示例。
+在本教程中，您将学习如何创建一个流，该流使用分析 autocluster 算法对 web 应用程序的数据中的属性进行分组。 此流通过电子邮件自动发送结果，这只是如何结合使用 Microsoft Flow 和 Application Insights Analytics 的一个示例。
 
 ### <a name="step-1-create-a-flow"></a>步骤 1：创建流
 
 1. 登录到 [Microsoft Flow](https://flow.microsoft.com)，然后选择“我的流”。
-2. 单击 "**新建**", 然后单击 "**计划-从空白**"。
+2. 单击 "**新建**"，然后单击 "**计划-从空白**"。
 
     ![从计划的空白创建新流](./media/automate-with-flow/1-create.png)
 
 ### <a name="step-2-create-a-trigger-for-your-flow"></a>步骤 2：为流创建触发器
 
-1. 在弹出项 "**生成计划的流**" 中, 填写流的名称和希望流运行的频率。
+1. 在弹出项 "**生成计划的流**" 中，填写流的名称和希望流运行的频率。
 
     ![通过输入频率和间隔设置计划重复周期](./media/automate-with-flow/2-schedule.png)
 
@@ -50,9 +46,9 @@ ms.locfileid: "70194929"
 ### <a name="step-3-add-an-application-insights-action"></a>步骤 3：添加 Application Insights 操作
 
 1. 搜索**Application Insights**。
-2. 单击“Azure Application Insights - 将 Analytics 查询可视化”。
+2. 单击 " **Azure 应用程序 Insights-可视化分析查询**"。
 
-    ![选择操作：Azure Application Insights - 将 Analytics 查询可视化](./media/automate-with-flow/3-visualize.png)
+    ![选择操作： Azure 应用程序 Insights 可视化分析查询](./media/automate-with-flow/3-visualize.png)
 
 3. 选择“新建步骤”。
 
@@ -68,7 +64,7 @@ ms.locfileid: "70194929"
 
    ![Microsoft Flow 连接窗口](./media/automate-with-flow/4-connection.png)
 
-如果 "连接" 框不会立即显示, 而是直接进入查询, 请单击框右上角的省略号。 然后选择 "我的连接" 或使用现有的连接。
+如果 "连接" 框不会立即显示，而是直接进入查询，请单击框右上角的省略号。 然后选择 "我的连接" 或使用现有的连接。
 
 单击“创建”。
 
@@ -77,7 +73,7 @@ ms.locfileid: "70194929"
 
 创建自己的查询时，请在将其添加到流之前，验证它们是否可在 Analytics 中正常运行。
 
-- 添加以下 Analytics 查询并选择 HTML 表图表类型。 然后选择“新建步骤”。
+- 添加以下 Analytics 查询，并选择 HTML 表图表类型。 然后选择 "**新建步骤**"。
 
     ```
     requests
@@ -99,9 +95,9 @@ ms.locfileid: "70194929"
 
     ![Office 365 Outlook 选择窗口](./media/automate-with-flow/6-outlook.png)
 
-1. 在 "**发送电子邮件**" 窗口中:
+1. 在 "**发送电子邮件**" 窗口中：
 
-   a. 键入收件人的电子邮件地址。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 键入收件人的电子邮件地址。
 
    b. 键入电子邮件的主题。
 
@@ -109,9 +105,9 @@ ms.locfileid: "70194929"
 
    e. 选择 "**显示高级选项**"
 
-1. 在 "动态内容" 菜单上:
+1. 在 "动态内容" 菜单上：
 
-    a. 选择“附件名称”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“附件名称”。
 
     b. 选择“附件内容”。
     
@@ -123,20 +119,20 @@ ms.locfileid: "70194929"
 
 单击“保存”。
 
-可以等待触发器运行此操作, 也可以单击顶部的 " ![烧杯测试" 图标 ](./media/automate-with-flow/testicon.png)测试。
+你可以等待触发器运行此操作，也可以单击顶部的 "![beaker 测试" 图标 ](./media/automate-with-flow/testicon.png)**测试**"。
 
-选择**测试**后:
+选择**测试**后：
 
 1. 选择**我将执行触发器操作**。
 2. 选择 "**运行流**"。
 
-当流运行时, 在电子邮件列表中指定的收件人将收到如下所示的电子邮件。
+当流运行时，在电子邮件列表中指定的收件人将收到如下所示的电子邮件。
 
 ![示例电子邮件](./media/automate-with-flow/flow9.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何创建 [Analytics 查询](../../azure-monitor/log-query/get-started-queries.md)。
+- 了解有关创建 [Analytics 查询](../../azure-monitor/log-query/get-started-queries.md)的详细信息。
 - 详细了解 [Microsoft Flow](https://ms.flow.microsoft.com)。
 
 <!--Link references-->
