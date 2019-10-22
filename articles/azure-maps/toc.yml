@@ -53,8 +53,6 @@
       href: supported-languages.md
     - name: 支持的地图样式
       href: supported-map-styles.md
-    - name: Web SDK 支持的浏览器
-      href: supported-browsers.md
     - name: 缩放级别和磁贴网格
       href: zoom-levels-and-tile-grid.md
     - name: 出行服务数据结构
@@ -147,6 +145,8 @@
               href: map-get-information-from-coordinate.md
             - name: 显示从 A 到 B 的路线
               href: map-route.md
+        - name: Web SDK 支持的浏览器
+          href: supported-browsers.md
     - name: 使用 Android SDK 进行开发
       items:
         - name: Android 地图控件入门

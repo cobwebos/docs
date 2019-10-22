@@ -121,15 +121,8 @@
           href: paas-applications-using-storage.md
         - name: 适用于 PaaS 的 DB 最佳做法
           href: paas-applications-using-sql.md
-    - name: IoT
-      href: iot-overview.md
     - name: Azure Service Fabric 安全
-      href: service-fabric-overview.md
-      items:
-        - name: 最佳做法
-          href: service-fabric-best-practices.md
-        - name: 安全清单
-          href: service-fabric-checklist.md
+      href: service-fabric-best-practices.md
 - name: 监视、审核和操作
   href: management-monitoring-overview.md
   items:
