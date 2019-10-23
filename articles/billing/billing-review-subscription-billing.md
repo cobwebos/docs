@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 33fc6e59a0a85275b055524d8ccf5d78935725a8
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 05ce5fd560168c1f60b7c559539f4a368ba83ca8
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718764"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754284"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>使用 REST API 查看订阅计费
 
@@ -92,7 +92,7 @@ Authorization: Bearer
 |**meterDetails** | 有关使用的详细信息。 |
 |**nextLink**| 设置时，指定一个 URL 作为详细信息的下一“页”。 当页面为最后一个页面时为空。 |
 
-此示例已经过缩略；请参阅[列出使用情况详细信息](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod)以了解每个响应字段的完整说明。
+此示例已经过缩略；请参阅[列出使用情况详细信息](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy)以了解每个响应字段的完整说明。
 
 其他状态代码指示错误条件。 在这些情况下，响应对象解释请求失败的原因。
 
