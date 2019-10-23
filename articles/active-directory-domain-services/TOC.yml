@@ -9,8 +9,10 @@
 - name: 教程
   expanded: true
   items:
-    - name: 创建托管域
+    - name: 创建基本托管域
       href: tutorial-create-instance.md
+    - name: 为应用配置虚拟网络
+      href: tutorial-configure-networking.md
     - name: 将 Windows Server VM 加入域
       href: join-windows-vm.md
     - name: 安装管理工具
@@ -19,6 +21,8 @@
       href: tutorial-configure-ldaps.md
     - name: 配置密码哈希同步
       href: tutorial-configure-password-hash-sync.md
+    - name: 创建高级托管域
+      href: tutorial-create-instance-advanced.md
 - name: 示例
   items:
     - name: 使用 Azure PowerShell 创建托管域

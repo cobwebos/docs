@@ -599,8 +599,10 @@
       items:
         - name: 介绍
           href: mongodb-introduction.md
-        - name: 线路协议支持
+        - name: 线路协议支持 (3.2)
           href: mongodb-feature-support.md
+        - name: 线路协议支持 (3.6)
+          href: mongodb-feature-support-36.md
         - name: 快速入门
           items:
             - name: .NET
