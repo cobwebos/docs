@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 88a8258a91237c7b3eadccc32a30c3fe8149eca5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1ef4ddc422041de623b96f3a0c85f067427cacd7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064635"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374227"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面
 
@@ -23,7 +23,7 @@ ms.locfileid: "71064635"
 
 完成本文后，你将拥有一个带有品牌和外观的注册和登录自定义策略。 使用 Azure Active Directory B2C (Azure AD B2C)，几乎可以完全控制呈现给用户的 HTML 和 CSS 内容。 使用自定义策略时，需要以 XML 配置 UI 自定义，而不是使用 Azure 门户中的控件进行配置。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。 应准备好一个有效的自定义策略，以便使用本地帐户注册和登录。
 
@@ -31,7 +31,7 @@ ms.locfileid: "71064635"
 
 使用页面 UI 自定义功能可对任何自定义策略的外观进行自定义。 还可以在应用程序与 Azure AD B2C 之间保持品牌和视觉一致性。
 
-工作原理如下：Azure AD B2C 在客户的浏览器中运行代码，并使用称为[跨域资源共享 (CORS)](https://www.w3.org/TR/cors/) 的新式方法。 首先，请在包含自定义 HTML 内容的自定义策略中指定 URL。 Azure AD B2C 会将 UI 元素与从 URL 加载的 HTML 内容合并，然后向客户显示页面。
+工作原理如下：Azure AD B2C 在客户的浏览器中运行代码，并使用称为[跨域资源共享 (CORS)](https://www.w3.org/TR/cors/) 的现代方法。 首先，请在包含自定义 HTML 内容的自定义策略中指定 URL。 Azure AD B2C 会将 UI 元素与从 URL 加载的 HTML 内容合并，然后向客户显示页面。
 
 ## <a name="create-your-html5-content"></a>创建 HTML5 内容
 
@@ -86,21 +86,21 @@ ms.locfileid: "71064635"
 1. 对于 "**名称**"，请输入*root*。 这可以是你选择的名称（例如*wingtiptoys*），但为了简单起见，我们在此示例中使用了*root* 。
 1. 对于 "**公共访问级别**"，请选择 " **Blob**"，然后选择 **"确定"** 。
 1. 单击 "**根**" 打开新容器。
-1. 单击“上传” 。
+1. 单击“上传”。
 1. 单击“选择文件”旁边的文件夹图标。
 1. 导航到并选择前面在 "页面 UI 自定义" 部分中创建的**customize-ui.html。**
 1. 如果要上传到子文件夹，请展开 "**高级**"，然后在 "**上传到文件夹**" 中输入文件夹名称。
 1. 选择“上传”。
 1. 选择上传的**customize-ui.html** blob。
 1. 在 " **URL** " 文本框的右侧，选择 "**复制到剪贴板**" 图标以将 URL 复制到剪贴板。
-1. 在 web 浏览器中，导航到复制的 URL，以验证上传的 blob 是否可访问。 如果它不可访问，例如如果遇到`ResourceNotFound`错误，请确保将容器访问类型设置为**blob**。
+1. 在 web 浏览器中，导航到复制的 URL，以验证上传的 blob 是否可访问。 如果无法访问，请确保将容器访问类型设置为**blob**（如果遇到 @no__t 0 错误）。
 
 ## <a name="configure-cors"></a>配置 CORS
 
 通过执行以下步骤，将 Blob 存储配置为跨域资源共享：
 
 1. 在菜单中，选择“CORS”。
-1. 对于“允许的源”，请输入 `https://your-tenant-name.b2clogin.com`。 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。 例如， `https://fabrikam.b2clogin.com` 。 输入租户名称时，需要使用全小写字母。
+1. 对于“允许的源”，请输入 `https://your-tenant-name.b2clogin.com`。 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。 例如，`https://fabrikam.b2clogin.com` 。 输入租户名称时，需要使用全小写字母。
 1. 对于“允许的方法”，请同时选择 `GET` 和 `OPTIONS`。
 1. 对于“允许的标头”，请输入一个星号 (*)。
 1. 对于“公开的标头”，请输入一个星号 (*)。
@@ -119,12 +119,12 @@ ms.locfileid: "71064635"
 
 要配置 UI 自定义，请将 ContentDefinition 及其子元素从基本文件复制到扩展文件。
 
-1. 打开策略的基文件。 例如，*`SocialAndLocalAccounts/`*****`TrustFrameworkBase.xml`。 这是自定义策略初学者包中包含的策略文件之一，你应该已在先决条件中获取[自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)。
+1. 打开策略的基文件。 例如， <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em> 。 这是自定义策略初学者包中包含的策略文件之一，你应该已在先决条件中获取[自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)。
 1. 搜索并复制 ContentDefinitions 元素的全部内容。
 1. 打开扩展文件， 例如，TrustFrameworkExtensions.xml。 搜索 BuildingBlocks 元素。 如果该元素不存在，请添加该元素。
 1. 粘贴作为 BuildingBlocks 元素的子元素复制的 ContentDefinitions 元素的全部内容。
 1. 在复制的 XML 中搜索包含 `Id="api.signuporsignin"` 的 ContentDefinition 元素。
-1. 将 LoadUri 的值更改为上传到存储的 HTML 文件的 URL。 例如， `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html` 。
+1. 将 LoadUri 的值更改为上传到存储的 HTML 文件的 URL。 例如，`https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html` 。
 
     自定义策略应如下所示：
 
@@ -181,12 +181,12 @@ sample_templates/wingtip 文件夹包含以下 HTML 文件：
 
 下面是有关如何使用此示例的步骤：
 
-1. 将存储库克隆到本地计算机。 选择 sample_templates 下的模板文件夹。 您可以使用`wingtip`或`contoso`。
-1. 按照前面几节中所`css`述`fonts`，将`images` 、和文件夹下的所有文件上传到 Blob 存储。
-1. 接下来，打开\* `wingtip`或`contoso`的根目录中的每个 .html 文件（无论是在第一步中选择的），并将 "http://localhost" 的所有实例替换为在步骤2中上载的 css、图像和字体文件的 url。
-1. \*保存 .html 文件并将其上传到 Blob 存储。
-1. 现在, 如上文所述[修改扩展文件](#modify-the-extensions-file)来修改扩展文件。
-1. 如果发现缺少字体、图像或 CSS，请检查扩展策略和\*.html 文件中的引用。
+1. 将存储库克隆到本地计算机。 选择 sample_templates 下的模板文件夹。 你可以使用 `wingtip` 或 `contoso`。
+1. 将 `css`、`fonts` 和 @no__t 2 文件夹下的所有文件上传到 Blob 存储，如前一部分中所述。
+1. 接下来，打开每个 @no__t 旁1/-0 文件，该文件位于 `wingtip` 或 `contoso` （在第一步中选择的任何）的根目录中，并将 "http://localhost" 的所有实例替换为在步骤2中上载的 css、图像和字体文件的 Url。
+1. 保存 @no__t 旁1/-0 文件，并将其上传到 Blob 存储。
+1. 现在，如上文所述[修改扩展文件](#modify-the-extensions-file)来修改扩展文件。
+1. 如果你发现缺少字体、图像或 CSS，请检查 extension 策略和 @no__t 旁1/-0 文件中的引用。
 
 ### <a name="content-definition-ids"></a>内容定义 ID
 

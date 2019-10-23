@@ -35,7 +35,7 @@ ms.locfileid: "72430320"
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  ，然后选择“应用注册”>“新建注册”。 
-1. 出现“注册应用程序”页后，请输入应用程序的注册信息： 
+1. “注册应用程序”页出现后，请输入应用程序的注册信息： 
 
    - **名称**：输入一个会显示给应用用户的有意义的应用程序名称。
    - **支持的帐户类型** - 选择希望应用程序支持的帐户。
@@ -68,5 +68,5 @@ Azure AD 会给应用分配一个唯一的应用程序（客户端）ID，同时
     - [配置应用程序以公开 Web API](quickstart-configure-app-expose-web-apis.md)
     - [修改应用程序支持的帐户](quickstart-modify-supported-accounts.md)
 - 选择一个[快速入门](https://docs.microsoft.com/azure/active-directory/develop)，了解如何快速生成应用并添加功能，例如获取令牌、刷新令牌、进行用户登录、显示某些用户信息，等等。
-- 如需深入了解表示已注册应用程序和它们之间的关系的两个 Azure AD 对象，请参阅[应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
+- 如需深入了解表示已注册应用程序的两个 Azure AD 对象及它们之间的关系，请参阅[应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
 - 如需深入了解开发应用时应使用的品牌准则，请参阅[应用程序的品牌准则](howto-add-branding-in-azure-ad-apps.md)。
