@@ -98,13 +98,13 @@
     - name: 诊断和故障排除
       items:
         - name: 排查 Redis 服务器问题
-          href: cache-how-to-troubleshoot-server.md
+          href: cache-troubleshoot-server.md
         - name: 排查 Redis 客户端问题
-          href: cache-how-to-troubleshoot-client.md
+          href: cache-troubleshoot-client.md
         - name: 排查超时问题
-          href: cache-how-to-troubleshoot-timeouts.md
+          href: cache-troubleshoot-timeouts.md
         - name: 排查数据丢失问题
-          href: cache-how-to-troubleshoot-data-loss.md
+          href: cache-troubleshoot-data-loss.md
     - name: 缩放
       items:
         - name: 更新为不同的大小和层
