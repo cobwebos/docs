@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: b225052daa61932f3b8b868789cfb3c204eca88f
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 9b23e3b69b4970e765ea1cd5af690cf074bad774
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543426"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693454"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT 操作人员入门
 
@@ -461,7 +461,6 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 ### <a name="hybrid-virtual-networks"></a>混合虚拟网络
 
 通过使用 ExpressRoute 或站点到站点 VPN 连接，可将本地网络连接到 Azure 虚拟网络。 在此配置中，Azure 虚拟网络实质上是本地网络基于云的扩展。
-![使用 VPN 的混合虚拟网络](https://docs.microsoft.com/azure/architecture/reference-architectures/_images/blueprints/hybrid-network-vpn.png)
 
 由于 Azure 虚拟网络连接到本地网络，因此跨界虚拟网络必须使用组织所用地址空间的一部分，并且该部分必须是唯一的。 与不同公司位置获得一个特定 IP 子网相同，Azure 会随着网络的扩展成为另一个位置。
 可通过多种选项部署虚拟网络。

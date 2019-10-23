@@ -3,15 +3,15 @@ title: 使用 Azure Resource Graph Explorer 运行第一个查询
 description: 本文逐步引导你在 Azure 门户中使用 Azure Resource Graph Explorer 运行第一个查询。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/18/2019
+ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 755556b9ba049da7542494ee580215d29c1eb5f4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: abee722e725b55933d7ff1acdcd1e9a2e701502b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387606"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752153"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>快速入门：使用 Azure Resource Graph Explorer 运行第一个 Resource Graph 查询
 
@@ -45,7 +45,10 @@ ms.locfileid: "72387606"
 
 ### <a name="schema-browser"></a>架构浏览器
 
-架构浏览器位于 Resource Graph Explorer 的左窗格中。 此资源列表显示 Azure 资源的所有资源类型，这些类型受 Azure Resource Graph 的支持，并且存在于你有权访问的租户中。  展开资源类型或附属属性会显示可用于创建 Resource Graph 查询的子属性。 选择资源类型会将 `where type =="<resource type>"` 放入查询框中。 选择一个子属性会将 `where <propertyName> == "INSERT_VALUE_HERE"` 添加到查询框中。 在架构浏览器中，可以十分方便地发现可在查询中使用的属性。 请确保将 _INSERT\_VALUE\_HERE_ 替换为自己的值，并调整包含条件、运算符和函数的查询，以获得预期结果。
+架构浏览器位于 Resource Graph Explorer 的左窗格中。 此资源列表显示 Azure 资源的所有资源类型，这些类型受 Azure Resource Graph 的支持，并且存在于你有权访问的租户中。  展开资源类型或附属属性会显示可用于创建 Resource Graph 查询的子属性。
+
+选择资源类型会将 `where type =="<resource type>"` 放入查询框中。 选择一个子属性会将 `where <propertyName> == "INSERT_VALUE_HERE"` 添加到查询框中。
+在架构浏览器中，可以十分方便地发现可在查询中使用的属性。 请确保将 _INSERT\_VALUE\_HERE_ 替换为自己的值，并调整包含条件、运算符和函数的查询，以获得预期结果。
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>基于 Resource Graph 查询创建图表
 

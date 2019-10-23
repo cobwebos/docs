@@ -1,18 +1,18 @@
 ---
 title: 适用于 SQL API 的 Azure Cosmos DB 全局分发教程
 description: 了解如何使用 SQL API 设置 Azure Cosmos DB 全局分发。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 07/15/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: a566094f88ba9ffd25eadd046ae7254e26b9c2cf
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: b6b8be29afc25a3862a440e46d41e8c911189c04
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234598"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756832"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>使用 SQL API 设置 Azure Cosmos DB 全局分发
 

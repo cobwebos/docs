@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Cosmos DB 的用于 MongoDB 的 API 和 Golang SDK 生成控制台应用
 description: 演示一个 Golang 代码示例，可以参考该示例使用 Azure Cosmos DB 的用于 MongoDB 的 API 进行连接和查询。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.author: rimman
-ms.openlocfilehash: 5b60ac28cd8f65d464e659f328872524be59b3ed
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: e16b9b7e591fcc089d74794c98ddfc951cbdced9
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586868"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755115"
 ---
 # <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>快速入门：使用 Azure Cosmos DB 的用于 MongoDB 的 API 和 Golang SDK 生成控制台应用
 
@@ -69,11 +69,11 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 单击左侧导航菜单中的“快速启动”，然后单击“其他”，查看 Go 应用程序所需的连接字符串信息。
+1. 单击左侧导航菜单中的“快速启动”，然后单击“其他”，查看 Go 应用程序所需的连接字符串信息。  
 
 2. 在 Goglang 的 GOROOT\CosmosDBSample 目录中打开 main.go 文件，然后使用 Azure 门户中的连接字符串信息更新以下代码行，如以下屏幕截图所示。 
 
-    数据库名称是 Azure 门户连接字符串窗格中“Host”值的前缀。 就下图所示帐户来说，数据库名称为 golang-coach。
+    数据库名称是  Azure 门户连接字符串窗格中“Host”值的前缀。 就下图所示帐户来说，数据库名称为 golang-coach。
 
     ```go
     Database: "The prefix of the Host value in the Azure portal",
@@ -93,7 +93,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ### <a name="connecting-the-go-app-to-cosmos-db"></a>将 Go 应用连接到 Cosmos DB
 
-Azure Cosmos DB 的用于 MongoDB 的 API 支持启用了 SSL 的连接。 若要进行连接，需在 [mgo.DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) 中定义 **DialServer** 函数，然后使用 [tls.Dial](https://golang.org/pkg/crypto/tls#Dial) 函数进行连接。
+Azure Cosmos DB 的用于 MongoDB 的 API 支持启用了 SSL 的连接。 若要进行连接，需在 [mgo.DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) 中定义 **DialServer** 函数，然后使用 [tls.Dial  ](https://golang.org/pkg/crypto/tls#Dial) 函数进行连接。
 
 以下 Golang 代码片段通过 Azure Cosmos DB 的用于 MongoDB 的 API 连接 Go 应用。 *DialInfo* 类包含用于建立会话的选项。
 
@@ -129,7 +129,7 @@ defer session.Close()
 session.SetSafe(&mgo.Safe{})
 ```
 
-没有 SSL 连接时，使用 mgo.Dial() 方法。 对于 SSL 连接，mgo.DialWithInfo() 方法是必需的。
+没有 SSL 连接时，使用 mgo.Dial()  方法。 对于 SSL 连接，mgo.DialWithInfo() 方法是必需的。 
 
 可以使用 **DialWIthInfo{}** 对象的实例来创建会话对象。 建立会话以后，即可使用以下代码片段访问集合：
 
@@ -214,9 +214,9 @@ if err != nil {
     
 ## <a name="run-the-app"></a>运行应用
 
-1. 在 Golang 中，确保 GOPATH（依次单击“文件”、“设置”、“Go”、“GOPATH”即可找到）包含安装 gopkg 时所在的位置，默认为 USERPROFILE\go。 
+1. 在 Golang 中，确保 GOPATH（依次单击“文件”、“设置”、“Go”、“GOPATH”即可找到）包含安装 gopkg 时所在的位置，默认为 USERPROFILE\go。     
 2. 注释掉用于删除文档的行（即第 103-107 行），这样就能在运行应用后看到文档。
-3. 在 Golang 中单击“运行”，然后单击“运行‘生成 main.go 并运行’”。
+3. 在 Golang 中单击“运行”，然后单击“运行‘生成 main.go 并运行’”。  
 
     应用完成后，将会显示在[创建文档](#create-document)中创建的文档的说明。
     
@@ -232,11 +232,11 @@ if err != nil {
 
 回到 Azure 门户，在数据资源管理器中查看文档。
 
-1. 在左侧导航菜单中单击“数据资源管理器(预览)”，展开“golang-coach”、“包”，然后单击“文档”。 在“文档”选项卡中单击“\_id”，在右窗格中显示文档。 
+1. 在左侧导航菜单中单击“数据资源管理器(预览)”，展开“golang-coach”、“包”，然后单击“文档”。     在“文档”选项卡中单击  “\_id”，在右窗格中显示文档。 
 
     ![数据资源管理器，显示新创建的文档](./media/create-mongodb-golang/golang-cosmos-db-data-explorer.png)
     
-2. 然后即可使用内联文档，单击“更新”将其保存。 也可删除该文档，或者创建新文档或查询。
+2. 然后即可使用内联文档，单击“更新”将其保存。  也可删除该文档，或者创建新文档或查询。
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 

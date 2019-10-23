@@ -4,8 +4,8 @@ description: 了解如何在 Azure 上将多个容器与 Docker Compose、WordPr
 keywords: azure 应用服务, web 应用, linux, docker compose, 多容器, 用于容器的 web 应用, 多个容器, 容器, wordpress, azure db for mysql, 包含容器的生产数据库
 services: app-service
 documentationcenter: ''
-author: msangapu
-manager: jeconnoc
+author: msangapu-msft
+manager: gwallace
 editor: ''
 ms.service: app-service
 ms.workload: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: b83edae698ed62deea189c979478c2170a034fc8
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f4a366809bd5c6267ef76632e8990309f100c393
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070861"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554944"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>教程：在用于容器的 Web 应用中创建多容器（预览版）应用
 
@@ -42,11 +42,9 @@ ms.locfileid: "70070861"
 
 ## <a name="download-the-sample"></a>下载示例
 
-本教程使用 [Docker](https://docs.docker.com/compose/wordpress/#define-the-project) 中的 compose 文件，但我们将对其进行修改，以包含 Azure Database for MySQL、持久性存储和 Redis。 可在 [Azure 示例](https://github.com/Azure-Samples/multicontainerwordpress)中找到该配置文件。
+本教程使用 [Docker](https://docs.docker.com/compose/wordpress/#define-the-project) 中的 compose 文件，但我们将对其进行修改，以包含 Azure Database for MySQL、持久性存储和 Redis。 可在 [Azure 示例](https://github.com/Azure-Samples/multicontainerwordpress)中找到该配置文件。 有关受支持的配置选项，请参阅 [Docker Compose 选项](configure-custom-container.md#docker-compose-options)。
 
 [!code-yml[Main](../../../azure-app-service-multi-container/docker-compose-wordpress.yml)]
-
-有关受支持的配置选项，请参阅 [Docker Compose 选项](configure-custom-container.md#docker-compose-options)。
 
 在 Cloud Shell 中，创建一个 tutorial 目录，然后切换到该目录。
 

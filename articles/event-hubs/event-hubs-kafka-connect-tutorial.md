@@ -3,19 +3,19 @@ title: 与 Apache Kafka Connect 集成 - Azure 事件中心 | Microsoft Docs
 description: 本文介绍如何将 Apache Spark 与适用于 Kafka 的 Azure 事件中心配合使用。
 services: event-hubs
 documentationcenter: .net
-author: basilhariri
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.author: bahariri
-ms.openlocfilehash: 2ed4432aec9b833efe6b521b4452177088d21d70
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: shvija
+ms.openlocfilehash: 84220d5dda26c25f40138629e2be1f10d57fe3c4
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119405"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555127"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>在 Azure 事件中心集成 Apache Kafka Connect 支持（预览版）
 随着业务需求的引入增加，对各种外部源和接收器的引入需求也增加。 [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) 提供的框架可以通过 Kafka 群集连接到任何外部系统（例如 MySQL、HDFS）和文件系统并与之进行数据的导入/导出。 本教程详细介绍如何将 Kafka Connect 框架与支持 Kafka 的事件中心配合使用。

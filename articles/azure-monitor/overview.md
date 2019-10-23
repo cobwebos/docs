@@ -1,21 +1,18 @@
 ---
 title: Azure Monitor 概述 | Microsoft Docs
 description: 适用于 Azure 服务和应用程序的完整监视策略所涉及的 Microsoft 服务及功能的概述。
-author: bwren
-manager: carmonm
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: overview
-ms.date: 10/07/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 578cb57c9c971874e16ddb75d399e165cc75dfa6
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 10/07/2019
+ms.openlocfilehash: d02ea18422e20aa2fede4f25cdffa985607e7b5c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035654"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597338"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor 概述
 

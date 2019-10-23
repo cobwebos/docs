@@ -17,10 +17,10 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 50056e6b201313805e7b9253e7a962e096b9df65
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72372967"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Veracode 集成
@@ -109,13 +109,13 @@ ms.locfileid: "72372967"
 
 1. 在顶部菜单中，单击“设置”  ，并单击“管理员”  。
    
-    ![管理](./media/veracode-tutorial/ic802911.png "Administration")
+    ![管理](./media/veracode-tutorial/ic802911.png "管理")
 
 1. 单击“SAML”  选项卡。
 
 1. 在“组织 SAML 设置”  部分中执行以下步骤：
 
-    ![管理](./media/veracode-tutorial/ic802912.png "Administration")
+    ![管理](./media/veracode-tutorial/ic802912.png "管理")
 
     a.  在“证书颁发者”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
 
@@ -125,7 +125,7 @@ ms.locfileid: "72372967"
 
 1. 在“自助注册设置”  部分，执行以下步骤，并单击“保存”  ：
 
-    ![管理](./media/veracode-tutorial/ic802913.png "Administration")
+    ![管理](./media/veracode-tutorial/ic802913.png "管理")
 
     a. 对于“新用户激活”  ，选择“不需要激活”  。
 

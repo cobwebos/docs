@@ -4,16 +4,16 @@ description: 本快速入门提供多个 Node.js 代码示例，使用这些示�
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: mvc, seo-javascript-september2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/21/2018
-ms.openlocfilehash: 5ad6fecc3cc06d2c4e2962640201ffcd6f96d87e
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: fb61a976e62c3ae5e29dfcc5e28b48f2ea4214c8
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672512"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529056"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入门：使用 Node.js 进行连接并查询 Azure Database for MySQL 中的数据
 本快速入门演示如何在 Windows、Ubuntu Linux 和 Mac 平台中使用 [Node.js](https://nodejs.org/) 连接到适用于 MySQL 的 Azure 数据库。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本主题假设你熟悉如何使用 Node.js 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
@@ -86,7 +86,7 @@ ms.locfileid: "71672512"
 2. 在 Azure 门户的左侧菜单中，选择“所有资源”  ，然后搜索已创建的服务器（例如 mydemoserver  ）。
 3. 选择服务器名称。
 4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。    如果忘记了密码，也可通过此面板来重置密码。
- ![Azure Database for MySQL 服务器名称](./media/connect-nodejs/1_server-overview-name-login.png)
+ ![Azure Database for MySQL 服务器名称](./media/connect-nodejs/server-name-azure-database-mysql.png)
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>在 Node.js 中运行 JavaScript 代码
 1. 将 JavaScript 代码粘贴到文本文件中，然后使用文件扩展名 .js 将其保存到项目文件夹中（例如 C:\nodejsmysql\createtable.js 或 /home/username/nodejsmysql/createtable.js）。

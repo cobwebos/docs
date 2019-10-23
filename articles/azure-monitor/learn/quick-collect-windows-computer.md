@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 50059711df195c13ee44061ee4844f0192e0e10d
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.custom: mvc, seo-javascript-october2019
+ms.openlocfilehash: 1b8888c2c8aaedce181d19c015206323ccf2b0ba
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992100"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677218"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>使用 Azure Monitor 从混合环境中的 Windows 计算机收集数据
 
@@ -37,7 +37,7 @@ ms.locfileid: "69992100"
 
 1. 在 Azure 门户中，选择“所有服务”。  在资源列表中，键入“Log Analytics”  。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”  。
 
-    ![Azure 门户](media/quick-collect-azurevm/azure-portal-01.png)<br>  
+    ![Azure 门户](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. 选择“创建”  ，然后为以下各项选择选项：
 
@@ -47,7 +47,7 @@ ms.locfileid: "69992100"
    * 选择向其部署 VM 的“位置”  。  如需其他信息，请参阅[提供 Log Analytics 的区域](https://azure.microsoft.com/regions/services/)。
    * 如果在 2018 年 4 月 2 日后创建的新订阅中创建工作区，则它将自动使用“每 GB”  定价计划，并且不提供用于选择定价层的选项。  如果是为 4 月 2 日之前创建的现有订阅创建工作区，或者是为绑定到现有 EA 注册的订阅创建工作区，则可以选择首选定价层。  有关特定层的其他信息，请参阅 [Log Analytics 定价详细信息](https://azure.microsoft.com/pricing/details/log-analytics/)。
   
-        ![创建 Log Analytics 资源边栏选项卡](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
+        ![创建 Log Analytics 资源边栏选项卡](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
 
 3. 在“Log Analytics 工作区”窗格中提供所需的信息后，选择“确定”。    
 
@@ -64,7 +64,7 @@ ms.locfileid: "69992100"
 
 3. 选择“高级设置”： 
 
-    ![Log Analytics 高级设置](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
+    ![Log Analytics 高级设置](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
   
 4. 选择“已连接的源”，然后选择“Windows 服务器”   。
 
@@ -109,7 +109,7 @@ Azure Monitor 可从 Windows 事件日志以及性能计数器中收集指定的
 
 2. 选择“高级设置”： 
 
-    ![Log Analytics 高级设置](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
+    ![Log Analytics 高级设置](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
  
 3. 选择“数据”  ，然后选择“Windows 事件日志”  。  
 

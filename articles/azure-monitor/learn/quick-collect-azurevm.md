@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 8e44908baea506efa488899c90e9022acc6e30b8
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.custom: mvc, sec-javascript-october2019
+ms.openlocfilehash: f400fb7f177301e2b8c21cde9be334635025b4b3
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992154"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677696"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>使用 Azure Monitor 从 Azure 虚拟机收集数据
 
@@ -35,7 +35,7 @@ ms.locfileid: "69992154"
 
 1. 在 Azure 门户中，选择“所有服务”。  在资源列表中，键入“Log Analytics”  。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”  。
 
-    ![Azure 门户](media/quick-collect-azurevm/azure-portal-01.png)<br>  
+    ![Azure 门户](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. 选择“创建”  ，然后为以下各项选择选项：
 
@@ -45,7 +45,7 @@ ms.locfileid: "69992154"
    * 选择向其部署 VM 的“位置”  。  如需其他信息，请参阅[提供 Log Analytics 的区域](https://azure.microsoft.com/regions/services/)。
    * 如果在 2018 年 4 月 2 日后创建的新订阅中创建工作区，则它将自动使用“每 GB”  定价计划，并且不提供用于选择定价层的选项。  如果是为 4 月 2 日之前创建的现有订阅创建工作区，或者是为绑定到现有 EA 注册的订阅创建工作区，则可以选择首选定价层。  有关特定层的其他信息，请参阅 [Log Analytics 定价详细信息](https://azure.microsoft.com/pricing/details/log-analytics/)。
   
-        ![创建 Log Analytics 资源边栏选项卡](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
+        ![创建 Log Analytics 资源边栏选项卡](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
 
 3. 在“Log Analytics 工作区”窗格中提供所需的信息后，选择“确定”。    
 
@@ -80,7 +80,7 @@ Azure Monitor 可以从你为长期分析和报告指定的 Windows 事件日志
 
 1. 选择“高级设置”  。
 
-    ![Log Analytics 高级设置](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
+    ![Log Analytics 高级设置](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
 
 2. 选择“数据”  ，然后选择“Windows 事件日志”  。
 
@@ -114,7 +114,7 @@ Azure Monitor 可以从你为长期分析和报告指定的 Windows 事件日志
 
 6. 首次为新的 Log Analytics 工作区配置 Linux 性能计数器时，可以选择快速创建几个通用的计数器。 将这些计数器在一个复选框中依次列出。
 
-    ![选中的默认 Windows 性能计数器](media/quick-collect-azurevm/linux-perfcounters-default.png)
+    ![选中的默认 Windows 性能计数器](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
     选择“将下列配置应用到我的计算机”  ，然后选择“添加选定的性能计数器”  。  随即会添加它们，并且通过 10 秒收集示例间隔进行预设。  
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB Graph 数据库的区域终结点
 description: 了解如何连接到应用程序最近的 Graph 数据库终结点
-author: olignat
+author: luisbosquez
+ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/09/2019
-ms.author: olignat
-ms.openlocfilehash: a7db86c120fd633dd70fbb5733383c98a25e2cde
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 6bce69889910296f5ff28090e62cfe27c0640d95
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886852"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755034"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Azure Cosmos DB Graph 帐户的区域终结点
 Azure Cosmos DB Graph 数据库是[全局分布](distribute-data-globally.md)的，因此应用程序可以使用多个读取终结点。 需要在多个位置具有写入访问权限的应用程序应启用[多主数据库](how-to-multi-master.md)功能。

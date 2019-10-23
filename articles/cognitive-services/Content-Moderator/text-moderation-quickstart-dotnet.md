@@ -3,19 +3,19 @@ title: 快速入门：使用 C# 分析文本内容 - 内容审查器
 titleSuffix: Azure Cognitive Services
 description: 如何使用适用于 .NET 的内容审查器 SDK 分析文本内容中是否存在各种令人反感的材料
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
-ms.author: sajagtap
-ms.openlocfilehash: 69c190b9ce9e5a99d39a46c147f7159ace47e4f7
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.author: pafarley
+ms.openlocfilehash: 40f73a6aabd3631bf2a2f8f1406d2ec9abd55e51
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001437"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757230"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>快速入门：使用 C# 分析文本内容中是否存在令人反感的材料
 
@@ -87,7 +87,7 @@ These are all UK phone numbers, the last two being Microsoft UK support numbers:
 程序会将 JSON 字符串数据写入 _TextModerationOutput.txt_ 文件。 本快速入门中使用的示例文本的输出如下：
 
 ```json
-Autocorrect typos, check for matching terms, PII, and classify.
+Autocorrect typos, check for matching terms, check for personal data, and classify.
 {
 "OriginalText": "\"Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052. These are all UK phone numbers, the last two being Microsoft UK support numbers: +44 870 608 4000 or 0344 800 2400 or 0800 820 3300. Also, 999-99-9999 looks like a social security number (SSN).\"",
 "NormalizedText": "\" Is this a garbage or crap email abide@ abed. com, phone: 6657789887, IP: 255. 255. 255. 255, 1 Microsoft Way, Redmond, WA 98052. These are all UK phone numbers, the last two being Microsoft UK support numbers: +44 870 608 4000 or 0344 800 2400 or 0800 820 3300. Also, 999-99-9999 looks like a social security number ( SSN) . \"",

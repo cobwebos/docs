@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9f053cc7646a2a4f41c57010f7e43a3fe3255b7e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 8bc396611f2e6f611de5a41de9525ba71287b363
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931794"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595110"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>教程 - 如何在 Azure 中的 Linux 虚拟机首次启动时使用 cloud-init 对其进行自定义
 
@@ -126,7 +126,7 @@ az vm create \
 若要使 VM 能使用 Web 流量，请通过 [az vm open-port](/cli/azure/vm#az-vm-open-port) 从 Internet 中打开端口 80：
 
 ```azurecli-interactive
-az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myVM
+az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAutomatedVM
 ```
 
 ## <a name="test-web-app"></a>测试 Web 应用
@@ -165,7 +165,7 @@ az keyvault create \
 az keyvault certificate create \
     --vault-name $keyvault_name \
     --name mycert \
-    --policy "$(az keyvault certificate get-default-policy)"
+    --policy "$(az keyvault certificate get-default-policy --output json)"
 ```
 
 
@@ -177,7 +177,7 @@ secret=$(az keyvault secret list-versions \
           --vault-name $keyvault_name \
           --name mycert \
           --query "[?attributes.enabled].id" --output tsv)
-vm_secret=$(az vm secret format --secret "$secret")
+vm_secret=$(az vm secret format --secret "$secret" --output json)
 ```
 
 
@@ -256,7 +256,7 @@ az vm create \
 ```azurecli-interactive
 az vm open-port \
     --resource-group myResourceGroupAutomate \
-    --name myVMSecured \
+    --name myVMWithCerts \
     --port 443
 ```
 

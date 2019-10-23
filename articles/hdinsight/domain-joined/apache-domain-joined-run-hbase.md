@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 5823bed08e0fc2ed67dbbf3c58c39982f3a1897e
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: da6903aa9f51fbba00ca599805ff3213e9388dd1
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037271"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597931"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>教程：使用企业安全性套餐在 HDInsight 中配置 Apache HBase 策略
 
@@ -86,7 +86,7 @@ ms.locfileid: "71037271"
 4. 查看表的内容：
     
     ```hbaseshell
-    scan 'Contacts'
+    scan 'Customers'
     ```
 
     ![HDInsight Hadoop HBase shell 输出](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)

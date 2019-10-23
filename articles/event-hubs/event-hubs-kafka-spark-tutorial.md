@@ -3,19 +3,19 @@ title: 连接 Apache Spark 应用 - Azure 事件中心 | Microsoft Docs
 description: 本文介绍如何将 Apache Spark 与适用于 Kafka 的 Azure 事件中心配合使用。
 services: event-hubs
 documentationcenter: .net
-author: basilhariri
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.author: bahariri
-ms.openlocfilehash: 93fdd85d1fd1b91e01d8f38b4890e1b588a5c704
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.author: shvija
+ms.openlocfilehash: 5bd25604844ce0521b6bac2d637a2d48a6ef089b
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091231"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555736"
 ---
 # <a name="connect-your-apache-spark-application-with-kafka-enabled-azure-event-hubs"></a>将 Apache Spark 应用程序与启用了 Apache Kafka 的 Azure 事件中心连接
 本教程详细介绍如何将 Spark 应用程序连接到启用了 Kafka 的事件中心进行实时流式处理。 此集成允许在不更改协议客户端或运行自己的 Kafka 或 Zookeeper 群集的情况下进行流式处理。 本教程需要 Apache Spark v2.4+ 和 Apache Kafka v2.0+。
