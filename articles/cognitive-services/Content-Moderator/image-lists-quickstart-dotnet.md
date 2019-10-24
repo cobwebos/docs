@@ -3,19 +3,19 @@ title: 在 C# 中针对自定义列表检查图像 - 内容审查器
 titleSuffix: Azure Cognitive Services
 description: 如何通过适用于 C# 的内容审查器 SDK 使用自定义图像列表进行图像审查。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/03/2019
-ms.author: sajagtap
-ms.openlocfilehash: 63eb2285563bf83ac56beb03ff008a2bfa5daab6
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.author: pafarley
+ms.openlocfilehash: 63dd3b782d868994c46e71b55201e65f91678d86
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242901"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755342"
 ---
 # <a name="moderate-with-custom-image-lists-in-c"></a>在 C# 中通过自定义图像列表进行审查
 
@@ -32,7 +32,7 @@ ms.locfileid: "72242901"
 > [!NOTE]
 > 最多只能使用 5 个图像列表，每个列表中的图像数不得超过 10,000 张。
 
-本指南的控制台应用程序模拟了一些可使用图像列表 API 执行的任务。
+本指南的控制台应用程序模拟可以通过映像列表 API 执行的一些任务。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
@@ -42,7 +42,7 @@ ms.locfileid: "72242901"
 
 ## <a name="create-your-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 向解决方案添加新的“控制台应用 (.NET Framework)”项目。
+1. 向解决方案添加新的“控制台应用(.NET Framework)”项目。
 
    在示例代码中，将项目命名为“ImageLists”。
 
@@ -302,7 +302,7 @@ private static ImageList CreateCustomList(ContentModeratorClient client)
 
 ## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>创建一个方法来向列表添加图像集合
 
-将以下方法添加到 **Program** 类。 本指南不演示如何将标记应用到列表中的图像。 
+将以下方法添加到 **Program** 类。 本指南不演示如何将标记应用于列表中的图像。 
 
 ```csharp
 /// <summary>
@@ -597,7 +597,7 @@ private static IList<ImageList> GetAllListIds(ContentModeratorClient client)
 
 ## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>添加代码以模拟使用图像列表
 
-将以下代码添加到 Main 方法。 此代码将模拟在定义和管理列表以及使用列表来屏蔽图像时执行的诸多操作。 日志记录功能允许你查看通过 SDK 调用内容审查器服务生成的响应对象。
+将以下代码添加到 Main 方法。 此代码将模拟在定义和管理列表以及使用列表来屏蔽图像时执行的诸多操作。 借助日志记录功能，可以查看通过对内容审查器服务执行 SDK 调用生成的响应对象。
 
 ```csharp
 // Create the text writer to use for logging, and cache a static reference to it.
@@ -667,7 +667,7 @@ Console.WriteLine("Press any key to exit...");
 Console.ReadKey();
 ```
 
-## <a name="run-the-program-and-review-the-output"></a>运行程序并检查输出
+## <a name="run-the-program-and-review-the-output"></a>运行程序并查看输出
 
 列表 ID 和图像内容 ID 在每次运行应用程序时都是不同的。
 由程序写入的日志文件具有以下输出：

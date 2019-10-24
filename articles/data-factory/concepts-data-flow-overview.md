@@ -7,14 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/7/2019
-ms.openlocfilehash: 94bde7b2e2a6f3902d83de90b06638035fd34397
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 7f6c131737ca63d120e111b3ef4504a36dbd7fc1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679118"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754708"
 ---
-# <a name="what-are-mapping-data-flows"></a>什么是映射数据流？
+# <a name="what-are-mapping-data-flows"></a>映射数据流是什么？
 
 映射数据流是在 Azure 数据工厂中以可视方式设计的数据转换。 数据流允许数据工程师开发图形数据转换逻辑，而无需编写代码。 生成的数据流将作为使用扩展 Spark 群集的 Azure 数据工厂管道中的活动执行。 数据流活动可以通过现有的数据工厂计划、控制、流和监视功能来操作化。
 
@@ -39,6 +39,38 @@ ms.locfileid: "72679118"
 关系图显示转换流。 它显示源数据流入一个或多个接收器时的沿袭。 若要添加新源，请选择 "**添加源**"。 若要添加新的转换，请选择现有转换右下方的加号。
 
 ![画布](media/data-flow/canvas2.png "画布")
+
+### <a name="azure-integration-runtime-data-flow-properties"></a>Azure 集成运行时数据流属性
+
+![调试按钮](media/data-flow/debugbutton.png "调试按钮")
+
+开始在 ADF 中处理数据流时，需要为浏览器 UI 顶部的数据流启用 "调试" 开关。 这会加速用于交互式调试、数据预览和管道调试执行的 Azure Databricks 群集。 可以通过选择自定义[Azure Integration Runtime](concepts-integration-runtime.md)来设置使用的群集的大小。 上次数据预览或上次调试管道执行后，调试会话将保持活动状态长达60分钟。
+
+当你使用数据流活动操作管道时，ADF 将使用与 "运行方式" 属性中的[活动](control-flow-execute-data-flow-activity.md)相关联的 Azure Integration Runtime。
+
+默认 Azure Integration Runtime 是一个小型四核单辅助角色节点群集，旨在允许您预览数据并快速执行最小成本的调试管道。 如果要对大型数据集执行操作，请设置较大的 Azure IR 配置。
+
+可以通过在 "Azure IR 数据流" 属性中设置 TTL 来指示 ADF 维护群集资源池（Vm）。 这将导致后续活动的执行速度更快。
+
+#### <a name="azure-integration-runtime-and-data-flow-strategies"></a>Azure 集成运行时和数据流策略
+
+##### <a name="execute-data-flows-in-parallel"></a>并行执行数据流
+
+如果并行执行管道中的数据流，则 ADF 会根据附加到每个活动的 Azure Integration Runtime 中的设置，为每个活动执行开启单独 Azure Databricks 的群集。 若要在 ADF 管道中设计并行执行，请在 UI 中添加无优先约束的数据流活动。
+
+在这三个选项中，此选项可能会在最短时间内执行。 但是，将在单独的群集上同时执行每个并行数据流，因此事件的顺序是不确定的。
+
+##### <a name="overload-single-data-flow"></a>重载单一数据流
+
+如果将所有逻辑都置于单个数据流中，则 ADF 将在单个 Spark 群集实例上的同一作业执行上下文中执行。
+
+此选项可能更难执行并排除故障，因为你的业务规则和业务逻辑将混杂在一起。 此选项也不能提高可用性。
+
+##### <a name="execute-data-flows-serially"></a>按顺序执行数据流
+
+如果在管道中执行序列中的数据流活动，并在 Azure IR 配置上设置了 TTL，则 ADF 会重复使用计算资源（Vm），从而加快后续执行时间。 对于每次执行，你仍然会收到新的 Spark 上下文。
+
+对于这三个选项，这可能需要最长的时间来执行端到端。 但它确实提供了每个数据流步骤中逻辑操作的完全分离。
 
 ### <a name="configuration-panel"></a>配置面板
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos 容器的全球分布式事务和分析存储
 description: 了解事务和分析存储以及它们的 Azure Cosmos 容器配置选项。
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 27ca2102ee95273fbedd1a870e57d2ae3318e879
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: abf222b7a6d6e8fd053fa83c066d2b7850f575ab
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703391"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756902"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Azure Cosmos 容器的全球分布式事务和分析存储
 
@@ -27,7 +27,7 @@ Azure Cosmos 容器由两个存储引擎（事务存储引擎和可更新的分�
 事务存储引擎受本地 Ssd 的支持，而分析存储则存储在群集以外的 SSD 存储上。 下表捕获了事务存储与分析存储之间的明显差异。
 
 
-|功能  |事务存储  |分析存储 |
+|Feature  |事务存储  |分析存储 |
 |---------|---------|---------|
 |每个 Azure Cosmos 容器的最大存储空间 |   无限制      |    无限制     |
 |每个逻辑分区键的最大存储空间   |   10 GB      |   无限制      |
@@ -35,7 +35,7 @@ Azure Cosmos 容器由两个存储引擎（事务存储引擎和可更新的分�
 |存储区域 |   由本地/内部群集 Ssd 支持的复制存储。 |  廉价远程/脱离群集 Ssd 支持的复制存储。       |
 |持续性  |    99.99999 （7-9 秒）     |  99.99999 （7-9 秒）       |
 |访问数据的 Api  |   SQL、MongoDB、Cassandra、Gremlin、Tables 和 Etcd。       | Apache Spark         |
-|保留期（生存时间或 TTL）   |  策略驱动，通过使用 `DefaultTimeToLive` 属性在 Azure Cosmos 容器上配置。       |   策略驱动，通过使用 `ColumnStoreTimeToLive` 属性在 Azure Cosmos 容器上配置。      |
+|保留期（生存时间或 TTL）   |  策略驱动，在 Azure Cosmos 容器上通过使用 `DefaultTimeToLive` 属性进行配置。       |   策略驱动，在 Azure Cosmos 容器上通过使用 `ColumnStoreTimeToLive` 属性进行配置。      |
 |每 GB 的价格    |   0\.25 美元/GB      |  $ 0.02/GB       |
 |存储事务的价格    | 预配的吞吐量每小时计费，每 100 RU/秒 $0.008 收费。        |  对于10000写入事务，基于消耗的吞吐量按 $0.05 收费 $0.004，为10000读取事务收费。       |
 
@@ -69,7 +69,7 @@ Azure Cosmos DB 执行 ETL 操作无开销。 每个 Azure Cosmos 容器均由�
 
 ### <a name="on-demand-snapshots-and-time-travel-analytics"></a>按需快照和时间行程分析
 
-可以通过调用容器上的 `CreateSnapshot (name, timestamp)` 命令，随时获取 Azure Cosmos 容器分析存储中存储的数据的快照。 快照在容器中的更新历史记录中命名为 "书签"。
+可以通过调用容器上的 `CreateSnapshot (name, timestamp)` 命令，随时获取存储在 Azure Cosmos 容器分析存储中的数据的快照。 快照在容器中的更新历史记录中命名为 "书签"。
 
 ![按需快照和时间行程分析](./media/globally-distributed-transactional-analytical-storage/ondemand-analytical-data-snapshots.png)
 
@@ -81,7 +81,7 @@ Azure Cosmos DB 执行 ETL 操作无开销。 每个 Azure Cosmos 容器均由�
 
 根据你的方案，你可以单独启用或禁用两个存储引擎中的每一个。 以下是每种方案的配置：
 
-|应用场景 |事务存储设置  |分析存储设置 |
+|场景 |事务存储设置  |分析存储设置 |
 |---------|---------|---------|
 |以独占方式运行分析工作负荷（具有无限保留期） |  DefaultTimeToLive = 0       |  ColumnStoreTimeToLive =-1       |
 |以独占方式运行事务工作负荷（具有无限保留期）  |   DefaultTimeToLive =-1      |  ColumnStoreTimeToLive = 0       |
@@ -90,19 +90,19 @@ Azure Cosmos DB 执行 ETL 操作无开销。 每个 Azure Cosmos 容器均由�
 
 1. **仅为分析工作负荷配置容器（具有无限保留期）**
 
-   可以专门为分析工作负荷配置 Azure Cosmos 容器。 此配置的优点是无需为事务存储付费。 如果你的目标是仅将容器用于分析工作负荷，则可以通过在 Cosmos 容器上设置 `DefaultTimeToLive` 到0来禁用事务存储，通过将 @no__t 设置为-1，你可以通过将 "" 设置为 "无限保留" 来启用分析存储。
+   可以专门为分析工作负荷配置 Azure Cosmos 容器。 此配置的优点是无需为事务存储付费。 如果你的目标是仅将容器用于分析工作负荷，则可以通过在 Cosmos 容器上将 `DefaultTimeToLive` 设置为0来禁用事务存储，通过将 `ColumnStoreTimeToLive` 设置为-1，可以启用具有无限保留期的分析存储。
 
    ![具有无限保留期的分析工作负荷](./media/globally-distributed-transactional-analytical-storage/analytical-workload-configuration.png)
 
 1. **为事务工作负荷专门配置容器（具有无限保留期）**
 
-   可以专门为事务工作负荷配置 Azure Cosmos 容器。 您可以通过将容器上的 @no__t 设置为0来禁用分析存储，还可以通过将 @no__t 设置为-1 来启用具有无限保留期的分析存储。
+   可以专门为事务工作负荷配置 Azure Cosmos 容器。 可以通过在容器上将 `ColumnStoreTimeToLive` 设置为0来禁用分析存储，并通过将 `DefaultTimeToLive` 设置为-1，使分析存储具有无限的保留期。
 
    ![具有无限保留期的事务性工作负荷](./media/globally-distributed-transactional-analytical-storage/transactional-workload-configuration.png)
 
 1. **为事务和分析工作负荷（具有无限保留）配置容器**
 
-   你可以为事务和分析工作负荷配置 Azure Cosmos 容器，并在它们之间实现完全的性能隔离。 可以通过将 @no__t 设置为-1 来启用分析存储，并通过将 @no__t 设置为-1 来启用具有无限保留期的事务存储。
+   你可以为事务和分析工作负荷配置 Azure Cosmos 容器，并在它们之间实现完全的性能隔离。 可以通过将 `ColumnStoreTimeToLive` 设置为-1 来启用分析存储，并通过将 `DefaultTimeToLive ` 设置为-1 来启用具有无限保留期的事务存储。
 
    ![具有无限保留期的事务性和分析工作负荷](./media/globally-distributed-transactional-analytical-storage/analytical-transactional-configuration-infinite-retention.png)
 
@@ -110,7 +110,7 @@ Azure Cosmos DB 执行 ETL 操作无开销。 每个 Azure Cosmos 容器均由�
 
    你可以为事务和分析工作负荷配置 Azure Cosmos 容器，并在不同的保留间隔内对事务和分析工作负荷进行完全的性能隔离。 Azure Cosmos DB 将强制你的分析存储始终保留比事务存储更长的持续时间。
 
-   可以通过将 @no__t 设置为 < 值 1 > 启用分析存储，并通过将 @no__t 设置为 < 值 2 > 来启用分析存储，从而使事务存储具有无限的保留期。 Azure Cosmos DB 将强制 < 值 2 > 始终大于 < 值 1 >。
+   通过将 `DefaultTimeToLive` 设置为 < 值 1 >，并通过将 `ColumnStoreTimeToLive` 设置为 < 值 2 > 来启用分析存储，可以通过将设置为值1启用分析存储。 Azure Cosmos DB 将强制 < 值 2 > 始终大于 < 值 1 >。
 
    ![具有存储分层的事务性和分析工作负荷](./media/globally-distributed-transactional-analytical-storage/analytical-transactional-configuration-specified-retention.png)
 
