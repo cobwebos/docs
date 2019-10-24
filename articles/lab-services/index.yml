@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure 实验室服务文档
-summary: 了解如何使用 Azure 实验室服务为云中的团队或学生快速设置开发、测试、编程马拉松或教室实验室。
+title: Azure 开发测试实验室文档
+summary: 了解如何使用 Azure 开发测试实验室为云中的团队或学生快速设置开发、测试、编程马拉松或教室实验室。
 metadata:
-  title: Azure 实验室服务文档
-  description: 了解如何使用 Azure 实验室服务为云中的团队或学生快速设置开发、测试、编程马拉松或教室实验室。
+  title: Azure 开发测试实验室文档
+  description: 了解如何使用 Azure 开发测试实验室为云中的团队或学生快速设置开发、测试、编程马拉松或教室实验室。
   services: lab-services
   ms.service: lab-services
   ms.subservice: 
@@ -12,75 +12,59 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 09/26/2019
-  ms.openlocfilehash: 63a5b41fba026cc52cdcc599bfdd38e1e27ad42d
-  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.openlocfilehash: 1cfb86a37068d4cd928081446e6bf9ad381bbd86
+  ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/27/2019
-  ms.locfileid: "71326976"
+  ms.lasthandoff: 10/23/2019
+  ms.locfileid: "72790953"
 landingContent:
-- title: 综合概述
+- title: 入门
   linkLists:
   - linkListType: overview
     links:
-    - text: 关于实验室服务
+    - text: 关于开发测试实验室
+      url: devtest-lab-overview.md
+    - text: 关于开发测试实验室和实验室服务
       url: lab-services-overview.md
-    - text: 关于开发测试实验室
-      url: devtest-lab-overview.md
-    - text: 关于教室实验室
-      url: ./classroom-labs/classroom-labs-overview.md
-- title: 开发测试实验室
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 关于开发测试实验室
-      url: devtest-lab-overview.md
-  - linkListType: tutorial
-    links:
-    - text: 设置实验室
-      url: tutorial-create-custom-lab.md
-    - text: 访问实验室
-      url: tutorial-use-custom-lab.md
   - linkListType: concept
     links:
     - text: 开发测试实验室概念
       url: devtest-lab-concepts.md
     - text: 热门方案
       url: devtest-lab-guidance-get-started.md
+  - linkListType: tutorial
+    links:
+    - text: 设置实验室
+      url: tutorial-create-custom-lab.md
+    - text: 访问实验室
+      url: tutorial-use-custom-lab.md
+- title: 项目
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 向 VM 添加项目
+      url: add-artifact-vm.md
+    - text: 创建自定义项目
+      url: devtest-lab-artifact-author.md
+    - text: 指定必需的项目
+      url: devtest-lab-mandatory-artifacts.md
+    - text: 排查项目失败问题
+      url: devtest-lab-troubleshoot-artifact-failure.md
+- title: 环境
+  linkLists:
   - linkListType: how-to-guide
     links:
     - text: 配置和使用公共环境
       url: devtest-lab-configure-use-public-environments.md
-    - text: 创建和使用自己的环境
+    - text: 创建环境
       url: devtest-lab-create-environment-from-arm.md
-    - text: 创建自定义映像
-      url: devtest-lab-create-custom-image-from-vm-using-portal.md
-    - text: 管理公式
-      url: devtest-lab-manage-formulas.md
-    - text: 将项目添加到 VM
-      url: add-artifact-vm.md
-- title: 教室实验室
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 关于教室实验室
-      url: ./classroom-labs/classroom-labs-overview.md
-  - linkListType: tutorial
-    links:
-    - text: 设置实验室帐户
-      url: ./classroom-labs/tutorial-setup-lab-account.md
-    - text: 设置教室实验室
-      url: ./classroom-labs/tutorial-setup-classroom-lab.md
-    - text: 访问教室实验室
-      url: ./classroom-labs/tutorial-connect-virtual-machine-classroom-lab.md
-    - text: 跟踪课堂实验室的使用情况
-      url: ./classroom-labs/tutorial-track-usage.md
-  - linkListType: concept
-    links:
-    - text: 教室实验室概念
-      url: ./classroom-labs/classroom-labs-concepts.md
-    - text: 将实验室用于上课
-      url: ./classroom-labs/classroom-labs-scenarios.md
+    - text: 使用“平台即服务”服务
+      url: use-paas-services.md
+    - text: 连接到实验室的虚拟网络
+      url: connect-environment-lab-virtual-network.md
+    - text: 排查环境故障
+      url: troubleshoot-vm-environment-creation-failures.md
 - title: 浏览参考内容
   linkLists:
   - linkListType: reference
@@ -91,3 +75,15 @@ landingContent:
       url: /powershell/module/az.devtestlabs/#devtest_labs
     - text: REST
       url: /rest/api/dtl
+- title: 模板
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 自定义映像与公式
+      url: devtest-lab-comparing-vm-base-image-types.md
+  - linkListType: how-to-guide
+    links:
+    - text: 从 VM 创建自定义映像
+      url: devtest-lab-create-custom-image-from-vm-using-portal.md
+    - text: 管理公式
+      url: devtest-lab-manage-formulas.md

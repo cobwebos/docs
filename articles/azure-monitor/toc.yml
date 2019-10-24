@@ -639,6 +639,8 @@
                   href: insights/vminsights-workbooks.md
                 - name: 使用日志查询分析数据
                   href: insights/vminsights-log-search.md
+                - name: 升级依赖项代理
+                  href: insights/vminsights-dependency-agent-maintenance.md
                 - name: 禁用监视
                   href: insights/vminsights-optout.md
             - name: 容量和性能解决方案
