@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: c886289f098eb41f4b215b4abc2e206db93a27f9
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 706f76c00022c5f5661ea261a5bb35eedc13d5ba
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710138"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756035"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作方式：体系结构和概念
 
@@ -25,24 +25,24 @@ ms.locfileid: "71710138"
 
 ## <a name="workflow"></a>工作流
 
-机器学习模型工作流通常遵循此顺序:
+机器学习模型工作流通常遵循此顺序：
 
 1. **辆**
     + 在**Python**中或通过视觉对象界面开发机器学习培训脚本。
     + 创建和配置**计算目标**。
     + **将脚本提交**到配置的计算目标以在该环境中运行。 在训练期间，脚本可以读取或写入**数据存储**。 并且执行记录在**工作区**中保存为**运行**，并在**试验**下分组。
 
-1. **包**-发现满意的运行后, 在**模型注册表**中注册持久化模型。
+1. **包**-发现满意的运行后，在**模型注册表**中注册持久化模型。
 
-1. **验证查询从**当前和过去的运行中记录的度量值的**实验。**  -  如果指标未指示所需结果，请循环回到步骤 1 并循环访问脚本。
+1. **验证** -  从当前和过去的运行中查询记录的度量值**试验**。 如果指标未指示所需结果，请循环回到步骤 1 并循环访问脚本。
 
-1. **部署**-开发一个计分脚本, 该脚本使用模型并将**模型部署**为 Azure 中的**web 服务**, 或部署到**IoT Edge 设备**。
+1. **部署**-开发一个计分脚本，该脚本使用模型并将**模型部署**为 Azure 中的**web 服务**，或部署到**IoT Edge 设备**。
 
-1. **监视**-监视已部署模型的定型数据集和推理数据之间的**数据偏移**。 必要时, 请循环返回到步骤 1, 以通过新的定型数据重新训练模型。
+1. **监视**-监视已部署模型的定型数据集和推理数据之间的**数据偏移**。 必要时，请循环返回到步骤1，以通过新的定型数据重新训练模型。
 
 ## <a name="tools-for-azure-machine-learning"></a>用于 Azure 机器学习的工具
 
-使用这些工具进行 Azure 机器学习:
+使用这些工具进行 Azure 机器学习：
 
 +  与[适用于 python 的 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)的任何 Python 环境中的服务进行交互。
 + 通过[AZURE 机器学习 CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)自动执行机器学习活动。
@@ -62,7 +62,7 @@ ms.locfileid: "71710138"
 + <a href="#experiments">试验</a>
 + <a href="#github-tracking-and-integration">Git 跟踪</a>
 + <a href="#iot-module-deployments">IoT 模块</a>
-+ <a href="#logging">日志记录</a>
++ <a href="#logging">Logging</a>
 + <a href="#ml-pipelines">ML 管道</a>
 + <a href="#models">机型</a>
 + <a href="#runs">Run</a>
@@ -72,7 +72,7 @@ ms.locfileid: "71710138"
 + <a href="#web-service-deployments">Web 服务</a>
 + <a href="#workspaces">空间</a>
 
-### <a name="activities"></a>activities
+### <a name="activities"></a>活动
 
 活动表示长时间运行的操作。 以下操作是活动的示例：
 
@@ -83,27 +83,27 @@ ms.locfileid: "71710138"
 
 ### <a name="compute-targets"></a>计算目标
 
-[计算目标](concept-compute-target.md)使你可以指定运行训练脚本或托管服务部署的计算资源。 此位置可以是本地计算机, 也可以是基于云的计算资源。 计算目标可以在不更改代码的情况下轻松更改你的计算环境。
+[计算目标](concept-compute-target.md)使你可以指定运行训练脚本或托管服务部署的计算资源。 此位置可以是本地计算机，也可以是基于云的计算资源。 计算目标可以在不更改代码的情况下轻松更改你的计算环境。
 
 详细了解[培训和部署可用的计算目标](concept-compute-target.md)。
 
 ### <a name="datasets-and-datastores"></a>数据集和数据存储
 
-**Azure 机器学习数据集**(预览版) 可让你更轻松地访问和处理数据。 数据集管理各种方案 (例如模型定型和管道创建) 中的数据。 使用 Azure 机器学习 SDK，你可以访问基础存储、浏览数据以及管理不同数据集定义的生命周期。
+**Azure 机器学习数据集**（预览版）可让你更轻松地访问和处理数据。 数据集管理各种方案（例如模型定型和管道创建）中的数据。 使用 Azure 机器学习 SDK，你可以访问基础存储、浏览数据以及管理不同数据集定义的生命周期。
 
-数据集提供了一些方法，用于处理常用格式的数据， `from_delimited_files()`例如`to_pandas_dataframe()`使用或。
+数据集提供多种方法来处理常用格式的数据，例如使用 `from_delimited_files()` 或 `to_pandas_dataframe()`。
 
-有关详细信息, 请参阅[创建和注册 Azure 机器学习数据集](how-to-create-register-datasets.md)。  有关使用数据集的更多示例, 请参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets)。
+有关详细信息，请参阅[创建和注册 Azure 机器学习数据集](how-to-create-register-datasets.md)。  有关使用数据集的更多示例，请参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets)。
 
 **数据**存储是通过 Azure 存储帐户进行的存储提取。 数据存储可以使用 Azure blob 容器或 Azure 文件共享作为后端存储。 每个工作区都有默认数据存储，并且你可以注册其他数据存储。 使用 Python SDK API 或 Azure 机器学习 CLI 可从数据存储中存储和检索文件。
 
 ### <a name="deployment"></a>部署
 
-部署是将模型实例化到可在云中托管的 web 服务, 也可以是集成设备部署的 IoT 模块。
+部署是将模型实例化到可在云中托管的 web 服务，也可以是集成设备部署的 IoT 模块。
 
 #### <a name="web-service-deployments"></a>Web 服务部署
 
-已部署的 Web 服务可以使用 Azure 容器实例、Azure Kubernetes 服务或 FPGA。 您可以从模型、脚本和关联的文件创建该服务。 这些封装在映像中, 后者提供 web 服务的运行时环境。 映像具有负载均衡的 HTTP 终结点，可接收发送到 Web 服务的评分请求。
+已部署的 Web 服务可以使用 Azure 容器实例、Azure Kubernetes 服务或 FPGA。 您可以从模型、脚本和关联的文件创建该服务。 这些封装在映像中，后者提供 web 服务的运行时环境。 映像具有负载均衡的 HTTP 终结点，可接收发送到 Web 服务的评分请求。
 
 如果已选择启用此功能，Azure 可通过收集 Application Insight 遥测数据或模型遥测数据帮助监视 Web 服务部署。 遥测数据仅供你访问，并且存储在 Application Insights 和存储帐户实例中。
 
@@ -144,13 +144,14 @@ Azure ML 环境用于指定用于为数据准备、模型定型和模型服务�
 
 试验是指定的脚本中多个运行的分组。 它始终属于工作区。 当你提交运行时，需提供试验名称。 运行的信息存储在该试验下。 如果提交运行，并指定一个不存在的试验名称，则系统将使用新指定的名称自动创建一个新试验。
 
-有关使用试验的示例，请参阅[教程：训练您的第](tutorial-1st-experiment-sdk-train.md)一个模型。
+有关使用试验的示例，请参阅[教程：训练第一个模型](tutorial-1st-experiment-sdk-train.md)。
 
 
 ### <a name="github-tracking-and-integration"></a>GitHub 跟踪和集成
 
-当你开始在源目录为本地 Git 存储库的训练运行时, 有关存储库的信息存储在运行历史记录中。 例如, 将在历史记录中记录存储库的当前提交 ID。 这适用于使用估计器、ML 管道或脚本运行提交的运行。 它还适用于从 SDK 或机器学习 CLI 提交的运行。
+当你开始在源目录为本地 Git 存储库的训练运行时，有关存储库的信息存储在运行历史记录中。 这适用于使用估计器、ML 管道或脚本运行提交的运行。 它还适用于从 SDK 或机器学习 CLI 提交的运行。
 
+有关详细信息，请参阅[Git integration for Azure 机器学习](concept-train-model-git-integration.md)。
 
 ### <a name="logging"></a>日志记录
 
@@ -158,21 +159,21 @@ Azure ML 环境用于指定用于为数据准备、模型定型和模型服务�
 
 ### <a name="ml-pipelines"></a>ML 管道
 
-使用机器学习管道可以创建和管理将各个机器学习阶段整合到一起的工作流。 例如, 管道可能包含数据准备、模型定型、模型部署和推理/评分阶段。 每个阶段可以包含多个步骤，每个步骤都能够以无人参与方式在各种计算目标中运行。 
+使用机器学习管道可以创建和管理将各个机器学习阶段整合到一起的工作流。 例如，管道可能包含数据准备、模型定型、模型部署和推理/评分阶段。 每个阶段可以包含多个步骤，每个步骤都能够以无人参与方式在各种计算目标中运行。 
 
 管道步骤可重复使用，如果该步骤的输出未发生更改，则可以运行，而无需重新运行后续步骤。 例如，如果数据未更改，则可以重新训练模型，而无需重新运行成本高昂的数据准备步骤。 管道还允许数据科学家协作，同时处理机器学习工作流的不同区域。
 
 有关机器学习管道与此服务的详细信息，请参阅[管道和 Azure 机器学习](concept-ml-pipelines.md)。
 
-### <a name="models"></a>Models
+### <a name="models"></a>模型
 
 简单地说，模型是一段接受输入并生成输出的代码。 创建机器学习模型将涉及选择算法、为其提供数据以及优化超参数。 培训是一个迭代过程，将生成经过培训的模型，它会封装模型在培训过程中学到的内容。
 
 模型通过 Azure 机器学习中的运行生成。 还可以使用在 Azure 机器学习外部训练的模型。 可以在 Azure 机器学习工作区中注册模型。
 
-Azure 机器学习与框架无关。 创建模型时, 可以使用任何主流机器学习框架, 如 Scikit-learn、XGBoost、PyTorch、TensorFlow 和 Chainer。
+Azure 机器学习与框架无关。 创建模型时，可以使用任何主流机器学习框架，如 Scikit-learn、XGBoost、PyTorch、TensorFlow 和 Chainer。
 
-有关使用 scikit-learn 和估计器为模型定型的示例，请参阅[教程：使用 Azure 机器学习](tutorial-train-models-with-aml.md)训练图像分类模型。
+有关使用 Scikit-learn 和估计器为模型定型的示例，请参阅[教程：使用 Azure 机器学习训练图像分类模型](tutorial-train-models-with-aml.md)。
 
 **模型注册表**将跟踪 Azure 机器学习工作区中的所有模型。
 
@@ -181,7 +182,7 @@ Azure 机器学习与框架无关。 创建模型时, 可以使用任何主流�
 注册模型时，可以提供其他元数据标记，然后在搜索模型时使用这些标记。
 
 > [!TIP]
-> 已注册的模型是组成模型的一个或多个文件的逻辑容器。 例如, 如果您有一个存储在多个文件中的模型, 则可以将它们作为一个模型注册到 Azure 机器学习工作区中。 注册后, 可以下载或部署已注册的模型, 并接收已注册的所有文件。
+> 已注册的模型是组成模型的一个或多个文件的逻辑容器。 例如，如果您有一个存储在多个文件中的模型，则可以将它们作为一个模型注册到 Azure 机器学习工作区中。 注册后，可以下载或部署已注册的模型，并接收已注册的所有文件。
 
 不能删除活动部署正在使用的已注册模型。
 
@@ -211,13 +212,13 @@ Azure 机器学习与框架无关。 创建模型时, 可以使用任何主流�
 提交运行时，Azure 机器学习会将包含该脚本的目录压缩为 zip 文件并将其发送到计算目标。 然后解压缩 zip 文件并运行脚本。 Azure 机器学习还将该 zip 文件存储为快照，作为运行记录的一部分。 有权限访问工作区的任何用户都可以浏览运行记录并下载快照。
 
 > [!NOTE]
-> 若要防止在快照中包含不必要的文件, 请使用 ignore file (. .gitignore 或 amlignore)。 将此文件放在快照目录中, 并在其中添加要忽略的文件名。 Amlignore 文件[与 .gitignore 文件使用相同的语法和模式](https://git-scm.com/docs/gitignore)。 如果这两个文件都存在, 则将优先使用 amlignore 文件。
+> 若要防止在快照中包含不必要的文件，请使用 ignore file （. .gitignore 或 amlignore）。 将此文件放在快照目录中，并在其中添加要忽略的文件名。 Amlignore 文件[与 .gitignore 文件使用相同的语法和模式](https://git-scm.com/docs/gitignore)。 如果这两个文件都存在，则将优先使用 amlignore 文件。
 
 ### <a name="training-scripts"></a>定型脚本
 
 若要定型模型，你可以指定包含培训脚本和关联文件的目录。 此外，还可指定一个试验名称，用于存储在训练期间收集的信息。 在训练期间，会将整个目录复制到训练环境（计算目标），并启动运行配置指定的脚本。 目录的快照同样存储在工作区中的试验下。
 
-有关示例，请参阅[教程：使用 Azure 机器学习](tutorial-train-models-with-aml.md)训练图像分类模型。
+有关示例，请参阅[教程：使用 Azure 机器学习训练图像分类模型](tutorial-train-models-with-aml.md)。
 
 ### <a name="workspaces"></a>工作区
 
@@ -230,4 +231,4 @@ Azure 机器学习与框架无关。 创建模型时, 可以使用任何主流�
 
 * [什么是 Azure 机器学习？](overview-what-is-azure-ml.md)
 * [创建 Azure 机器学习工作区](how-to-manage-workspace.md)
-* [教程（第 1 部分）：训练模型](tutorial-train-models-with-aml.md)
+* [教程（第1部分）：定型模型](tutorial-train-models-with-aml.md)

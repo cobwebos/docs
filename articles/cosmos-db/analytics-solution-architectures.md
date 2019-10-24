@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Cosmos DB 中的全局分布式分析的解决方案。
 description: 了解可使用 Azure Cosmos DB 中的全局分布式分析生成的解决方案。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.topic: conceptual
 ms.service: cosmos-db
 ms.date: 09/26/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: d5c6b8727a24a7ea8ddf05f7983618b55884d3bf
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: d50b946e67bbcc171850b71021165356011f58e3
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338979"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755200"
 ---
 # <a name="solutions-using-globally-distributed-analytics-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用全局分布式分析的解决方案
 
@@ -51,7 +51,7 @@ ms.locfileid: "71338979"
 
 ![Azure Cosmos DB 的用于从 IoT 设备读取指标的 Spark 支持](./media/spark-api-introduction/read-metrics-from-iot-devices.png)
 
-## <a name="predictive-maintenance"></a>预防性维护
+## <a name="predictive-maintenance"></a>预测性维护
 
 * 维护资产（例如在从小型钻井平台到深水平台中使用的压缩机）是一项复杂的工作。 这些资产位于全球，生成数 PB 的数据。 可以使用 Azure Cosmos DB 构建端到端预测性数据管道，该管道使用 Spark 流式处理来处理大量的传感器遥测数据、存储资产部件以及传感器映射数据。
 

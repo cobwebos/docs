@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 2031820843342fb7e6b115865297e08cbee28a0a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 631a103491b70ca016b94af01995aeeb3f29c77a
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387335"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754672"
 ---
 # <a name="mapping-data-flow-move-nodes"></a>映射数据流移动节点
 
@@ -25,7 +25,7 @@ Azure 数据工厂数据流设计界面是一个“构造”界面，可以在�
 
 ## <a name="streams-of-data-inside-of-data-flow"></a>数据流中的数据流
 
-在 Azure 数据工厂数据流中，流表示数据的流动。 在“转换设置”窗格中，你会看到一个“传入流”字段。 它告诉你哪个传入数据流在为该转换提供数据。 可以通过单击传入流名称并选择另一个数据流在图形上更改转换节点的物理位置。 然后，该流上的当前转换以及所有后续转换都将移动到新位置。
+在 Azure 数据工厂数据流中，流表示数据的流动。 在 "转换设置" 窗格中，您将看到 "传入流" 字段。 它告诉你哪个传入数据流在为该转换提供数据。 可以通过单击传入流名称并选择另一个数据流在图形上更改转换节点的物理位置。 然后，该流上的当前转换以及所有后续转换都将移动到新位置。
 
 如果要移动的转换后面有一个或多个转换，则会通过一个新分支来联接数据流中的新位置。
 

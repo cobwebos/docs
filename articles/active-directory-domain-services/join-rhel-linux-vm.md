@@ -1,5 +1,5 @@
 ---
-title: 将 RHEL VM 加入 Azure AD 域服务 |Microsoft Docs "
+title: 将 RHEL VM 加入 Azure AD 域服务 |Microsoft Docs
 description: 了解如何配置 Red Hat Enterprise Linux 虚拟机并将其加入 Azure AD 域服务托管域。
 services: active-directory-ds
 author: iainfoulds
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.author: iainfou
-ms.openlocfilehash: b90650fa2cd343c81b7bbb2fcea24c3a95f537b6
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 9472abd7a16c887a796e36b8190e8530c84dafa9
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702040"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755704"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>将 Red Hat Enterprise Linux 虚拟机加入 Azure AD 域服务托管域
 
@@ -24,7 +24,7 @@ ms.locfileid: "71702040"
 
 本文介绍如何将 Red Hat Enterprise Linux （RHEL） VM 加入 Azure AD DS 托管域。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 需有以下资源和特权才能完成本教程：
 
@@ -72,11 +72,11 @@ sudo vi /etc/hosts
 127.0.0.1 rhel rhel.contoso.com
 ```
 
-完成后，使用`:wq`编辑器的命令保存并退出*hosts*文件。
+完成后，使用编辑器的 `:wq` 命令保存并退出*hosts*文件。
 
 ## <a name="install-required-packages"></a>安装所需程序包
 
-VM 需要其他一些包才能将 VM 加入到 Azure AD DS 托管域。 若要安装和配置这些包，请使用`yum`以下工具更新并安装域加入工具：
+VM 需要其他一些包才能将 VM 加入到 Azure AD DS 托管域。 若要安装和配置这些包，请使用 `yum` 更新和安装域加入工具：
 
  **RHEL 7** 
 
@@ -96,27 +96,27 @@ sudo yum install adcli sssd authconfig krb5-workstation
  
   **RHEL 7**
      
-1. `realm discover`使用命令发现 Azure AD DS 托管域。 以下示例发现领域*CONTOSO.COM*。 以全部大写的形式指定你自己 Azure AD DS 托管域名：
+1. 使用 `realm discover` 命令发现 Azure AD DS 托管域。 以下示例发现领域*CONTOSO.COM*。 以全部大写的形式指定你自己 Azure AD DS 托管域名：
 
     ```console
     sudo realm discover CONTOSO.COM
     ```
 
-   `realm discover`如果命令找不到 Azure AD DS 托管域，请查看以下故障排除步骤：
+   如果 `realm discover` 命令找不到你的 Azure AD DS 托管域，请查看以下故障排除步骤：
    
-    * 请确保可从 VM 访问域。 尝试`ping contoso.com`查看是否返回了正答复。
+    * 请确保可从 VM 访问域。 尝试 `ping contoso.com` 以查看是否返回了肯定回复。
     * 检查是否已将 VM 部署到相同的或对等互连的虚拟网络，Azure AD DS 托管域在该网络中可用。
     * 确认已将虚拟网络的 DNS 服务器设置更新为指向 Azure AD DS 托管域的域控制器。
 
-1. 现在使用`kinit`命令初始化 Kerberos。 指定属于*AAD DC 管理员*组的用户。 如果需要，请[将用户帐户添加到 Azure AD 中的组](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
+1. 现在使用 `kinit` 命令初始化 Kerberos。 指定属于*AAD DC 管理员*组的用户。 如果需要，请[将用户帐户添加到 Azure AD 中的组](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
 
-    同样，必须以全部大写的形式输入 Azure AD DS 托管域名。 在下面的示例中，名`contosoadmin@contoso.com`为的帐户用于初始化 Kerberos。 输入您自己的用户帐户，该帐户是*AAD DC Administrators*组的成员：
+    同样，必须以全部大写的形式输入 Azure AD DS 托管域名。 在下面的示例中，名为 `contosoadmin@contoso.com` 的帐户用于初始化 Kerberos。 输入您自己的用户帐户，该帐户是*AAD DC Administrators*组的成员：
     
     ```console
     kinit contosoadmin@CONTOSO.COM
     ``` 
 
-1. 最后，使用`realm join`命令将计算机加入到 Azure AD DS 托管域。 使用同一个用户帐户，该帐户是你在前面`kinit`的`contosoadmin@CONTOSO.COM`命令中指定的*AAD DC Administrators*组的成员，例如：
+1. 最后，使用 `realm join` 命令将计算机加入到 Azure AD DS 托管域。 使用同一个用户帐户，该帐户是在上一个 `kinit` 命令中指定的*AAD DC Administrators*组的成员，如 `contosoadmin@CONTOSO.COM`：
 
     ```console
     sudo realm join --verbose CONTOSO.COM -U 'contosoadmin@CONTOSO.COM'
@@ -130,15 +130,15 @@ Successfully enrolled machine in realm
 
   **RHEL 6** 
 
-1. `adcli info`使用命令发现 Azure AD DS 托管域。 以下示例发现领域*CONTOSO.COM*。 以全部大写的形式指定你自己 Azure AD DS 托管域名：
+1. 使用 `adcli info` 命令发现 Azure AD DS 托管域。 以下示例发现领域*CONTOSO.COM*。 以全部大写的形式指定你自己 Azure AD DS 托管域名：
 
     ```console
     sudo adcli info contoso.com
     ```
     
-   `adcli info`如果命令找不到 Azure AD DS 托管域，请查看以下故障排除步骤：
+   如果 `adcli info` 命令找不到你的 Azure AD DS 托管域，请查看以下故障排除步骤：
    
-    * 请确保可从 VM 访问域。 尝试`ping contoso.com`查看是否返回了正答复。
+    * 请确保可从 VM 访问域。 尝试 `ping contoso.com` 以查看是否返回了肯定回复。
     * 检查是否已将 VM 部署到相同的或对等互连的虚拟网络，Azure AD DS 托管域在该网络中可用。
     * 确认已将虚拟网络的 DNS 服务器设置更新为指向 Azure AD DS 托管域的域控制器。
 
@@ -148,7 +148,7 @@ Successfully enrolled machine in realm
     sudo adcli join contoso.com -U contosoadmin
     ```
 
-1. 现在配置 @no__t 0，并创建 @no__t 的文件以使用 @no__t Active Directory 域。 
+1. 现在配置 `/ect/krb5.conf` 并创建 `/etc/sssd/sssd.conf` 文件，以使用 `contoso.com` Active Directory 域。 
    请确保将 `CONTOSO.COM` 替换为你自己的域名：
 
     使用编辑器打开 `/ect/krb5.conf` 文件：
@@ -203,14 +203,14 @@ Successfully enrolled machine in realm
      id_provider = ad
     ```
 
-1. 请确保 `/etc/sssd/sssd.conf` 权限为600，并且由 root 用户拥有：
+1. 请确保 `/etc/sssd/sssd.conf` 的权限为600，并且由 root 用户拥有：
 
     ```console
     sudo chmod 600 /etc/sssd/sssd.conf
     sudo chown root:root /etc/sssd/sssd.conf
     ```
 
-1. 使用 `authconfig` 来指示 VM 有关 AD Linux 集成：
+1. 使用 `authconfig` 向 VM 指示 AD Linux 集成：
 
     ```console
     sudo authconfig --enablesssd --enablesssdauth --update
@@ -225,7 +225,7 @@ Successfully enrolled machine in realm
 
 如果 VM 无法成功完成域加入过程，请确保 VM 的网络安全组允许 TCP + UDP 端口464上的出站 Kerberos 流量到 Azure AD DS 托管域的虚拟网络子网。
 
-现在，请检查是否可以使用 @no__t 查询用户广告信息
+现在，请检查是否可以使用 `getent` 查询用户广告信息
 
 ```console
 sudo getent passwd contosoadmin
@@ -265,7 +265,7 @@ sudo getent passwd contosoadmin
 
 ## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>为“AAD DC 管理员”组授予 sudo 特权
 
-若要向*AAD DC Administrators*组成员授予 RHEL VM 的管理权限，请向 */etc/sudoers*添加一个条目。 添加后， *AAD DC 管理员*组的成员可以使用 RHEL VM `sudo`上的命令。
+若要向*AAD DC Administrators*组成员授予 RHEL VM 的管理权限，请向 */etc/sudoers*添加一个条目。 添加后， *AAD DC 管理员*组的成员可以在 RHEL VM 上使用 `sudo` 命令。
 
 1. 打开*sudoers*文件进行编辑：
 
@@ -280,13 +280,13 @@ sudo getent passwd contosoadmin
     %AAD\ DC\ Administrators@contoso.com ALL=(ALL) NOPASSWD:ALL
     ```
 
-    完成后，使用`:wq`编辑器的命令保存并退出编辑器。
+    完成后，使用编辑器的 `:wq` 命令保存并退出编辑器。
 
 ## <a name="sign-in-to-the-vm-using-a-domain-account"></a>使用域帐户登录到 VM
 
 若要验证 VM 是否已成功加入到 Azure AD DS 托管域，请使用域用户帐户启动新的 SSH 连接。 确认已创建主目录，并且已应用域的组成员身份。
 
-1. 从控制台创建新的 SSH 连接。 使用`ssh -l`命令（如）使用属于托管域的域帐户， `contosoadmin@contoso.com`然后输入 VM 的地址，例如*rhel.contoso.com*。 如果使用 Azure Cloud Shell，请使用 VM 的公共 IP 地址，而不使用内部 DNS 名称。
+1. 从控制台创建新的 SSH 连接。 使用 "`ssh -l`" 命令（如 `contosoadmin@contoso.com`）使用属于托管域的域帐户，然后输入 VM 的地址，例如*rhel.contoso.com*。 如果使用 Azure Cloud Shell，请使用 VM 的公共 IP 地址，而不使用内部 DNS 名称。
 
     ```console
     ssh -l contosoadmin@CONTOSO.com rhel.contoso.com
@@ -308,7 +308,7 @@ sudo getent passwd contosoadmin
 
     应会看到来自 Azure AD DS 托管域的组成员身份。
 
-1. 如果以*AAD DC Administrators*组成员的身份登录到 VM，请检查是否可以正确使用`sudo`命令：
+1. 如果以*AAD DC Administrators*组成员的身份登录到 VM，请检查是否可以正确使用 `sudo` 命令：
 
     ```console
     sudo yum update

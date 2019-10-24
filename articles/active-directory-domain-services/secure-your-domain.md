@@ -1,5 +1,5 @@
 ---
-title: 安全 Azure AD 域服务 |Microsoft Docs "
+title: 安全 Azure AD 域服务 |Microsoft Docs
 description: 了解如何为 Azure Active Directory 域服务托管域禁用弱密码、旧协议和 NTLM 密码哈希同步。
 services: active-directory-ds
 author: iainfoulds
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/09/2019
 ms.author: iainfou
-ms.openlocfilehash: db086c56c9f16f4691efaade03571bf8a36c6444
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 6d60663e345f297246a423e1b4e7a4fb45f352a5
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842619"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754340"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-ad-domain-services-managed-domain"></a>禁用弱密码和密码哈希同步，保护 Azure AD 域服务托管域的安全
 
@@ -24,7 +24,7 @@ ms.locfileid: "70842619"
 
 本文介绍如何禁用 NTLM v1 和 TLS v1 密码并禁用 NTLM 密码哈希同步。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本文，需要以下资源：
 

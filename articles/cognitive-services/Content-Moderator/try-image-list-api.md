@@ -3,26 +3,26 @@ title: 通过自定义列表和 API 控制台来审查图像 - 内容审查器
 titleSuffix: Azure Content Moderator
 description: 在 Azure 内容审查器中使用列表管理 API 创建自定义图像列表。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 2b2ab138945d32ca874dc20576d412c862965dc9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 27d9b12d9e1a0237050243c2b5f07edaa8d8857a
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564363"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757194"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>借助 API 控制台中的自定义列表进行审查
 
 在 Azure 内容审查器中使用[列表管理 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672) 创建自定义图像列表。 通过图像审查 API 使用自定义图像列表。 图像审查操作将评估图像。 如果创建自定义列表，该操作还会将其与自定义列表中的图像进行比较。 可使用自定义列表来阻止或允许图像。
 
 > [!NOTE]
-> 最大限制为 5 个图像列表，每个列表“不超过 10,000 个图像”。
+> 最多只能使用 5 个图像列表，每个列表中的图像数不得超过 10,000 张。
 >
 
 使用列表管理 API 执行以下任务：
@@ -33,7 +33,7 @@ ms.locfileid: "68564363"
 - 从列表中删除图像。
 - 删除列表。
 - 编辑列表信息。
-- 筛选索引，使新的扫描中包含列表更改项。
+- 刷新索引，以便新的扫描中包括对列表的更改。
 
 ## <a name="use-the-api-console"></a>使用 API 控制台
 必须有订阅密钥，才能在联机控制台中试用 API。 订阅密钥位于“设置”选项卡上的“Ocp-Apim-Subscription-Key”框中。 有关详细信息，请参阅[概述](overview.md)。

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 4674dede5912dc1dc64bd0e092e28461f30bebcd
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: MT
+ms.openlocfilehash: f9d92f03b1f55ad9d1f1e272886095ae48033266
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554220"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750387"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -45,7 +45,7 @@ Application Insights 旨在获取监视 web 应用程序的可用性、性能和
 
 使用 ASP.NET SDK 的[自适应采样](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)，数据量会自动调整，以保持默认 Application Insights 监视的流量的指定最大速率。 如果应用程序生成的遥测数据量较低，例如调试或由于使用率较低，则采样处理器不会丢弃项，只要卷低于每秒配置的事件。 对于大容量应用程序，默认阈值为每秒5个事件，自适应采样会将每日事件的数目限制为432000。 使用的典型平均事件大小为 1 KB，这对应于托管应用程序的每个节点每31天的遥测值 13.4 GB （因为采样是在每个节点的本地完成的。） 
 
-对于不支持自适应采样的 Sdk，可以使用[引入采样](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)，根据要保留的数据百分比或[ASP.NET、ASP.NET Core 和 Java 的固定速率采样，Application Insights 接收数据](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites)用于减少从 web 服务器和 web 浏览器发送的流量的网站
+对于不支持自适应采样的 Sdk，可以使用[引入采样](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)，根据要保留的数据百分比或[ASP.NET、ASP.NET Core 和 Java 的固定速率采样，Application Insights 接收数据](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications)用于减少从 web 服务器和 web 浏览器发送的流量的网站
 
 ### <a name="learn-from-what-similar-customers-collect"></a>了解类似客户收集的内容
 

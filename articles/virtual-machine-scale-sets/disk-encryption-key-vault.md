@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4f6dc068969efd3f66e6808531594ed4063347f
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 0252fff84307577ab307e591948e16dc30c38f66
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530870"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72749992"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>为 Azure 磁盘加密创建和配置密钥保管库
 
@@ -31,8 +31,6 @@ Azure 磁盘加密使用 Azure Key Vault 来控制和管理磁盘加密密钥和
 ## <a name="install-tools-and-connect-to-azure"></a>安装工具并连接到 Azure
 
 本文中的步骤可以通过[Azure CLI](/cli/azure/)、 [Azure PowerShell Az module](/powershell/azure/overview)或[Azure 门户](https://portal.azure.com)来完成。
-
-当门户可通过浏览器访问时，Azure CLI 和 Azure PowerShell 需要本地安装。
 
 ### <a name="connect-to-your-azure-account"></a>连接到 Azure 帐户
 
