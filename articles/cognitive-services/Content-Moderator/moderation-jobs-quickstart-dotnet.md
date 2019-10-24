@@ -3,19 +3,19 @@ title: 使用 .NET 内容审查器审核作业
 titleSuffix: Azure Cognitive Services
 description: 使用内容审查器 .NET SDK 来启动 Azure 内容审查器中图像或文本内容的端到端内容审核作业。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.author: sajagtap
-ms.openlocfilehash: bc20af10e2e5b2ceb26c1cc891a8f69eb44e5740
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.author: pafarley
+ms.openlocfilehash: c6925b979e5a93a2d73c2d6e8ac48f62714a5cd0
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242888"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757330"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>定义和使用审核作业（.NET）
 
@@ -26,7 +26,7 @@ ms.locfileid: "72242888"
 - 跟踪和获取评审的最终状态
 - 将评审结果提交给回调 URL
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 登录或创建内容审查器[审核工具](https://contentmoderator.cognitive.microsoft.com/)站点上的帐户。
 
@@ -244,7 +244,7 @@ using (TextWriter writer = new StreamWriter(OutputFile, false))
 >
 > 免费层密钥有一个 RPS 速率限制。
 
-## <a name="run-the-program-and-review-the-output"></a>运行程序并检查输出
+## <a name="run-the-program-and-review-the-output"></a>运行程序并查看输出
 
 可以在控制台中看到以下示例输出：
 
@@ -255,7 +255,7 @@ Then, press any key to continue.
 
 登录内容审查器审阅工具，查看待处理的图像审查。
 
-使用“下一步”按钮进行提交。
+按“下一步”按钮，以提交结果。
 
 ![人工审查器的图像审查](images/ocr-sample-image.PNG)
 
@@ -299,7 +299,7 @@ Get review details.
 
 ## <a name="your-callback-url-if-provided-receives-this-response"></a>回叫 URL（若有）接收此响应
 
-可以看到如下示例响应：
+可以看到类似于以下示例的响应：
 
 > [!NOTE]
 > 在回调响应中，字符串 ContentId 和 WorkflowId 反应之前使用的值。

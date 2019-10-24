@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: yegu
-ms.openlocfilehash: 495fc031150d04f253279606baebb5d64d52bce7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 21c93cac8b4126a46e4c3dc396db9857f6b62de9
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66132920"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755433"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>如何缩放 Azure Redis 缓存
 Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能的选择更加灵活。 如果创建缓存后，应用程序的要求发生更改，可以更改缓存的大小和定价层。 本文演示如何使用 Azure 门户以及 Azure PowerShell 和 Azure CLI 等工具来缩放缓存。
@@ -37,9 +37,9 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 如果确定缓存不再满足应用程序的要求，可以更改到应用程序所需的更大或更小缓存定价层。 有关确定应使用哪个缓存定价层的详细信息，请参阅 [我应当使用哪些 Azure Redis 缓存套餐和大小](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)。
 
 ## <a name="scale-a-cache"></a>缩放缓存
-若要缩放缓存，请在 [Azure 门户](https://portal.azure.com)中[浏览到缓存](cache-configure.md#configure-azure-cache-for-redis-settings)，然后从“资源”菜单单击“缩放”。
+要缩放缓存，请在 [Azure 门户](https://portal.azure.com)中[浏览到缓存](cache-configure.md#configure-azure-cache-for-redis-settings)，并从“资源菜单”单击“缩放”。
 
-![缩放](./media/cache-how-to-scale/redis-cache-scale-menu.png)
+![调整规模](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
 从“选择定价层”边栏选项卡选择所需的定价层，并单击“选择”。
 
@@ -76,7 +76,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
-有关使用 PowerShell 进行缩放的详细信息，请参阅[使用 PowerShell 缩放 Azure Redis 缓存](cache-howto-manage-redis-cache-powershell.md#scale)。
+有关使用 PowerShell 进行缩放的详细信息，请参阅[使用 PowerShell 缩放 Azure Redis 缓存](cache-how-to-manage-redis-cache-powershell.md#scale)。
 
 ### <a name="scale-using-azure-cli"></a>使用 Azure CLI 进行缩放
 若要使用 Azure CLI 缩放 Azure Redis 缓存实例，请调用 `azure rediscache set` 命令并传入所需的配置更改，包括新大小、sku 或群集大小，具体取决于所需的缩放操作。
@@ -126,7 +126,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 * 不能从**基本**缓存直接缩放到**高级**缓存。 首先在一个缩放操作中从**基本**缩放到**标准**，然后在后续的缩放操作中从**标准**缩放到**高级**。
 * 如果在创建**高级**缓存时启用了群集，则可以[更改群集大小](cache-how-to-premium-clustering.md#cluster-size)。 如果创建缓存时未启用群集功能，可以稍后进行配置。
   
-  有关详细信息，请参阅 [如何为高级 Azure Redis 缓存配置群集功能](cache-how-to-premium-clustering.md)。
+  有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置群集功能](cache-how-to-premium-clustering.md)。
 
 ### <a name="after-scaling-do-i-have-to-change-my-cache-name-or-access-keys"></a>缩放后，我是否需要更改缓存名称或访问密钥？
 不需要，在缩放操作期间缓存名称和密钥不变。

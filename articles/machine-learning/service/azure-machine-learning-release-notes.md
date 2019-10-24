@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5ea900efffe1aa0eec768c5376128bad72e85ca4
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.openlocfilehash: afad2648ec73b02d4e06ad55f850a518d2488f68
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693531"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756061"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -904,7 +904,7 @@ Azure 机器学习 SDK for Python v 1.0.30 已发布。
 
  + **更改**
    + Tensorboard 包取代了 contrib-tensorboard。
-   + 在此版本中，你可以在托管计算群集（amlcompute）上设置一个用户帐户，而创建该帐户。 可以通过在预配配置中传递这些属性来完成此操作。 可以在[SDK 参考文档](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remotelogin-port-public-access--notspecified--)中找到更多详细信息。
+   + 在此版本中，你可以在托管计算群集（amlcompute）上设置一个用户帐户，而创建该帐户。 可以通过在预配配置中传递这些属性来完成此操作。 可以在[SDK 参考文档](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remote-login-port-public-access--notspecified--)中找到更多详细信息。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1017"></a>Azure 机器学习数据准备 SDK 1.0.17
 

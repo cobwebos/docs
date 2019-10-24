@@ -1,5 +1,5 @@
 ---
-title: 使用模板将 Windows Server VM 加入到 Azure AD DS |Microsoft Docs
+title: 使用模板将 Windows VM 加入到 Azure AD DS |Microsoft Docs
 description: 了解如何使用 Azure 资源管理器模板将新的或现有的 Windows Server VM 加入 Azure Active Directory 域服务托管域。
 services: active-directory-ds
 author: iainfoulds
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: d4e6beb376172e5ec5285d26b47fd23b396d5e38
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 9f35c9c3c6c974c79dc849425fc91b532aed4d22
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104113"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755688"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>使用资源管理器模板将 Windows Server 虚拟机加入到 Azure Active Directory 域服务托管域
 
@@ -24,7 +24,7 @@ ms.locfileid: "71104113"
 
 本文说明如何使用资源管理器模板创建 Windows Server VM 并将其加入到 Azure AD DS 托管域。 你还将了解如何将现有 Windows Server VM 加入到 Azure AD DS 域。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 需有以下资源和特权才能完成本教程：
 
@@ -84,10 +84,10 @@ ms.locfileid: "71104113"
 1. 浏览到[快速入门模板](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)。 选择要**部署到 Azure**的选项。
 1. 在 "**自定义部署**" 页上，输入以下信息以创建 WINDOWS Server VM 并将其加入到 Azure AD DS 托管域：
 
-    | 设置                   | ReplTest1 |
+    | 设置                   | Value |
     |---------------------------|-------|
-    | 订阅              | 请选择在其中启用了 Azure AD 域服务的同一个 Azure 订阅。 |
-    | 资源组            | 选择 VM 的资源组。 |
+    | Subscription              | 请选择在其中启用了 Azure AD 域服务的同一个 Azure 订阅。 |
+    | Resource group            | 选择 VM 的资源组。 |
     | Location                  | 选择 VM 的位置。 |
     | 现有 VNET 名称        | 要将 VM 连接到的现有虚拟网络的名称，例如*myVnet*。 |
     | 现有子网名称      | 现有虚拟网络子网的名称，如*工作负荷*。 |
@@ -117,10 +117,10 @@ ms.locfileid: "71104113"
 1. 浏览到[快速入门模板](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)。 选择要**部署到 Azure**的选项。
 1. 在 "**自定义部署**" 页上，输入以下信息以将 VM 加入到 Azure AD DS 托管域：
 
-    | 设置                   | ReplTest1 |
+    | 设置                   | Value |
     |---------------------------|-------|
-    | 订阅              | 请选择在其中启用了 Azure AD 域服务的同一个 Azure 订阅。 |
-    | 资源组            | 选择包含现有 VM 的资源组。 |
+    | Subscription              | 请选择在其中启用了 Azure AD 域服务的同一个 Azure 订阅。 |
+    | Resource group            | 选择包含现有 VM 的资源组。 |
     | Location                  | 选择现有 VM 的位置。 |
     | VM 列表                   | 输入要加入到 Azure AD DS 托管域的现有 VM 的逗号分隔列表，例如*myVM1、myVM2*。 |
     | 域加入用户名     | 应用于将 VM 加入托管域的 Azure AD DS 托管域中的用户帐户。 此帐户必须是 " *AZURE AD DC 管理员*" 组的成员。 |

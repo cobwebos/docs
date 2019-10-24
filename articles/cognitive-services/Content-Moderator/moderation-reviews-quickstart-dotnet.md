@@ -3,19 +3,19 @@ title: 使用 .NET 创建评审 - 内容审查器
 titleSuffix: Azure Cognitive Services
 description: 如何使用用于 .NET 的 Azure 内容审查器 SDK 创建评审。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.author: sajagtap
-ms.openlocfilehash: e3b36eae4f6dc4343828a38fa4ffe3920a83f589
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.author: pafarley
+ms.openlocfilehash: 540d9872d41ba3ffc73f5e42f098fe51437789c6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242866"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755296"
 ---
 # <a name="create-human-reviews-net"></a>创建人机评审（.NET）
 
@@ -24,7 +24,7 @@ ms.locfileid: "72242866"
 - 为人工审查方创建一组审阅
 - 获取人工审查方的现有审阅的状态
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 登录或创建内容审查器[审核工具](https://contentmoderator.cognitive.microsoft.com/)站点上的帐户。
 
@@ -430,7 +430,7 @@ Creating reviews for the following images:
 
 按“下一步”按钮，以提交结果。
 
-![供人工审查方审阅的图像](images/moderation-reviews-quickstart-dotnet.PNG)
+![人工审查器的图像审查](images/moderation-reviews-quickstart-dotnet.PNG)
 
 然后，按任意键继续。
 
@@ -513,7 +513,7 @@ Creating reviews for the following images:
 
 ## <a name="your-callback-url-if-provided-receives-this-response"></a>回叫 URL（若有）接收此响应
 
-可以看到如下示例响应：
+可以看到类似于以下示例的响应：
 
 ```json
 {

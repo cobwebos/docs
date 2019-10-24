@@ -8,12 +8,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: aa683e90a328e9525fa7d0a78981aa107818188a
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: df93405940c02affa224fba2d2e6f07ce5278b15
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678189"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755348"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -214,6 +214,82 @@ public void ConfigureServices(IServiceCollection services)
 有关详细信息，请参阅 [Application Insights 遥测数据模型](../../azure-monitor/app/data-model.md)。 
 
 有关 OpenTracing 概念的定义，请参阅 OpenTracing [规范](https://github.com/opentracing/specification/blob/master/specification.md)和 [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md)。
+
+## <a name="telemetry-correlation-in-opencensus-python"></a>OpenCensus Python 中的遥测关联
+
+OpenCensus Python 遵循上述 `OpenTracing` 数据模型规范。 它还支持[W3C 跟踪上下文](https://w3c.github.io/trace-context/)，无需任何配置。
+
+### <a name="incoming-request-correlation"></a>传入请求相关
+
+OpenCensus Python 将 W3C 跟踪上下文标头从传入请求关联到从请求自身生成的范围。 OpenCensus 会自动执行此操作，并将集成用于常见的 web 应用程序框架，例如 `flask`、`django` 和 `pyramid`。 W3C 跟踪上下文标题只需用[正确的格式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)填充，并随请求一起发送。 下面是演示此的 `flask` 应用程序示例。
+
+```python
+from flask import Flask
+from opencensus.ext.azure.trace_exporter import AzureExporter
+from opencensus.ext.flask.flask_middleware import FlaskMiddleware
+from opencensus.trace.samplers import ProbabilitySampler
+
+app = Flask(__name__)
+middleware = FlaskMiddleware(
+    app,
+    exporter=AzureExporter(),
+    sampler=ProbabilitySampler(rate=1.0),
+)
+
+@app.route('/')
+def hello():
+    return 'Hello World!'
+
+if __name__ == '__main__':
+    app.run(host='localhost', port=8080, threaded=True)
+```
+
+这会在本地计算机上运行一个示例 `flask` 应用程序，侦听端口 `8080`。 为了关联跟踪上下文，我们将请求发送到终结点。 在此示例中，可以使用 `curl` 命令。
+```
+curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01" localhost:8080
+```
+查看[跟踪上下文标题格式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)，派生以下信息： `version`： `00` 
+ `trace-id`： `4bf92f3577b34da6a3ce929d0e0e4736` 
+ `parent-id/span-id`： `00f067aa0ba902b7` 
+ 0： 1
+
+如果我们看一下发送到 Azure Monitor 的请求条目，则可以看到使用跟踪标头信息填充的字段。
+
+![日志（分析）中的请求遥测的屏幕截图，跟踪标头字段以红色框突出显示](./media/opencensus-python/0011-correlation.png)
+
+@No__t_0 字段采用 `<trace-id>.<span-id>` 格式，其中 `trace-id` 是从请求传入的跟踪标头获取的，而 `span-id` 是此范围生成的8字节数组。 
+
+@No__t_0 字段采用 `<trace-id>.<parent-id>` 格式，`trace-id` 和 `parent-id` 都取自请求中传递的跟踪标头。
+
+### <a name="logs-correlation"></a>日志关联
+
+OpenCensus Python 允许使用跟踪 ID、跨度 ID 和采样标志来浓缩日志记录，从而实现日志的关联。 这是通过安装 OpenCensus[日志记录集成](https://pypi.org/project/opencensus-ext-logging/)来完成的。 以下属性将添加到 Python `LogRecord`s： `traceId`、`spanId` 和 `traceSampled`。 请注意，这只会对集成后创建的记录器生效。
+下面是演示此的示例应用程序。
+
+```python
+import logging
+
+from opencensus.trace import config_integration
+from opencensus.trace.samplers import AlwaysOnSampler
+from opencensus.trace.tracer import Tracer
+
+config_integration.trace_integrations(['logging'])
+logging.basicConfig(format='%(asctime)s traceId=%(traceId)s spanId=%(spanId)s %(message)s')
+tracer = Tracer(sampler=AlwaysOnSampler())
+
+logger = logging.getLogger(__name__)
+logger.warning('Before the span')
+with tracer.span(name='hello'):
+    logger.warning('In the span')
+logger.warning('After the span')
+```
+此代码运行时，控制台中会显示以下内容：
+```
+2019-10-17 11:25:59,382 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 Before the span
+2019-10-17 11:25:59,384 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=70da28f5a4831014 In the span
+2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
+```
+观察在该跨度内的日志消息中是否存在 spanId，该日志消息与名为 `hello` 的范围相同。
 
 ## <a name="telemetry-correlation-in-net"></a>.NET 中的遥测关联
 

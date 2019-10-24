@@ -1,25 +1,21 @@
 ---
-title: Azure Cloud Shell 快速入门 |Microsoft Docs
-description: Azure Cloud Shell 快速入门
-services: ''
-documentationcenter: ''
+title: Azure Cloud Shell 快速入门-Bash
+description: 了解如何在浏览器中使用 Bash 命令行 Azure Cloud Shell。
 author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 8151013f263c6cf2f90e89fa1c3b0b3025f2ea38
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 574841b3a89385a3b8bf048d5ed36f40fac99a83
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741991"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757403"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 Bash 快速入门
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aacedeb2c047d1abfc5affdcf94404abbb2c7b62
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 516f61775060b3e4073ed9d623545d4f227563ed
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168601"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750363"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何安装和配置 Azure 上的 SAP HANA（大型实例）
 
@@ -29,7 +29,7 @@ SAP HANA 的安装由你负责。 可以在 Azure 虚拟网络与 HANA 大型实
 > [!Note]
 > 按照 SAP 策略，SAP HANA 的安装必须由经过认证的 SAP 技术关联考试、SAP HANA 安装认证考试，或者是经过 SAP 认证的系统集成商（SI）的人员执行。
 
-计划安装 HANA 2.0 时，请参阅 [SAP 支持说明 #2235581 - SAP HANA：支持的操作系统](https://launchpad.support.sap.com/#/notes/2235581/E)，确保所要安装的 SAP HANA 版本支持该 OS。 HANA 2.0 支持的 OS 比 HANA 1.0 支持的 OS 限制性更强。 
+规划 HANA 2.0 的安装时，请参阅 [SAP 支持说明 #2235581 - SAP HANA：支持的操作系统](https://launchpad.support.sap.com/#/notes/2235581/E)，确保所要安装的 SAP HANA 版本支持该 OS。 HANA 2.0 支持的 OS 比 HANA 1.0 支持的 OS 限制性更强。 
 
 > [!IMPORTANT] 
 > 对于类型 II 设备，目前仅支持 SLES 12 SP2 OS 版本。 
@@ -96,15 +96,15 @@ HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，
 下面是与 SAP on SUSE 相关的其他有用链接：
 
 - [SAP HANA on SUSE Linux 站点](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
-- [Best Practice for SAP:Enqueue replication – SAP NetWeaver on SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)（SAP 最佳实践：排队复制 - 基于 SUSE Linux Enterprise 12 的 SAP NetWeaver）
+- [Best practices for SAP: Enqueue replication – SAP NetWeaver on SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)（SAP 最佳做法：排队复制 - SAP NetWeaver on SUSE Linux Enterprise 12）
 - [ClamSAP – SLES virus protection for SAP](https://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap)（ClamSAP - 适用于 SAP 的 SLES 病毒防护）（包括 SLES 12 for SAP Applications）
 
 下面是适用于实施 SAP HANA on SLES 12 的 SAP 支持说明：
 
-- [SAP support note #1944799 – SAP HANA guidelines for SLES operating system installation](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)（SAP 支持说明 #1944799 - 适用于 SLES 操作系统安装的 SAP HANA 指导原则）
+- [SAP support note #1944799 – SAP HANA guidelines for SLES operating system installation](http://service.sap.com/sap/support/notes/1944799)（SAP 支持说明 #1944799 - 适用于 SLES 操作系统安装的 SAP HANA 指导原则）
 - [SAP support note #2205917 – SAP HANA DB recommended OS settings for SLES 12 for SAP applications](https://launchpad.support.sap.com/#/notes/2205917/E)（SAP 支持说明 #2205917 - SAP HANA DB 建议的适用于 SLES 12 for SAP Applications 的 OS 设置）
 - [SAP support note #1984787 – SUSE Linux Enterprise Server 12:  installation notes](https://launchpad.support.sap.com/#/notes/1984787)（SAP 支持说明 #1984787 - SUSE Linux Enterprise Server 12：安装说明）
-- [SAP support note #171356 – SAP software on Linux:General Information](https://launchpad.support.sap.com/#/notes/1984787)（SAP 支持说明 #171356 - Linux 上的 SAP 软件：常规信息）
+- [SAP support note #171356 – SAP software on Linux:  General information](https://launchpad.support.sap.com/#/notes/1984787)（SAP 支持说明 #171356 - Linux 上的 SAP 软件：常规信息）
 - [SAP support note #1391070 – Linux UUID solutions](https://launchpad.support.sap.com/#/notes/1391070)（SAP 支持说明 #1391070 - Linux UUID 解决方案）
 
 [Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) 是用于在 HANA 大型实例上运行 SAP HANA 的另一个产品。 现在有 RHEL 6.7 和 7.2 版本可用。 请注意，相对于仅支持 RHEL 7.2 和更高版本的本机 Azure Vm，HANA 大型实例也支持 RHEL 6.7。 但是我们建议使用 RHEL 7.x 版本。
@@ -115,13 +115,13 @@ HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，
 下面是适用于实施 SAP HANA on Red Hat 的 SAP 支持说明：
 
 - [SAP support note #2009879 - SAP HANA guidelines for Red Hat Enterprise Linux (RHEL) operating system](https://launchpad.support.sap.com/#/notes/2009879/E)（SAP 支持说明 #2009879 - 适用于 Red Hat Enterprise Linux (RHEL) 操作系统的 SAP HANA 指导原则）
-- [SAP support note #2292690 - SAP HANA DB:Recommended OS settings for RHEL 7](https://launchpad.support.sap.com/#/notes/2292690)（2292690 - SAP HANA DB：建议用于 RHEL 7 的 OS 设置）
-- [SAP Support Note #2247020 - SAP HANA DB:Recommended OS settings for RHEL 6.7](https://launchpad.support.sap.com/#/notes/2247020)（SAP 支持说明 #2247020 - SAP HANA DB：建议用于 RHEL 6.7 的 OS 设置）
+- [SAP support note #2292690 - SAP HANA DB: Recommended OS settings for RHEL 7](https://launchpad.support.sap.com/#/notes/2292690)（SAP 支持说明 #2292690 - SAP HANA DB：RHEL 7 的建议 OS 设置）
+- [SAP Support Note #2247020 - SAP HANA DB: Recommended OS settings for RHEL 6.7](https://launchpad.support.sap.com/#/notes/2247020)（SAP 支持说明 #2247020 - SAP HANA DB：RHEL 6.7 的建议 OS 设置）
 - [SAP support note #1391070 – Linux UUID solutions](https://launchpad.support.sap.com/#/notes/1391070)（SAP 支持说明 #1391070 - Linux UUID 解决方案）
-- [SAP support note #2228351 - Linux:SAP HANA Database SPS 11 revision 110 (or higher) on RHEL 6 or SLES 11](https://launchpad.support.sap.com/#/notes/2228351)（SAP 支持说明 #2228351 - Linux：RHEL 6 或 SLES 11 上的 SAP HANA Database SPS 11 修订版 110（或更高版本））
-- [SAP support note #2397039 - FAQ:SAP on RHEL](https://launchpad.support.sap.com/#/notes/2397039)（SAP 支持说明 #2397039 - 常见问题解答：基于 RHEL 的 SAP）
-- [SAP support note #1496410 - Red Hat Enterprise Linux 6.x:Installation and upgrade](https://launchpad.support.sap.com/#/notes/1496410)（SAP 支持说明 #1496410 - Red Hat Enterprise Linux 6.x：安装和升级）
-- [SAP support note #2002167 - Red Hat Enterprise Linux 7.x:Installation and upgrade](https://launchpad.support.sap.com/#/notes/2002167)（SAP 支持说明 #2002167 - Red Hat Enterprise Linux 7.x：安装和升级）
+- [SAP support note #2228351 - Linux: SAP HANA Database SPS 11 revision 110 (or higher) on RHEL 6 or SLES 11](https://launchpad.support.sap.com/#/notes/2228351)（SAP 支持说明 #2228351 - Linux：RHEL 6 或 SLES 11 上的 SAP HANA Database SPS 11 修订版 110（或更高版本））
+- [SAP support note #2397039 - FAQ: SAP on RHEL](https://launchpad.support.sap.com/#/notes/2397039)（SAP 支持说明 #2397039 - 常见问题解答：SAP on RHEL）
+- [SAP support note #1496410 - Red Hat Enterprise Linux 6.x: Installation and upgrade](https://launchpad.support.sap.com/#/notes/1496410)（SAP 支持说明 #1496410 - Red Hat Enterprise Linux 6.x：安装和升级）
+- [SAP support note #2002167 - Red Hat Enterprise Linux 7.x: Installation and upgrade](https://launchpad.support.sap.com/#/notes/2002167)（SAP 支持说明 #2002167 - Red Hat Enterprise Linux 7.x：安装和升级）
 
 ### <a name="time-synchronization"></a>时间同步
 
@@ -142,9 +142,9 @@ HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，
 
 有关体系结构以太网的详细信息，请参阅 [HLI 支持的方案](hana-supported-scenario.md)。
 
-## <a name="storage"></a>存储
+## <a name="storage"></a>存储空间
 
-Azure 上的 SAP HANA （大型实例）的存储布局是通过 Azure @no__t 上的 SAP HANA 配置的，通过 SAP 建议的指导原则。 [SAP HANA 存储要求](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)白皮书中阐述了这些指导原则。 
+Azure 上的 SAP HANA （大型实例）的存储布局是通过 Azure `service management` 上的 SAP HANA 通过 SAP 推荐的指南配置的。 [SAP HANA 存储要求](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)白皮书中阐述了这些指导原则。 
 
 有关包含不同 HANA 大型实例 SKU 的各卷的粗略大小，请参阅 [Azure 上的 SAP HANA（大型实例）概述和体系结构](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
@@ -152,8 +152,8 @@ Azure 上的 SAP HANA （大型实例）的存储布局是通过 Azure @no__t �
 
 | 存储用途 | 装入点名称 | 卷名 | 
 | --- | --- | ---|
-| HANA 数据 | /hana/data/SID/mnt0000 @ no__t-0m > | 存储 IP：/hana_data_SID_mnt00001_tenant_vol |
-| HANA 日志 | /hana/log/SID/mnt0000 @ no__t-0m > | 存储 IP：/hana_log_SID_mnt00001_tenant_vol |
+| HANA 数据 | /hana/data/SID/mnt0000 \<m > | 存储 IP：/hana_data_SID_mnt00001_tenant_vol |
+| HANA 日志 | /hana/log/SID/mnt0000 \<m > | 存储 IP：/hana_log_SID_mnt00001_tenant_vol |
 | HANA 日志备份 | /hana/log/backups | 存储 IP：/hana_log_backups_SID_mnt00001_tenant_vol |
 | HANA 共享 | /hana/shared/SID | 存储 IP：/hana_shared_SID_mnt00001_tenant_vol/shared |
 | usr/sap | /usr/sap/SID | 存储 IP：/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
@@ -172,7 +172,7 @@ HANA/log/backup 卷并非旨在用作数据库备份的卷。 它的大小适合
 
 除了提供的存储以外，还可以购买更多存储容量，增量为 1-TB。 可以将此附加存储作为新卷添加到 HANA 大型实例。
 
-在 Azure @no__t 上使用 SAP HANA 进行载入期间，客户将为 sidadm 用户和 sapsys 组指定用户 ID （UID）和组 ID （GID）（例如：1000,500）。 在安装 SAP HANA 系统期间，必须使用与此相同的值。 由于要在一个单元上部署多个 HANA 实例，因此将获得多个卷集（每个实例有一个集）。 因此，需要在部署时定义：
+在使用 Azure `service management` 上的 SAP HANA 载入期间，客户将为 sidadm 用户和 sapsys 组指定用户 ID （UID）和组 ID （GID）（例如：1000500）。 在安装 SAP HANA 系统期间，必须使用与此相同的值。 由于要在一个单元上部署多个 HANA 实例，因此将获得多个卷集（每个实例有一个集）。 因此，需要在部署时定义：
 
 - 不同 HANA 实例的 SID（sidadm 由此派生）。
 - 不同 HANA 实例的内存大小。 每个实例的内存大小定义各个卷集的卷大小。
@@ -208,13 +208,13 @@ HANA 大型实例中使用的存储具有文件大小限制。 [大小限制为]
 > [!IMPORTANT]
 > 为了防止 HANA 尝试将数据文件增长到 HANA 大型实例存储的 16 TB 文件大小限制之外，需要在 SAP HANA 的 global.asa 配置文件中设置以下参数
 > 
-> - datavolume_striping=true
+> - datavolume_striping = true
 > - datavolume_striping_size_gb = 15000
 > - 另请参阅 SAP 说明[#2400005](https://launchpad.support.sap.com/#/notes/2400005)
 > - 请注意 SAP 说明[#2631285](https://launchpad.support.sap.com/#/notes/2631285)
 
 
-在 SAP HANA 2.0 中，hdbparam 框架已弃用。 因此，必须使用 SQL 命令设置这些参数。 有关详细信息，请参阅 [SAP note #2399079:Elimination of hdbparam in HANA 2](https://launchpad.support.sap.com/#/notes/2399079)（SAP 说明 #2399079：在 HANA 2 中弃用 hdbparam）。
+在 SAP HANA 2.0 中，hdbparam 框架已弃用。 因此，必须使用 SQL 命令设置这些参数。 有关详细信息，请参阅 [SAP 说明 #2399079：HANA 2 中已弃用 hdbparam](https://launchpad.support.sap.com/#/notes/2399079)。
 
 请参阅 [HLI 支持的方案](hana-supported-scenario.md)，详细了解体系结构的存储布局。
 

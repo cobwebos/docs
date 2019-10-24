@@ -1,5 +1,5 @@
 ---
-title: 将 Ubuntu VM 加入 Azure AD 域服务 |Microsoft Docs "
+title: 将 Ubuntu VM 加入 Azure AD 域服务 |Microsoft Docs
 description: 了解如何配置 Ubuntu Linux 虚拟机并将其加入 Azure AD 域服务托管域。
 services: active-directory-ds
 author: iainfoulds
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.author: iainfou
-ms.openlocfilehash: e92327323f632f6b922e3eb948df75bb3666e2a9
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 9fb41b08cb29a68b39fb416b4b7b7bcce9e821dd
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075380"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754354"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>将 Ubuntu Linux 虚拟机加入 Azure AD 域服务托管域
 
@@ -24,7 +24,7 @@ ms.locfileid: "71075380"
 
 本文介绍如何将 Ubuntu Linux VM 加入 Azure AD DS 托管域。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 需有以下资源和特权才能完成本教程：
 
@@ -72,13 +72,13 @@ sudo vi /etc/hosts
 127.0.0.1 ubuntu.contoso.com ubuntu
 ```
 
-完成后，使用`:wq`编辑器的命令保存并退出*hosts*文件。
+完成后，使用编辑器的 `:wq` 命令保存并退出*hosts*文件。
 
 ## <a name="install-required-packages"></a>安装所需程序包
 
-VM 需要其他一些包才能将 VM 加入到 Azure AD DS 托管域。 若要安装和配置这些包，请使用更新和安装域加入工具`apt-get`
+VM 需要其他一些包才能将 VM 加入到 Azure AD DS 托管域。 若要安装和配置这些包，请使用 `apt-get` 更新和安装域加入工具
 
-在 Kerberos 安装过程中， *krb5.conf*包会提示所有大写的领域名称。 例如，如果 Azure AD DS 托管域的名称为*contoso.com*，请输入*CONTOSO.COM*作为领域。 安装会在`[realm]` */etc/krb5.conf*配置`[domain_realm]`文件中写入和节。 请确保将整个领域指定为全部大写：
+在 Kerberos 安装过程中， *krb5.conf*包会提示所有大写的领域名称。 例如，如果 Azure AD DS 托管域的名称为*contoso.com*，请输入*CONTOSO.COM*作为领域。 安装会在 */etc/krb5.conf*配置文件中写入 `[realm]` 和 `[domain_realm]` 部分。 请确保将整个领域指定为全部大写：
 
 ```console
 sudo apt-get update
@@ -101,7 +101,7 @@ sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp n
     server contoso.com
     ```
 
-    完成后，使用`:wq`编辑器的命令保存并退出 ntp 文件 *。*
+    完成后，使用编辑器的 `:wq` 命令保存并退出*ntp.*
 
 1. 若要确保 VM 与 Azure AD DS 托管域同步，需要执行以下步骤：
 
@@ -109,7 +109,7 @@ sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp n
     * 更新托管域中的日期和时间
     * 启动 NTP 服务
 
-    运行以下命令来完成这些步骤。 在命令中`ntpdate`使用自己的 DNS 名称：
+    运行以下命令来完成这些步骤。 使用你自己的 DNS 名称和 `ntpdate` 命令：
 
     ```console
     sudo systemctl stop ntp
@@ -121,27 +121,27 @@ sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp n
 
 现在，已在 VM 上安装了所需的包，并且已配置了 NTP，接下来将 VM 加入 Azure AD DS 托管域。
 
-1. `realm discover`使用命令发现 Azure AD DS 托管域。 以下示例发现领域*CONTOSO.COM*。 以全部大写的形式指定你自己 Azure AD DS 托管域名：
+1. 使用 `realm discover` 命令发现 Azure AD DS 托管域。 以下示例发现领域*CONTOSO.COM*。 以全部大写的形式指定你自己 Azure AD DS 托管域名：
 
     ```console
     sudo realm discover CONTOSO.COM
     ```
 
-   `realm discover`如果命令找不到 Azure AD DS 托管域，请查看以下故障排除步骤：
+   如果 `realm discover` 命令找不到你的 Azure AD DS 托管域，请查看以下故障排除步骤：
 
-    * 请确保可从 VM 访问域。 尝试`ping contoso.com`查看是否返回了正答复。
+    * 请确保可从 VM 访问域。 尝试 `ping contoso.com` 以查看是否返回了肯定回复。
     * 检查是否已将 VM 部署到相同的或对等互连的虚拟网络，Azure AD DS 托管域在该网络中可用。
     * 确认已将虚拟网络的 DNS 服务器设置更新为指向 Azure AD DS 托管域的域控制器。
 
-1. 现在使用`kinit`命令初始化 Kerberos。 指定属于*AAD DC 管理员*组的用户。 如果需要，请[将用户帐户添加到 Azure AD 中的组](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
+1. 现在使用 `kinit` 命令初始化 Kerberos。 指定属于*AAD DC 管理员*组的用户。 如果需要，请[将用户帐户添加到 Azure AD 中的组](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
 
-    同样，必须以全部大写的形式输入 Azure AD DS 托管域名。 在下面的示例中，名`contosoadmin@contoso.com`为的帐户用于初始化 Kerberos。 输入您自己的用户帐户，该帐户是*AAD DC Administrators*组的成员：
+    同样，必须以全部大写的形式输入 Azure AD DS 托管域名。 在下面的示例中，名为 `contosoadmin@contoso.com` 的帐户用于初始化 Kerberos。 输入您自己的用户帐户，该帐户是*AAD DC Administrators*组的成员：
 
     ```console
     kinit contosoadmin@CONTOSO.COM
     ```
 
-1. 最后，使用`realm join`命令将计算机加入到 Azure AD DS 托管域。 使用同一个用户帐户，该帐户是你在前面`kinit`的`contosoadmin@CONTOSO.COM`命令中指定的*AAD DC Administrators*组的成员，例如：
+1. 最后，使用 `realm join` 命令将计算机加入到 Azure AD DS 托管域。 使用同一个用户帐户，该帐户是在上一个 `kinit` 命令中指定的*AAD DC Administrators*组的成员，如 `contosoadmin@CONTOSO.COM`：
 
     ```console
     sudo realm join --verbose CONTOSO.COM -U 'contosoadmin@CONTOSO.COM' --install=/
@@ -171,7 +171,7 @@ Successfully enrolled machine in realm
     # use_fully_qualified_names = True
     ```
 
-    完成后，使用`:wq`编辑器的命令保存并退出*sssd*文件。
+    完成后，使用编辑器的 `:wq` 命令保存并退出*sssd*文件。
 
 1. 若要应用更改，请重新启动 SSSD 服务：
 
@@ -199,7 +199,7 @@ VM 加入到 Azure AD DS 托管域并配置为进行身份验证时，需要完�
     PasswordAuthentication yes
     ```
 
-    完成后，使用`:wq`编辑器的命令保存并退出*sshd_conf*文件。
+    完成后，使用编辑器的 `:wq` 命令保存并退出*sshd_conf*文件。
 
 1. 若要应用更改并让用户使用密码进行登录，请重新启动 SSH 服务：
 
@@ -217,17 +217,17 @@ VM 加入到 Azure AD DS 托管域并配置为进行身份验证时，需要完�
     sudo vi /etc/pam.d/common-session
     ```
 
-1. 将以下行添加到此文件中的行`session optional pam_sss.so`下面：
+1. 将以下行添加到下面的行 `session optional pam_sss.so`：
 
     ```console
     session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
     ```
 
-    完成后，使用`:wq`编辑器的命令保存并退出*公用会话*文件。
+    完成后，使用编辑器的 `:wq` 命令保存并退出*公用会话*文件。
 
 ### <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>为“AAD DC 管理员”组授予 sudo 特权
 
-若要授予*AAD DC Administrators*组成员对 Ubuntu VM 的管理权限，请向 */etc/sudoers*添加一个条目。 添加后， *AAD DC 管理员*组的成员可以在 Ubuntu VM `sudo`上使用命令。
+若要授予*AAD DC Administrators*组成员对 Ubuntu VM 的管理权限，请向 */etc/sudoers*添加一个条目。 添加后， *AAD DC 管理员*组的成员可以在 Ubuntu VM 上使用 `sudo` 命令。
 
 1. 打开*sudoers*文件进行编辑：
 
@@ -242,13 +242,13 @@ VM 加入到 Azure AD DS 托管域并配置为进行身份验证时，需要完�
     %AAD\ DC\ Administrators ALL=(ALL) NOPASSWD:ALL
     ```
 
-    完成后，使用`Ctrl-X`命令保存并退出编辑器。
+    完成后，请使用 `Ctrl-X` 命令保存并退出编辑器。
 
 ## <a name="sign-in-to-the-vm-using-a-domain-account"></a>使用域帐户登录到 VM
 
 若要验证 VM 是否已成功加入到 Azure AD DS 托管域，请使用域用户帐户启动新的 SSH 连接。 确认已创建主目录，并且已应用域的组成员身份。
 
-1. 从控制台创建新的 SSH 连接。 使用`ssh -l`命令（如）使用属于托管域的域帐户， `contosoadmin@contoso.com`然后输入 VM 的地址，例如*ubuntu.contoso.com*。 如果使用 Azure Cloud Shell，请使用 VM 的公共 IP 地址，而不使用内部 DNS 名称。
+1. 从控制台创建新的 SSH 连接。 使用 "`ssh -l`" 命令（如 `contosoadmin@contoso.com`）使用属于托管域的域帐户，然后输入 VM 的地址，例如*ubuntu.contoso.com*。 如果使用 Azure Cloud Shell，请使用 VM 的公共 IP 地址，而不使用内部 DNS 名称。
 
     ```console
     ssh -l contosoadmin@CONTOSO.com ubuntu.contoso.com
@@ -270,7 +270,7 @@ VM 加入到 Azure AD DS 托管域并配置为进行身份验证时，需要完�
 
     应会看到来自 Azure AD DS 托管域的组成员身份。
 
-1. 如果以*AAD DC Administrators*组成员的身份登录到 VM，请检查是否可以正确使用`sudo`命令：
+1. 如果以*AAD DC Administrators*组成员的身份登录到 VM，请检查是否可以正确使用 `sudo` 命令：
 
     ```console
     sudo apt-get update

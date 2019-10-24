@@ -3,15 +3,15 @@ title: 理解查询语言
 description: 介绍可用于 Azure 资源关系图的资源关系图表和可用的 Kusto 数据类型、运算符和函数。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/18/2019
+ms.date: 10/21/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 6189920cb03a6cf388f0b5d232c6ce97ae4f3f82
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 80b33212afa7fed3f87b241d5cf69b43be66574d
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389768"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755917"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
@@ -25,12 +25,12 @@ Azure Resource Graph 查询语言支持多个运算符和函数。 每个工作�
 
 ## <a name="resource-graph-tables"></a>资源图表表
 
-资源图为它存储的数据提供了多个表，这些表用于资源管理器资源类型及其属性。 这些表可以与 @no__t 0 或 `union` 运算符一起使用，以获取相关资源类型的属性。 下面是资源图中可用表的列表：
+资源图为它存储的数据提供了多个表，这些表用于资源管理器资源类型及其属性。 这些表可以与 `join` 或 `union` 运算符一起使用，以获取相关资源类型的属性。 下面是资源图中可用表的列表：
 
 |资源图表表 |描述 |
 |---|---|
 |资源 |如果未在查询中定义，则为默认表。 大多数资源管理器资源类型和属性位于此处。 |
-|ResourceContainers |包括订阅（`Microsoft.Resources/subscriptions`）和资源组（@no__t）资源类型和数据。 |
+|ResourceContainers |包括订阅（预览--`Microsoft.Resources/subscriptions`）和资源组（`Microsoft.Resources/subscriptions/resourcegroups`）资源类型和数据。 |
 |AlertsManagementResources |包括与 `Microsoft.AlertsManagement`_相关_的资源。 |
 |SecurityResources |包括与 `Microsoft.Security`_相关_的资源。 |
 
@@ -47,18 +47,18 @@ Resources
 | limit 1
 ```
 
-下面的查询显示 `join` 的更复杂用法。 查询将联接的表限制为订阅资源，并将 `project` 以仅包含原始字段_subscriptionId_ ，并将_名称_字段重命名为 " _context.subname_"。 字段重命名避免了将其添加为_name1_ `join`，因为资源已存在于_资源_中。 用 `where` 筛选原始表，以下 `project` 包括这两个表中的列。 查询结果是单个密钥保管库，其中显示类型、密钥保管库的名称以及其所在的订阅的名称。
+下面的查询显示 `join` 的更复杂用法。 查询将联接表限制为订阅资源并具有 `project`，以仅包括原始字段 _SubscriptionId_ 和重命名为 _SubName_ 的 _name_ 字段。 字段重命名避免了将其添加为_name1_ `join`，因为资源已存在于_资源_中。 原始表使用 `where` 进行筛选，以下 `project` 包括两个表中的列。 查询结果是单个密钥保管库，其中显示密钥保管库的类型、名称以及其所在的订阅的名称。
 
 ```kusto
 Resources
-| join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
 | where type == 'microsoft.keyvault/vaults'
+| join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
 | project type, name, SubName
 | limit 1
 ```
 
 > [!NOTE]
-> 当使用 @no__t @no__t 的结果限制为0时，`join` 使用的属性来关联两个表，以上示例中的_subscriptionId_必须包括在 `project` 中。
+> 使用 `project` 限制 `join` 结果时，`join` 用于关联两个表的属性（在上述示例中， _subscriptionId_ ）必须包括在 `project` 中。
 
 ## <a name="supported-kql-language-elements"></a>支持的 KQL 语言元素
 
@@ -74,23 +74,23 @@ Resources
 |[distinct](/azure/kusto/query/distinctoperator) |[显示特定别名的非重复值](../samples/starter.md#distinct-alias-values) | |
 |[extend](/azure/kusto/query/extendoperator) |[按 OS 类型对虚拟机进行计数](../samples/starter.md#count-os) | |
 |[join](/azure/kusto/query/joinoperator) |[具有订阅名称的密钥保管库](../samples/advanced.md#join) |支持的联接风格： [innerunique](/azure/kusto/query/joinoperator#default-join-flavor)、 [inner](/azure/kusto/query/joinoperator#inner-join)、 [leftouter](/azure/kusto/query/joinoperator#left-outer-join)。 单个查询中的限制为 3 `join`。 不允许使用自定义联接策略，例如广播联接。 可以在单个表中使用，也可以在 "_资源_" 和 " _ResourceContainers_ " 表之间使用。 |
-|[limit](/azure/kusto/query/limitoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |@No__t 的同义词 |
-|[mv 展开](/azure/kusto/query/mvexpandoperator) |[列出具有特定写入位置 Cosmos DB](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_最大值为400 |
-|[为了](/azure/kusto/query/orderoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) |@No__t 的同义词 |
+|[limit](/azure/kusto/query/limitoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |@No__t_0 的同义词 |
+|[mv 展开](/azure/kusto/query/mvexpandoperator) |[列出具有特定写入位置的 Cosmos DB](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_最大值为400 |
+|[为了](/azure/kusto/query/orderoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) |@No__t_0 的同义词 |
 |[project](/azure/kusto/query/projectoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) | |
-|[project-away](/azure/kusto/query/projectawayoperator) |[从结果中删除列](../samples/advanced.md#remove-column) | |
-|[sort](/azure/kusto/query/sortoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) |@No__t 的同义词 |
+|[project-away](/azure/kusto/query/projectawayoperator) |[删除结果中的列](../samples/advanced.md#remove-column) | |
+|[sort](/azure/kusto/query/sortoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) |@No__t_0 的同义词 |
 |[summarize](/azure/kusto/query/summarizeoperator) |[对 Azure 资源进行计数](../samples/starter.md#count-resources) |仅简化的首页 |
-|[take](/azure/kusto/query/takeoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |@No__t 的同义词 |
+|[take](/azure/kusto/query/takeoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |@No__t_0 的同义词 |
 |[返回页首](/azure/kusto/query/topoperator) |[按名称及其 OS 类型显示前五个虚拟机](../samples/starter.md#show-sorted) | |
-|[union](/azure/kusto/query/unionoperator) |[将两个查询的结果合并为单个结果](../samples/advanced.md#unionresults) |允许使用单个表： _T_ `| union` \[ @ no__t `inner` @ no__t \[ @ no__t-9_ColumnName_1_表_。 单个查询中的最大值为 3 `union`。 不允许对 @no__t 的支线表进行模糊处理。 可以在单个表中使用，也可以在 "_资源_" 和 " _ResourceContainers_ " 表之间使用。 |
+|[union](/azure/kusto/query/unionoperator) |[将两个查询的结果合并为单个结果](../samples/advanced.md#unionresults) |允许使用单个表： _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=`_ColumnName_ 1_表_。 单个查询中的最大值为 3 `union`。 不允许对 `union` 支线表进行模糊解析。 可以在单个表中使用，也可以在 "_资源_" 和 " _ResourceContainers_ " 表之间使用。 |
 |[where](/azure/kusto/query/whereoperator) |[显示包含存储的资源](../samples/starter.md#show-storage) | |
 
 ## <a name="escape-characters"></a>转义字符
 
 某些属性名称（如包含 `.` 或 `$` 的属性名称）在查询中必须进行包装或转义，或者属性名称被错误解释，不提供预期结果。
 
-- `.`-将属性名称包装为： `['propertyname.withaperiod']`
+- `.` 包装属性名称，如下所示： `['propertyname.withaperiod']`
   
   包装属性 odata 的示例查询 _。键入_：
 
@@ -100,9 +100,9 @@ Resources
 
 - `$`-对属性名称中的字符进行转义。 使用的转义字符取决于从运行的 shell 资源关系图。
 
-  - **bash** -  @ no__t-2
+  - **bash**  -  `\`
 
-    用于在 bash 中转义 _@no__t_属性的示例查询：
+    用于转义 bash 中的属性 _\$type_的示例查询：
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
@@ -112,7 +112,7 @@ Resources
 
   - **PowerShell** - ``` ` ```
 
-    _@No__t_ PowerShell 中的属性进行转义的示例查询：
+    用于在 PowerShell 中转义属性 _\$type_的示例查询：
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type

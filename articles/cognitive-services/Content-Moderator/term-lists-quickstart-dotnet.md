@@ -3,19 +3,19 @@ title: 对照以 C# 编写的自定义术语列表检查文本 - 内容审查器
 titleSuffix: Azure Cognitive Services
 description: 如何通过自定义术语列表使用适用于 C# 的内容审查器 SDK 对文本进行审查。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/03/2019
-ms.author: sajagtap
-ms.openlocfilehash: d1c2f8b06d333be23f25a2d150c23269bf84cd2e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.author: pafarley
+ms.openlocfilehash: 272063c3fcc77c76536dbd007b1ab0132a565e61
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242830"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757254"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>对照以 C# 编写的自定义术语列表检查文本
 
@@ -23,14 +23,14 @@ Azure 内容审查器中的默认全局术语列表足以满足大多数内容�
 
 可使用[适用于 .NET 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 创建供文本审查 API 使用的自定义术语列表。
 
-本文中的信息和代码示例有助于用户快速开始使用用于 .NET 的内容审查器 SDK，以执行下列操作：
+本文提供了信息和代码示例，帮助你开始使用适用于 .NET 的内容审查器 SDK 来执行以下操作：
 - 创建列表。
 - 向列表添加术语。
 - 针对列表中的术语屏蔽术语。
 - 从列表中删除术语。
 - 删除列表。
 - 编辑列表信息。
-- 筛选索引，使新的扫描中包含列表更改项。
+- 刷新索引，以便新的扫描中包括对列表的更改。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
@@ -40,7 +40,7 @@ Azure 内容审查器中的默认全局术语列表足以满足大多数内容�
 
 ## <a name="create-your-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 向解决方案添加新的“控制台应用 (.NET Framework)”项目。
+1. 向解决方案添加新的“控制台应用(.NET Framework)”项目。
 
 1. 将该项目命名为 TermLists。 将此项目选为解决方案的单一启动项目。
 
@@ -274,7 +274,7 @@ static void RefreshSearchIndex (ContentModeratorClient client, string list_id)
 - MIME 类型，可以是“text/html”、“text/xml”、“text/markdown”或“text/plain”。
 - 要屏蔽的文本。
 - 布尔值。 将此字段设置为 true，在屏蔽它之前自动更正文本。
-- 布尔值。 将此字段设置为 true，检测文本中的个人身份信息 (PII)。
+- 布尔值。 将此字段设置为**true**可检测文本中的个人数据。
 - 术语列表 ID。
 
 有关详细信息，请参阅 [API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f)。
@@ -414,7 +414,7 @@ static void Main(string[] args)
 
 ## <a name="run-the-application-to-see-the-output"></a>运行应用程序以查看输出
 
-控制台输出将如下所示：
+控制台输出如下所示：
 
 ```console
 Creating term list.
