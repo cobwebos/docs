@@ -1,21 +1,19 @@
 ---
 title: 监视具有 Azure Monitor 的 Python 应用程序（预览） |Microsoft Docs
 description: 提供有关将 OpenCensus Python 与 Azure Monitor 连接的说明
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: conceptual
 author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
-ms.service: application-insights
-ms.topic: conceptual
 ms.reviewer: mbullwin
-manager: carmonm
-ms.openlocfilehash: 4cd3d048ead8b9e6ff59a17d1a8269ecdec5a11c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.openlocfilehash: 0d848027d6c754df371b4d87cf01c5b2fdbc8c02
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750404"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820737"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>设置 Python 应用程序的 Azure Monitor （预览）
 
@@ -59,7 +57,7 @@ python -m pip install opencensus-ext-azure
 ```
 
 > [!NOTE]
-> @No__t_0 命令假设你为 Python 安装设置了 `PATH` 环境变量。 如果尚未配置此变量，则需要为 Python 可执行文件所在的位置指定完整的目录路径。 结果如下所示的命令： `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`。
+> `python -m pip install opencensus-ext-azure` 命令假设你为 Python 安装设置了 `PATH` 环境变量。 如果尚未配置此变量，则需要为 Python 可执行文件所在的位置指定完整的目录路径。 结果如下所示的命令： `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`。
 
 SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测发送到 Azure Monitor：跟踪、指标和日志。 有关这些遥测类型的详细信息，请参阅[数据平台概述](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform)。 使用以下说明通过三个导出程序发送这些遥测类型。
 

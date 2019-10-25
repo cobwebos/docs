@@ -1,23 +1,19 @@
 ---
 title: 使用 Application Insights 探查实时 Azure Service Fabric 应用程序 | Microsoft Docs
 description: 为 Service Fabric 应用程序启用 Profiler
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 5c01c2721a29bf142ee0ba53c9bc29ec66a7278f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: a7a64be3c73ea82c6bf3d905772f3278f9bda5df
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727915"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72818482"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>使用 Application Insights 探查实时 Azure Service Fabric 应用程序
 
@@ -32,7 +28,7 @@ Azure 诊断中包括了 Application Insights Profiler。 可以使用 Azure 资
 
 若要设置环境，请执行以下操作：
 
-1. Profiler 支持 .NET Framework 和 .Net Core。 如果使用的是 .NET Framework，请确保使用 [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更高版本。 只需确认部署的 OS 是 `Windows Server 2012 R2` 或更高版本。 Profiler 支持 .NET Core 2.1 及更高版本的应用程序。
+1. 探查器支持 .NET Framework 和 .Net Core。 如果使用 .NET Framework，请确保使用[.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)或更高版本。 只需确认部署的 OS `Windows Server 2012 R2` 或更高版本即可。 探查器支持 .NET Core 2.1 和更高版本的应用程序。
 
 1. 在部署模板文件中搜索 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)。
 
@@ -55,7 +51,7 @@ Azure 诊断中包括了 Application Insights Profiler。 可以使用 Azure 资
   如果你的设置正确，则在安装 Azure 诊断扩展时将安装并启用 Application Insights Profiler。 
 
 1. 将 Application Insights 添加到你的 Service Fabric 应用程序。  
-  要使 Profiler 收集请求的配置文件，应用程序必须使用 Application Insights 跟踪操作。 对于无状态 API，可以参考[跟踪分析请求](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json)的说明。 有关在其他类型的应用中跟踪自定义操作的详细信息，请参阅[使用 Application Insights .NET SDK 跟踪自定义操作](custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json)。
+  为了使 Profiler 为你的请求收集配置文件，你的应用程序必须跟踪 Application Insights 的操作。 对于无状态 Api，你可以参考用于[跟踪分析请求的](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json)说明。 有关在其他类型的应用中跟踪自定义操作的详细信息，请参阅[跟踪 Application Insights .NET SDK 的自定义操作](custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json)。
 
 1. 重新部署应用程序。
 

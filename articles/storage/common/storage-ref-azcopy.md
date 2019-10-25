@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 984d0c570c6c0d5048d58377f113319157411244
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 0772446b0259b12d3f76b2020eeed4c9c2de1119
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513382"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882221"
 ---
 # <a name="azcopy"></a>azcopy
 
@@ -36,10 +36,16 @@ AzCopy 是一个命令行工具，用于将数据移入和移出 Azure 存储。
 ## <a name="see-also"></a>另请参阅
 
 - [AzCopy 入门](storage-use-azcopy-v10.md)
+- [azcopy 工作台](storage-ref-azcopy-bench.md)
 - [azcopy 副本](storage-ref-azcopy-copy.md)
 - [azcopy 文档](storage-ref-azcopy-doc.md)
 - [azcopy 环境](storage-ref-azcopy-env.md)
 - [azcopy 作业](storage-ref-azcopy-jobs.md)
+- [azcopy 作业清理](storage-ref-azcopy-jobs-clean.md)
+- [azcopy 作业列表](storage-ref-azcopy-jobs-list.md)
+- [删除作业 azcopy](storage-ref-azcopy-jobs-remove.md)
+- [azcopy 作业恢复](storage-ref-azcopy-jobs-resume.md)
+- [azcopy 作业显示](storage-ref-azcopy-jobs-show.md)
 - [azcopy 列表](storage-ref-azcopy-list.md)
 - [azcopy 登录](storage-ref-azcopy-login.md)
 - [azcopy 注销](storage-ref-azcopy-logout.md)

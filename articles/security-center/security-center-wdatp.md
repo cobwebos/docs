@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: fb401226e9697afb71dfa7a30f9814e07c3422c2
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 6ceed914d1c69ccdfce5d7acb6dcfc1afc9ef868
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028080"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819887"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Azure 安全中心的 Microsoft Defender 高级威胁防护
 
@@ -28,19 +28,19 @@ Azure 安全中心通过与[Microsoft Defender 高级威胁防护](https://www.m
 
 使用 Microsoft Defender ATP 时，将获得：
 
-- **高级违规后检测传感器**：适用于 Windows server 的 Microsoft Defender ATP 传感器收集大量行为信号。
+- **高级入侵后检测传感器**：用于 Windows server 的 MICROSOFT Defender ATP 传感器收集大量行为信号。
 
-- **基于分析的、由云提供支持的入侵后检测**：Microsoft Defender ATP 快速适应不断变化的威胁。 它使用高级分析和大数据。 Microsoft Defender ATP 通过使用跨 Windows、Azure 和 Office 的信号来检测未知威胁，从而增强了 Intelligent Security Graph 的强大功能。 它提供可以采取措施的警报，并可让你快速做出响应。
+- **基于分析、云驱动的入侵后检测**： MICROSOFT Defender ATP 快速适应不断变化的威胁。 它使用高级分析和大数据。 Microsoft Defender ATP 通过使用跨 Windows、Azure 和 Office 的信号来检测未知威胁，从而增强了 Intelligent Security Graph 的强大功能。 它提供可以采取措施的警报，并可让你快速做出响应。
 
-- **威胁智能**：Microsoft Defender ATP 在识别攻击者的工具、技术和过程时生成警报。 它使用 Microsoft 威胁猎人和安全团队生成的，并由合作伙伴提供的情报补充的数据。
+- **威胁情报**： MICROSOFT Defender ATP 在识别攻击者的工具、技术和过程时生成警报。 它使用 Microsoft 威胁猎人和安全团队生成的，并由合作伙伴提供的情报补充的数据。
 
 Azure 安全中心现在提供了以下功能：
 
-- **自动加入**：对于载入到 Azure 安全中心的 Windows 服务器，会自动启用 Microsoft Defender ATP 传感器。
+- **自动载入**：对于载入到 Azure 安全中心的 Windows 服务器，会自动启用 MICROSOFT Defender ATP 传感器。
 
-- **单一虚拟管理平台**：Azure 安全中心控制台显示 Microsoft Defender ATP 警报。
+- **单一界面**： Azure 安全中心控制台显示 MICROSOFT Defender ATP 警报。
 
-- **详细的计算机调查**：Azure 安全中心客户可以使用 Microsoft Defender ATP 控制台进行详细调查，以揭示违规的范围。
+- **详细的机器调查**： Azure 安全中心客户可以使用 MICROSOFT Defender ATP 控制台进行详细的调查，以找出违规的范围。
 
 ![Azure 安全中心，其中显示了警报列表以及有关每条警报的一般信息](media/security-center-wdatp/image1.png)
 
@@ -50,7 +50,7 @@ Azure 安全中心现在提供了以下功能：
 
 ## <a name="platform-support"></a>平台支持
 
-安全中心的 Microsoft Defender ATP 支持在标准服务订阅中的 Windows Server 2016、2012 R2 和 2008 R2 SP1 操作系统上检测。
+安全中心的 Microsoft Defender ATP 支持在 Windows Server 2016、2012 R2 和 2008 R2 SP1 上检测：对于 Azure Vm，你需要标准层订阅，对于非 Azure Vm，你需要仅在工作区级别需要标准层。
 
 > [!NOTE]
 > 使用 Azure 安全中心监视服务器时，将自动创建 Microsoft Defender ATP 租户，并且默认情况下，Microsoft Defender ATP 数据存储在欧洲。 如果需要将数据移动到另一个位置，则需要联系 Microsoft 支持部门重置租户。 已为 Office 365 GCC 客户禁用了利用此集成的服务器终结点监视。
@@ -114,6 +114,6 @@ Azure 安全中心现在提供了以下功能：
 ## <a name="next-steps"></a>后续步骤
 
 - [Platforms and features supported by Azure Security Center](security-center-os-coverage.md)（Azure 安全中心支持的平台和功能）
-- [在 Azure 安全中心设置安全策略](tutorial-security-policy.md)：了解如何为 Azure 订阅和资源组配置安全策略。
-- [管理 Azure 安全中心的安全建议](security-center-recommendations.md)：了解建议如何帮助你保护 Azure 资源。
-- [在 Azure 安全中心进行安全运行状况监视](security-center-monitoring.md)：了解如何监视 Azure 资源的运行状况。
+- [在 Azure 安全中心设置安全策略](tutorial-security-policy.md)：了解如何配置 Azure 订阅和资源组的安全策略。
+- [在 Azure 安全中心管理安全建议](security-center-recommendations.md)：了解安全建议如何帮助保护 Azure 资源。
+- [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md)：了解如何监视 Azure 资源的运行状况。

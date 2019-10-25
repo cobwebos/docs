@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 67022c6bd9e237ce24d8e63285f7ebabadca87c6
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 308809a9b78de9d3c0e77ed6028e62c42ff4e1c5
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671314"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882559"
 ---
 # <a name="azure-storage-account-overview"></a>Azure 存储帐户概述
 
-Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列、表和磁盘。 存储帐户为你的 Azure 存储数据提供了一个唯一的命名空间，可以从世界上的任何位置通过 HTTP 或 HTTPS 访问该命名空间。 Azure 存储帐户中的数据是持久的，高度可用、安全且可大规模缩放。
+Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列、表和磁盘。 存储帐户为 Azure 存储数据提供唯一的命名空间，这些数据可通过 HTTP 或 HTTPS 从世界各地进行访问。 Azure 存储帐户中的数据是持久的、高度可用的、安全且高度可缩放的。
 
 若要了解如何创建 Azure 存储帐户，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
 
@@ -29,7 +29,7 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 
 常规用途 v2 存储帐户支持最新的 Azure 存储功能，并整合了常规用途 v1 和 Blob 存储帐户的所有功能。 常规用途 v2 帐户为 Azure 存储提供最低的每 GB 容量价格，以及具有行业竞争力的事务处理价格。 常规用途 v2 存储帐户支持以下 Azure 存储服务：
 
-- Blob（所有类型：块、追加、页）
+- Blob（所有类型：块 Blob、追加 Blob、页 Blob）
 - 文件
 - 磁盘
 - 队列
@@ -44,7 +44,7 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 
 ### <a name="general-purpose-v1-accounts"></a>常规用途 v1 帐户
 
-常规用途 v1 帐户可以访问所有 Azure 存储服务，但可能没有最新功能，其每 GB 定价也可能不是最低的。 常规用途 v1 存储帐户支持以下 Azure 存储服务：
+常规用途 v1 存储帐户提供对所有 Azure 存储服务的访问权限，但可能没有最新功能或每 gb 的最低定价。 常规用途 v1 存储帐户支持以下 Azure 存储服务：
 
 - Blob（所有类型）
 - 文件
@@ -60,17 +60,19 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 
 * 使用了早于 2014-02-14 的 [存储服务 REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) 的版本或使用了版本低于 4.x 的客户端库，并且无法升级应用程序。
 
-### <a name="block-blob-storage-accounts"></a>块 Blob 存储帐户
+### <a name="blockblobstorage-accounts"></a>BlockBlobStorage 帐户
 
-块 blob 存储帐户是将非结构化对象数据作为块 blob 存储的专用存储帐户。 此存储帐户类型支持块 blob 和追加 blob，而不支持页 blob、表或队列。
+BlockBlobStorage 帐户是用于将非结构化对象数据存储为块 blob 并创建高级块 blob 的专用存储帐户。 此存储帐户类型支持块 blob 和追加 blob，而不支持页 blob、表或队列。
 
-与常规用途 v2 和 blob 存储帐户相比，块 blob 存储帐户提供低和一致性延迟，更高的事务速率。
+与常规用途 v2 和 BlobStorage 帐户相比，BlockBlobStorage 帐户提供低、一致性延迟和更高的事务速率。
 
-块 blob 存储帐户当前不支持对 "热"、"冷" 或 "存档" 访问层进行分层。
+BlockBlobStorage 帐户目前不支持对 "热"、"冷" 或 "存档" 访问层进行分层。
 
-### <a name="filestorage-storage-accounts"></a>FileStorage 存储帐户
+### <a name="filestorage-accounts"></a>FileStorage 帐户
 
-FileStorage 存储帐户是用于存储和创建高级文件共享的专用存储帐户。 FileStorage 存储帐户提供了独特的性能专用特性，例如 IOPS 突发。 有关这些特征的详细信息，请参阅文件规划指南中的[文件共享性能层](../files/storage-files-planning.md#file-share-performance-tiers)部分。
+FileStorage 帐户是用于存储和创建高级文件共享的专用存储帐户。 此存储帐户类型支持文件，但不支持块 blob、追加 blob、页 blob、表或队列。 
+
+FileStorage 帐户提供了独特的性能专用特性，例如 IOPS 突发。 有关这些特征的详细信息，请参阅文件规划指南中的[文件共享性能层](../files/storage-files-planning.md#file-share-performance-tiers)部分。
 
 ## <a name="naming-storage-accounts"></a>为存储帐户命名
 
@@ -86,7 +88,7 @@ FileStorage 存储帐户是用于存储和创建高级文件共享的专用存�
 * 用于存储 Blob、文件、表、队列和 Azure 虚拟机磁盘的标准性能层。
 * 仅用于存储非托管虚拟机磁盘的高级性能层。
 
-块 blob 存储帐户提供用于存储块 blob 和追加 blob 的高级性能层。
+BlockBlobStorage 存储帐户提供用于存储块 blob 和追加 blob 的高级性能层。
 
 FileStorage 存储帐户为 Azure 文件共享提供高级性能层。
 
@@ -96,11 +98,11 @@ Azure 存储提供不同的选项用于根据使用模式访问块 Blob 数据�
 
 可用的访问层包括：
 
-* **热**访问层，已针对存储帐户中频繁访问的对象进行优化。 访问热层中的数据最经济高效，但存储费用较高。 默认情况下，新存储帐户在热层中创建。
-* **冷**访问层，已针对存储不常访问且存储时间至少为 30 天的大量数据进行优化。 将数据存储在冷层中更经济高效，但与访问热层中的数据相比，访问该数据的费用可能较高。
-* **存档**层，仅适用于单个块 Blob。 存档层已针对可以容忍数小时的检索延迟且会保留在存档层至少 180 天的数据进行优化。 存档层是用于存储数据的最经济高效的选项，但访问这些数据的开销比访问热层或冷层中的数据要高一些。
+* **热**访问层，已针对存储帐户中频繁访问的对象进行优化。 访问热层中的数据是最具成本效益的，而存储成本则更高。 默认情况下，新存储帐户在热层中创建。
+* **冷**访问层，已针对存储不常访问且存储时间至少为 30 天的大量数据进行优化。 将数据存储在酷层中更为经济高效，但访问数据比访问热层中的数据可能更昂贵。
+* **存档**层，仅适用于单个块 Blob。 存档层针对可容忍几个小时的检索延迟的数据进行了优化，并且在至少180天内仍将保留在存档层中。 存档层是用于存储数据的最经济高效的选项，但访问这些数据的开销比访问热层或冷层中的数据要高一些。
 
-如果数据的使用模式有所更改，则可以随时在这些访问层之间切换。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](../blobs/storage-blob-storage-tiers.md)。
+如果数据的使用模式有所更改，则可以随时在这些访问层之间切换。 有关访问层的详细信息，请参阅[Azure Blob 存储： "热"、"冷" 和 "存档" 访问层](../blobs/storage-blob-storage-tiers.md)。
 
 > [!IMPORTANT]
 > 更改现有存储帐户或 Blob 的访问层可能会产生额外的费用。 有关详细信息，请参阅[“存储帐户计费”部分](#storage-account-billing)。
@@ -141,9 +143,9 @@ Azure 存储提供不同的选项用于根据使用模式访问块 Blob 数据�
 
 可使用以下任一方法授予对存储帐户中数据的访问权限：
 
-- **Azure Active Directory：** 使用 Azure Active Directory (Azure AD) 凭据对访问 Blob 和队列数据的用户、组或其他标识进行身份验证。 如果某个标识的身份验证成功，则 Azure AD 会返回一个令牌，在对访问 Azure Blob 存储或队列存储的请求授权时可以使用该令牌。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure 存储访问进行身份验证](storage-auth-aad.md)。
+- **Azure Active Directory：** 使用 Azure Active Directory （Azure AD）凭据对用户、组或其他标识进行身份验证，以访问 blob 和队列数据。 如果某个标识的身份验证成功，则 Azure AD 会返回一个令牌，在对访问 Azure Blob 存储或队列存储的请求授权时可以使用该令牌。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure 存储访问进行身份验证](storage-auth-aad.md)。
 - **共享密钥授权：** 使用存储帐户访问密钥构造一个连接字符串，应用程序在运行时将使用该连接字符串来访问 Azure 存储。 连接字符串中的值用于构造要传递给 Azure 存储的 *Authorization* 标头。 有关详细信息，请参阅[配置 Azure 存储连接字符串](storage-configure-connection-string.md)。
-- **共享访问签名：** 如果不使用 Azure AD 授权，可以使用共享访问签名来委托对存储帐户中资源的访问权限。 共享访问签名是一个令牌，用于在 URL 中封装对 Azure 存储访问请求进行授权时所需的全部信息。 可以在共享访问签名中指定存储资源、授予的权限，以及权限的有效时间间隔。 有关详细信息，请参阅[使用共享访问签名 (SAS)](storage-sas-overview.md)。
+- **共享访问签名：** 如果不使用 Azure AD 授权，请使用共享访问签名委托对存储帐户中资源的访问权限。 共享访问签名是一个令牌，用于在 URL 中封装对 Azure 存储访问请求进行授权时所需的全部信息。 可以在共享访问签名中指定存储资源、授予的权限，以及权限的有效时间间隔。 有关详细信息，请参阅[使用共享访问签名 (SAS)](storage-sas-overview.md)。
 
 > [!NOTE]
 > 与其他授权方式相比，使用 Azure AD 凭据对用户或应用程序进行身份验证可以提供优越的安全性和易用性。 虽然可以继续为应用程序使用共享密钥授权，但是，使用 Azure AD 不需要将帐户访问密钥与代码存储在一起。 也可以继续使用共享访问签名 (SAS) 授予对存储帐户中的资源的精细访问权限，但 Azure AD 提供了类似的功能，并且不需要管理 SAS 令牌，也不需要担心吊销已泄露的 SAS。 
@@ -186,5 +188,5 @@ AzCopy 是一个 Windows 命令行实用工具，旨在实现高性能地将数�
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解如何创建常规用途的 Azure 存储帐户，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
-* 若要了解如何创建块 blob 存储帐户，请参阅[创建块 blob 存储帐户](../blobs/storage-blob-create-account-block-blob.md)。
+* 若要了解如何创建 BlockBlobStorage 帐户，请参阅[创建块 blob 存储帐户](../blobs/storage-blob-create-account-block-blob.md)。
 * 若要管理或删除现有存储帐户，请参阅[管理 Azure 存储帐户](storage-account-manage.md)。

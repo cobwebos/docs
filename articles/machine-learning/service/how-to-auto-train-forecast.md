@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: eb13e6d279ffd8efc0cdb5ce675b77aac5be9c18
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 3cec6ee9368b1d9d1f2c9a627108aaf41c6da3c3
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436627"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819846"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 
@@ -34,6 +34,27 @@ ms.locfileid: "72436627"
 您可以[配置](#config)未来预测应扩展的时间（预测范围）以及滞后时间和更多时间。 自动 ML 会为数据集中的所有项目学习单个但通常在内部分支的模型，并预测视野。 这样就可以使用更多的数据来估计模型参数，并使其成为不可见系列。
 
 从定型数据中提取的功能扮演着重要的角色。 而且，自动 ML 会执行标准预处理步骤并生成附加的时序功能，以捕获季节性效果并最大程度地提高预测准确性。
+
+## <a name="time-series-and-deep-learning-models"></a>时序和深度学习模型
+
+
+自动 ML 可为用户提供本机时序和深度学习模型作为建议系统的一部分。 这些学员包括：
++ Prophet
++ 自动 ARIMA
++ ForecastTCN
+
+自动 ML 的深度学习允许预测单变量和多元时序数据。
+
+深度学习模型有三个内部 capbailities：
+1. 可以从输入到输出的任意映射了解
+1. 它们支持多个输入和输出
+1. 它们可以自动提取跨越较长序列的输入数据中的模式
+
+对于更大的数据，深度学习模型（如 Microsoft ' ForecasTCN）可以改进生成的模型的分数。 
+
+本机时序学习器也作为自动 ML 的一部分提供。 Prophet 最适合用于具有极大季节性效果和几个季节历史数据的时序。 Prophet 是准确的 & 快速、强健、离群值、丢失数据，以及在时序方面产生巨大的变化。 
+
+自动回归集成的移动平均线（ARIMA）是时序预测的常用统计方法。 此预测技术通常用于短期预测方案，其中的数据显示了循环（如循环）的证据，这可能是不可预测的，很难建模或预测。 自动 ARIMA 将数据转换为静态数据，以获得一致、可靠的结果。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -56,7 +77,7 @@ ms.locfileid: "72436627"
     9/7/2018,A,2450,36
     9/7/2018,B,650,36
 
-此数据集是具有两个不同商店（A 和 B）的公司的每日销售数据的简单示例。此外，还有一个 `week_of_year` 的功能，该功能将允许模型检测每周季节性。 字段 `day_datetime` 表示具有每日频率的清除时间系列，而字段 `sales_quantity` 是用于运行预测的目标列。 将数据读入 Pandas 数据帧，然后使用 `to_datetime` 函数确保时序为 @no__t 类型。
+此数据集是具有两个不同商店（A 和 B）的公司的每日销售数据的简单示例。此外，还提供了一项 `week_of_year` 功能，使模型可以季节性每周进行检测。 该字段 `day_datetime` 表示具有每日频率的清除时间系列，而字段 `sales_quantity` 为运行预测的目标列。 将数据读入 Pandas 数据帧，然后使用 `to_datetime` 函数确保时序为 `datetime` 类型。
 
 ```python
 import pandas as pd
@@ -64,7 +85,7 @@ data = pd.read_csv("sample.csv")
 data["day_datetime"] = pd.to_datetime(data["day_datetime"])
 ```
 
-在这种情况下，数据已按时间字段升序排序 `day_datetime`。 但是，在设置试验时，请确保将所需时间列按升序排序以生成有效的时序。 假设数据中包含1000条记录，并在数据中作出确定性拆分，以创建定型和测试数据集。 标识标签列名，并将其设置为 "标签"。 在此示例中，标签将 `sales_quantity`。 然后，将标签字段从 `test_data` 分隔以构成 @no__t 集。
+在这种情况下，数据已按时间字段 `day_datetime`升序排序。 但是，在设置试验时，请确保将所需时间列按升序排序以生成有效的时序。 假设数据中包含1000条记录，并在数据中作出确定性拆分，以创建定型和测试数据集。 标识标签列名，并将其设置为 "标签"。 在此示例中，将 `sales_quantity`标签。 然后，将 "标签" 字段从 "`test_data`" 分离，以形成 `test_target` 集。
 
 ```python
 train_data = data.iloc[:950]
@@ -89,7 +110,7 @@ test_labels = test_data.pop(label).values
 * 创建基于时间的功能，以帮助学习季节性模式
 * 将分类变量编码为数值数量
 
-@No__t 0 对象定义自动机器学习任务所需的设置和数据。 与回归问题类似，定义了标准定型参数，如任务类型、迭代数、定型数据和交叉验证次数。 对于预测任务，还必须设置其他参数，这些参数会影响试验。 下表说明了每个参数及其用法。
+`AutoMLConfig` 对象定义自动机器学习任务所需的设置和数据。 与回归问题类似，定义了标准定型参数，如任务类型、迭代数、定型数据和交叉验证次数。 对于预测任务，还必须设置其他参数，这些参数会影响试验。 下表说明了每个参数及其用法。
 
 | Param | 描述 | 需要 |
 |-------|-------|-------|
@@ -101,7 +122,7 @@ test_labels = test_data.pop(label).values
 
 有关详细信息，请参阅[参考文档](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)。
 
-将时间序列设置创建为字典对象。 将 @no__t 0 设置为数据集中的 @no__t 字段。 定义 `grain_column_names` 参数以确保为数据创建**两个单独的时序组**;第一种是存储 A，将 @no__t 设置为50，以便预测整个测试集。 将预测时段设置为10个 `target_rolling_window_size` 的周期，并为 `target_lags` 参数提前2个句点的目标值指定一个滞后时间。
+将时间序列设置创建为字典对象。 将 `time_column_name` 设置为数据集中的 `day_datetime` 字段。 定义 `grain_column_names` 参数以确保为数据创建**两个单独的时序组**;用于存储 A 和 B. 最后，将 `max_horizon` 设置为50，以便预测整个测试集。 使用 `target_rolling_window_size`将预测时段设置为10个周期，并使用 `target_lags` 参数在2个句点之前指定一个滞后时间。
 
 ```python
 time_series_settings = {
@@ -119,7 +140,7 @@ time_series_settings = {
 
 通过在上述代码片段中定义 `grain_column_names`，AutoML 将创建两个单独的时序组，也称为多个时间序列。 如果未定义任何颗粒，AutoML 将假定该数据集是单个时间系列。 若要了解有关单个时间系列的详细信息，请参阅[energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)。
 
-现在，创建标准 @no__t 0 对象，指定 @no__t 1 任务类型，并提交试验。 模型完成后，检索最佳的运行迭代。
+现在，创建标准 `AutoMLConfig` 对象，指定 `forecasting` 任务类型，然后提交试验。 模型完成后，检索最佳的运行迭代。
 
 ```python
 from azureml.core.workspace import Workspace
@@ -173,7 +194,7 @@ predict_labels = fitted_model.predict(test_data)
 actual_labels = test_labels.flatten()
 ```
 
-或者，您可以使用 `forecast()` 函数，而不是 `predict()`，这将允许指定预测应开始的时间。 在下面的示例中，首先将 `y_pred` 中的所有值替换 @no__t 为-1。 在这种情况下，预测源将位于定型数据的末尾，因为使用 `predict()` 时通常会出现这种情况。 但是，如果仅将 `y_pred` 的后半部分替换为 `NaN`，则函数会将数字值保留在前一半未修改，但会在第二部分中预测 @no__t 2 值。 函数同时返回预测值和对齐功能。
+或者，您可以使用 `forecast()` 函数，而不是 `predict()`，这将允许指定预测应开始的时间。 在下面的示例中，首先将 `y_pred` 中的所有值替换为 `NaN`。 在这种情况下，预测源将位于定型数据的末尾，因为使用 `predict()` 时通常会出现这种情况。 但是，如果只用 `NaN`替换了 `y_pred` 的后半部分，则函数将在前半部分中未修改数值，但会在第二部分中预测 `NaN` 值。 函数同时返回预测值和对齐功能。
 
 你还可以使用 `forecast()` 函数中的 `forecast_destination` 参数将值向上预测到指定的日期。
 
@@ -184,7 +205,7 @@ label_fcst, data_trans = fitted_pipeline.forecast(
     test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
-计算 `actual_labels` 实际值和 `predict_labels` 中预测值之间的 RMSE （根本均值误差）。
+计算 `actual_labels` 实际值和 `predict_labels`中预测值之间的 RMSE （根本平均平方误差）。
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -194,7 +215,7 @@ rmse = sqrt(mean_squared_error(actual_lables, predict_labels))
 rmse
 ```
 
-现在，确定了整体模型准确性，最现实的下一步是使用该模型预测未知的未来值。 只需以与测试集相同的格式提供数据集 `test_data` 但在将来 datetime 时，生成的预测集是每个时序步骤的预测值。 假设数据集中的最后一条时序记录为12/31/2018。 若要预测下一天的需求（或者需要预测的时间段，< = `max_horizon`），请为每个商店创建一个时序记录01/01/2019。
+现在，确定了整体模型准确性，最现实的下一步是使用该模型预测未知的未来值。 只需将数据集提供为与测试集相同的格式 `test_data` 但对于未来的 datetime，生成的预测集就是每个时序步骤的预测值。 假设数据集中的最后一条时序记录为12/31/2018。 若要预测下一天的需求（或者需要预测的时间段，< = `max_horizon`），请为每个商店创建一个时序记录01/01/2019。
 
     day_datetime,store,week_of_year
     01/01/2019,A,1
@@ -203,7 +224,7 @@ rmse
 重复执行必要的步骤，将此将来的数据加载到数据帧，然后运行 `best_run.predict(test_data)` 以预测未来值。
 
 > [!NOTE]
-> 不能预测大于 @no__t 的时间段数的值。 必须使用较大的范围重新对模型进行重新定型，以便预测当前范围之外的未来值。
+> 不能预测大于 `max_horizon`的时间段数的值。 必须使用较大的范围重新对模型进行重新定型，以便预测当前范围之外的未来值。
 
 ## <a name="next-steps"></a>后续步骤
 

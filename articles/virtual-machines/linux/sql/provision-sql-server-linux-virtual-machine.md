@@ -4,19 +4,19 @@ description: 本教程介绍如何在 Azure 门户中创建 Linux SQL Server 201
 services: virtual-machines-linux
 author: MashaMSFT
 manager: craigg
-ms.date: 12/5/2018
+ms.date: 10/22/2019
 ms.topic: conceptual
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: cd87477da15d5c18f94b66cac855672b4a2a3523
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 85d2396a05e7496b56bd83bd834150aa6d864c62
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091354"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882684"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>在 Azure 门户中预配 Linux SQL Server 虚拟机
 
@@ -26,14 +26,14 @@ ms.locfileid: "70091354"
 
 在本快速入门教程中，你将使用 Azure 门户创建装有 SQL Server 2017 的 Linux 虚拟机。
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 * [从库创建 Linux SQL VM](#create)
 * [使用 ssh 连接到新的 VM](#connect)
 * [更改 SA 密码](#password)
 * [针对远程连接进行配置](#remote)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
 
@@ -49,23 +49,19 @@ ms.locfileid: "70091354"
 
    ![查看所有 VM 映像](./media/provision-sql-server-linux-virtual-machine/azure-compute-blade.png)
 
-1. 在搜索框中键入 **SQL Server 2017**，然后按 Enter 开始搜索。
+1. 在 "搜索" 框中，键入**SQL Server 2019**，然后选择**Enter**以启动搜索。
 
-1. 选择“操作系统” > “Redhat”来限制搜索结果。 然后，在“发行商”下面选择“Microsoft”。
+1. 选择“操作系统” > “Redhat”来限制搜索结果。
 
-    ![针对 SQL Server 2017 VM 映像的搜索筛选器](./media/provision-sql-server-linux-virtual-machine/searchfilter.png)
+    ![SQL Server 2019 VM 映像的搜索筛选器](./media/provision-sql-server-linux-virtual-machine/searchfilter.png)
 
-1. 从搜索结果中选择 SQL Server 2017 Linux 映像。 本教程使用“免费 SQL Server 许可证:SQL Server 2017 Developer on Red Hat Enterprise Linux 7.4”。
+1. 从搜索结果中选择 SQL Server 2019 Linux 映像。 本教程使用**RHEL74 上的 SQL Server 2019**。
 
    > [!TIP]
    > Developer 版允许使用 Enterprise 版的功能进行测试或开发，但没有 SQL Server 许可费用。 只需支付运行 Linux VM 的费用。
 
-1. 在“选择部署模型”下，选择适合工作负荷需求的部署模型。
+1. 选择**创建**。 
 
-    > [!Note]
-    > 对于新工作负荷，请使用“资源管理器”。 若要连接到现有虚拟网络，请为工作负荷选择虚拟网络的部署方法。 有关部署模型的详细信息，请参阅 [Azure 资源管理器和经典部署模型](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)。
-
-1. 选择“创建”。
 
 ### <a name="set-up-your-linux-vm"></a>设置 Linux VM
 
@@ -75,25 +71,25 @@ ms.locfileid: "70091354"
 
 1. 在“虚拟机名称”中，输入新 Linux VM 的名称。
 1. 然后键入或选择以下值：
-   * **区域**：选择合适的 Azure 区域。
-   * **可用性选项**：选择最适合应用和数据的可用性与冗余选项。
-   * **更改大小**：选择此选项以选择计算机大小，完成后，选择“选择”。 有关 VM 计算机大小的详细信息，请参阅 [Linux VM 大小](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes)。
+   * **区域**：选择适合你的 Azure 区域。
+   * **可用性选项**：选择最适合你的应用和数据的可用性和冗余选项。
+   * **更改大小**：选择此选项以选择计算机大小，完成后，选择 "**选择**"。 有关 VM 计算机大小的详细信息，请参阅 [Linux VM 大小](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes)。
 
      ![选择 VM 大小](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
 
    > [!TIP]
    > 对于开发和功能测试，请使用 **DS2** 或更大的 VM 大小。 若要进行性能测试，则至少使用“DS13”。
 
-   * **身份验证类型**：选择“SSH 公钥”。
+   * **身份验证类型**：选择 " **SSH 公钥**"。
 
      > [!Note]
      > 可以选择使用“SSH 公钥”或“密码”进行身份验证。 SSH 更安全。 有关如何生成 SSH 密钥的说明，请参阅[在 Linux 和 Mac 上为 Azure 中的 Linux VM 创建 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)。
 
    * **用户名**：输入 VM 的管理员名称。
-   * **SSH 公钥**：输入 RSA 公钥。
-   * **公共入站端口**：选择“允许所选的端口”，然后在“选择公共入站端口”列表中选择“SSH (22)”端口。 在本快速入门中，必须执行此步骤才能建立连接并完成 SQL Server 配置。 如果想要远程连接到 SQL Server，还选择“MS SQL (1433)”以通过 Internet 打开端口 1433 进行连接。
+   * **SSH 公钥**：输入你的 RSA 公钥。
+   * **公用入站端口**：选择 "允许选择的**端口**"，然后在 "**选择公共入站端口**" 列表中选择**SSH （22）** 端口。 在本快速入门中，必须执行此步骤才能建立连接并完成 SQL Server 配置。 如果要远程连接到 SQL Server，则需要在创建虚拟机后，手动允许通过 Internet 连接 Microsoft SQL Server 使用的默认端口（1433）的流量。
 
-   ![入站端口](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
+     ![入站端口](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
 
 1. 在后面的其他选项卡中对设置进行任何所需的更改，或保留默认设置。
     * **磁盘**

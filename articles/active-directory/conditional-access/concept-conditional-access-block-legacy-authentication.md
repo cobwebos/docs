@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dc8381fe964ce924ed37d6b7e6d22dc730eae89
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 19b29181f023b49cca7159fbbcad4a4675744a96
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72453051"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819741"
 ---
 # <a name="blocking-legacy-authentication"></a>阻止旧身份验证
  
@@ -33,9 +33,11 @@ ms.locfileid: "72453051"
 
 1. 在 > 登录 Azure Active Directory 导航到 Azure 门户 >。
 1. 通过单击 "客户端应用" > 的 "列"，添加 "客户端应用" 列。
-1. 按客户端应用 > 其他客户端进行筛选，然后单击 "应用"。
+1. 按客户端应用进行筛选 > 选中显示的所有其他客户端选项，然后单击 "应用"。
+1. 按状态筛选 > 成功，并单击 "应用"。 
+1. 如果需要，请使用日期筛选器扩展日期范围。
 
-筛选只显示旧版身份验证协议进行的登录尝试。 单击每次登录尝试都将显示其他详细信息。 "基本信息" 选项卡下的 "客户端应用" 字段将指示使用的是旧的身份验证协议。 这些日志将指示哪些用户仍会依赖于旧身份验证，以及哪些应用程序使用旧版协议发出身份验证请求。 对于未出现在这些日志中并且已确认不使用旧身份验证的用户，请执行条件性访问策略或启用基线策略：仅阻止这些用户的旧身份验证。
+筛选只会显示所选旧身份验证协议进行的成功登录尝试。 单击每次登录尝试都将显示其他详细信息。 选择单个数据行后，"基本信息" 选项卡下的 "客户端应用" 列或 "客户端应用" 字段将指示使用的是旧身份验证协议。 这些日志将指示哪些用户仍会依赖于旧身份验证，以及哪些应用程序使用旧版协议发出身份验证请求。 对于未出现在这些日志中并且已确认不使用旧身份验证的用户，请执行条件性访问策略或启用基线策略：仅阻止这些用户的旧身份验证。
 
 ## <a name="moving-away-from-legacy-authentication"></a>离开旧身份验证 
 
@@ -48,7 +50,7 @@ ms.locfileid: "72453051"
 启用新式身份验证的第一步是确保目录支持新式身份验证。 默认情况下，对于在2017年8月1日或之后创建的目录，会启用新式身份验证。 如果你的目录是在此日期之前创建的，则需要使用以下步骤手动为你的目录启用新式身份验证：
 
 1. 通过运行 " [Skype For Business Online PowerShell" 模块](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell)，查看目录是否已支持新式身份验证。
-1. 如果命令返回空 @ no__t-0 @ no__t-1property，则会禁用新式身份验证。 使用 @ no__t 更新设置以启用新式身份验证。 如果 @ no__t-0 @ no__t-1property 包含一项，就可以开始了。
+1. 如果命令返回空的 `OAuthServers` 属性，则会禁用新式身份验证。 使用 `Set-CsOAuthConfiguration`更新设置以启用新式身份验证。 如果 `OAuthServers` "属性包含一个条目，则准备好。
 
 请确保在继续操作之前完成此步骤。 首先更改目录配置很重要，因为它们规定了将由所有 Office 客户端使用的协议。 即使你使用的是支持新式身份验证的 Office 客户端，如果在你的目录中禁用了新式身份验证，则它们将默认为使用旧协议。
 

@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 9376493cdd1a8a9790f4de8ee3769acf8dca5ade
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 16b75a98a5a42c9acf6d9a68330cbf8e005f7179
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595570"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819795"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>创建新的 Dynamics 365 业务中心产品/服务
 
@@ -101,7 +101,7 @@ ms.locfileid: "72595570"
 
 ### <a name="industry"></a>行业
 
-你可以选择最多选择两个行业，以帮助你在 marketplace 中对你的产品/服务进行分类。 如果产品/服务不特定于某个行业，请将本部分留空。 在产品/服务描述中，请务必了解产品/服务支持所选行业的方式。 
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>应用版本
 

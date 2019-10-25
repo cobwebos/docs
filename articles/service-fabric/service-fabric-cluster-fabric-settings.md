@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: 71f2b111c0291bc9563b12a1cdbd88ea7e9f5b5b
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e361ba4c7275a783b9211def5047a5a755f5a8b8
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376133"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881996"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -185,6 +185,9 @@ ms.locfileid: "72376133"
 |EnableRestartManagement |Bool，默认值为 false |动态|这会启用服务器重启。 |
 |EnableServiceFabricAutomaticUpdates |Bool，默认值为 false |动态|这会通过 Windows 更新启用 Fabric 自动更新。 |
 |EnableServiceFabricBaseUpgrade |Bool，默认值为 false |动态|这会启用服务器的基本更新。 |
+|FailureReportingExpeditedReportingIntervalEnabled | Bool，默认值为 true | 静态 | 当 FabricHost 处于故障报告模式时，在 DCA 中启用更快的上传速率。 |
+|FailureReportingTimeout | 时间跨度，默认值是 Common::TimeSpan::FromSeconds(60) | 静态 |指定以秒为单位的时间范围。 出现 DCA 故障报告的超时情况 FabricHost 遇到了初期启动失败。 | 
+|RunDCAOnStartupFailure | Bool，默认值为 true | 静态 |确定在 FabricHost 中面临的启动问题时是否启动 DCA 来上载日志。 | 
 |StartTimeout |以秒为单位的时间，默认值为 300 |动态|指定以秒为单位的时间范围。 fabricactivationmanager 启动的超时时间。 |
 |StopTimeout |以秒为单位的时间，默认值为 300 |动态|指定以秒为单位的时间范围。 托管服务激活、停用和升级的超时时间。 |
 
@@ -279,7 +282,7 @@ ms.locfileid: "72376133"
 |DiskSpaceHealthReportingIntervalWhenCloseToOutOfDiskSpace |TimeSpan，默认值为 Common：： TimeSpan：： FromMinutes （5）|动态|指定以秒为单位的时间范围。 在磁盘空间不足时检查磁盘空间以报告运行状况事件的时间间隔。 |
 |DiskSpaceHealthReportingIntervalWhenEnoughDiskSpace |TimeSpan，默认值为 Common::TimeSpan::FromMinutes(15)|动态|指定以秒为单位的时间范围。 磁盘上有足够的空间时，检查磁盘空间以报告运行状况事件的时间间隔。 |
 |EnableImageStoreHealthReporting |bool，默认值为 TRUE |静态|用于确定文件存储区服务是否应报告其运行状况的配置。 |
-|FreeDiskSpaceNotificationSizeInKB|int64，默认值为 25 @ no__t-01024 |动态|可能出现运行状况警告的可用磁盘空间大小。 此配置和 FreeDiskSpaceNotificationThresholdPercentage config 的最小值用于确定发送运行状况警告。 |
+|FreeDiskSpaceNotificationSizeInKB|int64，默认值为 25\*1024 |动态|可能出现运行状况警告的可用磁盘空间大小。 此配置和 FreeDiskSpaceNotificationThresholdPercentage config 的最小值用于确定发送运行状况警告。 |
 |FreeDiskSpaceNotificationThresholdPercentage|double，默认值为0.02 |动态|可能出现运行状况警告的可用磁盘空间百分比。 此配置和 FreeDiskSpaceNotificationInMB config 的最小值用于确定发送运行状况警告。 |
 |GenerateV1CommonNameAccount| bool，默认值为 TRUE|静态|指定是否要使用用户名 V1 生成算法生成帐户。 从 Service Fabric 6.1 版开始，始终创建具有 v2 生成的帐户。 从/到不支持 V2 生成的版本升级需要 V1 帐户（6.1 版以前）。|
 |MaxCopyOperationThreads | Uint，默认值为 0 |动态| 辅助节点可从主节点复制的最大并行文件数。 ‘0’== 内核数。 |
@@ -353,6 +356,7 @@ ms.locfileid: "72376133"
 |DeploymentRetryBackoffInterval| TimeSpan，默认值为 Common::TimeSpan::FromSeconds(10)|动态|指定以秒为单位的时间范围。 部署失败的回退时间间隔。 每次连续部署失败时，系统重试部署的次数会多达 MaxDeploymentFailureCount 次。 重试时间间隔是连续部署失败的产物，为部署回退时间间隔。 |
 |DisableContainers|bool，默认值为 FALSE|静态|用于禁用容器的配置 - 使用此项而不是 DisableContainerServiceStartOnContainerActivatorOpen，后者是已弃用的配置 |
 |DisableDockerRequestRetry|bool，默认值为 FALSE |动态| 默认情况下，SF 与 DD（docker 守护程序）进行通信，对于发送到它的每个 http 请求，超时都是“DockerRequestTimeout”。 如果 DD 在此时间段内没有响应，并且顶级操作仍然有剩余时间，则 SF 会重新发送请求。  对于 hyperv 容器，DD 有时候需要花费更多时间才能激活容器或停用容器。 在这种情况下，从 SF 的角度来看，DD 请求超时并且 SF 将重试操作。 有时，这好像给 DD 增加了更多压力。 此配置允许禁用此重试并等待 DD 做出响应。 |
+|DnsServerListTwoIps | 布尔值，默认为 FALSE | 静态 | 此标志会添加本地 dns 服务器两次，以帮助缓解间歇解析问题。 |
 |EnableActivateNoWindow| bool，默认值为 FALSE|动态| 激活进程是在不使用任何控制台的情况下在后台中创建的。 |
 |EnableContainerServiceDebugMode|bool，默认值为 TRUE|静态|为 docker 容器启用/禁用日志记录。  仅限 Windows。|
 |EnableDockerHealthCheckIntegration|bool，默认值为 TRUE|静态|实现 docker HEALTHCHECK 事件与 Service Fabric 系统运行状况报告的集成 |
@@ -645,7 +649,7 @@ ms.locfileid: "72376133"
 ## <a name="security"></a>“安全”
 | **Parameter** | **允许的值** |**升级策略**| **指导或简短说明** |
 | --- | --- | --- | --- |
-|AADCertEndpointFormat|string，默认值为“”|静态|为非默认环境（例如 Azure 政府 "https： \//@no__t microsoftonline/federationmetadata.xml/2007-06/federationmetadata.xml"）指定 AAD Cert Endpoint 格式（默认为 Azure 商业版） |
+|AADCertEndpointFormat|string，默认值为“”|静态|为非默认环境（例如 Azure 政府 "https：\//login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml"）指定 AAD Cert 终结点格式（默认为 Azure 商业版） |
 |AADClientApplication|string，默认值为“”|静态|表示 Fabric 客户端的本机客户端应用程序名称或 ID |
 |AADClusterApplication|string，默认值为“”|静态|表示群集的 Web API 应用程序名称或 ID |
 |AADLoginEndpoint|string，默认值为“”|静态|为非默认环境（例如 Azure 政府 "https： \//microsoftonline"）指定的 AAD 登录终结点（默认为 Azure 商业） |

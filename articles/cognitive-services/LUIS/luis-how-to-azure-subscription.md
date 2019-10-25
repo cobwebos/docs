@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 1fb57a7c6cc694c56667d589eae39442ee9e82ac
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: acda549ffc03679de43b4e5956e65ccada766c15
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984387"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819948"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>使用创作和运行时资源键
 
@@ -28,7 +28,7 @@ ms.locfileid: "70984387"
 登录到 LUIS 门户后，你可以选择继续执行以下操作：
 
 * 免费[试用密钥](#trial-key)-提供创作和少量预测终结点查询。
-* 新的 Azure LUIS 创作资源-创建新的资源。 这不同于预测终结点资源。 
+* Azure [LUIS 创作](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)资源。 
 
 
 <a name="starter-key"></a>
@@ -52,20 +52,17 @@ ms.locfileid: "70984387"
 
 ## <a name="create-resources-in-the-azure-portal"></a>在 Azure 门户中创建资源
 
-1. 登录到 [Azure 门户](https://azure.microsoft.com/free/)。 
-1. 选择“+ 创建资源”。
-1. 在搜索框中输入 `Language understanding`。
-1. 选择“创建”开始创建过程。 
+1. 使用[此链接](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)打开用于创建资源的 Azure 门户。
 1. 选择**这两个**以创建创作和预测终结点运行时键。 
 1. 输入创建该资源所需的信息，然后选择 "**创建**" 以完成该过程。
 
     ![创建语言理解资源](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
 
-    |姓名|用途|
+    |名称|用途|
     |--|--|
     |资源名称| 您选择的自定义名称，用作创作和预测终结点查询的 URL 的一部分。|
     |订阅名称| 将对资源计费的订阅。|
-    |资源组| 选择或创建的自定义资源组名称。 资源组可让你将 Azure 资源分组，以便在同一区域中进行访问和管理。|
+    |Resource group| 选择或创建的自定义资源组名称。 资源组可让你将 Azure 资源分组，以便在同一区域中进行访问和管理。|
     |创作位置|与模型关联的区域。|
     |创作定价层|定价层确定每秒和每月的最大事务数。|
     |运行时位置|与已发布的预测终结点运行时关联的区域。|
@@ -77,10 +74,10 @@ ms.locfileid: "70984387"
 
 使用[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)单独创建每个资源。 
 
-资源`kind`：
+资源 `kind`：
 
-* 创作`LUIS.Authoring`
-* 预测`LUIS` 
+* 创作： `LUIS.Authoring`
+* 预测： `LUIS` 
 
 1. 登录到 Azure CLI：
 
@@ -90,13 +87,13 @@ ms.locfileid: "70984387"
 
     这会打开一个浏览器，允许你选择正确的帐户并提供身份验证。
 
-1. 在名`westus` `LUIS.Authoring` `my-luis-authoring-resource`为的现有资源组中，创建一个名为的LUIS创作资源，并将其命名`my-resource-group`为。 
+1. 在 `westus` 区域名为 `my-resource-group` 的_现有_资源组中，创建 `LUIS.Authoring`名为 `my-luis-authoring-resource` 的**LUIS 创作资源**。 
 
     ```console
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
-1. 在`LUIS` `my-luis-prediction-resource`名为的`westus` _现有_资源组中，创建一个名为的**LUIS 预测终结点资源。** `my-resource-group` 如果希望吞吐量高于免费层，请将更改`F0`为。 `S0` 详细了解[定价层和吞吐量](luis-boundaries.md#key-limits)。
+1. 在 `westus` 区域名为 `my-resource-group` 的_现有_资源组中创建 `LUIS`类型为 `my-luis-prediction-resource` 的**LUIS 预测终结点资源**。 如果希望吞吐量高于免费层，请将 `F0` 更改为 `S0`。 详细了解[定价层和吞吐量](luis-boundaries.md#key-limits)。
 
     ```console
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
@@ -111,7 +108,7 @@ ms.locfileid: "70984387"
 
 1. 登录到[LUIS 门户](https://www.luis.ai)。
 1. 在顶部导航栏的最右侧，选择你的用户帐户，然后选择 "**设置**"。
-1. 在 "**用户设置**" 页上，选择 "**添加创作资源**"，然后选择现有的创作资源。 选择**保存**。 
+1. 在 "**用户设置**" 页上，选择 "**添加创作资源**"，然后选择现有的创作资源。 选择“保存”。 
 
 ## <a name="assign-a-resource-to-an-app"></a>向应用程序分配资源
 
@@ -137,7 +134,7 @@ ms.locfileid: "70984387"
 
     此 POST API 需要以下设置：
 
-    |Header|ReplTest1|
+    |标头|Value|
     |--|--|
     |`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。| 
     |`Ocp-Apim-Subscription-Key`|创作密钥。|
@@ -148,11 +145,11 @@ ms.locfileid: "70984387"
 
     此 POST API 需要以下设置：
 
-    |类型|设置|ReplTest1|
+    |Type|设置|Value|
     |--|--|--|
-    |Header|`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
-    |Header|`Ocp-Apim-Subscription-Key`|创作密钥。|
-    |Header|`Content-type`|`application/json`|
+    |标头|`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
+    |标头|`Ocp-Apim-Subscription-Key`|创作密钥。|
+    |标头|`Content-type`|`application/json`|
     |Querystring|`appid`|LUIS 应用 ID。 
     |Body||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
 

@@ -1,23 +1,19 @@
 ---
 title: 使用 Application Insights Profiler 探查 Azure 中的生产应用程序 | Microsoft Docs
 description: 使用一个精简的探查器识别 Web 服务器代码中的热路径。
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: debc30a368a0f9ef7be9b0cda0b1238f8e2bc2e3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: fc152aab6d0e62ac5656b50834ce17278bb6676e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338074"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820519"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>使用 Application Insights 探查 Azure 中的生产应用程序
 ## <a name="enable-application-insights-profiler-for-your-application"></a>对应用程序启用 Application Insights Profiler
@@ -30,7 +26,7 @@ Profiler 适用于以下 Azure 服务中部署的 .NET 应用程序。 下面提
 * [Azure 云服务](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure 虚拟机和虚拟机规模集](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
-* [**预览** ASP.NET Core Azure Linux Web 应用](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
+* [**预览**ASP.NET Core Azure Linux Web 应用](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
 
 如果已启用 Profiler 但未看到跟踪，请查看[故障排除指南](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json)。
 
@@ -97,7 +93,7 @@ BLOCKED_TIME 指示代码正在等待另一个资源变为可用。 例如，它
 
 ### <a name="unmanaged-async"></a>非托管异步
 
-.NET Framework 发出 ETW 事件并在线程之间传递活动 ID，以便可以跨线程跟踪异步调用。 非托管代码（本机代码）和一些较旧样式的异步代码缺少这些事件和活动 ID，因此探查器无法分辨线程上运行的线程和函数。 这在调用堆栈中标记为“非托管异步”。 如果下载 ETW 文件，则可以使用 [PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) 更深入地了解正在发生的情况。
+.NET framework 发出 ETW 事件，并在线程之间传递活动 id，以便可以跨线程跟踪异步调用。 非托管代码（本机代码）和一些较旧的异步代码样式缺少这些事件和活动 id，因此探查器无法判断线程上正在运行的线程和函数。 这在调用堆栈中标记为 "非托管异步"。 如果下载 ETW 文件，则可以使用[PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md)来更深入地了解所发生的情况。
 
 ### <a id="cpu"></a>CPU 时间
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 448d416ce4915aeae048639f6021197ed8c1d334
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: b6dffb46d8c0fd7201079de3e8509ece516d2f8f
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967875"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821395"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure 导入/导出系统要求
 
@@ -24,14 +24,14 @@ ms.locfileid: "68967875"
 为了使用 WAImportExport 工具准备硬盘驱动器，以下**支持 BitLocker 驱动器加密的 64 位操作系统**受支持。
 
 
-|平台 |Version |
+|平台 |版本 |
 |---------|---------|
 |Windows     | Windows 7 企业版、Windows 7 旗舰版 <br> Windows 8 专业版、Windows 8 企业版、Windows 8.1 专业版、Windows 8.1 企业版 <br> Windows 10        |
 |Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012、Windows Server 2012 R2         |
 
 ## <a name="other-required-software-for-windows-client"></a>Windows 客户端所需的其他软件
 
-|平台 |Version |
+|平台 |版本 |
 |---------|---------|
 |.NET Framework    | 4.5.1       |
 | BitLocker        |  _          |
@@ -41,7 +41,7 @@ ms.locfileid: "68967875"
 
 Azure 导入/导出服务支持以下类型的存储帐户：
 
-- 标准常规用途 v2 存储帐户（建议用于大多数方案）
+- 标准常规用途 v2 存储帐户（对于大多数方案，建议使用）
 - Blob 存储帐户
 - 常规用途 v1 存储帐户（经典部署或 Azure 资源管理器部署） 
 
@@ -57,7 +57,7 @@ Azure 导入/导出服务支持以下类型的存储帐户：
 下面列出的存储类型都受 Azure 导入/导出服务支持。
 
 
-|作业  |存储服务 |支持  |不支持  |
+|作业  |存储服务 |受支持  |不支持  |
 |---------|---------|---------|---------|
 |导入     |  Azure Blob 存储 <br><br> Azure 文件存储       | 支持块 Blob 和页 Blob <br><br> 支持文件          |
 |导出     |   Azure Blob 存储       | 支持块 Blob、页 Blob 和追加 Blob         | 不支持 Azure 文件
@@ -72,12 +72,12 @@ Azure 导入/导出服务支持以下类型的存储帐户：
 下面列出的存储类型均受支持，可与 Azure 导入/导出服务配合使用。
 
 
-|磁盘类型  |Size  |支持 |
+|磁盘类型  |大小  |受支持 |
 |---------|---------|---------|
 |SSD    |   2.5"      |SATA III          | 
 |HDD     |  2.5"<br>3.5"       |SATA II、SATA III         |
 
-不支持以下磁盘类型:
+不支持以下磁盘类型：
 - USBs.
 - 带有内置 USB 适配器的外部 HDD。
 - 外部 HDD 的大小写中的磁盘。
@@ -95,5 +95,5 @@ Azure 导入/导出服务支持以下类型的存储帐户：
 
 * [设置 WAImportExport 工具](storage-import-export-tool-how-to.md)
 * [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)
-* [Azure 导入/导出 REST API 示例](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
+* [Azure 导入/导出 REST API 示例](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)
 

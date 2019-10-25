@@ -1,29 +1,24 @@
 ---
 title: Application Insights 中的智能检测 - 失败异常 | Microsoft 文档
 description: 将针对到 Web 应用的失败请求速率的异常变化向用户发出警报，并提供诊断分析。 无需进行配置。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 12/18/2018
 ms.reviewer: yossiy
-ms.author: mbullwin
-ms.openlocfilehash: 46944603fdf45a2a7a14641086959bf61b3f773e
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: f8b8318a16b36593d2fbaf08bcbc19156dc96006
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465884"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820590"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智能检测 - 失败异常
 如果 Web 应用的失败请求速率出现异常上升，[Application Insights](../../azure-monitor/app/app-insights-overview.md) 会几乎实时地自动通知你。 它会对 HTTP 请求速率或报告为失败的依赖项调用的异常上升进行检测。 对于请求而言，失败的请求通常是响应代码为 400 或更高的请求。 为了帮助会审和诊断问题，通知中会提供失败及相关遥测的特征分析。 还提供指向 Application Insights 门户的链接，以供进一步诊断。 该功能不需要任何设置或配置，因为它使用机器学习算法来预测正常的失败率。
 
-此功能适用于任何托管的 web 应用，在云中或自己的服务器上的生成请求或依赖项遥测-例如，如果必须调用的辅助角色[trackrequest （)](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)或[TrackDependency()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency).
+此功能适用于托管在云中或你自己的服务器上的任何生成请求或依赖项遥测的 web 应用，例如，如果你有一个调用[TrackRequest （）](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)或[TrackDependency （）](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)的辅助角色。
 
 在设置[适用于项目的 Application Insights](../../azure-monitor/app/app-insights-overview.md) 后，如果应用生成特定最低遥测量，在进行切换和发送警报前，智能检测失败异常将花费 24 小时来了解应用的正常行为。
 
@@ -44,30 +39,30 @@ ms.locfileid: "67465884"
 * 似乎与特征失败相关联的异常、日志跟踪和依赖项失败（数据库或其他外部组件）。
 * 直接指向 Application Insights 中遥测的相关搜索的链接。
 
-## <a name="failure-anomalies-v2"></a>失败异常 v2
-现已可用失败异常警报规则的新版本。 这一新版本在新的 Azure 警报平台上运行，并覆盖现有版本引入了多种改进。
+## <a name="failure-anomalies-v2"></a>故障异常 v2
+现在提供了一个新版本的故障异常警报规则。 此新版本运行在新的 Azure 警报平台上，并对现有版本进行了多种改进。
 
-### <a name="whats-new-in-this-version"></a>什么是此版本中的新增功能？
-- 更快的检测问题
-- 更加丰富的操作-创建警报规则带有关联[操作组](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)名为"Application Insights 智能检测"，其中包含电子邮件和 webhook 操作，并可进行扩展以触发其他操作时的警报激发。
-- 更有针对性地通知-此警报规则从发送电子邮件通知现在默认情况下发送到与订阅的监视查阅者和监视参与者角色关联的用户。 提供了对此的详细信息[此处](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification)。
-- 通过 ARM 模板-请参阅示例配置更容易[此处](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)。
-- 常见警报架构支持的通知发送的此警报规则按照[常见警报架构](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)。
-- 统一的电子邮件模板的电子邮件通知此警报规则具有一致的外观和感觉与其他警报类型。 进行此更改后，若要获取使用详细的诊断信息的失败异常警报的选项不再可用。
+### <a name="whats-new-in-this-version"></a>此版本中的新增功能
+- 更快检测问题
+- 一组更丰富的操作-将使用名为 "Application Insights 智能检测" 的关联[操作组](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)创建警报规则，其中包含电子邮件和 webhook 操作，并且可以扩展以在警报触发时触发其他操作。
+- 更集中的通知-默认情况下，从此警报规则发送的电子邮件通知将发送到与订阅的监视读取器和监视参与者角色关联的用户。 [此处](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification)提供了有关此功能的详细信息。
+- 通过 ARM 模板进行配置更简单-请参阅[此处](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)的示例。
+- 常见的警报架构支持-从此警报规则发送的通知遵循[常见的警报架构](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)。
+- 统一电子邮件模板-从此警报规则发送的电子邮件通知对于其他警报类型具有一致的外观 &。 进行此更改后，将不再提供使用详细诊断信息获取故障异常警报的选项。
 
-### <a name="how-do-i-get-the-new-version"></a>如何获取新版本？
-- 失败异常警报规则的新版本现在预配新创建的 Application Insights 资源。
-- 现有的 Application Insights 资源使用经典版本的失败异常警报规则将获取最新版本一次其托管的订阅作为的一部分迁移到新的警报平台[经典警报停用过程](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement).
+### <a name="how-do-i-get-the-new-version"></a>如何实现获取新版本吗？
+- 新创建的 Application Insights 资源现在预配了新版本的故障异常警报规则。
+- 在[经典警报停用过程](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)中，如果现有 Application Insights 资源具有经典版本的故障异常警报规则，则在将其托管订阅迁移到新的警报平台后，将获取新版本。
 
 > [!NOTE]
-> 失败异常警报规则的新版本仍然可以免费使用。 此外，电子邮件和 webhook 触发操作由关联"Application Insights 智能检测"操作组也是免费。
+> 新版本的故障异常警报规则仍可用。 此外，由关联的 "Application Insights 智能检测" 操作组触发的电子邮件和 webhook 操作也是免费的。
 > 
 > 
 
 ## <a name="benefits-of-smart-detection"></a>智能检测的优点
 普通[指标警报](../../azure-monitor/app/alerts.md)会通知你可能存在问题。 但是，智能检测将开始诊断工作，并执行以往都需要你自行进行的大量分析。 结果将整齐地打包，以帮助你快速找到问题的根源。
 
-## <a name="how-it-works"></a>工作原理
+## <a name="how-it-works"></a>如何运作
 智能检测监视从应用收到的遥测数据，特别是失败率。 此规则计算 `Successful request` 属性为 False 的请求数，和 `Successful call` 属性为 False 的依赖项调用数。 对于请求而言，默认情况下，`Successful request == (resultCode < 400)`（除非已将自定义代码写入[筛选器](../../azure-monitor/app/api-filtering-sampling.md#filtering)或生成自己的 [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) 调用）。 
 
 应用性能具有典型的行为模式。 某些请求或依赖项调用更容易出现失败，而且总体失败率可能会随着负载的增加而上升。 智能检测使用机器学习来查找这些异常。
@@ -119,13 +114,13 @@ ms.locfileid: "67465884"
 
 若要进一步调查，每个部分中的链接可直接转到[搜索页](../../azure-monitor/app/diagnostic-search.md)，该页面已针对相关请求、异常、依赖项或跟踪进行筛选。 或者，可以打开 [Azure 门户](https://portal.azure.com)，导航到应用的 Application Insights 资源并打开“失败”边栏选项卡。
 
-在此示例中，单击“查看依赖项失败详细信息”链接将打开 Application Insights 搜索边栏选项卡。 它显示具有根本原因示例的 SQL 语句：在必填字段中提供了 NULL，并且在保存操作期间未通过验证。
+在此示例中，单击“查看依赖项失败详细信息”链接将打开 Application Insights 搜索边栏选项卡。 它显示包含根本原因的示例的 SQL 语句：在必填字段提供 NULL，并且在保存操作期间未通过验证。
 
 ![诊断搜索](./media/proactive-failure-diagnostics/051.png)
 
 ## <a name="review-recent-alerts"></a>查看最近的警报
 
-单击“智能检测”  以转到最近警报：
+单击“智能检测”以转到最近警报：
 
 ![警报摘要](./media/proactive-failure-diagnostics/070.png)
 
@@ -149,9 +144,9 @@ ms.locfileid: "67465884"
 
 * 我们尝试针对应用中断或降级发出警报，但只有可以完全了解语义以及对应用或用户的影响。
 
-所以你们会查看我的数据？ 
+所以你们会查看我的数据？
 
-* 否。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](../../azure-monitor/app/data-retention-privacy.md)数据。
+* 不。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](../../azure-monitor/app/data-retention-privacy.md)数据。
 
 *是否需要订阅此警报？*
 

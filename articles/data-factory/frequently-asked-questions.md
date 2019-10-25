@@ -5,18 +5,16 @@ services: data-factory
 documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
-ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ee57d943016c2d166f3c8469b403b56b1009385c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 764a4dd31125dad20f6ef23e3628d7710dba2b85
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387066"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880143"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 本文提供有关 Azure 数据工厂的常见问题解答。  
@@ -180,32 +178,19 @@ Azure 数据工厂可视化工具可实现迭代开发和调试。 您可以通�
 
 ## <a name="mapping-data-flows"></a>映射数据流
 
-### <a name="which-data-factory-version-do-i-use-to-create-data-flows"></a>我要使用哪些数据工厂版本来创建数据流？
-使用数据工厂 V2 版本创建数据流。
-  
-### <a name="i-was-a-previous-private-preview-customer-who-used-data-flows-and-i-used-the-data-factory-v2-preview-version-for-data-flows"></a>我是以前使用数据流的个人预览版客户，并使用数据工厂 V2 预览版本进行数据流。
-此版本现已过时。 使用数据工厂 V2 进行数据流。
-  
-### <a name="what-has-changed-from-private-preview-to-limited-public-preview-in-regard-to-data-flows"></a>对于数据流，从个人预览版变为有限公共预览的内容是什么？
-你将不再需要自带 Azure Databricks 的群集。 数据工厂将管理群集创建和拆卸。 Blob 数据集和 Azure Data Lake Storage Gen2 数据集分为分隔文本和 Apache Parquet 数据集。 你仍可以使用 Data Lake Storage Gen2 和 Blob 存储来存储这些文件。 为这些存储引擎使用适当的链接服务。
-
-### <a name="can-i-migrate-my-private-preview-factories-to-data-factory-v2"></a>是否可以将我的专用预览工厂迁移到数据工厂 V2？
-
-可以。 [按照说明进行操作](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration)。
-
 ### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-info-do-i-need-to-provide-to-get-help"></a>我需要帮助排查我的数据流逻辑问题。 若要获取帮助，需要提供哪些信息？
 
-当 Microsoft 为数据流提供帮助或故障排除时，请提供 DSL 代码计划。 为此，请执行以下步骤：
+当 Microsoft 为数据流提供帮助或故障排除时，请提供数据流脚本。 这是来自数据流图形的代码隐藏脚本。 在 ADF UI 中，打开数据流，然后单击右上角的 "脚本" 按钮。 复制并粘贴此脚本或将其保存在文本文件中。
 
-1. 在数据流设计器中，选择右上角的 "**代码**"。 这会显示数据流的可编辑 JSON 代码。
-2. 从 "代码" 视图的右上角选择 "**计划**"。 此切换将从 JSON 切换为只读格式的 DSL 脚本计划。
-3. 复制并粘贴此脚本或将其保存在文本文件中。
-
-### <a name="how-do-i-access-data-by-using-the-other-80-dataset-types-in-data-factory"></a>使用数据工厂中的其他80数据集类型如何实现访问数据？
+### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>使用数据工厂中的其他90数据集类型如何实现访问数据？
 
 映射数据流功能目前允许 Azure SQL 数据库、Azure SQL 数据仓库、来自 Azure Blob 存储或 Azure Data Lake Storage Gen2 的带分隔符的文本文件，以及从 Blob 存储或本机 Data Lake Storage Gen2 的 Parquet 文件用于源和接收器。 
 
 使用复制活动可从任何其他连接器暂存数据，然后执行数据流活动，在暂存数据后对其进行转换。 例如，管道将首先复制到 Blob 存储，然后数据流活动将使用源中的数据集来转换该数据。
+
+### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>是否可用于数据流的自承载集成运行时？
+
+自承载 IR 是一种 ADF 管道构造，可与复制活动一起使用，以便在本地或基于 VM 的数据源和接收器之间获取或移动数据。 首先使用副本来暂存数据，然后使用数据流进行转换，然后将转换后的数据移回本地存储。
 
 ## <a name="next-steps"></a>后续步骤
 有关创建数据工厂的分步说明，请参阅以下教程：

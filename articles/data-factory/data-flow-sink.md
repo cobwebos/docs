@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 124b52d920ef36b373eef895187727499068f3eb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: da8dc332794cadc0eb6677390c566e67a6df6f3f
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72596523"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882448"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>数据流的接收器转换
 
@@ -53,8 +53,8 @@ ms.locfileid: "72596523"
 
 选择**清除该文件夹**以截断接收器文件夹的内容，然后再在该目标文件夹中写入目标文件。
 
-## <a name="rule-based-mapping"></a>基于规则的映射
-当关闭自动映射时，可以选择添加基于列的映射（固定映射）或基于规则的映射。 基于规则的映射将允许你编写具有模式匹配的表达式。 
+## <a name="fixed-mapping-vs-rule-based-mapping"></a>固定映射与基于规则的映射
+关闭自动映射时，可以选择添加基于列的映射（固定映射）或基于规则的映射。 利用基于规则的映射，你可以编写具有模式匹配的表达式，而固定映射将映射逻辑列名和物理列名。
 
 ![基于规则的映射](media/data-flow/rules4.png "基于规则的映射")
 
@@ -65,6 +65,12 @@ ms.locfileid: "72596523"
 通过展开行并在 "名称匹配：" 旁边输入正则表达式，还可以输入正则表达式模式。
 
 ![Regex 映射](media/data-flow/scdt1g4.png "Regex 映射")
+
+基于规则的映射的一个非常基本的常见示例与固定映射，这是你希望将所有传入字段映射到目标中的相同名称的情况。 对于固定映射，你将列出表中的每个单独的列。 对于基于规则的映射，你可以使用一个规则，将使用 ```true()``` 的所有字段映射到 ```$$```所表示的相同传入字段名称。
+
+### <a name="sink-association-with-dataset"></a>接收器与 dataset 的关联
+
+你为接收器选择的数据集可能包含也可能不具有在数据集定义中定义的架构。 如果没有已定义的架构，则必须允许架构偏移。 定义固定映射后，将在接收器转换中保留逻辑到物理名称映射。 如果更改数据集的架构定义，则可能会中断接收器映射。 若要避免这种情况，请使用基于规则的映射。 基于规则的映射是通用化的，这意味着数据集上的架构更改不会中断映射。
 
 ## <a name="file-name-options"></a>文件名选项
 

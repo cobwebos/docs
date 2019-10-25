@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89b52f356b112cff51105ed44c79788ee4542c6e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ac59dbed0ba2766f3367e19c5fddeed52e250a5b
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430522"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880155"
 ---
 # <a name="passwordless-authentication-options"></a>无密码身份验证选项
 
@@ -76,6 +76,7 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 | HID | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
 | Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
 | eWBM | [https://www.ewbm.com/page/sub1_5](https://www.ewbm.com/page/sub1_5) |
+| AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
 
 如果你是供应商，并且想要在此列表中获取设备，请联系[Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com)。
 

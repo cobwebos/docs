@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bfb66789df3236c096ea00bcc83ddc435e87f047
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 4dffa7dcafe4aabe3e8dcb56d4f5084d0c6ef821
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097649"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819661"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure 应用服务本地缓存概述
 
@@ -34,7 +34,7 @@ Azure 应用服务内容存储在 Azure 存储中，作为内容共享持续提�
 * 内容跨应用的多个虚拟机 (VM) 实例共享。
 * 内容是持久性的，运行应用即可对其进行修改。
 * 在同一共享内容文件夹下提供日志文件和诊断数据文件。
-* 发布新内容会直接更新内容文件夹。 可以通过 SCM 网站和运行的应用即时查看相同的内容（通常情况下，在文件发生更改时，可以通过 ASP.NET 之类的特定技术重启应用，以获取最新内容）。
+* 发布新内容会直接更新内容文件夹。 可以通过 SCM 网站和正在运行的应用立即查看相同的内容（通常，某些技术（如 ASP.NET）会在某些文件更改时启动应用重启以获取最新内容）。
 
 虽然许多应用使用所有此类功能或其中一项功能，但某些应用只需要高性能的只读内容存储，此类存储可用性高且支持这些应用的运行。 这些应用可以充分利用特定本地缓存的 VM 实例。
 
@@ -93,7 +93,7 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>更改本地缓存中的大小设置
-本地缓存大小默认为 **300 MB**， 其中包括从内容存储复制过来的 /site 和 /siteextensions 文件夹，以及任何本地创建的日志和数据文件夹。 若要增加此限制，请使用应用设置 `WEBSITE_LOCAL_CACHE_SIZEINMB`。 最高可将此大小增加到每个应用 **2 GB** (2000 MB)。
+默认情况下，本地缓存大小为**1 GB**。 其中包括从内容存储复制过来的 /site 和 /siteextensions 文件夹，以及任何本地创建的日志和数据文件夹。 若要增加此限制，请使用应用设置 `WEBSITE_LOCAL_CACHE_SIZEINMB`。 最高可将此大小增加到每个应用 **2 GB** (2000 MB)。
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>使用应用服务本地缓存的最佳实践
 建议将本地缓存与[过渡环境](../app-service/deploy-staging-slots.md)功能结合在一起使用。
@@ -104,7 +104,8 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 * 准备就绪以后，在过渡槽和生产槽之间执行[交换操作](../app-service/deploy-staging-slots.md#Swap)。  
 * 粘性设置包含名称，会粘到某个槽上。 因此，将“过渡”槽交换成“生产”槽以后，该槽会继承本地缓存应用设置。 新交换的“生产”槽会在几分钟后以本地缓存为基础运行，并会在交换后进行槽预热的过程中预热。 因此，在槽交换完成后，“生产”槽会在本地缓存的基础上运行。
 
-## <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
+## <a name="frequently-asked-questions-faq"></a>常见问题解答 (FAQ)
+
 ### <a name="how-can-i-tell-if-local-cache-applies-to-my-app"></a>如何确定本地缓存是否适用于应用？
 如果应用需要高性能且可靠的内容存储，在运行时不使用内容存储来写入关键数据，并且总大小不到 2 GB，则可确定本地缓存适用于应用。 可通过站点扩展“Azure Web 应用磁盘使用情况”获取 /site 和 /siteextensions 文件夹的总大小。
 

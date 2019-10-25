@@ -14,16 +14,20 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: c053e4dfc38fc0f055ec91a6622ef7f767c13a86
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: c319b3e53f550e56fbf4f655cb9cfa43326f9c72
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "69015322"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882426"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>使用 Azure 媒体分析检测动作
+
+> [!IMPORTANT]
+> 查看一些媒体处理器的[停用计划](media-services-analytics-overview.md#retirement-plans)。
+
 ## <a name="overview"></a>概述
-借助“Azure Media Motion Detector”媒体处理器 (MP)，用户可在冗长且平淡的视频中有效识别出感兴趣的部分。 可以对静态相机数据片段使用动作检测，以识别视频中有动作的部分。 它会生成 JSON 文件，其中包含带时间戳的元数据，以及发生事件的边界区域。
+借助 **Azure Media Motion Detector** 媒体处理器 (MP)，用户可在冗长且平淡的视频中有效识别出感兴趣的部分。 可以对静态相机数据片段使用动作检测，以识别视频中有动作的部分。 它会生成 JSON 文件，其中包含带时间戳的元数据，以及发生事件的边界区域。
 
 此技术面向安全视频提要，它可以将动作分类为相关事件和误报（例如阴影或光源变化）。 这样，便可以在不会被发送无止境的不相关事件的情况下，从相机源生成安全警报，同时能够从长时间的监控视频中提取感兴趣的片段。
 
@@ -37,15 +41,15 @@ ms.locfileid: "69015322"
 ## <a name="task-configuration-preset"></a>任务配置（预设）
 在使用 **Azure Media Motion Detector**创建任务时，必须指定配置预设。 
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 可以使用以下参数：
 
 | 名称 | 选项 | 描述 | 默认 |
 | --- | --- | --- | --- |
-| sensitivityLevel |String：'low'、'medium'、'high' |设置报告动作情况的敏感度级别。 调整此项是为了调整误报数量。 |'medium' |
-| frameSamplingValue |正整数 |设置算法的运行频率。 1 等于每个帧，2 是指每 2 个帧，如此类推。 |1 |
-| detectLightChange |Boolean：'true'、'false' |设置是否在结果中报告轻微的更改 |'False' |
-| mergeTimeThreshold |Xs-time：Hh:mm:ss<br/>例如：00:00:03 |指定动作事件之间的时间窗口，其中的 2 个事件将组合成 1 个事件进行报告。 |00:00:00 |
+| sensitivityLevel |字符串：'low'、'medium'、'high' |设置报告动作情况的敏感度级别。 调整此项是为了调整误报数量。 |'medium' |
+| frameSamplingValue |正整数 |设置算法的运行频率。 1 等于每个帧，2 是指每 2 个帧，如此类推。 |第 |
+| detectLightChange |布尔值：'true'、'false' |设置是否在结果中报告轻微的更改 |'False' |
+| mergeTimeThreshold |Xs-time: Hh:mm:ss<br/>示例：00:00:03 |指定动作事件之间的时间窗口，其中的 2 个事件将组合成 1 个事件进行报告。 |00:00:00 |
 | detectionZones |检测区域的一个数组：<br/>- 检测区域是一个包含 3 个或 3 个以上点的数组<br/>- 点是从 0 到 1 的 x 和 y 坐标。 |描述要使用的多边形检测区域列表。<br/>报告结果时还将报告以 ID 表示的区域，其中第一个是 ‘id’:0 |单个区域，涵盖整个帧。 |
 
 ### <a name="json-example"></a>JSON 示例
@@ -85,7 +89,7 @@ ms.locfileid: "69015322"
 
 一旦固定背景视频（例如监控视频）中出现运动对象，动作检测器 API 将提供指示器。 动作检测器经过训练可减少误报（例如光源和阴影变化）。 当前算法限制包括夜视视频、半透明对象和小对象。
 
-### <a id="output_elements"></a>输出 JSON 文件中的元素
+### <a id="output_elements"></a>输出 JSON 文件的元素
 > [!NOTE]
 > 在最新版本中，输出 JSON 格式已更改，对某些客户来说可以说是重大更改。
 > 
@@ -95,21 +99,21 @@ ms.locfileid: "69015322"
 
 | 元素 | 描述 |
 | --- | --- |
-| version |这是指视频 API 的版本。 当前版本为 2。 |
+| 版本 |这是指视频 API 的版本。 当前版本为 2。 |
 | 时间刻度 |视频每秒的“刻度”数。 |
 | offset |时间戳的时间偏移量（以“刻度”为单位）。 在版本 1.0 的视频 API 中，此属性始终为 0。 在我们将来支持的方案中，此值可能会更改。 |
 | 帧速率 |视频的每秒帧数。 |
 | 宽度、高度 |表示视频的宽度和高度（以像素为单位）。 |
-| 开始 |开始时间戳（以“刻度”为单位）。 |
-| 持续时间 |事件的长度（以“刻度”为单位）。 |
-| 间隔 |事件中每个条目的间隔（以“刻度”为单位）。 |
-| 事件 |每个事件片段包含在该持续时间内检测到的动作。 |
+| start |开始时间戳（以“刻度”为单位）。 |
+| duration |事件的长度（以“刻度”为单位）。 |
+| interval |事件中每个条目的间隔（以“刻度”为单位）。 |
+| 活动 |每个事件片段包含在该持续时间内检测到的动作。 |
 | type |在当前版本中，对于一般动作，该属性始终为“2”。 此标签可让视频 API 在将来的版本中灵活地为动作分类。 |
 | regionId |如上所述，在此版本中此属性始终为 0。 此标签可让视频 API 在将来的版本中灵活地查找各区域中的动作。 |
-| regions |表示你关注的动作在视频中的区域。 <br/><br/>-“id”表示区域面积 - 且在此版本中只有一个，ID 0。 <br/>-“type”代表你关注其动作的区域的形状。 目前支持“rectangle”和“polygon”。<br/> 如果指定了 "rectangle"，则区域具有以 X、Y、宽度及高度表示的维。 X 和 Y 坐标表示规范化 0.0 到 1.0 比例中的区域的左上角 XY 坐标。 宽度和高度表示规范化 0.0 到 1.0 比例中的区域的大小。 在当前版本中，X、Y、宽度和高度始终固定为 0、0、1、1。 <br/>如果指定了“polygon”，则区域的维度以点来表示。 <br/> |
+| 区域 |表示你关注的动作在视频中的区域。 <br/><br/>-“id”表示区域面积 - 且在此版本中只有一个，ID 0。 <br/>#NAME? 目前支持“rectangle”和“polygon”。<br/> 如果指定了 "rectangle"，则区域具有以 X、Y、宽度及高度表示的维。 X 和 Y 坐标表示规范化 0.0 到 1.0 比例中的区域的左上角 XY 坐标。 宽度和高度表示规范化 0.0 到 1.0 比例中的区域的大小。 在当前版本中，X、Y、宽度和高度始终固定为 0、0、1、1。 <br/>如果指定了“polygon”，则区域的维度以点来表示。 <br/> |
 | 片段 |元数据划分成称为“片段”的不同段。 每个片段包含开始时间、持续时间、间隔数字和事件。 没有事件的片段表示在该开始时间和持续时间内没有检测到任何动作。 |
 | 方括号 [] |每个括号表示事件中的单个间隔。 如果该间隔显示空括号，则表示没有检测到动作。 |
-| locations |事件下的此新项列出发生动作的位置。 这比检测区域更具体。 |
+| 位置 |事件下的此新项列出发生动作的位置。 这比检测区域更具体。 |
 
 以下 JSON 示例显示输出：
 

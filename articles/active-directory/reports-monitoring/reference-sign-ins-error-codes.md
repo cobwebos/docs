@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 门户中的登录活动报告错误代码 | Microsoft Docs
+title: Azure Active Directory 门户中的错误代码 |Microsoft Docs
 description: 登录活动报告错误代码参考。
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b5aedd5c9bde7689df14c7efdf8d58692680c13
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 931f2fbe5798966c41378d9b401dcd59cafc5cca
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383177"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820874"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>登录活动报告错误代码 
 
@@ -44,7 +44,7 @@ ms.locfileid: "70383177"
 
 ![登录活动](./media/reference-sign-ins-error-codes/06.png "登录活动")
 
-从筛选的列表中选择某个项会打开“活动详细信息: 登录”边栏选项卡。 此视图提供有关失败的登录事件的其他信息，包括 **登录错误代码** 和 **失败原因**。
+在筛选的列表中选择某个项会打开“活动详细信息: 登录”边栏选项卡。 此视图提供有关失败的登录事件的其他信息，包括**登录错误代码**和**失败原因**。
 
 ![登录活动](./media/reference-sign-ins-error-codes/05.png "登录活动")
 
@@ -53,7 +53,7 @@ ms.locfileid: "70383177"
 ## <a name="error-codes"></a>错误代码
 
 
-|Error|描述|
+|错误|描述|
 |---|---|
 |16000|这是内部实现详细信息，而不是错误条件。 可以放心地忽略此引用。|
 |20001|联合标识提供者出现问题。 请联系 IDP 解决此问题。|
@@ -66,7 +66,7 @@ ms.locfileid: "70383177"
 |50001|在此租户中找不到服务主体名称。 如果在应用程序尚未由租户管理员安装，或者资源主体在目录中找不到或无效，则可能会发生这种情况。|
 |50002|由于租户中的代理访问权限受限，登录失败。 如果这是你自己的租户策略，可以更改受限的租户设置来解决此问题。|
 |50003|由于缺少签名密钥或证书，登录失败。 这可能是因为应用程序中未配置任何签名密钥。 请查看 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured) 中所述的解决方法。 如果问题持续出现，请联系应用程序所有者或应用程序管理员。|
-|50005|用户尝试从条件访问策略目前不支持的平台登录到设备。|
+|50005|用户尝试从当前不受条件访问策略支持的平台登录到设备。|
 |50006| 由于签名无效，签名验证失败。 请查看 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery) 中所述的解决方法。 如果问题持续出现，请联系应用程序所有者或应用程序管理员。|
 |50007|找不到此应用程序的合作伙伴加密证书。 请向 Microsoft [开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)以解决此问题。|
 |50008|SAML 断言在令牌中缺失或配置错误。 请联系联合提供者。|
@@ -79,7 +79,7 @@ ms.locfileid: "70383177"
 |50027|以下原因导致 JWT 令牌无效：<ul><li>不包含 nonce 声明和子声明</li><li>使用者标识符不匹配</li><li>idToken 声明中存在重复声明</li><li>意外的颁发者</li><li>意外的受众</li><li>不在有效的时间范围内 </li><li>令牌格式不正确</li><li>颁发者的外部 ID 令牌未通过签名验证。</li></ul>请联系应用程序所有者|
 |50029|URI 无效 - 域名包含无效字符。 请联系租户管理员。|
 |50034|用户在目录中不存在。 请联系租户管理员。|
-|50042|主体中缺少生成成对标识符所需的盐。 请联系租户管理员。|
+|50042|缺少生成成对标识符所需的 salt。 请联系租户管理员。|
 |50048|使用者与客户端断言中的颁发者声明不匹配。 请联系租户管理员。|
 |50050|请求格式不正确。 请联系应用程序所有者。|
 |50053|帐户已锁定，因为用户尝试使用不正确的用户 ID 或密码登录的次数过多。|
@@ -130,14 +130,14 @@ ms.locfileid: "70383177"
 |50201|当应向用户提供其他信息时，会在登录过程中向用户显示此消息提示中断。|
 |51001|本地安全标识符中不存在域提示 - 本地 UPN。|
 |51004|用户帐户在目录中不存在。|
-|51006|需要 Windows 集成身份验证。 用户已通过声明使用丢失的会话令牌登录。 请求用户重新登录。|
+|51006|需要 Windows 集成身份验证。 用户使用通过声明缺少的会话令牌登录。 请求用户重新登录。|
 |52004|用户尚未许可 LinkedIn 资源的访问权限。 |
 |53000|条件访问策略需要符合的设备，该设备不符合。 让用户使用已批准的 MDM 提供程序（例如 Intune）注册其设备。|
 |53001|条件访问策略需要已加入域的设备，而该设备未加入域。 让用户使用已加入域的设备。|
-|53002|使用的应用程序不是支持条件访问的获批准应用程序。 用户需使用可用的获批准应用程序列表中的某个应用才能获取访问权限。|
-|53003|访问因条件访问策略而被阻止。|
+|53002|使用的应用程序不是用于条件性访问的已批准的应用程序。 用户需使用可用的获批准应用程序列表中的某个应用才能获取访问权限。|
+|53003|由于条件访问策略，访问被阻止。|
 |53004|在访问此内容之前，用户需要完成多重身份验证注册过程。 用户应注册多重身份验证。|
-|65001|应用程序 X 无权访问应用程序 Y，或者权限已被吊销。 或者，用户或管理员尚未同意将应用程序与 ID X 配合使用。请发送针对该用户和资源的交互式授权请求。 或者，用户或管理员尚未同意将应用程序与 ID X 配合使用。请代表应用 Y向租户管理员发送针对资源 Z的授权请求。|
+|65001|应用程序 X 无权访问应用程序 Y，或者权限已被吊销。 或者，用户或管理员尚未同意将应用程序与 ID X 配合使用。请发送针对该用户和资源的交互式授权请求。 或者，用户或管理员尚未同意将应用程序与 ID X 配合使用。请代表应用 Y 向租户管理员发送针对资源 Z 的授权请求。|
 |65004|用户拒绝许可该应用的访问权限。 让用户重试登录并许可应用|
 |65005|应用程序所需的资源访问列表不包含可以通过资源来发现的应用程序，或者客户端应用程序请求访问的资源未在其必需的资源访问列表中指定，或者 Graph 服务返回了错误的请求，或者资源找不到。 如果应用程序支持 SAML，则原因可能是使用错误的标识符（实体）配置了应用程序。 使用以下链接，尝试针对 SAML 列出的解决方法：[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)|
 |70000|以下原因导致授权无效：<ul><li>请求的 SAML 2.0 断言包含无效的使用者确认方法</li><li>V2 不支持应用 OnBehalfOf 流</li><li>未使用会话密钥为主要刷新令牌签名</li><li>外部刷新令牌无效</li><li>获取了其他租户的访问权限授权。</li></ul>|
@@ -162,7 +162,7 @@ ms.locfileid: "70383177"
 |75011|用户在服务中用于身份验证的身份验证方法与请求的身份验证方法不匹配。 请联系应用程序所有者。|
 |75016|SAML2 身份验证请求包含无效的 NameIdPolicy。 请联系应用程序所有者。|
 |80001|身份验证代理无法连接到 Active Directory。 请务必在可为用户登录请求提供服务的 DC 建立直接连接的、已加入域的计算机上安装身份验证代理。|
-|80002|内部错误。 密码验证请求超时。我们无法将身份验证请求发送到内部混合标识服务。 请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)，获取有关该错误的更多详细信息。|
+|80002|内部错误。 密码验证请求超时。无法将身份验证请求发送到内部混合标识服务。 请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)，获取有关该错误的更多详细信息。|
 |80003|身份验证代理收到的响应无效。 尝试对本地 Active Directory 进行身份验证时发生未知错误。 请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)，获取有关该错误的更多详细信息。|
 |80005|身份验证代理：处理来自身份验证代理的响应时出现未知错误。 请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)，获取有关该错误的更多详细信息。|
 |80007|身份验证代理无法验证用户的密码。|
@@ -170,24 +170,24 @@ ms.locfileid: "70383177"
 |80011|身份验证代理无法检索加密密钥。|
 |80012|用户尝试在允许的小时（在 AD 中指定）以外登录。|
 |80013|由于运行身份验证代理的计算机与 AD 之间存在时间偏差，身份验证尝试无法完成。 解决时间同步问题|
-|80014|身份验证代理超时。[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)并提供错误代码、相关性 ID和日期时间，以获取有关此错误的更多详细信息。|
+|80014|身份验证代理超时。使用错误代码、相关 ID 和日期时间[打开支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)以获取有关此错误的更多详细信息。|
 |81001|用户的 Kerberos 票证太大。 如果用户处于过多的组中，从而使得 Kerberos 票证包含过多的组成员身份，则可能会出现此问题。 减少用户的组成员身份，然后重试。|
 |81005|身份验证包不受支持。|
 |81007|没有为租户启用无缝 SSO。|
 |81012|这不是错误条件。 它指示尝试登录到 Azure AD 的用户不同于已登录到设备的用户。 可以放心地忽略日志中的此代码。|
 |90010|出于各种原因，不支持该请求。 例如，该请求是使用不受支持的请求方法（仅支持 POST 方法）发出的，或者不支持请求的令牌签名算法。 请与应用程序开发人员联系。|
 |90014| 协议消息的必填字段缺失，请与应用程序所有者联系。 如果你是应用程序所有者，请确保具有登录请求所需的所有参数。 |
-|90051| 委派令牌无效。 指定的国家云 ID ({cloudId}) 无效。|
+|90051| 委托标记无效。 指定了无效的国家/地区 ID （{cloudId}）。|
 |90072| 该帐户需要先作为外部用户添加到租户中。 注销并使用其他 Azure AD 帐户重新登录。|
 |90094| 该授权需要管理员权限。 让租户管理员同意此应用程序。|
-|500021|租户受公司代理限制。 拒绝访问资源。|
-|500121| 在强身份验证请求期间身份验证失败。|
+|500021|租户受公司代理限制。 拒绝资源访问权限。|
+|500121| 在强身份验证请求期间，身份验证失败。|
 |500133| 断言不在其有效时间范围内。 确保访问令牌在用于用户断言或请求新令牌之前没有过期。|
 |530021|应用程序不符合条件访问已批准应用要求。|
 |530032|被安全策略阻止。| 
 |700016|在目录 "{tenantName}" 中找不到标识符为 "{appIdentifier}" 的应用程序。 如果应用程序尚未由租户管理员安装，或者尚未获得租户中的任何用户同意，则可能会发生这种情况。 你可能已将身份验证请求发送到错误的租户。|
 |900432|跨云请求不支持机密客户端。|
-|7000218|请求正文必须包含以下参数：“client_assertion”或“client_secret”。|
+|7000218|请求正文必须包含以下参数： "client_assertion" 或 "client_secret"。|
 
 
 ## <a name="next-steps"></a>后续步骤
