@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: c49200dba33d4a3b9ad1f582841adb04c2dd1c41
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7be0cfbe538d06da617049ac74cba60ff1b713e6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099568"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791706"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -34,14 +34,14 @@ ms.locfileid: "70099568"
 
 有两个选项可用来在 Azure 中设置 Pacemaker 群集。 可以使用隔离代理，它负责通过 Azure API 重新启动失败的节点；还可以使用 SBD 设备。
 
-SBD 设备至少需要一个额外的充当 iSCSI 目标服务器并提供 SBD 设备的虚拟机。 不过，也可以与其他 Pacemaker 群集共享这些 iSCSI 目标服务器。 使用 SBD 设备的优点是更快的故障转移时间, 并且如果使用的是本地 SBD 设备, 则不需要对 pacemaker 群集的运行方式进行任何更改。 最多可对一个 Pacemaker 群集使用三个 SBD 设备，以允许某个 SBD 设备不可用，例如，在修补 iSCSI 目标服务器的 OS 期间。 若要对每个 Pacemaker 使用多个 SBD 设备，请务必部署多个 iSCSI 目标服务器并从每个 iSCSI 目标服务器连接一个 SBD。 我们建议使用一个或三个 SBD 设备。 如果只配置两个 SBD 设备，而其中一个不可用，则 Pacemaker 无法自动隔离群集节点。 当一个 iSCSI 目标服务器关闭时，若要进行隔离，必须使用三个 SBD 设备，因此需要使用三个 iSCSI 目标服务器。
+SBD 设备至少需要一个额外的充当 iSCSI 目标服务器并提供 SBD 设备的虚拟机。 不过，也可以与其他 Pacemaker 群集共享这些 iSCSI 目标服务器。 使用 SBD 设备的优点是更快的故障转移时间，并且如果使用的是本地 SBD 设备，则不需要对 pacemaker 群集的运行方式进行任何更改。 最多可对一个 Pacemaker 群集使用三个 SBD 设备，以允许某个 SBD 设备不可用，例如，在修补 iSCSI 目标服务器的 OS 期间。 若要对每个 Pacemaker 使用多个 SBD 设备，请务必部署多个 iSCSI 目标服务器并从每个 iSCSI 目标服务器连接一个 SBD。 我们建议使用一个或三个 SBD 设备。 如果只配置两个 SBD 设备，而其中一个不可用，则 Pacemaker 无法自动隔离群集节点。 当一个 iSCSI 目标服务器关闭时，若要进行隔离，必须使用三个 SBD 设备，因此需要使用三个 iSCSI 目标服务器。
 
-如果你不想额外投入一台虚拟机, 也可以使用 Azure 隔离代理。 其缺点在于，如果资源停止失败或者群集节点不再可以彼此通信，则故障转移可能要花费 10 到 15 分钟。
+如果你不想额外投入一台虚拟机，也可以使用 Azure 隔离代理。 其缺点在于，如果资源停止失败或者群集节点不再可以彼此通信，则故障转移可能要花费 10 到 15 分钟。
 
 ![SLES 上的 Pacemaker 概述](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> 在规划和部署 Linux Pacemaker 群集节点与 SBD 设备时，若要实现整个群集配置的整体可靠性，必须做到：所涉及的 VM 与托管 SBD 设备的 VM 之间的路由不通过任何其他设备（例如 [NVA](https://azure.microsoft.com/solutions/network-appliances/)）。 否则，NVA 的问题和维护事件可能会对整个群集配置的稳定性和可靠性产生负面影响。 为了避免这种障碍, 请不要定义 Nva 或[用户定义的路由规则](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview), 这些规则在规划和部署 Linux Pacemaker 群集节点时通过 nva 和类似设备在群集节点和 SBD 设备之间路由流量,SBD 设备。 
+> 在规划和部署 Linux Pacemaker 群集节点与 SBD 设备时，若要实现整个群集配置的整体可靠性，必须做到：所涉及的 VM 与托管 SBD 设备的 VM 之间的路由不通过任何其他设备（例如 [NVA](https://azure.microsoft.com/solutions/network-appliances/)）。 否则，NVA 的问题和维护事件可能会对整个群集配置的稳定性和可靠性产生负面影响。 为了避免这种障碍，请不要定义 Nva 或[用户定义的路由规则](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)，这些规则在规划和部署 Linux Pacemaker 群集节点时通过 nva 和类似设备在群集节点和 SBD 设备之间路由流量，SBD 设备。 
 >
 
 ## <a name="sbd-fencing"></a>SBD 隔离
@@ -83,7 +83,7 @@ SBD 设备至少需要一个额外的充当 iSCSI 目标服务器并提供 SBD �
 
 在所有 **iSCSI 目标虚拟机**上运行以下命令，为 SAP 系统使用的群集创建 iSCSI 磁盘。 以下示例中为多个群集创建 SBD 设备。 其中演示了如何对多个群集使用一个 iSCSI 目标服务器。 在 OS 磁盘中放置 SBD 设备。 确保有足够的空间。
 
-**`nfs`** 用于标识 NFS 群集, **ascsnw1**用于标识**NW1**的 ASCS 群集, **dbnw1**用于标识**NW1**的数据库群集, **nfs-0** , **nfs-1**是 NFS 群集节点的主机名, **nw1-xscs-0**和**nw1-1**是**nw1** ASCS 群集节点的主机名, **nw1-db-9**和**nw1**是数据库群集节点的主机名。 请将其替换为群集节点的主机名和 SAP 系统的 SID。
+**`nfs`** 用于标识 NFS 群集， **Ascsnw1**用于标识**NW1**的 ASCS 群集， **dbnw1**用于标识**NW1**的数据库群集， **nfs-0** ， **nfs-1**是其主机名NFS 群集节点， **nw1-xscs-0**和**nw1-xscs**为**nw1** ASCS 群集节点的主机名， **nw1-db-9**和**nw1**是数据库群集节点的主机名。 请将其替换为群集节点的主机名和 SAP 系统的 SID。
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -301,7 +301,7 @@ o- / ...........................................................................
    <b>SBD_WATCHDOG="yes"</b>
    </code></pre>
 
-   `softdog`创建配置文件
+   创建 `softdog` 配置文件
 
    <pre><code>echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>
@@ -318,6 +318,11 @@ o- / ...........................................................................
 1. [A] 更新 SLES
 
    <pre><code>sudo zypper update
+   </code></pre>
+
+1. **[A]** 安装组件，群集资源需要此组件
+
+   <pre><code>sudo zypper in socat
    </code></pre>
 
 1. **[A]** 配置操作系统
@@ -349,7 +354,7 @@ o- / ...........................................................................
 
 1. **[A]** 配置 netconfig-azure 以实现 HA 群集
 
-   更改网络接口的配置文件 (如下所示), 以防止云网络插件删除虚拟 IP 地址 (Pacemaker 必须控制 VIP 分配)。 有关详细信息, 请参阅[SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633)。 
+   更改网络接口的配置文件（如下所示），以防止云网络插件删除虚拟 IP 地址（Pacemaker 必须控制 VIP 分配）。 有关详细信息，请参阅[SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633)。 
 
    <pre><code># Edit the configuration file
    sudo vi /etc/sysconfig/network/ifcfg-eth0 
@@ -398,11 +403,11 @@ o- / ...........................................................................
    </code></pre>
 
    >[!IMPORTANT]
-   > 如果使用 Suse Linux Enterprise Server for SAP 15, 请注意, 需要激活其他模块并安装其他组件, 这是使用 Azure 隔离代理的先决条件。 若要了解有关 SUSE 模块和扩展的详细信息, 请参阅[模块和扩展说明](https://www.suse.com/documentation/sles-15/singlehtml/art_modules/art_modules.html)。 按照说明下面安装 Azure Python SDK。 
+   > 如果使用 Suse Linux Enterprise Server for SAP 15，请注意，需要激活其他模块并安装其他组件，这是使用 Azure 隔离代理的先决条件。 若要了解有关 SUSE 模块和扩展的详细信息，请参阅[模块和扩展说明](https://www.suse.com/documentation/sles-15/singlehtml/art_modules/art_modules.html)。 按照说明下面安装 Azure Python SDK。 
 
    以下有关如何安装 Azure Python SDK 的说明仅适用于适用于 SAP **15**的 Suse Enterprise Server。  
 
-    - 如果你使用的是自带订阅, 请按照以下说明进行操作  
+    - 如果你使用的是自带订阅，请按照以下说明进行操作  
 
     <pre><code>
     #Activate module PackageHub/15/x86_64
@@ -411,7 +416,7 @@ o- / ...........................................................................
     sudo zypper in python3-azure-sdk
     </code></pre>
 
-     - 如果你使用的是即用即付订阅, 请按照以下说明进行操作  
+     - 如果你使用的是即用即付订阅，请按照以下说明进行操作  
 
     <pre><code>#Activate module PackageHub/15/x86_64
     zypper ar https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15/standard/ SLE15-PackageHub
@@ -464,12 +469,12 @@ o- / ...........................................................................
    <pre><code>sudo passwd hacluster
    </code></pre>
 
-1. [A] 将 corosync 配置为使用其他传输，并添加 nodelist。 否则, 群集不起作用。
+1. [A] 将 corosync 配置为使用其他传输，并添加 nodelist。 否则，群集不起作用。
 
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   如果值不存在或不同，请将以下粗体显示的内容添加到文件。 请确保将令牌更改为 30000，以允许内存保留维护。 有关详细信息, 请参阅适用于 Linux 或[Windows][virtual-machines-windows-maintenance][的这篇文章][virtual-machines-linux-maintenance]。 此外，请务必删除参数 mcastaddr。
+   如果值不存在或不同，请将以下粗体显示的内容添加到文件。 请确保将令牌更改为 30000，以允许内存保留维护。 有关详细信息，请参阅适用于 Linux 或[Windows][virtual-machines-windows-maintenance][的这篇文章][virtual-machines-linux-maintenance]。 此外，请务必删除参数 mcastaddr。
 
    <pre><code>[...]
      <b>token:          30000
@@ -521,17 +526,17 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
    转到“属性”并记下目录 ID。 这是“租户 ID”。
 1. 单击“应用注册”
 1. 单击 "新建注册"
-1. 输入名称, 选择 "仅限此组织目录中的帐户" 
-2. 选择 "Web" 应用程序类型, 输入登录 URL (例如 http:\//localhost), 然后单击 "添加"  
+1. 输入名称，选择 "仅限此组织目录中的帐户" 
+2. 选择 "Web" 应用程序类型，输入登录 URL （例如 http：\//localhost），然后单击 "添加"  
    不会使用登录 URL，可为它输入任何有效的 URL
-1. 选择证书和密码, 然后单击 "新建客户端密码"
-1. 输入新密钥的说明, 选择 "永不过期" 并单击 "添加"
+1. 选择证书和密码，然后单击 "新建客户端密码"
+1. 输入新密钥的说明，选择 "永不过期" 并单击 "添加"
 1. 记下值。 此值用作服务主体的**密码**
 1. 选择 "概述"。 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”）
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 为隔离代理创建自定义角色
 
-默认情况下, 服务主体没有访问 Azure 资源的权限。 需要为服务主体授予启动和停止（解除分配）群集所有虚拟机的权限。 如果尚未创建自定义角色，可以使用 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) 或 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli) 来创建它
+默认情况下，服务主体没有访问 Azure 资源的权限。 需要为服务主体授予启动和停止（解除分配）群集所有虚拟机的权限。 如果尚未创建自定义角色，可以使用 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) 或 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli) 来创建它
 
 将以下内容用于输入文件。 你需要调整内容以适应你的订阅，也就是说，将 c276fc76-9cd4-44c9-99a7-4fd71546436e 和 e91d47c4-76f3-4271-a796-21b4ecfe3624 替换为你的订阅的 ID。 如果只有一个订阅，请删除 AssignableScopes 中的第二个条目。
 
@@ -557,7 +562,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 ### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** 向服务主体分配自定义角色
 
-将在最后一章中创建的自定义角色“Linux 隔离代理角色”分配给服务主体。 不要再使用 "所有者" 角色!
+将在最后一章中创建的自定义角色“Linux 隔离代理角色”分配给服务主体。 不要再使用 "所有者" 角色！
 
 1. 转到 [https://portal.azure.com](https://portal.azure.com)
 1. 打开“所有资源”边栏选项卡
@@ -600,7 +605,7 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Azure 计划事件的 Pacemaker 配置
 
-Azure 提供[预定事件](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)。 计划事件通过元数据服务来提供, 并留出时间让应用程序为 VM 关闭、VM 重新部署等事件做好准备。资源代理 **[azure-事件](https://github.com/ClusterLabs/resource-agents/pull/1161)** 监视计划的 azure 事件。 如果检测到事件, 代理将尝试停止受影响 VM 上的所有资源, 并将其移到群集中的其他节点。 若要实现, 必须配置其他 Pacemaker 资源。 
+Azure 提供[预定事件](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)。 计划事件通过元数据服务来提供，并留出时间让应用程序为 VM 关闭、VM 重新部署等事件做好准备。资源代理 **[azure-事件](https://github.com/ClusterLabs/resource-agents/pull/1161)** 监视计划的 azure 事件。 如果检测到事件，代理将尝试停止受影响 VM 上的所有资源，并将其移到群集中的其他节点。 若要实现，必须配置其他 Pacemaker 资源。 
 
 1. **[A]** 安装**azure 事件**代理。 
 
@@ -622,10 +627,10 @@ sudo crm configure property maintenance-mode=false
 </code></pre>
 
    > [!NOTE]
-   > 为 azure 事件代理配置 Pacemaker 资源后, 当你将群集置于或退出维护模式时, 可能会收到类似于下面的警告消息:  
-     警告: cib: 未知属性 "hostName_<strong>主机名</strong>"  
-     警告: cib: 未知属性 "azure-events_globalPullState"  
-     警告: cib: 未知属性 "hostName_<strong>主机名</strong>"  
+   > 为 azure 事件代理配置 Pacemaker 资源后，当你将群集置于或退出维护模式时，可能会收到类似于下面的警告消息：  
+     警告： cib：未知属性 "hostName_<strong>主机名</strong>"  
+     警告： cib：未知属性 "azure-events_globalPullState"  
+     警告： cib：未知属性 "hostName_<strong>主机名</strong>"  
    > 可以忽略这些警告消息。
 
 ## <a name="next-steps"></a>后续步骤
@@ -635,4 +640,4 @@ sudo crm configure property maintenance-mode=false
 * [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * [SUSE Linux Enterprise Server 上的 Azure Vm 上的 NFS 的高可用性][sles-nfs-guide]
 * [SUSE Linux Enterprise Server for SAP Applications 上 Azure VM 中的 SAP NetWeaver 的高可用性][sles-guide]
-* 若要了解如何建立高可用性并规划 Azure Vm 上 SAP HANA 的灾难恢复, 请参阅[Azure 虚拟机 (vm) 上的 SAP HANA 的高可用性][sap-hana-ha]
+* 若要了解如何建立高可用性并规划 Azure Vm 上 SAP HANA 的灾难恢复，请参阅[Azure 虚拟机（vm）上的 SAP HANA 的高可用性][sap-hana-ha]

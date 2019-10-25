@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0187d17f8210800aef1c68def0614ce26913e09a
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 54b158528a67dfe77f33f41f3bb4b4570eb4c508
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555036"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802207"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教程：为 G Suite 配置自动用户预配
 
@@ -32,7 +32,7 @@ ms.locfileid: "72555036"
 > [!NOTE]
 > G Suite 连接器最近于10月2019更新。 对 G Suite 连接器所做的更改包括：
 - 添加了对其他 G Suite 用户和组属性的支持。 
-- 已更新 G Suite 目标属性名称以匹配[此处]()定义的名称。
+- 已更新 G Suite 目标属性名称以匹配[此处](/azure/active-directory/manage-apps/customize-application-attributes)定义的名称。
 - 已更新默认属性映射。
 
 ## <a name="prerequisites"></a>必备组件

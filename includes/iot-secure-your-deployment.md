@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: e5acb8e0f8805da7f14bbce58b4bfd2acdc24f23
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e696db3ad452152f6478701876b7760d7fed355b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173606"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793086"
 ---
-# <a name="secure-your-internet-of-things-iot-deployment"></a>保护物联网 (IoT) 部署
-
 本文提供保护基于 Azure IoT 的物联网 (IoT) 基础结构的进一步详细信息。 它链接到配置和部署每个组件的实现级别详细信息。 还提供多种竞争方式间的比较和选择。
 
 保护 Azure IoT 部署可分为以下三个安全区域：
@@ -39,7 +37,7 @@ IoT 解决方案加速器通过以下两种方法保护 IoT 设备：
 
 安全令牌方式通过将对称密钥与每个呼叫关联，为每个设备向 IoT 中心作出的呼叫提供身份验证。 基于 X.509 的身份验证允许物理层 IoT 设备的身份验证作为 TLS 连接建立的一部分。 基于安全令牌的方式可在没有 X.509 身份验证的情况下使用，但这种模式的安全性较低。 这两种方式的选择主要取决于设备验证需要达到的安全程度和设备上安全储存的可用性（以安全存储私钥）。
 
-## <a name="iot-hub-security-tokens"></a>IoT 中心安全令牌
+## <a name="iot-hub-security-tokens"></a>IoT 中心安全标记
 
 IoT 中心使用安全令牌对设备和服务进行身份验证，以避免在网络上发送密钥。 并且安全令牌的有效期和范围有限。 Azure IoT SDK 无需任何特殊配置即可自动生成令牌。 但在某些情况下，需要用户生成并直接使用安全令牌。 这些方案包括 MQTT、AMQP 或 HTTP 应用层协议的直接使用，以及令牌服务模式的实现。
 
@@ -55,7 +53,7 @@ IoT 中心使用安全令牌对设备和服务进行身份验证，以避免在�
 
 * AMQP：基于 SASL PLAIN 和 AMQP 声明的安全性（若是 IoT 中心级别令牌，则为 `{policyName}@sas.root.{iothubName}`；若是设备范围令牌，则为 `{deviceId}`）。
 
-* MQTT：CONNECT 数据包使用 `{deviceId}` 作为 `{ClientId}`、“用户名”  字段中的 `{IoThubhostname}/{deviceId}` 以及“密码”  字段中的 SAS 令牌。
+* MQTT：CONNECT 数据包使用 `{deviceId}` 作为 `{ClientId}`、“用户名”字段中的 `{IoThubhostname}/{deviceId}` 以及“密码”字段中的 SAS 令牌。
 
 * HTTP：有效令牌位于授权请求标头中。
 
@@ -101,15 +99,15 @@ Azure IoT 中心和其他可能是解决方案的一部分的服务允许使用 
 
 Azure IoT 中心引入的数据可供多种服务（例如 Azure 流分析、Azure Blob 存储等）使用。 这些服务允许管理访问权限。 了解有关这些服务和可用选项的详细信息：
 
-* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)：适用于半结构化数据的可缩放且已完全编制索引的数据库服务，可管理预配的设备的元数据，例如，属性、配置和安全属性。 Azure Cosmos DB 提供高性能和高吞吐量处理、与架构无关的数据索引，以及丰富的 SQL 查询接口。
+* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)：已完全编制索引的可缩放数据库服务，适用于半结构化数据，可管理预配的设备元数据，例如属性、配置和安全属性。 Azure Cosmos DB 提供高性能和高吞吐量处理、与架构无关的数据索引，以及丰富的 SQL 查询接口。
 
-* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/):通过云中处理的实时流可以快速开发和部署低成本分析解决方案，以便从设备、传感器、基础结构和应用程序实时获取深入了解。 来自这种完全托管服务的数据可缩放为任何数量，同时保持高吞吐量、低延迟和复原能力。
+* [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)：云中的实时流处理，可让你快速开发和部署低成本分析解决方案，以便从设备、传感器、基础结构和应用程序实时获取深入见解。 来自这种完全托管服务的数据可缩放为任何数量，同时保持高吞吐量、低延迟和复原能力。
 
-* [在 azure 应用服务](https://azure.microsoft.com/services/app-service/):一个云平台，用以构建能够连接到任何地方（在云中或本地）的数据的强大 Web 和移动应用。 构建具有吸引力的 iOS、Android 和 Windows 移动应用。 与软件即服务 (SaaS) 和企业应用程序相集成，这些应用程序一经使用便可直接连接到数十种基于云的服务和企业应用程序。 使用偏好的语言和 IDE（.NET、Node.js、PHP、Python 或 Java）进行编码，比以往更快地构建 Web 应用和 API。
+* [Azure 应用程序服务](https://azure.microsoft.com/services/app-service/)：一个云平台，用于构建能够连接到任何地方（在云中或本地）的数据的强大 Web 和移动应用。 构建具有吸引力的 iOS、Android 和 Windows 移动应用。 与软件即服务 (SaaS) 和企业应用程序相集成，这些应用程序一经使用便可直接连接到数十种基于云的服务和企业应用程序。 使用偏好的语言和 IDE（.NET、Node.js、PHP、Python 或 Java）进行编码，比以往更快地构建 Web 应用和 API。
 
-* [逻辑应用](https://azure.microsoft.com/services/app-service/logic/):Azure 应用服务的逻辑应用功能可帮助用户将 IoT 解决方案集成到现有业务线系统并自动执行工作流程。 逻辑应用可让开发人员设计从触发过程开始，并运行一系列步骤的工作流 — 使用功能强大的连接器来与业务过程集成的规则和操作。 Logic Apps 提供与 SaaS、基于云和本地应用程序的广泛生态系统的实时连接。
+* [逻辑应用](https://azure.microsoft.com/services/app-service/logic/)：Azure 应用服务的逻辑应用功能可帮助将 IoT 解决方案集成到现有业务线系统并自动执行工作流程。 逻辑应用可让开发人员设计从触发过程开始，并运行一系列步骤的工作流 — 使用功能强大的连接器来与业务过程集成的规则和操作。 Logic Apps 提供与 SaaS、基于云和本地应用程序的广泛生态系统的实时连接。
 
-* [Azure Blob 存储](https://azure.microsoft.com/services/storage/):可靠且符合经济效益的云存储，适用于设备要发送到云的数据。
+* [Azure Blob 存储](https://azure.microsoft.com/services/storage/)：可靠且符合经济效益的云存储，适用于设备发送到云的数据。
 
 ## <a name="conclusion"></a>结束语
 

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5080ec4db46f717a9e9ecdcdfbea42fbe43c349d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 66073052b290a1345dc0bb63ed6df0934fd81c64
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598426"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804134"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 
@@ -305,7 +305,7 @@ Azure Databricks 如何处理 Azure 机器学习：
 | 设置 |适用于| Value |
 |----|---|---|
 | 群集名称 |始终| yourclustername |
-| Databricks 运行时 |始终| 任何非 ML 运行时（非 ML 4.x、1.x） |
+| Databricks 运行时 |始终|非 ML 运行时6.0 （scala 2.11，spark 2.4.3） |
 | Python 版本 |始终| 3 |
 | 工作节点 |始终| 2 个或以上 |
 | 工作节点 VM 类型 <br>（确定并发迭代的最大数目） |自动化机器学习<br>仅供参考| 首选内存优化的 VM |
@@ -346,14 +346,17 @@ Azure Databricks 如何处理 Azure 机器学习：
 
 如果安装成功，则导入的库应如下所示：
 
-SDK for Databricks **_无需_** 自动机器学习 ![Azure 机器学习 Sdk for Databricks ](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+SDK for Databricks **_无需_** 自动机器学习 ![Azure 机器学习 Sdk for Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-**带有**自动机器学习 ![SDK 的 SDK for Databricks，并在 Databricks 上安装了自动化机器学习 ](./media/how-to-configure-environment/automlonadb.jpg)
+适用**于 Databricks 的 sdk 与自动**机器学习 ![sdk 一起安装在 Databricks 上的自动机器学习](./media/how-to-configure-environment/automlonadb.png)
 
 ### <a name="start-exploring"></a>开始浏览
 
 试用：
 + 虽然有许多示例笔记本可用，但**仅[这些示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks)适用于 Azure Databricks。**
+
++ 直接从工作区导入这些示例。 请参阅以下内容： ![选择导入](media/how-to-configure-environment/azure-db-screenshot.png)
+![导入面板](media/how-to-configure-environment/azure-db-import.png)
 
 + 了解如何[使用 Databricks 作为训练计算创建管道](how-to-create-your-first-pipeline.md)。
 

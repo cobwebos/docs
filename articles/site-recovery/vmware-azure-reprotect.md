@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 10/22/2019
 ms.author: mayg
-ms.openlocfilehash: 2f6f865f019b8b2a403865db4e59a7e86f59e509
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: cf1ccdf953781ca9b9bd17152f2cf32677997d12
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331064"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791803"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>故障转移到 Azure 后，将计算机重新保护并故障回复到本地站点
 
@@ -34,6 +34,7 @@ ms.locfileid: "72331064"
 - 如果 vCenter 服务器管理着要故障回复到的虚拟机，请确保你拥有在 vCenter 服务器上发现 VM [所需的权限](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery)。
 - 在重新保护之前，请删除主目标服务器上的快照。 如果本地主目标或虚拟机上存在快照，则重新保护会失败。 在执行重新保护作业期间，虚拟机上的快照会自动合并。
 - 复制组的所有虚拟机必须都是相同的操作系统类型（全都为 Windows 或全都为 Linux）。 混合操作系统的复制组当前不支持重新保护和故障回复到本地。 这是因为主目标必须与虚拟机使用同一操作系统。 复制组的所有虚拟机必须有相同的主目标。 
+- 主目标的操作系统版本必须与复制项的 OS 版本相同或更高。
 - 执行故障回复时，本地需有配置服务器。 故障回复期间，虚拟机必须位于配置服务器数据库中。 否则，故障回复不会成功。 请确保定期计划配置服务器备份。 如果发生灾难，请使用相同的 IP 地址还原服务器，以便故障回复正常工作。 
 - 重新保护和故障回复需要站点到站点（S2S） VPN 或 ExpressRoute 专用对等互连来复制数据。 应提供网络，以便 Azure 中已故障转移的虚拟机可以访问 (ping) 本地配置服务器。 需要在已故障转移的虚拟机的 Azure 网络中部署进程服务器。 此进程服务器还必须能够与本地配置服务器和主目标服务器进行通信。
 - 如果在故障转移时保留复制项的 IP 地址，则应在 Azure 虚拟机和配置服务器的故障回复 NIC 之间建立 S2S 或 ExpressRoute 连接。 请注意，IP 地址保留要求配置服务器具有两个 Nic，一个用于源计算机连接，另一个用于 Azure 故障回复连接。 这是为了避免源的子网地址范围和故障转移的虚拟机重叠。

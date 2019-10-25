@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: radeltch
-ms.openlocfilehash: 22ecfc6ac31fcbf9cf3953a5bd204ea615ae3750
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 11b0746c3e9e137775b2466af776b4cd9ba1e5df
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694579"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791667"
 ---
 # <a name="sap-hana-scale-out-with-standby-node-on-azure-vms-with-azure-netapp-files-on-suse-linux-enterprise-server"></a>在 Azure Vm 上用备用节点 SAP HANA 扩展 SUSE Linux Enterprise Server 上的 Azure NetApp 文件 
 
@@ -100,9 +100,9 @@ ms.locfileid: "72694579"
 
 在此示例配置中，子网为：  
 
-  - `storage` 10.23.0.0/24  
-  - `hana` 10.23.2.0/24  
-  - `client` 10.23.3.0/24  
+  - `storage` 10.23.2.0/24  
+  - `hana` 10.23.3.0/24  
+  - `client` 10.23.0.0/24  
   - `anf` 10.23.1.0/26  
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>设置 Azure NetApp 文件基础结构 
@@ -482,7 +482,7 @@ Azure NetApp 卷的吞吐量是卷大小和服务级别的一项功能，如[Azu
      * 输入根用户密码：输入根的密码
      * 选择主机 hanadb2 的角色：输入**1** （适用于辅助角色）
      * 输入主机 hanadb2 的主机故障转移组 [默认值]：按 Enter 接受默认值
-     * 输入主机 hanadb2 的存储分区号 [< <assign automatically> >]：按 Enter 接受默认值
+     * 输入主机 hanadb2 的存储分区号 [<<assign automatically>>]：按 Enter 接受默认值
      * 为 host hanadb2 输入辅助角色组 [默认值]：按 Enter 接受默认值
      * 选择主机 hanadb3 的角色：输入**2** （用于备用）
      * 输入主机 hanadb3 的主机故障转移组 [默认值]：按 Enter 接受默认值

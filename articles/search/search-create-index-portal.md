@@ -1,23 +1,23 @@
 ---
-title: 在 Azure 门户中创建 Azure 搜索索引 - Azure 搜索
-description: 了解如何使用内置门户索引设计器创建 Azure 搜索的索引。
+title: 在 Azure 门户中创建 Azure 认知搜索索引
+titleSuffix: Azure Cognitive Search
+description: 了解如何使用内置门户索引设计器为 Azure 认知搜索创建索引。
 manager: nitinme
-author: heidisteen
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 10/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 4abef5a3030643d4c7b91d2911f350190972f1eb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: a9340b9c058ba780b8d74587f21c1b9fbe59576d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71937267"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792460"
 ---
-# <a name="create-an-azure-search-index-in-the-portal"></a>在门户中创建 Azure 搜索索引
+# <a name="create-an-azure-cognitive-search-index-in-the-portal"></a>在门户中创建 Azure 认知搜索索引
 
-Azure 搜索在门户中包含一个内置索引设计器，可用于原型或创建在 Azure 搜索服务上托管的[搜索索引](search-what-is-an-index.md)。 该工具用于架构构造。 保存定义时，Azure 搜索中将完全表示空索引。 如何加载包含可搜索内容的内容取决于你。
+Azure 认知搜索在门户中包含内置索引设计器，可用于原型或创建托管在 Azure 认知搜索服务上的[搜索索引](search-what-is-an-index.md)。 该工具用于架构构造。 保存定义时，空索引会在 Azure 认知搜索中完全表示。 如何加载包含可搜索内容的内容取决于你。
 
 索引设计器只是创建索引的一种方法。 或者，您可以使用 "[导入数据" 向导](search-get-started-portal.md)来创建和加载索引。 向导仅适用于其自身创建的索引。 以编程方式，你可以使用 [.NET](search-create-index-dotnet.md) 或 [REST](search-create-index-rest-api.md) API 创建索引。
 
@@ -29,7 +29,7 @@ Azure 搜索在门户中包含一个内置索引设计器，可用于原型或�
 
    ![命令栏中的 "添加索引" 链接](media/search-create-index-portal/add-index.png "命令栏中的 "添加索引" 链接")
 
-3. 命名 Azure 搜索索引。 索引名称在索引操作和查询操作中进行引用。 索引名称将成为在到索引的连接上使用的且用于在 Azure 搜索 REST API 中发送 HTTP 请求的终结点 URL 的一部分。
+3. 命名 Azure 认知搜索索引。 索引名称在索引操作和查询操作中进行引用。 索引名称成为用于连接到索引的终结点 URL 的一部分，并用于在 Azure 认知搜索 REST API 中发送 HTTP 请求。
 
    * 以字母开头。
    * 仅使用小写字母、数字或短划线（“-”）。
@@ -43,11 +43,11 @@ Azure 搜索在门户中包含一个内置索引设计器，可用于原型或�
 
 1. 如果传入数据在性质上是分层的，则架构应包含用于表示嵌套结构的[复杂类型](search-howto-complex-data-types.md)。 内置的示例数据集宾馆使用一个地址（包含多个子字段）来说明复杂类型，这些子字段与每个酒店之间存在一对一的关系，后者包含多个会议室与每个旅馆关联。 
 
-1. 指定 Edm.String 类型的 key 字段。 对于每个 Azure 搜索索引来说，键字段都是必需的，并且它必须是一个字符串。 此字段的值必须唯一标识每个文档。 默认情况下，该字段名为 *id*，但可以将其重命名，只要该字符串符合[命名规则](https://docs.microsoft.com/rest/api/searchservice/Naming-rules)即可。 例如，如果字段集合包含 hotel-id，则可以为密钥选择该字段。 
+1. 指定 Edm.String 类型的 key 字段。 键字段对于每个 Azure 认知搜索索引是必需的，并且必须是字符串。 此字段的值必须唯一标识每个文档。 默认情况下，该字段名为 *id*，但可以将其重命名，只要该字符串符合[命名规则](https://docs.microsoft.com/rest/api/searchservice/Naming-rules)即可。 例如，如果字段集合包含 hotel-id，则可以为密钥选择该字段。 
 
 1. 在每个字段上设置属性。 索引设计器会排除对数据类型无效的任何属性，但不会建议要包含的内容。 查看下一部分中的指导，以了解属性的用途。
 
-    Azure 搜索 API 文档包括了代码示例，其中采用了简单的 *hotels* 索引。 在下面的屏幕截图中，可以看到索引定义，包括在定义索引期间指定的法语语言分析器，可以在门户中练习重新创建该索引定义。
+    Azure 认知搜索 API 文档包含使用简单的*酒店*索引的代码示例。 在下面的屏幕截图中，可以看到索引定义，包括在定义索引期间指定的法语语言分析器，可以在门户中练习重新创建该索引定义。
 
     ![宾馆演示索引](media/search-create-index-portal/field-definitions.png "宾馆演示索引")
 
@@ -76,7 +76,7 @@ Azure 搜索在门户中包含一个内置索引设计器，可用于原型或�
 
 ## <a name="next-steps"></a>后续步骤
 
-在创建 Azure 搜索索引后，可以前进到下一步骤：[将可搜索数据上传到索引中](search-what-is-data-import.md)。
+创建 Azure 认知搜索索引后，可以转到下一步：将可[搜索的数据上传到索引中](search-what-is-data-import.md)。
 
 另外，也可以[更深入地了解索引](search-what-is-an-index.md)。 除了字段集合之外，索引还指定分析器、建议器、评分配置文件和 CORS 设置。 门户中提供了用于定义最常用元素（字段、分析器和建议器）的选项卡式页面。 若要创建或修改其他元素，可以使用 REST API 或 .NET SDK。
 

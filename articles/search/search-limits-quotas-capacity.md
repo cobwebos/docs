@@ -1,22 +1,23 @@
 ---
-title: 层和 SKU 的服务限制 - Azure 搜索
-description: 用于容量计划的服务限制以及请求和响应 Azure 搜索的最大限制。
-author: HeidiSteen
+title: 层和 sku 的服务限制
+titleSuffix: Azure Cognitive Search
+description: 用于容量计划的服务限制以及 Azure 认知搜索的请求和响应的最大限制。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 10/03/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 2d3b74476def5bdf46a6292996f0af9162b20b43
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: d70812779d392cc4555c91599fad37c2d2c68ba5
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947784"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793581"
 ---
-# <a name="service-limits-in-azure-search"></a>Azure 搜索中的服务限制
-对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”、“标准”还是“存储优化”定价层上[预配 Azure 搜索](search-create-service-portal.md)。
+# <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
+
+对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是否[预配 Azure 认知搜索](search-create-service-portal.md)**免费**版、基本**版、标准版**或**存储优化**定价层.
 
 + **免费**层是 Azure 订阅随附的多租户共享服务。 索引和查询请求在其他租户使用的副本和分区上执行。
 
@@ -24,7 +25,7 @@ ms.locfileid: "71947784"
 
 + **标准**层在专用计算机上运行，在每个级别上都具有更多存储和处理容量。 标准层共有四个级别：S1、S2、S3 和 S3 HD。
 
-+ **存储优化**层在专用计算机上运行，与**标准**层相比具有更多的总存储、存储带宽和内存。 “存储优化”层分为两个级别：L1 和 L2
++ **存储优化**在具有更多存储空间、存储带宽和内存（**标准**）的专用计算机上运行。 优化的存储分为两个级别： L1 和 L2
 
 > [!NOTE]
 > 从7月1日起，所有层都已正式发布，其中包括存储优化层。 可以在[定价详细信息](https://azure.microsoft.com/pricing/details/search/)页上找到所有定价。
@@ -45,18 +46,18 @@ ms.locfileid: "71947784"
 
 ## <a name="index-limits"></a>索引限制
 
-| Resource | 免费 | 基本&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
+| 资源 | 免费 | 基本&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | 最大索引数 |3 |5 或 15 |50 |200 |200 |每个分区 1000，或者每个服务 3000 |10 |10 |
-| 每个索引的简单字段的最大数目 |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
-| 每个索引的复杂集合字段的最大数目 |40 |40 |40 |40 |40 |40 |40 |40 |
-| 每个文档的所有复杂集合的最大元素数目 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
+| 每个索引的最大简单字段数 |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
+| 每个索引的最大复杂集合字段 |40 |40 |40 |40 |40 |40 |40 |40 |
+| 每个文档的所有复杂集合中的最大元素数 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
 | 复杂字段的最大深度 |10 |10 |10 |10 |10 |10 |10 |10 |
-| 每个索引最大[建议器](https://docs.microsoft.com/rest/api/searchservice/suggesters)数 |1 |1 |1 |1 |1 |1 |1 |1 |
+| 每个索引最大[建议器](https://docs.microsoft.com/rest/api/searchservice/suggesters)数 |第 |第 |第 |第 |第 |第 |第 |第 |
 | 每个索引的最大[计分配置文件](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)数 |100 |100 |100 |100 |100 |100 |100 |100 |
 | 每个配置文件的最大函数数量 |8 |8 |8 |8 |8 |8 |8 |8 |
 
-<sup>1</sup> 在 2017 年 12 月之前创建的基本服务的索引数限制较低（为 5 而不是 15）。 基本层是唯一具有下限（每个索引 100 个字段）的 SKU。
+<sup>1</sup> 2017 年12月之前创建的基本服务的索引限制（5而不是15）。 基本层是唯一具有下限（每个索引 100 个字段）的 SKU。
 
 <a name="document-limits"></a>
 
@@ -68,14 +69,14 @@ ms.locfileid: "71947784"
 
   ![“使用情况”磁贴](media/search-limits-quotas-capacity/portal-usage-tile.png)
 
-<sup>1</sup>即使没有任何 SKU 特定的文档限制，每个索引仍会受到最大安全限制，以确保服务的稳定性。 此限制来自 Lucene。 每个 Azure 搜索文档在内部都作为一个或多个 Lucene 文档建立索引。 每个 Azure 搜索文档的 Lucene 文档数取决于复杂集合字段中的元素总数。 每个元素都作为一个单独的 Lucene 文档进行索引。 例如，在复杂集合字段中包含3个元素的文档将被索引为 4 Lucene 文档，对于文档本身为3个，对于元素为3。 每个索引的最大 Lucene 文档数约为25000000000。
+<sup>1</sup>即使没有任何 SKU 特定的文档限制，每个索引仍会受到最大安全限制，以确保服务的稳定性。 此限制来自 Lucene。 每个 Azure 认知搜索文档在内部都作为一个或多个 Lucene 文档建立索引。 每个搜索文档的 Lucene 文档数取决于复杂集合字段中的元素总数。 每个元素都作为一个单独的 Lucene 文档进行索引。 例如，在复杂集合字段中包含3个元素的文档将被索引为 4 Lucene 文档，对于文档本身为3个，对于元素为3。 每个索引的最大 Lucene 文档数约为25000000000。
 
 ### <a name="regions-previously-having-document-limits"></a>以前具有文档数限制的区域
 
-如果门户指示文档数限制，则你的服务要么是在 2017 年底之前创建的，要么是在使用容量较低的群集托管 Azure 搜索服务的数据中心上创建的：
+如果门户指示文档限制，则表示服务是在晚于2017之前创建的，或者是在使用低容量群集来托管 Azure 认知搜索服务的数据中心创建的：
 
 + 澳大利亚东部
-+ 东亚
++ 亚洲东部
 + 印度中部
 + 日本西部
 + 美国中西部
@@ -84,7 +85,7 @@ ms.locfileid: "71947784"
 
 |  免费 | 基本 | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
-|  10,000 |1&nbsp;百万 |每个分区 1500 万，或者每个服务 1 亿 8 千万 |每个分区 6 千万，或者每个服务 7 亿 2 千万 |每个分区 1 亿 2 千万，或者每个服务 14 亿 |每个索引 1 百万，或者每个分区 2 亿 |
+|  10,000 |1 @ no__t_0_ 百万 |每个分区 1500 万，或者每个服务 1 亿 8 千万 |每个分区 6 千万，或者每个服务 7 亿 2 千万 |每个分区 1 亿 2 千万，或者每个服务 14 亿 |每个索引 1 百万，或者每个分区 2 亿 |
 
 如果你的服务具有阻止你的限制，请创建一个新服务，然后将所有内容重新发布到该服务。 没有任何机制可以在后台无缝地将你的服务重新预配到新硬件上。
 
@@ -102,24 +103,24 @@ ms.locfileid: "71947784"
 
 ## <a name="indexer-limits"></a>索引器限制
 
-存在最长运行时间，目的是在总体上为服务提供平衡和稳定性，但较大的数据集需要的索引时间可能比最大值允许的要长。 如果在允许的最长时间内无法完成索引作业，请尝试按计划运行。 计划程序将跟踪索引的状态。 如果计划的索引作业因某种原因而中断，则索引器可以在下一次计划运行时从它上次停止的位置重新开始。
+存在的最长运行时间是为了提供整个服务的平衡和稳定性，但较大的数据集可能需要超过最大允许的索引时间。 如果在允许的最长时间内无法完成索引作业，请尝试按计划运行。 计划程序将跟踪索引的状态。 如果计划的索引作业因某种原因而中断，则索引器可以在下一次计划运行时从它上次停止的位置重新开始。
 
 
-| Resource | 免费&nbsp;<sup>1</sup> | 基本&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
+| 资源 | 免费&nbsp;<sup>1</sup> | 基本&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| 最大索引器数 |3 |5 或 15|50 |200 |200 |不可用 |10 |10 |
-| 最大数据源数 |3 |5 或 15 |50 |200 |200 |不可用 |10 |10 |
-| 最大技能集数<sup>4</sup> |3 |5 或 15 |50 |200 |200 |不可用 |10 |10 |
-| 每次调用的最大索引编制负载 |10,000 个文档 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |不可用 |无限制 |无限制 |
+| 最大索引器数 |3 |5 或 15|50 |200 |200 |N/A |10 |10 |
+| 最大数据源数 |3 |5 或 15 |50 |200 |200 |N/A |10 |10 |
+| 最大技能集数<sup>4</sup> |3 |5 或 15 |50 |200 |200 |N/A |10 |10 |
+| 每次调用的最大索引编制负载 |10,000 个文档 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |N/A |无限制 |无限制 |
 | 最小计划 | 5 分钟 |5 分钟 |5 分钟 |5 分钟 |5 分钟 |5 分钟 |5 分钟 | 5 分钟 |
-| 最长运行时间 <sup>5</sup> | 1-3 分钟 |24 小时 |24 小时 |24 小时 |24 小时 |不可用  |24 小时 |24 小时 |
-| 认知搜索技能集的最长运行时间或具有图像分析的 blob 索引 <sup>5</sup> | 3-10 分钟 |2 小时 |2 小时 |2 小时 |2 小时 |不可用  |2 小时 |2 小时 |
-| Blob 索引器：最大 blob 大小，MB |16 |16 |128 |256 |256 |不可用  |256 |256 |
-| Blob 索引器：从 blob 中提取的内容的最大字符数 |32,000 |64,000 |4&nbsp;百万 |4&nbsp;百万 |4&nbsp;百万 |不可用 |4&nbsp;百万 |4&nbsp;百万 |
+| 最长运行时间 <sup>5</sup> | 1-3 分钟 |24 小时 |24 小时 |24 小时 |24 小时 |N/A  |24 小时 |24 小时 |
+| 认知搜索技能集的最长运行时间或具有图像分析的 blob 索引 <sup>5</sup> | 3-10 分钟 |2 小时 |2 小时 |2 小时 |2 小时 |N/A  |2 小时 |2 小时 |
+| Blob 索引器：最大 blob 大小，MB |16 |16 |128 |256 |256 |N/A  |256 |256 |
+| Blob 索引器：从 blob 中提取的内容的最大字符数 |32,000 |64,000 |4 @ no__t_0_ 百万 |4 @ no__t_0_ 百万 |4 @ no__t_0_ 百万 |N/A |4 @ no__t_0_ 百万 |4 @ no__t_0_ 百万 |
 
-<sup>1</sup> 对于免费服务，对于 blob 源，索引器最长执行时间为 3 分钟；对于所有其他数据源，索引器最长执行时间为为 1 分钟。 对于调用认知服务的 AI 索引，免费服务的限制是每天 20 个免费事务，而根据定义，一个事务是指一个成功通过扩充管道的文档。
+<sup>1</sup> 对于免费服务，对于 blob 源，索引器最长执行时间为 3 分钟；对于所有其他数据源，索引器最长执行时间为为 1 分钟。 对于调入认知服务的 AI 索引，免费服务限制为每天20个免费事务，其中，事务定义为成功通过扩充管道的文档。
 
-<sup>2</sup> 在 2017 年 12 月之前创建的基本服务的索引器、数据源和技能集的数目限制较低（为 5 而不是 15）。
+<sup>2</sup> 2017 年12月之前创建的基本服务在索引器、数据源和技能集上具有较低的限制（5而不是15）。
 
 <sup>3</sup> S3 HD 服务未包括索引器支持。
 
@@ -131,7 +132,7 @@ ms.locfileid: "71947784"
 
 允许的最大同义词映射数因定价层而异。 每个规则最多可以有20个扩展，其中的扩展是 equivalvent 的一项。 例如，给定 "cat"，与 "猫"、"猫" 和 "felis" （猫的 genus）的关联将计为3个扩展。
 
-| Resource | 免费 | 基本 | S1 | S2 | S3 | S3-HD |L1 | L2 |
+| 资源 | 免费 | 基本 | S1 | S2 | S3 | S3-HD |L1 | L2 |
 | -------- | -----|------ |----|----|----|-------|---|----|
 | 最大同义词映射 |3 |3|5 |10 |20 |20 | 10 | 10 |
 | 每个映射的最大规则数 |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
@@ -140,13 +141,13 @@ ms.locfileid: "71947784"
 
 每个客户必须独立制定 QPS 估计值。 索引大小和复杂性、查询大小和复杂性以及流量大小是 QPS 的主要决定因素。 当此类因素未知时，没有方法能提供有意义的估计值。
 
-针对专用资源（基本层和标准层）上运行的服务进行计算时，估计值更可预测。 由于能够控制更多参数，因此可以更精确地评估 QPS。 有关如何方法估算的指南，请参阅 [Azure 搜索的性能和优化](search-performance-optimization.md)。
+针对专用资源（基本层和标准层）上运行的服务进行计算时，估计值更可预测。 由于能够控制更多参数，因此可以更精确地评估 QPS。 有关如何进行估计的指导，请参阅[Azure 认知搜索性能和优化](search-performance-optimization.md)。
 
-与“标准”层相比，“存储优化”层预计会有较低的查询吞吐量，较高的延迟。  估计会体验到的查询性能的方法与“标准”层相同。
+对于存储优化的层，应预计比标准级别更低的查询吞吐量和延迟。  评估查询性能的方法与标准层相同。
 
-## <a name="data-limits-cognitive-search"></a>数据限制（认知搜索）
+## <a name="data-limits-ai-enrichment"></a>数据限制（AI 扩充）
 
-用于调用文本分析资源进行[实体识别](cognitive-search-skill-entity-recognition.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、[情绪分析](cognitive-search-skill-sentiment.md)、[语言检测](cognitive-search-skill-language-detection.md)的[认知搜索管道](cognitive-search-concept-intro.md)会受到数据限制。 记录的最大大小应为50000个字符，由[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)测量。 如果需要在将数据发送到情绪分析器之前拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
+用于调用[实体识别](cognitive-search-skill-entity-recognition.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、[情绪分析](cognitive-search-skill-sentiment.md)和[语言检测](cognitive-search-skill-language-detection.md)的文本分析资源的[AI 扩充管道](cognitive-search-concept-intro.md)受数据限制的限制。 记录的最大大小应为50000个字符， [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)度量。 如果需要在将数据发送到情绪分析器之前拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="throttling-limits"></a>限制
 
@@ -154,10 +155,10 @@ ms.locfileid: "71947784"
 
 与索引相关的操作的静态速率请求限制：
 
-+ 列出索引（获取/indexes）：每个搜索单位每秒5个
-+ 获取索引（GET/indexes/myindex）：每个搜索单位每秒10个
++ 列出索引（GET/indexes）：每个搜索单位每秒5个
++ 获取索引（GET/indexes/myindex）：每个搜索单位每秒10次
 + Create Index （POST/indexes）：每个搜索单位每分钟12个
-+ 创建或更新索引（PUT/indexes/myindex）：每个搜索单位每秒6个
++ 创建或更新索引（PUT/indexes/myindex）：每个搜索单位每秒6次
 + 删除索引（删除/indexes/myindex）：每个搜索单位每分钟12个 
 
 ## <a name="api-request-limits"></a>API 请求限制
@@ -167,7 +168,7 @@ ms.locfileid: "71947784"
 * $Orderby 子句中最多 32 字段
 * 最大搜索词大小为 UTF-8 编码文本的 32,766 字节（32 KB 减 2 个字节）
 
-<sup>1</sup> 在 Azure 搜索中，请求主体受 16 MB 上限的约束，这会针对不受理论限制约束的单个字段或集合的内容施加实际限制（有关字段组合和限制的详细信息，请参阅[支持的数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)）。
+<sup>1</sup>在 Azure 认知搜索中，请求正文受到 16 MB 的上限限制，对单个字段或集合的内容施加实际限制，但不受理论限制的限制（请参阅[支持的数据类型）](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)有关字段组合和限制的详细信息）。
 
 ## <a name="api-response-limits"></a>API 响应限制
 * 每页搜索结果最多返回 1000 个文档

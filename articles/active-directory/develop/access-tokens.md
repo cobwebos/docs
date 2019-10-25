@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7ef9b55dd17a6f1d190282f369ccb8b9386e65d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 39b727d14419634d413e0f649a43d455c4aeba20
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72324274"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803547"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 标识平台访问令牌
 
@@ -34,7 +34,7 @@ ms.locfileid: "72324274"
 请参阅以下部分，了解资源如何验证和使用访问令牌中的声明。
 
 > [!IMPORTANT]
-> 访问令牌是基于令牌的*受众*创建的，这意味着拥有令牌中的作用域的应用程序。  这就是[应用程序清单](reference-app-manifest.md#manifest-reference)中的资源设置 @no__t 为 `2` 的设置，它允许客户端调用1.0 版终结点以接收 v2.0 访问令牌。  同样，在为 `user.read` 请求令牌时，为客户端更改访问令牌的[可选声明](active-directory-optional-claims.md)不会更改收到的访问令牌，该令牌由 MS Graph 资源拥有。  
+> 访问令牌是基于令牌的*受众*创建的，这意味着拥有令牌中的作用域的应用程序。  这是[应用程序清单](reference-app-manifest.md#manifest-reference)中的资源设置 `accessTokenAcceptedVersion` 的 `2` 允许客户端调用1.0 版终结点以接收 v2.0 访问令牌。  同样，在为 `user.read` 请求令牌时，为客户端更改访问令牌的[可选声明](active-directory-optional-claims.md)不会更改收到的访问令牌，该令牌由 MS Graph 资源拥有。  
 > 出于同一原因，当使用个人帐户（如 hotmail.com 或 outlook.com）测试客户端应用程序时，可能会发现客户端收到的访问令牌是不透明的字符串。 这是因为要访问的资源请求了旧 MSA （Microsoft 帐户）票证，它们已加密，并且客户端无法理解。
 
 ## <a name="sample-tokens"></a>示例令牌
@@ -108,7 +108,7 @@ JWT 拆分成三个部分：
 | `hasgroups` | 布尔 | 如果存在，始终为 `true`，表示用户至少在一个组中。 如果完整组声明将导致 URI 片段超出 URL 长度限制（当前为 6 个或更多组），则在隐式授权流中用来替代 JWT 的 `groups` 声明。 指示客户端应当使用 Graph 来确定用户的组 (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`)。 |
 | `groups:src1` | JSON 对象 | 对于长度不受限制（参阅上文中的 `hasgroups`）但对于令牌而言仍然太大的令牌请求，将包括指向用户的完整组列表的链接。 对于 JWT，作为分布式声明；对于 SAML，作为新声明替代 `groups` 声明。 <br><br>**JWT 值示例**： <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }` |
 | `sub` | 字符串，GUID | 令牌针对其断言信息的主体，例如应用的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查（例如，使用令牌访问资源时），并可将它用作数据库表中的键。 由于使用者始终存在于 Azure AD 颁发的令牌中，因此建议在通用授权系统中使用此值。 但是，使用者是成对标识符 - 它对特定应用程序 ID 是唯一的。 因此，如果单个用户使用两个不同的客户端 ID 登录到两个不同的应用，这些应用将收到两个不同的使用者声明值。 这不一定是所需的，具体取决于体系结构和隐私要求。 另请参阅 `oid` 声明（在租户内的应用程序中保持不变）。 |
-| `oid` | 字符串，GUID | 在 Microsoft 标识平台中，对象的不可变标识符在这种情况下是用户帐户。 还可以使用它安全地执行授权检查，并将它用作数据库表中的键。 此 ID 唯一标识应用程序中的用户 - 同一个用户登录两个不同的应用程序会在 `oid` 声明中收到相同值。 因此，对 Microsoft 联机服务（例如 Microsoft Graph）发出查询时可以使用 `oid`。 Microsoft Graph 将返回此 ID 作为给定用户帐户的 `id` 属性。 因为 `oid` 允许多个应用关联用户，需要 `profile` 作用域才能收到此声明。 请注意，如果单个用户存在于多个租户中，该用户将包含每个租户中的不同对象 ID - 它们将视为不同帐户，即使用户使用相同的凭据登录到每个帐户，也是如此。 |
+| `oid` | 字符串，GUID | 在 Microsoft 标识平台中，对象的不可变标识符在这种情况下是用户帐户。 还可以使用它安全地执行授权检查，并将它用作数据库表中的键。 此 ID 唯一标识应用程序中的用户 - 同一个用户登录两个不同的应用程序会在 `oid` 声明中收到相同值。 因此，对 Microsoft 联机服务（例如 Microsoft Graph）发出查询时可以使用 `oid`。 Microsoft Graph 将返回此 ID 作为给定[用户帐户](/graph/api/resources/user)的 `id` 属性。 因为 `oid` 允许多个应用关联用户，需要 `profile` 作用域才能收到此声明。 请注意，如果单个用户存在于多个租户中，该用户将包含每个租户中的不同对象 ID - 它们将视为不同帐户，即使用户使用相同的凭据登录到每个帐户，也是如此。 |
 | `tid` | 字符串，GUID | 表示用户所在的 Azure AD 租户。 对于工作和学校帐户，此 GUID 就是用户所属组织的不可变租户 ID。 对于个人帐户，该值为 `9188040d-6c67-4c5b-b112-36a304b66dad`。 需要 `profile` 范围才能接收此声明。 |
 | `unique_name` | 字符串 | 仅在 v1.0 令牌中提供。 提供了一个用户可读值，用于标识令牌使用者。 不保证此值在租户中唯一，只应该用于显示目的。 |
 | `uti` | 不透明字符串 | Azure 用来重新验证令牌的内部声明。 资源不应使用此声明。 |
@@ -193,7 +193,7 @@ JWT 包含三个段（以 `.` 字符分隔）。 第一个段称为**标头**，
 }
 ```
 
-@No__t-0 声明指示用于对令牌进行签名的算法，而 `kid` 声明指示用于验证令牌的特定公钥。
+`alg` 声明指示用于对令牌进行签名的算法，而 `kid` 声明指示用于验证令牌的特定公钥。
 
 在任何给定时间点，Azure AD 可以使用一组特定公钥 - 私钥对中的一个对来签名 id_token。 Azure AD 定期换用一组可能的密钥，因此应将应用编写成自动处理这些密钥更改。 检查 Azure AD 所用公钥的更新的合理频率大约为每 24 小时一次。
 
@@ -209,14 +209,14 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 此元数据文档：
 
 * 一个 JSON 对象，其中包含一些有用的信息，例如执行 OpenID Connect 身份验证所需的各种终结点的位置。
-* 包含 `jwks_uri`，提供用于对令牌进行签名的公钥集的位置。 位于 `jwks_uri` 的 JSON 文档包含在该特定时间点使用的所有公钥信息。 应用可以使用 JWT 标头中的 `kid` 声明选择本文档中已用于对特定令牌进行签名的公钥。 然后，可以使用正确的公钥和指定的算法进行签名验证。
+* 包含 `jwks_uri`，提供用于对令牌进行签名的公钥集的位置。 位于 `jwks_uri` 的 JSON Web 密钥（JWK）包含该特定时刻使用的所有公钥信息。  JWK 格式在[RFC 7517](https://tools.ietf.org/html/rfc7517)中进行了介绍。  应用可以使用 JWT 标头中的 `kid` 声明选择本文档中已用于对特定令牌进行签名的公钥。 然后，可以使用正确的公钥和指定的算法进行签名验证。
 
 > [!NOTE]
 > V1.0 终结点返回 `x5t` 和 `kid` 声明，尽管 v2.0 终结点仅使用 `kid` 声明进行响应。 从目前开始，我们建议使用 `kid` 声明来验证令牌。
 
 签名验证超出了本文档的范围-有许多开源库可用于帮助你在必要时执行此操作。  但是，Microsoft 标识平台具有标准自定义签名密钥的一个令牌签名扩展插件。  
 
-如果你的应用程序具有自定义签名密钥作为使用[声明映射](active-directory-claims-mapping.md)功能的结果，则必须追加包含应用 ID 的 @no__t 1 查询参数，以获取指向应用的签名密钥信息（应用于验证）的 @no__t 2。 例如： `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 包含 `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 的 @no__t。
+如果你的应用程序具有自定义签名密钥作为使用[声明映射](active-directory-claims-mapping.md)功能的结果，则必须追加包含应用 ID 的 `appid` 查询参数，以获取指向应用的签名密钥信息的 `jwks_uri`，该信息应用于验证。 例如： `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 包含 `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`的 `jwks_uri`。
 
 ### <a name="claims-based-authorization"></a>基于声明的授权
 
@@ -224,11 +224,11 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 * 检查 `scp` 或 `roles` 声明，验证所有的现有范围是否与你的 API 公开的范围匹配，并允许客户端执行请求的操作。
 * 确保允许调用方客户端使用 `appid` 声明调用你的 API。
-* 使用 @no__t 验证调用客户端的身份验证状态-如果不允许公共客户端调用 API，则不应为0。
+* 使用 `appidacr` 验证调用客户端的身份验证状态-如果不允许公共客户端调用 API，则不应为0。
 * 检查过去 `nonce` 声明的列表，以验证令牌是否未被重播。
 * 检查 `tid` 是否与允许调用该 API 的租户相匹配。
 * 使用 `acr` 声明验证已执行 MFA 的用户。 应使用[条件性访问](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)强制实施此要求。
-* 如果在访问令牌中请求了 @no__t 0 或 `groups` 声明，请验证该用户是否在允许执行此操作的组中。
+* 如果在访问令牌中请求了 `roles` 或 `groups` 声明，请验证该用户是否在允许执行此操作的组中。
   * 对于使用隐式流检索的令牌，可能需要在 [Microsoft Graph](https://developer.microsoft.com/graph/) 中查询此数据，因为该数据通常很庞大，无法放到令牌中。
 
 ## <a name="user-and-application-tokens"></a>用户和应用程序令牌
@@ -237,7 +237,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 * 仅限应用的令牌不会有 `scp` 声明，可以改为具有 `roles` 声明。 这是记录应用程序权限的位置（与委托的权限相反）。 有关委托的权限和应用程序权限的详细信息，请参阅 [v1.0](v1-permissions-and-consent.md) 和 [v2.0](v2-permissions-and-consent.md) 中的权限与许可。
 * 许多特定于人的声明将丢失，例如 `name` 或 `upn`。
-* @No__t-0 和 @no__t 1 声明将相同。 
+* `sub` 和 `oid` 声明将相同。 
 
 ## <a name="token-revocation"></a>令牌吊销
 

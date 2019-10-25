@@ -1,5 +1,6 @@
 ---
-title: 客户端应用程序（Microsoft 身份验证库） |Microsoft
+title: 客户端应用程序（Microsoft 身份验证库）
+titleSuffix: Microsoft identity platform
 description: 在 Microsoft 身份验证库（MSAL）中了解公用客户端和机密客户端应用程序。
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c854cc34a1ea50f37428cfc18146618d516de7d
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 76c57d3a13f9f03fa635c6c9425e2049e2a2c885
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69532974"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803214"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>公共客户端和机密客户端应用程序
 Microsoft 身份验证库（MSAL）定义两种类型的客户端：公用客户端和机密客户端。 这两种客户端类型可以通过安全地使用授权服务器进行身份验证并维护其客户端凭据的机密性来区分。 相反，Azure AD 身份验证库（ADAL）使用称为 "*身份验证上下文*" （连接到 Azure AD）。
@@ -30,12 +31,12 @@ Microsoft 身份验证库（MSAL）定义两种类型的客户端：公用客户
 - **机密客户端应用程序**是在服务器上运行的应用程序（web 应用程序、web API 应用程序，甚至是服务/守护程序应用）。 它们被视为难以访问，出于这一原因，可以保留应用程序机密。 机密客户端可以保存配置时间机密。 客户端的每个实例都有不同的配置（包括客户端 ID 和客户端密码）。 这些值对于最终用户来说很难提取。 Web 应用是最常见的机密客户端。 客户端 ID 是通过 web 浏览器公开的，但机密只在后通道中传递，而永远不会直接公开。
 
     机密客户端应用： <BR>
-    ![Web 应用 ](media/msal-client-applications/web-app.png) ![Web API ](media/msal-client-applications/web-api.png) ![Daemon/service ](media/msal-client-applications/daemon-service.png)
+    ![Web API](media/msal-client-applications/web-app.png) ![Web 应用](media/msal-client-applications/web-api.png) ![后台程序/服务](media/msal-client-applications/daemon-service.png)
 
 - **公用客户端应用程序**是在设备或台式计算机上或在 web 浏览器中运行的应用程序。 它们不能安全地保存应用程序机密，因此它们只代表用户访问 Web Api。 （它们仅支持公共客户端流。）公共客户端无法保存配置时间机密，因此它们没有客户端密码。
 
     公共客户端应用： <BR>
-    ![Desktop 应用 ](media/msal-client-applications/desktop-app.png) ![Browserless API ](media/msal-client-applications/browserless-app.png) ![Mobile 应用 ](media/msal-client-applications/mobile-app.png)
+    ![桌面应用](media/msal-client-applications/desktop-app.png) ![Browserless API](media/msal-client-applications/browserless-app.png) ![移动应用](media/msal-client-applications/mobile-app.png)
 
 > [!NOTE]
 > 在 MSAL 中，不会分离公共和机密的客户端应用。  MSAL 将客户端应用代表作为基于用户代理的应用，在用户代理（如 web 浏览器）中执行客户端代码的公用客户端。 这些客户端不存储机密，因为浏览器上下文可公开访问。

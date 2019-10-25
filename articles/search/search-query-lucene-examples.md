@@ -1,27 +1,26 @@
 ---
-title: 使用完整的 Lucene 查询语法-Azure 搜索
-description: 在 Azure 搜索服务中进行模糊搜索、邻近搜索、术语提升、正则表达式搜索和通配符搜索的 Lucene 查询语法。
-author: HeidiSteen
+title: 使用完整的 Lucene 查询语法
+titleSuffix: Azure Cognitive Search
+description: 用于模糊搜索、邻近搜索、字词提升、正则表达式搜索的 Lucene 查询语法，以及 Azure 认知搜索服务中的通配符搜索。
 manager: nitinme
-tags: Lucene query analyzer syntax
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 09/20/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: fcfc668022d0d8fc74258657bb93642aec49bd08
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+tags: Lucene query analyzer syntax
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 745be21c2a7a09a09fdbbfd57a305d09a4fac3ed
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178157"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793435"
 ---
-# <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>使用 "full" Lucene 搜索语法（Azure 搜索中的高级查询）
+# <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>使用 "完整" Lucene 搜索语法（Azure 中的高级查询认知搜索）
 
-在构造 Azure 搜索的查询时，可以将默认的[简单查询分析器](query-simple-syntax.md)替换为更全面的 [Azure 搜索中的 Lucene 查询分析器](query-lucene-syntax.md)，以便制定专用的高级查询定义。 
+构造 Azure 认知搜索的查询时，可以将默认的[简单查询分析器](query-simple-syntax.md)替换为[azure 认知搜索中更广泛的 Lucene 查询分析器](query-lucene-syntax.md)，以表述专用的和高级的查询定义。 
 
-Lucene 分析器支持复杂的查询构造，比如字段范围查询、模糊和前缀通配符搜索、邻近搜索、术语提升以及正则表达式搜索。 额外的功能需遵守额外的处理要求，因此执行时间应该会更长一些。 本文展示了使用完整语法时的查询操作示例，可以按照这些示例逐步操作。
+Lucene 分析器支持复杂的查询构造，如字段范围查询、模糊和前缀通配符搜索、邻近搜索、术语提升和正则表达式搜索。 额外的功能需遵守额外的处理要求，因此执行时间应该会更长一些。 本文展示了使用完整语法时的查询操作示例，可以按照这些示例逐步操作。
 
 > [!Note]
 > 通过完整的 Lucene 查询语法实现的专用查询构造很多都不是[按文本分析的](search-lucene-query-architecture.md#stage-2-lexical-analysis)，所以并不涉及词干分解和词形还原，这一点有些出人意料。 只会对完整字词（字词查询或短语查询）进行词法分析。 字词不完整的查询类型（前缀查询、通配符查询、正则表达式查询、模糊查询）会被直接添加到查询树中，绕过分析阶段。 对不完整查询字词执行的唯一转换操作是转换为小写。 
@@ -29,7 +28,7 @@ Lucene 分析器支持复杂的查询构造，比如字段范围查询、模糊�
 
 ## <a name="formulate-requests-in-postman"></a>在 Postman 中创建请求
 
-下面的示例使用“纽约工作岗位”搜索索引，它包含基于[纽约市开放数据](https://opendata.cityofnewyork.us/)计划提供的数据集得出的岗位。 此数据不应认为是最新或完整数据。 该索引位于 Microsoft 提供的一项沙盒服务上，也就是说无需 Azure 订阅或 Azure 搜索即可试用这些查询。
+下面的示例使用“纽约工作岗位”搜索索引，它包含基于[纽约市开放数据](https://opendata.cityofnewyork.us/)计划提供的数据集得出的岗位。 此数据不应认为是最新或完整数据。 此索引位于 Microsoft 提供的沙盒服务中，这意味着你不需要 Azure 订阅或 Azure 认知搜索来尝试这些查询。
 
 要在 GET 上发出 HTTP 请求，需具备 Postman 或其等效工具。 有关详细信息，请参阅[使用 REST 客户端进行浏览](search-get-started-postman.md)。
 
@@ -45,13 +44,13 @@ Lucene 分析器支持复杂的查询构造，比如字段范围查询、模糊�
 
 ### <a name="set-the-request-url"></a>设置请求 URL
 
-请求是一个与包含 Azure 搜索终结点和搜索字符串的 URL 配对的 GET 命令。
+请求是与包含 Azure 认知搜索终结点和搜索字符串的 URL 配对的 GET 命令。
 
   ![Postman 请求标头](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 URL 组合具备以下元素：
 
-+ `https://azs-playground.search.windows.net/` 是由 Azure 搜索开发团队维护的沙盒搜索服务。 
++ **`https://azs-playground.search.windows.net/`** 是由 Azure 认知搜索开发团队维护的沙箱搜索服务。 
 + `indexes/nycjobs/` 是该服务的索引集合中的“纽约工作岗位”索引。 请求中需同时具备服务名称和索引。
 + `docs` 是包含所有可搜索内容的文档集合。 请求标头中提供的查询 api-key 仅适用于针对文档集合的读取操作。
 + `api-version=2019-05-06` 设置了 api-version（每个请求都需具备此参数）。
@@ -59,17 +58,17 @@ URL 组合具备以下元素：
 
 ## <a name="send-your-first-query"></a>发送自己的第一个查询
 
-进行验证，将以下请求粘贴至 GET 并单击“发送”。 结果以详细的 JSON 文档形式返回。 将返回整个文档，这样就可以查看所有字段和所有值。
+进行验证，将以下请求粘贴至 GET 并单击“发送”。 结果以详细的 JSON 文档形式返回。 返回整个文档，这允许您查看所有字段和所有值。
 
-将此 URL 作为验证步骤粘贴到 REST 客户端中并查看文档结构。
+将此 URL 作为验证步骤粘贴到 REST 客户端，并查看文档结构。
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
-查询字符串 `search=*` 是一个未指定的搜索，它与 NULL 或空搜索等效。 它是可以执行的最简单搜索。
+查询字符串 `search=*` 是一个未指定的搜索，它与 NULL 或空搜索等效。 最简单的搜索就是您可以执行的操作。
 
-可选择将 `$count=true` 添加到 URL，以便返回一个符合搜索条件的文档的计数。 在空搜索字符串上，这就是索引中的所有文档（在“纽约工作岗位”例子中，数量约为 2800）。
+可选择将 `$count=true` 添加到 URL，以便返回一个符合搜索条件的文档的计数。 在空搜索字符串上，这是索引（在 NYC 作业的情况下约为 2800）中的所有文档。
 
 ## <a name="how-to-invoke-full-lucene-parsing"></a>如何调用完整 Lucene 分析
 
@@ -81,11 +80,11 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 本文中的所有示例都指定了 queryType=full 搜索参数，指明由 Lucene 查询分析程序处理完整语法。 
 
-## <a name="example-1-query-scoped-to-a-list-of-fields"></a>示例 1：将查询范围限定为字段列表
+## <a name="example-1-query-scoped-to-a-list-of-fields"></a>示例1：查询范围为字段列表
 
-第一个示例并非特定于 Lucene，但我们将先使用它来介绍第一个基本查询概念：字段范围。 此示例将整个查询和响应的范围限定为几个特定的字段。 当你的工具是 Postman 或搜索资源管理器时，了解如何构建可读的 JSON 响应非常重要。 
+第一个示例并不特定于 Lucene，但我们首先介绍第一个基本的查询概念：字段范围。 此示例将整个查询和响应的范围限定为特定的几个字段。 当你的工具是 Postman 或搜索资源管理器时，了解如何构建可读的 JSON 响应非常重要。 
 
-出于简洁目的，该查询仅针对 business_title 字段并指定仅返回职位。 **searchFields** 参数将查询执行限制为 business_title 字段，**select** 指定响应中包含的字段。
+出于简洁目的，该查询仅针对 business_title 字段并指定仅返回职位。 **SearchFields**参数将查询执行限制为仅 business_title 字段，并**选择**指定响应中包含的字段。
 
 ### <a name="partial-query-string"></a>部分查询字符串
 
@@ -93,16 +92,16 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 &search=*&searchFields=business_title&$select=business_title
 ```
 
-下面是同一查询，在逗号分隔列表中具有多个字段。
+下面是以逗号分隔的列表中具有多个字段的相同查询。
 
 ```http
 search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
 ```
 
-逗号后面的空格是可选的。
+逗号后的空格是可选的。
 
 > [!Tip]
-> 在应用程序代码中使用 REST API 时，请记得对参数进行 URL 编码，例如 `$select` 和 `searchFields`。
+> 使用应用程序代码中的 REST API 时，请不要忘记 URL 编码参数，如 `$select` 和 `searchFields`。
 
 ### <a name="full-url"></a>完整 URL
 
@@ -114,11 +113,11 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
   ![Postman 示例响应](media/search-query-lucene-examples/postman-sample-results.png)
 
-你可能已经注意到响应中的搜索分数。 由于搜索不是全文搜索或者没有应用条件，因此不存在排名时评分统统为 1。 对于不带条件的空搜索，按任意顺序返回行。 包含实际搜索条件时，会看到搜索评分变成有意义的值。
+你可能已经注意到响应中的搜索分数。 由于搜索不是全文搜索或者没有应用条件，因此不存在排名时评分统统为 1。 对于不带条件的空搜索，按任意顺序返回行。 当你包括实际搜索条件时，你将看到搜索评分演化为有意义的值。
 
-## <a name="example-2-fielded-search"></a>示例 2：字段化搜索
+## <a name="example-2-fielded-search"></a>示例2：现场搜索
 
-完整 Lucene 语法支持将单个搜索表达式的范围限定为特定的字段。 此示例搜索其中带有字词 senior 而非 junior 的 business title（职务）。
+Full Lucene 语法支持将各个搜索表达式的范围限定为特定字段。 此示例在业务标题中搜索高级版，但不搜索初级企业。
 
 ### <a name="partial-query-string"></a>部分查询字符串
 
@@ -140,18 +139,18 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
   ![Postman 示例响应](media/search-query-lucene-examples/intrafieldfilter.png)
 
-可以使用 **fieldName:searchExpression** 语法定义字段化搜索操作，其中的搜索表达式可以是单个词，也可以是一个短语，或者是括号中的更复杂的表达式，可以选择使用布尔运算符。 一些示例包括以下内容：
+您可以使用**fieldName： searchExpression**语法定义现场搜索操作，其中，搜索表达式可以是单个词或短语，也可以是用括号括起来的更复杂的表达式，还可以选择使用布尔运算符。 一些示例包括以下内容：
 
 - `business_title:(senior NOT junior)`
 - `state:("New York" OR "New Jersey")`
 - `business_title:(senior NOT junior) AND posting_type:external`
 
-如果想要两个字符串评估为单个实体，请务必将多个字符串放置在引号内，正如这个在 `state` 字段中搜索两个不同位置的情况一样。 此外，请确保运算符大写，就像你看到的 NOT 和 AND 一样。
+如果希望将这两个字符串作为单个实体进行计算，请确保将多个字符串放在引号内，如在 "`state`" 字段中搜索两个不同的位置。 此外，请确保运算符大写，就像你看到的 NOT 和 AND 一样。
 
-在 **fieldName:searchExpression** 中指定的字段必须是可搜索的字段。 有关如何在字段定义中使用索引属性的详细信息，请参阅[创建索引（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)。
+**FieldName： searchExpression**中指定的字段必须是可搜索字段。 有关如何在字段定义中使用索引属性的详细信息，请参阅[创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index) 。
 
 > [!NOTE]
-> 在以上示例中，不需要使用 `searchFields` 参数，因为查询的每个部分都显式指定了一个字段名称。 但是，如果需要运行查询，则仍可使用 `searchFields` 参数，其中的某些部分局限于特定字段，其余部分可以应用到多个字段。 例如，查询 `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` 只将 `senior NOT junior` 匹配到 `business_title` 字段，而它则会将“external”与 `posting_type` 字段匹配。 在 **fieldName:searchExpression** 中提供的字段名称始终优先于 `searchFields` 参数，这就是在此示例中我们不需在 `searchFields` 参数中包括 `business_title` 的原因。
+> 在上面的示例中，我们不需要使用 `searchFields` 参数，因为查询的每个部分都显式指定了字段名称。 但是，如果要运行的查询中某些部分的作用域限定为特定字段，则仍可使用 `searchFields` 参数，其余部分则可应用于多个字段。 例如，查询 `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` 仅将 `senior NOT junior` 与 `business_title` 字段匹配，而它会将 "external" 与 `posting_type` 字段匹配。 **FieldName： searchExpression**中提供的字段名称的优先级始终高于 `searchFields` 参数，在此示例中，我们不需要在 `searchFields` 参数中包含 `business_title`。
 
 ## <a name="example-3-fuzzy-search"></a>示例 3：模糊搜索
 
@@ -163,7 +162,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 searchFields=business_title&$select=business_title&search=business_title:asosiate~
 ```
 
-不直接支持短语，但可以指定根据短语的组件部分执行模糊匹配。
+不直接支持短语，但你可以在短语的组件部分指定模糊匹配。
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:asosiate~ AND comm~ 
@@ -211,7 +210,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="example-5-term-boosting"></a>示例 5：术语提升
 术语提升是指相对于不包含术语的文档，提高包含提升术语的文档排名。 若要提升术语，请使用插入符号“^”，并且所搜索术语末尾还要附加提升系数（数字）。 
 
-### <a name="full-urls"></a>完整 URL
+### <a name="full-urls"></a>完整 Url
 
 在“before”查询中，搜索包含术语“computer analyst”的作业时，你会发现没有同时包含“computer”和“analyst”的结果，但“computer”作业排在结果顶部。
 
@@ -248,7 +247,7 @@ searchFields=business_title&$select=business_title&search=business_title:/(Sen|J
 
 ### <a name="full-url"></a>完整 URL
 
-此查询搜索带有字词 Senior 或 Junior 的职务：`search=business_title:/(Sen|Jun)ior/`。
+在此查询中，搜索术语 "高级" 或 "初级： `search=business_title:/(Sen|Jun)ior/`"。
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
@@ -285,12 +284,12 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="next-steps"></a>后续步骤
 请尝试在代码中指定 Lucene 查询分析器。 以下链接介绍如何为 .NET 和 REST API 设置搜索查询。 链接使用默认的简单语法，因此需要应用从本文中所学知识指定 **queryType**。
 
-* [使用 .NET SDK 查询 Azure 搜索索引](search-query-dotnet.md)
-* [使用 REST API 查询 Azure 搜索索引](search-create-index-rest-api.md)
+* [使用 .NET SDK 查询索引](search-query-dotnet.md)
+* [使用 REST API 查询索引](search-create-index-rest-api.md)
 
 可在以下链接找到其他语法参考、查询体系结构和示例：
 
 + [简单语法查询示例](search-query-simple-examples.md)
-+ [Azure 搜索中全文搜索的工作原理](search-lucene-query-architecture.md)
++ [Azure 中全文搜索的工作原理认知搜索](search-lucene-query-architecture.md)
 + [简单的查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [完整 Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)

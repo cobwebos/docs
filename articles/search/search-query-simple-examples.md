@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 7c4aeef07d34159e01f188effae77926895e2857
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 6f3f0e0b8b5098784359e7703c4a165654ff9894
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179190"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808191"
 ---
 # <a name="create-a-simple-query-in-azure-search"></a>在 Azure 搜索中创建简单查询
 
@@ -29,7 +29,7 @@ ms.locfileid: "71179190"
 
 下面的示例使用“纽约工作岗位”搜索索引，它包含基于[纽约市开放数据](https://nycopendata.socrata.com/)计划提供的数据集得出的岗位。 此数据不应认为是最新或完整数据。 该索引位于 Microsoft 提供的一项沙盒服务上，也就是说无需 Azure 订阅或 Azure 搜索即可试用这些查询。
 
-要在 GET 上发出 HTTP 请求，需具备 Postman 或其等效工具。 有关详细信息，请参阅[快速入门：使用 Postman](search-get-started-postman.md)浏览 Azure Search REST API。
+要在 GET 上发出 HTTP 请求，需具备 Postman 或其等效工具。 有关详细信息，请参阅[快速入门：使用 Postman 探索 Azure Search REST API](search-get-started-postman.md)。
 
 ### <a name="set-the-request-header"></a>设置请求标头
 
@@ -57,9 +57,9 @@ URL 组合具备以下元素：
 
 ## <a name="send-your-first-query"></a>发送自己的第一个查询
 
-进行验证，将以下请求粘贴至 GET 并单击“发送”。 结果以详细的 JSON 文档形式返回。 将返回整个文档，这样就可以查看所有字段和所有值。
+进行验证，将以下请求粘贴至 GET 并单击“发送”。 结果以详细的 JSON 文档形式返回。 返回整个文档，这允许您查看所有字段和所有值。
 
-将此 URL 作为验证步骤粘贴到 REST 客户端中并查看文档结构。
+将此 URL 作为验证步骤粘贴到 REST 客户端，并查看文档结构。
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
@@ -67,7 +67,7 @@ URL 组合具备以下元素：
 
 查询字符串 `search=*` 是一个未指定的搜索，它与 NULL 或空搜索等效。 它的用处不大，但却是你能执行的最简单的搜索。
 
-可选择将 `$count=true` 添加到 URL，以便返回一个符合搜索条件的文档的计数。 在空搜索字符串上，这就是索引中的所有文档（在“纽约工作岗位”例子中，数量约为 2800）。
+可选择将 `$count=true` 添加到 URL，以便返回一个符合搜索条件的文档的计数。 在空搜索字符串上，这是索引（在 NYC 作业的情况下约为 2800）中的所有文档。
 
 ## <a name="how-to-invoke-simple-query-parsing"></a>如何调用简单查询分析
 
@@ -75,7 +75,7 @@ URL 组合具备以下元素：
 
 ## <a name="example-1-field-scoped-query"></a>示例 1：字段范围查询
 
-第一个示例并未特定于分析器，但我们将先使用它来介绍第一个基本查询概念，即“包含”。 本示例显示查询执行情况以及对几个特定字段的响应。 当你的工具是 Postman 或搜索资源管理器时，了解如何构建可读的 JSON 响应非常重要。 
+第一个示例不是特定于分析器，但我们会引导它引入第一个基本查询概念：包含。 本示例显示查询执行情况以及对几个特定字段的响应。 当你的工具是 Postman 或搜索资源管理器时，了解如何构建可读的 JSON 响应非常重要。 
 
 出于简洁目的，该查询仅针对 business_title 字段并指定仅返回职位。 语法是 searchFields 和 select，前者将查询执行限制为只执行 business_title 字段，后者指定响应中包含哪些字段。
 
@@ -85,7 +85,7 @@ URL 组合具备以下元素：
 searchFields=business_title&$select=business_title&search=*
 ```
 
-下面是同一查询，在逗号分隔列表中具有多个字段。
+下面是以逗号分隔的列表中具有多个字段的相同查询。
 
 ```http
 search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
@@ -101,7 +101,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
   ![Postman 示例响应](media/search-query-lucene-examples/postman-sample-results.png)
 
-你可能已经注意到响应中的搜索分数。 由于搜索不是全文搜索或者没有应用条件，因此不存在排名时评分统统为 1。 对于不带条件的空搜索，按任意顺序返回行。 包括实际条件时，能看到搜索分数变成有意义的值。
+你可能已经注意到响应中的搜索分数。 由于搜索不是全文搜索或者没有应用条件，因此不存在排名时评分统统为 1。 对于不带条件的空搜索，按任意顺序返回行。 包括实际条件时，会看到搜索评分演变成有意义的值。
 
 ## <a name="example-2-look-up-by-id"></a>示例 2：按 ID 查找
 
@@ -128,7 +128,7 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "salary_frequency eq 'Annual' and salary_range_from gt 90000",
-      "select": "select=job_id, business_title, agency, salary_range_from",
+      "select": "job_id, business_title, agency, salary_range_from",
       "count": "true"
     }
 ```
@@ -213,7 +213,7 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
       "count": "true"
     }
 ```
-为方便阅读结果，搜索结果已剪裁，只包含职位 ID、职务和工位。 起始坐标是从索引中的随机文档（在本例中，为斯塔顿岛上的某个工位）获取的。
+为了获得更具可读性的结果，搜索结果将被剪裁，以包括作业 ID、职务和工作位置。 起始坐标是从索引中的随机文档（在本例中，为斯塔顿岛上的某个工位）获取的。
 
 也可以使用 GET 在 Postman 中尝试此查询：
 
@@ -243,7 +243,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search="fire department"
 ```
 
-## <a name="example-7-booleans-with-searchmode"></a>示例 7：使用 searchMode 的布尔值
+## <a name="example-7-booleans-with-searchmode"></a>示例 7：结合布尔值与 searchMode
 
 简单语法支持字符形式的布尔运算符 (`+, -, |`) 。 searchMode 参数用于在精准率和召回率之间做出权衡，其中 `searchMode=any` 倾向于召回率（符合任何条件的文档都能进入结果集），而 `searchMode=all` 倾向于精准率（符合所有条件的文档才能进入结果集）。 默认为 `searchMode=any`；在使用多个运算符堆叠查询并获取更广泛而不是更窄的结果时，这可能会产生混淆。 在使用 NOT 时尤为如此，该运算符导致结果包括所有“不含”特定字词的文档。
 

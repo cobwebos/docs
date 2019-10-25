@@ -1,5 +1,6 @@
 ---
-title: 管理令牌（Microsoft 身份验证库）| Azure
+title: 管理令牌（Microsoft 身份验证库）
+titleSuffix: Microsoft identity platform
 description: 了解如何使用 Microsoft 身份验证库 (MSAL) 获取和缓存令牌。
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f7914744073f82d8a35d3679a1c65459e10b2f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: aaa6a939fce3eae8b1367c2d01e947e813fa5437
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532899"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803299"
 ---
 # <a name="acquiring-and-caching-tokens-using-msal"></a>使用 MSAL 获取和缓存令牌
 客户端可以使用[访问令牌](access-tokens.md)安全调用受 Azure 保护的 Web API。 可以使用 Microsoft 身份验证库 (MSAL) 通过多种方法获取令牌。 有些方法需要用户通过 Web 浏览器进行交互。 而有些方法则不需要任何用户交互。 一般情况下，获取令牌的方法取决于应用程序是公共客户端应用程序（桌面或移动应用）还是机密客户端应用程序（Web 应用、Web API，或类似于 Windows 服务的后台程序应用程序）。

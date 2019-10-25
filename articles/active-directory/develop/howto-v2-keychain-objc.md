@@ -1,5 +1,6 @@
 ---
-title: 配置密钥链 |Microsoft 标识平台
+title: 配置密钥链
+titleSuffix: Microsoft identity platform
 description: 了解如何配置密钥链，使应用可以在密钥链中缓存令牌。
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46dc3a44041acd90dbab449215138eeecbda7105
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 69991d105ff3523310f54e65596f2f379b547052
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264180"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803801"
 ---
 # <a name="configure-keychain"></a>配置密钥链
 
@@ -34,21 +35,21 @@ ms.locfileid: "72264180"
 
 ### <a name="ios"></a>iOS
 
-默认情况下，MSAL on iOS 使用 @no__t 0 访问组。 这是 MSAL 和 Azure AD 身份验证库（ADAL） Sdk 使用的共享访问组，可确保同一发布者的多个应用之间的最佳单一登录（SSO）体验。
+默认情况下，MSAL on iOS 使用 `com.microsoft.adalcache` 访问组。 这是 MSAL 和 Azure AD 身份验证库（ADAL） Sdk 使用的共享访问组，可确保同一发布者的多个应用之间的最佳单一登录（SSO）体验。
 
-在 iOS 上，将 @no__t 0 密钥链组添加到 XCode 中**项目 @no__t 设置**下的应用的权利 **，@no__t-** 4**密钥链共享**
+在 iOS 上的 "**项目 > 设置**" 下的 "XCode" 中，将 "`com.microsoft.adalcache` 密钥链组添加到你的应用的**权利 > ** **密钥链共享**"
 
 ### <a name="macos"></a>macOS
 
-默认情况下，macOS 上的 MSAL 使用 @no__t 的访问组。
+默认情况下，macOS 上的 MSAL 使用 `com.microsoft.identity.universalstorage` 访问组。
 
-由于 macOS 密钥链的限制，MSAL `access group` 不会直接转换为 KSecAttrAccessGroup 10.14 及更早版本上的密钥链访问组属性（参见[macOS](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)）。 但是，它的行为与 SSO 的行为类似，这是为了确保同一 Apple 开发人员分发的多个应用程序可以具有无提示 SSO。
+由于 macOS 密钥链限制，MSAL 的 `access group` 不会直接转换为 KSecAttrAccessGroup 10.14 及更早版本上的密钥链访问组属性（参见[macOS](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)）。 但是，它的行为与 SSO 的行为类似，这是为了确保同一 Apple 开发人员分发的多个应用程序可以具有无提示 SSO。
 
 在 macOS 10.15 后（macOS Catalina），MSAL 使用密钥链访问组属性来实现无提示 SSO，与 iOS 类似。
 
 ## <a name="custom-keychain-access-group"></a>自定义密钥链访问组
 
-如果你想要使用不同的密钥链访问组，则在创建 `MSALPublicClientApplication` 之前，可以传递自定义 @no__t 组，如下所示：
+如果要使用不同的密钥链访问组，请在创建 `MSALPublicClientApplication`之前传递自定义 `MSALPublicClientApplicationConfig` 组，如下所示：
 
 Objective-C：
 

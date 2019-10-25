@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 7483d31b5e4d375d817019b1f81de98a05ef7530
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 5399ebaa9526bd2c92a8d12eaa5cd8e5f53b1037
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550247"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72799360"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -177,7 +177,7 @@ Azure 逻辑应用支持通过网关执行的写入操作，包括插入和更�
 
 | 名称 | Limit |
 | ---- | ----- |
-| 每个 Azure 订阅中具有系统分配的托管标识的逻辑应用数量 | 100 |
+| 每个区域的 Azure 订阅中具有系统分配的标识的逻辑应用数 | 100 |
 |||
 
 <a name="integration-account-limits"></a>

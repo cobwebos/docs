@@ -1,6 +1,7 @@
 ---
-title: 使用选项（适用于 .NET 的 Microsoft 身份验证库）实例化机密客户端应用 | Azure
-description: 了解如何通过适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 使用配置选项实例化机密客户端应用程序。
+title: 使用选项实例化机密客户端应用（适用于 .NET 的 Microsoft 身份验证库）
+titleSuffix: Microsoft identity platform
+description: 了解如何使用用于 .NET 的 Microsoft 身份验证库（MSAL.NET）的配置选项实例化机密客户端应用程序。
 services: active-directory
 documentationcenter: dev-center-name
 author: TylerMSFT
@@ -17,29 +18,29 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47a05959311b7f62f88a7b474b907982e005b98b
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: e382a8d0b5d6f08eafc5621d0e7591111a5e286b
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532631"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802814"
 ---
-# <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>通过 MSAL.NET 使用配置选项实例化机密客户端应用程序
+# <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>使用 MSAL.NET 实例化包含配置选项的机密客户端应用程序
 
-本文介绍如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 实例化[机密客户端应用程序](msal-client-applications.md)。  应用程序使用设置文件中定义的配置选项进行实例化。
+本文介绍如何使用适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）实例化[机密客户端应用程序](msal-client-applications.md)。  使用在设置文件中定义的配置选项对应用程序进行实例化。
 
-在初始化应用程序之前，首先需要[注册](quickstart-register-app.md)它，以便应用可以与 Microsoft 标识平台集成。 注册后，可能需要以下信息（可在 Azure 门户中找到）：
+在初始化应用程序之前，首先需要[注册](quickstart-register-app.md)它，以便您的应用程序可以与 Microsoft 标识平台集成。 注册后，你可能需要以下信息（可在 Azure 门户中找到）：
 
-- 客户端 ID（表示 GUID 的字符串）
-- 标识提供者 URL（为实例命名）和应用程序的登录受众。 这两个参数统称为颁发机构。
-- 租户 ID：如果你编写的业务线应用程序（也称为单租户应用程序）专用于自己的组织。
-- 应用程序机密（客户端机密字符串）；对于机密客户端应用，需要获取证书（类型为 X509Certificate2）。
-- 对于 Web 应用，有时对于公共客户端应用（特别是当你的应用需要使用中转站时），还将需要设置 redirectUri，标识提供者将在其中使用安全令牌联系你的应用程序。
+- 客户端 ID （表示 GUID 的字符串）
+- 应用程序的标识提供程序 URL （名为实例）和登录受众。 这两个参数统称为颁发机构。
+- 如果你只是为你的组织编写一个业务线应用程序（也称为单租户应用程序），则租户 ID。
+- 如果是机密客户端应用，则为应用程序密钥（客户端密码字符串）或证书（类型为 X509Certificate2）。
+- 对于 web 应用，有时用于公共客户端应用程序（特别是当你的应用程序需要使用代理时），你还将设置 redirectUri，其中标识提供程序将使用安全令牌联系回你的应用程序。
 
-## <a name="configure-the-application-from-the-config-file"></a>根据配置文件配置应用程序
-MSAL.NET 中选项的属性名称与 ASP.NET Core 中 `AzureADOptions` 的属性名称匹配，因此不需编写任何粘附代码。
+## <a name="configure-the-application-from-the-config-file"></a>从配置文件配置应用程序
+MSAL.NET 中选项的属性名称与 ASP.NET Core 中的 `AzureADOptions` 属性的名称相匹配，因此不需要编写任何粘附代码。
 
-*appsettings.json* 文件中介绍了 ASP.NET Core 应用程序配置：
+*Appsettings*文件中描述了一个 ASP.NET Core 应用程序配置：
 
 ```json
 {
@@ -62,9 +63,9 @@ MSAL.NET 中选项的属性名称与 ASP.NET Core 中 `AzureADOptions` 的属性
 }
 ```
 
-从 MSAL.NET v3.x 开始，可以根据配置文件配置机密客户端应用程序。
+从 MSAL.NET v3. x 开始，你可以从配置文件配置你的机密客户端应用程序。
 
-在需要配置和实例化应用程序的类中，需声明 `ConfidentialClientApplicationOptions` 对象。  使用 appconfig `IConfigurationRoot.Bind()` [nuget 包](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)中的方法将从源 (包括文件) 读取的配置绑定到应用程序选项的实例:
+在要配置和实例化应用程序的类中，需要声明一个 `ConfidentialClientApplicationOptions` 对象。  使用 appconfig [nuget 包](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)中的 `IConfigurationRoot.Bind()` 方法，将源中读取的配置（包括文件）绑定到应用程序选项的实例：
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -74,7 +75,7 @@ _applicationOptions = new ConfidentialClientApplicationOptions();
 configuration.Bind("AzureAD", _applicationOptions);
 ```
 
-这样就可以将 *appsettings.json* 文件“AzureAD”节的内容绑定到 `ConfidentialClientApplicationOptions` 对象的相应属性。  接下来，构建 `ConfidentialClientApplication` 对象：
+这会使*appsettings*文件的 "AzureAD" 部分的内容绑定到 `ConfidentialClientApplicationOptions` 对象的相应属性。  接下来，生成一个 `ConfidentialClientApplication` 对象：
 
 ```csharp
 IConfidentialClientApplication app;
@@ -83,7 +84,7 @@ app = ConfidentialClientApplicationBuilder.CreateWithApplicationOptions(_applica
 ```
 
 ## <a name="add-runtime-configuration"></a>添加运行时配置
-在机密客户端应用程序中，通常会为每个用户设置一个缓存。 因此，需将缓存关联到用户，并告知应用程序生成器你需要使用它。 同样，你可以有一个动态计算的重定向 URI。 在此示例中，代码如下：
+在机密客户端应用程序中，通常每个用户都有一个缓存。 因此，您将需要获取与用户关联的缓存，并通知应用程序生成器您要使用它。 同样，您可能有一个动态计算的重定向 URI。 在这种情况下，代码如下所示：
 
 ```csharp
 IConfidentialClientApplication app;

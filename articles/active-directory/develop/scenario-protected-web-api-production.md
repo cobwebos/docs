@@ -1,6 +1,7 @@
 ---
-title: 受保护的 Web API-移动到生产环境 |Azure
-description: 了解如何生成一个受保护的 Web API （移动到生产环境）。
+title: 受保护的 Web API-转到生产
+titleSuffix: Microsoft identity platform
+description: 了解如何构建受保护的 Web API （转到生产环境）。
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,27 +16,27 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e78cb712501b86f98d3459cac6280d0484f41a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: deb5a04f23268edc112c38c993b190827fa65061
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65833114"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802518"
 ---
-# <a name="protected-web-api---move-to-production"></a>受保护的 web API-移动到生产环境
+# <a name="protected-web-api---move-to-production"></a>受保护的 web API-转到生产
 
-您已经知道了如何保护你的 web API，下面是如何您可以将其移到生产环境。
+现在，你已了解如何保护你的 web API，下面介绍了如何将它移动到生产环境。
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何调用下游 Api:
+了解如何调用下游 Api：
 
 > [!div class="nextstepaction"]
 > [方案-Web API 调用下游 API](scenario-web-api-call-api-overview.md)
 
-通过教程和示例了解更多信息：
+详细了解教程和示例：
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core web API 教程](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)

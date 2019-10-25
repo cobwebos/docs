@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: bdb0322083f842922359f0c91da77f5df81613cb
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: d91ac6d50faaadf560ae7ff9e9cce5f7bc4b180a
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675811"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803929"
 ---
 # <a name="supported-platforms"></a>支持的平台 
 
@@ -41,15 +41,12 @@ ms.locfileid: "72675811"
 
 ### Windows server 操作系统<a name="os-windows"></a>
 
-[!div class="mx-tableFixed"]
 |OS|Azure 安全中心支持|支持与 Microsoft Defender ATP 集成|
-|---|---|---|
+|:---|:-:|:-:|
 |Windows Server 2019|✔|X|
 |Windows Server 2016|✔|✔|
 |Windows Server 2012 R2|✔|✔|
-|Windows Server 2012|✔|✔|
 |Windows Server 2008 R2|✔|✔|
-|Windows Server 2008|✔|✔|
 
 若要详细了解上面列出的 Windows 操作系统所支持的功能，请参阅[虚拟机/服务器支持的功能](security-center-services.md##vm-server-features)。
 

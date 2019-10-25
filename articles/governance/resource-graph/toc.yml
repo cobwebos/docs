@@ -17,6 +17,11 @@
     - name: 运行自己的第一个查询 - PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: first-query-powershell.md
+- name: 教程
+  items:
+    - name: 在 Azure 门户中创建和共享查询
+      displayName: 'query, portal'
+      href: ./tutorials/create-share-query.md
 - name: 示例
   items:
     - name: 初学者查询

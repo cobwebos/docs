@@ -1,23 +1,22 @@
 ---
-title: 升级到 Azure 搜索 .NET SDK 版本 5 - Azure 搜索
+title: 升级到 Azure 搜索 .NET SDK 版本5
+titleSuffix: Azure Cognitive Search
 description: 从旧版本将代码迁移到 Azure 搜索 .NET SDK 版本 5。 了解新增功能和所需的代码更改。
-author: brjohnstmsft
 manager: nitinme
-services: search
-ms.service: search
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: c64d13e4bcad11ef729f34ee71b7c7461a507fc7
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: bb0cd191ba7e5939c55d11b484ed7a2c422f8c6d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183261"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793026"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>升级到 Azure 搜索 .NET SDK 版本 5
+# <a name="upgrade-to-azure-search-net-sdk-version-5"></a>升级到 Azure 搜索 .NET SDK 版本5
 
 如果使用的是版本 4.0-preview 或更早版本的 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)，本文有助于升级应用程序，以便使用版本 5。
 
@@ -68,9 +67,9 @@ Azure 搜索 .NET SDK 的版本 5 针对 Azure 搜索 REST API 的最新正式�
 版本 5 中最本质的重大更改是 `Microsoft.Azure.Search` 程序集及其内容已被分成四个独立的程序集，现在以四个独立的 NuGet 包进行分发：
 
  - `Microsoft.Azure.Search`：这是一个元数据包，其中包含所有其他 Azure 搜索包作为依赖项。 如果从 SDK 的早期版本进行升级，只需升级此包，重新生成就可开始使用新版本。
- - `Microsoft.Azure.Search.Data`：如果使用 Azure 搜索开发 .NET 应用程序，则使用此包，并且只需查询或更新索引中的文档。 如果还需要创建或更新索引、同义词映射或其他服务级资源，请改用 `Microsoft.Azure.Search` 包。
+ - `Microsoft.Azure.Search.Data`：如果你使用 Azure 搜索开发 .NET 应用程序，则可使用此程序包，并且只需查询或更新索引中的文档。 如果还需要创建或更新索引、同义词映射或其他服务级资源，请改用 `Microsoft.Azure.Search` 包。
  - `Microsoft.Azure.Search.Service`：如果在 .NET 中开发自动化以管理 Azure 搜索索引、同义词映射、索引器、数据源或其他服务级资源，请使用此包。 如果只需要查询或更新索引中的文档，请改用 `Microsoft.Azure.Search.Data` 包。 如果需要 Azure 搜索的所有功能，请改用 `Microsoft.Azure.Search` 包。
- - `Microsoft.Azure.Search.Common`：Azure 搜索 .NET 库需要的常见类型。 不应在应用程序中直接使用此包；它只是用作依赖项。
+ - `Microsoft.Azure.Search.Common`：Azure 搜索 .NET 库需要的常见类型。 无需直接在应用程序中使用此程序包，它仅作为依赖使用。
  
 由于许多类型在程序集之间移动，所以从技术上来说这是重大更改。 这就是为什么需要重新生成应用程序才能升级到 SDK 的版本 5。
 
@@ -99,6 +98,6 @@ Azure 搜索 .NET SDK 的版本 5 针对 Azure 搜索 REST API 的最新正式�
 ## <a name="conclusion"></a>结束语
 如果需要有关如何使用 Azure 搜索 .NET SDK 的更多详细信息，请参阅 [.NET 操作指南](search-howto-dotnet-sdk.md)。
 
-我们欢迎你对 SDK 提供反馈。 如果遇到问题，请随时通过 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search) 向我们寻求帮助。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 务必在问题标题上加前缀“[Azure 搜索]”。
+我们欢迎你对 SDK 提供反馈。 如果遇到问题，请随时咨询获取有关[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search)的帮助。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 务必在问题标题上加前缀“[Azure 搜索]”。
 
 感谢使用 Azure 搜索！

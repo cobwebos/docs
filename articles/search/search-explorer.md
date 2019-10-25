@@ -1,26 +1,25 @@
 ---
-title: 使用搜索资源管理器工具在 Azure 门户中查询数据-Azure 搜索
-description: 搜索资源管理器内置于 Azure 门户中，可用于在 Azure 搜索中浏览内容和验证查询。 输入用于术语或短语搜索的字符串，或者为高级语法输入完全限定的搜索表达式。
+title: 使用搜索资源管理器工具在 Azure 门户中查询数据
+titleSuffix: Azure Cognitive Search
+description: 搜索资源管理器内置于 Azure 门户中，可用于在 Azure 认知搜索中浏览内容和验证查询。 输入用于术语或短语搜索的字符串，或者为高级语法输入完全限定的搜索表达式。
 manager: nitinme
 author: HeidiSteen
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 09/20/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: fe66787ea82a8f97470199e99faadb72b85c83b2
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 0bb50bd50c58b85f1d5de100c34d00d114a9ed77
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178130"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792967"
 ---
-# <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-search"></a>使用 Azure 门户中的搜索资源管理器在 Azure 搜索中查询文档 
+# <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-cognitive-search"></a>使用 Azure 门户中的搜索资源管理器在 Azure 中查询文档认知搜索 
 
-本文介绍如何使用搜索浏览器在 Azure 门户中查询现有 Azure 搜索索引。 您可以从命令栏开始搜索资源管理器，以将简单或完整的 Lucene 查询表达式提交到您的服务中的任何现有索引。 
+本文说明如何使用 Azure 门户中的**搜索资源管理器**查询现有 Azure 认知搜索索引。 您可以从命令栏开始搜索资源管理器，以将简单或完整的 Lucene 查询表达式提交到您的服务中的任何现有索引。 
 
-   ![门户中的搜索资源管理器命令](./media/search-explorer/search-explorer-cmd2.png "Search explorer command in porta")
+   ![门户中的搜索资源管理器命令](./media/search-explorer/search-explorer-cmd2.png "门户中的搜索资源管理器命令")
 
 ## <a name="basic-search-strings"></a>基本搜索字符串
 
@@ -38,11 +37,11 @@ ms.locfileid: "71178130"
 
    **结果**
    
-   ![空查询示例](./media/search-explorer/search-explorer-example-empty.png "不合格查询或空查询示例")
+   ![空查询示例](./media/search-explorer/search-explorer-example-empty.png "未限定的或空的查询示例")
 
 ### <a name="example-2---free-text-search"></a>示例 2 - 自定义文本搜索
 
-自由格式查询（带或不带运算符）可用于模拟从自定义应用发送到 Azure 搜索的用户定义查询。 请注意，如果提供查询词或表达式，将用到搜索级别。 以下示例对自定义文本搜索进行了说明。
+带有或不带运算符的自由格式查询用于模拟从自定义应用发送到 Azure 认知搜索的用户定义查询。 请注意，如果提供查询词或表达式，将用到搜索级别。 以下示例对自定义文本搜索进行了说明。
 
    ```Input
    Seattle apartment "Lake Washington" miele OR thermador appliance
@@ -52,7 +51,7 @@ ms.locfileid: "71178130"
 
    可以使用 Ctrl-F 在结果中搜索感兴趣的特定字词。
 
-   ![自定义文本查询示例](./media/search-explorer/search-explorer-example-freetext.png "Free text query example")
+   ![自由文本查询示例](./media/search-explorer/search-explorer-example-freetext.png "自由文本查询示例")
 
 ### <a name="example-3---count-of-matching-documents"></a>示例 3 - 匹配文档计数 
 
@@ -79,7 +78,7 @@ ms.locfileid: "71178130"
 
 ### <a name="example-5---return-next-batch-of-results"></a>示例 5 - 返回下一批结果
 
-Azure 搜索根据搜索级别返回前 50 个匹配项。 若要获取下一组匹配的文档，请附加“$top=100,&$skip=50”，这会将结果集增加为 100 个文档（默认值为 50，最大值为 1000）并跳过前 50 个文档。 前面提到，需要提供搜索条件，例如查询词或表达式，以便获得排列好的结果。 请注意，搜索分数随搜索结果中搜索的深入而降低。
+Azure 认知搜索根据搜索排名返回前50个匹配项。 若要获取下一组匹配的文档，请附加“$top=100,&$skip=50”，这会将结果集增加为 100 个文档（默认值为 50，最大值为 1000）并跳过前 50 个文档。 前面提到，需要提供搜索条件，例如查询词或表达式，以便获得排列好的结果。 请注意，搜索分数随搜索结果中搜索的深入而降低。
 
    ```Input
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true&$top=100&$skip=50
@@ -87,7 +86,7 @@ Azure 搜索根据搜索级别返回前 50 个匹配项。 若要获取下一组
 
    **结果**
 
-   ![批处理搜索结果](./media/search-explorer/search-explorer-example-topskip.png "返回下一批的搜索结果")
+   ![批处理搜索结果](./media/search-explorer/search-explorer-example-topskip.png "返回下一批搜索结果")
 
 ## <a name="filter-expressions-greater-than-less-than-equal-to"></a>筛选表达式（大于、小于、等于）
 
@@ -99,7 +98,7 @@ Azure 搜索根据搜索级别返回前 50 个匹配项。 若要获取下一组
    
    **结果**
 
-   ![筛选表达式](./media/search-explorer/search-explorer-example-filter.png "按条件筛选")
+   ![筛选器表达式](./media/search-explorer/search-explorer-example-filter.png "按条件筛选")
 
 ## <a name="order-by-expressions"></a>Order-by 表达式
 
@@ -123,7 +122,7 @@ Azure 搜索根据搜索级别返回前 50 个匹配项。 若要获取下一组
 
 2. 在“服务概述”页上，单击“搜索资源管理器”。
 
-   ![门户中的搜索资源管理器命令](./media/search-explorer/search-explorer-cmd2.png "Search explorer command in porta")
+   ![门户中的搜索资源管理器命令](./media/search-explorer/search-explorer-cmd2.png "门户中的搜索资源管理器命令")
 
 3. 选择要查询的索引。
 
@@ -133,7 +132,7 @@ Azure 搜索根据搜索级别返回前 50 个匹配项。 若要获取下一组
 
 5. 选择索引和 API 版本后，在搜索栏中输入搜索词或完全限定的查询表达式，然后单击“搜索”执行搜索。
 
-   ![输入搜索词并单击“搜索”](./media/search-explorer/search-explorer-query-string-example.png "Enter search terms and click Search")
+   ![输入搜索词，然后单击 "搜索"](./media/search-explorer/search-explorer-query-string-example.png "输入搜索词，然后单击 "搜索"")
 
 在“搜索资源管理器”中搜索的提示：
 
@@ -143,7 +142,7 @@ Azure 搜索根据搜索级别返回前 50 个匹配项。 若要获取下一组
 
 + 自由格式查询类似于在商用 Web 浏览器中输入的内容，可用于测试最终用户体验。 例如，假设有一个内置的房地产示例索引，可以输入“华盛顿湖西雅图公寓”，再使用 Ctrl-F 在搜索结果中查找字词。 
 
-+ 必须使用 Azure 搜索支持的语法组织查询和筛查表达式。 默认为[简单语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)，但可选择使用[完整 Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 进行更强大的查询。 [筛选表达式](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)采用的是 OData 语法。
++ 查询和筛选器表达式必须用 Azure 认知搜索支持的语法进行表述。 默认为[简单语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)，但可选择使用[完整 Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 进行更强大的查询。 [筛选表达式](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)采用的是 OData 语法。
 
 
 ## <a name="next-steps"></a>后续步骤

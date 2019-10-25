@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 09/24/2019
-ms.openlocfilehash: 9d132faf0b4d1de232e2b7e6e5ab6730978e27a8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 83c2264cd3aa3025e911db5079747930d1ae096b
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555223"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809455"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>启用用于 VM 的 Azure Monitor （预览）概述
 
@@ -157,12 +157,12 @@ ms.locfileid: "72555223"
 
 用于 VM 的 Azure Monitor 中的映射功能将从 Microsoft 依赖关系代理获取其数据。 依赖项代理依赖于使用 Log Analytics 代理连接到 Log Analytics。 因此，您的系统必须安装 Log Analytics 代理，并使用依赖关系代理进行配置。
 
-无论是为单个 Azure VM 启用用于 VM 的 Azure Monitor 还是使用大规模部署方法，请使用 Azure VM 依赖关系代理扩展来安装代理作为体验的一部分。
+无论是为单个 Azure VM 启用用于 VM 的 Azure Monitor 还是使用大规模部署方法，都可以使用适用于[Windows](../../virtual-machines/extensions/agent-dependency-windows.md)或[LINUX](../../virtual-machines/extensions/agent-dependency-linux.md)的 Azure VM 依赖关系代理扩展来安装代理作为体验的一部分。
 
 >[!NOTE]
 >本部分中所述的以下信息也适用于[服务映射解决方案](service-map.md)。  
 
-在混合环境中，可以手动下载和安装依赖关系代理。 如果 Vm 托管在 Azure 外部，请使用自动部署方法。
+在混合环境中，可以手动下载和安装依赖关系代理，也可以使用自动化方法。
 
 下表描述了映射功能在混合环境中支持的连接源。
 

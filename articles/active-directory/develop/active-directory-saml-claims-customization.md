@@ -1,5 +1,6 @@
 ---
-title: 在 Azure AD 中自定义企业应用的 SAML 令牌声明Microsoft Docs
+title: 在 Azure AD 中自定义企业应用的 SAML 令牌声明
+titleSuffix: Microsoft identity platform
 description: 了解如何为 Azure AD 中的企业应用程序自定义 SAML 令牌中颁发的声明。
 services: active-directory
 documentationcenter: ''
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4f26c82d4cda6ce3d8bf01c7fd52fa579e86dcf
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
-ms.translationtype: MT
+ms.openlocfilehash: a9994d5f882e7bf27ac822a69c4310bc7c6fabe1
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240234"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803458"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
@@ -31,7 +32,7 @@ ms.locfileid: "72240234"
 
 “声明”是标识提供者在为某个用户颁发的令牌中陈述的有关该用户的信息。 在 [SAML 令牌](https://en.wikipedia.org/wiki/SAML_2.0)中，此数据通常包含在 SAML 属性语句中。 用户的唯一 ID（也称为名称标识符）通常显示在 SAML 主题中。
 
-默认情况下，Azure AD 向应用程序颁发 SAML 令牌，其中包含一个 @no__t 的声明，其中包含 Azure AD 中的用户用户名（也称为用户主体名称）的值，可以唯一地标识用户。 SAML 令牌还含有其他声明，其中包含用户的电子邮件地址、名字和姓氏。
+默认情况下，Azure AD 向应用程序颁发 SAML 令牌，其中包含 Azure AD 中的用户用户名（也称为用户主体名称）值的 `NameIdentifier` 声明，可以唯一地标识用户。 SAML 令牌还含有其他声明，其中包含用户的电子邮件地址、名字和姓氏。
 
 若要查看或编辑 SAML 令牌中颁发给应用程序的声明，请在 Azure 门户中打开应用程序。 然后打开 & 声明 "部分的"**用户属性**"。
 
@@ -68,13 +69,13 @@ ms.locfileid: "72240234"
 
 还支持暂时性 NameID，但在下拉列表中不可用，并且不能在 Azure 端进行配置。 若要了解有关 NameIDPolicy 属性的详细信息，请参阅[单一登录 SAML 协议](single-sign-on-saml-protocol.md)。
 
-### <a name="attributes"></a>特性
+### <a name="attributes"></a>属性
 
 为 `NameIdentifier`（或 NameID）声明选择所需的源。 可以从以下选项中选择。
 
 | 名称 | 描述 |
 |------|-------------|
-| Email | 用户的电子邮件地址 |
+| 电子邮件 | 用户的电子邮件地址 |
 | userprincipalName | 用户的用户主体名称（UPN） |
 | onpremisessamaccount | 已从本地 Azure AD 同步的 SAM 帐户名 |
 | objectid | Azure AD 中的用户的 objectid |
@@ -82,7 +83,7 @@ ms.locfileid: "72240234"
 | 目录扩展 | 目录扩展[使用 Azure AD Connect 同步从本地 Active Directory 同步](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
 | 扩展属性 1-15 | 用于扩展 Azure AD 架构的本地扩展属性 |
 
-有关详细信息，请参阅 [Table 3：每个 source @ no__t 的有效 ID 值。
+有关详细信息，请参阅[表3：每个源的有效 ID 值](active-directory-claims-mapping.md#table-3-valid-id-values-per-source)。
 
 你还可以将任何常量（静态）值分配给在 Azure AD 中定义的任何声明。 请按照以下步骤分配常量值：
 
@@ -102,10 +103,10 @@ ms.locfileid: "72240234"
 
 你还可以使用声明转换函数。
 
-| Functions | 描述 |
+| 函数 | 描述 |
 |----------|-------------|
 | **ExtractMailPrefix()** | 删除电子邮件地址或用户主体名称中的域后缀。 这只会提取传递用户名的第一部分（例如，“joe_smith”而不是 joe_smith@contoso.com）。 |
-| **Join()** | 将属性与已验证的域联接。 如果所选用户标识符值具有域，则将提取用户名以追加所选的已验证域。 例如，如果选择电子邮件 (joe_smith@contoso.com) 作为用户标识符值，并选择 contoso.onmicrosoft.com 作为已验证的域，则将生成 joe_smith@contoso.onmicrosoft.com。 |
+| **Join （）** | 将属性与已验证的域联接。 如果所选用户标识符值具有域，则将提取用户名以追加所选的已验证域。 例如，如果选择电子邮件 (joe_smith@contoso.com) 作为用户标识符值，并选择 contoso.onmicrosoft.com 作为已验证的域，则将生成 joe_smith@contoso.onmicrosoft.com。 |
 | **ToLower()** | 将所选属性的字符转换为小写字符。 |
 | **ToUpper()** | 将所选属性的字符转换为大写字符。 |
 
@@ -121,15 +122,15 @@ ms.locfileid: "72240234"
 
 你还可以使用声明转换函数。
 
-| Functions | 描述 |
+| 函数 | 描述 |
 |----------|-------------|
 | **ExtractMailPrefix()** | 删除电子邮件地址或用户主体名称中的域后缀。 这只会提取传递用户名的第一部分（例如，“joe_smith”而不是 joe_smith@contoso.com）。 |
-| **Join()** | 通过联接两个属性来创建新的值。 或者，您可以在两个属性之间使用分隔符。 |
+| **Join （）** | 通过联接两个属性来创建新的值。 或者，您可以在两个属性之间使用分隔符。 |
 | **ToLower()** | 将所选属性的字符转换为小写字符。 |
 | **ToUpper()** | 将所选属性的字符转换为大写字符。 |
-| **Contains()** | 如果输入与指定的值匹配，则输出一个属性或常量。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果你想要发出一个声明，其中值为用户的电子邮件地址（如果它包含域 "@contoso.com"），否则你需要输出用户主体名称。 为此，需要配置以下值：<br/>*参数1（输入）* ： user. email<br/>*值*： "@contoso.com"<br/>参数2（输出）： user. email<br/>参数3（如果没有匹配项，则为输出）：用户 userprincipalname |
-| **EndWith()** | 如果输入以指定的值结束，则输出特性或常数。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果您想要发出一个声明，其中值为用户的雇员 id （如果雇员 id 以 "000" 结尾），否则您需要输出一个扩展属性。 为此，需要配置以下值：<br/>*参数1（输入）* ：用户 id<br/>*值*：000<br/>参数2（输出）：用户 id<br/>参数3（如果没有匹配项，则为输出）： extensionattribute1 |
-| **StartWith()** | 如果输入以指定值开头，则输出特性或常数。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果你想要发出一个声明，其中值为用户的雇员 id （如果国家/地区以 "US" 开头），否则你需要输出一个扩展属性。 为此，需要配置以下值：<br/>*参数1（输入）* ：用户所在的国家/地区<br/>*值*：反馈<br/>参数2（输出）：用户 id<br/>参数3（如果没有匹配项，则为输出）： extensionattribute1 |
+| **Contains （）** | 如果输入与指定的值匹配，则输出一个属性或常量。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果你想要发出一个声明，其中值为用户的电子邮件地址（如果它包含域 "@contoso.com"），否则你需要输出用户主体名称。 为此，需要配置以下值：<br/>*参数1（输入）* ： user. email<br/>*值*： "@contoso.com"<br/>参数2（输出）： user. email<br/>参数3（如果没有匹配项，则为输出）：用户 userprincipalname |
+| **EndWith()** | 如果输入以指定的值结束，则输出特性或常数。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果您想要发出一个声明，其中值为用户的雇员 id （如果雇员 id 以 "000" 结尾），否则您需要输出一个扩展属性。 为此，需要配置以下值：<br/>*参数1（输入）* ：用户 id<br/>*值*： "000"<br/>参数2（输出）：用户 id<br/>参数3（如果没有匹配项，则为输出）： extensionattribute1 |
+| **StartWith()** | 如果输入以指定值开头，则输出特性或常数。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果你想要发出一个声明，其中值为用户的雇员 id （如果国家/地区以 "US" 开头），否则你需要输出一个扩展属性。 为此，需要配置以下值：<br/>*参数1（输入）* ：用户所在的国家/地区<br/>*值*： "US"<br/>参数2（输出）：用户 id<br/>参数3（如果没有匹配项，则为输出）： extensionattribute1 |
 | **提取（）-匹配后** | 返回与指定的值匹配的子字符串。<br/>例如，如果输入的值为 "Finance_BSimon"，则匹配值为 "Finance_"，则声明的输出为 "BSimon"。 |
 | **提取（）-匹配之前** | 返回子字符串，直到它与指定的值匹配。<br/>例如，如果输入的值为 "BSimon_US"，则匹配值为 "_US"，则声明的输出为 "BSimon"。 |
 | **提取（）-匹配时** | 返回子字符串，直到它与指定的值匹配。<br/>例如，如果输入的值为 "Finance_BSimon_US"，则第一个匹配值为 "Finance_"，第二个匹配值为 "_US"，则声明的输出为 "BSimon"。 |

@@ -1,5 +1,6 @@
 ---
 title: Azure Active Directory 中的单租户和多租户应用
+titleSuffix: Microsoft identity platform
 description: 了解 Azure AD 中的单租户和多租户应用的功能和差异。
 services: active-directory
 documentationcenter: ''
@@ -17,16 +18,16 @@ ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9035cc629a11c125c1b6351bd4bff9f5576f7baf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6aa8f63b6e7355ae387a321acf77683fac22e028
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111066"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803643"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Azure Active Directory 中的租户
 
-Azure Active Directory (Azure AD) 将用户和应用之类的对象组织到称为“租户”的组中。  租户允许管理员针对组织中的用户以及组织拥有的应用设置策略，以满足其安全和运营策略。 
+Azure Active Directory (Azure AD) 将用户和应用之类的对象组织到称为“租户”的组中。 租户允许管理员针对组织中的用户以及组织拥有的应用设置策略，以满足其安全和运营策略。 
 
 ## <a name="who-can-sign-in-to-your-app"></a>谁可以登录到你的应用？
 
@@ -36,7 +37,7 @@ Azure Active Directory (Azure AD) 将用户和应用之类的对象组织到称�
 
 在 Azure 门户中，可以通过如下所述设置受众来将应用配置为单租户或多租户的。
 
-| 目标受众 | 单/多租户 | 谁可以登录 | 
+| 受众 | 单/多租户 | 谁可以登录 | 
 |----------|--------| ---------|
 | 仅此目录中的帐户 | 单租户 | 目录中的所有用户和来宾帐户都可以使用应用程序或 API。<br>*如果目标受众在组织内部，请使用此选项。* |
 | 任何 Azure AD 目录中的帐户 | 多租户 | 拥有 Microsoft 工作或学校帐户的所有用户和来宾都可以使用应用程序或 API。 这包括使用 Office 365 的学校和企业。<br>*如果目标受众是企业或教育行业客户，请使用此选项。* |
@@ -46,7 +47,7 @@ Azure Active Directory (Azure AD) 将用户和应用之类的对象组织到称�
 
 由于 IT 管理员可能会在其租户中设置大量的不同策略，因此，构建优秀的多租户应用可能很难。 如果你选择构建多租户应用，请遵循以下最佳做法：
 
-* 在已配置的租户中测试您的应用程序[条件性访问策略](conditional-access-dev-guide.md)。
+* 在配置了[条件访问策略](conditional-access-dev-guide.md)的租户中测试应用。
 * 遵循最小用户访问权限的原则，确保应用只请求它实际需要的权限。 避免请求需要管理员同意的权限，因为这可能会完全阻止某些组织中的用户访问应用。 
 * 为作为应用的一部分公开的任何权限提供合适的名称和说明。 这可帮助用户和管理员了解当他们尝试使用应用的 API 时他们要同意什么。 有关详细信息，请参阅[权限指南](v1-permissions-and-consent.md)中的最佳做法部分。
 

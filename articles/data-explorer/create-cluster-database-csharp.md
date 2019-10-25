@@ -7,39 +7,39 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 35f11ee9bce4dc7c68e12749f69d2f2e4253d4bc
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: b5839ef7d9f1e5498beabfcdf0f1605fc1378498
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996246"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800412"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>使用 C# 创建 Azure 数据资源管理器群集和数据库
 
 > [!div class="op_single_selector"]
-> * [门户](create-cluster-database-portal.md)
+> * [Portal](create-cluster-database-portal.md)
 > * [CLI](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [ARM 模板](create-cluster-database-resource-manager.md)
 
-Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 在本文中，将使用 C# 创建群集和数据库。
+Azure 数据资源管理器是一项快速、完全托管的数据分析服务，可实时分析从应用程序、网站和 IoT 设备等流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 本文介绍如何使用C#创建群集和数据库。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 如果尚未安装 Visual Studio 2019，可以下载并使用**免费的** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-## <a name="install-c-nuget"></a>安装 C# Nuget
+## <a name="install-c-nuget"></a>安装C# Nuget
 
-1. 安装 [Azure 数据资源管理器 (Kusto) nuget 包](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)。
+* 安装 [Azure 数据资源管理器 (Kusto) nuget 包](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)。
 
-1. 安装 [Microsoft.IdentityModel.Clients.ActiveDirectory nuget 包](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)以进行身份验证。
+* 安装 [Microsoft.IdentityModel.Clients.ActiveDirectory nuget 包](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)以进行身份验证。
 
-## <a name="authentication"></a>身份验证
-为了运行本文中的示例，我们需要 Azure AD 应用程序和可访问资源的服务主体。 选中 "[创建 Azure AD 应用程序](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)" 以创建免费的 Azure AD 应用程序，并在订阅范围内添加角色分配。 它还演示如何获取 `Directory (tenant) ID`、`Application ID` 和 `Client Secret`。
+## <a name="authentication"></a>Authentication
+为了运行本文中的示例，我们需要 Azure AD 应用程序和可访问资源的服务主体。 选中 "[创建 Azure AD 应用程序](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)" 以创建免费的 Azure AD 应用程序，并在订阅范围内添加角色分配。 它还演示如何获取 `Directory (tenant) ID`、`Application ID`和 `Client Secret`。
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>创建 Azure 数据资源管理器群集
 
@@ -74,10 +74,10 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
-   | clusterName | *mykustocluster* | 所需的群集名称。|
+   | clusterName | mykustocluster | 所需的群集名称。|
    | skuName | *Standard_D13_v2* | 将用于群集的 SKU。 |
    | 层 | *标准* | SKU 层。 |
-   | 功能 | *number* | 群集实例的数目。 |
+   | 功能 | *数字* | 群集实例的数目。 |
    | resourceGroupName | *testrg* | 将在其中创建群集的资源组名称。 |
 
     > [!NOTE]
@@ -106,8 +106,8 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
-   | clusterName | *mykustocluster* | 将在其中创建数据库的群集的名称。|
-   | databaseName | *mykustodatabase* | 数据库名称。|
+   | clusterName | mykustocluster | 将在其中创建数据库的群集的名称。|
+   | databaseName | mykustodatabase | 数据库名称。|
    | resourceGroupName | *testrg* | 将在其中创建群集的资源组名称。 |
    | softDeletePeriod | *3650:00:00:00* | 供查询使用的数据的保留时间。 |
    | hotCachePeriod | *3650:00:00:00* | 数据将在缓存中保留的时间。 |
@@ -122,7 +122,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-* 如果计划学习我们的其他文章，请保留已创建的资源。
+* 如果你打算追随我们的其他文章，请保留你创建的资源。
 * 若要清理资源，请删除群集。 删除群集时，也会删除其中的所有数据库。 使用以下命令删除群集：
 
     ```csharp

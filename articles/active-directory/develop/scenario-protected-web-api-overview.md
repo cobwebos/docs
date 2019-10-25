@@ -1,6 +1,7 @@
 ---
-title: 受保护的 Web API - 概述 | Azure
-description: 了解如何构建受保护的 Web API（概述）。
+title: 受保护的 Web API-概述
+titleSuffix: Microsoft identity platform
+description: 了解如何构建受保护的 web API （概述）。
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,27 +16,27 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02bd4b84cc7542714f6db45c12c4b5b13a7fb449
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 64418138f9eff61cc94a57be4dc5e2625e5fdebb
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852578"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803691"
 ---
-# <a name="scenario-protected-web-api"></a>方案:受保护的 Web API
+# <a name="scenario-protected-web-api"></a>方案：受保护的 web API
 
-在此方案中，我们将展示如何公开 Web API 以及如何对其进行保护，以便只有经过身份验证的用户才能访问该 API。 你需要使用工作或学校帐户或个人 Microsoft 个人帐户来使用你的 web API 来启用经过身份验证的用户。
+在此方案中，我们将向你展示如何公开 web API，以及如何对其进行保护，以便只有经过身份验证的用户才能访问 API。 你需要使用工作或学校帐户或个人 Microsoft 个人帐户来使用你的 web API 来启用经过身份验证的用户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="specifics"></a>详情
+## <a name="specifics"></a>细节
 
-以下是保护 Web API 需要了解的一些详细信息：
+下面是一些您需要了解的有关保护 web Api 的细节：
 
-- 你的应用注册必须至少公开一个范围。 Web API 接受的令牌版本取决于登录受众。
-- Web API 的代码配置必须验证调用 Web API 时使用的令牌。
+- 应用注册必须公开至少一个作用域。 Web API 接受的令牌版本取决于登录访问群体。
+- Web API 的代码配置必须验证在调用 web API 时使用的令牌。
 
 ## <a name="next-steps"></a>后续步骤
 

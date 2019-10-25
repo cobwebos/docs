@@ -1,22 +1,22 @@
 ---
-title: 使用 Az 搜索 PowerShell 脚本-Azure 搜索
-description: 使用 PowerShell 创建和配置 Azure 搜索服务。 可以向上或向下缩放服务、管理管理员和查询 api 密钥以及查询系统信息。
-author: HeidiSteen
+title: 使用 Az 进行 PowerShell 脚本搜索模块
+titleSuffix: Azure Cognitive Search
+description: 使用 PowerShell 创建和配置 Azure 认知搜索服务。 可以向上或向下缩放服务、管理管理员和查询 api 密钥以及查询系统信息。
 manager: nitinme
-services: search
-ms.service: search
+author: HeidiSteen
+ms.author: heidist
+ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 03/28/2019
-ms.author: heidist
-ms.openlocfilehash: d56ddcd48f6a1907bed865d391e1d4e64da2999d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 11/04/2019
+ms.openlocfilehash: efc61f7dc8e9d2caa53c4cbd7d932af9e1a206d1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331249"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793539"
 ---
-# <a name="manage-your-azure-search-service-with-powershell"></a>使用 PowerShell 管理 Azure 搜索服务
+# <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>通过 PowerShell 管理 Azure 认知搜索服务
 > [!div class="op_single_selector"]
 > * [Portal](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
@@ -24,7 +24,7 @@ ms.locfileid: "72331249"
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-可以在 Windows、Linux 或[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)上运行 PowerShell cmdlet 和脚本，以创建和配置 Azure 搜索。 **Az** module 将 Azure PowerShell] 扩展到[AZURE 搜索管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement)。 通过 Azure PowerShell 和**Az 搜索**，你可以执行以下任务：
+可以在 Windows、Linux 或[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)上运行 PowerShell cmdlet 和脚本，以创建和配置 Azure 认知搜索。 **Az** module 将 Azure PowerShell] 扩展到[AZURE 认知搜索管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement)。 通过 Azure PowerShell 和**Az 搜索**，你可以执行以下任务：
 
 > [!div class="checklist"]
 > * [列出订阅中的所有搜索服务](#list-search-services)
@@ -92,7 +92,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 <a name="list-search-services"></a>
 
-## <a name="list-all-azure-search-services-in-your-subscription"></a>列出订阅中的所有 Azure 搜索服务
+## <a name="list-all-azure-cognitive-search-services-in-your-subscription"></a>列出订阅中的所有 Azure 认知搜索服务
 
 以下命令来自[**Az. Resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources)，返回有关已在订阅中预配的现有资源和服务的信息。 如果你不知道已经创建了多少搜索服务，则这些命令会返回该信息，从而为你节省了到门户的行程。
 
@@ -197,11 +197,11 @@ Tags
 
 [**AzSearchAdminKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0)用于滚动管理[API 密钥](search-security-api-keys.md)。 为每个服务创建了两个管理密钥以进行经过身份验证的访问。 每个请求都需要密钥。 这两个管理密钥在功能上是等效的，它可以检索任何信息或创建和删除任何对象，从而授予对搜索服务的完全写入访问权限。 存在两个键，以便您可以在替换另一个键时使用。 
 
-一次只能重新生成一个指定为 `primary` 或 @no__t 键的。 对于不中断的服务，请记得更新所有客户端代码，以便在滚动更新主密钥时使用辅助密钥。 请避免在操作过程中更改密钥。
+一次只能重新生成一个指定为 `primary` 或 `secondary` 键的。 对于不中断的服务，请记得更新所有客户端代码，以便在滚动更新主密钥时使用辅助密钥。 请避免在操作过程中更改密钥。
 
 正如您所料，如果重新生成密钥时未更新客户端代码，使用旧密钥的请求将失败。 重新生成所有新密钥并不会将你永久锁定在你的服务中，你仍然可以通过门户访问该服务。 重新生成主密钥和辅助密钥后，可以更新客户端代码以使用新密钥，操作将相应恢复。
 
-API 密钥的值由服务生成。 不能提供用于 Azure 搜索的自定义密钥。 同样，管理员 API 密钥没有用户定义的名称。 对该密钥的引用是固定字符串，@no__t 为-0 或 @no__t 为-1。 
+API 密钥的值由服务生成。 无法提供 Azure 认知搜索要使用的自定义密钥。 同样，管理员 API 密钥没有用户定义的名称。 对该密钥的引用是固定字符串，可以是 `primary` 或 `secondary`。 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary
@@ -217,9 +217,9 @@ Primary                    Secondary
 
 ## <a name="create-or-delete-query-keys"></a>创建或删除查询密钥
 
-[**AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0)用于创建查询[API 密钥](search-security-api-keys.md)，以用于从客户端应用到 Azure 搜索索引的只读访问。 查询键用于向特定索引进行身份验证，目的是检索搜索结果。 查询键不向服务中的其他项授予只读访问权限，如索引、数据源或索引器。
+[**AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0)用于创建查询[API 密钥](search-security-api-keys.md)，以用于从客户端应用到 Azure 认知搜索索引的只读访问。 查询键用于向特定索引进行身份验证，目的是检索搜索结果。 查询键不向服务中的其他项授予只读访问权限，如索引、数据源或索引器。
 
-不能提供密钥来使用 Azure 搜索。 API 密钥由服务生成。
+无法为 Azure 认知搜索提供要使用的密钥。 API 密钥由服务生成。
 
 ```azurepowershell-interactive
 New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <query-key-name> 
@@ -257,7 +257,7 @@ Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resource
 
 生成[索引](search-what-is-an-index.md)，使用门户、REST api 或 .net SDK[查询索引](search-query-overview.md)。
 
-* [使用 Azure 门户创建 Azure 搜索索引](search-create-index-portal.md)
+* [在 Azure 门户中创建 Azure 认知搜索索引](search-create-index-portal.md)
 * [设置索引器以从其他服务加载数据](search-indexer-overview.md)
-* [使用搜索资源管理器在 Azure 门户中查询 Azure 搜索索引](search-explorer.md)
-* [如何在 .NET 中使用 Azure 搜索](search-howto-dotnet-sdk.md)
+* [使用 Azure 门户中的搜索资源管理器查询 Azure 认知搜索索引](search-explorer.md)
+* [如何在 .NET 中使用 Azure 认知搜索](search-howto-dotnet-sdk.md)

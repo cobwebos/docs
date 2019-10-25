@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: c78f2e37fa29fa1cdcb9acc6a4600688750b6d74
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: bcc272a8189ebb175f546f6a50c2c117a7975216
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387592"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800182"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>处理大型 Azure 资源数据集
 
@@ -36,7 +36,7 @@ az graph query -q "Resources | project name | order by name asc" --first 200 --o
 Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 ```
 
-在 [REST API](/rest/api/azureresourcegraph/resources/resources) 中，控制措施是 $top，它属于 QueryRequestOptions。
+在 [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 中，控制措施是 $top，它属于 QueryRequestOptions。
 
 最具限制性的控制措施将胜出。 例如，如果查询使用 top 或 limit 运算符，并生成多于 First 的记录，那么返回的记录数上限等于 First。 同样，如果 top 或 limit 小于 First，那么返回的记录集小于 top 或 limit 配置的值。
 
@@ -59,11 +59,11 @@ az graph query -q "Resources | project name | order by name asc" --skip 10 --out
 Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ```
 
-在 [REST API](/rest/api/azureresourcegraph/resources/resources) 中，控制措施是 $skip，它属于 QueryRequestOptions。
+在 [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 中，控制措施是 $skip，它属于 QueryRequestOptions。
 
 ## <a name="paging-results"></a>分页结果
 
-如果需要将结果集拆分为较小的记录集以进行处理，或结果集超出了允许的最大值_1000_返回的记录，则使用分页。 [REST API](/rest/api/azureresourcegraph/resources/resources) QueryResponse 提供了指明结果集已被拆分的值：resultTruncated 和 $skipToken。
+如果需要将结果集拆分为较小的记录集以进行处理，或结果集超出了允许的最大值_1000_返回的记录，则使用分页。 [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) QueryResponse 提供了指明结果集已被拆分的值：resultTruncated 和 $skipToken。
 resultTruncated 是布尔值，用于指示使用者返回的响应中是否还有其他记录。 如果 count 属性小于 totalRecords 属性，也可以确定此条件。 totalRecords 定义匹配查询的记录数。
 
 如果 resultTruncated 为 true，便会在响应中设置 $skipToken 属性。 此值与相同的查询值及订阅值一起使用，以获取与查询匹配的下一个记录集。
@@ -81,13 +81,13 @@ Search-AzGraph -Query "Resources | project id, name | order by id asc" -First 10
 > [!IMPORTANT]
 > 查询必须投射 ID 字段，这样分页才能生效。 如果查询中缺少该响应，则响应不会包含 **$skipToken**。
 
-有关示例，请参阅 REST API 文档中的[下一页查询](/rest/api/azureresourcegraph/resources/resources#next-page-query)。
+有关示例，请参阅 REST API 文档中的[下一页查询](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources#next-page-query)。
 
 ## <a name="formatting-results"></a>设置结果格式
 
 资源图表查询的结果以两种格式提供：_表_和_ObjectArray_。 该格式配置为请求选项中的**resultFormat**参数。 _Table_ Format 是**resultFormat**的默认值。
 
-默认情况下，Azure CLI 中提供了来自的结果。 默认情况下，Azure PowerShell 是**PSCustomObject** ，但可以使用 @no__t cmdlet 快速将其转换为 JSON。 对于其他 Sdk，可以将查询结果配置为输出_ObjectArray_格式。
+默认情况下，Azure CLI 中提供了来自的结果。 默认情况下，Azure PowerShell 是**PSCustomObject** ，但可以使用 `ConvertTo-Json` cmdlet 快速将其转换为 JSON。 对于其他 Sdk，可以将查询结果配置为输出_ObjectArray_格式。
 
 ### <a name="format---table"></a>格式-表
 

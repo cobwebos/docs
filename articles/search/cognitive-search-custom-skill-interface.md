@@ -1,25 +1,25 @@
 ---
-title: 认知搜索中自定义技能的接口定义 - Azure 搜索
-description: Azure 搜索的认知搜索管道中的 web-api 自定义技能的自定义数据提取接口。
+title: 自定义技能的界面定义
+titleSuffix: Azure Cognitive Search
+description: Azure 认知搜索中的 AI 扩充管道中的 web api 自定义技能自定义数据提取接口。
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 2c4af40886a81cbf8f8e11318737db05f570a1f0
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: f86c34dcc1276b8677e3e60514661a6d0b974005
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692194"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787552"
 ---
-# <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>如何将自定义技能添加到认知搜索管道
+# <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>如何将自定义技能添加到 Azure 认知搜索扩充管道
 
-Azure 搜索中的[认知搜索索引管道](cognitive-search-concept-intro.md)可以从[预定义技能](cognitive-search-predefined-skills.md)和自己创建并添加到管道中的[自定义技能](cognitive-search-custom-skill-web-api.md)进行装配。 本文介绍如何创建一个暴露接口的自定义技能，从而允许其包含在认知搜索管道中。 
+Azure 认知搜索中的[扩充管道](cognitive-search-concept-intro.md)可从[内置认知技能](cognitive-search-predefined-skills.md)和你个人创建并添加到管道中的[自定义技能](cognitive-search-custom-skill-web-api.md)组合而来。 本文介绍如何创建一个公开接口的自定义技能，使其可以包含在 AI 扩充管道中。 
 
-通过生成自定义技能，可插入对内容唯一的转换。 自定义技能独立执行，可应用所需的任何扩充步骤。 例如，可定义特定于域的自定义实体，生成自定义分类模型来区分商业和金融合同或文档，或者添加语音识别技能来深入了解相关内容的音频文件。 有关分步示例，请参阅[示例：为认知搜索创建自定义技能](cognitive-search-create-custom-skill-example.md)。
+通过生成自定义技能，可插入对内容唯一的转换。 自定义技能独立执行，可应用所需的任何扩充步骤。 例如，可定义特定于域的自定义实体，生成自定义分类模型来区分商业和金融合同或文档，或者添加语音识别技能来深入了解相关内容的音频文件。 有关分步示例，请参阅[示例：为 AI 扩充创建自定义技能](cognitive-search-create-custom-skill-example.md)。
 
  无论需要哪种自定义功能，都有一个简单明了的接口，可将自定义技能与其余扩充管道相连接。 [技能组合](cognitive-search-defining-skillset.md)中包含的唯一需求是，能够以可在技能组合内作为整体使用的方式接受输入并发出输出。 本文的重点是扩充管道所需的输入和输出格式。
 

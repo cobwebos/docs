@@ -1,23 +1,22 @@
 ---
-title: 升级到 Azure 搜索 .NET SDK 版本 3 - Azure 搜索
+title: 升级到 Azure 搜索 .NET SDK 版本3
+titleSuffix: Azure Cognitive Search
 description: 从旧版本将代码迁移到 Azure 搜索 .NET SDK 版本 3。 了解新增功能和所需的代码更改。
-author: brjohnstmsft
 manager: nitinme
-services: search
-ms.service: search
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: cab0da93bbea117c216969faf2f1e194e16d675f
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: fcad05749892e3a652e110a7e351450bffaca6f2
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183217"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792982"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>升级到 Azure 搜索 .NET SDK 版本 3
+# <a name="upgrade-to-azure-search-net-sdk-version-3"></a>升级到 Azure 搜索 .NET SDK 版本3
 
 <!--- DETAILS in the word doc
 cosmosdb
@@ -148,6 +147,6 @@ index.Analyzers = new Analyzer[]
 ## <a name="conclusion"></a>结束语
 如果需要有关如何使用 Azure 搜索 .NET SDK 的更多详细信息，请参阅 [.NET 操作指南](search-howto-dotnet-sdk.md)。
 
-我们欢迎你对 SDK 提供反馈。 如果遇到问题，请随时通过 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search) 向我们寻求帮助。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 务必在问题标题上加前缀“[Azure 搜索]”。
+我们欢迎你对 SDK 提供反馈。 如果遇到问题，请随时咨询获取有关[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search)的帮助。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 务必在问题标题上加前缀“[Azure 搜索]”。
 
 感谢使用 Azure 搜索！

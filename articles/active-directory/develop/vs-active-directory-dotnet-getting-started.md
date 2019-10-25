@@ -1,5 +1,5 @@
 ---
-title: 开始在 Visual Studio .NET MVC 项目中使用 Azure AD
+title: 开始在 Visual Studio .NET MVC 项目中 Azure AD |Microsoft
 description: 通过 Visual Studio 连接服务连接到或创建 Azure AD 之后，如何在 .NET MVC 项目中开始使用 Azure Active Directory
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 806961dce41fbdf07572b3d0ab8b79bc9fb682da
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3b0a6265f76cc7c799d162487999c129ec7e6a14
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852022"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803612"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Azure Active Directory（ASP.NET MVC 项目）入门
 
@@ -31,7 +31,7 @@ ms.locfileid: "68852022"
 
 ## <a name="requiring-authentication-to-access-controllers"></a>访问控制器需要身份验证
 
-项目中的所有控制器均带有 `[Authorize]` 属性。 此属性要求用户先进行身份验证，才能访问这些控制器。 若要允许匿名访问控制器，请从控制器删除此属性。 如果想要更详细地设置这些权限，请将该属性应用到需要身份验证的每个方法，而不是将它应用到控制器类。
+项目中的所有控制器均带有 `[Authorize]` 属性。 此属性要求用户先进行身份验证，才能访问这些控制器。 若要允许匿名访问控制器，请从控制器删除此属性。 如果要更详细地设置这些权限，请将该属性应用到需要身份验证的每个方法，而不是将它应用到控制器类。
 
 ## <a name="adding-signin--signout-controls"></a>添加 SignIn/SignOut 控件
 

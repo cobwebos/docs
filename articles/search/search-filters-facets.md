@@ -1,24 +1,23 @@
 ---
-title: 用于应用中搜索导航的分面筛选器 - Azure 搜索
-description: 按用户安全标识、地理位置或数字值进行条件筛选可以减少 Azure 搜索（Microsoft Azure 上托管的云搜索服务）中的查询返回的搜索结果。
-author: HeidiSteen
+title: 应用中搜索导航的分面筛选器
+titleSuffix: Azure Cognitive Search
+description: 按用户安全标识、地理位置或数字值筛选条件，以减少 Azure 认知搜索中托管的云搜索服务 Microsoft Azure 的搜索结果。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 5/13/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: a2fe29cf1d7c183aa62e6b86a4b29479d1f34ff8
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 082575a67ea43d62f322e177cff087e5bd572c27
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649882"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792898"
 ---
-# <a name="how-to-build-a-facet-filter-in-azure-search"></a>如何在 Azure 搜索中生成分面筛选器 
+# <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>如何在 Azure 中生成 facet 筛选器认知搜索 
 
-分面导航用于在搜索应用中自定向筛选查询结果，其中应用程序提供 UI 控件以将搜索范围限定到文档组（例如，类别或品牌），Azure 搜索提供数据结构以支持体验。 在本文中，可快速了解创建分面导航的基本步骤，支持想要提供的搜索体验。 
+分面导航用于在搜索应用中查询结果的自定向筛选，其中应用程序提供了用于将搜索范围限定到文档组（例如类别或品牌）的 UI 控件，以及 Azure 认知搜索提供数据结构备份体验。 在本文中，可快速了解创建分面导航的基本步骤，支持想要提供的搜索体验。 
 
 > [!div class="checklist"]
 > * 选择用于筛选和分面的字段
@@ -31,30 +30,30 @@ ms.locfileid: "69649882"
 
   ![](./media/search-filters-facets/facet-nav.png)
 
-不熟悉分面导航并希望了解更多详情？ 请参阅[如何在 Azure 搜索中实现分面导航](search-faceted-navigation.md)。
+不熟悉分面导航并希望了解更多详情？ 请参阅[如何在 Azure 认知搜索中实现分面导航](search-faceted-navigation.md)。
 
 ## <a name="choose-fields"></a>选择字段
 
-可通过单值字段以及集合计算分面。 适合分面导航的字段的多重性较低：搜索语料库（例如，颜色、国家/地区或品牌名列表）的文档中重复的不同值较少。 
+可通过单值字段以及集合计算分面。 最适合分面导航的字段具有低基数：在搜索语料库中，在文档中重复的少量非重复值（例如，颜色、国家/地区或品牌名称的列表）。 
 
-通过将 `facetable` 属性设置为 `true`，便可在创建索引时逐字段启用分面。 通常，对于此类字段，还应该将 `filterable` 属性设置为 `true`，使搜索应用程序能够根据最终用户选择的分面，基于这些字段进行筛选。 
+通过将 `facetable` 特性设置为 `true`来创建索引时，逐字段启用分面。 您通常还应将此类字段的 `filterable` 属性设置为 `true`，以便您的搜索应用程序可以基于最终用户选择的方面对这些字段进行筛选。 
 
-使用 REST API 创建索引时，可能会在分面导航中使用的任何[字段类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)默认将被标记为 `facetable`：
+使用 REST API 创建索引时，可能会在分面导航中使用的任何[字段类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)在默认情况下将标记为 `facetable`：
 
 + `Edm.String`
 + `Edm.DateTimeOffset`
 + `Edm.Boolean`
-+ 数字字段类型：`Edm.Int32`、`Edm.Int64`、`Edm.Double`
-+ 上述类型的集合（例如 `Collection(Edm.String)` 或 `Collection(Edm.Double)`）
++ 数值字段类型： `Edm.Int32`、`Edm.Int64``Edm.Double`
++ 以上类型（例如 `Collection(Edm.String)` 或 `Collection(Edm.Double)`）的集合
 
-无法在分面导航中的使用 `Edm.GeographyPoint` 或 `Collection(Edm.GeographyPoint)` 字段。 分面最适合用于基数较小的字段。 由于地理坐标的精度，给定数据集中两组坐标完全相同的情况很少见。 因此，地理坐标不支持分面。 需要城市或区域字段才可实现按位置进行分面。
+不能在分面导航中使用 `Edm.GeographyPoint` 或 `Collection(Edm.GeographyPoint)` 字段。 Facet 最适用于具有较低基数的字段。 由于地理坐标的解决方法，在给定的数据集中，两组坐标都不等。 因此，地理坐标不支持分面。 需要城市或区域字段才可实现按位置进行分面。
 
 ## <a name="set-attributes"></a>设置属性
 
-将控制字段使用方式的索引属性添加到索引中的各字段定义。 在以下示例中，基数较小且适合用于分面的字段包括：`category`（酒店、汽车旅馆、招待所）、`tags` 和 `rating`。 在以下示例中，为方便演示，已显式为这些字段设置了 `filterable` 和 `facetable` 属性。 
+将控制字段使用方式的索引属性添加到索引中的各字段定义。 在下面的示例中，具有较低基数的字段对于分面非常有用，它包含： `category` （旅馆、motel、招待所）、`tags`和 `rating`。 出于说明目的，这些字段在以下示例中显式设置了 `filterable` 和 `facetable` 属性。 
 
 > [!Tip]
-> 为实现最佳性能和存储优化，请针对绝不应用作分面的字段关闭分面功能。 具体而言，应将唯一值的字符串字段（例如 ID 或产品名称）设置为 `"facetable": false`，以避免在分面导航中意外（和无效）使用它们。
+> 为实现最佳性能和存储优化，请针对绝不应用作分面的字段关闭分面功能。 具体而言，应将唯一值的字符串字段（例如 ID 或产品名称）设置为 `"facetable": false`，以防止在分面导航中意外（和无效）使用它们。
 
 
 ```json
@@ -78,7 +77,7 @@ ms.locfileid: "69649882"
 ```
 
 > [!Note]
-> 此索引定义复制自[使用 REST API 创建 Azure 搜索索引](https://docs.microsoft.com/azure/search/search-create-index-rest-api)。 除了字段定义的表面差异外，二者完全相同。 已在 `category`、`tags`、`parkingIncluded`、`smokingAllowed` 和 `rating` 字段中显式添加 `filterable` 和 `facetable` 属性。 在实践中，使用 REST API 时，默认会在这些字段中启用 `filterable` 和 `facetable`。 使用 .NET SDK 时，必须显式启用这些属性。
+> [使用 REST API 从创建 Azure 认知搜索索引](https://docs.microsoft.com/azure/search/search-create-index-rest-api)复制此索引定义。 除了字段定义的表面差异外，二者完全相同。 `filterable` 和 `facetable` 属性显式添加到 `category`、`tags`、`parkingIncluded`、`smokingAllowed`和 `rating` 字段上。 在实践中，使用 REST API 时，默认情况下会对这些字段启用 `filterable` 和 `facetable`。 使用 .NET SDK 时，必须显式启用这些属性。
 
 ## <a name="build-and-load-an-index"></a>生成和加载索引
 
@@ -99,7 +98,7 @@ var sp = new SearchParameters()
 
 ### <a name="return-filtered-results-on-click-events"></a>针对单击事件返回筛选结果
 
-当最终用户单击某个分面值时，单击事件的处理程序应使用筛选表达式来实现用户的意图。 假设分面依据为 `category`，通过 `$filter` 表达式单击类别“汽车旅馆”，表示选择属于该类型的住宿。 当用户单击“汽车旅馆”，指示应仅显示汽车旅馆时，应用程序发送的下一条查询将包括 `$filter=category eq 'motel'`。
+当最终用户单击分面值时，单击事件的处理程序应使用筛选器表达式来实现用户的意图。 给定 `category` 方面，单击 "motel" 类别时，将使用选择该类型的便利的 `$filter` 表达式来实现。 当用户单击 "motel" 指示只显示汽车旅馆时，应用程序发送的下一个查询将包括 `$filter=category eq 'motel'`。
 
 下面的代码片段添加类别以筛选用户是否从类别分面中选择某个值。
 
@@ -108,7 +107,7 @@ if (!String.IsNullOrEmpty(categoryFacet))
     filter = $"category eq '{categoryFacet}'";
 ```
 
-如果用户单击 `tags` 等集合字段的分面值（例如值“pool”），则应用程序应使用以下筛选语法：`$filter=tags/any(t: t eq 'pool')`
+如果用户单击集合 `tags`字段（例如，值为 "pool"）的方面值，应用程序应使用以下筛选器语法： `$filter=tags/any(t: t eq 'pool')`
 
 ## <a name="tips-and-workarounds"></a>提示和解决方法
 
@@ -118,12 +117,12 @@ if (!String.IsNullOrEmpty(categoryFacet))
 
 ### <a name="preserve-a-facet-navigation-structure-asynchronously-of-filtered-results"></a>以异步方式保留筛选结果的分面导航结构
 
-在 Azure 搜索中使用分面导航所面临的一个难题是，分面仅针对当前结果存在。 在实践中，通常会保留一组静态分面，便于用户按相反顺序进行导航，回顾步骤以通过搜索内容了解可选路径。 
+Azure 认知搜索中的分面导航的难题之一是仅存在于当前结果中的方面。 在实践中，通常会保留一组静态分面，便于用户按相反顺序进行导航，回顾步骤以通过搜索内容了解可选路径。 
 
 虽然这是常见的用例，但并不是分面导航结构当前提供的现成内容。 通过发布 2 个筛选查询（一个将范围限定到结果，另一个用于创建针对导航的静态分面列表），需要静态分面的开发人员通常便可解决限制问题。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-+ [Azure 搜索中的筛选器](search-filters.md)
++ [Azure 认知搜索中的筛选器](search-filters.md)
 + [创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)

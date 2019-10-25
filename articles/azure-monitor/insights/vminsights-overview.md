@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 2364218a9ccbde1cbfc276e3354cb93e42e5ce0b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: c6135f3ab90a2002c3cf0c8d26211d66d0c637e8
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553750"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802404"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>什么是用于 VM 的 Azure Monitor（预览版）？
 
@@ -33,7 +33,8 @@ ms.locfileid: "72553750"
 - 映射
 
 >[!NOTE]
->我们最近[宣布了更改](https://azure.microsoft.com/updates/upcoming-changes-for-azure-monitor-for-vms-as-we-prepare-for-ga)，我们将根据我们从公共预览版客户收到的反馈来更改运行状况功能。 考虑到我们将进行的更改数，我们将停止为新客户提供运行状况功能。 现有客户可继续使用运行状况功能。 有关更多详细信息，请参阅我们的[公开上市常见问题解答](vminsights-ga-release-faq.md)。  
+>我们最近[宣布了更改](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
+)，我们将根据我们从公共预览版客户收到的反馈来更改运行状况功能。 考虑到我们将进行的更改数，我们将停止为新客户提供运行状况功能。 现有客户可继续使用运行状况功能。 有关更多详细信息，请参阅我们的[公开上市常见问题解答](vminsights-ga-release-faq.md)。  
 
 与 Azure Monitor 日志集成提供了强大的聚合和筛选功能，并可随时分析数据趋势。 单独使用 Azure Monitor 或服务映射无法实现此类全面的工作负荷监视。  
 

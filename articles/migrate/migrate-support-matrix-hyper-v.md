@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 004010983b87c333adeb4b20abbe851581917a3a
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 0964dac6b4f381e2ec52bd9ec078741d0ee85712
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937438"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802182"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>用于 Hyper-V 评估和迁移的支持矩阵
 
@@ -24,12 +24,10 @@ ms.locfileid: "71937438"
 
 下表汇总了 Hyper-v Vm 支持的方案。
 
-**部署** | **详细***
+**部署** | **详细信息***
 --- | ---
 **评估本地 Hyper-v Vm** | [设置](tutorial-prepare-hyper-v.md)第一次评估。<br/><br/> [运行](scale-hyper-v-assessment.md)大规模评估。
 **将 Hyper-V VM 迁移到 Azure** | [尝试](tutorial-migrate-hyper-v.md)迁移到 Azure。
-
-Azure Migrate 服务器迁移不支持迁移使用 System Center Virtual Machine Manager （VMM）管理的 Hyper-v 服务器。
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate 项目
 
@@ -37,11 +35,11 @@ Azure Migrate 服务器迁移不支持迁移使用 System Center Virtual Machine
 --- | ---
 Azure 权限 | 你需要订阅中的 "参与者" 或 "所有者" 权限才能创建 Azure Migrate 项目。
 Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。 Azure 订阅中可以有多个项目。 项目可以包括 VMware Vm 和 Hyper-v Vm，最高可达评估限制。
-地理 | 你可以在多个地理区域中创建 Azure Migrate 项目。 虽然你可以在特定地理区域创建项目，但你可以为其他目标位置评估或迁移计算机。 项目地域仅用于存储已发现的元数据。
+地理位置 | 你可以在多个地理区域中创建 Azure Migrate 项目。 虽然你可以在特定地理区域创建项目，但你可以为其他目标位置评估或迁移计算机。 项目地域仅用于存储已发现的元数据。
 
   **地域** | **元数据存储位置**
   --- | ---
-  Azure 政府 | US Gov 弗吉尼亚州
+  Azure Government | 美国弗吉尼亚州政府
   亚太 | 东亚或东南亚
   澳大利亚 | 澳大利亚东部或澳大利亚东南部
   巴西 | 巴西南部
@@ -90,7 +88,7 @@ Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。 Azure 订阅�
 | **Hyper-V 主机**          | 一个设备最多可以连接到300个 Hyper-v 主机。
 | **发现**              | 单个设备最多可以发现 5000 Vm。
 | **评估组**       | 最多可以在一个组中添加35000台计算机。
-| **评估**             | 在单个评估中, 最多可以评估 35000 Vm。
+| **评估**             | 在单个评估中，最多可以评估 35000 Vm。
 
 
 
@@ -106,7 +104,7 @@ Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。 Azure 订阅�
 **URL** | **详细信息**  
 --- | ---
 *.portal.azure.com | 导航到 Azure 门户
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | 登录到 Azure 订阅
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | 登录 Azure 订阅
 *.microsoftonline.com <br/> *.microsoftonline-p.com | 为设备到服务通信创建 Azure Active Directory 应用程序。
 management.azure.com | 为设备到服务通信创建 Azure Active Directory 应用程序。
 dc.services.visualstudio.com | 日志记录和监视
@@ -122,7 +120,7 @@ https://download.microsoft.com/download/* | 允许从 Microsoft 下载站点下�
 
 **设备** | **Connection**
 --- | ---
-**本** | TCP 端口3389上的入站连接，允许到设备的远程桌面连接。<br/> 端口44368上的入站连接，使用 URL 远程访问设备管理应用程序：``` https://<appliance-ip-or-name>:44368 ```<br/> 端口443、5671和5672上的出站连接将发现和性能元数据发送到 Azure Migrate。
+**本** | TCP 端口3389上的入站连接，允许到设备的远程桌面连接。<br/> 端口44368上的入站连接，使用以下 URL 远程访问设备管理应用： ``` https://<appliance-ip-or-name>:44368 ```<br/> 端口443、5671和5672上的出站连接将发现和性能元数据发送到 Azure Migrate。
 **Hyper-v 主机/群集** | WinRM 端口5985（HTTP）和5986（HTTPS）上的入站连接，使用通用信息模型（CIM）会话拉取 Hyper-v Vm 的配置和性能元数据。
 
 ## <a name="migration-limitations"></a>迁移-限制
@@ -143,7 +141,7 @@ https://download.microsoft.com/download/* | 允许从 Microsoft 下载站点下�
 | **操作系统** | Azure 支持的所有[Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)操作系统。 |
 | **权限**           | 需要在要评估的每个 Hyper-v VM 上都有管理员权限。 |
 | **Integration Services**       | [Hyper-v Integration Services](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services)必须在你评估的 vm 上运行，才能捕获操作系统信息。 |
-| **Azure 所需的更改** | 某些 Vm 可能需要更改才能在 Azure 中运行。 Azure Migrate 会自动对以下操作系统进行这些更改：<br/> -Red Hat Enterprise Linux 6.5 +、7.0 +<br/> -CentOS 6.5 +、7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8<br/><br/> 对于其他操作系统，需要在迁移之前手动进行调整。 相关文章包含有关如何执行此操作的说明。 |
+| **Azure 所需的更改** | 某些 VM 可能需要经过更改才能在 Azure 中运行。 Azure Migrate 会自动对以下操作系统进行这些更改：<br/> -Red Hat Enterprise Linux 6.5 +、7.0 +<br/> -CentOS 6.5 +、7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8<br/><br/> 对于其他操作系统，需要在迁移之前手动进行调整。 相关文章包含有关如何执行此操作的说明。 |
 | **Linux 启动**                 | 如果/boot 位于专用分区上，则它应驻留在 OS 磁盘上，而不会分布在多个磁盘上。<br/> 如果/boot 是根（/）分区的一部分，则 "/" 分区应在 OS 磁盘上，而不是在其他磁盘上。 |
 | **UEFI 启动**                  | Azure 中迁移的 VM 将自动转换为 BIOS 启动 VM。 VM 应仅运行 Windows Server 2012 和更高版本。 OS 磁盘最多可以有5个分区或更少，操作系统磁盘的大小应小于 300 GB。
   |
@@ -155,8 +153,8 @@ https://download.microsoft.com/download/* | 允许从 Microsoft 下载站点下�
 | **NFS**                        | 不会复制装载为 Vm 上的卷的 NFS 卷。 |
 | **/ISCSI**                      | 具有 iSCSI 目标的 Vm 不支持迁移。
 | **目标磁盘**                | 仅可将 Azure Vm 迁移到托管磁盘。 |
-| **IPv6** | 不受支持。
-| **NIC 组合** | 不受支持。
+| **IPv6** | 不支持。
+| **NIC 组合** | 不支持。
 | **Azure Site Recovery** | 如果 VM 启用了与 Azure Site Recovery 的复制，则无法使用 Azure Migrate Server 迁移进行复制。
 
 
@@ -171,7 +169,7 @@ https://download.microsoft.com/download/* | 允许从 Microsoft 下载站点下�
 --- | ---
 login.microsoftonline.com | 使用 Active Directory 进行访问控制和标识管理。
 *.backup.windowsazure.com | 复制数据传输和协调。
-*.hypervrecoverymanager.windowsazure.com | 连接到 Azure Migrate 服务 Url。
+\* .hypervrecoverymanager.windowsazure.com | 连接到 Azure Migrate 服务 Url。
 \* .blob.core.windows.net | 将数据上传到存储帐户。
 dc.services.visualstudio.com | 上传用于内部监视的应用日志。
 time.windows.com | 验证系统与全局时间之间的时间同步。
@@ -189,4 +187,4 @@ Hyper-v 主机/Vm | HTTPS 端口443上的出站连接，用于将 VM 复制数�
 
 ## <a name="next-steps"></a>后续步骤
 
-[准备用于迁移的 HYPER-V VM](tutorial-prepare-hyper-v.md) 迁移。
+[准备用于迁移的 HYPER-V VM 评估](tutorial-prepare-hyper-v.md)。

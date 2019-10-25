@@ -1,43 +1,43 @@
 ---
-title: 将认知服务资源与技能集联系起来 - Azure 搜索
-description: 向 Azure 搜索中的认知扩充管道附加认知服务的相关说明。
+title: 将认知服务资源附加到技能组合
+titleSuffix: Azure Cognitive Search
+description: 向 Azure 认知搜索中的 AI 扩充管道附加认知服务的相关说明。
 manager: nitinme
 author: LuisCabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/20/2019
 ms.author: luisca
-ms.openlocfilehash: 113286f829b628d4740fbba34e7279741a934aef
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 11ca5f71cb0d08a4bebf72407035a9557c794f9f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71265926"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72788034"
 ---
-# <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>将认知服务资源与 Azure 搜索中的技能集联系起来 
+# <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>将认知服务资源附加到 Azure 中的技能组合认知搜索 
 
-AI 算法在 Azure 搜索中驱动用于文档扩充的[认知索引管道](cognitive-search-concept-intro.md)。 这些算法基于 Azure 认知服务资源，其中包括用于图像分析的[计算机视觉](https://azure.microsoft.com/services/cognitive-services/computer-vision/)，以及用于实体识别、关键短语提取和其他根据的光学字符识别（OCR）和[文本分析](https://azure.microsoft.com/services/cognitive-services/text-analytics/). 与用于文档扩充的 Azure 搜索所使用的算法一样，算法被包装在某个*技能*中，放在*技能组合*中，并在索引期间由*索引器*引用。
+AI 算法在 Azure 认知搜索中推动用于内容转换的[扩充管道](cognitive-search-concept-intro.md)。 这些算法基于 Azure 认知服务资源，其中包括用于图像分析的[计算机视觉](https://azure.microsoft.com/services/cognitive-services/computer-vision/)，以及用于实体识别、关键短语提取和其他根据的光学字符识别（OCR）和[文本分析](https://azure.microsoft.com/services/cognitive-services/text-analytics/). 由于 Azure 认知搜索用于扩充文档，这些算法将在*技能组合*中进行*包装，并*在索引期间由*索引器*引用。
 
-你可以免费获取有限数量的文档。 或者，可以将计费认知服务资源附加到*技能组合*，以实现更大、更频繁的工作负荷。 在本文中，你将了解如何附加可计费认知服务资源，以便在 Azure 搜索[索引](search-what-is-an-index.md)期间丰富文档。
+你可以免费获取有限数量的文档。 或者，可以将计费认知服务资源附加到*技能组合*，以实现更大、更频繁的工作负荷。 在本文中，你将了解如何附加可计费认知服务资源，以便在 Azure 认知搜索[编制索引](search-what-is-an-index.md)期间丰富文档。
 
 > [!NOTE]
-> 可计费事件包括在 Azure 搜索中对认知服务 API 和图像提取进行的调用，作为文档解密阶段的一部分。 从文档中提取文本或没有调用认知服务的技能不收取任何费用。
+> 可计费事件包括在 Azure 认知搜索的文档破解阶段中认知服务 API 和图像提取的调用。 从文档中提取文本或没有调用认知服务的技能不收取任何费用。
 >
-> 计费技能的执行是[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)。 有关图像提取的定价，请参阅[Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)。
+> 计费技能的执行是[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)。 有关图像提取定价，请参阅[Azure 认知搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)。
 
 ## <a name="same-region-requirement"></a>相同区域要求
 
-我们要求 Azure 搜索和 Azure 认知服务位于同一区域。 否则，将在运行时收到此消息： `"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
+我们要求 Azure 认知搜索和 Azure 认知服务位于同一区域中。 否则，将在运行时收到此消息： `"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
 
-无法跨区域移动服务。 如果收到此错误，应在 Azure 搜索所在的同一区域中创建新的认知服务资源。
+无法跨区域移动服务。 如果收到此错误，应在 Azure 认知搜索的同一区域中创建新的认知服务资源。
 
 > [!NOTE]
-> 某些内置技能基于非区域认知服务（例如，[文本翻译技能](cognitive-search-skill-text-translation.md)）。 请注意，如果将任何这些技能添加到技能组合，则不能保证你的数据与 Azure 搜索或认知服务资源位于同一区域。 有关更多详细信息，请参阅[服务状态页](https://aka.ms/allinoneregioninfo)。
+> 某些内置技能基于非区域认知服务（例如，[文本翻译技能](cognitive-search-skill-text-translation.md)）。 请注意，如果将任何这些技能添加到技能组合，则不能保证你的数据与 Azure 认知搜索或认知服务资源位于同一区域。 有关更多详细信息，请参阅[服务状态页](https://aka.ms/allinoneregioninfo)。
 
 ## <a name="use-free-resources"></a>使用免费资源
 
-可以使用有限的免费处理选项来完成认知搜索教程和快速入门练习。
+您可以使用有限的免费处理选项来完成 AI 扩充教程和快速入门练习。
 
 每个订阅每天的免费（受限根据）资源限制为20个文档。
 
@@ -45,13 +45,13 @@ AI 算法在 Azure 搜索中驱动用于文档扩充的[认知索引管道](cogn
 
    ![打开导入数据向导](media/search-get-started-portal/import-data-cmd.png "打开导入数据向导")
 
-1. 选择数据源并继续**添加认知搜索（可选）** 。 有关此向导的分步演练，请参阅[使用门户工具进行导入、索引和查询](search-get-started-portal.md)。
+1. 选择数据源并继续**添加 AI 扩充（可选）** 。 有关此向导的分步演练，请参阅[在 Azure 门户中创建索引](search-get-started-portal.md)。
 
 1. 展开 "**附加认知服务**"，然后选择 "**免费（受限根据）** "：
 
    ![扩展的附加认知服务部分](./media/cognitive-search-attach-cognitive-services/attach1.png "扩展的附加认知服务部分")
 
-1. 继续执行下一步，**添加根据**。 有关门户中可用的技能的说明，请参阅 "认知搜索" 快速入门中的[步骤2：添加认知技巧](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline)。
+1. 现在，你可以继续执行后续步骤，包括**添加认知技能**。
 
 ## <a name="use-billable-resources"></a>使用付费资源
 
@@ -59,15 +59,15 @@ AI 算法在 Azure 搜索中驱动用于文档扩充的[认知索引管道](cogn
 
 仅对调用认知服务 API 的技能收费。 对于[自定义技能](cognitive-search-create-custom-skill-example.md)或不基于 API 的[文本合并](cognitive-search-skill-textmerger.md)、[文本拆分器](cognitive-search-skill-textsplit.md)和[整形](cognitive-search-skill-shaper.md)器等技能，无需付费。
 
-1. 打开 "导入数据" 向导，选择数据源，然后继续**添加认知搜索（可选）** 。
+1. 打开 "导入数据" 向导，选择数据源，然后继续**添加 AI 扩充（可选）** 。
 
 1. 展开 "**附加认知服务**"，然后选择 "**创建新的认知服务资源**"。 此时将打开一个新选项卡，以便您可以创建资源：
 
    ![创建认知服务资源](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "创建认知服务资源")
 
-1. 在 "**位置**" 列表中，选择 Azure 搜索服务所在的区域。 出于性能方面的原因，请务必使用此区域。 使用此区域还会将跨区域的出站带宽收费。
+1. 在 "**位置**" 列表中，选择 Azure 认知搜索服务所在的区域。 出于性能方面的原因，请务必使用此区域。 使用此区域还会将跨区域的出站带宽收费。
 
-1. 在 "**定价层**" 列表中，选择 " **S0** " 以获取认知服务功能的多功能集合，包括备份 Azure 搜索所使用的预定义技能的视觉和语言功能。
+1. 在 "**定价层**" 列表中，选择 " **S0** " 以获取认知服务功能的 "集中" 集合，其中包括备份认知搜索 Azure 提供的内置技能的视觉和语言功能。
 
    对于 S0 层，可以在 "[认知服务定价" 页](https://azure.microsoft.com/pricing/details/cognitive-services/)上查找特定工作负荷的费率。
   
@@ -81,7 +81,7 @@ AI 算法在 Azure 搜索中驱动用于文档扩充的[认知索引管道](cogn
 
    ![选择认知服务资源](./media/cognitive-search-attach-cognitive-services/attach2.png "选择认知服务资源")
 
-1. 展开 "**添加根据**" 部分，选择要对数据运行的特定认知技能。 完成向导的剩余部分。 有关门户中可用的技能的说明，请参阅 "认知搜索" 快速入门中的[步骤2：添加认知技巧](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline)。
+1. 展开 "**添加认知技能**" 部分，选择要对数据运行的特定认知技能。 完成向导的剩余部分。
 
 ## <a name="attach-an-existing-skillset-to-a-cognitive-services-resource"></a>将现有技能集附加到认知服务资源
 
@@ -99,7 +99,7 @@ AI 算法在 Azure 搜索中驱动用于文档扩充的[认知索引管道](cogn
 
 ## <a name="attach-cognitive-services-programmatically"></a>以编程方式附加认知服务
 
-以编程方式定义技能集时，请将 `cognitiveServices` 节添加到该技能集。 在该部分中，包含要与技能组合关联的认知服务资源的键。 请记住，资源必须与 Azure 搜索资源位于同一区域。 另外请包含 `@odata.type`，并将其设置为 `#Microsoft.Azure.Search.CognitiveServicesByKey`。
+以编程方式定义技能集时，请将 `cognitiveServices` 节添加到该技能集。 在该部分中，包含要与技能组合关联的认知服务资源的键。 请记住，资源必须与 Azure 认知搜索资源位于同一区域。 另外请包含 `@odata.type`，并将其设置为 `#Microsoft.Azure.Search.CognitiveServicesByKey`。
 
 以下示例演示了此模式。 请注意定义末尾的 `cognitiveServices` 部分。
 
@@ -159,7 +159,7 @@ Content-Type: application/json
 将其全部放在一起，你需要支付 $57.00，以将此类型的 1000 PDF 文档引入所述的技能组合。
 
 ## <a name="next-steps"></a>后续步骤
-+ [Azure 搜索定价页](https://azure.microsoft.com/pricing/details/search/)
++ [Azure 认知搜索定价页](https://azure.microsoft.com/pricing/details/search/)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [创建技能集 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [如何映射扩充的域](cognitive-search-output-field-mapping.md)

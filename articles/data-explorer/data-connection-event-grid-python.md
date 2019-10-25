@@ -7,23 +7,23 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 83127ec9c9439305c96f21860377e386d57ac574
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 11ae18714d1806aac1cc4f55ce6511fc12498440
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031573"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800438"
 ---
 # <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-python"></a>使用 Python 创建 Azure 数据资源管理器的事件网格数据连接
 
 > [!div class="op_single_selector"]
-> * [门户](ingest-data-event-grid.md)
+> * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器提供从事件中心、IoT 中心和写入 blob 容器的 blob 的引入（数据加载）。 本文介绍如何使用 Python 创建 Azure 数据资源管理器的事件网格数据连接。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -86,7 +86,7 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 |**设置** | **建议的值** | **字段说明**|
 |---|---|---|
 | tenant_id | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 租户 ID。 也称为目录 ID。|
-| subscriptionId | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 用于创建资源的订阅 ID。|
+| subscription_id | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 用于创建资源的订阅 ID。|
 | client_id | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 可以访问租户中资源的应用程序的客户端 ID。|
 | client_secret | *xxxxxxxxxxxxxx* | 可以访问租户中资源的应用程序的客户端机密。 |
 | resource_group_name | *testrg* | 包含群集的资源组的名称。|
@@ -99,6 +99,6 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | event_hub_resource_id | *资源 ID* | 事件中心的资源 ID，事件网格将配置为发送事件。 |
 | storage_account_resource_id | *资源 ID* | 保存用于引入的数据的存储帐户的资源 ID。 |
 | consumer_group | *$Default* | 事件中心的使用者组。|
-| location | 美国中部 | 数据连接资源的位置。|
+| 位置 | *美国中部* | 数据连接资源的位置。|
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-python](../../includes/data-explorer-data-connection-clean-resources-python.md)]

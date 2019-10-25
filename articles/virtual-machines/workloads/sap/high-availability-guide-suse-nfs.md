@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 7af5663b399556d66f86213310858780369215af
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0e4daaa3417ce349111fbc811be36a4615058c76
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101058"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791726"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性
 
@@ -51,7 +51,7 @@ ms.locfileid: "70101058"
 [sap-hana-ha]:sap-hana-high-availability.md
 
 本文介绍了如何部署虚拟机、配置虚拟机、安装群集框架，以及安装可用来存储高度可用的 SAP 系统的共享数据的高度可用的 NFS 服务器。
-本指南介绍了如何设置供两个 SAP 系统（NW1 和 NW2）使用的高度可用的 NFS 服务器。 示例中的资源名称 (例如虚拟机、虚拟网络) 假设你已将[SAP 文件服务器模板][template-file-server]用于资源前缀 "**生产**"。
+本指南介绍了如何设置供两个 SAP 系统（NW1 和 NW2）使用的高度可用的 NFS 服务器。 示例中的资源名称（例如虚拟机、虚拟网络）假设你已将[SAP 文件服务器模板][template-file-server]用于资源前缀 "**生产**"。
 
 请先阅读以下 SAP 说明和文档
 
@@ -71,7 +71,7 @@ ms.locfileid: "70101058"
 * SAP 说明 [1999351] 包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
-* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署 (本文)][deployment-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署（本文）][deployment-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * [SUSE Linux Enterprise High Availability Extension 12 SP3 最佳实践指南][sles-hae-guides]
   * 使用 DRBD 和 Pacemaker 的高度可用 NFS 存储
@@ -107,7 +107,7 @@ NFS 服务器为使用此 NFS 服务器的每个 SAP 系统使用专用的虚拟
 ### <a name="deploy-linux-via-azure-template"></a>通过 Azure 模板部署 Linux
 
 Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications 12 的映像，可以用于部署新的虚拟机。
-可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
+可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集等。按照以下步骤部署模板：
 
 1. 在 Azure 门户中打开[SAP 文件服务器模板][template-file-server]   
 1. 输入以下参数
@@ -180,7 +180,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
          * 为 NW2 针对端口 2049 和 UDP 重复上述步骤
 
 > [!IMPORTANT]
-> 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**net.tcp _timestamps**设置为**0**。 有关详细信息, 请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**net.tcp _timestamps**设置为**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
 
 ### <a name="create-pacemaker-cluster"></a>创建 Pacemaker 群集
 
@@ -426,7 +426,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. **[A]** 设置 drbd 裂脑检测
 
-   当使用 drbd 将数据从一台主机同步到另一台主机时，可能会发生所谓的裂脑。 裂脑是指两个群集节点都将 drbd 设备提升为主设备并且失去同步的一种情况。虽然它可能很少见，但你仍然希望尽快处理并解决裂脑情况。 因此，在发生裂脑时收到通知非常重要。
+   当使用 drbd 将数据从一台主机同步到另一台主机时，可能会发生所谓的裂脑。 裂脑是这样一种方案：两个群集节点都将 drbd 设备升级为主设备，并使其失去同步。这可能是一种罕见的情况，但仍需要尽快处理和解决拆分大脑。 因此，在发生裂脑时收到通知非常重要。
 
    请阅读[正式的 drbd 文档](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification)来了解如何设置裂脑通知。
 
@@ -435,6 +435,10 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 ### <a name="configure-cluster-framework"></a>配置群集框架
 
 1. **[1]** 为 SAP 系统 NW1 向群集配置中添加 NFS drbd 设备
+
+   > [!IMPORTANT]
+   > 最新的测试，其中，netcat 停止响应由于积压工作（backlog）和仅处理一个连接的请求而导致的请求。 Netcat 资源停止侦听 Azure 负载均衡器请求，并且浮动 IP 变为不可用。  
+   > 对于现有的 Pacemaker 群集，建议按照[Azure 负载平衡器检测强化](https://www.suse.com/support/kb/doc/?id=7024128)中的说明将 netcat 替换为 socat。 请注意，更改将需要短暂的停机时间。  
 
    <pre><code>sudo crm configure rsc_defaults resource-stickiness="200"
 
@@ -473,7 +477,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    
    sudo crm configure primitive nc_<b>NW1</b>_nfs \
      anything \
-     params binfile="/usr/bin/nc" cmdline_options="-l -k <b>61000</b>" op monitor timeout=20s interval=10 depth=0
+     params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:<b>61000</b>,backlog=10,fork,reuseaddr /dev/null" op monitor timeout=20s interval=10 depth=0
    
    sudo crm configure group g-<b>NW1</b>_nfs \
      fs_<b>NW1</b>_sapmnt exportfs_<b>NW1</b> nc_<b>NW1</b>_nfs vip_<b>NW1</b>_nfs
@@ -518,7 +522,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    
    sudo crm configure primitive nc_<b>NW2</b>_nfs \
      anything \
-     params binfile="/usr/bin/nc" cmdline_options="-l -k <b>61001</b>" op monitor timeout=20s interval=10 depth=0
+     params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:<b>61001</b>,backlog=10,fork,reuseaddr /dev/null" op monitor timeout=20s interval=10 depth=0
    
    sudo crm configure group g-<b>NW2</b>_nfs \
      fs_<b>NW2</b>_sapmnt exportfs_<b>NW2</b> nc_<b>NW2</b>_nfs vip_<b>NW2</b>_nfs
@@ -542,4 +546,4 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 * [适用于 SAP 的 Azure 虚拟机部署][deployment-guide]
 * [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * 若要了解如何建立高可用性以及针对 Azure 上的 SAP HANA（大型实例）规划灾难恢复，请参阅 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)。
-* 若要了解如何建立高可用性并规划 Azure Vm 上 SAP HANA 的灾难恢复, 请参阅[Azure 虚拟机 (vm) 上的 SAP HANA 的高可用性][sap-hana-ha]
+* 若要了解如何建立高可用性并规划 Azure Vm 上 SAP HANA 的灾难恢复，请参阅[Azure 虚拟机（vm）上的 SAP HANA 的高可用性][sap-hana-ha]

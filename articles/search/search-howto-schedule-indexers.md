@@ -1,31 +1,31 @@
 ---
-title: 如何计划索引器-Azure 搜索
-description: 计划 Azure 搜索索引器，以便定期或在特定时间为内容编制索引。
-ms.date: 05/31/2019
+title: 如何计划索引器
+titleSuffix: Azure Cognitive Search
+description: 安排 Azure 认知搜索索引器定期或在特定时间编制内容的索引。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
-services: search
-ms.service: search
-ms.devlang: ''
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.openlocfilehash: d30c4532c43c5df568cf32a1025b796b3be9ee8e
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 11/04/2019
+ms.openlocfilehash: e9d4f49bd0aec1a04b4839b2084a81fb538f7890
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72533622"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793697"
 ---
-# <a name="how-to-schedule-indexers-for-azure-search"></a>如何为 Azure 搜索计划索引器
+# <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>如何在 Azure 中计划索引器认知搜索
+
 索引器在创建后立即运行一次。 可以使用门户、REST API 或 .NET SDK 按需再次运行该示例。 你还可以将索引器配置为定期按计划运行。
 
 索引器计划的某些情况很有用：
 
-* 源数据将随着时间的推移而更改，并且你希望 Azure 搜索索引器自动处理已更改的数据。
+* 源数据将随着时间的推移而更改，并且你希望 Azure 认知搜索索引器自动处理已更改的数据。
 * 索引将从多个数据源进行填充，并且你希望确保索引器在不同时间运行以减少冲突。
-* 源数据非常大，你希望随着时间的推移分散索引器处理。 有关对大量数据进行索引的详细信息，请参阅[如何在 Azure 搜索中为大型数据集编制索引](search-howto-large-index.md)。
+* 源数据非常大，你希望随着时间的推移分散索引器处理。 有关对大量数据进行索引的详细信息，请参阅[如何为 Azure 中的大型数据集编制索引认知搜索](search-howto-large-index.md)。
 
-计划程序是 Azure 搜索的内置功能。 不能使用外部计划程序来控制搜索索引器。
+计划程序是 Azure 认知搜索的内置功能。 不能使用外部计划程序来控制搜索索引器。
 
 ## <a name="define-schedule-properties"></a>定义计划属性
 
@@ -88,7 +88,7 @@ ms.locfileid: "72533622"
 
 ## <a name="schedule-using-the-net-sdk"></a>使用 .NET SDK 进行计划
 
-可以使用 Azure 搜索 .NET SDK 定义索引器的计划。 为此，请在创建或更新索引器时包括**schedule**属性。
+可以使用 Azure 认知搜索 .NET SDK 定义索引器的计划。 为此，请在创建或更新索引器时包括**schedule**属性。
 
 以下C#示例使用预定义的数据源和索引创建一个索引器，并将其计划设置为每天从现在30分钟运行一次：
 

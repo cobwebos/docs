@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56bfe92de24b9386252ee8719af66cc658948565
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b3cef2bd16907de6e60db2678516f70346a20285
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844314"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803593"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>为 Office 365 组配置过期策略
 
@@ -28,9 +28,16 @@ ms.locfileid: "70844314"
 
 将某个组设置为过期后：
 
-- 在过期时间即将到来时，通知该组的所有者续订该组
+- 具有用户活动的组在过期时自动续订
+- 如果组未自动续订，则会通知组的所有者续订组
 - 未续订的任何组将被删除
 - 组所有者或管理员可在 30 日内还原任何被删除的 Office 365 组。
+
+以下操作将导致组自动续订：
+
+- SharePoint-查看、编辑、下载、移动、共享和上传文件
+- Outlook-加入组、读取/写入组消息，并赞消息
+- 团队-访问团队渠道
 
 当前只能为租户上的 Office 365 组配置一个过期策略。
 
@@ -43,7 +50,7 @@ ms.locfileid: "70844314"
 
 以下角色可用于在 Azure AD 中为 Office 365 组配置和使用到期。
 
-Role | 权限
+角色 | 权限
 -------- | --------
 全局管理员或用户管理员 | 可以创建、读取、更新或删除 Office 365 组到期策略设置<br>可以续订任何 Office 365 组
 用户 | 可以续订他们拥有的 Office 365 组<br>可以还原他们拥有的 Office 365 组<br>可以读取过期策略设置
@@ -69,7 +76,7 @@ Role | 权限
   - 设置完成后，选择“保存”来保存设置。
 
 > [!NOTE]
-> 首次设置过期时，早于过期时间间隔的任何组都将设置为30天直到过期，除非所有者续订。 首个续订通知电子邮件将在一天内发出。
+> 首次设置过期时，超过过期时间间隔的任何组都将设置为35天直到过期，除非组已自动续订或所有者续订。 
 >
 > 删除并还原动态组时，会将其视为新组，并根据规则重新填充。 此过程可能需要长达24小时。
 >
@@ -77,7 +84,7 @@ Role | 权限
 
 ## <a name="email-notifications"></a>电子邮件通知
 
-如下电子邮件通知将在组过期前的 30 天、15 天和 1 天发送到 Office 365 组所有者。 电子邮件的语言由组所有者首选语言或 Azure AD 语言设置确定。 如果组所有者定义了首选语言，或多个所有者具有相同首选语言，则使用该语言。 对于所有其他情况，将使用 Azure AD 语言设置。
+如果未自动续订组，则会将此类电子邮件通知发送到 Office 365 组所有者30天15日，在组到期前的1天。 电子邮件的语言由组所有者首选语言或 Azure AD 语言设置确定。 如果组所有者定义了首选语言，或多个所有者具有相同首选语言，则使用该语言。 对于所有其他情况，将使用 Azure AD 语言设置。
 
 ![过期电子邮件通知](./media/groups-lifecycle/expiration-notification.png)
 
@@ -119,7 +126,7 @@ Role | 权限
    New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
    ```
 
-1. 检索现有策略 Get-AzureADMSGroupLifecyclePolicy：此 cmdlet 检索已配置的当前 Office 365 组到期设置。 在此示例中，可以看到：
+1. 检索现有策略 Get-AzureADMSGroupLifecyclePolicy：此 cmdlet 检索当前已配置的 Office 365 组到期设置。 在此示例中，可以看到：
 
    - 策略 ID
    - Azure AD 组织中所有 Office 365 组的生存期设置为365天
@@ -145,7 +152,7 @@ Role | 权限
    Add-AzureADMSLifecyclePolicyGroup -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"
    ```
   
-1. 删除现有策略 Remove-AzureADMSGroupLifecyclePolicy：此 cmdlet 删除 Office 365 组到期设置，但需要策略 ID。 这将禁用 Office 365 组过期。
+1. 删除现有策略 Remove-AzureADMSGroupLifecyclePolicy：此 cmdlet 会删除 Office 365 组到期设置，但需要策略 ID。 这将禁用 Office 365 组过期。
   
    ```powershell
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"

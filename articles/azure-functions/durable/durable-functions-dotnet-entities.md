@@ -9,18 +9,18 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5738161e88c42f4d4033fab091d8e8c8d7162042
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9eba76d78c2070f03ed835cdf2bf303ed72b1f7f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301719"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72801869"
 ---
 # <a name="developers-guide-to-durable-entities-in-net-preview"></a>.NET 中持久实体的开发人员指南（预览版）
 
 本文介绍如何使用 .NET 开发持久性实体的可用接口，包括示例和一般建议。 
 
-实体函数为无服务器应用程序开发人员提供了一种方便的方式，将应用程序状态组织为细化实体的集合。 有关基础概念的更多详细信息，请参阅 [Durable 实体：概念 @ no__t。
+实体函数为无服务器应用程序开发人员提供了一种方便的方式，将应用程序状态组织为细化实体的集合。 有关基础概念的更多详细信息，请参阅 "[持久实体：概念](durable-functions-entities.md)" 一文。
 
 我们目前提供了两个用于定义实体的 Api：
 
@@ -35,7 +35,7 @@ ms.locfileid: "72301719"
  
 ## <a name="defining-entity-classes"></a>定义实体类
 
-下面的示例是一个 @no__t 0 实体的实现，它存储类型为 integer 的单个值，并提供四个操作 `Add`、`Reset`、`Get` 和 @no__t。
+下面的示例是一个 `Counter` 实体的实现，该实体存储类型为 integer 的单个值，并提供四种操作 `Add`、`Reset`、`Get`和 `Delete`。
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -71,14 +71,14 @@ public class Counter
 }
 ```
 
-@No__t-0 函数包含使用基于类的语法所需的样板。 它必须是*静态*Azure 函数。 对于由实体处理的每个操作消息，它将执行一次。 当调用 `DispatchAsync<T>`，并且实体不在内存中时，它将构造一个类型为的对象 `T`，并从存储中的最后一个持久化 JSON （如果有）填充其字段。 然后，它调用具有匹配名称的方法。
+`Run` 函数包含使用基于类的语法所需的样板。 它必须是*静态*Azure 函数。 对于由实体处理的每个操作消息，它将执行一次。 当调用 `DispatchAsync<T>` 并且实体不在内存中时，它将构造一个类型的对象 `T`，并从存储中的最后一个持久 JSON （如果有）填充其字段。 然后，它调用具有匹配名称的方法。
 
 > [!NOTE]
-> 基于类的实体的状态是在实体处理操作之前**隐式创建**的，并且可以通过调用 `Entity.Current.DeleteState()` 在操作中**显式删除**。
+> 基于类的实体的状态是在实体处理操作之前**隐式创建**的，并且可以通过调用 `Entity.Current.DeleteState()`在操作中**显式删除**。
 
 ### <a name="class-requirements"></a>类要求
  
-实体类是不需要特殊的超类、接口或属性的 Poco （普通旧 CLR 对象）。 但是：
+实体类是不需要特殊的超类、接口或属性的 Poco （普通旧 CLR 对象）。 尽管如此
 
 - 类必须是可构造（请参阅[实体构造](#entity-construction)）。
 - 该类必须是 JSON 可序列化的（请参阅[实体序列化](#entity-serialization)）。
@@ -120,7 +120,7 @@ public class Counter
 可以使用实体的显式字符串名称及其操作直接访问基于类的实体。 我们提供以下示例：有关基础概念（如信号与调用）的更深入说明，请参阅[访问实体](durable-functions-entities.md#accessing-entities)中的讨论。 
 
 > [!NOTE]
-> 如果可能，我们建议[通过接口访问实体]()，因为它提供更多的类型检查。
+> 如果可能，我们建议[通过接口访问实体](#accessing-entities-through-interfaces)，因为它提供更多的类型检查。
 
 ### <a name="example-client-signals-entity"></a>示例：客户端信号实体
 
@@ -157,7 +157,7 @@ public static async Task<HttpResponseMessage> GetCounter(
 ```
 
 > [!NOTE]
-> @No__t 返回的对象只是一个本地副本，即某个较早时间点的实体状态的快照。 特别是，它可能已过时，并且修改此对象不会影响实际的实体。 
+> `ReadEntityStateAsync` 返回的对象只是一个本地副本，即某个较早时间点的实体状态的快照。 特别是，它可能已过时，并且修改此对象不会影响实际的实体。 
 
 ### <a name="example-orchestration-first-signals-then-calls-entity"></a>示例：业务流程第一个信号，然后调用实体
 
@@ -206,7 +206,7 @@ public class Counter : ICounter
 
 ### <a name="example-client-signals-entity-through-interface"></a>示例：客户端信号实体到接口
 
-客户端代码可以使用 `SignalEntityAsync<TEntityInterface>` 将信号发送到实现 @no__t 的实体。 例如：
+客户端代码可以使用 `SignalEntityAsync<TEntityInterface>` 将信号发送到实现 `TEntityInterface`的实体。 例如：
 
 ```csharp
 [FunctionName("DeleteCounter")]
@@ -221,15 +221,15 @@ public static async Task<HttpResponseMessage> DeleteCounter(
 }
 ```
 
-在此示例中，@no__t 参数是动态生成的 `ICounter` 的实例，它在内部将对 `Delete` 的调用转换为信号。
+在此示例中，`proxy` 参数是动态生成的 `ICounter`实例，它在内部将对 `Delete` 的调用转换为信号。
 
 > [!NOTE]
-> @No__t-0 Api 只能用于单向操作。 即使操作返回 `Task<T>`，@no__t 参数的值也将始终为 null 或 `default`，而不是实际结果。
-例如，如果不返回任何值，则无需向 `Get` 操作发出信号。 相反，客户端可以使用 `ReadStateAsync` 直接访问计数器状态，也可以启动调用 @no__t 1 操作的业务流程协调程序函数。 
+> `SignalEntityAsync` Api 只能用于单向操作。 即使操作返回 `Task<T>`，`T` 参数的值也将始终为 null 或 `default`，而不是实际结果。
+例如，如果不返回任何值，则表示 `Get` 操作发出信号是有意义的。 相反，客户端可以使用 `ReadStateAsync` 直接访问计数器状态，也可以启动调用 `Get` 操作的业务流程协调程序函数。 
 
 ### <a name="example-orchestration-first-signals-then-calls-entity-through-proxy"></a>示例：业务流程优先发出信号，然后通过代理调用实体
 
-若要从业务流程内部调用或发送实体，可以使用 `CreateEntityProxy` 与接口类型一起为实体生成代理。 然后，可以使用此代理来调用或信号操作：
+若要从业务流程内部调用或发送实体，可以使用 `CreateEntityProxy` 和接口类型，为实体生成代理。 然后，可以使用此代理来调用或信号操作：
 
 ```csharp
 [FunctionName("IncrementThenGet")]
@@ -249,7 +249,7 @@ public static async Task<int> Run(
 }
 ```
 
-在隐式情况下，返回 `void` 的任何操作都将发出信号，并调用返回 @no__t 或 `Task<T>` 的任何操作。 可以更改此默认行为，也可以通过使用 `SignalEntity<IInterfaceType>` 方法，在返回任务的情况下，使用信号操作。
+任何返回 `void` 的操作都将被终止，并会调用返回 `Task` 或 `Task<T>` 的任何操作。 可以通过显式使用 `SignalEntity<IInterfaceType>` 方法来更改此默认行为以及信号操作（即使它们返回任务）。
 
 ### <a name="shorter-option-for-specifying-the-target"></a>用于指定目标的更短选项
 
@@ -267,15 +267,15 @@ context.SignalEntity<ICounter>("myCounter", ...);
 与往常一样，所有参数和返回类型都必须是 JSON 可序列化的。 否则，在运行时将引发序列化异常。
 
 还需要执行一些其他规则：
-* 实体接口只能定义方法。
+* 实体接口必须仅定义方法。
 * 实体接口不得包含泛型参数。
 * 实体接口方法不能有多个参数。
-* 实体接口方法必须返回 `void`、`Task` 或 `Task<T>` 
+* 实体接口方法必须返回 `void`、`Task`或 `Task<T>` 
 
-如果违反了这些规则中的任何规则，则在运行时将在运行时引发 `InvalidOperationException`，因为接口用作 `SignalEntity` 或 `CreateProxy` 的类型参数。 异常消息说明哪个规则已断开。
+如果违反了这些规则中的任何规则，则在运行时将在运行时引发 `InvalidOperationException`，前提是该接口用作 `SignalEntity` 或 `CreateProxy`的类型参数。 异常消息说明哪个规则已断开。
 
 > [!NOTE]
-> 返回 `void` 的接口方法只能有信号（单向），而不能调用（双向）。 返回 `Task` 或 `Task<T>` 的接口方法可被调用或进行信号。 如果调用，它们将返回操作的结果，或重新引发由操作引发的异常。 但是，当发出信号时，它们不会从操作返回实际结果或异常，而只返回默认值。
+> 返回 `void` 的接口方法只能有信号（单向），未被调用（双向）。 返回 `Task` 或 `Task<T>` 的接口方法可以调用，也可以进行信号。 如果调用，它们将返回操作的结果，或重新引发由操作引发的异常。 但是，当发出信号时，它们不会从操作返回实际结果或异常，而只返回默认值。
 
 ## <a name="entity-serialization"></a>实体序列化
 
@@ -313,10 +313,10 @@ public class User
 ### <a name="serialization-attributes"></a>序列化特性
 
 在上面的示例中，我们选择包含多个属性，使基础序列化更可见：
-- 我们用 `[JsonObject(MemberSerialization.OptIn)]` 对类进行批注，以便提醒我们，该类必须是可序列化的，并且只保存显式标记为 JSON 属性的成员。
--  我们将使用 `[JsonProperty("name")]` 来注释要保存的字段，提醒我们字段是持久化实体状态的一部分，并指定要在 JSON 表示形式中使用的属性名称。
+- 我们用 `[JsonObject(MemberSerialization.OptIn)]` 批注类，以便提醒我们，该类必须是可序列化的，并且只保存显式标记为 JSON 属性的成员。
+-  我们使用 `[JsonProperty("name")]` 来批注要保存的字段，以便提醒我们字段是持久化实体状态的一部分，并指定要在 JSON 表示形式中使用的属性名称。
 
-但这些属性不是必需的;当使用 Json.NET 时，可以使用其他约定或属性。 例如，一种可能使用 `[DataContract]` 属性，或根本不使用属性：
+但这些属性不是必需的;当使用 Json.NET 时，可以使用其他约定或属性。 例如，一个可以使用 `[DataContract]` 特性，或者根本不使用特性：
 
 ```csharp
 [DataContract]
@@ -334,11 +334,11 @@ public class Counter
 }
 ```
 
-默认情况下，*不*会将类的名称存储为 JSON 表示形式的一部分：也就是说，我们使用 `TypeNameHandling.None` 作为默认设置。 此默认行为可以使用 @no__t 0 或 @no__t 属性进行重写。
+默认情况下，*不*会将类的名称存储为 JSON 表示形式的一部分：也就是说，我们使用 `TypeNameHandling.None` 作为默认设置。 使用 `JsonObject` 或 `JsonProperty` 属性可以重写此默认行为。
 
 ### <a name="making-changes-to-class-definitions"></a>对类定义进行更改
 
-在应用程序运行后对类定义进行更改时需要注意，因为存储的 JSON 对象可能不再与新的类定义匹配。 尽管如此，如果一种方法了解 `JsonConvert.PopulateObject` 所使用的反序列化过程，通常可以正确地处理数据格式更改。
+在应用程序运行后对类定义进行更改时需要注意，因为存储的 JSON 对象可能不再与新的类定义匹配。 尽管如此，只要一种方法了解 `JsonConvert.PopulateObject`所使用的反序列化过程，通常可以正确地处理数据格式的变化。
 
 例如，下面是一些更改的示例及其效果：
 
@@ -348,7 +348,7 @@ public class Counter
 1. 如果更改了某个属性的类型，使其无法再从存储的 JSON 进行反序列化，则会引发异常。
 1. 如果属性的类型发生更改，但仍可从存储的 JSON 进行反序列化，则会这样做。
 
-有很多选项可用于自定义 Json.NET 的行为。 例如，若要在存储的 JSON 包含类中不存在的字段时强制执行异常，请将属性指定 `JsonObject(MissingMemberHandling = MissingMemberHandling.Error)`。 还可以编写反序列化的自定义代码，该代码可读取以任意格式存储的 JSON。
+有很多选项可用于自定义 Json.NET 的行为。 例如，若要在存储的 JSON 包含类中不存在的字段时强制执行异常，请指定 `JsonObject(MissingMemberHandling = MissingMemberHandling.Error)`特性。 还可以编写反序列化的自定义代码，该代码可读取以任意格式存储的 JSON。
 
 ## <a name="entity-construction"></a>实体构造
 
@@ -356,7 +356,7 @@ public class Counter
 
 ### <a name="custom-initialization-on-first-access"></a>首次访问时的自定义初始化
 
-偶尔，我们需要在向从未访问过或已被删除的实体调度操作之前，执行一些特殊的初始化操作。 若要指定此行为，可以在 `DispatchAsync` 前添加一个条件：
+偶尔，我们需要在向从未访问过或已被删除的实体调度操作之前，执行一些特殊的初始化操作。 若要指定此行为，可以在 `DispatchAsync`之前添加条件：
 
 ```csharp
 [FunctionName(nameof(Counter))]
@@ -482,7 +482,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 
 ### <a name="the-entity-context-object"></a>实体上下文对象
 
-可以通过 `IDurableEntityContext` 类型的上下文对象访问特定于实体的功能。 此上下文对象作为实体函数的参数提供，并通过 async-local 属性 `Entity.Current`。
+可以通过 `IDurableEntityContext`类型的上下文对象访问特定于实体的功能。 此上下文对象作为实体函数的参数提供，并通过 async-local 属性 `Entity.Current`提供。
 
 以下成员提供当前操作的相关信息，并允许我们指定返回值。 
 
@@ -500,7 +500,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 * `SetState(arg)`：创建或更新实体的状态。
 * `DeleteState()`：删除实体的状态（如果存在）。 
 
-如果 @no__t 返回的状态为，则应用程序代码可以直接修改该对象。 结束时无需再次调用 `SetState` （但也不会造成危害）。 如果多次调用 `GetState<TState>`，则必须使用相同的类型。
+如果 `GetState` 返回的状态是一个对象，则它可以由应用程序代码直接修改。 结束时无需再次调用 `SetState` （但也不会造成危害）。 如果多次调用 `GetState<TState>`，则必须使用相同的类型。
 
 最后，使用以下成员通知其他实体，或启动新的业务流程：
 

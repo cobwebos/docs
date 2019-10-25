@@ -1,6 +1,7 @@
 ---
-title: 调用 Web API 的移动应用 - 获取应用的令牌 | Microsoft 标识平台
-description: 了解如何生成调用 Web API 的移动应用（获取应用的令牌）
+title: 移动应用调用 web Api-获取应用的令牌
+titleSuffix: Microsoft identity platform
+description: 了解如何生成调用 web Api （获取应用的令牌）的移动应用
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,22 +17,22 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 454d62f871290d2e7dd8d0eee4b1a2429625a5fc
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 9b1d6a0e4bfffaaf4ed0fa836bcf62a7f1104e6a
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268269"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803772"
 ---
-# <a name="mobile-app-that-calls-web-apis---get-a-token"></a>用于调用 Web API 的移动应用 - 获取令牌
+# <a name="mobile-app-that-calls-web-apis---get-a-token"></a>用于调用 web Api 的移动应用-获取令牌
 
-需为应用提供一个访问令牌，然后才能开始调用受保护的 Web API。 本文详述使用 Microsoft 身份验证库 (MSAL) 获取令牌的过程。
+在开始调用受保护的 web Api 之前，你的应用将需要一个访问令牌。 本文指导完成使用 Microsoft 身份验证库（MSAL）获取令牌的过程。
 
-## <a name="scopes-to-request"></a>请求的作用域
+## <a name="scopes-to-request"></a>要请求的范围
 
-请求令牌时，需定义作用域。 作用域决定了应用能够访问哪些数据。  
+请求令牌时，需要定义作用域。 范围决定了你的应用可以访问哪些数据。  
 
-最简单的方法是将所需 Web API 的 `App ID URI` 与作用域 `.default` 组合在一起。 这样做是为了告知 Microsoft 标识平台，应用需要在门户中设置的所有作用域。
+最简单的方法是将所需的 web API `App ID URI` 与范围 `.default`组合在一起。 这样做会告诉 Microsoft 标识平台，你的应用需要门户中设置的所有作用域。
 
 #### <a name="android"></a>Android
 ```Java
@@ -52,7 +53,7 @@ var scopes = new [] {"https://graph.microsoft.com/.default"};
 
 ### <a name="acquire-tokens-via-msal"></a>通过 MSAL 获取令牌
 
-MSAL 允许应用以无提示方式和交互方式获取令牌。 直接调用这些方法，然后 MSAL 就会返回所请求作用域的访问令牌。 正确模式是先执行无提示请求，然后回退到交互式请求。
+MSAL 使应用能够以无提示方式和交互方式获取令牌。 只需调用这些方法，MSAL 将为请求的作用域返回一个访问令牌。 正确的模式是执行无提示请求，并回退到交互式请求。
 
 #### <a name="android"></a>Android
 
@@ -119,7 +120,7 @@ MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] ini
 }];
 ```
  
-反应
+Swift：
 
 ```swift
 
@@ -152,7 +153,7 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
 }
 ```
 
-**如果 MSAL 返回`MSALErrorInteractionRequired`，请尝试以交互方式获取令牌：**
+**然后，如果 MSAL 返回 `MSALErrorInteractionRequired`，请尝试以交互方式获取令牌：**
 
 Objective-C：
 
@@ -172,7 +173,7 @@ MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParame
 }];
 ```
 
-反应
+Swift：
 
 ```swift
 let viewController = ... // Pass a reference to the view controller that should be used when getting a token interactively
@@ -197,7 +198,7 @@ MSAL for iOS 和 macOS 支持以交互方式或无提示方式获取令牌时使
 
 #### <a name="xamarin"></a>Xamarin
 
-以下示例演示了如何以少量的代码来以交互方式获取令牌，用于在 Microsoft Graph 中读取用户的个人资料。
+下面的示例演示了使用 Microsoft Graph 以交互方式获取用于读取用户配置文件的令牌的最小代码。
 
 ```CSharp
 string[] scopes = new string[] {"user.read"};
@@ -218,9 +219,9 @@ catch(MsalUiRequiredException)
 
 #### <a name="mandatory-parameters-in-msalnet"></a>MSAL.NET 中的强制参数
 
-`AcquireTokenInteractive` 只有一个必需的参数 ``scopes``，其中包含一个定义需要令牌的范围的字符串枚举。 如果该令牌适用于 Microsoft Graph，可以在名为“权限”的部分中每个 Microsoft Graph API 的 API 参考中找到所需的范围。 例如, 若要[列出用户的联系人](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts), 则需要使用作用域 "User. read"、"contacts"。 另请参阅 [Microsoft Graph 权限参考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
+`AcquireTokenInteractive` 只有一个必需参数 ``scopes``，该参数包含用于定义需要令牌的范围的字符串的枚举。 如果令牌用于 Microsoft Graph，则可以在名为 "权限" 的部分中的每个 Microsoft Graph API 的 api 引用中找到所需的作用域。 例如，若要[列出用户的联系人](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts)，则需要使用作用域 "User. read"、"contacts"。 另请参阅[Microsoft Graph 权限参考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
 
-如果在构建应用时未指定它，则在 Android 上还需要指定父活动（使用 `.WithParentActivityOrWindow`，请参见下文），以便令牌在交互后返回到该父活动。 如果未指定父活动，则调用 `.ExecuteAsync()` 时会引发异常。
+如果在生成应用时未指定此项，则在 Android 上，你还需要指定父活动（使用 `.WithParentActivityOrWindow`，请参阅下文），以便在交互后将令牌返回到该父活动。 如果不指定它，则在调用 `.ExecuteAsync()`时将引发异常。
 
 #### <a name="specific-optional-parameters-in-msalnet"></a>MSAL.NET 中的特定可选参数
 
@@ -230,17 +231,17 @@ catch(MsalUiRequiredException)
 
 <img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
 
-该类定义以下常量：
+类定义以下常量：
 
-- ``SelectAccount``：强制 STS 显示帐户选择对话框，其中包含用户已建立会话的帐户。 当应用程序开发人员想要让用户在不同的标识之间选择时，此选项非常有用。 此选项会驱动 MSAL 向标识提供者发送 ``prompt=select_account``。 这是默认的选项，它能够很好地根据可用的信息（帐户、用户会话的存在性等）提供尽量最佳的 体验。除非十分必要，否则不要更改此选项。
-- ``Consent``：应用程序开发人员可以使用此选项强制要求向用户显示许可提示，即使以前已经授予了许可。 在这种情况下，MSAL 会将 `prompt=consent` 发送到标识提供者。 此选项可用于某些注重安全的应用程序，其中的组织监管机制要求每次使用该应用程序时，都要向用户显示许可对话框。
-- ``ForceLogin``：应用程序开发人员可以使用此选项来让服务向用户显示凭据提示，即使不需要这种用户提示。 如果获取令牌失败，可以使用此选项让用户重新登录。 在这种情况下，MSAL 会将 `prompt=login` 发送到标识提供者。 同样，我们已看到此选项在某些注重安全的应用程序中使用，其中的组织监管机制要求用户每次在访问应用程序的特定部分时重新登录。
-- ``Never``（仅适用于 .NET 4.5 和 WinRT）不会提示用户，而是尝试使用隐藏的嵌入式 Web 视图中存储的 Cookie（请参阅“MSAL.NET 中的 Web 视图”）。 使用此选项可能会失败，在这种情况下，`AcquireTokenInteractive` 会引发异常来告知需要 UI 交互，你需要使用另一个 `Prompt` 参数。
-- ``NoPrompt``：不会向标识提供者发送任何提示。 此选项仅适用于 Azure AD B2C 编辑配置文件策略（请参阅 [B2C 细节](https://aka.ms/msal-net-b2c-specificities)）。
+- ``SelectAccount``：将强制 STS 显示包含用户为其会话的帐户的帐户选择对话框。 当应用程序开发人员希望允许用户在不同标识之间进行选择时，此选项很有用。 此选项驱动 MSAL 将 ``prompt=select_account`` 发送到标识提供者。 此选项是默认选项，它可以根据可用信息（帐户、用户的会话状态等）提供最佳体验，从而提供最佳体验。 ...).不要对其进行更改，除非你有充分的理由。
+- ``Consent``：允许应用程序开发人员强制提示用户同意，即使之前已授予同意也是如此。 在这种情况下，MSAL 会将 `prompt=consent` 发送到标识提供者。 此选项可用于某些注重安全的应用程序，在这些应用程序中，组织监管要求用户在每次使用应用程序时都显示许可对话框。
+- ``ForceLogin``：允许应用程序开发人员通过服务提示用户提供凭据，即使不需要此用户提示也是如此。 如果获取令牌失败，让用户重新登录，则此选项很有用。 在这种情况下，MSAL 会将 `prompt=login` 发送到标识提供者。 同样，我们已了解到它在某些注重安全的应用程序中使用，在这些应用程序中，组织治理要求用户在每次访问应用程序的特定部分时 relogs。
+- ``Never`` （仅适用于 .NET 4.5 和 WinRT）不会提示用户，而是尝试使用隐藏的嵌入式 web 视图中存储的 cookie （请参阅以下内容： MSAL.NET 中的 Web 视图）。 使用此选项可能会失败，并且在这种情况下 `AcquireTokenInteractive` 将引发异常以通知需要 UI 交互，你将需要使用另一个 `Prompt` 参数。
+- ``NoPrompt``：不会向标识提供程序发送任何提示。 此选项仅适用于 Azure AD B2C 编辑配置文件策略（请参阅[B2C 细节](https://aka.ms/msal-net-b2c-specificities)）。
 
 ##### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
-此修饰符在高级方案中使用，其中，你希望用户提前许可多个资源（不想要使用增量许可，这种许可通常与 MSAL.NET/Microsoft 标识平台 v2.0 配合使用）。 有关详细信息，请参阅[如何：让用户提前许可多个资源](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources)。
+此修饰符用于您希望用户提前预先同意多个资源的高级方案（并且不想使用通常与 MSAL.NET/Microsoft identity platform v2.0 一起使用的增量许可）。 有关详细信息，请参阅[操作方法：为多个资源提前许可用户](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources)。
 
 ```CSharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
@@ -250,13 +251,13 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 ##### <a name="other-optional-parameters"></a>其他可选参数
 
-在 [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods) 的参考文档中详细了解 `AcquireTokenInteractive` 的所有其他可选参数
+详细了解[AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods)的参考文档中 `AcquireTokenInteractive` 的所有其他可选参数
 
 ### <a name="acquire-tokens-via-the-protocol"></a>通过协议获取令牌
 
-建议不要直接使用协议。 如果执行此操作, 则应用不支持某些单一登录 (SSO)、设备管理和条件性访问方案。
+建议不要直接使用协议。 如果执行此操作，则应用不支持某些单一登录（SSO）、设备管理和条件性访问方案。
 
-使用协议获取移动应用的令牌时，需发出两个请求：获取授权代码，然后用它来换取令牌。
+使用协议获取移动应用的令牌时，需要发出两个请求：获取授权代码，并将其与令牌交换。
 
 #### <a name="get-authorization-code"></a>获取授权代码
 
@@ -287,4 +288,4 @@ client_id=<CLIENT_ID>
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [调用 Web API](scenario-mobile-call-api.md)
+> [调用 web API](scenario-mobile-call-api.md)

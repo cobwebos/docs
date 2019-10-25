@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: dfcf9ea61a1f0fb5fd2d3b613c2449480753b3a1
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 5215a7d899af15dc028189aee5760a6ec5b6577d
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595094"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803987"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>使用 Azure CLI 将 vhd 上传到 Azure
 
 本文介绍如何将 vhd 从本地计算机上传到 Azure 托管磁盘。 以前，你必须遵循更多涉及的过程，将数据暂存到存储帐户，并管理该存储帐户。 现在，你不再需要管理存储帐户，也不需要暂存其中的数据来上载 vhd。 而是创建一个空的托管磁盘，并将 vhd 直接上传到该磁盘。 这简化了将本地 Vm 上传到 Azure 的功能，使你能够将 vhd 最多上传到 32 TiB，并将其直接上传到大型托管磁盘。
 
-如果你正在为 Azure 中的 IaaS Vm 提供备份解决方案，我们建议你使用直接上传将客户备份还原到托管磁盘。 如果要从 Azure 中的外部计算机上传 VHD，则的速度取决于你的本地带宽。 如果使用的是 Azure VM，则带宽将与标准 Hdd 相同。
+如果你正在为 Azure 中的 IaaS Vm 提供备份解决方案，我们建议你使用直接上传将客户备份还原到托管磁盘。 如果要从 Azure 中的外部计算机上传 VHD，速度将取决于你的本地带宽。 如果使用的是 Azure VM，则带宽将与标准 Hdd 相同。
 
 目前，标准 HDD、标准 SSD 和高级 SSD 托管磁盘支持直接上传。 它尚不支持超 Ssd。
 
@@ -29,7 +29,7 @@ ms.locfileid: "72595094"
 - 下载最新[版本的 AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)。
 - [安装 Azure CLI](/cli/azure/install-azure-cli)。
 - Vhd 文件，本地存储
-- 如果要从-pem 上传 vhd：已[为 Azure 准备](../windows/prepare-for-upload-vhd-image.md)的 vhd，本地存储。
+- 如果要从本地上载 vhd：已[为 Azure 准备](../windows/prepare-for-upload-vhd-image.md)的 vhd，本地存储。
 - 如果要执行复制操作，请使用 Azure 中的托管磁盘。
 
 ## <a name="create-an-empty-managed-disk"></a>创建一个空托管磁盘
@@ -124,6 +124,5 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 
 ## <a name="next-steps"></a>后续步骤
 
-现在已成功将 vhd 上传到托管磁盘，可以将磁盘附加到 VM 并开始使用它。
+现在已成功将 vhd 上传到托管磁盘，可以将该磁盘作为[数据磁盘附加到现有 VM](add-disk.md) ，或者[将磁盘作为 OS 磁盘附加到 VM](upload-vhd.md#create-the-vm)，以创建新的 vm。 
 
-若要了解如何将磁盘附加到 VM，请参阅主题：[将磁盘添加到 LINUX VM 一](add-disk.md)文。

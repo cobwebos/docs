@@ -1,22 +1,22 @@
 ---
-title: Azure SQL 数据库和 SQL 数据仓库连接体系结构 | Microsoft Docs
-description: 本文档介绍了用于从 Azure 内部或 Azure 外部进行数据库连接的 Azure SQL 连接体系结构。
+title: Azure SQL 数据库和 SQL 数据仓库连接体系结构 |Microsoft Docs
+description: 本文档介绍 azure 中或 Azure 外部的数据库连接的 Azure SQL 连接体系结构。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: ''
+ms.custom: fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: f15fb46568f4ad062605b51600d3c61870b48645
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: f26eb44dd407e379d0bf3291eb890d2e451c919e
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828849"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72807915"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL 连接体系结构
 
@@ -38,9 +38,9 @@ ms.locfileid: "71828849"
 
 Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三个选项：
 
-- **重定向（建议）：** 客户端直接与托管数据库的节点建立连接。 若要启用连接，客户端必须允许对区域中端口 11000-11999 的所有 Azure IP 地址而不仅仅是端口 1433 上的 Azure SQL 数据库网关 IP 地址应用出站防火墙规则，并结合[服务标记](../virtual-network/security-overview.md#service-tags)使用网络安全组 (NSG)。 由于数据包会直接发往数据库，因此延迟、吞吐量和性能都会得到改善。
+- **重定向（建议）：** 客户端直接与托管数据库的节点建立连接。 若要启用连接，客户端必须将网络安全组（NSG）与端口11000-11999 的[服务标记](../virtual-network/security-overview.md#service-tags)结合使用网络安全组（）的区域中的所有 azure IP 地址，而不仅仅允许使用端口1433上的 Azure SQL 数据库网关 IP 地址。 由于数据包会直接发往数据库，因此延迟、吞吐量和性能都会得到改善。
 - **代理：** 在此模式下，所有连接都是通过 Azure SQL 数据库网关代理的。 若要启用连接，客户端必须包含只允许 Azure SQL 数据库网关 IP 地址（通常每个区域有两个 IP 地址）的出站防火墙规则。 选择此模式可能导致延迟增大、吞吐量降低，具体取决于工作负荷的性质。 我们强烈建议使用 `Redirect` 连接策略而不要使用 `Proxy` 连接策略，以最大程度地降低延迟和提高吞吐量。
-- **默认：** 除非显式将连接策略更改为 `Proxy` 或 `Redirect`，否则，在创建后，此连接策略将在所有服务器上生效。 有效策略取决于连接是源自 Azure 内部（`Redirect`）还是外部（`Proxy`）。
+- **默认值：** 这是在创建之后对所有服务器生效的连接策略，除非显式将连接策略更改为 `Proxy` 或 `Redirect`。 有效策略取决于连接是源自 Azure 内部（`Redirect`）还是外部（`Proxy`）。
 
 ## <a name="connectivity-from-within-azure"></a>从 Azure 内部连接
 
@@ -56,9 +56,9 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL 数据库网关 IP 地址
 
-下表按区域列出了网关的 IP 地址。 若要连接到 Azure SQL 数据库，需要允许到/来自该区域的**所有**网关的网络流量。
+下表列出了按区域列出的网关 IP 地址。 若要连接到 Azure SQL 数据库，需要允许网络流量从区域的**所有**网关 &。
 
-以下文章介绍了如何将流量迁移到特定区域中的新网关：[将 Azure SQL 数据库流量迁移到更新的网关](sql-database-gateway-migration.md)
+以下文章介绍了如何将流量迁移到特定区域中的新网关： [AZURE SQL 数据库流量迁移到更新的网关](sql-database-gateway-migration.md)
 
 
 | 区域名称          | 网关 IP 地址 |
@@ -75,8 +75,8 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 | 中国东部 2         | 40.73.82.1         |
 | 中国北部          | 139.219.15.17      |
 | 中国北部 2        | 40.73.50.0         |
-| 东亚            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
-| East US              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
+| 亚洲东部            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
+| 美国东部              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
 | 美国东部 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 | 
 | 法国中部       | 40.79.137.0, 40.79.129.1 |
 | 德国中部      | 51.4.144.100       |
@@ -87,19 +87,19 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 | 日本东部           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 | 
 | 日本西部           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
 | 韩国中部        | 52.231.32.42       |
-| 韩国          | 52.231.200.86      |
+| 韩国南部          | 52.231.200.86      |
 | 美国中北部     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | 北欧         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
 | 南非北部   | 102.133.152.0      |
 | 南非西部    | 102.133.24.0       |
 | 美国中南部     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
-| 东南亚      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
+| 亚洲东南部      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | 阿拉伯联合酋长国中部          | 20.37.72.64        |
 | 阿拉伯联合酋长国北部            | 65.52.248.0        |
 | 英国南部             | 51.140.184.11      |
 | 英国西部              | 51.141.8.11        |
 | 美国中西部      | 13.78.145.25       |
-| 西欧          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
+| 欧洲西部          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
 | 美国西部              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
 | 美国西部 2            | 13.66.226.202      |
 |                      |                    |
@@ -115,7 +115,7 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 以下脚本需要 [Azure PowerShell 模块](/powershell/azure/install-az-ps)。
+> Azure SQL 数据库仍支持 PowerShell Azure 资源管理器模块，但所有将来的开发都适用于 Az .Sql 模块。 有关这些 cmdlet，请参阅[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令的参数完全相同。 以下脚本需要[Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 
 以下 PowerShell 脚本演示如何更改连接策略。
 
@@ -138,12 +138,12 @@ Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 > [!IMPORTANT]
 > 此脚本需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
-### <a name="azure-cli-in-a-bash-shell"></a>bash shell 中的 Azure CLI
+### <a name="azure-cli-in-a-bash-shell"></a>Bash shell 中的 Azure CLI
 
 > [!IMPORTANT]
 > 此脚本需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
-以下 CLI 脚本演示如何在 bash shell 中更改连接策略。
+以下 CLI 脚本演示了如何更改 bash shell 中的连接策略。
 
 ```azurecli-interactive
 # Get SQL Server ID
@@ -159,12 +159,12 @@ az resource show --ids $ids
 az resource update --ids $ids --set properties.connectionType=Proxy
 ```
 
-### <a name="azure-cli-from-a-windows-command-prompt"></a>从 Windows 命令提示符运行 Azure CLI
+### <a name="azure-cli-from-a-windows-command-prompt"></a>从 Windows 命令提示符 Azure CLI
 
 > [!IMPORTANT]
 > 此脚本需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
-以下 CLI 脚本演示如何从 Windows 命令提示符（安装了 Azure CLI）更改连接策略。
+下面的 CLI 脚本演示如何从 Windows 命令提示符（安装了 Azure CLI）更改连接策略。
 
 ```azurecli
 # Get SQL Server ID and set URI

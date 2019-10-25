@@ -1,5 +1,6 @@
 ---
-title: 受保护的 web API-应用代码配置 |Azure Active Directory
+title: 受保护的 web API-应用代码配置 Active Directory
+titleSuffix: Microsoft identity platform
 description: 了解如何构建受保护的 web API 并配置你的应用程序代码。
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,29 +17,29 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b249b99faa62e73b9aa3247f71f88767fca96f01
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: b7044180c72f92b70e0c3a2085eca043f44da45f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488836"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803628"
 ---
-# <a name="protected-web-api-adding-authorization-to-your-api"></a>受保护的 web API:向 API 添加授权
+# <a name="protected-web-api-adding-authorization-to-your-api"></a>受保护的 web API：向 API 添加授权
 
-本文介绍如何将授权添加到 web API。 此保护可确保仅通过以下方法调用 API:
+本文介绍如何将授权添加到 web API。 此保护可确保仅通过以下方法调用 API：
 
 - 代表具有正确范围的用户的应用程序。
 - 具有适当应用程序角色的守护程序应用。
 
 > [!NOTE]
-> 本文中的代码片段摘自以下示例, 这些示例完全正常
+> 本文中的代码片段摘自以下示例，这些示例完全正常
 >
 > - GitHub 上的[ASP.NET Core WEB API 增量教程](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Controllers/TodoListController.cs#L37)
 > - [ASP.NET Web API 示例](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof/blob/dfd0115533d5a230baff6a3259c76cf117568bd9/TodoListService/Controllers/TodoListController.cs#L48)
 
-若要保护 ASP.NET/ASP.NET Core web API, 需要在以下其中一项`[Authorize]`上添加属性:
+若要保护 ASP.NET/ASP.NET Core web API，需要在以下其中一个中添加 `[Authorize]` 属性：
 
-- 如果要保护控制器的所有操作, 则为控制器本身
+- 如果要保护控制器的所有操作，则为控制器本身
 - API 的单个控制器操作
 
 ```CSharp
@@ -49,14 +50,14 @@ ms.locfileid: "68488836"
     }
 ```
 
-但这种保护还不够。 它仅保证 ASP.NET/ASP.NET 核心将验证令牌。 API 需要验证用于调用 web API 的令牌是否与预期的声明一起请求, 尤其是:
+但这种保护还不够。 它仅保证 ASP.NET/ASP.NET 核心将验证令牌。 API 需要验证用于调用 web API 的令牌是否与预期的声明一起请求，尤其是：
 
-- 如果代表用户调用 API, 则为*范围*。
-- *应用角色*(如果可从后台程序应用调用 API)。
+- 如果代表用户调用 API，则为*范围*。
+- *应用角色*（如果可从后台程序应用调用 API）。
 
 ## <a name="verifying-scopes-in-apis-called-on-behalf-of-users"></a>验证代表用户调用的 Api 中的作用域
 
-如果你的 API 由客户端应用代表用户调用, 则它需要请求具有 API 的特定作用域的持有者令牌。 (请参阅[代码配置 |持有者令牌](scenario-protected-web-api-app-configuration.md#bearer-token)。)
+如果你的 API 由客户端应用代表用户调用，则它需要请求具有 API 的特定作用域的持有者令牌。 （请参阅[代码配置 |持有者令牌](scenario-protected-web-api-app-configuration.md#bearer-token)。）
 
 ```CSharp
 [Authorize]
@@ -80,9 +81,9 @@ public class TodoListController : Controller
 }
 ```
 
-`VerifyUserHasAnyAcceptedScope`方法将执行如下操作:
+`VerifyUserHasAnyAcceptedScope` 方法将执行如下操作：
 
-- 验证是否存在名为`http://schemas.microsoft.com/identity/claims/scope`或`scp`的声明。
+- 验证是否存在名为 `http://schemas.microsoft.com/identity/claims/scope` 或 `scp`的声明。
 - 验证声明的值是否包含 API 所需的范围。
 
 ```CSharp
@@ -113,12 +114,12 @@ public class TodoListController : Controller
     }
 ```
 
-此[示例代码](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/Microsoft.Identity.Web/Resource/ScopesRequiredByWebAPIExtension.cs#L47)用于 ASP.NET Core。 对于 ASP.NET, 只需`HttpContext.User`将`ClaimsPrincipal.Current`替换为, 并将声明`"http://schemas.microsoft.com/identity/claims/scope"`类型`"scp"`替换为。 (另请参阅本文后面的代码片段。)
+此[示例代码](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/Microsoft.Identity.Web/Resource/ScopesRequiredByWebAPIExtension.cs#L47)用于 ASP.NET Core。 对于 ASP.NET，只需将 `HttpContext.User` 替换为 `ClaimsPrincipal.Current`，然后将声明类型 `"http://schemas.microsoft.com/identity/claims/scope"` 替换 `"scp"`。 （另请参阅本文后面的代码片段。）
 
 ## <a name="verifying-app-roles-in-apis-called-by-daemon-apps"></a>验证守护程序应用调用的 Api 中的应用角色
 
-如果 web API 由[守护程序应用](scenario-daemon-overview.md)调用, 则该应用应要求对你的 web api 具有应用程序权限。 我们已在[公开应用程序权限 (应用角色)](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles)中看到, API 公开了此类权限 (例如`access_as_application` , 应用角色)。
-现在, 你需要让 api 验证它收到的令牌是否包含`roles`声明, 以及此声明是否具有预期的值。 执行此验证的代码类似于验证委托权限的代码, 不同之处在于, 验证控制器操作的`scopes`代码不会`roles`测试:
+如果 web API 由[守护程序应用](scenario-daemon-overview.md)调用，则该应用应要求对你的 web api 具有应用程序权限。 我们已在[公开应用程序权限（应用角色）](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles)中看到，API 公开了此类权限（例如 `access_as_application` 应用角色）。
+现在，你需要让 Api 验证收到的令牌是否包含 `roles` 声明，以及此声明是否具有预期的值。 执行此验证的代码类似于验证委托权限的代码，不同之处在于，你的控制器操作会测试 `roles`，而不是测试 `scopes`：
 
 ```CSharp
 [Authorize]
@@ -131,7 +132,7 @@ public class TodoListController : ApiController
     }
 ```
 
-此`ValidateAppRole()`方法可能如下所示:
+`ValidateAppRole()` 方法可能如下所示：
 
 ```CSharp
 private void ValidateAppRole(string appRole)
@@ -152,13 +153,13 @@ private void ValidateAppRole(string appRole)
 }
 ```
 
-这一次, 代码段适用于 ASP.NET。 对于 ASP.NET Core, 只需`ClaimsPrincipal.Current`将`HttpContext.User`替换为, 并`"roles"`将声明名称`"http://schemas.microsoft.com/identity/claims/roles"`替换为。 (另请参阅本文前面的代码片段。)
+这一次，代码段适用于 ASP.NET。 对于 ASP.NET Core，只需将 `ClaimsPrincipal.Current` 替换为 `HttpContext.User`，并将 `"roles"` 声明名称替换为 `"http://schemas.microsoft.com/identity/claims/roles"`。 （另请参阅本文前面的代码片段。）
 
-### <a name="accepting-app-only-tokens-if-the-web-api-should-be-called-only-by-daemon-apps"></a>如果仅应由守护程序应用调用 web API, 则接受仅限应用的令牌
+### <a name="accepting-app-only-tokens-if-the-web-api-should-be-called-only-by-daemon-apps"></a>如果仅应由守护程序应用调用 web API，则接受仅限应用的令牌
 
-`roles`声明还用于用户分配模式的用户。 （有关详细信息，请参阅[如何：在应用程序中添加应用角色, 并在令牌](howto-add-app-roles-in-azure-ad-apps.md)中接收这些角色。)因此, 如果角色可以同时分配给这两个角色, 则仅检查角色会允许应用以用户和其他方式登录。 建议为用户和应用声明不同的角色, 以避免这种混乱。
+`roles` 声明还用于用户分配模式的用户。 （请参阅[如何：在应用程序中添加应用程序角色并在令牌中接收这些角色](howto-add-app-roles-in-azure-ad-apps.md)。）因此，如果角色可以同时分配给这两个角色，则仅检查角色会允许应用以用户和其他方式登录。 建议为用户和应用声明不同的角色，以避免这种混乱。
 
-如果要仅允许后台程序应用调用 web API, 请在验证应用角色时添加一个条件, 该令牌为仅限应用的令牌:
+如果要仅允许后台程序应用调用 web API，请在验证应用角色时添加一个条件，该令牌为仅限应用的令牌：
 
 ```CSharp
 string oid = ClaimsPrincipal.Current.FindFirst("oid")?.Value;
@@ -171,4 +172,4 @@ bool isAppOnlyToken = oid == sub;
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [转移到生产环境](scenario-protected-web-api-production.md)
+> [转到生产](scenario-protected-web-api-production.md)

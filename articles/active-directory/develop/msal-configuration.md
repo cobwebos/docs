@@ -1,5 +1,6 @@
 ---
-title: 了解 Android Microsoft 身份验证库（MSAL）配置文件 |Microsoft
+title: 了解 Android Microsoft 身份验证库（MSAL）配置文件
+titleSuffix: Microsoft identity platform
 description: Android Microsoft 身份验证库（MSAL）配置文件概述，它表示 Azure Active Directory 中的应用程序配置。
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2851adf14f5ccaec576a325cefcef8523be03bc
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: c06bc1ebf3b87f622029e9e875fe478eae7e6a30
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679745"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803156"
 ---
 # <a name="android-microsoft-authentication-library-msal-configuration-file"></a>Android Microsoft 身份验证库（MSAL）配置文件
 
@@ -34,14 +35,14 @@ MSAL 附带了一个[默认的配置 JSON 文件](https://github.com/AzureAD/mic
 
 ### <a name="general-settings"></a>常规设置
 
-| 属性 | 数据类型 | 必填 | 说明 |
+| properties | 数据类型 | 需要 | 说明 |
 |-----------|------------|-------------|-------|
 | `client_id` | 字符串 | 是 | [应用程序注册页](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)中的应用的客户端 ID |
 | `redirect_uri`   | 字符串 | 是 | [应用程序注册页](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)的重定向 URI |
-| `authorities` | List @ no__t-0Authority > | 否 | 应用所需的权限列表 |
-| `authorization_user_agent` | AuthorizationAgent （enum） | 否 | 可能的值： `DEFAULT`，`BROWSER`，`WEBVIEW` |
-| `http` | HttpConfiguration | 否 | 配置 `HttpUrlConnection` `connect_timeout` 和 `read_timeout` |
-| `logging` | LoggingConfiguration | 否 | 指定日志记录的详细级别。 可选配置包括： `pii_enabled`，它采用布尔值，`log_level`，它采用 `ERROR`、`WARNING`、`INFO` 或 @no__t 5。 |
+| `authorities` | 列出\<颁发机构 > | No | 应用所需的权限列表 |
+| `authorization_user_agent` | AuthorizationAgent （enum） | No | 可能的值： `DEFAULT`、`BROWSER``WEBVIEW` |
+| `http` | HttpConfiguration | No | 配置 `HttpUrlConnection` `connect_timeout` 和 `read_timeout` |
+| `logging` | LoggingConfiguration | No | 指定日志记录的详细级别。 可选配置包括： `pii_enabled`，它采用布尔值，`log_level`，它采用 `ERROR`、`WARNING`、`INFO`或 `VERBOSE`。 |
 
 ### <a name="client_id"></a>client_id
 
@@ -53,7 +54,7 @@ MSAL 附带了一个[默认的配置 JSON 文件](https://github.com/AzureAD/mic
 
 ### <a name="authorities"></a>授权
 
-你已知并信任的颁发机构的列表。 除了本文中列出的权威机构外，MSAL 还会查询 Microsoft 以获取 Microsoft 已知的云和颁发机构的列表。 在此颁发机构列表中，指定颁发机构的类型和任何其他可选参数（例如 `"audience"`），该参数应与基于应用注册的应用的受众相符。 下面是一个颁发机构示例列表：
+你已知并信任的颁发机构的列表。 除了本文中列出的权威机构外，MSAL 还会查询 Microsoft 以获取 Microsoft 已知的云和颁发机构的列表。 在此颁发机构列表中，指定机构的类型和任何其他可选参数（如 `"audience"`），该参数应与基于应用注册的应用的受众相符。 下面是一个颁发机构示例列表：
 
 ```javascript
 // Example AzureAD and Personal Microsoft Account
@@ -90,7 +91,7 @@ MSAL 附带了一个[默认的配置 JSON 文件](https://github.com/AzureAD/mic
 
 #### <a name="map-aad-authority--audience-to-microsoft-identity-platform-endpoints"></a>将 AAD 颁发机构 & 受众映射到 Microsoft 标识平台终结点
 
-| 类型 | 受众 | 租户 ID | Authority_Url | 生成的终结点 | 说明 |
+| Type | 受众 | 租户 ID | Authority_Url | 生成的终结点 | 说明 |
 |------|------------|------------|----------------|----------------------|---------|
 | AAD | AzureADandPersonalMicrosoftAccount | | | https://login.microsoftonline.com/common | `common` 是帐户所在位置的租户别名。 如特定的 Azure Active Directory 租户或 Microsoft 帐户系统。 |
 | AAD | AzureADMyOrg | contoso.com | | https://login.microsoftonline.com/contoso.com | 只有 contoso.com 中的帐户才能获取令牌。 任何经过验证的域或租户 GUID 都可以用作租户 ID。 |
@@ -101,65 +102,65 @@ MSAL 附带了一个[默认的配置 JSON 文件](https://github.com/AzureAD/mic
 > [!NOTE]
 > 无法在 MSAL 中启用和禁用授权机构验证。
 > 颁发机构是通过配置指定的开发人员或通过元数据从 Microsoft 知道的。
-> 如果 MSAL 接收到未知权限的令牌请求，则 `UnknownAuthority` 结果的类型为 @no__t。
+> 如果 MSAL 接收到未知颁发机构的令牌请求，则 `UnknownAuthority` 结果的 `MsalClientException` 类型。
 
 #### <a name="authority-properties"></a>颁发机构属性
 
-| 属性 | 数据类型  | 必填 | 说明 |
+| properties | 数据类型  | 需要 | 说明 |
 |-----------|-------------|-----------|--------|
-| `type` | 字符串 | 是 | 镜像应用程序的目标受众或帐户类型。 可能的值： `AAD`，`B2C` |
-| `audience` | Object | 否 | 仅当 type = `AAD` 时才适用。 指定应用的目标标识。 使用应用注册中的值 |
-| `authority_url` | 字符串 | 是 | 仅当 type = `B2C` 时是必需的。 指定应用应使用的授权 URL 或策略  |
-| `default` | boolean | 是 | 指定一个或多个颁发机构时，需要使用单个 @no__t 0。 |
+| `type` | 字符串 | 是 | 镜像应用程序的目标受众或帐户类型。 可能的值： `AAD`、`B2C` |
+| `audience` | 对象 | No | 仅当 type =`AAD`时才适用。 指定应用的目标标识。 使用应用注册中的值 |
+| `authority_url` | 字符串 | 是 | 仅当 type =`B2C`时才是必需的。 指定应用应使用的授权 URL 或策略  |
+| `default` | 布尔值 | 是 | 指定一个或多个颁发机构时，需要单个 `"default":true`。 |
 
 #### <a name="audience-properties"></a>访问群体属性
 
-| 属性 | 数据类型  | 必填 | 说明 |
+| properties | 数据类型  | 需要 | 说明 |
 |-----------|-------------|------------|-------|
-| `type` | 字符串 | 是 | 指定应用要以其为目标的受众。 可能的值： `AzureADandPersonalMicrosoftAccount`，`PersonalMicrosoftAccount`，`AzureADMultipleOrgs`，`AzureADMyOrg` |
-| `tenant_id` | 字符串 | 是 | 仅在 `"type":"AzureADMyOrg"` 时是必需的。 对于其他 @no__t 0 值是可选的。 这可以是租户域，如 `contoso.com` 或租户 ID，如 `72f988bf-86f1-41af-91ab-2d7cd011db46`） |
+| `type` | 字符串 | 是 | 指定应用要以其为目标的受众。 可能的值： `AzureADandPersonalMicrosoftAccount`、`PersonalMicrosoftAccount`、`AzureADMultipleOrgs``AzureADMyOrg` |
+| `tenant_id` | 字符串 | 是 | 仅在 `"type":"AzureADMyOrg"`时是必需的。 对于其他 `type` 值是可选的。 这可以是租户域（如 `contoso.com`）或租户 ID （如 `72f988bf-86f1-41af-91ab-2d7cd011db46`） |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent
 
 指示在登录帐户或授权访问资源时，是使用嵌入的 web 视图还是设备上的默认浏览器。
 
 可能的值：
-- `DEFAULT`：首选系统浏览器。 如果浏览器在设备上不可用，则使用嵌入的 web 视图。
+- `DEFAULT`：更倾向于系统浏览器。 如果浏览器在设备上不可用，则使用嵌入的 web 视图。
 - `WEBVIEW`：使用嵌入的 web 视图。
-- `BROWSER`：使用设备上的默认浏览器。
+- `BROWSER`：在设备上使用默认浏览器。
 
 ### <a name="multiple_clouds_supported"></a>multiple_clouds_supported
 
-对于支持多个国家云的客户端，指定 `true`。 然后，Microsoft 标识平台会在授权和令牌兑换期间自动重定向到正确的国内云。 可以通过检查与 @no__t 关联的授权机构来确定已登录帐户的国家/地区云。 请注意，@no__t 0 不提供要为其请求令牌的资源的特定于云的终结点地址。
+对于支持多个国家云的客户端，指定 `true`。 然后，Microsoft 标识平台会在授权和令牌兑换期间自动重定向到正确的国内云。 可以通过检查与 `AuthenticationResult`关联的授权机构来确定已登录帐户的国家/地区。 请注意，`AuthenticationResult` 不提供要为其请求令牌的资源的国家云特定的终结点地址。
 
 ### <a name="broker_redirect_uri_registered"></a>broker_redirect_uri_registered
 
-一个布尔值，指示是否正在使用与 Microsoft 身份 broker 兼容的 broker 重定向 URI。 如果不想在应用中使用代理，请将设置为 `false`。
+一个布尔值，指示是否正在使用与 Microsoft 身份 broker 兼容的 broker 重定向 URI。 如果你不想在应用中使用代理，则设置为 `false`。
 
-如果你使用的是将受众设置为 `"MicrosoftPersonalAccount"` 的 AAD 颁发机构，则不会使用 broker。
+如果使用的是 "访问群体" 设置为 "`"MicrosoftPersonalAccount"`" 的 AAD 颁发机构，则不会使用 broker。
 
 ### <a name="http"></a>http
 
 配置 HTTP 超时的全局设置，例如：
 
-| 属性 | 数据类型 | 必填 | 说明 |
+| properties | 数据类型 | 需要 | 说明 |
 | ---------|-----------|------------|--------|
-| `connect_timeout` | int | 否 | 时间（毫秒） |
-| `read_timeout` | int | 否 | 时间（毫秒） |
+| `connect_timeout` | int | No | 时间（毫秒） |
+| `read_timeout` | int | No | 时间（毫秒） |
 
 ### <a name="logging"></a>logging
 
 以下全局设置用于日志记录：
 
-| 属性 | 数据类型  | 必填 | 说明 |
+| properties | 数据类型  | 需要 | 说明 |
 | ----------|-------------|-----------|---------|
-| `pii_enabled`  | boolean | 否 | 是否发出个人数据 |
-| `log_level`   | boolean | 否 | 要输出的日志消息 |
-| `logcat_enabled` | boolean | 否 | 除日志记录接口外是否输出到日志 cat |
+| `pii_enabled`  | 布尔值 | No | 是否发出个人数据 |
+| `log_level`   | 布尔值 | No | 要输出的日志消息 |
+| `logcat_enabled` | 布尔值 | No | 除日志记录接口外是否输出到日志 cat |
 
 ### <a name="account_mode"></a>account_mode
 
-指定在应用中一次可以使用的帐户数。 可能的值为：
+指定在应用中一次可以使用的帐户数。 可能的值包括：
 
 - `MULTIPLE` （默认值）
 - `SINGLE`
@@ -344,8 +345,8 @@ MSAL 附带的默认 MSAL 配置如下所示。 你可以在[GitHub](https://git
 
 ## <a name="how-to-use-a-configuration-file"></a>如何使用配置文件
 
-1. 创建配置文件。 建议在 `res/raw/auth_config.json` 中创建自定义配置文件。 不过，您可以将它放在您需要的任何位置。
-2. 当构造 `PublicClientApplication` 时，告诉 MSAL 在何处查找配置。 例如：
+1. 创建配置文件。 建议在 `res/raw/auth_config.json`中创建自定义配置文件。 不过，您可以将它放在您需要的任何位置。
+2. 当你构造 `PublicClientApplication`时，请告诉 MSAL 在何处查找你的配置。 例如：
 
    ```java
    //On Worker Thread

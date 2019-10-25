@@ -3,7 +3,7 @@ title: 管理 Azure Monitor 中的 Log Analytics 工作区 | Microsoft Docs
 description: 可以使用资源、工作区或表级权限管理对 Azure Monitor 中的 Log Analytics 工作区中存储的数据的访问。 本文详细介绍了如何完成此操作。
 services: log-analytics
 documentationcenter: ''
-author: mgoedtel
+author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: d0e5162d-584b-428c-8e8b-4dcaa746e783
@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.author: magoedte
-ms.openlocfilehash: 2f9c50053fca73aeee0ed9a286b4c286486bac86
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.date: 10/22/2019
+ms.author: bwren
+ms.openlocfilehash: 3b8f5cb2d5c8e7ff80d32b288c041b4f153bf526
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532325"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787507"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理 Azure Monitor 中的日志数据和工作区的访问权限
 
@@ -259,20 +259,24 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
 ```
 "Actions":  [
-              "Microsoft.OperationalInsights/workspaces/query/Heartbeat/read",
-              "Microsoft.OperationalInsights/workspaces/query/AzureActivity/read"
+    "Microsoft.OperationalInsights/workspaces/read",
+    "Microsoft.OperationalInsights/workspaces/query/read",
+    "Microsoft.OperationalInsights/workspaces/query/Heartbeat/read",
+    "Microsoft.OperationalInsights/workspaces/query/AzureActivity/read"
   ],
 ```
 
 若要创建只具有访问_SecurityBaseline_和其他表的权限的角色，请使用以下操作创建自定义角色：
 
 ```
-    "Actions":  [
-        "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
-    ],
-    "NotActions":  [
-        "Microsoft.OperationalInsights/workspaces/query/*/read"
-    ],
+"Actions":  [
+    "Microsoft.OperationalInsights/workspaces/read",
+    "Microsoft.OperationalInsights/workspaces/query/read",
+    "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
+],
+"NotActions":  [
+    "Microsoft.OperationalInsights/workspaces/query/*/read"
+],
 ```
 
 ### <a name="custom-logs"></a>自定义日志
@@ -282,9 +286,11 @@ Log Analytics 参与者角色包括以下 Azure 操作：
  目前不能授予或拒绝对单独自定义日志的访问权限，但可以授予或拒绝对所有自定义日志的访问权限。 若要创建具有对所有自定义日志的访问权限的角色，请使用以下操作创建自定义角色：
 
 ```
-    "Actions":  [
-        "Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read"
-    ],
+"Actions":  [
+    "Microsoft.OperationalInsights/workspaces/read",
+    "Microsoft.OperationalInsights/workspaces/query/read",
+    "Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read"
+],
 ```
 
 ### <a name="considerations"></a>注意事项

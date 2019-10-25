@@ -5,15 +5,15 @@ description: 在 Azure 搜索中使用 AI 扩充管道将语义、自然语言�
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 1a8840aca71daacc08cf85b178668e42ff9f796c
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5f65667ac8ffacdd12e57ae0d46e25c586624a31
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678418"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792476"
 ---
 # <a name="use-ai-to-understand-blob-storage-data"></a>使用 AI 了解 Blob 存储数据
 
@@ -68,7 +68,7 @@ AI 扩充是指查找模式或特征的模块，然后相应地执行操作。 �
 
 在 Azure 搜索中，*技能*是 AI 处理的单个组件，可以单独使用，也可以与其他技能结合使用。 
 
-+ 内置技能由认知服务提供支持，并基于基于计算机视觉的图像分析和基于文本分析的自然语言处理。 可在[内容扩充的预定义技能](cognitive-search-predefined-skills.md)中查看内置技能的完整列表。
++ 内置技能由认知服务提供支持，并基于基于计算机视觉的图像分析和基于文本分析的自然语言处理。 有关完整列表，请参阅[内容扩充的内置技能](cognitive-search-predefined-skills.md)。
 
 + 自定义技能是在允许集成到管道的[接口定义](cognitive-search-custom-skill-interface.md)中的自定义代码。 在客户解决方案中，通常同时使用这两种方法，同时提供自定义技能，提供开源、第三方或第一方 AI 模块。
 

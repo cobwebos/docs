@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 39a7e78085f297838a028489de23c1991b6d672f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 56e745a4f4e4bfbe82da00b46b7a5c0a58e3785e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693430"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789795"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>使用防火墙配置 Azure HDInsight 群集的出站网络流量（预览）
 
@@ -151,7 +151,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 当你不知道所有应用程序依赖项时，当首次让应用程序正常工作时，将 Azure 防火墙与 Azure Monitor 日志集成非常有用。 可以通过[在 Azure Monitor 中分析日志数据](../azure-monitor/log-query/log-query-overview.md)详细了解 Azure Monitor 日志
 
-若要了解 Azure 防火墙和请求增加的规模限制，请参阅[此](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#azure-firewall-limits)文档。
+若要了解 Azure 防火墙和请求增加的规模限制，请参阅[此](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#azure-firewall-limits)文档或参考[常见问题解答](https://docs.microsoft.com/en-us/azure/firewall/firewall-faq)。 
 
 ## <a name="access-to-the-cluster"></a>对群集的访问权限
 成功设置防火墙后，可以使用内部终结点（`https://<clustername>-int.azurehdinsight.net`）从 VNET 内部访问 Ambari。 

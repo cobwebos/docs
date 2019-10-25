@@ -1,5 +1,6 @@
 ---
-title: 在 macOS 和 iOS 上配置 SSO |Microsoft 标识平台
+title: 在 macOS 和 iOS 上配置 SSO
+titleSuffix: Microsoft identity platform
 description: 了解如何在 macOS 和 iOS 上配置单一登录（SSO）。
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a407b57a380d059703383b02e37decb8761786f4
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: b43319f3a456c7ea56ee3c6d5b3f9a1a4526bbe0
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268929"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802494"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>如何：在 macOS 和 iOS 上配置 SSO
 
@@ -71,7 +72,7 @@ MSAL 支持通过 iOS 密钥链访问组进行 SSO 共享。
 
 Microsoft 标识平台告诉使用同一个应用程序 ID 的应用程序的**重定向 uri**。 每个应用程序可以在登记门户中注册多个重定向 URI。 套件中的每个应用程序具有不同的重定向 URI。 例如：
 
-App1 重定向 URI：`msauth.com.contoso.mytestapp1://auth`App2 重定向 URI：`msauth.com.contoso.mytestapp2://auth`App3 重定向 URI：`msauth.com.contoso.mytestapp3://auth`
+App1 重定向 URI： `msauth.com.contoso.mytestapp1://auth` App2 重定向 uri： `msauth.com.contoso.mytestapp2://auth` App3 重定向 URI： `msauth.com.contoso.mytestapp3://auth`
 
 > [!IMPORTANT]
 > 重定向 uri 的格式必须兼容 MSAL 支持的格式，如[MSAL 重定向 URI 格式要求](redirect-uris-ios.md#msal-redirect-uri-format-requirements)中所述。
@@ -80,7 +81,7 @@ App1 重定向 URI：`msauth.com.contoso.mytestapp1://auth`App2 重定向 URI：
 
 若要启用密钥链共享，请参阅 Apple[添加功能](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html)一文。 重要的是，你需要确定要调用的密钥链，并将该功能添加到将涉及 SSO 的所有应用程序中。
 
-设置正确的权利后，你将在项目目录中看到`entitlements.plist`一个文件，其中包含类似于此示例的内容：
+设置正确的权利后，你将在项目目录中看到一个 `entitlements.plist` 文件，其中包含类似于以下示例的内容：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -96,7 +97,7 @@ App1 重定向 URI：`msauth.com.contoso.mytestapp1://auth`App2 重定向 URI：
 </plist>
 ```
 
-在每个应用程序中启用密钥链授权，并准备好使用 SSO 后，请使用密钥链访问组`MSALPublicClientApplication`进行配置，如以下示例中所示：
+在每个应用程序中启用密钥链授权，并准备好使用 SSO 后，请使用密钥链访问组配置 `MSALPublicClientApplication`，如以下示例中所示：
 
 Objective-C：
 
@@ -108,7 +109,7 @@ configuration.cacheConfig.keychainSharingGroup = @"my.keychain.group";
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:configuration error:&error];
 ```
 
-反应
+Swift：
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<my-client-id>")
@@ -137,7 +138,7 @@ MSAL 通过 Microsoft Authenticator 提供对中转身份验证的支持。 Micr
 
 以下步骤介绍如何使用应用的身份验证代理启用 SSO：
 
-1. 为应用程序的 info.plist 中的应用程序注册 broker 兼容的重定向 URI 格式。 与 broker 兼容的重定向 URI `msauth.<app.bundle.id>://auth`的格式为。 用应用程序的捆绑 ID 替换 "< >" "。 例如：
+1. 为应用程序的 info.plist 中的应用程序注册 broker 兼容的重定向 URI 格式。 与 broker 兼容的重定向 URI 格式为 `msauth.<app.bundle.id>://auth`。 用应用程序的捆绑 ID 替换 "< >" "。 例如：
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -146,7 +147,7 @@ MSAL 通过 Microsoft Authenticator 提供对中转身份验证的支持。 Micr
     </array>
     ```
 
-1. 将以下方案添加到应用的 info.plist `LSApplicationQueriesSchemes`：
+1. 将以下方案添加到 `LSApplicationQueriesSchemes`下的应用 info.plist：
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -156,7 +157,7 @@ MSAL 通过 Microsoft Authenticator 提供对中转身份验证的支持。 Micr
     </array>
     ```
 
-1. 将以下内容添加到`AppDelegate.m`文件以处理回调：
+1. 将以下内容添加到 `AppDelegate.m` 文件以处理回调：
 
     Objective-C：
     
@@ -167,7 +168,7 @@ MSAL 通过 Microsoft Authenticator 提供对中转身份验证的支持。 Micr
     }
     ```
     
-    反应
+    Swift：
     
     ```swift
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -175,8 +176,8 @@ MSAL 通过 Microsoft Authenticator 提供对中转身份验证的支持。 Micr
     }
     ```
     
-**如果使用的是 Xcode 11**，应改为将 MSAL 回叫`SceneDelegate`到文件中。
-如果同时支持 UISceneDelegate 和 UIApplicationDelegate 以与较旧的 iOS 兼容，则需要将 MSAL 回调放入这两个文件中。
+**如果使用的是 Xcode 11**，应改为将 MSAL 回拨放入 `SceneDelegate` 文件中。
+如果支持兼容旧版 iOS 的 UISceneDelegate 和 UIApplicationDelegate，则需将 MSAL 回叫置于这两个文件中。
 
 Objective-C：
 
@@ -191,7 +192,7 @@ Objective-C：
  }
 ```
 
-反应
+Swift：
 
 ```swift
 func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {

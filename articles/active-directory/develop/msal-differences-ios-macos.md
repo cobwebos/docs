@@ -1,5 +1,6 @@
 ---
-title: 适用于 iOS 的 Microsoft 身份验证库（MSAL） & macOS |Microsoft
+title: 适用于 iOS 的 Microsoft 身份验证库（MSAL） & macOS
+titleSuffix: Microsoft identity platform
 description: 介绍 iOS 与 macOS 之间的 Microsoft 身份验证库（MSAL）使用差异。
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +18,14 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beb6e55e83412535f29284db48fb37fd514b35d4
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 090f4eaea292c7122db2427ce8730df815506fc0
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269007"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803142"
 ---
-# <a name="microsoft-authentication-library-for-ios-and-macos-differences"></a>适用于 iOS 和 macOS 差异的 Microsoft 身份验证库
+# <a name="microsoft-authentication-library-for-ios-and-macos-differences"></a>适用于 iOS 的 Microsoft 身份验证库和适用于 macOS 的 Microsoft 身份验证库的差异
 
 本文介绍适用于 iOS 和 macOS 的 Microsoft 身份验证库（MSAL）之间的功能差异。
 
@@ -37,7 +38,7 @@ MSAL for macOS 是适用于 iOS 的功能的子集。
 
 MSAL for macOS 不支持：
 
-- 不同的浏览器类型`ASWebAuthenticationSession`， `SFAuthenticationSession`如`SFSafariViewController`、、。
+- 不同的浏览器类型，如 `ASWebAuthenticationSession`、`SFAuthenticationSession`和 `SFSafariViewController`。
 - macOS 不支持通过 Microsoft Authenticator 应用进行中转身份验证。
 
 在 macOS 10.14 及更早版本中，与同一发布者的应用之间的密钥链共享更受限制。 使用[访问控制列表](https://developer.apple.com/documentation/security/keychain_services/access_control_lists?language=objc)指定应该共享密钥链的应用的路径。 用户可能会看到其他密钥链提示。

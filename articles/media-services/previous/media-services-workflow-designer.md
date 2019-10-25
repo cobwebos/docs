@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: c5aa7af1ca6f4fe0768add47d2037d797e4ef99b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4dceb558532305c6d2e84563e25ab05508423090
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613246"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72801957"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>使用工作流设计器创建高级编码工作流  
 ## <a name="overview"></a>概述
@@ -79,6 +79,10 @@ ms.locfileid: "69613246"
 > 
 > 
 
+## <a name="need-help"></a>需要帮助？
+
+可以通过导航到 "[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)" 来打开支持票证
+
 ## <a name="next-step"></a>后续步骤
 查看媒体服务学习路径。
 
@@ -87,8 +91,6 @@ ms.locfileid: "69613246"
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-如果需要支持或对在工作流设计器工具中创建自定义工作流有疑问，请发送电子邮件到 mepd@microsoft.com。 编写电子邮件时, 请使用英语。
-
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 [Azure 高级编码器工作流设计器培训视频](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 

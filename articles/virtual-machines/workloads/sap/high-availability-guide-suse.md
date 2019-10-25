@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: sedusch
-ms.openlocfilehash: 71c1d1eb91654ea169330715be6bcf2b94207a27
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 569ac844a971970c22f5cc0a511545020fe802c5
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71099043"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791692"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SUSE Linux Enterprise Server for SAP applications 上的 Azure VM 上 SAP NetWeaver 的高可用性
 
@@ -53,7 +53,7 @@ ms.locfileid: "71099043"
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
 本文介绍如何部署虚拟机、配置虚拟机、安装群集框架，以及安装高可用性 SAP NetWeaver 7.50 系统。
-在示例配置和安装命令等内容中，使用了 ASCS 实例编号 00、ERS 实例编号 02 和 SAP 系统 ID NW1。 示例中的资源名称（例如虚拟机、虚拟网络）假设你已将[聚合模板][template-converged]与 SAP 系统 ID NW1 一起使用来创建资源。
+在示例配置中，安装命令等。使用 ASCS 实例编号00、ERS 实例编号02和 SAP 系统 ID NW1。 示例中的资源名称（例如虚拟机、虚拟网络）假设你已将[聚合模板][template-converged]与 SAP 系统 ID NW1 一起使用来创建资源。
 
 请先阅读以下 SAP 说明和文档
 
@@ -97,7 +97,7 @@ NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 S
   * 连接到所有虚拟机（这些虚拟机应为 (A)SCS/ERS 群集的一部分）的主网络接口
 * 探测端口
   * 端口 620&lt;nr&gt;
-* 加载 
+* 负载 
 * 平衡规则
   * 32&lt;nr&gt; TCP
   * 36&lt;nr&gt; TCP
@@ -134,7 +134,7 @@ SAP NetWeaver 要求对传输和配置文件目录使用共享存储。 有关�
 
 Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications 12 的映像，可以用于部署新的虚拟机。 市场映像包含适用于 SAP NetWeaver 的资源代理。
 
-可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
+可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集等。按照以下步骤部署模板：
 
 1. 在 Azure 门户上打开[ASCS/SCS 多 SID 模板][template-multisid-xscs]或[聚合模板][template-converged]。 
    ASCS/SCS 模板只为 SAP NetWeaver ASCS/SCS 和 ERS （仅限 Linux）实例创建负载均衡规则，而聚合模板还为数据库创建负载均衡规则（例如 Microsoft SQL Server 或 SAP HANA）。 如果打算安装基于 SAP NetWeaver 的系统，同时想要在同一台计算机上安装数据库，请使用[聚合模板][template-converged]。
@@ -362,6 +362,10 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. **[1]** 为 ASCS 实例创建虚拟 IP 资源和运行状况探测
 
+   > [!IMPORTANT]
+   > 最新的测试，其中，netcat 停止响应由于积压工作（backlog）和仅处理一个连接的请求而导致的请求。 Netcat 资源停止侦听 Azure 负载均衡器请求，并且浮动 IP 变为不可用。  
+   > 对于现有的 Pacemaker 群集，建议按照[Azure 负载平衡器检测强化](https://www.suse.com/support/kb/doc/?id=7024128)中的说明将 netcat 替换为 socat。 请注意，更改将需要短暂的停机时间。  
+
    <pre><code>sudo crm node standby <b>nw1-cl-1</b>
    
    sudo crm configure primitive fs_<b>NW1</b>_ASCS Filesystem device='<b>nw1-nfs</b>:/<b>NW1</b>/ASCS' directory='/usr/sap/<b>NW1</b>/ASCS<b>00</b>' fstype='nfs4' \
@@ -374,7 +378,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
      op monitor interval=10 timeout=20
    
    sudo crm configure primitive nc_<b>NW1</b>_ASCS anything \
-     params binfile="/usr/bin/nc" cmdline_options="-l -k 620<b>00</b>" \
+     params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:620<b>00</b>,backlog=10,fork,reuseaddr /dev/null" \
      op monitor timeout=20s interval=10 depth=0
    
    sudo crm configure group g-<b>NW1</b>_ASCS fs_<b>NW1</b>_ASCS nc_<b>NW1</b>_ASCS vip_<b>NW1</b>_ASCS \
@@ -427,10 +431,10 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
      op monitor interval=10 timeout=20
    
    sudo crm configure primitive nc_<b>NW1</b>_ERS anything \
-    params binfile="/usr/bin/nc" cmdline_options="-l -k 621<b>02</b>" \
+    params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:621<b>02</b>,backlog=10,fork,reuseaddr /dev/null" \
     op monitor timeout=20s interval=10 depth=0
    
-   # WARNING: Resources nc_NW1_ASCS,nc_NW1_ERS violate uniqueness for parameter "binfile": "/usr/bin/nc"
+   # WARNING: Resources nc_NW1_ASCS,nc_NW1_ERS violate uniqueness for parameter "binfile": "/usr/bin/socat"
    # Do you still want to commit (y/n)? y
    
    sudo crm configure group g-<b>NW1</b>_ERS fs_<b>NW1</b>_ERS nc_<b>NW1</b>_ERS vip_<b>NW1</b>_ERS
@@ -761,13 +765,13 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    hdbuserstore SET DEFAULT <b>nw1-db:30313@HN1</b> <b>SAPABAP1</b> <b>&lt;password of ABAP schema&gt;</b>
    </code></pre>
 
-## <a name="test-the-cluster-setup"></a>测试群集设
+## <a name="test-the-cluster-setup"></a>测试群集设置
 
 以下测试为 SUSE 最佳做法指南中的测试用例。 为方便起见，已复制于下方。 此外，请务必阅读最佳做法指南，并执行可能已经添加的所有其他测试。
 
 1. 测试 HAGetFailoverConfig、HACheckConfig 和 HACheckFailoverConfig
 
-   在当前运行 ASCS 实例的节点上运行以下命令作为 \<sapsid>adm。 如果命令失败，并显示“失败: 内存不足”消息，则原因可能是主机名中存在短划线。 这是一个已知问题，将由 SUSE 在 sap-suse-cluster-connector 包中进行修复。
+   在当前运行 ASCS 实例的节点上运行以下命令作为 \<sapsid>adm。 如果命令失败，显示“失败: 内存不足”消息，则原因可能是主机名中存在短划线。 这是一个已知问题，将由 SUSE 在 sap-suse-cluster-connector 包中进行修复。
 
    <pre><code>nw1-cl-0:nw1adm 54> sapcontrol -nr <b>00</b> -function HAGetFailoverConfig
    
@@ -1202,4 +1206,4 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 * [适用于 SAP 的 Azure 虚拟机部署][deployment-guide]
 * [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * 若要了解如何建立高可用性以及针对 Azure 上的 SAP HANA（大型实例）规划灾难恢复，请参阅 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)。
-* 若要了解如何建立高可用性并规划 Azure Vm 上 SAP HANA 的灾难恢复, 请参阅[Azure 虚拟机 (vm) 上的 SAP HANA 的高可用性][sap-hana-ha]
+* 若要了解如何建立高可用性并规划 Azure Vm 上 SAP HANA 的灾难恢复，请参阅[Azure 虚拟机（vm）上的 SAP HANA 的高可用性][sap-hana-ha]

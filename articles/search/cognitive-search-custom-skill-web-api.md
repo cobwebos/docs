@@ -1,24 +1,23 @@
 ---
-title: 自定义认知搜索技能 - Azure 搜索
-description: 通过调用 Web API 来扩展认知搜索技能集的功能
-services: search
+title: 扩充管道中的自定义 Web API 技能
+titleSuffix: Azure Cognitive Search
+description: 通过调用 Web Api 来扩展 Azure 认知搜索技能集的功能。 使用自定义 Web API 技能集成自定义代码。
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: a148f974671e0d909591cbf24a433384a7570842
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: MT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 54c51993733091d326c59c4ac4ec3662cc704021
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693288"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784891"
 ---
-# <a name="custom-web-api-skill"></a>“自定义 Web API”技能
+# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure 认知搜索扩充管道中的自定义 Web API 技能
 
-**自定义 WEB api**技能使你可以通过调用提供自定义操作的 Web API 终结点来扩展认知搜索。 与内置技能类似，“自定义 Web API”技能也有输入和输出。 根据输入，Web API 在索引器运行时接收 JSON 有效负载，并输出 JSON 负载作为响应，以及成功状态代码。 响应应包含自定义技能指定的输出。 其他任何响应都被视为错误，并且不会执行任何扩充。
+**自定义 WEB api**技能使你可以通过调用提供自定义操作的 Web API 终结点来扩展 AI 扩充。 与内置技能类似，“自定义 Web API”技能也有输入和输出。 根据输入，Web API 在索引器运行时接收 JSON 有效负载，并输出 JSON 负载作为响应，以及成功状态代码。 响应应包含自定义技能指定的输出。 其他任何响应都被视为错误，并且不会执行任何扩充。
 
 本文档进一步详细介绍了 JSON 有效负载的结构。
 
@@ -204,5 +203,5 @@ Microsoft.Skills.Custom.WebApiSkill
 
 + [强大技能：定制技能的存储库](https://aka.ms/powerskills)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
-+ [将自定义技能添加到认知搜索](cognitive-search-custom-skill-interface.md)
-+ [示例：为认知搜索创建自定义技能](cognitive-search-create-custom-skill-example.md)
++ [向 AI 扩充管道添加自定义技能](cognitive-search-custom-skill-interface.md)
++ [示例：为 AI 扩充创建自定义技能（认知-example.md）

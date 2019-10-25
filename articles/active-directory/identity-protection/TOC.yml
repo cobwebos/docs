@@ -3,65 +3,49 @@
 - name: 概述
   items:
     - name: 什么是 Azure AD 标识保护？
-      href: overview.md
-- name: 快速入门
-  items:
-    - name: 检测到会话风险时阻止访问
-      href: quickstart-sign-in-risk-policy.md
+      href: overview-identity-protection.md
 - name: 概念
   expanded: false
   items:
-    - name: 什么是漏洞？
-      href: vulnerabilities.md
-    - name: 什么是通知？
-      href: notifications.md
-    - name: 你的登录体验是怎样的？
-      href: flows.md
+    - name: 安全概述
+      href: concept-identity-protection-security-overview.md
+    - name: 什么是风险？
+      href: concept-identity-protection-risks.md
+    - name: 标识保护策略
+      href: concept-identity-protection-policies.md
+    - name: 登录体验如何？
+      href: concept-identity-protection-user-experience.md
     - name: 标识保护和 B2B 用户
       href: concept-identity-protection-b2b.md
 - name: 操作指南
   expanded: true
   items:
-    - name: 标识保护
+    - name: 配置通知
+      href: howto-identity-protection-configure-notifications.md
+    - name: 策略配置
       items:
-        - name: 启用 Azure AD 标识保护
-          href: enable.md
         - name: 配置 MFA 注册策略
-          href: howto-mfa-policy.md
-        - name: 配置登录风险策略
-          href: howto-sign-in-risk-policy.md
-        - name: 配置用户风险策略
-          href: howto-user-risk-policy.md
-        - name: 关闭活动风险检测
-          href: howto-close-active-risk-events.md
-        - name: 取消阻止用户
-          href: howto-unblock-user.md
-        - name: 模拟风险检测
-          href: playbook.md
-        - name: 常见问题解答
-          href: faqs.md
-    - name: 标识保护（已刷新）
-      items:
-        - name: 概述
-          href: overview-v2.md
-        - name: 安全概述
-          href: security-overview.md
-        - name: 调查风险
-          href: howto-investigate-risk.md
-        - name: 提供有关风险检测的反馈
-          href: howto-provide-risk-event-feedback.md
+          href: howto-identity-protection-configure-mfa-policy.md
         - name: 配置风险策略
-          href: howto-configure-risk-policies.md
-        - name: 反馈和已知问题
-          href: known-issues.md
+          href: howto-identity-protection-configure-risk-policies.md
+    - name: 模拟风险检测
+      href: howto-identity-protection-simulate-risk.md
+    - name: 调查和修正
+      items:
+        - name: 调查风险
+          href: howto-identity-protection-investigate-risk.md
+        - name: 修正风险检测和取消阻止
+          href: howto-identity-protection-remediate-unblock.md
+        - name: 使用 Microsoft Graph API
+          href: howto-identity-protection-graph-api.md
+    - name: 提供有关风险检测的反馈
+      href: howto-identity-protection-risk-feedback.md
+    - name: 常见问题解答
+      href: troubleshooting-identity-protection-faq.md
 - name: 引用
   items:
-    - name: 使用 Microsoft Graph API
-      href: graph-get-started.md
-    - name: 风险检测
-      href: risk-events-reference.md
     - name: 术语表
-      href: glossary.md
+      href: reference-identity-protection-glossary.md
 - name: 资源
   items:
     - name: Azure 反馈论坛

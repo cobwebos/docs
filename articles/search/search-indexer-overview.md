@@ -1,29 +1,29 @@
 ---
-title: 用于在编制索引期间抓取数据源的索引器 - Azure 搜索
-description: 对 Azure SQL 数据库、Azure Cosmos DB 或 Azure 存储爬网，提取可搜索的数据并填充 Azure 搜索索引。
-author: HeidiSteen
+title: 索引编制期间爬网数据源的索引器
+titleSuffix: Azure Cognitive Search
+description: 对 Azure SQL 数据库、Azure Cosmos DB 或 Azure 存储进行爬网，提取可搜索的数据并填充 Azure 认知搜索索引。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 55a9e06ad09c4c3635a2925956cac75c24b2c3c6
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 5e5d43909dc0e65c12c053515ba534ce5cfa121f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376384"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793659"
 ---
-# <a name="indexers-in-azure-search"></a>Azure 搜索中的索引器
+# <a name="indexers-in-azure-cognitive-search"></a>Azure 认知搜索中的索引器
 
-Azure 搜索中的*索引器*是一种爬网程序，它从外部 Azure 数据源提取可搜索的数据和元数据，并根据索引与数据源之间字段到字段映射填充索引。 此方法有时称为 "请求模型"，因为服务在中提取数据，无需编写任何将数据添加到索引中的代码。
+Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure 数据源提取可搜索的数据和元数据，并根据索引和数据源之间的字段到字段映射填充索引。 此方法有时称为 "请求模型"，因为服务在中提取数据，无需编写任何将数据添加到索引中的代码。
 
 索引器基于数据源类型或平台，其中包含用于在 Azure 上进行 SQL Server 的单个索引器、Cosmos DB、Azure 表存储和 Blob 存储。 Blob 存储索引器具有特定于 blob 内容类型的其他属性。
 
 可以单独使用索引器来引入数据，也可以结合索引器使用多种技术来加载索引中的部分字段。
 
-可以按需或按每五分钟运行一次的定期数据刷新计划运行索引器。 要进行更频繁的更新，则需要采用“推送模式”，便于同时更新 Azure 搜索和外部数据源中的数据。
+可以按需或按每五分钟运行一次的定期数据刷新计划运行索引器。 更频繁的更新需要一个推送模型，该模式同时更新 Azure 认知搜索和外部数据源中的数据。
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>创建及管理索引器的方法
 
@@ -61,13 +61,13 @@ Azure 搜索中的*索引器*是一种爬网程序，它从外部 Azure 数据�
 数据源的配置和管理独立于使用数据源的索引器，这意味着多个索引器可使用一个数据源，同时加载多个索引。
 
 ### <a name="step-2-create-an-index"></a>步骤 2：创建索引
-索引器会自动执行某些与数据引入相关的任务，但通常不会自动创建索引。 先决条件是必须具有预定义的索引，且索引的字段必须与外部数据源中的字段匹配。 字段需要按名称和数据类型匹配。 有关构建索引的详细信息，请参阅 [创建索引（Azure 搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Create-Index)或[索引类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)。 如需字段关联方面的帮助，请参阅 [Azure 搜索索引器中的字段映射](search-indexer-field-mappings.md)。
+索引器会自动执行某些与数据引入相关的任务，但通常不会自动创建索引。 先决条件是必须具有预定义的索引，且索引的字段必须与外部数据源中的字段匹配。 字段需要按名称和数据类型匹配。 有关构造索引的详细信息，请参阅[创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Create-Index)或[索引类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)。 有关字段关联的帮助信息，请参阅[Azure 中的字段映射认知搜索索引器](search-indexer-field-mappings.md)。
 
 > [!Tip]
 > 虽然不能使用索引器来生成索引，但可以使用门户中的**导入数据**向导。 大多数情况下，该向导可以根据源中现有的元数据推断索引架构，提供一个初级索引架构，该架构在向导处于活动状态时可以进行内联编辑。 在服务上创建索引以后，若要在门户中进一步进行编辑，多数情况下只能添加新字段。 可以将向导视为索引的创建工具而非修订工具。 如需手动方式的学习，请一步步完成[门户演练](search-get-started-portal.md)。
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>步骤 3：创建和计划索引器
-索引器定义是将所有与数据引入相关的元素组合在一起的构造。 必需的元素包括数据源和索引。 可选元素包括计划和字段映射。 仅当源字段和索引字段清晰对应时，字段映射才是可选的。 索引器可从另一个服务引用数据源，前提是该数据源来自同一个订阅。 有关构建索引器的详细信息，请参阅 [创建索引器（Azure 搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)。
+索引器定义是将所有与数据引入相关的元素组合在一起的构造。 必需的元素包括数据源和索引。 可选元素包括计划和字段映射。 仅当源字段和索引字段清晰对应时，字段映射才是可选的。 索引器可从另一个服务引用数据源，前提是该数据源来自同一个订阅。 有关构造索引器的详细信息，请参阅[创建索引器（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)。
 
 <a id="RunIndexer"></a>
 
@@ -130,5 +130,5 @@ Azure 搜索中的*索引器*是一种爬网程序，它从外部 Azure 数据�
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
 * [Azure 表存储](search-howto-indexing-azure-tables.md)
-* [使用 Azure 搜索 Blob 索引器为 CSV blob 编制索引](search-howto-index-csv-blobs.md)
-* [使用 Azure 搜索 Blob 索引器为 JSON blob 编制索引](search-howto-index-json-blobs.md)
+* [使用 Azure 认知搜索 Blob 索引器为 CSV blob 编制索引](search-howto-index-csv-blobs.md)
+* [用 Azure 认知搜索 Blob 索引器为 JSON blob 编制索引](search-howto-index-json-blobs.md)

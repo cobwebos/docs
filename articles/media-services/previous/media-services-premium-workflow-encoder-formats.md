@@ -14,19 +14,17 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 9ec8e2df8befa28fc023edb30889f177b60939f9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015044"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792592"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>媒体编码器高级工作流格式和编解码器
 
 > [!NOTE]
-> 有关高级编码器的问题，请发送电子邮件到 mepd@microsoft.com。
-> 
-> 本主题中所述的媒体编码器高级工作流媒体处理器在中国不可用。 
+> 本主题中所述的 Media Encoder Premium Workflow 媒体处理器在中国不可用。 
 
 本文档包含受**媒体编码器高级工作流**公开预览版编码器支持的输入和输出文件格式及编解码器列表。
 
@@ -36,7 +34,7 @@ Media Encoder Premium Workflow 输出格式和编解码器
 
 **媒体编码器高级工作流**支持[此](#closed_captioning)部分中所述的隐藏字幕。 
 
-## <a id="input_formats"></a>媒体编码器高级工作流输入格式和编解码器
+## <a id="input_formats"></a>Media Encoder Premium Workflow 输入格式和编解码器
 
 以下部分列出了此媒体处理器支持的作为输入的编解码器和文件格式。
 
@@ -73,7 +71,7 @@ Media Encoder Premium Workflow 输出格式和编解码器
 * Windows Media 音频
 * WAV/PCM
 
-## <a id="output_format"></a>媒体编码器高级工作流输出格式和编解码器
+## <a id="output_format"></a>Media Encoder Premium Workflow 输出格式和编解码器
 
 以下部分列出了支持作为此媒体处理器输入的编解码器和文件格式。
 
@@ -99,8 +97,6 @@ Media Encoder Premium Workflow 输出格式和编解码器
 * Windows Media 视频/VC-1
 * JPEG 缩图创建
 * HEVC（H.265；8 位和 10 位，Main 和 Main 10 Profile）
-
-  在某些情况下可获得对 HDR 10 的支持，有关详细信息，请联系 mepd@microsoft.com
 
 
 ### <a name="output-audio-codecs"></a>输出音频编解码器
@@ -141,6 +137,9 @@ Media Encoder Premium Workflow 输出格式和编解码器
 
 如果输入视频不包含隐藏式字幕，输出资产仍将包含一个空的 TTML 文件。 
 
+## <a name="need-help"></a>需要帮助？
+
+可以通过导航到 "[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)" 来打开支持票证
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,32 +1,31 @@
 ---
-title: Azure 搜索中的 moreLikeThis（预览版）- Azure 搜索
-description: Azure 搜索 REST API 中公开了有关 moreLikeThis 功能（预览）功能的初步文档。
-author: brjohnstmsft
+title: moreLikeThis （预览）查询功能
+titleSuffix: Azure Cognitive Search
+description: 介绍了 moreLikeThis （预览版）功能，该功能可在 Azure 认知搜索的预览版本 REST API 中找到。
 manager: nitinme
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: brjohnstmsft
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: d7c816c545c6647907aa9d700a4eb6ed91277465
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.devlang: rest-api
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: b7959beca8a7787a331388b77ebe4060c3675e6d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182304"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793478"
 ---
-# <a name="morelikethis-in-azure-search"></a>Azure 搜索中的 moreLikeThis
+# <a name="morelikethis-preview-in-azure-cognitive-search"></a>Azure 认知搜索中的 moreLikeThis （预览版）
 
 > [!Note]
-> moreLikeThis 为预览版，不适合在生产环境中使用。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持 .NET SDK。
+> moreLikeThis 是预览版，不适用于生产。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持 .NET SDK。
 
-`moreLikeThis=[key]` 是[搜索文档 API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 中的查询参数，用于查找与文档键所指定文档类似的文档。 当使用 `moreLikeThis` 生成搜索请求时，使用从最匹配的给定文档中提取的搜索项来生成查询。 然后使用生成的查询来生成搜索请求。 默认情况下，会考虑所有可搜索字段的内容，使用 `searchFields` 参数指定的限制字段除外。 `moreLikeThis` 参数不能与搜索参数 `search=[string]` 一起使用。
+`moreLikeThis=[key]` 是[搜索文档 API](https://docs.microsoft.com/rest/api/searchservice/search-documents)中的查询参数，可查找与文档键所指定文档类似的文档。 当使用 `moreLikeThis` 生成搜索请求时，使用从最匹配的给定文档中提取的搜索项来生成查询。 然后使用生成的查询来生成搜索请求。 默认情况下，将考虑所有可搜索字段的内容，而不是使用 `searchFields` 参数指定的任何受限字段。 `moreLikeThis` 参数不能与搜索参数 `search=[string]` 一起使用。
 
-默认情况下，会考虑所有顶级的可搜索字段的内容。 若要改为指定特定字段，则可使用 `searchFields` 参数。 
+默认情况下，将考虑所有顶级可搜索字段的内容。 如果要改为指定特定的字段，可以使用 `searchFields` 参数。 
 
-不能在可以搜索的[复杂类型](search-howto-complex-data-types.md)的子字段上使用 moreLikeThis。
+不能对[复杂类型](search-howto-complex-data-types.md)中的可搜索子字段使用 moreLikeThis。
 
 ## <a name="examples"></a>示例 
 
@@ -47,7 +46,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06-Preview
 
 ## <a name="next-steps"></a>后续步骤
 
-可以使用任何 Web 测试工具来试验此功能。  建议使用 Postman 完成此练习。
+您可以使用任何 web 测试工具来试验此功能。  对于本练习，我们建议使用 Postman。
 
 > [!div class="nextstepaction"]
-> [使用 Postman 探索 Azure 搜索 REST API](search-get-started-postman.md)
+> [使用 Postman 浏览 Azure 认知搜索 REST Api](search-get-started-postman.md)

@@ -1,23 +1,23 @@
 ---
-title: 例如：为 AdventureWorks Inventory 数据库建模 - Azure 搜索
-description: 了解如何为关系数据建模，将其转换为平展数据集，以便在 Azure 搜索中进行索引编制和全文本搜索。
+title: 示例：模拟 AdventureWorks 清单数据库
+titleSuffix: Azure Cognitive Search
+description: 了解如何为关系数据建模，以及如何将其转换为平展数据集，以便在 Azure 认知搜索中进行索引和全文搜索。
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: heidist
-ms.openlocfilehash: c25dd34460e7e92bb20913f5b812044623dd38e3
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: edb6162724938962df8a7340afea6e930a0b1049
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274041"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792996"
 ---
-# <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>例如：为 Azure 搜索的 AdventureWorks Inventory 数据库建模
+# <a name="example-model-the-adventureworks-inventory-database-for-azure-cognitive-search"></a>示例：为 Azure 认知搜索模拟 AdventureWorks 清单数据库
 
-Azure 搜索接受平展行集作为[索引（数据引入）管道](search-what-is-an-index.md)的输入。 如果源数据来自 SQL Server 关系数据库，本文演示了在编制索引之前创建平展行集的一种方法，使用 AdventureWorks 示例数据库作为示例。
+Azure 认知搜索接受平展行集作为[索引（数据引入）管道](search-what-is-an-index.md)的输入。 如果源数据来自 SQL Server 关系数据库，本文演示了在编制索引之前创建平展行集的一种方法，使用 AdventureWorks 示例数据库作为示例。
 
 ## <a name="about-adventureworks"></a>关于 AdventureWorks
 
@@ -43,7 +43,7 @@ Azure 搜索接受平展行集作为[索引（数据引入）管道](search-what
 
 ## <a name="use-a-collection-data-type"></a>使用 Collection 数据类型
 
-“正确方法”是利用搜索架构功能，该功能在数据库模型中没有直接的对应项：**Collection(Edm.String)** 。 此构造在 Azure 搜索索引架构中定义。 如果需要表示单个字符串的列表，而不是非常长的（单个）字符串，则使用集合数据类型。 如果有标记或关键字，则对此字段使用 Collection 数据类型。
+"正确的方法" 是利用在数据库模型中没有直接并行的搜索架构功能： **Collection （Edm）** 。 此构造在 Azure 认知搜索索引架构中定义。 如果需要表示单个字符串的列表，而不是非常长的（单个）字符串，则使用集合数据类型。 如果有标记或关键字，则对此字段使用 Collection 数据类型。
 
 针对“color”、“size”和“image”定义 **Collection(Edm.String)** 的多值索引字段后，就会保留用于分面和筛选的辅助信息，不会使用重复项来“污染”索引。 类似地，将聚合函数应用到 Product 表的数字字段，为 **minListPrice** 而不是每个产品 **listPrice** 编制索引。
 
@@ -163,4 +163,4 @@ WHERE
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> 示例：[Azure 搜索中的多层分面分类](search-example-adventureworks-multilevel-faceting.md)
+> [示例： Azure 中的多层分面分类认知搜索](search-example-adventureworks-multilevel-faceting.md)

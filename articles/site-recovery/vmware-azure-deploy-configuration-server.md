@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 5812cc73fb1da58c591d0593e079851e05bd0940
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f5fe49130742d116775b75f17c726b56150c574f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331959"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792353"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
@@ -28,7 +28,7 @@ ms.locfileid: "72331959"
 
 ## <a name="prerequisites"></a>必备组件
 
-下表汇总了配置服务器的最低硬件要求。
+以下各节汇总了配置服务器的最低硬件要求。
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
@@ -37,31 +37,19 @@ ms.locfileid: "72331959"
 需要使用 AAD （Azure Active Directory）中**的以下**权限集之一的用户向 Azure Site Recovery 服务注册配置服务器。
 
 1. 用户应具有创建应用程序所需的 "应用程序开发人员" 角色。
-   1. 若要验证，请登录到 Azure 门户</br>
-   1. 导航到 Azure Active Directory > 角色和管理员</br>
-   1. 验证是否为用户分配了 "应用程序开发人员" 角色。 否则，请使用具有此权限的用户，或与[管理员联系以启用该权限](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles)。
+    - 若要验证，请登录到 Azure 门户</br>
+    - 导航到 Azure Active Directory > 角色和管理员</br>
+    - 验证是否为用户分配了 "应用程序开发人员" 角色。 否则，请使用具有此权限的用户，或与[管理员联系以启用该权限](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles)。
     
-1. 如果无法为 "应用程序开发人员" 角色分配，请确保 "用户可以注册应用程序" 标志设置为 true，以便用户创建标识。 若要启用上述权限，
-   1. 登录到 Azure 门户
-   1. 导航到 Azure Active Directory > 用户设置
-   1. 在 "应用注册" 下，"用户可以注册应用程序" 下应选择 "是"。
+2. 如果无法为 "应用程序开发人员" 角色分配，请确保 "用户可以注册应用程序" 标志设置为 true，以便用户创建标识。 若要启用上述权限，
+    - 登录到 Azure 门户
+    - 导航到 Azure Active Directory > 用户设置
+    - 在 "应用注册" 下，"用户可以注册应用程序" 下应选择 "是"。
 
       ![AAD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
 > **不支持**ACTIVE DIRECTORY 联合身份验证服务（ADFS）。 请使用通过[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)管理的帐户。
-
-## <a name="capacity-planning"></a>容量规则
-
-配置服务器的大小要求取决于潜在的数据更改率。 使用此表作为指南。
-
-| CPU | 内存 | **缓存磁盘大小** | 数据更改率 | **受保护的计算机** |
-| --- | --- | --- | --- | --- |
-| 8 个 vCPU（2 个插槽 * 4 个核心 \@ 2.5 GHz） |16 GB |300 GB |500 GB 或更少 |复制少于 100 台计算机。 |
-| 12 个 vCPU（2 个插槽 * 6 个核心 \@ 2.5 GHz） |18 GB |600 GB |500 GB 到 1 TB |复制 100-150 台计算机。 |
-| 16 个 vCPU（2 个插槽 * 8 个核心 \@ 2.5 GHz） |32 GB |1 TB |1 TB 到 2 TB |复制 150-200 台计算机。 |
-
-如果要复制多个 VMware VM，请阅读[容量规划注意事项](site-recovery-plan-capacity-vmware.md)。 为 VMWare 复制运行 [Deployment Planner 工具](site-recovery-deployment-planner.md)。
 
 ## <a name="download-the-template"></a>下载模板
 
@@ -149,7 +137,7 @@ ms.locfileid: "72331959"
 
 ## <a name="upgrade-the-configuration-server"></a>升级配置服务器
 
-若要将配置服务器升级到最新版本，请执行这些[步骤](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)。 有关如何升级所有 Site Recovery 组件的详细说明，请单击[此处](service-updates-how-to.md)。
+若要将配置服务器升级到最新版本，请执行这些[步骤](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)。 有关如何升级所有 Site Recovery 组件的详细说明，请访问[服务更新管理](service-updates-how-to.md)。
 
 ## <a name="manage-the-configuration-server"></a>管理配置服务器
 
@@ -157,9 +145,9 @@ ms.locfileid: "72331959"
 
 ## <a name="faq"></a>常见问题解答
 
-1. 通过 OVF 部署在配置服务器上的许可证有效期是多长？ 如果不重新激活许可证会发生什么？
+1. 通过 OVF 部署的配置服务器上提供的许可证有多长时间？ 如果不重新激活许可证会发生什么？
 
-    .OVA 模板提供的许可证是有效期为180天的评估版许可证。 到期之前需要激活许可证。 否则，这可能导致配置服务器频繁关闭，因而妨碍复制活动。
+    .OVA 模板提供的许可证是有效期为180天的评估版许可证。 到期之前需要激活许可证。 否则，可能会导致频繁关闭配置服务器，从而导致障碍复制活动。 有关更多详细信息，请参阅有关[管理配置服务器许可证](vmware-azure-manage-configuration-server.md#update-windows-license)的文章。
 
 2. 可以使用安装有配置服务器的 VM 实现其他用途吗？
 

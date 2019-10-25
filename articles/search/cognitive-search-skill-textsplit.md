@@ -1,22 +1,21 @@
 ---
-title: 文本拆分认知搜索技能 - Azure 搜索
-description: 基于 Azure 搜索扩充管道中的长度，将文本分解为区块或文本页。
-services: search
+title: 文本拆分认知技能
+titleSuffix: Azure Cognitive Search
+description: 基于 Azure 认知搜索中 AI 扩充管道的长度，将文本分解为块或文本页。
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: a6e46970b6c0fc91c464207049d2dedaaee1afdd
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 2172ac30cd5b4251933e5012affdb41a0202a344
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265667"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784849"
 ---
-#   <a name="text-split-cognitive-skill"></a>文本拆分认知技能
+# <a name="text-split-cognitive-skill"></a>文本拆分认知技能
 
 文本拆分技能将文本分解为文本区块。 你可以指定是要将文件分解为句子还是特定长度的页面。 当其他技能下游有最大文本长度要求时，此技能尤其有用。 
 
@@ -131,7 +130,7 @@ Microsoft.Skills.Text.SplitSkill
 ## <a name="error-cases"></a>错误案例
 如果不支持某种语言，会生成一个警告，并在字符边界拆分文本。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-+ [预定义技能](cognitive-search-predefined-skills.md)
++ [内置技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)

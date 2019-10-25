@@ -1,5 +1,6 @@
 ---
 title: Azure Active Directory 中的应用程序对象和服务主体对象
+titleSuffix: Microsoft identity platform
 description: 了解 Azure Active Directory 中应用程序对象与服务主体对象之间的关系。
 documentationcenter: dev-center-name
 author: rwike77
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83083026b20573d93777e77f44bf8d5480bfdd97
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c1a4d9301894c6a98abd8244fdd6c10a058a26ad
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853309"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803421"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory 中的应用程序对象和服务主体对象
 
@@ -45,14 +46,14 @@ ms.locfileid: "68853309"
 
 ## <a name="application-registration"></a>应用程序注册
 
-在 [Azure 门户][AZURE-Portal]中注册 Azure AD 应用程序时，会在 Azure AD 租户中创建两个对象：
+当你在[Azure 门户][AZURE-Portal]中注册 Azure AD 应用程序时，会在你的 Azure AD 租户中创建两个对象：
 
 - 一个应用程序对象
 - 和一个服务主体对象。
 
 ### <a name="application-object"></a>应用程序对象
 
-Azure AD 应用程序由其唯一一个应用程序对象来定义，该对象位于应用程序注册到的 Azure AD 租户（称为应用程序的“宿主”租户）中。 Microsoft Graph [Application 实体][MS-Graph-App-Entity]定义应用程序对象属性的架构。
+Azure AD 应用程序由其唯一一个应用程序对象来定义，该对象位于应用程序注册到的 Azure AD 租户（称为应用程序的“宿主”租户）中。 Microsoft Graph[应用程序实体][MS-Graph-App-Entity]定义应用程序对象属性的架构。
 
 ### <a name="service-principal-object"></a>服务主体对象
 
@@ -89,15 +90,15 @@ Azure AD 应用程序由其唯一一个应用程序对象来定义，该对象�
 
 | 步骤 | 描述 |
 |------|-------------|
-| 1    | 是在应用程序的宿主租户中创建应用程序对象和服务主体对象的过程。 |
+| 第    | 是在应用程序的宿主租户中创建应用程序对象和服务主体对象的过程。 |
 | 2    | 当 Contoso 和 Fabrikam 的管理员完成同意并向应用程序授予访问权限时，会在其公司的 Azure AD 租户中创建服务主体对象，并向其分配管理员所授予的权限。 另请注意，HR 应用可能配置/设计为允许由用户同意以供个人使用。 |
 | 3    | HR 应用程序的使用者租户（例如 Contoso 和 Fabrikam）各有自己的服务主体对象。 每个对象代表其在运行时使用的应用程序实例，该实例受相关管理员同意的权限控制。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-- 可以使用 [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)查询应用程序和服务主体对象。
-- 可以使用 Microsoft Graph API、[Azure 门户的][AZURE-Portal]应用程序清单编辑器或 [Azure AD PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0) 访问应用程序的应用程序对象（由其 OData [Application 实体][MS-Graph-App-Entity]表示）。
-- 可以通过 Microsoft Graph API 或 [Azure AD PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0) 访问应用程序的服务主体对象（由其 OData [ServicePrincipal 实体][MS-Graph-Sp-Entity]表示）。
+- 您可以使用[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)来查询应用程序对象和服务主体对象。
+- 你可以使用 Microsoft Graph API、 [Azure 门户的][AZURE-Portal]应用程序清单编辑器或[Azure AD PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)来访问应用程序的应用程序对象（由其 OData [application 实体][MS-Graph-App-Entity]表示）。
+- 可以通过 Microsoft Graph API 或[Azure AD PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)访问应用程序的服务主体对象（由其 OData [ServicePrincipal 实体][MS-Graph-Sp-Entity]表示）。
 
 <!--Image references-->
 

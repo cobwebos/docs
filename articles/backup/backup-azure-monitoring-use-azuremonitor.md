@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 2d460688392ae017c0d87ce60fa980701e5d47d3
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 2b951c6660143b1bd2f6502a5441aec3ba8d71e1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528189"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792838"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>使用 Azure Monitor 进行大规模监视
 
@@ -29,7 +29,7 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 ## <a name="using-log-analytics-workspace"></a>使用 Log Analytics 工作区
 
 > [!NOTE]
-> Azure VM 备份中的数据、Azure 备份代理、System Center Data Protection Manager、Azure Vm 中的 SQL 备份以及 Azure 文件共享备份通过诊断设置抽取到 Log Analytics 工作区。
+> Azure VM 备份中的数据、Azure 备份代理、System Center Data Protection Manager、Azure Vm 中的 SQL 备份以及 Azure 文件共享备份通过诊断设置抽取到 Log Analytics 工作区。 即将添加对 Microsoft Azure 备份服务器（MABS）的支持
 
 若要按比例监视/报告，需要两个 Azure 服务的功能。 *诊断设置*将数据从多个 Azure 资源管理器资源发送到其他资源。 *Log Analytics*生成自定义警报，可以使用操作组定义其他通知通道。
 

@@ -1,5 +1,6 @@
 ---
-title: 如何将 Azure Active Directory 注册的应用限制为供一组用户使用
+title: 将 Azure Active Directory 注册的应用程序限制为一组用户
+titleSuffix: Microsoft identity platform
 description: 了解如何将在 Azure AD 中注册的应用限制为仅供所选的一组用户访问。
 services: active-directory
 documentationcenter: ''
@@ -17,14 +18,14 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a51c49633e68fdc5f9afd4bf0205adaa625940ff
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: c768730a00d424333e735bb4f6a385d294f38513
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812976"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803953"
 ---
-# <a name="how-to-restrict-your-app-to-a-set-of-users"></a>如何：将应用限制为一组用户
+# <a name="how-to-restrict-your-app-to-a-set-of-users"></a>如何：将应用限制为供一组用户使用
 
 默认情况下，在 Azure Active Directory (Azure AD) 租户中注册的应用程序可供租户的所有已成功进行身份验证的用户使用。
 
@@ -47,17 +48,17 @@ ms.locfileid: "68812976"
 
 ## <a name="update-the-app-to-enable-user-assignment"></a>更新应用，允许用户分配
 
-可以通过两种方法创建启用了用户分配的应用程序。 它需要**全局管理员**角色, 但第二个角色不需要。
+可以通过两种方法创建启用了用户分配的应用程序。 它需要**全局管理员**角色，但第二个角色不需要。
 
-### <a name="enterprise-applications-requires-the-global-adminstrator-role"></a>企业应用程序 (需要全局管理员角色)
+### <a name="enterprise-applications-requires-the-global-adminstrator-role"></a>企业应用程序（需要全局管理员角色）
 
 1. 中转到[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份**登录。
 1. 在顶栏中选择登录的帐户。 
 1. 在“目录”下，选择要在其中注册应用的 Azure AD 租户。
-1. 在左侧导航栏中，选择“Azure Active Directory”。 如果导航窗格中未提供 Azure Active Directory, 请执行以下步骤:
+1. 在左侧导航栏中，选择“Azure Active Directory”。 如果导航窗格中未提供 Azure Active Directory，请执行以下步骤：
 
     1. 在左侧的主导航菜单顶部选择“所有服务”。
-    1. 在 "筛选搜索" 框中键入**Azure Active Directory** , 然后从结果中选择 " **Azure Active Directory** " 项。
+    1. 在 "筛选搜索" 框中键入**Azure Active Directory** ，然后从结果中选择 " **Azure Active Directory** " 项。
 
 1. 使用 **Azure Active Directory** 左侧导航菜单，在“Azure Active Directory”窗格中选择“企业应用程序”。
 1. 选择“所有应用程序”，查看所有应用程序的列表。
@@ -65,8 +66,8 @@ ms.locfileid: "68812976"
      如果看不到希望其显示在这里的应用程序，请使用“所有应用程序”列表顶部的各种筛选器来限制此列表，或者在列表中向下滚动，以便找到应用程序。
 
 1. 从列表中选择要向其分配用户或安全组的应用程序。
-1. 在应用程序的 "**概述**" 页上, 从应用程序的左侧导航菜单中选择 "**属性**"。
-1. 找到设置“需要进行用户分配?”，将其设置为“是”。 如果将此选项设置为 **"是"** , 则必须先将用户分配到此应用程序, 然后才能访问该应用程序。
+1. 在应用程序的 "**概述**" 页上，从应用程序的左侧导航菜单中选择 "**属性**"。
+1. 找到设置“需要进行用户分配?”，将其设置为“是”。 如果将此选项设置为 **"是"** ，则必须先将用户分配到此应用程序，然后才能访问该应用程序。
 1. 选择“保存”以保存此配置更改。
 
 ### <a name="app-registration"></a>应用注册
@@ -75,11 +76,11 @@ ms.locfileid: "68812976"
 1. 在顶栏中选择登录的帐户。 
 1. 在“目录”下，选择要在其中注册应用的 Azure AD 租户。
 1. 在左侧导航栏中，选择“Azure Active Directory”。
-1. 在**Azure Active Directory**窗格中, 从**Azure Active Directory**左侧导航菜单中选择 "**应用注册**"。
+1. 在**Azure Active Directory**窗格中，从**Azure Active Directory**左侧导航菜单中选择 "**应用注册**"。
 1. 创建或选择要管理的应用。 你需要成为此应用注册的**所有者**。
-1. 在应用程序的 "**概述**" 页上, 按照页面顶部 "essentials" 下的 "**本地目录中的托管应用程序**" 链接。 这会将你转到应用注册的_托管企业应用程序_。
-1. 从左侧的导航边栏选项卡中, 选择 "**属性**"。
-1. 找到设置“需要进行用户分配?”，将其设置为“是”。 如果将此选项设置为 **"是"** , 则必须先将用户分配到此应用程序, 然后才能访问该应用程序。
+1. 在应用程序的 "**概述**" 页上，按照页面顶部 "essentials" 下的 "**本地目录中的托管应用程序**" 链接。 这会将你转到应用注册的_托管企业应用程序_。
+1. 从左侧的导航边栏选项卡中，选择 "**属性**"。
+1. 找到设置“需要进行用户分配?”，将其设置为“是”。 如果将此选项设置为 **"是"** ，则必须先将用户分配到此应用程序，然后才能访问该应用程序。
 1. 选择“保存”以保存此配置更改。
 
 ## <a name="assign-users-and-groups-to-the-app"></a>将用户和组分配到应用

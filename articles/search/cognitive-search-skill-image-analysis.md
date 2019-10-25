@@ -1,29 +1,28 @@
 ---
-title: 图像分析认知搜索技能 - Azure 搜索
-description: 在 Azure 搜索扩充管道中使用 ImageAnalysis 认知技能通过图像分析来提取语义文本。
-services: search
+title: 图像分析认知技能
+titleSuffix: Azure Cognitive Search
+description: 使用 Azure 认知搜索中 AI 扩充管道中的图像分析认知技能，通过图像分析提取语义文本。
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 08/28/2019
 ms.author: luisca
-ms.openlocfilehash: 69e798601dc53ffb666aa9dcddd68980256fa3fc
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 04114d00f3905675a1794a3875e650661febc832
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265451"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791989"
 ---
-#   <a name="image-analysis-cognitive-skill"></a>图像分析认知技能
+# <a name="image-analysis-cognitive-skill"></a>图像分析认知技能
 
 图像分析技能根据图像内容提取一组丰富的可视特征。 例如，可从图像生成标题栏、生成标记或识别名人和地标。 此技能使用认知服务中的[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)提供的机器学习模型。 
 
 > [!NOTE]
-> 小型卷（20个事务下）可在 Azure 搜索中免费执行，但较大的工作负荷需要[附加可计费认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API，以及在 Azure 搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
+> 可在 Azure 认知搜索中免费执行小容量（20个事务下），但较大的工作负荷需要[附加可计费认知服务资源](cognitive-search-attach-cognitive-services.md)。 在认知服务中调用 Api 时，将会产生费用，并将其作为 Azure 认知搜索中文档解密阶段的一部分进行图像提取。 提取文档中的文本不会产生费用。
 >
-> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)所述。
+> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 [Azure 认知搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)上介绍了图像提取定价。
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -35,15 +34,15 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 | 参数名称     | 描述 |
 |--------------------|-------------|
-| defaultLanguageCode   |  表示要返回的语言的字符串。 该服务以指定的语言返回识别结果。 如果未指定此参数，则默认值为“en”。 <br/><br/>支持的语言为： <br/>en - 英语（默认） <br/> zh - 简体中文|
-|visualFeatures |   表示要返回的可视特征类型的一组字符串。 有效的可视特征类型包括：  <ul><li> *类别*-根据认知服务[计算机视觉文档](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中定义的分类对图像内容进行分类。 </li><li> tags - 使用与图像内容相关字词的详细列表来标记图像。</li><li>*description* - 用完整的英文句子描述图像内容。</li><li>*faces* - 检测人脸是否存在。 如果存在，则生成位置、性别和年龄。</li><li>    *imageType* - 检测图像是剪贴画还是素描。</li><li>  *color* - 确定主题色、主色以及图像是否为黑白。</li><li>*adult* - 检测图片是否具有色情性质（描绘裸体或性行为）。 也检测性暗示内容。</li></ul> 可视特征的名称区分大小写。|
-| details   | 表示要返回的特定于域的详细信息的一组字符串。 有效的可视特征类型包括： <ul><li>*celebrities* - 识别在图像中检测到的名人。</li><li>*landmarks* - 识别在图像中检测到的地标。 </li></ul> |
+| defaultLanguageCode   |  表示要返回的语言的字符串。 该服务以指定的语言返回识别结果。 如果未指定此属性，则默认值为“en”。 <br/><br/>支持的语言为： <br/>en - 英语（默认） <br/> zh - 简体中文|
+|visualFeatures |   表示要返回的可视特征类型的一组字符串。 有效的可视特征类型包括：  <ul><li> *类别*-根据认知服务[计算机视觉文档](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中定义的分类对图像内容进行分类。 </li><li> tags - 使用与图像内容相关字词的详细列表来标记图像。</li><li>*说明*-使用完整的英语句子描述图像内容。</li><li>人*脸*-检测是否存在面部。 如果存在，则生成位置、性别和年龄。</li><li>    *imageType* -检测图像是否为剪贴画或线条绘图。</li><li>  *颜色*-确定强调颜色、基准颜色以及图像是否为黑色 & 白色。</li><li>*成人*-检测图像在本质上是色情的（描述裸体或性爱法案）。 也检测性暗示内容。</li></ul> 可视特征的名称区分大小写。|
+| 详细信息   | 表示要返回的特定于域的详细信息的一组字符串。 有效的可视特征类型包括： <ul><li>*名人*-识别映像中检测到的名人。</li><li>*特征点*-识别映像中检测到的特征点。 </li></ul> |
 
 ## <a name="skill-inputs"></a>技能输入
 
-| 输入名称      | 说明                                          |
+| 输入名称      | 描述                                          |
 |---------------|------------------------------------------------------|
-| 图像         | 复杂类型。 当前仅适用于“/document/normalized_images”字段，当 ```imageAction``` 设置为非 ```none``` 值时由 Azure Blob 索引器生成。 请参阅[此示例](#sample-output)获取详细信息。|
+| image         | 复杂类型。 当前仅适用于“/document/normalized_images”字段，当 ```imageAction``` 设置为非 ```none``` 值时由 Azure Blob 索引器生成。 请参阅[此示例](#sample-output)获取详细信息。|
 
 
 
@@ -503,7 +502,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 | NotSupportedImage | 不受支持的图片，例如儿童色情内容。 |
 | InvalidDetails | 不受支持的特定于域的模型。 |
 
-如果收到类似于`"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"`的错误，请检查路径。 名人和特征点都是下`detail`的属性。
+如果收到类似于 `"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"`的错误，请检查路径。 名人和特征点都是 `detail`的属性。
 
 ```json
 "categories":[  
@@ -519,8 +518,8 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             ]
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-+ [预定义技能](cognitive-search-predefined-skills.md)
++ [内置技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [创建索引器 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

@@ -1,26 +1,26 @@
 ---
-title: 全文搜索引擎 (Lucene) 体系结构 - Azure 搜索
-description: 解释与 Azure 搜索相关的全文搜索的 Lucene 查询处理和文档检索概念。
+title: 全文查询和索引引擎体系结构（Lucene）
+titleSuffix: Azure Cognitive Search
+description: 检查与 Azure 认知搜索相关的全文搜索的 Lucene 查询处理和文档检索概念。
 manager: nitinme
 author: yahnoosh
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 08/08/2019
 ms.author: jlembicz
-ms.openlocfilehash: d377d6180f3d2d64f183ed574add3e7307e34fc3
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186540"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793559"
 ---
-# <a name="how-full-text-search-works-in-azure-search"></a>Azure 搜索中全文搜索的工作原理
+# <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Azure 中全文搜索的工作原理认知搜索
 
-本文面向需要更深入了解 Azure 搜索中 Lucene 全文搜索工作原理的开发人员。 对于文本查询，在大多数情况下，Azure 搜索都会顺利地提供预期结果，但偶尔也会收到看上去“不靠谱”的结果。 在这种情况下，如果对 Lucene 查询执行的四个阶段（查询分析、词法分析、文档匹配和评分）有一定的背景知识，则有助于确定要对提供所需结果的查询参数或索引配置进行哪些特定的更改。 
+本文面向需要更深入了解 Azure 认知搜索中的 Lucene 全文搜索工作原理的开发人员。 对于文本查询，Azure 认知搜索将在大多数情况下无缝地提供预期结果，但有时你可能会遇到 "关闭" 的结果。 在这种情况下，如果对 Lucene 查询执行的四个阶段（查询分析、词法分析、文档匹配和评分）有一定的背景知识，则有助于确定要对提供所需结果的查询参数或索引配置进行哪些特定的更改。 
 
 > [!Note] 
-> Azure 搜索使用 Lucene 进行全文搜索，但 Lucene 集成并不彻底。 我们将有选择地公开和扩展 Lucene 功能，使情景对于 Azure 搜索变得重要。 
+> Azure 认知搜索使用 Lucene 进行全文搜索，但 Lucene 集成并不完整。 我们会有选择地公开和扩展 Lucene 功能，以实现对 Azure 认知搜索重要的方案。 
 
 ## <a name="architecture-overview-and-diagram"></a>体系结构概述和关系图
 
@@ -35,7 +35,7 @@ ms.locfileid: "70186540"
 
 以下关系图演示了用于处理搜索请求的组件。 
 
- ![Azure 搜索中 Lucene 查询体系结构的关系图][1]
+ ![Azure 中的 Lucene 查询体系结构示意图认知搜索][1]
 
 
 | 关键组件 | 功能说明 | 
@@ -49,7 +49,7 @@ ms.locfileid: "70186540"
 
 搜索请求是一个完整的规范，描述了应在结果集中返回哪些内容。 最简单的搜索请求形式是不包含任何类型的条件的空查询。 比较现实的搜索请求示例包含参数、多个查询词，其范围可能限定为某些字段，另外，可能还包含筛选表达式和排序规则。  
 
-以下示例是可以使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 发送到 Azure 搜索的一个搜索请求。  
+以下示例是使用[REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)可以发送到 Azure 认知搜索的搜索请求。  
 
 ~~~~
 POST /indexes/hotels/docs/search?api-version=2019-05-06
@@ -96,7 +96,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 
 ### <a name="supported-parsers-simple-and-full-lucene"></a>支持的分析器：简单和完整 Lucene 
 
- Azure 搜索公开两种不同的查询语言：`simple`（默认）和 `full`。 通过使用搜索请求设置 `queryType` 参数，可让查询分析器知道你选择的查询语言，这样，它就知道如何解释运算符和语法。 [简单查询语言](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)比较直观而且可靠，通常适合用于按原样解释用户输入，而无需客户端的处理。 它支持 Web 搜索引擎中常见的查询运算符。 [完整 Lucene 查询语言](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)：可通过设置 `queryType=full` 获取该语言。它添加了对更多运算符和查询类型（例如通配符、模糊查询、正则表达式和限定字段的查询）的支持，从而扩展了默认的简单查询语言。 例如，在简单查询语法中发送的正则表达式将解释为查询字符串而不是表达式。 本文中的示例请求使用完整 Lucene 查询语言。
+ Azure 认知搜索公开两种不同的查询语言： `simple` （默认）和 `full`。 通过使用搜索请求设置 `queryType` 参数，可让查询分析器知道你选择的查询语言，这样，它就知道如何解释运算符和语法。 [简单查询语言](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)比较直观而且可靠，通常适合用于按原样解释用户输入，而无需客户端的处理。 它支持 Web 搜索引擎中常见的查询运算符。 [完整 Lucene 查询语言](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)：可通过设置 `queryType=full` 获取该语言。它添加了对更多运算符和查询类型（例如通配符、模糊查询、正则表达式和限定字段的查询）的支持，从而扩展了默认的简单查询语言。 例如，在简单查询语法中发送的正则表达式将解释为查询字符串而不是表达式。 本文中的示例请求使用完整 Lucene 查询语言。
 
 ### <a name="impact-of-searchmode-on-the-parser"></a>searchMode 对分析器的影响 
 
@@ -137,7 +137,7 @@ Spacious,||air-condition*+"Ocean view"
 * 将复合词分解为不同的组成部分 
 * 转换单词的大小写 
 
-所有这些操作往往会消除用户提供的文本输入与存储在索引中的字词之间的差异。 此类操作超出了文本处理的范围，需要精通语言本身。 为了添加这一层语言认知力，Azure 搜索支持 Lucene 和 Microsoft 提供的众多[语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)。
+所有这些操作往往会消除用户提供的文本输入与存储在索引中的字词之间的差异。 此类操作超出了文本处理的范围，需要精通语言本身。 若要添加此语言识别层，Azure 认知搜索支持 Lucene 和 Microsoft 的长[语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)列表。
 
 > [!Note]
 > 根据具体的情景，分析要求时而简单，时而繁琐。 可以通过选择某个预定义的分析器或者创建自己的[自定义分析器](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search)来控制词法分析的复杂性。 可将分析器的分析范围限定为可搜索的字段，并且可将分析器指定为字段定义的一部分。 这样，便可以根据每个字段运行不同的词法分析。 如果未指定分析器，将使用*标准* Lucene 分析器。
@@ -245,15 +245,15 @@ Spacious,||air-condition*+"Ocean view"
 我们经常（但不是非要这样做）使用相同的分析器来执行搜索和索引编制操作，使查询词看上去更像是索引中的字词。
 
 > [!Note]
-> Azure 搜索允许通过附加的 `indexAnalyzer` 和 `searchAnalyzer` 字段参数来指定使用不同的分析器执行索引和搜索。 如果未指定，使用设置分析器`analyzer`属性用于索引编制和搜索。  
+> Azure 认知搜索允许您通过其他 `indexAnalyzer` 和 `searchAnalyzer` 字段参数为索引和搜索指定不同的分析器。 如果未指定，使用设置分析器`analyzer`属性用于索引编制和搜索。  
 
 **示例文档的倒排索引**
 
 继续使用前面的示例，对于**标题**字段，倒排索引如下所示：
 
-| 术语 | 文档列表 |
+| 条款 | 文档列表 |
 |------|---------------|
-| atman | 1 |
+| atman | 第 |
 | beach | 2 |
 | hotel | 1, 3 |
 | ocean | 4  |
@@ -261,35 +261,35 @@ Spacious,||air-condition*+"Ocean view"
 | resort | 3 |
 | retreat | 4 |
 
-在标题字段中，只有“酒店”显示在以下两个文档中：1、3。
+在标题字段中，只有 *hotel* 显示在以下两个文档中：1 和 3。
 
 对于**说明**字段，索引如下所示：
 
-| 术语 | 文档列表 |
+| 条款 | 文档列表 |
 |------|---------------|
 | air | 3
-| 与 | 4
-| beach | 1
+| and | 4
+| beach | 第
 | conditioned | 3
 | comfortable | 3
-| distance | 1
+| distance | 第
 | island | 2
 | kauaʻi | 2
 | located | 2
 | north | 2
 | ocean | 1, 2, 3
-| of | 2
-| 开 |2
+| ，步骤总数为 | 2
+| on |2
 | quiet | 4
 | rooms  | 1, 3
 | secluded | 4
 | shore | 2
-| spacious | 1
+| spacious | 第
 | the | 1, 2
-| to | 1
-| view | 1, 2, 3
-| walking | 1
-| 和 | 3
+| to | 第
+| 视图 | 1, 2, 3
+| walking | 第
+| 替换为 | 3
 
 
 **根据编制索引的字词匹配查询词**
@@ -309,7 +309,7 @@ Spacious,||air-condition*+"Ocean view"
 + 短语查询“ocean view”将在原始文档中查找字词“ocean”和“view”并检查字词的近似性。 文档 1、2 和 3 的说明字段匹配此查询。 请注意，文档 4 的标题中包含字词 ocean，但不被视为匹配项，因为我们要查找的是短语“ocean view”而不是单个单词。 
 
 > [!Note]
-> 除非使用 `searchFields` 参数限制了字段集（如示例搜索请求中所示），否则，将针对 Azure 搜索索引中的所有可搜索字段单独执行搜索查询。 将返回与任一选定字段匹配的文档。 
+> 搜索查询是独立于 Azure 认知搜索索引中的所有可搜索字段执行的，除非使用 `searchFields` 参数来限制设置的字段，如示例搜索请求中所示。 将返回与任一选定字段匹配的文档。 
 
 总而言之，对于上述查询，匹配的文档为 1、2、3。 
 
@@ -357,7 +357,7 @@ search=Spacious, air-condition* +"Ocean view"
 
 ### <a name="score-tuning"></a>评分优化
 
-在 Azure 搜索中，可以使用两种方法优化相关性评分：
+可以通过两种方式在 Azure 认知搜索中调整关联分数：
 
 1. **评分配置文件**可以根据一组规则提升结果排名列表中的文档。 在本示例中，我们可以认为标题字段中匹配的文档的相关性高于说明字段中匹配的文档。 此外，如果索引包含每家酒店的价格字段，我们可以根据较低的价格提升文档。 详细了解如何[将评分配置文件添加到搜索索引](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)。
 2. **字词提升**（只能在完整 Lucene 查询语法中使用）提供可应用到查询树任何部分的提升运算符 `^`。 在本示例中，我们可以不搜索前缀 *air-condition*\*，而是搜索确切的字词 *air-condition* 或前缀，但是，由于在字词查询中应用了提升运算符，与该确切字词匹配的文档会获得更高的排名：*air-condition^2||air-condition*\*。 详细了解[字词提升](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)。
@@ -365,7 +365,7 @@ search=Spacious, air-condition* +"Ocean view"
 
 ### <a name="scoring-in-a-distributed-index"></a>在分布式索引评分
 
-Azure 搜索中的所有索引会自动拆分成多个分片，使我们能够在服务扩展或缩减期间，快速地在多个节点之间分配索引。 发出某个搜索请求时，会单独针对每个分片发出该请求。 然后，来自每个分片的结果会合并，并按评分排序（如果未定义其他排序）。 必须知道，评分函数根据分片中所有文档内的字词反向文档频率为查询字词频率加权，而不是根据所有分片加权！
+Azure 认知搜索中的所有索引会自动拆分为多个分片，从而使我们能够在服务纵向扩展或缩减时在多个节点之间快速分布索引。 发出某个搜索请求时，会单独针对每个分片发出该请求。 然后，来自每个分片的结果会合并，并按评分排序（如果未定义其他排序）。 必须知道，评分函数根据分片中所有文档内的字词反向文档频率为查询字词频率加权，而不是根据所有分片加权！
 
 这意味着，如果相同的文档驻留在不同的分片中，其相关性评分*可能*不同。 幸运的是，随着索引中的文档数由于字词分布越来越均匀而不断增多，这种差异往往会消失。 无法预料任意给定文档会放置在哪个分片上。 但是，假设文档键不会更改，该文档始终会分配到同一个分片。
 
@@ -377,7 +377,7 @@ Internet 搜索引擎取得的成功提高了人们对私有数据运行全文�
 
 从技术角度看，全文搜索非常复杂，需要采用高深的语言分析和系统性方法，通过提取、扩展和转换查询词进行处理并提供相关的结果。 除了固有的复杂性以外，还有许多因素会影响查询的结果。 因此，在尝试处理意外结果时投入一些时间来了解全文搜索的机制可以获得实实在在的好处。  
 
-本文探讨了 Azure 搜索上下文中的全文搜索。 我们希望本文提供了足够的背景知识，可让你识别潜在的原因和解决常见的查询问题。 
+本文探讨了 Azure 认知搜索上下文中的全文搜索。 我们希望本文提供了足够的背景知识，可让你识别潜在的原因和解决常见的查询问题。 
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -391,7 +391,7 @@ Internet 搜索引擎取得的成功提高了人们对私有数据运行全文�
 
 + [配置自定义分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)，针对特定的字段尽量简化处理或者进行专门处理。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 

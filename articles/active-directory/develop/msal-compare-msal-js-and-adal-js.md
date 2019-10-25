@@ -1,5 +1,6 @@
 ---
-title: MSAL.js 与 ADAL.js 的差异 | Azure
+title: MSAL 和 ADAL 之间的差异
+titleSuffix: Microsoft identity platform
 description: 了解适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 与适用于 JavaScript 的 Azure AD 身份验证库 (ADAL.js) 之间的差异，以及如何在两者之间做出选择。
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7149b9d871c43af083774ffb799255e0d1144113
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8d831f9f1cf8dbf565d569f63ee6215fac80949d
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429944"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803165"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS 与 ADAL JS 的差异
 
