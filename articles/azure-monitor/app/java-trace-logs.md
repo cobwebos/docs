@@ -1,23 +1,18 @@
 ---
 title: 在 Azure Application Insights 中浏览 Java 跟踪日志 | Microsoft Docs
 description: 在 Application Insights 中搜索 Log4J 或 Logback 跟踪
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: fc0a9e2f-3beb-4f47-a9fe-3f86cd29d97a
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/18/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 99a18125fa5ce07a46fcc1af554fd03746ebf110
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.date: 05/18/2019
+ms.openlocfilehash: 23e3116a0cc3283191d00079e0926dc206e677f0
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038149"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819340"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 Java 跟踪日志
 如果使用 Logback 或 Log4J（v1.2 或 v2.0）进行跟踪，可将跟踪日志自动发送到 Application Insights，以便在其中发现和搜索日志。
@@ -45,7 +40,7 @@ ms.locfileid: "72038149"
 
 ## <a name="install-the-java-sdk"></a>安装 Java SDK
 
-按照说明安装[适用于 Java 的 Application Insights SDK][java]（如果尚未安装）。
+如果尚未执行此操作，请按照说明安装[APPLICATION INSIGHTS SDK For Java][java]。
 
 ## <a name="add-logging-libraries-to-your-project"></a>将日志记录库添加到项目
 *为项目选择适当的方式。*
@@ -177,7 +172,7 @@ ms.locfileid: "72038149"
 Application Insights 追加器可由配置的任何记录器（而不一定是根记录器）引用（如上面的代码示例所示）。
 
 ## <a name="explore-your-traces-in-the-application-insights-portal"></a>在 Application Insights 门户中浏览跟踪
-将项目配置为向 Application Insights 发送跟踪后，可以在 Application Insights 门户的[搜索][diagnostic]边栏选项卡中查看和搜索这些跟踪。
+现在，你已将项目配置为将跟踪发送到 Application Insights，你可以在 Application Insights 门户中的 "[搜索][diagnostic]" 边栏选项卡中查看和搜索这些跟踪。
 
 通过记录器提交的异常将作为异常遥测显示在门户中。
 

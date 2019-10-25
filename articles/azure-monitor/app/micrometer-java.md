@@ -1,23 +1,18 @@
 ---
 title: 如何将 Micrometer 与 Azure Application Insights Java SDK 配合使用 | Microsoft Docs
 description: '有关对 Application Insights Spring Boot 和非 Spring Boot 应用程序使用 Micrometer 的分步指导。 '
-services: application-insights
-documentationcenter: java
-author: lgayhardt
-manager: carmonm
-ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 11/01/2018
+author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 5bef5a6037c6eb29d0dc48e313958e2d243904eb
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 11/01/2018
+ms.openlocfilehash: 267665c97f683740c05ae6602a416225c79aa44c
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299573"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819308"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>如何将 Micrometer 与 Azure Application Insights Java SDK 配合使用
 Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码的指标，并可用于将数据导出到偏爱的监视系统。 本文介绍如何对 Spring Boot 和非 Spring Boot 应用程序配合使用 Micrometer 与 Application Insights。
@@ -29,7 +24,7 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
 * [Micrometer Spring Legacy](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 或更高版本（用于向后移植 Spring 框架中的自动配置代码）。
 * [ApplicationInsights 资源](../../azure-monitor/app/create-new-resource.md )
 
-步骤
+Steps
 
 1. 更新 Spring Boot 应用程序的 pom.xml 文件，在其中添加以下依赖项：
 
@@ -87,7 +82,7 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
 默认指标：
 
 *    为 Tomcat、JVM 自动配置的指标、Logback 指标、Log4J 指标、运行时间指标、处理器指标、FileDescriptorMetrics。
-*    例如, 如果类路径上存在 Netflix Hystrix, 我们也会获得这些指标。 
+*    例如，如果类路径上存在 Netflix Hystrix，我们也会获得这些指标。 
 *    可通过添加相应的 bean 来获取以下指标。 
         - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcastCache, JCache)     
         - DataBaseTableMetrics 
@@ -144,7 +139,7 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
         </dependency>
      ```
 
-2. 将`ApplicationInsights.xml`文件放入资源文件夹：
+2. 将 `ApplicationInsights.xml` 文件放在 resources 文件夹中：
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>

@@ -4,15 +4,15 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 10/07/2019
 ms.author: orspodek
-ms.openlocfilehash: 6743dbffa6677bfa39ce57b743be919b9dc7d700
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c39fd5bdf272117a9b4935d518a862fab4bac4a7
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031560"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821951"
 ---
 ## <a name="install-c-nuget"></a>安装 C# nuget
 
-1. 安装 [Azure 数据资源管理器 (Kusto) nuget 包](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)。
+* 安装[Azure 数据资源管理器（Kusto） NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)。
 
-1. 安装 [Microsoft.IdentityModel.Clients.ActiveDirectory nuget 包](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)以进行身份验证。
+* 安装[System.identitymodel NuGet 包](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)进行身份验证。

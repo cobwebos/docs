@@ -1,23 +1,18 @@
 ---
 title: 如何在 Azure Application Insights 中执行... | Microsoft Docs
 description: 有关 Application Insights 的常见问题解答。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 48b2b644-92e4-44c3-bc14-068f1bbedd22
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 04/04/2017
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 9f80edf18a531d6c2850658ddef9c7007edb350f
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.date: 04/04/2017
+ms.openlocfilehash: 28881403e4938376cc1912227bdff51aa5f069cf
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795511"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817372"
 ---
 # <a name="how-do-i--in-application-insights"></a>如何在 Application Insights 中执行...？
 ## <a name="get-an-email-when-"></a>... 时收到电子邮件
@@ -25,13 +20,13 @@ ms.locfileid: "67795511"
 设置[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)。
 
 ### <a name="email-if-my-site-is-overloaded"></a>站点过载时发送电子邮件
-针对“服务器响应时间”设置[警报](../../azure-monitor/app/alerts.md)。  介于 1 和 2 秒之间的阈值应可解决问题。
+针对“服务器响应时间”设置[警报](../../azure-monitor/app/alerts.md)。 介于 1 和 2 秒之间的阈值应可解决问题。
 
 ![](./media/how-do-i/030-server.png)
 
-应用还可能通过返回失败代码来表明资源紧张的迹象。 针对“失败的请求”设置警报。 
+应用还可能通过返回失败代码来表明资源紧张的迹象。 针对“失败的请求”设置警报。
 
-如果想要针对“服务器异常”设置警报，可能需要执行[其他一些设置](../../azure-monitor/app/asp-net-exceptions.md)才能看到数据。 
+如果想要针对“服务器异常”设置警报，可能需要执行[其他一些设置](../../azure-monitor/app/asp-net-exceptions.md)才能看到数据。
 
 ### <a name="email-on-exceptions"></a>发生异常时发送电子邮件
 1. [设置异常监视](../../azure-monitor/app/asp-net-exceptions.md)
@@ -82,8 +77,8 @@ ms.locfileid: "67795511"
 
 ## <a name="separate-telemetry-from-different-versions"></a>不同版本中的单独遥测
 
-* 应用中的多个角色：使用一个 Application Insights 资源，对 [cloud_Rolename](../../azure-monitor/app/app-map.md) 进行筛选。
-* 开发、测试和发布版本相互独立：使用不同的 Application Insights 资源。 从 web.config 中选取检测密钥。[了解详细信息](../../azure-monitor/app/separate-resources.md)
+* 应用中的多个角色：使用单个 Application Insights 资源，并按[cloud_Rolename](../../azure-monitor/app/app-map.md)进行筛选。
+* 分隔开发、测试和发布版本：使用不同 Application Insights 资源。 从 web.config 选取检测密钥。[了解更多](../../azure-monitor/app/separate-resources.md)
 * 报告生成版本：使用遥测初始值设定项添加属性。 [了解详细信息](../../azure-monitor/app/separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>监视后端服务器和桌面应用
@@ -103,7 +98,7 @@ ms.locfileid: "67795511"
 <a name="search-specific-users"></a>
 
 ### <a name="filter-out-anonymous-or-authenticated-users"></a>筛选出匿名用户或经过身份验证的用户
-如果用户要登录，可以设置[经过身份验证的用户 ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。（不会自动设置此 ID。）
+如果你的用户登录，你可以设置[经过身份验证的用户 id](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。（不会自动发生。）
 
 然后，可以：
 
@@ -146,19 +141,19 @@ ms.locfileid: "67795511"
 ```
 
 ### <a name="other-applications"></a>其他应用程序
-不建议使用`TelemetryConfiguration.Active`控制台或 ASP.NET Core 应用程序上的单一实例。
-如果您创建`TelemetryConfiguration`自己的实例设置`DisableTelemetry`到`true`。
+不建议使用控制台上 `TelemetryConfiguration.Active` 单一实例或 ASP.NET Core 应用程序。
+如果自行创建 `TelemetryConfiguration` 实例-将 `DisableTelemetry` 设置为 "`true`"。
 
-对于 ASP.NET Core 应用程序可以访问`TelemetryConfiguration`实例使用[ASP.NET Core 依赖关系注入](/aspnet/core/fundamentals/dependency-injection/)。 请查找中的更多详细信息[ASP.NET Core 应用程序的 ApplicationInsights](../../azure-monitor/app/asp-net-core.md)一文。
+对于 ASP.NET Core 应用程序，你可以使用[ASP.NET Core 依赖关系注入](/aspnet/core/fundamentals/dependency-injection/)访问 `TelemetryConfiguration` 实例。 请在[applicationinsights.config for ASP.NET Core 应用程序](../../azure-monitor/app/asp-net-core.md)一文中找到更多详细信息。
 
 ## <a name="disable-selected-standard-collectors"></a>禁用选定的标准收集器
-您可以禁用 （例如，性能计数器、 HTTP 请求或依赖项） 的标准收集器
+可以禁用标准收集器（例如性能计数器、HTTP 请求或依赖项）
 
-* **ASP.NET 应用程序**-删除或注释掉中的相关行[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)
-* **ASP.NET Core 应用程序**-请按照中的遥测模块配置选项[ApplicationInsights ASP.NET Core](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules)
+* **ASP.NET 应用程序**-在[applicationinsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中删除或注释掉相关行
+* **ASP.NET Core 应用程序**-遵循 applicationinsights.config 中的遥测模块配置选项[ASP.NET Core](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules)
 
 ## <a name="view-system-performance-counters"></a>查看系统性能计数器
-可以在指标资源管理器中显示的指标信息是一组系统性能计数器。 有一个标题为“服务器”的预定义边栏选项卡显示了其中的多个计数器。 
+可以在指标资源管理器中显示的指标信息是一组系统性能计数器。 有一个标题为“服务器”的预定义边栏选项卡显示了其中的多个计数器。
 
 ![打开 Application Insights 资源并单击“服务器”](./media/how-do-i/121-servers.png)
 

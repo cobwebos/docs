@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 4a8a8d7f6004ac32aeb7ce2b8cbffeca9ddf0079
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f3b2a976dc6b2b9e91f046a7f69e3057a7af7d0e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595536"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72816973"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>为操作产品/服务创建新的 Dynamics 365
 
@@ -102,7 +102,7 @@ ms.locfileid: "72595536"
 
 ### <a name="industry"></a>行业
 
-你可以选择最多选择两个行业，以帮助你在 marketplace 中对你的产品/服务进行分类。 如果产品/服务不特定于某个行业，请将本部分留空。 在产品/服务描述中，请务必了解产品/服务支持所选行业的方式。 
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>应用版本
 

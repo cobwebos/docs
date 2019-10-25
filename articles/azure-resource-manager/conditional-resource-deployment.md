@@ -6,16 +6,16 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 88f8b6a8dcce0e498a7b81b8741072bcf4cfcad8
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: b6d707fc4bbc5fa57ffb0c809d7f70efebef99e9
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259504"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881665"
 ---
 # <a name="conditional-deployment-in-resource-manager-templates"></a>资源管理器模板中的条件部署
 
-有时，您需要根据需要在模板中部署资源。 `condition`使用元素指定是否部署资源。 此元素的值解析为 true 或 false。 如果值为 true，则创建了该资源。 如果值为 false，则未创建该资源。 值只能应用到整个资源。
+有时，您需要根据需要在模板中部署资源。 使用 `condition` 元素指定是否部署资源。 此元素的值解析为 true 或 false。 如果值为 true，则创建了该资源。 如果值为 false，则未创建该资源。 值只能应用到整个资源。
 
 ## <a name="new-or-existing-resource"></a>新资源或现有资源
 
@@ -78,9 +78,13 @@ ms.locfileid: "70259504"
 
 ## <a name="runtime-functions"></a>运行时函数
 
-如果对条件性部署的资源使用 [reference](resource-group-template-functions-resource.md#reference) 或 [list](resource-group-template-functions-resource.md#list) 函数，则会对该函数进行评估，即使资源尚未部署。 如果该函数引用某个不存在的资源，则会出现错误。
+如果将[引用](resource-group-template-functions-resource.md#reference)或[列表](resource-group-template-functions-resource.md#list)函数与有条件部署的资源结合使用，则即使未部署资源，也会计算该函数。 如果函数引用的资源不存在，则会收到错误。
 
-请使用 [if](resource-group-template-functions-logical.md#if) 函数，以确保仅当资源已部署时，才根据条件评估函数。 请查看示例模板的 [if 函数](resource-group-template-functions-logical.md#if)，该模板将 if 和 reference 用于进行条件部署的资源。
+使用[if](resource-group-template-functions-logical.md#if)函数可确保仅在部署资源时计算函数的条件。 请参阅[if 函数](resource-group-template-functions-logical.md#if)以获取一个示例模板，该模板使用 if，并使用有条件部署的资源引用。
+
+## <a name="condition-with-complete-mode"></a>具有完整模式的条件
+
+如果使用 "[完整" 模式](deployment-modes.md)部署模板，而未部署资源，因为条件的计算结果为 false，则结果取决于用于部署模板的 REST API 版本。 如果使用早于2019-05-10 的版本，则不会**删除**该资源。 对于2019-05-10 或更高版本，将**删除**该资源。 当条件为 false 时，Azure PowerShell 和 Azure CLI 的最新版本将删除该资源。
 
 ## <a name="next-steps"></a>后续步骤
 

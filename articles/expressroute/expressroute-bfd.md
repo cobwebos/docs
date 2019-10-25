@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 8/17/2018
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 14f65851e50ed25024524f6d988ba2b2f2b3aeba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e33e90d988251afde630401bed165a4d3614d2cd
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367655"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881454"
 ---
 # <a name="configure-bfd-over-expressroute"></a>配置基于 ExpressRoute 的 BFD
 
-ExpressRoute 支持基于专用对等互连的双向转发检测 (BFD)。 启用基于 ExpressRoute 的 BFD 后，可在 Microsoft 企业边缘 (MSEE) 设备与终止 ExpressRoute 线路 (PE) 的路由器之间加速链路故障检测。 可以通过客户边缘路由设备或合作伙伴边缘路由设备终止 ExpressRoute（如果使用托管的第 3 层连接服务）。 本文档将逐步讲解 BFD 的需求，以及如何启用基于 ExpressRoute 的 BFD。
+ExpressRoute 支持基于专用对等互连的双向转发检测 (BFD)。 通过 ExpressRoute 启用 BFD，可以加快 Microsoft 企业边缘（MSEE）设备与终止 ExpressRoute 线路（PE/CE）的路由器之间的链接故障检测。 可以通过客户边缘路由设备或合作伙伴边缘路由设备终止 ExpressRoute（如果使用托管的第 3 层连接服务）。 本文档将逐步讲解 BFD 的需求，以及如何启用基于 ExpressRoute 的 BFD。
 
 ## <a name="need-for-bfd"></a>BFD 的需求
 
@@ -34,9 +34,9 @@ ExpressRoute 支持基于专用对等互连的双向转发检测 (BFD)。 启用
 
 ## <a name="enabling-bfd"></a>启用 BFD
 
-在 MSEE 上所有新建的 ExpressRoute 专用对等互连接口中，默认已配置 BFD。 因此，若要启用 BFD，只需在 PE 上配置 BFD 即可。 配置 BFD 的过程包括两个步骤：需在接口上配置 BFD，然后将其链接到 BGP 会话。
+在 MSEE 上所有新建的 ExpressRoute 专用对等互连接口中，默认已配置 BFD。 因此，若要启用 BFD，只需在你的 Pe/CEs 上配置 BFD （主要和辅助设备上）。 配置 BFD 的过程分为两步：需要在接口上配置 BFD，并将其链接到 BGP 会话。
 
-下面显示了 PE 配置示例（使用 Cisco IOS XE）。 
+下面显示了一个 PE/CE （使用 Cisco IOS XE）配置示例。 
 
     interface TenGigabitEthernet2/0/0.150
       description private peering to Azure
@@ -56,7 +56,7 @@ ExpressRoute 支持基于专用对等互连的双向转发检测 (BFD)。 启用
       exit-address-family
 
 >[!NOTE]
->若要在现有的专用对等互连中启用 BFD，需要重置该对等互连。 请参阅[重置 ExpressRoute 对等互连][ResetPeering]
+>若要在现有的专用对等互连中启用 BFD，需要重置该对等互连。 请参阅[Reset ExpressRoute 对等互连][ResetPeering]
 >
 
 ## <a name="bfd-timer-negotiation"></a>BFD 计时器协商
@@ -72,7 +72,7 @@ ExpressRoute 支持基于专用对等互连的双向转发检测 (BFD)。 启用
 有关详细信息或帮助，请查看以下链接：
 
 - [创建和修改 ExpressRoute 线路][CreateCircuit]
-- [创建和修改 ExpressRoute 线路的路由][CreatePeering]
+- [为 ExpressRoute 线路创建和修改路由][CreatePeering]
 
 <!--Image References-->
 [1]: ./media/expressroute-bfd/BFD_Need.png "BFD 加快链路故障推测时间"

@@ -1,23 +1,18 @@
 ---
 title: 适用于 JavaScript Web 应用的 Azure Application Insights | Microsoft Docs
 description: 获取页面视图、会话计数和 Web 客户端数据，以及跟踪使用模式。 检测 JavaScript 网页中的异常和性能问题。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/20/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: b49206c677e2f1b20c154ae0c9e358e8b2b0bbd8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.date: 09/20/2019
+ms.openlocfilehash: 17765910b379bd4212d171cce6643de561db23ad
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430195"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819375"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -50,7 +45,7 @@ appInsights.loadAppInsights();
 
 ### <a name="snippet-based-setup"></a>基于代码段的设置
 
-如果你的应用程序不使用 npm，则可以通过将此代码片段粘贴到每个页面的顶部，直接使用 Application Insights 来检测网页。 最好是 @no__t 0 部分中的第一个脚本，以便它可以监视所有依赖项的任何潜在问题。 如果使用的是 Blazor 服务器应用，请将代码段添加到 @no__t 中文件 `_Host.cshtml` 部分的顶部。
+如果你的应用程序不使用 npm，则可以通过将此代码片段粘贴到每个页面的顶部，直接使用 Application Insights 来检测网页。 最好是 `<head>` 部分中的第一个脚本，以便它可以监视所有依赖项的任何潜在问题。 如果使用的是 Blazor 服务器应用，请在 "`<head>`" 部分的文件 `_Host.cshtml` 顶部添加代码片段。
 
 ```html
 <script type="text/javascript">
@@ -85,7 +80,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 ### <a name="telemetry-initializers"></a>遥测初始值设定项
 遥测初始值设定项用于修改收集的遥测的内容，然后从用户的浏览器发送。 它们还可用于阻止发送某些遥测，方法是返回 `false`。 可以将多个遥测初始值设定项添加到 Application Insights 实例，并按添加它们的顺序执行这些初始值设定项。
 
-@No__t 的输入参数-0 是一个回调，该回调将[`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API.md#addTelemetryInitializer)作为参数，并返回 @no__t 或 `void`。 如果返回 `false`，则不会发送遥测项，否则，将继续执行下一个遥测初始值设定项（如果有），或发送到遥测集合终结点。
+`addTelemetryInitializer` 的输入参数是采用[`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API.md#addTelemetryInitializer)作为参数并返回 `boolean` 或 `void`的回调。 如果返回 `false`，则不会发送遥测项，否则，将继续执行下一个遥测初始值设定项（如果有），或发送到遥测集合终结点。
 
 使用遥测初始值设定项的示例：
 ```ts
@@ -145,7 +140,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 ## <a name="single-page-applications"></a>单页应用程序
 
-默认情况下，此 SDK 将**不**会处理在单页面应用程序中发生的基于状态的路由更改。 若要为你的单页面应用程序启用自动路由更改跟踪，你可以将 @no__t 0 添加到你的安装配置。
+默认情况下，此 SDK 将**不**会处理在单页面应用程序中发生的基于状态的路由更改。 若要为你的单页面应用程序启用自动路由更改跟踪，你可以将 `enableAutoRouteTracking: true` 添加到你的安装配置。
 
 目前，我们提供了一个单独的[响应插件](#react-extensions)，你可以使用此 SDK 对其进行初始化。 它还将为你完成路由更改跟踪，并收集[其他响应特定遥测](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)数据。
 
@@ -178,7 +173,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 ### <a name="analytics"></a>分析 
 
-若要查询 JavaScript SDK 收集的遥测数据，请**在 "日志（分析）** " 按钮中选择 "查看"。 通过添加 @no__t 为-1 的 @no__t 语句，你只会看到来自 JavaScript SDK 的数据，其他 Sdk 收集的任何服务器端遥测都将被排除。
+若要查询 JavaScript SDK 收集的遥测数据，请**在 "日志（分析）** " 按钮中选择 "查看"。 通过添加 `client_Type == "Browser"`的 `where` 语句，你只会看到来自 JavaScript SDK 的数据，其他 Sdk 收集的任何服务器端遥测都将被排除。
  
 ```kusto
 // average pageView duration by name
@@ -200,7 +195,7 @@ dataset
 可以在 Azure 门户中 unminified 异常遥测的缩小调用堆栈。 "异常详细信息" 面板上的所有现有集成都适用于新的 unminified 调用堆栈。 拖放源映射 unminifying 支持所有现有和未来的 JS Sdk （+ node.js），因此您无需升级 SDK 版本。 若要查看 unminified 调用堆栈，
 1. 在 Azure 门户中选择一个异常遥测项以查看其 "端到端事务详细信息"
 2. 确定哪些源映射对应于此调用堆栈。 源映射必须与堆栈帧的源文件匹配，但带有后缀 `.map`
-3. 将源映射拖放到 Azure 门户 @no__t 中的调用堆栈上
+3. 将源映射拖放到 Azure 门户中的调用堆栈上 ![](https://i.imgur.com/Efue9nU.gif)
 
 ### <a name="application-insights-web-basic"></a>Application Insights Web 基本
 
@@ -219,7 +214,7 @@ npm i --save @microsoft/applicationinsights-web-basic
 SDK V2 版本中的重大更改：
 - 为了实现更好的 API 签名，某些 API 调用（如 trackPageView、trackException）已更新。 不支持在 IE8 或更低版本的浏览器中运行。
 - 由于数据架构更新，遥测信封具有字段名称和结构更改。
-- 已将 @no__t 0 移动到 `context.telemetryTrace`。 还更改了某些字段（`operation.id` @ no__t-1 @ no__t-2）
+- 已将 `context.operation` 移动到 `context.telemetryTrace`中。 还更改了某些字段（`operation.id` --> `telemetryTrace.traceID`）
   - 若要手动刷新当前 pageview ID （例如，在 SPA 应用中），可以通过 `appInsights.properties.context.telemetryTrace.traceID = Util.newId()`
 
 如果你使用的是当前 application insights 生产 SDK （1.0.20），并且想要查看新的 SDK 在运行时是否正常工作，请根据当前的 SDK 加载方案更新 URL。

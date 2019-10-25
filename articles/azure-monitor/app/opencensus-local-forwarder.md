@@ -1,25 +1,21 @@
 ---
-title: Azure 应用程序 Insights OpenCensus 分布式跟踪本地转发器 (预览版) |Microsoft 文档
+title: Azure 应用程序 Insights OpenCensus 分布式跟踪本地转发器（预览版） |Microsoft 文档
 description: 将 Python 和 Go 等语言的 OpenCensus 分布式跟踪与范围转发到 Azure Application Insights
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
-ms.author: mbullwin
-ms.openlocfilehash: aa64755b636005f4ed8ea5c074ffaada51fb8dd9
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: b0d0bc4d711b05dd2206b7437f1f4c7b3444a0c6
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348150"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819204"
 ---
-# <a name="local-forwarder-preview"></a>本地转发器（预览版）
+# <a name="local-forwarder-preview"></a>本地转发器（预览）
 
 本地转发器是从各种框架中收集 Application Insights 或 [OpenCensus](https://opencensus.io/) 遥测数据并将其路由到 Application Insights 的代理。 它能够在 Windows 和 Linux 下运行。 也可以在 macOS 下运行，但目前并不正式支持这种运行方式。
 

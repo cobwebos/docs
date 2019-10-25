@@ -4,16 +4,16 @@ description: 本文包含可帮助您在本地文件系统和容器之间创建�
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: c65c6b3f6f186e7821ff402eea4494fa60e9c370
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6680efb89eddcfb1c4fa931993956ef83369b292
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598069"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817046"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>用 AzCopy 和 Blob 存储传输数据
 
@@ -31,6 +31,9 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户之间复制数�
 > 例如：`'https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>'`。
 
 ## <a name="create-a-container"></a>创建容器
+
+> [!TIP]
+> 本节中的示例将路径参数括在单引号（' '）中。 在所有命令 shell 中使用单引号（Windows 命令行界面（cmd.exe）除外）。 如果使用的是 Windows 命令行界面（cmd.exe），请用双引号（""）而不是单引号（' '）将路径参数引起来。
 
 可以使用[azcopy make](storage-ref-azcopy-make.md)命令创建容器。 本节中的示例将创建一个名为 `mycontainer` 的容器。
 
@@ -54,10 +57,10 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户之间复制数�
 > * 上传目录的内容 
 > * 上传特定文件
 
-> [!NOTE]
-> AzCopy 不会自动计算和存储文件的 md5 哈希代码。 如果希望 AzCopy 执行此操作，请将 `--put-md5` 标志追加到每个复制命令。 这样一来，在下载 blob 时，AzCopy 会计算已下载数据的 MD5 哈希，并验证存储在 blob `Content-md5` 属性中的 MD5 哈希是否与计算所得的哈希匹配。
-
 有关详细的参考文档，请参阅[azcopy copy](storage-ref-azcopy-copy.md)。
+
+> [!TIP]
+> 本节中的示例将路径参数括在单引号（' '）中。 在所有命令 shell 中使用单引号（Windows 命令行界面（cmd.exe）除外）。 如果使用的是 Windows 命令行界面（cmd.exe），请用双引号（""）而不是单引号（' '）将路径参数引起来。
 
 ### <a name="upload-a-file"></a>上传文件
 
@@ -122,7 +125,6 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户之间复制数�
 
 你还可以使用 "`--exclude-path`" 选项排除文件。 若要了解详细信息，请参阅[azcopy 复制](storage-ref-azcopy-copy.md)参考文档。
 
-
 #### <a name="use-wildcard-characters"></a>使用通配符
 
 将[azcopy copy](storage-ref-azcopy-copy.md)命令与 `--include-pattern` 选项一起使用。 指定包含通配符的部分名称。 使用 semicolin （`;`）分隔名称。 
@@ -135,7 +137,7 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户之间复制数�
 
 你还可以使用 "`--exclude-pattern`" 选项排除文件。 若要了解详细信息，请参阅[azcopy 复制](storage-ref-azcopy-copy.md)参考文档。
 
-@No__t_0 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  如果要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 以获取所有文本文件。
+`--include-pattern` 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  如果要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 以获取所有文本文件。
 
 ## <a name="download-files"></a>下载文件
 
@@ -153,6 +155,9 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户之间复制数�
 > 如果 blob 的 `Content-md5` 属性值包含哈希，则 AzCopy 将计算已下载数据的 MD5 哈希，并验证存储在 blob 的 `Content-md5` 属性中的 MD5 哈希是否与计算的哈希匹配。 如果这些值不匹配，则下载将失败，除非通过将 `--check-md5=NoCheck` 或 `--check-md5=LogOnly` 追加到复制命令来重写此行为。
 
 有关详细的参考文档，请参阅[azcopy copy](storage-ref-azcopy-copy.md)。
+
+> [!TIP]
+> 本节中的示例将路径参数括在单引号（' '）中。 在所有命令 shell 中使用单引号（Windows 命令行界面（cmd.exe）除外）。 如果使用的是 Windows 命令行界面（cmd.exe），请用双引号（""）而不是单引号（' '）将路径参数引起来。
 
 ### <a name="download-a-file"></a>下载文件
 
@@ -217,7 +222,7 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户之间复制数�
 
 你还可以使用 "`--exclude-pattern`" 选项排除文件。 若要了解详细信息，请参阅[azcopy 复制](storage-ref-azcopy-copy.md)参考文档。
 
-@No__t_0 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  如果要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 以获取所有文本文件。
+`--include-pattern` 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  如果要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 以获取所有文本文件。
 
 ## <a name="copy-blobs-between-storage-accounts"></a>在存储帐户之间复制 blob
 
@@ -241,6 +246,9 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 > * 将所有容器、目录和文件复制到其他存储帐户
 
 有关详细的参考文档，请参阅[azcopy copy](storage-ref-azcopy-copy.md)。
+
+> [!TIP]
+> 本节中的示例将路径参数括在单引号（' '）中。 在所有命令 shell 中使用单引号（Windows 命令行界面（cmd.exe）除外）。 如果使用的是 Windows 命令行界面（cmd.exe），请用双引号（""）而不是单引号（' '）将路径参数引起来。
 
 ### <a name="copy-a-blob-to-another-storage-account"></a>将 blob 复制到其他存储帐户
 
@@ -285,6 +293,9 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 > 若要防止意外删除，请在使用 `--delete-destination=prompt|true` 标志之前确保启用[软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)功能。
 
 有关详细的参考文档，请参阅[azcopy 同步](storage-ref-azcopy-sync.md)。
+
+> [!TIP]
+> 本节中的示例将路径参数括在单引号（' '）中。 在所有命令 shell 中使用单引号（Windows 命令行界面（cmd.exe）除外）。 如果使用的是 Windows 命令行界面（cmd.exe），请用双引号（""）而不是单引号（' '）将路径参数引起来。
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>使用对本地文件系统的更改更新容器
 

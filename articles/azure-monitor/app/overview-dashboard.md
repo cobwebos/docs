@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights 概览仪表板 | Microsoft 文档
 description: 使用 Azure Application Insights 概览仪表板功能来监控应用程序。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 06/03/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: d1823779f8a8070149811e2349fc9f4281072d38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/03/2019
+ms.openlocfilehash: 218ae158512326bcad8efd6c598f68d296fe9370
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497153"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819152"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights 概述仪表板
 
@@ -35,7 +30,7 @@ Application Insights 一直都有一个总览窗格，可让用户快速、直�
 
 ![时间范围](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
 
-总体性能已大大提高。 只需单击一次即可访问常用功能，例如**搜索**和**分析**。 每个默认动态更新的 KPI 磁贴都可让你深入了解相应的 Application Insights 功能。 若要了解有关失败请求的详细信息，请在“调查”  标题下选择“失败”  ：
+总体性能已大大提高。 只需单击一次即可访问常用功能，例如**搜索**和**分析**。 每个默认动态更新的 KPI 磁贴都可让你深入了解相应的 Application Insights 功能。 若要了解有关失败请求的详细信息，请在“调查”标题下选择“失败”：
 
 ![失败数](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
 
@@ -43,7 +38,7 @@ Application Insights 一直都有一个总览窗格，可让用户快速、直�
 
 应用程序仪表板利用 Azure 内现有仪表板技术，为你的应用程序运行状况和性能提供了一个完全可自定义的单一窗格视图。
 
-若要访问默认仪表板，请选择  左上角的“应用程序仪表板”。
+若要访问默认仪表板，请选择左上角的“应用程序仪表板”。
 
 ![仪表板视图](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
 
@@ -62,7 +57,7 @@ Application Insights 一直都有一个总览窗格，可让用户快速、直�
 
 ## <a name="troubleshooting"></a>故障排除
 
-如果选择**配置磁贴设置**并且设置自定义时间范围超出你的仪表板将不会显示超过 31 天的数据，即使使用 90 天的默认数据保留期的前 31 天。 目前尚无解决方法的行为。
+如果选择 "**配置磁贴设置**"，并设置超过31天的自定义时间范围，则仪表板将不会显示超出31天的数据，即使默认数据保留期为90天。 此行为当前没有解决方法。
 
 ## <a name="next-steps"></a>后续步骤
 
