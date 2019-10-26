@@ -1,24 +1,18 @@
 ---
 title: 从 Splunk 到 Azure Monitor 日志查询 | Microsoft Docs
 description: 帮助熟悉 Splunk 的用户学习 Azure Monitor 日志查询。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/21/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 03a0d755cf6d099f07a7c6d853e1d747908eec05
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 08/21/2018
+ms.openlocfilehash: e16bf152e739a6145bfabaf8546fa71199f8d732
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177639"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932945"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>从 Splunk 到 Azure Monitor 日志查询
 
@@ -32,12 +26,12 @@ ms.locfileid: "72177639"
  | --- | --- | --- | ---
  | 部署单元  | cluster |  cluster |  Azure Monitor 允许跨群集进行任意查询， Splunk 则不允许。 |
  | 数据缓存 |  存储桶  |  缓存和保留策略 |  控制数据的保留期和缓存级别。 此设置直接影响查询性能和部署成本。 |
- | 数据的逻辑分区  |  index  |  database  |  允许数据的逻辑隔离。 这两个实现都允许跨这些分区的联合与联接。 |
- | 结构化事件元数据 | 不可用 | table |  Splunk 没有向事件元数据搜索语言公开的概念。 Azure Monitor 日志具有表的概念，表包含列。 每个事件实例映射到行。 |
- | 数据记录 | 事件 | 行 |  仅限术语变化。 |
- | 数据记录属性 | 字段 |  column |  在 Azure Monitor 中，此概念预定义为表结构的一部分。 在 Splunk 中，每个事件有自身的字段集。 |
+ | 数据的逻辑分区  |  索引  |  数据库  |  允许数据的逻辑隔离。 这两个实现都允许跨这些分区的联合与联接。 |
+ | 结构化事件元数据 | N/A | 表 |  Splunk 没有向事件元数据搜索语言公开的概念。 Azure Monitor 日志具有表的概念，表包含列。 每个事件实例映射到行。 |
+ | 数据记录 | event | 行 |  仅限术语变化。 |
+ | 数据记录属性 | 字段 |  列 |  在 Azure Monitor 中，此概念预定义为表结构的一部分。 在 Splunk 中，每个事件有自身的字段集。 |
  | 类型 | 数据类型 |  数据类型 |  Azure Monitor 数据类型更明确，因为它们是在列中设置的。 两者都能动态处理数据类型，数据类型集（包括 JSON 支持）大致相同。 |
- | 查询和搜索  | 搜索 | query |  Azure Monitor 和 Splunk 的概念在本质上相同。 |
+ | 查询和搜索  | 搜索 | 查询 |  Azure Monitor 和 Splunk 的概念在本质上相同。 |
  | 数据引入时间 | 系统时间 | ingestion_time() |  在 Splunk 中，每个事件将获取编制事件索引时的系统时间戳。 在 Azure Monitor 中，可以定义名为 ingestion_time 的策略，用于公开可通过 ingestion_time() 函数引用的系统列。 |
 
 ## <a name="functions"></a>Functions
@@ -59,7 +53,7 @@ ms.locfileid: "72177639"
 | regex | matches regex | 在 Splunk 中，`regex` 是运算符。 在 Azure Monitor 中，它是关系运算符。 |
 | searchmatch | == | 在 Splunk 中，`searchmatch` 允许搜索确切的字符串。
 | random | rand()<br>rand(n) | Splunk 的函数返回从 0 到 2<sup>31</sup>-1 的数字。 Azure Monitor 返回介于 0.0 和 1.0 之间的数字；如果提供了参数，则返回介于 0 和 n-1 之间的数字。
-| now | now() | (1)
+| 现在 | now() | (1)
 | relative_time | totimespan() | (1)<br>在 Azure Monitor 中，与 Splunk 的 relative_time(datetimeVal, offsetVal) 等效的函数是 datetimeVal + totimespan(offsetVal)。<br>例如，<code>search &#124; eval n=relative_time(now(), "-1d@d")</code> 变成了 <code>...  &#124; extend myTime = now() - totimespan("1d")</code>。
 
 (1) 在 Splunk 中，使用 `eval` 运算符调用该函数。 在 Azure Monitor 中，它用作 `extend` 或 `project` 的一部分。<br>(2) 在 Splunk 中，使用 `eval` 运算符调用该函数。 在 Azure Monitor 中，可以结合 `where` 运算符使用该函数。
@@ -81,7 +75,7 @@ ms.locfileid: "72177639"
 | Azure Monitor | **find** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
 | | |
 
-### <a name="filter"></a>筛选器
+### <a name="filter"></a>筛选
 Azure Monitor 日志查询从包含筛选器的表格结果集开始。 在 Splunk 中，筛选是针对当前索引执行的默认操作。 还可以在 Splunk 中使用 `where` 运算符，但不建议。
 
 | |  | |
@@ -125,7 +119,7 @@ Splunk 还有一个 `eval` 函数，该函数不能与 `eval` 运算符进行比
 
 
 ### <a name="rename"></a>重命名 
-Azure Monitor 使用 @no__t 0 运算符重命名字段。 `project-rename` 允许查询利用为字段预先生成的任何索引。 Splunk 有一个 @no__t 0 运算符来执行相同的操作。
+Azure Monitor 使用 `project-rename` 运算符重命名字段。 `project-rename` 允许查询利用为字段预先生成的任何索引。 Splunk 有一个 `rename` 运算符来执行相同的操作。
 
 | |  | |
 |:---|:---|:---|

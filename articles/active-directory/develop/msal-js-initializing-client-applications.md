@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b24d9d79bf34325ec033b6ae6847579fa51769ac
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: c4cd3e2ab18c05c8adfda1a54ea4f7820916eab5
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803086"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934891"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>使用 MSAL 初始化客户端应用程序
 本文介绍如何使用用户代理应用程序的实例初始化适用于 JavaScript 的 Microsoft 身份验证库（MSAL）。 用户代理应用程序是公用客户端应用程序的一种形式，其中客户端代码在用户代理（如 web 浏览器）中执行。 这些客户端不存储机密，因为浏览器上下文可公开访问。 若要了解有关客户端应用程序类型和应用程序配置选项的详细信息，请阅读[概述](msal-client-applications.md)。
@@ -91,6 +91,7 @@ export type SystemOptions = {
     logger?: Logger;
     loadFrameTimeout?: number;
     tokenRenewalOffsetSeconds?: number;
+    navigateFrameWait?: number;
 };
 
 // Developer App Environment Support
@@ -139,6 +140,8 @@ export type Configuration = {
 - **loadFrameTimeout**：可选。  应将 Azure AD 令牌续订响应之前处于非活动状态的时间（以毫秒为单位）视为超时。默认值为6秒。
 
 - **tokenRenewalOffsetSeconds**：可选。 设置在到期之前续订令牌所需的偏移量的毫秒数。 默认值为300毫秒。
+
+- **navigateFrameWait**：可选。 将隐藏 iframe 导航到目标之前的等待时间设置的毫秒数。 默认值为500毫秒。
 
 这些仅适用于从 MSAL 角包装库中向下传递：
 - **unprotectedResources**：可选。  未受保护的资源的 Uri 数组。 MSAL 不会将令牌附加到具有这些 URI 的传出请求。 默认为 `null`。

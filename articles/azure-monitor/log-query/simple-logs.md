@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor 中的简单日志体验（预览版） |Microsoft Docs
 description: 简单的日志体验允许您在 Azure Monitor 中创建基本查询，无需直接与 KQL 交互。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 09/12/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 323267dd47735ca54b84e47e6a55d1f2d14a0b06
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.date: 09/12/2019
+ms.openlocfilehash: 0b8b23d5d355614bf74b1b22c6a8443b9a2f9391
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262177"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932985"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Azure Monitor 中的简单日志体验（预览版）
 Azure Monitor 提供了使用 KQL 语言创建[日志查询](log-query-overview.md)的[丰富体验](get-started-portal.md)。 不过，您可能不需要 KQL 的全部功能，并且更喜欢基本查询要求的简化体验。 简单的日志体验允许您创建基本查询，无需直接与 KQL 交互。 你还可以使用简单日志作为 KQL 的学习工具，因为你需要执行更复杂的查询。
@@ -35,7 +29,7 @@ Azure Monitor 提供了使用 KQL 语言创建[日志查询](log-query-overview.
 
 ![菜单](media/simple-logs/menu.png)
 
-选择**字段**和**运算符**，并指定一个**值**进行比较。 单击 **+** 并指定**和/或**以添加其他条件。
+选择**字段**和**运算符**，并指定一个**值**进行比较。 单击 " **+** " 并指定**和/或**添加其他条件。
 
 ![条件](media/simple-logs/criteria.png)
 

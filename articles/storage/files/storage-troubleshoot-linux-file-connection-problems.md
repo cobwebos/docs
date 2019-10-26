@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 5c501e6c2bc1a30273682352a68565ccc897ff50
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: cc0539462fad0a73d5fc7eb75d2078e513df4e5d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699208"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72926539"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>在 Linux 中排查 Azure 文件问题
 
@@ -30,16 +30,16 @@ ms.locfileid: "68699208"
 
 |   | SMB 2.1 <br>（装载在同一 Azure 区域内的 VM 上） | SMB 3.0 <br>（从本地和跨区域装载） |
 | --- | :---: | :---: |
-| Ubuntu 服务器 | 14.04+ | 16.04+ |
+| Ubuntu Server | 14.04+ | 16.04+ |
 | RHEL | 7+ | 7.5+ |
 | CentOS | 7+ |  7.5+ |
 | Debian | 8+ |   |
 | openSUSE | 13.2+ | 42.3+ |
 | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
 
-- 客户端上未安装 CIFS 实用程序 (cfs-utils)。
+- 客户端上未安装 CIFS 实用程序（utils）。
 - 客户端上未安装最低的 SMB/CIFS 版本 2.1。
-- 客户端不支持 SMB 3.0 加密。 上表列出的 Linux 发行版支持使用加密从本地装载以及跨区域装载。 其他分发要求内核 4.11 及更高版本。
+- 客户端不支持 SMB 3.0 加密。 上表提供了一个 Linux 发行版列表，该列表支持使用加密从本地和跨区域装载。 其他分发要求内核 4.11 及更高版本。
 - 试图通过不受支持的 TCP 端口 445 连接到存储帐户。
 - 试图从 Azure VM 连接到 Azure 文件共享，而该 VM 并非与存储帐户处于同一区域。
 - 如果在存储帐户上启用了[需要安全转移]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)设置，则 Azure 文件仅允许使用带加密的 SMB 3.0 进行连接。
@@ -54,7 +54,7 @@ ms.locfileid: "68699208"
 * 可收集诊断跟踪。
 
 <a id="mounterror13"></a>
-## <a name="mount-error13-permission-denied-when-you-mount-an-azure-file-share"></a>装载 Azure 文件共享时出现“装载错误(13):权限被拒绝”
+## <a name="mount-error13-permission-denied-when-you-mount-an-azure-file-share"></a>装载 Azure 文件共享时出现 "装载错误（13）：权限被拒绝"
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>原因 1：信道未加密
 
@@ -65,9 +65,9 @@ ms.locfileid: "68699208"
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
 
 1. 从支持 SMB 加密的客户端进行连接，或者从用于 Azure 文件共享的 Azure 存储帐户所在数据中心内的虚拟机进行连接。
-2. 如果客户端不支持 SMB 加密，请验证是否已在存储帐户上禁用[需要安全传输](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)设置。
+2. 如果客户端不支持 SMB 加密，请确保在存储帐户上禁用[需要安全传输](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)设置。
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 2：在存储帐户上启用了虚拟网络或防火墙规则 
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因2：在存储帐户上启用虚拟网络或防火墙规则 
 
 如果在存储帐户上配置了虚拟网络 (VNET) 和防火墙规则，则将拒绝访问网络流量，除非允许客户端 IP 地址或虚拟网络访问。
 
@@ -80,7 +80,7 @@ ms.locfileid: "68699208"
 
 在 Linux 中，将出现类似于下面的错误消息：
 
-**\<文件名> [权限被拒绝] 超出磁盘配额**
+**\<filename > [权限拒绝] 超出了磁盘配额**
 
 ### <a name="cause"></a>原因
 
@@ -92,12 +92,12 @@ ms.locfileid: "68699208"
 
 关闭一些句柄，减少并发打开句柄的数量，然后重试操作。
 
-若要查看文件共享、目录或文件的打开句柄, 请使用[AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet。  
+若要查看文件共享、目录或文件的打开句柄，请使用[AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet。  
 
-若要关闭文件共享、目录或文件的打开句柄, 请使用[AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet。
+若要关闭文件共享、目录或文件的打开句柄，请使用[AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet。
 
 > [!Note]  
-> Az PowerShell 模块2.4 版或更高版本中包含 AzStorageFileHandle 和 AzStorageFileHandle cmdlet。 若要安装最新的 Az PowerShell 模块, 请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+> Az PowerShell 模块2.4 版或更高版本中包含 AzStorageFileHandle 和 AzStorageFileHandle cmdlet。 若要安装最新的 Az PowerShell 模块，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>在 Linux 中将文件复制到 Azure 文件以及从中复制文件时速度缓慢
@@ -105,17 +105,17 @@ ms.locfileid: "68699208"
 - 如果没有特定的最低 I/O 大小要求，建议 I/O 大小为 1 MiB 以实现最佳性能。
 - 使用正确的复制方法：
     - 使用 [AZCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) 在两个文件共享之间传输任何内容。
-    - 结合使用 cp 或 dd 可以提高复制速度, 线程数取决于使用情况和工作负荷。 以下示例使用六个: 
-    - cp 示例 (cp 将使用文件系统的默认块大小作为块区大小): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`。
-    - dd 示例 (此命令显式将块大小设置为 1 MiB):`find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
+    - 结合使用 cp 或 dd 可以提高复制速度，线程数取决于使用情况和工作负荷。 以下示例使用六个： 
+    - cp 示例（cp 将使用文件系统的默认块大小作为块区大小）： `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`。
+    - dd 示例（此命令显式将块大小设置为 1 MiB）： `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
     - 开源第三方工具，例如：
-        - [GNU Parallel](https://www.gnu.org/software/parallel/)。
-        - [Fpart](https://github.com/martymac/fpart) - 将文件排序并将其打包到分区中。
-        - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) - 使用 Fpart 和复制工具生成多个实例，以便将数据从 src_dir 迁移到 dst_url。
-        - [Multi](https://github.com/pkolano/mutil) - 基于 GNU coreutils 的多线程 cp 和 md5sum。
-- 提前设置文件大小, 而不是使每次写入都成为扩展写入, 有助于在文件大小已知的情况下提高复制速度。 如果需要避免扩展写入, 则可以使用`truncate - size <size><file>`命令设置目标文件大小。 之后, 命令`dd if=<source> of=<target> bs=1M conv=notrunc`将复制一个源文件, 而不必重复更新目标文件的大小。 例如, 你可以为要复制的每个文件设置目标文件大小 (假定在/mnt/share 下装载共享):
+        - [GNU 并行](https://www.gnu.org/software/parallel/)。
+        - [Fpart](https://github.com/martymac/fpart)对文件进行排序，并将其打包到分区中。
+        - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) -使用 Fpart 和复制工具来生成多个实例，以将数据从 src_dir 迁移到 dst_url。
+        - 基于 GNU coreutils 的[多](https://github.com/pkolano/mutil)线程 cp 和 md5sum。
+- 提前设置文件大小，而不是使每次写入都成为扩展写入，有助于在文件大小已知的情况下提高复制速度。 如果需要避免扩展写入，则可以使用 `truncate - size <size><file>` 命令设置目标文件大小。 之后，`dd if=<source> of=<target> bs=1M conv=notrunc`命令将复制源文件，而不必重复更新目标文件的大小。 例如，你可以为要复制的每个文件设置目标文件大小（假定在/mnt/share 下装载共享）：
     - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
-    - 然后, 复制文件而不并行扩展写入:`$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
+    - 然后，复制文件而不并行扩展写入： `$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
 <a id="error115"></a>
 ## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>使用 SMB 3.0 装载 Azure 文件时出现“装载错误(115): 操作正在进行”
@@ -131,20 +131,20 @@ ms.locfileid: "68699208"
 如果 Linux SMB 客户端不支持加密，请使用 SMB 2.1 从文件共享所在的同一数据中心上的 Azure Linux VM 装载 Azure 文件。 验证是否已在存储帐户中禁用[需要安全传输]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)设置。 
 
 <a id="authorizationfailureportal"></a>
-## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>浏览到门户中的 Azure 文件共享时出现“授权失败”错误
+## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>浏览到门户中的 Azure 文件共享时出现 "授权失败" 错误
 
 浏览到门户中的 Azure 文件共享时，可能会收到以下错误：
 
 授权失败  
 你无权访问
 
-### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>原因 1：你的用户帐户无权访问该存储帐户
+### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>原因1：你的用户帐户无权访问存储帐户
 
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
 
 浏览到Azure文件共享所在的存储帐户，单击“访问控制(IAM)”，确保你的用户帐户有权访问该存储帐户。 若要了解详细信息，请参阅[如何使用基于角色的访问控制 (RBAC) 来保护存储帐户](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac)。
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 2：在存储帐户上启用了虚拟网络或防火墙规则
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因2：在存储帐户上启用虚拟网络或防火墙规则
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解决方案
 
@@ -154,25 +154,25 @@ ms.locfileid: "68699208"
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>无法删除 Azure 文件共享中的文件或目录
 
 ### <a name="cause"></a>原因
-如果文件或目录具有打开的句柄, 通常会发生此问题。 
+如果文件或目录具有打开的句柄，通常会发生此问题。 
 
 ### <a name="solution"></a>解决方案
 
-如果 SMB 客户端已关闭所有打开的句柄, 但问题仍然存在, 请执行以下操作:
+如果 SMB 客户端已关闭所有打开的句柄，但问题仍然存在，请执行以下操作：
 
 - 使用[AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet 查看打开句柄。
 
 - 使用[AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet 关闭打开的句柄。 
 
 > [!Note]  
-> Az PowerShell 模块2.4 版或更高版本中包含 AzStorageFileHandle 和 AzStorageFileHandle cmdlet。 若要安装最新的 Az PowerShell 模块, 请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+> Az PowerShell 模块2.4 版或更高版本中包含 AzStorageFileHandle 和 AzStorageFileHandle cmdlet。 若要安装最新的 Az PowerShell 模块，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Linux VM 上装载的 Azure 文件共享性能缓慢
 
-### <a name="cause-1-caching"></a>原因 1：正在缓存
+### <a name="cause-1-caching"></a>原因1：缓存
 
-性能缓慢的一个可能原因是禁用了缓存。 缓存在反复访问某个文件时可能很有用，但其他情况下，它是一项开销。 检查是否在使用缓存，然后再禁用它。
+性能缓慢的一个可能原因是禁用了缓存。 如果要反复访问文件，缓存可能会很有用，否则可能会造成开销。 在禁用缓存之前，请检查是否正在使用缓存。
 
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
 
@@ -180,7 +180,7 @@ ms.locfileid: "68699208"
 
 **cache=none** 表示已禁用缓存。 使用默认的装载命令重新装载共享，或者显式添加 **cache=strict** 选项到装载命令中，确保默认缓存或“strict”缓存模式已启用。
 
-在某些情况下，**serverino** 装载选项可能会导致 **ls** 命令针对每个目录条目运行 stat。 当列出大型目录时，此行为会导致性能降级。 可在 **/etc/fstab** 条目中检查装载选项：
+在某些情况下，**serverino** 装载选项可能会导致 **ls** 命令针对每个目录条目运行 stat。 列出大型目录时，此行为会导致性能下降。 可在 **/etc/fstab** 条目中检查装载选项：
 
 `//azureuser.file.core.windows.net/cifs /cifs cifs vers=2.1,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
@@ -192,13 +192,13 @@ ms.locfileid: "68699208"
 
 如果不存在 cache=strict 或 serverino 选项，请通过运行[文档](../storage-how-to-use-files-linux.md)中的装载命令卸载并再次装载 Azure 文件。 然后重新检查 **/etc/fstab** 条目是否具有正确选项。
 
-### <a name="cause-2-throttling"></a>原因 2：限制
+### <a name="cause-2-throttling"></a>原因2：限制
 
-在你遇到限制的情况下，系统可能会将你的请求发送到队列。 可以利用 [Azure Monitor 中的 Azure 存储指标](../common/storage-metrics-in-azure-monitor.md)对此进行验证。
+你可能会遇到限制，请求将发送到队列。 可以通过使用[Azure Monitor 中的 Azure 存储指标](../common/storage-metrics-in-azure-monitor.md)来验证这一点。
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解决方案
 
-确保应用在 [Azure 文件存储缩放目标](storage-files-scale-targets.md#azure-files-scale-targets)中。
+确保你的应用在[Azure 文件规模目标](storage-files-scale-targets.md#azure-files-scale-targets)内。
 
 <a id="timestampslost"></a>
 ## <a name="time-stamps-were-lost-in-copying-files-from-windows-to-linux"></a>将文件从 Windows 复制到 Linux 时丢失时间戳
@@ -218,11 +218,11 @@ COPYFILE 中的强制标志 **f** 导致在 Unix 上执行 **cp -p -f**。 此�
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
 
-## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: 无法访问 '&lt;path&gt;':输入/输出错误
+## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: 无法访问 '&lt;path&gt;': 输入/输出错误
 
 尝试使用 ls 命令列出 Azure 文件共享中的文件时，该命令在列出文件时挂起。 收到以下错误：
 
-**ls: 无法访问'&lt;path&gt;':输入/输出错误**
+**ls: 无法访问 '&lt;path&gt;': 输入/输出错误**
 
 
 ### <a name="solution"></a>解决方案
@@ -233,7 +233,7 @@ COPYFILE 中的强制标志 **f** 导致在 Unix 上执行 **cp -p -f**。 此�
 - 4.12.11+
 - 4\.13 或更高的所有版本
 
-## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>无法创建符号链接 - ln: 未能创建符号链接 't':操作不受支持
+## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>无法创建符号链接 - ln: 未能创建符号链接 't': 操作不受支持
 
 ### <a name="cause"></a>原因
 默认情况下，使用 CIFS 在 Linux 上装载 Azure 文件共享不会启用符号链接的支持。 出现如下错误：
@@ -289,6 +289,6 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 
 如果无法升级到最新的内核版本，可通过将每隔 30 秒或更少的时间间隔便会对其进行写入操作的文件保留在 Azure 文件共享中来解决此问题。 这必须是一个写入操作，例如在文件上重写创建或修改的日期。 否则，可能会得到缓存的结果，并且操作可能不会触发重新连接。
 
-## <a name="need-help-contact-support"></a>需要帮助? 联系支持人员。
+## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，以快速解决问题。

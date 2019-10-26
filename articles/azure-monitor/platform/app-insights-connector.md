@@ -1,24 +1,18 @@
 ---
 title: 查看 Azure Application Insights 应用数据 | Microsoft Docs
 description: 可以使用 Application Insights 连接器解决方案来诊断性能问题，以及了解用户在使用 Application Insights 监视的应用中执行的操作。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 49280cad-3526-43e1-a365-c6a3bf66db52
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 02/13/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 05f2f52da90f499f7ac16de179d9967b97579997
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 02/13/2019
+ms.openlocfilehash: b956c3bc7d04908db1cc45092cf5926ecfcc305c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849187"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932745"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights 连接器管理解决方案（已弃用）
 
@@ -49,14 +43,14 @@ ms.locfileid: "68849187"
 
 与其他大多数 Log Analytics 解决方案不同，代理不会收集 Application Insights 连接器的数据。 该解决方案使用的全部数据都直接来自于 Azure。
 
-| 连接的源 | 支持 | 描述 |
+| 连接的源 | 受支持 | 描述 |
 | --- | --- | --- |
-| [Windows 代理](../../azure-monitor/platform/agent-windows.md) | 否 | 解决方案不会从 Windows 代理收集信息。 |
-| [Linux 代理](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否 | 解决方案不会从 Linux 代理收集信息。 |
-| [SCOM 管理组](../../azure-monitor/platform/om-agents.md) | 否 | 解决方案不会从连接的 SCOM 管理组中的代理收集信息。 |
-| [Azure 存储帐户](collect-azure-metrics-logs.md) | 否 | 该解决方案不会从 Azure 存储收集信息。 |
+| [Windows 代理](../../azure-monitor/platform/agent-windows.md) | No | 解决方案不会从 Windows 代理收集信息。 |
+| [Linux 代理](../../azure-monitor/learn/quick-collect-linux-computer.md) | No | 解决方案不会从 Linux 代理收集信息。 |
+| [SCOM 管理组](../../azure-monitor/platform/om-agents.md) | No | 解决方案不会从连接的 SCOM 管理组中的代理收集信息。 |
+| [Azure 存储帐户](collect-azure-metrics-logs.md) | No | 该解决方案不会从 Azure 存储收集信息。 |
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>必备组件
 
 - 若要访问 Application Insights 连接器信息，必须拥有 Azure 订阅
 - 必须至少配置了一个 Application Insights 资源。
@@ -168,8 +162,8 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 解决方案从连接的 Application Insights 应用接收以下遥测类型的数据：
 
 - 可用性
-- Exceptions
-- 请求
+- 例外
+- Requests
 - 页面视图 - 要使工作区接收页面视图，必须将应用配置为收集该信息。 有关详细信息，请参阅 [PageViews](../../azure-monitor/app/api-custom-events-metrics.md#page-views)。
 - 自定义事件 - 要使工作区接收自定义事件，必须将应用配置为收集该信息。 有关详细信息，请参阅 [TrackEvent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)。
 
@@ -181,9 +175,9 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="generic-fields"></a>泛型字段
 
-| 属性 | 说明 |
+| properties | 描述 |
 | --- | --- |
-| 类型 | ApplicationInsights |
+| Type | ApplicationInsights |
 | ClientIP |   |
 | TimeGenerated | 记录的时间 |
 | ApplicationId | Application Insights 应用的检测密钥 |
@@ -192,13 +186,13 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 | DeviceType | 客户端设备 |
 | ScreenResolution |   |
 | Continent | 请求的来源大洲 |
-| Country | 请求的来源国家/地区 |
-| 省/直辖市/自治区 | 请求的来源省、州或区域 |
-| City | 请求的来源市或镇 |
+| 国家/地区 | 发出请求的国家/地区 |
+| Province | 请求的来源省、州或区域 |
+| 城市 | 请求的来源市或镇 |
 | isSynthetic | 指示请求是由用户还是自动化方法创建的。 True = 自动方法或 false = 用户生成 |
 | SamplingRate | SDK 生成的、发送到门户的遥测百分比。 范围为 0.0-100.0。 |
 | SampledCount | 100/(SamplingRate)。 例如，4 =&gt; 25% |
-| IsAuthenticated | 真或假 |
+| IsAuthenticated | True 或 False |
 | OperationID | 具有相同操作 ID 的项在门户中显示为相关项。 通常为请求 ID |
 | ParentOperationID | 父操作的 ID |
 | OperationName |   |
@@ -207,7 +201,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="availability-specific-fields"></a>可用性特定的字段
 
-| 属性 | 描述 |
+| properties | 描述 |
 | --- | --- |
 | TelemetryType | 可用性 |
 | AvailabilityTestName | Web 测试的名称 |
@@ -232,7 +226,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="exception-specific-fields"></a>异常特定的字段
 
-| type | ApplicationInsights |
+| Type | ApplicationInsights |
 | --- | --- |
 | TelemetryType | 异常 |
 | ExceptionType | 异常的类型 |
@@ -249,9 +243,9 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="request-specific-fields"></a>请求特定的字段
 
-| 属性 | 说明 |
+| properties | 描述 |
 | --- | --- |
-| 类型 | ApplicationInsights |
+| Type | ApplicationInsights |
 | TelemetryType | 请求 |
 | ResponseCode | 发送到客户端的 HTTP 响应 |
 | RequestSuccess | 指示成功或失败。 True 或 False。 |

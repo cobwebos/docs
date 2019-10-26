@@ -1,24 +1,18 @@
 ---
 title: Log Analytics 数据安全 | Microsoft 文档
 description: 了解 Log Analytics 如何保护隐私和数据安全。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: a33bb05d-b310-4f2c-8f76-f627e600c8e7
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/04/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 407aaf15808d1d1420fd1a3804651d29a407d4b3
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 03/04/2019
+ms.openlocfilehash: 3ff69928f4d6aa1692cdb1d4fd7e846b3a6b7a5c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68606673"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932532"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 数据安全
 本文档旨在提供特定于 Azure Log Analytics 的信息（Azure Monitor 的功能），用于补充有关 [Azure 信任中心](../../security/fundamentals/trust-center.md)的信息。  
@@ -31,7 +25,7 @@ Log Analytics 服务使用以下方法安全地管理你基于云的数据：
 * 数据保留
 * 物理安全性
 * 事件管理
-* 符合性
+* 合规
 * 安全标准认证
 
 如有任何有关以下任何信息（包括 [Azure 支持选项](https://azure.microsoft.com/support/options/)的安全政策）的疑问、建议或问题，请与我们联系。
@@ -73,14 +67,14 @@ Log Analytics 服务引入数据后，数据将在该服务的每个组件上都
 
 下表显示了数据类型的示例：
 
-| **数据类型** | **Fields** |
+| **数据类型** | **字段** |
 | --- | --- |
 | 警报 |Alert Name、Alert Description、BaseManagedEntityId、Problem ID、IsMonitorAlert、RuleId、ResolutionState、Priority、Severity、Category、Owner、ResolvedBy、TimeRaised、TimeAdded、LastModified、LastModifiedBy、LastModifiedExceptRepeatCount、TimeResolved、TimeResolutionStateLastModified、TimeResolutionStateLastModifiedInDB、RepeatCount |
-| 配置 |CustomerID、AgentID、EntityID、ManagedTypeID、ManagedTypePropertyID、CurrentValue、ChangeDate |
-| Event |EventId、EventOriginalID、BaseManagedEntityInternalId、RuleId、PublisherId、PublisherName、FullNumber、Number、Category、ChannelLevel、LoggingComputer、EventData、EventParameters、TimeGenerated、TimeAdded <br>**注意：** 当将具有自定义字段的事件写入到 Windows 事件日志中时，Log Analytics 会收集它们。 |
+| 配置 |CustomerID、AgentID、EntityID、 ManagedTypeID、ManagedTypePropertyID、CurrentValue、ChangeDate |
+| 事件 |EventId、EventOriginalID、BaseManagedEntityInternalId、RuleId、PublisherId、PublisherName、FullNumber、Number、Category、ChannelLevel、LoggingComputer、EventData、EventParameters、TimeGenerated、TimeAdded <br>**注意：** 当将具有自定义字段的事件写入到 Windows 事件日志中时，Log Analytics 会收集它们。 |
 | 元数据 |BaseManagedEntityId、ObjectStatus、OrganizationalUnit、ActiveDirectoryObjectSid、PhysicalProcessors、NetworkName、IPAddress、ForestDNSName、NetbiosComputerName、VirtualMachineName、LastInventoryDate、HostServerNameIsVirtualMachine、IP Address、NetbiosDomainName、LogicalProcessors、DNSName、DisplayName、DomainDnsName、ActiveDirectorySite、PrincipalName、OffsetInMinuteFromGreenwichTime |
 | 性能 |ObjectName、CounterName、PerfmonInstanceName、PerformanceDataId、PerformanceSourceInternalID、SampleValue、TimeSampled、TimeAdded |
-| 状态 |StateChangeEventId、StateId、NewHealthState、OldHealthState、Context、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
+| 状况 |StateChangeEventId、StateId、NewHealthState、OldHealthState、Context、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
 
 ## <a name="physical-security"></a>物理安全性
 Log Analytics 服务由 Microsoft 人员负责操控，将记录所有活动并且可进行审核。 Log Analytics 作为 Azure 服务运行，满足所有 Azure 符合性与安全要求。 可以在 [Microsoft Azure 安全性概述](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)的第 18 页上找到有关 Azure 资产的物理安全性的详细信息。 对于不再负责 Log Analytics 服务的任何人员，会在一个工作日内更改该人员对安全区域的物理访问权限，包括传输和终止。 可在 [Microsoft 数据中心](https://azure.microsoft.com/global-infrastructure/)阅读有关我们使用的全球物理基础设施的信息。
@@ -109,7 +103,7 @@ Log Analytics 具有所有 Microsoft 服务都遵循的事件管理过程。 总
 
 有关 Microsoft 如何响应安全事件的详细信息，请参阅[在云中进行 Microsoft Azure 安全响应](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf)。
 
-## <a name="compliance"></a>符合性
+## <a name="compliance"></a>合规
 Log Analytics 软件开发和服务团队的信息安全和监管计划支持其业务需求，并遵循 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/)和 [Microsoft 信任中心符合性](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)中所述的法律和法规。 其中还介绍了 Log Analytics 如何建立安全要求、识别安全控制、管理和监控风险。 每年，我们都会对策略、标准、过程和指导原则进行评审。
 
 每个开发团队成员都会接受正式的应用程序安全培训。 在内部，我们将版本控制系统用于软件开发。 每个软件项目都受版本控制系统保护。
@@ -143,7 +137,7 @@ Azure Log Analytics 满足以下要求：
 
 ![Log Analytics 数据收集和安全性的图像](./media/data-security/log-analytics-data-security-diagram.png)
 
-## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1.注册 Log Analytics 并收集数据
+## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1. 注册 Log Analytics 并收集数据
 要使组织能够将数据发送到 Log Analytics，请配置在 Azure 虚拟机中运行的，或者在自己环境或其他云提供程序中的虚拟机或物理机上运行的 Windows/Linux 代理。  如果使用 Operations Manager，请通过管理组配置 Operations Manager 代理。 用户（可能是你、其他个别用户，也可能是一组用户）会创建一个或多个 Log Analytics 工作区，并使用以下帐户之一注册代理：
 
 * [组织 ID](../../active-directory/fundamentals/sign-up-organization.md)
@@ -155,9 +149,9 @@ Azure Log Analytics 满足以下要求：
 
 会对已连接系统与 Log Analytics 服务之间的所有通信进行加密。 TLS (HTTPS) 协议用于加密。  遵循 Microsoft SDL 过程，已确保 Log Analytics 是最新的，加密协议也是最新的。
 
-每种类型的代理都会收集 Log Analytics 的数据。 收集的数据类型取决于所用解决方案的类型。 可以查看[从解决方案库中添加 Log Analytics 解决方案](../../azure-monitor/insights/solutions.md)中的数据收集的摘要。 此外，会针对大多数解决方案提供更详细的收集信息。 解决方案包含一组预定义的视图、日志搜索查询、数据收集规则和处理逻辑。 只有管理员可以使用 Log Analytics 导入解决方案。 解决方案完成导入后，会将它移到 Operations Manager 管理服务器（如果使用），再移到你选定的任何代理。 然后，该代理收集数据。
+每种类型的代理都会收集 Log Analytics 的数据。 收集的数据类型取决于所用解决方案的类型。 可以查看[从解决方案库中添加 Log Analytics 解决方案](../../azure-monitor/insights/solutions.md)中的数据收集的摘要。 此外，会针对大多数解决方案提供更详细的收集信息。 解决方案包含一组预定义的视图、日志搜索查询、数据收集规则和处理逻辑。 只有管理员可以使用 Log Analytics 导入解决方案。 解决方案完成导入后，会将它移到 Operations Manager 管理服务器（如果使用），然后再移到选定的任何代理。 然后，该代理收集数据。
 
-## <a name="2-send-data-from-agents"></a>2.从代理发送数据
+## <a name="2-send-data-from-agents"></a>2. 从代理发送数据
 将所有代理类型注册到加密密钥，会在代理和 Log Analytics 之间使用基于证书的身份验证和 SSL 以及端口 443 建立安全连接。 Log Analytics 使用机密存储生成和维护密钥。 私钥每隔 90 天会进行轮换、存储在 Azure 中，并受遵循严格的法规和合规性操作的 Azure Operations 管理。
 
 借助 Operations Manager，注册到 Log Analytics 工作区的管理组可与 Operations Manager 管理服务器建立安全 HTTPS 连接。
@@ -170,12 +164,12 @@ Windows 或管理服务器代理缓存的数据受操作系统的凭据存储的
 
 如上所述，来自管理服务器或直连代理的数据通过 SSL 发送到 Microsoft Azure 数据中心。 可以选择使用 ExpressRoute 为数据提供额外的安全性。 借助 ExpressRoute，可以从网络服务提供商提供的现有 WAN 网络（例如多协议标签交换 (MPLS) VPN）直接连接到 Azure。 有关详细信息，请参阅 [ExpressRoute](https://azure.microsoft.com/services/expressroute/)。
 
-## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3.Log Analytics 服务接收并处理数据
+## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Log Analytics 服务接收和处理数据
 Log Analytics 服务通过使用 Azure 身份验证对证书和数据完整性进行验证，来确保传入数据来自受信任的源。 然后，将未处理的原始数据存储在区域中的 Azure 事件中心，并最终存储静态数据。 存储的数据类型取决于导入的并用于收集数据的解决方案的类型。 然后，Log Analytics 服务处理原始数据并将其引入数据库。
 
-存储在数据库中的已收集数据的保留期取决于所选的定价计划。 对于“免费”层，收集的数据可以使用 7 天。 对于*付费*层，收集的数据默认情况下可以使用 31 天，但可以延长到 730 天。 数据在 Azure 存储中采用静态加密存储，以确保数据机密性，并且数据通过本地冗余存储 (LRS) 在本地区域内进行复制。 过去两周的数据也存储在基于 SSD 的缓存中，此缓存未加密。
+存储在数据库中的已收集数据的保留期取决于所选的定价计划。 对于“免费”层，收集的数据可以使用 7 天。 对于*付费*层，收集的数据默认情况下可以使用 31 天，但可以延长到 730 天。 数据在 Azure 存储中采用静态加密存储，以确保数据机密性，并且数据通过本地冗余存储 (LRS) 在本地区域内进行复制。 最后两周的数据也存储在基于 SSD 的缓存中，此缓存已加密。
 
-## <a name="4-use-log-analytics-to-access-the-data"></a>4.使用 Log Analytics 访问数据
+## <a name="4-use-log-analytics-to-access-the-data"></a>4. 使用 Log Analytics 访问数据
 若要访问 Log Analytics 工作区，请使用组织帐户或先前设置的 Microsoft 帐户登录到 Azure 门户。 门户与 Log Analytics 服务之间的所有流量通过安全 HTTPS 通道发送。 使用门户时，会在用户客户端（Web 浏览器）上生成会话 ID，会将数据存储在本地缓存中，直到该会话终止。 终止后，会删除该缓存。 不会自动删除不包含个人身份信息的客户端 Cookie。 会话 Cookie 标记为 HTTPOnly，并且受到保护。 在预先确定的空闲期过后，会终止 Azure 门户会话。
 
 ## <a name="next-steps"></a>后续步骤

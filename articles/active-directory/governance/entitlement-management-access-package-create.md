@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10a278fdd194b841cbb8620999fe79c3affb4e0b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 70273a45bb60fca57292275ea0bb564e17a6f4e9
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389517"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934670"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 权限管理（预览版）中创建新的访问包
 
@@ -68,9 +68,9 @@ ms.locfileid: "72389517"
 
 1. 在左侧菜单中，单击“访问包”。
 
-    ![Azure 门户中的权利管理](./media/entitlement-management-shared/elm-access-packages.png)
-
 1. 单击“新建访问包”。
+
+    ![Azure 门户中的权利管理](./media/entitlement-management-shared/access-packages-list.png)
 
 ## <a name="basics"></a>基础
 
@@ -104,7 +104,7 @@ ms.locfileid: "72389517"
 
     如果要在现有目录中创建访问包，可以选择目录中已有的任何资源，而无需拥有该目录。
 
-    如果你是全局管理员、用户管理员或目录所有者，则可以选择其他选项来选择你拥有但尚未包含在目录中的资源。 如果选择当前不在所选目录中的资源，则还会将这些资源添加到目录中，以便其他目录管理员使用生成访问包。 如果你只想要选择当前在所选目录中的资源，请选中 "**仅查看**" "选择平移" 顶部的复选框。
+    如果你是全局管理员、用户管理员或目录所有者，你可以选择其他选项来选择你拥有但尚未包含在目录中的资源。 如果选择当前不在所选目录中的资源，则还会将这些资源添加到目录中，以便其他目录管理员使用生成访问包。 如果只想选择当前在所选目录中的资源，请选中 "仅在选择窗格顶部**显示**" 复选框。
 
 1. 选择资源后，请在 "**角色**" 列表中选择要将用户分配给该资源的角色。
 
@@ -118,7 +118,7 @@ ms.locfileid: "72389517"
 
 ![访问包-请求选项卡](./media/entitlement-management-access-package-create/requests.png)
 
-执行以下部分之一中的步骤。
+根据你希望能够请求此访问包的人员，请执行以下部分之一中的步骤。
 
 [!INCLUDE [Entitlement management request policy](../../../includes/active-directory-entitlement-management-request-policy.md)]
 

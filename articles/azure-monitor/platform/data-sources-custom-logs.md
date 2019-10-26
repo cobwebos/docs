@@ -1,24 +1,18 @@
 ---
 title: 在 Azure Monitor 中收集自定义日志 | Microsoft Docs
 description: Azure Monitor 可以从 Windows 和 Linux 计算机上的文本文件中收集事件。  本文介绍如何定义新的自定义日志，以及这些日志在 Azure Monitor 中创建的记录的详细信息。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: aca7f6bb-6f53-4fd4-a45c-93f12ead4ae1
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/26/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 957df2d03352756c74a5450de240afde2615e50b
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 09/26/2019
+ms.openlocfilehash: 3bd40e9a266305ac94ed53806bf394891e89c125
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177615"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932508"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure Monitor 中的自定义日志
 
@@ -53,7 +47,7 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 ## <a name="defining-a-custom-log"></a>定义自定义日志
 使用以下步骤定义自定义日志文件。  请在本文末尾查看添加自定义日志的演示示例。
 
-### <a name="step-1-open-the-custom-log-wizard"></a>步骤 1. 打开自定义日志向导
+### <a name="step-1-open-the-custom-log-wizard"></a>步骤 1。 打开自定义日志向导
 自定义日志向导在 Azure 门户中运行，使用它可以定义要收集的新自定义日志。
 
 1. 在 Azure 门户中，选择“Log Analytics 工作区”> 你的工作区 >“高级设置”。
@@ -77,11 +71,11 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 ### <a name="step-3-add-log-collection-paths"></a>步骤 3. 添加日志集合路径
 必须在可查找自定义日志的代理上定义一个或多个路径；  可以提供日志文件的特定路径和名称，也可以使用通配符为名称指定路径。 这样，应用程序就可以每天创建新文件，或者在某个文件达到一定大小时创建新文件。 还可以为单个日志文件提供多个路径。
 
-例如，应用程序可能会每天创建日志文件，其日期包含在名称中，例如 log20100316.txt。 此类日志的模式可能是 *log\*.txt*，它将按照应用程序命名方案应用于任何日志文件。
+例如，应用程序可能会每天创建日志文件，将日期包括在如 log20100316.txt 的名称中。 此类日志的模式可能是 *log\*.txt*，它将按照应用程序命名方案应用于任何日志文件。
 
 下表提供了有效模式示例，用来指定不同的日志文件。
 
-| 描述 | Path |
+| 描述 | 路径 |
 |:--- |:--- |
 | Windows 代理上的 *C:\Logs* 中带 .txt 扩展名的所有文件 |C:\Logs\\\*.txt |
 | Windows 代理上的 *C:\Logs* 中具有以 log 开头的名称和 .txt 扩展名的所有文件 |C:\Logs\log\*.txt |
@@ -92,8 +86,8 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 2. 键入路径，并单击 **+** 按钮。
 3. 其他任何路径请重复此步骤。
 
-### <a name="step-4-provide-a-name-and-description-for-the-log"></a>步骤 4. 提供日志名称及描述
-指定的名称将用于上述日志类型。  它始终以 _CL 结尾，与自定义日志区分开来。
+### <a name="step-4-provide-a-name-and-description-for-the-log"></a>步骤 4。 提供日志名称及描述
+指定的名称用于日志类型，如上所述。  它将始终以 _CL 结尾，以将其与自定义日志区分开来。
 
 1. 为日志键入名称。  系统会自动提供 **\_CL** 后缀。
 2. 添加可选“说明”。
@@ -124,7 +118,7 @@ Azure Monitor 大概每隔 5 分钟就会从每个自定义日志中收集新条
 ## <a name="custom-log-record-properties"></a>自定义日志记录属性
 自定义日志记录的类型与提供的日志名称一致，且具有下表中的属性。
 
-| 属性 | 描述 |
+| properties | 描述 |
 |:--- |:--- |
 | TimeGenerated |Azure Monitor 收集该记录时的日期和时间。  如果日志使用基于时间的分隔符，则此时间是从条目中收集的时间。 |
 | SourceSystem |从中收集记录的代理类型。 <br> OpsManager – Windows 代理，直接连接或 System Center Operations Manager <br> Linux - 所有 Linux 代理 |
@@ -141,13 +135,13 @@ Azure Monitor 大概每隔 5 分钟就会从每个自定义日志中收集新条
     2019-08-27 01:38:22 302,Error,Application could not connect to database
     2019-08-27 01:31:34 303,Error,Application lost connection to database
 
-### <a name="upload-and-parse-a-sample-log"></a>上传和分析示例日志
-我们提供一个日志文件，可以看到它收集的事件。  在这种情况下，换行是有效的分隔符。  如果日志中的单个条目跨过多行，则需要使用时间戳分隔符。
+### <a name="upload-and-parse-a-sample-log"></a>上载和分析示例日志
+我们提供其中一个日志文件，然后可以看到它将收集的事件。  在这种情况下，换行是有效的分隔符。  如果日志中的单个条目跨过多行，则需要使用时间戳分隔符。
 
-![上传和分析示例日志](media/data-sources-custom-logs/delimiter.png)
+![上载和分析示例日志](media/data-sources-custom-logs/delimiter.png)
 
 ### <a name="add-log-collection-paths"></a>添加日志集合路径
-日志文件位于 *C:\MyApp\Logs*。  每天创建一个新文件，名称为包括日期的 *appYYYYMMDD.log* 模式。  此日志的有效模式是 *C:\MyApp\Logs\\\*.log*。
+日志文件位于 *C:\MyApp\Logs*。  每天将创建一个新文件，名称为包括日期的 *appYYYYMMDD.log* 模式。  此日志的有效模式是 *C:\MyApp\Logs\\\*.log*。
 
 ![日志集合路径](media/data-sources-custom-logs/collection-path.png)
 
@@ -157,7 +151,7 @@ Azure Monitor 大概每隔 5 分钟就会从每个自定义日志中收集新条
 ![日志名称](media/data-sources-custom-logs/log-name.png)
 
 ### <a name="validate-that-the-custom-logs-are-being-collected"></a>验证是否正在收集自定义日志
-我们使用简单的查询 *MyApp_CL* 来从收集的日志中返回所有记录。
+我们使用简单的*MyApp_CL*查询从收集的日志返回所有记录。
 
 ![没有自定义字段的日志查询](media/data-sources-custom-logs/query-01.png)
 

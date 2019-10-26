@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 895425232dabc78650b6ee7ed035048471084237
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 999f554bf4a2b9ddda83ee6398950cefb11d32aa
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793900"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929341"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -95,9 +95,7 @@ ms.locfileid: "72793900"
 
 还提供了其他高级预处理和特征化，例如缺失值插补法、编码和转换。 [详细了解所包含的特征化](how-to-create-portal-experiments.md#preprocess)。 启用此设置，使用：
 
-+ Azure 门户：[通过执行以下步骤](how-to-create-portal-experiments.md)，在**高级设置**中选择 "**预处理**" 复选框。
-
-+ Python SDK：指定[`AutoMLConfig` 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)的 `"preprocess": True`。
++ Python SDK：指定[`AutoMLConfig` 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)的 `"feauturization": auto' / 'off' / FeaturizationConfig`。
 
 
 ## <a name="time-series-forecasting"></a>时序预测

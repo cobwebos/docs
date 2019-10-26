@@ -1,24 +1,18 @@
 ---
 title: 如何排查 Windows Log Analytics agent 的问题 |Microsoft Docs
 description: 介绍 Azure Monitor 中适用于 Windows 的 Log Analytics 代理最常见问题的症状、原因和解决方法。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/12/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 96f020f24e27ff799f9bfbc08d899e8375b86094
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.date: 06/12/2019
+ms.openlocfilehash: a218ac09c7a0983796700229c65ae523b61dae10
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431824"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932765"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>如何排查适用于 Windows 的 Log Analytics 代理问题 
 
@@ -77,7 +71,7 @@ ms.locfileid: "72431824"
     |2127 |运行状况服务模块 |发送数据失败，错误代码为 |如果只是在一天内定期发生，则可能是可以忽略的随机异常。 监视，了解它的发生频率。 如果经常发生这种情况，请先检查网络配置和代理设置。 如果说明中包含 HTTP 错误代码404，并且它是第一次尝试将数据发送到服务的时间，则它将包含500错误，其中包含内部404错误代码。 404表示找不到，这表示仍在设置新工作区的存储区域。 下一次重试时，数据会按预期成功写入工作区。 HTTP 错误403可能指示权限或凭据问题。 403错误中提供了更多的信息，以帮助解决此问题。|
     |4000 |服务连接器 |DNS 名称解析失败 |计算机无法解析向服务发送数据时使用的 Internet 地址。 这可能是你的计算机上的 DNS 解析器设置、不正确的代理设置或提供程序的暂时性 DNS 问题。 如果定期发生，则可能是由与网络相关的暂时性问题导致的。|
     |4001 |服务连接器 |与服务的连接失败。 |当代理无法直接或通过防火墙/代理服务器与 Azure Monitor 服务通信时，会发生此错误。 验证代理的代理设置或网络防火墙/代理是否允许从计算机到服务的 TCP 流量。|
-    |4002 |服务连接器 |服务返回 HTTP 状态代码403以响应查询。 请咨询服务管理员以了解服务的运行状况。 稍后将重试查询。 |此错误是在代理初始注册阶段写入的，你将看到类似于以下内容的 URL： *https://@no__t-> 1workspaceID/AgentService/AgentTopologyRequest*。 错误代码403表示禁止，可能是由于工作区 ID 或密钥键入错误，或者计算机上的数据和时间不正确引起的。 如果时间比当前时间快/慢 15 分钟，则载入失败。 若要更正此错误，请更新 Windows 计算机的日期和/或时区。|
+    |4002 |服务连接器 |服务返回 HTTP 状态代码403以响应查询。 请咨询服务管理员以了解服务的运行状况。 稍后将重试查询。 |此错误是在代理初始注册阶段写入的，你将看到类似于以下内容的 URL： *https://\<> workspaceID/AgentService/AgentTopologyRequest*。 错误代码403表示禁止，可能是由于工作区 ID 或密钥键入错误，或者计算机上的数据和时间不正确引起的。 如果时间比当前时间快/慢 15 分钟，则载入失败。 若要更正此错误，请更新 Windows 计算机的日期和/或时区。|
 
 ## <a name="data-collection-issues"></a>数据收集问题
 

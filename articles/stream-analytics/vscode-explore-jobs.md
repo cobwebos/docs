@@ -1,47 +1,47 @@
 ---
-title: 探索 Azure Stream Analytics 作业使用 Visual Studio Code （预览版）
-description: 本文介绍如何将 Azure Stream Analytics 作业导出到本地项目、 列出作业和作业视图的实体。
+title: 了解 Visual Studio Code 中的 Azure 流分析作业
+description: 本文介绍如何将 Azure 流分析作业导出到本地项目、列出作业和查看作业实体。
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.date: 05/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8674d478646c8f9be6b32521c6624752ac6df052
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d3a02d3778f9b4113767c5f755d675aeadd901b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827795"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934220"
 ---
-# <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>了解 Azure Stream Analytics 使用 Visual Studio Code （预览版）
+# <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>了解 Visual Studio Code （预览版）的 Azure 流分析
 
-Visual Studio Code 扩展 Azure Stream Analytics 开发人员的轻型版用于管理 Stream Analytics 作业。 它可以在 Windows、 Mac 和 Linux 上使用。 使用 Azure Stream Analytics 扩展中，你可以：
+适用于 Visual Studio Code 扩展的 Azure 流分析为开发人员提供了管理其流分析作业的轻型体验。 它可以在 Windows、Mac 和 Linux 上使用。 利用 Azure 流分析扩展，可以：
 
-- [创建](quick-create-vs-code.md)、 启动和停止作业
+- [创建](quick-create-vs-code.md)、启动和停止作业
 - 将现有作业导出到本地项目
-- 列出作业并查看作业实体
+- 列出作业和查看作业实体
 
 ## <a name="export-a-job-to-a-local-project"></a>将作业导出到本地项目
 
-若要将作业导出到本地项目中，找到你想要在导出的作业**Stream Analytics 资源管理器**在 Visual Studio Code。 然后选择你的项目的文件夹。 项目会导出到您选择的文件夹，可以继续管理该作业从 Visual Studio Code。 使用 Visual Studio Code 用于管理 Stream Analytics 作业的详细信息，请参阅 Visual Studio Code[快速入门](quick-create-vs-code.md)。
+若要将作业导出到本地项目，请在 Visual Studio Code 中找到要导出的**流分析资源管理器**中的作业。 然后为项目选择一个文件夹。 项目会导出到你选择的文件夹，你可以继续从 Visual Studio Code 管理该作业。 有关使用 Visual Studio Code 管理流分析作业的详细信息，请参阅 Visual Studio Code[快速入门](quick-create-vs-code.md)。
 
-![在 Visual Studio Code 中的导出 ASA 作业](./media/vscode-explore-jobs/export-job.png)
+![在 Visual Studio Code 中导出 ASA 作业](./media/vscode-explore-jobs/export-job.png)
 
 ## <a name="list-job-and-view-job-entities"></a>列出作业和查看作业实体
 
 可使用作业视图从 Visual Studio 中与 Azure 流分析作业进行交互。
 
 
-1. 单击**Azure** Visual Studio Code 活动栏上的图标，然后展开**Stream Analytics 节点**。 你的作业应显示你的订阅。
+1. 单击 Visual Studio Code 活动栏上的**Azure**图标，然后展开 "**流分析" 节点**。 你的作业应显示在你的订阅下。
 
-   ![打开 Stream Analytics 资源管理器](./media/vscode-explore-jobs/open-explorer.png)
+   ![打开流分析资源管理器](./media/vscode-explore-jobs/open-explorer.png)
 
-2. 展开作业节点，你可以打开并查看作业查询、 配置、 输入、 输出和函数。 
+2. 展开你的作业节点，你可以打开并查看作业查询、配置、输入、输出和功能。 
 
-3. 右键单击作业节点，然后选择**门户中打开作业视图**节点以在 Azure 门户中打开作业视图。
+3. 右键单击作业节点，然后选择 "门户" 节点中的 "**打开作业视图**"，以在 Azure 门户中打开作业视图。
 
    ![在门户中打开作业视图](./media/vscode-explore-jobs/open-job-view.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 Visual Studio Code （预览版） 中创建 Azure Stream Analytics 云作业](quick-create-vs-code.md)
+* [在 Visual Studio Code 中创建 Azure 流分析云作业（预览）](quick-create-vs-code.md)

@@ -7,21 +7,23 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 9c3a19d44a4ac0fba37f4815b65b17c26d257dbc
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 46d6cba1d702773639420a3bc5ac74b9c16ce706
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813626"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933815"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>将 Hyper-V VM 灾难恢复到辅助站点时的支持矩阵
 
-本文汇总了使用 [Azure Site Recovery](site-recovery-overview.md) 服务将 System Center Virtual Machine Manager (VMM) 云中托管的 Hyper-V VM 复制到辅助站点时所支持的内容。 如果要将 Hyper-V VM 复制到 Azure，请查看[此支持矩阵](hyper-v-azure-support-matrix.md)。
+本文总结了使用[Azure Site Recovery](site-recovery-overview.md)服务将托管在 SYSTEM CENTER VIRTUAL MACHINE MANAGER （VMM）云中的 hyper-v vm 复制到辅助站点时所支持的内容。 如果要将 Hyper-V VM 复制到 Azure，请查看[此支持矩阵](hyper-v-azure-support-matrix.md)。
 
 > [!NOTE]
 > Hyper-V 主机在 VMM 云中托管时，只能复制到辅助站点。
 
-  
+> [!WARNING]
+> 请注意，不久将会弃用对使用 SCVMM 配置帐户的 ASR 支持，因此建议你先阅读[弃用](scvmm-site-recovery-deprecation.md)详细信息，然后再继续。
+
 
 ## <a name="host-servers"></a>主机服务器
 
@@ -57,21 +59,21 @@ Windows Server 2012 R2 | Windows Server 2012 R2 上的[Hyper-V 支持](https://d
 主机 - NIC 组合 | 是 
 主机 - VLAN | 是 
 主机 - IPv4 | 是 
-主机 - IPv6 | 否 
-来宾 VM - NIC 组合 | 否
+主机 - IPv6 | No 
+来宾 VM - NIC 组合 | No
 来宾 VM - IPv4 | 是
-来宾 VM - IPv6 | 否
+来宾 VM - IPv6 | No
 来宾 VM - Windows/Linux - 静态 IP 地址 | 是
 来宾 VM - 多 NIC | 是
 
 
-## <a name="storage"></a>存储
+## <a name="storage"></a>存储空间
 
 ### <a name="host-storage"></a>主机存储
 
 **存储（主机）** | **支持**
 --- | --- 
-NFS | 不可用
+NFS | N/A
 SMB 3.0 |  是
 SAN (ISCSI) | 是
 多路径 (MPIO) | 是
@@ -80,19 +82,19 @@ SAN (ISCSI) | 是
 
 **配置** | **支持**
 --- | --- | 
-VMDK |  不可用
+VMDK |  N/A
 VHD/VHDX | 是（最多 16 个磁盘）
 第 2 代 VM | 是
-共享群集磁盘 | 否
-加密磁盘 | 否
-UEFI| 不可用
-NFS | 否
-SMB 3.0 | 否
-RDM | 不可用
+共享群集磁盘 | No
+加密磁盘 | No
+UEFI| N/A
+NFS | No
+SMB 3.0 | No
+RDM | N/A
 磁盘 > 1 TB | 是
 包含条带化磁盘的卷 > 1 TB<br/><br/> LVM | 是
 存储空间 | 是
-热添加/移除磁盘 | 否
+热添加/移除磁盘 | No
 排除磁盘 | 是
 多路径 (MPIO) | 是
 
@@ -100,8 +102,8 @@ RDM | 不可用
 
 **Action** | **支持**
 --- | --- 
-跨资源组移动保管库（订阅内或跨订阅移动） |  否
-跨资源组移动存储、网络和 Azure VM（订阅内或跨订阅移动） | 否
+跨资源组移动保管库（订阅内或跨订阅移动） |  No
+跨资源组移动存储、网络和 Azure VM（订阅内或跨订阅移动） | No
 
 ## <a name="azure-site-recovery-provider"></a>Azure Site Recovery 提供程序
 

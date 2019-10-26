@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/21/2019
+ms.date: 10/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bcd27378039d539e36c72cf6e8fec7e8a1425e54
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1faf6e4c9124d494507a124013d5fd8588f4b41b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750343"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934925"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虚拟机存储配置
 
@@ -40,7 +40,7 @@ Azure 针对 Azure 标准和高级存储上的 VHD 提供两种部署方法。 �
 
 - Azure 高级 SSD-/hana/log 需要通过 Azure[写入加速器](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)缓存。 /Hana/data 卷可以在没有 Azure 写入加速器的情况下或在超磁盘上高级 SSD
 - Azure Ultra 磁盘至少适用于/hana/log 卷。 可以在没有 Azure 写入加速器或的情况下将/hana/data 卷置于高级 SSD
-- 适用于/hana/log**和**/Hana/data 的 Azure NetApp 文件之上的**NFS** v2.0 卷
+- 适用于/hana/log**和**/Hana/data. 的 Azure NetApp 文件之上的**NFS** v2.0 卷 /Hana/shared 的数量可以使用 NFS v3 或 NFS v2.0 协议。 NFS v2.0 协议对于/hana/data 和/hana/日志卷是必需的。
 
 某些存储类型可以组合在一起。 例如，可以将/hana/data 放在高级存储上，而/hana/log 可放置在超小型磁盘存储上，以便达到所需的低延迟。 但是，不建议混合使用 NFS 卷进行/hana/data，并使用/hana/log 的其他认证存储类型之一。
 
@@ -230,10 +230,10 @@ Microsoft 还不会向公众提供 M416xx_v2 VM 类型。 列出的值旨在作�
 Microsoft 还不会向公众提供 M416xx_v2 VM 类型。 列出的值旨在作为起点，需要根据实际需求进行评估。 Azure Ultra 磁盘的优点是，可以对 IOPS 和吞吐量的值进行调整，而无需关闭 VM 或停止应用到系统的工作负载。  
 
 ## <a name="nfs-v41-volumes-on-azure-netapp-files"></a>Azure NetApp 文件上的 NFS v2.0 卷
-Azure NetApp 文件提供可用于/hana/shared、/hana/data 和/hana/log 卷的本机 NFS 共享。 对于这些卷，使用基于和的 NFS 共享需要使用版本 4.1 NFS 协议。 在和上基于共享时，不支持 NFS 协议 v3 与 HANA 相关卷的使用。 
+Azure NetApp 文件提供可用于/hana/shared、/hana/data 和/hana/log 卷的本机 NFS 共享。 对/hana/data 和/hana/log 卷使用基于和的 NFS 共享需要使用版本 4.1 NFS 协议。 如果在和上基于共享，则不支持使用 NFS 协议 v3 作为/hana/data 和/hana/log 卷。 
 
 > [!IMPORTANT]
-> 不支持在 Azure NetApp 文件上实现的 NFS v3 协议用于/hana/shared、/hana/data 和/hana/log
+> 不支持在 Azure NetApp 文件上实现的 NFS v3 协议用于/hana/data 和/hana/log 从功能角度来看，NFS 4.1 对于/hana/data 和/hana/log 卷是必需的。 但对于/hana/shared 卷，NFS v3 或 NFS v2.0 协议可从功能角度来使用。
 
 ### <a name="important-considerations"></a>重要注意事项
 考虑用于 SAP Netweaver 和 SAP HANA 的 Azure NetApp 文件时，请注意以下重要事项：
@@ -270,21 +270,21 @@ Azure NetApp 卷的吞吐量是卷大小和服务级别的一项功能，如[Azu
 
 为了满足数据和日志的 SAP 最小吞吐量要求，并根据 `/hana/shared` 的准则，建议的大小如下所示：
 
-| 数据量(Volume) | 大小<br /> 高级存储层 | 大小<br /> 超存储层 |
+| 数据量(Volume) | 大小<br /> 高级存储层 | 大小<br /> 超存储层 | 支持的 NFS 协议 |
 | --- | --- | --- |
-| /hana/log | 4 TiB | 2 TiB |
-| /hana/data | 6.3 TiB | 3.2 TiB |
-| /hana/shared | 每4个辅助角色节点最大（512 GB，1xRAM） | 每4个辅助角色节点最大（512 GB，1xRAM） |
+| /hana/log | 4 TiB | 2 TiB | 4。1 |
+| /hana/data | 6.3 TiB | 3.2 TiB | 4。1 |
+| /hana/shared | 每4个辅助角色节点最大（512 GB，1xRAM） | 每4个辅助角色节点最大（512 GB，1xRAM） | v3 或4。1 |
 
 本文中介绍的布局的 SAP HANA 配置使用的是 Azure NetApp 文件 Ultra 存储层，如下所示：
 
-| 数据量(Volume) | 大小<br /> 超存储层 |
+| 数据量(Volume) | 大小<br /> 超存储层 | 支持的 NFS 协议 |
 | --- | --- |
-| /hana/log/mnt00001 | 2 TiB |
-| /hana/log/mnt00002 | 2 TiB |
-| /hana/data/mnt00001 | 3.2 TiB |
-| /hana/data/mnt00002 | 3.2 TiB |
-| /hana/shared | 2 TiB |
+| /hana/log/mnt00001 | 2 TiB | 4。1 |
+| /hana/log/mnt00002 | 2 TiB | 4。1 |
+| /hana/data/mnt00001 | 3.2 TiB | 4。1 |
+| /hana/data/mnt00002 | 3.2 TiB | 4。1 |
+| /hana/shared | 2 TiB | v3 或4。1 |
 
 > [!NOTE]
 > 此处所述的 Azure NetApp 文件大小建议旨在满足 SAP 向其基础结构提供商提供的最低要求。 在实际的客户部署和工作负载情况下，这可能不够。 使用这些建议作为起点并根据具体工作负载的要求进行调整。  

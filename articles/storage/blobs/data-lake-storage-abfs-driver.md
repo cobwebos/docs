@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 49567ae52b8ea706ebf7e093880e919cc8bbdbad
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: 370717e09e788faa56662c4c88e2e7c0de21eef7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901649"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933153"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure Blob Filesystem 驱动程序 (ABFS)：专用于 Hadoop 的 Azure 存储驱动程序
 
@@ -49,6 +49,9 @@ ABFS 驱动程序支持两种形式的身份验证，以便 Hadoop 应用程序�
 - **共享密钥：** 这允许用户访问帐户中的所有资源。 密钥被加密并存储在 Hadoop 配置中。
 
 - **Azure Active Directory OAuth 持有者令牌：** 驱动程序使用最终用户或所配置的某个服务主体的标识获取和刷新 Azure AD 持有者令牌。 使用此身份验证模型时，所有访问都是使用与所提供的令牌关联的标识以调用为单位进行授权的，并且依据所分配的 POSIX 访问控制列表 (ACL) 进行评估。
+
+   > [!NOTE] 
+   > Azure Data Lake Storage Gen2 仅支持 Azure AD v2.0 终结点。
 
 ### <a name="configuration"></a>配置
 

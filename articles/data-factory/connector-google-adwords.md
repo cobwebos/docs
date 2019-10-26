@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂（预览版）从 Google AdWords 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 Google AdWords 复制数据 |Microsoft Docs
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Google AdWords 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -10,27 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 212f1bcc7bc2bb91a402461209dad4dc288106ad
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 65bf1fa37ecb8d9e862b0e5042bed29470d750e1
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090337"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935641"
 ---
-# <a name="copy-data-from-google-adwords-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Google AdWords 复制数据
+# <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google AdWords 复制数据
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Google AdWords 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
-
-> [!IMPORTANT]
-> 此连接器目前提供预览版。 可以进行试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 支持部门](https://azure.microsoft.com/support/)。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 Google AdWords 复制数据。 是基于总体介绍复制活动的[复制活动概述](copy-activity-overview.md)一文进行扩展的。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
 以下活动支持此 Google AdWords 连接器：
 
-- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [复制活动](copy-activity-overview.md)与[支持的源/接收器矩阵](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 
@@ -48,19 +45,19 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Google AdWords 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 需要 |
 |:--- |:--- |:--- |
-| type | Type 属性必须设置为：**GoogleAdWords** | 是 |
+| type | type 属性必须设置为 **GoogleAdWords**。 | 是 |
 | clientCustomerID | 需提取其报表数据的 AdWords 帐户的客户端客户 ID。  | 是 |
 | developerToken | 与管理员帐户相关联的开发人员令牌，该帐户用来授予对 AdWords API 的访问权限。  可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
-| authenticationType | 用于身份验证的 OAuth 2.0 身份验证机制。 ServiceAuthentication 只能在自托管 IR 上使用。 <br/>允许值包括：ServiceAuthentication、UserAuthentication | 是 |
-| refreshToken | 从 Google 获得的刷新令牌，用于授权访问 AdWords 以进行用户身份验证。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 否 |
-| clientId | Google 应用程序的客户端 ID，用户获取刷新令牌。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 否 |
-| clientSecret | Google 应用程序的客户端机密，用户获取刷新令牌。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 否 |
-| email | 用于 ServiceAuthentication 的服务帐户电子邮件 ID，只能在自托管 IR 上使用。  | 否 |
-| keyFilePath | .p12 密钥文件的完整路径，该文件用于对服务帐户电子邮件地址进行身份验证，只能在自托管 IR 上使用。  | 否 |
-| trustedCertPath | 包含受信任 CA 证书（通过 SSL 进行连接时用于验证服务器）的 .pem 文件的完整路径。 只有在自托管 IR 上使用 SSL 时才能设置此属性。 默认值是随 IR 一起安装的 cacerts.pem 文件。  | 否 |
-| useSystemTrustStore | 指定是使用系统信任存储中的 CA 证书还是使用指定 PEM 文件中的 CA 证书。 默认值为 false。  | 否 |
+| authenticationType | 用于身份验证的 OAuth 2.0 身份验证机制。 ServiceAuthentication 只能在自托管 IR 上使用。 <br/>允许的值为：**ServiceAuthentication**、**UserAuthentication** | 是 |
+| refreshToken | 从 Google 获得的刷新令牌，用于授权访问 AdWords 以进行用户身份验证。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | No |
+| clientId | 用于获取刷新令牌的 Google 应用程序的客户端 ID。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | No |
+| clientSecret | Google 应用程序的客户端机密，用户获取刷新令牌。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | No |
+| 电子邮件 | 用于 ServiceAuthentication 的服务帐户电子邮件 ID，只能在自托管 IR 上使用。  | No |
+| keyFilePath | .p12 密钥文件的完整路径，该文件用于对服务帐户电子邮件地址进行身份验证，只能在自托管 IR 上使用。  | No |
+| trustedCertPath | 包含受信任 CA 证书（通过 SSL 进行连接时用于验证服务器）的 .pem 文件的完整路径。 只有在自托管 IR 上使用 SSL 时才能设置此属性。 默认值是随 IR 一起安装的 cacerts.pem 文件。  | No |
+| useSystemTrustStore | 指定是使用系统信任存储中的 CA 证书还是使用指定 PEM 文件中的 CA 证书。 默认值为 false。  | No |
 
 **示例：**
 
@@ -104,9 +101,9 @@ Google AdWords 链接服务支持以下属性：
 
 若要从 Google AdWords 复制数据，请将数据集的 type 属性设置为 **GoogleAdWordsObject**。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 需要 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：**GoogleAdWordsObject** | 是 |
+| type | 数据集的 type 属性必须设置为： **GoogleAdWordsObject** | 是 |
 | tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -133,12 +130,12 @@ Google AdWords 链接服务支持以下属性：
 
 ### <a name="google-adwords-as-source"></a>充当源的 Google AdWords
 
-若要从 Google AdWords 复制数据，请将复制活动中的源类型设置为“GoogleAdWordsSource”。 复制活动**source**部分支持以下属性：
+若要从 Google AdWords 复制数据，请将复制活动中的源类型设置为“GoogleAdWordsSource”。 复制活动源部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 需要 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**GoogleAdWordsSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| type | 复制活动源的 type 属性必须设置为 **GoogleAdWordsSource** | 是 |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 
@@ -178,4 +175,4 @@ Google AdWords 链接服务支持以下属性：
 
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

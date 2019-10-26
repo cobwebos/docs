@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 3fd1716fa7b9c32bb5b5e49598139b6a5e728692
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: a80eb1ba341a1b15da7ad59203a1d25284d03fd0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166577"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933896"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>在 Azure Service Fabric 中设置和配置反向代理
 反向代理是一种可选的 Azure Service Fabric 服务，有助于在 Service Fabric 群集中运行的微服务发现包含 http 终结点的其他服务，并与之通信。 有关详细信息，请参阅 [Azure Service Fabric 中的反向代理](service-fabric-reverseproxy.md)。 本文介绍如何在群集中设置和配置反向代理。 
@@ -29,10 +29,10 @@ ms.locfileid: "72166577"
 
 要在[使用 Azure 门户创建集群](./service-fabric-cluster-creation-via-portal.md)时配置反向代理，请确保执行以下操作：
 
-1. 在**步骤 2：群集配置**中，在“节点类型配置”下，选择“启用反向代理”。
+1. 在“步骤 2：群集配置”中，在“节点类型配置”下，选择“启用反向代理”。
 
    ![在门户上启用反向代理](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. （可选）要配置安全反向代理，需要配置 SSL 证书。 在**步骤 3：安全性**中，在“配置群集安全设置”的“配置类型”下，选择“自定义”。 然后，在“反向代理 SSL 证书”下，选择“包括反向代理的 SSL 证书”并输入证书详细信息。
+2. （可选）要配置安全反向代理，需要配置 SSL 证书。 在“步骤 3：安全性”中，在“配置群集安全设置”的“配置类型”下，选择“自定义”。 然后，在“反向代理 SSL 证书”下，选择“包括反向代理的 SSL 证书”并输入证书详细信息。
 
    ![在门户上配置安全反向代理](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 
@@ -44,7 +44,7 @@ ms.locfileid: "72166577"
 
 对于新群集，可[创建自定义资源管理器模板](service-fabric-cluster-creation-via-arm.md)，也可使用示例模板。 
 
-可在 GitHub 上的[安全反向代理示例模板](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample)中找到可帮助你为 Azure 群集配置安全反向代理的示例资源管理器模板。 请参阅 README 文件中的[在安全群集中配置 HTTPS 反向代理](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster)，了解用于配置具有证书的安全反向代理和处理证书变换的说明和模板。
+可在 GitHub 上的[安全反向代理示例模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample)中找到可帮助你为 Azure 群集配置安全反向代理的示例资源管理器模板。 请参阅 README 文件中的[在安全群集中配置 HTTPS 反向代理](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample/README.md#configure-https-reverse-proxy-in-a-secure-cluster)，了解用于配置具有证书的安全反向代理和处理证书变换的说明和模板。
 
 对于现有群集，可使用 [Azure 门户](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell) 或 [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) 导出群集资源组的资源管理器模板。
 
@@ -167,7 +167,7 @@ ms.locfileid: "72166577"
 
 以下步骤介绍了用于启用反向代理的设置，以及使用 X.509 证书（可选）保护反向代理的设置。 
 
-1. 要启用反向代理，请在群集配置中的“属性”下为节点类型设置 reverseProxyEndpointPort 值。以下 JSON 说明，对于类型为“NodeType0”的节点，需将反向代理终结点端口设置为 19081：
+1. 若要启用反向代理，请在群集配置中的 "**属性**" 下设置节点类型的**reverseProxyEndpointPort**值。下面的 JSON 演示将类型为 "为 nodetype0 且" 的节点的反向代理终结点端口设置为19081：
 
    ```json
        "properties": {

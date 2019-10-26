@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2018
 ms.author: atsenthi
-ms.openlocfilehash: 6276f347f0cc0ecc03acc95282e83c243679957a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 8503b3c8a630575b917e3710ce4d7c5d6fbe70cb
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802429"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934034"
 ---
 # <a name="application-upgrade-parameters"></a>应用程序升级参数
 本文介绍 Azure Service Fabric 应用程序升级期间应用的各种参数。 应用程序升级参数控制升级期间应用的超时和运行状况检查，并指定在升级失败时必须应用的策略。 应用程序参数使用以下项应用于升级：
@@ -57,10 +57,6 @@ UnmonitoredManual | PS | 指示升级模式为“不受监视的手动”。 Ser
 ### <a name="optional-parameters"></a>可选参数
 
 运行状况评估参数为可选参数。 如果在启动升级时未指定运行状况评估条件，则 Service Fabric 将使用应用程序实例的 ApplicationManifest.xml 中指定的应用程序运行状况策略。
-
-请使用表底部的水平滚动条来查看完整的说明字段。
-
-（PS=PowerShell，VS=Visual Studio）
 
 > [!div class="mx-tdBreakAll"]
 > | 参数 | 应用于 | 描述 |

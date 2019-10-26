@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
-ms.openlocfilehash: 3d6a28c8cdcf13dc805d70832ed65732911138cd
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 89709edf085e1c424156fb68bd86fbc66b6ae8a7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263347"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934320"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x 的 host.json 参考
 
@@ -27,7 +27,7 @@ ms.locfileid: "72263347"
 
 其他函数应用配置选项是在你的[应用设置](functions-app-settings.md)中管理的。
 
-[local.settings.json](functions-run-local.md#local-settings-file) 文件中的某些 host.json 设置仅在本地运行时才使用。
+某些 host.json 设置只有在本地运行时才会在 [local.settings.json](functions-run-local.md#local-settings-file) 文件中使用。
 
 ## <a name="sample-hostjson-file"></a>示例 host.json 文件
 
@@ -140,10 +140,10 @@ ms.locfileid: "72263347"
 }
 ```
 
-|属性  |默认 | 描述 |
+|properties  |默认 | 描述 |
 |---------|---------|---------|
 |GatewayMode|网关|连接到 Azure Cosmos DB 服务时该函数使用的连接模式。 选项为 `Direct` 和 `Gateway`|
-|Protocol|Https|连接到 Azure Cosmos DB 服务时该函数使用的连接协议。  参阅[此处，了解两种模式的说明](../cosmos-db/performance-tips.md#networking)|
+|协议|Https|连接到 Azure Cosmos DB 服务时该函数使用的连接协议。  参阅[此处，了解两种模式的说明](../cosmos-db/performance-tips.md#networking)|
 |leasePrefix|不适用|应用中所有函数要使用的租用前缀。|
 
 ## <a name="durabletask"></a>durableTask
@@ -158,7 +158,7 @@ ms.locfileid: "72263347"
 
 ## <a name="functions"></a>functions
 
-作业主机运行的函数列表。 空数组表示运行所有函数。 仅供在[本地运行](functions-run-local.md)时使用。 在 Azure 的函数应用中，应改为按照[如何在 Azure Functions 中禁用函数](disable-function.md)中的步骤禁用特定函数，而不是使用此设置。
+作业宿主运行的函数的列表。 空数组表示运行所有函数。 仅供在[本地运行](functions-run-local.md)时使用。 在 Azure 中的函数应用中，你应当改为按照[如何在 Azure Functions 中禁用函数](disable-function.md)中的步骤来禁用特定函数，而不是使用此设置。
 
 ```json
 {
@@ -168,7 +168,7 @@ ms.locfileid: "72263347"
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-指示所有函数的超时持续时间。 在无服务器消耗计划中，有效范围为 1 秒至 10 分钟，默认值为 5 分钟。 在应用服务计划中，没有总体限制，默认值取决于运行时版本。
+指示所有函数的超时持续时间。 在无服务器消耗计划中，有效范围为 1 秒至 10 分钟，默认值为 5 分钟。 在应用服务计划中，没有总限制，默认值为_null_，表示无超时。
 
 ```json
 {
@@ -192,9 +192,9 @@ ms.locfileid: "72263347"
 }
 ```
 
-|属性  |默认 | 描述 |
+|properties  |默认 | 描述 |
 |---------|---------|---------| 
-|enabled|true|指定是否已启用该功能。 | 
+|已启用|是|指定是否启用此功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
 |healthCheckWindow|2 分钟|与 `healthCheckThreshold` 设置结合使用的滑动时间窗口。| 
 |healthCheckThreshold|6|在启动主机回收之前，运行状况检查可以失败的最大次数。| 
@@ -219,11 +219,11 @@ ms.locfileid: "72263347"
 
 ## <a name="id"></a>id
 
-*仅限版本 1.x*。
+*仅限版本 1.x。*
 
-作业宿主的唯一 ID。 可以是不带短划线的小写 GUID。 在本地运行时必须指定。 在 Azure 中运行时，我们建议你不要设置 ID 值。 当省略 `id` 时，会自动在 Azure 中生成 ID。 
+作业宿主的唯一 ID。 可以是不带短划线的小写 GUID。 在本地运行时必须指定。 在 Azure 中运行时，建议你不要设置 ID 值。 当省略 `id` 时，会自动在 Azure 中生成 ID。 
 
-如果跨多个函数应用共享存储帐户，请确保每个函数应用都有不同的 `id`。 可省略 `id` 属性或手动将每个函数应用的 `id` 设置为不同的值。 计时器触发器使用存储锁来确保当函数应用横向扩展到多个实例时将只有一个计时器实例。 如果两个函数应用共享相同的 `id` 且每个都使用计时器触发器，则只会运行一个计时器。
+如果跨多个函数应用共享存储帐户，请确保每个函数应用都有不同的 `id`。 可省略 `id` 属性或手动将每个函数应用的 `id` 设置为不同的值。 计时器触发器使用存储锁来确保当函数应用横向扩展到多个实例时将只有一个计时器实例。 如果两个函数应用共享相同的 `id` 且每个都使用定时器触发器，只会运行一个定时器。
 
 ```json
 {
@@ -250,10 +250,10 @@ ms.locfileid: "72263347"
 }
 ```
 
-|属性  |默认 | 描述 |
+|properties  |默认 | 描述 |
 |---------|---------|---------| 
 |categoryFilter|不适用|指定按类别进行筛选| 
-|defaultLevel|Information|对于 `categoryLevels` 数组中未指定的任何类别，会将此级别和更高级别的日志发送到 Application Insights。| 
+|defaultLevel|信息|对于 `categoryLevels` 数组中未指定的任何类别，会将此级别和更高级别的日志发送到 Application Insights。| 
 |categoryLevels|不适用|一个类别数组，指定每个类别的、要发送到 Application Insights 的最低日志级别。 此处指定的类别控制以相同值开头的所有类别，较长的值优先。 在前面的示例 *host.json* 文件中，将在 `Information` 级别记录以“Host.Aggregator”开头的所有类别的日志。 在 `Error` 级别记录以“Host”开头的其他所有类别（例如“Host.Executor”）的日志。| 
 
 ## <a name="queues"></a>queues
@@ -272,7 +272,7 @@ ms.locfileid: "72263347"
 }
 ```
 
-|属性  |默认 | 描述 |
+|properties  |默认 | 描述 |
 |---------|---------|---------| 
 |maxPollingInterval|60000|队列轮询的最大间隔时间，以毫秒为单位。| 
 |visibilityTimeout|0|消息处理失败时的重试间隔时间。| 
@@ -291,7 +291,7 @@ ms.locfileid: "72263347"
     }
 ```
 
-|属性  |默认 | 描述 |
+|properties  |默认 | 描述 |
 |---------|---------|---------| 
 |from|不适用|所有函数的发件人电子邮件地址。| 
 
@@ -309,7 +309,7 @@ ms.locfileid: "72263347"
 }
 ```
 
-|属性  |默认 | 描述 |
+|properties  |默认 | 描述 |
 |---------|---------|---------| 
 |maxConcurrentCalls|16|消息泵应该对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。 若要指示运行时一次只处理单个队列或主题消息，请将 `maxConcurrentCalls` 设置为 1。 | 
 |prefetchCount|不适用|基础 MessageReceiver 将要使用的默认 PrefetchCount。| 
@@ -331,7 +331,7 @@ ms.locfileid: "72263347"
 }
 ```
 
-|属性  |默认 | 描述 |
+|properties  |默认 | 描述 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|占用函数级锁的时间段。 锁自动续订。| 
 |listenerLockPeriod|00:01:00|占用侦听器锁的时间段。| 
@@ -341,7 +341,7 @@ ms.locfileid: "72263347"
 
 ## <a name="tracing"></a>tracing
 
-版本 1.x
+*版本 1.x*
 
 使用 `TraceWriter` 对象创建的日志的配置设置。 请参阅 [C# 日志记录](functions-reference-csharp.md#logging)和 [Node.js 日志记录](functions-reference-node.md#writing-trace-output-to-the-console)。
 
@@ -354,7 +354,7 @@ ms.locfileid: "72263347"
 }
 ```
 
-|属性  |默认 | 描述 |
+|properties  |默认 | 描述 |
 |---------|---------|---------| 
 |consoleLevel|info|控制台日志记录的跟踪级别。 选项包括：`off`、`error`、`warning`、`info` 和 `verbose`。|
 |fileLoggingMode|debugOnly|文件日志记录的跟踪级别。 选项包括 `never`、`always` 和 `debugOnly`。| 

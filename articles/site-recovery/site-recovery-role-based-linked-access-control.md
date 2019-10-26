@@ -6,12 +6,12 @@ ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 33fc2cd19152fb6cbbffb106aa058948d39555f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51c0d832a6d6d9b1cd148f765e68cb77c4679819
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61471428"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929222"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>使用基于角色的访问控制 (RBAC) 管理 Site Recovery 访问
 
@@ -38,7 +38,10 @@ Azure Site Recovery 提供了 3 个用于控制 Site Recovery 管理操作的内
 > [!IMPORTANT]
 >确保根据用于资源部署的部署模型（Resource Manager/经典）添加相关权限。
 
-| **资源类型** | 部署模型  | 权限  |
+> [!NOTE]
+> 如果要为 Azure VM 启用复制，并希望允许 Site Recovery 管理更新，则在启用复制时，可能还需要创建一个新的自动化帐户，在这种情况下，你需要具有在同一中创建自动化帐户的权限作为保管库的订阅。
+
+| **资源类型** | 部署模型 | 权限 |
 | --- | --- | --- |
 | 计算 | 资源管理器 | Microsoft.Compute/availabilitySets/read |
 |  |  | Microsoft.Compute/virtualMachines/read |
@@ -59,7 +62,7 @@ Azure Site Recovery 提供了 3 个用于控制 Site Recovery 管理操作的内
 |  |  | Microsoft.Network/virtualNetworks/subnets/join/action |
 |  | 经典 | Microsoft.ClassicNetwork/virtualNetworks/read |
 |  |  | Microsoft.ClassicNetwork/virtualNetworks/join/action |
-| 存储 | 资源管理器 | Microsoft.Storage/storageAccounts/read |
+| 存储空间 | 资源管理器 | Microsoft.Storage/storageAccounts/read |
 |  |  | Microsoft.Storage/storageAccounts/listkeys/action |
 |  | 经典 | Microsoft.ClassicStorage/storageAccounts/read |
 |  |  | Microsoft.ClassicStorage/storageAccounts/listKeys/action |
@@ -69,7 +72,7 @@ Azure Site Recovery 提供了 3 个用于控制 Site Recovery 管理操作的内
 考虑分别为 Resource Manager 和经典部署模型使用[内置角色](../role-based-access-control/built-in-roles.md)“虚拟机参与者”和“经典虚拟机参与者”。
 
 ## <a name="next-steps"></a>后续步骤
-* [基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)：在 Azure 门户中开始使用 RBAC。
+* [基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)：Azure 门户中的 RBAC 入门。
 * 了解如何通过以下方式管理访问权限：
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 6b1e1dfec69d73b7fe2648a1eb9ead2ae4622bc5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: 39e1099f1700e9ade412bb4cb81bc38e814ecfae
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72897748"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935648"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从文件系统复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -100,21 +100,15 @@ ms.locfileid: "72897748"
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 
 
-- 对于**Parquet （分隔文本、json、avro 和二进制格式**），请参阅[Parquet，分隔文本、json、Avro 和二进制格式数据集](#format-based-dataset)部分。
-- 有关**ORC 格式**等其他格式，请参阅[其他格式数据集](#other-format-dataset)部分。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-### <a name="format-based-dataset"></a>Parquet，分隔文本、JSON、Avro 和二进制格式数据集
-
-若要在**Parquet 中复制数据，分隔文本、JSON、avro 和二进制格式**，请参阅基于格式的数据集和支持的设置的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文. 基于格式的数据集中 `location` 设置下的文件系统支持以下属性：
+基于格式的数据集中 `location` 设置下的文件系统支持以下属性：
 
 | properties   | 描述                                                  | 需要 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Dataset 中 `location` 下的 type 属性必须设置为**FileServerLocation**。 | 是      |
 | folderPath | 文件夹的路径。 如果要使用通配符筛选文件夹，请跳过此设置并在 "活动源设置" 中指定。 | No       |
 | fileName   | 给定 folderPath 下的文件名。 如果要使用通配符来筛选文件，请跳过此设置并在 "活动源设置" 中指定。 | No       |
-
-> [!NOTE]
-> 在下一节中提及的文件**共享**类型数据集的 Parquet/文本格式仍受支持，以进行复制/查找/GetMetadata 活动，以实现向后兼容性，但它不能用于映射数据流。 建议使用此新模型，然后 ADF 创作 UI 已经切换为生成这些新类型。
 
 **示例：**
 
@@ -142,9 +136,10 @@ ms.locfileid: "72897748"
 }
 ```
 
-### <a name="other-format-dataset"></a>其他格式数据集
+### <a name="legacy-dataset-model"></a>旧数据集模型
 
-若要以**ORC 格式**向/从文件系统复制数据，支持以下属性：
+>[!NOTE]
+>对于向后兼容性，仍支持以下数据集模型。 建议使用前面部分中提到的新模型，然后 ADF 创作 UI 已经切换为生成新模型。
 
 | properties | 描述 | 需要 |
 |:--- |:--- |:--- |
@@ -198,12 +193,9 @@ ms.locfileid: "72897748"
 
 ### <a name="file-system-as-source"></a>文件系统作为源
 
-- 若要从**Parquet 复制、分隔文本、json、avro 和二进制格式**，请参阅[Parquet，分隔文本、json、avro 和二进制格式源](#format-based-source)部分。
-- 若要从其他格式（如**ORC 格式**）进行复制，请参阅[其他格式源](#other-format-source)部分。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-source"></a>Parquet，分隔文本、JSON、Avro 和二进制格式源
-
-若要从 Parquet 复制数据 **，分隔文本、JSON、avro 和二进制格式**，请参考基于格式的复制活动源和受支持的[Parquet 格式](format-parquet.md)、[分隔文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文设置。 基于格式的复制源中 `storeSettings` 设置下的文件系统支持以下属性：
+基于格式的复制源中 `storeSettings` 设置下的文件系统支持以下属性：
 
 | properties                 | 描述                                                  | 需要                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -214,9 +206,6 @@ ms.locfileid: "72897748"
 | modifiedDatetimeStart    | 基于特性筛选的文件：上次修改时间。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。 | No                                            |
 | modifiedDatetimeEnd      | 同上。                                               | No                                            |
 | maxConcurrentConnections | 要同时连接到存储存储的连接数。 仅当要限制与数据存储区的并发连接时，才指定。 | No                                            |
-
-> [!NOTE]
-> 对于 Parquet/分隔文本格式，在下一部分中提到的**FileSystemSource**类型复制活动源仍受支持，以实现向后兼容性。 建议使用此新模型，然后 ADF 创作 UI 已经切换为生成这些新类型。
 
 **示例：**
 
@@ -259,9 +248,10 @@ ms.locfileid: "72897748"
 ]
 ```
 
-#### <a name="other-format-source"></a>其他格式源
+#### <a name="legacy-source-model"></a>旧源模型
 
-若要以**ORC 格式**从文件系统复制数据，复制活动**源**部分支持以下属性：
+>[!NOTE]
+>以下复制源模型仍受支持，以便向后兼容。 建议使用前面提到的新模型，然后 ADF 创作 UI 已经切换为生成新模型。
 
 | properties | 描述 | 需要 |
 |:--- |:--- |:--- |
@@ -303,21 +293,15 @@ ms.locfileid: "72897748"
 
 ### <a name="file-system-as-sink"></a>文件系统作为接收器
 
-- 若要复制到**Parquet （分隔文本、json、avro 和二进制格式**），请参阅[Parquet，分隔文本、json、avro 和二进制格式接收器](#format-based-sink)部分。
-- 若要复制到其他格式（如**ORC 格式**），请参阅[其他格式接收器](#other-format-sink)部分。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-sink"></a>Parquet，分隔文本、JSON、Avro 和二进制格式接收器
-
-若要复制 Parquet 中的数据 **（带分隔符的文本、JSON、avro 和二进制格式**），请参阅[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和基于格式的复制活动接收器的[二进制格式](format-binary.md)文章和支持的格式设置。 基于格式的复制接收器中 `storeSettings` 设置下的文件系统支持以下属性：
+基于格式的复制接收器中 `storeSettings` 设置下的文件系统支持以下属性：
 
 | properties                 | 描述                                                  | 需要 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为**FileServerWriteSetting**。 | 是      |
 | copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | No       |
 | maxConcurrentConnections | 并发连接到数据存储的连接数。 仅当要限制与数据存储区的并发连接时，才指定。 | No       |
-
-> [!NOTE]
-> 对于 Parquet/分隔文本格式，在下一部分中提到的**FileSystemSink**类型复制活动接收器仍受支持，以便向后兼容。 建议使用此新模型，然后 ADF 创作 UI 已经切换为生成这些新类型。
 
 **示例：**
 
@@ -354,9 +338,10 @@ ms.locfileid: "72897748"
 ]
 ```
 
-#### <a name="other-format-sink"></a>其他格式接收器
+#### <a name="legacy-sink-model"></a>旧接收器模型
 
-若要将数据复制到采用**ORC 格式**的文件系统，**接收器**部分支持以下属性：
+>[!NOTE]
+>下面的复制接收器模型仍受支持，以便向后兼容。 建议使用前面提到的新模型，然后 ADF 创作 UI 已经切换为生成新模型。
 
 | properties | 描述 | 需要 |
 |:--- |:--- |:--- |

@@ -13,18 +13,18 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8498346c5623913cb68c63e95a787f31c7d90cc0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: 90c9d9be6f5a255a4ddd4f7fae7cf410e5b1f80d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901945"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934956"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>利用 SQL VM 资源提供程序在 Azure 中大容量注册 SQL 虚拟机
 
-本文介绍如何使用 "SqlVMs" PowerShell cmdlet 在 Azure 中使用 SQL VM 资源提供程序批量注册 SQL Server 虚拟机（VM）。
+本文介绍如何使用 `Register-SqlVMs` PowerShell cmdlet 在 Azure 中批量注册 SQL Server 的虚拟机（VM）和 SQL VM 资源提供程序。
 
-"SqlVMs" cmdlet 可用于在给定的订阅、资源组或特定虚拟机列表中注册所有虚拟机。 该 cmdlet 将以_轻型_管理模式注册虚拟机，然后生成[报告和日志文件](#output-description)。 
+`Register-SqlVMs` cmdlet 可用于在给定的订阅、资源组或特定虚拟机列表中注册所有虚拟机。 该 cmdlet 将以_轻型_管理模式注册虚拟机，然后生成[报告和日志文件](#output-description)。 
 
 注册过程不会带来任何风险，无需停机，也不会 SQL Server 或虚拟机重新启动。 
 

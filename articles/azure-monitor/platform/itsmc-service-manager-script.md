@@ -1,28 +1,22 @@
 ---
 title: 使用自动化脚本创建要与 Azure 中的 IT 服务管理连接器连接的 Service Manager Web 应用 | Microsoft Docs
 description: 使用自动化脚本创建要与 Azure 中的 IT 服务管理连接器连接的 Service Manager Web 应用，集中监视和管理 ITSM 工作项。
-services: log-analytics
-documentationcenter: ''
-author: jyothirmaisuri
-manager: riyazp
-editor: ''
-ms.assetid: 879e819f-d880-41c8-9775-a30907e42059
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/23/2018
+author: JYOTHIRMAISURI
 ms.author: v-jysur
-ms.openlocfilehash: 42adbf7a6f0e7bb462e6bc9b690c61d4ade0cae2
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.date: 01/23/2018
+ms.openlocfilehash: 443fe6aa7e97e666075a2fbb985a9b8b00baf81a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479700"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932249"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>使用自动化脚本创建 Service Manager Web 应用
 
-使用以下脚本创建用于 Service Manager 实例的 Web 应用。 有关 Service Manager 连接的更多信息，请访问：[Service Manager Web 应用](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+使用以下脚本创建用于 Service Manager 实例的 Web 应用。 此处提供了有关 Service Manager 连接的详细信息：[Service Manager Web 应用](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
 通过提供以下所需详细信息来运行脚本：
 

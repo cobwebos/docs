@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: 99f8c2b40445fe282800d096353bee1c7a934ebe
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: b644d293afd429bdc68fba66c119eb7146d0daf0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918126"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935467"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight Hadoop 群集中运行 Apache Oozie
 
@@ -61,9 +61,9 @@ Oozie 工作流定义是用 Apache Hadoop 过程定义语言 (hPDL) 编写的。
    tar -xvf oozie-examples.tar.gz
    hdfs dfs -put examples /user/<DomainUser>/
    ```
-   将 `DomainUser` 替换为域用户名。 
-   将 `DomainUserPath` 替换为域用户的主目录路径。 
-   将 `ClusterVersion` 替换为群集 Hortonworks 数据平台 (HDP) 版本。
+   将 `DomainUser` 替换为域用户名。
+   将 `DomainUserPath` 替换为域用户的主目录路径。
+   将 `ClusterVersion` 替换为群集数据平台版本。
 
 2. 使用以下语句创建并编辑新文件：
    ```bash
