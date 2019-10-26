@@ -1,23 +1,24 @@
 ---
-title: 使用 Power BI 连接到知识存储 - Azure 搜索
-description: 使用 Power BI 连接 Azure 搜索知识存储以进行分析和浏览。
+title: 使用 Power BI 连接知识存储
+titleSuffix: Azure Cognitive Search
+description: 使用 Power BI 连接 Azure 认知搜索知识存储以进行分析和浏览。
 author: lisaleib
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 09/03/2019
+manager: nitinme
 ms.author: v-lilei
-ms.openlocfilehash: de282213535a2e49f73bc30e476bae02d470fdb2
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 7852eda849dfb05343829875ba5a66fa47970e7e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265655"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790069"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>使用 Power BI 连接知识存储
 
 > [!Note]
-> 知识存储目前以预览版提供，不应在生产环境中使用。 [Azure 搜索 REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供此功能。 目前不支持 .NET SDK。
+> 知识存储目前以预览版提供，不应在生产环境中使用。 [Azure 认知搜索 REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供此功能。 目前不支持 .NET SDK。
 >
 本文介绍如何使用 Power BI Desktop 应用中的 Power Query 来连接和浏览知识存储。 若要创建本演练中使用的知识存储示例，请参阅[在 Azure 门户中创建知识存储](knowledge-store-create-portal.md)。
 
@@ -39,7 +40,7 @@ ms.locfileid: "71265655"
 
 1. 如果有提示，请输入存储帐户密钥。
 
-1. 选择“hotelReviewsSsDocument”、“hotelReviewsSsKeyPhrases”和“hotelReviewsSsPages”表。    这些表是酒店评论示例数据的 Azure 表投影，其中包含创建知识存储时选择的认知服务扩充。
+1. 选择“hotelReviewsSsDocument”、“hotelReviewsSsKeyPhrases”和“hotelReviewsSsPages”表。    这些表是酒店评论示例数据的 Azure 表投影，其中包含创建知识存储时选择的 AI 扩充。
 
 1. 单击“加载”。 
 
@@ -53,7 +54,7 @@ ms.locfileid: "71265655"
 
 1. 单击表右上方带有反向箭头的图标，以展开“内容”。  显示列的列表后，选择所有列，并取消选择以“metadata”开头的列。 单击“确定”显示所选列。 
 
-   ![编辑表](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "展开内容")
+   ![编辑表](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "扩展内容")
 
 1. 单击列左上方的 ABC-123 图标，更改以下列的数据类型。
 
@@ -87,7 +88,7 @@ Create new containers in Azure Blob storage and upload each CSV file to its own 
 | Medium (6000 Records)| [HotelReviews_Medium.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Medium.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D)
 | Large (Full dataset 35000 Records) | [HotelReviews_Large.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Large.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D). Be aware that very large data sets are expensive to process. This one costs roughly $1000 U.S dollars.|
 
-In the enrichment step of the wizard, attach a billable [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) resource, created at the *S0* tier, in the same region as Azure Search to use larger data sets. 
+In the enrichment step of the wizard, attach a billable [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) resource, created at the *S0* tier, in the same region as Azure Cognitive Search to use larger data sets. 
 
   ![Create a Cognitive Services resource](media/knowledge-store-connect-power-bi/create-cognitive-service.png "Create a Cognitive Services resource") -->
 

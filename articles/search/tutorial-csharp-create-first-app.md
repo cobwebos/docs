@@ -1,22 +1,23 @@
 ---
-title: 用于创建你的第一个应用的 C# 教程 - Azure 搜索
-description: 本教程提供了关于构建针对 Azure 搜索的第一个应用的分步指南。 本教程提供了 GitHub 上工作应用的链接以及从头开始构建应用的完整过程。 了解有关 Azure 搜索的基本组件。
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.author: v-pettur
+title: 用于创建第一个应用的 C# 教程
+titleSuffix: Azure Cognitive Search
+description: 了解如何逐步构建第一个搜索应用。 本教程提供了 GitHub 上工作应用的链接以及从头开始构建应用的完整过程。 了解有关 Azure 认知搜索的基本组件。
+manager: nitinme
 author: PeterTurcan
-ms.date: 05/01/2019
-ms.openlocfilehash: d569437a3e6f6f05ddb9c6fa85f62c77ac51f72b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: v-pettur
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 3f234a11aeaf7af4e47fb0cf6310ecd68d35e4da
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443813"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794139"
 ---
-# <a name="c-tutorial-create-your-first-app---azure-search"></a>C# 教程：创建第一个应用 - Azure 搜索
+# <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C# 教程：创建第一个应用 - Azure 认知搜索
 
-了解如何使用 Azure 搜索来创建查询和呈现索引搜索结果的 Web 界面。 本教程从现有的托管索引开始，以便你可以专注于构建搜索页。 索引包含虚构的酒店数据。 有了基本页面后，可以在后续课程中对其进行增强，以添加分页、facet 和提前键入体验。
+了解如何使用 Azure 认知搜索来创建查询和呈现索引搜索结果的 Web 界面。 本教程从现有的托管索引开始，以便你可以专注于构建搜索页。 索引包含虚构的酒店数据。 有了基本页面后，可以在后续课程中对其进行增强，以添加分页、facet 和提前键入体验。
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
@@ -60,7 +61,7 @@ DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<
 
 希望此项目能顺利运行，Azure 应用从而顺利运行。 这个应用中包含了较复杂搜索的许多基本组件，因此最好全部浏览完并分步重新创建。
 
-要从头开始创建此项目，从而强化你所认识的 Azure 搜索的组件，请浏览以下步骤。
+要从头开始创建此项目，从而强化你所认识的 Azure 认知搜索的组件，请浏览以下步骤。
 
 ## <a name="set-up-a-development-environment"></a>设置开发环境
 
@@ -72,11 +73,11 @@ DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<
 
     ![创建 MVC 项目](./media/tutorial-csharp-create-first-app/azure-search-project2.png)
 
-3. 然后在“工具”菜单中，依次选择“NuGet 包管理器”、“管理解决方案的 NuGet 包...”    。我们需要安装一个包。 选择“浏览”选项卡，然后在搜索框中键入“Azure 搜索”  。 当它出现在列表（版本 9.0.1 或更高版本）中时，安装 Microsoft.Azure.Search  。 你将需要单击几个其他对话框以完成安装。
+3. 然后在“工具”菜单中，依次选择“NuGet 包管理器”、“管理解决方案的 NuGet 包...”    。我们需要安装一个包。 选择“浏览”选项卡，然后在搜索框中键入“Azure 认知搜索”  。 当它出现在列表（版本 9.0.1 或更高版本）中时，安装 Microsoft.Azure.Search  。 你将需要单击几个其他对话框以完成安装。
 
-    ![使用 NuGet 来添加 Azure 库](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    ![使用 NuGet 添加 Azure 库](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
 
-### <a name="initialize-azure-search"></a>初始化 Azure 搜索
+### <a name="initialize-azure-cognitive-search"></a>初始化 Azure 认知搜索
 
 此示例中，我们将使用公开提供的酒店数据。 此数据是 50 个虚构的酒店名称和说明的任意集合，专门为提供演示数据而创建。 若要访问此数据，需要为它指定一个名称和密钥。
 
@@ -223,7 +224,7 @@ DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<
     }
     ```
 
-5. 在 Azure 中    [  “酒店”、“地址”和“房间”类是复杂类型](search-howto-complex-data-types.md)，这是 Azure 搜索的一个重要功能。 复杂类型可以是多级深度的类和子类，并支持比使用简单类型（仅包含基元成员的类）所表示的数据结构复杂得多的数据结构  。 我们需要另外一个模型，因此再次浏览创建新模型类的过程，但这次调用类 SearchData.cs 并将默认代码替换为以下内容。
+5. **酒店**、**地址**和**房间**类的集合在 Azure 中称为[_复杂类型_](search-howto-complex-data-types.md)，这是 Azure 认知搜索的一项重要功能。 复杂类型可以是多级深度的类和子类，并支持比使用简单类型（仅包含基元成员的类）所表示的数据结构复杂得多的数据结构  。 我们需要另外一个模型，因此再次浏览创建新模型类的过程，但这次调用类 SearchData.cs 并将默认代码替换为以下内容。
 
     ```cs
     using Microsoft.Azure.Search.Models;
@@ -425,7 +426,7 @@ DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<
                     model.searchText = "";
                 }
 
-                // Make the Azure Search call.
+                // Make the Azure Cognitive Search call.
                 await RunQueryAsync(model);
             }
 
@@ -451,7 +452,7 @@ DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<
 
 ### <a name="add-the-runqueryasync-method"></a>添加 RunQueryAsync 方法
 
-Azure 搜索调用封装在 RunQueryAsync 方法中  。
+Azure 认知搜索调用封装在 **RunQueryAsync** 方法中。
 
 1. 首先添加一些静态变量来设置 Azure 服务，并添加调用来启动它们。
 
@@ -517,11 +518,11 @@ Azure 搜索调用封装在 RunQueryAsync 方法中  。
 
      ![搜索“沙滩”](./media/tutorial-csharp-create-first-app/azure-search-beach.png)
 
-3. 请尝试输入“五星”。 请注意这样没有结果。 更复杂的搜索会将“五星”视为“奢华”的同义词并返回那些结果。 在 Azure 搜索中可以使用同义词搜索，但第一批教程中不会涉及此搜索。
+3. 请尝试输入“五星”。 请注意这样没有结果。 更复杂的搜索会将“五星”视为“奢华”的同义词并返回那些结果。 在 Azure 认知搜索中可以使用同义词，尽管我们不会在前几篇教程中介绍它。
  
 4. 请输入“热”作为搜索文本。 它不会返回包含“酒店”这个词的条目  。 虽然会返回一些结果，但我们的搜索仅定位整个词。
 
-5. 请尝试其他词：“池”、“阳光”、“风景”等。 你将看到 Azure 搜索在最简单的级别运行，但搜索结果仍具有说服力。
+5. 请尝试其他词：“池”、“阳光”、“风景”等。 你将看到 Azure 认知搜索在最简单的级别运行，但搜索结果仍具有说服力。
 
 ## <a name="test-edge-conditions-and-errors"></a>测试边缘情况和错误
 
@@ -542,17 +543,17 @@ Azure 搜索调用封装在 RunQueryAsync 方法中  。
 
 请考虑此项目中的以下要点：
 
-* Azure 搜索调用很简洁，而且可以轻松解释结果。
+* Azure 认知搜索调用很简洁，而且可以轻松解释结果。
 * 异步调用将少量复杂性添加到控制器，但如果你想开发高质量应用，这是最佳做法。
 * 此应用执行简单的文本搜索，由 searchParameters 中的设置定义  。 但是，此类可以由将复杂性添加到搜索的许多成员填充。 要使此应用变得功能更强大，不需要执行许多额外工作。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要使用 Aure 搜索提供最佳用户体验，我们需要添加更多功能，尤其是分页（使用页码或无限滚动）和自动完成/建议。 我们还应考虑更复杂的搜索参数（例如，给定点的指定半径内对酒店的地理搜索和搜索结果排序）。
+若要使用 Aure 认知搜索提供最佳用户体验，我们需要添加更多功能，尤其是分页（使用页码或无限滚动）和自动完成/建议。 我们还应考虑更复杂的搜索参数（例如，给定点的指定半径内对酒店的地理搜索和搜索结果排序）。
 
 一系列教程会介绍这些后续步骤。 让我们从分页开始。
 
 > [!div class="nextstepaction"]
-> [C# 教程：搜索结果分页 - Azure 搜索](tutorial-csharp-paging.md)
+> [C# 教程：搜索结果分页 - Azure 认知搜索](tutorial-csharp-paging.md)
 
 

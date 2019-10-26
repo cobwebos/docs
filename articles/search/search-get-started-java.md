@@ -1,22 +1,22 @@
 ---
-title: 快速入门：使用 REST API 在 Java 中创建搜索索引 - Azure 搜索
-description: 介绍如何使用 Java 和 Azure 搜索 REST API 创建索引、加载数据以及运行查询。
+title: 快速入门：使用 REST API 在 Java 中创建搜索索引
+titleSuffix: Azure Cognitive Search
+description: 介绍如何使用 Java 和 Azure 认知搜索 REST API 创建索引、加载数据以及运行查询。
 manager: nitinme
 author: lisaleib
 ms.author: v-lilei
-ms.service: search
-ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
 ms.devlang: java
+ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/10/2019
-ms.openlocfilehash: 3f424f03f72e288994b05c4559bd42e6429760a8
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.date: 11/04/2019
+ms.openlocfilehash: 9f30c30276db6daa0b4afdf3e6bdd8e617dedc52
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166248"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792817"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-java-using-rest-apis"></a>快速入门：使用 REST API 在 Java 中创建 Azure 搜索索引
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>快速入门：使用 REST API 在 Java 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
@@ -26,7 +26,7 @@ ms.locfileid: "72166248"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-创建一个 Java 控制台应用程序，用于通过 [IntelliJ](https://www.jetbrains.com/idea/)、[Java 11 SDK](/java/azure/jdk/?view=azure-java-stable) 和 [Azure 搜索服务 REST API](/rest/api/searchservice/) 创建、加载及查询 Azure 搜索索引。本文提供有关创建该应用程序的分步说明。 此外，还可以[下载并运行完整的应用程序](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/)。
+创建一个 Java 控制台应用程序，用于通过 [IntelliJ](https://www.jetbrains.com/idea/)、[Java 11 SDK](/java/azure/jdk/?view=azure-java-stable) 和 [Azure 认知搜索 REST API](/rest/api/searchservice/) 创建、加载及查询 Azure 认知搜索索引。本文提供有关创建该应用程序的分步说明。 此外，还可以[下载并运行完整的应用程序](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -38,13 +38,13 @@ ms.locfileid: "72166248"
 
 + [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)
 
-+ [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
++ [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
 
 <a name="get-service-info"></a>
 
 ## <a name="get-a-key-and-url"></a>获取密钥和 URL
 
-对服务的调用要求每个请求都有一个 URL 终结点和一个访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
+对服务的调用要求每个请求都有一个 URL 终结点和一个访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
 
 1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
@@ -143,7 +143,7 @@ ms.locfileid: "72166248"
 
 1. 单击“确定”关闭窗口。 
 
-### <a name="add-azure-search-service-information"></a>添加 Azure 搜索服务信息
+### <a name="add-azure-cognitive-search-service-information"></a>添加 Azure 认知搜索服务信息
 
 1. 在“项目”窗口中，展开源树以访问 `src` >  `main` >`resources` > `app` 文件夹，并添加 `config.properties` 文件。  为此，请选择 `app` 文件夹，按 Alt + Insert，选择“文件”，然后输入文件名。 
 
@@ -259,7 +259,7 @@ ms.locfileid: "72166248"
 ### <a name="add-the-http-operations"></a>添加 HTTP 操作
 
 1. 在 `src` >  `main` > `java` > `service` 文件夹中添加 `SearchServiceClient` 类。 为此，请选择 `service` 文件夹，按 Alt + Insert，选择“Java 类”，然后输入类名。 
-1. 打开 `SearchServiceClient` 类，将内容替换为以下代码。 此代码提供使用 Azure 搜索 REST API 所需的 HTTP 操作。 在稍后的部分将会添加用于创建索引、上传文档和查询索引的其他方法。
+1. 打开 `SearchServiceClient` 类，将内容替换为以下代码。 此代码提供使用 Azure 认知搜索 REST API 所需的 HTTP 操作。 在稍后的部分将会添加用于创建索引、上传文档和查询索引的其他方法。
 
     ```java
     package main.java.service;
@@ -512,9 +512,9 @@ hotels 索引定义包含简单字段和一个复杂字段。 例如，“酒店
 
     索引名称为“hotels-quickstart”。 索引字段中的属性确定如何在应用程序中搜索已编制索引的数据。 例如，`IsSearchable` 属性必须分配给每个应包含在全文搜索中的字段。 若要详细了解属性，请参阅[字段集合与字段属性](search-what-is-an-index.md#fields-collection)。
     
-    此索引中的 `Description` 字段使用可选的 `analyzer` 属性来重写默认的 Lucene 语言分析器。 `Description_fr` 字段使用法语 Lucene 分析器 `fr.lucene`，因为该字段存储法语文本。 `Description` 使用可选的 Microsoft 语言分析器 en.lucene。 若要详细了解分析器，请参阅 [Azure 搜索中用于文本处理的分析器](search-analyzers.md)。
+    此索引中的 `Description` 字段使用可选的 `analyzer` 属性来重写默认的 Lucene 语言分析器。 `Description_fr` 字段使用法语 Lucene 分析器 `fr.lucene`，因为该字段存储法语文本。 `Description` 使用可选的 Microsoft 语言分析器 en.lucene。 若要详细了解分析器，请参阅 [Azure 认知搜索中用于文本处理的分析器](search-analyzers.md)。
 
-1. 将以下代码添加到 `SearchServiceClient` 类。 这些方法生成 Azure 搜索 REST 服务 URL，而这些 URL 可用于创建和删除索引，并确定索引是否存在。 这些方法还发出 HTTP 请求。
+1. 将以下代码添加到 `SearchServiceClient` 类。 这些方法生成 Azure 认知搜索 REST 服务 URL，而这些 URL 可用于创建和删除索引，并确定索引是否存在。 这些方法还发出 HTTP 请求。
 
     ```java
     public boolean indexExists() throws IOException, InterruptedException {
@@ -694,9 +694,9 @@ hotels 索引定义包含简单字段和一个复杂字段。 例如，“酒店
 
 现已加载酒店文档，接下来可以创建搜索查询来访问酒店数据。
 
-1. 将以下代码添加到 `SearchServiceClient` 类。 此代码生成 Azure 搜索 REST 服务 URL 用于搜索已编制索引的数据并输出搜索结果。
+1. 将以下代码添加到 `SearchServiceClient` 类。 此代码生成 Azure 认知搜索 REST 服务 URL，用于搜索已编制索引的数据并输出搜索结果。
 
-    使用 `SearchOptions` 类和 `createSearchOptions` 方法可以指定一部分可用的 Azure 搜索 REST API 查询选项。 有关 REST API 查询选项的详细信息，请参阅[搜索文档（Azure 搜索服务 REST API）](/rest/api/searchservice/search-documents)。
+    使用 `SearchOptions` 类和 `createSearchOptions` 方法可以指定一部分可用的 Azure 认知搜索 REST API 查询选项。 有关 REST API 查询选项的详细信息，请参阅[搜索文档（Azure 认知搜索 REST API）](/rest/api/searchservice/search-documents)。
 
     `SearchPlus` 方法创建搜索查询 URL、发出搜索请求，然后将结果输出到控制台。 
 

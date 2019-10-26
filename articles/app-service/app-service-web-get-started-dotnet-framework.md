@@ -4,22 +4,21 @@ description: 了解如何通过部署默认的 C# ASP.NET Web 应用，在 Azure
 services: app-service\web
 documentationcenter: ''
 author: cephalin
-manager: cfowler
-editor: ''
+manager: gwallace
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 08/30/2019
+ms.date: 10/21/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4f479ad60d74f1c7381b5fb776c5508aaa0785f1
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 258e547c58016cb449c74b058d02f2a2e4d7d683
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242280"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792703"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Framework Web 应用
 
@@ -44,19 +43,19 @@ ms.locfileid: "70242280"
 
 1. 打开 Visual Studio，然后选择“创建新项目”  。
 
-1. 在“创建新项目”  中，找到并选择用于 C# 的 **ASP.NET Web 应用程序(.NET Framework)** ，然后选择“下一步”  。
+2. 在“创建新项目”  中，找到并选择“ASP.NET Web 应用程序(.NET Framework)”  ，然后选择“下一步”  。
 
-1. 在“配置新项目”  中，将应用程序命名为“myFirstAzureWebApp”  ，然后选择“创建”  。
+3. 在“配置新项目”  中，将应用程序命名为“myFirstAzureWebApp”  ，然后选择“创建”  。
 
    ![配置 Web 应用项目](./media/app-service-web-get-started-dotnet-framework/configure-web-app-project-framework.png)
 
-1. 可将任何类型的 ASP.NET Web 应用部署到 Azure。 对于本快速入门，请选择“MVC”模板。  
+4. 可将任何类型的 ASP.NET Web 应用部署到 Azure。 对于本快速入门，请选择“MVC”模板。 
 
-1. 确保身份验证设置为“无身份验证”  。 选择“创建”  。
+5. 确保身份验证设置为“无身份验证”  。 选择“创建”  。
 
    ![创建 ASP.NET Web 应用程序](./media/app-service-web-get-started-dotnet-framework/select-mvc-template-vs2019.png)
 
-1. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以在本地运行 Web 应用。  
+6. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以在本地运行 Web 应用。  
 
    ![在本地运行应用](./media/app-service-web-get-started-dotnet-framework/local-web-app.png)
 
@@ -64,7 +63,7 @@ ms.locfileid: "70242280"
 
 1. 在“解决方案资源管理器”  中右键单击“myFirstAzureWebApp”  项目，然后选择“发布”  。
 
-1. 选择“应用服务”  ，然后选择“发布”  。
+1. 选择“应用服务”  ，然后将“创建配置文件”  更改为“发布”  。
 
    ![从项目概述页发布](./media/app-service-web-get-started-dotnet-framework/publish-app-framework-vs2019.png)
 
@@ -99,9 +98,9 @@ ms.locfileid: "70242280"
 
 1. 在**名称**中，输入仅包含有效字符 `a-z`、`A-Z`、`0-9` 和 `-` 的唯一应用名称。 可以接受自动生成的唯一名称。 Web 应用的 URL 为 `http://<app_name>.azurewebsites.net`，其中 `<app_name>` 是应用名称。
 
-   ![配置应用名称](./media/app-service-web-get-started-dotnet-framework/web-app-name-framework-vs2019.png)
+2. 选择“创建”  开始创建 Azure 资源。
 
-1. 选择“创建”  开始创建 Azure 资源。
+   ![配置应用名称](./media/app-service-web-get-started-dotnet-framework/web-app-name-framework-vs2019.png)
 
 向导完成后，它会将 ASP.NET Web 应用发布到 Azure，然后在默认浏览器中启动该应用。
 
@@ -124,11 +123,7 @@ ms.locfileid: "70242280"
    </div>
    ```
 
-1. 若要重新部署到 Azure，请在“解决方案资源管理器”  中右键单击“myFirstAzureWebApp”  项目，然后选择“发布”  。
-
-1. 在“发布”摘要页中选择“发布”   。
-
-   ![用于发布的 Visual Studio 摘要页](./media/app-service-web-get-started-dotnet-framework/publish-summary-page-framework-vs2019.png)
+1. 若要重新部署到 Azure，请在“解决方案资源管理器”  中右键单击“myFirstAzureWebApp”  项目，然后选择“发布”  。 然后选择“发布”。 
 
 发布完成后，Visual Studio 将启动浏览器并转到 Web 应用的 URL。
 
@@ -138,7 +133,7 @@ ms.locfileid: "70242280"
 
 1. 转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理 Web 应用。
 
-1. 从左侧菜单中选择“应用程序服务”，并选择 Azure 应用的名称。 
+2. 从左侧菜单中选择“应用程序服务”，并选择 Azure 应用的名称。 
 
    ![在门户中导航到 Azure 应用](./media/app-service-web-get-started-dotnet-framework/access-portal-framework-vs2019.png)
 
@@ -147,14 +142,6 @@ ms.locfileid: "70242280"
    ![Azure 门户中的应用服务概述](./media/app-service-web-get-started-dotnet-framework/web-app-general-framework-vs2019.png)
 
    左侧菜单提供了用于配置应用的不同页面。
-
-## <a name="video"></a>视频
-
-观看视频，动态了解此快速入门教程，然后自行按步骤将你的第一个 .NET 应用发布到 Azure。
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-for-NET-Developers/Create-a-NET-app-in-Azure-Quickstart/player]
-
-[!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
