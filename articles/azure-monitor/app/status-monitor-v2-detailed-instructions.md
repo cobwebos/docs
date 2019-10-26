@@ -1,23 +1,18 @@
 ---
 title: Azure 应用程序 Insights 代理详细说明 |Microsoft Docs
 description: Application Insights 代理入门的详细说明。 监视网站性能而不重新部署网站。 适用于托管在本地、Vm 或 Azure 上的 ASP.NET web 应用。
-services: application-insights
-documentationcenter: .net
-author: TimothyMothra
-manager: alexklim
-ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 04/23/2019
+author: TimothyMothra
 ms.author: tilee
-ms.openlocfilehash: d7a6db65b92ec2d3a3fdcf55aea0523f57012be1
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 04/23/2019
+ms.openlocfilehash: 8a9ae2364b51c0c201f2efffb3a7433594f76c49
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388231"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899642"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights 代理（以前称为状态监视器 v2）：详细说明
 
@@ -216,7 +211,7 @@ SerializationVersion           1.1.0.1
 
 监视专用 intranet 上的计算机时，需要通过代理路由 HTTP 流量。
 
-要从 PowerShell 库中下载和安装 ApplicationMonitor 的 PowerShell 命令支持 @no__t 参数。
+要从 PowerShell 库中下载和安装 ApplicationMonitor 的 PowerShell 命令支持 `-Proxy` 参数。
 编写安装脚本时，请查看前面的说明。
 
 Application Insights SDK 需要将你的应用的遥测数据发送给 Microsoft。 建议在 web.config 文件中为应用配置代理设置。 有关详细信息，请参阅[APPLICATION INSIGHTS FAQ： Proxy passthrough](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough)。

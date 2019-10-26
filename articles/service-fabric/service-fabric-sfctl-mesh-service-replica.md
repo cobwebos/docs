@@ -3,31 +3,32 @@ title: Azure Service Fabric CLI - sfctl mesh service-replica | Microsoft Docs
 description: 介绍 Service Fabric CLI sfctl mesh service-replica 命令。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 6819bb32eecf8477e2c0727b50641858db21c784
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: e8eaa5fd7c9eeeff3f70a949b04d0fbf5f6c388f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035912"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901172"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh service-replica
 获取副本详细信息并列出应用程序资源中给定服务的副本。
 
 ## <a name="commands"></a>命令
 
-|Command|描述|
+|命令|描述|
 | --- | --- |
-| 列表 | 列出某个服务的所有副本。 |
+| list | 列出某个服务的所有副本。 |
 | show | 获取应用程序服务的给定副本。 |
 
 ## <a name="sfctl-mesh-service-replica-list"></a>sfctl mesh service-replica list
@@ -77,5 +78,5 @@ ms.locfileid: "69035912"
 
 
 ## <a name="next-steps"></a>后续步骤
-- [安装](service-fabric-cli.md) Service Fabric CLI。
+- [设置](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

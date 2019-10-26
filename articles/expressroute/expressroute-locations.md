@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 10/14/2019
+ms.date: 10/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: a52325a85c763d122414baa312f786f25dd80616
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 187034956de6c55c2fcbb5da1ea87c5eb22b84e6
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434738"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901732"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -87,7 +87,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **CDC** | 受支持 | 受支持 | 堪培拉、堪培拉 2 |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |受支持 |受支持 |Amsterdam2、芝加哥、香港特别行政区、拉斯维加斯、纽约、巴黎、San Antonio、硅谷、东京、多伦多、华盛顿特区 |
 | **[首席电信](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** |受支持 |受支持 |香港特别行政区，台北 |
-| **China Telecom Global** |受支持 |受支持 |中国香港特别行政区 |
+| **China Telecom Global** |受支持 |受支持 |香港特别行政区 |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |受支持 |受支持 |芝加哥、达拉斯、蒙特利尔、多伦多、华盛顿特区 |
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |受支持 |受支持 |阿姆斯特丹、Amsterdam2、都柏林、伦敦、纽波特、纽约、大阪、巴黎、硅谷、硅 Valley2、新加坡2、东京 |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |受支持 |受支持 |芝加哥、硅谷、华盛顿特区 |
@@ -140,7 +140,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **[Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/cloud-data-center/microsoft-cloud-services/microsoft-azure-von-swisscom.html)** | 受支持 | 受支持 | 苏黎世 |
 | **[Tata Communications](https://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |受支持 |受支持 |阿姆斯特丹、钦奈、中国香港特别行政区、伦敦、孟买、圣保罗、硅谷、新加坡、华盛顿特区 |
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |受支持 |受支持 |阿姆斯特丹、圣保罗 |
-| **[Telehouse - KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |受支持 |受支持 |伦敦 |
+| **[Telehouse - KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |受支持 |受支持 |伦敦、London2 |
 | **Telenor** |受支持 |受支持 |阿姆斯特丹、伦敦 |
 | **[Telia Carrier](https://teliacarrier.com/our-services/connectivity/cloud-connect.html?title=Cloud%20Connect)** | 受支持 | 受支持 |阿姆斯特丹、芝加哥、达拉斯、香港特别行政区、伦敦、巴黎、硅谷、斯德哥尔摩、华盛顿特区 |
 | **Telmex Uninet**| 受支持 | 受支持 | 达拉斯 |
@@ -232,7 +232,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **[BICS](https://bics.com/bics-solutions-suite/cloud-connect/)** | Equinix | 阿姆斯特丹、法兰克福、伦敦、新加坡、华盛顿特区 |
 | **[BroadBand Tower, Inc.](https://www.bbtower.co.jp/product-service/data-center/network/dcconnect-for-azure/)** | Equinix | 东京 |
 | **[C3ntro Telecom](https://www.c3ntro.com/data/express-route)** | Equinix、Megaport | 达拉斯 |
-| **[Chief](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** | Equinix | 中国香港特别行政区 |
+| **[Chief](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** | Equinix | 香港特别行政区 |
 | **[Cinia](https://www.cinia.fi/en/services/connectivity-services/direct-public-cloud-connection.html)** | Equinix、Megaport | 法兰克福、汉堡 |
 | **[CloudXpress](https://www2.telenet.be/fr/business/produits-services/internet/cloudxpress/)** | Equinix | 阿姆斯特丹 | 
 | **[CMC 电信]( https://cmctelecom.vn/san-pham/value-added-service-and-it/cmc-telecom-cloud-express-en/)** | Equinix | 新加坡 | 
@@ -252,7 +252,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **[IVedha Inc](http://www.ivedha.com/cloud/manage-azure-cloud/express-route-4/)**| Equinix | 多伦多 |
 | **[Kaalam 电信巴林 b. C](http://www.kalaam-telecom.com/en/inbusiness/expressroute.html)**| 3级通信 |阿姆斯特丹 |
 | **LGA Telecom** |Equinix |新加坡|
-| **[Macroview Telecom](http://www.macroview.com/en/scripts/catitem.php?catid=solution&sectionid=expressroute)** |Equinix |中国香港特别行政区 
+| **[Macroview Telecom](http://www.macroview.com/en/scripts/catitem.php?catid=solution&sectionid=expressroute)** |Equinix |香港特别行政区 
 | **[Macquarie Telecom Group](https://macquariegovernment.com/secure-cloud/secure-cloud-exchange/)** | Megaport | 悉尼 |
 | **[MainOne](https://www.mainone.net/services/connectivity/cloud-connect/)** |Equinix | 阿姆斯特丹 |
 | **[Masergy](https://www.masergy.com/solutions/hybrid-networking/cloud-marketplace/microsoft-azure)** | Equinix | 华盛顿 |

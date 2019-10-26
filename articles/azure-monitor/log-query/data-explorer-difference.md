@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor 日志查询语言差异 | Microsoft Docs
 description: Azure Monitor 使用的 Kusto 查询语言的参考信息。 包括特定于 Azure Monitor 的附加元素以及 Azure Monitor 日志查询中不支持的元素。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 08/13/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 9892b8884d901033a80fae4168f25da97edb5a68
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.date: 08/13/2019
+ms.openlocfilehash: 6d3c2daafc9116d23d837e86e60ca628bbe34647
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990182"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900390"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Monitor 日志查询语言差异
 

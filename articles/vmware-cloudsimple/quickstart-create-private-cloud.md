@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b38779681dfe612369fefb9d752389395965e7b4
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: c32045c6d68a813eaeb6e4e5de433160c2a30634
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285784"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901457"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>快速入门-配置私有云环境
 
@@ -42,12 +42,12 @@ ms.locfileid: "72285784"
 
 5. 在 CloudSimple 门户中，提供私有云的名称。
 6. 选择私有云的**位置**。
-7. 选择 "**节点类型**"，与 Azure 上购买的内容一致。
+7. 选择 "**节点类型**"，与在 Azure 上预配的类型一致。
 8. 指定**节点计数**。  至少需要三个节点才能创建私有云。
 
     ![创建私有云-基本信息](media/create-private-cloud-basic-info.png)
 
-9. 单击“下一步:**高级选项 @ no__t。
+9. 单击 "**下一步：高级选项**"。
 10. 输入 vSphere/vSAN 子网的 CIDR 范围。 请确保 CIDR 范围不与任何本地或其他 Azure 子网（虚拟网络）或网关子网重叠。
 
     **CIDR 范围选项：** /24、/23、/22 或/21。 A/24 CIDR 范围最多支持26个节点，/23 个 CIDR 范围最多支持58个节点，并且/22 和/21 CIDR 范围支持64节点（私有云中的最大节点数）。  若要了解详细信息、Vlan 和子网，请参阅[vlan 和子网概述](cloudsimple-vlans-subnets.md)。
@@ -55,7 +55,7 @@ ms.locfileid: "72285784"
       > [!IMPORTANT]
       > VSphere/vSAN CIDR 范围中的 IP 地址保留供私有云基础结构使用。  请勿在任何虚拟机上使用此范围内的 IP 地址。
 
-11. 单击“下一步:**查看并创建 @ no__t-0。
+11. 单击 "**下一步"：查看和创建**。
 12. 查看设置。 如果需要更改任何设置，请单击 "**上一步**"。
 13. 单击“创建”。
 
@@ -159,7 +159,7 @@ CloudSimple 为你的私有云提供了 ExpressRoute 线路。 可以将 Azure �
 
 2. 选择首选的 vSphere 客户端以访问 vCenter，并使用用户名和密码进行登录。  默认值为：
     * 用户名： **CloudOwner@cloudsimple.local**
-    * 密码：**CloudSimple123!**  
+    * 密码： **CloudSimple123！**  
 
 下一过程中的 vCenter 屏幕来自 vSphere （HTML5）客户端。
 
@@ -168,15 +168,15 @@ CloudSimple 为你的私有云提供了 ExpressRoute 线路。 可以将 Azure �
 CloudSimple 建议你在首次登录到 vCenter 时更改密码。  
 设置的密码必须满足以下要求：
 
-* 最长生存期：密码必须每365天更改一次
+* 最长生存期：密码每365天必须更改一次
 * 限制重复使用：用户无法重用前面的五个密码
-* 时长：8-20 个字符
+* 长度： 8-20 个字符
 * 特殊字符：至少一个特殊字符
 * 字母字符：至少一个大写字符、a-z 和至少一个小写字符 a-z
-* 小数至少一个数字字符，0-9
-* 最大相同相邻字符：三
+* 数字：至少一个数字字符，0-9
+* 最大相同的相邻字符：三个
 
-    例如：CC 或 CCC 可作为密码的一部分接受，但 CCCC 不能。
+    示例： CC 或 CCC 可作为密码的一部分接受，但 CCCC 不能。
 
 如果设置的密码不符合要求：
 
@@ -188,7 +188,7 @@ CloudSimple 建议你在首次登录到 vCenter 时更改密码。
 使用默认密码部署了 NSX 管理器。 
 
 * 用户名：**管理员**
-* 密码：**CloudSimple123!**
+* 密码： **CloudSimple123！**
 
 可以在 CloudSimple 门户中找到 NSX 管理器的完全限定的域名（FQDN）和 IP 地址。
 

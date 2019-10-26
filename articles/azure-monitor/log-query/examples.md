@@ -1,31 +1,25 @@
 ---
 title: Azure Monitor 日志查询示例 | Microsoft Docs
 description: 使用 Kusto 查询语言在 Azure Monitor 中进行日志查询的示例。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 10/01/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 7cdd471e6618e83483f6cc304f284a1669f3b67b
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
-ms.translationtype: MT
+ms.date: 10/01/2019
+ms.openlocfilehash: 2ded97e427c8ecf4584ee486408de14a26f014eb
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718914"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900367"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Monitor 日志查询示例
 本文包含使用 [Kusto 查询语言](/azure/kusto/query/)从 Azure Monitor 中检索不同类型的日志数据的各种[查询](log-query-overview.md)示例。 其中使用了不同的方法来合并和分析数据，因此，你可以使用这些示例来识别符合自身要求的不同策略。  
 
 有关这些示例中使用的不同关键字的详细信息，请参阅 [Kusto 语言参考](https://docs.microsoft.com/azure/kusto/query/)。 如果你是初次接触 Azure Monitor，请仔细阅读[有关创建查询的课程](get-started-queries.md)。
 
-## <a name="events"></a>Events
+## <a name="events"></a>事件
 
 ### <a name="search-application-level-events-described-as-cryptographic"></a>搜索描述为“加密”的应用程序级事件
 此示例在 **Events** 表中搜索 **EventLog** 为 _Application_ 并且 **RenderedDescription** 包含 _cryptographic_ 的记录。 包括过去 24 小时的记录。
@@ -381,7 +375,7 @@ let suspicious_users_that_later_logged_in =
 suspicious_users_that_later_logged_in
 ```
 
-## <a name="usage"></a>用法
+## <a name="usage"></a>使用情况
 
 ### <a name="calculate-the-average-size-of-perf-usage-reports-per-computer"></a>计算每台计算机的 perf 使用率报告的平均大小
 

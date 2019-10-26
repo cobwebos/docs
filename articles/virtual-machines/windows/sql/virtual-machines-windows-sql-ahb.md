@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 05cd68c7be005a5b148b7d3e691c46a0d067b0c0
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: aac20034fb4a528e48d5b383f39205a952878539
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262867"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900691"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>更改 Azure 中 SQL Server 虚拟机的许可证型号
 本文介绍如何使用新的 SQL VM 资源提供程序**SqlVirtualMachine**在 Azure 中更改 SQL Server 虚拟机（VM）的许可证模型。
@@ -31,7 +31,7 @@ ms.locfileid: "71262867"
 
 Azure 混合权益允许在 Azure 虚拟机上使用带有软件保障（"合格许可证"）的 SQL Server 许可证。 使用 Azure 混合权益，客户无需支付对 VM 使用 SQL Server 许可证的费用。 但仍必须支付基础云计算（即，基础费率）、存储和备份的成本。 他们还必须为与服务的使用相关的 i/o 付费（如果适用）。
 
-根据 Microsoft 产品条款："客户必须在配置时，指出他们正在使用 Azure SQL 数据库（托管实例、弹性池和单一数据库）、Azure 数据工厂、SQL Server Integration Services 或 SQL Server Azure 混合权益 SQL Server 虚拟机Azure 上的工作负荷 "。
+根据 Microsoft 产品条款： "客户必须指出他们正在使用 Azure SQL 数据库（托管实例、弹性池和单一数据库）、Azure 数据工厂、SQL Server Integration Services 或 SQL Server Azure 中的虚拟机在 Azure 上配置工作负荷时 SQL Server 的混合权益。
 
 若要指示在 Azure VM 上使用 SQL Server 的 Azure 混合权益，并符合以下三个选项：
 
@@ -41,17 +41,17 @@ Azure 混合权益允许在 Azure 虚拟机上使用带有软件保障（"合格
 
 预配 VM 时，将设置 SQL Server 的许可证类型。 您可以在以后随时对其进行更改。 在许可证模型之间切换不会造成停机，不会重新启动 VM，无需额外付费，并且立即生效。 事实上，激活 Azure 混合权益*降低了*成本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 使用 SQL VM 资源提供程序需要 SQL Server IaaS 扩展。 因此，你需要以下各项：
-- 一个 [Azure 订阅](https://azure.microsoft.com/free/)。
+- [Azure 订阅帐户](https://azure.microsoft.com/free/)。
 - [软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)。 
 - 向[SQL VM 资源提供程序](virtual-machines-windows-sql-register-with-resource-provider.md)注册的[SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) 。
 
 
 ## <a name="change-the-license-for-vms-already-registered-with-the-resource-provider"></a>更改已注册到资源提供程序的 Vm 的许可证 
 
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
@@ -149,12 +149,12 @@ $SqlVm | Set-AzResource -Force
 
 ## <a name="known-errors"></a>已知错误
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>找不到资源组 "\<\<资源组 >" 下的资源 "SqlVirtualMachine/SqlVirtualMachines/资源组 >"。
+### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>找不到资源组 "\<资源组 >" 下的资源 "SqlVirtualMachine/SqlVirtualMachines/\<资源组 >"。
 当你尝试在尚未注册到 SQL VM 资源提供程序的 SQL Server VM 上更改许可证模型时，将发生此错误：
 
 `The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>' under resource group '\<resource-group>' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set.`
 
-你需要将资源提供程序注册到你的[订阅](virtual-machines-windows-sql-register-with-resource-provider.md#register-the-sql-vm-resource-provider-with-a-subscription)，然后向[资源提供程序注册你的 SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md)。 
+你需要向资源提供程序注册你的订阅，然后向[资源提供程序注册你的 SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md)。 
 
 ### <a name="cannot-validate-argument-on-parameter-sku"></a>无法验证参数“Sku”中的自变量
 尝试使用低于4.0 的 Azure PowerShell 版本更改 SQL Server VM 许可证模型时，可能会遇到此错误：

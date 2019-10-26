@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: bab282fded7e4b30d2eca6ed51ceaecf22206869
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 661849d2d5c42db70d366e48e4138008bc18b720
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70166677"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72902114"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
@@ -32,11 +32,11 @@ ms.locfileid: "70166677"
 
 ### <a name="nvidia-grid-drivers"></a>NVIDIA GRID 驱动程序
 
-Microsoft 为用作虚拟工作站或虚拟应用程序的 NV 和 NVv3 系列 Vm 重新分发 NVIDIA 网格驱动程序安装程序。 仅在 Azure NV 系列 Vm 上安装这些网格驱动程序, 且仅在下表中列出的操作系统上安装。 这些驱动程序包括 Azure 中 GRID Virtual GPU Software 的许可。 无需设置 NVIDIA vGPU 软件许可证服务器。
+Microsoft 为用作虚拟工作站或虚拟应用程序的 NV 和 NVv3 系列 Vm 重新分发 NVIDIA 网格驱动程序安装程序。 仅在 Azure NV 系列 Vm 上安装这些网格驱动程序，且仅在下表中列出的操作系统上安装。 这些驱动程序包括 Azure 中 GRID Virtual GPU Software 的许可。 无需设置 NVIDIA vGPU 软件许可证服务器。
 
-请注意, Nvidia 扩展将始终安装 latst 驱动程序。 我们在此处提供了与旧版本相关的客户的以前版本的链接。
+请注意，Nvidia 扩展将始终安装 latst 驱动程序。 我们在此处提供了与旧版本相关的客户的以前版本的链接。
 
 | OS | 驱动程序 |
 | -------- |------------- |
-| Windows Server 2019<br/><br/>Windows Server 2016<br/><br/>Windows 10 | [网格 9.0 (431.02)](https://go.microsoft.com/fwlink/?linkid=874181)(.exe) <br/><br/> [网格 8.0 (425.31)](https://download.microsoft.com/download/4/8/C/48C2D46E-EB64-460E-A8D9-0F55737D0D68/425.31_grid_win10_server2016_64bit_international.exe)(.exe)  |
-| Windows Server 2012 R2<br/><br/>Windows Server 2008 R2<br/><br/>Windows 8<br/><br/>Windows 7 | [网格 9.0 (431.02)](https://go.microsoft.com/fwlink/?linkid=874184)(.exe)<br/><br/> [网格 8.0 (425.31)](https://download.microsoft.com/download/6/D/7/6D73C628-B5FB-4243-9520-DAEF363223CB/425.31_grid_win8_win7_server2012R2_server2008R2_64bit_international.exe)(.exe)  |
+| Windows Server 2019<br/><br/>Windows Server 2016<br/><br/>Windows 10 | [网格9.1 （431.79）](https://go.microsoft.com/fwlink/?linkid=874181) （.exe） <br/><br/> [网格9.0 （431.02）](https://download.microsoft.com/download/8/C/C/8CC88D54-EB07-44D3-8FA9-B797B173ED04/431.02_grid_win10_server2016_server2019_64bit_international.exe) （.exe）  |
+| Windows Server 2012 R2<br/><br/>Windows Server 2008 R2<br/><br/>Windows 8<br/><br/>Windows 7 | [网格9.1 （431.79）](https://go.microsoft.com/fwlink/?linkid=874184) （.exe）<br/><br/> [网格9.0 （431.02）](https://download.microsoft.com/download/B/D/6/BD6D1C34-E41F-4654-B5AB-F4DA9C08AA64/431.02_grid_win7_win8_server2008R2_server2012R2_64bit_international.exe) （.exe）  |

@@ -1,29 +1,23 @@
 ---
 title: 在 Azure Monitor 日志查询中使用字符串 | Microsoft Docs
-description: 本文提供有关在 Azure 门户中使用 Azure 监视器 Log Analytics 查询和分析 Azure Monitor 中的日志数据的教程。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+description: 本文提供了有关在 Azure 门户中使用 Azure Monitor Log Analytics 在 Azure Monitor 中查询和分析日志数据的教程。
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 718b12c8a66d66a75796f88ef31b5f0f62abbbc4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/16/2018
+ms.openlocfilehash: 82ac27e10a74dc99adb7615d604502e696aa9edb
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60519679"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894313"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用 JSON 和数据结构
 
 > [!NOTE]
-> 应完成[开始使用 Azure 监视器 Log Analytics](get-started-portal.md)并[开始使用 Azure Monitor 日志查询](get-started-queries.md)之前完成本课程中。
+> 完成本课程之前，应完成[Azure Monitor Log Analytics](get-started-portal.md)和[Azure Monitor 日志查询](get-started-queries.md)入门。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 

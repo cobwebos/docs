@@ -1,22 +1,18 @@
 ---
 title: 使用 Azure Application Insights 进行使用情况分析 | Microsoft docs
 description: 了解用户，以及他们将应用用于哪些目的。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/19/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 77aa39ae68800128409beb17ce3eb636ddcf28d1
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/19/2019
+ms.openlocfilehash: 7131cf1902cc92fed66ae4db59449700973c6913
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128962"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899438"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
@@ -28,9 +24,9 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 1. **服务器代码：** 为 [ASP.NET](../../azure-monitor/app/asp-net.md)、[Azure](../../azure-monitor/app/app-insights-overview.md)、[Java](../../azure-monitor/app/java-get-started.md)、[Node.js](../../azure-monitor/app/nodejs.md) 或[其他](../../azure-monitor/app/platforms.md)应用安装适当的模块。
 
-    * 不想安装服务器代码？只需[创建 Azure Application Insights 资源](../../azure-monitor/app/create-new-resource.md )。
+    * *不想安装服务器代码？只需[创建一个 Azure 应用程序 Insights 资源](../../azure-monitor/app/create-new-resource.md )。*
 
-2. **网页代码**：将以下脚本添加到网页的结束标记 ``</head>`` 之前。 将检测密钥替换为 Application Insights 资源的相应值：
+2. 网页**代码：** 将以下脚本添加到您的网页，然后关闭 ``</head>``。 将检测密钥替换为 Application Insights 资源的相应值：
     
     ```html
     <script type="text/javascript">
@@ -71,13 +67,13 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 ## <a name="retention---how-many-users-come-back"></a>保留 - 有多少个回头用户？
 
-留存情况可帮助你根据特定时间桶内执行某个业务操作的用户队列，了解用户回头使用其应用的频率。 
+保留可帮助你根据特定时间桶内执行某个业务操作的用户队列，了解用户回头使用其应用的频率。 
 
 - 了解哪些特定的功能导致某些用户比其他用户回来得更频繁 
 - 基于真实的用户数据构成假设 
 - 确定产品中是否存在保留问题 
 
-![保留](./media/usage-overview/retention.png) 
+![保留期](./media/usage-overview/retention.png) 
 
 使用顶部的保留控件可以定义特定的事件和时间范围来计算保留。 中间的图表根据指定的时间范围提供总体保留百分比的视觉表示形式。 底部的图表显示给定时间段内的各个保留。 这种详细程度可让你更细致地了解用户正在做什么，以及哪些因素可能会影响用户回头。  
 
@@ -161,7 +157,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 > [!NOTE]
 > 使用 `ApplicationInsights.config` 或使用 `TelemetryConfiguration.Active` 添加初始值设定项对于 ASP.NET Core 应用程序无效。 
 
-对于 [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) 应用程序，添加新的 `TelemetryInitializer` 是通过将其添加到依赖项注入容器来完成的，如下所示。 这是在 `Startup.cs` 类的 `ConfigureServices` 方法中完成的。
+对于[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers)应用程序，通过将新 `TelemetryInitializer` 添加到依赖关系注入容器来添加新，如下所示。 这是在 `Startup.cs` 类 `ConfigureServices` 方法中完成的。
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;

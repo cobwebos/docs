@@ -11,12 +11,12 @@ ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 45ecfc896132eace3ca0babde509e82896c9a394
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: b3f3727fe3705d686f25faedf1871e5aacb74352
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533109"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893268"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OpenID Connect 进行 Web 登录
 
@@ -48,7 +48,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | 参数 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | 组织 | 是 | Azure AD B2C 租户的名称 |
-| 政策 | 是 | 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如： `b2c_1_sign_in`、`b2c_1_sign_up` 或 `b2c_1_edit_profile`。 |
+| 政策 | 是 | 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如： `b2c_1_sign_in`、`b2c_1_sign_up`或 `b2c_1_edit_profile`。 |
 | client_id | 是 | [Azure 门户](https://portal.azure.com/)分配给应用程序的应用程序 ID。 |
 | nonce | 是 | 包含在请求中的值（由应用程序生成），在生成的 ID 令牌中包含为声明。 然后，应用程序可以验证此值，以减少令牌重放攻击。 此值通常是随机的唯一字符串，可用以识别请求的来源。 |
 | response_type | 是 | 必须包括用于 OpenID Connect 的 ID 令牌。 如果 web 应用程序还需要标记来调用 web API，则可以使用 `code+id_token`。 |
@@ -149,11 +149,11 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | 组织 | 是 | Azure AD B2C 租户的名称 |
 | 政策 | 是 | 用于获取授权代码的用户流。 不能在此请求中使用其他用户流。 将此参数添加到查询字符串中，而不是添加到 POST 正文。 |
 | client_id | 是 | [Azure 门户](https://portal.azure.com/)分配给应用程序的应用程序 ID。 |
-| client_secret | 是 | 在[Azure 门户](https://portal.azure.com/)中生成的应用程序机密。 此应用程序密码是重要的安全项目。 应将其安全地存储在服务器上。 定期更改此客户端密钥。 |
+| client_secret | 是，在 Web 应用中 | 在[Azure 门户](https://portal.azure.com/)中生成的应用程序机密。 在此流中，客户端密码用于 Web 应用方案，在这些方案中，客户端可以安全地存储客户端机密。 对于本机应用（公共客户端）方案，不能安全地存储客户端机密，threfore 不会在此流中使用。 如果使用客户端机密，请定期更改。 |
 | 代码 | 是 | 用户流开始时获取的授权代码。 |
 | grant_type | 是 | 授予类型，该类型必须是授权代码流的 `authorization_code`。 |
 | redirect_uri | 是 | 在其中收到授权代码的应用程序的 `redirect_uri` 参数。 |
-| scope | No | 范围的空格分隔列表。 `openid` 作用域表示允许使用 id_token 参数的形式使用户登录并获取有关用户的数据。 它可用于获取应用程序自己的后端 web API 的标记，它由与客户端相同的应用程序 ID 表示。 @No__t_0 作用域表示应用程序需要刷新令牌才能对资源进行扩展访问。 |
+| scope | No | 范围的空格分隔列表。 `openid` 作用域表示允许使用 id_token 参数的形式使用户登录并获取有关用户的数据。 它可用于获取应用程序自己的后端 web API 的标记，它由与客户端相同的应用程序 ID 表示。 `offline_access` 作用域表示应用程序需要刷新令牌才能对资源进行扩展访问。 |
 
 成功的令牌响应如下所示：
 
@@ -218,11 +218,11 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 | 组织 | 是 | Azure AD B2C 租户的名称 |
 | 政策 | 是 | 用于获取原始刷新令牌的用户流。 不能在此请求中使用其他用户流。 将此参数添加到查询字符串中，而不是添加到 POST 正文。 |
 | client_id | 是 | [Azure 门户](https://portal.azure.com/)分配给应用程序的应用程序 ID。 |
-| client_secret | 是 | 在[Azure 门户](https://portal.azure.com/)中生成的应用程序机密。 此应用程序密码是重要的安全项目。 应将其安全地存储在服务器上。 定期更改此客户端密钥。 |
+| client_secret | 是，在 Web 应用中 | 在[Azure 门户](https://portal.azure.com/)中生成的应用程序机密。 在此流中，客户端密码用于 Web 应用方案，在这些方案中，客户端可以安全地存储客户端机密。 对于本机应用（公共客户端）方案，不能安全地存储客户端机密，threfore 不能用于此调用。 如果使用客户端机密，请定期更改。 |
 | grant_type | 是 | 授权的类型，该类型必须是授权代码流的此部分的刷新令牌。 |
 | refresh_token | 是 | 流的第二部分中获取的原始刷新令牌。 必须在授权和令牌请求中都使用 `offline_access` 作用域，才能接收刷新令牌。 |
 | redirect_uri | No | 在其中收到授权代码的应用程序的 `redirect_uri` 参数。 |
-| scope | No | 范围的空格分隔列表。 `openid` 作用域表示允许使用 ID 令牌的形式使用户登录并获取有关用户的数据。 它可用于将令牌发送到应用程序的后端 web API，该 API 由与客户端相同的应用程序 ID 表示。 @No__t_0 作用域表示应用程序需要刷新令牌才能对资源进行扩展访问。 |
+| scope | No | 范围的空格分隔列表。 `openid` 作用域表示允许使用 ID 令牌的形式使用户登录并获取有关用户的数据。 它可用于将令牌发送到应用程序的后端 web API，该 API 由与客户端相同的应用程序 ID 表示。 `offline_access` 作用域表示应用程序需要刷新令牌才能对资源进行扩展访问。 |
 
 成功的令牌响应如下所示：
 
@@ -274,7 +274,7 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | --------- | -------- | ----------- |
 | 组织 | 是 | Azure AD B2C 租户的名称 |
 | 政策 | 是 | 想要用于从应用程序中注销用户的用户流。 |
-| id_token_hint| No | 以前颁发的 ID 令牌，作为有关最终用户当前通过身份验证的会话与客户端的提示传递到注销终结点。 @No__t_0 确保 `post_logout_redirect_uri` 是 Azure AD B2C 应用程序设置中的已注册答复 URL。 |
+| id_token_hint| No | 以前颁发的 ID 令牌，作为有关最终用户当前通过身份验证的会话与客户端的提示传递到注销终结点。 `id_token_hint` 确保 `post_logout_redirect_uri` 是 Azure AD B2C 应用程序设置中的已注册答复 URL。 |
 | post_logout_redirect_uri | No | 用户在成功注销后应重定向到的 URL。如果未包含，Azure AD B2C 向用户显示一般消息。 除非提供 `id_token_hint`，否则不应将此 URL 注册为 Azure AD B2C 应用程序设置中的答复 URL。 |
 | state | No | 如果请求中包含 `state` 参数，响应中应该出现相同的值。 应用程序应该验证请求和响应中的 `state` 值是否相同。 |
 

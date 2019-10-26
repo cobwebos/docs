@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 52f86f85ec303d23a78fd942276bfe46d0f12832
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: f00e7663c4ed2211927f5c8d1c131d85bc6c96dd
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030413"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900892"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>为本地工作站的私有云 vCenter 访问配置 DNS 进行名称解析
 
@@ -23,7 +23,7 @@ ms.locfileid: "72030413"
 
 1. 登录到[CloudSimple 门户](access-cloudsimple-portal.md)。
 
-2. 导航到 "**资源**"  > **私有云**，然后选择要连接到的私有云。
+2. 导航到 "**资源** > "**私有云**"，然后选择要连接到的私有云。
 
 3. 在私有云的 "**摘要**" 页的 "**基本信息**" 下，复制私有云 DNS 服务器 IP 地址。
 
@@ -80,7 +80,7 @@ zone “cloudsimple.io”
 
 条件转发器将所有 DNS 名称解析请求转发到指定的服务器。 在此设置中，对 *. cloudsimple.io 的任何请求都将转发到位于私有云上的 DNS 服务器。 下面的示例演示如何在不同类型的 DNS 服务器上设置转发器。
 
-### <a name="create-a-conditional-forwarded-on-a-bind-dns-server"></a>创建在绑定 DNS 服务器上转发的条件
+### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>在绑定 DNS 服务器上创建条件转发器
 
 要配置的特定文件和参数可能因单独的 DNS 设置而异。
 

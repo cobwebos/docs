@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: atsenthi
-ms.openlocfilehash: 90b2a1954d60f1e86ab61afb264483177f4aca3b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 638ee162b770f949eaf0a0fc34b745698364d019
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073936"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900098"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric 网络模式
 可将 Azure Service Fabric 群集与其他 Azure 网络功能集成。 本文说明如何创建使用以下功能的群集：
@@ -30,6 +30,8 @@ ms.locfileid: "70073936"
 - [内部和外部负载均衡器](#internalexternallb)
 
 Service Fabric 在标准的虚拟机规模集中运行。 可在虚拟机规模集中使用的任何功能同样可在 Service Fabric 群集中使用。 虚拟机规模集与 Service Fabric 的 Azure 资源管理器模板的网络部分是相同的。 部署到现有虚拟网络后，可以轻松地整合其他网络功能，例如 Azure ExpressRoute、Azure VPN 网关、网络安全组和虚拟网络对等互连。
+
+### <a name="allowing-the-service-fabric-resource-provider-to-query-your-cluster"></a>允许 Service Fabric 资源提供程序查询群集
 
 与其他网络功能相比，Service Fabric 的独特之处体现在一个方面。 [Azure 门户](https://portal.azure.com)在内部使用 Service Fabric 资源提供程序连接到群集，以获取有关节点和应用程序的信息。 Service Fabric 资源提供程序需要对管理终结点上的 HTTP 网关端口（默认为 19080）具有可公开访问的入站访问权限。 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 使用该管理终结点来管理群集。 Service Fabric 资源提供程序还使用此端口来查询有关群集的信息，以便在 Azure 门户中显示。 
 
@@ -293,7 +295,7 @@ DnsSettings              : {
 <a id="internallb"></a>
 ## <a name="internal-only-load-balancer"></a>仅限内部的负载均衡器
 
-本方案用仅限内部的负载均衡器替代默认 Service Fabric 模板中的外部负载均衡器。 有关 Azure 门户和 Service Fabric 资源提供程序的含义，请参阅前面的内容。
+本方案用仅限内部的负载均衡器替代默认 Service Fabric 模板中的外部负载均衡器。 有关 Azure 门户和 Service Fabric 资源提供程序的含义，请参阅[前面的文章](#allowing-the-service-fabric-resource-provider-to-query-your-cluster)。
 
 1. 删除 `dnsName` 参数。 （不需要此参数。）
 
@@ -391,7 +393,7 @@ DnsSettings              : {
 <a id="internalexternallb"></a>
 ## <a name="internal-and-external-load-balancer"></a>内部和外部负载均衡器
 
-本方案从现有的单节点类型外部负载均衡器着手，添加一个相同节点类型的内部负载均衡器。 附加到后端地址池的后端端口只能分配给单个负载均衡器。 选择哪个负载均衡器使用应用程序端口，哪个负载均衡器使用管理终结点（端口 19000 和 19080）。 如果将管理终结点放在内部负载均衡器上，请记住前文所述的 Service Fabric 资源提供程序限制。 本示例将管理终结点保留在外部负载均衡器上。 还需要添加一个端口号为 80 的应用程序端口，并将其放在内部负载均衡器上。
+本方案从现有的单节点类型外部负载均衡器着手，添加一个相同节点类型的内部负载均衡器。 附加到后端地址池的后端端口只能分配给单个负载均衡器。 选择哪个负载均衡器使用应用程序端口，哪个负载均衡器使用管理终结点（端口 19000 和 19080）。 如果将管理终结点放在内部负载均衡器上，请记住[本文前面](#allowing-the-service-fabric-resource-provider-to-query-your-cluster)讨论 Service Fabric 资源提供程序限制。 本示例将管理终结点保留在外部负载均衡器上。 还需要添加一个端口号为 80 的应用程序端口，并将其放在内部负载均衡器上。
 
 在双节点类型的群集中，一个节点类型位于外部负载均衡器上。 另一个节点类型位于内部负载均衡器上。 要使用双节点类型的群集，请在门户创建的双节点类型模板（附带两个负载均衡器）中，将第二个负载均衡器切换为内部负载均衡器。 有关详细信息，请参阅[仅限内部的负载均衡器](#internallb)部分。
 
@@ -607,7 +609,7 @@ DnsSettings              : {
 
 ## <a name="notes-for-production-workloads"></a>生产工作负荷的说明
 
-上述 GitHub 模板旨在使用 Azure 标准负载均衡器 (SLB) 的默认 SKU, 即基本 SKU。 此 SLB 没有 SLA, 因此对于生产工作负荷, 应使用标准 SKU。 有关详细信息, 请参阅[Azure 标准负载均衡器概述](/azure/load-balancer/load-balancer-standard-overview)。 任何使用适用于 SLB 的标准 SKU 的 Service Fabric 群集都需要确保每个节点类型都有一个允许端口443上的出站流量的规则。 这是完成群集安装所必需的, 并且任何没有此类规则的部署都将失败。 在上面的 "仅内部" 负载均衡器示例中, 必须使用允许端口443的出站流量的规则将额外的外部负载平衡器添加到模板。
+上述 GitHub 模板旨在使用 Azure 标准负载均衡器（SLB）的默认 SKU，即基本 SKU。 此 SLB 没有 SLA，因此对于生产工作负荷，应使用标准 SKU。 有关详细信息，请参阅[Azure 标准负载均衡器概述](/azure/load-balancer/load-balancer-standard-overview)。 任何使用适用于 SLB 的标准 SKU 的 Service Fabric 群集都需要确保每个节点类型都有一个允许端口443上的出站流量的规则。 这是完成群集安装所必需的，并且任何没有此类规则的部署都将失败。 在上面的 "仅内部" 负载均衡器示例中，必须使用允许端口443的出站流量的规则将额外的外部负载平衡器添加到模板。
 
 ## <a name="next-steps"></a>后续步骤
 [创建群集](service-fabric-cluster-creation-via-arm.md)

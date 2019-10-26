@@ -3,29 +3,30 @@ title: Azure Service Fabric CLI- sfctl sa-cluster | Microsoft Docs
 description: 介绍 Service Fabric CLI sfctl standalone cluster 命令。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 902ebab5dc12d7649edd0ed6e594e663e5332ce3
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: ecdd288d7cb320b91ab4c69697d334f8d9459e62
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035227"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901015"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 管理独立 Service Fabric 群集。
 
 ## <a name="commands"></a>命令
 
-|Command|描述|
+|命令|描述|
 | --- | --- |
 | config | 获取 Service Fabric 独立群集配置。 |
 | config-upgrade | 开始升级 Service Fabric 独立群集的配置。 |
@@ -41,7 +42,7 @@ ms.locfileid: "69035227"
 |参数|描述|
 | --- | --- |
 | --configuration-api-version [必需] | 独立群集 json 配置的 API 版本。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -68,7 +69,7 @@ ms.locfileid: "69035227"
 | --health-check-retry | 应用程序或群集不正常时尝试执行运行状况检查所间隔的时间长度。  默认值：PT0H0M0S。 |
 | --health-check-stable | 升级继续到下一升级域之前，应用程序或群集必须保持正常的时长。  默认值：PT0H0M0S。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
 | --health-check-wait | 启动运行状况检查进程之前，完成升级域后等待的时间长度。  默认值：PT0H0M0S。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 默认值\: 60。 |
 | --unhealthy-applications | 升级过程中允许的不正常应用程序最大百分比。 允许的值为 0 到 100 的整数值。 |
 | --unhealthy-nodes | 升级过程中允许的不正常节点最大百分比。 允许的值为 0 到 100 的整数值。 |
 | --upgrade-domain-delta-unhealthy-nodes | 升级过程中允许的升级域增量运行状况降级最大百分比。 允许的值为 0 到 100 的整数值。 |
@@ -88,10 +89,9 @@ ms.locfileid: "69035227"
 ### <a name="examples"></a>示例
 
 启动群集配置更新
-
-```
-sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-
-policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
+``` 
+sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-    
+policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"   
 ```
 
 ## <a name="sfctl-sa-cluster-upgrade-status"></a>sfctl sa-cluster upgrade-status
@@ -103,7 +103,7 @@ policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
 
 |参数|描述|
 | --- | --- |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -117,5 +117,5 @@ policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
 
 
 ## <a name="next-steps"></a>后续步骤
-- [安装](service-fabric-cli.md) Service Fabric CLI。
+- [设置](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

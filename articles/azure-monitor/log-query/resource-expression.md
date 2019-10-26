@@ -1,28 +1,22 @@
 ---
 title: Azure Monitor 日志查询中的 resource （）表达式 |Microsoft Docs
 description: 资源表达式用于以资源为中心 Azure Monitor 日志查询，以检索多个资源中的数据。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 09/10/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: deca6e7ef1c231a82a73067971d86a6e9cdd0599
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: MT
+ms.date: 09/10/2018
+ms.openlocfilehash: 4787dc8a8cc06e0ad0be88597dab3481284fb58b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71817405"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900212"
 ---
 # <a name="resource-expression-in-azure-monitor-log-query"></a>Azure Monitor 日志查询中的 resource （）表达式
 
-@No__t-0 表达式用于[作用域为资源](scope.md#query-scope)的 Azure Monitor 查询，以从其他资源中检索数据。 
+`resource` 表达式用于[作用域为资源](scope.md#query-scope)的 Azure Monitor 查询，以从其他资源中检索数据。 
 
 
 ## <a name="syntax"></a>语法
@@ -31,11 +25,11 @@ ms.locfileid: "71817405"
 
 ## <a name="arguments"></a>参数
 
-- 标识符：资源的资源 ID。
+- *标识符*：资源的资源 ID。
 
 | 标识符 | 描述 | 示例
 |:---|:---|:---|
-| Resource | 包含资源的数据。 | 资源（"/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcesgroups/myresourcegroup/providers/microsoft.compute/virtualmachines/myvm"） |
+| 资源 | 包含资源的数据。 | 资源（"/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcesgroups/myresourcegroup/providers/microsoft.compute/virtualmachines/myvm"） |
 | 资源组或订阅 | 包含资源的数据以及它包含的所有资源。  | 资源（"/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcesgroups/myresourcegroup"） |
 
 

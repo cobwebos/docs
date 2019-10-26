@@ -1,26 +1,20 @@
 ---
-title: 优化 SQL Server 环境与 Azure Monitor |Microsoft Docs
-description: 借助 Azure Monitor，可以使用 SQL 运行状况检查解决方案定期评估环境的风险和运行状况。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: e297eb57-1718-4cfe-a241-b9e84b2c42ac
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: 通过 Azure Monitor 优化 SQL Server 环境 |Microsoft Docs
+description: 使用 Azure Monitor，可以使用 SQL 运行状况检查解决方案定期评估环境的风险和运行状况。
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/28/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 94b23bc29c3c986e6a0cd74e0805b5d47ce35849
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 03/28/2019
+ms.openlocfilehash: 7808ead7ec4191bdf17e3ab225aeaa909abd7d08
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62120615"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900667"
 ---
-# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>使用 Azure Monitor 中的 SQL Server 运行状况检查解决方案优化 SQL 环境
+# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>利用 Azure Monitor 中的 SQL Server 运行状况检查解决方案优化 SQL 环境
 
 ![SQL 运行状况检查符号](./media/sql-assessment/sql-assessment-symbol.png)
 
@@ -32,7 +26,7 @@ ms.locfileid: "62120615"
 
 可以选择对组织最重要的重点领域，并跟踪一个运行正常无风险环境的进度。
 
-在添加解决方案并完成评估后，会在环境中基础结构的“SQL 运行状况检查”  仪表板上显示有关重点领域的摘要信息。 以下部分介绍如何使用“SQL 运行状况检查”  仪表板上的信息，可以在其中查看并针对 SQL 服务器基础结构采取建议的操作。
+在添加解决方案并完成评估后，会在环境中基础结构的“SQL 运行状况检查”仪表板上显示有关重点领域的摘要信息。 以下部分介绍如何使用“SQL 运行状况检查”仪表板上的信息，可以在其中查看并针对 SQL 服务器基础结构采取建议的操作。
 
 ![SQL 运行状况检查磁贴的图像](./media/sql-assessment/sql-healthcheck-summary-tile.png)
 
@@ -49,15 +43,15 @@ ms.locfileid: "62120615"
   >
   >
 
-若要针对 SQL Server 服务器执行运行状况检查，这些域控制器需要一个代理，并使用以下受支持的方法之一与 Azure Monitor 建立连接：
+若要针对 SQL Server 服务器执行运行状况检查，需要使用以下受支持的方法之一来 Azure Monitor 代理和连接：
 
 1. 如果该服务器尚不受 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 的监视，请安装 [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md)。
-2. 如果该服务器受 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 的监视并且管理组未与 Azure Monitor 集成，则它可与 Log Analytics 共用多个宿主，以收集数据并将其转发到服务，同时仍可由 Operations Manager 监视。  
+2. 如果它是用 System Center 2016-Operations Manager 或 Operations Manager 2012 R2 进行监视，并且管理组未与 Azure Monitor 集成，则该服务器可以是多宿主的 Log Analytics 以收集数据并将数据转发到该服务，由 Operations Manager 监视。  
 3. 否则，如果 Operations Manager 管理组已与服务集成，则在工作区中启用解决方案后，需要遵循[添加代理管理的计算机](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor)中的步骤，为数据收集服务添加域控制器。  
 
-SQL Server 上的代理向 Operations Manager 管理组报告、收集数据、将数据转发到为其分配的管理服务器，然后将数据从管理服务器直接发送到 Azure Monitor。  数据不会写入 Operations Manager 数据库。  
+SQL Server 上的代理向 Operations Manager 管理组报告、收集数据、将数据转发到其分配的管理服务器，然后从管理服务器直接发送到 Azure Monitor。  数据不会写入 Operations Manager 数据库。  
 
-如果 SQL Server 受 Operations Manager 的监视，则需要配置 Operations Manager 运行方式帐户。 有关详细信息，请参阅下面的 [Azure Monitor 的 Operations Manager 运行方式帐户](#operations-manager-run-as-accounts-for-log-analytics)。
+如果 SQL Server 受 Operations Manager 的监视，则需要配置 Operations Manager 运行方式帐户。 有关详细信息，请参阅下面[Azure Monitor 的 Operations Manager 运行方式帐户](#operations-manager-run-as-accounts-for-log-analytics)。
 
 ## <a name="sql-health-check-data-collection-details"></a>SQL 运行状况检查数据集合详细信息
 SQL 运行状况检查使用已启用的代理收集以下来源的数据：
@@ -83,16 +77,16 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
 >
 >
 
-1. 在 Operations Manager 中，打开操作控制台，并单击“管理”  。
-2. 在“运行方式配置”  下，单击“配置文件”  ，并打开“SQL 评估运行方式配置文件”  。
-3. 在“运行方式帐户”  页上，单击“添加”  。
-4. 选择包含 SQL Server 所需凭据的 Windows 运行方式帐户，或者单击“新建”  创建一个帐户。
+1. 在 Operations Manager 中，打开操作控制台，并单击“管理”。
+2. 在“运行方式配置”下，单击“配置文件”，并打开“SQL 评估运行方式配置文件”。
+3. 在“运行方式帐户”页上，单击“添加”。
+4. 选择包含 SQL Server 所需凭据的 Windows 运行方式帐户，或者单击“新建”创建一个帐户。
 
    > [!NOTE]
    > 运行方式帐户类型必须是 Windows。 在托管 SQL Server 实例的所有 Windows Server 上，运行方式帐户还必须属于本地管理员组。
    >
    >
-5. 单击“ **保存**”。
+5. 单击“保存”。
 6. 在每个 SQL Server 实例上先修改再执行以下 T-SQL 示例，以授予运行方式帐户执行运行状况检查所需的最低权限。 但是，如果运行方式帐户已是 SQL Server 实例上 sysadmin 服务器角色的一部分，则无需执行此操作。
 
 ```
@@ -115,7 +109,7 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
 ```
 
 #### <a name="to-configure-the-sql-run-as-account-using-windows-powershell"></a>使用 Windows PowerShell 配置 SQL 运行方式帐户
-打开 PowerShell 窗口，使用自己的信息更新以下脚本，并运行该脚本：
+打开 PowerShell 窗口，使用信息更新以下脚本，然后运行该脚本：
 
 ```
     import-module OperationsManager
@@ -147,7 +141,7 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
 
 **升级、迁移和部署** - 该重点区域显示帮助将 SQL Server 升级、迁移和部署到现有基础结构的建议。
 
-**操作和监视** - 该重点领域显示帮助简化 IT 运营、实施预防性维护并使性能最大化的建议。
+**操作和监视** - 该重点关注领域显示帮助简化 IT 运营、实施预防性维护并使性能最大化的建议。
 
 **更改和配置管理** - 该重点关注领域显示相关建议，以帮助保护日常操作，确保更改不会对基础结构造成不良影响，建立更改控制过程，并跟踪和审核系统配置。
 
@@ -157,30 +151,30 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
 每项建议都会提供有关该建议为何重要的指导。 考虑到 IT 服务的性质和组织的业务需求，应使用本指导来评估实施建议对你是否适用。
 
 ## <a name="use-health-check-focus-area-recommendations"></a>使用运行状况检查重点区域建议
-在 Azure Monitor 中使用评估解决方案之前，必须先安装该解决方案。  安装该服务后，可以使用 Azure 门户中 Azure Monitor 的“概览”页上的“SQL 运行状况检查”磁贴查看建议摘要。 
+在 Azure Monitor 中使用评估解决方案之前，必须先安装该解决方案。  安装完成后，可以使用 "**概述**" 页上的 "SQL 运行状况检查" 磁贴查看建议的摘要，Azure Monitor 在 Azure 门户中。
 
 查看概述的针对基础结构的合规性评估，并深入分析建议。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>查看针对重点区域的建议并采取纠正措施
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-2. 在 Azure 门户中，单击左下角的“更多服务”  。 在资源列表中，键入“监视器”  。 开始键入时，会根据输入筛选该列表。 选择“监视器”  。
-3. 在菜单的“见解”部分，选择“更多”   。  
-4. 在“概述”页上，单击“SQL 运行状况检查”磁贴。  
-5. 在“运行状况检查”页上，查看某个重点区域边栏选项卡中的摘要信息，并单击其中一个查看针对该重点区域的建议。 
+2. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“监视器”。 开始键入时，会根据输入筛选该列表。 选择“监视器”。
+3. 在菜单的 "**见解**" 部分中，选择 "**更多**"。  
+4. 在“概述”页上，单击“SQL 运行状况检查”磁贴。
+5. 在“运行状况检查”页上，查看某个重点区域边栏选项卡中的摘要信息，并单击其中一个查看针对该重点区域的建议。
 6. 在任何重点区域页上，均可以查看针对环境所做的优先级建议。 单击“**受影响的对象**”下的建议，以查看有关为何给出此建议的详细信息。<br><br> ![SQL 运行状况检查建议图像](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
-7. 可以采取“建议的操作”  中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且将提高合规性分数。 已更正的项会显示为“通过的对象”  。
+7. 可以采取“**建议的操作**”中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且将提高合规性分数。 已更正的项会显示为“通过的对象”。
 
 ## <a name="ignore-recommendations"></a>忽略建议
 如果有要忽略的建议，可以创建 Azure Monitor 用来防止建议出现在评估结果中的文本文件。
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>确定要忽略的建议
-1. 在 Azure Monitor 菜单中单击“日志”。 
+1. 在 "Azure Monitor" 菜单中，单击 "**日志**"。
 2. 使用以下查询列出对于环境中计算机失败的建议。
 
     ```
     SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-    下面是一个显示了日志查询的屏幕截图：<br><br> ![失败的建议](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
+    下面是显示日志查询的屏幕截图：<br><br> ![失败的建议](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
 
 3. 选择要忽略的建议。 将 RecommendationId 的值用于接下来的过程。
 
@@ -202,19 +196,19 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
 3. 如果以后决定想要查看已忽略的建议，请删除任何 IgnoreRecommendations.txt 文件，或者可以从中删除 RecommendationID。
 
 ## <a name="sql-health-check-solution-faq"></a>SQL 运行状况检查解决方案常见问题解答
-运行状况检查的运行频率如何？ 
+运行状况检查的运行频率如何？
 
 * 每隔七天运行检查。
 
-是否有某种方法可配置检查的运行频率？ 
+是否有某种方法可配置检查的运行频率？
 
 * 现在不行。
 
-如果添加 SQL 运行状况检查解决方案后发现另一台服务器，那么它是否会被检查？ 
+如果添加 SQL 运行状况检查解决方案后发现另一台服务器，那么它是否会被检查？
 
 * 是的，一经发现，会每隔七天对其进行一次检查。
 
-如果服务器已停用，何时会将其从运行状况检查中删除？ 
+如果服务器已停用，何时会将其从运行状况检查中删除？
 
 * 如果服务器 3 周未提交数据，则会被删除。
 
@@ -242,7 +236,7 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
 
 * 对于 SQL Server，将运行少量的 SQL 查询。 为了使它们能够运行，必须使用对 SQL 具有 VIEW SERVER STATE 权限的运行方式帐户。  此外，要查询 WMI，必须提供本地管理员凭据。
 
-*为何仅显示前 10 条建议？*
+*仅显示前 10 条建议的原因*
 
 * 我们并没有提供完整详尽的任务列表，而是建议先着重解决优先级较高的建议。 在解决这些建议后，其他建议将变为可用。 如果想要查看详细列表，可以使用 Log Analytics 日志搜索来查看所有建议。
 
@@ -251,4 +245,4 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
 * 有的，请参阅上面的 [忽略建议](#ignore-recommendations) 部分。
 
 ## <a name="next-steps"></a>后续步骤
-* 参阅[日志查询](../log-query/log-query-overview.md)，了解如何分析详细的 SQL 运行状况检查数据和建议。
+* [记录查询](../log-query/log-query-overview.md)以了解如何分析详细的 SQL 运行状况检查数据和建议。

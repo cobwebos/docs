@@ -1,23 +1,19 @@
 ---
 title: 适用于 .NET 应用的 Azure Application Insights 快照调试器 | Microsoft Docs
 description: 生产 .NET 应用中出现异常时会自动收集调试快照
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: brahmnes
-ms.date: 10/23/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: c0d90d4eed7efb5c82ca9d61565bfe3f49e8aaa1
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
-ms.translationtype: HT
+ms.date: 10/23/2019
+ms.reviewer: brahmnes
+ms.openlocfilehash: 33a9db5fa9f31a0c4548ecdeb6c0ca2f12ac8246
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809509"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899794"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照
 发生异常时，可自动从实时 Web 应用程序收集调试快照。 快照显示发生异常时源代码和变量的状态。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的快照调试程序（预览版）可监视来自 Web 应用的异常遥测数据。 它可收集常出现的异常的调试快照，为诊断生产中的问题提供所需信息。 在应用程序中包括[快照收集器 NuGet 包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)，还可以选择在[applicationinsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中配置集合参数。快照在 Application Insights 门户中出现[异常](../../azure-monitor/app/asp-net-exceptions.md)。

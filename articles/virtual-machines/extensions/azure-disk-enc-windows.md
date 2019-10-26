@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 00891122015bb3e6adb500b6f6c30fa031161b92
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 056bd1293e0593a7fb7f9909cfd85043577686c4
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597998"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901332"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>适用于 Windows 的 Azure 磁盘加密 (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -36,11 +36,11 @@ Azure 磁盘加密利用 BitLocker 在运行 Windows 的 Azure 虚拟机上提�
 
 ## <a name="extension-schemata"></a>扩展架构
 
-Azure 磁盘加密有两个架构：1.1 版，一种较新的建议架构，不使用 Azure Active Directory （AAD）属性和 v 0.1，后者要求使用 AAD 属性。 必须使用对应于所使用的扩展的架构版本：架构 v1.1 （适用于 AzureDiskEncryption 扩展版本1.1），架构 v 0.1 （对于 AzureDiskEncryption 扩展版本0.1）。
+Windows AzureDiskEncryption 扩展有两个架构：版本2.2，一种更新的建议架构，不使用 Azure Active Directory （AAD）属性和1.1 版，后者要求使用 AAD 属性。 必须使用对应于所使用的扩展的架构版本：架构 v2.0 AzureDiskEncryption 扩展版本2.2，架构1.1 版用于 AzureDiskEncryption 扩展版本1.1。
 
-### <a name="schema-v11-no-aad-recommended"></a>架构1.1 版：不使用 AAD （建议）
+### <a name="schema-v22-no-aad-recommended"></a>架构版本2.2：不使用 AAD （建议）
 
-V1.1 架构是推荐的，不需要 Azure Active Directory 属性。
+对于所有新 Vm，建议使用 v1.0 架构，不需要 Azure Active Directory 属性。
 
 ```json
 {
@@ -67,9 +67,9 @@ V1.1 架构是推荐的，不需要 Azure Active Directory 属性。
 ```
 
 
-### <a name="schema-v01-with-aad"></a>架构 v 0.1：与 AAD 
+### <a name="schema-v11-with-aad"></a>架构 v1.1：与 AAD 
 
-0\.1 架构需要 `aadClientID` 和 `aadClientSecret` 或 `AADClientCertificate`。
+1\.1 架构需要 `aadClientID`，且 `aadClientSecret` 或 `AADClientCertificate`，不建议用于新的虚拟机。
 
 使用 `aadClientSecret`：
 
@@ -139,10 +139,10 @@ V1.1 架构是推荐的，不需要 Azure Active Directory 属性。
 | apiVersion | 2015-06-15 | date |
 | 发布者 | Microsoft.Azure.Security | 字符串 |
 | type | AzureDiskEncryptionForLinux | 字符串 |
-| typeHandlerVersion | 0.1、1。1 | int |
-| （0.1 架构）AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| （0.1 架构）AADClientSecret | password | 字符串 |
-| （0.1 架构）AADClientCertificate | thumbprint | 字符串 |
+| typeHandlerVersion | 1.1、2。2 | 字符串 |
+| （1.1 架构）AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| （1.1 架构）AADClientSecret | password | 字符串 |
+| （1.1 架构）AADClientCertificate | thumbprint | 字符串 |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON 字典 |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | 字符串 | 
 | KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | 字符串 |

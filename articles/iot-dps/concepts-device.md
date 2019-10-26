@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 8ea1be02dee0e0ef00010e8ac7a4dfb75eadbe96
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: dc4ffc4965d6a3c05693c7566a2c51538584f372
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173379"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897581"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT 中心设备预配服务设备概念
 
@@ -44,7 +44,7 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 
 ## <a name="registration-id"></a>注册 ID
 
-注册 ID 用于唯一标识设备预配服务中的设备。 注册 ID 在预配服务[ID 范围](#id-scope)内必须是唯一的。 每个设备必须具有注册 ID。 注册 ID 是小写的字母数字，并且可包含连字符。
+注册 ID 用于唯一标识设备预配服务中的设备。 设备 ID 在预配服务 [ID范围](#id-scope)中必须是唯一的。 每个设备必须具有注册 ID。 注册 ID 是字母数字，不区分大小写，并且可以包含特殊字符（包括冒号、句点、下划线和连字符）。
 
 * 对于使用 TPM 的情况，注册 ID 由 TPM 本身提供。
 * 对于使用基于 X.509 证明的情况，提供注册 ID 作为证书的使用者名称。

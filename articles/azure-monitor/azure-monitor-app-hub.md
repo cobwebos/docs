@@ -3,27 +3,20 @@ layout: HubPage
 hide_bc: false
 title: Azure Monitor Application Insights 文档 - 教程和 API 参考 | Microsoft Docs
 description: Azure Monitor Application Insights 提供深度代码级的应用程序性能监视。
-ms.service: application-insights
-ms.subservice: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: hub-page
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 01/15/2019
-ms.openlocfilehash: 254cd4e67c0c64ba9b21133e957ae2cacfefe7a7
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4feeeabf4718718d8dbdfa150d6c14cfd3242053
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596819"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899167"
 ---
-<div id="main" class="v2">
-    <div class="container">
-        <h1>Azure Monitor Application Insights 文档</h1>
-        <p>Azure Monitor Application Insights 提供深度代码级的应用程序性能监视。</p>
-        <hr style="margin: 30px 0;" />
-        <ul class="pivots">
-            <li>
-                <a href="#products"></a>
+#<a name="productsa"></a>产品 "></a>
                 <ul id="products">
                     <li>
                         <a class="singlePanelNavItem selected" style="display: none" href="#indexA" data-linktype="self-bookmark"></a>
@@ -44,9 +37,9 @@ ms.locfileid: "72596819"
                                                                     </div>
                                                                 </div>
                                                                 <div class="cardText" style="padding-left: 0px">
-                                                                    <h3>了解基础知识</h3>
+                                                                    <h3>Learn the fundamentals</h3>
                                                                     <p>
-                                                                        <a href="./app/app-insights-overview.md">什么是 Application Insights？</a><br>
+                                                                        <a href="./app/app-insights-overview.md">What is Application Insights?</a><br>
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -63,57 +56,57 @@ ms.locfileid: "72596819"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>新功能</h3>
+                                                        <h3>What's new?</h3>
                                                         <p>
-                                                            <a href="./app/azure-vm-vmss-apps.md">无代码置备监视 Azure VM 和 Azure 虚拟机规模集应用程序</a><br>
-                                                            <a href="./app/kubernetes.md">监视 Kubernetes 应用程序</a><br>
-                                                            <a href="./app/status-monitor-v2-overview.md">用于 IIS 应用的状态监视器 v2</a><br>
+                                                            <a href="./app/azure-vm-vmss-apps.md">Codeless monitoring for Azure VM and Azure virtual machine scale set applications</a><br>
+                                                            <a href="./app/kubernetes.md">Monitor Kubernetes applications</a><br>
+                                                            <a href="./app/status-monitor-v2-overview.md">Status Monitor v2 for IIS apps</a><br>
                                                         </p>
                                                         <br><br>
-                                                        <h3>快速入门</h3>
+                                                        <h3>Quickstarts</h3>
                                                         <p>
                                                             <a href="./learn/quick-monitor-portal.md">ASP.NET</a><br>
                                                             <a href="./learn/dotnetcore-quick-start.md">ASP.NET Core</a><br>
                                                             <a href="./learn/nodejs-quick-start.md">Node.js</a><br>
                                                             <a href="./learn/mobile-center-quickstart.md">Mobile</a><br>
-                                                            <a href="./app/website-monitoring.md">浏览器/客户端监视</a>
+                                                            <a href="./app/website-monitoring.md">Browser/client-side monitoring</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3>教程</h3>
+                                                        <h3>Tutorials</h3>
                                                         <p>
-                                                            <a href="./learn/tutorial-runtime-exceptions.md">查找和诊断运行时异常</a><br>
-                                                            <a href="./learn/tutorial-performance.md">查找和诊断性能问题</a><br>
-                                                            <a href="./learn/tutorial-alert.md">监视应用程序运行状况并根据情况发出警报</a><br>
-                                                            <a href="./learn/tutorial-users.md">理解用户行为</a><br>
-                                                            <a href="./learn/tutorial-app-dashboards.md">创建自定义仪表板</a>
+                                                            <a href="./learn/tutorial-runtime-exceptions.md">Find and diagnose run-time exceptions</a><br>
+                                                            <a href="./learn/tutorial-performance.md">Find and diagnose performance issues</a><br>
+                                                            <a href="./learn/tutorial-alert.md">Monitor and alert on application health</a><br>
+                                                            <a href="./learn/tutorial-users.md">Understand user behavior</a><br>
+                                                            <a href="./learn/tutorial-app-dashboards.md">Create custom dashboards</a>
                                                             </p>
                                                         <br><br>
-                                                        <h3>分布式跟踪</h3>
+                                                        <h3>Distributed tracing</h3>
                                                         <p>
-                                                            <a href="./app/distributed-tracing.md">什么是分布式跟踪？</a><br>
-                                                            <a href="./app/opencensus-python.md">适用于 Python 的 OpenCensus</a><br>
-                                                            <a href="./app/opencensus-go.md">适用于 Go 的 OpenCensus</a><br>
-                                                            <a href="./app/opencensus-local-forwarder.md">本地转发器</a>
+                                                            <a href="./app/distributed-tracing.md">What is distributed tracing?</a><br>
+                                                            <a href="./app/opencensus-python.md">OpenCensus for Python</a><br>
+                                                            <a href="./app/opencensus-go.md">OpenCensus for Go</a><br>
+                                                            <a href="./app/opencensus-local-forwarder.md">Local forwarder</a>
                                                             </p>
                                                         <br><br>
-                                                        <h3>自动智能检测</h3>
+                                                        <h3>Automatic smart detection</h3>
                                                         <p>
-                                                            <a href="./app/proactive-failure-diagnostics.md">失败异常</a><br>
-                                                            <a href="./app/proactive-performance-diagnostics.md">性能异常</a><br>
-                                                            <a href="./app/proactive-trace-severity.md">跟踪降级</a><br>
-                                                            <a href="./app/proactive-exception-volume.md">异常情况反常增加</a><br>
-                                                            <a href="./app/proactive-potential-memory-leak.md">内存泄漏</a><br>
-                                                            <a href="./app/proactive-low-utilization-cloud-resources.md">低 CPU 利用率</a><br>
-                                                            <a href="./app/proactive-application-security-detection-pack.md">安全问题</a><br>
-                                                            <a href="./app/proactive-cloud-services.md">Azure 云服务</a><br>
-                                                            <a href="./app/proactive-arm-config.md">使用模板管理智能检测</a>
+                                                            <a href="./app/proactive-failure-diagnostics.md">Failure anomalies</a><br>
+                                                            <a href="./app/proactive-performance-diagnostics.md">Performance anomalies</a><br>
+                                                            <a href="./app/proactive-trace-severity.md">Trace degradation</a><br>
+                                                            <a href="./app/proactive-exception-volume.md">Abnormal rises in exceptions</a><br>
+                                                            <a href="./app/proactive-potential-memory-leak.md">Memory leaks</a><br>
+                                                            <a href="./app/proactive-low-utilization-cloud-resources.md">Low CPU utilization</a><br>
+                                                            <a href="./app/proactive-application-security-detection-pack.md">Security issues</a><br>
+                                                            <a href="./app/proactive-cloud-services.md">Azure Cloud Services</a><br>
+                                                            <a href="./app/proactive-arm-config.md">Manage smart detection with templates</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3>参考</h3>
+                                                        <h3>Reference</h3>
                                                         <p>
-                                                            <a href="./app/auto-collect-dependencies.md">依赖项自动收集</a><br>
-                                                            <a href="./app/correlation.md">遥测关联</a><br>
-                                                            <a href="./app/nuget.md">NuGet 包</a><br>
+                                                            <a href="./app/auto-collect-dependencies.md">Dependency auto-collection</a><br>
+                                                            <a href="./app/correlation.md">Telemetry correlation</a><br>
+                                                            <a href="./app/nuget.md">NuGet packages</a><br>
                                                             <a href="./app/azure-functions-supported-features.md">Azure Functions</a>
                                                             </p>
                                                     </div>
@@ -126,18 +119,18 @@ ms.locfileid: "72596819"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>Java 应用程序</h3>
+                                                        <h3>Java applications</h3>
                                                         <p>
-                                                            <a href="./app/java-get-started.md">深入的监视配置</a><br>
-                                                            <a href="https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights?view=azure-java-stable">Spring Boot Starter</a><br>
-                                                            <a href="./app/micrometer-java.md">Micrometer 指标</a><br>
-                                                            <a href="./app/java-filter-telemetry.md">筛选遥测数据</a><br>
-                                                            <a href="./app/java-trace-logs.md">跟踪日志记录</a><br>
-                                                            <a href="./app/java-agent.md">依赖项跟踪的代理配置</a><br>
-                                                            <a href="./app/api-custom-events-metrics.md">自定义事件和指标</a><br>
+                                                            <a href="./app/java-get-started.md">In-depth monitoring configuration</a><br>
+                                                            <a href="https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights?view=azure-java-stable">Spring Boot starter</a><br>
+                                                            <a href="./app/micrometer-java.md">Micrometer metrics</a><br>
+                                                            <a href="./app/java-filter-telemetry.md">Filter telemetry</a><br>
+                                                            <a href="./app/java-trace-logs.md">Trace logging</a><br>
+                                                            <a href="./app/java-agent.md">Agent config for dependency tracking</a><br>
+                                                            <a href="./app/api-custom-events-metrics.md">Custom events and metrics</a><br>
                                                             <a href="https://docs.microsoft.com/azure/azure-monitor/app/configuration-with-applicationinsights-config#channel-parameters-java
-">配置 .xml</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-Java">开源 Java SDK GitHub 存储库</a>
+"> Config.xml</a><br>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-Java">开源 JAVA SDK GitHub</a>存储库
                                                         </p>
                                                         <br><br>
                                                         <h3>.NET 应用程序</h3>
@@ -147,7 +140,7 @@ ms.locfileid: "72596819"
                                                             <a href="./app/azure-web-apps.md">应用服务监视</a><br>
                                                             <a href="./app/azure-vm-vmss-apps.md">VM 和虚拟机规模集应用程序监视</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">自定义事件和指标</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-dotnet">开源 .NET SDK GitHub 存储库</a>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-dotnet">开源 .NET SDK GitHub</a>存储库
                                                         </p>
                                                         <br><br>
                                                           <h3>.NET Core 应用程序</h3>
@@ -155,14 +148,14 @@ ms.locfileid: "72596819"
                                                             <a href="./app/asp-net-core.md">深入的监视配置</a><br>
                                                             <a href="./app/profiler-aspnetcore-linux.md">ASP.NET Core 分析</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">自定义事件和指标</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-aspnetcore">开源 .NET Core SDK GitHub 存储库</a>
-                                                        </p>
+                                                            
+<a href="https://github.com/Microsoft/ApplicationInsights-aspnetcore">.NET Core SDK GitHub</a>存储库的开源                                                        </p>
                                                         <br><br>
                                                           <h3>Node.js 应用程序</h3>
                                                         <p>
                                                             <a href="./app/nodejs.md">深入的监视配置</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">自定义事件和指标</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-node.js">开源 Node.js SDK GitHub 存储库</a>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-node.js">开源 NODE.JS SDK GitHub</a>存储库
                                                         </p>
                                                         <br><br>
                                                         <h3>客户端/浏览器端监视</h3>
@@ -211,7 +204,7 @@ ms.locfileid: "72596819"
                                                             <a href="./app/data-retention-privacy.md">数据收集、保留和存储</a><br>
                                                             <a href="./app/resources-roles-access-control.md">基于角色的访问</a><br>
                                                             <a href="./app/ip-addresses.md">IP 地址 &amp; 防火墙异常</a><br>
-                                                            <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">使用情况和预估成本</a>
+                                                            <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">使用情况和估计成本</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>数据模型</h3>

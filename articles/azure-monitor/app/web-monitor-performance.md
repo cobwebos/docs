@@ -1,29 +1,24 @@
 ---
 title: 使用 Application Insights 监视应用的运行状况和使用情况
 description: Application Insights 入门。 分析本地或 Microsoft Azure 应用程序的使用情况、可用性和性能。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 40650472-e860-4c1b-a589-9956245df307
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: d7b8037f50fc4877fe233925f3e922648169f73b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ebf6fa6d3dac6c63dfaa349a77a08bc81d402ef8
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60373000"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899298"
 ---
 # <a name="monitor-performance-in-web-applications"></a>在 Web 应用程序中监视性能
 
 
-确保应用程序性能良好，并快速查明任何故障。 [Application Insights][start]将告知任何性能问题和异常，并帮助查找并诊断根本原因。
+确保应用程序性能良好，并快速查明任何故障。 [Application Insights][start]将告诉您任何性能问题和异常，并帮助您查找并诊断根本原因。
 
 Application Insights 可监视 Java 和 ASP.NET Web 应用程序和服务、WCF 服务。 可在本地、虚拟机上或作为 Microsoft Azure 网站托管它们。 
 
@@ -108,11 +103,11 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 ## <a name="diagnosis"></a>诊断问题
 下面是查找和诊断性能问题的一些提示：
 
-* 设置 [Web 测试][availability]，以便在网站出现故障或响应错误或缓慢时得到警报。 
+* 设置[web 测试][availability]，以便在网站出现故障或响应错误或缓慢时得到警报。 
 * 将请求计数与其他指标比较，查看故障或响应缓慢是否与负载有关。
-* 在代码中[插入和搜索跟踪语句][diagnostic]以帮助查明问题。
-* 使用[实时指标流][livestream]监视正在运行的 Web 应用。
-* 使用.NET 应用程序的状态捕获[快照调试器][snapshot]。
+* 在代码中[插入和搜索跟踪语句][diagnostic]，以帮助查明问题。
+* 在操作中监视[实时指标流][livestream]的 Web 应用。
+* 通过[Snapshot Debugger][snapshot]捕获 .net 应用程序的状态。
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>通过性能调查体验来发现和修复性能瓶颈
 
@@ -140,13 +135,13 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 
 
 ## <a name="next"></a>后续步骤
-[Web 测试][availability] - 使 Web 请求按固定间隔从世界各地发送到应用程序。
+[Web 测试][availability]-将 web 请求按固定间隔从世界各地发送到应用程序。
 
-[捕获和搜索诊断跟踪][diagnostic] - 插入跟踪调用并筛查结果以查明问题。
+[捕获和搜索诊断跟踪][diagnostic]-插入跟踪调用并在结果中进行查询，以查明问题。
 
-[使用情况跟踪][usage] - 查明用户使用应用程序的方式。
+[使用情况跟踪][usage]-了解用户如何使用应用程序。
 
-[故障排除][qna] - 和问答
+[疑难解答][qna]-和 Q &
 
 
 

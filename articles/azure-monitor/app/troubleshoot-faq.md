@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights 常见问题解答 | Microsoft Docs
 description: 有关 Application Insights 的常见问题。
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
-ms.service: application-insights
-ms.workload: mobile
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/16/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 94e994a3dc1cd9d5d5d0b7acb5aed4783d881915
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.date: 09/16/2019
+ms.openlocfilehash: 55a096cd4971664e55bb2cfd17f9f8927d7c32f5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802288"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899524"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights：常见问题
 
@@ -84,7 +79,7 @@ ms.locfileid: "71802288"
 
   * Web.config
   * packages.config
-* （仅限新项目 - 如果[将 Application Insights 添加到现有项目][start]，则必须手动执行此操作。）在客户端和服务器代码中插入代码片段，以使用 Application Insights 资源 ID 初始化它们。 例如，在 MVC 应用中，代码插入到主页 Views/Shared/_Layout.cshtml 中
+* （仅限新项目-如果[将 Application Insights 添加到现有项目][start]，则必须手动执行此操作。）将代码片段插入客户端和服务器代码中，以将其初始化为 Application Insights 资源 ID。 例如，在 MVC 应用中，代码插入到主页 Views/Shared/_Layout.cshtml 中
 
 ## <a name="how-do-i-upgrade-from-older-sdk-versions"></a>如何从较早的 SDK 版本升级？
 请参阅[发行说明](release-notes.md)了解对应于应用程序类型的 SDK。
@@ -103,7 +98,7 @@ ms.locfileid: "71802288"
 从服务器 Web 应用：
 
 * HTTP 请求
-* [依赖项](asp-net-dependencies.md)。 调用: SQL 数据库; 对外部服务的 HTTP 调用; Azure Cosmos DB、表、blob 存储和队列。 
+* [依赖项](asp-net-dependencies.md)。 调用: SQL 数据库; 对外部服务的 HTTP 调用; Azure Cosmos DB, 表, blob 存储和队列。 
 * [异常](asp-net-exceptions.md)和堆栈跟踪。
 * [性能计数器](performance-counters.md)-如果你使用[状态监视器](monitor-performance-live-website-now.md)、[适用于应用服务的 AZURE 监视](azure-web-apps.md)、适用[于 VM 或虚拟机规模集的 azure 监视](azure-vm-vmss-apps.md)或[Application Insights collectd 编写器](java-collectd.md)。
 * [自定义编码的事件和指标](api-custom-events-metrics.md)。
@@ -133,11 +128,11 @@ ms.locfileid: "71802288"
 
 深入了解 [ASP.NET](api-filtering-sampling.md) 或 [Java](java-filter-telemetry.md)。
 
-## <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>如何计算市/县/区、国家/地区和其他地理位置数据？
+## <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>如何计算城市、国家/地区和其他地理位置数据？
 
 使用 [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) 查找 Web 客户端的 IP 地址（IPv4 或 IPv6）。
 
-* 浏览器遥测：收集发送方的 IP 地址。
+* 浏览器遥测：收集发件人的 IP 地址。
 * 服务器遥测：Application Insights 模块收集客户端 IP 地址。 如果设置了 `X-Forwarded-For`，则不会进行收集。
 * 若要详细了解如何在中收集 IP 地址和地理位置数据 Application Insights 参阅此[文](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)。
 
@@ -148,7 +143,7 @@ ms.locfileid: "71802288"
 
 
 ## <a name="data"></a>数据在门户中保留多长时间？ 是否安全？
-请参阅[数据保留和隐私][data]。
+查看[数据保留和隐私][data]。
 
 ## <a name="could-personal-data-be-sent-in-the-telemetry"></a>是否可能会在遥测中发送个人数据？
 
@@ -156,7 +151,7 @@ ms.locfileid: "71802288"
 
 **所有**八进制数的客户端 web 地址始终设置为 0，查找异地位置属性。
 
-## <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>在网页源中可见我的检测密钥。 
+## <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>我的检测密钥在网页源中可见。 
 
 * 这是监视解决方案的常见做法。
 * 它不能用于窃取数据。
@@ -165,7 +160,7 @@ ms.locfileid: "71802288"
 
 可以：
 
-* 将两个单独检测密钥（独立的 Application Insights 资源）分别用于客户端和服务器数据。 或
+* 对于客户端和服务器数据，请使用两个单独的检测密钥（单独的 Application Insights 资源）。 或
 * 编写一个在服务器中运行的代理，并使 Web 客户端通过该代理发送数据。
 
 ## <a name="post"></a>如何在诊断搜索中查看 POST 数据？
@@ -291,12 +286,12 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 
 注意，自 v2.6.0 开始具备 ApplicationIdProvider 功能
 
-### <a name="proxy-passthrough"></a>代理透传
+### <a name="proxy-passthrough"></a>代理传递
 
-可以通过配置计算机级代理或应用程序级代理来实现代理透传。
-有关详细信息，请参阅 dotnet 关于 [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings) 的文章。
+可以通过配置计算机级别或应用程序级别代理来实现代理通过。
+有关详细信息，请参阅[DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)上的 dotnet 文章。
  
- 示例 Web.config：
+ Web.config 示例：
  ```xml
 <system.net>
     <defaultProxy>

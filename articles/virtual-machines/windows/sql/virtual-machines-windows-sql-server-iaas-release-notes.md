@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: 599dd2b44f934bb864acfa9ffe8d03fa0e8bb850
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 2f89b57257088b0b647fd5f0159a58c2ac03bda7
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757465"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897263"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机上 SQL Server 的文档更改
 
@@ -28,6 +28,7 @@ Azure 允许你使用内置 SQL Server 的映像部署虚拟机（VM）。 本�
 
 | 更改 | 详细信息 |
 | --- | --- |
+| **批量资源提供程序注册** | 你现在可以向资源提供程序[大容量注册](virtual-machines-windows-sql-bulk-register-with-resource-provider.md)SQL 虚拟机。 | 
 | **性能优化的存储配置** | 你现在可以在创建新 SQL Server VM 时[完全自定义你的存储配置](virtual-machines-windows-sql-server-storage-configuration.md#new-vms)。 |
 | **适用于 FCI 的高级文件共享** | 现在可以使用[高级文件共享](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md)（而不是[存储空间直通](virtual-machines-windows-portal-sql-create-failover-cluster.md)的原始方法）创建故障转移群集实例。 
 | &nbsp; | &nbsp; |

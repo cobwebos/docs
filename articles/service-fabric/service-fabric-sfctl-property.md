@@ -3,33 +3,34 @@ title: Azure Service Fabric CLI- sfctl property | Microsoft Docs
 description: 介绍 Service Fabric CLI sfctl property 命令。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 34e6fc0d4e6e0817f9312a6565a2dd5dd99fdab9
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 368dad54c611e4532b46f11669bcf8e363b9a740
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035251"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901058"
 ---
 # <a name="sfctl-property"></a>sfctl property
 在 Service Fabric 名称下存储和查询属性。
 
 ## <a name="commands"></a>命令
 
-|Command|描述|
+|命令|描述|
 | --- | --- |
-| 删除 | 删除指定的 Service Fabric 属性。 |
+| delete | 删除指定的 Service Fabric 属性。 |
 | get | 获取指定的 Service Fabric 属性。 |
-| 列表 | 获取给定名称下的所有 Service Fabric 属性的信息。 |
+| list | 获取给定名称下的所有 Service Fabric 属性的信息。 |
 | put | 创建或更新 Service Fabric 属性。 |
 
 ## <a name="sfctl-property-delete"></a>sfctl property delete
@@ -43,7 +44,7 @@ ms.locfileid: "69035251"
 | --- | --- |
 | --name-id       [必需] | Service Fabric 名称，不带“fabric\:”URI 方案。 |
 | --property-name [必需] | 指定要获取的属性的名称。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -66,7 +67,7 @@ ms.locfileid: "69035251"
 | --- | --- |
 | --name-id       [必需] | Service Fabric 名称，不带“fabric\:”URI 方案。 |
 | --property-name [必需] | 指定要获取的属性的名称。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -88,9 +89,9 @@ ms.locfileid: "69035251"
 |参数|描述|
 | --- | --- |
 | --name-id [必需] | Service Fabric 名称，不带“fabric\:”URI 方案。 |
-| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
+| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
 | --include-values | 允许指定是否包括返回的属性的值。 如果值应随元数据一起返回，则为 true；如果为 false，则仅返回属性元数据。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -114,8 +115,8 @@ ms.locfileid: "69035251"
 | --name-id       [必需] | Service Fabric 名称，不带“fabric\:”URI 方案。 |
 | --property-name [必需] | Service Fabric 属性的名称。 |
 | --value         [必需] | 介绍 Service Fabric 属性值。 这是一个 JSON 字符串。 <br><br> Json 字符串有两个字段：数据的“Kind”和数据的“Value”。 “Kind”的值必须是要出现在 JSON 字符串中的第一个项，并且可以是以下值：“Binary”、“Int64”、“Double”、“String”或“Guid”。 该值应当对给定的类型可序列化。 “Kind”和“Data”的值应以字符串形式提供。 |
-| --custom-id-type | 属性的自定义类型 ID。使用此属性，用户就能够标记属性值的类型。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --custom-id-type | 属性的自定义类型 ID。 使用此属性，用户就能够标记属性值的类型。 |
+| --timeout -t | 默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -129,5 +130,5 @@ ms.locfileid: "69035251"
 
 
 ## <a name="next-steps"></a>后续步骤
-- [安装](service-fabric-cli.md) Service Fabric CLI。
+- [设置](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

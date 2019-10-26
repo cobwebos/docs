@@ -1,24 +1,18 @@
 ---
 title: 使用 Azure PowerShell 创建 Log Analytics 工作区 | Microsoft Docs
 description: 了解如何使用 Azure PowerShell 创建 Log Analytics 工作区，以启用管理解决方案以及从云和本地环境进行的数据收集。
-services: log-analytics
-documentationcenter: log-analytics
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/12/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: b81495f19ce596d689778e6ab75512d744ae4588
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.date: 03/12/2019
+ms.openlocfilehash: d9ac472c320767919301f5de634fd5158e824726
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71836573"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900525"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>使用 Azure PowerShell 创建 Log Analytics 工作区
 
@@ -41,12 +35,12 @@ Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Az
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell Az 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell Az 模块。 可以运行 `Get-Module -ListAvailable Az` 来查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="create-a-workspace"></a>创建工作区
-使用 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 创建工作区。 下面的示例使用本地计算机中的资源管理器模板在*eastus*位置创建一个工作区。 JSON 模板在经过配置后，只提示你输入工作区的名称，并为其他参数指定默认值，这些参数将会用作环境中的标准配置。 
+使用[AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)创建工作区。 下面的示例使用本地计算机中的资源管理器模板在*eastus*位置创建一个工作区。 JSON 模板在经过配置后，只提示你输入工作区的名称，并为其他参数指定默认值，这些参数将会用作环境中的标准配置。 
 
-若要了解支持的区域，请参阅[提供 Log Analytics 的区域](https://azure.microsoft.com/regions/services/)，然后在“搜索产品”字段中搜索 Azure Monitor。 
+有关支持的区域的信息，请参阅[中提供 Log Analytics 区域](https://azure.microsoft.com/regions/services/)，并从 "**搜索产品**" 字段搜索 Azure Monitor。 
 
 以下参数设置默认值：
 

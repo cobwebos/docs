@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor 日志查询中的函数 | Microsoft Docs
 description: 本文介绍了如何在 Azure Monitor 中从一个日志查询中使用函数调用另一个查询。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/15/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 75beb7b66863efd2fb3679f034a3663dca4a6d2f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 11/15/2018
+ms.openlocfilehash: 8d8473b88327d3d17346a0351d0a9fc510152cd8
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076705"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894173"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用函数
 
@@ -26,11 +20,11 @@ ms.locfileid: "71076705"
 
 ## <a name="create-a-function"></a>创建函数
 
-在 Azure 门户中单击“保存”，然后提供下表中的信息，使用 Log Analytics 创建函数。
+通过单击 "**保存**"，然后提供下表中的信息，在 Azure 门户中创建具有 Log Analytics 的函数。
 
 | 设置 | 描述 |
 |:---|:---|
-| 姓名           | 查询资源管理器中查询的显示名称。 |
+| 名称           | 查询资源管理器中查询的显示名称。 |
 | 另存为        | 函数 |
 | 函数别名 | 在其他查询中使用该函数的短名称。 不可包含空格，必须唯一。 |
 | 类别       | 用于在查询资源管理器中整理已保存的查询和函数的类别。 |

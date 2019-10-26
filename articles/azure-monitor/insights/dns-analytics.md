@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor 中的 DNS Analytics 解决方案 | Microsoft Docs
 description: 在 Azure Monitor 中设置并使用 DNS Analytics 解决方案，收集有关 DNS 基础结构安全性、性能和操作的见解。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: f44a40c4-820a-406e-8c40-70bd8dc67ae7
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/20/2018
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: ad61743751ace9ca0c7eba12ffcea5f15e1157d5
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.date: 03/20/2018
+ms.openlocfilehash: a4123ed4633cbb8195639766e7b23e3ea9f14e71
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316181"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899091"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
 
@@ -43,9 +37,9 @@ DNS Analytics 可帮助：
 | **连接的源** | **支持** | **说明** |
 | --- | --- | --- |
 | [Windows 代理](../platform/agent-windows.md) | 是 | 解决方案会从 Windows 代理收集 DNS 信息。 |
-| [Linux 代理](../learn/quick-collect-linux-computer.md) | 否 | 解决方案不会从直接 Linux 代理收集 DNS 信息。 |
+| [Linux 代理](../learn/quick-collect-linux-computer.md) | No | 解决方案不会从直接 Linux 代理收集 DNS 信息。 |
 | [System Center Operations Manager 管理组](../platform/om-agents.md) | 是 | 解决方案会从连接的 Operations Manager 管理组中的代理收集 DNS 信息。 从 Operations Manager 代理到 Azure Monitor 的直接连接不是必需的。 数据将从管理组转发到 Log Analytics 工作区。 |
-| [Azure 存储帐户](../platform/collect-azure-metrics-logs.md) | 否 | 解决方案不会使用 Azure 存储。 |
+| [Azure 存储帐户](../platform/collect-azure-metrics-logs.md) | No | 解决方案不会使用 Azure 存储。 |
 
 ### <a name="data-collection-details"></a>数据收集详细信息
 
@@ -64,7 +58,7 @@ DNS Analytics 可帮助：
 
 在解决方案仪表板上，单击“配置”打开 DNS Analytics 配置页面。 可进行两种类型的配置更改：
 
-- **列入允许列表的域名**。 解决方案不会处理所有查找查询。 这样可保留域名后缀允许列表。 查找查询会解析为匹配此允许列表中域名后缀的域名，但不由解决方案处理。 不处理列入允许列表的域名有助于优化发送到 Azure Monitor 的数据。 默认允许列表包括常用的公共域名，例如 www.google.com 和 www.facebook.com 。 可以滚动查看完整的默认列表。
+- **列入允许列表的域名**。 解决方案不会处理所有查找查询。 这样可保留域名后缀允许列表。 查找查询会解析为匹配此允许列表中域名后缀的域名，但不由解决方案处理。 不处理列入允许列表的域名有助于优化发送到 Azure Monitor 的数据。 默认允许列表包括常用的公共域名，例如 www.google.com 和 www.facebook.com。 可以滚动查看完整的默认列表。
 
   可以修改列表，添加任何想要查看的域名后缀，从而查看查找见解。 还可以删除任何不感兴趣的域名后缀，从而查看查找见解。
 
@@ -170,7 +164,7 @@ DNS 磁贴包括在其中收集数据的 DNS 服务器的数量。 它还包括�
 
     ![DnsEvents 日志搜索](./media/dns-analytics/log-search-dnsevents.png)  
 
-    a. 若要查看查找查询的日志数据，请在左侧的分面控件中选择“LookUpQuery”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有查找查询事件。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 若要查看查找查询的日志数据，请在左侧的分面控件中选择“LookUpQuery”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有查找查询事件。
 
     b. 若要查看动态注册的日志数据，请在左侧的分面控件中选择“DynamicRegistration”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有动态注册事件。
 
@@ -180,7 +174,7 @@ DNS 磁贴包括在其中收集数据的 DNS 服务器的数量。 它还包括�
 
     ![DnsInventory 日志搜索](./media/dns-analytics/log-search-dnsinventory.png)
     
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 常见的故障排除步骤：
 

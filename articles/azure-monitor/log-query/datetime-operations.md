@@ -1,24 +1,18 @@
 ---
 title: 在 Azure Monitor 日志查询中使用日期时间值 | Microsoft Docs
 description: 介绍如何在 Azure Monitor 日志查询中使用日期和时间数据。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 402511ba3c45e8bd12cb7f92ecd54f6084c8ada2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/16/2018
+ms.openlocfilehash: 6ff095d674a11d95ed4fd2d008c3e664dd595fef
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62112351"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894212"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用日期时间值
 
@@ -91,7 +85,7 @@ Event
 | extend timeAgo = now() - TimeGenerated 
 ```
 
-`timeAgo` 列包含以下值：“00:09:31.5118992”，这意味着它们的格式为 hh:mm:ss.fffffff。 如果要将这些值的格式设置为自开始时间以来的 `numver` 分钟数，则用该值除以“1 分钟”：
+`timeAgo` 列包含如下所示的值： "00：09： 31.5118992"，这意味着它们的格式为 hh： mm： fffffff。 如果要将这些值的格式设置为自开始时间以来的 `numver` 分钟数，则用该值除以“1 分钟”：
 
 ```Kusto
 Event
@@ -117,12 +111,12 @@ Event
 
 |TimeGenerated(UTC)|events_count|
 |--|--|
-|2018-08-01T09:30:00.000|54|
-|2018-08-01T09:35:00.000|41|
-|2018-08-01T09:40:00.000|42|
-|2018-08-01T09:45:00.000|41|
-|2018-08-01T09:50:00.000|41|
-|2018-08-01T09:55:00.000|16|
+|2018-08-01T09：30：00.000|54|
+|2018-08-01T09：35：00.000|41|
+|2018-08-01T09：40：00.000|42|
+|2018-08-01T09：45：00.000|41|
+|2018-08-01T09：50：00.000|41|
+|2018-08-01T09：55：00.000|16|
 
 还可使用函数（例如 `startofday`）来创建结果存储桶：
 
@@ -136,11 +130,11 @@ Event
 
 |timestamp|count_|
 |--|--|
-|2018-07-28T00:00:00.000|7,136|
-|2018-07-29T00:00:00.000|12,315|
-|2018-07-30T00:00:00.000|16,847|
-|2018-07-31T00:00:00.000|12,616|
-|2018-08-01T00:00:00.000|5,416|
+|2018-07-28T00：00：00.000|7,136|
+|2018-07-29T00：00：00.000|12,315|
+|2018-07-30T00：00：00.000|16,847|
+|2018-07-31T00：00：00.000|12,616|
+|2018-08-01T00：00：00.000|5,416|
 
 
 ## <a name="time-zones"></a>时区

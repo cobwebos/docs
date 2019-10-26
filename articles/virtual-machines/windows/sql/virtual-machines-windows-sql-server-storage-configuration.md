@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: mathoma
-ms.openlocfilehash: 57a325dd297955296a94db134b6a2a6d58a37f03
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a91098d06f481afaae75eb497d5a076c3eb42c07
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828615"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72896959"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 的存储配置
 
@@ -28,7 +28,7 @@ ms.locfileid: "71828615"
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要使用自动存储配置设置，虚拟机需有以下特征：
 
@@ -83,7 +83,7 @@ ms.locfileid: "71828615"
 * [使用自动修补创建 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-autopatching)
 * [使用 AKV 集成创建 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-keyvault)
 
-### <a name="quickstart-template"></a>快速启动模板
+### <a name="quickstart-template"></a>快速入门模板
 
 可以使用以下快速入门模板，通过存储优化部署 SQL Server VM。 
 
@@ -101,7 +101,7 @@ ms.locfileid: "71828615"
 * 其他（非 SQL 存储）
 * 可用
 
-若要修改存储设置，请在“设置”下选择“配置”。 
+若要修改存储设置，请选择 "**设置**" 下的 "**配置**"。 
 
 ![为现有 SQL Server VM 配置存储](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
 
@@ -113,9 +113,9 @@ ms.locfileid: "71828615"
 
 ## <a name="storage-configuration"></a>存储配置
 
-本部分提供有关在 Azure 门户中预配或配置 SQL VM 期间，Azure 自动执行的存储配置更改的参考信息。
+本部分提供有关 Azure 在 Azure 门户中的 SQL VM 预配或配置期间自动执行的存储配置更改的参考。
 
-* Azure 通过从 VM 中选择的存储配置存储池。 本主题的下一部分提供了有关存储池配置的详细信息。
+* Azure 通过从 VM 选择的存储配置存储池。 本主题的下一部分提供了有关存储池配置的详细信息。
 * 自动存储配置始终使用[高级 SSD](../disks-types.md) P30 数据磁盘。 因此，所选 TB 数目与附加到 VM 的数据磁盘数目之间存在 1:1 映射。
 
 有关价格信息，请参阅 [磁盘存储](https://azure.microsoft.com/pricing/details/storage) 选项卡上的 **存储定价** 页。
@@ -124,21 +124,18 @@ ms.locfileid: "71828615"
 
 Azure 使用以下设置在 SQL Server VM 上创建存储池。
 
-| 设置 | ReplTest1 |
+| 设置 | Value |
 | --- | --- |
 | 条带大小 |256 KB（数据仓库）；64 KB（事务） |
 | 磁盘大小 |每个磁盘 1 TB |
 | 缓存 |读取 |
 | 分配大小 |64 KB NTFS 分配单元大小 |
-| 即时文件初始化 |Enabled |
-| 在内存中锁定页面 |Enabled |
-| 恢复 |简单恢复（不可复原） |
-| 列数 |数据磁盘数<sup>1</sup> |
-| TempDB 位置 |存储在数据磁盘上<sup>2</sup> |
+| 恢复 | 简单恢复（不可复原） |
+| 列数 |最<sup>多8个</sup>数据磁盘的数量 |
+
 
 <sup>1</sup> 创建存储池后，无法更改存储池中的列数。
 
-<sup>2</sup> 此设置仅适用于使用存储配置功能创建的第一个驱动器。
 
 ## <a name="workload-optimization-settings"></a>工作负荷优化设置
 
@@ -146,7 +143,7 @@ Azure 使用以下设置在 SQL Server VM 上创建存储池。
 
 | 工作负荷类型 | 描述 | 优化 |
 | --- | --- | --- |
-| **常规** |支持大多数工作负荷的默认设置 |无 |
+| **常规** |支持大多数工作负荷的默认设置 |None |
 | **事务处理** |针对传统数据库 OLTP 工作负荷优化存储 |跟踪标志 1117<br/>跟踪标志 1118 |
 | **数据仓库** |针对分析和报告工作负荷优化存储 |跟踪标志 610<br/>跟踪标志 1117 |
 

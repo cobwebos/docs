@@ -1,24 +1,19 @@
 ---
 title: 在 Azure Application Insights 中使用队列 | Microsoft Docs
 description: 分析具有某种共性的不同集、用户、会话、事件或操作
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 263316028e7b35a1a515322dddc4ee867011dcac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d6762ac9253c838f715588451441aa9aa467f673
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604102"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899498"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights 队列
 
@@ -41,9 +36,9 @@ ms.locfileid: "65604102"
 
 1. 打开“队列”工具。
 
-2. 选择“模板库”选项卡。  将会看到各种队列的模板集合。
+2. 选择 "**模板库**" 选项卡。你将看到各种队列的模板集合。
 
-3. 选择“参与用户 -- 按使用天数”。 
+3. 选择“参与用户 -- 按使用天数”。
 
     此队列有三个参数：
     * **Activities**：选择要将哪些事件和页面视图计入“用法”。
@@ -56,16 +51,16 @@ ms.locfileid: "65604102"
 
     现在，此队列代表在过去 28 天内 5 个独立的日期通过任何自定义事件或页面视图发送的所有用户 ID。
 
-5. 选择“保存”。 
+5. 选择“保存”。
 
    > [!TIP]
    > 为队列命名，例如“Engaged Users (5+ Days)”。 根据是否希望对此 Application Insights 资源拥有访问权限的其他人查看此队列，将此队列保存到“我的报告”或“共享报告”中。
 
-6. 选择“返回库”。 
+6. 选择“返回库”。
 
 ### <a name="what-can-you-do-by-using-this-cohort"></a>此队列有哪些作用？
 
-打开“用户”工具。 在“显示”下拉框中，选择在“用户属于...”下创建的队列。  
+打开“用户”工具。 在“显示”下拉框中，选择在“用户属于...”下创建的队列。
 
 现已根据此用户队列筛选“用户”工具：
 
@@ -76,21 +71,21 @@ ms.locfileid: "65604102"
 * 不能通过普通的筛选器创建此集。 日期逻辑更高级。
 * 可以使用“用户”工具中的正常筛选器进一步筛选此队列。 因此，尽管该队列是基于 28 天期限定义的，但仍可以在“用户”工具中将时间范围调整为 30、60 或 90 天。
 
-这些筛选器支持更复杂的问题，而通过查询生成器无法表达这样的问题。 例如，对于在过去 28 天参与的人员，  他们在过去 60 天的行为如何？
+这些筛选器支持更复杂的问题，而通过查询生成器无法表达这样的问题。 例如，_从事过去28天的人。这些人在过去60天的行为如何？_
 
 ## <a name="example-events-cohort"></a>示例：事件队列
 
-还可以创建事件队列。 在本部分，我们将定义一个事件队列和页面视图， 然后了解如何从其他工具使用它们。 此队列可以定义一组被团队视为活动用法的事件，或者定义一组与特定新功能相关的事件。 
+还可以创建事件队列。 在本部分，我们将定义一个事件队列和页面视图， 然后了解如何从其他工具使用它们。 此队列可以定义一组被团队视为活动用法的事件，或者定义一组与特定新功能相关的事件。
 
 1. 打开“队列”工具。
 
-2. 选择“模板库”选项卡。  将会看到各种队列的模板集合。
+2. 选择 "**模板库**" 选项卡。你将看到各种队列的模板集合。
 
-3. 选择“事件选取器”。 
+3. 选择“事件选取器”。
 
     ![事件选取器的屏幕截图](./media/usage-cohorts/006.png)
 
-4. 在“活动”下拉框中，选择想要添加到队列中的事件。 
+4. 在“活动”下拉框中，选择想要添加到队列中的事件。
 
 5. 保存队列并为其命名。
 
@@ -100,7 +95,7 @@ ms.locfileid: "65604102"
 
 ![演练“队列”工具用法的动画](./media/usage-cohorts/cohorts0001.gif)
 
-1. 打开“队列”工具，依次选择“模板库”选项卡、“空白用户队列”。  
+1. 打开“队列”工具，依次选择“模板库”选项卡、“空白用户队列”。
 
     ![空白用户队列](./media/usage-cohorts/001.png)
 
@@ -123,20 +118,20 @@ ms.locfileid: "65604102"
     | where client_CountryOrRegion == "United Kingdom"
     ```
 
-3. 选择“运行查询”。  如果表中未显示用户 ID，请更改为应用程序用户所在的国家/地区。
+3. 选择“运行查询”。 如果看不到 "用户 Id" 出现在表中，请转到应用程序拥有用户的国家/地区。
 
 4. 保存并命名队列。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-_我已定义某些国家/地区的用户的队列。当我在“用户”工具中将此队列与仅基于该国家/地区设置筛选器进行比较时，看到了不同的结果。为什么？_
+_我已经定义了某个国家/地区的用户队列。在 "用户" 工具中比较此群体只是在该国家/地区上设置筛选器时，会看到不同的结果。为什么?_
 
 队列与筛选器有所不同。 假设你为英国的用户创建了一个队列（类似于上述示例中的定义），并将结果与设置筛选器“国家或地区 = 英国”进行比较。
 
 * 队列版本将显示在当前时间范围内从英国发送了一个或多个事件的用户的所有事件。 如果按国家或地区拆分，可能会看到许多国家和地区。
 * 筛选器版本只显示来自英国的事件。 不过，如果按国家或地区拆分，则只会看到“英国”。
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解更多
 
 * [Analytics 查询语言](https://go.microsoft.com/fwlink/?linkid=856587)
 * [用户、会话、事件](usage-segmentation.md)

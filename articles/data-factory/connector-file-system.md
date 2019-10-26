@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: b22242ac617f8dca95941a489c38658f5721851a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
-ms.translationtype: MT
+ms.openlocfilehash: 6b1e1dfec69d73b7fe2648a1eb9ead2ae4622bc5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387281"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897748"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从文件系统复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -203,14 +203,14 @@ ms.locfileid: "72387281"
 
 #### <a name="format-based-source"></a>Parquet，分隔文本、JSON、Avro 和二进制格式源
 
-若要从 Parquet 复制数据 **，分隔文本、JSON、avro 和二进制格式**，请参考基于格式的复制活动源和受支持的[Parquet 格式](format-parquet.md)、[分隔文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文设置。 基于格式的复制源中 @no__t 设置下的文件系统支持以下属性：
+若要从 Parquet 复制数据 **，分隔文本、JSON、avro 和二进制格式**，请参考基于格式的复制活动源和受支持的[Parquet 格式](format-parquet.md)、[分隔文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文设置。 基于格式的复制源中 `storeSettings` 设置下的文件系统支持以下属性：
 
 | properties                 | 描述                                                  | 需要                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | @No__t-0 下的 type 属性必须设置为**FileServerReadSetting**。 | 是                                           |
+| type                     | `storeSettings` 下的 type 属性必须设置为**FileServerReadSetting**。 | 是                                           |
 | recursive                | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 允许的值为 **true**（默认值）和 **false**。 | No                                            |
 | wildcardFolderPath       | 用于筛选源文件夹的带通配符的文件夹路径。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。 <br>请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | No                                            |
-| wildcardFileName         | 在给定的 folderPath/wildcardFolderPath 下包含通配符的文件名用于筛选源文件。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。  请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | "是" （如果未在数据集中指定 `fileName`） |
+| wildcardFileName         | 在给定的 folderPath/wildcardFolderPath 下包含通配符的文件名用于筛选源文件。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。  请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 [请注意，这会反驳文件设置] | "是" （如果未在数据集中指定 `fileName`） |
 | modifiedDatetimeStart    | 基于特性筛选的文件：上次修改时间。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。 | No                                            |
 | modifiedDatetimeEnd      | 同上。                                               | No                                            |
 | maxConcurrentConnections | 要同时连接到存储存储的连接数。 仅当要限制与数据存储区的并发连接时，才指定。 | No                                            |
@@ -308,11 +308,11 @@ ms.locfileid: "72387281"
 
 #### <a name="format-based-sink"></a>Parquet，分隔文本、JSON、Avro 和二进制格式接收器
 
-若要复制 Parquet 中的数据 **（带分隔符的文本、JSON、avro 和二进制格式**），请参阅[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和基于格式的复制活动接收器的[二进制格式](format-binary.md)文章和支持的格式设置。 基于格式的复制接收器中 @no__t 设置下的文件系统支持以下属性：
+若要复制 Parquet 中的数据 **（带分隔符的文本、JSON、avro 和二进制格式**），请参阅[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和基于格式的复制活动接收器的[二进制格式](format-binary.md)文章和支持的格式设置。 基于格式的复制接收器中 `storeSettings` 设置下的文件系统支持以下属性：
 
 | properties                 | 描述                                                  | 需要 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | @No__t-0 下的 type 属性必须设置为**FileServerWriteSetting**。 | 是      |
+| type                     | `storeSettings` 下的 type 属性必须设置为**FileServerWriteSetting**。 | 是      |
 | copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | No       |
 | maxConcurrentConnections | 并发连接到数据存储的连接数。 仅当要限制与数据存储区的并发连接时，才指定。 | No       |
 

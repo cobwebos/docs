@@ -1,5 +1,5 @@
 ---
-title: 在 PIM 中配置 Azure 资源角色设置 - Azure Active Directory | Microsoft Docs
+title: 在 Privileged Identity Management-Azure Active Directory 中配置 Azure 资源角色设置 |Microsoft Docs
 description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中配置 Azure 资源角色设置。
 services: active-directory
 documentationcenter: ''
@@ -11,95 +11,95 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 10/23/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88645d07ff213b0b7a56f2b081f0aaed01fd2929
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 5f322fed83f89fea64c8d834dd0c72ab9c279c11
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804200"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895800"
 ---
-# <a name="configure-azure-resource-role-settings-in-pim"></a>在 PIM 中配置 Azure 资源角色设置
+# <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure 资源角色设置
 
-配置 Azure 资源角色设置时，可定义应用于 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 中的 Azure 资源角色分配的默认设置。 使用以下步骤配置审批工作流并指定谁可以批准或拒绝请求。
+配置 Azure 资源角色设置时，将在 Azure Active Directory （Azure AD） Privileged Identity Management （PIM）中定义应用于 Azure 资源角色分配的默认设置。 使用以下步骤配置审批工作流并指定谁可以批准或拒绝请求。
 
 ## <a name="open-role-settings"></a>打开角色设置
 
 请遵循以下步骤打开 Azure 资源角色的设置。
 
-1. 使用[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色成员用户的身份登录到 [Azure 门户](https://portal.azure.com/)。
+1. 使用[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色中的用户登录到[Azure 门户](https://portal.azure.com/)。
 
 1. 打开“Azure AD Privileged Identity Management”。
 
-1. 单击“Azure 资源”。
+1. 选择“Azure 资源”。
 
-1. 单击要管理的资源，如订阅或管理组。
+1. 选择要管理的资源，例如订阅或管理组。
 
-    ![列出可以管理的资源的“Azure 资源”页](./media/pim-resource-roles-configure-role-settings/resources-list.png)
+    ![列出可以管理的资源的 Azure 资源页](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
-1. 单击“角色设置”。
+1. 选择 "**角色设置**"。
 
-    ![列出 Azure 资源角色的“角色设置”页](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![列出 Azure 资源角色的角色设置页](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
-1. 单击要配置其设置的角色。
+1. 选择要配置其设置的角色。
 
-    ![列出多个分配和激活设置的“角色设置详细信息”页](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![列出多个分配和激活设置的角色设置详细信息页](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
-1. 单击“编辑”以打开“角色设置”窗格。
+1. 选择 "**编辑**" 以打开 "角色设置" 窗格。
 
-    ![“编辑角色设置”页，其中包含用于更新分配和激活设置的选项](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    !["编辑角色设置" 页，其中包含用于更新分配和激活设置的选项](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
 
     在每个角色的“角色设置”窗格上，有多个可以配置的设置。
 
 ## <a name="assignment-duration"></a>分配持续时间
 
-配置角色的设置时，可以从用于每种分配类型（合格和活动）的两个分配持续时间选项中进行选择·。 在 PIM 中将成员分配到角色时，这些选项将成为默认的最大持续时间。
+配置角色的设置时，可以从用于每种分配类型（合格和活动）的两个分配持续时间选项中进行选择·。 当用户分配到 Privileged Identity Management 中的角色时，这些选项将成为默认的最大持续时间。
 
 可以选择其中一个合格的分配持续时间选项：
 
 | | |
 | --- | --- |
-| **允许永久的合格分配** | 资源管理员可以分配永久的合格成员身份。 |
+| **允许永久的合格分配** | 资源管理员可以分配永久的合格分配。 |
 | **使合格分配在以下时间后过期** | 资源管理员可以要求所有合格分配都具有指定的开始和结束日期。 |
 
 并且，可以选择其中一个活动分配持续时间选项：
 
 | | |
 | --- | --- |
-| **允许永久的活动分配** | 资源管理员可以分配永久的活动成员身份。 |
+| **允许永久的活动分配** | 资源管理员可以分配永久活动分配。 |
 | **使活动分配在以下时间后过期** | 资源管理员可以要求所有活动分配都具有指定的开始和结束日期。 |
 
-> [!NOTE] 
-> 资源管理员可续订具有特定结束日期的所有分配。 此外，成员也可启动自助服务请求来[扩展或续订角色分配](pim-resource-roles-renew-extend.md)。
+> [!NOTE]
+> 资源管理员可续订具有特定结束日期的所有分配。 此外，用户还可以启动自助服务请求来[扩展或续订角色分配](pim-resource-roles-renew-extend.md)。
 
 ## <a name="require-multi-factor-authentication"></a>需要多重身份验证
 
-PIM 针对两种不同的方案提供了可选的 Azure 多重身份验证 (MFA) 执行。
+Privileged Identity Management 提供了两种不同的可选 Azure 多重身份验证强制执行方案。
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>要求在活动分配时进行多重身份验证
 
-在某些情况下，你可能希望为成员分配短期（例如，一天）角色。 在这种情况下，不需要分配的成员请求激活。 在这种情况下，PIM 无法在成员使用其角色分配时强制执行 MFA，因为成员从分配之时起已在角色中处于活动状态。
+在某些情况下，可能需要将用户或组分配到某个角色的短时间（例如一天）。 在这种情况下，分配的用户无需请求激活。 在这种情况下，当用户使用其角色分配时，Privileged Identity Management 无法强制实施多重身份验证，因为在分配该角色时，用户已在角色中处于活动状态。
 
-为确保完成分配的资源管理员是其本人，可以通过选中“在活动分配时要求进行多重身份验证”框来对活动分配强制执行 MFA。
+若要确保满足分配的资源管理员是谁，可以通过选中 "**对活动分配需要多重身份验证**" 复选框，对活动分配强制执行多重身份验证。
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>要求在激活时进行多重身份验证
 
-可以要求角色的合格成员在激活之前先运行 MFA。 此过程可确保请求激活的用户一定就是其本人。 强制执行此选项可以在用户帐户可能已遭入侵的情况下保护关键资源。
+你可以要求具有角色的用户能够在激活之前证明他们使用 Azure 多重身份验证的用户。 多重身份验证可确保用户是他们声称具有合理确定性的用户。 强制执行此选项可以在用户帐户可能已遭入侵的情况下保护关键资源。
 
-要在激活前要求合格成员运行 MFA，请选中“在激活时要求进行多重身份验证”框。
+若要在激活之前要求进行多重身份验证，请选中 "**激活时需要多重身份验证**" 复选框。
 
-有关详细信息，请参阅[多重身份验证 (MFA) 和 PIM](pim-how-to-require-mfa.md)。
+有关详细信息，请参阅[多重身份验证和 Privileged Identity Management](pim-how-to-require-mfa.md)。
 
 ## <a name="activation-maximum-duration"></a>最长激活持续时间
 
-使用“最长激活持续时间”滑块是角色在过期前保持活动状态的最大时间（以小时为单位）。 此值可为 1 到 24 小时。
+使用“最长激活持续时间”滑块是角色在过期前保持活动状态的最大时间（以小时为单位）。 此值可以介于1到24小时之间。
 
 ## <a name="require-justification"></a>需要理由
 
-可以要求成员在活动分配或激活时输入理由。 若需要理由，请选中“在活动分配时需要理由”框或“在激活时需要理由”框。
+您可以要求用户在激活时输入业务理由。 若需要理由，请选中“在活动分配时需要理由”框或“在激活时需要理由”框。
 
 ## <a name="require-approval-to-activate"></a>需要批准才能激活
 
@@ -107,17 +107,17 @@ PIM 针对两种不同的方案提供了可选的 Azure 多重身份验证 (MFA)
 
 1. 选中“需要批准以激活”复选框。
 
-1. 单击“选择审批者”打开“选择成员或组”窗格。
+1. 选择 "**选择审批者**"，打开 "**选择成员或组**" 页。
 
-    ![用于选择审批者的“选择成员或组”窗格](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
+    ![选择用户或组窗格以选择审批者](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. 至少选择一个成员或组，然后单击“选择”。 可以添加任何成员和组的组合。 必须至少选择 1 个审批者。 没有默认的审批者。
+1. 至少选择一个用户或组，然后单击 "**选择**"。 你可以添加用户和组的任意组合。 必须至少选择 1 个审批者。 没有默认的审批者。
 
     所选项将出现在所选审批者列表中。
 
-1. 在指定所有角色设置后，单击“更新”以保存更改。
+1. 指定所有角色设置后，请选择 "**更新**" 以保存所做的更改。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 PIM 中分配 Azure 资源角色](pim-resource-roles-assign-roles.md)
-- [在 PIM 中为 Azure 资源角色配置安全警报](pim-resource-roles-configure-alerts.md)
+- [在 Privileged Identity Management 中分配 Azure 资源角色](pim-resource-roles-assign-roles.md)
+- [在 Privileged Identity Management 中配置 Azure 资源角色的安全警报](pim-resource-roles-configure-alerts.md)

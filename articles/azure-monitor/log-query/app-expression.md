@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor 日志查询中的 app() 表达式 | Microsoft Docs
-description: Azure Monitor 日志查询中使用应用表达式来检索同一资源组、 另一个资源组或另一个订阅中特定 Application Insights 应用程序中的数据。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+description: 应用表达式用于 Azure Monitor 日志查询中，以从同一资源组、另一资源组或其他订阅中的特定 Application Insights 应用程序检索数据。
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 01/25/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: a1a605bc733597430f64dceeb6c485db0abf657b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.date: 01/25/2019
+ms.openlocfilehash: fd6bfd40eadfc09008c992d263b065d7b41ffa1f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589251"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894471"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor 查询中的 app() 表达式
 
@@ -28,12 +22,12 @@ ms.locfileid: "60589251"
 
 ## <a name="syntax"></a>语法
 
-`app(`标识符`)` 
+`app(`标识符`)`
 
 
 ## <a name="arguments"></a>参数
 
-- 标识符  ：使用下表中的某种格式标识应用。
+- 标识符：使用下表中的某种格式标识应用。
 
 | 标识符 | 描述 | 示例
 |:---|:---|:---|

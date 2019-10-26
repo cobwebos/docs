@@ -1,25 +1,18 @@
 ---
 title: Azure 网络性能监视器的定价常见问题解答 | Microsoft Docs
 description: 常见问题解答 - Azure 网络性能监视器
-services: monitoring-and-diagnostics
-documentationcenter: na
-author: agummadi
-manager: cherylmc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/02/2018
+author: agummadi
 ms.author: agummadi
-ms.openlocfilehash: 68e84d8ac82d5cdd52bf92df858730315514c17c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 04/02/2018
+ms.openlocfilehash: 3d69637c2851764363209ed8dfbe8c24c636ffba
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612853"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898792"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure 网络性能监视器的定价变化
 
@@ -38,7 +31,7 @@ ms.locfileid: "67612853"
 
 NPM 的计费基于以下两个组件的用量和消耗量：
 * **节点**：所有综合事务都在节点上发起和终结。 节点也称为代理或 Microsoft 管理代理。
-* **Data**：各种网络测试的结果存储在 Log Analytics 工作区中。
+* **数据**：各种网络测试的结果存储在 Log Analytics 工作区中。
 
 在旧模型中，帐单是根据节点数和生成的数据量计算的。 
 
@@ -53,9 +46,9 @@ NPM 中的性能监视器功能现在根据以下各项的组合计费：
 
 性能监视器监视网络中两个或更多个位置之间的连接。 一个子网中的一组节点或代理与另一个子网中的一组节点之间的连接称为子网链接。
 
-**我有两个子网（A 和 B），并且每个子网包含多个代理。性能监视器监视从子网 A 中所有代理到子网 B 中所有代理的连接。是否根据子网间的连接数计费？**
+**我有两个子网（A 和 B），并且在每个子网中都有多个代理。性能监视器监视子网 A 上的所有代理与子网 B 上的所有代理的连接。是否会根据子网间连接的数量向我收费？**
 
-否。 计费时，从子网 A 到子网 B 的所有连接将统一合并成一个子网链接。 只会计收一个连接的费用。 性能监视器继续监视每个子网中各个代理之间的连接。
+不。 计费时，从子网 A 到子网 B 的所有连接将统一合并成一个子网链接。 只会计收一个连接的费用。 性能监视器继续监视每个子网中各个代理之间的连接。
 
 **监视子网链接的费用是多少？**
 
@@ -63,7 +56,7 @@ NPM 中的性能监视器功能现在根据以下各项的组合计费：
 
 **如何对性能监视器生成的数据收费？**
 
-Log Analytics 的[定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据引入”部分中提供了针对引入（将数据上传到 Azure Monitor 的 Log Analytics 工作区，以及数据处理和编制索引）收取的费用。 [定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据保留”部分中还提供了针对数据保留（即，在第一个月后，根据客户选项保留数据）收取的费用。
+"数据引入" 部分的 "Log Analytics" 的 "[定价" 页](https://azure.microsoft.com/pricing/details/log-analytics/)上提供了用于引入的费用（Azure Monitor、处理和索引中的数据上传到 Log Analytics 工作区）。 [定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据保留”部分中还提供了针对数据保留（即，在第一个月后，根据客户选项保留数据）收取的费用。
 
 
 ## <a name="expressroute-monitor"></a>ExpressRoute 监视器
@@ -72,7 +65,7 @@ Log Analytics 的[定价页](https://azure.microsoft.com/pricing/details/log-ana
 
 ExpressRoute 监视器的费用根据监视期间生成的数据量计费。 有关详细信息，请参阅“如何对性能监视器生成的数据收费？”
 
-**我使用 ExpressRoute 监视器来监视多条 ExpressRoute 线路。费用是否根据监视的线路数来计收？**
+**我使用 ExpressRoute 监视器来监视多个 ExpressRoute 线路。我是否根据所监视的回路数量收费？**
 
 我们不会根据线路数或对等互连类型（例如专用对等互连、Microsoft 对等互连）来计费， 而是根据数据量计费，如前所述。
 
@@ -117,7 +110,7 @@ ExpressRoute 监视器的费用根据监视期间生成的数据量计费。 有
 
 请参阅[连接监视](https://azure.microsoft.com/pricing/details/network-watcher/)部分，了解监视终结点的整月费用。 Log Analytics 的[定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据引入”部分中提供了数据费用。
 
-## <a name="references"></a>参考资料
+## <a name="references"></a>参考
 
-[Log Analytics 定价常见问题解答](https://azure.microsoft.com/pricing/details/log-analytics/)：常见问题解答部分提供了有关免费层、每个节点的定价和其他定价详细信息。
+[Log Analytics 定价常见问题解答](https://azure.microsoft.com/pricing/details/log-analytics/) - 常见问题解答部分提供了有关免费层、每个节点的定价和其他定价详细信息。
 

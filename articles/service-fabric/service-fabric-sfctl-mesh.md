@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI - sfctl mesh | Microsoft Docs
 description: 介绍 Service Fabric CLI sfctl mesh 命令。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 0774a933bb109ffc66c7f4673d2803f0631f9b82
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: a97cf0a9dd9eccea2db60d73308338350102cb8c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035321"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901112"
 ---
 # <a name="sfctl-mesh"></a>sfctl mesh
 删除和管理 Service Fabric 网格应用程序。
@@ -39,5 +40,5 @@ ms.locfileid: "69035321"
 
 
 ## <a name="next-steps"></a>后续步骤
-- [安装](service-fabric-cli.md) Service Fabric CLI。
+- [设置](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

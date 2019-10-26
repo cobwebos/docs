@@ -1,26 +1,20 @@
 ---
 title: 在 Visual Studio 中使用 Azure Application Insights 调试应用程序 | Microsoft Docs
 description: 调试期间和生产环境中的 Web 应用性能分析和诊断。
-services: application-insights
-documentationcenter: .net
-author: NumberByColors
-manager: carmonm
-ms.assetid: 2059802b-1131-477e-a7b4-5f70fb53f974
-ms.service: application-insights
-ms.custom: vs-azure
-ms.workload: azure-vs
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/07/2017
-ms.pm_owner: daviste;NumberByColors
-ms.reviewer: mbullwin
+author: NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 1b2f429129c0bb9098f4f5029cb07ce06bc5db13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/07/2017
+ms.reviewer: mbullwin
+ms.custom: vs-azure
+ms.openlocfilehash: 32596b058918d3a8859dc356f8f0b1223b7f755a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255121"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899280"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>在 Visual Studio 中使用 Azure Application Insights 调试应用程序
 在 Visual Studio（2015 和更高版本）中，可以使用来自 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 的遥测，在调试和生产环境中分析 ASP.NET Web 应用中的性能和诊断问题。
@@ -80,7 +74,7 @@ Application Insights 的“搜索”窗口显示已记录的事件。 （如果�
 ## <a name="trends"></a>趋势
 趋势是用于可视化一段时间内的应用行为的工具。 
 
-从 Application Insights 工具栏按钮或 Application Insights“搜索”窗口选择“浏览遥测趋势”  。 选择五种常见查询中的一个，以便开始使用。 可以根据遥测类型、时间范围和其他属性分析不同的数据集。 
+从 Application Insights 工具栏按钮或 Application Insights“搜索”窗口选择“浏览遥测趋势” 。 选择五种常见查询中的一个，以便开始使用。 可以根据遥测类型、时间范围和其他属性分析不同的数据集。 
 
 若要查找数据中的异常情况，请选择“视图类型”下拉列表下的其中一个异常情况选项。 使用窗口底部的筛选选项，可轻松地全力探索遥测的特定子集。
 
@@ -98,7 +92,7 @@ Application Insights 的“搜索”窗口显示已记录的事件。 （如果�
 * *最初，将 Application Insights 完全配置为将遥测发送到门户。但现在只想查看 Visual Studio 中的遥测。*
   
   * 在“搜索”窗口的“设置”中，即使应用将遥测发送到门户，也有选项可供搜索本地诊断。
-  * 要停止将遥测发送到门户，请注释禁止 ApplicationInsights.config 的 `<instrumentationkey>...` 行。准备好再次将遥测发送到门户时，请取消注释。
+  * 若要停止发送到门户的遥测，请从 Applicationinsights.config 中注释掉行 `<instrumentationkey>...`。如果已准备好将遥测发送到门户，请将其取消注释。
 
 
 ## <a name="next-steps"></a>后续步骤

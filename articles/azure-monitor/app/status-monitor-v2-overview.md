@@ -1,23 +1,18 @@
 ---
 title: Azure 应用程序 Insights 代理概述 |Microsoft Docs
 description: Application Insights 代理的概述。 监视网站性能而不重新部署网站。 适用于托管在本地、Vm 或 Azure 上的 ASP.NET web 应用。
-services: application-insights
-documentationcenter: .net
-author: TimothyMothra
-manager: alexklim
-ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/16/2019
+author: TimothyMothra
 ms.author: tilee
-ms.openlocfilehash: 294b0d2d91650f33f0b92179a069a8c7cd845525
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 09/16/2019
+ms.openlocfilehash: 61c3721745550b43aea730d0bcd2230b0435ff53
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389839"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899597"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>为本地服务器部署 Azure Monitor Application Insights 代理
 
@@ -61,7 +56,7 @@ Application Insights 代理位于此处： https://www.powershellgallery.com/pac
 
 - Application Insights 代理是否支持代理安装？
 
-  *是*。 有多种方法可下载 Application Insights 代理。 如果你的计算机可以访问 internet，则可以通过使用 @no__t 参数，载入 PowerShell 库。
+  *是*。 有多种方法可下载 Application Insights 代理。 如果你的计算机可以访问 internet，则可以通过使用 `-Proxy` 参数来载入 PowerShell 库。
 您还可以手动下载该模块，并将其安装在您的计算机上或直接使用。
 [详细说明](status-monitor-v2-detailed-instructions.md)中对每个选项进行了介绍。
 
