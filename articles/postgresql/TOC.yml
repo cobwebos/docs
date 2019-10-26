@@ -251,6 +251,10 @@
           items:
             - name: Azure 门户
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: 故障排除
+          items:
+            - name: 排查连接错误
+              href: howto-hyperscale-troubleshoot-common-connection-issues.md
 - name: 引用
   items:
     - name: Azure CLI

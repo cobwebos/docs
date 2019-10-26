@@ -11,12 +11,12 @@ metadata:
   author: jpconnock
   ms.author: jpconnock
   ms.date: 09/26/2019
-  ms.openlocfilehash: 0dcbe8d01761e8feb06cd5705a104d8c9e5196e0
-  ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+  ms.openlocfilehash: 671093610cc53fae3a06f9b185ef258ab2097305
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/08/2019
-  ms.locfileid: "72038595"
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72933381"
 landingContent:
 - title: 关于 Azure Spring Cloud
   linkLists:
@@ -38,6 +38,22 @@ landingContent:
     links:
     - text: 准备 Java Spring 应用以进行部署
       url: spring-cloud-tutorial-prepare-app-deployment.md
+- title: 配置服务
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用配置服务器来维护应用程序配置
+      url: spring-cloud-tutorial-config-server.md
+    - text: 手动缩放应用程序
+      url: spring-cloud-tutorial-scale-manual.md
+  - linkListType: how-to-guide
+    links:
+    - text: 在 Azure Spring Cloud 中自动运行 CI/CD 管道
+      url: spring-cloud-howto-cicd.md
+    - text: 使用 Azure Spring Cloud 启用蓝绿部署
+      url: spring-cloud-howto-staging-environment.md
+    - text: 在 Azure Spring Cloud 中使用永久性存储
+      url: spring-cloud-howto-persistent-storage.md
 - title: 监视应用程序
   linkLists:
   - linkListType: tutorial
@@ -60,19 +76,3 @@ landingContent:
       url: spring-cloud-tutorial-bind-mysql.md
     - text: 将应用程序绑定到 Azure CosmosDB
       url: spring-cloud-tutorial-bind-cosmos.md
-- title: 配置服务
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: 使用配置服务器来维护应用程序配置
-      url: spring-cloud-tutorial-config-server.md
-    - text: 手动缩放应用程序
-      url: spring-cloud-tutorial-scale-manual.md
-  - linkListType: how-to-guide
-    links:
-    - text: 在 Azure Spring Cloud 中自动运行 CI/CD 管道
-      url: spring-cloud-howto-cicd.md
-    - text: 使用 Azure Spring Cloud 启用蓝绿部署
-      url: spring-cloud-howto-staging-environment.md
-    - text: 在 Azure Spring Cloud 中使用永久性存储
-      url: spring-cloud-howto-persistent-storage.md
