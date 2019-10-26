@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 06/12/2019
+ms.date: 10/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 462d9cd6d2a911e660221621ebde5829e928cf00
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b176e97a546335f597d4cf424d7feb4f5fa0f775
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122221"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597224"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板
 
@@ -183,9 +183,11 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 
     ```yaml
     steps:
-    - task: AzureResourceGroupDeployment@2
+    - task: AzureResourceManagerTemplateDeployment@3
       inputs:
-        azureSubscription: '[YourServiceConnectionName]'
+        deploymentScope: 'Resource Group'
+        ConnectedServiceName: '[EnterYourServiceConnectionName]'
+        subscriptionName: '[EnterTheTargetSubscriptionID]'
         action: 'Create Or Update Resource Group'
         resourceGroupName: '[EnterANewResourceGroupName]'
         location: 'Central US'
@@ -200,14 +202,16 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 
     进行以下更改：
 
-    * **azureSubscription**：将值更新为上一过程中创建的服务连接。
+    * **deloymentScope**：从以下选项中选择部署范围：`Management Group`、`Subscription` 和 `Resource Group`。 在本教程中使用**资源组**。 若要详细了解范围，请参阅[部署范围](./resource-group-template-deploy-rest.md#deployment-scope)。
+    * **ConnectedServiceName**：指定前面创建的服务连接名称。
+    * **SubscriptionName**：指定目标订阅 ID。
     * **操作**：“创建或更新资源组”操作执行 2 项操作 - 1.  如果提供了新的资源组名称，则创建资源组；2. 部署指定的模板。
     * **resourceGroupName**：指定新的资源组名称。 例如，“AzureRmPipeline-rg”  。
     * **位置**：指定资源组的位置。
     * **templateLocation**：指定“链接的项目”时，任务直接从连接的存储库中查找模板文件  。
     * **csmFile** 为模板文件的路径。 无需指定模板参数文件，因为模板中定义的所有参数都具有默认值。
 
-    有关任务的详细信息，请参阅 [Azure 资源组部署任务](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)
+    有关任务的详细信息，请参阅 [Azure 资源组部署任务](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)和 [Azure 资源管理器模板部署任务](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)
 1. 选择“保存并运行”  。
 1. 再次选择“保存并运行”  。 YAML 文件的副本将保存到已连接的存储库中。 浏览到存储库即可查看该 YAML 文件。
 1. 验证管道是否成功执行。

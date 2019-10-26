@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/24/2019
+ms.date: 10/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebaf3a1d877025cafe8829bc937ef032a3c95d03
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f37085744b9a0e7785ef3a411d53e4df5d15e494
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163461"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595008"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ebsco"></a>教程：Azure Active Directory 单一登录 (SSO) 与 EBSCO 集成
 
@@ -48,7 +48,7 @@ ms.locfileid: "70163461"
 * EBSCO 支持**实时**用户预配
 
 > [!NOTE]
-> 由于此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
 ## <a name="adding-ebsco-from-the-gallery"></a>从库中添加 EBSCO
 
@@ -68,10 +68,10 @@ ms.locfileid: "70163461"
 若要配置和测试 EBSCO 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 EBSCO SSO](#configure-ebsco-sso)** - 在应用程序端配置单一登录设置。
-    1. **[创建 EBSCO 测试用户](#create-ebsco-test-user)** - 在 EBSCO 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+    * **[创建 EBSCO 测试用户](#create-ebsco-test-user)** - 在 EBSCO 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -100,6 +100,21 @@ ms.locfileid: "70163461"
     o   **Custid** = 输入唯一的 EBSCO 客户 ID 
 
     o   **Profile** = 客户端可以定制链接，以将用户定向到特定的配置文件（具体取决于从 EBSCO 购买的产品）。 可以输入特定的配置文件 ID。 主 ID 是 eds (EBSCO Discovery Service) 和 ehost（EBSOCOhost 数据库）。 [此处](https://help.ebsco.com/interfaces/EBSCOhost/EBSCOhost_FAQs/How_do_I_set_up_direct_links_to_EBSCOhost_profiles_and_or_databases#profile)提供了相同操作的说明。
+
+1. EBSCO 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
+
+    ![image](common/default-attributes.png)
+
+    > [!Note]
+    > **name** 属性是必需的，将映射到 EBSCO 应用程序中的“名称标识符值”。  默认已添加此属性，因此无需手动添加。
+
+1. 除了上述属性，EBSCO 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
+
+    | Name | 源属性|
+    | ---------------| --------------- |
+    | FirstName   | user.givenname |
+    | LastName   | user.surname |
+    | 电子邮件   | user.mail |
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
@@ -131,12 +146,12 @@ ms.locfileid: "70163461"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-ebsco-sso"></a>配置 EBSCO SSO
@@ -151,8 +166,8 @@ ms.locfileid: "70163461"
 
 Azure AD 将所需的数据传递给 EBSCO 应用程序。 EBSCO 的用户预配可以自动完成，或要求填写表单一次。 具体的过程取决于客户端是否包含大量保存了个人设置的现有 EBSCOhost 帐户。 在实施过程中，可与 [EBSCO 支持团队](mailto:support@ebsco.com)讨论上述过程。 不管采用哪种方法，客户端都不需要在测试之前创建任何 EBSCOhost 帐户。
 
-   >[!Note]
-   >可以自动执行 EBSCOhost 用户预配/个性化。 有关实时用户预配过程，请联系 [EBSCO 支持团队](mailto:support@ebsco.com)。
+   > [!Note]
+   > 可以自动执行 EBSCOhost 用户预配/个性化。 有关实时用户预配过程，请联系 [EBSCO 支持团队](mailto:support@ebsco.com)。
 
 ## <a name="test-sso"></a>测试 SSO
 
@@ -180,4 +195,3 @@ Azure AD 将所需的数据传递给 EBSCO 应用程序。 EBSCO 的用户预配
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [通过 Azure AD 试用 EBSCO](https://aad.portal.azure.com/)
-

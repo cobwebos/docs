@@ -14,16 +14,16 @@ ms.topic: sample
 ms.date: 11/28/2017
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 8e3187ba399ffa4d6c0ca863380205f7fbbfaae8
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 44bb0e615453450c401949f0ce76f15cb82fab67
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036124"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680531"
 ---
 # <a name="add-an-inbound-network-security-group-rule"></a>添加入站网络安全组规则
 
-本示例脚本创建网络安全组规则，以允许端口 8081 上的入站流量。  该脚本获取群集所在的 `Microsoft.Network/networkSecurityGroups` 资源，创建新的网络安全配置规则，并更新网络安全组。 根据需要自定义参数。
+本示例脚本创建网络安全组规则，以允许端口 8081 上的入站流量。  该脚本获取网络安全组、创建新的网络安全配置规则，并更新网络安全组。 根据需要自定义参数。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

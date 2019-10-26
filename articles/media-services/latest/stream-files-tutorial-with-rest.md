@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/22/2019
+ms.date: 10/21/2019
 ms.author: juliako
-ms.openlocfilehash: f9ca4b54db305a5c088b4dda27a6844c8439fa1a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3f065f77c6843b135554e61f5887655114571b08
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055301"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750252"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - REST
 
@@ -62,11 +62,9 @@ ms.locfileid: "67055301"
 
 ## <a name="configure-postman"></a>配置 Postman
 
-此部分配置 Postman。
-
 ### <a name="configure-the-environment"></a>配置环境 
 
-1. 打开 **Postman**。
+1. 打开 **Postman** 应用。
 2. 在屏幕的右侧，选择“管理环境”  选项。
 
     ![管理环境](./media/develop-with-postman/postman-import-env.png)
@@ -96,18 +94,19 @@ ms.locfileid: "67055301"
 在本部分中，请发送与编码和创建 URL 相关的请求，以便能够流式传输文件。 具体说来，将发送以下请求：
 
 1. 获取适用于服务主体身份验证的 Azure AD 令牌
+1. 启动流式处理终结点
 2. 创建输出资产
-3. 创建**转换**
-4. 创建**作业**
-5. 创建**流式处理定位符**
-6. 列出**流式处理定位符**的路径
+3. 创建转换
+4. 创建作业
+5. 创建流定位符
+6. 列出流式处理定位符的路径
 
 > [!Note]
 >  本教程假定你使用唯一名称创建所有资源。  
 
 ### <a name="get-azure-ad-token"></a>获取 Azure AD 令牌 
 
-1. 在 Postman 的左窗口中，选择“步骤 1: 获取 AAD 身份验证令牌”。
+1. 在 Postman 应用的左窗口中，选择“步骤 1: 获取 AAD 身份验证令牌”。
 2. 然后，选择“获取适用于服务主体身份验证的 Azure AD 令牌”。
 3. 按“发送”。 
 
@@ -121,11 +120,38 @@ ms.locfileid: "67055301"
 
     ![获取 AAD 令牌](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
+
+### <a name="start-a-streaming-endpoint"></a>启动流式处理终结点
+
+若要启用流式处理，必须首先启动要从中流式处理视频的[流式处理终结点](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept)。
+
+> [!NOTE]
+> 仅当流式处理终结点处于运行状态时才进行计费。
+
+1. 在 Postman 应用的左侧窗口中，选择“流式处理和实时”。
+2. 然后，选择“启动 StreamingEndpoint”。
+3. 按“发送”。 
+
+    * 发送以下 **POST** 操作：
+
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/:streamingEndpointName/start?api-version={{api-version}}
+        ```
+    * 如果请求成功，则返回 `Status: 202 Accepted`。
+
+        此状态表示已接受请求进行处理；但是，处理尚未完成。 可以根据 `Azure-AsyncOperation` 响应标头中的值查询操作状态。
+
+        例如，下面的 GET 操作返回操作的状态：
+        
+        `https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/<resourceGroupName>/providers/Microsoft.Media/mediaservices/<accountName>/streamingendpointoperations/1be71957-4edc-4f3c-a29d-5c2777136a2e?api-version=2018-07-01`
+
+        [跟踪异步 Azure 操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)一文深入说明了如何通过响应中返回的值跟踪异步 Azure 操作的状态。
+
 ### <a name="create-an-output-asset"></a>创建输出资产
 
 输出[资产](https://docs.microsoft.com/rest/api/media/assets)会存储作业编码的结果。 
 
-1. 在 Postman 的左窗口中，选择“资产”。
+1. 在 Postman 应用的左侧窗口中，选择“资产”。
 2. 然后选择“创建或更新资产”。
 3. 按“发送”。 
 
@@ -156,7 +182,7 @@ ms.locfileid: "67055301"
 > [!Note]
 > 在创建[转换](https://docs.microsoft.com/rest/api/media/transforms)时，首先应检查是否已存在一个使用 **Get** 方法的转换。 本教程假定你使用唯一名称创建该转换。
 
-1. 在 Postman 的左窗口中，选择“编码和分析”。
+1. 在 Postman 应用的左侧窗口中，选择“编码和分析”。
 2. 然后选择“创建转换”。
 3. 按“发送”。 
 
@@ -191,7 +217,7 @@ ms.locfileid: "67055301"
 
 在此示例中，作业的输入基于 HTTPS URL（“https:\//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/”）。
 
-1. 在 Postman 的左窗口中，选择“编码和分析”。
+1. 在 Postman 应用的左侧窗口中，选择“编码和分析”。
 2. 然后选择“创建或更新作业”。
 3. 按“发送”。 
 
@@ -243,7 +269,7 @@ ms.locfileid: "67055301"
 
 媒体服务帐户具有对应于**流式处理策略**条目数的配额。 不应为每个**流式处理定位符**创建新的**流式处理策略**。
 
-1. 在 Postman 的左窗口中，选择“流式处理策略”。
+1. 在 Postman 应用的左侧窗口中，选择“流式处理策略”。
 2. 然后选择“创建流式处理定位符”。
 3. 按“发送”。 
 
@@ -269,7 +295,7 @@ ms.locfileid: "67055301"
 
 创建[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)后，即可获取流式处理 URL
 
-1. 在 Postman 的左窗口中，选择“流式处理策略”。
+1. 在 Postman 应用的左侧窗口中，选择“流式处理策略”。
 2. 然后，选择“列出路径”。
 3. 按“发送”。 
 

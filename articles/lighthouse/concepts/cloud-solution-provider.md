@@ -1,24 +1,27 @@
 ---
 title: 云解决方案提供商计划注意事项
-description: 使用 Azure 委派资源管理时，请务必考虑安全性和访问控制。
+description: 对于 CSP 合作伙伴，Azure 委派资源管理通过启用细化权限来帮助提高安全性和控制力。
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 08/22/2019
+ms.date: 10/17/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 76df2942b176fd7d0e785213e44655ffd11da410
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: cdb9eaf0b1f1a6e7a136432586ad186308e4e3d3
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286198"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550291"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse 和云解决方案提供商计划
 
 如果你是 [CSP（云解决方案提供商）](https://docs.microsoft.com/partner-center/csp-overview)合作伙伴，则已经可以使用[代表客户管理 (AOBO)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) 功能，通过 CSP 计划访问为客户创建的 Azure 订阅。 通过这一访问权限，可直接支持、配置和管理客户的订阅。
 
 通过 Azure Lighthouse，可以将 Azure 委派资源管理与 AOBO 一起使用。 这通过为用户启用更细粒度的权限，有助于提高安全性并减少不必要的访问。 它还可以提高效率和可伸缩性，因为你的用户可以使用租户中的单个登录名来处理多个客户订阅。
+
+> [!TIP]
+> 为了帮助保护客户资源，请务必查看并遵循我们的[建议安全做法](recommended-security-practices.md)以及[合作伙伴安全要求](https://docs.microsoft.com/partner-center/partner-security-requirements)。
 
 ## <a name="administer-on-behalf-of-aobo"></a>代表客户管理 (AOBO)
 

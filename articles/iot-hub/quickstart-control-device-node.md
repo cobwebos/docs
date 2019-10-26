@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc, seo-javascript-september2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 06/21/2019
-ms.openlocfilehash: db049064c35fbe6b940d39f97decc0281983cc0f
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: ed3946c40d8e3eff665e4454b81f408c2033c09a
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515069"
+ms.locfileid: "72529625"
 ---
 # <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>快速入门：使用 Node.js 控制连接到 Azure IoT 中心的设备
 
@@ -128,7 +128,7 @@ az extension add --name azure-cli-iot-ext
 
     以下屏幕截图显示了模拟设备应用程序将遥测数据发送到 IoT 中心后的输出：
 
-    ![运行模拟设备](./media/quickstart-control-device-node/SimulatedDevice-1.png)
+    ![运行模拟设备](./media/quickstart-control-device-node/simulated-device-telemetry-iot-hub.png)
 
 ## <a name="call-the-direct-method"></a>调用直接方法
 
@@ -149,11 +149,11 @@ az extension add --name azure-cli-iot-ext
 
     以下屏幕截图显示了应用程序对设备进行直接方法调用并接收确认后的输出：
 
-    ![运行后端应用程序](./media/quickstart-control-device-node/BackEndApplication.png)
+    ![应用程序对设备进行直接方法调用时的输出](./media/quickstart-control-device-node/direct-method-device-call.png)
 
     运行后端应用程序后，在运行模拟设备的控制台窗口中会出现一条消息，且其发送消息的速率也会发生变化：
 
-    ![模拟客户端的变化](./media/quickstart-control-device-node/SimulatedDevice-2.png)
+    ![模拟客户端发生更改时的输出](./media/quickstart-control-device-node/simulated-device-message-change.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

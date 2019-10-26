@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 240c0e157d7fcd8b76ee7f42f4c780361df6281d
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: bde0c483eacec7fb8e076530bba594eb33a32a12
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245767"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553434"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>快速入门：使用 Azure 门户创建和加密 Windows 虚拟机
 
@@ -77,7 +77,7 @@ ms.locfileid: "72245767"
 
 1. 在加密屏幕的“要加密的磁盘”下，选择“OS 和数据磁盘”。  
 1. 在“加密设置”下，单击“选择密钥保管库和用于加密的密钥”。 
-1. 在右侧边栏中，选择此前创建的密钥保管库的名称作为“密钥保管库”的值，然后单击“选择”。  ***
+1. 在右侧边栏中，选择此前创建的密钥保管库的名称作为“密钥保管库”的值，然后单击“选择”。  
 
     ![磁盘和加密选择](../media/disk-encryption/portal-qs-encrypt-vm-screen.png)
 1. 在加密屏幕顶部，单击“保存”。 此时会出现一个弹出窗口，警告你 VM 会重启。 单击 **“是”** 。

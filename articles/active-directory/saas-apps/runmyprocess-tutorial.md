@@ -17,10 +17,10 @@ ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46c31a209e8521b24e7f604dbe630f689fca484e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68880367"
 ---
 # <a name="tutorial-integrate-runmyprocess-with-azure-active-directory"></a>教程：将 RunMyProcess 与 Azure Active Directory 集成
@@ -141,12 +141,12 @@ ms.locfileid: "68880367"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-runmyprocess-test-user"></a>创建 RunMyProcess 测试用户
@@ -159,7 +159,7 @@ ms.locfileid: "68880367"
 
 1. 在左侧导航面板中，单击“帐户”并选择“用户”，并单击“新建用户”    。
 
-    ![新建用户](./media/runmyprocess-tutorial/tutorial_runmyprocess_003.png "New User")
+    ![新建用户](./media/runmyprocess-tutorial/tutorial_runmyprocess_003.png "新建用户")
 
 1. 在“用户设置”部分中执行以下步骤  ：
 

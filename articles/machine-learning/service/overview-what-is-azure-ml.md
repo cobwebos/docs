@@ -7,14 +7,14 @@ ms.subservice: core
 ms.topic: overview
 author: j-martens
 ms.author: jmartens
-ms.date: 08/05/2019
+ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a70b1c9d3ac888f0f77cf0f6e9ca37bc6cd4324
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c845966c86659c0ff983bf33c492a67dd99275f0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999939"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692935"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
@@ -38,9 +38,9 @@ Azure 机器学习提供了一个基于云的环境，你可以使用这一环�
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
-## <a name="what-can-i-do-with-azure-machine-learning"></a>通过 Azure 机器学习，我可以执行哪些操作？
+## <a name="what-can-i-do-with-azure-machine-learning-service"></a>通过 Azure 机器学习服务，我可以执行哪些操作？
 
-将 <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure 机器学习 Python SDK</a> 与开源 Python 包配合使用，或者使用[可视界面（预览版）](ui-tutorial-automobile-price-train-score.md)，你自己可以在 Azure 机器学习工作区中生成并训练高度精确的机器学习和深度学习模型。
+将 <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure 机器学习 Python SDK</a> 与开源 Python 包配合使用，或者使用[可视界面（预览版）](ui-tutorial-automobile-price-train-score.md)，你自己可以在 Azure 机器学习服务工作区中生成并训练高度精确的机器学习和深度学习模型。
 
 可以从开源 Python 包中提供的许多机器学习组件（例如 <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>、<a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>、<a href="https://pytorch.org" target="_blank">PyTorch</a> 和 <a href="https://mxnet.io" target="_blank">MXNet</a>）中进行选择。
 
@@ -54,7 +54,7 @@ Azure 机器学习提供了一个基于云的环境，你可以使用这一环�
 
 ### <a name="ui-based-low-code-experience"></a>基于 UI 的低代码体验
 
-若要进行无代码训练，请尝试：
+对于无代码训练和部署，请尝试：
 
 + 在易于使用的界面中创建[自动 ML 试验](tutorial-first-experiment-automated-ml.md)。
 + [在可视界面中进行拖放试验](ui-tutorial-automobile-price-train-score.md)。
@@ -90,10 +90,15 @@ Azure 机器学习提供 SDK 和可视界面（预览版），可以快速准备
 || 机器学习工作室 | Azure 机器学习：<br/>可视界面|
 |---| --- | --- |
 || 正式发布 (GA) | 预览|
+|拖放界面| 是 | 是|
+|试验| 规模（10GB 训练数据限制） | 使用计算目标进行缩放|
 |界面的模块| 很多 | 常用模块的初始集|
-|训练计算目标| 专用计算目标，仅限 CPU 支持| 支持 Azure 机器学习计算、GPU 或 CPU。<br/>（其他在 SDK 中受支持的计算）|
-|部署计算目标| 专用 Web 服务格式，不可自定义 | 企业安全选项和 Azure Kubernetes 服务。 <br/>（SDK 中支持的[其他计算](how-to-deploy-and-where.md)） |
-|自动化模型训练和超参数优化 | 否 | 在可视界面中尚不支持。 <br/> （在 SDK 和 Azure 门户/工作区登陆页面中受支持。） |
+|训练计算目标| 专用计算目标，仅 CPU|AML 计算 (GPU/CPU)<br/> Notebook VM |
+|推断计算目标| 专用 Web 服务格式，不可自定义 | Azure Kubernetes 服务（实时推断） <br/>AML 计算（批量推断） |
+|ML 管道| 不支持 | 管道创作 <br/> 已发布管道 <br/> 管道终结点 <br/> [详细了解 ML 管道](concept-ml-pipelines.md)|
+|机器学习操作| 基本模型管理和部署 | 可配置的部署、模型和管道版本控制|
+|模型| 专用格式。 不能在工作室外部使用 | 标准格式，因训练作业而异|
+|自动化模型训练和超参数优化 | 否 | 在可视界面中尚不支持。 <br/> （在 Python SDK 和工作区登陆页中受支持。） |
 
 参考以下教程试用可视界面（预览版）：[教程：使用可视界面预测汽车价格](ui-tutorial-automobile-price-train-score.md)。
 

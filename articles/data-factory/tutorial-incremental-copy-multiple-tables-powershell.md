@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 0c5b9a16a7b52239f1ef16d42e1b4be344863a04
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: b7de8b164fcd818fba1f999ea7b67f11de646ccd
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140622"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533239"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从本地 SQL Server 中的多个表加载到 Azure SQL 数据库。    
@@ -231,7 +231,7 @@ END
 ## <a name="create-a-data-factory"></a>创建数据工厂
 1. 为资源组名称定义一个变量，稍后会在 PowerShell 命令中使用该变量。 将以下命令文本复制到 PowerShell，在双引号中指定 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称，然后运行命令。 例如 `"adfrg"`。 
    
-     ```powershell
+    ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
     ```
 
@@ -245,7 +245,7 @@ END
 1. 若要创建 Azure 资源组，请运行以下命令： 
 
     ```powershell
-    New-AzureRmResourceGroup $resourceGroupName $location
+    New-AzResourceGroup $resourceGroupName $location
     ``` 
     如果该资源组已存在，请勿覆盖它。 为 `$resourceGroupName` 变量分配另一个值，然后再次运行命令
 
@@ -257,10 +257,10 @@ END
     ```powershell
     $dataFactoryName = "ADFIncMultiCopyTutorialFactory";
     ```
-1. 若要创建数据工厂，请运行以下 **Set-AzureRmDataFactoryV2** cmdlet： 
+1. 要创建数据工厂，请运行以下 **Set-AzDataFactoryV2** cmdlet： 
     
     ```powershell       
-    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
+    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
     ```
 
 请注意以下几点：
@@ -276,14 +276,13 @@ END
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 
 
-
 ## <a name="create-linked-services"></a>创建链接服务
-可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分，请创建本地 SQL Server 数据库和 SQL 数据库的链接服务。 
+可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分中，创建本地 SQL Server 数据库和 Azure SQL 数据库的链接服务。 
 
 ### <a name="create-the-sql-server-linked-service"></a>创建 SQL Server 链接服务
 在此步骤中，请将本地 SQL Server 数据库链接到数据工厂。
 
-1. 使用以下内容，在 C:\ADFTutorials\IncCopyMultiTableTutorial 文件夹中创建名为 SqlServerLinkedService.json 的 JSON 文件。 根据连接到 SQL Server 时所使用的身份验证选择适当的节。 如果本地文件夹不存在，请创建。 
+1. 使用以下内容，在 C:\ADFTutorials\IncCopyMultiTableTutorial 文件夹中创建名为“SqlServerLinkedService.json”  的 JSON 文件。 根据连接到 SQL Server 时所使用的身份验证选择适当的节。 如果本地文件夹不存在，请创建。 
 
     > [!IMPORTANT]
     > 根据连接到 SQL Server 时所使用的身份验证选择适当的节。
@@ -291,47 +290,47 @@ END
     如果使用 SQL 身份验证，请复制以下 JSON 定义：
 
     ```json
-    {
-        "properties": {
-            "type": "SqlServer",
-            "typeProperties": {
-                "connectionString": {
-                    "type": "SecureString",
-                    "value": "Server=<servername>;Database=<databasename>;User ID=<username>;Password=<password>;Timeout=60"
-                }
+    {  
+        "name":"SqlServerLinkedService",
+        "properties":{  
+            "annotations":[  
+    
+            ],
+            "type":"SqlServer",
+            "typeProperties":{  
+                "connectionString":"integrated security=False;data source=<servername>;initial catalog=<database name>;user id=<username>;Password=<password>"
             },
-            "connectVia": {
-                "type": "integrationRuntimeReference",
-                "referenceName": "<integration runtime name>"
+            "connectVia":{  
+                "referenceName":"<integration runtime name>",
+                "type":"IntegrationRuntimeReference"
             }
-        },
-        "name": "SqlServerLinkedService"
-    }
+        }
+    } 
    ```    
     如果使用 Windows 身份验证，请复制以下 JSON 定义：
 
     ```json
-    {
-        "properties": {
-            "type": "SqlServer",
-            "typeProperties": {
-                "connectionString": {
-                    "type": "SecureString",
-                    "value": "Server=<server>;Database=<database>;Integrated Security=True"
-                },
-                "userName": "<user> or <domain>\\<user>",
-                "password": {
-                    "type": "SecureString",
-                    "value": "<password>"
+    {  
+        "name":"SqlServerLinkedService",
+        "properties":{  
+            "annotations":[  
+    
+            ],
+            "type":"SqlServer",
+            "typeProperties":{  
+                "connectionString":"integrated security=True;data source=<servername>;initial catalog=<database name>",
+                "userName":"<username> or <domain>\\<username>",
+                "password":{  
+                    "type":"SecureString",
+                    "value":"<password>"
                 }
             },
-            "connectVia": {
-                "type": "integrationRuntimeReference",
-                "referenceName": "<integration runtime name>"
+            "connectVia":{  
+                "referenceName":"<integration runtime name>",
+                "type":"IntegrationRuntimeReference"
             }
-        },
-        "name": "SqlServerLinkedService"
-    }    
+        }
+    }
     ```
     > [!IMPORTANT]
     > - 根据连接到 SQL Server 时所使用的身份验证选择适当的节。
@@ -339,52 +338,56 @@ END
     > - 保存文件之前，请将 &lt;servername>、&lt;databasename>、&lt;username> 和 &lt;password> 替换为 SQL Server 数据库的值。
     > - 如需在用户帐户或服务器名称中使用斜杠字符 (`\`)，请使用转义字符 (`\`)。 例如 `mydomain\\myuser`。
 
-1. 在 PowerShell 中切换到 C:\ADFTutorials\IncCopyMultiTableTutorial 文件夹。
-
-1. 运行 **Set-AzureRmDataFactoryV2LinkedService** cmdlet，创建链接服务 AzureStorageLinkedService。 在以下示例中，传递 *ResourceGroupName* 和 *DataFactoryName* 参数的值： 
+1. 在 PowerShell 中，运行以下 cmdlet 切换到 C:\ADFTutorials\IncCopyMultiTableTutorial 文件夹。
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerLinkedService" -File ".\SqlServerLinkedService.json"
+    Set-Location 'C:\ADFTutorials\IncCopyMultiTableTutorial'
+    ```
+
+1. 运行 **Set-AzDataFactoryV2LinkedService** cmdlet 以创建链接服务 AzureStorageLinkedService。 在以下示例中，传递 *ResourceGroupName* 和 *DataFactoryName* 参数的值： 
+
+    ```powershell
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerLinkedService" -File ".\SqlServerLinkedService.json"
     ```
 
     下面是示例输出：
 
     ```json
     LinkedServiceName : SqlServerLinkedService
-    ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : ADFIncMultiCopyTutorialFactory1201
+    ResourceGroupName : <ResourceGroupName>
+    DataFactoryName   : <DataFactoryName>
     Properties        : Microsoft.Azure.Management.DataFactory.Models.SqlServerLinkedService
     ```
 
 ### <a name="create-the-sql-database-linked-service"></a>创建 SQL 数据库链接服务
-1. 使用以下内容，在 C:\ADFTutorials\IncCopyMultiTableTutorial 文件夹中创建名为 AzureSQLDatabaseLinkedService.json 的 JSON 文件。 （如果文件夹 ADF 不存在，请创建。）将 &lt;server&gt;、&lt;database name&gt;、&lt;user id&gt;、&lt;password&gt; 分别替换为自己的 SQL Server 数据库名称、数据库名称、用户 ID 和密码，然后保存文件。 
+1. 使用以下内容，在 C:\ADFTutorials\IncCopyMultiTableTutorial 文件夹中创建名为 **AzureSQLDatabaseLinkedService.json** 的 JSON 文件。 （如果文件夹 ADF 不存在，请创建。）保存文件之前，请将 &lt;servername&gt;、&lt;database name&gt;、&lt;user name&gt; 和 &lt;password&gt; 替换为 SQL Server 数据库名称、数据库名称、用户名和密码。 
 
     ```json
-    {
-        "name": "AzureSQLDatabaseLinkedService",
-        "properties": {
-            "type": "AzureSqlDatabase",
-            "typeProperties": {
-                "connectionString": {
-                    "value": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database name>; Persist Security Info=False; User ID=<user name>; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;",
-                    "type": "SecureString"
-                }
+    {  
+        "name":"AzureSQLDatabaseLinkedService",
+        "properties":{  
+            "annotations":[  
+    
+            ],
+            "type":"AzureSqlDatabase",
+            "typeProperties":{  
+                "connectionString":"integrated security=False;encrypt=True;connection timeout=30;data source=<servername>.database.windows.net;initial catalog=<database name>;user id=<user name>;Password=<password>;"
             }
         }
     }
     ```
-1. 在 PowerShell 中运行 **Set-AzureRmDataFactoryV2LinkedService** cmdlet，以便创建链接服务 AzureSQLDatabaseLinkedService。 
+1. 在 PowerShell 中运行 **Set-AzDataFactoryV2LinkedService** cmdlet，以便创建链接服务 AzureSQLDatabaseLinkedService。 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
     ```
 
     下面是示例输出：
 
     ```json
     LinkedServiceName : AzureSQLDatabaseLinkedService
-    ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : ADFIncMultiCopyTutorialFactory1201
+    ResourceGroupName : <ResourceGroupName>
+    DataFactoryName   : <DataFactoryName>
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlDatabaseLinkedService
     ```
 
@@ -393,83 +396,89 @@ END
 
 ### <a name="create-a-source-dataset"></a>创建源数据集
 
-1. 在同一文件夹中，创建包含以下内容的名为 SourceDataset.json 的 JSON 文件： 
+1. 在同一文件夹中，创建包含以下内容的名为 **SourceDataset.json** 的 JSON 文件： 
 
     ```json
-    {
-        "name": "SourceDataset",
-        "properties": {
-            "type": "SqlServerTable",
-            "typeProperties": {
-                "tableName": "dummyName"
+    {  
+        "name":"SourceDataset",
+        "properties":{  
+            "linkedServiceName":{  
+                "referenceName":"SqlServerLinkedService",
+                "type":"LinkedServiceReference"
             },
-            "linkedServiceName": {
-                "referenceName": "SqlServerLinkedService",
-                "type": "LinkedServiceReference"
-            }
+            "annotations":[  
+    
+            ],
+            "type":"SqlServerTable",
+            "schema":[  
+    
+            ]
         }
     }
    
     ```
 
-    表名为虚拟名称。 管道中的 Copy 活动使用 SQL 查询来加载数据，而不是加载整个表。
+    管道中的 Copy 活动使用 SQL 查询来加载数据，而不是加载整个表。
 
-1. 运行 **Set-AzureRmDataFactoryV2Dataset** cmdlet 以创建数据集 SourceDataset。
+1. 运行 **Set-AzDataFactoryV2Dataset** cmdlet 以创建数据集 SourceDataset。
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
     ```
 
     下面是该 cmdlet 的示例输出：
     
     ```json
     DatasetName       : SourceDataset
-    ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : ADFIncMultiCopyTutorialFactory1201
+    ResourceGroupName : <ResourceGroupName>
+    DataFactoryName   : <DataFactoryName>
     Structure         :
     Properties        : Microsoft.Azure.Management.DataFactory.Models.SqlServerTableDataset
     ```
 
 ### <a name="create-a-sink-dataset"></a>创建接收器数据集
 
-1. 在同一文件夹中，创建包含以下内容的名为 SinkDataset.json 的 JSON 文件。 tableName 元素由管道在运行时动态设置。 管道中的 ForEach 活动循环访问一个包含表名的列表，每一次迭代都将表名传递到此数据集。 
+1. 在同一文件夹中，创建包含以下内容的名为 **SinkDataset.json** 的 JSON 文件。 tableName 元素由管道在运行时动态设置。 管道中的 ForEach 活动循环访问一个包含表名的列表，每一次迭代都将表名传递到此数据集。 
 
     ```json
-    {
-        "name": "SinkDataset",
-        "properties": {
-            "type": "AzureSqlTable",
-            "typeProperties": {
-                "tableName": {
-                    "value": "@{dataset().SinkTableName}",
-                    "type": "Expression"
+    {  
+        "name":"SinkDataset",
+        "properties":{  
+            "linkedServiceName":{  
+                "referenceName":"AzureSQLDatabaseLinkedService",
+                "type":"LinkedServiceReference"
+            },
+            "parameters":{  
+                "SinkTableName":{  
+                    "type":"String"
                 }
             },
-            "linkedServiceName": {
-                "referenceName": "AzureSQLDatabaseLinkedService",
-                "type": "LinkedServiceReference"
-            },
-            "parameters": {
-                "SinkTableName": {
-                    "type": "String"
+            "annotations":[  
+    
+            ],
+            "type":"AzureSqlTable",
+            "typeProperties":{  
+                "tableName":{  
+                    "value":"@dataset().SinkTableName",
+                    "type":"Expression"
                 }
             }
         }
     }
     ```
 
-1. 运行 **Set-AzureRmDataFactoryV2Dataset** cmdlet 以创建数据集 SinkDataset。
+1. 运行 **Set-AzDataFactoryV2Dataset** cmdlet 以创建数据集 SinkDataset。
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
     ```
 
     下面是该 cmdlet 的示例输出：
     
     ```json
     DatasetName       : SinkDataset
-    ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : ADFIncMultiCopyTutorialFactory1201
+    ResourceGroupName : <ResourceGroupName>
+    DataFactoryName   : <DataFactoryName>
     Structure         :
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlTableDataset
     ```
@@ -477,7 +486,7 @@ END
 ### <a name="create-a-dataset-for-a-watermark"></a>为水印创建数据集
 在此步骤中，创建用于存储高水印值的数据集。 
 
-1. 在同一文件夹中，创建包含以下内容的名为 WatermarkDataset.json 的 JSON 文件： 
+1. 在同一文件夹中，创建包含以下内容的名为 **WatermarkDataset.json** 的 JSON 文件： 
 
     ```json
     {
@@ -494,187 +503,269 @@ END
         }
     }    
     ```
-1. 运行 **Set-AzureRmDataFactoryV2Dataset** cmdlet 以创建数据集 WatermarkDataset。
+1. 运行 **Set-AzDataFactoryV2Dataset** cmdlet 以创建数据集 WatermarkDataset。
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
     ```
 
     下面是该 cmdlet 的示例输出：
     
     ```json
     DatasetName       : WatermarkDataset
-    ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : <data factory name>
+    ResourceGroupName : <ResourceGroupName>
+    DataFactoryName   : <DataFactoryName>
     Structure         :
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlTableDataset    
     ```
 
 ## <a name="create-a-pipeline"></a>创建管道
-此管道使用表名列表作为参数。 ForEach 活动循环访问包含表名的列表，并执行以下操作： 
+此管道使用表名列表作为参数。 **ForEach 活动**循环访问包含表名的列表，并执行以下操作： 
 
-1. 通过 Lookup 活动检索旧的水印值（初始值或上次迭代中使用的值）。
+1. 通过 **Lookup 活动**检索旧的水印值（初始值或上次迭代中使用的值）。
 
-1. 通过 Lookup 活动检索新的水印值（源表中水印列的最大值）。
+1. 通过 **Lookup 活动**检索新的水印值（源表中水印列的最大值）。
 
-1. 通过 Copy 活动将这两个水印值之间的数据从源数据库复制到目标数据库。
+1. 通过 **Copy 活动**将这两个水印值之间的数据从源数据库复制到目标数据库。
 
-1. 通过 StoredProcedure 活动更新旧水印值，以便在下一迭代的第一步使用该值。 
+1. 通过 **StoredProcedure 活动**更新旧水印值，以便在下一迭代的第一步使用该值。 
 
 ### <a name="create-the-pipeline"></a>创建管道
-1. 在同一文件夹中，创建包含以下内容的名为 IncrementalCopyPipeline.json 的 JSON 文件： 
+1. 在同一文件夹中，创建包含以下内容的名为 **IncrementalCopyPipeline.json** 的 JSON 文件： 
 
     ```json
-    {
-        "name": "IncrementalCopyPipeline",
-        "properties": {
-            "activities": [{
+    {  
+        "name":"IncrementalCopyPipeline",
+        "properties":{  
+            "activities":[  
+                {  
+                    "name":"IterateSQLTables",
+                    "type":"ForEach",
+                    "dependsOn":[  
     
-                "name": "IterateSQLTables",
-                "type": "ForEach",
-                "typeProperties": {
-                    "isSequential": "false",
-                    "items": {
-                        "value": "@pipeline().parameters.tableList",
-                        "type": "Expression"
-                    },
+                    ],
+                    "userProperties":[  
     
-                    "activities": [
-                        {
-                            "name": "LookupOldWaterMarkActivity",
-                            "type": "Lookup",
-                            "typeProperties": {
-                                "source": {
-                                    "type": "SqlSource",
-                                    "sqlReaderQuery": "select * from watermarktable where TableName  =  '@{item().TABLE_NAME}'"
-                                },
-    
-                                "dataset": {
-                                    "referenceName": "WatermarkDataset",
-                                    "type": "DatasetReference"
-                                }
-                            }
+                    ],
+                    "typeProperties":{  
+                        "items":{  
+                            "value":"@pipeline().parameters.tableList",
+                            "type":"Expression"
                         },
-                        {
-                            "name": "LookupNewWaterMarkActivity",
-                            "type": "Lookup",
-                            "typeProperties": {
-                                "source": {
-                                    "type": "SqlSource",
-                                    "sqlReaderQuery": "select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}"
+                        "isSequential":false,
+                        "activities":[  
+                            {  
+                                "name":"LookupOldWaterMarkActivity",
+                                "type":"Lookup",
+                                "dependsOn":[  
+    
+                                ],
+                                "policy":{  
+                                    "timeout":"7.00:00:00",
+                                    "retry":0,
+                                    "retryIntervalInSeconds":30,
+                                    "secureOutput":false,
+                                    "secureInput":false
                                 },
+                                "userProperties":[  
     
-                                "dataset": {
-                                    "referenceName": "SourceDataset",
-                                    "type": "DatasetReference"
-                                }
-                            }
-                        },
-    
-                        {
-                            "name": "IncrementalCopyActivity",
-                            "type": "Copy",
-                            "typeProperties": {
-                                "source": {
-                                    "type": "SqlSource",
-                                    "sqlReaderQuery": "select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'"
-                                },
-                                "sink": {
-                                    "type": "SqlSink",
-                                    "SqlWriterTableType": "@{item().TableType}",
-                                    "SqlWriterStoredProcedureName": "@{item().StoredProcedureNameForMergeOperation}"
-                                }
-                            },
-                            "dependsOn": [{
-                                    "activity": "LookupNewWaterMarkActivity",
-                                    "dependencyConditions": [
-                                        "Succeeded"
-                                    ]
-                                },
-                                {
-                                    "activity": "LookupOldWaterMarkActivity",
-                                    "dependencyConditions": [
-                                        "Succeeded"
-                                    ]
-                                }
-                            ],
-    
-                            "inputs": [{
-                                "referenceName": "SourceDataset",
-                                "type": "DatasetReference"
-                            }],
-                            "outputs": [{
-                                "referenceName": "SinkDataset",
-                                "type": "DatasetReference",
-                                "parameters": {
-                                    "SinkTableName": "@{item().TableType}"
-                                }
-                            }]
-                        },
-    
-                        {
-                            "name": "StoredProceduretoWriteWatermarkActivity",
-                            "type": "SqlServerStoredProcedure",
-                            "typeProperties": {
-    
-                                "storedProcedureName": "usp_write_watermark",
-                                "storedProcedureParameters": {
-                                    "LastModifiedtime": {
-                                        "value": "@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}",
-                                        "type": "datetime"
+                                ],
+                                "typeProperties":{  
+                                    "source":{  
+                                        "type":"AzureSqlSource",
+                                        "sqlReaderQuery":{  
+                                            "value":"select * from watermarktable where TableName  =  '@{item().TABLE_NAME}'",
+                                            "type":"Expression"
+                                        }
                                     },
-                                    "TableName": {
-                                        "value": "@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}",
-                                        "type": "String"
+                                    "dataset":{  
+                                        "referenceName":"WatermarkDataset",
+                                        "type":"DatasetReference"
                                     }
                                 }
                             },
+                            {  
+                                "name":"LookupNewWaterMarkActivity",
+                                "type":"Lookup",
+                                "dependsOn":[  
     
-                            "linkedServiceName": {
-                                "referenceName": "AzureSQLDatabaseLinkedService",
-                                "type": "LinkedServiceReference"
+                                ],
+                                "policy":{  
+                                    "timeout":"7.00:00:00",
+                                    "retry":0,
+                                    "retryIntervalInSeconds":30,
+                                    "secureOutput":false,
+                                    "secureInput":false
+                                },
+                                "userProperties":[  
+    
+                                ],
+                                "typeProperties":{  
+                                    "source":{  
+                                        "type":"SqlServerSource",
+                                        "sqlReaderQuery":{  
+                                            "value":"select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}",
+                                            "type":"Expression"
+                                        }
+                                    },
+                                    "dataset":{  
+                                        "referenceName":"SourceDataset",
+                                        "type":"DatasetReference"
+                                    },
+                                    "firstRowOnly":true
+                                }
                             },
+                            {  
+                                "name":"IncrementalCopyActivity",
+                                "type":"Copy",
+                                "dependsOn":[  
+                                    {  
+                                        "activity":"LookupOldWaterMarkActivity",
+                                        "dependencyConditions":[  
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    {  
+                                        "activity":"LookupNewWaterMarkActivity",
+                                        "dependencyConditions":[  
+                                            "Succeeded"
+                                        ]
+                                    }
+                                ],
+                                "policy":{  
+                                    "timeout":"7.00:00:00",
+                                    "retry":0,
+                                    "retryIntervalInSeconds":30,
+                                    "secureOutput":false,
+                                    "secureInput":false
+                                },
+                                "userProperties":[  
     
-                            "dependsOn": [{
-                                "activity": "IncrementalCopyActivity",
-                                "dependencyConditions": [
-                                    "Succeeded"
+                                ],
+                                "typeProperties":{  
+                                    "source":{  
+                                        "type":"SqlServerSource",
+                                        "sqlReaderQuery":{  
+                                            "value":"select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'",
+                                            "type":"Expression"
+                                        }
+                                    },
+                                    "sink":{  
+                                        "type":"AzureSqlSink",
+                                        "sqlWriterStoredProcedureName":{  
+                                            "value":"@{item().StoredProcedureNameForMergeOperation}",
+                                            "type":"Expression"
+                                        },
+                                        "sqlWriterTableType":{  
+                                            "value":"@{item().TableType}",
+                                            "type":"Expression"
+                                        },
+                                        "storedProcedureTableTypeParameterName":{  
+                                            "value":"@{item().TABLE_NAME}",
+                                            "type":"Expression"
+                                        },
+                                        "disableMetricsCollection":false
+                                    },
+                                    "enableStaging":false
+                                },
+                                "inputs":[  
+                                    {  
+                                        "referenceName":"SourceDataset",
+                                        "type":"DatasetReference"
+                                    }
+                                ],
+                                "outputs":[  
+                                    {  
+                                        "referenceName":"SinkDataset",
+                                        "type":"DatasetReference",
+                                        "parameters":{  
+                                            "SinkTableName":{  
+                                                "value":"@{item().TABLE_NAME}",
+                                                "type":"Expression"
+                                            }
+                                        }
+                                    }
                                 ]
-                            }]
-                        }
+                            },
+                            {  
+                                "name":"StoredProceduretoWriteWatermarkActivity",
+                                "type":"SqlServerStoredProcedure",
+                                "dependsOn":[  
+                                    {  
+                                        "activity":"IncrementalCopyActivity",
+                                        "dependencyConditions":[  
+                                            "Succeeded"
+                                        ]
+                                    }
+                                ],
+                                "policy":{  
+                                    "timeout":"7.00:00:00",
+                                    "retry":0,
+                                    "retryIntervalInSeconds":30,
+                                    "secureOutput":false,
+                                    "secureInput":false
+                                },
+                                "userProperties":[  
     
-                    ]
-    
+                                ],
+                                "typeProperties":{  
+                                    "storedProcedureName":"[dbo].[usp_write_watermark]",
+                                    "storedProcedureParameters":{  
+                                        "LastModifiedtime":{  
+                                            "value":{  
+                                                "value":"@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}",
+                                                "type":"Expression"
+                                            },
+                                            "type":"DateTime"
+                                        },
+                                        "TableName":{  
+                                            "value":{  
+                                                "value":"@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}",
+                                                "type":"Expression"
+                                            },
+                                            "type":"String"
+                                        }
+                                    }
+                                },
+                                "linkedServiceName":{  
+                                    "referenceName":"AzureSQLDatabaseLinkedService",
+                                    "type":"LinkedServiceReference"
+                                }
+                            }
+                        ]
+                    }
                 }
-            }],
-    
-            "parameters": {
-                "tableList": {
-                    "type": "Object"
+            ],
+            "parameters":{  
+                "tableList":{  
+                    "type":"array"
                 }
-            }
+            },
+            "annotations":[  
+    
+            ]
         }
     }
     ```
-1. 运行 **Set-AzureRmDataFactoryV2Pipeline** cmdlet，以便创建管道 IncrementalCopyPipeline。
+1. 运行 **Set-AzDataFactoryV2Pipeline** cmdlet 以创建管道 IncrementalCopyPipeline。
     
    ```powershell
-   Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
+   Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
    ``` 
 
    下面是示例输出： 
 
    ```json
     PipelineName      : IncrementalCopyPipeline
-    ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : ADFIncMultiCopyTutorialFactory1201
+    ResourceGroupName : <ResourceGroupName>
+    DataFactoryName   : <DataFactoryName>
     Activities        : {IterateSQLTables}
     Parameters        : {[tableList, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]}
    ```
  
 ## <a name="run-the-pipeline"></a>运行管道
 
-1. 在同一文件夹中创建包含以下内容的名为 Parameters.json 的参数文件：
+1. 在同一文件夹中创建包含以下内容的名为 **Parameters.json** 的参数文件：
 
     ```json
     {
@@ -695,10 +786,10 @@ END
         ]
     }
     ```
-1. 使用 **Invoke-AzureRmDataFactoryV2Pipeline** cmdlet 运行管道 IncrementalCopyPipeline。 将占位符替换为自己的资源组和数据工厂名称。
+1. 使用 **Invoke-AzDataFactoryV2Pipeline** cmdlet 运行管道 IncrementalCopyPipeline。 将占位符替换为自己的资源组和数据工厂名称。
 
     ```powershell
-    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"        
+    $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"        
     ``` 
 
 ## <a name="monitor-the-pipeline"></a>监视管道
@@ -707,24 +798,19 @@ END
 
 1. 选择“所有服务”，使用关键字“数据工厂”进行搜索，然后选择“数据工厂”。    
 
-    ![数据工厂菜单](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-data-factories-menu-1.png)
-
 1. 在数据工厂列表中搜索你的数据工厂，然后选择它来打开“数据工厂”页。  
 
-    ![搜索你的数据工厂](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-search-data-factory-2.png)
+1. 在“数据工厂”  页上，选择“创作和监视”  以在单独的选项卡中启动 Azure 数据工厂。
 
-1. 在“数据工厂”页中，选择“监视和管理”磁贴。   
+1. 在“开始使用”  页上，选择左侧的“监视”  。 
+![管道运行](media/doc-common-process/get-started-page-monitor-button.png)    
 
-    ![“监视和管理”磁贴](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-monitor-manage-tile-3.png)
-
-1. **数据集成应用程序**在单独的选项卡中打开。可以看到所有管道运行及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。   选择“参数”列中的链接即可查看传递至管道的参数。 如果出现错误，请查看“错误”  列中的链接。 选择“操作”列中的链接。  
+1. 可以看到所有管道运行及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。   选择“参数”列中的链接即可查看传递至管道的参数。 如果出现错误，请查看“错误”  列中的链接。
 
     ![管道运行](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
-1. 选择“操作”列中的链接时，可以看到以下页面，其中显示管道的所有  活动运行： 
+1. 在“操作”  列中选择链接时，会看到管道的所有活动运行。 
 
-    ![活动运行](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-activity-runs-5.png)
-
-1. 若要回到“管道运行”  视图，请选择“管道”  ，如图所示。 
+1. 若要回到“管道运行”视图，请选择“所有管道运行”   。 
 
 ## <a name="review-the-results"></a>查看结果
 在 SQL Server Management Studio 中对目标 SQL 数据库运行以下查询，验证数据是否已从源表复制到目标表： 
@@ -800,15 +886,11 @@ VALUES
 1. 现在，通过执行以下 PowerShell 命令重新运行管道：
 
     ```powershell
-    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupname -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"
+    $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupname -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"
     ```
-1. 按照[监视管道](#monitor-the-pipeline)部分的说明监视管道运行。 由于管道状态为“正在进行”，因此可以在“操作”下看到另一操作链接，用于取消管道运行。   
-
-    ![“正在进行”的管道运行](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-6.png)
+1. 按照[监视管道](#monitor-the-pipeline)部分的说明监视管道运行。 当管道状态为“正在进行”时，可以在“操作”下看到另一操作链接，用于取消管道运行。   
 
 1. 选择“刷新”  对列表进行刷新，直到管道运行成功。 
-
-    ![刷新管道运行](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-succeded-7.png)
 
 1. 也可选择“操作”下的“查看活动运行”链接，查看与此管道运行相关联的所有活动运行。   
 

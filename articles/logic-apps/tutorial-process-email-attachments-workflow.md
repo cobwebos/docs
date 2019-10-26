@@ -1,6 +1,6 @@
 ---
-title: 教程：自动处理电子邮件和附件 - Azure 逻辑应用
-description: 教程 - 创建自动化工作流，以便使用 Azure 逻辑应用、Azure 存储和 Azure Functions 处理电子邮件和附件
+title: 使用 Azure Functions 生成工作流 - Azure 逻辑应用
+description: 教程 - 使用 Azure 逻辑应用、Azure 存储和 Azure Functions 自动执行工作流以处理电子邮件和附件
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: e7c27d284ef93d15c5ac9a6228205e79518f2ffa
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 2919816872fd73c8a50f404e857c9ec56eeab0f5
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051787"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679178"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>教程：使用 Azure 逻辑应用自动处理电子邮件和附件
 
@@ -149,7 +149,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
    | **应用名称** | <*function-app-name*> | 函数应用的描述性全局唯一名称，在本例中为“CleanTextFunctionApp”，因此请提供不同的名称，例如“MyCleanTextFunctionApp” |
    | **订阅** | <*your-Azure-subscription-name*> | 以前使用过的同一 Azure 订阅 | 
    | **资源组** | LA-Tutorial-RG | 以前使用过的同一 Azure 资源组 |
-   | **托管计划** | 使用计划 | 此设置决定了如何分配和缩放用于运行函数应用的资源，例如计算能力。 请参阅[托管计划比较](../azure-functions/functions-scale.md)。 | 
+   | **托管计划** | 消耗计划 | 此设置决定了如何分配和缩放用于运行函数应用的资源，例如计算能力。 请参阅[托管计划比较](../azure-functions/functions-scale.md)。 | 
    | **位置** | 美国西部 | 以前使用过的同一区域 |
    | **运行时堆栈** | 首选语言 | 选择支持你偏好的函数编程语言的运行时。 对于 C# 和 F# 函数，选择“.NET”  。 |
    | **存储** | cleantextfunctionstorageacct | 为函数应用创建存储帐户。 只使用小写字母和数字。 <p>**注意：** 此存储帐户包含函数应用，不同于以前创建的用于电子邮件附件的存储帐户。 |

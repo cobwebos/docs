@@ -4,16 +4,16 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: a2858ac73838b50c21a76db5860675171a306192
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 12c2f1bd2a3185d26eae02b5cd756392b5b87c16
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173419"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533251"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>创建自承载 Integration Runtime
 
-在本部分，请创建一个自承载 Integration Runtime，然后将其与安装了 SQL Server 数据库的本地计算机相关联。 自承载 Integration Runtime 是一个组件，用于将数据从计算机上的 SQL Server 复制到 Azure Blob 存储。 
+在本部分，请创建一个自承载 Integration Runtime，然后将其与安装了 SQL Server 数据库的本地计算机相关联。 自承载集成运行时是一个组件，用于将数据从计算机上的 SQL Server 复制到 Azure SQL 数据库。 
 
 1. 创建一个适用于 Integration Runtime 名称的变量。 使用唯一的名称，并记下它。 本教程后面部分需要使用它。 
 
@@ -29,12 +29,12 @@ ms.locfileid: "67173419"
    下面是示例输出：
 
    ```json
-    Id                : /subscriptions/<subscription ID>/resourceGroups/ADFTutorialResourceGroup/providers/Microsoft.DataFactory/factories/onpremdf0914/integrationruntimes/myonpremirsp0914
+    Name              : <Integration Runtime name>
     Type              : SelfHosted
-    ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : onpremdf0914
-    Name              : myonpremirsp0914
-    Description       :
+    ResourceGroupName : <ResourceGroupName>
+    DataFactoryName   : <DataFactoryName>
+    Description       : 
+    Id                : /subscriptions/<subscription ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DataFactory/factories/<DataFactoryName>/integrationruntimes/ADFTutorialIR
     ```
   
 3. 若要检索所创建的 Integration Runtime 的状态，请运行以下命令。 确认 **State** 属性的值已设置为 **NeedRegistration**。 
@@ -45,21 +45,25 @@ ms.locfileid: "67173419"
 
    下面是示例输出：
 
-   ```json
-   Nodes                     : {}
-   CreateTime                : 9/14/2017 10:01:21 AM
-   InternalChannelEncryption :
-   Version                   :
+   ```json  
+   State                     : NeedRegistration
+   Version                   : 
+   CreateTime                : 9/24/2019 6:00:00 AM
+   AutoUpdate                : On
+   ScheduledUpdateDate       : 
+   UpdateDelayOffset         : 
+   LocalTimeZoneOffset       : 
+   InternalChannelEncryption : 
    Capabilities              : {}
-   ScheduledUpdateDate       :
-   UpdateDelayOffset         :
-   LocalTimeZoneOffset       :
-   AutoUpdate                :
-   ServiceUrls               : {eu.frontend.clouddatahub.net, *.servicebus.windows.net}
+   ServiceUrls               : {eu.frontend.clouddatahub.net}
+   Nodes                     : {}
+   Links                     : {}
+   Name                      : ADFTutorialIR
+   Type                      : SelfHosted
    ResourceGroupName         : <ResourceGroup name>
    DataFactoryName           : <DataFactory name>
-   Name                      : <Integration Runtime name>
-   State                     : NeedRegistration
+   Description               : 
+   Id                        : /subscriptions/<subscription ID>/resourceGroups/<ResourceGroup name>/providers/Microsoft.DataFactory/factories/<DataFactory name>/integrationruntimes/<Integration Runtime name>
    ```
 
 4. 若要检索用于将自承载 Integration Runtime 注册到云中 Azure 数据工厂服务的身份验证密钥，请运行以下命令： 
@@ -72,8 +76,8 @@ ms.locfileid: "67173419"
 
    ```json
    {
-       "AuthKey1":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=",
-       "AuthKey2":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy="
+    "AuthKey1": "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=",
+    "AuthKey2":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy="
    }
    ```    
 
@@ -92,27 +96,17 @@ ms.locfileid: "67173419"
 
 6. 在“准备安装 Microsoft Integration Runtime”页上选择“安装”。  
 
-7. 如果看到一条警告消息，指出系统正将计算机配置为在不使用时进入睡眠或休眠模式，请选择“确定”。 
+7. 在“完成 Microsoft Integration Runtime 安装程序”页上选择“完成”。  
 
-8. 如果看到“电源选项”页，请将其关闭，然后转到安装页。 
-
-9. 在“完成 Microsoft Integration Runtime 安装程序”页上选择“完成”。  
-
-10. 在“注册 Integration Runtime (自承载)”页上粘贴在上一部分保存的密钥，然后选择“注册”。   
+8. 在“注册 Integration Runtime (自承载)”页上粘贴在上一部分保存的密钥，然后选择“注册”。   
 
     ![注册 Integration Runtime](media/data-factory-create-install-integration-runtime/register-integration-runtime.png)
 
-11. 成功注册自承载 Integration Runtime 后，会看到以下消息：
+9. 在“新建 Integration Runtime (自承载)节点”页上，选择“完成”。   
+
+10. 成功注册自承载 Integration Runtime 后，会看到以下消息：
 
     ![已成功注册](media/data-factory-create-install-integration-runtime/registered-successfully.png)
-
-12. 在“新建 Integration Runtime (自承载)节点”页上，选择“下一步”。   
-
-    ![“新建 Integration Runtime 节点”页](media/data-factory-create-install-integration-runtime/new-integration-runtime-node-page.png)
-
-13. 在“Intranet 信道”页上，选择“跳过”。   选择 TLS/SSL 认证，确保多节点 Integration Runtime 环境中的节点内通信安全。 
-
-    ![“Intranet 信道”页](media/data-factory-create-install-integration-runtime/intranet-communication-channel-page.png)
 
 14. 在“注册 Integration Runtime (自承载)”页上，选择“启动配置管理器”。  
 
@@ -136,7 +130,7 @@ ms.locfileid: "67173419"
 
     f. 输入用户名。
 
-    g. 输入用户名的密码。
+    g. 输入与用户名关联的密码。
 
     h. 若要确认 Integration Runtime 能否连接到 SQL Server，请选择“测试”。  如果连接成功，则会看到绿色复选标记。 如果连接不成功，则会看到错误消息。 请解决问题，确保 Integration Runtime 可以连接到 SQL Server。    
 

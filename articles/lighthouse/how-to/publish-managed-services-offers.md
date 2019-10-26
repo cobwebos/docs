@@ -4,15 +4,15 @@ description: 了解如何发布将客户载入到 Azure 委派资源管理的托
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 09/19/2019
+ms.date: 10/17/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: c358c728f7fe008ee8d9138cd081932524e7eaf9
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 10105d06e48a727e71ea5cb03f2ffceb589df50a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300305"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595259"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>将托管服务产品发布到 Azure 市场
 
@@ -132,7 +132,7 @@ ms.locfileid: "72300305"
 
 ## <a name="the-customer-onboarding-process"></a>客户加入过程
 
-当客户添加你的产品/服务时，他们将能够[委托一个或多个特定订阅或资源组](view-manage-service-providers.md#delegate-resources)，然后将加入这些订阅或资源组以进行 Azure 委托资源管理。 如果客户已接受产品/服务但尚未委托任何资源，则他们会在 Azure 门户[“服务提供商”  ](view-manage-service-providers.md)页中“提供商产品/服务”部分的顶部看到备注  。
+当客户添加你的产品/服务时，他们将能够[委托一个或多个特定订阅或资源组](view-manage-service-providers.md#delegate-resources)，然后将加入这些订阅或资源组以进行 Azure 委托资源管理。 如果客户已接受产品/服务但尚未委托任何资源，则他们会在 Azure 门户[“服务提供商”  ](view-manage-service-providers.md)页中“提供商产品/服务”部分的顶部看到备注  。 如果客户租户中的用户无法执行此委托，可能是因为他们不具有订阅的所有者角色。 若要查找可以委托订阅的用户，用户可以在 Azure 门户中选择订阅，打开“访问控制(IAM)”  ，然后[查看具有“所有者”角色的所有用户](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions)。
 
 在加入订阅（或订阅中的资源组）之前，订阅必须通过手动注册 **Microsoft.ManagedServices** 资源提供程序来获得加入授权。 客户租户中具有“参与者”或“所有者”角色的用户可以按照 [Azure 资源提供程序和类型](../../azure-resource-manager/resource-manager-supported-services.md)中所述的步骤来执行此操作。
 

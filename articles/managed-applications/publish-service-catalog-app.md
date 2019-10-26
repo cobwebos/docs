@@ -1,5 +1,5 @@
 ---
-title: 创建和发布 Azure 服务目录托管应用程序 | Microsoft Docs
+title: 发布 Azure 服务目录托管应用程序
 description: 演示如何创建适用于组织中成员的 Azure 托管应用程序。
 services: managed-applications
 author: tfitzmac
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1d28a9d330dd001e3fdc05e37f7bbcdd2db7ee6e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 62d8de4f36ab110f7bd871c9de0e5d843516970c
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224543"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529011"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>创建并发布托管应用程序定义
 

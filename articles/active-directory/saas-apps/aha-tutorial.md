@@ -17,10 +17,10 @@ ms.date: 08/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a63872680d28664c6d5a7ff109f6de72817173d5
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68989649"
 ---
 # <a name="tutorial-integrate-aha-with-azure-active-directory"></a>教程：将 Aha! 与 Azure Active Directory 集成
@@ -38,7 +38,7 @@ ms.locfileid: "68989649"
 若要开始操作，需备齐以下项目：
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 已启用 Aha! 单一登录 (SSO) 的订阅。
+* Aha! 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -120,12 +120,12 @@ ms.locfileid: "68989649"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-aha-sso"></a>配置 Aha! SSO
@@ -134,7 +134,7 @@ ms.locfileid: "68989649"
 
     ![我的应用扩展](common/install-myappssecure-extension.png)
 
-2. 将扩展添加到浏览器后，单击“设置 Aha!”，  此时将定向到 Aha! 应用程序。 在此处，提供管理员凭据以登录到 Aha!。 浏览器扩展会自动配置应用程序，并自动执行步骤 3-8。
+2. 将扩展添加到浏览器后，单击“设置 Aha!”，  此时将定向到 Aha! 配置单一登录。 在此处，提供管理员凭据以登录到 Aha!。 浏览器扩展会自动配置应用程序，并自动执行步骤 3-8。
 
     ![设置配置](common/setup-sso.png)
 

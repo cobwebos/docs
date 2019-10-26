@@ -17,10 +17,10 @@ ms.date: 08/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e908cb76a57f027494230edc648b69da0730ac27
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70164244"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onit"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Onit 集成
@@ -93,7 +93,7 @@ ms.locfileid: "70164244"
 
     ![编辑 SAML 签名证书](common/edit-certificate.png)
 
-1. 在“SAML 签名证书”部分中，复制**指纹值**并将其保存在计算机上。 
+1. 在“SAML 签名证书”部分，复制“指纹值”并将其保存在计算机上。  
 
     ![复制指纹值](common/copy-thumbprint.png)
 
@@ -123,12 +123,12 @@ ms.locfileid: "70164244"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-onit-sso"></a>配置 Onit SSO
@@ -137,7 +137,7 @@ ms.locfileid: "70164244"
 
 2. 在顶部菜单中，单击“管理”。 
    
-    ![管理](./media/onit-tutorial/IC791174.png "Administration")
+    ![管理](./media/onit-tutorial/IC791174.png "管理")
 
 3. 单击“编辑公司”。 
    
@@ -169,7 +169,7 @@ ms.locfileid: "70164244"
 
 2. 单击“添加用户”  。
 
-    ![管理](./media/onit-tutorial/IC791180.png "Administration")
+    ![管理](./media/onit-tutorial/IC791180.png "管理")
 
 3. 在“添加用户”对话框页上，执行以下步骤： 
 

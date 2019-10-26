@@ -4,15 +4,15 @@ description: 了解如何将客户载入到 Azure 委派资源管理，使你能
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 09/30/2019
+ms.date: 10/17/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: e16747d74df7db0fb2ca2d4e0f07247258a980d7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 882afb83aa2a9bad9633df43b29e00b43162bf87
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299749"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595665"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>将客户载入到 Azure 委派资源管理
 
@@ -195,7 +195,8 @@ az role definition list --name "<roleName>" | grep name
 更新参数文件后，客户必须在其客户租户中将资源管理模板部署为订阅级部署。 对于要载入 Azure 委托资源管理的每个订阅（或者包含要载入的资源组的每个订阅），需要单独进行部署。
 
 > [!IMPORTANT]
-> 部署必须由客户租户中的非来宾帐户完成，该帐户对于正在载入的订阅（或包含正在载入的资源组的订阅）拥有[所有者内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)。
+> 部署必须由客户租户中的非来宾帐户完成，该帐户对于正在载入的订阅（或包含正在载入的资源组的订阅）拥有[所有者内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)。 若要查看所有可以委托订阅的用户，客户租户中的用户可以在 Azure 门户中选择订阅，打开“访问控制(IAM)”  ，然后[查看具有“所有者”角色的所有用户](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions)。
+
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell

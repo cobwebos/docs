@@ -14,12 +14,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: f98950a73c74537fb0d3762d08810646c9ecb875
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ae67ed5e6b23d9d2fae3f3d6e73597876bf7315c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72435626"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592964"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务群集
 
@@ -68,6 +68,8 @@ az group create --name myResourceGroup --location eastus
 ## <a name="create-aks-cluster"></a>创建 AKS 群集
 
 使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为  myAKSCluster 的群集。 也可通过 *--enable-addons monitoring* 参数启用用于容器的 Azure Monitor。  此操作将需要几分钟才能完成。
+
+> [注意] 创建 AKS 群集时，会自动创建另一个资源组来存储 AKS 资源。 有关详细信息，请参阅[为什么使用 AKS 创建两个资源组？](https://docs.microsoft.com/azure/aks/faq#why-are-two-resource-groups-created-with-aks)
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys

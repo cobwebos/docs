@@ -4,16 +4,16 @@ description: 本快速入门提供了可用于从 Azure Database for PostgreSQL 
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: seo-javascript-september2019
+ms.custom: seo-javascript-september2019, seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 072e2fca4d7d0c90e9e4e66b9ba2b63ef45723db
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 44d99a9420fc33bdd01c05fdb04d94671b7c815b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719952"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592346"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入门：使用 Node.js 连接到 Azure Database for PostgreSQL 并查询其中的数据 - 单一服务器
 本快速入门演示了如何使用 [Node.js](https://nodejs.org/) 应用程序连接到 Azure Database for PostgreSQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文中的步骤假定你熟悉如何使用 Node.js 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
@@ -46,7 +46,7 @@ npm list
 2. 在 Azure 门户的左侧菜单中，选择“所有资源”  ，然后搜索已创建的服务器（例如 mydemoserver  ）。
 3. 选择服务器名称。
 4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。    如果忘记了密码，也可通过此面板来重置密码。
- ![Azure Database for PostgreSQL 服务器名称](./media/connect-nodejs/1-connection-string.png)
+ ![Azure Database for PostgreSQL 连接字符串](./media/connect-nodejs/server-details-azure-database-postgresql.png)
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>在 Node.js 中运行 JavaScript 代码
 可以通过键入 `node` 从 bash shell、终端或 Windows 命令提示符启动 Node.js，然后以交互方式运行示例 JavaScript 代码（只需将其复制并粘贴到提示符处即可）。 也可将 JavaScript 代码保存到文本文件中，然后以文件名作为运行所需的参数来启动 `node filename.js`。

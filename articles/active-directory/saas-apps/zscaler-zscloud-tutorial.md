@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
 ms.openlocfilehash: 43d7e58f0c267afe8a22c217d9800abb041df8cb
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68723061"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>教程：Azure Active Directory 与 Zscaler ZSCloud 的集成
@@ -169,7 +169,7 @@ ms.locfileid: "68723061"
 
 4. 转到“管理”>“身份验证”>“身份验证设置”并执行以下步骤： 
    
-    ![管理](./media/zscaler-zscloud-tutorial/ic800206.png "Administration")
+    ![管理](./media/zscaler-zscloud-tutorial/ic800206.png "管理")
 
     a. 在“身份验证类型”下选择“SAML”。 
 

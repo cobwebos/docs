@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 09/17/2019
 ms.author: aahi
-ms.openlocfilehash: 320c690eb873f760af89b7514893f14ecc209323
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 1932ac571c94f9dc96240bdb63b44fe53c626f1f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71106788"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554732"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-nodejs"></a>快速入门：适用于 Node.js 的异常检测器客户端库
 
@@ -26,7 +26,7 @@ ms.locfileid: "71106788"
 * 以批请求的形式检测整个时序数据集中的异常
 * 在时序中检测最新数据点的异常状态
 
-[参考文档](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [包 (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-anomalydetector) | [示例](https://github.com/Azure-Samples/anomalydetector)
+[参考文档](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [包 (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-anomalydetector) | [代码示例](https://github.com/Azure-Samples/anomalydetector)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,13 +37,8 @@ ms.locfileid: "71106788"
 
 ### <a name="create-an-anomaly-detector-azure-resource"></a>创建异常检测器 Azure 资源
 
-Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本地计算机上创建用于异常检测器的资源。 还可以：
+[!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
-* 免费获取在 7 天内有效的[试用版密钥](https://azure.microsoft.com/try/cognitive-services/#decision)。 注册之后，它将在 [Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上提供。  
-* 在 [Azure 门户](https://portal.azure.com/)上查看资源。
-
-获取试用订阅或资源的密钥后，请为该密钥创建名为 `ANOMALY_DETECTOR_KEY` 的[环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。 然后为 Azure 终结点创建一个名为 `ANOMALY_DETECTOR_ENDPOINT` 的环境变量。
- 
 ### <a name="create-a-new-nodejs-application"></a>创建新的 Node.js 应用程序
 
 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为应用创建一个新目录并导航到该目录。 
@@ -62,9 +57,9 @@ npm init
 
 [!code-javascript[Import statements](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=imports)]
 
-为资源的 Azure 终结点和密钥创建变量。 如果在启动应用程序后创建了环境变量，则需要关闭再重新打开运行该应用程序的编辑器、IDE 或 shell 才能访问该变量。 为你将在后面的步骤中下载的示例数据文件创建另一个变量。 然后创建一个 ApiKeyCredentials 对象以包含该密钥。
+为资源的 Azure 终结点和密钥创建变量。 如果在启动应用程序后创建了环境变量，则需要关闭再重新打开运行该应用程序的编辑器、IDE 或 shell 才能访问该变量。 为将在后面的步骤中下载的示例数据文件创建另一个变量，并为数据点创建一个空列表。 然后创建一个 `ApiKeyCredentials` 对象以包含该密钥。
 
-[!code-javascript[Initial variables](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=vars)]
+[!code-javascript[Initial endpoint and key variables](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=vars)]
 
 ### <a name="install-the-client-library"></a>安装客户端库
 
@@ -94,9 +89,6 @@ npm install  @azure/cognitiveservices-anomalydetector ms-rest-azure csv-parse
 * [检测最新数据点的异常状态](#detect-the-anomaly-status-of-the-latest-data-point)
 
 ## <a name="authenticate-the-client"></a>验证客户端
-
-> [!NOTE]
-> 本快速入门假定你已为异常检测器密钥[创建了一个环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，名为 `ANOMALY_DETECTOR_KEY`。
 
 使用终结点和凭据实例化 [AnomalyDetectorClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) 对象。
 

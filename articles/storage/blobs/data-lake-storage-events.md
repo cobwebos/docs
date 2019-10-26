@@ -9,10 +9,10 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.openlocfilehash: 03a07e70c967f92fe5dcc7c951aeea299b050405
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71326990"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>教程：实现数据湖捕获模式以更新 Databricks Delta 表
@@ -55,7 +55,7 @@ ms.locfileid: "71326990"
 
 1. 打开 Azure 存储资源管理器。 然后，导航到你的存储帐户，并在“Blob 容器”部分创建一个名为 **data** 的新容器。 
 
-   ![data 文件夹](./media/data-lake-storage-events/data-container.png "data 文件夹")
+   ![数据文件夹](./media/data-lake-storage-events/data-container.png "数据文件夹")
 
    有关如何使用存储资源管理器的详细信息，请参阅[使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 帐户中的数据](data-lake-storage-explorer.md)。
 
@@ -383,7 +383,7 @@ ms.locfileid: "71326990"
 
    返回的表将显示最新记录。
 
-   ![表中显示最新记录](./media/data-lake-storage-events/final_query.png "表中显示最新记录")
+   ![最新记录显示在表中](./media/data-lake-storage-events/final_query.png "最新记录显示在表中")
 
 6. 若要更新此记录，请创建名为 `customer-order-update.csv` 的文件，将以下信息粘贴到该文件中，然后将其保存到本地计算机。
 
@@ -404,7 +404,7 @@ ms.locfileid: "71326990"
 
    返回的表将显示更新后的记录。
 
-   ![已更新的记录显示在表中](./media/data-lake-storage-events/final_query-2.png "已更新的记录显示在表中")
+   ![更新后的记录显示在表中](./media/data-lake-storage-events/final_query-2.png "更新后的记录显示在表中")
 
 ## <a name="clean-up-resources"></a>清理资源
 

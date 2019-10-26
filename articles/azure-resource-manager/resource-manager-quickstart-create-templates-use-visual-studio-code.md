@@ -1,5 +1,5 @@
 ---
-title: 使用 Visual Studio Code 创建 Azure 资源管理器模板 | Microsoft Docs
+title: 创建 Azure 资源管理器模板 - Visual Studio Code
 description: 使用 Visual Studio Code 和可在资源管理器模板上运行的 Azure 资源管理器工具扩展。
 services: azure-resource-manager
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: b62d4f8b43c62ff401b4d74932b131c1bf8fd63f
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 3e4707e6c0d2a45c02933a5b6022f5604ca7dbed
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169566"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533636"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板
 

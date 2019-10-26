@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.openlocfilehash: 00937197536ede7d6eed168e0a84bad294800159
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72264526"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>教程：使用 Azure 数据工厂在 HDInsight 中创建按需 Apache Hadoop 群集
@@ -300,7 +300,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 
     1. 在“高级” > “参数”下，选择“从脚本自动填充”。    此选项会在 Hive 脚本中查找需要在运行时提供值的所有参数。 使用的脚本 (**partitionweblogs.hql**) 包含 **Output** 参数。 请以 `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` 格式提供**值**，以指向 Azure 存储中的现有文件夹。 该路径区分大小写。 这是脚本的输出的存储路径。 `wasbs` 架构是必需的，因为存储帐户现在默认情况下已启用“需要安全传输”。
     
-        ![提供 Hive 脚本的参数](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "提供 Hive 脚本的参数")
+        ![为 Hive 脚本提供参数](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "为 Hive 脚本提供参数")
 
 1. 选择“验证”以验证管道。  选择 **>>** （右键头）按钮，关闭验证窗口。
 

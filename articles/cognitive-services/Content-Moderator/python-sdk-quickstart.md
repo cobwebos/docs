@@ -9,12 +9,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/24/2019
 ms.author: pafarley
-ms.openlocfilehash: f3b9a7aefc5fc347c4d5114575388914ea8d6fee
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 62407467e3c63b1752ee6816325f097ad9a1f09e
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698537"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755257"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>快速入门：适用于 Python 的内容审查器客户端库
 
@@ -44,7 +44,7 @@ Azure 认知服务由你订阅的 Azure 资源表示。 在本地计算机上使
 * 免费获取在七天内有效的[试用密钥](https://azure.microsoft.com/try/cognitive-services/#decision)。 注册之后，[Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上会提供此密钥。  
 * 在 [Azure 门户](https://portal.azure.com/)上查看资源
 
-获取试用订阅或资源的密钥后，请为该密钥创建名为 `CONTENT_MODERATOR_SUBSCRIPTION_KEY` 的[环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
+获取试用订阅或资源的密钥后，请为该密钥和终结点 URL [创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `CONTENT_MODERATOR_SUBSCRIPTION_KEY` 和 `CONTENT_MODERATOR_ENDPOINT`。
  
 ### <a name="create-a-python-script"></a>创建 Python 脚本
 
@@ -52,7 +52,7 @@ Azure 认知服务由你订阅的 Azure 资源表示。 在本地计算机上使
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imports)]
 
-接下来，为资源的 Azure 位置创建变量，并将密钥创建为环境变量。 
+接下来，为资源的终结点位置创建变量，并将密钥创建为环境变量。 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_vars)]
 
@@ -92,7 +92,7 @@ pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 ## <a name="authenticate-the-client"></a>验证客户端
 
 > [!NOTE]
-> 本快速入门假设你已为内容审查器密钥创建了名为 `CONTENT_MODERATOR_SUBSCRIPTION_KEY` 的[环境变量](../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)。
+> 本快速入门假定你已为内容审查器密钥和终结点[创建了环境变量](../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)。
 
 使用终结点和密钥实例化某个客户端。 使用密钥创建 [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) 对象，然后在终结点上使用该对象创建 [ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) 对象。
 
@@ -355,4 +355,4 @@ python quickstart-file.py
 >[图像审查的概念](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
 
 * [什么是 Azure 内容审查器？](./overview.md)
-* 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision) 上找到此示例的源代码。
+* 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py) 上找到此示例的源代码。
