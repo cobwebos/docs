@@ -1,24 +1,18 @@
 ---
 title: 关于 Azure Log Analytics 中存储的个人数据的指南 | Microsoft Docs
 description: 本文介绍如何管理存储在 Azure Log Analytics 中的个人数据以及识别和删除这些数据的方法。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/18/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: a443931b8340552251fbcbe534f009eeeaf953aa
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 05/18/2018
+ms.openlocfilehash: 7733b27bb5af01e55cd732c16f6c9cb1e9301819
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617305"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932124"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>存储在 Log Analytics 和 Application Insights 中的个人数据指南
 
@@ -31,15 +25,15 @@ Log Analytics 是一种可能存有个人数据的数据存储。 Application In
 
 ## <a name="strategy-for-personal-data-handling"></a>个人数据处理策略
 
-下面介绍了一些可行的方法，不过最终将由你和你的公司来决定用于处理私人数据（如有）的策略。 我们从技术角度出发，按偏好顺序（偏好度从高到低）列出了这些方法：
+下面介绍了一些可行的方法，不过最终将由你和你的公司来决定用于处理私人数据（如有）的策略。 我们从技术角度出发，按偏好顺序，从最偏好的到最不偏好的列出这些方法：
 
 * 如果可行，应停止收集、混淆或匿名处理私人数据，或停止以其他方式调整所收集的数据，使其不再被视为“私人数据”。 这是_目前为止_的首选方法，无需创建非常昂贵且影响很大的数据处理策略。
-* 如果不可行，请尝试规范化数据，减少对数据平台和性能的影响。 例如，不记录显式用户 ID，而是创建查找数据，将用户名及其详细信息关联到可随后在其他位置记录的内部 ID。 这样一来，如果某个用户要求删除其个人信息，则只需删除查找表中对应于该用户的行就足够了。 
-* 最后，如果必须收集私人数据，请就清除 API 路径和现有查询 API 路径构建相关流程，以履行在导出和删除与用户关联的任何私人数据时可能需要承担的任何义务。 
+* 如果不可能，请尝试规范化数据，以减少对数据平台和性能的影响。 例如，不记录显式用户 ID，而是创建查找数据，将用户名及其详细信息关联到可随后在其他位置记录的内部 ID。 这样一来，如果某个用户要求删除其个人信息，则只需删除查找表中对应于该用户的行就足够了。 
+* 最后，如果必须收集私人数据，请就清除 API 路径和现有查询 API 路径构建相关流程，以满足在导出和删除与用户关联的任何私人数据时可能需要承担的任何义务。 
 
 ## <a name="where-to-look-for-private-data-in-log-analytics"></a>在 Log Analytics 中的何处查找私人数据？
 
-Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许使用自定义值替代每个字段。 此外，还可引入任何自定义架构。 因此，无法确切知道可在特定工作区的哪些位置找到私人数据。 但是，不妨从清单中的以下位置着手：
+Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许使用自定义值替代每个字段。 此外，还可引入任何自定义架构。 因此，无法确切知道可在特定工作区的哪些位置找到私人数据。 但是，不妨从库存中的以下位置着手：
 
 ### <a name="log-data"></a>日志数据
 
@@ -60,22 +54,22 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 
 ### <a name="application-data"></a>应用程序数据
 
-* *IP 地址*：虽然 Application Insights 在默认情况下会将所有 IP 地址字段混淆成“0.0.0.0”，但为了保留会话信息，通常会将此值替代为实际的用户 IP。 可以使用下面的 Analytics 查询来查找特定的表，此类表的 IP 地址列中包含的值在过去 24 小时内不是“0.0.0.0”：
+* IP 地址：虽然 Application Insights 在默认情况下会将所有 IP 地址字段混淆成“0.0.0.0”，但为了保留会话信息，通常会将此值替代为实际的用户 IP。 可以使用下面的 Analytics 查询来查找特定的表，此类表的 IP 地址列中包含的值在过去 24 小时内不是“0.0.0.0”：
     ```
     search client_IP != "0.0.0.0"
     | where timestamp > ago(1d)
     | summarize numNonObfuscatedIPs_24h = count() by $table
     ```
-* *用户 ID*：默认情况下，Application Insights 会使用为用户随机生成的 ID，以便进行会话跟踪。 不过，这些字段常常会被替代，改为存储与应用程序更相关的 ID。 例如：用户名、AAD GUID 等。这些 ID 通常会被视为范围内的个人数据，因此应处理得当。 我们的建议始终是尝试对这些 ID 进行混淆或匿名处理。 通常可以在其中发现这些值的字段包括：session_Id、user_Id、user_AuthenticatedId、user_AccountId、customDimensions。
-* *自定义数据*：Application Insights 允许向任何数据类型追加一组自定义维度。 这些维度可以是任何数据。 使用以下查询来确定在过去 24 小时内收集的任何自定义维度：
+* 用户 ID：默认情况下，Application Insights 会使用为用户随机生成的 ID，以便进行会话跟踪。 不过，这些字段常常会被替代，改为存储与应用程序更相关的 ID。 例如：用户名、AAD Guid 等。这些 Id 通常被视为在个人数据范围内，因此应进行相应处理。 我们的建议始终是尝试对这些 ID 进行混淆或匿名处理。 通常可以在其中发现这些值的字段包括：session_Id、user_Id、user_AuthenticatedId、user_AccountId、customDimensions。
+* 自定义数据：Application Insights 允许向任何数据类型追加一组自定义维度。 这些维度可以是任何数据。 使用以下查询来确定在过去 24 小时内收集的任何自定义维度：
     ```
     search * 
     | where isnotempty(customDimensions)
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* *内存中和传输中数据*：Application Insights 会跟踪异常、请求、依赖项调用和跟踪。 私人数据通常可以在代码和 HTTP 调用级别收集。 查看异常、请求、依赖项和跟踪表中是否存在任何此类数据。 尽可能使用[遥测初始值设定项](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling)来混淆该数据。
-* *Snapshot Debugger 捕获*：使用 Application Insights 中的 [Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) 功能时，只要在应用程序的生产实例上捕获某个异常，就可以收集调试快照。 快照会公开导致异常的完整堆栈跟踪，以及堆栈中每一步的本地变量的值。 遗憾的是，此功能不允许选择性地删除吸附点，也不允许以编程方式访问快照中的数据。 因此，如果默认的快照保留率不满足符合性要求，建议关闭此功能。
+* 内存中和传输中数据：Application Insights 会跟踪异常、请求、依赖项调用和跟踪。 私人数据通常可以在代码和 HTTP 调用级别收集。 查看异常、请求、依赖项和跟踪表中是否存在任何此类数据。 尽可能使用[遥测初始值设定项](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling)来混淆该数据。
+* Snapshot Debugger 捕获：使用 Application Insights 中的 [Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) 功能时，只要在应用程序的生产实例上捕获某个异常，就可以收集调试快照。 快照会公开导致异常的完整堆栈跟踪，以及堆栈中每一步的本地变量的值。 遗憾的是，此功能不允许选择性地删除吸附点，也不允许以编程方式访问快照中的数据。 因此，如果默认的快照保留率不满足符合性要求，建议关闭此功能。
 
 ## <a name="how-to-export-and-delete-private-data"></a>如何导出和删除私人数据
 
@@ -88,19 +82,19 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 对于查看和导出数据请求，应使用 [Log Analytics 查询 API](https://dev.loganalytics.io/) 或 [Application Insights 查询 API](https://dev.applicationinsights.io/quickstart)。 将数据形状转换为适当形状以提供给用户时，将由你实现相关逻辑。 [Azure Functions](https://azure.microsoft.com/services/functions/) 非常适合托管此类逻辑。
 
 > [!IMPORTANT]
->  虽然绝大多数清除操作的完成速度可能比 SLA 快得多，但**完成清除操作的正式 SLA 设置为 30 天**，因为它们对所使用的数据平台产生了重大影响。 这是一个自动化过程；没有办法请求更快地处理操作。
+>  尽管绝大部分的清除操作的完成时间可能比 SLA 要快得多，但**完成清除操作的正式 SLA 将设置为30天**，因为它们对所使用的数据平台产生了很大的影响。 这是一个自动化过程;无法请求处理操作的速度更快。
 
-### <a name="delete"></a>DELETE
+### <a name="delete"></a>删除
 
 > [!WARNING]
 > Log Analytics 中的删除操作具有破坏性且不可逆！ 执行时请特别小心。
 
 我们已在隐私处理中提供*清除* API 路径。 使用此路径会带来一定的风险和潜在的性能影响，并有可能导致 Log Analytics 数据的所有聚合、度量和其他方面发生偏差，因此应谨慎使用。 有关处理私人数据的替代方法，请参阅[个人数据处理策略](#strategy-for-personal-data-handling)部分。
 
-清除是一项高特权操作，如果未向 Azure 中的应用或用户显式授予 Azure 资源管理器中的某个角色，则任何应用或用户（甚至包括资源所有者）都无权执行该操作。 此角色为_数据清除程序_，由于可能会丢失数据，应谨慎委托。 
+清除是一项高特权操作，如果未在 Azure 资源管理器中显式授予某个角色，Azure 中没有任何应用或用户（甚至包括资源所有者）有权执行。 此角色为_数据清除程序_，由于可能会丢失数据，应谨慎委托。 
 
 > [!IMPORTANT]
-> 为了管理系统资源, 每小时50请求会限制清除请求。 应通过发送一个命令, 该命令的谓词包含所有需要清除的用户标识, 来批处理清除请求的执行。 使用[in 运算符](/azure/kusto/query/inoperator)可指定多个标识。 应在执行清除请求之前运行查询, 以验证结果是否正确。 
+> 为了管理系统资源，每小时50请求会限制清除请求。 应通过发送一个命令，该命令的谓词包含所有需要清除的用户标识，来批处理清除请求的执行。 使用[in 运算符](/azure/kusto/query/inoperator)可指定多个标识。 应在执行清除请求之前运行查询，以验证结果是否正确。 
 
 
 
@@ -109,7 +103,7 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 #### <a name="log-data"></a>日志数据
 
 * [POST purge](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) - 使用一个对象来指定要删除的数据的参数，并返回引用 GUID 
-* GET purge status：POST purge 调用将返回“x-ms-status-location”标头，其中包含一个 URL，可以调用该 URL 来确定清除 API 的状态。 例如：
+* GET purge status - POST purge 调用将返回“x-ms-status-location”标头，其中包含一个 URL，可以调用该 URL 来确定清除 API 的状态。 例如：
 
     ```
     x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperationalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
@@ -121,7 +115,7 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 #### <a name="application-data"></a>应用程序数据
 
 * [POST purge](https://docs.microsoft.com/rest/api/application-insights/components/purge) - 使用一个对象来指定要删除的数据的参数，并返回引用 GUID
-* GET purge status：POST purge 调用将返回“x-ms-status-location”标头，其中包含一个 URL，可以调用该 URL 来确定清除 API 的状态。 例如：
+* GET purge status - POST purge 调用将返回“x-ms-status-location”标头，其中包含一个 URL，可以调用该 URL 来确定清除 API 的状态。 例如：
 
    ```
    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/microsoft.insights/components/[ComponentName]/operations/purge-[PurgeOperationId]?api-version=2015-05-01

@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d44a4265c3729bff3d983395a37a6cb64a463d4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: fd9eb97b88be3ed68398cf7844b03e6a1fc9cd1b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389116"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934439"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management-preview"></a>Azure AD 授权管理（预览版）中的委派和角色
 
@@ -99,6 +99,7 @@ ms.locfileid: "72389116"
 | 任务 | 管理员 | 目录创建者 | 目录所有者 | 访问包管理器 |
 | --- | :---: | :---: | :---: | :---: |
 | [委托给目录创建者](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
+| [添加连接的组织](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |
 | [创建新目录](entitlement-management-catalog-create.md) | :heavy_check_mark: | :heavy_check_mark: |  |  |
 | [向目录添加资源](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
 | [添加目录所有者](entitlement-management-catalog-create.md#add-additional-catalog-owners) | :heavy_check_mark: |  | :heavy_check_mark: |  |

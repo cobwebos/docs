@@ -1,24 +1,18 @@
 ---
 title: 在 Azure Monitor 中收集和分析 Windows 事件日志 | Microsoft Docs
 description: 介绍了如何通过 Azure Monitor 配置 Windows 事件日志的收集，以及它们创建的记录的详细信息。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: ee52f564-995b-450f-a6ba-0d7b1dac3f32
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: cc81a8d8023d0724f4ecb71c157e8f575aa9edc8
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.date: 11/28/2018
+ms.openlocfilehash: dd8f1e0e79f85c5d91966bcba13052f297422e67
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997481"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932408"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Windows 事件日志数据源
 由于许多应用程序都会写入 Windows 事件日志，因此 Windows 事件日志是使用 Windows 代理收集数据的最常见[数据源](agent-data-sources.md)之一。  除了指定由需要监视的应用程序创建的任何自定义日志，还可以从标准日志（如系统和应用程序）中收集事件。
@@ -47,9 +41,9 @@ Azure Monitor 在事件创建时从受监视的事件日志中收集与所选严
 ## <a name="windows-event-records-properties"></a>Windows 事件的记录属性
 Windows 事件记录都有一个**事件**类型，并且具有下表中的属性：
 
-| 属性 | 描述 |
+| properties | 描述 |
 |:--- |:--- |
-| 计算机 |从中收集事件的计算机的名称。 |
+| Computer |从中收集事件的计算机的名称。 |
 | EventCategory |事件的类别。 |
 | EventData |所有原始格式的事件数据。 |
 | EventID |事件数。 |
@@ -57,7 +51,7 @@ Windows 事件记录都有一个**事件**类型，并且具有下表中的属�
 | EventLevelName |以文本形式指示的事件严重性。 |
 | EventLog |从中收集事件的事件日志名称。 |
 | ParameterXml |XML 格式的事件参数值。 |
-| ManagementGroupName |System Center Operations Manager 代理的管理组名称。  对于其他代理，该值为 `AOI-<workspace ID>` |
+| ManagementGroupName |System Center Operations Manager 代理的管理组名称。  对于其他代理，此值为 `AOI-<workspace ID>` |
 | RenderedDescription |具有参数值的事件描述 |
 | Source |事件源。 |
 | SourceSystem |从中收集事件的代理类型。 <br> OpsManager – Windows 代理，直接连接或 Operations Manager 管理 <br> Linux - 所有 Linux 代理  <br> AzureStorage – Azure 诊断 |
@@ -67,9 +61,9 @@ Windows 事件记录都有一个**事件**类型，并且具有下表中的属�
 ## <a name="log-queries-with-windows-events"></a>使用 Windows 事件的日志查询
 下表提供了检索 Windows 事件记录的不同日志查询的示例。
 
-| 查询 | 描述 |
+| Query | 描述 |
 |:---|:---|
-| Event |所有 Windows 事件。 |
+| 事件 |所有 Windows 事件。 |
 | Event &#124; where EventLevelName == "error" |所有 Windows 事件与错误的严重性。 |
 | Event &#124; summarize count() by Source |按源计数 Windows 事件。 |
 | Event &#124; where EventLevelName == "error" &#124; summarize count() by Source |按源计数 Windows 错误事件。 |

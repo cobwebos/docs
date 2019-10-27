@@ -19,12 +19,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 208c644c26006fb99139abe1b05c63f90eff448d
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 514a74ed0ae52fb7f2a7b7d7f19c0b364dc2ba91
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803279"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934861"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>将应用程序迁移到适用于 iOS 和 macOS 的 MSAL
 
@@ -73,7 +73,7 @@ MSAL 公共 API 反映 Azure AD v1.0 和 Microsoft 标识平台之间的一些�
 
 * 提供您的应用程序所需的所有权限的列表。 例如： 
 
-    `@[@"https://graph.microsot.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
+    `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
     在这种情况下，应用请求 `directory.read` 和 `directory.write` 权限。 如果用户尚未同意此应用程序，则会要求用户同意这些权限。 应用程序还可能会收到用户已同意应用程序的其他权限。 系统仅会提示用户同意新权限或尚未授予的权限。
 

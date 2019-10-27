@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a467856550bf2deaab931b3fe2f54b7986f12f8a
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 136a9994415b42c456ebdb0caa8ed6edcc7b4534
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430294"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934380"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Azure AD 权利管理是什么？ （预览）
 
@@ -121,6 +121,7 @@ Azure AD 的权利管理可以帮助解决这些难题。
 | 资源类型 | 资源的类型，包括组、应用程序和 SharePoint Online 站点。 |
 | 资源角色 | 与资源关联的权限的集合。 |
 | 资源目录 | 具有一个或多个要共享的资源的目录。 |
+| 连接的组织 | 与之有关系的外部 Azure AD 目录或域。 |
 | 分配的用户 | 向用户分配访问包，以便用户拥有该访问包的所有资源角色。 |
 | enable | 使访问包可供用户请求的过程。 |
 

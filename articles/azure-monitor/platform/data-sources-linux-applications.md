@@ -1,24 +1,18 @@
 ---
 title: 在 Azure Monitor 中收集 Linux 应用程序性能数据 | Microsoft Docs
 description: 本文提供了有关对 Log Analytics Linux 代理进行配置以收集 MySQL 和 Apache HTTP Server 的性能计数器的详细信息。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/04/2017
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: ea74440a5c8a9a2584e742ec72ccf888b6bb5ad9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 05/04/2017
+ms.openlocfilehash: 60f09035f4aabcbd6348fb5608b812ca4b001b45
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60628908"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932452"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>在 Azure Monitor 中收集 Linux 应用程序的性能计数器 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -48,7 +42,7 @@ MySQL 身份验证文件存储在 `/var/opt/microsoft/mysql-cimprov/auth/omsagen
 
 下表描述了身份验证文件中的条目。
 
-| 属性 | 描述 |
+| properties | 描述 |
 |:--|:--|
 | Port | 表示 MySQL 实例正在侦听的当前端口。 端口 0 指定后面的属性用于默认实例。 |
 | Bind-Address| 当前 MySQL 绑定地址。 |

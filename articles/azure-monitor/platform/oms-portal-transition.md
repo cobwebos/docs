@@ -1,23 +1,18 @@
 ---
 title: OMS 门户即将转移到 Azure | Microsoft Docs
 description: OMS 门户即将被淘汰，其所有功能将转移到 Azure 门户。 本文提供有关此项过渡的详细信息。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/22/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: e8fd49781301406e0c35e1de57cea3040167c6c3
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 08/22/2019
+ms.openlocfilehash: 170973d15b5f49021a0507bdd2fd6a2632777d48
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915866"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932151"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS 门户即将转移到 Azure
 
@@ -64,7 +59,7 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 
 | OMS 门户权限 | Azure 角色 |
 |:---|:---|
-| 只读 | Log Analytics 读者 |
+| ReadOnly | Log Analytics 读者 |
 | 参与者 | Log Analytics 参与者 |
 | 管理员 | 所有者 | 
  
@@ -76,7 +71,7 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 
 ### <a name="alert-extension"></a>警报扩展  
 
-警报已[扩展到 Azure 门户](alerts-extend.md) 现有警报将继续列在 OMS 门户中，但你只能在 Azure 门户中管理它们。 如果使用 Log Analytics 警报 REST API 或 Log Analytics 警报资源模板以编程方式访问警报，需要在 API 调用、Azure 资源管理器模板和 PowerShell 命令中使用操作组而非操作。
+警报已[扩展到 Azure 门户](alerts-extend.md)现有警报将继续在 OMS 门户中列出，但你只能在 Azure 门户中对其进行管理。 如果使用 Log Analytics 警报 REST API 或 Log Analytics 警报资源模板以编程方式访问警报，需要在 API 调用、Azure 资源管理器模板和 PowerShell 命令中使用操作组而非操作。
 
 ### <a name="alert-management-solution"></a>警报管理解决方案
 作为上次公告中的一个更改，[警报管理解决方案](alert-management-solution.md)在 Azure 门户中将继续可用并完全受支持。 可以继续从 Azure 市场安装该解决方案。

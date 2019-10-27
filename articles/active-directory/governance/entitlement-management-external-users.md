@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 419970985b9531ffab348491730aaf6c00e143b1
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: d3794f409b2cdc11373dc330099e5ff93d65a2a1
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527103"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934385"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 授权管理（预览版）中为外部用户控制访问权限
 
@@ -50,11 +50,13 @@ Azure AD 的权利管理利用[Azure AD 企业到企业（B2B）](../b2b/what-is
 
 ![显示外部用户的生命周期的关系图](./media/entitlement-management-external-users/external-users-lifecycle.png)
 
+1. 为要与之协作的 Azure AD 目录或域[添加连接的组织](entitlement-management-organization.md)。
+
 1. 在目录中创建一个访问包，其中包括[不在你的目录中的用户](entitlement-management-access-package-create.md#for-users-not-in-your-directory)的策略。
 
 1. 你将 "[我的访问门户" 链接](entitlement-management-access-package-settings.md)发送到你的外部组织中的联系人，用户可与其用户共享该链接来请求访问包。
 
-1. 外部用户（在本示例中**为请求者 A** ）使用 My access 门户链接来[请求](entitlement-management-request-access.md)访问访问包。
+1. 外部用户（在本示例中**为请求者 A** ）使用 My access 门户链接来[请求](entitlement-management-request-access.md)访问访问包。 用户登录的方式取决于在连接的组织中定义的目录或域的身份验证类型。
 
 1. 审批者[批准请求](entitlement-management-request-approve.md)（或自动批准请求）。
 
@@ -116,6 +118,6 @@ Azure AD 的权利管理利用[Azure AD 企业到企业（B2B）](../b2b/what-is
 
 ## <a name="next-steps"></a>后续步骤
 
+- [添加连接的组织](entitlement-management-organization.md)
 - [对于不在你的目录中的用户](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
 - [创建和管理资源的目录](entitlement-management-catalog-create.md)
-- [委托和角色](entitlement-management-delegate.md)

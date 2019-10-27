@@ -1,23 +1,22 @@
 ---
 title: 使用 PowerShell 创建和配置 Log Analytics 工作区 | Microsoft 文档
-description: Azure Monitor 中的 Log Analytics 工作区存储来自本地或云基础结构中的服务器的数据。 当由 Azure 诊断生成时，可从 Azure 存储收集计算机数据。
-services: log-analytics
-author: bwren
-ms.service: log-analytics
-ms.devlang: powershell
+description: Azure Monitor 将数据存储在本地或云基础结构中的服务器上，Log Analytics 工作区。 当由 Azure 诊断生成时，可从 Azure 存储收集计算机数据。
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/19/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 16cad34290ecc518e95ec1a0ce0950722cfe0780
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.date: 05/19/2019
+ms.openlocfilehash: 9d5bbaf02798c0fd87c40f1d952db19aac7b0b7e
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71836144"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932083"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>使用 PowerShell 管理 Azure Monitor 中的 Log Analytics 工作区
 
-可使用 [Log Analytics PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.operationalinsights/) 从命令行或作为脚本的一部分在 Azure Monitor 的 Log Analytics 工作区中执行各种函数。  可使用 PowerShell 执行的任务示例包括：
+你可以使用[Log Analytics PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.operationalinsights/)从命令行或作为脚本的一部分，在 Azure Monitor 的 Log Analytics 工作区上执行各种功能。  可使用 PowerShell 执行的任务示例包括：
 
 * 创建工作区
 * 添加或删除解决方案
@@ -38,8 +37,8 @@ ms.locfileid: "71836144"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
-这些示例适用于 Az.OperationalInsights 模块 1.0.0 或更高版本。
+## <a name="prerequisites"></a>必备组件
+这些示例适用于 Microsoft.operationalinsights 模块的1.0.0 版或更高版本。
 
 
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>创建和配置 Log Analytics 工作区
@@ -194,14 +193,14 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 | `dd/MMM/yyyy:HH:mm:ss +zzzz` <br> 其中 + 是 + 或 - <br> 其中 zzzz 是时间偏移量 | `(([0-2][1-9]|[3][0-1])\\/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\/((19|20)[0-9][0-9]):([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\s[\\+|\\-][0-9]{4})` | | |
 | `yyyy-MM-ddTHH:mm:ss` <br> T 是文字字母 T | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))T((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 
-## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>将 Log Analytics 配置为发送 Azure 诊断
-要对 Azure 资源进行无代理监视，则需要为资源启用 Azure 诊断，并将其配置为写入到 Log Analytics 工作区。 此方法将数据直接发送到工作区并且不要求将数据写入到存储帐户。 支持的资源包括：
+## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>配置 Log Analytics 以发送 Azure 诊断
+要对 Azure 资源进行无代理监视，则需要为资源启用 Azure 诊断，并将其配置为写入到 Log Analytics 工作区。 此方法将数据直接发送到工作区，不需要将数据写入存储帐户。 支持的资源包括：
 
 | 资源类型 | 日志 | 指标 |
 | --- | --- | --- |
 | 应用程序网关    | 是 | 是 |
 | 自动化帐户     | 是 | |
-| Batch 帐户          | 是 | 是 |
+| 批处理帐户          | 是 | 是 |
 | Data Lake Analytics     | 是 | |
 | Data Lake Store         | 是 | |
 | SQL 弹性池        |     | 是 |
@@ -209,7 +208,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 | IoT 中心                |     | 是 |
 | Key Vault               | 是 | |
 | 负载均衡器          | 是 | |
-| 逻辑应用              | 是 | 是 |
+| Logic Apps              | 是 | 是 |
 | 网络安全组 | 是 | |
 | 用于 Redis 的 Azure 缓存             |     | 是 |
 | 搜索服务         | 是 | 是 |
@@ -233,15 +232,15 @@ Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Ena
 还可以使用前面的 cmdlet 从不同订阅中的资源收集日志。 该 cmdlet 能够跨订阅工作，你同时提供创建日志的资源的 ID 和日志发送到的工作区的 ID。
 
 
-## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>配置 Log Analytics 工作区，以便收集存储中的 Azure 诊断信息
-要从正在运行的经典云服务或 service fabric 群集实例内收集日志数据，需要首先将数据写入到 Azure 存储。 然后，Log Analytics 工作区将配置为从存储帐户收集日志。 支持的资源包括：
+## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>配置 Log Analytics 工作区以从存储收集 Azure 诊断
+要从正在运行的经典云服务或 service fabric 群集实例内收集日志数据，需要首先将数据写入到 Azure 存储。 然后，将 Log Analytics 工作区配置为从存储帐户收集日志。 支持的资源包括：
 
 * 经典云服务（Web 和辅助角色）
 * Service Fabric 群集
 
 以下示例介绍如何：
 
-1. 列出工作区将为其中的数据编制索引的现有存储帐户和位置
+1. 列出工作区将索引数据的现有存储帐户和位置
 2. 创建配置以从存储帐户读取
 3. 更新新创建的配置以为来自其他位置的数据编制索引
 4. 删除新创建的配置
