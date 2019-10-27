@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 908e44ef17dcfcf7042eab32cfd6d1fc3a565ac7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: af5b2a8c6894846ec529763f80c78bc50debabe6
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927112"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965507"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -358,11 +358,11 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 ## <a name="exceptions"></a>例外
 
-在大多数情况下，网络规则可帮助创建安全环境，以便在应用程序和数据之间进行访问。 但是，某些应用程序使用无法通过虚拟网络或 IP 地址规则唯一隔离的服务。 但必须向存储帐户授予此类服务，才能启用完整的应用程序功能。 你可以使用 "***允许受信任的 Microsoft 服务 ...*** " 例外为你的数据、日志或分析启用某些访问方案。
+网络规则有助于在大多数情况下为应用程序和数据创建安全的环境。 但是，某些应用程序使用无法通过虚拟网络或 IP 地址规则唯一隔离的服务。 但是，必须将此类服务授予存储，以实现完整的应用程序功能。 在这种情况下，你可以使用 "***允许受信任的 Microsoft 服务 ...*** " 设置来启用对你的数据、日志或分析的访问。
 
 ### <a name="trusted-microsoft-services"></a>受信任的 Microsoft 服务
 
-某些 Microsoft 服务无法通过现有网络规则授予访问权限。 你可以允许此类受信任的 Microsoft 服务的一部分访问存储帐户，同时为其他应用维护网络规则。 然后，这些服务可以使用强身份验证连接到存储帐户。 我们为 Microsoft 服务启用两种类型的受信任访问。
+某些 Microsoft 服务在网络规则中无法包含的网络中运行。 你可以允许此类受信任的 Microsoft 服务的一部分访问存储帐户，同时为其他应用维护网络规则。 然后，这些服务可以使用强身份验证安全地连接到存储帐户。 我们为 Microsoft 服务启用两种类型的受信任访问。
 
 - 某些服务的资源可以被授予对选择操作的访问权限，如写入日志或备份。
 - 某些服务的特定实例可以通过将[RBAC 角色分配](storage-auth-aad.md#assign-rbac-roles-for-access-rights)给资源实例来向其授予访问权限。
@@ -396,7 +396,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 ### <a name="storage-analytics-data-access"></a>存储分析数据访问
 
-在某些情况下，从网络边界外部需要读取诊断日志和指标的访问权限。 配置受信任的服务对存储帐户的访问权限时，你可以允许对日志文件、度量值表或这两者的读取访问。 [详细了解如何使用存储分析。](/azure/storage/storage-analytics)
+在某些情况下，需要从网络边界外访问读取诊断日志和指标。 配置受信任的服务对存储帐户的访问权限时，你可以允许对日志文件、度量值表或这两者的读取访问。 [详细了解如何使用存储分析。](/azure/storage/storage-analytics)
 
 ### <a name="managing-exceptions"></a>管理例外
 

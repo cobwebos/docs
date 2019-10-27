@@ -4,14 +4,14 @@ description: 介绍可在 Azure 资源管理器模板中使用的用于检索资
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 10/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: cf791bd262849cd93a155a19ade8f8fc377f8da6
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dc39c727526f55039a5e18a8fd2aeeb4f25234a6
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894199"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965635"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的资源函数
 
@@ -749,6 +749,12 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+在[订阅级部署](deploy-to-subscription.md)中使用时，将返回以下格式的资源 ID：
+
+```json
+/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
 若要获取其他格式的 ID，请参阅：

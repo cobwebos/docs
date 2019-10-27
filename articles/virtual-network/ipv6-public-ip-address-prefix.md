@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/15/2019
 ms.author: kumud
-ms.openlocfilehash: 2d00ccdeb89ba5d983e4a3e089e78a8d748e4092
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8254a7d86d5cadc2ddc03940f4ab2d08de74bd86
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597950"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965176"
 ---
 # <a name="reserved-public-ipv6-address-prefix-preview"></a>保留的公共 IPv6 地址前缀（预览）
 
@@ -46,7 +46,7 @@ ms.locfileid: "72597950"
 有关使用 Azure 公共 ip、单个 IP 地址和 IP 范围的成本，请参阅[公共 Ip 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses/)。
 
 ## <a name="limitations"></a>限制
-仅具有 "动态" 分配的基本公共 Ip 支持 IPv6，这意味着，如果在 Azure 中删除和重新部署应用程序（VM 或负载均衡器），IPv6 地址会发生更改。 只有标准 IPv6 公共 IP 支持动态和静态（保留）分配。
+仅具有 "动态" 分配的基本公共 Ip 支持 IPv6，这意味着，如果在 Azure 中删除和重新部署应用程序（VM 或负载均衡器），IPv6 地址会发生更改。 标准的 IPv6 公共 IP 仅支持静态（保留）分配，但是标准内部负载均衡器还可以支持从其分配到的子网中进行动态分配。  
 
 作为最佳做法，我们建议为 IPv6 应用程序使用标准公共 Ip 和标准负载均衡器。
 

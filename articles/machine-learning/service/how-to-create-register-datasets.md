@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 10/10/2019
-ms.openlocfilehash: a558658d7c853560f0939c99dc5dce739d985944
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f85b286de1318181ab660d51d5f434375f1fa46f
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900705"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965327"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>在 Azure 机器学习中创建和访问数据集（预览）
 
@@ -92,10 +92,16 @@ datastore_paths = [
                   (datastore, 'weather/2019/*.csv')
                  ]
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
+```
 
-# create a TabularDataset from a delimited file behind a public web url
+默认情况下，创建 TabularDataset 时，将自动推断列数据类型。 如果推断出的类型与预期不同，可以使用以下代码指定列类型。 [在此处](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py)了解有关支持的数据类型的详细信息。
+
+```Python
+from azureml.data.dataset_factory import DataType
+
+# create a TabularDataset from a delimited file behind a public web url and convert column "Survived" to boolean
 web_path ='https://dprepdata.blob.core.windows.net/demo/Titanic.csv'
-titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path)
+titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_types={'Survived': DataType.to_bool()})
 
 # preview the first 3 rows of titanic_ds
 titanic_ds.take(3).to_pandas_dataframe()
@@ -103,9 +109,9 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 | |PassengerId|因|Pclass|名称|性别|年龄|SibSp|Parch|入场券|费用|客舱|着手
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|第|0|3|Braund，Owen Harris|男|22.0|第|0|A/5 21171|7.2500||S
-第|2|第|第|Cumings，Mrs Bradley （Florence Briggs 。|女|38.0|第|0|电脑17599|71.2833|C85|C
-2|3|第|3|Heikkinen，未命中。 Laina|女|26.0|0|0|STON/O2。 3101282|7.9250||S
+0|第|错误|3|Braund，Owen Harris|男|22.0|第|0|A/5 21171|7.2500||S
+第|2|正确|第|Cumings，Mrs Bradley （Florence Briggs 。|女|38.0|第|0|电脑17599|71.2833|C85|C
+2|3|正确|3|Heikkinen，未命中。 Laina|女|26.0|0|0|STON/O2。 3101282|7.9250||S
 
 使用 `TabularDatasetFactory` 类的[`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-)方法从 Azure SQL 数据库读取数据。
 

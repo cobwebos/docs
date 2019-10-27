@@ -1,5 +1,5 @@
 - name: Azure 服务运行状况
-  href: index.md
+  href: index.yml
 - name: 概述
   items:
     - name: Azure 服务运行状况服务

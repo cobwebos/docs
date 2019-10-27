@@ -1,5 +1,5 @@
 ---
-title: 运行 Linux 或 Windows 的 Azure 虚拟机的常规性能故障排除
+title: 排查 Linux 或 Windows 上的 Azure 虚拟机性能问题
 description: 本文介绍虚拟机（VM）一般性能故障排除，通过监视和观察瓶颈，并为可能出现的问题提供可能的补救措施。
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 3fdac123ee7bda9d91d96940aebd6bddf4ea00f8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 50c0a670eb492aef01c3499bc2c8605917f4c7b8
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790807"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965470"
 ---
-# <a name="generic-performance-troubleshooting-for-azure-virtual-machine-running-linux-or-windows"></a>运行 Linux 或 Windows 的 Azure 虚拟机常规性能故障排除
+# <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>排查 Linux 或 Windows 上的 Azure 虚拟机性能问题
 
 本文介绍虚拟机（VM）一般性能故障排除，通过监视和观察瓶颈，并为可能出现的问题提供可能的补救措施。 除了监视之外，还可以使用 Perfinsights，它可以提供包含最佳做法建议的报表以及有关 IO/CPU/内存的关键瓶颈。 Perfinsights 适用于 Azure 中的[Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights)和[Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) VM。
 

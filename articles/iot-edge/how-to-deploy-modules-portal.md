@@ -10,12 +10,12 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: f27484fd1d47a2e29aa5083a7d440e5c7dba11c1
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 4c2adc8ef0d426617dc85dd507907d612bbdabaa
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839642"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964921"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>通过 Azure 门户部署 Azure IoT Edge 模块
 
@@ -23,10 +23,10 @@ ms.locfileid: "68839642"
 
 本文介绍了 Azure 门户如何引导创建部署清单并将部署推送给 IoT Edge 设备。 要了解如何创建基于设备的共享标记而面向多台设备的部署，请参阅[大规模地部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
-* 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device-portal.md)。
+* 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device.md#register-in-the-azure-portal)。
 
 ## <a name="select-your-device"></a>选择设备
 
@@ -37,15 +37,15 @@ ms.locfileid: "68839642"
 
 ## <a name="configure-a-deployment-manifest"></a>配置部署清单
 
-部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 要详细了解部署清单的工作原理及创建方式，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
+部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 若要详细了解部署清单的工作原理及创建方式，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
 
-Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文档。 它分为三步：添加模块、指定路由和评审部署。
+Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文档。 创建分为三步：添加模块、指定路由和评审部署。
 
 ### <a name="add-modules"></a>添加模块
 
-1. 在此页的“容器注册表设置”部分，提供用于访问包含模块映像的任何专用容器注册表的凭据。
+1. 在页面的 "**容器注册表设置**" 部分中，提供用于访问任何包含模块映像的私有容器注册表的凭据。
 
-1. 在此页的“部署模块”部分中，选择“添加”。
+1. 在页面的 "**部署模块**" 部分中，选择 "**添加**"。
 
 1. 在下拉列表中找到模块类型：
 
@@ -62,7 +62,7 @@ Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文�
 
 1. 必要时请填写可选字段。 要详细了解容器创建选项、重启策略和所需状态，请参阅 [EdgeAgent 必需属性](module-edgeagent-edgehub.md#edgeagent-desired-properties)。 要详细了解模块孪生，请参阅[定义或更新所需属性](module-composition.md#define-or-update-desired-properties)。
 
-1. 选择**保存**。
+1. 选择“保存”。
 
 1. 重复步骤 2-6，将其他模块添加到部署。
 
@@ -70,9 +70,9 @@ Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文�
 
 ### <a name="specify-routes"></a>指定路由
 
-向导默认提供名为“route”且定义为 **FROM /\* INTO $upstream** 的路由，这表示任何模块输出的任何消息都将发送到 IoT 中心。  
+向导默认提供名为“route”且定义为FROM /\* INTO $upstream 的路由，这表示任何模块输出的任何消息都将发送到 IoT 中心。  
 
-添加路由或使用[声明路由](module-composition.md#declare-routes)中的信息进行更新，然后选择“下一步”转到评审部分。
+在路由中添加或更新[声明路由](module-composition.md#declare-routes)中的信息，再选择“下一步”继续转到评审部分。
 
 ### <a name="review-deployment"></a>评审部署
 
@@ -92,7 +92,7 @@ Azure 市场是一个应用程序和服务在线市场，可在其中浏览各�
 
 1. 查找模块并开始部署过程。
 
-   * Azure 门户：查找模块，然后选择“创建”。
+   * Azure 门户：查找模块并选择 "**创建**"。
 
    * Azure 市场：
 

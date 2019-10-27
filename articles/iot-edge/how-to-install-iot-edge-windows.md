@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: c1b507398a2edd839b610a7c52892e23a88481a0
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: ae3f866ff5e4266983117e93f2aab5982065947e
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516615"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964392"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>在 Windows 上安装 Azure IoT Edge 运行时
 
@@ -76,9 +76,9 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 1. 如果尚未注册，请注册新的 IoT Edge 设备并检索**设备连接字符串**。 复制此部分后面要使用的连接字符串。 您可以使用以下工具来完成此步骤：
 
-   * [Azure 门户](how-to-register-device-portal.md)
-   * [Azure CLI](how-to-register-device-cli.md)
-   * [Visual Studio Code](how-to-register-device-vscode.md)
+   * [Azure 门户](how-to-register-device.md#register-in-the-azure-portal)
+   * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
+   * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
 2. 以管理员身份运行 PowerShell。
 
@@ -123,7 +123,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 在这第二个选项中，使用 IoT 中心设备预配服务来预配设备。 提供设备预配服务实例的**作用域 ID**以及特定于你首选[证明机制](../iot-dps/concepts-security.md#attestation-mechanism)的任何其他信息：
 
-* [在 Windows 上创建和预配模拟的 TPM 边缘设备](how-to-auto-provision-simulated-device-windows.md)
+* [使用 Windows 上的虚拟 TPM 创建和预配模拟 IoT Edge 设备](how-to-auto-provision-simulated-device-windows.md)
 * [使用对称密钥证明创建和预配 IoT Edge 设备](how-to-auto-provision-symmetric-keys.md)
 
 自动安装和设置设备时，可以使用其他参数来修改安装，包括：

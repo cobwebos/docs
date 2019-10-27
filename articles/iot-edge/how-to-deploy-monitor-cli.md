@@ -10,33 +10,33 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 2601d05c5d2302bedb51e959747939aa3c33db44
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 7ba38e1aa7196263b0ac64a6c92984cc3e7416a6
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839630"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964796"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>使用 Azure CLI 大规模部署并监视 IoT Edge 模块
 
-使用 Azure 命令行接口创建“IoT Edge 自动部署”，以便同时管理多个设备的正在进行的部署。 IoT Edge 的自动部署属于 IoT 中心的[自动设备管理](/azure/iot-hub/iot-hub-automatic-device-management)功能。 部署是动态的过程，允许将多个模块部署到多台设备，跟踪这些模块的状态和运行状况，以及在必要时进行更改。 
+使用 Azure 命令行接口创建一个**IoT Edge 自动部署**，为多个设备同时管理正在进行的部署。 IoT Edge 的自动部署是 IoT 中心[自动设备管理](/azure/iot-hub/iot-hub-automatic-device-management)功能的一部分。 部署是动态过程，使你能够将多个模块部署到多个设备、跟踪模块的状态和运行状况，并在必要时进行更改。 
 
-有关详细信息，请参阅[了解单个设备或大规模的 IoT Edge 自动部署](module-deployment-monitoring.md)。
+有关详细信息，请参阅[了解 IoT Edge 单个设备的自动部署或大规模部署](module-deployment-monitoring.md)。
 
-在本文中，将安装 Azure CLI 和 IoT 扩展。 然后，了解如何使用可用的 CLI 命令将模块部署到一组 IoT Edge 设备并监视进度。
+在本文中，将安装 Azure CLI 和 IoT 扩展。 然后，了解如何将模块部署到一组 IoT Edge 设备，并使用可用的 CLI 命令监视进度。
 
 ## <a name="cli-prerequisites"></a>CLI 先决条件
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-using-cli.md)。 
-* 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device-cli.md)。
+* 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device.md#prerequisites-for-the-azure-cli)。
 * 环境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 版本必须至少是 2.0.24 或更高版本。 请使用 `az --version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。 
 * [适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)。
 
 ## <a name="configure-a-deployment-manifest"></a>配置部署清单
 
-部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 有关详细信息，请参阅[了解如何在 IoT Edge 中部署模块和建立路由](module-composition.md)。
+部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 有关详细信息，请参阅[了解如何部署模块和在 IoT Edge 中建立路由](module-composition.md)。
 
-若要使用 Azure CLI 来部署模块，请将部署清单在本地另存为 .txt 文件。 在下一部分中，当运行命令以将配置应用到设备时，会用到该文件路径。 
+若要使用 Azure CLI 来部署模块，请将部署清单在本地另存为 .txt 文件。 运行命令将配置应用到设备时，可以使用下一部分中的文件路径。 
 
 下面是一个基本的部署清单示例，其中有一个模块：
 
@@ -114,7 +114,7 @@ ms.locfileid: "68839630"
 
 ## <a name="identify-devices-using-tags"></a>使用标记标识设备
 
-创建部署之前，必须能够指定想要影响的设备。 Azure IoT Edge 标识使用设备孪生中的标记标识设备。 每个设备都可以具有多个标记，你可以采用适合你的解决方案的任何方式定义这些标记。 例如，如果管理有智能楼宇的校园，可将以下标记添加到设备：
+创建部署之前，必须能够指定想要影响的设备。 Azure IoT Edge 标识使用设备孪生中的标记标识设备。 每个设备都可以有多个标记，您可以使用这些标记来定义解决方案。 例如，如果管理有智能楼宇的校园，可能要将以下标记添加到设备：
 
 ```json
 "tags":{
@@ -133,47 +133,47 @@ ms.locfileid: "68839630"
 
 请创建一个包含部署清单和其他参数的部署，以便将模块部署到目标设备。 
 
-使用[az iot edge deployment create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-create)命令创建部署:
+使用[az iot edge deployment create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-create)命令创建部署：
 
 ```cli
 az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
 ```
 
-部署创建命令采用以下参数： 
+部署 create 命令采用以下参数： 
 
-* **--deployment-id** - 将在 IoT 中心创建的部署的名称。 为部署提供唯一名称（最多包含 128 个小写字母）。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。
-* **--hub-name** - 将在其中创建部署的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令更改当前订阅。
+* **--deployment-id** - 将在 IoT 中心创建的部署的名称。 为部署命名唯一名称（最多包含 128 个小写字母）。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。
+* **--hub-name** - 将在其中创建部署的 IoT 中心的名称。 此中心必须在当前订阅中。 通过 `az account set -s [subscription name]` 命令更改当前订阅。
 * **--content** - 部署清单 JSON 的文件路径。 
 * **--labels** - 添加用于跟踪部署的标签。 标签是描述部署的“名称, 值”对。 标签对名称和值采用 JSON 格式设置。 例如： `{"HostPlatform":"Linux", "Version:"3.0.1"}`
-* **--target-condition** - 输入一个目标条件，用于确定哪些设备会成为此部署的目标。 该条件基于设备孪生标记或设备孪生报告的属性，应与表达式格式相匹配。 例如， `tags.environment='test' and properties.reported.devicemodel='4000x'` 。 
-* **--priority** - 一个正整数。 如果同一设备上确定的部署目标至少有两个，则会应用优先级数值最高的部署。
+* **--target-condition** - 输入一个目标条件，用于确定哪些设备会成为此部署的目标。 此条件基于设备克隆标记或设备克隆报告的属性，并且应与表达式格式匹配。 例如，`tags.environment='test' and properties.reported.devicemodel='4000x'`。 
+* **--priority** - 一个正整数。 如果在同一台设备上定目标到两个或多个部署，将会应用优先级数值最高的部署。
 
 ## <a name="monitor-a-deployment"></a>监视部署
 
-使用[az iot edge deployment show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show)命令显示单个部署的详细信息:
+使用[az iot edge deployment show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show)命令显示单个部署的详细信息：
 
 ```cli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
 ```
 
-部署显示命令采用以下参数：
+Deployment show 命令采用以下参数：
 * **--deployment-id** - IoT 中心存在的部署的名称。
 * **--hub-name** - 部署所在的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅
 
-在命令窗口中检查部署。  **metrics** 属性列出由每个中心评估的每个指标的计数：
+在命令窗口中检查部署。 "**指标**" 属性列出每个中心计算的每个指标的计数：
 
 * **targetedCount** - 一个系统指标，根据目标条件指定 IoT 中心的设备孪生数。
 * **appliedCount** - 一个系统指标，指定已在 IoT 中心将部署内容应用到其模块孪生的设备数。
-* **reportedSuccessfulCount** - 一个设备指标，用于指定通过 IoT Edge 客户端运行时报告成功的部署中的 IoT Edge 设备数。
-* **reportedFailedCount** - 一个设备指标，用于指定通过 IoT Edge 客户端运行时报告失败的部署中的 IoT Edge 设备数。
+* **reportedSuccessfulCount** -一种设备指标，用于指定 IoT Edge 客户端运行时的部署中报告成功的 IoT Edge 设备数。
+* **reportedFailedCount** -一种设备指标，用于指定 IoT Edge 客户端运行时部署报告失败中的 IoT Edge 设备数。
 
-你可以使用[az iot edge deployment show-公制](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show-metric)命令显示每个指标的设备 id 或对象的列表:
+你可以使用[az iot edge deployment show-公制](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show-metric)命令显示每个指标的设备 id 或对象的列表：
 
 ```cli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name] 
 ```
 
-部署显示指标命令采用以下参数： 
+Deployment show-公制命令采用以下参数： 
 * **--deployment-id** - IoT 中心存在的部署的名称。
 * **--metric-id** - 需要查看设备 ID 列表时所对应指标的名称，例如 `reportedFailedCount`
 * **--hub-name** - 部署所在的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅
@@ -188,7 +188,7 @@ az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [
 * 如果当前运行此部署的设备不再满足目标条件，则它将卸载此部署并采用下一个最高优先级部署。 
 * 如果当前运行此部署的设备不再满足目标条件且不满足任何其他部署的目标条件，则此设备上不会发生任何更改。 设备在当前状态下继续运行当前模块，但不再作为此部署的一部分被托管。 一旦它满足任何其他部署的目标条件，将卸载此部署并采用新的部署。 
 
-使用[az iot edge deployment update](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-update)命令更新部署:
+使用[az iot edge deployment update](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-update)命令更新部署：
 
 ```cli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
@@ -200,14 +200,14 @@ az iot edge deployment update --deployment-id [deployment id] --hub-name [hub na
 * **--set** - 更新部署中的属性。 可以更新以下属性：
   * targetCondition - 例如 `targetCondition=tags.location.state='Oregon'`
   * 标签 
-  * 优先级
+  * priority
 
 
 ## <a name="delete-a-deployment"></a>删除部署
 
 删除部署时，任何设备都将采用下一个最高优先级部署。 如果设备不满足任何其他部署的目标条件，则删除该部署时不会删除模块。 
 
-使用[az iot edge deployment delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-delete)命令删除部署:
+使用[az iot edge deployment delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-delete)命令删除部署：
 
 ```cli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name] 
@@ -219,4 +219,4 @@ az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub na
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解[将模块部署到 IoT Edge 设备](module-deployment-monitoring.md)。
+了解有关[将模块部署到 IoT Edge 设备](module-deployment-monitoring.md)的详细信息。

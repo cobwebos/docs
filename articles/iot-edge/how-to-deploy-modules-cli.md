@@ -10,12 +10,12 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: aa5c4747238b2f2427be3e57c3e84e03c81fd609
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: c8cd6e2d13e252f9a7560b55eca58341e791db5a
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541759"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964929"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>使用 Azure CLI 部署 Azure IoT Edge 模块
 
@@ -25,10 +25,10 @@ ms.locfileid: "69541759"
 
 本文介绍了如何创建 JSON 部署清单，然后使用此文件将部署推送至 IoT Edge 设备。 要了解如何创建基于设备的共享标记而面向多台设备的部署，请参阅[大规模地部署和监视 IoT Edge 模块](how-to-deploy-monitor-cli.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-using-cli.md)。
-* 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device-cli.md)。
+* 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device.md#register-with-the-azure-cli)。
 * 环境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 版本必须至少是 2.0.24 或更高版本。 请使用 `az --version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。
 * [适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)。
 
@@ -116,7 +116,7 @@ ms.locfileid: "69541759"
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content [file path]
    ```
 
-device id 参数区分大小写。 content 参数指向你保存的部署清单文件。
+设备 ID 参数区分大小写。 content 参数指向你保存的部署清单文件。
 
    ![az iot edge set-modules output](./media/how-to-deploy-cli/set-modules.png)
 
@@ -130,7 +130,7 @@ device id 参数区分大小写。 content 参数指向你保存的部署清单�
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
-device id 参数区分大小写。
+设备 ID 参数区分大小写。
 
    ![az iot hub module-identity list output](./media/how-to-deploy-cli/list-modules.png)
 

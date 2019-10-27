@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: a3ba28960327f1e0a56b1ac838b2cb90ab6ac72a
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 0dd0b8cf39da8039b3a59bf243284e0d5062bd78
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675637"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965599"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知问题和故障排除 Azure 机器学习
 
@@ -43,7 +43,7 @@ Azure 计算将更新从11月提前开始的 NCv3 Sku，以支持所有 MPI 实�
  
 在修复之前，可以将数据集连接到任何数据转换模块（选择数据集中的列，编辑元数据，拆分数据等）并运行试验。 然后，可以可视化数据集。 
 
-下图显示了如何： ![visulize 数据 ](./media/resource-known-issues/aml-visualize-data.png)
+下图显示了如何： ![visulize-data](./media/resource-known-issues/aml-visualize-data.png)
 
 ## <a name="sdk-installation-issues"></a>SDK 安装问题
 
@@ -86,6 +86,16 @@ Tensor Flow 自动化机器学习当前不支持 Tensor 流版本1.13。 安装�
 ### <a name="experiment-charts"></a>试验图
 
 自4/12 以来，自动 ML 试验迭代中显示的二进制分类图表（精度召回、ROC、增益曲线等）在用户界面中无法正确呈现。 图表绘图当前显示的是反转结果，在这种情况下，较低的结果显示更好的模型。 正在调查解决方案。
+
+## <a name="datasets-and-data-preparation"></a>数据集和数据准备
+
+### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>无法从 HTTP 或 ADLS Gen 2 读取 Parquet 文件
+
+AzureML DataPrep SDK 版本1.1.25 中存在一个已知问题，它会在通过从 HTTP 或 ADLS Gen 2 读取 Parquet 文件创建数据集时导致失败。 若要解决此问题，请升级到高于1.1.26 的版本，或降级到低于1.1.24 的版本。
+
+```python
+pip install --upgrade azureml-dataprep
+```
 
 ## <a name="databricks"></a>Databricks
 
@@ -224,7 +234,7 @@ kubectl get secret/azuremlfessl -o yaml
 ```
 
 >[!Note]
->Kubernetes 以64编码格式存储密码。 在向 `attach_config.enable_ssl` 提供机密之前，需要对 `cert.pem` 和机密的 `key.pem` 组件进行64解码。 
+>Kubernetes 以64编码格式存储密码。 在向 `attach_config.enable_ssl`提供机密之前，需要对 `cert.pem` 和机密的 `key.pem` 组件进行64解码。 
 
 ## <a name="recommendations-for-error-fix"></a>错误修复建议
 基于常规观察，以下是 Azure ML 建议，用于修复 Azure ML 中的一些常见错误。
@@ -232,7 +242,7 @@ kubectl get secret/azuremlfessl -o yaml
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors （没有名为的模块）
 如果在 Azure ML 中提交试验时运行到 ModuleErrors 中，则表示训练脚本需要安装一个包，但不会添加它。 提供包名称后，Azure ML 会在用于定型的环境中安装包。 
 
-如果使用[估算](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators)提交试验，则可以通过基于要安装包的源中的估计器 `pip_packages` 或 `conda_packages` 参数指定包名称。 你还可以使用 `conda_dependencies_file`or 列出所有依赖项的 docker-compose.override.yml 文件，并使用 `pip_requirements_file` 参数列出 txt 文件中的所有 pip 要求。
+如果使用[估算](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators)提交试验，则可以通过基于要安装包的源中的估计器 `pip_packages` 或 `conda_packages` 参数指定包名称。 你还可以使用 `conda_dependencies_file`指定包含所有依赖项的 docker-compose.override.yml 文件，或者使用 `pip_requirements_file` 参数列出 txt 文件中的所有 pip 要求。
 
 Azure ML 还为 Tensorflow、PyTorch、Chainer 和 Spark-sklearn 提供框架特定的估算。 使用这些估算将确保在用于定型的环境中代表您安装框架依赖项。 您可以选择指定额外的依赖项，如上所述。 
  
