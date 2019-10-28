@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: bf3f08436fb4bac56907b342c991709947f4c24d
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7a7085eccf05fb65bf7b9036c738a1d17e91a433
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754206"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935910"
 ---
 # <a name="moderate-text-from-the-api-console"></a>从 API 控制台审查文本
 
@@ -61,9 +61,6 @@ ms.locfileid: "72754206"
 ### <a name="sample-text-to-scan"></a>要扫描的示例文本
 
 在“请求正文”框中，输入一些文本。 以下示例显示文本中的有意拼写错误。
-
-> [!NOTE]
-> 以下示例文本中的无效社会安全号码是有意而为。 目的是传达示例输入和输出格式。
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.

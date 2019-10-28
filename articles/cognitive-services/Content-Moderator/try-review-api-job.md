@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 4eded22d5f7a8f19f286f9e90185d695b4c28fc6
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 83ee8e0c0583cba72da8702e196f0f38128f8d8a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755285"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935942"
 ---
 # <a name="define-and-use-moderation-jobs-rest"></a>定义和使用审核作业（REST）
 
@@ -28,7 +28,7 @@ ms.locfileid: "72755285"
 
 ## <a name="create-a-job"></a>创建作业
 
-若要创建审核作业，请打开 "[作业-创建](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5)API 引用" 页，然后选择关键区域的按钮（可在 "[查看工具](https://contentmoderator.cognitive.microsoft.com/)" 的 "**凭据**" 页上的 "终结点 URL" 中找到此项）。 这会启动 API 控制台，你可以在其中轻松构造和运行 REST API 调用。
+若要创建审核作业，请打开 "[作业-创建](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5)API 引用" 页，然后选择订阅区域的按钮（可在 "[查看工具](https://contentmoderator.cognitive.microsoft.com/)" 的 "**凭据**" 页上的 "终结点 URL" 中找到此项）。 这会启动 API 控制台，你可以在其中轻松构造和运行 REST API 调用。
 
 ![作业-创建页区域选择](images/test-drive-job-1.png)
 

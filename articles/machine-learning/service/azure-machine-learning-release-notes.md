@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: afad2648ec73b02d4e06ad55f850a518d2488f68
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c8ec05db9bf372f31b6c3cfadf1eda75ba8f7d2b
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756061"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965193"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -171,8 +171,8 @@ ms.locfileid: "72756061"
     + 再次设置 ADB 代码中的异常处理，并根据新的错误处理对进行更改
     + 为笔记本 Vm 添加了自动 MSI 身份验证。
     + 修复 bug，因为重试失败，可能会上传损坏或空模型。
-    + 修复了 `DataReference` 模式更改时 `DataReference` 名称更改的 bug （例如，调用 `as_upload`、`as_download` 或 `as_mount` 时）。
-    + 为 `FileDataset.mount` 和 `FileDataset.download` `mount_point` 和 `target_path`。
+    + 修复了 `DataReference` 模式更改时 `DataReference` 名称更改的 bug （例如，调用 `as_upload`、`as_download`或 `as_mount`时）。
+    + 为 `FileDataset.mount` 和 `FileDataset.download``mount_point` 和 `target_path`。
     + 如果在未分配精细时间戳列的情况下调用时间 serials 相关 API，或者删除了指定的时间戳列，则会引发时间戳列除外。
     + 应为 serials 列分配其类型为 Date 的列，否则应为 exception
     + 分配 API "with_timestamp_columns" 的时间 serials 列可能不会使用无值精细/粗时间戳列名称，这将清除以前分配的时间戳列。
@@ -279,7 +279,7 @@ ms.locfileid: "72756061"
 ### <a name="azure-machine-learning-data-prep-sdk-v1114"></a>Azure 机器学习数据准备 SDK 1.1.14
 + **Bug 修复和改进**
   + 已启用使用原始路径和凭据写入 ADLS/ADLSGen2。
-  + 修复了一个 bug，该 bug 导致 `include_path=True` 对 `read_parquet` 不起作用。
+  + 修复了一个 bug，该 bug 导致 `include_path=True` 对 `read_parquet`不起作用。
   + 修复了异常 "属性值无效： hostSecret" 导致的 `to_pandas_dataframe()` 失败。
   + 修复了在 Spark 模式下无法在 DBFS 上读取文件的 bug。
   
@@ -418,7 +418,7 @@ ms.locfileid: "72756061"
 
 + **新功能**
   + 你现在可以请求对特定列执行特定检查器（例如直方图、散点图等）。
-  + 向 `append_columns` 添加了并行参数。 如果为 True，则数据将加载到内存中，但执行将并行运行;如果为 False，则执行将进行流式处理但单线程。
+  + 向 `append_columns`添加了并行参数。 如果为 True，则数据将加载到内存中，但执行将并行运行;如果为 False，则执行将进行流式处理但单线程。
 
 ## <a name="2019-07-23"></a>2019-07-23
 
@@ -447,7 +447,7 @@ ms.locfileid: "72756061"
     + 删除旧的异常类。
     + 在预测任务中，`target_lags` 参数现在接受一个整数值或一个整数列表。 如果提供了整数，则只会创建一个 lag。 如果提供了列表，则会采用滞后时间的唯一值。 target_lags = [1，2，2，4] 将创建1、2和4个周期的滞后时间。
     + 修复有关转换后丢失列类型的 bug （链接错误）;
-    + 在 `model.forecast(X, y_query)` 中，允许 y_query 为在开头（#459519）不包含任何内容的对象类型。
+    + 在 `model.forecast(X, y_query)`中，允许 y_query 为在开头（#459519）不包含任何内容的对象类型。
     + 向 automl 输出添加预期值
   + **contrib-datadrift**
     +  示例笔记本的改进，包括切换到 azureml-opendatasets 而不是 contrib-opendatasets 和丰富数据时的性能改进
@@ -556,7 +556,7 @@ ms.locfileid: "72756061"
     + 将 batch_size 添加到模拟说明的 include_local = False，以便对批处理中的全局说明进行流式处理，以提高模型 explainability 库的 DecisionTreeExplainableModel 的执行时间。
   + **azureml 核心**
     + 添加了在 AzureML CLI 中附加 DBFS 数据存储的功能。
-    + 修复了数据存储上传的问题，其中创建了一个空文件夹（如果 `target_path` 以 `/` 开头）。
+    + 修复了数据存储上传的问题，其中创建了一个空文件夹（如果 `target_path` 以 `/`开头）。
     + 启用了两个数据集的比较。
     + 模型和图像删除现在提供了有关检索上游对象的详细信息，如果由于上游依赖关系而删除操作失败，则会依赖于这些对象。
     + 弃用了 auto_prepare_environment 中未使用的 RunConfiguration 设置。
@@ -580,13 +580,13 @@ ms.locfileid: "72756061"
 ### <a name="azure-machine-learning-data-prep-sdk-v118"></a>Azure 机器学习数据准备 SDK 1.1。8
 
 + **新功能**
- + 现在可以循环访问数据流对象，从而生成一系列记录。 请参阅文档以了解 `Dataflow.to_record_iterator`。
+  + 现在可以循环访问数据流对象，从而生成一系列记录。 请参阅文档以了解 `Dataflow.to_record_iterator`。
 
 + **Bug 修复和改进**
- + 增强了 DataPrep SDK 的可靠性。
- + 改进了 pandas DataFrames 与非字符串列索引的处理。
- + 提高了数据集中 `to_pandas_dataframe` 的性能。
- + 修复了在多节点环境中运行时，Spark 执行数据集失败的 bug。
+  + 增强了 DataPrep SDK 的可靠性。
+  + 改进了 pandas DataFrames 与非字符串列索引的处理。
+  + 提高了数据集中 `to_pandas_dataframe` 的性能。
+  + 修复了在多节点环境中运行时，Spark 执行数据集失败的 bug。
 
 ## <a name="2019-07-01"></a>2019-07-01
 
@@ -630,10 +630,10 @@ ms.locfileid: "72756061"
   + 添加了 top 值（`SummaryFunction.TOPVALUES`）和下限值（`SummaryFunction.BOTTOMVALUES`）的汇总函数。
 
 + **Bug 修复和改进**
-  + 显著提高了 `read_pandas_dataframe` 的性能。
+  + 显著提高了 `read_pandas_dataframe`的性能。
   + 修复了一个 bug，该 bug 会导致 `get_profile()` 指向二进制文件的数据流失败。
   + 公开 `set_diagnostics_collection()` 允许对遥测集合进行编程启用/禁用。
-  + 更改了 `get_profile()` 的行为。 现在，对于 Min、Mean、Std 和 Sum，NaN 值将被忽略，它们与 Pandas 的行为保持一致。
+  + 更改了 `get_profile()`的行为。 现在，对于 Min、Mean、Std 和 Sum，NaN 值将被忽略，它们与 Pandas 的行为保持一致。
 
 
 ## <a name="2019-06-10"></a>2019-06-10
@@ -677,7 +677,7 @@ ms.locfileid: "72756061"
   + 对于具有两位数年份格式的解释日期时间值，已更新有效年份范围，以匹配 Windows 可能会释放。 范围已从1930-2029 更改为1950-2049。
   + 在文件中读取并设置 `handleQuotedLineBreaks=True` 时，`\r` 将被视为新行。
   + 修复了在某些情况下导致 `read_pandas_dataframe` 失败的 bug。
-  + @No__t_0 的改进性能。
+  + `get_profile`的改进性能。
   + 改进的错误消息。
 
 ## <a name="2019-05-28"></a>2019-05-28
@@ -688,7 +688,7 @@ ms.locfileid: "72756061"
   + 现在可以使用以下表达式语言函数将日期时间值提取并分析到新列中。
     + `RegEx.extract_record()` 将 datetime 元素提取到新列中。
     + `create_datetime()` 通过单独的 datetime 元素创建 datetime 对象。
-  + 在调用 `get_profile()` 时，您现在可以看到分位列标记为（est.）以清楚地指示值为近似值。
+  + 在调用 `get_profile()`时，您现在可以看到分位列标记为（est.）以清楚地指示值为近似值。
   + 你现在可以在从 Azure Blob 存储中进行读取时使用 * * 组合。
     + 例如，`dprep.read_csv(path='https://yourblob.blob.core.windows.net/yourcontainer/**/data/*.csv')`
 
@@ -811,7 +811,7 @@ ms.locfileid: "72756061"
 
 Azure 机器学习 SDK for Python v 1.0.30 已发布。
 
-[@No__t_1](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline_endpoint.pipelineendpoint?view=azure-ml-py)是在维护相同终结点时添加已发布管道的新版本所引入的。
+[`PipelineEndpoint`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline_endpoint.pipelineendpoint?view=azure-ml-py)是在维护相同终结点时添加已发布管道的新版本所引入的。
 
 ## <a name="2019-04-17"></a>2019-04-17
 
@@ -826,15 +826,15 @@ Azure 机器学习 SDK for Python v 1.0.30 已发布。
     + 示例：
       + `dflow.filter(dprep.RegEx('pattern').is_match(dflow['column_name']))`
       + `dflow.assert_value('column_name', dprep.RegEx('pattern').is_match(dprep.value))`
-  + 你现在可以使用表达式语言中的 `to_upper`  and `to_lower`  functions。
+  + 你现在可以使用表达式语言 `to_upper` 和 `to_lower` 函数。
   + 现在，可以看到数据配置文件中每个列的唯一值数。
   + 对于一些常用的读取器步骤，你现在可以传入 `infer_column_types` 参数。 如果将其设置为 `True`，数据准备将尝试检测并自动转换列类型。
     + `inference_arguments` 现已弃用。
   + 你现在可以调用 `Dataflow.shape`。
 
 + **Bug 修复和改进**
-  + `keep_columns`  now 接受其他可选参数 `validate_column_exists`，这将检查 `keep_columns` 的结果是否包含任何列。
-  + 从文件读取的所有读取器步骤现在都接受 `verify_exists` 的其他可选参数。
+  + 现在 `keep_columns` 接受其他可选参数 `validate_column_exists`，这将检查 `keep_columns` 的结果是否包含任何列。
+  + 从文件读取的所有读取器步骤现在都接受 `verify_exists`的其他可选参数。
   + 提高了读取 pandas 数据帧和获取数据配置文件的性能。
   + 修复了这样的 bug：从数据流切分单个步骤失败，并出现单个索引。
 
@@ -852,7 +852,7 @@ Azure 机器学习 SDK for Python v 1.0.30 已发布。
 
 + **新功能**
   + Azure 机器学习 SDK 现在支持 Python 3.7。
-  + Azure 机器学习 DNN 估算现在提供内置的多版本支持。 例如，`TensorFlow`  estimator 现在接受 `framework_version` 参数，用户可以指定版本 "1.10" 或 "1.12"。 有关当前 SDK 版本支持的版本的列表，请对所需的框架类调用 `get_supported_versions()` （例如，`TensorFlow.get_supported_versions()`）。
+  + Azure 机器学习 DNN 估算现在提供内置的多版本支持。 例如，`TensorFlow` 估计器现在接受 `framework_version` 参数，用户可以指定版本 "1.10" 或 "1.12"。 有关当前 SDK 版本支持的版本的列表，请对所需的框架类调用 `get_supported_versions()` （例如，`TensorFlow.get_supported_versions()`）。
   有关最新 SDK 版本支持的版本的列表，请参阅[DNN 估计器文档](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py)。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v111"></a>Azure 机器学习数据准备 SDK 版本1.1。1
@@ -895,7 +895,7 @@ Azure 机器学习 SDK for Python v 1.0.30 已发布。
 
 + **Bug 修复和改进**
   + 你现在可以在用于数值列配置文件的直方图中指定要使用的储箱数。
-  + @No__t_0 转换现在要求数据帧具有字符串或字节类型的列名称。
+  + `read_pandas_dataframe` 转换现在要求数据帧具有字符串或字节类型的列名称。
   + 修复了 `fill_nulls` 转换中的 bug，如果缺少列，则不会正确填充值。
 
 ## <a name="2019-03-11"></a>2019-03-11
