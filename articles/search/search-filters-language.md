@@ -1,38 +1,36 @@
 ---
-title: 用于搜索索引中多语言内容的语言筛选器 - Azure 搜索
-description: 支持多语言搜索的筛选条件，将查询执行范围限定为特定于语言的字段。
-author: HeidiSteen
+title: 搜索索引中多语言内容的语言筛选器
+titleSuffix: Azure Cognitive Search
+description: 筛选条件以支持多语言搜索，将查询执行范围限定为特定于语言的字段。
 manager: nitinme
-services: search
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 10/23/2017
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 1eced868b180a916355d6f9fbfc8cd47a5d7d6e2
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 2762ce42f0d3f5829682e0910c452746a65ef2f3
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649865"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792869"
 ---
-# <a name="how-to-filter-by-language-in-azure-search"></a>如何在 Azure 搜索中按语言筛选 
+# <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>如何在 Azure 中按语言筛选认知搜索 
 
-多语言搜索应用程序的一项关键要求是能够按用户自己的语言搜索和检索结果。 在 Azure 搜索中，满足多语言应用的语言要求的方法之一是创建专门用于按特定语言存储字符串的一系列字段，然后在查询时将全文搜索限定于这些字段。
+多语言搜索应用程序的一项关键要求是能够按用户自己的语言搜索和检索结果。 在 Azure 认知搜索中，满足多语言应用的语言要求的一种方法是创建一系列专门用于以特定语言存储字符串的字段，然后将全文搜索限制为查询时的这些字段。
 
 请求中的查询参数用于限定搜索操作的范围，同时修剪无法提供与所需搜索体验兼容的内容的任何字段的结果。
 
-| Parameters | 用途 |
+| parameters | 用途 |
 |-----------|--------------|
 | **searchFields** | 将全文搜索限制为命名字段的列表。 |
 | **$select** | 修剪响应，以便只包含指定的字段。 默认情况下，会返回所有可检索字段。 使用 **$Select** 参数可以选择要返回哪些字段。 |
 
-此方法能够成功取决于字段内容的完整性。 Azure 搜索不会转换字符串，也不执行语言检测。 你负责确保字段包含预期的字符串。
+此方法能够成功取决于字段内容的完整性。 Azure 认知搜索不会转换字符串或执行语言检测。 你负责确保字段包含预期的字符串。
 
 ## <a name="define-fields-for-content-in-different-languages"></a>为采用不同语言的内容定义字段
 
-在 Azure 搜索中，查询以单个索引为目标。 想要在单个搜索体验中提供特定于语言的字符串的开发人员通常会定义专用字段来存储值：一个字段用于存储英语字符串，一个字段用于存储法语字符串，等等。 
+在 Azure 认知搜索中，查询以单个索引为目标。 想要在单个搜索体验中提供特定于语言的字符串的开发人员通常会定义专用字段来存储值：一个字段用于存储英语字符串，一个字段用于存储法语字符串，等等。 
 
 在我们的示例（包括下面所示的[房地产示例](search-get-started-portal.md)）中，可以看到类似于以下屏幕截图的字段定义。 请注意此示例如何此索引中显示字段的语言分析器分配。 如果与旨在处理目标语言的语言规则的分析器搭配使用，包含字符串的字段可在全文搜索中更好地发挥作用。
 
@@ -62,10 +60,10 @@ parameters =
 > [!Note]
 > 尽管查询不包含 $filter 自变量，但此用例与筛选概念密切相关，因此我们将它作为筛选方案进行演示。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-+ [Azure 搜索中的筛选器](search-filters.md)
++ [Azure 认知搜索中的筛选器](search-filters.md)
 + [语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)
-+ [Azure 搜索中全文搜索的工作原理](search-lucene-query-architecture.md)
++ [Azure 中全文搜索的工作原理认知搜索](search-lucene-query-architecture.md)
 + [搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 

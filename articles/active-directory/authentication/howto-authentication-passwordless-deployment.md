@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea4b8ea98365ec13f7f027215a75b9d79ea5c54e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 6996b6163c1d5a2a4747093743a937dfd9eb7d4f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72453129"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933118"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>完成无密码 authentication 部署
 
@@ -185,7 +185,7 @@ Microsoft 提供了 MFA[通信模板](https://aka.ms/mfatemplates)、自助服�
 | 用户可以通过 FIDO2 设备登录（1809） | 用户可以从 "登录" 窗口中选择 "安全密钥"，并成功登录。 |
 | 用户可以注册 FIDO2 设备（1903） | 用户可以在设置 > 帐户中注册 FIDO2 设备 > 登录选项 > 安全密钥 |
 | 用户可以重置 FIDO2 设备（1903） | 用户可以在设置 > 帐户 > 登录选项 > 安全密钥中重置 FIDO2 设备 |
-| 用户可以通过 FIDO2 设备登录（1809） | 用户可以从 "登录" 窗口中选择 "安全密钥"，并成功登录。 |
+| 用户可以通过 FIDO2 设备登录（1903） | 用户可以从 "登录" 窗口中选择 "安全密钥"，并成功登录。 |
 
 **无密码 FIDO 登录到 Azure AD web 应用**
 

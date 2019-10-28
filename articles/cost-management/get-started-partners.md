@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/17/2019
+ms.date: 10/22/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 661e1b6e3811ff2b5ae25e4fd59764a69e9ebe48
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6d59964013a2631430ecd7e46d1ce0f6be60a05f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596635"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802038"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>适用于合作伙伴的 Azure 成本管理入门
 
@@ -30,10 +30,10 @@ CSP 合作伙伴使用成本管理来：
 - 启用 Azure 资源管理器策略，以提供对成本管理数据的客户访问。 然后，客户可以使用即用即[付费率](https://azure.microsoft.com/pricing/calculator/)查看其订阅的消耗成本数据。
 
 以下示例显示了所有客户的成本。
-![Example 显示所有客户的成本 ](./media/get-started-partners/customer-costs1.png)
+显示所有客户的成本的 ![示例](./media/get-started-partners/customer-costs1.png)
 
 下面是一个显示单个客户的成本的示例。
-![Example 显示单个客户的成本 ](./media/get-started-partners/customer-costs2.png)
+显示单个客户的成本的 ![示例](./media/get-started-partners/customer-costs2.png)
 
 还可通过 REST Api 使用 Azure 成本管理中提供的所有功能。 使用 Api 自动执行成本管理任务。
 
@@ -101,7 +101,7 @@ Azure 成本管理要求对计费帐户或订阅具有 "读取" 权限。 可以
 
 只有拥有**全局管理员**和**管理代理**角色的用户才能直接在合作伙伴的 Azure 租户中管理和查看计费帐户、计费配置文件和客户的成本。 有关合作伙伴中心角色的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。
 
-### <a name="enable-cost-management-in-the-customer-tenant"></a>启用客户租户中的成本管理
+## <a name="enable-cost-management-in-the-customer-tenant"></a>启用客户租户中的成本管理
 
 合作伙伴可以在客户载入 Microsoft 客户协议后启用对成本管理的访问。 然后，合作伙伴可以启用允许客户查看按现用现付零售费率计算的成本的策略。 在 RBAC 订阅和资源组范围内，按客户的计费币种显示成本。
 
@@ -122,7 +122,7 @@ Azure 成本管理要求对计费帐户或订阅具有 "读取" 权限。 可以
 在 "**设置**" 下，单击 "**策略**"。
 
 对于与所选客户的订阅相关联的**Azure 使用**费用，将显示当前成本可见性策略。
-![Policy 允许客户查看即用即付费用 ](./media/get-started-partners/cost-management-billing-policies.png)
+![策略以允许客户查看即用即付费用](./media/get-started-partners/cost-management-billing-policies.png)
 
 当策略设置为 "**否**" 时，Azure 成本管理不适用于与客户关联的订阅用户。 默认情况下，默认情况下，为所有订阅用户禁用成本可见性策略。
 

@@ -15,6 +15,12 @@
       href: web-query-data.md
 - name: 教程
   items:
+    - name: E2E 编程 Blob 引入
+      items:
+        - name: 'C#'
+          href: end-to-end-csharp.md
+        - name: Python
+          href: end-to-end-python.md
     - name: 引入数据而无需使用代码
       href: ingest-data-no-code.md
     - name: 在 Power BI 中将数据可视化

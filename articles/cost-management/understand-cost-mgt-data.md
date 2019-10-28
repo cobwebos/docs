@@ -5,23 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 10/23/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 6870297eea194b89a84a89e1e8ef8decf5c1788e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 0b93f898924d73636c31826b6b63a228f75fc8ba
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374526"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900165"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
 本文可帮助你更好地了解 Azure 成本管理中包含的 Azure 成本和使用情况数据。 它说明了处理、收集、显示和关闭数据的频率。 你需要按月支付 Azure 使用费。 尽管计费周期为每月期间，但周期开始日期和结束日期因订阅类型而异。 成本管理接收用量数据的频率根据不同的因素而异。 此类因素包括处理数据所花费的时间，以及 Azure 服务向计费系统发出用量数据的频率。
 
-成本管理包括所有使用情况和购买情况，其中包括企业协议（EA）帐户的预订和第三方产品/服务。 Microsoft 客户协议（MCA）帐户和使用即用即付费率的个人订阅仅包含 Azure 和 Marketplace 服务的使用情况。 不包括支持和其他成本。 在生成发票之前估计成本，而不考虑信用额度。
+成本管理包括所有使用情况和购买情况，其中包括企业协议（EA）帐户的预订和第三方产品/服务。 Microsoft 客户协议帐户和使用即用即付费率的个人订阅仅包含 Azure 和 Marketplace 服务的使用情况。 不包括支持和其他成本。 在生成发票之前估计成本，而不考虑信用额度。
 
 ## <a name="supported-microsoft-azure-offers"></a>支持的 Microsoft Azure 产品
 
@@ -34,7 +34,7 @@ ms.locfileid: "72374526"
 | **企业协议 (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | 5月 2014<sup>1</sup> |
 | **Microsoft 客户协议** | [Microsoft Azure 计划](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | N/A | 2019年3月<sup>3</sup>日 |
 | **Microsoft 客户协议** | [用于开发/测试的 Microsoft Azure 计划](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | N/A | 2019年3月<sup>3</sup>日 |
-| **Microsoft 合作伙伴协议** | Microsoft Azure 计划 | CSP_2015-05-01、CSP_MG_2017、CSPDEVTEST_2018-05-01 | N/A | 2019年10月 |
+| **合作伙伴支持的 Microsoft 客户协议** | Microsoft Azure 计划 | CSP_2015-05-01、CSP_MG_2017 和 CSPDEVTEST_2018-05-01<br><br>此配额 ID 可重复用于 Microsoft 客户协议和旧 CSP 订阅。 目前仅支持 Microsoft 客户协议订阅。 | N/A | 2019 年 10 月 |
 | **Microsoft 开发人员网络 (MSDN)** | [MSDN 平台](https://azure.microsoft.com/offers/ms-azr-0062p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | 10月2日，2018<sup>2</sup> |
 | **即用即付** | [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | 10月2日，2018<sup>2</sup> |
 | **即用即付** | [即用即付开发/测试](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | 10月2日，2018<sup>2</sup> |

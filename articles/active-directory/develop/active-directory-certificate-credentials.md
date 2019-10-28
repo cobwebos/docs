@@ -1,5 +1,6 @@
 ---
-title: Azure AD 中的证书凭据 |Microsoft 文档
+title: Azure AD 中的证书凭据
+titleSuffix: Microsoft identity platform
 description: 本文讨论注册和使用证书凭据进行应用程序身份验证
 services: active-directory
 documentationcenter: .net
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aa63a8f06b71455b7f00d2ce5842f0da851789b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 1184d210f5b7ea25b9f73cbd70b5f960402126a1
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835472"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803533"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>应用程序身份验证的证书凭据
 
@@ -34,7 +35,7 @@ Azure Active Directory (Azure AD) 允许应用程序使用自己的凭据进行�
 ## <a name="assertion-format"></a>断言格式
 若要计算断言，可使用所选语言中的许多 [JSON Web 令牌](https://jwt.ms/)库之一。 令牌携带的信息如下所示：
 
-### <a name="header"></a>Header
+### <a name="header"></a>标头
 
 | 参数 |  备注 |
 | --- | --- |
@@ -51,7 +52,7 @@ Azure Active Directory (Azure AD) 允许应用程序使用自己的凭据进行�
 | `iss` | 颁发者：应为 client_id（客户端服务的应用程序 ID） |
 | `jti` | GUID：JWT ID |
 | `nbf` | 生效时间：此日期之前不能使用令牌。 该时间表示为自 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 至令牌颁发时间的秒数。 |
-| `sub` | 使用者：对于 `iss`，应该是 client_id（客户端服务的应用程序 ID） |
+| `sub` | 使用者：`iss` 应为 client_id（客户端服务的应用程序 ID） |
 
 ### <a name="signature"></a>签名
 
@@ -99,9 +100,9 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 在客户端应用程序的 Azure 应用注册中：
 1. 选择“证书和机密”。 
-2. 单击“上传证书”，然后选择要上传的证书文件。
+2. 单击 "上**传证书**"，然后选择要上传的证书文件。
 3. 单击“添加”。
-  上传证书后，将显示指纹、开始日期和到期日期值。 
+  上载证书后，将显示指纹、开始日期和过期值。 
 
 ### <a name="updating-the-application-manifest"></a>更新应用程序清单
 
@@ -113,7 +114,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 还需要提供 GUID 来标识应用程序清单中的密钥 (`$keyId`)。
 
 在客户端应用程序的 Azure 应用注册中：
-1. 选择“清单”以打开应用程序清单。
+1. 选择 "**清单**" 打开应用程序清单。
 2. 使用以下架构将 *keyCredentials* 属性替换为新的证书信息。
 
    ```

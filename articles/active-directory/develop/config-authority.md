@@ -1,5 +1,6 @@
 ---
-title: 将适用于 iOS 和 macOS 的 MSAL 配置为使用不同的标识提供程序 |Microsoft 标识平台
+title: 将 iOS 和 macOS 的 MSAL 配置为使用不同的标识提供程序
+titleSuffix: Microsoft identity platform
 description: 了解如何使用不同的权限，例如 B2C、主权云和 guest 用户、MSAL for iOS 和 macOS。
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 114e67e2dca7ba304cb92b21a894e045cbe0c9e9
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 2ae1c1a6c151d0bfae1b608ccefdfeaaaa74b608
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269085"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803832"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>如何：将 iOS 和 macOS 的 MSAL 配置为使用不同的标识提供程序
 
@@ -30,7 +31,7 @@ ms.locfileid: "71269085"
 
 ## <a name="default-authority-configuration"></a>默认授权配置
 
-`MSALPublicClientApplication`使用的默认授权 URL `https://login.microsoftonline.com/common`配置，它适用于大多数 Azure Active Directory （AAD）方案。 除非你要实现高级方案（如国家云）或使用 B2C，否则不需要更改它。
+使用 `https://login.microsoftonline.com/common`的默认授权 URL （适用于大多数 Azure Active Directory （AAD）方案）配置 `MSALPublicClientApplication`。 除非你要实现高级方案（如国家云）或使用 B2C，否则不需要更改它。
 
 > [!NOTE]
 > 不支持将 Active Directory 联合身份验证服务用作标识提供程序（ADFS）的新式身份验证（有关详细信息，请参阅[ADFS For 开发人员](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers)）。 通过联合支持 ADFS。
@@ -41,9 +42,9 @@ ms.locfileid: "71269085"
 
 ### <a name="b2c"></a>B2C
 
-若要使用 B2C， [Microsoft 身份验证库（MSAL）](reference-v2-libraries.md)需要不同的机构配置。 MSAL 将一个颁发机构 URL 格式视为 B2C。 `https://<host>/tfp/<tenant>/<policy>`例如`https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SignInPolicy`，可识别的 B2C 机构格式是。 不过，你也可以通过将权威声明为 B2C 权威机构来使用任何其他受支持的 B2C 授权 Url。
+若要使用 B2C， [Microsoft 身份验证库（MSAL）](reference-v2-libraries.md)需要不同的机构配置。 MSAL 将一个颁发机构 URL 格式视为 B2C。 可识别的 B2C 机构格式为 `https://<host>/tfp/<tenant>/<policy>`，例如 `https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SignInPolicy`。 不过，你也可以通过将权威声明为 B2C 权威机构来使用任何其他受支持的 B2C 授权 Url。
 
-若要支持 B2C 的任意 url 格式， `MSALB2CAuthority`可以使用任意 url 进行设置，如下所示：
+若要支持 B2C 的任意 URL 格式，可以使用任意 URL 来设置 `MSALB2CAuthority`，如下所示：
 
 Objective-C
 ```objc
@@ -80,7 +81,7 @@ b2cApplicationConfig.knownAuthorities = [b2cAuthority]
 
 当应用请求新策略时，需要更改颁发机构 URL，因为每个策略的证书颁发机构 URL 有所不同。 
 
-若要配置 B2C 应用程序， `@property MSALAuthority *authority`请`MSALB2CAuthority`在创建`MSALPublicClientApplication`之前在`MSALPublicClientApplicationConfig`中使用的实例进行设置，如下所示：
+若要配置 B2C 应用程序，请 `MSALPublicClientApplicationConfig` 在创建 `MSALPublicClientApplication`之前，将 `@property MSALAuthority *authority` 设置为 `MSALB2CAuthority` 的实例，如下所示：
 
 Objective-C
 ```ObjC
@@ -133,7 +134,7 @@ do{
 
 ### <a name="sovereign-clouds"></a>主权云
 
-如果你的应用在主权云中运行，你可能需要更改中`MSALPublicClientApplication`的授权 URL。 下面的示例将颁发机构 URL 设置为适用于德语 AAD 云：
+如果你的应用在主权云中运行，你可能需要在 `MSALPublicClientApplication`中更改授权 URL。 下面的示例将颁发机构 URL 设置为适用于德语 AAD 云：
 
 Objective-C
 ```objc
@@ -178,13 +179,13 @@ do{
 }
 ```
 
-可能需要将不同的作用域传递到每个主权云。 要发送的作用域取决于所使用的资源。 例如，你可以在世界`"https://graph.microsoft.com/user.read"`各地和`"https://graph.microsoft.de/user.read"`德语云中使用。
+可能需要将不同的作用域传递到每个主权云。 要发送的作用域取决于所使用的资源。 例如，你可能会在全球云中使用 `"https://graph.microsoft.com/user.read"`，并在德语云中 `"https://graph.microsoft.de/user.read"`。
 
 ### <a name="signing-a-user-into-a-specific-tenant"></a>将用户登录到特定租户
 
-当证书颁发机构 URL 设置为`"login.microsoftonline.com/common"`时，用户将登录到其主租户。 但是，某些应用可能需要将用户登录到不同的租户，而某些应用则仅适用于单个租户。
+当证书颁发机构 URL 设置为 `"login.microsoftonline.com/common"`时，用户将登录到其主租户。 但是，某些应用可能需要将用户登录到不同的租户，而某些应用则仅适用于单个租户。
 
-若要将用户登录到特定租户，请`MSALPublicClientApplication`使用特定权限进行配置。 例如：
+若要将用户登录到特定租户，请使用特定权限配置 `MSALPublicClientApplication`。 例如：
 
 `https://login.microsoftonline.com/469fdeb4-d4fd-4fde-991e-308a78e4bea4`
 
@@ -236,19 +237,19 @@ do{
 
 ### <a name="msalauthority"></a>MSALAuthority
 
-`MSALAuthority`类是 MSAL 机构类的基本抽象类。 请勿尝试使用`alloc`或`new`创建它的实例。 改为直接（`MSALAADAuthority`、 `MSALB2CAuthority`）创建其中一个子类，或使用工厂方法`authorityWithURL:error:`来创建使用颁发机构 URL 的子类。
+`MSALAuthority` 类是 MSAL 机构类的基本抽象类。 请勿尝试使用 `alloc` 或 `new`创建它的实例。 相反，可以直接创建其中一个子类（`MSALAADAuthority`、`MSALB2CAuthority`），也可以使用工厂方法 `authorityWithURL:error:` 来使用颁发机构 URL 创建子类。
 
-`url`使用属性可获取规范化的授权 URL。 不属于权威机构的额外参数和路径组件或片段不会位于返回的规范化颁发机构 URL 中。
+使用 `url` 属性可获取规范化的授权 URL。 不属于权威机构的额外参数和路径组件或片段不会位于返回的规范化颁发机构 URL 中。
 
-下面是可以实例化`MSALAuthority`的子类，具体取决于要使用的证书颁发机构。
+下面是可以实例化的 `MSALAuthority` 的子类，具体取决于要使用的证书颁发机构。
 
 ### <a name="msalaadauthority"></a>MSALAADAuthority
 
-`MSALAADAuthority`表示 AAD 颁发机构。 颁发机构 url 应采用以下格式，其中`<port>`是可选的：`https://<host>:<port>/<tenant>`
+`MSALAADAuthority` 表示 AAD 颁发机构。 颁发机构 url 应采用以下格式，其中 `<port>` 是可选的： `https://<host>:<port>/<tenant>`
 
 ### <a name="msalb2cauthority"></a>MSALB2CAuthority
 
-`MSALB2CAuthority`表示 B2C 机构。 默认情况下，B2C 证书颁发机构 url 应采用以下格式，其中`<port>`是可选的`https://<host>:<port>/tfp/<tenant>/<policy>`：。 但是，MSAL 还支持其他任意 B2C 机构格式。
+`MSALB2CAuthority` 表示 B2C 证书颁发机构。 默认情况下，B2C 机构 url 应采用以下格式，其中 `<port>` 可选： `https://<host>:<port>/tfp/<tenant>/<policy>`。 但是，MSAL 还支持其他任意 B2C 机构格式。
 
 ## <a name="next-steps"></a>后续步骤
 

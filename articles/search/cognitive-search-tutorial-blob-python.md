@@ -1,24 +1,24 @@
 ---
-title: Python 教程：在 AI 扩充管道中调用认知服务 - Azure 搜索
-description: 本教程通过一个示例分步说明如何使用 Jupyter Python 笔记本在 Azure 搜索中完成数据提取、自然语言和图像 AI 处理。 提取的数据会编制索引并通过查询轻松访问。
+title: Python 教程：在 AI 扩充管道中调用认知服务
+titleSuffix: Azure Cognitive Search
+description: 本教程通过一个示例分步说明如何使用 Jupyter Python 笔记本在 Azure 认知搜索中完成数据提取、自然语言和图像 AI 处理。 提取的数据会编制索引并通过查询轻松访问。
 manager: nitinme
 author: LisaLeib
-services: search
-ms.service: search
+ms.author: v-lilei
+ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 06/04/2019
-ms.author: v-lilei
-ms.openlocfilehash: 606194e28ca4f058a647aeb5224de19e754de078
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.date: 11/04/2019
+ms.openlocfilehash: bb36ae551c48fc53756933e78ff0212f8ec1cdeb
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265722"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790205"
 ---
-# <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Python 教程：在 Azure 搜索索引管道中调用认知服务 API
+# <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-cognitive-search-enrichment-pipeline"></a>Python 教程：在 Azure 认知搜索扩充管道中调用认知服务 API
 
-本教程介绍使用认知技能在 Azure 搜索中扩充编程数据的机制。  技能由自然语言处理 (NLP) 和认知服务中的图像分析功能提供支持。 通过技能集组合和配置，可以提取图像或扫描的文档文件的文本和文本表示形式。 还可以检测语言、实体、关键短语等。 最终结果是 Azure 搜索索引中有丰富附加内容（使用索引管道中的 AI 扩充创建）。 
+本教程介绍使用认知技能在 Azure 认知搜索中扩充编程数据的机制。  技能由自然语言处理 (NLP) 和认知服务中的图像分析功能提供支持。 通过技能集组合和配置，可以提取图像或扫描的文档文件的文本和文本表示形式。 还可以检测语言、实体、关键短语等。 最终结果是搜索索引中有丰富附加内容（使用索引管道中的 AI 扩充创建）。 
 
 在本教程中，你将使用 Python 执行以下任务：
 
@@ -29,14 +29,14 @@ ms.locfileid: "71265722"
 > * 执行请求并查看结果
 > * 重置索引和索引器以进一步开发
 
-输出是 Azure 搜索中的全文搜索索引。 可以使用[同义词](search-synonyms.md)、[评分配置文件](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[分析器](search-analyzers.md)和[筛选器](search-filters.md)等其他标准功能来增强索引。 
+输出是 Azure 认知搜索中的全文搜索索引。 可以使用[同义词](search-synonyms.md)、[评分配置文件](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[分析器](search-analyzers.md)和[筛选器](search-filters.md)等其他标准功能来增强索引。 
 
 本教程在免费服务中运行，但免费事务数目限制为每日 20 个文档。 若要在同一天多次运行本教程，请使用可以运行更多次的较小文件集。
 
 > [!NOTE]
-> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API，以及在 Azure 搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
+> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
 >
-> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)所述。
+> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 认知搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)所述。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -44,29 +44,29 @@ ms.locfileid: "71265722"
 
 本教程使用了以下服务、工具和数据。 
 
-+ [创建一个 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)，用于存储示例数据。 确保存储帐户与 Azure 搜索位于同一区域。
++ [创建一个 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)，用于存储示例数据。 确保存储帐户与 Azure 认知搜索位于同一区域。
 
 + [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section)，提供 Python 3.x 和 Jupyter Notebook。
 
 + [示例数据](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)包括不同类型的小型文件集。 
 
-+ [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本教程中使用免费服务。
++ [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本教程中使用免费服务。
 
 ## <a name="get-a-key-and-url"></a>获取密钥和 URL
 
-必须有 Azure 搜索服务 URL 和访问密钥，才能与此服务交互。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
+必须有 Azure 认知搜索服务 URL 和访问密钥，才能与此服务交互。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
 
 1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
 1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
-![获取 HTTP 终结点和访问密钥](media/search-get-started-postman/get-url-key.png "Get an HTTP endpoint and access key")
+![获取 HTTP 终结点和访问密钥](media/search-get-started-postman/get-url-key.png "获取 HTTP 终结点和访问密钥")
 
 所有请求对发送到服务的每个请求都需要 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
 ## <a name="prepare-sample-data"></a>准备示例数据
 
-扩充管道从 Azure 数据源提取数据。 源数据必须源自受支持的 [Azure 搜索索引器](search-indexer-overview.md)数据源类型。 本演练使用 Blob 存储来展示多种内容类型。
+扩充管道从 Azure 数据源提取数据。 源数据必须源自受支持的 [Azure 认知搜索索引器](search-indexer-overview.md)数据源类型。 本演练使用 Blob 存储来展示多种内容类型。
 
 1. [登录到 Azure 门户](https://portal.azure.com)，导航到你的 Azure 存储帐户，单击“Blob”，然后单击“+ 容器”   。
 
@@ -91,7 +91,7 @@ ms.locfileid: "71265722"
 
 使用 Anaconda 导航器启动 Jupyter Notebook，并创建新的 Python 3 笔记本。
 
-## <a name="connect-to-azure-search"></a>连接到 Azure 搜索
+## <a name="connect-to-azure-cognitive-search"></a>连接到 Azure 认知搜索
 
 在笔记本中，运行此脚本以加载用于处理 JSON 和构建 HTTP 请求的库。
 
@@ -128,7 +128,7 @@ params = {
 
 ## <a name="create-a-data-source"></a>创建数据源
 
-准备好服务和源文件后，开始汇编索引管道的组件。 首先创建一个数据源对象，告知 Azure 搜索如何检索外部源数据。
+准备好服务和源文件后，开始汇编索引管道的组件。 首先创建一个数据源对象，告知 Azure 认知搜索如何检索外部源数据。
 
 在以下脚本中，将占位符 YOUR-BLOB-RESOURCE-CONNECTION-STRING 替换为上一步中创建的 blob 的连接字符串。 然后，运行该脚本以创建一个名为 `cogsrch-py-datasource` 的数据源。
 
@@ -260,11 +260,11 @@ print(r.status_code)
 
 将对每个页面应用关键短语提取技能。 将上下文设置为 `"document/pages/*"`，对文档/页面数组的每个成员运行此扩充器（适用于文档中的每个页面）。
 
-每个技能会针对文档的内容执行。 在处理期间，Azure 搜索会解码每个文档，以从不同的文件格式读取内容。 从源文件中找到的文本将放入 `content` 字段（每个文档对应一个字段）。 因此，请将输入设置为 `"/document/content"`。
+每个技能会针对文档的内容执行。 在处理期间，Azure 认知搜索会解码每个文档，以从不同的文件格式读取内容。 从源文件中找到的文本将放入 `content` 字段（每个文档对应一个字段）。 因此，请将输入设置为 `"/document/content"`。
 
 技能集的图形表示形式如下所示。
 
-![了解技能集](media/cognitive-search-tutorial-blob/skillset.png "了解技能集")
+![了解技能组](media/cognitive-search-tutorial-blob/skillset.png "了解技能组")
 
 输出可以映射到索引、用作下游技能的输入，或者既映射到索引又用作输入（在语言代码中就是这样）。 在索引中，语言代码可用于筛选。 文本分析技能使用语言代码作为输入来告知有关断字的语言规则。
 
@@ -336,7 +336,7 @@ print(r.status_code)
 
 请求应返回状态代码 201，确认成功。
 
-若要详细了解如何定义索引，请参阅[创建索引（Azure 搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)。
+若要详细了解如何定义索引，请参阅[创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)。
 
 ## <a name="create-an-indexer-map-fields-and-execute-transformations"></a>创建索引器，映射字段，并执行转换
 
@@ -439,7 +439,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 ## <a name="query-your-index"></a>查询索引
 
-索引编制完成后，运行可返回各个字段的内容的查询。 默认情况下，Azure 搜索返回前 50 条结果。 由于样本数据较小，因此使用默认设置即可正常操作。 但是，在处理较大的数据集时，可能需要在查询字符串中包含参数来返回更多结果。 有关说明，请参阅[如何将 Azure 搜索中的结果分页](search-pagination-page-layout.md)。
+索引编制完成后，运行可返回各个字段的内容的查询。 默认情况下，Azure 认知搜索返回前 50 条结果。 由于样本数据较小，因此使用默认设置即可正常操作。 但是，在处理较大的数据集时，可能需要在查询字符串中包含参数来返回更多结果。 有关说明，请参阅[如何将 Azure 认知搜索中的结果分页](search-pagination-page-layout.md)。
 
 作为验证步骤，请查询所有字段的索引。
 
@@ -477,7 +477,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 ## <a name="reset-and-rerun"></a>重置并重新运行
 
-在管道开发的前期试验阶段，设计迭代的最实用方法是删除 Azure 搜索中的对象，并允许代码重新生成这些对象。 资源名称是唯一的。 删除某个对象后，可以使用相同的名称重新创建它。
+在管道开发的前期试验阶段，设计迭代的最实用方法是删除 Azure 认知搜索中的对象，并允许代码重新生成这些对象。 资源名称是唯一的。 删除某个对象后，可以使用相同的名称重新创建它。
 
 使用新定义为文档重新编制索引：
 
@@ -504,17 +504,17 @@ pprint(json.dumps(r.json(), indent=1))
 
 本教程演示了通过创建组件部件（数据源、技能集、索引和索引器）生成扩充索引管道的基本步骤。
 
-其中介绍了[预定义的技能组](cognitive-search-predefined-skills.md)、技能组定义，以及通过输入和输出将技能链接在一起的方式。 此外，还提到需要使用索引器定义中的 `outputFieldMappings`，将管道中的扩充值路由到 Azure 搜索服务中的可搜索索引。
+其中介绍了[内置技能组](cognitive-search-predefined-skills.md)、技能组定义，以及通过输入和输出将技能链接在一起的方式。 此外，还提到需要使用索引器定义中的 `outputFieldMappings`，将管道中的扩充值路由到 Azure 认知搜索服务中的可搜索索引。
 
 最后，介绍了如何测试结果并重置系统以进一步迭代。 本教程提到，针对索引发出查询会返回扩充的索引管道创建的输出。 在此版本中，可以通过某个机制来查看内部构造（系统创建的扩充文档）。 此外，本教程还介绍了如何检查索引器状态，以及在重新运行管道之前必须删除的对象。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本教程后，最快的清理方式是删除包含 Azure 搜索服务和 Azure Blob 服务的资源组。 假设你已将这两个服务放在同一个组中，删除该资源组会永久删除其中的所有内容，包括在本教程中创建的服务和任何存储内容。 在门户中，资源组名称显示在每个服务的“概述”页上。
+完成本教程后，最快的清理方式是删除包含 Azure 认知搜索服务和 Azure Blob 服务的资源组。 假设你已将这两个服务放在同一个组中，删除该资源组会永久删除其中的所有内容，包括在本教程中创建的服务和任何存储内容。 在门户中，资源组名称显示在每个服务的“概述”页上。
 
 ## <a name="next-steps"></a>后续步骤
 
 使用自定义技能自定义或扩展管道。 创建自定义技能并将其添加到技能集可以载入自己编写的文本或图像分析代码。
 
 > [!div class="nextstepaction"]
-> 示例：[创建认知搜索的自定义技能](cognitive-search-create-custom-skill-example.md)
+> 示例：[创建 AI 扩充的自定义技能](cognitive-search-create-custom-skill-example.md)

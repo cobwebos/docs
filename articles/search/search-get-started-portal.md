@@ -1,45 +1,46 @@
 ---
-title: 快速入门：使用 Azure 门户创建搜索索引 - Azure 搜索
-description: 使用 Azure 门户中的“导入数据”向导在 Azure 搜索中创建、加载和查询第一个索引。
+title: 使用 Azure 门户创建搜索索引
+titleSuffix: Azure Cognitive Search
+description: 使用“导入数据”向导在 Azure 认知搜索中创建、加载和查询第一个搜索索引。
 author: lobrien
 manager: nitinme
-tags: azure-portal
-services: search
-ms.service: search
-ms.topic: quickstart
-ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: a4a25b8504d873b624e1f6822807c9c08ebd2e4f
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.service: cognitive-search
+ms.topic: quickstart
+ms.date: 11/04/2019
+ms.openlocfilehash: 502177519c0e66baa7ae9c1de18a7b41bceb054a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936983"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791237"
 ---
-# <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 搜索索引
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
 > * [门户](search-get-started-portal.md)
+> * [C#](search-get-started-dotnet.md)
+> * [Java](search-get-started-java.md)
+> * [Node.js](search-get-started-nodejs.md)
 > * [PowerShell](search-get-started-powershell.md)
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
-> * [C#](search-get-started-dotnet.md)
 
-若要快速提升 Azure 搜索概念，请尝试 Azure 门户中的内置工具。 向导和编辑器不提供与 .NET 和 REST API 完全相同的功能，但你可以快速开始使用无代码的简介，在几分钟内针对索引编写感兴趣的查询。
+使用门户可以在数分钟内快速了解概念，并针对索引编写有趣的查询。
 
 > [!div class="checklist"]
 > * 从 Azure 上托管的免费公共示例数据集开始
-> * 在 Azure 搜索中运行“导入数据”向导以加载数据并生成索引 
+> * 在 Azure 认知搜索中运行“导入数据”向导以加载数据并生成索引 
 > * 监视门户中的索引进度
 > * 查看现有索引和修改索引的选项
 > * 使用“搜索浏览器”探索全文搜索、筛选器、分面、模糊搜索和地域搜索 
 
-如果这些工具限制过多，则可考虑参阅[在 .NET 中进行基于代码的 Azure 搜索编程简介](search-howto-dotnet-sdk.md)，或使用[进行 REST API 调用的 Postman](search-get-started-postman.md)。 也可以花费 3 分钟时间观看这部 [Azure 搜索概述视频](https://channel9.msdn.com/Events/Connect/2016/138)，其中对本教程所述的步骤做了 6 分钟的演示。
+如果这些工具限制过多，则可考虑参阅[在 .NET 中进行基于代码的 Azure 认知搜索编程简介](search-howto-dotnet-sdk.md)，或使用[进行 REST API 调用的 Postman](search-get-started-postman.md)。 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
 ## <a name="prerequisites"></a>先决条件
 
-[创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
+[创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
 
 ### <a name="check-for-space"></a>检查空间
 
@@ -57,7 +58,7 @@ ms.locfileid: "71936983"
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>步骤 1 - 启动“导入数据”向导和创建数据源
 
-1. 在 Azure 搜索服务仪表板的命令栏中单击“导入数据”，以创建和填充搜索索引  。
+1. 在 Azure 认知搜索服务仪表板的命令栏中单击“导入数据”，以创建和填充搜索索引  。
 
    ![导入数据命令](media/search-get-started-portal/import-data-cmd.png)
 
@@ -71,7 +72,7 @@ ms.locfileid: "71936983"
 
 ### <a name="step-2---skip-cognitive-skills"></a>步骤 2 - 跳过认知技能
 
-该向导支持创建[认知技能管道](cognitive-search-concept-intro.md)，用于将认知服务 AI 算法合并到索引中。 
+该向导支持创建 [AI 扩充管道](cognitive-search-concept-intro.md)，用于将认知服务 AI 算法合并到索引中。 
 
 我们将暂时跳过此步骤，转到“自定义目标索引”。 
 
@@ -125,13 +126,13 @@ ms.locfileid: "71936983"
 
 ## <a name="view-the-index"></a>查看索引
 
-主服务页提供指向 Azure 搜索服务中创建的资源的链接。  若要查看刚刚创建的索引，请单击链接列表中的**索引**。 
+主服务页提供指向 Azure 认知搜索服务中创建的资源的链接。  若要查看刚刚创建的索引，请单击链接列表中的**索引**。 
 
    ![服务仪表板上的索引列表](media/search-get-started-portal/indexes-list.png)
 
 从此列表中，可以单击刚刚创建的 *hotels-sample* 索引，查看索引架构， 并可以选择添加新字段。 
 
-“字段”  选项卡显示索引架构。 滚动到列表底部可输入新字段。 在大多数情况下，不能更改现有字段。 现有字段在 Azure 搜索中具有实际的表示形式，因此不可修改，即使在代码中也是如此。 若要从根本上更改现有字段，请创建新索引并丢弃原始索引。
+“字段”  选项卡显示索引架构。 滚动到列表底部可输入新字段。 在大多数情况下，不能更改现有字段。 现有字段在 Azure 认知搜索中具有实际的表示形式，因此不可修改，即使在代码中也是如此。 若要从根本上更改现有字段，请创建新索引并丢弃原始索引。
 
    ![示例索引定义](media/search-get-started-portal/sample-index-def.png)
 
@@ -146,7 +147,7 @@ ms.locfileid: "71936983"
 **搜索浏览器**仅用于处理 [REST API 请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)，但它接受[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)和[完整 Lucene 查询分析器](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)的语法，加上可在[搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) 操作中使用的所有搜索参数。
 
 > [!TIP]
-> 以下步骤在 [Azure 搜索概述视频](https://channel9.msdn.com/Events/Connect/2016/138)第 6 分 8 秒处开始演示。
+> 以下步骤在 [Azure 认知搜索概述视频](https://channel9.msdn.com/Events/Connect/2016/138)第 6 分 8 秒处开始演示。
 >
 
 1. 单击命令栏上的“搜索浏览器”  。
@@ -181,7 +182,7 @@ ms.locfileid: "71936983"
 
 * **$count=true** 参数返回所有已返回文档的总计数。 此值显示在搜索结果顶部附近。 可以通过监视 **$count=true** 报告的更改来验证筛选器查询。 如果计数较小，则表示筛选器正在工作。
 
-* **$top=10** 返回所有文档中排名最高的 10 个文档。 默认情况下，Azure 搜索返回前 50 个最佳匹配项。 可以通过 **$top** 增加或减少返回的结果。
+* **$top=10** 返回所有文档中排名最高的 10 个文档。 默认情况下，Azure 认知搜索返回前 50 个最佳匹配项。 可以通过 **$top** 增加或减少返回的结果。
 
 ### <a name="filter-query"></a> 筛选查询
 
@@ -200,7 +201,7 @@ ms.locfileid: "71936983"
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>示例（使用范围缩减进行分面）：`search=*&facet=Category&$top=2`
 
 * **search=** * 是空搜索。 空搜索会搜索所有内容。 提交空查询的原因之一是针对整个文档集进行筛选器或分面。 例如，你希望某个分面导航结构由索引中的所有酒店组成。
-* **facet** 返回可传递给 UI 控件的导航结构。 它将返回类别和计数。 在本例中，类别基于可以方便地称为“类别”的字段。  Azure 搜索中没有聚合，但可以通过 `facet` 进行近似聚合，提供每个类别中的文档计数。
+* **facet** 返回可传递给 UI 控件的导航结构。 它将返回类别和计数。 在本例中，类别基于可以方便地称为“类别”的字段。  Azure 认知搜索中没有聚合，但可以通过 `facet` 进行近似聚合，提供每个类别中的文档计数。
 
 * **$top=2** 返回两个文档，演示如何使用 `top` 来减少或增加结果。
 
@@ -210,7 +211,7 @@ ms.locfileid: "71936983"
 
 * 只有可筛选的字段才可分面。 结果中只返回仅可检索的字段。
 
-* “评分”字段  为双精度浮点，将按精度值分组。 若要详细了解如何按间隔来分组（例如，“3 星评分”、“4 星评分”等），请参阅[如何在 Azure 搜索中实现分面导航](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range)。
+* “评分”字段  为双精度浮点，将按精度值分组。 若要详细了解如何按间隔来分组（例如，“3 星评分”、“4 星评分”等），请参阅[如何在 Azure 认知搜索中实现分面导航](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range)。
 
 
 ### <a name="highlight-query"></a> 突出显示搜索结果
@@ -225,7 +226,7 @@ ms.locfileid: "71936983"
 
 * 全文搜索可识别单词形式中的基本差异。 在本例中，在进行“beaches”关键字搜索后，会获得包含“beach”突出显示文本的结果，可以从这些结果中搜索那些在其可搜索字段中包含该单词的酒店。 由于执行了语言分析，同一单词的不同形式可能会显示在结果中。 
 
-* Azure 搜索支持 Lucene 和 Microsoft 提供的 56 种分析器。 Azure 搜索使用的默认分析器是标准的 Lucene 分析器。
+* Azure 认知搜索支持 Lucene 和 Microsoft 提供的 56 种分析器。 Azure 认知搜索使用的默认分析器是标准的 Lucene 分析器。
 
 ### <a name="fuzzy-search"></a> 试用模糊搜索
 
@@ -241,9 +242,9 @@ ms.locfileid: "71936983"
 
 如果未指定 **queryType**，将使用默认的简单查询分析器。 简单查询分析器速度更快，但如果需要执行模糊搜索、正则表达式、近似搜索或其他高级查询类型，则需要使用完整语法。
 
-模糊搜索和通配符搜索对搜索输出产生影响。 不会针对这些查询格式执行语言分析。 在使用模糊搜索和通配符搜索之前，请查看 [Azure 搜索中全文搜索的工作原理](search-lucene-query-architecture.md#stage-2-lexical-analysis)，并查找有关词法分析例外情况的部分。
+模糊搜索和通配符搜索对搜索输出产生影响。 不会针对这些查询格式执行语言分析。 在使用模糊搜索和通配符搜索之前，请查看 [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md#stage-2-lexical-analysis)，并查找有关词法分析例外情况的部分。
 
-有关完整查询分析器支持的查询方案的详细信息，请参阅 [Lucene query syntax in Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)（Azure 搜索中的 Lucene 查询语法）。
+有关完整查询分析器支持的查询方案的详细信息，请参阅 [Lucene query syntax in Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)（Azure 认知搜索中的 Lucene 查询语法）。
 
 ### <a name="geo-search"></a> 尝试地理空间搜索
 
@@ -257,7 +258,7 @@ ms.locfileid: "71936983"
 
 ## <a name="takeaways"></a>要点
 
-本教程快速介绍了如何在 Azure 门户中使用 Azure 搜索。
+本教程快速介绍了如何在 Azure 门户中使用 Azure 认知搜索。
 
 介绍了如何使用“导入数据”向导创建搜索索引；  介绍了[索引器](search-indexer-overview.md)，以及索引设计的基本工作流，包括[对已发布索引进行的支持的修改](https://docs.microsoft.com/rest/api/searchservice/update-index)；
 
@@ -275,8 +276,8 @@ ms.locfileid: "71936983"
 
 ## <a name="next-steps"></a>后续步骤
 
-可以使用编程工具浏览 Azure 搜索的更多内容：
+可以使用编程工具浏览 Azure 认知搜索的更多内容：
 
 * [使用 .NET SDK 创建索引](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
 * [使用 REST API 创建索引](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [使用 Postman/Fiddler 和 Azure 搜索 REST Api 创建索引](search-get-started-postman.md)
+* [使用 Postman/Fiddler 和 Azure 认知搜索 REST API 创建索引](search-get-started-postman.md)

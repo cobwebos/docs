@@ -1,5 +1,6 @@
 ---
 title: 如何以及为何将应用程序添加到 Azure Active Directory
+titleSuffix: Microsoft identity platform
 description: 为何要将应用程序添加到 Azure AD，如何添加？
 services: active-directory
 documentationcenter: ''
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bb3ef2a86c523d7cda5bc7da5d83ec4ac741abf
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ebf6b9a07e775c76188dcebece011b01e90fbcf5
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835386"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803453"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>如何以及为何将应用程序添加到 Azure AD
 
@@ -59,7 +60,7 @@ Azure AD 中的应用程序有两种表示形式：
 * 本地用户和组应用程序角色分配的记录
 * 授予应用程序的本地用户和管理员权限的记录
   * 例如：应用程序访问特定用户电子邮件的权限
-* 本地策略的记录, 包括条件性访问策略
+* 本地策略的记录，包括条件性访问策略
 * 应用程序的备用本地设置的记录
   * 声明转换规则
   * 属性映射（用户设置）

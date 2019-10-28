@@ -1,29 +1,28 @@
 ---
-title: 已弃用的认知技能 - Azure 搜索
-description: 此页包含一系列被视为已弃用的认知搜索技能，这些技能在不久的将来将不再获得支持。
-services: search
+title: 弃用的认知技巧
+titleSuffix: Azure Cognitive Search
+description: 此页面包含一系列认知技能列表，这些技能将被视为已弃用，在 Azure 认知搜索技能集的不久后将不受支持。
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 1e78852ec8b92f1a9e37a4dbcbbcb371c0ac0f97
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 5f3587e4398be28cbaa2372be720258196bb48ff
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265442"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792019"
 ---
-# <a name="deprecated-cognitive-search-skills"></a>已弃用的认知搜索技能
+# <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Azure 中不推荐使用的认知技巧认知搜索
 
 本文档介绍别视为已弃用的认知技能。 对内容使用以下指南：
 
 * 技能名称：将要弃用的技能的名称，映射到 @odata.type 属性。
-* 最后一个可用的 API 版本：Azure 搜索公共 API 的最后一个版本，通过它可以创建/更新技能集，其中包含相应的已弃用技能。
+* 上次可用的 api 版本： Azure 认知搜索公共 API 的最后版本，通过该 API 可以创建/更新包含相应的不推荐使用的技能的技能集。
 * 结束支持：支持的最后一天，这一天过后相应的技能会被视为不受支持的技能。 以前创建的技能集应该仍然可以继续使用，但建议用户不要使用已弃用的技能。
-* 建议：通过向前迁移路径来使用支持的技能。 建议用户按照建议来继续接受支持。
+* 建议：通过前向迁移路径来使用支持的技能。 建议用户按照建议来继续接受支持。
 
 ## <a name="microsoftskillstextnamedentityrecognitionskill"></a>Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
@@ -146,8 +145,8 @@ ms.locfileid: "71265442"
         }
         ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-+ [预定义技能](cognitive-search-predefined-skills.md)
++ [内置技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [实体识别技能](cognitive-search-skill-entity-recognition.md)

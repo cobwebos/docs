@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor 日志查询中的聚合 | Microsoft Docs
 description: 介绍 Azure Monitor 日志查询中的聚合函数，这些函数提供了有用的数据分析方式。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: fd8e886a78d0689ca60d8ea7c4d16639c81d5733
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/16/2018
+ms.openlocfilehash: 86b84e76b4716c1fddda23a6d52c65c0700c5663
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602727"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900416"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的聚合
 
@@ -32,7 +26,7 @@ ms.locfileid: "65602727"
 ## <a name="counts"></a>计数
 
 ### <a name="count"></a>计数
-在应用任一筛选器后，计算结果集中的行数。 以下示例返回过去 30 分钟内 Perf 表中的总行数  。 结果将在名为“count_”的列中返回，除非为其指定特定名称  ：
+在应用任一筛选器后，计算结果集中的行数。 以下示例返回过去 30 分钟内 Perf 表中的总行数。 结果将在名为“count_”的列中返回，除非为其指定特定名称：
 
 
 ```Kusto
@@ -79,7 +73,7 @@ Heartbeat
 ```
 
 ### <a name="evaluating-subgroups"></a>计算子组
-要在数据中的子组上执行计数或其他聚合，请使用 `by` 关键字。 例如，要计算每个国家/地区发送检测信号的非重复 Linux 计算机的数量：
+要在数据中的子组上执行计数或其他聚合，请使用 `by` 关键字。 例如，若要计算在每个国家/地区发送检测信号的不同 Linux 计算机的数量，请执行以下操作：
 
 ```Kusto
 Heartbeat 
@@ -96,7 +90,7 @@ Heartbeat
 |荷兰      | 2                   |
 
 
-要分析更小的数据子组，请在 `by` 部分中添加其他列名称。 例如，想要根据每个 OSType 来计算来自每个国家/地区的非重复计算机的数量：
+要分析更小的数据子组，请在 `by` 部分中添加其他列名称。 例如，你可能想要从每个 OSType 的每个国家/地区计算不同的计算机：
 
 ```Kusto
 Heartbeat 

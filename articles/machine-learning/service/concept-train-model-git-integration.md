@@ -1,7 +1,7 @@
 ---
 title: Azure 机器学习的 Git 集成
 titleSuffix: Azure Machine Learning
-description: 了解 Azure 机器学习如何与本地 Git 存储库集成。
+description: 了解 Azure 机器学习如何与本地 Git 存储库集成。 在从属于 Git 存储库的本地目录提交训练运行时，将在运行期间跟踪有关存储库、分支和当前提交的信息。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 10/11/2019
-ms.openlocfilehash: 1ef9f3f847cb74aca0cae66dc8354838d28a645f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: c8b2407b18f0d7115ce51fc28b956e7fd764c71e
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553649"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756013"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure 机器学习的 Git 集成
 
@@ -92,5 +92,4 @@ az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关如何使用 Visual Studio Code 训练 Azure 机器学习的演练，请参阅[教程：使用 Azure 机器学习训练模型](tutorial-train-models-with-aml.md)。
-* 有关如何在本地编辑、运行和调试代码的演练，请参阅[Python hello world 教程](https://code.visualstudio.com/docs/Python/Python-tutorial)。
+* [设置并使用模型定型的计算目标](how-to-set-up-training-targets.md)

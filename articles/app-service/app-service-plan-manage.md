@@ -5,22 +5,22 @@ keywords: 应用服务, azure 应用服务, 缩放, 应用服务计划, 更改, 
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: cfowler
+manager: gwallace
 editor: ''
 ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 10/24/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a5e69209c30eae816837ce8f00a065231a5fd821
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e8bdc749ee354e75a6043dbd6dac3f93a606f79e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067210"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898960"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>在 Azure 中管理应用服务计划
 
@@ -33,23 +33,17 @@ ms.locfileid: "70067210"
 
 在创建应用时可以创建一个空的应用服务计划，也可以创建一个计划。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“新建” > “Web + 移动”，然后选择“Web 应用”或其他应用服务应用类型。
-
-2. 选择现有的应用服务计划，或者为新应用创建计划。
+1. 在[Azure 门户](https://portal.azure.com)中，选择 "**新建** > " **Web 应用**或其他应用服务应用类型。
 
    ![在 Azure 门户中创建应用。][createWebApp]
 
-   若要创建计划，请执行以下操作：
+2. 配置应用服务计划之前，请配置 "**实例详细信息**" 部分。 设置（例如**发布**和**操作系统**）可以更改应用服务计划的可用定价层。 **区域**确定应用服务计划的创建位置。
+   
+3. 在 "**应用服务计划**" 部分中，选择一个现有计划，或选择 **"新建"** 创建一个计划。
 
-   a. 选择“[+] 新建”。
+   ![创建应用服务计划。][createASP] 
 
-      ![创建应用服务计划。][createASP] 
-
-   b. 对于“应用服务计划”，输入计划的名称。
-
-   c. 对于“位置”，选择适当的位置。
-
-   d. 对于“定价层”，选择适当的服务定价层。 选择“全部查看”以查看其他定价选项，例如“免费”和“共享”。 选择定价层后，单击“选择”按钮。
+4. 创建计划时，可以选择新计划的定价层。 在 " **Sku 和大小**" 中，选择 "**更改大小**" 以更改定价层。 
 
 <a name="move"></a>
 
@@ -65,25 +59,20 @@ ms.locfileid: "70067210"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到要移动的应用。
 
-1. 在菜单上，查找“应用服务计划”部分。
+2. 在左侧菜单中，选择 "**更改应用服务计划**"。
 
-1. 选择“更改应用服务计划”以打开“应用服务计划”选择器。
+3. 在 "**应用服务计划**" 下拉列表中，选择要将应用移到的现有计划。 下拉列表仅显示与当前应用服务计划位于同一资源组和地理区域中的计划。 如果不存在这样的计划，则可以默认创建计划。 还可以通过选择 "**新建**" 来手动创建新的计划。
 
+4. 如果创建计划，则可以选择新计划的定价层。 在 "**定价层**" 中，选择要更改的现有层。 
+   
+   > [!IMPORTANT]
+   > 如果要将应用从较高层次的计划移到更低的分层计划（如从**D1**到**F1**），应用可能会失去目标计划中的某些功能。 例如，如果你的应用使用 SSL 证书，你可能会看到以下错误消息：
+   >
+   > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
+
+5. 完成后，选择“确定”。
+   
    ![应用服务计划选择器。][change] 
-
-1. 在“应用服务计划”选择器中，选择要将此应用移到的现有计划。   
-
-“选择应用服务计划”页仅显示与当前应用的应用服务计划位于同一资源组和地理区域的计划。
-
-每个计划都有自己的定价层。 例如，将站点从“免费”层移到“标准”层时，分配给站点的所有应用都可使用“标准”层的功能和资源。 但是，将应用从更高的分层计划移到更低的分层计划意味着不再有权访问某些功能。 如果应用使用的功能在目标计划中不可用，则会出现错误，指出哪个正在使用的功能不可用。 
-
-例如，如果其中一个应用使用 SSL 证书，你可能会看到此错误消息：
-
-`Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
-
-在这种情况下，在将应用移到目标计划之前，需要执行以下任一操作：
-- 将目标计划的定价层向上扩展到**基本**或更高层。
-- 删除应用的所有 SSL 连接。
 
 ## <a name="move-an-app-to-a-different-region"></a>将应用移到不同的区域
 

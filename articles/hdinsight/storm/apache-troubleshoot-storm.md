@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 70030c9014e83984b2cd493ba0d3b2a36180feb3
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: f307d6245b107fdbd3c6d6baafa5a162988235da
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575063"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800010"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Storm 进行故障排除
 
@@ -46,9 +46,9 @@ ms.locfileid: "69575063"
 
 事件中心 Spout 将偏移检查点数据存储在 ZooKeeper 中的两个根路径下：
 
-- 非事务性 spout 检查点存储`/eventhubspout`在中。
+- 非事务性 spout 检查点存储在 `/eventhubspout`中。
 
-- 事务性 spout 检查点数据存储在`/transactional`中。
+- 事务性 spout 检查点数据存储在 `/transactional`中。
 
 ### <a name="how-to-restore"></a>如何还原
 
@@ -65,7 +65,7 @@ lib 文件夹中有一些 .Jar 文件，其中包含导出/导入操作的实现
 #### <a name="export-offset-metadata"></a>导出偏移元数据
 
 1. 使用 SSH 在需要从中导出检查点偏移数据的群集上转到 ZooKeeper 群集。
-2. 在更新 HDP 版本字符串后运行以下命令, 将 ZooKeeper 偏移数据导出到`/stormmetadta/zkdata` HDFS 路径:
+2. 在更新 HDP 版本字符串后运行以下命令，将 ZooKeeper 偏移数据导出到 `/stormmetadta/zkdata` HDFS 路径：
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter export /eventhubspout /stormmetadata/zkdata
@@ -74,7 +74,7 @@ lib 文件夹中有一些 .Jar 文件，其中包含导出/导入操作的实现
 #### <a name="import-offset-metadata"></a>导入偏移元数据
 
 1. 使用 SSH 转到需要从中导入检查点偏移数据的群集上的 ZooKeeper 群集。
-2. 运行以下命令 (更新 HDP 版本字符串之后), 将 ZooKeeper 偏移数据从 HDFS 路径`/stormmetadata/zkdata`导入到目标群集上的 ZooKeeper 服务器:
+2. 运行以下命令（更新 HDP 版本字符串之后），将 ZooKeeper 偏移数据从 HDFS 路径 `/stormmetadata/zkdata` 导入到目标群集上的 ZooKeeper 服务器：
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter import /eventhubspout /home/sshadmin/zkdata
@@ -91,9 +91,9 @@ lib 文件夹中有一些 .Jar 文件，其中包含导出/导入操作的实现
 
 ## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>如何在群集上查找 Storm 二进制文件？
 
-当前 HDP 堆栈的风暴二进制文件位于中`/usr/hdp/current/storm-client`。 在头节点和工作节点上，此位置是相同的。
+当前 HDP 堆栈的风暴二进制文件处于 `/usr/hdp/current/storm-client`。 在头节点和工作节点上，此位置是相同的。
 
-对于/usr/hdp 下面可能中的特定 HDP 版本, `/usr/hdp/2.5.0.1233/storm`可能有多个二进制文件 (例如)。 该`/usr/hdp/current/storm-client`文件夹与群集上运行的最新版本 symlinked。
+对于/usr/hdp 下面可能中的特定 HDP 版本（例如 `/usr/hdp/2.5.0.1233/storm`），可能有多个二进制文件。 `/usr/hdp/current/storm-client` 文件夹与群集上运行的最新版本 symlinked。
 
 有关详细信息，请参阅[使用 SSH 连接到 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)和 [Apache Storm](https://storm.apache.org/)。
 
@@ -104,7 +104,7 @@ lib 文件夹中有一些 .Jar 文件，其中包含导出/导入操作的实现
 * 网关节点
 * 头节点
 * ZooKeeper 节点
-* 辅助角色节点
+* 工作器节点
 
 ### <a name="gateway-nodes"></a>网关节点
 
@@ -124,10 +124,10 @@ HDInsight 附带一个三节点 ZooKeeper 仲裁。 仲裁大小是固定的，�
 
 群集中的 Storm 服务配置为自动使用 ZooKeeper 仲裁。
 
-### <a name="worker-nodes"></a>辅助角色节点
+### <a name="worker-nodes"></a>工作器节点
 
 Storm 工作节点运行以下服务：
-* 主管
+* Supervisor
 * 用于运行拓扑的辅助角色 Java 虚拟机 (JVM)
 * Ambari 代理
 
@@ -137,7 +137,7 @@ Storm 工作节点运行以下服务：
 
 ### <a name="java-based-topology"></a>基于 Java 的拓扑
 
-[使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (Java)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-java-event-hub-topology)
+[使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
 
 ### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>基于 C# 的拓扑（HDInsight 3.4+ Linux Storm 群集上的 Mono）
 
@@ -145,7 +145,7 @@ Storm 工作节点运行以下服务：
 
 ### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>HDInsight 3.5+ Linux Storm 群集的最新 Apache Storm 事件中心 Spout 二进制文件
 
-若要了解如何使用适用于 HDInsight 3.5 + Linux 风暴群集的最新风暴事件中心 spout, 请参阅[mvn-存储库自述文件](https://github.com/hdinsight/mvn-repo/blob/master/README.md)。
+若要了解如何使用适用于 HDInsight 3.5 + Linux 风暴群集的最新风暴事件中心 spout，请参阅[mvn-存储库自述文件](https://github.com/hdinsight/mvn-repo/blob/master/README.md)。
 
 ### <a name="source-code-examples"></a>源代码示例
 
@@ -157,15 +157,15 @@ Storm 工作节点运行以下服务：
 
 ### <a name="on-head-nodes"></a>在头节点上
 
-从`/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`读取 Nimbus Log4J 配置。
+从 `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`读取 Nimbus Log4J 配置。
 
 ### <a name="on-worker-nodes"></a>在工作节点上
 
-将从中`/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`读取监察员 Log4J 配置。
+将从 `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`读取监察员 Log4J 配置。
 
-从`/usr/hdp/\<HDP version>/storm/log4j2/worker.xml`读取辅助角色 Log4J 配置文件。
+辅助角色 Log4J 配置文件从 `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml`读取。
 
-示例`/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
+示例： `/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 `/usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml`
 
 ## <a name="next-steps"></a>后续步骤
@@ -174,6 +174,6 @@ Storm 工作节点运行以下服务：
 
 - 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 
-- [@AzureSupport](https://twitter.com/azuresupport)连接-官方 Microsoft Azure 帐户来改善客户体验。 将 Azure 社区连接到正确的资源: 答案、支持和专家。
+- 连接[@AzureSupport](https://twitter.com/azuresupport) -用于改善客户体验的官方 Microsoft Azure 帐户。 将 Azure 社区连接到正确的资源：答案、支持和专家。
 
-- 如果需要更多帮助, 可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息, 请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限, 并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+- 如果需要更多帮助，可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。

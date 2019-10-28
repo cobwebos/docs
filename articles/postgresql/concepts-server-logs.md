@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/14/2019
-ms.openlocfilehash: cc796733c9b0b1effd8043c49540f9b489610067
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 10/25/2019
+ms.openlocfilehash: 9e8b1d08e950849773c9d8413c3ba4188d257d5b
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331301"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965930"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL 单服务器中的日志
 Azure Database for PostgreSQL 允许配置和访问 Postgres 的标准日志。 日志可用于识别、排除和修复配置错误和性能不佳。 可以配置和访问的日志记录信息包括错误、查询信息、autovacuum 记录、连接和检查点。 （对事务日志的访问不可用）。
@@ -20,7 +20,7 @@ Azure Database for PostgreSQL 允许配置和访问 Postgres 的标准日志。 
 
 
 ## <a name="configure-logging"></a>配置日志记录 
-可以使用日志记录服务器参数在服务器上配置 Postgres 标准日志记录。 默认情况下，在每个 Azure Database for PostgreSQL 服务器上，@no__t 为-0，@no__t 为 on。 还有一些其他参数，你可以调整它们来满足你的日志记录需求： 
+可以使用日志记录服务器参数在服务器上配置 Postgres 标准日志记录。 在每个 Azure Database for PostgreSQL 服务器上，默认情况下 `log_checkpoints` 和 `log_connections`。 还有一些其他参数，你可以调整它们来满足你的日志记录需求： 
 
 ![Azure Database for PostgreSQL - 日志记录参数](./media/concepts-server-logs/log-parameters.png)
 
@@ -40,7 +40,7 @@ Azure Database for PostgreSQL 中的默认日志格式为 .log。 此日志中�
 
 Azure Database for PostgreSQL 为 .log 文件提供短期存储位置。 新文件每1小时或 100 MB 开始一次，以先达到的条件为准。 在从 Postgres 发出日志时，会将日志追加到当前文件。  
 
-你可以使用 @no__t 参数设置此短期日志存储的保持期。 默认值为 3 天；最大值为 7 天。 短期存储位置可以容纳多达 1 GB 的日志文件。 1 GB 后，将删除最旧的文件，而不考虑保留期，以便为新日志腾出空间。 
+您可以使用 `log_retention_period` 参数设置此短期日志存储的保持期。 默认值为 3 天；最大值为 7 天。 短期存储位置可以容纳多达 1 GB 的日志文件。 1 GB 后，将删除最旧的文件，而不考虑保留期，以便为新日志腾出空间。 
 
 对于日志和日志分析的长期保留，你可以下载 .log 文件并将它们移动到第三方服务。 您可以使用[Azure 门户](howto-configure-server-logs-in-portal.md) [Azure CLI](howto-configure-server-logs-using-cli.md)下载文件。 此外，还可以配置 Azure Monitor 诊断设置，这些设置会自动将日志（JSON 格式）发送到长期位置。 在以下部分中了解有关此选项的详细信息。 
 
@@ -82,12 +82,13 @@ AzureDiagnostics
 | where TimeGenerated > ago(1d) 
 ```
 
-在过去6小时内搜索此工作区中所有 Postgres 服务器的所有错误
+搜索所有非 localhost 连接尝试
 ```
 AzureDiagnostics
-| where errorLevel_s == "error" and category == "PostgreSQLogs"
-| where TimeGenerated > ago(6h)
+| where Message contains "connection received" and Message !contains "host=127.0.0.1"
+| where Category == "PostgreSQLLogs" and TimeGenerated > ago(6h)
 ```
+上面的查询将在此工作区中的任何 Postgres 服务器日志记录的过去6小时显示结果。
 
 ### <a name="log-format"></a>日志格式
 

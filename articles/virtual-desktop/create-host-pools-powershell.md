@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: a5e228417610a19c38acf9ce2db6e743ec122580
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 8ed0e1b1406eca6dd55e9e9faf184152a190da94
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679576"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757498"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>使用 PowerShell 创建主机池
 
@@ -85,7 +85,7 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
 5. 使用有权加入域的域帐户进行身份验证。
 
     >[!NOTE]
-    > 如果要将 VM 加入到 Azure Active Directory 域服务 (Azure AD DS) 环境，请确保你的域加入用户也是 [AAD DC 管理员组](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group)的成员。
+    > 如果要将 VM 加入到 Azure Active Directory 域服务 (Azure AD DS) 环境，请确保你的域加入用户也是 [AAD DC 管理员组](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)的成员。
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>向 Windows 虚拟桌面主机池注册虚拟机
 

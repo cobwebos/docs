@@ -1,20 +1,19 @@
 ---
 title: Azure Application Insights 智能检测 - 即将对默认通知收件人进行的更改 | Microsoft Docs
 description: 使用 Azure Application Insights 监视应用程序跟踪，了解跟踪遥测数据的异常模式。
-services: application-insights
-author: harelbr
-manager: carmonm
-ms.service: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 03/13/2019
+author: harelbr
 ms.author: harelbr
-ms.openlocfilehash: f984a34be1c5d5fdd18a00812107318df8f5d9bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 03/13/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: fa1f98b5a9ee592a4c702e87e365eff7941194d4
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61298995"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820627"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>智能检测电子邮件通知更改
 
@@ -34,12 +33,12 @@ ms.locfileid: "61298995"
 
 ## <a name="how-to-prepare-for-this-change"></a>如何为此更改做准备？
 
-若要确保将来自智能检测的电子邮件通知发送给相关用户，必须将这些用户分配到订阅的[监视读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)或[监视参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)角色。
+若要确保将智能检测的电子邮件通知发送到相关用户，必须将这些用户分配到 "[监视读取](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)者" 或监视订阅的 "[参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)" 角色。
 
 若要通过 Azure 门户将用户分配到“监视读者”或“监视参与者”角色，请按照[添加角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)一文中所述的步骤执行操作。 确保选择_监视读者_或_监视参与者_作为用户分配到的角色。
 
 > [!NOTE]
-> 使用规则设置中的“其他电子邮件收件人”选项配置的智能检测通知特定收件人将不会受此更改影响  。 这些收件人将继续接收电子邮件通知。
+> 使用规则设置中的“其他电子邮件收件人”选项配置的智能检测通知特定收件人将不会受此更改影响。 这些收件人将继续接收电子邮件通知。
 
 如果对此更改有任何问题或疑问，欢迎[联系我们](mailto:smart-alert-feedback@microsoft.com)。
 

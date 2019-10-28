@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 600577ebf05a8bc89dbec35d3b3ee5162aa246e1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7565ce24199dd8f86f756f01f66aa79e764a1a12
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64872727"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752139"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>服务总线高级和标准消息传送层
 
@@ -29,15 +29,15 @@ ms.locfileid: "64872727"
 
 下表突出显示了部分高层差异。
 
-| 高级 | 标准 |
+| 高级 | 标准版 |
 | --- | --- |
 | 高吞吐量 |可变吞吐量 |
-| 可预测性能 |可变滞后时间 |
+| 可预测的性能 |可变滞后时间 |
 | 固定价格 |即用即付可变定价 |
-| 可以扩展和缩减工作负荷 |不适用 |
+| 可以扩展和缩减工作负荷 |N/A |
 | 消息大小最大为 1 MB |消息大小最大为 256 KB |
 
-**服务总线高级消息传送**在 CPU 和内存级别提供资源隔离，以便每个客户工作负荷以隔离方式运行。 此资源容器称为 *消息传送单元*。 每个高级命名空间至少会分配一个消息传送单元。 可以为每个服务总线高级命名空间购买 1、2、4 或 8 个消息传送单元。 单一工作负荷或实体可以跨多个消息传送单元，可以随意更改消息传送单元数。 从而为基于服务总线的解决方案提供可预测和稳定的性能。
+**服务总线高级消息传送**在 CPU 和内存级别提供资源隔离，以便每个客户工作负荷以隔离方式运行。 此资源容器称为 *消息传送单元*。 每个高级命名空间至少会分配一个消息传送单元。 可以为每个服务总线高级命名空间购买1、2、4或8个消息传送单元。 单个工作负荷或实体可以跨多个消息传送单元，而消息传送单元数可以随时更改。 从而为基于服务总线的解决方案提供可预测和稳定的性能。
 
 此性能不仅更易于预测和实现，而且速度更快。 服务总线高级消息传送以在 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)引入的存储引擎为基础。 使用高级消息传送，峰值性能比使用标准层快得多。
 
@@ -56,23 +56,48 @@ ms.locfileid: "64872727"
 如果有在标准传送下运行的代码并且希望将其移植到高级层，请确保将 [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性设置为 **false**（默认值）。
 
 ## <a name="premium-messaging-resource-usage"></a>高级消息传送资源使用情况
-一般情况下，对实体的任何操作可能会导致 CPU 和内存使用情况。 下面是一些这些操作： 
+通常，对实体进行的任何操作都可能导致 CPU 和内存使用率。 下面是其中一些操作： 
 
-- 管理操作，例如 CRUD （创建、 检索、 更新和删除） 操作队列、 主题和订阅。
-- 运行时操作 （发送和接收消息）
+- 对队列、主题和订阅的管理操作，如 CRUD （创建、检索、更新和删除）操作。
+- 运行时操作（发送和接收消息）
 - 监视操作和警报
 
-此外但不定价的更多 CPU 和内存使用情况。 对于高级消息传送层中，没有消息单元的单个价格。
+但额外的 CPU 和内存使用情况并不是定价的。 对于高级消息传送层，消息单位有单个价格。
 
-CPU 和内存使用情况跟踪，并向你显示原因如下： 
+由于以下原因，将跟踪并显示 CPU 和内存使用情况： 
 
-- 提供到系统内部的透明度
-- 了解资源购买的容量。
-- 容量规划，可帮助你决定增加/减少。
+- 提供系统内部的透明度
+- 了解购买的资源的容量。
+- 可帮助您决定增加/减少的容量规划。
+
+## <a name="messaging-unit---how-many-are-needed"></a>消息单元-需要多少？
+
+预配 Azure 服务总线高级命名空间时，必须指定分配的消息传送单元数。 这些消息传送单元是分配给命名空间的专用资源。
+
+可以**动态调整**分配给服务总线高级命名空间的消息传送单元数，以考虑工作负荷中的更改（增加或减少）。
+
+为体系结构确定消息单元数量时，需要考虑以下几个因素：
+
+- 从分配给命名空间的***1 或2个消息传送单元***开始。
+- 研究命名空间的[资源使用情况](service-bus-metrics-azure-monitor.md#resource-usage-metrics)指标内的 CPU 使用情况指标。
+    - 如果 CPU 使用率***低于 20%***，则可以***缩减***分配给命名空间的消息传送单元数。
+    - 如果 CPU 使用率***高于 70%***，则你的应用程序将从***扩展***分配给命名空间的消息传送单元数中获益。
+
+可以使用[Azure 自动化 runbook](../automation/automation-quickstart-create-runbook.md)自动执行将分配给服务总线命名空间的资源进行扩展的过程。
+
+> [!NOTE]
+> 分配给命名空间的资源的**缩放**可以是抢先或被动。
+>
+>  * **抢先**：如果需要其他工作负荷（由于季节性或趋势），可以在工作负荷命中之前继续向命名空间分配更多消息传送单元。
+>
+>  * **反应**：如果通过研究资源使用情况指标来识别其他工作负荷，则可以将其他资源分配给命名空间以合并增加的需求。
+>
+> 服务总线的计费指标为每小时。 对于纵向扩展，只需为使用这些资源的小时数付费。
+>
 
 ## <a name="get-started-with-premium-messaging"></a>高级消息传送入门
 
-高级消息传送很容易入门，其操作过程类似于标准消息传送。 一开始时，请在 [Azure 门户](https://portal.azure.com)中[创建命名空间](service-bus-create-namespace-portal.md)。 确保在“定价层”下选择“高级”。   单击“查看完整的定价详细信息”  以查看有关每个层级的详细信息。
+高级消息传送很容易入门，其操作过程类似于标准消息传送。 一开始时，请在 [Azure 门户](https://portal.azure.com)中[创建命名空间](service-bus-create-namespace-portal.md)。 确保在“定价层”下选择“高级”。 单击“查看完整的定价详细信息”以查看有关每个层级的详细信息。
 
 ![create-premium-namespace][create-premium-namespace]
 

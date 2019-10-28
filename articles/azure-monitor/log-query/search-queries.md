@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor 日志中的搜索查询 | Microsoft Docs
 description: 本文提供有关在 Azure Monitor 日志中使用搜索查询的入门教程。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/06/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: a0ceb5aa82b0d38ab5d2567689e3e131ba781ce9
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.date: 08/06/2018
+ms.openlocfilehash: d92cd42f0fceadee16035b605e8d25c6bc23bc67
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255002"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933004"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Azure Monitor 日志中的搜索查询
 Azure Monitor 日志查询可以从表名或 search 命令开始。 本教程介绍基于搜索的查询。 每种方法各有优势。
@@ -58,7 +52,7 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> 如果使用 `==` 而不是 `:`，则结果将包含如下所述的记录：其中的 *Source* 列包含确切值“error”（大小写完全与此相同）。 使用“:”将包括其 *Source* 具有“错误代码 404”或“错误”等值的记录。
+> 如果使用 `==` 而不是 `:`，则结果将包含如下所述的记录：其中的 *Source* 列包含确切值“error”（大小写完全与此相同）。 使用 "：" 将包括*源*具有值（如 "错误代码 404" 或 "错误"）的记录。
 
 ## <a name="case-sensitivity"></a>区分大小写
 默认情况下，词语搜索不区分大小写，因此，搜索“dns”可能会产生“DNS”、“dns”或“Dns”等结果。 若要执行区分大小写的搜索，请使用 `kind` 选项：

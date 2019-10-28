@@ -17,10 +17,10 @@ ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dcf0341e03a5d95abbe8b1a8ce69379fef8251b7
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68989050"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Zscaler 集成
@@ -179,7 +179,7 @@ ms.locfileid: "68989050"
 
 1. 转到“管理”>“身份验证”>“身份验证设置”并执行以下步骤： 
 
-    ![管理](./media/zscaler-tutorial/ic800206.png "Administration")
+    ![管理](./media/zscaler-tutorial/ic800206.png "管理")
 
     a. 在“身份验证类型”下选择“SAML”。 
 

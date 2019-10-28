@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: af20c9e3a50c0c60135b1e447e7e1cba1fc36526
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: fe4a2082647ef1325d03ce4eec428ed1579704c5
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815727"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755987"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure 机器学习 SDK 中创建和运行机器学习管道
 
@@ -30,9 +30,9 @@ ML 管道的每个阶段（如数据准备和模型定型）都可以包含一�
 
 ML 管道使用远程计算目标进行计算，并使用与该管道关联的中间数据和最终数据的存储。 它们可在支持的[Azure 存储](https://docs.microsoft.com/azure/storage/)位置读取和写入数据。
 
-如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
+如果还没有 Azure 订阅，可以在开始前创建一个免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 创建用于保存所有管道资源的 [Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -164,7 +164,7 @@ Azure Databricks 是 Azure 云中基于 Apache Spark 的环境。 它可以用�
 要将 Azure Databricks 附加为计算目标，请提供以下信息：
 
 * __Databricks 计算名称__：要分配给此计算资源的名称。
-* __Databricks 工作区名称__：Azure Databricks 工作区的名称。
+* __Databricks 工作区名称__： Azure Databricks 工作区的名称。
 * __Databricks 访问令牌__：用于对 Azure Databricks 进行身份验证的访问令牌。 若要生成访问令牌，请参阅[身份验证](https://docs.azuredatabricks.net/api/latest/authentication.html)文档。
 
 以下代码演示如何使用 Azure 机器学习 SDK 将 Azure Databricks 附加为计算目标：
@@ -206,7 +206,7 @@ except ComputeTargetException:
     databricks_compute.wait_for_completion(True)
 ```
 
-有关更详细的示例, 请参阅 GitHub 上的[示例笔记本](https://aka.ms/pl-databricks)。
+有关更详细的示例，请参阅 GitHub 上的[示例笔记本](https://aka.ms/pl-databricks)。
 
 ### <a id="adla"></a>Azure Data Lake Analytics
 
@@ -218,7 +218,7 @@ Azure Data Lake Analytics 是 Azure 云中的大数据分析平台。 它可以�
 
 * __计算名称__：要分配给此计算资源的名称。
 * __资源组__：包含 Data Lake Analytics 帐户的资源组。
-* __帐户名__：Data Lake Analytics 帐户名。
+* __帐户名称__： Data Lake Analytics 帐户名称。
 
 以下代码演示如何将 Data Lake Analytics 附加为计算目标：
 
@@ -256,14 +256,14 @@ except ComputeTargetException:
     adla_compute.wait_for_completion(True)
 ```
 
-有关更详细的示例, 请参阅 GitHub 上的[示例笔记本](https://aka.ms/pl-adla)。
+有关更详细的示例，请参阅 GitHub 上的[示例笔记本](https://aka.ms/pl-adla)。
 
 > [!TIP]
 > Azure 机器学习管道只能处理 Data Lake Analytics 帐户的默认数据存储中存储的数据。 如果需要处理的数据不在默认存储中，可以在训练之前使用 [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) 复制数据。
 
 ## <a id="steps"></a>构造管道步骤
 
-创建计算目标并将其附加到工作区后，就可以定义管道步骤了。 可以通过 Azure 机器学习 SDK 使用许多内置步骤。 这些步骤中最基本的是[PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py), 它在指定的计算目标中运行 Python 脚本:
+创建计算目标并将其附加到工作区后，就可以定义管道步骤了。 可以通过 Azure 机器学习 SDK 使用许多内置步骤。 这些步骤中最基本的是[PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py)，它在指定的计算目标中运行 Python 脚本：
 
 ```python
 from azureml.pipeline.steps import PythonScriptStep
@@ -278,7 +278,7 @@ trainStep = PythonScriptStep(
 )
 ```
 
-在协作环境中使用`allow_reuse`管道时，重复使用以前的结果（）是关键的，因为消除不必要的重新运行会带来灵活性。 当步骤的 script_name、输入和参数保持不变时，将使用默认行为。 当重复使用该步骤的输出时, 该作业不会提交到计算, 而是从上一次运行的结果立即用于下一步的运行。 如果`allow_reuse`设置为 false，则在管道执行过程中将始终为此步骤生成新的运行。 
+在协作环境中使用管道时，重复使用以前的结果（`allow_reuse`）是关键的，因为消除不必要的重新运行可提供灵活性。 当步骤的 script_name、输入和参数保持不变时，将使用默认行为。 当重复使用该步骤的输出时，该作业不会提交到计算，而是从上一次运行的结果立即用于下一步的运行。 如果 `allow_reuse` 设置为 "false"，则在管道执行过程中将始终为此步骤生成新的运行。 
 
 定义步骤后，使用其中的部分或所有步骤生成管道。
 
@@ -318,14 +318,14 @@ steps = [dbStep]
 pipeline1 = Pipeline(workspace=ws, steps=steps)
 ```
 
-有关详细信息, 请参阅[azure 管道-步骤包](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)和[管道类](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py)引用。
+有关详细信息，请参阅[azure 管道-步骤包](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)和[管道类](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py)引用。
 
 ## <a name="submit-the-pipeline"></a>提交管道
 
 提交管道时，Azure 机器学习会检查每个步骤的依赖项，并上传指定的源目录的快照。 如果未指定源目录，则上传当前的本地目录。 快照也作为工作区试验的一部分存储。
 
 > [!IMPORTANT]
-> 若要防止文件包含在快照中, 请在目录中创建 [.gitignore](https://git-scm.com/docs/gitignore) 或`.amlignore`文件, 并将文件添加到其中。 `.amlignore`文件使用与 [.gitignore](https://git-scm.com/docs/gitignore) 文件相同的语法和模式。 如果同时存在这两个`.amlignore`文件, 则该文件将优先。
+> 若要防止文件包含在快照中，请在目录中创建一个[.gitignore](https://git-scm.com/docs/gitignore)或 `.amlignore` 文件，并将文件添加到其中。 @No__t_0 文件使用与[.gitignore](https://git-scm.com/docs/gitignore)文件相同的语法和模式。 如果这两个文件都存在，则 `.amlignore` 文件优先。
 >
 > 有关详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshots)。
 
@@ -342,19 +342,19 @@ pipeline_run1.wait_for_completion()
 * 将项目快照从与工作区关联的 Blob 存储下载到计算目标。
 * 生成对应于管道中每个步骤的 Docker 映像。
 * 从容器注册表中将每个步骤的 Docker 映像下载到计算目标。
-* 如果在步骤中指定`DataReference`了对象，则会装载数据存储。 如果不支持装载，则改为将数据复制到计算目标。
+* 如果在步骤中指定了 `DataReference` 对象，则会装载数据存储。 如果不支持装载，则改为将数据复制到计算目标。
 * 运行在步骤定义中指定的计算目标中的步骤。 
 * 创建项目，例如日志、stdout 和 stderr、指标以及步骤指定的输出。 然后上传这些项目并将其保存在用户的默认数据存储中。
 
 ![以管道方式运行实验的图](./media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
 
-有关详细信息, 请参阅[试验类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)引用。
+有关详细信息，请参阅[试验类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)引用。
 
 
 
 ## <a name="github-tracking-and-integration"></a>GitHub 跟踪和集成
 
-当你开始在源目录为本地 Git 存储库的训练运行时, 有关存储库的信息存储在运行历史记录中。 例如, 将在历史记录中记录存储库的当前提交 ID。
+当你开始在源目录为本地 Git 存储库的训练运行时，有关存储库的信息存储在运行历史记录中。 有关详细信息，请参阅[Git integration for Azure 机器学习](concept-train-model-git-integration.md)。
 
 ## <a name="publish-a-pipeline"></a>发布管道
 
@@ -429,17 +429,17 @@ p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 
-您可以使用`p.enable()`再次启用它。 有关详细信息，请参阅[PublishedPipeline 类](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py)引用。
+您可以使用 `p.enable()` 再次启用它。 有关详细信息，请参阅[PublishedPipeline 类](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py)引用。
 
 
 ## <a name="caching--reuse"></a>缓存 & 重用  
 
-为了优化和自定义管道的行为，您可以围绕缓存和重新使用来执行一些操作。 例如, 您可以选择:
-+ 在[步骤定义](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)期间设置`allow_reuse=False` ,**关闭步骤运行输出的默认重用**。 在协作环境中使用管道时, 重复使用是关键的, 因为消除不必要的运行可提供灵活性。 但是，您可以选择不使用。
-+ 将**哈希扩展到脚本以外**，还可以使用 `hash_paths=['<file or directory']` 将绝对路径或相对路径包含到 source_directory 的其他文件和目录。 
-+ 对**运行方式中的所有步骤强制执行输出重新生成**`pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
+为了优化和自定义管道的行为，您可以围绕缓存和重新使用来执行一些操作。 例如，您可以选择：
++ 通过在[步骤定义](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)期间设置 `allow_reuse=False` 来**关闭步骤运行输出的默认重用**。 在协作环境中使用管道时，重复使用是关键的，因为消除不必要的运行可提供灵活性。 但是，您可以选择不使用。
++ 将**哈希扩展到脚本以外**，还可以使用 `hash_paths=['<file or directory']` 将绝对路径或相对路径添加到其他文件和目录。 
++ **为运行中的所有步骤强制执行输出**`pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
-默认情况下`allow_reuse` , 将启用 "步骤" 并只对主脚本文件进行哈希处理。 因此, 如果给定步骤的脚本与相同 (`script_name`、输入和参数) 保持不变, 则会重复使用上一步运行的输出, 该作业不会提交到计算, 而以前运行的结果将立即用于下一步骤.  
+默认情况下，将启用 `allow_reuse` 的步骤，并且仅对主脚本文件进行哈希处理。 因此，如果给定步骤的脚本保持不变（`script_name`、输入和参数），则会重复使用上一步运行的输出，该作业不会提交到计算，而以前运行的结果立即可用于下一步骤。  
 
 ```python
 step = PythonScriptStep(name="Hello World",

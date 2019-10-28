@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 53399fbdeba44b184ef4e76c89affefd29dbc413
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 62d65a4f004494ac4ce4ecd3df0f091460028d8f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915317"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800055"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (C#)
 
 了解如何从 [Apache Storm](https://storm.apache.org/) on HDInsight 使用 Azure 事件中心。 本文档使用 C# Storm 拓扑对事件中心读取和写入数据
 
 > [!NOTE]  
-> 如需此项目的 Java 版，请参阅[使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)。
+> 如需此项目的 Java 版，请参阅[使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)。
 
 ## <a name="scpnet"></a>SCP.NET
 
@@ -52,7 +52,7 @@ Microsoft 提供一组 Java 组件用于与 Storm 拓扑中的事件中心通信
 此示例中使用了以下组件：
 
 * __EventHubSpout__：从事件中心读取数据。
-* __EventHubBolt__：从事件中心写入数据。
+* __EventHubBolt__：将数据写入事件中心。
 * __EventHubSpoutConfig__：用于配置 EventHubSpout。
 * __EventHubBoltConfig__：用于配置 EventHubBolt。
 
@@ -103,9 +103,9 @@ topologyBuilder.SetJavaBolt(
 
 ## <a name="download-the-completed-project"></a>下载已完成的项目
 
-可以从 [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) 下载本文中创建的项目的完整版本。 但是，仍然需要按照本文中的步骤提供配置设置。
+可以从[GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub)下载本文中创建的项目的完整版本。 但仍需按照本文中的步骤提供配置设置。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 * HDInsight 上的 Apache Storm 群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择 **Storm** 作为**群集类型**。
 
@@ -135,7 +135,7 @@ topologyBuilder.SetJavaBolt(
 
 1. 创建事件中心后，在 Azure 门户中查看“事件中心”设置，选择“共享访问策略”。 选择“+ 添加”添加以下策略：
 
-   | 姓名 | 权限 |
+   | 名称 | 权限 |
    | --- | --- |
    | writer |发送 |
    | reader |侦听 |
@@ -148,11 +148,11 @@ topologyBuilder.SetJavaBolt(
 
 1. 如果尚未安装最新版本的用于 Visual Studio 的 HDInsight 工具，请参阅[开始使用用于 Visual Studio 的 HDInsight 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
 
-2. 从 [eventhub-storm-hybrid](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub)下载解决方案。
+2. 从 [eventhub-storm-hybrid](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) 下载解决方案。
 
-3. 在 **EventHubWriter** 项目中，打开 **App.config** 文件。 使用此前配置的事件中心提供的信息，填充以下项的值：
+3. 在 **EventHubWriter** 项目中，打开 **App.config** 文件。 使用前面在事件中心配置的信息填写以下键的值：
 
-   | Key | ReplTest1 |
+   | 密钥 | Value |
    | --- | --- |
    | EventHubPolicyName |写入器（如果对具有“发送”权限的策略使用不同名称，则改用它。） |
    | EventHubPolicyKey |写入者策略的密钥。 |
@@ -168,7 +168,7 @@ topologyBuilder.SetJavaBolt(
 
 2. 打开 **EventHubReader** 的 **App.config** 文件。 使用前面在事件中心配置的信息填写以下键的值：
 
-   | Key | ReplTest1 |
+   | 密钥 | Value |
    | --- | --- |
    | EventHubPolicyName |读取器（如果对具有“侦听”权限的策略使用不同名称，则改用它。） |
    | EventHubPolicyKey |读取者策略的密钥。 |
@@ -188,7 +188,7 @@ topologyBuilder.SetJavaBolt(
 
     ![“提交拓扑”对话框的屏幕截图](./media/apache-storm-develop-csharp-event-hub-topology/submit-storm-topology.png)
 
-3. 提交拓扑之后，会出现“Storm 拓扑查看器”。 **EventHubReader** 拓扑。
+3. 提交拓扑之后，会出现“Storm 拓扑查看器”。 若要查看有关拓扑的信息，请选择左窗格中的 **EventHubReader** 拓扑。
 
     ![“Storm 拓扑查看器”的屏幕截图](./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png)
 

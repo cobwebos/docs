@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 73887c39ebcee2efc4a31925f4aacfffb3c53ca7
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 087e1cd84aa182a0aae1bef6ba3dd38f369d5189
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828056"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755953"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>通过估算器使用 Azure 机器学习训练模型
 
@@ -59,12 +59,12 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 参数 | 描述
 --|--
 `source_directory`| 包含训练作业所需的所有代码的本地目录。 此文件夹将从您的本地计算机复制到远程计算。
-`script_params`| 指定要传递给训练脚本`entry_script`的命令行参数的字典， `<command-line argument, value>`格式为成对。 若要在中`script_params`指定详细标志, 请使用。 `<command-line argument, "">`
+`script_params`| 指定要传递给训练脚本 `entry_script` 的命令行参数的字典，格式为 `<command-line argument, value>` 对。 若要在 `script_params` 中指定详细标志，请使用 `<command-line argument, "">`。
 `compute_target`| 运行训练脚本的远程计算目标，在本例中为 Azure 机器学习计算 ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) 群集。 （请注意，尽管 AmlCompute 群集是常用目标，但也可以选择其他计算目标类型，例如 Azure Vm，甚至是本地计算机。）
 `entry_script`| 要在远程计算上运行的训练脚本的文件路径（相对于 `source_directory`）。 此文件以及它所依赖的任何其他文件都应位于此文件夹中。
 `conda_packages`| 要通过训练脚本所需的 conda 安装的 Python 包列表。  
 
-构造函数有另一个名`pip_packages`为的参数，用于所需的任何 pip 包。
+构造函数有另一个名为 `pip_packages` 的参数，用于所需的任何 pip 包。
 
 创建了 `Estimator` 对象后，请提交要在远程计算上通过调用[实验](concept-azure-machine-learning-architecture.md#experiments)对象 `experiment` 上的 `submit` 函数来运行的训练作业。 
 
@@ -124,16 +124,16 @@ print(run.get_portal_url())
 
 ## <a name="github-tracking-and-integration"></a>GitHub 跟踪和集成
 
-当你开始在源目录为本地 Git 存储库的训练运行时, 有关存储库的信息存储在运行历史记录中。 例如, 将在历史记录中记录存储库的当前提交 ID。
+当你开始在源目录为本地 Git 存储库的训练运行时，有关存储库的信息存储在运行历史记录中。 有关详细信息，请参阅[Git integration for Azure 机器学习](concept-train-model-git-integration.md)。
 
 ## <a name="examples"></a>示例
-有关显示估计器模式基础知识的笔记本, 请参阅:
+有关显示估计器模式基础知识的笔记本，请参阅：
 * [how-to-use-azureml/training-with-deep-learning/how-to-use-estimator](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)
 
-有关使用估计器训练 scikit-learn 模型的笔记本, 请参阅:
+有关使用估计器训练 scikit-learn 模型的笔记本，请参阅：
 * [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
-有关使用深度学习框架特定估算的培训模型上的笔记本, 请参阅:
+有关使用深度学习框架特定估算的培训模型上的笔记本，请参阅：
 * [how-to-use-azureml/training-with-deep-learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

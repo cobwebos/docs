@@ -1,24 +1,23 @@
 ---
-title: 用于修整结果的安全筛选器 - Azure 搜索
-description: 使用安全筛选器和用户标识对 Azure 搜索内容进行访问控制。
-ms.service: search
-ms.topic: conceptual
-services: search
-ms.date: 05/02/2019
+title: 用于修整结果的安全筛选器
+titleSuffix: Azure Cognitive Search
+description: 使用安全筛选器和用户标识对 Azure 认知搜索内容进行访问控制。
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
-ms.custom: seodec2018
-ms.openlocfilehash: 4d1ffa5b29a56d32a4f6a8ccf40f5bafd27795e6
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 24f168f68a60ebb0408b7f1c367039ea5caea6d1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186489"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794267"
 ---
-# <a name="security-filters-for-trimming-results-in-azure-search"></a>用于在 Azure 搜索中修整结果的安全筛选器
+# <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>用于在 Azure 认知搜索中修整结果的安全筛选器
 
-可以应用安全筛选器，以根据用户标识对 Azure 搜索中的搜索结果进行修整。 此搜索体验通常需要将请求搜索的任何人的标识，与包含拥有文档权限的主体的字段进行比较。 如果找到匹配项，则该用户或主体（例如组或角色）有权访问该文档。
+您可以应用安全筛选器，以根据用户标识来剪裁 Azure 认知搜索中的搜索结果。 此搜索体验通常需要将请求搜索的任何人的标识，与包含拥有文档权限的主体的字段进行比较。 如果找到匹配项，则该用户或主体（例如组或角色）有权访问该文档。
 
 实现安全筛选的方法之一是对相等表达式进行复杂析取：例如 `Id eq 'id1' or Id eq 'id2'`，等等。 此方法容易出错且难以维护，如果列表包含数百甚至数千个值，会将查询响应时间减慢许多秒。 
 
@@ -33,9 +32,9 @@ ms.locfileid: "70186489"
 >[!NOTE]
 > 本文档未介绍检索主体标识符的过程。 应该从标识服务提供程序获取该标识符。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-本文假设读者拥有 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、[Azure 搜索服务](https://docs.microsoft.com/azure/search/search-create-service-portal)和 [Azure 搜索索引](https://docs.microsoft.com/azure/search/search-create-index-portal)。  
+本文假设你有[azure 订阅](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、 [azure 认知搜索服务](https://docs.microsoft.com/azure/search/search-create-service-portal)和[azure 认知搜索索引](https://docs.microsoft.com/azure/search/search-create-index-portal)。  
 
 ## <a name="create-security-field"></a>创建安全字段
 
@@ -113,7 +112,7 @@ api-key: [admin key]
 
 若要基于 `group_ids` 访问权限修整文档，应发出包含 `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` 筛选器的搜索查询，其中，'group_id1, group_id2,...' 是搜索请求发出者所属的组。
 此筛选器匹配其 `group_ids` 字段包含某个给定标识符的所有文档。
-有关使用 Azure 搜索搜索文档的完整详细信息，可以阅读[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
+有关使用 Azure 认知搜索搜索文档的完整详细信息，可以阅读[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
 请注意，此示例演示如何使用 POST 请求搜索文档。
 
 发出 HTTP POST 请求：
@@ -152,10 +151,10 @@ api-key: [admin or query key]
 ```
 ## <a name="conclusion"></a>结束语
 
-本文介绍了如何基于用户标识和 Azure 搜索 `search.in()` 函数筛选结果。 可以使用此函数传入请求用户的主体标识符，以将其与每个目标文档关联的主体标识符进行匹配。 处理搜索请求时，`search.in` 函数会筛选出任何用户主体都对其没有读访问权限的搜索结果。 主体标识符可以表示安全组、角色甚至用户自己的标识等信息。
+这是你可以如何基于用户标识和 Azure 认知搜索 `search.in()` 函数来筛选结果。 您可以使用此函数传入请求用户的主体标识符，以匹配与每个目标文档关联的主体标识符。 处理搜索请求时，`search.in` 函数会筛选出任何用户主体都对其没有读访问权限的搜索结果。 主体标识符可以表示安全组、角色甚至用户自己的标识等信息。
  
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-+ [使用 Azure 搜索筛选器进行 Active Directory 基于标识的访问控制](search-security-trimming-for-azure-search-with-aad.md)
-+ [Azure 搜索中的筛选器](search-filters.md)
-+ [Azure 搜索操作中的数据安全性和访问控制](search-security-overview.md)
++ [使用 Azure 认知搜索筛选器 Active Directory 基于标识的访问控制](search-security-trimming-for-azure-search-with-aad.md)
++ [Azure 认知搜索中的筛选器](search-filters.md)
++ [Azure 认知搜索操作中的数据安全性和访问控制](search-security-overview.md)

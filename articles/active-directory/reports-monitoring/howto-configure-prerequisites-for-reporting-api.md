@@ -1,6 +1,6 @@
 ---
-title: 访问 Azure Active Directory 报告 API 的先决条件 | Microsoft 文档
-description: 了解有关访问 Azure AD 报告 API 的先决条件
+title: Azure Active Directory 报告 API 的先决条件 |Microsoft Docs
+description: 了解访问 Azure AD 报告 API 的先决条件
 services: active-directory
 documentationcenter: ''
 author: cawrites
@@ -17,12 +17,12 @@ ms.date: 08/30/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7b6fab4a4a36691bbdeb11975c7a93b97ab86cb
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: af5e198a900241bc7bb0b6aff9a57eed59d1cd86
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241569"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895232"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>访问 Azure Active Directory 报告 API 的先决条件
 
@@ -45,7 +45,7 @@ ms.locfileid: "70241569"
 
 - 安全管理员
 
-- 全局管理员
+- 全局管理员角色
 
 
 ## <a name="register-an-application"></a>注册应用程序
@@ -76,13 +76,13 @@ ms.locfileid: "70241569"
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
-    a. 在“名称”文本框中，键入 `Reporting API application`。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 `Reporting API application`。
 
     b. 对于 "**支持的帐户类型**"，请选择 "**仅限此组织中的帐户**"。
 
-    c. 在 "**重定向 URL** **" 文本框中**， `https://localhost`键入。
+    c. 在 "**重定向 URL** **" 文本框中**，键入 `https://localhost`。
 
-    d. 选择“注册”。 
+    d.单击“下一步”。 选择“注册”。 
 
 
 ## <a name="grant-permissions"></a>授予权限 
@@ -110,7 +110,7 @@ ms.locfileid: "70241569"
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
-3. 在 "**所需权限**" 页上，依次选择 "**应用程序权限**"、"**目录** **ReadAll**"。  选择“添加权限”。
+3. 在 "**所需权限**" 页上，依次选择 "**应用程序权限**"、"**目录** **ReadAll**"。  选择 "**添加权限**"。
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
@@ -118,7 +118,7 @@ ms.locfileid: "70241569"
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
-5. 注意:默认情况下，将在 API 注册过程中添加**Microsoft Graph** 。
+5. 注意：默认情况下，在 API 注册过程中会添加**Microsoft Graph** 。
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/15.png)
 
@@ -179,13 +179,13 @@ ms.locfileid: "70241569"
 
 5. 在 "**添加客户端密钥**" 页面上，添加：
 
-    a. 在“说明”文本框中，键入 `Reporting API`。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“说明”文本框中，键入 `Reporting API`。
 
     b. 选择“2 年内”作为“过期时间”。
 
     c. 单击“保存”。
 
-    d. 复制密钥值。
+    d.单击“下一步”。 复制密钥值。
 
 ## <a name="troubleshoot-errors-in-the-reporting-api"></a>排查报告 API 中的错误
 
@@ -195,13 +195,13 @@ ms.locfileid: "70241569"
 
 目前，我们不支持 Microsoft Graph v2 终结点，请务必使用 Microsoft Graph v1 终结点访问活动日志。
 
-### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>错误：无法从 AD Graph 获取用户角色
+### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>错误: 无法从 AD Graph 获取用户角色
 
  使用图形资源管理器 UI 中的登录按钮登录到你的帐户，以避免尝试使用图形资源管理器登录时出现错误。 
 
 ![Graph 浏览器](./media/troubleshoot-graph-api/graph-explorer.png)
 
-### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>错误：无法从 AD Graph 执行 Premium 许可证检查 
+### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>错误: 无法从 AD Graph 执行 Premium 许可证检查 
 
 如果尝试使用 Graph 浏览器访问登录时收到此错误消息，请在左侧导航栏中选择帐户下方的“修改权限”，然后选择“Tasks.ReadWrite”和“Directory.Read.All”。 
 
@@ -216,9 +216,9 @@ ms.locfileid: "70241569"
 
  避免尝试使用 API 访问审核日志或登录时出现错误。 请确保你的帐户是 Azure Active Directory 租户中的**安全读者**或**报表读者**角色的一部分。
 
-### <a name="error-application-missing-aad-read-directory-data-permission"></a>错误：应用程序缺少 AAD“读取目录数据”权限 
+### <a name="error-application-missing-aad-read-directory-data-permission"></a>错误: 应用程序缺少 AAD“读取目录数据”权限 
 
-### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>错误：应用程序缺少 MSGraph API“读取所有审核日志数据”权限
+### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>错误: 应用程序缺少 MSGraph API“读取所有审核日志数据”权限
 
 按照先决条件中的步骤[访问 Azure Active Directory 报告 API](howto-configure-prerequisites-for-reporting-api.md) ，以确保你的应用程序使用正确的权限集运行。 
 

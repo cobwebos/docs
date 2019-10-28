@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: ec2a174c365e31520fe99ca0b505bbb62faad8c6
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 84e8f1d7b723bb86b31abb1ff60bce5351d7d996
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883403"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750155"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>检查你的商业应用商店产品/服务的发布状态
 
@@ -26,7 +26,7 @@ ms.locfileid: "70883403"
 | **发布正在进行** | 产品/计划正在执行发布过程的步骤。 |
 | **需要注意** | Microsoft 或任何发布步骤在认证期间发现了严重问题。 |
 | **预览** | 产品/服务已通过 Microsoft 认证，现在等待发布者最终验证。 选择 "上线" 以激活产品/服务。 |
-| **Live** | 产品/服务在 marketplace 中推出，可供客户使用。 |
+| **推出** | 产品/服务在 marketplace 中推出，可供客户使用。 |
 | **等待停止销售** | 发布者选择了 "停止销售" 产品/服务或计划，但该操作尚未完成。 |
 | **在 marketplace 中不可用** | 已删除 marketplace 中以前发布的产品/计划。 |
 
@@ -106,7 +106,7 @@ ms.locfileid: "70883403"
 
 在此步骤中，你将通过电子邮件发送请求，以便在最终发布步骤之前查看和批准产品/服务预览版。
 
-如果你已选择通过 Microsoft 出售你的产品/服务，你将能够测试产品/服务的购买和部署，以确保它在此预览审批阶段满足你的要求。 你的产品/服务在公共 marketplace 中将不可用。 测试并批准此预览版后，你将需要选择 "产品 **/** [**服务概述**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)" 仪表板上的 "开始"。
+如果你已选择通过 Microsoft 出售你的产品/服务，你将能够测试产品/服务的购买和部署，以确保它在此预览审批阶段满足你的要求。 你的产品/服务将不会在公共应用商店中提供。 测试并批准此预览版后，你将需要选择 "产品 **/** [**服务概述**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)" 仪表板上的 "开始"。
 
 如果要在此预览阶段对产品/服务进行更改，则可以编辑并重新提交以发布新预览。 有关更多更改的详细信息，请参阅[更新现有 marketplace 产品/服务](#update-existing-marketplace-offers)一文。
 

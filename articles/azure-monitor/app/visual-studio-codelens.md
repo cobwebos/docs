@@ -1,26 +1,20 @@
 ---
 title: Visual Studio CodeLens 中的 Application Insights 遥测 | Microsoft Docs
 description: 借助 Visual Studio 中的 CodeLens，快速访问 Application Insights 请求和异常遥测。
-services: application-insights
-documentationcenter: .net
-author: NumberByColors
-manager: carmonm
-ms.assetid: 93559e44-23cb-4b9d-8425-60f7f0d0a82c
-ms.service: application-insights
-ms.custom: vs-azure
-ms.workload: azure-vs
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: d4f7cfab8291fcb6d0160035b9e421a8d47b2396
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: vs-azure
+ms.openlocfilehash: 4232431be221fca076a6bff9305093354f08c44d
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255189"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899340"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Visual Studio CodeLens 中的 Application Insights 遥测
 使用有关运行时异常和请求响应时间的遥测，可以批注 Web 应用代码中的方法。 如果在应用程序中安装 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)，遥测会在 Visual Studio [CodeLens](https://msdn.microsoft.com/library/dn269218.aspx) 中显示，即每个函数顶端的备注，通常在此处查看有用的信息，例如引用函数的位置数量或最后编辑函数的人员。
@@ -48,17 +42,17 @@ ms.locfileid: "66255189"
 若要查看更多详细信息，请单击异常 CodeLens 指示器：
 
 * 相对之前 24 小时的最近 24 小时内的异常数量的百分比变化
-* 选择“转到代码”  可浏览引发异常的函数的源代码
-* 选择“搜索”  可查询过去 24 小时内发生此异常的所有实例
-* 选择“趋势”  可查看过去 24 小时内此异常发生次数的区域可视化效果
-* 选择“查看此应用中的所有异常”  可查询过去 24 小时内发生的所有异常
-* 选择“探索异常趋势”  可查看过去 24 小时内发生的所有异常的趋势可视化效果。 
+* 选择“转到代码” 可浏览引发异常的函数的源代码
+* 选择“搜索” 可查询过去 24 小时内发生此异常的所有实例
+* 选择“趋势” 可查看过去 24 小时内此异常发生次数的区域可视化效果
+* 选择“查看此应用中的所有异常” 可查询过去 24 小时内发生的所有异常
+* 选择“探索异常趋势” 可查看过去 24 小时内发生的所有异常的趋势可视化效果。 
 
 > [!TIP]
-> 如果在 CodeLens 中看到“0 个异常”，但知道应该有异常，请检查并确保在 CodeLens 中选择了正确的 Application Insights 资源。 要选择其他资源，请在解决方案资源管理器中右键单击项目，并选择“Application Insights”>“选择遥测源”  。 CodeLens 仅显示过去 24 小时内应用程序中的十五大最频繁发生的异常，因此，如果异常的发生频率排名第 16 位或发生频率更低，将看到“0 个异常”。 ASP.NET 视图中的异常可能不会在生成这些视图的控制器方法中显示。
+> 如果在 CodeLens 中看到“0 个异常”，但知道应该有异常，请检查并确保在 CodeLens 中选择了正确的 Application Insights 资源。 要选择其他资源，请在解决方案资源管理器中右键单击项目，并选择“Application Insights”>“选择遥测源”。 CodeLens 仅显示过去 24 小时内应用程序中的十五大最频繁发生的异常，因此，如果异常的发生频率排名第 16 位或发生频率更低，将看到“0 个异常”。 ASP.NET 视图中的异常可能不会在生成这些视图的控制器方法中显示。
 > 
 > [!TIP]
-> 如果在 CodeLens 中看到“？ 个异常”，则需要将 Azure 帐户与 Visual Studio 关联，否则 Azure 帐户凭据可能会过期。 在任何一种情况下，单击“？ 个异常”，然后选择“添加帐户...”  以输入凭据。
+> 如果在 CodeLens 中看到“？ 个异常”，则需要将 Azure 帐户与 Visual Studio 关联，否则 Azure 帐户凭据可能会过期。 在任何一种情况下，单击“？ 个异常”，然后选择“添加帐户...”以输入凭据。
 > 
 > 
 
@@ -71,8 +65,8 @@ ms.locfileid: "66255189"
 
 * 相对之前 24 小时的过去 24 小时内的请求数量、失败的请求和平均响应时间的绝对值和百分比变化
 * 方法的可靠性，通过计算过去 24 小时内未失败请求的百分比获得
-* 选择“搜索”  请求或失败的请求，可查询过去 24 小时内发生的所有（失败）请求
-* 选择“趋势”  可查看过去 24 小时内的请求、失败的请求或平均响应时间的趋势可视化效果。
+* 选择“搜索” 请求或失败的请求，可查询过去 24 小时内发生的所有（失败）请求
+* 选择“趋势” 可查看过去 24 小时内的请求、失败的请求或平均响应时间的趋势可视化效果。
 * 选择 CodeLens 详细信息视图左上角的 Application Insights 资源名称，更改 CodeLens 数据源对应的资源。
 
 ## <a name="next"></a>后续步骤

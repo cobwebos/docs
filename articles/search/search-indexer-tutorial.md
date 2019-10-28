@@ -1,27 +1,27 @@
 ---
-title: C# 教程：为 Azure SQL 数据库中的数据编制索引 - Azure 搜索
-description: 本 C# 代码示例演示如何连接到 Azure SQL 数据库、提取可搜索的数据，并将其加载到 Azure 搜索索引中。
-author: HeidiSteen
+title: C# 教程：为 Azure SQL 数据库中的数据编制索引
+titleSuffix: Azure Cognitive Search
+description: 本 C# 代码示例演示如何连接到 Azure SQL 数据库、提取可搜索的数据，并将其加载到 Azure 认知搜索索引中。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 05/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 1ba0a965de356cfbe7d9a1cfc8d6d2e8da092934
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: d83db424ee6e9a009353ca568232b38260883a4c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327173"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793609"
 ---
-# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C# 教程：使用 Azure 搜索索引器搜索 Azure SQL 数据库
+# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-cognitive-search-indexers"></a>C# 教程：使用 Azure 认知搜索索引器抓取 Azure SQL 数据库
 
-了解如何配置索引器来从示例 Azure SQL 数据库中提取可搜索的数据。 [索引器](search-indexer-overview.md)是 Azure 搜索组件，用于对外部数据源进行爬网，使用内容来填充[搜索索引](search-what-is-an-index.md)。 在所有索引器中，Azure SQL 数据库索引器运用最为广泛。 
+了解如何配置索引器来从示例 Azure SQL 数据库中提取可搜索的数据。 [索引器](search-indexer-overview.md)是 Azure 认知搜索组件，用于对外部数据源进行抓取，使用内容来填充[搜索索引](search-what-is-an-index.md)。 在所有索引器中，Azure SQL 数据库索引器运用最为广泛。 
 
 熟练掌握索引器的配置很有用，因为这样可以减少需编写和维护的代码量。 可以将索引器附加到数据源，让索引器提取数据并将其插入索引中，然后即可选择定期按计划运行索引器，以便拾取基础源中所做的更改，不必准备和推送符合架构的 JSON 数据集。
 
-在本教程中，使用 [Azure 搜索 .NET 客户端库](https://aka.ms/search-sdk)和 .NET Core 控制台应用程序来执行以下任务：
+在本教程中，使用 [Azure 认知搜索 .NET 客户端库](https://aka.ms/search-sdk)和 .NET Core 控制台应用程序来执行以下任务：
 
 > [!div class="checklist"]
 > * 将搜索服务信息添加到应用程序设置
@@ -37,7 +37,7 @@ ms.locfileid: "71327173"
 
 本快速入门使用以下服务、工具和数据。 
 
-[创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本教程中使用免费服务。
+[创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本教程中使用免费服务。
 
 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)存储索引器所用的外部数据源。 示例解决方案提供了一个用于创建表的 SQL 数据文件。 本教程提供了创建服务和数据库的步骤。
 
@@ -46,17 +46,17 @@ ms.locfileid: "71327173"
 [Azure-Samples/search-dotnet-getting-started](https://github.com/Azure-Samples/search-dotnet-getting-started) 提供 Azure 示例 GitHub 存储库中的示例解决方案。 请下载并提取该解决方案。 默认情况下，解决方案是只读的。 右键单击解决方案并清除只读属性，以便可以修改文件。
 
 > [!Note]
-> 如果使用免费的 Azure 搜索服务，则仅限使用三个索引、三个索引器和三个数据源。 本教程每样创建一个。 请确保服务中有空间来接受新资源。
+> 如果使用免费的 Azure 认知搜索服务，则仅限使用三个索引、三个索引器和三个数据源。 本教程每样创建一个。 请确保服务中有空间来接受新资源。
 
 ## <a name="get-a-key-and-url"></a>获取密钥和 URL
 
-REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
+REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
 
 1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
 1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
-![获取 HTTP 终结点和访问密钥](media/search-get-started-postman/get-url-key.png "Get an HTTP endpoint and access key")
+![获取 HTTP 终结点和访问密钥](media/search-get-started-postman/get-url-key.png "获取 HTTP 终结点和访问密钥")
 
 所有请求对发送到服务的每个请求都需要 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
@@ -67,7 +67,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 1. 在解决方案资源管理器中打开 **appsettings.json**，以便可以填充每项设置。  
 
-现在，可以使用 Azure 搜索服务的 URL 和管理密钥填充前两个条目。 如果终结点为 `https://mydemo.search.windows.net`，则要提供的服务名称为 `mydemo`。
+现在，可以使用 Azure 认知搜索服务的 URL 和管理密钥填充前两个条目。 如果终结点为 `https://mydemo.search.windows.net`，则要提供的服务名称为 `mydemo`。
 
 ```json
 {
@@ -81,7 +81,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="prepare-sample-data"></a>准备示例数据
 
-在此步骤中，请创建一个可供索引器爬网的外部数据源。 可以使用 Azure 门户和示例中的  hotels.sql 文件，在 Azure SQL 数据库中创建数据集。 Azure 搜索使用平展行集，例如从视图或查询生成的行集。 示例解决方案中的 SQL 文件创建并填充单个表。
+在此步骤中，请创建一个可供索引器爬网的外部数据源。 可以使用 Azure 门户和示例中的  hotels.sql 文件，在 Azure SQL 数据库中创建数据集。 Azure 认知搜索使用平展行集，例如从视图或查询生成的行集。 示例解决方案中的 SQL 文件创建并填充单个表。
 
 以下练习假定没有现成的服务器或数据库，因此会指导你在步骤 2 中创建这两项。 （可选）如果有现成的资源，可以向其添加 hotels 表，从步骤 4 开始。
 
@@ -159,7 +159,7 @@ public string HotelName { get; set; }
 
 主程序包含用于创建客户端、索引、数据源和索引器的逻辑。 此代码检查是否存在同一名称的资源，如果存在则会将其删除，所依据的假设是此程序可能多次运行。
 
-数据源对象是使用特定于 Azure SQL 数据库资源的设置配置的，这些设置包括用来利用 Azure SQL 内置[更改检测功能](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)的[增量索引](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows)。 Azure SQL 中的 hotels 演示数据库包含一个名为 **IsDeleted** 的“软删除”列。 如果在数据库中将此列设置为 true，则索引器会从 Azure 搜索索引中删除相应的文档。
+数据源对象是使用特定于 Azure SQL 数据库资源的设置配置的，这些设置包括用来利用 Azure SQL 内置[更改检测功能](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)的[增量索引](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows)。 Azure SQL 中的 hotels 演示数据库包含一个名为 **IsDeleted** 的“软删除”列。 如果在数据库中将此列设置为 true，则索引器会从 Azure 认知搜索索引中删除相应的文档。
 
   ```csharp
   Console.WriteLine("Creating data source...");
@@ -261,7 +261,7 @@ public string HotelName { get; set; }
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本教程后，最快的清理方式是删除包含 Azure 搜索服务的资源组。 现在，可以删除资源组以永久删除其中的所有内容。 在门户中，资源组名称显示在 Azure 搜索服务的“概述”页上。
+完成本教程后，最快的清理方式是删除包含 Azure 认知搜索服务的资源组。 现在，可以删除资源组以永久删除其中的所有内容。 在门户中，资源组名称显示在 Azure 认知搜索服务的“概述”页上。
 
 ## <a name="next-steps"></a>后续步骤
 

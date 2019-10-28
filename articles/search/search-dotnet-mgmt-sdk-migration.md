@@ -1,25 +1,25 @@
 ---
-title: 升级到 Azure 搜索 .NET 管理 SDK 版本 2 - Azure 搜索
+title: 升级到 Azure 搜索 .NET 管理 SDK 版本2
+titleSuffix: Azure Cognitive Search
 description: 从以前版本升级到 Azure 搜索 .NET 管理 SDK 版本 2。 了解新增功能和所需的代码更改。
-author: brjohnstmsft
 manager: nitinme
+author: brjohnstmsft
 ms.author: brjohnst
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: 2a59cff7f5313b0ac5a060d698950a4c82160f67
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: b81060bc3d8409a9ccb74ba85c85e6f779650ffd
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182251"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792418"
 ---
-# <a name="upgrading-to-the-azure-search-net-management-sdk-version"></a>升级到 Azure 搜索 .NET 管理 SDK 版本 
+# <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>升级 Azure 搜索 .NET 管理 SDK 的版本
 
 > [!Important]
-> 此内容仍在构建中。 NuGet 上提供了 Azure 搜索管理 .NET SDK 版本 3.0。 我们正在更新本迁移指南来说明如何升级到新版本。 
+> 此内容仍处于构建下。 NuGet 上提供了 Azure 搜索管理 .NET SDK 3.0 版。 我们正在更新此迁移指南，说明如何升级到新版本。 
 >
 
 如果使用的是版本 1.0.2 或更早版本的 [Azure 搜索 .NET 管理 SDK](https://aka.ms/search-mgmt-sdk)，本文有助于升级应用程序，以便使用版本 2。

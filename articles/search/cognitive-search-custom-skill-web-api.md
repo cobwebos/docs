@@ -9,12 +9,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: a148f974671e0d909591cbf24a433384a7570842
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: fda4f96c2c73c5a2d39435a509afcf654ed77b70
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693288"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901322"
 ---
 # <a name="custom-web-api-skill"></a>“自定义 Web API”技能
 
@@ -42,6 +42,7 @@ Microsoft.Skills.Custom.WebApiSkill
 | httpHeaders | 键值对集合，其中键表示头名称，值表示发送到 Web API 的头值以及有效负载。 此集合中禁止使用以下头：`Accept`、`Accept-Charset`、`Accept-Encoding`、`Content-Length`、`Content-Type`、`Cookie`、`Host`、`TE`、`Upgrade`、`Via` |
 | timeout | （可选）如果指定，表明执行 API 调用的 http 客户端的超时值。 必须将其格式化为 XSD“dayTimeDuration”值（[ISO 8601 持续时间](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)值的受限子集）。 例如，`PT60S` 表示 60 秒。 如果未设置，选择的是默认值 30 秒。 超时可以设置为最大值为230秒，最小值为1秒。 |
 | batchSize | （可选）表示每 API 调用发送多少个“数据记录”（请参阅下面的 JSON 有效负载结构）。 如果未设置，选择的是默认值 1000。 建议使用此参数在索引编制吞吐量和 API 负载之间进行适当取舍 |
+| degreeOfParallelism | 可有可无如果指定此值，则指示索引器将与提供的终结点并行进行的调用数。 如果终结点的请求负载过高，则可以减小此值，如果终结点能够接受更多的请求，并且需要提高索引器的性能，则可以将其引发。  如果未设置，则使用默认值5。 DegreeOfParallelism 最大可以设置为10，最小值为1。 |
 
 ## <a name="skill-inputs"></a>技能输入
 

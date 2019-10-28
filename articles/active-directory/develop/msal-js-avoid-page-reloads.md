@@ -1,6 +1,7 @@
 ---
-title: 避免页面重载（适用于 JavaScript 的 Microsoft 身份验证库）| Azure
-description: 了解如何在使用适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 以无提示方式获取和续订令牌时避免页面重载。
+title: 避免页面重载（适用于 JavaScript 的 Microsoft 身份验证库）
+titleSuffix: Microsoft identity platform
+description: 了解如何在使用适用于 JavaScript 的 Microsoft 身份验证库（MSAL）以无提示方式获取和续订令牌时避免页面重新加载。
 services: active-directory
 documentationcenter: dev-center-name
 author: TylerMSFT
@@ -17,31 +18,31 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c382c78cf631def74272768b78ee489e49820d04
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 29edafdc27a3835653f82ec36d576a4871e66155
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532832"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803103"
 ---
-# <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>在使用 MSAL.js 以无提示方式获取和续订令牌时避免页面重载
-适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 使用隐藏的 `iframe` 元素在后台中以无提示方式获取和续订令牌。 Azure AD 将令牌返回到在令牌请求中指定的已注册 redirect_uri（默认情况下，这是应用的根页面）。 由于响应是 302，因此会生成 HTML，与在 `iframe` 中加载的 `redirect_uri` 相对应。 通常情况下，应用的 `redirect_uri` 是根页面，这样会导致它重载。
+# <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>当使用 MSAL 以静默方式获取和续订令牌时避免页面重新加载
+适用于 JavaScript 的 Microsoft 身份验证库（MSAL）使用隐藏 `iframe` 元素在后台无提示地获取和续订令牌。 Azure AD 将令牌返回到令牌请求中指定的注册 redirect_uri （默认情况下，这是应用的根页面）。 由于响应为302，因此会生成与 `iframe`中加载的 `redirect_uri` 对应的 HTML。 通常，应用的 `redirect_uri` 是根页面，这将导致重新加载。
 
-在其他情况下，如果导航到应用的根页面需要身份验证，则可能导致嵌套的 `iframe` 元素或 `X-Frame-Options: deny` 错误。
+在其他情况下，如果导航到应用程序的根页需要身份验证，则可能会导致嵌套 `iframe` 元素或 `X-Frame-Options: deny` 错误。
 
-由于 MSAL.js 不能消除 Azure AD 发出的 302 且是处理返回的令牌所必需的，因此它不能防止 `redirect_uri` 在 `iframe` 中加载。
+由于 MSAL 无法消除由 Azure AD 颁发的302，因此处理返回的令牌需要此，它无法阻止 `redirect_uri` 加载到 `iframe`中。
 
-若要避免整个应用再次重载，或者避免因此导致的其他错误，请执行以下解决方法。
+若要避免再次加载整个应用或导致此错误的其他错误，请遵循以下解决方法。
 
 ## <a name="specify-different-html-for-the-iframe"></a>为 iframe 指定不同的 HTML
 
-将配置中的 `redirect_uri` 属性设置为一个简单页面，这不需要身份验证。 必须确保它与在 Azure 门户中注册的 `redirect_uri` 匹配。 这不会影响用户的登录体验，因为 MSAL 会在用户开始登录过程时保存启动页，并在登录完成后重定向回确切的位置。
+将配置上的 `redirect_uri` 属性设置为简单页面，这不需要进行身份验证。 必须确保它与 Azure 门户中注册的 `redirect_uri` 匹配。 这不会影响用户的登录体验，因为 MSAL 会在用户开始登录过程时保存起始页，并在登录完成后重定向回确切位置。
 
-## <a name="initialization-in-your-main-app-file"></a>主应用文件中的初始化
+## <a name="initialization-in-your-main-app-file"></a>在主应用文件中初始化
 
-如果在设置应用的结构时，使用一个中心 Javascript 文件来定义应用的初始化、路由和其他事项，则可根据应用是否在 `iframe` 中加载来有条件性地加载应用模块。 例如：
+如果你的应用程序的结构化，并且有一个用于定义应用程序初始化、路由和其他内容的中央 Javascript 文件，则你可以根据应用程序是否正在 `iframe` 加载来有条件地加载应用模块。 例如：
 
-在 AngularJS 中：app.js
+In AngularJS： node.js
 
 ```javascript
 // Check that the window is an iframe and not popup
@@ -78,7 +79,7 @@ else {
 }
 ```
 
-在 Angular 中：app.module.ts
+角： app.config
 
 ```javascript
 // Imports...
@@ -130,7 +131,7 @@ export class AppModule {
 }
 ```
 
-MsalComponent：
+MsalComponent:
 
 ```javascript
 import { Component} from '@angular/core';
@@ -150,4 +151,4 @@ export class MsalComponent {
 ```
 
 ## <a name="next-steps"></a>后续步骤
-详细了解如何使用 MSAL.js [生成单页应用程序 (SPA)](scenario-spa-overview.md)。
+详细了解如何使用 MSAL[生成单页应用程序（SPA）](scenario-spa-overview.md) 。

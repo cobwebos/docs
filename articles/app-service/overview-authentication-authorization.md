@@ -15,20 +15,20 @@ ms.date: 08/12/2019
 ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: e308b44fffff451daa92cbf19209a1bcbfd4bff6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2179f4e7d5350cdf9d82413e4f70647c20c3c399
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087982"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808754"
 ---
-# <a name="authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权
+# <a name="authentication-and-authorization-in-azure-app-service"></a>在 Azure App Service 中执行身份验证和授权
 
 > [!NOTE]
-> 目前, 不支持 AAD V2 (包括 MSAL) Azure 应用服务和 Azure Functions。 请查看是否有更新。
+> 目前，不支持 AAD V2 （包括 MSAL） Azure 应用服务和 Azure Functions。 请查看是否有更新。
 >
 
-Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应用、RESTful API、移动后端和 [Azure Functions](../azure-functions/functions-overview.md) 中编写少量的代码或根本无需编写代码，就能让用户登录和访问数据。 本文介绍应用服务如何帮助简化应用的身份验证和授权。 
+Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应用、RESTful API、移动后端和 [Azure Functions](../azure-functions/functions-overview.md) 中编写少量的代码或根本无需编写代码，就能让用户登录和访问数据。 本文介绍应用服务如何帮助简化应用的身份验证和授权。
 
 安全身份验证和授权需要对联合身份验证、加密、[JSON Web 令牌 (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) 管理、[授权类型](https://oauth.net/2/grant-types/)等安全性方面有深度的了解。 应用服务提供这些实用工具，让你将更多的时间和精力花费在为客户提供业务价值上。
 
@@ -38,7 +38,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 有关特定于本机移动应用的信息，请参阅[使用 Azure 应用服务对移动应用进行用户身份验证和授权](../app-service-mobile/app-service-mobile-auth.md)。
 
-## <a name="how-it-works"></a>工作原理
+## <a name="how-it-works"></a>如何运作
 
 身份验证和授权模块在应用程序代码所在的同一沙盒中运行。 启用后，每个传入的 HTTP 请求将通过此模块，然后由应用程序代码处理。
 
@@ -55,7 +55,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 ### <a name="user-claims"></a>用户声明
 
-对于所有语言框架，应用服务通过将用户声明注入请求标头，向代码提供这些声明。 对于 ASP.NET 4.6 应用，应用服务会在 [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) 中填充经过身份验证的用户声明，使你能够遵循标准的 .NET 代码模式（包括 `[Authorize]` 属性）。 同样，对于 PHP 应用，应用服务会填充 `_SERVER['REMOTE_USER']` 变量。 对于 Java 应用,[可从 Tomcat servlet 访问](containers/configure-language-java.md#authenticate-users-easy-auth)声明。
+对于所有语言框架，应用服务通过将用户声明注入请求标头，向代码提供这些声明。 对于 ASP.NET 4.6 应用，应用服务会在 [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) 中填充经过身份验证的用户声明，使你能够遵循标准的 .NET 代码模式（包括 `[Authorize]` 属性）。 同样，对于 PHP 应用，应用服务会填充 `_SERVER['REMOTE_USER']` 变量。 对于 Java 应用，[可从 Tomcat servlet 访问](containers/configure-language-java.md#authenticate-users-easy-auth)声明。
 
 对于 [Azure Functions](../azure-functions/functions-overview.md)，.NET 代码的 `ClaimsPrincipal.Current` 不会解冻，但仍可以在请求标头中找到用户声明。
 
@@ -87,7 +87,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` |
 | [Microsoft 帐户](../active-directory/develop/v2-overview.md) | `/.auth/login/microsoftaccount` |
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
-| [Google](https://developers.google.com/+/web/api/rest/oauth) | `/.auth/login/google` |
+| [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
 
 对其中一个提供程序启用身份验证和授权时，其登录终结点可用于用户身份验证，以及验证来自提供程序的身份验证令牌。 可以轻松为用户提供其中任意数量的登录选项。 你还可以集成其他标识提供程序或[你自己的自定义标识解决方案][custom-auth]。
@@ -107,10 +107,10 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 | 步骤 | 不使用提供程序 SDK | 使用提供程序 SDK |
 | - | - | - |
-| 1.将用户登录 | 将客户端重定向到 `/.auth/login/<provider>`。 | 客户端代码直接使用提供程序的 SDK 将用户登录，并接收身份验证令牌。 有关详细信息，请参阅提供程序文档。 |
-| 2.身份验证后 | 提供程序将客户端重定向到 `/.auth/login/<provider>/callback`。 | 客户端代码[将来自提供程序的令牌发布到](app-service-authentication-how-to.md#validate-tokens-from-providers) `/.auth/login/<provider>` 进行验证。 |
-| 3.建立经过身份验证的会话 | 应用服务将经过身份验证的 Cookie 添加到响应中。 | 应用服务将自身的身份验证令牌返回给客户端代码。 |
-| 4.提供经过身份验证的内容 | 客户端在后续请求中包含身份验证 Cookie（由浏览器自动处理）。 | 客户端代码在 `X-ZUMO-AUTH` 标头中提供身份验证令牌（由移动应用客户端 SDK 自动处理）。 |
+| 1. 登录用户 | 将客户端重定向到 `/.auth/login/<provider>`。 | 客户端代码直接使用提供程序的 SDK 将用户登录，并接收身份验证令牌。 有关详细信息，请参阅提供程序文档。 |
+| 2. 身份验证后 | 提供程序将客户端重定向到 `/.auth/login/<provider>/callback`。 | 客户端代码[将来自提供程序的令牌发布到](app-service-authentication-how-to.md#validate-tokens-from-providers) `/.auth/login/<provider>` 进行验证。 |
+| 3. 建立经过身份验证的会话 | 应用服务将经过身份验证的 Cookie 添加到响应中。 | 应用服务将自身的身份验证令牌返回给客户端代码。 |
+| 4. 提供经过身份验证的内容 | 客户端在后续请求中包含身份验证 Cookie（由浏览器自动处理）。 | 客户端代码在 `X-ZUMO-AUTH` 标头中提供身份验证令牌（由移动应用客户端 SDK 自动处理）。 |
 
 对于客户端浏览器，应用服务可自动将所有未经身份验证的用户定向到 `/.auth/login/<provider>`。 还可以向用户提供一个或多个 `/.auth/login/<provider>` 链接，让他们使用所选的提供程序登录到你的应用。
 
@@ -118,13 +118,13 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 ## <a name="authorization-behavior"></a>授权行为
 
-在[Azure 门户](https://portal.azure.com)中, 当传入请求未经过身份验证时, 你可以使用多种行为配置应用服务授权。
+在[Azure 门户](https://portal.azure.com)中，当传入请求未经过身份验证时，你可以使用多种行为配置应用服务授权。
 
 ![](media/app-service-authentication-overview/authorization-flow.png)
 
 以下标题介绍了选项。
 
-### <a name="allow-anonymous-requests-no-action"></a>允许匿名请求 (无操作)
+### <a name="allow-anonymous-requests-no-action"></a>允许匿名请求（无操作）
 
 此选项会将未经身份验证的流量授权到你的应用程序代码。 对于经过身份验证的请求，应用服务还会在 HTTP 标头中一起传递身份验证信息。 
 
@@ -137,7 +137,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 使用此选项不需要在应用中编写任何身份验证代码。 可以通过检查用户的声明来处理精细授权，例如角色特定的授权（请参阅[访问用户声明](app-service-authentication-how-to.md#access-user-claims)）。
 
 > [!CAUTION]
-> 以这种方式限制访问权限适用于对应用的所有调用, 对于需要公开提供的主页的应用, 与在许多单页应用程序中一样。
+> 以这种方式限制访问权限适用于对应用的所有调用，对于需要公开提供的主页的应用，与在许多单页应用程序中一样。
 
 ## <a name="more-resources"></a>更多资源
 
@@ -152,7 +152,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 * [如何将应用配置为使用 Google 登录][Google]
 * [如何将应用配置为使用 Microsoft 帐户登录][MSA]
 * [如何将应用配置为使用 Twitter 登录][Twitter]
-* [如何：对应用程序使用自定义身份验证][custom-auth]
+* [如何对应用程序使用自定义身份验证][custom-auth]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md

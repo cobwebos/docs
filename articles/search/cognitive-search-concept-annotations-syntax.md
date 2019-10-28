@@ -1,22 +1,21 @@
 ---
-title: 认知搜索管道中的引用输入和输出 - Azure 搜索
-description: 说明了注释语法，以及如何在 Azure 搜索的认知搜索管道中引用技能集的输入和输出中的注释。
-services: search
+title: 引用 AI 扩充管道中的输入和输出
+titleSuffix: Azure Cognitive Search
+description: 介绍批注语法，以及如何在 Azure 认知搜索的 AI 扩充管道中的技能组合的输入和输出中引用注释。
 manager: nitinme
-author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: LuisCabrer
 ms.author: luisca
-ms.openlocfilehash: 40559744f0650c64afb1dc63c38f56efaa0219d7
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: fe81ccb5324d75212763e20ac2514ade9ce50496
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265537"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787782"
 ---
-# <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>如何在认知搜索技能集中引用注释
+# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>如何在 Azure 认知搜索技能组合中引用批注
 
 本文介绍如何在技能定义中引用注释，并使用示例演示各种方案。 当文档的内容流经一组技能时，它将通过注释进行扩充。 注释可以用作进一步下游扩充的输入，也可以映射到索引中的输出字段。 
  
@@ -26,7 +25,7 @@ ms.locfileid: "71265537"
 
 在复习语法之前，让我们回顾一些重要的概念，以便更好地理解本文后面提供的示例。
 
-| 术语 | 描述 |
+| 条款 | 描述 |
 |------|-------------|
 | 扩充文档 | 扩充文档是由管道创建和使用的内部结构，用来保存与文档相关的所有注释。 可以把扩充文档看作是注释树。 通常，从前一个注释创建的注释将成为前一个注释的子级。<p/>扩充文档仅在技能集执行期间存在。 内容映射到搜索索引后，就不再需要扩充文档了。 虽然不直接与扩充文档交互，但在创建技能集时，有一个文档的心理模型是很有用的。 |
 | 扩充上下文 | 扩充发生的上下文，即扩充的元素。 默认情况下，扩充上下文位于 `"/document"` 级别，作用域为单个文档。 当一个技能运行时，该技能的输出将成为[定义上下文的属性](#example-2)。|
@@ -34,7 +33,7 @@ ms.locfileid: "71265537"
 <a name="example-1"></a>
 ## <a name="example-1-simple-annotation-reference"></a>示例 1：简单注释引用
 
-在 Azure Blob 存储中，假设你有各种文件，其中包含你想要使用实体识别提取的人名的引用。 在下面的技能定义中，`"/document/content"` 是整个文档的文本表示，“people”是对标识为 persons 的实体的全名提取。
+在 Azure Blob 存储中，假设你有各种文件，其中包含要使用实体识别提取的人员的姓名引用。 在下面的技能定义中，`"/document/content"` 是整个文档的文本表示，“people”是对标识为 persons 的实体的全名提取。
 
 因为默认上下文是 `"/document"`，所以现在可以将人员列表引用为 `"/document/people"`。 在此特定示例中 `"/document/people"` 是一个注释，它现在可以映射到索引中的一个字段，或者用在同一技能集的另一个技能中。
 
@@ -121,7 +120,7 @@ ms.locfileid: "71265537"
 
 
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 + [如何将自定义技能集成到扩充管道](cognitive-search-custom-skill-interface.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [创建技能集 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)

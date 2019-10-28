@@ -1,26 +1,25 @@
 ---
-title: 在认知搜索中处理和提取图像中的文本 - Azure 搜索
-description: 处理和提取 Azure 搜索的认知搜索管道中的图像中的文本和其他信息。
-services: search
+title: 在扩充管道中处理和提取图像中的文本
+titleSuffix: Azure Cognitive Search
+description: 在 Azure 认知搜索管道中处理和提取图像中的文本和其他信息。
 manager: nitinme
-author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: LuisCabrer
 ms.author: luisca
-ms.openlocfilehash: c1fd5c4e5a3ac054a85bdcc11d95bc3c338ee3c2
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 5006bf5bc7eafd464861a3570654539386c5f837
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265868"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787741"
 ---
-#  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>如何处理和提取认知搜索方案中的图像中的信息
+# <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>如何在 AI 扩充方案中处理和提取图像中的信息
 
-认知搜索有多项适用于图像和图像文件的功能。 在文档破解过程中，可以使用 *imageAction* 参数从包含字母数字文本的照片或图片中提取文本，例如停车标志中的“停”字样。 其他场景包括：生成图像的文本表示形式，例如代表蒲公英照片的“蒲公英”字样，或者“黄色”颜色。 还可以提取图像的元数据，例如其大小。
+Azure 认知搜索具有几个使用图像和图像文件的功能。 在文档破解过程中，可以使用 *imageAction* 参数从包含字母数字文本的照片或图片中提取文本，例如停车标志中的“停”字样。 其他场景包括：生成图像的文本表示形式，例如代表蒲公英照片的“蒲公英”字样，或者“黄色”颜色。 还可以提取图像的元数据，例如其大小。
 
-本文详细介绍图像处理，并提供在认知搜索管道中处理图像的指南。
+本文更详细地介绍了图像处理，并提供了在 AI 扩充管道中处理图像的指南。
 
 <a name="get-normalized-images"></a>
 
@@ -32,12 +31,12 @@ ms.locfileid: "71265868"
 
 | 配置参数 | 描述 |
 |--------------------|-------------|
-| imageAction   | 如果在遇到嵌入图像或图像文件时无需执行任何操作，请将此项设置为 "none"。 <br/>设置为 "generateNormalizedImages" 会在文档破解过程中生成一系列规范化的图像。<br/>设置为“generateNormalizedImagePerPage”，以生成一系列规范化的图像，对于数据源中的 PDF 文件，每一页呈现为一个输出图像。  对于非 PDF 文件类型，该功能与“generateNormalizedImages”相同。<br/>对于任何不是“none”的选项，这些图像会在 *normalized_images* 字段中公开。 <br/>默认为 "none"。 将 "dataToExtract" 设置为 "contentAndMetadata" 时，此配置仅与 Blob 数据源相关。 <br/>将从给定文档中提取最多 1000 个图像。 如果在文档中有超过 1000 个图像，则将提取前 1000 个，并将生成警告。 |
+| imageAction   | 如果在遇到嵌入图像或图像文件时无需执行任何操作，请将此项设置为 "none"。 <br/>设置为 "generateNormalizedImages" 会在文档破解过程中生成一系列规范化的图像。<br/>设置为 "generateNormalizedImagePerPage" 以生成一组规范化图像，其中，对于数据源中的 Pdf，每个页面呈现到一个输出图像。  对于非 PDF 文件类型，该功能与“generateNormalizedImages”相同。<br/>对于任何不是“none”的选项，这些图像会在 *normalized_images* 字段中公开。 <br/>默认为 "none"。 将 "dataToExtract" 设置为 "contentAndMetadata" 时，此配置仅与 Blob 数据源相关。 <br/>最多可从给定文档中提取1000个图像。 如果文档中的图像超过1000，则将提取第一个1000，并将生成一个警告。 |
 |  normalizedImageMaxWidth | 生成的规范化图像的最大宽度（以像素为单位）。 默认为 2000。 允许的最大值为10000。 | 
 |  normalizedImageMaxHeight | 生成的规范化图像的最大高度（以像素为单位）。 默认为 2000。 允许的最大值为10000。|
 
 > [!NOTE]
-> 如果将 *imageAction* 属性设置为 "none" 之外的其他值，则只能将 *parsingMode* 属性设置为 "default"。  在索引器配置中，只能将这两个属性中的一个设置为非默认值。
+> 如果将*imageAction*属性设置为除 "none" 之外的任何值，则无法将*parsingMode*属性设置为 "default" 以外的任何值。  在索引器配置中，只能将这两个属性中的一个设置为非默认值。
 
 将 **parsingMode** 参数设置为 `json`（将每个 Blob 作为单个文档进行索引编制）或 `jsonArray`（如果 Blob 包含 JSON 数组，且需要将数组的每个元素视为单独的文档）。
 
@@ -63,7 +62,7 @@ ms.locfileid: "71265868"
 
 | 图像成员       | 描述                             |
 |--------------------|-----------------------------------------|
-| data               | JPEG 格式的规范化图像的 BASE64 编码字符串。   |
+| 数据               | JPEG 格式的规范化图像的 BASE64 编码字符串。   |
 | width              | 规范化图像的宽度（以像素为单位）。 |
 | height             | 规范化图像的高度（以像素为单位）。 |
 | originalWidth      | 图像在规范化之前的原始宽度。 |
@@ -90,7 +89,7 @@ ms.locfileid: "71265868"
 
 ## <a name="image-related-skills"></a>图像相关技术
 
-有两项内置的认知技能以图像作为输入：[OCR](cognitive-search-skill-ocr.md) 和[图像分析](cognitive-search-skill-image-analysis.md)。 
+有两项内置的认知技术以图像为输入：[OCR](cognitive-search-skill-ocr.md) 和[图像分析](cognitive-search-skill-image-analysis.md)。 
 
 目前，这些技术仅适用于通过文档破解步骤生成的图像。 因此，唯一支持的输入为 `"/document/normalized_images"`。
 
@@ -214,10 +213,10 @@ ms.locfileid: "71265868"
         }
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 + [创建索引器 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 + [分析图像技术](cognitive-search-skill-image-analysis.md)
 + [OCR 技术](cognitive-search-skill-ocr.md)
 + [文本合并技术](cognitive-search-skill-textmerger.md)
-+ [如何定义技术集](cognitive-search-defining-skillset.md)
-+ [如何映射扩充的字段](cognitive-search-output-field-mapping.md)
++ [如何定义技能集](cognitive-search-defining-skillset.md)
++ [如何映射扩充的域](cognitive-search-output-field-mapping.md)

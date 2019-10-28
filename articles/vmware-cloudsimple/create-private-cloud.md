@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a6e3d466321fcd8f32f46359c97f67400a8f86c6
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 4f700ac34b6c6e2a651366bee7dd1785c608064f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828157"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893919"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>创建 CloudSimple 私有云
 
@@ -31,6 +31,16 @@ ms.locfileid: "71828157"
 
 在创建私有云时，你将获得单个 vSphere 群集和在该群集中创建的所有管理 Vm。
 
+## <a name="before-you-begin"></a>开始之前
+
+必须先设置节点，然后才能创建私有云。 有关预配节点的详细信息，请参阅[通过 CloudSimple 预配 Azure VMware 解决方案的节点](create-nodes.md)。
+
+为私有云分配 vSphere/vSAN 子网的 CIDR 范围。 私有云是作为独立的 VMware 堆栈环境（包含由 vCenter 服务器托管的 ESXi 主机、vCenter、vSAN 和 NSX）创建的。 管理组件部署在为 vSphere/vSAN 子网 CIDR 选择的网络中。 在部署过程中，网络 CIDR 范围分为不同的子网。 VSphere/vSAN 子网地址空间必须是唯一的。 它不得与任何与 CloudSimple 环境通信的网络重叠。 与 CloudSimple 通信的网络包括本地网络和 Azure 虚拟网络。 有关 vSphere/vSAN 子网的详细信息，请参阅 Vlan 和子网概述。
+
+* 最小 vSphere/vSAN 子网 CIDR 范围前缀：/24
+* 最大 vSphere/vSAN 子网 CIDR 范围前缀：/21
+
+
 ## <a name="access-the-cloudsimple-portal"></a>访问 CloudSimple 门户
 
 访问[CloudSimple 门户](access-cloudsimple-portal.md)。
@@ -46,12 +56,12 @@ ms.locfileid: "71828157"
 
 5. 在 CloudSimple 门户中，提供私有云的名称。
 6. 选择私有云的 "**位置**"。
-7. 选择 "**节点类型**"，与 Azure 上购买的内容一致。
+7. 选择 "**节点类型**"，与在 Azure 上预配的类型一致。
 8. 指定**节点计数**。  至少需要三个节点才能创建私有云。
 
     ![创建私有云-基本信息](media/create-private-cloud-basic-info.png)
 
-9. 单击“下一步:**高级选项**。
+9. 单击 "**下一步：高级选项**"。
 10. 输入 vSphere/vSAN 子网的 CIDR 范围。 请确保 CIDR 范围不与任何本地或其他 Azure 子网（虚拟网络）或网关子网重叠。
 
     **CIDR 范围选项：** /24、/23、/22 或/21。 A/24 CIDR 范围支持最多9个节点，/23 个 CIDR 范围最多支持41个节点，并且/22 和/21 CIDR 范围最多支持64个节点（私有云中的最大节点数）。
@@ -59,7 +69,7 @@ ms.locfileid: "71828157"
     > [!IMPORTANT]
     > VSphere/vSAN CIDR 范围中的 IP 地址保留供私有云基础结构使用。  请勿在任何虚拟机上使用此范围内的 IP 地址。
 
-11. 单击“下一步:**查看和创建**。
+11. 单击 "**下一步"：查看和创建**。
 12. 查看设置。 如果需要更改任何设置，请单击 "**上一步**"。
 13. 单击“创建”。
 

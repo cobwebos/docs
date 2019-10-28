@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 67a05d065cba8286c837487e21fc2f5be54e2c0b
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: c9339b5c7c35378fb85daeae19a6daa01d54f350
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162347"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809641"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>启用自动优化以监视查询并提高工作负荷性能
 
@@ -25,10 +25,10 @@ Azure SQL 数据库是自动托管的数据服务，可持续监视查询并识�
 可以通过 [Azure 门户](sql-database-automatic-tuning-enable.md#azure-portal)、[REST API](sql-database-automatic-tuning-enable.md#rest-api) 调用和 [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) 命令在服务器或数据库级别启用自动优化。
 
 > [!NOTE]
-> 对于托管实例，支持的选项 FORCE_LAST_GOOD_PLAN 只能通过 [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management) 进行配置。 本文中所述的基于门户的配置和自动索引优化选项不适用于托管实例。
+> 对于托管实例，只能通过[t-sql](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management)配置受支持的 FORCE_LAST_GOOD_PLAN 选项。 本文中所述的基于门户的配置和自动索引优化选项不适用于托管实例。
 
 > [!NOTE]
-> 目前不支持通过 ARM（Azure 资源管理器）模板配置自动优化选项。
+> 目前不支持通过 ARM （Azure 资源管理器）模板配置自动优化选项。
 
 ## <a name="enable-automatic-tuning-on-server"></a>对服务器启用自动优化
 
@@ -104,6 +104,12 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 
 自动优化监视着自身在数据库上进行的一切操作，在某些情况下，它可以判断自身在数据库中无法正常运行。 在此情况下，系统将禁用自动优化。 造成此情况的主要原因是未启用查询数据存储，或在指定数据库中查询数据存储处于只读状态。
 
+## <a name="permissions"></a>权限
+
+作为 Azure 功能的自动优化，若要使用它，你将需要使用 Azure 的内置 RBAC 角色。 仅使用 SQL 身份验证不会足以充分利用 Azure 门户的功能。
+
+要使用自动优化，授予用户的最低权限是 Azure 的内置[SQL 数据库参与者](../role-based-access-control/built-in-roles.md#sql-db-contributor)角色。 你还可以考虑使用更高权限角色，如 SQL Server 参与者、参与者和所有者。
+
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>配置自动优化电子邮件通知
 
 请参阅[自动优化电子邮件通知](sql-database-automatic-tuning-email-notifications.md)指南。
@@ -111,5 +117,5 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 ## <a name="next-steps"></a>后续步骤
 
 * 请阅读[自动优化文章](sql-database-automatic-tuning.md)，详细了解自动优化及其如何帮助提高性能。
-* 请参阅[性能建议](sql-database-advisor.md)，了解 Azure SQL 数据库性能建议的概述。
-* 请参阅[查询性能见解](sql-database-query-performance.md)，了解排名靠前的查询的性能影响。
+* 请参阅[性能建议](sql-database-advisor.md)，了解有关 Azure SQL 数据库性能建议的概述。
+* 若要了解排名靠前的查询的性能影响，请参阅[查询性能见解](sql-database-query-performance.md)。

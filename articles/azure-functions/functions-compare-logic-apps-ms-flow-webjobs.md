@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 47e300bf242f02d458363b7d2ab7af8a4399b399
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: b131a6fd5bb39ee5ec672a8ffb75cb22087a38af
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155039"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597446"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>什么是 Microsoft Flow、逻辑应用、Functions 和 WebJobs？
 
@@ -27,7 +27,9 @@ ms.locfileid: "71155039"
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
 * [Azure 应用服务 WebJobs](../app-service/webjobs-create.md)
 
-所有这些服务都可以解决集成问题并自动化业务流程。 它们都可以定义输入、操作、条件和输出。 可以在日程安排或触发器中运行其中一个。 每种服务都有其独特的优点，本文将介绍这些差异。
+所有这些服务都可以解决集成问题并自动化业务流程。 它们都可以定义输入、操作、条件和输出。 可以在日程安排或触发器中运行其中一个。 每种服务都有其独特的优点，本文将介绍这些差异。 
+
+若要查找 Azure Functions 与其他 Azure 计算选项之间的更一般比较，请参阅[选择 Azure 计算服务的标准](/azure/architecture/guide/technology-choices/compute-comparison)和[为微服务选择 Azure 计算选项](/azure/architecture/microservices/design/compute-options)。
 
 ## <a name="compare-microsoft-flow-and-azure-logic-apps"></a>比较 Microsoft Flow 和 Azure 逻辑应用
 

@@ -4,16 +4,16 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 06/09/2018
 ms.author: liydu
-ms.openlocfilehash: 783921009a1668647a238f1c344885ec807d5b8a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 869d2170167651ee1c6b6e21ecb4b47959641162
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173605"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72958472"
 ---
 若要继续了解 Azure IoT 中心入门知识并使用 IoT DevKit 探索其他 IoT 方案，请参阅：
 
-- [将 IoT DevKit 连接到 Azure IoT Central 应用程序](../articles/iot-central/howto-connect-devkit.md)
+- [将 IoT DevKit 连接到 Azure IoT Central 应用程序](../articles/iot-central/core/howto-connect-devkit.md)
 - [将 IoT DevKit 连接到 Azure IoT 远程监视解决方案加速器](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md)
 - [使用 Azure 认知服务转换语音邮件](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-translator.md)
 - [使用 Azure Functions 检索 Twitter 消息](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)

@@ -1,26 +1,25 @@
 ---
-title: 重新生成 Azure 搜索索引或刷新可搜索内容 - Azure 搜索
-description: 添加新元素、更新现有元素或文档，或删除完整重新生成或部分增量索引中的过时文档，以刷新 Azure 搜索索引。
-services: search
-author: HeidiSteen
+title: 重新生成 Azure 认知搜索索引
+titleSuffix: Azure Cognitive Search
+description: 在完全重新生成或部分增量索引中添加新元素、更新现有元素或文档，或删除过时文档以刷新 Azure 认知搜索索引。
 manager: nitinme
-ms.service: search
-ms.topic: conceptual
-ms.date: 02/13/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 863050b2646f6f7b3a3d9ba3487f11729bef22c8
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 26a751924985f94a7d7d12a382d4e6654f36ea48
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719845"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793706"
 ---
-# <a name="how-to-rebuild-an-azure-search-index"></a>如何重新生成 Azure 搜索索引
+# <a name="how-to-rebuild-an-azure-cognitive-search-index"></a>如何重建 Azure 认知搜索索引
 
-本文介绍如何重新生成 Azure 搜索索引、需要重新生成的情况以及有关如何减轻重新生成操作对正在进行的查询请求的影响的建议。
+本文介绍了如何重建 Azure 认知搜索索引、需要重新生成的环境，以及如何缓解重建对正在进行的查询请求所造成的影响。
 
-“重新生成”是指删除并重新创建与索引关联的物理数据结构，包括所有基于字段的反向索引。 在 Azure 搜索中，无法删除并重新创建各个字段。 若要重新生成索引，必须删除所有字段存储、基于现有或修订的索引架构重新创建，然后使用推送到索引或从外部源提取的数据重新填充。 在开发期间重新生成索引很常见，但可能还需要重新生成生产级索引以适应结构化的更改，例如，向建议器添加复杂类型或添加字段。
+“重新生成”是指删除并重新创建与索引关联的物理数据结构，包括所有基于字段的反向索引。 在 Azure 认知搜索中，无法删除和重新创建单个字段。 若要重新生成索引，必须删除所有字段存储、基于现有或修订的索引架构重新创建，然后使用推送到索引或从外部源提取的数据重新填充。 在开发期间重新生成索引很常见，但可能还需要重新生成生产级索引以适应结构化的更改，例如，向建议器添加复杂类型或添加字段。
 
 相较于使索引脱机的重新生成，“数据刷新”可作为后台任务运行。 你可以添加、删除和替换文档，这样对查询工作负载的干扰最小，不过查询通常需要更长时间才能完成。 有关更新索引内容的详细信息，请参阅[添加、更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。
 
@@ -33,7 +32,7 @@ ms.locfileid: "71719845"
 | 更新或删除索引中的分析器定义 | 无法删除或更改索引中的现有分析器配置（分析器、tokenizer、令牌筛选器或字符筛选器），除非重新生成整个索引。 |
 | 将字段添加到建议器 | 如果某个字段已存在，并且希望将其添加到[建议器](index-add-suggesters.md)构造，则必须重新生成索引。 |
 | 删除字段 | 若要以物理方式删除字段的所有跟踪，必须重新生成索引。 当即时重新生成无法实现时，可以修改应用程序代码来禁止访问“已删除”字段。 实际上，当你应用省略了相关字段的架构时，字段定义和内容会一直保留在索引中，直至下次重新生成。 |
-| 切换层 | 如果需要更多容量，Azure 门户中没有就地升级。 必须创建新的服务，而且必须在新服务上从头开始构建索引。 若要帮助自动执行此过程，你可以使用此[Azure 搜索 .net 示例](https://github.com/Azure-Samples/azure-search-dotnet-samples)存储库中的**索引备份-还原**示例代码。 此应用将索引备份到一系列 JSON 文件，然后在指定的搜索服务中重新创建该索引。|
+| 切换层 | 如果需要更多容量，Azure 门户中没有就地升级。 必须创建新的服务，而且必须在新服务上从头开始构建索引。 若要帮助自动执行此过程，你可以使用此[Azure 认知搜索 .net 示例](https://github.com/Azure-Samples/azure-search-dotnet-samples)存储库中的**索引备份-还原**示例代码。 此应用将索引备份到一系列 JSON 文件，然后在指定的搜索服务中重新创建该索引。|
 
 可以在不影响现有物理结构的情况下进行任何其他修改。 具体而言，以下更改不需要重新生成索引：
 
@@ -45,11 +44,11 @@ ms.locfileid: "71719845"
 + 添加、更新或删除 CORS 设置
 + 添加、更新或删除 synonymMaps
 
-添加新字段时，将在新字段中为已编制索引的现有文档提供 null 值。 将来刷新数据时，外部源数据中的值会替换 Azure 搜索添加的 null 值。 有关更新索引内容的详细信息，请参阅[添加、更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。
+添加新字段时，将在新字段中为已编制索引的现有文档提供 null 值。 将来的数据刷新时，来自外部源数据的值将替换 Azure 认知搜索添加的 null 值。 有关更新索引内容的详细信息，请参阅[添加、更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。
 
 ## <a name="partial-or-incremental-indexing"></a>部分或增量索引
 
-在 Azure 搜索中，选择删除或重新创建特定字段时，无法控制基于每个字段的索引。 同样，也没有用于[基于条件为文档编制索引](https://stackoverflow.com/questions/40539019/azure-search-what-is-the-best-way-to-update-a-batch-of-documents)的内置机制。 必须通过自定义代码满足针对条件驱动的索引的任何要求。
+在 Azure 认知搜索中，不能按字段控制索引，而是选择删除或重新创建特定字段。 同样，也没有用于[基于条件为文档编制索引](https://stackoverflow.com/questions/40539019/azure-search-what-is-the-best-way-to-update-a-batch-of-documents)的内置机制。 必须通过自定义代码满足针对条件驱动的索引的任何要求。
 
 不过，你可以轻松地执行索引中的“刷新文档”。 对于许多搜索解决方案，外部源数据是可变的，并且在源数据和搜索索引之间进行同步是常见做法。 在代码中，调用[添加、更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)操作或 [.NET 等效项](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexesoperationsextensions.createorupdate?view=azure-dotnet)来更新索引内容，或添加新字段的值。
 
@@ -79,7 +78,7 @@ ms.locfileid: "71719845"
 
 3. 在请求正文中，提供具有已更改或已修改字段定义的索引架构。 请求正文包含索引架构，以及用于计分概要文件、分析器、建议器和 CORS 选项的构造。 架构要求都记录在[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)中。
 
-4. 发送[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)请求以在 Azure 搜索上重新生成索引的物理表达式。 
+4. 发送[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)请求以重建 Azure 认知搜索上索引的物理表达式。 
 
 5. 通过外部源[使用文件加载索引](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。
 
@@ -88,13 +87,13 @@ ms.locfileid: "71719845"
 加载索引时，每个文档中所有唯一的标记化字词都会填充每个字段的反向索引，并映射到相应的文档 ID。 例如，在为酒店数据集编制索引时，为城市字段创建的反向索引可能包含西雅图、波特兰等的术语。 对于城市字段中包含西雅图或波特兰的文档来说，文档 ID 将随术语一同列出。 在任何[添加、更新或删除](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)操作中，都会相应地更新术语和文档 ID 列表。
 
 > [!NOTE]
-> 如果你有严格的 SLA 要求，可以考虑专门为此工作预配新服务，使开发和索引完全隔离于生产索引。 单独的服务在其自己的硬件上运行，这样消除了出现资源争用的可能性。 开发完成后，可以保留新索引，将查询重定向到新终结点和索引，也可以运行完成的代码以在原始 Azure 搜索服务上发布修订后的索引。 目前没有将即用型索引移至另一个服务的机制。
+> 如果你有严格的 SLA 要求，可以考虑专门为此工作预配新服务，使开发和索引完全隔离于生产索引。 单独的服务在其自己的硬件上运行，这样消除了出现资源争用的可能性。 开发完成后，您可以就地保留新索引，将查询重定向到新的终结点和索引，或者运行已完成的代码以在原始 Azure 认知搜索服务上发布修改后的索引。 目前没有将即用型索引移至另一个服务的机制。
 
 ## <a name="view-updates"></a>查看更新
 
 在加载第一个文档时就可以开始查询索引。 如果你知道文档的 ID，那么[查找文档 REST API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) 将返回特定的文档。 对于更大型的测试，应该等待索引完全加载，然后使用查询来验证你想看到的上下文。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 + [索引器概述](search-indexer-overview.md)
 + [大规模编制大数据集索引](search-howto-large-index.md)
@@ -103,4 +102,4 @@ ms.locfileid: "71719845"
 + [Azure Cosmos DB 索引器](search-howto-index-cosmosdb.md)
 + [Azure Blob 存储索引器](search-howto-indexing-azure-blob-storage.md)
 + [Azure 表存储索引器](search-howto-indexing-azure-tables.md)
-+ [Azure 搜索中的安全性](search-security-overview.md)
++ [Azure 认知搜索中的安全性](search-security-overview.md)

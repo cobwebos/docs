@@ -1,35 +1,29 @@
 ---
 title: Azure Monitor 中的 VMware 监视解决方案 |Microsoft Docs
 description: 了解 VMware 监视解决方案如何帮助管理日志和监视 ESXi 主机。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 16516639-cc1e-465c-a22f-022f3be297f1
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/04/2018
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: eac6a27c3bcf64462a9f3d9a57da6df736f30c78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/04/2018
+ms.openlocfilehash: dc453ad42312bb096aed1356d376b0906870a7b0
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61386023"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900609"
 ---
-# <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor 中的 VMware 监视 （已弃用） 解决方案
+# <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor 中的 VMware 监视（已弃用）解决方案
 
 ![VMware 符号](./media/vmware/vmware-symbol.png)
 
 > [!NOTE]
 > VMware 监视解决方案已弃用。  已安装该解决方案的客户可以继续使用它，但 VMware 监视无法添加到任何新的工作区。
 
-Azure Monitor 中的 VMware 监视解决方案是一种解决方案，可帮助您创建了集中式日志记录和针对大型 VMware 日志的监视方法。 本文介绍如何使用该解决方案在单个位置对 ESXi 主机进行故障排除、捕获和管理。 使用该解决方案，可以看到在单个位置中看到所有 ESXi 主机的详细数据。 可以看到通过 ESXi 主机日志提供的 VM 和 ESXi 主机的重要事件计数、状态及趋势。 可以通过查看和搜索集中式 ESXi 主机日志进行故障排除。 而且，可以基于日志搜索查询创建警报。
+Azure Monitor 中的 VMware 监视解决方案是一种解决方案，可帮助你创建针对大型 VMware 日志的集中式日志记录和监视方法。 本文介绍如何使用该解决方案在单个位置对 ESXi 主机进行故障排除、捕获和管理。 使用该解决方案，可以看到在单个位置中看到所有 ESXi 主机的详细数据。 可以看到通过 ESXi 主机日志提供的 VM 和 ESXi 主机的重要事件计数、状态及趋势。 可以通过查看和搜索集中式 ESXi 主机日志进行故障排除。 而且，可以基于日志搜索查询创建警报。
 
-解决方案使用 ESXi 主机的本机 syslog功能将数据推送到具有 Log Analytics 代理的目标 VM。 但是，该解决方案不会将文件写入到目标 VM 内的 syslog 中。 Log Analytics 代理打开端口 1514 并对它进行侦听。 在接收数据，Log Analytics 代理将数据推送到 Azure Monitor。
+解决方案使用 ESXi 主机的本机 syslog功能将数据推送到具有 Log Analytics 代理的目标 VM。 但是，该解决方案不会将文件写入到目标 VM 内的 syslog 中。 Log Analytics 代理打开端口 1514 并对它进行侦听。 接收到数据后，Log Analytics 代理会将数据推送到 Azure Monitor 中。
 
 ## <a name="install-and-configure-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
@@ -47,10 +41,10 @@ vSphere ESXi 主机 5.5、6.0 和 6.5
    ![系统日志流](./media/vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>配置系统日志收集
-1. 为 VSphere 设置 syslog 转发。 有关帮助设置 syslog 转发的详细信息，请参阅[在 ESXi 5.0 及更高版本上配置 syslog (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)。 转到“ESXi 主机配置”   > “软件”   > “高级设置”   > “Syslog”  。
+1. 为 VSphere 设置 syslog 转发。 有关帮助设置 syslog 转发的详细信息，请参阅[在 ESXi 5.0 及更高版本上配置 syslog (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)。 转到“ESXi 主机配置” > “软件” > “高级设置” > “Syslog”。
    ![vsphereconfig](./media/vmware/vsphere1.png)  
-1. 在“Syslog.global.logHost”  字段中，添加 Linux 服务器和端口号 *1514*。 例如，`tcp://hostname:1514` 或 `tcp://123.456.789.101:1514`
-1. 为 syslog 打开 ESXi 主机防火墙。 “ESXi 主机配置”   > “软件”   > “安全配置文件”   > “防火墙”  并打开“属性”  。  
+1. 在“Syslog.global.logHost”字段中，添加 Linux 服务器和端口号 *1514*。 例如，`tcp://hostname:1514` 或 `tcp://123.456.789.101:1514`
+1. 为 syslog 打开 ESXi 主机防火墙。 “ESXi 主机配置” > “软件” > “安全配置文件” > “防火墙”并打开“属性”。  
 
     ![vspherefw](./media/vmware/vsphere2.png)  
 
@@ -71,7 +65,7 @@ vSphere ESXi 主机 5.5、6.0 和 6.5
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
 
-1. 在 Azure 门户中执行的日志查询`VMware_CL`。 Azure Monitor 收集 syslog 数据时，它将保留 syslog 格式。 在该门户中，将捕获某些特定字段，如 *Hostname* 和 *ProcessName*。  
+1. 在 Azure 门户中，对 `VMware_CL`执行日志查询。 当 Azure Monitor 收集 syslog 数据时，它将保留 syslog 格式。 在该门户中，将捕获某些特定字段，如 *Hostname* 和 *ProcessName*。  
 
     ![type](./media/vmware/type.png)  
 
@@ -82,13 +76,13 @@ VMware 监视解决方案使用已启用的适用于 Linux 的 Log Analytics 代
 
 下表显示数据收集方法以及有关如何收集数据的其他详细信息。
 
-| 平台 | 适用于 Linux 的 Log Analytics 代理 | SCOM 代理 | Azure 存储 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
+| 平台 | 适用于 Linux 的 Log Analytics 代理 | SCOM 代理 | Azure 存储器 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |每隔 3 分钟 |
 
 下表显示了由 VMware 监视解决方案所收集的数据字段示例：
 
-| 字段名称 | 说明 |
+| 字段名称 | description |
 | --- | --- |
 | Device_s |VMware 存储设备 |
 | ESXIFailure_s |失败类型 |
@@ -115,7 +109,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 ![磁贴](./media/vmware/tile.png)
 
 #### <a name="navigate-the-dashboard-view"></a>导航仪表板视图
-在“VMware”  仪表板视图中，边栏选项卡的组织方式如下：
+在“VMware”仪表板视图中，边栏选项卡的组织方式如下：
 
 * 失败状态计数
 * 按事件计数排名靠前的主机
@@ -129,7 +123,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 
 单击任意边栏选项卡，打开 Log Analytics 搜索窗格，其中显示了特定于边栏选项卡的详细信息。
 
-在这里，可以编辑日志查询，以修改特定的解决方案。 有关创建日志查询的详细信息，请参阅[查找使用 Azure Monitor 中的日志查询的数据](../log-query/log-query-overview.md)。
+在此处，可以编辑日志查询以修改特定的内容。 有关创建日志查询的详细信息，请参阅[在 Azure Monitor 中使用日志查询查找数据](../log-query/log-query-overview.md)。
 
 #### <a name="find-esxi-host-events"></a>查找 ESXi 主机事件
 单台 ESXi 主机基于其进程会生成多个日志。 VMware 监视解决方案可对其进行集中管理，并总结事件计数。 此集中式视图可帮助你了解哪些 ESXi 主机有大量的事件，以及在环境中最常发生哪些事件。
@@ -138,7 +132,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 
 可以通过单击 ESXi 主机或事件类型进一步了解相关信息。
 
-单击 ESXi 主机名时，可查看该 ESXi 主机的信息。 如果要缩小包含事件类型的结果范围，将 `“ProcessName_s=EVENT TYPE”` 添加到搜索查询中。 可以在搜索筛选器中选择“ProcessName”  。 会缩小信息范围。
+单击 ESXi 主机名时，可查看该 ESXi 主机的信息。 如果要缩小包含事件类型的结果范围，将 `“ProcessName_s=EVENT TYPE”` 添加到搜索查询中。 可以在搜索筛选器中选择“ProcessName”。 会缩小信息范围。
 
 ![钻取](./media/vmware/eventhostdrilldown.png)
 
@@ -158,7 +152,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 
 
 #### <a name="save-queries"></a>保存查询
-保存的日志查询是在 Azure Monitor 中的标准功能，可帮助你记录你觉得有用的任何查询。 创建有用的查询后，单击“收藏夹”  将其保存下来。 已保存的查询可在以后从[我的仪表板](../learn/tutorial-logs-dashboards.md)页（可在其中创建你自己的自定义仪表板）轻松地对其进行重复使用。
+保存日志查询是 Azure Monitor 中的一项标准功能，可帮助您保留发现的任何有用查询。 创建有用的查询后，单击“收藏夹”将其保存下来。 已保存的查询可在以后从“[我的仪表板](../learn/tutorial-logs-dashboards.md)”页（可在其中创建自己的自定义仪表板）轻松地对其进行重复使用。
 
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 
@@ -179,7 +173,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 syslog 时间戳有一个 ESXi 主机 bug。 有关详细信息，请参阅 [VMware 知识库](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2111202)。 采用解决方法处理后，Hostd 应能够正常工作。
 
 ### <a name="can-i-have-multiple-esxi-hosts-forwarding-syslog-data-to-a-single-vm-with-omsagent"></a>是否可以拥有多个 ESXi 主机将 syslog 数据转发到具有 omsagent 的单个 VM？
-是的。 可以拥有多个 ESXi 主机将数据转发到具有 omsagent 的单个 VM。
+可以。 可以拥有多个 ESXi 主机将数据转发到具有 omsagent 的单个 VM。
 
 ### <a name="why-dont-i-see-data-flowing-into-log-analytics"></a>为什么看不到数据流入 Log Analytics？
 可能有多个原因造成此情况：
@@ -195,13 +189,13 @@ syslog 时间戳有一个 ESXi 主机 bug。 有关详细信息，请参阅 [VMw
   1. Log Analytics 侦听端口 1514。 若要验证其是否打开，请运行以下命令：`netstat -a | grep 1514`
   1. 应看到端口 `1514/tcp` 处于打开状态。 如果未看到，请验证 omsagent 是否正确安装。 如果看不到端口信息，则未在 VM 上打开 syslog 端口。
 
-    a. 使用 `ps -ef | grep oms` 验证 Log Analytics 代理是否正在运行。 如果未运行，通过运行 `sudo /opt/microsoft/omsagent/bin/service_control start` 命令启动此进程
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 使用 `ps -ef | grep oms` 验证 Log Analytics 代理是否正在运行。 如果未运行，通过运行 `sudo /opt/microsoft/omsagent/bin/service_control start` 命令启动此进程
 
      b. 打开 `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` 文件。
 
      c. 验证适当的用户和组设置是否有效，类似于：`-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
 
-     d. 如果文件不存在或用户和组设置有误，则通过[准备 Linux 服务器](#prepare-a-linux-server)采取纠正措施。
+     d.单击“下一步”。 如果文件不存在或用户和组设置有误，则通过[准备 Linux 服务器](#prepare-a-linux-server)采取纠正措施。
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 Log Analytics 中的[日志查询](../log-query/log-query-overview.md)可查看详细的 VMware 主机数据。

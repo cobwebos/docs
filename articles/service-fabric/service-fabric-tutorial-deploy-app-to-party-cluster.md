@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: d637b01eb9e4d1664def9eb537b810603eea18ea
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 4767f43171e8576fcf35ba7304c48b05b85745c4
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598808"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553576"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>教程：将 Service Fabric 应用程序部署到 Azure 中的群集
 
@@ -46,6 +46,9 @@ ms.locfileid: "68598808"
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [安装 Visual Studio 2019](https://www.visualstudio.com/)，并安装 **Azure 开发**以及 **ASP.NET 和 Web 开发**工作负荷。
 * [安装 Service Fabric SDK](service-fabric-get-started.md)。
+
+> [!NOTE]
+> 免费帐户可能不满足创建虚拟机的要求。 这会阻止完成本教程。
 
 ## <a name="download-the-voting-sample-application"></a>下载投票示例应用程序
 

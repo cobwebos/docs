@@ -1,21 +1,18 @@
 ---
 title: Azure Application Insights - 依赖项自动收集 | Microsoft Docs
 description: Application Insights 自动收集和可视化依赖项
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: reference
-ms.date: 10/16/2018
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 3ad2f4788a765366066023724772f5432d0d56eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 10/16/2018
+ms.openlocfilehash: 1d3259c32de7f937d4e5ac8e21c8cab60b9cc635
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60699199"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819169"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet 包
 
@@ -43,6 +40,22 @@ ms.locfileid: "60699199"
 | Microsoft.ApplicationInsights.PerfCounterCollector | 2.8.0 | Application Insights 性能计数器，可用于将性能收集器收集的数据发送到 Application Insights。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
 | Microsoft.ApplicationInsights.WindowsServer | 2.8.0 | Application Insights Windows Server NuGet 包可自动收集 .NET 应用程序的 Application Insights 遥测数据。 此包可用作 Application Insights 平台专用包的依赖包，也可用作平台专用包未涵盖的 .NET 应用程序独立包（例如用于 .NET 辅助角色的包）。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  |
 | Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.8.0 | 向 Application Insights Windows Server SDK 提供遥测渠道，此 SDK 将保留脱机方案中的遥测数据。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
+
+## <a name="common-packages-for-python-using-opencensus"></a>使用 OpenCensus 的 Python 的常用包
+| 包名称 | 稳定版本 | 描述 | 下载 |
+|-------------------------------|-----------------------|------------|----|
+| opencensus-azure | 1.0.0 | Application Insights 通过 OpenCensus Azure Monitor 下的 Python 应用程序。 | [下载包](https://pypi.org/project/opencensus-ext-azure/) |
+| opencensus-django | 0.7.2 | 此包提供与 Python [django](https://pypi.org/project/django/)库的集成。 | [下载包](https://pypi.org/project/opencensus-ext-django/) |
+| opencensus-flask | iisnode-inspector-0.7.3.dll | 此包提供与 Python [flask](https://pypi.org/project/flask/)库的集成。 | [下载包](https://pypi.org/project/opencensus-ext-flask/) |
+| opencensus-httplib | 0.7.2 | 此包提供与 Python [http.](https://docs.python.org/3/library/http.client.html) Python3 和[httplib](https://docs.python.org/2/library/httplib.html) for Python2 的集成。 | [下载包](https://pypi.org/project/opencensus-ext-httplib/) |
+| opencensus-未进行日志记录 | 0.1.0 | 此包丰富日志记录和跟踪数据。 | [下载包](https://pypi.org/project/opencensus-ext-logging/) |
+| opencensus-外部-mysql | 0.1.2 | 此包提供与 Python [mysql 连接器](https://pypi.org/project/mysql-connector/)库的集成。 | [下载包](https://pypi.org/project/opencensus-ext-mysql/) |
+| opencensus-postgresql | 0.1.2 | 此包提供与 Python [psycopg2](https://pypi.org/project/psycopg2/)库的集成。 | [下载包](https://pypi.org/project/opencensus-ext-postgresql/) |
+| opencensus-pymongo | 0.7.1 | 此包提供与 Python [pymongo](https://pypi.org/project/pymongo/)库的集成。 | [下载包](https://pypi.org/project/opencensus-ext-pymongo/) |
+| opencensus-pymysql | 0.1.2 | 此包提供与 Python [PyMySQL](https://pypi.org/project/PyMySQL/)库的集成。 | [下载包](https://pypi.org/project/opencensus-ext-pymysql/) |
+| opencensus-ext-棱锥图 | 0.7.1 | 此包提供与 Python[棱锥](https://pypi.org/project/pyramid/)库的集成。 | [下载包](https://pypi.org/project/opencensus-ext-pyramid/) |
+| opencensus-请求 | 0.7.2 | 此包提供与 Python[请求](https://pypi.org/project/requests/)库的集成。 | [下载包](https://pypi.org/project/opencensus-ext-requests/) |
+| opencensus-sqlalchemy | 0.1.2 | 此包提供与 Python [SQLAlchemy](https://pypi.org/project/SQLAlchemy/)库的集成。 | [下载包](https://pypi.org/project/opencensus-ext-sqlalchemy/) |
 
 ## <a name="listenerscollectorsappenders"></a>侦听器/收集器/追加器
 

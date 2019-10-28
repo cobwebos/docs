@@ -1,26 +1,21 @@
 ---
 title: 在 Azure Application Insights 中浏览指标 | Microsoft Docs
 description: 如何解释指标资源管理器上的图表，以及如何自定义指标资源管理器边栏选项卡。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/22/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 5c659ca2f40d47450227d16963499a6b27c9e313
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/22/2019
+ms.openlocfilehash: b0831ff500ba4cbe71dae6251fd960f6c96c0fe5
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60700564"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820788"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>在 Application Insights 中浏览指标
-[Application Insights][start] 中的指标是从应用程序遥测功能发送的度量值和事件计数。 它们可帮助检测性能问题，观察应用程序的用法趋势。 标准指标的范围很广泛，也可以创建自己的自定义指标和事件。
+[Application Insights][start]中的度量值是从应用程序发送的遥测数据的值和计数。 它们可帮助检测性能问题，观察应用程序的用法趋势。 标准指标的范围很广泛，也可以创建自己的自定义指标和事件。
 
 > [!NOTE]
 > 本文介绍目前已弃用并且最终将停用的经典指标资源管理器体验。 我们建议查看[本文](../platform/metrics-charts.md)描述的新体验。
@@ -31,7 +26,7 @@ ms.locfileid: "60700564"
 
 ![](./media/metrics-explorer/01-overview.png)
 
-可在 Application Insights 门户中的任何位置找到指标图表。 在大多数情况下，它们可以进行自定义，可以向边栏选项卡添加更多图表。 在“概览”边栏选项卡中，单击“浏览更详细的图表”（它们具有诸如“服务器”这类的标题），或单击“指标资源管理器”  以打开新边栏选项卡，可以在其中创建自定义图表。
+可在 Application Insights 门户中的任何位置找到指标图表。 在大多数情况下，它们可以进行自定义，可以向边栏选项卡添加更多图表。 在“概览”边栏选项卡中，单击“浏览更详细的图表”（它们具有诸如“服务器”这类的标题），或单击“指标资源管理器”以打开新边栏选项卡，可以在其中创建自定义图表。
 
 ## <a name="time-range"></a>时间范围
 可以在任何边栏选项卡上更改图表或网格覆盖的时间范围。
@@ -69,13 +64,13 @@ ms.locfileid: "60700564"
 
 ![在指标资源管理器中，选择“添加图表”](./media/metrics-explorer/04-add.png)
 
-在现有图表或新图表中选择“编辑”来编辑其显示内容： 
+在现有图表或新图表中选择“编辑”来编辑其显示内容：
 
 ![选择一个或多个指标](./media/metrics-explorer/08-select.png)
 
 可以在图表上显示多个指标，但是，可以一起显示的组合有一些限制。 只要选择一个指标，就会禁用其他一些指标。
 
-如果在应用中编写了[自定义指标][track]（对 TrackMetric 和 TrackEvent 的调用），此处会列出这些指标。
+如果将[自定义指标][track]编码到应用中（调用 TrackMetric 和 TrackEvent），它们将在此处列出。
 
 ## <a name="segment-your-data"></a>将数据分段
 可以根据属性拆分指标 - 例如，比较使用不同操作系统的客户端上的页面视图。
@@ -89,7 +84,7 @@ ms.locfileid: "60700564"
 >
 >
 
-如果在应用中编写了[自定义指标][track]并且这些指标包含属性值，可以在列表中选择该属性。
+如果对应用程序中的[自定义指标][track]进行编码，并且这些指标包含属性值，则可以在列表中选择属性。
 
 图表是否对分段的数据而言太小？ 调整图表高度：
 
@@ -136,9 +131,9 @@ ms.locfileid: "60700564"
 筛选器将应用到边栏选项卡上的所有图表。 如果要将不同的筛选器应用到不同的图表，请创建并保存不同的指标边栏选项卡。 如果需要，可将不同边栏选项卡中的图表固定到仪表板，以便并排查看这些图表。
 
 ### <a name="remove-bot-and-web-test-traffic"></a>删除 Bot 和 Web 测试流量
-使用筛选器“实际或综合流量”并选中“实际”。  
+使用筛选器“实际或综合流量”并选中“实际”。
 
-也可以按“综合流量的源”筛选。 
+也可以按“综合流量的源”筛选。
 
 ### <a name="to-add-properties-to-the-filter-list"></a>将属性添加到筛选列表
 想要根据自己选择的类别筛选遥测数据？ 例如，要将用户划分到不同的类别，并根据这些类别将数据分段。
@@ -178,7 +173,7 @@ ms.locfileid: "60700564"
 [详细了解警报][alerts]。
 
 
-## <a name="continuous-export"></a>连续导出
+## <a name="continuous-export"></a>持续导出
 如果想要连续导出数据以便在外部进行处理，请考虑使用[连续导出](../../azure-monitor/app/export-telemetry.md)。
 
 ### <a name="power-bi"></a>Power BI

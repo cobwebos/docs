@@ -1,6 +1,6 @@
 ---
 title: 在 Visual Studio 中查看 Azure 流分析作业
-description: 本文介绍如何在 Visual Studio 中查看和管理 Azure 流分析作业。
+description: 了解如何使用 Visual Studio 查看、启动和停止、测试连接、检查结果并导出 Azure 流分析作业。
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: ae532ed19c2273e43aa739e84d5a68cadb717b86
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: d73955436e651dfdb9db9d602481213fcc2cf502
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173025"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893549"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>使用 Visual Studio 查看 Azure 流分析作业
 
@@ -38,8 +38,6 @@ ms.locfileid: "70173025"
 
     ![流分析服务器资源管理器列表](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
-
-
 2. 展开作业节点，并双击“作业视图”节点打开作业视图。
     
    ![展开的作业节点](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-job-view-01.png)
@@ -50,13 +48,11 @@ ms.locfileid: "70173025"
     
    ![流分析作业控件](./media/stream-analytics-vs-tools/azure-stream-analytics-job-view-controls.png)
 
-
 ## <a name="check-job-results"></a>检查作业结果
 
 适用于 Visual Studio 的流分析工具目前支持 Azure Data Lake Storage 和 Blob 存储的输出预览。 若要查看结果，只需双击“作业视图”中作业关系图的输出节点并输入相应凭据即可。
 
    ![流分析作业 Blob 输出](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
-
 
 ## <a name="export-jobs-to-a-project"></a>将作业导出到项目
 

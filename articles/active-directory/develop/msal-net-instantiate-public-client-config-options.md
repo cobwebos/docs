@@ -1,6 +1,7 @@
 ---
-title: 使用选项（适用于 .NET 的 Microsoft 身份验证库）实例化公共客户端应用 | Azure
-description: 了解如何通过适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 使用配置选项实例化公共客户端应用程序。
+title: 使用选项实例化公用客户端应用（适用于 .NET 的 Microsoft 身份验证库）
+titleSuffix: Microsoft identity platform
+description: 了解如何使用用于 .NET 的 Microsoft 身份验证库（MSAL.NET）的配置选项实例化公用客户端应用程序。
 services: active-directory
 documentationcenter: dev-center-name
 author: TylerMSFT
@@ -17,26 +18,26 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1311e047b63cc9b5cccc785fbcd118db29f7c4bd
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: bdc6d65d811c09ffae94fe6394f8ae7e61cf0a6f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532614"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802862"
 ---
-# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>通过 MSAL.NET 使用配置选项实例化公共客户端应用程序
+# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>使用 MSAL.NET 的配置选项实例化公用客户端应用程序
 
-本文介绍如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 实例化[公共客户端应用程序](msal-client-applications.md)。  应用程序使用设置文件中定义的配置选项进行实例化。
+本文介绍如何使用适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）实例化[公用客户端应用程序](msal-client-applications.md)。  使用在设置文件中定义的配置选项对应用程序进行实例化。
 
-在初始化应用程序之前，首先需要[注册](quickstart-register-app.md)它，以便应用可以与 Microsoft 标识平台集成。 注册后，可能需要以下信息（可在 Azure 门户中找到）：
+在初始化应用程序之前，首先需要[注册](quickstart-register-app.md)它，以便您的应用程序可以与 Microsoft 标识平台集成。 注册后，你可能需要以下信息（可在 Azure 门户中找到）：
 
-- 客户端 ID（表示 GUID 的字符串）
-- 标识提供者 URL（为实例命名）和应用程序的登录受众。 这两个参数统称为颁发机构。
-- 如果你仅在为组织编写业务线应用程序（也称为单租户应用程序），则为租户 ID。
-- 对于 Web 应用，有时对于公共客户端应用（特别是当你的应用需要使用中转站时），还将需要设置 redirectUri，标识提供者将在其中使用安全令牌联系你的应用程序。
+- 客户端 ID （表示 GUID 的字符串）
+- 应用程序的标识提供程序 URL （名为实例）和登录受众。 这两个参数统称为颁发机构。
+- 如果你只是为你的组织编写一个业务线应用程序（也称为单租户应用程序），则租户 ID。
+- 对于 web 应用，有时用于公共客户端应用程序（特别是当你的应用程序需要使用代理时），你还将设置 redirectUri，其中标识提供程序将使用安全令牌联系回你的应用程序。
 
 
-.NET Core 控制台应用程序可以具有以下 *appsettings.json* 配置文件：
+.NET Core 控制台应用程序可以具有以下*appsettings*配置文件：
 
 ```json
 {
@@ -94,7 +95,7 @@ public class SampleConfiguration
 }
 ```
 
-以下代码使用设置文件中的配置创建应用程序：
+下面的代码使用设置文件中的配置创建应用程序：
 
 ```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");

@@ -1,30 +1,25 @@
 ---
 title: 监视 Linux 上 Java Web 应用的性能 - Azure | Microsoft Docs
 description: 通过 Application Insights 的 CollectD 插件监视 Java 网站的扩展应用程序性能。
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 40c68f45-197a-4624-bf89-541eb7323002
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/14/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: c6e947dfed3169f346f43ab08225056815e8b487
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 03/14/2019
+ms.openlocfilehash: 6c74684ac45a040be154a1e6406c1e7a5e0dd253
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061200"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817151"
 ---
-# <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中的 Linux 性能指标
+# <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中 Linux 性能指标
 
 
 若要浏览 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中 Linux 系统性能指标，请安装 [collectd](https://collectd.org/) 及其 Application Insights 插件。 此开放源解决方案收集了各种系统和网络统计信息。
 
-如果[已通过 Application Insights 检测 Java Web 服务][java]，则通常会使用 collectd。 它可提供更多数据，有助于增强应用性能或诊断问题。 
+通常，如果已使用[Application Insights 检测了 Java web 服务][java]，则会使用 collectd。 它可提供更多数据，有助于增强应用性能或诊断问题。 
 
 ## <a name="get-your-instrumentation-key"></a>获取检测密钥
 在 [Microsoft Azure 门户](https://portal.azure.com)中，打开要显示数据的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 资源。 （或[创建新资源](../../azure-monitor/app/create-new-resource.md )。）
@@ -91,7 +86,7 @@ ms.locfileid: "67061200"
 根据其[手册](https://collectd.org/wiki/index.php/First_steps)重启 collectd。
 
 ## <a name="view-the-data-in-application-insights"></a>查看 Application Insights 中的数据
-在 Application Insights 资源中，打开[指标和添加图表][metrics]，选择要从“自定义”类别查看的指标。
+在 Application Insights 资源中，打开[指标并添加图表，并][metrics]从自定义类别中选择要查看的度量值。
 
 默认情况下，会从收集指标的所有主机中聚合指标。 要查看每个主机的指标，在“图表”详细信息边栏选项卡中，打开“分组”，并选择按 CollectD-Host 分组。
 
@@ -103,7 +98,7 @@ ms.locfileid: "67061200"
 * 编辑配置文件。 
 * 在 `<Plugin ApplicationInsightsWriter>` 中，添加如下指令行：
 
-| 指令 | 效果 |
+| 指令 | 作用 |
 | --- | --- |
 | `Exclude disk` |排除由 `disk` 插件收集的所有数据 |
 | `Exclude disk:read,write` |排除 `disk` 插件中名为 `read` 和 `write` 的源。 |
@@ -124,7 +119,7 @@ ms.locfileid: "67061200"
 
 Application Insights 写入插件与某些读取插件不兼容。 Application Insights 插件需要浮点数时，有些插件有时会发送“NaN”。
 
-故障描述：collectd 日志显示包括“AI: ...SyntaxError:意外的令牌 N”的错误。
+症状： collectd 日志显示的错误包括 "AI： .。。SyntaxError：意外的标记 N "。
 
 解决方法：排除由问题写入插件收集的数据。 
 

@@ -3,38 +3,39 @@ title: Azure Service Fabric CLI - sfctl replica | Microsoft Docs
 description: 介绍 Service Fabric CLI sfctl replica 命令。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: d5563dc2d1b2caaa85645b037d6bf93426cc0b23
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 34e53311e5338e540c1d987896112de39890de3b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035266"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901057"
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 管理属于服务分区的副本。
 
 ## <a name="commands"></a>命令
 
-|Command|描述|
+|命令|描述|
 | --- | --- |
 | deployed | 获取部署在 Service Fabric 节点上的副本的详细信息。 |
 | deployed-list | 获取部署在 Service Fabric 节点上的副本的列表。 |
-| 运行状况 | 获取 Service Fabric 有状态服务副本或无状态服务实例的运行状况。 |
-| 信息 | 获取有关 Service Fabric 分区的副本的信息。 |
-| 列表 | 获取有关 Service Fabric 服务分区的副本的信息。 |
+| 健康 | 获取 Service Fabric 有状态服务副本或无状态服务实例的运行状况。 |
+| info | 获取有关 Service Fabric 分区的副本的信息。 |
+| list | 获取有关 Service Fabric 服务分区的副本的信息。 |
 | remove | 删除节点上运行的服务副本。 |
 | report-health | 发送有关 Service Fabric 副本的运行状况报告。 |
-| 重新启动 | 重启节点上运行的持久性服务的服务副本。 |
+| restart | 重启节点上运行的持久性服务的服务副本。 |
 
 ## <a name="sfctl-replica-deployed"></a>sfctl replica deployed
 获取部署在 Service Fabric 节点上的副本的详细信息。
@@ -48,7 +49,7 @@ ms.locfileid: "69035266"
 | --node-name    [必需] | 节点的名称。 |
 | --partition-id [必需] | 分区的标识。 |
 | --replica-id   [必需] | 副本的标识符。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -69,11 +70,11 @@ ms.locfileid: "69035266"
 
 |参数|描述|
 | --- | --- |
-| --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
+| --application-id [必需] | 应用程序标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --node-name [必需] | 节点的名称。 |
 | --partition-id | 分区的标识。 |
 | --service-manifest-name | 在 Service Fabric 群集中注册为应用程序类型一部分的服务清单的名称。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -96,8 +97,8 @@ ms.locfileid: "69035266"
 | --- | --- |
 | --partition-id    [必需] | 分区的标识。 |
 | --replica-id      [必需] | 副本的标识符。 |
-| --events-health-state-filter | 用于根据运行状况筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --events-health-state-filter | 用于根据运行状况筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。  <br> - Default - 默认值。 匹配任意 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
+| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -120,7 +121,7 @@ ms.locfileid: "69035266"
 | --- | --- |
 | --partition-id [必需] | 分区的标识。 |
 | --replica-id   [必需] | 副本的标识符。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -142,8 +143,8 @@ GetReplicas 终结点返回有关指定分区的副本的信息。 响应包括 
 |参数|描述|
 | --- | --- |
 | --partition-id [必需] | 分区的标识。 |
-| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
+| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -168,7 +169,7 @@ GetReplicas 终结点返回有关指定分区的副本的信息。 响应包括 
 | --partition-id [必需] | 分区的标识。 |
 | --replica-id   [必需] | 副本的标识符。 |
 | --force-remove | 强制删除 Service Fabric 应用程序或服务，跳过正常关闭序列。 若因服务代码中的问题而无法正常关闭副本，导致删除应用程序或服务操作超时，可使用此参数强制删除该应用程序或服务。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -198,8 +199,8 @@ GetReplicas 终结点返回有关指定分区的副本的信息。 响应包括 
 | --immediate | 一个用于指示是否应立即发送报告的标志。 <br><br> 运行状况报告将发送到 Service Fabric 网关应用程序，后者会将其转发到运行状况存储。 如果 Immediate 设置为 true，则报告将立即从 HTTP 网关发送至运行状况存储，而无论 HTTP 网关应用程序使用的 Fabric 客户端设置如何。 这对于应尽快发送的关键报告十分有用。 由于计时和其他情况，发送报告可能仍会失败，例如，在 HTTP 网关已关闭或消息无法到达网关的情况下。 如果 Immediate 设置为 false，则报告将基于来自 HTTP 网关的运行状况客户端设置发送。 因此，系统将根据 HealthReportSendInterval 配置对其进行批处理。 这是建议的设置，因为它可让运行状况客户端优化发往运行状况存储的运行状况报告消息以及运行状况报告处理。 默认情况下，报告不立即发送。 |
 | --remove-when-expired | 该值指示是否在报告过期时从运行状况存储删除该报告。 <br><br> 如果设置为 true，报告在过期后将从运行状况存储中删除。 如果设置为 false，报告在过期时将被视为错误。 此属性的值在默认情况下为 false。 当客户端定期报告时，它们应将 RemoveWhenExpired 设置为 false（默认值）。 这样，如果报告器有问题（例如死锁）并且无法报告，那么在运行状况报告过期时该实体就会被评估为处于错误状态。 这会将该实体标记为处于“Error”运行状况状态。 |
 | --sequence-number | 此运行状况报告的序列号（采用数字字符串形式）。 <br><br> 报告序列号由运行状况存储用来检测过时的报告。 如果未指定，序列号将在报告被添加时由运行状况客户端自动生成。 |
-| --service-kind | 为其报告运行状况的服务副本的类型（无状态或有状态）。 以下是可能的值：“Stateless”、“Stateful”。  默认值\: Stateful。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --service-kind | 为其报告运行状况的服务副本的类型（无状态或有状态）。 以下是可能的值：“Stateless”、“Stateful”。  默认值：Stateful。 |
+| --timeout -t | 默认值\: 60。 |
 | --ttl | 此运行状况报告保持有效的持续时间。 此字段将 ISO8601 格式用于指定该持续时间。 <br><br> 当客户端定期报告时，它们应以高于生存时间的频率发送报告。 如果客户端以非定期的方式报告，它们可以将生存时间设置为无限。 生存时间过期时，包含运行状况信息的运行状况事件将从运行状况存储中删除（如果 RemoveWhenExpired 为 true），或者将会评估为处于错误状态（如果 RemoveWhenExpired 为 false）。 如果未指定，生存时间将默认为无限值。 |
 
 ### <a name="global-arguments"></a>全局参数
@@ -224,7 +225,7 @@ GetReplicas 终结点返回有关指定分区的副本的信息。 响应包括 
 | --node-name    [必需] | 节点的名称。 |
 | --partition-id [必需] | 分区的标识。 |
 | --replica-id   [必需] | 副本的标识符。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 

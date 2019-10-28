@@ -4,19 +4,19 @@ description: 了解 Azure AD 密码保护常见故障排除
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 690d49a94ff4f516e24494622ca378eb0794fee9
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 62395b0b6f1ed152292106a774c1e2f7c6d4f11f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71314933"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893285"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD 密码保护故障排除
 
@@ -40,7 +40,7 @@ ms.locfileid: "71314933"
 
 1. 代理主机正在阻止对代理服务侦听的 RPC 终结点（动态或静态）的访问
 
-   Azure AD 密码保护代理安装程序会自动创建 Windows 防火墙入站规则，该规则允许访问 Azure AD 密码保护代理服务侦听的任何入站端口。 如果以后删除或禁用此规则，DC 代理将无法与代理服务通信。 如果已禁用内置 Windows 防火墙而不是另一个防火墙产品，则必须将该防火墙配置为允许 Azure AD 密码保护代理服务访问所侦听的任何入站端口。 如果代理服务已配置为侦听特定的静态 RPC 端口（使用`Set-AzureADPasswordProtectionProxyConfiguration` cmdlet），则此配置可能更具体。
+   Azure AD 密码保护代理安装程序会自动创建 Windows 防火墙入站规则，该规则允许访问 Azure AD 密码保护代理服务侦听的任何入站端口。 如果以后删除或禁用此规则，DC 代理将无法与代理服务通信。 如果已禁用内置 Windows 防火墙而不是另一个防火墙产品，则必须将该防火墙配置为允许 Azure AD 密码保护代理服务访问所侦听的任何入站端口。 如果已将代理服务配置为侦听特定的静态 RPC 端口（使用 `Set-AzureADPasswordProtectionProxyConfiguration` cmdlet），则此配置可能更具体。
 
 1. 代理主机未配置为允许域控制器登录到计算机。 此行为是通过 "从网络访问此计算机" 用户权限分配来控制的。 林中所有域中的所有域控制器都必须被授予此权限。 此设置通常会被约束为更大的网络强化工作量。
 
@@ -50,9 +50,9 @@ ms.locfileid: "71314933"
 
 1. 确保为同一 Azure 租户注册了林和所有代理服务器。
 
-   可以通过运行`Get-AzureADPasswordProtectionProxy`和 PowerShell cmdlet 来检查此`Get-AzureADPasswordProtectionDCAgent`要求，并比较每个`AzureTenant`返回项的属性。 对于正确的操作，报告的租户名称在所有 DC 代理和代理服务器上必须相同。
+   你可以通过运行 `Get-AzureADPasswordProtectionProxy` 和 `Get-AzureADPasswordProtectionDCAgent` PowerShell cmdlet 来检查此要求，然后比较每个返回项的 `AzureTenant` 属性。 对于正确的操作，报告的租户名称在所有 DC 代理和代理服务器上必须相同。
 
-   如果存在 Azure 租户注册不匹配条件，可以根据需要运行`Register-AzureADPasswordProtectionProxy`和/或`Register-AzureADPasswordProtectionForest` PowerShell cmdlet 来解决此问题，并确保使用同一 Azure 租户中的凭据进行所有注册。
+   如果存在 Azure 租户注册不匹配条件，可以根据需要运行 `Register-AzureADPasswordProtectionProxy` 和/或 `Register-AzureADPasswordProtectionForest` PowerShell cmdlet 来解决此问题，并确保使用同一 Azure 租户中的凭据进行所有注册。
 
 ## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>DC 代理无法加密或解密密码策略文件
 
@@ -166,7 +166,7 @@ No further messages will be logged until after the next reboot.
 > [!IMPORTANT]
 > Microsoft 建议将过期的公共预览版 DC 代理立即升级到最新版本。
 
-若要在需要升级的环境中发现 DC 代理，一种简单的方法是运行`Get-AzureADPasswordProtectionDCAgent` cmdlet，例如：
+若要在需要升级的环境中发现 DC 代理，一种简单的方法是运行 `Get-AzureADPasswordProtectionDCAgent` cmdlet，例如：
 
 ```powershell
 PS C:\> Get-AzureADPasswordProtectionDCAgent
@@ -187,7 +187,7 @@ PS C:\> $LatestAzureADPasswordProtectionVersion = "1.2.125.0"
 PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion -lt $LatestAzureADPasswordProtectionVersion}
 ```
 
-在任何版本中，Azure AD 密码保护代理软件不受时间限制。 Microsoft 仍建议将 DC 和代理代理发布到最新版本。 `Get-AzureADPasswordProtectionProxy` Cmdlet 可用于查找需要升级的代理程序，类似于针对 DC 代理的示例。
+在任何版本中，Azure AD 密码保护代理软件不受时间限制。 Microsoft 仍建议将 DC 和代理代理发布到最新版本。 `Get-AzureADPasswordProtectionProxy` cmdlet 可用于查找需要升级的代理程序，类似于针对 DC 代理的示例。
 
 有关具体的升级过程的详细信息，请参阅[升级 DC 代理](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent)和[升级代理程序](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent)。
 

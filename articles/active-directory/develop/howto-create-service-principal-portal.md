@@ -1,5 +1,6 @@
 ---
-title: 在门户中为 Azure 应用创建标识 | Microsoft 文档
+title: 在门户中为 Azure 应用创建标识
+titleSuffix: Microsoft identity platform
 description: 介绍如何创建新的 Azure Active Directory 应用程序和服务主体，在 Azure 资源管理器中将此服务主体与基于角色的访问控制配合使用可以管理对资源的访问权限。
 services: active-directory
 documentationcenter: na
@@ -16,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9f8163a3695260234107ad41cc7be125adc9091
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: d60c1a01f3a4ca3a191ddb322def7d86a316c58f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72324724"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803334"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
@@ -126,7 +127,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 1. 在[Azure 门户](https://portal.azure.com)中，导航到密钥保管库，然后选择 "**访问策略**"。  
 1. 选择 "**添加访问策略**"，然后选择要授予应用程序的密钥、机密和证书权限。  选择之前创建的服务主体。
 1. 选择 "**添加**" 以添加访问策略，然后选择 "**保存**" 以提交更改。
-    @no__t 0Add 访问策略 @ no__t-1
+    ![添加访问策略](./media/howto-create-service-principal-portal/add-access-policy.png)
 
 ## <a name="required-permissions"></a>所需的权限
 

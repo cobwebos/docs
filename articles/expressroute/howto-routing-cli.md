@@ -1,5 +1,5 @@
 ---
-title: 如何配置线路的对等互连 - ExpresssRoute：Azure CLI | Microsoft Docs
+title: 如何为线路 ExpresssRoute 配置对等互连： Azure CLI |Microsoft Docs
 description: 本文介绍如何创建和预配 ExpressRoute 线路的专用、公共和 Microsoft 对等互连。 本文还介绍了如何检查状态，以及如何更新或删除线路的对等互连。
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 3f27e10c47b84b6f037c0d9422e9fba40e0315f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d6b361bf7e1b18c44719a8cdbe2e958ac63006d
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64717051"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965766"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>使用 CLI 创建和修改 ExpressRoute 线路的对等互连
 
@@ -44,7 +44,7 @@ ms.locfileid: "64717051"
 本文介绍如何为 ExpressRoute 线路创建、获取、更新和删除 Microsoft 对等互连配置。
 
 > [!IMPORTANT]
-> 在 2017 年 8 月 1 日之前配置的 ExpressRoute 线路的 Microsoft 对等互连会通过 Microsoft 对等互连播发所有服务前缀，即使未定义路由筛选器。 在 2017 年 8 月 1 日或之后配置的 ExpressRoute 线路的 Microsoft 对等互连的任何前缀只有在路由筛选器附加到线路之后才会播发。 有关详细信息，请参阅[配置用于 Microsoft 对等互连的路由筛选器](how-to-routefilter-powershell.md)。
+> 在 2017 年 8 月 1 日之前配置的 ExpressRoute 线路的 Microsoft 对等互连会通过 Microsoft 对等互连播发所有服务前缀，即使未定义路由筛选器。 在 2017 年 8 月 1 日或之后配置的 ExpressRoute 线路的 Microsoft 对等互连的任何前缀只在将路由筛选器附加到线路之后才会播发。 有关详细信息，请参阅[配置用于 Microsoft 对等互连的路由筛选器](how-to-routefilter-powershell.md)。
 > 
 > 
 
@@ -107,7 +107,7 @@ ms.locfileid: "64717051"
    * 用于建立此对等互连的有效 VLAN ID。 请确保线路中没有其他对等互连使用同一个 VLAN ID。
    * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
    * 播发的前缀：必须提供要通过 BGP 会话播发的所有前缀列表。 只接受公共 IP 地址前缀。 如果打算发送一组前缀，可以发送逗号分隔列表。 这些前缀必须已在 RIR/IRR 中注册。
-   * “可选”- 客户 ASN  ：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。
+   * **可选** - 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。
    * 路由注册表名称：可以指定 AS 编号和前缀要注册到的 RIR/IRR。
    * **可选** - MD5 哈希（如果选择使用）。
 
@@ -124,6 +124,12 @@ ms.locfileid: "64717051"
 ```azurecli-interactive
 az network express-route peering show -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzureMicrosoftPeering
 ```
+> [!IMPORTANT]
+> Microsoft 将验证指定的 "播发公共前缀" 和 "对等 ASN" （或 "客户 ASN"）是否已在 Internet 路由注册表中分配给你。 如果要从另一个实体获取公共前缀，并且没有在路由注册表中记录分配，则自动验证不会完成，需要手动验证。 如果自动验证失败，则会在上述命令的输出中看到 "AdvertisedPublicPrefixesState" 作为 "需要验证"。 
+> 
+> 如果看到消息 "需要验证"，则收集显示公共前缀的文档会被列为路由注册表中前缀的所有者的实体分配给你的组织，并提交这些文档以供手动验证按如下所示打开支持票证。 
+> 
+>
 
 输出类似于以下示例：
 
@@ -324,7 +330,7 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
 本文介绍如何为 ExpressRoute 线路创建、获取、更新和删除 Azure 公共对等互连配置。
 
 > [!Note]
-> Azure 公共对等互连不推荐使用适用于新线路。 有关详细信息，请参阅[ExpressRoute 对等互连](expressroute-circuit-peerings.md)。
+> 新线路不推荐使用 Azure 公共对等互连。 有关详细信息，请参阅[ExpressRoute 对等互连](expressroute-circuit-peerings.md)。
 >
 
 ### <a name="to-create-azure-public-peering"></a>创建 Azure 公共对等互连

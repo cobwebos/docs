@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: fb57d69b4969bcbf66717a8ca29ede23f2ed8e43
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 30ffcd9bdb8170777c245d95b0c07198a34c5464
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429132"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72556097"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Web 终结点
 
@@ -27,7 +27,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 
 
 完成后即可看到事件数据已发送到 Web 应用。
 
-![使用 Azure 事件网格查看器来验证是否已发送事件数据](./media/custom-event-quickstart/azure-event-grid-viewer-displays-event-data.png)
+![在 Azure 事件网格查看器中查看结果](./media/custom-event-quickstart/azure-event-grid-viewer-record-inserted-event.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -98,7 +98,8 @@ az eventgrid event-subscription create \
 
 再次查看 Web 应用，并注意现已向该应用发送了订阅验证事件。 选择眼睛图标以展开事件数据。 事件网格发送验证事件，以便终结点可以验证它是否想要接收事件数据。 Web 应用包含用于验证订阅的代码。
 
-![在 Azure 事件网格查看器中查看订阅验证代码](./media/custom-event-quickstart/view-subscription-validation-code-in-azure-event-grid-viewer.png)
+![在 Azure 事件网格查看器中查看订阅事件](./media/custom-event-quickstart/azure-event-grid-viewer-subscription-validation-event.png)
+
 
 ## <a name="send-an-event-to-your-custom-topic"></a>向自定义主题发送事件
 

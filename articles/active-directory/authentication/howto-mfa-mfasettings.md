@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf732ec97a57a5bc1d2bcaa39e5fd14a305504d0
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 62ceff25b022866e47e6fdd488b01dd647cf550f
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075503"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808205"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 
-本文介绍如何在 Azure 门户中管理多重身份验证设置。 本文涵盖了各种主题，可帮助你充分利用 Azure 多重身份验证。 并非所有版本的 Azure 多重身份验证都提供所有这些功能。
+本文介绍如何在 Azure 门户中管理多重身份验证设置。 本文涵盖了各种主题，可帮助你充分利用 Azure 多重身份验证。 并非所有功能都可在每个版本的 Azure 多重身份验证中使用。
 
 通过浏览到**Azure Active Directory** > **MFA**，你可以从 Azure 门户访问与 Azure 多重身份验证相关的设置。
 
@@ -30,7 +30,7 @@ ms.locfileid: "71075503"
 
 这些设置中的一部分适用于 MFA 服务器和/或 Azure MFA。
 
-| 功能 | 描述 |
+| Feature | 描述 |
 | ------- | ----------- |
 | 帐户锁定 | 如果连续有过多的身份验证尝试遭到拒绝，则将暂时在多重身份验证服务中锁定帐户。 此功能仅适用于输入 PIN 进行身份验证的用户。 （MFA 服务器） |
 | [阻止/解除阻止用户](#block-and-unblock-users) | 用于阻止特定用户接收多重身份验证请求。 自动拒绝任何针对受阻止用户的身份验证尝试。 用户将在阻止日起 90 天内受到阻止。 |
@@ -38,13 +38,13 @@ ms.locfileid: "71075503"
 | [通知](#notifications) | 允许通过 MFA 服务器来通知事件。 |
 | [OATH 令牌](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | 用在基于云的 Azure MFA 环境中，为用户托管 OATH 令牌。 |
 | [电话呼叫设置](#phone-call-settings) | 为云和本地环境配置与电话呼叫和问候语相关的设置。 |
-| 提供程序 | 此项会显示任何现有的与帐户相关联的身份验证提供程序。 自 2018 年 9 月 1 日起，可能无法创建新的身份验证提供程序 |
+| 提供商 | 此项会显示任何现有的与帐户相关联的身份验证提供程序。 自 2018 年 9 月 1 日起，可能无法创建新的身份验证提供程序 |
 
 ## <a name="manage-mfa-server"></a>管理 MFA 服务器
 
 此部分的设置仅适用于 MFA 服务器。
 
-| 功能 | 描述 |
+| Feature | 描述 |
 | ------- | ----------- |
 | 服务器设置 | 下载 MFA 服务器并生成激活凭据，以便初始化环境 |
 | [免验证一次](#one-time-bypass) | 在有限的时间内，允许用户在不执行双重验证的情况下进行身份验证。 |
@@ -64,7 +64,7 @@ ms.locfileid: "71075503"
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 浏览到“Azure Active Directory” > “MFA” > “阻止/解除阻止用户”。
 3. 选择“添加”以阻止用户。
-4. 选择“复制组”。 将被阻止的用户的用户名输入**为\@用户名 domain.com**。 在“原因”字段输入注释。
+4. 选择“复制组”。 输入被阻止的用户的用户名作为**用户名\@domain.com**。 在 "**原因**" 字段中输入注释。
 5. 选择“添加”，完成阻止用户操作。
 
 ### <a name="unblock-a-user"></a>解除阻止用户
@@ -84,12 +84,12 @@ ms.locfileid: "71075503"
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 浏览到“Azure Active Directory” > “MFA” > “欺诈警报”。
 3. 将“允许用户提交欺诈警报”设置为“打开”。
-4. 选择**保存**。
+4. 选择“保存”。
 
 ### <a name="configuration-options"></a>配置选项
 
-* **在收到欺诈报告时阻止用户**：如果用户报告了欺诈，那么他们的帐户将被阻止 90 天，或者直到管理员解除阻止他们的帐户。 管理员可以使用登录报表查看登录并采取相应的操作阻止将来的欺诈。 然后管理员可以[解除阻止](#unblock-a-user)用户帐户。
-* **初始问候期间报告欺诈的代码**：当用户接收电话呼叫来执行双重验证时，他们通常按 **#** 来确认其登录。 如果他们想要报告欺诈，则可在按 **#** 之前输入代码。 此代码默认为 **0**，但可以自定义此代码。
+* **报告欺诈时阻止用户** - 如果用户报告欺诈，那么他们的帐户将被阻止 90 天，或者直到管理员解除阻止他们的帐户。 管理员可以使用登录报表查看登录并采取相应的操作阻止将来的欺诈。 然后管理员可以[解除阻止](#unblock-a-user)用户帐户。
+* **初始问候期间报告欺诈的代码** - 当用户接收电话呼叫来执行双重验证时，他们通常按 **#** 来确认其登录。 如果他们想要报告欺诈，则可在按 **#** 之前输入代码。 此代码默认为 **0**，但可以自定义此代码。
 
    >[!NOTE]
    >Microsoft 的默认问候语音将指示用户按 0# 以提交欺诈警报。 如果要使用 0 以外的代码，请录制并上传自定义语音问候，为用户提供相应指示。
@@ -98,7 +98,7 @@ ms.locfileid: "71075503"
 ### <a name="view-fraud-reports"></a>查看欺诈报告
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“Azure Active Directory” > “登录”。标准 Azure AD 登录报告现包含欺诈报告。
+2. 选择**Azure Active Directory** > **登录**。欺诈报表现在是标准 Azure AD 登录报表的一部分。
 
 ## <a name="notifications"></a>通知
 
@@ -157,23 +157,23 @@ ms.locfileid: "71075503"
 | 消息名称 | 脚本 |
 | --- | --- |
 | 身份验证成功 | 已成功验证你的登录。 不用. |
-| 分机提示 | 感谢您使用 Microsoft 的登录验证系统。 请按井号键继续。 |
+| 扩展提示 | 感谢您使用 Microsoft 的登录验证系统。 请按井号键继续。 |
 | 欺诈确认 | 已提交欺诈警报。 若要解除阻止你的帐户，请联系你公司的 IT 支持人员。 |
 | 欺诈问候语（标准） | 感谢您使用 Microsoft 的登录验证系统。 请按井号键完成验证。 如果未启动此验证，则可能有人尝试访问你的帐户。 请按零号以提交欺诈警报。 这会通知您公司的 IT 团队，并阻止进一步的验证尝试。 |
 | 已提交欺诈警报。 | 若要解除阻止你的帐户，请联系你公司的 IT 支持人员。 |
 | 激活 | 感谢您使用 Microsoft 的登录验证系统。 请按井号键完成验证。 |
-| 被拒身份验证重试 | 验证被拒绝。 |
+| 已拒绝身份验证重试 | 验证被拒绝。 |
 | 重试（标准） | 感谢您使用 Microsoft 的登录验证系统。 请按井号键完成验证。 |
 | 问候语（标准） | 感谢您使用 Microsoft 的登录验证系统。 请按井号键完成验证。 |
 | 问候语（PIN） | 感谢您使用 Microsoft 的登录验证系统。 请输入你的 PIN，后跟井号键来完成验证。 |
 | 欺诈问候语（PIN） | 感谢您使用 Microsoft 的登录验证系统。  请输入你的 PIN，后跟井号键来完成验证。 如果未启动此验证，则可能有人尝试访问你的帐户。 请按零号以提交欺诈警报。 这会通知您公司的 IT 团队，并阻止进一步的验证尝试。 |
 | 重试（PIN） | 感谢您使用 Microsoft 的登录验证系统。 请输入你的 PIN，后跟井号键来完成验证。 |
-| 数字之后的分机提示 | 如果已在此扩展中，请按井号键继续。 |
+| 数字后的扩展提示 | 如果已在此扩展中，请按井号键继续。 |
 | 身份验证被拒绝 | 很抱歉，我们此时无法登录。 请稍后重试。 |
 | 激活问候语（标准） | 感谢您使用 Microsoft 的登录验证系统。 请按井号键完成验证。 |
 | 激活重试（标准） | 感谢您使用 Microsoft 的登录验证系统。 请按井号键完成验证。 |
 | 激活问候语（PIN） | 感谢您使用 Microsoft 的登录验证系统。 请输入你的 PIN，后跟井号键来完成验证。 |
-| 数字之前的分机提示 | 感谢您使用 Microsoft 的登录验证系统。 请将此调用转移到扩展 。 |
+| 数字之前的扩展提示 | 感谢您使用 Microsoft 的登录验证系统。 请将此调用转移到扩展 。 |
 
 ## <a name="one-time-bypass"></a>免验证一次
 
@@ -185,7 +185,7 @@ ms.locfileid: "71075503"
 2. 浏览到“Azure Active Directory” > “MFA” > “免验证一次”。
 3. 选择 **添加** 。
 4. 如有必要，可选择要免验证的复制组。
-5. 输入用户名 domain.com 作为**用户名\@** 。 输入免验证应持续的秒数。 输入免验证的原因。
+5. 输入用户名作为**用户名\@domain.com**。 输入免验证应持续的秒数。 输入免验证的原因。
 6. 选择 **添加** 。 时间限制将立即生效。 用户需在免验证一次过期前登录。
 
 ### <a name="view-the-one-time-bypass-report"></a>查看免验证一次报告
@@ -296,8 +296,8 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 
 | Azure AD 租户类型 | 受信任的 IP 功能选项 |
 |:--- |:--- |
-| 已管理 |**特定 IP 地址范围**：由管理员指定一组 IP 地址范围，可以用来为从公司 Intranet 登录的用户绕过双重验证。|
-| 联合 |**所有联合用户**：从组织内部登录的所有联合用户都可绕过双重验证。 用户使用由 Active Directory 联合身份验证服务 (AD FS) 颁发的声明绕过验证。<br/>**特定 IP 地址范围**：由管理员指定一组 IP 地址范围，可以用来为从公司 Intranet 登录的用户绕过双重验证。 |
+| 托管 |**特定 IP 地址范围**：由管理员指定一组 IP 地址范围，以便为从公司 Intranet 登录的用户绕过双重验证。|
+| 联合 |**所有联合用户**：从组织内部登录的所有联合用户都可绕过双重验证。 用户使用由 Active Directory 联合身份验证服务 (AD FS) 颁发的声明绕过验证。<br/>**特定 IP 地址范围**：由管理员指定一组 IP 地址范围，以便为从公司 Intranet 登录的用户绕过双重验证。 |
 
 绕过受信任的 IP 仅在公司 Intranet 内有效。 如果选择“所有联合用户”选项，则用户从公司 Intranet 外部登录时，必须使用双重验证进行身份验证。 即使用户提供了 AD FS 声明，验证过程也相同。 
 
@@ -314,21 +314,21 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 ### <a name="enable-named-locations-by-using-conditional-access"></a>通过使用条件访问启用命名位置
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧，选择 " **Azure Active Directory** > **安全** > **条件性访问** > **命名位置**"。
+2. 在左侧，选择 " **Azure Active Directory** > **安全** > " > **命名位置**的**条件性访问**"。
 3. 选择“新建位置”。
 4. 输入位置的名称。
 5. 选择“标记为受信任位置”。
 6. 以 CIDR 表示法输入 IP 范围（例如 192.168.1.1/24）。
-7. 选择“创建”。
+7. 选择**创建**。
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>通过使用条件访问启用受信任的 Ip 功能
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧，选择 " **Azure Active Directory** > **安全** >  **条件性访问** > **命名位置**"。
+2. 在左侧，选择 " **Azure Active Directory** > **安全** >  " > **命名位置**的**条件性访问**"。
 3. 选择“配置 MFA 受信任的 IP”。
 4. 在“服务设置”页的“受信任的 IP”下，从以下两个选项中进行选择：
 
-   * **对于联合用户从我的 Intranet 发起的请求**：若要选择此选项，请选中复选框。 所有从公司网络登录的联合用户均可使用 AD FS 发布的声明免除双重验证。 请确保 AD FS 具有可将 intranet 声明添加到相应流量的规则。 如果规则不存在，请在 AD FS 中创建以下规则：
+   * **对于联合用户从我的 Intranet 发起的请求**：选中此复选框以选择此选项。 所有从公司网络登录的联合用户均可使用 AD FS 发布的声明免除双重验证。 请确保 AD FS 具有可将 intranet 声明添加到相应流量的规则。 如果规则不存在，请在 AD FS 中创建以下规则：
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
@@ -337,7 +337,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
       * 若要选择单个 IP 地址，请使用 **xxx.xxx.xxx.xxx/32** 这样的表示法。
       * 可输入至多 50 个 IP 地址范围。 从这些 IP 地址登录的用户将免除双重验证。
 
-5. 选择**保存**。
+5. 选择“保存”。
 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>使用服务设置启用受信任的 IP 功能
 
@@ -347,7 +347,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 4. 在“多重身份验证”下，选择“服务设置”。
 5. 在“服务设置”页的“受信任的 IP”下，选择以下两个选项中的一个（或两个）：
 
-   * **对于我的 Intranet 上的联合用户发出的请求**：若要选择此选项，请选中复选框。 所有从公司网络登录的联合用户均可使用 AD FS 发布的声明免除双重验证。 请确保 AD FS 具有可将 intranet 声明添加到相应流量的规则。 如果规则不存在，请在 AD FS 中创建以下规则：
+   * **对于来自我的 Intranet 的联合用户请求**：选中此复选框以选择此选项。 所有从公司网络登录的联合用户均可使用 AD FS 发布的声明免除双重验证。 请确保 AD FS 具有可将 intranet 声明添加到相应流量的规则。 如果规则不存在，请在 AD FS 中创建以下规则：
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
@@ -356,7 +356,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
       * 若要选择单个 IP 地址，请使用 **xxx.xxx.xxx.xxx/32** 这样的表示法。
       * 可输入至多 50 个 IP 地址范围。 从这些 IP 地址登录的用户将免除双重验证。
 
-6. 选择**保存**。
+6. 选择“保存”。
 
 ## <a name="verification-methods"></a>验证方法
 
@@ -367,9 +367,9 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 | 方法 | 描述 |
 |:--- |:--- |
 | 拨打电话 |拨打自动语音电话。 用户接听电话，并按电话键盘上的 # 进行身份验证。 此电话号码不会同步到本地 Active Directory。 |
-| 向电话发送的文本信息 |发送包含验证码的短信。 系统会提示用户在登录界面中输入验证代码。 此过程称为单向短信。 双向短信意味着用户必须短信回复一个特定代码。 已弃用双向短信，2018 年 11 月 14 日后不再受到支持。 届时，配置为使用双向短信的用户会自动切换到“电话呼叫”验证。|
-| 通过移动应用发送的通知 |向手机或已注册设备发送推送通知。 用户将查看通知并选择**验证**来完成验证。 Microsoft Authenticator 应用可用于 [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071)、[Android](https://go.microsoft.com/fwlink/?Linkid=825072) 和 [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)。 |
-| 移动应用或硬件标志提供的验证码 |Microsoft Authenticator 应用每隔 30 秒会生成一个新的 OATH 验证码。 用户将此验证码输入到登录界面中。 Microsoft Authenticator 应用可用于 [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071)、[Android](https://go.microsoft.com/fwlink/?Linkid=825072) 和 [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)。 |
+| 向手机发送短信 |发送包含验证码的短信。 系统会提示用户在登录界面中输入验证代码。 此过程称为单向短信。 双向短信意味着用户必须短信回复一个特定代码。 已弃用双向短信，2018 年 11 月 14 日后不再受到支持。 届时，配置为使用双向短信的用户会自动切换到“电话呼叫”验证。|
+| 通过移动应用发送通知 |向手机或已注册设备发送推送通知。 用户将查看通知并选择**验证**来完成验证。 Microsoft Authenticator 应用可用于 [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)、[Android](https://go.microsoft.com/fwlink/?Linkid=825072) 和 [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)。 |
+| 移动应用或硬件标志提供的验证码 |Microsoft Authenticator 应用每隔 30 秒会生成一个新的 OATH 验证码。 用户将此验证码输入到登录界面中。 Microsoft Authenticator 应用可用于 [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)、[Android](https://go.microsoft.com/fwlink/?Linkid=825072) 和 [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)。 |
 
 ### <a name="enable-and-disable-verification-methods"></a>启用和禁用可选择验证方法
 
@@ -415,7 +415,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 4. 在“多重身份验证”下，选择“服务设置”。
 5. 在“服务设置”页的“管理记住多重身份验证设置”下，选择“允许用户在其信任的设备上记住多重身份验证”选项。
 6. 设置允许受信任设备免除双重验证的天数。 默认值为 14 天。
-7. 选择**保存**。
+7. 选择“保存”。
 
 ### <a name="mark-a-device-as-trusted"></a>将设备标记为受信任的
 

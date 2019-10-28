@@ -31,10 +31,11 @@
           href: quickstarts/get-started-xamarin-ios.md
 - name: 教程
   items:
-    - name: 在 Unity 中共享
+    - name: 跨会话、设备进行共享
       href: tutorials/tutorial-share-anchors-across-devices.md
-    - name: 使用 Azure Cosmos DB 在 Unity 中共享
-      href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+      items:
+        - name: 通过 Azure Cosmos DB 进行永久共享
+          href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
     - name: 启动新的 Unity HoloLens 应用
       href: tutorials/tutorial-new-unity-hololens-app.md
     - name: 启动新的 Android 应用

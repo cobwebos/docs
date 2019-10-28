@@ -10,33 +10,33 @@ ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 61ea7eb0b81c5489ad2bf20e8148d2481bb4fb13
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c3d721427075736138ba73fda51a4fd515125f1c
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840177"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964859"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>通过 Visual Studio Code 部署 Azure IoT Edge 模块
 
 使用业务逻辑创建 IoT Edge 模块后，需要将其部署到设备后才能在边缘操作。 如果多个模块共同协作来收集和处理数据，可同时部署它们并声明用于连接它们的路由规则。
 
-本文介绍如何创建 JSON 部署清单，然后使用此文件将部署推送至 IoT Edge 设备。 要了解如何创建基于设备的共享标记而面向多台设备的部署，请参阅[大规模地部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)
+本文介绍了如何创建 JSON 部署清单，然后使用此文件将部署推送至 IoT Edge 设备。 要了解如何创建基于设备的共享标记而面向多台设备的部署，请参阅[大规模地部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
-* 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device-portal.md)。
+* 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device.md#register-with-visual-studio-code)。
 * [Visual Studio Code](https://code.visualstudio.com/)。
 * 适用于 Visual Studio Code 的 [Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview)。
 
 ## <a name="configure-a-deployment-manifest"></a>配置部署清单
 
-部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 要详细了解部署清单的工作原理及创建方式，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
+部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 若要详细了解部署清单的工作原理及创建方式，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
 
-若要使用 Visual Studio Code 部署模块，请将部署清单本地保存为 .JSON 文件。 在下一节中运行命令来将配置应用到设备时，会用到这个文件路径。
+若要使用 Visual Studio Code 部署模块，请将部署清单本地保存为 .JSON 文件。 在下一部分通过运行命令将配置应用到设备时，会用到这个文件路径。
 
-下面是一个基本的部署清单示例，其中具有一个模块：
+下面是一个基本的部署清单示例，其中有一个模块：
 
    ```json
    {

@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 32bd0438afa63212222acb84c0194bbc1f4816ce
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 88ff026ea56e5f41b3b124c2d5594822ffeb6830
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286685"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529276"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>教程：开发适用于 Windows 设备的 C# IoT Edge 模块
 
@@ -82,9 +82,9 @@ Azure IoT Edge Tools 为 Visual Studio 中支持的所有 IoT Edge 模块语言�
    | 模块项目名称 | 将模块命名为 **CSharpModule**。 | 
    | Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 系统已基于模块项目名称值预先填充容器映像。 将 **localhost:5000** 替换为 Azure 容器注册表中的登录服务器值。 可以在 Azure 门户的容器注册表的“概览”页中检索登录服务器。 <br><br> 最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/csharpmodule。 |
 
-   ![配置目标设备、模块类型和容器注册表的项目](./media/tutorial-csharp-module-windows/add-application-and-module.png)
+   ![针对目标设备、模块类型和容器注册表配置项目](./media/tutorial-csharp-module-windows/add-application-and-module.png)
 
-5. 选择“确定”以应用更改。  
+5. 选择“添加”  以创建项目。 
 
 ### <a name="add-your-registry-credentials"></a>添加注册表凭据
 

@@ -1,10 +1,9 @@
 ---
-title: 将现有 Azure Service Bus 标准命名空间迁移到高级层 |Microsoft Docs
+title: 迁移 Azure 服务总线命名空间-标准到高级
 description: 允许将现有 Azure 服务总线标准命名空间迁移到高级版的指南
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
-manager: darosa
 editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
@@ -13,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: f7cbee13416c090e59c82c928946b512af1c620b
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 610c3aa486b48b2d29df48d98e93b37cfec4854c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69611919"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790383"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>将现有 Azure Service Bus 标准命名空间迁移到高级层
 以前，Azure 服务总线仅在标准层上提供了命名空间。 命名空间是多租户设置，针对低吞吐量和开发人员环境进行了优化。 高级层为每个命名空间提供专用资源，以实现可预测的延迟，并以固定价格增加吞吐量。 高级层针对需要其他企业功能的高吞吐量和生产环境进行了优化。
@@ -94,30 +93,30 @@ ms.locfileid: "69611919"
 使用 Azure 门户迁移与使用命令迁移的逻辑流相同。 按照以下步骤使用 Azure 门户进行迁移。
 
 1. 在左侧窗格的**导航**菜单中，选择 "**迁移到高级**"。 单击 "**开始**" 按钮转到下一页。
-    ![Migration 登陆页面 ][]
+    ![迁移登陆页面][]
 
 1. 完成**安装**。
-   ![Setup 命名空间 ][]
+   ![安装命名空间][]
    1. 创建并分配高级命名空间以将现有标准命名空间迁移到。
-        ![Setup 命名空间-创建高级命名空间 ][]
+        ![安装命名空间-创建高级命名空间][]
    1. 选择**迁移后的名称**。 迁移完成后，你将使用此名称来访问标准命名空间。
-        ![Setup 命名空间-选择迁移后名称 ][]
+        ![安装命名空间-选择迁移后名称][]
    1. 选择 **"下一步"** 以继续。
 1. 在标准和高级命名空间之间同步实体。
-    ![Setup 命名空间-同步实体-启动 ][]
+    ![安装程序命名空间-同步实体-启动][]
 
    1. 选择 "**开始同步**" 以开始同步实体。
    1. 在对话框中选择 **"是"** 以确认并开始同步。
    1. 等待同步完成。 状态显示在状态栏上。
-        ![Setup 命名空间-同步实体-进度 ][]
+        ![安装命名空间-同步实体-进度][]
         >[!IMPORTANT]
         > 如果出于任何原因需要中止迁移，请查看本文档的 "常见问题解答" 部分中的中止流程。
    1. 完成同步后，在页面底部选择 "**下一步**"。
 
 1. 查看 "摘要" 页上的更改。 选择 "**完成迁移**" 以切换命名空间并完成迁移。
-    ![Switch 命名空间交换机 "菜单 ][]  
+    ![交换机命名空间-切换菜单][]  
     迁移完成后，将显示 "确认" 页。
-    ![Switch 命名空间-成功 ][]
+    ![交换机命名空间-成功][]
 
 ## <a name="caveats"></a>注意事项
 
@@ -179,8 +178,8 @@ az servicebus migration abort --resource-group $resourceGroup --name $standardNa
 
 #### <a name="azure-portal"></a>Azure 门户
 
-![Abort flow 中止同步 ][]
- ![Abort flow 中止完成 ][]
+![中止流-中止同步][]
+![中止流-中止完成][]
 
 当迁移过程中止时，它将中止从标准到高级命名空间将实体（主题、订阅和筛选器）复制到高级命名空间的过程，并打破配对。
 

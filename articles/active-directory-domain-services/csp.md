@@ -1,5 +1,5 @@
 ---
-title: Azure 云解决方案提供商的 Azure Active Directory 域服务 | Microsoft Docs
+title: Azure AD 云解决方案提供商的域服务 |Microsoft Docs
 description: Azure 云解决方案提供商的 Azure Active Directory 域服务。
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: iainfou
-ms.openlocfilehash: dc4ad7d8cf9f3267713fd066fa79a4d9d8ab733f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1134c078ee36a146cb1e1cbf8ca46f6cd9f8d775
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612966"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754440"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Azure 云解决方案提供商 (CSP) 的 Azure Active Directory (AD) 域服务
 本文介绍如何在 Azure CSP 订阅中使用 Azure AD 域服务。
@@ -43,7 +43,7 @@ Azure AD 域服务在 Azure 中提供 LDAP、Kerberos/NTLM 身份验证、域加
 
 Azure AD 域服务现在支持 Azure CSP 订阅。 用户现可在关联到客户 Azure AD 目录的 Azure CSP 订阅中部署应用程序。 因此，员工（支持人员）可以使用组织的企业凭据控制、管理和维护部署应用程序的虚拟机。 此外，还可为客户的 Azure AD 目录预配 Azure AD 域服务托管域。 应用程序会连接到客户的托管域。 因此，应用程序内依赖于 Kerberos/NTLM、LDAP 或 [System.DirectoryServices API](/dotnet/api/system.directoryservices) 的功能可针对客户的目录无缝地工作。 最终客户将应用程序作为服务使用，不需要担心如何维护部署应用程序的基础结构，因此大大受益。
 
-用户将为其在订阅中使用的 Azure 资源（包括 Azure AD 域服务）付费。 在销售、计费、技术支持等方面，你可保持对客户关系的完全控制。借助 Azure CSP 平台的灵活性，少量的支持代理可为大量已部署应用程序实例的客户提供服务。
+用户将为其在订阅中使用的 Azure 资源（包括 Azure AD 域服务）付费。 当涉及销售、计费、技术支持等时，可以完全控制与客户的关系。借助 Azure CSP 平台的灵活性，一小部分的支持代理可为多个已部署应用程序实例的客户提供服务。
 
 
 ## <a name="csp-deployment-models-for-azure-ad-domain-services"></a>Azure AD 域服务的 CSP 部署模型
@@ -56,7 +56,7 @@ Azure AD 域服务现在支持 Azure CSP 订阅。 用户现可在关联到客�
 
 ![直接部署模型](./media/csp/csp_direct_deployment_model.png)
 
-在这种部署模型下，CSP 提供商的管理代理可以管理客户的标识。 这些管理代理能够预配新用户、组，在客户的 Azure AD 目录中添加应用程序等。此部署模型可能适用于没有专门的标识管理员或更愿意由 CSP 合作伙伴代表其管理标识的小型组织。
+在这种部署模型下，CSP 提供商的管理代理可以管理客户的标识。 这些管理代理可以预配新用户、组、在客户的 Azure AD 目录等中添加应用程序。此部署模型可能适用于没有专用标识管理员的小型组织，或者不想让 CSP 合作伙伴代表他们管理标识。
 
 
 ### <a name="peered-deployment-model"></a>对等部署模型
@@ -72,18 +72,18 @@ Azure AD 域服务现在支持 Azure CSP 订阅。 用户现可在关联到客�
 ## <a name="administering-azure-ad-domain-services-managed-domains-in-csp-subscriptions"></a>在 CSP 订阅中管理 Azure AD 域服务托管域
 在 Azure CSP 订阅中管理托管域时，请注意以下注意事项：
 
-* **CSP 管理代理可以使用其凭据预配托管域：** Azure AD 域服务支持 Azure CSP 订阅。 因此，CSP 合作伙伴管理代理组中的用户可预配新的 Azure AD 域服务托管域。
+* **CSP 管理代理可使用其凭据预配托管域：** Azure AD 域服务支持 Azure CSP 订阅。 因此，CSP 合作伙伴管理代理组中的用户可预配新的 Azure AD 域服务托管域。
 
-* **CSP 可以使用 PowerShell 为其客户编写新的托管域创建脚本：** 有关详细信息，请参阅[如何使用 PowerShell 启用 Azure AD 域服务](powershell-create-instance.md)。
+* **CSP 可使用 PowerShell 为客户编写新建托管域的脚本：** 有关详细信息，请参阅[如何使用 PowerShell 启用 Azure AD 域服务](powershell-create-instance.md)。
 
-* **CSP 管理代理不能使用其凭据在托管域上执行进行中的管理任务：** CSP 管理员用户不能使用其凭据在托管域中执行日常管理任务。 这些用户不在客户的 Azure AD 目录中，并且其凭据在客户的 Azure AD 目录中不可用。 因此，Azure AD 域服务对这些用户的 Kerberos 和 NTLM 密码哈希值不具有访问权限。 因此，无法在 Azure AD 域服务托管域上对这些用户进行身份验证。
+* **CSP 管理代理无法使用其凭据对托管域执行进行中的管理任务：** CSP 管理员用户无法使用其凭据在托管域中执行日常管理任务。 这些用户不在客户的 Azure AD 目录中，并且其凭据在客户的 Azure AD 目录中不可用。 因此，Azure AD 域服务对这些用户的 Kerberos 和 NTLM 密码哈希值不具有访问权限。 因此，无法在 Azure AD 域服务托管域上对这些用户进行身份验证。
 
   > [!WARNING]
   > 必须在客户的目录中创建用户帐户，从而对托管域执行进行中的管理任务。
   > 无法使用 CSP 管理员用户的凭据登录到托管域。 使用客户 Azure AD 目录中用户帐户的凭据进行登录。 对于将虚拟机加入到托管域、管理 DNS、管理组策略等任务，这些凭据是必需的。
   >
 
-* **必须将为进行中的管理创建的用户帐户添加到“AAD DC 管理员”组：** “AAD DC 管理员”组有权在托管域上执行某些委托的管理任务。 这些任务包括配置 DNS、创建组织单位、管理组策略等。为使 CSP 合作伙伴在托管域上执行此类任务，需要在客户的 Azure AD 目录中创建用户帐户。 此帐户的凭据必须与 CSP 合作伙伴的管理代理共享。 此外，此用户帐户必须添加到“AAD DC 管理员”组，从而在托管域上启用要使用此用户帐户执行的配置任务。
+* **为进行中的管理而创建的用户帐户必须添加到“AAD DC 管理员”组：** “AAD DC 管理员”组有权在托管域上执行某些委托的管理任务。 这些任务包括配置 DNS、创建组织单位、管理组策略等。要使 CSP 合作伙伴在托管域上执行此类任务，需要在客户的 Azure AD 目录中创建用户帐户。 此帐户的凭据必须与 CSP 合作伙伴的管理代理共享。 此外，此用户帐户必须添加到“AAD DC 管理员”组，从而在托管域上启用要使用此用户帐户执行的配置任务。
 
 
 ## <a name="next-steps"></a>后续步骤

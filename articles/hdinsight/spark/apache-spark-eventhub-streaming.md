@@ -9,10 +9,10 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
 ms.openlocfilehash: be21b809272a132ee6e63582036c36ad5dcdf4ad
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71266194"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>教程：在 HDInsight 中使用 Azure 事件中心和 Apache Spark 处理推文
@@ -74,7 +74,7 @@ ms.locfileid: "71266194"
 
 3. 在“物联网”下，选择“事件中心”。   
 
-    ![为 Spark 流式处理示例创建事件中心](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "为 Spark 流式处理示例创建事件中心")
+    ![为 Spark 流式处理创建事件中心示例](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "为 Spark 流式处理创建事件中心示例")
 
 4. 选择“+ 添加”  。
 
@@ -90,7 +90,7 @@ ms.locfileid: "71266194"
     |启用自动膨胀（可选） |当流量超出了分配给事件中心命名空间的吞吐量单位数时，自动膨胀会自动扩展该数量。  |
     |自动膨胀最大吞吐量单位数（可选）|只有当选中了“启用自动膨胀”时才会显示此滑块。   |
 
-    ![提供 Spark 流式处理示例的事件中心名称](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "提供 Spark 流式处理示例的事件中心名称")
+    ![为 Spark 流式处理提供事件中心名称示例](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "为 Spark 流式处理提供事件中心名称示例")
 
 6. 选择“创建”以创建命名空间。   部署将在几分钟内完成。
 
@@ -112,7 +112,7 @@ ms.locfileid: "71266194"
 
     - **消息保留期**：1.   
    
-      ![提供 Spark 流式处理示例的事件中心详细信息](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "提供 Spark 流式处理示例的事件中心详细信息")
+      ![为 Spark 流式处理提供事件中心详细信息示例](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "为 Spark 流式处理提供事件中心详细信息示例")
 
 1. 选择“创建”  。  部署应在几秒内完成，你将返回到“事件中心命名空间”页面。
 
@@ -120,11 +120,11 @@ ms.locfileid: "71266194"
 
 1. 选择“RootManageSharedAccessKey”。 
     
-     ![设置 Spark 流式处理示例的事件中心策略](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "设置 Spark 流式处理示例的事件中心策略")
+     ![为 Spark 流式处理设置事件中心策略示例](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "为 Spark 流式处理设置事件中心策略示例")
 
 1. 保存“主密钥”和“连接字符串主密钥”的值，以便稍后在本教程中使用。  
 
-     ![查看 Spark 流式处理示例的事件中心策略密钥](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "查看 Spark 流式处理示例的事件中心策略密钥")
+     ![查看 Spark 流式处理的事件中心策略密钥示例](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "查看 Spark 流式处理的事件中心策略密钥示例")
 
 
 ## <a name="send-tweets-to-the-event-hub"></a>将推文发送到事件中心

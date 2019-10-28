@@ -1,40 +1,34 @@
 ---
 title: 在 Azure Monitor 日志查询中使用字符串 | Microsoft Docs
 description: 介绍如何在 Azure Monitor 日志查询中编辑、比较、搜索字符串以及对其执行其他各种操作。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 0dd61deb372822c5c564758d26d4c4a4938c1064
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.date: 08/16/2018
+ms.openlocfilehash: 0d7bf025b414df819887192bb59f7fd8da64b5d9
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741462"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932938"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用字符串
 
 
 > [!NOTE]
-> 在完成本教程之前, 应完成[Azure Monitor Log Analytics](get-started-portal.md)和[Azure Monitor 日志查询](get-started-queries.md)入门。
+> 在完成本教程之前，应完成[Azure Monitor Log Analytics](get-started-portal.md)和[Azure Monitor 日志查询](get-started-queries.md)入门。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 本文介绍如何编辑、比较、搜索字符串以及对其执行其他各种操作。
 
-字符串中的每个字符都有一个与其位置相符的索引号。 第一个字符位于索引 0, 下一个字符为 1, 依此类推。 不同的字符串函数使用以下各部分所示的索引号。 下面的许多示例使用 **print** 命令来演示在不使用特定数据源的情况下如何处理字符串。
+字符串中的每个字符都有一个与其位置相符的索引号。 第一个字符位于索引0，下一个字符为1，依此类推。 不同的字符串函数使用以下各部分所示的索引号。 下面的许多示例使用 **print** 命令来演示在不使用特定数据源的情况下如何处理字符串。
 
 
 ## <a name="strings-and-escaping-them"></a>字符串及其转义
-字符串值包装在单引号或双引号字符中。 反斜杠\\() 用于将字符转义为其后面的字符, 如用于制表符的 \t、用于换行符的 \n 以及\"引号字符本身。
+字符串值包装在单引号或双引号字符中。 反斜杠（\\）用于将字符转义为其后面的字符，如 "\t for tab"、"n" 表示 "换行符" 和 "\" 引号字符本身"。
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -57,30 +51,30 @@ print @"C:\backslash\not\escaped\with @ prefix"
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |等于                              |是           |`"aBc" == "aBc"`
 `!=`           |不等于                          |是           |`"abc" != "ABC"`
-`=~`           |等于                              |否            |`"abc" =~ "ABC"`
-`!~`           |不等于                          |否            |`"aBc" !~ "xyz"`
-`has`          |右侧是左侧的整个字词 |否|`"North America" has "america"`
-`!has`         |右侧不是左侧的完整字词       |否            |`"North America" !has "amer"` 
+`=~`           |等于                              |No            |`"abc" =~ "ABC"`
+`!~`           |不等于                          |No            |`"aBc" !~ "xyz"`
+`has`          |右侧是左侧的整个字词 |No|`"North America" has "america"`
+`!has`         |右侧不是左侧的完整字词       |No            |`"North America" !has "amer"` 
 `has_cs`       |右侧是左侧的整个字词 |是|`"North America" has_cs "America"`
 `!has_cs`      |右侧不是左侧的完整字词       |是            |`"North America" !has_cs "amer"` 
-`hasprefix`    |右侧是左侧的字词前缀         |否            |`"North America" hasprefix "ame"`
-`!hasprefix`   |右侧不是左侧的字词前缀     |否            |`"North America" !hasprefix "mer"` 
+`hasprefix`    |右侧是左侧的字词前缀         |No            |`"North America" hasprefix "ame"`
+`!hasprefix`   |右侧不是左侧的字词前缀     |No            |`"North America" !hasprefix "mer"` 
 `hasprefix_cs`    |右侧是左侧的字词前缀         |是            |`"North America" hasprefix_cs "Ame"`
 `!hasprefix_cs`   |右侧不是左侧的字词前缀     |是            |`"North America" !hasprefix_cs "CA"` 
-`hassuffix`    |右侧是左侧的字词后缀         |否            |`"North America" hassuffix "ica"`
-`!hassuffix`   |右侧不是左侧的字词后缀     |否            |`"North America" !hassuffix "americ"`
+`hassuffix`    |右侧是左侧的字词后缀         |No            |`"North America" hassuffix "ica"`
+`!hassuffix`   |右侧不是左侧的字词后缀     |No            |`"North America" !hassuffix "americ"`
 `hassuffix_cs`    |右侧是左侧的字词后缀         |是            |`"North America" hassuffix_cs "ica"`
 `!hassuffix_cs`   |右侧不是左侧的字词后缀     |是            |`"North America" !hassuffix_cs "icA"`
-`contains`     |右侧作为左侧的子序列出现  |否            |`"FabriKam" contains "BRik"`
-`!contains`    |右侧不会在左侧出现           |否            |`"Fabrikam" !contains "xyz"`
+`contains`     |右侧作为左侧的子序列出现  |No            |`"FabriKam" contains "BRik"`
+`!contains`    |右侧不会在左侧出现           |No            |`"Fabrikam" !contains "xyz"`
 `contains_cs`   |右侧作为左侧的子序列出现  |是           |`"FabriKam" contains_cs "Kam"`
 `!contains_cs`  |右侧不会在左侧出现           |是           |`"Fabrikam" !contains_cs "Kam"`
-`startswith`   |右侧是左侧的初始子序列|否            |`"Fabrikam" startswith "fab"`
-`!startswith`  |右侧不是左侧的初始子序列|否        |`"Fabrikam" !startswith "kam"`
+`startswith`   |右侧是左侧的初始子序列|No            |`"Fabrikam" startswith "fab"`
+`!startswith`  |右侧不是左侧的初始子序列|No        |`"Fabrikam" !startswith "kam"`
 `startswith_cs`   |右侧是左侧的初始子序列|是            |`"Fabrikam" startswith_cs "Fab"`
 `!startswith_cs`  |右侧不是左侧的初始子序列|是        |`"Fabrikam" !startswith_cs "fab"`
-`endswith`     |右侧是左侧的结束子序列|否             |`"Fabrikam" endswith "Kam"`
-`!endswith`    |右侧不是左侧的结束子序列|否         |`"Fabrikam" !endswith "brik"`
+`endswith`     |右侧是左侧的结束子序列|No             |`"Fabrikam" endswith "Kam"`
+`!endswith`    |右侧不是左侧的结束子序列|No         |`"Fabrikam" !endswith "brik"`
 `endswith_cs`     |右侧是左侧的结束子序列|是             |`"Fabrikam" endswith "Kam"`
 `!endswith_cs`    |右侧不是左侧的结束子序列|是         |`"Fabrikam" !endswith "brik"`
 `matches regex`|左侧包含右侧的匹配项        |是           |`"Fabrikam" matches regex "b.*k"`
@@ -97,12 +91,12 @@ print @"C:\backslash\not\escaped\with @ prefix"
 countof(text, search [, kind])
 ```
 
-### <a name="arguments"></a>参数:
+### <a name="arguments"></a>参数：
 - `text` - 输入字符串 
 - `search` - 用于在文本内部匹配的纯字符串或正则表达式。
 - `kind` - _normal_ | _regex_（默认值：normal）。
 
-### <a name="returns"></a>返回
+### <a name="returns"></a>返回值
 
 搜索字符串可在容器中匹配的次数。 纯字符串匹配项可能重叠，而正则表达式匹配项则不会。
 
@@ -144,7 +138,7 @@ extract(regex, captureGroup, text [, typeLiteral])
 - `text` - 要搜索的字符串。
 - `typeLiteral` - 可选的类型文本（例如 typeof(long)）。 （如果支持）提取的子字符串将转换成此类型。
 
-### <a name="returns"></a>返回
+### <a name="returns"></a>返回值
 与指定捕获组 captureGroup 匹配的子字符串可转换为 typeLiteral（可选）。
 如果没有匹配项或类型转换失败，则返回 null。
 
@@ -264,7 +258,7 @@ SecurityEvent
 
 可能返回以下结果：
 
-activities                                        |替换的内容
+活动                                        |替换的内容
 ------------------------------------------------|----------------------------------------------------------
 4663 - 尝试访问某个对象  |活动 ID 4663：尝试访问某个对象。
 
@@ -278,7 +272,7 @@ activities                                        |替换的内容
 split(source, delimiter [, requestedIndex])
 ```
 
-### <a name="arguments"></a>参数:
+### <a name="arguments"></a>参数：
 
 - `source` - 要根据指定的分隔符拆分的字符串。
 - `delimiter` - 用于拆分源字符串的分隔符。
@@ -335,7 +329,7 @@ print strlen("hello")   // result: 5
 substring(source, startingIndex [, length])
 ```
 
-### <a name="arguments"></a>参数:
+### <a name="arguments"></a>参数：
 
 - `source` - 从中提取子字符串的源字符串。
 - `startingIndex` - 请求子字符串的从零开始的起始字符位置。

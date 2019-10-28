@@ -1,30 +1,24 @@
 ---
 title: Azure Monitor 中的容器监视解决方案 |Microsoft Docs
-description: Azure Monitor 中的容器监视解决方案可帮助用户在单个位置查看和管理 Docker 和 Windows 容器主机。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: e1e4b52b-92d5-4bfa-8a09-ff8c6b5a9f78
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+description: Azure Monitor 中的容器监视解决方案可帮助你在一个位置查看和管理 Docker 和 Windows 容器主机。
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 07/22/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 5f48b1b1c8568c4f60d012797634b844a276b1bb
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.date: 07/22/2019
+ms.openlocfilehash: b71818d5d840a0466b5ff6f271df117043341f7b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951958"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899118"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure Monitor 中的容器监视解决方案
 
 ![容器符号](./media/containers/containers-symbol.png)
 
-本文介绍如何设置和使用 Azure Monitor 中的容器监视解决方案，它可以帮助用户在单个位置查看和管理 Docker 和 Windows 容器主机。 Docker 是一种软件虚拟化系统，用于创建自动将软件部署到其 IT 基础结构的容器。
+本文介绍如何在 Azure Monitor 中设置和使用容器监视解决方案，该解决方案可帮助你在一个位置查看和管理 Docker 和 Windows 容器主机。 Docker 是一种软件虚拟化系统，用于创建自动将软件部署到其 IT 基础结构的容器。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -36,11 +30,11 @@ ms.locfileid: "68951958"
 - Service Fabric
 - Red Hat OpenShift
 
-如果在[Azure Service Fabric](../../service-fabric/service-fabric-overview.md)中部署了容器, 则建议同时启用[Service Fabric 解决方案](../../service-fabric/service-fabric-diagnostics-oms-setup.md)和此解决方案, 以包括对群集事件的监视。 在启用 Service Fabric 解决方案之前, 请查看[使用 Service Fabric 解决方案](../../service-fabric/service-fabric-diagnostics-event-analysis-oms.md)了解其提供的内容以及如何使用它。
+如果在[Azure Service Fabric](../../service-fabric/service-fabric-overview.md)中部署了容器，则建议同时启用[Service Fabric 解决方案](../../service-fabric/service-fabric-diagnostics-oms-setup.md)和此解决方案，以包括对群集事件的监视。 在启用 Service Fabric 解决方案之前，请查看[使用 Service Fabric 解决方案](../../service-fabric/service-fabric-diagnostics-event-analysis-oms.md)了解其提供的内容以及如何使用它。
 
 若要监视部署到 Kubernetes 环境的工作负荷的性能，而该环境托管在 Azure Kubernetes 服务 (AKS) 上，请参阅[监视 Azure Kubernetes 服务](../../azure-monitor/insights/container-insights-overview.md)。 容器监视解决方案不支持监视该平台。  
 
-下图显示了 Azure Monitor 中各种容器主机和代理之间的关系。
+下图显示了具有 Azure Monitor 的各种容器主机和代理之间的关系。
 
 ![容器关系图](./media/containers/containers-diagram.png)
 
@@ -50,9 +44,9 @@ ms.locfileid: "68951958"
 
 ### <a name="container-monitoring-solution-support-for-docker-orchestrator-and-os-platform"></a>Docker Orchestrator 和 OS 平台的容器监视解决方案支持
 
-下表概括了 Azure Monitor 中容器清单、性能和日志的 Docker 业务流程和操作系统监视支持。   
+下表概述了 Docker 业务流程和操作系统监视 Azure Monitor 的容器清单、性能和日志支持。   
 
-| | ACS | Linux | Windows | 容器<br>清点 | 图像<br>清点 | 节点<br>清单 | 容器<br>性能 | 容器<br>Event | Event<br>登录 | 容器<br>登录 |
+| | ACS | Linux | Windows | 容器<br>清单 | 映像<br>清单 | 节点<br>清单 | 容器<br>性能 | 容器<br>事件 | 事件<br>日志 | 容器<br>日志 |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -99,22 +93,22 @@ ms.locfileid: "68951958"
 
 使用以下信息安装和配置解决方案。
 
-1. 通过 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview)或[从解决方案库中添加监视解决方案](../../azure-monitor/insights/solutions.md)中所述的过程，将容器监视解决方案添加到 Log Analytics 工作区。
+1. 从[Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview)或使用[从解决方案库添加监视解决方案](../../azure-monitor/insights/solutions.md)中所述的过程，将容器监视解决方案添加到 Log Analytics 工作区。
 
 2. 安装和使用包含 Log Analytics 代理的 Docker。 根据所用操作系统和 Docker Ochestrator，可使用下列方法来配置代理。
    - 对于独立主机：
      - 在支持的 Linux 操作系统上，安装并运行 Docker，然后安装并配置[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/learn/quick-collect-linux-computer.md)。  
      - 在 CoreOS 上，无法运行适用于 Linux 的 Log Analytics 代理。 请改为运行适用于 Linux 的 Log Analytics 代理的容器化版本。 如果使用 Azure 政府云中的容器，请查看包括 CoreOS 在内的 Linux 容器主机或包括 CoreOS 在内的 Azure 政府 Linux 容器主机。
-     - 在 Windows Server 2016 和 Windows 10 上安装 Docker 引擎和客户端，然后连接到代理以收集信息并将其发送到 Azure Monitor。 在 Windows 环境下，请参阅[安装并配置 Windows 容器主机](#install-and-configure-windows-container-hosts)。
+     - 在 Windows Server 2016 和 Windows 10 上，安装 Docker 引擎，然后客户端将连接代理以收集信息并将其发送到 Azure Monitor。 在 Windows 环境下，请参阅[安装并配置 Windows 容器主机](#install-and-configure-windows-container-hosts)。
    - 对于 Docker 多主机业务流程：
      - 如果有 Red Hat OpenShift 环境，请查看“为 Red Hat OpenShift 配置 Log Analytics 代理”。
      - 如果具有使用 Azure 容器服务的 Kubernetes 群集：
        - 查看[配置适用于 Kubernetes 的 Log Analytics Linux 代理](#configure-a-log-analytics-linux-agent-for-kubernetes)。
        - 查看[配置适用于 Kubernetes 的 Log Analytics Windows 代理](#configure-a-log-analytics-windows-agent-for-kubernetes)。
        - 查看“使用 Helm 在 Linux Kubernetes 上部署 Log Analytics 代理”。
-     - 如果拥有 Azure 容器服务 DC/OS 群集, 请在[使用 Azure Monitor 监视 Azure 容器服务 dc/os 群集](../../container-service/dcos-swarm/container-service-monitoring-oms.md)中了解详细信息。
+     - 如果拥有 Azure 容器服务 DC/OS 群集，请在[使用 Azure Monitor 监视 Azure 容器服务 dc/os 群集](../../container-service/dcos-swarm/container-service-monitoring-oms.md)中了解详细信息。
      - 如果拥有 Docker Swarm 模式环境，请访问“配置适用于 Docker Swarm 的 Log Analytics 代理”了解更多信息。
-     - 如果有 Service Fabric 群集, 请在[具有 Azure Monitor 的监视器容器](../../service-fabric/service-fabric-diagnostics-oms-containers.md)中了解详细信息。
+     - 如果有 Service Fabric 群集，请在[具有 Azure Monitor 的监视器容器](../../service-fabric/service-fabric-diagnostics-oms-containers.md)中了解详细信息。
 
 请参阅 [Windows 上的 Docker 引擎](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)一文，详细了解如何在运行 Windows 的计算机上安装和配置 Docker 引擎。
 
@@ -194,7 +188,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 * 在每个 OpenShift 节点上直接[安装适用于 Linux 的 Log Analytics 代理](../../azure-monitor/learn/quick-collect-linux-computer.md)  
 * 在每个位于 Azure 中的 OpenShift 节点上[启用 Log Analytics VM 扩展](../../azure-monitor/learn/quick-collect-azurevm.md)  
-* 安装 Log Analytics 代理作为 OpenShift daemon-set  
+* 安装 Log Analytics 代理作为 OpenShift 守护程序集  
 
 本部分介绍安装 Log Analytics 代理作为 OpenShift daemon-set 需要执行的步骤。  
 
@@ -499,11 +493,11 @@ KEY:    88 bytes
 
 #### <a name="preparation-before-installing-windows-agents"></a>安装 Windows 代理之前的准备
 
-在运行 Windows 的计算机上安装代理之前，需配置 Docker 服务。 配置允许 Windows 代理或 Azure Monitor 虚拟机扩展使用 Docker TCP 套接字，因此代理能够远程访问 Docker 守护程序并捕获用于监视的数据。
+在运行 Windows 的计算机上安装代理之前，需配置 Docker 服务。 配置允许 Windows 代理或 Azure Monitor 虚拟机扩展使用 Docker TCP 套接字，以便代理能够远程访问 Docker 守护程序并捕获用于监视的数据。
 
-##### <a name="to-configure-the-docker-service"></a>配置 Docker 服务的步骤  
+##### <a name="to-configure-the-docker-service"></a>配置 Docker 服务  
 
-执行以下 PowerShell 命令，为 Windows Server 启用 TCP 管道和命名的管道：
+执行以下 PowerShell 命令，为 Windows Server 启用 TCP 管道和命名管道：
 
 ```
 Stop-Service docker
@@ -516,7 +510,7 @@ Start-Service docker
 
 #### <a name="install-windows-agents"></a>安装 Windows 代理
 
-若要启用 Windows 和 Hyper-V 容器监视，请在属于容器主机的 Windows 计算机上安装 Microsoft Monitoring Agent (MMA)。 要了解在本地环境中运行 Windows 的计算机，请参阅[将 Windows 计算机连接到 Azure Monitor](../../azure-monitor/platform/agent-windows.md)。 为使虚拟机在 Azure 中运行，请使用[虚拟机扩展](../../azure-monitor/learn/quick-collect-azurevm.md)将其连接到 Azure Monitor。
+若要启用 Windows 和 Hyper-V 容器监视，请在属于容器主机的 Windows 计算机上安装 Microsoft Monitoring Agent (MMA)。 对于在本地环境中运行 Windows 的计算机，请参阅[将 windows 计算机连接到 Azure Monitor](../../azure-monitor/platform/agent-windows.md)。 对于在 Azure 中运行的虚拟机，请使用[虚拟机扩展](../../azure-monitor/learn/quick-collect-azurevm.md)将其连接到 Azure Monitor。
 
 可以监视在 Service Fabric 上运行的 Windows 容器。 但是，目前 Service Fabric 仅支持[在 Azure 中运行的虚拟机](../../azure-monitor/learn/quick-collect-azurevm.md)和[在本地环境中运行 Windows 的计算机](../../azure-monitor/platform/agent-windows.md)。
 
@@ -557,7 +551,7 @@ Start-Service docker
 追加到 PodLabel 数据类型的标签是你自己的自定义标签。 表中显示的追加的 PodLabel 标签是示例。 因此，`PodLabel_deployment_s`、`PodLabel_deploymentconfig_s` 和 `PodLabel_docker_registry_s` 在你环境的数据集中存在差异，但通常类似于 `PodLabel_yourlabel_s`。
 
 ## <a name="monitor-containers"></a>监视容器
-在 Azure 门户中启用解决方案后，“容器”磁贴显示有关容器主机和在主机中运行的容器的摘要信息。
+在 Azure 门户中启用解决方案后，**容器**磁贴会显示有关容器主机和在主机中运行的容器的摘要信息。
 
 ![容器磁贴](./media/containers/containers-title.png)
 
@@ -589,11 +583,11 @@ Start-Service docker
 
 ![容器状态](./media/containers/containers-status.png)
 
-Log Analytics 将打开，显示有关容器状态的信息。
+Log Analytics 随即打开，并显示有关容器状态的信息。
 
-![用于容器的 Log Analytics](./media/containers/containers-log-search.png)
+![容器 Log Analytics](./media/containers/containers-log-search.png)
 
-可以在此处编辑搜索查询以对其进行修改，以便查找你感兴趣的特定信息。 有关日志查询的详细信息，请参阅 [Azure Monitor 中的日志查询](../log-query/log-query-overview.md)。
+可以在此处编辑搜索查询以对其进行修改，以便查找你感兴趣的特定信息。 有关日志查询的详细信息，请参阅[Azure Monitor 中的日志查询](../log-query/log-query-overview.md)。
 
 ## <a name="troubleshoot-by-finding-a-failed-container"></a>通过查找失败的容器进行故障排除
 
@@ -603,16 +597,16 @@ Log Analytics 将打开，显示有关容器状态的信息。
 
 1. 单击“容器状态”区域。  
    ![容器状态](./media/containers/containers-status.png)
-2. Log Analytics 将打开并显示容器状态，如下所示。  
+2. Log Analytics 随即打开并显示容器的状态，如下所示。  
    ![容器状态](./media/containers/containers-log-search.png)
-3. 展开“Failed”行并单击“+”，以便向查询添加条件。 然后注释掉查询中的“Summarize”行。
+3. 展开失败的行，然后单击 "+" 将其条件添加到查询中。 然后在查询中注释掉汇总行。
    ![失败的容器](./media/containers/containers-state-failed-select.png)  
-1. 运行查询，然后展开结果中的一行，以便查看映像 ID。  
-   ![发生故障的容器](./media/containers/containers-state-failed.png)  
-1. 在日志查询中键入以下内容。 `ContainerImageInventory | where ImageID == <ImageID>` 可查看有关映像的详细信息，如映像大小以及已停止和失败映像的数量。  
+1. 运行查询，然后在结果中展开一行以查看映像 ID。  
+   ![失败的容器](./media/containers/containers-state-failed.png)  
+1. 在日志查询中键入以下各项。 `ContainerImageInventory | where ImageID == <ImageID>` 可查看有关映像的详细信息，如映像大小以及已停止和失败映像的数量。  
    ![失败的容器](./media/containers/containers-failed04.png)
 
-## <a name="query-logs-for-container-data"></a>在日志中查询容器数据
+## <a name="query-logs-for-container-data"></a>容器数据的查询日志
 
 解决特定错误时，它可以帮助你查看环境中发生错误的位置。 以下日志类型将帮助你创建查询以返回所需的信息。
 
@@ -626,12 +620,12 @@ Log Analytics 将打开，显示有关容器状态的信息。
 - KubePodInventory_CL- 如果想要了解群集层次结构信息，请使用此类型。
 
 
-### <a name="to-query-logs-for-container-data"></a>在日志中查询容器数据的步骤
+### <a name="to-query-logs-for-container-data"></a>查询容器数据的日志
 
 * 选择一个最近失败的映像，并找到它的错误日志。 首先，通过使用 **ContainerInventory** 搜索查找运行该映像的容器名称。 例如，搜索 `ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
     ![搜索 Ubuntu 容器](./media/containers/search-ubuntu.png)
 
-  展开结果中的任一行，查看该容器的详细信息。
+  展开结果中的任何行，以查看该容器的详细信息。
 
 ## <a name="example-log-queries"></a>示例日志查询
 

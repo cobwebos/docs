@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce7f40c300a86acd101d1b38cfef4b2af91c4085
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 4238033f94fe8bfdc677c9eb623a2eab3cdf371c
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772678"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532918"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-surveymonkey-enterprise"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SurveyMonkey Enterprise 集成
 
@@ -45,6 +45,9 @@ ms.locfileid: "70772678"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * SurveyMonkey Enterprise 支持 IDP  发起的 SSO
+
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
 ## <a name="adding-surveymonkey-enterprise-from-the-gallery"></a>从库中添加 SurveyMonkey Enterprise
 
@@ -81,6 +84,18 @@ ms.locfileid: "70772678"
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 在基本 SAML 配置  部分，应用程序进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”  按钮来保存配置。
+
+1. SurveyMonkey Enterprise 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
+
+    ![image](common/edit-attribute.png)
+
+6. 除了上述属性，SurveyMonkey Enterprise 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
+
+    | Name | 源属性|
+    | ---------------| --------------- |
+    | 电子邮件 | user.mail |
+    | FirstName | user.givenname |
+    | LastName | user.surname |
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
@@ -126,7 +141,7 @@ ms.locfileid: "70772678"
 
 ### <a name="create-surveymonkey-enterprise-test-user"></a>创建 SurveyMonkey Enterprise 测试用户
 
-在本部分，将在 SurveyMonkey Enterprise 中创建一个名为“B.Simon”的用户。 请与  [SurveyMonkey Enterprise 支持团队](mailto:support@selerix.com)协作，在 SurveyMonkey Enterprise 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+不需要在 SurveyMonkey Enterprise 中创建测试用户。 如果用户选择基于 SAML 断言创建新帐户，则将预配用户帐户。 SurveyMonkey Enterprise 客户成功经理将在 Azure 元数据添加到 SurveyMonkey Enterprise 配置并准备好进行验证后，提供完成此过程的步骤。
 
 ## <a name="test-sso"></a>测试 SSO 
 

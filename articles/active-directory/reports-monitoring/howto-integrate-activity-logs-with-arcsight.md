@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Azure Monitor 将 Azure Active Directory 日志与 ArcSight 集成 |Microsoft Docs
+title: 使用 Azure Monitor 将日志与 ArcSight 集成 |Microsoft Docs
 description: 了解如何使用 Azure Monitor 将 Azure Active Directory 日志与 ArcSight 集成
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d202cb0cc2d073326a5bcc8fb0d540c232afa98
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 037240e6006b5e0625bf8fb75492d8e458899a8e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240889"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820894"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>使用 Azure Monitor 将 Azure Active Directory 日志与 ArcSight 集成
 
@@ -30,7 +30,7 @@ ms.locfileid: "72240889"
 
 在本文中，你会了解如何使用 Azure Monitor 将 Azure AD 日志路由到 ArcSight。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要使用此功能，需满足以下条件:
 * 包含 Azure AD 活动日志的 Azure 事件中心。 了解如何[将活动日志流式传输到事件中心](quickstart-azure-monitor-stream-logs-to-event-hub.md)。 

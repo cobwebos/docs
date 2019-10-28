@@ -1,17 +1,17 @@
 ---
 title: 在 Azure Cosmos DB 中优化多区域部署的成本
 description: 本文说明如何在 Azure Cosmos DB 中管理多区域部署的成本。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.author: rimman
-ms.openlocfilehash: 233eab1fc49d7ce4cbb1e5b98b67eda9a64aa195
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: e0a24b52c12bce6a8e016a926dfa64a1e36a7cc6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667598"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753323"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化多区域成本
 
@@ -25,7 +25,7 @@ ms.locfileid: "68667598"
 
 ## <a name="costs-for-multiple-write-regions"></a>多个写入区域的成本
 
-在多主数据库系统中，可用于写入操作的净 RU 会增加 `N` 倍，其中 `N` 是写入区域数。 与单区域写入不同，每个区域都可写，应支持冲突解决。 编写器的工作负载量会增加。 从成本规划的角度来看, 若要`M`在全球范围内执行 RU/秒的写入, 则需要在`RUs`容器或数据库级别预配 M。 随后可以添加任意多个区域并将它们用于写入以在全球范围执行 `M` RU 写入。 
+在多主数据库系统中，可用于写入操作的净 RU 会增加 `N` 倍，其中 `N` 是写入区域数。 与单区域写入不同，每个区域都可写，应支持冲突解决。 编写器的工作负载量会增加。 从成本规划的角度来看，若要在全球范围内执行 `M` RU/秒的写入，则需要在容器或数据库级别预配 M `RUs`。 随后可以添加任意多个区域并将它们用于写入以在全球范围执行 `M` RU 写入。 
 
 ### <a name="example"></a>示例
 
@@ -35,8 +35,8 @@ ms.locfileid: "68667598"
 |----|----|----|----|
 |美国西部容器的吞吐量帐单（多个写入区域） |10K RU/秒 * 24 * 31 |每小时每 100 RU/s 为 0.016 美元 |1,190.40 美元 |
 |3 个其他区域（美国东部、北欧和东亚）的吞吐量帐单（多个写入区域） |(3 + 1) * 10K RU/秒 * 24 * 31 |每小时每 100 RU/s 为 0.016 美元 |4,761.60 美元 |
-|美国西部容器的存储帐单 |1 TB (或 1024 GB) |0\.25 美元/GB |$256 |
-|3 个其他区域（美国东部、北欧和东亚）的存储帐单 |3 * 1 TB (或 3072 GB) |0\.25 美元/GB |$768 |
+|美国西部容器的存储帐单 |1 TB （或 1024 GB） |0\.25 美元/GB |$256 |
+|3 个其他区域（美国东部、北欧和东亚）的存储帐单 |3 * 1 TB （或 3072 GB） |0\.25 美元/GB |$768 |
 |**总计**|||**$6976** |
 
 ## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>按每个区域提高吞吐量利用率
@@ -53,8 +53,8 @@ ms.locfileid: "68667598"
 
 接下来，可通过以下文章详细了解 Azure Cosmos DB 中的成本优化：
 
-* 详细了解[开发和测试优化](optimize-dev-test.md)
-* 详细了解[了解 Azure Cosmos DB 帐单](understand-your-bill.md)
+* 详细了解如何[进行开发和测试优化](optimize-dev-test.md)
+* 详细了解 [Azure Cosmos DB 帐单](understand-your-bill.md)
 * 详细了解如何[优化吞吐量成本](optimize-cost-throughput.md)
 * 详细了解如何[优化存储成本](optimize-cost-storage.md)
 * 详细了解如何[优化读取和写入成本](optimize-cost-reads-writes.md)

@@ -9,16 +9,18 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 16ac8ef9e0fb876103b57b1cc463bdae5b2362b7
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 5842d6fcb5f03754fc8f5922e299d0d9c30d21db
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828112"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900835"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>使用 Windows 上的虚拟 TPM 创建和预配模拟 IoT Edge 设备
 
 可以使用[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备，就像预配未启用 Edge 的设备一样。 如果你不熟悉自动预配过程，请在继续操作之前查看[自动预配的概念](../iot-dps/concepts-auto-provisioning.md)。
+
+对于单个注册和组注册中的 IoT Edge 设备，DPS 支持对称密钥证明。 对于组注册，如果在对称密钥证明中选中 "IoT Edge 设备" 选项为 true，则在该注册组中注册的所有设备将标记为 "IoT Edge 设备"。 
 
 本文说明如何使用以下步骤测试模拟 IoT Edge 设备上的自动预配：
 
@@ -33,7 +35,7 @@ ms.locfileid: "71828112"
 > [!TIP]
 > 本文介绍如何通过在虚拟设备上使用 TPM 证明来测试自动预配，但在使用物理 TPM 硬件时也适用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 一台 Windows 开发计算机。 本文使用 Windows 10。
 * 活动的 IoT 中心。
@@ -57,7 +59,7 @@ ms.locfileid: "71828112"
 
 选择要用来创建模拟设备的 SDK 语言，并遵循本文中的步骤，直到创建了个人注册为止。
 
-创建个人注册时，请选择“True”，将 Windows 开发计算机上的模拟 TPM 设备声明为“IoT Edge设备”。
+创建单个注册时，请选择 " **True** " 以声明 Windows 开发计算机上的模拟 TPM 设备是**IoT Edge 设备**。
 
 模拟设备和个人注册指南：
 
@@ -73,10 +75,10 @@ ms.locfileid: "71828112"
 
 IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在容器中运行，允许你将其他容器部署到设备，以便在边缘上运行代码。
 
-预配设备时需要以下信息：
+预配设备时，需要以下信息：
 
-* DPS 的“ID 范围”值
-* 为设备创建的“注册 ID”
+* DPS **ID 范围**值
+* 你创建的设备**注册 ID**
 
 在运行模拟 TPM 的设备上安装 IoT Edge 运行时。 将 IoT Edge 运行时配置为自动进行，而不是手动设置。
 
@@ -87,18 +89,18 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 
 1. 在管理员模式下打开 PowerShell 窗口。 安装 IoT Edge 而不是 PowerShell （x86）时，请务必使用 PowerShell 的 AMD64 会话。
 
-1. **Deploy-IoTEdge** 命令检查 Windows 计算机是否使用了支持的版本，启用容器功能，然后下载 moby 运行时和 IoT Edge 运行时。 该命令默认使用 Windows 容器。
+1. **IoTEdge**命令检查 Windows 计算机是否在受支持的版本上，打开容器功能，然后下载小鲸鱼运行时和 IoT Edge 运行时。 命令默认为使用 Windows 容器。
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge
    ```
 
-1. 此时，IoT Core 设备可能会自动重启。 其他 Windows 10 或 Windows Server 设备可能会提示你重启。 如果是这样，请立即重启设备。 设备准备就绪后，再次以管理员身份运行 PowerShell。
+1. 此时，IoT 核心设备可能会自动重新启动。 其他 Windows 10 或 Windows Server 设备可能会提示您重新启动。 如果是这样，请立即重新启动设备。 设备准备就绪后，请再次以管理员身份运行 PowerShell。
 
-1. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时。 该命令默认为使用 Windows 容器手动预配。 通过 `-Dps` 标志使用设备预配服务，而不是手动预配。
+1. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时。 该命令默认为使用 Windows 容器手动预配。 使用 `-Dps` 标志来使用设备预配服务，而不是手动预配。
 
-   用先前收集的数据替换 `{scope_id}` 的占位符值，并 `{registration_id}`。
+   将 `{scope_id}` 和 `{registration_id}` 的占位符值替换为先前收集的数据。
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `

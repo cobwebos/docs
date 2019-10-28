@@ -1,17 +1,17 @@
 ---
 title: 了解如何保护对 Azure Cosmos DB 中数据的访问
 description: 了解有关 Azure Cosmos DB 中的访问控制概念，包括主密钥、只读密钥、用户和权限。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: f2e01e42a53f6f099191c03f45d6521668ea73a1
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 7e732f1d35097730d4468b43a2d9804fe7a18514
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616671"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753176"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>保护对 Azure Cosmos DB 中数据的访问
 
@@ -104,7 +104,7 @@ Cosmos DB 资源令牌提供一种安全的替代方案，使客户端能够根�
 
 <a id="users"></a>
 
-## <a name="users"></a>位用户
+## <a name="users"></a>用户
 Cosmos DB 用户与 Cosmos 数据库相关联。  每个数据库可以包含零个或多个 Cosmos DB 用户。  以下代码示例演示如何创建 Cosmos DB 用户资源。
 
 ```csharp
@@ -193,5 +193,5 @@ DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>后续步骤
-* 若要了解有关 Cosmos 数据库安全性的详细[信息, 请参阅 Cosmos DB:数据库安全性](database-security.md)。
+* 若要了解有关 Cosmos 数据库安全性的详细信息，请参阅[Cosmos DB：数据库安全](database-security.md)。
 * 若要了解如何构造 Azure Cosmos DB 授权令牌，请参阅 [Azure Cosmos DB 资源的访问控制](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)。

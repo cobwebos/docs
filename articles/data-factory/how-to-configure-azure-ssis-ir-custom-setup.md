@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 4962070d69af98d0c7b10dc6f931612766529dce
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f7b09dcbd474debc08b79599e9e2dfaaca52285a
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515709"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754685"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>自定义 Azure-SSIS 集成运行时的安装
 
@@ -40,9 +40,9 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
 -   Azure-SSIS IR 目前不支持管理共享。
 
--   Azure-SSIS IR 不支持 IBM iSeries Access ODBC 驱动程序。 你可能会在自定义安装过程中看到安装错误。 请联系 IBM 支持部门以获得帮助。
+-   Azure-SSIS IR 上不支持 IBM iSeries Access ODBC 驱动程序。 你可能会在自定义安装过程中看到安装错误。 请联系 IBM 支持部门以获得帮助。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -64,6 +64,8 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
    1.  必须创建一个名为 `main.cmd` 的脚本文件，即自定义安装程序的入口点。
 
+   1.  你需要确保脚本可以在无提示的情况下执行，建议先在本地计算机上测试脚本。
+
    1.  如果想要将其他工具（例如 `msiexec.exe`）生成的其他日志上传到容器，请在脚本中指定预定义的环境变量 `CUSTOM_SETUP_SCRIPT_LOG_DIR` 作为日志文件夹（例如 `msiexec /i xxx.msi /quiet /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log`）。
 
 1. 下载、安装并启动 [Azure 存储资源管理器](https://storageexplorer.com/)。
@@ -84,7 +86,7 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
       ![创建 Blob 容器](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
 
-   1. 选择新容器并上传自定义安装脚本及其关联的文件。 请务必将 `main.cmd` 上传到容器的顶级目录，而不要上传到任何文件夹中。 另请确保你的容器仅包含所需的自定义安装文件，以便稍后将它们下载到 Azure-SSIS IR 时不会花费较长的时间。 自定义安装的最大期限目前设置为 45 分钟（以后将超时），这包括从容器下载所有文件并将其安装在 Azure-SSIS IR 上的时间。 如果需要更长的时间段, 请提出支持票证。
+   1. 选择新容器并上传自定义安装脚本及其关联的文件。 请务必将 `main.cmd` 上传到容器的顶级目录，而不要上传到任何文件夹中。 另请确保你的容器仅包含所需的自定义安装文件，以便稍后将它们下载到 Azure-SSIS IR 时不会花费较长的时间。 自定义安装程序的最长时间当前设置为在45分钟后超时，这包括从容器下载所有文件并将其安装到 Azure-SSIS IR 的时间。 如果需要更长的时间段，请提出支持票证。
 
       ![将文件上传到 Blob 容器](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
 
@@ -124,7 +126,7 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
 1. 若要查看其他自定义安装示例，请使用 Azure 存储资源管理器连接到公共预览版容器。
 
-   a.  在“(本地和附加)”下面，右键单击“存储帐户”，并依次选择“连接到 Azure 存储”、“使用连接字符串或共享访问签名 URI”、“下一步”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  在“(本地和附加)”下面，右键单击“存储帐户”，并依次选择“连接到 Azure 存储”、“使用连接字符串或共享访问签名 URI”、“下一步”。
 
       ![使用共享访问签名连接到 Azure 存储](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image9.png)
 
@@ -142,7 +144,7 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
    ![公共预览版容器的内容](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image11.png)
 
-   d. 双击 `UserScenarios` 文件夹。 此文件夹包含以下项：
+   d.单击“下一步”。 双击 `UserScenarios` 文件夹。 此文件夹包含以下项：
 
       1. 一个 `.NET FRAMEWORK 3.5` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装自定义组件可能需要的 .NET Framework 早期版本的自定义安装程序。
 

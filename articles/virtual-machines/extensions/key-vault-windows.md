@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 53daa634374c10d48c42f5985459db7e068f293d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 43c4b363f223c61bac3d3f7dbd272519a0cd014d
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301888"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899044"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Key Vault 虚拟机扩展
 
@@ -28,7 +28,7 @@ Key Vault VM 扩展支持以下版本的 Windows：
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 Key Vault VM 代理扩展的架构。 扩展不需要受保护的设置-其所有设置均被视为公用信息。 扩展需要一个列表，其中列出了监视的证书、轮询频率和目标证书存储。 尤其是在下列情况下：  
+以下 JSON 显示 Key Vault VM 代理扩展的架构。 扩展不需要受保护的设置-其所有设置均被视为公用信息。 扩展需要一个列表，其中列出了监视的证书、轮询频率和目标证书存储。 具体如下：  
 
 ```json
     {
@@ -59,23 +59,23 @@ Key Vault VM 扩展支持以下版本的 Windows：
 ```
 
 > [!NOTE]
-> 观察到的证书 Url 的格式应为 `https://myVaultName.vault.azure.net/secrets/myCertName`。
+> 观察到的证书 Url 应采用格式 `https://myVaultName.vault.azure.net/secrets/myCertName`。
 > 
-> 这是因为 `/secrets` 路径返回的是完整证书，包括私钥，而 @no__t 1 路径则不返回。 有关证书的详细信息可在此处找到：[Key Vault 证书](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
+> 这是因为 `/secrets` 路径将返回包含私钥的完整证书，而 `/certificates` 路径不会。 可在此处找到有关证书的详细信息： [Key Vault 证书](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
 ### <a name="property-values"></a>属性值
 
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault.Edp | string |
-| type | KeyVaultForWindows | string |
+| 发布者 | Microsoft.Azure.KeyVault.Edp | 字符串 |
+| type | KeyVaultForWindows | 字符串 |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | int |
-| certificateStoreName | MY | string |
-| linkOnRenewal | false | boolean |
-| certificateStoreLocation  | LocalMachine | string |
-| requiredInitialSync | true | boolean |
+| certificateStoreName | MY | 字符串 |
+| linkOnRenewal | false | 布尔值 |
+| certificateStoreLocation  | LocalMachine | 字符串 |
+| requiredInitialSync | 是 | 布尔值 |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 字符串数组
 
 
@@ -83,7 +83,7 @@ Key Vault VM 扩展支持以下版本的 Windows：
 
 可使用 Azure 资源管理器模板部署 Azure VM 扩展。 部署需要部署后刷新证书的一个或多个虚拟机时，模板是理想选择。 此扩展可以部署到单个 Vm 或虚拟机规模集。 架构和配置对于这两种模板类型通用。 
 
-虚拟机扩展的 JSON 配置必须嵌套在模板的虚拟机资源片段中，具体而言，@no__t 为虚拟机模板使用-0 对象，在 @no__t 1 对象下的虚拟机规模集。
+虚拟机扩展的 JSON 配置必须嵌套在模板的虚拟机资源片段中，具体而言，`"resources": []` 虚拟机模板的对象和 `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` 对象下的虚拟机规模集。
 
 ```json
     {
@@ -168,7 +168,7 @@ Azure CLI 可用于将 Key Vault VM 扩展部署到现有的虚拟机或虚拟�
          az vm extension set -n "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
-         --vm-name "<vmName>" `
+         --vmss-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
     ```
 
@@ -179,7 +179,7 @@ Azure CLI 可用于将 Key Vault VM 扩展部署到现有的虚拟机或虚拟�
         az vmss extension set -n "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
-         --vm-name "<vmName>" `
+         --vmss-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
     ```
 
@@ -214,4 +214,4 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果你对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

@@ -1,28 +1,28 @@
 ---
-title: Azure Active Directory 条件访问设置参考 | Microsoft Docs
-description: 获取 Azure Active Directory 条件访问策略中受支持设置的概述。
+title: Azure Active Directory 条件访问设置引用 |Microsoft Docs
+description: 大致了解 Azure Active Directory 条件访问策略中支持的设置。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: reference
 ms.date: 07/10/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 834b13c512bca1b7c43c3c8e93a72383a82db198
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 5a3518dfcad3678dc298ba8529e731d48ec1d195
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274182"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893460"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
-可使用 [Azure Active Directory (Azure AD) 条件访问](../active-directory-conditional-access-azure-portal.md)来控制经授权的用户如何访问资源。
+可以使用[Azure Active Directory （Azure AD）条件访问](../active-directory-conditional-access-azure-portal.md)来控制授权用户访问资源的方式。
 
-本文提供有关以下条件访问策略中的配置选项的支持信息：
+本文提供了有关条件访问策略中的下列配置选项的支持信息：
 
 - 云应用程序分配
 - 设备平台条件
@@ -33,32 +33,32 @@ ms.locfileid: "72274182"
 
 ## <a name="cloud-apps-assignments"></a>云应用分配
 
-使用条件访问策略，可以控制用户如何访问你的[云应用](conditions.md#cloud-apps-and-actions)。 配置条件访问策略时，至少需要一个云应用。 
+使用条件性访问策略，可以控制用户访问[云应用](conditions.md#cloud-apps-and-actions)的方式。 配置条件访问策略时，需要至少选择一个云应用。 
 
 ![为策略选择云应用](./media/technical-reference/09.png)
 
 ### <a name="microsoft-cloud-applications"></a>Microsoft 云应用程序
 
-可以从 Microsoft 为以下云应用分配条件访问策略：
+可以将条件性访问策略分配给 Microsoft 的以下云应用：
 
 - Azure Analysis Services
 - Azure DevOps
-- Azure SQL 数据库和数据仓库 - [了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
+- Azure SQL 数据库和数据仓库-[了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
 - Dynamics CRM Online
 - Microsoft Application Insights Analytics
 - Microsoft Azure 信息保护-[了解详细信息](https://docs.microsoft.com/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - Microsoft Azure 管理-[了解详细信息](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
 - Microsoft Azure 订阅管理
 - Microsoft Cloud App Security
-- Microsoft Commerce Tools 访问控制门户
-- Microsoft Commerce Tools 身份验证服务
+- Microsoft Commerce 工具访问控制门户
+- Microsoft Commerce 工具身份验证服务
 - Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
-- Microsoft Intune Enrollment
+- Microsoft Intune 注册
 - Microsoft Planner
 - Microsoft PowerApps
-- Microsoft Search in Bing
+- 必应的 Microsoft 搜索
 - Microsoft StaffHub
 - Microsoft Stream
 - Microsoft Teams
@@ -71,7 +71,7 @@ ms.locfileid: "72274182"
 - Power BI 服务
 - Project Online
 - Skype for Business Online
-- 虚拟专用网络 (VPN)
+- 虚拟专用网络（VPN）
 - Windows Defender ATP
 
 ### <a name="other-applications"></a>其他应用程序
@@ -86,7 +86,7 @@ ms.locfileid: "72274182"
 
 ## <a name="device-platform-condition"></a>设备平台条件
 
-在条件访问策略中，可配置设备平台条件，将策略绑定到客户端上的操作系统。 Azure AD 条件访问支持以下设备平台：
+在条件访问策略中，可以配置设备平台条件，将策略绑定到客户端上的操作系统。 Azure AD 条件访问支持以下设备平台：
 
 - Android
 - iOS
@@ -96,20 +96,20 @@ ms.locfileid: "72274182"
 
 ![将访问策略绑定到客户端 OS](./media/technical-reference/41.png)
 
-如果使用**其他客户端**条件来阻止旧身份验证，还可以设置设备平台条件。
+如果使用**其他客户端**条件阻止旧身份验证，则还可以设置设备平台条件。
 
 ## <a name="client-apps-condition"></a>客户端应用条件
 
-在条件访问策略中，可以配置[客户端应用](conditions.md#client-apps)条件，以将策略绑定到发起访问尝试的客户端应用。 设置客户端应用条件，在用户尝试从以下类型的客户端应用进行访问时授予其访问权限或阻止访问：
+在条件访问策略中，可以配置[客户端应用](conditions.md#client-apps)条件，将策略绑定到已启动访问尝试的客户端应用。 设置客户端应用条件，在用户尝试从以下类型的客户端应用进行访问时授予其访问权限或阻止访问：
 
-- Browser
+- 浏览器
 - 移动应用和桌面应用
 
 ![控制客户端应用的访问](./media/technical-reference/03.png)
 
 ### <a name="supported-browsers"></a>支持的浏览器
 
-在条件访问策略中，可以选择“浏览器”作为客户端应用。
+在条件访问策略中，可以选择 "**浏览器**" 作为客户端应用。
 
 ![控制受支持浏览器的访问](./media/technical-reference/05.png)
 
@@ -120,7 +120,7 @@ ms.locfileid: "72274182"
 | Windows 10             | Microsoft Edge、Internet Explorer、Chrome       |
 | Windows 8/8.1        | Internet Explorer、Chrome                       |
 | Windows 7              | Internet Explorer、Chrome                       |
-| iOS                    | Microsoft Edge、Intune Managed Browser、Safari  |
+| iOS                    | Microsoft Edge，Intune Managed Browser，Safari  |
 | Android                | Microsoft Edge、Intune Managed Browser、Chrome  |
 | Windows Phone          | Microsoft Edge、Internet Explorer               |
 | Windows Server 2019    | Microsoft Edge、Internet Explorer、Chrome       |
@@ -130,37 +130,37 @@ ms.locfileid: "72274182"
 | macOS                  | Chrome、Safari                                  |
 
 
-#### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>为何我在浏览器中看到证书提示
+#### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>为什么在浏览器中看到证书提示
 
-在 Windows 7、iOS、Android 和 macOS 上，Azure AD 使用客户端证书来标识设备，该证书是在将设备注册到 Azure AD 时预配的。  用户首次通过浏览器登录时，系统会提示用户选择此证书。 用户必须在使用浏览器之前选择此证书。
+在 Windows 7、iOS、Android 和 macOS 上 Azure AD 使用在 Azure AD 中注册设备时设置的客户端证书来标识设备。  当用户通过浏览器首次登录时，系统将提示用户选择证书。 用户必须先选择此证书，然后才能使用浏览器。
 
 #### <a name="chrome-support"></a>Chrome 支持
 
-对于**windows 10 创意者更新（版本1703）** 或更高版本中的 Chrome 支持，请安装[windows 10 帐户扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 当条件访问策略需要特定于设备的详细信息时，此扩展是必需的。
+对于**windows 10 创意者更新（版本1703）** 或更高版本中的 Chrome 支持，请安装[windows 10 帐户扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 如果条件访问策略需要特定于设备的详细信息，则需要此扩展。
 
 若要自动将此扩展部署到 Chrome 浏览器，请创建以下注册表项：
 
 |    |    |
 | --- | --- |
-| Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| 名称 | 1 |
-| type | REG_SZ (String) |
-| Data | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
+| 路径 | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| 名称 | 第 |
+| Type | REG_SZ (String) |
+| 数据 | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.google.com/service/update2/crx |
 
 对于 Windows 8.1 和 7 中的 Chrome 支持，请创建以下注册表项：
 
 |    |    |
 | --- | --- |
-| Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| 名称 | 1 |
-| 类型 | REG_SZ (String) |
-| Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
+| 路径 | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| 名称 | 第 |
+| Type | REG_SZ (String) |
+| 数据 | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
 这些浏览器支持设备身份验证，允许根据策略对设备进行识别和验证。 如果浏览器以专用模式运行，设备检查将失败。
 
 ### <a name="supported-mobile-applications-and-desktop-clients"></a>支持的移动应用程序和桌面客户端
 
-在条件访问策略中，可以选择“移动应用和桌面客户端”作为客户端应用。
+在条件访问策略中，可以选择 "**移动应用和桌面客户**端" 作为客户端应用。
 
 ![控制受支持移动应用或桌面客户端的访问](./media/technical-reference/06.png)
 
@@ -196,7 +196,7 @@ ms.locfileid: "72274182"
 
 ## <a name="approved-client-app-requirement"></a>批准的客户端应用要求
 
-在条件访问策略中，可以要求对所选云应用的访问尝试通过批准的客户端应用进行。 
+在条件访问策略中，可以要求从已批准的客户端应用对所选云应用进行的访问尝试。 
 
 ![控制已批准客户端应用的访问](./media/technical-reference/21.png)
 
@@ -230,7 +230,7 @@ ms.locfileid: "72274182"
 - Microsoft Word
 - Microsoft Yammer
 
-**注释**
+**备注**
 
 - 批准的客户端应用支持 Intune 移动应用管理功能。
 - “需要批准的客户端应用”要求：
@@ -238,9 +238,9 @@ ms.locfileid: "72274182"
 
 ## <a name="app-protection-policy-requirement"></a>应用保护策略要求 
 
-在条件访问策略中，可以要求客户端应用上必须存在应用保护策略，然后才允许所选云应用进行访问。 
+在条件访问策略中，你可以要求在客户端应用上提供应用保护策略，然后才能访问所选的云应用。 
 
-![通过应用保护策略来控制访问权限](./media/technical-reference/22.png)
+![使用应用保护策略控制访问](./media/technical-reference/22.png)
 
 此设置适用于以下客户端应用：
 
@@ -249,16 +249,16 @@ ms.locfileid: "72274182"
 - Microsoft Outlook
 - Microsoft Planner
 
-**注释**
+**备注**
 
-- 适用于应用保护策略的应用支持带策略保护的 Intune 移动应用程序管理功能。
-- “需要应用保护策略”要求：
+- 适用于应用保护策略的应用支持 Intune 移动应用程序管理功能与策略保护。
+- **需要应用保护策略**要求：
     - 仅支持 iOS 和 Android 作为[设备平台条件](#device-platform-condition)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关条件访问的概述，请参阅 [Azure Active Directory 中的条件访问是什么？](../active-directory-conditional-access-azure-portal.md)
-- 如果已准备好在环境中配置条件访问策略，请参阅 [Azure Active Directory 中条件访问的推荐做法](best-practices.md)。
+- 有关条件性访问的概述，请参阅[什么是 Azure Active Directory 中的条件性访问？](../active-directory-conditional-access-azure-portal.md)
+- 如果已准备好在环境中配置条件性访问策略，请参阅[Azure Active Directory 中条件性访问的建议做法](best-practices.md)。
 
 <!--Image references-->
 [1]: ./media/technical-reference/01.png

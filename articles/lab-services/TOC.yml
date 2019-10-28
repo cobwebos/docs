@@ -1,359 +1,265 @@
-- name: 实验室服务文档
+- name: 开发测试实验室文档
   href: index.yml
+- name: 切换到实验室服务文档
+  href: classroom-labs/classroom-labs-overview.md
 - name: 概述
   items:
-    - name: 关于实验室服务
-      href: lab-services-overview.md
-    - name: 关于教室实验室
-      href: classroom-labs/classroom-labs-overview.md
     - name: 关于开发测试实验室
       href: devtest-lab-overview.md
+    - name: Azure 开发测试实验室和实验室服务
+      href: lab-services-overview.md
 - name: 教程
   items:
-    - name: 教室实验室
-      items:
-        - name: 1. 设置实验室帐户
-          href: classroom-labs/tutorial-setup-lab-account.md
-        - name: 2. 设置教室实验室
-          href: classroom-labs/tutorial-setup-classroom-lab.md
-        - name: 3. 访问教室实验室
-          href: classroom-labs/tutorial-connect-virtual-machine-classroom-lab.md
-        - name: 4. 跟踪课堂实验室的使用情况
-          href: classroom-labs/tutorial-track-usage.md
-    - name: 开发测试实验室
-      items:
-        - name: 1. 设置实验室
-          href: tutorial-create-custom-lab.md
-        - name: 2. 访问实验室
-          href: tutorial-use-custom-lab.md
+    - name: 1. 设置实验室
+      href: tutorial-create-custom-lab.md
+    - name: 2. 访问实验室
+      href: tutorial-use-custom-lab.md
 - name: 示例
   items:
-    - name: 开发测试实验室
-      items:
-        - name: 资源管理器模板
-          href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates'
-        - name: Azure PowerShell
-          href: samples-powershell.md
-        - name: Azure PowerShell - Az.DevTestLabs2 模块
-          href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
-        - name: Azure CLI
-          href: samples-cli.md
+    - name: 资源管理器模板
+      href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates'
+    - name: Azure PowerShell
+      href: samples-powershell.md
+    - name: Azure PowerShell - Az.DevTestLabs2 模块
+      href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
+    - name: Azure CLI
+      href: samples-cli.md
 - name: 概念
   items:
-    - name: 教室实验室
+    - name: 开发测试实验室概念
+      href: devtest-lab-concepts.md
+    - name: 分布式和协作式开发最佳做法
+      href: best-practices-distributive-collaborative-development-environment.md
+    - name: 与 Azure DevOps 集成
+      href: devtest-lab-dev-ops.md
+    - name: 方案
       items:
-        - name: 教室实验室概念
-          href: classroom-labs/classroom-labs-concepts.md
-        - name: 方案
-          items:
-            - name: 将实验室用于上课
-              href: classroom-labs/classroom-labs-scenarios.md
-    - name: 开发测试实验室
-      items:
-        - name: 开发测试实验室概念
-          href: devtest-lab-concepts.md
-        - name: 分布式和协作式开发最佳做法
-          href: best-practices-distributive-collaborative-development-environment.md
-        - name: 与 Azure DevOps 集成
-          href: devtest-lab-dev-ops.md
-        - name: 方案
-          items:
-            - name: 适合使用开发测试实验室的常见场景
-              href: devtest-lab-guidance-get-started.md
-            - name: 使用开发人员实验室
-              href: devtest-lab-developer-lab.md
-            - name: 使用测试环境实验室
-              href: devtest-lab-test-env.md
-            - name: 使用训练实验室
-              href: devtest-lab-training-lab.md
-            - name: 用于使用可认领 VM 的方案
-              href: devtest-lab-use-claim-capabilities.md
+        - name: 适合使用开发测试实验室的常见场景
+          href: devtest-lab-guidance-get-started.md
+        - name: 使用开发人员实验室
+          href: devtest-lab-developer-lab.md
+        - name: 使用测试环境实验室
+          href: devtest-lab-test-env.md
+        - name: 使用训练实验室
+          href: devtest-lab-training-lab.md
+        - name: 用于使用可认领 VM 的方案
+          href: devtest-lab-use-claim-capabilities.md
 - name: 操作指南
   items:
-    - name: 教室实验室 - 课程类型
+    - name: 配置实验室
       items:
-        - name: 课程类型概述
-          href: classroom-labs/class-types.md
-        - name: 自然处理中的深度学习
-          href: classroom-labs/class-type-deep-learning-natural-processing.md
-        - name: Linux 上的 Shell 脚本
-          href: classroom-labs/class-type-shell-scripting-linux.md
-        - name: 道德黑客攻击
-          href: classroom-labs/class-type-ethical-hacking.md
-    - name: 教室实验室
+        - name: 创建实验室
+          href: devtest-lab-create-lab.md
+        - name: 使用资源管理器模板创建或修改实验室
+          href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
+        - name: 为实验室虚拟机指定资源组
+          href: resource-group-control.md
+        - name: 将支持信息添加到实验室
+          href: devtest-lab-internal-support-message.md
+        - name: 设置策略和计划
+          href: devtest-lab-set-lab-policy.md
+        - name: 将实验室配置为使用远程桌面网关
+          href: configure-lab-remote-desktop-gateway.md
+        - name: 在实验室中发布公告
+          href: devtest-lab-announcements.md
+        - name: 在 VM 上启用浏览器连接
+          href: enable-browser-connection-lab-virtual-machines.md
+        - name: 配置成本管理
+          href: devtest-lab-configure-cost-management.md
+        - name: 发送自动关闭通知
+          href: devtest-lab-auto-shutdown.md
+        - name: 缩放实验室
+          href: devtest-lab-scale-lab.md
+        - name: 管理虚拟机基础映像
+          items:
+            - name: 配置 Azure 市场映像
+              href: devtest-lab-configure-marketplace-images.md
+            - name: 启用许可的映像
+              href: devtest-lab-enable-licensed-images.md
+            - name: 配置共享映像库
+              href: configure-shared-image-gallery.md
+        - name: 配置标记
+          href: devtest-lab-add-tag.md
+        - name: 配置访问控制
+          items:
+            - name: 添加实验室所有者与用户
+              href: devtest-lab-add-devtest-user.md
+            - name: 使用自定义角色来自定义权限
+              href: devtest-lab-grant-user-permissions-to-specific-lab-policies.md
+            - name: 自动执行添加实验室用户
+              href: automate-add-lab-user.md
+        - name: 管理虚拟网络
+          items:
+            - name: 配置虚拟网络
+              href: devtest-lab-configure-vnet.md
+            - name: 选择 IP 配置选项
+              href: devtest-lab-shared-ip.md
+        - name: 删除实验室或实验室中的 VM
+          href: devtest-lab-delete-lab-vm.md
+        - name: 导出或删除个人数据
+          href: personal-data-delete-export.md
+    - name: 在实验室中使用 VM
       items:
-        - name: 创建和配置实验室帐户（实验室帐户所有者）
-          items:
-            - name: 创建和管理实验室帐户
-              href: classroom-labs/how-to-manage-lab-accounts.md
-            - name: 配置实验室帐户
-              href: classroom-labs/how-to-configure-lab-accounts.md
-            - name: 将实验室连接到对等虚拟网络
-              href: classroom-labs/how-to-connect-peer-virtual-network.md
-            - name: 附加或分离共享映像库
-              href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
-        - name: 创建和配置课堂实验室（讲师）
-          items:
-            - name: 创建和管理教室实验室
-              href: classroom-labs/how-to-manage-classroom-labs.md
-            - name: 设置、自定义并发布模板
-              href: classroom-labs/how-to-create-manage-template.md
-            - name: 设置和管理虚拟机池
-              href: classroom-labs/how-to-set-virtual-machine-passwords.md
-            - name: 添加和管理实验室用户
-              href: classroom-labs/how-to-configure-student-usage.md
-            - name: 创建并管理计划
-              href: classroom-labs/how-to-create-schedules.md
-            - name: 使用共享映像库
-              href: classroom-labs/how-to-use-shared-image-gallery.md
-            - name: 启用适用于 Linux 的远程桌面连接
-              href: classroom-labs/how-to-enable-remote-desktop-linux.md
-            - name: 在模板 VM 上启用嵌套虚拟化
-              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
-            - name: 创建带有模板 VM 内的多个 VM 的环境
-              href: classroom-labs/how-to-enable-multi-vm-environment.md
-        - name: 连接到课堂实验室中的 VM（学生）
-          items:
-            - name: 访问教室实验室
-              href: classroom-labs/how-to-use-classroom-lab.md
-            - name: 对 Linux VM 使用远程桌面连接
-              href: classroom-labs/how-to-use-remote-desktop-linux-student.md
-            - name: 设置或重置虚拟机的密码
-              href: classroom-labs/how-to-set-virtual-machine-passwords-student.md
-    - name: 开发测试实验室
+        - name: 创建 VM - Azure 门户
+          href: devtest-lab-add-vm.md
+        - name: 创建 VM - Azure PowerShell
+          href: devtest-lab-vm-powershell.md
+        - name: 创建 VM - Azure CLI
+          href: devtest-lab-vmcli.md
+        - name: 创建 VM - 资源管理器模板
+          href: devtest-lab-use-resource-manager-template.md
+        - name: 使用共享映像库中的映像创建 VM
+          href: add-vm-use-shared-image.md
+        - name: 通过浏览器连接到 VM
+          href: connect-virtual-machine-through-browser.md
+        - name: 使用 PowerShell 或 CLI 启动或停止 VM
+          href: use-command-line-start-stop-virtual-machines.md
+        - name: 重新启动 VM
+          href: devtest-lab-restart-vm.md
+        - name: 调整 VM 的大小
+          href: devtest-lab-resize-vm.md
+        - name: 重新部署 VM
+          href: devtest-lab-redeploy-vm.md
+        - name: 配置 VM 的自动关闭
+          href: devtest-lab-auto-shutdown-vm.md
+        - name: 创建和管理可认领 VM
+          href: devtest-lab-add-claimable-vm.md
+        - name: 配置机密
+          href: devtest-lab-store-secrets-in-key-vault.md
+        - name: 附加和分离数据磁盘
+          href: devtest-lab-attach-detach-data-disk.md
+        - name: 使用自动化 runbook 启动 VM
+          href: start-machines-use-automation-runbooks.md
+        - name: 从另一个实验室导入虚拟机
+          href: import-virtual-machines-from-another-lab.md
+    - name: 在实验室中使用环境
       items:
-        - name: 配置实验室
+        - name: 创建环境
+          href: devtest-lab-create-environment-from-arm.md
+        - name: 使用平台即服务 (PaaS) 服务
+          href: use-paas-services.md
+        - name: 公共环境
           items:
-            - name: 创建实验室
-              href: devtest-lab-create-lab.md
-            - name: 使用资源管理器模板创建或修改实验室
-              href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
-            - name: 为实验室虚拟机指定资源组
-              href: resource-group-control.md
-            - name: 将支持信息添加到实验室
-              href: devtest-lab-internal-support-message.md
-            - name: 设置策略和计划
-              href: devtest-lab-set-lab-policy.md
-            - name: 将实验室配置为使用远程桌面网关
-              href: configure-lab-remote-desktop-gateway.md
-            - name: 在实验室中发布公告
-              href: devtest-lab-announcements.md
-            - name: 在 VM 上启用浏览器连接
-              href: enable-browser-connection-lab-virtual-machines.md
-            - name: 配置成本管理
-              href: devtest-lab-configure-cost-management.md
-            - name: 发送自动关闭通知
-              href: devtest-lab-auto-shutdown.md
-            - name: 缩放实验室
-              href: devtest-lab-scale-lab.md
-            - name: 管理虚拟机基础映像
-              items:
-                - name: 配置 Azure 市场映像
-                  href: devtest-lab-configure-marketplace-images.md
-                - name: 启用许可的映像
-                  href: devtest-lab-enable-licensed-images.md
-                - name: 配置共享映像库
-                  href: configure-shared-image-gallery.md
-            - name: 配置标记
-              href: devtest-lab-add-tag.md
-            - name: 配置访问控制
-              items:
-                - name: 添加实验室所有者与用户
-                  href: devtest-lab-add-devtest-user.md
-                - name: 使用自定义角色来自定义权限
-                  href: devtest-lab-grant-user-permissions-to-specific-lab-policies.md
-                - name: 自动执行添加实验室用户
-                  href: automate-add-lab-user.md
-            - name: 管理虚拟网络
-              items:
-                - name: 配置虚拟网络
-                  href: devtest-lab-configure-vnet.md
-                - name: 选择 IP 配置选项
-                  href: devtest-lab-shared-ip.md
-            - name: 删除实验室或实验室中的 VM
-              href: devtest-lab-delete-lab-vm.md
-            - name: 导出或删除个人数据
-              href: personal-data-delete-export.md
-        - name: 在实验室中使用 VM
+            - name: 配置和使用公共环境
+              href: devtest-lab-configure-use-public-environments.md
+            - name: 使用 Service Fabric 群集创建环境
+              href: create-environment-service-fabric-cluster.md
+        - name: 将环境连接到实验室的虚拟网络
+          href: connect-environment-lab-virtual-network.md
+        - name: 使用嵌套模板配置测试环境
+          href: deploy-nested-template-environments.md
+        - name: 使用 Azure 托管标识部署环境
+          href: use-managed-identities-environments.md
+    - name: 管理可重用模板
+      items:
+        - name: 自定义映像和公式
+          href: devtest-lab-comparing-vm-base-image-types.md
+        - name: 管理环境模板
           items:
-            - name: 创建 VM - Azure 门户
-              href: devtest-lab-add-vm.md
-            - name: 创建 VM - Azure PowerShell
-              href: devtest-lab-vm-powershell.md
-            - name: 创建 VM - Azure CLI
-              href: devtest-lab-vmcli.md
-            - name: 创建 VM - 资源管理器模板
-              href: devtest-lab-use-resource-manager-template.md
-            - name: 使用共享映像库中的映像创建 VM
-              href: add-vm-use-shared-image.md
-            - name: 通过浏览器连接到 VM
-              href: connect-virtual-machine-through-browser.md
-            - name: 使用 PowerShell 或 CLI 启动或停止 VM
-              href: use-command-line-start-stop-virtual-machines.md
-            - name: 重新启动 VM
-              href: devtest-lab-restart-vm.md
-            - name: 调整 VM 的大小
-              href: devtest-lab-resize-vm.md
-            - name: 重新部署 VM
-              href: devtest-lab-redeploy-vm.md
-            - name: 配置 VM 的自动关闭
-              href: devtest-lab-auto-shutdown-vm.md
-            - name: 创建和管理可认领 VM
-              href: devtest-lab-add-claimable-vm.md
-            - name: 配置机密
-              href: devtest-lab-store-secrets-in-key-vault.md
-            - name: 附加和分离数据磁盘
-              href: devtest-lab-attach-detach-data-disk.md
-            - name: 使用自动化 runbook 启动 VM
-              href: start-machines-use-automation-runbooks.md
-            - name: 从另一个实验室导入虚拟机
-              href: import-virtual-machines-from-another-lab.md
-        - name: 在实验室中使用环境
+            - name: 添加 Git 存储库以存储项目和模板
+              href: devtest-lab-add-artifact-repo.md
+        - name: 管理自定义映像
           items:
-            - name: 创建环境
-              href: devtest-lab-create-environment-from-arm.md
-            - name: 使用平台即服务 (PaaS) 服务
-              href: use-paas-services.md
-            - name: 公共环境
-              items:
-                - name: 配置和使用公共环境
-                  href: devtest-lab-configure-use-public-environments.md
-                - name: 使用 Service Fabric 群集创建环境
-                  href: create-environment-service-fabric-cluster.md
-            - name: 将环境连接到实验室的虚拟网络
-              href: connect-environment-lab-virtual-network.md
-            - name: 使用嵌套模板配置测试环境
-              href: deploy-nested-template-environments.md
-            - name: 使用 Azure 托管标识部署环境
-              href: use-managed-identities-environments.md
-        - name: 管理可重用模板
+            - name: 从 VM 创建自定义映像
+              href: devtest-lab-create-custom-image-from-vm-using-portal.md
+            - name: 从 VHD 创建自定义映像 - Azure 门户
+              href: devtest-lab-create-template.md
+            - name: 从 VHD 创建自定义映像 - PowerShell
+              href: devtest-lab-create-custom-image-from-vhd-using-powershell.md
+            - name: 使用 AzCopy 上传 VHD 文件
+              href: devtest-lab-upload-vhd-using-azcopy.md
+            - name: 使用 PowerShell 上传 VHD 文件
+              href: devtest-lab-upload-vhd-using-powershell.md
+            - name: 使用存储资源管理器上传 VHD 文件
+              href: devtest-lab-upload-vhd-using-storage-explorer.md
+        - name: 管理公式
+          href: devtest-lab-manage-formulas.md
+        - name: 创建映像工厂
+          href: image-factory-create.md
           items:
-            - name: 自定义映像和公式
-              href: devtest-lab-comparing-vm-base-image-types.md
-            - name: 管理环境模板
-              items:
-                - name: 添加 Git 存储库以存储项目和模板
-                  href: devtest-lab-add-artifact-repo.md
-            - name: 管理自定义映像
-              items:
-                - name: 从 VM 创建自定义映像
-                  href: devtest-lab-create-custom-image-from-vm-using-portal.md
-                - name: 从 VHD 创建自定义映像 - Azure 门户
-                  href: devtest-lab-create-template.md
-                - name: 从 VHD 创建自定义映像 - PowerShell
-                  href: devtest-lab-create-custom-image-from-vhd-using-powershell.md
-                - name: 使用 AzCopy 上传 VHD 文件
-                  href: devtest-lab-upload-vhd-using-azcopy.md
-                - name: 使用 PowerShell 上传 VHD 文件
-                  href: devtest-lab-upload-vhd-using-powershell.md
-                - name: 使用存储资源管理器上传 VHD 文件
-                  href: devtest-lab-upload-vhd-using-storage-explorer.md
-            - name: 管理公式
-              href: devtest-lab-manage-formulas.md
-            - name: 创建映像工厂
-              href: image-factory-create.md
-              items:
-                - name: 从 Azure DevOps 运行映像工厂
-                  href: image-factory-set-up-devops-lab.md
-                - name: 保存自定义映像并分发到多个实验室
-                  href: image-factory-save-distribute-custom-images.md
-                - name: 设置保留策略并运行清理脚本
-                  href: image-factory-set-retention-policy-cleanup.md
-        - name: 管理项目
+            - name: 从 Azure DevOps 运行映像工厂
+              href: image-factory-set-up-devops-lab.md
+            - name: 保存自定义映像并分发到多个实验室
+              href: image-factory-save-distribute-custom-images.md
+            - name: 设置保留策略并运行清理脚本
+              href: image-factory-set-retention-policy-cleanup.md
+    - name: 管理项目
+      items:
+        - name: 将项目添加到 VM
+          href: add-artifact-vm.md
+        - name: 创建自定义项目
+          href: devtest-lab-artifact-author.md
+        - name: 将项目存储库添加到实验室
+          href: add-artifact-repository.md
+        - name: 指定必需的项目
+          href: devtest-lab-mandatory-artifacts.md
+    - name: 与 CI/CD 集成
+      items:
+        - name: 将实验室集成到 Azure Pipelines CI/CD 管道中
+          href: devtest-lab-integrate-ci-cd.md
+        - name: 将环境集成到 Azure Pipelines CI/CD 管道中
+          href: integrate-environments-devops-pipeline.md
+        - name: 在 Azure Pipelines 生成和发布管道中使用开发测试实验室
+          href: use-devtest-labs-build-release-pipelines.md
+    - name: 扩展开发测试实验室
+      items:
+        - name: 使用 Azure Functions 扩展开发测试实验室
+          href: extend-devtest-labs-azure-functions.md
+    - name: 报告实验室的使用情况
+      href: report-usage-across-multiple-labs-subscriptions.md
+    - name: 企业中的开发测试实验室
+      items:
+        - name: 企业规模的开发测试实验室
+          href: devtest-lab-guidance-prescriptive-adoption.md
+        - name: 参考体系结构
+          href: devtest-lab-reference-architecture.md
+        - name: 提供概念证明
+          href: deliver-proof-concept.md
+        - name: 纵向扩展开发测试实验室部署
+          href: devtest-lab-guidance-scale.md
+        - name: 安排实现开发测试实验室
+          href: devtest-lab-guidance-orchestrate-implementation.md
+        - name: 开发测试实验室基础结构治理
           items:
-            - name: 将项目添加到 VM
-              href: add-artifact-vm.md
-            - name: 创建自定义项目
-              href: devtest-lab-artifact-author.md
-            - name: 将项目存储库添加到实验室
-              href: add-artifact-repository.md
-            - name: 指定必需的项目
-              href: devtest-lab-mandatory-artifacts.md
-        - name: 与 CI/CD 集成
-          items:
-            - name: 将实验室集成到 Azure Pipelines CI/CD 管道中
-              href: devtest-lab-integrate-ci-cd.md
-            - name: 将环境集成到 Azure Pipelines CI/CD 管道中
-              href: integrate-environments-devops-pipeline.md
-            - name: 在 Azure Pipelines 生成和发布管道中使用开发测试实验室
-              href: use-devtest-labs-build-release-pipelines.md
-        - name: 扩展开发测试实验室
-          items:
-            - name: 使用 Azure Functions 扩展开发测试实验室
-              href: extend-devtest-labs-azure-functions.md
-        - name: 报告实验室的使用情况
-          href: report-usage-across-multiple-labs-subscriptions.md
-        - name: 企业中的开发测试实验室
-          items:
-            - name: 企业规模的开发测试实验室
-              href: devtest-lab-guidance-prescriptive-adoption.md
-            - name: 参考体系结构
-              href: devtest-lab-reference-architecture.md
-            - name: 提供概念证明
-              href: deliver-proof-concept.md
-            - name: 纵向扩展开发测试实验室部署
-              href: devtest-lab-guidance-scale.md
-            - name: 安排实现开发测试实验室
-              href: devtest-lab-guidance-orchestrate-implementation.md
-            - name: 开发测试实验室基础结构治理
-              items:
-                - name: 资源
-                  href: devtest-lab-guidance-governance-resources.md
-                - name: 成本和所有权
-                  href: devtest-lab-guidance-governance-cost-ownership.md
-                - name: 策略和符合性
-                  href: devtest-lab-guidance-governance-policy-compliance.md
-                - name: 应用程序迁移和集成
-                  href: devtest-lab-guidance-governance-application-migration-integration.md
-        - name: 在 Azure 中测试应用
-          href: test-app-azure.md
-        - name: 故障排除
-          items:
-            - name: 排查 VM 和环境创建失败问题
-              href: troubleshoot-vm-environment-creation-failures.md
-            - name: 排查项目失败问题
-              href: devtest-lab-troubleshoot-artifact-failure.md
+            - name: 资源
+              href: devtest-lab-guidance-governance-resources.md
+            - name: 成本和所有权
+              href: devtest-lab-guidance-governance-cost-ownership.md
+            - name: 策略和符合性
+              href: devtest-lab-guidance-governance-policy-compliance.md
+            - name: 应用程序迁移和集成
+              href: devtest-lab-guidance-governance-application-migration-integration.md
+    - name: 在 Azure 中测试应用
+      href: test-app-azure.md
+    - name: 故障排除
+      items:
+        - name: 排查 VM 和环境创建失败问题
+          href: troubleshoot-vm-environment-creation-failures.md
+        - name: 排查项目失败问题
+          href: devtest-lab-troubleshoot-artifact-failure.md
 - name: 引用
   items:
-    - name: 教室实验室
-      items:
-        - name: REST API
-          href: 'https://docs.microsoft.com/rest/api/labservices/'
-    - name: 开发测试实验室
-      items:
-        - name: CLI
-          href: /cli/azure/lab
-        - name: PowerShell
-          href: /powershell/module/az.devtestlabs
-        - name: PowerShell - 示例 Az.DevTestLabs2 模块
-          href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
-        - name: REST API
-          href: 'https://docs.microsoft.com/rest/api/dtl/'
-        - name: 资源管理器模板
-          href: /azure/templates/microsoft.devtestlab/allversions
+    - name: CLI
+      href: /cli/azure/lab
+    - name: PowerShell
+      href: /powershell/module/az.devtestlabs
+    - name: PowerShell - 示例 Az.DevTestLabs2 模块
+      href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/dtl/'
+    - name: 资源管理器模板
+      href: /azure/templates/microsoft.devtestlab/allversions
 - name: 资源
   items:
-    - name: 教室实验室
-      items:
-        - name: Azure 更新
-          href: 'https://azure.microsoft.com/updates/?product=lab-services'
-        - name: 定价
-          href: 'https://azure.microsoft.com/pricing/details/lab-services/'
-        - name: 堆栈溢出
-          href: 'https://stackoverflow.com/questions/tagged/azure-lab-services'
-        - name: 常见问题
-          href: classroom-labs/classroom-labs-faq.md
-    - name: 开发测试实验室
-      items:
-        - name: Azure 更新
-          href: 'https://azure.microsoft.com/updates/?product=devtest-lab'
-        - name: 定价
-          href: 'https://azure.microsoft.com/pricing/details/devtest-lab/'
-        - name: MSDN 论坛
-          href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs'
-        - name: 堆栈溢出
-          href: 'https://stackoverflow.com/questions/tagged/azure-devtest-labs'
-        - name: 视频
-          href: 'https://azure.microsoft.com/resources/videos/index/?services=devtest-lab'
-        - name: 常见问题
-          href: devtest-lab-faq.md
+    - name: Azure 更新
+      href: 'https://azure.microsoft.com/updates/?product=devtest-lab'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/devtest-lab/'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-devtest-labs'
+    - name: 视频
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=devtest-lab'
+    - name: 常见问题
+      href: devtest-lab-faq.md

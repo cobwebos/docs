@@ -1,24 +1,24 @@
 ---
 title: Azure Cosmos DB 中的静态加密
 description: 了解 Azure Cosmos DB 如何提供静态数据加密及其实现方式。
-author: rimman
+author: markjbrown
+ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: f406f008e2c377b39deb8d151855ce7315616701
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: a9e89336973b0b13544c5bc0bccec41652c6952e
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616857"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755108"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Azure Cosmos DB 中的数据加密 
 
 “静态加密”这个短语通常指永久性存储设备（例如固态硬盘 (SSD) 和硬盘驱动器 (HDD)）上的数据的加密。 Cosmos DB 将其主要数据库存储在 SSD 上。 其媒体附件和备份存储在 Azure Blob 存储中，通常由 HDD 进行备份。 随着 Cosmos DB 静态加密功能的发布，所有数据库、媒体附件以及备份都是加密的。 现在无论是在传输过程中（通过网络）还是处于静态（永久性存储），数据都处于加密状态，采用端到端的加密。
 
-Cosmos DB 属于 PaaS 服务，非常便于使用。 存储在 Cosmos DB 中的所有用户数据无论是在传输过程中，还是处于静态时都处于加密状态，因此无需采取任何措施。 实现此目的的另一方式是，默认情况下，静态加密处于“开启”状态。 无法控制开启或关闭此功能。 Azure Cosmos DB 在运行帐户的所有区域中使用 AES-256 加密。 在提供此功能的同时，我们继续满足[可用性和性能 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)。
+Cosmos DB 属于 PaaS 服务，非常便于使用。 存储在 Cosmos DB 中的所有用户数据无论是在传输过程中，还是处于静态时都处于加密状态，因此无需采取任何措施。 实现此目的的另一方式是，默认情况下，静态加密处于“开启”状态。 无法控制开启或关闭此功能。 Azure Cosmos DB 将在运行帐户的所有区域使用 AES-256 加密。 在提供此功能的同时，我们继续满足[可用性和性能 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)。
 
 ## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>实现针对 Azure Cosmos DB 的静态加密
 
@@ -52,12 +52,12 @@ Cosmos DB 属于 PaaS 服务，非常便于使用。 存储在 Cosmos DB 中的�
 答：所有 Azure Cosmos DB 区域都已针对所有用户数据开启了此加密。
 
 ### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>问：加密是否会影响性能延迟和吞吐量 SLA？
-答：现已为所有现有帐户和新帐户启用了静态加密，对性能 SLA 没有影响或更改。 可在 [Cosmos DB 的 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) 页上阅读详细信息，查看最新保证。
+答：现已为所有现有和新帐户启用了静态加密，对性能 SLA 没有影响或更改。 可在 [Cosmos DB 的 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) 页上阅读详细信息，查看最新保证。
 
 ### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>问：本地模拟器是否支持静态加密？
 答：模拟器是独立的开发/测试工具，不使用托管 Cosmos DB 服务使用的密钥管理服务。 我们的建议是在存储敏感模拟器测试数据的驱动器上启用 BitLocker。 [模拟器支持对默认数据目录进行更改](local-emulator.md)，也支持使用已知位置。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Cosmos DB 安全性和最新改进的概述, 请参阅[Azure Cosmos 数据库安全性](database-security.md)。
+有关 Cosmos DB 安全性和最新改进的概述，请参阅[Azure Cosmos 数据库安全性](database-security.md)。
 有关 Microsoft 认证的详细信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/)。

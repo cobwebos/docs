@@ -8,22 +8,22 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
-ms.openlocfilehash: 793dbf056201a3315a9b77dfebbb9331a8ed7db1
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 69104cdaeb4abfc15e2ac4209e1ddbc610656c13
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310600"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793989"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure 容器注册表角色和权限
 
 Azure 容器注册表服务支持一组 Azure 角色，这些角色提供访问 Azure 容器注册表所需的不同级别的权限。 使用 Azure [基于角色的访问控制](../role-based-access-control/index.yml) (RBAC)，为需要与注册表交互的用户或服务主体分配特定的权限。
 
-| 角色/权限       | [访问资源管理器](#access-resource-manager) | [创建/删除注册表](#create-and-delete-registry) | [推送映像](#push-image) | [拉取映像](#pull-image) | [删除映像数据](#delete-image-data) | [更改策略](#change-policies) |   [对映像签名](#sign-images)  |
+| 角色/权限       | [访问资源管理器](#access-resource-manager) | [创建/删除注册表](#create-and-delete-registry) | [推送映像](#push-image) | [拉取映像](#pull-image) | [删除图像数据](#delete-image-data) | [更改策略](#change-policies) |   [对映像签名](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | 所有者 | X | X | X | X | X | X |  |  
 | 参与者 | X | X | X |  X | X | X |  |  
-| 读取器 | X |  |  |  |  |  |  |
+| 读取器 | X |  |  | X |  |  |  |
 | AcrPush |  |  | X | X | |  |  |  
 | AcrPull |  |  |  | X |  |  |  |  
 | AcrDelete |  |  |  |  | X |  |  |
@@ -35,15 +35,15 @@ Azure 容器注册表服务支持一组 Azure 角色，这些角色提供访问 
 
 ### <a name="cicd-solutions"></a>CI/CD 解决方案
 
-通过 CI/CD 解决方案自动执行 `docker build` 命令时，需要 `docker push` 功能。 对于这些无外设服务方案，建议分配 **AcrPush** 角色。 该角色不同于权限范围更大的“参与者”角色，  可以防止帐户执行其他注册表操作或访问 Azure 资源管理器。
+通过 CI/CD 解决方案自动执行 `docker build` 命令时，需要 `docker push` 功能。 对于这些无外设服务方案，建议分配 **AcrPush** 角色。 该角色不同于权限范围更大的“参与者”角色，可以防止帐户执行其他注册表操作或访问 Azure 资源管理器。
 
 ### <a name="container-host-nodes"></a>容器主机节点
 
-同样，运行容器的节点需要 **AcrPull** 角色，但不应该需要“读者”功能。 
+同样，运行容器的节点需要 **AcrPull** 角色，但不应该需要“读者”功能。
 
 ### <a name="visual-studio-code-docker-extension"></a>Visual Studio Code Docker 扩展
 
-对于 Visual Studio Code [Docker 扩展](https://code.visualstudio.com/docs/azure/docker)这样的工具，需要其他资源提供程序访问权限才能列出可用的 Azure 容器注册表。 在这种情况下，请为用户提供对“读者”或“参与者”角色的访问权限。   这些角色允许 `docker pull`、`docker push`、`az acr list`、`az acr build` 等功能。 
+对于 Visual Studio Code [Docker 扩展](https://code.visualstudio.com/docs/azure/docker)这样的工具，需要其他资源提供程序访问权限才能列出可用的 Azure 容器注册表。 在这种情况下，请为用户提供对“读者”或“参与者”角色的访问权限。 这些角色允许 `docker pull`、`docker push`、`az acr list`、`az acr build` 等功能。 
 
 ## <a name="access-resource-manager"></a>访问资源管理器
 
@@ -63,7 +63,7 @@ Azure 资源管理器访问权限是 Azure 门户和使用 [Azure CLI](/cli/azur
 
 ## <a name="delete-image-data"></a>删除映像数据
 
-能够从注册表中[删除容器映像](container-registry-delete.md)或者删除其他[受支持的项目](container-registry-image-formats.md)，例如 Helm 图表。
+删除注册表的[容器映像](container-registry-delete.md)，或从注册表中删除其他[支持的项目](container-registry-image-formats.md)，例如 Helm 图表。
 
 ## <a name="change-policies"></a>更改策略
 

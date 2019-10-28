@@ -1,30 +1,25 @@
 ---
 title: 使用 Azure Application Insights 为 Web 应用程序进行用户留存情况分析 | Microsoft docs
 description: 有多少用户回归到应用？
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/03/2017
-ms.pm_owner: daviste;NumberByColors
-ms.reviewer: mbullwin
+author: NumberByColors
 ms.author: daviste
-ms.openlocfilehash: bda79520dd86cc14161f6f22cd24feb2e35849ab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 05/03/2017
+ms.reviewer: mbullwin
+ms.openlocfilehash: 5f5f6235354adc565815ac2eab0a1c774267102d
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372598"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899422"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>使用 Azure Application Insights 为 Web 应用程序进行用户留存情况分析
 
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的“留存情况”功能可以帮助分析有多少用户回归到应用，以及他们以何频率执行特定的任务或达成目标。 例如，如果运行游戏网站，则可以会在输掉游戏后回归到网站的用户数与在获胜后回归的用户数进行比较。 此信息有助于改进用户体验和业务策略。
 
-## <a name="get-started"></a>开始使用
+## <a name="get-started"></a>开始体验
 
 如果在 Application Insights 门户的“留存情况”工具中没有看到数据，请[了解如何开始使用“使用情况”工具](usage-overview.md)。
 
@@ -34,7 +29,7 @@ ms.locfileid: "60372598"
 
 1. 工具栏便于用户创建新的留存情况报表、打开现有留存情况报表、保存当前留存情况报表或将其另存为其他形式、还原已保存报表的更改、刷新报表数据、通过电子邮件或直接链接共享报表以及访问文档页。 
 2. 默认情况下，留存情况显示执行了任意操作，然后在一段时间后返回并执行其他任意操作的所有用户。 可以选择事件的不同组合，将关注范围缩小为仅关注特定用户活动。
-3. 添加一个或多个基于属性的筛选器。 例如，可以关注特定国家或地区中的用户。 在设置筛选器后单击“更新”。  
+3. 添加一个或多个基于属性的筛选器。 例如，可以关注特定国家或地区中的用户。 在设置筛选器后单击“更新”。 
 4. 整体留存情况图表显示选定时间段内用户留存情况的摘要。 
 5. 网格根据 2 号图标处的查询生成器显示保留的用户数。 每行都表示在所显示的时间段内执行了任意事件的一群用户。 行中的每个单元格显示了该用户群中有多少人在之后的某个时间段内至少回归了一次。 某些用户可能在多个时间段内都回归过。 
 6. 见解卡中显示了排名前 5 的启动事件和排名前 5 的返回事件，帮助用户更好地了解留存情况报表。 

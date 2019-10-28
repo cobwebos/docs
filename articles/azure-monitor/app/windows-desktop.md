@@ -1,23 +1,18 @@
 ---
 title: 监视 Windows 桌面应用的使用情况和性能
 description: 使用 Application Insights 分析 Windows 桌面应用的使用情况和性能。
-services: application-insights
-documentationcenter: windows
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 19040746-3315-47e7-8c60-4b3000d2ddc4
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 08/09/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: ed6df8b4724dbb297a0c64fd869d3377545a7595
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 08/09/2019
+ms.openlocfilehash: 18681f7130b3706f846b031dbb4852cda8b90d39
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932334"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899248"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>监视经典 Windows 桌面应用中的使用情况和性能
 
@@ -37,7 +32,7 @@ ms.locfileid: "68932334"
    
     如果使用 ApplicationInsights.config，请确保它在解决方案资源管理器中的属性设置为“生成操作”=“内容”、“复制到输出目录”=“复制”。
 5. [使用 API](../../azure-monitor/app/api-custom-events-metrics.md) 发送遥测。
-6. 运行你的应用, 并在 Azure 门户中创建的资源中查看遥测数据。
+6. 运行你的应用，并在 Azure 门户中创建的资源中查看遥测数据。
 
 ## <a name="telemetry"></a>示例代码
 ```csharp

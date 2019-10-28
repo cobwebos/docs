@@ -1,23 +1,22 @@
 ---
-title: 快速入门：使用 C# 通过 .NET SDK 创建搜索索引 - Azure 搜索
-description: 介绍如何使用 C# 和 Azure 搜索 .NET SDK 创建索引，加载数据和运行查询。
-author: heidisteen
+title: 快速入门：使用 C# 通过 .NET SDK 创建搜索索引
+titleSuffix: Azure Cognitive Search
+description: 介绍如何使用 C# 和 Azure 认知搜索 .NET SDK 创建索引、加载数据和运行查询。
 manager: nitinme
+author: HeidiSteen
 ms.author: heidist
-tags: azure-portal
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/10/2019
-ms.openlocfilehash: bda9c29fe3af0bd7d9a6ec61dd5fe40a8e9cc339
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 11/04/2019
+ms.openlocfilehash: cb52ebc4cfdb6f62e9e68bf007cadc20cd565fad
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881585"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792819"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-c-using-the-net-sdk"></a>快速入门：使用 C# 通过 .NET SDK 创建 Azure 搜索索引
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>快速入门：使用 C# 通过 .NET SDK 创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
 > * [C#](search-get-started-dotnet.md)
 > * [门户](search-get-started-portal.md)
@@ -26,12 +25,12 @@ ms.locfileid: "70881585"
 > * [Postman](search-get-started-postman.md)
 >*
 
-创建 .NET Core C# 控制台应用程序，该应用程序使用 Visual Studio 和 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk) 创建、加载和查询 Azure 搜索索引。 本文逐步介绍如何创建该应用程序。 此外，还可以[下载并运行完整的应用程序](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart)。
+创建 .NET Core C# 控制台应用程序，该应用程序使用 Visual Studio 和 [Azure 认知搜索 .NET SDK](https://aka.ms/search-sdk) 创建、加载和查询 Azure 认知搜索索引。 本文逐步介绍如何创建该应用程序。 此外，还可以[下载并运行完整的应用程序](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 为简单起见，本文中的演示代码使用 Azure 搜索 .NET SDK 的同步方法。 但是，对于生产场景，建议你在自己的应用程序中使用异步方法，使应用程序保持可缩放且响应迅速。 例如，可以使用 `CreateAsync` 和 `DeleteAsync`，而不是 `Create` 和 `Delete`。
+> 为简单起见，本文中的演示代码使用 Azure 认知搜索 .NET SDK 的同步方法。 但是，对于生产场景，建议你在自己的应用程序中使用异步方法，使应用程序保持可缩放且响应迅速。 例如，可以使用 `CreateAsync` 和 `DeleteAsync`，而不是 `Create` 和 `Delete`。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,13 +38,13 @@ ms.locfileid: "70881585"
 
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/)（版本不限）。 示例代码和说明已在免费社区版上进行了测试。
 
-+ [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
++ [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
 
 <a name="get-service-info"></a>
 
 ## <a name="get-a-key-and-url"></a>获取密钥和 URL
 
-对服务的调用要求每个请求都有一个 URL 终结点和一个访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
+对服务的调用要求每个请求都有一个 URL 终结点和一个访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
 
 1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
@@ -53,7 +52,7 @@ ms.locfileid: "70881585"
 
    此外，获取查询密钥。 最好使用只读权限发出查询请求。
 
-![获取 HTTP 终结点和访问密钥](media/search-get-started-postman/get-url-key.png "Get an HTTP endpoint and access key")
+![获取 HTTP 终结点和访问密钥](media/search-get-started-postman/get-url-key.png "获取 HTTP 终结点和访问密钥")
 
 所有请求对发送到服务的每个请求都需要 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
@@ -63,7 +62,7 @@ ms.locfileid: "70881585"
 
 ### <a name="install-nuget-packages"></a>安装 NuGet 包
 
-[Azure 搜索 .NET SDK](https://aka.ms/search-sdk) 由作为 NuGet 包分发的一些客户端库组成。
+[Azure 认知搜索 .NET SDK](https://aka.ms/search-sdk) 由作为 NuGet 包分发的一些客户端库组成。
 
 对于此项目，使用 `Microsoft.Azure.Search` NuGet 包的版本 9，以及最新的 `Microsoft.Extensions.Configuration.Json` NuGet 包。
 
@@ -78,7 +77,7 @@ ms.locfileid: "70881585"
 1. 为 `Microsoft.Extensions.Configuration.Json` 重复以上步骤，选择 2.2.0 版或更高版本。
 
 
-### <a name="add-azure-search-service-information"></a>添加 Azure 搜索服务信息
+### <a name="add-azure-cognitive-search-service-information"></a>添加 Azure 认知搜索服务信息
 
 1. 在“解决方案资源管理器”中，右键单击项目，依次选择“添加” > “新建项...”   。 
 
@@ -204,7 +203,7 @@ ms.locfileid: "70881585"
 
 1. 在 Program.cs 中，使用存储在应用程序配置文件 (appsettings.json) 中的值，创建 [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) 类的实例，以连接到服务。 
 
-   `SearchServiceClient` 具有 [`Indexes`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) 属性，提供创建、列出、更新或删除 Azure 搜索索引所需的所有方法。 
+   `SearchServiceClient` 具有 [`Indexes`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) 属性，提供创建、列出、更新或删除 Azure 认知搜索索引所需的所有方法。 
 
     ```csharp
     using System;
@@ -302,9 +301,9 @@ ms.locfileid: "70881585"
 
 ## <a name="2---load-documents"></a>2 - 加载文档
 
-在 Azure 搜索中，文档这一数据结构既是索引输入，也是查询输出。 文档输入从外部数据源获取，可能是数据库中的行、Blob 存储中的 blob 或磁盘上的 JSON 文档。 在此示例中，我们采用了快捷方式，并在代码本身中嵌入了四个酒店的 JSON 文档。 
+在 Azure 认知搜索中，文档这一数据结构既是索引输入，也是查询输出。 文档输入从外部数据源获取，可能是数据库中的行、Blob 存储中的 blob 或磁盘上的 JSON 文档。 在此示例中，我们采用了快捷方式，并在代码本身中嵌入了四个酒店的 JSON 文档。 
 
-上传文档时，必须使用 [`IndexBatch`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 对象。 `IndexBatch` 包含 [`IndexAction`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) 对象的集合，其中每个对象均包含一个文档和一个属性，该属性用于指示 Azure 搜索要执行什么操作（[上传、合并、删除和 mergeOrUpload](search-what-is-data-import.md#indexing-actions)）。
+上传文档时，必须使用 [`IndexBatch`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 对象。 `IndexBatch` 包含 [`IndexAction`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) 对象的集合，其中每个对象均包含一个文档和一个属性，该属性用于指示 Azure 认知搜索要执行什么操作（[上传、合并、删除和 mergeOrUpload](search-what-is-data-import.md#indexing-actions)）。
 
 1. 在 Program.cs 中，创建文档和索引操作的数组，然后将该数组传递给 `IndexBatch`。 以下文档符合酒店和地址类定义的 hotel-quickstart 索引。
 

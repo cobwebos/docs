@@ -1,5 +1,5 @@
 ---
-title: 如何安装和使用 log analytics 视图进行 Azure Active Directory |Microsoft Docs
+title: 如何安装和使用 log analytics 视图 |Microsoft Docs
 description: 了解如何安装和使用 log analytics 视图进行 Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -17,21 +17,21 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb1241387144b691b76ec330a5f90b762ebc11f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 00bca8bca19f9a71c4eeb639017845987682661f
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989789"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820911"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>安装和使用用于 Azure Active Directory 的日志分析视图
 
 Azure Active Directory 日志分析视图可以帮助你分析和搜索 Azure AD 租户中的 Azure AD 活动日志。 Azure AD 活动日志包括：
 
-* 审核日志：可通过[审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
-* 登录日志：可通过[登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志中报告的任务。
+* 审核日志：可以通过[审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
+* 登录日志：可以通过[登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志中报告的任务。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要使用日志分析视图，需要执行以下操作：
 
@@ -52,7 +52,7 @@ Azure Active Directory 日志分析视图可以帮助你分析和搜索 Azure AD
 2. 位于工作区中时，选择“工作区摘要”。 应该会看到以下三个视图：
 
     * **Azure AD 帐户预配事件**：此视图显示与审核预配活动相关的报表，例如，预配的新用户数和预配失败情况、更新的用户数和更新失败情况以及取消预配的用户数和相应失败情况。    
-    * **登录事件**：此视图显示与监视登录活动最相关的报表，例如，分别按应用程序、用户、设备统计的登录情况，以及随时间推移跟踪登录情况的摘要视图。
+    * **登录事件**：此视图显示与监视登录活动最相关的报表，例如，分别按应用程序、用户、设备统计的登录情况，以及随时间推移跟踪登录情况的汇总视图。
 
 3. 选择其中一个视图，跳转到各个报表。 此外，还可以设置有关任何报表参数的警报。 例如，针对每次登录错误设置警报。 若要执行此操作，首先选择“登录事件”视图，选择“随着时间推移发生的登录错误”报表，然后选择“分析”，打开详细信息页面，其中包含报表中的实际查询。 
 

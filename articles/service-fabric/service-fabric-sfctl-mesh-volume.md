@@ -3,32 +3,33 @@ title: Azure Service Fabric CLI - sfctl mesh volume | Microsoft Docs
 description: 介绍 Service Fabric CLI sfctl mesh volume 命令。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 4e2413a152048e08d6218783891c20b66ac2e618
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: cc26a0a3170f6cd75f5a1cbb3981044d28d9aba3
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035001"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901136"
 ---
 # <a name="sfctl-mesh-volume"></a>sfctl mesh volume
 获取和删除卷资源。
 
 ## <a name="commands"></a>命令
 
-|Command|描述|
+|命令|描述|
 | --- | --- |
-| 删除 | 删除卷资源。 |
-| 列表 | 列出所有卷资源。 |
+| delete | 删除卷资源。 |
+| list | 列出所有卷资源。 |
 | show | 获取具有给定名称的卷资源。 |
 
 ## <a name="sfctl-mesh-volume-delete"></a>sfctl mesh volume delete
@@ -90,5 +91,5 @@ ms.locfileid: "69035001"
 
 
 ## <a name="next-steps"></a>后续步骤
-- [安装](service-fabric-cli.md) Service Fabric CLI。
+- [设置](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

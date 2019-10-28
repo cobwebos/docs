@@ -1,29 +1,23 @@
 ---
-title: 高级 Azure Monitor 中的查询 |Microsoft Docs
+title: Azure Monitor 中的高级查询 |Microsoft Docs
 description: 本文提供有关在 Azure Monitor 中使用 Analytics 门户编写查询的教程。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/15/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 65713ed9c2d0635e776a7a7e5f205b6d55438ed4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 11/15/2018
+ms.openlocfilehash: 8895224bef037c8c3f8b28a6085359837478d924
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589590"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894503"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>在 Azure Monitor 中编写高级查询
 
 > [!NOTE]
-> 应完成[开始使用 Azure 监视器 Log Analytics](get-started-portal.md)并[查询入门](get-started-queries.md)之前完成本课程中。
+> 完成本课程之前，应完成[Azure Monitor Log Analytics](get-started-portal.md)和[查询](get-started-queries.md)入门。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -76,7 +70,7 @@ Event
 ```
 
 ## <a name="print"></a>Print
-`print` 将返回一个单列单行的表，其中显示计算结果。 这通常可在需要简单计算的情况下。 例如，要在 PST 中查找当前时间并添加具有 EST 的列：
+`print` 将返回一个单列单行的表，其中显示计算结果。 这通常用于需要简单计算的情况。 例如，要在 PST 中查找当前时间并添加具有 EST 的列：
 
 ```Kusto
 print nowPst = now()-8h
@@ -101,7 +95,7 @@ datatable (TimeGenerated: datetime, usage_percent: double)
 | summarize avg(usage_percent) by bin(TimeGenerated, 1h)
 ```
 
-创建查找表时，Datatable 构造也非常有用。 例如，要将表数据（如事件 ID）从 SecurityEvent 表映射到其他位置列出的事件类型，请使用 `datatable` 创建包含事件类型的查找表，并将此数据表与 SecurityEvent 数据联接   ：
+创建查找表时，Datatable 构造也非常有用。 例如，要将表数据（如事件 ID）从 SecurityEvent 表映射到其他位置列出的事件类型，请使用 `datatable` 创建包含事件类型的查找表，并将此数据表与 SecurityEvent 数据联接：
 
 ```Kusto
 let eventCodes = datatable (EventID: int, EventType:string)

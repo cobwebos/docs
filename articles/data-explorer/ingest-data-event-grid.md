@@ -7,17 +7,17 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 9557923fc2228e8508acaa7e15d1729ac3d29538
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d3f5ef9d2c3359dc61c32d4971100b096b004f2f
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028379"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881545"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>通过订阅事件网格通知将 Blob 引入 Azure 数据资源管理器
 
 > [!div class="op_single_selector"]
-> * [门户](ingest-data-event-grid.md)
+> * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
 
@@ -25,7 +25,7 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 
 本文介绍如何设置[Azure 事件网格](/azure/event-grid/overview)订阅，并通过事件中心将事件路由到 Azure 数据资源管理器。 在开始之前，应已准备好一个存储帐户，以及一个可将通知发送到 Azure 事件中心的事件网格订阅。 然后创建事件网格数据连接，并查看整个系统中的数据流。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 创建[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * [一个群集和数据库](create-cluster-database-portal.md)。
@@ -46,14 +46,14 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
     | 名称 | *test-grid-connection* | 要创建的事件网格的名称。|
     | 事件架构 | *事件网格架构* | 事件网格要使用的架构。 |
     | 主题类型 | *存储帐户* | 事件网格主题的类型。 |
-    | 主题资源 | *gridteststorage* | 你的存储帐户的名称。 |
+    | 主题资源 | *gridteststorage* | 存储帐户的名称。 |
     | 订阅所有事件类型 | *clear* | 不要获取有关所有事件的通知。 |
     | 定义的事件类型 | *已创建 Blob* | 要获取其通知的特定事件。 |
     | 终结点类型 | *事件中心* | 要将事件发送到的终结点的类型。 |
     | 终结点 | test-hub | 你创建的事件中心。 |
     | | |
 
-1. 若要跟踪特定容器中的文件，请选择“其他功能”选项卡。 按如下所述设置通知筛选器：
+1. 如果要跟踪特定容器中的文件，请选择 "**筛选器**" 选项卡。 按如下所述设置通知筛选器：
     * “主题开头为”字段是 Blob 容器的文本前缀。 由于应用的模式是 *startswith*，因此可以跨越多个容器。 不允许通配符。
      必须设置为： *`/blobServices/default/containers/`* [容器前缀]
     * “主题末尾为”字段是 Blob 的文本后缀。 不允许通配符。
@@ -94,7 +94,7 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 
     ![数据引入](media/ingest-data-event-grid/data-ingestion-create.png)
 
-1.  选择连接类型：**Blob 存储**。
+1.  选择 "连接类型： **Blob 存储**"。
 
 1. 在窗体中填写以下信息，然后选择“创建”。
 
@@ -117,7 +117,7 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
      **设置** | **建议的值** | **字段说明**
     |---|---|---|
     | 表 | TestTable | 在“TestDatabase”中创建的表。 |
-    | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOH、SCSV、TSV 和 TXT。 支持的压缩选项：Zip 和 GZip |
+    | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOH、SCSV、TSV 和 TXT。 支持的压缩选项： Zip 和 GZip |
     | 列映射 | TestMapping | 在 **TestDatabase** 中创建的映射将传入的 JSON 数据映射到 **TestTable** 的列名称和数据类型。|
     | | |
     

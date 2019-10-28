@@ -1,29 +1,28 @@
 ---
-title: 如何管理对资源的并发写入 - Azure 搜索
-description: 使用乐观并发，避免在更新或删除 Azure 搜索索引、索引器及数据源的过程中出现冲突。
-author: HeidiSteen
+title: 如何管理对资源的并发写入
+titleSuffix: Azure Cognitive Search
+description: 使用乐观并发来避免更新或删除 Azure 认知搜索索引、索引器、数据源时出现的情况。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 07/21/2017
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 67f2dad016d3958dc10ba87e785d31694a1c94f5
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656719"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792213"
 ---
-# <a name="how-to-manage-concurrency-in-azure-search"></a>如何管理 Azure 搜索中的并发
+# <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>如何在 Azure 中管理并发认知搜索
 
-管理索引和数据源等 Azure 搜索资源时，务必安全地更新资源，尤其是应用程序的不同组件并发访问资源的情况下。 当两个客户端在没有协调的情况下并发更新资源时，可能出现争用条件。 为防止此情况，Azure 搜索提供“乐观并发模型”。 对资源没有任何锁定。 相反，每个资源均带有一个 ETag 用于标识资源版本，便于创建避免意外覆盖的请求。
+在管理 Azure 认知搜索资源（例如索引和数据源）时，请务必安全地更新资源，尤其是在应用程序的不同组件同时访问资源时。 当两个客户端在没有协调的情况下并发更新资源时，可能出现争用条件。 为避免这种情况，Azure 认知搜索提供了*开放式并发模型*。 对资源没有任何锁定。 相反，每个资源均带有一个 ETag 用于标识资源版本，便于创建避免意外覆盖的请求。
 
 > [!Tip]
-> [示例 C# 解决方案](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)中的概念代码阐释了并发控制如何在 Azure 搜索中工作。 该代码会创建调用并发控制的条件。 对大多数开发人员而言，读取[以下代码片段](#samplecode)可能就已足够，但若想运行它，请编辑 appsettings.json，以添加服务名称和管理员 API 密钥。 假设服务 URL 为 `http://myservice.search.windows.net`，服务名称是 `myservice`。
+> [示例C#解决方案](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)中的概念代码说明了在 Azure 认知搜索中并发控制的工作原理。 该代码会创建调用并发控制的条件。 对大多数开发人员而言，读取[以下代码片段](#samplecode)可能就已足够，但若想运行它，请编辑 appsettings.json，以添加服务名称和管理员 API 密钥。 假设服务 URL 为 `http://myservice.search.windows.net`，服务名称是 `myservice`。
 
-## <a name="how-it-works"></a>工作原理
+## <a name="how-it-works"></a>如何运作
 
 乐观并发通过写入索引、索引器、数据源和 synonymMap 资源的 API 调用中的访问条件检查实现。
 
@@ -51,7 +50,7 @@ ms.locfileid: "69656719"
     class Program
     {
         // This sample shows how ETags work by performing conditional updates and deletes
-        // on an Azure Search index.
+        // on an Azure Cognitive Search index.
         static void Main(string[] args)
         {
             IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
@@ -62,14 +61,14 @@ ms.locfileid: "69656719"
             Console.WriteLine("Deleting index...\n");
             DeleteTestIndexIfExists(serviceClient);
 
-            // Every top-level resource in Azure Search has an associated ETag that keeps track of which version
+            // Every top-level resource in Azure Cognitive Search has an associated ETag that keeps track of which version
             // of the resource you're working on. When you first create a resource such as an index, its ETag is
             // empty.
             Index index = DefineTestIndex();
             Console.WriteLine(
                 $"Test index hasn't been created yet, so its ETag should be blank. ETag: '{index.ETag}'");
 
-            // Once the resource exists in Azure Search, its ETag will be populated. Make sure to use the object
+            // Once the resource exists in Azure Cognitive Search, its ETag will be populated. Make sure to use the object
             // returned by the SearchServiceClient! Otherwise, you will still have the old object with the
             // blank ETag.
             Console.WriteLine("Creating index...\n");
@@ -129,9 +128,9 @@ ms.locfileid: "69656719"
             serviceClient.Indexes.Delete("test", accessCondition: AccessCondition.GenerateIfExistsCondition());
 
             // This is slightly better than using the Exists method since it makes only one round trip to
-            // Azure Search instead of potentially two. It also avoids an extra Delete request in cases where
+            // Azure Cognitive Search instead of potentially two. It also avoids an extra Delete request in cases where
             // the resource is deleted concurrently, but this doesn't matter much since resource deletion in
-            // Azure Search is idempotent.
+            // Azure Cognitive Search is idempotent.
 
             // And we're done! Bye!
             Console.WriteLine("Complete.  Press any key to end application...\n");
@@ -170,7 +169,7 @@ ms.locfileid: "69656719"
 
 用于实现乐观并发的设计模式应包含一个循环用于重试访问条件检查，包含一个访问条件测试，并在尝试重新应用更改前选择性地检索更新后的资源。
 
-此代码片段演示如何向已有的索引添加 synonymMap。 此代码来自 [Azure 搜索的同义词 C# 示例](search-synonyms-tutorial-sdk.md)。
+此代码片段演示如何向已有的索引添加 synonymMap。 此代码来自[Azure 认知搜索的C#同义词示例](search-synonyms-tutorial-sdk.md)。
 
 代码片段获取“hotels”索引，检查更新操作上的对象版本，在条件失败时引发异常，然后重试该操作（最多三次），从服务器开始索引检索以获取最新版本。
 
@@ -215,7 +214,7 @@ ms.locfileid: "69656719"
 + [GitHub 上的 REST API 示例](https://github.com/Azure-Samples/search-rest-api-getting-started)
 + [GitHub 上的 .NET SDK 示例](https://github.com/Azure-Samples/search-dotnet-getting-started)。 此解决方案包括“DotNetEtagsExplainer”项目，后者包含本文所示的代码。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [常见的 HTTP 请求和响应标头](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
 [HTTP 状态代码](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)

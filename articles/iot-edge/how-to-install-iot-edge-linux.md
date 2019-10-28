@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 9bc4d60eab0dac80d1b2b524f32bc506a66dee18
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: aca417ebbc6f9af80058ddece32842f38918ce60
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516666"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964756"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>在基于 Debian 的 Linux 系统上安装 Azure IoT Edge 运行时
 
@@ -167,7 +167,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 ### <a name="option-1-manual-provisioning"></a>选项 1：手动预配
 
-若要手动预配设备，需要为其提供[设备连接字符串](how-to-register-device-portal.md)，可以通过在 IoT 中心注册新设备来创建该设备连接字符串。
+若要手动预配设备，需要为其提供[设备连接字符串](how-to-register-device.md#register-in-the-azure-portal)，可以通过在 IoT 中心注册新设备来创建该设备连接字符串。
 
 打开配置文件。
 
@@ -276,7 +276,7 @@ sudo iotedge list
 
 ## <a name="tips-and-troubleshooting"></a>提示和故障排除
 
-需要提升的权限才能运行 `iotedge` 命令。 安装运行时后，请从计算机中注销并重新登录以自动更新权限。 在此之前，在任何 `iotedge` 命令前都要使用 **sudo**。
+需要提升权限才能运行 `iotedge` 命令。 安装运行时后，请从计算机中注销并重新登录以自动更新权限。 在此之前，在任何 `iotedge` 命令前都要使用 **sudo**。
 
 在资源受限的设备上，强烈建议按照[故障排除指南](troubleshoot.md)中的说明将 *OptimizeForPerformance* 环境变量设置为 *false*。
 

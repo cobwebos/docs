@@ -1,24 +1,23 @@
 ---
-title: 常见错误和警告-Azure 搜索
-description: 本文提供了有关在 Azure 搜索中进行 AI 扩充时可能遇到的常见错误和警告的信息和解决方案。
-services: search
-manager: heidist
+title: 常见错误和警告
+titleSuffix: Azure Cognitive Search
+description: 本文提供了有关在 Azure 认知搜索中的 AI 扩充期间可能遇到的常见错误和警告的信息和解决方案。
+manager: nitinme
 author: amotley
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 09/18/2019
 ms.author: abmotley
-ms.openlocfilehash: a8d5fc30299dbb16373b1cfbbd89563bad471f39
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 08d15f20f69c0c42d8b4dd4bac72e7d9f367a957
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553606"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787974"
 ---
-# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Azure 搜索中的 AI 扩充管道的常见错误和警告
+# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充管道的常见错误和警告
 
-本文提供了有关在 Azure 搜索中进行 AI 扩充时可能遇到的常见错误和警告的信息和解决方案。
+本文提供了有关在 Azure 认知搜索中的 AI 扩充期间可能遇到的常见错误和警告的信息和解决方案。
 
 ## <a name="errors"></a>Errors
 当错误计数超过["maxFailedItems"](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures)时，索引将停止。 
@@ -210,3 +209,14 @@ ms.locfileid: "72553606"
 
 ### <a name="web-api-skill-response-contains-warnings"></a>Web API 技能响应包含警告
 索引器能够在技能组合中运行技能，但 Web API 请求的响应指示在执行过程中出现警告。 查看警告，了解你的数据是如何受影响的，以及是否需要执行操作。
+
+### <a name="the-current-indexer-configuration-does-not-support-incremental-progress"></a>当前索引器配置不支持增量进度
+仅对 Cosmos DB 数据源发生此警告。
+
+索引编制过程中的增量操作可确保由于暂时性故障或执行时间限制而中断索引器执行时，索引器能够在下次运行时从中断位置运行，而不是从头开始重新为整个集合编制索引。 在为大型集合编制索引时，这一点尤其重要。
+
+恢复未完成的索引作业的功能是依据的文档是否按 `_ts` 列排序。 索引器使用时间戳来确定下一次选取哪个文档。 如果缺少 `_ts` 列，或者如果索引器无法确定它是否按顺序排序了自定义查询，索引器将从开头开始，你会看到此警告。
+
+可以重写此行为，启用增量进度，并使用 `assumeOrderByHighWatermarkColumn` 配置属性禁止显示此警告。
+
+[有关 Cosmos DB 增量进度和自定义查询的详细信息。](https://go.microsoft.com/fwlink/?linkid=2099593)

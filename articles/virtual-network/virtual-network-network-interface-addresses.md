@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: 4582f7be8e48e493a1adcb8ffc6c3a8bfe43a58e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7df58c3f866ffd28348ecfa2e43bdccbd1d96001
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65506380"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965695"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>为 Azure 网络接口添加、更改或删除 IP 地址
 
@@ -43,83 +43,83 @@ ms.locfileid: "65506380"
 
 ## <a name="add-ip-addresses"></a>添加 IP 地址
 
-可将所需的任意数量的[专用](#private)和[公共](#public) [IPv4](#ipv4) 地址添加到网络接口，只要不超过 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)一文中列出的限制即可。 无法使用门户向现有网络接口添加 IPv6 地址（但是可以在创建网络接口时使用门户向网络接口添加专用 IPv6 地址）。 可以使用 PowerShell 或 CLI 向未附加到虚拟机的现有网络接口的一个[辅助 IP 配置](#secondary)添加专用 IPv6 地址（只要不存在现有的辅助 IP 配置即可）。 无法使用任何工具向网络接口添加公共 IPv6 地址。 有关使用 IPv6 地址的详细信息，请参阅 [IPv6](#ipv6)。
+可将所需的任意数量的[专用](#private)和[公共](#public) [IPv4](#ipv4) 地址添加到网络接口，只要不超过 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)一文中列出的限制即可。 可以向现有网络接口的一个[辅助 ip 配置](#secondary)添加专用 IPv6 地址（只要不存在现有的辅助 ip 配置即可）。 每个网络接口最多只能有一个 IPv6 专用地址。 可以选择将公共 IPv6 地址添加到 IPv6 网络接口配置。 有关使用 IPv6 地址的详细信息，请参阅 [IPv6](#ipv6)。
 
-1. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“网络接口”。   当“网络接口”出现在搜索结果中时，请选择它。 
+1. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“网络接口”。 当“网络接口”出现在搜索结果中时，请选择它。
 2. 从列表中选择要为其添加 IPv4 地址的网络接口。
-3. 在“设置”  下选择“IP 配置”  。
-4. 在“IP 配置”  下选择“+ 添加”  。
-5. 指定以下内容，然后选择“确定”  ：
+3. 在“设置”下选择“IP 配置”。
+4. 在“IP 配置”下选择“+ 添加”。
+5. 指定以下内容，然后选择“确定”：
 
    |设置|必需？|详细信息|
    |---|---|---|
-   |Name|是|对于网络接口必须是唯一的|
-   |Type|是|由于要将 IP 配置添加到现有网络接口，并且每个网络接口都必须有一个[主要](#primary) IP 配置，因此，你的唯一选项是“辅助”。 |
+   |名称|是|对于网络接口必须是唯一的|
+   |Type|是|由于要将 IP 配置添加到现有网络接口，并且每个网络接口都必须有一个[主要](#primary) IP 配置，因此，你的唯一选项是“辅助”。|
    |专用 IP 地址分配方法|是|[**动态**](#dynamic)：Azure 为在其中部署网络接口的子网地址范围分配下一可用地址。 [**静态**](#static)：为在其中部署网络接口的子网地址范围分配未使用的地址。|
-   |公共 IP 地址|否|**已禁用：** 该 IP 配置当前没有关联的公共 IP 地址资源。 **已启用：** 选择现有的 IPv4 公共 IP 地址，或新建一个。 若要了解如何创建公共 IP 地址，请参阅[公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)一文。|
+   |公共 IP 地址|No|**已禁用：** 该 IP 配置当前没有关联的公共 IP 地址资源。 **已启用：** 选择现有的 IPv4 公共 IP 地址，或新建一个。 若要了解如何创建公共 IP 地址，请参阅[公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)一文。|
 6. 可以遵循[将多个 IP 地址分配到虚拟机操作系统](virtual-network-multiple-ip-addresses-portal.md#os-config)一文中的说明，手动将辅助专用 IP 地址添加到虚拟机操作系统。 在手动向虚拟机操作系统添加 IP 地址之前，请参阅[专用](#private) IP 地址以了解特殊注意事项。 请不要向虚拟机操作系统添加任何公共 IP 地址。
 
 **命令**
 
-|Tool|命令|
+|工具|命令|
 |---|---|
 |CLI|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
-|PowerShell|[Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
+|PowerShell|[AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
 
 ## <a name="change-ip-address-settings"></a>更改 IP 地址设置
 
 你可能需要更改 IPv4 地址的分配方法、更改静态 IPv4 地址，或者更改分配给网络接口的公共 IP 地址。 如果要更改与虚拟机中的辅助网络接口关联的辅助 IP 配置的专用 IPv4 地址（有关详细信息，请参阅[主要网络接口和辅助网络接口](virtual-network-network-interface-vm.md)），请将该虚拟机置于“已停止”（“已解除分配”）状态，然后完成以下步骤：
 
-1. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“网络接口”。   当“网络接口”出现在搜索结果中时，请选择它。 
+1. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“网络接口”。 当“网络接口”出现在搜索结果中时，请选择它。
 2. 从列表中选择要查看或更改 IP 网络设置的网络接口。
-3. 在“设置”  下选择“IP 配置”  。
+3. 在“设置”下选择“IP 配置”。
 4. 从列表中选择想要修改的 IP 配置。
 5. 使用有关[添加 IP 配置](#add-ip-addresses)的步骤 5 中的设置的信息，根据需要更改设置。
-6. 选择“保存”。 
+6. 选择“保存”。
 
 >[!NOTE]
 >在 Windows 中，如果主要网络接口有多个 IP 配置，并且你更改了主要 IP 配置的专用 IP 地址，则必须手动将主要 IP 地址和辅助 IP 地址重新分配给网络接口（在 Linux 中不需要执行此操作）。 若要手动向操作系统中的网络接口分配 IP 地址，请参阅[将多个 IP 地址分配到虚拟机](virtual-network-multiple-ip-addresses-portal.md#os-config)。 有关在手动向虚拟机操作系统添加 IP 地址的特别注意事项，请参阅[专用](#private) IP 地址。 请不要向虚拟机操作系统添加任何公共 IP 地址。
 
 **命令**
 
-|Tool|命令|
+|工具|命令|
 |---|---|
 |CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
-|PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
+|PowerShell|[AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="remove-ip-addresses"></a>删除 IP 地址
 
 可以从网络接口中删除[专用](#private)和[公共](#public) IP 地址，但网络接口必须始终至少有一个分配给它的专用 IPv4 地址。
 
-1. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“网络接口”。   当“网络接口”出现在搜索结果中时，请选择它。 
+1. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“网络接口”。 当“网络接口”出现在搜索结果中时，请选择它。
 2. 从列表中选择要移除 IP 地址的网络接口。
-3. 在“设置”  下选择“IP 配置”  。
-4. 右键单击以选择要删除的[辅助](#secondary) IP 配置（无法删除[主要](#primary)配置），单击“删除”，然后选择“是”确认删除   。 如果该配置具有关联的公共 IP 地址资源，将从 IP 配置中取消关联该资源，但不会删除该资源。
+3. 在“设置”下选择“IP 配置”。
+4. 右键单击以选择要删除的[辅助](#secondary) IP 配置（无法删除[主要](#primary)配置），单击“删除”，然后选择“是”确认删除。 如果该配置具有关联的公共 IP 地址资源，将从 IP 配置中取消关联该资源，但不会删除该资源。
 
 **命令**
 
-|Tool|命令|
+|工具|命令|
 |---|---|
 |CLI|[az network nic ip-config delete](/cli/azure/network/nic/ip-config)|
-|PowerShell|[Remove-AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
+|PowerShell|[AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
 
 ## <a name="ip-configurations"></a>IP 配置
 
 [专用](#private)和（可选）[公共](#public) IP 地址分配给一个或多个分配给网络接口的 IP 配置。 有两种 IP 配置：
 
-### <a name="primary"></a>基本
+### <a name="primary"></a>主要
 
 每个网络接口都分配有一个主要 IP 配置。 主要 IP 配置：
 
 - 具有分配给它的[专用](#private) [IPv4](#ipv4) 地址。 不能向主要 IP 配置分配专用 [IPv6](#ipv6) 地址。
-- 还可能具有分配给它的[公共](#public) IPv4 地址。 不能向主要或辅助 IP 配置分配公共 IPv6 地址。 但是，可以向 Azure 负载均衡器分配公共 IPv6 地址，负载均衡器对发往虚拟机专用 IPv6 地址的流量进行负载均衡。 有关详细信息，请参阅 [IPv6 的详细信息和限制](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#details-and-limitations)。
+- 还可能具有分配给它的[公共](#public) IPv4 地址。 不能将公共 IPv6 地址分配到主（IPv4） IP 配置。 
 
 ### <a name="secondary"></a>辅助
 
 除了主要 IP 配置之外，网络接口还可能具有零个或多个分配给它的辅助 IP 配置。 辅助 IP 配置：
 
 - 必须具有分配给它的 IPv4 或 IPv6 地址。 如果地址是 IPv6，则网络接口只能具有一个辅助 IP 配置。 如果地址是 IPv4，则网络接口可以具有多个分配给它的辅助 IP 配置。 若要详细了解可以向网络接口分配多少专用和公共 IPv4 地址，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)一文。
-- 如果专用 IP 地址是 IPv4，则还可以具有分配给它的多个公共 IPv4 地址。 如果专用 IP 地址是 IPv6，则无法向 IP 配置分配公共 IPv4 或 IPv6 地址。 在下列方案中，向网络接口分配多个 IP 地址很有帮助：
+- 还可能有一个分配给它的公共 IPv4 或 IPv6 地址。 在以下方案中，向网络接口分配多个 IPv4 地址非常有用：
   - 在单个服务器上使用不同的 IP 地址和 SSL 证书托管多个网站或服务。
   - 虚拟机充当网络虚拟设备，例如防火墙或负载均衡器。
   - 可将任何网络接口的任何专用 IPv4 地址添加到 Azure 负载均衡器后端池。 过去，只能将主要网络接口的主要 IPv4 地址添加到后端池。 若要详细了解如何对多个 IPv4 配置进行负载均衡，请参阅[对多个 IP 配置进行负载均衡](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。 
@@ -129,9 +129,9 @@ ms.locfileid: "65506380"
 
 可以向 [IP 配置](#ip-configurations)分配以下类型的 IP 地址：
 
-### <a name="private"></a>专用
+### <a name="private"></a>Private
 
-通过专用 [IPv4](#ipv4) 地址，虚拟机能够与虚拟网络或所连接的网络中的其他资源进行通信。 使用专用 [IPv6](#ipv6) 地址时，虚拟机无法用作入站通信的目标，也无法进行出站通信，但有一个例外。 虚拟机可以使用 IPv6 地址与 Azure 负载均衡器进行通信。 有关详细信息，请参阅 [IPv6 的详细信息和限制](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#details-and-limitations)。
+专用[IPv4](#ipv4)或 IPv6 地址使虚拟机能够与虚拟网络或其他连接的网络中的其他资源进行通信。 
 
 默认情况下，Azure DHCP 服务器将 Azure 网络接口的[主要 IP 配置](#primary)的专用 IPv4 地址分配给虚拟机操作系统内的网络接口。 除非必要，永远不应当在虚拟机操作系统中手动设置网络接口的 IP 地址。
 
@@ -146,7 +146,7 @@ ms.locfileid: "65506380"
 4. 启动虚拟机。
 5. 在操作系统中[手动配置](virtual-network-multiple-ip-addresses-portal.md#os-config)辅助 IP 地址（在 Windows 内还需要配置主要 IP 地址）以配置在 Azure.
 
-通过遵循上述步骤，在 Azure 中分配给网络接口的专用 IP 地址与在虚拟机操作系统中分配的地址会保持相同。 若要记录你在操作系统中为订阅中的哪些虚拟机手动设置了 IP 地址，请考虑向虚拟机添加一个 Azure [标记](../azure-resource-manager/resource-group-using-tags.md)。 例如，你可以使用“IP 地址分配：静态”。 这样，可以轻松找到你的订阅中你在操作系统中手动为其设置了 IP 地址的虚拟机。
+通过遵循上述步骤，在 Azure 中分配给网络接口的专用 IP 地址与在虚拟机操作系统中分配的地址将保持相同。 若要记录你在操作系统中为订阅中的哪些虚拟机手动设置了 IP 地址，请考虑向虚拟机添加一个 Azure [标记](../azure-resource-manager/resource-group-using-tags.md)。 例如，你可以使用“IP 地址分配：静态”。 这样，可以轻松找到你的订阅中你在操作系统中手动为其设置了 IP 地址的虚拟机。
 
 通过专用 IP 地址，虚拟机除了能够与同一网络中的或所连接的虚拟网络中的其他资源进行通信外，还能够进行到 Internet 的出站通信。 出站连接是由 Azure 转换为不可预测的公共 IP 地址的源网络地址。 若要了解 Azure 出站 Internet 连接的详细信息，请阅读 [Azure 出站 Internet 连接](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。 不能从 Internet 进行到虚拟机的专用 IP 地址的入站通信。 如果出站连接需要可预测的公共 IP 地址，则将公共 IP 地址资源关联到网络接口。
 
@@ -167,15 +167,15 @@ ms.locfileid: "65506380"
 
 默认情况下会分配动态专用 IPv4 和 IPv6（可选）地址。
 
-- **仅公共**：Azure 从特定于每个 Azure 区域的范围分配地址。 若要了解向每个区域分配了哪些范围，请参阅 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 如果在停止（解除分配）虚拟机后又重新启动，则地址可能会更改。 无法使用任一分配方法为 IP 配置分配公共 IPv6 地址。
-- **仅专用**：Azure 保留每个子网地址范围中的前四个地址，不分配这些地址。 Azure 将下一个可用的地址分配给子网地址范围中的资源。 例如，如果子网的地址范围为 10.0.0.0/16，且地址 10.0.0.0.4-10.0.0.14 已分配（.0-.3 为保留地址），则 Azure 会将 10.0.0.15 分配给资源。 动态方法是默认的分配方法。 动态 IP 地址在分配后，仅在以下情况下才会释放：网络接口已删除、已分配到同一虚拟网络中的另一子网，或者分配方法已更改为静态，这种情况下会指定另一 IP 地址。 默认情况下，当分配方法从动态更改为静态时，Azure 会将以前动态分配的地址作为静态地址分配。 使用动态分配方法只能分配专用 IPv6 地址。
+- 仅公共：Azure 从特定于每个 Azure 区域的范围分配地址。 若要了解向每个区域分配了哪些范围，请参阅 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 如果在停止（解除分配）虚拟机后又重新启动，则地址可能会更改。 无法使用任一分配方法为 IP 配置分配公共 IPv6 地址。
+- **仅专用**：Azure 保留每个子网地址范围中的前四个地址，不分配这些地址。 Azure 将下一个可用的地址分配给子网地址范围中的资源。 例如，如果子网的地址范围为 10.0.0.0/16，且地址 10.0.0.0.4-10.0.0.14 已分配（.0-.3 为保留地址），则 Azure 会将 10.0.0.15 分配给资源。 动态方法是默认的分配方法。 动态 IP 地址在分配后，仅在以下情况下才会释放：网络接口已删除、已分配到同一虚拟网络中的另一子网，或者分配方法已更改为静态，这种情况下会指定另一 IP 地址。 默认情况下，当分配方法从动态更改为静态时，Azure 会将以前动态分配的地址作为静态地址分配。 
 
-### <a name="static"></a>Static
+### <a name="static"></a>静态
 
-（可选）可以为 IP 配置分配公共或专用静态 IPv4 地址。 无法为 IP 配置分配静态公共或专用 IPv6 地址。 若要详细了解 Azure 如何分配静态公用 IPv4 地址，请参阅[公用 IP 地址](virtual-network-public-ip-address.md)。
+可以（可选）向 IP 配置分配公共或专用静态 IPv4 或 IPv6 地址。 若要详细了解 Azure 如何分配静态公用 IPv4 地址，请参阅[公用 IP 地址](virtual-network-public-ip-address.md)。
 
-- **仅公共**：Azure 从特定于每个 Azure 区域的范围分配地址。 对于 Azure [公有](https://www.microsoft.com/download/details.aspx?id=56519)云、[美国政府](https://www.microsoft.com/download/details.aspx?id=57063)云、[中国](https://www.microsoft.com/download/details.aspx?id=57062)云和[德国](https://www.microsoft.com/download/details.aspx?id=57064)云，可以下载范围（前缀）的列表。 该地址不会更改，除非其所分配到的公共 IP 地址资源已删除，或者分配方法已更改为动态。 如果将公共 IP 地址资源关联到某个 IP 配置，则必须取消其与 IP 配置的关联，然后才能更改其分配方法。
-- **仅专用**：由你选择并分配子网地址范围中的地址。 分配的地址可以是子网地址范围中的任何地址，前提是该地址不是子网地址范围中的头四个地址，也不是当前已分配给子网中任何其他资源的地址。 只有在删除网络接口之后，静态地址才会释放。 如果将分配方法更改为静态，Azure 会动态地将以前分配的动态 IP 地址作为静态地址，即使该地址不是子网的地址范围中的下一个可用地址。 如果将网络接口分配给同一虚拟网络中的另一子网，则该地址也会更改。但是，若要将网络接口分配给另一子网，必须先将分配方法从静态更改为动态。 将网络接口分配给另一子网以后，即可将分配方法改回为静态，并根据新子网的地址范围分配 IP 地址。
+- 仅公共：Azure 从特定于每个 Azure 区域的范围分配地址。 对于 Azure [公有](https://www.microsoft.com/download/details.aspx?id=56519)云、[美国政府](https://www.microsoft.com/download/details.aspx?id=57063)云、[中国](https://www.microsoft.com/download/details.aspx?id=57062)云和[德国](https://www.microsoft.com/download/details.aspx?id=57064)云，可以下载范围（前缀）的列表。 该地址不会更改，除非其所分配到的公共 IP 地址资源已删除，或者分配方法已更改为动态。 如果将公共 IP 地址资源关联到某个 IP 配置，则必须取消其与 IP 配置的关联，然后才能更改其分配方法。
+- **仅专用**：由你选择并分配子网地址范围中的地址。 分配的地址可以是子网地址范围中的任何地址，前提是该地址不是子网地址范围中的头四个地址，也不是当前已分配给子网中任何其他资源的地址。 只有在删除网络接口之后，静态地址才会释放。 如果将分配方法更改为静态，则 Azure 会动态地将以前分配的动态 IP 地址分配为静态地址，即使该地址不是子网地址范围内的下一个可用地址。 如果将网络接口分配给同一虚拟网络中的另一子网，则该地址也会更改。但是，若要将网络接口分配给另一子网，必须先将分配方法从静态更改为动态。 将网络接口分配给另一子网以后，即可将分配方法改回为静态，并根据新子网的地址范围分配 IP 地址。
 
 ## <a name="ip-address-versions"></a>IP 地址版本
 
@@ -187,7 +187,7 @@ ms.locfileid: "65506380"
 
 ### <a name="ipv6"></a>IPv6
 
-可以为网络接口的辅助 IP 配置分配零个或一个专用 [IPv6](#ipv6) 地址。 网络接口不能具有任何现有的辅助 IP 配置。 无法使用门户添加具有 IPv6 地址的 IP 配置。 使用 PowerShell 或 CLI 向现有网络接口添加具有专用 IPv6 地址的 IP 配置。 该网络接口无法附加到现有 VM。
+可以为网络接口的辅助 IP 配置分配零个或一个专用 [IPv6](#ipv6) 地址。 网络接口不能具有任何现有的辅助 IP 配置。 每个网络接口最多只能有一个 IPv6 专用地址。 可以选择将公共 IPv6 地址添加到 IPv6 网络接口配置。
 
 > [!NOTE]
 > 虽然可使用门户创建具有 IPv6 地址的网络接口，但不能使用门户将现有网络接口添加到新的或现有的虚拟机。 使用 PowerShell 或 Azure CLI 创建具有专用 IPv6 地址的网络接口，然后在创建虚拟机时附加该网络接口。 无法将分配有专用 IPv6 地址的网络接口附加到现有虚拟机。 对于附加到虚拟机的任何网络接口，无法使用任何工具（门户、CLI 或 PowerShell）为 IP 配置添加专用 IPv6 地址。
@@ -199,12 +199,12 @@ ms.locfileid: "65506380"
 公共 IP 地址是使用基本或标准 SKU 创建的。 有关 SKU 差异的详细信息，请参阅[管理公共 IP 地址](virtual-network-public-ip-address.md)。
 
 > [!NOTE]
-> 将标准 SKU 公共 IP 地址分配到虚拟机的网络接口时，必须使用[网络安全组](security-overview.md#network-security-groups)显式允许预期流量。 创建并关联网络安全组且显式允许所需流量之后，才可与资源通信。
+> 将标准 SKU 公共 IP 地址分配到虚拟机的网络接口时，必须使用[网络安全组](security-overview.md#network-security-groups)显式允许预期流量。 创建和关联网络安全组并显式允许所需流量之后，才可与资源通信。
 
 ## <a name="next-steps"></a>后续步骤
 若要创建具有不同 IP 配置的虚拟机，请阅读以下文章：
 
-|任务|Tool|
+|任务|工具|
 |---|---|
 |创建具有多个网络接口的 VM|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 |创建具有多个 IPv4 地址的单 NIC VM|[CLI](virtual-network-multiple-ip-addresses-cli.md)、[PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|

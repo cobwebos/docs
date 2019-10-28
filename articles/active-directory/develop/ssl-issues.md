@@ -1,5 +1,6 @@
 ---
-title: 针对客观-C 问题对 MSAL 进行故障排除 |Microsoft 标识平台
+title: 解决 MSAL 问题
+titleSuffix: Microsoft identity platform
 description: 了解如何使用带有 MSAL 的 SSL 证书应对各种问题。目标-C 库。
 services: active-directory
 documentationcenter: ''
@@ -17,22 +18,22 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76892686beec8ea18d56166519353fb5a2495124
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: fc918502cd252b4e53af8bcbd209a8387ef4d8c2
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268903"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803669"
 ---
-# <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>如何：排查 iOS 和 macOS SSL 问题的 MSAL
+# <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>如何：对 iOS 和 macOS SSL 问题的 MSAL 进行故障排除
 
 本文提供的信息可帮助你解决使用[适用于 iOS 和 macOS 的 Microsoft 身份验证库（MSAL）](reference-v2-libraries.md)时可能遇到的问题
 
 ## <a name="network-issues"></a>网络问题
 
-**错误-1200**："出现 SSL 错误，无法建立到服务器的安全连接。"
+**错误-1200**：出现 SSL 错误，无法建立到服务器的安全连接。
 
-此错误表示该连接不安全。 当证书无效时，会发生这种情况。 有关详细信息，包括 SSL 检查失败的服务器，请参阅`NSURLErrorFailingURLErrorKey` error 对象的`userInfo`字典中的。
+此错误表示该连接不安全。 当证书无效时，会发生这种情况。 有关详细信息，包括 SSL 检查失败的服务器，请参阅 error 对象的 `userInfo` 字典中的 `NSURLErrorFailingURLErrorKey`。
 
 此错误来自 Apple 的网络库。 NSURL 错误代码的完整列表位于 macOS 和 iOS Sdk 的 NSURLError 中。 有关此错误的详细信息，请参阅[URL 加载系统错误代码](https://developer.apple.com/documentation/foundation/1508628-url_loading_system_error_codes?language=objc)。
 

@@ -1,5 +1,6 @@
 ---
-title: 如何使用适用于 iOS 和 macOS 的 MSAL 请求自定义声明 |Microsoft 标识平台
+title: 如何使用适用于 iOS 和 macOS 的 MSAL 请求自定义声明
+titleSuffix: Microsoft identity platform
 description: 了解如何请求自定义声明。
 services: active-directory
 documentationcenter: ''
@@ -17,18 +18,18 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6e09d58742bffd74f07f79b3ec55c1e81533632
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 6c34da9e8faa8c2c2e24e7f00569e2b7c8af674f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268981"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802594"
 ---
-# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>如何：使用适用于 iOS 和 macOS 的 MSAL 请求自定义声明
+# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>如何：使用 MSAL for iOS 和 macOS 请求自定义声明
 
 通过 OpenID Connect，可以选择请求从用户信息终结点和/或 ID 令牌返回各个声明。 声明请求表示为一个 JSON 对象，该对象包含请求的声明的列表。 有关更多详细信息，请参阅[OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter) 。
 
-适用于 iOS 和 macOS 的 Microsoft 身份验证库（MSAL）允许在交互式和无提示令牌采集方案中请求特定声明。 它通过`claimsRequest`参数执行此操作。
+适用于 iOS 和 macOS 的 Microsoft 身份验证库（MSAL）允许在交互式和无提示令牌采集方案中请求特定声明。 它通过 `claimsRequest` 参数实现此目的。
 
 在多个方案中，需要此项。 例如：
 
@@ -36,9 +37,9 @@ ms.locfileid: "71268981"
 - 请求不能使用应用程序范围指定的标准声明的特定组合。 例如，如果访问令牌由于缺少声明而被拒绝，则该应用程序可以使用 MSAL 请求缺少的声明。
 
 > [!NOTE]
-> 只要指定了声明请求，MSAL 就会绕过访问令牌缓存。 如果需要其他声明（而`claimsRequest`不是始终在每个 MSAL API 调用中提供相同`claimsRequest`的参数），则必须提供参数。
+> 只要指定了声明请求，MSAL 就会绕过访问令牌缓存。 如果需要额外的声明（而不是始终在每个 MSAL API 调用中提供同一个 `claimsRequest` 参数），只需提供 `claimsRequest` 参数就很重要。
 
-`claimsRequest`可在和`MSALInteractiveTokenParameters`中`MSALSilentTokenParameters`指定：
+可以在 `MSALSilentTokenParameters` 和 `MSALInteractiveTokenParameters`中指定 `claimsRequest`：
 
 ```objc
 /*!
@@ -54,7 +55,7 @@ ms.locfileid: "71268981"
 
 @end
 ```
-`MSALClaimsRequest`可从 JSON 声明请求的 NSString 表示形式构造。 
+可以从 JSON 声明请求的 NSString 表示形式构造 `MSALClaimsRequest`。 
 
 Objective-C：
 
@@ -63,7 +64,7 @@ NSError *claimsError = nil;
 MSALClaimsRequest *request = [[MSALClaimsRequest alloc] initWithJsonString:@"{\"id_token\":{\"auth_time\":{\"essential\":true},\"acr\":{\"values\":[\"urn:mace:incommon:iap:silver\"]}}}" error:&claimsError];
 ```
 
-反应
+Swift：
 
 ```swift
 var requestError: NSError? = nil
@@ -85,7 +86,7 @@ individualClaimRequest.additionalInfo.value = @"myvalue";
 [request requestClaim:individualClaimRequest forTarget:MSALClaimsRequestTargetIdToken error:&claimsError];
 ```
 
-反应
+Swift：
 
 ```swift
 let individualClaimRequest = MSALIndividualClaimRequest(name: "custom-claim")
@@ -103,7 +104,7 @@ do {
 
 
 
-`MSALClaimsRequest`然后，应在令牌参数中进行设置，并将其提供给 MSAL 令牌收购 Api 之一：
+然后，应在令牌参数中设置 `MSALClaimsRequest`，并将其提供给 MSAL 令牌收购 Api 之一：
 
 Objective-C：
 
@@ -118,7 +119,7 @@ parameters.claimsRequest = request;
 [application acquireTokenWithParameters:parameters completionBlock:completionBlock];
 ```
 
-反应
+Swift：
 
 ```swift
 let application: MSALPublicClientApplication!

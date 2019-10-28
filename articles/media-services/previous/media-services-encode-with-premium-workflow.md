@@ -1,6 +1,6 @@
 ---
 title: 通过媒体编码器高级工作流进行高级编码 | Microsoft Docs
-description: 了解如何使用媒体编码器高级工作流进行编码。 代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。
+description: 了解如何使用媒体编码器高级工作流进行编码。 代码示例以 C# 编写，并使用媒体服务 .NET SDK。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d20fc0cee6bce1389649e6287170b1963e799ccf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca5de657ad45f53cff0cb01d5fe9cc412baf4533
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463885"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792307"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>使用媒体编码器高级工作流进行高级编码
 > [!NOTE]
@@ -26,17 +26,15 @@ ms.locfileid: "61463885"
 >
 >
 
-有关高级编码器的问题，请发送电子邮件到 mepd@microsoft.com。
-
 ## <a name="overview"></a>概述
 Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体处理器。 此处理器针对高级按需工作流提供高级编码功能。
 
 以下主题概述了与**媒体编码器高级工作流**相关的详细信息：
 
 * [媒体编码器高级工作流支持的格式](media-services-premium-workflow-encoder-formats.md) - 介绍**媒体编码器高级工作流**支持的文件格式和编解码器。
-* [Azure 点播媒体编码器的概述和比较](media-services-encode-asset.md)比较了 Media Encoder Premium Workflow 和 Media Encoder Standard 的编码功能   。
+* [Azure 点播媒体编码器的概述和比较](media-services-encode-asset.md)比较了 Media Encoder Premium Workflow 和 Media Encoder Standard 的编码功能。
 
-本文演示如何在 Media Encoder Premium Workflow 中使用 .NET 进行编码  。
+本文演示如何在 Media Encoder Premium Workflow 中使用 .NET 进行编码。
 
 **媒体编码器高级工作流**的编码任务需要一个名为“Workflow”文件的单独配置文件。 这些文件的扩展名为 .workflow，由[工作流设计器](media-services-workflow-designer.md)工具创建。
 
@@ -52,7 +50,7 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
 
 以下示例演示了如何使用**媒体编码器高级工作流**进行编码。
 
-执行以下步骤：
+将执行以下步骤：
 
 1. 创建资产并上传工作流文件。
 2. 创建资产并上传源媒体文件。
@@ -231,7 +229,9 @@ namespace MediaEncoderPremiumWorkflowSample
 }
 ```
 
-有关高级编码器的问题，请发送电子邮件到 mepd@microsoft.com。
+## <a name="need-help"></a>需要帮助？
+
+可以通过导航到 "[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)" 来打开支持票证
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

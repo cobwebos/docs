@@ -1,17 +1,17 @@
 ---
-title: 在订阅中创建资源组和资源-Azure 资源管理器模板
+title: 部署订阅级别-Azure 资源管理器模板
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 913014a9b7e24345cd21979ba20ea1a1a938d022
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: d8b1be1d79ae0426d73c45408dd3c4f4f4660afb
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001598"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532198"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
@@ -357,7 +357,7 @@ New-AzDeployment `
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何分配角色，请参阅[使用 RBAC 和 Azure 资源管理器模板管理对 Azure 资源的访问权限](../role-based-access-control/role-assignments-template.md)。
+* 若要了解如何分配角色，请参阅[使用 RBAC 和 azure 资源管理器模板管理对 Azure 资源的访问权限](../role-based-access-control/role-assignments-template.md)。
 * 若要通过示例来了解如何为 Azure 安全中心部署工作区设置，请参阅 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
 * 可在[GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments)上找到示例模板。
 * 若要了解有关创建 Azure 资源管理器模板的信息，请参阅[创作模板](resource-group-authoring-templates.md)。 

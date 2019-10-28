@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: 5631b34fee64c6ad0917b95ec68fcd586717a1b0
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 2919c7a2fa3a8912de0272af5131583988184704
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675205"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755520"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure 应用服务诊断概述
 
@@ -92,7 +92,7 @@ ms.locfileid: "72675205"
 
 ### <a name="proactive-cpu-monitoring"></a>主动 CPU 监视
 
-主动 CPU 监视为你的应用程序或子进程消耗高 CPU 资源时，提供一种简单且主动的方式来执行操作。 你可以设置自己的 CPU 阈值规则，以暂时降低 CPU 严重问题，直到发现意外问题的真正原因。 有关详细信息，请参阅[降低 CPU 问题](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html)。主动 CPU 监视为你的应用程序或子进程消耗高 CPU 资源时，提供一种简单且主动的方式来执行操作。 你可以设置自己的 CPU 阈值规则，以暂时降低 CPU 严重问题，直到发现意外问题的真正原因。
+主动 CPU 监视为你的应用程序或子进程消耗高 CPU 资源时，提供一种简单且主动的方式来执行操作。 你可以设置自己的 CPU 阈值规则，以暂时降低 CPU 严重问题，直到发现意外问题的真正原因。 有关详细信息，请参阅[降低 CPU 问题](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html)。
 
 ![主动 CPU 监视](./media/app-service-diagnostics/proactive-cpu-monitoring-9.png)
 

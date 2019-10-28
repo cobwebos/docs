@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 07/15/2019
+ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 109db23976f6332b24bcfa565812bd9491062691
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 25017e6ea0be5d4320832298cdadbec7ec5a05cc
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330733"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929366"
 ---
 # <a name="collect-data-for-models-in-production"></a>为生产环境中的模型收集数据
 
@@ -47,9 +47,12 @@ ms.locfileid: "72330733"
 Blob 中输出数据的路径遵循以下语法：
 
 ```
-/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
+/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
+
+>[!Note]
+> 在之前的 SDK 版本中 `0.1.0a16` `designation` 参数命名为 `identifier`。 如果你的代码是使用早期版本开发的，则需要相应地进行更新。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -80,8 +83,8 @@ Blob 中输出数据的路径遵循以下语法：
 
     ```python
     global inputs_dc, prediction_dc
-    inputs_dc = ModelDataCollector("best_model", identifier="inputs", feature_names=["feat1", "feat2", "feat3". "feat4", "feat5", "feat6"])
-    prediction_dc = ModelDataCollector("best_model", identifier="predictions", feature_names=["prediction1", "prediction2"])
+    inputs_dc = ModelDataCollector("best_model", designation="inputs", feature_names=["feat1", "feat2", "feat3". "feat4", "feat5", "feat6"])
+    prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
     CorrelationId 是一个可选参数，如果你的模型不需要该参数，则无需进行设置。 拥有 correlationId 确实可以帮助你更轻松地与其他数据进行映射。 （示例包括：LoanNumber、CustomerId 等）
@@ -170,7 +173,7 @@ Blob 中输出数据的路径遵循以下语法：
 1. Blob 中输出数据的路径遵循以下语法：
 
 ```
-/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
+/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
 
@@ -190,7 +193,7 @@ Blob 中输出数据的路径遵循以下语法：
 
     [![PBI Navigator](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
-1. 在查询编辑器中，单击“名称”列的下面，并添加存储帐户 1。 在筛选器中为路径建模。 注意：如果只想查看特定年份或月份的文件，则只需展开筛选器路径即可。 例如，只查看 3 月份的数据：/modeldata/subscriptionid>/resourcegroupname>/workspacename>/webservicename>/modelname>/modelversion>/identifier>/year>/3
+1. 在查询编辑器中，单击“名称”列的下面，并添加存储帐户 1。 在筛选器中为路径建模。 注意：如果只想查看特定年份或月份的文件，则只需展开筛选器路径即可。 例如，只需查看三月 data：/modeldata/subscriptionid >/resourcegroupname >/workspacename >/webservicename >/modelname >/modelversion >/designation >/年 >/3
 
 1. 基于“名称”筛选相关的数据。 如果存储了**预测**和**输入**，则需要为每个都创建一个查询。
 

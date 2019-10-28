@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 04753ca4c9b14d7ccc265cfcf971b3fd63c861ae
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 181f11bd5cfda479c25b5bce20649b8f382968fe
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72384161"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935372"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中配置自动 ML 试验
 
@@ -50,14 +50,16 @@ ms.locfileid: "72384161"
 [决策树](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[决策树](https://scikit-learn.org/stable/modules/tree.html#regression)|[决策树](https://scikit-learn.org/stable/modules/tree.html#regression)
 [K 近邻](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K 近邻](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K 近邻](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
 [线性 SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[C 支持向量分类 (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[支持矢量分类（SVC）](https://scikit-learn.org/stable/modules/svm.html#classification)|[随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
 [随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
 [极端随机树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[极端随机树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[极端随机树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
 [DNN 分类器](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN 回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN 回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
 [DNN 线性分类器](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[线性回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[线性回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[朴素贝叶斯](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|
-[随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|
+[朴素贝叶斯](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|[Fast 线性回归量](https://docs.microsoft.com/en-us/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[自动 ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[联机梯度下降回归量](https://docs.microsoft.com/en-us/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+|[平均感知器分类器](https://docs.microsoft.com/en-us/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||ForecastTCN
+|[线性 SVM 分类器](https://docs.microsoft.com/en-us/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)||
 
 使用 `AutoMLConfig` 构造函数中的 `task` 参数指定实验类型。
 
@@ -70,28 +72,24 @@ automl_config = AutoMLConfig(task = "classification")
 
 ## <a name="data-source-and-format"></a>数据源和格式
 
-自动化机器学习支持驻留在本地桌面上或云中（例如 Azure Blob 存储）的数据。 数据可以读入 Pandas 数据帧或 Azure 机器学习数据集。 下面的代码示例演示如何以这些格式存储数据。 [了解有关 datatsets 的详细信息](https://github.com/MicrosoftDocs/azure-docs-pr/pull/how-to-create-register-datasets.md)。
+自动化机器学习支持驻留在本地桌面上或云中（例如 Azure Blob 存储）的数据。 数据可以读入**Pandas 数据帧**或**Azure 机器学习 TabularDataset**。  [了解有关 datatsets 的详细信息](https://github.com/MicrosoftDocs/azure-docs-pr/pull/how-to-create-register-datasets.md)。
+
+定型数据的要求：
+- 数据必须为表格格式。
+- 要预测的值（目标列）必须位于数据中。
+
+下面的代码示例演示如何以这些格式存储数据。
 
 * TabularDataset
+  ```python
+  from azureml.core.dataset import Dataset
+  
+  tabular_dataset = Dataset.Tabular.from_delimited_files("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv")
+  train_dataset, test_dataset = tabular_dataset.random_split(percentage = 0.1, seed = 42)
+  label = "Label"
+  ```
+
 * Pandas 数据帧
-
->[!Important]
-> 定型数据的要求：
->* 数据必须为表格格式。
->* 要预测的值（目标列）必须在数据中存在。
-
-示例：
-
-* TabularDataset
-```python
-    from azureml.core.dataset import Dataset
-
-    tabular_dataset = Dataset.Tabular.from_delimited_files("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv")
-    train_dataset, test_dataset = tabular_dataset.random_split(percentage = 0.1, seed = 42)
-    label = "Label"
-```
-
-*   Pandas 数据帧
 
     ```python
     import pandas as pd
@@ -174,7 +172,7 @@ automl_config = AutoMLConfig(task = "classification")
         n_cross_validations=5)
     ```
 
-三个不同的 `task` 参数值（第三个任务类型为 `forecasting`，并使用与 @no__t 2 个任务相同的算法池）确定要应用的模型的列表。 使用 `whitelist` 或 `blacklist` 参数，以使用可用模型进一步修改迭代，以包含或排除。 支持的模型的列表可以在[SupportedModels 类](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)中找到。
+三个不同的 `task` 参数值（第三个任务类型为 `forecasting`，并使用与 `regression` 任务相同的算法池）确定要应用的模型的列表。 使用 `whitelist` 或 `blacklist` 参数，以使用可用模型进一步修改迭代，以包含或排除。 支持的模型的列表可以在[SupportedModels 类](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)中找到。
 
 ### <a name="primary-metric"></a>主要指标
 主要指标用于确定要在模型定型期间用于优化的指标。 您可以选择的可用指标由您选择的任务类型决定，下表显示了每种任务类型的有效主要指标。
@@ -193,13 +191,13 @@ automl_config = AutoMLConfig(task = "classification")
 
 在每个自动机器学习试验中，你的数据将[自动进行缩放和规范化](concept-automated-ml.md#preprocess)，以帮助*特定*的算法对不同规模的功能敏感。  但是，还可以启用其他预处理/特征化，例如缺失值插补法、编码和转换。 [详细了解所包含的特征化](how-to-create-portal-experiments.md#preprocess)。
 
-若要启用此特征化，请为[@no__t 2 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)指定 `"preprocess": True`。
+若要启用此特征化，请为[`AutoMLConfig` 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)指定 `"preprocess": True`。
 
 > [!NOTE]
 > 自动机器学习预处理步骤（特征规范化、处理缺失数据，将文本转换为数字等）成为基础模型的一部分。 使用模型进行预测时，训练期间应用的相同预处理步骤将自动应用于输入数据。
 
 ### <a name="time-series-forecasting"></a>时序预测
-时序 @no__t 任务需要配置对象中有其他参数：
+时序 `forecasting` 任务需要配置对象中有其他参数：
 
 1. `time_column_name`：必需的参数，用于定义定型数据中包含有效时序的列的名称。
 1. `max_horizon`：根据定型数据的周期定义要预测的时间长度。 例如，如果您有使用每日时间粒度的定型数据，则可以定义要在多长时间内为模型定型。
@@ -240,13 +238,13 @@ automl_config = AutoMLConfig(task = 'forecasting',
 
 默认情况下启用系综模型，并在自动机器学习运行中显示为最终的运行迭代。 当前支持的系综方法是投票和堆栈。 投票是使用加权平均值作为软投票实现的，堆栈实现使用2层实现，其中第一层具有与投票系综相同的模型，第二层模型用于查找第一层中的模型。 如果使用的是 ONNX 模型，**或**启用了模型 explainability，则将禁用堆栈，并且仅使用投票。
 
-有多个默认参数可作为 `kwargs` 在 @no__t 1 对象中提供，以更改默认 stack 系综行为。
+有多个默认参数可以作为 `kwargs` 在 `AutoMLConfig` 对象中提供，以更改默认 stack 系综行为。
 
-* `stack_meta_learner_type`：学习器是针对单个不同模型的输出训练的模型。 默认的元学习器在分类任务 `LogisticRegression` （如果启用了交叉验证，则为 `LogisticRegressionCV`）; 对于回归/预测任务为 `ElasticNet` （如果启用了交叉验证，则为 `ElasticNetCV`）。 此参数可以是下列字符串之一： `LogisticRegression`、`LogisticRegressionCV`、`LightGBMClassifier`、`ElasticNet`、`ElasticNetCV`、`LightGBMRegressor` 或 @no__t 6。
-* @no__t：指定为定型元学习器而保留的定型集的比例（选择定型定型类型时）。 默认值为 `0.2`。
+* `stack_meta_learner_type`：学习器是针对单个不同模型的输出训练的模型。 默认的元学习器在分类任务 `LogisticRegression` （如果启用了交叉验证，则为 `LogisticRegressionCV`）; 对于回归/预测任务为 `ElasticNet` （如果启用了交叉验证，则为 `ElasticNetCV`）。 此参数可以是下列字符串之一： `LogisticRegression`、`LogisticRegressionCV`、`LightGBMClassifier`、`ElasticNet`、`ElasticNetCV`、`LightGBMRegressor`或 `LinearRegression`。
+* `stack_meta_learner_train_percentage`：指定为定型学习器而保留定型集的比例（选择定型定型类型时）。 默认值为 `0.2`。
 * `stack_meta_learner_kwargs`：要传递给学习器的初始值设定项的可选参数。 这些参数和参数类型从相应的模型构造函数中镜像这些参数和参数类型，并将其转发到模型构造函数。
 
-下面的代码演示了在 @no__t 0 对象中指定自定义系综行为的示例。
+下面的代码演示了一个在 `AutoMLConfig` 对象中指定自定义系综行为的示例。
 
 ```python
 ensemble_settings = {
@@ -289,7 +287,7 @@ automl_classifier = AutoMLConfig(
 
 ## <a name="run-experiment"></a>运行试验
 
-对于自动 ML，你将创建一个 @no__t 0 对象，这是一个用于运行试验的 @no__t 中的命名对象。
+对于自动 ML，你将创建一个 `Experiment` 对象，该对象是用于运行试验的 `Workspace` 中的命名对象。
 
 ```python
 from azureml.core.experiment import Experiment
@@ -317,7 +315,7 @@ run = experiment.submit(automl_config, show_output=True)
 可以定义几个选项来结束实验。
 1. 无标准：如果未定义任何退出参数，则试验将继续，直到不会对主要指标进行进一步的处理。
 1. 迭代次数：定义要运行的实验的迭代次数。 您可以根据需要添加 `iteration_timeout_minutes` 来定义每个迭代的时间限制（以分钟为单位）。
-1. 在一段时间后退出：在设置中使用 `experiment_timeout_minutes` 使你可以定义实验在多长时间内会继续运行。
+1. 在一段时间后退出：通过使用设置中的 `experiment_timeout_minutes`，你可以定义实验在运行中的运行时间（分钟）。
 1. 达到分数后退出：使用 `experiment_exit_score` 将在达到主要指标分数后完成试验。
 
 ### <a name="explore-model-metrics"></a>探索模型指标
@@ -366,7 +364,7 @@ best_run, fitted_model = automl_run.get_output()
   >[!Note]
   >请将 "timeseriestransformer" 用于任务 = "预测"，否则请将 "datatransformer" 用于 "回归" 或 "分类" 任务。
 
-+ API 2： `get_featurization_summary()` 返回所有输入功能的特征化 summary。
++ API 2： `get_featurization_summary()` 为所有输入功能返回特征化 summary。
 
   用法：
   ```python
@@ -531,7 +529,7 @@ LogisticRegression
 automl_run.get_portal_url()
 ```
 
-您可以在工作区的 Azure 门户中或从[工作区登陆页面（预览版）](https://ml.azure.com)中可视化功能重要性图表。 使用笔记本中的 @no__t 0 [Jupyter 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)时，也会显示该图表。 若要了解有关图表的详细信息，请参阅[了解自动化机器学习结果](how-to-understand-automated-ml.md)。
+您可以在工作区的 Azure 门户中或从[工作区登陆页面（预览版）](https://ml.azure.com)中可视化功能重要性图表。 使用笔记本中的 `RunDetails` [Jupyter 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)时，也会显示该图表。 若要了解有关图表的详细信息，请参阅[了解自动化机器学习结果](how-to-understand-automated-ml.md)。
 
 ```Python
 from azureml.widgets import RunDetails

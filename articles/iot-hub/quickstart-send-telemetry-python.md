@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 02/28/2019
-ms.openlocfilehash: 0e4cafee26d9d3345d9099c3c9fc048fb982ada5
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.date: 10/17/2019
+ms.openlocfilehash: a5ccf2d45d2c699f1f2261884f09f8cefe92b615
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166419"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598183"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序读取该数据 (Python)
 
@@ -24,8 +24,6 @@ ms.locfileid: "72166419"
 IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引入云中进行存储或处理。 本快速入门会将模拟设备应用程序的遥测数据通过 IoT 中心发送到后端应用程序进行处理。
 
 此快速入门使用预先编写的 Python 应用程序来发送遥测数据，使用 CLI 实用程序从中心读取遥测数据。 运行这两个应用程序前，请先创建 IoT 中心并在中心注册设备。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -38,6 +36,8 @@ az extension add --name azure-cli-iot-ext
 ```
 
 从 https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip 下载示例 Python 项目并提取 ZIP 存档。
+
+已在开发计算机上安装 Python 版本 3.5.3+。 
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 

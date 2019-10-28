@@ -1,5 +1,5 @@
 ---
-title: 排查 Azure Active Directory 活动日志中缺少数据的问题 | Microsoft Docs
+title: 排查活动日志中缺少的数据问题 |Microsoft Docs
 description: 为你提供了一种解决方法，解决在 Azure Active Directory 活动日志中缺少数据的问题。
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 01/15/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a04de319a17255e3b61378cbd716828a237317b3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 7aeac1180292ea5200e9eabc30ee01db05b67e75
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989519"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820855"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>故障排除：Azure Active Directory 活动日志中缺少数据 
 
@@ -43,7 +43,7 @@ ms.locfileid: "68989519"
 | 目录审核 | &nbsp; | 2 分钟 | 5 分钟 |
 | 登录活动 | &nbsp; | 2 分钟 | 5 分钟 | 
 
-### <a name="resolution"></a>解决
+### <a name="resolution"></a>分辨率
 
 等待 15 分钟到 2 小时，再看操作是否显示在日志中。 如果 2 小时后仍未看到日志，请[提交支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，我们会进行调查。
 
@@ -64,7 +64,7 @@ ms.locfileid: "68989519"
 | 目录审核 | &nbsp; | 2 分钟 | 5 分钟 |
 | 登录活动 | &nbsp; | 2 分钟 | 5 分钟 | 
 
-### <a name="resolution"></a>解决
+### <a name="resolution"></a>分辨率
 
 等待 15 分钟到 2 小时，再看操作是否显示在日志中。 如果 2 小时后仍未看到日志，请[提交支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，我们会进行调查。
 
@@ -72,7 +72,7 @@ ms.locfileid: "68989519"
 
 ### <a name="symptoms"></a>症状
 
-无法在 Azure 门户中查看 30 天以上的登录和审核数据。 为什么? 
+无法在 Azure 门户中查看 30 天以上的登录和审核数据。 为什么？ 
 
  ![报告](./media/troubleshoot-missing-audit-data/03.png)
 
@@ -80,14 +80,14 @@ ms.locfileid: "68989519"
 
 根据你持有的许可证，Azure Active Directory 操作会按以下持续时间存储活动报告：
 
-| 报告           | &nbsp; |  Azure AD 免费版 | Azure AD Premium P1 | Azure AD Premium P2 |
+| 报告           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | ---              | ----   |  ---           | ---                 | ---                 |
 | 目录审核  | &nbsp; |   7 天     | 30 天             | 30 天             |
 | 登录活动 | &nbsp; | 不可用。 可以在单个用户配置文件边栏选项卡中访问自己在 7 天内的登录活动 | 30 天 | 30 天             |
 
 有关详细信息，请参阅 [Azure Active Directory 报告保留策略](reference-reports-data-retention.md)。  
 
-### <a name="resolution"></a>解决
+### <a name="resolution"></a>分辨率
 
 可以通过两个选项将数据保留 30 天以上。 可以使用 [Azure AD 报告 API](concept-reporting-api.md) 以编程方式检索数据并将其存储在数据库中。 也可将审核日志集成到第三方 SIEM 系统（例如 Splunk 或 SumoLogic）中。
 

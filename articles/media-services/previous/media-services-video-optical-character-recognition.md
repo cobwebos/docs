@@ -14,14 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 91fad34073d7505c596bedfb6c93946ee7393dd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48b5136505c3d0cb5e2e2027f832655e4b3445bf
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825602"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881740"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>使用 Azure 媒体分析将视频文件中的文本内容转换为数字文本  
+
+> [!IMPORTANT]
+> 查看一些媒体处理器的[停用计划](media-services-analytics-overview.md#retirement-plans)。
+
 ## <a name="overview"></a>概述
 如果需要提取视频文件的文本内容，并生成可编辑、可搜索的数字文本，则应该使用 Azure 媒体分析 OCR（光学字符识别）。 此 Azure 媒体处理器可检测视频文件的文本内容并生成文本文件供你使用。 OCR 可让你从媒体的视频信号中自动提取有意义的元数据。
 
@@ -45,8 +49,8 @@ ms.locfileid: "60825602"
 | 属性名称 | 描述 |
 | --- | --- |
 |AdvancedOutput| 如果将 AdvancedOutput 设置为 true，则 JSON 输出将包含每个单词的位置数据（除了短语和区域以外）。 如果不想查看这些详细信息，请将标志设置为 false。 默认值为 false。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/)。|
-| 语言 |（可选）描述要查找的文本的语言。 下列类型作之一：AutoDetect（默认值）、Arabic、简体中文、繁体中文、Czech Danish、Dutch、English、Finnish、French、German、Greek、Hungarian、Italian、Japanese、Korean、Norwegian、Polish、Portuguese、Romanian、Russian、SerbianCyrillic、SerbianLatin、Slovak、Spanish、Swedish、Turkish。 |
-| TextOrientation |（可选）描述要查找的文本的方向。  “Left”表示所有字母顶部朝向左侧。  默认文本（例如书籍中出现的文本）的方向为“Up”。  下列类型作之一：AutoDetect（默认值）、Up、Right、Down、Left。 |
+| 语言 |（可选）描述要查找的文本的语言。 下列其中一项：“自动检测”（默认值）、“阿拉伯语”、“简体中文”、“繁体中文”、“捷克语”、“丹麦语”、“荷兰语”、“英语”、“芬兰语”、“法语”、“德语”、“希腊语”、“匈牙利语”、“意大利语”、“日语”、“韩语”、“挪威语”、“波兰语”、“葡萄牙语”、“罗马尼亚语”、“俄语”、“塞尔维亚语(西里尔文)”、“塞尔维亚语(拉丁语)”、“斯洛伐克语”、“西班牙语”、“瑞典语”、“土耳其语”。 |
+| TextOrientation |（可选）描述要查找的文本的方向。  “Left”表示所有字母顶部朝向左侧。  默认文本（例如书籍中出现的文本）的方向为“Up”。  下列其中一项：AutoDetect（默认值）、Up、Right、Down、Left。 |
 | TimeInterval |（可选）描述采样率。  默认值为每 1/2 秒。<br/>JSON 格式 - HH:mm:ss.SSS（默认值 00:00:00.500）<br/>XML 格式 - W3C XSD 持续时间基元（默认值 PT0.5） |
 | DetectRegions |（可选）指定要在其中检测文本的视频帧中的区域的 DetectRegion 对象数组。<br/>DetectRegion 对象由以下四个整数值组成：<br/>左 - 左边距中的像素<br/>上 - 上边距中的像素<br/>宽度 - 以像素为单位的区域宽度<br/>高度 - 以像素为单位的区域高度 |
 
@@ -114,7 +118,7 @@ OCR 媒体处理器的输出是一个 JSON 文件。
 | start |片段的开始时间（以“刻度”为单位） |
 | duration |片段的长度（以“刻度”为单位） |
 | interval |给定片段中每个事件的间隔 |
-| events |包含区域的数组 |
+| 活动 |包含区域的数组 |
 | region |表示检测到的单词或短语的对象 |
 | 语言 |区域中检测到的文本的语言 |
 | orientation |区域中检测到的文本的方向 |

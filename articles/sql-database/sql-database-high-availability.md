@@ -11,12 +11,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 10/14/2019
-ms.openlocfilehash: 28b702192b41d3b4a8151e3127a4297c28712fa2
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ab3971b4fb6065701d693debf55242be7b15295e
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390701"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965973"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性和 Azure SQL 数据库
 
@@ -39,7 +39,7 @@ Azure SQL Database 在最新稳定版本的 SQL Server 数据库引擎和 Window
 
 标准可用性模型包括两个层：
 
-- 无状态计算层，它运行 @no__t 的进程，并且仅包含暂时性和缓存的数据，例如 TempDB、附加 SSD 上的模型数据库、计划缓存、缓冲池和内存中的列存储池。 此无状态节点由 Azure Service Fabric 操作，该初始化 @no__t，控制节点的运行状况，并在必要时执行故障转移到另一个节点。
+- 无状态计算层，用于运行 `sqlservr.exe` 进程，并且仅包含暂时性和缓存的数据，例如 TempDB、附加的 SSD 上的模型数据库、计划缓存、缓冲池和内存中的列存储池。 此无状态节点由 Azure Service Fabric 操作，用于初始化 `sqlservr.exe`，控制节点的运行状况，并在必要时执行故障转移到另一个节点。
 - 具有存储在 Azure Blob 存储中的数据库文件（.mdf/.ldf）的有状态数据层。 Azure blob 存储具有内置的数据可用性和冗余功能。 它可以保证即使 SQL Server 处理崩溃，数据文件中的日志文件或页中的每个记录仍将保留。
 
 只要数据库引擎或操作系统升级，或检测到故障，Azure Service Fabric 就会将无状态的 SQL Server 进程移到具有足够可用容量的另一个无状态计算节点。 Azure Blob 存储中的数据不受移动的影响，并且数据/日志文件会附加到新初始化的 SQL Server 进程。 此过程保证99.99% 的可用性，但在转换过程中，较大的工作负荷可能会遇到性能下降的情况，因为新的 SQL Server 实例以冷缓存开头。
@@ -62,8 +62,8 @@ Azure SQL Database 在最新稳定版本的 SQL Server 数据库引擎和 Window
 
 超大规模中的可用性模型包含四个层：
 
-- 无状态计算层，它运行 @no__t 0 的进程，并且仅包含在附加的 SSD 上的非覆盖 RBPEX 缓存、TempDB、模型数据库等，以及在内存中计划缓存、缓冲池和列存储池等。 此无状态层包括主要计算副本和可用作故障转移目标的多个辅助计算副本（可选）。
-- 页面服务器形成的无状态存储层。 此层是在计算副本上运行的 @no__t 0 进程的分布式存储引擎。 每个页面服务器仅包含暂时性和缓存的数据，例如在附加的 SSD 上覆盖 RBPEX 缓存，以及在内存中缓存数据页。 每个页面服务器在主动-主动配置中都有成对的页面服务器，以提供负载平衡、冗余和高可用性。
+- 一种无状态计算层，用于运行 `sqlservr.exe` 进程，并只包含暂时性和缓存的数据，例如在附加的 SSD 上的非覆盖 RBPEX 缓存、TempDB、模型数据库等。 此无状态层包括主要计算副本和可用作故障转移目标的多个辅助计算副本（可选）。
+- 页面服务器形成的无状态存储层。 此层是在计算副本上运行的 `sqlservr.exe` 进程的分布式存储引擎。 每个页面服务器仅包含暂时性和缓存的数据，例如在附加的 SSD 上覆盖 RBPEX 缓存，以及在内存中缓存数据页。 每个页面服务器在主动-主动配置中都有成对的页面服务器，以提供负载平衡、冗余和高可用性。
 - 由计算节点构成的有状态事务日志存储层，运行日志服务进程、事务日志登陆区域和事务日志长期存储。 登陆区域和长期存储使用 Azure 存储，它为事务日志提供可用性和[冗余](https://docs.microsoft.com/azure/storage/common/storage-redundancy)，确保已提交事务的数据持久性。
 - 一种具有数据库文件（.mdf/ndf）的有状态数据存储层，存储在 Azure 存储中，由页面服务器更新。 该层使用 Azure 存储的数据可用性和[冗余](https://docs.microsoft.com/azure/storage/common/storage-redundancy)功能。 它保证数据文件中的每个页面都将保留，即使超大规模体系结构崩溃的其他层中的进程或计算节点发生故障。
 
@@ -89,12 +89,14 @@ Azure SQL Database 在最新稳定版本的 SQL Server 数据库引擎和 Window
 
 [加速数据库恢复（ADR）](sql-database-accelerated-database-recovery.md)是一项全新的 SQL 数据库引擎功能，可大大提高数据库的可用性，尤其是在存在长时间运行的事务时。 ADR 目前可用于单个数据库、弹性池和 Azure SQL 数据仓库。
 
-## <a name="testing-database-fault-resiliency"></a>测试数据库错误复原
+## <a name="testing-application-fault-resiliency"></a>测试应用程序故障复原
 
-高可用性是 Azure SQL 数据库平台的 fundamenental 部分，可透明地用于数据库应用程序。 但是，我们认识到，你可能想要测试在计划或计划外事件期间启动的自动故障转移操作如何影响应用程序，然后再将其部署到生产环境。 你可以调用一个特殊的 API 来重新启动数据库或弹性池，这反过来会触发故障转移。 在区域冗余数据库或弹性池的情况下，API 调用将导致客户端连接重定向到不同 AZ 中的新主数据库。 因此，除了测试故障转移对现有数据库会话的影响，还可以验证它是否会影响端到端性能。 由于重新启动操作是入侵的，很多用户可能会对平台造成压力，因此每个数据库或弹性池每30分钟只允许进行一次故障转移呼叫。 有关详细信息，请参阅[数据库故障](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover)转移和[弹性池故障转移](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover)。       
+高可用性是适用于数据库应用程序的 Azure SQL 数据库平台的基本组成部分。 但是，我们认识到，你可能想要测试在计划内或计划外事件期间启动的自动故障转移操作如何影响应用程序，然后再将其部署到生产环境。 你可以调用一个特殊的 API 来重新启动数据库或弹性池，进而会触发故障转移。 在区域冗余数据库或弹性池的情况下，API 调用将导致将客户端连接重定向到可用性区域中与旧主数据库的可用性区域不同的新主站点。 因此，除了测试故障转移对现有数据库会话的影响，还可以验证是否由于网络延迟的变化而更改了端到端性能。 由于重新启动操作是入侵的，很多用户可能会对平台造成压力，因此每个数据库或弹性池每30分钟只允许进行一次故障转移呼叫。 
+
+可以使用 REST API 或 PowerShell 启动故障转移。 有关 REST API，请参阅[数据库故障](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover)转移和[弹性池故障转移](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover)。 对于 PowerShell，请参阅[AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)和[AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)。 也可以使用[az REST](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-rest)命令从 Azure CLI 进行 REST API 调用。
 
 > [!IMPORTANT]
-> 故障转移命令当前不可用于 Hypescale 数据库和托管的 instancses。  
+> 故障转移命令当前在超大规模服务层和托管实例中不可用。
 
 ## <a name="conclusion"></a>结束语
 

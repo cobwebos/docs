@@ -1,24 +1,19 @@
 ---
 title: 智能检测 - 性能异常 | Microsoft 文档
 description: Application Insights 执行应用遥测的智能分析，并在有潜在问题时发出警告。 此功能不需要任何设置。
-services: application-insights
-documentationcenter: windows
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 6acd41b9-fbf0-45b8-b83b-117e19062dd2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.author: mbullwin
-ms.openlocfilehash: 5ccff22a74b0cb1edcbae40fca087fe3197cb6ca
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: b9a95bb2ee6ab137e974b46e24738ca5194f3bd2
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867715"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820568"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
 
@@ -43,7 +38,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
 ## <a name="how-do-i-fix-it"></a>如何解决问题？
 
-通知包含诊断信息。 以下是一个示例：
+通知包含诊断信息。 下面是一个示例：
 
 
 ![下面是“服务器响应时间延长”检测的示例](media/proactive-performance-diagnostics/server_response_time_degradation.png)
@@ -58,18 +53,18 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
 ## <a name="configure-email-notifications"></a>配置电子邮件通知
 
-智能检测通知默认情况下处于启用状态, 并被发送到具有[监视读取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)的用户并[监视参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)对 Application Insights 资源所在订阅的访问。 若要更改此配置，请在电子邮件通知中单击“配置”，或者在 Application Insights 中打开“智能检测”设置。  
+智能检测通知默认情况下处于启用状态，并被发送到具有[监视读取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)的用户并[监视参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)对 Application Insights 资源所在订阅的访问。 若要更改此配置，请在电子邮件通知中单击“配置”，或者在 Application Insights 中打开“智能检测”设置。 
   
   ![智能检测设置](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
-  * 可使用“智能检测”电子邮件中的“取消订阅”链接来停止接收电子邮件通知。 
+  * 可使用“智能检测”电子邮件中的“取消订阅”链接来停止接收电子邮件通知。
 
 每天只会针对每个 Application Insights 资源发送一封有关智能检测性能异常的电子邮件。 只有当天至少检测到一个新问题时，才会发送电子邮件。 将不会收到任何重复的消息。 
 
 ## <a name="faq"></a>常见问题解答
 
 * *那么，Microsoft 员工会查看我的数据？*
-  * 否。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](../../azure-monitor/app/data-retention-privacy.md)数据。
+  * 不。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](../../azure-monitor/app/data-retention-privacy.md)数据。
 * *是否分析由 Application Insights 收集的所有数据？*
   * 目前不会。 目前，我们分析请求响应时间、依赖项响应时间和页面加载时间。 其他指标的分析功能正在规划中，今后有望推出。
 
@@ -85,13 +80,13 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
   * 我们每天针对前一天（UTC 时区整天）的遥测数据运行分析。
 * *那么这是否会替换[指标警报](../../azure-monitor/app/alerts.md)？*
-  * 否。  我们不确定检测用户视为异常的每个行为。
+  * 不。  我们不确定检测用户视为异常的每个行为。
 
 
 * *如果不执行任何操作来响应通知，是否会收到提醒？*
   * 否，仅会收到关于每个问题的消息一次。 如果问题持续出现，它会在“智能检测源”边栏选项卡中更新。
 * *我丢失了电子邮件。在哪里可以找到门户中的通知？*
-  * 在应用的 Application Insights 概述中，单击“智能检测”  磁贴。 在该磁贴中可以找到过去最长 90 天的所有通知。
+  * 在应用的 Application Insights 概述中，单击“智能检测”磁贴。 在该磁贴中可以找到过去最长 90 天的所有通知。
 
 ## <a name="how-can-i-improve-performance"></a>如何提高性能？
 正如你从自己的经验所知，缓慢和失败的响应对于网站用户而言是最大的困扰之一。 因此，必须解决问题。
@@ -116,7 +111,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 ### <a name="improve-slow-pages"></a>改进缓慢的页面
 存在其上充满关于改进服务器响应和页面加载时间的建议的 Web，因此我们不尝试在此处全都重复一遍。 以下是一些你可能已经知道的提示，仅供考虑：
 
-* 由于文件过大导致加载缓慢：以异步方式加载脚本和其他部分。 使用脚本捆绑。 将主页拆分为单独加载其数据的多个小组件。 对于长表格，不要发送普通旧 HTML：使用脚本以 JSON 或其他紧凑格式请求数据，并适当地填充表格。 有很好的框架，可以帮助实现所有这些目标。 （当然，它们还需要大脚本。）
+* 由于文件较大使得加载缓慢：以异步方式加载脚本和其他部分。 使用脚本捆绑。 将主页拆分为单独加载其数据的多个小组件。 对于长表格，不要发送普通旧 HTML：使用脚本以 JSON 或其他紧凑格式请求数据，并适当地填充表格。 有很好的框架，可以帮助实现所有这些目标。 （当然，它们还需要大脚本。）
 * 缓慢的服务器依赖项：考虑组件的地理位置。 例如，如果使用的是 Azure，请确保 Web 服务器和数据库位于同一区域。 查询检索的信息是否超出自己所需的信息？ 缓存或批处理是否有帮助？
 * 容量问题：查看响应时间和请求计数的服务器指标。 如果响应时间的峰值与请求计数的峰值不成比例，则服务器很有可能是外延式。
 

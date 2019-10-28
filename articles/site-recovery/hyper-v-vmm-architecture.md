@@ -7,23 +7,25 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 2d8e9c3531e031538c593cfd60d83b4ae97b4f4c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 98cc20ee8a6308350ffc142a13413bd26567a3e1
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813729"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933512"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>体系结构 - 从 Hyper-V 复制到辅助站点
 
 本文介绍如何通过 Azure 门户在 System Center Virtual Machine Manager (VMM) 云中使用 [Azure Site Recovery](site-recovery-overview.md) 服务将本地 Hyper-V 虚拟机 (VM) 复制到辅助 VMM 站点时涉及的组件和进程。
 
+> [!WARNING]
+> 请注意，不久将会弃用对使用 SCVMM 配置帐户的 ASR 支持，因此建议你先阅读[弃用](scvmm-site-recovery-deprecation.md)详细信息，然后再继续。
 
 ## <a name="architectural-components"></a>体系结构组件
 
 下面的表和图提供了用于将 Hyper-V 复制到辅助站点的组件的概要视图。
 
-组件 | **要求** | **详细信息**
+组件 | 要求 | **详细信息**
 --- | --- | ---
 **Azure** | Azure 订阅 | 在 Azure 订阅中创建恢复服务保管库，以便协调和管理不同 VMM 位置之间的复制。
 **VMM 服务器** | 需要 VMM 主位置和辅助位置。 | 我们建议在主站点和辅助站点中各提供一个 VMM 服务器。

@@ -10,15 +10,15 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 04/03/2019
+ms.date: 10/22/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f44c7a66b6d8fe7ed6ad114ea176c84351ac6493
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6f9005b0e73e60bf479d0d3c059c301668f3b848
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071514"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787317"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>使用 Windows 容器将 ASP.NET 应用迁移到 Azure 应用服务（预览）
 
@@ -90,6 +90,10 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 
 可以在 CustomFontSample 项目中找到 InstallFont.ps1   。 它是一个安装该字体的简单脚本。 可以在[脚本中心](https://gallery.technet.microsoft.com/scriptcenter/fb742f92-e594-4d0c-8b79-27564c575133)找到更复杂的脚本版本。
 
+> [!NOTE]
+> 若要在本地测试 Windows 容器，请确保在本地计算机上启动 Docker。
+>
+
 ## <a name="publish-to-azure-container-registry"></a>发布到 Azure 容器注册表
 
 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)可以存储用于容器部署的映像。 可以将应用服务配置为使用 Azure 容器注册表中托管的映像。
@@ -135,27 +139,34 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 
 在左侧菜单中，选择“创建资源” > “Web” > “用于容器的 Web 应用”    。
 
-### <a name="configure-the-new-web-app"></a>配置新 Web 应用
+### <a name="configure-app-basics"></a>配置应用基本信息
 
-在“创建”界面中，根据下表配置设置：
+在“基本信息”  选项卡中，根据下表配置设置，然后单击“下一步:  Docker”。
 
 | 设置  | 建议的值 | 更多信息 |
 | ----------------- | ------------ | ----|
-|**应用名称**| 键入唯一名称。 | Web 应用的 URL 为 `http://<app_name>.azurewebsites.net`，其中 `<app_name>` 是应用名称。 |
-|**资源组**| 选择“使用现有资源组”，键入“myResourceGroup”   。 |  |
-|**OS**| Windows（预览） | |
+|**订阅**| 确保选择正确的订阅。 |  |
+|**资源组**| 选择“新建”，键入 myResourceGroup，然后选择“确定”    。 |  |
+|**名称**| 键入唯一名称。 | Web 应用的 URL 为 `http://<app-name>.azurewebsites.net`，其中 `<app-name>` 是应用名称。 |
+|**发布**| Docker 容器 | |
+|**操作系统**| Windows | |
+|**区域**| 西欧 | |
+|**Windows 计划**| 选择“新建”  ，键入 **myAppServicePlan**，然后单击“确定”  。 | |
 
-### <a name="configure-app-service-plan"></a>配置应用服务计划
+“基本信息”  选项卡应如下所示：
 
-单击“应用服务计划/位置”   > “新建”  。 为新计划命名，选择“西欧”作为位置，然后单击“确定”   。
+![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-service-plan.png)
+### <a name="configure-windows-container"></a>配置 Windows 容器
 
-### <a name="configure-container"></a>配置容器
+在“Docker”  选项卡中，按下表所示配置自定义 Windows 容器，并选择“查看 + 创建”  。
 
-单击“配置容器” > “Azure 容器注册表”   。 选择之前在[发布到 Azure 容器注册表](#publish-to-azure-container-registry)中创建的注册表、映像和标记，然后单击“确定”  。
-
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-container.png)
+| 设置  | 建议的值 |
+| ----------------- | ------------ |
+|**映像源**| Azure 容器注册表 |
+|**注册表**| 选择[前面创建的注册表](#publish-to-azure-container-registry)。 |
+|**图像**| customfontsample |
+|**标记**| 最新 |
 
 ### <a name="complete-app-creation"></a>完成应用创建
 
@@ -183,9 +194,9 @@ Azure 操作完成后，会显示通知框。
 
 ## <a name="see-container-start-up-logs"></a>查看容器启动日志
 
-加载 Windows 容器可能需要一些时间。 要查看进度，请导航到以下 URL（将 \<app_name> 替换为你的应用名称）。 
+加载 Windows 容器可能需要一些时间。 若要查看进度，请通过将 \<app-name>  替换为应用的名称，导航到以下 URL。
 ```
-https://<app_name>.scm.azurewebsites.net/api/logstream
+https://<app-name>.scm.azurewebsites.net/api/logstream
 ```
 
 流式传输的日志如下所示：

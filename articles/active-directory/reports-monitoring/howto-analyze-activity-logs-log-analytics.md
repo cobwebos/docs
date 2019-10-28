@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Monitor 日志分析 Azure Active Directory 活动日志 |Microsoft Docs
+title: 使用 Azure Monitor 日志分析活动日志 |Microsoft Docs
 description: 了解如何使用 Azure Monitor 日志分析 Azure Active Directory 活动日志
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1670c93f83ecd6f5bd557d24ec754998a225db0c
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 52ab1bd445f8af0bf58dcb6b1176904aa073877a
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255627"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820966"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>分析 Azure Monitor 日志 Azure AD 活动日志
 
@@ -32,7 +32,7 @@ ms.locfileid: "72255627"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 
 若要按照文中内容操作，需要：
 

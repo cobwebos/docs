@@ -44,6 +44,7 @@ ms.locfileid: "71219412"
 | 身份验证| 是 | | [授予对 Azure 事件中心的访问权限](authorize-access-event-hubs.md)，[使用 Azure Active Directory 授予对事件中心资源的访问权限](authorize-access-azure-active-directory.md)，[使用共享访问签名授予对事件中心资源的访问权限](authorize-access-shared-access-signature.md) |
 | 授权| 是 | | [使用 Azure Active Directory 对托管标识所具有的事件中心资源访问权限进行验证](authenticate-managed-identity.md)，[使用 Azure Active Directory 对应用程序所具有的事件中心资源访问权限进行验证](authenticate-application.md)，[使用共享访问签名 (SAS) 验证对事件中心资源的访问权限](authenticate-shared-access-signature.md) |
 
+
 ## <a name="data-protection"></a>数据保护
 
 | 安全控制 | Yes/No | 说明 | 文档 |

@@ -13,12 +13,12 @@ manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 06/14/2019
-ms.openlocfilehash: eb34395e0a9ec881c2f5e303383555fa6544369d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: aba404842658aaa946a14a3cde03853c2fb3062d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090897"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792574"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>处理 SQL 数据库连接问题和暂时性错误
 
@@ -91,7 +91,7 @@ ms.locfileid: "71090897"
 可以测试重试逻辑的一种方法是在程序运行时断开客户端计算机与网络的连接。 错误为：
 
 - **SqlException.Number** = 11001
-- 消息：“此主机不存在”
+- 消息：“不存在已知的这种主机”
 
 第一次重试时，可以将客户端计算机重新连接到网络，然后尝试连接。
 
@@ -109,7 +109,7 @@ ms.locfileid: "71090897"
 在首次连接尝试之前，程序可以故意拼错用户名。 错误为：
 
 - **SqlException.Number** = 18456
-- 消息：“用户 'WRONG_MyUserName' 的登录失败。”
+- 消息：“用户‘WRONG_MyUserName’的登录失败。”
 
 在首次重试过程中，程序可以更正拼写错误，然后尝试连接。
 
@@ -134,10 +134,10 @@ ms.locfileid: "71090897"
 为 **SqlConnection** 对象生成[连接字符串](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx)时，请在以下参数之间协调值：
 
 - **ConnectRetryCount**：&nbsp;&nbsp;默认值为 1。 范围为 0 到 255。
-- **ConnectRetryInterval**：&nbsp;&nbsp;默认值为 10 秒。 范围为 1 到 60。
+- **ConnectRetryInterval**：&nbsp;&nbsp;默认值为10秒。 范围为 1 到 60。
 - **Connection Timeout**：&nbsp;&nbsp;默认值为 15 秒。 范围为 0 到 2147483647。
 
-具体而言，所选的值应使以下等式成立：连接超时值 = ConnectRetryCount * ConnectionRetryInterval
+具体而言，所选的值应使以下等式成立：Connection Timeout = ConnectRetryCount * ConnectionRetryInterval
 
 例如，如果计数等于 3 且间隔等于 10 秒，超时值仅为 29 秒未给系统足够的时间进行其第三次也是最后一次连接重试，因为 29 < 3 * 10。
 
@@ -162,7 +162,7 @@ ms.locfileid: "71090897"
 
 <a id="c-connection-string" name="c-connection-string"></a>
 
-### <a name="connection-connection-string"></a>连接: 连接字符串
+### <a name="connection-connection-string"></a>连接：连接字符串
 
 连接到 SQL 数据库所需的连接字符串与连接到 SQL Server 所需的字符串稍有不同。 可以通过 [Azure 门户](https://portal.azure.com/)复制数据库的连接字符串。
 
@@ -170,7 +170,7 @@ ms.locfileid: "71090897"
 
 <a id="b-connection-ip-address" name="b-connection-ip-address"></a>
 
-### <a name="connection-ip-address"></a>连接: IP 地址
+### <a name="connection-ip-address"></a>连接：IP 地址
 
 必须将 SQL 数据库服务器配置为接受来自托管客户端程序的计算机 IP 地址的通信。 若要设置此配置，可以通过 [Azure 门户](https://portal.azure.com/)编辑防火墙设置。
 
@@ -181,7 +181,7 @@ ms.locfileid: "71090897"
 有关详细信息，请参阅[在 SQL 数据库上配置防火墙设置](sql-database-configure-firewall-settings.md)。
 <a id="c-connection-ports" name="c-connection-ports"></a>
 
-### <a name="connection-ports"></a>连接: 端口
+### <a name="connection-ports"></a>连接：端口
 
 通常，只需确保在托管客户端程序的计算机上已打开端口 1433 进行出站通信。
 
@@ -196,7 +196,7 @@ ms.locfileid: "71090897"
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
 
-### <a name="connection-adonet-462-or-later"></a>连接: ADO.NET 4.6.2 或更高版本
+### <a name="connection-adonet-462-or-later"></a>连接：ADO.NET 4.6.2 或更高版本
 
 如果程序使用 **System.Data.SqlClient.SqlConnection** 等 ADO.NET 类来连接到 SQL 数据库，我们建议使用 .NET Framework 4.6.2 或更高版本。
 
@@ -355,7 +355,7 @@ Enterprise Library 6 (EntLib60) 是 .NET 类的框架，可帮助你实施云服
 以下是 EntLib60 相关信息的某些链接：
 
 - 免费书籍下载：[Microsoft Enterprise Library 版本 2 开发人员指南](https://www.microsoft.com/download/details.aspx?id=41145)
-- 最佳做法：[重试常规指南](../best-practices-retry-general.md)深入探讨了重试逻辑。
+- 最佳实践：[有关重试的一般性指南](../best-practices-retry-general.md)深入探讨了重试逻辑。
 - NuGet 下载：[Enterprise Library - 暂时性故障处理应用程序块 6.0](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/)。
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>
@@ -451,6 +451,6 @@ public bool IsTransient(Exception ex)
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-to-sql-with-ado-net
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
 
 [step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php

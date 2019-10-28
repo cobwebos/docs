@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/22/2019
 ms.author: raynew
-ms.openlocfilehash: 179676ae2a7d68bc0263f897ffededcf8b7a01f4
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: de9fd8c7cd9470a7ccc9136d1eac91fe373fe03c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693385"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787304"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -50,7 +50,7 @@ RAM | 16 GB
 磁盘数 | 3 磁盘<br/><br/> 磁盘包括 OS 磁盘、进程服务器缓存磁盘和用于故障回复的保留驱动器。
 磁盘可用空间 | 用于进程服务器缓存的 600 GB 空间。
 磁盘可用空间 | 保留驱动器的 600 GB 空间。
-操作系统  | Windows Server 2012 R2 或具有桌面体验的 Windows Server 2016 |
+操作系统  | Windows Server 2012 R2 或具有桌面体验的 Windows Server 2016 <br/><br> 如果你计划使用此设备的内置主目标来进行故障回复，请确保操作系统版本与复制的项相同或更高。|
 操作系统区域设置 | 美国英语
 [PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | 对于配置服务器版本[9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)或更高版本不是必需的。 
 Windows Server 角色 | 不要启用 Active Directory 域服务;Internet Information Services （IIS）或 Hyper-v。 

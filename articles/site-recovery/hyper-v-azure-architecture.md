@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 4035746772b44d7267d6a9cd90c7bdc02c804a8a
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 20f325ff64581396f5f7ab2ce05a2479cdb45118
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147076"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933547"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V 到 Azure 的灾难恢复体系结构
 
@@ -27,7 +27,7 @@ ms.locfileid: "70147076"
 
 下面的表和图提供了在 Hyper-V 主机不受 VMM 托管时用于将 Hyper-V 复制到 Azure 的组件的概要视图。
 
-组件 | **要求** | **详细信息**
+组件 | 要求 | **详细信息**
 --- | --- | ---
 **Azure** | Azure 订阅、Azure 存储帐户和 Azure 网络。 | 从本地 VM 工作负载复制的数据存储在存储帐户中。 从本地站点运行故障转移时，使用复制的工作负载数据创建 Azure VM。<br/><br/> 创建 Azure VM 后，它们将连接到 Azure 虚拟网络。
 **Hyper-V** | 在 Site Recovery 部署期间，将 Hyper-V 主机和群集收集到 Hyper-V 站点。 在每个独立 Hyper-V 主机或每个 Hyper-V 群集节点上安装 Azure Site Recovery 提供程序和恢复服务代理。 | 提供程序通过 Internet 使用 Site Recovery 来安排复制。 恢复服务代理处理数据复制。<br/><br/> 来自提供程序和代理的通信都是安全且经过加密的。 Azure 存储中的复制数据也已加密。
@@ -39,12 +39,14 @@ ms.locfileid: "70147076"
 ![体系结构](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
+> [!WARNING]
+> 请注意，不久将会弃用对使用 SCVMM 配置帐户的 ASR 支持，因此建议你先阅读[弃用](scvmm-site-recovery-deprecation.md)详细信息，然后再继续。
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>体系结构组件 - Hyper-V（使用 VMM）
 
 下面的表和图提供了在 Hyper-V 主机托管在 VMM 云中时用于将 Hyper-V 复制到 Azure 的组件的概要视图。
 
-组件 | **要求** | **详细信息**
+组件 | 要求 | **详细信息**
 --- | --- | ---
 **Azure** | Azure 订阅、Azure 存储帐户和 Azure 网络。 | 从本地 VM 工作负载复制的数据存储在存储帐户中。 从本地站点运行故障转移时，使用复制的数据创建 Azure VM。<br/><br/> 创建 Azure VM 后，它们将连接到 Azure 虚拟网络。
 **VMM 服务器** | VMM 服务器上有一个或多个包含 Hyper-V 主机的云。 | 在 VMM 服务器上安装 Site Recovery 提供程序，以便协调通过 Site Recovery 进行的复制，并在恢复服务保管库中注册服务器。
@@ -68,9 +70,9 @@ ms.locfileid: "70147076"
 ### <a name="enable-protection"></a>启用保护
 
 1. 为 Hyper-V VM 启用保护以后，就会在 Azure 门户中或本地启动“启用保护”。
-2. 该作业先检查计算机是否符合先决条件，再调用 [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx)，以使用用户配置的设置来设置复制。
-3. 该作业通过调用 [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) 方法启动初始复制，以便初始化完整的 VM 复制，并将 VM 的虚拟磁盘发送到 Azure。
-4. 可以在“作业”选项卡中监视作业。    ![作业列表](media/hyper-v-azure-architecture/image1.png) ![启用保护性向下钻取](media/hyper-v-azure-architecture/image2.png)
+2. 该作业会检查计算机是否符合先决条件，然后调用 [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx)，以使用配置的设置来设置复制。
+3. 该作业通过调用 [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) 方法启动初始复制，以便初始化完整的 VM 复制，然后将 VM 的虚拟磁盘发送到 Azure。
+4. 可以在 "**作业**" 选项卡中监视作业。     ![作业列表](media/hyper-v-azure-architecture/image1.png) ![启用保护向下钻取](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>初始数据复制

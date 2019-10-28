@@ -5,12 +5,12 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: d4c426c5fe31f8fc2bfaf4697c05456124cafcb1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ff5505c2cb35d088565773e8d0ba01e8abb4b8c3
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099137"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933231"
 ---
 在此步骤中，将创建 Azure SQL 数据库单一数据库。 
 
@@ -142,6 +142,15 @@ ms.locfileid: "70099137"
    $database
    ```
 
+本文的此部分使用以下 PowerShell cmdlet：
+
+| 命令 | 说明 |
+|---|---|
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 创建托管单一数据库和弹性池的 SQL 数据库服务器。 |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 为逻辑服务器创建防火墙规则。 | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | 新建 Azure SQL 数据库单一数据库。 | 
+
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用 AZ CLI 创建资源组和单一数据库。
@@ -207,5 +216,16 @@ ms.locfileid: "70099137"
       --family Gen5 \
       --capacity 2
    ```
+
+此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
+
+| 命令 | 说明 |
+|---|---|
+| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | 将订阅设置为当前的活动订阅。 | 
+| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 创建托管单一数据库和弹性池的 SQL 数据库服务器。 |
+| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | 创建服务器的防火墙规则。 | 
+| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | 创建数据库。 | 
+
 
 ---

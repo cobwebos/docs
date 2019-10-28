@@ -285,6 +285,8 @@
     - name: 机器学习 CLI
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
+    - name: 机器学习管道 YAML 参考
+      href: reference-pipeline-yaml.md
     - name: 可视界面模块
       displayName: 'module, reference, algorithm, studio'
       items:

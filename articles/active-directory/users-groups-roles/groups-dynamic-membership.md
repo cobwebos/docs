@@ -14,18 +14,18 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb9b3a4add951079ab918d3ac02ca5e38eff6161
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4a8823a9b354ca4ae9ecab0eeac265b486116bec
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241174"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808968"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
 在 Azure Active Directory (Azure AD) 中，可以创建基于属性的复杂规则以启用组的动态成员身份。 动态组成员资格可减少添加和删除用户的管理开销。 本文详细介绍了用于为用户或设备创建动态成员资格规则的属性和语法。 可以为安全组或 Office 365 组中的动态成员身份设置规则。
 
-当用户或设备的任何属性发生更改时，系统会评估目录中的所有动态组规则，以查看该更改是否会触发任何组添加或删除。 如果用户或设备满足组的规则，它们将添加为该组的成员。 如果用户或设备不再满足该规则，则会将其删除。 无法手动添加或删除动态组的成员。
+当用户或设备的任何属性发生更改时，系统将评估目录中的所有动态组规则，以查看该更改是否会触发任何组添加或删除。 如果用户或设备满足组的规则，它们将添加为该组的成员。 如果用户或设备不再满足该规则，则会将其删除。 无法手动添加或删除动态组的成员。
 
 - 可以创建设备或用户的动态组，但无法创建同时包含用户和设备的规则。
 - 无法根据设备所有者的属性创建设备组。 设备成员资格规则只能引用设备属性。
@@ -50,7 +50,7 @@ Azure AD 提供了一个规则生成器，以便更快地创建和更新重要�
 
 有关分步说明，请参阅[更新动态组](groups-update-rule.md)。
 
-![为动态组添加成员身份规则](./media/groups-update-rule/update-dynamic-group-rule.png)
+![添加动态组的成员身份规则](./media/groups-update-rule/update-dynamic-group-rule.png)
 
 ### <a name="rule-syntax-for-a-single-expression"></a>单个表达式的规则语法
 
@@ -68,9 +68,9 @@ user.department -eq "Sales"
 
 使用用户或设备自动填充组的成员资格规则是一个二进制表达式，会生成 true 或 false 结果。 一个简单的规则包含三个部分：
 
-- 属性
-- Operator
-- ReplTest1
+- properties
+- 运算符
+- Value
 
 表达式中各部分的顺序对于避免语法错误至关重要。
 
@@ -78,22 +78,22 @@ user.department -eq "Sales"
 
 有三种类型的属性可用于构建成员资格规则。
 
-- Boolean
-- String
+- 布尔
+- 字符串
 - 字符串集合
 
 以下是可用于创建单个表达式的用户属性。
 
 ### <a name="properties-of-type-boolean"></a>布尔值类型的属性
 
-| 属性 | 允许的值 | 用法 |
+| 属性 | 允许的值 | 使用情况 |
 | --- | --- | --- |
 | accountEnabled |true false |user.accountEnabled -eq true |
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
 ### <a name="properties-of-type-string"></a>字符串类型的属性
 
-| 属性 | 允许的值 | 用法 |
+| 属性 | 允许的值 | 使用情况 |
 | --- | --- | --- |
 | city |任意字符串值或 null |(user.city -eq "value") |
 | country |任意字符串值或 null |(user.country -eq "value") |
@@ -124,7 +124,7 @@ user.department -eq "Sales"
 
 ### <a name="properties-of-type-string-collection"></a>字符串集合类型的属性
 
-| 属性 | 允许的值 | 用法 |
+| 属性 | 允许的值 | 使用情况 |
 | --- | --- | --- |
 | otherMails |任意字符串值 |(user.otherMails -contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
@@ -135,7 +135,7 @@ user.department -eq "Sales"
 
 下表列出了单个表达式支持的所有运算符及其语法。 运算符可以带或不带连字符 (-) 前缀。
 
-| Operator | 语法 |
+| 运算符 | 语法 |
 | --- | --- |
 | 不等于 |-ne |
 | 等于 |-eq |
@@ -160,7 +160,7 @@ user.department -eq "Sales"
 
 
 ### <a name="using-the--match-operator"></a>使用 -match 运算符 
-**-match** 运算符用于匹配任何正则表达式。 例如：
+**-match** 运算符用于匹配任何正则表达式。 示例：
 
 ```
 user.displayName -match "Da.*"   
@@ -249,7 +249,7 @@ David 的计算结果为 true，Da 的计算结果为 false。
 
 多值属性是同一类型的对象的集合。 它们可用于使用 -any 和 -all 逻辑运算符创建成员资格规则。
 
-| 属性 | 值 | 用法 |
+| 属性 | 值 | 使用情况 |
 | --- | --- | --- |
 | assignedPlans | 集合中的每个对象均公开以下字符串属性：capabilityStatus、service、servicePlanId |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
 | proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses -any (\_ -contains "contoso")) |
@@ -301,7 +301,7 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 Direct Reports for "{objectID_of_manager}"
 ```
 
-以下是有效规则的示例，其中“62e19b97-8b3d-4d4a-a106-4ce66896a863”是经理的 objectID：
+下面是一个有效规则的示例，其中 "62e19b97-8b3d-4d4a-a106-4ce66896a863" 是经理的 objectID：
 
 ```
 Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
@@ -318,17 +318,17 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 
 可使用成员资格规则创建包含租户中所有用户的组。 以后向租户添加用户或从中删除用户时，将自动调整该组的成员资格。
 
-“所有用户”规则是使用 -ne 运算符和 null 值的单一表达式构造的。 此规则将 B2B 来宾用户以及成员用户添加到该组。
+"所有用户" 规则是使用单表达式构造的，使用-ne 运算符和 null 值。 此规则将 B2B 来宾用户以及成员用户添加到该组。
 
 ```
 user.objectid -ne null
 ```
 
-### <a name="create-an-all-devices-rule"></a>创建“所有设备”规则
+### <a name="create-an-all-devices-rule"></a>创建 "所有设备" 规则
 
 可使用成员资格规则创建包含租户中所有设备的组。 以后向租户添加设备或从中删除设备时，将自动调整该组的成员资格。
 
-“所有设备”规则是使用 -ne 运算符和 null 值的单一表达式构造的：
+"所有设备" 规则使用单个表达式构造，使用-ne 运算符和 null 值：
 
 ```
 device.objectid -ne null
@@ -336,7 +336,7 @@ device.objectid -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>扩展属性和自定义扩展属性
 
-支持扩展属性和自定义扩展属性作为动态成员资格规则中的字符串属性。 扩展属性从本地 Window Server AD 同步，并采用“ExtensionAttributeX”格式，其中 X 等于 1 - 15。 以下是使用扩展属性作为属性的规则示例：
+支持在动态成员身份规则中将扩展属性和自定义扩展属性作为字符串属性。 扩展属性从本地 Window Server AD 同步，并采用“ExtensionAttributeX”格式，其中 X 等于 1 - 15。 以下是使用扩展属性作为属性的规则示例：
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
@@ -369,8 +369,8 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
  设备属性  | 值 | 示例
  ----- | ----- | ----------------
  accountEnabled | true false | (device.accountEnabled -eq true)
- displayName | 任意字符串值 |(device.displayName -eq "Rob iPhone")
- deviceOSType | 任意字符串值 | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")<br>(device.deviceOSType -contains "AndroidEnterprise")<br>(device.deviceOSType -eq "AndroidForWork")
+ displayName | 任意字符串值 |（device. displayName-eq "抢 iPhone"）
+ deviceOSType | 任意字符串值 | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")<br>（Device.deviceostype-包含 "AndroidEnterprise"）<br>（Device.deviceostype-eq "AndroidForWork"）
  deviceOSVersion | 任意字符串值 | (device.deviceOSVersion -eq "9.1")
  deviceCategory | 有效的设备类别名称 | (device.deviceCategory -eq "BYOD")
  deviceManufacturer | 任意字符串值 | (device.deviceManufacturer -eq "Samsung")
@@ -379,9 +379,11 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
  enrollmentProfileName | Apple 设备注册配置文件、设备注册-企业设备标识符（Android-展台）或 Windows Autopilot 配置文件名称 | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
  managementType | MDM（适用于移动设备）<br>电脑（适用于由 Intune 电脑代理管理的计算机） | (device.managementType -eq "MDM")
+ organizationalUnit | 有效的本地组织单位（OU） | （organizationalUnit-包含 "笔记本"）
  deviceId | 有效的 Azure AD 设备 ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | 有效的 Azure AD 对象 ID |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
- systemLabels | 任何与 Intune 设备属性匹配的字符串，用于标记现代工作区设备 | (device.systemLabels -contains "M365Managed")
+ devicePhysicalIds | Autopilot 使用的任何字符串值，如所有 Autopilot 设备、订单 Id 或 PurchaseOrderID  | （devicePhysicalIDs-任意 _-包含 "[ZTDId]"）（devicePhysicalIds-任意 _-eq "[订单 Id]： 179887111881"）（devicePhysicalIds-任意 _-eq "[PurchaseOrderId]： 76222342342"）
+ systemLabels | 任何与 Intune 设备属性匹配的字符串，用于标记现代工作区设备 | （systemLabels-包含 "M365Managed"）
 
 > [!Note]  
 > 对于 deviceOwnership，在创建设备的动态组时，需要将该值设置为“Company”。 而在 Intune 上，设备所有权表示为 Corporate。 请参阅 [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes)，了解更多详细信息。 

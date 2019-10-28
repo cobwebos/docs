@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 1d7a18f3f46cec73d70389b82eed5a85e440d340
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b4756635ae0ab0d282975a6376e60da5f148917
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119072"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755419"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>如何使用 Azure 经典 CLI 创建和管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
-> * [PowerShell](cache-howto-manage-redis-cache-powershell.md)
+> * [PowerShell](cache-how-to-manage-redis-cache-powershell.md)
 > * [Azure 经典 CLI](cache-manage-cli.md)
 >
 
@@ -44,7 +44,7 @@ Azure 经典 CLI 是从任何平台管理 Azure 基础结构的好办法。 本�
 ## <a name="azure-cache-for-redis-properties"></a>Azure Redis 缓存属性
 在创建和更新 Azure Redis 缓存实例时使用以下属性。
 
-| 属性 | 开关 | 描述 |
+| properties | Switch | 描述 |
 | --- | --- | --- |
 | name |-n, --name |Azure Redis 缓存的名称。 |
 | 资源组 |-g, --resource-group |资源的名称。 |
@@ -57,10 +57,10 @@ Azure 经典 CLI 是从任何平台管理 Azure 基础结构的好办法。 本�
 | 分片计数 |-r, --shard-count |要在启用群集的高级群集缓存上创建的分片数。 |
 | 虚拟网络 |-v, --virtual-network |在 VNet 中托管缓存时，指定要在其中部署 Azure Redis 缓存的虚拟网络的确切 ARM 资源 ID。 格式示例：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | key type |-t, --key-type |要续订的密钥类型。 有效值：[Primary, Secondary] |
-| StaticIP |-p, --static-ip \<static-ip\> |在 VNET 中托管缓存时，指定缓存在子网中的唯一 IP 地址。 如果未提供此值，系统将从子网中选择一个。 |
-| 子网 |t, --subnet \<subnet\> |在 VNET 中托管缓存时，指定要在其中部署缓存的子网。 |
-| VirtualNetwork |-v, --virtual-network \<virtual-network\> |在 VNet 中托管缓存时，指定要在其中部署 Azure Redis 缓存的虚拟网络的确切 ARM 资源 ID。 格式示例：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
-| 订阅 |-s, --subscription |订阅标识符。 |
+| StaticIP |-p，--static ip \<static ip \> |在 VNET 中托管缓存时，指定缓存在子网中的唯一 IP 地址。 如果未提供此值，系统将从子网中选择一个。 |
+| 子网 |t，--subnet \<subnet \> |在 VNET 中托管缓存时，指定要在其中部署缓存的子网。 |
+| VirtualNetwork |-v，--虚拟网络 \<virtual-网络 \> |在 VNet 中托管缓存时，指定要在其中部署 Azure Redis 缓存的虚拟网络的确切 ARM 资源 ID。 格式示例：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| Subscription |-s, --subscription |订阅标识符。 |
 
 ## <a name="see-all-azure-cache-for-redis-commands"></a>查看所有 Azure Redis 缓存命令
 要查看所有 Azure Redis 缓存命令及其参数，请使用 `azure rediscache -h` 命令。

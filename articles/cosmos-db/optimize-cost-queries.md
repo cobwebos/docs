@@ -1,17 +1,17 @@
 ---
 title: 优化 Azure Cosmos DB 中运行查询的请求单位和成本
 description: 了解如何评估查询的请求单位费用，并在查询性能和成本方面优化查询。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: rimman
-ms.openlocfilehash: bdf223e60015c4e5d96416f95c410854a057c02c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 376c1a32a70951448b35a4c02022719229a3aad2
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717006"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753301"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>优化 Azure Cosmos DB 中的查询成本
 
@@ -33,7 +33,7 @@ Azure Cosmos DB 中的查询通常按吞吐量从最快/最高效到较慢/效�
 
 将一些数据存储在 Azure Cosmos 容器中后，可以使用 Azure 门户中的数据资源管理器来构建和运行查询。 此外可以通过使用数据资源管理器获取查询的成本。 此方法使你了解系统支持的典型查询和操作所涉及的实际费用。
 
-此外可以使用 SDK 以编程方式获取查询的成本。 要测量任何操作（如创建、更新或删除）的开销，请在使用 REST API 时检查 `x-ms-request-charge` 标头。 如果使用的是 .NET 或 Java SDK，则 `RequestCharge` 属性是获取请求费用的等效属性，并且此属性存在于 ResourceResponse 或 FeedResponse 中。
+此外可以使用 SDK 以编程方式获取查询的成本。 要测量任何操作（如创建、更新或删除）的开销，请在使用 REST API 时检查 `x-ms-request-charge` 标头。 如果你使用的是 .NET 或 Java SDK，则 `RequestCharge` 属性是获取请求费用的等效属性，且此属性在 ResourceResponse 或 FeedResponse 中存在。
 
 ```csharp
 // Measure the performance (request units) of writes 
@@ -53,13 +53,13 @@ while (queryable.HasMoreResults)
 
 ## <a name="factors-influencing-request-unit-charge-for-a-query"></a>影响查询请求单位费用的因素
 
-查询的请求单位依赖于许多因素。 例如，加载/返回的 Azure Cosmos 项的数量、对索引的查找次数、查询编译时间等详细信息。 Azure Cosmos DB 保证在相同数据上执行相同的查询时，即使重复执行，也始终使用相同数量的请求单位。 使用查询执行指标的查询配置文件使你可以很好地了解请求单位的使用情况。  
+查询的请求单位依赖于许多因素。 例如，加载/返回的 Azure Cosmos 项的数量、针对索引的查找次数、查询编译时间等详细信息。 Azure Cosmos DB 保证在相同数据上执行相同的查询时，即使重复执行，也始终使用相同数量的请求单位。 使用查询执行指标的查询配置文件使你可以很好地了解请求单位的使用情况。  
 
 在某些情况下，可能会在查询的分页执行中看到 200 个和 429 个响应序列以及变量请求单位，这是因为查询将根据可用的 RU 尽可能快地运行。 可能会看到查询执行在服务器和客户端之间分成多个页面/往返。 例如，10,000 个项可以作为多个页面返回，每个页面根据对该页面执行的计算收费。 对这些页面求和时，应获得与整个查询相同的 RU 数。  
 
 ## <a name="metrics-for-troubleshooting"></a>故障排除的指标
 
-查询、用户定义的函数 (UDF) 所使用的性能和吞吐量主要取决于函数本身。 查找 UDF 中查询执行花费的时间和使用的 RU 数量的最简单方法是启用查询指标。 如果使用的是 .NET SDK，则以下是 SDK 返回的示例查询指标：
+查询、用户定义的函数 (UDF) 所使用的性能和吞吐量主要取决于函数本身。 查找 UDF 中查询执行花费的时间和使用的 RU 数量的最简单方法是启用查询指标。 如果使用 .NET SDK，以下是 SDK 返回的示例查询度量值：
 
 ```bash
 Retrieved Document Count                 :               1              
@@ -104,8 +104,8 @@ Total Query Execution Time               :   �
 接下来，可通过以下文章详细了解 Azure Cosmos DB 中的成本优化：
 
 * 详细了解 [Azure Cosmos 定价的原理](how-pricing-works.md)
-* 详细了解[开发和测试优化](optimize-dev-test.md)
-* 详细了解[了解 Azure Cosmos DB 帐单](understand-your-bill.md)
+* 详细了解如何[进行开发和测试优化](optimize-dev-test.md)
+* 详细了解 [Azure Cosmos DB 帐单](understand-your-bill.md)
 * 详细了解如何[优化吞吐量成本](optimize-cost-throughput.md)
 * 详细了解如何[优化存储成本](optimize-cost-storage.md)
 * 详细了解如何[优化读取和写入成本](optimize-cost-reads-writes.md)

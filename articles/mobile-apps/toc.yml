@@ -1,0 +1,48 @@
+- name: 利用 Microsoft 服务构建真实的移动应用程序
+  href: index.md
+- name: 构建移动应用的阶段
+  items:
+    - name: 概述
+      href: stages-overview.md
+    - name: 选择移动开发框架
+      href: front-end-development-platform.md
+    - name: 利用后端服务规划和设计移动应用
+      items:
+        - name: Authentication
+          href: authentication.md
+        - name: 数据存储
+          href: data-storage.md
+        - name: 无服务器计算
+          href: serverless-compute.md
+        - name: Azure 存储
+          href: azure-storage.md
+        - name: 实时应用
+          href: real-time.md
+    - name: 源代码管理
+      href: code-hosting-services.md
+    - name: DevOps
+      items:
+        - name: 什么是 DevOps
+          href: devops.md
+        - name: 持续构建和集成
+          href: continuous-integration.md
+        - name: 在实际设备上测试
+          href: test.md
+        - name: 持续交付
+          href: continuous-delivery.md
+    - name: 分析使用情况和用户行为
+      href: analytics.md
+    - name: 实时崩溃报告
+      href: diagnostics.md
+    - name: 推送通知
+      href: push-notifications.md
+- name: 其他服务
+  items:
+    - name: Azure 认知服务
+      href: cognitive-services.md
+    - name: Azure Maps
+      href: azure-maps.md
+    - name: Azure CDN
+      href: azure-cdn.md
+    - name: Azure 搜索
+      href: azure-search.md

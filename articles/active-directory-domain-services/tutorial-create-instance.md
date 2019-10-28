@@ -7,27 +7,26 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/18/2019
 ms.author: iainfou
-ms.openlocfilehash: 536ada668db724ca50d7db820aff173f7222bab2
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: b99eafeae60e81fd7d902289a47190a2cbe1daa3
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336856"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786988"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>教程：创建和配置 Azure Active Directory 域服务实例
 
 Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active Directory 完全兼容的托管域服务，例如域加入、组策略、LDAP、Kerberos/NTLM 身份验证。 使用这些域服务就无需自行部署、管理和修补域控制器。 Azure AD DS 与现有的 Azure AD 租户集成。 这种集成可让用户使用其企业凭据登录，而你可以使用现有的组和用户帐户来保护对资源的访问。
 
-本教程介绍如何使用 Azure 门户来创建和配置 Azure AD DS 实例。
+可以[使用默认配置选项创建托管域][tutorial-create-instance-advanced]以实现联网和同步，也可以手动定义这些设置。 本教程介绍如何使用 Azure 门户通过默认选项创建和配置 Azure AD DS 实例。
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 为托管域配置 DNS 和虚拟网络设置
+> * 了解托管域的 DNS 要求
 > * 创建 Azure AD DS 实例
-> * 将管理用户添加到域管理
 > * 启用密码哈希同步
 
 如果你没有 Azure 订阅，可以在开始之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -52,13 +51,15 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 在本教程中，你将使用 Azure 门户来创建和配置 Azure AD DS 实例。 若要开始操作，请登录到 [Azure 门户](https://portal.azure.com)。
 
-## <a name="create-an-instance-and-configure-basic-settings"></a>创建实例并配置基本设置
+## <a name="create-an-instance"></a>创建实例
 
 若要启动“启用 Azure AD 域服务”  向导，请完成以下步骤：
 
 1. 在 Azure 门户的左上角选择“+ 创建资源”。 
 1. 在搜索栏中输入“域服务”，然后从搜索建议中选择“Azure AD 域服务”。  
 1. 在“Azure AD 域服务”页上选择“创建”。  “启用 Azure AD 域服务”  向导随即启动。
+1. 选择要在其中创建托管域的 Azure“订阅”  。
+1. 选择托管域应属于的“资源组”  。 选择“新建”，或选择现有的资源组。 
 
 创建 Azure AD DS 实例时，请指定 DNS 名称。 选择此 DNS 名称时请注意以下事项：
 
@@ -86,80 +87,28 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 填写 Azure 门户的“基本信息”窗口中的字段，以创建 Azure AD DS 实例： 
 
 1. 输入托管域的 **DNS 域名**，并注意前面所述的问题。
-1. 选择要在其中创建托管域的 Azure“订阅”  。
-1. 选择托管域应属于的“资源组”  。 选择“新建”，或选择现有的资源组。 
 1. 选择应在其中创建托管域的 Azure“位置”  。
-1. 单击“确定”转到“网络”部分。  
 
-![为 Azure AD 域服务实例配置基本设置](./media/tutorial-create-instance/basics-window.png)
+    ![为 Azure AD 域服务实例配置基本设置](./media/tutorial-create-instance/basics-window.png)
 
-## <a name="create-and-configure-the-virtual-network"></a>创建并配置虚拟网络
+若要快速创建 Azure AD DS 托管域，可以选择“查看 + 创建”以接受其他默认的配置选项。  选择此创建选项时，会配置以下默认设置：
 
-若要提供连接，需要创建 Azure 虚拟网络和专用子网。 Azure AD DS 将在此虚拟网络子网中启用。 在本教程中，你将创建一个虚拟网络，不过，也可以选择使用现有的虚拟网络。 无论使用哪种方法，都必须创建一个专用子网供 Azure AD DS 使用。
+* 创建名为 *aadds-vnet* 的虚拟网络，该网络使用的 IP 地址范围为 *10.0.1.0/24*。
+* 创建名为 *aadds-vnet* 的子网，该子网使用的 IP 地址范围为 *10.0.1.0/24*。
+* 将所有用户从 Azure AD 同步到 Azure AD DS 托管域。 
 
-此专用虚拟网络子网的一些注意事项包括：
+1. 选择“查看 + 创建”以接受这些默认的配置选项。 
 
-* 该子网的地址范围中必须至少包含 3-5 个可用 IP 地址才能支持 Azure AD DS 资源。
-* 请不要选择“网关”子网来部署 Azure AD DS。  不支持将 Azure AD DS 部署到“网关”子网。 
-* 不要将任何其他虚拟机部署到该子网。 应用程序和 VM 通常使用网络安全组来保护连接。 在单独的子网中运行这些工作负荷可以在不中断与托管域的连接的情况下应用这些网络安全组。
-* 启用 Azure AD DS 后，无法将托管域迁移到其他虚拟网络。
+## <a name="deploy-the-managed-domain"></a>部署托管域
 
-有关如何规划和配置虚拟网络的详细信息，请参阅 [Azure Active Directory 域服务的网络注意事项][network-considerations]。
+在向导的“摘要”  页上，检查托管域的配置设置。 可以后退到向导中的任何步骤进行更改。 若要通过这些配置选项采用一致的方式将 Azure AD DS 托管域重新部署到另一 Azure AD 租户，也可**下载用于自动化操作的模板**。
 
-按如下所示填写“网络”窗口中的字段： 
-
-1. 在“网络”窗口中，选择“选择虚拟网络”。  
-1. 本教程选择了“新建”一个要将 Azure AD DS 部署到的虚拟网络。 
-1. 输入虚拟网络的名称（例如 *myVnet*），然后提供地址范围（例如 *10.1.0.0/16*）。
-1. 创建具有明确名称的专用子网，例如 *DomainServices*。 提供地址范围，例如 *10.1.0.0/24*。
-
-    ![创建用于 Azure AD 域服务的虚拟网络和子网](./media/tutorial-create-instance/create-vnet.png)
-
-    请确保选择专用 IP 地址范围内的某个地址范围。 选择公共地址空间中你不拥有的 IP 地址范围会导致 Azure AD DS 出错。
-
-    > [!TIP]
-    > 在“选择虚拟网络”页上，会显示属于前面所选择的资源组和 Azure 位置的现有虚拟网络。  在部署 Azure AD DS 之前，需要[创建一个专用子网][create-dedicated-subnet]。
-
-1. 创建虚拟网络和子网后，系统会自动选择子网，例如 *DomainServices*。 也可以选择属于所选虚拟网络的备用现有子网：
-
-    ![选择虚拟网络中的专用子网](./media/tutorial-create-instance/choose-subnet.png)
-
-1. 选择“确定”以确认虚拟网络配置。 
-
-## <a name="configure-an-administrative-group"></a>配置管理组
-
-名为“AAD DC 管理员”的特殊管理组用于管理 Azure AD DS 域。  此组的成员在已加入托管域的 VM 上拥有管理权限。 在加入域的 VM 上，此组将添加到本地管理员组。 此组的成员还可以使用远程桌面远程连接到已加入域的 VM。
-
-你在使用 Azure AD DS 的托管域上不拥有“域管理员”或“企业管理员”权限。   这些权限由服务保留，不会提供给租户中的用户使用。 “AAD DC 管理员”组允许执行某些特权操作。  这些操作包括将计算机加入域、将用户添加到已加入域的 VM 上的管理组，以及配置组策略。
-
-向导会自动在 Azure AD 目录中创建“AAD DC 管理员”组。  如果在 Azure AD 目录中拥有具有此名称的现有组，则向导会选择此组。 在部署过程中，可以视需要将更多用户添加到此“AAD DC 管理员”组。  稍后可以完成这些步骤。
-
-1. 若要将更多用户添加到“AAD DC 管理员”组，请选择“管理组成员身份”。  
-1. 选择“添加成员”按钮，然后搜索并选择 Azure AD 目录中的用户。  例如，搜索自己的帐户，并将其添加到“AAD DC 管理员”组。 
-
-    ![配置“AAD DC 管理员”组的组成员身份](./media/tutorial-create-instance/admin-group.png)
-
-1. 完成后，请选择“确定”  。
-
-## <a name="configure-synchronization"></a>配置同步
-
-Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围同步特定的组。   如果选择同步所有用户和组，则以后无法选择仅执行按范围同步。  有关按范围同步的详细信息，请参阅 [Azure AD 域服务的按范围同步][scoped-sync]。
-
-1. 本教程选择了同步**所有**用户和组。 这是默认的同步选项。
-
-    ![对 Azure AD 中的用户和组执行完全同步](./media/tutorial-create-instance/sync-all.png)
-
-1. 选择“确定”  。
-
-## <a name="deploy-your-managed-domain"></a>部署托管域
-
-在向导的“摘要”  页上，检查托管域的配置设置。 可以后退到向导中的任何步骤进行更改。
-
-1. 若要创建托管域，请选择“确定”。 
+1. 若要创建托管域，请选择“创建”。  系统会显示一个通知，指出在创建 Azure AD DS 托管域后，某些配置选项（例如 DNS 名称或虚拟网络）不能更改。 若要继续操作，请选择“确定”。 
 1. 预配托管域的过程可能最多需要一小时。 门户中会显示一条通知，其中显示了 Azure AD DS 部署的进度。 选择该通知可查看部署的详细进度。
 
     ![Azure 门户中显示的“正在部署”通知](./media/tutorial-create-instance/deployment-in-progress.png)
 
+1. 此页面会加载部署过程的更新，包括在目录中创建新资源。
 1. 选择资源组（例如 *myResourceGroup*），然后从 Azure 资源列表中选择 Azure AD DS 实例，例如 *contoso.com*。 “概述”选项卡显示了当前“正在部署”的托管域。   在完全预配托管域之前无法对其进行配置。
 
     ![预配期间的域服务状态](./media/tutorial-create-instance/provisioning-in-progress.png)
@@ -168,7 +117,7 @@ Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围�
 
     ![成功预配后的域服务状态](./media/tutorial-create-instance/successfully-provisioned.png)
 
-在预配过程中，Azure AD DS 会在目录中创建名为 *Domain Controller Services* 和 *AzureActiveDirectoryDomainControllerServices* 的两个企业应用程序。 需要这些企业应用程序来为托管域提供服务。 无论何时，都不得删除这些应用程序。
+我们会在 Azure Active Directory 租户和 Azure AD 域服务资源上预配 Azure AD 域服务，因为此服务在关联的 Azure 订阅中创建。 在预配过程中，Azure AD DS 会在 Azure Active Directory 实例（已在其中启用 Azure AD 域服务）中创建名为 *Domain Controller Services* 和 *AzureActiveDirectoryDomainControllerServices* 的两个企业应用程序。 需要这些企业应用程序来为托管域提供服务。  无论何时，都不得删除这些应用程序。
 
 ## <a name="update-dns-settings-for-the-azure-virtual-network"></a>更新 Azure 虚拟网络的 DNS 设置
 
@@ -219,17 +168,18 @@ Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围�
 本教程介绍了如何：
 
 > [!div class="checklist"]
-> * 为托管域配置 DNS 和虚拟网络设置
+> * 了解托管域的 DNS 要求
 > * 创建 Azure AD DS 实例
 > * 将管理用户添加到域管理
 > * 启用 Azure AD DS 的用户帐户并生成密码哈希
 
-若要了解此托管域的运作情况，请创建一个虚拟机并将其加入域。
+在将 VM 加入域并部署使用 Azure AD DS 托管域的应用程序之前，请为应用程序工作负荷配置 Azure 虚拟网络。
 
 > [!div class="nextstepaction"]
-> [将 Windows Server 虚拟机加入托管域](join-windows-vm.md)
+> [为应用程序工作负荷配置 Azure 虚拟网络以使用托管域](tutorial-configure-networking.md)
 
 <!-- INTERNAL LINKS -->
+[tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [network-considerations]: network-considerations.md

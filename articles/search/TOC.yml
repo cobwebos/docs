@@ -1,20 +1,24 @@
-- name: Azure 搜索文档
+- name: Azure 认知搜索文档
   href: index.yml
 - name: 概述
-  items:
-    - name: 什么是 Azure 搜索？
-      href: search-what-is-azure-search.md
-- name: 快速入门
   expanded: true
+  items:
+    - name: Azure 认知搜索是什么？
+      href: search-what-is-azure-search.md
+    - name: 新增功能
+      href: whats-new.md
+- name: 快速入门
   items:
     - name: 创建服务
       href: search-create-service-portal.md
     - name: 门户
       items:
-        - name: 创建和使用索引
+        - name: 创建搜索索引
           href: search-get-started-portal.md
-        - name: 使用认知搜索 (AI) 进行扩充
+        - name: 创建认知技能组
           href: cognitive-search-quickstart-blob.md
+        - name: 创建知识存储
+          href: knowledge-store-create-portal.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -79,7 +83,7 @@
   items:
     - name: 全文搜索
       href: search-lucene-query-architecture.md
-    - name: 认知搜索
+    - name: AI 扩充
       href: cognitive-search-concept-intro.md
     - name: 技能集
       href: cognitive-search-working-with-skillsets.md
@@ -87,6 +91,8 @@
       href: knowledge-store-concept-intro.md
     - name: 投影
       href: knowledge-store-projection-overview.md
+    - name: 增量索引
+      href: cognitive-search-incremental-indexing-conceptual.md
 - name: 操作指南
   items:
     - name: 规划
@@ -209,6 +215,8 @@
           href: search-howto-schedule-indexers.md
         - name: 映射字段
           href: search-indexer-field-mappings.md
+        - name: 增量索引
+          href: search-howto-incremental-index.md
         - name: 连接到 SQL 托管实例
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: 连接到 SQL Server VM
@@ -247,8 +255,6 @@
           href: cognitive-search-resources-documentation.md
         - name: 知识存储（预览版）
           items:
-            - name: 在 Azure 门户中创建知识库
-              href: knowledge-store-create-portal.md
             - name: 使用 REST 和 Postman 创建
               href: knowledge-store-create-rest.md
             - name: 使用存储资源管理器进行查看

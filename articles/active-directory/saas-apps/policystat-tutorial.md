@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 327e470d60235e6bf400293e80e3aec5f6144ff4
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68943444"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>教程：Azure Active Directory 与 PolicyStat 的集成
@@ -162,7 +162,7 @@ ms.locfileid: "68943444"
 
 2. 单击“管理员”选项卡，并单击左侧导航窗格中的“单一登录配置”。  
    
-    ![管理员菜单](./media/policystat-tutorial/ic808633.png "管理员菜单")
+    ![“管理员”菜单](./media/policystat-tutorial/ic808633.png "“管理员”菜单")
 
 3. 在“设置”部分，选择“启用单一登录集成”。  
    

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
-ms.openlocfilehash: 7ca6f1bda2dff9a8a9e54cb9d9ce5fd2d34c7245
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e7de3e8026b15342c06eff9718242c08d33a53a4
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428076"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72783784"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -201,7 +201,7 @@ IBM Db2 LUW 的资源代理包含在 SAP 应用程序 SUSE Linux Enterprise Serv
 
 若要使用 SAP 同类系统复制过程来设置备用数据库服务器，请执行以下步骤：
 
-1. 选择 "**系统复制**" 选项，>**目标系统**" > **分布式**@no__t"**数据库实例**。
+1. 选择 "**系统复制**" 选项，>**目标系统** > **分布式** > **数据库实例**。
 1. 作为复制方法，请选择 "**同类系统**"，以便可以使用 "备份" 在备用服务器实例上还原备份。
 1. 当你到达用于为同类系统副本还原数据库的退出步骤时，请退出安装程序。 从主主机的备份中还原数据库。 所有后续安装阶段都已在主数据库服务器上执行。
 1. 设置适用于 IBM Db2 的 HADR。
@@ -341,11 +341,15 @@ Execute command as db2&lt;sid&gt; db2pd -hadr -db &lt;SID&gt;
 - **[2]** ：仅适用于节点2
 
 **[A]** Pacemaker 配置的先决条件：
-1. 通过 db2stop 将两个数据库服务器与用户 db2 @ no__t-0sid > 一起关闭。
-1. 将 db2 @ no__t-0sid > 用户的 shell 环境更改为 */bin/ksh*。 建议使用 Yast 工具。 
+1. 通过 db2stop 将两个数据库服务器与用户 db2 >\<sid 一起关闭。
+1. 将 db2\<sid > 用户的 shell 环境更改为 */bin/ksh*。 建议使用 Yast 工具。 
 
 
 ### <a name="pacemaker-configuration"></a>Pacemaker 配置
+
+> [!IMPORTANT]
+> 最新的测试，其中，netcat 停止响应由于积压工作（backlog）和仅处理一个连接的请求而导致的请求。 Netcat 资源停止侦听 Azure 负载均衡器请求，并且浮动 IP 变为不可用。  
+> 对于现有的 Pacemaker 群集，建议按照[Azure 负载平衡器检测强化](https://www.suse.com/support/kb/doc/?id=7024128)中的说明将 netcat 替换为 socat。 请注意，更改将需要短暂的停机时间。  
 
 **[1]** IBM Db2 HADR 特定的 Pacemaker 配置：
 <pre><code># Put Pacemaker into maintenance mode
@@ -371,7 +375,7 @@ sudo crm configure primitive rsc_ip_db2ptr_<b>PTR</b> IPaddr2 \
 
 # Configure probe port for Azure load Balancer
 sudo crm configure primitive rsc_nc_db2ptr_<b>PTR</b> anything \
-        params binfile="/usr/bin/nc" cmdline_options="-l -k <b>62500</b>" \
+        params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:<b>62500</b>,backlog=10,fork,reuseaddr /dev/null" \
         op monitor timeout="20s" interval="10" depth="0"
 
 sudo crm configure group g_ip_db2ptr_<b>PTR</b> rsc_ip_db2ptr_<b>PTR</b> rsc_nc_db2ptr_<b>PTR</b>
@@ -497,7 +501,7 @@ j2ee/dbhost = db-virt-hostname
  
 1. 登录到 J2EE 实例的主应用程序服务器，然后执行： `sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
 1. 在左框架中，选择 "**安全存储**"。
-1. 在右侧框中，选择密钥 jdbc/pool/@no__t >/url。
+1. 在右侧框中，选择密钥 jdbc/pool/\<SAPSID >/url。
 1. 将 JDBC URL 中的主机名更改为虚拟主机名。
      `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
 1. 选择 **添加** 。
@@ -558,7 +562,7 @@ SAP 系统中的原始状态记录在 DBACOCKPIT > Configuration > 概述中，�
 > 开始测试之前，请确保：
 > * Pacemaker 不具有任何失败的操作（crm 状态）。
 > * 没有位置约束（迁移测试的 leftovers）
-> * IBM Db2 HADR 同步正在运行。 咨询用户 db2 @ no__t-0sid > <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * IBM Db2 HADR 同步正在运行。 检查用户 db2\<sid > <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 通过执行以下命令迁移运行主 Db2 数据库的节点：
@@ -592,9 +596,9 @@ SAP 系统中的原始状态记录在 DBACOCKPIT > Configuration > 概述中，�
 crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
-- **crm 资源迁移 @no__t > \<host >：** 创建位置约束，并可能导致接管问题
+- **crm 资源迁移 \<res_name > \<主机 >：** 创建位置约束，并可能导致接管问题
 - **crm 资源清除 \<res_name >** ：清除位置约束
-- **crm 资源清除 \<res_name >** ：清除资源的所有错误
+- **crm 资源清理 \<res_name >** ：清除资源的所有错误
 
 ### <a name="test-the-fencing-agent"></a>测试防护代理
 
@@ -767,7 +771,7 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb01
      Masters: [ azibmdb01 ]
      Slaves: [ azibmdb02 ]</code></pre>
 
-As user db2 @ no__t-0sid > 执行命令 db2stop force：
+作为用户 db2\<sid > 执行命令 db2stop 强制：
 <pre><code>azibmdb01:~ # su - db2ptr
 azibmdb01:db2ptr> db2stop force</code></pre>
 

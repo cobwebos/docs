@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: da8b4ebd5cf1e7a57842a116e5d9e21e3c3f7874
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: a68549622972bfa031bc2934473dc65f0a656231
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387307"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935702"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Blob 存储复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -42,8 +42,8 @@ ms.locfileid: "72387307"
 - 从块、追加或页 Blob 中复制 Blob，并将数据仅复制到块 Blob。
 - 按原样复制 Blob，或者使用[支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析或生成 Blob。
 
->[!NOTE]
->如果在 Azure 存储防火墙设置上启用 _"允许受信任的 Microsoft 服务访问此存储帐户"_ 选项，则使用 Azure Integration Runtime 连接到 Blob 存储将失败，并出现禁用错误，因为 ADF 不被视为受信任Microsoft 服务。 请改为通过自承载 Integration Runtime 进行连接。
+>[!IMPORTANT]
+>如果在 Azure 存储防火墙设置上启用 "**允许受信任的 Microsoft 服务访问此存储帐户**" 选项，并想要使用 azure 集成运行时连接到 Blob 存储，则必须使用[托管标识身份验证](#managed-identity)。
 
 ## <a name="get-started"></a>开始体验
 
@@ -316,12 +316,9 @@ Azure Blob 存储链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 
 
-- 对于**Parquet （分隔文本、json、avro 和二进制格式**），请参阅[Parquet，分隔文本、json、Avro 和二进制格式数据集](#format-based-dataset)部分。
-- 对于其他格式（如**ORC/JSON 格式**），请参阅[其他格式数据集](#other-format-dataset)部分。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-### <a name="format-based-dataset"></a>Parquet，分隔文本、JSON、Avro 和二进制格式数据集
-
-若要在 Parquet 中向/从 Blob 存储复制数据，分隔文本、Avro 或二进制格式，请参阅基于格式的数据集和支持的设置的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)、 [Avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文。 基于格式的数据集中 `location` 设置下的 Azure Blob 支持以下属性：
+基于格式的数据集中 `location` 设置下的 Azure Blob 支持以下属性：
 
 | properties   | 描述                                                  | 需要 |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -329,10 +326,6 @@ Azure Blob 存储链接服务支持以下属性：
 | container  | Blob 容器。                                          | 是      |
 | folderPath | 给定容器下的文件夹的路径。 如果要使用通配符筛选文件夹，请跳过此设置并在 "活动源设置" 中指定。 | No       |
 | fileName   | 给定容器和 folderPath 下的文件名。 如果要使用通配符来筛选文件，请跳过此设置并在 "活动源设置" 中指定。 | No       |
-
-> [!NOTE]
->
-> 在下一部分中提到的**AzureBlob**类型数据集的 Parquet/文本格式仍受支持，以进行复制/查找/GetMetadata 活动，以实现向后兼容性，但它不能用于映射数据流。 建议使用此新模型，然后 ADF 创作 UI 已经切换为生成这些新类型。
 
 **示例：**
 
@@ -361,9 +354,10 @@ Azure Blob 存储链接服务支持以下属性：
 }
 ```
 
-### <a name="other-format-dataset"></a>其他格式数据集
+### <a name="legacy-dataset-model"></a>旧数据集模型
 
-若要将数据从 Blob 存储复制到 ORC/JSON 格式的数据，请将数据集的 type 属性设置为 " **AzureBlob**"。 支持以下属性。
+>[!NOTE]
+>对于向后兼容性，仍支持以下数据集模型。 建议使用前面部分中提到的新模型，然后 ADF 创作 UI 已经切换为生成新模型。
 
 | properties | 描述 | 需要 |
 |:--- |:--- |:--- |
@@ -414,16 +408,13 @@ Azure Blob 存储链接服务支持以下属性：
 
 ### <a name="blob-storage-as-a-source-type"></a>将 Blob 存储用作源类型
 
-- 若要从**Parquet 复制、分隔文本、json、avro 和二进制格式**，请参阅[Parquet，分隔文本、json、avro 和二进制格式源](#format-based-source)部分。
-- 若要从其他格式（如**ORC 格式**）进行复制，请参阅[其他格式源](#other-format-source)部分。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-source"></a>Parquet，分隔文本、JSON、Avro 和二进制格式源
-
-若要在 Parquet 中向/从 Blob 存储复制数据 **，分隔文本、JSON、Avro 和二进制格式**，请参阅基于格式的数据集的[Parquet 格式](format-parquet.md)、[分隔文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文支持的设置。 在基于格式的复制源中 `storeSettings` 设置下，Azure Blob 支持以下属性：
+在基于格式的复制源中 `storeSettings` 设置下，Azure Blob 支持以下属性：
 
 | properties                 | 描述                                                  | 需要                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | @No__t-0 下的 type 属性必须设置为**AzureBlobStorageReadSetting**。 | 是                                           |
+| type                     | `storeSettings` 下的 type 属性必须设置为**AzureBlobStorageReadSetting**。 | 是                                           |
 | recursive                | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 允许的值为 **true**（默认值）和 **false**。 | No                                            |
 | wildcardFolderPath       | 在数据集中配置的给定容器下包含通配符的文件夹路径，用于筛选源文件夹。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。 <br>请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | No                                            |
 | wildcardFileName         | 给定容器下包含通配符的文件名 + folderPath/wildcardFolderPath 用于筛选源文件。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。  请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | "是" （如果未在数据集中指定 `fileName`） |
@@ -475,9 +466,10 @@ Azure Blob 存储链接服务支持以下属性：
 ]
 ```
 
-#### <a name="other-format-source"></a>其他格式源
+#### <a name="legacy-source-model"></a>旧源模型
 
-若要以**ORC 格式**从 Blob 存储复制数据，请将复制活动中的源类型设置为 " **BlobSource**"。 复制活动的 **source** 节支持以下属性。
+>[!NOTE]
+>以下复制源模型仍受支持，以便向后兼容。 建议使用前面提到的新模型，然后 ADF 创作 UI 已经切换为生成新模型。
 
 | properties | 描述 | 需要 |
 |:--- |:--- |:--- |
@@ -519,21 +511,15 @@ Azure Blob 存储链接服务支持以下属性：
 
 ### <a name="blob-storage-as-a-sink-type"></a>用作接收器类型的 Blob 存储
 
-- 若要从**Parquet 复制、分隔文本、json、avro 和二进制格式**，请参阅[Parquet，分隔文本、json、avro 和二进制格式源](#format-based-source)部分。
-- 若要从其他格式（如**ORC 格式**）进行复制，请参阅[其他格式源](#other-format-source)部分。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-source"></a>Parquet，分隔文本、JSON、Avro 和二进制格式源
-
-若要从 Parquet 中的 Blob 存储复制数据 **，分隔文本、JSON、Avro 和二进制格式**，请参阅基于格式的复制活动源上的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文和支持的设置。 在基于格式的复制接收器中，`storeSettings` 设置下的 Azure Blob 支持以下属性：
+在基于格式的复制接收器中，`storeSettings` 设置下的 Azure Blob 支持以下属性：
 
 | properties                 | 描述                                                  | 需要 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | @No__t-0 下的 type 属性必须设置为**AzureBlobStorageWriteSetting**。 | 是      |
+| type                     | `storeSettings` 下的 type 属性必须设置为**AzureBlobStorageWriteSetting**。 | 是      |
 | copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名或 Blob 名称，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | No       |
 | maxConcurrentConnections | 要同时连接到存储存储的连接数。 仅当要限制与数据存储区的并发连接时，才指定。 | No       |
-
-> [!NOTE]
-> 对于 Parquet/分隔文本格式，在下一部分中提到的**BlobSink**类型复制活动接收器仍受支持，以便向后兼容。 建议使用此新模型，然后 ADF 创作 UI 已经切换为生成这些新类型。
 
 **示例：**
 
@@ -570,9 +556,10 @@ Azure Blob 存储链接服务支持以下属性：
 ]
 ```
 
-#### <a name="other-format-sink"></a>其他格式接收器
+#### <a name="legacy-sink-model"></a>旧接收器模型
 
-若要以**ORC 格式**将数据复制到 Blob 存储，请将复制活动中的接收器类型设置为 " **BlobSink**"。 **sink** 节支持以下属性。
+>[!NOTE]
+>下面的复制接收器模型仍受支持，以便向后兼容。 建议使用前面提到的新模型，然后 ADF 创作 UI 已经切换为生成新模型。
 
 | properties | 描述 | 需要 |
 |:--- |:--- |:--- |

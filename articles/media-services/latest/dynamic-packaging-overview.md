@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/03/2019
+ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: af6542757e75d7d6226c2470adf3c2b51d60875a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 35fd511f2383a09898bcd7e7a5227b750c36125a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72383532"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595520"
 ---
 # <a name="dynamic-packaging"></a>动态打包
 
@@ -98,7 +98,7 @@ Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码�
 动态打包支持 MP4 文件，其中包含使用 [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC)（MPEG-4 AVC 或 AVC1）或 [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding)（HEVC、hev1 或 hvc1）编码的视频。
 
 > [!NOTE]
-> 已使用动态打包测试了高达 4K 的分辨率和高达 60 帧/秒的帧速率。 [高级编码器](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)支持通过旧版 v2 API 编码为 H.265。 如果对此主题有疑问，请联系 amshelp@microsoft.com。 
+> 已使用动态打包测试了高达 4K 的分辨率和高达 60 帧/秒的帧速率。 [高级编码器](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)支持通过旧版 v2 API 编码为 H.265。
 
 ## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>动态打包支持的音频编解码器
 
@@ -124,7 +124,7 @@ Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码�
 动态打包不支持包含 [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) 音频（它是旧编解码器）的文件。
 
 > [!NOTE]
-> [高级编码器](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)支持通过旧版 v2 API 编码为 Dolby Digital Plus。 如果对此主题有疑问，请联系 amshelp@microsoft.com。 
+> [高级编码器](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)支持通过旧版 v2 API 编码为 Dolby Digital Plus。 
 
 ## <a name="manifests"></a>清单 
  
@@ -272,6 +272,10 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 ## <a name="more-information"></a>详细信息
 
 查看 [Azure 媒体服务社区](media-services-community.md)，了解提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
+
+## <a name="need-help"></a>需要帮助？
+
+可以通过导航到[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来开具支持票证
 
 ## <a name="next-steps"></a>后续步骤
 

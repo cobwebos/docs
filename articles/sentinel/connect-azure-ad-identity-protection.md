@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: de8f31a02b62164a8a6b099a90297a207aefae80
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 5dae8c4da46c750f69057f33d593f5bb7396a99e
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240800"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882243"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>连接 Azure AD Identity Protection 的数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "71240800"
 可以将日志从[Azure AD Identity Protection](https://docs.microsoft.com/azure/information-protection/reports-aip)流式传输到 azure sentinel，以将警报流式传输到 azure sentinel，以查看仪表板、创建自定义警报和改进调查。 Azure Active Directory Identity Protection 提供了风险用户、风险检测和漏洞的综合视图，能够立即补救风险，并设置策略以自动修正将来的事件。 此服务构建在 Microsoft 的体验上，可保护使用者标识，并从超过13000000000的一天的信号中获得极大的准确性。 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 你必须具有[Azure Active Directory Premium P1 或 P2 许可证](https://azure.microsoft.com/pricing/details/active-directory/)
 - 具有全局管理员或安全管理员权限的用户
@@ -37,7 +37,7 @@ ms.locfileid: "71240800"
 
 ## <a name="connect-to-azure-ad-identity-protection"></a>连接到 Azure AD Identity Protection
 
-如果已有 Azure AD Identity Protection，请确保已[在网络上启用](../active-directory/identity-protection/enable.md)它。
+如果已有 Azure AD Identity Protection，请确保已[在网络上启用](../active-directory/identity-protection/overview-identity-protection.md)它。
 如果 Azure AD Identity Protection 已部署并获取数据，则可以轻松地将警报数据流式传输到 Azure Sentinel。
 
 

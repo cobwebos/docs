@@ -1,24 +1,18 @@
 ---
 title: 删除和还原 Azure Log Analytics 工作区 |Microsoft Docs
 description: 了解在个人订阅中创建 Log Analytics 工作区后如何删除它，以及如何重构工作区模型。
-services: log-analytics
-documentationcenter: log-analytics
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 10/11/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: fb6714a52a65ef5efe4725b99acb30cb67af20c3
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 10/11/2019
+ms.openlocfilehash: f15e9c2a5980c8fb6d98f7bf9187b030e6910523
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299280"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932373"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>删除和还原 Azure Log Analytics 工作区
 
@@ -49,7 +43,7 @@ ms.locfileid: "72299280"
 
 ### <a name="delete-workspace-in-azure-portal"></a>删除 Azure 门户中的工作区
 
-1. 若要登录，请转到 [Azure 门户](https://portal.azure.com)。 
+1. 若要登录，请前往[Azure 门户](https://portal.azure.com)。 
 2. 在 Azure 门户中，选择“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”。
 3. 在 Log Analytics 工作区列表中，选择一个工作区，然后单击中间窗格顶部的 "**删除**"。
    ![从工作区属性窗格中删除选项](media/delete-workspace/log-analytics-delete-workspace.png)

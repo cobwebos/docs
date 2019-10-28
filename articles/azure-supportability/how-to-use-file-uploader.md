@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure 新支持请求“文件上传”实用工具指导原则 | Microsoft Docs
-description: 使用 Microsoft Azure 新支持请求“文件上传”实用工具时说明此指导原则
+title: Azure 支持请求-文件上传指南
+description: 介绍使用 Microsoft Azure 支持请求文件上传选项时的准则
 author: genlin
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
@@ -8,22 +8,22 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f01c70a2a077e28e8de5118332b780f27dc9ec93
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 8c22ce859aa58aeb8339b16265f6614bd7e723f8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248690"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72936081"
 ---
-# <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Microsoft Azure 新支持请求“文件上传”实用工具指导原则
-[创建支持请求](https://portal.azure.com/#create/Microsoft.Support)时，“文件上传”实用工具可帮助用户轻松上传诊断文件或任何用户认为与事件相关的其他文件。  
+# <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Microsoft Azure 新的支持请求文件上传实用工具指南
+[创建支持请求](https://portal.azure.com/#create/Microsoft.Support)时，"文件上传" 选项可以帮助你轻松上传诊断文件或你认为与事件相关的任何其他文件。  
 
 > [!NOTE]
 > 为保护隐私，请不要在上传内容中含入任何个人信息。
 >
 >
 
-使用“文件上传”实用工具时，请遵循以下指导原则：
+使用 "文件上传" 选项时，请遵循以下准则：
 
 * 所有文件必须具有文件扩展名，如 .docx 或 .xlsx。 请参阅允许使用的文件扩展名表。
 * 文件名不得超过 110 个字符。

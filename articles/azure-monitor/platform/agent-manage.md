@@ -1,80 +1,74 @@
 ---
 title: 管理 Azure Log Analytics 代理 | Microsoft Docs
 description: 本文介绍在计算机上部署 Log Analytics Windows 或 Linux 代理的生命周期中通常会执行的不同管理任务。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/14/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 0c128aaf8102b3072b6a63c80ea860ceefbf5124
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.date: 06/14/2019
+ms.openlocfilehash: 8dec91a3987aed978bb088d1aeab48a6fd0f9fb4
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67146295"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932790"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>管理并维护 Windows 和 Linux 的 Log Analytics 代理
 
-在 Azure Monitor 中初始部署 Log Analytics Windows 或 Linux 代理后，如果代理到达了其生命周期中的停用阶段时，则你可能需要重新配置代理，对其进行更新或者将其从计算机中删除。 可以轻松地手动或自动管理这些日常维护任务，从而减少运行错误并降低费用。
+在 Azure Monitor 中 Log Analytics Windows 或 Linux 代理的初始部署之后，你可能需要重新配置代理、进行升级或将其从计算机中删除（如果它在其生命周期中已达到停用阶段）。 可以轻松地手动或自动管理这些日常维护任务，从而减少运行错误并降低费用。
 
 ## <a name="upgrading-agent"></a>升级代理
 
-可以根据部署方案和 VM 的运行环境手动或自动将适用于 Windows 和 Linux 的 Log Analytics 代理升级到最新版本。 可以使用以下方法来升级代理。
+适用于 Windows 和 Linux 的 Log Analytics 代理可以手动或自动升级到最新版本，具体取决于正在运行 VM 的部署方案和环境。 可以使用以下方法来升级代理。
 
 | 环境 | 安装方法 | 升级方法 |
 |--------|----------|-------------|
-| Azure VM | 适用于 Windows/Linux 的 Log Analytics 代理 VM 扩展 | 默认情况下代理会自动升级，除非你通过将 *autoUpgradeMinorVersion* 属性设置为 **false** 来将 Azure 资源管理器模板配置为选择退出。 |
-| 自定义 Azure VM 映像 | 手动安装适用于 Windows/Linux 的 Log Analytics 代理 | 将 VM 更新到最新版本的代理需要从命令行运行 Windows 安装程序包或 Linux 自解压和可安装的 shell 脚本包。|
-| 非 Azure VM | 手动安装适用于 Windows/Linux 的 Log Analytics 代理 | 将 VM 更新到最新版本的代理需要从命令行运行 Windows 安装程序包或 Linux 自解压和可安装的 shell 脚本包。 |
+| Azure VM | 适用于 Windows/Linux 的 Log Analytics 代理 VM 扩展 | 默认情况下会自动升级代理，除非已将 Azure 资源管理器模板配置为通过将属性*autoUpgradeMinorVersion*设置为**false**来选择退出。 |
+| 自定义 Azure VM 映像 | 手动安装适用于 Windows/Linux 的 Log Analytics 代理 | 若要将 Vm 更新到最新版本的代理，需要从运行 Windows installer 包或 Linux 自解压并可安装的 shell 脚本捆绑的命令行执行。|
+| 非 Azure Vm | 手动安装适用于 Windows/Linux 的 Log Analytics 代理 | 若要将 Vm 更新到最新版本的代理，需要从运行 Windows installer 包或 Linux 自解压并可安装的 shell 脚本捆绑的命令行执行。 |
 
 ### <a name="upgrade-windows-agent"></a>升级 Windows 代理 
 
-若要将 Windows VM 上的代理更新为未使用 Log Analytics VM 扩展安装的最新版本，可以通过命令提示符、脚本或其他自动化解决方案来运行，也可以使用 MMASetup-\<platform\>.msi 安装向导。  
+若要将 Windows VM 上的代理更新为未使用 Log Analytics VM 扩展安装的最新版本，你可以从命令提示符、脚本或其他自动化解决方案中运行，也可以使用 MMASetup-\<平台\>.msi 安装向导进行安装。  
 
-可以通过执行以下步骤从你的 Log Analytics 工作区下载 Windows 代理的最新版本。
+可以通过执行以下步骤从 Log Analytics 工作区下载最新版本的 Windows 代理。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 2. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”。
 
-3. 在 Log Analytics 工作区列表中选择一个工作区。
+3. 在 Log Analytics 工作区列表中，选择工作区。
 
-4. 在你的 Log Analytics 工作区中，选择“高级设置”，然后选择“连接的源”，最后选择“Windows Server”。
+4. 在 Log Analytics 工作区中，选择 "**高级设置**"，并选择 "**连接的源**"，最后选择 " **Windows 服务器**"。
 
-5. 在“Windows Server”页上，选择“下载 Windows 代理”，根据 Windows 操作系统的处理器体系结构下载相应的版本。
+5. 从 " **Windows 服务器**" 页上，根据 Windows 操作系统的处理器体系结构，选择适当的**下载 windows 代理**版本以进行下载。
 
 >[!NOTE]
->在升级适用于 Windows 的 Log Analytics 代理期间，不支持配置或重新配置要报告到的工作区。 若要配置该代理，需要遵循[添加或删除工作区](#adding-or-removing-a-workspace)下列出的受支持的方法之一。
+>在升级适用于 Windows 的 Log Analytics 代理期间，不支持配置或重新配置要向其报告的工作区。 若要配置代理，需要遵循在[添加或删除工作区](#adding-or-removing-a-workspace)中列出的某个受支持的方法。
 >
 
 #### <a name="to-upgrade-using-the-setup-wizard"></a>使用安装向导进行升级
 
 1. 使用具有管理权限的帐户登录到计算机。
 
-2. 执行 **MMASetup-\<platform\>.exe** 以启动安装向导。
+2. 执行**MMASetup-\<平台\>** 以启动安装向导。
 
-3. 在安装向导的第一页上，单击“下一步”。
+3. 在安装向导的第一页上，单击 "**下一步**"。
 
-4. 在“Microsoft Monitoring Agent 安装”对话框中，单击“我同意”以接受许可协议。
+4. 在 " **Microsoft Monitoring Agent 安装**" 对话框中，单击 "**我同意**接受许可协议"。
 
-5. 在“Microsoft Monitoring Agent 安装”对话框中，单击“升级”。 状态页面将显示升级进度。
+5. 在 " **Microsoft Monitoring Agent 设置**" 对话框中，单击 "**升级**"。 "状态" 页将显示升级的进度。
 
-6. 当“Microsoft Monitoring Agent 配置已成功完成。” 页面出现时，单击“完成”。
+6. 如果**Microsoft Monitoring Agent 配置已成功完成。** 页，单击 "**完成**"。
 
-#### <a name="to-upgrade-from-the-command-line"></a>从命令行进行升级
+#### <a name="to-upgrade-from-the-command-line"></a>从命令行升级
 
 1. 使用具有管理权限的帐户登录到计算机。
 
 2. 若要提取代理安装文件，请在提升的命令提示符处运行 `MMASetup-<platform>.exe /c`，这会提示要将文件提取到的路径。 或者，可以通过传递参数 `MMASetup-<platform>.exe /c /t:<Full Path>` 来指定路径。
 
-3. 运行以下命令，其中 D:\ 是升级日志文件的位置。
+3. 运行以下命令，其中 D:\升级日志文件的位置。
 
     ```dos
     setup.exe /qn /l*v D:\logs\AgentUpgrade.log AcceptEndUserLicenseAgreement=1
@@ -82,7 +76,7 @@ ms.locfileid: "67146295"
 
 ### <a name="upgrade-linux-agent"></a>升级 Linux 代理 
 
-支持从以前的版本 (>1.0.0-47) 进行升级。 使用 `--upgrade` 命令执行安装时，会将代理的所有组件都升级到最新版本。
+支持从以前的版本升级（> 1.0.0-47）。 使用 `--upgrade` 命令执行安装时，会将代理的所有组件都升级到最新版本。
 
 运行以下命令来升级代理。
 
@@ -91,7 +85,7 @@ ms.locfileid: "67146295"
 ## <a name="adding-or-removing-a-workspace"></a>添加或删除工作区
 
 ### <a name="windows-agent"></a>Windows 代理
-如果你不但希望将 Windows 代理重新配置为向另一工作区进行报告或者从其配置中删除某个工作区，而且还要将代理配置为向多个工作区进行报告（通常称为多宿主），则需要执行本部分中的步骤。 将 Windows 代理配置为向多个工作区进行报告只能在初始安装代理后使用下述方法执行。    
+如果你不仅想要将 Windows 代理重新配置为向不同的工作区报告，或从其配置中删除工作区，以及要将代理配置为向多个工作区报告，则必须使用本节中的步骤。称为 "多宿主"。 仅在初始设置代理并使用下述方法之后，才能将 Windows 代理配置为向多个工作区报告。    
 
 #### <a name="update-settings-from-control-panel"></a>从控制面板更新设置
 
@@ -141,7 +135,7 @@ $mma.ReloadConfiguration()
 >
 
 ### <a name="linux-agent"></a>Linux 代理
-以下步骤演示了如何重新配置 Linux 代理，以便将其注册到不同的工作区，或者从其配置中删除工作区。
+以下步骤演示如何重新配置 Linux 代理（如果你决定将其注册到不同的工作区），或者从其配置中删除工作区。
 
 1. 若要验证该代理是否已注册到工作区，请运行以下命令：
 
@@ -161,7 +155,7 @@ $mma.ReloadConfiguration()
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <shared key> [-d <top level domain>]`
     
-4. 若要验证更改是否生效，请运行以下命令：
+4. 若要验证所做的更改是否生效，请运行以下命令：
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -l`
 
@@ -188,7 +182,7 @@ $mma.ReloadConfiguration()
 
 #### <a name="update-settings-using-powershell"></a>使用 PowerShell 更新设置
 
-复制以下示例 PowerShell 代码，使用特定于自己环境的信息对其进行更新，并使用 PS1 文件扩展名将其保存。 在直接连接到 Azure Monitor 中的 Log Analytics工作区的每台计算机上运行该脚本。
+复制以下示例 PowerShell 代码，使用特定于自己环境的信息对其进行更新，并使用 PS1 文件扩展名将其保存。 在直接连接到 Azure Monitor 中的 Log Analytics 工作区的每台计算机上运行该脚本。
 
 ```powershell
 param($ProxyDomainName="https://proxy.contoso.com:30443", $cred=(Get-Credential))
@@ -232,7 +226,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
     ```
 
 ## <a name="uninstall-agent"></a>卸载代理
-使用下列过程之一通过命令行或安装向导卸载 Windows 或 Linux 代理。
+使用以下过程之一，使用命令行或安装向导卸载 Windows 或 Linux 代理。
 
 ### <a name="windows-agent"></a>Windows 代理
 
@@ -300,6 +294,6 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果在安装或管理 Linux 代理时遇到问题，请查看 [Linux 代理疑难解答](agent-linux-troubleshoot.md)。
+- 如果在安装或管理 Linux 代理时遇到问题，请参阅[linux 代理故障排除](agent-linux-troubleshoot.md)。
 
-- 如果在安装或管理 Windows 代理时遇到问题, 请查看[windows 代理故障排除](agent-windows-troubleshoot.md)。
+- 如果在安装或管理 Windows 代理时遇到问题，请查看[windows 代理故障排除](agent-windows-troubleshoot.md)。

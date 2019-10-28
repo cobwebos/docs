@@ -3,33 +3,34 @@ title: Azure Service Fabric CLI - sfctl rpm | Microsoft Docs
 description: 介绍 Service Fabric CLI sfctl rpm 命令。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 3f40451087aba5af5b02625ad3ac1ca6231d976c
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 9c37dc8131f14a3b35e68b3e88502c91f96810f6
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035872"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901036"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 查询并向修复管理器服务发送命令。
 
 ## <a name="commands"></a>命令
 
-|Command|描述|
+|命令|描述|
 | --- | --- |
 | approve-force | 强制批准给定的修复任务。 |
-| 删除 | 删除已完成的修复任务。 |
-| 列表 | 获取与给定筛选器匹配的修复任务列表。 |
+| delete | 删除已完成的修复任务。 |
+| list | 获取与给定筛选器匹配的修复任务列表。 |
 
 ## <a name="sfctl-rpm-approve-force"></a>sfctl rpm approve-force
 强制批准给定的修复任务。

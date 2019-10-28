@@ -1,0 +1,211 @@
+---
+title: 使用的端到端 Blob 引入到 Azure 数据资源管理器C#
+description: 本文介绍如何使用C#端到端示例将 Blob 引入 Azure 数据资源管理器。
+author: lucygoldbergmicrosoft
+ms.author: lugoldbe
+ms.reviewer: orspodek
+ms.service: data-explorer
+ms.topic: conceptual
+ms.date: 10/23/2019
+ms.openlocfilehash: 7d737319c9ddc8040a7cae6f7a9991c625cc4fcd
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809573"
+---
+# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-using-c"></a>使用的端到端 Blob 引入到 Azure 数据资源管理器C#
+
+> [!div class="op_single_selector"]
+> * [C#](end-to-end-csharp.md)
+> * [Python](end-to-end-python.md)
+>
+
+Azure 数据资源管理器是一项快速且可缩放的数据探索服务，适用于日志和遥测数据。 本文提供了有关如何将数据从 Blob 存储引入 Azure 数据资源管理器的端到端示例。 你将了解如何以编程方式创建资源组、存储帐户和容器、事件中心以及 Azure 数据资源管理器群集和数据库。 你还将了解如何以编程方式配置 Azure 数据资源管理器从新的存储帐户引入数据。
+
+## <a name="prerequisites"></a>必备组件
+
+如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
+
+## <a name="install-c-nuget"></a>安装C# Nuget
+
+* 请安装[kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)。
+* 安装[Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)。
+* 请安装[EventGrid](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/)。
+* 安装 " ["。](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
+* 安装[ClientRuntime](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)以进行身份验证。
+
+[!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
+
+[!INCLUDE [data-explorer-e2e-event-grid-resource-template](../../includes/data-explorer-e2e-event-grid-resource-template.md)]
+
+## <a name="code-example"></a>代码示例 
+
+下面的代码示例提供了分步过程，该过程将数据引入到 Azure 数据资源管理器中。 首先创建一个资源组，以及 Azure 资源（例如存储帐户和容器、事件中心以及 Azure 数据资源管理器群集和数据库）。 然后在 Azure 数据资源管理器数据库中创建事件网格订阅和表和列映射。 最后，创建用于配置 Azure 数据资源管理器的数据连接，以便从新的存储帐户引入数据。 
+
+```csharp
+var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
+var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+string location = "West Europe";
+string locationSmallCase = "westeurope";
+string azureResourceTemplatePath = @"xxxxxxxxx\template.json";//path to the Azure Resource Manager template json from the previous section
+
+string deploymentName = "e2eexample";
+string resourceGroupName = deploymentName + "resourcegroup";
+string eventHubName = deploymentName + "eventhub";
+string eventHubNamespaceName = eventHubName + "ns";
+string storageAccountName = deploymentName + "storage";
+string storageContainerName = deploymentName + "storagecontainer";
+string eventGridSubscriptionName = deploymentName + "eventgrid";
+string kustoClusterName = deploymentName + "kustocluster";
+string kustoDatabaseName = deploymentName + "kustodatabase";
+string kustoTableName = "Events";
+string kustoColumnMappingName = "Events_CSV_Mapping";
+string kustoDataConnectionName = deploymentName + "kustoeventgridconnection";
+
+var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
+var resourceManagementClient = new ResourceManagementClient(serviceCreds);
+Console.WriteLine("Step 1: Create a new resource group in your Azure subscription to manage all the resources for using Azure Data Explorer.");
+resourceManagementClient.SubscriptionId = subscriptionId;
+await resourceManagementClient.ResourceGroups.CreateOrUpdateAsync(resourceGroupName,
+    new ResourceGroup() { Location = locationSmallCase });
+
+Console.WriteLine(
+    "Step 2: Create a Blob Storage, a container in the Storage account, an Event Hub, an Azure Data Explorer cluster, and database by using an Azure Resource Manager template.");
+var parameters = $"{{\"eventHubNamespaceName\":{{\"value\":\"{eventHubNamespaceName}\"}},\"eventHubName\":{{\"value\":\"{eventHubName}\"}},\"storageAccountName\":{{\"value\":\"{storageAccountName}\"}},\"containerName\":{{\"value\":\"{storageContainerName}\"}},\"kustoClusterName\":{{\"value\":\"{kustoClusterName}\"}},\"kustoDatabaseName\":{{\"value\":\"{kustoDatabaseName}\"}}}}";
+string template = File.ReadAllText(azureResourceTemplatePath, Encoding.UTF8);
+await resourceManagementClient.Deployments.CreateOrUpdateAsync(resourceGroupName, deploymentName,
+    new Deployment(new DeploymentProperties(DeploymentMode.Incremental, template: template,
+        parameters: parameters)));
+
+Console.WriteLine(
+    "Step 3: Create an Event Grid subscription to publish blob events created in a specific container to an Event Hub.");
+var eventGridClient = new EventGridManagementClient(serviceCreds)
+{
+    SubscriptionId = subscriptionId
+};
+string storageResourceId = $"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}";
+string eventHubResourceId = $"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{eventHubNamespaceName}/eventhubs/{eventHubName}";
+await eventGridClient.EventSubscriptions.CreateOrUpdateAsync(storageResourceId, eventGridSubscriptionName,
+    new EventSubscription()
+    {
+        Destination = new EventHubEventSubscriptionDestination(eventHubResourceId),
+        Filter = new EventSubscriptionFilter()
+        {
+            SubjectBeginsWith = $"/blobServices/default/containers/{storageContainerName}",
+            IncludedEventTypes = new List<string>(){"Microsoft.Storage.BlobCreated"}
+        }
+    });
+
+Console.WriteLine("Step 4: Create a table (with three columns: EventTime, EventId, and EventSummary) and column mapping in your Azure Data Explorer database.");
+var kustoUri = $"https://{kustoClusterName}.{locationSmallCase}.kusto.windows.net";
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
+{
+    InitialCatalog = kustoDatabaseName,
+    FederatedSecurity = true,
+    ApplicationClientId = clientId,
+    ApplicationKey = clientSecret,
+    Authority = tenantId
+};
+
+using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))
+{
+    var command =
+        CslCommandGenerator.GenerateTableCreateCommand(
+            kustoTableName,
+            new[]
+            {
+                Tuple.Create("EventTime", "System.DateTime"),
+                Tuple.Create("EventId", "System.Int32"),
+                Tuple.Create("EventSummary", "System.String"),
+            });
+
+    kustoClient.ExecuteControlCommand(command);
+
+    command = CslCommandGenerator.GenerateTableCsvMappingCreateCommand(
+        kustoTableName,
+        kustoColumnMappingName,
+        new[]
+        {
+            new CsvColumnMapping { ColumnName = "EventTime", CslDataType="dateTime", Ordinal = 0 },
+            new CsvColumnMapping { ColumnName = "EventId", CslDataType="int", Ordinal = 1 },
+            new CsvColumnMapping { ColumnName = "EventSummary", CslDataType="string", Ordinal = 2 },
+        });
+    kustoClient.ExecuteControlCommand(command);
+}
+
+Console.WriteLine("Step 5: Add an Event Grid data connection. Azure Data Explorer will automatically ingest the data when new blobs are created.");
+var kustoManagementClient = new KustoManagementClient(serviceCreds)
+{
+    SubscriptionId = subscriptionId
+};
+await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupName, kustoClusterName,
+                kustoDatabaseName, dataConnectionName: kustoDataConnectionName, new EventGridDataConnection(storageResourceId, eventHubResourceId, consumerGroup: "$Default", location: location, tableName:kustoTableName, mappingRuleName: kustoColumnMappingName, dataFormat: "csv"));
+
+```
+| **设置** | **字段说明** |
+|---|---|---|
+| tenantId | 租户 ID。 也称为目录 ID。|
+| subscriptionId | 用于创建资源的订阅 ID。|
+| clientId | 可以访问租户中资源的应用程序的客户端 ID。|
+| clientSecret | 可以访问租户中资源的应用程序的客户端机密。 |
+
+## <a name="test-the-code-example"></a>测试代码示例
+
+1. 将文件上传到存储帐户
+
+    ```csharp
+    string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=xxxxxxxxxxxxxx;AccountKey=xxxxxxxxxxxxxx;EndpointSuffix=core.windows.net";
+    var cloudStorageAccount = CloudStorageAccount.Parse(storageConnectionString);
+    CloudBlobClient blobClient = cloudStorageAccount.CreateCloudBlobClient();
+    CloudBlobContainer container = blobClient.GetContainerReference(storageContainerName);
+    CloudBlockBlob blockBlob = container.GetBlockBlobReference("test.csv");
+    var blobContent = @"2007-01-01 00:00:00.0000000,2592,Several trees down
+    2007-01-01 00:00:00.0000000,4171,Winter Storm";
+    await blockBlob.UploadTextAsync(blobContent);
+    ```
+    |**设置** | **字段说明**|
+    |---|---|---|
+    | storageConnectionString | 以编程方式创建的存储帐户的连接字符串。|
+
+2. 在 Azure 中运行测试查询数据资源管理器
+
+    ```csharp
+    var kustoUri = $"https://{kustoClusterName}.{locationSmallCase}.kusto.windows.net";
+    var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
+    {
+        InitialCatalog = kustoDatabaseName,
+        FederatedSecurity = true,
+        ApplicationClientId = clientId,
+        ApplicationKey = clientSecret,
+        Authority = tenantId
+    };
+    using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(kustoConnectionStringBuilder))
+    {
+        var query = $"{kustoTableName} | take 10";
+        using (var reader = kustoClient.ExecuteQuery(query) as DataTableReader2)
+        {// Print the contents of each of the result sets. 
+            while (reader.Read())
+            {
+                Console.WriteLine($"{reader[0]}, {reader[1]}, {reader[2]}");
+            }
+        }
+    }
+    ```
+
+## <a name="clean-up-resources"></a>清理资源
+
+若要删除资源组并清理资源，请使用以下命令：
+
+```csharp
+await resourceManagementClient.ResourceGroups.DeleteAsync(resourceGroupName);
+```
+
+## <a name="next-steps"></a>后续步骤
+
+*  [创建 Azure 数据资源管理器群集和数据库](create-cluster-database-csharp.md)，了解创建群集和数据库的其他方法。
+* 请参阅 [Azure 数据资源管理器数据引入](ingest-data-overview.md)详细了解引入方法。
+* [快速入门：在 Azure 数据资源管理器中查询数据](web-query-data.md)Web UI。
+* 使用 Kusto 查询语言[编写查询](write-queries.md)。

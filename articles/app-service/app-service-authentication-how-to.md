@@ -10,15 +10,15 @@ ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/02/2019
+ms.date: 10/24/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 105728bdab9c70bb807f38e4a09d5be863694c16
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f453a0276a3448273964a589112e21ca5665c2d2
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231970"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900136"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
 
@@ -130,7 +130,7 @@ GET /.auth/logout?post_logout_redirect_uri=/index.html
 GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
 ```
 
-在[Azure Cloud Shell](../cloud-shell/quickstart.md)中运行以下命令:
+在[Azure Cloud Shell](../cloud-shell/quickstart.md)中运行以下命令：
 
 ```azurecli-interactive
 az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
@@ -153,7 +153,7 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 * X-MS-CLIENT-PRINCIPAL-NAME
 * X-MS-CLIENT-PRINCIPAL-ID
 
-使用任何语言或框架编写的代码均可从这些标头获取所需信息。 对于 ASP.NET 4.6 应用，**ClaimsPrincipal** 会自动设置为相应的值。
+使用任何语言或框架编写的代码均可从这些标头获取所需信息。 对于 ASP.NET 4.6 应用，**ClaimsPrincipal** 会自动设置为相应的值。 但 ASP.NET Core 不提供与应用服务用户声明集成的身份验证中间件。 有关解决方法，请参阅[MaximeRouiller. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)。
 
 应用程序也可以通过调用 `/.auth/me` 来获取有关经过身份验证的用户的其他详细信息。 移动应用服务器 SDK 提供处理该数据的帮助器方法。 有关详细信息，请参阅[如何使用 Azure 移动应用 Node.js SDK](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)和[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info)。
 
@@ -183,7 +183,7 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 - **Facebook**：不提供刷新令牌。 生存期较长的令牌在 60 天后过期（请参阅 [Facebook 访问令牌的过期和延期](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)）。
 - **Twitter**：访问令牌不会过期（请参阅 [Twitter OAuth 常见问题解答](https://developer.twitter.com/en/docs/basics/authentication/FAQ)）。
 - **Microsoft 帐户**：[配置 Microsoft 帐户身份验证设置](configure-authentication-provider-microsoft.md)时，请选择 `wl.offline_access` 范围。
-- **Azure Active Directory**：在 [https://resources.azure.com](https://resources.azure.com) 中，执行以下步骤：
+- **Azure Active Directory**：在 [https://resources.azure.com](https://resources.azure.com) 中执行以下步骤：
     1. 在页面顶部，选择“读/写”。
     2. 在左侧浏览器中，导航到 **subscriptions** >  **_\<subscription\_name_**  > **resourceGroups** >  **_\<resource\_group\_name>_**  > **providers** > **Microsoft.Web** > **sites** >  **_\<app\_name>_**  > **config** > **authsettings**。 
     3. 单击“编辑”。
@@ -197,7 +197,7 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 
 配置提供程序后，可以在令牌存储区[查找刷新令牌和访问令牌的过期时间](#retrieve-tokens-in-app-code)。 
 
-若要随时刷新访问令牌, 只需使用任何`/.auth/refresh`语言调用。 以下代码片段从 JavaScript 客户端使用 jQuery 刷新访问令牌。
+若要随时刷新访问令牌，只需以任意语言调用 `/.auth/refresh`。 以下代码片段从 JavaScript 客户端使用 jQuery 刷新访问令牌。
 
 ```JavaScript
 function refreshTokens() {
@@ -230,7 +230,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>限制登录帐户的域
 
-Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如，Microsoft 帐户允许 _outlook.com_、_live.com_ 和 _hotmail.com_ 帐户。 Azure AD 允许登录帐户拥有任意数量的自定义域。 但是, 你可能希望将用户直接转到你自己的品牌 Azure AD 登录页面 (例如`contoso.com`)。 若要建议登录帐户的域名, 请执行以下步骤。
+Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如，Microsoft 帐户允许 _outlook.com_、_live.com_ 和 _hotmail.com_ 帐户。 Azure AD 允许登录帐户拥有任意数量的自定义域。 不过，你可能想要将用户直接转到你自己的品牌 Azure AD 登录页面（如 `contoso.com`）。 若要建议登录帐户的域名，请执行以下步骤。
 
 在 [https://resources.azure.com](https://resources.azure.com) 中，导航到 **subscriptions** >  **_\< subscription\_ name_**  > **resourceGroups** >  **_\< resource\_ group\_ name>_**  > **providers** > **Microsoft.Web** > **sites** >  **_\< app\_ name>_**  > **config** > **authsettings**。 
 
@@ -240,29 +240,29 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 "additionalLoginParams": ["domain_hint=<domain_name>"]
 ```
 
-此设置将`domain_hint`查询字符串参数追加到登录重定向 URL。 
+此设置将 `domain_hint` 查询字符串参数追加到登录重定向 URL。 
 
 > [!IMPORTANT]
-> 客户端在接收重定向 URL 之后可以`domain_hint`删除参数, 然后使用不同的域登录。 所以虽然此功能非常方便, 但它并不是一项安全功能。
+> 在接收重定向 URL 之后，客户端可能会删除 `domain_hint` 参数，然后使用不同的域登录。 所以虽然此功能非常方便，但它并不是一项安全功能。
 >
 
 ## <a name="authorize-or-deny-users"></a>授权或拒绝用户
 
-应用服务负责处理最简单的授权情况 (即拒绝未经身份验证的请求), 应用可能需要更精细的授权行为, 例如仅限特定用户组的访问权限。 在某些情况下, 你需要编写自定义应用程序代码以允许或拒绝对已登录用户的访问。 在其他情况下, 应用服务或标识提供者可能能够帮助, 而无需更改代码。
+应用服务负责处理最简单的授权情况（即拒绝未经身份验证的请求），应用可能需要更精细的授权行为，例如仅限特定用户组的访问权限。 在某些情况下，你需要编写自定义应用程序代码以允许或拒绝对已登录用户的访问。 在其他情况下，应用服务或标识提供者可能能够帮助，而无需更改代码。
 
 - [服务器级别](#server-level-windows-apps-only)
 - [标识提供者级别](#identity-provider-level)
 - [应用程序级别](#application-level)
 
-### <a name="server-level-windows-apps-only"></a>服务器级别 (仅限 Windows 应用)
+### <a name="server-level-windows-apps-only"></a>服务器级别（仅限 Windows 应用）
 
-对于任何 Windows 应用, 都可以通过编辑*web.config*文件来定义 IIS web 服务器的授权行为。 Linux 应用不使用 IIS, 因此不能通过web.config 进行配置。
+对于任何 Windows 应用，都可以通过编辑*web.config*文件来定义 IIS web 服务器的授权行为。 Linux 应用不使用 IIS，因此不*能通过 web.config 进行配置。*
 
 1. 导航到 `https://<app-name>.scm.azurewebsites.net/DebugConsole`
 
-1. 在应用服务文件的浏览器资源管理器中, 导航到*site/wwwroot*。 如果*web.config*不存在, 请通过选择 **+**  > "**新建文件**" 进行创建。 
+1. 在应用服务文件的浏览器资源管理器中，导航到*site/wwwroot*。 如果*web.config*不存在，请通过选择 " **+** " > **新文件**来创建它。 
 
-1. 选择用于*web.config*的铅笔以对其进行编辑。 添加以下配置代码, 并单击 "**保存**"。 如果*web.config*已经存在, 只需添加包含其中`<authorization>`所有内容的元素。 在`<allow>`元素中添加想要允许的帐户。
+1. 选择用于*web.config*的铅笔以对其进行编辑。 添加以下配置代码，并单击 "**保存**"。 如果*web.config*已经存在，只需添加包含其中所有内容的 `<authorization>` 元素。 在 `<allow>` 元素中添加想要允许的帐户。
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -280,12 +280,12 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 
 标识提供者可能会提供某些密钥授权。 例如：
 
-- 对于[Azure App Service](configure-authentication-provider-aad.md), 你可以直接在 Azure AD 中[管理企业级访问权限](../active-directory/manage-apps/what-is-access-management.md)。 有关说明, 请参阅[如何删除用户对应用程序的访问权限](../active-directory/manage-apps/methods-for-removing-user-access.md)。
-- 对于[google](configure-authentication-provider-google.md), 可以将属于某个[组织](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations)的 Google API 项目配置为仅允许你的组织中的用户访问 (请参阅[Google 的**设置 OAuth 2.0**支持页面](https://support.google.com/cloud/answer/6158849?hl=en))。
+- 对于[Azure App Service](configure-authentication-provider-aad.md)，你可以直接在 Azure AD 中[管理企业级访问权限](../active-directory/manage-apps/what-is-access-management.md)。 有关说明，请参阅[如何删除用户对应用程序的访问权限](../active-directory/manage-apps/methods-for-removing-user-access.md)。
+- 对于[google](configure-authentication-provider-google.md)，可以将属于某个[组织](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations)的 Google API 项目配置为仅允许你的组织中的用户访问（请参阅[Google 的**设置 OAuth 2.0**支持页面](https://support.google.com/cloud/answer/6158849?hl=en)）。
 
 ### <a name="application-level"></a>应用程序级别
 
-如果任何一个级别未提供所需的授权, 或者如果平台或标识提供者不受支持, 则必须编写自定义代码, 以根据[用户声明](#access-user-claims)向用户授权。
+如果任何一个级别未提供所需的授权，或者如果平台或标识提供者不受支持，则必须编写自定义代码，以根据[用户声明](#access-user-claims)向用户授权。
 
 ## <a name="next-steps"></a>后续步骤
 

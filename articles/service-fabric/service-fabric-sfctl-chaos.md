@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI- sfctl chaos| Microsoft Docs
 description: 介绍 Service Fabric CLI sfctl chaos 命令。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 27178b2f26086bf693dc9cda342c66f7d47a34d7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: f48ef260ab05f98da99c3ae317d0c350d018119f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035100"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901764"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 启动、停止和报告混沌测试服务。
@@ -29,11 +30,11 @@ ms.locfileid: "69035100"
 | [schedule](service-fabric-sfctl-chaos-schedule.md) | 获取和设置 Chaos Schedule。 |
 ## <a name="commands"></a>命令
 
-|Command|描述|
+|命令|描述|
 | --- | --- |
-| 事件 | 根据继续标记或时间范围获取 Chaos 事件的下一段。 |
+| 活动 | 根据继续标记或时间范围获取 Chaos 事件的下一段。 |
 | get | 获取 Chaos 的状态。 |
-| 开始 | 在群集中启动混沌测试。 |
+| start | 在群集中启动混沌测试。 |
 | stop | 如果 Chaos 正在群集中运行，则会停止 Chaos 并将 Chaos Schedule 置于已停止状态。 |
 
 ## <a name="sfctl-chaos-events"></a>sfctl chaos events
@@ -45,11 +46,11 @@ ms.locfileid: "69035100"
 
 |参数|描述|
 | --- | --- |
-| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
-| --end-time-utc | Windows 文件时间，表示要生成 Chaos 报告的时间范围的结束时间。 有关详细信息，请参阅 [DateTime.ToFileTimeUtc 方法](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)。 |
+| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
+| --end-time-utc | Windows 文件时间，表示要生成 Chaos 报告的时间范围的结束时间。 有关详细信息，请参阅 [DateTime.ToFileTimeUtc 方法](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)。 |
 | --max-results | 作为分页查询的一部分返回的最大结果数。 此参数定义返回结果数的上限。 如果根据配置中定义的最大消息大小限制，无法将这些结果容纳到消息中，则返回的结果数可能小于指定的最大结果数。 如果此参数为零或者未指定，则分页查询包含返回消息中最多可容纳的结果数。 |
-| --start-time-utc | Windows 文件时间，表示要生成 Chaos 报告的时间范围的开始时间。 有关详细信息，请参阅 [DateTime.ToFileTimeUtc 方法](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --start-time-utc | Windows 文件时间，表示要生成 Chaos 报告的时间范围的开始时间。 有关详细信息，请参阅 [DateTime.ToFileTimeUtc 方法](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)。 |
+| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -70,7 +71,7 @@ ms.locfileid: "69035100"
 
 |参数|描述|
 | --- | --- |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -85,7 +86,7 @@ ms.locfileid: "69035100"
 ## <a name="sfctl-chaos-start"></a>sfctl chaos start
 在群集中启动混沌测试。
 
-如果尚未在群集中运行混沌测试，则使用混沌测试参数中指定的值开始运行混沌测试。 如果进行此调用时运行混沌，调用将失败，错误代码为 FABRIC_E_CHAOS_ALREADY_RUNNING。
+如果尚未在群集中运行混沌测试，则使用混沌测试参数中指定的值开始运行混沌测试。 如果进行此调用时运行混沌，调用将失败，错误代码为 FABRIC_E_CHAOS_ALREADY_RUNNING。 有关更多详细信息，请参阅文章[Service Fabric 群集中产生控制混乱](https\://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos)。
 
 ### <a name="arguments"></a>参数
 
@@ -96,13 +97,13 @@ ms.locfileid: "69035100"
 | --context | 类型键值对的 JSON 编码映射 (string, string)。 此映射可用于记录混沌测试的相关运行信息。 这种键值对不能超过 100 个，并且每个字符串（键或值）的长度不能超过 4095 个字符。 此映射由混沌测试运行的启动程序设置为根据需要存储特定运行的相关上下文。 |
 | --disable-move-replica-faults | 禁用移动主副本错误和移动辅助副本错误。 |
 | --max-cluster-stabilization | 等待所有群集实体变稳定和正常运行的最长时间。  默认值\: 60。 <br><br> 在每次迭代开始时它的验证群集实体的运行状况和混沌在迭代中执行。 在验证期间是否群集实体不稳定状态并且正常内 MaxClusterStabilizationTimeoutInSeconds，混沌会生成验证失败的事件。 |
-| --max-concurrent-faults | 每次迭代造成的最大并发错误数。 混沌执行在迭代中，并验证阶段用分隔两个连续的迭代。 并发越高，故障更主动-将系列更复杂的状态，以发现 bug 的注入。 建议是以开头的值为 2 或 3 并向上移动时请务必小心。  默认值\: 1。 |
+| --max-concurrent-faults | 每次迭代造成的最大并发错误数。 混沌执行在迭代中，并验证阶段用分隔两个连续的迭代。 并发越高，故障更主动-将系列更复杂的状态，以发现 bug 的注入。 建议是以开头的值为 2 或 3 并向上移动时请务必小心。  默认值：1。 |
 | --max-percent-unhealthy-apps | 在 Chaos 期间评估群集运行状况时，报告错误之前允许的最大不正常应用程序百分比。 <br><br> 报告错误之前允许的最大不正常应用程序百分比。 例如，若要允许 10% 的应用程序处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的应用程序的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的应用程序，则将运行状况评估为 Warning。 该百分比的计算方式是将不正常的应用程序数除以群集中的应用程序实例总数，不包括 ApplicationTypeHealthPolicyMap 中包含的应用程序类型的应用程序。 计算结果调高为整数，以便容忍少量应用程序出现一次失败。 默认百分比为零。 |
 | --max-percent-unhealthy-nodes | 在 Chaos 期间评估群集运行状况时，报告错误之前允许的最大不正常节点百分比。 <br><br> 报告错误之前允许的最大不正常节点百分比。 例如，若要允许 10% 的节点处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的节点的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的节点，则将运行状况评估为警告。 该百分比的计算方式是将不正常的节点数除以群集中的节点总数。 计算结果调高为整数，以便容忍少量节点上出现一次失败。 默认百分比为零。 在大型群集中，始终会有一些要关闭或需要修复的节点，因此应配置此百分比以便容忍这种情况。 |
-| --time-to-run | Chaos 在自动停止之前要运行的总时间（以秒为单位）。 最大允许值为 4,294,967,295 (System.UInt32.MaxValue)。  默认值\: 4294967295。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
-| --wait-time-between-faults | 单次迭代中发生连续错误的间隔等待时间（以秒为单位）。  默认值\: 20。 <br><br> 值越大越低错误和更简单之间重叠的状态的序列转换群集内通过。 建议是从开始向上移动时的 1 和 5 和练习请小心之间的值。 |
-| --wait-time-between-iterations | Chaos 的每两次连续迭代的间隔时间（以秒为单位）。 值越大，故障注入率越低。  默认值\: 30。 |
+| --time-to-run | Chaos 在自动停止之前要运行的总时间（以秒为单位）。 最大允许值为 4,294,967,295 (System.UInt32.MaxValue)。  默认值：4294967295。 |
+| --timeout -t | 默认值\: 60。 |
+| --wait-time-between-faults | 单次迭代中发生连续错误的间隔等待时间（以秒为单位）。  默认值：20。 <br><br> 值越大越低错误和更简单之间重叠的状态的序列转换群集内通过。 建议是从开始向上移动时的 1 和 5 和练习请小心之间的值。 |
+| --wait-time-between-iterations | Chaos 的每两次连续迭代的间隔时间（以秒为单位）。 值越大，故障注入率越低。  默认值：30。 |
 | --warning-as-error | 指示是否将警告的严重性视为与错误相同。 |
 
 ### <a name="global-arguments"></a>全局参数
@@ -124,7 +125,7 @@ ms.locfileid: "69035100"
 
 |参数|描述|
 | --- | --- |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: ba03d643c8d3770da60d4225d6c2b84d2a07766f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 8860a297332a3572890ceb4c843040f530b8a897
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72325541"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935537"
 ---
 # <a name="expressroute-virtual-network-gateway-and-fastpath"></a>ExpressRoute 虚拟网络网关和 FastPath
 若要通过 ExpressRoute 连接 Azure 虚拟网络和本地网络，必须先创建虚拟网络网关。 虚拟网络网关有两个用途： exchange IP 路由网络之间的路由和路由网络流量。 本文介绍了各 SKU 的网关类型、网关 Sku 和估计性能。 本文还介绍了 ExpressRoute [FastPath](#fastpath)，这是一项功能，可让你的本地网络中的网络流量绕过虚拟网络网关，从而提高性能。
@@ -42,6 +42,26 @@ ms.locfileid: "72325541"
 > 应用程序性能取决于多种因素，例如端到端延迟和应用程序打开的流量数。 表中的数字表示应用程序在理想环境下理论上可达到的上限。
 >
 >
+
+## <a name="gwsub"></a>网关子网
+
+创建 ExpressRoute 网关之前，必须先创建网关子网。 网关子网包含虚拟网络网关 VM 和服务使用的 IP 地址。 创建虚拟网络网关时，会将网关 Vm 部署到网关子网，并配置所需的 ExpressRoute 网关设置。 不要将任何其他内容（例如，其他 Vm）部署到网关子网。 网关子网必须命名为“GatewaySubnet”才能正常工作。 将网关子网命名为“GatewaySubnet”，可以让 Azure 知道这就是要将虚拟网络网关 VM 和服务部署到的目标子网。
+
+>[!NOTE]
+>[!INCLUDE [vpn-gateway-gwudr-warning.md](../../includes/vpn-gateway-gwudr-warning.md)]
+>
+
+创建网关子网时，请指定子网包含的 IP 地址数。 将网关子网中的 IP 地址分配到网关 VM 和网关服务。 有些配置需要具有比其他配置更多的 IP 地址。 
+
+规划网关子网大小时，请参阅你计划创建的配置的相关文档。 例如，ExpressRoute/VPN 网关共存配置所需的网关子网比大多数其他配置要大。 此外，可能需要确保网关子网包含足够多的 IP 地址，以便应对将来可能会添加的配置。 虽然你可以创建小到/29 的网关子网，但如果你有可用的地址空间，则建议你创建/27 或更大（/27、/26 等）的网关子网。 这将适合大多数配置。
+
+以下 Resource Manager PowerShell 示例显示名为 GatewaySubnet 的网关子网。 可以看到，CIDR 表示法指定了 /27，这可提供足够的 IP 地址供大多数现有配置使用。
+
+```azurepowershell-interactive
+Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
+```
+
+[!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ### <a name="zrgw"></a>区域冗余型网关 SKU
 

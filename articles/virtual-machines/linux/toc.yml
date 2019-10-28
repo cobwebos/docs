@@ -133,6 +133,8 @@
           href: managed-disks-overview.md
         - name: 选择适用于 IaaS VM 的磁盘类型
           href: disks-types.md
+        - name: 加密
+          href: disk-encryption.md
         - name: 为实现高性能而设计
           href: premium-storage-performance.md
         - name: 磁盘的可伸缩性目标

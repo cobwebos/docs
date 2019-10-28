@@ -1,23 +1,18 @@
 ---
 title: 在 Azure Application Insights 中分隔开发、测试和发布阶段的遥测 | Microsoft Docs
 description: 为开发、测试和生产戳记直接遥测不同的资源。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 578e30f0-31ed-4f39-baa8-01b4c2f310c9
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/15/2017
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 2e9c599c12ed10327d352baee02500d2284d98d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/15/2017
+ms.openlocfilehash: bcf741e82e247a5b79a478ef1015a70cccb4d274
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60713394"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899916"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>分隔开发、测试和生产阶段的遥测
 
@@ -55,7 +50,7 @@ ms.locfileid: "60713394"
 
 在此示例中，不同资源的 ikey 放置在 Web 配置文件的不同版本中。 通过交换 Web 配置文件（可作为发布脚本的一部分执行），将交换目标资源。
 
-### <a name="web-pages"></a>网页
+### <a name="web-pages"></a>Web 页面
 通过[从快速启动边栏选项卡获取的脚本](../../azure-monitor/app/javascript.md)，iKey 也在应用的网页中使用。 从服务器状态生成它，而不是逐字将其编码到脚本中。 例如，在 ASP.NET 应用中：
 
 *使用 Razor 的 JavaScript*
@@ -132,7 +127,7 @@ ms.locfileid: "60713394"
     </PropertyGroup>
     ```
 
-    这会生成一个名为 *yourProjectName*.BuildInfo.config 的文件。发布过程会将此文件重命名为 BuildInfo.config。
+    这会生成一个名为*yourProjectName*的文件。Buildinfo.config。发布进程将其重命名为 Buildinfo.config。
 
     当使用 Visual Studio 生成时，生成标签包含一个占位符 (AutoGen_...)。 但是，在使用 MSBuild 生成时，标签中会填充正确的版本号。
 

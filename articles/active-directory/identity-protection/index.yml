@@ -12,44 +12,40 @@ metadata:
   ms.author: joflore
   ms.date: 08/20/2019
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: b493af4372c612c41bafeaef863d8542e6730cb1
-  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.openlocfilehash: aeaa23138fb7d0a6d73625fdf7c6507c7fd8152a
+  ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/28/2019
-  ms.locfileid: "70126214"
+  ms.lasthandoff: 10/24/2019
+  ms.locfileid: "72880698"
 landingContent:
 - title: 关于标识保护
   linkLists:
   - linkListType: overview
     links:
     - text: 什么是“标识保护”？
-      url: overview-v2.md
+      url: overview-identity-protection.md
     - text: “安全概述”简介
-      url: security-overview.md
+      url: concept-identity-protection-security-overview.md
 - title: 调查风险检测
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: 配置风险策略
-      url: howto-configure-risk-policies.md
+      url: howto-identity-protection-configure-risk-policies.md
     - text: 调查风险
-      url: howto-investigate-risk.md
+      url: howto-identity-protection-investigate-risk.md
   - linkListType: reference
     links:
     - text: 事件类型
-      url: risk-events-reference.md
+      url: concept-identity-protection-risks.md
 - title: 标识保护体验
   linkLists:
   - linkListType: concept
     links:
     - text: 登录体验
-      url: flows.md
+      url: concept-identity-protection-user-experience.md
   - linkListType: how-to-guide
     links:
     - text: 模拟风险检测
-      url: playbook.md
-  - linkListType: quickstart
-    links:
-    - text: 检测到会话风险时阻止访问
-      url: quickstart-sign-in-risk-policy.md
+      url: howto-identity-protection-simulate-risk.md

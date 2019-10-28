@@ -1,5 +1,5 @@
 ---
-title: 配置 ExpressRoute 线路的对等互连：PowerShell：Azure | Microsoft Docs
+title: 为线路 ExpressRoute 配置对等互连： PowerShell： Azure |Microsoft Docs
 description: 本文指导完成创建和预配 ExpressRoute 线路的专用、公共和 Microsoft 对等互连的步骤。 本文还介绍了如何检查状态，以及如何更新或删除线路的对等互连。
 services: expressroute
 author: jaredr80
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: e2f38671910be2c7300f39fcbca32e8a1ccd9891
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 3f2c768fe7998cc166e3102619e7183c96d1ccbb
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64716131"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965367"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>使用 PowerShell 创建和修改 ExpressRoute 线路的对等互连
 
-本文帮助你使用 PowerShell 在资源管理器部署模型中创建和管理 ExpressRoute 线路的路由配置。 还可以检查 ExpressRoute 线路的状态，更新、删除和取消预配其对等互连。 如果想使用不同的方法处理线路，请从以下列表中选择一篇文章进行参阅：
+本文帮助你使用 PowerShell 在资源管理器部署模型中创建和管理 ExpressRoute 线路的路由配置。 还可以检查状态，以及更新、删除和取消预配 ExpressRoute 线路的对等互连。 如果想使用不同的方法处理线路，请从以下列表中选择一篇文章进行参阅：
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](expressroute-howto-routing-portal-resource-manager.md)
@@ -55,7 +55,7 @@ ms.locfileid: "64716131"
 本文介绍如何为 ExpressRoute 线路创建、获取、更新和删除 Microsoft 对等互连配置。
 
 > [!IMPORTANT]
-> 在 2017 年 8 月 1 日之前配置的 ExpressRoute 线路的 Microsoft 对等互连会通过 Microsoft 对等互连播发所有服务前缀，即使未定义路由筛选器。 在 2017 年 8 月 1 日或之后配置的 ExpressRoute 线路的 Microsoft 对等互连的任何前缀只有在路由筛选器附加到线路之后才会播发。 有关详细信息，请参阅[配置用于 Microsoft 对等互连的路由筛选器](how-to-routefilter-powershell.md)。
+> 在 2017 年 8 月 1 日之前配置的 ExpressRoute 线路的 Microsoft 对等互连会通过 Microsoft 对等互连播发所有服务前缀，即使未定义路由筛选器。 在 2017 年 8 月 1 日或之后配置的 ExpressRoute 线路的 Microsoft 对等互连的任何前缀只在将路由筛选器附加到线路之后才会播发。 有关详细信息，请参阅[配置用于 Microsoft 对等互连的路由筛选器](how-to-routefilter-powershell.md)。
 > 
 > 
 
@@ -121,6 +121,13 @@ ms.locfileid: "64716131"
      * 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。
      * MD5 哈希（如果选择使用）。
 
+> [!IMPORTANT]
+> Microsoft 将验证指定的 "播发公共前缀" 和 "对等 ASN" （或 "客户 ASN"）是否已在 Internet 路由注册表中分配给你。 如果要从另一个实体获取公共前缀，并且没有在路由注册表中记录分配，则自动验证不会完成，需要手动验证。 如果自动验证失败，则会在 "AzExpressRouteCircuitPeeringConfig" 的输出中看到 "AdvertisedPublicPrefixesState" 作为 "需要验证" （请参阅下面的 "获取 Microsoft 对等互连详细信息"）命令。 
+> 
+> 如果看到消息 "需要验证"，则收集显示公共前缀的文档会被列为路由注册表中前缀的所有者的实体分配给你的组织，并提交这些文档以供手动验证按如下所示打开支持票证。 
+> 
+>
+
    使用以下示例为线路配置 Microsoft 对等互连：
 
    ```azurepowershell-interactive
@@ -171,7 +178,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 1. 为 ExpressRoute 导入 PowerShell 模块。
 
-   必须从 [PowerShell 库](https://www.powershellgallery.com/)安装最新的 PowerShell 安装程序，并将 Azure Resource Manager 模块导入 PowerShell 会话，以便开始使用 ExpressRoute cmdlet。 需要以管理员身份运行 PowerShell。
+   必须从 [PowerShell 库](https://www.powershellgallery.com/) 安装最新的 PowerShell 安装程序，并将 Azure 资源管理器模块导入 PowerShell 会话，以便开始使用 ExpressRoute cmdlet。 需要以管理员身份运行 PowerShell。
 
    ```azurepowershell-interactive
    Install-Module Az
@@ -303,14 +310,14 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 本文介绍如何为 ExpressRoute 线路创建、获取、更新和删除 Azure 公共对等互连配置。
 
 > [!Note]
-> Azure 公共对等互连不推荐使用适用于新线路。 有关详细信息，请参阅[ExpressRoute 对等互连](expressroute-circuit-peerings.md)。
+> 新线路不推荐使用 Azure 公共对等互连。 有关详细信息，请参阅[ExpressRoute 对等互连](expressroute-circuit-peerings.md)。
 >
 
 ### <a name="to-create-azure-public-peering"></a>创建 Azure 公共对等互连
 
 1. 为 ExpressRoute 导入 PowerShell 模块。
 
-   必须从 [PowerShell 库](https://www.powershellgallery.com/)安装最新的 PowerShell 安装程序，并将 Azure Resource Manager 模块导入 PowerShell 会话，以便开始使用 ExpressRoute cmdlet。 需要以管理员身份运行 PowerShell。
+   必须从 [PowerShell 库](https://www.powershellgallery.com/) 安装最新的 PowerShell 安装程序，并将 Azure 资源管理器模块导入 PowerShell 会话，以便开始使用 ExpressRoute cmdlet。 需要以管理员身份运行 PowerShell。
 
    ```azurepowershell-interactive
    Install-Module Az

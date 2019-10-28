@@ -11,18 +11,21 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: iainfou
-ms.openlocfilehash: 3876c6f80e9f18059ab4abac67732cdbf2ca24fa
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: ffcff84c7778ec3d6395e1c7a706c0deb2a0dc90
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248296"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893437"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>托管域中的密码和帐户锁定策略
 
 若要管理 Azure Active Directory 域服务（Azure AD DS）中的用户安全，可以定义严格的密码策略来控制帐户锁定设置或最小密码长度和复杂性。 将创建默认的细化密码策略，并将其应用到 Azure AD DS 托管域中的所有用户。 为了提供具体的控制并满足特定的业务或符合性需求，可以创建更多的策略并将其应用于特定的用户组。
 
 本文说明如何使用 Active Directory 管理中心在 Azure AD DS 中创建和配置细化密码策略。
+
+> [!NOTE]
+> 密码策略仅适用于使用资源管理器部署模型创建 Azure AD DS 托管域。 对于使用经典创建的旧托管域，请[从经典虚拟网络模型迁移到资源管理器][migrate-from-classic]。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -34,6 +37,7 @@ ms.locfileid: "72248296"
   * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
   * 如果需要，请完成[创建和配置 Azure Active Directory 域服务实例][create-azure-ad-ds-instance]的教程。
+  * 必须已使用资源管理器部署模型创建了 Azure AD DS 实例。 如果需要，请[从经典虚拟网络模型迁移到资源管理器][migrate-from-classic]。
 * 已加入到 Azure AD DS 托管域的 Windows Server 管理 VM。
   * 如果需要，请完成[创建管理 VM][tutorial-create-management-vm]教程。
 * 属于 Azure AD 租户中“Azure AD DC 管理员”组的用户帐户。
@@ -53,7 +57,7 @@ ms.locfileid: "72248296"
 无论创建方式如何，所有用户都会在 Azure AD DS 中通过默认密码策略应用以下帐户锁定策略：
 
 * **帐户锁定持续时间：** 30
-* **允许登录尝试失败的次数：** 5
+* **允许的失败登录尝试次数：** 5
 * **重置失败的登录尝试次数：** 30 分钟
 * **最长密码期限（生存期）：** 90 天
 
@@ -130,3 +134,4 @@ ms.locfileid: "72248296"
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [tutorial-create-management-vm]: tutorial-create-management-vm.md
+[migrate-from-classic]: migrate-from-classic-vnet.md

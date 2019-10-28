@@ -1,27 +1,22 @@
 ---
 title: 使用 Azure Application Insights 进行 Java Web 应用分析 | Microsoft 文档
 description: '使用 Application Insights 监视 Java Web 应用的应用程序性能。 '
-services: application-insights
-documentationcenter: java
-author: lgayhardt
-manager: carmonm
-ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/24/2019
+author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: a6e8187a085d637ad3abc650daf15d92b96755a3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 05/24/2019
+ms.openlocfilehash: 28fbb5fcfba2b346d0519dec79e538b1e513b7dd
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338114"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817125"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
 
-[Application Insights](https://azure.microsoft.com/services/application-insights/) 是为 Web 开发人员提供的可扩展分析服务，可帮助你了解实时应用程序的性能和使用情况。 使用它可[自动检测请求、跟踪依赖项和收集性能计数器](auto-collect-dependencies.md#java), 诊断性能问题和异常, 并[编写代码][api]来跟踪用户对应用执行的操作。 
+[Application Insights](https://azure.microsoft.com/services/application-insights/) 是为 Web 开发人员提供的可扩展分析服务，可帮助你了解实时应用程序的性能和使用情况。 使用它可[自动检测请求、跟踪依赖项和收集性能计数器](auto-collect-dependencies.md#java)，诊断性能问题和异常，并[编写代码][api]来跟踪用户对应用执行的操作。 
 
 ![概述示例数据的屏幕截图](./media/java-get-started/overview-graphs.png)
 
@@ -30,9 +25,9 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 需要：
 
 * Java 7 或更高版本
-* [Microsoft Azure](https://azure.microsoft.com/) 订阅。
+* [Microsoft Azure](https://azure.microsoft.com/)订阅。
 
-## <a name="1-get-an-application-insights-instrumentation-key"></a>1.获取 Application Insights 检测密钥
+## <a name="1-get-an-application-insights-instrumentation-key"></a>1. 获取 Application Insights 检测密钥
 1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)。
 2. 创建 Application Insights 资源。 将应用程序类型设置为 Java Web 应用程序。
 
@@ -40,7 +35,7 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 
     ![在新资源概述中，单击“属性”，并复制检测密钥](./media/java-get-started/instrumentation-key-001.png)
 
-## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2.将用于 Java 的 Application Insights SDK 添加到项目
+## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2. 将适用于 Java 的 Application Insights SDK 添加到你的项目
 *为项目选择适当的方式。*
 
 #### <a name="if-youre-using-maven-a-namemaven-setup-"></a>如果使用 Maven... <a name="maven-setup" />
@@ -77,10 +72,10 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 请下载[最新版本](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)，将所需文件复制到项目中，替换以前的版本。
 
 ### <a name="questions"></a>问题...
-* *与`-web-auto`组件`-core`之间`-web`的关系是什么？*
-  * `applicationinsights-web-auto`通过在运行时自动注册 Application Insights servlet 筛选器, 提供跟踪 HTTP servlet 请求计数和响应时间的指标。
-  * `applicationinsights-web`还提供了跟踪 HTTP servlet 请求计数和响应时间的指标, 但需要在应用程序中手动注册 Application Insights servlet 筛选器。
-  * `applicationinsights-core`仅为你提供了一个简单的 API, 例如, 你的应用程序不是基于 servlet 的。
+* *`-web-auto`、`-web` 和 `-core` 组件之间的关系是什么？*
+  * `applicationinsights-web-auto` 通过在运行时自动注册 Application Insights servlet 筛选器，提供跟踪 HTTP servlet 请求计数和响应时间的指标。
+  * `applicationinsights-web` 还提供了跟踪 HTTP servlet 请求计数和响应时间的指标，但需要在应用程序中手动注册 Application Insights servlet 筛选器。
+  * `applicationinsights-core` 仅为你提供了一个简单的 API，例如，你的应用程序不是基于 servlet 的。
   
 * 应怎样将 SDK 更新到最新版本？
   * 如果使用 Gradle 或 Maven...
@@ -88,7 +83,7 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
   * 如果是手动管理依赖项...
     * 下载最新的 [用于 Java 的 Application Insights SDK](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) 并替换旧版本。 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）中描述了更改。
 
-## <a name="3-add-an-applicationinsightsxml-file"></a>3.添加 ApplicationInsights.xml 文件
+## <a name="3-add-an-applicationinsightsxml-file"></a>3. 添加 Applicationinsights.config 文件
 在项目中的 resources 文件夹中添加 ApplicationInsights.xml，或确保将其添加到项目的部署类路径。 将以下 XML 复制到其中。
 
 替换为从 Azure 门户获取的检测密钥。
@@ -130,7 +125,7 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 Application Insights SDK 按以下顺序查找密钥：
 
 1. 系统属性：-DAPPINSIGHTS_INSTRUMENTATIONKEY = your_ikey
-2. 环境变量：APPINSIGHTS_INSTRUMENTATIONKEY
+2. 环境变量： APPINSIGHTS_INSTRUMENTATIONKEY
 3. 配置文件：ApplicationInsights.xml
 
 也可以 [在代码中设置方法](../../azure-monitor/app/api-custom-events-metrics.md#ikey)：
@@ -144,14 +139,14 @@ Application Insights SDK 按以下顺序查找密钥：
     }
 ```
 
-## <a name="4-add-agent"></a>4.添加代理
+## <a name="4-add-agent"></a>4. 添加代理
 
 [安装 Java 代理](java-agent.md)以捕获传出 HTTP 调用、JDBC 查询、应用程序日志记录和更好的操作命名。
 
-## <a name="5-run-your-application"></a>5.运行应用程序
+## <a name="5-run-your-application"></a>5. 运行你的应用程序
 在开发计算机上以调试模式运行应用程序，或将其发布到服务器。
 
-## <a name="6-view-your-telemetry-in-application-insights"></a>6.在 Application Insights 中查看遥测数据
+## <a name="6-view-your-telemetry-in-application-insights"></a>6. 在 Application Insights 中查看遥测数据
 返回 [Microsoft Azure 门户](https://portal.azure.com)中的 Application Insights 资源。
 
 “概述”边栏选项卡中显示了 HTTP 请求数据。 （如果未显示，请稍候片刻，并单击“刷新”。）
@@ -162,7 +157,7 @@ Application Insights SDK 按以下顺序查找密钥：
 
 单击任一图表可查看详细聚合指标。
 
-![带有图表的“Application Insights 故障”窗格](./media/java-get-started/006-barcharts.png)
+![具有图表的 "Application Insights 故障" 窗格](./media/java-get-started/006-barcharts.png)
 
 <!--
 [TODO update image with 2.5.0 operation naming provided by agent]
@@ -171,14 +166,14 @@ Application Insights SDK 按以下顺序查找密钥：
 ### <a name="instance-data"></a>实例数据
 单击特定的请求类型可查看各个实例。
 
-![钻取到特定示例视图](./media/java-get-started/007-instance.png)
+![钻取到特定的示例视图](./media/java-get-started/007-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>分析：功能强大的查询语言
 随着累积的数据越来越多，可以运行查询来聚合数据以及查找单个实例。  [分析](../../azure-monitor/app/analytics.md) 是一个强大的工具，既可用于了解性能和使用情况，也可用于诊断。
 
 ![分析示例](./media/java-get-started/0025.png)
 
-## <a name="7-install-your-app-on-the-server"></a>7.在服务器上安装应用
+## <a name="7-install-your-app-on-the-server"></a>7. 在服务器上安装应用
 现在，将应用程序发布到服务器供用户使用，然后查看门户上显示的遥测数据。
 
 * 请确保防火墙允许应用程序将遥测数据发送到以下端口：
@@ -194,9 +189,9 @@ Application Insights SDK 按以下顺序查找密钥：
 
     （此组件启用性能计数器。）
 
-## <a name="azure-app-service-config-spring-boot"></a>Azure 应用服务配置 (Spring Boot)
+## <a name="azure-app-service-config-spring-boot"></a>Azure App Service config （春季 Boot）
 
-在 Windows 上运行的 Spring Boot 应用需要额外的配置才能在 Azure 应用服务上运行。 修改 **web.config** 并添加以下项：
+在 Windows 上运行的弹簧 Boot apps 需要额外的配置才能在 Azure 应用服务上运行。 修改**web.config**并添加以下内容：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -214,12 +209,12 @@ Application Insights SDK 按以下顺序查找密钥：
 ## <a name="exceptions-and-request-failures"></a>异常和请求失败
 Application Insights web 筛选器自动收集未经处理的异常和请求失败。
 
-若要收集其他异常的数据, 可以[在代码中插入对 trackException () 的调用][apiexceptions]。
+若要收集其他异常的数据，可以[在代码中插入对 trackException （）的调用][apiexceptions]。
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>监视方法调用和外部依赖项
 [安装 Java 代理](java-agent.md) ，记录指定的内部方法、通过 JDBC 发出的调用以及计时数据。
 
-对于自动操作命名, 则为。
+对于自动操作命名，则为。
 
 ## <a name="w3c-distributed-tracing"></a>W3C 分布式跟踪
 
@@ -230,9 +225,9 @@ Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github
 [AI-Agent.xml](java-agent.md) 文件中定义了传出 SDK 配置。
 
 ## <a name="performance-counters"></a>性能计数器
-打开“调查”、“指标”，查看一系列性能计数器。
+打开**调查** **指标**，查看性能计数器的范围。
 
-![已选中进程专用字节的指标窗格的屏幕截图](./media/java-get-started/011-perf-counters.png)
+![选择了进程专用字节的 "指标" 窗格的屏幕截图](./media/java-get-started/011-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>自定义性能计数器收集
 要禁用收集性能计数器的标准集，请将以下代码添加到 ApplicationInsights.xml 文件的根节点下：
@@ -294,7 +289,7 @@ Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github
 ## <a name="send-your-own-telemetry"></a>发送自己的遥测数据
 安装 SDK 后，可以使用 API 发送自己的遥测数据。
 
-* [跟踪自定义事件和指标][api]，了解用户正在对应用程序执行的操作。
+* [跟踪自定义事件和度量值][api]，以了解用户正在对应用程序执行哪些操作。
 * [搜索事件和日志][diagnostic]以帮助诊断问题。
 
 ## <a name="availability-web-tests"></a>可用性 Web 测试

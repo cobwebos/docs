@@ -1,24 +1,25 @@
 ---
-title: 有关使用分面辅助导航的 C# 教程 - Azure 搜索
-description: 本教程是在“搜索结果分页 - Azure 搜索”项目的基础上编写的，目的是添加分面导航。 在其中可以了解如何使用分面来轻松缩小搜索范围。
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.author: v-pettur
+title: 有关使用分面辅助导航的 C# 教程
+titleSuffix: Azure Cognitive Search
+description: 本教程是在“搜索结果分页 - Azure 认知搜索”项目的基础上编写的，目的是添加分面导航。 了解如何使用分面来轻松缩小搜索范围。
+manager: nitinme
 author: PeterTurcan
-ms.date: 06/20/2019
-ms.openlocfilehash: 62326ad3bc5f2d740ce744819df559bce8658eb7
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: v-pettur
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 9f0d716e9077b2d9702f26b1afe92d9e4faf4a77
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443770"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794098"
 ---
-# <a name="c-tutorial-use-facets-to-aid-navigation---azure-search"></a>C# 教程：使用分面辅助导航 - Azure 搜索
+# <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C# 教程：使用分面辅助导航 - Azure 认知搜索
 
 使用分面可为导航提供辅助，因为它能为用户提供一组链接，让他们专注于搜索。 分面是指数据的特性（例如，我们的示例数据中酒店的类别，即特定的特征）。
 
-本教程是在 [C# 教程：搜索结果分页 - Azure 搜索](tutorial-csharp-paging.md)教程中创建的分页项目的基础上编写的。
+本教程是在 [C# 教程：搜索结果分页 - Azure 认知搜索](tutorial-csharp-paging.md)教程中创建的分页项目的基础上编写的。
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
@@ -29,7 +30,7 @@ ms.locfileid: "67443770"
 
 要完成本教程，需要：
 
-启动并运行 [C# 教程：搜索结果分页 - Azure 搜索](tutorial-csharp-paging.md)项目。 此项目可以是你自己的版本，也可从 GitHub 安装：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples)。
+启动并运行 [C# 教程：搜索结果分页 - Azure 认知搜索](tutorial-csharp-paging.md)项目。 此项目可以是你自己的版本，也可从 GitHub 安装：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples)。
 
 ## <a name="set-model-properties-as-isfacetable"></a>将模型属性设置为 IsFacetable
 
@@ -559,4 +560,4 @@ ms.locfileid: "67443770"
 下一篇教程将介绍结果排序。 到目前为止，结果只是按照它们在数据库中的顺序排序。
 
 > [!div class="nextstepaction"]
-> [C# 教程：对结果排序 - Azure 搜索](tutorial-csharp-orders.md)
+> [C# 教程：对结果排序 - Azure 认知搜索](tutorial-csharp-orders.md)

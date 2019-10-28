@@ -1,24 +1,23 @@
 ---
-title: OCR 认知搜索技能 - Azure 搜索
-description: 在 Azure 搜索扩充管道中使用光学字符识别 (OCR) 从图像文件中提取文本。
-services: search
+title: OCR 认知技能
+titleSuffix: Azure Cognitive Search
+description: 在 Azure 认知搜索的扩充管道中使用光学字符识别（OCR）从图像文件中提取文本。
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: da1ca218f7a3d33e6ceb08b3f8d0f632b8b752b7
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: bdb510113a8d65ac04b54e77158f46d03cccd9de
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265330"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791931"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 认知技能
 
-光学字符识别 (OCR) 技能可识别图像文件中的印刷体文本和手写文本。 此技能使用认知服务中的[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)提供的机器学习模型。 **OCR** 技能将映射到以下功能：
+**光学字符识别（OCR）** 技术可识别图像文件中的打印文本和手写文本。 此技能使用认知服务中的[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)提供的机器学习模型。 **OCR** 技能将映射到以下功能：
 
 + ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) API 用于除英语以外的语言。 
 + 对于英语，将使用新的["读取"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API。
@@ -33,32 +32,32 @@ OCR 技能可以从图像文件中提取文本。 支持的文件格式包括：
 + .TIFF
 
 > [!NOTE]
-> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API，以及在 Azure 搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
+> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 在认知服务中调用 Api 时，将会产生费用，并将其作为 Azure 认知搜索中文档解密阶段的一部分进行图像提取。 提取文档中的文本不会产生费用。
 >
-> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)所述。
+> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 [Azure 认知搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)上介绍了图像提取定价。
 
 
 ## <a name="skill-parameters"></a>技能参数
 
 参数区分大小写。
 
-| 参数名称     | 说明 |
+| 参数名称     | 描述 |
 |--------------------|-------------|
 | detectOrientation | 启用图像方向自动检测。 <br/> 有效值：true / false。|
 |defaultLanguageCode | <p>  输入文本的语言代码。 支持的语言包括： <br/> zh-Hans（中文简体） <br/> zh-Hant（中文繁体） <br/>cs（捷克语） <br/>da（丹麦语） <br/>nl（荷兰语） <br/>en（英语） <br/>fi（芬兰语）  <br/>fr（法语） <br/>  de（德语） <br/>el（希腊语） <br/> hu（匈牙利） <br/> it（意大利语） <br/>  ja（日语） <br/> ko（韩语） <br/> nb（挪威语） <br/>   pl（波兰语） <br/> pt（葡萄牙语） <br/>  ru（俄语） <br/>  es（西班牙语） <br/>  sv（瑞典语） <br/>  tr（土耳其语） <br/> ar（阿拉伯语） <br/> ro（罗马尼亚语） <br/> sr-Cyrl（塞尔维亚语西里尔文） <br/> sr-Latn（塞尔维亚语拉丁语） <br/>  sk（斯洛伐克语） <br/>  unk（未知） <br/><br/> 如果语言代码未指定或为 null，则语言将设置为英语。 如果语言显式设置为“unk”，则将自动检测语言。 </p> |
-|lineEnding | 要在各个检测到的行之间使用的值。 可能的值：“Space”、“CarriageReturn”、“LineFeed”。  默认值为“Space” |
+|lineEnding | 要在每个检测到的行之间使用的值。 可能的值： "Space"、"CarriageReturn"、"换行"。  默认值为 "Space" |
 
 以前，有一个名为 "textExtractionAlgorithm" 的参数，用于指定技能是否应提取 "打印" 或 "手写" 文本。  此参数已弃用且不再需要，因为最新的读取 API 算法能够同时提取这两种类型的文本。  如果你的技能定义已经包含此参数，则不需要将其删除，但将不再使用它，并且这两种类型的文本都将被提取，而不考虑它所设置的内容。
 
 ## <a name="skill-inputs"></a>技能输入
 
-| 输入名称      | 说明                                          |
+| 输入名称      | 描述                                          |
 |---------------|------------------------------------------------------|
-| 图像         | 复杂类型。 当前仅适用于“/document/normalized_images”字段，当 ```imageAction``` 设置为非 ```none``` 值时由 Azure Blob 索引器生成。 请参阅[此示例](#sample-output)获取详细信息。|
+| image         | 复杂类型。 当前仅适用于“/document/normalized_images”字段，当 ```imageAction``` 设置为非 ```none``` 值时由 Azure Blob 索引器生成。 请参阅[此示例](#sample-output)获取详细信息。|
 
 
 ## <a name="skill-outputs"></a>技能输出
-| 输出名称     | 说明                   |
+| 输出名称     | 描述                   |
 |---------------|-------------------------------|
 | text          | 从映像中提取的纯文本。   |
 | layoutText    | 描述提取的文本以及找到文本的位置的复杂类型。|
@@ -206,7 +205,7 @@ OCR 技能可以从图像文件中提取文本。 支持的文件格式包括：
 ```
 
 ## <a name="see-also"></a>另请参阅
-+ [预定义的技能](cognitive-search-predefined-skills.md)
++ [内置技能](cognitive-search-predefined-skills.md)
 + [TextMerger 技能](cognitive-search-skill-textmerger.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [创建索引器 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

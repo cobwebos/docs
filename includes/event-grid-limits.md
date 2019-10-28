@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 3f94481e6a8550479788d92c744327e1dc3b58c4
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 890095718833c90a6764d0799d2081b393b1d0bd
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "66376935"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72887736"
 ---
 以下限制适用于 Azure 事件网格系统主题和自定义主题，而*不*是事件域。
 
-| Resource | 限制 |
+| 资源 | Limit |
 | --- | --- |
 | 每个 Azure 订阅的自定义主题数 | 100 |
 | 每个主题的事件订阅数 | 500 |
@@ -27,10 +27,11 @@ ms.locfileid: "66376935"
 
 以下限制仅适用于事件域。
 
-| Resource | 限制 |
+| 资源 | Limit |
 | --- | --- |
-| 每个事件域的主题 | 公开预览期间为 1,000 个 |
-| 域中每个主题的事件订阅 | 公开预览期间为 50 个 |
-| 域范围事件订阅 | 公开预览期间为 50 个 |
-| 事件域（入口）的发布速率 | 公开预览期间为每秒 5,000 个事件 |
+| 每个事件域的主题 | 100,000 |
+| 域中每个主题的事件订阅 | 500 |
+| 域范围事件订阅 | 50 |
+| 事件域（入口）的发布速率 | 每秒5000个事件 |
 | 发布请求 | 每秒250 |
+| 每个 Azure 订阅的事件域 | 100 |

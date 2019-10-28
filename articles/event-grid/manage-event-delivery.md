@@ -1,18 +1,18 @@
 ---
-title: Azure 事件网格订阅的死信与重试策略
+title: 死信和重试策略-Azure 事件网格
 description: 介绍了如何自定义事件网格的事件传递设置。 设置死信目标并指定重试传递的时间间隔。
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/06/2019
+ms.date: 10/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 63bae62ed89bd0bbc167a88274002d1fa1e9b86d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: caed3c077b4df5da5fd8541b2f7e85ef119604b0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933371"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794043"
 ---
 # <a name="dead-letter-and-retry-policies"></a>死信与重试策略
 
@@ -25,8 +25,8 @@ ms.locfileid: "68933371"
 若要设置死信位置，需要一个存储帐户来保存无法传递到终结点的事件。 这些示例获取现有存储帐户的资源 ID。 它们创建一个事件订阅，该事件订阅使用该存储帐户中的容器作为死信终结点。
 
 > [!NOTE]
-> - 在本文中，在运行命令之前，请在存储中创建一个存储帐户和一个 blob 容器。
-> - 事件网格服务在此容器中创建 blob。 Blob 的名称将包含事件网格订阅的名称, 其中所有字母都大写。 例如, 如果订阅的名称是 "我的 Blob-订阅", 则死信 blob 的名称将包含我的 BLOB 订阅 (myblobcontainer/MY BLOB-订阅/2019/8/8/5/111111111-111111111111)。 此行为可防止 Azure 服务之间的大小写之间的差异。
+> - 在运行本文中的命令之前，请在存储中创建存储帐户和 blob 容器。
+> - 事件网格服务在此容器中创建 blob。 Blob 的名称将包含事件网格订阅的名称，其中所有字母都大写。 例如，如果订阅的名称是 "我的 Blob-订阅"，则死信 blob 的名称将包含我的 BLOB 订阅（myblobcontainer/MY BLOB-订阅/2019/8/8/5/111111111-111111111111）。 此行为可防止 Azure 服务之间的大小写之间的差异。
 
 
 ### <a name="azure-cli"></a>Azure CLI

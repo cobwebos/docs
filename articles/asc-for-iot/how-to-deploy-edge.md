@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 128265cd3e69cd27bab6538c9eb376410439824d
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 009ae89327272ae4b9acd82eb415aad724d14988
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176661"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934361"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>在 IoT Edge 设备上部署安全模块
 
@@ -35,7 +35,7 @@ ms.locfileid: "72176661"
 
 使用以下步骤为 IoT Edge 部署用于 IoT 安全模块的 Azure 安全中心。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 1. 在 IoT 中心中，确保你的设备已[注册为 IoT Edge 设备](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)。
 
@@ -68,7 +68,7 @@ ms.locfileid: "72176661"
 
 为 IoT 使用 Azure 安全中心创建 IoT Edge 部署有三个步骤。 下列各节将引导完成每个步骤。 
 
-#### <a name="step-1-add-modules"></a>步骤 1：添加模块
+#### <a name="step-1-add-modules"></a>步骤1：添加模块
 
 1. 从 "**添加模块**" 选项卡的 "**部署模块**" 区域，单击 " **AzureSecurityCenterforIoT**" 的 "**配置**" 选项。 
    
@@ -107,7 +107,7 @@ ms.locfileid: "72176661"
 1. 单击“保存”。
 1. 滚动到选项卡的底部，选择 "**配置高级边缘运行时设置**"。 
    
-1. 将**Edge 中心**下的**图像**更改为**mcr.microsoft.com/azureiotedge-hub:1.0.9-rc2**。
+1. 将**Edge 中心**下的**图像**更改为**mcr.microsoft.com/azureiotedge-hub:1.0.8.3**。
 
 1. 验证 "**创建选项**" 设置为： 
          
@@ -138,7 +138,7 @@ ms.locfileid: "72176661"
    
 1. 单击“下一步”。
 
-#### <a name="step-2-specify-routes"></a>步骤 2：指定路由 
+#### <a name="step-2-specify-routes"></a>步骤2：指定路由 
 
 1. 在 "**指定路由**" 选项卡中，确保你有一个路由（显式或隐式），该路由会将消息从**azureiotsecurity**模块转发到 **$upstream**根据以下示例，只需单击 "**下一步**"。 
 
@@ -150,7 +150,7 @@ ms.locfileid: "72176661"
 "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
 ~~~
 
-#### <a name="step-3-review-deployment"></a>步骤 3：评审部署
+#### <a name="step-3-review-deployment"></a>步骤3：查看部署
 
 - 在 "**查看部署**" 选项卡中，查看部署信息，然后选择 "**提交**" 以完成部署。
 
@@ -166,10 +166,10 @@ ms.locfileid: "72176661"
    
 1. 验证以下容器是否正在运行：
    
-   | 名称 | 图像 |
+   | 名称 | 影像 |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.0 |
-   | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.9-rc2 |
+   | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
    
    如果所需的容器不存在，请检查你的 IoT Edge 部署清单是否与推荐的设置一致。 有关详细信息，请参阅[部署 IoT Edge 模块](#deployment-using-azure-portal)。

@@ -245,8 +245,12 @@
         - name: 禁用函数
           href: disable-function.md
     - name: 监视
-      href: functions-monitoring.md
-      displayName: 'App Insights, Application Insights, logs, logging'
+      items:
+        - name: 监视函数
+          href: functions-monitoring.md
+          displayName: 'App Insights, Application Insights, logs, logging'
+        - name: 分析日志
+          href: functions-monitor-log-analytics.md
     - name: 安全
       items:
         - name: 购买 SSL 证书

@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: aba3dd34383edbfb555adcc2063e4a2b76af1959
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 78a0dafeedc9aac4db69903b9f1193574cbd39c7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389339"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934750"
 ---
 ## <a name="for-users-in-your-directory"></a>适用于目录中的用户
 
 如果希望允许目录中的用户请求此访问包，请执行以下步骤。 定义请求策略时，可以指定单个用户或更常见的用户组。 例如，你的组织可能已有一个组，例如 "**所有员工**"。  如果为可请求访问的用户在策略中添加该组，则该组的任何成员都可以请求访问。
 
-1. 在 "**可请求访问的用户**" 列表中，选择**目录中的 "用户**"。
+1. 在“可以请求访问的用户”部分，单击“你目录中的用户”。
 
     如果选择此选项，则会显示新的选项，进一步优化目录中的哪些用户可以请求此访问包。
 
@@ -52,7 +52,7 @@ ms.locfileid: "72389339"
 > [!NOTE]
 > 将为你的请求已获批准或自动批准的用户创建来宾用户帐户。 将邀请来宾，但不会收到邀请电子邮件。 相反，在传递其访问包分配时，他们将收到一封电子邮件。 默认情况下，当来宾用户不再具有任何访问包分配时，因为他们的上次分配已过期或已被取消，则将阻止该来宾用户帐户登录并随后将其删除。 如果希望来宾用户无限期地保留在目录中，你可以更改你的授权管理配置的设置。 有关来宾用户对象的详细信息，请参阅[AZURE ACTIVE DIRECTORY B2B 协作用户的属性](../articles/active-directory/b2b/user-properties.md)。
 
-1. 在 "**可请求访问的用户**" 列表中，选择 "**对于不在你的目录中的用户**"。
+1. 在 "**可请求访问的用户**" 部分中，单击 "**对于不在你的目录中的用户**"。
 
     如果选择此选项，将显示新选项。
 
@@ -65,20 +65,20 @@ ms.locfileid: "72389339"
     | **特定连接的组织** | 如果要从管理员之前添加的组织列表中进行选择，请选择此选项。 所选组织的所有用户将能够请求此访问包。 |
     | **所有连接的组织** | 如果希望所有连接的组织中的所有用户都能够请求此访问包，请选择此选项。 |
 
-    连接的组织是经常与之协作的外部 Azure AD 目录或域。
+    连接的组织是您与之有关系的外部 Azure AD 目录或域。
 
 1. 如果选择了 "**特定连接的组织**"，请单击 "**添加目录**" 以从管理员之前添加的已连接组织列表中进行选择。
 
-1. 输入域名以搜索具有该域名的已连接组织。
+1. 键入名称或域名以搜索先前连接的组织。
 
     ![访问包-请求-选择目录](./media/active-directory-entitlement-management-request-policy/select-directories.png)
 
-    如果你想要与之合作的组织不在列表中，则可以要求管理员将其添加为连接的组织。 
+    如果你想要与之合作的组织不在列表中，则可以要求管理员将其添加为连接的组织。 有关详细信息，请参阅[添加连接的组织](../articles/active-directory/governance/entitlement-management-organization.md)。
 
 1. 选择所有连接的组织后，单击 "**选择**"。
 
     > [!NOTE]
-    > 所选连接的组织中的所有用户都能够请求此访问包。 这包括与已连接组织关联的所有子域中的用户。
+    > 所选连接的组织中的所有用户都能够请求此访问包。 这包括与组织关联的所有子域 Azure AD 中的用户，除非这些域被 Azure B2B 允许或拒绝列表阻止。 有关详细信息，请参阅[允许或阻止向特定组织中的 B2B 用户发送邀请](../articles/active-directory/b2b/allow-deny-list.md)。
 
 1. 向下跳到 "[审批](#approval)" 部分。
 
@@ -86,11 +86,11 @@ ms.locfileid: "72389339"
 
 如果要跳过访问请求并允许管理员直接将特定用户分配到此访问包，请执行以下步骤。 用户无需请求访问包。 你仍可以设置生命周期设置，但没有请求设置。
 
-1. 在 "**可请求访问的用户**" 列表中，选择 "**无（仅限管理员直接分配**"。
+1. 在 "**可请求访问的用户**" 部分中，单击 "**无（仅限管理员直接分配**"。
 
     ![访问包-请求-仅限管理员直接分配](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
 
-    创建访问包后，可以直接将特定的内部和外部用户分配到访问包。 如果指定外部用户，则将在目录中创建来宾用户帐户。 有关直接分配用户的信息，请参阅[查看和更改访问包的分配](../articles/active-directory/governance/entitlement-management-access-package-assignments.md)。
+    创建访问包后，可以直接将特定的内部和外部用户分配到访问包。 如果指定外部用户，则将在目录中创建来宾用户帐户。 有关直接分配用户的信息，请参阅[查看、添加和删除访问包的分配](../articles/active-directory/governance/entitlement-management-access-package-assignments.md)。
 
 1. 向下跳到 "[启用请求](#enable-requests)" 部分。
 
@@ -100,6 +100,8 @@ ms.locfileid: "72389339"
 
 - 只有一个选定的审批者或备用审批者需要批准请求。 不需要所有审批者的批准。
 - 批准决策基于每个审批者首先查看请求。
+
+按照以下步骤为之前选择的用户指定审批设置。
 
 1. 若要要求从所选用户批准请求，请将 "**需要审批**" 切换设置为 **"是"** 。 若要自动批准请求，请将切换设置为 "**否**"。
 

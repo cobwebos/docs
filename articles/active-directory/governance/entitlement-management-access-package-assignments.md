@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 694c8866a69d8488511be1670ba3d3013a4a3423
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: a20ff526ba00f5b6521198122972071360bb58d6
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392509"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934503"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 授权管理（预览版）中查看、添加和删除访问包的分配
 
@@ -70,11 +70,9 @@ ms.locfileid: "72392509"
 
     ![分配-将用户添加到 access 包](./media/entitlement-management-access-package-assignments/assignments-add-user.png)
 
-1. 单击 "**添加用户**"，选择要为其分配访问包的用户。
+1. 单击 "**添加用户**" 以选择要向其分配此访问包的用户。
 
-1. 在 "**选择策略**" 列表中，选择具有 "[无（仅管理员直接分配）](entitlement-management-access-package-request-policy.md#none-administrator-direct-assignments-only) " 设置的策略。
-
-    如果此访问包没有此类型的策略，你可以单击 "**创建新策略**" 来添加一个。
+1. 在 "**选择策略**" 列表中，选择将由用户的未来请求和生命周期控制和跟踪的策略。 如果你希望所选用户具有不同的策略设置，你可以单击 "**创建新策略**" 来添加新策略。
 
 1. 设置所选用户要开始和结束的日期和时间。 如果未提供结束日期，则将使用该策略的生命周期设置。
 

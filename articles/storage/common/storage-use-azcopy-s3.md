@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 73eed48bd34a8c8d81a66872888ebf5481074648
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: b984d194c75924451a52250490b1a5590b996974
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274101"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821376"
 ---
 # <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>使用 AzCopy 从 Amazon S3 存储桶复制数据
 
@@ -30,7 +30,7 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户中复制 blob �
 请参阅[AzCopy 文章入门](storage-use-azcopy-v10.md)，下载 AzCopy，并选择如何向存储服务提供授权凭据。
 
 > [!NOTE]
-> 本文中的示例假设已通过使用 `AzCopy login` 命令对标识进行身份验证。 然后，AzCopy 使用 Azure AD 帐户来授权访问 Blob 存储中的数据。
+> 本文中的示例假设已使用 `AzCopy login` 命令对标识进行身份验证。 然后，AzCopy 使用 Azure AD 帐户来授权访问 Blob 存储中的数据。
 >
 > 如果你希望使用 SAS 令牌来授予对 blob 数据的访问权限，则可以将该令牌附加到每个 AzCopy 命令中的资源 URL。
 >
@@ -40,7 +40,7 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户中复制 blob �
 
 收集 AWS 访问密钥和密钥访问密钥，然后设置以下环境变量：
 
-| 操作系统 | Command  |
+| 操作系统 | 命令  |
 |--------|-----------|
 | **Windows** | `set AWS_ACCESS_KEY_ID=<access-key>`<br>`set AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
 | **Linux** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
@@ -52,6 +52,9 @@ AzCopy 使用[URL API 中的 Put 块](https://docs.microsoft.com/rest/api/storag
 
 > [!IMPORTANT]
 > 此功能目前处于预览状态。 如果在执行复制操作后决定从 S3 存储桶中删除数据，请确保在删除数据之前，验证是否已将数据正确复制到存储帐户。
+
+> [!TIP]
+> 本节中的示例将路径参数括在单引号（' '）中。 在所有命令 shell 中使用单引号（Windows 命令行界面（cmd.exe）除外）。 如果使用的是 Windows 命令行界面（cmd.exe），请用双引号（""）而不是单引号（' '）将路径参数引起来。
 
 ### <a name="copy-an-object"></a>复制对象
 
@@ -65,7 +68,7 @@ AzCopy 使用[URL API 中的 Put 块](https://docs.microsoft.com/rest/api/storag
 >
 > 还可以使用虚拟托管样式的 Url （例如： `http://bucket.s3.amazonaws.com`）。 
 >
-> 若要详细了解存储桶的虚拟承载，请参阅 [Bucket 的虚拟主机]] （ https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) 。
+> 若要了解有关存储桶的虚拟托管的详细信息，请参阅 [Bucket 的虚拟主机]] （ https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) 。
 
 ### <a name="copy-a-directory"></a>复制目录
 
@@ -99,15 +102,15 @@ AzCopy 使用[URL API 中的 Put 块](https://docs.microsoft.com/rest/api/storag
 
 与 Azure blob 容器相比，AWS S3 具有一组不同的 bucket 名称命名约定。 可在[此处](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules)了解相关信息。 如果选择将一组存储桶复制到 Azure 存储帐户，则复制操作可能会因为命名差异而失败。
 
-AzCopy 处理可能出现的两个最常见的问题;包含句点和包含连续连字符的存储桶的存储桶。 AWS S3 bucket 名称可以包含句点和连续的连字符，但 Azure 中的容器不能。 AzCopy 会将句点替换为连字符，并将连续连字符替换为表示连续连字符数的数字（例如：名为 `my----bucket` 的存储桶将变为 @no__t。 
+AzCopy 处理可能出现的两个最常见的问题;包含句点和包含连续连字符的存储桶的存储桶。 AWS S3 bucket 名称可以包含句点和连续的连字符，但 Azure 中的容器不能。 AzCopy 将句点替换为连字符，并将连续连字符替换为表示连续连字符数的数字（例如：名为 `my----bucket` 的存储桶将变为 `my-4-bucket`。 
 
-此外，随着 AzCopy 副本的复制，它会检查命名冲突并尝试解决它们。 例如，如果有名称为 `bucket-name` 且 @no__t 为1的存储桶，则 AzCopy 会将名为 `bucket.name` 的存储桶首先解析为 `bucket-name`，然后再解析为 @no__t。
+此外，随着 AzCopy 副本的复制，它会检查命名冲突并尝试解决它们。 例如，如果存在名称为 `bucket-name` 和 `bucket.name`的存储桶，则 AzCopy 会将名为 `bucket.name` 的 bucket 首先解析为 `bucket-name`，然后解析为 `bucket-name-2`。
 
 ## <a name="handle-differences-in-object-metadata"></a>处理对象元数据的差异
 
 AWS S3 和 Azure 允许对象键的名称中的字符集不同。 可在[此处](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)阅读有关 AWS S3 使用的字符的信息。 在 Azure 端，blob 对象键遵循[ C#标识符](https://docs.microsoft.com/dotnet/csharp/language-reference/)的命名规则。
 
-作为 AzCopy `copy` 命令的一部分，你可以为可选的 "`s2s-invalid-metadata-handle`" 标志提供指定你希望如何处理文件的元数据包含不兼容密钥名称的文件的值。 下表描述了每个标志值。
+作为 AzCopy `copy` 命令的一部分，你可以为可选的 `s2s-invalid-metadata-handle` 标志提供一个值，该值指定你希望如何处理文件的元数据包含不兼容密钥名称的文件。 下表描述了每个标志值。
 
 | 标志值 | 描述  |
 |--------|-----------|

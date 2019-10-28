@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 10/25/2019
 ms.author: barclayn
-ms.openlocfilehash: 3b60a6da1e7961c7709bb0b19e91dc6f15a51a1c
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: bcf66515fe24dda0d060a0b5c290bd05e46bf9d7
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316778"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965676"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 
@@ -61,7 +61,7 @@ Microsoft 致力于提供跨云服务的静态加密选项，可让客户控制�
 
 ![组件](./media/encryption-atrest/azure-security-encryption-atrest-fig1.png)
 
-### <a name="azure-key-vault"></a>Azure Key Vault
+### <a name="azure-key-vault"></a>Azure 密钥保管库
 
 对于静态加密模型来说，最重要的是加密密钥的存储位置以及对这些密钥的访问控制。 密钥需要严格的保护，但同时又要能够由指定的用户进行管理，并可供特定的服务使用。 对于 Azure 服务，建议使用 Azure Key Vault 作为密钥存储解决方案，它可以跨服务提供通常的管理体验。 密钥在密钥保管库中存储和管理，对密钥保管库的访问权限可以提供给用户或服务。 Azure Key Vault 支持客户创建密钥，也支持将导入的客户密钥用于客户管理的加密密钥方案。
 
@@ -105,13 +105,13 @@ Microsoft 致力于提供跨云服务的静态加密选项，可让客户控制�
 - 客户在本地（或其他安全存储中）管理和存储密钥。 Azure 服务无法使用密钥
 - 精简云功能
 
-Azure 中支持的加密模型分为两大类：如前所述，“客户端加密”和“服务器端加密”。 Azure 服务始终建议使用独立于所用静态加密模型的安全传输（例如 TLS 或 HTTPS）。 因此，传输过程中的加密应由传输协议来处理，不应成为决定要使用的静态加密模型的主要因素。
+Azure 中支持的加密模型分为两个主要的组：“客户端加密”和“服务器端加密”，如前所述。 Azure 服务始终建议使用独立于所用静态加密模型的安全传输（例如 TLS 或 HTTPS）。 因此，传输过程中的加密应由传输协议来处理，不应成为决定要使用的静态加密模型的主要因素。
 
 ### <a name="client-encryption-model"></a>客户端加密模型
 
 客户端加密模型是指由服务或调用应用程序在资源提供程序或 Azure 外部执行的加密。 加密可以由 Azure 中的服务应用程序执行，也可以由在客户数据中心运行的应用程序执行。 不管哪种情况，在采用此加密模型时，Azure 资源提供程序都会收到加密的数据 blob，但却无法以任何方式解密数据，也无法访问加密密钥。 在此模型中，密钥管理由调用服务/应用程序执行，对 Azure 服务来说是不透明的。
 
-![客户端](./media/encryption-atrest/azure-security-encryption-atrest-fig2.png)
+![Client](./media/encryption-atrest/azure-security-encryption-atrest-fig2.png)
 
 ### <a name="server-side-encryption-model"></a>服务器端加密模型
 
@@ -248,7 +248,7 @@ Microsoft 云服务用于下述所有三个云模型：IaaS、PaaS、SaaS。 下
 - 服务器端：默认情况下，所有 Azure 存储服务都使用服务托管的密钥来启用服务器端加密（对应用程序而言是透明的）。 有关详细信息，请参阅[静态数据的 Azure 存储服务加密](../../storage/common/storage-service-encryption.md)。 Azure Blob 存储和 Azure 文件也支持 Azure Key Vault 中客户托管的 RSA 2048 位密钥。 有关详细信息，请参阅 [Azure Key Vault 中使用客户托管密钥的存储服务加密](../../storage/common/storage-encryption-keys-portal.md)。
 - 客户端：Azure Blob、表和队列支持客户端加密。 使用客户端加密时，客户会加密数据并将数据作为加密的 blob 上传。 密钥管理由客户执行。 有关详细信息，请参阅 [Microsoft Azure 存储的客户端加密和 Azure Key Vault](../../storage/common/storage-client-side-encryption.md)。
 
-#### <a name="azure-sql-database"></a>Azure SQL 数据库
+#### <a name="azure-sql-database"></a>Azure SQL Database
 
 Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务器端和客户端加密方案。
 
@@ -284,7 +284,7 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | SAP HANA                         | 是                | 是，RSA 2048 位  | -                  |
 | **数据库**                    |                    |                    |                    |
 | 虚拟机上的 SQL Server   | 是                | 是，RSA 2048 位  | 是                |
-| Azure SQL 数据库               | 是                | 是，RSA 2048 位  | 是                |
+| Azure SQL Database               | 是                | 是，RSA 2048 位  | 是                |
 | 用于 MariaDB 的 Azure SQL 数据库   | 是                | -                  | -                  |
 | 用于 MySQL 的 Azure SQL 数据库     | 是                | -                  | -                  |
 | 用于 PostgreSQL 的 Azure SQL 数据库 | 是                | -                  | -                  |

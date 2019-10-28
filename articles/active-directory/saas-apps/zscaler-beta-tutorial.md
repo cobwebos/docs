@@ -17,10 +17,10 @@ ms.date: 04/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07b0f8112f724c857ffb46378f7aa7ef605b9bbb
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68943288"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>教程：Azure Active Directory 与 Zscaler Beta 的集成
@@ -169,7 +169,7 @@ ms.locfileid: "68943288"
 
 4. 转到“管理” > “身份验证” > “身份验证设置”，然后执行以下步骤。   
    
-    ![管理](./media/zscaler-beta-tutorial/ic800206.png "Administration")
+    ![管理](./media/zscaler-beta-tutorial/ic800206.png "管理")
 
     a. 在“身份验证类型”下选择“SAML”。  
 

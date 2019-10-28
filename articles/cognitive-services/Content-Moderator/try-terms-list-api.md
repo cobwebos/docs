@@ -3,19 +3,19 @@ title: 使用自定义术语列表审查文本 - 内容审查器
 titleSuffix: Azure Cognitive Services
 description: 使用列表管理 API 来创建要供文本审查 API 使用的自定义术语列表。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 0a4e9b7925c2309a9682156934e9d94fa83c0d4b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 828e8ae68286d7c208462d77a31a764427c79637
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564403"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755271"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>在 API 控制台中使用自定义术语列表进行审查
 
@@ -24,7 +24,7 @@ Azure 内容审查器中的默认全局术语列表足以满足大多数内容�
 使用[列表管理 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)来创建要供文本审查 API 使用的自定义术语列表。 “文本 - 筛选”操作扫描文本中是否存在侮辱性内容，并将文本与自定义阻止列表和共享阻止列表进行对比。
 
 > [!NOTE]
-> 最多只能使用 5 个术语列表，每个列表不超过 10,000 条术语。
+> 最多只能使用 5 个术语列表，每个列表中的术语数不得超过 10,000 个。
 >
 
 可使用列表管理 API 执行以下任务：
@@ -34,11 +34,11 @@ Azure 内容审查器中的默认全局术语列表足以满足大多数内容�
 - 从列表中删除术语。
 - 删除列表。
 - 编辑列表信息。
-- 筛选索引，使新的扫描中包含列表更改项。
+- 刷新索引，以便新的扫描中包括对列表的更改。
 
 ## <a name="use-the-api-console"></a>使用 API 控制台
 
-需要提供订阅密钥才能在联机控制台中试运行 API。 此密钥位于“设置”选项卡的“Ocp-Apim-Subscription-Key”框中。 有关详细信息，请参阅[概述](overview.md)。
+必须有订阅密钥，才能在联机控制台中试用 API。 此密钥位于“设置”选项卡的“Ocp-Apim-Subscription-Key”框中。 有关详细信息，请参阅[概述](overview.md)。
 
 ## <a name="refresh-search-index"></a>刷新搜索索引
 
@@ -48,7 +48,7 @@ Azure 内容审查器中的默认全局术语列表足以满足大多数内容�
 
    “术语列表 - 刷新搜索索引”页随即打开。
 
-2. 对于“开放 API 测试控制台”，选择最能描述你所在位置的区域。 
+2. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域。 
 
    ![“术语列表 - 刷新搜索索引”页面上的区域选择](images/test-drive-region.png)
 
@@ -63,7 +63,7 @@ Azure 内容审查器中的默认全局术语列表足以满足大多数内容�
 
    “术语列表 - 创建”页随即打开。
 
-2. 对于“开放 API 测试控制台”，选择最能描述你所在位置的区域。 
+2. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域。 
 
    ![“术语列表 - 创建”页面上的区域选择](images/test-drive-region.png)
 
@@ -71,11 +71,11 @@ Azure 内容审查器中的默认全局术语列表足以满足大多数内容�
  
 3. 在“Ocp-Apim-Subscription-Key”框中，输入订阅密钥。
 
-4. 在“请求正文”框中，输入 Name 的值（例如 MyList）和说明。
+4. 在“请求正文”框中，在“名称”中输入值（例如 MyList），在“说明”中输入相关说明。
 
    ![“术语列表 - 创建”控制台上的请求正文名称和说明](images/try-terms-list-create-1.png)
 
-5. 使用键/值对占位符向列表分配更具描述性的元数据。
+5. 使用键值对占位符向列表分配更具描述性的元数据。
 
        {
           "Name": "MyExclusionList",
@@ -97,7 +97,7 @@ Azure 内容审查器中的默认全局术语列表足以满足大多数内容�
 
    “术语 - 添加术语”页面随即打开。 
 
-8. 对于“开放 API 测试控制台”，选择最能描述你所在位置的区域。 
+8. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域。 
 
    ![“术语 - 添加术语”页面上的区域选择](images/test-drive-region.png)
 
@@ -133,7 +133,7 @@ Azure 内容审查器中的默认全局术语列表足以满足大多数内容�
 
    “术语 - 删除”随即打开。
 
-2. 对于“开放 API 测试控制台”，选择最能描述你所在位置的区域。 
+2. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域。 
 
    ![“术语 - 删除”页面上的区域选择](images/test-drive-region.png)
 
@@ -151,13 +151,13 @@ Azure 内容审查器中的默认全局术语列表足以满足大多数内容�
  
 ## <a name="change-list-information"></a>更改列表信息
 
-可编辑列表的名称和说明，还可添加元数据项。
+可以编辑列表的名称和说明，并添加元数据项。
 
 1. 在[术语列表管理 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)的左侧菜单中，选择“术语列表”，然后选择“更新详细信息”。 
 
    “术语列表 - 更新详细信息”页随即打开。
 
-2. 对于“开放 API 测试控制台”，选择最能描述你所在位置的区域。 
+2. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域。 
 
    ![“术语列表 - 更新详细信息”页上的区域选择](images/test-drive-region.png)
 

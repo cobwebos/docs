@@ -1,23 +1,22 @@
 ---
-title: 升级到 Azure 搜索 .NET SDK 版本 1.1 - Azure 搜索
+title: 升级到 Azure 搜索 .NET SDK 1.1 版
+titleSuffix: Azure Cognitive Search
 description: 从旧 API 版本将代码迁移到 Azure 搜索 .NET SDK 版本 1.1。 了解新增功能和所需的代码更改。
-author: brjohnstmsft
 manager: nitinme
-services: search
-ms.service: search
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 01/15/2018
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: 8227e1b372af1eee43db59da2cfad165d67be9ae
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: 159aaa8424c3d7a711b587464b80696929f02186
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183266"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792385"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-11"></a>升级到 Azure 搜索 .NET SDK 版本 1.1
+# <a name="upgrade-to-azure-search-net-sdk-version-11"></a>升级到 Azure 搜索 .NET SDK 1.1 版
 
 如果使用的是版本 1.0.2-preview 或更早版本的 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)，本文有助于升级应用程序，以便使用版本 1.1。
 
@@ -347,7 +346,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 
 使用此方法时有一个潜在的问题需要注意：如果将模型类型与不可为 null 的属性一起使用，必须**保证**索引中的所有文档的对应字段都不包含 null 值。 该 SDK 和 Azure 搜索 REST API 都不会帮助强制实施此检查。
 
-这不只是假想的问题：假设将新字段添加到 `Edm.Int32` 类型的现有索引。 更新索引定义后，所有文档的该新字段都具有 null 值（因为 Azure 搜索中的所有类型都可以为 null）。 如果随后使用该字段具有不可为 null `int` 属性的模型类，则在尝试检索文档时会获得如下所示的 `JsonSerializationException`：
+这不只是假想的问题：假设将新字段添加到 `Edm.Int32`类型的现有索引。 更新索引定义后，所有文档的该新字段都具有 null 值（因为 Azure 搜索中的所有类型都可以为 null）。 如果随后使用该字段具有不可为 null `int` 属性的模型类，则在尝试检索文档时会获得如下所示的 `JsonSerializationException`：
 
     Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 

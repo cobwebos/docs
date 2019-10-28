@@ -1,5 +1,6 @@
 ---
-title: 通过 PowerShell 为 Azure 应用创建标识 | Microsoft Docs
+title: 通过 PowerShell 为 Azure 应用创建标识
+titleSuffix: Microsoft identity platform
 description: 介绍如何使用 Azure PowerShell 创建 Azure Active Directory 应用程序和服务主体，并通过基于角色的访问控制向其授予资源访问权限。 它演示如何使用证书对应用程序进行身份验证。
 services: active-directory
 documentationcenter: na
@@ -17,14 +18,14 @@ ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7c75a567dbefc71b4b0fea595dae56a03def5ed
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: fcf52bc5a6d177c18d9ebb792d1a147d09746afd
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295447"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803815"
 ---
-# <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>如何：通过 Azure PowerShell 使用证书创建服务主体
+# <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>如何：使用 Azure PowerShell 创建具有证书的服务主体
 
 当有应用或脚本需访问资源时，可以为应用设置一个标识，并使用其自己的凭据对应用进行身份验证。 此标识称为服务主体。 使用此方法能够：
 
@@ -40,7 +41,7 @@ ms.locfileid: "72295447"
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="required-permissions"></a>所需权限
+## <a name="required-permissions"></a>所需的权限
 
 若要完成本文，必须在 Azure AD 和 Azure 订阅中均有足够的权限。 具体而言，必须能够在 Azure AD 中创建应用并向角色分配服务主体。
 
@@ -72,7 +73,7 @@ Sleep 20
 New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $sp.ApplicationId
 ```
 
-该示例休眠 20 秒，让新的服务主体有时间传遍 Azure AD。 如果脚本没有等待足够长的时间，则会显示一个错误：“主体 {0} 不存在于目录 {DIR-ID} 中”。 若要解决此错误，请等待片刻，然后重新运行 **New-AzRoleAssignment** 命令。
+该示例休眠 20 秒，让新的服务主体有时间传遍 Azure AD。 如果脚本等待时长不足，会显示错误：“主体 {ID} 不存在于目录 {DIR-ID} 中”。 若要解决此错误，请等待片刻，然后重新运行 **New-AzRoleAssignment** 命令。
 
 可以使用 **ResourceGroupName** 参数将角色分配范围限制为特定资源组。 还可以使用 **ResourceType** 和 **ResourceName** 参数将范围限制为特定资源。 
 
@@ -220,7 +221,7 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 
 创建服务主体时，可能会收到以下错误：
 
-* “Authentication_Unauthorized”或“在上下文中找不到订阅”。 - 如果帐户不具有在 Azure AD 上注册应用[所需的权限](#required-permissions)，会看到此错误。 通常，当只有 Azure Active Directory 中的管理员用户可注册应用且帐户不是管理员帐户时，会看到此错误。请要求管理员向你分配管理员角色，或让用户能够注册应用。
+* “Authentication_Unauthorized”或“在上下文中找不到订阅”。 - 如果帐户不具有在 Azure AD 上注册应用[所需的权限](#required-permissions)，会看到此错误。 通常，仅当你的 Azure Active Directory 中的管理员用户可以注册应用，并且你的帐户不是管理员时，才会看到此错误。要求管理员为你分配管理员角色或允许用户注册应用。
 
 * 帐户“不具有对作用域‘/subscriptions/{guid}’执行操作‘Microsoft.Authorization/roleAssignments/write’的权限”。 - 当帐户不具有足够权限将角色分配给标识时，会看到此错误。 请要求订阅管理员你将添加到用户访问管理员角色。
 

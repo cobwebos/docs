@@ -2,18 +2,18 @@
 title: Azure Service Fabric CLI 入门
 description: 了解如何使用 Azure Service Fabric CLI。 了解如何连接到群集以及如何管理应用程序。
 services: service-fabric
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: d5b6f183a59e3f47aa5867b5e09e06541a6a67db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: e0146504bd06a3c56de8113cc59c9eedd375d06f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803242"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901367"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -33,7 +33,8 @@ Service Fabric CLI 旨在支持 Service Fabric SDK 的最新运行时版本。 �
 
 | CLI 版本   | 支持的运行时版本 |
 |---------------|---------------------------|
-| 最新版（不等于 7）  | 最新版（不等于 6.4）            |
+| 最新（约 = 8）  | 最新（约 = 6.5）            |
+| 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
 | 5.0.0         | 6.2                       |
 | 4.0.0         | 6.1                       |
@@ -62,9 +63,9 @@ pip install -I sfctl==1.1.0
 
 2. 启动安装程序。
 
-3. 在提示的底部，选择“将 Python 3.7 添加到路径”  。
+3. 在提示的底部，选择“将 Python 3.7 添加到路径”。
 
-4. 选择“立即安装”  ，并完成安装。
+4. 选择“立即安装”，并完成安装。
 
 现在可以打开新的命令窗口，获取 Python 和 pip 的版本。
 
@@ -124,7 +125,7 @@ sudo easy_install-3.4 pip
 sudo pip3 install sfctl
 ```
 
-如需对安装进行测试，可参阅“适用于 Linux 的 Ubuntu 和 Windows 子系统”  部分中提到的步骤
+如需对安装进行测试，可参阅“适用于 Linux 的 Ubuntu 和 Windows 子系统”部分中提到的步骤
 
 <a name = "cli-mac"></a>
 ### <a name="macos"></a>MacOS

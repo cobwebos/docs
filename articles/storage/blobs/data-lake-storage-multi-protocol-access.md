@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 9767282b3dd764a45f25a14d62af70a13c80b0ac
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6e3b368d1f5615c34a49b155d288d3c37c28bc26
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300266"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933135"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage-preview"></a>Azure Data Lake Storage 上的多协议访问（预览版）
 

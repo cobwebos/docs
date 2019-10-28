@@ -3,29 +3,30 @@ title: Azure Service Fabric CLI - sfctl mesh code-package-log | Microsoft Docs
 description: 介绍 Service Fabric CLI sfctl mesh code-package-log 命令。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: b1949f87dcdb1e3d9fe8e7fd08d8d8ba3b8203a0
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: d1f0e34389a48b79c049f26e8b04c870f0f1a9a7
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036436"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901267"
 ---
 # <a name="sfctl-mesh-code-package-log"></a>sfctl mesh code-package-log
 获取给定服务副本的指定代码包的容器日志。
 
 ## <a name="commands"></a>命令
 
-|Command|描述|
+|命令|描述|
 | --- | --- |
 | get | 从容器中获取日志。 |
 
@@ -56,5 +57,5 @@ ms.locfileid: "69036436"
 
 
 ## <a name="next-steps"></a>后续步骤
-- [安装](service-fabric-cli.md) Service Fabric CLI。
+- [设置](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

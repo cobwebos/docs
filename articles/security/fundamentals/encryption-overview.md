@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 408c9fb58b428c1671794c6e4e5cc890a153813f
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 541039c82d5ea21c43a847da2710bef4162a2bc7
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003938"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804035"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概述
 
@@ -51,15 +51,15 @@ Azure 支持各种加密模型，包括使用服务托管密钥、Key Vault 中�
 
 三个服务器端加密模型提供不同的密钥管理特性，可根据要求进行选择：
 
-- **服务托管密钥**：可带来低开销的控制和便利。
+- **服务托管密钥：** 可带来低开销的控制和便利。
 
-- **客户管理的密钥**：可用于控制密钥，包括支持“创建自己的密钥”(BYOK) 或生成新密钥。
+- **客户托管密钥**：可用于控制密钥，包括支持“创建自己的密钥”(BYOK) 或生成新密钥。
 
 - **客户所控硬件上的服务托管密钥**：可用于管理不受 Microsoft 控制的专有存储库中的密钥。 此特性称为自留密钥 (HYOK)。 但是，配置相当复杂，并且大多数 Azure 服务都不支持此模式。
 
 ### <a name="azure-disk-encryption"></a>Azure 磁盘加密
 
-可使用 [Azure 磁盘加密](/azure/security/azure-security-disk-encryption)保护 Windows 和 Linux 虚拟机，它采用 [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) 技术和 Linux [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt)通过全卷加密来保护操作系统磁盘和数据磁盘。
+可使用 [Azure 磁盘加密](/azure/security/fundamentals/azure-disk-encryption-vms-vmss)保护 Windows 和 Linux 虚拟机，它采用 [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) 技术和 Linux [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt)通过全卷加密来保护操作系统磁盘和数据磁盘。
 
 [Azure Key Vault 订阅](../../key-vault/key-vault-overview.md)中的加密密钥和机密会得到保护。 使用 Azure 备份服务，可备份和还原使用密钥加密密钥 (KEK) 配置的加密虚拟机 (VM)。
 

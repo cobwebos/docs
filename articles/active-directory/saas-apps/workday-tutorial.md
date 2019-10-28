@@ -17,10 +17,10 @@ ms.date: 08/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9fe63ba810724216b1b356896b621f1e5b021bbf
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69891968"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Workday 集成
@@ -137,12 +137,12 @@ ms.locfileid: "69891968"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-workday"></a>配置 Workday
@@ -151,7 +151,7 @@ ms.locfileid: "69891968"
 
 2. 在主页左上方的“搜索框”  中使用名称“编辑租户设置 - 安全性”  搜索。
 
-    ![编辑租户安全性](./media/workday-tutorial/IC782925.png "编辑租户安全性")
+    ![编辑租户安全](./media/workday-tutorial/IC782925.png "编辑租户安全")
 
 3. 在“重定向 URL”  部分中，执行以下步骤：
 
@@ -237,7 +237,7 @@ ms.locfileid: "69891968"
 
     d. 单击“确定”。 
 
-    ![确定](./media/workday-tutorial/IC782933.png "确定")
+    ![正常](./media/workday-tutorial/IC782933.png "OK")
 
     > [!NOTE]
     > 请确保正确设置单一登录。 如果使用不正确的设置启用单一登录，则可能无法使用凭据进入应用程序并被锁定。在这种情况下，Workday 提供备份登录 URL，用户可以使用以下格式的普通用户名和密码登录：[Workday URL]/login.flex?redirect=n

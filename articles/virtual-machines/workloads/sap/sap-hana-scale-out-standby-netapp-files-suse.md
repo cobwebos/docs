@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: radeltch
-ms.openlocfilehash: 22ecfc6ac31fcbf9cf3953a5bd204ea615ae3750
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 76369c1a4beb792de03cf0ccae5c86825812f103
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694579"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934176"
 ---
 # <a name="sap-hana-scale-out-with-standby-node-on-azure-vms-with-azure-netapp-files-on-suse-linux-enterprise-server"></a>在 Azure Vm 上用备用节点 SAP HANA 扩展 SUSE Linux Enterprise Server 上的 Azure NetApp 文件 
 
@@ -100,9 +100,9 @@ ms.locfileid: "72694579"
 
 在此示例配置中，子网为：  
 
-  - `storage` 10.23.0.0/24  
-  - `hana` 10.23.2.0/24  
-  - `client` 10.23.3.0/24  
+  - `storage` 10.23.2.0/24  
+  - `hana` 10.23.3.0/24  
+  - `client` 10.23.0.0/24  
   - `anf` 10.23.1.0/26  
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>设置 Azure NetApp 文件基础结构 
@@ -171,21 +171,21 @@ Azure NetApp 卷的吞吐量是卷大小和服务级别的一项功能，如[Azu
 
 为了满足数据和日志的 SAP 最小吞吐量要求，并根据 `/hana/shared` 的准则，建议的大小如下所示：
 
-| 数据量(Volume) | 大小<br /> 高级存储层 | 大小<br /> 超存储层 |
+| 数据量(Volume) | 大小<br /> 高级存储层 | 大小<br /> 超存储层 | 支持的 NFS 协议 |
 | --- | --- | --- |
-| /hana/log | 4 TiB | 2 TiB |
-| /hana/data | 6.3 TiB | 3.2 TiB |
-| /hana/shared | 每4个辅助角色节点最大（512 GB，1xRAM） | 每4个辅助角色节点最大（512 GB，1xRAM） |
+| /hana/log | 4 TiB | 2 TiB | 4。1 |
+| /hana/data | 6.3 TiB | 3.2 TiB | 4。1 |
+| /hana/shared | 每4个辅助角色节点最大（512 GB，1xRAM） | 每4个辅助角色节点最大（512 GB，1xRAM） | v3 或4。1 |
 
 本文中介绍的布局的 SAP HANA 配置使用的是 Azure NetApp 文件 Ultra 存储层，如下所示：
 
-| 数据量(Volume) | 大小<br /> 超存储层 |
+| 数据量(Volume) | 大小<br /> 超存储层 | 支持的 NFS 协议 |
 | --- | --- |
-| /hana/log/mnt00001 | 2 TiB |
-| /hana/log/mnt00002 | 2 TiB |
-| /hana/data/mnt00001 | 3.2 TiB |
-| /hana/data/mnt00002 | 3.2 TiB |
-| /hana/shared | 2 TiB |
+| /hana/log/mnt00001 | 2 TiB | 4。1 |
+| /hana/log/mnt00002 | 2 TiB | 4。1 |
+| /hana/data/mnt00001 | 3.2 TiB | 4。1 |
+| /hana/data/mnt00002 | 3.2 TiB | 4。1 |
+| /hana/shared | 2 TiB | v3 或4。1 |
 
 > [!NOTE]
 > 此处所述的 Azure NetApp 文件大小建议旨在满足 SAP 向其基础结构提供商提供的最低要求。 在实际的客户部署和工作负载情况下，这可能不够。 使用这些建议作为起点并根据具体工作负载的要求进行调整。  
@@ -482,7 +482,7 @@ Azure NetApp 卷的吞吐量是卷大小和服务级别的一项功能，如[Azu
      * 输入根用户密码：输入根的密码
      * 选择主机 hanadb2 的角色：输入**1** （适用于辅助角色）
      * 输入主机 hanadb2 的主机故障转移组 [默认值]：按 Enter 接受默认值
-     * 输入主机 hanadb2 的存储分区号 [< <assign automatically> >]：按 Enter 接受默认值
+     * 输入主机 hanadb2 的存储分区号 [<<assign automatically>>]：按 Enter 接受默认值
      * 为 host hanadb2 输入辅助角色组 [默认值]：按 Enter 接受默认值
      * 选择主机 hanadb3 的角色：输入**2** （用于备用）
      * 输入主机 hanadb3 的主机故障转移组 [默认值]：按 Enter 接受默认值

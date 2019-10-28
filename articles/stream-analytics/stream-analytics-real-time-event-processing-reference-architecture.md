@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 流分析事件处理进行实时事件处理
+title: 使用 Azure 流分析进行实时事件处理
 description: 本文介绍使用 Azure 流分析实现实时事件处理和分析的参考体系结构。
 services: stream-analytics
 author: jseb225
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
-ms.openlocfilehash: ab1ca89427f332151120420c3c087902584706f4
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 21a0e4e468b606ec7bb7e33bf1a616e68cd6cf50
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621782"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72925110"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>参考体系结构：使用 Microsoft Azure 流分析实时处理事件
 通过 Azure 流分析进行实时事件处理的参考体系结构的用途是提供一个通用的蓝图，以便通过 Microsoft Azure 部署实时平台即服务 (PaaS) 流处理解决方案。
@@ -36,7 +36,7 @@ Microsoft Azure 提供了各种类别的分析技术，支持一系列不同的�
   * 呈现/消耗层
 * 结束语
 
-**作者：** Charles Feddersen，Microsoft Corporation Data Insights 卓越中心解决方案架构师
+**作者：** Charles Feddersen，Microsoft Corporation Data Insights 卓越中心解决方案体系结构部门
 
 **发布时间：** 2015 年 1 月
 

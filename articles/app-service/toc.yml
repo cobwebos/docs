@@ -123,6 +123,8 @@
               href: deploy-continuous-deployment.md
             - name: 从本地 Git 进行部署
               href: deploy-local-git.md
+            - name: 使用 GitHub 操作进行部署
+              href: deploy-github-actions.md
             - name: 使用模板进行部署
               href: deploy-complex-application-predictably.md
         - name: 设置部署凭据

@@ -1,7 +1,7 @@
 ---
 title: 快速入门：自定义语音优先虚拟助手（预览版），Java（Windows、Linux）- 语音服务
 titleSuffix: Azure Cognitive Services
-description: 本快速入门介绍如何在 Java 控制台应用程序中使用认知服务语音软件开发工具包 (SDK)。 其中将会介绍将客户端应用程序连接到事先创建的某个 Bot Framework 机器人。该机器人配置为使用 Direct Line 语音通道，可以实现语音优先虚拟助手体验。
+description: 本快速入门介绍如何在 Java 控制台应用程序中使用认知服务语音 SDK。 其中将会介绍将客户端应用程序连接到事先创建的某个 Bot Framework 机器人。该机器人配置为使用 Direct Line 语音通道，可以实现语音优先虚拟助手体验。
 services: cognitive-services
 author: bidishac
 manager: nitinme
@@ -10,31 +10,31 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: bidishac
-ms.openlocfilehash: c5a6042e4b181190849b3759325e4aab0c22413b
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: ca3d650f9a53f536a00f2a11aca37b2a61556129
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71800035"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675543"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-java"></a>快速入门：使用语音 SDK 创建语音优先虚拟助手 (Java)
 
-针对[语音转文本](quickstart-java-jre.md)、[文本转语音](quickstart-text-to-speech-java-jre.md)和[语音翻译](quickstart-translate-speech-java-jre.md)也提供了快速入门。
+我们还提供了有关[语音转文本](quickstart-java-jre.md)、[文本转语音](quickstart-text-to-speech-java-jre.md)和[语音翻译](quickstart-translate-speech-java-jre.md)的快速入门。
 
-在本文中，你将使用[认知服务语音 SDK](speech-sdk.md) 创建一个 Java 控制台应用程序。 该应用程序将连接到事先创作的某个机器人。该机器人配置为使用 Direct Line 语音通道，发送语音请求，并返回语音响应活动（如果已配置）。 该应用程序是使用语音 SDK Maven 包和 Eclipse Java IDE 在 Windows、Ubuntu Linux 或 macOS 上生成的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
+在本文中，我们将使用 [Azure 认知服务语音 SDK](speech-sdk.md) 创建一个 Java 控制台应用程序。 该应用程序将连接到事先创作的某个机器人。该机器人配置为使用 Direct Line 语音通道，发送语音请求，并返回语音响应活动（如果已配置）。 该应用程序是使用语音 SDK Maven 包和 Eclipse Java IDE 在 Windows、Ubuntu Linux 或 macOS 上生成的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
 
 ## <a name="prerequisites"></a>先决条件
 
 本快速入门需要：
 
-* 操作系统：Windows（64 位）、Ubuntu Linux 16.04/18.04（64 位）或 MacOS 10.13 或更高版本
-* [Eclipse Java IDE](https://www.eclipse.org/downloads/)
-* [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) 或 [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* 语音服务的 Azure 订阅密钥。 [免费获取一个](get-started.md)或在 [Azure 门户](https://portal.azure.com)上创建它。
+* 操作系统：Windows（64 位）、Ubuntu Linux 16.04/18.04（64 位）或 MacOS 10.13 或更高版本。
+* [Eclipse Java IDE](https://www.eclipse.org/downloads/)。
+* [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) 或 [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
+* 语音服务的 Azure 订阅密钥。 [免费获取一个](get-started.md)或在 [Azure 门户](https://portal.azure.com)中创建它。
 * 使用 Bot Framework 4.2 或更高版本创建的且预先配置的机器人。 该机器人需要订阅新的“Direct Line 语音”通道，以接收语音输入。
 
     > [!NOTE]
-    > Direct Line 语音（预览版）目前在一部分语音服务区域中可用。 请参阅[语音优先虚拟助手支持的区域列表](regions.md#Voice-first virtual assistants)，并确保你的资源部署在其中一个区域中。
+    > Direct Line 语音预览版目前在一部分语音服务区域中可用。 请参阅[语音优先虚拟助手支持的区域列表](regions.md#voice-first-virtual-assistants)，并确保你的资源部署在其中一个区域中。
 
 如果运行 Ubuntu 16.04/18.04，请确保在启动 Eclipse 之前安装这些依赖项：
 
@@ -43,7 +43,7 @@ sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
 
-如果运行 Windows（64 位），请确保已安装适用于平台的 Microsoft Visual C++ Redistributable：
+如果运行 Windows（64 位），请确保已安装适用于平台的 Microsoft Visual C++ 可再发行程序包：
 * [下载 Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 
 ## <a name="optional-get-started-fast"></a>可选：快速入门
@@ -54,7 +54,7 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-此外，若要启用日志记录，请更新 **pom.xml** 文件以包含以下依赖项。
+此外，若要启用日志记录，请更新 *pom.xml* 文件以包含以下依赖项：
 
    ```xml
     <dependency>
@@ -68,11 +68,11 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 
 1. 若要向 Java 项目添加新的空类，请选择“文件” > “新建” > “类”。   
 
-1. 在“新建 Java 类”窗口中，在“包”字段内输入 **speechsdk.quickstart**，在“名称”字段内输入 **Main**。   
+1. 在“新建 Java 类”窗口中，在“包”字段内输入 *speechsdk.quickstart*，在“名称”字段内输入 *Main*。   
 
    ![“新建 Java 类”窗口的屏幕截图](media/sdk/qs-java-jre-06-create-main-java.png)
 
-1. 打开新建的 **Main** 类，将 `Main.java` 文件的内容替换为以下起始代码。
+1. 打开新建的 `Main` 类，将 `Main.java` 文件的内容替换为以下起始代码：
 
     ```java
     package speechsdk.quickstart;
@@ -139,58 +139,58 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
     }
     ```
 
-1. 在 **main** 方法中，首先配置 `DialogServiceConfig` 并使用它来创建 `DialogServiceConnector` 实例。 这会连接到 Direct Line 语音通道以便与机器人交互。 `AudioConfig` 实例还用于指定音频输入的源。 在此示例中，对 `AudioConfig.fromDefaultMicrophoneInput()` 使用了默认麦克风。
+1. 在 `main` 方法中，首先配置 `DialogServiceConfig` 并使用它来创建 `DialogServiceConnector` 实例。 此实例会连接到 Direct Line 语音通道以便与机器人交互。 `AudioConfig` 实例还用于指定音频输入的源。 在此示例中，对 `AudioConfig.fromDefaultMicrophoneInput()` 使用了默认麦克风。
 
-    * 将字符串 `YourSubscriptionKey` 替换为可从[此处](get-started.md)获取的订阅密钥。
+    * 将字符串 `YourSubscriptionKey` 替换为可从[此网站](get-started.md)获取的订阅密钥。
     * 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](regions.md)。
     * 将字符串 `YourChannelSecret` 替换为 Direct Line 语音通道机密。
 
     > [!NOTE]
-    > Direct Line 语音（预览版）目前在一部分语音服务区域中可用。 请参阅[语音优先虚拟助手支持的区域列表](regions.md#voice-first-virtual-assistants)，并确保你的资源部署在其中一个区域中。
+    > Direct Line 语音预览版目前在一部分语音服务区域中可用。 请参阅[语音优先虚拟助手支持的区域列表](regions.md#voice-first-virtual-assistants)，并确保你的资源部署在其中一个区域中。
 
     ```java
     final String channelSecret = "YourChannelSecret"; // Your channel secret
     final String subscriptionKey = "YourSubscriptionKey"; // Your subscription key
-    final String region = "YourServiceRegion"; // Your speech subscription service region. Note: only a subset of regions are currently supported
+    final String region = "YourServiceRegion"; // Your speech subscription service region. Note: Only a subset of regions are currently supported.
     final DialogServiceConfig botConfig = DialogServiceConfig.fromBotSecret(channelSecret, subscriptionKey, region);
 
-    // Configure audio input from microphone.
+    // Configure audio input from a microphone.
     final AudioConfig audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 
-    // Create a DialogServiceConnector instance
+    // Create a DialogServiceConnector instance.
     final DialogServiceConnector connector = new DialogServiceConnector(botConfig, audioConfig);
     ```
 
-1. `DialogServiceConnector` 依赖于多个事件来传达其机器人活动、语音识别结果和其他信息。 接下来请添加这些事件侦听器。
+1. 连接器 `DialogServiceConnector` 依赖于多个事件来传达其机器人活动、语音识别结果和其他信息。 接下来请添加这些事件侦听器。
 
     ```java
-    // Recognizing will provide the intermediate recognized text while an audio stream is being processed
+    // Recognizing will provide the intermediate recognized text while an audio stream is being processed.
     connector.recognizing.addEventListener((o, speechRecognitionResultEventArgs) -> {
         log.info("Recognizing speech event text: {}", speechRecognitionResultEventArgs.getResult().getText());
     });
 
-    // Recognized will provide the final recognized text once audio capture is completed
+    // Recognized will provide the final recognized text once audio capture is completed.
     connector.recognized.addEventListener((o, speechRecognitionResultEventArgs) -> {
         log.info("Recognized speech event reason text: {}", speechRecognitionResultEventArgs.getResult().getText());
     });
 
-    // SessionStarted will notify when audio begins flowing to the service for a turn
+    // SessionStarted will notify when audio begins flowing to the service for a turn.
     connector.sessionStarted.addEventListener((o, sessionEventArgs) -> {
         log.info("Session Started event id: {} ", sessionEventArgs.getSessionId());
     });
 
-    // SessionStopped will notify when a turn is complete and it's safe to begin listening again
+    // SessionStopped will notify when a turn is complete and it's safe to begin listening again.
     connector.sessionStopped.addEventListener((o, sessionEventArgs) -> {
         log.info("Session stopped event id: {}", sessionEventArgs.getSessionId());
     });
 
-    // Canceled will be signaled when a turn is aborted or experiences an error condition
+    // Canceled will be signaled when a turn is aborted or experiences an error condition.
     connector.canceled.addEventListener((o, canceledEventArgs) -> {
         log.info("Canceled event details: {}", canceledEventArgs.getErrorDetails());
         connector.disconnectAsync();
     });
 
-    // ActivityReceived is the main way your bot will communicate with the client and uses bot framework activities.
+    // ActivityReceived is the main way your bot will communicate with the client and uses Bot Framework activities.
     connector.activityReceived.addEventListener((o, activityEventArgs) -> {
         final String act = activityEventArgs.getActivity().serialize();
             log.info("Received activity {} audio", activityEventArgs.hasAudio() ? "with" : "without");
@@ -213,11 +213,11 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 
 1. 保存对 `Main` 文件的更改。
 
-1. 为支持响应播放，你将添加一个额外的类，该类用于将从 getAudio() API 返回的 PullAudioOutputStream 对象转换为一个 java InputStream 以方便处理。 此 ActivityAudioStream 是一个专用类，用于处理来自“Direct Line 语音通道”的音频响应。 它将提供访问器来提取处理播放所需的音频格式信息：为此，请选择“文件” > “新建” > “类”。   
+1. 为支持响应播放，请添加一个额外的类，该类用于将从 getAudio() API 返回的 PullAudioOutputStream 对象转换为一个 java InputStream 以方便处理。 此 `ActivityAudioStream` 是一个专用类，用于处理来自 Direct Line 语音通道的音频响应。 它提供访问器来提取处理播放所需的音频格式信息。 为此，请选择“文件” > “新建” > “类”。   
 
-1. 在“新建 Java 类”窗口中，在“包”字段中输入 **speechsdk.quickstart**，在“名称”字段中输入 **ActivityAudioStream**。   
+1. 在“新建 Java 类”窗口中，在“包”字段中输入 *speechsdk.quickstart*，在“名称”字段中输入 *ActivityAudioStream*。   
 
-1. 打开新建的 **ActivityAudioStream** 类并替换为下面提供的代码。
+1. 打开新建的 `ActivityAudioStream` 类，将其内容替换为以下代码：
 
     ```java
     package com.speechsdk.quickstart;
@@ -230,11 +230,11 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 
     public final class ActivityAudioStream extends InputStream {
         /**
-         * The number of samples played per second. (16 kHz)
+         * The number of samples played per second (16 kHz).
          */
         public static final long SAMPLE_RATE = 16000;
         /**
-         * The number of bits in each sample of a sound that has this format. (16 bits)
+         * The number of bits in each sample of a sound that has this format (16 bits).
          */
         public static final int BITS_PER_SECOND = 16;
         /**
@@ -294,7 +294,7 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
         }
 
         /**
-         * Reads up to a specified maximum number of bytes of data from the activity audio stream
+         * Reads up to a specified maximum number of bytes of data from the activity audio stream,
          * putting them into the given byte array.
          *
          * @param b the buffer into which the data is read
@@ -348,7 +348,7 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
         }
 
         /**
-         * Fetch the audio format for the ActivityAudioStream. The ActivityAudioFormat defines the sample rate, bits per sample and the # channels
+         * Fetch the audio format for the ActivityAudioStream. The ActivityAudioFormat defines the sample rate, bits per sample, and the # channels.
          *
          * @return instance of the ActivityAudioFormat associated with the stream
          */
@@ -361,7 +361,7 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
          * audio input stream without blocking.
          *
          * @return the number of bytes that can be read from this audio input stream without blocking.
-         * As this implementation does not buffer this will be defaulted to 0
+         * As this implementation does not buffer, this will be defaulted to 0
          */
         @Override
         public int available() {
@@ -444,7 +444,7 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
         }
 
         /**
-         * Enum defining the types of audio encoding supported by this stream
+         * Enum defining the types of audio encoding supported by this stream.
          */
         public enum AudioEncoding {
             PCM_SIGNED("PCM_SIGNED");
@@ -463,8 +463,9 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
-按 F11，或选择“运行” > “调试”。  
-控制台会显示消息“请讲话”。此时，请讲出机器人理解的英语短语或句子。 你的语音将通过 Direct Line 语音通道传送到机器人，机器人将识别并处理你的语言，然后返回活动形式的响应。 如果机器人返回了语音作为响应，则会使用 `AudioPlayer` 类播放音频。
+选择 F11，或选择“运行” > “调试”。  
+控制台会显示消息“请讲话。”
+此时，请讲出机器人能够理解的英语短语或句子。 你的语音将通过 Direct Line 语音通道传送到机器人，机器人将识别并处理你的语言， 然后返回活动形式的响应。 如果机器人返回了语音作为响应，则会使用 `AudioPlayer` 类播放音频。
 
 ![成功识别后的控制台输出的屏幕截图](media/sdk/qs-java-jre-08-console-output.png)
 

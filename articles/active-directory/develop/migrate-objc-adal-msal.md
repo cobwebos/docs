@@ -1,6 +1,7 @@
 ---
 let application: MSALPublicClientApplication!
-title: 将应用迁移到 MSAL。ObjectiveC |Microsoft 标识平台
+title: 将应用迁移到 MSAL。ObjectiveC
+titleSuffix: Microsoft identity platform
 description: 了解适用于 ObjectiveC 的 Microsoft 身份验证库（适用于 iOS 和 macOS 的 MSAL）和用于 ObjectiveC 的 Azure AD 身份验证库（ADAL）之间的差异。ObjC）以及如何迁移到适用于 iOS 和 macOS 的 MSAL。
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +19,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcceec31785b3d8ebc6d9566e7d2eba857d792ef
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 514a74ed0ae52fb7f2a7b7d7f19c0b364dc2ba91
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269020"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934861"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>将应用程序迁移到适用于 iOS 和 macOS 的 MSAL
 
@@ -58,13 +59,13 @@ MSAL 公共 API 反映 Azure AD v1.0 和 Microsoft 标识平台之间的一些�
 
 ### <a name="msalpublicclientapplication-instead-of-adauthenticationcontext"></a>MSALPublicClientApplication 而不是 ADAuthenticationContext
 
-`ADAuthenticationContext`是 ADAL 应用创建的第一个对象。 它表示 ADAL 的实例化。 应用程序`ADAuthenticationContext`为每个 Azure Active Directory 云和租户（颁发机构）组合创建的一个新实例。 相同`ADAuthenticationContext`的可用于获取多个公用客户端应用程序的令牌。
+`ADAuthenticationContext` 是 ADAL 应用创建的第一个对象。 它表示 ADAL 的实例化。 应用为每个 Azure Active Directory 云和租户（颁发机构）组合创建 `ADAuthenticationContext` 的新实例。 相同的 `ADAuthenticationContext` 可用于获取多个公共客户端应用程序的令牌。
 
-在 MSAL 中，主要交互是通过一个`MSALPublicClientApplication`对象，该对象在[OAuth 2.0 公用客户端](https://tools.ietf.org/html/rfc6749#section-2.1)之后建模。 的`MSALPublicClientApplication`一个实例可用于与多个 AAD 云和租户进行交互，而无需为每个颁发机构创建新的实例。 对于大多数应用程序， `MSALPublicClientApplication`一个实例就够了。
+在 MSAL 中，主要交互是通过在[OAuth 2.0 公共客户端](https://tools.ietf.org/html/rfc6749#section-2.1)之后建模的 `MSALPublicClientApplication` 对象进行的。 一个 `MSALPublicClientApplication` 实例可用于与多个 AAD 云和租户进行交互，而无需为每个颁发机构创建新的实例。 对于大多数应用程序，一个 `MSALPublicClientApplication` 实例就够了。
 
 ### <a name="scopes-instead-of-resources"></a>范围而非资源
 
-在 ADAL 中，应用程序必须提供*资源*标识符，如`https://graph.microsoft.com`从 Azure Active Directory v1.0 终结点获取令牌。 资源可以在应用程序清单中定义多个可理解的作用域或 oAuth2Permissions。 这允许客户端应用在应用注册期间预定义的一组特定范围内请求该资源的令牌。
+在 ADAL 中，应用程序必须提供*资源*标识符（如 `https://graph.microsoft.com`），以便从 Azure Active Directory v2.0 终结点获取令牌。 资源可以在应用程序清单中定义多个可理解的作用域或 oAuth2Permissions。 这允许客户端应用在应用注册期间预定义的一组特定范围内请求该资源的令牌。
 
 在 MSAL （而不是单个资源标识符）中，应用程序为每个请求提供了一组范围。 作用域是资源标识符，后跟以资源/权限形式的权限名称。 例如： `https://graph.microsoft.com/user.read`
 
@@ -72,55 +73,55 @@ MSAL 公共 API 反映 Azure AD v1.0 和 Microsoft 标识平台之间的一些�
 
 * 提供您的应用程序所需的所有权限的列表。 例如： 
 
-    `@[@"https://graph.microsot.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
+    `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
-    在这种情况下，应用程序`directory.read`会`directory.write`请求和权限。 如果用户尚未同意此应用程序，则会要求用户同意这些权限。 应用程序还可能会收到用户已同意应用程序的其他权限。 系统仅会提示用户同意新权限或尚未授予的权限。
+    在这种情况下，应用请求 `directory.read` 和 `directory.write` 权限。 如果用户尚未同意此应用程序，则会要求用户同意这些权限。 应用程序还可能会收到用户已同意应用程序的其他权限。 系统仅会提示用户同意新权限或尚未授予的权限。
 
-* `/.default`范围。
+* `/.default` 范围。
 
-这是每个应用程序的内置作用域。 它指的是在注册应用程序时配置的权限的静态列表。 它的行为与的行为类似`resource`。 这在迁移时非常有用，可确保维护一组类似的作用域和用户体验。
+这是每个应用程序的内置作用域。 它指的是在注册应用程序时配置的权限的静态列表。 其行为与 `resource`的行为类似。 这在迁移时非常有用，可确保维护一组类似的作用域和用户体验。
 
-若要使用`/.default`范围，请`/.default`将追加到资源标识符。 例如：`https://graph.microsoft.com/.default`。 如果资源以斜杠（`/`）结尾，则仍应追加`/.default`，其中包括前导正斜杠，导致其中包含双正斜杠（`//`）。
+若要使用 `/.default` 范围，请将 `/.default` 追加到资源标识符。 例如：`https://graph.microsoft.com/.default`。 如果资源以斜杠（`/`）结尾，则仍应追加 `/.default`，包括前导正斜杠，导致其中包含双正斜杠（`//`）。
 
 可在[此处](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope)阅读有关使用 "/.default" 范围的详细信息
 
 ### <a name="supporting-different-webview-types--browsers"></a>& 浏览器支持不同的 Web 视图类型
 
-ADAL 仅支持适用于 iOS 的 UIWebView/WKWebView 和 macOS 的 Web 视图。 MSAL for iOS 支持在请求授权代码时显示 web 内容的更多选项，不再支持`UIWebView`; 这可以改善用户体验和安全性。
+ADAL 仅支持适用于 iOS 的 UIWebView/WKWebView 和 macOS 的 Web 视图。 MSAL for iOS 支持在请求授权代码时显示 web 内容的更多选项，不再支持 `UIWebView`;这可以改善用户体验和安全性。
 
 默认情况下，iOS 上的 MSAL 使用[ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)，这是 Web 组件 Apple 建议在 iOS 12 + 设备上进行身份验证。 它通过应用程序和 Safari 浏览器之间的 cookie 共享来提供单一登录（SSO）权益。
 
 您可以选择使用不同的 web 组件，具体取决于应用程序要求和所需的最终用户体验。 有关更多选项，请参阅[支持的 web 视图类型](customize-webviews.md)。
 
-从 ADAL 迁移到 MSAL 时， `WKWebView`会在 iOS 和 macOS 上提供与 ADAL 最相似的用户体验。 我们鼓励你在 iOS 上`ASWebAuthenticationSession`迁移到（如果可能）。 对于 macOS，建议使用`WKWebView`。
+从 ADAL 迁移到 MSAL 时，`WKWebView` 提供与 iOS 和 macOS 上的 ADAL 最相似的用户体验。 建议迁移到 iOS `ASWebAuthenticationSession` （如有可能）。 对于 macOS，建议使用 `WKWebView`。
 
 ### <a name="account-management-api-differences"></a>帐户管理 API 差异
 
-调用 ADAL 方法`acquireToken()`或`acquireTokenSilent()`时，会收到一个`ADUserInformation` `id_token`对象，其中包含表示正在进行身份验证的帐户的声明列表。 此外， `ADUserInformation` `userId` 基于`upn`声明返回。 初始交互式令牌采集完成后，ADAL 要求开发人员`userId`提供所有静态调用。
+调用 ADAL 方法 `acquireToken()` 或 `acquireTokenSilent()`时，会收到一个 `ADUserInformation` 对象，其中包含表示正在进行身份验证的帐户的 `id_token` 中的声明列表。 此外，`ADUserInformation` 根据 `upn` 声明返回 `userId`。 初始交互式令牌采集完成后，ADAL 要求开发人员提供所有静态调用中的 `userId`。
 
 ADAL 不提供用于检索已知用户标识的 API。 它依赖于应用程序来保存和管理这些帐户。
 
 MSAL 提供了一组 Api 来列出所有已知的 MSAL 帐户，而无需获取令牌。
 
-与 ADAL 类似，MSAL 返回的帐户信息包含中`id_token`的声明列表。 它是对象`MSALResult`内的`MSALAccount`对象的一部分。
+与 ADAL 类似，MSAL 返回的帐户信息包含来自 `id_token`的声明列表。 它属于 `MSALResult` 对象中的 `MSALAccount` 对象。
 
 MSAL 提供了一组 Api 来删除帐户，从而使该应用无法访问已删除的帐户。 删除帐户后，以后的令牌获取调用会提示用户执行交互式令牌采集。 帐户删除仅适用于启动它的客户端应用程序，并且不会从设备或系统浏览器上运行的其他应用中删除该帐户。 这可以确保即使在注销单个应用后，用户仍在设备上仍有 SSO 体验。
 
-此外，MSAL 还会返回一个帐户标识符，该标识符可用于稍后在以后自动请求令牌。 但是，帐户标识符（可通过`identifier`对象中的`MSALAccount`属性访问）无法显示，并且您不能假定它是什么格式，也不应尝试对其进行解释或分析。
+此外，MSAL 还会返回一个帐户标识符，该标识符可用于稍后在以后自动请求令牌。 但是，帐户标识符（可通过 `MSALAccount` 对象中的 `identifier` 属性访问）无法显示，因此你不能采用它所处的格式，也不应尝试对其进行解释或分析。
 
 ### <a name="migrating-the-account-cache"></a>迁移帐户缓存
 
-从 ADAL 迁移时，应用程序通常会存储`userId`ADAL 的，这并`identifier`不是 MSAL 所必需的。 作为一次性迁移步骤，应用可通过以下 API 使用 ADAL 的 userId 查询 MSAL 帐户：
+从 ADAL 迁移时，应用通常会存储 ADAL 的 `userId`，这并不具有 MSAL 所需的 `identifier`。 作为一次性迁移步骤，应用可通过以下 API 使用 ADAL 的 userId 查询 MSAL 帐户：
 
 `- (nullable MSALAccount *)accountForUsername:(nonnull NSString *)username error:(NSError * _Nullable __autoreleasing * _Nullable)error;`
 
 此 API 读取 MSAL 和 ADAL 的缓存，以通过 ADAL userId （UPN）查找帐户。
 
-如果找到该帐户，开发人员应使用该帐户执行无提示令牌获取。 第一个无提示令牌获取将有效地升级帐户，开发人员将在 MSAL 结果中获取 MSAL 兼容帐户标识符（`identifier`）。 之后，只`identifier`应使用以下 API 进行帐户查找：
+如果找到该帐户，开发人员应使用该帐户执行无提示令牌获取。 第一个无提示令牌获取将有效地升级帐户，开发人员将在 MSAL 结果中获取 MSAL 兼容帐户标识符（`identifier`）。 之后，只应使用以下 API 将 `identifier` 用于帐户查找：
 
 `- (nullable MSALAccount *)accountForIdentifier:(nonnull NSString *)identifier error:(NSError * _Nullable __autoreleasing * _Nullable)error;`
 
-虽然可以继续使用 ADAL `userId`来执行 MSAL 中的所有操作，但由于`userId`基于 UPN，因此会受到多个限制，导致用户体验不佳。 例如，如果 UPN 更改，用户必须再次登录。 建议所有应用都使用不可显示的帐户`identifier`执行所有操作。
+尽管可以继续对 MSAL 中的所有操作使用 ADAL 的 `userId`，因为 `userId` 基于 UPN，所以有多种限制会导致用户体验不佳。 例如，如果 UPN 更改，用户必须再次登录。 建议所有应用使用不可显示的帐户 `identifier` 所有操作。
 
 详细了解[缓存状态迁移](sso-between-adal-msal-apps-macos-ios.md)。
 
@@ -128,18 +129,18 @@ MSAL 提供了一组 Api 来删除帐户，从而使该应用无法访问已删�
 
 MSAL 引入了一些令牌获取调用更改：
 
-* 与 ADAL 一样`acquireTokenSilent` ，始终会导致发出无提示请求。
-* 与 ADAL 不同`acquireToken` ，始终通过 web 视图或 Microsoft Authenticator 应用来导致用户可操作的 UI。 系统可能会提示用户输入其凭据，具体取决于 web 视图/Microsoft Authenticator 中的 SSO 状态。
-* 在 ADAL 中`acquireToken` ， `AD_PROMPT_AUTO`第一次尝试无提示标记获取，并且仅当缄默请求失败时才显示 UI。 在 MSAL 中，此逻辑可通过首先调用`acquireTokenSilent`来实现，并且仅在无提示获取失败时调用。 `acquireToken` 这允许开发人员在开始交互式令牌采集之前自定义用户体验。
+* 与 ADAL 一样，`acquireTokenSilent` 始终导致发出无提示请求。
+* 与 ADAL 不同，`acquireToken` 始终通过 web 视图或 Microsoft Authenticator 应用来导致用户可操作的 UI。 系统可能会提示用户输入其凭据，具体取决于 web 视图/Microsoft Authenticator 中的 SSO 状态。
+* 在 ADAL 中，与 `AD_PROMPT_AUTO` `acquireToken` 首先尝试以无提示方式获取标记，并且仅当缄默请求失败时才显示 UI。 在 MSAL 中，可通过首先调用 `acquireTokenSilent` 并仅在无提示获取失败时调用 `acquireToken` 来实现此逻辑。 这允许开发人员在开始交互式令牌采集之前自定义用户体验。
 
 ### <a name="error-handling-differences"></a>错误处理差异
 
 MSAL 在你的应用程序可以处理的错误与需要用户干预的错误之间提供了更高的清晰度。 开发人员必须处理的错误数量有限：
 
 * `MSALErrorInteractionRequired`：用户必须执行交互式请求。 这可能是由于各种原因导致的，例如身份验证会话过期、条件性访问策略已更改、刷新令牌已过期或已被吊销、缓存中没有有效的令牌，等等。
-* `MSALErrorServerDeclinedScopes`：请求未完全完成，某些范围未被授予访问权限。 这可能是因为用户拒绝了一个或多个作用域的同意。
+* `MSALErrorServerDeclinedScopes`：请求未完全完成并且某些范围未被授予访问权限。 这可能是因为用户拒绝了一个或多个作用域的同意。
 
-处理[ `MSALError`列表](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128)中的所有其他错误是可选的。 您可以使用这些错误中的信息来改善用户体验。
+处理[`MSALError` 列表](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128)中的所有其他错误是可选的。 您可以使用这些错误中的信息来改善用户体验。
 
 有关 MSAL 错误处理的详细信息，请参阅[使用 MSAL 处理异常和错误](msal-handling-exceptions.md)。
 
@@ -149,9 +150,9 @@ MSAL 在你的应用程序可以处理的错误与需要用户干预的错误之
 
 为应用程序启用代理：
 
-1. 为应用程序注册 broker 兼容的重定向 URI 格式。 与 broker 兼容的重定向 URI `msauth.<app.bundle.id>://auth`的格式为。 将`<app.bundle.id>`替换为应用程序的捆绑 ID。 如果要从 ADAL 迁移，且应用程序已支持 broker，则无需执行任何额外操作。 你以前的重定向 URI 与 MSAL 完全兼容，因此你可以跳到步骤3。
+1. 为应用程序注册 broker 兼容的重定向 URI 格式。 与 broker 兼容的重定向 URI 格式为 `msauth.<app.bundle.id>://auth`。 将 `<app.bundle.id>` 替换为应用程序的捆绑 ID。 如果要从 ADAL 迁移，且应用程序已支持 broker，则无需执行任何额外操作。 你以前的重定向 URI 与 MSAL 完全兼容，因此你可以跳到步骤3。
 
-2. 将应用程序的重定向 URI 方案添加到 info.plist 文件。 对于默认的 MSAL 重定向 URI，格式为`msauth.<app.bundle.id>`。 例如：
+2. 将应用程序的重定向 URI 方案添加到 info.plist 文件。 对于默认的 MSAL 重定向 URI，格式为 `msauth.<app.bundle.id>`。 例如：
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -170,7 +171,7 @@ MSAL 在你的应用程序可以处理的错误与需要用户干预的错误之
     </array>
     ```
 
-4. 将以下内容添加到 AppDelegate 文件以处理回调：Objective-C：
+4. 将以下内容添加到 AppDelegate 文件以处理回调：目标-C：
     
     ```objc
     - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options`
@@ -179,7 +180,7 @@ MSAL 在你的应用程序可以处理的错误与需要用户干预的错误之
     }
     ```
     
-    反应
+    Swift：
     
     ```swift
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -189,7 +190,7 @@ MSAL 在你的应用程序可以处理的错误与需要用户干预的错误之
 
 ### <a name="business-to-business-b2b"></a>企业到企业（B2B）
 
-在 ADAL 中， `ADAuthenticationContext`为应用请求令牌的每个租户创建单独的实例。 这在 MSAL 中不再是必需的。 在 MSAL 中，可以创建的单个实例`MSALPublicClientApplication` ，并通过为 acquireToken 和 acquireTokenSilent 调用指定不同的颁发机构来将其用于任何 AAD 云和组织。
+在 ADAL 中，为应用请求令牌的每个租户创建单独 `ADAuthenticationContext` 的实例。 这在 MSAL 中不再是必需的。 在 MSAL 中，可以创建 `MSALPublicClientApplication` 的单个实例，并通过为 acquireToken 和 acquireTokenSilent 调用指定不同的颁发机构来将其用于任何 AAD 云和组织。
 
 ## <a name="sso-in-partnership-with-other-sdks"></a>与其他 Sdk 合作的 SSO
 
@@ -207,7 +208,7 @@ SSO 到 iOS 密钥链共享是唯一的无提示 SSO 类型。
 
 IOS 上的 MSAL 还支持其他两种类型的 SSO：
 
-* SSO 到 web 浏览器。 适用于 iOS 的`ASWebAuthenticationSession`MSAL 支持，它提供了在设备上的其他应用与特定 Safari 浏览器之间共享的 cookie。
+* SSO 到 web 浏览器。 适用于 iOS 的 MSAL 支持 `ASWebAuthenticationSession`，该应用程序通过在设备上的其他应用与特定 Safari 浏览器之间共享的 cookie 提供 SSO。
 * 通过身份验证代理的 SSO。 在 iOS 设备上，Microsoft Authenticator 充当身份验证代理。 它可以遵循条件性访问策略，例如需要相容设备，并为已注册的设备提供 SSO。 默认情况下，从版本0.3.0 开始的 MSAL Sdk 支持 broker。
 
 ## <a name="intune-mam-sdk"></a>Intune MAM SDK
@@ -229,9 +230,9 @@ ADAL 版本2.7.0 及更高版本无法与同一个应用程序中的 MSAL 共存
 
 无需更改现有的 AAD 应用程序即可切换到 MSAL 并启用 AAD 帐户。 但是，如果基于 ADAL 的应用程序不支持中转身份验证，则需要为应用程序注册新的重定向 URI，然后才能切换到 MSAL。
 
-重定向 URI 的格式应为： `msauth.<app.bundle.id>://auth`。 将`<app.bundle.id>`替换为应用程序的捆绑 ID。 指定[Azure 门户](https://aka.ms/MobileAppReg)中的重定向 URI。
+重定向 URI 的格式应为： `msauth.<app.bundle.id>://auth`。 将 `<app.bundle.id>` 替换为应用程序的捆绑 ID。 指定[Azure 门户](https://aka.ms/MobileAppReg)中的重定向 URI。
 
-仅适用于 iOS，若要支持基于证书的身份验证，需要在应用程序中注册额外的重定向 URI，并且 Azure 门户采用以下`msauth://code/<broker-redirect-uri-in-url-encoded-form>`格式：。 例如： `msauth://code/msauth.com.microsoft.mybundleId%3A%2F%2Fauth`
+仅适用于 iOS，若要支持基于证书的身份验证，需要在应用程序中注册额外的重定向 URI，并且 Azure 门户采用以下格式： `msauth://code/<broker-redirect-uri-in-url-encoded-form>`。 例如： `msauth://code/msauth.com.microsoft.mybundleId%3A%2F%2Fauth`
 
 建议所有应用都注册两个重定向 Uri。
 
@@ -254,7 +255,7 @@ ADAL 版本2.7.0 及更高版本无法与同一个应用程序中的 MSAL 共存
 </array>
 ```
 
-将以下方案添加到下`LSApplicationQueriesSchemes`的应用 info.plist。
+将以下方案添加到 `LSApplicationQueriesSchemes`下的应用 info.plist。
 
 ```xml
 <key>LSApplicationQueriesSchemes</key>
@@ -277,7 +278,7 @@ Objective-C：
 }
 ```
 
-反应
+Swift：
 
 ```swift
 func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -285,8 +286,8 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 }
 ```
 
-**如果使用的是 Xcode 11**，应改为将 MSAL 回叫`SceneDelegate`到文件中。
-如果同时支持 UISceneDelegate 和 UIApplicationDelegate 以与较旧的 iOS 兼容，则需要将 MSAL 回调放入这两个文件中。
+**如果使用的是 Xcode 11**，应改为将 MSAL 回拨放入 `SceneDelegate` 文件中。
+如果支持兼容旧版 iOS 的 UISceneDelegate 和 UIApplicationDelegate，则需将 MSAL 回叫置于这两个文件中。
 
 Objective-C：
 
@@ -301,7 +302,7 @@ Objective-C：
  }
 ```
 
-反应
+Swift：
 
 ```swift
 func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -322,16 +323,16 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 ### <a name="enable-token-caching"></a>启用令牌缓存
 
-默认情况下，MSAL 在 iOS 或 macOS 密钥链中缓存应用的令牌。 
+默认情况下，MSAL 会在 iOS 或 macOS 密钥链中缓存应用的令牌。 
 
 若要启用令牌缓存，请执行以下操作：
 1. 确保应用程序已正确签名
 2. 转到 Xcode 项目设置 >“功能”选项卡 > “启用密钥链共享”
-3. 单击 **+** 并输入以下**密钥链 Groups**条目：3. 对于 iOS，输入`com.microsoft.adalcache` macOS 输入`com.microsoft.identity.universalstorage`
+3. 单击 " **+** "，然后输入以下**密钥链 Groups**条目： 3. 对于 iOS，请输入 `com.microsoft.adalcache` macOS 输入 `com.microsoft.identity.universalstorage`
 
 ### <a name="create-msalpublicclientapplication-and-switch-to-its-acquiretoken-and-acquiretokesilent-calls"></a>创建 MSALPublicClientApplication 并切换到其 acquireToken 和 acquireTokeSilent 调用
 
-可以使用以下`MSALPublicClientApplication`代码创建：
+你可以使用以下代码创建 `MSALPublicClientApplication`：
 
 Objective-C：
 
@@ -344,7 +345,7 @@ MSALPublicClientApplication *application =
                                                      error:&error];
 ```
 
-反应
+Swift：
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>")
@@ -367,7 +368,7 @@ NSError *error = nil;
 MSALAccount *account = [application accountForIdentifier:accountIdentifier error:&error];
 ```
 
-反应
+Swift：
 
 ```swift
 // definitions that need to be initialized
@@ -393,7 +394,7 @@ NSError *error = nil;
 NSArray<MSALAccount *> *accounts = [application allAccounts:&error];
 ```
 
-反应
+Swift：
 
 ```swift
 let application: MSALPublicClientApplication!
@@ -435,7 +436,7 @@ MSALSilentTokenParameters *silentParameters = [[MSALSilentTokenParameters alloc]
 }];
 ```
 
-反应
+Swift：
 
 ```swift
 let application: MSALPublicClientApplication!

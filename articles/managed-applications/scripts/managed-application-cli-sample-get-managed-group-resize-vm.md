@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例 - 获取托管资源组和重设 VM 大小 | Microsoft Docs
+title: 获取托管资源组并调整 VM 大小 - Azure CLI
 description: 提供 Azure CLI 示例脚本，该脚本获取 Azure 托管应用程序的托管资源组。 该脚本重设 VM 大小。
 services: managed-applications
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 7218e2fd033614b5e9f77cca34a5db82e3571094
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ccf853f33eea054b450563747646f3d9ec560aa3
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330146"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528905"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>使用 Azure CLI 获取托管资源组中的资源并重设 VM 大小
 

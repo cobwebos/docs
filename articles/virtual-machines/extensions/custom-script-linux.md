@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: akjosh
-ms.openlocfilehash: 3a999b93ce7246a91db8dd3df7536513b6e11029
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 86c05519e7027ec8b7434919bf43f9b4602b0300
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174040"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789960"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 2
 自定义脚本扩展版本 2 在 Azure 虚拟机上下载和运行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或其他可访问的 Internet 位置下载脚本，或者将脚本提供给扩展运行时。 
@@ -33,12 +33,12 @@ ms.locfileid: "71174040"
 * 版本 1 - Microsoft.OSTCExtensions.CustomScriptForLinux
 * 版本 2 - Microsoft.Azure.Extensions.CustomScript
 
-请切换新部署和现有部署，改用新的版本 2。 新版本的目的是作为一个简易的替代版本。 因此，迁移时只需更改名称和版本，无需更改扩展配置。
+请切换新部署和现有部署，改用新的版本 2。 新版本可作为一个简易的替代版本。 因此，迁移时只需更改名称和版本，无需更改扩展配置。
 
 
 ### <a name="operating-system"></a>操作系统
 
-适用于 Linux 的自定义脚本扩展将在扩展支持的扩展 OS 上运行，有关详细信息，请参阅[此文](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems)。
+适用于 Linux 的自定义脚本扩展将在扩展支持的扩展 OS 上运行，有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。
 
 ### <a name="script-location"></a>脚本位置
 
@@ -55,12 +55,12 @@ ms.locfileid: "71174040"
 * 确保这些脚本在运行时不需要用户输入。
 * 脚本可以运行 90 分钟，若运行时间超过 90 分钟，将导致扩展的预配失败。
 * 请勿将 reboot 置于脚本中，这会导致正在安装的其他扩展出现问题，并且在重启后，该扩展将不会继续。 
-* 如果脚本会导致重启，则安装应用程序并运行脚本等。应该使用 Cron 作业或者使用 DSC 或 Chef、Puppet 扩展等工具来计划重启。
+* 如果你的脚本将导致重新启动，则安装应用程序并运行脚本等。你应使用 Cron 作业或使用 DSC、Chef、Puppet 扩展等工具来计划重启。
 * 该扩展只会运行一个脚本一次，如果想要在每次启动时运行一个脚本，则可以使用 [cloud-init 映像](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)和 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模块。 或者，可以使用脚本创建 Systemd 服务单元。
 * 如果想要计划脚本何时运行，应使用扩展创建一个 Cron 作业。 
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
 * 自定义脚本扩展本身不支持代理服务器，但可以使用脚本中支持代理服务器的文件传输工具，如 Curl。 
-* 请注意脚本或命令可能依赖的非默认目录位置，按逻辑对其进行处理。
+* 请注意脚本或命令可能依赖的非默认目录位置，请按逻辑对其进行处理。
 
 
 
@@ -109,16 +109,16 @@ ms.locfileid: "71174040"
 | 名称 | 值/示例 | 数据类型 | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | date |
-| publisher | Microsoft.Compute.Extensions | string |
-| type | CustomScript | string |
+| 发布者 | Microsoft.Compute.Extensions | 字符串 |
+| type | CustomScript | 字符串 |
 | typeHandlerVersion | 2.0 | int |
-| fileUris（例如） | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute（例如） | python MyPythonScript.py \<my-param1> | string |
-| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
-| skipDos2Unix（示例） | 假 | boolean |
+| fileUris（例如） | https://github.com/MyProject/Archive/MyPythonScript.py | 数组 |
+| commandToExecute（例如） | python MyPythonScript.py \<param1 > | 字符串 |
+| 脚本 | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | 字符串 |
+| skipDos2Unix（示例） | false | 布尔值 |
 | timestamp（示例） | 123456789 | 32 位整数 |
-| storageAccountName（例如） | examplestorageacct | string |
-| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| storageAccountName（例如） | examplestorageacct | 字符串 |
+| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 字符串 |
 
 ### <a name="property-value-details"></a>属性值详细信息
 * `skipDos2Unix`：（可选，布尔值）跳过对基于脚本的文件 URL 或脚本进行的 dos2unix 转换。
@@ -137,7 +137,7 @@ ms.locfileid: "71174040"
 
 虽然使用公共设置可能对调试很有用，但强烈建议使用受保护设置。
 
-公共设置会以明文形式发送到将执行脚本的 VM。  受保护设置使用只有 Azure 和 VM 知道的密钥进行加密。 这些设置会在发送时保存到 VM 中，也就是说，如果设置已加密，则会在 VM 上加密保存。 用于对加密值解密的证书存储在 VM 上，运行时使用它对设置解密（如有必要）。
+公共设置会以明文形式发送到将执行脚本的 VM。  受保护设置使用只有 Azure 和 VM 知道的密钥进行加密。 这些设置会在发送时保存到 VM 中，也就是说，如果设置已加密，则会在 VM 上加密保存。 用于对已加密值解密的证书存储在 VM 上，该证书用于在运行时对设置解密（如必要）。
 
 #### <a name="property-skipdos2unix"></a>属性：skipDos2Unix
 
@@ -201,7 +201,7 @@ CustomScript 使用以下算法来执行脚本。
 
 
 ## <a name="template-deployment"></a>模板部署
-可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署过程中运行自定义脚本扩展。 可在此处（[GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)）中找到包含自定义脚本扩展的示例模板。
+可使用 Azure 资源管理器模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署过程中运行自定义脚本扩展。 可在此处（[GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)）中找到包含自定义脚本扩展的示例模板。
 
 
 ```json
@@ -328,7 +328,7 @@ az vm extension set \
   --protected-settings ./protected-config.json
 ```
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 运行自定义脚本扩展时，会创建脚本，或将脚本下载到类似于以下示例的目录中。 命令输出也会保存到此目录中的 `stdout` 和 `stderr` 文件中。
 
 ```bash
@@ -363,7 +363,7 @@ Azure 脚本扩展生成一个日志，位置如下：
 /var/log/azure/custom-script/handler.log
 ```
 
-应该查找如下所示的个别执行：
+你应该查找单个执行，它将如下所示：
 ```text
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=start
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=pre-check

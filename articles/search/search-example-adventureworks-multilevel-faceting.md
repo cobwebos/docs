@@ -1,27 +1,27 @@
 ---
-title: 示例：多级别方面-Azure 搜索
+title: 示例：多级别方面
+titleSuffix: Azure Cognitive Search
 description: 了解如何为多层分类生成分面结构，创建可以包含在应用程序页面中的嵌套式导航结构。
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: 9a56bba55f9b3a59126168bc2bbbd50927c3fc78
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 8672fa0911d1a031205bb3340fa0c03ab9492a28
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70274086"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792939"
 ---
-# <a name="example-multi-level-facets-in-azure-search"></a>示例： Azure 搜索中的多层方面
+# <a name="example-multi-level-facets-in-azure-cognitive-search"></a>示例： Azure 中的多层方面认知搜索
 
-Azure 搜索架构不显式支持多层分类类别，但你可以对其进行近似处理，方法是：在进行索引编制之前先处理内容，然后对结果应用某些特殊的处理。 
+Azure 认知搜索架构不明确支持多级别分类类别，但你可以通过在编制索引之前操作内容并将一些特殊处理应用于结果来估算它们。 
 
 ## <a name="start-with-the-data"></a>从数据开始
 
-本文中的示例基于先前的示例 - [为 AdventureWorks Inventory 数据库建模](search-example-adventureworks-modeling.md)，目的是演示 Azure 搜索中的多层分面。
+本文中的示例基于前面的示例，为[AdventureWorks 清单数据库建模](search-example-adventureworks-modeling.md)，以演示 Azure 认知搜索中的多层分面。
 
 AdventureWorks 有一个简单的双级分类，其中的关系为父子关系。 若要获取此结构的固定长度分类深度，可以使用简单的 SQL 联接查询将分类分组：
 
@@ -39,7 +39,7 @@ LEFT JOIN
 
 ## <a name="indexing-to-a-collection-field"></a>为 Collection 字段编制索引
 
-在包含此结构的索引中，在 Azure 搜索架构中创建 **Collection(Edm.String)** 字段来存储此数据，确保字段属性包含 searchable、filterable、facetable 和 retrievable。
+在包含此结构的索引中，在 Azure 认知搜索架构中创建一个**集合（Edm）** 字段以存储此数据，确保字段属性包括可搜索、可筛选、可查找和可检索。
 
 现在，在为引用特定分类类别的内容编制索引时，请将分类作为数组提交，该数组包含来自各级别分类的文本。 例如，对于 `ProductCategoryId = 5 (Mountain Bikes)` 的实体，请将字段以 `[ "Bikes", "Bikes|Mountain Bikes"]` 形式提交
 
@@ -99,4 +99,4 @@ categories.count = sum;
 
 ## <a name="see-also"></a>另请参阅
 
-[示例：针对 Azure 搜索为 AdventureWorks 清单数据库建模](search-example-adventureworks-modeling.md)
+[示例：为 Azure 认知搜索模拟 AdventureWorks 清单数据库](search-example-adventureworks-modeling.md)

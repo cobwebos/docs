@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 4fd213a6550d045fe4bea280449ed228ba9eda35
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: c764460fb65287dab0031b27291d2f332cec3b3d
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550287"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756553"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure Maps map 控件
 
@@ -44,6 +44,12 @@ ms.locfileid: "72550287"
     <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
     <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
     ```
+
+    >[!Note]
+    > 可以通过添加以下内容将 Typescript 定义导入到应用程序中：
+    > ```Javascript
+    > import * as atlas from 'azure-maps-control';
+    > ```
 
 3. 若要以填满整个页面正文的方式呈现地图，请向 `<head>` 元素中添加以下 `<style>` 元素。
 
@@ -102,6 +108,8 @@ ms.locfileid: "72550287"
     </script>
     ```
 
+    此列表显示了如何将 Azure Active Directory （AAD）与 Azure Maps 集成的示例可[在此处](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)找到。 
+    
     有关详细信息，请参阅[Azure Maps 的身份验证](azure-maps-authentication.md)文档。
 
 6. （可选）在页面的头部添加以下元标记元素，你会发现这比较有用：
@@ -222,3 +230,8 @@ map = new atlas.Map('myMap', {
 
 > [!div class="nextstepaction"]
 > [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+
+有关演示如何将 Azure Active Directory （AAD）与 Azure Maps 集成的示例列表，请参阅：
+
+> [!div class="nextstepaction"]
+> [AAD 身份验证示例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 08/01/2019
+ms.date: 10/15/2019
 ms.author: aahi
-ms.openlocfilehash: 28dbcde723e25577545cfd44fed9ef00249d8f30
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 926d7043ea6f56c1ba6d13fd4586fc6f6d59cfa8
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694911"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554698"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-python"></a>快速入门：适用于 Python 的异常检测器客户端库
 
@@ -26,7 +26,7 @@ ms.locfileid: "71694911"
 * 以批请求的形式检测整个时序数据集中的异常
 * 在时序中检测最新数据点的异常状态
 
-[库参考文档](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [包 (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [示例](https://github.com/Azure-Samples/anomalydetector)
+[库参考文档](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [包 (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [代码示例](https://github.com/Azure-Samples/anomalydetector)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,11 +40,9 @@ ms.locfileid: "71694911"
 
 [!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
-获取试用订阅或资源的密钥后，请为该密钥创建名为 `ANOMALY_DETECTOR_KEY` 的[环境变量](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)。
-
 ### <a name="create-a-new-python-application"></a>创建新的 Python 应用程序
 
- 在首选编辑器或 IDE 中创建新的 Python 应用程序。 然后导入以下库。
+ 创建新的 Python 文件并导入以下库。
 
 [!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
 
@@ -114,7 +112,7 @@ pip install --upgrade azure-cognitiveservices-anomalydetector
 
 ## <a name="run-the-application"></a>运行应用程序
 
-在 IDE 中运行应用程序，或者在命令行中使用 `python` 命令和文件名这样做。
+使用 `python` 命令和文件名运行应用程序。
  
 ## <a name="clean-up-resources"></a>清理资源
 

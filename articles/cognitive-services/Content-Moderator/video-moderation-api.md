@@ -3,19 +3,19 @@ title: 在 C# 中分析令人反感的视频内容 - 内容审查器
 titleSuffix: Azure Cognitive Services
 description: 如何使用适用于 .NET 的内容审查器 SDK 分析视频内容中是否存在各种令人反感的材料
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 1742db702a899d47110177532f5e85e74a59d91c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 71858755fe31823d4d7ef8623b915db851530116
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564309"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755240"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>在 C# 中分析令人反感的视频内容
 
@@ -23,7 +23,7 @@ ms.locfileid: "68564309"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 - 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)
 
 ## <a name="set-up-azure-resources"></a>设置 Azure 资源
@@ -62,7 +62,7 @@ Azure 媒体服务资源管理器是 AMS 的用户友好前端。 使用它可�
 
 ## <a name="add-video-moderation-code"></a>添加视频审查代码
 
-接下来，将代码从本指南复制并粘贴到项目中，以便实施基本的内容审查方案。
+接下来，需将代码从本指南复制并粘贴到项目中，以便实施基本的内容审查方案。
 
 ### <a name="update-the-programs-using-statements"></a>更新程序的 using 语句
 
@@ -359,7 +359,7 @@ static void StateChanged(object sender, JobStateChangedEventArgs e)
 }
 ```
 
-### <a name="run-the-program-and-review-the-output"></a>运行程序并检查输出
+### <a name="run-the-program-and-review-the-output"></a>运行程序并查看输出
 
 内容审查作业完成后，分析 JSON 响应。 它由以下元素组成：
 
@@ -371,7 +371,7 @@ static void StateChanged(object sender, JobStateChangedEventArgs e)
 > [!NOTE]
 > - `adultScore` 表示可能存在某些情况下可能被视为色情或成人性质的内容以及预测分数。
 > - `racyScore` 表示可能存在某些情况下可能被视为性暗示或过于成熟的内容以及预测分数。
-> - `adultScore` 和 `racyScore` 介于 0 和 1 之间。 分数越高，模型预测类别可能适用的可能性越高。 此预览版依赖于统计模型，而不是人工编码结果。 我们建议你对自己的内容进行测试，以确定每个类别是否符合要求。
+> - `adultScore` 和 `racyScore` 介于 0 和 1 之间。 评分越高，模型预测类别可能适用的可能性越高。 此预览版依赖于统计模型，而不是人工编码结果。 我们建议你对自己的内容进行测试，以确定每个类别是否符合要求。
 > - `reviewRecommended` 为 true 或 false，具体情况取决于内部评分阈值。 客户应评估是使用该值，还是根据他们的内容策略确定自定义阈值。
 
 ```json

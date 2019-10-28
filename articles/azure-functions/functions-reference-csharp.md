@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: c055e1e94d6bc636292fef5da63e7a8c8eb7fa07
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 8bbfef9d9873669120f792bce3e50e457791d4b0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299849"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787202"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# 脚本 (.csx) 开发人员参考
 
@@ -52,7 +52,7 @@ FunctionsProject
  | - bin
 ```
 
-有一个共享的 [host.json](functions-host-json.md) 文件，可用于配置函数应用。 每个函数都具有自己的代码文件 (.csx) 和绑定配置文件 (function.json)。
+存在共享的 [host.json](functions-host-json.md) 文件，可用于配置函数应用。 每个函数都具有自己的代码文件 (.csx) 和绑定配置文件 (function.json)。
 
 [2.x 版](functions-versions.md) Functions 运行时中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](./functions-bindings-register.md#extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
 
@@ -373,7 +373,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 自动监视包含函数脚本文件的目录的程序集更改。 若要监视其他目录中的程序集更改，请将其添加到 [host.json](functions-host-json.md) 中的 `watchDirectories` 列表中。
 
 ## <a name="using-nuget-packages"></a>使用 NuGet 包
-若要在 2.x C# 函数中使用 NuGet 包，请将 *function.proj* 文件上传到函数应用的文件系统中的函数文件夹。 下面是示例 *function.proj* 文件，它添加了对 Microsoft.ProjectOxford.Face 1.1.0 版的引用：
+若要在 1.x C#函数中使用 NuGet 包，请将*函数 proj*文件上传到函数应用文件系统中的函数文件夹。 下面是示例 *function.proj* 文件，它添加了对 Microsoft.ProjectOxford.Face 1.1.0 版的引用：
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -390,9 +390,9 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 若要使用自定义 NuGet 源，请在 Function App 根中指定“Nuget.Config”文件中的源。 有关详细信息，请参阅[配置 NuGet 行为](/nuget/consume-packages/configuring-nuget-behavior)。
 
 > [!NOTE]
-> 在 1.x C# 函数中，NuGet 包是通过 *project.json* 文件而非 *function.proj* 文件引用的。
+> 在 node.js C#函数中，NuGet 包使用*项目 json*文件而不是*函数 proj*文件进行引用。
 
-对于 1.x 函数，请改用 *project.json* 文件。 下面是 *project.json* 文件示例：
+对于1.x 函数，请改用*项目 json*文件。 下面是一个示例*项目 json*文件：
 
 ```json
 {
@@ -406,11 +406,11 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 }
 ```
 
-### <a name="using-a-functionproj-file"></a>使用 function.proj 文件
+### <a name="using-a-functionproj-file"></a>使用函数 proj 文件
 
 1. 在 Azure 门户中打开函数。 日志选项卡显示包安装输出。
-2. 若要上传 *function.proj* 文件，请使用 Azure Functions 开发人员参考主题中[如何更新函数应用文件](functions-reference.md#fileupdate)部分描述的方法之一。
-3. 上传完 *function.proj* 文件后，将在函数的流日志中看到类似以下示例的输出：
+2. 若要上载*函数 proj*文件，请使用 Azure Functions 开发人员参考 "主题中的[如何更新函数应用文件](functions-reference.md#fileupdate)中所述的方法之一。
+3. 上载*函数 proj*文件后，会在函数的流式处理日志中看到类似于以下示例的输出：
 
 ```
 2018-12-14T22:00:48.658 [Information] Restoring packages.
@@ -462,7 +462,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute` 是定义了绑定的 .NET 属性，`T` 是该绑定类型所支持的输入或输出类型。 `T` 不能是 `out` 参数类型（例如 `out JObject`）。 例如，移动应用表输出绑定支持 [6 种输出类型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但对于 `T`，只能使用 [ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) 或 [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)。
+`BindingTypeAttribute` 是定义了绑定的 .NET 属性，`T` 是该绑定类型所支持的输入或输出类型。 `T` 不能是 `out` 参数类型（例如 `out JObject`）。 例如，移动应用表输出绑定支持[6 种输出类型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但只能将[ICollector\<t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs)或[`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)用于 `T`。
 
 ### <a name="single-attribute-example"></a>单属性示例
 
@@ -509,10 +509,10 @@ public static async Task Run(string input, Binder binder)
 下表列出了每种绑定类型的 .NET 属性及其定义所在的包。
 
 > [!div class="mx-codeBreakAll"]
-> | 绑定 | 特性 | 添加引用 |
+> | 绑定 | 属性 | 添加引用 |
 > |------|------|------|
-> | Cosmos DB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
-> | 事件中心 | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
+> | Azure Cosmos DB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
+> | 事件中心 | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
 > | 移动应用 | [`Microsoft.Azure.WebJobs.MobileTableAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.MobileApps"` |
 > | 通知中心 | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
 > | 服务总线 | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |

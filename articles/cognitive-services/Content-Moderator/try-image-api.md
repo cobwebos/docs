@@ -3,19 +3,19 @@ title: 使用 API 控制台审查图像 - 内容审查器
 titleSuffix: Azure Cognitive Services
 description: 使用 Azure 内容审查器中的图像审查 API，可以启动图像内容的扫描和审阅式审查工作流。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 20353d488cba255925d21017b77d1def2d06b30b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: aa3b6ce886b06c32e9e4515469099a5b31ff49e3
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561247"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757209"
 ---
 # <a name="moderate-images-from-the-api-console"></a>在 API 控制台中审查图像
 
@@ -54,7 +54,7 @@ ms.locfileid: "68561247"
 
    ![试用“图像 - 评估”控制台上的概率分数和条件确定](images/try-image-api-3.PNG)
 
-## <a name="face-detection"></a>人脸检测
+## <a name="face-detection"></a>面部检测
 
 图像审查 API 可用于定位图像中的人脸。 若有隐私顾虑，并要防止某人脸出现在平台上，就会发现此选项十分有用。 
 

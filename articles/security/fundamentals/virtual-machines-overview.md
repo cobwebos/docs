@@ -4,7 +4,7 @@ description: 本文概述了能够与 Azure 虚拟机配合使用的核心 Azure
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 467b2c83-0352-4e9d-9788-c77fb400fe54
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/28/2019
+ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 4aca2a4495d4b6c3669982b2e7757b7252d70f6a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 6c01df071f263f7080f6c89b539d9a40aeff282f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828559"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792619"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虚拟机安全概述
 本文概述了可用于虚拟机的核心 Azure 安全功能。
@@ -45,22 +45,10 @@ Azure 虚拟机可用于灵活地进行虚拟化，而无需购买和维护运�
 
 适用于 Azure 的 Microsoft 反恶意软件是针对应用程序和租户环境的单一代理解决方案。 它旨在后台运行，且无需人工干预。 可以根据应用程序工作负荷的需求，选择默认的基本安全性或高级的自定义配置（包括反恶意软件监视）来部署保护。
 
-部署并启用适用于 Azure 的 Microsoft 反恶意软件后，可使用以下几项核心功能：
-
-* **实时保护**：监视云服务中和虚拟机上的活动，检测并阻止恶意软件的执行。
-* **计划的扫描**：定期执行有针对性的扫描，检测恶意软件（包括主动运行的程序）。
-* **恶意软件消除**：自动针对检测到的恶意软件采取措施，例如删除或隔离恶意文件以及清除恶意注册表项。
-* **签名更新**：自动安装最新的保护签名（病毒定义），确保按预定的频率保持最新保护状态。
-* **反恶意软件引擎更新**：自动更新适用于 Azure 的 Microsoft 反恶意软件引擎。
-* **反恶意软件平台更新**：自动更新适用于 Azure 的 Microsoft 反恶意软件平台。
-* **主动保护**：将有关检测到的威胁和可疑资源的遥测元数据报告给 Azure，确保快速响应。 通过 Microsoft Active Protection System (MAPS) 启用实时同步签名发送。
-* **示例报告**：将示例提供并报告给适用于 Azure 的 Microsoft 反恶意软件服务，帮助改善服务并实现故障排除。
-* **排除项**：允许应用程序和服务管理员配置特定的文件、进程与驱动器，以便出于性能和其他原因将其从保护和扫描中排除。
-* **反恶意软件事件收集**：在操作系统事件日志中记录反恶意软件服务运行状况、可疑活动及采取的补救措施，并将这些数据收集到客户的 Azure 存储帐户。
+详细了解适用[于 Azure 的 Microsoft 反恶意软件](antimalware.md)和可用的核心功能。
 
 了解有关反恶意软件的详细信息以保护虚拟机：
 
-* [适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件](antimalware.md)
 * [在 Azure 虚拟机上部署反恶意软件解决方案](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [如何在 Windows VM 上安装和配置服务型 Trend Micro Deep Security](/azure/virtual-machines/windows/classic/install-trend)
 * [如何在 Windows VM 上安装和配置 Symantec Endpoint Protection](/azure/virtual-machines/windows/classic/install-symantec)
@@ -86,7 +74,7 @@ Azure 虚拟机可用于灵活地进行虚拟化，而无需购买和维护运�
 
 提高密钥安全性可增强加密和身份验证保护。 通过将关键密码和密钥存储在 Azure 密钥保管库中，可以简化此类密码和密钥的管理和保护。
 
-密钥保管库提供将密钥存储在已通过 FIPS 140-2 Level 2 标准认证的硬件安全模块 (HSM) 中的选项。 用于备份或[透明数据加密](https://msdn.microsoft.com/library/bb934049.aspx)的 SQL Server 加密密钥均可存储在密钥保管库中，此外还可存储应用程序中的任意密钥或密码。 对这些受保护项的权限和访问权限通过 [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) 进行管理。
+Key Vault 使你可以将密钥存储在 FIPS 140-2 级别 2 标准认证的硬件安全模块 (HSM) 中。 用于备份或[透明数据加密](https://msdn.microsoft.com/library/bb934049.aspx)的 SQL Server 加密密钥均可存储在密钥保管库中，此外还可存储应用程序中的任意密钥或密码。 对这些受保护项的权限和访问权限通过 [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) 进行管理。
 
 了解更多：
 
@@ -102,11 +90,11 @@ Azure 磁盘加密是用于加密 Windows 和 Linux 虚拟机磁盘的新功能�
 了解更多：
 
 * [适用于 IaaS VM 的 Azure 磁盘加密](/azure/security/azure-security-disk-encryption-overview)
-* [Quickstart:Encrypt a Windows IaaS VM with Azure PowerShell](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)（快速入门：使用 Azure PowerShell 加密 Windows IaaS VM）
+* [快速入门：使用 Azure PowerShell 加密 Windows IaaS VM](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 
 ## <a name="virtual-machine-backup"></a>虚拟机备份
 
-Azure 备份是一种可缩放的解决方案，无需资本投资便可帮助保护应用程序数据，从而最大限度降低运营成本。 应用程序错误可能损坏数据，人为错误可能将 bug 引入应用程序。 使用 Azure 备份可以保护运行 Windows 和 Linux 的虚拟机。
+Azure 备份是一种可缩放的解决方案，无需资本投资便可帮助保护应用程序数据，从而最大限度降低运营成本。 应用程序错误可以损坏你的数据，人为错误可以将 bug 引入你的应用程序。 借助 Azure 备份，可以保护运行 Windows 和 Linux 的虚拟机。
 
 了解更多：
 
@@ -122,8 +110,8 @@ Site Recovery：
 * **简化 BCDR 策略**：通过 Site Recovery 可从一个位置轻松处理多个业务工作负荷和应用的复制、故障转移及恢复。 Site Recovery 会协调复制和故障转移，但不会拦截应用程序数据或拥有任何相关信息。
 * **提供灵活的复制**：借助 Site Recovery，可以复制 Hyper-V 虚拟机、VMware 虚拟机和 Windows/Linux 物理服务器上运行的工作负荷。
 * **支持故障转移和恢复**：Site Recovery 提供测试故障转移，既能支持灾难恢复练习，又不会影响生产环境。 也可以运行计划的故障转移，因为是预期中的中断，所以不会丢失任何数据；或是运行非计划的故障转移，以在发生非预期的灾难时会数据损失减到最少（取决于复制频率）。 故障转移之后，可故障回复到主站点。 Site Recovery 提供的恢复计划可包含脚本和 Azure 自动化工作簿，可用于自定义多层应用程序的故障转移和恢复。
-* **消除辅助数据中心**：可复制到辅助本地站点，或复制到 Azure。 将 Azure 用作灾难恢复的目标可以消除维护辅助站点的复杂性和成本。 复制的数据存储在 Azure 存储中。
-* **与现有 BCDR 技术集成**：Site Recovery 能够与其他应用程序的 BCDR 功能结合使用。 例如，可使用 Site Recovery 来帮助保护公司工作负荷的 SQL Server 后端。 这包括对 SQL Server AlwaysOn 的本机支持以管理可用性组的故障转移。
+* **消除辅助数据中心**：可复制到辅助本地站点或 Azure。 将 Azure 用作灾难恢复的目标可以消除维护辅助站点的复杂性和成本。 复制的数据存储在 Azure 存储中。
+* **与现有 BCDR 技术集成**：Site Recovery 可与其他应用程序的 BCDR 功能配合使用。 例如，可使用 Site Recovery 来帮助保护公司工作负荷的 SQL Server 后端。 这包括对 SQL Server AlwaysOn 的本机支持以管理可用性组的故障转移。
 
 了解更多：
 
@@ -158,14 +146,14 @@ Azure 安全中心可帮助防范、检测和应对威胁。 通过安全中心�
 * [Azure 安全中心常见问题解答](/azure/security-center/security-center-faq)
 * [Azure 安全中心规划和操作](/azure/security-center/security-center-planning-and-operations-guide)
 
-## <a name="compliance"></a>合规性
+## <a name="compliance"></a>合规
 
 Azure 虚拟机已针对 FISMA、FedRAMP、HIPAA、PCI DSS Level 1 和其他关键合规性计划进行了认证。 此认证使自己的 Azure 应用程序更容易满足合规性要求，并使企业更容易应对各种国内和国际法规要求。
 
 了解更多：
 
-* [Microsoft Trust Center:Compliance](https://www.microsoft.com/en-us/trustcenter/compliance)（Microsoft 信任中心：合规性）
-* [Trusted Cloud:Microsoft Azure Security, Privacy, and Compliance](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)（可信云：Microsoft Azure 安全性、隐私和合规性）
+* [Microsoft Trust Center: Compliance](https://www.microsoft.com/en-us/trustcenter/compliance)（Microsoft 信任中心：合规性）
+* [Trusted Cloud: Microsoft Azure Security, Privacy, and Compliance](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)（可信云：Microsoft Azure 安全性、隐私和合规性）
 
 ## <a name="confidential-computing"></a>机密计算
 
@@ -179,3 +167,7 @@ TEE 可以确保无法从外部查看数据或执行操作，即使通过调试�
 
 * [Azure 机密计算介绍](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
 * [Azure 机密计算](https://azure.microsoft.com/blog/azure-confidential-computing/)  
+
+## <a name="next-steps"></a>后续步骤
+
+了解 Vm 和操作系统的[最佳安全方案](iaas.md)。

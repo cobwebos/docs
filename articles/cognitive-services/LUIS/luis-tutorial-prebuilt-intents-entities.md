@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 08/20/2019
+ms.date: 10/21/2019
 ms.author: diberry
-ms.openlocfilehash: aaeddac98e3f192d5e6a87ecfd48005526379ff2
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: cf0ef1095946b1c8e9479b3cd47fe403baeed7d1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390984"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757128"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>教程：确定常见意向和实体
 
@@ -63,12 +63,9 @@ LUIS 为常见数据提取提供多个预生成的实体。
 
 1. 从预生成的实体列表中选择以下实体，然后选择“完成”： 
 
-   * **[PersonName](luis-reference-prebuilt-person.md)** 
    * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
 
-     ![在“预生成的实体”对话框中选择的数字的屏幕截图](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
-
-     这些实体可帮助你在客户端应用程序中添加名称和位置识别。
+     此实体将帮助你将位置识别添加到客户端应用程序。
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>将话语示例添加到 None 意向 
 
@@ -86,79 +83,83 @@ LUIS 为常见数据提取提供多个预生成的实体。
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-1. 将光标定位到浏览器地址栏中 URL 的末尾，并输入 `I want to cancel my trip to Seattle to see Bob Smith`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 
+1. 将光标定位到浏览器地址栏中 URL 的末尾，并输入 `I want to cancel my trip to Seattle`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 
 
     ```json
     {
-      "query": "I want to cancel my trip to Seattle to see Bob Smith.",
+      "query": "I want to cancel my trip to Seattle",
       "topScoringIntent": {
-        "intent": "Utilities.ReadAloud",
-        "score": 0.100361854
+        "intent": "Utilities.Cancel",
+        "score": 0.1055009
       },
       "intents": [
         {
-          "intent": "Utilities.ReadAloud",
-          "score": 0.100361854
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.08102781
-        },
-        {
-          "intent": "Utilities.SelectNone",
-          "score": 0.0398852825
-        },
-        {
           "intent": "Utilities.Cancel",
-          "score": 0.0277276486
+          "score": 0.1055009
         },
         {
           "intent": "Utilities.SelectItem",
-          "score": 0.0220712926
+          "score": 0.02659072
         },
         {
-          "intent": "Utilities.StartOver",
-          "score": 0.0145813478
+          "intent": "Utilities.Stop",
+          "score": 0.0253379084
         },
         {
-          "intent": "None",
-          "score": 0.012434179
+          "intent": "Utilities.ReadAloud",
+          "score": 0.02528683
+        },
+        {
+          "intent": "Utilities.SelectNone",
+          "score": 0.02434013
         },
         {
           "intent": "Utilities.Escalate",
-          "score": 0.0122632384
+          "score": 0.009161292
+        },
+        {
+          "intent": "Utilities.Help",
+          "score": 0.006861785
+        },
+        {
+          "intent": "Utilities.StartOver",
+          "score": 0.00633448
         },
         {
           "intent": "Utilities.ShowNext",
-          "score": 0.008534077
+          "score": 0.0053827134
+        },
+        {
+          "intent": "None",
+          "score": 0.002602003
         },
         {
           "intent": "Utilities.ShowPrevious",
-          "score": 0.00547111453
+          "score": 0.001797354
         },
         {
           "intent": "Utilities.SelectAny",
-          "score": 0.00152912608
+          "score": 0.000831930141
         },
         {
           "intent": "Utilities.Repeat",
-          "score": 0.0005556819
-        },
-        {
-          "intent": "Utilities.FinishTask",
-          "score": 0.000169488427
+          "score": 0.0006924066
         },
         {
           "intent": "Utilities.Confirm",
-          "score": 0.000149565312
+          "score": 0.000606057351
         },
         {
           "intent": "Utilities.GoBack",
-          "score": 0.000141017343
+          "score": 0.000276725681
+        },
+        {
+          "intent": "Utilities.FinishTask",
+          "score": 0.000267822179
         },
         {
           "intent": "Utilities.Reject",
-          "score": 6.27324E-06
+          "score": 3.21784828E-05
         }
       ],
       "entities": [
@@ -167,18 +168,12 @@ LUIS 为常见数据提取提供多个预生成的实体。
           "type": "builtin.geographyV2.city",
           "startIndex": 28,
           "endIndex": 34
-        },
-        {
-          "entity": "bob smith",
-          "type": "builtin.personName",
-          "startIndex": 43,
-          "endIndex": 51
         }
       ]
     }
     ```
 
-    结果中预测了置信度为 80% 的 Utilities.Cancel 意向，并提取了城市和人名数据。 
+    结果中预测了置信度为 80% 的 Utilities.Cancel 意向，并提取了城市数据。 
 
 
 ## <a name="clean-up-resources"></a>清理资源

@@ -1,5 +1,5 @@
 ---
-title: “使用证书通过 Azure AD 报告 API 获取数据”教程 | Microsoft Docs
+title: 带有证书的 AD Reporting API 教程 |Microsoft Docs
 description: 本教程介绍如何在没有用户干预的情况下，使用证书凭据通过 Azure AD 报告 API 从目录获取数据。
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdab5bc4be366f778213127a307fb4fcf7cf38a3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 3fe5f2a6d1957a544c63cb8a7c223ba9734786f8
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989484"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895130"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>教程：使用证书通过 Azure Active Directory 报告 API 获取数据
 
@@ -29,9 +29,9 @@ ms.locfileid: "68989484"
 
 本教程介绍如何使用测试证书访问 MS 图形 API 以进行报告。 建议不要在生产环境中使用测试证书。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-1. 若要访问登录数据，请确保拥有一个使用高级 (P1/P2) 许可证的 Azure Active Directory 租户。 请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)来升级 Azure Active Directory 版本。 请注意，如果在升级之前没有任何活动数据，则在升级到高级版许可证后，数据需要经过几天才会显示在报表中。 
+1. 若要访问登录数据，请确保拥有一个使用高级 (P1/P2) 许可证的 Azure Active Directory 租户。 请参阅[Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md)入门，升级 Azure Active Directory 版本。 请注意，如果在升级之前没有任何活动数据，则在升级到高级版许可证后，数据需要经过几天才会显示在报表中。 
 
 2. 创建或切换到属于该租户的全局管理员、安全管理员、安全读取者或报表读取者角色的用户帐户。 
 
@@ -44,7 +44,7 @@ ms.locfileid: "68989484"
     - 使用 ADAL 的用户、应用程序密钥和证书中的访问令牌
     - 处理分页结果的图形 API
 
-6. 如果是首次使用此模块，请运行 **Install-MSCloudIdUtilsModule**，否则请使用 **Import-Module** Powershell 命令导入它。 会话应如以下屏幕所示：![Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. 如果是首次使用模块，请运行 Install-MSCloudIdUtilsModule，否则使用 Import-Module Powershell 命令将其导入。 会话应类似于此屏幕： Windows Powershell ![](./media/tutorial-access-api-with-certificates/module-install.png)
   
 7. 使用 New-SelfSignedCertificate Powershell commandlet 创建测试证书。
 
@@ -65,11 +65,11 @@ ms.locfileid: "68989484"
 
 2. 选择“设置” > “密钥”，然后选择“上传公钥”。
 
-3. 选择上一步中的证书文件并选择“保存”。 
+3. 选择上一步中的证书文件，然后选择“保存”。 
 
 4. 请注意应用程序 ID 以及刚刚使用应用程序注册的证书的指纹。 若要查找指纹，在门户中的“应用程序”页，转到“设置”，然后单击“密钥”。 指纹将位于“公钥”列表下。
 
-5. 在内联清单编辑器中打开应用程序清单，并使用以下架构将 *keyCredentials* 属性替换为新的证书信息。 
+5. 在内联清单编辑器中打开应用程序清单，并使用以下架构将 keyCredentials 属性替换为新的证书信息。 
 
    ```
    "keyCredentials": [

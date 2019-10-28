@@ -4,15 +4,15 @@ description: 本文介绍了 Azure Cosmos DB 符合性产品的认证覆盖范�
 author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 10/15/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 3c77cc1baa07b0ee0e9f0141d81c623259ea57c4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 9ebec5498da8f7280179a48a6e3e3b10a9810e28
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387529"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881853"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB 符合性 
 

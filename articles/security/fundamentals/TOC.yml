@@ -3,10 +3,6 @@
 - name: 体系结构和设计
   href: overview.md
   expanded: false
-  items: null
-- name: 体系结构和设计
-  href: overview.md
-  expanded: false
   items:
     - name: 云中责任分担
       href: shared-responsibility.md
@@ -232,16 +228,12 @@
   href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
 - name: Azure 安全服务
   href: services-technologies.md
-- name: 技术概述
-  href: overviews.md
 - name: 最佳做法
   href: best-practices-and-patterns.md
 - name: 资源
   items:
     - name: 内置安全控件
       href: security-controls.md
-    - name: Azure 安全 MVP 计划
-      href: mvp.md
     - name: 网络安全咨询
       href: cyber-services.md
     - name: 记录安全事件支持票证

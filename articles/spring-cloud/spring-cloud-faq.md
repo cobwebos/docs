@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: d4edc634ad41042642b1d73f28ec61cb6dc15ac4
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 69b3827bbb53a5f989f3bdec0d5c4ea6035130f0
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72433322"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592305"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
@@ -30,12 +30,10 @@ Azure Spring Cloud 通过集成 Azure Monitor、Application Insights 和 Log Ana
 
 ### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Azure Spring Cloud 提供哪些服务计划？
 
-Azure Spring Cloud 在预览期提供一个服务计划。
+Azure Spring Cloud 在预览期提供一个服务计划。  Spring Cloud 部署包含 16 个 vCPU 核心和 32GB 内存。  部署中每个微服务实例的上限是具有 8GB 内存的 4 个 vCPU 核心。
 
 资源 | 金额
 ------- | -------
-vCPU | 4
-内存 | 8 GB
 每个 Spring 应用程序的应用实例数 | 20
 每个 Azure Spring Cloud 服务实例的应用实例总数 | 50*
 每个区域每个订阅的 Azure Spring Cloud 服务实例数 | 2*

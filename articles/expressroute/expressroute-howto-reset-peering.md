@@ -1,19 +1,19 @@
 ---
-title: 重置线路对等互连 - ExpressRoute：Azure | Microsoft Docs
+title: 重置线路对等互连-ExpressRoute： Azure |Microsoft Docs
 description: 如何禁用和启用 ExpressRoute 线路的对等互连。
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 10/25/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 8541362a16c7d12a0e3a4cf009ed9cd5faf9f1cd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 841c68b43e7f31693863268c3a7b2bd544c5e7ae
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366294"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965335"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>重置 ExpressRoute 线路对等互连
 
@@ -21,7 +21,7 @@ ms.locfileid: "60366294"
 
 存在几个有助于重置 ExpressRoute 对等互连的方案。
 * 测试灾难恢复设计和实现。 例如，你有两条 ExpressRoute 线路。 可以禁用一条线路的对等互连，并强制网络流量故障转移到另一条线路。
-* 对 ExpressRoute 线路的 Azure 专用对等互连启用双向转发检测 (BFD)。 如果 ExpressRoute 线路在 2018 年 8 月 1 日之后创建，将默认启用 BFD。 如果线路在此之前创建，则未启用 BFD。 可以通过禁用对等互连并重新启用它来启用 BFD。 应注意，BFD 仅在 Azure 专用对等互连上受支持。
+* 在 Azure 专用对等互连或 ExpressRoute 线路的 Microsoft 对等互连上启用双向转发检测（BFD）。 如果在 1 2018 年 1 2019 10 月之后创建 expressroute 线路，则在 Azure 专用对等互连上，BFD 默认情况下启用。 如果线路在此之前创建，则未启用 BFD。 可以通过禁用对等互连并重新启用它来启用 BFD。 
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
@@ -51,7 +51,7 @@ ms.locfileid: "60366294"
    ```azurepowershell-interactive
    $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
    ```
-5. 标识要禁用或启用的对等互连。 对等互连是一个数组  。 在以下示例中，Peerings[0] 是 Azure 专用对等互连，而 Peerings[1] 是 Microsoft 对等互连。
+5. 标识要禁用或启用的对等互连。 对等互连是一个数组。 在以下示例中，Peerings[0] 是 Azure 专用对等互连，而 Peerings[1] 是 Microsoft 对等互连。
 
    ```azurepowershell-interactive
    Name                             : ExpressRouteARMCircuit

@@ -1,23 +1,18 @@
 ---
-title: Azure 应用程序 Insights 代理 API 参考：设置配置 |Microsoft Docs
+title: Azure 应用程序 Insights 代理 API 参考
 description: Application Insights 代理 API 参考。 ApplicationInsightsMonitoringConfig。 监视网站性能而不重新部署网站。 适用于托管在本地、Vm 或 Azure 上的 ASP.NET web 应用。
-services: application-insights
-documentationcenter: .net
-author: TimothyMothra
-manager: alexklim
-ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 04/23/2019
+author: TimothyMothra
 ms.author: tilee
-ms.openlocfilehash: 2ab941b5587a8836f1e472fbce3966b12bfa1e11
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 04/23/2019
+ms.openlocfilehash: d90739fbdc862d67dc2ce0f1dfdf5af5f4089a44
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388253"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899680"
 ---
 # <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights 代理 API： ApplicationInsightsMonitoringConfig
 
@@ -43,10 +38,10 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 
 ### <a name="example-with-an-instrumentation-key-map"></a>使用检测键映射的示例
 在本示例中：
-- `MachineFilter` 使用 @no__t 通配符来匹配当前计算机。
-- @no__t 提供 @no__t 1 检测密钥。 不会检测指定的应用。
-- @no__t 为指定的应用程序指定唯一的检测密钥。
-- @no__t 为指定的应用程序指定唯一的检测密钥。
+- `MachineFilter` 使用 `'.*'` 通配符匹配当前计算机。
+- `AppFilter='WebAppExclude'` 提供 `null` 检测密钥。 不会检测指定的应用。
+- `AppFilter='WebAppOne'` 为指定的应用指定唯一的检测密钥。
+- `AppFilter='WebAppTwo'` 为指定的应用指定唯一的检测密钥。
 - 最后，`AppFilter` 还使用 `'.*'` 通配符来匹配之前的规则不匹配的所有 web 应用，并分配默认的检测密钥。
 - 添加空格以便于阅读。
 
@@ -67,7 +62,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
 **必需。** 使用此参数来提供多个检测密钥和每个应用使用的检测密钥的映射。
-可以通过将 @no__t 设置为多台计算机来创建单个安装脚本。
+您可以通过设置 `MachineFilter`为多台计算机创建单个安装脚本。
 
 > [!IMPORTANT]
 > 按照提供规则的顺序，应用将与规则匹配。 因此，您应该首先指定最特定的规则，最后指定最常见的规则。

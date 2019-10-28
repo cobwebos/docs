@@ -1,23 +1,19 @@
 ---
 title: 使用 Application Insights Profiler 探查 ASP.NET Core Azure Linux Web 应用 | Microsoft Docs
 description: 有关如何使用 Application Insights Profiler 的概念概述和分步教程。
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.reviewer: mbullwin
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 02/23/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 35789cc1e516fb24d5e985e12b44fe3cd01b795d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 02/23/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: a300aa066bdef40c4768ac5e278537aec1a8b3b7
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306458"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820554"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 探查 ASP.NET Core Azure Linux Web 应用
 
@@ -25,7 +21,7 @@ ms.locfileid: "60306458"
 
 使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 确定实时 Web 应用程序中的每个方法花费了多长时间。 Application Insights Profiler 现在可用于 Azure 应用服务上的 Linux 中托管的 ASP.NET Core Web 应用。 本指南提供了有关如何为 ASP.NET Core Linux Web 应用收集探查器跟踪的分步说明。
 
-完成本演练后，你的应用可以收集下图所示的探查器跟踪。 在此示例中，探查器跟踪指明某个特定的 Web 请求较慢，因为时间都花费在等待上。 代码中拖慢了应用的热路径前面带有火焰图标。  **HomeController** 节中的 **About** 方法拖慢了 Web 应用，因为该方法正在调用 **Thread.Sleep** 函数。
+完成本演练后，你的应用可以收集下图所示的探查器跟踪。 在此示例中，探查器跟踪指明某个特定的 Web 请求较慢，因为时间都花费在等待上。 代码中拖慢了应用的热路径前面带有火焰图标。 **HomeController** 节中的 **About** 方法拖慢了 Web 应用，因为该方法正在调用 **Thread.Sleep** 函数。
 
 ![探查器跟踪](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
@@ -53,7 +49,7 @@ ms.locfileid: "60306458"
     dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
     ```
 
-1. 启用 Application Insights 在 Program.cs 中：
+1. 在 Program.cs 中启用 Application Insights：
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -62,7 +58,7 @@ ms.locfileid: "60306458"
             .UseStartup<Startup>();
     ```
     
-1. 启用 Profiler 在 Startup.cs 中：
+1. 在 Startup.cs 中启用探查器：
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -170,17 +166,17 @@ ms.locfileid: "60306458"
 
 4. 等待 2-5 分钟，以便将事件聚合到 Application Insights。
 
-5. 在 Azure 门户中浏览到 Application Insights 的“性能”窗格。  可以在窗格右下角查看探查器跟踪。
+5. 在 Azure 门户中浏览到 Application Insights 的“性能”窗格。 可以在窗格右下角查看探查器跟踪。
 
     ![查看探查器跟踪](./media/profiler-aspnetcore-linux/view-traces.png)
 
 ## <a name="known-issues"></a>已知问题
 
-### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>配置文件现在按钮并不适用于 Linux Profiler
-App Insights profiler 的 Linux 版本尚不支持按需分析现在使用配置文件按钮。
+### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>对于 Linux Profiler，"立即配置文件" 按钮不起作用
+Linux 版本的 App Insights 探查器尚不支持使用 "立即配置文件" 按钮进行按需分析。
 
 
 ## <a name="next-steps"></a>后续步骤
 如果使用 Azure 应用服务托管的自定义容器，请遵照[为容器化 ASP.NET Core 应用程序启用服务探查器](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp)中的说明启用 Application Insights Profiler。
 
-报告有关 Application Insights GitHub 存储库的任何问题或提出建议：[ApplicationInsights-Profiler-AspNetCore：问题](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues)。
+报告有关 Application Insights GitHub 存储库的任何问题或提出建议：[ApplicationInsights-Profiler-AspNetCore：问题](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues)

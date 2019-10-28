@@ -15,12 +15,12 @@ ms.date: 08/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: eb7c2cb4a20c89f3a54f23e354d56e5dc3711ef0
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: e8a5b8b5794687f9e3b1707fda4cbe381e277317
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967107"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819766"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>对 Azure 资源的 RBAC 问题进行故障排除
 
@@ -28,35 +28,35 @@ ms.locfileid: "70967107"
 
 ## <a name="problems-with-rbac-role-assignments"></a>RBAC 角色分配出现问题
 
-- 如果你因为“添加” > “添加角色分配”选项被禁用或者因为收到权限错误“具有此对象 id 的客户端无权执行操作”而无法在 Azure 门户中的“访问控制(IAM)”上添加角色分配，请检查你当前登录时使用的用户是否为在你尝试分配角色的范围中具有 `Microsoft.Authorization/roleAssignments/write` 权限的角色，例如[所有者](built-in-roles.md#owner)或[用户访问管理员](built-in-roles.md#user-access-administrator)。
-- 如果尝试分配角色时收到错误消息“无法创建更多的角色分配(代码:RoleAssignmentLimitExceeded)”，请尝试通过改为将角色分配给组来减少角色分配数。 Azure 对于每个订阅最多支持 **2000** 个角色分配。
+- 如果无法在**访问控制（IAM）** 的 Azure 门户中添加角色分配，因为 "**添加** > **添加角色分配**" 选项已禁用，或者你获取了权限错误 "具有对象 id 的客户端没有授权执行操作 "，请检查你当前是否已使用分配有 `Microsoft.Authorization/roleAssignments/write` 权限的用户（例如，在你尝试分配角色的范围内拥有"[所有者](built-in-roles.md#owner)"或"[用户访问管理员](built-in-roles.md#user-access-administrator)"角色）登录。
+- 如果你在尝试分配角色时收到错误消息 "无法创建更多的角色分配（code： RoleAssignmentLimitExceeded）"，请尝试通过将角色分配给组来减少角色分配的数量。 Azure 对于每个订阅最多支持 **2000** 个角色分配。 此角色分配限制是固定的，不能增加。
 
 ## <a name="problems-with-custom-roles"></a>自定义角色出现问题
 
-- 如果需要了解有关如何创建自定义角色的步骤，请参阅使用 [Azure PowerShell](tutorial-custom-role-powershell.md) 或 [Azure CLI](tutorial-custom-role-cli.md) 自定义角色的教程。
-- 如果你无法更新现有的自定义角色，请检查你当前登录时使用的用户是否分配有具有 `Microsoft.Authorization/roleDefinition/write` 权限的角色，例如[所有者](built-in-roles.md#owner)或[用户访问管理员](built-in-roles.md#user-access-administrator)。
-- 如果你无法删除自定义角色并且收到错误消息“已存在引用此角色的角色分配(代码:RoleDefinitionHasAssignments)”，则表明存在仍然使用此自定义角色的角色分配。 请删除这些角色分配，然后再次尝试删除自定义角色。
-- 如果尝试创建新的自定义角色时收到错误消息“角色定义超限。 无法创建更多的角色定义(代码:RoleDefinitionLimitExceeded)”，请删除未在使用的任何自定义角色。 Azure 在一个租户中最多支持 **5000** 个自定义角色。 （Azure 政府、Azure 德国、Azure 中国世纪互联等专用云的限制为 2000 个自定义角色。）
-- 如果尝试更新自定义角色时收到类似于“客户端具有在范围 '/subscriptions/{subscriptionid}' 上执行操作 'Microsoft.Authorization/roleDefinitions/write' 的权限，但是未找到链接的订阅”的错误，请检查是否已在租户中删除了一个或多个[可分配的范围](role-definitions.md#assignablescopes)。 如果删除了作用域，请创建一个支持票证，因为目前没有自助服务解决方案可用。
+- 如果需要有关如何创建自定义角色的步骤，请参阅使用[Azure PowerShell](tutorial-custom-role-powershell.md)或[Azure CLI](tutorial-custom-role-cli.md)的自定义角色教程。
+- 如果无法更新现有的自定义角色，请检查你当前是否已使用分配有 `Microsoft.Authorization/roleDefinition/write` 权限的用户（如 "[所有者](built-in-roles.md#owner)" 或 "[用户访问管理员](built-in-roles.md#user-access-administrator)"）登录。
+- 如果无法删除自定义角色并收到错误消息 "存在角色分配引用角色（code： RoleDefinitionHasAssignments）"，则仍在使用自定义角色的角色分配。 请删除这些角色分配，然后再次尝试删除自定义角色。
+- 如果尝试创建新的自定义角色时收到错误消息“角色定义超限。 创建新的自定义角色时，无法创建更多的角色定义（code： RoleDefinitionLimitExceeded） "。请删除任何未使用的自定义角色。 Azure 在租户中最多支持**5000**个自定义角色。 （Azure 政府、Azure 德国、Azure 中国世纪互联等专用云的限制为 2000 个自定义角色。）
+- 如果收到类似于 "客户端有权在范围"/subscriptions/{subscriptionid} "上执行操作" roleDefinitions/write "的错误，但在尝试更新自定义角色时找不到链接的订阅"，请检查是否已在租户中删除一个或多个可[分配的作用域](role-definitions.md#assignablescopes)。 如果删除了作用域，请创建一个支持票证，因为目前没有自助服务解决方案可用。
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>在租户之间移动订阅时恢复 RBAC
 
-- 如果你需要了解将订阅转让给其他 Azure AD 租户的步骤，请参阅[将 Azure 订阅所有权转让给其他帐户](../billing/billing-subscription-transfer.md)。
-- 如果将订阅转让给其他 Azure AD 租户，所有角色分配都将从源 Azure AD 租户中永久删除，而不会迁移到目标 Azure AD 租户。 必须在目标租户中重新创建角色分配。 此外，还需手动重新创建 Azure 资源的托管标识。 有关详细信息，请参阅[托管标识的 FAQ 和已知问题](../active-directory/managed-identities-azure-resources/known-issues.md)。
-- 如果你是 Azure AD 全局管理员并且在租户之间移动某个订阅后对其没有访问权限，请使用“Azure 资源的访问权限管理”开关暂时[提升你的访问权限](elevate-access-global-admin.md)来获取对订阅的访问权限。
+- 如果需要有关如何将订阅转移到不同 Azure AD 租户的步骤，请参阅[将 Azure 订阅的所有权转让给其他帐户](../billing/billing-subscription-transfer.md)。
+- 如果将订阅转让给其他 Azure AD 租户，所有角色分配都将从源 Azure AD 租户中永久删除，而不会迁移到目标 Azure AD 租户。 必须在目标租户中重新创建角色分配。 还必须为 Azure 资源手动重新创建托管标识。 有关详细信息，请参阅[托管标识的常见问题解答和已知问题](../active-directory/managed-identities-azure-resources/known-issues.md)。
+- 如果你是 Azure AD 全局管理员，并且在租户之间移动订阅后你无法访问它，请使用**Azure 资源的访问管理**切换来暂时[提升你的访问](elevate-access-global-admin.md)权限，以获取对订阅的访问权限。
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>服务管理员或共同管理员出现问题
 
-- 如果遇到服务管理员或协同管理员方面的问题，请参阅[添加或更改 Azure 订阅管理员](../billing/billing-add-change-azure-subscription-administrator.md)以及[经典订阅管理员角色、Azure RBAC 角色和 Azure AD管理员角色](rbac-and-directory-admin-roles.md)。
+- 如果你遇到服务管理员或共同管理员的问题，请参阅[添加或更改 azure 订阅管理员](../billing/billing-add-change-azure-subscription-administrator.md)和[经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色](rbac-and-directory-admin-roles.md)。
 
-## <a name="access-denied-or-permission-errors"></a>访问被拒绝或权限错误
+## <a name="access-denied-or-permission-errors"></a>拒绝访问或权限错误
 
-- 如果尝试创建资源时收到权限错误“具有此对象 id 的客户端无权在此作用域内执行操作(代码:AuthorizationFailed)”，请检查你当前登录时使用的用户是否分配有在所选作用域内对资源具有写入权限的角色。 例如，若要管理某个资源组中的虚拟机，则你应当在该资源组（或父作用域）中具有[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色。 有关每个内置角色的权限列表，请参阅 [Azure 资源的内置角色](built-in-roles.md)。
-- 如果尝试创建或更新支持票证时收到权限错误“无权创建支持票证”，请检查你当前登录时使用的用户是否分配有具有 `Microsoft.Support/supportTickets/write` 权限的角色，例如[支持请求参与者](built-in-roles.md#support-request-contributor)。
+- 如果你在尝试创建资源时收到权限错误 "具有对象 id 的客户端无权执行操作（code： AuthorizationFailed）"，请检查你当前是否已使用分配有写入权限的用户登录对所选范围内的资源的权限。 例如，若要管理某个资源组中的虚拟机，则你应当在该资源组（或父作用域）中具有[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色。 有关每个内置角色的权限列表，请参阅 [Azure 资源的内置角色](built-in-roles.md)。
+- 如果你在尝试创建或更新支持票证时获得权限错误 "你没有创建支持请求的权限"，请检查你当前是否已使用分配有 `Microsoft.Support/supportTickets/write` 权限的角色的用户登录，例如[支持请求参与者](built-in-roles.md#support-request-contributor)。
 
-## <a name="role-assignments-without-a-security-principal"></a>没有安全主体的角色分配
+## <a name="role-assignments-with-unknown-security-principal"></a>具有未知安全主体的角色分配
 
-使用 Azure PowerShell 列出角色分配时，可能会看到分配的 `DisplayName` 为空且 `ObjectType` 设置为“未知”。 例如，[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) 返回的角色分配如下所示：
+当你使用 Azure PowerShell 列出你的角色分配时，可能会看到具有空 `DisplayName` 的分配，并且 `ObjectType` 设置为 "未知"。 例如， [AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment)返回类似于以下内容的角色分配：
 
 ```azurepowershell
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -70,7 +70,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-类似地，使用 Azure CLI 列出角色分配时，可能会看到分配的 `principalName` 为空。 例如，[az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) 返回的角色分配如下所示：
+同样，使用 Azure CLI 列出角色分配时，可能会看到具有空 `principalName`的分配。 例如， [az role 赋值 list](/cli/azure/role/assignment#az-role-assignment-list)返回类似于以下内容的角色分配：
 
 ```azurecli
 {
@@ -86,11 +86,11 @@ CanDelegate        : False
 }
 ```
 
-如果将角色分配给安全主体（用户、组、服务主体或托管标识），然后又删除该安全主体，则会进行此类角色分配。 这些角色分配不显示在 Azure 门户中，留下它们没有问题。 不过，你可以根据需要删除这些角色分配。
+当你向安全主体（用户、组、服务主体或托管标识）分配角色时，会发生这些角色分配，稍后会删除该安全主体。 这些角色分配不会显示在 Azure 门户中，因此不会出现问题。 不过，如果愿意，可以删除这些角色分配。
 
-若要删除这些角色分配，请使用 [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) 或 [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete) 命令。
+若要删除这些角色分配，请使用[AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment)或[az role 赋值 delete](/cli/azure/role/assignment#az-role-assignment-delete)命令。
 
-在 PowerShell 中，如果尝试通过对象 ID 和角色定义名称来删除角色分配，而多个角色分配与参数相匹配，则会出现错误消息：“提供的信息未映射到角色分配”。 下面显示了错误消息示例：
+在 PowerShell 中，如果尝试使用对象 ID 和角色定义名称删除角色分配，并且有多个角色分配与参数匹配，则将收到错误消息： "提供的信息未映射到角色分配"。 下面显示了错误消息的示例：
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor"
@@ -103,7 +103,7 @@ At line:1 char:1
 + FullyQualifiedErrorId : Microsoft.Azure.Commands.Resources.RemoveAzureRoleAssignmentCommand
 ```
 
-如果出现此错误消息，请确保还指定了 `-Scope` 或 `-ResourceGroupName` 参数。
+如果收到此错误消息，请确保同时指定 `-Scope` 或 `-ResourceGroupName` 参数。
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor" - Scope /subscriptions/11111111-1111-1111-1111-111111111111
@@ -147,7 +147,7 @@ Azure 资源管理器有时会缓存配置和数据以提高性能。 创建或�
 这些项需要对包含网站的整个**资源组**具有**写**访问权限：  
 
 * SSL 证书和绑定（SSL 证书可以在同一资源组和地理位置中的站点之间共享）  
-* 警报规则  
+* 预警规则  
 * 自动缩放设置  
 * Application Insights 组件  
 * Web 测试  
@@ -163,13 +163,13 @@ Azure 资源管理器有时会缓存配置和数据以提高性能。 创建或�
 * 终结点  
 * IP 地址  
 * 磁盘  
-* Extensions  
+* 扩展  
 
 这些项需要对**虚拟机**和其所在的**资源组**（以及域名）具有**写**访问权限：  
 
 * 可用性集  
 * 负载均衡集  
-* 警报规则  
+* 预警规则  
 
 如果无法访问以上任何磁贴，则需要让管理员提供对资源组的“参与者”访问权限。
 

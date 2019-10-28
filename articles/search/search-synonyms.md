@@ -1,37 +1,35 @@
 ---
-title: 搜索索引上查询扩展的同义词 - Azure 搜索
-description: 创建一个同义词映射，用于扩展 Azure 搜索索引上搜索查询的范围。 扩宽了范围，使其包括你在列表中提供的同义术语。
-author: brjohnstmsft
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: conceptual
-ms.date: 05/02/2019
+title: 用于在搜索索引上进行查询扩展的同义词
+titleSuffix: Azure Cognitive Search
+description: 创建同义词映射，以扩展 Azure 认知搜索索引上搜索查询的作用域。 扩宽了范围，使其包括你在列表中提供的同义术语。
 manager: nitinme
+author: brjohnstmsft
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: a17e2ae5313f9d0b662d343230a04dd3e726c16d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 7c94ad096cf7d0d01bf2076f6748b49cf4ae1bb4
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331182"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794225"
 ---
-# <a name="synonyms-in-azure-search"></a>Azure 搜索中的同义词功能
+# <a name="synonyms-in-azure-cognitive-search"></a>Azure 认知搜索中的同义词
 
 搜索引擎中的同义词功能无需用户实际提供术语，便可关联隐式扩展查询作用域的等效术语。 例如，若给定术语“dog”以及“canine”和“puppy”同义词关联，则包含“dog”、“canine”或“puppy”的所有文档都属于查询作用域。
 
-在 Azure 搜索中，查询时会完成同义词功能扩展。 可将同义词映射添加到服务，而不会中断现有操作。 可将  **synonymMaps** 属性添加到字段定义，而无需重新生成索引。
+在 Azure 认知搜索中，将在查询时完成同义词扩展。 可将同义词映射添加到服务，而不会中断现有操作。 可将  **synonymMaps** 属性添加到字段定义，而无需重新生成索引。
 
 ## <a name="create-synonyms"></a>创建同义词
 
-无门户支持来创建同义词，但你可以使用 REST API 或 .NET SDK。 若要开始使用 REST，建议使用以下 API 的[Postman](search-get-started-postman.md)和表述请求： [Create 同义词 Maps](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)。 对于C#开发人员，你可以[使用C#在 Azure 搜索中开始添加同义词](search-synonyms-tutorial-sdk.md)。
+无门户支持来创建同义词，但你可以使用 REST API 或 .NET SDK。 若要开始使用 REST，建议使用以下 API 的[Postman](search-get-started-postman.md)和表述请求： [Create 同义词 Maps](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)。 对于C#开发人员，你可以[使用C#在 Azure 认知搜索中开始添加同义词](search-synonyms-tutorial-sdk.md)。
 
 （可选）如果使用[客户托管的密钥](search-security-manage-encryption-keys.md)进行服务端加密，则可以将该保护应用于同义词映射的内容。
 
 ## <a name="use-synonyms"></a>使用同义词
 
-在 Azure 搜索中，同义词支持基于定义和上传到服务的同义词映射。 这些映射构成独立的资源（如索引或数据源），在搜索服务中可用于任何索引的任何可搜索字段。
+在 Azure 认知搜索中，同义词支持基于你定义和上传到你的服务的同义词映射。 这些映射构成独立的资源（如索引或数据源），在搜索服务中可用于任何索引的任何可搜索字段。
 
 同义词映射和索引独立维护。 定义同义词映射并将其上传到服务后，可通过在字段定义中添加名为 **synonymMaps** 的新属性在字段上启用同义词功能。 创建、更新和删除同义词映射始终是一项全文档操作。也就是说，无法逐个创建、更新或删除同义词映射的各个部分。 甚至更新单个条目也需要重新加载。
 

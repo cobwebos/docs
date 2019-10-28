@@ -13,24 +13,22 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 07/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 3c23cc4fc7647cffa98cff9310498f683fda6328
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 115320a8b4ee7afc6e420dcfa96612b91ea6d1a0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275724"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790765"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Azure 实验室服务简介
-通过 Azure 实验室服务，可以快速在云中设置团队环境（例如，开发环境、测试环境、教室实验室环境）。 实验室所有者创建实验室、预配 Windows 或 Linux 虚拟机、安装必要的软件和工具，并将其提供给实验室用户使用。 实验室用户在实验室中连接到虚拟机 (VM)，以便进行日常工作、短期项目或实验室练习。 用户开始利用实验室中的资源后，实验室管理员可分析多个实验室的成本和使用情况，并设置总体策略以优化组织或团队成本。
+Azure 上有两项服务，可用于在云中设置实验室环境。 
 
-> [!IMPORTANT]
-> **Azure 开发测试实验室**正在使用新类型的实验室（Azure 实验室服务）进行扩展！
->  
-> 通过 Azure 实验室服务，可以创建托管实验室类型，例如教室实验室。 从运行 VM 到处理错误及扩展基础结构，该服务本身可以处理托管实验室类型的所有基础结构管理。 目前，[开发测试实验室](https://azure.microsoft.com/services/devtest-lab/)和 [Azure 实验室服务](https://azure.microsoft.com/services/lab-services/) 将继续作为独立于 Azure 门户的服务。 
+- **Azure 开发测试实验室** - 通过此服务，可以快速为团队设置环境（例如：开发环境或云中的测试环境）。 实验室所有者创建实验室、预配 Windows 或 Linux 虚拟机、安装必要的软件和工具，并将其提供给实验室用户使用。 实验室用户连接到实验室中的虚拟机 (VM)，并将这些虚拟机用于日常工作和短期项目。 用户开始利用实验室中的资源后，实验室管理员可分析多个实验室的成本和使用情况，并设置总体策略以优化组织或团队成本。
+- **Azure 实验室服务** - 使用此服务可创建托管实验室类型。 目前，教室实验室是 Azure 实验室服务支持的唯一托管实验室类型。 从运行 VM 到处理错误及扩展基础结构，该服务本身可以处理托管实验室类型的所有基础结构管理。 IT 管理员在 Azure 实验室服务中创建实验室帐户后，讲师可以快速为其班级建立实验室，指定班级中需要练习的 VM 的数量和类型，并将用户添加到班级中。 用户注册到班级后，用户就可以访问 VM 做班级练习。  
 
 ## <a name="key-capabilities"></a>关键功能
 
-Azure 实验室服务支持以下关键功能：
+这些服务（Azure 开发测试实验室和 Azure 实验室服务）支持以下关键功能：
 
 - **灵活快速地设置实验室**。 使用 Azure 实验室服务，实验室所有者可以根据需求快速设置实验室。 该服务可以选择为托管实验室类型处理所有 Azure 基础结构工作，或是由实验室所有者自行管理并在实验室所有者订阅中自定义基础结构。 该服务针对为你管理的实验室，提供内置缩放和基础结构复原。
 - **简化实验室用户操作**。 在托管实验室（如教室实验室）类型中，实验室用户可以使用注册代码注册到实验室，并随时访问实验室以使用实验室的资源。 在使用开发测试实验室创建的实验室中，实验室所有者可以向实验室用户授权，使其可创建并访问虚拟机、管理并重复使用数据磁盘，以及设置可重复使用的机密。  
@@ -43,7 +41,7 @@ Azure 实验室服务支持以下关键功能：
 
 ## <a name="scenarios"></a>方案
 
-以下是 Azure 实验室服务支持的一些方案：
+以下是 Azure 开发测试实验室和 Azure 实验室服务支持的一些方案：
 
 ### <a name="set-up-a-resizable-computer-lab-in-the-cloud-for-your-classroom"></a>在云中为教室设置可调整大小的计算机实验室  
 

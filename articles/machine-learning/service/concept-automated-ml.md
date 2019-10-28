@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: e80d79c16b0748e25e549365001990fb014b5f14
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 999f554bf4a2b9ddda83ee6398950cefb11d32aa
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030554"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929341"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -50,7 +50,7 @@ ms.locfileid: "72030554"
 
 1. **确定要解决的 ML 问题**：分类、预测或回归
 
-1. **指定标记的定型数据的源和格式**：Numpy 数组或 Pandas 数据帧
+1. **指定标记的定型数据的源和格式**： Numpy 数组或 Pandas 数据帧
 
 1. **为模型定型配置计算目标**，如[本地计算机、Azure 机器学习计算、远程 vm 或 Azure Databricks](how-to-set-up-training-targets.md)。  了解有关[远程资源](how-to-auto-train-remote.md)的自动化培训。
 
@@ -81,7 +81,7 @@ ms.locfileid: "72030554"
 
 在每个自动机器学习试验中，数据会自动缩放或规范化，以帮助算法正常执行。  在模型定型过程中，将对每个模型应用以下缩放或规范化技术之一。
 
-|缩放 @ no__t-0 @ no__t-1 @ no__t-2normalization| 描述 |
+|&nbsp;标准化&缩放&nbsp;| 描述 |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | 通过删除平均值并缩放到单位差异来实现功能标准化  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | 通过按列的最小值和最大值缩放每个特征来转换特征  |
@@ -95,9 +95,7 @@ ms.locfileid: "72030554"
 
 还提供了其他高级预处理和特征化，例如缺失值插补法、编码和转换。 [详细了解所包含的特征化](how-to-create-portal-experiments.md#preprocess)。 启用此设置，使用：
 
-+ Azure 门户：在[这些步骤](how-to-create-portal-experiments.md)中，选择 "**高级设置**" 中的 "**预处理**" 复选框。
-
-+ Python SDK：为[@no__t 2 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)指定 @no__t 0。
++ Python SDK：指定[`AutoMLConfig` 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)的 `"feauturization": auto' / 'off' / FeaturizationConfig`。
 
 
 ## <a name="time-series-forecasting"></a>时序预测
@@ -108,6 +106,8 @@ ms.locfileid: "72030554"
 了解更多详细信息，并查看[时序预测自动机器学习](how-to-auto-train-forecast.md)的示例。 或者，有关高级预测配置的详细代码示例，请参阅[能源需求笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)，其中包括：
 
 * 假日检测和特征化
+* 时序和 DNN 学习者（自动 ARIMA、Prophet、ForecastTCN）
+* 多模型支持通过分组
 * 滚动-原点交叉验证
 * 可配置滞后
 * 滚动窗口聚合功能
@@ -119,7 +119,7 @@ ms.locfileid: "72030554"
 * **投票**：根据预测类概率的加权平均值（适用于分类任务）或预测回归目标（适用于回归任务）进行预测。
 * **堆栈**：堆栈结合了异类模型，并根据各个模型的输出定型了元模型。 当前默认的元模型 LogisticRegression 用于分类任务，ElasticNet 用于回归/预测任务。
 
-使用已排序的系综初始化的[Caruana 系综选择算法](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)用于决定要在系综中使用的模型。 从较高层次来看，此算法使用最多5个模型初始化系综，其中最多有5个模型，并验证这些模型是否处于最佳分数的 5% 阈值内，以避免初始系综不佳。 然后，对于每个系综迭代，会将一个新模型添加到现有系综，并计算生成的分数。 如果新模型改进了现有的系综分数，则会更新系综以包含新模型。
+使用已排序的系综初始化的[Caruana 系综选择算法](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)用于决定要在系综中使用的模型。 从较高层次来看，此算法使用最多5个模型初始化系综，其中最多有5个模型，并验证这些模型是否处于最佳分数的5% 阈值内，以避免初始系综不佳。 然后，对于每个系综迭代，会将一个新模型添加到现有系综，并计算生成的分数。 如果新模型改进了现有的系综分数，则会更新系综以包含新模型。
 
 请参阅[如何](how-to-configure-auto-train.md#ensemble)在自动机器学习中更改默认系综设置。
 
@@ -172,7 +172,7 @@ ms.locfileid: "72030554"
 
 请参阅示例并了解如何使用自动机器学习来构建模型：
 
-+ 按照 @no__t 0Tutorial 操作：使用 Azure 自动机器学习 @ no__t 自动为回归模型定型-0
++ 按照[教程操作：使用 Azure 自动化机器学习自动为回归模型定型](tutorial-auto-train-models.md)
 
 + 配置自动定型试验的设置：
   + 在 Azure 门户界面或工作区登陆页面（预览）中，请[使用以下步骤](how-to-create-portal-experiments.md)。

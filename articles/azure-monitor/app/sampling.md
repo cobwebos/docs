@@ -1,24 +1,19 @@
 ---
 title: Azure Application Insights 中的遥测采样 | Microsoft 文档
 description: 如何使受控制的遥测数据的卷。
-services: application-insights
-documentationcenter: windows
-author: cijothomas
-manager: carmonm
-ms.assetid: 015ab744-d514-42c0-8553-8410eef00368
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: cijothomas
+ms.author: cithomas
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
-ms.author: cithomas
-ms.openlocfilehash: 83243ba7df48db5cd7757a464f0818ef69c4559e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 82c0855e3ea3b6a89c1b20569971b0dc6b3d449c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372561"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899863"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -33,7 +28,7 @@ ms.locfileid: "72372561"
 * 默认情况下，在所有最新版本的 ASP.NET 和 ASP.NET Core 软件开发工具包（Sdk）中启用自适应采样。
 * 还可以手动设置采样。 可以在门户中的 "*使用情况和预估成本" 页*上，通过代码在 ASP.NET Core sdk 中的 applicationinsights.config 文件中的 ASP.NET sdk 中进行配置，或在 applicationinsights.config 文件中的 Java SDK 中进行配置。
 * 如果记录自定义事件，并且需要确保将一组事件保留或丢弃在一起，则这些事件必须具有相同的 OperationId 值。
-* 采样除数 *n* 会在每个记录的属性 `itemCount` 中报告，在“搜索”中它出现在友好名称“请求计数”或“事件计数”下。 0when 采样不在操作中。 @no__t
+* 采样除数 *n* 会在每个记录的属性 `itemCount` 中报告，在“搜索”中它出现在友好名称“请求计数”或“事件计数”下。 当采样不在运行时 `itemCount==1`。
 * 如果要编写分析查询，应[考虑采样](../../azure-monitor/log-query/aggregations.md)。 特别是，应使用 `summarize sum(itemCount)`，而不是仅对记录进行计数。
 
 ## <a name="types-of-sampling"></a>采样类型
@@ -145,12 +140,12 @@ ms.locfileid: "72372561"
 
 ## <a name="configuring-adaptive-sampling-for-aspnet-core-applications"></a>配置 ASP.NET Core 应用程序的自适应采样。
 
-ASP.NET Core 应用程序没有 @no__t 0，因此每个配置都是通过代码完成的。
+ASP.NET Core 应用程序没有 `ApplicationInsights.Config`，因此每个配置都是通过代码完成的。
 默认情况下会为所有 ASP.NET Core 应用程序启用自适应采样。 你可以禁用或自定义采样行为。
 
 ### <a name="turning-off-adaptive-sampling"></a>禁用自适应采样
 
-在方法 ```ConfigureServices``` 中添加 Application Insights 服务时，可以使用 `Startup.cs` 文件中的 @no__t 来禁用默认的采样功能：
+在方法 ```ConfigureServices```中添加 Application Insights 服务时，可以使用 `Startup.cs` 文件中的 ```ApplicationInsightsServiceOptions``` 来禁用默认的采样功能：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

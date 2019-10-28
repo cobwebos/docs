@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: c75db8d1885c8680dd316952a5f67e11dc26edb1
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 53b53fa5185ade87dfdd21f0805641657d49d676
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949786"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800213"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>连接到 Api 并向其进行身份验证
 
@@ -28,11 +28,11 @@ Azure 数字孪生使用 Azure Active Directory (Azure AD) 对用户进行身份
 
 Azure AD 支持[五种主要应用程序方案](../active-directory/develop/v2-app-types.md)：
 
-* 单页应用程序（SPA）：用户需要登录到 Azure AD 保护的单页应用程序。
-* Web 浏览器到 web 应用程序：用户需要登录到 Azure AD 保护的 web 应用程序。
-* 本机应用程序到 web API：在手机、平板电脑或电脑上运行的本机应用程序需要对用户进行身份验证，以便从 Azure AD 保护的 web API 获取资源。
-* Web 应用程序到 web API：Web 应用程序需要通过受 Azure AD 保护的 Web API 获取资源。
-* 后台或服务器应用程序到 web API：不带 web UI 的后台应用程序或服务器应用程序需要从 Azure AD 的 web API 获取资源。
+* 单页应用程序 (SPA)：用户需要登录到受 Azure AD 保护的单页应用程序。
+* Web 浏览器到 Web 应用程序：用户需要登录到受 Azure AD 保护的 Web 应用程序。
+* 本机应用程序到 Web API：在手机、平板电脑或电脑上运行的本机应用程序需要对用户进行身份验证以通过受 Azure AD 保护的 Web API 获取资源。
+* Web 应用程序到 Web API：Web 应用程序需要通过受 Azure AD 保护的 Web API 获取资源。
+* 守护程序或服务器应用程序到 Web API：没有 Web UI 的守护程序应用程序或服务器应用程序需要通过受 Azure AD 保护的 Web API 获取资源。
 
 > [!IMPORTANT]
 > Azure 数字孪生支持以下两种身份验证库：
@@ -49,7 +49,7 @@ Azure AD 支持[五种主要应用程序方案](../active-directory/develop/v2-a
 
 1. 然后，使用获取的令牌，以向使用代理流的更下游 API 进行身份验证或调用该 API
 
-有关如何协调代理流的说明，请参阅 [OAuth 2.0 代理流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)。 还可以查看[调用下游 Web API](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapi-onbehalfof/) 中的代码示例。
+有关如何协调代理流的说明，请参阅 [OAuth 2.0 代理流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)。 还可以查看[调用下游 Web API](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof) 中的代码示例。
 
 ## <a name="next-steps"></a>后续步骤
 

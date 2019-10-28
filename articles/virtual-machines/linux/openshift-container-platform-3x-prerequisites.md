@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/14/2019
+ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 591cc7a4b84f75536446abbcbe32a69a122ddf5a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0b7eaaf68c1b0907b6d687b823ef71a7c9bd0102
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392665"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882403"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平台3.11 的常见先决条件
 
@@ -113,14 +113,16 @@ az group create -l eastus -n openshiftrg
 创建服务主体：
 
 ```azurecli
-scope=`az group show --name openshiftrg --query id`
-az ad sp create-for-rbac --name openshiftsp \
-      --role Contributor --password {Strong Password} \
-      --scopes $scope \
+az group show --name openshiftrg --query id
 ```
-如果使用的是 Windows，则执行 ```az group show --name openshiftrg --query id``` 并使用输出代替 $scope。
+保存命令的输出，并使用下一个命令替换 $scope
 
-记下该命令返回的 appId 属性：
+```azurecli
+az ad sp create-for-rbac --name openshiftsp \
+      --role Contributor --scopes $scope \
+```
+
+记录从命令返回的 appId 属性和密码：
 ```json
 {
   "appId": "11111111-abcd-1234-efgh-111111111111",
@@ -131,7 +133,7 @@ az ad sp create-for-rbac --name openshiftsp \
 }
 ```
  > [!WARNING] 
- > 请务必创建安全密码。 遵循 [Azure AD 密码规则和限制](/azure/active-directory/active-directory-passwords-policy)指导原则。
+ > 请确保记下安全密码，因为它不能再次检索此密码。
 
 有关服务主体的详细信息，请参阅[使用 Azure CLI 创建 Azure 服务主体](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)。
 

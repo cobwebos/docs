@@ -1,24 +1,18 @@
 ---
 title: 将 Operations Manager 连接到 Azure Monitor |Microsoft Docs
 description: 若要保持 System Center Operations Manager 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与工作区集成。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 245ef71e-15a2-4be8-81a1-60101ee2f6e6
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/13/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: c8d6e949722e291eab4ac45f6abb610acfa10d68
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.date: 08/13/2019
+ms.openlocfilehash: c5ac8cfe2971d1163c00383b4604a9a5b49558b0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532399"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932160"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
 
@@ -357,7 +351,7 @@ ms.locfileid: "72532399"
 以后如果打算将管理组重新连接到 Log Analytics 工作区，需重新导入 `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` 管理包文件。 可在以下位置找到此文件，具体取决于部署在环境中的 System Center Operations Manager 的版本：
 
 * System Center 2016 的 `\ManagementPacks` 文件夹下的源媒体 - Operations Manager 及更高版本。
-* 适用于管理组的最新更新汇总。 对于 Operations Manager 2012，将 `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` 源文件夹; 对于 2012 R2，此文件夹位于 `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` 中。
+* 适用于管理组的最新更新汇总。 对于 Operations Manager 2012，将 `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` 源文件夹; 对于 2012 R2，此文件夹位于 `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`中。
 
 ## <a name="next-steps"></a>后续步骤
 

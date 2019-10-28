@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor 中的监视解决方案 | Microsoft Docs
 description: Azure Monitor 中的监视解决方案是逻辑、可视化效果和数据采集规则的集合，提供围绕特定问题领域制定的指标。  本文提供了有关安装和使用监视解决方案的信息。
-services: log-analytics
-documentationcenter: ''
+ms.service: azure-monitor
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: f029dd6d-58ae-42c5-ad27-e6cc92352b3b
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 08/13/2019
 ms.author: bwren
-ms.openlocfilehash: 6932f9f302bf1816842d78a662f01ebaafed8686
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.date: 08/13/2019
+ms.openlocfilehash: b5304f2f9af3f3dac5a1259669cdd78548c2e832
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989207"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933728"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的监视解决方案
 监视解决方案利用 Azure 中的服务来提供特定应用程序或服务的更多操作见解。 本文简要概述了 Azure 中的监视解决方案，并详细介绍如何了使用和安装这些解决方案。
@@ -69,7 +63,7 @@ ms.locfileid: "68989207"
 1. 浏览或搜索解决方案。 你还可以从此[搜索链接](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/management-tools?page=1&subcategories=management-solutions)浏览解决方案。
 1. 找到所需的监视解决方案并阅读其说明。
 1. 单击“创建”以启动安装进程。
-1. 当安装过程开始时, 系统将提示你指定 Log Analytics 工作区, 并为解决方案提供所需的任何配置。
+1. 当安装过程开始时，系统将提示你指定 Log Analytics 工作区，并为解决方案提供所需的任何配置。
 
 ![安装解决方案](media/solutions/install-solution.png)
 

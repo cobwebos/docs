@@ -1,6 +1,6 @@
 ---
-title: 在 Visual Studio Code 中创建和管理工作流 - Azure 逻辑应用
-description: 快速入门 - 在 Visual Studio Code (VS Code) 中创建和管理逻辑应用 JSON 定义
+title: 使用 Visual Studio Code 自动执行工作流 - Azure 逻辑应用
+description: 使用 Visual Studio Code (VS Code) 创建或编辑逻辑应用基础 JSON 定义
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -12,16 +12,16 @@ ms.reviewer: klam, deli, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/05/2018
-ms.openlocfilehash: 34de50517580c84c78ee1f192daa908b3f262670
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: a1387ca4d94410bafb1b1024345b5e307e215e6f
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035462"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679154"
 ---
-# <a name="quickstart-create-and-manage-logic-app-definitions-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建和管理逻辑应用定义
+# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-with-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建和管理逻辑应用工作流定义
 
-通过 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 Visual Studio Code，可以创建和管理逻辑应用，以帮助你自动完成用于跨组织和企业集成应用、数据、系统和服务的任务、工作流和进程。 本快速入门介绍如何通过基于代码的体验使用 JavaScript 对象表示法 (JSON) 中的工作流定义架构来创建和编辑逻辑应用工作流定义。 也可以使用已部署到 Azure 的现有逻辑应用。
+通过 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 Visual Studio Code，可以创建和管理逻辑应用，以帮助你自动完成用于跨组织和企业集成应用、数据、系统和服务的任务、工作流和进程。 本快速入门介绍如何通过基于代码的体验为逻辑应用创建和编辑底层工作流定义，这些定义使用 JavaScript 对象表示法 (JSON)。 也可以使用已部署到 Azure 的现有逻辑应用。
 
 尽管可以在 [Azure 门户](https://portal.azure.com)和 Visual Studio 中执行这些相同的任务，但是当你已熟悉逻辑应用程序定义并想要直接使用代码时，可以在 Visual Studio Code 更快地开始使用。 例如，你可以禁用、启用、删除和刷新已创建的逻辑应用。 此外，还可以从运行 Visual Studio Code 的任何开发平台（如 Linux、Windows 和 Mac）处理逻辑应用和集成帐户。
 
@@ -33,7 +33,7 @@ ms.locfileid: "72035462"
 
 * 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 有关[逻辑应用工作流定义](../logic-apps/logic-apps-workflow-definition-language.md)及其结构（使用 JavaScript 对象表示法(JSON)）的基本知识
+* 有关[逻辑应用工作流定义](../logic-apps/logic-apps-workflow-definition-language.md)及其使用 JSON 描述的结构的基本知识
 
   如果不熟悉逻辑应用，请尝试此[快速入门](../logic-apps/quickstart-create-first-logic-app-workflow.md)，了解如何在 Azure 门户中创建第一个逻辑应用，重点了解基本概念。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: atsenthi
-ms.openlocfilehash: 4a865102cbc33da4140f3e25e4b4926eade8e162
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 241349724929845afa2fd2a4bacabf9b5017cc7c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599975"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901551"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>使用 Azure 资源管理器创建 Service Fabric 群集 
 > [!div class="op_single_selector"]
@@ -30,24 +30,24 @@ ms.locfileid: "68599975"
 
 [Azure Service Fabric 群集](service-fabric-deploy-anywhere.md)是一组联网的虚拟机，可在其中部署和管理微服务。  在 Azure 中运行的 Service Fabric 群集是一种 Azure 资源，通过 Azure 资源管理器进行部署。 本文介绍如何使用资源管理器在 Azure 中安全地部署 Service Fabric 群集。 可以使用默认模板或自定义模板。  如果尚无自定义模板，请[了解如何创建自定义模板](service-fabric-cluster-creation-create-template.md)。
 
-群集安全性是在首次设置群集时配置的，以后无法更改。 在设置群集之前, 请阅读[Service Fabric 群集安全方案][service-fabric-cluster-security]。 在 Azure 中，Service Fabric 使用 x509 证书来保护群集及其终结点，对客户端进行身份验证以及对数据进行加密。 另外，还建议使用 Azure Active Directory 来保护对管理终结点的访问。 在创建群集之前，必须先创建 Azure AD 租户和用户。  有关详细信息，请阅读[设置 Azure AD 来对客户端进行身份验证](service-fabric-cluster-creation-setup-aad.md)。
+为群集的初始创建操作选择的安全类型（即： Windows 标识、X509 等）必须指定为群集的初始创建，之后无法更改。 在设置群集之前，请阅读[Service Fabric 群集安全方案][service-fabric-cluster-security]。 在 Azure 中，Service Fabric 使用 x509 证书来保护群集及其终结点，对客户端进行身份验证以及对数据进行加密。 另外，还建议使用 Azure Active Directory 来保护对管理终结点的访问。 有关详细信息，请阅读[设置 Azure AD 来对客户端进行身份验证](service-fabric-cluster-creation-setup-aad.md)。
 
 若要创建生产群集以运行生产工作负载，我们建议你首先阅读[生产就绪情况核对清单](service-fabric-production-readiness-checklist.md)。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 在本文中，使用 Service Fabric RM powershell 或 Azure CLI 模块部署群集：
 
 * [Azure PowerShell 4.1 及更高版本][azure-powershell]
 * [Azure CLI 版本2.0 及更高版本][azure-CLI]
 
 以下为关于 Service Fabric 模块的参考文档：
-* [Az.ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
+* [Az. ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
 * [az SF CLI 模块](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
 
-### <a name="sign-in-to-azure"></a>登录  Azure
+### <a name="sign-in-to-azure"></a>登录 Azure
 
 运行本文中任何命令之前，请先登录到 Azure。
 
@@ -74,7 +74,7 @@ az account set --subscription $subscriptionId
 以下命令可创建 Windows 或 Linux 群集，需指定相应的操作系统。 PowerShell/CLI 命令还会在指定的 CertificateOutputFolder 中输出证书，但要确保已创建该证书文件夹。 此命令还采用 VM SKU 等其他参数。
 
 > [!NOTE]
-> 以下 PowerShell 命令仅适用于 Azure PowerShell `Az` 模块。 若要检查 Azure 资源管理器 PowerShell 的当前版本，请运行以下 PowerShell 命令“Get-Module Az”。 单击[此链接](/powershell/azure/install-Az-ps)升级 Azure 资源管理器 PowerShell 的版本。 
+> 以下 PowerShell 命令仅适用于 Azure PowerShell `Az` 模块。 若要检查 Azure 资源管理器 PowerShell 版本的当前版本，请运行以下 PowerShell 命令 "Get-help Az"。 单击[此链接](/powershell/azure/install-Az-ps)升级 Azure 资源管理器 PowerShell 的版本。 
 >
 >
 

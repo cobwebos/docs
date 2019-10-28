@@ -1,23 +1,22 @@
 ---
 title: Azure Functions 网络选项
 description: Azure Functions 中提供的所有网络选项的概述
-services: functions
 author: alexkarcher-msft
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 9fe7147325b2e14a7ae6bb4b31aa941fb4059b11
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: bf5ce8da2ce62a5da821588c8f635bbab04dd3c1
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690832"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881571"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
-本文介绍适用于 Azure Functions 的托管选项的网络功能。 以下所有网络选项都提供了在不使用 internet 可路由地址的情况下访问资源的功能，或限制 internet 访问函数应用。 
+本文介绍适用于 Azure Functions 的托管选项的网络功能。 以下所有网络选项都提供了在不使用 internet 可路由地址的情况下访问资源的功能，或限制 internet 访问函数应用。
 
 托管模型提供不同级别的网络隔离。 选择正确的将有助于满足网络隔离要求。
 
@@ -39,7 +38,6 @@ ms.locfileid: "72690832"
 |[混合连接](#hybrid-connections)|❌No|✅Yes|✅Yes|✅Yes|
 |[出站 IP 限制](#outbound-ip-restrictions)|❌No| ❌No|❌No|✅Yes|
 
-
 ## <a name="inbound-ip-restrictions"></a>入站 IP 限制
 
 你可以使用 IP 限制来定义允许/拒绝访问应用的 IP 地址的优先级排序列表。 此列表可以包含 IPv4 和 IPv6 地址。 如果有一个或多个条目，则在列表的末尾存在一个隐式 "全部拒绝"。 IP 限制适用于所有函数宿主选项。
@@ -51,8 +49,9 @@ ms.locfileid: "72690832"
 
 ## <a name="private-site-access"></a>专用站点访问
 
-专用站点访问是指使应用只能从专用网络（如 Azure 虚拟网络中的）访问。 
-* 配置**服务终结点**时，"[高级](./functions-premium-plan.md)"、"使用情况"、"功能"、"使用情况-计划" 和 "[应用服务计划](functions-scale.md#app-service-plan)" 中提供了专用站点访问。 
+专用站点访问是指使应用只能从专用网络（如 Azure 虚拟网络中的）访问。
+
+* 配置**服务终结点**时，[高级](./functions-premium-plan.md)、[消费](functions-scale.md#consumption-plan)和[应用服务计划](functions-scale.md#app-service-plan)中提供了专用站点访问。
     * 可以基于每个应用在平台功能 > 网络上配置服务终结点，> 配置访问限制 > 添加规则。 现在可以选择虚拟网络作为规则的 "类型"。
     * 有关详细信息，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)
         * 请注意，对于服务终结点，即使配置了虚拟网络集成，函数仍具有 internet 的完全出站访问权限。
@@ -64,14 +63,14 @@ ms.locfileid: "72690832"
 
 你可以使用虚拟网络集成来启用从应用到你的虚拟网络中运行的数据库和 web 服务的访问。 通过虚拟网络集成，无需向 VM 上的应用程序公开公共终结点。 可以改用专用的非 internet 可路由地址。
 
-虚拟网络集成功能有两种形式
+虚拟网络集成有两种形式：
 
-1. 通过区域虚拟网络集成，可在同一区域中与虚拟网络集成。 此功能的这种形式需要在同一区域的虚拟网络中有一个子网。 此功能仍处于预览阶段，但 Windows 应用生产工作负荷支持此功能，但有一些注意事项。
-2. 网关所需的虚拟网络集成启用了与远程区域或经典虚拟网络的虚拟网络的集成。 此版本的功能要求在 VNet 中部署虚拟网络网关。 这是基于点到站点 VPN 的功能，仅在 Windows 应用中受支持。
++ **区域虚拟网络集成（预览版）** ：可在同一区域中与虚拟网络集成。 这种类型的集成需要在同一区域的虚拟网络中有一个子网。 此功能仍处于预览状态，但在 Windows 上运行的函数应用支持此功能，但有如下所述的注意事项。
++ **网关所需的虚拟网络集成**：允许与远程区域或经典虚拟网络的虚拟网络集成。 这种类型的集成要求在 VNet 中部署虚拟网络网关。 这是一个基于点到站点 VPN 的功能，仅支持在 Windows 上运行的函数应用。
 
-应用一次只能使用一种形式的 VNet 集成功能。 问题就是应该使用哪种功能。 您可以使用任何一种方法。 不过，清楚的区别在于：
+应用一次只能使用一种类型的 VNet 集成功能。 虽然这两种方案都适用于许多情况，但下表指明了应使用每个方案的位置：
 
-| 问题  | 解决方案 | 
+| 问题  | 解决方案 |
 |----------|----------|
 | 希望在同一区域中访问 RFC 1918 地址（10.0.0.0/8、172.16.0.0/12、192.168.0.0/16） | 区域 VNet 集成 |
 | 想要在经典 VNet 中或另一个区域中的 VNet 中访问资源 | 网关所需的 VNet 集成 |
@@ -93,10 +92,11 @@ VNet 集成功能：
 VNet 集成不支持某些功能，其中包括：
 
 * 装载驱动器
-* AD 集成 
+* AD 集成
 * NetBios
 
 功能中的虚拟网络集成使用共享基础结构和应用服务 web 应用。 若要阅读有关这两种类型的虚拟网络集成的详细信息，请参阅：
+
 * [区域 VNET 集成](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)
 * [网关所需的 VNet 集成](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
@@ -104,7 +104,7 @@ VNet 集成不支持某些功能，其中包括：
 
 ## <a name="connecting-to-service-endpoint-secured-resources"></a>连接到服务终结点保护的资源
 
-> [!note] 
+> [!NOTE]
 > 暂时地，在对下游资源配置访问限制后，新的服务终结点就可能需要长达12小时才能供函数应用使用。 在此期间，资源将对你的应用程序完全不可用。
 
 为了提供更高级别的安全性，可以使用服务终结点将多个 Azure 服务限制为一个虚拟网络。 然后，必须将 function app 与该虚拟网络集成，才能访问该资源。 支持虚拟网络集成的所有计划都支持此配置。
@@ -112,10 +112,11 @@ VNet 集成不支持某些功能，其中包括：
 [在此处阅读有关虚拟网络服务终结点的详细信息。](../virtual-network/virtual-network-service-endpoints-overview.md)
 
 ### <a name="restricting-your-storage-account-to-a-virtual-network"></a>将存储帐户限制在虚拟网络中
+
 创建 function app 时，必须创建或链接支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 目前不能对此帐户使用任何虚拟网络限制。 如果在用于 function app 的存储帐户上配置虚拟网络服务终结点，则会中断你的应用程序。
 
 [在此处了解有关存储帐户要求的详细信息。](./functions-create-function-app-portal.md#storage-account-requirements
-) 
+)
 
 ## <a name="virtual-network-triggers-non-http"></a>虚拟网络触发器（非 HTTP）
 
@@ -140,6 +141,7 @@ VNet 集成不支持某些功能，其中包括：
 将高级计划或应用服务计划中的函数应用与虚拟网络集成时，应用仍可对 internet 进行出站调用。
 
 ## <a name="next-steps"></a>后续步骤
+
 若要详细了解网络和 Azure Functions： 
 
 * [遵循有关虚拟网络集成入门的教程](./functions-create-vnet.md)

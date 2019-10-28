@@ -1,23 +1,22 @@
 ---
-title: 门户中 Azure 搜索的服务管理 - Azure 搜索
-description: 使用 Azure 门户管理 Azure 搜索服务（Microsoft Azure 上托管的云搜索服务）。
-author: HeidiSteen
+title: 门户中 Azure 认知搜索的服务管理
+titleSuffix: Azure Cognitive Search
+description: 使用 Azure 门户在 Microsoft Azure 上管理 Azure 认知搜索服务（托管云搜索服务）。
 manager: nitinme
-tags: azure-portal
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 03/08/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 31b005bd76591d8098f119c7aa9b87a68841658c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+tags: azure-portal
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 052d772c8ef885d594146d456ebb3cdcbbc0e383
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331257"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793507"
 ---
-# <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure 门户中 Azure 搜索服务管理
+# <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure 门户中 Azure 认知搜索的服务管理
 > [!div class="op_single_selector"]
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
@@ -25,14 +24,14 @@ ms.locfileid: "72331257"
 > * [Portal](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Azure 搜索是一种完全托管的、基于云的搜索服务，用于在自定义应用中生成丰富的搜索体验。 本文介绍可在 [Azure 门户](https://portal.azure.com)中对已预配的搜索服务执行的服务管理任务。 服务管理设计成轻型，它限于以下任务：
+Azure 认知搜索是一项完全托管的基于云的搜索服务，用于在自定义应用中构建丰富的搜索体验。 本文介绍可在 [Azure 门户](https://portal.azure.com)中对已预配的搜索服务执行的服务管理任务。 服务管理设计成轻型，它限于以下任务：
 
 > [!div class="checklist"]
 > * 管理对用于服务读取或写入的 api-keys 的访问。
 > * 通过更改分区和副本的分配以调整服务容量。
 > * 根据服务层级的最大限制，监视资源使用情况。
 
-请注意，“升级”未列为管理任务。 因为预配服务时会分配资源，所以移动到其他层需要新的服务。 有关详细信息，请参阅[创建 Azure 搜索服务](search-create-service-portal.md)。
+请注意，“升级”未列为管理任务。 因为预配服务时会分配资源，所以移动到其他层需要新的服务。 有关详细信息，请参阅[创建 Azure 认知搜索服务](search-create-service-portal.md)。
 
 你可以监视查询量和其他指标，并使用这些见解调整你的服务以获得更快的响应时间。 有关详细信息，请参阅[监视使用情况和查询度量值](search-monitor-usage.md)以及[性能和优化](search-performance-optimization.md)。
 
@@ -43,12 +42,12 @@ Azure 搜索是一种完全托管的、基于云的搜索服务，用于在自�
 
 在服务中，有权访问服务 URL 并拥有管理员 API 密钥的任何人都有对该服务的读写访问权限。 借助读写访问权限能够添加、删除或修改服务器对象（包括通过 [RBAC 定义的角色](search-security-rbac.md)实现的 API 密钥、索引、索引器、数据源、计划和角色分配）。
 
-Azure 搜索服务的所有用户交互属于下列模式之一：对服务的读写访问（管理员权限）或对服务的只读访问（查询权限）。 有关详细信息，请参阅[管理 API 密钥](search-security-api-keys.md)。
+与 Azure 认知搜索的所有用户交互处于以下模式之一中：对服务的读写访问权限（管理员权限）或对服务的只读访问权限（查询权限）。 有关详细信息，请参阅[管理 API 密钥](search-security-api-keys.md)。
 
 <a id="sys-info"></a>
 
 ## <a name="logging-and-system-information"></a>日志记录和系统信息
-Azure 搜索服务不会通过门户或程序设计界面公开单个服务的日志文件。 在基本层以及更高层上，Microsoft 会监视所有 Azure 搜索服务以达到服务级别协议 (SLA) 的 99.9% 可用性。 如果服务的速度较慢或请求吞吐量低于 SLA 阈值，则支持团队审查提供给他们的日志文件并解决问题。
+Azure 认知搜索不会通过门户或编程接口公开单个服务的日志文件。 在基本层和更高版本中，Microsoft 会监视所有 Azure 认知搜索服务，每个服务级别协议（SLA）99.9% 的可用性。 如果服务的速度较慢或请求吞吐量低于 SLA 阈值，则支持团队审查提供给他们的日志文件并解决问题。
 
 根据服务的常规信息，可以通过以下方式获取信息：
 
@@ -59,7 +58,7 @@ Azure 搜索服务不会通过门户或程序设计界面公开单个服务的�
 <a id="sub-5"></a>
 
 ## <a name="monitor-resource-usage"></a>监视资源使用情况
-在仪表板中，资源监视仅限于服务仪表板中显示的信息，以及一些可通过查询服务获得的度量值。 在服务仪表板的“使用量”部分中，可以快速确定分区资源级别是否适合应用程序。 如果要捕获并保存记录的事件，可以预配 Azure 监视等外部资源。 有关详细信息，请参阅[监视 Azure 搜索](search-monitor-usage.md)。
+在仪表板中，资源监视仅限于服务仪表板中显示的信息，以及一些可通过查询服务获得的度量值。 在服务仪表板的“使用量”部分中，可以快速确定分区资源级别是否适合应用程序。 如果要捕获并保存记录的事件，可以预配 Azure 监视等外部资源。 有关详细信息，请参阅[监视 Azure 认知搜索](search-monitor-usage.md)。
 
 使用搜索服务 REST API，可以通过编程方式获取文档和索引的计数： 
 
@@ -68,17 +67,17 @@ Azure 搜索服务不会通过门户或程序设计界面公开单个服务的�
 
 ## <a name="disaster-recovery-and-service-outages"></a>灾难恢复和服务中断
 
-虽然我们可以挽救数据，但 Azure 搜索在群集或数据中心级别发生服务中断时不提供服务的即时故障转移。 如果数据中心的群集出现故障，运营团队会检测故障，并努力还原服务。 在服务还原期间将遇到停机，但是可以根据[服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/) 申请服务信用额度来补偿服务不可用的情况。 
+尽管我们可以抢救你的数据，但当群集或数据中心级别发生服务中断时，Azure 认知搜索不提供服务的即时故障转移。 如果数据中心的群集出现故障，运营团队会检测故障，并努力还原服务。 在服务还原期间将遇到停机，但是可以根据[服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/) 申请服务信用额度来补偿服务不可用的情况。 
 
 如果在超出 Microsoft 控制的灾难性故障中需要连续性服务，可在其他区域[预配一个附加服务](search-create-service-portal.md)并实施异地复制策略，确保索引跨所有服务完全冗余。
 
-使用[索引器](search-indexer-overview.md)来填充和刷新索引的客户可利用相同的数据源，通过特定于地区的索引器来处理灾难恢复。 不同区域的两个服务（每个都运行索引器）可对相同数据源进行索引，实现异地冗余。 如果从异地冗余的数据源索引，请注意 Azure 搜索索引器只能从主要副本执行递增索引。 在故障转移事件中，请确保将索引器重新指向到新的主要副本。 
+使用[索引器](search-indexer-overview.md)来填充和刷新索引的客户可利用相同的数据源，通过特定于地区的索引器来处理灾难恢复。 不同区域的两个服务（每个都运行索引器）可对相同数据源进行索引，实现异地冗余。 如果要从也是异地冗余的数据源进行索引，请注意 Azure 认知搜索索引器只能从主副本执行增量索引。 在故障转移事件中，请确保将索引器重新指向到新的主要副本。 
 
-如果不使用索引器，也可使用应用程序代码将对象和数据并行推送到其他搜索服务。 有关详细信息，请参阅 [Azure 搜索中的性能和优化](search-performance-optimization.md)。
+如果不使用索引器，也可使用应用程序代码将对象和数据并行推送到其他搜索服务。 有关详细信息，请参阅[Azure 中的性能和优化认知搜索](search-performance-optimization.md)。
 
 ## <a name="backup-and-restore"></a>备份和还原
 
-由于 Azure 搜索不是主数据存储解决方案，因此，我们不提供正式的自助备份和还原机制。 但是，可以使用此[Azure 搜索 .net 示例](https://github.com/Azure-Samples/azure-search-dotnet-samples)存储库中的**索引备份-还原**示例代码将索引定义和快照备份到一系列 JSON 文件，然后根据需要使用这些文件还原索引。 此工具还可以在服务层之间移动索引。
+由于 Azure 认知搜索不是主数据存储解决方案，因此我们不会为自助备份和还原提供正式的机制。 不过，你可以使用此[Azure 认知搜索 .net 示例](https://github.com/Azure-Samples/azure-search-dotnet-samples)存储库中的**索引备份-还原**示例代码，将索引定义和快照备份到一系列 JSON 文件，然后根据需要使用这些文件还原索引。 此工具还可以在服务层之间移动索引。
 
 否则，如果错误地删除了索引，则用于创建和填充索引的应用程序代码将是事实上的还原选项。 要重新生成索引，请删除它（假设其存在），在服务中重新创建该索引，并通过从主数据存储中检索数据来重新加载该索引。
 
@@ -113,23 +112,12 @@ Azure 搜索服务不会通过门户或程序设计界面公开单个服务的�
 
 为了帮助实现未来规划，可能需要检查存储（使用[获取索引统计信息](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)），了解实际使用了多少空间。 
 
-<a id="advanced-deployment"></a>
-
-## <a name="best-practices-on-scale-and-deployment"></a>缩放和部署的最佳实践
-此 30 分钟视频介绍高级部署方案的最佳实践，包括地理位置分布式工作负荷。 也可以查看 [Azure 搜索服务中的性能和优化](search-performance-optimization.md)，以获取有关介绍相同要点的帮助页。
-
-> [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
-> 
-> 
-
 <a id="next-steps"></a>
 
 ## <a name="next-steps"></a>后续步骤
 了解服务管理的相关概念后，请考虑使用 [PowerShell](search-manage-powershell.md) 来自动执行任务。
 
 同时建议查看[性能和优化文章](search-performance-optimization.md)。
-
-另一条建议是观看前面部分提到的视频。 视频会更深入地讲解本部分提到的技术。
 
 <!--Image references-->
 [10]: ./media/search-manage/Azure-Search-Manage-3-ScaleUp.png

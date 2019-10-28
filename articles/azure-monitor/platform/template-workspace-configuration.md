@@ -1,24 +1,18 @@
 ---
 title: 使用 Azure 资源管理器模板创建和配置 Log Analytics 工作区 | Microsoft Docs
 description: 可以使用 Azure 资源管理器模板创建和配置 Log Analytics 工作区。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: d21ca1b0-847d-4716-bb30-2a8c02a606aa
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 10/15/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 9c5fb38e66cb783b02d314d55cf0d0510523b6a7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.date: 10/22/2019
+ms.openlocfilehash: fe5fe6a10d30847db3ed5b4aab703a7f431a395e
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375985"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932049"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics 工作区
 
@@ -238,13 +232,13 @@ ms.locfileid: "72375985"
         "metadata": {
           "description": "The resource group name containing the storage account with Azure diagnostics output"
         }
-      }
     },
-    "customlogName": {
+    "customLogName": {
     "type": "string",
     "metadata": {
       "description": "The custom log name"
       }
+     }
     },
     "variables": {
       "Updates": {
@@ -417,13 +411,13 @@ ms.locfileid: "72375985"
         {
           "apiVersion": "2015-11-01-preview",
           "type": "dataSources",
-          "name": "[concat(parameters('workspaceName'), parameters('customlogName'))]",
+          "name": "[concat(parameters('workspaceName'), parameters('customLogName'))]",
           "dependsOn": [
             "[concat('Microsoft.OperationalInsights/workspaces/', '/', parameters('workspaceName'))]"
           ],
           "kind": "CustomLog",
           "properties": {
-            "customLogName": "[parameters('customlogName')]",
+            "customLogName": "[parameters('customLogName')]",
             "description": "this is a description",
             "extractions": [
               {
@@ -448,7 +442,7 @@ ms.locfileid: "72375985"
                   "fileSystemLocations": {
                     "linuxFileTypeLogPaths": null,
                     "windowsFileTypeLogPaths": [
-                      "[concat('c:\\Windows\\Logs\\',parameters('customlogName'))]"
+                      "[concat('c:\\Windows\\Logs\\',parameters('customLogName'))]"
                     ]
                   }
                 },
@@ -590,7 +584,6 @@ ms.locfileid: "72375985"
     }
   }
 }
-
 ```
 
 ### <a name="deploying-the-sample-template"></a>部署示例模板

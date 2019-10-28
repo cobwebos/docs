@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: radeltch
-ms.openlocfilehash: 572255cfcd34b97a6ba0f784f7fc7ed1c0df040a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 3764ae9ff3a20de6d31f0438b73597933080e372
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213264"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791740"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Azure Vm 上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 SUSE Linux Enterprise Server
 
@@ -136,7 +136,7 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 数据�
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>设置 Azure NetApp 文件基础结构 
 
-SAP NetWeaver 要求对传输和配置文件目录使用共享存储。  在继续安装 Azure NetApp 文件基础结构之前，请先熟悉[Azure Netapp 文件文档][anf-azure-doc]。 检查所选的 Azure 区域是否提供 Azure NetApp 文件。 以下链接显示 Azure 的 azure NetApp 文件可用性：Azure [NetApp 文件按 Azure 区域可用性][anf-avail-matrix]。
+SAP NetWeaver 要求对传输和配置文件目录使用共享存储。  在继续安装 Azure NetApp 文件基础结构之前，请先熟悉[Azure Netapp 文件文档][anf-azure-doc]。 检查所选的 Azure 区域是否提供 Azure NetApp 文件。 以下链接显示了 azure 区域的 azure NetApp 文件的可用性： azure [netapp 的 Azure Netapp 文件可用性][anf-avail-matrix]。
 
 Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-infrastructure/services/?products=netapp)中提供。 在部署 Azure NetApp 文件之前，请在[注册 azure][anf-register]netapp 文件说明后，请求加入 Azure netapp 文件。 
 
@@ -363,7 +363,7 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
    > [!NOTE]
    > 目前，Azure NetApp 文件仅支持 NFSv3。 请勿省略 nfsvers = 3 开关。
    
-   重新`autofs`启动以装载新共享
+   重新启动 `autofs` 以装载新共享
     <pre><code>
       sudo systemctl enable autofs
       sudo service autofs restart
@@ -393,6 +393,10 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
 
 1. **[1]** 为 ASCS 实例创建虚拟 IP 资源和运行状况探测
 
+   > [!IMPORTANT]
+   > 最新的测试，其中，netcat 停止响应由于积压工作（backlog）和仅处理一个连接的请求而导致的请求。 Netcat 资源停止侦听 Azure 负载均衡器请求，并且浮动 IP 变为不可用。  
+   > 对于现有的 Pacemaker 群集，建议按照[Azure 负载平衡器检测强化](https://www.suse.com/support/kb/doc/?id=7024128)中的说明将 netcat 替换为 socat。 请注意，更改将需要短暂的停机时间。  
+
    <pre><code>sudo crm node standby <b>anftstsapcl2</b>
    
    sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' \
@@ -405,7 +409,7 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
      op monitor interval=10 timeout=20
    
    sudo crm configure primitive nc_<b>QAS</b>_ASCS anything \
-     params binfile="/usr/bin/nc" cmdline_options="-l -k 620<b>00</b>" \
+     params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:620<b>00</b>,backlog=10,fork,reuseaddr /dev/null" \
      op monitor timeout=20s interval=10 depth=0
    
    sudo crm configure group g-<b>QAS</b>_ASCS fs_<b>QAS</b>_ASCS nc_<b>QAS</b>_ASCS vip_<b>QAS</b>_ASCS \
@@ -460,10 +464,10 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
      op monitor interval=10 timeout=20
    
    sudo crm configure primitive nc_<b>QAS</b>_ERS anything \
-    params binfile="/usr/bin/nc" cmdline_options="-l -k 621<b>01</b>" \
+    params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:621<b>01</b>,backlog=10,fork,reuseaddr /dev/null" \
     op monitor timeout=20s interval=10 depth=0
    
-   # WARNING: Resources nc_QAS_ASCS,nc_QAS_ERS violate uniqueness for parameter "binfile": "/usr/bin/nc"
+   # WARNING: Resources nc_QAS_ASCS,nc_QAS_ERS violate uniqueness for parameter "binfile": "/usr/bin/socat"
    # Do you still want to commit (y/n)? y
    
    sudo crm configure group g-<b>QAS</b>_ERS fs_<b>QAS</b>_ERS nc_<b>QAS</b>_ERS vip_<b>QAS</b>_ERS
@@ -732,7 +736,7 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
    /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind,sync <b>10.1.0.5</b>:/usrsap<b>qas</b>pas
    </code></pre>
 
-   重新`autofs`启动以装载新共享
+   重新启动 `autofs` 以装载新共享
 
    <pre><code>
    sudo systemctl enable autofs
@@ -757,7 +761,7 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
    /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/usrsap<b>qas</b>aas
    </code></pre>
 
-   重新`autofs`启动以装载新共享
+   重新启动 `autofs` 以装载新共享
 
    <pre><code>
    sudo systemctl enable autofs
@@ -837,13 +841,13 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
    hdbuserstore SET DEFAULT <b>qasdb:30313@QAS</b> <b>SAPABAP1</b> <b>&lt;password of ABAP schema&gt;</b>
    </code></pre>
 
-## <a name="test-the-cluster-setup"></a>测试群集设
+## <a name="test-the-cluster-setup"></a>测试群集设置
 
 以下测试是[SUSE 的最佳实践指南][suse-ha-guide]中的测试用例的副本。 为方便起见，已复制于下方。 此外，请务必阅读最佳做法指南，并执行可能已经添加的所有其他测试。
 
 1. Test HAGetFailoverConfig、HACheckConfig 和 HACheckFailoverConfig
 
-   在当前运行 ASCS 实例的节点上运行以下命令作为 \<sapsid>adm。 如果命令失败，并显示“失败: 内存不足”消息，则原因可能是主机名中存在短划线。 这是一个已知问题，将由 SUSE 在 sap-suse-cluster-connector 包中进行修复。
+   在当前运行 ASCS 实例的节点上运行以下命令作为 \<sapsid>adm。 如果命令失败，显示“失败: 内存不足”消息，则原因可能是主机名中存在短划线。 这是一个已知问题，将由 SUSE 在 sap-suse-cluster-connector 包中进行修复。
 
    <pre><code>
    anftstsapcl1:qasadm 52> sapcontrol -nr 00 -function HAGetFailoverConfig
@@ -1085,7 +1089,7 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-   通过编辑事务 su01 中的用户等方式创建一个排队锁。 在运行 ASCS 实例的节点上\>，以 < sapsid adm 的身份运行以下命令。 这些命令将停止 ASCS 实例并重新启动该实例。 如果使用排队服务器1体系结构，则应在此测试中丢失排队锁。 如果使用排队服务器2体系结构，则将保留排队。 
+   通过编辑事务 su01 中的用户等方式创建一个排队锁。 在运行 ASCS 实例的节点上，以 < sapsid 的方式运行以下命令\>adm。 这些命令将停止 ASCS 实例并重新启动该实例。 如果使用排队服务器1体系结构，则应在此测试中丢失排队锁。 如果使用排队服务器2体系结构，则将保留排队。 
 
    <pre><code>anftstsapcl2:qasadm 51> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>
@@ -1231,7 +1235,7 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
    <pre><code>anftstsapcl1:~ # pgrep er.sapQAS | xargs kill -9
    </code></pre>
 
-   如果只运行一次命令， `sapstart`将重新启动该过程。 如果经常运行， `sapstart`则不会重新启动进程，资源将处于停止状态。 运行以下命令作为根，清除测试后的 ERS 实例的资源状态。
+   如果只运行一次命令，`sapstart` 将重新启动此过程。 如果经常运行它，`sapstart` 将不会重新启动进程，并且资源将处于停止状态。 运行以下命令作为根，清除测试后的 ERS 实例的资源状态。
 
    <pre><code>anftstsapcl1:~ # crm resource cleanup rsc_sap_QAS_ERS01
    </code></pre>
@@ -1302,4 +1306,4 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
 * [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * 了解如何建立高可用性并规划 SAP 灾难恢复 
 * Azure 上的 HANA （大型实例），请参阅[azure 上的 SAP HANA （大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)。
-* 若要了解如何建立高可用性并规划 Azure Vm 上 SAP HANA 的灾难恢复, 请参阅[Azure 虚拟机 (vm) 上的 SAP HANA 的高可用性][sap-hana-ha]
+* 若要了解如何建立高可用性并规划 Azure Vm 上 SAP HANA 的灾难恢复，请参阅[Azure 虚拟机（vm）上的 SAP HANA 的高可用性][sap-hana-ha]

@@ -1,20 +1,19 @@
 ---
-title: 文本转换认知搜索技能-Azure 搜索
-description: 计算文本，对于每个记录，将返回在 Azure 搜索扩充管道中转换为指定目标语言的文本。
-services: search
+title: 文本转换认知技能
+titleSuffix: Azure Cognitive Search
+description: 计算文本，对于每个记录，将返回在 Azure 认知搜索的 AI 扩充管道中转换为指定目标语言的文本。
 manager: nitinme
 author: careyjmac
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 06/25/2019
 ms.author: chalton
-ms.openlocfilehash: ddfb35cbfcfbc262f3eff0de67f5cedfc31ea27e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c2405fe67b39e016e64efb1b36cc551a00a338fc
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265712"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791854"
 ---
 #   <a name="text-translation-cognitive-skill"></a>文本转换认知技能
 
@@ -22,18 +21,18 @@ ms.locfileid: "71265712"
 
 如果你希望你的文档不能全部使用一种语言，则此功能非常有用，在这种情况下，你可以通过转换文本来将文本标准化为单一语言，然后再对其进行索引。  它还可用于本地化用例，在这种情况下，你可能想要在多种语言中使用相同的文本副本。
 
-[文本翻译 API 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)是一种非区域认知服务，这意味着不保证你的数据与 Azure 搜索或附加认知服务资源位于同一区域。
+[文本翻译 API 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)是一种非区域认知服务，这意味着您的数据不一定与 Azure 认知搜索或附加认知服务资源位于同一区域。
 
 > [!NOTE]
-> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API，以及在 Azure 搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
+> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 在认知服务中调用 Api 时，将会产生费用，并将其作为 Azure 认知搜索中文档解密阶段的一部分进行图像提取。 提取文档中的文本不会产生费用。
 >
-> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)所述。
+> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 [Azure 认知搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)上介绍了图像提取定价。
 
 ## <a name="odatatype"></a>@odata.type  
 TranslationSkill。
 
 ## <a name="data-limits"></a>数据限制
-记录的最大大小应为50000个字符[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)。 如果你需要在将数据发送到文本翻译技能之前分解你的数据，请考虑使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
+记录的最大大小应为50000个字符， [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)度量。 如果你需要在将数据发送到文本翻译技能之前分解你的数据，请考虑使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="skill-parameters"></a>技能参数
 
@@ -149,7 +148,7 @@ TranslationSkill。
 如果你的文本为空，则不会生成警告。
 如果文本超过50000个字符，则只会转换前50000个字符并发出警告。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-+ [预定义技能](cognitive-search-predefined-skills.md)
++ [内置技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)

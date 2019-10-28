@@ -1,23 +1,18 @@
 ---
 title: 在 Azure Application Insights 中浏览 HockeyApp 数据 | Microsoft Docs
 description: 使用 Application Insights 分析 Azure 应用的使用情况和性能。
-services: application-insights
-documentationcenter: windows
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 97783cc6-67d6-465f-9926-cb9821f4176e
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/30/2017
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 79adfbfde25903bfe92c94507071c9d0fe303ef1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 03/30/2017
+ms.openlocfilehash: b14cd38a1db6804a00883ded0b38511fa46c3a52
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60898668"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819581"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>在 Application Insights 中浏览 HockeyApp 数据
 
@@ -56,13 +51,13 @@ HockeyApp Bridge 应用是一项核心功能，可让用户通过 Analytics 和�
 让我们简单回顾一下其中可用的每项功能。
 
 ## <a name="analytics"></a>分析
-Analytics 是功能强大的即席数据查询工具，可用于诊断和分析遥测数据，快速找出根本原因和模式。
+Analytics 是一种功能强大的工具，用于对数据进行即席查询，使你能够诊断和分析遥测数据，并快速发现根本原因和模式。
 
 ![分析](./media/hockeyapp-bridge-app/05.png)
 
 * [详细了解 Analytics](../../azure-monitor/log-query/get-started-portal.md)
 
-## <a name="continuous-export"></a>连续导出
+## <a name="continuous-export"></a>持续导出
 使用连续导出可将数据导出到 Azure Blob 存储容器。 如果数据所需的保留时间超过 Application Insights 目前提供的保留期间，此功能就非常有用。 可以将数据保留在 Blob 存储中，在 SQL 数据库或首选的数据仓库解决方案中进行处理。
 
 [详细了解连续导出](export-telemetry.md)

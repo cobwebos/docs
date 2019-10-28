@@ -9,12 +9,12 @@ ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: 0f0acc721fd8888953d80976234b431943985ebf
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 883965d1d59e5523527a6aab1e83521d7491bf82
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356265"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675710"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>通过 Python 开始使用 Azure 表存储和 Azure Cosmos DB 表 API
 
@@ -56,7 +56,7 @@ Azure 表存储和 Azure Cosmos DB 是用于在云中存储结构化 NoSQL 数�
 
 ## <a name="import-the-tableservice-and-entity-classes"></a>导入 TableService 和 Entity 类
 
-若要通过 Python 使用 Azure 表服务中的实体，请使用 [TableService][py_TableService]and [Entity][py_Entity] 类。 将此代码添加至靠近 Python 文件顶部的位置以同时导入：
+若要通过 Python 使用 Azure 表服务中的实体，请使用 [TableService][py_TableService] 和 [Entity][py_Entity] 类。 将此代码添加至靠近 Python 文件顶部的位置以同时导入：
 
 ```python
 from azure.cosmosdb.table.tableservice import TableService
@@ -76,7 +76,7 @@ table_service = TableService(account_name='myaccount', account_key='mykey')
 若要连接到 Azure Cosmos DB，请从 Azure 门户中复制主连接字符串，并使用复制的连接字符串创建 [TableService][py_TableService] 对象：
 
 ```python
-table_service = TableService(connection_string='DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;TableEndpoint=myendpoint;)
+table_service = TableService(connection_string='DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;TableEndpoint=myendpoint;')
 ```
 
 ## <a name="create-a-table"></a>创建表
@@ -89,9 +89,9 @@ table_service.create_table('tasktable')
 
 ## <a name="add-an-entity-to-a-table"></a>将实体添加到表
 
-若要添加实体，请先创建一个表示实体的对象，然后将该对象传递给 [TableService.insert_entity 方法][py_TableService]. The entity object can be a dictionary or an object of type [Entity][py_Entity]，并定义实体的属性名称。 除包含用户为实体定义的任何其他属性外，每个实体还必须包含必需的 [PartitionKey 和 RowKey](#partitionkey-and-rowkey) 属性。 此示例创建表示实体的字典对象，然后将其传递给 [insert_entity][py_insert_entity] 方法，以将其添加到表中：
+若要添加实体，请先创建一个表示实体的对象，然后将该对象传递给 [TableService.insert_entity 方法][py_TableService]。 实体对象可以是字典或类型为[实体][py_Entity]的对象，同时定义实体的属性名称和值。 除包含用户为实体定义的任何其他属性外，每个实体还必须包含必需的 [PartitionKey 和 RowKey](#partitionkey-and-rowkey) 属性。
 
-此示例创建 [Entity][py_Entity]object, then passes it to the [insert_entity][py_insert_entity] 方法以将其添加到表中：
+此示例创建表示实体的字典对象，然后将其传递给 [insert_entity][py_insert_entity] 方法，以将其添加到表中：
 
 ```python
 task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
@@ -99,7 +99,7 @@ task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
 table_service.insert_entity('tasktable', task)
 ```
 
-PartitionKey 和 RowKey
+此示例创建[实体][py_Entity]对象，然后将其传递给 [insert_entity][py_insert_entity] 方法，以将其添加到表中：
 
 ```python
 task = Entity()
@@ -110,15 +110,15 @@ task.priority = 100
 table_service.insert_entity('tasktable', task)
 ```
 
-### <a name="partitionkey-and-rowkey"></a>必须为每个实体同时指定 PartitionKey  和 RowKey  属性。
+### <a name="partitionkey-and-rowkey"></a>PartitionKey 和 RowKey
 
-这些是实体的唯一标识符，它们一起形成实体的主密钥。 相比查询任何其他实体属性，使用这些值进行查询速度更快，因为只有这些属性编制了索引。 表服务使用 PartitionKey  在存储节点之间智能分布表实体。
+必须为每个实体同时指定 PartitionKey  和 RowKey  属性。 这些是实体的唯一标识符，它们一起形成实体的主密钥。 相比查询任何其他实体属性，使用这些值进行查询速度更快，因为只有这些属性编制了索引。
 
-具有相同 PartitionKey  的实体存储在同一节点上。 RowKey  是实体在其所属分区内的唯一 ID。 更新实体
+表服务使用 PartitionKey  在存储节点之间智能分布表实体。 具有相同 PartitionKey  的实体存储在同一节点上。 RowKey  是实体在其所属分区内的唯一 ID。
 
-## <a name="update-an-entity"></a>若要更新一个实体的所有属性值，请调用 [update_entity][py_update_entity] 方法。
+## <a name="update-an-entity"></a>更新实体
 
-此示例演示如何使用更新版本替换现有实体： 如果要更新的实体尚不存在，更新操作会失败。
+若要更新一个实体的所有属性值，请调用 [update_entity][py_update_entity] 方法。 此示例演示如何使用更新版本替换现有实体：
 
 ```python
 task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
@@ -126,7 +126,7 @@ task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
 table_service.update_entity('tasktable', task)
 ```
 
-如果要存储实体（无论其存在与否），请使用 [insert_or_replace_entity][py_insert_or_replace_entity]。 在下面的示例中，第一次调用将替换现有实体。 第二次调用将插入新实体，因为表中不存在具有指定的 PartitionKey 和 RowKey 的实体。 [update_entity][py_update_entity] 方法将替换现有实体的所有属性和值，还可使用它从现有实体删除属性。
+如果要更新的实体尚不存在，更新操作会失败。 如果要存储实体（无论其存在与否），请使用 [insert_or_replace_entity][py_insert_or_replace_entity]。 在下面的示例中，第一次调用将替换现有实体。 第二次调用将插入新实体，因为表中不存在具有指定的 PartitionKey 和 RowKey 的实体。
 
 ```python
 # Replace the entity created earlier
@@ -141,13 +141,13 @@ table_service.insert_or_replace_entity('tasktable', task)
 ```
 
 > [!TIP]
-> 可使用 [merge_entity][py_merge_entity] 方法更新具有新的或修改过的属性值的现有实体，而无需完全替换该实体。 修改多个实体
+> [update_entity][py_update_entity] 方法将替换现有实体的所有属性和值，还可使用它从现有实体删除属性。 可使用 [merge_entity][py_merge_entity] 方法更新具有新的或修改过的属性值的现有实体，而无需完全替换该实体。
 
-## <a name="modify-multiple-entities"></a>若要确保表服务自动处理请求，可批量提交多个操作。
+## <a name="modify-multiple-entities"></a>修改多个实体
 
-首先，使用 [TableBatch][py_TableBatch] 类，将多个操作添加到单个批次。 然后，调用 [TableService][py_TableService].[commit_batch][py_commit_batch]，以在一个原子操作中提交这些操作。 要批量修改的所有实体必须位于同一分区。 此示例将两个实体一起添加到批处理：
+若要确保表服务自动处理请求，可批量提交多个操作。 首先，使用 [TableBatch][py_TableBatch] 类，将多个操作添加到单个批次。 然后，调用 [TableService][py_TableService].[commit_batch][py_commit_batch]，以在一个原子操作中提交这些操作。 要批量修改的所有实体必须位于同一分区。
 
-还可以通过上下文管理器语法来使用批处理：
+此示例将两个实体一起添加到批处理：
 
 ```python
 from azure.cosmosdb.table.tablebatch import TableBatch
@@ -161,7 +161,7 @@ batch.insert_entity(task005)
 table_service.commit_batch('tasktable', batch)
 ```
 
-查询实体
+还可以通过上下文管理器语法来使用批处理：
 
 ```python
 task006 = {'PartitionKey': 'tasksSeattle', 'RowKey': '006',
@@ -174,9 +174,9 @@ with table_service.batch('tasktable') as batch:
     batch.insert_entity(task007)
 ```
 
-## <a name="query-for-an-entity"></a>要查询表中的实体，请将其 PartitionKey 和 RowKey 传递给 [TableService][py_TableService].[get_entity][py_get_entity] 方法。
+## <a name="query-for-an-entity"></a>查询实体
 
-查询实体集
+要查询表中的实体，请将其 PartitionKey 和 RowKey 传递给 [TableService][py_TableService].[get_entity][py_get_entity] 方法。
 
 ```python
 task = table_service.get_entity('tasktable', 'tasksSeattle', '001')
@@ -184,9 +184,9 @@ print(task.description)
 print(task.priority)
 ```
 
-## <a name="query-a-set-of-entities"></a>可通过向筛选字符串提供“筛选”参数  来查询一组实体。
+## <a name="query-a-set-of-entities"></a>查询实体集
 
-此示例通过向 PartitionKey 应用筛选器来查找 Seattle 中的所有任务。 查询一部分实体属性
+可通过向筛选字符串提供“筛选”参数  来查询一组实体。 此示例通过向 PartitionKey 应用筛选器来查找 Seattle 中的所有任务。
 
 ```python
 tasks = table_service.query_entities(
@@ -196,14 +196,14 @@ for task in tasks:
     print(task.priority)
 ```
 
-## <a name="query-a-subset-of-entity-properties"></a>还可在查询中限制为每个实体返回的属性。
+## <a name="query-a-subset-of-entity-properties"></a>查询一部分实体属性
 
-此方法称为“投影”  ，可减少带宽并提高查询性能，尤其适用于大型实体或结果集。 使用 select  参数并传递希望返回给客户端的属性的名称。 以下代码中的查询只返回表中实体的说明。
+还可在查询中限制为每个实体返回的属性。 此方法称为“投影”  ，可减少带宽并提高查询性能，尤其适用于大型实体或结果集。 使用 select  参数并传递希望返回给客户端的属性的名称。
 
-下面的代码段仅对 Azure 存储有效。
+以下代码中的查询只返回表中实体的说明。
 
 > [!NOTE]
-> 但不受存储模拟器支持。 删除实体
+> 下面的代码段仅对 Azure 存储有效。 但不受存储模拟器支持。
 
 ```python
 tasks = table_service.query_entities(
@@ -212,29 +212,29 @@ for task in tasks:
     print(task.description)
 ```
 
-## <a name="delete-an-entity"></a>将实体的 **PartitionKey** 和 **RowKey** 传递给 [delete_entity][py_delete_entity] 方法，以删除该实体。
+## <a name="delete-an-entity"></a>删除实体
 
-删除表
+将实体的 **PartitionKey** 和 **RowKey** 传递给 [delete_entity][py_delete_entity] 方法，以删除该实体。
 
 ```python
 table_service.delete_entity('tasktable', 'tasksSeattle', '001')
 ```
 
-## <a name="delete-a-table"></a>如果不再需要表或表中的所有实体，请调用 [delete_table][py_delete_table] 方法，从 Azure 存储永久删除该表。
+## <a name="delete-a-table"></a>删除表
 
-后续步骤
+如果不再需要表或表中的所有实体，请调用 [delete_table][py_delete_table] 方法，从 Azure 存储永久删除该表。
 
 ```python
 table_service.delete_table('tasktable')
 ```
 
-## <a name="next-steps"></a>[常见问题解答 - 使用表 API 进行开发](https://docs.microsoft.com/azure/cosmos-db/faq)
+## <a name="next-steps"></a>后续步骤
 
+* [常见问题解答 - 使用表 API 进行开发](https://docs.microsoft.com/azure/cosmos-db/faq)
 * [用于 Python API 的 Azure Cosmos DB SDK 参考](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)
 * [Python 开发人员中心](https://azure.microsoft.com/develop/python/)
 * [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)：一种跨平台的免费应用程序，用于在 Windows、macOS 和 Linux 上对 Azure 存储数据进行可视化处理。
 * [在 Visual Studio (Windows) 中使用 Python](https://docs.microsoft.com/visualstudio/python/overview-of-python-tools-for-visual-studio)
-* <bpt id="p1">[</bpt>Working with Python in Visual Studio (Windows)<ept id="p1">](https://docs.microsoft.com/visualstudio/python/overview-of-python-tools-for-visual-studio)</ept>
 
 
 [py_commit_batch]: https://docs.microsoft.com/python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?view=azure-python

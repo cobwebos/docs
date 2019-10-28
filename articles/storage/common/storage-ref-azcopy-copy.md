@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e7f08c175972826a8b226d7e80f563ac71ba23db
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 78482b5d7013ffa3bbb0a34dd04c8c48626dc77a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514760"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72926651"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -172,7 +172,7 @@ azcopy copy [source] [destination] [flags]
 
 **--检查长度**                        传输后检查目标上的文件的长度。 如果源和目标之间不匹配，则将传输标记为失败。 （默认值为 true）
 
-**--check-md5** string 指定在下载时应如何验证严格的 md5 哈希。 仅在下载时可用。 可用选项： NoCheck、LogOnly、FailIfDifferent、FailIfDifferentOrMissing。 （默认值为 "FailIfDifferent"）（默认值为 "FailIfDifferent"）
+**--check-md5** string 指定在下载时应如何验证严格的 md5 哈希。 仅在下载时可用。 可用选项： NoCheck、LogOnly、FailIfDifferent、FailIfDifferentOrMissing。 （默认值为 "FailIfDifferent"）
 
 **--内容处置**字符串设置内容处置标头。 下载时返回。
 
@@ -204,15 +204,15 @@ azcopy copy [source] [destination] [flags]
 
 **--include-模式**字符串在复制时仅包含这些文件。 此选项支持通配符（*）。 使用 ";" 分隔文件。
 
-**--日志级别**字符串定义日志文件的日志详细级别，可用级别：信息（所有请求/响应）、警告（响应缓慢）、错误（仅失败的请求）和 NONE （无输出日志）。 （默认值为 "INFO"）。 （默认值为 "INFO"）
+**--日志级别**字符串定义日志文件的日志详细级别，可用级别：信息（所有请求/响应）、警告（响应缓慢）、错误（仅失败的请求）和 NONE （无输出日志）。 （默认值为 "INFO"）
 
 **--** 将这些键值对作为元数据上传到 Azure 存储的元数据字符串。
 
 **--非推测-mime 类型**                  阻止 AzCopy 根据文件的扩展名或内容来检测内容类型。
 
-**--** 如果此标志设置为 true，则覆盖字符串将覆盖目标上的冲突文件和 blob。 （默认值为 "true"）可能的值包括 "true"、"false" 和 "prompt"。 （默认值为 "true"）
+**--** 如果此标志设置为 true，则覆盖字符串将覆盖目标上的冲突文件和 blob。 可能的值包括 "true"、"false" 和 "prompt"。 （默认值为 "true"）
 
-**--页 blob 层**字符串使用此 blob 层将页 Blob 上传到 Azure 存储。 （默认值为 "无"）。 （默认值为 "无"）
+**--页 blob 层**字符串使用此 blob 层将页 Blob 上传到 Azure 存储。 （默认值为 "无"）
 
 **--保留-上次修改时间**         仅当 destination 为文件系统时可用。
 
@@ -222,9 +222,9 @@ azcopy copy [source] [destination] [flags]
 
 **--s2s-已更改**          检查源在枚举后是否已更改。
 
-**--s2s-handle-metadata** string 指定如何处理无效的元数据键。 可用选项： ExcludeIfInvalid、FailIfInvalid、RenameIfInvalid。 （默认值为 "ExcludeIfInvalid"）。 （默认值为 "ExcludeIfInvalid"）
+**--s2s-handle-metadata** string 指定如何处理无效的元数据键。 可用选项： ExcludeIfInvalid、FailIfInvalid、RenameIfInvalid。 （默认值为 "ExcludeIfInvalid"）
 
-**--s2s-保留-访问层**            服务间复制时保留访问层。 请参阅[Azure Blob 存储： "热"、"冷" 和 "存档" 访问层](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)，确保目标存储帐户支持设置访问层。 如果不支持设置访问层，请使用 s2sPreserveAccessTier = false 来绕过复制访问层。 （默认值为 true）。  （默认值为 true）
+**--s2s-保留-访问层**            服务间复制时保留访问层。 请参阅[Azure Blob 存储： "热"、"冷" 和 "存档" 访问层](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)，确保目标存储帐户支持设置访问层。 如果不支持设置访问层，请使用 s2sPreserveAccessTier = false 来绕过复制访问层。 （默认值为 true）
 
 **--s2s-保留-属性**             在服务间复制服务时保留完整的属性。 对于 AWS S3 和 Azure 文件的非单一文件源，列表操作不返回对象和文件的完整属性。 若要保留完整属性，AzCopy 需要为每个对象或文件发送一个附加请求。 （默认值为 true）
 

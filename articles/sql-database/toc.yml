@@ -719,6 +719,8 @@
           href: sql-database-managed-instance-aad-security-tutorial.md
         - name: 将托管实例添加到故障转移组
           href: sql-database-managed-instance-failover-group-tutorial.md
+        - name: 迁移本地用户和组
+          href: tutorial-managed-instance-azure-active-directory-migration.md
     - name: 概念
       items:
         - name: 管理 API 参考

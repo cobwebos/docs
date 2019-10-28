@@ -1,27 +1,22 @@
 ---
 title: Azure Application Insights 中的资源、角色和访问控制 | Microsoft Docs
 description: 组织的见解的所有者、参与者和读者。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 49f736a5-67fe-4cc6-b1ef-51b993fb39bd
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 02/14/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 0f348e3e7dc2812bf354d1f8ec86330b0742439a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 02/14/2019
+ms.openlocfilehash: eea991b553d69fce5c177c1eee48633484dc19db
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60373642"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899962"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的资源、角色和访问控制
 
-通过使用 [Microsoft Azure 中基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)，可以控制哪些用户对 Azure [Application Insights][start] 中的数据具有读取和更新访问权限。
+通过[在 Microsoft Azure 中使用基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)，可以控制谁对 Azure [Application Insights][start]中的数据具有读取和更新权限。
 
 > [!IMPORTANT]
 > 将访问权限分配给应用程序资源所属**资源组或订阅**中的用户（并非资源本身）。 分配 **Application Insights 组件参与者**角色。 这可确保对 Web 测试和警报及应用程序资源的访问实现统一控制。 [了解详细信息](#access)。
@@ -35,20 +30,20 @@ ms.locfileid: "60373642"
 
 * **资源** - Microsoft Azure 服务的实例。 Application Insights 资源会收集、分析并显示从应用程序发送的遥测数据。  其他类型的 Azure 资源包括 Web 应用、数据库和 VM。
   
-    要查看资源，请打开 [Azure 门户][portal]并登录，然后单击“所有资源”。 为找到资源，请在筛选器字段中键入部分名称。
+    若要查看资源，请打开[Azure 门户][portal]，登录，然后单击 "所有资源"。 为找到资源，请在筛选器字段中键入部分名称。
   
     ![Azure 资源的列表](./media/resources-roles-access-control/10-browse.png)
 
 <a name="resource-group"></a>
 
-* [**资源组**][group] - 每个资源都属于一个组。 组是一种管理相关资源的简便方式，对于访问控制尤其如此。 例如，可以将 Web 应用放入资源组中，监视应用和存储资源以保存导出的数据。
+* [**资源组**][group]-每个资源属于一个组。 组是一种管理相关资源的简便方式，对于访问控制尤其如此。 例如，可以将 Web 应用放入资源组中，监视应用和存储资源以保存导出的数据。
 
 * [**订阅**](https://portal.azure.com) - 若要使用 Application Insights 或其他 Azure 资源，则登录到 Azure 订阅。 每个资源组都属于一个 Azure 订阅，从中选择价格封装，并选择成员及其访问权限（如果它是组织订阅）。
-* [**Microsoft 帐户**][account] - 用于登录到 Microsoft Azure 订阅、XBox Live、Outlook.com 和其他 Microsoft 服务的用户名和密码。
+* [**Microsoft 帐户**][account]-用于登录 Microsoft Azure 订阅、XBox Live、Outlook.com 和其他 Microsoft 服务的用户名和密码。
 
 ## <a name="access"></a> 控制资源组中的访问
 
-请务必了解，除了为应用程序创建的资源外，也有为警报和 Web 测试单独隐藏的资源。 与其所附加到相同[资源组](#resource-group)为 Application Insights 资源。 还可以在其中放置其他 Azure 服务，例如网站或存储。
+请务必了解，除了为应用程序创建的资源外，也有为警报和 Web 测试单独隐藏的资源。 它们附加到与 Application Insights 资源相同的[资源组](#resource-group)。 还可以在其中放置其他 Azure 服务，例如网站或存储。
 
 若要控制对这些资源的访问，建议：
 
@@ -59,19 +54,19 @@ ms.locfileid: "60373642"
 
 必须对订阅或资源组拥有所有者权限。
 
-用户必须具有 [Microsoft 帐户][account]，或对[组织 Microsoft 帐户](../../active-directory/fundamentals/sign-up-organization.md)的访问权限。 可以将访问权限提供给个人，也可以提供给 Azure Active Directory 中定义的用户组。
+用户必须具有[Microsoft 帐户][account]，或者可以访问其组织的[microsoft 帐户](../../active-directory/fundamentals/sign-up-organization.md)。 可以将访问权限提供给个人，也可以提供给 Azure Active Directory 中定义的用户组。
 
 #### <a name="navigate-to-resource-group-or-directly-to-the-resource-itself"></a>导航到资源组或直接导航到该资源本身
 
-从左侧菜单中选择“访问控制 (IAM)”  。
+从左侧菜单中选择“访问控制 (IAM)”。
 
 ![Azure 门户中的访问控制按钮的屏幕截图](./media/resources-roles-access-control/0001-access-control.png)
 
-选择“添加角色分配” 
+选择“添加角色分配”
 
 ![以红色突出显示添加按钮的访问控制菜单的屏幕截图](./media/resources-roles-access-control/0002-add.png)
 
-下面的“添加权限”  视图主要特定于 Application Insights 资源，如果从更高级别（如资源组）查看访问控制权限，则将看到其他并非以 Application Insights 为中心的角色。
+下面的“添加权限”视图主要特定于 Application Insights 资源，如果从更高级别（如资源组）查看访问控制权限，则将看到其他并非以 Application Insights 为中心的角色。
 
 若要查看有关所有基于 Azure 角色的访问控制内置角色的信息，请使用[官方参考内容](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
 
@@ -106,7 +101,7 @@ ms.locfileid: "60373642"
 * 资源
 * Web 测试
 * 警报
-* 连续导出
+* 持续导出
 
 #### <a name="select-the-user"></a>选择用户
 
