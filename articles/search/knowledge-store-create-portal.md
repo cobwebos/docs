@@ -1,92 +1,91 @@
 ---
-title: 在 Azure 门户中创建知识存储 - Azure 搜索
-description: 使用 Azure 门户中的“导入数据”向导创建 Azure 搜索知识存储，用于保存认知搜索管道的扩充内容。
+title: 在 Azure 门户中创建知识存储
+titleSuffix: Azure Cognitive Search
+description: 使用“导入数据”向导创建用于保存扩充内容的知识存储。 连接到知识存储以便从其他应用进行分析，或将扩充内容发送到下游流程。
 author: lisaleib
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 09/03/2019
+manager: nitinme
 ms.author: v-lilei
-ms.openlocfilehash: fb979a7ff4144694aecad0985c5bce9be2de05bd
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: quickstart
+ms.date: 11/04/2019
+ms.openlocfilehash: d714e913d5e03233ed3ffcaaebca6eb989a56bd7
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265196"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790030"
 ---
-# <a name="create-an-azure-search-knowledge-store-in-the-azure-portal"></a>在 Azure 门户中创建 Azure 搜索知识存储
+# <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索知识存储
 
 > [!Note]
-> 知识存储目前以预览版提供，不应在生产环境中使用。 [Azure 搜索 REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供此功能。 目前不支持 .NET SDK。
+> 知识存储目前以预览版提供，不应在生产环境中使用。 Azure 门户和[搜索 REST API 版本 2019-05-06-Preview](search-api-preview.md) 都提供此功能。 目前不支持 .NET SDK。
 >
 
-知识存储是 Azure 搜索中的一项功能，它可以保留 AI 扩充管道的输出供后续分析或进行其他下游处理。 AI 扩充的管道接受图像文件或非结构化文本文件，使用 Azure 搜索为其编制索引，应用认知服务中的 AI 扩充（例如图像分析和自然语言处理），并将结果保存到 Azure 存储中的知识存储。 然后，可以使用 Power BI 或存储资源管理器等工具来浏览知识存储。
+知识存储是 Azure 认知搜索的一项功能，它可以保存认知技能管道的输出，以进行后续分析或下游处理。 
 
-在本文中，你将使用 Azure 门户上的“导入数据”向导来引入 AI 扩充、为其编制索引，然后将其应用到一系列酒店评论。 酒店评论已导入到 Azure Blob 存储，结果已作为知识存储保存在 Azure 表存储中。
+管道接受图像和非结构化文本作为原始内容，通过认知服务（例如图像和自然语言处理）应用 AI，并创建扩充内容（新的结构和信息）作为输出。 管道创建的物理项目之一是[知识存储](knowledge-store-concept-intro.md)，可通过工具访问该知识存储以分析和浏览内容。
 
-创建知识存储后，可以了解如何使用存储资源管理器或 Power BI 来访问此知识存储。
+在本快速入门中，你将合并 Azure 云中的服务和数据以创建知识存储。 一切准备就绪后，可在门户中运行“导入数据”向导，以将这些数据提取到一起。  最终结果是可以在门户（[存储资源管理器](knowledge-store-view-storage-explorer.md)）中查看的原始内容和 AI 生成的内容。
 
-## <a name="prerequisites"></a>先决条件
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-+ [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本教程中使用免费服务。
+## <a name="create-services-and-load-data"></a>创建服务并加载数据
 
-+ [创建一个 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)用于存储示例数据和知识存储。 存储帐户必须使用与 Azure 搜索服务相同的位置（例如 US-WE），“帐户类型”必须是“StorageV2 (常规用途 V2)”（默认设置）或“Storage (常规用途 V1)”。   
+本快速入门使用 Azure 认知搜索、Azure Blob 存储和用于 AI 的 [Azure 认知服务](https://azure.microsoft.com/services/cognitive-services/)。 
 
-## <a name="load-the-data"></a>加载数据
+由于工作负荷很小，因此，在从 Azure 认知搜索调用认知服务时，认知服务在幕后会抽调一部分算力来免费处理事务（每天最多 20 个）。 只要你使用我们提供的示例数据，就可以跳过创建或附加认知服务资源的过程。
 
-将酒店评论 CSV 文件载入 Azure Blob 存储，使之可由 Azure 搜索索引器访问，并可通过 AI 扩充管道进行馈送。
+1. [下载 HotelReviews_Free.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D)。 此数据是保存在某个 CSV 文件中的酒店评论数据（源自 Kaggle.com），其中包含客户对一家酒店的 19 条反馈。 
 
-### <a name="create-an-azure-blob-container-with-the-data"></a>创建包含数据的 Azure Blob 容器
+1. [创建 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)，或在当前订阅下[查找现有帐户](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)。 你将使用 Azure 存储来保存要导入的原始内容，并使用知识存储（最终结果）。
 
-1. [下载已保存到 CSV 文件中的酒店评论数据 (HotelReviews_Free.csv)](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D)。 此数据来源于 Kaggle.com，包含客户对酒店的反馈。
-1. [登录到 Azure 门户](https://portal.azure.com)，导航到你的 Azure 存储帐户。
-1. [创建 Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)为此，请在存储帐户的左侧导航栏中单击“Blob”，然后单击命令栏上的“+ 容器”。  
-1. 请输入 `hotel-reviews` 作为新容器的**名称**。
-1. 选择任何“公共访问级别”。  我们使用了默认值。
-1. 单击“确定”创建 Azure Blob 容器。 
-1. 打开新的 `hotels-review` 容器，单击“上传”，然后选择在第一个步骤中下载的“HotelReviews-Free.csv”文件。  
+   此帐户有两项要求：
+
+   + 选择 Azure 认知搜索所在的同一区域。 
+   
+   + 选择 StorageV2（常规用途 V2）帐户类型。 
+
+1. 打开 Blob 服务页并创建一个容器。  
+
+1. 单击“上传” 。 
 
     ![上传数据](media/knowledge-store-create-portal/upload-command-bar.png "上传酒店评论")
 
-1. 单击“上传”，将该 CSV 文件导入 Azure Blob 存储。  随后会显示新容器。
+1. 选择在第一个步骤中下载的 **HotelReviews-Free.csv** 文件。
 
     ![创建 Azure Blob 容器](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "创建 Azure Blob 容器")
 
-### <a name="get-the-azure-storage-account-connection-string"></a>获取 Azure 存储帐户连接字符串
+1. 对此资源的操作即将完成，但在退出这些页面之前，请使用左侧导航窗格中的链接打开“访问密钥”页。  获取用于从 Blob 存储检索数据的连接字符串。 连接字符串类似于以下示例：`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
-1. 在门户上导航到你的 Azure 存储帐户。
-1. 在服务的左侧导航栏中，单击“访问密钥”。 
-1. 在“密钥 1”下，复制并保存“连接字符串”。   该字符串以 `DefaultEndpointsProtocol=https` 开头。 存储帐户名称和密钥已嵌入到该字符串中。 请保管好此字符串， 在后续步骤中需要用到。
+1. [创建 Azure 认知搜索服务](search-create-service-portal.md)或在同一订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
 
-## <a name="create-and-run-ai-enrichments"></a>创建并运行 AI 扩充
+现在可以在“导入数据”向导中转到下一步。
 
-使用导入数据向导创建知识存储。 你将要创建一个数据源，选择扩充，配置知识存储和索引，然后执行。
+## <a name="run-the-import-data-wizard"></a>运行“导入数据”向导
 
-### <a name="start-the-import-data-wizard"></a>启动“导入数据”向导
+在搜索服务的“概述”页中，单击命令栏上的“导入数据”以通过四个步骤创建知识存储。 
 
-1. 在 Azure 门户上[找到你的搜索服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。
+  ![导入数据命令](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
-1. 在命令栏上，单击“导入数据”启动导入向导。 
+### <a name="step-1-create-a-data-source"></a>步骤 1：创建数据源
 
-### <a name="connect-to-your-data-import-data-wizard"></a>连接到数据（“导入数据”向导）
-
-在此向导步骤中，你将从包含酒店数据的 Azure Blob 创建一个数据源。
-
-1. 在“数据源”列表中，选择“Azure Blob 存储”。  
+1. 在“连接到数据”中，选择“Azure Blob 存储”，再选择创建的帐户和容器   。 
 1. 对于“名称”，请输入 `hotel-reviews-ds`。 
 1. 对于“分析模式”，请选择“分隔文本”，然后选中“第一行包含标头”复选框。    确保“分隔符”是逗号 (,)。 
 1. 输入在上一步骤中保存的存储服务**连接字符串**。
 1. 对于“容器名称”，请输入 `hotel-reviews`。 
-1. 单击“下一步:  添加认知搜索(可选)”。
+1. 单击“下一步:  添加 AI 扩充(可选)”。
 
       ![创建数据源对象](media/knowledge-store-create-portal/hotel-reviews-ds.png "创建数据源对象")
 
-## <a name="add-cognitive-search-import-data-wizard"></a>添加认知搜索（“导入数据”向导）
+1. 继续转到下一页。
 
-在此向导步骤中，你将创建一个包含认知技能扩充的技能集。 本示例中使用的技能将提取关键短语并检测语言和情绪。 这些扩充内容将以 Azure 表的形式“投影”到知识存储。
+### <a name="step-2-add-cognitive-skills"></a>步骤 2：添加认知技能
+
+在此向导步骤中，你将创建一个包含认知技能扩充的技能集。 本示例中使用的技能将提取关键短语并检测语言和情绪。 在后续步骤中，这些扩充内容将以 Azure 表的形式“投影”到知识存储。
 
 1. 展开“附加认知服务”。  默认已选择“免费(受限扩充)”。  之所以可以使用此资源，是因为 HotelReviews-Free.csv 中的记录数为 19 个，并且此免费资源每天最多允许 20 个事务。
-1. 展开“添加扩充”。 
+1. 展开“添加认知技能”。 
 1. 对于“技能集名称”，请输入 `hotel-reviews-ss`。 
 1. 对于“源数据字段”，请选择“*reviews_text”。  
 1. 对于“扩充粒度级别”，请选择“页面(5000 个字符区块)”。  
@@ -106,9 +105,9 @@ ms.locfileid: "71265196"
 
     ![配置知识存储](media/knowledge-store-create-portal/hotel-reviews-ks.png "配置知识存储")
 
-1. 单击“下一步:  自定义目标索引”。
+1. 继续转到下一页。
 
-### <a name="import-data-import-data-wizard"></a>导入数据（“导入数据”向导）
+### <a name="step-3-configure-the-index"></a>步骤 3：配置索引
 
 在此向导步骤中，你将为可选的全文搜索查询配置索引。 向导将对数据源进行采样，以推断字段和数据类型。 你只需为所需的行为选择属性。 例如，“可检索”属性将允许搜索服务返回一个字段值，而“可搜索”属性将对字段启用全文搜索。  
 
@@ -122,9 +121,9 @@ ms.locfileid: "71265196"
 
     ![配置索引](media/knowledge-store-create-portal/hotel-reviews-idx.png "配置索引")
 
-1. 单击“下一步:  创建索引器”。
+1. 继续转到下一页。
 
-### <a name="create-an-indexer"></a>创建索引器
+### <a name="step-4-configure-the-indexer"></a>步骤 4：配置索引器
 
 在此向导步骤中，你将配置一个索引器，用于统一提取前面向导步骤中定义的数据源、技能集和索引。
 
@@ -132,22 +131,21 @@ ms.locfileid: "71265196"
 1. 对于“计划”，请保留默认设置“一次”。  
 1. 单击“提交”运行索引器。  数据提取、索引编制和应用认知技能的操作都在此步骤中发生。
 
-### <a name="monitor-the-notifications-queue-for-status"></a>监视通知队列的状态
+## <a name="monitor-status"></a>监视状态
 
-1. 在 Azure 门户中，监视可单击的“Azure 搜索通知”状态链接的通知活动日志。  执行过程可能需要几分钟才能完成。
+与典型的基于文本的索引相比，认知技能索引编制需要花费更长的时间才能完成。 向导应在概述页打开索引器列表，以便你能够跟踪进度。 若要进行自导航，请转到“概述”页，然后单击“索引器”  。
+
+在 Azure 门户中，还可以监视可单击的“Azure 认知搜索通知”状态链接的通知活动日志。  执行过程可能需要几分钟才能完成。
 
 ## <a name="next-steps"></a>后续步骤
 
 使用认知服务扩充数据并将结果投影到知识存储后，接下来可以使用存储资源管理器或 Power BI 来浏览扩充的数据集。
 
-若要了解如何使用存储资源管理器浏览此知识存储，请参阅以下演练。
+可以在存储资源管理器中查看内容，或进一步使用 Power BI 通过可视化来获取见解。
 
 > [!div class="nextstepaction"]
 > [使用存储资源管理器查看](knowledge-store-view-storage-explorer.md)
-
-若要了解如何将此知识存储连接到 Power BI，请参阅以下演练。
-
-> [!div class="nextstepaction"]
 > [使用 Power BI 进行连接](knowledge-store-connect-power-bi.md)
 
-若要重复此练习或尝试其他 AI 扩充演练，请删除 *hotel-reviews-idxr* 索引器。 删除该索引器会将每日的免费事务计数器重置为零。
+> [!Tip]
+> 若要重复此练习或尝试其他 AI 扩充演练，请删除 *hotel-reviews-idxr* 索引器。 删除该索引器会将认知服务处理功能的每日免费事务计数器重置为零。

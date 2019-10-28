@@ -1,23 +1,22 @@
 ---
-title: 快速入门：使用 REST API 在 Node.js 中创建搜索索引 - Azure 搜索
-description: 适用于 Azure 搜索的 Node.js 示例，演示如何通过 JavaScript 创建索引、将数据载入索引以及查询索引。
+title: 快速入门：使用 REST API 在 Node.js 中创建搜索索引
+titleSuffix: Azure Cognitive Search
+description: 适用于 Azure 认知搜索的 Node.js 示例，演示如何通过 JavaScript 创建索引、将数据载入索引以及查询索引。
 author: lobrien
 manager: nitinme
-tags: azure-portal
-services: search
-ms.service: search
-ms.devlang: nodejs
-ms.topic: quickstart
-ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: 4e17247ea412b5472a0c23fd74ff7e53f375710d
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.devlang: nodejs
+ms.service: cognitive-search
+ms.topic: quickstart
+ms.date: 11/04/2019
+ms.openlocfilehash: 20a5af5ac7163c182ea01a9a9442d3c99614442d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881501"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787428"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-nodejs-using-rest-apis"></a>快速入门：使用 REST API 在 Node.js 中创建 Azure 搜索索引
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>快速入门：使用 REST API 在 Node.js 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
@@ -26,7 +25,7 @@ ms.locfileid: "70881501"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-创建一个可以创建、加载和查询 Azure 搜索索引的 Node.js 应用程序。 本文演示如何逐步创建应用程序。 或者，可以[下载源代码和数据](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/)，并从命令行运行应用程序。
+创建一个可以创建、加载和查询 Azure 认知搜索索引的 Node.js 应用程序。 本文演示如何逐步创建应用程序。 或者，可以[下载源代码和数据](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/)，并从命令行运行应用程序。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -37,7 +36,7 @@ ms.locfileid: "70881501"
 + [Node.js](https://nodejs.org)。
 + [NPM](https://www.npmjs.com) 应由 Node.js 安装。
 + 本文或[存储库中的 **quickstart** 目录](https://github.com/Azure-Samples/azure-search-javascript-samples/)提供了示例索引结构和匹配的文档。
-+ [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
++ [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
 
 建议：
 
@@ -47,7 +46,7 @@ ms.locfileid: "70881501"
 <a name="get-service-info"></a>
 ## <a name="get-keys-and-urls"></a>获取密钥和 URL
 
-对服务的调用要求每个请求都有一个 URL 终结点和一个访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
+对服务的调用要求每个请求都有一个 URL 终结点和一个访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
 
 1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取搜索服务的名称。  可以通过查看终结点 URL 来确认服务名称。 如果终结点 URL 为 `https://mydemo.search.windows.net`，则服务名称为 `mydemo`。
 
@@ -85,7 +84,7 @@ ms.locfileid: "70881501"
     {
       "name": "quickstart",
       "version": "1.0.0",
-      "description": "Azure Search Quickstart",
+      "description": "Azure Cognitive Search Quickstart",
       "main": "index.js",
       "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
@@ -124,7 +123,7 @@ ms.locfileid: "70881501"
 
 ## <a name="1---create-index"></a>1 - 创建索引 
 
-创建文件 **hotels_quickstart_index.json**。  此文件定义 Azure 搜索如何处理要在下一步骤中加载的文档。 每个字段由 `name` 标识，采用指定的 `type`。 每个字段还包含一系列索引属性，这些属性指定 Azure 搜索是否可以根据字段进行搜索、筛选、排序和分面。 大多数字段采用简单数据类型，但有些字段（例如 `AddressType`）采用复杂类型，可让你在索引中创建丰富的数据结构。  可以详细了解[支持的数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)和[索引属性](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes)。 
+创建文件 **hotels_quickstart_index.json**。  此文件定义 Azure 认知搜索如何处理要在下一步骤中加载的文档。 每个字段由 `name` 标识，采用指定的 `type`。 每个字段还包含一系列索引属性，这些属性指定 Azure 认知搜索是否可以根据字段进行搜索、筛选、排序和分面。 大多数字段采用简单数据类型，但有些字段（例如 `AddressType`）采用复杂类型，可让你在索引中创建丰富的数据结构。  可以详细了解[支持的数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)和[索引属性](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes)。 
 
 将以下内容添加到 **hotels_quickstart_index.json** 或[下载文件](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels_quickstart_index.json)。 
 
@@ -337,7 +336,7 @@ static throwOnHttpError(response) {
 }
 ```
 
-最后，添加用于检测、删除和创建 Azure 搜索索引的方法。 这些方法全部采用相同的结构：
+最后，添加用于检测、删除和创建 Azure 认知搜索索引的方法。 这些方法全部采用相同的结构：
 
 * 获取要对其发出请求的终结点。
 * 使用相应的终结点、HTTP 谓词、API 密钥和 JSON 正文（如果适当）生成该请求。 `indexExistsAsync()` 和 `deleteIndexAsync()` 没有 JSON 正文，但 `createIndexAsync(definition)` 有。
@@ -473,7 +472,7 @@ run();
 
 ## <a name="2---load-documents"></a>2 - 加载文档 
 
-在 Azure 搜索中，文档这一数据结构既是索引输入，也是查询输出。 需要将此类数据发布到索引。 这会使用不同的终结点，而不是上一步骤中执行操作时使用的终结点。 打开 **AzureSearchClient.js**，并在 `getIndexUrl()` 后面添加以下方法：
+在 Azure 认知搜索中，文档这一数据结构既是索引输入，也是查询输出。 需要将此类数据发布到索引。 这会使用不同的终结点，而不是上一步骤中执行操作时使用的终结点。 打开 **AzureSearchClient.js**，并在 `getIndexUrl()` 后面添加以下方法：
 
 ```javascript
  getPostDataUrl() { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}/docs/index?api-version=${this.apiVersion}`;  }
@@ -604,7 +603,7 @@ const run = async () => {
 
 ## <a name="3---search-an-index"></a>3 - 搜索索引
 
-返回 Azure 门户上搜索服务“概述”中的“索引”选项卡。   索引现在包含四个文档并消耗了一定的存储量（UI 可能需要在几分钟后才能正确反映索引的基础状态）。 单击索引名称转到“搜索资源管理器”。  在此页中可以体验数据查询。 尝试搜索 `*&$count=true` 的查询字符串，应会返回所有文档和结果数。 尝试使用查询字符串 `historic&highlight=Description&$filter=Rating gt 4`，应会返回单个文档，其 `<em></em>` 标记中包装了“historic”一词。 详细了解[如何在 Azure 搜索中撰写查询](https://docs.microsoft.com/azure/search/search-query-overview)。 
+返回 Azure 门户上搜索服务“概述”中的“索引”选项卡。   索引现在包含四个文档并消耗了一定的存储量（UI 可能需要在几分钟后才能正确反映索引的基础状态）。 单击索引名称转到“搜索资源管理器”。  在此页中可以体验数据查询。 尝试搜索 `*&$count=true` 的查询字符串，应会返回所有文档和结果数。 尝试使用查询字符串 `historic&highlight=Description&$filter=Rating gt 4`，应会返回单个文档，其 `<em></em>` 标记中包装了“historic”一词。 详细了解[如何在 Azure 认知搜索中撰写查询](https://docs.microsoft.com/azure/search/search-query-overview)。 
 
 打开 **index.js** 并在顶部附近添加以下代码，以在代码中重新生成这些查询：
 
@@ -679,11 +678,11 @@ async queryAsync(searchTerm) {
 
 ### <a name="about-the-sample"></a>关于本示例
 
-该示例使用少量的酒店数据，但足以演示有关创建和查询 Azure 搜索索引的基础知识。
+该示例使用少量的酒店数据，但足以演示有关创建和查询 Azure 认知搜索索引的基础知识。
 
-**AzureSearchClient** 类封装搜索服务的配置、URL 和基本 HTTP 请求。 **index.js** 文件加载 Azure 搜索服务的配置数据、要上传的用于编制索引的酒店数据、要在其 `run` 函数中指定的订单，并执行各种操作。
+**AzureSearchClient** 类封装搜索服务的配置、URL 和基本 HTTP 请求。 **index.js** 文件加载 Azure 认知搜索服务的配置数据、要上传的用于编制索引的酒店数据、要在其 `run` 函数中指定的订单，并执行各种操作。
 
-`run` 函数的总体行为是删除 Azure 搜索索引（如果存在）、创建索引、添加一些数据，并执行一些查询。  
+`run` 函数的总体行为是删除 Azure 认知搜索索引（如果存在）、创建索引、添加一些数据，并执行一些查询。  
 
 ## <a name="clean-up"></a>清理 
 
@@ -696,7 +695,7 @@ async queryAsync(searchTerm) {
 
 在本 Node.js 快速入门中，我们已完成一系列任务，包括创建索引、使用文档加载索引并运行查询。 我们以尽量简单的方法执行了一些步骤，例如读取配置和定义查询。 在实际的应用程序中，你可能会在提供灵活性和封装功能的单独模块中解决这些问题。 
  
-如果已对 Azure 搜索有一定的了解，可以将此教程用作尝试使用建议器（提前键入或自动完成查询）、筛选器和分面导航的跳板。 如果你是 Azure 搜索的新手，我们建议尝试阅读其他教程，深入了解可以创建哪些内容。 请访问 [文档页](https://azure.microsoft.com/documentation/services/search/) 查找更多资源。 
+如果已对 Azure 认知搜索有一定的了解，可以将此教程用作尝试使用建议器（提前键入或自动完成查询）、筛选器和分面导航的跳板。 如果你是 Azure 认知搜索的新手，我们建议尝试阅读其他教程，深入了解可以创建哪些内容。 请访问 [文档页](https://azure.microsoft.com/documentation/services/search/) 查找更多资源。 
 
 > [!div class="nextstepaction"]
-> [使用 Javascript 从网页调用 Azure 搜索](https://github.com/liamca/azure-search-javascript-samples)
+> [使用 Javascript 从网页调用 Azure 认知搜索](https://github.com/liamca/azure-search-javascript-samples)
