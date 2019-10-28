@@ -1,6 +1,6 @@
 ---
 title: 限制和配置-Azure 逻辑应用
-description: Azure 逻辑应用的服务限制和配置值
+description: 适用于 Azure 逻辑应用的服务限制（如持续时间、吞吐量和容量）加上配置值（如允许的 IP 地址）
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 5399ebaa9526bd2c92a8d12eaa5cd8e5f53b1037
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 52e1594f40917519d80f042a4ace77532186758b
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799360"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968607"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -146,7 +146,7 @@ Azure 逻辑应用支持通过网关执行的写入操作，包括插入和更�
 | 名称 | 多租户限制 | Integration service 环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | 消息大小 | 100 MB | 200 MB | 若要解决此限制问题，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 |
-| 使用分块的消息大小 | 1 GB | 5 GB | 此限制适用于本机支持分块或可以在其运行时配置中启用分块的操作。 <p>对于 integration service 环境，逻辑应用引擎支持此限制，但连接器具有其自己的分块限制，直至引擎限制，例如，请参阅[Azure Blob 存储连接器](/connectors/azureblob/)。 有关分块的详细信息，请参阅[处理包含分块的大消息](../logic-apps/logic-apps-handle-large-messages.md)。 |
+| 使用分块的消息大小 | 1 GB | 5 GB | 此限制适用于本机支持分块或可以在其运行时配置中启用分块的操作。 <p>对于 integration service 环境，逻辑应用引擎支持此限制，但连接器具有其自己的分块限制，直至引擎限制，例如，请参阅[Azure Blob 存储连接器的 API 参考](https://docs.microsoft.com/connectors/azureblob/)。 有关分块的详细信息，请参阅[处理包含分块的大消息](../logic-apps/logic-apps-handle-large-messages.md)。 |
 | 表达式计算限制 | 131,072 个字符 | 131,072 个字符 | `@concat()`、`@base64()`、`@string()` 表达式的长度不能超过此限制。 |
 |||||
 

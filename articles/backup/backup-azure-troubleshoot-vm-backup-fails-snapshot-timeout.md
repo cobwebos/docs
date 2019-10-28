@@ -1,5 +1,5 @@
 ---
-title: Azure 备份故障排除：客户代理状态不可用
+title: 排查 Azure 备份故障：代理和扩展问题
 description: 与代理、扩展和磁盘相关的 Azure 备份失败的症状、原因及解决方法。
 ms.reviewer: saurse
 author: dcurwin
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9d76dfa338a697825868c31cfe6fc11e5235730b
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: b344af71eac04cc355ba157e18d9de9d84a9cc63
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533719"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969083"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure 备份故障排除：代理或扩展的问题
 

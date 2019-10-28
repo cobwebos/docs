@@ -5,6 +5,7 @@
     - name: 关于媒体服务
       href: media-services-overview.md
     - name: 媒体服务中的新增功能
+      displayName: release notes
       href: release-notes.md
 - name: 教程
   expanded: true

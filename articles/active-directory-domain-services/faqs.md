@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 4add98ae092359c6f070bfc93b69257894f44e48
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: e8e6eb9be65b038780fa6e21cf20f4c5dda27a31
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596415"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991456"
 ---
 # <a name="frequently-asked-questions-faqs"></a>常见问题 (FAQ)
 
@@ -47,7 +47,7 @@ ms.locfileid: "72596415"
 可以。 可以在 Azure 资源管理器虚拟网络中启用 Azure AD 域服务。 创建新的托管域时，不再支持经典 Azure 虚拟网络。
 
 ### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>是否可以将现有托管域从经典虚拟网络迁移到资源管理器虚拟网络？
-是的，此功能处于预览阶段。 有关详细信息，请参阅 [将 Azure AD 域服务从经典虚拟网络模型迁移到资源管理器（预览）] [vnet.md 的迁移]
+是的，此功能处于预览阶段。 有关详细信息，请参阅[将 Azure AD 域服务从经典虚拟网络模型迁移到资源管理器（预览）](migrate-from-classic-vnet.md)。
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>是否可以在 Azure CSP（云解决方案提供商）订阅中启用 Azure AD 域服务？
 可以。 有关详细信息，请参阅[如何在 AZURE CSP 订阅中启用 Azure AD 域服务](csp.md)。

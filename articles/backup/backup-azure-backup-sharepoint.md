@@ -8,17 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: 875c2002d477a95b44ad1491cb716e2ef70697e7
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 830dc313ea321f74c495f46c7c2d4ea5f9d4e5b5
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954850"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968549"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>使用 DPM 将 SharePoint 场备份到 Azure
+
 使用 System Center Data Protection Manager (DPM) 将 SharePoint 场备份到 Microsoft Azure，其方法与备份其他数据源极为类似。 Azure 备份提供灵活的备份计划来创建每日、每周、每月或每年备份点，并提供适用于各种备份点的保留策略选项。 利用 DPM，不仅可以存储本地磁盘副本以实现快速的恢复时间目标 (RTO)，还可以将副本存储到 Azure 以进行经济高效的长期保留。
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>SharePoint 支持的版本与相关保护方案
+
 DPM 的 Microsoft Azure 备份支持以下方案：
 
 | 工作负荷 | 版本 | Sharepoint 部署 | DPM 部署类型 | DPM - System Center 2012 R2 | 保护和恢复 |
@@ -26,39 +28,49 @@ DPM 的 Microsoft Azure 备份支持以下方案：
 | SharePoint |SharePoint 2013、SharePoint 2010、SharePoint 2007、SharePoint 3.0 |作为物理服务器或 Hyper-V/VMware 虚拟机部署的 SharePoint <br> -------------- <br> SQL AlwaysOn |物理服务器或本地 Hyper-V 虚拟机 |支持从更新汇总 5 备份到 Azure |保护 SharePoint 场恢复选项：从磁盘恢复点恢复场、数据库、文件或列表项。  从 Azure 恢复点恢复场和数据库。 |
 
 ## <a name="before-you-start"></a>开始之前
+
 在将 SharePoint 场备份到 Azure 之前，需要确保满足几个条件。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
+
 在继续之前，请确保符合使用 Microsoft Azure 备份保护工作负荷的所有[先决条件](backup-azure-dpm-introduction.md#prerequisites-and-limitations)。 先决条件包括如下任务：创建备份保管库、下载保管库凭据、安装 Azure 备份代理，以及在保管库中注册 DPM/Azure 备份服务器。
 
 ### <a name="dpm-agent"></a>DPM 代理
+
 必须在运行 SharePoint Server 或 SQL Server 的服务器以及属于 SharePoint 场的任何其他服务器上安装 DPM 代理。 有关如何设置保护代理的详细信息，请参阅[设置保护代理](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx)。  唯一的例外是，只能在单个 Web 前端 (WFE) 服务器上安装代理。 DPM 只需将一台 WFE 服务器上的代理作为保护的入口点。
 
 ### <a name="sharepoint-farm"></a>SharePoint 场
+
 针对场中的每 1000 万个项，必须有至少 2 GB 的卷空间用于放置 DPM 文件夹。 此空间对目录生成是必要的。 为了使 DPM 恢复特定项（网站集合、站点、列表、文档库、文件夹、单个文档与列表项），目录生成将创建一个包含在每个内容数据库中的 URL 列表。 可以在 DPM 管理员控制台的“**恢复**”任务区域中，查看“可恢复项”窗格中的 URL 列表。
 
 ### <a name="sql-server"></a>SQL Server
+
 DPM 以 LocalSystem 帐户的形式运行。 若要备份 SQL Server 数据库，DPM 需要对运行 SQL Server 的服务器的帐户具有 sysadmin 特权。 备份之前，先在运行 SQL Server 的服务器上将 NT AUTHORITY\SYSTEM 设置为 sysadmin。
 
 如果 SharePoint 场有使用 SQL Server 别名配置的 SQL Server 数据库，请在 DPM 将要保护的前端 Web 服务器上安装 SQL Server 客户端组件。
 
 ### <a name="sharepoint-server"></a>SharePoint Server
-尽管性能取决于许多因素, 例如 SharePoint 场的大小, 但一般原则是, 一台 DPM 服务器可以保护 25 TB 的 SharePoint 场。
+
+尽管性能取决于许多因素，例如 SharePoint 场的大小，但一般原则是，一台 DPM 服务器可以保护 25 TB 的 SharePoint 场。
 
 ### <a name="dpm-update-rollup-5"></a>DPM 更新汇总 5
+
 要开始在 Azure 上保护 SharePoint 场，需要安装 DPM 更新汇总 5 或更高版本。 如果使用 SQL AlwaysOn 配置 SharePoint 场，更新汇总 5 将提供在 Azure 上保护该场的功能。
 有关详细信息，请参阅介绍 [DPM Update Rollup 5](https://blogs.technet.com/b/dpm/archive/2015/02/11/update-rollup-5-for-system-center-2012-r2-data-protection-manager-is-now-available.aspx)（DPM 更新汇总 5）的博文
 
 ### <a name="whats-not-supported"></a>不支持的功能
+
 * 保护 SharePoint 场的 DPM 不会保护搜索索引或应用程序服务数据库。 需要单独为这些数据库配置保护。
 * DPM 不提供横向扩展文件服务器 (SOFS) 共享托管的 SharePoint SQL Server 数据库备份。
 
 ## <a name="configure-sharepoint-protection"></a>配置 SharePoint 保护
+
 必须使用 **ConfigureSharePoint.exe** 配置 SharePoint VSS 写入器服务（WSS 写入器服务），才能使用 DPM 保护 SharePoint。
 
 可以在前端 Web 服务器的 [DPM 安装路径]\bin 文件夹中找到 **ConfigureSharePoint.exe**。 此工具可将 SharePoint 场的凭据提供给保护代理。 应在单个 WFE 服务器上运行该工具。 如果有多个 WFE 服务器，在配置保护组时，请只选择其中一个。
 
 ### <a name="to-configure-the-sharepoint-vss-writer-service"></a>配置 SharePoint VSS 写入器服务
+
 1. 在 WFE 服务器上的命令提示符下，切换到 [DPM 安装路径]\bin\
 2. 输入 ConfigureSharePoint-EnableSharePointProtection。
 3. 输入场管理员凭据。 此帐户应是 WFE 服务器上本地管理员组的成员。 如果场管理员不是本地管理员，请在 WFE 服务器上授予以下权限：
@@ -71,9 +83,11 @@ DPM 以 LocalSystem 帐户的形式运行。 若要备份 SQL Server 数据库�
 >
 
 ## <a name="back-up-a-sharepoint-farm-by-using-dpm"></a>使用 DPM 备份 SharePoint 场
+
 如前所述配置 DPM 和 SharePoint 场之后，可以使用 DPM 保护 SharePoint。
 
 ### <a name="to-protect-a-sharepoint-farm"></a>保护 SharePoint 场
+
 1. 在 DPM 管理员控制台的“**保护**”选项卡中，单击“**新建**”。
     ![新建保护选项卡](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
 2. 在“创建新保护组”向导的“选择保护组类型”页上，选择“服务器”，并单击“下一步”。
@@ -87,7 +101,7 @@ DPM 以 LocalSystem 帐户的形式运行。 若要备份 SQL Server 数据库�
    > 在已安装 DPM 代理的情况下，可以在向导中看到该服务器。 DPM 还会显示其结构。 由于已运行 ConfigureSharePoint.exe，DPM 将与 SharePoint VSS 写入器服务及其对应的 SQL Server 数据库通信，并识别 SharePoint 场结构、关联的内容数据库和任何对应项。
    >
    >
-4. 在“**选择数据保护方法**”页上，输入“**保护组**”的名称，并选择偏好的“*保护方法*”。 单击“下一步”。
+4. 在“选择数据保护方法”页上，输入“保护组”的名称，并选择偏好的“保护方法”。 单击“下一步”。
 
     ![选择数据保护方法](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
 
@@ -95,7 +109,7 @@ DPM 以 LocalSystem 帐户的形式运行。 若要备份 SQL Server 数据库�
    > 磁盘保护方法有助于实现短暂的恢复时间目标。 相比于磁带，Azure 是经济高效的长期保护目标。 有关详细信息，请参阅[使用 Azure 备份来取代磁带基础结构](https://azure.microsoft.com/documentation/articles/backup-azure-backup-cloud-as-tape/)
    >
    >
-5. 在“**指定短期目标**”页上，选择偏好的“**保留范围**”，并指定备份时间。
+5. 在“指定短期目标”页上，选择偏好的“保留范围”，并指定备份时间。
 
     ![指定短期目标](./media/backup-azure-backup-sharepoint/specify-short-term-goals2.png)
 
@@ -103,8 +117,8 @@ DPM 以 LocalSystem 帐户的形式运行。 若要备份 SQL Server 数据库�
    > 由于恢复大多数针对少于五天的数据进行，因此我们在此示例中选择了在磁盘上保留五天，并确保在非生产时段进行备份。
    >
    >
-6. 复查为保护组分配的存储池磁盘空间，并单击“**下一步**”。
-7. 对于每个保护组，DPM 将分配磁盘空间用于存储和管理副本。 此时，DPM 必须创建选定数据的副本。 选择创建副本的方法和时间，并单击“**下一步**”。
+6. 复查为保护组分配的存储池磁盘空间，并单击“下一步”。
+7. 对于每个保护组，DPM 将分配磁盘空间用于存储和管理副本。 此时，DPM 必须创建选定数据的副本。 选择创建副本的方法和时间，并单击“下一步”。
 
     ![选择副本创建方法](./media/backup-azure-backup-sharepoint/choose-replica-creation-method.png)
 
@@ -142,23 +156,24 @@ DPM 以 LocalSystem 帐户的形式运行。 若要备份 SQL Server 数据库�
     ![总结](./media/backup-azure-backup-sharepoint/summary.png)
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-dpm"></a>使用 DPM 从磁盘还原 SharePoint 项
-在以下示例中，“*恢复 SharePoint 项*”被意外删除，需要恢复。
+
+在以下示例中，“恢复 SharePoint 项”被意外删除，需要恢复。
 ![DPM SharePoint 保护 4](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection5.png)
 
-1. 打开“**DPM 管理员控制台**”。 DPM 保护的所有 SharePoint 场都在“**保护**”选项卡中显示。
+1. 打开“DPM 管理员控制台”。 DPM 保护的所有 SharePoint 场都在“保护”选项卡中显示。
 
     ![DPM SharePoint 保护 3](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection4.png)
-2. 若要开始恢复该项，请选择“**恢复**”选项卡。
+2. 若要开始恢复该项，请选择“恢复”选项卡。
 
     ![DPM SharePoint 保护 5](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection6.png)
-3. 可以通过在恢复点范围内执行基于通配符的搜索，在 SharePoint 中搜索“*恢复 SharePoint 项*”。
+3. 可以通过在恢复点范围内执行基于通配符的搜索，在 SharePoint 中搜索“恢复 SharePoint 项”。
 
     ![DPM SharePoint 保护 6](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection7.png)
-4. 从搜索结果中选择相应的恢复点，单击右键该项，并选择“**恢复**”。
-5. 还可以浏览各个恢复点，并选择要恢复的数据库或项。 选择“**日期 > 恢复时间**”，并选择正确的“**数据库 > SharePoint 场 > 恢复点 > 项**”。
+4. 从搜索结果中选择相应的恢复点，右键单击该项，并选择“恢复”。
+5. 还可以浏览各个恢复点，并选择要恢复的数据库或项。 选择“日期 > 恢复时间”，并选择正确的“数据库 > SharePoint 场 > 恢复点 > 项”。
 
     ![DPM SharePoint 保护 7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. 右键单击该项，并选择“**恢复**”打开“**恢复向导**”。 单击“下一步”。
+6. 右键单击该项，并选择“恢复”打开“恢复向导”。 单击“下一步”。
 
     ![复查恢复选择](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
 7. 选择要执行的恢复类型，然后单击“下一步”。
@@ -203,6 +218,7 @@ DPM 以 LocalSystem 帐户的形式运行。 若要备份 SQL Server 数据库�
     >
 
 ## <a name="restore-a-sharepoint-database-from-azure-by-using-dpm"></a>使用 DPM 从 Azure 还原 SharePoint 数据库
+
 1. 若要恢复 SharePoint 内容数据库，请浏览各个恢复点（如上所示），并选择要还原的恢复点。
 
     ![DPM SharePoint 保护 8](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection9.png)
@@ -212,23 +228,24 @@ DPM 以 LocalSystem 帐户的形式运行。 若要备份 SQL Server 数据库�
    > 由于 SharePoint 场在 Azure 中受长期保留保护，因此 DPM 服务器上没有可用的目录信息（元数据）。 因此，每当需要恢复时间点 SharePoint 内容数据库时，都需要重新编录 SharePoint 场。
    >
    >
-3. 单击“**重新编目**”。
+3. 单击“重新编录”。
 
     ![DPM SharePoint 保护 10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
-    此时显示“**云重新编录**”状态窗口。
+    此时会显示“云重新编录”状态窗口。
 
     ![DPM SharePoint 保护 11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    完成编录后，状态更改为“成功”。 单击“关闭”。
+    完成编录后，状态将更改为“成功”。 单击“关闭”。
 
     ![DPM SharePoint 保护 12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
-4. 单击 DPM“**恢复**”选项卡中显示的 SharePoint 对象，以获取内容数据库结构。 右键单击相应的项，并单击“**恢复**”。
+4. 单击 DPM“**恢复**”选项卡中显示的 SharePoint 对象，以获取内容数据库结构。 右键单击相应的项，并单击“恢复”。
 
     ![DPM SharePoint 保护 13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. 此时，请按照本文前面介绍的恢复步骤，从磁盘恢复 Sharepoint 内容数据库。
 
 ## <a name="next-steps"></a>后续步骤
+
 * 了解有关使用 DPM 保护 SharePoint 的详细信息 — 参阅[视频系列 — 使用 DPM 保护 SharePoint](https://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
 * 查看 [System Center 2012 - Data Protection Manager 发行说明](https://technet.microsoft.com/library/jj860415.aspx)
 * 查看 [System Center 2012 SP1 中的 Data Protection Manager 发行说明](https://technet.microsoft.com/library/jj860394.aspx)

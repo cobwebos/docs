@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 10/27/2019
 ms.author: juliako
-ms.openlocfilehash: 4953160a30e45b9be1ff249b6cd1f74e01bb14f3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 0583c0093d240026e3ebcdad7b14494f07986ec2
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672660"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968718"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒体服务视频索引器发行说明
 
@@ -27,6 +27,12 @@ ms.locfileid: "71672660"
 * 已知问题
 * Bug 修复
 * 已弃用的功能
+
+## <a name="october-2019"></a>2019 年 10 月
+ 
+* 搜索库中的动画字符
+
+    为经过动画处理的字符编制索引时，现在可以在帐户的视频条带中搜索它们。 有关详细信息，请参阅[动画字符识别](animated-characters-recognition.md)。
 
 ## <a name="september-2019"></a>2019 年 9 月
  

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
-ms.openlocfilehash: 983b66be6b51c9af5987e539ea1175a65c9269b3
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70862039"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968739"
 ---
 # <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>自动识别和转录多语言内容（预览版）
 
@@ -39,7 +39,7 @@ ms.locfileid: "70862039"
 
 ## <a name="choosing-multilingual-identification-on-indexing-with-api"></a>针对 API 的索引选择多语言识别
 
-使用 API 为视频编制[索引或重新创建索引时](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?)， `multi-language detection`请在`sourceLanguage`参数中选择选项。
+使用 API 为视频编制[索引或重新创建索引时](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?)，请在 `sourceLanguage` 参数中选择 `multi-language detection` 选项。
 
 ### <a name="model-output"></a>模型输出
 
@@ -73,7 +73,7 @@ ms.locfileid: "70862039"
 },
 ```
 
-## <a name="guidelines-and-limitations"></a>指导原则和限制
+## <a name="guidelines-and-limitations"></a>指导原则和限制条件
 
 * 一组受支持的语言：英语、法语、德语、西班牙语。
 * 支持多语言内容，最多支持三种语言。
@@ -86,9 +86,8 @@ ms.locfileid: "70862039"
 * 项目创建和编辑当前不适用于多语言视频。
 * 使用多语言检测时，自定义语言模型不可用。
 * 不支持添加关键字。
-* 不支持 "更新脚本" API。
 * 导出隐藏式字幕文件时，不会显示语言指示。
-
+* 更新脚本 API 不支持多语言文件。
 
 ## <a name="next-steps"></a>后续步骤
 

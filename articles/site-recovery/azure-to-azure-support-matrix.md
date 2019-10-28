@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/15/2019
+ms.date: 10/26/2019
 ms.author: raynew
-ms.openlocfilehash: f0b66806138311508725d377b59b83c1b1365674
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: d689d25b9c9c7704047ccd3cfc98aa2ea583d20b
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553543"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968810"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>用于将 Azure VM 从一个区域复制到另一个区域的支持矩阵
 
@@ -47,7 +47,7 @@ ms.locfileid: "72553543"
 **地理群集** | **Azure 区域**
 -- | --
 美洲 | 加拿大东部、加拿大中部、美国中南部、美国中西部、美国东部、美国东部 2、美国西部、美国西部 2、美国中部、美国中北部
-欧洲 | 英国西部、英国南部、北欧、西欧、法国中部、法国南部、南非西部、南非北部
+欧洲 | 英国西部、英国南部、北欧、西欧、法国中部、法国南部、南非西部、南非北部、挪威东部、挪威西部
 亚洲 | 印度南部、印度中部、印度西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部、阿拉伯联合酋长国中部、阿拉伯联合酋长国北部
 澳大利亚   | 澳大利亚东部、澳大利亚东南部、澳大利亚中部、澳大利亚中部 2
 Azure Government    | US Gov 弗吉尼亚州、US Gov 爱荷华州、US Gov 亚利桑那州、US Gov 德克萨斯州、US DOD 东部、US DOD 中部 
@@ -162,7 +162,7 @@ SUSE Linux Enterprise Server 12 （SP1、SP2、SP3、SP4） | 9.25 | SP1 3.12.49
 可用性集 | 受支持 | 如果为使用默认选项的 Azure VM 启用复制，则会基于源区域设置自动创建可用性集。 可以修改这些设置。
 可用性区域 | 受支持 |
 混合使用权益 (HUB) | 受支持 | 如果源 VM 启用了 HUB 许可证，则测试故障转移或故障转移 VM 也使用 HUB 许可证。
-VM 规模集 | 不支持 |
+虚拟机规模集 | 不支持 |
 Azure 库映像 — 由 Microsoft 发布 | 受支持 | 如果 VM 在受支持的操作系统上运行，则支持该配置。
 Azure 库映像 - 由第三方发布 | 受支持 | 如果 VM 在受支持的操作系统上运行，则支持该配置。
 自定义映像 - 由第三方发布 | 受支持 | 如果 VM 在受支持的操作系统上运行，则支持该配置。
