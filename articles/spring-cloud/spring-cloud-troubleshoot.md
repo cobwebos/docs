@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: ebb960085691206b096090813636ef56366e6536
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: ee51841046962a6896b4c16e651f85ff761a69fc
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038356"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592485"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>解决常见问题的故障排除指南
 
@@ -146,6 +146,49 @@ _Azure Spring Cloud_ 服务实例的名称将用于请求 `azureapps.io` 下的�
 还可以在 _Azure Log Analytics_ 中检查_服务注册表_客户端日志。 有关更多详细信息，请访问[使用诊断设置分析日志和指标](diagnostic-services.md)
 
 访问[此入门文章](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)来开始使用 _Azure Log Analytics_。 使用 [Kusto 查询语言](https://docs.microsoft.com/azure/kusto/query/)查询日志。
+
+### <a name="i-want-to-inspect-my-applications-environment-variables"></a>我想要检查应用程序的环境变量
+
+环境变量会通知 Azure Spring Cloud 框架，确保 Azure 了解在何处以何种方式配置构成应用程序的服务。  在排查潜在问题的过程中，必须执行的第一步是确保环境变量正确。  可以使用 Spring Boot Actuator 终结点来查看环境变量。  
+
+> [!WARNING]
+> 此过程使用测试终结点公开环境变量。  如果测试终结点可以公开访问，或者你已将域名分配给应用程序，请勿继续操作。
+
+1. 导航到此 URL：`https://<your application test endpoint>/actuator/health`。  
+    - 类似于 `{"status":"UP"}` 的响应表明终结点已启用。
+    - 如果响应为负面，请在 `POM.xml` 中包括以下依赖项：
+
+        ```xml
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+            </dependency>
+        ```
+
+1. 在启用 Spring Boot Actuator 终结点的情况下，请转到 Azure 门户并找到应用程序的配置页。  添加名为 `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE' and the value `*` 的环境变量。 
+
+1. 重启应用程序。
+
+1. 导航到 `https://<the test endpoint of your app>/actuator/env` 并检查响应。  它看起来应该如下所示：
+
+    ```json
+    {
+        "activeProfiles": [],
+        "propertySources": {,
+            "name": "server.ports",
+            "properties": {
+                "local.server.port": {
+                    "value": 1025
+                }
+            }
+        }
+    }
+    ```
+
+找到名为 `systemEnvironment` 的子节点。  此节点包含应用程序的环境变量。
+
+> [!IMPORTANT]
+> 在使应用程序可以公共访问之前，请记得反转公开环境变量的操作。  转到 Azure 门户，找到应用程序的配置页，然后删除此环境变量：`MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`。
 
 ### <a name="i-cannot-find-metrics-or-logs-for-my-application"></a>我找不到应用程序的指标或日志
 
