@@ -10,12 +10,12 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: 9271a659e18ab969e801fd8974b05984e11e783c
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: a21b7f510b6da40d3ab2c72fcfbcb2a746b75db1
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309390"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990563"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>在 Azure 逻辑应用中执行数据操作
 
@@ -33,7 +33,7 @@ ms.locfileid: "71309390"
 
 这些操作帮助处理数组中的数据。
 
-| 操作 | 描述 |
+| 行动 | 描述 |
 |--------|-------------|
 | [**创建 CSV 表**](#create-csv-table-action) | 从数组创建逗号分隔值 (CSV) 表。 |
 | [**创建 HTML 表**](#create-html-table-action) | 从数组创建 HTML 表。 |
@@ -46,21 +46,21 @@ ms.locfileid: "71309390"
 
 这些操作帮助处理采用 JavaScript 对象表示法 (JSON) 格式的数据。
 
-| 操作 | 描述 |
+| 行动 | 描述 |
 |--------|-------------|
-| [Compose](#compose-action) | 从可能具有不同数据类型的多个输入创建一个消息或字符串。 然后可以使用此字符串作为单个输入，而无需反复输入相同的输入。 例如，可以从各种输入创建单个 JSON 消息。 |
+| [**撰写**](#compose-action) | 从可能具有不同数据类型的多个输入创建一个消息或字符串。 然后可以使用此字符串作为单个输入，而无需反复输入相同的输入。 例如，可以从各种输入创建单个 JSON 消息。 |
 | [**分析 JSON**](#parse-json-action) | 为 JSON 内容中的属性创建用户友好的数据令牌，以便在逻辑应用中更轻松地使用这些属性。 |
 |||
 
 若要创建更复杂的 JSON 转换，请参阅[使用 Liquid 模板执行高级 JSON 转换](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * 需在其中使用操作处理数据的逻辑应用
 
-  如果你不熟悉逻辑应用，请参阅[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+  如果不熟悉逻辑应用，请参阅[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 * 用作逻辑应用中第一个步骤的[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts) 
 
@@ -80,23 +80,23 @@ ms.locfileid: "71309390"
 
 `{"age":35,"fullName":"Owens,Sophie"}`
 
-若要尝试示例，请在逻辑应用设计器中遵循以下步骤。 或者，如果你喜欢在代码视图编辑器中工作，则可以将本文中的示例**组合**和**初始化变量**操作定义复制到自己的逻辑应用的基础工作流定义中：[数据操作代码示例-撰写](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
+若要尝试示例，请在逻辑应用设计器中遵循以下步骤。 或者，如果你偏好使用代码视图编辑器，可将本文中的示例“撰写”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 撰写](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
 
 1. 在 [Azure 门户](https://portal.azure.com)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
    本示例使用 Azure 门户以及包含一个“重复”触发器和多个“初始化变量”操作的逻辑应用。 这些操作设置用于创建两个字符串变量和一个整数变量。 稍后测试逻辑应用时，可以手动运行应用，而无需等待触发器激发。
 
-   ![启动示例逻辑应用](./media/logic-apps-perform-data-operations/sample-starting-logic-app-compose-action.png)
+   ![正在启动 "撰写" 操作的示例逻辑应用](./media/logic-apps-perform-data-operations/sample-starting-logic-app-compose-action.png)
 
 1. 在要创建输出的逻辑应用中，执行以下步骤之一： 
 
    * 要在上一步中添加操作，请选择 "**新建步骤**"。
 
-     ![添加操作](./media/logic-apps-perform-data-operations/add-compose-action.png)
+     ![为 "撰写" 操作选择 "新建步骤"](./media/logic-apps-perform-data-operations/add-compose-operation-action.png)
 
-   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示 **+** 加号（）。 选择加号，然后选择 "**添加操作**"。
+   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示加号（ **+** ）。 选择加号，然后选择 "**添加操作**"。
 
-1. 在 "**选择操作**" 下的 "搜索" 框`compose`中，输入作为筛选器。 从 "操作" 列表中，选择 "**撰写**" 操作。
+1. 在“选择操作”下的搜索框中，输入 `compose` 作为筛选器。 从 "操作" 列表中，选择 "**撰写**" 操作。
 
    ![选择“撰写”操作](./media/logic-apps-perform-data-operations/select-compose-action.png)
 
@@ -104,11 +104,11 @@ ms.locfileid: "71309390"
 
    对于本示例，在“输入”框中单击时，会显示动态内容列表，以便可以选择先前创建的变量：
 
-   ![选择用于撰写的输入](./media/logic-apps-perform-data-operations/configure-compose-action.png)
+   ![选择用于 "撰写" 操作的输入](./media/logic-apps-perform-data-operations/configure-compose-action.png)
 
    下面是已完成的示例“撰写”操作： 
 
-   ![完成的“撰写”操作](./media/logic-apps-perform-data-operations/finished-compose-action.png)
+   !["撰写" 操作的已完成示例](./media/logic-apps-perform-data-operations/finished-compose-action.png)
 
 1. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
@@ -124,9 +124,9 @@ ms.locfileid: "71309390"
 
    此示例使用 "**发送电子邮件**" 操作，并在电子邮件的正文和主题中包含**输出**字段：
 
-   ![“发送电子邮件”操作中的“输出”字段](./media/logic-apps-perform-data-operations/send-email-compose-action.png)
+   !["撰写" 操作的 "输出" 字段](./media/logic-apps-perform-data-operations/send-email-compose-action.png)
 
-1. 现在，请手动运行逻辑应用。 在设计器工具栏上选择“运行”。
+1. 现在，请手动运行逻辑应用。 在设计器工具栏上，选择 "**运行**"。
 
    根据所用的电子邮件连接器，会收到下面所示的结果：
 
@@ -138,23 +138,23 @@ ms.locfileid: "71309390"
 
 若要创建一个逗号分隔值（CSV）表，该表具有数组中 JavaScript 对象表示法（JSON）对象的属性和值，请使用 "**创建 CSV 表**" 操作。 然后，可以在“创建 CSV 表”操作后面的操作中使用生成的表。
 
-如果你更喜欢在 "代码视图" 编辑器中工作，则可以将此示例中的 "**创建 CSV 表**" 和 "**初始化变量**操作定义" 从本文复制到你自己的逻辑应用的基础工作流定义：[数据操作代码示例-创建 CSV 表](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
+如果你偏好使用代码视图编辑器，可将本文中的示例“创建 CSV 表”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 创建 CSV 表](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
 
 1. 在 [Azure 门户](https://portal.azure.com)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
    本示例使用 Azure 门户以及包含一个“重复”触发器和一个“初始化变量”操作的逻辑应用。 该操作设置用于创建一个变量，该变量的初始值是包含一些采用 JSON 格式的属性和值的数组。 稍后测试逻辑应用时，可以手动运行应用，而无需等待触发器激发。
 
-   ![启动示例逻辑应用](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
+   ![正在启动 "创建 CSV 表" 操作的示例逻辑应用](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
 
 1. 在要创建 CSV 表的逻辑应用中，执行以下步骤之一： 
 
    * 要在上一步中添加操作，请选择 "**新建步骤**"。
 
-     ![添加操作](./media/logic-apps-perform-data-operations/add-create-table-action.png)
+     ![为 "创建 CSV 表" 操作选择 "新建步骤"](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示 **+** 加号（）。 选择加号，然后选择 "**添加操作**"。
+   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示加号（ **+** ）。 选择加号，然后选择 "**添加操作**"。
 
-1. 在 "**选择操作**" 下的 "搜索" 框`create csv table`中，输入作为筛选器。 从 "操作" 列表中，选择 "**创建 CSV 表**" 操作。
+1. 在“选择操作”下的搜索框中，输入 `create csv table` 作为筛选器。 从 "操作" 列表中，选择 "**创建 CSV 表**" 操作。
 
    ![选择“创建 CSV 表”操作](./media/logic-apps-perform-data-operations/select-create-csv-table-action.png)
 
@@ -169,7 +169,7 @@ ms.locfileid: "71309390"
 
    下面是已完成的示例“创建 CSV 表”操作： 
 
-   ![完成的“创建 CSV 表”操作](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
+   !["创建 CSV 表" 操作的已完成示例](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
 
 1. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
@@ -183,7 +183,7 @@ ms.locfileid: "71309390"
 
 1. 在 "**值**" 属性中，指定要改用的自定义值。
 
-若要从数组中返回值，可以将[ `item()`函数](../logic-apps/workflow-definition-language-functions-reference.md#item)与 "**创建 CSV 表**" 操作一起使用。 在循环中，可以[ `items()`使用函数。](../logic-apps/workflow-definition-language-functions-reference.md#items) `For_each`
+若要从数组中返回值，可以将[`item()` 函数](../logic-apps/workflow-definition-language-functions-reference.md#item)与 "**创建 CSV 表**" 操作一起使用。 在 `For_each` 循环中，您可以使用[`items()` 函数](../logic-apps/workflow-definition-language-functions-reference.md#items)。
 
 例如，假设您希望只包含属性值而不是数组中属性名称的表列。 若要仅返回这些值，请按照以下步骤在设计器视图或代码视图中工作。 下面是此示例返回的结果：
 
@@ -209,25 +209,25 @@ Oranges,2
    * `item()?['Description']`
    * `item()?['Product_ID']`
 
-   ![要取消引用的表达式属性](./media/logic-apps-perform-data-operations/csv-table-expression.png)
+   !["创建 CSV 表" 的取消引用 "Description"](./media/logic-apps-perform-data-operations/csv-table-expression.png)
 
 1. 对所需的每个数组属性重复前面的步骤。 完成后，操作如以下示例所示：
 
-   ![完成的表达式](./media/logic-apps-perform-data-operations/finished-csv-expression.png)
+   !["创建 CSV 表" 中的 "item （）" 函数](./media/logic-apps-perform-data-operations/finished-csv-expression.png)
 
 1. 若要将表达式解析为更具描述性的版本，请切换到 "代码" 视图并返回到 "设计器视图"，然后重新打开折叠操作：
 
    此时将显示 "**创建 CSV 表**" 操作，如下例所示：
 
-   !["创建 CSV 表" 操作，包含解析的表达式和无标头](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
+   !["创建 CSV 表"-解析的表达式，无标头](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
 
 #### <a name="work-in-code-view"></a>在代码视图中工作
 
-在操作的 JSON 定义中，在`columns`数组中`header`将属性设置为空字符串。 对于每`value`个属性，取消对所需的每个数组属性的引用。
+在操作的 JSON 定义中，在 `columns` 数组中，将 `header` 属性设置为空字符串。 对于每个 `value` 属性，将每个所需的数组属性取消引用。
 
 1. 在设计器工具栏上，选择 "**代码视图**"。
 
-1. 在代码编辑器中，在操作的`columns`数组中，为所需的每个数组值列添加空`header`属性和此`value`表达式：
+1. 在代码编辑器中，在操作的 `columns` 数组中，为所需的每个数组值列添加空 `header` 属性和此 `value` 表达式：
 
    ```json
    {
@@ -261,7 +261,7 @@ Oranges,2
 
    "**创建 CSV 表**" 操作现在如下例所示，表达式已解析为更具描述性的版本：
 
-   !["创建 CSV 表" 操作，包含解析的表达式和无标头](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
+   !["创建 CSV 表"-解析的表达式和无标头](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
 
 有关基础工作流定义中此操作的详细信息，请参阅[“表”操作](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action)。
 
@@ -275,9 +275,9 @@ Oranges,2
 
    此示例使用 Office 365 Outlook 的 "**发送电子邮件**" 操作，并在电子邮件的正文中包含**输出**字段：
 
-   ![“发送电子邮件”操作中的“输出”字段](./media/logic-apps-perform-data-operations/send-email-create-csv-table-action.png)
+   !["创建 CSV 表" 操作的 "输出" 字段](./media/logic-apps-perform-data-operations/send-email-create-csv-table-action.png)
 
-1. 现在，请手动运行逻辑应用。 在设计器工具栏上选择“运行”。
+1. 现在，请手动运行逻辑应用。 在设计器工具栏上，选择 "**运行**"。
 
    根据所用的电子邮件连接器，会收到下面所示的结果：
 
@@ -289,23 +289,23 @@ Oranges,2
 
 若要创建具有数组中 JavaScript 对象表示法（JSON）对象属性和值的 HTML 表，请使用 "**创建 HTML 表**" 操作。 然后，可以在“创建 HTML 表”操作后面的操作中使用生成的表。
 
-如果你更喜欢在代码视图编辑器中工作，则可以将此示例中的 "**创建 HTML 表**" 和 "**初始化变量**操作" 定义复制到自己的逻辑应用的基础工作流定义：[数据操作代码示例-创建 HTML 表](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
+如果你偏好使用代码视图编辑器，可将本文中的示例“创建 HTML 表”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 创建 HTML 表](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
 
 1. 在 [Azure 门户](https://portal.azure.com)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
    本示例使用 Azure 门户以及包含一个“重复”触发器和一个“初始化变量”操作的逻辑应用。 该操作设置用于创建一个变量，该变量的初始值是包含一些采用 JSON 格式的属性和值的数组。 稍后测试逻辑应用时，可以手动运行应用，而无需等待触发器激发。
 
-   ![启动示例逻辑应用](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
+   ![正在启动 "创建 HTML 表" 的示例逻辑应用](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
 
 1. 在要创建 HTML 表的逻辑应用中，执行以下步骤之一：
 
    * 要在上一步中添加操作，请选择 "**新建步骤**"。
 
-     ![添加操作](./media/logic-apps-perform-data-operations/add-create-table-action.png)
+     ![为 "创建 HTML 表" 操作选择 "新建步骤"](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示 **+** 加号（）。 选择加号，然后选择 "**添加操作**"。
+   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示加号（ **+** ）。 选择加号，然后选择 "**添加操作**"。
 
-1. 在 "**选择操作**" 下的 "搜索" 框`create html table`中，输入作为筛选器。 从 "操作" 列表中，选择 "**创建 HTML 表**" 操作。
+1. 在“选择操作”下的搜索框中，输入 `create html table` 作为筛选器。 从 "操作" 列表中，选择 "**创建 HTML 表**" 操作。
 
    ![选择“创建 HTML 表”操作](./media/logic-apps-perform-data-operations/select-create-html-table-action.png)
 
@@ -320,7 +320,7 @@ Oranges,2
 
    下面是已完成的示例“创建 HTML 表”操作：
 
-   ![完成的“创建 HTML 表”操作](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
+   !["创建 HTML 表" 的完成示例](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
 
 1. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
@@ -334,7 +334,7 @@ Oranges,2
 
 1. 在 "**值**" 属性中，指定要改用的自定义值。
 
-若要从数组中返回值，可以将[ `item()`函数](../logic-apps/workflow-definition-language-functions-reference.md#item)与 "**创建 HTML 表**" 操作一起使用。 在循环中，可以[ `items()`使用函数。](../logic-apps/workflow-definition-language-functions-reference.md#items) `For_each`
+若要从数组中返回值，可以将[`item()` 函数](../logic-apps/workflow-definition-language-functions-reference.md#item)与 "**创建 HTML 表**" 操作一起使用。 在 `For_each` 循环中，您可以使用[`items()` 函数](../logic-apps/workflow-definition-language-functions-reference.md#items)。
 
 例如，假设您希望只包含属性值而不是数组中属性名称的表列。 若要仅返回这些值，请按照以下步骤在设计器视图或代码视图中工作。 下面是此示例返回的结果：
 
@@ -360,25 +360,25 @@ Oranges,2
    * `item()?['Description']`
    * `item()?['Product_ID']`
 
-   ![要取消引用的表达式属性](./media/logic-apps-perform-data-operations/html-table-expression.png)
+   !["创建 HTML 表" 操作中的取消引用属性](./media/logic-apps-perform-data-operations/html-table-expression.png)
 
 1. 对所需的每个数组属性重复前面的步骤。 完成后，操作如以下示例所示：
 
-   ![完成的表达式](./media/logic-apps-perform-data-operations/finished-html-expression.png)
+   !["创建 HTML 表" 中的 "item （）" 函数](./media/logic-apps-perform-data-operations/finished-html-expression.png)
 
 1. 若要将表达式解析为更具描述性的版本，请切换到 "代码" 视图并返回到 "设计器视图"，然后重新打开折叠操作：
 
    此时将显示 "**创建 HTML 表**" 操作，如下例所示：
 
-   !["创建 HTML 表" 操作，包含解析的表达式和无标头](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
+   !["创建 HTML 表"-解析的表达式，无标头](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
 
 #### <a name="work-in-code-view"></a>在代码视图中工作
 
-在操作的 JSON 定义中，在`columns`数组中`header`将属性设置为空字符串。 对于每`value`个属性，取消对所需的每个数组属性的引用。
+在操作的 JSON 定义中，在 `columns` 数组中，将 `header` 属性设置为空字符串。 对于每个 `value` 属性，将每个所需的数组属性取消引用。
 
 1. 在设计器工具栏上，选择 "**代码视图**"。
 
-1. 在代码编辑器中，在操作的`columns`数组中，为所需的每个数组值列添加空`header`属性和此`value`表达式：
+1. 在代码编辑器中，在操作的 `columns` 数组中，为所需的每个数组值列添加空 `header` 属性和此 `value` 表达式：
 
    ```json
    {
@@ -412,7 +412,7 @@ Oranges,2
 
    "**创建 HTML 表**" 操作现在如下例所示，表达式已解析为更具描述性的版本：
 
-   !["创建 HTML 表" 操作，包含解析的表达式和无标头](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
+   !["创建 HTML 表"-解析的表达式和无标头](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
 
 有关基础工作流定义中此操作的详细信息，请参阅[“表”操作](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action)。
 
@@ -426,16 +426,16 @@ Oranges,2
 
    此示例使用 Office 365 Outlook 的 "**发送电子邮件**" 操作，并在电子邮件的正文中包含**输出**字段：
 
-   ![“发送电子邮件”操作中的“输出”字段](./media/logic-apps-perform-data-operations/send-email-create-html-table-action.png)
-   
+   !["创建 HTML 表" 的 "输出" 字段](./media/logic-apps-perform-data-operations/send-email-create-html-table-action.png)
+
    > [!NOTE]
    > 在电子邮件操作中包含 HTML 表输出时，请确保在电子邮件中操作的高级选项中，将“是 HTML”属性设置为“是”。 这样，电子邮件操作便可以正确设置 HTML 表的格式。
 
-1. 现在，请手动运行逻辑应用。 在设计器工具栏上选择“运行”。
+1. 现在，请手动运行逻辑应用。 在设计器工具栏上，选择 "**运行**"。
 
    根据所用的电子邮件连接器，会收到下面所示的结果：
 
-   ![包含“创建 HTML 表”操作结果的电子邮件](./media/logic-apps-perform-data-operations/create-html-table-email-results.png)
+   ![带有 "创建 HTML 表" 结果的电子邮件](./media/logic-apps-perform-data-operations/create-html-table-email-results.png)
 
 <a name="filter-array-action"></a>
 
@@ -448,7 +448,7 @@ Oranges,2
 > 
 > 要使操作使用“筛选数组”操作的数组输出，这些操作必须接受数组作为输入，或者必须将输出数组转换为另一种兼容格式。
 
-如果你更喜欢在 "代码视图" 编辑器中工作，则可以将示例**筛选器数组**和将此项目中的变量操作定义**初始化**为自己的逻辑应用的基础工作流定义：[数据操作代码示例-筛选数组](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
+如果你偏好使用代码视图编辑器，可将本文中的示例“筛选数组”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 筛选数组](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 
 1. 在 [Azure 门户](https://portal.azure.com)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
@@ -457,17 +457,17 @@ Oranges,2
    > [!NOTE]
    > 尽管本示例使用了简单的整数数组，但此操作对 JSON 对象数组特别有用，在其中，可以基于对象的属性和值进行筛选。
 
-   ![启动示例逻辑应用](./media/logic-apps-perform-data-operations/sample-starting-logic-app-filter-array-action.png)
+   ![正在启动 "筛选数组" 操作的示例逻辑应用](./media/logic-apps-perform-data-operations/sample-starting-logic-app-filter-array-action.png)
 
 1. 在要创建筛选数组的逻辑应用中，执行以下步骤之一： 
 
    * 要在上一步中添加操作，请选择 "**新建步骤**"。
 
-     ![添加操作](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
+     ![为 "筛选数组" 操作选择 "新建步骤"](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
 
-   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示 **+** 加号（）。 选择加号，然后选择 "**添加操作**"。
+   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示加号（ **+** ）。 选择加号，然后选择 "**添加操作**"。
 
-1. 在搜索框中，输入`filter array`作为筛选器。 从 "操作" 列表中，选择 "**筛选数组**" 操作。
+1. 在搜索框中，输入 `filter array` 作为筛选器。 从 "操作" 列表中，选择 "**筛选数组**" 操作。
 
    ![选择“筛选数组”操作](./media/logic-apps-perform-data-operations/select-filter-array-action.png)
 
@@ -479,9 +479,9 @@ Oranges,2
 
 1. 对于条件，请指定要比较的数组项，选择比较运算符，然后指定比较值。
 
-   此示例使用`item()`函数来访问数组中的每一项，同时**筛选器数组**操作搜索值大于1的数组项：
-   
-   ![完成的“筛选数组”操作](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
+   此示例使用 `item()` 函数访问数组中的每一项，而**筛选数组**操作搜索值大于1的数组项：
+
+   !["筛选数组" 操作的已完成示例](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
 
 1. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
@@ -499,9 +499,9 @@ Oranges,2
 
    此示例使用 Office 365 Outlook 的 "**发送电子邮件**" 操作，并在电子邮件的正文中包含来自**ActionBody （"Filter_array"）** 表达式的输出：
 
-   ![“发送电子邮件”操作中的操作输出](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
+   !["筛选数组" 操作的操作输出](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
 
-1. 现在，请手动运行逻辑应用。 在设计器工具栏上选择“运行”。
+1. 现在，请手动运行逻辑应用。 在设计器工具栏上，选择 "**运行**"。
 
    根据所用的电子邮件连接器，会收到下面所示的结果：
 
@@ -509,29 +509,29 @@ Oranges,2
 
 <a name="join-action"></a>
 
-## <a name="join-action"></a>Join 操作
+## <a name="join-action"></a>“联接”操作
 
 若要创建一个包含数组中所有项的字符串，并使用特定分隔符字符分隔这些项，请使用**联接**操作。 然后，可以在“联接”操作后面的操作中使用该字符串。
 
-如果你更喜欢在 "代码视图" 编辑器中工作，则可以将此示例中的 "**联接**" 和 "**初始化变量**" 操作定义复制到自己的逻辑应用的基础工作流定义中：[数据操作代码示例-联接](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example)
+如果你偏好使用代码视图编辑器，可将本文中的示例“联接”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 联接](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example)
 
 1. 在 [Azure 门户](https://portal.azure.com)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
    本示例使用 Azure 门户以及包含一个“重复”触发器和一个“初始化变量”操作的逻辑应用。 此操作设置用于创建一个变量，该变量的初始值是包含一些示例整数的数组。 稍后测试逻辑应用时，可以手动运行应用，而无需等待触发器激发。
 
-   ![启动示例逻辑应用](./media/logic-apps-perform-data-operations/sample-starting-logic-app-join-action.png)
+   ![正在启动 "联接" 操作的示例逻辑应用](./media/logic-apps-perform-data-operations/sample-starting-logic-app-join-action.png)
 
 1. 在要从数组创建字符串的逻辑应用中，执行以下步骤之一：
 
    * 要在上一步中添加操作，请选择 "**新建步骤**"。
 
-     ![添加操作](./media/logic-apps-perform-data-operations/add-join-action.png)
+     ![SSelect "联接" 操作的 "新步骤"](./media/logic-apps-perform-data-operations/new-step-add-join-action.png)
 
-   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示 **+** 加号（）。 选择加号，然后选择 "**添加操作**"。
+   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示加号（ **+** ）。 选择加号，然后选择 "**添加操作**"。
 
-1. 在搜索框中，输入`join`作为筛选器。 在操作列表中选择此操作：**Join**
+1. 在搜索框中，输入 `join` 作为筛选器。 在操作列表中选择此操作：“联接”
 
-   ![选择 "联接" 操作](./media/logic-apps-perform-data-operations/select-join-action.png)
+   ![选择 "联接" 操作](./media/logic-apps-perform-data-operations/select-join-operation-action.png)
 
 1. 在“从”框中，提供包含要联接的项（字符串形式）的数组。
 
@@ -559,37 +559,37 @@ Oranges,2
 
    此示例使用 Office 365 Outlook 的 "**发送电子邮件**" 操作，并在电子邮件的正文中包含**输出**字段：
 
-   ![“发送电子邮件”操作中的“输出”字段](./media/logic-apps-perform-data-operations/send-email-join-action.png)
+   !["联接" 操作的 "输出" 字段](./media/logic-apps-perform-data-operations/send-email-join-action.png)
 
-1. 现在，请手动运行逻辑应用。 在设计器工具栏上选择“运行”。
+1. 现在，请手动运行逻辑应用。 在设计器工具栏上，选择 "**运行**"。
 
    根据所用的电子邮件连接器，会收到下面所示的结果：
 
-   ![包含“联接”操作结果的电子邮件](./media/logic-apps-perform-data-operations/join-email-results.png)
+   ![包含“联接”操作结果的电子邮件](./media/logic-apps-perform-data-operations/join-send-email-results.png)
 
 <a name="parse-json-action"></a>
 
-## <a name="parse-json-action"></a>Parse JSON 操作
+## <a name="parse-json-action"></a>“分析 JSON”操作
 
 若要引用或访问 JavaScript 对象表示法（JSON）内容中的属性，可以通过使用**PARSE JSON**操作为这些属性创建用户友好的字段或令牌。 这样，在为逻辑应用指定输入时，便可以从动态内容列表中选择这些属性。 对于此操作，可以提供 JSON 架构，或者从示例 JSON 内容或有效负载生成 JSON 架构。
 
-如果你更喜欢在 "代码视图" 编辑器中工作，则可以将此示例中的示例**分析 JSON**和**初始化变量**操作定义复制到自己的逻辑应用的基础工作流定义中：[数据操作代码示例-分析 JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
+如果你偏好使用代码视图编辑器，可将本文中的示例“分析 JSON”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 分析 JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
 
 1. 在 [Azure 门户](https://portal.azure.com)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
    本示例使用 Azure 门户以及包含一个“重复”触发器和一个“初始化变量”操作的逻辑应用。 该操作设置用于创建一个变量，该变量的初始值是包含属性和值的 JSON 对象。 稍后测试逻辑应用时，可以手动运行应用，而无需等待触发器激发。
 
-   ![启动示例逻辑应用](./media/logic-apps-perform-data-operations/sample-starting-logic-app-parse-json-action.png)
+   ![正在启动 "分析 JSON" 操作的示例逻辑应用](./media/logic-apps-perform-data-operations/sample-starting-logic-app-parse-json-action.png)
 
 1. 在要分析 JSON 内容的逻辑应用中，执行以下步骤之一：
 
    * 要在上一步中添加操作，请选择 "**新建步骤**"。
 
-     ![添加操作](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
+     ![选择 "分析 JSON" 操作的 "新步骤"](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
 
-   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示 **+** 加号（）。 选择加号，然后选择 "**添加操作**"。
+   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示加号（ **+** ）。 选择加号，然后选择 "**添加操作**"。
 
-1. 在搜索框中，输入`parse json`作为筛选器。 从 "操作" 列表中，选择 "**分析 JSON** " 操作。
+1. 在搜索框中，输入 `parse json` 作为筛选器。 从 "操作" 列表中，选择 "**分析 JSON** " 操作。
 
    ![选择“分析 JSON”操作](./media/logic-apps-perform-data-operations/select-parse-json-action.png)
 
@@ -631,13 +631,13 @@ Oranges,2
 
    下面是完成的电子邮件操作：
 
-   ![完成的电子邮件操作](./media/logic-apps-perform-data-operations/send-email-parse-json-action-2.png)
+   ![电子邮件操作的已完成示例](./media/logic-apps-perform-data-operations/send-email-parse-json-action-2.png)
 
-1. 现在，请手动运行逻辑应用。 在设计器工具栏上选择“运行”。 
+1. 现在，请手动运行逻辑应用。 在设计器工具栏上，选择 "**运行**"。 
 
    根据所用的电子邮件连接器，会收到下面所示的结果：
 
-   ![包含“联接”操作结果的电子邮件](./media/logic-apps-perform-data-operations/parse-json-email-results.png)
+   ![带有 "分析 JSON" 操作结果的电子邮件](./media/logic-apps-perform-data-operations/parse-json-email-results.png)
 
 <a name="select-action"></a>
 
@@ -648,23 +648,23 @@ Oranges,2
 > [!NOTE]
 > 要使操作使用“选择”操作的数组输出，这些操作必须接受数组作为输入，或者必须将输出数组转换为另一种兼容格式。 
 
-如果你更喜欢在代码视图编辑器中工作，则可以将此**示例中**的变量操作定义复制到你自己的逻辑应用的基础工作流定义，并将其**初始化**为你自己的逻辑应用：[数据操作代码示例-选择](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
+如果你偏好使用代码视图编辑器，可将本文中的示例“选择”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 选择](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
 
 1. 在 [Azure 门户](https://portal.azure.com)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
    本示例使用 Azure 门户以及包含一个“重复”触发器和一个“初始化变量”操作的逻辑应用。 该操作设置用于创建一个变量，该变量的初始值是包含一些示例整数的数组。 稍后测试逻辑应用时，可以手动运行应用，而无需等待触发器激发。
 
-   ![启动示例逻辑应用](./media/logic-apps-perform-data-operations/sample-starting-logic-app-select-action.png)
+   ![正在启动 "选择" 操作的示例逻辑应用](./media/logic-apps-perform-data-operations/sample-starting-logic-app-select-action.png)
 
 1. 在要创建数组的逻辑应用中，执行以下步骤之一： 
 
    * 要在上一步中添加操作，请选择 "**新建步骤**"。
 
-     ![添加操作](./media/logic-apps-perform-data-operations/add-select-action.png)
+     ![为 "选择" 操作选择 "新建步骤"](./media/logic-apps-perform-data-operations/add-select-operation-action.png)
 
-   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示 **+** 加号（）。 选择加号，然后选择 "**添加操作**"。
+   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示加号（ **+** ）。 选择加号，然后选择 "**添加操作**"。
 
-1. 在“选择操作”下，选择“内置”。 在搜索框中，输入`select`作为筛选器。 从 "操作" 列表中，选择 "**选择**操作"。
+1. 在“选择操作”下，选择“内置”。 在搜索框中，输入 `select` 作为筛选器。 从 "操作" 列表中，选择 "**选择**操作"。
 
    ![选择“选择”操作](./media/logic-apps-perform-data-operations/select-select-action.png)
 
@@ -676,13 +676,13 @@ Oranges,2
 
 1. 在“映射”框的左列中，提供要将源数组中每个值分配到的属性名称。 在右列中指定一个表达式，用于表示要将该属性分配到的值。
 
-   此示例将 "Product_ID" 指定为属性名称，以通过在访问每个数组项的表达式`item()`中使用函数来分配整数数组中的每个值。 
+   此示例将 "Product_ID" 指定为属性名称，以通过在访问每个数组项的表达式中使用 `item()` 函数来分配整数数组中的每个值。 
 
-   ![指定要创建的数组的 JSON 对象属性和值](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
+   ![指定 JSON 对象属性和值以创建数组](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
 
    下面是完成的操作：
 
-   ![完成的“选择”操作](./media/logic-apps-perform-data-operations/finished-select-action.png)
+   !["Select" 操作的已完成示例](./media/logic-apps-perform-data-operations/finished-select-action.png)
 
 1. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
@@ -698,11 +698,11 @@ Oranges,2
 
    `@actionBody('Select')`
 
-   此示例使用 Office 365 Outlook 的 "**发送电子邮件**" 操作，并在电子`@actionBody('Select')`邮件正文中包含来自表达式的输出：
+   此示例使用 Office 365 Outlook 的 "**发送电子邮件**" 操作，并在电子邮件的正文中包含来自 `@actionBody('Select')` 表达式的输出：
 
-   ![“发送电子邮件”操作中的操作输出](./media/logic-apps-perform-data-operations/send-email-select-action.png)
+   !["选择" 操作的操作输出](./media/logic-apps-perform-data-operations/send-email-select-action.png)
 
-1. 现在，请手动运行逻辑应用。 在设计器工具栏上选择“运行”。
+1. 现在，请手动运行逻辑应用。 在设计器工具栏上，选择 "**运行**"。
 
    根据所用的电子邮件连接器，会收到下面所示的结果：
 

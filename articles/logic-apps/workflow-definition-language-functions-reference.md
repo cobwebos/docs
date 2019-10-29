@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/23/2019
-ms.openlocfilehash: d16df46ada2254f5bfc671db55e82fc89ef450b6
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 1c6051508a067e17afbc25702c26608da4cd4ca2
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679043"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968920"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-microsoft-flow"></a>在 Azure 逻辑应用和 Microsoft Flow 的表达式中使用函数的参考指南
 
@@ -252,7 +252,7 @@ ms.locfileid: "72679043"
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | 返回具有多个部分的操作输出中某个特定部分的正文。 |
 | [输出](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | 返回操作在运行时的输出。 |
 | [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | 返回工作流定义中所述的参数的值。 |
-| [输出](../logic-apps/workflow-definition-language-functions-reference.md#result) | 返回指定作用域内操作内所有操作的输入和输出，例如 `For_each`、`Until` 和 `Scope`。 |
+| [输出](../logic-apps/workflow-definition-language-functions-reference.md#result) | 返回指定作用域内操作内所有操作的输入和输出，例如 `For_each`、`Until`和 `Scope`。 |
 | [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | 返回触发器在运行时的输出，或者来自其他 JSON 名称和值对的输出。 另请参阅 [triggerOutputs](#triggerOutputs) 和 [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody)。 |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | 返回触发器在运行时的 `body` 输出。 请参阅 [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | 返回与表单数据或表单编码触发器输出中某个键名匹配的单个值。 |
@@ -382,7 +382,7 @@ actionBody('Get_user')
 
 ### <a name="actionoutputs"></a>actionOutputs
 
-返回操作在运行时的输出。  和是 `actions('<actionName>').outputs` 的简写形式。 请参阅 [actions()](#actions)。 @No__t_0 函数可解析为逻辑应用设计器中的 `outputs()`，因此请考虑使用[输出（）](#outputs)，而不是 `actionOutputs()`。 虽然这两个函数的工作方式相同，但首选 `outputs()`。
+返回操作在运行时的输出。  和是 `actions('<actionName>').outputs` 的简写形式。 请参阅 [actions()](#actions)。 `actionOutputs()` 函数可解析为逻辑应用设计器中的 `outputs()`，因此请考虑使用[输出（）](#outputs)，而不是 `actionOutputs()`。 虽然这两个函数的工作方式相同，但首选 `outputs()`。
 
 ```
 actionOutputs('<actionName>')
@@ -1237,7 +1237,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
-| <*destinationTimeZone*> | 是 | 字符串 | 目标时区的名称。 有关时区名称的详细信息，请参阅[Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)。 |
+| <*destinationTimeZone*> | 是 | 字符串 | 目标时区的名称。 对于时区名称，请参阅[Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但是可能必须从时区名称中删除任何标点。 |
 | <*format*> | No | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
@@ -1279,8 +1279,8 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
-| <*sourceTimeZone*> | 是 | 字符串 | 源时区的名称。 有关时区名称的详细信息，请参阅[Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)。 |
-| <*destinationTimeZone*> | 是 | 字符串 | 目标时区的名称。 有关时区名称的详细信息，请参阅[Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)。 |
+| <*sourceTimeZone*> | 是 | 字符串 | 源时区的名称。 对于时区名称，请参阅[Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但是可能必须从时区名称中删除任何标点。 |
+| <*destinationTimeZone*> | 是 | 字符串 | 目标时区的名称。 对于时区名称，请参阅[Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但是可能必须从时区名称中删除任何标点。 |
 | <*format*> | No | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
@@ -1322,7 +1322,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
-| <*sourceTimeZone*> | 是 | 字符串 | 源时区的名称。 有关时区名称的详细信息，请参阅[Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)。 |
+| <*sourceTimeZone*> | 是 | 字符串 | 源时区的名称。 对于时区名称，请参阅[Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但是可能必须从时区名称中删除任何标点。 |
 | <*format*> | No | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
@@ -3318,7 +3318,7 @@ removeProperty(json('{ "customerName": { "firstName": "Sophia", "middleName": "A
 
 ### <a name="result"></a>结果
 
-返回指定作用域内操作内所有操作的输入和输出，例如 `For_each`、`Until` 或 `Scope` 操作。 此函数可用于返回失败操作的结果，以便您可以诊断和处理异常。 有关详细信息，请参阅[获取上下文和失败结果](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures)。
+返回指定作用域内操作内所有操作的输入和输出，例如 `For_each`、`Until`或 `Scope` 操作。 此函数可用于返回失败操作的结果，以便您可以诊断和处理异常。 有关详细信息，请参阅[获取上下文和失败结果](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures)。
 
 ```
 result('<scopedActionName>')

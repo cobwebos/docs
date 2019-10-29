@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/19/2019
+ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86ab995327522ac5dead9b3f944e0760084aedce
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e57a216efee39df0ad22712b281073a68600e0df
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389090"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990733"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>请求访问 Azure AD 授权管理（预览版）中的访问包
 
@@ -58,12 +58,13 @@ ms.locfileid: "72389090"
 
 1. 在列表中查找访问包。  如果需要，可以通过键入搜索字符串，然后选择 "**名称**"、"**目录**" 或 "**资源**" 筛选器进行搜索。
 
-    ![我的访问门户-资源搜索](./media/entitlement-management-request-access/elm-myaccess-resource-search.png)
+    ![我的访问门户-资源搜索](./media/entitlement-management-request-access/my-access-resource-search.png)
+
 1. 单击复选标记以选择访问包。
 
-    ![我的访问权限门户 - 访问包](./media/entitlement-management-shared/my-access-access-packages.png)
-
 1. 单击“请求访问”打开“请求访问”面板。
+
+    ![我的访问权限门户 - 访问包](./media/entitlement-management-request-access/my-access-request-access-button.png)
 
 1. 如果显示 "**业务理由**" 框，请键入需要访问的理由。
 
@@ -78,6 +79,12 @@ ms.locfileid: "72389090"
 1. 单击 "**请求历史记录**" 以查看请求和状态的列表。
 
     如果访问包需要批准，则请求现在处于待定审批状态。
+
+### <a name="select-a-policy"></a>选择策略
+
+如果你请求访问具有多个应用策略的访问包，则可能会要求你选择策略。 例如，访问包管理器可能会配置访问包，其中包含两组内部员工的两个策略。 第一个策略可能允许访问60天，需要批准。 第二个策略可能允许访问2天，无需批准。 如果遇到这种情况，则必须选择要使用的策略。
+
+![我的访问门户-请求访问-多个策略](./media/entitlement-management-request-access/my-access-multiple-policies.png)
 
 ## <a name="cancel-a-request"></a>取消请求
 
@@ -94,12 +101,6 @@ ms.locfileid: "72389090"
     ![我的访问门户-取消请求](./media/entitlement-management-request-access/my-access-cancel-request.png)
 
 1. 单击 "**请求历史记录**" 以确认请求已取消。
-
-## <a name="select-a-policy"></a>选择策略
-
-如果你正在请求访问具有多个应用策略的访问包，则系统可能会要求你选择一种策略。 例如，访问包管理器可能会配置访问包，其中包含两组内部员工的两个策略。 第一个策略可能允许访问60天，需要批准。 第二个策略可能允许访问2天，无需批准。 如果遇到这种情况，则必须选择要使用的策略。
-
-**必备角色：** 者
 
 ## <a name="next-steps"></a>后续步骤
 

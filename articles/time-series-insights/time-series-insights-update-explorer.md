@@ -1,21 +1,21 @@
 ---
 title: 在 Azure 时序见解预览版资源管理器中直观显示数据 | Microsoft Docs
 description: 本文介绍 Azure 时序见解预览版资源管理器 Web 应用中可用的功能和选项。
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: a1707740d673ea49a4b4494f5d2e6a5753982090
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 3f6c03ace13b9b6cb1bda004799502e1f382051d
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553409"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989954"
 ---
 # <a name="visualize-data-in-the-explorer-preview"></a>在资源管理器预览版中实现数据可视化
 
@@ -35,7 +35,7 @@ ms.locfileid: "72553409"
 
 Azure 时序见解预览版资源管理器包含以下元素：
 
-[![The 资源管理器视图](media/v2-update-explorer/explorer-one.png)](media/v2-update-explorer/explorer-one.png#lightbox)
+[![资源管理器视图](media/v2-update-explorer/explorer-one.png)](media/v2-update-explorer/explorer-one.png#lightbox)
 
 - <a href="#environment-drop-down-list">环境面板</a>：显示 Azure 时序见解环境。
 - <a href="#navigation-menu">导航菜单</a>：用于在 "**分析**" 和 "**模型**" 页之间切换。
@@ -51,13 +51,13 @@ Azure 时序见解预览版资源管理器包含以下元素：
 
 1. 选择所显示环境旁边的下拉箭头。
 
-   [![The 控制面板](media/v2-update-explorer/explorer-two.png)](media/v2-update-explorer/explorer-two.png#lightbox)
+   [![控制面板](media/v2-update-explorer/explorer-two.png)](media/v2-update-explorer/explorer-two.png#lightbox)
 
 1. 然后选择所需的环境。
 
 ## <a name="navigation-menu"></a>导航菜单
 
-  [![The 导航菜单](media/v2-update-explorer/explorer-three.png)](media/v2-update-explorer/explorer-three.png#lightbox)
+  [![导航菜单](media/v2-update-explorer/explorer-three.png)](media/v2-update-explorer/explorer-three.png#lightbox)
 
 使用导航菜单在两个视图之间进行选择：
 
@@ -72,7 +72,7 @@ Azure 时序见解预览版资源管理器包含以下元素：
 
 您可以使用 "模型搜索" 面板轻松搜索和导航时序模型层次结构，以便查找您要在图表中显示的特定时序实例。 选择实例后，它们将同时添加到当前图表和数据中。
 
-  [![The 模型搜索面板](media/v2-update-explorer/explorer-four.png)](media/v2-update-explorer/explorer-four.png#lightbox)
+  [![模型搜索面板](media/v2-update-explorer/explorer-four.png)](media/v2-update-explorer/explorer-four.png#lightbox)
 
 ### <a name="model-authoring"></a>模型创作
 
@@ -88,11 +88,11 @@ Azure 时序见解预览版支持时序模型上的完全创建、读取、更�
 
 这会显示实例字段和与所选时序见解实例关联的其他元数据。 通过选中右侧的复选框，您可以隐藏或显示当前图表中的特定实例。 还可以通过选择元素左侧的 "红色**删除**" （垃圾桶）控件，从当前数据中删除特定数据元素。
 
-  [![The 预览良好](media/v2-update-explorer/explorer-five.png)](media/v2-update-explorer/explorer-five.png#lightbox)
+  [![预览](media/v2-update-explorer/explorer-five.png)](media/v2-update-explorer/explorer-five.png#lightbox)
 
 若要重新配置 "**分析**图表" 页的布局，请选择右上角的省略号图标：
 
-  [![Telemetry 布局选项](media/v2-update-explorer/explorer-six.png)](media/v2-update-explorer/explorer-six.png#lightbox)
+  [![遥测布局选项](media/v2-update-explorer/explorer-six.png)](media/v2-update-explorer/explorer-six.png#lightbox)
 
 > [!NOTE]
 > 如果看到以下消息，则在所选时间范围内实例没有任何数据。 若要解决此问题，请增加时间跨度或确认实例正在推送数据。
@@ -103,7 +103,7 @@ Azure 时序见解预览版支持时序模型上的完全创建、读取、更�
 
 在图表中，可以显示时序见解实例作为行。 通过选择 web 控件来放大图表，可以折叠 "环境" 面板、"数据模型" 和 "时间范围" 控制面板。
 
-  [![Preview 图表概述](media/v2-update-explorer/explorer-eight.png)](media/v2-update-explorer/explorer-eight.png#lightbox)
+  [![预览图表概述](media/v2-update-explorer/explorer-eight.png)](media/v2-update-explorer/explorer-eight.png#lightbox)
 
 - **选定的日期范围**：控制哪些数据元素可用于可视化。
 
@@ -121,15 +121,15 @@ Azure 时序见解预览版支持时序模型上的完全创建、读取、更�
 
 若要深入了解特定数据切片，请在当前关系图上左键单击数据点，然后将所选区域拖到所选终结点。 右键单击选定的灰色区域，然后选择 "**缩放**"，如下图所示：
 
-  [![Preview 图表缩放](media/v2-update-explorer/explorer-nine.png)](media/v2-update-explorer/explorer-nine.png#lightbox)
+  [![预览图表缩放](media/v2-update-explorer/explorer-nine.png)](media/v2-update-explorer/explorer-nine.png#lightbox)
 
 执行**缩放**操作后，会看到所选的数据集。 选择 "y 轴格式" 控件，以便循环浏览时序见解数据的三个 y 轴表示形式。
 
-  [![Preview 图表 y 轴](media/v2-update-explorer/explorer-ten.png)](media/v2-update-explorer/explorer-ten.png#lightbox)
+  [![预览图 y 轴](media/v2-update-explorer/explorer-ten.png)](media/v2-update-explorer/explorer-ten.png#lightbox)
 
 在这里，你可以看到一个共享 Y 轴的示例：
 
-  [![Preview 共享 Y 轴](media/v2-update-explorer/explorer-eleven.png)](media/v2-update-explorer/explorer-eleven.png#lightbox)
+  [![预览共享 Y 轴](media/v2-update-explorer/explorer-eleven.png)](media/v2-update-explorer/explorer-eleven.png#lightbox)
 
 ## <a name="time-editor-panel"></a>时间编辑器面板
 
@@ -151,7 +151,7 @@ Azure 时序见解预览版支持时序模型上的完全创建、读取、更�
 
 1. **从 web 控件到-和的日期范围**：通过此 web 控件，可以轻松地选择所需的日期和时间范围。 还可以使用该控件在不同时区之间切换。 将更改应用到当前工作区后，请选择 "**保存**"。
 
-   [![To 和从选择面板](media/v2-update-explorer/explorer-thirteen.png)](media/v2-update-explorer/explorer-thirteen.png#lightbox)
+   [与选择面板![](media/v2-update-explorer/explorer-thirteen.png)](media/v2-update-explorer/explorer-thirteen.png#lightbox)
 
 ## <a name="navigation-panel"></a>导航面板
 
@@ -159,15 +159,15 @@ Azure 时序见解预览版支持时序模型上的完全创建、读取、更�
 
 ### <a name="current-session-share-link-control"></a>当前会话共享链接控件
 
-  [![Share 图标](media/v2-update-explorer/explorer-fifteen.png)](media/v2-update-explorer/explorer-fifteen.png#lightbox)
+  [![共享图标](media/v2-update-explorer/explorer-fifteen.png)](media/v2-update-explorer/explorer-fifteen.png#lightbox)
 
 选择 "新建**共享**" 图标以与团队共享 URL 链接。
 
-  [![Share 实例 URL](media/v2-update-explorer/url-share.png)](media/v2-update-explorer/url-share.png#lightbox)
+  [![共享实例 URL](media/v2-update-explorer/url-share.png)](media/v2-update-explorer/url-share.png#lightbox)
 
 ### <a name="tenant-section"></a>租户分区
 
-  [![Tenant 选择](media/v2-update-explorer/explorer-sixteen.png)](media/v2-update-explorer/explorer-sixteen.png#lightbox)
+  [![租户选择](media/v2-update-explorer/explorer-sixteen.png)](media/v2-update-explorer/explorer-sixteen.png#lightbox)
 
 * 显示当前时序见解登录帐户信息。
 * 使用它可以在可用时序见解主题之间切换。
@@ -177,7 +177,7 @@ Azure 时序见解预览版支持时序模型上的完全创建、读取、更�
 
 若要选择新的主题，请选择右上角的配置文件图标。 然后选择 "**更改主题**"。
 
-  [![Theme 选择](media/v2-update-explorer/theme-selection.png)](media/v2-update-explorer/theme-selection.png#lightbox)
+  [![主题选择](media/v2-update-explorer/theme-selection.png)](media/v2-update-explorer/theme-selection.png#lightbox)
 
 > [!TIP]
 > 还可以通过选择配置文件图标来选择语言。
@@ -187,7 +187,7 @@ Azure 时序见解预览版支持两个主题：
 * **浅色主题**：本文档中所示的默认主题。
 * **深色主题**：呈现资源管理器，如下所示：
 
-  [![Selected 深色主题](media/v2-update-explorer/explorer-seventeen.png)](media/v2-update-explorer/explorer-seventeen.png#lightbox)
+  [![选定的深色主题](media/v2-update-explorer/explorer-seventeen.png)](media/v2-update-explorer/explorer-seventeen.png#lightbox)
 
 ## <a name="s1s2-environment-controls"></a>S1/S2 环境控件
 
@@ -197,7 +197,7 @@ Azure 时序见解预览版支持两个主题：
 
 你会看到时序见解术语面板，其中定义了环境中的查询，而不是层次结构。 使用它可以根据谓词筛选数据。
 
-  [![Where 查询面板](media/v2-update-explorer/explorer-eighteen.png)](media/v2-update-explorer/explorer-eighteen.png#lightbox)
+  [![其中的查询面板](media/v2-update-explorer/explorer-eighteen.png)](media/v2-update-explorer/explorer-eighteen.png#lightbox)
 
 时序见解预览版术语编辑器面板采用以下参数：
 
@@ -220,11 +220,11 @@ Azure 时序见解预览版支持两个主题：
 
 **拆分方式**：此下拉列表显示您的模型中的所有可用分类列（字符串），您可以通过对数据进行分组。 你最多可以添加五个字词以便在同一 x 轴上查看。 输入所需的参数，然后选择 "**添加**" 以添加新术语。
 
-  [![Queried 和筛选视图一](media/v2-update-explorer/explorer-twenty.png)](media/v2-update-explorer/explorer-twenty.png#lightbox)
+  [查询和筛选![查看一个](media/v2-update-explorer/explorer-twenty.png)](media/v2-update-explorer/explorer-twenty.png#lightbox)
 
 您可以通过选择可见图标在 "图表" 面板中显示和隐藏元素，如下图所示。 若要完全删除查询，请选择红色**X**。
 
-  [![Queried 和筛选视图两个](media/v2-update-explorer/explorer-twenty-one.png)](media/v2-update-explorer/explorer-twenty-one.png#lightbox)
+  [查询和筛选![视图两个](media/v2-update-explorer/explorer-twenty-one.png)](media/v2-update-explorer/explorer-twenty-one.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9178b8007d707af2df150102b2d344a44106a9ca
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: f241f243860635db443b732f94d12956bbe0f9d8
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755189"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990620"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>一致性、可用性和性能权衡 
 
@@ -62,6 +62,10 @@ Azure Cosmos DB 通过某种选择范围来实现数据一致性。 此方法包
 *K* = 项的 *"K"* 版本（即更新）的数目。
 
 *T* = 自上次更新后的时间间隔 *"T"* 。
+
+## <a name="strong-consistency-and-multi-master"></a>强一致性和多主机
+
+为多主机配置的 Cosmos 帐户不能配置为具有强一致性，因为分布式系统不可能提供零的 RPO 和 RTO 为零。 此外，如果必须复制任何区域中的所有已配置区域并将其提交到该帐户中的所有已配置区域，则对多主机使用强一致性没有写入延迟的好处。 这将产生与单个主帐户相同的写入延迟。
 
 ## <a name="next-steps"></a>后续步骤
 

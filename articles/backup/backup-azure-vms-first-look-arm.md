@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 备份服务通过 VM 设置备份 Azure VM
+title: 使用 Azure 备份从 VM 设置备份 Azure VM
 description: 了解如何使用 Azure 备份服务备份 Azure VM
 author: dcurwin
 manager: carmonm
@@ -7,21 +7,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 042fa44b8f24bb729b94c7631db9469de8493ba4
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: cfbec94a2922995eed546d526c1f469e2ea54118
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639766"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969051"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>通过 VM 设置备份 Azure VM
 
 本文说明如何使用 [Azure 备份](backup-overview.md)服务备份 Azure VM。 可以使用多个方法备份 Azure VM：
 
-- 单个 Azure VM：本文中的说明介绍如何直接通过 VM 设置备份 Azure VM。
-- 多个 Azure VM：可以设置一个恢复服务保管库，然后为多个 Azure VM 配置备份。 按照[此文](backup-azure-arm-vms-prepare.md)中针对此方案的说明操作。
-
-
+- 单个 Azure VM：本文中的说明介绍了如何直接从 VM 设置备份 Azure VM。
+- 多个 Azure Vm：可以设置一个恢复服务保管库，并为多个 Azure Vm 配置备份。 按照[此文](backup-azure-arm-vms-prepare.md)中针对此方案的说明操作。
 
 ## <a name="before-you-start"></a>开始之前
 
@@ -36,7 +34,6 @@ ms.locfileid: "68639766"
 - 在安装代理后启用备份时，Azure 备份会将备份扩展安装到代理。 它可以在没有用户干预的情况下更新和修补扩展。
 
 ## <a name="back-up-from-azure-vm-settings"></a>通过 Azure VM 设置进行备份
-
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 单击“所有服务”，在“筛选器”中键入“虚拟机”，然后单击“虚拟机”。
@@ -65,15 +62,13 @@ ms.locfileid: "68639766"
 
    ![备份状态](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
 
-10. 启用备份后，会运行初始备份。 可以立即启动初始备份，也可以等待它按备份计划启动。
+10. 启用备份后，将运行初始备份。 可以立即启动初始备份，也可以等待它按备份计划启动。
     - 在初始备份完成之前，“上次备份状态”显示为“警告(初始备份挂起)”。
     - 若要查看下一个计划的备份何时运行，请单击备份策略名称。
 
-
 > [!NOTE]
-> Azure 备份服务会创建一个单独的资源组（而非 VM 资源组）来存储快照，采用的命名格式为 **AzureBackupRG_geography_number**（例如：AzureBackupRG_northeurope_1）。 此资源组中的数据将保留在 Azure 虚拟机备份策略的 "保留即时恢复快照" 部分中指定的天数内。 对此资源组应用锁定可能会导致备份失败。<br>
-此资源组还应排除在任何名称/标记限制之外，因为限制策略会阻止在其中再次创建“资源点”集合，从而导致备份失败。
-
+> Azure 备份服务会创建一个单独的资源组（而不是 VM 资源组）来存储快照，其命名格式为**AzureBackupRG_geography_number** （示例： AzureBackupRG_northeurope_1）。 此资源组中的数据将保留在 Azure 虚拟机备份策略的 "保留即时恢复快照" 部分中指定的天数内。 对此资源组应用锁定会导致备份失败。<br>
+还应从任何名称/标记限制中排除此资源组，因为限制策略会阻止在其中创建资源点集合，从而导致备份失败。
 
 ## <a name="run-a-backup-immediately"></a>立即运行备份
 
@@ -86,9 +81,6 @@ ms.locfileid: "68639766"
     ![备份保留日期](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 
 3. 门户通知会告知你备份作业已触发。 若要监视备份进度，请单击“查看所有作业”。
-
-
-
 
 ## <a name="back-up-from-the-recovery-services-vault"></a>从恢复服务保管库备份
 

@@ -13,12 +13,12 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 2174e359f739cfdf3791c8ec64d1a95be2873555
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 698ca6736af86358de13f6deae8f1e2dba92f46e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72930911"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990649"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -556,7 +556,7 @@ test custom activity Microsoft test custom activity Microsoft
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
    | 5 |2016-11-16T04:00:00 |2016-11-16-04.txt |
 
-    请记住，输入文件夹中的所有文件都是具有上述开始时间的切片的一部分。 处理此切片时，自定义活动将扫描每个文件，并在输出文件中生成具有搜索词（“Microsoft”）出现次数的行。 如果输入文件夹中有三个文件，则每个小时切片的输出文件中将有三行：2016-11-16-00.txt、2016-11-16:01:00:00.txt 等。
+    请记住，输入文件夹中的所有文件都是具有上述开始时间的切片的一部分。 处理此切片时，自定义活动将扫描每个文件，并在输出文件中生成具有搜索词（“Microsoft”）出现次数的行。 如果输入文件夹中有三个文件，则每小时切片的输出文件中有三行： 2016-11-16-00.txt，2016-11：01：00： 00 .txt，等等。
 3. 若要部署 **OutputDataset**，请在命令栏上单击“部署”。
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>创建并运行使用自定义活动的管道

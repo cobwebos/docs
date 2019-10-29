@@ -1,6 +1,6 @@
 ---
-title: 从 Azure 逻辑应用访问本地数据源
-description: 通过创建本地数据网关，从逻辑应用连接到本地数据源
+title: 访问本地数据源-Azure 逻辑应用
+description: 通过创建 Azure 本地数据网关资源从 Azure 逻辑应用连接到本地数据源
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/18/2019
-ms.openlocfilehash: 4b333df740fbd4c2243ea3f166593ca0a6f4bbad
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 6a01999eff6accf1b8d7f56729d9dce77fbedb0a
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675672"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72988724"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到本地数据源
 
@@ -77,7 +77,7 @@ Azure 逻辑应用支持通过数据网关进行的读取和写入操作。 但�
 
 1. 在 **"本地数据网关**" 下，选择 "**添加**"。
 
-   ![添加数据网关](./media/logic-apps-gateway-connection/add-gateway.png)
+   ![为数据网关添加新的 Azure 资源](./media/logic-apps-gateway-connection/add-azure-data-gateway-resource.png)
 
 1. 在 "**创建连接网关**" 下，提供网关资源的此信息。 完成操作后，选择“创建”。
 
@@ -92,7 +92,7 @@ Azure 逻辑应用支持通过数据网关进行的读取和写入操作。 但�
 
    下面是一个示例，显示与网关资源位于同一区域的网关安装，并链接到同一个 Azure 帐户：
 
-   ![提供详细信息以创建数据网关资源](./media/logic-apps-gateway-connection/gateway-details.png)
+   ![提供详细信息以创建数据网关资源](./media/logic-apps-gateway-connection/add-azure-data-gateway-information.png)
 
 <a name="connect-logic-app-gateway"></a>
 
@@ -155,7 +155,7 @@ Azure 逻辑应用支持通过数据网关进行的读取和写入操作。 但�
 
    例如：
 
-   ![删除网关](./media/logic-apps-gateway-connection/gateway-delete.png)
+   ![删除 Azure 中的网关资源](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway-resource.png)
 
 <a name="faq"></a>
 

@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: cc12579a4932894b730b04cdc77acc0151168bdb
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: d5214b6a6ffcb7c78fc00fe0305a1d1846b328f8
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010215"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990264"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
@@ -24,7 +24,7 @@ ms.locfileid: "71010215"
 
 - 帮助保持合规性、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
 
-- 实现并促进遵从合规标准，但不能保证合规性。 有关支持标准符合性的 Azure 程序的详细信息，请参阅 [Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，可以从中找到 SQL 数据库符合性认证的最新列表。
+- 实现并促进遵从合规标准，但不能保证合规性。 有关支持标准符合性的 Azure 程序的详细信息，请参阅[Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，从中可以找到最新的 SQL 数据库符合性认证列表。
 
 
 > [!NOTE] 
@@ -96,9 +96,10 @@ ms.locfileid: "71010215"
 6. 若要配置将审核日志写入存储帐户的操作，请选择“存储”，打开“存储详细信息”。 依次选择要用于保存日志的 Azure 存储帐户以及保持期。 将删除旧日志。 然后单击“确定”。
 
    > [!IMPORTANT]
-   > 保持期的默认值为0（无限制保留期）。 在配置存储帐户进行审核时，可以通过移动**存储设置**中的 "**保留期（天）** " 滑块来更改此值。
+   > - 保持期的默认值为0（无限制保留期）。 在配置存储帐户进行审核时，可以通过移动**存储设置**中的 "**保留期（天）** " 滑块来更改此值。
+   > - 如果将保留期从0（无限制保留）更改为任何其他值，请注意，保留期仅适用于更改保留值后写入的日志（当保留设置为无限制期间写入的日志，即使在保持启用状态）
 
-    ![存储帐户](./media/sql-database-auditing-get-started/auditing_select_storage.png)
+    ![存储器帐户](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
 7. 若要配置将审核日志写入 Log Analytics 工作区的操作，请选择“Log Analytics (预览版)”，并打开“Log Analytics 详细信息”。 选择或创建要将日志写入到其中的 Log Analytics 工作区，然后单击“确定”。
 
@@ -113,10 +114,10 @@ ms.locfileid: "71010215"
 11. 配置审核设置后，可打开新威胁检测功能，并配置电子邮件用于接收安全警报。 使用威胁检测时，会接收针对异常数据库活动（可能表示潜在的安全威胁）发出的前瞻性警报。 有关详细信息，请参阅[威胁检测入门](sql-database-threat-detection-get-started.md)。
 
 > [!IMPORTANT]
-> 不能对已暂停的 Azure SQL 数据仓库启用审核。 若要启用审核，请取消暂停数据仓库。
+> 不能对已暂停的 Azure SQL 数据仓库启用审核。 若要启用它，请取消暂停数据仓库。
 
 > [!WARNING]
-> 在具有 Azure SQL 数据仓库的服务器上启用审核**将导致数据仓库重新恢复并重新暂停**，这可能会产生计费费用。
+> 如果在具有 Azure SQL 数据仓库的服务器上启用审核，则**会导致数据仓库恢复，并再次重新暂停，** 这可能会产生费用。
 
 ## <a id="subheading-3"></a>分析审核日志和报告
 
@@ -142,7 +143,7 @@ ms.locfileid: "71010215"
  
 
 - 也可从 Log Analytics 边栏选项卡访问审核日志。 打开 Log Analytics 工作区，然后在“常规”部分单击“日志”。 一开始可以使用简单的查询（例如：搜索“SQLSecurityAuditEvents”）来查看审核日志。
-    在这里，你还可以使用[Azure Monitor 日志](../log-analytics/log-analytics-log-search.md)对审核日志数据运行高级搜索。 有了 Azure Monitor 日志，就可以使用集成的搜索和自定义仪表板来轻松分析所有工作负荷和服务器上的数百万记录，获得实时操作见解。 有关 Azure Monitor 日志搜索语言和命令的其他有用信息，请参阅 [Azure Monitor 日志搜索参考](../log-analytics/log-analytics-log-search.md)。
+    在这里，你还可以使用[Azure Monitor 日志](../log-analytics/log-analytics-log-search.md)对审核日志数据运行高级搜索。 Azure Monitor 日志使用集成的搜索和自定义仪表板，可以在所有工作负荷和服务器之间轻松分析数百万条记录，从而为你提供实时操作见解。 有关 Azure Monitor 日志搜索语言和命令的其他有用信息，请参阅[Azure Monitor 日志搜索引用](../log-analytics/log-analytics-log-search.md)。
 
 如果已选择将审核日志写入到事件中心，请执行以下操作：
 
@@ -151,7 +152,7 @@ ms.locfileid: "71010215"
 
 如果选择将审核日志写入到 Azure 存储帐户，可以使用多种方法来查看日志：
 
-- 审核日志会在安装期间选择的帐户中进行聚合。 可使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具浏览审核日志。 在 Azure 存储中，审核日志以 Blob 文件集合的形式保存在名为 **sqldbauditlogs** 的容器中。 有关存储文件夹的层次结构、命名约定和日志格式的详细信息，请参阅 [SQL 数据库审核日志格式](https://go.microsoft.com/fwlink/?linkid=829599)。
+- 审核日志会在安装期间选择的帐户中进行聚合。 可使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具浏览审核日志。 在 Azure 存储中，审核日志以 Blob 文件集合的形式保存在名为 **sqldbauditlogs** 的容器中。 有关存储文件夹层次结构、命名约定和日志格式的更多详细信息，请参阅[SQL 数据库审核日志格式](https://go.microsoft.com/fwlink/?linkid=829599)。
 
 - 使用 [Azure 门户](https://portal.azure.com)。  打开相关数据库。 在数据库的“审核”页的顶部，单击“查看审核日志”。
 
@@ -189,7 +190,7 @@ ms.locfileid: "71010215"
 
     - 使用 PowerShell [查询扩展事件文件](https://sqlscope.wordpress.com/20../../reading-extended-event-files-using-client-side-tools-only/)。
 
-## <a id="subheading-5"></a>生产做法
+## <a id="subheading-5"></a>生产实践
 
 <!--The description in this section refers to preceding screen captures.-->
 
@@ -197,7 +198,7 @@ ms.locfileid: "71010215"
 
 通过异地复制数据库，在主数据库上启用审核时，辅助数据库将有相同的审核策略。 还可以在独立于主数据库的“辅助服务器”上启用审核，从而在辅助数据库上设置审核。
 
-- 服务器级（推荐）：服务器级（推荐）：同时在主服务器和辅助服务器上启用审核 - 基于各自的服务器级策略，将分别对主数据库和辅助数据库进行审核。
+- 服务器级（推荐）：同时在主服务器和辅助服务器上启用审核 - 基于各自的服务器级策略，将分别对主数据库和辅助数据库进行审核。
 - 数据库级：辅助数据库的数据库级审核只能从主数据库审核设置进行配置。
   - 必须在主数据库本身上启用审核，而不是在服务器上启用。
   - 在主数据库上启用审核后，也会在辅助数据库上启用审核。
@@ -244,12 +245,12 @@ ms.locfileid: "71010215"
 
 **PowerShell cmdlet（包括对附加筛选的 WHERE 子句支持）** ：
 
-- [创建或更新数据库审核策略 (Set-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseaudit)
-- [创建或更新服务器审核策略 (Set-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit)
-- [获取数据库审核策略 (Get-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseaudit)
-- [获取服务器审核策略 (Get-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveraudit)
-- [删除数据库审核策略 (Remove-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseaudit)
-- [删除服务器审核策略 (Remove-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlserveraudit)
+- [创建或更新数据库审核策略（AzSqlDatabaseAudit）](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseaudit)
+- [创建或更新服务器审核策略（AzSqlServerAudit）](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit)
+- [获取数据库审核策略（AzSqlDatabaseAudit）](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseaudit)
+- [获取服务器审核策略（AzSqlServerAudit）](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveraudit)
+- [删除数据库审核策略（AzSqlDatabaseAudit）](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseaudit)
+- [删除服务器审核策略（AzSqlServerAudit）](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlserveraudit)
 
 有关脚本示例，请参阅[使用 PowerShell 配置审核和威胁检测](scripts/sql-database-auditing-and-threat-detection-powershell.md)。
 
@@ -264,10 +265,10 @@ ms.locfileid: "71010215"
 
 支持使用 WHERE 子句执行附加筛选的扩展策略：
 
-- [创建或更新数据库扩展审核策略](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-- [创建或更新服务器扩展审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [获取数据库扩展审核策略](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
-- [获取服务器扩展审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [创建或更新数据库*扩展*审核策略](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+- [创建或更新服务器*扩展*审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [获取数据库*扩展*审核策略](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [获取服务器*扩展*审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 ## <a id="subheading-10"></a>使用 Azure 资源管理器模板管理 SQL 数据库审核
 

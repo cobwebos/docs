@@ -7,12 +7,12 @@ ms.topic: reference
 author: rboucher
 ms.author: robb
 ms.date: 10/22/2019
-ms.openlocfilehash: e1bf6a55568671ddb8f6999356cc9be43ce6a728
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b953f9b5e5fd8c853746caad3047986786bd1317
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804028"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989620"
 ---
 # <a name="azure-resource-logs-overview"></a>Azure 资源日志概述
 Azure 资源日志是由 Azure 资源发出的[平台日志](platform-logs-overview.md)，描述了其内部操作。 所有资源日志共享一个通用顶级架构，并为每个服务提供灵活性，以便为自己的事件发出唯一属性。
@@ -25,8 +25,8 @@ Azure 资源日志是由 Azure 资源发出的[平台日志](platform-logs-overv
 
 | 目标 | 场景 |
 |:---|:---|:---|
-| [Log Analytics 工作区](resource-logs-collect-storage.md) | 使用其他监视数据分析日志，并利用日志查询和日志警报等 Azure Monitor 功能。 |
-| [Azure 存储](archive-diagnostic-logs.md) | 存档日志以进行审核或备份。 |
+| [Log Analytics 工作区](resource-logs-collect-workspace.md) | 使用其他监视数据分析日志，并利用日志查询和日志警报等 Azure Monitor 功能。 |
+| [Azure 存储](resource-logs-collect-storage.md) | 存档日志以进行审核或备份。 |
 | [事件中心](resource-logs-stream-event-hubs.md) | 将日志流式传输到第三方日志记录和遥测系统。  |
 
 ## <a name="compute-resources"></a>计算资源
