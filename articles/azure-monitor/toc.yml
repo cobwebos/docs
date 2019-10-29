@@ -36,7 +36,7 @@
           href: log-query/get-started-portal.md
         - name: 日志查询
           href: log-query/get-started-queries.md
-        - name: 将日志数据可视化
+        - name: 包含日志数据的仪表板
           href: learn/tutorial-logs-dashboards.md
         - name: 根据日志数据发出警报
           href: learn/tutorial-response.md
@@ -50,7 +50,7 @@
           href: learn/tutorial-alert.md
         - name: 了解应用程序用户
           href: learn/tutorial-users.md
-        - name: 创建自定义仪表板
+        - name: 包含应用程序数据的仪表板
           href: learn/tutorial-app-dashboards.md
     - name: 存档平台指标和日志数据
       href: learn/tutorial-archive-data.md
@@ -889,7 +889,11 @@
         - name: 工作簿
           href: app/usage-workbooks.md
         - name: 仪表板
-          href: app/app-insights-dashboards.md
+          items:
+            - name: 使用日志数据的仪表板
+              href: learn/tutorial-logs-dashboards.md
+            - name: 使用应用程序数据的仪表板
+              href: learn/tutorial-app-dashboards.md
         - name: 将数据发送到 Grafana
           href: platform/grafana-plugin.md
     - name: 警报
@@ -1098,10 +1102,8 @@
           href: platform/metrics-supported.md
         - name: 较新的警报支持的指标
           href: platform/alerts-metric-near-real-time.md
-    - name: 诊断日志
-      items:
-        - name: 诊断日志服务、类别和架构
-          href: platform/diagnostic-logs-schema.md
+    - name: 资源日志服务、类别和架构
+      href: platform/diagnostic-logs-schema.md
     - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Azure CLI - Application Insights（预览版）
@@ -1110,9 +1112,11 @@
       href: app/azure-functions-supported-features.md
     - name: Azure PowerShell
       items:
+        - name: 警报、指标、活动日志、自动缩放
+          href: /powershell/module/az.monitor
         - name: Application Insights
           href: /powershell/module/az.applicationinsights
-        - name: 日志
+        - name: Log Analytics
           href: /powershell/module/az.operationalinsights
     - name: REST API
       items:

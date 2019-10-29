@@ -2,7 +2,7 @@
 title: 表单识别器文档
 summary: Azure 表单识别器是一个认知服务，它使用机器学习技术从表与表单中识别和提取键值对。 然后，它会输出包含原始文件中的关系的结构化数据。 非监督式学习可让模型了解字段与项之间的布局和关系，而无需手动标记数据，或者进行繁琐的编程和维护。
 metadata:
-  title: 表单识别器文档
+  title: 表单识别器文档 - 快速入门、教程和 API 参考 - Azure 认知服务 | Microsoft Docs
   description: Azure 表单识别器是一个认知服务，它使用机器学习技术从表与表单中识别和提取键值对。 然后，它会输出包含原始文件中的关系的结构化数据。 非监督式学习可让模型了解字段与项之间的布局和关系，而无需手动标记数据，或者进行繁琐的编程和维护。
   services: cognitive-services
   ms.service: cognitive-services
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 0c450a79c0dbdd19732488af927c3c29df263a23
-  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.openlocfilehash: 3a3146c6a918916792a331c0dab74683db82a02d
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/12/2019
-  ms.locfileid: "70931830"
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72931302"
 landingContent:
 - title: 关于表单识别器
   linkLists:
@@ -76,3 +76,11 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure 命令行界面 (CLI)
       url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+- title: 帮助和反馈
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: UserVoice
+      url: https://go.microsoft.com/fwlink/?linkid=2090535
+    - text: 堆栈溢出
+      url: https://go.microsoft.com/fwlink/?linkid=2087186

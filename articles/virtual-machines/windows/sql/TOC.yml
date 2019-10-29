@@ -62,22 +62,31 @@
           href: virtual-machines-windows-portal-sql-server-provision.md
         - name: 使用 Azure PowerShell
           href: virtual-machines-windows-ps-sql-create.md
-    - name: 注册资源提供程序
-      href: virtual-machines-windows-sql-register-with-resource-provider.md
-    - name: 更改许可模式
-      href: virtual-machines-windows-sql-ahb.md
-    - name: 更改版本
-      href: virtual-machines-windows-sql-change-edition.md
+    - name: 注册 SQL VM RP
+      displayName: 'resource provider, registration'
+      items:
+        - name: 单个 VM
+          href: virtual-machines-windows-sql-register-with-resource-provider.md
+        - name: 批量注册多个 VM
+          href: virtual-machines-windows-sql-bulk-register-with-resource-provider.md
+    - name: 管理
+      items:
+        - name: 许可模式
+          displayName: 'ahb, ahub, payg, change, modify, update'
+          href: virtual-machines-windows-sql-ahb.md
+        - name: 版本
+          displayName: 'change, modify, update'
+          href: virtual-machines-windows-sql-change-edition.md
+        - name: 用于备份和还原的 Azure 存储
+          href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
     - name: 迁移
       items:
-        - name: 迁移 SQL Server 数据库
+        - name: SQL Server 数据库到 VM
           href: virtual-machines-windows-migrate-sql.md
         - name: VM 到新区域
           href: virtual-machines-windows-sql-move-different-region.md
     - name: 配置高可用性
       items:
-        - name: 使用 Azure 存储进行备份和还原
-          href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
         - name: Always On 可用性组
           items:
             - name: Azure SQL VM CLI

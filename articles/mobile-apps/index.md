@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 04bcdee5f2772f6a6a2758af5316031ff29c7b06
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 581aecb113a2c6e0bb03d04de46c7dbeb71db3ce
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794990"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901394"
 ---
 # <a name="mobile-application-development-in-microsoft"></a>Microsoft 中的移动应用程序开发
 决策者、开发团队和 IT 部门需要构建一个可解决许多问题的可靠移动应用程序开发策略：

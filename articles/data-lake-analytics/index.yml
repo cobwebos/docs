@@ -12,12 +12,12 @@ metadata:
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 09/13/2019
-  ms.openlocfilehash: 789144730d99a0686856cee29f77227698154cbc
-  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.openlocfilehash: 59f8fcefd48425fb49d6a828046764a213bea18f
+  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71220015"
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72965714"
 landingContent:
 - title: 关于 Data Lake Analytics
   linkLists:
@@ -76,7 +76,7 @@ landingContent:
     - text: 在 Azure 门户中添加用户
       url: data-lake-analytics-add-users.md
     - text: 使用策略管理 Azure Data Lake Analytics
-      url: data-lake-analytics-policies.md
+      url: data-lake-analytics-account-policies.md
 - title: 持续集成和持续部署
   linkLists:
   - linkListType: how-to-guide
@@ -89,3 +89,13 @@ landingContent:
       url: data-lake-analytics-cicd-test.md
     - text: 使用 U-SQL SDK
       url: data-lake-analytics-u-sql-sdk.md
+- title: 了解适用于 U-SQL 开发人员的 Spark
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 了解适用于 U-SQL 开发人员的 Apache Spark
+      url: data-lake-analytics-understand-spark-for-usql-developers.md
+    - text: 了解 Apache Spark 数据格式
+      url: data-lake-analytics-understand-spark-data-formats.md
+    - text: 了解 Apache Spark 代码概念
+      url: data-lake-analytics-understand-spark-code-concepts.md

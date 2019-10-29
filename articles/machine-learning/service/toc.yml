@@ -138,6 +138,9 @@
         - name: 使用数据集进行训练
           displayName: 'data, dataset'
           href: how-to-train-with-datasets.md
+        - name: 版本和跟踪数据集
+          displayName: 'data, data set'
+          href: how-to-version-track-datasets.md
     - name: 训练模型
       items:
         - name: 使用可视界面

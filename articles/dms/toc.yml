@@ -53,8 +53,10 @@
       href: resource-scenario-status.md
     - name: 先决条件概述
       href: pre-reqs.md
-    - name: 用于 Azure SQL DB 托管实例迁移的网络拓扑
+    - name: 用于 Azure SQL DB MI 迁移的网络拓扑
       href: resource-network-topologies.md
+    - name: 用于从 SQL Server 联机迁移到 Azure SQL DB MI 的自定义角色
+      href: resource-custom-roles-sql-db-managed-instance.md
     - name: 故障排除和已知问题
       items:
         - name: 排查源数据库连接问题

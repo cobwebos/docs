@@ -1,36 +1,132 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure IoT Central 文档
+### YamlMime:Hub
+title: IoT Central 解决方案文档
+summary: 浏览 Azure IoT Central 服务和解决方案文档。
+brand: azure
 metadata:
-  title: Azure IoT Central 文档 - 教程和 API 参考 | Microsoft Docs
-  description: Azure IoT Central 是完全托管的 SaaS（软件即服务）解决方案，借助此解决方案可轻松连接、监视以及管理大规模的 IoT 资产。 Azure IoT Central 简化了 IoT 解决方案的初始设置，并减少了典型 IoT 项目的管理负担、运营成本和开销。 通过我们的快速入门和教程了解如何创建、自定义、管理和使用 Azure IoT Central 应用程序。
-  author: dominicbetts
-  ms.topic: landing-page
-  ms.date: 11/08/2017
-  ms.author: dobett
+  title: Azure IoT Central 文档中心
+  description: 浏览 Azure IoT Central 服务和解决方案文档。
   ms.service: iot-central
-  services: iot-central
-  manager: timlt
-abstract:
-  description: Azure IoT Central 是完全托管的 SaaS（软件即服务）解决方案，借助此解决方案可轻松连接、监视以及管理大规模的 IoT 资产。 Azure IoT Central 简化了 IoT 解决方案的初始设置，并减少了典型 IoT 项目的管理负担、运营成本和开销。 通过我们的快速入门和教程了解如何创建、自定义、管理和使用 Azure IoT Central 应用程序。
-sections:
-  - title: 功能警报
-    items:
-      - type: paragraph
-        text: 'Azure IoT Central 已过渡到对所有设备连接使用 Azure IoT 中心设备预配服务 (DPS)。 你将需要使用 DPS SDK 注册设备并将设备连接到 Azure IoT Central 应用程序。 <a href="https://docs.microsoft.com/azure/iot-central/concepts-connectivity">详细了解 Azure IoT Central 中的设备连接。</a> 所有使用连续数据导出功能和/或 Power BI 解决方案模板的应用程序将需要更改目标存储容器并创建新的解决方案模板。'
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何<a href="quick-deploy-iot-central">创建新的 Azure IoT Central 应用程序</a>。
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何自定义并使用 Azure IoT Central 应用程序。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-define-device-type">定义新设备类型</a>
-          - html: <a href="tutorial-configure-rules">配置规则</a>
-          - html: <a href="tutorial-customize-operator">自定义操作员的视图</a>
-          - html: <a href="tutorial-monitor-devices">监视设备</a>
-          - html: <a href="tutorial-add-device">添加真实设备</a>
+  ms.topic: hub-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 10/25/2019
+  ms.openlocfilehash: e60c4da08d92cce1cd5964f78e8198f6c04069ef
+  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72965889"
+highlightedContent:
+  items:
+  - title: 什么是 IoT Central？
+    itemType: overview
+    url: ./core/overview-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: 什么是应用程序模板？
+    itemType: concept
+    url: ./core/howto-use-app-templates-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Azure IoT Central 体系结构
+    itemType: architecture
+    url: ./core/concepts-architecture-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: 创建新应用程序
+    itemType: quickstart
+    url: ./core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: 定义设备类型并添加设备
+    itemType: tutorial
+    url: ./core/howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: 监视设备
+    itemType: tutorial
+    url: ./core/tutorial-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+conceptualContent:
+  items:
+  - title: 建立连接（预览功能）
+    links:
+    - url: ./core/howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: 设置设备模板
+    - url: ./core/tutorial-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: tutorial
+      text: 连接 IoT 即插即用设备
+    footerLink:
+      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      text: 另请参阅
+  - title: 保持连接（预览功能）
+    links:
+    - url: ./core/howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: 使用设备组
+    - url: ./core/howto-manage-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: 管理设备
+    - url: ./core/howto-run-a-job.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: concept
+      text: 如何运行作业
+    - url: ./core/howto-create-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: 分析设备数据
+    footerLink:
+      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      text: 另请参阅
+  - title: 转换（预览功能）
+    links:
+    - url: ./core/howto-create-telemetry-rules.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: 创建遥测规则
+    - url: ./core/howto-export-data-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: 配置连续数据导出
+    footerLink:
+      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      text: 另请参阅
+productDirectory:
+  title: 使用行业应用程序模板开始生成
+  summary: 是否立即开始生成？ 查看我们为解决方案生成器生成的与行业相关的应用程序模板。
+  items:
+  - title: 为零售业生成
+    imageSrc: ./retail/media/index/iot-central-retail.svg
+    links:
+    - text: 使用 Azure IoT Central 生成零售解决方案
+      url: ./retail/overview-iot-central-retail-pnp.md
+    - text: 创建零售应用程序
+      url: ./retail/tutorial-in-store-analytics-create-app-pnp.md
+    - text: 创建智能库存管理应用程序
+      url: ./retail/tutorial-iot-central-smart-inventory-management-pnp.md
+    - text: 创建互联物流应用程序
+      url: ./retail/tutorial-iot-central-connected-logistics-pnp.md
+    - text: 创建数字分发中心应用程序
+      url: ./retail/tutorial-iot-central-digital-distribution-center-pnp.md
+  - title: 为医疗保健业生成
+    imageSrc: ./healthcare/media/index/iot-central-healthcare.svg
+    links:
+    - url: ./healthcare/overview-iot-central-healthcare.md
+      text: 使用 IoT Central 生成医疗保健解决方案
+    - url: ./healthcare/tutorial-continuous-patient-monitoring.md
+      text: 创建持续患者监视解决方案
+  - title: 为能源行业生成
+    imageSrc: ./energy/media/index/iot-central-energy.svg
+    links:
+    - url: ./energy/overview-iot-central-energy.md
+      text: 使用 IoT Central 生成能源用解决方案
+    - url: ./energy/tutorial-smart-meter-app.md
+      text: 创建智能计量监视应用
+    - url: ./energy/tutorial-solar-panel-app.md
+      text: 创建太阳能板监视应用
+  - title: 为政府生成
+    imageSrc: ./government/media/index/iot-central-government.svg
+    links:
+    - url: ./government/overview-iot-central-government.md
+      text: 使用 IoT Central 生成政府解决方案
+    - url: ./government/tutorial-water-quality-monitoring.md
+      text: 创建水质监测应用
+    - url: ./government/tutorial-water-consumption-monitoring.md
+      text: 创建水消耗量监测应用
+    - url: ./government/tutorial-connected-waste-management.md
+      text: 创建连接的废弃物管理应用
+additionalContent:
+  sections:
+  - items:
+    - title: IoT Central API
+      summary: 了解 IoT Central API。
+      url: https://docs.microsoft.com/rest/api/azure/
+    - title: Microsoft Learn 上的 IoT Central
+      summary: 了解免费沙盒环境中的 IoT Central。
+      url: https://aka.ms/iotcentralapimslearnjourney

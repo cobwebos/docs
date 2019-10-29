@@ -1,0 +1,43 @@
+### YamlMime:Landing
+title: Azure 服务运行状况文档
+summary: Azure 服务运行状况是一个体验套件，在你受到 Azure 服务中的问题影响时或在将来受到影响时提供个性化指导和支持。 Azure 服务运行状况包含 Azure 状态、服务运行状况服务和资源运行状况。
+metadata:
+  title: Azure 服务运行状况文档
+  description: Azure 服务运行状况是一个体验套件，在你受到 Azure 服务中的问题影响时提供个性化指导和支持。 Azure 服务运行状况会通知你、帮助你了解问题影响，并在问题得以解决时告知你。 此外，Azure 服务运行状况还帮助你对可能会影响资源可用性的定期维护和更改做好准备。
+  services: service-health
+  ms.service: service-health
+  ms.topic: landing-page
+  author: rboucher
+  ms.author: robb
+  ms.date: 10/08/2019
+  ms.openlocfilehash: 83380e57a5d67431fccf1d808b8c8f69eddc5962
+  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72965999"
+landingContent:
+- title: 关于 Azure 服务运行状况
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 服务运行状况
+      url: overview.md
+    - text: Azure 状态
+      url: azure-status-overview.md
+    - text: 服务运行状况服务
+      url: service-health-overview.md
+    - text: 资源运行状况
+      url: resource-health-overview.md
+  - linkListType: video
+    links:
+    - text: 有关 Azure 服务运行状况的视频介绍
+      url: https://www.microsoft.com/videoplayer/embed/RE2OgX6
+- title: 获取通知
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 在受 Azure 服务问题影响时获得通知
+      url: alerts-activity-log-service-notifications.md
+    - text: 在 Azure 资源变得不可用时收到通知
+      url: resource-health-alert-arm-template-guide.md

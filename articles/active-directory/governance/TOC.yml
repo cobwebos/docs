@@ -42,6 +42,8 @@
           items:
             - name: 委托给目录创建者
               href: entitlement-management-delegate-catalog.md
+            - name: 添加连接的组织
+              href: entitlement-management-organization.md
             - name: 管控外部用户的访问权限
               href: entitlement-management-external-users.md
             - name: 查看报表和日志

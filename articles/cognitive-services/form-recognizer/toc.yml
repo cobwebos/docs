@@ -23,6 +23,10 @@
               href: quickstarts/python-receipts.md
     - name: 使用 .NET SDK
       href: quickstarts/dotnet-sdk.md
+- name: 教程
+  items:
+    - name: 将表单识别器与逻辑应用搭配使用
+      href: tutorial-form-recognizer-with-logic-apps.md
 - name: 操作指南
   items:
     - name: 生成训练数据集

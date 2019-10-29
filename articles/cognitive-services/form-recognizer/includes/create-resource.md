@@ -5,12 +5,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
-ms.openlocfilehash: c2d3119283b5b75eeca6b0e0737f62eee00e81c6
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 14740e780f6143f19f843891c16b25df761d0b4f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72237288"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931248"
 ---
 获得使用表单识别器所需的访问权限时，你会收到一封欢迎电子邮件，其中包含多个链接和资源。 使用该邮件中的“Azure 门户”链接打开 Azure 门户并创建表单识别器资源。 在“创建”窗格中提供以下信息： 
 
@@ -25,4 +25,4 @@ ms.locfileid: "72237288"
 > [!IMPORTANT]
 > 通常情况下，在 Azure 门户中创建认知服务资源时，可以选择创建多服务订阅密钥（跨多个认知服务使用）或单服务订阅密钥（仅与单个具体的认知服务配合使用）。 但是，由于表单识别器为预览版，因此未将其包括在多服务订阅中。除非使用欢迎电子邮件中提供的链接，否则你不能创建单一服务订阅。
 
-表单识别器资源完成部署以后，请在门户的“所有资源”列表中找到并选中它。  然后，选择“密钥”选项卡以查看订阅密钥。  任一密钥都会为应用提供资源访问权限。 复制**密钥 1** 的值。
+表单识别器资源完成部署以后，请在门户的“所有资源”列表中找到并选中它。  然后，选择“快速启动”选项卡以查看订阅数据  。 将“Key1”和“终结点”的值保存到临时位置   。 在后续步骤中，将要用到这些值。

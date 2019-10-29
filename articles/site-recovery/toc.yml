@@ -361,6 +361,8 @@
               href: hyper-v-azure-failback.md
         - name: 管理
           items:
+            - name: 弃用 ASR 中 SCVMM 配置支持的详细信息即将发布
+              href: scvmm-site-recovery-deprecation.md
             - name: 升级已配置了 Site Recovery 的 Windows Servers
               href: upgrade-2012R2-to-2016.md
             - name: 删除服务器并禁用保护

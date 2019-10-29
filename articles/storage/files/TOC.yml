@@ -57,6 +57,8 @@
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 通过 SMB 进行 Azure AD 身份验证
           href: storage-files-active-directory-overview.md
+        - name: 使用 Azure 专用终结点
+          href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 合规性产品
           href: ../common/storage-compliance-offerings.md
     - name: 开发

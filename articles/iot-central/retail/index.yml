@@ -1,0 +1,105 @@
+### YamlMime:Landing
+title: 零售业用 Azure IoT Central 文档
+summary: 了解如何使用 IoT Central 应用程序模板创建、自定义和管理零售 IoT 解决方案。
+metadata:
+  title: 零售业用 Azure IoT Central 文档
+  description: 了解如何使用 IoT Central 应用程序模板创建、自定义和管理零售 IoT 解决方案。
+  services: iot-central
+  ms.service: iot-central
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 10/25/2019
+  ms.openlocfilehash: 59372e07cb9e85e28b9762775f533bf93a5ee603
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72937553"
+landingContent:
+- title: 生成零售解决方案
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure IoT Central 的零售解决方案
+      url: overview-iot-central-retail-pnp.md
+  - linkListType: tutorial
+    links:
+    - text: 1 - 创建零售应用程序
+      url: tutorial-in-store-analytics-create-app-pnp.md
+    - text: 2- 自定义操作员仪表板
+      url: tutorial-in-store-analytics-customize-dashboard-pnp.md
+    - text: 3 - 导出数据并直观呈现见解
+      url: tutorial-in-store-analytics-export-data-visualize-insights-pnp.md
+    - text: 创建智能库存管理应用程序
+      url: tutorial-iot-central-smart-inventory-management-pnp.md
+    - text: 创建互联物流应用程序
+      url: tutorial-iot-central-connected-logistics-pnp.md
+    - text: 创建数字分发中心应用程序
+      url: tutorial-iot-central-digital-distribution-center-pnp.md
+  - linkListType: how-to-guide
+    links:
+    - text: 连接 Rigado Cascade 500
+      url: ../core/howto-connect-rigado-cascade-500-pnp.md
+- title: 建立连接
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 设置设备模板
+      url: ../core/howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: 连接 IoT 即插即用设备
+      url: ../core/tutorial-add-device.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: 准备和连接 MX Chip IoT DevKit
+      url: ../core/howto-connect-devkit-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: 连接其他 IoT 云
+      url: ../core/howto-build-iotc-device-bridge.md
+- title: 保持连接
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用设备组
+      url: ../core/howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: 管理设备
+      url: ../core/howto-manage-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: 运行作业
+      url: ../core/howto-run-a-job.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: 分析设备数据
+      url: ../core/howto-create-analytics.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+- title: 转换
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 创建规则
+      url: ../core/quick-configure-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: 创建遥测规则
+      url: ../core/tutorial-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: 导出到 Blob 存储
+      url: ../core/howto-export-data-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: 创建自定义规则
+      url: ../core/howto-create-custom-rules.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: 创建自定义分析
+      url: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+- title: 管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 管理应用程序
+      url: ../core/howto-administer-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: 管理用户和角色
+      url: ../core/howto-manage-users-roles-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: 查看帐单
+      url: ../core/howto-view-bill-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: 自定义应用程序 UI
+      url: ../core/howto-customize-ui-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: 配置个人仪表板
+      url: ../core/howto-create-personal-dashboards.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: 使用仪表板磁贴
+      url: ../core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: 使用应用程序模板
+      url: ../core/howto-use-app-templates-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json

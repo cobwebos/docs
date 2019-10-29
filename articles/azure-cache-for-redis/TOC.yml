@@ -89,8 +89,8 @@
           href: 'cache-administration.md#schedule-updates'
         - name: 配置 redis-cli.exe 访问
           href: cache-how-to-redis-cli-tool.md
-        - name: 弃用 TLS 1.0 和 1.1
-          href: cache-deprecate-tls-10-11.md
+        - name: 删除 TLS 1.0 和 1.1
+          href: cache-remove-tls-10-11.md
     - name: 监视
       items:
         - name: 在 Azure 门户中监视

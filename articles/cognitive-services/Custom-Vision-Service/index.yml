@@ -2,7 +2,7 @@
 title: 自定义视觉文档
 summary: 自定义视觉是一种认知服务，用于生成、部署和改进自己的图像分类器。 图像分类器是一种 AI 服务，可以根据图像的视觉特征为图像应用标签（代表类）。
 metadata:
-  title: 自定义视觉文档
+  title: 自定义视觉文档 - 快速入门、教程和 API 参考 - Azure 认知服务 | Microsoft Docs
   description: 自定义视觉是一种认知服务，用于生成、部署和改进自己的图像分类器。 图像分类器是一种 AI 服务，可以根据图像的视觉特征为图像应用标签（代表类）。
   services: cognitive-services
   ms.service: cognitive-services
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 5be5dcd64345de32e37413932869574391573c60
-  ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+  ms.openlocfilehash: 21e4c324b947cb863614f50bb2ee0bfe09246372
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2019
-  ms.locfileid: "72176170"
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72931639"
 landingContent:
 - title: 关于自定义视觉
   linkLists:
@@ -128,3 +128,11 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure 命令行界面 (CLI)
       url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+- title: 帮助和反馈
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: UserVoice
+      url: https://cognitive.uservoice.com/forums/598141-custom-vision-service
+    - text: 堆栈溢出
+      url: https://stackoverflow.com/questions/tagged/microsoft-cognitive

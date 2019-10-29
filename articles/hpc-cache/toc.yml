@@ -32,9 +32,13 @@
                   href: hpc-cache-ingest-manual.md
     - name: 连接到缓存
       href: hpc-cache-mount.md
+    - name: 管理缓存
+      href: hpc-cache-manage.md
 - name: 资源
   items:
     - name: 开具支持票证
       href: hpc-cache-support-ticket.md
     - name: 区域性服务中断后进行恢复
       href: hpc-region-recovery.md
+    - name: 将 Azure NetApp 文件和 Azure HPC 缓存搭配使用
+      href: hpc-cache-netapp.md

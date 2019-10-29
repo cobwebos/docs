@@ -1,60 +1,59 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: 安全开发文档
+summary: 通过我们的示例应用、最佳做法和指南，了解如何在 Azure 上开发和部署安全的应用程序。
 metadata:
-  document_id: null
   title: Microsoft Azure 上的安全开发文档
-  meta.description: Learn how to develop secure apps on Azure.
+  description: 了解如何开发 Azure 上的安全应用。
   services: security
-  author: TerryLanfear
-  manager: rkarlin
   ms.service: security
   ms.subservice: develop
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/30/2019
+  author: TerryLanfear
   ms.author: terrylan
-abstract:
-  description: 通过我们的示例应用、最佳做法和指南，了解如何在 Azure 上开发和部署安全的应用程序。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: /azure/security/develop/secure-dev-overview
-            html: <p>在 Azure 上开发安全的 Web 应用程序</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_get-started.svg'
-            title: 入门
-          - href: 'https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider'
-            html: <p>适用于 Web 应用的前五个安全项</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_learn-about.svg'
-            title: 利用 Microsoft Learn 掌握技能
-  - title: 安全示例应用
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/security/develop/secure-web-app">Linux 容器中的 Web 应用</a>
-          - html: <a href="/azure/security/develop/secure-aad-app">将 Web 应用与 Azure Active Directory 配合使用</a>
-          - html: <a href="/azure/security/develop/secure-pci-web-app">支付卡行业</a>
-  - title: 概念
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/security/develop/secure-dev-overview">安全开发最佳做法</a>
-  - title: 资源
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/security/develop/security-code-analysis-overview">Microsoft 安全代码分析</a>
-          - html: <a href="/azure/security/develop/threat-modeling-tool">威胁建模工具</a>
+  manager: rkarlin
+  ms.date: 10/24/2019
+  ms.openlocfilehash: 53e59e7d5ef28d8cb09015b7de296b298af9c3f7
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72934071"
+landingContent:
+- title: 开发安全示例应用
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Linux 容器中的 Web 应用
+      url: secure-web-app.md
+    - text: 将 Web 应用与 Azure Active Directory 配合使用
+      url: secure-aad-app.md
+    - text: 支付卡行业
+      url: secure-pci-web-app.md
+- title: 入门
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 安全开发最佳做法
+      url: secure-dev-overview.md
+    - text: 设计阶段
+      url: secure-design.md
+    - text: 开发阶段
+      url: secure-develop.md
+    - text: 部署阶段
+      url: secure-deploy.md
+- title: 将分析工具添加到安全开发
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 安全代码分析
+      url: security-code-analysis-overview.md
+    - text: 威胁建模
+      url: threat-modeling-tool.md
+- title: 培养技能
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 前 5 个安全项
+      url: https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider
+    - text: 保护 Azure 中云应用程序的安全
+      url: https://docs.microsoft.com/learn/paths/secure-your-cloud-apps

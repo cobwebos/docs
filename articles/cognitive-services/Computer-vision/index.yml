@@ -2,7 +2,7 @@
 title: 计算机视觉文档
 summary: 使用基于云的计算机视觉 API，开发人员可以访问用于处理图像并返回信息的高级算法。 通过上传图像或指定图像 URL，Microsoft 计算机视觉算法可以基于输入和用户选择以不同方式分析可视内容。 使用快速入门、教程和示例，了解如何以不同的方式分析可视内容。
 metadata:
-  title: 计算机视觉文档
+  title: 计算机视觉文档 - 快速入门、教程和 API 参考 - Azure 认知服务 | Microsoft Docs
   description: 使用基于云的计算机视觉 API，开发人员可以访问用于处理图像并返回信息的高级算法。 通过上传图像或指定图像 URL，Microsoft 计算机视觉算法可以基于输入和用户选择以不同方式分析可视内容。 使用快速入门、教程和示例，了解如何以不同的方式分析可视内容。
   services: cognitive-services
   ms.service: cognitive-services
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 10/01/2019
-  ms.openlocfilehash: 8c09125fde66c62ecbb1560d2327c6b9671accf8
-  ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+  ms.openlocfilehash: 115f02f82e598db227541c44f69954b1f3805f71
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2019
-  ms.locfileid: "72176283"
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72931796"
 landingContent:
 - title: 关于计算机视觉
   linkLists:
@@ -44,6 +44,8 @@ landingContent:
       url: quickstarts-sdk/java-sdk.md
     - text: 使用 Node SDK
       url: quickstarts-sdk/node-sdk.md
+    - text: 使用 Go SDK
+      url: quickstarts-sdk/go-sdk.md
 - title: 在图像中检测对象
   linkLists:
   - linkListType: concept
@@ -60,6 +62,8 @@ landingContent:
       url: quickstarts-sdk/java-sdk.md
     - text: 使用 Node SDK
       url: quickstarts-sdk/node-sdk.md
+    - text: 使用 Go SDK
+      url: quickstarts-sdk/go-sdk.md
 - title: 将内容标记应用于图像
   linkLists:
   - linkListType: concept
@@ -76,6 +80,8 @@ landingContent:
       url: quickstarts-sdk/java-sdk.md
     - text: 使用 Node SDK
       url: quickstarts-sdk/node-sdk.md
+    - text: 使用 Go SDK
+      url: quickstarts-sdk/go-sdk.md
 - title: 使用容器
   linkLists:
   - linkListType: get-started
@@ -108,6 +114,8 @@ landingContent:
       url: quickstarts-sdk/java-sdk.md
     - text: 使用 Node SDK
       url: quickstarts-sdk/node-sdk.md
+    - text: 使用 Go SDK
+      url: quickstarts-sdk/go-sdk.md
 - title: 引用
   linkLists:
   - linkListType: reference
@@ -132,3 +140,11 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure 命令行界面 (CLI)
       url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+- title: 帮助和反馈
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: UserVoice
+      url: https://cognitive.uservoice.com/forums/430309-computer-vision-api
+    - text: 堆栈溢出
+      url: https://stackoverflow.com/questions/tagged/microsoft-cognitive

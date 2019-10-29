@@ -10,6 +10,6 @@
           tocHref: /azure/iot-central/
           topicHref: /azure/iot-central/
           items:
-            - name: IoT Central 核心（预览功能）
+            - name: 能源行业用 IoT Central
               tocHref: /azure/iot-central/
-              topicHref: /azure/iot-central/index?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+              topicHref: /azure/iot-central/energy/index/

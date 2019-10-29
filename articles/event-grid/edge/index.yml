@@ -1,0 +1,67 @@
+### YamlMime:Landing
+title: “IoT Edge 上的事件网格”文档
+summary: 了解如何使用 IoT Edge 上的事件网格以近乎实时的方式响应边缘设备上生成的相关事件。
+metadata:
+  title: “IoT Edge 上的事件网格”文档
+  description: 了解如何使用 IoT Edge 上的事件网格以近乎实时的方式响应边缘设备上生成的相关事件。
+  services: event-grid
+  ms.service: event-grid
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 10/12/2019
+  ms.openlocfilehash: 4b79d64240b96ed41b535f8dbcd1155d67e76282
+  ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 10/28/2019
+  ms.locfileid: "72991607"
+landingContent:
+- title: 关于 IoT Edge 上的事件网格
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: IoT Edge 上的事件网格是什么？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 事件网格概念
+      url: concepts.md
+    - text: 事件架构
+      url: event-schemas.md
+    - text: 输出批处理
+      url: delivery-output-batching.md
+    - text: 高级筛选
+      url: advanced-filtering.md
+    - text: 传递和重试
+      url: delivery-retry.md
+- title: 方案
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 在本地发布和订阅事件
+      url: pub-sub-events-webhook-local.md
+    - text: 在云中发布和订阅事件
+      url: pub-sub-events-webhook-cloud.md
+    - text: 将事件转发到 Azure 事件网格
+      url: forward-events-event-grid-cloud.md
+    - text: 将事件转发到 Azure IoT 中心
+      url: forward-events-event-grid-cloud.md
+    - text: 在本地响应 Azure Blob 存储事件
+      url: react-blob-storage-events-locally.md
+- title: 安全
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 安全性和身份验证
+      url: security-authentication.md
+  - linkListType: how-to-guide
+    links:
+    - text: 配置客户端身份验证
+      url: configure-client-auth.md
+    - text: 配置 webhook 订阅服务器身份验证
+      url: configure-webhook-subscriber-auth.md
+    - text: 配置标识身份验证
+      url: configure-identity-auth.md

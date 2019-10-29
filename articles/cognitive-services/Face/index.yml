@@ -1,96 +1,114 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: 人脸 API 文档
+### YamlMime:Landing
+title: 人脸文档
+summary: 使用基于云的人脸 API，开发人员可以访问高级人脸算法。 Microsoft 人脸算法支持人脸属性检测和人脸识别。 使用快速入门、教程和示例，了解如何以不同的方式分析内容。
 metadata:
   title: 人脸 API 文档 - 快速入门、教程和 API 参考 - Azure 认知服务 | Microsoft Docs
-  description: 了解如何使用人脸 API 来检测和识别图像中的人脸并返回人脸信息。 教程介绍了如何构建使用该 API 的应用。
+  description: 使用基于云的人脸 API，开发人员可以访问高级人脸算法。 Microsoft 人脸算法支持人脸属性检测和人脸识别。 使用快速入门、教程和示例，了解如何以不同的方式分析内容。
   services: cognitive-services
-  author: PatrickFarley
-  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: face-api
   ms.topic: landing-page
-  ms.date: 12/20/2018
-  ms.author: nitinme
-abstract:
-  description: 使用基于云的人脸 API，开发人员可以访问高级人脸算法。 Microsoft 人脸算法支持人脸属性检测和人脸识别。 使用快速入门、教程和示例，了解如何以不同的方式分析内容。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/face/overview
-            html: <p>了解人脸 API。</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: 什么是人脸 API？
-          - href: /azure/cognitive-services/face/face-api-how-to-topics/howtodetectfacesinimage
-            html: <p>了解如何检测图像中的人脸。</p>
-            image:
-              src: ../media/index/i_tasks.svg
-            title: 检测图像中的人脸
-          - href: /azure/cognitive-services/face/face-how-to-install-containers
-            html: <p>了解如何在容器中使用人脸 API。</p>
-            image:
-              src: ../media/index/i_tasks.svg
-            title: 在容器中使用人脸 API
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 通过以下途径分析图像、生成缩略图并从图像提取文本：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/logo_Csharp.svg
-            text: 'C&#35;'
-            href: QuickStarts/CSharp
-          - image:
-              src: media/index/logo_java.svg
-            text: Java
-            href: QuickStarts/Java
-          - image:
-              src: media/index/logo_nodejs.svg
-            text: Node.js
-            href: QuickStarts/node
-          - image:
-              src: media/index/logo_python.svg
-            text: Python
-            href: QuickStarts/Python
-          - image:
-              src: media/index/logo_go.svg
-            text: Go
-            href: QuickStarts/Go
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何使用人脸 API 开发应用程序：
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinCSharpTutorial">在 Windows 上检测和定格图像中的人脸</a></li>
-          - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinJavaForAndroidTutorial">在 Android 上检测和定格图像中的人脸</a></li>
-  - title: 示例
-    items:
-      - type: paragraph
-        text: 查找人脸 API 示例：
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=Relevance">代码示例</a>'
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: API
-            html: <p><a href="APIReference">人脸 API</a></p>
-          - title: SDK
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-face/?view=azure-node-latest">Node</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face">Go</a></p> <p><a href="https://github.com/Microsoft/Cognitive-Face-iOS">iOS</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'
+  author: PatrickFarley
+  ms.author: pafarley
+  ms.date: 10/24/2019
+  ms.openlocfilehash: e7dabc3104f925f602fe5806e04f9da7f438c310
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72935728"
+landingContent:
+- title: 关于人脸 API
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是人脸 API？
+      url: Overview.md
+- title: 检测人脸
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 人脸检测
+      url: concepts/face-detection.md
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: quickstarts/csharp-sdk.md
+    - text: 使用 Python SDK
+      url: quickstarts/python-sdk.md
+  - linkListType: how-to-guide
+    links:
+    - text: 指定人脸检测模型
+      url: Face-API-How-to-Topics/specify-detection-model.md
+- title: 识别人脸
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 人脸识别
+      url: concepts/face-recognition.md
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: quickstarts/csharp-sdk.md
+    - text: 使用 Python SDK
+      url: quickstarts/python-sdk.md
+  - linkListType: how-to-guide
+    links:
+    - text: 指定人脸识别模型
+      url: Face-API-How-to-Topics/specify-recognition-model.md
+- title: 使用人脸矩形
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 在 WPF 应用中显示人脸数据
+      url: Tutorials/FaceAPIinCSharpTutorial.md
+    - text: 在 Android 应用中显示人脸数据
+      url: Tutorials/FaceAPIinJavaForAndroidTutorial.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 HeadPose 属性
+      url: Face-API-How-to-Topics/how-to-use-headpose.md
+- title: 使用容器
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 安装并运行容器
+      url: face-how-to-install-containers.md
+  - linkListType: how-to-guide
+    links:
+    - text: 配置容器
+      url: face-resource-container-config.md
+  - linkListType: deploy
+    links:
+    - text: 使用容器实例
+      url: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
+- title: 引用
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 人脸 API v1.0
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236
+    - text: .NET SDK
+      url: https://docs.microsoft.com/en-us/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet
+    - text: Python SDK
+      url: https://docs.microsoft.com/en-us/python/api/azure-cognitiveservices-vision-face/?view=azure-python
+    - text: Java SDK
+      url: https://docs.microsoft.com/en-us/java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable
+    - text: Node.js SDK
+      url: https://docs.microsoft.com/en-us/javascript/api/azure-cognitiveservices-face/?view=azure-node-latest
+    - text: Go SDK
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face
+    - text: iOS SDK
+      url: https://github.com/Microsoft/Cognitive-Face-iOS
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure 命令行界面 (CLI)
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+- title: 帮助和反馈
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: UserVoice
+      url: https://cognitive.uservoice.com/forums/430315-face-api
+    - text: 堆栈溢出
+      url: https://stackoverflow.com/questions/tagged/microsoft-cognitive

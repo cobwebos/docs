@@ -1,5 +1,7 @@
-- name: 事件网格文档
+- name: Azure 事件网格文档
   href: index.yml
+- name: 切换到“IoT Edge 上的事件网格”文档
+  href: edge/pub-sub-events-webhook-local.md
 - name: 概述
   items:
     - name: 什么是事件网格？

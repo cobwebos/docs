@@ -1,0 +1,122 @@
+- name: 面向政府的 Azure IoT Central 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 使用 Azure IoT Central 生成政府解决方案
+      href: overview-iot-central-government.md
+- name: 教程
+  items:
+    - name: 存储内分析签出
+      items:
+        - name: 创建连接的废弃物管理应用
+          href: tutorial-connected-waste-management.md
+        - name: 创建水消耗量监测应用
+          href: tutorial-water-consumption-monitoring.md
+        - name: 创建水质监测应用
+          href: tutorial-water-quality-monitoring.md
+- name: 概念
+  items:
+    - name: 连接的废弃物检测参考体系结构
+      href: concepts-connectedwastemanagement-architecture.md
+    - name: 水消耗量检测参考体系结构
+      href: concepts-waterconsumptionmonitoring-architecture.md
+    - name: 水质检测参考体系结构
+      href: concepts-waterqualitymonitoring-architecture.md
+    - name: 连接
+      href: ../core/concepts-connectivity-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+- name: 操作指南
+  items:
+    - name: 连接设备
+      items:
+        - name: 准备和连接 MXChip IoT DevKit
+          href: ../core/howto-connect-devkit-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 准备和连接 Rigado Cascade 500
+          href: ../core/howto-connect-rigado-cascade-500-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 使用 Azure CLI 监视设备连接
+          href: ../core/howto-monitor-devices-azure-cli-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+    - name: 管理设备
+      items:
+        - name: 管理设备
+          href: ../core/howto-manage-devices-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 运行作业
+          href: ../core/howto-run-a-job.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 使用设备组
+          href: ../core/howto-use-device-groups-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 对设备模板进行版本控制
+          href: ../core/howto-version-device-template-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+    - name: 监视和分析
+      items:
+        - name: 分析设备数据
+          href: ../core/howto-create-analytics-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 根据规则创建 Webhook
+          href: ../core/howto-create-webhooks-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+    - name: 操作和扩展性
+      items:
+        - name: 配置连续数据导出
+          href: ../core/howto-export-data-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 创建自定义规则
+          href: ../core/howto-create-custom-rules.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 使用 Databricks 创建自定义分析
+          href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 使用 Databricks 创建自定义分析
+          href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+    - name: 管理
+      items:
+        - name: 管理应用程序设置
+          href: ../core/howto-administer-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 导出应用程序
+          href: ../core/howto-use-app-templates-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 管理用户和角色
+          href: ../core/howto-manage-users-roles-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 管理帐单
+          href: ../core/howto-view-bill-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 自定义应用程序 UI
+          href: ../core/howto-customize-ui-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 向仪表板添加磁贴
+          href: ../core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 从 Azure 门户进行管理
+          href: ../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 从 Azure CLI 进行管理
+          href: ../core/howto-manage-iot-central-from-cli.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 从 Azure PowerShell 进行管理
+          href: ../core/howto-manage-iot-central-from-powershell.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 从云解决方案提供商门户进行管理
+          href: ../core/howto-create-and-manage-applications-csp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+    - name: 个性化
+      items:
+        - name: 创建 Azure IoT Central 个人仪表板
+          href: ../core/howto-create-personal-dashboards.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 管理个人首选项
+          href: ../core/howto-manage-preferences.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: 切换实时聊天
+          href: ../core/howto-show-hide-chat.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+- name: 相关内容
+  items:
+    - name: 平台服务
+      items:
+        - name: IoT 中心
+          href: /azure/iot-hub
+        - name: IoT 即插即用
+          href: /azure/iot-pnp
+        - name: IoT 中心设备预配服务
+          href: /azure/iot-dps
+        - name: Location Based Services
+          href: /azure/location-based-services
+        - name: 服务 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: 时序见解
+          href: /azure/time-series-insights
+    - name: IoT Edge
+      items:
+        - name: Azure IoT Edge
+          href: /azure/iot-edge
+        - name: IoT 设备 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+- name: 资源
+  items:
+    - name: API 参考文档
+      href: 'https://go.microsoft.com/fwlink/?linkid=2109131'
+    - name: 客户数据请求
+      href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+    - name: 支持的浏览器
+      href: ../core/iot-central-supported-browsers.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json

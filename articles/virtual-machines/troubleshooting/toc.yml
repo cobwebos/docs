@@ -65,10 +65,12 @@
       href: detailed-troubleshoot-ssh-connection.md
 - name: 常见错误消息
   href: error-messages.md
-- name: VM 性能问题
-  href: performance-diagnostics.md
-- name: 运行 Linux 或 Windows 的 Azure 虚拟机常规性能故障排除
-  href: troubleshoot-performance-virtual-machine-linux-windows.md
+- name: 排查 Azure VM 性能问题
+  items:
+    - name: Linux 或 Windows 中的性能问题
+      href: troubleshoot-performance-virtual-machine-linux-windows.md
+    - name: 性能诊断
+      href: performance-diagnostics.md
 - name: 对 32 位操作系统的支持
   href: support-32-bit-operating-systems-virtual-machines.md
 - name: PerfInsights
