@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 75b8ea5e8dcaed533eac424bb8df1d1862889490
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7f0d846a83312e28c305100e7c8dc74cc8140d7d
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592385"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023848"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -66,7 +66,7 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
  
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>使用审批工作流访问专用链接资源 
 可以使用以下连接批准方法连接到专用链接资源：
-- 当你拥有或具有特定专用链接资源的权限时**自动**批准。 所需的权限基于专用链接资源类型，格式如下： Microsoft。\<Provider >/< resource_type >/privateEndpointConnectionApproval/action
+- 当你拥有或具有特定专用链接资源的权限时**自动**批准。 所需的权限基于专用链接资源类型，格式如下： Microsoft。\<提供程序 >/< resource_type >/privateEndpointConnectionApproval/action
 - 当你没有必需的权限，并且想要请求访问时，**手动**请求。 将启动审批工作流。 专用终结点和后续的专用终结点连接将在 "挂起" 状态下创建。 专用链接资源所有者负责批准连接。 获得批准后，会启用专用终结点以正常发送流量，如以下审批工作流关系图中所示。  
 
 ![工作流审批](media/private-endpoint-overview/private-link-paas-workflow.png)
@@ -91,7 +91,7 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
 你可以使用以下选项为专用终结点配置 DNS 设置： 
 - **使用主机文件（仅建议用于测试）** 。 你可以使用虚拟机上的主机文件来替代 DNS。  
 - **使用专用 DNS 区域**。 可以使用专用 DNS 区域替代给定专用终结点的 DNS 解析。 专用 DNS 区域可以链接到你的虚拟网络，以解析特定域。
-- **使用自定义 DNS 服务器**。 你可以使用自己的 DNS 服务器替代给定专用链接资源的 DNS 解析。 如果你的 DNS 服务器托管在虚拟网络上，则可以创建 DNS 转发规则以使用专用 DNS 区域来简化所有专用链接资源的配置。
+- **使用自定义 DNS 服务器**。 你可以使用自己的 DNS 服务器替代给定专用链接资源的 DNS 解析。 如果你的[dns 服务器](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)托管在虚拟网络上，则可以创建 DNS 转发规则以使用专用 DNS 区域来简化所有专用链接资源的配置。
  
 > [!IMPORTANT]
 > 不建议重写主动用于解析公共终结点的区域。 如果没有 DNS 转发到公共 DNS，与资源的连接将无法正确解析。 若要避免出现问题，请创建一个不同的域名或遵循下面每个服务的建议名称。 

@@ -1,5 +1,5 @@
 ---
-title: 将 Java 用户定义函数 (UDF) 与 HDInsight 中的 Apache Hive 配合使用 - Azure
+title: Apache Hive Azure HDInsight 的 Java 用户定义函数（UDF）
 description: 了解如何创建可用于 Apache Hive 的基于 Java 的用户定义函数 (UDF)。 此 UDF 示例将表中的文本字符串转换为小写。
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,23 +8,23 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 43208636fb275c38573f820ef8245d7652b4aa86
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 5690f2cc5bc85d7bcdbf1d05930a05bcc2e764c0
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181181"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044782"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>将 Java UDF 与 HDInsight 中的 Apache Hive 配合使用
 
 了解如何创建可用于 Apache Hive 的基于 Java 的用户定义函数 (UDF)。 此示例中的 Java UDF 将表中的文本字符串转换为全小写字符。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 * [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)
 * 根据 Apache 要求正确[安装](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是 Java 项目的项目生成系统。
-* 群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure 存储，此值为 wasb://；对于Azure Data Lake Storage Gen2，此值为 abfs://；对于 Azure Data Lake Storage Gen1，此值为 adl://。 如果为 Azure 存储启用安全传输，则 URI 将为`wasbs://`。  另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
+* 群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 这将是 wasb://for Azure Storage、abfs://for Azure Data Lake Storage Gen2 或 adl://for Azure Data Lake Storage Gen1。 如果为 Azure 存储启用安全传输，则 URI 将为 `wasbs://`。  另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
 
 * 文本编辑器或 Java IDE
 
@@ -32,7 +32,7 @@ ms.locfileid: "71181181"
     > 如果在 Windows 客户端上创建 Python 文件，则必须使用将 LF 用作行尾的编辑器。 如果无法确定编辑器使用的是 LF 还是 CRLF，请参阅[故障排除](#troubleshooting)部分，了解删除 CR 字符的步骤。
 
 ## <a name="test-environment"></a>测试环境
-本文使用的环境是一台运行 Windows 10 的计算机。  命令在命令提示符下执行，各种文件使用记事本进行编辑。 针对环境进行相应的修改。
+用于本文的环境是运行 Windows 10 的计算机。  命令在命令提示符下执行，并使用记事本编辑了各种文件。 针对你的环境相应地进行修改。
 
 在命令提示符下，输入以下命令以创建工作环境：
 
@@ -49,22 +49,22 @@ cd C:\HDI
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    此命令创建一个名为`exampleudf`的目录，其中包含 Maven 项目。
+    此命令创建一个名为 `exampleudf`的目录，其中包含 Maven 项目。
 
-2. 创建项目后，通过输入以下命令删除`exampleudf/src/test`作为项目的一部分创建的目录：
+2. 创建项目后，通过输入以下命令删除作为项目的一部分创建的 `exampleudf/src/test` 目录：
 
     ```cmd
     cd ExampleUDF
     rmdir /S /Q "src/test"
     ```
 
-3. 输入以下命令打开 `pom.xml`：
+3. 通过输入以下命令打开 `pom.xml`：
 
     ```cmd
     notepad pom.xml
     ```
 
-    然后，将现有`<dependencies>`条目替换为以下 XML：
+    然后，将现有 `<dependencies>` 条目替换为以下 XML：
 
     ```xml
     <dependencies>
@@ -143,13 +143,13 @@ cd C:\HDI
 
     一旦进行了更改，请保存该文件。
 
-4. 输入以下命令，以创建并打开新文件 `ExampleUDF.java`：
+4. 输入以下命令以创建并打开新文件 `ExampleUDF.java`：
 
     ```cmd
     notepad src/main/java/com/microsoft/examples/ExampleUDF.java
     ```
 
-    将以下 Java 代码复制并粘贴到新文件中。 然后关闭该文件。
+    然后，将以下 java 代码复制并粘贴到新文件中。 然后关闭该文件。
 
     ```java
     package com.microsoft.examples;
@@ -180,7 +180,7 @@ cd C:\HDI
 
 ## <a name="build-and-install-the-udf"></a>生成并安装 UDF
 
-在以下命令中，请将 `sshuser` 替换为实际用户名（如果两者不同）。 将 `mycluster` 替换为实际群集名称。
+在下面的命令中，将 `sshuser` 替换为实际用户名（如果不同）。 将 `mycluster` 替换为实际的群集名称。
 
 1. 通过输入以下命令编译和打包 UDF：
 
@@ -190,7 +190,7 @@ cd C:\HDI
 
     此命令生成 UDF 并将其打包到 `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` 文件。
 
-2. 通过输入以下命令，使用命令将文件复制到HDInsight群集：`scp`
+2. 使用 `scp` 命令通过输入以下命令将文件复制到 HDInsight 群集：
 
     ```cmd
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net:
@@ -248,7 +248,7 @@ cd C:\HDI
         | colorado      | Colorado      |
         +---------------+---------------+--+
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 运行 Hive 作业时，可能会遇到类似于以下文本的错误：
 

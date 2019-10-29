@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: yegu
-ms.openlocfilehash: 523f4a302eb1f4679eb34bc959efc895fa5408ec
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 4fee7c84b394e84369b28d2a4191d0e581f3beba
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821040"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044363"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-data-loss"></a>排查 Azure Cache for Redis 数据丢失问题
 
@@ -101,7 +101,7 @@ cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 |---|---|
 | [密钥刷新](#key-flushing) | 已手动清除密钥 |
 | [不正确的数据库选择](#incorrect-database-selection) | Redis 设置为使用非默认数据库 |
-| [Redis 实例失败](#redis-instance-failure) | 显式 delete 命令将删除密钥 |
+| [Redis 实例失败](#redis-instance-failure) | Redis 服务器不可用 |
 
 ### <a name="key-flushing"></a>密钥刷新
 

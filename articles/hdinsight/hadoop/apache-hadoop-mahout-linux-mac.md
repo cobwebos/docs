@@ -1,5 +1,5 @@
 ---
-title: 使用 Apache Mahout 和 HDInsight (SSH) 生成推荐 - Azure
+title: 使用 Azure HDInsight 中的 Apache Mahout 生成建议
 description: 了解如何使用 Apache Mahout 机器学习库通过 HDInsight (Hadoop) 生成电影推荐。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: a3919cf84714b69776222fa35d3163e0915869f7
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 3923abd10fc3a64773d561b1f375f9e2f00a7e56
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881972"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044560"
 ---
 # <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>使用 Apache Mahout 和 HDInsight （SSH）中的 Apache Hadoop 生成电影建议
 
@@ -21,9 +21,9 @@ ms.locfileid: "70881972"
 
 了解如何使用 [Apache Mahout](https://mahout.apache.org) 机器学习库通过 Azure HDInsight 生成电影推荐。
 
-Mahout 是适用于 Apache Hadoop 的[计算机学习](https://en.wikipedia.org/wiki/Machine_learning)库。 Mahout 包含用于处理数据的算法，例如筛选、分类和群集。 在本文中，用户使用推荐引擎根据好友看过的电影生成电影推荐。
+Mahout 是用于 Apache Hadoop 的[机器学习](https://en.wikipedia.org/wiki/Machine_learning)库。 Mahout 包含用于处理数据的算法，例如筛选、分类和群集。 在本文中，用户使用推荐引擎根据好友看过的电影生成电影推荐。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 
@@ -39,15 +39,15 @@ Mahout 是适用于 Apache Hadoop 的[计算机学习](https://en.wikipedia.org/
 
 下面的工作流是使用电影数据的简化示例：
 
-* **共现**：Joe、Alice 和 Bob 都喜欢电影《星球大战》、《帝国反击战》和《绝地大反击》。 Mahout 可确定喜欢以上电影之一的用户也喜欢其他两部。
+* **共现**：Joe、Alice 和 Bob 都喜欢电影《星球大战》、《帝国反击战》和《绝地归来》。 Mahout 可确定喜欢以上电影之一的用户也喜欢其他两部。
 
 * **共现**：Bob 和 Alice 还喜欢电影《幽灵的威胁》、《克隆人的进攻》和《西斯的复仇》。 Mahout 可确定喜欢前面三部电影的用户也喜欢这三部电影。
 
-* **类似性推荐**：由于 Joe 喜欢前三部电影，Mahout 会查看具有类似偏好的其他人已喜欢但 Joe 还未观看过（已喜欢/已评价）的电影。 在这种情况下，Mahout 推荐《幽灵的威胁》、《克隆人的进攻》和《西斯的复仇》。
+* **类似性推荐**：由于 Joe 喜欢前三部电影，Mahout 会查看具有类似首选项的其他人喜欢的电影，但是 Joe 还未观看过（喜欢/评价）。 在这种情况下，Mahout 推荐幽灵的威胁、克隆人的进攻和西斯的复仇。
 
 ### <a name="understanding-the-data"></a>了解数据
 
-为方便起见，[GroupLens 研究](https://grouplens.org/datasets/movielens/)以兼容 Mahout 的格式提供电影的评价数据。 此数据在 `/HdiSamples/HdiSamples/MahoutMovieData` 中群集的默认存储中可用。
+[GroupLens Research](https://grouplens.org/datasets/movielens/)可方便地提供与 Mahout 兼容的格式的电影分级数据。 此数据在 `/HdiSamples/HdiSamples/MahoutMovieData` 中群集的默认存储中可用。
 
 有两个文件，即 `moviedb.txt` 和 `user-ratings.txt`。 `user-ratings.txt` 文件在分析期间使用。 `moviedb.txt` 用于在查看结果时提供用户友好的文本信息。
 
@@ -158,7 +158,7 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
     按 **Ctrl-X**、**Y**，最后按 **Enter** 来保存数据。
 
-4. 运行 Python 脚本。 以下命令假设用户处于内含所有已下载文件的目录中：
+4. 运行 Python 脚本。 以下命令假设已处于所有文件都已下载的目录中：
 
     ```bash
     python show_recommendations.py 4 user-ratings.txt moviedb.txt recommendations.txt

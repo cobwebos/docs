@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: DaleKoetke
 ms.author: dalek
-ms.date: 10/03/2019
+ms.date: 10/28/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5d8c0420f680371ab63a2ddd09071769586a42ca
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 4c56c8f98e536060ea18eb6b9d3a37179eebc89f
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900021"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044341"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -22,7 +22,7 @@ ms.locfileid: "72900021"
 
 Application Insights 旨在获取监视 web 应用程序的可用性、性能和使用情况所需的一切，无论这些应用程序是托管在 Azure 上还是在本地。 Application Insights 支持常用语言和框架，如 .NET、Java 和 node.js，并与 DevOps 进程和工具（如 Azure DevOps、Jira 和 PagerDuty）集成。 了解如何确定监视应用程序的成本很重要。 在本文中，我们将回顾您的应用程序监视的驱动程序的成本，以及如何主动监视和控制这些设备。
 
-如果对 Application Insights 定价工作原理存在疑问，欢迎在我们的[论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights&filter=alltypes&sort=lastpostdesc)提出问题。
+如果对 Application Insights 定价工作原理存在疑问，欢迎在我们的[论坛](https://social.msdn.microsoft.com/Forums/home?forum=ApplicationInsights&filter=alltypes&sort=lastpostdesc)提出问题。
 
 ## <a name="pricing-model"></a>定价模型
 
@@ -34,17 +34,17 @@ Application Insights 旨在获取监视 web 应用程序的可用性、性能和
 
 如果尚未使用 Application Insights，则可以使用[Azure Monitor 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=monitor)来估计使用 Application Insights 的成本。 首先在搜索框中输入 "Azure Monitor"，然后单击生成的 Azure Monitor 磁贴。 向下滚动到 "Azure Monitor"，然后从 "类型" 下拉列表中选择 "Application Insights"。  您可以在此输入每月要收集的数据的 GB 数，因此问题是 Application Insights 收集监视应用程序的数据量。 
 
-可以通过以下两种方法解决此情况：使用 ASP.NET SDK 中提供的默认监视和自适应采样，或根据其他类似客户的情况估计可能的数据引入。 
+可以通过以下两种方法解决此情况：使用默认的监视和自适应采样，它在 ASP.NET SDK 中提供，或根据其他类似客户的情况估计可能的数据引入。
 
 ### <a name="data-collection-when-using-sampling"></a>使用采样时的数据收集
 
 使用 ASP.NET SDK 的[自适应采样](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)，数据量会自动调整，以保持默认 Application Insights 监视的流量的指定最大速率。 如果应用程序生成的遥测数据量较低，例如调试或由于使用率较低，则采样处理器不会丢弃项，只要卷低于每秒配置的事件。 对于大容量应用程序，默认阈值为每秒5个事件，自适应采样会将每日事件的数目限制为432000。 使用的典型平均事件大小为 1 KB，这对应于托管应用程序的每个节点每31天的遥测值 13.4 GB （因为采样是在每个节点的本地完成的。） 
 
-对于不支持自适应采样的 Sdk，可以使用[引入采样](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)，根据要保留的数据百分比或[ASP.NET、ASP.NET Core 和 Java 的固定速率采样，Application Insights 接收数据](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications)用于减少从 web 服务器和 web 浏览器发送的流量的网站
+对于不支持自适应采样的 Sdk，你可以使用[引入采样](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)，这会在 Application Insights 收到数据时根据要保留的数据百分比或[ASP.NET、ASP.NET Core 和 Java 的固定速率采样来采样](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications)用于减少从 web 服务器和 web 浏览器发送的流量的网站
 
 ### <a name="learn-from-what-similar-customers-collect"></a>了解类似客户收集的内容
 
-在适用于 Application Insights 的 Azure 监视定价计算器中，如果启用了 "基于应用程序活动估计数据量" 功能，则可以提供有关应用程序的输入（每月的请求数和页面视图数，以防你将收集客户端遥测数据，然后计算器会告诉您类似应用程序收集的中间值和90% 的数据量。 当然，这些应用程序在 Application Insights 配置范围内（例如，某些应用程序具有默认采样、有些[采样](../../azure-monitor/app/sampling.md)没有采样等），因此，您仍然可以使用采样来减少在中间级别下引入的数据量。 但这是一种开始了解其他同类客户看到的情况。 
+在适用于 Application Insights 的 Azure 监视定价计算器中，如果启用了 "基于应用程序活动估计数据量" 功能，则可以提供有关应用程序的输入（每月的请求数和页面视图数，以防你将收集客户端遥测数据，然后计算器会告诉您类似应用程序收集的中间值和90% 的数据量。 这些应用程序在 Application Insights 配置范围内（例如，某些应用程序具有默认采样、有些[采样](../../azure-monitor/app/sampling.md)没有采样等），因此您仍然可以使用采样来减少在中间级别下引入的数据量。 但这是一种开始了解其他同类客户看到的情况。 
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>了解你的使用情况和估计成本
 
@@ -66,43 +66,66 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 
 ![在左侧菜单中，选择“账单”](./media/pricing/02-billing.png)
 
-## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>查看 Azure 帐单上的 Application Insights 使用情况 
+### <a name="using-data-volume-metrics"></a>使用数据量度量值
+<a id="understanding-ingested-data-volume"></a>
 
-Azure 在[Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)中心提供了大量有用的功能。 例如，通过 "成本分析" 功能，可以查看 Azure 资源的花费。 按资源类型添加筛选器（对于 Application Insights 的 "insights/组件"）将允许您跟踪您的支出。
+若要了解有关数据量的详细信息，请选择 Application Insights 资源的**度量值**，然后添加一个新图表。 对于图表度量值，请在 "**基于日志的指标**" 下选择 "**数据点卷**"。 单击 "**应用拆分**"，然后选择 "按**Telemetryitem 类型**分组"。
 
-通过[从 Azure 门户下载你的使用](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)情况，可以更好地了解你的使用情况。 在下载的电子表格中，可以查看每天每个 Azure 资源的使用情况。 在此 Excel 电子表格中，可以通过第一次筛选 "计量类别" 列以显示 "Application Insights" 和 "Log Analytics" 来查找 Application Insights 资源的用法，然后在 "Instance ID" 列中添加筛选器，这是 "containsmicrosoft insights/组件 "。  由于所有 Azure Monitor 组件都有一个登录后端，因此，大多数 Application Insights 使用情况都是在计量器类别为 Log Analytics 的情况下报告的。  对于旧定价层和多步骤 web 测试 Application Insights 资源，将使用 Application Insights 的计量类别进行报告。  使用情况显示在 "已消耗数量" 列中，每个条目的单位显示在 "度量单位" 列中。  更多详细信息可帮助你[了解 Microsoft Azure 帐单](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。 
+![使用度量值查看数据量](./media/pricing/10-billing.png)
 
-## <a name="understanding-ingested-data-volume"></a>了解引入数据量
-
-若要了解要引入到 Application Insights 的数据量，可以：
-
-1. 请参阅 "**使用情况和预估成本**" 窗格，查看每日数据量图表，如上所述。
-2. 在指标资源管理器中，添加新图表。 对于图表指标，选择“数据点容量”。 启用“分组”，并按数据类型分组。
-3. 使用 `systemEvents` 表，如下所示。 
+### <a name="queries-to-understand-data-volume-details"></a>用于了解数据量详细信息的查询
 
 例如，可以使用 `systemEvents` 表，通过查询查看最近24小时内的数据量引入：
 
 ```kusto
 systemEvents 
-| where timestamp >= ago(1d)
+| where timestamp >= ago(24h)
 | where type == "Billing" 
 | extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
 | extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
 | summarize sum(BillingTelemetrySizeInBytes)
 ```
 
-若要查看过去30天数据类型的数据量图表，可以使用：
+若要查看过去30天数据类型的数据量（以字节为单位）图表，可以使用：
 
 ```kusto
 systemEvents 
-| where timestamp >= ago(30d)
+| where timestamp >= startofday(ago(30d))
 | where type == "Billing" 
 | extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
 | extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
 | summarize sum(BillingTelemetrySizeInBytes) by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
 ```
 
-可以在[Azure 日志警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)中使用此查询来设置数据卷上的警报。 
+请注意，可以在[Azure 日志警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)中使用此查询来设置数据卷上的警报。  
+
+若要了解有关遥测数据更改的详细信息，请使用查询按类型查看事件计数：
+
+```kusto
+systemEvents 
+| where timestamp >= startofday(ago(30d))
+| where type == "Billing" 
+| extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
+| summarize count() by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
+```
+
+如果卷中出现类似的更改（以字节为单位），则我们可以专注于事件的数据类型，这会显示增加的计数。  例如，如果发现依赖关系数增加，则可以使用以下查询来了解哪些操作负责提高：
+
+```kusto
+dependencies 
+| where timestamp >= startofday(ago(30d))
+| summarize count() by operation_Name, bin(timestamp, 1d)  
+| render barchart  
+```
+
+
+## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>查看 Azure 帐单上的 Application Insights 使用情况 
+
+Azure 在[Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)中心提供了大量有用的功能。 例如，通过 "成本分析" 功能，可以查看 Azure 资源的花费。 按资源类型添加筛选器（对于 Application Insights 的 "insights/组件"）将允许您跟踪您的支出。
+
+通过[从 Azure 门户下载你的使用](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)情况，可以更好地了解你的使用情况。
+在下载的电子表格中，可以查看每天每个 Azure 资源的使用情况。 在此 Excel 电子表格中，可以通过第一次筛选 "计量类别" 列以显示 "Application Insights" 和 "Log Analytics" 来查找 Application Insights 资源的用法，然后在 "Instance ID" 列中添加筛选器，这是 "containsmicrosoft insights/组件 "。  由于所有 Azure Monitor 组件都有一个登录后端，因此，大多数 Application Insights 使用情况都是在计量器类别为 Log Analytics 的情况下报告的。  对于旧定价层和多步骤 web 测试 Application Insights 资源，将使用 Application Insights 的计量类别进行报告。  使用情况显示在 "已消耗数量" 列中，每个条目的单位显示在 "度量单位" 列中。  更多详细信息可帮助你[了解 Microsoft Azure 帐单](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。 
+
 
 ## <a name="managing-your-data-volume"></a>管理数据卷 
 
@@ -244,7 +267,7 @@ Application Insights 资源的默认保留期为90天。 可以为每个 Applica
   * 在 SDK 2.2 及更高版本中，Application Insights [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) 或 [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 都会将每个应用程序主机作为节点进行报告。 例如，会报告物理服务器和 VM 主机的计算机名称，而对于云服务，则报告实例名称。  唯一的例外是应用程序仅使用 [.NET Core](https://dotnet.github.io/) 和 Application Insights Core SDK。 在这种情况下，所有主机只会报告一个节点，因为主机名不可用。 
   * 就早期版本的 SDK 来说，[Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 的行为与新版 SDK 并无二致，而 [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) 则只会报告一个节点，不管应用程序主机的数目是多少。 
   * 如果应用程序通过 SDK 将 **roleInstance** 设置为自定义值，则会默认使用该值确定节点计数。 
-  * 如果对应用使用新版 SDK，而该应用在客户端计算机或移动设备中运行，则节点计数可能会返回很大的数目（因为在客户端计算机或移动设备数目很大）。 
+  * 如果你使用的是新的 SDK 版本，并使用从客户端计算机或移动设备运行的应用，则节点计数可能会返回一个较大的数字（因为客户端计算机或移动设备数量很大）。 
 
 ## <a name="automation"></a>自动化
 

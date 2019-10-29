@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: d5214b6a6ffcb7c78fc00fe0305a1d1846b328f8
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 1171a3b6d38fe04a4213513e934be258d79a1aa0
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990264"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73045192"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
@@ -48,7 +48,8 @@ ms.locfileid: "72990264"
 > - 支持所有存储复制配置。
 > - 目前不支持高级存储。
 > - 目前不支持 VNet 中的存储。
-> - 目前不支持“应用有防火墙的存储”。
+> - 当前**不支持** **在防火墙后面存储**。
+> - 当前**不支持** **Azure Data Lake Storage Gen2 存储帐户**的**分层命名空间**。
 
 ## <a id="subheading-8"></a>定义服务器级和数据库级审核策略
 

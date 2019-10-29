@@ -10,33 +10,34 @@ ms.subservice: consume
 ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
-ms.openlocfilehash: 5593d6e392915448845adcac95da869e72a11310
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96ffeb12413f236ca0c131051245306ae16d4288
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873804"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73045178"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>SQL 数据仓库数据集成合作伙伴
-要创建数据仓库解决方案，请从行业领先的各种工具中进行选择。 本文重点介绍的正式数据集成解决方案支持 Azure SQL 数据仓库的 Microsoft 合作伙伴公司。
+要创建数据仓库解决方案，请从行业领先的各种工具中进行选择。 本文重点介绍了具有支持 Azure SQL 数据仓库的官方数据集成解决方案的 Microsoft 合作伙伴公司。
 
 ## <a name="data-integration-partners"></a>数据集成合作伙伴
-| 合作伙伴 | 描述 | 网站/产品链接 |
+| Partner | 描述 | 网站/产品链接 |
 | ------- | ----------- | -------------------- |
-| ![Alooma][7] |**Alooma**<br> Alooma 是，数据团队可以集成、 丰富，和流式处理来自各种数据接收器到 SQL 数据仓库的真实时间中的所有数据，以及一个 ETL 解决方案。 |[产品页][alooma_website] |
-| ![Alteryx][1] |**Alteryx**<br> Alteryx Designer 通过可重复的工作流进行自助性数据分析，在数小时内即可获得深入的见解，这与传统方法动辄需数周的时间形成鲜明的对比！ Alteryx Designer 使用同一种直观的用户界面将数据准备、数据混合和分析组合在一起，有助于数据分析师进行预测、统计和空间分析。 |[产品页][alteryx_designer_website]<br>[Azure Marketplace][alteryx_marketplace]<br>|
-| ![Attunity][2] |**Attunity (CloudBeam)**<br>Attunity CloudBeam 提供自动化的解决方案，用于将数据加载到 SQL 数据仓库。 它简化了加载的批处理和增量复制的数据，许多源-SQL Server、 Oracle、 DB2、 Sybase、 MySQL、 和的详细信息。 |[产品页][attunity_cloudbeam_website]<br>[Azure Marketplace][attunity_marketplace]<br> |
-| ![Denodo][3] |**Denodo**<br>Denodo 提供跨组织的各种数据源的实时访问数据。 它跨多个源而无需复制使用 bridge 数据到数据虚拟化。 它提供了广泛访问驻留在企业、 大数据和实时和批处理中的云源中的结构化和非结构化数据。|[产品页][denodo_website]<br>[Azure Marketplace][denodo_marketplace]<br> |
-| ![Fivetran][8] |**Fivetran**<br>Fivetran 可帮助您集中处理来自不同源的数据。 其特点是不需要维护，为零的配置数据管道具有越来越多的内置连接器对所有常用的数据源的产品。 安装程序需要五分钟后对数据源和目标数据仓库进行身份验证。|[产品页][fivetran_website]<br> |
-| ![Informatica][4] |**1.Azure 的 Informatica 云服务**<br> Informatica 云提供自助服务数据迁移、 集成和管理功能的同类最佳的解决方案。 客户可以快速和可靠地导入，请从各种源将千万亿字节的数据导出到 Azure。 适用于 Azure 的 Informatica 云服务为 Azure SQL 数据仓库、SQL 数据库、Blob 存储、Data Lake Store 和 Azure Cosmos DB 提供大容量的高性能本机连接。 <br><br> **2.Informatica PowerCenter** PowerCenter 是该电网的元数据驱动的数据集成平台，并以比手动手工编码更快地为企业提供数据加速数据集成项目。 它作为你的数据集成投资的基础 |**Azure 的 Informatica 云服务**<br>[产品页][informatica_Cloud_Services_website]<br>[Azure Marketplace][informatica_Cloud_Services_marketplace]<br><br> **Informatica PowerCenter**<br>[产品页][informatica_PowerCenter_website]<br> [Azure Marketplace][informatica_PowerCenter_byol]<br>|
-| ![信息构建者][5] |**信息构建者 （Omni 代数据管理）**<br>信息生成器 Omni 代数据管理平台提供的数据集成、 数据质量和主数据管理解决方案。 它可以轻松地访问、 移动和所有数据而不考虑格式、 位置、 卷或延迟。|[产品页][omnifocus_website]<br> [Azure Marketplace][omnigen_marketplace] |
-| ![Qubole][9] |**Qubole**<br>Qubole 提供了一个云原生平台，使用户能执行 ETL、 分析和 AI/ML 工作负荷。 它支持各种开源引擎-Apache Spark、 TensorFlow、 Presto、 气流、 Hadoop、 Hive 和的详细信息。 它提供了易于使用最终用户工具的 SQL 查询工具，从笔记本，和利用功能强大的开源引擎的仪表板的数据处理。|[产品页][qubole_website]<br> [Azure Marketplace][qubole_marketplace] |
-| ![段][10] |**段**<br>段是数据管理和分析解决方案，可帮助你从各种源的客户数据的有意义。 它可以将你的数据连接到超过 200 个工具来创建更好的决策、 产品和体验。 段将转换和加载到仓库的多个数据源，为你使用其内置数据连接器|[产品页][segment_website]<br> |
-| ![Skyvia][11] |**Skyvia （数据集成）**<br>Skyvia 数据集成提供了一个向导，可自动执行数据导入。 此向导允许您以不同的源的 Crm、 应用程序数据库、 CSV 文件，和的详细信息之间迁移数据。 |[产品页][segment_website]<br> |
-| ![SnapLogic][6] |**SnapLogic**<br>SnapLogic 平台可让客户能够快速将数据传入和传出 Microsoft Azure SQL 数据仓库。 它提供了集成数百个应用程序、 服务和一个解决方案中的 IoT 方案的功能。|[产品页][snaplogic_website]<br>[Azure Marketplace][snaplogic_marketplace]<br> |
-| ![Talend][12] |**Talend 云**<br>Talend 云是一个 interprise 数据集成平台，可连接、 访问，以及跨云或本地转换任何数据。 它是提供广泛的连接性、 内置的数据质量，以及本机支持的最新的大数据和云技术的集成平台的一种即服务 (iPaaS) 产品/服务 |[产品页][talend_website]<br> [Azure Marketplace][talend_marketplace] |
-| ![Trifacta][13] |**Trifacta Wrangler**<br> Trifacta 可帮助个人和组织探索，并将联接在一起以进行分析的各种数据。 Trifacta Wrangler 旨在处理需要支持规模和大量的最终用户的数据的数据整理工作负荷。|[产品页][trifacta_website]<br> [Azure Marketplace][trifacta_marketplace] |
-| ![WhereScape][14] |**Wherescape 红色**<br> WhereScape 红色是为团队提供了自动化工具来简化 ETL 工作流的 IDE。 IDE 提供了最佳做法是，适用于常用的数据目标的优化本机代码。 使用 WhereScape RED 剪切开发、 部署和操作数据基础结构的时间。|[产品页][wherescape_website]<br> [Azure Marketplace][wherescape_marketplace] |
+| ![Alooma][7] |**Alooma**<br> Alooma 是一种 ETL 解决方案，使数据团队能够实时将各种数据接收器的数据集成、丰富并流式传输到 SQL 数据仓库。 |[产品页][alooma_website] |
+| ![Alteryx][1] |**Alteryx**<br> Alteryx Designer 通过可重复的工作流进行自助性数据分析，在数小时内即可获得深入的见解，这与传统方法动辄需数周的时间形成鲜明的对比！ Alteryx Designer 使用同一种直观的用户界面将数据准备、数据混合和分析组合在一起，有助于数据分析师进行预测、统计和空间分析。 |[产品页][alteryx_designer_website]<br>[Azure 市场][alteryx_marketplace]<br>|
+| ![Attunity][2] |**Attunity （CloudBeam）**<br>Attunity CloudBeam 提供了一种自动解决方案，用于将数据加载到 SQL 数据仓库。 它简化了从多个源（SQL Server、Oracle、DB2、Sybase、MySQL 等）进行的批处理加载和数据的增量复制。 |[产品页][attunity_cloudbeam_website]<br>[Azure 市场][attunity_marketplace]<br> |
+| ![Denodo][3] |**Denodo**<br>Denodo 提供跨组织不同数据源的数据的实时访问。 它使用数据虚拟化跨多个源桥接数据而无需进行复制。 它提供对位于企业、大数据和云源中的结构化和非结构化数据的广泛访问。|[产品页][denodo_website]<br>[Azure 市场][denodo_marketplace]<br> |
+| ![Fivetran][8] |**Fivetran**<br>Fivetran 可帮助你集中来自不同源的数据。 它提供零维护、零配置数据管道产品，其中包含不断增长的针对所有常用数据源的连接器列表。 在对数据源和目标数据仓库进行身份验证后，安装需要5分钟。|[产品页][fivetran_website]<br> |
+| ![Informatica][4] |**1. 适用于 Azure 的 Informatica 云服务**<br> Informatica 云提供了一个同类最佳解决方案，可用于自助服务数据迁移、集成和管理功能。 客户可从各种来源快速可靠地导入和导出数据，并将其导出到 Azure。 适用于 Azure 的 Informatica 云服务为 Azure SQL 数据仓库、SQL 数据库、Blob 存储、Data Lake Store 和 Azure Cosmos DB 提供大容量的高性能本机连接。 <br><br> **2. Informatica PowerCenter**PowerCenter 是一种元数据驱动的数据集成平台，可 jumpstarts 并加速数据集成项目，以便将数据更快地传递到业务，而不是手动编码。 它充当数据集成投资的基础 |**适用于 Azure 的 Informatica 云服务**<br>[产品页][informatica_Cloud_Services_website]<br>[Azure 市场][informatica_Cloud_Services_marketplace]<br><br> **Informatica PowerCenter**<br>[产品页][informatica_PowerCenter_website]<br> [Azure 市场][informatica_PowerCenter_byol]<br>|
+| ![信息构建者][5] |**信息生成器（全代数据管理）**<br>信息构建者的全生成数据管理平台提供数据集成、数据质量和主数据管理解决方案。 它可以轻松地访问、移动和混合所有数据，而不管格式、位置、量或延迟。|[产品页][omnifocus_website]<br> [Azure 市场][omnigen_marketplace] |
+| ![Qubole][9] |**Qubole**<br>Qubole 提供了一个云本机平台，使用户能够执行 ETL、分析和 AI/ML 工作负荷。 它支持多种开源引擎-Apache Spark、TensorFlow、Presto、气流、Hadoop、Hive 等。 它提供易于使用的最终用户工具，用于从 SQL 查询工具、笔记本和利用强大开源引擎的仪表板进行数据处理。|[产品页][qubole_website]<br> [Azure 市场][qubole_marketplace] |
+| ![细分][10] |**段**<br>段是一种数据管理和分析解决方案，可帮助用户了解来自各种来源的客户数据。 它允许你将数据连接到超过200个工具，以创建更好的决策、产品和体验。 段会将多个数据源转换并加载到仓库中，以便你使用其内置的数据连接器|[产品页][segment_website]<br> |
+| ![Skyvia][11] |**Skyvia （数据集成）**<br>Skyvia 数据集成提供了一个向导，可自动导入数据。 此向导允许您在各种源（Crm、应用程序数据库、CSV 文件等）之间迁移数据。 |[产品页][segment_website]<br> |
+| ![SnapLogic][6] |**SnapLogic**<br>SnapLogic 平台使客户能够快速将数据传入和传出 Microsoft Azure SQL 数据仓库。 它可以在一个解决方案中集成数百个应用程序、服务和 IoT 方案。|[产品页][snaplogic_website]<br>[Azure 市场][snaplogic_marketplace]<br> |
+| ![StreamSets][15] |**Streamsets data collector**<br>Streamsets data collector 提供了用于 DataOps 的数据集成平台。 它 operationalizes 将数据集成到 Azure SQL 数据仓库的完整的设计部署-操作生命周期。 你不仅可以通过流式传输、批处理或更改数据捕获数据传递方法快速引入数据并将数据与仓库集成，还可以确保具有智能数据管道的连续操作，提供端到端数据流可见性和复原.|[产品页][streamsets_website]|
+| ![Talend][12] |**Talend 云**<br>Talend 云是一个企业数据集成平台，用于在云中或本地连接、访问和转换任何数据。 它是一个集成平台即服务（iPaaS）产品/服务，提供广泛的连接、内置的数据质量以及对最新的大数据和云技术的本机支持 |[产品页][talend_website]<br> [Azure 市场][talend_marketplace] |
+| ![Trifacta][13] |**Trifacta Wrangler**<br> Trifacta 可帮助个人和组织浏览各种不同的数据，并将其结合起来进行分析。 Trifacta Wrangler 设计用于处理需要支持大规模数据和大量最终用户的数据整理工作负荷。|[产品页][trifacta_website]<br> [Azure 市场][trifacta_marketplace] |
+| ![WhereScape][14] |**Wherescape 红色**<br> WhereScape RED 是一个 IDE，它为团队提供自动化工具来简化 ETL 工作流。 IDE 为常用数据目标提供最佳实践优化的本机代码。 使用 WhereScape RED 缩短开发、部署和操作你的数据基础结构的时间。|[产品页][wherescape_website]<br> [Azure 市场][wherescape_marketplace] |
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -64,6 +65,8 @@ ms.locfileid: "65873804"
 [12]: ./media/sql-data-warehouse-partner-data-integration/talend_logo.png
 [13]: ./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png
 [14]: ./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png
+[15]: ./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png
+
 
 
 <!--Website Links -->
@@ -84,6 +87,7 @@ ms.locfileid: "65873804"
 [talend_website]:https://www.talend.com/
 [trifacta_website]:https://www.trifacta.com/
 [wherescape_website]:https://www.wherescape.com/
+[streamsets_website]:https://streamsets.com/partners/microsoft
 
 <!--Marketplace Links -->
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 12f9b8d3031d3b64e2f39f07763f7a75164aad25
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 9f2bd24955cc378deed5dbc0423488645632a958
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274986"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025801"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>开始使用用于 Resource Manager 的 PowerShell 创建具有 IPv6 的面向 Internet 的负载均衡器
 
@@ -28,8 +28,10 @@ ms.locfileid: "68274986"
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [模板](load-balancer-ipv6-internet-template.md)
 
+>[!注意：针对 IPv6 的最佳实践更改] 本文介绍了一个介绍性的 IPv6 功能，该功能允许基本负载均衡器提供 IPv4 和 IPv6 连接。  更全面的 IPv6 连接现在适用于适用于[Azure vnet 的 ipv6](../virtual-network/ipv6-overview.md) ，这将 ipv6 连接与虚拟网络集成，并包含 Ipv6 网络安全组规则、ipv6 用户定义路由、ipv6 基本和标准负载均衡等。  适用于 azure Vnet 的 IPv6 是适用于 Azure 中的 IPv6 应用程序的最佳做法。 
+>请参阅[用于 AZURE VNET Powershell 部署的 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
 
-Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure 负载均衡器还可以在多个端口和/或多个 IP 地址上显示这些服务。
+Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure Load Balancer 还可以在多个端口和/或多个 IP 地址上显示这些服务。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -100,7 +102,7 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
     $vnet = New-AzvirtualNetwork -Name VNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
     ```
 
-2. 为前端 IP 地址池创建 Azure 公共 IP 地址 (PIP) 资源。 请确保在运行以下命令`-DomainNameLabel`之前更改的值。 此值在 Azure 区域中必须是唯一的。
+2. 为前端 IP 地址池创建 Azure 公共 IP 地址 (PIP) 资源。 运行以下命令之前，请务必更改 `-DomainNameLabel` 的值。 此值在 Azure 区域中必须是唯一的。
 
     ```azurepowershell-interactive
     $publicIPv4 = New-AzPublicIpAddress -Name 'pub-ipv4' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -IpAddressVersion IPv4 -DomainNameLabel lbnrpipv4
@@ -230,10 +232,4 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
     New-AzVM -ResourceGroupName NRP-RG -Location 'West US' -VM $vm2
     ```
 
-## <a name="next-steps"></a>后续步骤
 
-[开始配置内部负载均衡器](load-balancer-get-started-ilb-arm-ps.md)
-
-[配置负载均衡器分发模式](load-balancer-distribution-mode.md)
-
-[配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)

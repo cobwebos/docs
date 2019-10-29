@@ -1,5 +1,5 @@
 ---
-title: 使用企业安全性套餐管理 HDInsight 群集 - Azure
+title: 管理企业安全性套餐群集-Azure HDInsight
 description: 了解如何通过企业安全性套餐管理 Azure HDInsight 群集。
 ms.service: hdinsight
 author: omidm1
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: b98c62908885bc13cd5f473967cc70709af693d2
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 35accc587fe197da751a8695e3ec0b21ea9fbbd4
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034118"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044923"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>使用企业安全性套餐管理 HDInsight 群集
 了解 HDInsight 企业安全性套餐 (ESP) 中的用户和角色，以及如何管理 ESP 群集。
@@ -22,7 +22,7 @@ ms.locfileid: "71034118"
 
 可以使用 Apache Ambari 管理的用户名链接标准群集，还可以使用域用户名（例如：`user1@contoso.com`）链接安全 Apache Hadoop 群集。
 
-1. 按 CTRL+SHIFT+P 打开命令面板，然后输入“HDInsight:链接群集”。
+1. 通过选择 **CTRL+SHIFT+P** 打开命令面板，然后输入“HDInsight: Link a cluster”。
 
    ![命令面板，链接群集](./media/apache-domain-joined-manage/link-cluster-command.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "71034118"
 
    ![列出群集命令输出验证](./media/apache-domain-joined-manage/hdinsight-linked-cluster.png "链接的群集")
 
-4. 还可以取消链接群集，方法是从命令面板输入“HDInsight:取消链接群集”。
+4. 还可以通过从命令面板输入“HDInsight: Unlink a cluster”取消链接群集。
 
 ## <a name="use-intellij-to-link-to-domain-joined-cluster"></a>使用 IntelliJ 链接到已加入域的群集
 
@@ -95,12 +95,12 @@ ms.locfileid: "71034118"
 
 安全和用户隔离对于使用企业安全包的 HDInsight 群集很重要。 为了满足这些要求，将阻止通过 SSH 访问使用企业安全包的群集。 下表显示了对于每种群集类型建议的访问方法：
 
-|工作负荷|应用场景|访问方法|
+|工作负荷|场景|访问方法|
 |--------|--------|-------------|
 |Apache Hadoop|Hive - 交互式作业/查询  |<ul><li>[Beeline](#beeline)</li><li>[Hive 视图](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC - Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Apache Spark|交互式作业/查询，PySpark 交互式环境|<ul><li>[Beeline](#beeline)</li><li>[带有 Livy 的 Zeppelin](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Hive 视图](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC - Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Apache Spark|批处理方案 - Spark 提交，PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
-|交互式查询 (LLAP)|交互式|<ul><li>[Beeline](#beeline)</li><li>[Hive 视图](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC - Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|交互式查询 (LLAP)|交互|<ul><li>[Beeline](#beeline)</li><li>[Hive 视图](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC - Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |任意|安装自定义应用程序|<ul><li>[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
 
    > [!NOTE]  
@@ -146,7 +146,7 @@ ms.locfileid: "71034118"
 ## <a name="users-of-hdinsight-clusters-with-esp"></a>使用 ESP 的 HDInsight 群集的用户
 非 ESP HDInsight 群集具有两个在群集创建期间创建的用户帐户：
 
-* **Ambari 管理员**：此帐户也称为 Hadoop 用户 或 HTTP 用户。 此帐户可用于登录到 Ambari， https://&lt;clustername >. clustername>.azurehdinsight.net。 它还可用于在 Ambari 视图上运行查询、通过外部工具（例如 PowerShell、Templeton、Visual Studio）执行作业和使用 Hive ODBC 驱动程序和 BI 工具（例如 Excel、Power BI 或 Tableau）进行身份验证。
+* **Ambari 管理员**：此帐户也称为 Hadoop 用户 或 HTTP 用户。 此帐户可用于登录到 Ambari 的 https://&lt;clustername >. clustername>.azurehdinsight.net。 它还可用于在 Ambari 视图上运行查询、通过外部工具（例如 PowerShell、Templeton、Visual Studio）执行作业和使用 Hive ODBC 驱动程序和 BI 工具（例如 Excel、Power BI 或 Tableau）进行身份验证。
 
 使用 ESP 的 HDInsight 群集除 Ambari 管理员之外，还有三个新用户。
 

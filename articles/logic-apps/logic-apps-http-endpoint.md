@@ -12,12 +12,12 @@ ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
 ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
-ms.openlocfilehash: 6e5a8eda3891b3b356e0cbd7b6d2e22e4a70c278
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4fc20c4b1314d953ea979192c81b2c264292d3af
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799724"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73041919"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP 终结点调用、触发或嵌套逻辑应用
 
@@ -62,7 +62,7 @@ ms.locfileid: "72799724"
     }
     ```
 
-   ![添加请求操作](./media/logic-apps-http-endpoint/manualtrigger.png)
+   ![为请求操作提供 JSON 架构](./media/logic-apps-http-endpoint/manual-request-trigger-schema.png)
 
    > [!TIP]
    >
@@ -95,7 +95,7 @@ ms.locfileid: "72799724"
 
    此 URL 在查询参数中包含用于身份验证的共享访问签名 (SAS) 密钥。 也可以通过 Azure 门户中的逻辑应用概述获取 HTTP 终结点 URL。 在“触发器历史记录”下面选择触发器：
 
-   ![从 Azure 门户获取 HTTP 终结点 URL](./media/logic-apps-http-endpoint/manualtriggerurl.png)
+   ![从 Azure 门户获取 HTTP 终结点 URL](./media/logic-apps-http-endpoint/find-manual-trigger-url.png)
 
    或者，可以通过执行以下调用获取 URL：
 
@@ -117,7 +117,7 @@ ms.locfileid: "72799724"
    > [!NOTE]
    > 可以选择其他任何 HTTP 方法，或者为自己的逻辑应用指定自定义方法。
 
-   ![更改 HTTP 方法](./media/logic-apps-http-endpoint/change-method.png)
+   ![选择要用于请求的 HTTP 方法](./media/logic-apps-http-endpoint/select-method-request-trigger.png)
 
 ## <a name="accept-parameters-through-your-http-endpoint-url"></a>通过 HTTP 终结点 URL 接受参数
 
@@ -132,7 +132,7 @@ ms.locfileid: "72799724"
 
 3. 在“相对路径”下面，指定 URL 应接受的参数的相对路径，例如 `customers/{customerID}`。
 
-   ![指定 HTTP 方法以及参数的相对路径](./media/logic-apps-http-endpoint/relativeurl.png)
+   ![指定 HTTP 方法以及参数的相对路径](./media/logic-apps-http-endpoint/relative-path-url-value.png)
 
 4. 要使用参数，请将“响应”操作添加到逻辑应用。 （在触发器下面，选择“新建步骤” > “添加操作” > “响应”） 
 
@@ -140,11 +140,11 @@ ms.locfileid: "72799724"
 
    例如，若要返回 `Hello {customerID}`，请使用 `Hello {customerID token}` 更新响应的**正文**。 此时应会显示动态内容列表，其中显示了 `customerID` 令牌供你选择。
 
-   ![将参数添加到响应正文](./media/logic-apps-http-endpoint/relativeurlresponse.png)
+   ![将参数添加到响应正文](./media/logic-apps-http-endpoint/relative-url-with-parameter-token.png)
 
    **正文**应如以下示例所示：
 
-   ![包含参数的响应正文](./media/logic-apps-http-endpoint/relative-url-with-parameter.png)
+   ![带参数的示例响应正文](./media/logic-apps-http-endpoint/relative-url-with-parameter.png)
 
 6. 保存逻辑应用。 
 
@@ -194,7 +194,7 @@ ms.locfileid: "72799724"
 
 通过添加可接收请求的其他逻辑应用，可以在逻辑应用中嵌套工作流。 要包含这些逻辑应用，请将“Azure 逻辑应用 - 选择逻辑应用工作流”操作添加到触发器。 然后，可以从符合条件的逻辑应用中选择。
 
-![添加另一个逻辑应用](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
+![在当前逻辑应用中嵌套逻辑应用](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
 ## <a name="call-or-trigger-logic-apps-through-http-endpoints"></a>通过 HTTP 终结点调用或触发逻辑应用
 
@@ -233,7 +233,7 @@ ms.locfileid: "72799724"
 
 可以在响应正文中包含多个标头和任何类型的内容。 在示例响应中，标头指定响应的内容类型为 `application/json`。 正文根据前面为“请求”触发器更新的 JSON 架构包含 `title` 和 `name`。
 
-![HTTP 响应操作](./media/logic-apps-http-endpoint/response.png)
+![为 HTTP 响应操作提供响应内容](./media/logic-apps-http-endpoint/content-for-response-action.png)
 
 响应具有以下属性：
 

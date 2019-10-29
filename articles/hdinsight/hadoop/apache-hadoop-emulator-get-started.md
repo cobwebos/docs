@@ -1,5 +1,5 @@
 ---
-title: 了解如何使用 Apache Hadoop 沙箱模拟器-Azure HDInsight
+title: 了解如何使用 Apache Hadoop 沙盒，模拟器-Azure HDInsight
 description: '若要开始了解如何使用 Apache Hadoop 生态系统，可以在 Azure 虚拟机上设置 Hortonworks 提供的 Hadoop 沙盒。 '
 keywords: hadoop emulator,hadoop 沙盒
 ms.reviewer: jasonh
@@ -9,32 +9,32 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9515f0ecae92e6350924b3856aa6cbf20e608d51
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 47ee66393e3e1678576b12a70b767f35cb3bc635
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066694"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044772"
 ---
-# <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>开始使用 Apache Hadoop 沙盒，它是虚拟机上的模拟器
+# <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>在虚拟机上开始使用 Apache Hadoop 沙盒（模拟器）
 
 了解如何在虚拟机上安装 Hortonworks 提供的 Apache Hadoop 沙盒，以了解 Hadoop 生态系统。 该沙盒提供一个本地开发环境，让用户了解 Hadoop、Hadoop 分布式文件系统 (HDFS) 和作业提交内容。 熟悉 Hadoop 之后，便可以开始在 Azure 中使用 Hadoop 创建 HDInsight 群集。 有关如何入门的详细信息，请参阅[在 HDInsight 中开始使用 Hadoop](apache-hadoop-linux-tutorial-get-started.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * [Oracle VirtualBox](https://www.virtualbox.org/)。 从[此处](https://www.virtualbox.org/wiki/Downloads)下载并安装它。
 
 ## <a name="download-and-install-the-virtual-machine"></a>下载并安装虚拟机
 
-1. 浏览到 [Cloudera 下载](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html)。
+1. 浏览到[Cloudera 下载](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html)。
 
-1. 单击“选择安装类型”下的 **VIRTUALBOX**，在 VM 上下载最新的 Hortonworks 沙盒。 登录或填写产品兴趣表。
+1. 单击 "**选择安装类型**" 下的**VIRTUALBOX**在 VM 上下载最新的 Hortonworks 沙盒。 登录或完成产品权益。
 
-1. 单击按钮“HDP 沙盒(最新)”开始下载。
+1. 单击 " **HDP 沙盒（最新版本）** " 按钮开始下载。
 
 有关设置沙盒的说明，请参阅[沙盒部署和安装指南](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/)。
 
-若要下载旧版本的 HDP 沙盒，请参阅“旧版本”下的链接。
+若要下载较旧的 HDP 版本沙盒，请参阅**较早版本**下的链接。
 
 ## <a name="start-the-virtual-machine"></a>启动虚拟机
 
@@ -44,7 +44,7 @@ ms.locfileid: "71066694"
 
     ![virtualbox manager 正常启动](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
 
-1. 打开 web 浏览器并导航到所显示的 URL （ `http://127.0.0.1:8888`通常为）。
+1. 打开 web 浏览器并导航到所显示的 URL （通常为 `http://127.0.0.1:8888`）。
 
 ## <a name="set-sandbox-passwords"></a>设置沙盒密码
 

@@ -1,27 +1,26 @@
 ---
-title: 示例和常见方案 - Azure 逻辑应用
-description: Azure 逻辑应用的示例、方案、教程和演练
+title: 示例 & 常见方案-Azure 逻辑应用
+description: 查找适用于 Azure 逻辑应用的示例、常见方案、教程和演练
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-ms.topic: article
-ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
+ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 000de22105615c3f6aa015b07e13bf8a47955b52
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 9e245d1a0054d9de5b8b524416c8c92eb02353a7
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706789"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025526"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure 逻辑应用的常见方案、示例、教程和演练
 
-[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)通过提供[数百个随时可用的连接器](../connectors/apis-list.md)(范围从本地 SQL Server 或 SAP 到 Azure 认知服务), 帮助你安排和集成不同的服务。 逻辑应用服务“无服务器”，因此无需担心规模或实例。 只需定义带有触发器的工作流和工作流执行的操作。 基础平台处理缩放、可用性和性能。 逻辑应用尤其适用于需要在多个系统中协调多个操作的用例和方案。
+[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)通过提供[数百个随时可用的连接器](../connectors/apis-list.md)（范围从本地 SQL Server 或 SAP 到 Azure 认知服务），帮助你安排和集成不同的服务。 逻辑应用服务“无服务器”，因此无需担心规模或实例。 只需定义带有触发器的工作流和工作流执行的操作。 基础平台处理缩放、可用性和性能。 逻辑应用尤其适用于需要在多个系统中协调多个操作的用例和方案。
 
-为了帮助你了解有关 Azure 逻辑应用支持的多种模式和功能的详细信息, 请参阅下面的常见示例和方案。
+为了帮助你了解有关 Azure 逻辑应用支持的多种模式和功能的详细信息，请参阅下面的常见示例和方案。
 
 ## <a name="popular-starting-points-for-logic-app-workflows"></a>逻辑应用工作流的常用起点
 
@@ -35,7 +34,7 @@ ms.locfileid: "68706789"
 
 * 轮询：
 
-  * 利用[**定期**触发器](../connectors/connectors-native-recurrence.md), 你可以设置开始日期和时间以及用于触发逻辑应用的重复周期。 例如，可以选择在星期几和一天中某个时间触发逻辑应用。 有关详细信息，请参阅以下主题：
+  * 利用[**定期**触发器](../connectors/connectors-native-recurrence.md)，你可以设置开始日期和时间以及用于触发逻辑应用的重复周期。 例如，可以选择在星期几和一天中某个时间触发逻辑应用。 有关详细信息，请参阅以下主题：
 
     * [通过 Azure 逻辑应用计划和运行定期自动化任务、进程和工作流](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)
     * [教程：使用 Azure 逻辑应用按计划检查流量](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
@@ -49,14 +48,14 @@ ms.locfileid: "68706789"
   
 * 推送：
 
-  * [ **Request**触发器](../connectors/connectors-native-reqres.md)允许逻辑应用接收 HTTP 请求, 并以某种方式实时响应事件。
+  * [ **Request**触发器](../connectors/connectors-native-reqres.md)允许逻辑应用接收 HTTP 请求，并以某种方式实时响应事件。
 
   * [HTTP Webhook 触发器](../connectors/connectors-native-webhook.md)通过向该服务注册回叫 URL 来订阅服务终结点。 这样一来，服务可只在指定事件发生时通知触发器，触发器便无需轮询服务。
 
-收到有关新数据或事件的通知后，触发器随即触发，创建新的逻辑应用工作流实例并在工作流中运行操作。 通过工作流可访问触发器中任何数据。 例如，“发布新推文时”触发器会将推文内容传递到逻辑应用运行。 若要开始 Azure 逻辑应用, 请尝试以下快速入门主题:
+收到有关新数据或事件的通知后，触发器随即触发，创建新的逻辑应用工作流实例并在工作流中运行操作。 通过工作流可访问触发器中任何数据。 例如，“发布新推文时”触发器会将推文内容传递到逻辑应用运行。 若要开始 Azure 逻辑应用，请尝试以下快速入门主题：
 
 * [快速入门：在 Azure 门户中通过 Azure 逻辑应用创建第一个自动化工作流](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [快速入门：使用 Visual Studio 通过 Azure 逻辑应用创建自动化任务、进程和工作流](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
+* [快速入门：使用 Visual Studio 在 Azure 逻辑应用中创建自动化任务、进程和工作流](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [快速入门：使用 Visual Studio Code 创建和管理自动化逻辑应用工作流](../logic-apps/quickstart-create-logic-apps-visual-studio-code.md)
 
 ## <a name="respond-to-triggers-and-extend-actions"></a>响应触发器和扩展操作
@@ -68,7 +67,7 @@ ms.locfileid: "68706789"
 * [使用 webhook 响应外部事件和操作](../logic-apps/logic-apps-create-api-app.md)
 * [利用对 HTTP 请求的同步响应调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)
 * [教程：在几分钟内使用逻辑应用和 Power BI 生成由 AI 提供支持的社交仪表板](https://aka.ms/logicappsdemo)
-* [视频：响应 Twilio SMS webhook 并发送文本响应](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
+* [视频：响应 Twilio SMS Webhook 并发送文本响应](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
 
 ## <a name="control-flow-error-handling-and-logging-capabilities"></a>控制流、错误处理和日志记录功能
 
@@ -89,10 +88,10 @@ ms.locfileid: "68706789"
 * [使用 Visual Studio 创建和部署逻辑应用](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [在现有的逻辑应用上启用监视、日志记录和警报](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 * [自动部署逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
-* [示例：从 azure 逻辑应用连接到 Azure 服务总线队列, 并通过 Azure DevOps 中的 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [示例：从 azure 逻辑应用连接到 azure 存储帐户, 并通过 Azure DevOps 中的 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [示例：为 Azure 逻辑应用设置函数应用操作, 并使用 Azure DevOps 中的 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [示例：从 azure 逻辑应用连接到集成帐户, 并使用 Azure DevOps 中的 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [示例：从 azure 逻辑应用连接到 Azure 服务总线队列，并通过 Azure DevOps 中的 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [示例：从 azure 逻辑应用连接到 azure 存储帐户，并通过 Azure DevOps 中的 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [示例：为 Azure 逻辑应用设置函数应用操作，并使用 Azure DevOps 中的 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [示例：从 azure 逻辑应用连接到集成帐户，并使用 Azure DevOps 中的 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 ## <a name="content-types-conversions-and-transformations-within-a-run"></a>运行中的内容类型转换和变换
 
@@ -110,7 +109,7 @@ ms.locfileid: "68706789"
 * [从逻辑应用调用 Azure 函数](../logic-apps/logic-apps-azure-functions.md)
 * [教程：使用 Azure Functions 触发逻辑应用](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
 * [教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
-* [教程：创建一个与 Azure 逻辑应用和 Azure 认知服务集成的函数, 用于分析 Twitter post 情绪](../azure-functions/functions-twitter-email.md)
+* [教程：创建与 Azure 逻辑应用和 Azure 认知服务集成的函数以分析 Twitter post 情绪](../azure-functions/functions-twitter-email.md)
 * [教程：通过连接 IoT 中心和邮箱的 Azure 逻辑应用进行 IoT 远程监视并发送通知](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 * [博客：从逻辑应用调用 SOAP 终结点](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 

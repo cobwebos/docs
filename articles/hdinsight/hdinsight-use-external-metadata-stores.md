@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: a495935216cb91a282cc3dbabafbc96a531dde91
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a876269b2746a1065cee2639cfc5804aff0b3446
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800137"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027702"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>使用外部元数据存储 - Azure HDInsight
 
@@ -83,7 +83,7 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 
 * 对现有的自定义元存储数据库创建更高版本的新 Azure HDInsight 时，系统会升级元存储的架构，这是不可逆转的，无法从备份还原数据库。
 
-* 如果在多个群集之间共享元存储，请确保所有群集都采用相同的 HDInsight 版本。 不同的 Hive 版本使用不同的元存储数据库架构。 例如，不能跨 Hive 1.2 和 Hive 2.1 版本控制群集共享元存储。
+* 如果在多个群集之间共享元存储，请确保所有群集都采用相同的 HDInsight 版本。 不同的 Hive 版本使用不同的元存储数据库架构。 例如，不能跨 Hive 2.1 和 Hive 3.1 版本控制群集共享元存储。
 
 * 在 HDInsight 4.0 中，Spark 和 Hive 使用独立目录来访问 SparkSQL 或 Hive 表。 Spark 创建的表驻留在 Spark 目录中。 Hive 创建的表驻留在 Hive 目录中。 这不同于 HDInsight 3.6，其中 Hive 和 Spark 共享公共目录。 HDInsight 4.0 中的 hive 和 Spark 集成依赖于 Hive 仓库连接器（HWC）。 HWC 在 Spark 和 Hive 之间起到桥梁作用。 [了解 Hive 仓库连接器](../hdinsight/interactive-query/apache-hive-warehouse-connector.md)。
 

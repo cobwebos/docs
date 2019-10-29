@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0dd0b8cf39da8039b3a59bf243284e0d5062bd78
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 5edf4a4f53e6b4255970f86dd942795ad2e4cbe2
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965599"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025393"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知问题和故障排除 Azure 机器学习
 
@@ -150,6 +150,12 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 * 添加 `azure-dataprep` 版本1.1.8 或更高版本。
 * 添加 `pyarrow` 版本0.11 或更高版本。
 
+## <a name="datasets"></a>数据集
+
+这些是 Azure 机器学习数据集的已知问题。
+
++ **无法读取 Azure Data Lake Storage Gen2 上的 parquet 文件**如果安装了 `azureml-dataprep==1.1.25`，从 Azure Data Lake Storage Gen2 数据存储读取 parquet 文件不起作用。 它将失败，并 `Cannot seek once reading started.`。 如果看到此错误，则可以安装 `azureml-dataprep<=1.1.24` 或安装 `azureml-dataprep>=1.1.26`。
+
 ## <a name="azure-portal"></a>Azure 门户
 
 如果直接通过 SDK 或门户的共享链接查看工作区，则将无法在扩展程序中查看包含订阅信息的常规概述页。 也将无法切换到另一个工作区。 如果需要查看其他工作区，解决方法是直接转到 [Azure 门户](https://portal.azure.com)并搜索工作区名称。
@@ -242,12 +248,12 @@ kubectl get secret/azuremlfessl -o yaml
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors （没有名为的模块）
 如果在 Azure ML 中提交试验时运行到 ModuleErrors 中，则表示训练脚本需要安装一个包，但不会添加它。 提供包名称后，Azure ML 会在用于定型的环境中安装包。 
 
-如果使用[估算](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators)提交试验，则可以通过基于要安装包的源中的估计器 `pip_packages` 或 `conda_packages` 参数指定包名称。 你还可以使用 `conda_dependencies_file`指定包含所有依赖项的 docker-compose.override.yml 文件，或者使用 `pip_requirements_file` 参数列出 txt 文件中的所有 pip 要求。
+如果使用[估算](concept-azure-machine-learning-architecture.md#estimators)提交试验，则可以通过基于要安装包的源中的估计器 `pip_packages` 或 `conda_packages` 参数指定包名称。 你还可以使用 `conda_dependencies_file`指定包含所有依赖项的 docker-compose.override.yml 文件，或者使用 `pip_requirements_file` 参数列出 txt 文件中的所有 pip 要求。
 
 Azure ML 还为 Tensorflow、PyTorch、Chainer 和 Spark-sklearn 提供框架特定的估算。 使用这些估算将确保在用于定型的环境中代表您安装框架依赖项。 您可以选择指定额外的依赖项，如上所述。 
  
  Azure ML 维护的 docker 映像，可以在[AzureML 容器](https://github.com/Azure/AzureML-Containers)中查看其内容。
-特定于框架的依赖关系在各自的框架文档中列出- [Chainer](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks)、 [PyTorch](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks)、 [TensorFlow](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks)、 [spark-sklearn](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks)。
+特定于框架的依赖关系在各自的框架文档中列出- [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks)、 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks)、 [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks)、 [spark-sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks)。
 
 >[Note！]如果你认为某个特定包的常用空间足以添加到 Azure ML 维护的映像和环境中，请在[AzureML 容器](https://github.com/Azure/AzureML-Containers)中提出 GitHub 问题。 
  

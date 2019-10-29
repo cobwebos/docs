@@ -1,5 +1,5 @@
 ---
-title: 业务连续性和灾难恢复 (BCDR)：Azure 配对区域 | Microsoft Docs
+title: 业务连续性 & 灾难恢复-Azure 配对区域
 description: 了解 Azure 区域对，以确保应用程序在数据中心发生故障期间可保持复原能力。
 author: rayne-wiselman
 manager: carmon
@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: 81ba993e6cbe55b45d34325545754bec561ce479
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 90111325677e1bdd12a03081ad7513a34f68fd40
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514458"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044138"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>业务连续性和灾难恢复 (BCDR)：Azure 配对区域
 
@@ -28,7 +28,7 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 
 | 地理位置 | 配对区域 |  |
 |:--- |:--- |:--- |
-| 亚洲 |东亚 |东南亚 |
+| 亚洲 |亚洲东部 |亚洲东南部 |
 | 澳大利亚 |澳大利亚东部 |澳大利亚东南部 |
 | 澳大利亚 |澳大利亚中部 |澳大利亚中部 2 |
 | 巴西 |巴西南部 |美国中南部 |
@@ -42,25 +42,25 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 | 印度 |印度西部 |印度南部 |
 | 日本 |日本东部 |日本西部 |
 | 韩国 |韩国中部 |韩国南部 |
-| 北美 |East US |美国西部 |
+| 北美 |美国东部 |美国西部 |
 | 北美 |美国东部 2 |美国中部 |
 | 北美 |美国中北部 |美国中南部 |
 | 北美 |美国西部 2 |美国中西部 
 | 南非 | 南非北部 | 南非西部
 | 英国 |英国西部 |英国南部 |
 | 阿拉伯联合酋长国 | 阿拉伯联合酋长国北部 | 阿拉伯联合酋长国中部
-| 美国国防部 |美国 DoD 东部 |美国 DoD 中部 |
-| 美国政府 |美国亚利桑那州政府 |美国德克萨斯州政府 |
-| 美国政府 |US Gov 爱荷华州 |美国政府弗吉尼亚州 |
-| 美国政府 |美国政府弗吉尼亚州 |美国德克萨斯州政府 |
+| 美国国防部 |US DoD 东部 |US DoD 中部 |
+| US Government |US Gov 亚利桑那州 |US Gov 德克萨斯州 |
+| US Government |US Gov 爱荷华州 |美国弗吉尼亚州政府 |
+| US Government |美国弗吉尼亚州政府 |US Gov 德克萨斯州 |
 
 表 1 - Azure 区域对映射
 
-- 印度西部配对只在一个方向。 印度西部的次要区域是印度南部，而印度南部的次要区域是印度中部。
+- 印度西部仅成对一个方向配对。 印度西部的次要区域是印度南部，而印度南部的次要区域是印度中部。
 - 巴西南部与其他区域的不同之处在于，它与自身地理位置外部的区域配对。 巴西南部的次要区域是美国中南部。 美国中南部的次要区域不是巴西南部。
-- 美国爱荷华州政府的次要区域是美国弗吉尼亚州政府。
-- 美国弗吉尼亚州政府的次要区域是美国德克萨斯州政府。
-- 美国德克萨斯州政府的次要区域是美国弗吉尼亚亚利桑那州。
+- US Gov 爱荷华州的次要区域为 US Gov 弗吉尼亚州。
+- US Gov 弗吉尼亚州的次要区域为 US Gov 德克萨斯州。
+- US Gov 亚利桑那州 US Gov 德克萨斯州次要区域。
 
 
 我们建议你跨区域对配置业务连续性和灾难恢复 (BCDR)，以便从 Azure 的隔离和可用性策略中受益。 对于支持多个活动区域的应用程序，我们建议尽可能使用区域对中的这两个区域。 这将确保应用程序的最佳可用性，并在发生灾难时最大限度地缩短恢复时间。 
@@ -77,7 +77,7 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 
 ![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure 计算 (IaaS)** - 必须提前预配附加的计算资源，以确保在发生灾难期间另一个区域可以提供资源。 有关详细信息，请参阅 [Azure resiliency technical guidance](resiliency/resiliency-technical-guidance.md)（Azure 复原技术指南）。
 
-![存储](./media/best-practices-availability-paired-regions/2Green.png) **Azure 存储**-如果你使用的托管的磁盘，了解有关[跨区域备份](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines)使用 Azure 备份并[复制 Vm](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)从一个区域到另一个使用 Azure Site Recovery。 如果使用的存储帐户，然后异地冗余存储 (GRS) 是默认配置时创建一个 Azure 存储帐户。 使用 GRS 时，数据会在主要区域自动复制三次，并在配对区域复制三次。 有关详细信息，请参阅 [Azure 存储冗余选项](storage/common/storage-redundancy.md)。
+![存储](./media/best-practices-availability-paired-regions/2Green.png) **Azure 存储**-如果使用托管磁盘，请参阅使用 Azure 备份进行[跨区域备份](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines)，并使用 Azure Site Recovery 将 vm 从一个区域[复制](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)到另一个区域。 如果使用的是存储帐户，则在创建 Azure 存储帐户时，将默认配置异地冗余存储（GRS）。 使用 GRS 时，数据会在主要区域自动复制三次，并在配对区域复制三次。 有关详细信息，请参阅 [Azure 存储冗余选项](storage/common/storage-redundancy.md)。
 
 ![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL 数据库** – 使用 Azure SQL 数据库异地复制，可以将事务的异步复制配置到全球任何区域；但是，我们建议在配对区域中为大多数灾难恢复方案部署这些资源。 有关详细信息，请参阅 [Azure SQL 数据库中的异地复制](sql-database/sql-database-geo-replication-overview.md)。
 

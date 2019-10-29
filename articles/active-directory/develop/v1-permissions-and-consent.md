@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fb4342e024d826c65ed33184aaf33012d09190a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a467593d16c54e73d58f9cb2b67a4fa31eb0179e
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545195"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042331"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 终结点中的权限和许可
 
@@ -31,14 +31,14 @@ ms.locfileid: "65545195"
 
 Azure Active Directory (Azure AD) 对 OAuth 和 OpenID Connect (OIDC) 流广泛使用权限。 当应用从 Azure AD 接收访问令牌时，访问令牌将包含声明，这些声明描述了应用对特定资源的权限。
 
-利用权限（也称为作用域），资源可以轻松进行授权，因为资源只需要检查令牌是否包含对应用要调用的 API 的合适权限   。
+利用权限（也称为作用域），资源可以轻松进行授权，因为资源只需要检查令牌是否包含对应用要调用的 API 的合适权限。
 
 ## <a name="types-of-permissions"></a>权限的类型
 
 Azure AD 定义两种权限：
 
 * **委托的权限** - 由包含登录用户的应用使用。 对于这些应用，用户或管理员需许可应用请求的权限，并向应用授予委托的权限，以便在对 API 发出调用时，该应用可充当登录的用户。 根据 API，用户可能无法直接许可 API，而是[要求管理员提供“管理员同意”](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)。
-* **应用程序权限** - 由无需存在登录用户即可运行的应用使用；例如，以后台服务或守护程序形式运行的应用。 应用程序权限只能[由管理员许可](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant)，因为它们通常非常强大，允许访问跨用户边界的数据，或者访问仅限管理员访问的数据。
+* **应用程序权限** - 由无需存在登录用户即可运行的应用使用；例如，以后台服务或守护程序形式运行的应用。 应用程序权限只能[由管理员同意](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant)，因为这些权限通常是强大的功能，允许跨用户边界访问数据，或在其他情况下受管理员限制的数据。 如果用户被定义为资源应用程序的所有者（即发布权限的 API），也可以为其所拥有的 Api 授予应用程序权限。
 
 有效权限是应用在对 API 发出请求时拥有的权限。 
 
@@ -64,7 +64,7 @@ Azure AD 中的权限提供多个属性用于帮助用户、管理员或应用�
 | 属性名称 | 描述 | 示例 |
 | --- | --- | --- |
 | `ID` | 这是唯一标识此权限的 GUID 值。 | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca |
-| `IsEnabled` | 指示此权限是否可供使用。 | true |
+| `IsEnabled` | 指示此权限是否可供使用。 | 是 |
 | `Type` | 指示此权限是否需要用户许可或管理员许可。 | 用户 |
 | `AdminConsentDescription` | 这是在管理员许可体验期间向管理员显示的说明 | 允许应用读取用户邮箱中的电子邮件。 |
 | `AdminConsentDisplayName` | 这是在管理员许可体验期间向管理员显示的友好名称。 | 读取用户邮件 |

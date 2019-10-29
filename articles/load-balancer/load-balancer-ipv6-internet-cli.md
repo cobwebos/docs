@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 0ee85a92753845e0e67fff22da894a048acb1b14
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 3d92f1a7067d4b3717ecdfd5b8cb16ec0234bdec
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274951"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025711"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>使用 Azure CLI 创建使用 IPv6 的公共负载均衡器
 
+>[!注意：针对 IPv6 的最佳实践更改] 本文介绍了一个介绍性的 IPv6 功能，该功能允许基本负载均衡器提供 IPv4 和 IPv6 连接。  更全面的 IPv6 连接现在适用于适用于[Azure vnet 的 ipv6](../virtual-network/ipv6-overview.md) ，这将 ipv6 连接与虚拟网络集成，并包含 Ipv6 网络安全组规则、ipv6 用户定义路由、ipv6 基本和标准负载均衡等。  适用于 azure Vnet 的 IPv6 是适用于 Azure 中的 IPv6 应用程序的最佳做法。 
+>请参阅[IPv6，了解 AZURE VNET CLI 部署](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md)
 
 Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 负载均衡器还可以在多个端口和/或多个 IP 地址上显示这些服务。
 
@@ -50,7 +52,7 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 * **后端地址池**：包含从负载均衡器接收网络流量的虚拟机网络接口 (NIC)。
 * **负载均衡规则**：所含规则可将负载均衡器上的公共端口映射到后端地址池的端口上。
 * **入站 NAT 规则**：所含网络地址转换 (NAT) 规则可将负载均衡器上的公共端口映射到后端地址池中特定虚拟机的端口。
-* **探测器**：包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器。
+* **探测器**：包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器
 
 ## <a name="set-up-azure-cli"></a>设置 Azure CLI
 
@@ -296,8 +298,4 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
     az vm create --resource-group $rgname --name $vm2Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic2Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 
     ```
 
-## <a name="next-steps"></a>后续步骤
 
-[开始配置内部负载均衡器](load-balancer-get-started-ilb-arm-cli.md)  
-[配置负载均衡器分发模式](load-balancer-distribution-mode.md)  
-[配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)

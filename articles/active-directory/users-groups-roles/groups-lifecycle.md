@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dd8858786d59563542c95d43d4e480ab1c11383
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6ea0f9e07b476459824c8166781f549d788185ba
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933779"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024786"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>为 Office 365 组配置过期策略
 
@@ -28,7 +28,7 @@ ms.locfileid: "72933779"
 
 将某个组设置为过期后：
 
-- 具有用户活动的组在过期时自动续订（预览）
+- 具有用户活动的组在过期时自动续订
 - 如果组未自动续订，则会通知组的所有者续订组
 - 未续订的任何组将被删除
 - 组所有者或管理员可在 30 日内还原任何被删除的 Office 365 组。
@@ -40,7 +40,7 @@ ms.locfileid: "72933779"
 
 有关如何下载和安装 Azure AD PowerShell cmdlet 的信息，请参阅 [Azure Active Directory PowerShell for Graph 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)。
 
-## <a name="activity-based-automatic-renewal-preview"></a>基于活动的自动续订（预览版）
+## <a name="activity-based-automatic-renewal"></a>基于活动的自动续订
 
 使用 Azure AD 智能，将根据组是否已在最近使用后自动续订组。 此功能消除了组所有者对手动操作的需要，因为它基于 Office 365 服务（例如 Outlook、SharePoint、团队或 Yammer）组中的用户活动。 例如，如果某个所有者或组成员执行类似于在 SharePoint 中上传文档的操作，请访问一个团队渠道，或将电子邮件发送到 Outlook 中的组，则该组将自动续订，所有者不会获得任何续订通知。
 

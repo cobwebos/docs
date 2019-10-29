@@ -1,5 +1,5 @@
 ---
-title: 监视器 BUG 软锁定 Azure HDInsight 群集的 CPU 错误
+title: 来自 Azure HDInsight 群集的监视器 BUG 软锁定 CPU 错误
 description: 监视器 BUG 软锁定 CPU 出现在 Azure HDInsight 群集的内核一种方法中
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,14 +7,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
-ms.openlocfilehash: 8f9b60c6e181c9f47635e7d46ce103032d395028
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 1d357566a7b2478fff77ed4d88af4ee8a9535050
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087354"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044725"
 ---
-# <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>方案： "监视器：BUG： Azure HDInsight 群集出现软锁定-CPU "错误
+# <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>方案： Azure HDInsight 群集中的 "监视程序： BUG：软锁定-CPU" 错误
 
 本文介绍有关在与 Azure HDInsight 群集交互时遇到的问题的故障排除步骤和可能的解决方法。
 
@@ -36,21 +36,21 @@ Linux 内核中的[bug](https://bugzilla.kernel.org/show_bug.cgi?id=199437)导�
 
 1. 选择 "**提交新**" 并按如下所示输入输入
 
-    | 属性 | ReplTest1 |
+    | properties | Value |
     | --- | --- |
     | 脚本类型 | -Custom |
-    | 姓名 |解决内核软锁定问题 |
+    | 名称 |解决内核软锁定问题 |
     | Bash 脚本 URI |`https://raw.githubusercontent.com/hdinsight/hdinsight.github.io/master/ClusterCRUD/KernelSoftLockFix/scripts/KernelSoftLockIssue_FixAndReboot.sh` |
     | 节点类型 |辅助角色，Zookeeper |
-    | Parameters |不可用 |
+    | parameters |N/A |
 
     如果希望在添加新节点时执行脚本，请选择 "**保留此脚本操作 ...** "。
 
-1. 选择“创建”。
+1. 选择**创建**。
 
 1. 等待执行成功。
 
-1. 按照与步骤3相同的步骤执行头节点上的脚本操作，但这一次使用节点类型：头.
+1. 按照与步骤3相同的步骤执行头节点上的脚本操作，但这一次使用节点类型： Head。
 
 1. 等待执行成功。
 
@@ -60,6 +60,6 @@ Linux 内核中的[bug](https://bugzilla.kernel.org/show_bug.cgi?id=199437)导�
 
 * 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 
-* 与[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帐户联系，通过将 Azure 社区连接到适当的资源来改进客户体验：答案、支持和专家。
+* 与[@AzureSupport](https://twitter.com/azuresupport) -通过将 Azure 社区连接到适当的资源来改进客户体验的官方 Microsoft Azure 帐户：答案、支持和专家。
 
-* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请查看[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+* 如果需要更多帮助，可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息，请查看[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。

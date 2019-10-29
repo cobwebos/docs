@@ -1,5 +1,5 @@
 ---
-title: 将 Apache Kafka 中的数据 Apache Spark Azure Cosmos DB-Azure HDInsight
+title: Apache Spark & Apache Kafka 与 Cosmos DB-Azure HDInsight
 description: 了解如何使用 Apache Spark 结构化流式处理从 Apache Kafka 读取数据，然后将数据存储到 Azure Cosmos DB 中。 本示例使用 Spark on HDInsight 中的 Jupyter 笔记本流式传输数据。
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0d8c6929705ab29ced25a847bf7c5a72d57aa49b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: faae65c6664123bd673711674a36edc928c74278
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037291"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044898"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>将 Apache Spark 结构化流式处理与 Apache Kafka 和 Azure Cosmos DB 配合使用
 
@@ -32,7 +32,7 @@ Spark 结构化流式处理是建立在 Spark SQL 上的流处理引擎。 这�
 
 ## <a name="create-the-clusters"></a>创建群集
 
-Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站的权限。 若要与 Kafka 通信，必须与 Kafka 群集中的节点在同一 Azure 虚拟网络中。 对于此示例，Kafka 和 Spark 群集都位于 Azure 虚拟网络中。 下图显示通信在群集之间的流动方式：
+Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站的权限。 与 Kafka 对话的任何内容都必须与 Kafka 群集中的节点位于同一 Azure 虚拟网络中。 对于此示例，Kafka 和 Spark 群集都位于 Azure 虚拟网络中。 下图显示通信在群集之间的流动方式：
 
 ![Azure 虚拟网络中的 Spark 和 Kafka 群集图表](./media/apache-kafka-spark-structured-streaming-cosmosdb/apache-spark-kafka-vnet.png)
 
@@ -71,7 +71,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     * **订阅**：选择 Azure 订阅。
 
-    * **资源组**：创建一个组或选择有个现有的组。 此组包含 HDInsight 群集。
+    * **资源组**：创建一个资源组或选择现有的资源组。 此组包含 HDInsight 群集。
 
     * **位置**：选择在地理上邻近的位置。
 
@@ -90,7 +90,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     * **SSH 用户名**：创建 Spark 和 Kafka 群集的 SSH 用户。
 
-    * **SSH 密码**：Spark 和 Kafka 群集的 SSH 用户的密码。
+    * **SSH 密码**：Spark 和 Kafka 群集的 SSH 用户密码。
 
 3. 阅读“条款和条件”，并选择“我同意上述条款和条件”。
 

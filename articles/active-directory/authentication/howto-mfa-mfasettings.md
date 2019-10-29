@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 10/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62ceff25b022866e47e6fdd488b01dd647cf550f
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: dfca7ef1dabb8c6021c9df2e3174d3e208a839b5
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808205"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042098"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 
@@ -114,6 +114,8 @@ ms.locfileid: "72808205"
 
 >[!NOTE]
 >通过公共电话网络拨打多重身份验证电话时，有时会通过不支持来电显示的运营商路由电话。 因此，尽管多重身份验证系统始终会发送呼叫号码，但并不保证会显示该号码。
+
+在美国中，如果尚未配置 MFA 呼叫方 ID，来自 Microsoft 的语音呼叫来自以下号码： + 1 （866） 539 4191、+ 1 （855） 330 8653 和 + 1 （877） 668 6536。 如果使用垃圾邮件筛选器，请确保排除这些号码。
 
 ### <a name="custom-voice-messages"></a>自定义语音消息
 
@@ -387,7 +389,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 多重身份验证用户可免费对其信任的设备和浏览器使用“记住多重身份验证”功能。 用户使用多重身份验证成功登录到设备后，可在指定天数内跳过后续验证。 此功能可以尽量减少用户须在同一设备上执行双重验证的次数，从而可以提高可用性。
 
 >[!IMPORTANT]
->请记住，如果帐户或设备遭到入侵，受信任的设备的多重身份验证可能影响安全性。 如果公司帐户受到安全威胁，或者受信任的设备已丢失或被盗，则应[在所有设备上还原多重身份验证](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user)。
+>请记住，如果帐户或设备遭到入侵，受信任的设备的多重身份验证可能影响安全性。 如果企业帐户遭到入侵，或者受信任的设备丢失或被盗，则应[吊销 MFA 会话](howto-mfa-userdevicesettings.md)。
 >
 >还原操作会撤销所有设备的受信任状态，需要用户重新执行双重验证。 还可以指示用户按照[管理双重验证设置](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)中的说明在其自己的设备上还原多重身份验证。
 

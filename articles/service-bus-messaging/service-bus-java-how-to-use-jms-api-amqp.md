@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/22/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: f1a679deca8ee33bb4801eb1d1023684a37d0f59
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: c0c7e8b6066626966e2a72d474306bae4ead14c2
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793161"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027227"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>将 Java 消息服务（JMS）用于 Azure 服务总线和 AMQP 1。0
 本文介绍了如何通过使用常用 Java 消息服务（JMS） API 标准的 Java 应用程序使用 Azure 服务总线消息传送功能（队列和发布/订阅主题）。 [本文](service-bus-amqp-dotnet.md)介绍如何使用 Azure 服务总线 .net API 来执行相同操作。 使用 AMQP 1.0，可以同时使用以下两个指南来了解跨平台消息。
@@ -344,7 +344,7 @@ MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ## <a name="jms-topics-vs-service-bus-topics"></a>JMS 主题与 Service Bus 主题
 通过 Java 消息服务（JMS） API 使用 Azure 服务总线主题和订阅提供基本的发送和接收功能。 即使服务总线主题不同于 JMS 主题，还需要进行少量调整，但在使用符合 JMS 的 Api 从其他消息代理移植应用程序时，这是一个方便的选择。 
 
-Azure 服务总线主题将消息路由到通过 Azure 资源管理接口、Azure 命令行工具或通过 Azure 门户管理的已命名、共享的持久订阅。 每个订阅最多允许2000个选择规则，其中每个都有一个筛选条件，而对于 SQL 筛选器，也可以是一个元数据转换操作。 每个筛选条件匹配都选择要复制到 tehj 订阅中的输入消息。  
+Azure 服务总线主题将消息路由到通过 Azure 资源管理接口、Azure 命令行工具或通过 Azure 门户管理的已命名、共享的持久订阅。 每个订阅最多允许2000个选择规则，其中每个都有一个筛选条件，而对于 SQL 筛选器，也可以是一个元数据转换操作。 每个筛选条件匹配都选择要复制到订阅中的输入消息。  
 
 从订阅接收消息与从队列接收消息完全相同。 每个订阅都有一个关联的死信队列，还可以自动将消息转发到另一个队列或主题。 
 

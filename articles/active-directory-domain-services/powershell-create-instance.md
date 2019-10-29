@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: iainfou
-ms.openlocfilehash: 163259af3797b652c9605c171447f4a7d2576c87
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 961b54a4d7c9caee98497e5d2b8db86284084d15
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842715"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023876"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>使用 PowerShell 启用 Azure Active Directory 域服务
 
@@ -26,7 +26,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本文，需要以下资源：
 
@@ -64,7 +64,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 创建*AAD DC 管理员*组后，使用[add-azureadgroupmember][Add-AzureADGroupMember] cmdlet 将该用户添加到该组。 首先，使用[get-azureadgroup][Get-AzureADGroup] Cmdlet 获取*AAD DC 管理员*组对象 Id，然后使用[get-azureaduser][Get-AzureADUser] cmdlet 获取所需用户的对象 id。
 
-在下面的示例中，具有 UPN 的`admin@contoso.onmicrosoft.com`帐户的用户对象 ID。 将此用户帐户替换为要添加到*AAD DC 管理员*组的用户的 UPN：
+在下面的示例中，`admin@contoso.onmicrosoft.com`的 UPN 的帐户的用户对象 ID。 将此用户帐户替换为要添加到*AAD DC 管理员*组的用户的 UPN：
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -81,7 +81,7 @@ $UserObjectId = Get-AzureADUser `
 Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjectId.ObjectId
 ```
 
-## <a name="create-supporting-azure-resources"></a>创建支持的 Azure 资源
+## <a name="create-supporting-azure-resources"></a>创建支持 Azure 资源
 
 首先，使用[AzResourceProvider][Register-AzResourceProvider] cmdlet 注册 Azure AD 域服务资源提供程序：
 
@@ -130,6 +130,12 @@ $Vnet= New-AzVirtualNetwork `
 
 现在，让我们创建一个 Azure AD DS 托管域。 设置你的 Azure 订阅 ID，然后为托管域提供一个名称，例如*contoso.com*。 可以使用[AzSubscription][Get-AzSubscription] cmdlet 获取订阅 ID。
 
+如果选择支持可用性区域的区域，则 Azure AD DS 资源会跨区域分布以实现额外的冗余。
+
+可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。
+
+对于要跨区域分布 Azure AD DS，无需进行任何配置。 Azure 平台会自动处理资源的区域分配。 有关详细信息并查看区域可用性，请参阅[Azure 中的哪些可用性区域？][availability-zones]。
+
 ```powershell
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
 $ManagedDomainName = "contoso.com"
@@ -148,11 +154,13 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 
 * 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。
     * 若要配置 DNS，请在门户中选择 Azure AD DS 托管域。 在 "**概述**" 窗口上，系统会提示自动配置这些 DNS 设置。
+* 如果在支持可用性区域的区域中创建了 Azure AD DS 托管域，请创建网络安全组，以限制 Azure AD DS 托管域的虚拟网络中的流量。 创建需要这些规则的 Azure 标准负载均衡器。 此网络安全组保护 Azure AD DS 以及托管域正常工作所需的网络安全组。
+    * 若要创建网络安全组和所需的规则，请在门户中选择 Azure AD DS 托管域。 在 "**概述**" 窗口上，系统会提示自动创建和配置网络安全组。
 * [启用 "密码同步" Azure AD 域服务](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，以便最终用户可以使用其公司凭据登录到托管域。
 
 ## <a name="complete-powershell-script"></a>完整的 PowerShell 脚本
 
-以下完整的 PowerShell 脚本结合了本文中所示的所有任务。 复制该脚本并将其保存到`.ps1`扩展名为的文件中。 在本地 PowerShell 控制台或[Azure Cloud Shell][cloud-shell]中运行脚本。
+以下完整的 PowerShell 脚本结合了本文中所示的所有任务。 复制该脚本并将其保存到扩展名为 `.ps1` 的文件中。 在本地 PowerShell 控制台或[Azure Cloud Shell][cloud-shell]中运行脚本。
 
 > [!NOTE]
 > 若要启用 Azure AD DS，你必须是 Azure AD 租户的全局管理员。 还需要在 Azure 订阅中至少具有*参与者*权限。
@@ -233,6 +241,8 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 
 * 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。
     * 若要配置 DNS，请在门户中选择 Azure AD DS 托管域。 在 "**概述**" 窗口上，系统会提示自动配置这些 DNS 设置。
+* 如果在支持可用性区域的区域中创建了 Azure AD DS 托管域，请创建网络安全组，以限制 Azure AD DS 托管域的虚拟网络中的流量。 创建需要这些规则的 Azure 标准负载均衡器。 此网络安全组保护 Azure AD DS 以及托管域正常工作所需的网络安全组。
+    * 若要创建网络安全组和所需的规则，请在门户中选择 Azure AD DS 托管域。 在 "**概述**" 窗口上，系统会提示自动创建和配置网络安全组。
 * [启用 "密码同步" Azure AD 域服务](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，以便最终用户可以使用其公司凭据登录到托管域。
 
 ## <a name="next-steps"></a>后续步骤
@@ -258,3 +268,4 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 [New-AzVirtualNetwork]: /powershell/module/Az.Network/New-AzVirtualNetwork
 [Get-AzSubscription]: /powershell/module/Az.Accounts/Get-AzSubscription
 [cloud-shell]: /azure/cloud-shell/cloud-shell-windows-users
+[availability-zones]: ../availability-zones/az-overview.md

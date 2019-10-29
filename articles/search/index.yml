@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Azure 认知搜索文档
+title: Azure 搜索文档
 summary: 专用异类内容上的云搜索，带有用于 AI 扩充的选项（如果内容为非结构化内容或内容在采用其原始格式时无法搜索）。
 metadata:
-  title: Azure 认知搜索文档
+  title: Azure 搜索文档
   description: 专用异类内容上的云搜索，带有用于 AI 扩充的选项（如果内容为非结构化内容或内容在采用其原始格式时无法搜索）。
   services: search
   ms.service: service
@@ -11,26 +11,26 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 09/20/2019
-  ms.openlocfilehash: 5bf7ec2b629fc765ef5c6393b042b608a48ec804
-  ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+  ms.openlocfilehash: 5521f784704fe4d97ed30de0ec5367b9b4bb4f5f
+  ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/23/2019
+  ms.lasthandoff: 10/29/2019
   ms.locfileid: "72790059"
 landingContent:
-- title: 关于认知搜索
+- title: 关于 Azure 搜索
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure 认知搜索是什么？
+    - text: 什么是 Azure 搜索？
       url: search-what-is-azure-search.md
   - linkListType: architecture
     links:
-    - text: 全文搜索在认知搜索中如何工作
+    - text: Azure 搜索中全文搜索的工作原理
       url: search-lucene-query-architecture.md
   - linkListType: video
     links:
-    - text: 什么是认知搜索（1 分 27 秒）
+    - text: 什么是 Azure 搜索（1 分 27 秒）
       url: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
 - title: 入门
   linkLists:
@@ -42,13 +42,9 @@ landingContent:
       url: search-get-started-portal.md
     - text: 创建扩充管道
       url: cognitive-search-quickstart-blob.md
-  - linkListType: tutorial
-    links:
-    - text: 创建应用
-      url: tutorial-csharp-create-first-app.md
   - linkListType: learn
     links:
-    - text: Azure 认知搜索简介
+    - text: Azure 搜索简介
       url: https://docs.microsoft.com/learn/modules/intro-to-azure-search/
 - title: 与 Blob 存储配合使用
   linkLists:
@@ -76,6 +72,10 @@ landingContent:
       url: search-indexer-overview.md
   - linkListType: how-to-guide
     links:
+    - text: 从 Blob 存储编制索引
+      url: search-howto-indexing-azure-blob-storage.md
+    - text: 为 JSON Blob 创建索引
+      url: search-howto-index-json-blobs.md
     - text: 从 Azure SQL 数据库编制索引
       url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
     - text: 从 Cosmos DB 数据编制索引
@@ -90,7 +90,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: AI 扩充管道
+    - text: 什么是认知搜索？
       url: cognitive-search-concept-intro.md
     - text: 技能集
       url: cognitive-search-defining-skillset.md
@@ -108,7 +108,7 @@ landingContent:
       url: knowledge-store-create-portal.md
   - linkListType: reference
     links:
-    - text: 内置技能
+    - text: 预定义技能
       url: cognitive-search-predefined-skills.md
 - title: 查询数据
   linkLists:

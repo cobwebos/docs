@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: evansma
-ms.openlocfilehash: 9cded164b63bbb72e4a353e9a542c9e054c14d93
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b1ec40485e775b7e50b5f7d82014aef77f14fb3e
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821142"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025276"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS 履单 Api，版本2 
 
@@ -87,7 +87,7 @@ Azure SaaS 管理 SaaS 订阅购买的整个生命周期。 它使用履单 Api 
 | `offerId`                | 每个产品/服务的唯一字符串标识符（例如： "offer1"）。  |
 | `planId`                 | 每个计划/SKU （例如： "白银"）的唯一字符串标识符。 |
 | `operationId`            | 特定操作的 GUID 标识符。  |
-|  `action`                | 对资源执行的操作，`unsubscribe`、`suspend`、`reinstate` 或 `changePlan`，`changeQuantity` `transfer`。  |
+|  `action`                | 对资源执行的操作，`Unsubscribe`、`Suspend`、`Reinstate`或 `ChangePlan`，`ChangeQuantity``Transfer`。 |
 |   |   |
 
 全局唯一标识符（[guid](https://en.wikipedia.org/wiki/Universally_unique_identifier)）是通常自动生成的128位（32-十六进制）数字。 
@@ -707,7 +707,7 @@ Request Body:
 
 #### <a name="get-operation-status"></a>获取操作状态
 
-允许发布服务器跟踪指定的触发异步操作的状态（例如 `subscribe`、`unsubscribe`、`changePlan` 或 `changeQuantity`）。
+允许发布服务器跟踪指定的触发异步操作的状态（例如 `Subscribe`、`Unsubscribe`、`ChangePlan`或 `ChangeQuantity`）。
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>获取<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -850,11 +850,11 @@ Response body:
 }
 ```
 其中，操作可以是以下项之一： 
-- `unsubscribe` （删除资源时）
-- `changePlan` （更改计划操作完成后）
-- `changeQuantity` （更改数量操作完成后）
-- `suspend` （资源挂起时）
-- `reinstate` （挂起后恢复资源后）
+- `Unsubscribe` （删除资源时）
+- `ChangePlan` （更改计划操作完成后）
+- `ChangeQuantity` （更改数量操作完成后）
+- `Suspend` （资源挂起时）
+- `Reinstate` （挂起后恢复资源后）
 
 其中，状态可以是下列其中一项： 
 - **NotStarted** <br>

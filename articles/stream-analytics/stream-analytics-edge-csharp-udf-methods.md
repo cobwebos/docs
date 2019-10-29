@@ -8,18 +8,28 @@ manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: 835eeaa0036d824a65918102ab7a00c3cf236931
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 0bc59ac3e55466f8ac06a3a8fa9cf08fecbb5ce3
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72988396"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024952"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>为 Azure 流分析作业开发 .NET Standard 用户定义的函数（预览版）
 
 Azure 流分析提供类似 SQL 的查询语言，用于对事件数据流执行转换和计算。 其中有许多内置函数，但在某些复杂的情况下需要更大的灵活性。 通过使用 .NET Standard 用户定义函数 (UDF)，可以调用以任何 .NET Standard 语言（C#、F# 等）编写的自己的函数来扩展流分析查询语言。 UDF 可用于执行复杂的数学计算，使用 ML.NET 导入自定义 ML 模型，并对丢失的数据使用自定义插补逻辑。 流分析作业的 UDF 功能目前处于预览阶段，不应在生产工作负荷中使用。
+
+适用于云作业的 .NET 用户定义功能在中提供：
+* 美国中部（可用）
+* 北欧（可用）
+* 美国东部（可用）
+* 美国西部（即将推出）
+* 美国东部2（即将推出）
+* 西欧（即将推出）
+
+如果你有兴趣在任何其他区域中使用此功能，则可以[请求访问](https://aka.ms/ccodereqregion)。
 
 ## <a name="overview"></a>概述
 Azure 流分析的 Visual Studio 工具可用于轻松编写 UDF、在本地（甚至脱机）测试作业，并将流分析作业发布到 Azure。 发布到 Azure 后，可以使用 IoT 中心将作业部署到 IoT 设备。

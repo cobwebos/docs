@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: ad9bb5c135684c4573195298fb8e55a08208f6b6
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 5e8dc6629cfbbc3e42aeeb4dc94f33d13867ca9f
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785822"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024794"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure 事件网格中的事件源
 
@@ -38,7 +38,7 @@ ms.locfileid: "67785822"
 
 |标题 |描述  |
 |---------|---------|
-| [快速入门：发送容器注册表事件](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 介绍如何使用 Azure CLI 发送容器注册表事件。 |
+| [快速入门：发送容器注册表事件](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 展示了如何使用 Azure CLI 发送容器注册表事件。 |
 | [事件架构](event-schema-container-registry.md) | 显示容器注册表事件中的字段。 |
 
 ## <a name="custom-topics"></a>自定义主题
@@ -74,7 +74,7 @@ ms.locfileid: "67785822"
 
 ## <a name="iot-hub"></a>IoT 中心
 
-订阅到 IoT 中心事件来响应创建，已删除、 连接、 断开连接的设备和遥测事件。
+订阅 IoT 中心事件以响应创建、删除、连接、断开连接和遥测事件的设备。
 
 |标题  |描述  |
 |---------|---------|
@@ -82,6 +82,18 @@ ms.locfileid: "67785822"
 | [使用事件网格来触发操作，对 IoT 中心事件进行响应](../iot-hub/iot-hub-event-grid.md) | 概述 IoT 中心与事件网格的集成。 |
 | [事件架构](event-schema-iot-hub.md) | 说明 IoT 中心事件中的字段。 |
 | [订阅设备已连接和设备已断开连接事件](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | 显示如何订阅设备连接状态事件。 |
+
+## <a name="key-vault-preview"></a>Key Vault （预览）
+
+与事件网格的 Key Vault 集成目前处于预览阶段。 
+
+订阅要在机密即将过期、机密过期或机密具有可用的新版本时通知的 Key Vault 事件。 
+
+|标题  |描述  |
+|---------|---------|
+| [通过 Azure 事件网格监视 Key Vault 事件](../key-vault/event-grid-overview.md) | 将 Key Vault 与事件网格集成的概述。 |
+| [教程：用事件网格创建和监视 Key Vault 事件](../key-vault/event-grid-tutorial.md) | 了解如何为 Key Vault 设置事件网格通知。 |
+| [事件架构](event-schema-key-vault.md) | 显示 Key Vault 事件中的字段。 |
 
 ## <a name="media-services"></a>媒体服务
 
@@ -114,10 +126,10 @@ ms.locfileid: "67785822"
 |标题  |描述  |
 |---------|---------|
 | [教程：Azure 服务总线到 Azure 事件网格集成示例](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 事件网格将消息从服务总线主题发送到函数应用和逻辑应用。 |
-| [概述：Azure 服务总线到事件网格的集成](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | 概述服务总线与事件网格的集成。 |
+| [概述：Azure 服务总线与事件网格的集成](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | 概述服务总线与事件网格的集成。 |
 | [事件架构](event-schema-service-bus.md) | 说明服务总线事件中的字段。 |
 
-## <a name="storage"></a>存储
+## <a name="storage"></a>存储空间
 
 订阅 Blob 存储事件即可响应创建的 Blob 和删除的事件。
 
@@ -138,26 +150,26 @@ ms.locfileid: "67785822"
 |标题  |描述  |
 |---------|---------|
 | [使用事件网格对 Azure Maps 事件做出响应](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 概述了 Azure Maps 与事件网格的集成。 |
-| [教程：设置地理围栏](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 本教程将引导你完成使用 Azure Maps 设置地理围栏的基本步骤。 你将使用 Azure 事件网格来流式传输地理围栏结果，并根据地理围栏结果设置通知。 |
+| [教程：设置地域隔离区内](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 本教程将引导你完成使用 Azure Maps 设置地域隔离区的基本步骤。 你将使用 Azure 事件网格来流式传输地理围栏结果，并根据地理围栏结果设置通知。 |
 | [事件架构](event-schema-azure-maps.md) | 显示了 Azure Maps 事件中的字段。 |
 
-## <a name="app-configuration"></a>应用配置
-订阅 Azure 应用程序配置事件以响应键-值修改事件。
+## <a name="app-configuration"></a>应用程序配置
+订阅 Azure 应用配置事件以响应键值修改事件。
 
 |标题 | 描述 |
 |---------|---------|
-| [对 Azure 应用程序配置事件通过事件网格做出响应](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 将 Azure 应用程序配置与事件网格集成的概述。 |
-| [快速入门： 将 Azure 应用程序配置事件路由到自定义 web 终结点使用 Azure CLI](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 演示如何使用 Azure CLI 将 Azure 应用程序配置事件发送到 WebHook。 |
-| [事件架构](event-schema-app-configuration.md) | 在 Azure 应用程序配置事件中显示字段。 |
+| [使用事件网格响应 Azure 应用配置事件](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 将 Azure 应用配置与事件网格集成的概述。 |
+| [快速入门：使用 Azure CLI 将 Azure 应用配置事件路由到自定义 web 终结点](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 演示如何使用 Azure CLI 向 WebHook 发送 Azure 应用配置事件。 |
+| [事件架构](event-schema-app-configuration.md) | 显示 Azure 应用配置事件中的字段。 |
 
 ## <a name="azure-signalr"></a>Azure SignalR
-订阅 Azure SignalR 服务事件以响应客户端连接事件。
+订阅 Azure SignalR 服务事件，以响应客户端连接事件。
 
 |标题 | 描述 |
 |---------|---------|
-| [对 Azure SignalR 服务事件通过事件网格做出响应](../azure-signalr/signalr-concept-event-grid-integration.md) | 与事件网格集成 Azure SignalR 服务的概述。 |
-| [如何将 Azure SignalR 服务事件发送到事件网格](../azure-signalr/signalr-howto-event-grid-integration.md) | 演示如何将 Azure SignalR 服务事件发送到通过事件网格的应用程序。 |
-| [事件架构](event-schema-azure-signalr.md) | Azure SignalR 服务事件中显示字段。 |
+| [使用事件网格响应 Azure SignalR 服务事件](../azure-signalr/signalr-concept-event-grid-integration.md) | 将 Azure SignalR 服务与事件网格集成概述。 |
+| [如何将 Azure SignalR 服务事件发送到事件网格](../azure-signalr/signalr-howto-event-grid-integration.md) | 演示如何通过事件网格将 Azure SignalR 服务事件发送到应用程序。 |
+| [事件架构](event-schema-azure-signalr.md) | 显示 Azure SignalR 服务事件中的字段。 |
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: HDInsight 中的 Azure Active Directory 企业安全性套餐
+title: Azure AD-Azure HDInsight 的企业安全性
 description: 了解如何使用 Azure Active Directory 域服务设置和配置 HDInsight 企业安全性套餐群集。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 10/02/2019
-ms.openlocfilehash: 448b2674aa6021107d138bc0d91f1bda399eb4a6
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: d31de590d8dc40ff3d5c1dfab060ee4f045ba4d1
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755902"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044667"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>在 HDInsight 中企业安全性套餐配置与 Azure Active Directory 域服务
 

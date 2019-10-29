@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: 0a1051d67bf45e96f82833ef8190008204cdc90b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 10/29/2019
 ms.locfileid: "72387532"
 ---
 # <a name="mapping-data-flow-parameters"></a>映射数据流参数
@@ -50,7 +50,7 @@ ms.locfileid: "72387532"
 
 ![设置数据流参数](media/data-flow/parameter-assign.png "设置数据流参数")
 
-如果您的参数数据类型为 string，则当您单击该文本框来设置参数值时，您可以选择输入管道或数据流表达式。 如果选择 "管道表达式"，将会显示 "管道表达式" 面板。 请确保将管道函数包含在使用 @no__t 0 的字符串内插语法中，例如：
+如果您的参数数据类型为 string，则当您单击该文本框来设置参数值时，您可以选择输入管道或数据流表达式。 如果选择 "管道表达式"，将会显示 "管道表达式" 面板。 请确保在使用 `'@{<expression>}'`的字符串内插语法中包含管道函数，例如：
 
 ```'@{pipeline().RunId}'```
 

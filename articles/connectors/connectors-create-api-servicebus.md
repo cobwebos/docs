@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 0cf5486e77e69f83973f7e62669e5ab45d1c94a2
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 477fdc2291d875c57bfb0ae3cb87b6df9bd41398
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679191"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024298"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure 逻辑应用和 Azure 服务总线在云中交换消息
 
@@ -79,7 +79,7 @@ ms.locfileid: "72679191"
 
    所有服务总线触发器都是*长轮询*触发器。 此说明表示当触发器触发时，触发器将处理所有消息，然后等待30秒，以等待更多消息出现在队列或主题订阅中。 如果在 30 秒内未显示任何消息，则会跳过触发器运行。 否则，该触发器将继续读取消息，直到队列或主题订阅为空。 下一次触发器轮询将基于在触发器的属性中指定的重复周期间隔。
 
-   某些触发器（例如，**当一个或多个消息到达队列（自动完成）触发器时）** 可以返回一条或多条消息。 当这些触发器触发时，它们会返回一个，以及触发器的**最大消息计数**属性指定的消息数。
+   某些触发器（如一条**或多条消息到达队列（自动完成）** 触发器）可以返回一条或多条消息。 当这些触发器触发时，它们会返回一个，以及触发器的**最大消息计数**属性指定的消息数。
 
 1. 如果触发器首次连接到服务总线命名空间，请在逻辑应用设计器提示你提供连接信息时执行以下步骤。
 

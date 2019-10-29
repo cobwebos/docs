@@ -9,18 +9,15 @@ ms.date: 10/02/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: d61dc9d49053cb8a125362ac492f354fb64b79a5
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 851b5607ad5413cd1a594f788cb294ee7790e8eb
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992166"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043165"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>教程：响应 IoT Edge 上的 Blob 存储事件（预览版）
-
-本文说明如何使用事件网格本地响应 IoT Edge 上的 Blob 创建和 Blob 删除事件。
-
-常见的 Blob 存储事件方案包括图像或视频处理、搜索索引或任何面向文件的工作流。 异步文件上传十分适合事件。 基于事件的体系结构对于鲜少更改，但要求立即响应的情况尤为有效。
+本文介绍如何在 IoT 模块上部署 Azure Blob 存储，该模块将充当事件网格发布者，以将 Blob 创建和 Blob 删除事件发送到事件网格。  
 
 有关 IoT Edge 上的 Azure Blob 存储的概述，请参阅[IoT Edge 及其功能上的 Azure Blob 存储](../../iot-edge/how-to-store-data-blob.md)。
 

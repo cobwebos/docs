@@ -1,5 +1,5 @@
 ---
-title: 使用 Apache Ambari 视图操作 Hive on HDInsight (Apache Hadoop) - Azure
+title: 在 Azure HDInsight 中将 Apache Ambari Hive 视图与 Apache Hadoop 配合使用
 description: 了解如何在 Web 浏览器中使用 Hive 视图提交 Hive 查询。 Hive 视图是基于 Linux 的 HDInsight 群集随附提供的 Ambari Web UI 的一部分。
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: da4d1ed7dec8b3b0bc61dd2959a868d03875039c
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 5063be247b2ad51dc8888f8512f523ccf2b0174c
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077015"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044813"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>将 Apache Ambari Hive 视图与 HDInsight 中的 Apache Hadoop 配合使用
 
@@ -21,14 +21,14 @@ ms.locfileid: "71077015"
 
 了解如何使用 Apache Ambari Hive 视图运行 Hive 查询。 Hive 视图允许从 Web 浏览器创作、优化和运行 Hive 查询。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 * Web 浏览器
 
 ## <a name="run-a-hive-query"></a>运行 Hive 查询
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择群集。  有关说明，请参阅[列出和显示群集](../hdinsight-administer-use-portal-linux.md#showClusters)。 将在新的门户边栏选项卡中打开群集。
+1. 在[Azure 门户](https://portal.azure.com/)中，选择群集。  有关说明，请参阅[列出和显示群集](../hdinsight-administer-use-portal-linux.md#showClusters)。 将在新的门户边栏选项卡中打开群集。
 
 2. 从**群集仪表板**中，选择 " **Ambari 视图**"。 当提示进行身份验证时，请使用在创建群集时所提供的群集登录名（默认为 `admin`）帐户名称和密码。
 
@@ -150,7 +150,7 @@ add jar /myudfs.jar;
 create temporary function myawesomeudf as 'com.myudfs.Awesome';
 ```
 
-然后可在查询中使用 UDF。 例如， `SELECT myawesomeudf(name) FROM people;` 。
+然后可在查询中使用 UDF。 例如，`SELECT myawesomeudf(name) FROM people;` 。
 
 有关如何在 HDInsight 中将 UDF 与 Hive 配合使用的详细信息，请参阅以下文章：
 
@@ -170,4 +170,4 @@ create temporary function myawesomeudf as 'com.myudfs.Awesome';
 有关 HDInsight 上的 Hadoop 的其他使用方法的信息：
 
 * [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
-* [将 MapReduce 与 HDInsight 上的 Apache Hadoop 配合使用](hdinsight-use-mapreduce.md)
+* [将 MapReduce 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-mapreduce.md)

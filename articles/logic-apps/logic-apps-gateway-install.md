@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/18/2019
-ms.openlocfilehash: 7533b391917175fd9dea395f58906a9f78a61488
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 6467937e2aca08e234cb136c5f610503627921fb
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675690"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042225"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
@@ -89,15 +89,15 @@ ms.locfileid: "72675690"
 
 1. 安装程序打开后，选择 "**下一步**"。
 
-   ![安装程序简介](./media/logic-apps-gateway-install/gateway-intro-screen.png)
+   ![网关安装程序简介屏幕](./media/logic-apps-gateway-install/gateway-intro-screen.png)
 
 1. 选择 **"本地数据网关（推荐）** "，这是标准模式，然后选择 "**下一步**"。
 
-   ![选择网关模式](./media/logic-apps-gateway-install/select-gateway-mode.png)
+   ![选择数据网关的运行模式](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
 
 1. 查看最低要求，保留默认的安装路径，接受使用条款，然后选择 "**安装**"。
 
-   ![查看要求并接受使用条款](./media/logic-apps-gateway-install/accept-terms.png)
+   ![查看要求并接受使用条款](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
 
 1. 成功安装网关后，提供 Azure 帐户的电子邮件地址，然后选择 "**登录**"，例如：
 
@@ -107,7 +107,7 @@ ms.locfileid: "72675690"
 
 1. 选择 **"在此计算机上注册新网关  > "** **下一步**"。 此步骤将你的网关安装注册到[网关云服务](#gateway-cloud-service)。
 
-   ![注册网关](./media/logic-apps-gateway-install/register-gateway.png)
+   ![在本地计算机上注册网关](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
 1. 提供网关安装的以下信息：
 
@@ -115,7 +115,7 @@ ms.locfileid: "72675690"
    * 要使用的恢复密钥必须至少包含八个字符
    * 确认恢复密钥
 
-   ![安装网关](./media/logic-apps-gateway-install/set-up-gateway.png)
+   ![为网关安装提供信息](./media/logic-apps-gateway-install/gateway-name-recovery-key.png)
 
    > [!IMPORTANT]
    > 请将恢复密钥保存在安全位置。 如果要更改位置、移动、恢复或接管网关安装，则需要此密钥。
@@ -124,7 +124,7 @@ ms.locfileid: "72675690"
 
 1. 检查网关云服务和[Azure 服务总线](https://azure.microsoft.com/services/service-bus/)的区域，该区域用于网关安装。 默认情况下，此区域与你的 Azure 帐户的 Azure AD 租户位于同一位置。
 
-   ![检查区域](./media/logic-apps-gateway-install/check-region.png)
+   ![确认网关服务和服务总线的区域](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
 1. 若要接受默认区域，请选择 "**配置**"。 但是，如果默认区域不是最接近你的区域，则可以更改区域。
 
@@ -134,15 +134,15 @@ ms.locfileid: "72675690"
 
    1. 在当前区域的旁边，选择“更改区域”。
 
-      ![更改区域](./media/logic-apps-gateway-install/change-region.png)
+      ![更改当前网关区域](./media/logic-apps-gateway-install/change-gateway-service-region.png)
 
    1. 在下一页上，打开 "**选择区域**" 列表，选择所需的区域，然后选择 "**完成**"。
 
-      ![选择其他区域](./media/logic-apps-gateway-install/select-region-gateway-install.png)
+      ![为网关服务选择另一个区域](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
 1. 查看最终确认窗口中的信息。 此示例对逻辑应用、Power BI、PowerApps 和 Microsoft Flow 使用同一帐户，因此该网关适用于所有这些服务。 准备就绪后，选择 "**关闭**"。
 
-   ![已完成网关安装](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
+   ![确认数据网关信息](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
 1. 现在，请[为网关安装创建 Azure 资源](../logic-apps/logic-apps-gateway-connection.md)。
 
@@ -185,7 +185,7 @@ ms.locfileid: "72675690"
 
 1. 从可用群集和网关中选择，并输入所选网关的恢复密钥，例如：
 
-   ![选择网关](./media/logic-apps-gateway-install/select-existing-gateway.png)
+   ![选择 "网关" 并提供恢复密钥](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
 1. 若要更改区域，请选择 "**更改区域**"，然后选择新的区域。
 
@@ -270,9 +270,9 @@ Microsoft 云服务使用[Azure AD](../active-directory/fundamentals/active-dire
 
 有关详细信息，请参阅以下主题：
 
-* [本地数据网关常见问题解答](/data-integration/gateway/service-gateway-onprem-faq)
-* [本地数据网关故障排除](/data-integration/gateway/service-gateway-tshoot)
-* [监视和优化网关性能](/data-integration/gateway/service-gateway-performance)
+* [本地数据网关常见问题解答](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
+* [本地数据网关故障排除](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [监视和优化网关性能](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>后续步骤
 

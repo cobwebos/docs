@@ -130,8 +130,6 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: 资源
   items:
-    - name: API 参考文档
-      href: 'https://go.microsoft.com/fwlink/?linkid=2109131'
     - name: 客户数据请求
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: 支持的浏览器

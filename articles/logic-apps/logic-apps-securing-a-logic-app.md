@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: f9b23e00c954e8babb1fe920bca1aa2ea5f9298e
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b219eb50254ecd347f731d332c3236be028834ba
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799491"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73045026"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure 逻辑应用中的安全访问和数据
 
@@ -266,11 +266,11 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
 
-   ![打开示例逻辑应用](./media/logic-apps-securing-a-logic-app/sample-logic-app.png)
+   ![在逻辑应用设计器中打开逻辑应用](./media/logic-apps-securing-a-logic-app/open-sample-logic-app-in-designer.png)
 
 1. 在要保护数据的触发器或操作上，选择省略号（ **...** ）按钮，然后选择 "**设置**"。
 
-   ![打开 "设置"](./media/logic-apps-securing-a-logic-app/open-settings.png)
+   ![打开触发器或操作设置](./media/logic-apps-securing-a-logic-app/open-action-trigger-settings.png)
 
 1. 启用**安全输入**和/或**安全输出**。 完成后，选择“完成”。
 
@@ -278,11 +278,11 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
    操作或触发器现在在标题栏中显示锁定图标。
 
-   ![标题栏上的锁定图标](./media/logic-apps-securing-a-logic-app/title-bar-lock-icon.png)
+   ![操作或触发器标题栏显示锁定图标](./media/logic-apps-securing-a-logic-app/lock-icon-action-trigger-title-bar.png)
 
    表示以前操作的安全输出的标记也显示锁图标。 例如，从 "动态内容" 列表中选择要在操作中使用的此类输出时，该令牌将显示一个锁状图标。
 
-   ![选择输出](./media/logic-apps-securing-a-logic-app/select-secured-token.png)
+   ![为安全输出选择标记](./media/logic-apps-securing-a-logic-app/select-secured-token.png)
 
 1. 逻辑应用运行后，可以查看该运行的历史记录。
 
@@ -292,7 +292,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
       如果选择保护输入和输出，则这些值现在显示为隐藏。
 
-      ![运行历史记录中隐藏的数据](./media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
+      ![运行历史记录中隐藏的输入和输出](./media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
 
 <a name="secure-data-code-view"></a>
 
@@ -349,7 +349,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
   在触发器或操作中手动启用**安全输入**时，逻辑应用将在运行历史记录中保护这些输入。 如果下游操作显式使用该触发器或操作的可见输出作为输入，则逻辑应用会在运行历史记录中隐藏此下游操作的输入，但*不会*在此操作中启用**安全输入**，并且不会隐藏此操作的输出.
 
-  ![受保护的输入和下游对大多数操作的影响](./media/logic-apps-securing-a-logic-app/secure-inputs-flow.png)
+  ![受保护的输入和下游对大多数操作的影响](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
 
   如果撰写、分析 JSON 和响应操作显式使用具有受保护输入的触发器或操作中的可见输出，则逻辑应用会隐藏这些操作的输入和输出，但*不会启用*这些操作的**安全输入**将. 如果下游操作显式使用来自撰写的隐藏输出，分析 JSON 或响应操作作为输入，则逻辑应用*不会隐藏此下游操作的输入或输出*。
 

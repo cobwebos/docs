@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: ea6de5f42910457efa5ca6c458d7af63faa38e18
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 2392eb1f02ede13aca88419c00ea33ae38cfd8ab
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637748"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023891"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 
@@ -43,10 +43,19 @@ ms.locfileid: "68637748"
 
 ### <a name="v2-builds"></a>v2 版本
 
-### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
-* 改进了负载均衡策略, 适用于获得所有租约所用时间超过租约过期时间间隔的情况, 例如, 由于网络问题:
-  * 在此方案中, 用于将租约视为过期的负载平衡算法将导致活动所有者盗取租约。 这可能导致不必要地重新平衡大量租约。
-  * 在此版本中, 此问题已修复, 方法是避免在获取过期租约时重试, 而不会更改所有者, 并 posponing 获取过期租约以进行下一次负载平衡迭代。
+### <a name="a-name228228"></a><a name="2.2.8"/>2.2。8
+* 稳定性和诊断改进：
+  * 添加了对检测长时间的读取更改源的支持。 当时间比 `ChangeFeedProcessorOptions.ChangeFeedTimeout` 属性指定的值长时，将执行以下步骤：
+    * 在有问题的分区上读取更改源的操作将中止。
+    * 更改源处理器实例会丢弃问题租约的所有权。 将由相同或不同的更改源处理器实例完成的下一次租约获取步骤期间选取丢弃的租约。 这样一来，就可以开始读取更改源。
+    * 向运行状况监视器报告问题。 默认 heath 监视器将报告的所有问题发送到跟踪日志。
+  * 添加了新的公共属性： `ChangeFeedProcessorOptions.ChangeFeedTimeout`。 此属性的默认值为10分钟。
+  * 添加了新的公共枚举值： `Monitoring.MonitoredOperation.ReadChangeFeed`。 当 `HealthMonitoringRecord.Operation` 的值设置为 `Monitoring.MonitoredOperation.ReadChangeFeed`时，它指示运行状况问题与读取更改源相关。
+
+### <a name="a-name227227"></a><a name="2.2.7"/>2.2。7
+* 改进了负载均衡策略，适用于获得所有租约所用时间超过租约过期时间间隔的情况，例如，由于网络问题：
+  * 在此方案中，用于将租约视为过期的负载平衡算法将导致活动所有者盗取租约。 这可能导致不必要地重新平衡大量租约。
+  * 在此版本中，此问题已修复，方法是避免在获取过期租约时重试，而不会更改所有者，并 posponing 获取过期租约以进行下一次负载平衡迭代。
 
 ### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
 * 改进了对观察者异常的处理。
@@ -76,7 +85,7 @@ ms.locfileid: "68637748"
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 * 添加了对已分区租用集合的支持。 分区键必须定义为 /id。
-* 次要重大更改：IChangeFeedDocumentClient 接口和 ChangeFeedDocumentClient 类的方法都已更改为包括 RequestOptions 和 CancellationToken 参数。 IChangeFeedDocumentClient 是一个高级的扩展点，通过它可以提供文档客户端自定义实现以与更改源处理器结合使用，例如修饰 DocumentClient 并截获对它的所有调用以进行额外跟踪和错误处理等等。利用此更新，实现 IChangeFeedDocumentClient 的代码将需要更改为在实现中包含新参数。
+* 次要重大更改：IChangeFeedDocumentClient 接口和 ChangeFeedDocumentClient 类的方法都已更改为包括 RequestOptions 和 CancellationToken 参数。 IChangeFeedDocumentClient 是一种高级扩展点，使你可以提供文档客户端的自定义实现，以便与更改源处理器一起使用，例如，修饰 DocumentClient 并截获对它的所有调用以执行额外的跟踪、错误处理等.在此更新中，实现 IChangeFeedDocumentClient 的代码将需要更改为包括实现中的新参数。
 * 次要诊断改进。
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
@@ -168,8 +177,9 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 <br/>
 
-| Version | 发布日期 | 停用日期 |
+| 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.2.8](#2.2.8) |2019年10月28日 |--- |
 | [2.2.7](#2.2.7) |2019 年 5 月 14 日 |--- |
 | [2.2.6](#2.2.6) |2019 年 1 月 29 日 |--- |
 | [2.2.5](#2.2.5) |2018 年 12 月 13 日 |--- |
@@ -185,10 +195,10 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 | [1.1.0](#1.1.0) |2017 年 8 月 13 日 |--- |
 | [1.0.0](#1.0.0) |2017 年 7 月 7 日 |--- |
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 若要了解有关 Cosmos DB 的详细信息，请参阅 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服务页。

@@ -1,5 +1,5 @@
 ---
-title: 适用于 Visual Studio 的 Data Lake 工具 Apache Hive-Azure HDInsight
+title: 适用于 Visual Studio 的 Apache Hive & Data Lake 工具-Azure HDInsight
 description: 了解如何使用用于 Visual Studio 的 Data Lake 工具，通过 Azure HDInsight 上的 Apache Hadoop 运行 Apache Hive 查询。
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1e5e3854f0b132ede38e182f99435a569c04d49e
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 37652a8ca9750e6b33bd2744bda386eaba92b025
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076283"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044530"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具运行 Apache Hive 查询
 
@@ -39,33 +39,33 @@ ms.locfileid: "71076283"
 
 ### <a name="ad-hoc"></a>即席
 
-即席查询可以**批处理**或**交互式**模式执行。
+即席查询可以在**批处理**模式或**交互**模式下执行。
 
-1. 打开 **Visual Studio**。
+1. 打开**Visual Studio**。
 
-2. 在“服务器资源管理器”中，导航到“Azure” > “HDInsight”。
+2. 在**服务器资源管理器**中，导航到**Azure** > **HDInsight**。
 
-3. 展开“HDInsight”，右键单击要运行查询的群集，然后选择“编写 Hive 查询”。
+3. 展开 " **HDInsight**"，右键单击要运行查询的群集，然后选择 "**编写 Hive 查询**"。
 
-4. 输入以下 Hive 查询：
+4. 输入以下 hive 查询：
 
     ```hql
     SELECT * FROM hivesampletable;
     ```
 
-5. 选择“执行”。 请注意，执行模式默认设置为“交互式”。
+5. 选择“执行”。 请注意，执行模式默认为 "**交互**"。
 
     ![执行交互式 Hive 查询的屏幕截图](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
 
-6. 若要以**批处理**模式下运行同一查询，请将下拉列表从“交互式”切换到“批处理”。 请注意，执行按钮将从“执行”更改为“提交”。
+6. 若要在**批处理**模式下运行相同的查询，请将下拉列表从 "**交互式**" 切换到 "**批处理**"。 请注意，"执行" 按钮将从 "**执行**" 更改为 "**提交**"。
 
     ![提交 Hive 查询的屏幕截图](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
 
-    Hive 编辑器支持 IntelliSense。 用于 Visual Studio 的 Data Lake 工具支持在编辑 Hive 脚本时加载远程元数据。 例如，如果键入 `SELECT * FROM`，则 IntelliSense 会列出所有建议的表名称。 在指定表名称后，IntelliSense 会列出列名称。 这些工具支持大多数 Hive DML 语句、子查询和内置 UDF。 IntelliSense 只建议 HDInsight 工具栏中所选群集的元数据。
+    Hive 编辑器支持 IntelliSense。 用于 Visual Studio 的 Data Lake 工具支持在编辑 Hive 脚本时加载远程元数据。 例如，如果键入 `SELECT * FROM`，IntelliSense 将列出所有建议的表名称。 在指定表名称后，IntelliSense 会列出列名称。 这些工具支持大多数 Hive DML 语句、子查询和内置 UDF。 IntelliSense 只建议 HDInsight 工具栏中所选群集的元数据。
 
-    ![HDInsight Visual Studio Tools IntelliSense 示例 1 的屏幕截图](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-table-name.png "U-SQL IntelliSense")
+    ![HDInsight Visual Studio Tools IntelliSense 示例1的屏幕截图](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-table-name.png "U-SQL IntelliSense")
    
-    ![HDInsight Visual Studio Tools IntelliSense 示例 2 的屏幕截图](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-column-name.png "U-SQL IntelliSense")
+    ![HDInsight Visual Studio Tools IntelliSense 示例2的屏幕截图](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-column-name.png "U-SQL IntelliSense")
 
 7. 选择“提交”或“提交(高级)”。
 
@@ -75,13 +75,13 @@ ms.locfileid: "71076283"
 
 ### <a name="hive-application"></a>Hive 应用程序
 
-1. 打开 **Visual Studio**。
+1. 打开**Visual Studio**。
 
-2. 在菜单栏中，导航到“文件” > “新建” > “项目”。
+2. 从菜单栏中，导航到 "**文件**" " > **新建** > **项目**"。
 
-3. 在“新建项目”窗口中，导航至“模板” > “Azure Data Lake” > “HIVE (HDInsight)” > “Hive 应用程序”。 
+3. 在 "**新建项目**" 窗口中，导航到 "**模板**" > **Azure Data Lake** > **hive （HDInsight > ）** **"。** 
 
-4. 提供此项目的名称，然后选择“确定”。
+4. 提供此项目的名称，然后选择 **"确定"** 。
 
 5. 打开使用此项目创建的 **Script.hql** 文件，并在其中粘贴以下 HiveQL 语句：
 
@@ -105,7 +105,7 @@ ms.locfileid: "71076283"
      >
      > 删除外部表**不会**删除数据，只会删除表定义。
 
-   * `ROW FORMAT`：让 Hive 知道数据的格式已如何进行了设置。 在此情况下，每个日志中的字段以空格分隔。
+   * `ROW FORMAT`：告知 Hive 如何设置数据的格式。 在此情况下，每个日志中的字段以空格分隔。
 
    * `STORED AS TEXTFILE LOCATION`：告知 Hive 数据已以文本形式存储在 example/data 目录中。
 
@@ -125,11 +125,11 @@ ms.locfileid: "71076283"
 
 ### <a name="additional-example"></a>其他示例
 
-此示例依赖于前一步骤中创建的 `log4jLogs` 表。
+此示例依赖于在上一步中创建的 `log4jLogs` 表。
 
-1. 在“服务器资源管理器”中，右键单击群集，然后选择“编写 Hive 查询”。
+1. 在**服务器资源管理器**中，右键单击群集，然后选择 "**编写 Hive 查询**"。
 
-2. 输入以下 Hive 查询：
+2. 输入以下 hive 查询：
 
     ```hql
     set hive.execution.engine=tez;
@@ -148,7 +148,7 @@ ms.locfileid: "71076283"
     
     * `INSERT OVERWRITE ... SELECT`：从包含 `[ERROR]` 的 `log4jLogs` 表中选择行，然后将数据插入 `errorLogs` 表中。
 
-3. 以**批处理**模式执行查询。
+3. 在**批处理**模式下执行查询。
 
 4. 若要验证作业是否已创建表，请使用“服务器资源管理器”，然后展开“Azure” > “HDInsight”> 用户的 HDInsight 群集 >“Hive 数据库” > “默认值”。 此时会列出 **errorLogs** 表和 **log4jLogs** 表。
 
@@ -164,8 +164,8 @@ ms.locfileid: "71076283"
 
 * [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
 
-* [将 MapReduce 与 HDInsight 上的 Apache Hadoop 配合使用](hdinsight-use-mapreduce.md)
+* [将 MapReduce 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-mapreduce.md)
 
 有关适用于 Visual Studio 的 HDInsight 工具的详细信息：
 
-* [用于 Visual Studio 的 HDInsight 工具入门](apache-hadoop-visual-studio-tools-get-started.md)
+* [Visual Studio 的 HDInsight 工具入门](apache-hadoop-visual-studio-tools-get-started.md)

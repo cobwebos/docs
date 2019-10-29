@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 6c7d94761e4c5d5087dc8ac4e10854989a18f0fc
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
-ms.translationtype: HT
+ms.openlocfilehash: f1452e56054948edffc6e9b3c98fa48d2589cb2a
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992101"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024942"
 ---
 # <a name="use-net-deserializers-for-azure-stream-analytics-jobs"></a>使用 Azure 流分析作业的 .NET 反
 
@@ -40,7 +40,7 @@ ms.locfileid: "72992101"
 
 1. T 是一个类或结构。
 1. T 中的所有公共字段都是
-    1. [Long、DateTime、string、double] 或其可为 null 的等效项之一。
+    1. [Sbyte、byte、short、ushort、int、uint、long、DateTime、string、float、double] 或它们可以为 null 的等效项之一。
     1. 遵循相同规则的另一个结构或类。
     1. 遵循相同规则的类型 `T2` 的数组。
     1. IList`T2` 其中 T2 遵循相同的规则。
@@ -226,12 +226,12 @@ namespace ExampleCustomCode.Serialization
 
 此功能在以下区域中提供：
 
-* 欧洲西部
-* 美国东部
-* 北欧
-* 美国西部
-* 美国东部 2
-* 美国中西部
+* 美国中部（可用）
+* 北欧（可用）
+* 美国东部（可用）
+* 美国西部（即将推出）
+* 美国东部2（即将推出）
+* 西欧（即将推出）
 
 你可以为其他区域[请求支持](https://aka.ms/ccodereqregion)。
 
@@ -244,10 +244,6 @@ namespace ExampleCustomCode.Serialization
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>我是否可以从类似于 GetMetadataPropertyValue 函数的输入访问 MetadataPropertyValue？
 
 此功能不受支持。 如果需要此功能，可以在[UserVoice](https://feedback.azure.com/forums/270577-stream-analytics/suggestions/38779801-accessing-input-metadata-properties-in-custom-dese)上为此请求投票。
-
-### <a name="streamdeserializer-deserializes-a-stream-into-object-of-type-t-can-the-public-fields-in-t-be-any-supported-type-in-net"></a>StreamDeserializer 将流反序列化为类型为 T 的对象。T 中的公共字段是否可以在 .NET 中是任何支持的类型？
-
-对 .NET 中所有支持的类型的支持在路线图上。
 
 ### <a name="can-i-share-my-deserializer-implementation-with-the-community-so-that-others-can-benefit"></a>我是否可以与社区共享反序列化程序实现，以便其他人能够受益？
 

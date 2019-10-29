@@ -10,16 +10,16 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: c8ec05db9bf372f31b6c3cfadf1eda75ba8f7d2b
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 7bfa4a35a99b5a3bbca63fa2d8349568d0ce2467
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965193"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025443"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
-本文介绍 Azure 机器学习版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[**主要 sdk For Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)参考页。 
+本文介绍 Azure 机器学习版本。 有关完整的 SDK 参考内容，请访问 Azure 机器学习的[**主要 sdk For Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)参考页。 
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
 
@@ -31,8 +31,8 @@ ms.locfileid: "72965193"
   + SDK 资产的统一管理体验
   + 视觉对象模型、管道和终结点的版本控制和跟踪 
   + 重新设计的 UI
-  + 添加了 batch 推断部署
-  + 为推断计算目标添加了 Azure Kubernetes Service （AKS）支持
+  + 已添加批处理推理部署
+  + 添加了对推理计算目标的 Azure Kubernetes Service （AKS）支持
   + 新的 Python 步骤管道创作工作流
   + 视觉对象创作工具的新[登陆页](https://ml.azure.com)
 
@@ -50,43 +50,63 @@ ms.locfileid: "72965193"
 + **Bug 修复和改进**
   + **automl-核心**
     + 将模型说明限制为最佳运行，而不是每次运行的计算说明。 为本地、远程和 ADB 进行此行为更改。
-    + 添加了对 UI 的按需模型说明的支持
+    + 添加了对 UI 的按需模型说明的支持。
     + 添加了 psutil 作为 automl 的依赖项，作为 amlcompute 中的 conda 依赖项加入了 psutil。
-    + 修复了预测数据集上启发式滞后和滚动窗口大小的问题，这可能会导致线性代数错误
+    + 修复了预测数据集上启发式滞后和滚动窗口大小的问题，这可能会导致线性代数错误。
       + 为预测运行中的试探性地确定参数添加了打印输出。
-  + **contrib-datadrift**
+  + **[contrib-datadrift](https://docs.microsoft.com/python/api/azureml-contrib-datadrift)**
     + 如果数据集级别偏移不在第一部分中，则在创建输出指标时添加了保护。
   + **contrib-解释**
-    + contrib-说明-模型包已重命名为 contrib-解释
-  + **azureml 核心**
-    + 添加了 API 以注销数据集。 `dataset.unregister_all_versions()`
+    + contrib-说明-模型包已重命名为 contrib-解读。
+  + **[azureml 核心](https://docs.microsoft.com/python/api/azureml-core)**
+    + 添加了 API 以注销数据集。 集会.[unregister_all_versions （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_datastore.abstractdatastore#unregister--)。
     + 添加了数据集 API 以检查数据更改时间。 `dataset.data_changed_time`。
-    + 能够使用 `FileDataset` 和 `TabularDataset` 作为 `HyperDriveStep` 管道中 `PythonScriptStep`、`EstimatorStep` 和 Azure 机器学习的输入
-    + 对于包含大量文件的文件夹，`FileDataset.mount` 的性能得到了改进
+    + 能够在 Azure 机器学习管道中使用[FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset)和[TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset)作为[PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep)、 [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep)和[HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyperdrivestep)的输入。
+    + FileDataset 的性能。对于包含大量文件的文件夹，[装载（）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset#mount-mount-point-none-)已改进
     + 在运行详细信息中向已知错误建议添加了 URL。
-    + 修复了运行中的 bug。获取 _metrics，如果一个运行的子项过多，请求会失败。
+    + 修复了运行中的 bug [。获取 _metrics](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run#get-metrics-name-none--recursive-false--run-type-none--populate-false-) ，如果一个运行的子项过多，请求会失败。
     + 在 Arcadia 群集上添加了对身份验证的支持。
-    + 创建试验对象将获取或创建用于运行历史记录跟踪的 Azure 机器学习工作区中的试验。 创建时，将在试验对象中填充实验 id 和存档时间。 示例：试验 = 试验（工作区，"新试验"） experiment_id = experiment.id archive （）和重新激活（）可在试验中调用以隐藏和还原试验的函数或默认情况下在调用中返回。列出试验。 如果使用与存档实验相同的名称创建新的实验，则可以通过传递新名称来重命名已存档的实验。 只能有一个具有给定名称的活动试验。 示例： experiment1 = 试验（工作区，"活动实验"） experiment1 （） # 创建新的活动试验，其名称与存档的名称相同。 experiment2. = 试验（工作区，"活动实验"） experiment1 （new_name = "上一个活动试验"）试验中的静态方法列表（）可以采用名称筛选器和 ViewType 筛选器。 ViewType 值为 "ACTIVE_ONLY"、"ARCHIVED_ONLY" 和 "ALL" 示例： archived_experiments = （工作区，view_type = "ARCHIVED_ONLY"） all_first_experiments = 试验。 list （工作区，名称 = "第一次试验"，view_type = "ALL"）
-    + 支持使用模型部署和服务更新的环境
-  + **azureml-datadrift**
-    + DataDriftDector 类的 show 属性不支持可选参数 "with_details"。 Show 特性只显示特征列的数据偏移系数和数据偏移量。
-    + DataDriftDetector 特性 "get_output" 的行为更改：
+    + 创建[试验](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment)对象将获取或创建用于运行历史记录跟踪的 Azure 机器学习工作区中的试验。 创建时，将在试验对象中填充实验 id 和存档时间。 示例：
+
+        ```py
+        experiment = Experiment(workspace, "New Experiment")
+        experiment_id = experiment.id
+        ```
+        [archive （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment#archive--)和 "[重新激活" （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment#reactivate-new-name-none-)是可以在试验中调用以隐藏和还原试验的函数，或默认情况下在对列表试验的调用中返回的实验。 如果使用与存档实验相同的名称创建新的实验，则可以通过传递新名称来重命名已存档的实验。 只能有一个具有给定名称的活动试验。 示例： 
+        
+        ```py
+        experiment1 = Experiment(workspace, "Active Experiment")
+        experiment1.archive()
+        # Create new active experiment with the same name as the archived.
+        experiment2 = Experiment(workspace, "Active Experiment")
+        experiment1.reactivate(new_name="Previous Active Experiment")
+        ```
+        试验中的静态方法[列表（）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment#list-workspace--experiment-name-none--view-type--activeonly--)可以采用名称筛选器和 ViewType 筛选器。 ViewType 值为 "ACTIVE_ONLY"、"ARCHIVED_ONLY" 和 "ALL"。 示例： 
+        
+        ```py
+        archived_experiments = Experiment.list(workspace, view_type="ARCHIVED_ONLY")
+        all_first_experiments = Experiment.list(workspace, name="First Experiment", view_type="ALL")
+        ```
+    + 支持使用模型部署和服务更新的环境。
+  + **[azureml-datadrift](https://docs.microsoft.com/python/api/azureml-contrib-datadrift)**
+    + [DataDriftDetector](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector)类的 show 属性不支持可选参数 "with_details"。 Show 特性只显示特征列的数据偏移系数和数据偏移量。
+    + DataDriftDetector 函数[get_output](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector#get-output-start-time--end-time--run-id-none--daily-latest-only-true-)行为更改：
       + 输入参数 start_time，end_time 是可选的，而不是必需的;
-      + 在同一调用中具有特定 run_id 的 nput 特定 start_time 和/或 end_time 将导致值错误异常，因为它们相互排斥 
+      + 对于同一调用中具有特定 run_id 的输入特定的 start_time 和/或 end_time，将导致值错误异常，因为它们相互排斥; 
       + 通过输入特定的 start_time 和/或 end_time，只会返回计划运行的结果; 
       + 参数 "daily_latest_only" 已弃用。
     + 支持检索基于数据集的数据偏移输出。
-  + **azureml-说明模型**
-    + 重命名 AzureML-将说明模型包重命名为 AzureML-解释，保留旧包以实现向后兼容性
-    + 修复了 automl bug，并将原始解释设置为分类任务，而不是默认情况下从 ExplanationClient 下载
-    + 添加 `ScoringExplainer` 的支持，以便直接使用 `MimicWrapper` 创建
-  + **azureml-核心**
-    + 提高了创建大管道的性能
-  + **azureml-核心**
-    + 在 TensorFlow 估计器中添加了 TensorFlow 2.0 支持
-  + **azureml-automl**
+  + **[azureml-说明模型](https://docs.microsoft.com/python/api/azureml-explain-model)**
+    + 将 AzureML-说明模型包重命名为 AzureML-解释，使旧包立即可用于向后兼容。
+    + 修复了 automl bug，并将原始解释设置为分类任务，而不是默认情况下从 ExplanationClient 下载。
+    + 添加对[ScoringExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.scoring.scoring_explainer.scoringexplainer)的支持，以便使用[MimicWrapper](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic_wrapper.mimicwrapper)直接创建
+  + **[azureml-核心](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
+    + 提高了创建大管道的性能。
+  + **[azureml-核心](https://docs.microsoft.com/python/api/azureml-train-core)**
+    + 在[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow)估计器中添加了 TensorFlow 2.0 支持。
+  + **[azureml-automl](https://docs.microsoft.com/python/api/azureml-train-automl)**
     + 如果安装迭代失败，则父运行将不再失败，因为该业务流程已经处理了该操作。
-    + 为 AutoML 试验增加了本地 docker 和 conda 支持
+    + 添加了对 AutoML 实验的本地 docker 和 conda 支持。
 
 
 ## <a name="2019-10-08"></a>2019-10-08
@@ -103,13 +123,13 @@ ms.locfileid: "72965193"
 ### <a name="azure-machine-learning-sdk-for-python-v1065"></a>用于 Python 的 Azure 机器学习 SDK 1.0.65
 
   + **新功能**
-    + 添加了特选环境。 这些环境已预先配置用于常见机器学习任务的库，并已预先生成并缓存为 Docker 映像，以加快执行速度。 默认情况下，它们显示在工作区的环境列表中，前缀为 "AzureML"。
+    + 添加了特选环境。 这些环境已预先配置用于常见机器学习任务的库，并已预先生成并缓存为 Docker 映像，以加快执行速度。 默认情况下，它们显示在[工作区](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29)的环境列表中，前缀为 "AzureML"。
   
-  + **azureml-automl**
+  + **[azureml-automl](https://docs.microsoft.com/python/api/azureml-train-automl)**
     + 添加了对 ADB 和 HDI 的 ONNX 转换支持
 
 + **预览功能**  
-  + **azureml-automl**
+  + **[azureml-automl](https://docs.microsoft.com/python/api/azureml-train-automl)**
     + 支持特征化器的经理 BERT 和 BiLSTM （仅限预览版）
     + 支持列用途和转换器参数的特征化自定义（仅限预览版）
     + 当用户在训练期间启用模型说明时支持的原始说明（仅限预览版）
@@ -120,34 +140,34 @@ ms.locfileid: "72965193"
 
 + **Bug 修复和改进**
   + **automl-核心**
-    + 引入了 FeaturizationConfig 到 AutoMLConfig 和 AutoMLBaseSettings
+    + 引入了 FeaturizationConfig 到[AutoMLConfig](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig)和 AutoMLBaseSettings
       + 用给定列和功能类型替代特征化的列用途
       + 重写变压器参数
-    + 添加了 explain_model （）和 retrieve_model_explanations （）的弃用消息
-    + 已将 Prophet 添加为可训练管道（仅限预览版）
+    + 添加了 explain_model （）和 retrieve_model_explanations （）的弃用消息。
+    + 已将 Prophet 添加为可训练管道（仅限预览版）。
     + 添加了对目标滞后、滚动窗口大小和最大水平的自动检测的支持。 如果将 target_lags、target_rolling_window_size 或 max_horizon 之一设置为 "auto"，则将应用试探法来估算基于定型数据的相应参数的值。
-    + 固定预测在数据集包含一个粒度列时，此粒度为数值类型，定型和测试集之间存在间隙
-    + 修复了有关在预测任务中远程运行的重复索引的错误消息
+    + 固定预测：如果数据集包含一个粒度列，则此粒度为数值类型，定型集和测试集之间存在差异。
+    + 修复了有关在预测任务中远程运行的重复索引的错误消息。
     + 添加了 guardrail 以检查数据集是否为不均衡。 如果是，则将 guardrail 消息写入控制台。
-  + **azureml 核心**
-    + 添加了通过模型对象在存储中检索模型的 SAS URL 的功能。 Ex： model. get _sas_url （）
-    + 介绍 `run.get_details()['datasets']` 获取与已提交运行相关联的数据集
-    + 添加 API `Dataset.Tabular.from_json_lines_files` 以从 JSON 行文件创建 TabularDataset。 若要了解 TabularDataset 上 JSON 行文件中的此表格数据，请访问文档 https://aka.ms/azureml-data 。
-    + 向 supported_vmsizes （）函数添加了更多 VM 大小字段（OS 磁盘、Gpu 数）
-    + 将其他字段添加到 list_nodes （）函数，以显示运行、专用 IP 和公共 IP、端口等。
-    + 在群集预配过程中指定新字段的功能--remotelogin_port_public_access 可以设置为 "已启用" 或 "已禁用"，具体取决于是否要在创建群集时将 SSH 端口设置为打开或关闭。 如果不指定它，则服务将智能打开或关闭端口，具体取决于是否在 VNet 中部署群集。
-  + **azureml-说明模型**
+  + **[azureml 核心](https://docs.microsoft.com/python/api/azureml-core/azureml.core)**
+    + 添加了通过模型对象在存储中检索模型的 SAS URL 的功能。 Ex： model。[get_sas_url （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model#get-sas-urls--)
+    + 引入运行。[get_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29#get-details--)[' dataset '] 获取与提交的运行关联的数据集
+    + 添加 API `Dataset.Tabular`。用于从 JSON 行文件创建 TabularDataset 的[from_json_lines_files （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-json-lines-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) 。 若要了解 TabularDataset 上 JSON 行文件中的此表格数据，请访问文档 https://aka.ms/azureml-data 。
+    + 向[supported_vmsizes （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#supported-vmsizes-workspace--location-none-)函数添加了更多 VM 大小字段（OS 磁盘、gpu 数）
+    + 将其他字段添加到[list_nodes （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#list-nodes--)函数，以显示运行、专用 IP 和公共 IP、端口等。
+    + 可以在群集[预配](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remote-login-port-public-access--notspecified--)期间指定新字段 `--remotelogin_port_public_access` 可以将设置为 "启用" 或 "禁用"，具体取决于是否要在创建群集时将 SSH 端口设置为打开或关闭。 如果不指定它，则服务将智能打开或关闭端口，具体取决于是否在 VNet 中部署群集。
+  + **[azureml-说明模型](https://docs.microsoft.com/python/api/azureml-explain-model)**
     + 改进了分类方案中说明输出的文档。
     + 添加了上传预测的 y 值的功能。 解锁更有用的可视化效果。
     + 已将说明属性添加到 MimicWrapper，以允许获取基础 MimicExplainer。
-  + **azureml-核心**
-    + 添加了用于描述 Module、ModuleVersion 和 ModuleStep 的笔记本
-  + **azureml-管道-步骤**
-    + 添加了 RScriptStep 以支持通过 AML 管道运行 R 脚本
-    + 修复了在 AzureBatchStep 中分析导致错误消息 "未指定参数 SubscriptionId 的分配" 的元数据参数
-  + **azureml-automl**
-    + 支持的 training_data、validation_data、label_column_name、weight_column_name 作为数据输入格式
-    + 添加了 explain_model （）和 retrieve_model_explanations （）的弃用消息
+  + **[azureml-核心](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
+    + 添加了用于描述[Module](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.module(class))、 [ModuleVersion](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.moduleversion)和[ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep)的[笔记本](https://aka.ms/pl-modulestep)。
+  + **[azureml-管道-步骤](https://docs.microsoft.com/python/api/azureml-pipeline-steps)**
+    + 添加了[RScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.rscriptstep)以支持通过 AML 管道运行 R 脚本。
+    + 修复了在[AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep)中分析的元数据参数，导致错误消息 "未指定参数 SubscriptionId 的分配"。
+  + **[azureml-automl](https://docs.microsoft.com/python/api/azureml-train-automl)**
+    + 支持的 training_data、validation_data、label_column_name、weight_column_name 作为数据输入格式。
+    + 添加了[explain_model （）](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer#explain-model-fitted-model--x-train--x-test--best-run-none--features-none--y-train-none----kwargs-)和[retrieve_model_explanations （）](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer#retrieve-model-explanation-child-run-)的弃用消息。
 
   
 ## <a name="2019-09-16"></a>2019-09-16
@@ -195,6 +215,7 @@ ms.locfileid: "72965193"
     + 添加了替代 azureml 安装包版本的功能。 
     + 在估算的 `environment_definition` 参数中添加了 dockerfile 支持。
     + 简化了估算中的分布式培训参数。
+
          ```py 
         from azureml.train.dnn import TensorFlow, Mpi, ParameterServer 
         ```
@@ -247,13 +268,13 @@ ms.locfileid: "72965193"
   + **azureml 核心**
     + 引入数据集。获取 "所有" （工作区），该方法返回 `TabularDataset` 的字典，并按其注册名称进行键控 `FileDataset` 对象的字典。 
     
-    ```py 
-    workspace = Workspace.from_config() 
-    all_datasets = Dataset.get_all(workspace) 
-    mydata = all_datasets['my-data'] 
-    ```
-    
-    + 引入 `parition_format` 作为参数 `Dataset.Tabular.from_delimited_files` 和 `Dataset.Tabular.from_parquet.files`。 每个数据路径的分区信息将基于指定的格式提取到列中。 "{column_name}" 创建字符串列，"{column_name： yyyy/MM/dd/HH/MM/ss}" 创建 datetime 列，其中，"yyyy"、"MM"、"dd"、"HH"、"mm" 和 "ss" 用于提取 datetime 类型的年、月、日、小时、分钟和秒。 Partition_format 应从第一个分区键的位置开始，直到文件路径结束。 例如，给定路径 ".。/USA/2019/01/01/data.csv ' 其中，分区是按国家/地区和时间，partition_format = '/{Country}/{PartitionDate： yyyy/MM/dd}/data .csv ' 创建值为 "USA"、日期时间列为 "PartitionDate" 且值为 "2019-01-01" 的字符串列 "Country"。
+        ```py 
+        workspace = Workspace.from_config() 
+        all_datasets = Dataset.get_all(workspace) 
+        mydata = all_datasets['my-data'] 
+        ```
+        
+    + 引入 `partition_format` 作为参数 `Dataset.Tabular.from_delimited_files` 和 `Dataset.Tabular.from_parquet.files`。 每个数据路径的分区信息将基于指定的格式提取到列中。 "{column_name}" 创建字符串列，"{column_name： yyyy/MM/dd/HH/MM/ss}" 创建 datetime 列，其中，"yyyy"、"MM"、"dd"、"HH"、"mm" 和 "ss" 用于提取 datetime 类型的年、月、日、小时、分钟和秒。 Partition_format 应从第一个分区键的位置开始，直到文件路径结束。 例如，给定路径 ".。/USA/2019/01/01/data.csv ' 其中，分区是按国家/地区和时间，partition_format = '/{Country}/{PartitionDate： yyyy/MM/dd}/data .csv ' 创建值为 "USA"、日期时间列为 "PartitionDate" 且值为 "2019-01-01" 的字符串列 "Country"。
     + 已将 `to_csv_files` 和 `to_parquet_files` 方法添加到 `TabularDataset`。 这些方法通过将数据转换为指定格式的文件来实现 `TabularDataset` 与 `FileDataset` 之间的转换。
     + 保存由 Model （）生成的 Dockerfile 时，自动登录到基本映像注册表。
     + 不再需要 "gpu_support";AzureML 现在会自动检测并使用 nvidia docker 扩展（如果可用）。 它将在未来版本中删除。

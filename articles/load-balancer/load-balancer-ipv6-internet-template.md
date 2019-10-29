@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 4286879dc53cc835532c7a8243eaf88813545265
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: bfecb2a57cf5f086b6c9f99c50b857c8c1183e3e
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275003"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025591"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>使用模板部署分配了 IPv6 的面向 Internet 的负载均衡器解决方案
 
@@ -29,8 +29,10 @@ ms.locfileid: "68275003"
 > * [模板](load-balancer-ipv6-internet-template.md)
 
 
+>[!注意：针对 IPv6 的最佳实践更改] 本文介绍了一个介绍性的 IPv6 功能，该功能允许基本负载均衡器提供 IPv4 和 IPv6 连接。  更全面的 IPv6 连接现在适用于适用于[Azure vnet 的 ipv6](../virtual-network/ipv6-overview.md) ，这将 ipv6 连接与虚拟网络集成，并包含 Ipv6 网络安全组规则、ipv6 用户定义路由、ipv6 基本和标准负载均衡等。  适用于 azure Vnet 的 IPv6 是适用于 Azure 中的 IPv6 应用程序的最佳做法。 
+>请参阅[用于 AZURE VNET 模板部署的 IPv6](../virtual-network/ipv6-configure-standard-load-balancer-template-json.md)
 
-Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure 负载均衡器还可以在多个端口和/或多个 IP 地址上显示这些服务。
+Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure Load Balancer 还可以在多个端口和/或多个 IP 地址上显示这些服务。
 
 ## <a name="example-deployment-scenario"></a>示例部署方案
 
@@ -70,13 +72,13 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
     ![lb-ipv6-portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
-6. 单击“编辑参数”。 在“参数”边栏选项卡中，根据指导在“模板参数”部分中指定值，并单击“保存”关闭“参数”边栏选项卡。 在“自定义部署”边栏选项卡中选择订阅、选择现有资源组或创建一个资源组。 如果要创建资源组，请选择资源组的位置。 接下来，单击“法律条款”  ，并单击法律条款后面的“购买”  。 Azure 开始部署资源。 部署所有资源需要花费几分钟时间。
+6. 单击“编辑参数”。 在“参数”边栏选项卡中，根据指导在“模板参数”部分中指定值，并单击“保存”关闭“参数”边栏选项卡。 在“自定义部署”边栏选项卡中选择订阅、选择现有资源组或创建一个资源组。 如果要创建资源组，请选择资源组的位置。 接下来，单击“法律条款”，并单击法律条款后面的“购买”。 Azure 开始部署资源。 部署所有资源需要花费几分钟时间。
 
     ![lb-ipv6-portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
     有关这些参数的详细信息，请参阅本文后面的[模板参数和变量](#template-parameters-and-variables)部分。
 
-7. 如果要查看模板创建的资源，请单击“浏览”，向下滚动列表，直到看到“资源组”，并单击它。
+7. 要查看模板创建的资源，请单击“浏览”，向下滚动列表，直到看到“资源组”，并单击它。
 
     ![lb-ipv6-portal-step7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/09/2019
+ms.date: 10/23/2019
 ms.author: iainfou
-ms.openlocfilehash: 81d20a973454db600d8be9ce036f001dd41784e7
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 325b9e8edc997e41e48e11b3ee752bc38d7dc4a1
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71314990"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024003"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD 域服务的虚拟网络设计注意事项和配置选项
 
@@ -91,8 +91,8 @@ Azure AD DS 托管域连接到 Azure 虚拟网络中的子网。 为 Azure AD DS
 | Azure 资源                          | 描述 |
 |:----------------------------------------|:---|
 | 网络接口卡                  | Azure AD DS 将托管域托管在 Windows Server 上作为 Azure Vm 运行的两个域控制器（Dc）上。 每个 VM 都有一个连接到虚拟网络子网的虚拟网络接口。 |
-| 动态基本公共 IP 地址         | Azure AD DS 使用基本 SKU 公共 IP 地址与同步和管理服务通信。 有关公共 IP 地址的详细信息，请参阅[Azure 中的 IP 地址类型和分配方法](../virtual-network/virtual-network-ip-addresses-overview-arm.md)。 |
-| Azure 基本负载均衡器               | Azure AD DS 使用基本 SKU 负载均衡器进行网络地址转换（NAT）和负载平衡（与安全 LDAP 一起使用时）。 有关 Azure 负载均衡器的详细信息，请参阅[什么是 Azure 负载均衡器？](../load-balancer/load-balancer-overview.md) |
+| 动态标准公共 IP 地址         | Azure AD DS 使用标准 SKU 公共 IP 地址与同步和管理服务通信。 有关公共 IP 地址的详细信息，请参阅[Azure 中的 IP 地址类型和分配方法](../virtual-network/virtual-network-ip-addresses-overview-arm.md)。 |
+| Azure 标准负载均衡器               | Azure AD DS 使用标准 SKU 负载均衡器进行网络地址转换（NAT）和负载平衡（与安全 LDAP 一起使用时）。 有关 Azure 负载均衡器的详细信息，请参阅[什么是 Azure 负载均衡器？](../load-balancer/load-balancer-overview.md) |
 | 网络地址转换（NAT）规则 | Azure AD DS 在负载平衡器上创建并使用三个 NAT 规则-一个规则用于安全 HTTP 流量，另外两个规则用于保护 PowerShell 远程处理。 |
 | 负载均衡器规则                     | 在 TCP 端口636上为安全 LDAP 配置 Azure AD DS 托管域时，将在负载均衡器上创建并使用三个规则来分配流量。 |
 
@@ -105,12 +105,12 @@ Azure AD DS 托管域连接到 Azure 虚拟网络中的子网。 为 Azure AD DS
 
 Azure AD DS 提供身份验证和管理服务需要以下网络安全组规则。 请勿编辑或删除 Azure AD DS 托管域部署到的虚拟网络子网的这些网络安全组规则。
 
-| 端口号 | Protocol | Source                             | Destination | 操作 | 必填 | 用途 |
+| 端口号 | 协议 | Source                             | 目标 | 行动 | 需要 | 用途 |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | 任意         | Allow  | 是      | 与 Azure AD 租户同步。 |
-| 3389        | TCP      | CorpNetSaw                         | 任意         | Allow  | 是      | 域的管理。 |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | 任意         | Allow  | 是      | 域的管理。 |
-| 636         | TCP      | 任意                                | 任意         | Allow  | 否       | 仅在配置安全 LDAP （LDAPS）时启用。 |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | 任意         | 允许  | 是      | 与 Azure AD 租户同步。 |
+| 3389        | TCP      | CorpNetSaw                         | 任意         | 允许  | 是      | 域的管理。 |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | 任意         | 允许  | 是      | 域的管理。 |
+| 636         | TCP      | 任意                                | 任意         | 允许  | No       | 仅在配置安全 LDAP （LDAPS）时启用。 |
 
 > [!WARNING]
 > 请不要手动编辑这些网络资源和配置。 将配置错误的网络安全组或用户定义的路由表与在其中部署 Azure AD DS 的子网相关联时，可能会中断 Microsoft 提供的服务和管理功能。 Azure AD 租户与 Azure AD DS 托管域之间的同步也会中断。
@@ -142,9 +142,9 @@ Azure AD DS 提供身份验证和管理服务需要以下网络安全组规则�
 * 用于在 Azure AD DS 托管域中使用 PowerShell 远程处理执行管理任务。
 * 如果不访问此端口，则无法更新、配置、备份或监视 Azure AD DS 托管域。
 * 对于使用基于资源管理器的虚拟网络 Azure AD DS 托管域，你可以将此端口的入站访问限制为*AzureActiveDirectoryDomainServices*服务标记。
-    * 对于使用基于经典的虚拟网络的旧 Azure AD DS 托管域，你可以将此端口的入站访问限制为以下源 IP 地址：*52.180.183.8*、 *23.101.0.70*、 *52.225.184.198*、 *52.179.126.223*、 *13.74.249.156*、 *52.187.117.83*、 *52.161.13.95*、 *104.40.156.18*和*104.40.87.209*。
+    * 对于使用基于经典的虚拟网络的旧式 Azure AD DS 托管域，你可以将此端口的入站访问限制为以下源 IP 地址： *52.180.183.8*、 *23.101.0.70*、 *52.225.184.198*、 *52.179.126.223*、 *13.74.249.156*、 *52.187.117.83*、 *52.161.13.95*、 *104.40.156.18*和*104.40.87.209*。
 
-## <a name="user-defined-routes"></a>用户定义路由
+## <a name="user-defined-routes"></a>用户定义的路由
 
 默认情况下不会创建用户定义的路由，因此 Azure AD DS 可以正常工作。 如果需要使用路由表，请避免对*0.0.0.0*路由进行任何更改。 对此路由所做的更改可能会中断 Azure AD 域服务。
 

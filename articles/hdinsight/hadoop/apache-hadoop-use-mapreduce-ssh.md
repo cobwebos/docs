@@ -1,5 +1,5 @@
 ---
-title: 将 MapReduce 和 SSH 连接与 HDInsight 中的 Apache Hadoop 配合使用 - Azure
+title: 与 Apache Hadoop-Azure HDInsight 的 MapReduce 和 SSH 连接
 description: 了解如何使用 SSH 通过 HDInsight 上的 Apache Hadoop 运行 MapReduce 作业。
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5eac6cd60b9e58dea8901fad076bb481d5f2eb06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4075de1a184896d598c11d09ae2b2bda5e257ed
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078293"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044515"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>通过 SSH 将 MapReduce 与 HDInsight 上的 Apache Hadoop 配合使用
 
@@ -85,7 +85,7 @@ ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.net
     hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
     ```
 
-    此命令会显示一个列表，其内容为 wasb://example/data/gutenberg/davinci.txt 文件中包含的单词以及每个单词出现的次数  。 以下文本是文件中所含数据的示例：
+    此命令会显示一个列表，其内容为 wasb://example/data/gutenberg/davinci.txt 文件中包含的单词以及每个单词出现的次数。 以下文本是文件中所含数据的示例：
 
         wreathed        3
         wreathing       1

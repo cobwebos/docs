@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 10/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 50617eda56c2eaec9fac315013114f173e85edbc
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 920419bf10634e8be15e05a89d547a5a9d1430b7
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990789"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027780"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -312,7 +312,7 @@ ExpressRoute 高级版是以下功能的集合：
 
 ## <a name="expressroute-local"></a>ExpressRoute 本地
 ### <a name="what-is-expressroute-local"></a>什么是 ExpressRoute 本地？
-ExpressRoute 本地是[expressroute](expressroute-erdirect-about.md)线路上提供的 expressroute 线路的 SKU。 本地的一项重要功能是，ExpressRoute 对等位置上的本地线路使你仅可访问同一地铁或附近的一个或两个 Azure 区域。 与此相反，通过标准线路，你可以访问地缘政治区域中的所有 Azure 区域，以及全球所有 Azure 区域的高级线路。 
+ExpressRoute 本地是 ExpressRoute 线路的 SKU，以及标准 SKU 和高级 SKU。 本地的一项重要功能是，ExpressRoute 对等位置上的本地线路使你仅可访问同一地铁或附近的一个或两个 Azure 区域。 与此相反，通过标准线路，你可以访问地缘政治区域中的所有 Azure 区域，以及全球所有 Azure 区域的高级线路。 
 
 ### <a name="what-are-the-benefits-of-expressroute-local"></a>ExpressRoute 本地的优点是什么？
 尽管需要支付标准或高级 ExpressRoute 线路的出口数据传输费用，但不会为 ExpressRoute 本地线路单独支付传出数据传输费用。 换句话说，ExpressRoute 本地价格包括数据传输费用。 如果有大量的数据要传输，则 ExpressRoute 本地是更经济的解决方案，可将数据通过专用连接引入到接近所需 Azure 区域的 ExpressRoute 对等互连位置。 
@@ -323,9 +323,6 @@ ExpressRoute 本地是[expressroute](expressroute-erdirect-about.md)线路上提
 * ExpressRoute Global Reach 在本地不可用
 
 ExpressRoute 本地还对资源具有相同的限制（例如，每个线路的 Vnet 数）。 
-
-### <a name="how-to-configure-expressroute-local"></a>如何配置 ExpressRoute 本地？ 
-ExpressRoute 本地仅在 ExpressRoute 直接上可用。 首先，需要配置 ExpressRoute 直接端口。 创建直接端口后，可按照[此处](expressroute-howto-erdirect.md)的说明创建本地线路。
 
 ### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>ExpressRoute 本地可用，哪些 Azure 区域是映射到的每个对等位置？
 ExpressRoute 本地在一个或两个 Azure 区域处于关闭状态的对等位置上可用。 此功能在不具有该状态或省/市/自治区或国家/地区的 Azure 区域的对等互连位置中不可用。 请参阅["位置" 页](expressroute-locations-providers.md)上的确切映射。  

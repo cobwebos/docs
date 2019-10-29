@@ -1,5 +1,5 @@
 ---
-title: 在 HDInsight 中的 Apache Hadoop 上将 C# 与 Apache Hive 和 Apache Pig 配合使用 - Azure
+title: C#，Apache Hive & Apache Pig on Apache Hadoop-Azure HDInsight
 description: 了解在 Azure HDInsight 中如何将 C# 用户定义函数 (UDF) 与 Apache Hive 和 Apache Pig 流式处理配合使用。
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: fa40f206447f631c78052bda085b26a56e481194
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 222b91b2efefa81186d32fee7229aa0cc4f13a63
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066919"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044589"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>将C#用户定义函数与 HDInsight 中 Apache Hadoop 上的 Apache Hive 和 Apache Pig 配合使用
 
@@ -24,7 +24,7 @@ ms.locfileid: "71066919"
 
 Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此过程称为_流式处理_。 使用 .NET 应用程序时，数据将传递到 STDIN 上的应用程序，该应用程序也会在 STDOUT 上返回结果。 若要从 STDIN 和 STDOUT 读取和写入数据，可以使用控制台应用程序中的 `Console.ReadLine()` 和 `Console.WriteLine()`。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 熟悉编写和生成面向 .NET Framework 4.5 的 C# 代码。
 
@@ -159,7 +159,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 3. 如果出现提示，请输入 Azure 订阅凭据，并单击“登录”。
 
-4. 展开要将此应用程序部署到的 HDInsight 群集。 列出带有文本“（默认存储帐户）”的条目。
+4. 展开要将此应用程序部署到的 HDInsight 群集。 将列出带有文本“（默认存储帐户）”的条目。
 
     ![显示群集存储帐户的服务器资源管理器](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
 
@@ -183,7 +183,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 2. 依次展开“Azure”和“HDInsight”。
 
-3. 右键单击已将 **HiveCSharp** 应用程序部署到的群集，并选择“编写 Hive 查询”。
+3. 右键单击已将 **HiveCSharp** 应用程序部署到的群集，然后选择“编写 Hive 查询”。
 
 4. 请使用以下文本执行 Hive 查询：
 
@@ -205,15 +205,15 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
     > [!IMPORTANT]
     > 取消注释与用于群集的默认存储类型相匹配的 `add file` 语句。
 
-    此查询将从 `hivesampletable` 中选择 `clientid`、`devicemake` 和 `devicemodel` 字段并将这些字段传递到 HiveCSharp.exe 应用程序。 该查询预期应用程序返回三个字段，它们存储为 `clientid`、`phoneLabel` 和 `phoneHash`。 该查询还预期在默认存储容器的根目录中找到 HiveCSharp.exe。
+    此查询将从 `hivesampletable` 中选择 `clientid`、`devicemake` 和 `devicemodel` 字段并将这些字段传递到 HiveCSharp.exe 应用程序。 该查询预期应用程序返回三个字段，它们将存储为 `clientid`、`phoneLabel` 和 `phoneHash`。 该查询还预期在默认存储容器的根目录中找到 HiveCSharp.exe。
 
-5. 单击“提交”将作业提交到 HDInsight 群集。 此时会打开“Hive 作业摘要”窗口 。
+5. 单击“提交”将作业提交到 HDInsight 群集。 此时会打开“Hive 作业摘要”窗口。
 
 6. 单击“刷新”以刷新摘要，直到“作业状态”更改为“已完成”。 若要查看作业输出，请单击“作业输出”。
 
 ## <a name="run-an-apache-pig-job"></a>运行 Apache Pig 作业
 
-1. 使用 SSH 连接到 HDInsight 群集。 例如， `ssh sshuser@mycluster-ssh.azurehdinsight.net` 。 有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)
+1. 使用 SSH 连接到 HDInsight 群集。 例如，`ssh sshuser@mycluster-ssh.azurehdinsight.net` 。 有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)
 
 2. 使用以下命令之一启动 Pig 命令行：
 
@@ -226,7 +226,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
     > bin\pig
     > ```
 
-    此时显示 `grunt>` 提示。
+    此时会显示 `grunt>` 提示。
 
 3. 输入以下命令以运行使用 .NET Framework 应用程序的 Pig 作业：
 

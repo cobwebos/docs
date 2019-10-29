@@ -1,5 +1,5 @@
 ---
-title: InvalidNetworkSecurityGroupSecurityRules-Azure HDInsight 中的群集失败
+title: InvalidNetworkSecurityGroupSecurityRules 错误-Azure HDInsight
 description: 群集创建失败，错误代码为 InvalidNetworkSecurityGroupSecurityRules
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,20 +7,20 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/31/2019
-ms.openlocfilehash: 7df978ad059cfe4ccd233400510b779b16472844
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 749cfbb3aeb0d82a81a8383919b9a6568419e967
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087374"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044753"
 ---
-# <a name="scenario-invalidnetworksecuritygroupsecurityrules---cluster-creation-fails-in-azure-hdinsight"></a>场景：InvalidNetworkSecurityGroupSecurityRules-Azure HDInsight 中的群集创建失败
+# <a name="scenario-invalidnetworksecuritygroupsecurityrules---cluster-creation-fails-in-azure-hdinsight"></a>方案： InvalidNetworkSecurityGroupSecurityRules-群集在 Azure HDInsight 中创建失败
 
 本文介绍有关在与 Azure HDInsight 群集交互时遇到的问题的故障排除步骤和可能的解决方法。
 
 ## <a name="issue"></a>问题
 
-你会收到错误`InvalidNetworkSecurityGroupSecurityRules`代码，其说明类似于 "配置有子网的网络安全组中的安全规则不允许所需的入站和/或出站连接"。
+你会收到错误代码 `InvalidNetworkSecurityGroupSecurityRules`，其描述类似于 "配置有子网的网络安全组中的安全规则不允许所需的入站和/或出站连接"。
 
 ## <a name="cause"></a>原因
 
@@ -36,6 +36,6 @@ ms.locfileid: "71087374"
 
 * 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 
-* 与[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帐户联系，通过将 Azure 社区连接到适当的资源来改进客户体验：答案、支持和专家。
+* 与[@AzureSupport](https://twitter.com/azuresupport) -通过将 Azure 社区连接到适当的资源来改进客户体验的官方 Microsoft Azure 帐户：答案、支持和专家。
 
-* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请查看[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+* 如果需要更多帮助，可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息，请查看[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。

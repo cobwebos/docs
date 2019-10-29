@@ -8,18 +8,18 @@ search.appverid: MET150
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
-ms.date: 10/25/2019
+ms.topic: reference
+ms.date: 10/28/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f769aafa3e2976d63e99cf58a6b67e1b4cf81b64
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: a0f7c1987cd4184ba6cda37d4d1894f0dba0b2f1
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72963933"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024628"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -137,7 +137,7 @@ In | 有权执行的操作
 ----- | ----------
 [Microsoft 365 合规中心](https://protection.office.com) | 跨 Microsoft 365 服务保护和管理组织数据<br>管理合规性警报
 [合规性管理器](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | 跟踪、分配并验证组织的法规合规性活动
-[Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 管理数据治理<br>执行法律和数据调查<br>管理数据主体请求
+[Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 管理数据治理<br>执行法律和数据调查<br>管理数据主体请求<br><br>此角色具有与 Office 365 安全与合规中心基于[角色的访问](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center)控制相同的权限。
 [Intune](https://docs.microsoft.com/intune/role-based-access-control) | 查看所有 Intune 审核数据
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 拥有只读权限，可以管理警报<br>可以创建和修改文件策略并允许执行文件管理操作<br> 可以查看数据管理下的所有内置报表
 
@@ -149,7 +149,7 @@ In | 有权执行的操作
 ----- | ----------
 [Microsoft 365 合规中心](https://protection.office.com) | 跨 Microsoft 365 服务监视符合性相关的策略<br>管理合规性警报
 [合规性管理器](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | 跟踪、分配并验证组织的法规合规性活动
-[Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 管理数据治理<br>执行法律和数据调查<br>管理数据主体请求<br><br>此角色具有与 Office 365 安全性和符合性中心基于角色的访问控制中的[符合性数据管理员 RoleGroup](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center)相同的权限。
+[Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 管理数据治理<br>执行法律和数据调查<br>管理数据主体请求<br><br>此角色具有与 Office 365 安全与合规中心基于角色的访问控制中的[符合性数据管理员 RoleGroup](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center)相同的权限。
 [Intune](https://docs.microsoft.com/intune/role-based-access-control) | 查看所有 Intune 审核数据
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 拥有只读权限，可以管理警报<br>可以创建和修改文件策略并允许执行文件管理操作<br> 可以查看数据管理下的所有内置报表
 
@@ -230,7 +230,7 @@ In | 有权执行的操作
 >* [M365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage)-全局读者无法读取客户密码箱请求。 在 M365 管理中心的左窗格中，你将找不到 "**支持**" 下的 "**客户密码箱请求**" 选项卡。
 >* [M365 安全中心](https://security.microsoft.com/homepage)-全球读者无法读取敏感度和保留标签。 在 M365 安全中心的左窗格中找不到**灵敏度标签**、**保留标签**和**标签分析**选项卡。
 >* [团队管理员中心](https://admin.teams.microsoft.com)-全球读者无法阅读**团队生命周期**、**分析 & 报表**、 **IP 电话设备管理**和**应用程序目录**。
->* [Privileged Access Management （PAM）](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview)不支持全局读者角色。
+>* [Privileged Access Management （PAM）](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview)不支持全局读者角色。
 >* [Azure 信息保护](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)-仅支持适用于[管理中心](https://docs.microsoft.com/azure/information-protection/reports-aip)的全球读取器，以及当你的租户不在[统一的标签平台](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)上时。
 >
 > 这些功能目前正在开发中。
