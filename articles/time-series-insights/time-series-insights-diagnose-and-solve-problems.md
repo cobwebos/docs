@@ -3,7 +3,7 @@ title: 诊断、排查和解决 Azure 时序见解中的问题 | Microsoft Docs
 description: 本文介绍如何诊断、排查和解决可能在 Azure 时序见解环境中遇到的常见问题。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78a991fb310c635648513e6472543b9f5c01119d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 7c9dcdf43e819e20126f948fa08f4f8f476036ac
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330874"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991270"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>诊断和解决时序见解环境中的问题
 
@@ -40,11 +40,11 @@ Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持
 
 * 对于 Azure IoT 中心内的某个 IoT 中心，必须提供具有“服务连接”权限的密钥。 **iothubowner** 或 **service** 策略可正常运行，因为两者都具有“服务连接”权限。
 
-   [@no__t 1IoT 中心服务连接权限](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
+   [![IoT 中心服务连接权限](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
 * 对于 Azure 事件中心内的某个事件中心，必须提供具有“侦听”权限的密钥。 **read** 或 **manage** 策略可正常运行，因为两者都具有“侦听”权限。
 
-   [@no__t 1Event 中心侦听权限](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
+   [![事件中心侦听权限](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
 ### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>原因 C：提供的使用者组不适用于时序见解
 
@@ -69,7 +69,7 @@ Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持
 
 下图显示了一个 SKU 为 S1 且容量为 3 的时序见解环境。 它每天可以引入 300 万个事件。
 
-[@no__t 1Environment SKU 当前容量](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
+[![环境 SKU 当前容量](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
 
 例如，假设环境从事件中心引入消息。 每日流入速率大约为 67,000 条消息。 此速率相当于每分钟大约引入 46 条消息。 
 

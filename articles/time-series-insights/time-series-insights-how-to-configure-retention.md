@@ -3,20 +3,19 @@ title: 如何在 Azure 时序见解环境中配置保留期 | Microsoft Docs
 description: 本文介绍如何在 Azure 时序见解环境中配置保留期。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: bf6788bac7003bec0ccfc171d622cd9b28bf43e0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ff4d326af691ae27894dc94d7581ba68951f090e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330884"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990061"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>在时序见解中配置保留期
 
@@ -41,7 +40,7 @@ ms.locfileid: "72330884"
 
 1. 在“设置”标题下，选择“配置”。
 
-    [@no__t 1Select 设置，然后配置](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
+    [![选择设置，然后配置](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
 1. 选择 "**数据保留时间（天）** "，使用滚动条或在文本框中键入一个数字来配置保留期。
 
@@ -49,7 +48,7 @@ ms.locfileid: "72330884"
 
 1. 切换“超出存储限制时的行为”设置。 选择“清除旧数据”或“暂停传入”行为。
 
-    [![Data 保留-接受并保存。](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
+    [![数据保留-接受并保存。](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
 
 1. 接受此复选框，指出您已经查看了文档并了解丢失数据的潜在风险。 选择“保存”以配置更改。
 

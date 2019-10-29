@@ -5,17 +5,17 @@ services: functions
 documentationcenter: na
 author: craigshoemaker
 manager: gwallace
-keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
+keywords: Azure Functions, Functions, 事件处理, 动态计算, 无服务体系结构
 ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 7538e47a1d0bed0c72ff5ed467c98828cc9c18ba
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cde565fbafec7f1209d0c65d6f3ebc121f38e6f5
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086641"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991380"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 通知中心输出绑定
 
@@ -26,9 +26,9 @@ ms.locfileid: "70086641"
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!IMPORTANT]
-> Google 已不[推荐 Google Cloud Messaging 使用 Firebase 云消息传送 (FCM)](https://developers.google.com/cloud-messaging/faq)。 此输出绑定不支持 FCM。 若要使用 FCM 发送通知, 请直接在函数中使用[FIREBASE API](https://firebase.google.com/docs/cloud-messaging/server#choosing-a-server-option) , 或使用[模板通知](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)。
+> Google 已不[推荐 Google Cloud Messaging 使用 Firebase 云消息传送（FCM）](https://developers.google.com/cloud-messaging/faq)。 此输出绑定不支持 FCM。 若要使用 FCM 发送通知，请直接在函数中使用[FIREBASE API](https://firebase.google.com/docs/cloud-messaging/server#choosing-a-server-option) ，或使用[模板通知](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)。
 
-## <a name="packages---functions-1x"></a>包 - Functions 1.x
+## <a name="packages---functions-1x"></a>包 - Functions 2.x
 
 [Microsoft.Azure.WebJobs.Extensions.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) NuGet 包 1.x 版中提供了通知中心绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.NotificationHubs) GitHub 存储库中提供了此包的源代码。
 
@@ -242,7 +242,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 }
 ```
 
-## <a name="attributes"></a>特性
+## <a name="attributes"></a>属性
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [NotificationHub](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) 特性。
 
@@ -252,11 +252,11 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 下表解释了在 *function.json* 文件和 `NotificationHub` 特性中设置的绑定配置属性：
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |描述|
 |---------|---------|----------------------|
-|**type** |不适用| 必须设置为“notificationHub”。 |
-|**direction** |不适用| 必须设置为“out”。 | 
-|**名称** |不适用| 在通知中心消息的函数代码中使用的变量名。 |
+|类型 |不适用| 必须设置为 `notificationHub`。 |
+|direction |不适用| 必须设置为 `out`。 | 
+|name |不适用| 在通知中心消息的函数代码中使用的变量名。 |
 |**tagExpression** |**TagExpression** | 标记表达式允许指定将通知传递到一组已注册接收通知的与标记表达式匹配的设备。  有关详细信息，请参阅[路由和标记表达式](../notification-hubs/notification-hubs-tags-segment-push-message.md)。 |
 |**hubName** | **HubName** | 在 Azure 门户中通知中心资源的名称。 |
 |**连接** | **ConnectionStringSetting** | 包含通知中心连接字符串的应用设置的名称。  连接字符串必须设置为通知中心的 *DefaultFullSharedAccessSignature* 值。 请参阅本文稍后的[连接字符串设置](#connection-string-setup)部分。|

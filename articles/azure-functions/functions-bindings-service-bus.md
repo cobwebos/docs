@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: c39a2e8daf9ca46902cf1a1fac89c59918a6854d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b261594076857b841ba288dfaba8b5b8e9250065
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934350"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72987935"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -61,7 +61,7 @@ ms.locfileid: "72934350"
 ```cs
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
 public static void Run(
-    [ServiceBusTrigger("myqueue", AccessRights.Manage, Connection = "ServiceBusConnection")] 
+    [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] 
     string myQueueItem,
     Int32 deliveryCount,
     DateTime enqueuedTimeUtc,
@@ -74,12 +74,6 @@ public static void Run(
     log.LogInformation($"MessageId={messageId}");
 }
 ```
-
-此示例适用于 Azure Functions 版本 1.x。 要使此代码适用于 2.x：
-
-- [省略访问权限参数](#trigger---configuration)
-- 将日志参数的类型从 `TraceWriter` 更改为 `ILogger`
-- 将 `log.Info` 更改为 `log.LogInformation`
 
 ### <a name="trigger---c-script-example"></a>触发器 - C# 脚本示例
 

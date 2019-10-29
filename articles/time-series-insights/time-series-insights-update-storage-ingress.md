@@ -1,185 +1,139 @@
 ---
 title: Azure 时序见解预览版中的数据存储和入口 | Microsoft Docs
 description: 了解 Azure 时序见解预览版中的数据存储和入口。
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/26/2019
+ms.date: 10/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9af53728ee038a6511c434aeedfdb9afdab6d04b
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 0b61e194bdea5fd8272ffc0fc9e16a2d80d3cf60
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273884"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989706"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据存储和入口
 
-本文介绍 Azure 时序见解预览版中对数据存储和入口的更改， 其中包括底层存储结构、文件格式和时序 ID 属性。 本文还介绍了底层流入过程、吞吐量和限制。
+本文介绍适用于 Azure 时序见解预览的数据存储和入口更新。 其中包括底层存储结构、文件格式和时序 ID 属性。 它还讨论了底层入口过程、吞吐量和限制。
 
 ## <a name="data-ingress"></a>数据入口
 
-Azure 时序见解数据入口策略决定了数据可以源自何处，以及采用什么格式。
+在时序见解预览中，数据入口策略确定数据的来源位置以及数据应采用的格式。
 
-[![时序模型类型](media/v2-update-storage-ingress/tsi-data-ingress.png)](media/v2-update-storage-ingress/tsi-data-ingress.png#lightbox)
+[![时序模型概述](media/v2-update-storage-ingress/tsi-data-ingress.png)](media/v2-update-storage-ingress/tsi-data-ingress.png#lightbox)
 
-### <a name="ingress-policies"></a>流入策略
+### <a name="ingress-policies"></a>入口策略
 
-时序见解预览版支持时序见解目前所支持的相同事件源和文件类型：
+时序见解预览版支持时序见解当前支持的相同事件源：
 
 - [Azure IoT 中心](../iot-hub/about-iot-hub.md)
 - [Azure 事件中心](../event-hubs/event-hubs-about.md)
+
+时序见解预览版每个实例最多支持两个事件源。
   
-Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 JSON。 若要优化 IoT JSON 数据，请了解[如何塑造 JSON](./time-series-insights-send-events.md#supported-json-shapes)。
+Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 JSON。 若要优化 IoT JSON 数据，请了解[如何为 json](./time-series-insights-send-events.md#supported-json-shapes)。
 
 ### <a name="data-storage"></a>数据存储
 
-创建时序见解预览版即用即付 SKU 环境时，请创建两个资源：
+创建时序见解预览即用即付 SKU 环境时，需要创建两个 Azure 资源：
 
-* 时序见解环境。
-* 用于存储数据的 Azure 存储常规用途 V1 帐户。
+* 时序见解预览环境，可以选择包括热存储功能。
+* 用于冷数据存储的 Azure 存储常规用途 V1 blob 帐户。
 
-时序见解预览版对 Parquet 文件类型使用 Azure Blob 存储。 时序见解管理所有数据操作，包括创建 Blob、编制索引以及将 Azure 存储帐户中的数据分区。 使用 Azure 存储帐户创建这些 Blob。
+你的热存储中的数据仅可通过[时序查询](./time-series-insights-update-tsq.md)和[Azure 时序见解预览资源管理器](./time-series-insights-update-explorer.md)使用。 
 
-与其他 Azure 存储 Blob 一样，时序见解创建的 Blob 允许读取和写入，以支持各种集成方案。
+时序见解预览版以[Parquet 文件格式](#parquet-file-format-and-folder-structure)将冷存储数据保存到 Azure Blob 存储。 时序见解预览版以独占方式管理此冷存储数据，但可以直接作为标准 Parquet 文件读取。
+
+> [!WARNING]
+> 作为冷存储数据所在的 Azure Blob 存储帐户的所有者，你对该帐户中的所有数据具有完全访问权限。 此访问权限包括 "写入" 和 "删除" 权限。 请勿编辑或删除时序见解预览写入的数据，因为这可能会导致数据丢失。
 
 ### <a name="data-availability"></a>数据可用性
-
-时序见解预览版使用 Blob 大小优化策略为数据编制索引。 根据数据传入量以及传入速度为数据编制索引后，这些数据可用于查询。
+时序见解预览分区和索引数据以获得最佳查询性能。 索引数据后，可对其进行查询。 正在引入的数据量可能会影响此可用性。
 
 > [!IMPORTANT]
-> * 在数据到达事件源的 60 秒内，时序见解正式版 (GA) 即可提供数据。
-> * 在预览版中，预期需要在更长的时间后才会提供数据。
-> * 如果遇到很长的延迟，请务必联系我们。
+> 时序见解的正式发布（GA）版本将使数据在从事件源读取后的60秒内可用。 预览期间，你可能会遇到较长的一段时间，然后数据才会可用。 如果遇到超过60秒的明显延迟，请联系我们。
 
-### <a name="scale"></a>缩放
+### <a name="scale"></a>调整规模
 
-时序见解预览版最高支持每个环境每秒 1 Mbps 的初始流入规模。 我们正在增强缩放支持， 到时会更新我们的文档以反映这些改进。
+默认情况下，时序见解预览版支持每秒最大为 1 mb/秒（MB/秒）的每个环境的初始入口。 如果需要，最高可达 16 MB/秒的吞吐量。 如果需要增强的缩放支持，请联系我们。
 
-## <a name="parquet-file-format"></a>Parquet 文件格式
+可以获取事件源的其他入口和缩放功能：
 
-Parquet 是面向列的数据文件格式，旨在实现：
+* [IoT 中心](../iot-hub/iot-hub-scaling.md)
+* [事件中心](../event-hubs/event-hubs-scalability.md)
 
-* 互操作性
-* 空间效率
-* 查询效率
+## <a name="azure-storage"></a>Azure 存储器
 
-时序见解之所以选择 Parquet，是因为它提供高效的数据压缩和编码方案，并增强了性能，可以批量处理复杂的数据。
+本部分介绍 azure 时序见解预览版中的 Azure 存储空间详细信息。
 
-有关 Parquet 文件类型的详细信息，请参阅 [Parquet 文档](https://parquet.apache.org/documentation/latest/)。
-
-有关 Azure 中的 Parquet 文件格式的详细信息，请参阅[Azure 存储中支持的文件类型](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs#parquet-format)。
-
-### <a name="event-structure-in-parquet"></a>Parquet 中的事件结构
-
-时序见解使用以下两种格式创建和存储 Blob 的副本：
-
-1. 首先，按抵达时间将初始副本分区：
-
-    * `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
-    * 按抵达时间将 Blob 的 Blob 创建时间分区。
-
-1. 其次，按时序 ID 的动态分组将重新分区的副本分区：
-
-    * `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
-    * 按时序 ID 将 Blob 中 Blob 的最小事件时间戳分区。
-
-> [!NOTE]
-> * `<YYYY>` 映射到 4 位数的年份表示形式。
-> * `<MM>` 映射到 2 位数的月份表示形式。
-> * `<YYYYMMDDHHMMSSfff>` 映射到包含 4 位数年份 (`YYYY`)、2 位数月份 (`MM`)、2 位数日期 (`DD`)、2 位数小时 (`HH`)、2 位数分钟 (`MM`)、2 位数字秒 (`SS`) 和 3 位数毫秒 (`fff`) 的的时间戳表示形式。
-
-时序见解事件按如下所示映射到 Parquet 文件内容：
-
-* 每个事件映射到单个行。
-* 包含事件时间戳的内置“时间戳”列。 “时间戳”属性永远不会为 null。 如果未在事件源中指定“时间戳”属性，该属性默认为“事件源排队时间”。 时间戳采用 UTC 时间。 
-* 映射到列的其他所有属性以 `_string`（字符串）、`_bool`（布尔值）、`_datetime`（日期时间）或 `_double`（双精度值）结尾，具体取决于属性类型。
-* 这是文件格式的第一个版本（称为 **V=1**）的映射方案。 随着此功能的不断演进，名称将递增为 **V=2**、**V=3**，依次类推。
-
-## <a name="azure-storage"></a>Azure 存储
-
-此部分介绍与 Azure 时序见解相关的 Azure 存储详细信息。
-
-如需详尽的 Azure Blob 存储服务说明，请阅读[存储 Blob 简介](../storage/blobs/storage-blobs-introduction.md)。
+有关 Azure Blob 存储的全面说明，请参阅[存储 blob 简介](../storage/blobs/storage-blobs-introduction.md)。
 
 ### <a name="your-storage-account"></a>你的存储帐户
 
-创建时序见解即用即付环境时，会创建两个资源：时序见解环境，以及用于存储数据的 Azure 存储常规用途 V1 帐户。 我们已选择将 Azure 存储常规用途 V1 用作默认资源，由于它在互操作性、价格和性能方面具有优势。
+创建时序见解预览即用即付环境时，会将 Azure 存储空间常规用途 V1 blob 帐户创建为长期冷存储。  
 
-时序见解在 Azure 存储帐户中发布每个事件的最多两个副本。 初始副本始终会保留，使你能够使用其他服务对它进行快速查询。 可以基于原始 Parquet 文件对时序 ID 轻松使用 Spark、Hadoop 和其他熟悉的工具，因为这些引擎支持基本的文件名筛选。 按年份和月份将 Blob 分组，是列出自定义作业特定时间范围内的 Blob 的有效方式。
+时序见解预览版在你的 Azure 存储帐户中发布每个事件的两个副本。 初始副本包含按引入时间排序的事件，并且始终保留这些事件，因此你可以使用其他服务来访问它。 你可以使用 Spark、Hadoop 和其他熟悉的工具来处理原始 Parquet 文件。 
 
-此外，时序见解可将 Parquet 文件重新分区，以优化时序见解 API。 还会保存最近重新分区的文件。
+时序见解预览版对为时序见解查询进行优化的 Parquet 文件。 还会保存此数据的重新分区副本。
 
-在公共预览版中，数据无限期存储在 Azure 存储帐户中。
+公共预览期间，数据将无限期地存储在 Azure 存储帐户中。
 
 ### <a name="writing-and-editing-time-series-insights-blobs"></a>编写和编辑时序见解 Blob
 
-为了确保查询性能和数据可用性，请不要编辑或删除时序见解创建的任何 Blob。
-
-> [!TIP]
-> 如果过于频繁地读取或写入 Blob，时序见解的性能可能会受到负面影响。
+若要确保查询性能和数据可用性，请不要编辑或删除时序见解预览创建的任何 blob。
 
 ### <a name="accessing-and-exporting-data-from-time-series-insights-preview"></a>从时序见解预览版访问和导出数据
 
-你可能想要访问时序见解预览版资源管理器中存储的数据，以便与其他服务结合使用这些数据。 例如，你可能想要使用数据在 Power BI 中生成报表、通过 Azure 机器学习工作室执行机器学习，或者结合 Jupyter Notebook 在 Notebook 应用程序中使用数据。
+你可能希望访问在时序见解预览资源管理器中查看的数据，以便与其他服务一起使用。 例如，你可以使用数据在 Power BI 中生成报表，或使用 Azure 机器学习 Studio 来训练机器学习模型。 或者，你可以使用你的数据在 Jupyter 笔记本中进行转换、可视化和建模。
 
 可通过三种常规方式访问数据：
 
-* 在时序见解预览版资源管理器中：可以在时序见解预览版资源管理器中将数据导出为 CSV 文件。 有关详细信息，请参阅[时序见解预览版资源管理器](./time-series-insights-update-explorer.md)。
-* 在时序见解预览版 API 中：可以通过 `/getRecorded` 访问 API 终结点。 有关此 API 的详细信息，请参阅[时序查询](./time-series-insights-update-tsq.md)。
-* 从 Azure 存储帐户直接访问（如下所述）。
-
-#### <a name="from-an-azure-storage-account"></a>通过 Azure 存储帐户
-
-* 需要对用于访问时序见解数据的任何帐户拥有读取访问权限。 有关详细信息，请参阅[管理对存储帐户资源的访问权限](../storage/blobs/storage-manage-access-to-resources.md)。
-* 有关直接从 Azure Blob 存储读取数据的详细信息，请参阅[选择 Azure 数据传输解决方案](../storage/common/storage-choose-data-transfer-solution.md)。
-* 从 Azure 存储帐户导出数据：
-    * 首先确保帐户符合导出数据的必要要求。 有关详细信息，请参阅[存储导入和导出要求](../storage/common/storage-import-export-requirements.md)。
-    * 若要了解从 Azure 存储帐户导出数据的其他方法，请参阅[从 Blob 导入和导出数据](../storage/common/storage-import-export-data-from-blobs.md)。
+* 通过时序见解预览版资源管理器。 你可以从资源管理器中将数据导出为 CSV 文件。 有关详细信息，请参阅[时序见解预览版资源管理器](./time-series-insights-update-explorer.md)。
+* 来自时序见解预览 API。 可以在 `/getRecorded`访问 API 终结点。 有关此 API 的详细信息，请参阅[时序查询](./time-series-insights-update-tsq.md)。
+* 从 Azure 存储帐户直接访问。 需要对用于访问时序见解预览数据的任何帐户进行读取访问。 有关详细信息，请参阅[管理对存储帐户资源的访问权限](../storage/blobs/storage-manage-access-to-resources.md)。
 
 ### <a name="data-deletion"></a>数据删除
 
-不要删除 Blob。 Blob 不仅可用于审核和维护数据记录，时序见解预览版还会在每个 Blob 中维护 Blob 元数据。
+请勿删除时序见解预览文件。 只应在时序见解预览版中管理相关数据。
 
-## <a name="partitions"></a>分区
+## <a name="parquet-file-format-and-folder-structure"></a>Parquet 文件格式和文件夹结构
 
-每个时序见解预览版环境必须有一个用于唯一标识它的“时序 ID”属性和“时间戳”属性。 时序 ID 充当数据的逻辑分区，为时序见解预览版环境提供自然边界，以便跨物理分区分布数据。 时序见解预览版在 Azure 存储帐户中管理物理分区。
+Parquet 是一种开源纵栏文件格式，旨在实现高效的存储和性能。 由于这些原因，时序见解预览版使用 Parquet。 它按时间序列 ID 对数据进行分区，以便大规模查询性能。  
 
-时序见解通过删除和重新创建分区，使用动态分区来优化存储和查询性能。 时序见解预览版动态分区算法会尽量防止在单个物理分区中包含多个不同逻辑分区的数据。 换言之，分区算法专门在 Parquet 文件中保留单个时序 ID 特定的所有数据，使其不与其他时序 ID 重叠。 动态分区算法还会尽量保留单个时序 ID 中事件的原始顺序。
+有关 Parquet 文件类型的详细信息，请参阅[Parquet 文档](https://parquet.apache.org/documentation/latest/)。
 
-最初在流入时，数据将按时间戳分区，因此，给定时间范围内的单个逻辑分区可以分散在多个物理分区之间。 单个物理分区中还可以包含多个或所有逻辑分区。 由于 Blob 大小有限制，即使使用最佳分区方案，单个逻辑分区也仍可能占用多个物理分区。
+时序见解预览版按如下方式存储数据的副本：
+
+* 首先，初始副本按引入时间进行分区，并按到达顺序存储数据。 数据驻留在 `PT=Time` 文件夹中：
+
+  `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
+
+* 其次，重新分区副本按一组时序 Id 进行分区，并驻留在 `PT=TsId` 文件夹中：
+
+  `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
+
+在这两种情况下，时间值都对应于 blob 创建时间。 保留 `PT=Time` 文件夹中的数据。 `PT=TsId` 文件夹中的数据将针对一段时间的查询进行优化，而不会保持静态。
 
 > [!NOTE]
-> 默认情况下，“时间戳”值是配置的事件源中消息的*排队时间*。
+> * `<YYYY>` 映射为四位数年份表示形式。
+> * `<MM>` 映射到两位数的月份表示形式。
+> * `<YYYYMMDDHHMMSSfff>` 映射到具有四位数年份（`YYYY`）、两位数月（`MM`）、两位数日期（`DD`）、两位数小时（`HH`）、两位数分钟（`MM`）、两位数秒（`SS`）和三位数毫秒（`fff`）。
 
-若要上传历史数据或批消息，请将要连同数据一起存储的值分配到映射至相应时间戳的“时间戳”属性。 “时间戳”属性区分大小写。 有关详细信息，请参阅[时序模型](./time-series-insights-update-tsm.md)。
+时序见解预览版事件映射到 Parquet 文件内容，如下所示：
 
-### <a name="physical-partitions"></a>物理分区
-
-物理分区是存储在存储帐户中的块 Blob。 Blob 的实际大小可能不同，因为大小取决于推送速率。 但是，我们预期 Blob 大小大约为 20 MB 到 50 MB。 时序见解团队可以参考这种预期，选择 20 MB 作为大小来优化查询性能。 此大小根据文件大小和数据流入速度不断变化。
-
-> [!NOTE]
-> * 将 Blob 大小调整为 20 MB。
-> * 为了提高性能，偶尔会通过删除和重新创建将 Azure Blob 重新分区。
-> * 此外，相同的时序见解数据可以保存在两个或更多个 Blob 中。
-
-### <a name="logical-partitions"></a>逻辑分区
-
-逻辑分区指物理分区内用于存储与单个分区键值关联的所有数据的分区。 时序见解预览版基于两个属性对每个 Blob 进行逻辑分区：
-
-* **时序 ID**：事件流和模型中所有时序见解数据的分区键。
-* **时间戳**：基于初始流入的时间。
-
-时序见解预览版提供基于这两个属性的性能查询。 这两个属性还提供用于快速传送时序见解数据的最有效方法。
-
-必须选择适当的时序 ID，因为它是不可变的属性。 有关详细信息，请参阅[选择时序 ID](./time-series-insights-update-how-to-id.md)。
+* 每个事件映射到单个行。
+* 每一行都包含带有事件时间戳的**timestamp**列。 时间戳属性决不会为 null。 如果事件源中未指定时间戳属性，则默认为**事件排队时间**。 时间戳始终采用 UTC 格式。
+* 每一行都包含创建时序见解环境时定义的时序 ID 列。 属性名称包括 `_string` 后缀。
+* 作为遥测数据发送的所有其他属性都映射到以 `_string` （string）、`_bool` （布尔）、`_datetime` （datetime）或 `_double` （double）结尾的列名称，具体取决于属性类型。
+* 此映射方案适用于文件格式的第一个版本，作为**V = 1**引用。 随着此功能的演变，名称可能会增加。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读 [Azure 时序见解预览版存储和入口](./time-series-insights-update-storage-ingress.md)。
+- 阅读[Azure 时序见解预览版存储和入口](./time-series-insights-update-storage-ingress.md)。
 
-- 了解新型[数据建模](./time-series-insights-update-tsm.md)。
+- 了解新的[数据建模](./time-series-insights-update-tsm.md)。

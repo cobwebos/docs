@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 91aae53ae81d2bc7cfda54cefa786e4b1a1aab67
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9676d76f03b13ca93183e74790642e76b993b8b7
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72949659"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72987895"
 ---
 # <a name="use-device-groups-in-your-azure-iot-central-application-preview-features"></a>使用 Azure IoT Central 应用程序中的设备组（预览功能）
 
@@ -56,4 +56,4 @@ ms.locfileid: "72949659"
 现在，你已了解如何使用 Azure IoT Central 应用程序中的设备组，以下是建议的下一个步骤：
 
 > [!div class="nextstepaction"]
-> [如何创建遥测规则](howto-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+> [如何创建遥测规则](tutorial-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)

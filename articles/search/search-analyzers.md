@@ -1,25 +1,25 @@
 ---
-title: 用于语言和文本处理的分析器
-titleSuffix: Azure Cognitive Search
+title: 用于语言和文本处理的分析器 - Azure 搜索
 description: 将分析器分配到索引中的可搜索文本字段，以将默认标准 Lucene 替换为自定义、预定义或特定语言替代项。
-author: HeidiSteen
-manager: nitinme
-ms.author: heidist
-ms.service: cognitive-search
+services: search
+ms.service: search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 67ee2790cbf0f9e147222c5cf3ea4448362d9f87
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 08/08/2019
+ms.author: heidist
+manager: nitinme
+author: HeidiSteen
+ms.openlocfilehash: 85ebc75a22a4b27803df758d3f411a46a6206eb7
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791219"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72987625"
 ---
-# <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure 认知搜索中的文本处理分析器
+# <a name="analyzers-for-text-processing-in-azure-search"></a>用于 Azure 搜索中文本处理的分析器
 
 分析器是[全文搜索引擎](search-lucene-query-architecture.md)的组成部分，负责在查询字符串和带索引文档中进行文本处理。 不同的分析器根据具体的方案以不同的方式处理文本。 语言分析器使用语言规则处理文本，以提高搜索质量；其他分析器执行其他基本任务，例如，将字符转换为小写。 
 
-语言分析器是最常使用的，默认语言分析器分配给 Azure 认知搜索索引中的每个可搜索字段。 下面是文本分析过程中的典型语言转换：
+语言分析器是用得最多的类型，Azure 搜索索引中的每个可搜索字段都分配有默认的语言分析器。 下面是文本分析过程中的典型语言转换：
 
 + 删除非必需字（非索引字）和标点。
 + 将短语和用连字符连接的词语分解为组成部分。
@@ -30,19 +30,19 @@ ms.locfileid: "72791219"
 
 ## <a name="default-analyzer"></a>默认分析器  
 
-Azure 认知搜索使用[Apache Lucene 标准分析器（Standard lucene）](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html)作为默认值，这会将文本分为["Unicode 文本分段"](https://unicode.org/reports/tr29/)规则。 此外，标准分析器将所有字符转换为其小写形式。 已编入索引的文档和搜索词在索引和查询处理期间完成分析。  
+Azure 搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html)，该分析器按照[“Unicode 文本分段”](https://unicode.org/reports/tr29/)规则将文本分解成多个元素。 此外，标准分析器将所有字符转换为其小写形式。 已编入索引的文档和搜索词在索引和查询处理期间完成分析。  
 
 将会针对每个可搜索字段使用此分析器。 你可以逐字段替代默认值。 替代的分析器可以是[语言分析器](index-add-language-analyzers.md)、[自定义分析器](index-add-custom-analyzers.md)，也可以是[可用分析器列表](index-add-custom-analyzers.md#AnalyzerTable)中的预定义分析器。
 
 
 ## <a name="types-of-analyzers"></a>分析器类型
 
-下面的列表介绍 Azure 认知搜索中可用的分析器。
+下表描述了 Azure 搜索中可用的分析器。
 
 | 类别 | 描述 |
 |----------|-------------|
 | [标准 Lucene 分析器](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 默认。 无需任何规范或配置。 这种通用分析器适用于大多数语言和方案。|
-| 预定义分析器 | 以成品的形式提供，旨在按原样使用。 <br/>有两种类型：专用和语言特定。 之所以称作“预定义”分析器，是因为它们按名称引用，不需要进行额外的配置或自定义。 <br/><br/>需要对文本输入进行专业处理或最小处理时，请使用[专业（不区分语言）分析器](index-add-custom-analyzers.md#AnalyzerTable)。 非语言预定义分析器包括 Asciifolding、Keyword、Pattern、Simple、Stop 和 Whitespace。<br/><br/>当需要为各种语言提供丰富的语言支持时，请使用[语言分析器](index-add-language-analyzers.md)。 Azure 认知搜索支持 35 Lucene 语言分析器和 50 Microsoft 自然语言处理分析器。 |
+| 预定义分析器 | 以成品的形式提供，旨在按原样使用。 <br/>有两种类型：专用和语言特定。 之所以称作“预定义”分析器，是因为它们按名称引用，不需要进行额外的配置或自定义。 <br/><br/>需要对文本输入进行专业处理或最小处理时，请使用[专业（不区分语言）分析器](index-add-custom-analyzers.md#AnalyzerTable)。 非语言预定义分析器包括 Asciifolding、Keyword、Pattern、Simple、Stop 和 Whitespace。<br/><br/>当需要为各种语言提供丰富的语言支持时，请使用[语言分析器](index-add-language-analyzers.md)。 Azure 搜索支持 35 种 Lucene 语言分析器和 50 种 Microsoft 自然语言处理分析器。 |
 |[自定义分析器](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | 称为结合了现有元素的用户定义配置，由一个 tokenizer（必需）和可选的筛选器（字符或词元）组成。|
 
 某些预定义分析器（例如 **Pattern** 或 **Stop**）支持有限的一组配置选项。 若要设置这些选项，请有效地创建一个自定义分析器，其中包括某个预定义分析器，以及[预定义分析器参考](index-add-custom-analyzers.md#AnalyzerTable)中所述的一个替代选项。 对于任何自定义配置，请为新配置提供一个名称，例如 *myPatternAnalyzer*，以便将它与 Lucene Pattern 分析器区分开来。
@@ -80,7 +80,7 @@ Azure 认知搜索使用[Apache Lucene 标准分析器（Standard lucene）](htt
 
 ### <a name="one-analyzer-for-read-write-unless-you-have-specific-requirements"></a>除非特别要求，否则读写操作使用一个分析器
 
-Azure 认知搜索允许通过附加的**indexAnalyzer**和**searchAnalyzer**字段参数为索引和搜索指定不同的分析器。 如果未指定，则使用 **analyzer** 属性设置的分析器将用于索引编制和搜索。 如果未指定 `analyzer`，将使用默认标准 Lucene 分析器。
+Azure 搜索允许通过附加的 **indexAnalyzer** 和 **searchAnalyzer** 字段参数来指定使用不同的分析器执行索引和搜索。 如果未指定，则使用 **analyzer** 属性设置的分析器将用于索引编制和搜索。 如果未指定 `analyzer`，将使用默认标准 Lucene 分析器。
 
 除非特别要求，否则索引和查询一般使用同一个分析器。 请务必全面测试。 如果搜索和索引时的文本处理不同，则当搜索和索引分析器配置不一致时，查询词和索引词可能会不匹配。
 
@@ -286,7 +286,7 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
 
 此示例将 Microsoft 英语和法语分析器分配给说明字段。 这是来自更大的酒店索引定义的代码片段，使用[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)示例的 hotels.cs 文件中的酒店类创建。
 
-调用[Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet)，指定[AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet)类型，该类型提供 Azure 认知搜索中支持的文本分析器。
+调用[分析器](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet)，指定提供 Azure 搜索支持的文本分析器的[AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet)类型。
 
 ```csharp
     public partial class Hotel
@@ -312,7 +312,7 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
 
 需要自定义或配置时，需要将分析器构造添加到索引。 定义后，可以按照前面示例中所示，将其添加到字段定义。
 
-创建[CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet)对象。 有关更多示例，请参阅[CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/src/SDKs/Search/DataPlane/Search.Tests/Tests/CustomAnalyzerTests.cs)。
+创建[CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet)对象。 有关更多示例，请参阅[CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs)。
 
 ```csharp
 {
@@ -336,7 +336,7 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
 
 ## <a name="next-steps"></a>后续步骤
 
-+ 查看[有关 Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)的综合说明。 本文通过示例来说明某些表面上看起来与预期不符的行为。
++ 请参阅 [Azure 搜索中全文搜索的工作原理](search-lucene-query-architecture.md)获取全面的说明。 本文通过示例来说明某些表面上看起来与预期不符的行为。
 
 + 通过[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)示例部分或者通过门户中“搜索资源管理器”的[简单查询语法](query-simple-syntax.md)尝试其他查询语法。
 

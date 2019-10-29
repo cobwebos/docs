@@ -3,7 +3,7 @@ title: 了解 Azure 时序见解环境中的数据保留 | Microsoft Docs
 description: 本文介绍控制 Azure 时序见解环境中的数据保留的两项设置。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2939e37c891a6ecc0421062493cab2e5d79223b5
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9dd771d44452ddc36913caf04f3c3a2d15ff1f08
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330907"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990133"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>了解 Azure 时序见解中的数据保留
 
@@ -88,9 +88,9 @@ ms.locfileid: "72330907"
 
 在受影响的事件中心，请考虑调整“消息保留”属性，以最大程度地减少在时序见解中发生传入暂停时丢失数据的情况。
 
-[@no__t 1Event hub 消息保留。](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
+[![事件中心消息保留。](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
 
-如果在事件源（`timeStampPropertyName`）上未配置任何属性，则时序见解默认为以 X 轴作为事件中心到达的时间戳。 如果 @no__t 0 配置为其他内容，则在分析事件时，环境将在数据包中查找配置的 `timeStampPropertyName`。
+如果在事件源（`timeStampPropertyName`）上未配置任何属性，则时序见解默认为以 X 轴作为事件中心到达的时间戳。 如果 `timeStampPropertyName` 配置为其他对象，则在分析事件时，环境将在数据包中查找配置的 `timeStampPropertyName`。
 
 了解[如何缩放时序见解环境](time-series-insights-how-to-scale-your-environment.md)以缩放环境以适应额外的容量或增加保留的长度。
 

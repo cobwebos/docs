@@ -3,21 +3,20 @@ title: 如何缩放 Azure 时序见解环境 | Microsoft Docs
 description: 本文介绍如何缩放 Azure 时序见解环境。 使用 Azure 门户增加或减少定价 SKU 中的容量。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a899de22137decc1eb1578369a2751710c17abda
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3f03f5ed75c720c9b0daf30d721ef4d2aee9749c
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332883"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991169"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>如何缩放时序见解环境
 
@@ -27,21 +26,9 @@ ms.locfileid: "72332883"
 
 但是，不允许更改定价层 SKU。 例如，不能将定价 SKU 为 S1 的环境转换为 S2，反之亦然。
 
-## <a name="s1-sku-ingress-rates-and-capacities"></a>S1 SKU 入口速率和容量
+## <a name="ga-limits"></a>GA 限制
 
-| S1 SKU 容量 | 入口速率 | 最大存储容量
-| --- | --- | --- |
-| 第 | 1 GB（1 百万个事件） | 每月 30 GB（3 千万个事件） |
-| 10 | 10 GB（1 千万个事件） | 每月 300 GB（3 亿个事件） |
-
-## <a name="s2-sku-ingress-rates-and-capacities"></a>S2 SKU 入口速率和容量
-
-| S2 SKU 容量 | 入口速率 | 最大存储容量
-| --- | --- | --- |
-| 第 | 10 GB（1 千万个事件） | 每月 300 GB（3 亿个事件） |
-| 10 | 100 GB（1 亿个事件） | 每月 3 TB（30 亿个事件） |
-
-容量呈线性增长，因此容量为 2 的 S1 SKU 每日入口速率支持 2 GB（2 百万）的事件，每月支持 60 GB（6 千万）的事件。
+[!INCLUDE [Azure Time Series Insights GA limits](../../includes/time-series-insights-ga-limits.md)]
 
 ## <a name="change-the-capacity-of-your-environment"></a>更改环境容量
 
@@ -49,11 +36,11 @@ ms.locfileid: "72332883"
 
 1. 在时序见解环境的菜单中，选择“配置”。
 
-   [![configure](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
+   [![配置 .png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
 
 1. 调整“容量”滑块来选择满足入口速率和存储容量需求的容量。 请注意，**入口速率**、**存储容量**和**估计成本**会动态更新，以显示更改产生的影响。
 
-   [![Slider](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
+   [![滑块](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
 
    或者，可以在滑块右侧的文本框中键入容量乘数的数字。
 

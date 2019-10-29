@@ -3,7 +3,7 @@ title: 如何在 Azure 时序见解中监视和降低限制 | Microsoft Docs
 description: 本文介绍如何监视、诊断并减少导致 Azure 时序见解延迟和限制的性能问题。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 389e1472e1e1fcbed6dd3b6c1d155199246d877f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4e82cdf43f568b6415cb7cb00ce0244654559b7d
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332975"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990150"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>监视并缩减限制，以减少 Azure 时序见解中的延迟
 
@@ -44,15 +44,15 @@ ms.locfileid: "72332975"
 
 1. 在 Azure 门户中，选择 "**警报**"。
 
-   [![Alerts](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
+   [![警报](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
 
 1. 随后将显示 "**创建规则**" 面板。 在 "**条件**" 下选择 "**添加**"。
 
-   [![Add 警报](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
+   [![添加警报](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
 
 1. 接下来，配置信号逻辑的确切条件。
 
-   [@no__t 1Configure 信号逻辑](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
+   [![配置信号逻辑](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
 
    在这里，你可以使用以下某些条件来配置警报：
 
@@ -70,7 +70,7 @@ ms.locfileid: "72332975"
 
 1. 配置所需的信号逻辑后，请查看所选的警报规则。
 
-   [![Ingress](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
+   [![入口](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
 
 ## <a name="throttling-and-ingress-management"></a>限制和入口管理
 

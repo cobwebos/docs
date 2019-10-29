@@ -1,7 +1,7 @@
 ---
 title: Azure 时序见解中的客户数据请求功能 | Microsoft Docs
 description: Azure 时序见解客户数据请求功能摘要。
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 08/09/2019
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: fb464d2c75e271bf2f7f1684ed991d01691d70e4
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ba883ec3ce8f8ca4491b8576e6633ba2837bb5b2
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330943"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990092"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客户数据请求功能摘要
 

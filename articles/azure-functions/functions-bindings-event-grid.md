@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: fbe41bdc5f253f1a605aa291a31191b7339b9850
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: ff21a1325e341f119fc8615ca03b41b8068aca19
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030580"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991419"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
@@ -35,7 +35,7 @@ ms.locfileid: "72030580"
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="packages---functions-1x"></a>包 - Functions 1.x
+## <a name="packages---functions-1x"></a>包 - Functions 2.x
 
 [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet 包 1.x 版中提供了事件网格触发器。 [azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/master) GitHub 存储库中提供了此包的源代码。
 
@@ -252,7 +252,6 @@ def main(event: func.EventGridEvent):
     ) 
     String content, 
     final ExecutionContext context) {
-      // log 
       context.getLogger().info("Event content: " + content);      
   }
 ```
@@ -289,7 +288,6 @@ public class EventSchema {
     ) 
     EventSchema event, 
     final ExecutionContext context) {
-      // log 
       context.getLogger().info("Event content: ");
       context.getLogger().info("Subject: " + event.subject);
       context.getLogger().info("Time: " + event.eventTime); // automatically converted to Date by the runtime
@@ -300,7 +298,7 @@ public class EventSchema {
 
 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 EventGrid 的参数使用 `EventGridTrigger` 注释。 带有这些注释的参数会导致函数在事件到达时运行。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
-## <a name="attributes"></a>特性
+## <a name="attributes"></a>属性
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/TriggerBinding/EventGridTriggerAttribute.cs) 特性。
 
@@ -322,11 +320,11 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 |function.json 属性 |描述|
 |---------|---------|
-| **type** | 必需 - 必须设置为 `eventGridTrigger`。 |
-| **direction** | 必需 - 必须设置为 `in`。 |
-| **name** | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
+| 类型 | 必需 - 必须设置为 `eventGridTrigger`。 |
+| direction | 必需 - 必须设置为 `in`。 |
+| name | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
 
-## <a name="usage"></a>用法
+## <a name="usage"></a>使用情况
 
 在 Azure Functions 1.x 的 C# 和 F# 函数中，可以为事件网格触发器使用以下参数类型：
 

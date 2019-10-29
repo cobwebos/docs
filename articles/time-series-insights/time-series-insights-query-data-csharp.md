@@ -1,27 +1,26 @@
 ---
-title: 使用 C# 代码查询 Azure 时序见解正式版环境中的数据 | Microsoft Docs
+title: 使用C#代码从 Azure 时序见解 GA 环境查询数据 |Microsoft Docs
 description: 本文介绍如何通过编码以 C# (C-sharp) .NET 语言编写的自定义应用来查询 Azure 时序见解环境中的数据。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-reviewer: jasonwhowell, kfile, tsidocs
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5928a8ee048b608d691ecea33d186838ec743e4b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 23e4ad5667019b5bc38f9ba11d14632d4d55d5b7
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981125"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989982"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>使用 C# 查询 Azure 时序见解正式版环境中的数据
+# <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>使用从 Azure 时序见解 GA 环境查询数据C#
 
-本 C# 示例演示如何查询 Azure 时序见解正式版环境中的数据。
+此C#示例演示如何从 Azure 时序见解 GA 环境查询数据。
 
 该示例演示了多个基本的查询 API 使用示例：
 
@@ -31,11 +30,11 @@ ms.locfileid: "71981125"
 1. 以 Web 套接字请求为例，可以为感兴趣的环境请求事件聚合数据。 会请求整个可用性时间范围的数据。
 
 > [!NOTE]
-> [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) 中提供了示例代码。
+> [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)中提供了示例代码。
 
 ## <a name="project-dependencies"></a>项目依赖项
 
-添加 NuGet 包 `Microsoft.IdentityModel.Clients.ActiveDirectory` 和 `Newtonsoft.Json`。
+`Microsoft.IdentityModel.Clients.ActiveDirectory` 和 `Newtonsoft.Json`中添加 NuGet 包。
 
 ## <a name="c-example"></a>C# 示例
 
@@ -43,6 +42,6 @@ ms.locfileid: "71981125"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解查询，请阅读[查询 API 参考](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)。
+- 若要了解有关查询的详细信息，请参阅[查询 API 参考](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)。
 
 - 了解如何[使用客户端 SDK 将 JavaScript 应用程序连接](https://github.com/microsoft/tsiclient)到时序见解。
