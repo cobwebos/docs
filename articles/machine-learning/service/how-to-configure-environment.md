@@ -1,7 +1,7 @@
 ---
 title: 设置 Python 开发环境
 titleSuffix: Azure Machine Learning
-description: 了解如何在使用 Azure 机器学习时配置开发环境。 本文介绍如何使用 Conda 环境，如何创建配置文件，以及如何配置自己的基于云的笔记本服务器、Jupyter 笔记本、Azure Databricks、Ide、代码编辑器和 Data Science Virtual Machine。
+description: 了解如何为 Azure 机器学习配置开发环境。 使用 Conda 环境、创建配置文件，并配置自己的基于云的笔记本服务器、Jupyter 笔记本、Azure Databricks、Ide、代码编辑器和 Data Science Virtual Machine。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 66073052b290a1345dc0bb63ed6df0934fd81c64
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 7ad9d721b102ab48f2ebb9c0361153bc3974492a
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804134"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053567"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 

@@ -1,7 +1,7 @@
 ---
 title: 执行 Python 机器学习脚本
 titleSuffix: Azure Machine Learning Studio
-description: 了解如何在 Azure 机器学习 Studio 中使用 Python。
+description: 了解如何使用 "执行 Python 脚本" 模块在机器学习 Studio （经典）试验和 web 服务中使用 Python 代码。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 64030cac73b6fbd750b2ed681d85642cc6ad1146
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: bfc2efca0786838d528b3019a3aff405f46ef645
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308863"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053788"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中执行 Python 机器学习脚本
 
@@ -25,7 +25,7 @@ Python 是披肩多个数据科学家的工具中的一个重要工具。 它在
 
 ## <a name="using-the-execute-python-script-module"></a>使用执行 Python 脚本模块
 
-Studio 中的 Python 的主要界面是通过[执行 Python 脚本][execute-python-script]模块。 它最多可接受三个输入，生成最多两个输出，类似于 "[执行 R 脚本][execute-r-script]" 模块。 使用名`azureml_main`为的特殊命名入口点函数将 Python 代码输入到参数框。
+Studio 中的 Python 的主要界面是通过[执行 Python 脚本][execute-python-script]模块。 它最多可接受三个输入，生成最多两个输出，类似于 "[执行 R 脚本][execute-r-script]" 模块。 通过名为 `azureml_main`的特殊命名入口点函数将 Python 代码输入到参数框。
 
 ![执行 Python 脚本模块](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
@@ -33,7 +33,7 @@ Studio 中的 Python 的主要界面是通过[执行 Python 脚本][execute-pyth
 
 ### <a name="input-parameters"></a>输入参数
 
-Python 模块的输入公开为 Pandas DataFrames。 `azureml_main`函数最多接受两个可选的 Pandas DataFrames 作为参数。
+Python 模块的输入公开为 Pandas DataFrames。 `azureml_main` 函数最多接受两个可选的 Pandas DataFrames 作为参数。
 
 可以定位输入端口和函数参数之间的映射：
 
@@ -41,13 +41,13 @@ Python 模块的输入公开为 Pandas DataFrames。 `azureml_main`函数最多�
 - 第二个输入（如果已连接）映射到函数的第二个参数。
 - 第三个输入用于[导入其他 Python 模块](#import-modules)。
 
-下面显示了如何将输入端口映射到`azureml_main`函数的参数的更详细的语义。
+下面显示了如何将输入端口映射到 `azureml_main` 函数的参数的更详细语义。
 
 ![输入端口配置表和生成的 Python 签名](./media/execute-python-scripts/python-script-inputs-mapped-to-parameters.png)
 
 ### <a name="output-return-values"></a>输出返回值
 
-`azureml_main`函数必须返回在 Python [序列](https://docs.python.org/2/c-api/sequence.html)（如元组、列表或 NumPy 数组）中打包的单个 Pandas 数据帧。 此序列的第一个元素返回到模块的第一个输出端口。 模块的第二个输出端口用于[可视化](#visualizations)，无需返回值。 此方案如下所示。
+`azureml_main` 函数必须返回在 Python[序列](https://docs.python.org/2/c-api/sequence.html)（如元组、列表或 NumPy 数组）中打包的单个 Pandas 数据帧。 此序列的第一个元素返回到模块的第一个输出端口。 模块的第二个输出端口用于[可视化](#visualizations)，无需返回值。 此方案如下所示。
 
 ![将输入端口映射到参数，并将值返回到输出端口](./media/execute-python-scripts/map-of-python-script-inputs-outputs.png)
 
@@ -60,7 +60,7 @@ Studio 数据集不同于 Panda DataFrames。 因此，Studio 中的输入数据
 | 字符串和数值| 转换为 |
 | Pandas "NA" | 转换为 "缺失值" |
 | 索引向量 | 不支持 |
-| 非字符串列名称 | 对`str`列名调用 |
+| 非字符串列名称 | 对列名调用 `str` |
 | 列名称重复 | 添加数字后缀：（1）、（2）、（3）等。
 
 **Python 函数中的所有输入数据帧始终具有64位从0到行数减1的数字索引*
@@ -95,7 +95,7 @@ Studio 数据集不同于 Panda DataFrames。 因此，Studio 中的输入数据
 
 1. 在本地下载[适用于 Python 的 Azure Blob 存储包](https://azuremlpackagesupport.blob.core.windows.net/python/azure.zip)。
 1. 将 zip 文件作为数据集上传到工作室工作区。
-1. 创建 BlobService 对象`protocol='http'`
+1. 通过 `protocol='http'` 创建 BlobService 对象
 
 ```
 from azure.storage.blob import BlockBlobService

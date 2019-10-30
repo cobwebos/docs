@@ -8,14 +8,14 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/18/2018
+ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: fb17d1b95d74a67f220651cf198f367bdd31f19f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 02a1c12957570f0e798c5abfd88562128ea1cf76
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129318"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053069"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>保护标识基础结构的五个步骤
 
@@ -31,18 +31,23 @@ ms.locfileid: "70129318"
 * 提高审核和监视的意识。
 * 通过自助措施提高可预测性，更全面地保护最终用户安全。
 
+在阅读此清单时，请确保跟踪已完成的功能和步骤。
+
 > [!NOTE]
 > 本文档中的许多建议仅适用于配置为使用 Azure Active Directory 作为标识提供者的应用程序。 在应用中配置单一登录可确保将凭据策略、威胁检测、审核和日志记录的优势及其他功能添加到这些应用程序。 [通过 Azure Active Directory 实现的单一登录](../../active-directory/manage-apps/configure-single-sign-on-portal.md)是基础 - 本文中的所有建议都立足于此。
 
-本文档中的建议符合[标识安全评分](../../active-directory/fundamentals/identity-secure-score.md)（Azure AD 租户的标识安全配置的自动评估）。 组织可以使用 Azure AD 门户中的“标识安全评分”页查找当前安全配置的差距，以确保遵循当前的 Microsoft 安全最佳做法。 实施“安全评分”页中的每条建议可以提高评分和跟踪进度，并有助于将实施方案与其他类似规模的组织或行业进行比较。
+本文档中的建议符合[标识安全评分](../../active-directory/fundamentals/identity-secure-score.md)（Azure AD 租户的标识安全配置的自动评估）。 组织可以使用 Azure AD 门户中的 "标识" 安全分数页来找出当前安全配置的缺口，以确保它们遵循当前的 Microsoft[最佳安全方案](identity-management-best-practices.md)。 实施“安全评分”页中的每条建议可以提高评分和跟踪进度，并有助于将实施方案与其他类似规模的组织或行业进行比较。
 
-![标识安全功能分数](./media/steps-secure-identity/azure-ad-sec-steps0.png)
+![标识安全评分](./media/steps-secure-identity/azure-ad-sec-steps0.png)
+
+> [!NOTE]
+> 此处所述的许多功能都需要 Azure AD Premium 订阅，而有些则是免费的。 有关详细信息，请查看我们的[Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)和[Azure AD 部署清单](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-checklist-p2)。
 
 ## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>开始之前：使用 MFA 保护特权帐户
 
 在开始实施此查检表之前，请确保在阅读此查检表时不会受到攻击。 首先需要保护自己的特权帐户。
 
-获得特权帐户控制权的攻击者可以执行巨大的破坏，因此先行保护这些帐户至关重要。 使用[基线保护](../../active-directory/conditional-access/baseline-protection.md)启用 [Azure 多重身份验证](../../active-directory/authentication/multi-factor-authentication.md) (MFA)，并要求组织中的所有管理员执行 MFA。 如果尚未实施 MFA，请立即实施！ 因为 MFA 非常重要。
+获得特权帐户控制权的攻击者可以执行巨大的破坏，因此先行保护这些帐户至关重要。 使用[Azure AD 安全默认值](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md)或[条件性访问](../../active-directory/conditional-access/plan-conditional-access.md)，为组织中的所有管理员启用和要求[Azure 多重身份验证](../../active-directory/authentication/multi-factor-authentication.md)（MFA）。 如果尚未实施 MFA，请立即实施！ 因为 MFA 非常重要。
 
 准备好了吗？ 让我们开始阅读查检表。
 
@@ -51,9 +56,11 @@ ms.locfileid: "70129318"
 大多数企业安全漏洞的起源在于某个帐户受到某种手段的攻击。这些手段多种多样，例如密码喷洒 (password spray)、破解重放或网络钓鱼。 请观看以下视频（45 分钟）来详细了解这些攻击：
 > [!VIDEO https://www.youtube.com/embed/uy0j1_t5Hd4]
 
-### <a name="make-sure-your-organization-use-strong-authentication"></a>确保组织使用强身份验证
+### <a name="make-sure-your-organization-uses-strong-authentication"></a>确保你的组织使用强身份验证
 
 根据密码被猜出、钓鱼、被恶意软件盗窃或重复使用的频率，必须使用某种形式的强凭据来保护密码 – 详细了解 [Azure 多重身份验证](../../active-directory/authentication/multi-factor-authentication.md)。
+
+若要轻松启用基本的标识安全级别，可以使用一键式启用和[Azure AD 安全默认设置](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md)。 默认情况下，安全默认为租户中的所有用户强制实施 Azure MFA，并阻止来自租户范围内的传统协议的登录。
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>开始禁止使用经常受到攻击的密码，摒弃传统的复杂性规则和过期规则。
 
@@ -64,7 +71,7 @@ Azure AD 的[动态禁止密码](../../active-directory/authentication/concept-p
 Microsoft 建议根据 [NIST 指导](https://pages.nist.gov/800-63-3/sp800-63b.html)采用以下新式密码策略：
 
 1. 要求密码至少包含 8 个字符。 密码并非越长越好，因为这会导致用户选择容易预测的密码、将密码保存在文件中，或者写下密码。
-2. 禁用过期规则, 使用户能够轻松猜出密码, 如**Spring2019!**
+2. 禁用过期规则，使用户能够轻松猜出密码，如**Spring2019！**
 3. 禁用字符组合要求，并防止用户选择经常受到攻击的密码，因为这些规则会导致用户在密码中选择容易预测的替代字符。
 
 如果直接在 Azure AD 中创建标识，可以[使用 PowerShell 防止用户的密码过期](../../active-directory/authentication/concept-sspr-policy.md)。 混合型组织应该使用[域组策略设置](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10))或 [Windows PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy) 实施这些策略。
@@ -74,7 +81,7 @@ Microsoft 建议根据 [NIST 指导](https://pages.nist.gov/800-63-3/sp800-63b.h
 如果组织使用实施直通身份验证或联合身份验证的混合标识解决方案，应该启用密码哈希同步，原因包括以下两点：
 
 * Azure AD 管理系统中的[凭据已泄漏的用户](../../active-directory/reports-monitoring/concept-risk-events.md)报告会警告用户名和密码对已在“黑暗网络”中透露。 日后遭到攻击的第三方站点上出现的网络钓鱼、恶意软件和密码重用，导致大量的密码泄漏。 Microsoft 会检测其中的许多泄漏凭据，如果它们与你组织中的凭据匹配，则会告诉你 – 但前提是已[启用密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)！
-* 如果发生本地服务中断（例如，在勒索软件攻击中），可以切换到[使用密码哈希同步的云身份验证](choose-ad-authn.md)。使用此备用身份验证方法，可以继续访问配置为使用 Azure Active Directory 进行身份验证的应用，包括 Office 365。 在这种情况下，解决本地服务中断之前，IT 人员无需采用个人电子邮件帐户来共享数据。
+* 发生本地中断（例如，在勒索软件攻击中）时，可以[使用密码哈希同步切换到使用云身份验证](choose-ad-authn.md)。利用此备份身份验证方法，你可以继续访问配置为 Azure Active Directory 身份验证的应用，包括 Office 365。 在这种情况下，IT 员工无需采取个人电子邮件帐户来共享数据，直到本地中断得到解决。
 
 详细了解[密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)的工作原理。
 
@@ -95,19 +102,19 @@ Microsoft 建议根据 [NIST 指导](https://pages.nist.gov/800-63-3/sp800-63b.h
 
 ### <a name="block-legacy-authentication"></a>阻止传统身份验证
 
-使用自身的传统方法在 Azure AD 中进行身份验证和访问公司数据的应用给组织带来了另一种风险。 使用传统身份验证的应用示例包括 POP3、IMAP4 或 SMTP 客户端。 传统身份验证应用会代表用户执行身份验证，并阻止 Azure AD 执行高级安全评估。 替代的新式身份验证可降低安全风险, 因为它支持多重身份验证和条件性访问。 我们建议采取以下三项措施：
+使用自身的传统方法在 Azure AD 中进行身份验证和访问公司数据的应用给组织带来了另一种风险。 使用传统身份验证的应用示例包括 POP3、IMAP4 或 SMTP 客户端。 传统身份验证应用会代表用户执行身份验证，并阻止 Azure AD 执行高级安全评估。 替代的新式身份验证可降低安全风险，因为它支持多重身份验证和条件性访问。 我们建议采取以下三项措施：
 
 1. [如果使用 AD FS，则阻止传统身份验证](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)。
 2. [将 SharePoint Online 和 Exchange Online 设置为使用新式身份验证](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md)。
-3. 使用[条件性访问策略来阻止旧身份验证](../../active-directory/conditional-access/conditions.md)。
+3. 如果有 Azure AD Premium，请使用[条件性访问策略](../../active-directory/conditional-access/conditions.md)来阻止旧身份验证，否则请使用[Azure AD 安全默认值](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md)。
 
 ### <a name="block-invalid-authentication-entry-points"></a>阻止无效的身份验证入口点
 
-使用假设违规思路会减少用户凭据泄露造成的影响。 对于环境中的每个应用，请考虑有效的方案：要为哪些组、哪些网络、哪些设备和其他元素授权 – 然后阻止余下的部分。 使用[Azure AD 条件性访问](../../active-directory/conditional-access/overview.md), 你可以根据你定义的特定条件控制授权用户访问其应用和资源的方式。
+使用假设违规思路会减少用户凭据泄露造成的影响。 对于环境中的每个应用，请考虑有效的方案：要为哪些组、哪些网络、哪些设备和其他元素授权 – 然后阻止余下的部分。 使用[Azure AD 条件性访问](../../active-directory/conditional-access/overview.md)，你可以根据你定义的特定条件控制授权用户访问其应用和资源的方式。
 
 ### <a name="block-end-user-consent"></a>阻止最终用户许可
 
-默认情况下，Azure AD 中的所有用户都可以向利用 OAuth 2.0 和 Microsoft 标识[许可框架](../../active-directory/develop/consent-framework.md)的应用程序授予对公司数据的访问权限。 尽管许可确实可让用户轻松获取与 Microsoft 365 和 Azure 集成的有用应用程序，但如果使用不当或未受到密切的监视，它可能会带来风险。 [禁用将来的所有用户许可操作](../../active-directory/manage-apps/methods-for-removing-user-access.md)有助于减小受攻击面并缓解此风险。 如果禁用最终用户许可，则仍会遵循以前的许可授予，但将来的所有许可操作必须由管理员执行。 在禁用此功能之前，最好是确保用户了解如何请求新应用程序的管理批准；这应该有助于减少用户摩擦、最大程度地减少支持请求量，并确保用户不会使用非 Azure AD 凭据注册应用程序。
+默认情况下，Azure AD 中的所有用户都可以向利用 OAuth 2.0 和 Microsoft 标识[许可框架](../../active-directory/develop/consent-framework.md)的应用程序授予对公司数据的访问权限。 尽管许可确实可让用户轻松获取与 Microsoft 365 和 Azure 集成的有用应用程序，但如果使用不当或未受到密切的监视，它可能会带来风险。 [禁用将来的所有用户许可操作](../../active-directory/manage-apps/methods-for-removing-user-access.md)有助于减小受攻击面并缓解此风险。 如果禁用最终用户许可，则仍会遵循以前的许可授予，但将来的所有许可操作必须由管理员执行。 在禁用此功能前，建议确保用户了解如何请求对新应用程序进行管理员批准;执行此操作应有助于减少用户的摩擦，最小化支持量，并确保用户不会使用非 Azure AD 凭据注册应用程序。
 
 ### <a name="implement-azure-ad-privileged-identity-management"></a>实施 Azure AD Privileged Identity Management
 
@@ -130,19 +137,19 @@ Azure Active Directory 中的许多功能可以自动截获攻击，以消除检
 
 ### <a name="implement-user-risk-security-policy-using-azure-ad-identity-protection"></a>使用“Azure AD 标识保护”实施用户风险安全策略
 
-用户风险表示用户的标识已遭到破坏, 并且是根据与用户标识关联的[用户风险检测](../../active-directory/identity-protection/overview.md)来计算的。 用户风险策略是一种条件性访问策略, 可评估特定用户或组的风险级别。 根据“低”、“中”、“高”风险级别，可以配置一个策略来阻止访问，或者要求使用多重身份验证进行安全密码更改。 Microsoft 建议要求高风险用户进行安全密码更改。
+用户风险表示用户的标识已遭到破坏，并且是根据与用户标识关联的[用户风险检测](../../active-directory/identity-protection/overview.md)来计算的。 用户风险策略是一种条件性访问策略，可评估特定用户或组的风险级别。 根据“低”、“中”、“高”风险级别，可以配置一个策略来阻止访问，或者要求使用多重身份验证进行安全密码更改。 Microsoft 建议要求高风险用户进行安全密码更改。
 
 ![已标记为存在风险的用户](./media/steps-secure-identity/azure-ad-sec-steps1.png)
 
 ### <a name="implement-sign-in-risk-policy-using-azure-ad-identity-protection"></a>使用“Azure AD 标识保护”实施登录风险策略
 
-登录风险是指除帐户所有者以外的其他某人尝试使用标识登录的可能性。 [登录风险策略](../../active-directory/identity-protection/overview.md)是一种条件性访问策略, 可评估特定用户或组的风险级别。 根据风险级别（高/中/低），可以配置一个策略来阻止访问，或强制实施多重身份验证。 请确保针对“中”或更高风险的登录强制实施多重身份验证。
+登录风险是指除帐户所有者以外的其他某人尝试使用标识登录的可能性。 [登录风险策略](../../active-directory/identity-protection/overview.md)是一种条件性访问策略，可评估特定用户或组的风险级别。 根据风险级别（高/中/低），可以配置一个策略来阻止访问，或强制实施多重身份验证。 请确保针对“中”或更高风险的登录强制实施多重身份验证。
 
 ![从匿名 IP 登录](./media/steps-secure-identity/azure-ad-sec-steps2.png)
 
 ## <a name="step-4---increase-your-awareness"></a>步骤 4 - 提高意识
 
-审核和记录与安全相关的事件以及相关警报是有效保护策略的至关重要组成部分。 安全日志和报告提供可疑活动的电子记录，并帮助检测可能指示试图或已成功的外部网络渗透以及内部攻击的模式。 可以使用审核来监控用户活动、记录法规遵从性以及执行取证分析等。 警报提供安全事件的通知。
+审核和记录与安全相关的事件以及相关警报是有效保护策略的至关重要组成部分。 安全日志和报告提供可疑活动的电子记录，并帮助检测可能指示试图或已成功的外部网络渗透以及内部攻击的模式。 您可以使用审核来监视用户活动、记录法规遵从性、进行鉴证分析等。 警报提供安全事件的通知。
 
 ### <a name="monitor-azure-ad"></a>监视 Azure AD
 
@@ -156,7 +163,7 @@ Microsoft Azure 服务和功能提供可配置的安全审核和日志记录选�
 
 ### <a name="monitor-azure-ad-identity-protection-events"></a>监视“Azure AD 标识保护”事件
 
-[Azure AD 标识保护](../../active-directory/identity-protection/overview.md)是一个通知、监视和报告工具，可用于检测影响组织标识的潜在漏洞。 它检测到风险检测, 如泄漏的凭据、无法进行的传播, 以及来自受感染设备的登录、匿名 IP 地址、与可疑活动关联的 IP 地址以及未知位置。 启用通知警报可以接收有风险用户的电子邮件，和/或每周摘要电子邮件。
+[Azure AD 标识保护](../../active-directory/identity-protection/overview.md)是一个通知、监视和报告工具，可用于检测影响组织标识的潜在漏洞。 它检测到风险检测，如泄漏的凭据、无法进行的传播，以及来自受感染设备的登录、匿名 IP 地址、与可疑活动关联的 IP 地址以及未知位置。 启用通知警报可以接收有风险用户的电子邮件，和/或每周摘要电子邮件。
 
 Azure AD 标识保护提供两份应该每日监视的重要报告：
 1. 风险登录报告显示应该调查的用户登录活动，合法所有者不可以执行这种登录。
@@ -166,7 +173,7 @@ Azure AD 标识保护提供两份应该每日监视的重要报告：
 
 ### <a name="audit-apps-and-consented-permissions"></a>审核应用和许可的权限
 
-用户可能在诱骗之下导航到已被入侵的网站或应用，使攻击者获取用户个人资料信息和数据（例如电子邮件）的访问权限。 恶意行动者可以使用获得的许可权限来加密用户的邮箱内容，并勒索邮箱数据的赎金。 [管理员应该审查并审核](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)用户授予的权限。
+用户可以被欺骗地定位到被入侵的网站或应用程序，这些应用程序将获得对其个人资料信息和用户数据（如电子邮件）的访问权限。 恶意行动者可以使用获得的许可权限来加密用户的邮箱内容，并勒索邮箱数据的赎金。 [管理员应该审查并审核](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)用户授予的权限。
 
 ## <a name="step-5---enable-end-user-self-help"></a>步骤 5 - 启用最终用户自助
 
@@ -178,13 +185,13 @@ IT 管理员可以通过 Azure 的[自助密码重置 (SSPR)](../../active-direc
 
 ### <a name="implement-self-service-group-management"></a>实施自助服务组管理
 
-Azure AD 提供使用安全组和 Office 365 组管理资源访问权限的功能。 这些组可由组所有者管理，而无需 IT 管理员进行管理。 此功能称作[自助服务组管理](../../active-directory/users-groups-roles/groups-self-service-management.md)，没有管理角色的组所有者可以使用它来创建和管理组，而无需依赖于管理员处理他们的请求。
+Azure AD 提供使用安全组和 Office 365 组管理资源访问权限的功能。 这些组可由组所有者管理，而无需 IT 管理员进行管理。 此功能称为[自助服务组管理](../../active-directory/users-groups-roles/groups-self-service-management.md)，它允许没有分配管理角色的组所有者创建和管理组，而无需依靠管理员来处理其请求。
 
 ### <a name="implement-azure-ad-access-reviews"></a>实施 Azure AD 访问评审
 
-使用 [Azure AD 访问评审](../../active-directory/governance/access-reviews-overview.md)可以管理组成员身份、企业应用程序的访问权限和特权角色分配，以确保维持以下安全标准：不向用户授予超出所需时间范围的访问权限。
+通过[Azure AD 访问评审](../../active-directory/governance/access-reviews-overview.md)，你可以管理组成员身份、访问企业应用程序和特权角色分配，以确保维护安全标准，使用户不会在较长的时间段内进行访问需要它。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 保护安全标识基础结构涉及到很多方面，但此五步骤查检表可帮助你快速实现一个更可靠的安全标识基础结构：
 
@@ -197,4 +204,7 @@ Azure AD 提供使用安全组和 Office 365 组管理资源访问权限的功�
 非常感谢你严肃看待标识安全性，希望本文档在帮助你提高组织的安全性上提供了有用的思路。
 
 ## <a name="next-steps"></a>后续步骤
+
 如果在规划和部署这些建议方面需要帮助，请参阅 [Azure AD 项目部署计划](https://aka.ms/deploymentplans)。
+
+如果你完全相信这些步骤已完成，请使用 Microsoft 的[标识安全分数](../../active-directory/fundamentals/identity-secure-score.md)，这将使你保持最[新的最佳做法](identity-management-best-practices.md)和安全威胁。

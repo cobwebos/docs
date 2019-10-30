@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 43b8dfd571537aaaf6753d6b762ab84cfe4cfd0d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 91670d51328b3adb67ba8b2ed05d3b86f9bc0010
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376169"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053926"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>使用 Azure PowerShell 创建专用终结点
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 
@@ -50,7 +50,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>添加子网
 
-Azure 会将资源部署到虚拟网络中的子网，因此需要创建一个子网。 使用 [AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)创建名为*mySubnet*的子网配置。 以下示例创建名为*mySubnet*的子网，并将 "专用终结点网络策略" 标志设置为 "**已禁用**"。
+Azure 会将资源部署到虚拟网络中的子网，因此需要创建一个子网。 使用[AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)创建名为*mySubnet*的子网配置。 以下示例创建名为*mySubnet*的子网，并将 "专用终结点网络策略" 标志设置为 "**已禁用**"。
 
 ```azurepowershell
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -62,7 +62,7 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
 
 ### <a name="associate-the-subnet-to-the-virtual-network"></a>将子网关联到虚拟网络
 
-可以通过 [AzVirtualNetwork 将](/powershell/module/az.network/Set-azVirtualNetwork)子网配置写入虚拟网络。 此命令创建子网：
+可以通过[AzVirtualNetwork 将](/powershell/module/az.network/Set-azVirtualNetwork)子网配置写入虚拟网络。 此命令创建子网：
 
 ```azurepowershell
 $virtualNetwork | Set-AzVirtualNetwork
@@ -164,10 +164,10 @@ New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink
 } 
 } 
 ``` 
-  
+  
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
-使用 [AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) TO 返回 VM 的公共 IP 地址。 此示例返回*myVM* VM 的公共 IP 地址：
+使用 [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) 返回 VM 的公共 IP 地址。 此示例返回*myVM* VM 的公共 IP 地址：
 
 ```azurepowershell
 Get-AzPublicIpAddress `
@@ -175,7 +175,7 @@ Get-AzPublicIpAddress `
   -ResourceGroupName myResourceGroup `
   | Select IpAddress 
 ```  
-在本地计算机上打开命令提示符。 运行 mstsc 命令。 将 @ no__t-0 @ no__t-1with 替换为上一步返回的公共 IP 地址： 
+在本地计算机上打开命令提示符。 运行 mstsc 命令。 将 <publicIpAddress> 替换为上一步骤中返回的公共 IP 地址： 
 
 
 > [!NOTE]
@@ -195,7 +195,7 @@ mstsc /v:<publicIpAddress>
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>从 VM 中私下访问 SQL 数据库服务器
 
 1. 在 myVM 的远程桌面中，打开 PowerShell。
-2. 输入  `nslookup myserver.database.windows.net`。 
+2. 输入 `nslookup myserver.database.windows.net` 。 
 
     将收到类似于下面的消息：
     ```azurepowershell

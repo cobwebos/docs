@@ -1,18 +1,18 @@
 ---
-title: 在 VMware VM 灾难恢复到 Azure 期间使用 Azure Site Recovery ，对故障回复到本地进行故障排除 | Microsoft Docs
+title: 排查 Azure Site Recovery 的 VMware VM 灾难恢复到 Azure 过程中故障回复到本地的问题
 description: 本文介绍了在 VMware VM 灾难恢复到 Azure 期间使用 Azure Site Recovery 排查故障回复和重新保护问题的方法。
-author: rayne-wiselman
-manager: carmonm
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.author: raynew
-ms.openlocfilehash: c27e72333618f73b67eec9b5c0c3a70239a1c0b3
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 10/29/2019
+ms.author: mayg
+ms.openlocfilehash: e9213637f45a4761af60de9dfac7add6324f6b96
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970855"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053850"
 ---
 # <a name="troubleshoot-vcenter-discovery-failures"></a>排查 vCenter 发现故障
 
@@ -20,7 +20,7 @@ ms.locfileid: "71970855"
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>MaxSnapShots 属性中的非数字值
 
-在9.20 之前的版本中，vCenter 在检索虚拟机上的属性 `snapshot.maxSnapShots` 属性时断开连接。
+在9.20 之前的版本中，vCenter 在检索虚拟机上属性 `snapshot.maxSnapShots` 属性的非数值时断开连接。
 
 此问题由错误 ID 95126 标识。
 
@@ -46,13 +46,13 @@ vCenter 发现采用系统用户配置的系统默认代理设置。 DRA 服务�
 
 遇到此问题时，会发生以下情况：
 
-- 由于以下错误，无法访问 vCenter server \<vCenter >：远程服务器返回错误：（503）服务器不可用
-- 由于以下错误，无法访问 vCenter server \<vCenter >：远程服务器返回错误：无法连接到远程服务器。
+- 由于以下错误，vCenter server \<vCenter > 不可访问：远程服务器返回错误：（503）服务器不可用
+- 由于以下错误，vCenter server \<vCenter > 不可访问：远程服务器返回错误：无法连接到远程服务器。
 - 无法连接到 vCenter/ESXi 服务器。
 
 若要解决问题，请执行以下操作：
 
-下载 [PsExec 工具](https://aka.ms/PsExec)。 
+下载[PsExec 工具](https://aka.ms/PsExec)。 
 
 使用 PsExec 工具来访问系统用户上下文并确定是否配置了代理地址。 然后，可以使用以下过程将 vCenter 添加到跳过列表。
 

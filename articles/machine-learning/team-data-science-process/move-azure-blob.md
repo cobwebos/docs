@@ -1,6 +1,6 @@
 ---
 title: 将数据移入和移出 Azure Blob 存储 - Team Data Science Process
-description: 将数据移入和移出 Azure Blob 存储
+description: 使用 Azure 存储资源管理器、AzCopy、Python 和 SSIS 将数据移入和移出 Azure Blob 存储。
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7b45f9950ef63bc29d23d78d20909f223cb30350
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: d885a7fad6e958507e7d9df34bd2b1fb222c6f86
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998157"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053659"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage"></a>将数据移入和移出 Azure Blob 存储
 
@@ -49,7 +49,7 @@ ms.locfileid: "69998157"
 
 有关详细信息，请参阅[使用 Azure 数据工厂和 Azure 机器学习创建预测管道](../../data-factory/transform-data-using-machine-learning.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 本文假定已有 Azure 订阅、存储帐户，以及该帐户对应的存储密钥。 上传/下载数据之前，必须知道 Azure 存储帐户名和帐户密钥。
 
 * 若要设置 Azure 订阅，请参阅[免费试用一个月版](https://azure.microsoft.com/pricing/free-trial/)。

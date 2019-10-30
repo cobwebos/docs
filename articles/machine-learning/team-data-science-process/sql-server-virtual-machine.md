@@ -1,6 +1,6 @@
 ---
 title: 浏览 SQL Server 虚拟机中的数据 - Team Data Science Process
-description: 在 Azure 上的 SQL Server 虚拟机中浏览数据和生成功能
+description: 在 Azure 上的 SQL Server 虚拟机中浏览和处理数据，并使用 Python 或 SQL 生成功能。
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e407b26091ad559ab458f76d94e2460660ecd14f
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 877c639c35378b173b6ec9c8697725e3b3c09290
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036612"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053612"
 ---
 # <a name="heading"></a>在 Azure 上处理 SQL Server 虚拟机中的数据
 本文档介绍如何浏览数据，并针对存储在 Azure 的 SQL Server VM 中的数据生成功能。 可通过使用 SQL 或 Python 等编程语言的数据整理来实现上述目的。

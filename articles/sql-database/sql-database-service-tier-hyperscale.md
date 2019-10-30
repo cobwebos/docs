@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: df6926a8f50d7ffb2765557cdf75ed6d09b3810b
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 40a2443419fab5d0a89d704312d880e344597b8b
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428039"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053898"
 ---
 # <a name="hyperscale-service-tier"></a>“超大规模”服务层级
 
@@ -38,7 +38,7 @@ Azure SQL 数据库中的“超大规模”服务层级提供了以下附加功�
 
 - 支持高达 100 TB 的数据库大小
 - 几乎即时数据库备份（基于存储在 Azure Blob 存储中的文件快照）不考虑对计算资源的 IO 影响  
-- 在几分钟内快速完成数据库还原（基于文件快照），无需数小时或数天（不基于数据操作的大小）
+- 在几分钟而不是几小时或几天内快速数据库时间点还原（基于文件快照）（不是数据操作的大小）
 - 无论数据卷如何，由于更高的日志吞吐量和更快的事务提交速度，整体性能更高
 - 快速横向扩展 - 可预配一个或多个只读节点，以卸载读取工作负载并用作热备用服务器
 - 快速纵向扩展 - 可在不变的时间内纵向扩展计算资源，以在需要时适应繁重的工作负载，然后在不需要时缩减计算资源。

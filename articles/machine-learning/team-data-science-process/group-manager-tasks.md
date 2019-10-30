@@ -1,6 +1,6 @@
 ---
 title: 团队数据科学流程组管理员任务
-description: 用于数据科学团队项目上的组管理器的任务的详细演练。
+description: 遵循组管理器在数据科学团队项目中完成的任务的详细演练。
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/24/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f95bb30f547e863fc7a796e69fffe1e2334e489c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: a3d23950f5cbfaac00b03b25e3c19078c76ad0a5
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326796"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053308"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>团队数据科学流程组管理员任务
 
@@ -57,7 +57,7 @@ ms.locfileid: "71326796"
    
    ![创建项目](./media/group-manager-tasks/create-project.png)
 
-此时将打开 " **GroupCommon**项目**摘要**" 页。 页面 URL 是*https： \/ @ no__t-2 @ no__t-3servername >/@no__t >/GroupCommon*。
+此时将打开 " **GroupCommon**项目**摘要**" 页。 页面 URL 是*https：\//\<servername >/\</GroupCommon >* 。
 
 ![项目摘要页](./media/group-manager-tasks/project-summary.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "71326796"
 
 Azure Repos 为你的组托管以下类型的存储库：
 
-- **分组常用存储库**：一个数据科学单位内的多个团队可采用多个数据科学项目的通用存储库。 
+- **组公共存储库**：数据科学单位内的多个团队可采用多个数据科学项目的通用存储库。 
 - **团队存储库**：数据科学单元中特定团队的存储库。 这些存储库是特定于团队需求的，可用于该团队内的多个项目，但并不是足够通用，无法在一个数据科学单位内的多个团队中使用。
 - **项目存储库**：特定项目的存储库。 对于一个团队内的多个项目或数据科学单元中的其他团队而言，此类存储库可能不够普遍。
 
@@ -105,7 +105,7 @@ Azure Repos 为你的组托管以下类型的存储库：
    
    ![创建 GroupUtilities 存储库](./media/group-manager-tasks/create-grouputilities-repo-2.png)
    
-1. 在 "**项目设置**" 页上，在左侧导航栏中选择 "**存储库**" 下的 "**存储库**" 以查看两个组存储库：**GroupProjectTemplate**和**GroupUtilities**。
+1. 在 "**项目设置**" 页上，在左侧导航栏中选择 "**存储库**" 下的 "**存储**库" 以查看两个组存储库： **GroupProjectTemplate**和**GroupUtilities**。
    
    ![两个组存储库](./media/group-manager-tasks/two-repositories.png)
 
@@ -121,13 +121,13 @@ Azure Repos 为你的组托管以下类型的存储库：
    
    ![选择导入](./media/group-manager-tasks/import-repo.png)
    
-1. 在 "**导入 git 存储库**" 对话框中，选择 " **Git** " 作为**源类型**，然后输入 " *https： \//github .Com/Azure/Azure-TDSP-ProjectTemplate* " 作为**克隆 URL**。 然后选择 "**导入**"。 Microsoft TDSP team ProjectTemplate 存储库的内容将导入到 GroupProjectTemplate 存储库中。 
+1. 在 "**导入 git 存储库**" 对话框中，选择 " **git** " 作为 "**源类型**"，并为 "**克隆 URL**" 输入*https：\//github.com/Azure/Azure-TDSP-ProjectTemplate.git* 。 然后选择 "**导入**"。 Microsoft TDSP team ProjectTemplate 存储库的内容将导入到 GroupProjectTemplate 存储库中。 
    
    ![导入 Microsoft TDSP 团队存储库](./media/group-manager-tasks/import-repo-2.png)
    
 1. 在**存储库**页面顶部，选择 "GroupUtilities 存储库"，并选择 " " 存储库。
    
-1. 重复导入过程，将 Microsoft TDSP 团队**实用工具**存储库的内容（ *https： @no__t/Github .com/Azure/Azure-TDSP-Utilities*）导入**GroupUtilities**存储库。 
+1. 重复导入过程，将 Microsoft TDSP 团队**实用工具** *\/* 存储库的内容导入到**GroupUtilities**存储库中。 
    
 现在，两个组存储库中的每个文件都包含 Microsoft TDSP 团队的相应存储库中的所有文件，这些文件除外 *。* 
 
@@ -151,7 +151,7 @@ Azure Repos 为你的组托管以下类型的存储库：
      
    - 若要上传文件，请选择 "**上传文件**"。 
      
-     ![上载文件](./media/group-manager-tasks/upload-files.png)
+     ![上传文件](./media/group-manager-tasks/upload-files.png)
      
    - 若要编辑现有文件，请导航到该文件，然后选择 "**编辑**"。 
      
@@ -183,7 +183,7 @@ Azure Repos 为你的组托管以下类型的存储库：
    
 1. 在本地计算机上，创建以下目录：
    
-   - 对于 Windows：**C:\GitRepos\GroupCommon**
+   - 对于 Windows： **C:\GitRepos\GroupCommon**
    - 对于 Linux，主目录上的 **$/GitRepos/GroupCommon** 
    
 1. 更改为你创建的目录。
@@ -215,7 +215,7 @@ git push
 ```
 
 > [!NOTE]
-> 如果这是您第一次提交到 Git 存储库，则在运行该`git commit`命令之前，您可能需要配置全局参数*user.name*和*user。* 运行以下两个命令：
+> 如果这是您第一次提交到 Git 存储库，则在运行 `git commit` 命令之前，您可能需要配置全局参数*user.name*和*user. email* 。 运行以下两个命令：
 > 
 > `git config --global user.name <your name>`
 > 

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: ff50619d7b3d5bc803e8ee8d9e4cbf4389a4191f
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 47258f27f44b6a21c5da72e4631591e695024400
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978090"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053279"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
 
@@ -25,7 +25,7 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 在探讨符合性报告方法之前，让我们了解符合性信息的更新时间和频率，以及触发评估周期的事件。
 
 > [!WARNING]
-> 如果符合性状态被报告为“未注册”，请验证是否已注册 **Microsoft.PolicyInsights** 资源提供程序，并验证用户是否具有适当的基于角色的访问控制 (RBAC) 权限，如 [Azure Policy 中的 RBAC](../overview.md#rbac-permissions-in-azure-policy) 所述。
+> 如果符合性状态被报告为 "**未注册**"，请验证**PolicyInsights**资源提供程序是否已注册，以及用户是否具有适当的基于角色的访问控制（RBAC）权限，如[RBAC 中的 RBAC 中所述。Azure 策略](../overview.md#rbac-permissions-in-azure-policy)。
 
 ## <a name="evaluation-triggers"></a>评估触发器
 
@@ -56,13 +56,13 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 
 扫描支持评估订阅或资源组中的资源。 使用以下 URI 结构，通过 REST API POST 命令开始按范围扫描：
 
-- 订阅
+- Subscription
 
   ```http
   POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
   ```
 
-- 资源组
+- Resource group
 
   ```http
   POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
@@ -87,12 +87,12 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 在分配中，如果某资源不符合策略或计划规则，则该资源不合规。
 下表显示了对于生成的符合性状态，不同的策略效果是如何与条件评估配合使用的：
 
-| 资源状态 | 效果 | 策略评估 | 符合性状态 |
+| 资源状态 | 作用 | 策略评估 | 符合性状态 |
 | --- | --- | --- | --- |
-| 存在 | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | 真 | 不符合 |
-| 存在 | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | 假 | 符合 |
-| 新建 | Audit、AuditIfNotExist\* | 真 | 不符合 |
-| 新建 | Audit、AuditIfNotExist\* | 假 | 符合 |
+| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | 正确 | 不符合 |
+| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | 错误 | 合规性 |
+| 新 | Audit、AuditIfNotExist\* | 正确 | 不符合 |
+| 新 | Audit、AuditIfNotExist\* | 错误 | 合规性 |
 
 \*Append、DeployIfNotExist 和 AuditIfNotExist 效果要求 IF 语句为 TRUE。
 这些效果还要求存在条件为 FALSE 才能将资源判定为不合规。 如果为 TRUE，则 IF 条件会触发相关资源存在条件的计算。
@@ -107,16 +107,16 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 除“符合”和“不符合”外，政策和资源还有 3 种状态：
 
-- **冲突**：两项或多项策略的规则存在冲突。 例如，两项策略向不同的值附加了相同的标记。
-- **未启动**：尚未针对策略或资源启动评估周期。
-- **未注册**：尚未注册 Azure Policy 资源提供程序，或者登录的帐户无权读取符合性数据。
+- **冲突**：存在两个或多个策略冲突的规则。 例如，两项策略向不同的值附加了相同的标记。
+- **未启动：没有**为策略或资源启动评估周期。
+- **未注册**：尚未注册 Azure 策略资源提供程序或登录的帐户没有读取符合性数据的权限。
 
 Azure 策略使用定义中的 "**类型**" 和 "**名称**" 字段来确定资源是否是匹配项。 如果资源匹配，则被视为适用，状态为“符合”或“不符合”。 如果“类型”或“名称”是定义中的唯一属性，则将所有资源视为适用并对其进行评估。
 
 符合百分比是合规资源与总资源之比。
 根据定义，总资源是指合规资源、不合规资源和冲突资源的总和。 整体符合性是不同合规资源的总和除以所有唯一资源。 在下图中，有 20 种不同的资源适用，只有一种资源“不合规”。 因此，资源的整体符合性为 95%（19/20）。
 
-![符合性页面上的策略符合性示例](../media/getting-compliance-data/simple-compliance.png)
+!["符合性" 页中的策略符合性示例](../media/getting-compliance-data/simple-compliance.png)
 
 ## <a name="portal"></a>门户
 
@@ -145,32 +145,10 @@ Azure 门户展示了一个图形体验用于可视化和了解环境中的符�
 
 ## <a name="command-line"></a>命令行
 
-可以使用 REST API（包括使用 [ARMClient](https://github.com/projectkudu/ARMClient)）或 Azure PowerShell 来检索门户中提供的相同信息。 有关 REST API 的完整详细信息，请参阅[Azure 策略见解](/rest/api/policy-insights/)参考。 REST API 参考页上针对每个操作提供了一个绿色的“试用”按钮，使用该按钮可在浏览器中直接试用该操作。
+可以使用 REST API （包括 with [ARMClient](https://github.com/projectkudu/ARMClient)）、Azure PowerShell 和 Azure CLI （预览版）来检索门户中提供的相同信息。
+有关 REST API 的完整详细信息，请参阅[Azure 策略见解](/rest/api/policy-insights/)参考。 REST API 参考页上针对每个操作提供了一个绿色的“试用”按钮，使用该按钮可在浏览器中直接试用该操作。
 
-若要在 Azure PowerShell 中使用以下示例，请使用此示例代码构造身份验证令牌。 然后，将示例中的 $restUri 替换为字符串，以检索随后可分析的 JSON 对象。
-
-```azurepowershell-interactive
-# Login first with Connect-AzAccount if not using Cloud Shell
-
-$azContext = Get-AzContext
-$azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
-$profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
-$token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
-$authHeader = @{
-    'Content-Type'='application/json'
-    'Authorization'='Bearer ' + $token.AccessToken
-}
-
-# Define the REST API to communicate with
-# Use double quotes for $restUri as some endpoints take strings passed in single quotes
-$restUri = "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04"
-
-# Invoke the REST API
-$response = Invoke-RestMethod -Uri $restUri -Method POST -Headers $authHeader
-
-# View the response object (as JSON)
-$response
-```
+使用 ARMClient 或类似的工具来处理 Azure REST API 示例的身份验证。
 
 ### <a name="summarize-results"></a>汇总结果
 
@@ -262,7 +240,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 }
 ```
 
-### <a name="view-events"></a>查看事件
+### <a name="view-events"></a>查看活动
 
 创建或更新资源时，将生成策略评估结果。 结果称为“策略事件”。 使用以下 URI 查看与订阅关联的最近策略事件。
 
@@ -312,7 +290,7 @@ Connect-AzAccount
 - `Start-AzPolicyRemediation`
 - `Stop-AzPolicyRemediation`
 
-例如：获取不符合资源数最多的、最前面的已分配策略的状态摘要。
+示例：获取不合规资源数最多的、最前面的已分配策略的状态摘要。
 
 ```azurepowershell-interactive
 PS> Get-AzPolicyStateSummary -Top 1
@@ -349,7 +327,7 @@ PolicyDefinitionAction     : deny
 PolicyDefinitionCategory   : tbd
 ```
 
-例如：获取所有不符合虚拟网络资源的详细信息。
+示例：获取所有不合规虚拟网络资源的详细信息。
 
 ```azurepowershell-interactive
 PS> Get-AzPolicyState -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'"
@@ -375,7 +353,7 @@ PolicyDefinitionAction     : deny
 PolicyDefinitionCategory   : tbd
 ```
 
-例如：获取在特定日期后发生的、与不符合虚拟网络资源相关的事件。
+示例：获取在特定日期后发生的、与不合规虚拟网络资源相关的事件。
 
 ```azurepowershell-interactive
 PS> Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2018-05-19'
@@ -412,7 +390,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-如果你的[Log Analytics 工作区](../../../log-analytics/log-analytics-overview.md)与你的订阅关联的[Activity Log Analytics 解决方案](../../../azure-monitor/platform/activity-log-collect.md)中 `AzureActivity`，则还可以使用简单的 Kusto 查询和 @no__t 表从评估周期查看不符合性结果。 借助 Azure Monitor 日志中的详细信息，可对警报进行配置，以监视不符合情况。
+如果你有一个[Log Analytics 工作区，该工作区](../../../log-analytics/log-analytics-overview.md)包含与你的订阅相关联的[Activity Log Analytics 解决方案](../../../azure-monitor/platform/activity-log-collect.md)`AzureActivity`，则还可以使用简单 Kusto 查询和 `AzureActivity` 表从评估周期查看不符合性结果。 借助 Azure Monitor 日志中的详细信息，可对警报进行配置，以监视不符合情况。
 
 
 ![使用 Azure Monitor 日志的 Azure 策略符合性](../media/getting-compliance-data/compliance-loganalytics.png)

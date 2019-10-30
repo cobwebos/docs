@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: fd385e820ea205c3acfc0ee3ccec4e07c62bb50e
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 4bdf842ae24d90850280a5a19038dbd00168ff2c
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989586"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053364"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化预配的吞吐量成本
 
@@ -77,7 +77,7 @@ HTTP Status 429,
 
 本机 SDK（.NET/.NET Core、Java、Node.js 和 Python）隐式捕获此响应，遵循服务器指定的 retry-after 标头，并重试请求。 除非多个客户端同时访问你的帐户，否则下次重试将会成功。
 
-如果有多个客户端的累积操作持续超过请求速率，则默认的重试计数（当前设置为9）可能不足。 在这种情况下，客户端将向应用程序引发状态代码为429的 `DocumentClientException`。 可以通过在 ConnectionPolicy 实例上设置 `RetryOptions` 来更改默认重试计数。 默认情况下，如果请求继续以高于请求速率的方式运行，则会在30秒的累积等待时间后返回状态代码为429的 `DocumentClientException`。 即使当前的重试计数小于最大重试计数（默认值 9 或用户定义的值），也会发生这种情况。 
+如果有多个客户端的累积操作持续超过请求速率，则默认的重试计数（当前设置为9）可能不足。 在这种情况下，客户端将向应用程序引发状态代码为429的 `RequestRateTooLargeException`。 可以通过在 ConnectionPolicy 实例上设置 `RetryOptions` 来更改默认重试计数。 默认情况下，如果请求继续以高于请求速率的方式运行，则会在30秒的累积等待时间后返回状态代码为429的 `RequestRateTooLargeException`。 即使当前的重试计数小于最大重试计数（默认值 9 或用户定义的值），也会发生这种情况。 
 
 [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet)设置为3，因此在这种情况下，如果请求操作的速率受到限制而超出容器的保留吞吐量，则请求操作将重试三次，然后向应用程序引发异常。 [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds)设置为60，因此在这种情况下，如果第一个请求的累计重试等待时间（以秒计）超过60秒，则会引发异常。
 

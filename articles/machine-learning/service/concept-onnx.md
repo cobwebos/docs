@@ -1,7 +1,7 @@
 ---
 title: ONNX 的高性能、跨平台推理
 titleSuffix: Azure Machine Learning
-description: 了解 ONNX 和用于加速模型的 ONNX 运行时
+description: 了解如何使用开放式神经网络交换（ONNX）来帮助优化机器学习模型的推理。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4f6e9e6b44e4a8fcc52f6d8ae19af60d64972b3a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: dc4a5984f42e87aa42c6873bb1ee63d66744e633
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035410"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053590"
 ---
-# <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX 和 Azure 机器学习：创建和加速 ML 模型
+# <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX 和 Azure 机器学习：创建并加速 ML 模型
 
-了解如何使用[开放式神经网络交换](https://onnx.ai)（ONNX）来帮助优化机器学习模型的推理。 推理或模型计分是部署模型用于预测的阶段, 最常见的是生产数据。 
+了解如何使用[开放式神经网络交换](https://onnx.ai)（ONNX）来帮助优化机器学习模型的推理。 推理或模型计分是部署模型用于预测的阶段，最常见的是生产数据。 
 
 优化用于推理（或模型评分）的机器学习模型非常困难，因为您需要优化模型和推理库，以充分利用硬件功能。 如果要在不同类型的平台（云/边缘、CPU/GPU 等）上获得最佳性能，则问题会变得非常困难，因为每个平台都有不同的功能和特性。 如果模型来自需要在各种平台上运行的各种框架，则复杂性会提高。 优化框架和硬件的所有不同组合非常耗时。 一种解决方案是在首选框架中训练一次，并在云或边缘上的任意位置运行。 这就是 ONNX 的位置。
 
@@ -30,7 +30,7 @@ Microsoft 和合作伙伴社区创建 ONNX 作为表示机器学习模型的开�
 
 ONNX 运行时用于高规模 Microsoft 服务，如必应、Office 和认知服务。 性能提升取决于许多因素，但这些 Microsoft 服务已看到__CPU 平均性能__大幅提高。 ONNX 运行时也用作数百个设备上 Windows ML 的一部分。 可以在 Azure 机器学习中使用运行时。 通过使用 ONNX 运行时，您可以从广泛的生产级优化、测试和不断改进中受益。
 
-[![显示定型、转换器和部署的 ONNX 流程图](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
+[显示培训、转换器和部署的![ONNX 流程图](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>获取 ONNX 模型
 
@@ -84,7 +84,7 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="more-info"></a>详细信息
+## <a name="more-info"></a>更多信息
 
 详细了解 ONNX 或为项目做出贡献：
 + [ONNX 项目网站](https://onnx.ai)

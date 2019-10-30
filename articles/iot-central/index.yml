@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: e60c4da08d92cce1cd5964f78e8198f6c04069ef
-  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+  ms.openlocfilehash: a27fa47333739e688e879b936a6e3b25a4d3c749
+  ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 10/27/2019
-  ms.locfileid: "72965889"
+  ms.locfileid: "72968964"
 highlightedContent:
   items:
   - title: 什么是 IoT Central？
@@ -23,7 +23,7 @@ highlightedContent:
     url: ./core/overview-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
   - title: 什么是应用程序模板？
     itemType: concept
-    url: ./core/howto-use-app-templates-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    url: ./core/concepts-app-templates.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
   - title: Azure IoT Central 体系结构
     itemType: architecture
     url: ./core/concepts-architecture-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
@@ -86,7 +86,7 @@ productDirectory:
     links:
     - text: 使用 Azure IoT Central 生成零售解决方案
       url: ./retail/overview-iot-central-retail-pnp.md
-    - text: 创建零售应用程序
+    - text: 创建存储内分析应用程序
       url: ./retail/tutorial-in-store-analytics-create-app-pnp.md
     - text: 创建智能库存管理应用程序
       url: ./retail/tutorial-iot-central-smart-inventory-management-pnp.md

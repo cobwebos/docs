@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: rajanaki
-ms.openlocfilehash: 79a11a58f11486f3eda0205e62e7a4a92ff070b2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0a8f47e0eea8908fcf6aa11c694e09efef14bbf1
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933936"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053532"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 复制的自动更新移动服务
 
@@ -31,7 +31,7 @@ Azure Site Recovery 使用每月发布节奏来修复任何问题并增强现有
 默认 runbook 计划在复制 VM 异地的时区中每日的凌晨12:00 定期发生。 还可以通过自动化帐户来更改 runbook 计划。
 
 > [!NOTE]
-> 从更新汇总35开始，你可以选择要用于更新的现有自动化帐户。 在此更新之前，Site Recovery 默认创建此帐户。 为 VM 启用复制时，可以使用此选项。 如果更改此设置，它将应用于在同一保管库中受保护的所有 Azure Vm。
+> 从更新汇总35开始，你可以选择要用于更新的现有自动化帐户。 在此更新之前，Site Recovery 默认创建此帐户。 请注意，你只能在为 VM 启用复制时选择此选项。 它不适用于复制 VM。 你选择的设置将适用于在同一保管库中受保护的所有 Azure Vm。
  
 > 启用自动更新不需要重新启动 Azure Vm，也不会影响正在进行的复制。
 

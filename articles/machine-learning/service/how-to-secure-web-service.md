@@ -1,7 +1,7 @@
 ---
 title: 使用 SSL 保护 web 服务
 titleSuffix: Azure Machine Learning
-description: 了解如何通过启用 HTTPS 来保护通过 Azure 机器学习部署的 web 服务。 HTTPS 使用传输层安全性（TLS）来保护客户端中的数据，这是一种用于安全套接字层（SSL）的替换。 客户端还使用 HTTPS 来验证 web 服务的身份。
+description: 了解如何启用 HTTPS，以使通过 Azure 机器学习部署的 web 服务的安全。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce60806c26359ae682f5ab468e4f4265d3572c87
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 39b79e5729945a346e9cf022fb93e23da9fa7824
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034381"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053541"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>通过 SSL 使用 SSL 来保护 web 服务 Azure 机器学习
 
@@ -84,7 +84,7 @@ TLS 和 SSL 均依赖于*数字证书*，这有助于加密和身份验证。 �
 
 **Enable_ssl**方法可使用 Microsoft 提供的证书或你购买的证书。
 
-  * 使用 Microsoft 的证书时，必须使用*leaf_domain_label*参数。 此参数生成服务的 DNS 名称。 例如，值为 "myservice" 时，将创建域名 "myservice\<六个随机字符 >。\<azureregion >. p p. "，其中\<azureregion > 是包含该服务的区域。 或者，可以使用*overwrite_existing_domain*参数覆盖现有的*leaf_domain_label*。
+  * 使用 Microsoft 的证书时，必须使用*leaf_domain_label*参数。 此参数生成服务的 DNS 名称。 例如，"myservice" 的值将创建 "myservice\<六个随机字符 > 的域名。\<azureregion >，其中 \<azureregion > 是包含该服务的区域。 或者，可以使用*overwrite_existing_domain*参数覆盖现有的*leaf_domain_label*。
 
     若要部署（或重新部署）启用了 SSL 的服务，请将*ssl_enabled*参数设置为 "True" （无论适用）。 将*ssl_certificate*参数设置为*证书*文件的值。 将*ssl_key*设置为*密钥*文件的值。
 
@@ -151,7 +151,7 @@ aci_config = AciWebservice.deploy_configuration(
 
   在左侧窗格中的 "**设置**" 下的 "**配置**" 选项卡上，更新 AKS 群集的公共 IP 地址的 DNS。 （请参阅下图。）公共 IP 地址是一种资源类型，它是在包含 AKS 代理节点和其他网络资源的资源组下创建的。
 
-  [![Azure 机器学习：保护具有 SSL 的 web 服务](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure 机器学习：通过 SSL 保护 web 服务](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>更新 SSL 证书
 
@@ -230,7 +230,7 @@ az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n 
 
 ## <a name="disable-ssl"></a>禁用 SSL
 
-若要为部署到 Azure Kubernetes 服务的模型禁用 SSL，请`SslConfiguration`创建`status="Disabled"`一个，然后执行更新：
+若要为部署到 Azure Kubernetes 服务的模型禁用 SSL，请使用 `status="Disabled"`创建 `SslConfiguration`，然后执行更新：
 
 ```python
 from azureml.core.compute import AksCompute
@@ -247,6 +247,6 @@ aks_target.update(update_config)
 ```
 
 ## <a name="next-steps"></a>后续步骤
-了解如何：
+了解如何操作：
 + [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
 + [安全地在 Azure 虚拟网络中运行试验和推理](how-to-enable-virtual-network.md)

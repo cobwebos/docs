@@ -11,16 +11,16 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: abc6f8a7a2fda3578bbcf2947188752f8f3373cd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 98d24b4f497f09e982101917296b572a5c381f42
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566824"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053598"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>以最短的停机时间动态缩放数据库资源
 
-利用 Azure SQL 数据库, 你可以将更多资源动态添加到数据库, 使[停机时间](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)最短;但是, 在一段较短的时间内, 会有一次与数据库的连接丢失的情况, 可以使用重试逻辑来缓解这种情况。
+利用 Azure SQL 数据库，你可以将更多资源动态添加到数据库，使[停机时间](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)最短;但是，在一段较短的时间内，会有一次与数据库的连接丢失的情况，可以使用重试逻辑来缓解这种情况。
 
 ## <a name="overview"></a>概述
 
@@ -34,13 +34,13 @@ ms.locfileid: "68566824"
 
 Azure SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 
-- [基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)在以下三个服务层级中提供包括计算、内存和 IO 资源在内的各种内容，以支持轻型到重型数据库工作负荷：基本、标准和高级。 每个层中的不同性能级别提供这些资源的不同组合，你可以向其添加更多的存储资源。
-- [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)允许选择 vCore 数、内存容量，以及存储的容量和速度。 此购买模型提供三个服务层级：“常规用途”、“业务关键”和“超大规模”。
+- [基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)在三个服务层级中提供包括计算、内存和 IO 资源在内的各种内容，支持轻型到重型数据库工作负荷：“基本”、“标准”、“高级”。 每个层中的不同性能级别提供这些资源的不同组合，你可以向其添加更多的存储资源。
+- [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)允许选择 vCore 数、内存容量，以及存储的容量和速度。 此购买模型提供三个服务层：常规用途、业务关键和超大规模。
 
 可以在小型单一数据库中构建第一个应用，每个月只需在“常规用途”服务层级中花费少量资金。然后可以根据解决方案的需要，随时手动或以编程方式将服务层级更改为“业务关键”服务层级。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
 
 > [!NOTE]
-> 动态可伸缩性不同于自动缩放。 自动缩放是指服务根据条件自动缩放的时间, 而动态可伸缩性允许在最短的停机时间内进行手动缩放。
+> 动态可伸缩性不同于自动缩放。 自动缩放是指服务根据条件自动缩放的时间，而动态可伸缩性允许在最短的停机时间内进行手动缩放。
 
 单个 Azure SQL 数据库支持手动动态可伸缩性，但不支持自动缩放。 若要获得更多*自动*体验，请考虑使用弹性池，它允许数据库根据各个数据库需求共享池中的资源。
 但是，有一些脚本可帮助自动执行单个 Azure SQL 数据库的可伸缩性。 有关示例，请参阅[使用 PowerShell 监视和缩放单个 SQL 数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
@@ -55,8 +55,10 @@ Azure SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers
 - [托管实例](sql-database-managed-instance.md)使用 [vCore](sql-database-managed-instance.md#vcore-based-purchasing-model) 模式，并允许定义分配给实例的最大 CPU 核心数和最大存储空间。 该实例中的所有数据库都将共享分配给该实例的资源。
 - [弹性池](sql-database-elastic-pool-scale.md)允许定义池中每组数据库的最大资源限制。
 
+如果需要，可以在任何一种风格中启动 "扩展" 或 "缩小" 操作，以重新启动数据库引擎进程，并将其移到不同的虚拟机。 将数据库引擎进程迁移到新的虚拟机是**在线过程**，在此过程中，你可以继续使用现有的 Azure SQL 数据库服务。 在目标数据库引擎完全初始化并准备好处理查询后，连接将从源[数据库引擎切换到目标数据库引擎](sql-database-single-database-scale.md#impact-of-changing-service-tier-or-rescaling-compute-size)。
+
 > [!NOTE]
-> 缩小/缩小过程完成时, 可能会出现短暂的连接中断。 如果已实现了[标准暂时性错误的重试逻辑](sql-database-connectivity-issues.md#retry-logic-for-transient-errors), 则不会注意到故障转移。
+> 缩小/缩小过程完成时，可能会出现短暂的连接中断。 如果已实现了[标准暂时性错误的重试逻辑](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)，则不会注意到故障转移。
 
 ## <a name="alternative-scale-methods"></a>替代缩放方法
 

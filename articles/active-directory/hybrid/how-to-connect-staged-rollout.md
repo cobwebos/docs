@@ -10,12 +10,12 @@ ms.date: 10/28/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 254fa924ea2104e76a475c106f16f4672dd1eec1
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
-ms.translationtype: HT
+ms.openlocfilehash: 9c8f4250d2df7703ad2960c2d68cd015cb6ec2bc
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033311"
+ms.locfileid: "73052881"
 ---
 # <a name="cloud-authentication-staged-rollout-public-preview"></a>云身份验证：分阶段推出（公共预览版）
 
@@ -80,6 +80,8 @@ ms.locfileid: "73033311"
 ## <a name="get-started-with-staged-rollout"></a>分步推出入门
 
 如果要使用分阶段推出来测试密码哈希同步（PHS）登录，请完成以下预备工作，启用密码哈希同步分阶段推出。
+
+有关使用的 PowerShell cmdlet 的详细信息，请参阅[AzureAD 2.0 preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)
 
 ## <a name="pre-work-for-password-hash-sync"></a>密码哈希同步的预工作
 
@@ -239,3 +241,6 @@ ms.locfileid: "73033311"
 -   **问：我们可以使用 PowerShell 来执行分阶段推出吗？**
 
 -   答：是的，请在此处找到使用 PowerShell 执行分阶段推出的文档。
+
+## <a name="next-steps"></a>后续步骤
+- [AzureAD 2.0 预览版](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

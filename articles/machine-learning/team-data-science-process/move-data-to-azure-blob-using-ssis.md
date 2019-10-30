@@ -1,6 +1,6 @@
 ---
 title: 使用 SSIS 连接器移动 Blob 存储数据 - Team Data Science Process
-description: 使用 SSIS 连接器将数据移入或移出 Azure Blob 存储。
+description: 了解如何使用适用于 Azure SQL Server Integration Services 功能包将数据移入或移出 Azure Blob 存储。
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 688ef059387dc4c312873051c7c9d1eae259b1ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8fb802905070ab1ddc8af93e501e8e11e262cf4a
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61429871"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053936"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>使用 SSIS 连接器将数据移入或移出 Azure Blob 存储
 [用于 Azure 的 SQL Server Integration Services 功能包](https://msdn.microsoft.com/library/mt146770.aspx)提供了可用于连接到 Azure，在 Azure 和本地数据源之间传输数据以及处理存储在 Azure 中的数据的组件。
@@ -42,8 +42,8 @@ ms.locfileid: "61429871"
 
 若要使用 **SSIS 连接器**，则必须下载：
 
-* **SQL Server 2014 或 2016 标准版（或更高版本）** ：安装包括 SQL Server Integration Services。
-* **适用于 Azure 的 Microsoft SQL Server 2014 或 2016 Integration Services 功能包**：可以从 [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) 和 [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) 页面分别下载这两个功能包。
+* **SQL Server 2014 或 2016 Standard（或更高版本）** ：安装包括 SQL Server Integration Services。
+* **用于 Azure 的 Microsoft SQL Server 2014 或 2016 Integration Services 功能包**：可以从 [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) 和 [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) 页面分别下载这两个功能包。
 
 > [!NOTE]
 > SSIS 随 SQL Server 一起安装，但并不包括在 Express 版本中。 若要深入了解 SQL Server 各种版本中包含哪些应用程序，请参阅 [SQL Server Editions](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)（SQL Server 版本）
@@ -52,7 +52,7 @@ ms.locfileid: "61429871"
 
 有关 SSIS 的培训资料，请参阅 [Hands On Training for SSIS](https://www.microsoft.com/sql-server/training-certification)（SSIS 培训指导）
 
-有关如何使用 SISS 生成简单的提取、转换和加载 (ETL) 包进行启动并运行的信息，请参阅 [SSIS 教程：创建简单的 ETL 包](https://msdn.microsoft.com/library/ms169917.aspx)。
+若要深入了解如何使用 SISS 启动并运行以生成简单的提取、转换和加载 (ETL) 包，请参阅 [SSIS教程：创建简单的 ETL 包](https://msdn.microsoft.com/library/ms169917.aspx)。
 
 ## <a name="download-nyc-taxi-dataset"></a>下载 NYC 出租车数据集
 此处所述的示例使用公开发布的数据集 - [NYC 出租车行程](https://www.andresmh.com/nyctaxitrips/)。 此数据集包含 2013 年纽约市内约 1.73 亿次出租车行程。 有两种类型的数据：行程详细信息数据和费用数据。 因为每个月都有一个文件，因此共有 24 个文件，每个未压缩的文件大约有 2GB。

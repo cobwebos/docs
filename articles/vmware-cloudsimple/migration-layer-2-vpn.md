@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 34b26dd1b9b8990da9e84c8d7cfc993d8bbe85a7
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 37f337f158c3ca53170d963f1304801a12b732da
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72376310"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053891"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>使用第 2 层外延式网络迁移工作负荷
 
@@ -137,7 +137,7 @@ ms.locfileid: "72376310"
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>提取 L2VPN 所需的逻辑交换机 ID
 
 1. 登录到 " [NSX-T 管理器](https://nsx-t-manager-ip-address)"。
-2. 选择 "网络 ** >  交换机** > **交换机**>" < \Logical "" \>**概述**"。
+2. 选择 **"网络** ** > 交换机 > 切换 > ** **< \Logical" 交换机\>** "**概述**"。
 3. 记下 stretch 逻辑交换机的 UUID，在配置 L2VPN 时需要用到它。
 
     ![获取逻辑路由器输出](media/l2vpn-fetch-switch01.png)
@@ -165,7 +165,7 @@ ms.locfileid: "72376310"
 
 4. 登录到 "NSX-T 管理器"，并选择 "**网络** > **路由** > **路由器** > **提供商-LR**  > **路由** ** > " 1** **邻居**"。 选择第一个相邻节点。 单击 "**编辑** > **地址系列**"。 对于 IPv4 系列，请编辑 "**输出筛选器**" 列，然后选择所创建的 IP 前缀列表。 单击“保存”。 对第二个邻居重复此步骤。
 
-    ![Attach IP 前缀列表 1 ](media/l2vpn-routing-security03.png) ![Attach IP 前缀列表 2 ](media/l2vpn-routing-security04.png)
+    ![附加 IP 前缀列表 1](media/l2vpn-routing-security03.png) ![附加 IP 前缀列表 2](media/l2vpn-routing-security04.png)
 
 5. 将空静态路由重新分发到 BGP。 若要将环回接口路由播发到是，必须将空静态路由重新分发到 BGP。 登录到 "NSX-T 管理器" 并选择 "**网络** > **路由** > **路由器** > **提供商-LR**  > **路由** > **邻居**1**路由重新分发**。 选择 " **Route_Redistribution** "，然后单击 "**编辑**"。 选中 "**静态**" 复选框，然后单击 "**保存**"。
 
@@ -430,7 +430,7 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
 2. 前往包含所有已提取文件的文件夹。 为大设备大小选择所有 vmdk （l2t 和 NSX-l2t-client-large），并选择 ""，并选择 ""，为超大大小的设备调整和 l2t。 单击“下一步”。
 
-    ![Select 模板 ](media/l2vpn-deploy-client02.png) ![Select 模板 ](media/l2vpn-deploy-client03.png)
+    ![选择模板](media/l2vpn-deploy-client02.png) ![选择模板 "](media/l2vpn-deploy-client03.png)
 
 3. 输入 "NSX-T 独立客户端" 的名称，然后单击 "**下一步**"。
 
@@ -460,8 +460,8 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
     * **前缀长度**。 输入上行 VLAN/子网的前缀长度。
     * **CLI 管理员/启用/根用户密码**。 设置管理员/enable/root 帐户的密码。
 
-      ![Customize 模板 ](media/l2vpn-deploy-client08.png)
-       ![Customize 模板-详细 ](media/l2vpn-deploy-client09.png)
+      ![自定义模板](media/l2vpn-deploy-client08.png)
+      ![自定义模板-更多](media/l2vpn-deploy-client09.png)
 
 7. 查看设置，然后单击 "**完成**"。
 
