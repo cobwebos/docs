@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 10/28/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ecec18945b53711094307162c4aeab2e0580bd5e
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: a1f08589ae28b3e19d2a4fdb3e3862e127a810cc
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063859"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73099705"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predicates 和 PredicateValidations
 
@@ -25,31 +25,33 @@ ms.locfileid: "71063859"
 
 以下图示显示了元素之间的关系：
 
-![显示谓词和谓词验证关系的示意图](./media/predicates/predicates.png)
+![显示谓词和谓词验证关系的关系图](./media/predicates/predicates.png)
 
 ## <a name="predicates"></a>谓词
 
 Predicate 元素定义基本验证，用以检查声明类型的值并返回 `true` 或 `false`。 可通过使用指定的 Method 元素和一组与该方法相关的 Parameter 元素来完成验证。 例如，谓词可以检查字符串声明值的长度是否在指定的最小和最大参数范围内，或者字符串声明值是否包含字符集。 如果检查失败，UserHelpText 元素将为用户提供一条错误消息。 UserHelpText 元素的值可以使用[语言自定义](localization.md)进行本地化。
 
+**谓词**元素必须紧跟在[BuildingBlocks](buildingblocks.md)元素中的**ClaimsSchema**元素之后。
+
 Predicates 元素包含以下元素：
 
 | 元素 | 匹配项 | 描述 |
 | ------- | ----------- | ----------- |
-| 谓词 | 1:n | 谓词列表。 |
+| Predicate | 1:n | 谓词列表。 |
 
 Predicate 元素包含以下属性：
 
-| 特性 | 必填 | 描述 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
-| Id | 是 | 用于谓词的标识符。 其他元素可以在策略中使用此标识符。 |
-| 方法 | 是 | 用于验证的方法类型。 可能的值：IsLengthRange、MatchesRegex、IncludesCharacters 或 IsDateRange。 IsLengthRange 值检查字符串声明值的长度是否在指定的最小和最大参数的范围内。 MatchesRegex 值检查字符串声明值是否与正则表达式相匹配。 IncludesCharacters 值检查字符串声明值是否包含字符集。 IsDateRange 值检查日期声明值是否在指定的最小和最大参数范围内。 |
+| ID | 是 | 用于谓词的标识符。 其他元素可以在策略中使用此标识符。 |
+| 方法 | 是 | 用于验证的方法类型。 可能的值为：IsLengthRange、MatchesRegex、IncludesCharacters 或 IsDateRange。 IsLengthRange 值检查字符串声明值的长度是否在指定的最小和最大参数的范围内。 MatchesRegex 值检查字符串声明值是否与正则表达式相匹配。 IncludesCharacters 值检查字符串声明值是否包含字符集。 IsDateRange 值检查日期声明值是否在指定的最小和最大参数范围内。 |
 
 Predicate 元素包含以下元素：
 
 | 元素 | 匹配项 | 描述 |
 | ------- | ----------- | ----------- |
 | UserHelpText | 1:1 | 检查失败时向用户发送的错误消息。 此字符串可以使用[语言自定义](localization.md)进行本地化 |
-| Parameters | 1:1 | 用于字符串验证的方法类型参数。 |
+| parameters | 1:1 | 用于字符串验证的方法类型参数。 |
 
 Parameters 元素包含以下元素：
 
@@ -61,7 +63,7 @@ Parameter 元素包含以下属性：
 
 | 元素 | 匹配项 | 描述 |
 | ------- | ----------- | ----------- |
-| Id | 1:1 | 该参数的标识符。 |
+| ID | 1:1 | 该参数的标识符。 |
 
 下面的示例说明 `IsLengthRange` 方法使用参数 `Minimum` 和 `Maximum` 指定字符串的长度范围：
 
@@ -112,6 +114,8 @@ Parameter 元素包含以下属性：
 
 尽管谓词定义了根据声明类型进行检查的验证，但是 PredicateValidations 会对一组谓词进行分组，以构成可应用于声明类型的用户输入验证。 每个 PredicateValidation 元素均包含一组 PredicateGroup 元素，其中包含一组指向 Predicate 的 PredicateReference 元素。 为了通过验证，声明的值应通过所有 PredicateGroup 下的任何谓词的全部测试，及其包含的一组 PredicateReference 元素。
 
+**PredicateValidations**元素必须直接出现在[BuildingBlocks](buildingblocks.md)元素中的**谓词**元素之后。
+
 ```XML
 <PredicateValidations>
   <PredicateValidation Id="">
@@ -138,9 +142,9 @@ PredicateValidations 元素包含以下元素：
 
 PredicateValidation 元素包含以下属性：
 
-| 特性 | 必填 | 描述 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
-| Id | 是 | 用于谓词验证的标识符。 ClaimType 元素可以在策略中使用此标识符。 |
+| ID | 是 | 用于谓词验证的标识符。 ClaimType 元素可以在策略中使用此标识符。 |
 
 PredicateValidation 元素包含以下元素：
 
@@ -156,9 +160,9 @@ PredicateGroups 元素包含以下元素：
 
 PredicateGroup 元素包含以下属性：
 
-| 特性 | 必填 | 描述 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
-| Id | 是 | 用于谓词组的标识符。  |
+| ID | 是 | 用于谓词组的标识符。  |
 
 PredicateGroup 元素包含以下元素：
 
@@ -169,9 +173,9 @@ PredicateGroup 元素包含以下元素：
 
 PredicateReferences 元素包含以下属性：
 
-| 特性 | 必填 | 描述 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
-| MatchAtLeast | 否 | 指定该值针对要接受的输入必须至少匹配多个谓词定义。 |
+| MatchAtLeast | No | 指定该值针对要接受的输入必须至少匹配多个谓词定义。 |
 
 PredicateReferences 元素包含以下元素：
 
@@ -181,9 +185,9 @@ PredicateReferences 元素包含以下元素：
 
 PredicateReference 元素包含以下属性：
 
-| 特性 | 必填 | 描述 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
-| Id | 是 | 用于谓词验证的标识符。  |
+| ID | 是 | 用于谓词验证的标识符。  |
 
 
 ## <a name="configure-password-complexity"></a>配置密码复杂性
@@ -194,7 +198,7 @@ PredicateReference 元素包含以下属性：
 - Lowercase 使用 `IncludesCharacters` 方法，验证密码包含一个小写字母。
 - Uppercase 使用 `IncludesCharacters` 方法，验证密码包含一个大写字母。
 - Number 使用 `IncludesCharacters` 方法，验证密码包含一个数字。
-- Symbol 使用 `IncludesCharacters` 方法，验证密码包含以下符号之一 `@#$%^&*\-_+=[]{}|\:',?/~"();!`
+- 使用 `IncludesCharacters` 方法的**符号**，验证密码是否包含若干符号字符之一。
 - PIN 使用 `MatchesRegex` 方法，验证密码仅包含数字。
 - AllowedAADCharacters 使用 `MatchesRegex` 方法，验证提供了仅限密码的无效字符。
 - DisallowedWhitespace 使用 `MatchesRegex` 方法，验证密码不以空格字符开头或结尾。
@@ -233,7 +237,7 @@ PredicateReference 元素包含以下属性：
   <Predicate Id="Symbol" Method="IncludesCharacters">
     <UserHelpText>a symbol</UserHelpText>
     <Parameters>
-      <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\:',?/`~"();!</Parameter>
+      <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\\:',.?/`~"();!</Parameter>
     </Parameters>
   </Predicate>
 
@@ -348,7 +352,7 @@ PredicateReference 元素包含以下属性：
 
 下面显示了当 Azure AD B2C 显示错误消息时元素的组织方式：
 
-![谓词和 PredicateGroup 密码复杂性示例的示意图](./media/predicates/predicates-pass.png)
+![谓词和 PredicateGroup 密码复杂性示例示意图](./media/predicates/predicates-pass.png)
 
 ## <a name="configure-a-date-range"></a>配置日期范围
 

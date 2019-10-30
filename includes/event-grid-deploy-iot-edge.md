@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: fab9a8a8c28f2f75e7e5af69b70229c1de74c684
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 8656bbb070e2b05a06ea22dd1634a40182b440cb
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992283"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73098667"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>部署事件网格 IoT Edge 模块
 
@@ -24,7 +24,7 @@ ms.locfileid: "72992283"
 
 >[!IMPORTANT]
 > 在本教程中，将在客户端身份验证关闭的情况下部署事件网格模块，并允许 HTTP 订阅服务器。 对于生产工作负荷，建议仅启用启用了客户端身份验证的 HTTPS 请求和订阅服务器。 有关如何安全配置事件网格模块的详细信息，请参阅[安全性和身份验证](../articles/event-grid/edge/security-authentication.md)。
-
+ 
 ### <a name="select-your-iot-edge-device"></a>选择 IoT Edge 设备
 
 1. 登录到 [Azure 门户](https://portal.azure.com)
@@ -67,6 +67,10 @@ ms.locfileid: "72992283"
 
  1. 单击“保存”
  1. 单击 "**下一步**" 以继续转到 "路由" 部分
+
+    > [!NOTE]
+    > 如果使用 Azure VM 作为边缘设备，请添加入站端口规则以允许端口4438上的入站流量。 有关添加规则的说明，请参阅[如何打开 VM 的端口](../articles/virtual-machines/windows/nsg-quickstart-portal.md)。
+
 
 ### <a name="setup-routes"></a>安装路由
 

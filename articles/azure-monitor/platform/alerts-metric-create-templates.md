@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: f341a3599607e527556f90626dd866418910f61e
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 3bc17830a4852aa3af1a22f53e54c86ee002150d
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052320"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73099759"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建度量警报
 
@@ -27,8 +27,9 @@ ms.locfileid: "73052320"
 基本步骤如下所示：
 
 1. 将以下某个模板用作描述如何创建警报的 JSON 文件。
-2. 编辑相应的参数文件并将其用作 JSON 来自定义警报
-3. 使用[任意部署方法](../../azure-resource-manager/resource-group-template-deploy.md)部署模板。
+2. 编辑并使用相应的参数文件作为 JSON 来自定义警报。
+3. 有关 `metricName` 参数，请参阅[Azure Monitor 支持的指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)中的可用指标。
+4. 使用[任意部署方法](../../azure-resource-manager/resource-group-template-deploy.md)部署模板。
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>用于简单静态阈值指标警报的模板
 

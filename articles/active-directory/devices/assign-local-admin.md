@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f50ace6d707db35dfd7cf9f14026d755093a038c
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 5372bf853092ea55952b45a1300d0f979f1b086c
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802444"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062257"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的设备上的本地管理员组
 
@@ -59,10 +59,10 @@ Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，�
 >[!NOTE]
 > 此选项需要 Azure AD Premium 租户。 
 
-设备管理员已分配给所有已加入 Azure AD 的设备。 无法将设备管理员范围限定为一组特定设备。 更新设备管理员角色不一定会对受影响的用户产生直接影响。 对于用户已登录的设备，在以下情况下会发生特权更新：
+设备管理员已分配给所有已加入 Azure AD 的设备。 无法将设备管理员范围限定为一组特定设备。 更新设备管理员角色不一定会对受影响的用户产生直接影响。 在用户已登录到的设备上，当发生以下*两项*操作时，会进行权限更新：
 
-- 用户注销时。
-- 颁发新的主刷新令牌 4 个小时之后。 
+- 已为 Azure AD 传递了4小时，以便使用适当的权限颁发新的主刷新令牌。 
+- 用户注销并重新登录，而不是锁定/取消锁定，以刷新其配置文件。
 
 ## <a name="manage-regular-users"></a>管理常规用户
 

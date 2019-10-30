@@ -9,12 +9,12 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 6639b8f4d947720db38a6b366c47700a56154af3
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 3506399537fe2cb16014ceb3429bce5aeee8cb69
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992270"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100337"
 ---
 # <a name="persist-state-in-linux"></a>在 Linux 中持久保存状态
 
@@ -40,7 +40,7 @@ ms.locfileid: "72992270"
 ```
 
 >[!IMPORTANT]
->不要更改绑定值的第二部分。 它指向模块内的特定位置。 对于 Linux 上的事件网格模块，必须 **/app/metadata**。
+>不要更改绑定值的第二部分。 它指向模块内的特定位置。 对于 Linux 上的事件网格模块，必须 **/app/metadataDb**。
 
 例如，下面的配置将导致创建**egmetadataDbVol** ，其中将保留元数据。
 

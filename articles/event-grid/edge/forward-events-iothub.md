@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 772fccc96f757c6165238e4041ce98c17c647880
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 073205b5bdc3f6de80bd7e347469c3f06aeb515b
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992296"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73098684"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>教程：将事件转发到 IoTHub
 
@@ -160,7 +160,9 @@ ms.locfileid: "72992296"
 
 ## <a name="setup-iot-hub-route"></a>设置 IoT 中心路由
 
-请参阅 IoT 中心[路由教程](../../iot-hub/tutorial-routing.md)，从 iot 中心设置路由，以便查看从事件网格模块转发的事件。
+若要查看从事件网格模块转发的事件，请参阅[Iot 中心路由教程](../../iot-hub/tutorial-routing.md)。 使用 `true` 查询，使本教程保持简单。  
+
+
 
 ## <a name="publish-an-event"></a>发布事件
 
@@ -205,6 +207,7 @@ ms.locfileid: "72992296"
 
 在本教程中，您创建了一个事件网格主题、边缘中心订阅和已发布的事件。 现在，你已了解转发到边缘集线器的基本步骤，请参阅以下文章：
 
+* 若要解决在 IoT Edge 上使用 Azure 事件网格时遇到的问题，请参阅[故障排除指南](troubleshoot.md)。
 * 使用[边缘中心](../../iot-edge/module-composition.md)路由筛选器来分区事件
 * 在[linux](persist-state-linux.md)或[Windows](persist-state-windows.md)上设置事件网格模块的持久性
 * 按照[文档](configure-client-auth.md)配置客户端身份验证

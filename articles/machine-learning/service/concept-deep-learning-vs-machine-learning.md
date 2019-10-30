@@ -1,7 +1,7 @@
 ---
 title: 深度学习与机器学习
 titleSuffix: Azure Machine Learning
-description: 了解深度学习与机器学习以及这两个概念与人工智能的关系。 可在欺诈检测、语音和面部识别、情绪分析和时序预测等方案中应用深度学习。
+description: 了解深度学习如何与机器学习和人工智能相关。 深度学习适用于欺诈检测、语音 & 面部识别、情绪分析和时序预测等方案。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 791566dc65b41bf3124e84544390d7d843e51273
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: ffc71cf8b2f60568e3c4bc63a3751bc44be66e58
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123138"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063143"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>深度学习与机器学习
 
@@ -22,9 +22,9 @@ ms.locfileid: "71123138"
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>深度学习、机器学习和 AI
 
-![关系图：AI 与机器学习和深度学习](./media/concept-deep-learning-vs-machine-learning/ai-vs-machine-learning-vs-deep-learning.png)
+![关系图： AI 与机器学习和深度学习](./media/concept-deep-learning-vs-machine-learning/ai-vs-machine-learning-vs-deep-learning.png)
 
-请考虑以下定义来了解深度学习与机器学习与AI
+请考虑以下定义来了解深度学习与机器学习与 AI：
 
 - **深度学习**是一种基于人工神经网络的机器学习的子集。 _学习过程_是_深度_的，因为人工神经网络的结构包含多个输入、输出和隐藏层。 每个层都包含将输入数据转换为下一层可用于特定预测任务的信息的单位。 由于这种结构，计算机可以通过其自身的数据处理来了解。
 

@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: b2003b9c7520cfa3e82576fd3430063c20d452ff
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 53df209d080cf91be9c558b43edaa618c0748fc5
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104564"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101539"
 ---
 # <a name="disable-network-policies-for-private-link-service-source-ip"></a>为专用链接服务源 IP 禁用网络策略
 
-为了为专用链接服务选择源 IP 地址，子网上需要显式禁用设置`privateLinkServiceNetworkPolicies` 。 此设置仅适用于你选择的特定专用 IP 地址作为专用链接服务的源 IP 地址。 对于子网中的其他资源，访问权限基于网络安全组（NSG）安全规则定义进行控制。 
+若要为专用链接服务选择源 IP 地址，子网需要 `privateLinkServiceNetworkPolicies` 显式禁用设置。 此设置仅适用于你选择的特定专用 IP 地址作为专用链接服务的源 IP 地址。 对于子网中的其他资源，访问权限基于网络安全组（NSG）安全规则定义进行控制。 
  
 使用任何 Azure 客户端（PowerShell、CLI 或模板）时，需要额外的步骤来更改此属性。 你可以从 Azure 门户中使用 cloud shell，或者 Azure PowerShell、Azure CLI 的本地安装或使用 Azure 资源管理器模板来禁用策略。  
  
@@ -30,9 +30,7 @@ $virtualNetwork= Get-AzVirtualNetwork `
   -Name "myVirtualNetwork" ` 
   -ResourceGroupName "myResourceGroup"  
    
-($virtualNetwork ` 
-  | Select -ExpandProperty subnets ` 
-  | Where-Object  {$_.Name -eq 'default'} ).privateLinkServiceNetworkPolicies = "Disabled" 
+($virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq 'default'} ).privateLinkServiceNetworkPolicies = "Disabled"  
  
 $virtualNetwork | Set-AzVirtualNetwork 
 ```

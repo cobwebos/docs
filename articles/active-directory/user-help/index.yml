@@ -12,12 +12,12 @@ metadata:
   author: eross-msft
   ms.author: lizross
   ms.date: 08/26/2019
-  ms.openlocfilehash: 168c8ad8acd1734aa06be111f42f4c0b2da92d3e
-  ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+  ms.openlocfilehash: 96fd0f6612b6c91ce4021b50ffe121b571a5032b
+  ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/28/2019
-  ms.locfileid: "70072664"
+  ms.lasthandoff: 10/30/2019
+  ms.locfileid: "73160993"
 landingContent:
 - title: 设置并使用 Microsoft Authenticator 应用
   linkLists:
@@ -96,4 +96,4 @@ landingContent:
     - text: 注册密码重置
       url: active-directory-passwords-reset-register.md
     - text: 重置密码
-      url: user-help-reset-password.md
+      url: active-directory-passwords-update-your-own-password.md

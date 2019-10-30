@@ -68,7 +68,7 @@
       items:
         - name: 建立表格模型
           href: 'https://docs.microsoft.com/analysis-services/tabular-models/tabular-models-ssas'
-        - name: 从 Visual Studio (SSDT) 部署
+        - name: 从 Visual Studio 部署
           href: analysis-services-deploy.md
         - name: 使用 REST API 进行刷新
           href: analysis-services-async-refresh.md

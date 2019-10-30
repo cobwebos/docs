@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 879404b264e9ea6c544c6edf509001b38997bb0c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d8606ad9afb6642fa29cc3cae523c31e129c7ebd
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874332"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73061488"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "69874332"
 
 ![身份验证流示意图](./media/howto-mfa-nps-extension/auth-flow.png)
 
-## <a name="plan-your-deployment"></a>规划部署
+## <a name="plan-your-deployment"></a>计划部署
 
 NPS 扩展自动处理冗余，因此无需特殊配置。
 
@@ -43,7 +43,7 @@ NPS 扩展自动处理冗余，因此无需特殊配置。
 
 VPN 服务器会路由身份验证请求，因此它们需要留意已启用新 Azure MFA 的 NPS 服务器。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 NPS 扩展需与现有基础结构配合工作。 在开始之前，请确保满足以下先决条件。
 
@@ -57,7 +57,7 @@ Windows Server 2008 R2 SP1 或更高版本。
 
 ### <a name="libraries"></a>库
 
-这些库将自动随扩展一同安装。
+这些库会自动随扩展一同安装。
 
 - [Visual C++ Redistributable Packages for Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
 - [用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块版本 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
@@ -76,14 +76,14 @@ Windows Server 2008 R2 SP1 或更高版本。
 
 NPS 服务器必须能够通过端口 80 和 443 与以下 URL 通信。
 
-- https:\//adnotifications.windowsazure.com
+- https：\//adnotifications.windowsazure.com
 - https:\//login.microsoftonline.com
 
-此外, 还需要连接到以下 Url, 才能[使用提供的 PowerShell 脚本完成适配器的设置](#run-the-powershell-script)
+此外，还需要连接到以下 Url，才能[使用提供的 PowerShell 脚本完成适配器的设置](#run-the-powershell-script)
 
 - https:\//login.microsoftonline.com
-- https:\//provisioningapi.microsoftonline.com
-- https:\//aadcdn.msauth.net
+- https：\//provisioningapi.microsoftonline.com
+- https：\//aadcdn.msauth.net
 
 ## <a name="prepare-your-environment"></a>准备环境
 
@@ -119,13 +119,13 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 有两个因素会影响 NPS 扩展部署可以使用哪些身份验证方法：
 
 1. 在 RADIUS 客户端（VPN、Netscaler 服务器或其他客户端）与 NPS 服务器之间使用的密码加密算法。
-   - PAP 在云中支持 Azure MFA 的所有身份验证方法：电话呼叫、单向短信、移动应用通知和移动应用验证码。
+   - **PAP**在云中支持 Azure MFA 的所有身份验证方法：电话呼叫、单向短信、移动应用通知、OATH 硬件令牌和移动应用验证码。
    - **CHAPV2** 和 **EAP** 支持电话呼叫和移动应用通知。
 
       > [!NOTE]
       > 部署 NPS 扩展时，请根据这些因素评估你的用户可使用哪些方法。 如果你的 RADIUS 客户端支持 PAP，但客户端 UX 没有可用于输入验证码的输入字段，则电话呼叫和移动应用通知是两种受支持的选项。
       >
-      > 此外, 如果你的 VPN 客户端 UX 确实支持输入字段, 并且你配置了网络访问策略, 则身份验证可能会成功, 但是, 在网络策略中配置的 RADIUS 属性都不会同时应用于网络访问设备。与 RRAS 服务器和 VPN 客户端类似。 因此, VPN 客户端的访问权限可能比所需的访问权限更多或更少。
+      > 此外，如果你的 VPN 客户端 UX 确实支持输入字段，并且你配置了网络访问策略，则身份验证可能会成功，但是，在网络策略中配置的 RADIUS 属性都不会同时应用于网络访问设备。与 RRAS 服务器和 VPN 客户端类似。 因此，VPN 客户端的访问权限可能比所需的访问权限更多或更少。
       >
 
 2. 客户端应用程序（VPN、Netscaler 服务器或其他客户端）可以处理的输入方法。 例如，VPN 客户端是否有一些手段允许用户键入通过文本或移动应用收到的验证码？
@@ -140,7 +140,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 1. 通过测试帐户登录 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。
 2. 按照提示设置验证方法。
-3. [创建条件性访问策略](howto-mfa-getstarted.md#create-conditional-access-policy), 要求对测试帐户进行多重身份验证。
+3. [创建条件性访问策略](howto-mfa-getstarted.md#create-conditional-access-policy)，要求对测试帐户进行多重身份验证。
 
 ## <a name="install-the-nps-extension"></a>安装 NPS 扩展
 
@@ -155,15 +155,15 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 #### <a name="upgrade-the-nps-extension"></a>升级 NPS 扩展
 
-升级现有 NPS 扩展安装时, 若要避免重新启动基础服务器, 请完成以下步骤:
+升级现有 NPS 扩展安装时，若要避免重新启动基础服务器，请完成以下步骤：
 
 1. 卸载现有版本
 1. 运行新安装程序
-1. 重新启动网络策略服务器 (IAS) 服务
+1. 重新启动网络策略服务器（IAS）服务
 
 ### <a name="run-the-powershell-script"></a>运行 PowerShell 脚本
 
-安装程序会在以下位置创建 PowerShell 脚本：`C:\Program Files\Microsoft\AzureMfa\Config`（其中，C:\ 是安装驱动器）。 此 PowerShell 脚本在每次运行时执行以下操作：
+安装程序将在以下位置创建 PowerShell 脚本：`C:\Program Files\Microsoft\AzureMfa\Config`（其中，C:\ 是安装驱动器）。 此 PowerShell 脚本在每次运行时执行以下操作：
 
 - 创建自签名证书。
 - 将证书的公钥关联到 Azure AD 上的服务主体。
@@ -188,18 +188,18 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 在要针对负载均衡设置的任何其他 NPS 服务器上重复这些步骤。
 
-如果以前的计算机证书已过期, 并且已生成新证书, 则应删除任何过期的证书。 如果证书过期, 则可能会导致 NPS 扩展开始出现问题。
+如果以前的计算机证书已过期，并且已生成新证书，则应删除任何过期的证书。 如果证书过期，则可能会导致 NPS 扩展开始出现问题。
 
 > [!NOTE]
 > 如果使用自己的证书，而不是使用 PowerShell 脚本生成的证书，请确保它们符合 NPS 命名约定。 使用者名称必须为“CN=\<TenantID\>”，“OU=Microsoft NPS Extension”。 
 
 ### <a name="certificate-rollover"></a>证书滚动更新
 
-对于 NPS 扩展的 release 1.0.1.32, 现在支持读取多个证书。 此功能有助于在证书更新过期之前方便滚动。 如果你的组织运行的是早期版本的 NPS 扩展, 则应升级到版本1.0.1.32 或更高版本。
+对于 NPS 扩展的 release 1.0.1.32，现在支持读取多个证书。 此功能有助于在证书更新过期之前方便滚动。 如果你的组织运行的是早期版本的 NPS 扩展，则应升级到版本1.0.1.32 或更高版本。
 
-`AzureMfaNpsExtnConfigSetup.ps1`脚本创建的证书有效期为2年。 IT 组织应监视证书的过期时间。 NPS 扩展的证书放置在 "个人" 下的 "本地计算机" 证书存储中, 并颁发给脚本提供的租户 ID。
+`AzureMfaNpsExtnConfigSetup.ps1` 脚本创建的证书有效期为2年。 IT 组织应监视证书的过期时间。 NPS 扩展的证书放置在 "个人" 下的 "本地计算机" 证书存储中，并颁发给脚本提供的租户 ID。
 
-当证书接近到期日期时, 应创建新的证书来替换证书。  此过程通过`AzureMfaNpsExtnConfigSetup.ps1`再次运行并在出现提示时保留相同的租户 ID 来完成。 应在环境中的每个 NPS 服务器上重复此过程。
+当证书接近到期日期时，应创建新的证书来替换证书。  此过程通过再次运行 `AzureMfaNpsExtnConfigSetup.ps1` 来完成，并在出现提示时保留相同的租户 ID。 应在环境中的每个 NPS 服务器上重复此过程。
 
 ## <a name="configure-your-nps-extension"></a>配置 NPS 扩展
 
@@ -208,7 +208,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 ### <a name="configuration-limitations"></a>配置限制
 
 - Azure MFA 的 NPS 扩展不包含用于将用户和设置从 MFA 服务器迁移到云的工具。 出于此原因，我们建议将扩展用于新部署，而非现有部署。 如果在现有部署上使用扩展，用户必须重新进行证明才能在云中填充其 MFA 详细信息。  
-- NPS 扩展使用本地 Active Directory 中的 UPN 来标识 Azure MFA 中的用户，以便执行辅助身份验证。可将该扩展配置为使用其他标识符，例如备用登录 ID，或者除 UPN 以外的自定义 Active Directory 字段。 有关详细信息，请参阅[用于多重身份验证的 NPS 扩展的高级配置选项](howto-mfa-nps-extension-advanced.md)一文。
+- NPS 扩展使用本地 Active directory 中的 UPN 来识别 Azure MFA 上用于执行辅助身份验证的用户。可以将该扩展配置为使用其他标识符，例如备用登录 ID 或 UPN 以外的自定义 Active Directory 字段。 有关详细信息，请参阅[用于多重身份验证的 NPS 扩展的高级配置选项](howto-mfa-nps-extension-advanced.md)一文。
 - 并非所有加密协议都支持所有验证方法。
    - PAP 支持电话呼叫、单向短信、移动应用通知和移动应用验证码
    - **CHAPV2** 和 **EAP** 支持电话呼叫和移动应用通知
@@ -221,7 +221,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 如果你的某些用户未注册 MFA，你可以确定当他们尝试身份验证时要发生什么行为。 使用注册表路径 *HKLM\Software\Microsoft\AzureMFA* 中的注册表设置 *REQUIRE_USER_MATCH* 可以控制功能行为。 此项设置提供单个配置选项：
 
-| Key | ReplTest1 | 默认 |
+| 密钥 | Value | 默认 |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE/FALSE | 未设置（相当于 TRUE） |
 
@@ -229,13 +229,13 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 可以选择在用户加入并且可能尚未所有用户都已注册 Azure MFA 时创建该键并将其设置为 FALSE。 但是，由于设置该键允许未注册 MFA 的用户登录，因此应在转到生产环境之前删除该键。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 ### <a name="nps-extension-health-check-script"></a>NPS 扩展运行状况检查脚本
 
-以下脚本在 TechNet 库中提供, 用于在对 NPS 扩展进行故障排除时执行基本运行状况检查步骤。
+以下脚本在 TechNet 库中提供，用于在对 NPS 扩展进行故障排除时执行基本运行状况检查步骤。
 
-[MFA_NPS_Troubleshooter.ps1](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
+[MFA_NPS_Troubleshooter](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
 
 ---
 
@@ -243,7 +243,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 请在证书存储中查找安装程序创建的自签名证书，然后检查私钥中是否包含授予“网络服务”用户的权限。 证书的使用者名称为 **CN \<tenantid\>，OU = Microsoft NPS Extension**
 
-*AzureMfaNpsExtnConfigSetup*脚本生成的自签名证书也具有两年的有效期。 当验证是否已安装证书时, 还应检查证书是否尚未过期。
+*AzureMfaNpsExtnConfigSetup*脚本生成的自签名证书也具有两年的有效期。 当验证是否已安装证书时，还应检查证书是否尚未过期。
 
 ---
 
@@ -267,7 +267,7 @@ Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertficicate.cer
 ```
 
-运行此命令后, 请切换到 C 驱动器, 找到该文件, 然后双击该文件。 转到详细信息并向下滚动到“指纹”，将服务器上安装的证书的指纹与此指纹进行比较。 证书指纹应匹配。
+运行此命令后，请切换到 C 驱动器，找到该文件，然后双击该文件。 转到详细信息并向下滚动到“指纹”，将服务器上安装的证书的指纹与此指纹进行比较。 证书指纹应匹配。
 
 如果该命令返回了多个证书，可以使用 Valid-From 和 Valid-Until 时间戳（采用用户可读格式）来筛选出每个不相符的项。
 
@@ -302,11 +302,11 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 ---
 
-### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>为什么虽然存在有效证书, 身份验证不起作用？
+### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>为什么虽然存在有效证书，身份验证不起作用？
 
-如果以前的计算机证书已过期, 并且已生成新证书, 则应删除任何过期的证书。 如果证书过期, 则可能会导致 NPS 扩展开始出现问题。
+如果以前的计算机证书已过期，并且已生成新证书，则应删除任何过期的证书。 如果证书过期，则可能会导致 NPS 扩展开始出现问题。
 
-若要检查是否具有有效的证书, 请使用 MMC 检查本地计算机帐户的证书存储, 并确保证书尚未过期。 若要生成新的有效证书, 请重新运行 "[运行 PowerShell 脚本](#run-the-powershell-script)" 部分下的步骤
+若要检查是否具有有效的证书，请使用 MMC 检查本地计算机帐户的证书存储，并确保证书尚未过期。 若要生成新的有效证书，请重新运行 "[运行 PowerShell 脚本](#run-the-powershell-script)" 部分下的步骤
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>管理 TLS/SSL 协议和密码套件
 

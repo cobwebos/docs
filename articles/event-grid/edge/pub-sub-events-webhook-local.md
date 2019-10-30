@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: b484306504af8f83a393feb0469fff5b524948ab
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 169b0c8084259ac27b466dbfd3606e465da35d99
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992205"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73098617"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>教程：在本地发布和订阅事件
 
@@ -81,6 +81,8 @@ ms.locfileid: "72992205"
 
     >[!IMPORTANT]
     > 在本教程中，将部署已禁用客户端身份验证并允许 HTTP 订阅服务器的事件网格模块。 对于生产工作负荷，建议启用客户端身份验证，并且仅允许 HTTPs 订阅服务器。 有关如何安全配置事件网格模块的详细信息，请参阅[安全性和身份验证](security-authentication.md)。
+    > 
+    > 如果使用 Azure VM 作为边缘设备，请添加入站端口规则以允许端口4438上的入站流量。 有关添加规则的说明，请参阅[如何打开 VM 的端口](../../virtual-machines/windows/nsg-quickstart-portal.md)。
     
 
 ## <a name="deploy-azure-function-iot-edge-module"></a>部署 Azure Function IoT Edge 模块
@@ -257,7 +259,7 @@ ms.locfileid: "72992205"
     在 Windows 上，运行以下命令：
 
     ```sh
-    iotedge logs subscriber -f
+    docker -H npipe:////./pipe/iotedge_moby_engine container logs subscriber
     ```
 
    在 Linux 上，运行以下命令：
@@ -299,6 +301,7 @@ ms.locfileid: "72992205"
 ## <a name="next-steps"></a>后续步骤
 在本教程中，您创建了事件网格主题、订阅和已发布的事件。 现在，你已了解基本步骤，请参阅以下文章： 
 
+- 若要解决在 IoT Edge 上使用 Azure 事件网格时遇到的问题，请参阅[故障排除指南](troubleshoot.md)。
 - 创建/更新具有[筛选器](advanced-filtering.md)的订阅。
 - 在[Linux](persist-state-linux.md)或[Windows](persist-state-windows.md)上启用事件网格模块的持久性
 - 按照[文档](configure-client-auth.md)配置客户端身份验证
