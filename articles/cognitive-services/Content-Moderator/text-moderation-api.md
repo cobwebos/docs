@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: c5127d0f16a12840cda735d1682cb578266441fe
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1d147dcee31fa4b84b28ab62e8cd41aebc134a9b
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757235"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043943"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文本审查概念
 
@@ -184,4 +184,4 @@ ms.locfileid: "72757235"
 
 ## <a name="next-steps"></a>后续步骤
 
-体验[文本审查 API 控制台](try-text-api.md)并使用 REST API 代码示例。 如果你熟悉 Visual Studio 和 C#，另请参阅[文本审查 .NET 快速入门](text-moderation-quickstart-dotnet.md)。
+体验[文本审查 API 控制台](try-text-api.md)并使用 REST API 代码示例。 如果熟悉 Visual Studio 和， C#请参阅[.net SDK 快速入门](dotnet-sdk-quickstart.md)的 "文本审核" 部分。

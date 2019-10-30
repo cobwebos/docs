@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 53d06f84172da0c4717cabe79f4f5152e73e9555
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: b02324923e3f004395105b8e04165390cb950fe7
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754269"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044118"
 ---
 # <a name="create-human-reviews"></a>创建人审查
 
@@ -56,4 +56,4 @@ ms.locfileid: "72754269"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本指南中，您学习了如何设置和使用内容审查器[审阅工具](https://contentmoderator.cognitive.microsoft.com)中的评论。 接下来，请参阅[REST API 指南](../try-review-api-review.md)或[.net SDK 指南](../moderation-reviews-quickstart-dotnet.md)以了解如何以编程方式创建评论。
+在本指南中，您学习了如何设置和使用内容审查器[审阅工具](https://contentmoderator.cognitive.microsoft.com)中的评论。 接下来，请参阅[REST API 指南](../try-review-api-review.md)或[.net SDK 快速入门](../dotnet-sdk-quickstart.md)，了解如何以编程方式创建评论。

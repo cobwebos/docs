@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 0050e2b687b6001514d1ae80c269b1a0499efbea
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 917636c8ae339e06321c169979611f74276ca523
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757295"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044005"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>内容审核评审、工作流和作业
 
@@ -75,5 +75,5 @@ ms.locfileid: "72757295"
 ## <a name="next-steps"></a>后续步骤
 
 * 试用[作业 API 控制台](try-review-api-job.md)，并运行 REST API 代码示例。 如果熟悉 Visual Studio 和 C#，还请参阅[作业 .NET 快速入门](moderation-jobs-quickstart-dotnet.md)。 
-* 对于审阅，请开始使用[审阅 API 控制台](try-review-api-review.md)，并运行 REST API 代码示例。 然后，请参阅[审阅 .NET 快速入门](moderation-reviews-quickstart-dotnet.md)。
+* 对于审阅，请开始使用[审阅 API 控制台](try-review-api-review.md)，并运行 REST API 代码示例。 然后，请参阅[.net 快速入门](dotnet-sdk-quickstart.md)的 "审阅" 部分。
 * 对于视频审阅，请参阅[视频审阅快速入门](video-reviews-quickstart-dotnet.md)，并了解如何[向视频审阅添加脚本](video-transcript-reviews-quickstart-dotnet.md)。

@@ -10,24 +10,24 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: aa6f53901f21dcb0726454d641a4a2a66007f9e0
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 321f12fef44cae43caf53d78b2908e68f9edd0a8
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429048"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043904"
 ---
 # <a name="active-and-inactive-events"></a>活动和非活动事件
 
 当应用程序调用排名 API 时，会收到应用程序应在 rewardActionId 字段中显示的操作。  从那时起，Personalizer 将需要具有相同 eventId 的奖励。 奖励分数将用于为将来的排名调用定型模型。 如果没有收到对 eventId 的奖励调用，将应用默认的奖励。 在 Azure 门户中建立默认回报。
 
-在某些情况下，应用程序可能需要调用排名孔，甚至知道是否会对用户使用或 displayedn 结果。 例如，在某些情况下可能会发生这种情况，例如，使用市场营销活动覆盖升级内容的页面呈现方式。 如果未使用排名调用的结果，并且用户看不到该结果，则不能对其进行任何奖励（零或其他）训练。
+在某些情况下，应用程序可能需要先调用排名，才能知道是使用还是向用户显示结果。 例如，在某些情况下可能会发生这种情况，例如，使用市场营销活动覆盖升级内容的页面呈现方式。 如果未使用排名调用的结果，并且用户看不到该结果，则不能对其进行任何奖励（零或其他）训练。
 通常情况下，出现这种情况：
 
 * 你可能正在预先呈现不一定可让用户看到的某个 UI。 
 * 应用程序可能正在执行预测个性化，其中的“排名”调用是使用实时性不够高的上下文发出的，其输出不一定会由应用程序使用。 
 
-在这些情况下，使用 Personalizer 的正确方法是调用请求事件处于_非活动状态_的级别。 Personalizer 不会对此事件提供奖励，也不会应用默认奖励。 Letr 在业务逻辑中，如果应用程序使用排名调用中的信息，只需_激活_事件。 在事件处于活动状态时，Personalizer 将需要对该事件的奖励，或在没有对奖励 API 作出显式调用的情况下应用默认奖励。
+在这些情况下，使用 Personalizer 的正确方法是调用请求事件处于_非活动状态_的级别。 Personalizer 不会对此事件提供奖励，也不会应用默认奖励。 稍后，如果应用程序使用排名调用中的信息，则你需要做的就是_激活_事件。 在事件处于活动状态时，Personalizer 将需要对该事件的奖励，或在没有对奖励 API 作出显式调用的情况下应用默认奖励。
 
 ## <a name="get-inactive-events"></a>获取非活动事件
 

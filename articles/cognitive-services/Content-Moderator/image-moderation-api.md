@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 3bc5bc99984367b44b38a65266d2915c47ca6fd0
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 6d419135a1da68d23689f66d3134a638d71a3eab
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757339"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044105"
 ---
 # <a name="learn-image-moderation-concepts"></a>了解图像审查概念
 
@@ -147,4 +147,4 @@ ms.locfileid: "72757339"
 
 ## <a name="next-steps"></a>后续步骤
 
-试用[图像审查 API 控制台](try-image-api.md)并使用 REST API 代码示例。 如果熟悉 Visual Studio 和 C#，还请参阅[图像审查 .NET 快速入门](image-moderation-quickstart-dotnet.md)。
+试用[图像审查 API 控制台](try-image-api.md)并使用 REST API 代码示例。 如果熟悉 Visual Studio 和， C#还请查看[.net SDK 快速入门](dotnet-sdk-quickstart.md)的 "图像裁决" 部分。
