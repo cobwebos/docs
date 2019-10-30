@@ -11,12 +11,12 @@ metadata:
   author: PatAltimore
   ms.author: patricka
   ms.date: 09/25/2019
-  ms.openlocfilehash: 93a1e54dd2f1c209792c688666782a9c9823214b
-  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.openlocfilehash: 0bdf46585a05ffc286e26087dad005eb102ed6b8
+  ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/27/2019
-  ms.locfileid: "71328618"
+  ms.lasthandoff: 10/29/2019
+  ms.locfileid: "73027124"
 productDirectory:
   items:
   - title: Azure 区块链服务
@@ -78,7 +78,7 @@ additionalContent:
     summary: 区块链应用开发工具和代码示例。
     items:
     - title: 适用于 Ethereum 的 Azure 区块链开发工具包
-      summary: 开发、部署调试和管理 Azure 区块链服务解决方案。
+      summary: 开发、部署、调试和管理 Azure 区块链服务解决方案。
       url: https://marketplace.visualstudio.com/items?itemName=azblockchain.azure-blockchain
     - title: Ethereum 区块链连接器
       summary: 使用 Azure 逻辑应用、Microsoft Flow 和 Microsoft PowerApps 执行智能合同操作，例如提交事务、读取合同状态和触发有关合同更新的流。

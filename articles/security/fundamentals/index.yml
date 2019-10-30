@@ -1,0 +1,103 @@
+### YamlMime:Landing
+title: Azure 安全基础知识文档
+summary: 了解如何通过我们的最佳做法和指导来保护 Azure 上的云解决方案。
+metadata:
+  title: Azure 安全基础知识文档
+  description: 了解如何保护 Azure 上的云解决方案。
+  services: security
+  ms.service: security
+  ms.subservice: fundamentals
+  ms.topic: landing-page
+  author: TerryLanfear
+  ms.author: terrylan
+  manager: rkarlin
+  ms.date: 10/28/2019
+  ms.openlocfilehash: 4744c6668de55b28725f1e1662f93030b5f61007
+  ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 10/29/2019
+  ms.locfileid: "73055905"
+landingContent:
+- title: 关于 Azure 安全性
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 安全性简介
+      url: overview.md
+    - text: 安全技术功能
+      url: technical-capabilities.md
+  - linkListType: concept
+    links:
+    - text: Microsoft 如何保护 Azure 基础结构
+      url: infrastructure.md
+- title: 入门
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 云中责任分担
+      url: shared-responsibility.md
+    - text: 安全服务与技术
+      url: services-technologies.md
+    - text: 内置安全控件
+      url: security-controls.md
+- title: 缓解威胁
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 安全中心
+      url: ../../security-center/security-center-intro.md
+  - linkListType: concept
+    links:
+    - text: 监视和管理
+      url: management-monitoring-overview.md
+    - text: 高级威胁检测
+      url: threat-detection.md
+- title: 保护云解决方案的最佳做法
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 网络安全
+      url: network-best-practices.md
+    - text: IaaS 工作负荷
+      url: iaas.md
+    - text: 标识管理和访问控制
+      url: identity-management-best-practices.md
+    - text: 数据库安全
+      url: database-best-practices.md
+    - text: PaaS 部署
+      url: paas-deployments.md
+    - text: 数据安全与加密
+      url: data-encryption-best-practices.md
+    - text: 运营安全
+      url: operational-best-practices.md
+- title: 保护 Azure 资源
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 静态加密
+      url: encryption-atrest.md
+    - text: 数据保护
+      url: database-security-overview.md
+    - text: 网络安全
+      url: network-overview.md
+    - text: 虚拟机安全性
+      url: virtual-machines-overview.md
+    - text: 标识管理安全性
+      url: identity-management-overview.md
+  - linkListType: learn
+    links:
+    - text: 保护云应用程序
+      url: https://docs.microsoft.com/learn/paths/secure-your-cloud-apps/
+- title: 构建安全技能
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 实现网络安全
+      url: https://docs.microsoft.com/learn/paths/implement-network-security
+    - text: 管理标识和访问
+      url: https://docs.microsoft.com/learn/paths/manage-identity-and-access
+    - text: 实现资源管理安全
+      url: https://docs.microsoft.com/learn/paths/implement-resource-mgmt-security
+    - text: 实现虚拟主机安全
+      url: https://docs.microsoft.com/learn/paths/implement-host-security

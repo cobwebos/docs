@@ -18,6 +18,8 @@
       href: advisor-performance-recommendations.md
     - name: 降低服务成本
       href: advisor-cost-recommendations.md
+    - name: 实现卓越运营
+      href: advisor-operational-excellence-recommendations.md
     - name: 配置建议
       href: view-recommendations.md
     - name: 权限和阻止的操作

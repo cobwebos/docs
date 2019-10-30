@@ -81,6 +81,10 @@
           items:
             - name: 创建区域冗余的虚拟网关
               href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+        - name: 标识
+          items:
+            - name: 创建 Azure Active Directory 域服务实例
+              href: ../active-directory-domain-services/tutorial-create-instance.md
 - name: 灾难恢复
   items:
     - name: 使用 Azure Site Recovery

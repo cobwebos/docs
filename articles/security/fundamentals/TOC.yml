@@ -1,5 +1,5 @@
 - name: 基础知识文档
-  href: index.md
+  href: index.yml
 - name: 体系结构和设计
   href: overview.md
   expanded: false
@@ -40,7 +40,8 @@
           href: data-encryption-best-practices.md
         - name: 静态数据加密
           href: encryption-atrest.md
-        - name: 适用于 VM 和 VM 规模集的 Azure 磁盘加密
+        - name: 适用于虚拟机的 Azure 磁盘加密
+          displayName: virtual machines and virtual machine scale sets
           href: azure-disk-encryption-vms-vmss.md
     - name: 存储安全指南
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
