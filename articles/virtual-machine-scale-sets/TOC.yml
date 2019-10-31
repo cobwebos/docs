@@ -125,6 +125,8 @@
     - name: 维护和更新
       href: ../virtual-machines/windows/maintenance-and-updates.md
       maintainContext: true
+    - name: 业务流程模式
+      href: orchestration-modes.md
     - name: 磁盘存储
       items:
         - name: 托管磁盘

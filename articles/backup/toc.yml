@@ -232,6 +232,8 @@
           href: backup-azure-restore-windows-server.md
         - name: 还原 Windows Server 系统状态
           href: backup-azure-restore-system-state.md
+        - name: 管理 Windows Server 文件和文件夹备份
+          href: backup-azure-manage-mars.md
     - name: 恢复服务保管库
       items:
         - name: 恢复服务保管库概述

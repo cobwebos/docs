@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 942928a3e5da02bc44f85baab1b9795137a9433d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 73372c0b94cb12c771c0c9003441750fc380f3c9
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297103"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162911"
 ---
 # <a name="overview-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>英国官方和英国 NHS 蓝图示例的概述
 
@@ -30,7 +30,7 @@ ms.locfileid: "72297103"
 > [英国官方和英国 NHS 蓝图 - 控制映射](./control-mapping.md)
 > [英国官方和英国 NHS 蓝图 - 部署步骤](./deploy.md)
 
-有关蓝图和如何使用这些蓝图的更多文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

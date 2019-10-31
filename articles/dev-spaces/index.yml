@@ -11,12 +11,12 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
   ms.date: 09/30/2019
-  ms.openlocfilehash: 933273267f72666d91f52471370d41ecee2af870
-  ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+  ms.openlocfilehash: b7ec7aaeab69cfe3a0508a3146558c71b2d616c1
+  ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/01/2019
-  ms.locfileid: "71695628"
+  ms.lasthandoff: 10/30/2019
+  ms.locfileid: "73163501"
 landingContent:
 - title: 关于 Azure Dev Spaces
   linkLists:
@@ -56,3 +56,11 @@ landingContent:
       url: how-to/run-dev-spaces-windows-containers.md
     - text: 将 traefik 用于自定义入口和 HTTPS
       url: how-to/ingress-https-traefik.md
+- title: 预览功能
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 将 GitHub 操作与 Azure Dev Spaces 配合使用
+      url: how-to/github-actions.md
+    - text: 使用 Azure Dev Spaces Connect
+      url: how-to/connect.md

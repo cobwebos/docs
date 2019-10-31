@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/06/2019
+ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 67a34b2b0a997a118cb2fe1b99de04bd58063307
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: ddcf5a1df31b4b36e25b2522ada21deab19fe032
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999046"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159873"
 ---
 # <a name="securing-paas-deployments"></a>保护 PaaS 部署
 
@@ -31,31 +31,17 @@ ms.locfileid: "70999046"
 - 将安全重心从以网络为中心的方案转换为以标识为中心的外围安全方案
 - 实施一般的 PaaS 安全最佳实践建议
 
-[开发适用于云的应用程序](abstract-develop-secure-apps.md)时, 在软件开发生命周期的每个阶段应考虑的安全问题和控制措施是一般的指导。
+[开发适用](abstract-develop-secure-apps.md)于云的应用程序时，在软件开发生命周期的每个阶段应考虑的安全问题和控制措施是一般的指导。
 
 ## <a name="cloud-security-advantages"></a>云的安全优势
-转移到云中可带来一定的安全优势。 在本地环境中，组织的可用资源可能有限，无法尽责在安全措施上投资，使得攻击者能够利用所有层中的漏洞。
+务必了解你和 Microsoft 之间的[责任划分](shared-responsibility.md)。 在本地，拥有整个堆栈，但迁移到云后，某些责任将转移到 Microsoft。
 
-![云时代的安全优势](./media/paas-deployments/advantages-of-cloud.png)
+云中存在[安全优势](shared-responsibility.md#cloud security advantages)。 在本地环境中，组织的可用资源可能有限，无法尽责在安全措施上投资，使得攻击者能够利用所有层中的漏洞。
 
 组织可以使用提供商的基于云的安全功能和云智能来改善其威胁检测和响应时间。  通过将责任转移到云提供商，组织可以扩大安全覆盖范围，为其他优先业务重新调配安全资源与预算。
 
-## <a name="division-of-responsibility"></a>责任划分
-请务必了解你与 Microsoft 之间的责任分工。 在本地，拥有整个堆栈，但迁移到云后，某些责任将转移到 Microsoft。 下面的责任矩阵展示了在 SaaS、PaaS 和 IaaS 部署中，分别由你和 Microsoft 负责的堆栈区域。
-
-![责任区域](./media/paas-deployments/responsibility-zones.png)
-
-对于所有云部署类型，拥有数据和标识。 需要负责保护由你控制的数据和标识、本地资源及云组件的安全（保护的项目因服务类型而异）。
-
-不管部署类型为何，都必须负责的项目包括：
-
-- Data
-- 终结点
-- 帐户
-- 访问管理
-
 ## <a name="security-advantages-of-a-paas-cloud-service-model"></a>PaaS 云服务模型的安全优势
-让我们使用上面这个责任矩阵来了解一下 Azure PaaS 部署相比本地部署的安全优势。
+让我们看看 Azure PaaS 部署与本地的安全优势。
 
 ![PaaS 的安全优势](./media/paas-deployments/advantages-of-paas.png)
 
@@ -63,7 +49,7 @@ ms.locfileid: "70999046"
 
 在堆栈的中间，PaaS 部署与本地之间没有差别。 在应用程序层和帐户与访问管理层，面临的风险是类似的。 本文的后续步骤部分将提供有关消除或尽量避免这些风险的最佳实践指导。
 
-堆栈的顶层（即数据监管和权限管理）存在一种风险，不过可以使用密钥管理来缓解。 （最佳实践中介绍了密钥管理。）尽管密钥管理是一个附加的责任，但你不再需要管理 PaaS 部署中的某些区域，因此可将资源转移到密钥管理。
+堆栈的顶层（即数据监管和权限管理）存在一种风险，不过可以使用密钥管理来缓解。 （最佳做法中涵盖了密钥管理。）尽管密钥管理是一个额外的责任，但你在 PaaS 部署中拥有的区域不再需要管理，因此你可以将资源转移到密钥管理。
 
 Azure 平台还使用各种基于网络的技术提供强大的 DDoS 保护。 但是，根据链路和数据中心的不同，所有类型的基于网络的 DDoS 保护方法都有自身的限制。 为了帮助避免大规模 DDoS 攻击造成的影响，可以利用 Azure 的核心云功能快速自动扩展，以防御 DDoS 攻击。 在建议的实践文章中，我们将更详细地介绍如何采取这种措施。
 
@@ -87,19 +73,19 @@ PaaS 与传统本地部署之间的另一个重大差别在于，前者为主要
 
 下面是管理标识边界的最佳做法。
 
-**最佳做法**：保护密钥和凭据以保护 PaaS 部署。   
-**详细信息**：丢失密钥和凭据是一个常见问题。 可以使用集中式解决方案，其中的密钥和机密可以存储在硬件安全模块（Hsm）中。 [Azure Key Vault](../../key-vault/key-vault-overview.md)通过使用受 hsm 保护的密钥加密身份验证密钥、存储帐户密钥、数据加密密钥、.pfx 文件和密码来保护密钥和机密。
+最佳做法：保护密钥和凭据以保护 PaaS 部署。   
+详细信息：丢失密钥和凭据是一个常见问题。 可以使用集中式解决方案，其中的密钥和机密可以存储在硬件安全模块（Hsm）中。 [Azure Key Vault](../../key-vault/key-vault-overview.md)通过使用受 hsm 保护的密钥加密身份验证密钥、存储帐户密钥、数据加密密钥、.pfx 文件和密码来保护密钥和机密。
 
-**最佳做法**：不要将凭据和其他机密放入源代码或 GitHub。   
-**详细信息**：唯一比丢失密钥和凭据更遭糕的事情是让未经授权的一方获取这些密钥和凭据的访问权限。 攻击者可以利用 bot 技术来查找 GitHub 等代码存储库中存储的密钥和机密。 请不要将密钥和机密放入这些公共代码存储库。
+最佳做法：不要将凭据和其他机密放入源代码或 GitHub。   
+详细信息：比丢失密钥和凭据更遭糕的唯一问题就是让未经授权的人员获取这些密钥和凭据的访问权限。 攻击者可以利用 bot 技术来查找 GitHub 等代码存储库中存储的密钥和机密。 请不要将密钥和机密放入这些公共代码存储库。
 
-**最佳做法**：通过使用可以直接远程管理这些 VM 的管理接口来保护混合 PaaS 和 IaaS 服务上的 VM 管理接口。   
-**详细信息**：可以使用 [SSH](https://en.wikipedia.org/wiki/Secure_Shell)、[RDP](https://support.microsoft.com/kb/186607) 和 [PowerShell 远程处理](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting)等远程管理协议。 通常，我们建议不要从 Internet 启用对 VM 的直接远程访问。
+最佳做法：使用允许你直接远程管理 VM 的管理接口保护混合 PaaS 和 IaaS 服务上的 VM 管理接口。   
+详细信息：可以使用 [SSH](https://en.wikipedia.org/wiki/Secure_Shell)、[RDP](https://support.microsoft.com/kb/186607) 和 [PowerShell 远程处理](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting)等远程管理协议。 通常，我们建议不要从 Internet 启用对 VM 的直接远程访问。
 
 如果可以，请使用替代方法，例如在 Azure 虚拟网络中使用虚拟专用网络。 如果无法使用替代方法，请确保使用复杂的通行短语，并使用双重身份验证（例如 [Azure 多重身份验证](/azure/active-directory/authentication/multi-factor-authentication)）。
 
-**最佳做法**：使用强身份验证和授权平台。   
-**详细信息**：在 Azure AD 而不是自定义用户存储中使用联合标识。 使用联合标识时，可以利用基于平台的方法，将已获授权的标识的管理权限委托给合作伙伴。 如果员工离职后，需要通过多个标识和授权系统反映该信息，则联合标识方法就特别重要。
+最佳做法：使用强身份验证和授权平台。   
+详细信息：在 Azure AD 而不是自定义用户存储中使用联合标识。 使用联合标识时，可以利用基于平台的方法，将已获授权的标识的管理权限委托给合作伙伴。 如果员工离职后，需要通过多个标识和授权系统反映该信息，则联合标识方法就特别重要。
 
 使用平台提供的身份验证和授权机制，而不要使用自定义代码。 原因是开发自定义身份验证代码可能很容易出错。 大部分开发人员都不是安全专家，不太可能会注意到身份验证和授权的细微之处与最新开发情况。 商业代码（例如 Microsoft 编写的代码）通常会接受广泛的安全性评审。
 
@@ -114,32 +100,32 @@ Microsoft [安全开发生命周期](https://www.microsoft.com/en-us/sdl)指定�
 
 | 威胁 | 安全属性 | 潜在的 Azure 平台迁移 |
 | --- | --- | --- |
-| 欺骗 | 身份验证 | 需要 HTTPS 连接。 |
+| 欺骗 | Authentication | 需要 HTTPS 连接。 |
 | 篡改 | 完整性 | 验证 SSL 证书。 |
 | 否认性 | 不可否认性 | 启用 Azure [监视和诊断](/azure/architecture/best-practices/monitoring)。 |
 | 信息泄露 | 机密性 | 使用[服务证书](/rest/api/appservice/certificates)加密静态敏感数据。 |
 | 拒绝服务 | 可用性 | 监视潜在拒绝服务条件的性能指标。 实现连接筛选器。 |
-| 权限提升 | Authorization | 使用[特权标识管理](/azure/active-directory/privileged-identity-management/subscription-requirements)。 |
+| 特权提升 | 授权 | 使用[特权标识管理](/azure/active-directory/privileged-identity-management/subscription-requirements)。 |
 
 ## <a name="develop-on-azure-app-service"></a>在 Azure 应用服务上开发
 [Azure App Service](/azure/app-service/overview) 是一个 PaaS 产品，可创建适用于任何平台或设备的 Web 和移动应用，并可连接到云中或本地任何位置的数据。 应用服务所包括的 Web 功能和移动功能是以前作为 Azure 网站和 Azure 移动服务单独交付的。 它还包括各种新功能，可以实现业务流程的自动化，并可托管云 API。 应用服务以单个集成服务的形式为 Web、移动和集成方案提供一组丰富的功能。
 
 下面是使用应用服务的最佳做法。
 
-**最佳做法**：[通过 Azure Active Directory 进行身份验证](/azure/app-service/overview-authentication-authorization)。   
-**详细信息**：应用服务为标识提供者提供 OAuth 2.0 服务。 OAuth 2.0 注重简化客户端开发人员的工作，同时为 Web 应用程序、桌面应用程序和移动电话提供特定的授权流。 Azure AD 使用 OAuth 2.0，可让你授予移动和 Web 应用程序的访问权限。
+最佳做法：[通过 Azure Active Directory 进行身份验证](/azure/app-service/overview-authentication-authorization)。   
+详细信息：应用服务为标识提供者提供 OAuth 2.0 服务。 OAuth 2.0 注重简化客户端开发人员的工作，同时为 Web 应用程序、桌面应用程序和移动电话提供特定的授权流。 Azure AD 使用 OAuth 2.0，可让你授予移动和 Web 应用程序的访问权限。
 
-**最佳做法**：根据“需要知道”和“最低权限”安全原则限制访问。   
-**详细信息**：对于想要实施数据访问安全策略的组织，限制访问是必须要做的事。 可以使用 RBAC 向特定范围的用户、组和应用程序分配权限。 若要了解有关向用户授予应用程序访问权限的详细信息，请参阅[访问管理入门](/azure/role-based-access-control/overview)。
+最佳做法：根据“需要知道”和“最低权限”安全原则限制访问。   
+详细信息：对于想要实施数据访问安全策略的组织，限制访问是必须要做的事。 可以使用 RBAC 向特定范围的用户、组和应用程序分配权限。 若要了解有关向用户授予应用程序访问权限的详细信息，请参阅[访问管理入门](/azure/role-based-access-control/overview)。
 
-**最佳做法**：保护密钥。   
-**详细信息**：Azure Key Vault 可帮助保护云应用程序和服务使用的加密密钥和机密。 通过 Key Vault，可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 为了提升可靠性，可以在 HSM 中导入或生成密钥。 请参阅 [Azure Key Vault](/azure/key-vault/key-vault-overview) 了解详细信息。 还可以使用 Key Vault 和自动续订来管理 TLS 证书。
+最佳做法：保护密钥。   
+详细信息：Azure Key Vault 可帮助保护云应用程序和服务使用的加密密钥和机密。 通过 Key Vault，可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 为了增加保障，你可以在 HSM 中导入或生成密钥。 请参阅 [Azure Key Vault](/azure/key-vault/key-vault-overview) 了解详细信息。 还可以使用 Key Vault 和自动续订来管理 TLS 证书。
 
-**最佳做法**：限制传入的源 IP 地址。   
-**详细信息**：[应用服务环境](/azure/app-service/environment/intro)提供虚拟网络集成功能，可帮助你通过网络安全组限制传入的源 IP 地址。 使用虚拟网络可将 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 若要了解详细信息，请参阅[将应用与 Azure 虚拟网络集成](/azure/app-service/web-sites-integrate-with-vnet)。
+最佳做法：限制传入的源 IP 地址。   
+详细信息：[应用服务环境](/azure/app-service/environment/intro)提供虚拟网络集成功能，可帮助你通过网络安全组限制传入的源 IP 地址。 使用虚拟网络可将 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 若要了解详细信息，请参阅[将应用与 Azure 虚拟网络集成](/azure/app-service/web-sites-integrate-with-vnet)。
 
-**最佳做法**：监视应用服务环境的安全状态。   
-**详细信息**：使用 Azure 安全中心监视应用服务环境。 在安全中心识别潜在的安全漏洞时，它会创建一些[建议](../../security-center/security-center-virtual-machine-protection.md)，这些建议会指导完成配置所需控件的过程。
+最佳做法：监视应用服务环境的安全状态。   
+详细信息：使用 Azure 安全中心监视应用服务环境。 在安全中心识别潜在的安全漏洞时，它会创建一些[建议](../../security-center/security-center-virtual-machine-protection.md)，这些建议会指导完成配置所需控件的过程。
 
 > [!NOTE]
 > 监视应用服务的功能以预览版提供，仅适用于安全中心的[标准层](/azure/security-center/security-center-pricing)。
@@ -181,5 +167,3 @@ Application Insights 提供各种可以与所收集的数据交互的工具。 A
 以下资源提供了有关 Azure 安全性及相关 Microsoft 服务的更多常规信息：
 * [Azure 安全团队博客](https://blogs.msdn.microsoft.com/azuresecurity/) - 随时掌握 Azure 安全性的最新信息
 * [Microsoft 安全响应中心](https://technet.microsoft.com/library/dn440717.aspx) - 可在其中报告 Microsoft 安全漏洞（包括 Azure 问题）或将其通过电子邮件发送到 secure@microsoft.com
-
-

@@ -82,7 +82,7 @@
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
     - name: 使用映射数据流转换数据
       href: tutorial-data-flow.md
-    - name: 转换云中的数据
+    - name: 外部转换
       items:
         - name: HDInsight Spark
           items:
@@ -94,7 +94,7 @@
           items:
             - name: 用户界面 (UI)
               href: transform-data-using-databricks-notebook.md
-    - name: 转换虚拟网络中的数据
+    - name: 虚拟网络中的 Hive 转换
       items:
         - name: 用户界面 (UI)
           href: tutorial-transform-data-hive-virtual-network-portal.md
@@ -622,6 +622,8 @@
       items:
         - name: 处理固定宽度的文本文件
           href: how-to-fixed-width.md
+        - name: 行处理时出错
+          href: how-to-data-flow-error-rows.md
     - name: 从本地进行 SSIS 迁移
       items:
         - name: SSIS 迁移概述

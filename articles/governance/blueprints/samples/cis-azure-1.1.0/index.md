@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 08/09/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 526ae799fc3071934936d177743129a6c33f59de
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 503c84339dfa32b2a7312ceca6333312b5990862
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297756"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163845"
 ---
 # <a name="overview-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure 基础基准蓝图示例的概述
 
@@ -30,7 +30,7 @@ CIS Microsoft Azure 基础基准蓝图示例使用 [Azure Policy](../../../polic
 > [!div class="nextstepaction"]
 > [CIS Microsoft Azure 基础基准蓝图 - 建议映射](./control-mapping.md)
 
-有关蓝图和如何使用这些蓝图的更多文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

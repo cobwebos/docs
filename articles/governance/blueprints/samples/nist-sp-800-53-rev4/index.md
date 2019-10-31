@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 2aa8b413ff6489e9d893b17348f7a0760527dbda
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3fa0b787496bfef0cd0d8c23ba5e70e394c17a5e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299060"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163071"
 ---
 # <a name="overview-of-the-nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 蓝图示例的概述
 
@@ -29,7 +29,7 @@ NIST SP 800-53 R4 蓝图示例提供了监管防护措施，其中使用 [Azure 
 > [NIST SP 800-53 R4 蓝图 - 控制映射](./control-mapping.md)
 > [NIST SP 800-53 R4 蓝图 - 部署步骤](./deploy.md)
 
-有关蓝图和如何使用这些蓝图的更多文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

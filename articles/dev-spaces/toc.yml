@@ -81,6 +81,8 @@
           href: how-to/upgrade-tools.md
         - name: 将 CI/CD 与 Azure Dev Spaces 配合使用
           href: how-to/setup-cicd.md
+        - name: 将 GitHub 操作与 Azure Dev Spaces 配合使用（预览）
+          href: how-to/github-actions.md
         - name: 使用用于 Jenkins 的 Azure Dev Spaces 插件
           href: ../jenkins/tutorial-jenkins-dev-spaces.md
         - name: Azure Dev Spaces 的业务连续性和灾难恢复
@@ -89,6 +91,8 @@
           href: how-to/run-dev-spaces-windows-containers.md
         - name: 将 traefik 用于自定义入口和 HTTPS
           href: how-to/ingress-https-traefik.md
+        - name: 使用 Azure Dev Spaces Connect（预览）
+          href: how-to/connect.md
     - name: 故障排除
       href: troubleshooting.md
     - name: 常见问题解答

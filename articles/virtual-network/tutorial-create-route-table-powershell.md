@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: cd13b3a7a3bc4d5a80e44d146e08c14e81ffdb60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 986371e479f7718fff2e1699401987cb0ca8f623
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730071"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163990"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>使用 PowerShell 通过路由表路由网络流量
 
@@ -46,13 +46,13 @@ ms.locfileid: "66730071"
 
 ## <a name="create-a-route-table"></a>创建路由表
 
-创建路由表之前，需使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例为本文中创建的所有资源创建名为 *myResourceGroup* 的资源组。
+创建路由表之前，请使用[AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)创建资源组。 以下示例为本文中创建的所有资源创建名为 *myResourceGroup* 的资源组。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-使用 [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) 创建路由表。 以下示例创建名为 *myRouteTablePublic* 的路由表。
+使用[AzRouteTable](/powershell/module/az.network/new-azroutetable)创建路由表。 以下示例创建名为 *myRouteTablePublic* 的路由表。
 
 ```azurepowershell-interactive
 $routeTablePublic = New-AzRouteTable `
@@ -63,7 +63,7 @@ $routeTablePublic = New-AzRouteTable `
 
 ## <a name="create-a-route"></a>创建路由
 
-使用 [Get-AzRouteTable](/powershell/module/az.network/get-azroutetable) 检索路由表对象以创建路由，使用 [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) 创建路由，然后使用 [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) 将路由配置写入路由表。
+通过使用[AzRouteTable](/powershell/module/az.network/get-azroutetable)检索路由表对象创建路由，使用[AzRouteConfig](/powershell/module/az.network/add-azrouteconfig)创建路由，然后使用[AzRouteTable 将](/powershell/module/az.network/set-azroutetable)路由配置写入路由表。
 
 ```azurepowershell-interactive
 Get-AzRouteTable `
@@ -89,7 +89,7 @@ $virtualNetwork = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建三个子网配置，以创建三个子网。 以下示例针对公共、专用和外围网络子网创建三个子网配置：
+通过使用[AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)创建三个子网配置创建三个子网。 以下示例针对公共、专用和外围网络子网创建三个子网配置：
 
 ```azurepowershell-interactive
 $subnetConfigPublic = Add-AzVirtualNetworkSubnetConfig `
@@ -108,13 +108,13 @@ $subnetConfigDmz = Add-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork
 ```
 
-使用 [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) 将子网配置写入虚拟网络，以便在虚拟网络中创建子网：
+通过[AzVirtualNetwork 将](/powershell/module/az.network/Set-azVirtualNetwork)子网配置写入虚拟网络，这会在虚拟网络中创建子网：
 
 ```azurepowershell-interactive
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-使用 [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) 将 *myRouteTablePublic* 路由表关联到 Public 子网，然后使用 [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) 将子网配置写入虚拟网络。
+将*myRouteTablePublic*路由表与[AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig)关联到*公共*子网，然后将子网配置写入具有[AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)的虚拟网络。
 
 ```azurepowershell-interactive
 Set-AzVirtualNetworkSubnetConfig `
@@ -133,7 +133,7 @@ NVA 是执行网络功能（如路由、防火墙或 WAN 优化）的 VM。
 
 ### <a name="create-a-network-interface"></a>创建网络接口
 
-在创建网络接口之前，必须使用 [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) 检索虚拟网络 ID，然后使用 [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) 检索子网 ID。 使用 [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) 在已启用 IP 转发的 DMZ 子网中创建网络接口：
+创建网络接口之前，必须先使用[AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)，然后使用[AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig)的子网 Id 检索虚拟网络 id。 在启用了 IP 转发的*DMZ*子网中创建[AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)的网络接口：
 
 ```azurepowershell-interactive
 # Retrieve the virtual network object into a variable.
@@ -157,7 +157,7 @@ $nic = New-AzNetworkInterface `
 
 ### <a name="create-a-vm"></a>创建 VM
 
-若要创建 VM 并在其上附加现有的网络接口，必须先使用 [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) 创建 VM 配置。 该配置包含上一步骤中创建的网络接口。 系统提示输入用户名和密码时，请选择用来登录 VM 的用户名和密码。
+若要创建 VM 并将现有网络接口附加到该 VM，必须先使用[AzVMConfig](/powershell/module/az.compute/new-azvmconfig)创建 vm 配置。 该配置包含上一步骤中创建的网络接口。 系统提示输入用户名和密码时，请选择用来登录 VM 的用户名和密码。
 
 ```azurepowershell-interactive
 # Create a credential object.
@@ -178,7 +178,7 @@ $vmConfig = New-AzVMConfig `
   Add-AzVMNetworkInterface -Id $nic.Id
 ```
 
-运行 [New-AzVM](/powershell/module/az.compute/new-azvm) 使用 VM 配置创建 VM。 以下示例创建名为 *myVmNva* 的 VM。
+使用带有[new-azvm](/powershell/module/az.compute/new-azvm)的 vm 配置创建 vm。 以下示例创建名为 *myVmNva* 的 VM。
 
 ```azurepowershell-interactive
 $vmNva = New-AzVM `
@@ -194,7 +194,7 @@ $vmNva = New-AzVM `
 
 在虚拟网络中创建两个 VM，以便可以在后续步骤中验证来自公共子网的流量是否通过网络虚拟设备路由到专用子网。
 
-使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 在 Public 子网中创建一个 VM。 以下示例在 *myVirtualNetwork* 虚拟网络的公共子网中创建名为 *myVmPublic* 的 VM。
+使用[new-azvm](/powershell/module/az.compute/new-azvm)在*公共*子网中创建 VM。 以下示例在 *myVirtualNetwork* 虚拟网络的公共子网中创建名为 *myVmPublic* 的 VM。
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -223,7 +223,7 @@ New-AzVm `
 
 ## <a name="route-traffic-through-an-nva"></a>通过 NVA 路由流量
 
-使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 返回 *myVmPrivate* VM 的公共 IP 地址。 以下示例返回 *myVmPrivate* VM 的公共 IP 地址：
+使用[AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress)返回*myVmPrivate* VM 的公共 IP 地址。 以下示例返回 *myVmPrivate* VM 的公共 IP 地址：
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress `
@@ -242,7 +242,7 @@ mstsc /v:<publicIpAddress>
 
 输入在创建 VM 时指定的用户名和密码（可能需要选择“更多选择”，然后选择“使用其他帐户”，以便指定在创建 VM 时输入的凭据），然后选择“确定”。 你可能会在登录过程中收到证书警告。 选择“是”以继续进行连接。
 
-在稍后的步骤中，`tracert.exe` 命令用于测试路由。 Tracert 使用 Internet 控制消息协议 (ICMP)，而 Windows 防火墙会拒绝该协议。 在 *myVmPrivate* VM 上，通过 PowerShell 输入以下命令来允许 ICMP 通过 Windows 防火墙：
+在后面的步骤中，`tracert.exe` 命令用于测试路由。 Tracert 使用 Internet 控制消息协议 (ICMP)，而 Windows 防火墙会拒绝该协议。 在 *myVmPrivate* VM 上通过 PowerShell 输入以下命令，允许 ICMP 通过 Windows 防火墙：
 
 ```powershell
 New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
@@ -275,7 +275,7 @@ mstsc /v:myVmPublic
 在 *myVmPublic* VM 上，通过 PowerShell 输入以下命令来允许 ICMP 通过 Windows 防火墙：
 
 ```powershell
-New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
 ```
 
 若要测试从 *myVmPublic* VM 发往 *myVmPrivate* VM 的网络流量的路由，请在 *myVmPublic* VM 上通过 PowerShell 输入以下命令：
@@ -323,7 +323,7 @@ Trace complete.
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组及其包含的所有资源，请使用 [Remove-AzResourcegroup](/powershell/module/az.resources/remove-azresourcegroup) 将其删除。
+如果不再需要资源组及其包含的所有资源，请使用[AzResourcegroup](/powershell/module/az.resources/remove-azresourcegroup)删除该资源组。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

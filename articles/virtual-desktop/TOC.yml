@@ -68,6 +68,8 @@
       href: environment-setup.md
     - name: 远程会话的带宽建议
       href: bandwidth-recommendations.md
+    - name: 确定用户连接延迟
+      href: connection-latency.md
     - name: Windows 虚拟桌面中的委托访问
       href: delegated-access-virtual-desktop.md
     - name: 主机池负载均衡方法

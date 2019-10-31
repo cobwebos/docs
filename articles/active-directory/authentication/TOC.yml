@@ -43,6 +43,8 @@
       items:
         - name: MFA 工作原理
           href: concept-mfa-howitworks.md
+        - name: 启用 MFA
+          href: concept-mfa-get-started.md
         - name: 为用户授予许可
           href: concept-mfa-licensing.md
         - name: 管理身份验证提供程序
@@ -135,6 +137,10 @@
           href: howto-authentication-passwordless-deployment.md
         - name: 无密码安全密钥
           href: howto-authentication-passwordless-security-key.md
+        - name: 无密码 Windows 10
+          href: howto-authentication-passwordless-security-key-windows.md
+        - name: 无密码本地
+          href: howto-authentication-passwordless-security-key-on-premises.md
         - name: 无密码的手机登录
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello for Business

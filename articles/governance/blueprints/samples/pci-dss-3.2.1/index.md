@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 4dbfd750d8a12e954eea981e24c4255218c4af72
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 16dcec7cefa82b63273a34212ff2b85228d6f0c5
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297133"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163023"
 ---
 # <a name="overview-of-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 蓝图示例概述
 
@@ -33,7 +33,7 @@ PCI-DSS 蓝图为 Azure 部署的任何需要此认证的体系结构部署一�
 > [PCI-DSS v3.2.1 蓝图 - 控制映射](./control-mapping.md)
 > [PCI-DSS v3.2.1 蓝图 - 部署步骤](./deploy.md)
 
-有关蓝图和如何使用这些蓝图的更多文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

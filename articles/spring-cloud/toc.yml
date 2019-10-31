@@ -38,6 +38,8 @@
       href: spring-cloud-quotas.md
     - name: 了解 Azure Spring Cloud 中的指标
       href: spring-cloud-concept-metrics.md
+    - name: 规划灾难恢复
+      href: disaster-recovery.md
 - name: 操作指南
   items:
     - name: 如何启动、停止和删除 Azure Spring Cloud 应用程序

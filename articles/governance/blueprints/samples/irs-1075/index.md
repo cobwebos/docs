@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 08/07/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 3bb0148a67b4f8e274ced3c183d383a14f9082b2
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 0f24cf54dbd41b84e723673e42bc44b7d5aa6ab5
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297690"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163276"
 ---
 # <a name="overview-of-the-irs-1075-blueprint-sample"></a>IRS 1075 蓝图示例概述
 
@@ -28,7 +28,7 @@ IRS 1075 蓝图示例提供了监管防护措施，其中使用 [Azure Policy](.
 > [!div class="nextstepaction"]
 > [IRS 1075 蓝图 - 控制映射](./control-mapping.md)
 
-有关蓝图和如何使用这些蓝图的更多文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

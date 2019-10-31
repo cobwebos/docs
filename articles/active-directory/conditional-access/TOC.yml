@@ -50,6 +50,8 @@
           href: howto-conditional-access-policy-admin-mfa.md
         - name: 要求将 MFA 用于 Azure 管理
           href: howto-conditional-access-policy-azure-management.md
+        - name: 要求所有用户执行 MFA
+          href: howto-conditional-access-policy-all-users-mfa.md
         - name: 阻止传统身份验证
           href: howto-conditional-access-policy-block-legacy.md
         - name: 基于风险的条件访问
