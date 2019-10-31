@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 948712b684d1cd1b072862b7253d745f89b0cc56
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b4795eeb24d1d0ac373a700a6b60b8facec0e37d
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244988"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064008"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows Vm 上的 Azure 磁盘加密方案
 
@@ -26,15 +26,12 @@ Azure 磁盘加密使用 BitLocker 外部密钥保护程序为 Azure 虚拟机�
 - [组策略要求](disk-encryption-overview.md#group-policy-requirements)
 - [加密密钥存储要求](disk-encryption-overview.md#encryption-key-storage-requirements)
 
-
-
 >[!IMPORTANT]
 > - 如果以前通过 Azure AD 使用 Azure 磁盘加密来加密 VM，则必须继续使用此选项对 VM 进行加密。 有关详细信息，请参阅[Azure 磁盘加密与 Azure AD （以前的版本）](disk-encryption-overview-aad.md) 。 
 >
 > - 在对磁盘进行加密之前，你应[拍摄快照](snapshot-copy-managed-disk.md)和/或创建备份。 备份确保在加密过程中发生任何意外故障时可以使用恢复选项。 加密之前，需要备份包含托管磁盘的 VM。 进行备份后，可以使用[AzVMDiskEncryptionExtension cmdlet](/powershell/module/az.compute/set-azvmdiskencryptionextension)通过指定-skipVmBackup 参数来加密托管磁盘。 有关如何备份和还原已加密 Vm 的详细信息，请参阅[备份和还原加密的 AZURE VM](../../backup/backup-azure-vms-encryption.md)。 
 >
 > - 加密或禁用加密可能会导致 VM 重新启动。
-
 
 ## <a name="install-tools-and-connect-to-azure"></a>安装工具并连接到 Azure
 
@@ -139,11 +136,11 @@ Azure 磁盘加密使用 BitLocker 外部密钥保护程序为 Azure 虚拟机�
 | vmName | 运行加密操作的 VM 的名称。 |
 | KeyVaultName | BitLocker 密钥应上传到的 Key Vault 的名称。 可使用 cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` 或 Azure CLI 命令 `az keyvault list --resource-group "MyKeyVaultResourceGroup"` 获取该名称|
 | keyVaultResourceGroup | 包含密钥保管库的资源组的名称|
-|  keyEncryptionKeyURL | 密钥加密密钥的 URL，格式为 https://&lt;keyvault-name&gt;.vault.azure.net/key/&lt;key @ no__t。 如果不想使用 KEK，请将此字段留空。 |
+|  keyEncryptionKeyURL | 密钥加密密钥的 URL，格式为 https://&lt;keyvault&gt;vault.azure.net/key/&lt;名称&gt;。 如果不想使用 KEK，请将此字段留空。 |
 | volumeType | 要对其执行加密操作的卷的类型。 有效值为“OS”、“Data”和“All”。 
 | forceUpdateTag | 每次操作需要强制运行时，传入一个像 GUID 这样的唯一值。 |
 | resizeOSDisk | 在拆分系统卷之前，是否应调整 OS 分区大小以占用整个 OS VHD。 |
-| location | 所有资源的位置。 |
+| 位置 | 所有资源的位置。 |
 
 
 ## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a>通过客户加密的 VHD 和加密密钥创建的新 IaaS Vm
@@ -224,7 +221,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 ## <a name="disable-encryption"></a>禁用加密功能
 可以使用 Azure PowerShell、Azure CLI 或资源管理器模板禁用加密。 在操作系统和数据磁盘都已加密时禁用 Windows VM 上的数据磁盘加密不能按预期方式工作。 请改为在所有磁盘上禁用加密。
 
-- **使用 Azure PowerShell 禁用磁盘加密：** 若要禁用加密，请使用[AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) cmdlet。 
+- **通过 Azure PowerShell 禁用磁盘加密：** 若要禁用加密，请使用[AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) cmdlet。 
      ```azurepowershell-interactive
      Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM' -VolumeType "all"
      ```
@@ -241,10 +238,11 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 
 ## <a name="unsupported-scenarios"></a>不支持的方案
 
-Azure 磁盘加密不支持以下方案、功能和技术：
+Azure 磁盘加密不适用于以下方案、功能和技术：
 
-- 加密通过经典 VM 创建方法创建的基本层 VM。
-- 加密使用基于软件的 RAID 系统配置的 Windows VM。
+- 对基本层 VM 或通过经典 VM 创建方法创建的 Vm 进行加密。
+- 加密配置了基于软件的 RAID 系统的 Vm。
+- 对配置了存储空间直通（S2D）或 Windows Server 版本的虚拟机进行加密，并将2016配置为具有 Windows 存储空间。
 - 与本地密钥管理系统集成。
 - Azure 文件（共享文件系统）。
 - 网络文件系统 (NFS)。

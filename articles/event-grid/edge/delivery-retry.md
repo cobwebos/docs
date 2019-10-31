@@ -5,20 +5,20 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 0a678023b1097c4bdec70d866632da6ae4ad57bb
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 324c0e9b8dcaafacaac52b622ce9c533d82c7ff1
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992387"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100714"
 ---
 # <a name="delivery-and-retry"></a>传递和重试
 
-事件网格提供持久传送。 对于每个匹配的订阅，它会尝试至少为每个消息传递一次。 如果订阅服务器的终结点没有确认收到事件或发生故障，事件网格会根据固定**重试计划**和**重试策略**重试传递。  当前，事件网格模块会将事件一次传递到订阅服务器。 但负载为具有单个事件的数组。
+事件网格提供持久传送。 对于每个匹配的订阅，它会尝试至少为每个消息传递一次。 如果订阅服务器的终结点没有确认收到事件或发生故障，事件网格会根据固定**重试计划**和**重试策略**重试传递。  默认情况下，事件网格模块一次传递一个事件到订阅服务器。 但负载为具有单个事件的数组。 可以通过启用输出批处理功能，使模块一次传递多个事件。 有关此功能的详细信息，请参阅[输出批处理](delivery-output-batching.md)。  
 
 > [!IMPORTANT]
 >对于事件数据不存在持久性支持。 这意味着重新部署或重新启动事件网格模块将导致丢失尚未传递的任何事件。

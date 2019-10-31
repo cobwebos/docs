@@ -2,18 +2,18 @@
 title: 在 Azure HDInsight 中将 Apache Ambari Hive 视图与 Apache Hadoop 配合使用
 description: 了解如何在 Web 浏览器中使用 Hive 视图提交 Hive 查询。 Hive 视图是基于 Linux 的 HDInsight 群集随附提供的 Ambari Web UI 的一部分。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/21/2019
-ms.author: hrasheed
-ms.openlocfilehash: 5063be247b2ad51dc8888f8512f523ccf2b0174c
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.date: 10/24/2019
+ms.openlocfilehash: 6c199a0dd75b89d9c9368e799c97a28b73758d06
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044813"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73097102"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>将 Apache Ambari Hive 视图与 HDInsight 中的 Apache Hadoop 配合使用
 
@@ -30,9 +30,9 @@ ms.locfileid: "73044813"
 
 1. 在[Azure 门户](https://portal.azure.com/)中，选择群集。  有关说明，请参阅[列出和显示群集](../hdinsight-administer-use-portal-linux.md#showClusters)。 将在新的门户边栏选项卡中打开群集。
 
-2. 从**群集仪表板**中，选择 " **Ambari 视图**"。 当提示进行身份验证时，请使用在创建群集时所提供的群集登录名（默认为 `admin`）帐户名称和密码。
+1. 从**群集仪表板**中，选择 " **Ambari 视图**"。 当提示进行身份验证时，请使用在创建群集时所提供的群集登录名（默认为 `admin`）帐户名称和密码。 或者，在浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.net/#/main/views`，其中 `CLUSTERNAME` 是群集的名称。
 
-3. 在视图列表中，选择“Hive 视图”。
+1. 在视图列表中，选择“Hive 视图”。
 
     ![Apache Ambari 选择 Apache Hive 视图](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
@@ -40,7 +40,7 @@ ms.locfileid: "73044813"
 
     ![Hive 视图查询工作表图像](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
 
-4. 将以下 HiveQL 语句从“查询”选项卡粘贴到工作表中：
+1. 将以下 HiveQL 语句从“查询”选项卡粘贴到工作表中：
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -54,8 +54,8 @@ ms.locfileid: "73044813"
         t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION '/example/data/';
-    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs 
-        WHERE t4 = '[ERROR]' 
+    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs
+        WHERE t4 = '[ERROR]'
         GROUP BY t4;
     ```
 
@@ -75,9 +75,9 @@ ms.locfileid: "73044813"
    > [!IMPORTANT]  
    > 将“数据库”选择保留为“默认”。 本文档中的示例使用 HDInsight 附带的默认数据库。
 
-5. 若要启动查询，请选择工作表下方的 "**执行**"。 按钮变为橙色，文本更改为“停止”。
+1. 若要启动查询，请选择工作表下方的 "**执行**"。 按钮变为橙色，文本更改为“停止”。
 
-6. 完成查询后，“结果”选项卡显示操作结果。 以下文本是查询结果：
+1. 完成查询后，“结果”选项卡显示操作结果。 以下文本是查询结果：
 
         loglevel       count
         [ERROR]        3
@@ -133,7 +133,7 @@ ms.locfileid: "73044813"
 
 将 UDF 添加到 Hive 视图后，“插入 UDF”按钮将显示在“查询编辑器”底部。 选择此项会显示 Hive 视图中定义的 UDF 的下拉列表。 选择 UDF 会将 HiveQL 语句添加到查询以启用 UDF。
 
-例如，如果已将 UDF 定义为具有以下属性：
+例如，如果您定义了具有以下属性的 UDF：
 
 * 资源名称：myudfs
 

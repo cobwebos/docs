@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: d73f64463d3e56d7bd2e59fcb719c6320cbc6321
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 502a495bad4115daf9f0f4ffed276a307adf1fc4
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992348"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100650"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>教程：向事件网格云转发事件
 
@@ -102,7 +102,7 @@ ms.locfileid: "72992348"
    ```
 
    >[!NOTE]
-   > **EndpointUrl**指定云中的事件网格主题 URL。 **SasKey**是指事件网格云主题的键。 **TopicName**中的值将用于将所有传出事件标记到事件网格。 在发布到事件网格域主题时，这可能很有用。 有关事件网格域主题的详细信息，请参阅 [事件类]] （。/event-domains.md）
+   > **EndpointUrl**指定云中的事件网格主题 URL。 **SasKey**是指事件网格云主题的键。 **TopicName**中的值将用于将所有传出事件标记到事件网格。 在发布到事件网格域主题时，这可能很有用。 有关事件网格域主题的详细信息，请参阅[事件域](../event-domains.md)
 
     例如，
   
@@ -198,5 +198,6 @@ ms.locfileid: "72992348"
 
 在本教程中，已在边缘上发布事件，并将其转发到 Azure 云中的事件网格。 现在，你已经了解了要前进到云中的事件网格的基本步骤：
 
+* 若要解决在 IoT Edge 上使用 Azure 事件网格时遇到的问题，请参阅[故障排除指南](troubleshoot.md)。
 * 遵循本[教程](forward-events-iothub.md)将事件转发到 IoTHub
 * 遵循本[教程](pub-sub-events-webhook-cloud.md)将事件转发到云中的 Webhook

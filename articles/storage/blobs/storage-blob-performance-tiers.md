@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: ac483a338b7d71142b89b13e41fc048346ac037f
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: e0d746f1b01784bc383c12543936f06dae66ca09
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802651"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063256"
 ---
 # <a name="azure-block-blob-storage-performance-tiers"></a>Azure 块 Blob 存储性能层
 
@@ -28,7 +28,7 @@ Azure 块 blob 存储提供两个不同的性能层：
 
 - 标准性能适用于所有[Azure 区域](https://azure.microsoft.com/global-infrastructure/services/?products=storage)。 高级性能在[选择区域](https://azure.microsoft.com/global-infrastructure/services/?products=storage)中可用。
 - 高级性能为具有高事务速率的应用程序提供了优化定价，有助于降低这些工作负荷的[总存储成本](https://azure.microsoft.com/blog/reducing-overall-storage-costs-with-azure-premium-blob-storage/)。
-- 高级性能需要使用支持块 blob 和追加 blob 的块 blob 存储帐户。
+- 若要获取块 blob 的高级性能，必须使用 BlockBlobStorage 帐户类型。
 - 标准性能适用于常规用途 v1、常规用途 v2 和 Blob 存储帐户。
 - 高级和标准性能都支持[高吞吐量块 blob](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/)。 高吞吐量块 blob 适用于 256 KiB 以上的高级性能。 高吞吐量块 blob 可用于超过 4 MiB Put 块或 Put Blob 大小的标准性能。
 - 高级性能目前仅适用于本地冗余存储（LRS）。
@@ -56,11 +56,11 @@ Blob 存储生命周期管理提供了基于规则的丰富策略：
 
 ## <a name="next-steps"></a>后续步骤
 
-评估 GPv2 和 Blob 存储帐户中的热层、冷层与存档层
+评估 GPv2 和 Blob 存储帐户的热、冷和存档
 
 - [按区域查看热层、冷层和存档层](https://azure.microsoft.com/regions/#services)
 - [管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)
-- [了解如何从存档层解冻 Blob 数据](storage-blob-rehydration.md)
+- [了解存档层中的解除冻结 blob 数据](storage-blob-rehydration.md)
 - [通过启用 Azure 存储度量值来评估当前存储帐户的使用情况](../common/storage-enable-and-view-metrics.md)
 - [按区域查看 Blob 存储帐户和 GPv2 帐户中的热层、冷层和存档层定价](https://azure.microsoft.com/pricing/details/storage/)
 - [检查数据传输定价](https://azure.microsoft.com/pricing/details/data-transfers/)

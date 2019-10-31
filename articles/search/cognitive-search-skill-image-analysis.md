@@ -1,28 +1,29 @@
 ---
-title: 图像分析认知技能
-titleSuffix: Azure Cognitive Search
-description: 使用 Azure 认知搜索中 AI 扩充管道中的图像分析认知技能，通过图像分析提取语义文本。
+title: 图像分析认知搜索技能 - Azure 搜索
+description: 在 Azure 搜索扩充管道中使用 ImageAnalysis 认知技能通过图像分析来提取语义文本。
+services: search
 manager: nitinme
 author: luiscabrer
-ms.author: luisca
-ms.service: cognitive-search
+ms.service: search
+ms.workload: search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 04114d00f3905675a1794a3875e650661febc832
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 08/28/2019
+ms.author: luisca
+ms.openlocfilehash: e2c8f0519ffcbdbc2445d1fed2725b6f6b948cd1
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791989"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064075"
 ---
-# <a name="image-analysis-cognitive-skill"></a>图像分析认知技能
+#   <a name="image-analysis-cognitive-skill"></a>图像分析认知技能
 
 图像分析技能根据图像内容提取一组丰富的可视特征。 例如，可从图像生成标题栏、生成标记或识别名人和地标。 此技能使用认知服务中的[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)提供的机器学习模型。 
 
 > [!NOTE]
-> 可在 Azure 认知搜索中免费执行小容量（20个事务下），但较大的工作负荷需要[附加可计费认知服务资源](cognitive-search-attach-cognitive-services.md)。 在认知服务中调用 Api 时，将会产生费用，并将其作为 Azure 认知搜索中文档解密阶段的一部分进行图像提取。 提取文档中的文本不会产生费用。
+> 小型卷（20个事务下）可在 Azure 搜索中免费执行，但较大的工作负荷需要[附加可计费认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API，以及在 Azure 搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
 >
-> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 [Azure 认知搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)上介绍了图像提取定价。
+> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)所述。
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -321,8 +322,8 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 ```json
     "outputFieldMappings": [
         {
-            "sourceFieldName": /document/normalized_images/*/categories/details/landmarks/*",
-            "targetFieldName": "landmarks"
+            "sourceFieldName": "/document/normalized_images/*/categories/detail/celebrities/*",
+            "targetFieldName": "celebrities"
         }
 ```
 ##  <a name="sample-input"></a>示例输入
@@ -520,6 +521,6 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 ## <a name="see-also"></a>另请参阅
 
-+ [内置技能](cognitive-search-predefined-skills.md)
++ [预定义技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [创建索引器 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

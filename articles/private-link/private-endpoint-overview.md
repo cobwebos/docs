@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 7f0d846a83312e28c305100e7c8dc74cc8140d7d
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
-ms.translationtype: MT
+ms.openlocfilehash: 32814b7478fac9530cc74fba605a096881229102
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73023848"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101333"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -81,7 +81,7 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
 > 只有处于已批准状态的专用终结点才能将流量发送到给定的专用链接资源。 
 
 ### <a name="connecting-using-alias"></a>使用别名进行连接
-别名是一个唯一的名字对象，当服务所有者在标准负载均衡器后创建专用链接服务时，将生成该名字对象。 服务所有者可与用户脱机共享此别名。 使用者可以使用资源 URI 或别名请求连接到专用链接服务。 如果要使用别名进行连接，则必须使用手动连接批准方法创建专用终结点。 对于使用手动连接批准方法，请在专用终结点创建流期间将手动请求参数设置为 true。 有关详细信息，请查看[AzPrivateEndpoint](https://docs.microsoft.com/en-us/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0)和[az 网络专用终结点创建](https://docs.microsoft.com/en-us/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create)。 
+别名是一个唯一的名字对象，当服务所有者在标准负载均衡器后创建专用链接服务时，将生成该名字对象。 服务所有者可与用户脱机共享此别名。 使用者可以使用资源 URI 或别名请求连接到专用链接服务。 如果要使用别名进行连接，则必须使用手动连接批准方法创建专用终结点。 对于使用手动连接批准方法，请在专用终结点创建流期间将手动请求参数设置为 true。 有关详细信息，请查看[AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0)和[az 网络专用终结点创建](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create)。 
 
 ## <a name="dns-configuration"></a>DNS 配置 
 使用完全限定的域名（FQDN）连接到使用完全限定的域名（FQDN）作为连接字符串的一部分时，务必正确配置 DNS 设置以解析为分配的专用 IP 地址。 现有 Azure 服务可能已具有在通过公共终结点进行连接时要使用的 DNS 配置。 这需要重写以使用专用终结点进行连接。 
@@ -91,7 +91,7 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
 你可以使用以下选项为专用终结点配置 DNS 设置： 
 - **使用主机文件（仅建议用于测试）** 。 你可以使用虚拟机上的主机文件来替代 DNS。  
 - **使用专用 DNS 区域**。 可以使用专用 DNS 区域替代给定专用终结点的 DNS 解析。 专用 DNS 区域可以链接到你的虚拟网络，以解析特定域。
-- **使用自定义 DNS 服务器**。 你可以使用自己的 DNS 服务器替代给定专用链接资源的 DNS 解析。 如果你的[dns 服务器](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)托管在虚拟网络上，则可以创建 DNS 转发规则以使用专用 DNS 区域来简化所有专用链接资源的配置。
+- **使用自定义 DNS 服务器**。 你可以使用自己的 DNS 服务器替代给定专用链接资源的 DNS 解析。 如果你的[dns 服务器](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)托管在虚拟网络上，则可以创建 DNS 转发规则以使用专用 DNS 区域来简化所有专用链接资源的配置。
  
 > [!IMPORTANT]
 > 不建议重写主动用于解析公共终结点的区域。 如果没有 DNS 转发到公共 DNS，与资源的连接将无法正确解析。 若要避免出现问题，请创建一个不同的域名或遵循下面每个服务的建议名称。 

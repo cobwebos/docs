@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d227a0b43a641ae8f5333a62d4c55f4bbb6c781c
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 610e0088fe97bdda1dce7f7391530c5128428b29
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529028"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73096959"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -102,6 +102,8 @@ IoT Edge 集线器和代理模块使用本地存储来维护状态，并在模�
 #### <a name="dont-optimize-for-performance-on-constrained-devices"></a>在受限的设备上不要进行性能优化
 
 默认情况下，IoT Edge 中心已针对性能进行了优化，因此它会尝试分配大块内存。 在 Raspberry Pi 等小型设备上，此配置可能会影响稳定性。 如果要部署具有受约束资源的设备，则可能需要在 IoT Edge 中心将**OptimizeForPerformance**环境变量设置为**false** 。 
+
+如果将**OptimizeForPerformance**设置为**TRUE**，则 MQTT 协议头将使用具有更好的性能的 PooledByteBufferAllocator，但会分配更多的内存。 分配器在32位操作系统或内存不足的设备上不能正常工作。 此外，如果针对性能进行了优化，RocksDb 会为其角色分配更多的内存作为本地存储提供程序。 
 
 有关详细信息，请参阅[资源受限设备的稳定性问题](troubleshoot.md#stability-issues-on-resource-constrained-devices)。
 

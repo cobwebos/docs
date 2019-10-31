@@ -1,7 +1,7 @@
 ---
 title: 更改存储帐户访问密钥
 titleSuffix: Azure Machine Learning
-description: 了解如何更改工作区使用的 Azure 存储帐户的访问密钥。 Azure 机器学习使用 Azure 存储帐户存储数据和模型。 重新生成存储帐户的访问密钥时，必须更新 Azure 机器学习，才能使用新密钥。
+description: 了解如何更改工作区使用的 Azure 存储帐户的访问密钥。 Azure 机器学习使用 Azure 存储帐户存储数据和模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/16/2019
-ms.openlocfilehash: 6c87d4553c7b0fd34513d761558a06cd527c4e3b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 77cafceee35f00a81b2e07b59f0f4a13146fd906
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034957"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063325"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新生成存储帐户访问密钥
 
@@ -23,7 +23,7 @@ ms.locfileid: "71034957"
 
 出于安全考虑，可能需要更改 Azure 存储帐户的访问密钥。 重新生成访问密钥时，必须将 Azure 机器学习更新为使用新密钥。 Azure 机器学习可以将存储帐户同时用于模型存储和数据存储。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区一](how-to-manage-workspace.md)文。
 
@@ -65,7 +65,7 @@ for name, ds in datastores.items():
 此代码查找使用 Azure 存储的任何已注册数据存储，并列出以下信息：
 
 * 数据存储名称：在其下注册存储帐户的数据存储的名称。
-* 存储帐户名称：Azure 存储帐户的名称。
+* 存储帐户名称： Azure 存储帐户的名称。
 * 容器：此注册使用的存储帐户中的容器。
 
 它还指明了数据存储是用于 Azure Blob 还是 Azure 文件共享，因为有不同的方法可用于重新注册每种类型的数据存储。
@@ -89,7 +89,7 @@ for name, ds in datastores.items():
         az login
         ```
 
-    1. 若要将工作区更新为使用新密钥，请使用以下命令。 将`myworkspace`替换为 Azure 机器学习工作区名称，将`myresourcegroup`替换为包含工作区的 Azure 资源组的名称。
+    1. 若要将工作区更新为使用新密钥，请使用以下命令。 将 `myworkspace` 替换为 Azure 机器学习工作区名称，并将 `myresourcegroup` 替换为包含工作区的 Azure 资源组的名称。
 
         ```azurecli-interactive
         az ml workspace sync-keys -w myworkspace -g myresourcegroup
@@ -119,7 +119,7 @@ for name, ds in datastores.items():
     
     ```
 
-    由于`overwrite=True`指定了，此代码将覆盖现有注册，并对其进行更新以使用新密钥。
+    由于指定了 `overwrite=True`，因此此代码将覆盖现有注册，并对其进行更新以使用新密钥。
 
 ## <a name="next-steps"></a>后续步骤
 

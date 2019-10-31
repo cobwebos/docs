@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 10/22/2019
+ms.date: 10/28/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 31e19034f6a2c6f5ab52cbc34d8b3f6e0a1051bc
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: dff222788480eea882614ad29478df1dce359199
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803584"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101291"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure 资源的内置角色
 
@@ -114,6 +114,7 @@ ms.locfileid: "72803584"
 | [托管应用程序读者](#managed-applications-reader) | 允许读取托管应用中的资源和请求 JIT 访问。 |
 | [托管的标识参与者](#managed-identity-contributor) | 创建、读取、更新和删除用户分配的标识 |
 | [托管的标识操作员](#managed-identity-operator) | 读取和分配用户分配的标识 |
+| [托管服务注册分配删除角色](#managed-services-registration-assignment-delete-role) | 托管服务注册分配删除角色允许管理租户用户删除分配给其租户的注册分配。 |
 | [管理组参与者](#management-group-contributor) | 管理组参与者角色 |
 | [管理组读取者](#management-group-reader) | 管理组读取者角色 |
 | [监视参与者](#monitoring-contributor) | 可以读取所有监视数据和编辑监视设置。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)。 |
@@ -1963,6 +1964,23 @@ ms.locfileid: "72803584"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
 > | Microsoft.Support/* | 创建和管理支持票证 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+## <a name="managed-services-registration-assignment-delete-role"></a>托管服务注册分配删除角色
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 托管服务注册分配删除角色允许管理租户用户删除分配给其租户的注册分配。 |
+> | **Id** | 91c1777a-f3dc-4fae-b103-61d183457e46 |
+> | **操作** |  |
+> | ManagedServices/registrationAssignments/read | 检索托管服务注册分配的列表。 |
+> | ManagedServices/registrationAssignments/delete | 删除托管服务注册分配。 |
+> | ManagedServices/operationStatuses/read | 读取资源的操作状态。 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: a77cdcf332d450b2d3d9219ebfbaed2f799e7e6d
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 81c2c2af78f5f066e1b27e14fa774df04d7c5868
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991178"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063987"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据建模
 
@@ -34,7 +34,7 @@ ms.locfileid: "72991178"
 1. 选择“+ 添加”。
 1. 输入与类型相关的所有详细信息，然后选择 "**创建**"。 此操作在环境中创建类型。
 
-    [用于添加类型![选择](media/v2-update-how-to-tsm/portal-two.png)](media/v2-update-how-to-tsm/portal-two.png#lightbox)
+    [用于添加类型 ![选择](media/v2-update-how-to-tsm/portal-two.png)](media/v2-update-how-to-tsm/portal-two.png#lightbox)
 
 ### <a name="bulk-upload-one-or-more-types"></a>批量上传一个或多个类型
 
@@ -42,14 +42,14 @@ ms.locfileid: "72991178"
 1. 选择包含类型有效负载的文件。
 1. 选择“上传”。
 
-    [选择一种或多种类型的批量上传![](media/v2-update-how-to-tsm/portal-three.png)](media/v2-update-how-to-tsm/portal-three.png#lightbox)
+    [选择一种或多种类型的批量上传 ![](media/v2-update-how-to-tsm/portal-three.png)](media/v2-update-how-to-tsm/portal-three.png#lightbox)
 
 ### <a name="edit-a-single-type"></a>编辑单个类型
 
 1. 选择类型，然后选择“编辑”。 
 1. 进行所需的更改，然后选择“保存”。
 
-    [用于编辑类型![选择](media/v2-update-how-to-tsm/portal-four.png)](media/v2-update-how-to-tsm/portal-four.png#lightbox)
+    [用于编辑类型 ![选择](media/v2-update-how-to-tsm/portal-four.png)](media/v2-update-how-to-tsm/portal-four.png#lightbox)
 
 ### <a name="delete-a-type"></a>删除类型
 
@@ -84,14 +84,14 @@ ms.locfileid: "72991178"
 1. 选择包含层次结构有效负载的文件。
 1. 选择“上传”。
 
-    [用于批量上传层次结构的![选择](media/v2-update-how-to-tsm/portal-ten.png)](media/v2-update-how-to-tsm/portal-ten.png#lightbox)
+    [用于批量上传层次结构的 ![选择](media/v2-update-how-to-tsm/portal-ten.png)](media/v2-update-how-to-tsm/portal-ten.png#lightbox)
 
 ### <a name="edit-a-single-hierarchy"></a>编辑单个层次结构
 
 1. 选择层次结构，然后选择“编辑”。
 1. 进行所需的更改，然后选择“保存”。
 
-    [用于编辑单个层次结构![选择](media/v2-update-how-to-tsm/portal-eleven.png)](media/v2-update-how-to-tsm/portal-eleven.png#lightbox)
+    [用于编辑单个层次结构 ![选择](media/v2-update-how-to-tsm/portal-eleven.png)](media/v2-update-how-to-tsm/portal-eleven.png#lightbox)
 
 ### <a name="delete-a-hierarchy"></a>删除层次结构
 
@@ -119,7 +119,7 @@ ms.locfileid: "72991178"
 1. 选择“上传 JSON”。
 1. 选择包含实例有效负载的文件。
 
-    [用于批量上传一个或多个实例的![选择](media/v2-update-how-to-tsm/portal-fifteen.png)](media/v2-update-how-to-tsm/portal-fifteen.png#lightbox)
+    [用于批量上传一个或多个实例的 ![选择](media/v2-update-how-to-tsm/portal-fifteen.png)](media/v2-update-how-to-tsm/portal-fifteen.png#lightbox)
 
 1. 选择“上传”。
 
@@ -128,7 +128,7 @@ ms.locfileid: "72991178"
 1. 选择实例，然后选择“编辑”。 
 1. 进行所需的更改，然后选择“保存”。
 
-    [用于编辑单个实例![选项](media/v2-update-how-to-tsm/portal-sixteen.png)](media/v2-update-how-to-tsm/portal-sixteen.png#lightbox)
+    [用于编辑单个实例 ![选项](media/v2-update-how-to-tsm/portal-sixteen.png)](media/v2-update-how-to-tsm/portal-sixteen.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 

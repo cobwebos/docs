@@ -8,16 +8,16 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: df93405940c02affa224fba2d2e6f07ce5278b15
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 4f1b8b116cf2a8411a90946dd5801dd1e541323c
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755348"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063949"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
-在微服务的世界中，每次逻辑操作都需要在服务的不同组件中完成工作。 这些组件都可由 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 单独监视。 web-app 组件与身份验证提供程序组件通信以验证用户凭据，并与 API 组件通信以获取要可视化的数据。 API 组件可从其他服务查询数据，还可使用 cache-provider 组件来通知有关此调用的计费组件。 Application Insights 支持分布式遥测关联，可用来检测哪个组件要对故障或性能下降问题负责。
+在微服务的世界中，每次逻辑操作都需要在服务的不同组件中完成工作。 这些组件都可由 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 单独监视。 Application Insights 支持分布式遥测关联，可用来检测哪个组件要对故障或性能下降问题负责。
 
 本文介绍了 Application Insights 用于关联由多个组件发送的遥测的数据模型。 其中阐述了 context-propagation 技术和协议， 以及如何在不同的语言和平台上实现相关的概念。
 
@@ -104,7 +104,7 @@ W3C 跟踪上下文支持是以向后兼容的方式完成的，相关内容应�
 ### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>启用对 ASP.NET Core 应用的 W3C 分布式跟踪支持
 
  > [!NOTE]
-  > @No__t_0 版本2.8.0 开始时，无需进行任何配置。
+  > `Microsoft.ApplicationInsights.AspNetCore` 版本2.8.0 开始时，无需进行任何配置。
  
 W3C 跟踪上下文支持是以向后兼容的方式完成的，相关内容应与使用早期版本的 SDK （不支持 W3C）检测到的应用程序配合使用。 
 
@@ -221,7 +221,7 @@ OpenCensus Python 遵循上述 `OpenTracing` 数据模型规范。 它还支持[
 
 ### <a name="incoming-request-correlation"></a>传入请求相关
 
-OpenCensus Python 将 W3C 跟踪上下文标头从传入请求关联到从请求自身生成的范围。 OpenCensus 会自动执行此操作，并将集成用于常见的 web 应用程序框架，例如 `flask`、`django` 和 `pyramid`。 W3C 跟踪上下文标题只需用[正确的格式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)填充，并随请求一起发送。 下面是演示此的 `flask` 应用程序示例。
+OpenCensus Python 将 W3C 跟踪上下文标头从传入请求关联到从请求自身生成的范围。 OpenCensus 将通过以下常见的 web 应用程序框架集成来自动执行此操作： `flask`、`django` 和 `pyramid`。 W3C 跟踪上下文标题只需用[正确的格式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)填充，并随请求一起发送。 下面是演示此的 `flask` 应用程序示例。
 
 ```python
 from flask import Flask
@@ -253,13 +253,13 @@ curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7
  `parent-id/span-id`： `00f067aa0ba902b7` 
  0： 1
 
-如果我们看一下发送到 Azure Monitor 的请求条目，则可以看到使用跟踪标头信息填充的字段。
+如果我们看一下发送到 Azure Monitor 的请求条目，则可以看到使用跟踪标头信息填充的字段。 你可以在 "日志（Analytics）" 下的 "Azure Monitor Application Insights 资源" 中找到此数据。
 
 ![日志（分析）中的请求遥测的屏幕截图，跟踪标头字段以红色框突出显示](./media/opencensus-python/0011-correlation.png)
 
-@No__t_0 字段采用 `<trace-id>.<span-id>` 格式，其中 `trace-id` 是从请求传入的跟踪标头获取的，而 `span-id` 是此范围生成的8字节数组。 
+`id` 字段采用 `<trace-id>.<span-id>`格式，其中 `trace-id` 是从请求传入的跟踪标头获取的，而 `span-id` 是此范围生成的8字节数组。 
 
-@No__t_0 字段采用 `<trace-id>.<parent-id>` 格式，`trace-id` 和 `parent-id` 都取自请求中传递的跟踪标头。
+`operation_ParentId` 字段采用 `<trace-id>.<parent-id>`格式，`trace-id` 和 `parent-id` 都取自请求中传递的跟踪标头。
 
 ### <a name="logs-correlation"></a>日志关联
 
@@ -290,6 +290,8 @@ logger.warning('After the span')
 2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
 ```
 观察在该跨度内的日志消息中是否存在 spanId，该日志消息与名为 `hello` 的范围相同。
+
+您可以使用 `AzureLogHandler`导出日志数据。 可在[此处](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs)找到更多信息
 
 ## <a name="telemetry-correlation-in-net"></a>.NET 中的遥测关联
 

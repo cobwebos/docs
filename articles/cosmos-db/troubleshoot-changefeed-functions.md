@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 2e5eaed40c954df5e7c731bb3fbd5d9424ea9b97
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
-ms.translationtype: HT
+ms.openlocfilehash: e3ff86770ec0337c9a4a11b30c6d88e8365bfa24
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053285"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064104"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>诊断并解决使用 Cosmos DB 的 Azure Functions 触发器时的问题
 
@@ -105,6 +105,7 @@ Azure 函数失败，并出现错误消息 "源集合" 集合名称 "（在数�
 若要解决此问题，请删除已添加的手动 NuGet 引用，并让 Azure Cosmos DB SDK 引用通过 Azure Functions Cosmos DB 扩展包进行解析。
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>更改检测更改的 Azure 函数轮询间隔
+
 如前文所述，[若要接收到更改的时间太长](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)，Azure 函数将在检查新更改之前睡眠（默认情况下为5秒）。 可以通过触发器[配置](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)中的 `FeedPollDelay/feedPollDelay` 设置来配置此休眠时间（该值预期以毫秒为单位）。
 
 ## <a name="next-steps"></a>后续步骤

@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: b8d4c2691af8429e7b3a6c1916d12f1af609e744
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2d9549c88ace63997ff6d17568b6ba5131e8a15f
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391559"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73083722"
 ---
 下表列出了与不同服务层 S1、S2、S3 和 F1 关联的限制。 有关每个层中每个*单位*的成本的信息，请参阅[Azure IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
@@ -27,7 +27,7 @@ ms.locfileid: "72391559"
 
 | 资源 | Limit |
 | --- | --- |
-| 每个 Azure 订阅的付费 IoT 中心数上限 |50 |
+| 每个 Azure 订阅的付费 IoT 中心数上限 |100 |
 | 每个 Azure 订阅的免费 IoT 中心数上限 |第 |
 | 设备 ID 中的最大字符数 | 128 |
 | 设备标识的最大数目<br/> 在单个调用中返回 |1,000 |
@@ -53,7 +53,7 @@ ms.locfileid: "72391559"
 | 最大设备流数据传输 | 300 MB/天（仅适用于 S1、S2、S3 和 F1） |
 
 > [!NOTE]
-> 如果 Azure 订阅中需要50个以上的付费 IoT 中心，请联系 Microsoft 支持部门。
+> 如果 Azure 订阅中需要100个以上的付费 IoT 中心，请联系 Microsoft 支持部门。
 
 > [!NOTE]
 > 目前，可注册到单个 IoT 中心的设备和模块的总数限制为1000000。 如果想要增加此限制，请联系 [Microsoft 支持](https://azure.microsoft.com/support/options/)。

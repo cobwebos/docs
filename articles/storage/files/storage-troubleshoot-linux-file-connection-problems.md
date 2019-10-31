@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: cc0539462fad0a73d5fc7eb75d2078e513df4e5d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 12976e2b2dd37b640efe1823fc8d2ca7048ebcdb
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72926539"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73097362"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>在 Linux 中排查 Azure 文件问题
 
@@ -126,7 +126,7 @@ ms.locfileid: "72926539"
 
 ### <a name="solution"></a>解决方案
 
-4\.11 内核中引入了适用于 Linux 的 SMB 3.0 加密功能。 使用此功能可从本地或不同 Azure 区域装载 Azure 文件共享。 [具有相应装载功能的最低建议版本（SMB 版本 2.1 与 SMB 版本 3.0）](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30)中列出的 Linux 分发包含此功能。 其他分发要求内核 4.11 及更高版本。
+4\.11 内核中引入了适用于 Linux 的 SMB 3.0 加密功能。 使用此功能可从本地或不同 Azure 区域装载 Azure 文件共享。 某些 Linux 分发版可能会将4.11 内核中的向后移植更改为它们维护的旧版本 Linux 内核。 若要帮助确定你的 Linux 版本是否支持使用加密的 SMB 3.0，请参阅[将 Azure 文件与 Linux 配合使用](storage-how-to-use-files-linux.md)。 
 
 如果 Linux SMB 客户端不支持加密，请使用 SMB 2.1 从文件共享所在的同一数据中心上的 Azure Linux VM 装载 Azure 文件。 验证是否已在存储帐户中禁用[需要安全传输]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)设置。 
 
@@ -281,7 +281,7 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 - [CIFS：修复重新连接期间潜在的内存损坏](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
 - [CIFS：修复重新连接期间潜在的互斥双锁（适用于内核 v4.9 及更高版本）](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
-但是，这些更改可能尚未移植到所有的 Linux 发行版。 此修补程序和其他重新连接修补程序可在[将 Azure 文件用于 Linux](storage-how-to-use-files-linux.md) 一文的[具有相应装载功能的最低建议版本（SMB 版本 2.1 与 SMB 版本 3.0）](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30)部分中找到。 可以通过升级到这些建议的内核版本之一来获取此修复程序。
+但是，这些更改可能尚未移植到所有的 Linux 发行版。 如果你使用的是常用的 Linux 分发版，则可以查看将[Azure 文件与 Linux 配合使用](storage-how-to-use-files-linux.md)，了解你的分发版有必要的内核更改。
 
 ### <a name="workaround"></a>解决方法
 

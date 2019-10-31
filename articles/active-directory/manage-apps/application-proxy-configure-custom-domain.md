@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aa42c63809472e1681a820031e48fe4f86fb584
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 189b8666adde0eedcb451655657a4a82dc5e4fec
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756495"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062519"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD 应用程序代理配置自定义域
 
@@ -77,38 +77,40 @@ ms.locfileid: "72756495"
 
 使用自定义域通过应用程序代理发布应用程序：
 
-1. 对于新应用，在 Azure Active Directory 中，在左侧导航栏中选择 "**企业应用程序**"，选择 "**新建应用程序**"，然后选择 **"本地应用程序**"。 
+1. 对于新应用，在 Azure Active Directory 中，在左侧导航栏中选择 "**企业应用程序**"。 选择“新建应用程序”。 在 "**本地应用程序**" 部分中，选择 "**添加本地应用程序**"。 
    
    对于已在**企业应用程序**中的应用，请从列表中选择它，然后在左侧导航栏中选择 "**应用程序代理**"。 
 
-1. 在 "**应用程序代理**" 页上的 "**内部 url** " 字段中，输入应用程序的内部 url。 
+2. 如果要添加自己的本地应用程序，请在 "应用程序代理设置" 页上输入**名称**。
+
+3.  在 "**内部 url** " 字段中，输入应用的内部 url。
    
-1. 在 "**外部 Url** " 字段中，下拉列表并选择要使用的自定义域。
+4. 在 "**外部 Url** " 字段中，下拉列表并选择要使用的自定义域。
    
-1. 选择“保存”。
+5. 选择 **添加** 。
    
    ![选择自定义域](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
-1. 如果域已有证书，"**证书**" 字段将显示证书信息。 否则，请选择 "**证书**" 字段。 
+6. 如果域已有证书，"**证书**" 字段将显示证书信息。 否则，请选择 "**证书**" 字段。 
    
    ![单击以上传证书](./media/application-proxy-configure-custom-domain/certificate.png)
    
-1. 在 " **SSL 证书**" 页上，浏览到 PFX 证书文件并将其选中。 输入证书的密码，然后选择 "**上传证书**"。 有关证书的详细信息，请参阅 "[自定义域的证书](#certificates-for-custom-domains)" 部分。
+7. 在 " **SSL 证书**" 页上，浏览到 PFX 证书文件并将其选中。 输入证书的密码，然后选择 "**上传证书**"。 有关证书的详细信息，请参阅 "[自定义域的证书](#certificates-for-custom-domains)" 部分。
    
    ![上传证书](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
    > [!TIP] 
    > 自定义域只需上载一次证书。 之后，在将自定义域用于其他应用时，将自动应用上传的证书。
    
-1. 如果添加了证书，请在 "**应用程序代理**" 页上选择 "**保存**"。 
+8. 如果添加了证书，请在 "**应用程序代理**" 页上选择 "**保存**"。 
    
-1. 在 "**应用程序代理**" 页上的信息栏中，记下需要添加到 DNS 区域的 CNAME 条目。 
+9. 在 "**应用程序代理**" 页上的信息栏中，记下需要添加到 DNS 区域的 CNAME 条目。 
    
    ![添加 CNAME DNS 条目](./media/application-proxy-configure-custom-domain/dns-info.png)
    
-1. 按照[使用 Azure 门户管理 dns 记录和记录集](../../dns/dns-operations-recordsets-portal.md)中的说明，添加将新的外部 URL 重定向到*MSAPPPROXY.NET*域的 dns 记录。
+10. 按照[使用 Azure 门户管理 dns 记录和记录集](../../dns/dns-operations-recordsets-portal.md)中的说明，添加将新的外部 URL 重定向到*MSAPPPROXY.NET*域的 dns 记录。
    
-1. 若要检查是否正确配置了 DNS 记录，请使用[nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx)命令确认外部 URL 是可访问的，并且*msapproxy.net*域显示为别名。
+11. 若要检查是否正确配置了 DNS 记录，请使用[nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx)命令确认外部 URL 是可访问的，并且*msapproxy.net*域显示为别名。
 
 现在，应用程序已设置为使用自定义域。 请确保先将用户分配到应用程序，然后再进行测试或发布。 
 

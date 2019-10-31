@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 86c0fe8b0846350f74c90dfbd229510d28ce9499
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 5fb6cab4bfeea4308873210fb5f9122b37b61dcd
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992218"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100320"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>教程：在云中发布、订阅事件
 
@@ -198,6 +198,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 
 在本教程中，您创建了事件网格主题、订阅和已发布的事件。 现在，你已了解基本步骤，请参阅以下文章：
 
+* 若要解决在 IoT Edge 上使用 Azure 事件网格时遇到的问题，请参阅[故障排除指南](troubleshoot.md)。
 * 创建/更新具有[筛选器](advanced-filtering.md)的订阅。
 * 在[linux](persist-state-linux.md)或[Windows](persist-state-windows.md)上设置事件网格模块的持久性
 * 按照[文档](configure-client-auth.md)配置客户端身份验证

@@ -9,12 +9,12 @@ ms.date: 10/24/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 59b98ebbaade95bfcc613f3ae83b20a3e0a9e15a
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 95181d0eb23d5956b2c6af52c77f85714b107345
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992127"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100161"
 ---
 # <a name="common-issues"></a>常见问题
 
@@ -27,7 +27,7 @@ ms.locfileid: "72992127"
 在 Windows 上，
 
 ```sh
-docker -H npipe:////./pipe/notedly_moby_engine container logs eventgridmodule
+docker -H npipe:////./pipe/iotedge_moby_engine container logs eventgridmodule
 ```
 
 在 Linux 上，

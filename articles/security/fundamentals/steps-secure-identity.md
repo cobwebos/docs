@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: 02a1c12957570f0e798c5abfd88562128ea1cf76
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 9ea9bea83de0a177fa37d9a186f8962bac1394a4
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053069"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101418"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>保护标识基础结构的五个步骤
 
@@ -175,21 +175,21 @@ Azure AD 标识保护提供两份应该每日监视的重要报告：
 
 用户可以被欺骗地定位到被入侵的网站或应用程序，这些应用程序将获得对其个人资料信息和用户数据（如电子邮件）的访问权限。 恶意行动者可以使用获得的许可权限来加密用户的邮箱内容，并勒索邮箱数据的赎金。 [管理员应该审查并审核](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)用户授予的权限。
 
-## <a name="step-5---enable-end-user-self-help"></a>步骤 5 - 启用最终用户自助
+## <a name="step-5---enable-end-user-self-service"></a>步骤 5-启用最终用户自助服务
 
-我们希望在安全性与工作效率之间尽量实现平衡。 在达成目标的同时兼顾长期安全基准的制定，可以消除组织中存在的冲突，让用户获得所需的能力，并让他们保持警惕。 
+我们希望在安全性与工作效率之间尽量实现平衡。 在达成目标的同时兼顾长期安全基准的制定，可以消除组织中存在的冲突，让用户获得所需的能力，并让他们保持警惕。
 
 ### <a name="implement-self-service-password-reset"></a>实施自助密码重置
 
-IT 管理员可以通过 Azure 的[自助密码重置 (SSPR)](../../active-directory/authentication/quickstart-sspr.md)，让用户方便重置或解锁其密码或帐户，而无需管理员的干预。 系统提供详细的报告，用于跟踪用户访问系统的时间，同时还提供通知，提醒用户存在误用或滥用情况。 
+Azure AD 的[自助服务密码重置（SSPR）](../../active-directory/authentication/quickstart-sspr.md)为 IT 管理员提供了一种简单的方法，使用户能够在没有技术支持或管理员干预的情况下重置或解锁其密码或帐户。 系统包括详细的报告，用于跟踪用户重置其密码的时间，以及通知您误用或滥用的通知。
 
-### <a name="implement-self-service-group-management"></a>实施自助服务组管理
+### <a name="implement-self-service-group-and-application-access"></a>实现自助服务组和应用程序访问
 
-Azure AD 提供使用安全组和 Office 365 组管理资源访问权限的功能。 这些组可由组所有者管理，而无需 IT 管理员进行管理。 此功能称为[自助服务组管理](../../active-directory/users-groups-roles/groups-self-service-management.md)，它允许没有分配管理角色的组所有者创建和管理组，而无需依靠管理员来处理其请求。
+Azure AD 使非管理员能够使用安全组、Office 365 组、应用程序角色和访问包目录管理对资源的访问。  [自助服务组管理](../../active-directory/users-groups-roles/groups-self-service-management.md)使组所有者可以管理自己的组，而无需分配管理角色。 用户还可以创建和管理 Office 365 组，而无需依靠管理员来处理其请求，且未使用的组会自动过期。  [Azure AD 的权利管理](../../active-directory/governance/entitlement-management-overview.md)，通过全面的访问请求工作流和自动过期，进一步启用委托和可见性。  你可以委派给非管理员，以便能够为其拥有的组、团队、应用程序和 SharePoint Online 站点配置自己的访问包，并为需要审批访问权限的用户提供自定义策略，包括配置员工的作为审批者的经理和企业合作伙伴主办方。
 
 ### <a name="implement-azure-ad-access-reviews"></a>实施 Azure AD 访问评审
 
-通过[Azure AD 访问评审](../../active-directory/governance/access-reviews-overview.md)，你可以管理组成员身份、访问企业应用程序和特权角色分配，以确保维护安全标准，使用户不会在较长的时间段内进行访问需要它。
+通过[Azure AD 访问评审](../../active-directory/governance/access-reviews-overview.md)，你可以管理访问包和组成员身份、访问企业应用程序和特权角色分配，以确保维护安全标准。  用户自身、资源所有者和其他审阅者进行定期监督，确保用户在不再需要访问权限时，不会长时间保留访问权限。
 
 ## <a name="summary"></a>总结
 

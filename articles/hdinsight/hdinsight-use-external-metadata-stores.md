@@ -7,15 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: a876269b2746a1065cee2639cfc5804aff0b3446
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.date: 10/29/2019
+ms.openlocfilehash: 33302f3760cc750bfc41386aaf17368abc15ba5d
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027702"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063291"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>使用外部元数据存储 - Azure HDInsight
+
+HDInsight 允许通过将关键元数据解决方案和管理数据库部署到外部数据存储来控制数据和元数据。 此功能当前可用于[Apache Hive 元存储](#custom-metastore)、 [apache Oozie 元存储](#apache-oozie-metastore)和[apache Ambari 数据库](#custom-ambari-db)。
 
 HDInsight 中的 Apache Hive 元存储是 Apache Hadoop 体系结构的必备部分。 元存储是可供其他大数据访问工具（例如 Apache Spark、交互式查询 (LLAP)、Presto 或 Apache Pig）使用的中央架构存储库。 HDInsight 使用 Azure SQL 数据库作为 Hive 元存储。
 
@@ -92,6 +94,10 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 Apache Oozie 是一个管理 Hadoop 作业的工作流协调系统。  Oozie 支持对 Apache MapReduce、Pig 和 Hive 等模型执行 Hadoop 作业。  Oozie 使用元存储来存储当前工作流及历史工作流的相关详细信息。 可使用 Azure SQL 数据库作为自定义元存储，提高使用 Oozie 时的性能。 删除群集后，还可通过云存储访问 Oozie 作业数据。
 
 若要了解如何使用 Azure SQL 数据库创建 Oozie 元存储，请参阅[使用 Apache Oozie 处理工作流](hdinsight-use-oozie-linux-mac.md)。
+
+## <a name="custom-ambari-db"></a>自定义 Ambari DB
+
+若要将自己的外部数据库用于 HDInsight 上的 Apache Ambari，请参阅[自定义 Apache Ambari 数据库](hdinsight-custom-ambari-db.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

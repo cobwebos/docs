@@ -9,12 +9,12 @@ ms.date: 10/02/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 851b5607ad5413cd1a594f788cb294ee7790e8eb
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: a074abf494e155e0dc088d0db6af7eba0b3cf3c2
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043165"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100241"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>教程：响应 IoT Edge 上的 Blob 存储事件（预览版）
 本文介绍如何在 IoT 模块上部署 Azure Blob 存储，该模块将充当事件网格发布者，以将 Blob 创建和 Blob 删除事件发送到事件网格。  
@@ -167,7 +167,10 @@ ms.locfileid: "73043165"
 5. 单击“保存”
 6. 单击 "**下一步**" 以继续转到 "路由" 部分
 
- ### <a name="setup-routes"></a>安装路由
+    > [!NOTE]
+    > 如果使用 Azure VM 作为边缘设备，请添加入站端口规则，以允许在本教程中使用的主机端口上的入站流量：4438、5888、8080和11002。 有关添加规则的说明，请参阅[如何打开 VM 的端口](../../virtual-machines/windows/nsg-quickstart-portal.md)。
+
+### <a name="setup-routes"></a>安装路由
 
 保留默认路由，然后选择 "**下一步**" 继续查看部分
 
@@ -184,7 +187,7 @@ ms.locfileid: "73043165"
 
    可能需要等待一段时间，该模块才会在设备上启动并向 IoT 中心发回报告。 刷新页面以查看更新的状态。
 
-## <a name="publish-created-and-deleted-events"></a>发布创建和删除的事件
+## <a name="publish-blobcreated-and-blobdeleted-events"></a>发布 BlobCreated 和 BlobDeleted 事件
 
 1. 此模块自动创建主题**MicrosoftStorage**。 验证它是否存在
     ```sh
