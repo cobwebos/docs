@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 502fb8b49770b4933c44aa1eb447abb746943c0d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: bde1741d12cc7ef181fb60bc7eecbec1fed8cbd0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554825"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151218"
 ---
 # <a name="what-are-security-defaults"></a>什么是安全默认值？
 
@@ -113,6 +113,7 @@ Microsoft 正在使所有人都能使用安全默认值。 目标是确保所有
 - [需要对管理员的 MFA](howto-conditional-access-policy-admin-mfa.md)
 - [需要 MFA 进行 Azure 管理](howto-conditional-access-policy-azure-management.md)
 - [阻止旧身份验证](howto-conditional-access-policy-block-legacy.md)
+- [要求对所有用户进行 MFA](howto-conditional-access-policy-all-users-mfa.md)
 
 ## <a name="enabling-security-defaults"></a>启用安全默认值
 

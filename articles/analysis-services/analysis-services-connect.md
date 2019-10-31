@@ -4,25 +4,25 @@ description: 了解如何连接到 Azure 中的 Analysis Services 服务器并�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a8059ac748f73ad8f9036f8e675e876e3a8716be
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3231b46060cbb755ada000473c8fbe873cc51ef1
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295184"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147313"
 ---
 # <a name="connecting-to-servers"></a>连接到服务器
 
-本文介绍了如何通过使用数据建模和管理应用程序（如 SQL Server Management Studio (SSMS) 或 SQL Server Data Tools (SSDT)）连接到服务器。 或者通过使用客户端报表应用程序，如 Microsoft Excel、Power BI Desktop 或自定义应用程序。 使用 HTTPS 连接到 Azure Analysis Services。
+本文介绍如何通过使用数据建模和管理应用程序（例如 SQL Server Management Studio （SSMS）或 Visual Studio with Analysis Services 项目）或客户端报告应用程序（如 Microsoft Excel）来连接到服务器，Power BI桌面或自定义应用程序。 使用 HTTPS 连接到 Azure Analysis Services。
 
 ## <a name="client-libraries"></a>客户端库
 
 [获取最新的客户端库](analysis-services-data-providers.md)
 
-与服务器的所有连接（无论连接类型）都需要更新后的 AMO、ADOMD.NET 和 OLEDB 客户端库才能连接到 Analysis Services 服务器。 对于 SSMS、SSDT、Excel 2016 及更高版本和 Power BI，最新的客户端库会每月发布安装或更新。 但是在某些情况下，应用程序可能不是最新版本。 例如，当策略延迟更新或 Office 365 更新在延期频道上时。
+与服务器的所有连接（无论连接类型）都需要更新后的 AMO、ADOMD.NET 和 OLEDB 客户端库才能连接到 Analysis Services 服务器。 对于 SSMS、Visual Studio、Excel 2016 和更高版本，以及 Power BI，最新的客户端库是通过每月发布安装或更新的。 但是在某些情况下，应用程序可能不是最新版本。 例如，当策略延迟更新或 Office 365 更新在延期频道上时。
 
 ## <a name="server-name"></a>服务器名称
 

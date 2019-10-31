@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 0c694ffe6ccd23803fbe16001f54b7c1611635cd
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 704d6d4a12550507a8e38be4777e5abc7b57fe74
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154724"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161765"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题 (FAQ)
+# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题解答 (FAQ)
 
 本文包括一些关于 [Microsoft Azure 云服务](https://azure.microsoft.com/services/cloud-services)配置和管理的常见问题解答。 还可以参阅[云服务 VM 大小页面](cloud-services-sizes-specs.md)，了解大小信息。
 
@@ -32,7 +32,7 @@ ms.locfileid: "71154724"
 - [为什么云服务 SSL 证书的证书链不完整？](#why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete)
 - [“用于扩展的 Windows Azure 工具加密证书”有何用途？](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
 - [如何在未“通过 RDP 连接”到实例的情况下生成证书签名请求 (CSR)？](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
-- [我的云服务管理证书即将到期。如何续订？](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
+- [我的云服务管理证书即将过期。如何续订？](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
 - [如何自动安装主要 SSL 证书 (.pfx) 和中间证书 (.p7b)？](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
 - [“用于 MachineKey 的 Microsoft Azure 服务管理”证书的用途是什么？](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
@@ -52,7 +52,7 @@ ms.locfileid: "71154724"
 **权限**
 
 - [没有权限的 Microsoft 内部工程师能否通过远程桌面连接到云服务实例？](#can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission)
-- [无法使用 RDP 文件通过远程桌面连接到云服务 VM。收到以下错误：发生身份验证错误（代码：0x80004005）](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
+- [我无法使用 RDP 文件通过远程桌面连接到云服务 VM。出现以下错误：发生身份验证错误（代码：0x80004005）](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
 
 **缩放**
 
@@ -68,8 +68,8 @@ ms.locfileid: "71154724"
 - [如何以自动化方法为云服务添加反恶意软件扩展？](#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
 - [如何为云服务启用服务器名称指示 (SNI)？](#how-to-enable-server-name-indication-sni-for-cloud-services)
 - [如何将标记添加到 Azure 云服务？](#how-can-i-add-tags-to-my-azure-cloud-service)
-- [Azure 门户不显示云服务的 SDK 版本。如何获取版本信息？](#the-azure-portal-doesnt-display-the-sdk-version-of-my-cloud-service-how-can-i-get-that)
-- [我想将云服务关闭几个月。如何降低云服务的计费成本，而不丢失 IP 地址？](#i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address)
+- [Azure 门户不显示云服务的 SDK 版本。如何实现？](#the-azure-portal-doesnt-display-the-sdk-version-of-my-cloud-service-how-can-i-get-that)
+- [我想关闭云服务几个月的时间。如何降低云服务的计费成本，而不会丢失 IP 地址？](#i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address)
 
 
 ## <a name="certificates"></a>证书
@@ -90,7 +90,7 @@ ms.locfileid: "71154724"
 
 [获取证书以用于 Windows Azure 网站 (WAWS)](https://azure.microsoft.com/blog/obtaining-a-certificate-for-use-with-windows-azure-web-sites-waws/)
 
-CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创建它。 此文档针对应用服务编写，但是 CSR 创建是通用的，它也适用于云服务。
+CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创建它。 尽管本文档是针对应用服务编写的，但 CSR 创建是通用的，也适用于云服务。
 
 ### <a name="my-cloud-service-management-certificate-is-expiring-how-to-renew-it"></a>我的云服务管理证书即将到期。 如何续订？
 
@@ -108,7 +108,7 @@ CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创
 
 ### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>“用于 MachineKey 的 Microsoft Azure 服务管理”证书的用途是什么？
 
-此证书用于加密 Azure Web 角色的计算机密钥。 若要了解详细信息, 请查看[此建议](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)。
+此证书用于加密 Azure Web 角色的计算机密钥。 若要了解详细信息，请查看[此建议](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)。
 
 有关详细信息，请参阅以下文章：
 - [如何配置和运行云服务的启动任务](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
@@ -130,7 +130,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 能够监视实例级别的指标。 其他监视功能在[如何监视云服务](cloud-services-how-to-monitor.md)中提供。
 
 ### <a name="why-does-iis-stop-writing-to-the-log-directory"></a>IIS 为何停止写入日志目录？
-你用于写入日志目录的本地存储配额已用完。 若要修正此问题，可以执行以下三种操作之一：
+你用于写入日志目录的本地存储配额已用完。 若要更正此问题，您可以执行以下三种操作之一：
 * 为 IIS 启用诊断功能并将诊断定期移动到 blob 存储。
 * 手动删除日志记录目录中的日志文件。
 * 增加本地资源的配额限制。
@@ -281,7 +281,7 @@ Azure 订阅对可使用的核心数量有限制。 如果已使用所有可用�
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>云服务 VM 上的驱动器为何显示可用磁盘空间不足？
 这是预期行为，应不会导致任何应用程序问题。 Azure PaaS VM 中的 %approot% 驱动器的日记功能启用后，基本上会占用文件通常所用空间的两倍。 但是请注意以下几点，从根本上看，此问题无足轻重。
 
-% Approot% 驱动器大小的计算公式为\<： .cspkg + 最大日志大小 + 可用空间的边距 > 或 1.5 GB，取两者中较大者。 VM 的大小与此计算方法无关。 （VM 大小仅影响临时 C: 驱动器的大小） 
+% Approot% 驱动器的大小计算为 \<大小的 .cspkg + 最大日志大小 + 可用空间的边距 > 或 1.5 GB，取两者中较大者。 VM 的大小与此计算方法无关。 （VM 大小仅影响临时 C: 驱动器的大小） 
 
 不支持写入 %approot% 驱动器。 如果要写入 Azure VM，必须在临时 LocalStorage 资源（或其他选项，例如 Blob 存储、Azure 文件等）中执行此操作。 因此 %approot% 文件夹的可用空间没有意义。 如果不确定应用程序是否要写入 %approot% 驱动器，可以让服务持续运行几天，然后比较“之前”和“之后”的大小。 
 
@@ -310,12 +310,12 @@ Azure 不会将任何内容写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
     
 如[此文](https://technet.microsoft.com/library/ee790567.aspx)所述，$sslFlags 可为以下值之一：
 
-|ReplTest1|含义|
+|Value|含义|
 ------|------
 |0|没有 SNI|
-|1|已启用 SNI |
-|2 |使用中心证书存储的非 SNI 绑定|
-|3|使用中心证书存储的 SNI 绑定 |
+|第|已启用 SNI|
+|2|使用中心证书存储的非 SNI 绑定|
+|3|使用中心证书存储的 SNI 绑定|
  
 **方法 2：使用代码**
 
@@ -325,8 +325,8 @@ Azure 不会将任何内容写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
     //<code snip> 
                     var serverManager = new ServerManager(); 
                     var site = serverManager.Sites[0]; 
-                    var binding = site.Bindings.Add(“:443:www.test1.com”, newCert.GetCertHash(), “My”); 
-                    binding.SetAttributeValue(“sslFlags”, 1); //enables the SNI 
+                    var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
+                    binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
                     serverManager.CommitChanges(); 
     //</code snip> 
     

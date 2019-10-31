@@ -1,10 +1,10 @@
 ---
 title: Azure 公有云中的隔离 | Microsoft Docs
-description: 了解基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动扩展和缩减。
+description: 了解 Azure 如何针对恶意和非恶意用户提供隔离，并为架构师提供各种隔离选项。
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -13,38 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: a3e4a598446c0b59cd678e186906abc61d3d727d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 5e6910db7765c4cb8f151401a6803e6d4d3f998e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123050"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159756"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公有云中的隔离
-##  <a name="introduction"></a>介绍
-### <a name="overview"></a>概述
-为了协助当前和潜在的 Azure 客户了解和利用 Azure 平台中和围绕 Azure 平台提供的各种安全相关的功能，Microsoft 制定了一系列白皮书、安全概述、最佳实践以及清单。
-这些主题涵盖各类不同宽度和深度的内容，并且定期更新。 本文档属于下面摘要部分中总结的系列的一部分。
+Azure 允许你在共享物理基础结构上运行应用程序和虚拟机（Vm）。 在云环境中运行应用程序的一个主要经济动机是可由多个客户分摊共享资源的成本。 这种多租户的做法在不同客户间多路复用资源，提高了效率并降低了成本。 遗憾的是，这种做法也带来了风险，会导致通过共享物理服务器和其他基础结构资源来运行敏感应用程序和 VM，而这些 VM 可能属于任意或潜在恶意用户。
 
-### <a name="azure-platform"></a>Azure 平台
-Azure 是一种开放灵活的云服务平台，支持多种操作系统、编程语言、框架、工具、数据库和设备。 例如，可以：
-- 使用 Docker 集成运行 Linux 容器；
-- 使用 JavaScript、Python、.NET、PHP、Java 和 Node.js 生成应用；还可以生成
-- 生成适用于 iOS、Android 和 Windows 设备的后端。
-
-Microsoft Azure 支持数百万开发人员和 IT 专业人士依赖并信任的技术。
-
-构建 IT 资产或将其迁移到公有云服务提供商处时，需要借助该组织的能力来保护应用程序和数据，并使用该组织提供的服务和控制机制来管理基于云的资产的安全性。
-
-Azure 的基础结构（从设备到应用程序）经过设计，可同时托管数百万的客户，并为企业提供可靠的基础，使之能够满足其安全需求。 此外，Azure 还提供广泛的可配置安全选项以及对这些选项进行控制的功能，方便你自定义安全措施来满足部署的独特要求。 本文档可帮助满足这些要求。
-
-### <a name="abstract"></a>摘要
-
-通过使用 Microsoft Azure，可在共享物理基础结构上运行应用程序和虚拟机 (VM)。 在云环境中运行应用程序的一个主要经济动机是可由多个客户分摊共享资源的成本。 这种多租户的做法在不同客户间多路复用资源，提高了效率并降低了成本。 遗憾的是，这种做法也带来了风险，会导致通过共享物理服务器和其他基础结构资源来运行敏感应用程序和 VM，而这些 VM 可能属于任意或潜在恶意用户。
-
-Microsoft Azure 同时针对恶意和非恶意用户提供了隔离，并向架构师提供了多种隔离选项作为构建云解决方案的指引，本文对这些情况进行了介绍。 此白皮书重点介绍 Azure 平台和面向客户的安全控制技术，而未尝试解决 SLA、定价模型以及 DevOps 实践注意事项。
+本文概述了 Azure 如何针对恶意和非恶意用户提供隔离，并通过为架构师提供各种隔离选项来构建云解决方案的指南。
 
 ## <a name="tenant-level-isolation"></a>租户级别隔离
 云计算的一个主要优势是同时跨多位客户使用共享的通用基础结构的概念，可带来规模效益。 这种概念称为多租户。 Microsoft 始终致力于确保 Microsoft Cloud Azure 的多租户体系结构支持安全、保密性、隐私、完整性和可用性标准。
@@ -71,9 +52,9 @@ Azure 租户（Azure 订阅）是指 [Azure Active Directory](../../active-direc
 
 - Azure AD 用户无权访问物理资产或位置，因此他们不可能绕过下述逻辑 RBAC 策略检查。
 
-为了满足诊断和维护需求，需要使用采用实时特权提升系统的操作模型。 Azure AD Privileged Identity Management (PIM) 引入了有资格管理员的概念。[有资格管理员](../../active-directory/privileged-identity-management/pim-configure.md)应是不时（但不是每天）需要特权访问的用户。 该角色处于非活动状态，直到用户需要访问权限，然后他们完成激活过程，并在预定的时间内成为活动管理员。
+为了满足诊断和维护需求，需要使用采用实时特权提升系统的操作模型。 Azure AD Privileged Identity Management （PIM）介绍了有资格管理员的概念。[符合条件的管理员](../../active-directory/privileged-identity-management/pim-configure.md)应该是现在需要特权访问的用户，而不是每天都需要。 该角色处于非活动状态，直到用户需要访问权限，然后他们完成激活过程，并在预定的时间内成为活动管理员。
 
-![Azure AD Privileged Identity Management](./media/isolation-choices/azure-isolation-fig2.png)
+![Azure AD 特权标识管理](./media/isolation-choices/azure-isolation-fig2.png)
 
 Azure Active Directory 在其自己受保护的容器中托管每个租户，使用的策略和权限针对各租户单独拥有和管理的容器，并保存在该容器内。
 
@@ -86,7 +67,7 @@ Azure Active Directory 在其自己受保护的容器中托管每个租户，使
 
 Azure RBAC 有三种适用于所有资源类型的基本角色：
 
-- **所有者**对所有资源具有完全访问权限，包括将访问权限委派给其他用户的权限。
+- **所有者**具有对所有资源的完全访问权限，包括将访问权限委派给其他用户的权限。
 
 - **参与者**可以创建和管理所有类型的 Azure 资源，但不能将访问权限授予其他用户。
 
@@ -176,9 +157,9 @@ Azure 虚拟机监控程序、根 OS/FA 和客户 VM/GA 的集合包含一个计
 
 进行编程的规则有两类：
 
--   **计算机配置或基础结构规则：** 默认情况下，将阻止所有通信。 在例外情况下，可以允许虚拟机发送和接收 DHCP 和 DNS 流量。 虚拟机还可以将流量发送到“公共”Internet 以及同一 Azure 虚拟网络和 OS 激活服务器内的其他虚拟机。 虚拟机的传出目标允许列表不包括 Azure 路由器子网、Azure 管理以及其他 Microsoft 属性。
+-   **计算机配置或基础结构规则**：默认情况下，将阻止所有通信。 在例外情况下，可以允许虚拟机发送和接收 DHCP 和 DNS 流量。 虚拟机还可以将流量发送到“公共”Internet 以及同一 Azure 虚拟网络和 OS 激活服务器内的其他虚拟机。 虚拟机的传出目标允许列表不包括 Azure 路由器子网、Azure 管理以及其他 Microsoft 属性。
 
--   **角色配置文件：** 根据租户的服务模型定义入站访问控制列表 (ACL)。
+-   **角色配置文件**：根据租户的服务模型定义入站访问控制列表 (ACL)。
 
 ### <a name="vlan-isolation"></a>VLAN 隔离
 每个群集中有三个 VLAN：
@@ -245,7 +226,7 @@ Azure 提供了以下加密类型来保护数据：
 在 Microsoft Azure 中启用 IaaS VM 时，该解决方案支持以下 IaaS VM 方案：
 -   与 Azure Key Vault 集成
 
--   标准层 VM：A、D、DS、G、GS 等系列 IaaS VM
+-   标准层 VM：A、D、DS、G 和 GS 等系列 IaaS VM
 
 -   在 Windows 和 Linux IaaS VM 上启用加密
 
@@ -284,7 +265,7 @@ SQL 数据库是 Microsoft 云中的关系型数据库服务，它基于行业�
 
 [Microsoft SQL Azure](../../sql-database/sql-database-single-database-get-started.md) 数据库是一项基于云的关系型数据库服务，是根据 SQL Server 技术构建的。 它提供由 Microsoft 在云端托管的多租户数据库服务，该服务高度可用并且可缩放。
 
-从应用程序的角度来看，SQL Azure 提供以下层次结构：每个级别都包含以下一对多的级别。
+在应用程序方面，SQL Azure 提供以下层次结构：每个级别都包含以下一个或多个级别。
 
 ![SQL Azure 应用程序模型](./media/isolation-choices/azure-isolation-fig10.png)
 
@@ -326,14 +307,14 @@ SQL Azure 服务器不是物理实例或 VM 实例，而是数据库、共享管
 通常，作为安全预防措施，后端系统不会与其他系统进行出站通信。 这会保留到前端（网关）层中的系统。 作为深层防御机制，网关层计算机对后端计算机具有有限的特权，可最大限度减少攻击。
 
 ### <a name="isolation-by-machine-function-and-access"></a>按计算机功能和访问权限的隔离
-SQL Azure（由针对不同计算机功能运行的服务组成。 按照流量在后端只进不出的一般原则，SQL Azure 分为“后端”云数据库和“前端”（网关/管理）环境。前端环境可与其他服务外部进行通信，而在后端只有有限的权限（足以调用进行调用所需的入口点）。
+SQL Azure（由针对不同计算机功能运行的服务组成。 SQL Azure 分为 "后端" 云数据库和 "前端" （网关/管理）环境，一般的流量原则是仅进入后端，而不是传出。前端环境可以与其他服务的外部进行通信，一般情况下，仅在后端具有有限的权限（足以调用需要调用的入口点）。
 
 ## <a name="networking-isolation"></a>网络隔离
 Azure 部署具有多层网络隔离。 下图显示了 Azure 提供给客户的各种网络隔离层。 这些层同时属于 Azure 平台本身的本机功能和客户定义的功能。 对于来自 Internet 的入站流量，Azure DDoS 提供针对 Azure 的大规模攻击的隔离。 下一层隔离是客户定义的公共 IP 地址（终结点），可以根据这些终结点确定哪些流量可以通过云服务进入虚拟网络。 本机 Azure 虚拟网络隔离可确保与其他所有网络完全隔离，而且流量只能流经用户配置的路径和方法。 这些路径和方法就是下一个安全层，在该层中，可以使用 NSG、UDR 和网络虚拟设备来创建隔离边界，以保护受保护网络中的应用程序部署。
 
 ![网络隔离](./media/isolation-choices/azure-isolation-fig13.png)
 
-**流量隔离：** [虚拟网络](../../virtual-network/virtual-networks-overview.md)是 Azure 平台上的流量隔离边界。 一个虚拟网络中的虚拟机 (VM) 无法与不同虚拟网络中的 VM 直接通信，即使这两个虚拟网络是由同一个客户所创建。 隔离是一个非常关键的属性，可确保客户 VM 与通信在虚拟网络中保持私密性。
+**流量隔离**：[虚拟网络](../../virtual-network/virtual-networks-overview.md)是 Azure 平台上的流量隔离边界。 一个虚拟网络中的虚拟机 (VM) 无法与不同虚拟网络中的 VM 直接通信，即使这两个虚拟网络是由同一个客户所创建。 隔离是一个非常关键的属性，可确保客户 VM 与通信在虚拟网络中保持私密性。
 
 [子网](../../virtual-network/virtual-networks-overview.md)基于 IP 范围在虚拟网络中提供额外的隔离层。 使用虚拟网络中的 IP 地址，可以将虚拟网络划分成多个子网，以方便进行组织和提高安全性。 部署到 VNet 的子网（不管是相同的子网还是不同的子网）中的 VM 和 PaaS 角色实例可以互相通信，不需任何额外的配置。 还可以配置[网络安全组 (NSG)](../../virtual-network/virtual-networks-overview.md)，以便根据 NSG 的访问控制列表 (ACL) 中配置的规则允许或拒绝到某个 VM 实例的网络流量。 NSG 可以与子网或该子网中的各个 VM 实例相关联。 当 NSG 与某个子网相关联时，ACL 规则将应用到该子网中的所有 VM 实例。
 
@@ -350,4 +331,3 @@ Microsoft Azure 提供各种基于云的计算服务，包括大量计算实例�
 - [存储隔离](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
 
 Microsoft Azure 将客户基于 VM 的计算与存储分隔开。 这种分隔可实现计算和存储的自主扩展，使提供多租户和隔离变得更简单。 因此，Azure 存储在单独的硬件上运行，且没有与 Azure 计算建立网络连接，从逻辑上讲时例外。 所有请求都是基于客户的选择通过 HTTP 或 HTTPS 运行的。
-

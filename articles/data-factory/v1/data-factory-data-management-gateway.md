@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 63b9cc26b927f78598422575646c876d90954bed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e4cf8802f9f12774f03199b76b58cb494f1c439
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65143306"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162727"
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 > [!NOTE]
@@ -63,9 +63,9 @@ ms.locfileid: "65143306"
 
 ### <a name="considerations-for-using-gateway"></a>使用网关的注意事项
 * 数据管理网关的单个实例可用于多个本地数据源。 但是，**单个网关实例只与一个 Azure 数据工厂关联**，不能与另一个数据工厂共享。
-* 在一台计算机上可以仅安装数据管理网关的一个实例  。 假设有两个需要访问本地数据源的数据工厂，那么需要在两台本地计算机上安装网关。 换而言之，一个网关关联到一个特定的数据工厂
+* 在一台计算机上可以仅安装数据管理网关的一个实例。 假设有两个需要访问本地数据源的数据工厂，那么需要在两台本地计算机上安装网关。 换而言之，一个网关关联到一个特定的数据工厂
 * **网关不需要位于数据源所在的计算机上**。 但是，如果网关离数据源较近，可以减少网关连接到数据源的时间。 建议在不同于托管本地数据源的计算机上安装网关。 网关和数据源位于不同计算机上时，网关不会与数据源争用资源。
-* 可以在**不同计算机上拥有多个连接到相同本地数据源的网关**。 例如，可以让两个网关服务两个数据工厂，但这两个数据工厂注册了同一个本地数据源。
+* 可以**将不同计算机上的多个网关连接到同一本地数据源**。 例如，可以让两个网关服务两个数据工厂，但这两个数据工厂注册了同一个本地数据源。
 * 如果已在计算机中安装了为 **Power BI** 方案提供服务的网关，那么在其他计算机上安装**用于 Azure 数据工厂的单独网关**。
 * 即使使用 **ExpressRoute**，也必须使用网关。
 * 即使使用 **ExpressRoute**，也要将数据源视为本地数据源（位于防火墙之后）。 使用网关在服务和数据源之间建立连接。
@@ -77,7 +77,7 @@ ms.locfileid: "65143306"
 * 要求 .NET framework 4.5.1 或更高版本。 如果正在 Windows 7 计算机上安装网关，请安装 .NET Framework 4.5 或更高版本。 有关详细信息，请参阅 [.NET Framework 系统需求](https://msdn.microsoft.com/library/8z6watww.aspx)。
 * 推荐的网关计算机**配置**至少为 2 GHz，4 核，8 GB RAM 和 80 GB 磁盘。
 * 如果主机计算机进入休眠状态，则网关不响应数据请求。 因此，安装网关之前，请在计算机上配置相应的**电源计划**。 如果计算机配置为休眠，则网关安装程序会提示消息。
-* 只有计算机管理员才能成功安装和配置数据管理网关。 可以将其他用户添加到“数据管理网关用户”本地 Windows 组  。 此组成员能够通过数据管理网关配置管理器工具来配置网关  。
+* 只有计算机管理员才能成功安装和配置数据管理网关。 可以将其他用户添加到“数据管理网关用户”本地 Windows 组。 此组成员能够通过数据管理网关配置管理器工具来配置网关。
 
 由于复制活动按特定频率发生，因此计算机上的资源使用率（CPU、内存）也遵循相同的高峰期和空闲期模式。 资源利用率还很大程度上取决于正在移动的数据量。 进行多个复制作业时，会看到资源使用率在高峰期上升。
 
@@ -85,7 +85,7 @@ ms.locfileid: "65143306"
 可以通过以下方式安装数据管理网关：
 
 * 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载 MSI 安装程序包。 还可以使用 MSI 将现有数据管理网关升级到最新版本，并保留所有设置。
-* 在“手动安装”下单击“下载并安装数据网关”  链接，或在“快速安装”下单击“直接安装在此计算机上”  。 有关使用快速安装的分步说明，请参阅[在本地和云之间的移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。 手动步骤会引导进入下载中心。 下一部分会提供有关从下载中心下载和安装网关的说明。
+* 在“手动安装”下单击“下载并安装数据网关”链接，或在“快速安装”下单击“直接安装在此计算机上”。 有关使用快速安装的分步说明，请参阅[在本地和云之间的移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。 手动步骤会引导进入下载中心。 下一部分会提供有关从下载中心下载和安装网关的说明。
 
 ### <a name="installation-best-practices"></a>安装最佳方案：
 1. 在主机上为网关配置电源计划，从而让计算机无法休眠。 如果主机计算机进入休眠状态，则网关不响应数据请求。
@@ -93,34 +93,34 @@ ms.locfileid: "65143306"
 
 ### <a name="install-the-gateway-from-download-center"></a>从下载中心安装网关
 1. 导航到 [Microsoft 数据管理网关下载页](https://www.microsoft.com/download/details.aspx?id=39717)。
-2. 单击**下载**，选择**64-bit**版本 （没有更多支持 32 位），然后单击**下一步**。
+2. 单击 "**下载**"，选择 " **64 位**版本（不支持32位）"，然后单击 "**下一步**"。
 3. 直接运行 **MSI** 或将其保存到硬盘再运行。
-4. 在“欢迎”  页上，选择“语言”  ，单击“下一步”  。
-5. 选择“接受”  以接受最终用户许可协议，并单击“下一步”  。
-6. 选择“文件夹”  以安装网关，并单击“下一步”  。
-7. 在“准备安装”  页上，单击“安装”  。
-8. 单击“完成”  ，完成安装。
+4. 在“欢迎”页上，选择“语言”，单击“下一步”。
+5. 选择“接受”以接受最终用户许可协议，并单击“下一步”。
+6. 选择“文件夹”以安装网关，并单击“下一步”。
+7. 在“准备安装”页上，单击“安装”。
+8. 单击“完成”，完成安装。
 9. 从 Azure 门户中获取密钥。 请参阅下一部分的分步说明。
-10. 在计算机上运行的“数据管理网关配置管理器”  的“注册网关”  页上，执行以下步骤：
+10. 在计算机上运行的“数据管理网关配置管理器”的“注册网关”页上，执行以下步骤：
     1. 将密钥粘贴到文本中。
-    2. 或者单击“显示网关密钥”  ，以查看密钥文本。
-    3. 单击“注册”  。
+    2. 或者单击“显示网关密钥”，以查看密钥文本。
+    3. 单击“注册”。
 
 ### <a name="register-gateway-using-key"></a>使用密钥注册网关
 #### <a name="if-you-havent-already-created-a-logical-gateway-in-the-portal"></a>如果尚未在门户中创建逻辑网关
-若要在门户中创建网关并从“配置”页获取密钥，请遵循[在本地和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文中的演练步骤  。
+若要在门户中创建网关并从“配置”页获取密钥，请遵循[在本地和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文中的演练步骤。
 
 #### <a name="if-you-have-already-created-the-logical-gateway-in-the-portal"></a>如果已在门户中创建逻辑网关
-1. 在 Azure 门户中，导航到“数据工厂”页，并单击“链接服务”磁贴   。
+1. 在 Azure 门户中，导航到“数据工厂”页，并单击“链接服务”磁贴。
 
     ![“数据工厂”页](media/data-factory-data-management-gateway/data-factory-blade.png)
-2. 在“链接服务”页中，选择在门户中创建的逻辑网关   。
+2. 在“链接服务”页中，选择在门户中创建的逻辑网关。
 
     ![逻辑网关](media/data-factory-data-management-gateway/data-factory-select-gateway.png)
-3. 在“数据网关”页中，单击“下载并安装数据网关”   。
+3. 在“数据网关”页中，单击“下载并安装数据网关”。
 
     ![在门户中下载链接](media/data-factory-data-management-gateway/download-and-install-link-on-portal.png)
-4. 在“配置”页中，单击“重新创建密钥”   。 仔细阅读后，在警告消息上单击“是”。
+4. 在“配置”页中，单击“重新创建密钥”。 仔细阅读后，在警告消息上单击“是”。
 
     ![重新创建密钥](media/data-factory-data-management-gateway/recreate-key-button.png)
 5. 单击密钥旁边的“复制”按钮。 密钥被复制到剪贴板。
@@ -135,7 +135,7 @@ ms.locfileid: "65143306"
 如果将光标移动到系统托盘图标/通知消息上，弹出窗口中会显示网关/更新操作状态的相关详情。
 
 ### <a name="ports-and-firewall"></a>端口和防火墙
-需要考虑两个防火墙：在组织的中央路由器上运行的“企业防火墙”  和在安装了网关的本地计算机上配置为守护程序的“Windows 防火墙”  。
+需要考虑两个防火墙：在组织的中央路由器上运行的“企业防火墙”和在安装了网关的本地计算机上配置为守护程序的“Windows 防火墙”。
 
 ![防火墙](./media/data-factory-data-management-gateway/firewalls2.png)
 
@@ -143,16 +143,16 @@ ms.locfileid: "65143306"
 
 | 域名 | 端口 | 描述 |
 | --- | --- | --- |
-| \* .servicebus.windows.net |443 |用于与数据移动服务后端进行通信 |
+| *.servicebus.windows.net |443 |用于与数据移动服务后端进行通信 |
 | *.core.windows.net |443 |用于使用 Azure Blob 的暂存复制（如果已配置）|
 | *.frontend.clouddatahub.net |443 |用于与数据移动服务后端进行通信 |
-| \* .servicebus.windows.net |9350-9354, 5671 |复制向导使用的通过 TCP 的可选服务总线中继 |
+| *.servicebus.windows.net |9350-9354, 5671 |复制向导使用的通过 TCP 的可选服务总线中继 |
 
 在 Windows 防火墙级别下，通常已启用这些出站端口。 如果没有，可以在网关计算机上相应地配置域和端口。
 
 > [!NOTE]
 > 1. 根据源/接收器，可能需要在企业/Windows 防火墙中将其他域和出站端口加入允许列表。
-> 2. 对于某些云数据库（例如：[Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings)、[Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access)，等等），可能需要在其防火墙配置中将网关计算机的 IP 地址加入允许列表。
+> 2. 对于部分云数据库（例如，[Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings)、[Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access) 等），可能需要在其防火墙配置中将网关计算机的 IP 地址加入允许列表。
 >
 >
 
@@ -174,24 +174,24 @@ ms.locfileid: "65143306"
 
 ![在注册过程中设置代理](media/data-factory-data-management-gateway/SetProxyDuringRegistration.png)
 
-网关使用代理服务器连接云服务。 在初始设置期间单击“更改”  链接。 会看到“代理设置”  对话框。
+网关使用代理服务器连接云服务。 在初始设置期间单击“更改”链接。 会看到“代理设置”对话框。
 
 ![使用配置管理器设置代理](media/data-factory-data-management-gateway/SetProxySettings.png)
 
 有三个配置选项：
 
 * **不使用代理**：网关不显式使用任何代理来连接云服务。
-* **使用系统代理**：网关使用在 diahost.exe.config 和 diawp.exe.config 中配置的代理设置。如果 diahost.exe.config 和 diawp.exe.config 中未配置代理，则网关无需通过代理，直接连接到云服务。
-* **使用自定义代理**：配置用于网关的 HTTP 代理设置，而不使用 diahost.exe.config 和 diawp.exe.config 中的配置。需要地址和端口。 用户名和密码可选，具体取决于代理的身份验证设置。 使用网关凭据证书对所有设置进行加密，并存储在网关主机计算机本地。
+* **使用系统代理**：网关使用在 diahost.exe.config 和 diawp.exe.config 中配置的代理设置。如果在 diahost.exe.config 和 diawp.exe.config 中未配置代理，则网关将直接连接到云服务，而不需要通过代理。
+* **使用自定义代理**：配置用于网关的 HTTP 代理设置，而不是使用 diahost.exe.config 和 diawp.exe.config 中的配置。地址和端口是必需的。 用户名和密码可选，具体取决于代理的身份验证设置。 使用网关凭据证书对所有设置进行加密，并存储在网关主机计算机本地。
 
 保存更新的代理设置之后，数据管理网关主机服务会自动重启。
 
 成功注册网关后，如果想要查看或更新代理设置，请使用数据管理网关配置管理器。
 
-1. 启动“数据管理网关配置管理器”  。
-2. 切换到“设置”  选项卡。
-3. 单击“HTTP 代理”  部分的“更改”  链接，以启动“设置 HTTP 代理”  对话框。
-4. 单击“下一步”  按钮后，会看到警告对话框，询问是否要保存代理设置并重启网关主机服务。
+1. 启动“数据管理网关配置管理器”。
+2. 切换到“设置”选项卡。
+3. 单击“HTTP 代理”部分的“更改”链接，以启动“设置 HTTP 代理”对话框。
+4. 单击“下一步”按钮后，将出现警告对话框，询问是否允许保存代理设置和重启网关主机服务。
 
 可以使用配置管理器工具查看和更新 HTTP 代理。
 
@@ -203,10 +203,10 @@ ms.locfileid: "65143306"
 >
 
 ### <a name="configure-proxy-server-settings"></a>配置代理服务器设置
-如果为 HTTP 代理服务器选择“使用系统代理”  设置，则网关使用 diahost.exe.config 和 diawp.exe.config 中的代理设置。如果 diahost.exe.config 和 diawp.exe.config 中未指定代理，则网关无需通过代理，直接连接到云服务。 以下过程说明如何更新 diahost.exe.config 文件。
+如果为 HTTP 代理选择 "**使用系统代理**" 设置，则网关将使用 diahost.exe.config 和 diawp.exe.config 中的代理设置。如果在 diahost.exe.config 和 diawp.exe.config 中未指定代理，则网关将直接连接到云服务，而不需要通过代理。 以下过程说明如何更新 diahost.exe.config 文件。
 
-1. 在文件资源管理器，安全复制一份*c:\\\\Program Files\\Microsoft 数据管理网关\\2.0\\共享\\diahost.exe.config*到备份原始文件。
-2. 启动作为管理员，运行的 Notepad.exe，并打开文本文件*c:\\\\Program Files\\Microsoft 数据管理网关\\2.0\\共享\\diahost.exe.config*。找到 system.net 的默认标记，如以下代码中所示：
+1. 在文件资源管理器中，创建*C：\\\\Program Files\\Microsoft 数据管理网关的安全副本\\2.0\\共享\\diahost.exe.config*来备份原始文件。
+2. 启动作为管理员运行的 Notepad.exe，并打开文本文件*C：\\\\Program Files\\Microsoft 数据管理网关\\2.0\\共享\\diahost.exe.config*。找到 system.net 的默认标记，如以下代码所示：
 
     ```
     <system.net>
@@ -229,7 +229,7 @@ ms.locfileid: "65143306"
     ```
     <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
     ```
-3. 将配置文件保存到原始位置，并重启数据管理网关主机服务，获得更改。 若要重启服务，请执行以下步骤：从控制面板使用服务小程序，或从“数据管理网关配置管理器”  > 依次单击“停止服务”  按钮和“启动服务”  使用服务小程序。 如果服务未启动，很可能是将错误的 XML 标记语法添加到了编辑过的应用程序配置文件中。
+3. 将配置文件保存到原始位置，并重启数据管理网关主机服务，获得更改。 若要重启服务，请执行以下步骤：从控制面板使用服务小程序，或从“数据管理网关配置管理器” > 依次单击“停止服务”按钮和“启动服务”使用服务小程序。 如果服务未启动，很可能是将错误的 XML 标记语法添加到了编辑过的应用程序配置文件中。
 
 > [!IMPORTANT]
 > 不要忘记**同时**更新 diahost.exe.config 和 diawp.exe.config。
@@ -244,13 +244,13 @@ ms.locfileid: "65143306"
    `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 
 ### <a name="open-port-8050-for-credential-encryption"></a>打开端口 8050 以实现凭据加密
-在 Azure 门户中设置本地链接服务时，“设置凭据”  应用程序使用入站端口“8050”  将凭据中继到网关。 默认情况下，网关安装期间，网关安装会在网关计算机上将其打开。
+在 Azure 门户中设置本地链接服务时，“设置凭据”应用程序使用入站端口“8050”将凭据中继到网关。 默认情况下，网关安装期间，网关安装会在网关计算机上将其打开。
 
 如果正在使用第三方防火墙，则可以手动打开端口 8050。 如果在网关安装过程中遇到防火墙问题，可以尝试使用以下命令在不配置防火墙的情况下安装网关。
 
     msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 
-如果选择不打开网关计算机上的端口 8050，则使用机制（而不是使用“设置凭据”  应用程序）来配置数据存储凭据。 例如，可以使用[新建 AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) PowerShell cmdlet。 请参阅“设置凭据和安全”部分，了解如何设置数据存储凭据。
+如果选择不打开网关计算机上的端口 8050，则使用机制（而不是使用“设置凭据”应用程序）来配置数据存储凭据。 例如，你可以使用[AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) PowerShell cmdlet。 请参阅“设置凭据和安全”部分，了解如何设置数据存储凭据。
 
 ## <a name="update"></a>更新
 默认情况下，如果有较新版本的网关可用，会自动更新数据管理网关。 完成所有计划的任务之后，网关才会更新。 更新操作完成之前，网关不处理任何其他任务。 如果更新失败，网关回退到旧版本。
@@ -280,7 +280,7 @@ ms.locfileid: "65143306"
 
 [适用于单节点网关]
 1. 在网关计算机上启动 Windows PowerShell。
-2. 切换到*c:\\\\Program Files\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* 文件夹。
+2. 切换到*C：\\\\Program Files\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* 文件夹。
 3. 运行以下命令以关闭自动更新功能（禁用）。
 
     ```powershell
@@ -293,7 +293,7 @@ ms.locfileid: "65143306"
     ```
    [对于多节点高度可用的可扩展网关](data-factory-data-management-gateway-high-availability-scalability.md)
 1. 在网关计算机上启动 Windows PowerShell。
-2. 切换到*c:\\\\Program Files\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* 文件夹。
+2. 切换到*C：\\\\Program Files\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* 文件夹。
 3. 运行以下命令以关闭自动更新功能（禁用）。
 
     对于具有高可用性功能的网关，需要额外的 AuthKey 参数。
@@ -306,18 +306,18 @@ ms.locfileid: "65143306"
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on -AuthKey <your auth key>
     ```
 
-## <a name="configuration-manager"></a>配置管理器
+## <a name="configuration-manager"></a>Configuration Manager
 安装网关后，可以通过以下方式之一来启动数据管理网关配置管理器：
 
-1. 在“搜索”  窗口中，键入“数据管理网关”  ，以访问此实用程序。
-2. 在以下文件夹中找到可执行文件 *ConfigManager.exe*：*C:\\\\程序文件\\Microsoft 数据管理网关\\2.0\\共享*。
+1. 在“搜索”窗口中，键入“数据管理网关”，以便访问此实用程序。
+2. 在以下文件夹中运行可执行文件*ConfigManager* ： *C：\\\\Program Files\\Microsoft 数据管理网关\\2.0\\共享*。
 
 ### <a name="home-page"></a>主页
 在主页中可执行以下操作：
 
 * 查看网关状态（连接到云服务等）。
 * 从门户中使用密钥进行**注册**。
-* **停止**和启动网关计算机上的“数据管理网关主机服务”  。
+* **停止**和启动网关计算机上的“数据管理网关主机服务”。
 * **计划更新**发生在一天中的某个特定时间。
 * 查看网关的**上次更新日期**。
 
@@ -327,7 +327,7 @@ ms.locfileid: "65143306"
 * 查看、更改和导出网关所用的**证书**。 此证书用于加密数据源凭据。
 * 更改终结点的 **HTTPS 端口**。 网关打开一个端口，用于设置数据源凭据。
 * 终结点的**状态**
-* “SSL 证书”  视图可用于门户与网关之间的 SSL 通信，从而为数据源设置凭据。
+* “SSL 证书”视图可用于门户与网关之间的 SSL 通信，从而为数据源设置凭据。
 
 ### <a name="remote-access-from-intranet"></a>从 Intranet 进行远程访问
 以后将启用此功能。 在即将发布的更新（v3.4 或更高版本）中，我们将让你在使用 PowerShell 或凭据管理器应用程序加密凭据时启用/禁用现在使用端口 8050 实现的任何远程连接（请参阅上面部分）。
@@ -335,7 +335,7 @@ ms.locfileid: "65143306"
 ### <a name="diagnostics-page"></a>“诊断”页
 在“诊断”页中可执行以下操作：
 
-* 启用详细“日志记录”  、在事件查看器中查看日志，并在出现故障时将日志发送给 Microsoft。
+* 启用详细“日志记录”、在事件查看器中查看日志，并在出现故障时将日志发送给 Microsoft。
 * **测试连接**到数据源。
 
 ### <a name="help-page"></a>帮助页
@@ -348,36 +348,36 @@ ms.locfileid: "65143306"
 ## <a name="monitor-gateway-in-the-portal"></a>在门户中监视网关
 在 Azure 门户中，可以查看网关计算机的资源使用率（CPU、内存、网络（进/出）等）近乎实时的快照。
 
-1. 在 Azure 门户中，导航到“数据工厂”主页，并单击“链接服务”磁贴  。
+1. 在 Azure 门户中，导航到“数据工厂”主页，并单击“链接服务”磁贴。
 
     ![数据工厂主页](./media/data-factory-data-management-gateway/monitor-data-factory-home-page.png)
-2. 在“链接服务”页中选择“网关”   。
+2. 在“链接服务”页中选择“网关”。
 
     ![“链接服务”页](./media/data-factory-data-management-gateway/monitor-linked-services-blade.png)
-3. 在“网关”页中，可查看网关的内存和 CPU 使用情况  。
+3. 在“网关”页中，可查看网关的内存和 CPU 使用情况。
 
     ![网关的 CPU 和内存使用情况](./media/data-factory-data-management-gateway/gateway-simple-monitoring.png)
-4. 启用“高级设置”以查看网络使用情况等更多详细信息  。
+4. 启用“高级设置”以查看网络使用情况等更多详细信息。
     
     ![网关的高级监视](./media/data-factory-data-management-gateway/gateway-advanced-monitoring.png)
 
-下表介绍“网关节点”列表中的列  ：
+下表介绍“网关节点”列表中的列：
 
 监视属性 | 描述
 :------------------ | :----------
 名称 | 逻辑网关和与网关关联的节点的名称。 节点是已在其上安装网关的本地 Windows 计算机。 有关在单个逻辑网关中采用多个节点（最多 4 个）的信息，请参阅[数据管理网关 - 高可用性和可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)。
-状态 | 逻辑网关和网关节点的状态。 示例：联机/脱机/受限等。有关这些状态的信息，请参阅[网关状态](#gateway-status)部分。
+状态 | 逻辑网关和网关节点的状态。 示例：联机/脱机/受限/等。有关这些状态的信息，请参阅[网关状态](#gateway-status)部分。
 版本 | 显示逻辑网关和每个网关节点的版本。 逻辑网关的版本根据组中多数节点的版本而决定。 如果逻辑网关安装程序中的节点版本不同，只有与逻辑网关的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。
 可用内存 | 网关节点上的可用内存。 此值为近实时快照。
 CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
 网络（进/出） | 网关节点的网络利用率。 此值为近实时快照。
-并发作业数（运行中/上限） | 每个节点上运行的作业或任务数。 此值为近实时快照。 上限表示每个节点的最大并发作业数。 此值根据计算机大小定义而来。 在 CPU/内存/网络未充分利用，但活动即将超时的高级方案中，可提高上限来增强并发作业执行。此功能也适用于单节点网关（即便未启用可伸缩性和可用性功能）。
+并发作业数（运行中/上限） | 每个节点上运行的作业或任务数。 此值为近实时快照。 上限表示每个节点的最大并发作业数。 此值根据计算机大小定义而来。 在 CPU/内存/网络未充分利用，但活动超时的高级方案中，可以增加限制以增加并发作业的执行。此功能也适用于单节点网关（即使未启用可伸缩性和可用性功能）。
 角色 | 多节点网关中有两种角色 – 调度程序和辅助角色。 所有节点均为辅助角色，表示它们可用于执行作业。 只有一个调度程序节点，用于从云服务中请求任务/作业，并分派到其他辅助节点（包括其本身）。
 
 在此页面，你将发现当网关中存在两个或以上节点（扩展方案）时，某些设置更为好用。 有关如何设置多节点网关的详细信息，请参阅[数据管理网关 - 高可用性和可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)。
 
 ### <a name="gateway-status"></a>网关状态
-下表提供网关节点可能的状态  ：
+下表提供网关节点可能的状态：
 
 状态  | 注释/方案
 :------- | :------------------
@@ -387,7 +387,7 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
 受限制 | 由于连接问题而受限。 可能由于 HTTP 端口 8050 问题、服务总线连接问题或凭据同步问题而受限。
 非活动 | 节点的配置与其他多数节点的配置不同。<br/><br/> 节点在无法与其他节点连接时可能处于非活动状态。
 
-下表提供逻辑网关可能的状态  。 网关状态取决于网关节点的状态。
+下表提供逻辑网关可能的状态。 网关状态取决于网关节点的状态。
 
 状态 | 注释
 :----- | :-------
@@ -407,51 +407,51 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
 ## <a name="move-gateway-from-one-machine-to-another"></a>将网关从一台计算机移动到另一台计算机
 本部分提供将网关客户端从一台计算机移动到另一台计算机的步骤。
 
-1. 在门户中，导航到“数据工厂主页”  ，并单击“链接服务”  磁贴。
+1. 在门户中，导航到“数据工厂主页”，并单击“链接服务”磁贴。
 
     ![数据网关链接](./media/data-factory-data-management-gateway/DataGatewaysLink.png)
-2. 在“链接服务”页的“数据网关”部分选择网关   。
+2. 在“链接服务”页的“数据网关”部分选择网关。
 
     ![已选定网关的“链接服务”页](./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png)
-3. 在“数据网关”页中，单击“下载并安装数据网关”   。
+3. 在“数据网关”页中，单击“下载并安装数据网关”。
 
     ![下载网关链接](./media/data-factory-data-management-gateway/DownloadGatewayLink.png)
-4. 在“配置”页中，单击“下载并安装数据网关”，并按照说明在计算机上安装数据网关   。
+4. 在“配置”页中，单击“下载并安装数据网关”，并按照说明在计算机上安装数据网关。
 
     ![“配置”页](./media/data-factory-data-management-gateway/ConfigureBlade.png)
-5. 将“Microsoft 数据管理网关配置管理器”  保持为打开状态。
+5. 将“Microsoft 数据管理网关配置管理器”保持为打开状态。
 
-    ![配置管理器](./media/data-factory-data-management-gateway/ConfigurationManager.png)
-6. 在门户中的“配置”页中，单击命令栏上的“重新创建密钥”，并对警告消息单击“是”    。 单击密钥文本旁边的“复制”  按钮，将密钥复制到剪贴板。 重新创建密钥后，旧计算机上的网关立即停止工作。
+    ![Configuration Manager](./media/data-factory-data-management-gateway/ConfigurationManager.png)
+6. 在门户中的“配置”页中，单击命令栏上的“重新创建密钥”，并对警告消息单击“是”。 单击密钥文本旁边的“复制”按钮，将密钥复制到剪贴板。 重新创建密钥后，旧计算机上的网关立即停止工作。
 
     ![重新创建密钥](./media/data-factory-data-management-gateway/RecreateKey.png)
-7. 在计算机上，将“密钥”  粘贴到“数据管理网关配置管理器”  的“注册网关”  页的文本框中。 （可选）单击“显示网关密钥”  复选框，以查看密钥文本。
+7. 在计算机上，将“密钥”粘贴到“数据管理网关配置管理器”的“注册网关”页的文本框中。 （可选）单击“显示网关密钥”复选框，以查看密钥文本。
 
     ![复制密钥和注册](./media/data-factory-data-management-gateway/CopyKeyAndRegister.png)
-8. 单击“注册”  ，以通过云服务注册网关。
-9. 在“设置”  选项卡上，单击“更改”  选择与旧网关一起使用的相同证书，输入**密码**，并单击“完成”  。
+8. 单击“注册”，以通过云服务注册网关。
+9. 在“设置”选项卡上，单击“更改”选择与旧网关一起使用的相同证书，输入**密码**，并单击“完成”。
 
    ![指定证书](./media/data-factory-data-management-gateway/SpecifyCertificate.png)
 
-   可以通过以下步骤从旧网关导出证书：在旧计算机上启动数据管理网关配置管理器，切换到“证书”  选项卡，单击“导出”  按钮，并按照说明进行操作。
-10. 成功注册网关后，在网关配置管理器的主页上可看到“注册”  设置为“已注册”  且“状态”  设置为“已启动”  。
+   可以通过以下步骤从旧网关导出证书：在旧计算机上启动数据管理网关配置管理器，切换到“证书”选项卡，单击“导出”按钮，并按照说明进行操作。
+10. 成功注册网关后，网关配置管理器的主页上会显示“注册”已设置为“已注册”且“状态”已设置为“已启动”。
 
 ## <a name="encrypting-credentials"></a>加密凭据
 若要在数据工厂编辑器中加密凭据，请执行以下步骤：
 
-1. 在“网关计算机”  上启动 Web 浏览器，导航到 [Azure 门户](https://portal.azure.com)。 根据需要搜索数据工厂，打开“数据工厂”页中的数据工厂，并单击“作者和部署”，以启动数据工厂编辑器   。
-2. 单击树状视图中的某个现有“链接服务”  以查看其 JSON 定义或创建需要数据管理网关的链接服务（例如：SQL Server 或 Oracle）。
+1. 在“网关计算机”上启动 Web 浏览器，导航到 [Azure 门户](https://portal.azure.com)。 根据需要搜索数据工厂，打开“数据工厂”页中的数据工厂，并单击“作者和部署”，以启动数据工厂编辑器。
+2. 单击树状视图中的某个现有“链接服务”以查看其 JSON 定义或创建需要数据管理网关的链接服务（例如：SQL Server 或 Oracle）。
 3. 在 JSON 编辑器中，对 **gatewayName** 属性输入网关名称。
-4. 在 **connectionString** 中，对“数据源”  属性输入服务器名称。
-5. 在 **connectionString** 中，对“初始目录”  属性输入数据库名称。
-6. 单击单击命令栏上的“加密”  按钮，启动只需单击一次的“凭据管理器”  应用程序。 将显示“设置凭据”  对话框。
+4. 在 **connectionString** 中，对“数据源”属性输入服务器名称。
+5. 在 **connectionString** 中，对“初始目录”属性输入数据库名称。
+6. 单击单击命令栏上的“加密”按钮，启动只需单击一次的“凭据管理器”应用程序。 将显示“设置凭据”对话框。
 
     ![“设置凭据”对话框](./media/data-factory-data-management-gateway/setting-credentials-dialog.png)
-7. 在“设置凭据”  对话框框中，执行以下步骤：
-   1. 选择数据工厂服务连接数据库时所需的“身份验证”  。
-   2. 对于“用户名”  设置，输入有权访问数据库的用户的名称。
-   3. 对于“密码”  设置，输入用户密码。
-   4. 单击“确定”  加密凭据并关闭对话框。
+7. 在“设置凭据”对话框框中，执行以下步骤：
+   1. 选择数据工厂服务连接数据库时所需的“身份验证”。
+   2. 对于“用户名”设置，输入有权访问数据库的用户的名称。
+   3. 对于“密码”设置，输入用户密码。
+   4. 单击“确定”加密凭据并关闭对话框。
 8. 现在可以在 **connectionString** 中看到 **encryptedCredential** 属性。
 
     ```JSON
@@ -469,9 +469,9 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
     ```
    如果从不同于网关计算机的计算机访问门户，必须确保凭据管理器应用程序可以连接网关计算机。 如果应用程序无法连接网关计算机，则不允许为数据源设置凭据和测试数据源连接。
 
-使用“设置凭据”  应用程序时，门户使用网关计算机上“网关配置管理器”  的“证书”  选项卡上指定的证书来加密凭据。
+使用“设置凭据”应用程序时，门户使用网关计算机上“网关配置管理器”的“证书”选项卡上指定的证书来加密凭据。
 
-如果您正在寻找基于 API 的方法来加密凭据，则可以使用[新建 AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) PowerShell cmdlet 来加密凭据。 此 cmdlet 使用的证书是配置网关加密凭据所用的证书。 将加密凭据添加到 JSON 中 **connectionString** 的 **EncryptedCredential** 元素中。 使用具有 JSON[新建 AzDataFactoryLinkedService](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactorylinkedservice) cmdlet 或在数据工厂编辑器中。
+如果你正在寻找一种基于 API 的方法来加密凭据，则可以使用[AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) PowerShell cmdlet 来加密凭据。 此 cmdlet 使用的证书是配置网关加密凭据所用的证书。 将加密凭据添加到 JSON 中 **connectionString** 的 **EncryptedCredential** 元素中。 使用[AzDataFactoryLinkedService](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactorylinkedservice) Cmdlet 或数据工厂编辑器中的 JSON。
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -488,7 +488,7 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
     ```powershell
     Connect-AzAccount
     ```
-3. 使用**新建 AzDataFactoryGateway** cmdlet 来创建逻辑网关，如下所示：
+3. 使用**AzDataFactoryGateway** cmdlet 创建逻辑网关，如下所示：
 
     ```powershell
     $MyDMG = New-AzDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF –Description <desc>
@@ -496,7 +496,7 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
     **示例命令和输出**：
 
     ```
-    PS C:\> $MyDMG = New-AzDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description “gateway for walkthrough”
+    PS C:\> $MyDMG = New-AzDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description "gateway for walkthrough"
 
     Name              : MyGateway
     Description       : gateway for walkthrough
@@ -511,7 +511,7 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. 在 Azure PowerShell 中，切换到的文件夹：*C:\\\\程序文件\\Microsoft 集成运行时\\3.0\\PowerShellScript\\* 。 运行与本地变量 $Key 关联的 RegisterGateway.ps1，如以下命令所示。   此脚本使用之前创建的逻辑网关注册安装在计算机上的客户端代理。
+1. 在 Azure PowerShell 中，切换到文件夹： *C：\\\\程序文件\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* 。 运行与本地变量 **$Key** 关联的 *RegisterGateway.ps1*，如以下命令所示。 此脚本使用之前创建的逻辑网关注册安装在计算机上的客户端代理。
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
@@ -524,12 +524,12 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
     ```powershell
     .\RegisterGateway.ps1 $MyDMG.Key -IsRegisterOnRemoteMachine true
     ```
-2. 可以使用**Get AzDataFactoryGateway** cmdlet 来获取在数据工厂中的网关列表。 当“状态”  显示为“联机”  时，这意味着网关可用。
+2. 可以使用**AzDataFactoryGateway** cmdlet 来获取数据工厂中的网关列表。 当“状态”显示为“联机”时，这意味着网关可用。
 
     ```powershell        
     Get-AzDataFactoryGateway -DataFactoryName <dataFactoryName> -ResourceGroupName ADF
     ```
-   您可以删除网关使用**删除 AzDataFactoryGateway**网关使用的 cmdlet，并更新说明**集 AzDataFactoryGateway** cmdlet。 有关语法和上述 cmdlet 的其他详细信息，请参阅《数据工厂 Cmdlet 参考》。  
+   可以使用**AzDataFactoryGateway** Cmdlet 和**AzDataFactoryGateway** cmdlet 的网关的更新说明来删除网关。 有关语法和上述 cmdlet 的其他详细信息，请参阅《数据工厂 Cmdlet 参考》。  
 
 ### <a name="list-gateways-using-powershell"></a>使用 PowerShell 列出网关
 

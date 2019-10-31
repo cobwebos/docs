@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 7684acbd26848bbccb09416df44a9669965dcfe9
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: f76a2eb098e2d96f617d19de089e56c7e8a497fd
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720141"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162766"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
@@ -41,7 +41,7 @@ ms.locfileid: "71720141"
 | 查询实体时，一次返回的实体数限制为 1,000 个，因为公共 REST 第 2 版将查询结果数限制为 1,000 个。 |使用[此 .NET 示例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)和[此 REST API 示例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)中所述的 Skip 和 Take (.NET)/ top (REST)。 |
 | 某些客户端可能会在平滑流式处理清单中碰到重复标记问题。 |有关详细信息，请参阅[此部分](media-services-deliver-content-overview.md#known-issues)。 |
 | 媒体服务 .NET SDK 对象无法序列化，因此无法与 Azure Redis 缓存配合使用。 |如果尝试对 SDK AssetCollection 对象进行序列化以将其添加到 Azure Redis 缓存，则会引发异常。 |
-|尝试获取资产或帐户级别筛选器时，REST API 会以一条错误消息做出响应，指出“此版本的 REST API 无法访问筛选器”。|该筛选器是使用比尝试获取该筛选器所使用的 API 版本更高的 API 版本创建或修改的。 如果客户使用的代码或工具正在使用两个 API 版本，则可能会发生这种情况。  此处的最佳解决方案是升级代码或工具，以使用较新版本或两个 API 版本。|
+|尝试获取资产或帐户级别筛选器时，REST API 会出现一条错误消息，指出 "此版本的 REST Api 无法访问筛选器"。|此筛选器是使用比用于尝试获取筛选器的新 API 版本创建或修改的。 如果客户使用的代码或工具正在使用两个 API 版本，则可能会发生这种情况。  此处的最佳解决方案是升级代码或工具，以使用较新版本或两种 API 版本。|
 
 ## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>REST API 版本历史记录
 有关媒体服务 REST API 版本历史记录的信息，请参阅 [Azure 媒体服务 REST API 参考]。
@@ -58,17 +58,17 @@ ms.locfileid: "71720141"
 
 ### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-我们宣布弃用 Windows Azure 媒体编码器 (WAME) 和 Azure 媒体编码器 (AME) 媒体处理器，这两个处理器将于 2019 年 11 月 30 日停用。
+我们将宣布弃用2019年11月30日停用的*Windows Azure 媒体编码器*（WAME）和*Azure 媒体编码器*（AME）媒体处理器。
 
-有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) 和[将 AME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)。
+有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334)并[将 AME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)。
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-Azure 媒体服务的 Media Hyperlapse 预览功能已弃用。
+Azure 媒体服务的媒体 Hyperlapse 预览功能已弃用。
 
 ## <a name="december-2018"></a>2018 年 12 月
 
-Azure 媒体服务的 Media Hyperlapse 预览功能即将停用。 从 2018 年 12 月 19 日起，媒体服务不再对 Media Hyperlapse 进行更改或改进。 在 2019 年 3 月 29 日，它将停用并不再可用。
+Azure 媒体服务的媒体 Hyperlapse 预览功能即将停用。 从 2018 年 12 月 19 日起，媒体服务不再对 Media Hyperlapse 进行更改或改进。 在 2019 年 3 月 29 日，它将停用并不再可用。
 
 ## <a name="october-2018"></a>2018 年 10 月
 
@@ -111,7 +111,7 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
     * 对标准编码器中使用的 H.264 解码器做了改进，消除了某些罕见颗粒。 
 
 #### <a name="media-analytics"></a>媒体分析
-Azure 媒体编修器正式发布：此媒体处理器通过模糊选定个体的脸部进行匿名化处理，特别适用于公共安全和新闻媒体。 
+Azure 媒体编修器正式推出 - 此媒体处理器将会通过模糊化所选个人的脸部来执行匿名化处理，特别适用于公共安全和新闻媒体方案。 
 
 有关此新处理器的概述，请参阅[这篇博客文章](https://azure.microsoft.com/blog/azure-media-redactor/)。 有关文档和设置的信息，请参阅[使用 Azure 媒体分析来编修面部](media-services-face-redaction.md)。
 
@@ -203,15 +203,15 @@ Azure 媒体编修器正式发布：此媒体处理器通过模糊选定个体�
 
  将在 Media Encoder Standard 发布后大约 12 个月内开始弃用媒体编码器。
 
-### <a name="azure-sdk-for-php"></a>内置 Web 服务器
+### <a name="azure-sdk-for-php"></a>Azure SDK for PHP
 Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) 包，其中包含媒体服务的更新与新功能。 具体而言，适用于 PHP 的媒体服务 SDK 现支持最新[内容保护](media-services-content-protection-overview.md)功能。 使用 AES 和 DRM（PlayReady 和 Widevine）对这些功能进行动态加密（可以使用也可不使用标记限制）。 还支持缩放[编码单位](media-services-dotnet-encoding-units.md)。
 
 有关详细信息，请参阅：
 
 * 以下[代码示例](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)可帮助你快速入门：
-  * vodworkflow_aes.php：此 PHP 文件演示如何使用 AES-128 动态加密和密钥传送服务。 它基于[使用 AES-128 动态加密和密钥传送服务](media-services-protect-with-aes128.md)中所述的 .NET 示例。
-  * vodworkflow_aes.php：此 PHP 文件演示如何使用 PlayReady 动态加密和许可证传送服务。 它基于[使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-playready-widevine.md)中所述的 .NET 示例。
-  * scale_encoding_units.php：此 PHP 文件演示如何缩放编码预留单位。
+  * **vodworkflow_aes.php**：这是一个 PHP 文件，演示如何使用 AES-128 动态加密和密钥传送服务。 它基于[使用 AES-128 动态加密和密钥传送服务](media-services-protect-with-aes128.md)中所述的 .NET 示例。
+  * **vodworkflow_aes.php**：这是一个 PHP 文件，演示如何使用 PlayReady 动态加密和许可证传送服务。 它基于[使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-playready-widevine.md)中所述的 .NET 示例。
+  * **scale_encoding_units.php**：这是一个 PHP 文件，演示如何缩放编码预留单位。
 
 ## <a id="nov_changes_15"></a>2015 年 11 月版本
  媒体服务现已在云中提供 Widevine 许可证传送服务。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)。 另请参阅[此教程](media-services-protect-with-playready-widevine.md)和 [GitHub 存储库](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)。 
@@ -219,10 +219,10 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 媒体服务提供的 Widevine 许可证传送服务为预览版。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)。
 
 ## <a id="oct_changes_15"></a>2015 年 10 月版本
-媒体服务现在位于以下数据中心：巴西南部、印度西部、印度南部和印度中部。 现在可以使用 Azure 门户[创建媒体服务帐户](media-services-portal-create-account.md)，以及执行[媒体服务文档网页](https://azure.microsoft.com/documentation/services/media-services/)中所述的各项任务。 这些数据中心未启用实时编码。 此外，并非所有类型的编码预留单位都可用于这些数据中心。
+媒体服务现已在以下数据中心推出：巴西南部、印度西部、印度南部和印度中部。 现在可以使用 Azure 门户[创建媒体服务帐户](media-services-portal-create-account.md)，以及执行[媒体服务文档网页](https://azure.microsoft.com/documentation/services/media-services/)中所述的各项任务。 这些数据中心未启用实时编码。 此外，并非所有类型的编码预留单位都可用于这些数据中心。
 
-* 巴西南部：                                        只可以使用标准和基本编码预留单位。
-* 印度西部、印度南部和印度中部：           只可以使用基本编码预留单位。
+* 巴西南部：只可以使用标准和基本编码预留单位。
+* 印度西部、印度南部和印度中部：只可以使用基本编码预留单位
 
 ## <a id="september_changes_15"></a>2015 年 9 月版本
 媒体服务现在提供通过 Widevine 模块化 DRM 技术保护点播视频和实时流的功能。 可以通过以下交付服务合作伙伴来交付 Widevine 许可证：
@@ -294,7 +294,7 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 ### <a name="media-services-net-sdk-updates"></a>媒体服务 .NET SDK 更新
 媒体服务 .NET SDK 当前版本为 3.2.0.0。 进行了以下更新：
 
-* 重大更改：TokenRestrictionTemplate.Issuer 和 TokenRestrictionTemplate.Audience 更改为了字符串类型。
+* 重大更改：将 TokenRestrictionTemplate.Issuer 和 TokenRestrictionTemplate.Audience 改为了字符串类型。
 * 进行了与创建自定义重试策略相关的更新。
 * 进行了与上传和下载文件相关的 Bug 修复。
 * MediaServicesCredentials 类现在接受向主要和辅助访问控制终结点进行身份验证。
@@ -394,8 +394,8 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 ## <a id="july_changes_14"></a>2014 年 7 月版本
 修复了 Azure 媒体服务包装程序和加密程序中的以下 Bug：
 
-* 将实时存档资产传输到 HLS 时，仅播放音频：此问题已修复，现在可以播放音频和视频。
-* 当资产打包为 HLS 和 AES 128 位信封加密时，打包的流无法在 Android 设备上播放：此 bug 已修复，打包的流可在支持 HLS 的 Android 设备上播放。
+* 将实时存档资产传输到 HLS 时，只播放音频：此问题已修复，现可同时播放音频和视频。
+* 打包资产以进行 HLS 和 AES 128 位信封加密时，Android 设备上不播放已打包的流：此 Bug 已修复，支持 HLS 的 Android 设备现将播放已打包的流。
 
 ## <a id="may_changes_14"></a>2014 年 5 月版本
 ### <a id="may_14_changes"></a>媒体服务一般更新
@@ -455,13 +455,13 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
     例如： `Get-AzureMediaServicesAccount`
 * New-AzureMediaServicesAccount 
   
-    例如： `New-AzureMediaServicesAccount -Name “MediaAccountName” -Location “Region” -StorageAccountName “StorageAccountName”`
+    例如： `New-AzureMediaServicesAccount -Name "MediaAccountName" -Location "Region" -StorageAccountName "StorageAccountName"`
 * New-AzureMediaServicesKey 
   
-    例如： `New-AzureMediaServicesKey -Name “MediaAccountName” -KeyType Secondary -Force`
+    例如： `New-AzureMediaServicesKey -Name "MediaAccountName" -KeyType Secondary -Force`
 * Remove-AzureMediaServicesAccount 
   
-    例如： `Remove-AzureMediaServicesAccount -Name “MediaAccountName” -Force`
+    例如： `Remove-AzureMediaServicesAccount -Name "MediaAccountName" -Force`
 
 ## <a id="june_changes_13"></a>2013 年 6 月版本
 ### <a name="june_13_general_changes"></a>媒体服务更改
@@ -511,7 +511,7 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 * IAssetFile.ContentFileSize：现可在创建资产文件时设置此属性。 此属性以前是只读的。
 * IAssetFile.Upload(filepath)：修复了将多个文件上传到资产时，此同步上传方法引发以下错误的问题。 错误为“服务器未能对请求进行身份验证。 请确保授权标头的值构成正确，且包括签名。”
 * IAssetFile.UploadAsync：修复了同时上传文件限于五个的问题。
-* IAssetFile.UploadProgressChanged：此事件现在由 SDK 提供。
+* IAssetFile.UploadProgressChanged：现在由 SDK 提供此事件。
 * IAssetFile.DownloadAsync(string, BlobTransferClient, ILocator, CancellationToken)：现在提供了此方法重载。
 * IAssetFile.DownloadAsync：修复了同时下载文件限于五个的问题。
 * IAssetFile.Delete()：修复了如果没有为 IAssetFile 上传文件，调用 delete 时可能会引发异常的问题。
@@ -534,9 +534,9 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
     * IAssetFile 取代了 FileInfo 并具有不同的行为。 若要使用它，请先实例化 IAssetFile 对象，然后使用媒体服务 SDK 或存储 SDK 上传文件。 可以使用以下 IAssetFile.Upload 重载：
   
         * IAssetFile.Upload(filePath)：此同步方法将阻止线程，建议仅在上传单个文件时使用。
-        * IAssetFile.UploadAsync(filePath, blobTransferClient, locator, cancellationToken)：此异步方法是首选的上传机制。 
+        * IAssetFile.UploadAsync(filePath, blobTransferClient, locator, cancellationToken)：此异步方法是优选上传机制。 
     
-            已知的 bug：如果使用取消令牌，将取消上传。 任务可以有多个取消状态。 必须正确捕获并处理异常。
+            已知 bug：如果使用取消令牌，将取消上传。 任务可以有多个取消状态。 必须正确捕获并处理异常。
 * 定位符
   
     * 删除了原点特定的版本。 SAS 特定的 context.Locators.CreateSasLocator(asset, accessPolicy) 将标记为已弃用或在公开上市时删除。 请参阅“新增功能”下的“定位符”部分以了解更新行为。

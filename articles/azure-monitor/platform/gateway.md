@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
-ms.date: 10/24/2019
-ms.openlocfilehash: ba0ee29b48be259bddd898c3d1119b77f6ee5228
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/30/2019
+ms.openlocfilehash: 87e1995a84ae2b598b8097d4910914831a75a318
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932303"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162012"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>使用 Azure Monitor 中的 Log Analytics 网关连接无 internet 访问的计算机
 
@@ -22,7 +22,7 @@ ms.locfileid: "72932303"
 
 本文介绍了如何使用 Log Analytics 网关配置与 Azure 自动化的通信，以及通过使用网关 Azure Monitor Operations Manager 不具有 internet 访问权限的计算机。 
 
-Log Analytics 网关是使用 HTTP CONNECT 命令支持 HTTP 隧道的 HTTP 转发代理。 此网关代表无法直接连接到 internet 的计算机，将数据发送到 Azure 自动化和 Azure Monitor 中的 Log Analytics 工作区。 它不会缓存代理中的数据，代理会在此情况下处理缓存数据，直到通信恢复。
+Log Analytics 网关是使用 HTTP CONNECT 命令支持 HTTP 隧道的 HTTP 转发代理。 此网关代表无法直接连接到 internet 的计算机，将数据发送到 Azure 自动化和 Azure Monitor 中的 Log Analytics 工作区。 
 
 Log Analytics 网关支持：
 
@@ -33,7 +33,7 @@ Log Analytics 网关支持：
 
 某些 IT 安全策略不允许网络计算机建立 internet 连接。 例如，这些未连接的计算机可能是销售点（POS）设备或支持 IT 服务的服务器。 若要将这些设备连接到 Azure 自动化或 Log Analytics 的工作区以便管理和监视这些设备，请将它们配置为直接与 Log Analytics 网关进行通信。 Log Analytics 网关可以接收配置信息并代表它们转发数据。 如果将计算机配置为使用 Log Analytics 代理直接连接到 Log Analytics 工作区，则计算机将改为与 Log Analytics 网关进行通信。  
 
-Log Analytics 网关直接将数据从代理传输到服务。 它不会分析传输中的任何数据。
+Log Analytics 网关直接将数据从代理传输到服务。 它不会分析传输中的任何数据，并且网关在失去与服务的连接时不会缓存数据。 当网关无法与服务通信时，代理将继续运行，并在被监视的计算机的磁盘上对收集的数据进行排队。 在恢复连接时，代理会将收集的缓存数据发送到 Azure Monitor。
 
 当 Operations Manager 管理组与 Log Analytics 集成时，可以将管理服务器配置为连接到 Log Analytics 网关，以根据已启用的解决方案接收配置信息并发送收集的数据.  Operations Manager 代理将一些数据发送到管理服务器。 例如，代理可以发送 Operations Manager 警报、配置评估数据、实例空间数据和容量数据。 其他大容量数据（如 Internet Information Services （IIS）日志、性能数据和安全事件）将直接发送到 Log Analytics 网关。 
 
@@ -167,7 +167,7 @@ Log Analytics 网关仅支持传输层安全性（TLS）1.0、1.1 和1.2。  它
 若要以无提示方式安装网关并使用特定的代理地址和端口号进行配置，请键入以下内容：
 
 ```dos
-Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 LicenseAccepted=1 
+Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 LicenseAccepted=1 
 ```
 
 使用/qn 命令行选项将隐藏安装程序，/qb 会在无提示安装过程中显示安装程序。  
@@ -175,7 +175,7 @@ Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200”
 如果需要提供凭据以便通过代理进行身份验证，请键入以下内容：
 
 ```dos
-Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 HASAUTH=1 USERNAME=”<username>” PASSWORD=”<password>” LicenseAccepted=1 
+Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 HASAUTH=1 USERNAME="<username>" PASSWORD="<password>" LicenseAccepted=1 
 ```
 
 安装完成后，可以使用以下 PowerShell cmdlet 确认是否已接受设置（exlcuding 用户名和密码）：

@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 9f1580a9a43781996afadde5487adcafec860e26
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 99159b15ea663d43d125748d6db1f334b72931ae
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029699"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161793"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench 消息集成
 
@@ -33,7 +33,7 @@ ms.locfileid: "72029699"
 
 该请求需要填写以下字段：
 
-| **名称**             | **说明**                                      |
+| 名称             | **说明**                                      |
 |----------------------|------------------------------------------------------|
 | requestId            | 客户端提供的 GUID                                |
 | firstName            | 用户的名字                              |
@@ -44,7 +44,7 @@ ms.locfileid: "72029699"
 | messageSchemaVersion | 消息传送架构版本                            |
 | messageName          | **CreateUserRequest**                               |
 
-例如：
+示例：
 
 ``` json
 {
@@ -61,7 +61,7 @@ ms.locfileid: "72029699"
 
 Blockchain Workbench 返回包含以下字段的响应：
 
-| **名称**              | **说明**                                                                                                             |
+| 名称              | **说明**                                                                                                             |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
 | requestId             | 客户端提供的 GUID |
 | userId                | 创建的用户的 ID |
@@ -111,19 +111,19 @@ Blockchain Workbench 返回的 **create user** 成功响应示例：
 
 该请求需要填写以下字段：
 
-| **名称**             | **说明**                                                                                                           |
+| 名称             | **说明**                                                                                                           |
 |----------------------|---------------------------------------------------------------------------------------------------------------------------|
 | requestId            | 客户端提供的 GUID |
 | userChainIdentifier  | 在区块链网络上创建的用户的地址。 在 Ethereum 中，此地址是用户的**链上**地址。 |
 | applicationName      | 应用程序的名称 |
-| version              | 应用程序的版本。 在启用了应用程序的多个版本时是必需的。 否则，版本是可选的。 有关应用程序版本控制的详细信息，请参阅 [Azure Blockchain Workbench 应用程序版本控制](version-app.md)。 |
+| 版本              | 应用程序的版本。 在启用了应用程序的多个版本时是必需的。 否则，版本是可选的。 有关应用程序版本控制的详细信息，请参阅 [Azure Blockchain Workbench 应用程序版本控制](version-app.md)。 |
 | workflowName         | 工作流的名称 |
-| parameters           | 合同创建请求的参数输入 |
+| 参数           | 合同创建请求的参数输入 |
 | connectionId         | 区块链连接的唯一标识符 |
 | messageSchemaVersion | 消息传送架构版本 |
 | messageName          | **CreateContractRequest** |
 
-例如：
+示例：
 
 ``` json
 { 
@@ -150,7 +150,7 @@ Blockchain Workbench 返回的 **create user** 成功响应示例：
 
 Blockchain Workbench 返回包含以下字段的响应：
 
-| **名称**                 | **说明**                                                                   |
+| 名称                 | **说明**                                                                   |
 |--------------------------|-----------------------------------------------------------------------------------|
 | requestId                | 客户端提供的 GUID                                                             |
 | contractId               | Azure Blockchain Workbench 中的合同的唯一标识符 |
@@ -215,19 +215,19 @@ Blockchain Workbench 返回的事务提交 **create contract** 响应示例：
 
 该请求需要填写以下字段：
 
-| **名称**                 | **说明**                                                                                                           |
+| 名称                 | **说明**                                                                                                           |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------|
 | requestId                | 客户端提供的 GUID |
 | userChainIdentifier      | 在区块链网络上创建的用户的地址。 在 Ethereum 中，此地址是用户的**链上**地址。 |
 | contractLedgerIdentifier | 账本中合同的地址 |
-| version                  | 应用程序的版本。 在启用了应用程序的多个版本时是必需的。 否则，版本是可选的。 有关应用程序版本控制的详细信息，请参阅 [Azure Blockchain Workbench 应用程序版本控制](version-app.md)。 |
+| 版本                  | 应用程序的版本。 在启用了应用程序的多个版本时是必需的。 否则，版本是可选的。 有关应用程序版本控制的详细信息，请参阅 [Azure Blockchain Workbench 应用程序版本控制](version-app.md)。 |
 | workflowFunctionName     | 工作流函数的名称 |
-| parameters               | 合同创建请求的参数输入 |
+| 参数               | 合同创建请求的参数输入 |
 | connectionId             | 区块链连接的唯一标识符 |
 | messageSchemaVersion     | 消息传送架构版本 |
 | messageName              | **CreateContractActionRequest** |
 
-例如：
+示例：
 
 ``` json
 {
@@ -254,7 +254,7 @@ Blockchain Workbench 返回的事务提交 **create contract** 响应示例：
 
 Blockchain Workbench 返回包含以下字段的响应：
 
-| **名称**              | **说明**                                                                   |
+| 名称              | **说明**                                                                   |
 |-----------------------|-----------------------------------------------------------------------------------|
 | requestId             | 客户端提供的 GUID|
 | contractId            | Azure Blockchain Workbench 中的合同的唯一标识符 |
@@ -311,7 +311,7 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 
 ### <a name="input-api-error-codes-and-messages"></a>输入 API 错误代码和消息
 
-**错误代码 4000:错误的请求错误**
+**错误代码 4000：错误的请求错误**
 - connectionId 无效
 - CreateUserRequest 反序列化失败
 - CreateContractRequest 反序列化失败
@@ -323,12 +323,12 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 - 合同 {由账本标识符标识} 没有函数 {工作流函数名称}
 - UserChainIdentifier 不存在
 
-**错误代码 4090:冲突错误**
+**错误代码 4090：冲突错误**
 - 用户已存在
 - 合同已存在
 - 合同操作已存在
 
-**错误代码 5000:内部服务器错误**
+**错误代码 5000：内部服务器错误**
 - 异常消息
 
 ## <a name="event-notifications"></a>事件通知
@@ -384,7 +384,7 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 | 名称 | 描述 |
 |------|-------------|
 | block | 包含[块信息](#block-information) |
-| transactions | 包含块的[事务信息](#transaction-information)集合 |
+| 事务 | 包含块的[事务信息](#transaction-information)集合 |
 | connectionId | 连接的唯一标识符 |
 | messageSchemaVersion | 消息传送架构版本 |
 | messageName | **BlockMessage** |
@@ -477,7 +477,7 @@ Blockchain Workbench 中的 *BlockMessage* 示例：
 |--------------------|-------------|
 | workflowPropertyId | Azure Blockchain Workbench 中工作流属性的唯一标识符 |
 | name | 工作流属性的名称 |
-| value | 工作流属性的值 |
+| 值 | 工作流属性的值 |
 
 Blockchain Workbench 中的 *ContractMessage* 示例：
 
@@ -556,7 +556,7 @@ Blockchain Workbench 中的 *ContractMessage* 示例：
 }
 ```
 
-### <a name="event-message-contract-function-invocation"></a>事件消息：合同函数调用
+### <a name="event-message-contract-function-invocation"></a>事件消息：协定函数调用
 
 包含调用合同函数时的信息，例如函数名称、参数输入和函数调用方。
 
@@ -567,7 +567,7 @@ Blockchain Workbench 中的 *ContractMessage* 示例：
 | contractId                  | Azure Blockchain Workbench 中的合同的唯一标识符 |
 | contractLedgerIdentifier    | 账本中合同的唯一标识符 |
 | functionName                | 函数的名称 |
-| parameters                  | [参数信息](#parameter-information) |
+| 参数                  | [参数信息](#parameter-information) |
 | transaction                 | 事务信息 |
 | inTransactionSequenceNumber | 块中事务的序列号 |
 | connectionId                | 连接的唯一标识符 |
@@ -588,7 +588,7 @@ Blockchain Workbench 中的 *ContractMessage* 示例：
 | 名称 | 描述 |
 |------|-------------|
 | name | 参数名称 |
-| value | 参数值 |
+| 值 | 参数值 |
 
 #### <a name="event-message-transaction-information"></a>事件消息事务信息
 
@@ -662,7 +662,7 @@ Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
 |------|-------------|
 | id | Azure Blockchain Workbench 中合同代码文件的唯一标识符 |
 | ledgerId | Azure Blockchain Workbench 中账本的唯一标识符 |
-| location | 合同代码文件所在的 URL |
+| 位置 | 合同代码文件所在的 URL |
 
 #### <a name="application-role-information"></a>应用程序角色信息
 
@@ -680,7 +680,7 @@ Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
 | displayName | 应用程序工作流显示名称 |
 | functions | [应用程序工作流的函数](#workflow-function-information)集合|
 | states | [应用程序工作流的状态](#workflow-state-information)集合 |
-| properties | 应用程序[工作流属性信息](#workflow-property-information) |
+| 属性 | 应用程序[工作流属性信息](#workflow-property-information) |
 
 ##### <a name="workflow-function-information"></a>工作流函数信息
 
@@ -688,7 +688,7 @@ Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
 |------|-------------|
 | id | Azure Blockchain Workbench 中应用程序工作流函数的唯一标识符 |
 | name | 函数名称 |
-| parameters | 函数的参数 |
+| 参数 | 函数的参数 |
 
 ##### <a name="workflow-state-information"></a>工作流状态信息
 
@@ -703,7 +703,7 @@ Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
 | 名称 | 描述 |
 |------|-------------|
 | id | Azure Blockchain Workbench 中应用程序工作流属性的唯一标识符 |
-| name | 属性名 |
+| name | 属性名称 |
 | type | 属性类型 |
 
 Blockchain Workbench 中的 *EventMessage ApplicationIngestion* 示例：
@@ -714,7 +714,7 @@ Blockchain Workbench 中的 *EventMessage ApplicationIngestion* 示例：
     "applicationId": 31,
     "applicationName": "AssetTransfer",
     "applicationDisplayName": "Asset Transfer",
-    "applicationVersion": “1.0”,
+    "applicationVersion": "1.0",
     "applicationDefinitionLocation": "http://url",
     "contractCodes": [
         {
@@ -793,14 +793,14 @@ Blockchain Workbench 中的 *EventMessage ApplicationIngestion* 示例：
                     "id": 879,
                     "name": "Description",
                     "type": {
-                                "name": "string"
+                        "name": "string"
                      }
                 },
                 {
                     "id": 880,
                     "name": "Price",
                     "type": {
-                                "name": "int"
+                        "name": "int"
                      }
                 }
             ]
@@ -880,7 +880,7 @@ Blockchain Workbench 中的 *EventMessage RoleAssignment* 示例：
     "applicationId": 31,
     "applicationName": "AssetTransfer",
     "applicationDisplayName": "Asset Transfer",
-    "applicationVersion": “1.0”,
+    "applicationVersion": "1.0",
     "applicationRole": {
         "id": 134,
         "name": "Buyer"

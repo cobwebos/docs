@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/27/2019
-ms.openlocfilehash: 3767ea10d777a0ea7ad88a2ffa4793e866ffbe6c
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 10/28/2019
+ms.openlocfilehash: 2da9e41323a308782dad509c628a3677ab0cd21f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091484"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162883"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 体系结构
 
@@ -24,20 +24,20 @@ ms.locfileid: "71091484"
 
 本文介绍 YARN，说明其如何协调应用程序在 HDInsight 上的执行。
 
-## <a name="apache-hadoop-yarn-basics"></a>Apache Hadoop YARN 基础知识 
+## <a name="apache-hadoop-yarn-basics"></a>Apache Hadoop YARN 基础知识
 
-YARN 控制并协调 Hadoop 中的数据处理。 YARN 有两个核心服务，在群集的节点上作为进程运行： 
+YARN 控制并协调 Hadoop 中的数据处理。 YARN 有两个核心服务，在群集的节点上作为进程运行：
 
-* ResourceManager 
+* ResourceManager
 * NodeManager
 
-ResourceManager 将群集计算资源授予 MapReduce 作业之类的应用程序。 ResourceManager 将这些资源作为容器来授予，每个容器都分配有相应的 CPU 核心和 RAM 内存。 如果将群集中的所有可用资源组合了起来，然后以块的形式分发了这些核心和内存，则每个资源块都是一个容器。 群集中的每个节点都有一个容量，只能存储特定数目的容器，因此群集对于可用容器的数目有一个固定的限制。 可以对资源在容器中的分配进行配置。 
+ResourceManager 将群集计算资源授予 MapReduce 作业之类的应用程序。 ResourceManager 将这些资源作为容器来授予，每个容器都分配有相应的 CPU 核心和 RAM 内存。 如果将群集中的所有可用资源组合了起来，然后以块的形式分发了这些核心和内存，则每个资源块都是一个容器。 群集中的每个节点都有一个容量，只能存储特定数目的容器，因此群集对于可用容器的数目有一个固定的限制。 可以对资源在容器中的分配进行配置。
 
-当 MapReduce 应用程序在群集上运行时，ResourceManager 为应用程序提供可在其中执行操作的容器。 ResourceManager 可以跟踪运行的应用程序的状态、可用群集容量，还可以在应用程序完成并释放其资源时跟踪应用程序。 
+当 MapReduce 应用程序在群集上运行时，ResourceManager 为应用程序提供可在其中执行操作的容器。 ResourceManager 可以跟踪运行的应用程序的状态、可用群集容量，还可以在应用程序完成并释放其资源时跟踪应用程序。
 
 ResourceManager 还运行一个 Web 服务器进程，该进程提供一个 Web 用户接口，用于监视应用程序的状态。
 
-当用户提交要在群集上运行的 MapReduce 应用程序时，该应用程序会提交给 ResourceManager。 反过来，ResourceManager 会在可用的 NodeManager 节点上分配一个容器。 NodeManager 节点是应用程序的实际执行位置。 第一个分配的容器运行名为 ApplicationMaster 的特殊应用程序。 该 ApplicationMaster 负责获取资源，这些资源采用后续容器的形式，是运行提交的应用程序所必需的。 ApplicationMaster 会检查应用程序的阶段（例如映射阶段和化简阶段），并会将需要处理的数据量考虑进去。 ApplicationMaster 然后会代表应用程序从 ResourceManager 请求（协商）资源。 ResourceManager 反过来会将群集中 NodeManager 提供的资源授予 ApplicationMaster，供其在执行应用程序时使用。 
+当用户提交要在群集上运行的 MapReduce 应用程序时，该应用程序会提交给 ResourceManager。 反过来，ResourceManager 会在可用的 NodeManager 节点上分配一个容器。 NodeManager 节点是应用程序的实际执行位置。 第一个分配的容器运行名为 ApplicationMaster 的特殊应用程序。 该 ApplicationMaster 负责获取资源，这些资源采用后续容器的形式，是运行提交的应用程序所必需的。 ApplicationMaster 会检查应用程序的阶段（例如映射阶段和化简阶段），并会将需要处理的数据量考虑进去。 ApplicationMaster 然后会代表应用程序从 ResourceManager 请求（协商）资源。 ResourceManager 反过来会将群集中 NodeManager 提供的资源授予 ApplicationMaster，供其在执行应用程序时使用。
 
 NodeManagers 先运行应用程序包含的任务，然后将其进度和状态回头报告给 ApplicationMaster。 ApplicationMaster 则将应用程序的状态报告给 ResourceManager。 ResourceManager 将任何结果返回给客户端。
 

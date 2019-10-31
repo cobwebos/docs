@@ -1,6 +1,6 @@
 ---
-title: 条件性访问-要求对管理员使用 MFA-Azure Active Directory
-description: 创建自定义条件访问策略，以要求管理员执行多重身份验证
+title: 条件性访问-要求对所有用户进行 MFA-Azure Active Directory
+description: 创建自定义条件访问策略，要求所有用户执行多重身份验证
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,30 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a50978b51fd1451cf65e33b38ca0699694cb115b
+ms.openlocfilehash: 892171f3e275ebc405bc7a228185ebfabc61acfb
 ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/30/2019
-ms.locfileid: "73151190"
+ms.locfileid: "73164830"
 ---
-# <a name="conditional-access-require-mfa-for-administrators"></a>条件性访问：对管理员要求 MFA
+# <a name="conditional-access-require-mfa-for-all-users"></a>条件性访问：要求对所有用户进行 MFA
 
-分配有管理权限的帐户将被攻击者作为目标。 需要对这些帐户进行多重身份验证（MFA）是一种降低这些帐户泄露风险的简单方法。
+作为 Alex Weinert，Microsoft 的标识安全性目录，在他的博客文章中提到，[你的 Pa $ $word 并不重要](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)：
 
-Microsoft 建议你至少需要对以下角色进行 MFA：
+> 你的密码不重要，但 MFA 确实会这样！ 根据我们的调查，如果你使用 MFA，你的帐户将不会受到超过99.9% 的可能性。
 
-* 全局管理员
-* SharePoint 管理员
-* Exchange 管理员
-* 条件访问管理员
-* 安全管理员
-* 支持人员（密码）管理员
-* 密码管理员
-* 计费管理员
-* 用户管理员
-
-组织可以选择在合适的情况下包括或排除角色。
+本文中的指导将帮助你的组织为你的环境创建一个平衡的 MFA 策略。
 
 ## <a name="user-exclusions"></a>用户排除
 
@@ -45,6 +35,10 @@ Microsoft 建议你至少需要对以下角色进行 MFA：
 * **服务帐户**和**服务原则**，如 Azure AD Connect 同步帐户。 服务帐户是不与任何特定用户关联的非交互式帐户。 它们通常由后端服务使用，并允许对应用程序进行编程访问。 应该排除服务帐户，因为无法以编程方式完成 MFA。
    * 如果你的组织在脚本或代码中使用这些帐户，请考虑将它们替换为[托管标识](../managed-identities-azure-resources/overview.md)。 作为临时解决方法，您可以从基线策略中排除这些特定的帐户。
 
+## <a name="application-exclusions"></a>应用程序排除
+
+组织可能有许多使用中的云应用程序。 并非所有这些应用程序都需要同等的安全性。 例如，工资和出勤应用程序可能需要 MFA，但这种情况可能不会。 管理员可以选择从策略中排除特定的应用程序。
+
 ## <a name="create-a-conditional-access-policy"></a>创建条件性访问策略
 
 以下步骤将帮助创建条件性访问策略，以要求分配的管理角色执行多重身份验证。
@@ -54,19 +48,11 @@ Microsoft 建议你至少需要对以下角色进行 MFA：
 1. 选择“新策略”。
 1. 为策略指定一个名称。 建议组织为其策略名称创建有意义的标准。
 1. 在 "**分配**" 下，选择 "**用户和组**"
-   1. 在 "**包括**" 下，选择 "**目录角色（预览版）** "，并至少选择以下角色：
-      * 全局管理员
-      * SharePoint 管理员
-      * Exchange 管理员
-      * 条件访问管理员
-      * 安全管理员
-      * 支持管理员
-      * 密码管理员
-      * 计费管理员
-      * 用户管理员
+   1. 在 "**包括**" 下，选择 "**所有用户**"
    1. 在 "**排除**" 下，选择 "**用户和组**"，然后选择你的组织的紧急访问帐户或破解玻璃帐户。 
    1. 选择“完成”。
-1. 在 "**云应用" 或 "操作** > **包括**" 下，选择 "**所有云应用**"，然后选择 "**完成**"。
+1. 在 "**云应用" 或 "操作** > **包括**" 下，选择 "**所有云应用**"。
+   1. 在 "**排除**" 下，选择任何不需要多重身份验证的应用程序。
 1. 在 "**访问控制**" > **grant**"下，选择"**授予访问权限**，**需要多重身份验证**"，然后选择"**选择**"。
 1. 确认设置并将 "**启用策略**" 设置为 **"开"** 。
 1. 选择 "**创建**" 以启用策略。

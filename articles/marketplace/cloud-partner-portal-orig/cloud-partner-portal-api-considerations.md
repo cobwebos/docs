@@ -1,5 +1,5 @@
 ---
-title: API 时的注意事项 |Azure Marketplace
+title: API 注意事项 |Azure Marketplace
 description: 使用市场 API 时的版本控制、错误处理和授权问题。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 6bf27db27daee50f78552344ae1b2b116d48a5c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 762c90b62ed2a9347ae88a50a11bfe02f3b23ba4
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935580"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162668"
 ---
 # <a name="api-considerations"></a>API 注意事项
 
@@ -28,14 +28,14 @@ ms.locfileid: "64935580"
 
 ``` json
     {
-        "error”: { 
+        "error": { 
             "code":"InvalidAPIVersion",
             "message":"Invalid api version. Allowed values are [2016-08-01-preview]"
         }
     }
 ```            
 
-<a name="errors"></a>错误
+<a name="errors"></a>Errors
 ------
 
 API 使用相应的 HTTP 状态代码响应错误，并且可选地将响应中的其他信息序列化为 JSON。

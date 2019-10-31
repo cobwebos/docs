@@ -4,15 +4,15 @@ description: 介绍了如何创建和使用服务器名称别名。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 161df354bae350df533f3991e551401fd56a4a65
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: ea618ecb29451650cbb01e9c95d263f42d406555
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301072"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146346"
 ---
 # <a name="alias-server-names"></a>别名服务器名称
 
@@ -52,7 +52,7 @@ protected void Page_Load(object sender, EventArgs e)
 }
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [客户端库](analysis-services-data-providers.md)   
 [从 Power BI Desktop 进行连接](analysis-services-connect-pbi.md)

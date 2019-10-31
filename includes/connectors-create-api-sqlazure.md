@@ -8,12 +8,12 @@ ms.topic: include
 ms.author: estfan
 ms.custom: include file
 ms.date: 05/15/2018
-ms.openlocfilehash: aa1001661d8fe03855e1a28b882f674bee3606b2
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: d60d7727e0674298fa6da7e7330221318da23efd
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311979"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161613"
 ---
 * 如果使用 Azure SQL 数据库，请按照[连接到 Azure SQL 数据库](#connect-azure-sql-db)中的步骤进行操作。
 
@@ -34,7 +34,7 @@ ms.locfileid: "72311979"
    * `User ID=<your-user-name>`
    * `Password=<your-password>`
 
-   ![创建 Azure SQL 数据库连接](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
+   ![创建到 Azure SQL 数据库的连接](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
 
 1. 完成操作后，选择“创建”。
 
@@ -59,7 +59,7 @@ ms.locfileid: "72311979"
    * `User ID=<your-user-name>`
    * `Password=<your-password>`
 
-   ![创建 SQL Server 连接](./media/connectors-create-api-sqlazure/sql-server-create-connection.png)
+   ![创建与 SQL Server 的连接](./media/connectors-create-api-sqlazure/sql-server-create-connection.png)
 
 1. 如果 SQL server 使用 Windows 或基本身份验证，请选择**身份验证类型**。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 49c836f5e9189104ba77e8f3d865f4db199c4060
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 37ee600a2f7d621d3fefb2f70c26b6c29f738ea9
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002975"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162706"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>在客户端上插入广告
 本文包含有关如何在客户端上插入各种类型的广告的信息。
@@ -276,7 +276,7 @@ VMAP 文件以 `<VMAP>` 元素开头，该元素包含一个或多个 `<AdBreak>
     </vmap:VMAP>
 ```
 
-有关 <TrackingEvents> 元素及其子元素的详细信息，请参阅 http://iab.net/VMAP.pdf 
+有关 <TrackingEvents> 元素及其子元素的详细信息，请参阅 http://iab.net/VMAP.pdf
 
 ### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>使用媒体摘要排序模板 (MAST) 文件
 MAST 文件允许指定定义何时显示广告的触发器。 以下是一个示例 MAST 文件，它包含前置式广告、中置式广告和后置式广告的触发器。
@@ -327,12 +327,12 @@ MAST 文件允许指定定义何时显示广告的触发器。 以下是一个�
 
 MAST 文件以 **MAST** 元素开头，该元素包含一个 **triggers** 元素。 `<triggers>` 元素包含一个或多个定义应何时播放广告的 **trigger** 元素。
 
-**trigger** 元素包含一个 **startConditions** 元素，后者指定应开始播放广告的时间。 **startConditions** 元素包含一个或多个 `<condition>` 元素。 每个 `<condition>` 评估结果为 true 时，将启动或撤销一个触发器，具体取决于 `<condition>` 是否分别包含在 **startConditions** 或 **endConditions** 元素中。 有多个 `<condition>` 元素时，将它们视为隐式 OR，任何评估结果为 true 的条件均将导致触发器启动。 `<condition>` 元素可以嵌套。 预设了子 `<condition>` 元素时，将它们视为隐式 AND；若要启动触发器，则所有条件的评估结果必须为 true。 `<condition>` 元素包含定义条件的以下属性：
+**trigger** 元素包含一个 **startConditions** 元素，后者指定应开始播放广告的时间。 **startConditions** 元素包含一个或多个 `<condition>` 元素。 每个 `<condition>` 评估结果为 true 时，将启动或撤销一个触发器，具体取决于 `<condition>` 是否分别包含在 **startConditions** 或 **endConditions** 元素中。 有多个 `<condition>` 元素时，将它们视为隐式 OR，任何评估结果为 true 的条件均将导致触发器启动。 `<condition>` 元素可以嵌套。 预设了子 `<condition>` 元素时，将它们视为隐式 AND；要启动触发器，则所有条件的评估结果必须都为 true。 `<condition>` 元素包含定义条件的以下属性：
 
 1. **type** - 指定条件、事件或属性的类型
 2. **name** - 要在评估过程中使用的属性或事件的名称
 3. **value** - 将针对其进行评估的属性的值
-4. **operator** - 要在评估期间使用的运算符：EQ（等于）、NEQ（不等于）、GTR（大于）、GEQ（大于或等于）、LT（小于）、LEQ（小于或等于）、MOD（取模）
+4. **operator** - 要在评估期间使用的操作符：EQ（等于）、NEQ（不等于）、GTR（大于）、GEQ（大于或等于）、LT（小于）、LEQ（小于或等于）、MOD（取模）
 
 **endConditions** 也包含 `<condition>` 元素。 当某个条件的计算结果为 true 时，该触发器将重置。 `<trigger>` 元素还包含 `<sources>` 元素，后者包含一个或多个 `<source>` 元素。 `<source>` 元素定义广告响应的 URI 和广告响应的类型。 在此示例中，向 VAST 响应提供了一个 URI。
 
@@ -356,8 +356,8 @@ VPAID 是用于使可执行广告单元能够与视频播放器进行通信的 A
 
 ```xml
     <MediaFiles>
-       <MediaFile id="1" delivery="progressive" type=”application/x-shockwaveflash”
-                  width=”640” height=”480” apiFramework=”VPAID”>
+       <MediaFile id="1" delivery="progressive" type="application/x-shockwaveflash"
+                  width="640" height="480" apiFramework="VPAID">
            <!-- CDATA wrapped URI to executable ad -->
        </MediaFile>
     </MediaFiles>
@@ -366,7 +366,7 @@ VPAID 是用于使可执行广告单元能够与视频播放器进行通信的 A
 可以使用 VAST 响应中 `<Linear>` 或 `<NonLinear>` 元素内的 `<AdParameters>` 元素来初始化可执行广告。 有关 `<AdParameters>` 元素的详细信息，请参阅 [VAST 3.0](https://www.iab.net/media/file/VASTv3.0.pdf)。 有关 VPAID API 的详细信息，请参阅 [VPAID 2.0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)。
 
 ## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>实现带有支持广告的 Windows 或 Windows Phone 8 播放器
-Microsoft 媒体平台：适用于 Windows 8 和 Windows Phone 8 的播放器框架包含示例应用程序集合，这些示例应用程序展示如何使用该框架来实现视频播放器应用程序。 可以从[适用于 Windows 8 和 Windows Phone 8 的播放器框架](https://playerframework.codeplex.com)下载播放器框架和示例。
+Microsoft Media Platform：适用于 Windows 8 和 Windows Phone 8 的播放器框架包含示例应用程序集合，这些示例应用程序展示如何使用该框架实现视频播放器应用程序。 可以从[适用于 Windows 8 和 Windows Phone 8 的播放器框架](https://playerframework.codeplex.com)下载播放器框架和示例。
 
 打开 Microsoft.PlayerFramework.Xaml.Samples 解决方案时，将看到项目中的多个文件夹。 Advertising 文件夹包含与创建具有广告支持的视频播放器相关的示例代码。 Advertising 文件夹中有多个 XAML/cs 文件，每一个均显示如何以不同的方式插入广告。 以下列表对每个文件进行描述：
 
@@ -586,7 +586,7 @@ ProgrammaticAdPage.xaml.cs 文件创建 AdHandlerPlugin，添加 TimelineMarker 
 ```
 
 ## <a name="implementing-an-ios-video-player-with-ad-support"></a>实现带有广告支持的 iOS 视频播放器
-Microsoft 媒体平台：适用于 iOS 的播放器框架包含示例应用程序集合，这些示例应用程序展示如何使用该框架来实现视频播放器应用程序。 可以从 [Azure 媒体播放器框架](https://github.com/Azure/azure-media-player-framework)下载播放器框架和示例。 GitHub 页面具有指向 Wiki（含有关播放器框架的其他信息和播放器示例简介）的链接：[Azure Media Player Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)。
+Microsoft Media Platform：适用于 iOS 的播放器框架包含示例应用程序集合，这些示例应用程序展示如何使用该框架实现视频播放器应用程序。 可以从 [Azure 媒体播放器框架](https://github.com/Azure/azure-media-player-framework)下载播放器框架和示例。 GitHub 页面包含一个 Wiki 链接，其中包含有关播放器框架的其他信息和播放机示例简介： [Azure Media Player wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)。
 
 ### <a name="scheduling-ads-with-vmap"></a>使用 VMAP 安排广告
 以下示例演示如何使用 VMAP 文件安排广告。

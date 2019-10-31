@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: fc0b447630b5e1ac360b1d84869cea02186672fc
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 74518fb891c5ecb25e818b9642d31e3daaf828de
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71036623"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162610"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>在应用程序中嵌入视频索引器小组件
 
@@ -253,7 +253,7 @@ iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<You
 
 默认情况下，视频索引器播放器具有自动生成的隐藏式字幕，它们基于视频记录。 此脚本是从视频中提取的，其中包含上传视频时选择的源语言。
 
-如果要使用其他语言嵌入，可以将 `&captions=< Language | ”all” | “false” >` 添加到嵌入播放机 URL。 如果需要所有可用语言标题中的标题，请使用值 `all`。 如果需要默认显示字幕，则可传递 `&showCaptions=true`。
+如果要使用其他语言嵌入，可以将 `&captions=< Language | "all" | "false" >` 添加到嵌入播放机 URL。 如果需要所有可用语言标题中的标题，请使用值 `all`。 如果需要默认显示字幕，则可传递 `&showCaptions=true`。
 
 然后，嵌入 URL 将如下所示： 
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: v-fehase
-ms.openlocfilehash: 87df7824a182e68d849fdf967f96b2974b7e0c16
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 88ef0874d760fb87700eac83c0d615be5887ddee
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71148167"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159846"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>开发 Azure AD 应用程序的安全应用程序
 ## <a name="overview"></a>概述
@@ -71,7 +71,7 @@ ms.locfileid: "71148167"
 
 ![威胁模型输出](./media/secure-aad-app/threat-model-output.png)
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 若要启动并运行应用程序，需要安装以下工具：
 
 - 用于修改和查看应用程序代码的代码编辑器。[Visual Studio Code](https://code.visualstudio.com/)为开源选项。
@@ -235,7 +235,7 @@ $trustedRootCert01 = New-AzApplicationGatewayTrustedRootCertificate -Name "test1
 
 #Configure the HTTP settings for the application gateway back end
 
-$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name “setting01” -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
+$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name "setting01" -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
 
 #Create a load-balancer routing rule that configures the load balancer
 
@@ -265,7 +265,7 @@ Azure App Service 使你能够使用 Python、Ruby、 C#和 Java 等语言构建
     Write-Host "Configure a CNAME record that maps $fqdn to $webappname.azurewebsites.net"
     Read-Host "Press [Enter] key when ready ..."
 
-#### <a name="before-continuing-go-to-your-azure-domain-name-system-configuration-ui-for-your-custom-domain-and-follow-the-instructions-at-httpsakamsappservicecustomdns-to-configure-a-cname-record-for-the-hostname-www-and-point-it-your-web-apps-default-domain-name"></a>继续操作前，请访问自定义域的 Azure 域名系统配置 UI，并按照中的说明 https://aka.ms/appservicecustomdns 配置主机名 "www" 的 CNAME 记录，并将其指向 web 应用的默认域名
+#### <a name="before-continuing-go-to-your-azure-domain-name-system-configuration-ui-for-your-custom-domain-and-follow-the-instructions-at-httpsakamsappservicecustomdns-to-configure-a-cname-record-for-the-hostname-www-and-point-it-your-web-apps-default-domain-name"></a>在继续之前，请访问你的自定义域的 Azure 域名系统配置 UI，并按照 https://aka.ms/appservicecustomdns 上的说明配置主机名 "www" 的 CNAME 记录，并将其指向 web 应用的默认域名
 
 #### <a name="upgrade-app-service-plan-to-shared-tier-minimum-required-by-custom-domains"></a>将应用服务计划升级到共享层（自定义域需要的最低要求）
     Set-AzAppServicePlan -Name $webappname -ResourceGroupName $webappname -Tier Shared
@@ -293,7 +293,7 @@ Azure App Service 使你能够使用 Python、Ruby、 C#和 Java 等语言构建
     *新的应用服务虚拟网络集成*
 1. 在下一页上，选择 "**添加 VNET （预览版）** "。
 
-1. 在下一菜单中，选择在以开头`aad-vnet`的部署中创建的虚拟网络。 你可以创建一个新的子网，也可以选择一个现有子网。
+1. 在下一菜单中，选择在以 `aad-vnet`开头的部署中创建的虚拟网络。 你可以创建一个新的子网，也可以选择一个现有子网。
    在这种情况下，请创建新的子网。 将**地址范围**设置为**10.0.3.0/24** ，并将子网命名**为子网。**
 
    ![应用服务虚拟网络配置](./media/secure-web-app/app-vnet-config.png)
@@ -320,7 +320,7 @@ Azure App Service 使你能够使用 Python、Ruby、 C#和 Java 等语言构建
 
    *配置 NSG*
 
-4. 在网关 NSG 的出站规则中，通过创建以服务标记为目标的规则，添加允许与应用服务实例建立出站连接的规则`AppService`
+4. 在网关 NSG 的出站规则中，添加一个规则，允许通过创建以服务标记为目标的规则对应用服务实例建立出站连接 `AppService`
 
    ![为 NSG 添加出站规则](./media/secure-web-app/nsg-outbound-allowappserviceout.png)
 
@@ -343,7 +343,7 @@ Azure App Service 使你能够使用 Python、Ruby、 C#和 Java 等语言构建
     *为 Azure 服务运行状况探测添加规则（仅应用服务环境）*
 
 若要限制攻击面，请修改应用服务网络设置，仅允许应用程序网关访问应用程序。
-若要应用这些设置，请访问 "应用服务网络" 选项卡，选择 " **IP 限制**" 选项卡，并创建允许仅允许应用程序网关 IP 直接访问服务的允许规则。 可以从其 "概述" 页检索网关的 IP 地址。 在 " **Ip 地址 CIDR** " 选项卡上，按以下格式输入 IP `<GATEWAY_IP_ADDRESS>/32`地址：。
+若要应用这些设置，请访问 "应用服务网络" 选项卡，选择 " **IP 限制**" 选项卡，并创建允许仅允许应用程序网关 IP 直接访问服务的允许规则。 可以从其 "概述" 页检索网关的 IP 地址。 在 " **Ip 地址 CIDR** " 选项卡上，按以下格式输入 IP 地址： "`<GATEWAY_IP_ADDRESS>/32`"。
 
 ![仅允许网关](./media/secure-web-app/app-allow-gw-only.png)
 
@@ -371,7 +371,7 @@ Azure 磁盘加密利用 Windows 的 BitLocker 功能为数据磁盘提供卷加
    - 使用基于角色的访问控制（RBAC）将权限分配给特定范围内的用户、组和应用程序。     
    - 使用 Key Vault 通过自动续订管理 TLS 证书。 
    - Key Vault 的诊断日志已启用，其保留期至少为 365 天。
-   - 对密钥进行允许的加密操作时，仅限必需的操作。
+   - 对密钥允许的加密操作仅限于所需的加密操作。
 ### <a name="azure-security-center"></a>Azure 安全中心
 使用 Azure 安全中心，客户可以跨工作负荷集中应用和管理安全策略、限制对威胁的暴露以及检测和响应攻击。 附加 
    - Azure 安全中心可以访问 Azure 服务的现有配置，以提供配置和服务建议，以帮助改进安全状况和保护数据。
@@ -389,22 +389,22 @@ Azure 磁盘加密利用 Windows 的 BitLocker 功能为数据磁盘提供卷加
    - Azure 安全中心和 Azure 顾问提供额外的保护和通知。 Azure 安全中心还提供信誉系统。
 ### <a name="logging-and-auditing"></a>日志记录和审核
 Azure 服务广泛记录系统和用户活动以及系统运行状况：
-   - 活动日志：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
-   - 诊断日志：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志、应用程序网关访问和防火墙日志。 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。
+   - 活动日志：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供对订阅中的资源执行的操作的见解。 活动日志可帮助确定操作的发起方、发生的时间和状态。
+   - 诊断日志：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志、应用程序网关访问和防火墙日志。 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 保留期允许用户进行配置，最长为 730 天，具体取决于组织的保留期要求。
 ### <a name="azure-monitor-logs"></a>Azure Monitor 日志
    这些日志合并到[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)中，以便进行处理、存储和仪表板报告。 收集后，数据在 Log Analytics 工作区内按数据类型整理到不同的表中，这样即可不考虑最初来源而集中分析所有数据。 此外，Azure 安全中心与 Azure Monitor 日志集成，使客户可以使用 Kusto 查询访问其安全事件数据，并将其与其他服务中的数据合并。
 
    以下 Azure[监视解决方案](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)包括在此体系结构中
 
-   - [Active Directory 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署的服务器基础结构的优先建议列表。
+   - [Active Directory 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署服务器基础结构的优先建议列表。
    - [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：代理运行状况解决方案报告部署了多少代理及其地理分布，以及有多少代理无响应，以及正在提交操作数据的代理数。
-   - [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：Activity Log Analytics 解决方案可帮助分析客户的所有 Azure 订阅的 Azure 活动日志。
+   - [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：Activity Log Analytics 解决方案可帮助分析客户所有 Azure 订阅的 Azure 活动日志。
 ### <a name="azure-monitor"></a>Azure Monitor
    [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/)通过使组织能够审核、创建警报和存档数据（包括在其 Azure 资源中跟踪 API 调用），帮助用户跟踪性能、维护安全和确定趋势。
 ### <a name="application-insights"></a>Application Insights 
-   [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理服务。 Application Insights 可检测性能异常，客户可以使用它来监视实时 Web 应用程序。 它包含强大的分析工具来帮助客户诊断问题，了解用户在应用中实际执行了哪些操作。 它旨在帮助客户持续提高性能和可用性。
+   [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview)是针对多个平台上的 web 开发人员的可扩展应用程序性能管理服务。 Application Insights 可检测性能异常，客户可以使用它来监视实时 Web 应用程序。 它包含强大的分析工具来帮助客户诊断问题，了解用户在应用中实际执行了哪些操作。 它旨在帮助客户持续提高性能和可用性。
 
-### <a name="azure-key-vault"></a>Azure Key Vault
+### <a name="azure-key-vault"></a>Azure 密钥保管库
    为组织创建保管库，以便在其中存储密钥，并为如下操作任务维护责任
 
    - Key Vault 中存储的数据包括   
@@ -443,8 +443,8 @@ Azure 服务广泛记录系统和用户活动以及系统运行状况：
 1.  向后导航到 Azure 门户。 在左侧导航窗格中，选择 "Azure Active Directory" 服务，然后选择 "应用注册"。
 2.  在生成的屏幕中，选择 WebApp-OpenIDConnect-DotNet 应用程序。
 3.  在 "重定向 Uri" 部分的 "身份验证" 选项卡中，在组合框中选择 "Web"，并添加以下重定向 Uri。
-    [https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net](https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net ) https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc o 在 "高级设置" 部分中，将 "注销 URL" 设置为 https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc
-4.  例如 https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net ，在 "品牌" 选项卡中，将主页 URL 更新为应用服务的地址。
+    在 "高级设置" 部分中 https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc o，将注销 URL 设置为 https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc
+4.  在 "品牌" 选项卡中，o 将主页 URL 更新为应用服务的地址，例如 https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net 。
         o 保存配置。
 5.  如果应用程序调用 web api，请确保对项目 appsettings 应用必要的更改，使其调用已发布的 API URL 而不是 localhost。
 发布示例

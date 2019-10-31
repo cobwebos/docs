@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: ea58ef49aa4d901339bf87343f0eea8eb517011d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1898820276d1906a49a95bc513a6689fce177f7d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299021"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162930"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>部署英国官方和英国 NHS 蓝图示例
 
@@ -38,9 +38,9 @@ ms.locfileid: "72299021"
 1. 输入该蓝图示例的“基本信息”：
 
    - **蓝图名称**：提供蓝图示例副本的名称。
-   - **定义位置**：使用省略号并选择要将示例副本保存到的管理组。
+   - **定义位置**：使用省略号，并选择要将示例副本保存到的管理组。
 
-1. 选择页面顶部的“项目”选项卡，或页面底部的“下一步:项目”。
+1. 选择页面顶部的 "_项目_" 选项卡，或单击页面底部的 "**下一步：项目**"。
 
 1. 查看构成蓝图示例的项目列表。 许多项目包含稍后我们将要定义的参数。 查看完蓝图示例后，选择“保存草稿”。
 
@@ -68,11 +68,11 @@ ms.locfileid: "72299021"
 
    - 基础
 
-     - **订阅**：在蓝图示例副本所保存到的管理组中选择一个或多个订阅。 如果选择多个订阅，将使用输入的参数为每个订阅创建一个分配。
-     - **分配名称**：系统会根据蓝图的名称预先填充该名称。
+     - **订阅**：选择要在其中保存蓝图示例副本的管理组中的一个或多个订阅。 如果选择多个订阅，将使用输入的参数为每个订阅创建一个分配。
+     - **分配名称**：根据蓝图的名称预先填充名称。
        请根据需要更改该名称，或保留原样。
      - **位置**：选择要在其中创建托管标识的区域。 Azure 蓝图使用此托管标识在分配的蓝图中部署所有项目。 若要了解详细信息，请参阅 [Azure 资源的托管标识](../../../../active-directory/managed-identities-azure-resources/overview.md)。
-     - **蓝图定义版本**：选择蓝图示例副本的**已发布**版本。
+     - **蓝图定义版本**：选取蓝图示例副本的**已发布**版本。
 
    - 锁分配
 
@@ -97,9 +97,9 @@ ms.locfileid: "72299021"
 
 项目名称|项目类型|参数名称|描述|
 |-|-|-|-|
-|英国官方或英国 NHS 蓝图计划|策略分配 |用于审核诊断日志的资源类型（策略：英国官方或英国 NHS 蓝图计划 |"诊断日志" 设置为 "已启用" 时要审核的资源类型的列表。  有关可接受的值，请参阅[Azure 诊断日志支持的服务、架构和类别](../../../../azure-monitor/platform/diagnostic-logs-schema.md)。 |
-|\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |可选：支持添加到作用域的 Linux OS 的 VM 映像列表（策略：\[预览\]：部署适用于 Linux Vm 的 Log Analytics 代理） |可有可无默认值为_none_。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
-|\[预览\]：为 Windows VM 部署 Log Analytics 代理 |策略分配 |可选：支持添加到作用域的 Windows OS 的 VM 映像列表（策略：\[预览\]：部署适用于 Windows Vm 的 Log Analytics 代理） |可有可无默认值为_none_。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
+|英国官方或英国 NHS 蓝图计划|策略分配 |用于审核诊断日志的资源类型（策略：用于英国官方的蓝图计划或英国 NHS） |"诊断日志" 设置为 "已启用" 时要审核的资源类型的列表。  有关可接受的值，请参阅[Azure 诊断日志支持的服务、架构和类别](../../../../azure-monitor/platform/diagnostic-logs-schema.md)。 |
+|\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |可选：支持添加到作用域的 Linux OS 的 VM 映像列表（策略： \[预览版\]：部署适用于 Linux Vm 的 Log Analytics 代理） |可有可无默认值为_none_。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
+|\[预览\]：为 Windows VM 部署 Log Analytics 代理 |策略分配 |可选：支持添加到作用域的 Windows OS 的 VM 映像列表（策略： \[预览版\]：为 Windows Vm 部署 Log Analytics 代理） |可有可无默认值为_none_。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -107,9 +107,9 @@ ms.locfileid: "72299021"
 
 > [!div class="nextstepaction"]
 > [英国官方和英国 NHS 蓝图-概述](./index.md)
-> [UK 官方和英国 NHS 蓝图-控件映射](./control-mapping.md)
+> [英国官方和英国 NHS 蓝图-控件映射](./control-mapping.md)
 
-有关蓝图和如何使用这些蓝图的更多文章：
+有关蓝图以及如何使用它们的其他文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

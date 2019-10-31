@@ -1,6 +1,6 @@
 ---
 title: 配置 ExpressRoute Direct - Azure | Microsoft Docs
-description: 此页可帮助你配置 ExpressRoute 直接。
+description: 此页可帮助你配置 ExpressRoute Direct。
 services: expressroute
 author: jaredr80
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 0fec7234d18659051c61fda593b1ba0fb846c220
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9dcefb2d47b6862466b64b3568e1a530a2fdb8cb
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964264"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161597"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>如何配置 ExpressRoute 直接
 
@@ -26,7 +26,7 @@ ms.locfileid: "65964264"
    ```powershell
    Connect-AzAccount 
 
-   Select-AzSubscription -Subscription “<SubscriptionID or SubscriptionName>”
+   Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
 2. 列出支持 ExpressRoute Direct 的所有位置。
   
@@ -163,10 +163,10 @@ ms.locfileid: "65964264"
    Links[0] 是主端口，Links[1] 是辅助端口。
 
    ```powershell
-   $ERDirect.Links[0].AdminState = “Enabled”
+   $ERDirect.Links[0].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
-   $ERDirect.Links[1].AdminState = “Enabled”
+   $ERDirect.Links[1].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    ```
    **示例输出：**
@@ -218,17 +218,17 @@ ms.locfileid: "65964264"
    Circuits                   : []
    ```
 
-   使用相同的过程和 `AdminState = “Disabled”` 设置可关闭端口。
+   使用相同的过程和 `AdminState = "Disabled"` 设置可关闭端口。
 
 ## <a name="circuit"></a>创建线路
 
 默认情况下，可以在 ExpressRoute Direct 资源所在的订阅中创建 10 条线路。 可以联系支持人员来提高此限额。 你负责跟踪预配的和已利用的带宽。 预配的带宽是 ExpressRoute Direct 资源上所有线路的带宽总和，已利用的带宽是基础物理接口的物理利用率。
 
-有额外的线路带宽可以在 ExpressRoute Direct 上使用，仅用于支持上面概述的场景。 其中包括：40Gbps 和 100Gbps。
+有额外的线路带宽可以在 ExpressRoute Direct 上使用，仅用于支持上面概述的场景。 它们是：40Gbps 和 100Gbps。
 
-**SkuTier**可以是本地、 标准或高级。
+**SkuTier**可以是本地、标准或高级。
 
-**SkuFamily**必须以无限制模式为 MeteredData ExpressRoute 直接上不支持。
+**SkuFamily**必须是 MeteredData，因为 ExpressRoute 直接不支持。
 
 在 ExpressRoute Direct 资源上创建一个线路。
 

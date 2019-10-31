@@ -7,16 +7,16 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 8cf82ce9ed4a9dc701c016f15224d6adfa299736
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 95303ba51fd4133fc6e05be16d6448c8699c3a43
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263588"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162084"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>创建和使用 web 应用程序防火墙 v2 自定义规则
 
-Azure 应用程序网关 web 应用程序防火墙（WAF） v2 为 web 应用程序提供保护。 此保护由开放式 Web 应用程序安全项目（OWASP）核心规则集提供。 在某些情况下，您可能需要创建自己的自定义规则来满足您的特定需要。 有关 WAF 自定义规则的详细信息，请参阅 [Overview：自定义 web 应用程序防火墙规则 @ no__t-0。
+Azure 应用程序网关 web 应用程序防火墙（WAF） v2 为 web 应用程序提供保护。 此保护由开放式 Web 应用程序安全项目（OWASP）核心规则集提供。 在某些情况下，您可能需要创建自己的自定义规则来满足您的特定需要。 有关 WAF 自定义规则的详细信息，请参阅[概述：自定义 web 应用程序防火墙规则](custom-waf-rules-overview.md)。
 
 本文介绍了一些可创建的示例自定义规则，并将其用于 WAF v2。 若要了解如何使用 Azure PowerShell 通过自定义规则部署 WAF，请参阅[使用 Azure PowerShell 配置 web 应用程序防火墙自定义规则](configure-waf-custom-rules.md)。
 
@@ -27,9 +27,9 @@ Azure 应用程序网关 web 应用程序防火墙（WAF） v2 为 web 应用程
 
 ## <a name="example-1"></a>示例 1
 
-你知道有一个名为 *evilbot* 的机器人，你想要阻止其对你的网站进行爬网。 在此示例中，会在请求标头中阻止用户代理*evilbot* 。
+你知道有一个名为 " *evilbot* " 的机器人，你希望阻止它对你的网站进行爬网。 在此示例中，会在请求标头中阻止用户代理*evilbot* 。
 
-逻辑：p
+逻辑： p
 
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable `
@@ -77,7 +77,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 若要查看使用此自定义规则部署的 WAF，请参阅[使用 Azure PowerShell 配置 web 应用程序防火墙自定义规则](configure-waf-custom-rules.md)。
 
-### <a name="example-1a"></a>示例 1a
+### <a name="example-1a"></a>示例1a
 
 可以通过使用正则表达式来完成相同的操作：
 
@@ -127,11 +127,11 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="example-2"></a>示例 2
 
-你想要阻止来自范围 198.168.5.0/24 内 IP 地址的所有请求。
+要阻止来自 198.168.5.0/24 范围内的 IP 地址的所有请求。
 
 在此示例中，会阻止来自某个 IP 地址范围的所有流量。 规则的名称为*myrule1*，优先级设置为100。
 
-逻辑：p
+逻辑： p
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -181,9 +181,9 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="example-3"></a>示例 3
 
-在此示例中，需阻止用户代理 evilbot 和 192.168.5.0/24 范围内的流量。 若要实现此结果，可以创建两个单独的匹配条件，并将它们放在同一个规则中。 此方法可确保当用户代理标头中的*evilbot* *和*192.168.5.0/24 范围内的 IP 地址匹配时，该请求会被阻止。
+在此示例中，你想要阻止用户代理*evilbot*，以及 192.168.5.0/24 范围内的流量。 若要实现此结果，可以创建两个单独的匹配条件，并将它们放在同一个规则中。 此方法可确保当用户代理标头中的*evilbot* *和*192.168.5.0/24 范围内的 IP 地址匹配时，该请求会被阻止。
 
-逻辑：p *and* q
+逻辑： p*和*q
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -255,7 +255,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
 在此示例中，你想要阻止请求是在 IP 地址范围*192.168.5.0/24*外，还是不能使用用户代理*字符串（即，用户不使用*chrome 浏览器）。 由于此逻辑使用*或*，因此，这两个条件在不同的规则中，如下面的示例中所示。 若要阻止流量， *myrule1*和*myrule2*都需要匹配。
 
-逻辑：*not* (p *and* q) = *not* p *or not* q。
+逻辑： *not* （p*和*q） = *not* p*或 not* q。
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -338,11 +338,11 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-## <a name="example-5"></a>示例 5
+## <a name="example-5"></a>示例5
 
-你希望阻止自定义 SQLI。 由于此处使用的逻辑为*或*，并且所有值都在*RequestUri*中，因此所有*MatchValues*都可以位于以逗号分隔的列表中。
+要阻止自定义注 SQLI。 由于此处使用的逻辑为*或*，并且所有值都在*RequestUri*中，因此所有*MatchValues*都可以位于以逗号分隔的列表中。
 
-逻辑：p *or* q *or* r
+逻辑： p*或*q*或*r
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -369,7 +369,7 @@ $rule1 = New-AzApplicationGatewayFirewallCustomRule `
       {
         "name": "myrule4",
         "ruleType": "MatchRule",
-        “priority”: 100
+        "priority": 100,
         "action": "block",
         "matchConditions": [
           {

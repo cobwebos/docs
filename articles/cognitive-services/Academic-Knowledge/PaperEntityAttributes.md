@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: darrine
 ROBOTS: NOINDEX
-ms.openlocfilehash: c300a6477daa5759a68d5d11d40b1a71b46bd808
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1d16668e2c0f52c0824016c977251e64c800c54d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793827"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161727"
 ---
 # <a name="paper-entity"></a>论文实体
 
@@ -55,14 +55,14 @@ Y | 已发布年份 | Int32 | 等于、IsBetween
 --- | ---
 BT | BibTex 文档类型（"a"：杂志文章，"b"：书籍，"c"：书本章节，"p"：会议室）
 BV | BibTex 场地名称
-CC | 引文上下文 – 引用的论文 ID 的列表和论文中的对应上下文（例如 [{123:[“brown foxes are known for jumping as referenced in paper 123”, “the lazy dogs are a historical misnomer as shown in paper 123”]}）
+CC | 引文上下文–所引用的纸张 ID 的列表以及纸张中的相应上下文（例如 [{123： ["棕色 foxes 对于在纸张 123" 中所引用的跳跃识别），惰性狗是历史 misnomer，如纸张 123 "]} 中所示。
 DN | 原始纸张标题
 DOI | 数字对象标识符
 FP | 发布中的第一页纸
 I | 发布问题
 IA | 倒排的摘要
 IA.IndexLength | 索引中的项数（摘要的单词计数）
-IA.InvertedIndex | 摘要单词的列表及其在原始摘要中的对应位置（例如. [{“the”:[0, 15, 30]}, {“brown”:[1]}, {“fox”:[2]}]）
+IA.InvertedIndex | 抽象词及其在原始抽象中的相应位置列表（例如 [{"： [0，15，30]}，{" 棕色 "： [1]}，{" fox "： [2]}]）
 LP | 发布的纸张的最后一页
 PB | 发布者
 S | 来源 - 论文的 Web 来源列表，按静态排名排序

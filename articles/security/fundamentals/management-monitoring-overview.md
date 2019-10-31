@@ -13,40 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/28/2019
+ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 9ed2d00d6f229d958e0df024c70381051840548c
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 7ad7a29a92d25556190b4cf44f4e48158a6f0952
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727001"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162746"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure 安全管理和监视概述
 本文概述了 Azure 提供的安全功能和服务，以帮助管理和监视 Azure 云服务和虚拟机。
-
-## <a name="shared-responsibility"></a>共担责任
-
-Microsoft 云服务的安全性是你与 Microsoft 之间的一个合作关系和共担责任。 Microsoft 负责 Azure 平台及其数据中心的物理安全（通过使用上锁的入口门、护栏和保安等安全保护措施）。 Azure 还在软件层提供了强级别的云安全，以满足其客户的安全、隐私及合规性需求。
-
-拥有自己的数据和标识，需负责对其进行保护，同时确保本地资源的安全性以及所控制的云组件的安全性。 Microsoft 提供安全控制和功能，帮助你保护数据和应用程序。 你对安全的责任取决于云服务的类型。
-
-下图总结了 Microsoft 和客户之间的责任平衡。
-
-![共担责任](./media/management-monitoring-overview/shared-responsibility.png)
-
-有关安全管理的详细信息，请参阅 [Azure 中的安全管理](management.md)。
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
 基于角色的访问控制 (RBAC) 为 Azure 资源提供详细的访问管理。 使用 RBAC，可以仅授予用户执行其作业所需的访问权限。 RBAC 还有助于确保用户离开组织后无法访问云中的资源。
 
-了解详细信息:
+了解更多：
 
 * [有关 RBAC 的 Active Directory 团队博客](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
 * [Azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)
 
-## <a name="antimalware"></a>Antimalware
+## <a name="antimalware"></a>反恶意软件
 
 通过 Azure，可使用主要安全厂商（例如 Microsoft、Symantec、Trend Micro、McAfee 和 Kaspersky）的反恶意软件。 此软件可帮助保护虚拟机免受恶意文件、广告程序和其他威胁的侵害。
 
@@ -56,7 +44,7 @@ Microsoft 云服务的安全性是你与 Microsoft 之间的一个合作关系�
 
 在 Azure 上也支持 Symantec Endpoint Protection (SEP)。 通过门户集成，你能够表明想要在 VM 内使用 SEP。 SEP 可以通过 Azure 门户安装在新的 VM 上，也可以通过 PowerShell 安装在现有 VM 上。
 
-了解详细信息:
+了解更多：
 
 * [在 Azure 虚拟机上部署反恶意软件解决方案](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件](antimalware.md)
@@ -70,7 +58,7 @@ Azure 多重身份验证是一种需要使用多种验证方法的身份验证�
 
 多重身份验证可帮助保护对数据和应用程序的访问，同时可以满足用户对简单登录过程的需求。 它通过各种验证选项（例如电话、短信、移动应用通知或验证码）和第三方 OATH 令牌来提供强大的身份验证。
 
-了解详细信息:
+了解更多：
 
 * [多重身份验证](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 * [什么是 Azure 多重身份验证？](/azure/active-directory/authentication/multi-factor-authentication)
@@ -86,7 +74,7 @@ Azure 多重身份验证是一种需要使用多种验证方法的身份验证�
 
 ExpressRoute 连接不经过公共 Internet。 它们可提供可靠性、速度、延迟和安全性这几个方面均比基于 Internet 的典型连接更胜一筹的专用连接。
 
-了解详细信息:
+了解更多：
 
 * [ExpressRoute 技术概述](../../expressroute/expressroute-introduction.md)
 
@@ -99,7 +87,7 @@ VPN 网关（也称为 Azure 虚拟网络网关）用于在虚拟网络和本地
 * [关于 VPN 网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 * [Azure 网络安全概述](network-overview.md)
 
-## <a name="privileged-identity-management"></a>Privileged Identity Management
+## <a name="privileged-identity-management"></a>特权标识管理
 
 用户有时候需要在 Azure 资源或者其他 SaaS 应用程序中执行特权操作。 这通常意味着，组织授予他们永久的 Azure Active Directory (Azure AD) 访问特权。
 
@@ -107,12 +95,12 @@ VPN 网关（也称为 Azure 虚拟网络网关）用于在虚拟网络和本地
 
 Privileged Identity Management 为角色或“及时”管理员访问引入了临时管理员的概念。 这种类型的管理员是需要为该分配的角色完成激活过程的用户。 激活过程会在指定的时段内将 Azure AD 中的用户角色分配从非活动更改为活动。
 
-了解详细信息:
+了解更多：
 
 * [Azure AD Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)
 * [Azure AD Privileged Identity Management 入门](../../active-directory/privileged-identity-management/pim-getting-started.md)
 
-## <a name="identity-protection"></a>Identity Protection
+## <a name="identity-protection"></a>标识保护
 
 Azure AD 标识保护提供了可疑登录活动和潜在漏洞的统一视图来帮助保护企业。 “标识保护”根据以下信号检测用户和特权（管理员）标识的可疑活动：
 
@@ -122,10 +110,10 @@ Azure AD 标识保护提供了可疑登录活动和潜在漏洞的统一视图�
 
 通过提供通知和建议的补救措施，标识保护有助于实时降低风险。 它会计算用户风险严重性。 可配置基于风险的策略，自动保护应用程序访问免受将来的威胁侵害。
 
-了解详细信息:
+了解更多：
 
 * [Azure Active Directory 标识保护](/azure/active-directory/active-directory-identityprotection)
-* [第 9 频道：Azure AD 和标识展示：“标识保护”预览版](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [第 9 频道：Azure AD 和标识展示：“标识保护”预览](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>安全中心
 
@@ -139,14 +127,18 @@ Azure 安全中心可帮助防范、检测和应对威胁。 通过安全中心�
 * 监视 Azure 虚拟机、网络和应用程序的状态。
 * 提供按优先级排列的安全警报列表，包括集成的合作伙伴解决方案中的警报。 它还提供了快速调查攻击所需的信息以及如何修复攻击的建议。
 
-了解详细信息:
+了解更多：
 
 * [Azure 安全中心简介](../../security-center/security-center-intro.md)
 * [提高 Azure 安全中心中的安全评分](../../security-center/security-center-secure-score.md)
 
 ## <a name="intelligent-security-graph"></a>Intelligent Security Graph
 
-Intelligent Security Graph 在 Microsoft 产品和服务中提供实时威胁防护。 它使用链接大量威胁情报和安全数据的高级分析，以提供可加强组织安全性的见解。 Microsoft 使用高级分析，每月处理超过 4,500 亿次身份验证、扫描 4,000 亿封电子邮件是否存在恶意软件和钓鱼，并更新 10 亿台设备，以提供更丰富的见解。 这些见解可帮助你的组织快速检测并响应攻击。
+Intelligent Security Graph 在 Microsoft 产品和服务中提供实时威胁防护。 它使用链接大量威胁情报和安全数据的高级分析，以提供可加强组织安全性的见解。 Microsoft 使用高级分析，每月处理超过 4,500 亿次身份验证、扫描 4,000 亿封电子邮件是否存在恶意软件和钓鱼，并更新 10 亿台设备，以提供更丰富的见解。 这些见解可以帮助组织快速检测和应对攻击。
 
 * [Intelligent Security Graph](https://www.microsoft.com/security/intelligence)
 
+## <a name="next-steps"></a>后续步骤
+了解共享的[责任模型](shared-responsibility.md)以及 Microsoft 处理哪些安全任务以及由您处理哪些任务。
+
+有关安全管理的详细信息，请参阅 [Azure 中的安全管理](management.md)。

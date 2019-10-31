@@ -18,14 +18,14 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c79717b00cd9a4b5da00496bf2f1822f7f77032
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 15502217edc6f3fd723076eda78d06fcf090aa49
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802985"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150489"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>Internet Explorer 和 Microsoft Edge 浏览器中具有 MSAL 的已知问题
+# <a name="use-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>通过 MSAL 使用 Internet Explorer 和 Microsoft Edge 浏览器
 
 将为[JAVASCRIPT ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29)生成适用于 javascript 的 Microsoft 身份验证库（MSAL），以便它可以在 Internet Explorer 中运行。 但有一些需要注意的事项。
 

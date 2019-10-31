@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/15/2018
-ms.openlocfilehash: ecb393ea1f64897f17ce73170da1673886ef8916
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/29/2019
+ms.openlocfilehash: b60906df01f640877e90281812acf64082ffad01
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71266187"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162831"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>使用 Azure HDInsight IO 缓存提高 Apache Spark 工作负荷的性能
 
@@ -22,6 +22,7 @@ IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spar
 
 > [!Note]  
 > IO 缓存当前将 RubiX 用作缓存组件，但在该服务的将来版本中可能会有所更改。 请使用 IO 缓存接口，并且不要直接对 RubiX 实现执行任何依赖项。
+>目前仅支持 Azure BLOB 存储的 IO 缓存。 
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Azure HDInsight IO 缓存的优点
 

@@ -1,5 +1,5 @@
 ---
-title: 配置 ExpressRoute 和站点到站点 VPN 连接 - 并存：经典：Azure | Microsoft Docs
+title: 配置 ExpressRoute 和站点到站点 VPN 连接-共存：经典： Azure |Microsoft Docs
 description: 本文指导配置可在经典部署模型中并存的 ExpressRoute 连接和站点到站点 VPN 连接。
 documentationcenter: na
 services: expressroute
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 70e7c689acac094890545ac1e65374e9377a0be0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b8eb1d7da9c588aedaedb37dc50c69970fe79ac2
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370387"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162712"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>配置 ExpressRoute 和站点到站点并存连接（经典）
 > [!div class="op_single_selector"]
-> * [PowerShell - Resource Manager](expressroute-howto-coexist-resource-manager.md)
+> * [PowerShell - 资源管理器](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell - 经典](expressroute-howto-coexist-classic.md)
 > 
 > 
@@ -32,7 +32,7 @@ ms.locfileid: "60370387"
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 > [!IMPORTANT]
-> 按以下说明进行操作之前，必须预先配置ExpressRoute 线路。 在按以下步骤操作之前，请务必遵循相关指南来[创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)和[配置路由](expressroute-howto-routing-classic.md)。
+> 按以下说明进行操作之前，必须预先配置 ExpressRoute 线路。 在按以下步骤操作之前，请务必遵循相关指南来[创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)和[配置路由](expressroute-howto-routing-classic.md)。
 > 
 > 
 
@@ -200,7 +200,7 @@ ms.locfileid: "60370387"
         Remove-AzureVNetGateway –VnetName MyAzureVNET
 3. 导出虚拟网络架构。 使用下面的 PowerShell cmdlet，并将值替换成自己的值。
    
-        Get-AzureVNetConfig –ExportToFile “C:\NetworkConfig.xml”
+        Get-AzureVNetConfig –ExportToFile "C:\NetworkConfig.xml"
 4. 编辑网络配置文件架构，使网关子网为 /27 或更短的前缀（例如 /26 或 /25）。 请参阅以下示例。 
    
    > [!NOTE]
@@ -211,7 +211,7 @@ ms.locfileid: "60370387"
           <Subnet name="GatewaySubnet">
             <AddressPrefix>10.17.159.224/27</AddressPrefix>
           </Subnet>
-5. 如果以前的网关是站点到站点 VPN，则还必须将连接类型更改为 “专用”  。
+5. 如果以前的网关是站点到站点 VPN，则还必须将连接类型更改为 **“专用”** 。
    
                  <Gateway>
                   <ConnectionsToLocalNetwork>

@@ -7,12 +7,12 @@ ms.date: 08/30/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 6f7bb1cfdb36bcaa8545fba8767b20d974c8e073
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 57e8eab6413efa25eb03c48a968ca2b671b8c8d6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968388"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162112"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
 
@@ -25,6 +25,9 @@ Azure 备份使用 MARS 代理将数据从本地计算机和 Azure Vm 备份到 
 - 在本地 Windows 计算机上运行，以便它们可以直接备份到 Azure 中的备份恢复服务保管库。
 - 在 Windows Vm 上运行，以便它们可以直接备份到保管库。
 - 在 Microsoft Azure 备份 Server （MABS）或 System Center Data Protection Manager （DPM）服务器上运行。 在此方案中，计算机和工作负荷备份到 MABS 或 DPM 服务器。 然后 MARS 代理将此服务器备份到 Azure 中的保管库。
+
+> [!NOTE]
+>Azure 备份不支持夏令时自动调整时间（DST）。 修改策略以确保考虑夏令时，以防止实际时间和计划的备份时间之间的差异。
 
 备份选项取决于安装代理的位置。 有关详细信息，请参阅[使用 MARS 代理的 Azure 备份体系结构](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders)。 有关 MABS 和 DPM 备份体系结构的信息，请参阅[备份到 dpm 或 MABS](backup-architecture.md#architecture-back-up-to-dpmmabs)。 另请参阅备份体系结构的[要求](backup-support-matrix-mabs-dpm.md)。
 

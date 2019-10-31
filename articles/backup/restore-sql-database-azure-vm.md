@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 8bdc77ba81c5a9ec47a02ef5a1ede82365314941
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 648c5ca1eb1cb1c0f1832654fc66d436b9318af3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968859"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161911"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>还原 Azure VM 上的 SQL Server 数据库
 
@@ -68,19 +68,19 @@ Azure 备份可以还原在 Azure Vm 上运行 SQL Server 数据库，如下所�
     - 最旧和最新的还原点。
     - 在完整和大容量日志恢复模式下，以及针对事务日志备份配置的数据库的最近24小时的日志备份状态。
 
-6. 选择 "**还原数据库**"。
+6. 选择“还原”。
 
-    ![选择“还原数据库”](./media/backup-azure-sql-database/restore-db-button.png)
+    ![选择“还原”](./media/backup-azure-sql-database/restore-db.png)
 
-7. 在 "**还原配置**" 中，指定要将数据还原到的位置：
+7. 在 "**还原配置**" 中，指定还原数据的位置（或方法）：
    - **备用位置**：将数据库还原到备用位置，并保留原始源数据库。
    - **覆盖数据库**：将数据还原到原始源所在的同一 SQL Server 实例。 此选项将覆盖原始数据库。
 
-     > [!Important]
-     > 如果选定的数据库属于 Always On 可用性组，则 SQL Server 不允许覆盖数据库。 仅“备用位置”可用。
-     >
-
-     ![“还原配置”菜单](./media/backup-azure-sql-database/restore-restore-configuration-menu.png)
+           > [!IMPORTANT]
+           > If the selected database belongs to an Always On availability group, SQL Server doesn't allow the database to be overwritten. Only **Alternate Location** is available.
+           >
+   - **还原为文件**：将可以还原的备份文件还原为数据库，而不是还原为数据库，稍后可以使用 SQL Server Management Studio 将可以恢复为数据库的备份文件还原为数据库。
+     ![还原配置菜单](./media/backup-azure-sql-database/restore-configuration.png)
 
 ### <a name="restore-to-an-alternate-location"></a>还原到备用位置
 
@@ -90,7 +90,7 @@ Azure 备份可以还原在 Azure Vm 上运行 SQL Server 数据库，如下所�
 4. 如果适用，请选择“当选定的 SQL 实例上已存在同名的 DB 时覆盖”。
 5. 选择“确定”。
 
-    ![为“还原配置”菜单提供值](./media/backup-azure-sql-database/restore-configuration-menu.png)
+    ![为“还原配置”菜单提供值](./media/backup-azure-sql-database/restore-configuration.png)
 
 6. 在 "**选择还原点**" 中，选择是[还原到特定的时间点](#restore-to-a-specific-point-in-time)还是[还原到特定的恢复点](#restore-to-a-specific-restore-point)。
 
@@ -107,6 +107,25 @@ Azure 备份可以还原在 Azure Vm 上运行 SQL Server 数据库，如下所�
 
     > [!NOTE]
     > 时间点还原仅适用于处于完全恢复模式和大容量日志恢复模式的数据库的日志备份。
+
+### <a name="restore-as-files"></a>还原为文件
+
+若要将备份数据还原为 .bak 文件而不是数据库，请选择 "**还原为文件**"。 文件转储到指定路径后，可以将这些文件放在要将其还原为数据库的任何计算机上。 由于可以将这些文件移到任何计算机上，因此你现在可以跨订阅和区域还原数据。
+
+1. 在 "**还原配置**" 菜单中的 "**还原位置**" 下，选择 "**还原为文件**"。
+2. 选择要将备份文件还原到的 SQL Server 名称。
+3. 在**服务器上的 "目标路径**" 中，输入在步骤2中选择的服务器上的文件夹路径。 此位置是服务将转储所有必要备份文件的位置。 通常，如果将网络共享路径或已装载的 Azure 文件共享的路径指定为目标路径，则会使同一网络中的其他计算机或其上装载的 Azure 文件共享更加轻松地访问这些文件。
+4. 选择“确定”。
+
+![选择还原为文件](./media/backup-azure-sql-database/restore-as-files.png)
+
+5. 选择要将所有可用的 .bak 文件还原到的**还原点**。
+
+![选择还原点](./media/backup-azure-sql-database/restore-point.png)
+
+6. 与所选恢复点关联的所有备份文件都将转储到目标路径中。 您可以使用 SQL Server Management Studio 将文件还原为任何计算机上存在的数据库。
+
+![目标路径中还原的备份文件](./media/backup-azure-sql-database/sql-backup-files.png)
 
 ### <a name="restore-to-a-specific-point-in-time"></a>还原到特定时间点
 

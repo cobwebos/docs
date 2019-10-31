@@ -1,6 +1,6 @@
 ---
 title: 配置 ExpressRoute Direct - Azure CLI | Microsoft Docs
-description: 本文可帮助你使用 Azure CLI 配置 ExpressRoute 直接
+description: 本文将帮助你使用 Azure CLI
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: ebfe3db43de87e67ad05ed8cb9f5812b5ded04e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a879344fddd6d12ae8a50e109dcaf4a4bb2c1b68
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965907"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161565"
 ---
-# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute 直接
+# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute Direct
 
 可以使用 Azure ExpressRoute Direct 连接到位于全球战略分布的对等互连位置的 Microsoft 全球网络。 有关详细信息，请参阅[关于 ExpressRoute Direct Connect](expressroute-erdirect-about.md)。
 
@@ -147,7 +147,7 @@ ms.locfileid: "65965907"
    ```
 
    > [!NOTE]
-   > 还可以将“封装”属性设置为“Dot1Q”   。 
+   > 还可以将“封装”属性设置为“Dot1Q”。 
    >
 
    **示例输出**
@@ -208,7 +208,7 @@ ms.locfileid: "65965907"
 
 使用此过程来执行第 1 层测试。 请确保每个交叉连接在主端口和辅助端口的每个路由器上都有正确的补丁。
 
-1. 将链接设置为“启用”  。 重复此步骤以将每个链接设置为“启用”  。
+1. 将链接设置为“启用”。 重复此步骤以将每个链接设置为“启用”。
 
    Links[0] 是主端口，Links[1] 是辅助端口。
 
@@ -272,7 +272,7 @@ ms.locfileid: "65965907"
    }
    ```
 
-   使用相同的过程来关闭端口，方法是使用 `AdminState = “Disabled”`。
+   使用相同的过程来关闭端口，方法是使用 `AdminState = "Disabled"`。
 
 ## <a name="circuit"></a>创建线路
 
@@ -280,9 +280,9 @@ ms.locfileid: "65965907"
 
 只能在 ExpressRoute Direct 上使用其他线路带宽来支持上面概述的场景。 带宽为 40 Gbps 和 100 Gbps。
 
-**SkuTier**可以是本地、 标准或高级。
+**SkuTier**可以是本地、标准或高级。
 
-**SkuFamily**必须以无限制模式为 MeteredData ExpressRoute 直接上不支持。
+**SkuFamily**必须是 MeteredData，因为 ExpressRoute 直接不支持。
 在 ExpressRoute Direct 资源上创建线路：
 
   ```azurecli

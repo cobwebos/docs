@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7053f5b0211878d2f0b9d810fc3f4c0b9361e6f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7e4714de9868dbd540e2e662b22a22da6df6514b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509592"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147527"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>使用自定义策略来自定义用户旅程的 UI
 
@@ -43,7 +43,7 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 > [!NOTE]
 > 出于安全原因，目前会阻止使用 JavaScript 进行自定义。 
 
-在每个 HTML5/CSS 模板中，需要提供一个 *anchor* 元素，该元素对应于稍后所示的 HTML 或内容页面中的所需 `<div id=”api”>` 元素。 Azure AD B2C 要求所有内容页面包含此特定 div 元素
+在每个 HTML5/CSS 模板中，需要提供一个 *anchor* 元素，该元素对应于稍后所示的 HTML 或内容页面中的所需 `<div id="api">` 元素。 Azure AD B2C 要求所有内容页面包含此特定 div 元素
 
 ```
 <!DOCTYPE html>
@@ -82,18 +82,18 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 
 1. 打开浏览会话并导航到 [Azure 门户](https://portal.azure.com)。
 2. 使用管理凭据登录。
-3. 单击“创建资源” > “存储” > “存储帐户”。     此时会打开“创建存储帐户”窗格。 
-4. 在“名称”中，提供存储帐户的名称，例如 *contoso369b2c*。  此值稍后将引用为 *storageAccountName*。
-5. 选择适当的定价层、资源组和订阅。 确保已选中“固定到启动板”  选项。 单击**创建**。
+3. 单击“创建资源” > “存储” > “存储帐户”。  此时会打开“创建存储帐户”窗格。
+4. 在“名称”中，提供存储帐户的名称，例如 *contoso369b2c*。 此值稍后将引用为 *storageAccountName*。
+5. 选择适当的定价层、资源组和订阅。 确保已选中“固定到启动板”选项。 单击“创建”。
 6. 返回到启动板，并单击创建的存储帐户。
-7. 在“服务”部分中单击“Blob”。   此时会打开“Blob 服务”窗格。 
-8. 单击“+ 容器”。 
-9. 在“名称”中提供容器的名称，例如 *b2c*。  此值稍后将引用为 *containerName*。
-9. 为“访问类型”选择“Blob”。   单击**创建**。
-10. 创建的容器会显示在“Blob 服务”窗格上的列表中。 
-11. 关闭“Blob”  窗格。
-12. 在“存储帐户”窗格中，单击“密钥”图标。   此时会打开“访问密钥”窗格。   
-13. 记下“密钥 1”的值。  此值稍后将引用为 *key1*。
+7. 在“服务”部分中单击“Blob”。 此时会打开“Blob 服务”窗格。
+8. 单击“+ 容器”。
+9. 在“名称”中提供容器的名称，例如 *b2c*。 此值稍后将引用为 *containerName*。
+9. 为“访问类型”选择“Blob”。 单击“创建”。
+10. 创建的容器会显示在“Blob 服务”窗格上的列表中。
+11. 关闭“Blob”窗格。
+12. 在“存储帐户”窗格中，单击“密钥”图标。 此时会打开“访问密钥”窗格。  
+13. 记下“密钥 1”的值。 此值稍后将引用为 *key1*。
 
 ## <a name="downloading-the-helper-tool"></a>下载帮助程序工具
 
@@ -109,7 +109,7 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 3.  出现提示时，请指定：a.  存储帐户 *storageAccountName* 的名称，例如 *contoso369b2c*。
     b.  Azure Blob 存储的主访问密钥（*密钥 1*），例如 *contoso369b2c*。
     c.  存储 Blob 存储容器 *containerName* 的名称，例如 *b2c*。
-    d.  *Starter-Pack* 示例文件的路径，例如 *..\B2CTemplates\wingtiptoys*。
+    d.单击“下一步”。  *Starter-Pack* 示例文件的路径，例如 *..\B2CTemplates\wingtiptoys*。
 
 如果遵循了上述步骤，虚构公司 **wingtiptoys** 的 *UI-Customization-Pack* 的 HTML5 和 CSS 文件现在会指向存储帐户。  可以在 Azure 门户中打开相关的容器窗格，验证是否已正确上传内容。 也可以通过从浏览器访问页面来验证是否已正确上传内容。 有关详细信息，请参阅 [Azure Active Directory B2C：用于演示页面用户界面 (UI) 自定义功能的帮助程序工具](active-directory-b2c-reference-ui-customization-helper-tool.md)。
 
@@ -120,13 +120,13 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 若要验证托管内容的存储是否已启用 CORS，请继续执行以下步骤：
 
 1. 打开浏览会话，并使用页面 *unified.html* 在存储帐户中的位置的完整 URL `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` 导航到该页面。 例如， https://contoso369b2c.blob.core.windows.net/b2c/unified.html 。
-2. 导航到 https://test-cors.org 。在此站点中，可以验证所用的页面是否已启用 CORS。  
+2. 导航到 https://test-cors.org 。此站点允许您验证正在使用的页面是否已启用 CORS。  
    <!--
    ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
    -->
 
-3. 在“远程 URL”中，输入 unified.html 内容的完整 URL，并单击“发送请求”。  
-4. 在“结果”部分中检查输出是否包含“XHR 状态:   200”，此状态表明已启用 CORS。
+3. 在“远程 URL”中，输入 unified.html 内容的完整 URL，并单击“发送请求”。
+4. 验证“结果”部分的输出是否包含“XHR 状态: 200”（表明已启用 CORS）。
    <!--
    ![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
    -->
@@ -150,7 +150,7 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 
 可以通过编辑自定义策略，将 HTML5/CSS 模板的链接直接添加到用户旅程。
 
-要在用户旅程中使用的自定义 HTML5/CSS 模板必须在可在用户旅程中使用的内容定义列表中指定。 为此，一个可选 *\<ContentDefinitions >* XML 元素必须声明下 *\<BuildingBlocks >* 自定义策略 XML 文件的部分。
+要在用户旅程中使用的自定义 HTML5/CSS 模板必须在可在用户旅程中使用的内容定义列表中指定。 为此，必须在自定义策略 XML 文件的 *\<BuildingBlocks >* 部分下声明一个可选的 *\<ContentDefinitions >* XML 元素。
 
 下表描述了 Azure AD B2C 标识体验引擎识别的内容定义 ID 集及其相关的页面类型。
 

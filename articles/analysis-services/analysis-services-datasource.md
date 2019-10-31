@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c6043d9e18c364073ad1ea46e26335577e0ec3b2
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: cc47ff50aa7bb6dce58ed83f75f69fb600ad040b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512460"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146936"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -97,12 +97,12 @@ ms.locfileid: "72512460"
 
 **指定提供程序**
 
-1. 在 SSDT >“表格模型浏览器” > “数据源”中，右键单击数据源连接，并单击“编辑数据源”。
+1. 在 Visual Studio 中 >**表格模型资源管理器** > **数据源**，右键单击数据源连接，然后单击 "**编辑数据源**"。
 2. 在“编辑连接”中，单击“高级”，打开“高级属性”窗口。
 3. 在“设置高级属性” > “提供程序”中，选择适当的提供程序。
 
 ## <a name="impersonation"></a>模拟
-某些情况下可能需要指定其他模拟帐户。 可在 Visual Studio (SSDT) 或 SSMS 中指定模拟帐户。
+某些情况下可能需要指定其他模拟帐户。 可在 Visual Studio 或 SSMS 中指定模拟帐户。
 
 对于本地数据源：
 

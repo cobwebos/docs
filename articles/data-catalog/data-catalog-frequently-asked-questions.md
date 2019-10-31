@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 2e286854b9a38c1189ff85307f3e29454be46fb9
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 3877648723a8866ec7d9c5f1987ae3a276114d5e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898717"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152056"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure 数据目录常见问题
 本文将解答有关 Azure 数据目录服务的常见问题。
@@ -25,20 +25,20 @@ ms.locfileid: "70898717"
 ## <a name="what-are-its-target-audiences"></a>其目标受众是什么？
 数据目录专为技术用户和非技术用户而设计，包括：
 
-* 数据开发人员、BI 和分析专业人员：负责生成数据和分析内容供他人使用的人员。
-* 数据专员：了解数据、其含义以及如何使用这些数据的人员。
-* 数据使用者：需要能够轻松地发现、了解和连接到他们完成其工作所需的数据的人员，方法是使用其选择的工具。
-* 中央 IT：需要使数百个数据源可被业务用户发现，并且需要对数据的使用方式和人员进行监管的用户。
+* 数据开发人员、BI 和专业分析师（负责生成数据和分析内容，供他人使用）。
+* 数据专员（了解数据的含义、用法和用途）。
+* 数据使用者（需要能够使用所需工具轻松发现、理解和连接数据来完成相应的作业）。
+* 中央 IT（需要让数以百计的数据源可被业务用户发现，需监督数据的使用方式和使用人员）。
 
 ## <a name="what-is-its-availability-by-region"></a>各个区域的可用性如何？
 数据目录服务当前在以下数据中心可用：
 
 * 美国西部
-* East US
-* 西欧
+* 美国东部
+* 欧洲西部
 * 北欧
 * 澳大利亚东部
-* 东南亚
+* 亚洲东南部
 
 ## <a name="what-are-its-limits-on-the-number-of-data-assets"></a>数据资产的数量限制是多少？
 数据目录的免费版仅限 5,000 个已注册数据资产。
@@ -87,7 +87,7 @@ ms.locfileid: "70898717"
 >
 
 > [!NOTE]
-> 对于具有一流“说明”属性的数据源（例如 SQL Server Analysis Services），数据目录数据源注册工具提取该属性值。 对于 SQL Server 关系型数据库（缺少第一类“说明”属性），数据目录数据源注册工具提取对象和列的“ms_description”扩展属性中的值。 有关详细信息，请参阅[对数据库对象使用扩展属性](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)。
+> 对于具有一流“说明”属性的数据源（例如 SQL Server Analysis Services），数据目录数据源注册工具提取该属性值。 对于*本地*SQL Server 缺少第一类**Description**属性的关系数据库，数据目录数据源注册工具将从对象和列的**ms_description**扩展属性中提取值。 有关详细信息，请参阅[对数据库对象使用扩展属性](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)。
 >
 >
 

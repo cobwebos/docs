@@ -9,16 +9,16 @@ ms.author: robreed
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fe4317c193e8aa6c6723556ef36d6111df6f51cd
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 860a47386b31403b6a3d41fc2473b1e1040889a7
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240852"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162035"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>排除“在空闲时间启动/停止 VM”解决方案的故障
 
-## <a name="deployment-failure"></a>场景：启动/停止 VM 解决方案未能正确部署
+## <a name="deployment-failure"></a>方案：启动/停止 VM 解决方案未能正确部署
 
 ### <a name="issue"></a>问题
 
@@ -29,7 +29,7 @@ Account already exists in another resourcegroup in a subscription. ResourceGroup
 ```
 
 ```error
-Resource 'StartStop_VM_Notification' was disallowed by policy. Policy identifiers: '[{\\\"policyAssignment\\\":{\\\"name\\\":\\\"[MyPolicyName]”.
+Resource 'StartStop_VM_Notification' was disallowed by policy. Policy identifiers: '[{\\\"policyAssignment\\\":{\\\"name\\\":\\\"[MyPolicyName]".
 ```
 
 ```error
@@ -77,7 +77,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 4. 如果 Log Analytics 工作区中存在锁定，请转到 Azure 门户中的工作区并删除对资源的任何锁定。
 5. 如果上述解决方法不能解决问题，请按照[更新解决方案](../automation-solution-vm-management.md#update-the-solution)中的说明来重新部署启动/停止解决方案。
 
-## <a name="all-vms-fail-to-startstop"></a>场景：所有 VM 都无法启动/停止
+## <a name="all-vms-fail-to-startstop"></a>方案：所有 Vm 均无法启动/停止
 
 ### <a name="issue"></a>问题
 
@@ -110,7 +110,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
   * ScheduledStartStop_Parent
   * SequencedStartStop_Parent
 
-* 验证 [RunAs 帐户](../manage-runas-account.md)是否对你尝试启动或停止的 VM 拥有适当权限。 若要了解如何检查对资源的权限，请参阅[快速入门：使用 Azure 门户查看分配给用户的角色](../../role-based-access-control/check-access.md)。 需要提供 RunAs 帐户使用的服务主体的应用程序 ID。 若要检索此值，可以在 Azure 门户中转到“自动化帐户”，选择“帐户设置”下的“RunAs 帐户”，再单击相应的 RunAs 帐户。
+* 验证 [RunAs 帐户](../manage-runas-account.md)是否对你尝试启动或停止的 VM 拥有适当权限。 若要了解如何检查资源的权限，请参阅[快速入门：使用 Azure 门户查看分配给用户的角色](../../role-based-access-control/check-access.md)。 需要提供 RunAs 帐户使用的服务主体的应用程序 ID。 若要检索此值，可以在 Azure 门户中转到“自动化帐户”，选择“帐户设置”下的“RunAs 帐户”，再单击相应的 RunAs 帐户。
 
 * 已明确排除的 VM 可能无法启动或停止。 已排除的 VM 是在解决方案部署到的自动化帐户的 External_ExcludeVMNames 变量中进行设置。 下面的示例展示了如何使用 PowerShell 查询此值。
 
@@ -118,7 +118,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
-## <a name="some-vms-fail-to-startstop"></a>场景：部分 VM 无法启动或停止
+## <a name="some-vms-fail-to-startstop"></a>方案：我的某些 Vm 无法启动或停止
 
 ### <a name="issue"></a>问题
 
@@ -149,13 +149,13 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
-* 自动化帐户的 RunAs 帐户必须对 VM 拥有适当权限，才能启动和停止 VM。 若要了解如何检查对资源的权限，请参阅[快速入门：使用 Azure 门户查看分配给用户的角色](../../role-based-access-control/check-access.md)。 需要提供 RunAs 帐户使用的服务主体的应用程序 ID。 若要检索此值，可以在 Azure 门户中转到“自动化帐户”，选择“帐户设置”下的“RunAs 帐户”，再单击相应的 RunAs 帐户。
+* 自动化帐户的 RunAs 帐户必须对 VM 拥有适当权限，才能启动和停止 VM。 若要了解如何检查资源的权限，请参阅[快速入门：使用 Azure 门户查看分配给用户的角色](../../role-based-access-control/check-access.md)。 需要提供 RunAs 帐户使用的服务主体的应用程序 ID。 若要检索此值，可以在 Azure 门户中转到“自动化帐户”，选择“帐户设置”下的“RunAs 帐户”，再单击相应的 RunAs 帐户。
 
 * 如果 VM 无法启动或解除分配，此行为可能是由 VM 本身问题所致。 一些示例或潜在问题包括，正在尝试关闭、服务挂起等情况下应用更新。 请转到 VM 资源，并检查“活动日志”，以确定日志中是否有任何错误。 也可以尝试登录 VM，以确定“事件日志”中是否有任何错误。 若要详细了解如何对 VM 进行故障排除，请参阅[Azure 虚拟机故障排除](../../virtual-machines/troubleshooting/index.md)
 
 * 检查[作业流](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)以查找是否有任何错误。 在门户中，转到“自动化帐户”，并选择“流程自动化”下的“作业”。
 
-## <a name="custom-runbook"></a>场景：我的自定义 runbook 无法启动或停止我的 VM
+## <a name="custom-runbook"></a>方案：我的自定义 runbook 无法启动或停止我的 Vm
 
 ### <a name="issue"></a>问题
 
@@ -169,7 +169,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 
 建议使用[“在空闲时间启动/停止 VM”解决方案](../automation-solution-vm-management.md)，在 Azure 自动化中启动和停止 VM。 此解决方案由 Microsoft 创作。 Microsoft 不支持自定义 runbook。 若要查找适用于自定义 runbook 的解决方案，可以参阅 [runbook 故障排除](runbooks.md)一文。 这篇文章介绍了所有类型 runbook 的一般指导和故障排除。 检查[作业流](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)以查找是否有任何错误。 在门户中，转到“自动化帐户”，并选择“流程自动化”下的“作业”。
 
-## <a name="dont-start-stop-in-sequence"></a>场景：VM 无法按正确顺序启动或停止
+## <a name="dont-start-stop-in-sequence"></a>方案： Vm 不会按正确的顺序启动或停止
 
 ### <a name="issue"></a>问题
 
@@ -189,7 +189,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 
 若要详细了解如何使用解决方案按顺序启动和停止 VM，请参阅[按顺序启动和停止 VM](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags)。
 
-## <a name="403"></a>场景：“启动/停止 VM”作业失败，且状态为“403 forbidden”
+## <a name="403"></a>方案：启动/停止 VM 作业失败并出现403禁用状态
 
 ### <a name="issue"></a>问题
 
@@ -207,9 +207,9 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 
 如果 RunAs 帐户的证书已过期，请按照[自签名证书续订](../manage-runas-account.md#cert-renewal)中列出的步骤操作，以续订证书。
 
-此问题可能是由于缺少权限所致。 若要了解如何检查对资源的权限，请参阅[快速入门：使用 Azure 门户查看分配给用户的角色](../../role-based-access-control/check-access.md)。 需要提供 RunAs 帐户使用的服务主体的应用程序 ID。 若要检索此值，可以在 Azure 门户中转到“自动化帐户”，选择“帐户设置”下的“RunAs 帐户”，再单击相应的 RunAs 帐户。
+此问题可能是由于缺少权限所致。 若要了解如何检查资源的权限，请参阅[快速入门：使用 Azure 门户查看分配给用户的角色](../../role-based-access-control/check-access.md)。 需要提供 RunAs 帐户使用的服务主体的应用程序 ID。 若要检索此值，可以在 Azure 门户中转到“自动化帐户”，选择“帐户设置”下的“RunAs 帐户”，再单击相应的 RunAs 帐户。
 
-## <a name="other"></a>场景：上面未列出我的问题
+## <a name="other"></a>方案：上面未列出我的问题
 
 ### <a name="issue"></a>问题
 

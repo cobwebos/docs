@@ -1,5 +1,5 @@
 ---
-title: 新增功能存档 - Azure Active Directory | Microsoft Docs
+title: 存档 Azure Active Directory 中的新增功能 | Microsoft Docs
 description: 此内容集的“概述”部分中的新增功能发行说明包含 6 个月的活动。 6 个月过后，这些项目将从主文章中删除并放入此存档文章中。
 services: active-directory
 author: eross-msft
@@ -13,18 +13,18 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b498fa6e2a3edc26543b1fda3cc268ba37f113c3
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 6fcf1e5966be7708e7c6278839cbfbe5d65cdffa
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694624"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149130"
 ---
-# <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能存档
+# <a name="archive-for-whats-new-in-azure-active-directory"></a>存档 Azure Active Directory 中的新增功能
 
-主要的[新增功能发行说明](whats-new.md)文章包含最近 6 个月的信息，而本文包含所有旧信息。
+[Azure Active Directory 中的新增功能？发行说明](whats-new.md)文章包含过去六个月的更新，而本文包含所有旧的信息。
 
-新增功能发行说明提供以下相关信息：
+Azure Active Directory 中有哪些新功能？发行说明提供了有关以下内容的信息：
 
 - 最新版本
 - 已知问题
@@ -34,12 +34,156 @@ ms.locfileid: "71694624"
 
 ---
 
+## <a name="april-2019"></a>2019 年 4 月
+
+### <a name="new-azure-ad-threat-intelligence-detection-is-now-available-as-part-of-azure-ad-identity-protection"></a>新 Azure AD 威胁情报检测现在作为 Azure AD Identity Protection 的一部分提供
+
+**类型：** 新功能  
+**服务类别：** Azure AD Identity Protection  
+**产品功能：** 标识安全和保护
+
+Azure AD 威胁情报检测现在作为更新的 Azure AD Identity Protection 功能的一部分提供。 这一新功能可以帮助为特定用户或活动指出异常的用户活动，该活动与基于 Microsoft 内部和外部威胁智能源的已知攻击模式一致。
+
+有关 Azure AD Identity Protection 的刷新版本的详细信息，请参阅[公共预览博客中的四个主要 Azure AD Identity Protection 增强功能](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935)，以及[Azure Active Directory Identity Protection （已刷新）是什么？](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2) 下文. 有关 Azure AD 威胁智能检测的详细信息，请参阅[Azure Active Directory Identity Protection 风险检测](https://docs.microsoft.com/azure/active-directory/identity-protection/risk-events-reference#azure-ad-threat-intelligence)一文。
+
+---
+
+### <a name="azure-ad-entitlement-management-is-now-available-public-preview"></a>Azure AD 授权管理现已推出（公共预览版）
+
+**类型：** 新功能  
+**服务类别：** 标识调控  
+**产品功能：** 标识调控
+
+Azure AD 的权利管理，现在提供公共预览版，可帮助客户委托访问包的管理，该管理包定义了员工和业务合作伙伴如何请求访问权限、必须批准的人员以及他们有权访问的时间长短。 访问包可以管理 Azure AD 和 Office 365 组中的成员身份、企业应用程序中的角色分配以及 SharePoint Online 网站的角色分配。 有关权利管理的详细信息，请参阅[Azure AD 的权利管理概述](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)。 若要详细了解 Azure AD Identity Governance 功能的广度，包括 Privileged Identity Management、访问评审和使用条款，请参阅[什么是 Azure AD Identity Governance？](../governance/identity-governance-overview.md)。
+
+---
+
+### <a name="configure-a-naming-policy-for-office-365-groups-in-azure-ad-portal-public-preview"></a>在 Azure AD 门户中为 Office 365 组配置命名策略（公共预览版）
+
+**类型：** 新功能  
+**服务类别：** 组管理  
+**产品功能：** 协作
+
+管理员现在可以使用 Azure AD 门户配置 Office 365 组的命名策略。 此更改有助于为组织中的用户创建或编辑的 Office 365 组强制实施一致的命名约定。
+
+可以通过两种不同的方式为 Office 365 组配置命名策略：
+
+- 定义自动添加到组名称中的前缀或后缀。
+
+- 为你的组织上载一组自定义的阻止字词，这些字词在组名称中是不允许的（例如，"CEO，工资单，HR"）。
+
+有关详细信息，请参阅为[Office 365 组强制实施命名策略](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-naming-policy)。
+
+---
+
+### <a name="azure-ad-activity-logs-are-now-available-in-azure-monitor-general-availability"></a>Azure AD 活动日志现在 Azure Monitor 中可用（公开上市）
+
+**类型：** 新功能  
+**服务类别：** 报告  
+**产品功能：** 监视和报告
+
+为了帮助解决有关使用 Azure AD 活动日志的可视化效果的反馈，我们在 Log Analytics 中引入了一个新的 Insights 功能。 此功能可帮助你使用称为工作簿的交互式模板获取有关 Azure AD 资源的见解。 这些预建工作簿可以提供应用程序或用户的详细信息，包括：
+
+- **登录。** 提供应用和用户的详细信息，包括登录位置、正在使用的操作系统或浏览器客户端和版本，以及成功或失败的登录数。
+
+- **旧身份验证和条件访问。** 提供有关使用旧身份验证的应用和用户的详细信息，包括条件访问策略触发的多重身份验证使用情况、使用条件性访问策略的应用等。
+
+- **登录失败分析。** 帮助你确定登录错误是否是由于用户操作、策略问题或基础结构而发生的。
+
+- **自定义报表。** 你可以创建新的工作簿或编辑现有工作簿，以帮助为你的组织自定义 Insights 功能。
+
+有关详细信息，请参阅[如何将 Azure Monitor 工作簿用于 Azure Active Directory 报表](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks)。
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---april-2019"></a>Azure AD 应用库中提供了新的联合应用-2019 年4月
+
+**类型：** 新功能  
+**服务类别：** 企业应用  
+**产品功能：** 第三方集成
+
+2019年4月，我们已向应用程序库添加了以下21个具有联合支持的新应用：
+
+[SAP Fiori](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-fiori-tutorial)， [HRworks 单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/hrworks-single-sign-on-tutorial)， [Percolate](https://docs.microsoft.com/azure/active-directory/saas-apps/percolate-tutorial)， [MobiControl](https://docs.microsoft.com/azure/active-directory/saas-apps/mobicontrol-tutorial)， [Citrix NetScaler](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial)， [Shibumi](https://docs.microsoft.com/azure/active-directory/saas-apps/shibumi-tutorial)， [Benchling](https://docs.microsoft.com/azure/active-directory/saas-apps/benchling-tutorial)， [MileIQ](https://mileiq.onelink.me/991934284/7e980085)， [PageDNA](https://docs.microsoft.com/azure/active-directory/saas-apps/pagedna-tutorial)， [EduBrite LMS](https://docs.microsoft.com/azure/active-directory/saas-apps/edubrite-lms-tutorial)， [RStudio 连接](https://docs.microsoft.com/azure/active-directory/saas-apps/rstudio-connect-tutorial)、 [AMMS](https://docs.microsoft.com/azure/active-directory/saas-apps/amms-tutorial)、 [Mitel Connect](https://docs.microsoft.com/azure/active-directory/saas-apps/mitel-connect-tutorial)、 [ALIBABA Cloud （基于角色的 SSO）](https://docs.microsoft.com/azure/active-directory/saas-apps/alibaba-cloud-service-role-based-sso-tutorial)、 [Certent 权益管理](https://docs.microsoft.com/azure/active-directory/saas-apps/certent-equity-management-tutorial)、 [Sectigo 证书管理器](https://docs.microsoft.com/azure/active-directory/saas-apps/sectigo-certificate-manager-tutorial)、 [GreenOrbit](https://docs.microsoft.com/azure/active-directory/saas-apps/greenorbit-tutorial)、 [Workgrid](https://docs.microsoft.com/azure/active-directory/saas-apps/workgrid-tutorial)、 [monday.com](https://docs.microsoft.com/azure/active-directory/saas-apps/mondaycom-tutorial)、[SurveyMonkey Enterprise](https://docs.microsoft.com/azure/active-directory/saas-apps/surveymonkey-enterprise-tutorial)、 [Indiggo](https://indiggolead.com/)
+
+有关这些应用的详细信息，请参阅 [SaaS 应用程序与 Azure Active Directory 集成](https://aka.ms/appstutorial)。 要详细了解如何在 Azure AD 应用库中列出应用程序，请参阅[在 Azure Active Directory 应用程序库中列出应用程序](https://aka.ms/azureadapprequest)。
+
+---
+
+### <a name="new-access-reviews-frequency-option-and-multiple-role-selection"></a>新的访问评审频率选项和多个角色选择
+
+**类型：** 新功能  
+**服务类别：** 访问评审  
+**产品功能：** 标识调控
+
+Azure AD 访问评审中的新更新可让你：
+
+- 除了每周、每月、每季度和每年的现有选项外，还可以将访问评审的频率更改为**半年**。
+
+- 创建单个访问评审时，请选择多个 Azure AD 和 Azure 资源角色。 在这种情况下，所有角色均设置为具有相同的设置，并同时通知所有审阅者。
+
+有关如何创建访问评审的详细信息，请参阅[在 Azure AD 访问评审中创建组或应用程序的访问评审](https://docs.microsoft.com/azure/active-directory/governance/create-access-review)。
+
+---
+
+### <a name="azure-ad-connect-email-alert-systems-are-transitioning-sending-new-email-sender-information-for-some-customers"></a>Azure AD Connect 电子邮件警报系统正在转换，为某些客户发送新的电子邮件发件人信息
+
+**类型：** 已更改的功能  
+**服务类别：** AD Sync  
+**产品功能：** 平台
+
+Azure AD Connect 正在转换电子邮件警报系统，可能会向某些客户显示新的电子邮件发件人。 若要解决此情况，你必须将 `azure-noreply@microsoft.com` 添加到你的组织的允许列表，否则你将无法继续接收来自 Office 365、Azure 或你的同步服务的重要警报。
+
+---
+
+### <a name="upn-suffix-changes-are-now-successful-between-federated-domains-in-azure-ad-connect"></a>UPN 后缀更改现在在 Azure AD Connect 中的联合域之间已成功完成
+
+**类型：** 已修复  
+**服务类别：** AD Sync  
+**产品功能：** 平台
+
+你现在可以成功地将用户的 UPN 后缀从一个联合域更改为 Azure AD Connect 中的另一个联合域。 此修补程序意味着在同步周期内您不会再遇到 FederatedDomainChangeError 错误消息，也不会收到通知电子邮件，指出，"无法在 Azure Active Directory 中更新此对象，因为属性 [FederatedUser] 无效。 更新本地目录服务中的值。
+
+有关详细信息，请参阅[在同步过程中解决错误](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sync-errors#federateddomainchangeerror)。
+
+---
+
+### <a name="increased-security-using-the-app-protection-based-conditional-access-policy-in-azure-ad-public-preview"></a>在 Azure AD 中使用基于应用保护的条件性访问策略提高了安全性（公共预览版）
+
+**类型：** 新功能  
+**服务类别：** 条件访问  
+**产品功能：** 标识安全和保护
+
+现在，可以使用 "**需要应用保护**策略" 来使用基于应用保护的条件性访问。 这一新策略有助于防止以下情况，从而提高组织的安全性：
+
+- 无 Microsoft Intune 许可证即可访问应用的用户。
+
+- 用户无法获取 Microsoft Intune 的应用保护策略。
+
+- 用户访问应用时，无需配置 Microsoft Intune 应用保护策略。
+
+有关详细信息，请参阅[如何使用条件性访问来要求适用于云应用访问的应用保护策略](https://docs.microsoft.com/azure/active-directory/conditional-access/app-protection-based-conditional-access)。
+
+---
+
+### <a name="new-support-for-azure-ad-single-sign-on-and-conditional-access-in-microsoft-edge-public-preview"></a>Microsoft Edge 中对 Azure AD 单一登录和条件访问的全新支持（公共预览版）
+
+**类型：** 新功能  
+**服务类别：** 条件访问  
+**产品功能：** 标识安全和保护
+
+我们已增强了对 Microsoft Edge 的 Azure AD 支持，包括提供对 Azure AD 单一登录和条件访问的全新支持。 如果以前使用过 Microsoft Intune Managed Browser，现在可以改为使用 Microsoft Edge。
+
+有关使用条件性访问设置和管理设备和应用的详细信息，请参阅要求使用条件性访问的[云应用访问托管设备](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)，并[需要使用条件性访问的批准的客户端应用进行云应用访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). 若要详细了解如何使用 Microsoft Intune 策略来管理使用 Microsoft Edge 的访问权限，请参阅[使用 Microsoft Intune 策略保护的浏览器管理 Internet 访问](https://docs.microsoft.com/intune/app-configuration-managed-browser)。
+
+---
+
 ## <a name="march-2019"></a>2019 年 3 月
 
 ### <a name="identity-experience-framework-and-custom-policy-support-in-azure-active-directory-b2c-is-now-available-ga"></a>Azure Active Directory B2C 中的标识体验框架和自定义策略支持现已推出（GA）
 
 **类型：** 新功能  
-**服务类别：** B2C - 使用者标识管理  
+**服务类别：** B2C - 用户标识管理  
 **产品功能：** B2B/B2C
 
 你现在可以在 Azure AD B2C 中创建自定义策略，其中包括以下任务，这些任务是按比例支持的，并且在我们的 Azure SLA 下提供：
@@ -118,7 +262,7 @@ ms.locfileid: "71694624"
 
 客户端应用程序可能会在短时间内错误地发出数百个相同的登录请求。 这些请求（无论是否成功）都对 IDP 的用户体验和提升的工作负荷产生了影响，增加了所有用户的延迟，降低了 IDP 的可用性。
 
-此更新向客户`invalid_grant`端应用`AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`发送错误：在短时间内多次发出重复请求，超出正常操作范围。 遇到此问题的客户端应用应显示交互式提示，要求用户重新登录。 有关此更改以及在遇到此错误时如何修复应用的详细信息，请参阅[身份验证的新增功能？](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#looping-clients-will-be-interrupted)。
+此更新会向客户端应用发送一个 `invalid_grant` 错误 `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`：在短时间内，多次发出重复请求的客户端应用（超出正常操作范围）。 遇到此问题的客户端应用应显示交互式提示，要求用户重新登录。 有关此更改以及在遇到此错误时如何修复应用的详细信息，请参阅[身份验证的新增功能？](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#looping-clients-will-be-interrupted)。
 
 ---
 
@@ -140,7 +284,7 @@ ms.locfileid: "71694624"
 
 **类型：** 已更改的功能  
 **服务类别：** 条件访问  
-**产品功能：** 标识安全性和保护
+**产品功能：** 标识安全和保护
 
 为了帮助防止管理员因配置错误的条件性访问策略而意外地锁定自己的租户，我们在 Azure 门户中创建了新的警告和更新指南。 有关新指南的详细信息，请参阅[什么是服务依赖关系 Azure Active Directory 条件性访问](https://docs.microsoft.com/azure/active-directory/conditional-access/service-dependencies)。
 
@@ -172,11 +316,11 @@ ms.locfileid: "71694624"
 
 - 确定输出格式，可以是 JSON 或 CSV。
 
-有关此功能的详细信息，请[参阅快速入门：使用 Azure 门户下载审核报告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-download-audit-report)
+有关此功能的详细信息，请参阅[快速入门：使用 Azure 门户下载审核报告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-download-audit-report)
 
 ---
 
-### <a name="breaking-change-updates-to-condition-evaluation-by-exchange-activesync-eas"></a>重大更改：通过 Exchange ActiveSync （EAS）对条件评估进行的更新
+### <a name="breaking-change-updates-to-condition-evaluation-by-exchange-activesync-eas"></a>重大更改： Exchange ActiveSync （EAS）对条件评估的更新
 
 **类型：** 更改计划  
 **服务类别：** 条件访问  
@@ -196,7 +340,7 @@ ms.locfileid: "71694624"
 
 ## <a name="february-2019"></a>2019 年 2 月
 
-### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>可配置 Azure AD SAML 令牌加密(公共预览版) 
+### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>可配置 Azure AD SAML 令牌加密（公共预览版） 
 
 **类型：** 新功能  
 **服务类别：** 企业应用  
@@ -208,7 +352,7 @@ ms.locfileid: "71694624"
 
 ---
 
-### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>使用 Azure AD 访问评审创建组或应用的访问评审
+### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>使用 Azure AD 访问评审为组或应用创建访问评审
 
 **类型：** 新功能  
 **服务类别：** 访问评审  
@@ -220,7 +364,7 @@ ms.locfileid: "71694624"
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2019"></a>Azure AD 应用库中已推出新的联合应用 - 2019 年 2 月
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2019"></a>Azure AD 应用库中提供了新的联合应用-2019 年2月
 
 **类型：** 新功能  
 **服务类别：** 企业应用  
@@ -234,7 +378,7 @@ ms.locfileid: "71694624"
 
 ---
 
-### <a name="enhanced-combined-mfasspr-registration"></a>增强了组合 MFA/SSPR 注册
+### <a name="enhanced-combined-mfasspr-registration"></a>增强组合的 MFA/SSPR 注册
 
 **类型：** 已更改的功能  
 **服务类别：** 自助服务密码重置  
@@ -262,10 +406,10 @@ ms.locfileid: "71694624"
 
 ---
 
-### <a name="updated-policy-management-experience-for-user-flows"></a>更新了用户流的策略管理体验
+### <a name="updated-policy-management-experience-for-user-flows"></a>为用户流更新的策略管理体验
 
 **类型：** 已更改的功能  
-**服务类别：** B2C - 使用者标识管理  
+**服务类别：** B2C - 用户标识管理  
 **产品功能：** B2B/B2C
 
 我们更新了用户流（以前称为内置策略）的策略创建和管理过程。 这种新体验现在是所有 Azure AD 租户的默认体验。
@@ -276,10 +420,10 @@ ms.locfileid: "71694624"
 
 ---
 
-### <a name="choose-specific-page-element-versions-provided-by-azure-ad-b2c"></a>选择由 Azure AD B2C 提供的特定页元素版本
+### <a name="choose-specific-page-element-versions-provided-by-azure-ad-b2c"></a>选择 Azure AD B2C 提供的特定页面元素版本
 
 **类型：** 新功能  
-**服务类别：** B2C - 使用者标识管理  
+**服务类别：** B2C - 用户标识管理  
 **产品功能：** B2B/B2C
 
 你现在可以选择 Azure AD B2C 提供的页面元素的特定版本。 通过选择特定版本，你可以在更新出现在页面上之前对其进行测试，你可以获得可预测的行为。 此外，你现在可以选择强制实施特定页面版本以允许 JavaScript 自定义。 若要启用此功能，请转到用户流中的 "**属性**" 页。
@@ -288,10 +432,10 @@ ms.locfileid: "71694624"
 
 ---
 
-### <a name="configurable-end-user-password-requirements-for-b2c-ga"></a>可配置的 B2C (GA) 最终用户密码要求
+### <a name="configurable-end-user-password-requirements-for-b2c-ga"></a>B2C （GA）的可配置最终用户密码要求
 
 **类型：** 新功能  
-**服务类别：** B2C - 使用者标识管理  
+**服务类别：** B2C - 用户标识管理  
 **产品功能：** B2B/B2C
 
 你现在可以为最终用户设置组织的密码复杂性，而不必使用本机 Azure AD 密码策略。 从用户流的 "**属性**" 边栏选项卡（以前称为内置策略），可以选择**简单**或**强**的密码复杂性，也可以创建一组**自定义**的要求。
@@ -300,10 +444,10 @@ ms.locfileid: "71694624"
 
 ---
 
-### <a name="new-default-templates-for-custom-branded-authentication-experiences"></a>自定义品牌的身份验证体验的新的默认模板
+### <a name="new-default-templates-for-custom-branded-authentication-experiences"></a>用于自定义品牌身份验证体验的新默认模板
 
 **类型：** 新功能  
-**服务类别：** B2C - 使用者标识管理  
+**服务类别：** B2C - 用户标识管理  
 **产品功能：** B2B/B2C
 
 你可以使用新的默认模板，这些模板位于用户流（以前称为内置策略）的 "**页面布局**" 边栏选项卡上，为用户创建自定义品牌的身份验证体验。
@@ -359,8 +503,8 @@ ms.locfileid: "71694624"
 ### <a name="new-azure-ad-identity-protection-enhancements-public-preview"></a>新的“Azure AD 标识保护”增强功能（公共预览版）
 
 **类型：** 已更改的功能  
-**服务类别：** Identity Protection  
-**产品功能：** 标识安全性和保护
+**服务类别：** 标识保护  
+**产品功能：** 标识安全和保护
 
 我们很高兴地宣布，我们已为“Azure AD 标识保护”公开预览版套餐添加以下增强功能，其中包括：
 
@@ -380,7 +524,7 @@ ms.locfileid: "71694624"
 
 **类型：** 新功能  
 **服务类别：** Microsoft Authenticator 应用  
-**产品功能：** 标识安全性和保护
+**产品功能：** 标识安全和保护
 
 若要使你的一次性密码、应用信息和应用设置更加安全，可以在 Microsoft Authenticator 应用中开启应用锁定功能。 开启应用锁定意味着你每次打开 Microsoft Authenticator 应用时都会要求你使用 PIN 或生物识别进行身份验证。
 
@@ -421,15 +565,15 @@ Privileged Identity Management (PIM) 管理员现在可以为特定资源导出�
 
 - **分阶段对多个用户进行大规模 ImmutableID 更新**
   
-  例如，需要进行耗时很长的 AD DS 林间迁移。 解决方案：使用 Azure AD Connect **配置源定位点**，并在用户迁移时将现有的 ImmutableID 值从 Azure AD 复制到本地 AD DS 用户的新林的 ms-DS-Consistency-Guid 属性中。 有关详细信息，请参阅[将 msDS-ConsistencyGuid 用作 sourceAnchor](/azure/active-directory/hybrid/plan-connect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor)。
+  例如，需要进行耗时很长的 AD DS 林间迁移。 解决方案：使用 Azure AD Connect 来**配置源锚**，并在用户进行迁移时，将 Azure AD 中的现有 ImmutableID 值复制到新林的本地 AD DS 用户的 "MS-DS-一致性" 属性。 有关详细信息，请参阅[将 msDS-ConsistencyGuid 用作 sourceAnchor](/azure/active-directory/hybrid/plan-connect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor)。
 
 - **一次性对多个用户进行大规模 ImmutableID 更新**
 
   例如，在实现 Azure AD Connect 时犯错，现在需要更改 SourceAnchor 属性。 解决方案：在租户级别禁用 DirSync，并清除所有无效的 ImmutableID 值。 有关详细信息，请参阅[禁用 Office 365 的目录同步](/office365/enterprise/turn-off-directory-synchronization)。
 
-- **将本地用户与 Azure AD 中的现有用户重新匹配** 例如，在 AD DS 中重新创建的用户会在 Azure AD 帐户中生成一个重复的用户，系统不会将其与现有的 Azure AD 帐户（孤立对象）重新匹配。 解决方案：在 Azure 门户中使用 Azure AD Connect Health 重新映射源定位点/ImmutableID。 有关详细信息，请参阅[孤立对象场景](/azure/active-directory/hybrid/how-to-connect-health-diagnose-sync-errors#orphaned-object-scenario)。
+- **将本地用户与 Azure AD 中的现有用户重新匹配** 例如，在 AD DS 中重新创建的用户会在 Azure AD 帐户中生成一个重复的用户，系统不会将其与现有的 Azure AD 帐户（孤立对象）重新匹配。 解决方案：使用 Azure 门户中 Azure AD Connect Health 重新映射源定位点 ImmutableID。 有关详细信息，请参阅[孤立对象场景](/azure/active-directory/hybrid/how-to-connect-health-diagnose-sync-errors#orphaned-object-scenario)。
 
-### <a name="breaking-change-updates-to-the-audit-and-sign-in-logs-schema-through-azure-monitor"></a>重大更改：更新了通过 Azure Monitor 提供的审核和登录日志的架构
+### <a name="breaking-change-updates-to-the-audit-and-sign-in-logs-schema-through-azure-monitor"></a>重大更改：通过 Azure Monitor 更新审核和登录日志架构
 
 **类型：** 已更改的功能  
 **服务类别：** 报告  
@@ -443,21 +587,21 @@ Privileged Identity Management (PIM) 管理员现在可以为特定资源导出�
 #### <a name="changed-fields-in-the-audit-schema"></a>审核架构中已更改的字段
 审核架构中的以下字段即将发生变化：
 
-|字段名称|更改内容|旧值|新值|
+|字段名|更改内容|旧值|新值|
 |----------|------------|----------|----------|
 |类别|以前它是“服务名称”字段， 现在是“审核类别”字段。 “服务名称”已重命名为“loggedByService”字段。|<ul><li>帐户预配</li><li>核心目录</li><li>自助密码重置</li></ul>|<ul><li>用户管理</li><li>组管理</li><li>应用管理</li></ul>|
-|targetResources|包括顶层的 **TargetResourceType**。|&nbsp;|<ul><li>策略</li><li>应用</li><li>“用户”</li><li>Group</li></ul>|
+|targetResources|包括顶层的 **TargetResourceType**。|&nbsp;|<ul><li>策略</li><li>应用</li><li>用户</li><li>组</li></ul>|
 |loggedByService|提供生成审核日志的服务的名称。|Null|<ul><li>帐户预配</li><li>核心目录</li><li>自助式密码重置</li></ul>|
-|结果|提供审核日志的结果。 以前会显示枚举值，但现在会显示实际值。|<ul><li>0</li><li>1</li></ul>|<ul><li>成功</li><li>失败</li></ul>|
+|结果|提供审核日志的结果。 以前会显示枚举值，但现在会显示实际值。|<ul><li>0</li><li>第</li></ul>|<ul><li>Success</li><li>失败</li></ul>|
 
 #### <a name="changed-fields-in-the-sign-in-schema"></a>登录架构中已更改的字段
 登录架构中的以下字段即将发生变化：
 
-|字段名称|更改内容|旧值|新值|
+|字段名|更改内容|旧值|新值|
 |----------|------------|----------|----------|
-|appliedConditionalAccessPolicies|以前它是“conditionalaccessPolicies”字段， 现在是“appliedConditionalAccessPolicies”字段。|无变化|无变化|
-|conditionalAccessStatus|在登录时提供条件访问策略状态的结果。 以前会显示枚举值，但现在会显示实际值。|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>成功</li><li>失败</li><li>未应用</li><li>已禁用</li></ul>|
-|appliedConditionalAccessPolicies: result|在登录时提供单个条件访问策略状态的结果。 以前会显示枚举值，但现在会显示实际值。|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>成功</li><li>失败</li><li>未应用</li><li>已禁用</li></ul>|
+|appliedConditionalAccessPolicies|以前它是“conditionalaccessPolicies”字段， 现在是“appliedConditionalAccessPolicies”字段。|没有更改|没有更改|
+|conditionalAccessStatus|在登录时提供条件访问策略状态的结果。 以前会显示枚举值，但现在会显示实际值。|<ul><li>0</li><li>第</li><li>2</li><li>3</li></ul>|<ul><li>Success</li><li>失败</li><li>未应用</li><li>Disabled</li></ul>|
+|appliedConditionalAccessPolicies: result|在登录时提供单个条件访问策略状态的结果。 以前会显示枚举值，但现在会显示实际值。|<ul><li>0</li><li>第</li><li>2</li><li>3</li></ul>|<ul><li>Success</li><li>失败</li><li>未应用</li><li>Disabled</li></ul>|
 
 有关架构的详细信息，请参阅[解释 Azure Monitor（预览版）中的 Azure AD 审核日志架构](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema)
 
@@ -466,7 +610,7 @@ Privileged Identity Management (PIM) 管理员现在可以为特定资源导出�
 ### <a name="identity-protection-improvements-to-the-supervised-machine-learning-model-and-the-risk-score-engine"></a>对监督式机器学习模型和风险评分引擎做出的“标识保护”改进
 
 **类型：** 已更改的功能  
-**服务类别：** Identity Protection  
+**服务类别：** 标识保护  
 **产品功能：** 风险评分
 
 对“标识保护”相关的用户和登录风险评估引擎所做的改进有助于提高用户风险评估的准确度和覆盖度。 管理员可能会注意到，用户风险级别不再与特定检测的风险级别直接相关，并且有风险登录事件的数量和级别都已增加。
@@ -487,9 +631,9 @@ Privileged Identity Management (PIM) 管理员现在可以为特定资源导出�
 
 - 其他移动 Authenticator 应用/硬件令牌代码
 
-- Email
+- 电子邮件
 
-- 电话
+- 电话呼叫
 
 - 短信
 
@@ -517,7 +661,7 @@ Privileged Identity Management (PIM) 管理员现在可以为特定资源导出�
 
 我们认识到，随着时间的推移，你必须在 Azure AD 中刷新和停用组织的设备，以避免环境中存在过时设备。 为了帮助完成此过程，Azure AD 现在会使用新的活动时间戳更新设备，以帮助管理设备生命周期。
 
-有关如何获取和使用此时间戳的详细信息，请参阅[如何：在 Azure AD 中管理陈旧的设备](https://docs.microsoft.com/azure/active-directory/devices/manage-stale-devices)
+有关如何获取和使用此时间戳的详细信息，请参阅[如何：在 Azure AD 管理过时设备](https://docs.microsoft.com/azure/active-directory/devices/manage-stale-devices)
 
 ---
 
@@ -600,7 +744,7 @@ Privileged Identity Management (PIM) 管理员现在可以为特定资源导出�
  
 我们已在 2018 年 11 月将这 26 款支持联合的新应用添加到了应用库：
 
-[CoreStack](https://cloud.corestack.io/site/login)、[HubSpot](https://docs.microsoft.com/azure/active-directory/saas-apps/HubSpot-tutorial)、[GetThere](https://docs.microsoft.com/azure/active-directory/saas-apps/getthere-tutorial)、[Gra-Pe](https://docs.microsoft.com/azure/active-directory/saas-apps/grape-tutorial)、[eHour](https://getehour.com/try-now)、[Consent2Go](https://docs.microsoft.com/azure/active-directory/saas-apps/Consent2Go-tutorial)、[Appinux](https://docs.microsoft.com/azure/active-directory/saas-apps/appinux-tutorial)、[DriveDollar](https://azuremarketplace.microsoft.com/marketplace/apps/savitas.drivedollar-azuread?tab=Overview)、[Useall](https://docs.microsoft.com/azure/active-directory/saas-apps/useall-tutorial)、[Infinite Campus](https://docs.microsoft.com/azure/active-directory/saas-apps/infinitecampus-tutorial)、[Alaya](https://alayagood.com/en/demo/)、[HeyBuddy](https://docs.microsoft.com/azure/active-directory/saas-apps/heybuddy-tutorial)、[Wrike SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/wrike-tutorial)、[Drift](https://docs.microsoft.com/azure/active-directory/saas-apps/drift-tutorial)、[Zenegy for Business Central 365](https://accounting.zenegy.com/)、[Everbridge Member Portal](https://docs.microsoft.com/azure/active-directory/saas-apps/everbridge-tutorial)、[IDEO](https://profile.ideo.com/users/sign_up)、[Ivanti Service Manager (ISM)](https://docs.microsoft.com/azure/active-directory/saas-apps/ivanti-service-manager-tutorial)、[Peakon](https://docs.microsoft.com/azure/active-directory/saas-apps/peakon-tutorial)、[Allbound SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/allbound-sso-tutorial)、[Plex Apps - Classic Test](https://test.plexonline.com/signon)、[Plex Apps – Classic](https://www.plexonline.com/signon)、[Plex Apps - UX Test](https://test.cloud.plex.com/sso)、[Plex Apps – UX](https://cloud.plex.com/sso)、[Plex Apps – IAM](https://accounts.plex.com/)、[CRAFTS - Childcare Records, Attendance, & Financial Tracking System](https://getcrafts.ca/craftsregistration) 
+[CoreStack](https://cloud.corestack.io/site/login)、 [HubSpot](https://docs.microsoft.com/azure/active-directory/saas-apps/HubSpot-tutorial)、 [GetThere](https://docs.microsoft.com/azure/active-directory/saas-apps/getthere-tutorial)、 [communicationactivexcntrlcontaineractivexcntrl](https://docs.microsoft.com/azure/active-directory/saas-apps/grape-tutorial)、 [eHour](https://getehour.com/try-now)、 [Consent2Go、](https://docs.microsoft.com/azure/active-directory/saas-apps/Consent2Go-tutorial) [Appinux](https://docs.microsoft.com/azure/active-directory/saas-apps/appinux-tutorial)、 [DriveDollar](https://azuremarketplace.microsoft.com/marketplace/apps/savitas.drivedollar-azuread?tab=Overview)、 [Useall](https://docs.microsoft.com/azure/active-directory/saas-apps/useall-tutorial)、[无限校园](https://docs.microsoft.com/azure/active-directory/saas-apps/infinitecampus-tutorial)、 [Alaya](https://alayagood.com/en/demo/)、 [HeyBuddy](https://docs.microsoft.com/azure/active-directory/saas-apps/heybuddy-tutorial)、 [Wrike SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/wrike-tutorial)，[偏移](https://docs.microsoft.com/azure/active-directory/saas-apps/drift-tutorial)， [Zenegy for Business Central 365](https://accounting.zenegy.com/)， [Everbridge 成员门户](https://docs.microsoft.com/azure/active-directory/saas-apps/everbridge-tutorial)， [IDEO](https://profile.ideo.com/users/sign_up)， [Ivanti Service Manager （ISM）](https://docs.microsoft.com/azure/active-directory/saas-apps/ivanti-service-manager-tutorial)， [Peakon](https://docs.microsoft.com/azure/active-directory/saas-apps/peakon-tutorial)， [Allbound SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/allbound-sso-tutorial)， [Plex Apps-经典测试](https://test.plexonline.com/signon)， [Plex 应用–经典](https://www.plexonline.com/signon)， [Plex 应用-Ux 测试](https://test.cloud.plex.com/sso)， [Plex 应用– ux](https://cloud.plex.com/sso)， [Plex 应用– IAM](https://accounts.plex.com/)，[工艺品-Childcare 记录，出席 & 财务跟踪系统](https://getcrafts.ca/craftsregistration) 
 
 有关这些应用的详细信息，请参阅 [SaaS 应用程序与 Azure Active Directory 集成](https://aka.ms/appstutorial)。 要详细了解如何在 Azure AD 应用库中列出应用程序，请参阅[在 Azure Active Directory 应用程序库中列出应用程序](https://aka.ms/azureadapprequest)。
 
@@ -731,7 +875,7 @@ Azure AD 域服务在 Azure 门户中提供有关托管域配置错误或问题�
 **服务类别：** 报告  
 **产品功能：** 监视和报告
 
-Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在帮助管理员和支持工程师排查 Azure AD 登录相关的问题。此新选项卡提供错误代码、错误消息和建议的补救措施（如果有）来帮助解决问题。 如果无法解决问题，我们还提供使用“复制到剪贴板”体验创建支持票证的新方法，该体验可在支持票证中填充日志文件的“请求 ID”和“日期(UTC)”字段。  
+Azure 门户的 "**登录**" 页上的 "新的**故障排除和支持**" 选项卡旨在帮助管理员和支持工程师排查与 Azure AD 登录相关的问题。此新选项卡提供错误代码、错误消息和修正建议（如果有），以帮助解决问题。 如果无法解决问题，我们还提供使用“复制到剪贴板”体验创建支持票证的新方法，该体验可在支持票证中填充日志文件的“请求 ID”和“日期(UTC)”字段。  
 
 ![显示 "新建" 选项卡的登录日志](media/whats-new/troubleshooting-and-support.png)
 
@@ -753,7 +897,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
 
 **类型：** 更改计划  
 **服务类别：** 条件访问  
-**产品功能：** 标识安全性和保护
+**产品功能：** 标识安全和保护
 
 以下应用包含在[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference#approved-client-app-requirement)列表中：
 
@@ -779,7 +923,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
 
 ---
 
-### <a name="change-notice-authorization-codes-will-no-longer-be-available-for-reuse"></a>更改通知：授权代码不再可重复使用 
+### <a name="change-notice-authorization-codes-will-no-longer-be-available-for-reuse"></a>变更通知：授权代码不再可重复使用 
 
 **类型：** 更改计划  
 **服务类别：** 身份验证（登录）  
@@ -863,7 +1007,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
 
 ---
 
-### <a name="change-notice-authorization-codes-will-no-longer-be-available-for-reuse"></a>更改通知：授权代码不再可重复使用 
+### <a name="change-notice-authorization-codes-will-no-longer-be-available-for-reuse"></a>变更通知：授权代码不再可重复使用 
 
 **类型：** 更改计划  
 **服务类别：** 身份验证（登录）  
@@ -979,8 +1123,8 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
  
 - Azure AD 访问评审
 - Azure AD Connect Health 
-- Azure AD Identity Protection 
-- Azure AD Privileged Identity Management
+- Azure AD 标识保护 
+- Azure AD 特权标识管理
 - 企业应用到期证书通知
 - 企业应用预配服务通知
  
@@ -1015,7 +1159,7 @@ Azure AD 活动日志现已推出适用于 Azure Monitor（Azure 的平台级监
 
 **类型：** 新功能  
 **服务类别：** 报告  
-**产品功能：** 标识安全性和保护
+**产品功能：** 标识安全和保护
  
 通过此项更新，可以查看用户登录时会评估哪些策略以及策略结果。 此外，报告现在包括用户使用的客户端应用类型，以便可以识别旧式协议流量。 现在还可以在报告条目中搜索关联 ID，这可以在面向用户的错误消息中找到。此 ID 可用于识别匹配的登录请求及排查其问题。
 
@@ -1196,7 +1340,7 @@ Azure AD Connect 的最新版本包括：
 ### <a name="configure-tls-settings-to-connect-to-azure-ad-services-for-pci-dss-compliance"></a>配置 TLS 设置以连接到 Azure AD 服务从而实现 PCI DSS 符合性
 
 **类型：** 新功能  
-**服务类别：** 不可用  
+**服务类别：** N/A  
 **产品功能：** 平台
 
 传输层安全性 (TLS) 是一种在两个通信应用程序间提供隐私和数据完整性的协议，是目前使用最广泛的安全协议。
@@ -1243,14 +1387,14 @@ Azure AD Connect 的最新版本包括：
 
 [Skytap](https://docs.microsoft.com/azure/active-directory/active-directory-saas-skytap-tutorial)[Settling music](https://docs.microsoft.com/azure/active-directory/active-directory-saas-settlingmusic-tutorial)[SAML 1.1 Token enabled LOB App](https://docs.microsoft.com/azure/active-directory/active-directory-saas-saml-tutorial)[Supermood](https://docs.microsoft.com/azure/active-directory/active-directory-saas-supermood-tutorial)[Autotask](https://docs.microsoft.com/azure/active-directory/active-directory-saas-autotaskendpointbackup-tutorial)[Endpoint Backup](https://docs.microsoft.com/azure/active-directory/active-directory-saas-autotaskendpointbackup-tutorial)[Skyhigh Networks](https://docs.microsoft.com/azure/active-directory/active-directory-saas-skyhighnetworks-tutorial)Smartway2、[TonicDM](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tonicdm-tutorial)[Moconavi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-moconavi-tutorial)[Zoho One](https://docs.microsoft.com/azure/active-directory/active-directory-saas-zohoone-tutorial)[SharePoint on-premises](https://docs.microsoft.com/azure/active-directory/active-directory-saas-sharepoint-on-premises-tutorial)[ForeSee CX Suite](https://docs.microsoft.com/azure/active-directory/active-directory-saas-foreseecxsuite-tutorial)[Vidyard](https://docs.microsoft.com/azure/active-directory/active-directory-saas-vidyard-tutorial)[ChronicX](https://docs.microsoft.com/azure/active-directory/active-directory-saas-chronicx-tutorial)
 
-有关这些应用的详细信息，请参阅 [SaaS 应用程序与 Azure Active Directory 集成](https://aka.ms/appstutorial)。 有关在 Azure AD 应用库中列出应用程序的详细信息，请参阅[在 Azure Active Directory 应用程序库中列出应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)。 
+有关这些应用的详细信息，请参阅 [SaaS 应用程序与 Azure Active Directory 集成](https://aka.ms/appstutorial)。 要详细了解如何在 Azure AD 应用库中列出应用程序，请参阅[在 Azure Active Directory 应用程序库中列出应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)。 
 
 ---
 
 ### <a name="azure-ad-password-protection-is-available-in-public-preview"></a>公共预览版中提供 Azure AD 密码保护功能
 
 **类型：** 新功能  
-**服务类别：** Identity Protection  
+**服务类别：** 标识保护  
 **产品功能：** 用户身份验证
 
 使用 Azure AD 密码保护有助于杜绝环境中出现易于猜到的密码。 消除这些密码有助于降低遭受密码喷射型攻击时密码泄露的风险。
@@ -1293,7 +1437,7 @@ Azure AD Connect 的最新版本包括：
 
 **类型：** 新功能  
 **服务类别：** 其他  
-**产品功能：** 标识安全性和保护
+**产品功能：** 标识安全和保护
  
 我们发布了有关如何在组织中部署 Azure 多重身份验证 (MFA) 的新分步指南。
 
@@ -1360,7 +1504,7 @@ Azure AD Connect 的最新版本包括：
 ### <a name="add-azure-ad-multi-tenant-endpoint-as-an-identity-provider-in-azure-ad-b2c"></a>在 Azure AD B2C 中将 Azure AD 多租户终结点添加为标识提供者
 
 **类型：** 新功能  
-**服务类别：** B2C - 使用者标识管理  
+**服务类别：** B2C - 用户标识管理  
 **产品功能：** B2B/B2C
  
 现在可以使用自定义策略在 Azure AD B2C 中将 Azure AD 常用终结点添加为标识提供者。 这样就可以为登录到应用程序的所有 Azure AD 用户提供单个入口点。 有关详细信息，请参阅 [Azure Active Directory B2C：让用户使用自定义策略登录到多租户 Azure AD 标识提供者](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-commonaad-custom)。
@@ -1451,7 +1595,7 @@ Azure AD Connect 的最新版本包括：
 
 有关这些应用的详细信息，请参阅 [SaaS 应用程序与 Azure Active Directory 集成](https://aka.ms/appstutorial)。
 
-有关在 Azure AD 应用库中列出应用程序的详细信息，请参阅[在 Azure Active Directory 应用程序库中列出应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)。
+要详细了解如何在 Azure AD 应用库中列出应用程序，请参阅[在 Azure Active Directory 应用程序库中列出应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)。
 
 ---
  
@@ -1514,7 +1658,7 @@ fragment 和 form_post response_mode 继续有效 - 创建新的具有特定用�
 ### <a name="azure-ad-b2c-access-token-are-ga"></a>Azure AD B2C 访问令牌已发布正式版
 
 **类型：** 新功能  
-**服务类别：** B2C - 使用者标识管理  
+**服务类别：** B2C - 用户标识管理  
 **产品功能：** B2B/B2C 
 
 现在可以使用访问令牌访问受 Azure AD B2C 保护的 Web API。 该功能将从公共预览版过渡到正式版。 改进了配置 Azure AD B2C 应用程序和 Web API 的 UI 体验，并进行了其他微小改进。
@@ -1542,7 +1686,7 @@ fragment 和 form_post response_mode 继续有效 - 创建新的具有特定用�
 
 **类型：** 新功能  
 **服务类别：** 使用条款  
-**产品功能：** 合规性
+**产品功能：** 符合性
  
 管理员现在可以选择给定 ToU，查看已同意该 ToU 的所有用户以及同意发生的日期/时间。
 
@@ -1584,7 +1728,7 @@ Connect Health 现在支持按小时或按天检测超过失败 U/P 登录次数
 
 **类型：** 新功能  
 **服务类别：** 使用条款  
-**产品功能：** 合规性
+**产品功能：** 符合性
  
 
 Azure AD 使用条款已从公共预览版移动到正式发布。
@@ -1698,7 +1842,7 @@ Criterion HCM、[FiscalNote](https://docs.microsoft.com/azure/active-directory/a
 ### <a name="twitter-and-github-identity-providers-in-azure-ad-b2c"></a>Azure AD B2C 中的 Twitter 和 GitHub 标识提供者
 
 **类型：** 新功能  
-**服务类别：** B2C - 使用者标识管理  
+**服务类别：** B2C - 用户标识管理  
 **产品功能：** B2B/B2C
  
 现在能以标识提供者的身份在 Azure AD B2C 中添加 Twitter 或 GitHub。 Twitter 将从公共预览版过渡到正式版。 GitHub 即将发布公共预览版。
@@ -1711,7 +1855,7 @@ Criterion HCM、[FiscalNote](https://docs.microsoft.com/azure/active-directory/a
 
 **类型：** 新功能  
 **服务类别：** 条件访问  
-**产品功能：** 标识安全性和保护
+**产品功能：** 标识安全和保护
  
 **现在处于公开预览状态！**
 
@@ -1870,7 +2014,7 @@ Azure AD 应用现在可以在 JWT 或 SAML 令牌中请求自定义或可选声
 
 **类型：** 已更改的功能  
 **服务类别：** 应用代理  
-**产品功能：** 标识安全性和保护
+**产品功能：** 标识安全和保护
  
 此连接器版本将在 11 月之前逐步推出。 此新连接器版本包含以下更改：
 
@@ -2068,7 +2212,7 @@ Azure AD Connect 是在 Azure AD 与本地数据源（包括 Windows Server Acti
 
 **类型：** 已更改的功能  
 **服务类别：** 条件访问  
-**产品功能：** 标识安全性和保护
+**产品功能：** 标识安全和保护
 
 我们添加了更多的应用程序，这些应用程序支持基于应用程序的条件性访问。 现在，可以使用这些批准的客户端应用来访问 Office 365 和其他已连接到 Azure AD 的云应用。
 
@@ -2091,9 +2235,9 @@ Azure AD Connect 是在 Azure AD 与本地数据源（包括 Windows Server Acti
 
 **类型：** 已更改的功能  
 **服务类别：** 使用条款  
-**产品功能：** 合规性
+**产品功能：** 符合性
 
-显示使用条款时，现在可以单击“浏览时遇到问题？请单击此处”。 单击此链接会在设备本地打开使用条款。 不管文档中的字体大小或设备屏幕大小如何，都可以根据需要进行缩放，以方便阅读文档。 
+显示使用条款后，现在可以单击 "**查看时遇到问题"。单击此处**。 单击此链接会在设备本地打开使用条款。 不管文档中的字体大小或设备屏幕大小如何，都可以根据需要进行缩放，以方便阅读文档。 
 
 ---
  
@@ -2111,15 +2255,15 @@ Azure AD Connect 是在 Azure AD 与本地数据源（包括 Windows Server Acti
 
 有关这些应用的详细信息，请参阅 [SaaS 应用程序与 Azure Active Directory 集成](https://aka.ms/appstutorial)。
 
-有关在 Azure AD 应用库中列出应用程序的详细信息，请参阅[在 Azure Active Directory 应用程序库中列出应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)。 
+要详细了解如何在 Azure AD 应用库中列出应用程序，请参阅[在 Azure Active Directory 应用程序库中列出应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)。 
 
 ---
  
 ### <a name="sign-in-with-additional-risk-detected"></a>登录时检测到其他风险
 
 **类型：** 新功能  
-**服务类别：** Identity Protection  
-**产品功能：** 标识安全性和保护
+**服务类别：** 标识保护  
+**产品功能：** 标识安全和保护
 
 针对检测到的风险检测获得的见解与 Azure AD 订阅相关联。 使用 Azure AD Premium P2 版本时，可以获取有关所有基础检测的最详细的信息。
 
@@ -2207,11 +2351,11 @@ MFA 配置位于：“Azure Active Directory”\>“MFA 服务器”
 
 **类型：** 新功能  
 **服务类别：** 使用条款  
-**产品功能：** 合规性
+**产品功能：** 符合性
  
 现在，可以转到访问面板并查看以前接受的使用条款。
 
-执行以下步骤:
+执行以下步骤：
 
 1. 转到 [MyApps 门户](https://myapps.microsoft.com)并登录。
 
@@ -2237,7 +2381,7 @@ Azure AD 和 Microsoft 帐户标识系统 UI 经过重新设计，现在拥有�
  
 ---
  
-### <a name="fewer-sign-in-prompts-a-new-keep-me-signed-in-experience-for-azure-ad-sign-in"></a>登录提示减少：Azure AD 登录的新的“使我保持登录状态”体验
+### <a name="fewer-sign-in-prompts-a-new-keep-me-signed-in-experience-for-azure-ad-sign-in"></a>更少的登录提示：Azure AD 登录的新“使我保持登录状态”体验
 
 **类型：** 新功能  
 **服务类别：** Azure AD  
@@ -2247,7 +2391,7 @@ Azure AD 登录页上的“使我保持登录状态”复选框已被替换为�
 
 如果对此提示回答“是”，则服务会提供永久刷新令牌。 此行为与在旧体验中选中“使我保持登录状态”复选框时相同。 对于联合租户，此提示在使用联合服务成功完成身份验证后显示。
 
-有关详细信息，请参阅 [Fewer sign-in prompts:The new "keep me signed in" experience for Azure AD is in preview](https://cloudblogs.microsoft.com/enterprisemobility/2017/09/19/fewer-login-prompts-the-new-keep-me-signed-in-experience-for-azure-ad-is-in-preview/)（登录提示减少：现已推出 Azure AD 新的“使我保持登录状态”体验的预览版）。 
+有关详细信息，请参阅[更少的登录提示：现已推出 Azure AD 新的“使我保持登录状态”体验的预览版](https://cloudblogs.microsoft.com/enterprisemobility/2017/09/19/fewer-login-prompts-the-new-keep-me-signed-in-experience-for-azure-ad-is-in-preview/)。 
 
 ---
 
@@ -2255,7 +2399,7 @@ Azure AD 登录页上的“使我保持登录状态”复选框已被替换为�
 
 **类型：** 新功能  
 **服务类别：** 使用条款  
-**产品功能：** 合规性
+**产品功能：** 符合性
  
 为管理员添加了一个选项，要求其用户在接受使用条款之前先将其展开。
 
@@ -2305,7 +2449,7 @@ Azure AD 目录角色的审批工作流程已正式发布。
 
 ---
  
-### <a name="pass-through-authentication-skype-for-business-support"></a>传递身份验证：Skype For Business 支持
+### <a name="pass-through-authentication-skype-for-business-support"></a>传递身份验证 - Skype for Business 支持
 
 **类型：** 已更改的功能  
 **服务类别：** 身份验证（登录）  
@@ -2349,13 +2493,13 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 **类型：** 更改计划  
 **服务类别：** 条件访问  
-**产品功能：** 标识安全性和保护
+**产品功能：** 标识安全和保护
 
 可以使用 Intune 托管浏览器作为批准的应用，限制对 Office 365 以及其他已连接 Azure AD 的云应用的浏览器访问。 
 
 你现在可以为基于应用程序的条件访问配置以下条件：
 
-**客户端应用：** Browser
+**客户端应用：** 浏览器
 
 **此更改会产生什么影响？**
 
@@ -2371,7 +2515,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 **类型：** 更改计划  
 **服务类别：** 条件访问  
-**产品功能：** 标识安全性和保护
+**产品功能：** 标识安全和保护
 
 以下应用包含在[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)列表中：
 
@@ -2389,7 +2533,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 **类型：** 新功能    
 **服务类别：** 使用条款  
-**产品功能：** 合规性
+**产品功能：** 符合性
 
 管理员现在可以创建包含多个 PDF 文档的新使用条款。 可以使用相应语言来标记这些 PDF 文档。 将会根据用户的偏好，以匹配的语言显示 PDF。 如果没有匹配的语言，则以默认语言显示。
 
@@ -2398,7 +2542,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 ### <a name="real-time-password-writeback-client-status"></a>实时密码写回客户端状态
 
 **类型：** 新功能  
-**服务类别：** 自助式密码重置  
+**服务类别：** 自助密码重置  
 **产品功能：** 用户身份验证
 
 现在可以查看本地密码写回客户端的状态。 此选项位于[密码重置](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)页的“本地集成”部分。 
@@ -2416,7 +2560,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
  
 **类型：** 新功能  
 **服务类别：** Azure AD  
-**产品功能：** 标识安全性和保护
+**产品功能：** 标识安全和保护
 
 你现在可以使用[基于应用的条件访问 Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)，将对 Office 365 和其他 Azure AD 连接的云应用的访问限制到支持 Intune 应用保护策略的[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)。 Intune 应用保护策略用于配置和保护这些客户端应用程序中的公司数据。
 
@@ -2435,7 +2579,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 **访问控制**
 
-- 需要核准的客户端应用
+- 需要批准的客户端应用
 
 有关详细信息，请参阅[Azure AD 基于应用的条件性访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)。
  
@@ -2445,7 +2589,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 **类型：** 新功能  
 **服务类别：** 设备注册和管理  
-**产品功能：** 标识安全性和保护
+**产品功能：** 标识安全和保护
 
 现在可在一个位置找到连接到 Azure AD 的所有设备以及与设备相关的活动。 在 Azure 门户中管理所有设备标识和设置有新的管理体验。 在此版本中，可以：
 
@@ -2462,7 +2606,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 **类型：** 新功能    
 **服务类别：** 条件访问  
-**产品功能：** 标识安全性和保护 
+**产品功能：** 标识安全和保护 
 
 你现在可以在 Azure AD 条件性访问策略中包括（或排除） macOS 作为设备平台条件。 通过将 macOS 添加到支持的设备平台，可以：
 
@@ -2516,7 +2660,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
  
 **类型：** 已更改的功能  
 **服务类别：** 条件访问  
-**产品功能：** 标识安全性和保护
+**产品功能：** 标识安全和保护
 
 以下应用已添加到[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)列表：
 
@@ -2534,7 +2678,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 **类型：** 已更改的功能    
 **服务类别：** 条件访问  
-**产品功能：** 标识安全性和保护
+**产品功能：** 标识安全和保护
  
 你现在可以使用 "OR" （需要一个选定的控件）进行条件性访问控制。 可以使用此功能创建在访问控制条件之间包含“OR”的策略。 例如，可以使用此功能创建一个策略，要求用户使用多重身份验证登录，或要求用户在符合条件的设备上操作。
 
@@ -2546,7 +2690,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 **类型：** 已更改的功能    
 **服务类别：** 标识保护  
-**产品功能：** 标识安全性和保护
+**产品功能：** 标识安全和保护
 
 在 Azure AD Identity Protection 中，所有源自给定日期的相同 IP 地址的实时风险检测现在都将针对每种风险检测类型进行聚合。 此更改限制显示的风险检测量，而不会对用户安全进行任何更改。
 
@@ -2587,7 +2731,7 @@ Azure 门户提供：
 
 **类型：** 新功能  
 **服务类别：** 多重身份验证  
-**产品功能：** 标识安全性和保护  
+**产品功能：** 标识安全和保护  
 
 多重身份验证 (MFA) 是保护组织不可或缺的组成部分。 为使凭证的适应能力更强，体验更顺畅，添加了以下功能： 
 
@@ -2604,7 +2748,7 @@ Azure 门户提供：
 
 **类型：** 新功能  
 **服务类别：** 使用条款  
-**产品功能：** 合规性  
+**产品功能：** 符合性  
 
 可以使用 Azure AD 的使用条款功能向用户显示法律要求或符合性要求的相关免责声明。
 
@@ -2626,7 +2770,7 @@ Azure 门户提供：
 
 使用 Azure AD Privileged Identity Management，可以管理、控制和监视对组织中 Azure 资源（预览版）的访问：
 
-- 订阅
+- Subscriptions
 - 资源组
 - 虚拟机 
 
@@ -2636,11 +2780,11 @@ Azure 门户中使用 Azure RBAC 功能的所有资源都可以利用 Azure AD P
 
 ---
 
-### <a name="access-reviews"></a>访问审阅
+### <a name="access-reviews"></a>访问评审
 
 **类型：** 新功能  
-**服务类别：** 访问审阅  
-**产品功能：** 合规性  
+**服务类别：** 访问评审  
+**产品功能：** 符合性  
 
 组织可以使用访问评审（预览版）有效管理组成员身份以及对企业应用程序的访问权限： 
 

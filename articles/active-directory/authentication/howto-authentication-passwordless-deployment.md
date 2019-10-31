@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6996b6163c1d5a2a4747093743a937dfd9eb7d4f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5aab9d8c2b7993598c602ae6b730baff06d807e1
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933118"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151628"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>完成无密码 authentication 部署
 
@@ -104,18 +104,27 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 
 如果使用 FIDO2 安全密钥启用 Windows 10 登录，则需要在 Windows 10 中启用凭据提供程序功能。 通过以下两种方式之一启用：
 
-- [通过目标 Intune 部署启用凭据提供程序](howto-authentication-passwordless-security-key.md#enable-targeted-intune-deployment)
-   - 对于 Azure Active Directory 联接的计算机，建议使用 Intune 部署选项。
-- [通过预配包启用凭据提供程序](howto-authentication-passwordless-security-key.md#enable-credential-provider-via-provisioning-package)
+- [使用 Intune 启用凭据提供程序](howto-authentication-passwordless-security-key-windows.md#enable-with-intune)
+   - 建议使用 Intune 部署。
+- [启用带有预配包的凭据提供程序](howto-authentication-passwordless-security-key-windows.md#enable-with-a-provisioning-package)
    - 如果无法部署 Intune，则管理员必须在每台计算机上部署包以启用凭据提供程序功能。 可以通过以下选项之一来执行包安装：
       - 组策略或 System Center Configuration Manager （SCCM）
       - Windows 10 计算机上的本地安装
+- [使用组策略启用凭据提供程序](howto-authentication-passwordless-security-key-windows.md#enable-with-group-policy)
+   - 仅支持混合 Azure AD 连接设备。
+
+#### <a name="enable-on-premises-integration"></a>启用本地集成
+
+按照文章[启用无密码 security key 登录到本地资源（预览版）](howto-authentication-passwordless-security-key-on-premises.md)中的步骤，启用对本地资源的访问。
+
+> [!IMPORTANT]
+> 还必须完成所有混合 Azure AD 联接的设备的这些步骤，才能利用 Windows 10 登录的 FIDO2 安全密钥。
 
 ### <a name="register-security-keys"></a>注册安全密钥
 
 用户必须在他们的每个 Azure Active Directory 联接的 Windows 10 计算机上注册其安全密钥。
 
-有关详细信息，请参阅[用户注册和管理 FIDO2 安全密钥](howto-authentication-passwordless-security-key.md)。
+有关详细信息，请参阅[用户注册和管理 FIDO2 安全密钥](howto-authentication-passwordless-security-key.md#user-registration-and-management-of-fido2-security-keys)。
 
 ### <a name="licensing-for-passwordless-authentication"></a>无密码 authentication 的许可
 
@@ -257,7 +266,7 @@ Azure AD 将条目添加到审核日志中：
 ### <a name="deploy-fido2-security-key-sign-in"></a>部署 FIDO2 安全密钥登录
 
 请按照文章中的[启用无密码安全密钥 Azure AD 登录](howto-authentication-passwordless-security-key.md)一文中的步骤，为你的组织中的无密码身份验证方法启用 FIDO2 安全密钥。
- 
+
 ### <a name="troubleshoot-phone-sign-in"></a>电话登录疑难解答
 
 | 场景 | 解决方案 |

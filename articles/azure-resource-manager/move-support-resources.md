@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 10/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: ba594a2bc0f0cb50eb515a24255a3f9ad56a10a3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 05f7d022588eee0e5e97f10d6300da04c4be6270
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931878"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161956"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 本文列出了 Azure 资源类型是否支持移动操作。 它还提供有关移动资源时要考虑的特殊情况的信息。
@@ -941,7 +941,6 @@ ms.locfileid: "72931878"
 > | publicipprefixes | 是 | 是 |
 > | routefilters | No | No |
 > | routetables | 是 | 是 |
-> | securegateways | 是 | 是 |
 > | serviceendpointpolicies | 是 | 是 |
 > | trafficmanagerprofiles | 是 | 是 |
 > | virtualhubs | No | No |

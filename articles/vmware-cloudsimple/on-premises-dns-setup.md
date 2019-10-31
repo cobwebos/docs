@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f00e7663c4ed2211927f5c8d1c131d85bc6c96dd
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 72bf461dc882b9a097e59e8ecf40b0f71b2cc1f2
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900892"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163135"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>为本地工作站的私有云 vCenter 访问配置 DNS 进行名称解析
 
@@ -46,11 +46,11 @@ ms.locfileid: "72900892"
 例如，对于默认的 BIND 服务器配置，请在 DNS 服务器上编辑/etc/named.conf 文件并添加以下区域信息。
 
 ```
-zone “cloudsimple.io”
+zone "cloudsimple.io"
 {
     type stub;
     masters { IP address of DNS servers; };
-    file “slaves/cloudsimple.io.db”;
+    file "slaves/cloudsimple.io.db";
 };
 ```
 
@@ -87,7 +87,7 @@ zone “cloudsimple.io”
 例如，对于默认的 BIND 服务器配置，请在 DNS 服务器上编辑/etc/named.conf 文件，并添加以下条件转发信息。
 
 ```
-zone “cloudsimple.io” {
+zone "cloudsimple.io" {
     type forward;
     forwarders { IP address of DNS servers; };
 };

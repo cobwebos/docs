@@ -4,15 +4,15 @@ description: 了解如何将自动化服务主体添加到服务器管理员角�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5e4650d3be5ce21a49b419577eaf83225b1c0d4d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c141bcea030f5afcc3cb33adba32f4a96c335eec
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298717"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147400"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>将服务主体添加到服务器管理员角色 
 
@@ -24,7 +24,7 @@ ms.locfileid: "72298717"
 [创建服务主体 - Azure 门户](../active-directory/develop/howto-create-service-principal-portal.md)   
 [创建服务主体 - PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
-## <a name="required-permissions"></a>所需权限
+## <a name="required-permissions"></a>所需的权限
 若要完成此项任务，在 Azure AS 服务器上必须具备[服务器管理员](analysis-services-server-admins.md)权限。 
 
 ## <a name="add-service-principal-to-server-administrators-role"></a>将服务主体添加到服务器管理员角色
@@ -41,7 +41,7 @@ ms.locfileid: "72298717"
 
 
 > [!NOTE]
-> 对于使用 Azure PowerShell cmdlet 进行的服务器操作，运行计划程序的服务主体还必须属于 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 中资源的“所有者”角色。 
+> 对于使用 Azure PowerShell cmdlet 的服务器操作，运行计划程序的服务主体也必须属于[Azure 基于角色的访问控制（RBAC）](../role-based-access-control/overview.md)中资源的**所有者**角色。 
 
 ## <a name="related-information"></a>相关信息
 

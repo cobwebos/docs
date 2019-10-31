@@ -1,5 +1,5 @@
 ---
-title: 设置安全信息 (预览版) 以使用短信-Azure Active Directory |Microsoft Docs
+title: 设置安全信息（预览版）以使用短信-Azure Active Directory |Microsoft Docs
 description: 如何设置安全信息以使用短信和移动设备验证身份。
 services: active-directory
 author: eross-msft
@@ -12,23 +12,23 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c1c6aadcf8fb247a7c2a53cef7d1ed0c85cf374
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: f3544094da72c1c0f854f3d02a34f8540ad2f784
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382829"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160887"
 ---
 # <a name="set-up-security-info-preview-to-use-text-messaging"></a>设置安全信息以使用短信（预览版）
 
-可以按照以下步骤添加双因素验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页面以添加、更新或删除安全信息。
+可遵循以下步骤添加双重验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页面以添加、更新或删除安全信息。
 
-如果在登录工作或学校帐户后系统提示立即进行设置，请参阅[根据登录页提示设置安全信息](security-info-setup-signin.md)一文中的详细步骤。
+如果在登录工作或学校帐户后系统提示立即进行此项设置，请参阅[根据登录页提示设置安全信息](security-info-setup-signin.md)一文中的详细步骤。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
->如果看不到电话选项，则可能是因为组织不允许你使用电话号码进行验证。 在这种情况下，需要选择另一种方法，或与管理员联系以获取进一步帮助。
+>如果看不到电话选项，则可能是因为组织不允许你使用电话号码进行验证。 在这种情况下，需选择另一种方法，或与管理员联系以获取进一步帮助。
 
 ## <a name="set-up-text-messages-from-the-security-info-page"></a>从“安全信息”页设置文本消息
 
@@ -39,17 +39,17 @@ ms.locfileid: "68382829"
 
 ### <a name="to-set-up-text-messages"></a>若要设置短信
 
-1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
+1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页面。
 
     ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 
 2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-    ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![“安全信息”页面，突出显示“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. 在“添加方法”页上，从下拉列表中选择“电话”，然后选择“添加”。
 
-    ![添加方法框，选中电话](media/security-info/securityinfo-myprofile-addphonetext.png)
+    ![“添加方法”框，已选中“电话”](media/security-info/securityinfo-myprofile-addphonetext.png)
 
 4. 在“电话”页上，键入移动设备的电话号码，选择“以短信形式向我发送验证码”，然后选择“下一步”。
 
@@ -61,7 +61,7 @@ ms.locfileid: "68382829"
 
     此时，页面更改为显示成功。
 
-    ![成功通知, 连接电话号码, 接收短信的选项, 以及你的帐户](media/security-info/securityinfo-myprofile-phonetext-success.png)
+    ![成功通知，连接电话号码，接收短信的选项，以及你的帐户](media/security-info/securityinfo-myprofile-phonetext-success.png)
 
     安全信息已更新，你可以在使用双重验证或密码重置时使用短信验证身份。 如果要将短信作为默认方法，请参阅本文的[更改默认的安全信息方法](#change-your-default-security-info-method)部分。
 
@@ -74,25 +74,25 @@ ms.locfileid: "68382829"
 
 ### <a name="to-delete-text-messaging"></a>删除短信
 
-1. 在“安全信息”页上，选择“电话”选项旁边的“删除”链接。
+1. 在“安全信息”页面上，选择“电话”选项旁边的“删除”链接。
 
     ![从安全信息中删除电话和短信方法的链接](media/security-info/securityinfo-myprofile-phonetext-delete.png)
 
-2. 从确认框中选择“是”，以删除“电话”号码。 删除电话号码后，该帐户将从你的安全信息中删除，并从“安全信息”页消失。 如果“电话”是默认方法，则默认方法将更改为另一种可用方法。
+2. 从确认框中选择“是”，以删除**电话**号码。 删除电话号码后，该帐户将从你的安全信息中删除，并从“安全信息”页消失。 如果“电话”是默认方法，则默认方法将更改为另一种可用方法。
 
 ## <a name="change-your-default-security-info-method"></a>更改默认的安全信息方法
 
-如果要在使用双因素验证或密码重置请求登录到工作或学校帐户时使用文本消息作为默认方法, 则可以从 "**安全信息**" 页设置。
+如果要在使用双因素验证或密码重置请求登录到工作或学校帐户时使用文本消息作为默认方法，则可以从 "**安全信息**" 页设置。
 
 ### <a name="to-change-your-default-security-info-method"></a>更改默认安全信息方法
 
 1. 在“安全信息”页上，选择“默认登录方法”信息旁边的“更改”链接。
 
-    ![默认登录方法的“更改”链接](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
+    ![更改默认登录方法的链接](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. 从可用方法的下拉列表中选择“电话 - 短信 (_your_phone_number_)”，然后选择“确认”。 
+2. 从可用方法的下拉列表中选择“电话 - 短信 (_your_phone_number_)”，然后选择“确认”。
 
-    ![选择默认登录方法](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
+    ![选择默认登录的方法](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
 
     用于登录的默认方法更改为“电话 - 短信 (_your_phone_number_ )”。
 
@@ -104,7 +104,7 @@ ms.locfileid: "68382829"
 
 - **移动设备或工作电话。** 输入移动设备号码，获取将用于双重验证或密码重置的电话。 有关如何使用电话号码验证身份的分步说明，请参阅[设置安全信息以使用电话](security-info-setup-phone-number.md)。
 
-- **安全密钥。** 注册与 Microsoft 兼容的安全密钥, 并将其与用于双重验证或密码重置的 PIN 一起使用。 有关如何使用安全密钥验证身份的分步说明, 请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
+- **安全密钥。** 注册与 Microsoft 兼容的安全密钥，并将其与用于双重验证或密码重置的 PIN 一起使用。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
 
 - **电子邮件地址。** 输入工作或学校电子邮件地址，获取用于密码重置的电子邮件。 此选项不可用于双重验证。 有关如何设置电子邮件的分步说明，请参阅[设置安全信息以使用电子邮件](security-info-setup-email.md)。
 
@@ -115,6 +115,6 @@ ms.locfileid: "68382829"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果丢失或忘记密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](user-help-reset-password.md)一文中的步骤重置密码。
+- 如果你丢失或忘记了密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](active-directory-passwords-update-your-own-password.md)一文中的步骤来重置密码。
 
 - 在[无法登录 Microsoft 帐户](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)一文中获取登录问题的故障排除提示和帮助。

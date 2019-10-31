@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbac4f364dedc28f7d5f3e100481a56bde70b4d3
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: b28330f8e81efbb496fb30a14e8ae10415ded27f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382920"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160740"
 ---
 # <a name="set-up-security-info-preview-to-use-phone-calls"></a>设置安全信息（预览版）以使用电话呼叫
 
-可以按照以下步骤添加双重验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页面以添加、更新或删除安全信息。
+可遵循以下步骤添加双重验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页面以添加、更新或删除安全信息。
 
 如果在登录工作或学校帐户后系统提示立即进行此项设置，请参阅[根据登录页提示设置安全信息](security-info-setup-signin.md)一文中的详细步骤。
 
@@ -47,7 +47,7 @@ ms.locfileid: "68382920"
 
 2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-    ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![“安全信息”页面，突出显示“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. 在“添加方法”页上，从下拉列表中选择“电话”，然后选择“添加”。
 
@@ -55,7 +55,7 @@ ms.locfileid: "68382920"
 
 4. 在“电话”页上，键入移动设备的电话号码，选择“呼叫我”，然后选择“下一步”。
 
-    ![添加电话号码并选择电话呼叫](media/security-info/securityinfo-myprofile-phonecall-addnumber.png)
+    ![添加电话号码并选择电话](media/security-info/securityinfo-myprofile-phonecall-addnumber.png)
 
 5. 接听验证电话（打给你输入的电话号码），按指令操作。
 
@@ -84,7 +84,7 @@ ms.locfileid: "68382920"
 
 如果你在使用双重验证登录工作或学校帐户时希望电话呼叫成为默认使用的方法，或者希望电话呼叫成为默认用于密码重置请求的方法，则可以从“安全信息”页面对其进行设置。
 
-### <a name="to-change-your-default-security-info-method"></a>更改默认安全信息方法的步骤
+### <a name="to-change-your-default-security-info-method"></a>更改默认安全信息方法
 
 1. 在“安全信息”页上，选择“默认登录方法”信息旁边的“更改”链接。
 
@@ -104,7 +104,7 @@ ms.locfileid: "68382920"
 
 - **移动设备短信。** 输入移动设备号码，获取将用于双重验证或密码重置的短信或代码。 有关如何通过短信 (SMS) 验证身份的分步说明，请参阅[设置安全信息以使用短信 (SMS)](security-info-setup-text-msg.md)。
 
-- **安全密钥。** 注册与 Microsoft 兼容的安全密钥, 并将其与用于双重验证或密码重置的 PIN 一起使用。 有关如何使用安全密钥验证身份的分步说明, 请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
+- **安全密钥。** 注册与 Microsoft 兼容的安全密钥，并将其与用于双重验证或密码重置的 PIN 一起使用。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
 
 - **电子邮件地址。** 输入工作或学校电子邮件地址，获取用于密码重置的电子邮件。 此选项不可用于双重验证。 有关如何设置电子邮件的分步说明，请参阅[设置安全信息以使用电子邮件](security-info-setup-email.md)。
 
@@ -115,6 +115,6 @@ ms.locfileid: "68382920"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果丢失或忘记密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](user-help-reset-password.md)一文中的步骤重置密码。
+- 如果你丢失或忘记了密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](active-directory-passwords-update-your-own-password.md)一文中的步骤来重置密码。
 
 - 在[无法登录 Microsoft 帐户](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)一文中获取登录问题的故障排除提示和帮助。
