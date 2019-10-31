@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 10/30/2019
 ms.author: cherylmc
-ms.openlocfilehash: 83ee20203cdd6a5afefd9d7e6e6e884fd142cf3c
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 1de1f1fd4846d43f6d63902a14a262e10905faec
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901740"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176264"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -42,9 +42,9 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **地缘政治区域** | **Azure 区域** | **ExpressRoute 位置** |
 | --- | --- | --- |
 | **澳大利亚政府** | 澳大利亚中部、澳大利亚中部 2 |堪培拉、堪培拉 2 |
-| **欧洲** | 法国中部、法国南部、北欧、西欧、英国西部、英国南部 |阿姆斯特丹，Amsterdam2，哥本哈根，都柏林，法兰克福，伦敦，London2，马赛，纽波特（威尔士），巴黎，斯德哥尔摩，苏黎世，慕尼黑 |
+| **欧洲** | 法国中部、法国南部、北欧、西欧、英国西部、英国南部 |阿姆斯特丹，Amsterdam2，哥本哈根，都柏林，法兰克福，Geneva，伦敦，London2，马赛，Milan，慕尼黑，纽波特（威尔士），巴黎，Stavanger，斯德哥尔摩，苏黎世，慕尼黑 |
 | **北美** | 美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、丹佛、拉斯维加斯、洛杉矶、迈阿密、纽约、San Antonio、西雅图、硅谷、硅 Valley2、华盛顿特区、华盛顿 DC2、蒙特利尔、魁北克市、多伦多 |
-| **亚洲** | 东亚、东南亚 |香港特别行政区，吉隆坡，新加坡，新加坡2，台北 |
+| **亚洲** | 东亚、东南亚 |香港特别行政区，雅加达，吉隆坡，新加坡，新加坡2，台北 |
 | **印度** | 印度西部、印度中部、印度南部 |金奈、金奈 2、孟买、孟买 2 |
 | **日本** | 日本西部、日本东部 |大坂、东京 |
 | **大洋洲** | 澳大利亚东南部、澳大利亚东部 |奥克兰，墨尔本， | 
@@ -81,7 +81,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **阿姆斯特丹 2** | [Interxion AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | 第 | 欧洲西部 | 10G，100G | CenturyLink Cloud Connect、Colt、CIX、euNetworks、Interxion、Vodafone |
 | **亚特兰大** | [Equinix AT2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at2/) | 第 | 不适用 | 不适用 | Equinix、Megaport |
 | **奥克兰** | [Vocus Group NZ Albany](https://www.vocus.co.nz/business/cloud-data-centres) | 2 | 不适用 | 10G | Devoli、Kordia、Megaport、Spark NZ、Vocus Group NZ |
-| **釜山** | [LG CNS](https://datacenter.lgcns.com/Contents/En/Menu_1/Locations_1.aspx) | 2 | 韩国南部 | 不适用 | LG CNS |
+| **釜山** | [LG CNS](https://www.lgcns.com/datacenter) | 2 | 韩国南部 | 不适用 | LG CNS |
 | **堪培拉** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 第 | 澳大利亚中部 | 不适用 | CDC |
 | **堪培拉 2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 第 | 澳大利亚中部 2| 不适用 | CDC |
 | **开普敦** | [Teraco CT1](https://www.teraco.co.za/data-centre-locations/cape-town/) | 3 | 南非西部 | 10G | Internet Solutions - Cloud Connect、Liquid Telecom、Teraco |
@@ -97,6 +97,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **法兰克福** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 第 | 德国中西部 | 不适用 | 反 CIX，Interxion，橙色 |
 | **Geneva** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 第 | 瑞士西部 | 10G，100G | |
 | **香港特别行政区** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | 亚洲东部 | 不适用 | Aryaka networks、网络，英国电信，CenturyLink 云连接，首席电信，中国电信全局，Equinix，Megaport，NTT 通信，橙色，PCCW 全局有限，Tata 通信，Telia 载波，Verizon |
+| **雅加达** | Telkom 印度尼西亚 | 4 | 不适用 | 10G | |
 | **约翰内斯堡** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | 南非北部 | 不适用 | 英国电信，Internet 解决方案-云连接，液体电信，橙色，Teraco |
 | **吉隆坡** | [时间 dotCom Menara 目标](https://www.aims.com.my/co-location/points-of-presence.html) | 2 | 不适用 | 不适用 | TIME dotCom |
 | **拉斯维加斯** | [切换 LV](https://www.switch.com/las-vegas) | 第 | 不适用 | 不适用 | CenturyLink Cloud Connect、Megaport |

@@ -8,12 +8,12 @@ ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: df1263e2cc13f875819c9bb16b5eb7399368b7f5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4a0959c7562c3868825e26366ae08e9b87f92319
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953520"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177212"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>导出 Azure IoT Central 中的数据
 
@@ -160,7 +160,7 @@ ms.locfileid: "72953520"
 每条消息表示自上次导出消息以来对设备所做的一项或多项更改。 将要在每条消息中发送的信息包括：
 - IoT Central 中设备的 `id`
 - 设备的 `name`
-- [设备预配服务](https://aka.ms/iotcentraldocsdps)中的 `deviceId`
+- [设备预配服务](/azure/iot-central/core/howto-connect-nodejs)中的 `deviceId`
 - 设备模板信息
 - 属性值
 - 设置值

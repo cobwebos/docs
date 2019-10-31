@@ -1,6 +1,6 @@
 ---
-title: 在 Azure AD 权限管理（预览版）中隐藏或删除访问包-Azure Active Directory
-description: 了解如何在 Azure Active Directory 授权管理（预览版）中隐藏或删除访问包。
+title: 在 Azure AD 的权利管理中隐藏或删除访问包-Azure Active Directory
+description: 了解如何在 Azure Active Directory 权限管理中隐藏或删除访问包。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab6f3a86d8e88ee2d7465fd32bde7b7555f1f326
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 4391cd20f3919e8def28fa3c1d5007f91b2d9f0b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389165"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174747"
 ---
-# <a name="hide-or-delete-an-access-package-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 权限管理（预览版）中隐藏或删除访问包
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="hide-or-delete-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权限管理中隐藏或删除访问包
 
 默认情况下，访问包是可发现的。 这意味着，如果策略允许用户请求访问包，则他们将自动看到其 "我的 Access" 门户中列出的访问包。 但是，你可以更改**隐藏**的设置，以便在用户的我的 access 门户中未列出该访问包。
 

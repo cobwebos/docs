@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: dad37af030c456f9ba2cd814fa92a7811dce6aa1
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 96956e1ad935933572b1f2d31b70ef64f8b92501
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130324"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175863"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>规划和准备 Service Fabric 独立群集部署
 
@@ -42,10 +42,10 @@ ms.locfileid: "71130324"
 
 当在 ClusterConfig.json 中指定 UD 时，可以选择每个 UD 的名称。 例如，以下名称是有效的：
 
-* “upgradeDomain”：“UD0”
-* “upgradeDomain”：“UD1A”
-* “upgradeDomain”：“DomainRed”
-* “upgradeDomain”：“Blue”
+* "upgradeDomain": "UD0"
+* "upgradeDomain": "UD1A"
+* "upgradeDomain": "DomainRed"
+* "upgradeDomain": "Blue"
 
 有关 FD 和 UD 的更多详细信息，请参阅 [Service Fabric 群集介绍](service-fabric-cluster-resource-manager-cluster-description.md)。
 
@@ -65,7 +65,7 @@ ms.locfileid: "71130324"
 * 至少 40 GB 可用磁盘空间
 * 4 核或更高规格的 CPU
 * 所有计算机与安全网络连接
-* 已安装 Windows Server OS（有效版本：2012 R2、2016、1709或1803）。 Service Fabric 版本6.4.654.9590 和更高版本还支持 Server 2019 和1809。
+* 已安装 Windows Server OS （有效版本： 2012 R2、2016、1709或1803）。 Service Fabric 版本6.4.654.9590 和更高版本还支持 Server 2019 和1809。
 * [.NET Framework 4.5.1 或更高版本](https://www.microsoft.com/download/details.aspx?id=40773)的完整安装版
 * [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
 * 应在所有计算机上运行 [RemoteRegistry 服务](https://technet.microsoft.com/library/cc754820)
@@ -77,16 +77,16 @@ ms.locfileid: "71130324"
 [下载链接 - Service Fabric 独立包 - Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690)，并将包解压缩到群集外的一台部署计算机中或解压缩到群集内的其中一台计算机中。
 
 ## <a name="modify-cluster-configuration"></a>修改群集配置
-若要创建一个独立群集，则必须创建一个独立群集配置 ClusterConfig.json 文件，并在其中说明该群集的规范。 可以基于在以下链接中找到的模板创建配置文件。 <br>
+若要创建一个独立群集，则必须创建一个独立群集配置 ClusterConfig.json 文件，并在其中说明该群集的规范。 可根据以下链接中的模板创建配置文件。 <br>
 [独立群集配置](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
-有关此文件中各个节的详细信息，请参阅 [Windows 独立群集的配置设置](service-fabric-cluster-manifest.md)。
+有关此文件中相关部分的详细信息，请参阅 [Windows 独立群集的配置设置](service-fabric-cluster-manifest.md)。
 
 从已下载的程序包中打开某个 ClusterConfig.json 文件，并修改以下设置：
 
 | **配置设置** | **说明** |
 | --- | --- |
-| **NodeTypes** |节点类型可让你将群集节点划分到不同的组中。 一个群集必须至少有一个节点类型。 组中的所有节点具有以下共同特征： <br> **名称** - 即节点类型名称。 <br>**终结点端口** - 即与此节点类型关联的各种命名终结点（端口）。 可以使用任何端口号，只要它们不会与此清单中的其他部分发生冲突，并且未被计算机/VM 上运行的其他应用程序使用。 <br> 放置属性 - 即此节点类型的相应属性，可用作系统服务或你拥有的服务的放置约束。 这些属性是用户定义的键/值对，可为指定节点提供额外的元数据。 节点属性的示例包括节点是否有硬盘或图形卡、其硬盘的轴数、内核数和其他物理属性。 <br> **容量** - 节点容量，定义特定节点提供的特定资源的名称和数量。 例如，节点可以定义名为“MemoryInMb”的指标容量，而且默认有 2048 MB 的可用内存。 这些容量在运行时使用，以确保将需要特定资源量的服务放在具有所需数量的可用资源的节点上。<br>IsPrimary - 如果定义了多个 NodeType，请确保只有一个设置为主节点（值为 true），系统服务将在该主节点上运行。 应将所有其他节点类型设置为 false 值 |
+| **NodeTypes** |节点类型可让你将群集节点划分到不同的组中。 一个群集必须至少有一个节点类型。 组中的所有节点具有以下共同特征： <br> **名称** - 即节点类型名称。 <br>**终结点端口** - 即与此节点类型关联的各种命名终结点（端口）。 可以使用任何端口号，只要它们不会与此清单中的其他部分发生冲突，并且未被计算机/VM 上运行的其他应用程序使用。 <br> **放置属性** - 即此节点类型的相应属性，可用作系统服务或你的服务的放置约束。 这些属性是用户定义的键/值对，可为指定节点提供额外的元数据。 节点属性的示例包括节点是否有硬盘或图形卡、其硬盘的轴数、内核数和其他物理属性。 <br> **容量** - 节点容量，定义特定节点提供的特定资源的名称和数量。 例如，节点可以定义名为“MemoryInMb”的指标容量，而且默认有 2048 MB 的可用内存。 这些容量在运行时使用，以确保将需要特定资源量的服务放在具有所需数量的可用资源的节点上。<br>**IsPrimary** - 如果定义了多个 NodeType，请确保只有一个设置为主节点（值为 *true*），系统服务会在该主节点上运行。 应将所有其他节点类型设置为 *false* 值 |
 | **Nodes** |这些是群集内的每个节点的详细信息（节点类型、节点名称、IP 地址、节点的容错域和升级域）。 要在其上创建群集的计算机必须与其 IP 地址一起列在此处。 <br> 如果对所有节点使用相同的 IP 地址，则会创建一个可用于测试的单机群集。 不要将单机群集用于部署生产工作负荷。 |
 
 群集配置将所有设置配置到环境后，可针对群集环境对其进行测试（步骤 7）。
@@ -102,15 +102,14 @@ ms.locfileid: "71130324"
    * 已卸载 Service Fabric 运行时 
    * 已启用 Windows 防火墙服务 (mpssvc)
    * 已启用远程注册表服务（远程注册表）
-   * 已启用文件共享 (SMB)
    * 已基于群集配置端口打开所需的端口
-   * 已打开 Windows SMB 和远程注册表服务所需的端口：135、137、138、139 和 445
+   * 为远程注册表服务打开了必要的端口：135、137、138和139
    * 已相互建立网络连接
 3. 所有群集节点计算机均不是域控制器。
 4. 如果要部署的群集是安全群集，需确保存在所需的安全先决条件，且已针对配置进行了正确配置。
 5. 如果群集计算机无法访问 Internet，请在群集配置中进行以下设置：
-   * 禁用遥测：在“属性”下，设置 "enableTelemetry": false
-   * 禁用自动 Fabric 版本下载和通知当前群集版本支持即将终止：在“属性”下，设置 "fabricClusterAutoupgradeEnabled": false
+   * 禁用遥测：在 "*属性*" 下，设置 *"enableTelemetry"： false*
+   * 禁用自动构造版本下载 & 通知当前群集版本已接近支持：在 "*属性*" 下，设置 *"fabricClusterAutoupgradeEnabled"： false*
    * 或者，如果网络 Internet 访问仅限于允许列表中的域，则需要自动升级以下域：go.microsoft.com download.microsoft.com
 
 6. 设置适当的 Service Fabric 防病毒排除项：

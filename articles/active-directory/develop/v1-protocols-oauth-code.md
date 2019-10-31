@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0184aa7bff4203f50d834f603bed5fd2af52e4c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 051565d984196edce0404b12677cf27de9006f29
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514425"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175220"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>使用 OAuth 2.0 代码授权流来授权访问 Azure Active Directory Web 应用程序
 
@@ -64,7 +64,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 门户中找到该值。 单击服务边栏中的“Azure Active Directory”，单击“应用注册”，然后选择应用程序。 |
 | response_type |必填 |必须包括授权代码流的 `code`。 |
 | redirect_uri |建议 |应用程序的 redirect_uri，应用程序可在此发送及接收身份验证响应。 其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 对于本机和移动应用，应使用默认值 `urn:ietf:wg:oauth:2.0:oob`。 |
-| response_mode |可选 |指定将生成的令牌送回到应用程序所应该使用的方法。 可以是 `query`、`fragment` 或 `form_post`。 `query` 在重定向 URI 上提供代码作为查询字符串参数。 如果要使用隐式流请求 ID 令牌，则无法使用[OpenID 规范](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)中指定的 `query`。如果只请求代码，则可以使用 `query`、`fragment` 或 `form_post`。 `form_post` 对重定向 URI 执行包含代码的 POST。 代码流的默认值为 `query`。  |
+| response_mode |可选 |指定将生成的令牌送回到应用程序所应该使用的方法。 可以是 `query`、`fragment` 或 `form_post`。 `query` 在重定向 URI 上提供代码作为查询字符串参数。 如果要使用隐式流请求 ID 令牌，则无法使用[OpenID 规范](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)中指定的 `query`。如果只请求代码，则可以使用 `query`、`fragment`或 `form_post`。 `form_post` 对重定向 URI 执行包含代码的 POST。 代码流的默认值为 `query`。  |
 | state |建议 |同时随令牌响应返回的请求中所包含的值。 随机生成的唯一值通常用于[防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该状态也用于在身份验证请求出现之前，于应用程序中编码用户的状态信息，例如之前所在的网页或视图。 |
 | resource | 建议 |目标 Web API 的应用 ID URI（受保护的资源）。 要查找应用 ID URI，请在 Azure 门户中，依次单击“Azure Active Directory”和“应用程序注册”，打开应用程序的“设置”页面，然后单击“属性”。 也可能是外部资源，如 `https://graph.microsoft.com`。 这在授权或令牌请求中是必需的。 要确保减少身份验证提示，请将其置于授权请求中以确保获得用户许可。 |
 | scope | **ignored** | 对于 v1 Azure AD 应用，必须在 Azure 门户中的应用程序“设置”、“所需权限”下静态配置作用域。 |
@@ -149,7 +149,7 @@ grant_type=authorization_code
 | client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 门户中找到该值。 应用程序 ID 显示在应用注册的设置中。 |
 | grant_type |必填 |必须是授权代码流的 `authorization_code`。 |
 | 代码 |必填 |在上一部分中获取的 `authorization_code` |
-| redirect_uri |必填 | 客户端应用程序上的 `redirect_uri`registered。 |
+| redirect_uri |必填 | 在客户端应用程序上注册的 `redirect_uri`。 |
 | client_secret |对于 Web 应用是必需的，不允许用于公共客户端 |在 Azure 门户的“密钥”下为应用程序创建的应用程序密码。 它不能在本机应用（公共客户端）中使用，因为设备无法可靠地存储 client_secrets。 Web 应用和 Web API（所有机密客户端）都需要它，能够将 `client_secret` 安全地存储在服务器端。 在发送 client_secret 之前必须先对其进行 URL 编码。 |
 | resource | 建议 |目标 Web API 的应用 ID URI（受保护的资源）。 要查找应用 ID URI，请在 Azure 门户中，依次单击“Azure Active Directory”和“应用程序注册”，打开应用程序的“设置”页面，然后单击“属性”。 也可能是外部资源，如 `https://graph.microsoft.com`。 这在授权或令牌请求中是必需的。 要确保减少身份验证提示，请将其置于授权请求中以确保获得用户许可。 如果同时在授权请求和令牌请求中，资源参数必须匹配。 | 
 | code_verifier | 可选 | 即用于获取 authorization_code 的 code_verifier。 如果在授权码授权请求中使用 PKCE，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)   |
@@ -265,7 +265,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 | authorization_uri |授权服务器的 URI（物理终结点）。 此值还用作查找键，从一个发现终结点中获取有关服务器的详细信息。 <p><p> 客户端必须验证授权服务器是否受信任。 Azure AD 对资源进行保护时，只需验证 URL 是否以 Azure AD 支持的 https://login.microsoftonline.com 或其他主机名开头即可。 特定于租户的资源应始终返回特定于租户的授权 URI。 |
 | error |[OAuth 2.0 授权框架](https://tools.ietf.org/html/rfc6749)第 5.2 部分中定义的错误代码值。 |
 | error_description |错误的更详细说明。 此消息不是最终用户友好的。 |
-| resource_id |返回资源的唯一标识符。 客户端应用程序在请求资源的令牌时，可以使用此标识符作为 `resource` 参数的值。 <p><p> 对于客户端应用程序，验证此值非常重要，否则恶意服务可能会引发 **elevation-of-privileges** 攻击 <p><p> 防止攻击的建议策略是验证 `resource_id` 是否与正在访问的 Web API URL 基部分相匹配。 例如，如果正在访问 https://service.contoso.com/data ，则可以 https://service.contoso.com/ `resource_id` 。 客户端应用程序必须拒绝不以基 URL 开头的 `resource_id`，除非存在可靠的替代方法来验证该 ID。 |
+| resource_id |返回资源的唯一标识符。 客户端应用程序在请求资源的令牌时，可以使用此标识符作为 `resource` 参数的值。 <p><p> 对于客户端应用程序，验证此值非常重要，否则恶意服务可能会引发 **elevation-of-privileges** 攻击 <p><p> 防止攻击的建议策略是验证 `resource_id` 是否与正在访问的 Web API URL 基部分相匹配。 例如，如果正在访问 https://service.contoso.com/data ，则可以 https://service.contoso.com/`resource_id` 。 客户端应用程序必须拒绝不以基 URL 开头的 `resource_id`，除非存在可靠的替代方法来验证该 ID。 |
 
 #### <a name="bearer-scheme-error-codes"></a>持有者方案错误代码
 RFC 6750 规范为在响应中使用 WWW-Authenticate 标头和持有者方案的资源定义了以下错误。

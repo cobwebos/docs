@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 56bc8934db86bb03446a6d2637bd54daaf2b5fb9
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 6a3d1fb347819015887ffc4fd8089bbc1f3a70de
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254741"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176316"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>了解 azure Kubernetes Service 的 Azure 策略
 
@@ -92,11 +92,11 @@ Azure 策略通过扩展了对[守卫](https://github.com/open-policy-agent/gate
 
 ### <a name="installing-the-add-on"></a>安装外接程序
 
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>必备组件
 
 在 AKS 群集中安装外接程序之前，必须安装预览扩展。 此步骤通过 Azure CLI 来完成：
 
-1. 需要安装并配置 Azure CLI 版本2.0.62 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+1. 需要安装并配置 Azure CLI 版本2.0.62 或更高版本。 可以运行 `az --version` 来查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 1. AKS 群集必须是_1.10_版或更高版本。 使用以下脚本验证 AKS 群集版本：
 
@@ -120,7 +120,7 @@ Azure 策略通过扩展了对[守卫](https://github.com/open-policy-agent/gate
    ```
 
    > [!NOTE]
-   > 如果以前安装了_aks-preview_扩展，请使用 `az extension update --name aks-preview` 命令安装任何更新。
+   > 如果以前安装了_aks-预览_扩展，请使用 `az extension update --name aks-preview` 命令安装任何更新。
 
 #### <a name="installation-steps"></a>安装步骤
 
@@ -164,7 +164,7 @@ Azure 策略通过扩展了对[守卫](https://github.com/open-policy-agent/gate
 
 用于管理 AKS 的 Azure 策略语言结构遵循现有策略。 效果_EnforceRegoPolicy_用于管理 AKS 群集，并使用特定于使用 OPA 和网关守卫的_详细信息_属性。 有关详细信息和示例，请参阅[EnforceRegoPolicy](effects.md#enforceregopolicy)效果。
 
-作为策略定义中 "_详细信息_" 属性的一部分，Azure 策略将 rego 策略的 URI 传递到该外接程序。 Rego 是 OPA 和看门程序支持的语言，用于验证或改变对 Kubernetes 群集的请求。 通过支持现有的 Kubernetes 管理标准，Azure 策略可以重复使用现有规则并将其与 Azure 策略配对，以获得统一的云相容性报告体验。 有关详细信息，请参阅[什么是 Rego？](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego)。
+作为策略定义中 "_详细信息_" 属性的一部分，Azure 策略将 rego 策略的 URI 传递到该外接程序。 Rego 是 OPA 和看门程序支持的语言，用于验证或改变对 Kubernetes 群集的请求。 通过支持现有的 Kubernetes 管理标准，Azure 策略可以重复使用现有规则并将其与 Azure 策略配对，以获得统一的云相容性报告体验。 有关详细信息，请参阅[什么是 Rego？](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)。
 
 ## <a name="built-in-policies"></a>内置策略
 

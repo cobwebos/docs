@@ -1,5 +1,5 @@
 ---
-title: Azure AD 权利管理是什么？ （预览）-Azure Active Directory
+title: Azure AD 权利管理是什么？ -Azure Active Directory
 description: 大致了解 Azure Active Directory 的权利管理，以及如何使用它来管理内部和外部用户对组、应用程序和 SharePoint Online 站点的访问权限。
 services: active-directory
 documentationCenter: ''
@@ -16,19 +16,14 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7a8df09322def77037575b78ddbff3fae374229
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: b1c054bf354b5cdc5e0803ba6849af19fab40f3c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062739"
+ms.locfileid: "73174156"
 ---
-# <a name="what-is-azure-ad-entitlement-management-preview"></a>Azure AD 权利管理是什么？ （预览）
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="what-is-azure-ad-entitlement-management"></a>Azure AD 权利管理是什么？
 
 Azure Active Directory （Azure AD）权利管理是一项[身份监管](identity-governance-overview.md)功能，使组织能够通过自动执行访问请求工作流、访问分配、查看和超时.
 
@@ -137,7 +132,7 @@ Azure AD 的权利管理可以帮助解决这些难题。  若要详细了解客
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-Azure 政府、Azure 德国和 Azure 中国世纪互联的专用云当前不可用于此预览版。
+Azure 政府、Azure 德国和 Azure 中国世纪互联的专用云当前不可用。
 
 ### <a name="which-users-must-have-licenses"></a>哪些用户必须有许可证？
 

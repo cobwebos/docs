@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7a67e98d87850e2fc90df3ce7ba15e5e60da517
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8af0bb023136ba07057e4078d5abfcb4a3194a56
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596748"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175380"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>用于调用 web Api 的后台应用程序-从应用程序调用 web API
 
 守护程序应用可以从 .NET 后台程序应用程序调用 web API，或调用多个预先批准的 web Api。
 
-## <a name="calling-a-web-api-from-a-net-daemon-application"></a>从 .NET 后台程序应用程序调用 web API
+## <a name="calling-a-web-api-daemon-application"></a>调用 web API 后台程序应用程序
 
 下面介绍如何使用令牌来调用 API
 
@@ -38,7 +38,7 @@ ms.locfileid: "72596748"
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
 ```Python
-endpoint = "url to the API" 
+endpoint = "url to the API"
 http_headers = {'Authorization': 'Bearer ' + result['access_token'],
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'}

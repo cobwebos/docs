@@ -17,16 +17,16 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb1ed81c03e7c5ba30b813897dac5796c550ed23
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 4a535cbefc3520cbf0c0fc14fbcfd0dd9ebd92ac
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679823"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175653"
 ---
 # <a name="brokered-auth-in-android"></a>Android 中的中转身份验证
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 必须使用 Microsoft 的一个身份验证代理参与设备范围的单一登录（SSO），并满足组织的条件性访问策略。 与 broker 集成具有以下优势：
 
@@ -62,9 +62,9 @@ ms.locfileid: "71679823"
 
 ### <a name="when-a-broker-is-installed"></a>安装 broker 时
 
-如果在设备上安装了 broker，则所有后续的交互式令牌请求（对 `acquireToken()`）都由代理处理，而不是由 MSAL 在本地处理。 任何以前可供 MSAL 使用的 SSO 状态对代理不可用。 因此，用户将需要重新进行身份验证，或者从设备已知的现有帐户列表中选择一个帐户。
+在设备上安装 broker 后，代理将处理所有后续的交互式令牌请求（对 `acquireToken()`的调用），而不是由 MSAL 在本地处理。 任何以前可供 MSAL 使用的 SSO 状态对代理不可用。 因此，用户将需要重新进行身份验证，或者从设备已知的现有帐户列表中选择一个帐户。
 
-安装代理不需要用户重新登录。 仅当用户需要解决 `MsalUiRequiredException` 时，才会将下一个请求发送到 broker。 由于多种原因，会引发 `MsalUiRequiredException`，需要以交互方式解决。 以下是一些常见的原因：
+安装代理不需要用户重新登录。 仅当用户需要解析 `MsalUiRequiredException` 时，下一个请求才会发送到 broker。 引发 `MsalUiRequiredException` 的原因有很多，需要以交互方式解决。 以下是一些常见的原因：
 
 - 用户更改了与帐户关联的密码。
 - 用户的帐户不再满足条件性访问策略。
@@ -122,9 +122,9 @@ MSAL 通过两种方式与 broker 通信：
 - 代理绑定服务
 - Android AccountManager
 
-MSAL 首先使用 broker 绑定的服务，因为调用此服务不需要任何 Android 权限。 如果绑定到绑定服务失败，MSAL 将使用 Android AccountManager API。 仅当你的应用程序已被授予 @no__t 0 权限时，MSAL 才会执行此项。
+MSAL 首先使用 broker 绑定的服务，因为调用此服务不需要任何 Android 权限。 如果绑定到绑定服务失败，MSAL 将使用 Android AccountManager API。 仅当你的应用程序已被授予 `"READ_CONTACTS"` 权限时，MSAL 才会执行此功能。
 
-如果收到 @no__t @no__t，错误代码为-1，则有两个选项：
+如果收到 `MsalClientException` 错误代码 `"BROKER_BIND_FAILURE"`，则有两个选项：
 
 - 要求用户禁用 Microsoft Authenticator 应用和 Intune 公司门户的电源优化。
-- 要求用户授予 @no__t 0 权限
+- 要求用户授予 `"READ_CONTACTS"` 权限

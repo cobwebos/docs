@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 64f79b3e72a8655f8d704ffd531d9e34485832b0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ebacd386221ed12e1171034eb5d23236bd234849
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570610"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176052"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
@@ -40,7 +40,7 @@ ms.locfileid: "68570610"
 | 位于不同虚拟网络的 VM 或位于不同云服务的角色实例之间的名称解析。 |[Azure DNS 专用区域](../dns/private-dns-overview.md)或客户托管的 DNS 服务器，该服务器在虚拟网络之间转发查询，并由 Azure 进行解析（DNS 代理）。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
 | 通过 Azure 应用服务（Web 应用、函数或自动程序）实现的名称解析：对同一虚拟网络中的角色实例或 VM 使用虚拟网络集成。 |客户托管的 DNS 服务器，该服务器在虚拟网络之间转发查询，并由 Azure 进行解析（DNS 代理）。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
 | 从应用服务 Web 应用到同一虚拟网络中 VM 之间的名称解析。 |客户托管的 DNS 服务器，该服务器在虚拟网络之间转发查询，并由 Azure 进行解析（DNS 代理）。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
-| 从应用服务 Web 应用到不同虚拟网络中 VM 之间的名称解析。 |客户托管的 DNS 服务器，该服务器在虚拟网络之间转发查询，并由 Azure 进行解析（DNS 代理）。 请参阅“使用自己的 DNS 服务器进行名称解析”。 |仅 FQDN |
+| 从应用服务 Web 应用到不同虚拟网络中 VM 之间的名称解析。 |客户托管的 DNS 服务器，该服务器在虚拟网络之间转发查询，并由 Azure 进行解析（DNS 代理）。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
 | 解析来自 Azure 中 VM 或角色实例的本地计算机和服务名称。 |客户托管的 DNS 服务器（例如本地域控制器、本地只读域控制器或使用区域传送同步的 DNS 辅助服务器）。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
 | 解析本地计算机中的 Azure 主机名。 |将查询转发到相应虚拟网络中客户托管的 DNS 代理服务器，该代理服务器将查询转发到 Azure 进行解析。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
 | 针对内部 IP 的反向 DNS。 |[使用自己的 DNS 服务器的名称解析](#name-resolution-that-uses-your-own-dns-server)。 |不适用 |
@@ -74,7 +74,7 @@ Azure 提供的名称解析包括以下功能：
 * 主机名必须符合 DNS。 名称只能使用 0-9、a-z 和“-”，并且不能以“-”开头或结尾。
 * DNS 查询流量按照 VM 进行限制。 限制不会影响大部分应用程序。 如果遵循请求限制，请确保启用客户端缓存。 有关详细信息，请参阅 [DNS 客户端配置](#dns-client-configuration)。
 * 在经典部署模型中，每个虚拟网络仅注册前 180 个云服务中的 VM。 此限制不适用于 Azure 资源管理器中的虚拟网络。
-* Azure DNS IP 地址为 168.63.129.16。 这是静态 IP 地址，不会更改。
+* Azure DNS 的 IP 地址为168.63.129.16。 这是一个静态 IP 地址，不会更改。
 
 ## <a name="dns-client-configuration"></a>DNS 客户端配置
 
@@ -96,7 +96,7 @@ Azure 提供的名称解析包括以下功能：
   * 使用 `systemctl start dnsmasq.service` 启动 dnsmasq 服务。 
   * 编辑 **/etc/sysconfig/network/config** 并将 *NETCONFIG_DNS_FORWARDER=""* 更改为 *dnsmasq*。
   * 使用 `netconfig update` 更新 resolv.con，将缓存设置为本地 DNS 解析程序。
-* **CentOS（使用 NetworkManager）** ：
+* **CentOS （使用 NetworkManager）** ：
   * 使用 `sudo yum install dnsmasq` 安装 dnsmasq 包。
   * 使用 `systemctl enable dnsmasq.service` 启用 dnsmasq 服务。
   * 使用 `systemctl start dnsmasq.service` 启动 dnsmasq 服务。
@@ -129,7 +129,7 @@ resolv.conf 文件通常是自动生成的，不应进行编辑。 添加 *optio
 * **SUSE**（使用 netconf）：
   1. 将“timeout:1 attempts:5”添加到“/etc/sysconfig/network/config”中的 NETCONFIG_DNS_RESOLVER_OPTIONS="" 参数。
   2. 运行 `netconfig update` 以进行更新。
-* **CentOS**（使用 NetworkManager）：
+* **CentOS** （使用 NetworkManager）：
   1. 将“echo "options timeout:1 attempts:5"”添加到“/etc/NetworkManager/dispatcher.d/11-dhclient”。
   2. 使用 `service network restart` 进行更新。
 
@@ -154,11 +154,11 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本�
 
 ![虚拟网络之间的 DNS 示意图](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
 
-使用 Azure 提供的名称解析时，Azure 动态主机配置协议 (DHCP) 将为每个 VM 提供内部 DNS 后缀 ( **.internal.cloudapp.net**)。 此后缀可实现主机名解析，因为主机名记录位于 **internal.cloudapp.net** 区域中。 使用自己的名称解析解决方案时，不会向 VM 提供此后缀，因为该后缀会干扰其他 DNS 体系结构（例如已加入域的方案）。 相反，Azure 会提供没有实际功能的占位符 (reddog.microsoft.com)。
+使用 Azure 提供的名称解析时，Azure 动态主机配置协议 (DHCP) 将为每个 VM 提供内部 DNS 后缀 ( **.internal.cloudapp.net**)。 此后缀可实现主机名解析，因为主机名记录位于 **internal.cloudapp.net** 区域中。 使用自己的名称解析解决方案时，不会向 VM 提供此后缀，因为该后缀会干扰其他 DNS 体系结构（例如已加入域的方案）。 相反，Azure 会提供无法正常运行的占位符 (reddog.microsoft.com)。
 
 如果需要，可以使用 PowerShell 或 API 确定内部 DNS 后缀：
 
-* 对于 Azure 资源管理器部署模型中的虚拟网络，可以通过[网络接口 REST API](https://docs.microsoft.com/rest/api/virtualnetwork/networkinterfaces)、[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) PowerShell cmdlet 和 [az network nic show](/cli/azure/network/nic#az-network-nic-show) Azure CLI 命令获取该后缀。
+* 对于 Azure 中的虚拟网络资源管理器部署模型，可通过[网络接口 REST API](https://docs.microsoft.com/rest/api/virtualnetwork/networkinterfaces)、 [AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) PowerShell cmdlet 和[az network nic show](/cli/azure/network/nic#az-network-nic-show) Azure CLI 命令获取该后缀。
 * 在经典部署模型中，可以通过 [Get Deployment API](https://msdn.microsoft.com/library/azure/ee460804.aspx) 调用或 [Get-AzureVM -Debug](/powershell/module/servicemanagement/azure/get-azurevm) cmdlet 获取该后缀。
 
 如果不想将查询转发到 Azure，应提供自己的 DNS 解析。 DNS 解决方案需要：
@@ -192,7 +192,7 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本�
 使用自己的 DNS 服务器时，Azure 允许为每个虚拟网络指定多个 DNS 服务器。 也可以针对每个网络接口（适用于 Azure 资源管理器）或云服务（适用于经典部署模型）指定多个 DNS 服务器。 为网络接口或云服务指定 DNS 服务器时，其优先级高于为虚拟网络指定的 DNS 服务器。
 
 > [!NOTE]
-> 不应直接在 Vm 中编辑网络连接属性 (例如 DNS 服务器 Ip)。 这是因为，在更换虚拟网络适配器后，可能会在服务修复过程中擦除这些属性。 这适用于 Windows 和 Linux Vm。
+> 不应直接在 Vm 中编辑网络连接属性（例如 DNS 服务器 Ip）。 这是因为，在更换虚拟网络适配器后，可能会在服务修复过程中擦除这些属性。 这适用于 Windows 和 Linux Vm。
 >
 >
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 2f9b7b148900e827f4bfb17de1ef3cf05d8bbf10
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d8d40ed83d7f8234092ca6354642a76aaa83bc12
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169160"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173066"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>使用 Azure PowerShell 创建专用链接服务
 本文介绍如何使用 Azure PowerShell 在 Azure 中创建专用链接服务。
@@ -115,7 +115,7 @@ $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName
 
 ## <a name="create-a-private-endpoint"></a>创建专用终结点
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
-使用[AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)为专用终结点创建虚拟网络。 此示例创建名为 *vnetPE*的虚拟网络，名为*myResourceGroup* in 资源组：
+使用[AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)为专用终结点创建虚拟网络。 此示例将在名为*myResourceGroup*的资源组中创建名为  *vnetPE*的虚拟网络：
  
 ```azurepowershell
 $virtualNetworkNamePE = "vnetPE"
@@ -128,7 +128,7 @@ $peSubnet = New-AzVirtualNetworkSubnetConfig `
 
 $vnetPE = New-AzVirtualNetwork `
 -Name $virtualNetworkNamePE `
--ResourceGroupName myResourceGroup `
+-ResourceGroupName $rgName `
 -Location $location `
 -AddressPrefix "11.0.0.0/16" `
 -Subnet $peSubnet 
@@ -147,7 +147,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName -Name $peNam
 ```
  
 ### <a name="get-private-endpoint"></a>获取专用终结点
-按如下所示获取专用终结点的 IP 地址 `Get-AzPrivateEndpoint`：
+获取具有 `Get-AzPrivateEndpoint` 的专用终结点的 IP 地址，如下所示：
 
 ```azurepowershell
 # Get Private Endpoint and its IP Address 

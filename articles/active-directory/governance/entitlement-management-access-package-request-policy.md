@@ -1,6 +1,6 @@
 ---
-title: Azure AD 授权管理（预览版）中访问包的更改请求和审批设置-Azure Active Directory
-description: 了解如何在 Azure Active Directory 授权管理（预览版）中更改访问包的请求和审批设置。
+title: Azure AD 权限管理中更改访问包的请求和审批设置-Azure Active Directory
+description: 了解如何在 Azure Active Directory 权限管理中更改访问包的请求和审批设置。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b060a17d9e7f795b6aad7df0e3e6349bbbd81b3
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 649a4a50766d26f73584dae4481652c8007b2e9e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392496"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174676"
 ---
-# <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD 授权管理（预览版）中访问包的更改请求和批准设置
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD 权限管理中更改访问包的请求和批准设置
 
 作为访问包管理器，你可以通过编辑策略或添加新策略，随时更改可以请求访问包的用户。 你还可以更改审批设置。
 

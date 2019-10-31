@@ -1,6 +1,6 @@
 ---
-title: 共享链接以在 Azure AD 授权管理（预览版）中请求访问包-Azure Active Directory
-description: 了解如何在 Azure Active Directory 授权管理（预览版）中共享用于请求访问包的链接。
+title: 共享链接，请求 Azure AD 授权管理中的访问包-Azure Active Directory
+description: 了解如何共享链接，以在 Azure Active Directory 权利管理中请求访问包。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91b98df1f93991d4781283bc38b02dc20d11268d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 94d32bf26def6832f51b4e09c697bca885162dc2
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392327"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174417"
 ---
-# <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management-preview"></a>共享链接，以在 Azure AD 权利管理（预览版）中请求访问包
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management"></a>共享链接，以在 Azure AD 权利管理中请求访问包
 
 目录中的大多数用户都可以登录到 "我的访问门户" 并自动查看他们可以请求的访问包的列表。 但是，对于尚未在你的目录中的外部业务合作伙伴用户，你将需要向他们发送一个可用于请求访问包的链接。 
 

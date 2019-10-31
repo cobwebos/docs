@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: e361ba4c7275a783b9211def5047a5a755f5a8b8
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: d0d87b42232a19d6bcd3c225fb4a4f8f8b459350
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881996"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177799"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -131,14 +131,14 @@ ms.locfileid: "72881996"
 |AppEtwTraceDeletionAgeInDays |Int，默认值为 3 | 动态 |在多少天后删除包含应用程序 ETW 跟踪的旧 ETL 文件。 |
 |ApplicationLogsFormatVersion |Int，默认值为 0 | 动态 |用于应用程序日志格式的版本。 支持的值是 0 和 1. 版本 1 比版本 0 包含更多 ETW 事件记录的字段。 |
 |AuditHttpRequests |Bool，默认值为 false | 动态 | 启用或禁用 HTTP 审核。 审核的目的在于查看已针对群集执行的活动;包含请求的用户。 请注意，这是最好的日志记录;可能会发生跟踪丢失。 不记录带有 "用户" 身份验证的 HTTP 请求。 |
-|CaptureHttpTelemetry|Bool，默认值为 false | 动态 | 打开或关闭 HTTP 遥测。 遥测的目的在于 Service Fabric 能够捕获遥测数据，以帮助规划将来的工作并识别问题区域。 遥测不会记录任何个人数据或请求正文。 遥测捕获所有 HTTP 请求，除非进行了其他配置。 |
+|CaptureHttpTelemetry|Bool，默认值为 true | 动态 | 打开或关闭 HTTP 遥测。 遥测的目的在于 Service Fabric 能够捕获遥测数据，以帮助规划将来的工作并识别问题区域。 遥测不会记录任何个人数据或请求正文。 遥测捕获所有 HTTP 请求，除非进行了其他配置。 |
 |ClusterId |字符串 | 动态 |群集的唯一 ID。 于群集创建时生成。 |
 |ConsumerInstances |字符串 | 动态 |DCA 使用者实例列表。 |
 |DiskFullSafetySpaceInMB |Int，默认值为 1024 | 动态 |要避免被 DCA 使用的剩余磁盘空间（以 MB 为单位）。 |
 |EnableCircularTraceSession |Bool，默认值为 false | 静态 |标志指示是否应使用循环跟踪会话。 |
 |EnablePlatformEventsFileSink |Bool，默认值为 false | 静态 |启用/禁用要写入磁盘的平台事件 |
 |EnableTelemetry |Bool，默认值为 true | 动态 |这会启用或禁用遥测。 |
-|FailuresOnlyHttpTelemetry | Bool，默认值为 true | 动态 | 如果启用 HTTP 遥测捕获，则为;仅捕获失败的请求。 这有助于减少为遥测生成的事件数。 |
+|FailuresOnlyHttpTelemetry | Bool，默认值为 false | 动态 | 如果启用 HTTP 遥测捕获，则为;仅捕获失败的请求。 这有助于减少为遥测生成的事件数。 |
 |HttpTelemetryCapturePercentage | int，默认值为50 | 动态 | 如果启用 HTTP 遥测捕获，则为;仅捕获随机百分比的请求。 这有助于减少为遥测生成的事件数。 |
 |MaxDiskQuotaInMB |Int，默认值为 65536 | 动态 |Windows Fabric 日志文件的磁盘配额（以 MB 为单位）。 |
 |ProducerInstances |字符串 | 动态 |DCA 生成者实例列表。 |

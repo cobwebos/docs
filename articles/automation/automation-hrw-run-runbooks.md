@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5ff36230095b90418a2619bbf1c5bb02863072b5
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 83c185a6ba8f1c5e6edf095db5baf575f750fa3b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372850"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176472"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色上运行 runbook
 
 运行在 Azure 自动化中的 runbook 和运行在混合 Runbook 辅助角色上的 runbook 没有结构上的区别。 但在这两类 runbook 彼此之间可能会有很大差异。 存在这种差异是因为面向混合 Runbook 辅助角色的 runbook 通常管理本地计算机本身的资源，或者管理它所在的本地环境中的资源。 Azure 自动化中的 runbook 通常管理 Azure 云中的资源。
 
-创建 runbook 以在混合 Runbook 辅助角色上运行时，应当在承载着混合辅助角色的计算机内编辑并测试 runbook。 宿主计算机具有管理和访问本地资源时所需的所有 PowerShell 模块和网络访问权限。 在混合辅助角色计算机上测试 runbook 后，可以将它上传到 Azure 自动化环境，用于在混合辅助角色中运行。 务必了解在 Windows 的本地系统帐户下或 Linux 的特殊用户帐户 `nxautomation` 下运行的作业。 在 Linux 上，这意味着必须确保 `nxautomation` 帐户有权访问你在其中存储模块的位置。 使用[Install-Module](/powershell/module/powershellget/install-module) cmdlet 时，请为 @no__t 参数指定**AllUsers** ，以确认 @no__t 3 帐户具有访问权限。
+创建 runbook 以在混合 Runbook 辅助角色上运行时，应当在承载着混合辅助角色的计算机内编辑并测试 runbook。 宿主计算机具有管理和访问本地资源时所需的所有 PowerShell 模块和网络访问权限。 在混合辅助角色计算机上测试 runbook 后，可以将它上传到 Azure 自动化环境，用于在混合辅助角色中运行。 务必了解在 Windows 的本地系统帐户下或 Linux 的特殊用户帐户 `nxautomation` 下运行的作业。 在 Linux 上，这意味着必须确保 `nxautomation` 帐户有权访问你在其中存储模块的位置。 使用[Install-Module](/powershell/module/powershellget/install-module) cmdlet 时，请为 `-Scope` 参数指定**AllUsers** ，以确认 `nxautomation` 帐户有权访问。
 
 有关 Linux 上的 PowerShell 的详细信息，请参阅[非 Windows 平台上的 powershell 的已知问题](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms)。
 
@@ -103,7 +103,7 @@ Get-AzureRmVm | Select Name
 ```
 
 > [!NOTE]
-> @no__t 为混合 Runbook 辅助角色使用系统分配的标识和单一用户分配的标识。 如果需要在 HRW 上使用多个用户分配的标识，则必须指定 @no__t 参数以选择特定用户分配的标识。
+> `Connect-AzureRMAccount -Identity` 适用于混合 Runbook 辅助角色，该辅助角色使用系统分配的标识和一个用户分配的标识。 如果需要在 HRW 上使用多个用户分配的标识，则必须指定 `-AccountId` 参数以选择特定用户分配的标识。
 
 ### <a name="runas-script"></a>自动化运行方式帐户
 

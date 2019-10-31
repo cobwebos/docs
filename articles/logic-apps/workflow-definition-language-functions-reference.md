@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/23/2019
-ms.openlocfilehash: 1c6051508a067e17afbc25702c26608da4cd4ca2
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 1d5197f585fde5388fdafac887d6a1454d6131e9
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968920"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177075"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-microsoft-flow"></a>在 Azure 逻辑应用和 Microsoft Flow 的表达式中使用函数的参考指南
 
@@ -2019,7 +2019,7 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 
 | 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*interval*> | 是 | Integer | 要减去的指定时间单位数 |
+| <*interval*> | 是 | Integer | 要添加的指定时间单位数 |
 | <*timeUnit*> | 是 | 字符串 | 要与 *interval* 一起使用的时间单位：“Second”、“Minute”、“Hour”、“Day”、“Week”、“Month”、“Year” |
 | <*format*> | No | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||

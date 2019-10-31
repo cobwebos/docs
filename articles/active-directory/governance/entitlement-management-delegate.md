@@ -1,5 +1,5 @@
 ---
-title: Azure AD 权限管理（预览版）中的委派和角色-Azure Active Directory
+title: Azure AD 权限管理中的委派和角色-Azure Active Directory
 description: 了解如何将 IT 管理员的访问管理委派给部门经理和项目经理，使他们能够自行管理访问权限。
 services: active-directory
 documentationCenter: ''
@@ -16,19 +16,14 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd9eb97b88be3ed68398cf7844b03e6a1fc9cd1b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6d68728c4ca4f9fe511faedcf2ca177b7160f112
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934439"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174255"
 ---
-# <a name="delegation-and-roles-in-azure-ad-entitlement-management-preview"></a>Azure AD 授权管理（预览版）中的委派和角色
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>委托和角色 Azure AD 的权利管理
 
 默认情况下，全局管理员和用户管理员可以创建和管理 Azure AD 权限管理的所有方面。 但是，这些角色中的用户可能并不知道需要访问包的所有情况。 通常，该用户是各自的部门、团队或项目中的用户，他们知道他们正在与谁合作，使用哪些资源和时间。 您可以向用户授予执行作业所需的最少权限，并避免创建冲突或不适当的访问权限，而不是向非管理员授予不受限制的权限。
 
@@ -113,8 +108,9 @@ ms.locfileid: "72934439"
 | [直接将用户分配到访问包](entitlement-management-access-package-assignments.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [查看谁具有访问包的分配](entitlement-management-access-package-assignments.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [查看访问包的请求](entitlement-management-access-package-requests.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [查看请求的传递错误](entitlement-management-access-package-requests.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [取消挂起的请求](entitlement-management-access-package-requests.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [查看请求的传递错误](entitlement-management-troubleshoot.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [重新处理请求](entitlement-management-troubleshoot.md#reprocess-a-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [取消挂起的请求](entitlement-management-troubleshoot.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [隐藏访问包](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [删除访问包](entitlement-management-access-package-edit.md#delete-an-access-package) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 

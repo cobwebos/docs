@@ -11,17 +11,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 10/29/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5e498dcb39f62fc870bc7efa989b91caeac0dedc
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
-ms.translationtype: MT
+ms.openlocfilehash: a073a476043fc6570a42cc142e01f2c6f98c7741
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819718"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175921"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>如何将 Azure Monitor 工作簿用于 Azure Active Directory 报表
+
+> [!IMPORTANT]
+> 为了优化此工作簿中的基础查询，请单击 "编辑"，单击 "设置" 图标，然后选择要在其中运行这些查询的工作区。 默认情况下，工作簿将选择要在其中路由 Azure AD 日志的所有工作区。 
 
 是否要：
 
@@ -31,7 +34,17 @@ ms.locfileid: "72819718"
 
 - 知道谁在使用旧身份验证登录到你的环境？ （通过[阻止旧身份验证](../conditional-access/block-legacy-authentication.md)，你可以改进租户的保护。）
 
-为了帮助解决这些问题，Active Directory 提供了用于监视的工作簿。 [Azure Monitor 工作簿](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)将文本、分析查询、指标和参数合并到丰富的交互式报表中。 
+- 是否需要了解租户中条件访问策略的影响？
+
+- 你是否希望能够查看：登录日志查询，工作簿报告授予或拒绝了多少用户的访问权限，以及在访问资源时，有多少用户跳过了条件性访问策略？
+
+- 对开发更深入了解的内容感兴趣：工作簿每个条件的详细信息，以便每个条件都可以过程策略的影响，包括设备平台、设备状态、客户端应用、登录风险、位置和应用程序？
+
+- 更深入地了解登录日志查询，该工作簿会报告被授予或拒绝了多少用户的访问权限，以及在访问资源时有多少用户跳过了条件性访问策略。
+
+- 为了帮助解决这些问题，Active Directory 提供了用于监视的工作簿。 [Azure Monitor 工作簿](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)将文本、分析查询、指标和参数合并到丰富的交互式报表中。
+
+
 
 本文：
 
@@ -57,7 +70,7 @@ ms.locfileid: "72819718"
     - 全局管理员
 
 ## <a name="roles"></a>角色
-你必须是以下角色之一，并且有[权访问基础 Log Analytics](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions)工作区来管理工作簿：
+你必须是以下角色之一，并且有[权访问基础 Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions)工作区来管理工作簿：
 -   全局管理员
 -   安全管理员
 -   安全读取者
@@ -170,7 +183,43 @@ ms.locfileid: "72819718"
 ![条件访问状态](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
 
 
+## <a name="conditional-access-insights"></a>条件访问见解
 
+### <a name="overview"></a>概述
+
+工作簿包含可帮助 IT 管理员监视其租户中的条件访问策略影响的登录日志查询。 您可以报告被授予或拒绝了多少用户的访问权限。 此工作簿包含了有关在登录时将基于这些用户的属性绕过条件性访问策略的用户的见解。 它包含每个条件的详细信息，以便每个条件都可以过程策略的影响，包括设备平台、设备状态、客户端应用、登录风险、位置和应用程序。
+
+### <a name="instructions"></a>说明 
+若要访问条件性访问见解的工作簿，请在 "条件性访问" 部分中选择**条件性访问见解**工作簿。 此工作簿显示你的租户中每个条件访问策略的预期影响。 从下拉列表中选择一个或多个条件性访问策略，并通过应用以下筛选器来缩小工作簿范围： 
+
+- **时间范围**
+
+- **User**
+
+- 应用
+
+- **数据视图**
+
+![条件访问状态](./media/howto-use-azure-monitor-workbooks/access-insights.png)
+
+
+影响摘要显示所选策略具有特定结果的用户或登录的数目。 Total 是在所选时间范围内评估所选策略的用户或登录数。 单击磁贴可以按该结果类型筛选工作簿中的数据。 
+
+![条件访问状态](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
+
+此工作簿还显示按六个条件划分的选定策略的影响： 
+- **设备状态**
+- **设备平台**
+- **客户端应用**
+- **登录风险**
+- 位置
+- **应用程序**
+
+![条件访问状态](./media/howto-use-azure-monitor-workbooks/device-platform.png)
+
+你还可以调查单个登录，并按工作簿中选定的参数进行筛选。 搜索各个用户，按登录频率排序，并查看其相应的登录事件。 
+
+![条件访问状态](./media/howto-use-azure-monitor-workbooks/filtered.png)
 
 
 
@@ -211,7 +260,7 @@ ms.locfileid: "72819718"
 
 ## <a name="sign-ins-failure-analysis"></a>登录失败分析
 
-使用**登录失败分析**工作簿解决以下错误：
+使用**登录失败分析**工作簿排查错误：
 
 - 登录
 - 条件访问策略

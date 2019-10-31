@@ -8,12 +8,12 @@ ms.date: 09/26/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: efa44df378e88b870654111295c10bec06539adb
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b6a437af33e3e85b8dc07de223b6e1fd7ce6cb03
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950517"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176252"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>将数据导出到 Azure Blob 存储
 
@@ -132,7 +132,7 @@ ms.locfileid: "72950517"
 首次启用连续数据导出时，会导出包含所有设备的单个快照。 每个设备包括：
 - IoT Central 中设备的 `id`
 - 设备的 `name`
-- [设备预配服务](https://aka.ms/iotcentraldocsdps)中的 `deviceId`
+- [设备预配服务](/azure/iot-central/core/howto-connect-nodejs)中的 `deviceId`
 - 设备模板信息
 - 属性值
 - 设置值

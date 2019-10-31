@@ -1,6 +1,6 @@
 ---
-title: 调用 Web API 的 Web 应用（调用 Web API）- Microsoft 标识平台
-description: 了解如何构建调用 Web API 的 Web 应用（调用 Web API）
+title: 用于调用 web Api 的 web 应用程序（调用 web API）-Microsoft 标识平台
+description: 了解如何生成可调用 web Api 的 Web 应用（调用 web API）
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3624f4e859081e53ee27b6f8415eb3f9b5a2a5fa
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: d971ec3c7cd82d6e028d0f96c8f52b897cedc351
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785465"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175304"
 ---
-# <a name="web-app-that-calls-web-apis---call-a-web-api"></a>调用 Web API 的 Web 应用 - 调用 Web API
+# <a name="web-app-that-calls-web-apis---call-a-web-api"></a>用于调用 web Api 的 web 应用-调用 web API
 
-现在你已有令牌，可以调用受保护的 Web API 了。
+现在，你已有了一个令牌，可以调用受保护的 web API。
 
-## <a name="aspnet-core"></a>ASP.NET Core
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-以下是 `HomeController` 操作的简化代码。 此代码获取用于调用 Microsoft Graph 的令牌。 这一次添加了代码，显示了如何将 Microsoft Graph 作为 REST API 调用。 中提供针对图形 API 的 URL`appsettings.json`文件，并在一个名为变量中读取`webOptions`:
+下面是 `HomeController`操作的简化代码。 此代码将获取用于调用 Microsoft Graph 的标记。 添加了此时间代码，说明了如何以 REST API 的形式调用 Microsoft Graph。 Graph API 的 URL 在 `appsettings.json` 文件中提供，并读取名为 `webOptions`的变量：
 
 ```JSon
 {
@@ -83,11 +83,54 @@ public async Task<IActionResult> Profile()
 ```
 
 > [!NOTE]
-> 可以使用相同的原则来调用任何 Web API。
+> 可以使用相同的原则调用任何 web API。
 >
-> 大多数 Azure Web API 都提供了一个 SDK 来简化调用。 Microsoft Graph 也是如此。 下一篇文章介绍如何找到说明这些方面的教程。
+> 大多数 Azure web Api 都提供一个可简化调用的 SDK。 这也是 Microsoft Graph 的情况。 在下一篇文章中，你将了解如何查找阐释这些方面的教程。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```Java
+private String getUserInfoFromGraph(String accessToken) throws Exception {
+    // Microsoft Graph user endpoint
+    URL url = new URL("https://graph.microsoft.com/v1.0/me");
+
+    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+    // Set the appropriate header fields in the request header.
+    conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+    conn.setRequestProperty("Accept", "application/json");
+
+    String response = HttpClientHelper.getResponseStringFromConn(conn);
+
+    int responseCode = conn.getResponseCode();
+    if(responseCode != HttpURLConnection.HTTP_OK) {
+        throw new IOException(response);
+    }
+
+    JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
+    return responseObject.toString();
+}
+
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```Python
+@app.route("/graphcall")
+def graphcall():
+    token = _get_token_from_cache(app_config.SCOPE)
+    if not token:
+        return redirect(url_for("login"))
+    graph_data = requests.get(  # Use token to call downstream service
+        app_config.ENDPOINT,
+        headers={'Authorization': 'Bearer ' + token['access_token']},
+        ).json()
+    return render_template('display.html', result=graph_data)
+```
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [转移到生产环境](scenario-web-app-call-api-production.md)
+> [转到生产](scenario-web-app-call-api-production.md)

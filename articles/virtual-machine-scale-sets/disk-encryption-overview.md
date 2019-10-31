@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 69197b9c0d2a60e1833d03a3f12802221a8307e2
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 0097d0e1d5ea7de092da14683d4bab3d673b2219
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530831"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177778"
 ---
 # <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 Azure 磁盘加密
 
@@ -23,10 +23,10 @@ Azure 磁盘加密还可以应用于 Windows 和 Linux 虚拟机规模集，在�
 - Windows 规模集的 OS 和数据卷。
 - Linux 规模集中的数据量。 目前，Linux 规模集不支持 OS 磁盘加密。
 
-只需几分钟即可了解用于虚拟机规模集的 Azure 磁盘加密基础知识，只需几分钟即可使用[Azure CLI 加密虚拟机规模集](disk-encryption-cli.md)或[使用 Azure CLI 教程对虚拟机规模集进行加密](disk-encryption-powershell.md)。
+只需几分钟即可了解用于虚拟机规模集的 Azure 磁盘加密基础知识，只需几分钟即可使用[Azure CLI 加密虚拟机规模集](disk-encryption-cli.md)，或者[使用 Azure PowerShell 对虚拟机规模集进行加密](disk-encryption-powershell.md)。指南.
 
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 Azure 资源管理器加密虚拟机规模集](disk-encryption-azure-resource-manager.md)
 - [为 Azure 磁盘加密创建和配置密钥保管库](disk-encryption-key-vault.md)
-- [将 Azure 磁盘加密用于虚拟机规模集扩展顺序](disk-encryption-extension-sequencing.md)
+- [将 Azure 磁盘加密与虚拟机规模集扩展排序配合使用](disk-encryption-extension-sequencing.md)

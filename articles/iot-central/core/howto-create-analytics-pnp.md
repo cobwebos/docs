@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 040874f0ba5e2766aab8aa399bcae65a6676fa53
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bcf19956d998ace88efbd4e1c9d787f1baeef642
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951128"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177389"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>如何使用分析来分析设备数据
 
@@ -39,7 +39,7 @@ Azure IoT Central 提供丰富的分析功能，用于分析历史趋势，并�
 
 需要首先选择**设备组**，以及要分析的遥测。 完成后，选择 "**分析**" 开始可视化数据。
 
-- **设备组：** [设备组](howto-use-device-groups-pnp.md)是用户定义的设备组。 例如，Oakland 中的所有冰箱或2.0 风涡轮机的所有版本。
+- **设备组：** [设备组](tutorial-use-device-groups-pnp.md)是用户定义的设备组。 例如，Oakland 中的所有冰箱或2.0 风涡轮机的所有版本。
 
 - **遥测：** 选择要分析和浏览的遥测。 可以选择多个 telemetries 进行分析。 默认聚合方法设置为分别为字符串数据类型的数字和计数计算平均值。 数值数据类型支持的聚合方法是 Average、Maximum、Maximum、Count 和 Sum。  String 数据类型支持的聚合方法为 count。
 

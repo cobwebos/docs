@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 4bd1386c68f3173c19b282c1e01ecff545c4bcd7
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 39746032fd012de8e0868c3bc7f810cd8e780b68
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972051"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176375"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>QnA Maker 内容的数据源
 
@@ -29,7 +29,7 @@ QnA Maker 从半结构化内容（例如常见问题解答、产品手册、指�
 
 |源类型|内容类型| 示例|
 |--|--|--|
-|URL|常见问题<br> （平面，包含节或主题主页）<br>支持页面 <br> （单页操作指南文章、故障排除文章，等等）|[纯文本常见问题解答](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs)、 <br>[包含链接的常见问题解答](https://www.microsoft.com/software-download/faq)、<br> [包含主题主页的常见问题解答](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[支持文章](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
+|URL|常见问题解答<br> （平面，包含节或主题主页）<br>支持页面 <br> （单页操作指南文章、故障排除文章，等等）|[纯文本常见问题解答](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs)、 <br>[包含链接的常见问题解答](https://www.microsoft.com/en-us/software-download/faq)、<br> [包含主题主页的常见问题解答](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[支持文章](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
 |PDF / DOC|常见问题解答、<br> 产品手册、<br> 小册子、<br> 论文、<br> 传单策略、<br> 支持指南、<br> 结构化 QnA，<br> 等等|[Structured QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、<br> [Sample Product Manual.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)、<br> [Sample semi-structured.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、<br> [示例白皮书 .pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)，<br>[示例 multi-turn](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)|
 |\* Excel|结构化 QnA 文件<br> （包括 RTF、HTML 支持）|[Sample QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |\* TXT/TSV|结构化 QnA 文件|[示例 chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
@@ -58,7 +58,7 @@ QnA Maker 从半结构化内容（例如常见问题解答、产品手册、指�
 
 ## <a name="faq-urls"></a>常见问题解答 URL
 
-QnA Maker 可以支持 3 种不同形式的常见问题解答网页：纯文本常见问题解答页、带有链接的常见问题解答页、具有主题主页的常见问题解答页。
+QnA Maker 可以通过 3 种不同的形式支持常见问题解答网页：普通常见问题解答页、带链接的常见问题解答页、包含主题主页的常见问题解答页。
 
 ### <a name="plain-faq-pages"></a>纯文本常见问题解答页
 
@@ -101,7 +101,7 @@ QnA Maker 可以处理半结构化支持网页，例如，介绍如何执行给�
 
 QnA Maker 可以处理 PDF 或 DOC 文件中的半结构化内容，将其转换为 QnA。 若要让文件适合提取，应该将内容以结构化形式进行组织，并在定义好的节中进行呈现。 这些节可以进一步拆分成子节或子主题。 提取最适用于结构清晰且具有分层标题的文档。
 
-QnA Maker 根据视觉线索（例如字体大小、字体样式、编号、颜色等）来确定文件中的节、子节和关系。半结构化 PDF 或 DOC 文件可以是手册、常见问题解答、指南、策略、小册子、传单以及许多其他类型的文件。 下面是这些文件的一些示例类型。
+QnA Maker 根据视觉提示（如字体大小、字形、编号、颜色等）标识文件中的节和子节和关系。半结构化的 PDF 或 DOC 文件可以是手册、常见问题、指导原则、策略、小册子、传单以及许多其他类型的文件。 下面是这些文件的一些示例类型。
 
 ### <a name="product-manuals"></a>产品手册
 
@@ -116,7 +116,7 @@ QnA Maker 根据视觉线索（例如字体大小、字体样式、编号、颜�
 
 ### <a name="brochures-guidelines-papers-and-other-files"></a>小册子、指南、论文和其他文件
 
-许多其他类型的文档也可进行处理，以便生成 QA 对，前提是它们有清晰的结构和布局。 这些问题包括：小册子，指南、报告、白皮书、科学论文、策略、书籍等。请参阅[此处](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)的示例。
+许多其他类型的文档也可进行处理，以便生成 QA 对，前提是它们有清晰的结构和布局。 其中包括：小册子、指导原则、报告、白皮书、科研论文、政策、书籍等。请参阅[此处](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)的示例。
 
 下面是一个半结构化文档的示例，没有索引：
 
@@ -193,7 +193,7 @@ Answer2
 |用途|格式|示例 markdown|渲染<br>如聊天机器人中所示|
 |--|--|--|--|
 2个句子之间的新行。|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![在两个句子之间设置换行符的格式](../media/qnamaker-concepts-datasources/format-newline.png)|
-|标头从 h1 到 h6，@no__t 的数目-0 表示标头。 1 @no__t 为 h1。|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![带有 markdown 标头的格式](../media/qnamaker-concepts-datasources/format-headers.png)<br>![markdown 标头 H1 到 H5 的格式](../media/qnamaker-concepts-datasources/format-h1-h5.png)|
+|从 h1 到 h6 的标头，`#` 数表示哪个标头。 1 `#` 为 h1。|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![带有 markdown 标头的格式](../media/qnamaker-concepts-datasources/format-headers.png)<br>![markdown 标头 H1 到 H5 的格式](../media/qnamaker-concepts-datasources/format-h1-h5.png)|
 |效果 |`*text*`|`How do I create a bot with *QnA Maker*?`|![倾斜格式](../media/qnamaker-concepts-datasources/format-italics.png)|
 |字符串（粗体）|`**text**`|`How do I create a bot with **QnA Maker**?`|![带有强标记的格式（粗体）](../media/qnamaker-concepts-datasources/format-strong.png)|
 |链接 URL|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![URL 格式（超链接）](../media/qnamaker-concepts-datasources/format-url.png)|
@@ -213,10 +213,10 @@ Answer2
 
 | 保留 HTML  | API 请求中的表示形式  | 表示形式（KB） |
 |-----------|---------|-------------------------|
-| 是 | @no__t 0lt; br @ no__t-1gt; | &lt;br @ no__t-1 |
-| 是 | \&lt; h3 @ no__t-1gt; header @ no__t-2lt;/h3 @ no__t-3gt; | &lt;h3 @ no__t-1header @ no__t/h3 @ no__t-3 |
+| 是 | \&lt; br\&g t; | &lt;br&gt; |
+| 是 | \&lt; h3\&gt; 标头\&lt;/h3\&gt; | &lt;h3&gt;标头&lt;/h3&gt; |
 
-此外，在 KB 中，CR LF （\r\n）转换为 \n。 LF （\n）保持原样。 如果要转义任何转义序列（如 \t 或 \n），可以使用反斜杠，例如： ' \\ @ no__t-1r @ no__t-2 @ no__t-3n ' 和 ' \\ @ no__t-5t '
+此外，在 KB 中，CR LF （\r\n）转换为 \n。 LF （\n）保持原样。 如果要转义任何转义序列（如 \t 或 \n），可以使用反斜杠，例如： "\\\\r\\\\n" 和 "\\\\t"
 
 ## <a name="editing-your-knowledge-base-locally"></a>在本地编辑知识库
 
@@ -239,6 +239,6 @@ Answer2
 > [!div class="nextstepaction"]
 > [设置 QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)
 
-## <a name="see-also"></a>请参阅 
+## <a name="see-also"></a>另请参阅 
 
 [QnA Maker 概述](../Overview/overview.md)

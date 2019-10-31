@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aa0480e95fa072b6fa87aea8debd3dafc8ebcab
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 519993be873e7864dab4de4f66919c56aebfc379
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042060"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171863"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>如何：在 Windows 登录屏幕上启用密码重置
 
@@ -24,29 +24,10 @@ ms.locfileid: "73042060"
 
 ![显示了 SSPR 链接的 Windows 7 和10登录屏幕示例](./media/howto-sspr-windows/windows-reset-password.png)
 
-## <a name="general-prerequisites"></a>常规先决条件
-
-- 管理员必须启用 Azure 门户的 Azure AD 自助服务密码重置。
-- **用户必须在使用此功能之前注册 SSPR**
-- 网络代理要求
-   - Windows 10 设备 
-       - 要 `passwordreset.microsoftonline.com` 的端口443和 `ajax.aspnetcdn.com`
-       - Windows 10 设备仅支持计算机级代理配置
-   - Windows 7、8和8.1 设备
-       - 要 `passwordreset.microsoftonline.com` 的端口443
-
 ## <a name="general-limitations"></a>一般限制
 
 - 当前不支持从远程桌面或 Hyper-v 增强会话中进行密码重置。
 - 此功能不适用于部署了 802.1x 网络身份验证的网络和“在用户登录前立即执行”选项。 对于部署了 802.1x 网络身份验证的网络，建议使用计算机身份验证来启用此功能。
-
-## <a name="windows-10-password-reset"></a>Windows 10 密码重置
-
-### <a name="windows-10-specific-prerequisites"></a>Windows 10 专用必备组件
-
-- 至少运行 Windows 10 2018 版更新（v1803），并且这些设备必须是：
-    - 已加入 Azure AD
-    - 已加入混合 Azure AD
 - 混合 Azure AD 联接的计算机必须具有到域控制器的网络连接线路才能使用新密码和更新缓存的凭据。
 - 如果使用映像，则在运行 sysprep 之前，请确保在执行 CopyProfile 步骤之前为内置管理员清除了 web 缓存。 有关此步骤的详细信息，请参阅支持文章[使用自定义默认用户配置文件时的性能不佳](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)。
 - 已知下列设置会影响在 Windows 10 设备上使用和重置密码的功能
@@ -60,7 +41,21 @@ ms.locfileid: "73042060"
 - 以下特定的三个设置的组合可能会导致此功能不起作用。
     - 交互式登录：不需要按 CTRL + ALT + DEL = Disabled
     - DisableLockScreenAppNotifications = 1 或已启用
-    - IsContentDeliveryPolicyEnforced = 1 或 True 
+    - IsContentDeliveryPolicyEnforced = 1 或 True
+
+## <a name="windows-10-password-reset"></a>Windows 10 密码重置
+
+### <a name="windows-10-prerequisites"></a>Windows 10 先决条件
+
+- 管理员必须启用 Azure 门户的 Azure AD 自助服务密码重置。
+- **用户必须在使用此功能之前注册 SSPR**
+- 网络代理要求
+   - Windows 10 设备 
+       - 要 `passwordreset.microsoftonline.com` 的端口443和 `ajax.aspnetcdn.com`
+       - Windows 10 设备仅支持计算机级代理配置
+- 至少运行 Windows 10 2018 版更新（v1803），并且这些设备必须是：
+    - 已加入 Azure AD
+    - 已加入混合 Azure AD
 
 ### <a name="enable-for-windows-10-using-intune"></a>使用 Intune 为 Windows 10 启用
 
@@ -94,7 +89,6 @@ ms.locfileid: "73042060"
    - `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
       - `"AllowPasswordReset"=dword:00000001`
 
-
 #### <a name="troubleshooting-windows-10-password-reset"></a>Windows 10 密码重置疑难解答
 
 Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientType 的信息。
@@ -105,8 +99,13 @@ Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientTyp
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Windows 7、8和8.1 密码重置
 
-### <a name="windows-7-8-and-81-specific-prerequisites"></a>Windows 7、8和8.1 特定的先决条件
+### <a name="windows-7-8-and-81-prerequisites"></a>Windows 7、8和8.1 必备组件
 
+- 管理员必须启用 Azure 门户的 Azure AD 自助服务密码重置。
+- **用户必须在使用此功能之前注册 SSPR**
+- 网络代理要求
+   - Windows 7、8和8.1 设备
+       - 要 `passwordreset.microsoftonline.com` 的端口443
 - 修补的 Windows 7 或 Windows 8.1 操作系统。
 - 根据[传输层安全性 (TLS) 注册表设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12)中的指导启用的 TLS 1.2。
 - 如果在您的计算机上启用了多个第三方凭据提供程序，则用户会在登录屏幕上看到多个用户配置文件。
@@ -151,7 +150,7 @@ Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientTyp
 
 当用户尝试登录时，他们现在会看到 "**重置密码**" 或 "**忘记密码**" 链接，在登录屏幕上打开自助服务密码重置体验。 此功能允许用户重置其密码，不需使用其他设备来访问 Web 浏览器。
 
-用户可以在[重置工作或学校密码](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in)中发现此功能的使用指南
+用户可以在[重置工作或学校密码](../user-help/active-directory-passwords-update-your-own-password.md)中发现此功能的使用指南
 
 ## <a name="next-steps"></a>后续步骤
 

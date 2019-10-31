@@ -1,33 +1,28 @@
 ---
-title: 使用适用于 Linux Vm 的邻近位置组预览 |Microsoft Docs
+title: 使用适用于 Linux Vm 的邻近组
 description: 了解如何在 Azure 中创建和使用适用于 Linux 虚拟机的邻近组。
 services: virtual-machines-linux
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/01/2019
+ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: a3009c9863d8322e3fe34bd99d64b93f0aa3d858
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 353a266b647c299515c15889c302ba4409aa511b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385727"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171047"
 ---
-# <a name="preview-deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>预览版：使用 Azure CLI 将 Vm 部署到邻近位置组
+# <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>使用 Azure CLI 将 Vm 部署到邻近位置组
 
-若要尽可能降低 Vm, 请尽可能降低延迟, 然后将它们部署到[邻近的放置组](co-location.md#preview-proximity-placement-groups)。
+若要尽可能降低 Vm，请尽可能降低延迟，然后将它们部署到[邻近的放置组](co-location.md#proximity-placement-groups)。
 
-邻近性放置组是一种逻辑分组, 用于确保 Azure 计算资源的物理位置彼此接近。 邻近性放置组适用于要求低延迟的工作负荷。
+邻近性放置组是一种逻辑分组，用于确保 Azure 计算资源的物理位置彼此接近。 邻近性放置组适用于要求低延迟的工作负荷。
 
-> [!IMPORTANT]
-> 邻近性放置组目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
-> 预览期间, 不会在这些区域中使用邻近位置组:**日本东部**、**澳大利亚东部**和**印度中部**。
 
 ## <a name="create-the-proximity-placement-group"></a>创建邻近位置组
 使用[`az ppg create`](/cli/azure/ppg#az-ppg-create)创建邻近位置组。 
@@ -52,6 +47,7 @@ az ppg list -o table
 ## <a name="create-a-vm"></a>创建 VM
 
 使用[新的 az VM](/cli/azure/vm#az-vm-create)在邻近位置组中创建 VM。
+
 ```azurecli-interactive
 az vm create \
    -n myVM \
@@ -70,11 +66,11 @@ az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
 ```
 
 ## <a name="availability-sets"></a>可用性集
-你还可以在邻近布局组中创建可用性集。 使用 az vm `--ppg`可用性的相同参数[-set create](/cli/azure/vm/availability-set#az-vm-availability-set-create)创建可用性集, 可用性集中的所有 vm 也将在同一邻近布局组中创建。
+你还可以在邻近布局组中创建可用性集。 使用包含[az vm availability](/cli/azure/vm/availability-set#az-vm-availability-set-create)的相同 `--ppg` 参数创建可用性集，同时还会在相同的邻近布局组中创建可用性集中的所有 vm。
 
 ## <a name="scale-sets"></a>规模集
 
-你还可以在邻近布局组中创建规模集。 使用`--ppg` [az vmss create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)的相同参数创建规模集, 所有实例都将在相同的邻近布局组中创建。
+你还可以在邻近布局组中创建规模集。 使用与[az vmss create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)相同的 `--ppg` 参数来创建规模集，并且所有实例都将在相同的邻近布局组中创建。
 
 ## <a name="next-steps"></a>后续步骤
 

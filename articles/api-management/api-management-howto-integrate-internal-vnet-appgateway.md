@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: b994f75327cb78cd422d75682ee68ea7840a87e8
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: d1ab7089ba76890488aa73d03e0fd9fc8efbe4d5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193960"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176740"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>在包含应用程序网关的内部 VNET 中集成 API 管理
 
@@ -34,7 +34,7 @@ ms.locfileid: "70193960"
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -48,25 +48,25 @@ ms.locfileid: "70193960"
 
 ## <a name="scenario"> </a> 方案
 
-本文介绍如何对内部和外部使用者使用单个 API 管理服务，并使其充当本地和云 API 的单一前端。 另外，它还介绍了如何使用应用程序网关中提供的路由功能，仅公开一部分 API（在示例中以绿色突出显示）供外部使用。
+本文介绍如何对内部和外部使用者使用单个 API 管理服务，并使其成为本地和云 Api 的单一前端。 另外，它还介绍了如何使用应用程序网关中提供的路由功能，仅公开一部分 API（在示例中以绿色突出显示）供外部使用。
 
-在第一个设置示例中，只能从虚拟网络内部管理所有 API。 内部使用者（以橙色突出显示）可以访问所有内部和外部 API。 流量永远不会外发到 Internet。 将通过 Express Route 线路提供高性能连接。
+在第一个设置示例中，只能从虚拟网络内部管理所有 API。 内部使用者（以橙色突出显示）可以访问所有内部和外部 API。 流量永远不会发送到 internet。 通过 Express Route 线路提供高性能连接。
 
 ![url 路由](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
 ## <a name="before-you-begin"> </a> 准备工作
 
-* 确保使用最新版本的 Azure PowerShell。 请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps) 中的安装说明。 
+* 确保使用最新版本的 Azure PowerShell。 请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)上的安装说明。 
 
 ## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>在 API 管理与应用程序网关之间创建集成需要做好哪些准备？
 
 * **后端服务器池：** API 管理服务的内部虚拟 IP 地址。
-* **后端服务器池设置：** 每个池具有端口、协议和基于 Cookie 的相关性等设置。 这些设置将应用到池中的所有服务器。
-* **前端端口：** 这是应用程序网关上打开的公共端口。 抵达此端口的流量将重定向到后端服务器之一。
+* **后端服务器池设置：** 每个池都有一些设置，例如端口、协议和基于 Cookie 的关联性。 这些设置将应用到池中的所有服务器。
+* **前端端口：** 此端口是应用程序网关上打开的公共端口。 抵达此端口的流量将重定向到后端服务器之一。
 * **侦听器：** 侦听器具有前端端口、协议（Http 或 Https，这些值区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。
 * **规则：** 规则将侦听器绑定到后端服务器池。
 * **自定义运行状况探测：** 默认情况下，应用程序网关使用基于 IP 地址的探测来判断 BackendAddressPool 中的哪些服务器处于活动状态。 API 管理服务只响应包含正确主机标头的请求，因此默认的探测会失败。 需要定义一个自定义运行状况探测，帮助应用程序网关确定服务处于活动状态，应该转发该请求。
-* **自定义域证书：** 若要从 Internet 访问 API 管理，需要创建从服务主机名到应用程序网关前端 DNS 名称的 CNAME 映射。 这可以确保发送到应用程序网关，并转发到 API 管理的主机名标头和证书是 APIM 可以识别为有效的对象。 在此示例中，我们将使用两个证书 - 用于后端和开发人员门户。  
+* **自定义域证书**：要从 Internet 访问 API 管理，需要创建从服务主机名到应用程序网关前端 DNS 名称的 CNAME 映射。 这可以确保发送到应用程序网关，并转发到 API 管理的主机名标头和证书是 APIM 可以识别为有效的对象。 在此示例中，我们将使用两个证书 - 用于后端和开发人员门户。  
 
 ## <a name="overview-steps"></a> 集成 API 管理和应用程序网关所要执行的步骤
 
@@ -86,7 +86,7 @@ ms.locfileid: "70193960"
 > 如果使用 Azure AD 或第三方身份验证，请在应用程序网关中启用[基于 cookie 的会话相关性](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity)功能。
 
 > [!WARNING]
-> 若要防止应用程序网关 WAF 中断在开发人员门户中下载 OpenAPI 规范, 需要禁用防火墙规则`942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`。
+> 若要防止应用程序网关 WAF 中断在开发人员门户中下载 OpenAPI 规范，需要禁用防火墙规则 `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`。
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>创建资源管理器的资源组
 
@@ -123,7 +123,7 @@ Azure 资源管理器要求所有资源组指定一个位置。 此位置将用�
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>为应用程序网关创建虚拟网络和子网
 
-以下示例演示如何使用 Resource Manager 创建虚拟网络。
+下面的示例演示如何使用资源管理器创建虚拟网络。
 
 ### <a name="step-1"></a>步骤 1
 
@@ -187,7 +187,7 @@ $apimService = New-AzApiManagement -ResourceGroupName $resGroupName -Location $l
 
 ### <a name="step-1"></a>步骤 1
 
-使用带有域私钥的证书的详细信息初始化以下变量。 本示例将使用 `api.contoso.net` 和 `portal.contoso.net`  
+将以下变量初始化为包含域私钥的证书的详细信息。 本示例将使用 `api.contoso.net` 和 `portal.contoso.net`  
 
 ```powershell
 $gatewayHostname = "api.contoso.net"                 # API gateway host
@@ -204,16 +204,19 @@ $certPortalPwd = ConvertTo-SecureString -String $portalCertPfxPassword -AsPlainT
 
 ### <a name="step-2"></a>步骤 2
 
-为代理和门户创建和设置主机名配置对象。  
+为代理创建和设置主机名配置对象，并为门户设置。  
 
 ```powershell
 $proxyHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $gatewayHostname -HostnameType Proxy -PfxPath $gatewayCertPfxPath -PfxPassword $certPwd
-$portalHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $portalHostname -HostnameType Portal -PfxPath $portalCertPfxPath -PfxPassword $certPortalPwd
+$portalHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $portalHostname -HostnameType DeveloperPortal -PfxPath $portalCertPfxPath -PfxPassword $certPortalPwd
 
 $apimService.ProxyCustomHostnameConfiguration = $proxyHostnameConfig
 $apimService.PortalCustomHostnameConfiguration = $portalHostnameConfig
 Set-AzApiManagement -InputObject $apimService
 ```
+
+> [!NOTE]
+> 若要配置旧的开发人员门户连接，需要将 `-HostnameType DeveloperPortal` 替换为 `-HostnameType Portal`。
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>创建前端配置的公共 IP 地址
 
@@ -231,7 +234,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName $resGroupName -name "public
 
 ### <a name="step-1"></a>步骤 1
 
-创建名为“gatewayIP01”的应用程序网关 IP 配置。 当应用程序网关启动时，它会从配置的子网获取 IP 地址，再将网络流量路由到后端 IP 池中的 IP 地址。 请记住，每个实例需要一个 IP 地址。
+创建名为 **gatewayIP01** 的应用程序网关 IP 配置。 当应用程序网关启动时，它会从配置的子网获取 IP 地址，再将网络流量路由到后端 IP 池中的 IP 地址。 请记住，每个实例需要一个 IP 地址。
 
 ```powershell
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name "gatewayIP01" -Subnet $appgatewaysubnetdata
@@ -357,9 +360,9 @@ Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
 ## <a name="summary"> </a> 摘要
-VNET 中配置的 Azure API 管理为配置的所有 API 提供单个网关接口，无论这些 API 是托管在本地还是云中。 将应用程序网关与 API 管理集成可以灵活地、有选择性地定义允许在 Internet 上访问哪些特定的 API，以及向 API 管理实例提供 Web 应用程序防火墙作为前端。
+VNET 中配置的 Azure API 管理为配置的所有 Api 提供单个网关接口，无论这些 Api 是托管在本地还是在云中。 将应用程序网关与 API 管理集成可以灵活地、有选择性地定义允许在 Internet 上访问哪些特定的 API，以及向 API 管理实例提供 Web 应用程序防火墙作为前端。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"> </a> 后续步骤
 * 详细了解 Azure 应用程序网关
   * [应用程序网关概述](../application-gateway/application-gateway-introduction.md)
   * [应用程序网关 Web 应用程序防火墙](../application-gateway/application-gateway-webapplicationfirewall-overview.md)

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 9a21242cbb16466ed4c12746ff64bd7352925fed
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4f657cd8c804a597220a7e74d1fce0401c4cd9ae
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592797"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176336"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -433,7 +433,7 @@ DeployIfNotExists 效果的 "**详细信息**" 属性包含定义要匹配的相
 
 ## <a name="enforceregopolicy"></a>EnforceRegoPolicy
 
-此效果与 `Microsoft.ContainerService.Data` 的策略定义*模式*一起使用。 它用于传递使用[Rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego)定义的许可控制规则，以打开[Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)上的[策略代理](https://www.openpolicyagent.org/)（OPA）。
+此效果与 `Microsoft.ContainerService.Data` 的策略定义*模式*一起使用。 它用于传递使用[Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)定义的许可控制规则，以打开[Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)上的[策略代理](https://www.openpolicyagent.org/)（OPA）。
 
 > [!NOTE]
 > [适用于 Kubernetes 的 Azure 策略](rego-for-aks.md)处于公共预览中，仅支持内置策略定义。

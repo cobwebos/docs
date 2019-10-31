@@ -11,19 +11,19 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 9d75dff413e7b6e61d38b95e08bf9c891b583014
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073825"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176886"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API 管理中的 API 模板
 
 通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页面的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](api-management-template-resources.md#strings)、[字形资源](api-management-template-resources.md#glyphs)和[页面控件](api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
-  
+
 本部分中的模板可用于自定义开发人员门户中的 API 页面的内容。  
   
 -   [API 列表](#APIList)  
@@ -39,7 +39,9 @@ ms.locfileid: "70073825"
     -   [Ruby](#Ruby)  
 
 > [!NOTE]
->  示例默认模板包含在后面的文档中，但是会因持续改进而有所更改。 通过导航到所需单个模板，可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
+>  示例默认模板包含在后续文档中，但是会因持续改进而有所更改。 通过导航到所需单个模板，可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
@@ -78,7 +80,7 @@ ms.locfileid: "70073825"
 </div>  
 ```  
   
-### <a name="controls"></a>控件  
+### <a name="controls"></a>控制  
  `API list` 模板可使用以下[页面控件](api-management-page-controls.md)。  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
@@ -87,7 +89,7 @@ ms.locfileid: "70073825"
   
 ### <a name="data-model"></a>数据模型  
   
-|属性|类型|描述|  
+|properties|Type|描述|  
 |--------------|----------|-----------------|  
 |`apis`|[API 摘要](api-management-template-data-model-reference.md#APISummary)实体的集合。|对当前用户可见的 API。|  
   
@@ -337,19 +339,19 @@ ms.locfileid: "70073825"
 </div>  
 ```  
   
-### <a name="controls"></a>控件  
+### <a name="controls"></a>控制  
  `Operation` 模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>数据模型  
   
-|属性|类型|描述|  
+|properties|Type|描述|  
 |--------------|----------|-----------------|  
-|`apiId`|string|当前 API 的 ID。|  
-|`apiName`|string|API 的名称。|  
-|`apiDescription`|string|API 的说明。|  
+|`apiId`|字符串|当前 API 的 ID。|  
+|`apiName`|字符串|API 的名称。|  
+|`apiDescription`|字符串|API 的说明。|  
 |`api`|[API 摘要](api-management-template-data-model-reference.md#APISummary)实体。|当前 API。|  
 |`operation`|[操作](api-management-template-data-model-reference.md#Operation)|当前显示的操作。|  
-|`sampleUrl`|string|当前操作的 URL。|  
+|`sampleUrl`|字符串|当前操作的 URL。|  
 |`operationMenu`|[操作菜单](api-management-template-data-model-reference.md#Menu)|此 API 的操作的菜单。|  
 |`consoleUrl`|URI|“试用”按钮的 URI。|  
 |`samples`|[代码示例](api-management-template-data-model-reference.md#Sample)实体的集合。|当前操作的代码示例。|  
@@ -680,7 +682,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
   
 ```  
   
-#### <a name="controls"></a>控件  
+#### <a name="controls"></a>控制  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -859,7 +861,7 @@ namespace CSHttpClientSample
 }     
 ```  
   
-#### <a name="controls"></a>控件  
+#### <a name="controls"></a>控制  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -955,7 +957,7 @@ public class JavaSample
   
 ```  
   
-#### <a name="controls"></a>控件  
+#### <a name="controls"></a>控制  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -1044,7 +1046,7 @@ public class JavaSample
   
 ```  
   
-#### <a name="controls"></a>控件  
+#### <a name="controls"></a>控制  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -1156,7 +1158,7 @@ int main(int argc, const char * argv[])
   
 ```  
   
-#### <a name="controls"></a>控件  
+#### <a name="controls"></a>控制  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -1246,7 +1248,7 @@ catch (HttpException $ex)
 ?>  
 ```  
   
-#### <a name="controls"></a>控件  
+#### <a name="controls"></a>控制  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -1364,7 +1366,7 @@ except Exception as e:
 ####################################  
 ```
   
-#### <a name="controls"></a>控件  
+#### <a name="controls"></a>控制  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -1435,7 +1437,7 @@ puts response.body
   
 ```  
   
-#### <a name="controls"></a>控件  
+#### <a name="controls"></a>控制  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  

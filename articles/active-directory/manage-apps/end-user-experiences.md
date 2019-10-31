@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/03/2019
+ms.date: 09/27/2019
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74c6787068cf8ba1e86cbf43955d0ac995aa8de1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e4a091abff02e544f97f5621b56836cf6ba6e237
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702109"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175957"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory 中应用程序的最终用户体验
 
@@ -34,7 +34,9 @@ Azure Active Directory (Azure AD) 提供多种可自定义的方式来向组织�
 
 位于 https://myapps.microsoft.com 的访问面板是一个基于 Web 的门户，它允许在 Azure Active Directory 中拥有组织帐户的最终用户查看和启动 Azure AD 管理员已向他们授予其访问权限的基于云的应用程序。 如果是使用 [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/) 的最终用户，则还可以通过访问面板利用自助服务组管理功能。
 
-![屏幕截图显示了 Azure AD 访问面板门户](media/what-is-single-sign-on/azure-ad-access-panel.png)
+![屏幕截图显示 Azure AD 访问面板门户](media/what-is-single-sign-on/azure-ad-access-panel.png)
+
+默认情况下，所有应用程序都在一个页面上一起列出。 但你可以使用工作区将相关应用程序组合在一起，并将它们显示在单独的选项卡上，使其更易于查找。 例如，你可以使用工作区为特定作业角色、任务、项目等创建应用程序的逻辑分组。 有关信息，请参阅[如何使用我的应用工作区自定义用户访问面板（预览）](access-panel-workspaces.md)。 
 
 访问面板是与 Azure 管理门户分开的，因此不要求用户拥有 Azure 订阅或 Office 365 订阅。
 
@@ -42,9 +44,9 @@ Azure Active Directory (Azure AD) 提供多种可自定义的方式来向组织�
 
 ## <a name="office-365-application-launcher"></a>Office 365 应用程序启动器
 
-对于已部署 Office 365 的组织，通过 Azure AD 分配给用户的应用程序也将出现在 Office 365 门户[ https://portal.office.com/myapps ](https://portal.office.com/myapps)。 组织中的用户可以使用此方式便捷地启动应用程序且无需使用另一个门户，建议使用 Office 365 的组织采用这种应用程序启动解决方案。
+对于已部署 Office 365 的组织，通过 Azure AD 分配给用户的应用程序也会出现在 Office 365 门户的[https://portal.office.com/myapps](https://portal.office.com/myapps)中。 组织中的用户可以使用此方式便捷地启动应用程序且无需使用另一个门户，建议使用 Office 365 的组织采用这种应用程序启动解决方案。
 
-![屏幕截图显示了 Office 365 门户](./media/end-user-experiences/microsoft-365-portal-office-com.png)
+![屏幕截图显示 Office 365 门户](./media/end-user-experiences/microsoft-365-portal-office-com.png)
 
 有关 Office 365 应用程序启动器的详细信息，请参阅[让应用出现在 Office 365 应用启动器中](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher)。
 
@@ -58,9 +60,9 @@ Azure Active Directory (Azure AD) 提供多种可自定义的方式来向组织�
 
 Azure AD 还为支持基于密码单一登录、链接单一登录以及任何形式的联合单一登录的各个应用程序提供直接单一登录链接。
 
-这些链接是专门编写的 URL，用于使用户完成特定应用程序的 Azure AD 登录过程而无需用户从 Azure AD 访问面板或 Office 365 启动。 这些**用户访问 Url**下可用的企业应用程序的属性。 在 Azure 门户中，选择**Azure Active Directory** > **企业应用程序**。 选择应用程序，并选择**属性**。
+这些链接是专门编写的 URL，用于使用户完成特定应用程序的 Azure AD 登录过程而无需用户从 Azure AD 访问面板或 Office 365 启动。 这些**用户访问 url**可在可用企业应用程序的属性下找到。 在 Azure 门户中，选择 " **Azure Active Directory** " > "**企业应用程序**"。 选择应用程序，然后选择 "**属性**"。
 
-![Twitter 属性中的用户访问 URL 的示例](media/end-user-experiences/direct-sign-on-link.png)
+![Twitter 属性中的用户访问 URL 示例](media/end-user-experiences/direct-sign-on-link.png)
 
 可以复制这些链接，并粘贴到任何想要提供选定应用程序登录链接的位置。 该位置可以是在电子邮件，或者任何已设置用户应用程序访问权限的自定义 Web 门户。 以下是 Twitter 的 Azure AD 直接单一登录 URL 示例：
 

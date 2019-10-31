@@ -1,6 +1,6 @@
 ---
-title: 在 Azure AD 授权管理（预览版）中创建和管理资源目录-Azure Active Directory
-description: 了解如何在 Azure Active Directory 授权管理（预览版）中创建新的资源容器和访问包。
+title: 在 Azure AD 的权利管理中创建和管理资源目录 Azure Active Directory
+description: 了解如何在 Azure Active Directory 的权利管理中创建新的资源容器和访问包。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85479abfd19110703d5ce9f59f545830e84feadb
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: b66e3dee83ccf4a857fda9d5804848108c0cc251
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429571"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174426"
 ---
-# <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 权限管理（预览版）中创建和管理资源的目录
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>在 Azure AD 的权利管理中创建和管理资源的目录
 
 ## <a name="create-a-catalog"></a>创建目录
 

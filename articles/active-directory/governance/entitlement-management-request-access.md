@@ -1,6 +1,6 @@
 ---
-title: 请求访问 Azure AD 权限管理（预览版）中的访问包-Azure Active Directory
-description: 了解如何使用 "我的访问门户" 请求对 Azure Active Directory 授权管理（预览版）中访问包的访问权限。
+title: 请求访问 Azure AD 权限管理中的访问包-Azure Active Directory
+description: 了解如何使用 "我的访问门户" 请求访问 Azure Active Directory 授权管理中的访问包。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e57a216efee39df0ad22712b281073a68600e0df
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: ddc0a3788075701fb4633895e7b22fff2c15f60b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990733"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173702"
 ---
-# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>请求访问 Azure AD 授权管理（预览版）中的访问包
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>请求访问 Azure AD 权限管理中的访问包
 
 使用 Azure AD 的权利管理，访问包可以一次性设置资源和策略，在访问包的整个生命周期中自动管理访问权限。 
 

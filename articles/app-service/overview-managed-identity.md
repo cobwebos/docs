@@ -8,15 +8,15 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/15/2019
+ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 1774fcf0af287bba03c2c5c79e14883e3594ef0c
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: a5176f74964e0809cea39aa160943cc6f3451237
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260138"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176525"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -45,7 +45,7 @@ ms.locfileid: "71260138"
 
 4. 在“系统分配的”选项卡中，将“状态”切换为“启用”。 单击“保存”。
 
-![应用服务中的托管标识](media/app-service-managed-service-identity/msi-blade-system.png)
+    ![应用服务中的托管标识](media/app-service-managed-service-identity/msi-blade-system.png)
 
 ### <a name="using-the-azure-cli"></a>使用 Azure CLI
 
@@ -174,7 +174,7 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 
 6. 搜索之前创建的标识并选择它。 单击“添加”。
 
-![应用服务中的托管标识](media/app-service-managed-service-identity/msi-blade-user.png)
+    ![应用服务中的托管标识](media/app-service-managed-service-identity/msi-blade-user.png)
 
 ### <a name="using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
 
@@ -245,55 +245,7 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 > [!IMPORTANT]
 > 可能需要配置目标资源，允许从应用程序进行访问。 例如，如果请求 Key Vault 的令牌，需要确保已添加包含应用程序标识的访问策略。 否则，对 Key Vault 的调用将被拒绝，即使其中包含令牌。 若要详细了解支持 Azure Active Directory 令牌的资源，请参阅[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
-在应用服务和 Azure Functions 中，使用简单的 REST 协议获取令牌。 对于 .NET 应用程序，Microsoft.Azure.Services.AppAuthentication 库提供此协议的摘要并支持本地开发体验。
-
-### <a name="asal"></a>使用用于.NET 的 Microsoft.Azure.Services.AppAuthentication 库
-
-对于 .NET 应用程序和函数，使用托管标识最简单的方法是通过 Microsoft.Azure.Services.AppAuthentication 包。 此库还允许通过 Visual Studio、[Azure CLI](/cli/azure) 或 Active Directory 集成身份验证使用用户帐户，在开发计算机上对代码进行本地测试。 有关此库的本地开发选项的详细信息，请参阅 [Microsoft.Azure.Services.AppAuthentication 参考]。 本部分演示如何开始在代码中使用此库。
-
-1. 向应用程序添加对 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 和任何其他必需 NuGet 包的引用。 以下示例还使用 [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)。
-
-2. 将以下代码添加到应用程序，以修改为针对相应的资源。 此示例演示了使用 Azure Key Vault 的两种方法：
-
-```csharp
-using Microsoft.Azure.Services.AppAuthentication;
-using Microsoft.Azure.KeyVault;
-// ...
-var azureServiceTokenProvider = new AzureServiceTokenProvider();
-string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://vault.azure.net");
-// OR
-var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
-```
-
-若要了解有关 Microsoft.Azure.Services.AppAuthentication 及其公开的操作的详细信息，请参阅 [Microsoft.Azure.Services.AppAuthentication 参考]以及[将应用服务和 KeyVault 与 MSI.NET 配合使用示例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
-
-
-### <a name="using-the-azure-sdk-for-java"></a>使用用于 Java 的 Azure SDK
-
-对于 Java 应用程序和函数，使用托管标识的最简单方法是通过[用于 Java 的 Azure SDK](https://github.com/Azure/azure-sdk-for-java)。 本部分演示如何开始在代码中使用此库。
-
-1. 添加对 [Azure SDK 库](https://mvnrepository.com/artifact/com.microsoft.azure/azure)的引用。 对于 Maven 项目，可以将此代码片段添加到项目的 POM 文件的 `dependencies` 节：
-
-```xml
-<dependency>
-    <groupId>com.microsoft.azure</groupId>
-    <artifactId>azure</artifactId>
-    <version>1.23.0</version>
-</dependency>
-```
-
-2. 使用 `AppServiceMSICredentials` 对象进行身份验证。 此示例演示如何使用此机制来处理 Azure Key Vault：
-
-```java
-import com.microsoft.azure.AzureEnvironment;
-import com.microsoft.azure.management.Azure;
-import com.microsoft.azure.management.keyvault.Vault
-//...
-Azure azure = Azure.authenticate(new AppServiceMSICredentials(AzureEnvironment.AZURE))
-        .withSubscription(subscriptionId);
-Vault myKeyVault = azure.vaults().getByResourceGroup(resourceGroup, keyvaultName);
-
-```
+在应用服务和 Azure Functions 中，使用简单的 REST 协议获取令牌。 这可用于所有应用程序和语言。 对于某些 .NET 和 Java，Azure SDK 通过此协议提供抽象，并促进本地开发体验。
 
 ### <a name="using-the-rest-protocol"></a>使用 REST 协议
 
@@ -306,21 +258,21 @@ Vault myKeyVault = azure.vaults().getByResourceGroup(resourceGroup, keyvaultName
 
 > |参数名称|In|描述|
 > |-----|-----|-----|
-> |资源|查询|应获取其令牌的资源的 AAD 资源 URI。 这可以是[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)或任何其他资源 URI 之一。|
-> |api-version|查询|要使用的令牌 API 版本。 目前唯一支持的版本是 "2017-09-01"。|
-> |secret|Header|MSI_SECRET 环境变量的值。 此标头用于帮助缓解服务器端请求伪造 (SSRF) 攻击。|
-> |clientid|查询|（除非用户分配，否则为可选）要使用的用户分配的标识的 ID。 如果省略，则将使用系统分配的标识。|
+> |resource|Query|应获取其令牌的资源的 AAD 资源 URI。 这可以是[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)或任何其他资源 URI 之一。|
+> |api-version|Query|要使用的令牌 API 版本。 目前唯一支持的版本是 "2017-09-01"。|
+> |secret|标头|MSI_SECRET 环境变量的值。 此标头用于帮助缓解服务器端请求伪造 (SSRF) 攻击。|
+> |clientid|Query|（除非用户分配，否则为可选）要使用的用户分配的标识的 ID。 如果省略，则将使用系统分配的标识。|
 
 > [!IMPORTANT]
-> 如果尝试获取用户分配的标识的令牌，则必须包含`clientid`属性。 否则，令牌服务将尝试为系统分配的标识获取令牌，这可能存在也可能不存在。
+> 如果尝试获取用户分配的标识的令牌，则必须包含 `clientid` 属性。 否则，令牌服务将尝试为系统分配的标识获取令牌，这可能存在也可能不存在。
 
 成功的 200 OK 响应包括具有以下属性的 JSON 正文：
 
-> |属性名|描述|
+> |属性名称|描述|
 > |-------------|----------|
 > |access_token|请求的访问令牌。 调用 Web 服务可以使用此令牌向接收 Web 服务进行身份验证。|
 > |expires_on|访问令牌的过期时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至过期时间的秒数。 此值用于确定缓存令牌的生存期。|
-> |资源|接收 Web 服务的应用 ID URI。|
+> |resource|接收 Web 服务的应用 ID URI。|
 > |token_type|指示令牌类型值。 Azure AD 唯一支持的类型是 Bearer。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。|
 
 此响应与 [AAD 服务到服务访问令牌请求的响应](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)相同。
@@ -354,26 +306,29 @@ Content-Type: application/json
 
 ### <a name="code-examples"></a>代码示例
 
-<a name="token-csharp"></a>使用 C# 发出此请求：
-
-```csharp
-public static async Task<HttpResponseMessage> GetToken(string resource, string apiversion)  {
-    HttpClient client = new HttpClient();
-    client.DefaultRequestHeaders.Add("Secret", Environment.GetEnvironmentVariable("MSI_SECRET"));
-    return await client.GetAsync(String.Format("{0}/?resource={1}&api-version={2}", Environment.GetEnvironmentVariable("MSI_ENDPOINT"), resource, apiversion));
-}
-```
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 > [!TIP]
 > 对于 .NET 语言，也可使用 [Microsoft.Azure.Services.AppAuthentication](#asal) 而不是自己创建此请求。
 
-<a name="token-js"></a>在 Node.JS 中：
+```csharp
+private readonly HttpClient _client;
+// ...
+public async Task<HttpResponseMessage> GetToken(string resource)  {
+    var request = new HttpRequestMessage(HttpMethod.Get, 
+        String.Format("{0}/?resource={1}&api-version=2017-09-01", Environment.GetEnvironmentVariable("MSI_ENDPOINT"), resource));
+    request.Headers.Add("Secret", Environment.GetEnvironmentVariable("MSI_SECRET"));
+    return await _client.SendAsync(request);
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const rp = require('request-promise');
-const getToken = function(resource, apiver, cb) {
+const getToken = function(resource, cb) {
     let options = {
-        uri: `${process.env["MSI_ENDPOINT"]}/?resource=${resource}&api-version=${apiver}`,
+        uri: `${process.env["MSI_ENDPOINT"]}/?resource=${resource}&api-version=2017-09-01`,
         headers: {
             'Secret': process.env["MSI_SECRET"]
         }
@@ -383,7 +338,7 @@ const getToken = function(resource, apiver, cb) {
 }
 ```
 
-<a name="token-python"></a>在 Python 中：
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 ```python
 import os
@@ -392,8 +347,8 @@ import requests
 msi_endpoint = os.environ["MSI_ENDPOINT"]
 msi_secret = os.environ["MSI_SECRET"]
 
-def get_bearer_token(resource_uri, token_api_version):
-    token_auth_uri = f"{msi_endpoint}?resource={resource_uri}&api-version={token_api_version}"
+def get_bearer_token(resource_uri):
+    token_auth_uri = f"{msi_endpoint}?resource={resource_uri}&api-version=2017-09-01"
     head_msi = {'Secret':msi_secret}
 
     resp = requests.get(token_auth_uri, headers=head_msi)
@@ -402,15 +357,64 @@ def get_bearer_token(resource_uri, token_api_version):
     return access_token
 ```
 
-<a name="token-powershell"></a>在 PowerShell 中：
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
-$apiVersion = "2017-09-01"
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
-$tokenAuthURI = $env:MSI_ENDPOINT + "?resource=$resourceURI&api-version=$apiVersion"
+$tokenAuthURI = $env:MSI_ENDPOINT + "?resource=$resourceURI&api-version=2017-09-01"
 $tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SECRET"} -Uri $tokenAuthURI
 $accessToken = $tokenResponse.access_token
 ```
+
+---
+
+### <a name="asal"></a>使用用于.NET 的 Microsoft.Azure.Services.AppAuthentication 库
+
+对于 .NET 应用程序和函数，使用托管标识最简单的方法是通过 Microsoft.Azure.Services.AppAuthentication 包。 此库还允许通过 Visual Studio、[Azure CLI](/cli/azure) 或 Active Directory 集成身份验证使用用户帐户，在开发计算机上对代码进行本地测试。 有关此库的本地开发选项的详细信息，请参阅 [Microsoft.Azure.Services.AppAuthentication 参考]。 本部分演示如何开始在代码中使用此库。
+
+1. 向应用程序添加对 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 和任何其他必需 NuGet 包的引用。 以下示例还使用 [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)。
+
+2. 将以下代码添加到应用程序，以修改为针对相应的资源。 此示例演示了使用 Azure Key Vault 的两种方法：
+
+    ```csharp
+    using Microsoft.Azure.Services.AppAuthentication;
+    using Microsoft.Azure.KeyVault;
+    // ...
+    var azureServiceTokenProvider = new AzureServiceTokenProvider();
+    string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://vault.azure.net");
+    // OR
+    var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
+    ```
+
+若要了解有关 Microsoft.Azure.Services.AppAuthentication 及其公开的操作的详细信息，请参阅 [Microsoft.Azure.Services.AppAuthentication 参考]以及[将应用服务和 KeyVault 与 MSI.NET 配合使用示例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
+
+### <a name="using-the-azure-sdk-for-java"></a>使用用于 Java 的 Azure SDK
+
+对于 Java 应用程序和函数，使用托管标识的最简单方法是使用[AZURE SDK For Java](https://github.com/Azure/azure-sdk-for-java)。 本部分演示如何开始在代码中使用此库。
+
+1. 添加对[AZURE SDK 库](https://mvnrepository.com/artifact/com.microsoft.azure/azure)的引用。 对于 Maven 项目，可以将此代码片段添加到项目 POM 文件的 `dependencies` 部分：
+
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure</artifactId>
+        <version>1.23.0</version>
+    </dependency>
+    ```
+
+2. 使用 `AppServiceMSICredentials` 对象进行身份验证。 此示例演示如何使用此机制来处理 Azure Key Vault：
+
+    ```java
+    import com.microsoft.azure.AzureEnvironment;
+    import com.microsoft.azure.management.Azure;
+    import com.microsoft.azure.management.keyvault.Vault
+    //...
+    Azure azure = Azure.authenticate(new AppServiceMSICredentials(AzureEnvironment.AZURE))
+            .withSubscription(subscriptionId);
+    Vault myKeyVault = azure.vaults().getByResourceGroup(resourceGroup, keyvaultName);
+
+    ```
+
 
 ## <a name="remove"></a>删除标识
 

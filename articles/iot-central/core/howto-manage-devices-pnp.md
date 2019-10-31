@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 30c5e9d4ddba473f1afa243eb7fc6db875b3d9b3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b5e4e27e059cdc84370bbf7dbf7c6bc651b1968e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953494"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177354"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application-preview-features"></a>管理 Azure IoT Central 应用程序中的设备（预览功能）
 
@@ -145,7 +145,7 @@ ms.locfileid: "72953494"
     * IOTC_X509THUMBPRINT_PRIMARY
     * IOTC_X509THUMBPRINT_SECONDARY
 
-有关连接字符串和将实际设备连接到 IoT Central 应用程序的详细信息，请参阅[Azure IoT Central 中的设备连接](concepts-connectivity-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)。
+有关连接字符串和将实际设备连接到 IoT Central 应用程序的详细信息，请参阅[Azure IoT Central 中的设备连接](overview-iot-central-get-connected-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)。
 
 ## <a name="delete-a-device"></a>删除设备
 
@@ -179,6 +179,6 @@ ms.locfileid: "72953494"
 了解如何在 Azure IoT Central 应用程序中管理设备后，建议接下来执行以下步骤：
 
 > [!div class="nextstepaction"]
-> [如何使用设备集](howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+> [如何使用设备组](tutorial-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
 
 <!-- Next how-tos in the sequence -->

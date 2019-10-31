@@ -1,5 +1,5 @@
 ---
-title: 在 Azure AD 权限管理（预览版）中管理外部用户的访问权限-Azure Active Directory
+title: 为外部用户管理对 Azure AD 权限管理的访问权限-Azure Active Directory
 description: 了解你可以指定的设置，以控制对 Azure Active Directory 授权管理中外部用户的访问。
 services: active-directory
 documentationCenter: ''
@@ -12,23 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3794f409b2cdc11373dc330099e5ff93d65a2a1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9107471448a58dc7866fb2cd6052abf168437d2b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934385"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174183"
 ---
-# <a name="govern-access-for-external-users-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 授权管理（预览版）中为外部用户控制访问权限
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>为外部用户管理对 Azure AD 权限管理的访问权限
 
 Azure AD 的权利管理利用[Azure AD 企业到企业（B2B）](../b2b/what-is-b2b.md)与组织外的其他目录中的人员进行协作。 使用 Azure AD B2B 时，外部用户会对其主目录进行身份验证，但在目录中具有表示形式。 目录中的表示形式允许用户分配对资源的访问权限。
 
@@ -74,6 +69,52 @@ Azure AD 的权利管理利用[Azure AD 企业到企业（B2B）](../b2b/what-is
 
 1. 根据外部用户设置的生命周期，当外部用户不再具有任何访问包分配时，会阻止外部用户登录，并从目录中删除来宾用户帐户。
 
+## <a name="settings-for-external-users"></a>外部用户的设置
+
+若要确保组织外部的人员可以请求访问包并获取对这些访问包中的资源的访问权限，你应验证一些设置是否正确配置。
+
+### <a name="enable-catalog-for-external-users"></a>为外部用户启用目录
+
+- 默认情况下，当你创建[新目录](entitlement-management-catalog-create.md)时，它将启用以允许外部用户在目录中请求访问包。 确保 "**为外部用户启用**" 设置为 **"是"** 。
+
+    ![编辑目录设置](./media/entitlement-management-shared/catalog-edit.png)
+
+### <a name="configure-your-azure-ad-b2b-external-collaboration-settings"></a>配置 Azure AD B2B 外部协作设置
+
+- 允许来宾邀请其他来宾到你的目录，这意味着来宾邀请可以在权限管理之外发生。 建议将**来宾**设置为 "**无**"，以仅允许正确控制的邀请。
+- 如果你使用的是 B2B 允许列表，则必须确保将使用权限管理的任何域添加到该列表中。 或者，如果您使用的是 B2B 拒绝列表，则必须确保您要使用的任何域都不会添加到该列表中。
+- 如果为**所有用户**（所有连接的组织 + 任何新的外部用户）创建了一个授权管理策略，则你拥有的任何 B2B 允许或拒绝列表设置将优先。 因此，请务必将要包含在此策略中的域添加到允许列表（如果你使用的是 "拒绝列表"），并将其从拒绝列表中排除。
+- 如果你想要创建包含**所有用户**（所有连接的组织 + 任何新的外部用户）的授权管理策略，你必须首先为你的目录启用电子邮件一次性密码身份验证。 有关详细信息，请参阅[电子邮件一次性密码身份验证（预览版）](../b2b/one-time-passcode.md#opting-in-to-the-preview)。
+- 有关 Azure AD B2B 外部协作设置的详细信息，请参阅[启用 b2b 外部协作和管理可以邀请来宾的人员](../b2b/delegate-invitations.md)。
+
+    ![Azure AD 外部协作设置](./media/entitlement-management-external-users/collaboration-settings.png)
+
+### <a name="review-your-conditional-access-policies"></a>查看条件访问策略
+
+- 请确保从新的来宾用户无法满足的任何条件性访问策略中排除来宾，因为这样会阻止用户登录到你的目录。 例如，来宾可能没有已注册的设备，不在已知的位置，并且不想重新注册多重身份验证（MFA），因此在条件性访问策略中添加这些要求会阻止来宾使用权利层. 有关详细信息，请参阅[什么是条件性访问中的条件 Azure Active Directory？](../conditional-access/conditions.md)。
+
+    ![Azure AD 条件访问策略排除设置](./media/entitlement-management-external-users/conditional-access-exclude.png)
+
+### <a name="review-your-sharepoint-online-external-sharing-settings"></a>查看 SharePoint Online 外部共享设置
+
+- 如果要在访问包中为外部用户包括 SharePoint Online 站点，请确保将组织级别的外部共享设置设置为 "**任何人**" （用户不需要登录）或**新的和现有的来宾**（来宾必须签署或提供验证码。 有关详细信息，请参阅[打开或关闭外部共享](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)。
+
+- 如果要限制权限管理之外的任何外部共享，则可以将外部共享设置设置为**现有来宾**。 然后，只有通过授权管理的新用户才能访问这些站点。 有关详细信息，请参阅[打开或关闭外部共享](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)。
+
+- 请确保站点级设置启用来宾访问（与前面列出的选项相同）。 有关详细信息，请参阅[为站点启用或禁用外部共享](https://docs.microsoft.com/sharepoint/change-external-sharing-site)。
+
+### <a name="review-your-office-365-group-sharing-settings"></a>查看 Office 365 组共享设置
+
+- 如果你想要在你的外部用户的访问包中包含 Office 365 组，请确保将 "**允许用户向组织添加新来宾"** 设置为 **"开**" 以允许来宾访问。 有关详细信息，请参阅[管理对 Office 365 组的来宾访问权限](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-guest-access-to-office-365-groups)。
+
+- 如果希望外部用户能够访问与 Office 365 组关联的 SharePoint Online 网站和资源，请确保启用 SharePoint Online 外部共享。 有关详细信息，请参阅[打开或关闭外部共享](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)。
+
+- 有关如何在 PowerShell 中的目录级别设置 Office 365 组的来宾策略的信息，请参阅[示例：在目录级别为组配置来宾策略](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level)。
+
+### <a name="review-your-teams-sharing-settings"></a>查看团队共享设置
+
+- 如果要将团队添加到外部用户的访问包中，请确保将 "**允许在 Microsoft 团队中进行来宾访问**" 设置为 **"开**" 以允许来宾访问。 有关详细信息，请参阅[Microsoft 团队管理中心中的配置来宾访问权限](https://docs.microsoft.com/microsoftteams/set-up-guests#configure-guest-access-in-the-microsoft-teams-admin-center)。
+
 ## <a name="manage-the-lifecycle-of-external-users"></a>管理外部用户的生命周期
 
 你可以选择在通过审批访问包请求而被邀请到你的目录的外部用户，不再具有任何访问包分配时所发生的情况。 如果用户让给其所有访问包分配，或者其上次访问包分配过期，则可能会发生这种情况。 默认情况下，当外部用户不再具有任何访问包分配时，会阻止它们登录到你的目录。 30天后，将从你的目录中删除其来宾用户帐户。
@@ -104,20 +145,8 @@ Azure AD 的权利管理利用[Azure AD 企业到企业（B2B）](../b2b/what-is
 
 1. 单击“保存”。
 
-## <a name="enable-a-catalog-for-external-users"></a>为外部用户启用目录
-
-创建[新目录](entitlement-management-catalog-create.md)时，可以使用一个设置来使外部目录中的用户可以在目录中请求访问包。 如果你不希望外部用户有权请求目录中的访问包，请将 "**为外部用户启用**" 设置为 "**否**"。
-
-**必备角色：** 全局管理员、用户管理员或目录所有者
-
-![新建目录窗格](./media/entitlement-management-shared/new-catalog.png)
-
-你还可以在创建目录后更改此设置。
-
-![编辑目录设置](./media/entitlement-management-shared/catalog-edit.png)
-
 ## <a name="next-steps"></a>后续步骤
 
 - [添加连接的组织](entitlement-management-organization.md)
 - [对于不在你的目录中的用户](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
-- [创建和管理资源的目录](entitlement-management-catalog-create.md)
+- [故障排除](entitlement-management-troubleshoot.md)

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure AD 授权管理（预览版）中更改访问包的生命周期设置-Azure Active Directory
-description: 了解如何在 Azure Active Directory 授权管理（预览版）中更改访问包的生命周期设置。
+title: 在 Azure AD 授权管理-Azure Active Directory 中更改访问包的生命周期设置
+description: 了解如何在 Azure Active Directory 权限管理中更改访问包的生命周期设置。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46d63a12443edf04db3570fa43fbd8f20619122e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 959d85f496a4a573a969bf736aba137d5b86154a
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392340"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174729"
 ---
-# <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 权限管理（预览版）中更改访问包的生命周期设置
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权限管理中更改访问包的生命周期设置
 
 作为访问包管理器，你可以通过编辑现有策略，随时更改访问包的生命周期设置。 如果更改策略的到期日期，则已处于 "等待审批" 或 "已批准" 状态的请求的到期日期将不会更改。
 

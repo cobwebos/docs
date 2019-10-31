@@ -1,6 +1,6 @@
 ---
-title: 批准或拒绝 Azure AD 授权管理（预览版）中的访问请求-Azure Active Directory
-description: 了解如何使用 "我的访问门户" 批准或拒绝 Azure Active Directory 授权管理（预览版）中访问包的请求。
+title: 批准或拒绝 Azure AD 权限管理中的访问请求-Azure Active Directory
+description: 了解如何使用 "我的访问门户" 批准或拒绝对 Azure Active Directory 授权管理中访问包的请求。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da3e1b6439b033742af62d548775cfb628e955b7
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
-ms.translationtype: MT
+ms.openlocfilehash: 3bf254f06c14afa7ee32f27d6632ab33665cf31c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990712"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173459"
 ---
-# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management-preview"></a>批准或拒绝 Azure AD 授权管理（预览版）中的访问请求
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>在 Azure AD 的权利管理中批准或拒绝访问请求
 
 使用 Azure AD 权限管理，你可以配置策略以要求访问包的批准，并选择一个或多个审批者。 本文介绍指定的审批者如何批准或拒绝访问包的请求。
 

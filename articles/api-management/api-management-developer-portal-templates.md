@@ -11,30 +11,32 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: a8b250c45716146c505a803046b18bf5d05cf116
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9657414c56296ee710f17663bf0bbdd3a4d67ac8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073773"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176813"
 ---
-# <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>如何使用模板自定义 Azure API 管理开发人员门户
+# <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>如何使用模板自定义 Azure API Management 开发人员门户
 
 在 Azure API 管理中自定义开发人员门户有三种基本方法：
 
 * [编辑静态页面内容和页面布局元素][modify-content-layout]
 * [跨开发人员门户更新页面元素所用的样式][customize-styles]
-* [修改门户生成的页面所用的模板][portal-templates](本指南中所述)
+* [修改门户生成的页面所用的模板][portal-templates]（在本指南中介绍）
 
 模板用于自定义系统生成的开发人员门户页的内容（例如，API 文档、产品、用户身份验证等）。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和一组提供的本地化字符串资源、图标和页面控件，可根据需要非常灵活地配置页面内容。
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="developer-portal-templates-overview"></a>开发人员门户模板概述
 
-在以管理员身份登录时，可从“开发人员门户”编辑模板。 若要访问它，请先打开 Azure 门户，再单击 API 管理实例的服务工具栏中的“开发人员门户”。
+在以管理员身份登录时，可从“开发人员门户”编辑模板。 若要首先打开 Azure 门户并单击 API 管理实例的服务工具栏中的 "**开发人员门户**"。
 
 要访问开发人员门户模板，请单击左侧的自定义图标显示自定义菜单，并单击“模板”。
 
@@ -166,9 +168,9 @@ ms.locfileid: "70073773"
 还原操作完成后，模板的以前发布的版本在开发人员门户中生效。
 
 ## <a name="to-restore-a-template-to-the-default-version"></a>将模板还原到默认版本
-将模板还原到其默认版本的过程分为两步。 首先，必须还原模板，然后必须发布还原后的版本。
+将模板还原到其默认版本的过程分为两步。 首先必须还原模板，然后必须发布已还原的版本。
 
-若要将单个模板还原到默认版本，请在模板编辑器中单击“还原”。
+要将单个模板还原到默认版本，请在模板编辑器中单击“还原”。
 
 ![还原模板][api-management-reset-template]
 
@@ -176,7 +178,7 @@ ms.locfileid: "70073773"
 
 ![确认][api-management-reset-template-confirm]
 
-若要将所有模板还原到其默认版本，请单击模板列表中的“还原默认模板”。
+要将所有模板还原到其默认版本，请单击模板列表中的“还原默认模板”。
 
 ![还原模板][api-management-restore-templates]
 

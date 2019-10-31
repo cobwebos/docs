@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 605614265d033647bfcf22bb99d45c89f275298b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4a5a3ac1438d5e958317f1899fc6c447f5c149ac
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596382"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175512"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>用于调用 web Api 的守护程序应用-获取令牌
 
@@ -40,7 +40,7 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-在 MSAL 中。Python，配置文件将类似于以下代码片段：
+在 MSAL Python 中，配置文件将类似于以下代码片段：
 
 ```Json
 {
@@ -115,8 +115,6 @@ if not result:
 if "access_token" in result:
     # Call a protected API with the access token
     print(result["token_type"])
-    print(result["expires_in"])  # You don't normally need to care about this.
-                                 # It will be good for at least 5 minutes.
 else:
     print(result.get("error"))
     print(result.get("error_description"))
@@ -124,6 +122,8 @@ else:
 ```
 
 # <a name="javatabjava"></a>[Java](#tab/java)
+
+这是[MSAL Java dev 示例](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/)的摘录。
 
 ```Java
 ClientCredentialParameters clientCredentialParam = ClientCredentialParameters.builder(

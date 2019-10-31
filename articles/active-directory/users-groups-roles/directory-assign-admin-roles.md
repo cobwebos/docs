@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0f7c1987cd4184ba6cda37d4d1894f0dba0b2f1
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: ea38317868d183bd02958398b51ef906eb78e799
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024628"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177031"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -236,6 +236,10 @@ In | 有权执行的操作
 > 这些功能目前正在开发中。
 >
 
+### <a name="group-administratorgroup-administrator"></a>[组管理员](#group-administrator)
+
+此角色中的用户可以创建/管理组及其设置，如命名和过期策略。 必须了解的是，将用户分配到此角色后，他们能够跨各种工作负荷（如团队、SharePoint、Yammer）以及 Outlook 管理租户中的所有组。 此外，用户还可以在不同的管理门户（如 Microsoft 管理中心、Azure 门户和特定于工作负荷的团队和 SharePoint 管理中心）中管理各种组设置。
+
 ### <a name="guest-inviterguest-inviter-permissions"></a>[来宾邀请者](#guest-inviter-permissions)
 
 此角色中的用户可以在 "**成员可以邀请**用户" 设置设置为 "否" 时管理 Azure Active Directory B2B 来宾用户邀请。 [关于 Azure AD B2B 协作](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)中提供了有关 B2B 协作的详细信息。 它不包括任何其他权限。
@@ -286,6 +290,10 @@ In | 有权执行的操作
 ### <a name="message-center-readermessage-center-reader-permissions"></a>[消息中心读取器](#message-center-reader-permissions)
 
 此角色中的用户可以在已配置的服务（如 Exchange、Intune 和 Microsoft 团队）上监视[Office 365 消息中心](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)中的通知和通知运行状况更新。 消息中心读者会收到包含帖子和最新动态的每周电子邮件摘要，并能在 Office 365 内共享消息中心帖子。 在 Azure AD 中，分配到此角色的用户对 Azure AD 服务只拥有只读访问权限，如用户和组。 此角色无权查看、创建或管理支持票证。
+
+### <a name="office-apps-administratoroffice-apps-administrator-permissions"></a>[Office 应用管理员](#office-apps-administrator-permissions)
+
+此角色中的用户可以管理 Office 365 应用的云设置。 这包括管理云策略、自助下载管理和查看与 Office apps 相关的报表。 此角色还允许管理支持票证，并在主管理中心内监视服务运行状况。 分配到此角色的用户还可以管理 Office 应用中新功能的通信。 
 
 ### <a name="partner-tier1-supportpartner-tier1-support-permissions"></a>[合作伙伴 Tier1 支持](#partner-tier1-support-permissions)
 
@@ -1060,6 +1068,28 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 | microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
 | office365. webPortal/allEntities/standard/read   | 读取 office365. webPortal 中所有资源的标准属性。 |
 
+### <a name="group-administrator"></a>组管理员
+可以管理组和组设置的所有方面，如命名和过期策略
+
+| **操作** | **说明** |
+| --- | --- |
+| microsoft. 目录/组/基本/读取 | 读取 Azure Active Directory 中组的标准属性。  |
+| microsoft. 目录/组/基本/更新 | 更新 Azure Active Directory 中组的基本属性。 |
+| microsoft. 目录/组/创建 | 在 Azure Active Directory 中创建组。 |
+| microsoft. directory/groups/createAsOwner | 在 Azure Active Directory 中创建组。 添加创建者作为第一个所有者，创建的对象根据创建者的 250 个创建对象配额计数。 |
+| microsoft. 目录/组/删除 | 删除 Azure Active Directory 中的组。 |
+| microsoft. directory/groups/hiddenMembers/read | 读取 Azure Active Directory 中的 groups.hiddenMembers 属性。 |
+| microsoft. 目录/组/成员/更新 | 更新 Azure Active Directory 中的 groups.members 属性。 |
+| microsoft. 目录/组/所有者/更新 | 更新 Azure Active Directory 中的 groups.owners 属性。 |
+| microsoft. 目录/组/还原 | 还原 Azure Active Directory 中的组。 |
+| microsoft. 目录/组/设置/更新 | 更新 Azure Active Directory 中的 groups.settings 属性。 |
+| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
+| microsoft.office365.messageCenter/messages/read | 读取 microsoft.office365.messageCenter 中的消息。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+| microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
+
 ### <a name="guest-inviter-permissions"></a>来宾邀请者权限
 可以邀请与“成员可邀请来宾”设置无关的来宾用户。
 
@@ -1201,6 +1231,25 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 | --- | --- |
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 | microsoft.office365.messageCenter/messages/read | 读取 microsoft.office365.messageCenter 中的消息。 |
+
+### <a name="office-apps-administrator-permissions"></a>Office 应用管理员权限
+可以管理 Office 应用的云服务，包括策略和设置管理，并管理对最终用户的设备的选择、取消选择和发布 "新增功能" 功能内容的功能。
+
+> [!NOTE]
+> 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
+>
+>
+
+| **操作** | **说明** |
+| --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
+| microsoft.office365.messageCenter/messages/read | 读取 microsoft.office365.messageCenter 中的消息。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+| microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
+| office365. userCommunication/allEntities/allTasks | 阅读并更新新增的消息可见性。 |
+| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 
 ### <a name="partner-tier1-support-permissions"></a>合作伙伴 Tier1 支持权限
 
@@ -1636,6 +1685,7 @@ CRM 服务管理员 | Dynamics 365 管理员 | 44367163-eba1-44c3-98af-f5787879f
 Exchange 服务管理员 | Exchange 管理员 | 29232cdf-9323-42fd-ade2-1d097af3e4de
 外部标识提供者管理员 | 外部标识提供者管理员 | be2f45a1-457d-42af-a067-6ec1fa63bc45
 全局读取器 | 全局读取器 | f2ef992c-3afb-46b9-b7cf-a126ee74c451
+组管理员 | 组管理员 | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 来宾邀请者 | 来宾邀请者 | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 支持管理员 | 密码管理员 | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Intune 服务管理员 | Intune 管理员 | 3a2c62db-5318-420d-8d74-23affee5d9d5
@@ -1644,6 +1694,7 @@ Kaizala 管理员 | Kaizala 管理员 | 74ef975b-6605-40af-a5d2-b9539d836353
 Lync 服务管理员 | Skype for Business 管理员 | 75941009-915a-4869-abe7-691bff18279e
 消息中心隐私读取器 | 消息中心隐私读取器 | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 消息中心读取者 | 消息中心读取器 | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
+Office 应用管理员 | Office 应用管理员 | 2b745bdf-0803-4d80-aa65-822c4493daac
 合作伙伴一线支持人员 | 合作伙伴一线支持人员 | 4ba39ca4-527c-499a-b93d-d9b492c50246
 合作伙伴二线支持人员 | 合作伙伴二线支持人员 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 密码管理员 | 密码管理员 | 966707d0-3269-4727-9be2-8c3a10f19b9d

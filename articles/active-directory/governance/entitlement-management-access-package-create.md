@@ -1,6 +1,6 @@
 ---
-title: 在 Azure AD 权限管理（预览版）中创建新的访问包-Azure Active Directory
-description: 了解如何在 Azure Active Directory 授权管理（预览版）中创建要共享的新资源访问包。
+title: 在 Azure AD 的权利管理中创建新的访问包-Azure Active Directory
+description: 了解如何创建要在 Azure Active Directory 授权管理中共享的新资源访问包。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70273a45bb60fca57292275ea0bb564e17a6f4e9
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b8a2752302e5f6c3428139a0faa30ce347fc21f2
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934670"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174924"
 ---
-# <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 权限管理（预览版）中创建新的访问包
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权限管理中创建新的访问包
 
 使用访问包可以对访问包的生命周期自动管理访问权限的资源和策略进行一次性设置。 本文介绍如何创建新的访问包。
 

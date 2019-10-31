@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 72a91fefc26e9c0b6d5a91223119815c4fcb9551
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd15e406cdbee57112ff8ecba158d503e908b73f
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808584"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73178013"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 导入/导出服务将数据导入到 Azure Blob 存储
 
@@ -27,11 +27,11 @@ ms.locfileid: "66808584"
 - 拥有至少一个包含存储容器的 Azure 存储帐户。 请参阅[导入/导出服务支持的存储帐户和存储类型](storage-import-export-requirements.md)的列表。 
     - 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-quickstart-create-account.md)。 
     - 有关存储容器的信息，请转到[创建存储容器](../blobs/storage-quickstart-blobs-portal.md#create-a-container)。
-- 拥有[受支持类型](storage-import-export-requirements.md#supported-disks)的足够数量的磁盘。 
+- 拥有足够数量的[受支持类型](storage-import-export-requirements.md#supported-disks)的磁盘。 
 - 拥有运行[受支持 OS 版本](storage-import-export-requirements.md#supported-operating-systems)的 Windows 系统。 
 - 在 Windows 系统上启用 BitLocker。 请参阅[如何启用 BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)。
-- 在 Windows 系统上[下载 WAImportExport 版本 1](https://aka.ms/waiev1)。 解压缩到默认文件夹 `waimportexportv1`。 例如，`C:\WaImportExportV1`。
-- 具有 FedEx/DHL 帐户。 如果你想要使用非 FedEx/DHL 快递商，请联系 Azure 数据框操作团队`adbops@microsoft.com`。  
+- 在 Windows 系统上[下载 WAImportExport 版本 1](https://www.microsoft.com/download/details.aspx?id=42659)。 解压缩到默认文件夹 `waimportexportv1`。 例如，`C:\WaImportExportV1` 。
+- 具有 FedEx/DHL 帐户。 如果要使用 FedEx/DHL 以外的运营商，请联系 `adbops@microsoft.com`Azure Data Box 运营团队。  
     - 该帐户必须是有余额的有效帐户，且有退货功能。
     - 生成导出作业的跟踪号。
     - 每个作业都应有一个单独的跟踪号。 不支持多个作业共享相同跟踪号。
@@ -49,7 +49,7 @@ ms.locfileid: "66808584"
 1.  在每个驱动器上创建一个 NTFS 卷。 为卷分配驱动器号。 不要使用装入点。
 2.  在 NTFS 卷上启用 BitLocker 加密。 如果使用某个 Windows Server 系统，请使用[如何在 Windows Server 2012 R2 上启用 BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/) 中的说明。
 3.  将数据复制到加密的卷。 可使用拖放或 Robocopy 或任何类似的复制工具。
-4.  使用管理权限打开一个 PowerShell 或命令行窗口。 若要将目录切换到解压缩的文件夹，请运行以下命令：
+4.  使用管理权限打开 PowerShell 或命令行窗口。 若要将目录切换到解压缩的文件夹，请运行以下命令：
     
     `cd C:\WaImportExportV1`
 5.  若要获取驱动器的 BitLocker 密钥，请运行以下命令：
@@ -64,17 +64,17 @@ ms.locfileid: "66808584"
     
     下表介绍了所使用的参数：
 
-    |Option  |描述  |
+    |选项  |描述  |
     |---------|---------|
     |/j:     |带有 .jrn 扩展名的日志文件的名称。 会为每个驱动器生成一个日志文件。 建议使用磁盘序列号作为日志文件名。         |
     |/id:     |会话 ID。 请为该命令的每个实例使用唯一的会话编号。      |
     |/t:     |要寄送的磁盘的驱动器号。 例如，驱动器 `D`。         |
     |/bk:     |驱动器的 BitLocker 密钥。 其数字密码来自 `manage-bde -protectors -get D:` 的输出      |
-    |/srcdir:     |要寄送的磁盘的驱动器号后跟 `:\`。 例如，`D:\`。         |
+    |/srcdir:     |要寄送的磁盘的驱动器号后跟 `:\`。 例如，`D:\` 。         |
     |/dstdir:     |Azure 存储中的目标容器的名称。         |
-    |/blobtype:     |此选项指定你想要导入到数据的 blob 的类型。 对于块 blob，这是`BlockBlob`对于页 blob，它是`PagaBlob`。         |
+    |/blobtype     |此选项指定要将数据导入到的 blob 类型。 对于块 blob，这是 `BlockBlob` 的，对于页 blob，它是 `PagaBlob`的。         |
     |/skipwrite:     |此选项指定没有需要复制的新数据并且要准备磁盘上的现有数据。          |
-    |/enablecontentmd5:     |选项启用时，可确保 MD5 计算，并将设置为`Content-md5`上每个 blob 的属性。 使用此选项，仅当你想要使用`Content-md5`字段后将数据上传到 Azure。 <br> 此选项不会影响数据完整性检查 （即默认情况下发生）。 该设置会增加所需上传到云的数据的时间。          |
+    |/enablecontentmd5:     |启用此选项后，可确保在每个 blob 上计算 MD5 并将其设置为 `Content-md5` 属性。 仅当你想要在将数据上传到 Azure 后使用 `Content-md5` 字段时，才使用此选项。 <br> 此选项不会影响数据完整性检查（默认情况下会发生此情况）。 此设置会增加将数据上载到云所需的时间。          |
 7. 为需要寄送的每个磁盘重复前面的步骤。 每次运行该命令行时，都会使用所提供的名称创建一个日志文件。
     
     > [!IMPORTANT]
@@ -85,17 +85,17 @@ ms.locfileid: "66808584"
 在 Azure 门户中执行以下步骤来创建导入作业。
 
 1. 登录到 https://portal.azure.com/ 。
-2. 转到“所有服务”>“存储”>“导入/导出作业”  。 
+2. 转到“所有服务”>“存储”>“导入/导出作业”。 
     
     ![转到导入/导出作业](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. 单击“创建导入/导出作业”  。
+3. 单击“创建导入/导出作业”。
 
     ![单击“创建导入/导出作业”](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
-4. 在“基本信息”  中：
+4. 在“基本信息”中：
 
-   - 选择“导入到 Azure”。 
+   - 选择“导入到 Azure”。
    - 输入导入作业的描述性名称。 可使用此名称来跟踪作业进度。
        - 此名称只能包含小写字母、数字和连字符。
        - 此名称必须以字母开头，并且不得包含空格。
@@ -104,7 +104,7 @@ ms.locfileid: "66808584"
 
      ![创建导入作业 - 步骤 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
-3. 在“作业详细信息”  中：
+3. 在“作业详细信息”中：
 
     - 上传你在驱动器准备步骤中获取的驱动器日志文件。 如果使用了 `waimportexport.exe version1`，请为你准备的每个驱动器上传一个文件。 如果日志文件大小超过了 2 MB，则可以使用随日志文件创建的 `<Journal file name>_DriveInfo_<Drive serial ID>.xml`。 
     - 选择将用来存放数据的目标存储帐户。 
@@ -112,10 +112,10 @@ ms.locfileid: "66808584"
    
    ![创建导入作业 - 步骤 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 
-4. 在“回寄信息”  中：
+4. 在“回寄信息”中：
 
-   - 从下拉列表中选择承运商。 如果你想要使用非 FedEx/DHL 快递商，请从下拉列表中选择一个现有的选项。 联系 Azure 数据框操作团队的`adbops@microsoft.com`与你打算使用与运营商相关的信息。
-   - 输入你已在该承运商那里创建的有效承运商帐户编号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 如果还没有帐户编号，请创建一个 [FedEx](https://www.fedex.com/us/oadr/) 或 [DHL](https://www.dhl.com/) 承运商帐户。
+   - 从下拉列表中选择承运商。 如果要使用 FedEx/DHL 以外的电信公司，请从下拉列表中选择现有的选项。 请与 Azure Data Box 运营团队联系，以了解有关你计划使用的运营商的信息 `adbops@microsoft.com`。
+   - 输入为该承运人创建的有效承运人帐号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 如果还没有帐户编号，请创建一个 [FedEx](https://www.fedex.com/us/oadr/) 或 [DHL](https://www.dhl.com/) 承运商帐户。
    - 提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。 
         
        > [!TIP] 
@@ -123,10 +123,10 @@ ms.locfileid: "66808584"
 
      ![创建导入作业 - 步骤 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
    
-5. 在“摘要”  中：
+5. 在“摘要”中：
 
    - 在摘要中复查提供的作业信息。 记下作业名称和 Azure 数据中心送货地址，以便将将磁盘寄回 Azure。 稍后将在发货标签中使用此信息。
-   - 单击“确定”  以创建导入作业。
+   - 单击“确定”以创建导入作业。
 
      ![创建导入作业 - 步骤 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
@@ -139,7 +139,7 @@ ms.locfileid: "66808584"
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-5-verify-data-upload-to-azure"></a>步骤 5：验证 Azure 中的数据上传
+## <a name="step-5-verify-data-upload-to-azure"></a>步骤 5：验证数据上传到 Azure
 
 跟踪作业直至完成。 作业完成后，验证数据已上传到 Azure。 仅在已确认上传成功后才删除本地数据。
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 32814b7478fac9530cc74fba605a096881229102
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
-ms.translationtype: HT
+ms.openlocfilehash: a3c25553e7abbe39c00407e8000880dc99056bcd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101333"
+ms.locfileid: "73172983"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -122,8 +122,6 @@ Azure 会在公共 DNS 上创建规范名称 DNS 记录（CNAME），以将解�
 |限制 |描述 |缓解措施  |
 |---------|---------|---------|
 |网络安全组（NSG）规则和用户定义的路由不适用于专用终结点    |专用终结点不支持 NSG。 尽管包含专用终结点的子网可以有与之关联的 NSG，但这些规则对专用终结点处理的流量不起作用。 必须[禁用网络策略强制](disable-private-endpoint-network-policy.md)，才能在子网中部署专用终结点。 NSG 仍在同一子网上托管的其他工作负荷上强制实施。 任何客户端子网上的路由都将使用/32 前缀，更改默认路由行为时需要类似的 UDR  | 在源客户端上使用 NSG 规则控制流量。 部署具有/32 前缀的各个路由以替代专用终结点路由        |
-|无法在针对服务终结点或专用工作负荷启用的子网中创建专用终结点    |无法在为服务终结点或委派到专用工作负荷的子网启用的子网上部署专用终结点|  创建一个单独的子网来部署专用终结点。        |
-|专用终结点只能映射到同一区域中的专用链接服务（客户拥有）    |   不支持从其他区域连接到专用链接服务（你自己的）       |  预览期间，必须在同一区域中部署专用链接服务。        |
 |  不支持仅具有专用终结点的对等互连虚拟网络   |   不支持在不使用任何其他工作负荷的情况下连接到对等互连虚拟网络上的专用终结点       | 在对等互连虚拟网络上部署单个 VM，以启用连接 |
 |专用工作负荷无法访问专用终结点    |   以下部署到虚拟网络中的服务无法访问使用专用终结点的任何专用链接资源：<br>应用服务计划</br>Azure 容器实例</br>Azure NetApp 文件</br>Azure 专用 HSM<br>       |   预览期间没有缓解措施。       |
 

@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d59a850f590ee71be7e6ab23281cbfdf57147c61
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
-ms.translationtype: HT
+ms.openlocfilehash: c90052d1d75ba65a8e0b0e7a2cd26a279019a82d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062687"
+ms.locfileid: "73173153"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>什么是 Azure AD Identity Governance？
 
@@ -97,7 +97,7 @@ Azure Active Directory （Azure AD）标识调控允许您通过适当的流程�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure AD 权限管理？效果](entitlement-management-overview.md)
+- [Azure AD 权利管理是什么？](entitlement-management-overview.md)
 - [Azure AD 访问评审是什么？](access-reviews-overview.md)
 - [什么是 Azure AD Privileged Identity Management？](../privileged-identity-management/pim-configure.md)
 - [“使用条款”可以用来做什么？](active-directory-tou.md)

@@ -8,12 +8,12 @@ ms.date: 10/15/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: bc78f11d4f61c46e2ad4f7143fe8b3af6762b0b4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 118d2b42bc14a943aa3fa60b34aa1c151d5dea4c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950413"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176305"
 ---
 # <a name="export-your-azure-iot-central-datapreview-features"></a>导出 Azure IoT Central 数据（预览功能）
 
@@ -195,7 +195,7 @@ ms.locfileid: "72950413"
 
 - IoT Central 中设备的 `@id`
 - 设备的 `name`
-- [设备预配服务](https://aka.ms/iotcentraldocsdps)中的 `deviceId`
+- [设备预配服务](/azure/iot-central/core/howto-connect-nodejs)中的 `deviceId`
 - 设备模板信息
 - 属性值
 

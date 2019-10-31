@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: 34ff075a604afdcbef67c7b10ce1ef8cbe2924e7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: adc7b65b4e079c55b9400b06603625971efc3ea3
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137036"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177673"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
 > [!div class="op_single_selector" title1="选择要使用的数据工厂服务的版本："]
@@ -90,7 +90,7 @@ POST
 https://management.azure.com/subscriptions/mySubId/resourceGroups/myResourceGroup/providers/Microsoft.DataFactory/factories/myDataFactory/pipelines/copyPipeline/createRun?api-version=2017-03-01-preview
 ```
 
-有关完整示例，请参阅[快速入门：使用 REST API 创建数据工厂](quickstart-create-data-factory-rest-api.md)。
+如需完整的示例，请参阅[快速入门：使用 REST API 创建数据工厂](quickstart-create-data-factory-rest-api.md)。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -119,7 +119,7 @@ Invoke-AzDataFactoryV2Pipeline -DataFactory $df -PipelineName "Adfv2QuickStartPi
 }
 ```
 
-有关完整示例，请参阅[快速入门：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。
+如需完整的示例，请参阅[快速入门：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。
 
 ### <a name="net-sdk"></a>.NET SDK
 以下示例调用演示了如何使用 .NET SDK 手动运行管道：
@@ -128,7 +128,7 @@ Invoke-AzDataFactoryV2Pipeline -DataFactory $df -PipelineName "Adfv2QuickStartPi
 client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, pipelineName, parameters)
 ```
 
-有关完整示例，请参阅[快速入门：使用 .NET SDK 创建数据工厂](quickstart-create-data-factory-dot-net.md)。
+如需完整的示例，请参阅[快速入门：使用 .NET SDK 创建数据工厂](quickstart-create-data-factory-dot-net.md)。
 
 > [!NOTE]
 > 可以使用 .NET SDK 从 Azure Functions、自己的 Web 服务等位置调用数据工厂管道。
@@ -142,7 +142,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 - 基于事件的触发器：响应某个事件的触发器。
 
-管道和触发器具有“多对多”关系。 多个触发器可以启动单个管道，单个触发器也可以启动多个管道。 在以下触发器定义中，pipelines 属性是指一系列由特定的触发器触发的管道。 属性定义包括管道参数的值。
+管道和触发器具有多对多关系（翻转窗口触发器除外）。多个触发器可以启动单个管道，或单个触发器可以启动多个管道。 在以下触发器定义中，pipelines 属性是指一系列由特定的触发器触发的管道。 属性定义包括管道参数的值。
 
 ### <a name="basic-trigger-definition"></a>基本的触发器定义
 
@@ -236,7 +236,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | **endTime** | 触发器的结束日期和时间。 该触发器不在指定的结束日期和时间之后执行。 属性的值不能是过去的时间。 <!-- This property is optional. --> |
 | **timeZone** | 时区。 目前仅支持 UTC 时区。 |
 | **recurrence** | 一个 recurrence 对象，指定触发器的定期触发规则。 recurrence 对象支持 **frequency**、**interval**、**endTime**、**count** 和 **schedule** 元素。 定义 recurrence 对象时，**frequency** 元素是必需的。 recurrence 对象的其他元素为可选元素。 |
-| **frequency** | 触发器定期触发的频率单位。 支持的值包括 "minute"、"hour"、"day"、"week" 和 "month"。 |
+| **频率** | 触发器定期触发的频率单位。 支持的值包括 "minute"、"hour"、"day"、"week" 和 "month"。 |
 | **interval** | 一个正整数，表示 **frequency** 值对应的时间间隔。 **frequency** 值决定了触发器的运行频率。 例如，如果 **interval** 为 3，**frequency** 为 "week"，则触发器每三周定期触发一次。 |
 | **schedule** | 触发器的定期触发计划。 指定了 **frequency** 值的触发器会根据定期触发计划更改其定期触发。 **schedule** 属性包含对定期触发的修改，这些修改是按分钟、小时、工作日、月份日期和周次进行的。
 
@@ -276,13 +276,13 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 ### <a name="schema-defaults-limits-and-examples"></a>架构默认值、限制和示例
 
-| JSON 属性 | type | 必填 | 默认值 | 有效值 | 示例 |
+| JSON 属性 | Type | 需要 | 默认值 | 有效值 | 示例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | string | 是 | None | ISO 8601 日期时间 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | object | 是 | None | recurrence 对象 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | 号 | 否 | 1 | 1 到 1000 | `"interval":10` |
-| **endTime** | string | 是 | None | 代表将来某个时间的日期/时间值 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | object | 否 | 无 | schedule 对象 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **startTime** | 字符串 | 是 | None | ISO 8601 日期时间 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **recurrence** | 对象 | 是 | None | recurrence 对象 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **interval** | 数字 | No | 第 | 1 到 1000 | `"interval":10` |
+| **endTime** | 字符串 | 是 | None | 代表将来某个时间的日期/时间值 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **schedule** | 对象 | No | None | schedule 对象 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime 属性
 下表说明了 **startTime** 属性如何控制触发器运行：
@@ -292,7 +292,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | **开始时间在过去** | 计算开始时间后的第一个将来执行时间，并在该时间运行。<br /><br />根据上次执行时间进行计算后，运行后续执行。<br /><br />请参阅此表后面的示例。 | 触发器不会早于指定的开始时间启动。 第一次循环基于从开始时间计算的计划。<br /><br />后续执行的运行取决于定期触发计划。 |
 | **开始时间在将来或当前** | 在指定的开始时间运行一次。<br /><br />根据上次执行时间进行计算后，运行后续执行。 | 触发器不会早于指定的开始时间启动。 第一次循环基于从开始时间计算的计划。<br /><br />后续执行的运行取决于定期触发计划。 |
 
-让我们查看一个示例，了解在开始时间是过去的时间，并且指定了定期触发但未指定计划的情况下，会发生什么事情。 假设当前时间为 2017-04-08 13:00，开始时间为 2017-04-07 14:00，定期触发为每两天触发一次。 （定义 **recurrence** 值时，可将 **frequency** 属性设置为 "day"，**interval** 属性设置为 2。）请注意，**startTime** 值为过去的时间，发生在当前时间之前。
+让我们查看一个示例，了解在开始时间是过去的时间，并且指定了定期触发但未指定计划的情况下，会发生什么事情。 假设当前时间为 2017-04-08 13:00，开始时间为 2017-04-07 14:00，定期触发为每两天触发一次。 （通过将**frequency**属性设置为 "day" 并将**interval**属性设置为2来定义**重复**值。）请注意， **startTime**值为过去，并发生在当前时间之前。
 
 在上述情况下，首次执行时间为 2017-04-09 14:00。 计划程序引擎从开始时间计算执行循环。 过去的所有实例会被丢弃。 引擎将使用将来发生的下一个实例。 在这种情况下，开始时间为 2017-04-07 的下午 2:00。 下一个实例为从该时间算起的 2 天，即 2017-04-09 的下午 2:00。
 
@@ -369,11 +369,11 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 |  | 翻转窗口触发器 | 计划触发器 |
 |:--- |:--- |:--- |
-| **回填方案** | 。 可以针对过去的窗口来计划管道运行。 | 不受支持。 只能在从现在的时间到未来的时间这个时段内执行管道运行。 |
+| **回填方案** | 。 可以针对过去的窗口来计划管道运行。 | 不支持。 只能在从现在的时间到未来的时间这个时段内执行管道运行。 |
 | **可靠性** | 100% 的可靠性。 可以针对所有窗口（从指定的开始日期算起，没有间隔）来计划管道运行。 | 可靠性较低。 |
-| **重试功能** | 。 失败的管道运行的重试策略默认设置为 0，也可由用户在触发器定义中指定。 在管道运行因并发/服务器/数量限制（即状态代码 400：用户错误；429：请求过多；500：内部服务器错误）而失败时自动重试。 | 不受支持。 |
-| **并发** | 。 用户可以为触发器显式设置并发限制。 允许 1 到 50 个并发的触发管道运行。 | 不受支持。 |
-| **系统变量** | 支持使用 **WindowStart** 和 **WindowEnd** 系统变量。 用户可以访问在触发器定义中充当触发器系统变量的 `triggerOutputs().windowStartTime` 和 `triggerOutputs().windowEndTime`。 这两个值分别用作窗口开始时间和窗口结束时间。 例如，如果翻转窗口触发器每小时运行一次，则对于凌晨 1:00 到凌晨 2:00 这个窗口，相应的定义为 `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` 和 `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`。 | 不受支持。 |
+| **重试功能** | 。 失败的管道运行的重试策略默认设置为 0，也可由用户在触发器定义中指定。 在管道运行因并发/服务器/数量限制（即状态代码 400：用户错误；429：请求过多；500：内部服务器错误）而失败时自动重试。 | 不支持。 |
+| **并发** | 。 用户可以为触发器显式设置并发限制。 允许 1 到 50 个并发的触发管道运行。 | 不支持。 |
+| **系统变量** | 支持使用 **WindowStart** 和 **WindowEnd** 系统变量。 用户可以访问在触发器定义中充当触发器系统变量的 `triggerOutputs().windowStartTime` 和 `triggerOutputs().windowEndTime`。 这两个值分别用作窗口开始时间和窗口结束时间。 例如，如果翻转窗口触发器每小时运行一次，则对于凌晨 1:00 到凌晨 2:00 这个窗口，相应的定义为 `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` 和 `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`。 | 不支持。 |
 | **管道-触发器关系** | 支持一对一关系。 只能触发一个管道。 | 支持多对多关系。 多个触发器可以启动单个管道。 单个触发器可以启动多个管道。 |
 
 ## <a name="next-steps"></a>后续步骤

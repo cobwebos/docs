@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 09/25/2019
 ms.author: dkshir
 ms.custom: security-recommendations
-ms.openlocfilehash: 2bb81324301ac1f5f4fd4a472942b137a76e9d3c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 9c8891eca87444c2be43294f208ad5257ffce889
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434419"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177176"
 ---
 # <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Azure 物联网（IoT）部署的安全建议
 
-本文包含 IoT 的安全建议。 实施这些建议可帮助你满足我们的共享责任模型中所述的安全要求。 若要详细了解 Microsoft 如何满足服务提供商的责任，请阅读[云计算的共享责任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225237/1/Shared%20Responsibilities%20for%20Cloud%20Computing%20(2017-04-03).pdf)。
+本文包含 IoT 的安全建议。 实施这些建议可帮助你满足我们的共享责任模型中所述的安全要求。 若要详细了解 Microsoft 如何满足服务提供商的责任，请阅读[云计算的共享责任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)。
 
 Azure 安全中心会自动监视本文中包含的一些建议。 Azure 安全中心是保护 Azure 中资源的第一道防线。 它会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后向您提供有关如何解决这些问题的建议。
 

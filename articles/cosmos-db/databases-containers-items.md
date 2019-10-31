@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 0823b4b7e19bec9d8efc83dbb3996076425cb4f1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 4d970e61fc2628843ef847526dcdb4e44bf9796f
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756887"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176929"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的数据库、容器和项
 
@@ -122,7 +122,7 @@ Azure Cosmos 容器包含一组系统定义的属性。 根据所使用的 API�
 |\_etag | 系统生成 | 用于乐观并发控制的实体标记 | 是 | No | No | No | No |
 |\_ts | 系统生成 | 项的上一次更新的时间戳 | 是 | No | No | No | No |
 |\_self | 系统生成 | 项的可寻址 URI | 是 | No | No | No | No |
-|id | 任一个 | 逻辑分区中用户定义的唯一名称。 如果用户未指定 ID，系统会自动生成一个 ID。 | 是 | 是 | 是 | 是 | 是 |
+|id | 任一个 | 逻辑分区中用户定义的唯一名称。 | 是 | 是 | 是 | 是 | 是 |
 |任意用户定义的属性 | 用户定义 | 以 API 本机表示形式表示的用户定义属性（包括 JSON、BSON 和 CQL） | 是 | 是 | 是 | 是 | 是 |
 
 > [!NOTE]

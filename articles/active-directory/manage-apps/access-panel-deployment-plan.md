@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2019
+ms.date: 09/27/2019
 ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41cc8114061ff7d23951baa3e6215d4332dff0ed
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 99c52f65bdec2b164cca86a6346d8865d210cf38
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258503"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176067"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>规划 Azure Active Directory 访问面板部署
 
@@ -38,7 +38,7 @@ Azure Active Directory （Azure AD）访问面板是一个基于 web 的门户�
 
 * 服务条款
 * 组织
-* 访问审阅
+* 访问评审
 
 
 ## <a name="benefits-of-azure-ad-access-panel-integration"></a>Azure AD 访问面板集成的优点
@@ -49,11 +49,11 @@ Azure AD 访问面板通过以下方式提高企业的优势：
 
 **提高工作效率**：访问面板中的所有用户应用程序均已启用 SSO。 跨企业应用程序和 Office 365 启用 SSO，通过减少或消除额外的登录提示，建立了一个出色的登录体验。 访问面板使用自助服务和动态成员身份，并改善标识系统的整体安全性。 它通过确保适当的人员管理对应用程序的访问来实现此功能。 访问面板作为一个连贯的登陆页面，可用于快速查找资源和继续工作任务。
 
-**管理成本**：启用带有 Azure AD 的访问面板可帮助 divestment 本地基础结构。 它提供一致的门户来查找所有应用、请求访问资源和管理帐户，从而降低了支持成本。
+**管理成本**：启用具有 Azure AD 的访问面板可帮助 divestment 本地基础结构。 它提供一致的门户来查找所有应用、请求访问资源和管理帐户，从而降低了支持成本。
 
-**提高灵活性和安全性**：使用访问面板可以访问云平台提供的安全性和灵活性。 管理员可以轻松地将设置更改为应用程序和资源，并且可以在不影响用户的情况下适应新的安全要求。
+**提高灵活性和安全性**：访问面板使你可以访问云平台提供的安全性和灵活性。 管理员可以轻松地将设置更改为应用程序和资源，并且可以在不影响用户的情况下适应新的安全要求。
 
-**启用可靠的审核和使用情况跟踪**：针对所有用户功能的审核和使用情况跟踪让你知道用户使用其资源的时间，并确保可以评估安全。
+**启用可靠的审核和使用情况跟踪**：对于所有用户功能的审核和使用情况跟踪，可让用户了解用户使用其资源的时间，并确保可以评估安全。
 
 ### <a name="licensing-considerations"></a>许可注意事项
 
@@ -86,8 +86,8 @@ Azure AD 访问面板通过以下方式提高企业的优势：
 | 访问| 可以从企业网络中的公司和个人设备访问访问面板门户。 |
 |访问 | 可以从企业网络外部的企业设备访问访问面板门户。 |
 | 审核| 使用情况数据至少每29天下载到企业系统。 |
-| 调控| 定义和监视 Azure AD 连接的应用程序和组的用户分配的生命周期。 |
-| 安全性| 可以通过用户和组分配来控制对资源的访问权限。 只有经过授权的用户可以管理资源访问权限。 |
+| 管理| 定义和监视 Azure AD 连接的应用程序和组的用户分配的生命周期。 |
+| “安全”| 可以通过用户和组分配来控制对资源的访问权限。 只有经过授权的用户可以管理资源访问权限。 |
 | 性能| 访问分配传播时间线已记录并被监视。 |
 | 用户体验| 用户了解访问面板功能以及如何使用它们。|
 | 用户体验| 用户可以管理对应用程序和组的访问。|
@@ -99,7 +99,7 @@ Azure AD 访问面板通过以下方式提高企业的优势：
 
 访问面板的功能可以逐渐启用。 建议遵循以下部署顺序：
 
-1. 我的应用程序
+1. 我的应用
    * 应用启动器
    * 自助服务应用管理
    * Microsoft Office 365 集成
@@ -113,7 +113,7 @@ Azure AD 访问面板通过以下方式提高企业的优势：
 
 1. 我的组
    * 自助组管理
-1. 访问审阅
+1. 访问评审
    * 访问评审管理
 
 从 "我的应用" 开始，将用户作为访问资源的公用位置引入门户。 自助服务应用程序发现的添加是在 "我的应用" 体验的基础上进行的。 我的组和访问权限审阅了自助服务功能上的版本。
@@ -151,7 +151,7 @@ Azure AD 访问面板通过以下方式提高企业的优势：
 
 ### <a name="plan-communications"></a>规划沟通
 
-沟通对于任何新服务的成功至关重要。 主动向用户通知其体验将发生更改的方式和时间，以及如何在需要时获得支持。
+通信对于任何新服务的成功至关重要。 主动向用户通知其体验将发生更改的方式和时间，以及如何在需要时获得支持。
 
 尽管访问面板通常不会创建用户问题，但必须做好准备。 开始之前，请为支持人员创建指南和所有资源的列表。
 
@@ -201,7 +201,7 @@ Azure AD 支持通过三种不同[的方式在应用程序中启用单一登录]
 
 * [适用于 Chrome、Firefox、Microsoft Edge 或 IE 的用户驱动的下载和配置](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
-了解更多：[如何配置密码单一登录](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery)。
+了解详细信息：[如何配置密码单一登录](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery)。
 
 不使用基于密码的 SSO 应用程序的用户也将受益于该扩展。 这些优势包括：从其搜索栏启动任何应用、查找对最近使用的应用程序的访问权限，以及链接到 "我的应用程序" 页。
 
@@ -211,11 +211,11 @@ Azure AD 支持通过三种不同[的方式在应用程序中启用单一登录]
 
 #### <a name="plan-for-mobile-access"></a>规划移动访问
 
-使用 Intune 策略（Microsoft Edge 或 Intune Managed Browser）保护的浏览器对于启动基于密码的 SSO 应用程序的移动用户是必需的。 受策略保护的浏览器允许传输为应用程序保存的密码。 Microsoft Edge 或托管浏览器提供了一组 web 数据保护功能。 你还可以使用 Microsoft Edge 在 iOS 和 Android 设备上使用企业方案。 Microsoft Edge 支持与 Intune Managed Browser 相同的管理方案，并改善了用户体验。 了解更多：[使用 Microsoft Intune 策略保护的浏览器管理 web 访问](https://docs.microsoft.com/intune/app-configuration-managed-browser)。
+使用 Intune 策略（Microsoft Edge 或 Intune Managed Browser）保护的浏览器对于启动基于密码的 SSO 应用程序的移动用户是必需的。 受策略保护的浏览器允许传输为应用程序保存的密码。 Microsoft Edge 或托管浏览器提供了一组 web 数据保护功能。 你还可以使用 Microsoft Edge 在 iOS 和 Android 设备上使用企业方案。 Microsoft Edge 支持与 Intune Managed Browser 相同的管理方案，并改善了用户体验。 了解详细信息：[使用 Microsoft Intune 策略保护的浏览器管理 web 访问](https://docs.microsoft.com/intune/app-configuration-managed-browser)。
 
 ## <a name="plan-your-my-apps-deployment"></a>规划我的应用部署
 
-访问面板的基础是应用程序启动器 "我的应用程序"，用户可以[https://myapps.microsoft.com](https://myapps.microsoft.com/)在这些应用程序中访问。 "我的应用" 页面为用户准备了一个开始其工作的位置，并可访问所需的应用程序。 在这里，用户可以找到他们有权访问单一登录的所有应用程序的列表。 
+访问面板的基础是应用程序启动器 "我的应用程序"，用户可在[https://myapps.microsoft.com](https://myapps.microsoft.com/)访问这些应用程序。 "我的应用" 页面为用户准备了一个开始其工作的位置，并可访问所需的应用程序。 在这里，用户可以找到他们有权访问单一登录的所有应用程序的列表。 
 
 !["应用" 面板的屏幕截图](media/access-panel-deployment-plan/ap-dp-app-launcher.png)
 
@@ -226,6 +226,10 @@ Azure AD 支持通过三种不同[的方式在应用程序中启用单一登录]
 #### <a name="add-applications-to-the-my-apps-panel"></a>将应用程序添加到 "我的应用" 面板
 
 任何启用了 SSO 的 Azure AD 应用程序均可添加到 "我的应用" 启动程序。 使用链接的 SSO 选项添加其他应用程序。 你可以配置应用程序磁贴，该磁贴链接到现有 web 应用程序的 URL。 链接 SSO 使你可以在不将所有应用程序迁移到 Azure AD SSO 的情况下，开始将用户定向到 "我的应用" 门户。 你可以逐步迁移到 Azure AD SSO 配置的应用程序，而不会中断用户的体验。
+
+#### <a name="use-my-apps-workspaces-preview"></a>使用我的应用工作区（预览）
+
+默认情况下，所有应用程序都在一个页面上一起列出。 但你可以使用工作区将相关应用程序组合在一起，并将它们显示在单独的选项卡上，使其更易于查找。 例如，你可以使用工作区为特定作业角色、任务、项目等创建应用程序的逻辑分组。 有关信息，请参阅[如何使用我的应用工作区自定义用户访问面板（预览）](access-panel-workspaces.md)。 
 
 #### <a name="plan-whether-to-use-my-apps-or-an-existing-portal"></a>规划是使用我的应用还是现有门户
 
@@ -260,7 +264,7 @@ Azure AD 提供了[提供技术和业务见解的报表](https://azure.microsoft
 |   | 管理风险| 提高工作效率| 管理和符合性 |
 |  - |- | - | - |
 | 报表类型|  应用程序权限和使用情况| 帐户设置活动| 查看谁在访问应用程序 |
-| 可能的操作| 审核访问;废除权限| 修正任何预配错误| 撤销访问权限 |
+| 可能的操作| 审核访问;废除权限| 修正任何预配错误| 撤消访问权限 |
 
 Azure AD 将大多数审核数据保持30天。 可以通过 Azure 管理门户或 API 使用这些数据下载到分析系统。
 
@@ -282,7 +286,7 @@ Azure AD 将大多数审核数据保持30天。 可以通过 Azure 管理门户�
 
 对于 Office 365 应用程序，用户可以基于分配给他们的许可证接收 Office 副本。 访问 Office 应用程序的先决条件是向用户分配与 Office 应用程序关联的正确许可证。 向用户分配许可证时，他们将自动在 "我的应用" 页面和 Office 365 应用启动器中看到与该许可证关联的应用程序。
 
-如果要从用户中隐藏一组 Office 应用程序，可以选择在 "我的应用" 门户中隐藏应用程序，同时仍允许从 Office 365 门户进行访问。 在应用程序的 "用户设置" 部分找到这些设置。 了解更多：[在 Azure Active Directory 的用户体验中隐藏应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app)。
+如果要从用户中隐藏一组 Office 应用程序，可以选择在 "我的应用" 门户中隐藏应用程序，同时仍允许从 Office 365 门户进行访问。 在应用程序的 "用户设置" 部分找到这些设置。 了解详细信息：[在 Azure Active Directory 中的用户体验中隐藏应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app)。
 
 ![配置如何隐藏应用程序的屏幕截图](media/access-panel-deployment-plan/ap-dp-o365-portal.png)
 
@@ -292,7 +296,7 @@ Azure AD 将大多数审核数据保持30天。 可以通过 Azure 管理门户�
 
 你可以将对应用程序访问请求的审批委托给业务审批者。 业务审批者可以从业务审批者的 "我的应用" 页设置应用访问密码。
 
-了解更多：[如何使用自助服务应用程序访问](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to)。
+了解详细信息：[如何使用自助服务应用程序访问](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to)。
 
 ![配置自助服务应用程序管理的屏幕截图](media/access-panel-deployment-plan/ap-dp-salesforce.png)
 
@@ -334,11 +338,11 @@ Azure AD 将大多数审核数据保持30天。 可以通过 Azure 管理门户�
 
 | 角色| 角色| Azure AD 角色  |
 | - | -| -|
-| 支持管理员| 第1层支持| 无 |
+| 支持管理员| 第1层支持| None |
 | 标识管理员| 在问题影响时进行配置和调试 Azure AD| 全局管理员 |
-| 应用程序管理员| 应用程序中的用户证明，具有权限的用户配置| 无 |
+| 应用程序管理员| 应用程序中的用户证明，具有权限的用户配置| None |
 | 基础结构管理员| 证书滚动更新所有者| 全局管理员 |
-| 业务所有者/利益干系人| 应用程序中的用户证明，具有权限的用户配置| 无 |
+| 业务所有者/利益干系人| 应用程序中的用户证明，具有权限的用户配置| None |
 
 你可以使用[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)来管理你的角色，以便为具有目录权限的用户提供其他审核、控制和访问评审。
 

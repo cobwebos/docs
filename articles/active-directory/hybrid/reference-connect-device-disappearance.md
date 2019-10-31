@@ -10,19 +10,19 @@ ms.topic: reference
 ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: b0ef3dd2f39802d07c4ae04ad1eca23e40db502a
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: bc159452c81a673ca4a7ed46aa7eff19fd9209eb
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345498"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176020"
 ---
 # <a name="understanding-azure-ad-connect-14xxx-and-device-disappearance"></a>了解 Azure AD Connect 1.4. x. x 和设备消失
 Azure AD Connect 的版本 1.4. x，某些客户可能会看到其所有 Windows 设备从 Azure AD 中消失。 这不是问题的原因，因为在条件访问授权期间 Azure AD 不会使用这些设备标识。 此更改不会删除为混合 Azure AD 联接正确注册 Azure AD 的任何 Windows 设备。
 
 如果在 Azure AD 超过导出删除阈值时看到删除了设备对象，则建议客户允许删除操作。 [如何：允许删除超出删除阈值时流动](how-to-connect-sync-feature-prevent-accidental-deletes.md)
 
-## <a name="background"></a>后台
+## <a name="background"></a>背景
 注册为混合 Azure AD 的 Windows 设备在 Azure AD 中表示为设备对象。 这些设备对象可用于条件性访问。 Windows 10 设备通过 Azure AD Connect 同步到云，下一级 Windows 设备是使用 AD FS 或无缝单一登录直接注册的。
 
 ## <a name="windows-10-devices"></a>Windows 10 设备
@@ -33,7 +33,7 @@ Azure AD Connect 的版本 1.4. x，某些客户可能会看到其所有 Windows
 ## <a name="down-level-windows-devices"></a>下层 Windows 设备
 Azure AD Connect 不得同步[下层 Windows 设备](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices)。 将从 Azure AD 中删除之前未正确同步 Azure AD 中的任何设备。 如果 Azure AD Connect 尝试删除[下层 windows 设备](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices)，则该设备不是由[Microsoft Workplace Join 为非 WINDOWS 10 计算机 MSI](https://www.microsoft.com/download/details.aspx?id=53554)创建的，并且不能被任何其他 Azure AD 功能使用。
 
-某些客户可能需要重新访问[如何：计划混合 Azure Active Directory 联接实现](../devices/hybrid-azuread-join-plan.md) ，使其 Windows 设备正确注册，并确保此类设备可以完全参与基于设备的条件访问。 
+有些客户可能需要重新访问[如何：规划混合 Azure Active Directory 联接实现](../devices/hybrid-azuread-join-plan.md)，使其 Windows 设备正确注册，并确保此类设备可以完全参与基于设备的条件访问。 
 
 ## <a name="how-can-i-verify-which-devices-are-deleted-with-this-update"></a>如何验证哪些设备已通过此更新删除？
 

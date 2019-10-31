@@ -11,19 +11,19 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: de7858be4ac4e392b4fb92cacf55882378ba9813
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 13a59a9b536a25897d7c545b6fb466c1192cb545
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568990"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177709"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Azure SQL 数据同步的 Data Sync Agent
 
-通过安装并配置 Azure SQL 数据同步的 Data Sync Agent 来将数据与本地 SQL Server 数据库进行同步。有关 SQL 数据同步的详细信息，请参阅[使用 SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
+通过安装和配置 Azure SQL 数据同步的数据同步代理，将数据与本地 SQL Server 数据库同步。有关 SQL 数据同步的详细信息，请参阅通过[SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
 
 > [!IMPORTANT]
-> 目前，Azure SQL 数据同步**不**支持 Azure SQL 数据库托管实例。
+> 目前，Azure SQL 数据同步不支持 Azure SQL 数据库托管实例。
 
 ## <a name="download-and-install"></a>下载并安装
 
@@ -37,7 +37,7 @@ ms.locfileid: "68568990"
 
 - 如果提供 `LocalSystem` 作为 **SERVICEACCOUNT** 的值，请在将代理配置为连接到本地 SQL Server 时使用 SQL Server 身份验证。
 
-- 如果提供域用户帐户或本地用户帐户作为 **SERVICEACCOUNT** 的值，则还必须使用 **SERVICEPASSWORD** 参数提供密码。 例如， `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"` 。
+- 如果提供域用户帐户或本地用户帐户作为 **SERVICEACCOUNT** 的值，则还必须使用 **SERVICEPASSWORD** 参数提供密码。 例如，`SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"` 。
 
 ```cmd
 msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn
@@ -115,7 +115,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 - **解决方法**。 可尝试以下两种解决方法：
 
     -   使用 services.msc 重新输入客户端代理的凭据。
-    -   卸载此客户端代理并安装新代理。 从[下载中心](https://go.microsoft.com/fwlink/?linkid=221479)下载和安装最新的客户端代理。
+    -   卸载此客户端代理并安装新代理。 从[下载中心](https://www.microsoft.com/download/details.aspx?id=27693)下载和安装最新的客户端代理。
 
 ### <a name="agent-list"></a>代理列表中未列出我的数据库
 
@@ -138,7 +138,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 
 ### <a name="agent-start"></a>客户端代理未启动（错误 1069）
 
-发现代理未在托管 SQL Server 的计算机上运行。 尝试手动启动代理时出现一个对话框，其中显示消息“错误 1069:由于登录失败，服务未启动。”
+发现代理未在托管 SQL Server 的计算机上运行。 尝试手动启动代理时出现一个对话框，其中显示消息“错误 1069: 由于登录失败，服务未启动。”
 
 ![数据同步错误 1069 对话框](media/sql-database-troubleshoot-data-sync/sync-error-1069.png)
 
@@ -147,10 +147,10 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 - **解决方法**。 将代理的密码更新为当前服务器密码：
 
   1. 找到 SQL 数据同步客户端代理服务。  
-    a. 选择“启动”。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“启动”。  
     b. 在搜索框中输入 **services.msc**。  
     c. 在搜索结果中，选择“服务”。  
-    d. 在“服务”窗口中，滚动到 **SQL Data Sync Agent** 所对应的条目。  
+    d.单击“下一步”。 在“服务”窗口中，滚动到 **SQL Data Sync Agent** 所对应的条目。  
   1. 右键单击“SQL Data Sync Agent”并选择“停止”。
   1. 右键单击“SQL Data Sync Agent”并选择“属性”。
   1. 在“SQL Data Sync Agent 属性”中，选择“登录”选项卡。
@@ -213,7 +213,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 
   1. 退出应用。  
   1. 打开组件服务面板。  
-    a. 在任务栏上的搜索框中输入 **services.msc**。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在任务栏上的搜索框中输入 **services.msc**。  
     b. 在搜索结果中，双击“服务”。  
   1. 停止“SQL 数据同步”服务。
   1. 重启“SQL 数据同步”服务。  
@@ -225,7 +225,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 
 ### <a name="ping-the-service"></a>对服务执行 Ping 命令
 
-#### <a name="usage"></a>用法
+#### <a name="usage"></a>使用情况
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action pingsyncservice
@@ -239,7 +239,7 @@ SqlDataSyncAgentCommand.exe -action "pingsyncservice"
 
 ### <a name="display-registered-databases"></a>显示已注册的数据库
 
-#### <a name="usage"></a>用法
+#### <a name="usage"></a>使用情况
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action displayregistereddatabases
@@ -253,7 +253,7 @@ SqlDataSyncAgentCommand.exe -action "displayregistereddatabases"
 
 ### <a name="submit-the-agent-key"></a>提交代理密钥
 
-#### <a name="usage"></a>用法
+#### <a name="usage"></a>使用情况
 
 ```cmd
 Usage: SqlDataSyncAgentCommand.exe -action submitagentkey -agentkey [agent key]  -username [user name] -password [password]
@@ -267,7 +267,7 @@ SqlDataSyncAgentCommand.exe -action submitagentkey -agentkey [agent key generate
 
 ### <a name="register-a-database"></a>注册数据库
 
-#### <a name="usage"></a>用法
+#### <a name="usage"></a>使用情况
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action registerdatabase -servername [on-premisesdatabase server name] -databasename [on-premisesdatabase name]  -username [domain\\username] -password [password] -authentication [sql or windows] -encryption [true or false]
@@ -286,7 +286,7 @@ SqlDataSyncAgentCommand.exe -action "registerdatabase" -serverName localhost -da
 
 使用此命令取消注册数据库时，它会完全取消数据库的设置。 如果数据库参与其他同步组，则此操作会中断其他同步组。
 
-#### <a name="usage"></a>用法
+#### <a name="usage"></a>使用情况
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action unregisterdatabase -servername [on-premisesdatabase server name] -databasename [on-premisesdatabase name]
@@ -300,7 +300,7 @@ SqlDataSyncAgentCommand.exe -action "unregisterdatabase" -serverName localhost -
 
 ### <a name="update-credentials"></a>更新凭据
 
-#### <a name="usage"></a>用法
+#### <a name="usage"></a>使用情况
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action updatecredential -servername [on-premisesdatabase server name] -databasename [on-premisesdatabase name]  -username [domain\\username] -password [password] -authentication [sql or windows] -encryption [true or false]

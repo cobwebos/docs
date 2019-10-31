@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 6c74684ac45a040be154a1e6406c1e7a5e0dd253
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 47e5e9dd81174b79e149ba29eec725c8c17eb1a6
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817151"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176404"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中 Linux 性能指标
 
@@ -32,7 +32,7 @@ ms.locfileid: "72817151"
 在 Linux 服务器计算机上：
 
 1. 安装 [collectd](https://collectd.org/) 版本 5.4.0 或更高版本。
-2. 下载 [Application Insights collectd 编写器插件](https://aka.ms/aijavasdk)。 注意版本号。
+2. 下载 [Application Insights collectd 编写器插件](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal)。 注意版本号。
 3. 将插件 JAR 复制到 `/usr/share/collectd/java`。
 4. 编辑 `/etc/collectd/collectd.conf`：
    * 确保已启用 [Java 插件](https://collectd.org/wiki/index.php/Plugin:Java)。

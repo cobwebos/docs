@@ -1,5 +1,5 @@
 ---
-title: 在 Azure AD 权限管理（预览版）中添加连接的组织-Azure Active Directory
+title: 在 Azure AD 的权利管理中添加连接的组织-Azure Active Directory
 description: 了解如何允许组织外部人员请求访问包，以便你可以对项目进行协作。
 services: active-directory
 documentationCenter: ''
@@ -16,14 +16,14 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23d45db1f62b370a2692ed932572e16c247b8903
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9a8e5dc43170af8f33ad266edfa02ac5b41ca67a
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952480"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174136"
 ---
-# <a name="add-a-connected-organization-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 权限管理（预览版）中添加连接的组织
+# <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>在 Azure AD 的权利管理中添加连接的组织
 
 Azure AD 的权利管理使你可以与组织外的人员进行协作。 如果经常与外部 Azure AD 目录或域中的用户协作，则可以将其添加为连接的组织。 本文介绍如何添加连接的组织，以便允许组织外部的用户请求目录中的资源。
 
@@ -39,11 +39,9 @@ Azure AD 的权利管理使你可以与组织外的人员进行协作。 如果�
 
 Azure AD 目录或域中的用户进行身份验证的方式取决于身份验证类型。 连接的组织的身份验证类型如下：
 
-| 身份验证类型 | 状态 |
-| --- | --- |
-| Azure AD | 受支持 |
-| [直接联合](../b2b/direct-federation.md) | 预览 |
-| [一次性密码](../b2b/one-time-passcode.md)（域） | 预览 |
+- Azure AD
+- [直接联合](../b2b/direct-federation.md)
+- [一次性密码](../b2b/one-time-passcode.md)（域）
 
 ## <a name="add-a-connected-organization"></a>添加连接的组织
 

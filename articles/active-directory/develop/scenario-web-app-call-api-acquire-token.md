@@ -1,6 +1,6 @@
 ---
-title: 调用 Web API 的 Web 应用（获取应用的令牌）- Microsoft 标识平台
-description: 了解如何生成调用 Web API 的 Web 应用（获取应用的令牌）
+title: 用于调用 web Api 的 web 应用（获取应用的令牌）-Microsoft 标识平台
+description: 了解如何生成可调用 web Api 的 Web 应用（获取应用的令牌）
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,22 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/30/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f30194592989b74aca96a5a483e9128cd3a86eb5
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: a259fbcf3fde84edccafbcd2fd6594ddb623edfd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274470"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175328"
 ---
-# <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>调用 Web API 的 Web 应用 - 获取应用的令牌
+# <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>用于调用 web Api 的 web 应用-获取应用的令牌
 
-既然已生成客户端应用程序对象，就可以使用它来获取用于调用 web API 的令牌。 在 ASP.NET 或 ASP.NET Core 中，在控制器中调用 web API。 具体操作是：
+既然已生成客户端应用程序对象，就可以使用它来获取用于调用 web API 的令牌。 在 ASP.NET 或 ASP.NET Core 中，在控制器中调用 web API。 相关信息如下：
 
-- 使用令牌缓存获取 Web API 的令牌。 若要获取此令牌，请调用 `AcquireTokenSilent`。
+- 使用令牌缓存获取 web API 的令牌。 若要获取此令牌，请调用 `AcquireTokenSilent`。
 - 使用访问令牌调用受保护的 API。
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
@@ -49,10 +49,10 @@ public class HomeController : Controller
 }
 ```
 
-@No__t-0 服务通过依赖关系注入注入 ASP.NET。
+`ITokenAcquisition` 服务通过依赖关系注入注入 ASP.NET。
 
 
-下面是 HomeController 操作的简化代码，该操作获取调用 Microsoft Graph 所需的令牌。
+下面是 HomeController 的操作的简化代码，该代码可获取用于调用 Microsoft Graph 的令牌。
 
 ```CSharp
 public async Task<IActionResult> Profile()
@@ -79,11 +79,11 @@ public async Task<IActionResult> Profile()
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET 中的情况类似：
+ASP.NET 中的内容类似：
 
 - 受 [授权] 属性保护的控制器操作会提取控制器的 `ClaimsPrincipal` 成员的租户 ID 和用户 ID。 （ASP.NET 使用 `HttpContext.User`。）
-- 然后，它会生成 MSAL.NET `IConfidentialClientApplication`。
-- 最后，它将调用机密客户端应用程序的 @no__t 0 方法。
+- 然后，它会生成一个 MSAL.NET `IConfidentialClientApplication`。
+- 最后，它调用机密客户端应用程序的 `AcquireTokenSilent` 方法。
 
 此代码类似于为 ASP.NET Core 显示的代码。
 
@@ -94,40 +94,59 @@ ASP.NET 中的情况类似：
 它尝试调用 `getAuthResultBySilentFlow`。 如果用户需要同意更多作用域，则该代码会处理 `MsalInteractionRequiredException` 以质询用户。
 
 ```java
-@RequestMapping("/msal4jsample/graph/users")
-    public ModelAndView getUsersFromGraph(HttpServletRequest httpRequest, HttpServletResponse response)
-            throws Throwable {
+@RequestMapping("/msal4jsample/graph/me")
+public ModelAndView getUserFromGraph(HttpServletRequest httpRequest, HttpServletResponse response)
+        throws Throwable {
 
-        IAuthenticationResult result;
-        ModelAndView mav;
-        try {
-            result = authHelper.getAuthResultBySilentFlow(httpRequest, response);
-        } catch (ExecutionException e) {
-            if (e.getCause() instanceof MsalInteractionRequiredException) {
+    IAuthenticationResult result;
+    ModelAndView mav;
+    try {
+        result = authHelper.getAuthResultBySilentFlow(httpRequest, response);
+    } catch (ExecutionException e) {
+        if (e.getCause() instanceof MsalInteractionRequiredException) {
 
-                // If silent call returns MsalInteractionRequired, then redirect to Authorization endpoint
-                // so user can consent to new scopes
-                String state = UUID.randomUUID().toString();
-                String nonce = UUID.randomUUID().toString();
+            // If silent call returns MsalInteractionRequired, then redirect to Authorization endpoint
+            // so user can consent to new scopes
+            String state = UUID.randomUUID().toString();
+            String nonce = UUID.randomUUID().toString();
 
-                SessionManagementHelper.storeStateAndNonceInSession(httpRequest.getSession(), state, nonce);
+            SessionManagementHelper.storeStateAndNonceInSession(httpRequest.getSession(), state, nonce);
 
-                String authorizationCodeUrl = authHelper.getAuthorizationCodeUrl(
-                        httpRequest.getParameter("claims"),
-                        "User.ReadBasic.all",
-                        authHelper.getRedirectUriGraphUsers(),
-                        state,
-                        nonce);
+            String authorizationCodeUrl = authHelper.getAuthorizationCodeUrl(
+                    httpRequest.getParameter("claims"),
+                    "User.Read",
+                    authHelper.getRedirectUriGraph(),
+                    state,
+                    nonce);
 
-                return new ModelAndView("redirect:" + authorizationCodeUrl);
-            } else {
+            return new ModelAndView("redirect:" + authorizationCodeUrl);
+        } else {
 
-                mav = new ModelAndView("error");
-                mav.addObject("error", e);
-                return mav;
-            }
+            mav = new ModelAndView("error");
+            mav.addObject("error", e);
+            return mav;
         }
-    // Code omitted here.
+    }
+
+    if (result == null) {
+        mav = new ModelAndView("error");
+        mav.addObject("error", new Exception("AuthenticationResult not found in session."));
+    } else {
+        mav = new ModelAndView("auth_page");
+        setAccountInfo(mav, httpRequest);
+
+        try {
+            mav.addObject("userInfo", getUserInfoFromGraph(result.accessToken()));
+
+            return mav;
+        } catch (Exception e) {
+            mav = new ModelAndView("error");
+            mav.addObject("error", e);
+        }
+    }
+    return mav;
+}
+// Code omitted here.
 ```
 
 # <a name="pythontabpython"></a>[Python](#tab/python)

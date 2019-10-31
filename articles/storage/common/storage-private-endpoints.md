@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: b94d376ee107f9acd45dff5b96fc43722f2fe208
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 00de95f3b3e6eddd1f45be830202ba3ec8772bfd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965466"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176161"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>使用 Azure 存储的专用终结点（预览）
 
@@ -48,7 +48,7 @@ VNet 中的应用程序可以使用相同的连接字符串和要使用的授权
 > [!TIP]
 > 为存储服务的辅助实例创建单独的专用终结点，以在 GRS 帐户中获得更好的读取性能。
 
-对于[读取访问异地冗余存储帐户](storage-redundancy-grs.md#read-access-geo-redundant-storage)的读取可用性，需要为该服务的主要实例和辅助实例使用单独的专用终结点。 无需为故障转移的辅助实例创建专用终结点。 故障转移后，专用终结点将自动连接到新的主实例。
+对于[读取访问异地冗余存储帐户](storage-redundancy-grs.md#read-access-geo-redundant-storage)的读取可用性，需要为该服务的主要实例和辅助实例使用单独的专用终结点。 无需为**故障转移**的辅助实例创建专用终结点。 故障转移后，专用终结点将自动连接到新的主实例。 git 
 
 #### <a name="resources"></a>资源
 
@@ -91,14 +91,14 @@ VNet 中的应用程序可以使用相同的连接字符串和要使用的授权
 
 建议用于存储服务的专用终结点的 DNS 区域名称为：
 
-| 存储服务       | 区域名称                          |
-| :-------------------- | :--------------------------------- |
-| Blob 服务          | privatelink.blob.core.windows.net  |
-| Data Lake 文件系统 | privatelink.dfe.core.windows.net   |
-| 文件服务          | privatelink.file.core.windows.net  |
-| 队列服务         | privatelink.queue.core.windows.net |
-| 表服务         | privatelink.table.core.windows.net |
-| 静态网站       | privatelink.web.core.windows.net   |
+| 存储服务        | 区域名称                            |
+| :--------------------- | :----------------------------------- |
+| Blob 服务           | `privatelink.blob.core.windows.net`  |
+| Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
+| 文件服务           | `privatelink.file.core.windows.net`  |
+| 队列服务          | `privatelink.queue.core.windows.net` |
+| 表服务          | `privatelink.table.core.windows.net` |
+| 静态网站        | `privatelink.web.core.windows.net`   |
 
 ## <a name="pricing"></a>价格
 
@@ -119,6 +119,6 @@ Vnet 中具有现有专用终结点的客户端在访问具有专用终结点的
 
 此约束是在帐户 A2 创建专用终结点时所做的 DNS 更改的结果。
 
-### <a name="network-security-group-rules-on-subnets-with-private-endpoints"></a>具有专用终结点的子网的网络安全组规则
+### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>具有专用终结点的子网的网络安全组规则
 
-目前不能为具有专用终结点的子网配置[网络安全组](../../virtual-network/security-overview.md)（NSG）规则。 此问题的一种有限的解决方法是在源子网中实现专用终结点的访问规则，不过，这种方法可能需要更高的管理开销。
+目前，无法为具有专用终结点的子网配置[网络安全组](../../virtual-network/security-overview.md)（NSG）规则。 此问题的一种有限的解决方法是在源子网中实现专用终结点的访问规则，不过，这种方法可能需要更高的管理开销。

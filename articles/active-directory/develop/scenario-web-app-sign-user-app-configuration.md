@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f558ecf583c96f36b8bbee19c7c9cbb2ee57aa31
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f52fc70b54c27362575bef00c39a93d13e77cc2e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596725"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175352"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>登录用户的 Web 应用-代码配置
 
@@ -34,7 +34,7 @@ ms.locfileid: "72596725"
 | 平台 | 库 | 描述 |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [适用于 .NET 的标识模型扩展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | 适用于 .NET 的 Microsoft Identity Extension ASP.NET 和 ASP.NET Core 直接使用，它在 .NET Framework 和 .NET Core 上提出了一组同时运行的 Dll。 通过 ASP.NET/ASP.NET Core Web 应用，可以使用**TokenValidationParameters**类来控制令牌验证（特别是在某些 ISV 方案中） |
-| ![Java](media/sample-v2-code/small_logo_java.png) | [msal4j](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | 适用于 Java 的 MSAL-当前为公共预览版 |
+| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | 适用于 Java 的 MSAL-当前为公共预览版 |
 | ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | 适用于 Python 的 MSAL-当前为公共预览版 |
 
 选择与你感兴趣的平台相对应的选项卡：
@@ -53,7 +53,7 @@ ms.locfileid: "72596725"
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-本文中的代码片段和以下代码片段从调用 Microsoft graph msal4j web 应用的[Java web 应用程序](https://github.com/Azure-Samples/ms-identity-java-webapp)示例中提取
+本文中的代码片段和以下代码片段从调用 Microsoft graph MSAL Java web 应用的[java web 应用程序](https://github.com/Azure-Samples/ms-identity-java-webapp)示例中提取
 
 你可能想要参考此示例以获取完整的实现细节。
 
@@ -137,7 +137,7 @@ ms.locfileid: "72596725"
 ```
 
 在 Azure 门户中，需要在应用程序的**身份验证**页中注册的答复 uri 需要匹配这些 url;也就是说，对于上述两个配置文件，将 `https://localhost:44321/signin-oidc` 它们，因为 `http://localhost:3110` 了 applicationUrl，但指定了 `sslPort` （44321），`CallbackPath` `/signin-oidc` 在 `appsettings.json` 中定义。
-  
+
 同样，注销 URI 也将设置为 `https://localhost:44321/signout-callback-oidc`。
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
@@ -175,10 +175,10 @@ aad.clientId=Enter_the_Application_Id_here
 aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
 aad.secretKey=Enter_the_Client_Secret_Here
 aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
-aad.redirectUriGraphUsers=http://localhost:8080/msal4jsample/graph/users
+aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 ```
 
-在 Azure 门户中，需要在应用程序的**身份验证**页中注册的答复 uri 需要与应用程序定义的 redirectUris 相匹配，这是 `http://localhost:8080/msal4jsample/secure/aad` 和 `http://localhost:8080/msal4jsample/graph/users`
+在 Azure 门户中，需要在应用程序的**身份验证**页中注册的答复 uri 需要与应用程序定义的 redirectUris 相匹配，这是 `http://localhost:8080/msal4jsample/secure/aad` 和 `http://localhost:8080/msal4jsample/graph/me`
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -194,7 +194,8 @@ SESSION_TYPE = "filesystem"  # So token cache will be stored in server-side sess
 ```
 
 > [!NOTE]
-> 本快速入门建议在配置文件中存储客户端机密，以便简单起见。 在生产应用中，你需要使用其他方法来存储机密（如 KeyVault）或环境变量（如 Flask 文档中所述）： https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables
+> 本快速入门建议在配置文件中存储客户端机密，以便简单起见。
+> 在生产应用中，你需要使用其他方法来存储机密（如 KeyVault）或环境变量（如 Flask 文档中所述）： https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables
 >
 > ```python
 > CLIENT_SECRET = os.getenv("CLIENT_SECRET")
@@ -215,7 +216,7 @@ SESSION_TYPE = "filesystem"  # So token cache will be stored in server-side sess
   > [!NOTE]
   > 如果你在 Visual studio 中使用默认的 ASP.NET core web 项目启动项目或使用 `dotnet new mvc` 方法 `AddAzureAD` 默认情况下，因为相关包会自动加载。
   > 但是，如果你从头开始生成一个项目并尝试使用以下代码，我们建议你向项目添加 NuGet 包 **"AspNetCore"** 以使 `AddAzureAD` 方法可用。
-  
+
 以下代码可从启动中获得[。 cs # L33-L34](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/1-WebApp-OIDC/1-1-MyOrg/Startup.cs#L33-L34)
 
 ```CSharp
@@ -229,7 +230,7 @@ public class Startup
     ...
       // Sign-in users with the Microsoft identity platform
       services.AddMicrosoftIdentityPlatformAuthentication(Configuration);
-  
+
       services.AddMvc(options =>
       {
           var policy = new AuthorizationPolicyBuilder()
@@ -241,13 +242,13 @@ public class Startup
     }
 ```
 
-@No__t_0 是在 WebAppServiceCollectionExtensions [/L23 #](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L23)中定义的扩展方法。 以便
+`AddMicrosoftIdentityPlatformAuthentication` 是在 WebAppServiceCollectionExtensions [/L23 #](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L23)中定义的扩展方法。 以便
 
 - 添加身份验证服务
 - 配置用于读取配置文件的选项
 - 配置 OpenID connect 选项，使使用的颁发机构为 Microsoft 标识平台（以前称为 Azure AD v2.0）终结点
 - 验证令牌的颁发者
-- 对应于名称的声明从 ID 令牌中的 "preferred_username" 声明映射 
+- 对应于名称的声明从 ID 令牌中的 "preferred_username" 声明映射
 
 除了配置外，还可以在调用 `AddMicrosoftIdentityPlatformAuthentication` 时指定：
 
@@ -347,7 +348,7 @@ Java 示例使用弹簧框架。 应用程序受到保护，因为你实现了�
 
 - 验证是否对用户进行了身份验证（`isAuthenticated()` 方法）
 - 如果用户未通过身份验证，则会计算 Azure AD 授权终结点的 url，并将浏览器重定向到此 URI
-- 响应到达时，包含身份验证代码流，让我们 msal4j 获取令牌。
+- 响应到达时，包含身份验证代码，它将使用 MSAL Java 获取令牌。
 - 最终从令牌终结点接收令牌时（在重定向 URI 上），用户已登录。
 
 有关详细信息，请参阅[AuthFilter](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java)中的 `doFilter()` 方法

@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: f8f7c33abda8d31d39051a024b9cc381c9f6b192
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
-ms.translationtype: HT
+ms.openlocfilehash: 3aa1284212ce12db2e94d8e753d3d75cf8a44ba8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387951"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931184"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -102,12 +102,9 @@ Amazon S3 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 
 
-- 对于**Parquet （分隔文本、json、avro 和二进制格式**），请参阅[Parquet，分隔文本、json、Avro 和二进制格式数据集](#format-based-dataset)部分。
-- 有关**ORC 格式**等其他格式，请参阅[其他格式数据集](#other-format-dataset)部分。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-### <a name="format-based-dataset"></a>Parquet，分隔文本、JSON、Avro 和二进制格式数据集
-
-若要从 Parquet 复制数据 **，分隔文本、JSON、Avro 和二进制格式**，请参阅基于格式的数据集和支持的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文设置。 在基于格式的数据集中 `location` 设置下，Amazon S3 支持以下属性：
+在基于格式的数据集中 `location` 设置下，Amazon S3 支持以下属性：
 
 | properties   | 描述                                                  | 需要 |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -116,9 +113,6 @@ Amazon S3 链接的服务支持以下属性：
 | folderPath | 给定存储桶下的文件夹的路径。 如果要使用通配符筛选文件夹，请跳过此设置并在 "活动源设置" 中指定。 | No       |
 | fileName   | 给定 bucket + folderPath 下的文件名。 如果要使用通配符来筛选文件，请跳过此设置并在 "活动源设置" 中指定。 | No       |
 | 版本 | 启用 S3 版本控制时 S3 对象的版本。 如果未指定，将提取最新版本。 |No |
-
-> [!NOTE]
-> 在下一部分中提到的**AmazonS3Object**类型数据集的 Parquet/文本格式仍受支持，以进行复制/查找/GetMetadata 活动，以实现向后兼容性，但它不能用于映射数据流。 建议使用此新模型，然后 ADF 创作 UI 已经切换为生成这些新类型。
 
 **示例：**
 
@@ -147,9 +141,10 @@ Amazon S3 链接的服务支持以下属性：
 }
 ```
 
-### <a name="other-format-dataset"></a>其他格式数据集
+### <a name="legacy-dataset-model"></a>旧数据集模型
 
-若要以**ORC 格式**从 Amazon S3 复制数据，支持以下属性：
+>[!NOTE]
+>对于向后兼容性，仍支持以下数据集模型。 建议使用前面提到的新模型，然后 ADF 创作 UI 已经切换为生成新模型。
 
 | properties | 描述 | 需要 |
 |:--- |:--- |:--- |
@@ -231,26 +226,20 @@ Amazon S3 链接的服务支持以下属性：
 
 ### <a name="amazon-s3-as-source"></a>作为源的 Amazon S3
 
-- 若要从**Parquet 复制、分隔文本、json、avro 和二进制格式**，请参阅[Parquet，分隔文本、json、avro 和二进制格式源](#format-based-source)部分。
-- 若要从其他格式（如**ORC 格式**）进行复制，请参阅[其他格式源](#other-format-source)部分。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-source"></a>Parquet，分隔文本、JSON、Avro 和二进制格式源
-
-若要从 Parquet 中的 Amazon S3 [](format-binary.md)复制数据 **，分隔文本、JSON、Avro 和二进制格式**，请参阅基于[](format-delimited-text.md)格式的复制活动[源和](format-avro.md) [](format-parquet.md)支持的设置。 在基于格式的复制源中 `storeSettings` 设置下，Amazon S3 支持以下属性：
+在基于格式的复制源中 `storeSettings` 设置下，Amazon S3 支持以下属性：
 
 | properties                 | 描述                                                  | 需要                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
-| type                     | @No__t-0 下的 type 属性必须设置为**AmazonS3ReadSetting**。 | 是                                                         |
+| type                     | `storeSettings` 下的 type 属性必须设置为**AmazonS3ReadSetting**。 | 是                                                         |
 | recursive                | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 允许的值为 **true**（默认值）和 **false**。 | No                                                          |
-| 前缀                   | 在数据集中配置的给定存储桶下 S3 对象键的前缀，用于筛选源对象。 已选中其键以该前缀开头的对象。 <br>仅当未指定 `wildcardFolderPath` 和 @no__t 属性时才适用。 | No                                                          |
+| 前缀                   | 在数据集中配置的给定存储桶下 S3 对象键的前缀，用于筛选源对象。 已选中其键以该前缀开头的对象。 <br>仅当未指定 `wildcardFolderPath` 和 `wildcardFileName` 属性时才适用。 | No                                                          |
 | wildcardFolderPath       | 在数据集中配置的给定存储桶下带有通配符的文件夹路径用于筛选源文件夹。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。 <br>请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | No                                                          |
 | wildcardFileName         | 在给定的 bucket + folderPath/wildcardFolderPath 下包含通配符的文件名用于筛选源文件。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。  请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 如果未指定数据集中 `fileName` 和 `prefix`，则为 Yes |
 | modifiedDatetimeStart    | 基于特性筛选的文件：上次修改时间。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。 | No                                                          |
 | modifiedDatetimeEnd      | 同上。                                               | No                                                          |
 | maxConcurrentConnections | 要同时连接到存储存储的连接数。 仅当要限制与数据存储区的并发连接时，才指定。 | No                                                          |
-
-> [!NOTE]
-> 对于 Parquet/分隔文本格式，在下一部分中提到的**FileSystemSource**类型复制活动源仍受支持，以实现向后兼容性。 建议使用此新模型，然后 ADF 创作 UI 已经切换为生成这些新类型。
 
 **示例：**
 
@@ -293,9 +282,10 @@ Amazon S3 链接的服务支持以下属性：
 ]
 ```
 
-#### <a name="other-format-source"></a>其他格式源
+#### <a name="legacy-source-model"></a>旧源模型
 
-若要以**ORC 格式**从 Amazon S3 复制数据，复制活动**源**部分支持以下属性：
+>[!NOTE]
+>以下复制源模型仍受支持，以便向后兼容。 建议使用前面提到的新模型，然后 ADF 创作 UI 已经切换为生成新模型。
 
 | properties | 描述 | 需要 |
 |:--- |:--- |:--- |

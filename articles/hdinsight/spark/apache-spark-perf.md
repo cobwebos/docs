@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/01/2019
-ms.openlocfilehash: aa5329c6321866fd26e393b581702a392f510108
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 0d8890eeba7fcb53517d6ee653c8dd09866805ef
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936842"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177369"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>优化 HDInsight 中的 Apache Spark 作业
 
@@ -57,13 +57,13 @@ Spark 支持多种格式，比如 csv、json、xml、parquet、orc 和 avro。 S
 
 创建新的 Spark 群集时，可以选择 "Azure Blob 存储" 或 "Azure Data Lake Storage 作为群集的默认存储。 这两个选项都为您提供了暂时群集的长期存储的优点，因此在删除群集时，您的数据不会自动删除。 用户可以重新创建暂时性群集，并且依然能访问数据。
 
-| 存储类型 | 文件系统 | 极速效果色 | 暂时性 | 用例 |
+| 存储类型 | 文件系统 | 速度 | 暂时性 | 用例 |
 | --- | --- | --- | --- | --- |
 | Azure Blob 存储 | **wasb:** //url/ | **标准** | 是 | 暂时性群集 |
 | Azure Blob 存储（安全） | **wasbs：** //url/ | **标准** | 是 | 暂时性群集 |
-| Azure Data Lake Storage Gen 2| **abfs：** //url/ | **较快** | 是 | 暂时性群集 |
+| Azure Data Lake Storage 第2代| **abfs：** //url/ | **较快** | 是 | 暂时性群集 |
 | Azure Data Lake Storage Gen 1| **adl:** //url/ | **较快** | 是 | 暂时性群集 |
-| 本地 HDFS | **hdfs:** //url/ | **最快** | 否 | 全天候交互型群集 |
+| 本地 HDFS | **hdfs:** //url/ | **最快** | No | 全天候交互型群集 |
 
 ## <a name="use-the-cache"></a>使用缓存
 
@@ -74,7 +74,7 @@ Spark 提供自己的本机缓存机制，可通过各种方法（比如 `.persi
     * 不能用于分区，这可能会在将来的 Spark 版本中更改。
 
 * 存储级缓存（推荐）
-    * 可以使用 [Alluxio](https://www.alluxio.org/) 实现。
+    * 可以使用 [Alluxio](https://www.alluxio.io/) 实现。
     * 使用内存中和 SSD 缓存。
 
 * 本地 HDFS（推荐）
@@ -149,7 +149,7 @@ df1.join(broadcast(df2), Seq("PK")).
 sql("SELECT col1, col2 FROM V_JOIN")
 ```
 
-如果使用的是分段表，则使用第三种联接类型，即 "`Merge` 联接"。 已进行正确预分区和预排序的数据集将跳过 `SortMerge` 联接中成本高昂的排序阶段。
+如果使用的是分段表，则将使用第三种联接类型，即 "`Merge` 联接"。 已进行正确预分区和预排序的数据集将跳过 `SortMerge` 联接中成本高昂的排序阶段。
 
 联接的顺序至关重要，尤其是在较为复杂的查询中。 应先从最严格的联接开始。 此外，尽可能移动在聚合后增加行数的联接。
 

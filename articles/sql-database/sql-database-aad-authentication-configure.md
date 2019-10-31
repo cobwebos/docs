@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 10/16/2019
-ms.openlocfilehash: 82409bbe2f40e42a8331cd801649b93987a923d2
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1dbccf43d03907cefb68315b6908a35735f373ce
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550703"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177646"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>使用 SQL 配置和管理 Azure Active Directory 身份验证
 
@@ -465,7 +465,7 @@ conn.Open();
 
 ### <a name="sqlcmd"></a>sqlcmd
 
-以下语句使用版本 13.1 的 sqlcmd 进行连接，该版本可从[下载中心](https://go.microsoft.com/fwlink/?LinkID=825643)下载。
+以下语句使用版本 13.1 的 sqlcmd 进行连接，该版本可从[下载中心](https://www.microsoft.com/download/details.aspx?id=53591)下载。
 
 > [!NOTE]
 > 使用 `-G` 命令 `sqlcmd` 不能与系统标识一起使用，并且需要用户主体登录名。
