@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00e5e4a9751a03fe961fe02fec28f41b49e5ba43
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: 2abc5434f11bf00c6872775b1336694c04972e95
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175157"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200216"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>了解 Azure 托管的安全工作站
 
@@ -91,7 +91,7 @@ ms.locfileid: "73175157"
 
 * **增强的安全性**–此项级别的受保护解决方案适用于家庭用户、小型企业用户和一般开发人员。
 
-   增强型工作站是一种基于策略的方法，用于提高低安全性配置文件的安全性。 它提供一种安全的方法来处理客户数据，同时还使用电子邮件和 web 浏览等生产力工具。 你可以使用审核策略和 Intune 监视增强型工作站的用户行为和配置文件使用情况。 使用 Windows 10 （1809）脚本部署增强的工作站配置文件，并利用高级[威胁防护（ATP）](https://docs.microsoft.com/office365/securitycompliance/office-365-atp)利用高级恶意软件防护。
+   增强型工作站是一种基于策略的方法，用于提高低安全性配置文件的安全性。 它提供一种安全的方法来处理客户数据，同时还使用电子邮件和 web 浏览等生产力工具。 你可以使用审核策略和 Intune 监视增强型工作站的用户行为和配置文件使用情况。 使用 Windows 10 （1809）脚本部署增强的工作站配置文件，并利用高级[威胁防护（ATP）](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)利用高级恶意软件防护。
 
 * **高安全性**–减小工作站的受攻击面最有效的方法是删除自行管理工作站的能力。 删除本地管理权限是提高安全性的步骤，但如果实施不正确，则可能会影响工作效率。 高安全性配置文件是在增强的安全配置文件上构建的，并有一项重大更改：删除本地管理员。此配置文件专为高配置文件用户设计：高级管理人员、工资和敏感数据用户、服务和流程的审批者。
 

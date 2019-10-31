@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a073a476043fc6570a42cc142e01f2c6f98c7741
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: b88648ce68a7359a842ec975d8633d6200b1a507
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175921"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200137"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>如何将 Azure Monitor 工作簿用于 Azure Active Directory 报表
 
@@ -77,23 +77,17 @@ ms.locfileid: "73175921"
 -   报表读取器
 -   应用程序管理员
 
-
 ## <a name="workbook-access"></a>工作簿访问 
 
 访问工作簿：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在左侧导航窗格中，选择 " **Azure Active Directory**"。
+1. 导航到**Azure Active Directory** > **监视** > 的**工作簿**。 
 
-3. 在 "**监视**" 部分，选择 "**工作簿**"。 
+1. 选择报表或模板，或在工具栏上选择 "**打开**"。 
 
-    ![选择见解](./media/howto-use-azure-monitor-workbooks/41.png)
-
-4. 选择报表或模板，或在工具栏上选择 "**打开**"。 
-
-    ![选择打开](./media/howto-use-azure-monitor-workbooks/42.png)
-
+![在 Azure AD 中查找 Azure Monitor 工作簿](./media/howto-use-azure-monitor-workbooks/azure-monitor-workbooks-in-azure-ad.png)
 
 ## <a name="sign-in-analysis"></a>登录分析
 

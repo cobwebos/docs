@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor 工作簿创建交互式报表 |Microsoft Docs
+title: 用于 VM 的 Azure Monitor 工作簿创建交互式报表 |Microsoft Docs
 description: 通过用于 VM 的 Azure Monitor 的预定义和自定义参数化工作簿，简化复杂报表。
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 47e2e5d80241ac093d136b45c853d94a9dd43cbe
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dff5027f2ff9ff244f0fa04177a04e446e98465b
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553730"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200546"
 ---
-# <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>使用 Azure Monitor 工作簿创建交互式报表
+# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>用于 VM 的 Azure Monitor 工作簿创建交互式报表
 
 工作簿将文本、 [日志查询](../log-query/query-language.md)、指标和参数合并到丰富的交互式报表中。 有权访问相同 Azure 资源的其他团队成员都可编辑工作簿。
 
@@ -105,7 +105,7 @@ ms.locfileid: "72553730"
 
 ### <a name="advanced-analytic-query-settings"></a>高级分析查询设置
 
-每个部分都有其自己的高级设置，可通过 "**添加参数**" 按钮右侧 ](media/vminsights-workbooks/006-settings.png) 图标的 "设置" ![Workbooks 部分 "编辑控件" 进行访问。
+每个部分都有其自己的高级设置，可通过 "**添加参数**" 按钮右侧](media/vminsights-workbooks/006-settings.png) 图标的 "设置" ![工作簿 "部分的" 编辑控件 "进行访问。
 
 ![用于 VM 的 Azure Monitor 工作簿部分编辑控件](media/vminsights-workbooks/007-settings-expanded.png)
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 17b68de4766aa8f995a88bd583a7a84e646b9325
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 31d7299b0c14b35aad7a29c875630d8a7fa4827e
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529165"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200589"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight 群集的容量规划
 
@@ -68,13 +68,7 @@ Azure 存储具有某些[容量限制](../azure-subscription-service-limits.md#s
 
 若要确定应用程序的最佳群集大小，可以建立群集容量基准，并根据指示增加大小。 例如，可以使用模拟工作负荷或“canary 查询”。 使用模拟工作负荷时，可在不同大小的群集上运行预期的工作负荷，并逐渐增加大小，直到达到所需的性能。 可以在其他生产查询中定期插入一个未分类查询，以显示该群集是否有足够的资源。
 
-VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
-
-* CPU：VM 大小支配核心数。 核心越多，每个节点可实现的并行计算度就越大。 此外，某些 VM 类型的核心更快。
-
-* RAM：VM 大小还支配 VM 中可用的 RAM 量。 对于在内存中存储而不是从磁盘读取待处理数据的工作负荷，请确保工作节点能够提供足够的内存来容纳这些数据。
-
-* 网络：对于大多数群集类型，群集处理的数据不在本地磁盘上，而是在 Data Lake Storage 或 Azure 存储等外部存储服务中。 考虑节点 VM 与存储服务之间的网络带宽和吞吐量。 通常，更大 VM 的可用网络带宽越高。 有关详细信息，请参阅 [VM 大小概述](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)。
+有关如何为工作负荷选择正确的 VM 系列的详细信息，请参阅为[群集选择正确的 vm 大小](hdinsight-selecting-vm-size.md)。
 
 ## <a name="choose-the-cluster-scale"></a>选择群集规模
 
@@ -104,10 +98,11 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 1. 在页面的左下角选择 "**帮助 + 支持**"。
 1. 选择“新建支持请求”。
 1. 在“新建支持请求”页面的“基本信息”选项卡下，选择以下选项：
+
    - **问题类型**：**服务和订阅限制（配额）**
    - “订阅”：想要修改的订阅
    - **配额类型**： **HDInsight**
-    
+
      ![创建支持请求来增加 HDInsight 核心配额](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
 1. 选择 "**下一步：解决方案" > >** 。

@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 0b5d9deacdd4266da30f17c95b6e575a652d2f76
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 00d292b3ba2d1b6c7c425d4c9f89188e660ac80d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172992"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182179"
 ---
 在此过程中，需要执行以下操作：
 
@@ -25,7 +25,7 @@ ms.locfileid: "67172992"
 4. 使用 `aspnet_regiis -pdf connectionStrings` 解密 web.config 文件。
 5. 在解密的 web.config 文件中的 `connectionStrings` 节点下，为 SQL Server 实例和内容数据库名称添加连接字符串。 请参阅以下示例。
    
-    `<add name=”RBSMaintainerConnectionWSSContent” connectionString="Data Source=SHRPT13-SQL12\SHRPT13;Initial Catalog=WSS_Content;Integrated Security=True;Application Name=&quot;Remote Blob Storage Maintainer for WSS_Content&quot;" providerName="System.Data.SqlClient" />`
+    `<add name="RBSMaintainerConnectionWSSContent" connectionString="Data Source=SHRPT13-SQL12\SHRPT13;Initial Catalog=WSS_Content;Integrated Security=True;Application Name=&quot;Remote Blob Storage Maintainer for WSS_Content&quot;" providerName="System.Data.SqlClient" />`
 6. 使用 `aspnet_regiis –pef connectionStrings` 重新加密 web.config 文件。 
 7. 将 web.config 重命名为 Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config。 
 
@@ -37,7 +37,7 @@ ms.locfileid: "67172992"
        `exec mssqlrbs.rbs_sp_set_config_value ‘garbage_collection_time_window’ , ’time 00:00:00’`
    
        `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’time 00:00:00’`
-2. 在 Web 前端服务器上的“管理中心”下，编辑所需内容数据库的“Web 应用程序常规设置”以暂时禁用回收站。   此操作同时会清空所有相关站点集合的回收站。 为此，请单击“管理中心” -> “应用程序管理” -> “Web 应用程序(管理 Web 应用程序)” -> “SharePoint - 80” -> “常规应用程序设置”。      将“回收站状态”设置为“关闭”。  
+2. 在 Web 前端服务器上的“管理中心”下，编辑所需内容数据库的“Web 应用程序常规设置”以暂时禁用回收站。 此操作同时会清空所有相关站点集合的回收站。 为此，请单击“管理中心” -> “应用程序管理” -> “Web 应用程序(管理 Web 应用程序)” -> “SharePoint - 80” -> “常规应用程序设置”。 将“回收站状态”设置为“关闭”。
    
     ![Web 应用程序常规设置](./media/storsimple-sharepoint-adapter-garbage-collection/HCS_WebApplicationGeneralSettings-include.png)
 
@@ -61,5 +61,5 @@ ms.locfileid: "67172992"
       `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’days 30’`
    
       `exec mssqlrbs.rbs_sp_set_config_value ‘orphan_scan_period’ , ’days 30’`
-2. 在 Web 前端服务器上的“管理中心”中，编辑所需内容数据库的“Web 应用程序常规设置”以重新启用回收站。   为此，请单击“管理中心” -> “应用程序管理” -> “Web 应用程序(管理 Web 应用程序)” -> “SharePoint - 80” -> “常规应用程序设置”。      将“回收站状态”设置为“打开”。 
+2. 在 Web 前端服务器上的“管理中心”中，编辑所需内容数据库的“Web 应用程序常规设置”以重新启用回收站。 为此，请单击“管理中心” -> “应用程序管理” -> “Web 应用程序(管理 Web 应用程序)” -> “SharePoint - 80” -> “常规应用程序设置”。 将“回收站状态”设置为“打开”。
 

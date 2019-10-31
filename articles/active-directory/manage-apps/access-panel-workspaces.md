@@ -16,19 +16,19 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9efe76f15e2f07495a9d95f69b0c21d2bca4ea8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: 5a986c2032fc41bbd34230c5b0ead745f88b000f
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180545"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199823"
 ---
 # <a name="create-workspaces-on-the-my-apps-preview-portal"></a>在 "我的应用" （预览版）门户中创建工作区
 
 你的用户可以使用 "我的应用（预览）" 门户来查看和启动他们有权访问的基于云的应用程序。 默认情况下，用户可以访问的所有应用程序都在一个页面上一起列出。 为了更好地为用户组织此页面，如果你有 Azure AD Premium P1 或 P2 许可证，则可以设置工作区。 使用工作区，你可以将相关的应用程序（例如，按作业角色、任务或项目）组合在一起，并将其显示在单独的选项卡上。工作区实质上是对用户可以访问的应用程序应用筛选器，因此用户只会看到工作区中已分配给他们的那些应用程序。
 
 > [!NOTE]
-> 本文介绍管理员如何启用和创建工作区。 有关如何使用 "我的应用" 门户和工作区的最终用户的信息，请参阅[访问和使用工作区](https://docs.microsoft.com/azure/active-directory/user-help/)。
+> 本文介绍管理员如何启用和创建工作区。 有关如何使用 "我的应用" 门户和工作区的最终用户的信息，请参阅[访问和使用工作区](https://docs.microsoft.com/azure/active-directory/user-help/my-applications-portal-workspaces)。
 
 ## <a name="enable-my-apps-preview-features"></a>启用 My Apps 预览功能
 

@@ -16,12 +16,12 @@ ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bf254f06c14afa7ee32f27d6632ab33665cf31c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: 3eb7960d58723d6fdd165841baea3416d5a84348
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173459"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199796"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>在 Azure AD 的权利管理中批准或拒绝访问请求
 
@@ -35,7 +35,7 @@ ms.locfileid: "73173459"
 
 1. 查找 Microsoft Azure 要求批准或拒绝请求的电子邮件。 下面是示例电子邮件：
 
-    ![批准访问包电子邮件的请求](./media/entitlement-management-shared/email-approve-request.png)
+    ![批准访问包电子邮件的请求](./media/entitlement-management-shared/approver-request-email.png)
 
 1. 单击 "**批准" 或 "拒绝请求**" 链接以打开访问请求。
 

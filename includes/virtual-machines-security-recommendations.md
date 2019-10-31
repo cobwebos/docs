@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/19/2019
 ms.author: barclayn
 ms.custom: include file
-ms.openlocfilehash: d43860d71b14bdac275df51695c9206539529171
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e687fc071272e7a509b1dcfb0a417828a07aa7a9
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72511446"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182180"
 ---
-本文包含有关 Azure 虚拟机的安全建议。 按照这些建议来帮助满足我们的共享责任模型中所述的安全义务。 这些建议还有助于提高 web 应用解决方案的整体安全性。 若要详细了解 Microsoft 如何满足服务提供商的责任，请参阅[云计算的共享责任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225237/1/Shared%20Responsibilities%20for%20Cloud%20Computing%20(2017-04-03).pdf)。
+本文包含有关 Azure 虚拟机的安全建议。 按照这些建议来帮助满足我们的共享责任模型中所述的安全义务。 这些建议还有助于提高 web 应用解决方案的整体安全性。 若要详细了解 Microsoft 如何满足服务提供商的责任，请参阅[云计算的共享责任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)。
 
 本文的某些建议可以由 Azure 安全中心自动解决。 Azure 安全中心是 Azure 中资源的第一道防线。 它会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后，建议如何解决漏洞。 有关详细信息，请参阅[Azure 安全中心中的安全建议](../articles/security-center/security-center-recommendations.md)。
 

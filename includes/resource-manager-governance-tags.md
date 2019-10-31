@@ -5,15 +5,15 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 07/11/2019
+ms.date: 10/30/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: a9a837d8a486e10ea2a62be69b889e657b1dbc05
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: c141e67157f3ec17d475062ec76406ec765c4f50
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72600853"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199151"
 ---
 可以将标记应用于 Azure 资源，从而将元数据按逻辑组织到分类中。 每个标记由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
 
@@ -24,7 +24,7 @@ ms.locfileid: "72600853"
 以下限制适用于标记：
 
 * 并非所有资源类型都支持标记。 若要确定是否可以将标记应用到资源类型，请参阅 [Azure 资源的标记支持](../articles/azure-resource-manager/tag-support.md)。
-* 每个资源或资源组最多可以有50个标记名称/值对。 目前，存储帐户仅支持15个标记，但在未来的版本中，此限制将会提升到50。 如果需要应用超过允许的最大数目的标记，请将 JSON 字符串用于标记值。 JSON 字符串可以包含多个应用于单个标记名称的值。 资源组可以包含多个资源，每个资源具有50标记名称/值对。
+* 每个资源或资源组最多可以有50个标记名称/值对。 如果需要应用超过允许的最大数目的标记，请将 JSON 字符串用于标记值。 JSON 字符串可以包含多个应用于单个标记名称的值。 资源组可以包含多个资源，每个资源具有50标记名称/值对。
 * 标记名称不能超过 512 个字符，标记值不能超过 256 个字符。 对于存储帐户，标记名称不能超过 128 个字符，标记值不能超过 256 个字符。
 * 通用化 Vm 不支持标记。
 * 应用于资源组的标记不会被该资源组中的资源继承。

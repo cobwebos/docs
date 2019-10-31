@@ -5,7 +5,7 @@
   items:
     - name: Identity Governance 是什么？
       href: identity-governance-overview.md
-    - name: 权利管理是什么？ （预览版）
+    - name: 权利管理是什么？
       href: entitlement-management-overview.md
     - name: 什么是访问评审？
       href: access-reviews-overview.md

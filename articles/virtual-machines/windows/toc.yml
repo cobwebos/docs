@@ -447,7 +447,11 @@
         - name: 高可用性
           href: manage-availability.md
         - name: 创建邻近放置组
-          href: proximity-placement-groups.md
+          items:
+            - name: 门户
+              href: proximity-placement-groups-portal.md
+            - name: PowerShell
+              href: proximity-placement-groups.md
         - name: 纵向缩放
           items:
             - name: PowerShell

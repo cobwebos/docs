@@ -9,16 +9,16 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: fdc5340c9affa7137815577af842aa8b43a552a8
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 2d1dbde2499dbe793a895f894e5ae83c36c54449
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799630"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200621"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的托管标识对 Azure 资源的访问权限进行身份验证
 
-若要访问其他 Azure Active Directory （Azure AD）租户中的资源并在未登录的情况下验证身份，你的逻辑应用可以使用系统分配的[托管标识](../active-directory/managed-identities-azure-resources/overview.md)（以前称为托管服务标识或 MSI），而不是凭据或机密。 由于无需提供或轮换机密，因此 Azure 会为你管理此标识，并且会帮助保护凭据。 本文介绍如何在逻辑应用中设置和使用系统分配的托管标识。
+若要访问其他 Azure Active Directory （Azure AD）租户中的资源并在未登录的情况下验证身份，你的逻辑应用可以使用系统分配的[托管标识](../active-directory/managed-identities-azure-resources/overview.md)（以前称为托管服务标识或 MSI），而不是凭据或机密。 由于无需提供或轮换机密，因此 Azure 会为你管理此标识，并且会帮助保护凭据。 本文介绍如何在逻辑应用中设置和使用系统分配的托管标识。 目前，托管标识仅适用[于特定内置触发器和操作](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-to-outbound-calls)，不能用于托管连接器或连接。
 
 有关详细信息，请参阅以下主题：
 
@@ -155,7 +155,7 @@ ms.locfileid: "72799630"
 
 ## <a name="authenticate-access-with-managed-identity"></a>使用托管标识对访问进行身份验证
 
-[为逻辑应用启用托管标识](#azure-portal-system-logic-app)并[向该标识授予对目标资源的访问权限](#access-other-resources)后，可以在[支持托管标识的触发器和操作](logic-apps-securing-a-logic-app.md#managed-identity-authentication)中使用该标识。
+[为逻辑应用启用托管标识](#azure-portal-system-logic-app)并[向该标识授予对目标资源或实体的访问权限](#access-other-resources)后，可以在[支持托管标识的触发器和操作](logic-apps-securing-a-logic-app.md#managed-identity-authentication)中使用该标识。
 
 > [!IMPORTANT]
 > 如果你的 Azure 函数要使用系统分配的标识，请首先[为 azure 函数启用身份验证](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions)。
@@ -164,27 +164,34 @@ ms.locfileid: "72799630"
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
 
-1. 如果尚未这样做，请添加[支持托管标识](logic-apps-securing-a-logic-app.md#managed-identity-authentication)的触发器或操作。
+1. 如果尚未这样做，请添加[支持托管标识的触发器或操作](logic-apps-securing-a-logic-app.md#managed-identity-authentication)。
 
-   例如，假设你想要在之前为标识设置访问权限的 Azure 存储帐户中的 Blob 上运行[快照 Blob 操作](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob)，但[Azure Blob 存储连接器](/connectors/azureblob/)当前不提供此操作。 相反，你可以使用[HTTP 操作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)来运行操作或 REST API 操作的任何其他[Blob 服务](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs)。 对于身份验证，HTTP 操作可使用为逻辑应用启用的系统分配的标识。 HTTP 操作还会使用这些属性来指定要访问的资源：
+   例如，HTTP 触发器或操作可使用为逻辑应用启用的系统分配的标识。 通常，HTTP 触发器或操作使用这些属性来指定要访问的资源或实体：
 
-   * **URI**属性指定用于访问目标 Azure 资源的终结点 URL。 此 URI 语法通常包含 Azure 资源或服务的[资源 ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) 。
+   | properties | 需要 | 描述 |
+   |----------|----------|-------------|
+   | **方法** | 是 | 要运行的操作所使用的 HTTP 方法 |
+   | **URI** | 是 | 用于访问目标 Azure 资源或实体的终结点 URL。 URI 语法通常包含 Azure 资源或服务的[资源 ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) 。 |
+   | **标头** | No | 需要包含在传出请求中的任何标头值，例如内容类型。 |
+   | **查询** | No | 需要包含在请求中的任何查询参数，如特定操作的参数或要运行的操作的 API 版本 |
+   | **身份验证** | 是 | 用于对目标资源或实体访问进行身份验证的身份验证类型 |
+   ||||
 
-   * **标头**属性指定需要在请求中包含的任何标头值，例如要在目标资源上运行的操作的 API 版本。
+   作为特定示例，假设要在之前为标识设置访问权限的 Azure 存储帐户中的 Blob 上运行[快照 Blob 操作](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob)。 但是， [Azure Blob 存储连接器](https://docs.microsoft.com/connectors/azureblob/)当前不提供此操作。 您可以改为使用[HTTP 操作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)或 REST API 操作的另一个[Blob 服务](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs)运行此操作。
 
-   * "**查询**" 属性指定需要在请求中包括的任何查询参数，如需要时用于特定操作或特定 API 版本的参数。
+   > [!IMPORTANT]
+   > 若要通过使用 HTTP 请求和托管标识访问防火墙后面的 Azure 存储帐户，请确保你还设置了存储帐户，但该[例外允许受信任的 Microsoft 服务进行访问](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service)。
 
-   因此，若要运行[快照 Blob 操作](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob)，HTTP 操作将指定以下属性：
+   若要运行[快照 Blob 操作](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob)，HTTP 操作将指定以下属性：
 
-   * **Method**：指定 `PUT` 运算。
-
-   * **URI**：指定 azure 全局（公共）环境中的 Azure Blob 存储文件的资源 ID 并使用以下语法：
-
-     `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}`
-
-   * **标头**：指定 `x-ms-blob-type` 作为快照 Blob 操作 `2019-02-02` `BlockBlob` 和 `x-ms-version`。 有关详细信息，请参阅[请求标头-](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) [Azure 存储服务](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services)的快照 Blob 和版本控制。
-
-   * **查询**：指定 `comp` 作为参数值的查询参数名称和 `snapshot`。
+   | properties | 需要 | 示例值 | 描述 |
+   |----------|----------|---------------|-------------|
+   | **方法** | 是 | `PUT`| 快照 Blob 操作使用的 HTTP 方法 |
+   | **URI** | 是 | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Azure 全局（公共）环境中使用此语法的 Azure Blob 存储文件的资源 ID |
+   | **标头** | 是，适用于 Azure 存储 | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | Azure 存储操作所需的 `x-ms-blob-type` 和 `x-ms-version` 标头值。 <p><p>**重要提示**：在 Azure 存储的传出 HTTP 触发器和操作请求中，标头需要 `x-ms-version` 属性以及要运行的操作的 API 版本。 <p>有关详细信息，请参阅以下主题： <p><p>- [请求标头-快照 Blob](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) <br>[Azure 存储服务的 - 版本管理](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+   | **查询** | 是，对于此操作 | `comp` = `snapshot` | 快照 Blob 操作的查询参数名称和值。 |
+   | **身份验证** | 是 | `Managed Identity` | 用于对 Azure blob 的访问进行身份验证的身份验证类型 |
+   |||||
 
    下面是示例 HTTP 操作，它显示所有这些属性值：
 

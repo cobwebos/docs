@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Monitor 中 Log Analytics 工作区收集 Azure 资源日志
+title: Log Analytics 工作区收集 Azure 资源日志
 description: 了解如何将 Azure 资源日志流式传输到 Azure Monitor 中的 Log Analytics 工作区。
 author: bwren
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 2f5dba7c36ec04263f6d227d82b9fc50b82890a3
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 92de47041791c8b6c540844adb62391268b81c34
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262435"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200502"
 ---
 # <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>在 Azure Monitor 中 Log Analytics 工作区收集 Azure 资源日志
 Azure 中的[资源日志](resource-logs-overview.md)提供有关 Azure 资源内部操作的丰富、频繁的数据。 本文介绍如何在 Log Analytics 工作区中收集资源日志，以便使用功能强大的日志查询在 Azure Monitor 日志中收集的其他监视数据对其进行分析，还可以 Azure Monitor 利用警报和可视化效果. 
@@ -26,7 +26,7 @@ Azure 中的[资源日志](resource-logs-overview.md)提供有关 Azure 资源�
 * **警报**-使用[Azure Monitor 中的日志警报](alerts-log.md)，获取资源日志中标识的关键条件和模式的主动通知。
 * **可视化效果**-将日志查询的结果固定到 Azure 仪表板，或将其作为交互式报表的一部分包含在工作簿中。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 如果尚未[创建新的工作区](../learn/quick-create-workspace.md)，则需要创建一个。 只要配置设置的用户具有对这两个订阅的相应 RBAC 访问权限，工作区就不必与资源发送日志位于同一订阅中。
 
 ## <a name="create-a-diagnostic-setting"></a>创建诊断设置
@@ -51,13 +51,13 @@ Log Analytics 工作区中收集的数据存储在表中，如[Azure Monitor 日
 
 AzureDiagnostics 表将如下所示：  
 
-| ResourceProvider    | 类别     | A  | B  | C  | D  | E  | 周五  | G  | H  | I  |
+| ResourceProvider    | 类别     | A  | B  | C  | D  | E  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
 | Service1 | AuditLogs    | x1 | y1 | z1 |    |    |    |    |    |    |
-| Service1 | ErrorLogs    |    |    |    | q1 | w1 | e1 |    |    |    |
-| Service2 | AuditLogs    |    |    |    |    |    |    | j1 | k1 | l1 |
+| Service1 | ErrorLogs    |    |    |    | 第 | w1 | e1 |    |    |    |
+| Service2 | AuditLogs    |    |    |    |    |    |    | j1 | 版 k1 | L1 |
 | Service1 | ErrorLogs    |    |    |    | q2 | w2 | e2 |    |    |    |
-| Service2 | AuditLogs    |    |    |    |    |    |    | j3 | k3 | l3 |
+| Service2 | AuditLogs    |    |    |    |    |    |    | j3 | k3 | 6mb |
 | Service1 | AuditLogs    | x5 | y5 | z5 |    |    |    |    |    |    |
 | ... |
 
@@ -76,9 +76,9 @@ AzureDiagnostics 表将如下所示：
 
 - 表*Service1ErrorLogs*如下所示：  
 
-    | 资源提供程序 | 类别 | D | E | 周五 |
+    | 资源提供程序 | 类别 | D | E | F |
     | -- | -- | -- | -- | -- | 
-    | Service1 | ErrorLogs |  q1 | w1 | e1 |
+    | Service1 | ErrorLogs |  第 | w1 | e1 |
     | Service1 | ErrorLogs |  q2 | w2 | e2 |
     | ... |
 
@@ -86,8 +86,8 @@ AzureDiagnostics 表将如下所示：
 
     | 资源提供程序 | 类别 | G | H | I |
     | -- | -- | -- | -- | -- |
-    | Service2 | AuditLogs | j1 | k1 | l1|
-    | Service2 | AuditLogs | j3 | k3 | l3|
+    | Service2 | AuditLogs | j1 | 版 k1 | L1|
+    | Service2 | AuditLogs | j3 | k3 | 6mb|
     | ... |
 
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60f38b60b5fbf0166f25c423663d157cf8f13ee2
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b1b44a7df499dc0b6ce4370bf74ece35c99a4493
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860905"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200241"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>使用 Azure 门户管理设备标识
 
@@ -136,6 +136,7 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。 如果�
 
 - 若要启用/禁用设备，你必须是中的全局管理员或云设备管理员 Azure AD。 
 - 禁用设备会阻止设备在 Azure AD 上成功进行身份验证，从而阻止设备访问由设备 CA 或使用 WH4B 凭据保护的 Azure AD 资源。
+- 禁用设备将同时撤消设备上的主刷新令牌（PRT）和任何刷新令牌（RT）。
 
 ### <a name="delete-an-azure-ad-device"></a>删除 Azure AD 设备
 
@@ -174,7 +175,7 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。 如果�
 若要查看或复制 BitLocker 密钥，你需要是设备所有者或者是至少分配了以下一个角色的用户：
 
 - 云设备管理员
-- 全局管理员
+- 全局管理员角色
 - 支持管理员
 - Intune 服务管理员
 - 安全管理员
@@ -212,9 +213,9 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。 如果�
 
 - 类别
 - 活动资源类型
-- activities
+- 活动
 - 日期范围
-- 目标
+- 确定目标
 - 发起者（参与者）
 
 除筛选器外，还可搜索特定条目。
