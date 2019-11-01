@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2019
 ms.author: mlottner
-ms.openlocfilehash: 7cdf9f61c88d93f0cbf0b80576aa30dff5ce9cab
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 67361c402bdbc82d5df01709dc962b59671cb2aa
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551592"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991401"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>快速入门：在 IoT 中心启用适用于 IoT 的 Azure 安全中心服务
 
@@ -43,14 +43,8 @@ ms.locfileid: "72551592"
 若要在 IoT 中心启用安全性，请执行以下操作： 
 
 1. 在 Azure 门户中打开你的 **IoT 中心**。 
-1. 在“安全性”  菜单下，单击“保护 IoT 解决方案”  。
-1. 将“启用”  保留为默认选中状态。 
-1. 选择 Log Analytics 工作区。
-1. 提供 Log Analytics 工作区详细信息。 
-   - 选择启用“孪生收集”，方法是让“孪生收集”开关保持“打开”状态。   
-   - 通过在 Log Analytics 中选择“存储原始设备安全事件”  ，选择除存储默认存储信息类型之外还存储**原始事件**。 将“原始事件”  切换为“打开”  。 
-    
-1. 单击“ **保存**”。 
+1. 在“安全性”  菜单下，单击“保护 IoT 解决方案”  。    
+
 
 祝贺你！ 你已完成在 IoT 中心启用适用于 IoT 的 Azure 安全中心。 
 

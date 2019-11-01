@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: victorh
-ms.openlocfilehash: fe12a1a9f954718dfacb59ae0ed54e69309da650
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 352a63e611e3823e03bedb01a9c1a5071d628c4f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293811"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163825"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 专用 DNS 区域
 
@@ -125,7 +125,7 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
 2. 运行以下命令：
 
    ```powershell
-   New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+   New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
    ```
 
 针对 myVM02 重复上述操作。

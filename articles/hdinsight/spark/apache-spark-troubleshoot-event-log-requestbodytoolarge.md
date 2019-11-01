@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight 中 Apache Spark 流式处理应用的日志中的 RequestBodyTooLarge
+title: Apache Spark 应用中出现 RequestBodyTooLarge 错误-Azure HDInsight
 description: NativeAzureFileSystem ...在 Azure HDInsight 中 Apache Spark 流式处理应用的日志中显示 RequestBodyTooLarge
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: b6e6d3eeff8569c8b00ac16310da3c94e484b32f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 2d2e929335f6af2ee24a81e719d9d0d899f7b8ef
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088706"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241835"
 ---
 # <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem...RequestBodyTooLarge "在 HDInsight 中 Apache Spark 流式处理应用日志中显示
 
@@ -20,7 +20,7 @@ ms.locfileid: "71088706"
 
 ## <a name="issue"></a>问题
 
-错误： `NativeAzureFileSystem ... RequestBodyTooLarge`显示在 Apache Spark 流式处理应用程序的驱动程序日志中。
+错误： `NativeAzureFileSystem ... RequestBodyTooLarge` 出现在 Apache Spark 流式处理应用程序的驱动程序日志中。
 
 ## <a name="cause"></a>原因
 
@@ -32,13 +32,13 @@ Spark 事件日志文件可能达到 WASB 的文件长度限制。
 
 有三种可用于此错误的解决方案：
 
-* 将块大小增加到最大 100 MB。 在 Ambari UI 中，修改 HDFS 配置`fs.azure.write.request.size`属性（或在部分`Custom core-site`中创建）。 将属性设置为更大的值，例如：33554432。 保存更新的配置并重新启动受影响的组件。
+* 将块大小增加到最大 100 MB。 在 Ambari UI 中，修改 HDFS 配置属性 `fs.azure.write.request.size` （或在 `Custom core-site` 部分中创建它）。 将属性设置为更大的值，例如：33554432。 保存更新的配置并重新启动受影响的组件。
 
 * 定期停止并重新提交 spark 流式处理作业。
 
 * 使用 HDFS 存储 Spark 事件日志。 使用 HDFS 进行存储可能会导致群集缩放或 Azure 升级期间发生 Spark 事件数据丢失。
 
-    1. 通过 Ambari UI `spark.eventlog.dir`进行更改： `spark.history.fs.logDirectory`
+    1. 通过 Ambari UI 对 `spark.eventlog.dir` 和 `spark.history.fs.logDirectory` 进行更改：
 
         ```
         spark.eventlog.dir = hdfs://mycluster/hdp/spark2-events
@@ -62,6 +62,6 @@ Spark 事件日志文件可能达到 WASB 的文件长度限制。
 
 * 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 
-* 与[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帐户联系，通过将 Azure 社区连接到适当的资源来改进客户体验：答案、支持和专家。
+* 与[@AzureSupport](https://twitter.com/azuresupport) -通过将 Azure 社区连接到适当的资源来改进客户体验的官方 Microsoft Azure 帐户：答案、支持和专家。
 
-* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请查看[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+* 如果需要更多帮助，可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息，请查看[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。

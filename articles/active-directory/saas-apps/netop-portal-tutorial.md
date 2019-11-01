@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 63f7eab5-412a-4a5c-84bc-7473087abb49
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 751de509d17b05c2515261eeb7c036ae345986fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 955acdfb31bcdaa85f81eac39487992c75f71788
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096293"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160323"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netop-portal"></a>教程：Azure Active Directory 与 Netop Portal 集成
 
@@ -110,7 +111,7 @@ ms.locfileid: "67096293"
 
 6. 除了上述属性，Netop Portal 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | 名称 |  源属性|
+    | Name |  源属性|
     | ---------------| --------- |
     | NRC-ACCOUNT-ID | “adfs demo” |
     | NRC-EMAIL | user.userprincipalname |

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 12e886c107249c338dc27aefcd2e1a32eba13d3e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 28571584fbd82b245e85e2ebe5b1d282ab5ae979
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598876"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177985"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>教程：将运行 Windows 的 Service Fabric 群集部署到 Azure 虚拟网络
 
@@ -112,7 +112,6 @@ ms.locfileid: "68598876"
 
 * ClientConnectionEndpoint (TCP)：19000
 * HttpGatewayEndpoint (HTTP/TCP)：19080
-* SMB：445
 * Internodecommunication：1025、1026、1027
 * 临时端口范围：49152 到 65534（至少需要 256 个端口）。
 * 应用程序使用的端口：80 和 443

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: dde4b4efc62ec444cbbd662a70e7507a1b8f70e7
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 436825c6e5df2be524dc06ccdaf82f0156714679
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066982"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241648"
 ---
 # <a name="deep-dive---advanced-analytics"></a>深入探讨 - 高级分析
 
@@ -46,7 +46,7 @@ HDInsight 提供可从大量结构化、非结构化和快速移动的数据中�
 | 算法类别| 用途 | 学习类型 | 算法 |
 | --- | --- | --- | -- |
 | 分类 | 将人员或事物分类成组 | 监督式 | 决策树、逻辑回归、神经网络 |
-| 群集 | 将一组示例分割成地缘组 | 非监督式 | K 平均值聚类 |
+| 群集功能 | 将一组示例分割成地缘组 | 非监督式 | K 平均值聚类 |
 | 模式检测 | 标识数据中的常见关联 | 非监督式 | 关联规则 |
 | 回归 | 预测数字结果 | 监督式 | 线性回归、神经网络 |
 | 增强式 | 确定机器人的最佳行为 | 增强式 | 蒙特卡洛仿真、DeepMind |
@@ -78,7 +78,7 @@ HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 
 ### <a name="azure-machine-learning-and-apache-hive"></a>Azure 机器学习和 Apache Hive
 
-[Azure 机器学习工作室](https://studio.azureml.net/)不仅提供预测分析建模工具，还提供完全托管的服务，可以通过此服务将预测模型部署为随时可用的 Web 服务。 Azure 机器学习提供可在云中创建完整预测分析解决方案的工具，用于快速创建、测试、操作和管理预测模型。 可以从大型算法库中进行选择、使用基于 Web 的工作室来构建模型，然后将模型轻松部署为 Web 服务。
+[Azure 机器学习 Studio （经典）](https://studio.azureml.net/)提供了用于模拟预测分析的工具，并提供了一个完全托管的服务，可用于将预测模型部署为随时可用的 web 服务。 Azure 机器学习提供可在云中创建完整预测分析解决方案的工具，用于快速创建、测试、操作和管理预测模型。 可以从大型算法库中进行选择、使用基于 Web 的工作室来构建模型，然后将模型轻松部署为 Web 服务。
 
 ### <a name="apache-spark-and-deep-learning"></a>Apache Spark 和深度学习
 
@@ -127,8 +127,8 @@ Apache Hive 和 Azure 机器学习
 Apache Spark 和 MLLib
 
 * [在 Apache Spark on HDInsight 中使用机器学习](../../machine-learning/team-data-science-process/spark-overview.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Apache Spark 来通过 HVAC 数据分析建筑物温度](../spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Apache Spark 预测食品检验结果](../spark/apache-spark-machine-learning-mllib-ipython.md)
+* [使用机器学习 Apache Spark：使用 HDInsight 中的 Apache Spark 对使用 HVAC 数据生成温度进行分析](../spark/apache-spark-ipython-notebook-machine-learning.md)
+* [使用机器学习 Apache Spark：使用 HDInsight 中的 Apache Spark 预测食物检查结果](../spark/apache-spark-machine-learning-mllib-ipython.md)
 
 深度学习、认知工具包和其他技术
 

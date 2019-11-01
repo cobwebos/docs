@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c7257ec35f9a53f84edebd5e15b7144c49daf682
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 4acfe148e424d41308e310abd2a10e4e21133799
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514959"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900844"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>快速入门：通过 IoT 中心设备流在 Node.js 中与设备应用程序通信（预览）
 
@@ -44,9 +44,10 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 目前仅以下区域中创建的 IoT 中心支持设备流预览：
 
-*  美国中部 
-
-*  **美国中部 EUAP**
+  * 美国中部
+  * 美国中部 EUAP
+  * 北欧
+  * 东南亚
 
 若要运行本快速入门中所述的服务端应用程序，需要在开发计算机上安装 Node.js v10.x.x 或更高版本。
 

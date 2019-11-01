@@ -1,23 +1,24 @@
 ---
-title: 常见错误和警告
-titleSuffix: Azure Cognitive Search
-description: 本文提供了有关在 Azure 认知搜索中的 AI 扩充期间可能遇到的常见错误和警告的信息和解决方案。
-manager: nitinme
+title: 常见错误和警告-Azure 搜索
+description: 本文提供了有关在 Azure 搜索中进行 AI 扩充时可能遇到的常见错误和警告的信息和解决方案。
+services: search
+manager: heidist
 author: amotley
-ms.author: abmotley
-ms.service: cognitive-search
+ms.service: search
+ms.workload: search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 08d15f20f69c0c42d8b4dd4bac72e7d9f367a957
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 09/18/2019
+ms.author: abmotley
+ms.openlocfilehash: 6455ac9dbe0933f6d46d1137e0a19dcc388d8c80
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787974"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73243037"
 ---
-# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充管道的常见错误和警告
+# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Azure 搜索中的 AI 扩充管道的常见错误和警告
 
-本文提供了有关在 Azure 认知搜索中的 AI 扩充期间可能遇到的常见错误和警告的信息和解决方案。
+本文提供了有关在 Azure 搜索中进行 AI 扩充时可能遇到的常见错误和警告的信息和解决方案。
 
 ## <a name="errors"></a>Errors
 当错误计数超过["maxFailedItems"](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures)时，索引将停止。 
@@ -131,6 +132,10 @@ ms.locfileid: "72787974"
 | 在源文档中使用了不兼容的地理点表示法。 | 不支持 WKT 点字符串。 请改用 GeoJson point 文本 |
 
 在所有这些情况下，请参考[支持的数据类型（Azure 搜索）](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)和[Azure 搜索中索引器的数据类型映射](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search)，以确保正确生成索引架构，并设置适当的[索引器字段映射](search-indexer-field-mappings.md)。 错误消息将包括有助于跟踪不匹配源的详细信息。
+
+### <a name="could-not-process-document-within-indexer-max-run-time"></a>无法在索引器最大运行时间内处理文档
+
+当索引器无法在允许的执行时间内完成处理来自数据源的单个文档时，将出现此错误。 当使用技能集时，[最大运行时间](search-limits-quotas-capacity.md#indexer-limits)较短。 发生此错误时，如果将 maxFailedItems 设置为0以外的值，则索引器将在以后运行时跳过该文档，以便可以进行索引编制。 如果您无法跳过任何文档，或者如果您一直看到此错误，请考虑将文档拆分为较小的文档，以便在单个索引器执行中执行部分进度。
 
 ##  <a name="warnings"></a>列出
 警告不会停止索引，但它们会指示可能导致意外结果的条件。 你是否采取措施取决于数据和你的方案。

@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 7740905c-04c4-4d8c-ad90-523a6cd1e206
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d8323e771d757d35e424516da6247b940901bb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 15a019feb0703c3e52d30b6d7bde478bb6a3899e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103039"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157096"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-euromonitor-passport"></a>教程：Azure Active Directory 与 Euromonitor Passport 的集成
 
@@ -117,7 +118,7 @@ ms.locfileid: "67103039"
 
 7. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ：
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | ---------------| --------- |
     | 名称标识符值 | user.userprincipalname |
     | emailaddress | user.mail |

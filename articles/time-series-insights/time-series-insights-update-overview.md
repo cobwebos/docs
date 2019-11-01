@@ -3,20 +3,19 @@ title: 概述：Azure 时序见解预览版 | Microsoft Docs
 description: Azure 时序见解预览版概述。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: dpalled
 ms.workload: big-data
 ms.topic: overview
-ms.date: 09/23/2019
+ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: da81d5603eb26ae3b209bbbc01a8d6fc31e1ba3a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 588d6dafd3703743f5f4c50bea4f27ef0225bbf7
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72381988"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989746"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>什么是 Azure 时序见解预览版？
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 10/28/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: c6b050a9637046a8703dd7aaf1d5ac7f1ad1a5da
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 427cf87a8907482ae5346372c2997ce6e01084d0
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423796"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027100"
 ---
 # <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>快速入门：使用 C# 和必应新闻搜索 REST API 搜索新闻
 
@@ -85,25 +85,6 @@ ms.locfileid: "68423796"
     request.Headers["Ocp-Apim-Subscription-Key"] = subscriptionKey;
     HttpWebResponse response = (HttpWebResponse)request.GetResponseAsync().Result;
     string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
-    ```
-
-3. 创建搜索结果对象，提取必应 HTTP 标头。 然后返回 `searchResult`。
-
-    ```csharp
-    // Create the result object for return
-    var searchResult = new SearchResult()
-    {
-        jsonResult = json,
-        relevantHeaders = new Dictionary<String, String>()
-    };
-
-    // Extract Bing HTTP headers
-    foreach (String header in response.Headers)
-    {
-        if (header.StartsWith("BingAPIs-") || header.StartsWith("X-MSEdge-"))
-            searchResult.relevantHeaders[header] = response.Headers[header];
-    }
-    return searchResult;
     ```
 
 3. 创建搜索结果对象，提取必应 HTTP 标头。 然后返回 `searchResult`。

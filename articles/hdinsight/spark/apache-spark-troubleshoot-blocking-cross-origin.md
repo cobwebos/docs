@@ -1,5 +1,5 @@
 ---
-title: Jupyter 服务器404由于 Azure HDInsight 中的 "阻止跨源 API" 而出错
+title: Jupyter 404 错误-"阻止跨源 API"-Azure HDInsight
 description: 由于 Azure HDInsight 中的 "阻止跨源 API"，Jupyter server 404 "找不到" 错误
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,14 +7,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: f5ac70381f0879a896e96cb37a70c1b1a1f0b5da
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7f8eb000533673d243258d569834869bbb2a1778
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091006"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241128"
 ---
-# <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>场景：由于 Azure HDInsight 中的 "阻止跨源 API"，Jupyter server 404 "找不到" 错误
+# <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>方案： Azure HDInsight 中的 "阻止跨源 API" 导致 Jupyter server 404 "找不到" 错误
 
 本文介绍在 Azure HDInsight 群集中使用 Apache Spark 组件时的故障排除步骤和可能的解决方法。
 
@@ -36,7 +36,7 @@ Origin: https://xxx.xxx.xxx, Host: hn0-pnhr01.j101qxjrl4zebmhb0vmhg044xe.ax.inte
 
 - 如果已将网络安全组（NSG）规则配置为限制对群集的访问。 使用 NSG 规则限制访问仍可让你使用 IP 地址而不是群集名称直接访问 Apache Ambari 和其他服务。 但是，在访问 Jupyter 时，可能会看到 404 "找不到" 错误。
 
-- 如果你已为 HDInsight 网关提供自定义的 DNS 名称，而`xxx.azurehdinsight.net`不是标准。
+- 如果你已为 HDInsight 网关提供自定义的 DNS 名称，而不是标准 `xxx.azurehdinsight.net`。
 
 ## <a name="resolution"></a>分辨率
 
@@ -47,11 +47,11 @@ Origin: https://xxx.xxx.xxx, Host: hn0-pnhr01.j101qxjrl4zebmhb0vmhg044xe.ax.inte
     /var/lib/ambari-agent/cache/common-services/JUPYTER/1.0.0/package/scripts/jupyter.py
     ```
 
-1. 找到如下所示的行：`NotebookApp.allow_origin='\"https://{2}.{3}\"'`并将其更改为`NotebookApp.allow_origin='\"*\"'`：。
+1. 找到如下所示的行： `NotebookApp.allow_origin='\"https://{2}.{3}\"'` 并将其更改为： `NotebookApp.allow_origin='\"*\"'`。
 
 1. 从 Ambari 重新启动 Jupyter 服务。
 
-1. 在`ps aux | grep jupyter`命令提示符下键入内容时，会显示它允许任何 URL 连接到它。
+1. 在命令提示符下键入 `ps aux | grep jupyter` 应显示它允许任何 URL 连接到它。
 
 这比我们已有的设置更安全。 但假定对群集的访问受到限制，并且允许从外部访问群集，因为我们 NSG 了。
 
@@ -61,6 +61,6 @@ Origin: https://xxx.xxx.xxx, Host: hn0-pnhr01.j101qxjrl4zebmhb0vmhg044xe.ax.inte
 
 * 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 
-* 与[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帐户联系，通过将 Azure 社区连接到适当的资源来改进客户体验：答案、支持和专家。
+* 与[@AzureSupport](https://twitter.com/azuresupport) -通过将 Azure 社区连接到适当的资源来改进客户体验的官方 Microsoft Azure 帐户：答案、支持和专家。
 
-* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请查看[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+* 如果需要更多帮助，可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息，请查看[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。

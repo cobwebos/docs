@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.topic: conceptual
 ms.date: 06/26/2019
 keywords: kinect, azure, 传感器, sdk, 坐标系, 校准, 投影, 取消投影, 转换, rgb-d, 点云
-ms.openlocfilehash: 60a3a423de701acbafa1f518869a126b374e723e
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 7080f11b16b8bf5afe521b3926ab1b06d18225b8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036001"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72927405"
 ---
 # <a name="use-azure-kinect-sensor-sdk-image-transformations"></a>使用 Azure Kinect 传感器 SDK 图像转换
 
@@ -40,7 +40,7 @@ https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7
 
 #### <a name="implementation"></a>实现
 
- 此转换函数比单纯针对每个像素调用 [k4a_calibration_2d_to_2d()](https://aka.ms/AzureKinectAPIDocs/api/k4a-calibration-2d-to-2d.md) 更为复杂。 它将深度相机几何结构中的三角网格扭曲成彩色相机的几何结构。 使用三角网格可以避免转换的深度图像出现孔洞。 Z 缓冲区确保正确处理遮挡物。 默认已为此函数启用 GPU 加速。
+ 此转换函数比单纯针对每个像素调用 [k4a_calibration_2d_to_2d()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3b6bf6dedbfe67468e2f895dcce68ed4.html#ga3b6bf6dedbfe67468e2f895dcce68ed4) 更为复杂。 它将深度相机几何结构中的三角网格扭曲成彩色相机的几何结构。 使用三角网格可以避免转换的深度图像出现孔洞。 Z 缓冲区确保正确处理遮挡物。 默认已为此函数启用 GPU 加速。
 
 #### <a name="parameters"></a>parameters
 

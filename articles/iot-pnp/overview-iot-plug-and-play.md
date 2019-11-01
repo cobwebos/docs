@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 27063702729d8a61ab8919c2685fcfc6f743ce09
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: fd1479a224255f74f4d47cfd90576a5afd25010f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858987"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935398"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>什么是 IoT 即插即用预览版？
 
@@ -26,7 +26,7 @@ IoT 即插即用预览版使解决方案开发人员能够将设备与其解决�
 
 可在不同的设备功能模型中重复使用接口，以便更轻松地进行协作和加速开发。
 
-为了使 IoT 即插即用与 [Azure 数字孪生](../digital-twins/about-digital-twins.md)无缝协同工作，已使用[数字孪生定义语言 (DTDL)](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL) 定义了 IoT 即插即用架构。 IoT 即插即用和 DTDL 在社区中开放，Microsoft 欢迎与各客户、合作伙伴与行业合作。 两者都基于 JSON-LD 和 RDF 等开放 W3C 标准，因此在不同的服务和工具中更易于采用。 此外，使用 IoT 即插即用和 DTDL 不会产生额外的费用。 [Azure IoT 中心](../iot-hub/about-iot-hub.md)、[Azure IoT Central](../iot-central/overview-iot-central.md) 和其他 Azure 服务的标准费率保持不变。
+为了使 IoT 即插即用与 [Azure 数字孪生](../digital-twins/about-digital-twins.md)无缝协同工作，已使用[数字孪生定义语言 (DTDL)](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL) 定义了 IoT 即插即用架构。 IoT 即插即用和 DTDL 在社区中开放，Microsoft 欢迎与各客户、合作伙伴与行业合作。 两者都基于 JSON-LD 和 RDF 等开放 W3C 标准，因此在不同的服务和工具中更易于采用。 此外，使用 IoT 即插即用和 DTDL 不会产生额外的费用。 [Azure IoT 中心](../iot-hub/about-iot-hub.md)、[Azure IoT Central](../iot-central/core/overview-iot-central.md) 和其他 Azure 服务的标准费率保持不变。
 
 基于 IoT 中心或 IoT Central 构建的解决方案可从 IoT 即插即用受益。
 
@@ -48,7 +48,7 @@ IoT 即插即用适用于两种类型的开发人员：
 
 解决方案开发人员可以开发使用 IoT 即插即用设备的云托管式 IoT 解决方案。 可以使用以下 Azure 服务之一：
 
-- [IoT Central](../iot-central/overview-iot-central.md) - 一个完全托管的 IoT 软件即服务解决方案，可用来轻松创建对物理和电子世界进行连接的产品。
+- [IoT Central](../iot-central/core/overview-iot-central.md) - 一个完全托管的 IoT 软件即服务解决方案，可用来轻松创建对物理和电子世界进行连接的产品。
 - [IoT 中心](../iot-hub/about-iot-hub.md) - 一个充当消息中心的托管式云服务，用于在 IoT 应用程序与设备之间进行双向通信。
 
 可以通过 Azure IoT 认证设备目录查找 IoT 即插即用设备。 该目录中的每个 IoT 即插即用设备已经过验证，具有设备功能模型。 查看设备功能模型可以了解该设备的功能，或者使用它来模拟 Azure IoT Central 中的设备。

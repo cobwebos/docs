@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 39dc91fc521698edc725c43818ac361b969aee9a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c43b2d2cf1eac4e8254fee78e8979bb163b3a9a4
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297593"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162066"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共享服务蓝图示例的控制映射
 
@@ -211,7 +211,7 @@ Azure 实施了[基于角色的访问控制](../../../../role-based-access-contr
 > [ISO 27001 共享服务蓝图 - 概述](./index.md)
 > [ISO 27001 共享服务蓝图 - 部署步骤](./deploy.md)
 
-有关蓝图和如何使用这些蓝图的更多文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

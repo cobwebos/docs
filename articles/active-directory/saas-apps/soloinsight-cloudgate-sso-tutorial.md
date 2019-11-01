@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: celested
 ms.assetid: 9263c241-85a4-4724-afac-0351d6275958
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2dc6dcbcdee8df93f34cf4d68b5e08453554bc8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b88822f164e0fe8cdf55eddfa981644f725e01f3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67090015"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159932"
 ---
 # <a name="tutorial-integrate-soloinsight-cloudgate-sso-with-azure-active-directory"></a>教程：将 Soloinsight-CloudGate SSO 与 Azure Active Directory 集成
 
@@ -168,7 +169,7 @@ ms.locfileid: "67090015"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 

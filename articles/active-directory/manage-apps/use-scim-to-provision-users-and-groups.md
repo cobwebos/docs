@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5c24a2340775712f1105448b2aacfdc9a75f1a6
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: c9c15a462692c257fac759998698679d9e59dc53
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001721"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242293"
 ---
 # <a name="scim-user-provisioning-with-azure-active-directory"></a>SCIM 用户预配与 Azure Active Directory
 
@@ -29,13 +29,13 @@ ms.locfileid: "72001721"
 
 Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md)的许多应用程序实现 SCIM 作为接收用户更改通知的方法。  除此之外，客户还可以使用 Azure 门户中的通用 "非库" 集成选项连接支持[SCIM 2.0 协议规范](https://tools.ietf.org/html/rfc7644)的特定配置文件的应用程序。
 
-本文的主要重点是在 SCIM 2.0 的个人资料中，Azure AD 实现为非库应用的泛型 SCIM 连接器的一部分。 但是，成功测试支持 SCIM 和通用 Azure AD 连接器的应用程序是将 Azure AD 库中列出的应用程序作为支持用户预配的一步。 有关 Azure AD 应用程序库中列出应用程序的详细信息，请参阅 [How：在 Azure AD 应用程序库中列出你的应用程序，@ no__t。
+本文的主要重点是在 SCIM 2.0 的个人资料中，Azure AD 实现为非库应用的泛型 SCIM 连接器的一部分。 但是，成功测试支持 SCIM 和通用 Azure AD 连接器的应用程序是将 Azure AD 库中列出的应用程序作为支持用户预配的一步。 有关 Azure AD 应用程序库中列出应用程序的详细信息，请参阅[如何：在 Azure AD 应用程序库中列出应用程序](../develop/howto-app-gallery-listing.md)。
 
 > [!IMPORTANT]
 > Azure AD SCIM 实现的行为最近于 2018 年 12 月 18 日更新。 有关更改内容的信息，请参阅 [Azure AD 用户预配服务 SCIM 2.0 协议合规性](application-provisioning-config-problem-scim-compatibility.md)。
 
-从 Azure AD 到应用或标识存储的 @no__t 0Shows 预配 no__t-1<br/>
-图 1：*从 Azure Active Directory 预配实现 SCIM @ no__t 的应用程序或标识存储
+![显示从 Azure AD 到应用程序或标识存储的预配][0]<br/>
+*图1：从 Azure Active Directory 预配到实现 SCIM 的应用程序或标识存储*
 
 本文分为四个部分：
 
@@ -61,17 +61,17 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 
 1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com)。 请注意，你可以通过注册[开发人员计划](https://developer.microsoft.com/office/dev-program)来访问使用 P2 许可证的 Azure Active Directory 免费试用版
 1. 从左窗格中选择 "**企业应用程序**"。 将显示所有已配置应用的列表，包括从库中添加的应用。
-1. 选择 " **+ 新建应用程序** > **所有**不 @no__t 的**非库应用程序**。
+1. 选择 " **+ 新建应用程序** > **所有** > **的非库应用程序**。
 1. 输入应用程序的名称，然后选择 "**添加**" 以创建应用对象。 新应用将添加到企业应用程序列表中，并打开到其应用管理屏幕。
 
-   ![Screenshot 显示 Azure AD 应用程序库 @ no__t-1<br/>
-   图 2：*Azure AD 应用程序库*
+   ![屏幕快照显示 Azure AD 应用程序库][1]<br/>
+   *图2： Azure AD 应用程序库*
 
 1. 在应用管理屏幕的左侧面板中，选择 "**预配**"。
 1. 在“预配模式”菜单中，选择“自动”。
 
-   示例：![Azure 门户 @ no__t 中的应用设置页-0<br/>
-   图 3：*在 Azure 门户中配置预配*
+   ![示例： Azure 门户中的应用设置页][2]<br/>
+   *图3：在 Azure 门户中配置预配*
 
 1. 在“租户 URL”字段中，输入应用程序的 SCIM 终结点的 URL。 示例： https://api.contoso.com/scim/
 1. 如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，可将所需的 OAuth 持有者令牌复制到可选的“密钥令牌”字段。 如果此字段保留为空，则 Azure AD 包括每个请求 Azure AD 颁发的 OAuth 持有者令牌。 将 Azure AD 用作标识提供者的应用可以验证 Azure AD 颁发的此令牌。
@@ -108,21 +108,21 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 * 支持根据[SCIM 协议的第 3.3](https://tools.ietf.org/html/rfc7644#section-3.3)节，创建用户和组（可选）。  
 * 支持根据[SCIM 协议的每节 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2)修改修补请求的用户或组。  
 * 支持检索之前创建的用户或组的已知资源，如[SCIM 协议的3.4.1 节所](https://tools.ietf.org/html/rfc7644#section-3.4.1)述。  
-* 支持查询用户或组，如[SCIM 协议的3.4.2 节所](https://tools.ietf.org/html/rfc7644#section-3.4.2)述。  默认情况下，用户由其 @no__t 0 检索，并按 `username` 和 @no__t 进行查询，并 `displayName` 查询组。  
+* 支持查询用户或组，如[SCIM 协议的3.4.2 节所](https://tools.ietf.org/html/rfc7644#section-3.4.2)述。  默认情况下，用户由其 `id` 检索并通过其 `username` 和 `externalid`进行查询，并 `displayName`查询组。  
 * 支持按 ID 和管理器查询用户，如 SCIM 协议的3.4.2 节所述。  
 * 支持按 ID 和成员查询组，这与 SCIM 协议的每节3.4.2 一样。  
 * 接受单个持有者令牌，用于对应用程序进行 Azure AD 身份验证和授权。
 
 实现 SCIM 终结点时，请遵循以下常规准则，以确保与 Azure AD 的兼容性：
 
-* `id` 是所有资源的必需属性。 每个返回资源的响应都应确保每个资源都具有此属性，但 @no__t 0 个成员除外。
-* 响应查询/筛选请求应始终为 `ListResponse`。
+* `id` 是所有资源的必需属性。 每个返回资源的响应都应确保每个资源都具有此属性，但 `ListResponse` 零个成员除外。
+* 查询/筛选器请求的响应应始终是 `ListResponse`。
 * 组是可选的，但仅当 SCIM 实现支持修补程序请求时才受支持。
 * 不需要在修补程序响应中包含整个资源。
 * Microsoft Azure AD 只使用以下运算符：  
      - `eq`
      - `and`
-* 不需要对 SCIM 中的结构元素进行区分大小写的匹配，具体 `op` 操作值，如 https://tools.ietf.org/html/rfc7644#section-3.5.2 中定义的那样。 Azure AD 将 "op" 的值作为 @no__t、@no__t 和 @no__t 发出。
+* 对于 SCIM 中的结构元素，无需区分大小写匹配，具体 `op` 操作值，如 https://tools.ietf.org/html/rfc7644#section-3.5.2 中所定义。 Azure AD `Add`、`Replace`和 `Remove`发出 "op" 的值。
 * Microsoft Azure AD 请求获取随机用户和组，以确保终结点和凭据有效。 它也作为[Azure 门户](https://portal.azure.com)中的**测试连接**流的一部分完成。 
 * 可在其上查询资源的属性应设置为[Azure 门户](https://portal.azure.com)的应用程序上的匹配属性。 有关详细信息，请参阅[自定义用户预配属性映射](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
 
@@ -130,8 +130,8 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 
 下图显示了 Azure Active Directory 发送到 SCIM 服务的消息，以管理应用程序的标识存储中用户的生命周期。  
 
-@no__t 0Shows 用户预配和取消预配 no__t-1<br/>
-图 4：*用户预配和取消预配顺序*
+![显示用户预配和取消预配序列][4]<br/>
+*图4：用户预配和取消预配顺序*
 
 ### <a name="group-provisioning-and-de-provisioning"></a>组预配和取消预配
 
@@ -140,8 +140,8 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 * 检索组的请求指定要从为响应请求而提供的任何资源中排除成员属性。  
 * 确定引用属性是否具有特定值的请求是有关成员属性的请求。  
 
-@no__t 0Shows 组预配和取消预配顺序 @ no__t-1<br/>
-图 5：*组预配和取消预配顺序*
+![显示组预配和取消预配顺序][5]<br/>
+*图5：组预配和取消预配顺序*
 
 ### <a name="scim-protocol-requests-and-responses"></a>SCIM 协议请求和响应
 本部分提供 Azure AD SCIM 客户端发出的示例 SCIM 请求以及预期的响应。 为了获得最佳结果，应将应用编码为按此格式处理这些请求，并发出预期的响应。
@@ -261,7 +261,7 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 ###### <a name="request-1"></a>需要
 *获取/Users/5d48a0a8e9f04aa38008* 
 
-###### <a name="response-1"></a>回复
+###### <a name="response-1"></a>响应（已找到用户）
 *HTTP/1.1 200 正常*
 ```json
 {
@@ -285,6 +285,21 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
         "type": "work",
         "primary": true
     }]
+}
+```
+
+###### <a name="request"></a>请求
+*获取/Users/5171a35d82074e068ce2* 
+
+###### <a name="response-user-not-found-note-that-the-detail-is-not-required-only-status"></a>响应（找不到用户。 请注意，详细信息不是必需的，只是状态。）
+
+```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:Error"
+    ],
+    "status": "404",
+    "detail": "Resource 23B51B0E5D7AE9110A49411D@7cca31655d49f3640a494224 not found"
 }
 ```
 
@@ -449,7 +464,7 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 
 ##### <a name="request-6"></a>需要
 
-*DELETE /Users/5171a35d82074e068ce2 HTTP/1.1*
+*删除/Users/5171a35d82074e068ce2 HTTP/1。1*
 
 ##### <a name="response-6"></a>回复
 
@@ -458,7 +473,7 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 ### <a name="group-operations"></a>组操作
 
 * 组应始终使用空成员列表创建。
-* @No__t-0 属性可以查询组。
+* `displayName` 属性可以查询组。
 * 更新到组修补请求应在响应中生成*HTTP 204 无内容*。 不建议使用所有成员列表返回正文。
 * 不需要支持返回组的所有成员。
 
@@ -472,7 +487,6 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group", "http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/2.0/Group"],
     "externalId": "8aa1a0c0-c4c3-4bc0-b4a5-2ef676900159",
     "displayName": "displayName",
-    "members": [],
     "meta": {
         "resourceType": "Group"
     }
@@ -553,7 +567,7 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 
 ##### <a name="request-10"></a>需要
 
-*PATCH /Groups/fa2ce26709934589afc5 HTTP/1.1*
+*PATCH/Groups/fa2ce26709934589afc5 HTTP/1。1*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
@@ -619,7 +633,7 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 
 ##### <a name="request-13"></a>需要
 
-*DELETE /Groups/cdb1ce18f65944079d37 HTTP/1.1*
+*删除/Groups/cdb1ce18f65944079d37 HTTP/1。1*
 
 ##### <a name="response-13"></a>回复
 
@@ -643,7 +657,7 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 **先决条件**
 
 * Visual Studio 2013 或更高版本
-* [用于 .NET 的 Azure SDK](https://azure.microsoft.com/downloads/)
+* [Azure SDK for .NET](https://azure.microsoft.com/downloads/)
 * 支持将 ASP.NET Framework 4.5 用作 SCIM 终结点的 Windows 计算机。 必须能够从云访问此计算机。
 * [具有 Azure AD Premium 试用版或许可版的 Azure 订阅](https://azure.microsoft.com/services/active-directory/)
 
@@ -656,7 +670,7 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 1. 从 [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) 下载代码示例包
 1. 将包解压缩，并将其放在 Windows 计算机上的某个位置，例如 C:\AzureAD-BYOA-Provisioning-Samples\。
 1. 在此文件夹中，启动 Visual Studio 中的 FileProvisioning\Host\FileProvisioningService.csproj 项目。
-1. 选择 "**工具**"  >  "**NuGet 包管理器**"  >  "**程序包管理器控制台**"，然后对 FileProvisioningService 项目执行以下命令来解析解决方案引用：
+1.  > **NuGet 包管理器**" > **包管理器控制台**中选择"**工具**"，然后对 FileProvisioningService 项目执行以下命令以解析解决方案引用：
 
    ```powershell
     Update-Package -Reinstall
@@ -670,14 +684,14 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
     FileSvc.exe http://<ip-address>:9000 TargetFile.csv
    ```
 
-1. 在 windows " **Windows 设置**" 下的 " > **网络 & Internet 设置**" 下，选择 " **Windows 防火墙**@no__t" "**高级" 设置**，并创建允许入站访问端口9000的**入站规则**。
+1. 在 windows " **Windows 设置**" 下的 " > **网络 & Internet 设置**" 下，选择 " **Windows 防火墙**" > "**高级" 设置**，并创建允许入站访问端口9000的**入站规则**。
 1. 如果 Windows 计算机位于路由器后面，则需要将路由器配置为在向 internet 公开的端口9000和 Windows 计算机上的端口9000之间运行网络访问转换。 此配置是 Azure AD 在云中访问此终结点所必需的。
 
 #### <a name="to-register-the-sample-scim-endpoint-in-azure-ad"></a>在 Azure AD 中注册示例 SCIM 终结点
 
 1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com)。 
 1. 从左窗格中选择 "**企业应用程序**"。 将显示所有已配置应用的列表，包括从库中添加的应用。
-1. 选择 " **+ 新建应用程序** > **所有**不 @no__t 的**非库应用程序**。
+1. 选择 " **+ 新建应用程序** > **所有** > **的非库应用程序**。
 1. 输入应用程序的名称，然后选择 "**添加**" 以创建应用对象。 创建的应用程序对象代表要预配和实现单一登录的目标应用，而不仅是 SCIM 终结点。
 1. 在应用管理屏幕的左侧面板中，选择 "**预配**"。
 1. 在“预配模式”菜单中，选择“自动”。    
@@ -706,7 +720,7 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 
 * 提供公共语言基础结构 (CLI) 库以配合基于该基础结构的语言，例如 C#。 其中一个库 Microsoft.systemforcrossdomainidentitymanagement 声明了一个接口每 microsoft.systemforcrossdomainidentitymanagement.iprovider.startupbehavior，如下图中所示：。 使用这些库的开发人员将对某个类（一般称为提供程序）实现该接口。 这些库允许开发人员部署符合 SCIM 规范的 web 服务。 Web 服务可以位于 Internet Information Services 或任何可执行 CLI 程序集中。 请求将转换为对提供程序方法的调用，这些方法由开发者编程，以便对某些标识存储执行操作。
   
-   ![结构转换为对提供程序方法的调用的请求][3]
+   ![细目：请求转换为对提供程序方法的调用][3]
   
 * [快速路由处理程序](https://expressjs.com/guide/routing.html)用于分析代表对 node.js Web 服务的调用（由 SCIM 规范定义）的 node.js 请求对象。
 
@@ -837,7 +851,7 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 
 ### <a name="handling-endpoint-authentication"></a>处理终结点身份验证
 
-来自 Azure Active Directory 的请求包括 OAuth 2.0 持有者令牌。   接收请求的任何服务应对颁发者进行身份验证，使其能够 Azure Active Directory 用于预期的 Azure Active Directory 租户，以便访问 Azure Active Directory Graph web 服务。  在令牌中，颁发者由 iss 声明标识，如 "iss"： "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ "。  在此示例中，声明值的基址 https://sts.windows.net ，将 Azure Active Directory 标识为颁发者，而相对地址段 cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 是 Azure Active Directory 租户的唯一标识符，已颁发令牌。 令牌的受众将是库中应用的应用程序模板 ID。 所有自定义应用的应用程序模板 ID 都是8adf8e6e-67b2-4cf2-a259-e3dc5476c621。 库中每个应用的应用程序模板 ID 各不相同。 对于库应用程序的应用程序模板 ID 上的问题，请联系 ProvisioningFeedback@microsoft.com。 在单个租户中注册的每个应用程序可能会收到与 SCIM 请求相同的 `iss` 声明。
+来自 Azure Active Directory 的请求包括 OAuth 2.0 持有者令牌。   接收请求的任何服务应对颁发者进行身份验证，使其能够 Azure Active Directory 用于预期的 Azure Active Directory 租户，以便访问 Azure Active Directory Graph web 服务。  在令牌中，颁发者由 iss 声明标识，如 "iss"： "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ "。  在此示例中，声明值的基址 https://sts.windows.net 将 Azure Active Directory 标识为颁发者，而相对地址段 cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 是 Azure Active Directory 租户的唯一标识符，已颁发令牌。 令牌的受众将是库中应用的应用程序模板 ID。 所有自定义应用的应用程序模板 ID 都是8adf8e6e-67b2-4cf2-a259-e3dc5476c621。 库中每个应用的应用程序模板 ID 各不相同。 有关库应用程序的应用程序模板 ID 的问题，请联系 ProvisioningFeedback@microsoft.com。 在单个租户中注册的每个应用程序可能会收到与 SCIM 请求相同的 `iss` 声明。
 
 使用 Microsoft 提供的 CLI 库生成 SCIM 服务的开发人员可以通过执行以下步骤，使用 Owin 包对来自 Azure Active Directory 的请求进行身份验证： 
 
@@ -993,11 +1007,11 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
    ```
 
    在查询具有给定 externalId 属性值的用户的下列示例中，传递给 Query 方法的参数值是： 
-   * parameters.AlternateFilters.Count:1
+   * parameters.AlternateFilters.Count: 1
    * parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
-   * parameters.AlternateFilters.ElementAt(0).ComparisonOperator:ComparisonOperator.Equals
+   * parameters.AlternateFilters.ElementAt(0).ComparisonOperator: ComparisonOperator.Equals
    * parameters.AlternateFilter.ElementAt(0).ComparisonValue: "jyoung"
-   * correlationIdentifier:System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin.RequestId"] 
+   * correlationIdentifier: System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin.RequestId"] 
 
 1. 如果对 externalId 属性值与用户的 mailNickname 属性值相匹配的用户对 web 服务的查询的响应未返回任何用户，则 Azure Active Directory 请求服务设置与该用户相对应的用户在 Azure Active Directory。  以下是此类请求的示例： 
 
@@ -1078,21 +1092,21 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
    ```
    在检索用户当前状态的请求示例中，作为参数自变量值提供的对象属性值如下所示： 
   
-   * 标识符："54D382A4-2050-4C03-94D1-E769F1D15682"
+   * Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
    * SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
 1. 如果要更新引用属性，Azure Active Directory 会查询服务，以确定服务前端的标识存储中的引用属性的当前值是否已经与 Azure Active 中该属性的值相匹配文件夹. 对于用户，以这种方式查询当前值的唯一属性是 manager 属性。 确定特定用户对象的 manager 属性当前是否具有特定值的请求示例如下： 
 
    如果服务是使用 Microsoft 提供的用于实现 SCIM 服务的 CLI 库生成的，则会将该请求转换为对服务提供程序的查询方法的调用。 作为参数自变量值提供的对像属性值如下： 
   
-   * parameters.AlternateFilters.Count:2
-   * parameters.AlternateFilters.ElementAt(x).AttributePath:“ID”
-   * parameters.AlternateFilters.ElementAt(x).ComparisonOperator:ComparisonOperator.Equals
-   * parameters.AlternateFilter.ElementAt(x).ComparisonValue:"54D382A4-2050-4C03-94D1-E769F1D15682"
+   * parameters.AlternateFilters.Count: 2
+   * parameters.AlternateFilters.ElementAt(x).AttributePath: "ID"
+   * parameters.AlternateFilters.ElementAt(x).ComparisonOperator: ComparisonOperator.Equals
+   * parameters.AlternateFilter.ElementAt(x).ComparisonValue: "54D382A4-2050-4C03-94D1-E769F1D15682"
    * parameters.AlternateFilters.ElementAt(y).AttributePath: "manager"
-   * parameters.AlternateFilters.ElementAt(y).ComparisonOperator:ComparisonOperator.Equals
-   * parameters.AlternateFilter.ElementAt(y).ComparisonValue:"2819c223-7f76-453a-919d-413861904646"
-   * parameters.RequestedAttributePaths.ElementAt(0):“ID”
+   * parameters.AlternateFilters.ElementAt(y).ComparisonOperator: ComparisonOperator.Equals
+   * parameters.AlternateFilter.ElementAt(y).ComparisonValue: "2819c223-7f76-453a-919d-413861904646"
+   * parameters.RequestedAttributePaths.ElementAt(0): "ID"
    * parameters.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
    此处，索引 x 的值可以是0，并且索引 y 的值可以是1，或者 x 的值可以是1，而 y 的值可以是0，具体取决于筛选器查询参数表达式的顺序。   
@@ -1156,14 +1170,14 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 
    如果使用 Microsoft 提供的、用于实现 SCIM 服务的公共语言基础结构库构建了服务，则将请求转换为对服务提供者的 Query 方法调用。 作为参数自变量值提供的对像属性值如下： 
   
-* parameters.AlternateFilters.Count:2
-* parameters.AlternateFilters.ElementAt(x).AttributePath:“ID”
-* parameters.AlternateFilters.ElementAt(x).ComparisonOperator:ComparisonOperator.Equals
-* parameters.AlternateFilter.ElementAt(x).ComparisonValue:"54D382A4-2050-4C03-94D1-E769F1D15682"
+* parameters.AlternateFilters.Count: 2
+* parameters.AlternateFilters.ElementAt(x).AttributePath: "ID"
+* parameters.AlternateFilters.ElementAt(x).ComparisonOperator: ComparisonOperator.Equals
+* parameters.Parameters.alternatefilter.elementat. .Value.elementat （x）.Comparisonvalue： "54D382A4-2050-4C03-94D1-E769F1D15682"
 * parameters.AlternateFilters.ElementAt(y).AttributePath: "manager"
-* parameters.AlternateFilters.ElementAt(y).ComparisonOperator:ComparisonOperator.Equals
-* parameters.AlternateFilter.ElementAt(y).ComparisonValue:"2819c223-7f76-453a-919d-413861904646"
-* parameters.RequestedAttributePaths.ElementAt(0):“ID”
+* parameters.AlternateFilters.ElementAt(y).ComparisonOperator: ComparisonOperator.Equals
+* parameters.Parameters.alternatefilter.elementat. .Value.elementat （y）.Comparisonvalue： "2819c223-7f76-453a-919d-7f76-453a-413861904646"
+* parameters.RequestedAttributePaths.ElementAt(0): "ID"
 * parameters.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
   此处，索引 x 的值可以是0，并且索引 y 的值可以是1，或者 x 的值可以是1，而 y 的值可以是0，具体取决于筛选器查询参数表达式的顺序。   
@@ -1275,14 +1289,14 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 
     在更新用户的请求示例中，作为修补参数值提供的对象具有这些属性值： 
   
-   * ResourceIdentifier.Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
+   * ResourceIdentifier.Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
    * ResourceIdentifier.SchemaIdentifier:  "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
-   * (PatchRequest as PatchRequest2).Operations.Count:1
-   * (PatchRequest as PatchRequest2).Operations.ElementAt(0).OperationName:OperationName.Add
+   * (PatchRequest as PatchRequest2).Operations.Count: 1
+   * (PatchRequest as PatchRequest2).Operations.ElementAt(0).OperationName: OperationName.Add
    * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Path.AttributePath: "manager"
-   * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.Count:1
+   * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.Count: 1
    * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Reference: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
-   * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Value:2819c223-7f76-453a-919d-413861904646
+   * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Value: 2819c223-7f76-453a-919d-413861904646
 
 1. 若要从 SCIM 服务面对的标识存储中取消预配用户，Azure AD 会发送如下请求： 
 
@@ -1322,14 +1336,14 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
    ````
    在取消预配用户的请求示例中，作为 resourceIdentifier 参数值提供的对象具有以下属性值： 
   
-   * ResourceIdentifier.Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
+   * ResourceIdentifier.Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
    * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
 ## <a name="user-and-group-schema-reference"></a>用户和组架构引用
 
 Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  这些类型的资源是用户和组。  
 
-用户资源由 `urn:ietf:params:scim:schemas:extension:enterprise:2.0:User` 的架构标识符标识，该标识符包含在此协议规范中： https://tools.ietf.org/html/rfc7643 。  表1提供了 Azure Active Directory 中用户的属性的默认映射。  
+用户资源由以下协议规范中包含的架构标识符 `urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`确定： https://tools.ietf.org/html/rfc7643 。  表1提供了 Azure Active Directory 中用户的属性的默认映射。  
 
 组资源由架构标识符 `urn:ietf:params:scim:schemas:core:2.0:Group` 予以标识。 表2显示 Azure Active Directory 中组的属性到组资源的属性的默认映射。  
 
@@ -1344,9 +1358,9 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
 | jobTitle |title |
 | mail |emails[type eq "work"].value |
 | mailNickname |externalId |
-| 管理器 |manager |
+| manager |manager |
 | mobile |phoneNumbers[type eq "mobile"].value |
-| objectId |id |
+| objectId |ID |
 | postalCode |addresses[type eq "work"].postalCode |
 | proxy-Addresses |emails[type eq "other"].Value |
 | physical-Delivery-OfficeName |addresses[type eq "other"].Formatted |
@@ -1357,13 +1371,13 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
 
 ### <a name="table-2-default-group-attribute-mapping"></a>表 2：默认组属性映射
 
-| Azure Active Directory 组 | urn:ietf:params:scim:schemas:core:2.0:Group |
+| Azure Active Directory 组 | urn： ietf： params： scim：架构： core：2.0：组 |
 | --- | --- |
 | displayName |externalId |
 | mail |emails[type eq "work"].value |
 | mailNickname |displayName |
-| 成员 |members |
-| objectId |id |
+| members |members |
+| objectId |ID |
 | proxyAddresses |emails[type eq "other"].Value |
 
 ## <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>允许 Azure AD 预配服务使用的 IP 地址发出 SCIM 请求

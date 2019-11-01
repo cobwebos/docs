@@ -8,12 +8,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0b51617966ad85037ad29f3e5005a17f66602e01
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5c07fac0590b833aa19909849271c59d65d42ad6
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677124"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242452"
 ---
 # <a name="what-is-distributed-tracing"></a>什么是分布式跟踪？
 
@@ -40,6 +40,7 @@ Azure Monitor 还提供[应用程序映射](https://docs.microsoft.com/azure/app
 * [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [Python （预览）](opencensus-python.md)
 
 安装并配置适当的 Application Insights SDK 以后，系统就会通过 SDK 依赖项自动收集器自动收集常用框架、库和技术的跟踪信息。 [依赖项自动收集文档](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)中提供支持的技术的完整列表。
 
@@ -49,7 +50,7 @@ Azure Monitor 还提供[应用程序映射](https://docs.microsoft.com/azure/app
 
 除了 Application Insights SDK，Application Insights 还可以通过 [OpenCensus](https://opencensus.io/) 来支持分布式跟踪。 OpenCensus 是库的单发行版，开源且不局限于供应商，可以针对服务进行指标收集和分布式跟踪。 它还允许开源社区针对 Redis、Memcached 或 MongoDB 之类的常用技术启用分布式跟踪。 [Microsoft 与多个其他的监视项目和云项目合作伙伴进行 OpenCensus 协作](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/)。
 
-若要通过 OpenCensus 向应用程序添加分布式跟踪功能，请先[安装并配置 Application Insights 本地转发器](./../../azure-monitor/app/opencensus-local-forwarder.md)。 然后对 OpenCensus 进行配置，以便通过本地转发器路由分布式跟踪数据。 [Python](./../../azure-monitor/app/opencensus-python.md) 和 [Go](./../../azure-monitor/app/opencensus-go.md) 均受支持。
+[Python （预览）](opencensus-python.md) 
 
 OpenCensus 网站保留了 [Python](https://opencensus.io/api/python/trace/usage.html) 和 [Go](https://godoc.org/go.opencensus.io) 的 API 参考文档，此外还有各种不同的 OpenCensus 使用指南。 
 

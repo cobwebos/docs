@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: celested
 ms.assetid: 4d049778-3c7b-46c0-92a4-f2633a32334b
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c3eb72abc90347c8e18a2f56a5d4756ecd80f3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 03998d214c1fb977741976eca7b878d0c6b577aa
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096338"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160385"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>教程：将 MyWorkDrive 与 Azure Active Directory 集成
 
@@ -138,7 +139,7 @@ ms.locfileid: "67096338"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 

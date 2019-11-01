@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: f49176f944aa2abfa1d355ce0bd207d1b544c275
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50e3368aa8808307fa479a290eaf10ca3f22289d
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772952"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242879"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>有状态 Reliable Services 的诊断功能
 Azure Service Fabri 有状态 Reliable Services StatefulServiceBase 类会发出 [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 事件，这些事件可用于调试服务、提供对运行时运行方式的深入了解，以及帮助进行故障排除。
@@ -29,7 +29,7 @@ Azure Service Fabri 有状态 Reliable Services StatefulServiceBase 类会发出
 
 可帮助收集和/或查看 EventSource 事件的工具和技术的示例包括：[PerfView](https://www.microsoft.com/download/details.aspx?id=28567)、[Azure 诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)和 [Microsoft TraceEvent 库](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)。
 
-## <a name="events"></a>Events
+## <a name="events"></a>事件
 | 事件名称 | 事件 ID | 级别 | 事件说明 |
 | --- | --- | --- | --- |
 | StatefulRunAsyncInvocation |第 |信息性 |在服务 RunAsync 任务启动时发出 |
@@ -71,7 +71,7 @@ Windows 操作系统中默认可用的 [Windows 性能监视器](https://technet
 
 *ServiceFabricPartitionId* 是与性能计数器实例相关联的 Service Fabric 分区 ID 的字符串表示形式。 分区 ID 是 GUID，并且其字符串表示形式是通过使用格式说明符“D”的 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 生成的。
 
-*ServiceFabricReplicaId* 是一种与给定的 Reliable Service 副本相关联的 ID。 副本 ID 包括在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例（由同一分区生成）发生冲突。 [此处](service-fabric-concepts-replica-lifecycle.md)提供有关副本及其在 Reliable Services 中的角色的更多详细信息。
+*ServiceFabricReplicaId* 是一种与给定的 Reliable Service 副本相关联的 ID。 副本 ID 包括在性能计数器实例名称中，以确保其唯一性并避免与同一分区生成的其他性能计数器实例发生冲突。 [此处](service-fabric-concepts-replica-lifecycle.md)提供有关副本及其在 Reliable Services 中的角色的更多详细信息。
 
 以下计数器实例名称通常适用于 `Service Fabric Transactional Replicator` 类别的计数器：
 
@@ -82,21 +82,23 @@ Windows 操作系统中默认可用的 [Windows 性能监视器](https://technet
 #### <a name="service-fabric-tstore-category"></a>Service Fabric TStore 类别
 对于类别 `Service Fabric TStore`，计数器实例名称采用以下格式：
 
-`ServiceFabricPartitionId:ServiceFabricReplicaId:ServiceFabricStateProviderId_PerformanceCounterInstanceDifferentiator`
+`ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
 *ServiceFabricPartitionId* 是与性能计数器实例相关联的 Service Fabric 分区 ID 的字符串表示形式。 分区 ID 是 GUID，并且其字符串表示形式是通过使用格式说明符“D”的 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 生成的。
 
-*ServiceFabricReplicaId* 是一种与给定的 Reliable Service 副本相关联的 ID。 副本 ID 包括在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例（由同一分区生成）发生冲突。 [此处](service-fabric-concepts-replica-lifecycle.md)提供有关副本及其在 Reliable Services 中的角色的更多详细信息。
+*ServiceFabricReplicaId* 是一种与给定的 Reliable Service 副本相关联的 ID。 副本 ID 包括在性能计数器实例名称中，以确保其唯一性并避免与同一分区生成的其他性能计数器实例发生冲突。 [此处](service-fabric-concepts-replica-lifecycle.md)提供有关副本及其在 Reliable Services 中的角色的更多详细信息。
 
-*ServiceFabricStateProviderId* 是与 Reliable Service 中的状态提供程序关联的 ID。 状态提供程序 ID 包含在性能计数器实例名称中，用于区分 TStore。
+*StateProviderId*是与可靠服务中的状态提供程序相关联的 ID。 状态提供程序 ID 包括在性能计数器实例名称中，以便将 TStore 与其他项区分开来。
 
 *PerformanceCounterInstanceDifferentiator* 是与状态提供程序中的性能计数器实例关联的区分 ID。 此区分符 包含在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例（由同一状态提供程序生成）发生冲突。
 
+*StateProviderName*是与可靠服务中的状态提供程序关联的名称。 状态提供程序名称包括在性能计数器实例名称中，用户可以轻松地识别它所提供的状态。
+
 以下计数器实例名称通常适用于 `Service Fabric TStore` 类别的计数器：
 
-`00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337`
+`00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337_urn:MyReliableDictionary/dataStore`
 
-在前面的示例中，`00d0126d-3e36-4d68-98da-cc4f7195d85e` 是 Service Fabric 分区 ID 的字符串表示形式，`131652217797162571` 是副本 ID，`142652217797162571` 是状态提供程序 ID，`1337` 是性能计数器实例区分符。
+在前面的示例中，`00d0126d-3e36-4d68-98da-cc4f7195d85e` 是 Service Fabric 分区 ID 的字符串表示形式，`131652217797162571` 是副本 ID，`142652217797162571` 是状态提供程序 ID，`1337` 是性能计数器实例区分符。 `urn:MyReliableDictionary/dataStore` 是存储名为 `urn:MyReliableDictionary`的集合的数据的状态提供程序的名称。
 
 ### <a name="transactional-replicator-performance-counters"></a>事务复制器性能计数器
 
@@ -108,8 +110,8 @@ Reliable Services 运行时发出的以下事件属于 `Service Fabric Transacti
 | 事务操作数/秒 | 每秒在 Reliable Collections 上执行的添加/更新/删除操作的数目。|
 | 日志刷新字节数/秒 | 事务复制器每秒刷新到磁盘的字节数 |
 | 中止的操作数/秒 | 事务复制器出于限制原因每秒拒绝的操作数。 |
-| 平均事务用时(毫秒)/提交 | 每个事务的提交平均延时（毫秒） |
-| 平均刷新延迟(毫秒) | 由事务复制器启动的磁盘刷新操作的平均持续时间（毫秒） |
+| 平均事务毫秒/提交 | 每个事务的提交平均延时（毫秒） |
+| 平均刷新延迟时间（毫秒） | 由事务复制器启动的磁盘刷新操作的平均持续时间（毫秒） |
 
 ### <a name="tstore-performance-counters"></a>TStore 性能计数器
 

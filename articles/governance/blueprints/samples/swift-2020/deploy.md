@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 27ef4c6db6ebeb6f0180d6b4bbec2f228f70393b
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: e420746025896d13a5bd279dca0ef5cd2c77571f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248993"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162986"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>部署 SWIFT CSP-CSCF v2020 蓝图示例
 
@@ -122,7 +122,7 @@ ms.locfileid: "72248993"
 > [SWIFT CSP-CSCF v2020 蓝图 - 概述](./index.md)
 > [SWIFT CSP-CSCF v2020 蓝图 - 控制映射](./control-mapping.md)
 
-有关蓝图和如何使用这些蓝图的更多文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

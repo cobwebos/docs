@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: a2d13833b60076caa371a7fa8a696ab5964a28e3
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 7f62e437d80f023972327d98b4add193eb7b8dd6
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376085"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044406"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>管理 Azure VM 的更新和修补程序
 
@@ -169,7 +169,7 @@ ms.locfileid: "72376085"
   * 如果超过 Windows 上的维护时段，通常是因为 Service Pack 更新需要很长时间才能安装。
 
   > [!NOTE]
-  > “顺便说一句”信息对于任务而言并不重要。为了避免在 Ubuntu 的维护时段外应用更新，请重新配置无人参与升级包以禁用自动更新。 有关如何配置此包的信息，请参阅 [Ubuntu Server 指南中的自动更新主题](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)。
+  > 若要避免在 Ubuntu 上的维护时段外应用更新，请重新配置无人参与升级包，禁用自动更新。 有关如何配置此包的信息，请参阅 [Ubuntu Server 指南中的自动更新主题](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)。
 
 * **重启选项**:此设置确定应如何处理重启。 可用选项包括：
   * 需要时重新启动(默认)

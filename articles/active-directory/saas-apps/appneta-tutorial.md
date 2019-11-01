@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 643a45fb-d6fc-4b32-b721-68899f8c7d44
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b1e2baa2cdaee511ecff614406a0e4c25d553c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6316959ee177fa9e7cf1eb2a371020a054d9a26
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106833"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152790"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appneta-performance-monitor"></a>教程：Azure Active Directory 与 AppNeta Performance Monitor 的集成
 
@@ -119,7 +120,7 @@ ms.locfileid: "67106833"
 
 6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ： 
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | --------| ----------------|
     | firstName| user.givenname|
     | lastName| user.surname|

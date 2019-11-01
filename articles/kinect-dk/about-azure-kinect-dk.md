@@ -7,16 +7,16 @@ ms.prod: kinect-dk
 ms.topic: overview
 ms.date: 06/26/2019
 keywords: azure, kinect, 概述, 开发人员工具包, DK, 设备, 深度, 人体跟踪, 语音, 认知服务, SDK, 固件
-ms.openlocfilehash: d6a23ef2a088669564b755a2fb887ec0ad038e62
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: e3b8464a1828f0c1588d353f5c4d74966c90f549
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034951"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800240"
 ---
 # <a name="about-azure-kinect-dk"></a>关于 Azure Kinect DK
 
-Azure Kinect DK 是一款开发人员工具包，配有先进的 AI 传感器，提供复杂的计算机视觉和语音模型。  Kinect 将深度传感器、空间麦克风阵列与视频摄像头和方向传感器整合成一体式的小型设备，提供多种模式、选项和软件开发工具包 (SDK)。 它可在 [Microsoft 在线商店](https://www.microsoft.com/p/azure-kinect-dk/8pp5vxmd9nhq?activetab=pivot:overviewtab)中购买。
+Azure Kinect DK 是一款开发人员工具包，配有先进的 AI 传感器，提供复杂的计算机视觉和语音模型。  Kinect 将深度传感器、空间麦克风阵列与视频摄像头和方向传感器整合成一体式的小型设备，提供多种模式、选项和软件开发工具包 (SDK)。 它可在 [Microsoft 在线商店](https://www.microsoft.com/p/azure-kinect-dk/8pp5vxmd9nhq)中购买。
 
 Azure Kinect DK 开发环境由以下多个 SDK 组成：
 

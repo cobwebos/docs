@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 7187bc7a42971a86b31d663f0a3754a061a2421a
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: b0a23486d81ac6b48bf7bb256e3583973a338002
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515052"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900916"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>快速入门：通过 IoT 中心设备流在 C 中与设备应用程序通信（预览）
 
@@ -56,9 +56,10 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 目前仅以下区域中创建的 IoT 中心支持设备流预览：
 
-* 美国中部
-
-* 美国中部 EUAP
+  * 美国中部
+  * 美国中部 EUAP
+  * 北欧
+  * 东南亚
 
 ## <a name="prepare-the-development-environment"></a>准备开发环境
 

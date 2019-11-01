@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 2f115be6-4fbe-42aa-9319-7462e7a75736
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db00e0b6ea14e956fc75c2c7cff5d018d9c6bb84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c691dcb9a9d991f0eebaf02eae8e917b4922e224
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106484"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157765"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-awardspring"></a>教程：Azure Active Directory 与 AwardSpring 集成
 
@@ -125,7 +126,7 @@ ms.locfileid: "67106484"
 
 7. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ：
 
-    |  名称 | 源属性 |
+    |  Name | 源属性 |
     | ---------------| --------------- |    
     | 名字 | user.givenname |
     | 姓氏 | user.surname |

@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: ea555097-bf62-45dd-9b45-b75c50324a69
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b46b8644b9ba4f0dc6b0b97215a4a96b60d69c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a149527c6e00972991bf0b18e6f7c599799a0c91
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086034"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161034"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>教程：Azure Active Directory 与 Zscaler Internet Access Administrator 的集成
 
@@ -172,7 +173,7 @@ ms.locfileid: "67086034"
 
 2. 转到“管理”>“管理员管理”  执行以下步骤，然后单击“保存”：
 
-    ![管理](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "Administration")
+    ![管理](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "管理")
 
     a. 选中“启用 SAML 身份验证”  。
 

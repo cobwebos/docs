@@ -1,25 +1,18 @@
 ---
 title: Azure PowerShell 脚本示例 - 创建 Log Analytics 工作区 | Microsoft Docs
 description: Azure PowerShell 脚本示例 - 创建 Log Analytics 工作区
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-tags: ''
-ms.assetid: ''
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/07/2017
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 4dc98fc3912f9d9c659ecfcaa3df253d30bfcc78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/07/2017
+ms.openlocfilehash: 6aad6c6f0656bd317a808de13e340d5774cea49b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66129179"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931917"
 ---
 # <a name="create-a-log-analytics-workspace-with-powershell"></a>使用 PowerShell 创建 Log Analytics 工作区
 

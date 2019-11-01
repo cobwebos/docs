@@ -1,5 +1,5 @@
 ---
-title: 使用 Apache Spark 分析 Azure Data Lake Storage Gen1 中的数据
+title: 分析 HDInsight Apache Spark Azure Data Lake Storage Gen1
 description: 运行 Apache Spark 作业来分析存储在 Azure Data Lake Storage Gen1 中的数据
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,22 +8,22 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: b8e830cb187b375e17b3dc33c582126adfa32f3e
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 7c60fdfd4d8e579c24da3c43501e4437806becc6
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002491"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241716"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>使用 HDInsight Spark 群集分析 Data Lake Storage Gen1 中的数据
 
 本文介绍如何使用 HDInsight Spark 群集可用[Jupyter Notebook](https://jupyter.org/)来运行从 Data Lake Storage 帐户读取数据的作业。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* Azure Data Lake Storage Gen1 帐户。 请遵循[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-get-started-portal.md) 中的说明进行操作。
+* Azure Data Lake Storage Gen1 帐户。 遵照[通过 Azure 门户使用 Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-get-started-portal.md) 中的说明。
 
-* 包含 Data Lake Storage Gen1 作为存储的 Azure HDInsight Spark 群集。 遵循[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
+* 包含 Data Lake Storage Gen1 作为存储的 Azure HDInsight Spark 群集。 按照[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)中的说明进行操作。
 
 ## <a name="prepare-the-data"></a>准备数据
 
@@ -69,7 +69,7 @@ ms.locfileid: "71002491"
 
     ![创建新的 Jupyter 笔记本](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "创建新的 Jupyter 笔记本")
 
-4. 由于笔记本是使用 PySpark 内核创建，因此不需要显式创建任何上下文。 运行第一个代码单元格时，系统会自动创建 Spark 和 Hive 上下文。 首先可以导入此方案所需的类型。 为此，请将以下代码片段粘贴到某个单元中，然后按 **SHIFT + ENTER**。
+4. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 运行第一个代码单元格时，系统会自动创建 Spark 和 Hive 上下文。 首先可以导入此方案所需的类型。 为此，请将以下代码片段粘贴到某个单元中，然后按 **SHIFT + ENTER**。
 
         from pyspark.sql.types import *
 
@@ -119,7 +119,7 @@ ms.locfileid: "71002491"
 
      也可以在其他视觉效果中查看结果。 例如，同一输出的分区图看起来如下所示。
 
-     ![查询结果分区图](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "查询结果分区图")
+     ![查询结果的面积图](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "查询结果分区图")
 
 8. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这会关闭笔记本。
 

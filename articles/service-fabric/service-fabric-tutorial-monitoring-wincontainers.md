@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 856e2859c778c9f23bc093c2283571a1440ef701
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: b98917e6f3c0ff6570251751a9958b202908ee3e
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68598783"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933915"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>教程：使用 Azure Monitor 日志监视 Service Fabric 上的 Windows 容器
 
@@ -186,7 +186,7 @@ ms.locfileid: "68598783"
     },
     ```
 
-可在[此处](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json)找到示例模板（本教程第一部分中使用过），其中包含上述所有更改，你可以根据需要参考这些更改。 通过这些更改，可将 Log Analytics 工作区添加到资源组。 该工作区将被配置为收集已配置 [Windows Azure 诊断](service-fabric-diagnostics-event-aggregation-wad.md)代理的存储表中的 Service Fabric 平台事件。 此外，还将 Log Analytics 代理 (Microsoft Monitoring Agent) 作为虚拟机扩展已添加到群集中的每个节点 - 这意味着，当你缩放群集时，会自动在每个虚拟机上配置此代理，并将它关联到同一个工作区。
+可在[此处](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/d2ffa318581fc23ac7f1b0ab2b52db1a0d7b4ba7/5-VM-Windows-OMS-UnSecure/sfclusteroms.json)找到示例模板（本教程第一部分中使用过），其中包含上述所有更改，你可以根据需要参考这些更改。 通过这些更改，可将 Log Analytics 工作区添加到资源组。 该工作区将被配置为收集已配置 [Windows Azure 诊断](service-fabric-diagnostics-event-aggregation-wad.md)代理的存储表中的 Service Fabric 平台事件。 此外，还将 Log Analytics 代理 (Microsoft Monitoring Agent) 作为虚拟机扩展已添加到群集中的每个节点 - 这意味着，当你缩放群集时，会自动在每个虚拟机上配置此代理，并将它关联到同一个工作区。
 
 部署包含新更改的模板，以升级当前的群集。 部署完成后，应在资源组中看到 Log Analytics 资源。 群集就绪后，将容器化应用程序部署到该群集。 在下一步中，我们将设置对容器的监视。
 
@@ -242,7 +242,7 @@ ms.locfileid: "68598783"
 
 至此，你已设置对容器化应用程序的监视，接下来请尝试以下操作：
 
-* 按照与上述步骤类似的步骤操作，为 Linux 群集设置 Azure Monitor 日志。 请参考[此模板](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux)，对资源管理器模板进行更改。
+* 按照与上述步骤类似的步骤操作，为 Linux 群集设置 Azure Monitor 日志。 请参考[此模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS)，对资源管理器模板进行更改。
 * 配置 Azure Monitor 日志，以便设置有助于检测和诊断的[自动警报](../log-analytics/log-analytics-alerts.md)。
 * 浏览 Service Fabric 的[性能计数器建议](service-fabric-diagnostics-event-generation-perf.md)列表，以为群集配置它们。
 * 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能。

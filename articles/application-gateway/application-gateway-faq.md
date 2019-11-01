@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cbb4668ae87404771513ca5825482efe9206308d
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d0cb5becd8375c393031892efb0b6c54786eeb8f
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025005"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242225"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题
 
@@ -73,7 +73,7 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器（ADC�
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>IP 或 DNS 名称是否在应用程序网关的生存期内发生更改？
 
-如果停止并启动应用程序网关，VIP 可能会更改。 但是，与应用程序网关关联的 DNS 名称不会在网关的生存期内更改。 由于 DNS 名称不会更改，因此应使用 CNAME 别名，并将其指向应用程序网关的 DNS 地址。
+在应用程序网关 V1 SKU 中，如果停止并启动应用程序网关，VIP 会发生更改。 但是，与应用程序网关关联的 DNS 名称不会在网关的生存期内更改。 由于 DNS 名称不会更改，因此应使用 CNAME 别名，并将其指向应用程序网关的 DNS 地址。 在应用程序网关 V2 SKU 中，你可以将 IP 地址设置为静态，因此 IP 和 DNS 名称将在应用程序网关的生存期内不会更改。 
 
 ### <a name="does-application-gateway-support-static-ip"></a>应用程序网关是否支持静态 IP？
 
@@ -322,7 +322,7 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 
 ### <a name="does-waf-support-ddos-protection"></a>WAF 是否支持 DDoS 保护？
 
-可以。 可以在部署了应用程序网关的虚拟网络上启用 DDoS 保护。 此设置可确保 Azure DDoS 保护服务也保护应用程序网关虚拟 IP （VIP）。
+可以。 可以在部署应用程序网关的虚拟网络上启用 DDoS 防护。 此设置确保 Azure DDoS 防护服务还保护应用程序网关虚拟 IP (VIP)。
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否有可从 v1 SKU 迁移到 v2 SKU 的指导？
 

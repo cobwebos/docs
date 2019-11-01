@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 6f4ead051b0472bdd5de85c3589d362241caa485
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c2a8c60502aeb75173371d40475b5d2875417791
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755866"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808633"
 ---
 # <a name="starter-resource-graph-queries"></a>初学者资源图表查询
 
@@ -76,27 +76,27 @@ Search-AzGraph -Query "Resources | summarize count()"
 
 ```kusto
 Resources
-| where type =~ 'microsoft.compute/virtualmachines'
+| where type =~ 'microsoft.keyvault/vaults'
 | count
 ```
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
-az graph query -q "Resources | where type =~ 'microsoft.compute/virtualmachines' | count"
+az graph query -q "Resources | where type =~ 'microsoft.keyvault/vaults' | count"
 ```
 
 # <a name="azure-powershelltabazure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachines' | count"
+Search-AzGraph -Query "Resources | where type =~ 'microsoft.keyvault/vaults' | count"
 ```
 
 # <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
-- Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.compute%2Fvirtualmachines'%20%7C%20count" target="_blank">portal.azure.com</a> ![在新窗口图标中打开链接](../../media/new-window.png)
+- Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">portal.azure.com</a> ![在新窗口图标中打开链接](../../media/new-window.png)
 
 ---
 

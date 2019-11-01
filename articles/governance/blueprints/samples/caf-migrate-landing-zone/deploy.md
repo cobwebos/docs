@@ -7,12 +7,12 @@ ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: cb41d363b208400598c8afb06dfdb4acaeb02d2b
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 4693959a2b4f0638caea57fb97796faf62aba9a0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298019"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163563"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>部署适用于 Azure 的 Microsoft 云采用框架迁移登陆区域蓝图示例
 
@@ -120,7 +120,7 @@ ms.locfileid: "72298019"
 > [!div class="nextstepaction"]
 > [CAF 迁移登陆区域蓝图 - 概述](./index.md)
 
-有关蓝图和如何使用这些蓝图的更多文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

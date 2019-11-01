@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: c415fc55-6dc1-49f2-a8a2-2fc6e3790d65
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7835094ea1b08e9abd56cfd17b478347dda5aa88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 92826a05de6695aaed6ad5289a5ef06495cc7635
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107129"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73153322"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allocadia"></a>教程：Azure Active Directory 与 Allocadia 的集成
 
@@ -127,7 +128,7 @@ ms.locfileid: "67107129"
 
 6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ： 
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | ------------------- | -------------------- |
     | 名 | user.givenname |
     | 姓 | user.surname |

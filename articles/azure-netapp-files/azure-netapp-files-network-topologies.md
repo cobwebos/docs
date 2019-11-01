@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 02852b325a22f274b4aa6e793b03c733c38bb9aa
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 8e6a1c3472c6b20b27cf181edbeeb96ab71eb58d
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984124"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242481"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp 文件网络规划指南
 
@@ -54,7 +54,7 @@ Azure NetApp 文件当前不支持以下功能：
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
 |    与本地 VNet 中的卷的连接    |    是    |         |
 |    连接到对等互连 VNet 中的卷（相同区域）    |    是    |         |
-|    连接到对等互连 VNet 中的卷（跨区域或全局对等互连）    |    否    |    无    |
+|    连接到对等互连 VNet 中的卷（跨区域或全局对等互连）    |    No    |    None    |
 |    通过 ExpressRoute 网关连接到卷    |    是    |         |
 |    通过 ExpressRoute 网关从本地连接到分支 VNet 中的卷，并使用网关传输连接到 VNet 对等互连    |    是    |        |
 |    通过 VPN 网关从本地连接到分支 VNet 中的卷    |    是    |         |
@@ -95,11 +95,11 @@ Azure NetApp 文件当前不支持以下功能：
 
 基本方案是从同一 VNet 中的虚拟机（VM）创建或连接到 Azure NetApp 文件卷。 对于上图中的 VNet 2，卷1在委托子网中创建，并且可以装载到默认子网中的 VM 1。
 
-### <a name="vnet-peering"></a>VNet 对等
+### <a name="vnet-peering"></a>VNet 对等互连
 
 如果在同一区域中有需要访问彼此资源的其他 Vnet，则可使用[VNet 对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)连接 vnet，以通过 Azure 基础结构实现安全连接。 
 
-请考虑上图中的 VNet 2 和 VNet 3。 如果 VM 2 需要连接到 VM 3 或卷2，或者 VM 3 需要连接到 VM 2 或卷1，则需要在 VNet 2 和 VNet 3 之间启用 VNet 对等互连。 
+请考虑上图中的 VNet 2 和 VNet 3。 如果 VM 1 需要连接到 VM 2 或卷2，或者 VM 2 需要连接到 VM 1 或卷1，则需要在 VNet 2 和 VNet 3 之间启用 VNet 对等互连。 
 
 此外，请考虑一种方案，其中 VNet 1 与 VNet 2 对等互连，VNet 2 在同一区域中使用 VNet 3 进行对等互连。 VNet 1 中的资源可以连接到 VNet 2 中的资源，但无法连接到 VNet 3 中的资源，除非 VNet 1 和 VNet 3 是对等互连。 
 
@@ -128,4 +128,4 @@ Azure NetApp 文件当前不支持以下功能：
 
 ## <a name="next-steps"></a>后续步骤
 
-[将子网委托给 Azure NetApp 文件](azure-netapp-files-delegate-subnet.md)
+[将子网委派给 Azure NetApp 文件](azure-netapp-files-delegate-subnet.md)

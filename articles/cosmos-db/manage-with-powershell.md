@@ -4,15 +4,15 @@ description: 使用 Azure Powershell 管理 Azure Cosmos DB 帐户、数据库�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 08/05/2019
+ms.date: 10/23/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 3b5d8ff6177b4f9f397b40f50a9cc65f74460f02
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 978f37d08275de704dd01c0251dde42665fca552
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815887"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882109"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>使用 PowerShell 管理 Azure Cosmos DB SQL API 资源
 
@@ -255,7 +255,8 @@ $keys = Invoke-AzResourceAction -Action listKeys `
     -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" `
     -ResourceGroupName $resourceGroupName -Name $accountName
 
-Select-Object $keys
+Write-Host "PrimaryKey =" $keys.primaryMasterKey
+Write-Host "SecondaryKey =" $keys.secondaryMasterKey
 ```
 
 ### <a id="list-connection-strings"></a> 列出连接字符串

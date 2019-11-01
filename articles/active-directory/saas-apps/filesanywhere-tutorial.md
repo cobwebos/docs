@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a4e116d167b3e05c1cad27952b6774de529136c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f26311a6c9a1b751243c0571ce9a3417af891959
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102617"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158213"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>教程：Azure Active Directory 与 FilesAnywhere 集成
 
@@ -126,7 +127,7 @@ ms.locfileid: "67102617"
 
 7. 除了上述属性，FilesAnywhere 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | ---------------| --------------- |    
     | clientid | "uniquevalue"  |
 

@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 596da9cfe0e914183bd3b2603ffa1047f1d9352b
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: f5a9f83a8f6e8d5e83f30d30da2b1c4c0f722dc3
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310007"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063055"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>什么是 Azure 资源的托管标识？
 
@@ -122,23 +122,25 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 
 了解如何将托管标识与 Linux VM 配合使用：
 
+* [访问 Azure 容器注册表](../../container-registry/container-registry-authentication-managed-identity.md)
 * [访问 Azure Data Lake Store](tutorial-linux-vm-access-datalake.md)
 * [访问 Azure 资源管理器](tutorial-linux-vm-access-arm.md)
 * [使用访问密钥访问 Azure 存储](tutorial-linux-vm-access-storage.md)
 * [使用共享访问签名访问 Azure 存储](tutorial-linux-vm-access-storage-sas.md)
 * [使用 Azure Key Vault 访问非 Azure AD 资源](tutorial-linux-vm-access-nonaad.md)
-* [访问 Azure 容器注册表](../../container-registry/container-registry-authentication-managed-identity.md)
 
 了解如何将托管标识与其他 Azure 服务配合使用：
 
 * [Azure 应用服务](/azure/app-service/overview-managed-identity)
-* [Azure Functions](/azure/app-service/overview-managed-identity)
-* [Azure 逻辑应用](/azure/logic-apps/create-managed-service-identity)
-* [Azure 服务总线](../../service-bus-messaging/service-bus-managed-service-identity.md)
-* [Azure 事件中心](../../event-hubs/event-hubs-managed-service-identity.md)
 * [Azure API 管理](../../api-management/api-management-howto-use-managed-service-identity.md)
 * [Azure 容器实例](../../container-instances/container-instances-managed-identity.md)
 * [Azure 容器注册表任务](../../container-registry/container-registry-tasks-authentication-managed-identity.md)
+* [Azure 事件中心](../../event-hubs/event-hubs-managed-service-identity.md)
+* [Azure Functions](/azure/app-service/overview-managed-identity)
+* [Azure Kubernetes 服务](/azure/aks/use-managed-identity)
+* [Azure 逻辑应用](/azure/logic-apps/create-managed-service-identity)
+* [Azure 服务总线](../../service-bus-messaging/service-bus-managed-service-identity.md)
+
 
 ## 哪些 Azure 服务支持此功能？<a name="which-azure-services-support-managed-identity"></a>
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
-ms.openlocfilehash: 9fc9eb347e97fe6ab57b3e30651e4ea77a4ce9c8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fd43e9c71db9ae553b24e6cd774495ee8cc5b621
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790245"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242342"
 ---
 # <a name="load-balancer-outbound-rules"></a>负载均衡器出站规则
 
@@ -86,7 +86,7 @@ API 版本“2018-07-01”允许按如下所示构建出站规则定义：
 
 出站规则的所有前端中的每个公共 IP 地址最多提供 64,000 个可用作 SNAT 端口的临时端口。  负载均衡器以 8 的倍数分配 SNAT 端口。 如果提供的值不能被 8 整除，则会拒绝配置操作。  如果尝试分配的 SNAT 端口数超过了可用端口数（基于公共 IP 地址数确定），则会拒绝配置操作。  例如，如果为每个 VM 分配10000个端口，而后端池中的7个 Vm 共享单个公共 IP 地址，则配置将被拒绝（7 x 10000 SNAT 端口 > 64000 SNAT 端口）。  将更多的公共 IP 地址添加到出站规则的前端即可实现该方案。
 
-可以通过将端口数指定为 0，恢复为[基于后端池大小的自动 SNAT 端口分配](load-balancer-outbound-connections.md#preallocatedports)。
+可以通过将端口数指定为 0，恢复为[基于后端池大小的自动 SNAT 端口分配](load-balancer-outbound-connections.md#preallocatedports)。 在这种情况下，第一个 50 VM 实例将获得1024端口，51-100 VM 实例会根据表获得512，依此类推。 具有与出站规则关联的公共 IP 的多个前端不会增加分配给每个 VM 实例的端口数。
 
 ### <a name="idletimeout"></a>控制出站流空闲超时
 

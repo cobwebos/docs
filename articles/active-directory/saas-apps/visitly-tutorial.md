@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 3ae085fb-ca60-4f41-96a0-068e5febf943
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18517f8f0022b8347d8a3bb8a978c513db5f6f85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82efc34bf580ef204a04268e861a0ff214d97572
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087379"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160911"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-visitly"></a>教程：Azure Active Directory 与 Visitly 集成
 
@@ -111,7 +112,7 @@ ms.locfileid: "67087379"
 
 6. 在“用户属性”对话框的“用户声明”部分，通过使用“编辑图标”编辑“名称标识符值”声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤      ：
     
-    | 名称 | 源属性 | 
+    | Name | 源属性 | 
     | ---------------| --------------- |
     | 名称标识符值  | user.mail |
 

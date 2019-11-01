@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 62b42e15-c282-492d-823a-a7c1c539f2cc
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78d259c0354a1519fa57633a68a1dcfa5a183890
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fa689e6138f8d965e59f7cfa7a85e0835301086c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105700"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158696"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>教程：Azure Active Directory 与 Cezanne HR Software 集成
 
@@ -227,11 +228,11 @@ ms.locfileid: "67105700"
 
 2. 在左侧导航窗格中，单击“系统设置”。  转到“管理用户”。  然后导航到“添加新用户”。 
 
-    ![新建用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "New User")
+    ![新建用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "新建用户")
 
 3. 在“人员详细信息”  部分中，执行以下步骤：
 
-    ![新建用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "New User")
+    ![新建用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "新建用户")
 
     a. 将“内部用户”设置为“关闭”。 
 
@@ -243,7 +244,7 @@ ms.locfileid: "67105700"
 
 4. 在“帐户信息”  部分中，执行以下步骤：
 
-    ![新建用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "New User")
+    ![新建用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "新建用户")
 
     a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。 
 
@@ -255,15 +256,15 @@ ms.locfileid: "67105700"
 
 5. 导航到“单一登录”选项卡，并在“SAML 2.0 标识符”区域中选择“新增”。   
 
-    ![用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "用户")
+    ![User](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "用户")
 
 6. 对于“标识提供者”，选择标识提供者，在“用户标识符”文本框中，输入 Britta Simon 帐户的电子邮件地址。  
 
-    ![用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "用户")
+    ![User](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "用户")
 
 7. 单击“保存”按钮  。
 
-    ![用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "用户")
+    ![User](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "用户")
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

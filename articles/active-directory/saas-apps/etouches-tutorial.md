@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 76cccaa8-859c-4c16-9d1d-8a6496fc7520
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee28d5a9ec3a8df694cd1971be8a73ff8e976cc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2fb9bdfad1480e47eba919d6884f2042f11a2b9c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103144"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158241"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-etouches"></a>教程：Azure Active Directory 与 etouches 的集成
 
@@ -119,7 +120,7 @@ ms.locfileid: "67103144"
 
 6. 除了上述属性，etouches 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | ------------------- | -------------------- |
     | 电子邮件 | user.mail | 
 

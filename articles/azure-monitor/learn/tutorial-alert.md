@@ -1,20 +1,19 @@
 ---
 title: 从 Azure Application Insights 发送警报 | Microsoft Docs
 description: 本教程介绍如何使用 Azure Application Insights 发送警报以响应应用程序中的错误。
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 05285a177827cd0dd1e0e39e779a395ccfdfc0cd
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 370d86ae28e49bba9681c6bdc81cc05b4e12a97b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578758"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894862"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>使用 Azure Application Insights 监视和警报应用程序的运行状况
 
@@ -40,15 +39,15 @@ Azure Application Insights 可用于监视应用程序，并在其不可用、�
 
 通过 Application Insights 中的可用性测试，可以从世界各地自动测试应用程序。   在本教程中，你将执行一项 URL 测试，以确保 Web 应用程序可用。  还可以创建完整的演练以测试其详细运行状况。 
 
-1. 选择“Application Insights”，然后选择订阅。  
+1. 选择“Application Insights”，然后选择订阅  。  
 
-2. 选择“调查”菜单下的“可用性”，然后单击“创建测试”。
+2. 选择“调查”菜单下的“可用性”，然后单击“创建测试”    。
 
     ![添加可用性测试](media/tutorial-alert/add-test-001.png)
 
 3. 键入测试名称，保留其他默认值。  此项选择将从五个不同的地理位置，每隔 5 分钟针对应用程序 URL 触发请求。
 
-4. 选择“警报”打开“警报”下拉列表，可在其中定义测试失败时如何做出响应。 选择“Near-realtime”并将状态设置为“已启用”。
+4. 选择“警报”打开“警报”下拉列表，可在其中定义测试失败时如何做出响应   。 选择“Near-realtime”并将状态设置为“已启用”。  
 
     键入满足警报条件时要发送到的电子邮件地址。  可根据需要键入满足警报条件时要调用的 webhook 的地址。
 

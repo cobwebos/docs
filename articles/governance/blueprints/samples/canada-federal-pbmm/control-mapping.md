@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/04/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: b16ad4fd08776312d318067b4bc84f79b9797e70
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: e74d3328e1ed41a7184569d30cc46ae7cd29a5ba
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299161"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163514"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>加拿大联邦 PBMM 蓝图示例的控制映射
 
@@ -316,7 +316,7 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 > [加拿大联邦 PBMM 蓝图 - 概述](./control-mapping.md)
 > [加拿大联邦 PBMM 蓝图 - 部署步骤](./deploy.md)
 
-有关蓝图和如何使用这些蓝图的更多文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

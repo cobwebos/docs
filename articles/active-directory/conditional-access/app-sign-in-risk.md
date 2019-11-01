@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 928900c526ec0e77f84c621f630ac5894cdb2d23
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 619f1ea3bae001d25eb520f43da33ca94a3160c8
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125663"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880340"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>快速入门：使用 Azure Active Directory 条件访问检测到会话风险时阻止访问  
 
@@ -33,7 +33,7 @@ ms.locfileid: "70125663"
 若要完成本教程中的方案，需要：
 
 - **有权访问 Azure AD Premium P2 版本** - 尽管条件访问是 Azure AD Premium P1 的一项功能，但需要使用 P2 版本，因为本快速入门中的方案需要 Identity Protection。
-- **标识保护** - 本快速入门中的方案需要启用“标识保护”。 如果不知道如何启用“标识保护”，请参阅[启用 Azure Active Directory 标识保护](../identity-protection/enable.md)。
+- **标识保护** - 本快速入门中的方案需要启用“标识保护”。 如果不知道如何启用“标识保护”，请参阅[启用 Azure Active Directory 标识保护](../identity-protection/overview-identity-protection.md)。
 - **Tor 浏览器** - [Tor 浏览器](https://www.torproject.org/projects/torbrowser.html.en)可帮助保护你在网络中的隐私。 Identity Protection 将来自 Tor 浏览器的登录检测为“从匿名 IP 地址登录”，这种登录具有中等风险级别。 有关详细信息，请参阅 [Azure Active Directory 风险检测](../reports-monitoring/concept-risk-events.md)。  
 - **名为 Alain Charon 的测试帐户**：如果不知道如何创建测试帐户，请参阅[添加基于云的用户](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)。
 

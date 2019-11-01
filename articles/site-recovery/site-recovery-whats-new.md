@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/31/2019
 ms.author: raynew
-ms.openlocfilehash: 144050bd29e8d2ec56c1347d60fd7452ea60b9cf
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 54416faa9140cf6e7c7c471e4b4c62db5f6f079b
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053640"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242939"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -41,14 +41,45 @@ ms.locfileid: "73053640"
 
 **更新** |  **统一安装** | **配置服务器 .ova** | **移动服务代理** | **Site Recovery 提供程序** | **恢复服务代理**
 --- | --- | --- | --- | --- | ---
+[汇总41](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) | 9.29.5367.1 | 5.15000.0 | 9.29.5367.1 | 5.15000.0 | 2.0.9165.0
 [汇总40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [汇总39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 [汇总38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
 [汇总37](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
-[汇总36](https://support.microsoft.com/help/4503156/) | 9.24.5211.1 | 5.1.4150.0 | 9.24.5211.1 | 5.1.4150.0 | 2.0.9160.0 
         
 
 [了解](service-updates-how-to.md)有关更新安装和支持的详细信息。
+
+
+## <a name="updates-october-2019"></a>更新（2019年10月）
+
+### <a name="update-rollup-41"></a>更新汇总41
+
+[更新汇总 41](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)提供了以下更新。
+
+**更新** | **详细信息**
+--- | ---
+**提供程序和代理** | 更新 Site Recovery 代理和提供程序（在汇总中详细说明）
+**问题修复/改进** | 许多修补程序和改进功能（如汇总中所述）
+
+
+
+### <a name="azure-vm-disaster-recovery"></a>Azure VM 灾难恢复
+
+表中汇总了 Azure VM 灾难恢复的新功能。
+
+**功能** | **详细信息**
+--- | ---
+**测试故障转移设置** | 设置测试故障转移时，你现在可以为测试故障转移 VM 和网络配置设置，包括 IP 地址、NSG、内部负载均衡，以及每个计算机 NIC 的公共 IP 地址。 这些设置是可选的，不更改当前行为。 如果未配置这些设置，则可在测试故障转移时选择 Azure VNet。 [了解详细信息](https://azure.microsoft.com/blog/customize-networking-for-dr-drills-azure-site-recovery/)。
+**恢复计划** | 恢复计划现在限制为100个 Vm，以确保故障转移的可靠性。
+
+### <a name="vmware-to-azure-disaster-recovery"></a>VMware 到 Azure 的灾难恢复
+
+用于 VMware 到 Azure 灾难恢复的新功能在表中进行了总结。
+
+**功能** | **详细信息**
+--- | ---
+**恢复计划** | 恢复计划现在限制为100个 Vm，以确保故障转移的可靠性。
 
 
 ## <a name="updates-september-2019"></a>更新（2019年9月）

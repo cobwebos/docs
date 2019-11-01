@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: a326a5b323999e97b4d015403e36eb97dfc8483f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 8ef32a2cf385c052437c5e5cbd7c95077a262e83
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248826"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163007"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-CSCF v2020 蓝图示例的控制映射。
 
@@ -303,7 +303,7 @@ Azure 存储高级威胁防护会检测试图访问或利用存储帐户的异�
 > [SWIFT CSP-CSCF v2020 蓝图 - 概述](./index.md)
 > [SWIFT CSP-CSCF v2020 蓝图 - 部署步骤](./deploy.md)
 
-有关蓝图和如何使用这些蓝图的更多文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

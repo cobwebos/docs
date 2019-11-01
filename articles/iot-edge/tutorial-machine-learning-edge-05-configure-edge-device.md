@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a2096004a7b389f627c528a8dfb4768ac001f390
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: b9f9fe78db2d8bcf50a076fdfc3eba7b1f347201
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155616"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965396"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>教程：配置 IoT Edge 设备
 
@@ -97,7 +97,7 @@ ms.locfileid: "67155616"
 
 要将 Azure IoT Edge 设备连接到 IoT 中心，首先需在中心内创建该设备的标识。 我们从云端设备标识中提取连接字符串，用它在 IoT Edge 设备上配置运行时。 设备配置完毕并连接到中心后，我们就能部署模块和发送消息了。 我们还能更改 IoT 中心内相应设备标识的配置，进而更改物理 IoT Edge 设备的配置。
 
-在本教程中，我们会使用 Visual Studio Code 创建新的设备标识。 你可通过 [Azure 门户](how-to-register-device-portal.md)或 [Azure CLI](how-to-register-device-cli.md) 完成这些步骤。
+在本教程中，我们会使用 Visual Studio Code 创建新的设备标识。 你可通过 [Azure 门户](how-to-register-device.md#register-in-the-azure-portal)或 [Azure CLI](how-to-register-device.md#register-with-the-azure-cli) 完成这些步骤。
 
 1. 在开发计算机上，打开 Visual Studio Code。
 

@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 81da50c3-df94-458a-8b6a-a30827ee6358
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dea184a09aea0b73bceb988a14400fa1d99b87b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c25e63f4a268cc618154eb050603f6f93c2668f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103900"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157275"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dovetale"></a>教程：Azure Active Directory 与 Dovetale 的集成
 
@@ -122,7 +123,7 @@ ms.locfileid: "67103900"
 
 6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ： 
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | ---------------| --------------- |
     | 电子邮件 | user.mail |
     | first_name | user.givenname |
