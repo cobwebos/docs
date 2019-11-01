@@ -116,3 +116,13 @@
       href: my-apps-portal-end-user-access-reviews.md
     - name: 排查问题
       href: my-apps-portal-end-user-troubleshoot.md
+- name: “我的应用”（预览版）门户帮助
+  items:
+    - name: 概述
+      href: my-applications-portal-overview.md
+    - name: 访问并使用“我的应用”门户
+      href: my-applications-portal-access.md
+    - name: 访问和使用工作区
+      href: my-applications-portal-workspaces.md
+    - name: 编辑或撤销应用权限
+      href: my-applications-portal-permissions-saved-accounts.md

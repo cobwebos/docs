@@ -131,10 +131,14 @@
           items:
             - name: 配置用户同意
               href: configure-user-consent.md
+            - name: 配置管理员同意工作流（预览版）
+              href: configure-admin-consent-workflow.md
             - name: 用于将用户和组分配到应用的方法
               href: methods-for-assigning-users-and-groups.md
             - name: 将用户分配到应用
               href: assign-user-or-group-access-portal.md
+            - name: 在“我的应用”上创建工作区（预览版）
+              href: access-panel-workspaces.md
             - name: 使用自助服务应用访问权限
               href: access-panel-manage-self-service-access.md
             - name: 用于删除用户对应用的访问权限的方法
@@ -155,6 +159,8 @@
               href: migration-resources.md
             - name: 将 ADFS 应用迁移到 Azure
               href: migrate-adfs-apps-to-azure.md
+            - name: 使用 AD FS 应用程序活动报表（预览版）
+              href: migrate-adfs-application-activity.md
         - name: 故障排除
           items:
             - name: 排查添加应用时出现的问题
