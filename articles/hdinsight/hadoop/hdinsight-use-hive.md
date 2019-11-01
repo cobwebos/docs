@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.openlocfilehash: aa3e3b63bdfda7aa6d875055dee4c69b9840db25
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 10/31/2019
 ms.locfileid: "72167351"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？
@@ -30,7 +30,7 @@ HDInsight 提供已针对特定工作负荷进行优化的多种群集类型。 
 
 * __Spark__：Apache Spark 提供内置的功能用于使用 Hive。 有关详细信息，请参阅 [HDInsight 中的 Apache Spark 入门](../spark/apache-spark-jupyter-spark-sql.md)文档。
 
-* __HBase__：HiveQL 可用于查询 Apache HBase 中存储的数据。 有关详细信息，请参阅 [Apache HBase on HDInsight 入门](../hbase/apache-hbase-tutorial-get-started-linux.md)文档。
+* __HBase__： HiveQL 可用于查询 Apache HBase 中存储的数据。 有关详细信息，请参阅 [Apache HBase on HDInsight 入门](../hbase/apache-hbase-tutorial-get-started-linux.md)文档。
 
 ## <a name="how-to-use-hive"></a>如何使用 Hive
 
@@ -90,7 +90,7 @@ Hive 还支持对复杂或不规则的结构化数据使用自定义**序列化�
     * 需要一个自定义位置，例如非默认存储帐户。
     * 由 Hive 以外的某个程序管理数据格式、位置等。
 
-有关详细信息，请参阅 [Hive 内部和外部表简介](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/)博客文章。
+有关详细信息，请参阅[Hive 内部和外部表简介](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/)博客文章。
 
 ## <a name="user-defined-functions-udf"></a>用户定义函数 (UDF)
 
@@ -135,13 +135,13 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 * `DROP TABLE`：如果该表已存在，则删除它。
 
-* `CREATE EXTERNAL TABLE`：在 Hive 中创建一个新的“外部”表。 外部表只会在 Hive 中存储表定义。 数据以原始格式的形式保留在原始位置中。
+* `CREATE EXTERNAL TABLE`：在 Hive 中创建一个新的**外部**表。 外部表只会在 Hive 中存储表定义。 数据以原始格式的形式保留在原始位置中。
 
-* `ROW FORMAT`：让 Hive 知道数据的格式已如何进行了设置。 在此情况下，每个日志中的字段以空格分隔。
+* `ROW FORMAT`：告知 Hive 如何设置数据的格式。 在此情况下，每个日志中的字段以空格分隔。
 
-* `STORED AS TEXTFILE LOCATION`：告知 Hive 存储数据（`example/data` 目录），并将其存储为文本。 数据可以在一个文件中，也可以分散在目录的多个文件内。
+* `STORED AS TEXTFILE LOCATION`：告知 Hive 存储数据的位置（`example/data` 目录），并将其存储为文本。 数据可以在一个文件中，也可以分散在目录的多个文件内。
 
-* `SELECT`：选择“t4”列中包含值“[ERROR]”的所有行的计数。 此语句返回的值为 **3**，因为有三行包含此值。
+* `SELECT`：选择 **t4** 列中包含值 **[ERROR]** 的所有行的计数。 此语句返回的值为 **3**，因为有三行包含此值。
 
 * `INPUT__FILE__NAME LIKE '%.log'` - Hive 会尝试向目录中的所有文件应用架构。 在这种情况下，目录包含与架构不匹配的文件。 为防止结果中包含垃圾数据，此语句指示 Hive 应当仅返回以 .log 结尾的文件中的数据。
 
@@ -173,7 +173,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 * `STORED AS ORC`：以优化的行纵栏式 (ORC) 格式存储数据。 ORC 是高度优化且有效的 Hive 数据存储格式。
 
-* `INSERT OVERWRITE ... SELECT`：从包含“[ERROR]”的“log4jLogs”表中选择行，然后将数据插入“errorLogs”表中。
+* `INSERT OVERWRITE ... SELECT`：从包含 **[ERROR]** 的 **log4jLogs** 表中选择行，然后将数据插入 **errorLogs** 表中。
 
 > [!NOTE]  
 > 与外部表不同，删除内部表会同时删除基础数据。
@@ -182,7 +182,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 ### <a id="usetez"></a>Apache Tez
 
-[Apache Tez](https://tez.apache.org) 是可让数据密集型应用程序（例如 Hive）大规模高效运行的框架。 默认情况下，Tez 已启用。  [Apache Hive on Tez 设计文档](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)包含有关实现选项和优化配置的详细信息。
+[Apache Tez](https://tez.apache.org) 是可让数据密集型应用程序（例如 Hive）大规模高效运行的框架。 默认情况下，启用 Tez。  [Apache Hive on Tez 设计文档](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)包含有关实现选项和优化配置的详细信息。
 
 ### <a name="low-latency-analytical-processing-llap"></a>低延迟分析处理 (LLAP)
 
@@ -206,7 +206,7 @@ Azure 数据工厂允许将 HDInsight 用作数据工厂管道的一部分。 �
 
 * [Azure 订阅连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
 
-有关详细信息，请参阅 [Azure 功能包](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis)文档。
+有关详细信息，请参阅[Azure 功能包](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis)文档。
 
 ### <a name="apache-oozie"></a>Apache Oozie
 
