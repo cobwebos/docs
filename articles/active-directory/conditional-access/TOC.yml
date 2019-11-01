@@ -31,6 +31,8 @@
       href: location-condition.md
     - name: 控制
       href: controls.md
+    - name: “仅报表”模式
+      href: concept-conditional-access-report-only.md
     - name: 服务依赖项
       href: service-dependencies.md
     - name: 假设分析工具
@@ -76,6 +78,8 @@
       href: untrusted-networks.md
     - name: 需要使用条款
       href: terms-of-use.md
+    - name: 配置“仅报表”模式
+      href: howto-conditional-access-report-only.md
     - name: 登录频率和浏览器持久性控制
       href: howto-conditional-access-session-lifetime.md
     - name: 迁移经典策略

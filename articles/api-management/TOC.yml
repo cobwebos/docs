@@ -32,7 +32,7 @@
     - name: 8 - 添加多个版本
       href: api-management-get-started-publish-versions.md
     - name: 9 - 自定义开发人员门户
-      href: api-management-customize-styles.md
+      href: api-management-howto-developer-portal-customize.md
 - name: 示例
   items:
     - name: 策略
@@ -123,12 +123,8 @@
           href: api-management-howto-manage-protocols-ciphers.md
     - name: 自定义开发人员体验
       items:
-        - name: 访问和自定义新的开发人员门户
+        - name: 了解开发人员门户
           href: api-management-howto-developer-portal.md
-        - name: 修改页面内容和布局
-          href: api-management-modify-content-layout.md
-        - name: 使用模板自定义系统页面
-          href: api-management-developer-portal-templates.md
         - name: 使用 Azure AD 进行身份验证
           href: api-management-howto-aad.md
         - name: 使用 Azure AD B2C 进行身份验证
@@ -139,6 +135,34 @@
           href: api-management-howto-configure-notifications.md
         - name: 启动控制台 OAuth 支持
           href: api-management-howto-oauth2.md
+        - name: 旧门户 - 自定义门户
+          href: api-management-customize-styles.md
+        - name: 旧门户 - 修改页面和布局
+          href: api-management-modify-content-layout.md
+        - name: 旧门户 - 通过模板进行自定义
+          href: api-management-developer-portal-templates.md
+    - name: 旧门户模板
+      items:
+        - name: 数据模型参考
+          href: api-management-template-data-model-reference.md
+        - name: 页面控件
+          href: api-management-page-controls.md
+        - name: 模板
+          href: api-management-developer-portal-templates-reference.md
+        - name: API
+          href: api-management-api-templates.md
+        - name: Products
+          href: api-management-product-templates.md
+        - name: 应用程序
+          href: api-management-application-templates.md
+        - name: 问题
+          href: api-management-issue-templates.md
+        - name: 用户配置文件
+          href: api-management-user-profile-templates.md
+        - name: 页
+          href: api-management-page-templates.md
+        - name: 模板资源
+          href: api-management-template-resources.md
     - name: 定义策略
       items:
         - name: 设置或编辑策略
@@ -167,28 +191,6 @@
           href: api-management-cross-domain-policies.md
         - name: 转换策略
           href: api-management-transformation-policies.md
-    - name: 模板参考
-      items:
-        - name: 模板
-          href: api-management-developer-portal-templates-reference.md
-        - name: API
-          href: api-management-api-templates.md
-        - name: Products
-          href: api-management-product-templates.md
-        - name: 应用程序
-          href: api-management-application-templates.md
-        - name: 问题
-          href: api-management-issue-templates.md
-        - name: 用户配置文件
-          href: api-management-user-profile-templates.md
-        - name: 页
-          href: api-management-page-templates.md
-        - name: 模板资源
-          href: api-management-template-resources.md
-    - name: 数据模型参考
-      href: api-management-template-data-model-reference.md
-    - name: 页面控件
-      href: api-management-page-controls.md
     - name: 在生产环境中进行管理
       items:
         - name: 管理组

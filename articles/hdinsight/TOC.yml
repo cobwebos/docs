@@ -41,6 +41,10 @@
           href: ./hdinsight-streaming-at-scale-overview.md
         - name: HDInsight 中的 Apache Hadoop 体系结构
           href: ./hdinsight-hadoop-architecture.md
+        - name: HDInsight 支持的 VM 大小
+          href: ./hdinsight-supported-node-configuration.md
+        - name: 选择适当的 VM 大小
+          href: ./hdinsight-selecting-vm-size.md
         - name: 群集容量规划
           href: ./hdinsight-capacity-planning.md
         - name: 可用性和可靠性
