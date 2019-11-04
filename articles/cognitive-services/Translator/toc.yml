@@ -46,6 +46,12 @@
           href: prevent-translation.md
         - name: 使用动态字典功能
           href: dynamic-dictionary.md
+        - name: 使用容器
+          items:
+            - name: 安装并运行容器
+              href: how-to-install-containers.md
+            - name: 配置容器
+              href: translator-text-container-config.md
         - name: 在防火墙后面翻译
           href: firewalls.md
     - name: 示例

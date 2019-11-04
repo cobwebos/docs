@@ -65,7 +65,7 @@
   items:
     - name: 创建并配置个性化体验创建服务
       href: how-to-settings.md
-      displayName: 'azure, portal, settings, evaluation, offline, policy, export, model'
+      displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
     - name: 分析
       items:
         - name: 脱机评估
