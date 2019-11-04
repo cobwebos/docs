@@ -1,4 +1,4 @@
-- name: Azure 机器学习服务
+- name: Azure 机器学习
   href: service/overview-what-is-azure-ml.md
 - name: Azure 机器学习工作室
   href: studio/index.yml

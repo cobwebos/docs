@@ -184,7 +184,7 @@ ms.locfileid: "72934055"
 
 若要完成群集创建，请单击“创建”。 还可以选择性下载模板。
 
-![总结]
+![Summary]
 
 可以在通知栏中查看群集创建进度。 （单击屏幕右上角的状态栏旁边的 "电铃" 图标。）如果在创建群集时单击了 "**固定到启动板**"，则会看到 "**部署" Service Fabric 群集**固定到 "**开始**" 面板。 此过程将需要一些时间才能完成。 
 
@@ -241,7 +241,7 @@ ms.locfileid: "72934055"
 [CertInfo2]: ./media/service-fabric-cluster-creation-via-portal/CertInfo2.PNG
 [SecurityCustomOption]: ./media/service-fabric-cluster-creation-via-portal/SecurityCustomOption.PNG
 [DownloadCert]: ./media/service-fabric-cluster-creation-via-portal/DownloadCert.PNG
-[摘要]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
+[Summary]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
 [SecurityConfigs]: ./media/service-fabric-cluster-creation-via-portal/SecurityConfigs.png
 [Notifications]: ./media/service-fabric-cluster-creation-via-portal/notifications.png
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
