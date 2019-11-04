@@ -93,7 +93,7 @@ ms.locfileid: "72377229"
 
     ![证书下载链接](common/certificatebase64.png)
 
-1. 若要根据要求修改“签名”选项，请单击“编辑”按钮，打开“SAML 签名证书”对话框。 ****  ****  ****
+1. 若要根据要求修改“ **签名**”选项， 请单击“ **编辑**”按钮，打开“ ** SAML 签名证书**” 对话框。 
 
      ![image](common/edit-certificate.png)
 
@@ -141,7 +141,7 @@ ms.locfileid: "72377229"
 
 1. 打开新的 Web 浏览器窗口，以管理员身份登录到 Freshworks 公司站点并执行以下步骤：
 
-2. 在菜单左侧单击“安全性”图标，选择“单一登录”选项，然后在“身份验证方法”下选择“SAML SSO”。 ****     
+2. 在菜单左侧单击“ **安全性**”图标，选择“**单一登录**”选项，然后在“**身份验证方法**”下选择“**SAML SSO**”。 
 
     ![Freshworks 配置](./media/freshworks-tutorial/configure01.png)
 

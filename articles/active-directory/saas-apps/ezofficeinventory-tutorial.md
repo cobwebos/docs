@@ -146,7 +146,7 @@ ms.locfileid: "72377279"
 
 1. 打开新的 Web 浏览器窗口，以管理员身份登录到 EZOfficeInventory 公司站点。
 
-2. 在页面的右上角，单击“个人资料”，然后导航至“设置” > “加载项” ****   **** 。 
+2. 在页面的右上角，单击“ **个人资料**”，然后导航至“ **设置**” > “**加载项**”。 
 
     ![EZOfficeInventory 配置](./media/ezofficeinventory-tutorial/configure01.png)
 
