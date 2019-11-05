@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 636c397001a3130c60fc2bf498339ad058aca374
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: f8b963c456e4d4318c6b28cd33c18ebd615487de
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959394"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464531"
 ---
 # <a name="get-started-with-custom-voice"></a>自定义语音入门
 
@@ -37,6 +37,13 @@ ms.locfileid: "71959394"
 
 4.  [部署模型](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) - 为文本语音模型创建自定义终结点，并使用该终结点在产品、工具和应用程序中进行语音合成。
 
+## <a name="custom-neural-voices"></a>自定义神经声音
+
+此神经语音自定义功能当前以公共预览版的状态限制为所选客户。 填写此[应用程序窗体](https://go.microsoft.com/fwlink/?linkid=2108737)开始。
+
+> [!NOTE]
+> 作为 Microsoft 对设计责任 AI 的承诺的一部分，我们的目的是保护个人和社会的权利，并促进透明的人工计算机交互。 出于此原因，自定义的神经语音通常不适用于所有客户。 只有在查看了你的应用程序后，你可能会获得对技术的访问权限，并且你已承诺将其与我们的道德原则配合使用。 详细了解[应用程序的过程](https://aka.ms/custom-neural-gating-overview)。
+
 ## <a name="set-up-your-azure-account"></a>设置 Azure 帐户
 
 在使用自定义语音门户创建自定义模型之前，需要获取一个语音服务订阅。 请遵照这些说明在 Azure 中创建语音服务订阅。 如果你没有 Azure 帐户，可以注册一个新帐户。  
@@ -55,10 +62,10 @@ ms.locfileid: "71959394"
 
 数据、模型、测试和终结点等内容在自定义语音门户中组织成**项目**。 每个项目特定于某个国家/语言，以及要创建的语音的性别。 例如，对于呼叫中心的使用美式英语 (en-US) 的聊天机器人，可以创建女性语音项目。
 
-若要创建第一个项目，请选择“文本转语音/自定义语音”选项卡，然后单击“新建项目”。 遵照向导中的说明创建项目。 创建项目后，将看到四个选项卡：“数据”、“训练”、“测试”和“部署”。 使用[后续步骤](#next-steps)中提供的链接了解如何使用每个选项卡。
+若要创建第一个项目，请选择“文本转语音/自定义语音”选项卡，然后单击“新建项目”。 遵照向导中的说明创建项目。 创建项目后，你将看到四个选项卡：**数据**、**培训**、**测试**和**部署**。 使用[后续步骤](#next-steps)中提供的链接了解如何使用每个选项卡。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [准备自定义语音数据](how-to-custom-voice-prepare-data.md)
 - [创建自定义语音](how-to-custom-voice-create-voice.md)
-- [指南：录制语音样本](record-custom-voice-samples.md)
+- [指南：录制语音示例](record-custom-voice-samples.md)

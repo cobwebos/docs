@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 8f2896a6289ecaf4046d705da106636258cdadc5
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 668964c597b8d748220cbeec68e0ba68300cb406
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802243"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464362"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>在语音 SDK 中使用编解码器压缩的音频输入
 
@@ -33,7 +33,7 @@ ms.locfileid: "71802243"
 - Wav 容器中的 ALAW
 - Wav 容器中的 MULAW
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 处理压缩音频是使用[适用 gstreamer](https://gstreamer.freedesktop.org)实现的。 出于许可原因，适用 gstreamer 不编译二进制文件并将其与语音 SDK 链接。 因此，应用程序开发人员需要在18.04、16.04 和 Debian 9 上安装以下各项，才能使用压缩的输入音频。
 
@@ -67,4 +67,4 @@ var text = result.GetText();
 ## <a name="next-steps"></a>后续步骤
 
 - [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-- [了解如何在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)
+* [请参阅如何在 Java 中识别语音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

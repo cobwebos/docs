@@ -1,24 +1,24 @@
 ---
-title: 监视新的 Azure Kubernetes 服务（AKS）群集 |Microsoft Docs
-description: 了解如何使用 Azure Monitor for 容器订阅为新的 Azure Kubernetes 服务（AKS）群集启用监视。
+title: 监视新的 Azure Kubernetes 服务 (AKS) 群集 | Microsoft Docs
+description: 了解如何使用用于容器的 Azure Monitor 订阅启用对新的 Azure Kubernetes 服务 (AKS) 群集的监视。
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/25/2019
-ms.openlocfilehash: 06f4fd56ba5d0152b7e5d3fbfaa31dc4d6c4482d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 01553eb020c1493488e941705d9df8c8c946340a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554121"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73478706"
 ---
-# <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>启用对新的 Azure Kubernetes 服务（AKS）群集的监视
+# <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>启用对新的 Azure Kubernetes 服务 (AKS) 群集的监视
 
-本文介绍如何设置容器的 Azure Monitor，以监视在你准备在订阅中部署的[Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/)上托管的托管 Kubernetes 群集。
+本文介绍如何设置用于容器的 Azure Monitor，以监视准备在订阅中部署的 [Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/)上托管的托管 Kubernetes 群集。
 
-可以使用受支持的方法之一来启用对 AKS 群集的监视：
+可以使用下述支持的方法之一，启用对 AKS 群集的监视：
 
 * Azure CLI
 * Terraform
@@ -37,7 +37,7 @@ ms.locfileid: "72554121"
 >[!NOTE]
 >如果选择使用 Terraform，则必须运行 Terraform Azure RM 提供程序 1.17.0 版或更高版本。
 
-要将用于容器的 Azure Monitor 添加到工作区，请参阅 [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html)，并通过纳入 [addon_profile](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile)，以及指定 oms_agent，完成配置文件。 
+要将用于容器的 Azure Monitor 添加到工作区，请参阅 [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html)，并通过纳入 [addon_profile **，以及指定 oms_agent，完成配置文件**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile)。 
 
 启用监视并成功完成所有配置任务后，可通过两种方法监视群集性能：
 
@@ -120,4 +120,4 @@ az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
 
 * 如果在尝试载入解决方案时遇到问题，请查看[故障排除指南](container-insights-troubleshoot.md)
 
-* 启用监视来捕获 AKS 群集节点和 Pod 的运行状况指标后，可在 Azure 门户中找到这些运行状况指标。 要了解如何将 Azure Monitor 用于容器，请参阅[查看 Azure Kubernetes 服务运行状况](container-insights-analyze.md)。
+* 启用监视功能以收集 AKS 群集的运行状况和资源利用率，并了解[如何使用](container-insights-analyze.md)容器 Azure Monitor。

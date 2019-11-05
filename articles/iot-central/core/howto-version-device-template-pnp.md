@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 79a04725c8289baa3008b229d5dc608357cde881
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 77137bcc708ee403571c4ca9fc0ee0333c068437
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72949594"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990326"
 ---
 # <a name="create-a-new-device-template-version-preview-features"></a>创建新的设备模板版本（预览功能）
 
@@ -84,4 +84,4 @@ Azure IoT Central 用于快速开发 IoT 应用程序。 通过添加、编辑�
 了解如何在 Azure IoT Central 应用程序中使用设备模板版本后，建议接下来执行以下步骤：
 
 > [!div class="nextstepaction"]
-> [如何创建遥测规则](howto-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+> [如何创建遥测规则](tutorial-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)

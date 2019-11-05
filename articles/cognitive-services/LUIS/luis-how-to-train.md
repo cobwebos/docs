@@ -1,5 +1,5 @@
 ---
-title: 训练应用-LUIS
+title: 训练应用 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 训练是向语言理解 (LUIS) 应用版本进行教学以提高其自然语言理解能力的过程。 对模型进行更新（例如添加、编辑、标记或删除实体、意向或陈述）后，请对 LUIS 应用进行训练。
 services: cognitive-services
@@ -9,25 +9,24 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: b3841c9d60cf275e423024fc66c15582f95c0a10
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 259ea23c05f0c0a138ad54b6efd11aad2061cf7a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932754"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500222"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>训练 LUIS 应用的有效版本 
 
 训练是向语言理解 (LUIS) 应用进行教学以提高其自然语言理解能力的过程。 对模型进行更新（例如添加、编辑、标记或删除实体、意向或陈述）后，请对 LUIS 应用进行训练。 
 
-<!--
-When you train a LUIS app by example, LUIS generalizes from the examples you have labeled, and it learns to recognize the relevant intents and entities. This teaches LUIS to improve classification accuracy in the future. -->
-
-对应用进行训练和[测试](luis-concept-test.md)是一个迭代过程。 训练 LUIS 应用后，采用示例陈述来对应用进行测试，查看是否能准确地识别意向和实体。 如果未能准确识别，请对 LUIS 应用进行更新和训练，然后再次测试。 
+对应用进行训练和[测试](luis-concept-test.md)是一个迭代过程。 训练 LUIS 应用后，采用示例陈述来对应用进行测试，查看是否能准确地识别意向和实体。 如果未能准确识别，请对 LUIS 应用进行更新，然后重新进行训练和测试。 
 
 训练将应用于 LUIS 门户中的活动版本。 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="how-to-train-interactively"></a>如何以交互方式训练
 
@@ -50,7 +49,24 @@ When you train a LUIS app by example, LUIS generalizes from the examples you hav
 
 ## <a name="train-with-all-data"></a>使用所有数据进行训练
 
-训练使用一小部分负采样。 如果要使用所有数据而不是少量负采样，请使用[版本设置 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) 并将 `UseAllTrainingData` 设置为 true 以关闭该功能。 
+训练使用一小部分负采样。 
+
+如果要使用所有数据而不是小型否定采样，请使用[API](#version-settings-api-use-of-usealltrainingdata)。
+
+<!--
+
+ or the [LUIS portal setting](#luis-portal-setting-to-use-all-training-data)
+
+### LUIS portal setting to use all training data
+
+!!!IGNITE
+
+
+-->
+
+### <a name="version-settings-api-use-of-usealltrainingdata"></a>版本设置 API 使用 UseAllTrainingData
+
+使用[版本设置 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) ，将 `UseAllTrainingData` 设置为 true 以关闭此功能。 
 
 ## <a name="unnecessary-training"></a>不必要的训练
 

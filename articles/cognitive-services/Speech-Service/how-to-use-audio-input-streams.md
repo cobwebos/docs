@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 06b69da7f7435ce8a1e32150b7abe161ebdf527c
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e00feed416eb3e06b703a2ef4fe040f0c815716e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606507"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464300"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>语音 SDK 的音频输入流 API 简介
 
-语音 SDK 的音频输入流 API 可使流式音频流入识别器，无需使用麦克风或输入文件 API  。
+语音 SDK 的音频输入流 API 可使流式音频流入识别器，无需使用麦克风或输入文件 API。
 
 使用音频输入流时需按以下步骤操作：
 
@@ -76,4 +76,4 @@ ms.locfileid: "67606507"
 ## <a name="next-steps"></a>后续步骤
 
 * [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-* [了解如何在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)
+* [了解如何在 C# 中识别语音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

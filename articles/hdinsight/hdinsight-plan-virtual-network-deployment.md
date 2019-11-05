@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 2647a8c33bf777cb2d97dcfe89799097ad719ac3
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 61b929756cbc4cf13103faa67a667128eaffeec8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077027"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498168"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>规划 Azure HDInsight 的虚拟网络
 
@@ -59,13 +59,13 @@ ms.locfileid: "71077027"
 
     如果你的现有网络是经典虚拟网络，则必须创建资源管理器虚拟网络，然后连接这两者。 [将经典 VNet 连接到新 VNet](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)。
 
-    加入后，资源管理器网络中安装的 HDInsight 就可以与经典网络中的资源进行交互了。
+    连接后，安装在 Resource Manager 网络中的 HDInsight 即可与经典网络中的资源交互。
 
 2. 是否使用网络安全组、用户定义路由或虚拟网络设备来限制流量进出虚拟网络？
 
     作为托管服务，HDInsight 需要无限制访问 Azure 数据中心中的若干个 IP 地址。 若要允许与这些 IP 地址进行通信，请更新任何现有网络安全组或用户定义的路由。
     
-    HDInsight 托管多个服务，这些服务使用不同的端口。 请勿阻止发往这些端口的流量。 有关虚拟设备防火墙的允许端口列表，请参阅“安全”一节。
+    HDInsight 托管多个服务，这些服务使用不同的端口。 不要阻止流向这些端口的流量。 有关虚拟设备防火墙的允许端口列表，请参阅“安全”一节。
     
     若要查找你现有的安全配置，请使用以下 Azure PowerShell 或 Azure CLI 命令：
 
@@ -81,7 +81,7 @@ ms.locfileid: "71077027"
         az network nsg list --resource-group RESOURCEGROUP
         ```
 
-        有关详细信息，请参阅[排查网络安全组问题](../virtual-network/diagnose-network-traffic-filter-problem.md)一文。
+        有关详细信息，请参阅[排查网络安全组问题](../virtual-network/diagnose-network-traffic-filter-problem.md)文档。
 
         > [!IMPORTANT]  
         > 已根据规则优先级按顺序应用网络安全组规则。 应用与流量模式匹配的第一个规则，不会对该流量应用其他规则。 从最高权限到最低权限排序规则。 有关详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/security-overview.md)文档。
@@ -114,9 +114,9 @@ ms.locfileid: "71077027"
 
 多网络配置的最大挑战是网络之间的名称解析。
 
-Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置名称解析允许 HDInsight 使用完全限定的域名 (FQDN) 连接到以下资源：
+Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置的名称解析功能允许 HDInsight 使用完全限定的域名 (FQDN) 连接到以下资源：
 
-* Internet 上的任何可用资源。 例如，microsoft.com、windowsupdate.com。
+* 在 Internet 上提供的任何资源。 例如，microsoft.com、windowsupdate.com。
 
 * 位于同一 Azure 虚拟网络中的任何资源（通过使用资源的内部 DNS 名称）。 例如，在使用默认的名称解析时，下面是分配给 HDInsight 工作器节点的内部 DNS 名称示例：
 
@@ -125,7 +125,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
     这两个节点通过使用内部 DNS 名称可以直接彼此通信，以及与 HDInsight 中的其他节点进行通信。
 
-默认名称解析不允许 HDInsight 解析加入到虚拟网络的网络中的资源名称。 例如，将本地网络加入到虚拟网络是很常见的。 仅通过默认名称解析，HDInsight 无法按名称访问本地网络中的资源。 反过来也是如此，本地网络中的资源也不能按名称访问虚拟网络中的资源。
+默认名称解析不允许 HDInsight 解析连接到虚拟网络的网络中的资源的名称。 例如，将本地网络加入到虚拟网络是很常见的。 仅通过默认名称解析，HDInsight 无法按名称访问本地网络中的资源。 反过来也是如此，本地网络中的资源也不能按名称访问虚拟网络中的资源。
 
 > [!WARNING]  
 > 必须创建自定义 DNS 服务器并配置虚拟网络以在创建 HDInsight 群集前使用它。
@@ -136,7 +136,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 2. 配置虚拟网络以使用自定义 DNS 服务器。
 
-3. 查找 Azure 为你的虚拟网络分配的 DNS 后缀。 该值类似于 `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`。 有关查找 DNS 后缀的信息，请参阅[示例：自定义 DNS](hdinsight-create-virtual-network.md#example-dns) 部分。
+3. 查找 Azure 为你的虚拟网络分配的 DNS 后缀。 该值类似于 `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`。 有关查找 DNS 后缀的信息，请参阅[示例：自定义 DNS](hdinsight-create-virtual-network.md#example-dns) 一节。
 
 4. 配置 DNS 服务器之间的转发。 配置具体取决于远程网络的类型。
 
@@ -148,9 +148,9 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
          * 将其他所有请求转发到本地 DNS 服务器。 本地 DNS 处理所有其他名称解析请求，甚至是 Internet 资源（如 microsoft.com）的请求。
 
-     * __本地 DNS__：将虚拟网络 DNS 后缀的请求转发到自定义 DNS 服务器。 然后，自定义 DNS 服务器转发给 Azure 递归解析程序。
+     * __本地 DNS__： 将虚拟网络 DNS 后缀的请求转发到自定义 DNS 服务器。 然后，自定义 DNS 服务器转发给 Azure 递归解析程序。
 
-       此配置将包含虚拟网络 DNS 后缀的完全限定的域名请求路由至自定义 DNS 服务器。 其他所有请求（即使是公共 Internet 地址） 都由本地 DNS 服务器处理。
+       此配置将包含虚拟网络 DNS 后缀的完全限定的域名请求路由至自定义 DNS 服务器。 所有其他请求（甚至包括对公共 Internet 地址的请求）由本地 DNS 服务器处理。
 
    * 如果远程网络是其他 Azure 虚拟网络，请按如下所示配置 DNS：
 
@@ -162,7 +162,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
        每个网络的 DNS 服务器根据 DNS 后缀将请求转发到另一个服务器。 使用 Azure 递归解析程序解析其他请求。
 
-     有关每个配置的示例，请参阅[示例：自定义 DNS](hdinsight-create-virtual-network.md#example-dns) 部分。
+     有关每个配置的示例，请参阅[示例：自定义 DNS](hdinsight-create-virtual-network.md#example-dns) 一节。
 
 有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)文档。
 
@@ -213,13 +213,13 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 作为托管服务，HDInsight 需要对 HDInsight 运行状况和管理服务具有不受限制的访问权限，以处理从 VNET 传入和传出的流量。 使用 NSG 时，必须确保这些服务仍然可以与 HDInsight 群集进行通信。
 
-![在 Azure 自定义 VNET 中创建的 HDInsight 实体示意图](./media/hdinsight-plan-virtual-network-deployment/hdinsight-vnet-diagram.png)
+![在 Azure 自定义 VNET 中创建的 HDInsight 实体的关系图](./media/hdinsight-plan-virtual-network-deployment/hdinsight-vnet-diagram.png)
 
 ### <a name="hdinsight-with-network-security-groups"></a>使用网络安全组的 HDInsight
 
 如果计划使用**网络安全组**来控制网络流量，请在安装 HDInsight 之前执行以下操作：
 
-1. 标识你计划用于 HDInsight 的 Azure 区域。
+1. 确定计划用于 HDInsight 的 Azure 区域。
 
 2. 标识 HDInsight 所需的 IP 地址。 有关详细信息，请参阅 [HDInsight 管理 IP 地址](hdinsight-management-ip-addresses.md)。
 
@@ -235,7 +235,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 #### <a name="forced-tunneling-to-on-premise"></a>到本地的强制隧道
 
-强制隧道是用户定义的路由配置，其中来自子网的所有流量都强制发往特定网络或位置，例如你的本地网络。 HDInsight 不支持将流量通过强制隧道传输到本地网络。 
+强制隧道是用户定义的路由配置，用于将子网中的所有流量强制流向特定的网络或位置，例如本地网络。 HDInsight 不支持将流量通过强制隧道传输到本地网络。 
 
 ## <a id="hdinsight-ip"></a>需要的 IP 地址
 
@@ -243,11 +243,15 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
     
 ## <a id="hdinsight-ports"></a>所需的端口
 
-如果计划使用**防火墙**并在特定端口上从外部访问群集，则需要允许你的方案所需的那些端口上的流量。 默认情况下，只要允许上一部分中介绍的 Azure 管理流量在端口 443 上到达群集，则不需要特地将端口列入允许列表。
+如果计划使用**防火墙**并在特定端口上从外部访问群集，则需要允许你的方案所需的那些端口上的流量。 默认情况下，只要允许上一部分中介绍的 Azure 管理流量在端口 443 上到达群集，则不需要特地将端口列入白名单。
 
 对于特定服务的端口列表，请参阅 [HDInsight 上的 Apache Hadoop 服务所用的端口](hdinsight-hadoop-port-settings-for-services.md)文档。
 
 有关虚拟设备的防火墙规则的详细信息，请参阅[虚拟设备方案](../virtual-network/virtual-network-scenario-udr-gw-nva.md)文档。
+
+## <a name="load-balancing"></a>负载均衡
+
+创建 HDInsight 群集时，还会创建负载均衡器。 此负载均衡器的类型为[基本 SKU 级别](../load-balancer/load-balancer-overview.md#skus)，它具有某些约束。 其中一项限制是，如果在不同区域有两个虚拟网络，则无法连接到基本负载均衡器。 有关详细信息，请参阅[虚拟网络常见问题解答：针对全局 vnet 对等互连的约束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
 
 ## <a name="next-steps"></a>后续步骤
 

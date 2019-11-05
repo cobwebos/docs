@@ -1,5 +1,5 @@
 ---
-title: 在基于 Linux 的 HDInsight 上访问 Apache Hadoop YARN 应用程序日志 - Azure
+title: 访问 Apache Hadoop YARN 应用程序日志-Azure HDInsight
 description: 了解如何使用命令行和 Web 浏览器在基于 Linux 的 HDInsight (Apache Hadoop) 群集上访问 YARN 应用程序日志。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: 6eb24e85d1d7ffa4f3377d4c2fe8b168303c15f0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 263456769ab391cbc0588eed1a714a1ea5788154
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091509"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494880"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上访问 Apache Hadoop YARN 应用程序日志
 
-了解如何在 Azure HDInsight 中的 [Apache Hadoop](https://hadoop.apache.org/) 群集上访问 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) (Yet Another Resource Negotiator) 应用程序日志。
+了解如何在 Azure HDInsight 中的 [Apache Hadoop](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 群集上访问 [Apache Hadoop YARN](https://hadoop.apache.org/) (Yet Another Resource Negotiator) 应用程序日志。
 
 ## <a name="YARNTimelineServer"></a>YARN Timeline Server
 
@@ -32,7 +32,7 @@ YARN Timeline Server 包括以下类型的数据：
 
 ## <a name="YARNAppsAndLogs"></a>YARN 应用程序和日志
 
-YARN 通过将资源管理与应用程序计划/监视相分离，来支持多种编程模型（[Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) 就是其中之一）。 YARN 使用全局 *ResourceManager* (RM)、按辅助角色节点 *NodeManagers* (NM) 和按应用程序 *ApplicationMasters* (AM)。 按应用程序 AM 与 RM 协商用于运行应用程序的资源（CPU、内存、磁盘、网络）。 RM 与 NM 合作来授予这些资源（以容器的形式授予）。 AM 负责跟踪 RM 分配给它的容器的进度。 根据应用程序性质，应用程序可能需要多个容器。
+YARN 通过将资源管理与应用程序计划/监视相分离，来支持多种编程模型（[Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) 就是其中之一）。 YARN 使用全局 *ResourceManager* (RM)、按辅助角色节点 *NodeManagers* (NM) 和按应用程序 *ApplicationMasters* (AM)。 按应用程序 AM 与 RM 协商用于运行应用程序的资源（CPU、内存、磁盘、网络）。 RM 与 NM 合作授予这些资源（以 *容器*形式授予）。 AM 负责跟踪 RM 分配给它的容器的进度。 根据应用程序的性质，一个应用程序可能需要多个容器。
 
 每个应用程序可能包含多个应用程序尝试。 如果应用程序失败，可能会重试作为新的尝试。 在容器中运行每次尝试。 在某种意义上，容器提供了由 YARN 应用程序执行的基本工作单位的上下文。 在分配了容器的单个辅助角色节点上执行容器上下文中完成的所有工作。 请参阅 [Apache Hadoop YARN 的概念](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)，以获取更多参考信息。
 
@@ -59,8 +59,8 @@ YARN 通过将资源管理与应用程序计划/监视相分离，来支持多�
 
 YARN ResourceManager UI 在群集头节点上运行。 可通过 Ambari web UI 访问它。 使用以下步骤查看 YARN 日志：
 
-1. 在 Web 浏览器中导航到 https://CLUSTERNAME.azurehdinsight.net 。 将 CLUSTERNAME 替换为 HDInsight 群集的名称。
-2. 从左侧的服务列表中选择 **YARN**。
+1. 在 Web 浏览器中导航到 https://CLUSTERNAME.azurehdinsight.net。 将 CLUSTERNAME 替换为 HDInsight 群集的名称。
+2. 从左侧的服务列表中，选择“YARN”。
 
     ![选择的 Apache Ambari Yarn 服务](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
 

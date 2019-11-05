@@ -1,22 +1,22 @@
 ---
-title: 排查 Azure Data Share 预览版问题
-description: 了解如何在通过 Azure 数据共享预览创建或接收数据共享时解决与邀请和错误有关的问题。
+title: 排查 Azure Data Share 问题
+description: 了解如何在通过 Azure 数据共享创建或接收数据共享时解决与邀请和错误有关的问题。
 services: data-share
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 592a2d464aed8c39dfd11734beccbd0399d75fd9
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 6ad612d56b25da9e092070198e321e7fca8ad96b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169226"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490554"
 ---
-# <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>排查 Azure Data Share 预览版中的常见问题
+# <a name="troubleshoot-common-issues-in-azure-data-share"></a>排查 Azure 数据共享中的常见问题 
 
-本文介绍如何排查 Azure Data Share 预览版的常见问题。 
+本文介绍如何解决 Azure 数据共享的常见问题。 
 
 ## <a name="azure-data-share-invitations"></a>Azure Data Share 邀请 
 
@@ -41,20 +41,34 @@ ms.locfileid: "72169226"
 
 ## <a name="error-when-creating-or-receiving-a-new-data-share"></a>创建或接收新的 Data Share 时出错
 
-“错误:操作返回无效的状态代码 'BadRequest'”
+"错误：操作返回了无效的状态代码" BadRequest "
 
-“错误:AuthorizationFailed”
+"错误： AuthorizationFailed"
 
 “错误: 角色分配到存储帐户”
 
 ![权限错误](media/error-write-privilege.png)
 
-如果在创建新数据共享或接收新数据共享时收到任何上述错误，则是因为没有足够的访问存储帐户的权限。 所需权限为“Microsoft.Authorization/role assignments/write”，它存在于存储所有者角色中，也可将其分配给自定义角色。 即使存储帐户是由你创建的，也并不意味着你会自动成为该存储帐户的所有者。 按照这些步骤操作，为你自己授予存储帐户所有者角色。 也可使用此权限来创建自定义角色，将自己添加到该角色中。  
+如果在创建新数据共享或接收新数据共享时收到任何上述错误，则是因为没有足够的访问存储帐户的权限。 所需权限为“Microsoft.Authorization/role assignments/write”，它存在于存储所有者角色中，也可将其分配给自定义角色。 即使是你创建的存储帐户，也并不意味着你会自动成为该存储帐户的所有者。 按照这些步骤操作，为你自己授予存储帐户所有者角色。 也可使用此权限来创建自定义角色，将自己添加到该角色中。  
 
 1. 导航到 Azure 门户中的存储帐户
 1. 选择“访问控制(标识和访问管理)”
 1. 单击“添加”
 1. 将自己添加为所有者。
+
+## <a name="troubleshooting-sql-based-sharing"></a>基于 SQL 的共享疑难解答
+
+"错误： x 数据集未添加，因为你没有共享所需的权限。"
+
+如果从基于 SQL 的源添加数据集时收到此错误，可能是因为你未在 SQL Server 上创建 Azure 数据共享 MSI 的用户。  若要解决此问题，请运行以下脚本：
+
+```sql
+    create user <share_acct_name> from external provider;     
+    exec sp_addrolemember db_owner, <share_acct_name>; 
+```      
+请注意， *< share_acc_name >* 是数据共享帐户的名称。 如果尚未创建数据共享帐户，稍后可以返回到此先决条件。         
+
+确保已遵循[共享数据](share-your-data.md)教程中所列的所有先决条件。
 
 ## <a name="next-steps"></a>后续步骤
 

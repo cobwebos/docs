@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 61be3225f22aca821f8c26522ab37eab0c82bc26
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 5b49dcc7e999757e119c399bdf01bed7cb312e02
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677715"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465046"
 ---
 # <a name="currency-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的货币预生成实体
 预构建货币实体检测许多国家/地区/区域中许多面额的货币，无论 LUIS 应用语言区域是怎样的。 此实体已定型，因此不需要将包含货币的陈述示例添加到应用程序意向中。 [许多语言区域](luis-reference-prebuilt-entities.md)都支持货币实体。 
@@ -26,109 +26,64 @@ ms.locfileid: "71677715"
 
 ## <a name="resolution-for-currency-entity"></a>货币实体的解析
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
-
-以下示例显示了 **builtin.currency** 实体的解析。
-
-```json
-{
-  "query": "search for items under $10.99",
-  "topScoringIntent": {
-    "intent": "SearchForItems",
-    "score": 0.926173568
-  },
-  "intents": [
-    {
-      "intent": "SearchForItems",
-      "score": 0.926173568
-    },
-    {
-      "intent": "None",
-      "score": 0.07376878
-    }
-  ],
-  "entities": [
-    {
-      "entity": "$10.99",
-      "type": "builtin.currency",
-      "startIndex": 23,
-      "endIndex": 28,
-      "resolution": {
-        "unit": "Dollar",
-        "value": "10.99"
-      }
-    }
-  ]
-}
-```
-
-
-
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-responsetabv3"></a>[V3 响应](#tab/V3)
 
 以下 JSON 的 `verbose` 参数设置为 `false`：
 
 ```json
-{
-    "query": "search for items under $10.99",
-    "prediction": {
-        "normalizedQuery": "search for items under $10.99",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.605889857
-            }
-        },
-        "entities": {
-            "money": [
-                {
-                    "number": 10.99,
-                    "unit": "Dollar"
-                }
-            ]
+"entities": {
+    "money": [
+        {
+            "number": 10.99,
+            "units": "Dollar"
         }
-    }
+    ]
 }
 ```
-
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 详细响应](#tab/V3-verbose)
 以下 JSON 的 `verbose` 参数设置为 `true`：
 
 ```json
-{
-    "query": "search for items under $10.99",
-    "prediction": {
-        "normalizedQuery": "search for items under $10.99",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.605889857
-            }
-        },
-        "entities": {
-            "money": [
-                {
-                    "number": 10.99,
-                    "unit": "Dollar"
-                }
-            ],
-            "$instance": {
-                "money": [
-                    {
-                        "type": "builtin.currency",
-                        "text": "$10.99",
-                        "startIndex": 23,
-                        "length": 6,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
-                ]
-            }
+"entities": {
+    "money": [
+        {
+            "number": 10.99,
+            "unit": "Dollar"
         }
+    ],
+    "$instance": {
+        "money": [
+            {
+                "type": "builtin.currency",
+                "text": "$10.99",
+                "startIndex": 23,
+                "length": 6,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor"
+            }
+        ]
     }
 }
 ```
 
+#### <a name="v2-responsetabv2"></a>[V2 响应](#tab/V2)
 
+以下示例显示了 **builtin.currency** 实体的解析。
+
+```json
+"entities": [
+    {
+        "entity": "$10.99",
+        "type": "builtin.currency",
+        "startIndex": 23,
+        "endIndex": 28,
+        "resolution": {
+        "unit": "Dollar",
+        "value": "10.99"
+        }
+    }
+]
+```
 * * * 
 
 ## <a name="next-steps"></a>后续步骤

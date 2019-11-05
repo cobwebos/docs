@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b0fab51e002ecb431bf68f58984290889296b2a9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 4f5344259767aaad9ed58ded1da86ae7ee3c03e7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097541"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470108"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -25,12 +25,17 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 
 本文使用 [Azure 门户](https://portal.azure.com)和 Azure CLI 来处理诊断日志。 有关通过 Visual Studio 使用诊断日志的信息，请参阅[在 Visual Studio 中对 Azure 进行故障排除](troubleshoot-dotnet-visual-studio.md)。
 
-|类型|平台|Location|描述|
+> [!NOTE]
+> 除了本文中的日志记录说明，Azure 监视还提供了新的集成日志记录功能。 可以在["日志" 页和 "诊断设置（预览）" 页](https://aka.ms/appsvcblog-azmon)中找到此功能。 
+>
+>
+
+|类型|平台|位置|说明|
 |-|-|-|-|
 | 应用程序日志记录 | Windows、Linux | 应用服务文件系统和/或 Azure 存储 blob | 记录由应用程序代码生成的消息。 这些消息可以由你选择的 web 框架或你的应用程序代码使用你的语言的标准日志模式直接生成。 为每条消息分配以下类别之一：**严重**、**错误**、**警告**、**信息**、**调试**和**跟踪**。 启用应用程序日志记录时，可以通过设置严重性级别来选择要进行日志记录的详细程度。|
 | Web 服务器日志记录| Windows | 应用服务文件系统或 Azure 存储 blob| 采用[W3C 扩展日志文件格式](/windows/desktop/Http/w3c-logging)的原始 HTTP 请求数据。 每条日志消息都包括 HTTP 方法、资源 URI、客户端 IP、客户端端口、用户代理、响应代码等数据。 |
 | 详细错误日志记录 | Windows | 应用服务文件系统 | 已发送到客户端浏览器的 *.htm*错误页的副本。 出于安全原因，不应将详细的错误页发送到生产中的客户端，但应用服务可以在每次出现包含 HTTP 代码400或更高版本的应用程序错误时保存错误页。 页面可能包含可帮助确定服务器返回错误代码的原因的信息。 |
-| 请求跟踪失败 | Windows | 应用服务文件系统 | 有关失败请求的详细跟踪信息，包括用于处理请求的 IIS 组件和每个组件所用的时间的跟踪。 如果要提高站点性能或隔离特定的 HTTP 错误，这将非常有用。 为每个失败的请求生成一个文件夹，其中包含 XML 日志文件，以及用于查看日志文件的 XSL 样式表。 |
+| 失败请求跟踪 | Windows | 应用服务文件系统 | 有关失败请求的详细跟踪信息，包括用于处理请求的 IIS 组件和每个组件所用的时间的跟踪。 如果要提高站点性能或隔离特定的 HTTP 错误，这将非常有用。 为每个失败的请求生成一个文件夹，其中包含 XML 日志文件，以及用于查看日志文件的 XSL 样式表。 |
 | 部署日志记录 | Windows、Linux | 应用服务文件系统 | 将内容发布到应用时的日志。 部署日志记录自动发生，并且没有可配置的部署日志记录设置。 它可帮助你确定部署失败的原因。 例如，如果使用[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)，则可以使用部署日志记录来确定该脚本失败的原因。 |
 
 > [!NOTE]
@@ -45,12 +50,12 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 
 对于**应用程序日志记录（文件系统）** 或**应用程序日志记录（Blob）** ，请选择 **"打开**"。 
 
-**Filesystem**选项用于临时调试，并在12小时后关闭。 **Blob**选项用于长期日志记录，需要 blob 存储容器来写入日志。  **Blob**选项还在日志消息中包含其他信息，如日志消息的源 VM 实例的 ID （`InstanceId`）、线程 ID （`Tid`），以及更细化的时间戳（[`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks)）。
+**Filesystem**选项用于临时调试，并在12小时后关闭。 **Blob**选项用于长期日志记录，需要 blob 存储容器来写入日志。  **Blob**选项还在日志消息中包含其他信息，如日志消息的源 VM 实例的 ID （`InstanceId`）、线程 ID （`Tid`）以及更详细的时间戳（[`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks)）。
 
 > [!NOTE]
 > 目前，只有 .NET 应用程序日志可以写入到 blob 存储。 Java、PHP、node.js、Python 应用程序日志只能存储在应用服务文件系统上（无需修改代码即可将日志写入外部存储）。
 >
-> 此外，如果[重新生成存储帐户的访问密钥](../storage/common/storage-create-storage-account.md)，则必须重置相应的日志记录配置才能使用更新的访问密钥。 为此，请执行以下操作:
+> 此外，如果[重新生成存储帐户的访问密钥](../storage/common/storage-create-storage-account.md)，则必须重置相应的日志记录配置才能使用更新的访问密钥。 为此，请按以下步骤操作：
 >
 > 1. 在“配置”选项卡上，将相应的日志记录功能设置为“关闭”。 保存设置。
 > 2. 再次启用将日志记录到存储帐户 Blob。 保存设置。
@@ -59,9 +64,9 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 
 选择**级别**，或要记录的详细信息的级别。 下表显示了每个级别中包含的日志类别：
 
-| Level | 包含的类别 |
+| 级别 | 包含的类别 |
 |-|-|
-|**已禁用** | None |
+|**已禁用** | 无 |
 |**错误** | “错误”、“严重” |
 |**警告** | “警告”、“错误”、“严重”|
 |**信息** | “信息”、“警告”、“错误”、“严重”|
@@ -88,7 +93,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 在 "**保持期（天）** " 中，设置日志应保留的天数。
 
 > [!NOTE]
-> 如果[重新生成存储帐户的访问密钥](../storage/common/storage-create-storage-account.md)，则必须重置相应的日志记录配置才能使用更新的密钥。 为此，请执行以下操作:
+> 如果[重新生成存储帐户的访问密钥](../storage/common/storage-create-storage-account.md)，则必须重置相应的日志记录配置才能使用更新的密钥。 为此，请按以下步骤操作：
 >
 > 1. 在“配置”选项卡上，将相应的日志记录功能设置为“关闭”。 保存设置。
 > 2. 再次启用将日志记录到存储帐户 Blob。 保存设置。
@@ -158,19 +163,19 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 对于存储在应用服务文件系统中的日志，最简单的方法是在浏览器中下载 ZIP 文件，网址为：
 
-- Linux/容器应用：`https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
-- Windows 应用：`https://<app-name>.scm.azurewebsites.net/api/dump`
+- Linux/容器应用： `https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
+- Windows 应用： `https://<app-name>.scm.azurewebsites.net/api/dump`
 
 对于 Linux/容器应用，ZIP 文件包含 docker 主机和 docker 容器的控制台输出日志。 对于向外扩展的应用程序，ZIP 文件包含每个实例的一组日志。 在应用服务文件系统中，这些日志文件是 */home/LogFiles*目录的内容。
 
 对于 Windows 应用，ZIP 文件包含应用服务文件系统中*D:\Home\LogFiles*目录的内容。 其结构如下：
 
-| 日志类型 | 目录 | 描述 |
+| 日志类型 | Directory | 说明 |
 |-|-|-|
 | **应用程序日志** |*/LogFiles/Application/* | 包含一个或多个文本文件。 日志消息的格式取决于所使用的日志提供程序。 |
 | **失败请求跟踪** | */LogFiles/W3SVC # # # # # # # # #/* | 包含 XML 文件和一个 XSL 文件。 您可以在浏览器中查看格式化的 XML 文件。 |
 | **详细的错误日志** | */LogFiles/DetailedErrors/* | 包含 HTM 错误文件。 可以在浏览器中查看 HTM 文件。<br/>查看失败请求跟踪的另一种方法是导航到门户中的应用页面。 在左侧菜单中，选择 "**诊断和解决问题**"，然后搜索 "**失败请求跟踪日志**"，然后单击图标以浏览并查看所需跟踪。 |
-| **Web 服务器日志** | */LogFiles/http/RawLogs/* | 包含使用[W3C 扩展日志文件格式](/windows/desktop/Http/w3c-logging)进行格式化的文本文件。 可以使用文本编辑器或实用程序（如[Log Parser](https://go.microsoft.com/fwlink/?LinkId=246619)）读取此信息。<br/>应用服务不支持`s-computername`、 `s-ip`或`cs-version`字段。 |
+| **Web 服务器日志** | */LogFiles/http/RawLogs/* | 包含使用[W3C 扩展日志文件格式](/windows/desktop/Http/w3c-logging)进行格式化的文本文件。 可以使用文本编辑器或实用程序（如[Log Parser](https://go.microsoft.com/fwlink/?LinkId=246619)）读取此信息。<br/>应用服务不支持 `s-computername`、`s-ip`或 `cs-version` 字段。 |
 | **部署日志** | */LogFiles/Git/* 和 */deployments/* | 包含内部部署过程生成的日志以及 Git 部署的日志。 |
 
 ## <a name="nextsteps"></a>后续步骤

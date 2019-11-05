@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 1c9cdfa54494cd6d77edcd13110a79e5265e5032
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 675d1889fc74474a1d732cb5d4e9f46c638ce200
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817850"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467921"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>创建 Azure Data Lake Storage Gen2 存储帐户
 
@@ -23,11 +23,11 @@ Azure Data Lake Storage Gen2 [支持分层命名空间](data-lake-storage-introd
 
 ## <a name="prerequisites"></a>必备组件
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。 
 
 |           | 先决条件 |
 |-----------|--------------|
-|门户     | None         |
+|门户     | 无         |
 |PowerShell | 本文需要 PowerShell 模块 Az. Storage **0.7**或更高版本。 若要查找当前版本，请运行 `Get-Module -ListAvailable Az.Storage` 命令。 如果在运行此命令后，没有显示任何结果，或者如果出现 0.7 以下的版本，则必须升级 powershell 模块。 请参阅本指南的[升级 powershell 模块](#upgrade-your-powershell-module)部分。
 |CLI        | 可以登录到 Azure，然后采用以下两种方式之一运行 Azure CLI 命令： <ul><li>可以在 Azure 门户的 Azure Cloud Shell 中运行 CLI 命令 </li><li>可以安装 CLI 并在本地运行 CLI 命令</li></ul>|
 
@@ -35,21 +35,21 @@ Azure Data Lake Storage Gen2 [支持分层命名空间](data-lake-storage-introd
 
 ### <a name="use-azure-cloud-shell"></a>使用 Azure Cloud Shell
 
-Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置与你的帐户一起使用。 单击 Azure 门户右上角菜单上的“Cloud Shell”按钮：
+Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与你的帐户一起使用。 单击 Azure 门户右上角菜单上的“Cloud Shell”按钮：
 
 [![Cloud Shell](./media/data-lake-storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
 
 此按钮会启动交互式 shell，可用于运行本文中的步骤：
 
-[![显示门户中 Cloud Shell 窗口的屏幕截图](./media/data-lake-storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
+[![屏幕截图，显示门户中的 Cloud Shell 窗口](./media/data-lake-storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
 
 ### <a name="install-the-cli-locally"></a>在本地安装 CLI
 
-也可在本地安装和使用 Azure CLI。 本文要求运行 Azure CLI 版本2.0.38 或更高版本。 可以运行 `az --version` 来查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+也可在本地安装和使用 Azure CLI。 本文要求运行 Azure CLI 版本2.0.38 或更高版本。 运行 `az --version` 即可查找版本。 如需安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-storage-account-with-azure-data-lake-storage-gen2-enabled"></a>创建启用了 Azure Data Lake Storage Gen2 的存储帐户
 
-Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列、表和磁盘。 存储帐户为 Azure 存储数据提供唯一的命名空间，这些数据可通过 HTTP 或 HTTPS 从世界各地进行访问。 Azure 存储帐户中的数据是持久的、高度可用的、安全且高度可缩放的。
+Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列、表和磁盘。 存储帐户为你的 Azure 存储数据提供了一个唯一的命名空间，可以从世界上的任何位置通过 HTTP 或 HTTPS 访问该命名空间。 Azure 存储帐户中的数据是持久的，高度可用、安全且可大规模缩放。
 
 > [!NOTE]
 > 必须将新的存储帐户创建为 **StorageV2(常规用途 v2 )** 类型才能利用 Data Lake Storage Gen2 功能。  
@@ -62,7 +62,7 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
-每个存储帐户都必须属于 Azure 资源组。 资源组是对 Azure 资源进行分组的逻辑容器。 在创建存储帐户时，可以选择创建新的资源组，也可以使用现有资源组。 本文介绍如何创建新的资源组。
+每个存储帐户都必须属于 Azure 资源组。 资源组是对 Azure 资源进行分组的逻辑容器。 在创建存储帐户时，可以选择创建新的资源组，也可以使用现有资源组。 本文介绍如何创建新资源组。
 
 若要在 Azure 门户中创建常规用途 v2 存储帐户，请执行以下步骤：
 
@@ -78,7 +78,7 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 4. 然后，输入存储帐户的名称。 所选名称在 Azure 中必须唯一。 该名称还必须为 3 到 24 个字符，并且只能包含数字和小写字母。
 5. 选择一个位置。
 6. 确保**StorageV2 （常规用途 v2）** 在 "**帐户类型**" 下拉列表中显示为 "已选中"。
-7. 根据需要更改每个字段中的值： "**性能**"、"**复制**"、"**访问层**"。 若要了解有关这些选项的详细信息，请参阅[Azure 存储简介](https://docs.microsoft.com/azure/storage/common/storage-introduction#introducing-the-azure-storage-services)。
+7. 根据需要更改每个字段中的值： "**性能**"、"**复制**"、"**访问层**"。 若要了解有关这些选项的详细信息，请参阅[Azure 存储简介](https://docs.microsoft.com/azure/storage/common/storage-introduction#azure-storage-services)。
 8. 选择 "**高级**" 选项卡。
 10. 在“Data Lake Storage Gen2”部分中，将“分层命名空间”设置为“已启用”。
 11. 单击“查看 + 创建”以创建存储帐户。

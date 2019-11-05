@@ -10,12 +10,12 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 10/19/2019
-ms.openlocfilehash: 8727de7b13b6ac036e714ac5aca7ae017200097c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b07ce135d9efec6ecad369b6333d0a3bf2c3aab1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951219"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468247"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>将 Rigado Cascade 500 网关设备连接到 Azure IoT Central 应用程序
 
@@ -32,7 +32,7 @@ Cascade 500 预认证适用于 Azure IoT 即插即用（PnP），使我们的解
 若要逐步执行本操作方法指南，需要以下资源：
 
 * Rigado Cascade 500 设备。 有关详细信息，请访问[Rigado](https://www.rigado.com/)。
-* 从一个预览版应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建新的应用程序](https://docs.microsoft.com/azure/iot-central/quick-deploy-iot-central-pnp?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)。
+* 从一个预览版应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建新的应用程序](https://docs.microsoft.com/azure/iot-central/core/quick-deploy-iot-central-pnp?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)。
 
 ## <a name="add-a-device-template"></a>添加设备模板
 

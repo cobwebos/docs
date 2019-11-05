@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: ccddd13ddd8c10daba84f959b1cc1f8a4a80deb1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 71e4b62ddcb3f144b49b99e6ba95a47971d3f4bb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345553"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476963"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，此列表将进行扩展和更新，以涵盖更多服务。
@@ -56,7 +56,7 @@ ms.locfileid: "71345553"
 * [Azure 防火墙](#azure-firewall-limits)
 * [Azure Functions](#functions-limits)
 * [Azure Kubernetes 服务](#azure-kubernetes-service-limits)
-* [Azure 机器学习服务](#azure-machine-learning-service-limits)
+* [Azure 机器学习](#azure-machine-learning-limits)
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#azure-monitor-limits)
 * [Azure Policy](#azure-policy-limits)
@@ -68,7 +68,7 @@ ms.locfileid: "71345553"
 * [容器实例](#container-instances-limits)
 * [容器注册表](#container-registry-limits)
 * [内容交付网络](#content-delivery-network-limits)
-* [数据工厂](#data-factory-limits)
+* [Data Factory](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
 * [数据库迁移服务](#database-migration-service-limits)
@@ -78,12 +78,13 @@ ms.locfileid: "71345553"
 * [标识管理器](#identity-manager-limits)
 * [IoT 中心](#iot-hub-limits)
 * [IoT 中心设备预配服务](#iot-hub-device-provisioning-service-limits)
-* [Key Vault](#key-vault-limits)
+* [密钥保管库](#key-vault-limits)
 * [媒体服务](#media-services-limits)
 * [移动服务](#mobile-services-limits)
 * [多重身份验证](#multi-factor-authentication-limits)
-* [网络](#networking-limits)
+* [联网](#networking-limits)
   * [应用程序网关](#application-gateway-limits)
+  * [Azure 堡垒](#azure-bastion-limits)
   * [Azure DNS](#azure-dns-limits)
   * [Azure Front Door 服务](#azure-front-door-service-limits)
   * [Azure 防火墙](#azure-firewall-limits)
@@ -154,7 +155,7 @@ ms.locfileid: "71345553"
 ### <a name="azure-kubernetes-service-limits"></a>Azure Kubernetes 服务限制
 [!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
 
-### <a name="azure-machine-learning-service-limits"></a>Azure 机器学习服务限制
+### <a name="azure-machine-learning-limits"></a>Azure 机器学习限制
 可以在 " [Azure 机器学习配额" 页](../articles/machine-learning/service/how-to-manage-quotas.md)中找到 Azure 机器学习计算配额的最新值
 
 ### <a name="networking-limits"></a>网络限制
@@ -179,6 +180,9 @@ ms.locfileid: "71345553"
 
 #### <a name="traffic-manager-limits"></a>流量管理器限制
 [!INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]
+
+#### <a name="azure-bastion-limits"></a>Azure 堡垒限制
+[!INCLUDE [Azure Bastion limits](../includes/bastion-limits.md)]
 
 #### <a name="azure-dns-limits"></a>Azure DNS 限制
 [!INCLUDE [dns-limits](../includes/dns-limits.md)]
@@ -398,7 +402,7 @@ ms.locfileid: "71345553"
 ### <a name="sql-data-warehouse-limits"></a>SQL 数据仓库限制
 有关 SQL 数据仓库限制，请参阅 [SQL 数据仓库资源限制](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 - [了解 Azure 限制及如何提高限制](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 - [Azure 的虚拟机和云服务大小](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure 云服务的大小](cloud-services/cloud-services-sizes-specs.md)

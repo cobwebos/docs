@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: f9d4b933bc9c6e11dde8168d9797a1b6196e6f47
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 59f2db8ec4dd8affe1c87ca2bb85a7ff7b8a4d7c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170690"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485395"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>使用 Azure 中的 Linux Data Science Virtual Machine 进行数据科学
 
@@ -24,15 +24,15 @@ ms.locfileid: "71170690"
 
 在本演练中，我们将分析[spambase](https://archive.ics.uci.edu/ml/datasets/spambase)数据集。 Spambase 是一组标记为垃圾邮件或 ham （而不是垃圾邮件）的电子邮件。 Spambase 还包含有关电子邮件内容的一些统计信息。 我们稍后将在本演练中讨论统计信息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 使用 Linux DSVM 之前，必须具备以下先决条件：
 
 * **Azure 订阅**。 若要获取 Azure 订阅，请参阅[立即创建免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * [**Linux Data Science Virtual Machine**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm)。 有关设置虚拟机的信息，请参阅[预配 Linux Data Science Virtual Machine](linux-dsvm-intro.md)。
 * 使用打开的 XFCE 会话在计算机上安装[**X2Go**](https://wiki.x2go.org/doku.php) 。 有关详细信息，请参阅[安装和配置 X2Go 客户端](linux-dsvm-intro.md#x2go)。
-* 为了获得更流畅的滚动体验，请在 DSVM 的 Firefox web 浏览器`gfx.xrender.enabled`中切换`about:config`中的标志。 [了解详细信息](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 还应考虑`mousewheel.enable_pixel_scrolling`将`False`设置为。 [了解详细信息](https://support.mozilla.org/questions/981140)。
-* **Azure 机器学习帐户**。 如果还没有该帐户，请在 " [Azure 机器学习" 主页](https://studio.azureml.net/)上注册一个新帐户。 你可以免费试用，帮助你入门。
+* 为了获得更流畅的滚动体验，请在 DSVM 的 Firefox web 浏览器中切换 `about:config`中的 `gfx.xrender.enabled` 标志。 [了解详细信息](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 还要考虑将 `mousewheel.enable_pixel_scrolling` 设置为 `False`。 [了解详细信息](https://support.mozilla.org/questions/981140)。
+* **Azure 机器学习帐户**。 如果还没有该帐户，请在 " [Azure 机器学习" 主页](https://azure.microsoft.com/free/services/machine-learning//)上注册一个新帐户。
 
 ## <a name="download-the-spambase-dataset"></a>下载 spambase 数据集
 
@@ -58,9 +58,9 @@ ms.locfileid: "71170690"
 
 数据集为每封电子邮件提供多种类型的统计信息：
 
-* **Word\_高频\_ *字*** 等列指示电子邮件中与*word*匹配的单词的百分比。 例如，如果**word\_频率\_** 为**1**，则电子邮件中所有单词的 1% 都*是。*
-* 列（**如\_char\_频率 *char*）** 指示电子邮件中作为*char*的所有字符的百分比。
-* **capital\_run\_length\_longest** 是一连串大写字母的最大长度。
+* 诸如**word\_频率\_的列 * word*** 指示电子邮件中与*单词*匹配的单词的百分比。 例如，如果**word\_频率\_使**为**1**，则电子邮件中所有单词的 1 *% 都为1。*
+* **Char\_频率列（如 char\_* char***）指示电子邮件中作为*char*的所有字符的百分比。
+* **capital\_run\_length\_longest** 是连串大写字母的最大长度。
 * **capital\_run\_length\_average** 是所有连串大写字母的平均长度。
 * **capital\_run\_length\_total** 是所有连串大写字母的合计长度。
 * **spam** 指示是否将电子邮件视为垃圾邮件（1 = 垃圾邮件，0 = 不是垃圾邮件）。
@@ -139,7 +139,7 @@ ms.locfileid: "71170690"
     plot(model.rpart)
     text(model.rpart)
 
-下面是结果：
+结果如下：
 
 ![创建的决策树的关系图](./media/linux-dsvm-walkthrough/decision-tree.png)
 
@@ -172,17 +172,17 @@ ms.locfileid: "71170690"
     accuracy
 
 
-## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>将模型部署到 Azure 机器学习 Studio
+## <a name="deploy-a-model-to-azure-machine-learning-studio-classic"></a>将模型部署到 Azure 机器学习 Studio （经典）
 
-[Azure 机器学习工作室](https://studio.azureml.net/)是一种云服务，可用来轻松地生成和部署预测分析模型。 Azure 机器学习 Studio 的一项不错的功能是能够将任何 R 函数发布为 web 服务。 Azure 机器学习 Studio R 包可让你轻松地从 DSVM 上的 R 会话进行部署。
+[Azure 机器学习 Studio （经典）](https://studio.azureml.net/)是一种云服务，可让你轻松构建和部署预测分析模型。 Azure 机器学习 Studio 经典版的一项良好功能是能够将任何 R 函数发布为 web 服务。 Azure 机器学习 Studio R 包可让你轻松地从 DSVM 上的 R 会话进行部署。
 
-若要从上一节中部署决策树代码，请登录到 Azure 机器学习 Studio。 需要使用工作区 ID 和授权令牌进行登录。 若要查找这些值并将 Azure 机器学习变量初始化为这些值，请完成以下步骤：
+若要从上一节中部署决策树代码，请登录到 Azure 机器学习 Studio （经典）。 需要使用工作区 ID 和授权令牌进行登录。 若要查找这些值并将 Azure 机器学习变量初始化为这些值，请完成以下步骤：
 
 1. 在左侧菜单中，选择 "**设置**"。 请注意 "**工作区 ID**" 的值。
 
    ![Azure 机器学习 Studio 工作区 ID](./media/linux-dsvm-walkthrough/workspace-id.png)
 
-1. 选择 "**授权令牌**" 选项卡。请注意**主授权令牌**的值。
+1. 选择 "**授权令牌**" 选项卡。请记下**主授权令牌**的值。
 
    ![Azure 机器学习 Studio 主授权令牌](./media/linux-dsvm-walkthrough/workspace-token.png)
 1. 加载**AzureML**包，然后在 DSVM 上的 R 会话中将变量的值设置为令牌和工作区 ID：
@@ -229,13 +229,13 @@ ms.locfileid: "71170690"
 
 除了基于框架的示例外，还提供了一组全面的演练。 这些演练可帮助你快速开始开发域中的深度学习应用程序，如图像和文本/语言理解等。
 
-- [在不同的框架中运行神经网络](https://github.com/ilkarman/DeepLearningFrameworks)：介绍如何将代码从一个框架迁移到另一个框架的综合演练。 它还演示如何在框架之间比较模型和运行时性能。 
+- [跨不同框架运行神经网络](https://github.com/ilkarman/DeepLearningFrameworks)：一个全面演练，演示如何将代码从一个框架迁移到另一个框架。 它还演示如何在框架之间比较模型和运行时性能。 
 
-- [如何构建端到端解决方案来检测图像中的产品的操作方法指南](https://github.com/Azure/cortana-intelligence-product-detection-from-images)：图像检测是一种能够对图像中的对象进行定位和分类的技术。 该技术可能会在许多现实业务领域中带来巨大的回报。 例如，零售商可以使用此技术确定客户已从货架上选取哪个产品。 从而，此信息可帮助商店管理产品库存。 
+- [如何构建端到端解决方案来检测图像中的产品](https://github.com/Azure/cortana-intelligence-product-detection-from-images)：图像检测是一种可以在图像中查找和分类对象的方法。 该技术可能会在许多现实业务领域中带来巨大的回报。 例如，零售商可以使用此技术确定客户已从货架上选取哪个产品。 从而，此信息可帮助商店管理产品库存。 
 
-- [深入了解音频](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/)：本教程介绍如何为 "[市内声音" 数据集](https://urbansounddataset.weebly.com/)上的音频事件检测训练深度学习模型。 本教程提供了有关如何使用音频数据的概述。
+- [深入了解音频](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/)：本教程演示如何针对 "[市内声音" 数据集](https://urbansounddataset.weebly.com/)训练深度学习模型，以便进行音频事件检测。 本教程提供了有关如何使用音频数据的概述。
 
-- [文本文档分类](https://github.com/anargyri/lstm_han)：本演练演示如何生成和训练两种不同的神经网络体系结构：分层注意网络和长期内存（LSTM）。 这些神经网络使用用于深度学习的 Keras API 对文本文档进行分类。 Keras 是以下三大最热门深度学习框架的前端：Microsoft Cognitive Toolkit、TensorFlow 和 Theano。
+- [文本文档分类](https://github.com/anargyri/lstm_han)：本演练演示如何构建和训练两种不同的神经网络体系结构：分层注意网络和长期内存（LSTM）。 这些神经网络使用用于深度学习的 Keras API 对文本文档进行分类。 Keras 是以下三个最受欢迎的深度学习框架的前端：Microsoft Cognitive Toolkit、TensorFlow 和 Theano。
 
 ## <a name="other-tools"></a>其他工具
 
@@ -322,17 +322,17 @@ XGBoost 也可以从 Python 或命令行调用。
 
 ### <a name="jupyterhub"></a>JupyterHub
 
-DSVM 中的 Anaconda 分布附带了一个 Jupyter Notebook，这是一个用于共享 Python、R 或 Julia 代码和分析的跨平台环境。 Jupyter Notebook 通过 JupyterHub 访问。 在 https://\<DSVM DNS 名称或 IP 地址\>： 8000/时使用本地 Linux 用户名和密码登录。 JupyterHub 的所有配置文件均可在/etc/jupyterhub. 中找到。
+DSVM 中的 Anaconda 分布附带了一个 Jupyter Notebook，这是一个用于共享 Python、R 或 Julia 代码和分析的跨平台环境。 Jupyter Notebook 通过 JupyterHub 访问。 使用本地 Linux 用户名和密码登录到 https://\<DSVM DNS 名称或 IP 地址\>： 8000/。 JupyterHub 的所有配置文件均可在/etc/jupyterhub. 中找到。
 
 > [!NOTE]
-> 若要从当前内核中的 Jupyter Notebook 使用`pip` Python 包管理器（通过命令），请在代码单元中使用以下命令：
+> 若要在当前内核中从 Jupyter Notebook 使用 Python 包管理器（通过 `pip` 命令），请在代码单元中使用以下命令：
 >
 >   ```python
 >    import sys
 >    ! {sys.executable} -m pip install numpy -y
 >   ```
 > 
-> 若要将 Conda 安装程序（通过`conda`命令）用于当前内核中的 Jupyter Notebook，请在代码单元中使用以下命令：
+> 若要在当前内核中从 Jupyter Notebook 使用 Conda 安装程序（通过 `conda` 命令），请在代码单元中使用以下命令：
 >
 >   ```python
 >    import sys
@@ -352,7 +352,7 @@ DSVM 上已安装了几个示例笔记本：
 
 ### <a name="rattle"></a>Rattle
 
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html)（*R* *A*nalytical *t*ool *t*o *L*获得*E*asily）是用于数据挖掘的图形化 R 工具。 Rattle 具有直观的界面，使您可以轻松地加载、浏览和转换数据，以及生成和评估模型。 [Rattle用于 R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf)的数据挖掘 GUI 提供演示 Rattle 功能的演练。
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) （*R* *A*nalytical *t*ool *t*o *L*赢得*E*asily）是一种用于数据挖掘的图形化 R 工具。 Rattle 具有直观的界面，使您可以轻松地加载、浏览和转换数据，以及生成和评估模型。 [Rattle：用于 R 的数据挖掘 GUI](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf)提供演示 Rattle 功能的演练。
 
 通过运行以下命令安装和启动 Rattle：
 
@@ -382,12 +382,12 @@ Rattle 使用一个基于选项卡的接口。 大部分选项卡与[团队数�
 
 1. 选择”**分布**“。
 1. 对于**word_freq_remove**和**word_freq_you**，选择 "**直方图**"。
-1. 选择“执行”。 你应在单个图形窗口中看到两个密度图，在这种情况下，_在电子_邮件中显示的词比_删除_更频繁。
+1. 选择”**执行**“。 你应在单个图形窗口中看到两个密度图，在这种情况下，_在电子_邮件中显示的词比_删除_更频繁。
 
 **相关**图形也很有趣。 创建绘图：
 
 1. 对于 "**类型**"，请选择 "**关联**"。
-1. 选择“执行”。
+1. 选择”**执行**“。
 1. Rattle 会发出警告，建议最多使用 40 个变量。 选择”**是**“以查看该绘图。
 
 这会带来一些有趣的相关性：例如，_技术_与_HP_和_实验室_密切相关。 由于数据集赞助者的区号为650，因此它也强烈关联到_650_ 。
@@ -409,26 +409,26 @@ Rattle 还可以运行群集分析。 让我们来排除某些功能，以使输
 * word_freq_business
 * spam
 
-返回到 "**群集**" 选项卡。选择 " **KMeans**"，然后将 "**群集数**" 设置为**4**。 选择“执行”。 结果会显示在输出窗口中。 一个群集具有高频率的_george_和_hp_，可能是合法的业务电子邮件。
+返回到 "**群集**" 选项卡。选择 " **KMeans**"，然后将 "**群集数**" 设置为**4**。 选择”**执行**“。 结果会显示在输出窗口中。 一个群集具有高频率的_george_和_hp_，可能是合法的业务电子邮件。
 
 构建基本决策树机器学习模型：
 
 1. 选择”**模型**“选项卡，
 1. 对于 "**类型**"，选择 "**树**"。
-1. 选择“执行”在输出窗口中以文本形式显示树。
+1. 选择“执行”，可在输出窗口中以文本形式显示树。
 1. 选择”**绘制**“按钮，以查看图形版本。 决策树类似于我们之前通过使用 rpart 获取的树。
 
 Rattle 的一项有用功能是它能够运行多个机器学习方法并快速对它们进行评估。 步骤如下：
 
 1. 对于 "**类型**"，请选择 "**全部**"。
-1. 选择“执行”。
+1. 选择”**执行**“。
 1. Rattle 完成运行后，可以选择任意**类型**值（如**SVM**），然后查看结果。
-1. 您还可以通过使用 "**评估**" 选项卡来比较验证集上的模型的性能。例如，”**错误矩阵**“选项显示验证集上每个模型的混淆矩阵、整体错误和平均类错误。 还可以绘制 ROC 曲线、运行敏感度分析和执行其他类型的模型评估。
+1. 您还可以通过使用 "**评估**" 选项卡来比较验证集上的模型的性能。例如，**错误矩阵**选择显示验证集上每个模型的混淆矩阵、整体错误和平均类错误。 还可以绘制 ROC 曲线、运行敏感度分析和执行其他类型的模型评估。
 
 完成模型构建后，选择 "**日志**" 选项卡以查看在会话期间由 Rattle 运行的 R 代码。 可选择“导出”按钮来保存它。
 
 > [!NOTE]
-> Rattle 的当前版本包含 bug。 若要修改脚本或稍后使用它来重复步骤，必须在日志文本中的 **#** "*导出此日志 ...* " 前面插入一个字符。
+> Rattle 的当前版本包含 bug。 若要修改脚本或稍后使用它来重复步骤，必须在日志文本中的 "*导出此日志 ...* " 前面插入 **#** 字符。
 
 ### <a name="postgresql-and-squirrel-sql"></a>PostgreSQL 和 SQuirreL SQL
 
@@ -485,15 +485,15 @@ DSVM 已预安装 PostgreSQL。 PostgreSQL 是一个复杂的开源关系数据�
 
 1. 选择 " **Windows** > **查看驱动程序**"。
 1. 右键单击**PostgreSQL** ，然后选择 "**修改驱动程序**"。
-1. 选择 "**附加类路径** > " "**添加**"。
+1. 选择 "**附加类路径**" > "**添加**"。
 1. 对于 "**文件名**"，请输入 **/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar**。
 1. 选择“打开”。
 1. 选择 "**列出驱动程序**"。 对于 "**类名**"，请选择 " **postgresql**"，然后选择 **"确定"** 。
 
 设置与本地服务器的连接：
 
-1. 选择 " **Windows** > **视图别名"。**
-1. **+** 选择按钮以创建新别名。 对于 "新别名"，请输入**垃圾邮件数据库**。 
+1. 选择**Windows** > **查看别名。**
+1. 选择 " **+** " 按钮以创建新别名。 对于 "新别名"，请输入**垃圾邮件数据库**。 
 1. 对于 "**驱动程序**"，选择**PostgreSQL**。
 1. 将 URL 设置为 **jdbc:postgresql://localhost/spam**。
 1. 输入用户名和密码。
@@ -504,7 +504,7 @@ DSVM 已预安装 PostgreSQL。 PostgreSQL 是一个复杂的开源关系数据�
 运行一些查询：
 
 1. 选择“SQL”选项卡。
-1. 在 " **SQL** " 选项卡顶部的 "查询" 框中，输入一个基本查询`SELECT * from data;`，如。
+1. 在 " **SQL** " 选项卡顶部的 "查询" 框中，输入一个基本查询，如 `SELECT * from data;`。
 1. 按 Ctrl + Enter 以运行查询。 默认情况下，SQuirreL SQL 从查询返回前100行。
 
 您还可以运行多个查询来浏览此数据。 例如，在垃圾邮件和非垃圾邮件之间单词 *make* 的频率存在何种差异？

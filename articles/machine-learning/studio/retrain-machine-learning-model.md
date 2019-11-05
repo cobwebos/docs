@@ -1,7 +1,7 @@
 ---
 title: 重新训练并部署 Web 服务
-titleSuffix: Azure Machine Learning Studio
-description: 了解如何更新 Web 服务以在 Azure 机器学习工作室中使用新训练的机器学习模型。
+titleSuffix: Azure Machine Learning Studio (classic)
+description: 了解如何在 Azure 机器学习 Studio （经典）中更新 web 服务以使用新训练的机器学习模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: a3f441a0dd7f7b9f402390e853bd1c28f282f653
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55b054ffe55430ea106c72cdd91fdfba3a457cf5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245096"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482992"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>重新训练和部署机器学习模型
 
-重新训练是确保机器学习模型保持准确的一种方法，该方法基于最相关的可用数据。 本文展示了如何在工作室中重新训练机器学习模型并将其部署为新的 Web 服务。 如果要重新训练经典 Web 服务，请参阅[此操作说明文章](retrain-classic-web-service.md)。
+重新训练是确保机器学习模型保持准确的一种方法，该方法基于最相关的可用数据。 本文说明如何重新训练和部署机器学习模型，作为 Studio （经典）中的新 web 服务。 如果要重新训练经典 Web 服务，请参阅[此操作说明文章](retrain-classic-web-service.md)。
 
-本文假设你已部署了一个预测 Web 服务。 如果还没有预测 Web 服务，请[了解如何在此处部署工作室 Web 服务](publish-a-machine-learning-web-service.md)。
+本文假设你已部署了一个预测 Web 服务。 如果还没有预测性 web 服务，请[在此处了解如何部署 Studio （经典） web 服务。](publish-a-machine-learning-web-service.md)
 
 你将执行以下步骤来重新训练和部署机器学习新 Web 服务：
 
@@ -48,10 +48,10 @@ ms.locfileid: "66245096"
 
     现在，将训练实验部署为重新训练 Web 服务，用于输出经过训练的模型和模型评估结果。
 
-1. 在实验画布的底部，单击“设置 Web 服务”  。
-1. 选择“部署 Web 服务[新建]”  。 Azure 机器学习 Web 服务门户可打开“部署 Web 服务”  页。
+1. 在实验画布的底部，单击“设置 Web 服务”。
+1. 选择“部署 Web 服务[新建]”。 Azure 机器学习 Web 服务门户可打开“部署 Web 服务”页。
 1. 为 Web 服务键入名称，选择一个付款计划。
-1. 选择“部署”。 
+1. 选择“部署”。
 
 ## <a name="retrain-the-model"></a>重新训练模型
 
@@ -59,7 +59,7 @@ ms.locfileid: "66245096"
 
 使用以下步骤来调用重新训练 API：
 
-1. 在 Visual Studio 中创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用(.NET Framework)”      。
+1. 在 Visual Studio 中创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用(.NET Framework)”。
 1. 登录“机器学习 Web 服务”门户。
 1. 单击正在使用的 Web 服务。
 1. 单击“**使用**”。
@@ -68,7 +68,7 @@ ms.locfileid: "66245096"
 
 按照注释中指定的方式添加 NuGet 包 Microsoft.AspNet.WebApi.Client。 要添加对 Microsoft.WindowsAzure.Storage.dll 的引用，可能需要安装 [Azure 存储服务的客户端库](https://www.nuget.org/packages/WindowsAzure.Storage)。
 
-以下屏幕截图显示 Azure 机器学习 Web 服务门户中的“使用”  页。
+以下屏幕截图显示 Azure 机器学习 Web 服务门户中的“使用”页。
 
 ![使用页](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
@@ -78,21 +78,21 @@ ms.locfileid: "66245096"
 
     const string apiKey = "abc123"; // Replace this with the API key for the web service
 
-在“使用”  页的“基本使用信息”  部分中，找到主密钥，并将其复制到 **apikey** 声明。
+在“使用”页的“基本使用信息”部分中，找到主密钥，并将其复制到 **apikey** 声明。
 
 ### <a name="update-the-azure-storage-information"></a>更新 Azure 存储信息
 
 BES 示例代码将文件从本地驱动器（例如，“C:\temp\CensusInput.csv”）上传到 Azure 存储、对其进行处理，并将结果写回 Azure 存储。
 
 1. 登录到 Azure 门户
-1. 在左侧导航栏中，单击“更多服务”  ，搜索“存储帐户”  ，然后选择它。
+1. 在左侧导航栏中，单击“更多服务”，搜索“存储帐户”，然后选择它。
 1. 从存储帐户列表中，选择一个来存储重新训练模型。
-1. 在左侧导航栏中，单击“访问密钥”  。
-1. 复制并保存“主访问密钥”  。
-1. 在左侧的导航栏中，单击**Blob**。
+1. 在左侧导航栏中，单击“访问密钥”。
+1. 复制并保存“主访问密钥”。
+1. 在左侧导航栏中，单击 " **blob**"。
 1. 选择现有容器或创建新的容器并保存名称。
 
-找到“StorageAccountName”  、“StorageAccountKey”  和“StorageContainerName”  声明，然后更新从门户保存的值。
+找到“StorageAccountName”、“StorageAccountKey”和“StorageContainerName”声明，然后更新从门户保存的值。
 
     const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
     const string StorageAccountKey = "a_storage_account_key"; // Replace this with your Azure Storage key
@@ -132,15 +132,15 @@ BES 示例代码将文件从本地驱动器（例如，“C:\temp\CensusInput.cs
 
 ### <a name="sign-in-to-azure-resource-manager"></a>登录到 Azure 资源管理器
 
-首先，登录到 Azure 帐户从 PowerShell 环境中使用[Connect AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet。
+首先，使用[AzAccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet 从 PowerShell 环境中登录到 Azure 帐户。
 
 ### <a name="get-the-web-service-definition-object"></a>获取 Web 服务定义对象
 
-接下来，获取通过调用 Web 服务定义对象[Get AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservice) cmdlet。
+接下来，通过调用[AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservice) Cmdlet 获取 Web 服务定义对象。
 
     $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
-若要确定现有 web 服务的资源组名称，请运行不带任何参数，以显示你的订阅中的 web 服务获取 AzMlWebService cmdlet。 定位到 Web 服务，并查看其 Web 服务 ID。 资源组的名称是 ID 中的第四个元素，紧随 *resourceGroups* 元素之后。 在下面的示例中，资源组名称为 Default-MachineLearning-SouthCentralUS。
+若要确定现有 web 服务的资源组名称，请在不使用任何参数的情况下运行 AzMlWebService cmdlet 以显示订阅中的 web 服务。 定位到 Web 服务，并查看其 Web 服务 ID。 资源组的名称是 ID 中的第四个元素，紧随 *resourceGroups* 元素之后。 在下面的示例中，资源组名称为 Default-MachineLearning-SouthCentralUS。
 
     Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
     Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
@@ -155,7 +155,7 @@ BES 示例代码将文件从本地驱动器（例如，“C:\temp\CensusInput.cs
 
 ### <a name="export-the-web-service-definition-object-as-json"></a>将 Web 服务定义对象导出为 JSON
 
-若要修改训练的模型以使用新训练的模型的定义，必须先使用[导出 AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) cmdlet 将其导出为 JSON 格式的文件。
+若要修改定型模型的定义以使用新训练的模型，必须先使用[AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) cmdlet 将其导出到 JSON 格式的文件。
 
     Export-AzMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
 
@@ -178,13 +178,13 @@ BES 示例代码将文件从本地驱动器（例如，“C:\temp\CensusInput.cs
 
 ### <a name="import-the-json-into-a-web-service-definition-object"></a>将 JSON 导入到 Web 服务定义对象
 
-使用[导入 AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/import-azmlwebservice) cmdlet 将修改后的 JSON 文件转换回可用于更新预测实验的 Web 服务定义对象。
+使用[AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/import-azmlwebservice) cmdlet 将修改的 JSON 文件转换回可用于更新预测实验的 Web 服务定义对象。
 
     $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
 
 ### <a name="update-the-web-service"></a>更新 Web 服务
 
-最后，使用[更新 AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) cmdlet 更新预测实验。
+最后，使用[AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) cmdlet 更新预测实验。
 
     Update-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 

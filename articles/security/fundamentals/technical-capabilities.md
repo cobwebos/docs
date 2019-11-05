@@ -1,6 +1,6 @@
 ---
 title: Azure 中的安全技术功能-Microsoft Azure
-description: Azure 中的安全服务简介, 可帮助你保护云中的数据、资源和应用程序。
+description: Azure 中的安全服务简介，可帮助你保护云中的数据、资源和应用程序。
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: ac9a62a810a957c67d9c24063d01eff822c8294f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: dbc17cff2347cd86db3296f4aa2de76ef0f75460
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129293"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468075"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
-本文介绍了 Azure 中的安全服务, 可帮助你保护云中的数据、资源和应用程序, 并满足业务的安全需求。
+本文介绍了 Azure 中的安全服务，可帮助你保护云中的数据、资源和应用程序，并满足业务的安全需求。
 
 ## <a name="azure-platform"></a>Azure 平台
 
@@ -41,9 +41,9 @@ Microsoft Azure 是唯一一个提供安全一致的应用程序平台和服务�
 
 - 保护业务。
 
-## <a name="security-technical-capabilities-to-fulfil-your-responsibility"></a>安全技术功能, 可满足你的责任
+## <a name="security-technical-capabilities-to-fulfil-your-responsibility"></a>安全技术功能，可满足你的责任
 
-Microsoft Azure 提供的服务可帮助你满足安全、隐私和合规性需求。 下图可帮助解释各种 Azure 服务, 以根据行业标准构建安全且符合标准的应用程序基础结构。
+Microsoft Azure 提供的服务可帮助你满足安全、隐私和合规性需求。 下图可帮助解释各种 Azure 服务，以根据行业标准构建安全且符合标准的应用程序基础结构。
 
 ![可用的安全技术功能 — 大图](./media/technical-capabilities/azure-security-technical-capabilities-fig1.png)
 
@@ -53,7 +53,7 @@ Microsoft Azure 提供的服务可帮助你满足安全、隐私和合规性需�
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Microsoft 标识和访问管理解决方案可帮助 IT 保护对企业数据中心和云中的应用程序和资源的访问, 从而支持附加的验证级别, 例如多重身份验证和条件性访问政策. 通过高级安全报告、审核和警报来监视可疑活动，有助于减少潜在的安全问题。 [Azure Active Directory Premium](../../active-directory/active-directory-whatis.md)提供对数千个云应用的单一登录, 以及对本地运行的 web 应用的访问权限。
+Microsoft 标识和访问管理解决方案可帮助 IT 保护对企业数据中心和云中的应用程序和资源的访问，从而支持附加的验证级别，例如多重身份验证和条件性访问政策. 通过高级安全报告、审核和警报来监视可疑活动，有助于减少潜在的安全问题。 [Azure Active Directory Premium](../../active-directory/active-directory-whatis.md)提供对数千个云应用的单一登录，以及对本地运行的 web 应用的访问权限。
 
 Azure Active Directory (Azure AD) 在安全方面的益处包括以下能力：
 
@@ -65,11 +65,11 @@ Azure Active Directory (Azure AD) 在安全方面的益处包括以下能力：
 
 - 通过 Azure AD 应用程序代理预配对本地 Web 应用程序的安全远程访问。
 
-[Azure Active Directory 门户](https://aad.portal.azure.com/)作为 Azure 门户的一部分提供。 在此仪表板中, 你可以大致了解你的组织的状态, 并轻松管理目录、用户或应用程序访问。
+[Azure Active Directory 门户](https://aad.portal.azure.com/)作为 Azure 门户的一部分提供。 在此仪表板中，你可以大致了解你的组织的状态，并轻松管理目录、用户或应用程序访问。
 
 ![Azure Active Directory](./media/technical-capabilities/azure-security-technical-capabilities-fig2.png)
 
-以下是 Azure 标识管理的核心功能:
+以下是 Azure 标识管理的核心功能：
 
 - 单一登录
 
@@ -89,7 +89,7 @@ Azure Active Directory (Azure AD) 在安全方面的益处包括以下能力：
 
 [单一登录 (SSO)](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) 是指只需使用单个用户帐户登录一次，就能访问开展业务所需的全部应用程序和资源。 登录之后，用户可以访问所需的全部应用程序，而无需再次进行身份验证（例如键入密码）。
 
-许多组织依赖软件即服务 (SaaS) 应用程序 (如 Office 365、Box 和 Salesforce) 来提高最终用户的工作效率。 从历史上看，IT 人员需要在每个 SaaS 应用程序中单独创建和更新用户帐户，而用户需要记住每个 SaaS 应用程序的密码。
+许多组织依赖软件即服务（SaaS）应用程序（如 Office 365、Box 和 Salesforce）来提高最终用户的工作效率。 从历史上看，IT 人员需要在每个 SaaS 应用程序中单独创建和更新用户帐户，而用户需要记住每个 SaaS 应用程序的密码。
 
 [Azure AD 将本地 Active Directory 扩展到云](../../active-directory/manage-apps/what-is-single-sign-on.md)，让用户不仅能够使用主要组织帐户登录到已加入域的设备和公司资源，而且还能登录到完成工作所需的全部 Web 和 SaaS 应用程序。
 
@@ -97,7 +97,7 @@ Azure Active Directory (Azure AD) 在安全方面的益处包括以下能力：
 
 #### <a name="multi-factor-authentication"></a>多重身份验证
 
-[Azure 多重身份验证 (MFA)](../../active-directory/authentication/multi-factor-authentication.md)是一种需要使用多种验证方法并向用户登录和事务添加关键的第二层安全性的身份验证方法。 [MFA 可帮助保护](../../active-directory/authentication/concept-mfa-howitworks.md)对数据和应用程序的访问，同时满足用户对简单登录过程的需求。 它通过各种验证选项（例如电话、短信、移动应用通知或验证码和第三方 OAuth 令牌）来提供强身份验证。
+[Azure 多重身份验证（MFA）](../../active-directory/authentication/multi-factor-authentication.md)是一种需要使用多种验证方法并向用户登录和事务添加关键的第二层安全性的身份验证方法。 [MFA 可帮助保护](../../active-directory/authentication/concept-mfa-howitworks.md)对数据和应用程序的访问，同时满足用户对简单登录过程的需求。 它通过各种验证选项（例如电话、短信、移动应用通知或验证码和第三方 OAuth 令牌）来提供强身份验证。
 
 #### <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>安全监控、警报和基于机器学习的报告
 
@@ -125,11 +125,11 @@ Azure Active Directory (Azure AD) 在安全方面的益处包括以下能力：
 
 #### <a name="device-registration"></a>设备注册
 
-[Azure AD 设备注册](../../active-directory/devices/overview.md)是基于设备的[条件性访问](../../active-directory/devices/overview.md)方案的基础。 在注册设备时，Azure AD 设备注册会为设备提供一个标识，此标识用于在用户登录时对设备进行身份验证。 然后, 可以使用经过身份验证的设备和设备的属性, 对云中和本地托管的应用程序实施条件性访问策略。
+[Azure AD 设备注册](../../active-directory/devices/overview.md)是基于设备的[条件性访问](../../active-directory/devices/overview.md)方案的基础。 在注册设备时，Azure AD 设备注册会为设备提供一个标识，此标识用于在用户登录时对设备进行身份验证。 然后，可以使用经过身份验证的设备和设备的属性，对云中和本地托管的应用程序实施条件性访问策略。
 
-当与 Intune 之类的[移动设备管理 (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) 解决方案结合使用时，Azure Active Directory 中的设备属性会使用关于设备的更多信息进行更新。 这允许你创建条件性访问规则, 以根据你的安全性和符合性标准强制从设备进行访问。
+当与 Intune 之类的[移动设备管理 (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) 解决方案结合使用时，Azure Active Directory 中的设备属性会使用关于设备的更多信息进行更新。 这允许你创建条件性访问规则，以根据你的安全性和符合性标准强制从设备进行访问。
 
-#### <a name="privileged-identity-management"></a>Privileged Identity Management
+#### <a name="privileged-identity-management"></a>Privileged identity management
 
 利用 [Azure Active Directory (AD) Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)，可以管理、控制和监视特权标识以及对 Azure AD 中和 Office 365 或 Microsoft Intune 等其他 Microsoft Online Services 中资源的访问。
 
@@ -147,7 +147,7 @@ Azure Active Directory (Azure AD) 在安全方面的益处包括以下能力：
 
 #### <a name="identity-protection"></a>标识保护
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md)是一种安全服务, 可提供对风险检测和潜在漏洞 (影响组织标识) 的合并视图。 标识保护使用现有 Azure Active Directory 的异常检测功能 (可通过 Azure AD 的异常活动报告获得), 并引入了新的风险检测类型, 这些类型可以实时检测异常。
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md)是一种安全服务，可提供对风险检测和潜在漏洞（影响组织标识）的合并视图。 标识保护使用现有 Azure Active Directory 的异常检测功能（可通过 Azure AD 的异常活动报告获得），并引入了新的风险检测类型，这些类型可以实时检测异常。
 
 ## <a name="secure-resource-access"></a>安全资源访问
 
@@ -161,7 +161,7 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 
 ![受保护的资源访问](./media/technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
-使用 RBAC，可以在团队中实现职责分离，仅向用户授予执行作业所需的访问权限。 不是在 Azure 订阅或资源中给每个人无限制的权限，只能允许某些操作。 例如，使用 RBAC 允许一个员工管理订阅中的虚拟机，而允许另一个员工管理同一订阅中的 SQL 数据库。
+使用 RBAC，可以在团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。 不是在 Azure 订阅或资源中给每个人无限制的权限，只能允许某些操作。 例如，使用 RBAC 允许一个员工管理订阅中的虚拟机，而允许另一个员工管理同一订阅中的 SQL 数据库。
 
 ![Azure 中受保护的资源访问 (RBAC)](./media/technical-capabilities/azure-security-technical-capabilities-fig5.png)
 
@@ -171,7 +171,7 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 
 - 静态：包括物理媒体（磁盘或光盘）上以静态方式存在的所有信息存储对象、容器和类型。
 
-- 传输中:数据在组件、位置或程序之间发送时，例如通过网络、通过服务总线（从本地到云，反之亦然，包括诸如 ExpressRoute 的混合连接），或在输入/输出过程中，会被视为动态数据。
+- 传输中：在组件、位置或程序之间传输数据（例如通过网络）时，跨服务总线（从本地到云，反之亦然，包括 ExpressRoute 等混合连接）或在输入/输出过程中传输数据，它被视为是动态的。
 
 ### <a name="encryption-at-rest"></a>静态加密
 
@@ -204,9 +204,9 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 
 ### <a name="leverage-the-existing-encryption-at-rest-support-in-azure"></a>充分利用 Azure 中现有的静态加密支持
 
-对于你使用的每个商店, 利用现有的静态加密支持。
+对于你使用的每个商店，利用现有的静态加密支持。
 
-- Azure 存储：请参阅[静态数据的 Azure 存储服务加密](../../storage/common/storage-service-encryption.md)，
+- Azure 存储：请参阅[静态数据的 Azure 存储服务加密](../../storage/common/storage-service-encryption.md)
 
 - SQL Azure：请参阅[透明数据加密 (TDE)、SQL Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)
 
@@ -238,7 +238,7 @@ PaaS v1 当前不支持 Azure 磁盘加密。 因此，必须使用应用程序�
 
 由于静态加密涉及主机、基础结构和租户数据的加密，因此，因系统故障或恶意活动导致密钥丢失可能意味着丢失所有加密数据。 因此，静态加密解决方案必须具备能够弹性应对系统故障和恶意活动的全面灾难恢复方案，这一点很重要。
 
-通常，实施静态加密的服务仍然容易受到加密密钥或主机驱动器上（例如，在主机 OS 的页面文件中）未加密数据的影响。因此，服务必须确保对用于其服务的主机卷进行加密。 为了简化此过程，计算团队启用了主机加密部署，该部署使用 [BitLocker](https://technet.microsoft.com/library/dn306081.aspx) NKP 以及 DCM 服务和代理的扩展对主机卷进行加密。
+实现静态加密的服务通常仍然容易受到主机驱动器上的加密密钥或未加密的数据的攻击（例如，在主机操作系统的页面文件中）。因此，服务必须确保其服务的主机卷已加密。 为了简化此过程，计算团队启用了主机加密部署，该部署使用 [BitLocker](https://technet.microsoft.com/library/dn306081.aspx) NKP 以及 DCM 服务和代理的扩展对主机卷进行加密。
 
 大多数服务在标准 Azure VM 上实施。 此类服务应在计算团队启用[主机加密](../azure-security-disk-encryption-overview.md)时自动获取该功能。 在已推出的 Windows Server 2016 中，会自动为计算托管群集中运行的服务启用主机加密。
 
@@ -254,7 +254,7 @@ PaaS v1 当前不支持 Azure 磁盘加密。 因此，必须使用应用程序�
 
 可以通过专用高速 WAN 链路（例如 [ExpressRoute](https://azure.microsoft.com/services/expressroute/)）移动较大的数据集。 如果选择使用 ExpressRoute，则还可以使用 [SSL/TLS](https://support.microsoft.com/kb/257591) 或其他协议，在应用程序级别加密数据，以提供额外的保护。
 
-如果通过 Azure 门户与 Azure 存储交互，则所有事务都将通过 HTTPS 发生。 也可以使用基于 HTTPS 的[存储 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) 来与 [Azure 存储](https://azure.microsoft.com/services/storage/)和 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)交互。
+如果通过 Azure 门户与 Azure 存储交互，则所有事务都会通过 HTTPS 发生。 也可以使用基于 HTTPS 的[存储 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) 来与 [Azure 存储](https://azure.microsoft.com/services/storage/)和 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)交互。
 
 无法保护传输中数据的组织更容易遭受[中间人攻击](https://technet.microsoft.com/library/gg195821.aspx)、[窃听](https://technet.microsoft.com/library/gg195641.aspx)和会话劫持。 这些攻击可能是获取机密数据访问权限的第一步。
 
@@ -264,16 +264,16 @@ PaaS v1 当前不支持 Azure 磁盘加密。 因此，必须使用应用程序�
 
 [Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) 使用加密、标识和授权策略帮助保护文件与电子邮件。 Azure RMS 可跨多个设备工作 — 手机、平板电脑和台式电脑保护组织内部和外部的数据。 因为 Azure RMS 添加了数据所属的保护级别，所以即使数据离开组织边界，此功能仍然可行。
 
-使用 Azure RMS 保护文件时，意味着使用行业标准加密并配合 [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) 的完全支持。 使用 Azure RMS 进行数据保护时，即使文件被复制到不受 IT 控制的存储（例如云存储服务），也可保证该文件持续受到保护。 同样的情况出现在通过电子邮件共享的文件，文件将以电子邮件的附件形式受到保护，并提供如何打开受保护附件的说明。
+使用 Azure RMS 保护文件时，意味着使用行业标准加密并配合 [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) 的完全支持。 使用 Azure RMS 进行数据保护时，即使文件被复制到不受 IT 控制的存储（例如云存储服务），也可保证该文件持续受到保护。 同样的情况将出现在通过电子邮件共享的文件，文件以电子邮件的附件形式受到保护，并提供如何打开受保护附件的说明。
 规划 Azure RMS 采用时，建议执行以下操作：
 
 - 安装 [RMS 共享应用](https://technet.microsoft.com/library/dn339006.aspx)。 此应用通过安装 Office 外挂程序来与 Office 应用程序集成，使用户可以轻松地直接保护文件。
 
 - 配置应用程序和服务以支持 Azure RMS
 
-- 创建可反映业务要求的[自定义模板](https://technet.microsoft.com/library/dn642472.aspx)。 例如：最高机密数据的模板应在所有最高机密相关的电子邮件中应用。
+- 创建可反映业务要求的 [自定义模板](https://technet.microsoft.com/library/dn642472.aspx) 。 例如：最高机密数据的模板应在所有最高机密相关的电子邮件中应用。
 
-[数据分类](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)和文件保护能力不佳的组织可能更容易遭到数据泄漏。 没有适当的文件保护，组织将无法获取业务见解、监控滥用，以及防止文件被恶意访问。
+[数据分类](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) 和文件保护能力不佳的组织可能更容易遭到数据泄漏。 没有适当的文件保护，组织无法获取业务见解、监控滥用，以及防止文件被恶意访问。
 
 > [!Note]
 > 有关 Azure RMS 的详细信息，请阅读 [Getting Started with Azure Rights Management](https://technet.microsoft.com/library/jj585016.aspx)（Azure Rights Management 入门）一文。
@@ -309,7 +309,7 @@ Azure 还提供多种易用的功能，帮助保护应用的入站和出站流�
 
 - [为应用设置 Azure Active Directory 身份验证](https://azure.microsoft.com/blog/azure-websites-authentication-authorization/)
 
-- [启用传输层安全性 (TLS/SSL) - HTTPS 保护应用流量安全](../../app-service/app-service-web-tutorial-custom-ssl.md)
+- [启用传输层安全性 (TLS/SSL) - HTTPS 保护应用流量安全](../../app-service/configure-ssl-bindings.md)
 
   - [强制所有传入流量通过 HTTPS 连接](http://microsoftazurewebsitescheatsheet.info/)
 
@@ -340,7 +340,7 @@ Microsoft Azure 包括可靠的网络基础结构以支持应用程序和服务�
 
 ![保护网络（保护）](./media/technical-capabilities/azure-security-technical-capabilities-fig6.png)
 
-如果需要基本的网络级别访问控制（基于 IP 地址和 TCP 或 UDP 协议），则可以使用[网络安全组](../../virtual-network/virtual-network-vnet-plan-design-arm.md)。 网络安全组 (NSG) 是基本的静态数据包筛选防火墙，它使你能够基于 [5 元组](https://www.techopedia.com/definition/28190/5-tuple)控制访问。
+如果需要基本的网络级别访问控制（基于 IP 地址和 TCP 或 UDP 协议），则可以使用[网络安全组](../../virtual-network/virtual-network-vnet-plan-design-arm.md)。 网络安全组 (NSG) 是基本的有状态数据包筛选防火墙，它使你能够基于[五元组](https://www.techopedia.com/definition/28190/5-tuple)控制访问。
 
 Azure 网络支持在 Azure 虚拟网络上为网络流量自定义路由行为的功能。 可以通过在 Azure 中配置[用户定义路由](../../virtual-network/virtual-networks-udr-overview.md)实现此操作。
 
@@ -356,11 +356,11 @@ Azure 支持通过 [ExpressRoute](../../expressroute/expressroute-introduction.m
 
 适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件是一种实时保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。 Microsoft 反恶意软件提供了已知恶意或不需要的软件试图安装自身或在 Azure 系统上运行时的可配置警报。
 
-[Azure 备份](../../backup/backup-overview.md)是一种可缩放的解决方案，无需资本投资便可保护应用程序数据，从而最大限度降低运营成本。 应用程序错误可能损坏数据，人为错误可能将 bug 引入应用程序。 借助 Azure 备份，可以保护运行 Windows 和 Linux 的虚拟机。
+[Azure 备份](../../backup/backup-overview.md)是一种可缩放的解决方案，无需资本投资便可保护应用程序数据，从而最大限度降低运营成本。 应用程序错误可能会损坏数据，人为错误可能会将 bug 引入应用程序。 借助 Azure 备份，可以保护运行 Windows 和 Linux 的虚拟机。
 
 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 可帮助协调工作负荷和应用的复制、故障转移及恢复，因此能够在主要位置发生故障时通过辅助位置来提供工作负荷和应用。
 
-## <a name="ensure-compliance-cloud-services-due-diligence-checklist"></a>确保符合性：云服务的预期努力清单
+## <a name="ensure-compliance-cloud-services-due-diligence-checklist"></a>确保符合性：云服务截止努力清单
 
 Microsoft 制定了[云服务审慎调查清单](https://aka.ms/cloudchecklist.download)，帮助组织在考虑迁移到云时执行审慎调查。 它为所有规模、所有类型的组织（私有企业和公共部门组织，包括所有级别的政府部门和非盈利组织）提供了一种结构，用于确定他们自己的性能、服务、数据管理以及监管目标和要求。 这样，他们就可以对不同云服务提供商的服务/产品进行比较，最终构成云服务协议的基础。
 
@@ -388,13 +388,13 @@ Microsoft 制定了[云服务审慎调查清单](https://aka.ms/cloudchecklist.d
 
 Azure 操作安全性建立在一个框架上，该框架融合了通过 Microsoft 独有的各种功能获得的知识，包括 Microsoft 安全开发生命周期 (SDL)、Microsoft 安全响应中心计划以及对网络安全威胁形态的深刻认识。
 
-### <a name="microsoft-azure-monitor"></a>Microsoft Azure Monitor
+### <a name="microsoft-azure-monitor"></a>Microsoft Azure 监视器
 
-[Azure Monitor](../../azure-monitor/index.yml)是适用于混合云的 IT 管理解决方案。 Azure Monitor 日志单独使用或扩展现有的 System Center 部署, 为你的基础结构的基于云的管理提供最大的灵活性和控制。
+[Azure Monitor](../../azure-monitor/index.yml)是适用于混合云的 IT 管理解决方案。 Azure Monitor 日志单独使用或扩展现有的 System Center 部署，为你的基础结构的基于云的管理提供最大的灵活性和控制。
 
 ![Azure Monitor](./media/technical-capabilities/azure-security-technical-capabilities-fig8.png)
 
-使用 Azure Monitor, 你可以管理任何云中的任何实例, 包括本地、Azure、AWS、Windows Server、Linux、VMware 和 OpenStack, 成本低于竞争性解决方案。 Azure Monitor 提供了一种新的方式来管理企业, 它是一种最快、最经济高效的方式, 可满足新的业务挑战并适应新的工作负载、应用程序和云环境。
+使用 Azure Monitor，你可以管理任何云中的任何实例，包括本地、Azure、AWS、Windows Server、Linux、VMware 和 OpenStack，成本低于竞争性解决方案。 Azure Monitor 提供了一种新的方式来管理企业，它是一种最快、最经济高效的方式，可满足新的业务挑战并适应新的工作负载、应用程序和云环境。
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
@@ -448,7 +448,7 @@ Azure 操作安全性建立在一个框架上，该框架融合了通过 Microso
 
 ### <a name="storage-analytics"></a>存储分析
 
-[存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)可存储一些指标，这些指标包括有关存储服务请求的聚合事务统计信息和容量数据。 在 API 操作级别以及存储服务级别报告事务，并在存储服务级别报告容量。 度量值数据可用于分析存储服务使用情况，诊断对存储服务所发出请求的问题以及提高使用服务的应用程序的性能。
+[存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)可存储一些指标，这些指标包括有关存储服务请求的聚合事务统计信息和容量数据。 在 API 操作级别以及存储服务级别报告事务，并在存储服务级别报告容量。 指标数据可用于分析存储服务使用情况，诊断对存储服务所发出请求的问题，提高使用服务的应用程序的性能。
 
 ### <a name="application-insights"></a>Application Insights
 

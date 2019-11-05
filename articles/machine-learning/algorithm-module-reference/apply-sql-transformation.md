@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 8eede9d1fbee7d8b70f6b6924b9767b4d3f4e0bf
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 62c61d589324fe8364fe4630b3cf2cc64e1860b1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694631"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493912"
 ---
 # <a name="apply-sql-transformation"></a>应用 SQL 转换
 
-本文介绍 Azure 机器学习可视界面的模块。
+本文介绍 Azure 机器学习设计器（预览）的模块。
 
 使用 "应用 SQL 转换" 模块，您可以：
   
@@ -33,7 +33,7 @@ ms.locfileid: "72694631"
 
 ## <a name="how-to-configure-apply-sql-transformation"></a>如何配置应用 SQL 转换  
 
-模块最多可以使用三个数据集作为输入。 引用连接到每个输入端口的数据集时，必须使用名称 `t1`、`t2` 和 `t3`。 表号指示输入端口的索引。  
+模块最多可以使用三个数据集作为输入。 引用连接到每个输入端口的数据集时，必须使用名称 `t1`、`t2`和 `t3`。 表号指示输入端口的索引。  
   
 剩余的参数是使用 SQLite 语法的 SQL 查询。 在 " **SQL 脚本**" 文本框中键入多行时，请使用分号终止每个语句。 否则，换行符将转换为空格。  
 
@@ -55,9 +55,9 @@ ms.locfileid: "72694631"
   
 - `LEFT OUTER JOIN` 实现但不 `RIGHT OUTER JOIN` 或 `FULL OUTER JOIN`。  
 
-- 可以将 `RENAME TABLE` 和 `ADD COLUMN` 语句与 `ALTER TABLE` 命令一起使用，但不支持其他子句，包括 `DROP COLUMN`、`ALTER COLUMN` 和 `ADD CONSTRAINT`。  
+- 可以将 `RENAME TABLE` 和 `ADD COLUMN` 语句与 `ALTER TABLE` 命令一起使用，但不支持其他子句，包括 `DROP COLUMN`、`ALTER COLUMN`和 `ADD CONSTRAINT`。  
   
-- 可以在 SQLite 内创建视图，但此后视图是只读的。 不能对视图执行 `DELETE`、`INSERT` 或 `UPDATE` 语句。 但是，你可以创建一个触发器，该触发器将尝试对视图 `DELETE`、`INSERT` 或 `UPDATE`，并在触发器的正文中执行其他操作。  
+- 可以在 SQLite 内创建视图，但此后视图是只读的。 不能对视图执行 `DELETE`、`INSERT`或 `UPDATE` 语句。 但是，你可以创建一个触发器，该触发器将尝试对视图 `DELETE`、`INSERT`或 `UPDATE`，并在触发器的正文中执行其他操作。  
   
 
 除了在官方 SQLite 网站上提供的不受支持的函数的列表之外，以下 wiki 还提供了其他不支持的功能的列表： [SQLite 不](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql)支持的 SQL  

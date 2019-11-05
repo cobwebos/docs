@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据仓库中的数据仓库单位（DWU、cDWU）| Microsoft Docs
+title: Azure Synapse Analytics （以前称为 SQL DW）中的数据仓库单位（Dwu，Cdwu） |Microsoft Docs
 description: 针对选择理想数目的数据仓库单位（DWU、cDWU）来优化价格和性能以及如何更改单位数提供了建议。
 services: sql-data-warehouse
 author: mlee3gsd
@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 05/30/2019
+ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 mscustom: sqlfreshmay19
-ms.openlocfilehash: 282fab70e3b6d1fcf81814b2dd599259e2396fb3
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 32e75b78b8a5c304fc65a9c20d16fb85b4f8307b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036057"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475759"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>数据仓库单位 (DWU) 和计算数据仓库单位 (cDWU)
 
@@ -24,11 +24,11 @@ ms.locfileid: "69036057"
 
 ## <a name="what-are-data-warehouse-units"></a>什么是数据仓库单位？
 
-Azure SQL 数据仓库 CPU、内存和 IO 将捆绑到称为数据仓库单位 (DWU) 的计算规模单位中。 DWU 表示抽象、规范化的计算资源和性能度量值。 更改服务级别会改变系统可用的 DWU 数量，从而调整系统的性能和成本。
+SQL pool 表示使用[Sql Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)时正在预配的分析资源的集合。 分析资源定义为 CPU、内存和 IO 的组合。 这三个资源被捆绑到称为数据仓库单位（Dwu）的计算规模单元中。 DWU 表示抽象、规范化的计算资源和性能度量值。 更改服务级别会改变系统可用的 DWU 数量，从而调整系统的性能和成本。
 
 若要提高性能，可以增加数据仓库单位的数量。 若要降低性能，可以减少数据仓库单位数。 存储和计算成本分别计费，因此更改数据仓库单位数不会影响存储成本。
 
-数据仓库单位性能基于这些数据仓库负载指标：
+数据仓库单位的性能基于以下工作负荷指标：
 
 - 标准数据仓库查询扫描大量行并执行复杂聚合的速度。 这是一种 I/O 和 CPU 密集型操作。
 - 数据仓库从 Azure 存储 Blob 或 Azure Data Lake 引入数据的速度。 这是一种网络和 CPU 密集型操作。
@@ -42,11 +42,11 @@ Azure SQL 数据仓库 CPU、内存和 IO 将捆绑到称为数据仓库单位 (
 
 ## <a name="service-level-objective"></a>服务级别目标
 
-服务级别目标 (SLO) 是确定数据仓库的成本和性能级别的可伸缩性设置。 第 2 代服务级别以计算数据仓库单位 (cDWU) 计量，例如 DW2000c。 第 1 代服务级别以 DWU 计量，例如 DW2000。
+服务级别目标 (SLO) 是确定数据仓库的成本和性能级别的可伸缩性设置。 Gen2 SQL 池的服务级别以计算数据仓库单位（cDWU）来度量，例如 DW2000c。 Gen1 SQL 池服务级别以 Dwu 度量，例如 DW2000。
   > [!NOTE]
-  > Azure SQL 数据仓库 Gen2 最近添加了额外的扩展功能，以支持低至 100 cDWU 的计算层。 当前在 Gen1 上需要较低计算层的现有数据仓库现可升级到当前可用区域中的 Gen2，无需额外成本。  如果你的区域尚不支持，仍可升级到支持的区域。 有关详细信息，请参阅[升级到 Gen2](upgrade-to-latest-generation.md)。
+  > 第2代 SQL 池最近添加了更多的扩展功能，以支持低到 100 cDWU 的计算层。 目前 Gen1 上需要较低计算层的现有 SQL 池现在可以升级到当前可用的区域中的 Gen2，而无需额外付费。  如果你的区域尚不支持，仍可升级到支持的区域。 有关详细信息，请参阅[升级到 Gen2](upgrade-to-latest-generation.md)。
 
-在 T-SQL 中，SERVICE_OBJECTIVE 设置确定了数据仓库的服务级别和性能层。
+在 T-sql 中，SERVICE_OBJECTIVE 设置确定 SQL 池的服务级别和性能层。
 
 ```sql
 --Gen1
@@ -68,10 +68,10 @@ CREATE DATABASE myComputeSQLDW
 
 每个性能层用于其数据仓库单位测量的单位都略有不同。 当规模单位直接转换为计费时，这种差异会反映在发票上。
 
-- 第 1 代数据仓库以数据仓库单位计量 (DWU)。
-- 第 2 代数据仓库以计算数据仓库单位 (cDWU) 计量。
+- Gen1 SQL 池以数据仓库单位（Dwu）来度量。
+- Gen2 SQL 池以计算数据仓库单位（Cdwu）度量。
 
-DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库时暂停计算。 这些操作均可按需进行。 第 2 代还会在计算节点上使用基于本地磁盘的缓存以提高性能。 缩放或暂停系统时，缓存将失效，因此在达到最佳性能前，缓存需要预热一段时间。  
+Dwu 和 Cdwu 都支持向上或向下缩放计算，并在不需要使用 SQL 池时暂停计算。 这些操作均可按需进行。 第 2 代还会在计算节点上使用基于本地磁盘的缓存以提高性能。 缩放或暂停系统时，缓存将失效，因此在达到最佳性能前，缓存需要预热一段时间。  
 
 增加数据库单位时，将以线性方式增加计算资源。 第 2 代可提供最佳查询性能和最大规模。 Gen2 系统还最大限度利用了缓存。
 
@@ -89,7 +89,7 @@ DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库�
 2. 在测试数据加载到系统中时，监视应用程序性能，将所选 DWU 数目与观测到的性能变化进行比较。
 3. 确认峰值活动周期的其他要求。 显示活动中重要峰值和谷值的工作负荷可能需要频繁缩放。
 
-SQL 数据仓库是一个向外扩展系统，可预配大量计算和查询大量数据。 要查看其真正的缩放功能（尤其是针对较大的 DWU），建议在缩放的同时对数据集进行缩放，确保可向 CPU 提供足够的数据。 对于规模测试，建议至少使用 1 TB。
+SQL Analytics 是一种扩展系统，它可以预配大量计算和查询就前往的数据量。 要查看其真正的缩放功能（尤其是针对较大的 DWU），建议在缩放的同时对数据集进行缩放，确保可向 CPU 提供足够的数据。 对于规模测试，建议至少使用 1 TB。
 
 > [!NOTE]
 >
@@ -185,25 +185,26 @@ DWU 更改可能需要几分钟才能完成。 如果要自动缩放，建议实
 检查 DWU 更改的状态：
 
 1. 连接到与逻辑 SQL 数据库服务器关联的 master 数据库。
-2. 提交以下查询以检查数据库状态。
 
-```sql
-SELECT    *
-FROM      sys.databases
-;
-```
+1. 提交以下查询以检查数据库状态。
 
+    ```sql
+    SELECT    *
+    FROM      sys.databases
+    ;
+    ```
+    
 1. 提交以下查询以检查操作状态
 
-```sql
-SELECT    *
-FROM      sys.dm_operation_status
-WHERE     resource_type_desc = 'Database'
-AND       major_resource_id = 'MySQLDW'
-;
-```
-
-此 DMV 返回针对 SQL 数据仓库的各种管理操作的相关信息，例如操作和操作状态（IN_PROGRESS 或 COMPLETED）。
+    ```sql
+    SELECT    *
+    FROM      sys.dm_operation_status
+    WHERE     resource_type_desc = 'Database'
+    AND       major_resource_id = 'MySQLDW'
+    ;
+    ```
+    
+此 DMV 返回有关 SQL 池上各种管理操作的信息，如操作和操作的状态（即 IN_PROGRESS 或已完成）。
 
 ## <a name="the-scaling-workflow"></a>缩放工作流
 

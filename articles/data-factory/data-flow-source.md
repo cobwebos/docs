@@ -6,16 +6,14 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: c7d18ab6e9018511915e9b77ea02ac60b1277c12
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: fb11b785cecbd021c0b894754e31d226edfe72f2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72596495"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73519309"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>映射数据流的源转换 
-
-
 
 源转换为数据流配置数据源。 在设计数据流时，第一步将始终配置源转换。 若要添加源，请在数据流画布中单击 "**添加源**" 框。
 
@@ -27,11 +25,12 @@ ms.locfileid: "72596495"
 
 映射数据流遵循提取、加载和转换（ELT）方法，并且适用于所有 Azure 中的*临时*数据集。 当前，以下数据集可用于源转换：
     
-* Azure Blob 存储
-* Azure Data Lake Storage Gen1
-* Azure Data Lake Storage Gen2
+* Azure Blob 存储（JSON、Avro、Text、Parquet）
+* Azure Data Lake Storage Gen1 （JSON，Avro，Text，Parquet）
+* Azure Data Lake Storage Gen2 （JSON，Avro，Text，Parquet）
 * Azure SQL 数据仓库
-* Azure SQL Database
+* Azure SQL 数据库
+* Azure CosmosDB
 
 Azure 数据工厂可访问超过80个本机连接器。 若要在数据流中包含其他源中的数据，请使用复制活动将该数据加载到某个支持的暂存区域。
 
@@ -79,9 +78,9 @@ Azure 数据工厂可访问超过80个本机连接器。 若要在数据流中�
 
 * ```/data/sales/**/*.csv``` 获取/data/sales 下的所有 csv 文件。
 * ```/data/sales/20??/**``` 获取20世纪的所有文件
-* ```/data/sales/2004/*/12/[XY]1?.csv``` 获取2004年12月开始的所有 csv 文件，以两位数作为前缀的 X 或 Y
+* ```/data/sales/2004/*/12/[XY]1?.csv``` 从以两位数为前缀的 X 或 Y 开始，获取2004年12月的所有 csv 文件。
 
-**分区根路径：** 如果文件源中的分区文件夹采用 ```key=value``` 格式（例如，year = 2019），则可以将该分区文件夹树的顶层分配给数据流数据流中的列名称。
+**分区根路径：** 如果文件源中的分区文件夹的格式 ```key=value``` （例如年 = 2019），则可以将该分区文件夹树的顶层分配给数据流数据流中的列名称。
 
 首先，设置一个通配符，以包括所有作为分区文件夹的路径，以及要读取的叶文件。
 
@@ -130,7 +129,7 @@ Azure 数据工厂可访问超过80个本机连接器。 若要在数据流中�
 
 **输入：** 选择是将源指向某个表（等效于 ```Select * from <table-name>```）还是输入自定义 SQL 查询。
 
-**查询**：如果在输入字段中选择 "查询"，则输入源的 SQL 查询。 此设置将重写您在数据集中选择的任何表。 此处不支持**Order By**子句，但你可以设置完整的 SELECT FROM 语句。 你还可以使用用户定义的表函数。 **select * From udfGetData （）** 是返回表的 SQL 中的 UDF。 此查询将生成可以在数据流中使用的源表。
+**查询**：如果在输入字段中选择 "查询"，则输入源的 SQL 查询。 此设置将重写您在数据集中选择的任何表。 此处不支持**Order By**子句，但你可以设置完整的 SELECT FROM 语句。 你还可以使用用户定义的表函数。 **select * From udfGetData （）** 是返回表的 SQL 中的 UDF。 此查询将生成可以在数据流中使用的源表。 使用查询也是减少用于测试或查找的行的好方法。 示例： ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
 **批大小**：输入用于将大型数据拆分为读取的批大小。
 
@@ -152,6 +151,19 @@ Azure 数据工厂可访问超过80个本机连接器。 若要在数据流中�
 如果文本文件没有定义的架构，请选择 "**检测数据类型**"，以便数据工厂将采样并推断数据类型。 选择 "**定义默认格式**" 以自动检测默认数据格式。 
 
 可以在流下派生列转换中修改列数据类型。 使用 select 转换来修改列名称。
+
+### <a name="import-schema"></a>导入架构
+
+支持复杂数据结构的 Avro 和 CosmosDB 之类的数据集不需要架构定义存在于数据集中。 因此，您将能够单击 "导入架构" 按钮，查看这些类型的源的 "投影" 选项卡。
+
+## <a name="cosmosdb-specific-settings"></a>CosmosDB 特定设置
+
+使用 CosmosDB 作为源类型时，需要考虑以下几个选项：
+
+* 包含系统列：如果选中此项，则会将 ```id```、```_ts```和其他系统列包含在 CosmosDB 的数据流元数据中。 更新集合时，必须包括此项，以便能够获取现有行 id。
+* 页面大小：查询结果每页的文档数。 默认值为 "-1"，它使用最多为1000的服务动态页。
+* 吞吐量：对于在读取操作过程中每次执行此数据流时要应用到 CosmosDB 集合的 ru 数，请设置一个可选值。 最小值为400。
+* 首选区域：可以选择此进程的首选读取区域。
 
 ## <a name="optimize-the-source-transformation"></a>优化源转换
 

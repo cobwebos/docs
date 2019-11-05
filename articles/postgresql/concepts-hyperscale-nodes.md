@@ -1,5 +1,5 @@
 ---
-title: Azure Database for PostgreSQL 中的节点–超大规模（Citus）（预览版）
+title: Azure Database for PostgreSQL 中的节点–超大规模（Citus）
 description: 在 Azure Database for PostgreSQL 的服务器组中了解两种类型的节点：协调器和辅助角色。
 author: jonels-msft
 ms.author: jonels
@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 097fcdb3a7e53bb63db9dc2d352d754062df7be6
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 5348c8bbe432cd024a8da93ca866ae4458f956e4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947558"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468091"
 ---
-# <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Azure Database for PostgreSQL 中的节点–超大规模（Citus）（预览版）
+# <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL 中的节点–超大规模（Citus）
 
-超大规模（Citus）（预览版）托管类型允许 Azure Database for PostgreSQL 服务器（称为节点）在 "无共享" 结构中彼此协调。 服务器组中的节点共同保存更多的数据，并使用比单个服务器上的更多的 CPU 内核。 该体系结构还允许通过向服务器组中添加更多节点来缩放数据库。
+超大规模（Citus）宿主类型允许 Azure Database for PostgreSQL 服务器（称为节点）在 "无共享" 结构中彼此协调。 服务器组中的节点共同保存更多的数据，并使用比单个服务器上的更多的 CPU 内核。 该体系结构还允许通过向服务器组中添加更多节点来缩放数据库。
 
 ## <a name="coordinator-and-workers"></a>协调器和辅助角色
 

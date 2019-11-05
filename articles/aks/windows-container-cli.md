@@ -7,24 +7,24 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: ff4367194f06a8a6895c9c16252b01c3b94995d3
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 497dab37f178a9ae7d0ab6cd647a10bac44539f8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241255"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472498"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>预览-使用 Azure CLI 在 Azure Kubernetes Service （AKS）群集上创建 Windows Server 容器
 
 Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管式 Kubernetes 服务。 本文介绍如何使用 Azure CLI 部署 AKS 群集。 还可将 Windows Server 容器中的 ASP.NET 示例应用程序部署到群集。
 
-此功能目前处于预览状态。
+此功能目前以预览版提供。
 
 ![浏览到 ASP.NET 示例应用程序的图像](media/windows-container/asp-net-sample-app.png)
 
 本文假定你基本了解 Kubernetes 的概念。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -79,7 +79,6 @@ az provider register --namespace Microsoft.ContainerService
 
 创建和管理支持多个节点池的 AKS 群集时，有以下限制：
 
-* 成功注册*WindowsPreview*后，多个节点池可用于创建的群集。 如果为订阅注册*MultiAgentpoolPreview*功能，则还可以使用多个节点池。 在成功注册此功能之前，无法添加或管理已创建的现有 AKS 群集的节点池。
 * 不能删除第一个节点池。
 
 此功能处于预览阶段，但以下附加限制适用：
@@ -120,7 +119,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
-若要运行支持 Windows Server 容器的节点池的 AKS 群集，群集需要使用使用[AZURE CNI][azure-cni-about] （advanced）网络插件的网络策略。 若要详细了解如何计划所需的子网范围和网络注意事项，请参阅[配置 AZURE CNI 网络][use-advanced-networking]。 使用[az aks create][az-aks-create]命令创建名为*myAKSCluster*的 aks 群集。 如果这些资源不存在，此命令将创建必要的网络资源。
+若要运行支持 Windows Server 容器的节点池的 AKS 群集，群集需要使用使用[AZURE CNI][azure-cni-about] （advanced）网络插件的网络策略。 若要详细了解如何计划所需的子网范围和网络注意事项，请参阅[配置 AZURE CNI 网络][use-advanced-networking]。 使用 [az aks create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。 如果这些资源不存在，此命令将创建必要的网络资源。
   * 群集配置了两个节点
   * *Windows 管理员密码*和*windows 管理员-用户名*参数为群集上创建的任何 windows Server 容器设置管理员凭据。
 
@@ -141,7 +140,8 @@ az aks create \
     --generate-ssh-keys \
     --windows-admin-password $PASSWORD_WIN \
     --windows-admin-username azureuser \
-    --enable-vmss \
+    --vm-set-type VirtualMachineScaleSets \
+    --load-balancer-sku standard \
     --network-plugin azure
 ```
 
@@ -165,7 +165,7 @@ az aks nodepool add \
     --kubernetes-version 1.14.6
 ```
 
-上述命令将创建一个名为*npwin*的新节点池，并将其添加到*myAKSCluster*中。 创建节点池以运行 Windows Server 容器时，*节点-vm 大小*的默认值为*Standard_D2s_v3*。 如果选择设置*节点-vm 大小*的参数，请查看[受限 vm 大小][restricted-vm-sizes]的列表。 建议的最小大小为*Standard_D2s_v3*。 上述命令也使用运行 @no__t 时创建的默认 vnet 中的默认子网。
+上述命令将创建一个名为*npwin*的新节点池，并将其添加到*myAKSCluster*中。 创建节点池以运行 Windows Server 容器时，*节点-vm 大小*的默认值为*Standard_D2s_v3*。 如果选择设置*节点-vm 大小*的参数，请查看[受限 vm 大小][restricted-vm-sizes]的列表。 建议的最小大小为*Standard_D2s_v3*。 上述命令还使用运行 `az aks create`时创建的默认 vnet 中的默认子网。
 
 ## <a name="connect-to-the-cluster"></a>连接至群集
 

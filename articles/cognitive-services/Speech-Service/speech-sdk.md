@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: ee505cc78c16d85640c7e13541272f1bafe30061
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: f6446a2dbe3f111c9c617e78a0bdd98f6cea9153
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71800006"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468778"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
@@ -31,9 +31,9 @@ ms.locfileid: "71800006"
 
 对于 Windows，我们支持以下语言：
 
-* C#（UWP 和 .NET）、C++：可以引用和使用语音 SDK NuGet 包的最新版本。 此包包括 32 位和 64 位客户端库，以及托管 (.NET) 库。 可以使用 NuGet 在 Visual Studio 中安装该 SDK。 搜索 Microsoft.CognitiveServices.Speech NuGet。
+* C#（UWP 和 .NET）、C++：你可以引用和使用语音 SDK NuGet 包的最新版本。 此包包括 32 位和 64 位客户端库，以及托管 (.NET) 库。 可以使用 NuGet 在 Visual Studio 中安装该 SDK。 搜索 Microsoft.CognitiveServices.Speech NuGet。
 
-* Java:可以引用和使用语音 SDK Maven 包的最新版本，该包仅支持 Windows x64。 在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` 引用为一个依赖项。
+* Java：可以引用和使用语音 SDK Maven 包的最新版本，该包仅支持 Windows x64。 在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` 引用为一个依赖项。
 
 ### <a name="linux"></a>Linux
 
@@ -59,17 +59,17 @@ sudo apt-get update
 sudo apt-get install libssl1.0.2 libasound2
 ```
 
-* C#：可以引用和使用语音 SDK NuGet 包的最新版本。 若要引用该 SDK，请向你的项目中添加以下包引用：
+* C#：你可以引用和使用语音 SDK NuGet 包的最新版本。 若要引用该 SDK，请向你的项目中添加以下包引用：
 
   ```xml
   <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.7.0" />
   ```
 
-* Java:可以引用和使用语音 SDK Maven 包的最新版本。 在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` 引用为一个依赖项。
+* Java：你可以引用和使用语音 SDK Maven 包的最新版本。 在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` 引用为一个依赖项。
 
-* C++：将 SDK 下载为 [.tar 包](https://aka.ms/csspeech/linuxbinary)，并将文件解压缩到所选的一个目录中。 下表显示了 SDK 文件夹结构：
+* C++：将 SDK 下载为 [.tar 包](https://aka.ms/csspeech/linuxbinary)，并将文件解压缩到你选择的一个目录中。 下表显示了 SDK 文件夹结构：
 
-  |Path|描述|
+  |路径|说明|
   |-|-|
   |`license.md`|许可证|
   |`ThirdPartyNotices.md`|第三方声明|
@@ -81,7 +81,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
 ### <a name="android"></a>Android
 
-将适用于 Android 的 Java SDK 打包为 [AAR（Android 库）](https://developer.android.com/studio/projects/android-library)，其内附必要的库以及所需的 Android 权限。 它作为包 `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` 托管在 `https://csspeechstorage.blob.core.windows.net/maven/` 的 Maven 存储库中。
+将适用于 Android 的 Java SDK 打包为 [AAR（Android 库）](https://developer.android.com/studio/projects/android-library)，其内附必要的库以及所需的 Android 权限。 它作为包 `https://csspeechstorage.blob.core.windows.net/maven/` 托管在 `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` 的 Maven 存储库中。
 
 若要从你的 Android Studio 项目中使用该包，请进行以下更改：
 
@@ -104,4 +104,4 @@ Java SDK 也是[语音设备 SDK](speech-devices-sdk.md) 的一部分。
 ## <a name="next-steps"></a>后续步骤
 
 * [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-* [了解如何在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)
+* [了解如何在 C# 中识别语音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

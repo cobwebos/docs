@@ -1,5 +1,5 @@
 ---
-title: 管理版本-LUIS
+title: 管理版本 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 版本允许你构建和发布不同的模型。 较好的做法是在对模型进行更改之前将当前的活动模型复制到一个不同的应用版本。
 services: cognitive-services
@@ -9,24 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 982dbf3555648c6a7c82da90a62740a584473c1e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: aa1cbd08bdf8d92653a8f30ae67ecd813e563999
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932835"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467511"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>使用版本进行编辑和测试，而不会影响暂存应用或生产应用
 
 版本允许你构建和发布不同的模型。 较好的做法是在对模型进行更改之前将当前的活动模型复制到一个不同的应用[版本](luis-concept-version.md)。 
 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
 若要处理版本，请在“我的应用”页面上通过选择你的应用名称来将其打开，在顶栏中选择“管理”，然后在左侧导航栏中选择“版本”。 
 
 版本列表显示哪些版本已发布，它们发布在何处，以及哪个版本当前处于活动状态。 
 
-[![“管理”部分的“版本”页](./media/luis-how-to-manage-versions/versions-import.png "“管理”部分的“版本”页")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
+[!["管理" 部分，"版本" 页](./media/luis-how-to-manage-versions/versions-import.png "“管理”部分的“版本”页面")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
 
 ## <a name="clone-a-version"></a>克隆版本
 
@@ -45,7 +47,7 @@ ms.locfileid: "68932835"
 
 从列表中选择一个版本，然后从工具栏中选择“激活”。 
 
-[![在“管理”部分的“版本”页，执行版本操作](./media/luis-how-to-manage-versions/versions-other.png "在“管理”部分的“版本”页，执行版本操作")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+[!["管理" 部分，"版本" 页，生成版本操作](./media/luis-how-to-manage-versions/versions-other.png ""管理" 部分，"版本" 页，生成版本操作")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
 ## <a name="import-version"></a>导入版本
 
@@ -59,13 +61,13 @@ ms.locfileid: "68932835"
 
 ### <a name="import-errors"></a>导入错误
 
-* Tokenizer 错误：如果在导入时收到 **tokenizer 错误**，则表示你尝试导入的版本使用的 [tokenizer](luis-language-support.md#custom-tokenizer-versions) 与应用当前使用的不同。 若要解决此问题，请参阅[在 tokenizer 版本之间迁移](luis-language-support.md#migrating-between-tokenizer-versions)。
+* 标记器错误：如果在导入时收到**标记器错误**，则尝试导入的版本使用的[标记器](luis-language-support.md#custom-tokenizer-versions)不同于当前使用的应用。 若要解决此问题，请参阅[在 tokenizer 版本之间迁移](luis-language-support.md#migrating-between-tokenizer-versions)。
 
 <a name = "export-version"></a>
 
 ## <a name="other-actions"></a>其他操作
 
-* 若要**删除**某个版本，请从列表中选择一个版本，然后从工具栏中选择“删除”。 选择**确定**。 
+* 若要**删除**某个版本，请从列表中选择一个版本，然后从工具栏中选择“删除”。 选择“确定”。 
 * 若要**重命名**某个版本，请从列表中选择一个版本，然后从工具栏中选择“重命名”。 输入新名称并选择“完成”。 
 * 若要**导出**某个版本，请从列表中选择一个版本，然后从工具栏中选择“导出应用”。 选择要导出以备份的 JSON，选择“为容器导出”以[在 LUIS 容器中使用此应用](luis-container-howto.md)。  
 

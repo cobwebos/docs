@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: cfecea6a64301d86aa657420dc300c26d4ed6f1e
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 0b69c1fb070431ad61858322dce461f6496c35d7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663404"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490823"
 ---
 # <a name="exploration-and-exploitation"></a>探索和开发利用
 
@@ -25,22 +25,15 @@ ms.locfileid: "68663404"
 * 使用开发利用功能根据当前的机器学习模型来匹配最可能的用户行为。
 * 使用探索，此功能不匹配在排名中有最高可能性的操作。
 
-<!--
-Returning the most probable action is called *exploit* behavior. Returning a different action is called *exploration*.
--->
 个性化体验创建服务目前使用名为 *epsilon greedy* 的算法进行探索。 
 
 ## <a name="choosing-an-exploration-setting"></a>选择探索设置
 
-在 Azure 门户的个性化体验创建服务的“设置”页中配置用于探索的流量的百分比。  此设置决定了执行探索的排名调用的百分比。 
+在 Personalizer 的 "**配置**Azure 门户" 页中配置用于浏览的流量百分比。 此设置决定了执行探索的排名调用的百分比。 
 
 个性化体验创建服务决定了是使用此概率针对每个排名调用进行探索还是进行开发利用。 这不同于某些 A/B 框架中的行为，此类框架会锁定特定用户 ID 上的处理。
 
 ## <a name="best-practices-for-choosing-an-exploration-setting"></a>选择探索设置的最佳做法
-
-<!--
-@edjez - you say what not to do, but make no recommendations of what **to** do. 
--->
 
 选择探索设置是一项业务决策，涉及到探索时要使用的用户交互的比例，目的是改进模型。 
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: 146aaa8b1b69c29e22f39d48883f604098b8e348
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 1d684957939c5cb83aae05962c1694f7a8d8da23
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718398"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498225"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>使用 Apache Ambari REST API 管理 HDInsight 群集
 
@@ -25,11 +25,11 @@ ms.locfileid: "71718398"
 
 [Apache Ambari](https://ambari.apache.org) 提供基于 [REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) 的简单易用型 Web UI 来简化 Hadoop 群集的管理和监视。  基于 Linux 的 HDInsight 群集已按默认提供 Ambari。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * **HDInsight 上的 Hadoop 群集**。 请参阅 [Linux 上的 HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
-* **Windows 10 版 Bash on Ubuntu**。  本文中的示例使用 Windows 10 上的 Bash shell。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统安装指南 - Windows 10](https://docs.microsoft.com/windows/wsl/install-win10)。  也可以使用其他 [Unix shell](https://www.gnu.org/software/bash/)。  这些示例在经过轻微的修改后，可在 Windows 命令提示符下运行。  或者，可以使用 Windows PowerShell。
+* **Windows 10 版 Bash on Ubuntu**。  本文中的示例使用 Windows 10 上的 Bash shell。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统 (Windows 10) 安装指南](https://docs.microsoft.com/windows/wsl/install-win10)。  其他 [Unix shell](https://www.gnu.org/software/bash/) 也将适用。  这些示例在经过轻微的修改后，可在 Windows 命令提示符下运行。  或者，可以使用 Windows PowerShell。
 
 * 命令行 JSON 处理程序 **jq**。  请参阅 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
 
@@ -43,21 +43,21 @@ ms.locfileid: "71718398"
 
 连接到 HDInsight 上的 Ambari 需要 HTTPS。 使用在群集创建过程中提供的管理员帐户名称（默认值是 **admin**）和密码。
 
-对于企业安全性套餐群集，请使用完全限定的用户名，如 `username@domain.onmicrosoft.com`，而不是 @no__t。
+对于企业安全性套餐群集，请使用完全限定的用户名，如 `username@domain.onmicrosoft.com`，而不是 `admin`。
 
 ## <a name="examples"></a>示例
 
 ### <a name="setup-preserve-credentials"></a>设置（保留凭据）
 请保留凭据，以免在每个示例中重复输入。  群集名称将在单独的步骤中保留。
 
-**A.Bash**  
+**答： Bash**  
 编辑以下脚本，将 `PASSWORD` 替换为实际密码。  然后输入该命令。
 
 ```bash
 export password='PASSWORD'
 ```  
 
-**B.PowerShell**  
+**B. PowerShell**  
 
 ```powershell
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
@@ -101,7 +101,7 @@ $respObj.Clusters.health_report
 
 ### <a name="example-get-the-fqdn-of-cluster-nodes"></a>获取群集节点的 FQDN
 
-使用 HDInsight 时，可能需要知道群集节点的完全限定域名 (FQDN)。 可以使用以下示例轻松检索群集中各个节点的 FQDN：
+使用 HDInsight 时，可能需要知道群集节点的完全限定域名 (FQDN)。 可使用以下示例轻松检索群集中各个节点的 FQDN：
 
 **所有节点**  
 
@@ -191,7 +191,7 @@ foreach($item in $respObj.items) {
 
 ### <a name="get-the-default-storage"></a>获取默认存储
 
-创建 HDInsight 群集时，必须使用 Azure 存储帐户或 Data Lake Storage 作为群集的默认存储。 创建群集后，可以使用 Ambari 来检索此信息。 例如，如果要从 HDInsight 外部的容器读取数据或向其写入数据。
+创建 HDInsight 群集时，必须使用 Azure 存储帐户或 Data Lake Storage 作为群集的默认存储。 创建群集后，可以使用 Ambari 来检索此信息。 例如，当希望从 HDInsight 外部的容器中读取数据或者将数据写入到其中时。
 
 以下示例检索群集的默认存储配置：
 
@@ -212,7 +212,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
 返回值类似于下列示例之一：
 
-* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net` - 此值表示群集使用 Azure 存储帐户作为默认存储。 `ACCOUNTNAME` 值是存储帐户的名称。 `CONTAINER` 部分是存储帐户中的 blob 容器的名称。 该容器是群集的 HDFS 兼容存储的根目录。
+* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net` - 此值指示群集正在将 Azure 存储帐户用于默认存储。 `ACCOUNTNAME` 值是存储帐户的名称。 `CONTAINER` 部分是存储帐户中的 blob 容器的名称。 该容器是群集的 HDFS 兼容存储的根目录。
 
 * `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net` - 此值表示群集使用 Azure Data Lake Storage Gen2 作为默认存储。 `ACCOUNTNAME` 和 `CONTAINER` 值对于前面提到的 Azure 存储而言意义相同。
 
@@ -251,7 +251,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     返回值类似于 `/clusters/CLUSTERNAME/`。 此值是 Data Lake Storage 帐户中的一个路径。 此路径是群集的 HDFS 兼容文件系统的根目录。  
 
 > [!NOTE]  
-> [Azure PowerShell](/powershell/azure/overview) 提供的 [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) cmdlet 也返回群集的存储信息。
+> [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) 提供的 [Get-AzHDInsightCluster](/powershell/azure/overview) cmdlet 也返回群集的存储信息。
 
 ### <a name="get-all-configurations"></a>获取所有配置
 
@@ -286,7 +286,7 @@ $respObj.Content
 
 ### <a name="get-configuration-for-specific-component"></a>获取特定组件的配置
 
-获取感兴趣的组件的配置。 在以下示例中，将 `INITIAL` 替换为从上一请求返回的标记值。
+获取你感兴趣的组件的配置。 在以下示例中，将 `INITIAL` 替换为从上一个请求返回的标记值。
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL"
@@ -306,15 +306,15 @@ $resp.Content
    进行修改，然后输入以下命令：
 
    * 请将 `livy2-conf` 替换为所需的组件。
-   * 请将 `INITIAL` 替换为在[获取所有配置](#get-all-configurations)中检索到的 `tag` 实际值。
+   * 请将 `INITIAL` 替换为在`tag`获取所有配置[中检索到的 ](#get-all-configurations) 实际值。
 
-     **A.Bash**  
+     **答： Bash**  
      ```bash
      curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL" \
      | jq --arg newtag $(echo version$(date +%s%N)) '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
      ```
 
-     **B.PowerShell**  
+     **B. PowerShell**  
      PowerShell 脚本使用 [jq](https://stedolan.github.io/jq/)。  编辑以下 `C:\HD\jq\jq-win64`，以反映 [jq](https://stedolan.github.io/jq/) 的实际路径和版本。
 
      ```powershell
@@ -336,9 +336,9 @@ $resp.Content
 
    * 删除 `href`、`version` 和 `Config` 元素，因为提交新配置时不需要这些元素。
 
-   * 添加一个值为 `version#################` 的 `tag` 元素。 数字部分基于当前日期。 每个配置必须有唯一的标记。
+   * 添加一个值为 `tag` 的 `version#################` 元素。 数字部分基于当前日期。 每个配置必须有唯一的标记。
 
-     最后，将数据保存到 `newconfig.json` 文档。 文档结构应该类似于以下示例：
+     最后，将数据保存到 `newconfig.json` 文档。 该文档结构类似于下面的示例：
 
      ```json
      {
@@ -382,7 +382,7 @@ $resp.Content
     $resp.Content
     ```  
 
-    这些命令将 **newconfig.json** 文件的内容作为新的所需配置提交到群集。 该请求会返回一个 JSON 文档。 此文档中的 versionTag 元素应该与提交的版本相匹配，并且 configs 对象包含你请求的配置更改。
+    这些命令会将 **newconfig.json** 文件的内容提交到群集作为所需的新配置。 请求将返回一个 JSON 文档。 此文档中的 versionTag 元素应该与提交的版本相匹配，并且 configs 对象包含你请求的配置更改。
 
 ### <a name="restart-a-service-component"></a>重启服务组件
 
@@ -406,7 +406,7 @@ $resp.Content
 
 2. 验证维护模式  
 
-    这些命令将向服务器发送用于开启维护模式的 JSON 文档。 可以使用以下请求来验证服务当前是否处于维护模式：
+    这些命令将 JSON 文档发送到启用了维护模式的服务器。 可使用以下请求来验证服务当前是否处于维护模式：
 
     ```bash
     curl -u admin:$password -sS -H "X-Requested-By: ambari" \
@@ -440,7 +440,7 @@ $resp.Content
     $resp.Content
     ```
 
-    响应类似于以下示例：
+    其响应类似于如下示例：
 
     ```json
     {
@@ -453,7 +453,7 @@ $resp.Content
     ```
 
     > [!IMPORTANT]  
-    > 此 URI 返回的 `href` 值正在使用群集节点的内部 IP 地址。 若要从群集外部使用它，请将 @no__t 0 部分替换为群集的 FQDN。  
+    > 值 `href` 值正在使用群集节点的内部 IP 地址。 若要从群集外部使用该群集，请将 `10.0.0.18:8080` 部分替换为群集的 FQDN。  
 
 4. 验证请求。  
     编辑以下命令，将 `29` 替换为上一步骤返回的 `id` 实际值。  以下命令检索请求状态：
