@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库无服务器（预览版）| Microsoft Docs
+title: Azure SQL 数据库无服务器 |Microsoft Docs
 description: 本文介绍新的无服务器计算层，并将它与现有的预配计算层进行比较
 services: sql-database
 ms.service: sql-database
@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 09/06/2019
-ms.openlocfilehash: 3b2cc5c0b5deab084c6fdae9435ea3a90b2dd8a6
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 11/04/2019
+ms.openlocfilehash: e8629baa3487795349844229b26d80321c1316ee
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173399"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496256"
 ---
-# <a name="azure-sql-database-serverless-preview"></a>Azure SQL 数据库无服务器计算层（预览版）
+# <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 
-Azure SQL 数据库无服务器计算层（预览版）是适用于单一数据库的计算层，可根据工作负荷需求自动缩放，并根据每秒使用的计算资源量计费。 此外，当仅对存储计费时，无服务器计算层将在非活动期间自动暂停数据库；当活动返回时，它将自动恢复数据库。
+Azure SQL 数据库无服务器是单一数据库的计算层，可根据工作负荷需求和帐单自动根据每秒使用的计算量来缩放计算。 此外，当仅对存储计费时，无服务器计算层将在非活动期间自动暂停数据库；当活动返回时，它将自动恢复数据库。
 
 ## <a name="serverless-compute-tier"></a>无服务器计算层
 
@@ -115,7 +115,7 @@ Azure SQL 数据库无服务器计算层（预览版）是适用于单一数据�
 
 - 异地复制（活动异地复制和自动故障转移组）。
 - 长期备份保留 (LTR)。
-- SQL 数据同步中使用的同步数据库。与同步数据库不同，中心数据库和成员数据库支持自动暂停。
+- SQL 数据同步中使用的同步数据库。 与同步数据库不同，中心和成员数据库支持 autopausing。
 - 弹性作业中使用的作业数据库。
 
 在部署某些需要数据库联机的服务更新期间，会暂时阻止自动暂停。  在这种情况下，一旦服务更新完成，就会再次允许自动暂停。
@@ -124,7 +124,7 @@ Azure SQL 数据库无服务器计算层（预览版）是适用于单一数据�
 
 如果在任何时候，下面的任意条件成立，均会触发自动恢复：
 
-|功能|自动恢复触发器|
+|Feature|自动恢复触发器|
 |---|---|
 |身份验证和授权|登录|
 |威胁检测|启用/禁用数据库或服务器级别的威胁检测设置。<br>修改数据库或服务器级别的威胁检测设置。|
@@ -145,7 +145,7 @@ Azure SQL 数据库无服务器计算层（预览版）是适用于单一数据�
 
 如果无服务器数据库处于暂停状态，则首次登录将恢复数据库，并返回一个错误，指出数据库将不可用，错误代码为 40613。 恢复数据库后，必须重新尝试登录以建立连接。 具有连接重试逻辑的数据库客户端应该不需要进行修改。
 
-### <a name="latency"></a>延迟
+### <a name="latency"></a>Latency
 
 自动恢复或自动暂停无服务器数据库的延迟时间通常为 1 分钟自动恢复，1-10 分钟自动暂停。
 
@@ -157,7 +157,7 @@ Azure SQL 数据库无服务器计算层（预览版）是适用于单一数据�
 
    |服务目标名称|服务层|硬件代次|最大 vCore 数|
    |---|---|---|---|
-   |GP_S_Gen5_1|常规用途|Gen5|第|
+   |GP_S_Gen5_1|常规用途|Gen5|1|
    |GP_S_Gen5_2|常规用途|Gen5|2|
    |GP_S_Gen5_4|常规用途|Gen5|4|
    |GP_S_Gen5_6|常规用途|Gen5|6|
@@ -171,8 +171,8 @@ Azure SQL 数据库无服务器计算层（预览版）是适用于单一数据�
 
    |参数|可选的值|默认值|
    |---|---|---|---|
-   |最小 vCore 数|取决于配置的最大 Vcore-请参阅[资源限制](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)。|0.5 个 vCore|
-   |自动暂停延迟|最低：60 分钟（1 小时）<br>最大值：10080 分钟（7 天）<br>增量：60 分钟<br>禁用自动暂停：-1|60 分钟|
+   |最小 vCore 数|取决于配置的最大 Vcore-请参阅[资源限制](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)。|0.5 个 vCore|
+   |自动暂停延迟|最小值：60分钟（1小时）<br>最大值：10080分钟（7天）<br>增量：60分钟<br>禁用自动暂停：-1|60 分钟|
 
 > [!NOTE]
 > 目前不支持使用 T-SQL 将现有数据库移动到无服务器或更改其计算大小，但可以通过 Azure 门户或 PowerShell 完成这些操作。
@@ -181,7 +181,7 @@ Azure SQL 数据库无服务器计算层（预览版）是适用于单一数据�
 
 #### <a name="use-azure-portal"></a>使用 Azure 门户
 
-请参阅[快速入门：使用 Azure 门户在 Azure SQL 数据库中创建单一数据库](sql-database-single-database-get-started.md)。
+请参阅[快速入门：使用 Azure 门户在 AZURE SQL 数据库中创建单个数据库](sql-database-single-database-get-started.md)。
 
 #### <a name="use-powershell"></a>使用 PowerShell
 
@@ -229,19 +229,19 @@ Set-AzSqlDatabase `
 
 #### <a name="use-powershell"></a>使用 PowerShell
 
-在 PowerShell 中结合 `MaxVcore` 参数使用 [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) 命令修改最大 vCore 数。
+在 PowerShell 中结合 [ 参数使用 ](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)Set-AzSqlDatabase`MaxVcore` 命令修改最大 vCore 数。
 
 ### <a name="minimum-vcores"></a>最小 vCore 数
 
 #### <a name="use-powershell"></a>使用 PowerShell
 
-在 PowerShell 中结合 `MinVcore` 参数使用 [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) 命令修改最小 vCore 数。
+在 PowerShell 中结合 [ 参数使用 ](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)Set-AzSqlDatabase`MinVcore` 命令修改最小 vCore 数。
 
 ### <a name="autopause-delay"></a>自动暂停延迟
 
 #### <a name="use-powershell"></a>使用 PowerShell
 
-在 PowerShell 中结合 `AutoPauseDelayInMinutes` 参数使用 [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) 命令修改自动暂停延迟。
+在 PowerShell 中结合 [ 参数使用 ](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)Set-AzSqlDatabase`AutoPauseDelayInMinutes` 命令修改自动暂停延迟。
 
 ## <a name="monitoring"></a>监视
 
@@ -261,10 +261,10 @@ Set-AzSqlDatabase `
 
 下表列出了用于监视无服务器数据库应用包和用户池的资源使用情况的指标：
 
-|实体|指标|描述|单位|
+|实体|指标|说明|单位|
 |---|---|---|---|
 |应用包|app_cpu_percent|应用使用的 vCore 数相对于应用允许的最大 vCore 数的百分比。|百分比|
-|应用包|app_cpu_billed|报告期内收取的应用计算费用。 在此期间支付的金额是此指标和 vCore 单位价格的乘积。 <br><br>此指标的值是通过将每秒使用的最大 CPU 和内存使用量按时间进行汇总来得到的。 如果使用的量小于按照最小 vCore 数和最小内存量预配的最小量，则按照预配的最小量进行计费。 为了比较 CPU 与内存以进行计费，可通过将内存量 (GB) 按照每个 vCore 3 GB 进行重新缩放，将内存归一化为以 vCore 数为单位。|vCore 秒|
+|应用包|app_cpu_billed|报告期内收取的应用计算费用。 在此期间支付的金额是此指标和 vCore 单位价格的乘积。 <br><br>此指标的值是通过将每秒使用的最大 CPU 和内存使用量按时间进行汇总来得到的。 如果使用的量小于按照最小 vCore 数和最小内存量预配的最小量，则按照预配的最小量进行计费。 为了将 CPU 与内存进行比较以便于计费，将内存中的内存量（以 GB 为单位）重新调整为每个 vCore 的 Vcore，以将内存标准化为多个单元。|vCore 秒|
 |应用包|app_memory_percent|应用使用的内存相对于应用允许的最大内存的百分比。|百分比|
 |用户池|cpu_percent|用户工作负载使用的 vCore 数相对于用户工作负载允许的最大 vCore 数的百分比。|百分比|
 |用户池|data_IO_percent|用户工作负载使用的数据 IOPS 相对于用户工作负载允许的最大数据 IOPS 的百分比。|百分比|
@@ -288,13 +288,13 @@ Get-AzSqlDatabase `
 
 ## <a name="resource-limits"></a>资源限制
 
-有关资源限制，请参阅[无服务器计算层](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)。
+有关资源限制，请参阅[无服务器计算层](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)。
 
 ## <a name="billing"></a>计费
 
 计费的计算量是每秒使用的最大 CPU 和内存量。 如果所用的 CPU 和内存量分别少于最小预配量，则对预配量进行计费。 为了比较 CPU 与内存以进行计费，可通过将内存量 (GB) 按照每个 vCore 3 GB 进行重新缩放，将内存归一化为以 vCore 数为单位。
 
-- **计费的资源**：CPU 和内存
+- **资源计费**： CPU 和内存
 - **计费量**：vCore 单位价格 * 最大值（最小 vCore 数、使用的 vCore 数、最小内存量 (GB) * 1/3、使用的内存量量 (GB) * 1/3） 
 - **计费频率**：每秒
 
@@ -317,7 +317,7 @@ VCore 单位价格是每秒 vCore 的成本。 请参考 [Azure SQL 数据库定
 |时间间隔|每秒使用的 vCore 数|每秒使用的 GB 量|计费的计算维度|时间间隔内计费的 vCore 秒数|
 |---|---|---|---|---|
 |0:00-1:00|4|9|使用的 vCore 数|4 个 vCore * 3600 秒 = 14400 vCore 秒|
-|1:00-2:00|第|12|使用的内存量|12 GB * 1/3 * 3600 秒 = 14400 vCore 秒|
+|1:00-2:00|1|12|使用的内存量|12 GB * 1/3 * 3600 秒 = 14400 vCore 秒|
 |2:00-8:00|0|0|预配的最小内存|3 GB * 1/3 * 21600 秒 = 21600 vCore 秒|
 |8:00-24:00|0|0|暂停时不计收计算费用|0 vCore 秒|
 |24 小时内计费的总 vCore 秒||||50400 vCore 秒|
@@ -326,9 +326,9 @@ VCore 单位价格是每秒 vCore 的成本。 请参考 [Azure SQL 数据库定
 
 ## <a name="available-regions"></a>可用区域
 
-无服务器计算层在全球范围内可用，但以下区域除外：中国东部、中国北部、德国中部、德国东北部、英国北部、英国南部2、美国西部和 US Gov 中部（爱荷华）。
+"无服务器" 计算层在全球范围内可用，但以下区域除外：中国东部、中国北部、德国中部、德国东北部、英国北部、英国南部2、美国西部和 US Gov 中部（爱荷华）。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要开始使用，请参阅[快速入门：使用 Azure 门户在 Azure SQL 数据库中创建单一数据库](sql-database-single-database-get-started.md)。
-- 有关资源限制的信息，请参阅[无服务器计算层资源限制](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)。
+- 若要开始操作，请参阅[快速入门：使用 Azure 门户在 AZURE SQL 数据库中创建单个数据库](sql-database-single-database-get-started.md)。
+- 有关资源限制的信息，请参阅[无服务器计算层资源限制](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)。

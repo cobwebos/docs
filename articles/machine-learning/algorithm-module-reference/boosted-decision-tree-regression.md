@@ -1,24 +1,24 @@
 ---
 title: 提升决策树回归：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的提升决策树回归模块，通过使用提升来创建回归树的系综。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的提升决策树回归模块，通过使用提升来创建回归树的系综。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 4b8ff1c9f5b0f0b04448b950d3ba904ba76927c9
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: b04a44a82f793f39b24ffd94083ca8fd5e66cfb8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693837"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493875"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>提升决策树回归模块
 
-本文介绍了 Azure 机器学习服务的可视界面（预览）的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块可以通过使用提升来创建回归树的系综。 *提高*意味着每个树都依赖于以前的树。 该算法通过将其前面的树的残留关系起来来了解。 因此，决策树中的提升系综往往会提高准确性，同时降低范围。  
   
@@ -97,6 +97,8 @@ ms.locfileid: "72693837"
 
 + 若要使用该模型进行评分，请将其连接到[评分模型](./score-model.md)，以预测新输入示例的值。
 
++ 若要保存训练的模型的快照，请右键单击定型模块的训练**模型**输出，并选择 "**另存为**"。 您保存的已训练模型的副本在连续运行管道时不会更新。
+
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

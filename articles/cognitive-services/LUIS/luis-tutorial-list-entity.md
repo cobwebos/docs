@@ -10,15 +10,17 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: a722ce39a679fa13e1fe849c46b44f786ea5ee42
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: f3c99856eaffc454754618a1eac34630b985a77e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390273"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499481"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>使用列表实体提升实体检测 
-本文演示如何使用[列表实体](luis-concept-entity-types.md)增加实体检测。 无需标记列表实体，因为它们与术语完全匹配。  
+本文展示了如何使用[列表实体](luis-concept-entity-types.md)提升实体检测。 无需标记列表实体，因为它们与术语完全匹配。  
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 在本文中，学习如何：
 
@@ -27,7 +29,7 @@ ms.locfileid: "70390273"
 > * 添加规范化值和同义词
 > * 验证改进后的实体标识
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 > [!div class="checklist"]
 > * 最新版 [Node.js](https://nodejs.org)
@@ -37,7 +39,7 @@ ms.locfileid: "70390273"
 > [!Tip]
 > 如果尚无订阅，可注册[免费帐户](https://azure.microsoft.com/free/)。
 
-本文中的所有代码都可在[Azure 示例 GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity)中找到。 
+本文中的所有代码都可在 [Azure-Samples GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity)中找到。 
 
 ## <a name="use-homeautomation-app"></a>使用 HomeAutomation 应用
 使用 HomeAutomation 应用，可以控制灯等设备、娱乐系统和供热制冷等环境控制系统。 这些系统有多个不同名称，包括制造商名称、别名、首字母缩略词和行话。 
@@ -46,7 +48,7 @@ ms.locfileid: "70390273"
 
 理想情况下，以下陈述应当会解析为预生成实体 HomeAutomation.Device：
 
-|#|陈述|标识的实体|score|
+|#|话语|标识的实体|score|
 |--|--|--|--|
 |1|turn on the ac（打开空调）|HomeAutomation.Device -“ac（空调）”|0.8748562|
 |2|turn up the heat（打开供热）|HomeAutomation.Device -“heat（供热）”|0.784990132|
@@ -59,7 +61,7 @@ HomeAutomation.Device 实体非常适用于数量较少的设备或几乎没有�
 
 在这种情况下，列表实体很适用，因为办公楼或校园中设备的术语集是已知的，即使这个集合很大，也不例外。 使用列表实体，LUIS 可以接收恒温调节器术语集中的任何可取值，并将它解析为同一个设备“恒温调节器”。 
 
-本文将使用恒温器创建一个实体列表。 本文中恒温器的备用名称为： 
+本文将创建包含恒温调节器的实体列表。 在本文中，恒温调节器的可选名称包括： 
 
 |恒温调节器的可选名称|
 |--|
@@ -212,7 +214,7 @@ node train.js
 
 尝试其他两个陈述，看看它们是否也作为“恒温调节器”返回。 
 
-|#|陈述|实体|type|value|
+|#|话语|实体|type|值|
 |--|--|--|--|--|
 |1|turn on the ac（打开空调）| ac（空调） | DevicesList | 恒温调节器|
 |2|turn up the heat（打开供热）|heat（供热）| DevicesList |恒温调节器|

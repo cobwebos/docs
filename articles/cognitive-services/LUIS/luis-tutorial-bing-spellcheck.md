@@ -9,18 +9,23 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 3bde609c83425d660c867939e034247d7e6898c5
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 9c8babac8450bdfd170d3d18b338ba3d64383a67
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300276"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499027"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>使用必应拼写检查更正拼写错误的字词
 
 在 LUIS 预测表述的分数和实体前，可将 LUIS 应用与[必应拼写检查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) 集成，以更正表述中拼写错误的字词。 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
+[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
+
 
 ## <a name="create-first-key-for-bing-spell-check-v7"></a>为必应拼写检查 V7 创建第一个密钥
 [第一个必应拼写检查 API v7 密钥](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)是免费的。 
@@ -70,7 +75,7 @@ LUIS 中有两个位置需使用该密钥。 第一个位置是[测试面板](lu
 ## <a name="send-misspelled-utterance-to-luis"></a>将拼写错误的表述发送到 LUIS
 1. 在 Web 浏览器中，复制上面的字符串，并将 `region`、`appId`、`luisKey` 和 `bingKey` 替换为你自己的值。 如果终结点区域与你的发布[区域](luis-reference-regions.md)不同，请务必使用终结点区域。
 
-2. 添加拼写错误的表述，如“How far is the mountainn?”。 在英语中，含有一个 `n` 的 `mountain` 才是正确的拼写。 
+2. 添加拼写错误的表述，如“How far is the mountainn?”。 在英语中，含有一个 `mountain` 的 `n` 才是正确的拼写。 
 
 3. 按 Enter，将查询发送到 LUIS。
 
@@ -101,4 +106,4 @@ LUIS 中有两个位置需使用该密钥。 第一个位置是[测试面板](lu
 [发布](luis-how-to-publish-app.md)页面包含一个“启用必应拼写检查器”复选框。 这便于创建密钥和了解终结点 URL 的更改。 为更正每个表述中的拼写，则仍必须使用正确的终结点参数。 
 
 > [!div class="nextstepaction"]
-> [详细了解示例表述](luis-how-to-add-example-utterances.md)
+> [详细了解示例陈述](luis-how-to-add-example-utterances.md)

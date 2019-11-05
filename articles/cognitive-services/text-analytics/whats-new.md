@@ -8,18 +8,34 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 79a573f6338d0ea3a7c3c0e772f120c34c09b05c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 44ef6fb118be4d1110a693faded6c57bc8b4e2fd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931528"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499958"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
 文本分析 API 会持续更新。 为了及时了解最新的发展，本文提供了有关新版本和功能的信息。
+
+## <a name="named-entity-recognition-v3-public-preview---october-2019"></a>命名实体识别 v3 公共预览版-10 月2019
+
+下一版本的命名实体识别（NER）现在可用于公共预览版，并为在文本中找到的实体提供扩展的检测和分类。 它提供：
+
+* 以下新实体类型的识别：
+    * 电话号码
+    * IP 地址
+
+* 用于识别个人信息实体类型的新终结点（仅限英语）
+* 用于实体识别和实体链接的不同终结点。
+
+实体链接支持英语和西班牙语。 NER 语言支持因实体类型而异。 有关详细信息，请参阅下面的链接。 
+
+> [!div class="nextstepaction"]
+> [了解有关命名实体识别 v3 的详细信息](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview)
 
 ## <a name="sentiment-analysis-v3-public-preview---october-2019"></a>情绪分析 v3 公共预览版-2019 年10月
 
@@ -32,7 +48,6 @@ ms.locfileid: "72931528"
 
 > [!div class="nextstepaction"]
 > [详细了解情绪分析 v3](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)
-
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,33 +6,28 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 7/5/2019
+ms.date: 10/07/2019
 ms.author: dapine
-ms.openlocfilehash: cbf11c13bfb5c90739ea67fab92df08796a88e50
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2cb2cfbdfbac5d496f109d85977b41a050766ab0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717279"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499105"
 ---
 ## <a name="create-an-computer-vision-resource"></a>创建计算机视觉资源
 
-1. 登录到 [Azure 门户](https://portal.azure.com)
-1. 单击[创建**计算机视觉**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)资源
-1. 输入所有所需的设置：
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 单击 "[创建**计算机视觉**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)资源"。
+1. 输入所有必需的设置：
 
     |设置|值|
     |--|--|
-    |名称|所需的名称 （2-64 个字符）|
+    |名称|所需名称（2-64 个字符）|
     |订阅|选择相应的订阅|
-    |Location|选择任何附近和可用位置|
-    |定价层|`F0` -最小的定价层|
+    |位置|选择附近任何可用的位置|
+    |定价层|`F0` - 最小定价层|
     |资源组|选择可用的资源组|
 
-1. 单击**创建**并等待要创建的资源。 创建后，导航到资源页
-1. 收集配置`endpoint`和 API 密钥：
-
-    |在门户中的资源选项卡|设置|ReplTest1|
-    |--|--|--|
-    |**概述**|终结点|复制的终结点。 它看起来类似于 `https://computer-vision.cognitiveservices.azure.com/`|
-    |密钥 |API 密钥|将复制两个密钥的 1。 它是不包含空格或短划线的 32 字母数字字符字符串`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。|
+1. 单击“创建”并等待创建资源。 创建后，导航到 "资源" 页。
+1. 收集配置的 `{ENDPOINT_URI}` 和 `{API_KEY}`，请参阅收集详细信息[所需的参数](../computer-vision-how-to-install-containers.md#gathering-required-parameters)。

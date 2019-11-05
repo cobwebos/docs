@@ -1,6 +1,6 @@
 ---
 title: Azure 安全中心的安全建议 |Microsoft Docs
-description: 本文档介绍 Azure 安全中心中的建议如何帮助你保护 Azure 资源并保持符合安全策略。
+description: 本文档介绍 Azure 安全中心的建议如何帮助保护 Azure 资源并保持符合安全策略。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 32b7f1d699c0d620d70614c441a8c18520c1b2d5
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 6a01ddbc733ce52c02e9abef2569adbfbd19c6a8
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201059"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520731"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 安全中心的安全建议 
 本主题说明如何查看和了解 Azure 安全中心内的建议，以帮助你保护 Azure 资源。
 
 > [!NOTE]
-> 本文档将使用示例部署介绍该服务。  本文档不是一份分步指南。
+> 本文档通过使用示例部署介绍该服务。  本文档不是一份分步指南。
 >
 
 ## <a name="what-are-security-recommendations"></a>安全建议是什么？
@@ -36,7 +36,7 @@ ms.locfileid: "71201059"
 每项建议都提供：
 
 - 建议的简短说明。
-- 为实施建议而要执行的补救步骤。 <!-- In some cases, one-click remediation is available. -->
+- 为实施建议而要执行的补救步骤。 <!-- In some cases, Quick Fix remediation is available. -->
 - 哪些资源需要你对其执行建议的操作。
 - **安全分数影响**，这是如果你实施此建议，安全分数将增加的数量。
 
@@ -53,12 +53,12 @@ ms.locfileid: "71201059"
     可筛选建议。 要筛选建议，请选择“建议”边栏选项卡上的“筛选器”。 此时会打开“筛选器”边栏选项卡，选择要查看严重性和状态值。
 
    * **建议**：建议。
-   * **安全功能分数影响**：安全中心使用你的安全建议并应用高级算法来确定每个建议的重要性而生成的分数。 有关详细信息，请参阅[安全分数计算](security-center-secure-score.md#secure-score-calculation)。
+   * **安全分数影响**：安全中心使用安全建议生成的分数，以及应用高级算法来确定每个建议的重要程度。 有关详细信息，请参阅[安全分数计算](security-center-secure-score.md#secure-score-calculation)。
    * **资源**：列出了此建议适用的资源。
    * **状态栏**：描述该特定建议的严重性：
-       * **高（红色）** ：重要资源（如应用程序、VM 或网络安全组）存在漏洞，需要提请注意。
-       * **中等（橙色）** ：存在漏洞，需要采取非关键步骤或额外步骤来消除它或完成某个过程。
-       * **低（蓝色）** ：存在需要解决的漏洞，但不需立即处理。 （默认情况下，不显示严重性低的建议，但如果用户需要查看这些建议，可以将其筛选出来。） 
+       * **高（红色）** ：有意义的资源（例如应用程序、VM 或网络安全组）存在漏洞，需要引起注意。
+       * **中（橙色）** ：存在漏洞，需要执行非关键或附加步骤以消除它或完成一个过程。
+       * **Low （蓝色）** ：应该解决的漏洞，但不需要立即引起注意。 （默认情况下，不显示严重性低的建议，但如果用户需要查看这些建议，可以将其筛选出来。） 
        * **正常（绿色）** ：
        * **不可用（灰色）** ：
 
@@ -71,6 +71,6 @@ ms.locfileid: "71201059"
  
 ## <a name="next-steps"></a>后续步骤
 
-在本文档中，已向你介绍安全中心的安全建议。 了解如何修正建议：
+本文档介绍了安全中心的安全建议。 了解如何修正建议：
 
 * [修正建议](security-center-remediate-recommendations.md)-了解如何配置 Azure 订阅和资源组的安全策略。

@@ -1,5 +1,5 @@
 ---
-title: 查看用户最谈话-LUIS
+title: 评审用户话语 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 主动学习捕获终结点查询并选择用户不确定的终结点话语。 你审核这些话语以选择意向并标记这些真实话语的实体。 在示例话语中接受这些更改，然后对其进行训练和发布。 然后 LUIS 更准确地识别话语。
 services: cognitive-services
@@ -9,27 +9,28 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/05/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: c617e4aa62ce2ff468545bef0b2ebe2c4d0e4f03
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: d5652857f2f35e392d3f512001044fd06bc0a0c9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382360"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499074"
 ---
 # <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>如何在 LUIS 门户中审核终结点话语以进行主动学习
 
 [主动学习](luis-concept-review-endpoint-utterances.md)捕获终结点查询并选择用户不确定的终结点话语。 你审核这些话语以选择意向并标记这些真实话语的实体。 在示例话语中接受这些更改，然后对其进行训练和发布。 然后 LUIS 更准确地识别话语。
 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="enable-active-learning"></a>启用主动学习
 
-若要启用主动学习，请记录用户查询。 这是通过使用 `log=true` querystring 参数和值设置[终结点查询](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)来实现的。
+若要启用主动学习，请记录用户查询。 这是通过使用 [ querystring 参数和值设置](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)终结点查询`log=true`来实现的。
 
 ## <a name="disable-active-learning"></a>禁用主动学习
 
-若要禁用主动学习，请不要记录用户查询。 这是通过使用 `log=false` querystring 参数和值设置[终结点查询](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)来实现的。
+若要禁用主动学习，请不要记录用户查询。 这是通过使用 [ querystring 参数和值设置](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)终结点查询`log=false`来实现的。
 
 ## <a name="filter-utterances"></a>筛选陈述
 

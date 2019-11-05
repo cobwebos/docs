@@ -1,24 +1,24 @@
 ---
 title: 应用转换：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的 "应用转换" 模块基于之前计算的转换来修改输入数据集。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的 "应用转换" 模块来修改基于之前计算的转换的输入数据集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: adb2477fe2b7eea0dd0a98c7240843d90411d832
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 19385870d184654d902cd40b45d4be3646c87b46
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693882"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493907"
 ---
 # <a name="apply-transformation-module"></a>“应用转换”模块
 
-本文介绍了 Azure 机器学习服务的可视界面（预览）的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块可以基于之前计算的转换来修改输入数据集。  
   
@@ -46,4 +46,4 @@ Azure 机器学习为创建和应用多种不同类型的自定义转换提供�
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

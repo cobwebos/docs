@@ -11,14 +11,15 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22ce9ea44dde6da4d1194463fe266ed00c5a3f96
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 0ceb21d6f77fd9694f7cd564c2e89735cf2a774d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067712"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497415"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问
+[!INCLUDE [aml-applies-to-enterprise-sku](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 本文介绍如何管理对 Azure 机器学习工作区的访问。 [基于角色的访问控制（RBAC）](/azure/role-based-access-control/overview)用于管理对 Azure 资源的访问。 将为 Azure Active Directory 中的用户分配特定角色，从而授予对资源的访问权限。 Azure 既提供内置角色，也提供创建自定义角色的功能。
 
@@ -26,9 +27,9 @@ ms.locfileid: "71067712"
 
 Azure 机器学习工作区是一种 Azure 资源。 与其他 Azure 资源一样，创建新的 Azure 机器学习工作区时，它附带三个默认角色。 您可以将用户添加到工作区，并将其分配给这些内置角色之一。
 
-| Role | 访问级别 |
+| 角色 | 访问级别 |
 | --- | --- |
-| **读取者** | 工作区中的只读操作。 读者可以在工作区中列出和查看资产，但不能创建或更新这些资产。 |
+| **读者** | 工作区中的只读操作。 读者可以在工作区中列出和查看资产，但不能创建或更新这些资产。 |
 | **参与者** | 查看、创建、编辑或删除工作区中的资产（如果适用）。 例如，参与者可以创建试验、创建或附加计算群集、提交运行和部署 web 服务。 |
 | **所有者** | 对工作区的完全访问权限，包括查看、创建、编辑或删除工作区中的资产（如果适用）的功能。 此外，还可以更改角色分配。 |
 
@@ -52,7 +53,7 @@ Azure 机器学习工作区是一种 Azure 资源。 与其他 Azure 资源一�
 az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
 ```
 
-此`user`字段是 Azure Active Directory 的实例中的现有用户的电子邮件地址，工作区父订阅所在的位置。 下面是有关如何使用此命令的示例：
+"`user`" 字段是工作区父订阅所在 Azure Active Directory 实例中现有用户的电子邮件地址。 下面是有关如何使用此命令的示例：
 
 ```azurecli-interactive 
 az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
@@ -86,7 +87,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 }
 ```
 
-您可以更改`AssignableScopes`该字段，以便在订阅级别、资源组级别或特定工作区级别设置此自定义角色的作用域。
+你可以更改 "`AssignableScopes`" 字段，以便在订阅级别、资源组级别或特定工作区级别设置此自定义角色的作用域。
 
 此自定义角色可执行工作区中的所有操作，但以下操作除外：
 
@@ -101,7 +102,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 az role definition create --role-definition data_scientist_role.json
 ```
 
-部署之后，此角色将在指定的工作区中可用。 现在，你可以在 Azure 门户中添加并分配此角色。 或者，可以使用`az ml workspace share` CLI 命令将此角色分配给用户：
+部署之后，此角色将在指定的工作区中可用。 现在，你可以在 Azure 门户中添加并分配此角色。 或者，可以使用 `az ml workspace share` CLI 命令将此角色分配给用户：
 
 ```azurecli-interactive
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
@@ -115,5 +116,5 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
 - [企业安全性概述](concept-enterprise-security.md)
 - [在虚拟网络内安全地运行试验和推理/评分](how-to-enable-virtual-network.md)
-- [教程：训练模型](tutorial-train-models-with-aml.md)
+- [教程：定型模型](tutorial-train-models-with-aml.md)
 - [资源提供程序操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

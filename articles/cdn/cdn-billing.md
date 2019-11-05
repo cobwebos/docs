@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: magattus
-ms.openlocfilehash: 8704d715a20b94dc170f232b07a0acd54bb1e6f1
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: e2827a11f4ec2a5c0467c3699cd9990aaf7ae97a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996813"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495483"
 ---
 # <a name="understanding-azure-cdn-billing"></a>了解 Azure CDN 计费
 
@@ -57,7 +57,7 @@ Azure CDN 计费区域取决于将内容分发到最终用户的源服务器的�
 
 - 实际使用的 GB：源对象的实际存储。
 
-- 事务：填充缓存所需。
+- 事务数：填充缓存所需。
 
 - 以 GB 为单位的传输量：通过传输来填充 CDN 缓存的数据量。
 
@@ -83,9 +83,9 @@ CDN POP 会在每次需要填充其缓存时向要缓存的对象的源提出请
 
 - 内容的可缓存性如何：如果内容的 TTL（生存时间）/过期值高且访问频率也高，因此需经常放置在缓存中，则由 CDN 处理负载的绝大部分。 通常情况下，合格的缓存命中率远高于 90%，这意味着必须返回到源的客户端请求不到 10%，不管是因为缓存失误还是因为需要进行对象刷新。
 
-- 多少节点需要加载对象：每次节点从源加载对象时，都会产生计费事务。 因此，全局内容越多（需要从更多的节点访问），计费事务也越多。
+- 多少节点需要加载对象：节点在每次从源加载对象时，都会产生计费事务。 因此，全局内容越多（需要从更多的节点访问），计费事务也越多。
 
-- TTL 影响：对象的 TTL 越高，意味着需要从源提取该对象的频率越低。 同时还意味着客户端（例如浏览器）能够缓存该对象的时间越长，因此可以减少 CDN 的事务。
+- TTL 影响：对象的 TTL 越高，意味着需要从源提取该对象的频率越低， 同时还意味着客户端（例如浏览器）能够缓存该对象的时间越长，因此可以减少 CDN 的事务。
 
 ## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>哪些源服务有资格通过 Microsoft Azure CDN 进行免费数据传输？ 
 如果使用以下 Azure 服务之一作为 CDN 源，则不会向 CDN Pop 发送数据传输费用。 
@@ -99,7 +99,7 @@ CDN POP 会在每次需要填充其缓存时向要缓存的对象的源提出请
 - Azure DNS
 - ExpressRoute
 - VPN 网关
-- 通信管理器
+- 流量管理器
 - 网络观察程序
 - Azure 防火墙
 - Azure Front Door 服务
@@ -113,7 +113,7 @@ CDN POP 会在每次需要填充其缓存时向要缓存的对象的源提出请
 - HDInsight
 - Azure Cosmos DB
 - Azure Data Lake Store
-- Azure 机器学习服务 
+- Azure 机器学习 
 - Azure SQL 数据库
 - 用于 Redis 的 Azure 缓存
 
