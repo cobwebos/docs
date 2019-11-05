@@ -1,5 +1,5 @@
 ---
-title: 添加方法-LUIS
+title: 添加意向 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 向 LUIS 应用添加意向，识别具有相同意向的问题或命令组。
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: eb90a902b8f7fe8b37b81c2825cbdfc25ef5dc0d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1f2f001489552203f0157dd24356341eb3184c81
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932891"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467541"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>添加意向以确定用户的话语意向
 
@@ -24,11 +24,13 @@ ms.locfileid: "68932891"
 
 可以依次转到顶部导航栏的“生成”部分和左侧面板的“意向”来管理意向。 
 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
 ## <a name="add-intent"></a>添加意向
 
 1. 在“意向”页上，选择“创建新意向”。
 
-1. 在“创建新意向”对话框中，输入意向名称 `GetEmployeeInformation`，然后单击“完成”。
+1. 在“创建新意向”对话框中，输入意向名称 **，然后单击“完成”** `GetEmployeeInformation`。
 
     ![添加意向](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
@@ -36,7 +38,7 @@ ms.locfileid: "68932891"
 
 示例表述是用户问题或命令的文本示例。 若要传授语言理解 (LUIS)，需将示例话语添加到意向。
 
-1. 在“GetEmployeeInformation”意向详细信息页上的意向名称下的文本框中，输入预期用户会输入的相关话语，例如 `Does John Smith work in Seattle?`，然后按 Enter。
+1. 在“GetEmployeeInformation”意向详细信息页上的意向名称下的文本框中，输入预期用户会输入的相关话语，例如 **，然后按 Enter。** `Does John Smith work in Seattle?`
  
     ![意向详细信息页的屏幕截图，其中突出显示了表述](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
 
