@@ -1,0 +1,32 @@
+- name: Azure 区块链令牌（预览版）
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于 Azure 区块链令牌
+      href: overview.md
+- name: 概念
+  items:
+    - name: 帐户管理
+      href: account-management.md
+    - name: 模板
+      href: templates.md
+    - name: 可组合性
+      href: composability.md
+- name: 资源
+  items:
+    - name: 博客
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: Azure 区块链服务 Visual Studio Code 扩展
+      href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
+    - name: 代码示例
+      href: 'https://github.com/Azure-Samples/blockchain'
+    - name: 社区
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: 论坛
+      href: 'https://aka.ms/workbenchforum'
+    - name: 产品反馈
+      href: 'https://feedback.azure.com/forums/586780-blockchain'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/blockchain-tokens'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'

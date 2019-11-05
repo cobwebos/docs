@@ -781,20 +781,32 @@
                   href: insights/container-insights-enable-new-cluster.md
                 - name: 针对现有群集启用
                   href: insights/container-insights-enable-existing-clusters.md
+                - name: 针对混合群集启用
+                  href: insights/container-insights-hybrid-setup.md
                 - name: 区域映射
                   href: insights/container-insights-region-mapping.md
             - name: 分析
               href: insights/container-insights-analyze.md
             - name: 禁用监视
               href: insights/container-insights-optout.md
-            - name: 查看实时日志
-              href: insights/container-insights-live-logs.md
+            - name: 查看实时数据
+              items:
+                - name: 实时数据（预览版）概述
+                  href: insights/container-insights-livedata-overview.md
+                - name: 设置
+                  href: insights/container-insights-livedata-setup.md
+                - name: 查看群集指标
+                  href: insights/container-insights-livedata-metrics.md
+                - name: 查看部署
+                  href: insights/container-insights-livedata-deployments.md
             - name: 使用日志查询分析数据
               href: insights/container-insights-log-search.md
             - name: 警报
               href: insights/container-insights-alerts.md
             - name: 代理管理
               href: insights/container-insights-manage-agent.md
+            - name: 配置 Prometheus 指标抓取
+              href: insights/container-insights-prometheus-integration.md
             - name: 配置代理收集设置
               href: insights/container-insights-agent-config.md
             - name: 更新以启用指标

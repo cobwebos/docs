@@ -92,6 +92,8 @@
               href: concepts-data-access-and-security-vnet.md
             - name: 连接体系结构
               href: concepts-connectivity-architecture.md
+            - name: Azure AD 身份验证
+              href: concepts-aad-authentication.md
         - name: 业务连续性
           items:
             - name: 业务连续性简介
@@ -153,8 +155,14 @@
               href: concepts-hyperscale-firewall-rules.md
             - name: 配置 SSL
               href: concepts-hyperscale-ssl-connection-security.md
+        - name: 监视和优化
+          items:
+            - name: 监视和优化
+              href: concepts-hyperscale-monitoring.md
         - name: PostgreSQL 扩展
           href: concepts-hyperscale-extensions.md
+        - name: 高可用性
+          href: concepts-hyperscale-high-availability.md
         - name: 资源
           items:
             - name: 配置选项
@@ -163,8 +171,12 @@
   items:
     - name: 单个服务器
       items:
-        - name: 创建用户
-          href: howto-create-users.md
+        - name: Authentication
+          items:
+            - name: 创建用户
+              href: howto-create-users.md
+            - name: 配置 Azure AD 集成
+              href: howto-configure-sign-in-aad-authentication.md
         - name: 优化
           items:
             - name: 批量插入
@@ -245,12 +257,20 @@
               href: howto-read-replicas-cli.md
     - name: 超大规模 (Citus)
       items:
-        - name: 扩展
+        - name: 创建用户
+          href: howto-hyperscale-create-users.md
+        - name: 缩放
           href: howto-hyperscale-scaling.md
         - name: 管理防火墙
           items:
             - name: Azure 门户
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: 高可用性
+          href: howto-hyperscale-high-availability.md
+        - name: 监视
+          items:
+            - name: 针对指标创建警报
+              href: howto-hyperscale-alert-on-metric.md
         - name: 故障排除
           items:
             - name: 排查连接错误

@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.date: 09/03/2019
-  ms.openlocfilehash: 589e97442412d30d844111cd9a3e332d70d705b6
-  ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+  ms.date: 10/29/2019
+  ms.openlocfilehash: 400ebc88faad1ba5d55aa81dd737c8913b131340
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/19/2019
-  ms.locfileid: "71130368"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73497547"
 landingContent:
 - title: Azure ML 入门
   linkLists:
@@ -25,9 +25,11 @@ landingContent:
     links:
     - text: Python 笔记本中的试验
       url: service/tutorial-1st-experiment-sdk-setup.md
-    - text: 使用拖放功能进行试验
-      url: service/ui-tutorial-automobile-price-train-score.md
-    - text: 自动执行第一个试验
+    - text: RStudio 中的试验
+      url: service/tutorial-1st-r-experiment.md
+    - text: 使用拖放设计器进行试验
+      url: service/tutorial-designer-automobile-price-train-score.md
+    - text: 自动执行第一个 ML 试验
       url: service/tutorial-first-experiment-automated-ml.md
   - linkListType: overview
     links:
@@ -51,8 +53,6 @@ landingContent:
       url: service/tutorial-train-models-with-aml.md
     - text: 使用自动化 ML 预测出租车费用
       url: service/tutorial-auto-train-models.md
-    - text: 使用管道进行批量评分
-      url: service/tutorial-pipeline-batch-scoring-classification.md
   - linkListType: how-to-guide
     links:
     - text: 使用 Scikit-learn 进行训练
@@ -63,22 +63,28 @@ landingContent:
       url: service/how-to-train-pytorch.md
     - text: 使用 Keras 进行训练
       url: service/how-to-train-keras.md
-- title: 试验：可视界面
+- title: 使用 ML 管道
   linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 ML 管道？
+      url: service/concept-ml-pipelines.md
+    - text: “拖放”设计器
+      url: service/concept-designer.md
   - linkListType: tutorial
     links:
-    - text: 使用自动化 ML 预测订阅
-      url: service/tutorial-first-experiment-automated-ml.md
-    - text: 使用线性回归预测价格
-      url: service/ui-tutorial-automobile-price-train-score.md
+    - text: 用于预测价格的线性回归（设计器）
+      url: service/tutorial-designer-automobile-price-train-score.md
+    - text: 创建 ML 管道 (Python SDK)
+      url: service/tutorial-pipeline-batch-scoring-classification.md
   - linkListType: how-to-guide
     links:
-    - text: 预测信用风险
-      url: service/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md
-    - text: 预测延迟
-      url: service/how-to-ui-sample-classification-predict-flight-delay.md
-    - text: 预测变动率
-      url: service/how-to-ui-sample-classification-predict-churn.md
+    - text: 计划管道 (Python SDK)
+      url: service/how-to-schedule-pipelines.md
+    - text: 预测延迟（设计器）
+      url: service/how-to-designer-sample-classification-flight-delay.md
+    - text: 预测流失（设计器）
+      url: service/how-to-designer-sample-classification-churn.md
 - title: 部署和管理模型
   linkLists:
   - linkListType: how-to-guide
@@ -95,9 +101,11 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure ML Python SDK
+    - text: 用于 Python 的 SDK
       url: https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py
-    - text: Azure ML CLI
+    - text: 用于 R 的 SDK
+      url: https://azure.github.io/azureml-sdk-for-r/reference/index.html
+    - text: 机器学习 CLI
       url: https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
-    - text: 可视界面算法和模块
+    - text: 设计器算法和模块
       url: algorithm-module-reference/module-reference.md

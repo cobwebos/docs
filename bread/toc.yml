@@ -115,6 +115,9 @@
         - name: 区块链服务
           tocHref: /azure/blockchain/service/
           topicHref: /azure/blockchain/service/index
+        - name: 区块链令牌
+          tocHref: /azure/blockchain/tokens/
+          topicHref: /azure/blockchain/tokens/index
         - name: Blockchain Workbench
           tocHref: /azure/blockchain/workbench/
           topicHref: /azure/blockchain/workbench/
@@ -451,6 +454,9 @@
     - name: 防火墙
       tocHref: /azure/firewall/
       topicHref: /azure/firewall/
+    - name: 防火墙管理器
+      tocHref: /azure/firewall-manager
+      topicHref: /azure/firewall-manager
     - name: Front Door 服务
       tocHref: /azure/frontdoor/
       topicHref: /azure/frontdoor/
@@ -539,7 +545,7 @@
             - name: 算法和模块参考
               tocHref: /azure/machine-learning/algorithm-module-reference
               topicHref: /azure/machine-learning/algorithm-module-reference/module-reference
-        - name: 工作室
+        - name: 工作室（经典）
           tocHref: /azure/machine-learning/studio
           topicHref: /azure/machine-learning/studio/
         - name: Team Data Science Process
@@ -671,12 +677,15 @@
     - name: Site Recovery
       tocHref: /azure/site-recovery/
       topicHref: /azure/site-recovery/
-    - name: SQL 数据仓库
+    - name: Synapse Analytics
       tocHref: /azure/sql-data-warehouse/
       topicHref: /azure/sql-data-warehouse/
     - name: SQL 数据库
       tocHref: /azure/sql-database/
       topicHref: /azure/sql-database/
+    - name: SQL Database Edge
+      tocHref: /azure/sql-database-edge/
+      topicHref: /azure/sql-database-edge/
     - name: SQL Server Stretch Database
       tocHref: /azure/sql-server-stretch-database/
       topicHref: /azure/sql-server-stretch-database/
@@ -751,9 +760,15 @@
     - name: 虚拟网络
       tocHref: /azure/virtual-network/
       topicHref: /azure/virtual-network/
+    - name: 对等互连服务
+      tocHref: /azure/peering-service/
+      topicHref: /azure/peering-service/
     - name: VPN 网关
       tocHref: /azure/vpn-gateway/
       topicHref: /azure/vpn-gateway/
+    - name: Web 应用程序防火墙
+      tocHref: /azure/web-application-firewall/
+      topicHref: /azure/web-application-firewall/
     - name: Windows 虚拟桌面
       tocHref: /azure/virtual-desktop/
       topicHref: /azure/virtual-desktop/

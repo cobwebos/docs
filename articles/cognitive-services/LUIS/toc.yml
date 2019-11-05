@@ -36,17 +36,7 @@
         - name: 获取意向
           href: luis-get-started-get-intent-from-rest.md
         - name: 更改模型
-          items:
-            - name: 'C#'
-              href: luis-get-started-cs-add-utterance.md
-            - name: Go
-              href: luis-get-started-go-add-utterance.md
-            - name: Java
-              href: luis-get-started-java-add-utterance.md
-            - name: Node.js
-              href: luis-get-started-node-add-utterance.md
-            - name: Python
-              href: luis-get-started-python-add-utterance.md
+          href: get-started-get-model-rest-apis.md
 - name: 教程
   items:
     - name: 构建应用
@@ -103,49 +93,47 @@
               href: luis-tutorial-bot-nodejs-appinsights.md
 - name: 概念
   items:
-    - name: 最佳做法
-      href: luis-concept-best-practices.md
-      displayName: 'phrase list, pattern, intent, utterance, version, do, don''t, example utterances, iteration, cycle, correct, right'
-    - name: 使用 LUIS 和 QnA Maker
-      href: choose-natural-language-processing-service.md
-      displayName: 'nlp, qna maker'
+    - name: 开发生命周期
+      href: luis-concept-app-iteration.md
     - name: 规划应用
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md
-    - name: 创作和运行时密钥
-      displayName: 'shared, transfer, ownership, author, access, import'
-      href: luis-concept-keys.md
-    - name: 创作应用的模型
+    - name: 应用模型
       items:
-        - name: 创作周期
-          href: luis-concept-app-iteration.md
-        - name: 版本控制
-          href: luis-concept-version.md
-          displayName: import
-    - name: 设计模型
-      items:
+        - name: 类型
+          href: luis-concept-model.md
         - name: 意向
           href: luis-concept-intent.md
+        - name: 陈述
+          href: luis-concept-utterance.md
         - name: 实体
           displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, machine-learn, exact, mixed, roles'
           href: luis-concept-entity-types.md
-        - name: 实体角色
-          href: luis-concept-roles.md
-        - name: 陈述
-          href: luis-concept-utterance.md
         - name: 预生成的模型
           href: luis-concept-prebuilt-model.md
-    - name: 提高应用性能
-      items:
-        - name: 预测分数
-          href: luis-concept-prediction-score.md
-        - name: 查看终结点表述
-          href: luis-concept-review-endpoint-utterances.md
-        - name: 短语列表
-          href: luis-concept-feature.md
         - name: 模式
           href: luis-concept-patterns.md
           displayName: roles
+        - name: 功能
+          href: luis-concept-feature.md
+    - name: 预测分数
+      href: luis-concept-prediction-score.md
+    - name: 最佳做法
+      href: luis-concept-best-practices.md
+      displayName: 'phrase list, pattern, intent, utterance, version, do, don''t, example utterances, iteration, cycle, correct, right'
+    - name: 提高应用性能
+      items:
+        - name: 查看终结点话语
+          href: luis-concept-review-endpoint-utterances.md
+    - name: 测试
+      items:
+        - name: 交互式测试
+          href: luis-concept-test.md
+        - name: 批处理测试
+          href: luis-concept-batch-test.md
+    - name: 创作和运行时密钥
+      displayName: 'shared, transfer, ownership, author, access, import'
+      href: luis-concept-keys.md
     - name: 数据管理
       items:
         - name: 更改数据
@@ -157,12 +145,9 @@
           displayName: roles
         - name: 数据存储
           href: luis-concept-data-storage.md
-    - name: 测试
-      items:
-        - name: 交互式测试
-          href: luis-concept-test.md
-        - name: 批处理测试
-          href: luis-concept-batch-test.md
+    - name: 使用 LUIS 和 QnA Maker
+      href: choose-natural-language-processing-service.md
+      displayName: 'nlp, qna maker'
     - name: Enterprise
       items:
         - name: 设计策略
@@ -183,13 +168,7 @@
           href: luis-how-to-add-entities.md
           displayName: 'roles, import'
         - name: 使用预构建的模型
-          items:
-            - name: 使用域
-              href: luis-prebuilt-domains.md
-            - name: 使用意向
-              href: luis-prebuilt-intent.md
-            - name: 使用实体
-              href: luis-prebuilt-entities.md
+          href: howto-add-prebuilt-models.md
         - name: 使用 REST API
           items:
             - name: 使用 Node.js 以编程方式构建应用
@@ -218,6 +197,7 @@
           href: luis-how-to-model-intent-pattern.md
     - name: 定型
       href: luis-how-to-train.md
+      displayName: 'negative sampling, nondeterministic, non-deterministic, UseAllTrainingData'
     - name: 测试
       items:
         - name: 交互式测试
@@ -246,13 +226,17 @@
           diplayName: 'import, export, container'
         - name: 使用流量管理器
           href: luis-traffic-manager.md
-    - name: 迁移 API
+    - name: 使用 API
       items:
-        - name: 迁移到 V2 REST API
-          href: luis-migration-api-v1-to-v2.md
-        - name: 迁移到 V3 REST API
+        - name: 面向开发人员
+          href: developer-reference-resource.md
+        - name: 创作 API
+          href: luis-migration-api-authoring.md
+        - name: 迁移到 V3 API
           href: luis-migration-api-v3.md
           displayName: 'json, response, verbose, dynamic, dynamic list object, brackets, array, role, show-all-intents,prebuilt domain, domain, external entities, "$instance",TimezoneOffset, datetimeReference, overridePredictions, override'
+        - name: 迁移到 V2 API
+          href: luis-migration-api-v1-to-v2.md
     - name: 使用容器
       items:
         - name: 安装并运行容器
@@ -262,6 +246,9 @@
           href: luis-container-configuration.md
         - name: 使用容器实例
           href: deploy-luis-on-container-instances.md
+        - name: 容器限制
+          href: luis-container-limitations.md
+          displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
 - name: 引用
   items:
     - name: 用户隐私
@@ -325,6 +312,8 @@
           href: reference-entity-regular-expression.md
         - name: 简单实体
           href: reference-entity-simple.md
+    - name: 情绪
+      href: luis-reference-prebuilt-sentiment.md
     - name: 开发人员资源
       href: developer-reference-resource.md
       displayName: 'SDK, API, quickstart, REST, cli, powershell, azure, rm, resource manager, samples, package, module, tool, dispatch, bot'
@@ -334,9 +323,15 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2092157'
     - name: REST API
       items:
-        - name: 创作 V2 REST API
+        - name: V3 创作 REST API（预览版）
+          href: 'https://aka.ms/luis-apim-v3-authoring'
+        - name: V3 预测 REST API
+          href: 'https://aka.ms/luis-apim-v3-prediction'
+        - name: V2 创作 REST API
           href: 'https://go.microsoft.com/fwlink/?linkid=2092087'
-        - name: 终结点 V2 REST API
+        - name: V2 预测 REST API
+          href: 'https://go.microsoft.com/fwlink/?linkid=2092356'
+        - name: 终结点 V3 REST API
           href: 'https://go.microsoft.com/fwlink/?linkid=2092356'
         - name: HTTP 代码
           displayName: '400, 401, 403, 409, 410, 414, 429'
@@ -413,7 +408,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 语言和区域支持
       href: luis-language-support.md
-      displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, Germain, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+      displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
     - name: Azure 路线图
       href: 'https://go.microsoft.com/fwlink/?linkid=2092089'
     - name: 术语表

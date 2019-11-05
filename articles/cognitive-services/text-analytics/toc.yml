@@ -104,6 +104,8 @@
       href: text-analytics-resource-faq.md
     - name: 语言和区域支持
       href: language-support.md
+    - name: 命名实体类型
+      href: named-entity-types.md
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: 区域可用性

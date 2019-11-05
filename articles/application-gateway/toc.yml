@@ -77,6 +77,8 @@
           href: application-gateway-waf-configuration.md
         - name: 自定义规则
           href: custom-waf-rules-overview.md
+    - name: 用于 AKS 的入口
+      href: ingress-controller-overview.md
     - name: 运行状况监视
       items:
         - name: 运行状况探测
@@ -153,6 +155,28 @@
           href: create-custom-waf-rules.md
         - name: 使用自定义规则配置 WAF
           href: configure-waf-custom-rules.md
+    - name: 用于 AKS 的入口
+      items:
+        - name: 使用现有应用程序网关进行安装
+          href: ingress-controller-install-existing.md
+        - name: 使用新应用程序网关进行安装
+          href: ingress-controller-install-new.md
+        - name: 启用 Cookie 关联
+          href: ingress-controller-cookie-affinity.md
+        - name: 启用多命名空间支持
+          href: ingress-controller-multiple-namespace-support.md
+        - name: 使用专用 IP 进行内部路由
+          href: ingress-controller-private-ip.md
+        - name: 向 AKS Pod 添加运行状况探测
+          href: ingress-controller-add-health-probes.md
+        - name: 使用应用程序网关通过 HTTP/HTTPS 公开 AKS 服务
+          href: ingress-controller-expose-service-over-http-https.md
+        - name: 使用 Helm 升级入口控制器
+          href: ingress-controller-update-ingress-controller.md
+        - name: 将 LetsEncrypt.org 与应用程序网关配合使用
+          href: ingress-controller-letsencrypt-certificate-application-gateway.md
+        - name: 向应用程序网关公开 WebSocket
+          href: ingress-controller-expose-websocket-server.md
     - name: 按 URL 路由
       items:
         - name: Azure PowerShell
@@ -223,6 +247,8 @@
           href: application-gateway-troubleshooting-502.md
         - name: Web 应用程序防火墙 (WAF)
           href: web-application-firewall-troubleshoot.md
+        - name: 用于 AKS 的入口
+          href: ingress-controller-troubleshoot.md
         - name: 资源运行状况
           href: resource-health-overview.md
         - name: 使用 Log Analytics
@@ -235,6 +261,8 @@
   items:
     - name: CRS 规则
       href: application-gateway-crs-rulegroups-rules.md
+    - name: 用于 AKS 批注的入口
+      href: ingress-controller-annotations.md
     - name: Azure CLI
       href: /cli/azure/network/application-gateway
     - name: Azure PowerShell

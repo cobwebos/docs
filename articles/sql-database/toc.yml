@@ -20,29 +20,34 @@
           items:
             - name: 概述
               href: sql-database-purchase-models.md
-            - name: 基于 vCore 的模型
-              href: sql-database-service-tiers-vcore.md
+            - name: vCore 模型
               items:
-                - name: 无服务器计算层
+                - name: vCore 模型概述
+                  href: sql-database-service-tiers-vcore.md
+                - name: 无服务器
                   href: sql-database-serverless.md
-                - name: 为预留容量预付费
+                - name: Azure 混合权益
+                  href: sql-database-azure-hybrid-benefit.md
+                - name: 预留容量
                   href: sql-database-reserved-capacity.md
-            - name: DTU 服务层级
+            - name: DTU 模型概述
               href: sql-database-service-tiers-dtu.md
+            - name: 从 DTU 迁移到 vCore
+              href: sql-database-dtu-to-vcore.md
         - name: 计算和存储
           items:
             - name: 概述
               href: sql-database-service-tiers-general-purpose-business-critical.md
               displayName: provisioned compute tier
-            - name: “常规用途”/“标准”服务层级
+            - name: 常规用途/标准
               href: sql-database-service-tier-general-purpose.md
-            - name: “业务关键”/“高级”服务层级
+            - name: 业务关键/高级
               href: sql-database-service-tier-business-critical.md
-            - name: “超大规模”服务层级
+            - name: 超大规模
               href: sql-database-service-tier-hyperscale.md
             - name: “超大规模”常见问题解答
               href: sql-database-service-tier-hyperscale-faq.md
-            - name: 从“高级 RS”服务层级迁移
+            - name: 从高级 RS 迁移
               href: sql-database-service-tiers-prs.md
 - name: 快速入门
   expanded: true
@@ -501,17 +506,17 @@
       items:
         - name: 单一数据库资源
           items:
-            - name: 基于虚拟核心的资源限制
+            - name: vCore 资源限制
               href: sql-database-vcore-resource-limits-single-databases.md
-            - name: 基于 DTU 的资源限制
+            - name: DTU 资源限制
               href: sql-database-dtu-resource-limits-single-databases.md
             - name: 缩放资源
               href: sql-database-single-database-scale.md
         - name: 弹性池资源
           items:
-            - name: 基于虚拟核心的资源限制
+            - name: vCore 资源限制
               href: sql-database-vcore-resource-limits-elastic-pools.md
-            - name: 基于 DTU 的资源限制
+            - name: DTU 资源限制
               href: sql-database-dtu-resource-limits-elastic-pools.md
             - name: 缩放资源
               href: sql-database-elastic-pool-scale.md

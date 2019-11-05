@@ -6,6 +6,9 @@
     - name: 什么是 Azure 机器学习？
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
+    - name: Azure 机器学习与工作室
+      displayName: 'AML, Studio, designer'
+      href: ../compare-azure-ml-to-studio-classic.md
     - name: 体系结构和术语
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
@@ -32,15 +35,22 @@
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
         - name: 机器学习管道（高级）
-          href: tutorial-pipeline-batch-scoring-classification.md
-    - name: 可视界面
+          items:
+            - name: 对分类模型进行批量评分
+              displayName: pipelines
+              href: tutorial-pipeline-batch-scoring-classification.md
+    - name: R SDK
+      items:
+        - name: 创建首个 ML 试验 (R)
+          href: tutorial-1st-r-experiment.md
+    - name: 设计器
       items:
         - name: 1. 训练回归模型
           displayName: studio
-          href: ui-tutorial-automobile-price-train-score.md
+          href: tutorial-designer-automobile-price-train-score.md
         - name: 2. 部署回归模型
           displayName: studio
-          href: ui-tutorial-automobile-price-deploy.md
+          href: tutorial-designer-automobile-price-deploy.md
     - name: 自动化 ML（界面）
       displayName: 'automl, automated, auto ml, portal, ui'
       href: tutorial-first-experiment-automated-ml.md
@@ -57,42 +67,51 @@
   items:
     - name: 工作区
       href: concept-workspace.md
-    - name: 计算目标
-      displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
-      href: concept-compute-target.md
     - name: 模型定型
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
-    - name: 可视界面
-      displayName: studio
-      href: ui-concept-visual-interface.md
-    - name: 自动化机器学习
-      displayName: 'automl, auto ml'
-      href: concept-automated-ml.md
     - name: 模型管理 (MLOps)
       displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
+    - name: 可解释性
+      displayName: explainability
+      href: how-to-machine-learning-interpretability.md
+    - name: 设计器：无代码 ML
+      displayName: studio
+      href: concept-designer.md
+    - name: 算法备忘单
+      href: /azure/machine-learning/algorithm-cheat-sheet?context=azure/machine-learning/service/context/ml-context
+    - name: 自动化机器学习
+      displayName: 'automl, auto ml'
+      href: concept-automated-ml.md
+    - name: 计算实例
+      displayName: 'resource, dsvm, Data Science Virtual Machine'
+      href: concept-compute-instance.md
+    - name: 计算目标
+      displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
+      href: concept-compute-target.md
     - name: ML 管道
       href: concept-ml-pipelines.md
-    - name: 模型可解释性
-      displayName: explainability
-      href: machine-learning-interpretability-explainability.md
     - name: ONNX
       href: concept-onnx.md
-    - name: 安全
+    - name: 企业就绪情况和安全性
       items:
-        - name: 企业安全概述
-          displayName: authorization authentication encryption aad azure active directory
-          href: concept-enterprise-security.md
-        - name: 管理用户和角色
-          href: how-to-assign-roles.md
-        - name: 使用虚拟网络
-          displayName: vnet
-          href: how-to-enable-virtual-network.md
-        - name: 使用 SSL 保护 Web 服务
-          href: how-to-secure-web-service.md
-        - name: 重新生成存储访问密钥
-          href: how-to-change-storage-access-key.md
+        - name: 企业安全性
+          items:
+            - name: 企业安全概述
+              displayName: authorization authentication encryption aad azure active directory
+              href: concept-enterprise-security.md
+            - name: 管理用户和角色
+              href: how-to-assign-roles.md
+            - name: 使用虚拟网络
+              displayName: vnet
+              href: how-to-enable-virtual-network.md
+            - name: 使用 SSL 保护 Web 服务
+              href: how-to-secure-web-service.md
+            - name: 重新生成存储访问密钥
+              href: how-to-change-storage-access-key.md
+        - name: 监视 Azure 机器学习
+          href: monitor-azure-machine-learning.md
     - name: 深度学习
       displayName: 'deep learning vs machine learning, deep learning, vs, versus'
       href: concept-deep-learning-vs-machine-learning.md
@@ -138,32 +157,38 @@
         - name: 使用数据集进行训练
           displayName: 'data, dataset'
           href: how-to-train-with-datasets.md
+        - name: 检测数据集上的偏移
+          displayName: 'data, dataset'
+          href: how-to-monitor-datasets.md
         - name: 版本和跟踪数据集
           displayName: 'data, data set'
           href: how-to-version-track-datasets.md
     - name: 训练模型
       items:
-        - name: 使用可视界面
-          displayName: sample visual interface experiments
+        - name: 使用设计器
+          displayName: sample designer experiments
           items:
             - name: 预测价格
               displayName: 'regression, studio'
-              href: how-to-ui-sample-regression-predict-automobile-price-basic.md
+              href: how-to-designer-sample-regression-automobile-price-basic.md
             - name: 预测价格（高级）
               displayName: 'regression, studio'
-              href: how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md
-            - name: 预测信用风险
+              href: how-to-designer-sample-regression-automobile-price-compare-algorithms.md
+            - name: 预测收入
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-credit-risk-basic.md
+              href: how-to-designer-sample-classification-predict-income.md
             - name: 预测信用风险（高级）
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md
-            - name: 预测变动率
+              href: how-to-designer-sample-classification-credit-risk-cost-sensitive.md
+            - name: 预测流失
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-churn.md
+              href: how-to-designer-sample-classification-churn.md
             - name: 预测航班延误
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-flight-delay.md
+              href: how-to-designer-sample-classification-flight-delay.md
+            - name: 文本分类
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-text-classification.md
         - name: 将估算器用于 ML
           items:
             - name: 在训练期间创建估算器
@@ -187,6 +212,15 @@
           href: how-to-train-pytorch.md
         - name: Chainer
           href: how-to-train-chainer.md
+    - name: 解释模型
+      displayName: interpretability
+      items:
+        - name: 解释本地模型和远程模型
+          displayName: 'SDK, interpret'
+          href: how-to-machine-learning-interpretability-aml.md
+        - name: 解释自动化 ML 模型
+          displayName: 'SDK, interpret, automl'
+          href: how-to-machine-learning-interpretability-automl.md
     - name: 自动化机器学习
       displayName: 'automl, auto ml'
       items:
@@ -236,7 +270,7 @@
         - name: Azure 应用服务
           displayName: web app
           href: how-to-deploy-app-service.md
-        - name: Notebook VM
+        - name: 计算实例
           href: how-to-deploy-local-container-notebook-vm.md
         - name: 使用自定义 Docker 映像
           href: how-to-deploy-custom-docker-image.md
@@ -253,27 +287,30 @@
         - name: 运行批量预测
           displayName: score scoring asynchronous consume pipeline
           href: how-to-run-batch-predictions.md
+        - name: 将设计器用于批量预测
+          displayName: score scoring asynchronous consume pipeline
+          href: how-to-run-batch-predictions-ui.md
     - name: 监视模型
       items:
         - name: 收集和评估模型数据
           displayName: track production
           href: how-to-enable-data-collection.md
-        - name: 检测数据偏差
+        - name: 检测数据偏移
           href: how-to-monitor-data-drift.md
         - name: 使用 Application Insights 进行监视
           href: how-to-enable-app-insights.md
-    - name: 创建可重用的工作流
+    - name: 构建并使用 ML 管道
       displayName: pipelines
       items:
-        - name: 使用 Python 创建 ML 管道
+        - name: 创建 ML 管道 (Python)
           href: how-to-create-your-first-pipeline.md
-        - name: 调试 ML 管道并排查其问题
+        - name: 计划管道 (Python)
+          href: how-to-schedule-pipelines.md
+        - name: 调试管道并排查管道问题
           href: how-to-debug-pipelines.md
         - name: 用于 CI/CD 的 Azure Pipelines
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: 使用 Python 计划 ML 管道
-          href: how-to-schedule-pipelines.md
     - name: 管理资源配额
       displayName: limits
       href: how-to-manage-quotas.md
@@ -282,15 +319,20 @@
       href: how-to-export-delete-data.md
 - name: 引用
   items:
-    - name: 机器学习 SDK
+    - name: ML SDK (Python)
       displayName: 'api, core, package, python, class'
       href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
+    - name: ML SDK (R)
+      displayName: 'api, core, package, R, class'
+      href: 'https://azure.github.io/azureml-sdk-for-r/reference/index.html'
     - name: 机器学习 CLI
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
+    - name: 监视数据参考
+      href: monitor-resource-reference.md
     - name: 机器学习管道 YAML 参考
       href: reference-pipeline-yaml.md
-    - name: 可视界面模块
+    - name: 设计器模块
       displayName: 'module, reference, algorithm, studio'
       items:
         - name: 模块参考概述
@@ -299,18 +341,14 @@
           items:
             - name: 转换为 CSV
               href: ../algorithm-module-reference/convert-to-csv.md
+            - name: 转换为数据集
+              href: ../algorithm-module-reference/convert-to-dataset.md
         - name: 数据输入和输出
           items:
             - name: 导入数据
               items:
                 - name: 导入数据
                   href: ../algorithm-module-reference/import-data.md
-                - name: 通过 HTTP 从 Web URL 导入
-                  href: ../algorithm-module-reference/import-from-web-url-via-http.md
-                - name: 从 Azure Blob 存储模块导入
-                  href: ../algorithm-module-reference/import-from-azure-blob-storage.md
-                - name: 从 Azure SQL 数据库导入
-                  href: ../algorithm-module-reference/import-from-azure-sql-database.md
             - name: 导出数据
               href: ../algorithm-module-reference/export-data.md
             - name: 手动输入数据
@@ -319,12 +357,18 @@
           items:
             - name: 在数据集中选择列
               href: ../algorithm-module-reference/select-columns-in-dataset.md
+            - name: 选择列转换
+              href: ../algorithm-module-reference/select-columns-transform.md
             - name: 编辑元数据
               href: ../algorithm-module-reference/edit-metadata.md
             - name: 清理缺失数据
               href: ../algorithm-module-reference/clean-missing-data.md
             - name: 特征哈希
               href: ../algorithm-module-reference/feature-hashing.md
+            - name: 排列特征重要性
+              href: ../algorithm-module-reference/permutation-feature-importance.md
+            - name: 基于筛选器的特征选择
+              href: ../algorithm-module-reference/filter-based-feature-selection.md
             - name: 从文本中提取 N 元语法特征
               href: ../algorithm-module-reference/extract-n-gram-features-from-text.md
             - name: 添加列
@@ -341,6 +385,8 @@
               href: ../algorithm-module-reference/split-data.md
             - name: 规范化数据
               href: ../algorithm-module-reference/normalize-data.md
+            - name: SMOTE
+              href: ../algorithm-module-reference/smote.md
             - name: 分区和采样
               href: ../algorithm-module-reference/partition-and-sample.md
             - name: 剪切值
@@ -349,16 +395,26 @@
               href: ../algorithm-module-reference/apply-sql-transformation.md
         - name: 机器学习
           items:
-            - name: 评分模型
+            - name: 为模型评分
               href: ../algorithm-module-reference/score-model.md
+            - name: 为 SVD 推荐器评分
+              href: ../algorithm-module-reference/score-svd-recommender.md
             - name: 将数据分配到聚类
               href: ../algorithm-module-reference/assign-data-to-clusters.md
             - name: 训练模型
               href: ../algorithm-module-reference/train-model.md
             - name: 训练聚类模型
               href: ../algorithm-module-reference/train-clustering-model.md
+            - name: 训练 SVD 推荐器
+              href: ../algorithm-module-reference/train-svd-recommender.md
+            - name: 优化模型超参数
+              href: ../algorithm-module-reference/tune-model-hyperparameters.md
+            - name: 交叉验证模型
+              href: ../algorithm-module-reference/cross-validate-model.md
             - name: 评估模型
               href: ../algorithm-module-reference/evaluate-model.md
+            - name: 评估推荐器
+              href: ../algorithm-module-reference/evaluate-recommender.md
             - name: 应用转换
               href: ../algorithm-module-reference/apply-transformation.md
             - name: 线性回归
@@ -381,6 +437,8 @@
               href: ../algorithm-module-reference/multiclass-decision-forest.md
             - name: 多类提升决策树
               href: ../algorithm-module-reference/multiclass-boosted-decision-tree.md
+            - name: “一对多”多类
+              href: ../algorithm-module-reference/one-vs-all-multiclass.md
             - name: 双类平均感知器
               href: ../algorithm-module-reference/two-class-averaged-perceptron.md
             - name: 双类决策林

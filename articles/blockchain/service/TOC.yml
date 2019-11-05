@@ -49,6 +49,14 @@
       href: manage-consortium-powershell.md
     - name: 使用逻辑应用
       href: ethereum-logic-app.md
+- name: 区块链数据管理器
+  items:
+    - name: 数据管理器概述
+      href: data-manager.md
+    - name: 配置数据管理器 - 门户
+      href: data-manager-portal.md
+    - name: 配置数据管理器 - CLI
+      href: data-manager-cli.md
 - name: 资源
   items:
     - name: 区块链 REST API

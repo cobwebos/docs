@@ -1,9 +1,11 @@
-- name: Azure Data Share 预览版文档
+- name: Azure Data Share 文档
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是 Azure Data Share 预览版？
+    - name: 什么是 Azure Data Share？
       href: overview.md
+    - name: 支持的数据存储
+      href: supported-data-stores.md
 - name: 教程
   expanded: true
   items:
@@ -19,6 +21,8 @@
       href: concepts-roles-permissions.md
 - name: 示例
   items:
+    - name: 代码示例
+      href: 'https://docs.microsoft.com/samples/browse/?service=data-share/'
     - name: Azure Powershell
       href: samples-powershell.md
 - name: 操作指南
@@ -52,7 +56,7 @@
     - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/azure-data-share'
     - name: 博客
-      href: 'https://azure.microsoft.com/blog/announcing-preview-of-azure-data-share/'
+      href: 'https://techcommunity.microsoft.com/t5/Azure-Data-Share/bg-p/AzureDataShareBlog'
     - name: Microsoft 技术社区
       href: 'https://techcommunity.microsoft.com/'
     - name: 产品反馈

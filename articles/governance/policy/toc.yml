@@ -28,6 +28,9 @@
     - name: 创建自定义策略定义
       displayName: 'disabled, parameters, rule, mode'
       href: ./tutorials/create-custom-policy-definition.md
+    - name: 管理标记治理
+      displayName: 'modify, append, effects'
+      href: ./tutorials/govern-tags.md
     - name: 动手实验室 - 探索 Azure Policy
       displayName: 'create, policy, training, learn'
       href: 'https://handsonlabs.microsoft.com/handsonlabs/SelfPacedLabs?storyId=story://content-private/content/sp-azuregovernance/1-azpolicy/a-policy'
@@ -263,14 +266,25 @@
     - name: 评估新策略的影响
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: 将策略设计为代码工作流
+      displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
+      href: ./concepts/policy-as-code.md
     - name: 适用于 Kubernetes 的 Azure Policy
-      displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper'
-      href: ./concepts/rego-for-aks.md
+      items:
+        - name: 适用于 AKS 的策略
+          displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper, v2'
+          href: ./concepts/rego-for-aks.md
+        - name: 适用于 AKS 引擎的策略
+          displayName: 'aks, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
+          href: ./concepts/aks-engine.md
     - name: 使用来宾配置审核 VM
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
 - name: 操作指南
   items:
+    - name: 用于 VSCode 的 Azure Policy 扩展
+      displayName: visual studio code
+      href: ./how-to/extension-for-vscode.md
     - name: 以编程方式创建策略
       displayName: 'assign, definition'
       href: ./how-to/programmatically-create.md

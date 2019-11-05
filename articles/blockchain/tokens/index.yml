@@ -1,0 +1,49 @@
+### YamlMime:Landing
+title: Azure 区块链令牌文档
+summary: 了解如何创建、颁发和管理区块链令牌。
+metadata:
+  title: Azure 区块链令牌文档 - 教程和 API 参考
+  description: 了解如何颁发和管理区块链令牌。 教程、API 参考和其他文档介绍了如何使用 Azure 区块链令牌在 Azure 上创建和管理区块链令牌。
+  services: azure-blockchain
+  ms.service: azure-blockchain
+  ms.topic: landing-page
+  author: PatAltimore
+  ms.author: patricka
+  ms.date: 11/04/2019
+  ms.openlocfilehash: 6df625c2264db279e29c4ebcf5aab5695b335a0e
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73508425"
+landingContent:
+- title: 关于 Azure 区块链令牌
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 区块链令牌？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 帐户管理
+      url: account-management.md
+    - text: 模板
+      url: templates.md
+    - text: 可组合性
+      url: composability.md
+- title: 入门
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 注册以访问预览版
+      url: https://aka.ms/PreviewForm
+  - linkListType: video
+    links:
+    - text: Azure 区块链令牌入门
+      url: https://aka.ms/ABTokensPartI
+    - text: 管理帐户
+      url: https://aka.ms/ABTokensPartII
+    - text: 模板和可组合性
+      url: https://aka.ms/ABTokensPartIII
+    - text: 令牌和令牌分类框架
+      url: https://aka.ms/TokenTaxFramework

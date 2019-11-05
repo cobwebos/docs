@@ -45,7 +45,7 @@
           href: tutorial-deploy-function.md
         - name: 使用 Azure 流分析查找平均值
           href: tutorial-deploy-stream-analytics.md
-        - name: 使用 Azure 机器学习服务对数据进行评分
+        - name: 使用 Azure 机器学习为数据评分
           href: tutorial-deploy-machine-learning.md
         - name: 使用自定义视觉对图像进行分类
           href: tutorial-deploy-custom-vision.md

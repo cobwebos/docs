@@ -1,9 +1,9 @@
-- name: 机器学习工作室文档
+- name: 机器学习工作室（经典）文档
   href: index.yml
 - name: 概述
   expanded: true
   items:
-    - name: 机器学习工作室
+    - name: 机器学习工作室（经典）
       displayName: overview
       href: what-is-ml-studio.md
     - name: 比较我们的 ML 产品
@@ -106,8 +106,6 @@
       items:
         - name: 选择算法
           href: algorithm-choice.md
-        - name: 算法备忘单
-          href: algorithm-cheat-sheet.md
         - name: 算法示例
           displayName: 'infographic, studio basics'
           href: basics-infographic-with-algorithm-examples.md
@@ -153,11 +151,11 @@
           href: azure-ml-customer-churn-scenario.md
         - name: 情绪分析
           href: text-analytics-module-tutorial.md
-        - name: 将分析从 Excel 迁移到 Studio
+        - name: 将分析从 Excel 迁移到工作室（经典）
           href: linear-regression-in-azure.md
     - name: 删除和导出客户数据
       items:
-        - name: 工作室数据
+        - name: 工作室（经典）数据
           displayName: export
           href: export-delete-personal-data-dsr.md
         - name: 库数据

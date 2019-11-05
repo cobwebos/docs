@@ -147,6 +147,10 @@
       href: limits.md
     - name: 故障排除
       href: troubleshooting.md
+    - name: 文件格式
+      items:
+        - name: 批量测试 TSV
+          href: reference-tsv-format-batch-testing.md
     - name: REST API 参考
       items:
         - name: 创作 API

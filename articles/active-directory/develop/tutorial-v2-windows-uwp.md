@@ -55,7 +55,7 @@ ms.locfileid: "71290857"
 本指南创建的应用程序显示用来查询图形 API 的按钮和用来注销的按钮。它还显示包含调用结果的文本框。
 
 > [!NOTE]
-> 想要下载此示例的 Visual Studio 项目而不是创建它？ 请[下载项目](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)并跳到[应用程序注册](#register-your-application "a应用程序注册步骤”)步骤，在运行代码示例前对其进行配置。
+> 想要下载此示例的 Visual Studio 项目而不是创建它？ 请[下载项目](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)并跳到[应用程序注册](#register-your-application "a应用程序注册”)步骤，在运行代码示例前对其进行配置。
 
 ### <a name="create-your-application"></a>创建应用程序
 

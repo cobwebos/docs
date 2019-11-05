@@ -30,8 +30,18 @@
           href: tutorial-assess-hyper-v.md
         - name: 迁移 Hyper-V VM
           href: tutorial-migrate-hyper-v.md
-    - name: 迁移物理服务器和 VM
-      href: tutorial-migrate-physical-virtual-machines.md
+    - name: 评估和迁移物理服务器
+      items:
+        - name: 准备物理服务器以进行评估和迁移
+          href: tutorial-prepare-physical.md
+        - name: 评估物理服务器
+          href: tutorial-assess-physical.md
+        - name: 迁移物理服务器
+          href: tutorial-migrate-physical-virtual-machines.md
+    - name: 评估要迁移的已导入服务器
+      items:
+        - name: 评估要迁移的已导入服务器
+          href: tutorial-assess-import.md
 - name: 概念
   items:
     - name: 常见问题
@@ -44,6 +54,8 @@
           href: migrate-support-matrix-vmware.md
         - name: 用于 Hyper-V 评估和迁移的支持矩阵
           href: migrate-support-matrix-hyper-v.md
+        - name: 用于物理服务器评估和迁移的支持矩阵
+          href: migrate-support-matrix-physical.md
     - name: Hyper-V 迁移体系结构
       href: hyper-v-migration-architecture.md
     - name: 基于代理的迁移体系结构
@@ -66,6 +78,10 @@
       href: how-to-set-up-appliance-vmware.md
     - name: 部署 HYPER-V 设备
       href: how-to-set-up-appliance-hyper-v.md
+    - name: 部署物理服务器设备
+      href: how-to-set-up-appliance-physical.md
+    - name: 发现应用/角色/功能
+      href: how-to-discover-applications.md
     - name: 首次添加工具
       href: how-to-add-tool-first-time.md
     - name: 添加评估工具
@@ -74,6 +90,8 @@
       href: how-to-create-a-group.md
     - name: 使用依赖项可视化将计算机分组
       href: how-to-create-group-machine-dependencies.md
+    - name: 使用无代理依赖项可视化功能将计算机分组
+      href: how-to-create-group-machine-dependencies-agentless.md
     - name: 创建评估
       href: how-to-create-assessment.md
     - name: 评估 SQL Server 数据库
@@ -84,6 +102,8 @@
       href: how-to-migrate.md
     - name: 准备计算机以进行迁移
       href: prepare-for-migration.md
+    - name: 删除 Azure Migrate 项目
+      href: how-to-delete-project.md
 - name: 大规模评估和迁移
   items:
     - name: 评估大量 VMware VM

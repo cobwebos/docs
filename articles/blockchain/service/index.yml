@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: PatAltimore
   ms.author: patricka
-  ms.date: 09/18/2019
-  ms.openlocfilehash: f0abf5d3c81f7bd81c4fef6a15f34f753c1e1a24
-  ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+  ms.date: 11/04/2019
+  ms.openlocfilehash: 1f119808513e7c4c51659ce7bf08a569eb555abf
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/02/2019
-  ms.locfileid: "71718553"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73498839"
 landingContent:
 - title: 关于 Azure 区块链服务
   linkLists:
@@ -65,12 +65,22 @@ landingContent:
       url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-IV-Publish-events-and-ledger-data
 - title: 集成
   linkLists:
+  - linkListType: concept
+    links:
+    - text: 使用区块链数据管理器将区块链数据发送到其他 Azure 服务
+      url: data-manager.md
   - linkListType: how-to-guide
     links:
+    - text: 使用 Azure 门户配置区块链数据管理器
+      url: data-manager-portal.md
+    - text: 使用 Azure CLI 配置区块链数据管理器
+      url: data-manager-cli.md
     - text: 使用 Azure 逻辑应用集成区块链
       url: ethereum-logic-app.md
   - linkListType: video
     links:
+    - text: 区块链数据管理器简介
+      url: https://aka.ms/BTDataManager
     - text: 将 Ethereum 区块链连接器与 Azure 逻辑应用配合使用
       url: https://channel9.msdn.com/Shows/Blocktalk/Logic-Apps-Connector-to-Ethereum-Blockchain-Networks?term=logic%20apps%20blockchain&lang-en=true
     - text: 使用 Azure 逻辑应用连接区块链的常见方案

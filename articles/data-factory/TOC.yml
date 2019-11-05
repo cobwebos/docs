@@ -80,8 +80,12 @@
           items:
             - name: 复制数据工具
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
-    - name: 使用映射数据流转换数据
-      href: tutorial-data-flow.md
+    - name: 使用数据流转换和准备数据
+      items:
+        - name: 使用映射数据流转换数据
+          href: tutorial-data-flow.md
+        - name: 使用整理数据流准备数据
+          href: wrangling-data-flow-tutorial.md
     - name: 外部转换
       items:
         - name: HDInsight Spark
@@ -143,28 +147,36 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 集成运行时
       href: concepts-integration-runtime.md
-    - name: 映射数据流
+    - name: 数据流
       items:
-        - name: 映射数据流概述
-          href: concepts-data-flow-overview.md
-        - name: 调试模式
-          href: concepts-data-flow-debug-mode.md
-        - name: JSON 处理
-          href: concepts-data-flow-json.md
-        - name: 架构偏差
-          href: concepts-data-flow-schema-drift.md
-        - name: 列模式
-          href: concepts-data-flow-column-pattern.md
-        - name: 数据流监视
-          href: concepts-data-flow-monitoring.md
-        - name: 数据流性能
-          href: concepts-data-flow-performance.md
-        - name: 移动节点
-          href: concepts-data-flow-move-nodes.md
-        - name: 表达式生成器
-          href: concepts-data-flow-expression-builder.md
-        - name: 表达式语言
-          href: data-flow-expression-functions.md
+        - name: 使用映射数据流转换数据
+          items:
+            - name: 映射数据流概述
+              href: concepts-data-flow-overview.md
+            - name: 调试模式
+              href: concepts-data-flow-debug-mode.md
+            - name: JSON 处理
+              href: concepts-data-flow-json.md
+            - name: 架构偏差
+              href: concepts-data-flow-schema-drift.md
+            - name: 列模式
+              href: concepts-data-flow-column-pattern.md
+            - name: 数据流监视
+              href: concepts-data-flow-monitoring.md
+            - name: 数据流性能
+              href: concepts-data-flow-performance.md
+            - name: 移动节点
+              href: concepts-data-flow-move-nodes.md
+            - name: 表达式生成器
+              href: concepts-data-flow-expression-builder.md
+            - name: 表达式语言
+              href: data-flow-expression-functions.md
+        - name: 使用整理数据流准备数据
+          items:
+            - name: 整理数据流概述
+              href: wrangling-data-flow-overview.md
+            - name: 支持的函数
+              href: wrangling-data-flow-functions.md
     - name: 角色和权限
       href: concepts-roles-permissions.md
     - name: 了解定价

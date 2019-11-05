@@ -1,0 +1,34 @@
+- name: Internet 分析器文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于 Internet 分析器
+      href: internet-analyzer-overview.md
+- name: 教程
+  items:
+    - name: 使用门户创建 Internet 分析器测试
+      href: internet-analyzer-create-test-portal.md
+    - name: 使用 CLI 创建 Internet 分析器测试
+      herf: internet-analyzer-cli.md
+- name: 操作指南
+  items:
+    - name: 嵌入客户端
+      href: internet-analyzer-embed-client.md
+    - name: 配置自定义终结点
+      href: internet-analyzer-custom-endpoint.md
+    - name: 解释记分卡
+      href: internet-analyzer-scorecard.md
+- name: 资源
+  items:
+    - name: Internet 分析器常见问题解答
+      href: internet-analyzer-faq.md
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: 博客
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: 预览版 SLA
+      href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla'

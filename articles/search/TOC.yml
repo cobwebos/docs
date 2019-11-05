@@ -33,7 +33,7 @@
       href: search-get-started-python.md
 - name: 教程
   items:
-    - name: 创建第一个应用
+    - name: '创建第一个 C# 应用'
       items:
         - name: 1 - 基本搜索页
           href: tutorial-csharp-create-first-app.md
@@ -215,8 +215,6 @@
           href: search-howto-schedule-indexers.md
         - name: 映射字段
           href: search-indexer-field-mappings.md
-        - name: 增量索引
-          href: search-howto-incremental-index.md
         - name: 连接到 SQL 托管实例
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: 连接到 SQL Server VM
@@ -239,14 +237,14 @@
               href: cognitive-search-output-field-mapping.md
             - name: 处理和提取图像中的信息
               href: cognitive-search-concept-image-scenarios.md
+            - name: 设置增量索引
+              href: search-howto-incremental-index.md
         - name: 自定义技能
           items:
             - name: 集成自定义技能
               href: cognitive-search-custom-skill-interface.md
             - name: 示例 - Azure Functions
               href: cognitive-search-create-custom-skill-example.md
-            - name: 示例 - 强力技能
-              href: 'https://aka.ms/powerskills'
             - name: 示例 - 容器
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: 故障排除提示
@@ -378,6 +376,8 @@
           href: cognitive-search-skill-shaper.md
         - name: 条件逻辑
           href: cognitive-search-skill-conditional.md
+        - name: 文档提取
+          href: cognitive-search-skill-document-extraction.md
     - name: 自定义技能
       items:
         - name: 自定义 Web API

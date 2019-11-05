@@ -10,13 +10,13 @@ metadata:
   ms.topic: hub-page
   author: PatAltimore
   ms.author: patricka
-  ms.date: 09/25/2019
-  ms.openlocfilehash: 0bdf46585a05ffc286e26087dad005eb102ed6b8
-  ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+  ms.date: 10/23/2019
+  ms.openlocfilehash: 87184cc5be0494ade7cc3e055083134b6cbe4bd7
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/29/2019
-  ms.locfileid: "73027124"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73466079"
 productDirectory:
   items:
   - title: Azure 区块链服务
@@ -32,6 +32,13 @@ productDirectory:
     - url: ./workbench/overview.md
       text: 什么是 Azure Blockchain Workbench？
     - url: ./workbench/index.yml
+      text: 查看更多 >
+  - title: Azure 区块链令牌
+    imageSrc: ./media/index/blockchain-tokens.svg
+    links:
+    - url: ./tokens/overview.md
+      text: 什么是 Azure 区块链令牌？
+    - url: ./tokens/index.yml
       text: 查看更多 >
 conceptualContent:
   title: 入门
@@ -64,6 +71,28 @@ conceptualContent:
     - url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
       itemType: video
       text: 观看如何构建你的第一个应用程序
+  - title: 创建和管理令牌
+    links:
+    - url: ./tokens/templates.md
+      itemType: concept
+      text: 使用预先生成的模板定义令牌
+    - url: ./tokens/account-management.md
+      itemType: concept
+      text: 使用 Azure 区块链令牌管理令牌
+    - url: https://aka.ms/ABTokensPartI
+      itemType: video
+      text: 观看 Azure 区块链令牌简介
+  - title: 使用区块链数据管理器发布区块链数据
+    links:
+    - url: ./service/data-manager.md
+      itemType: concept
+      text: Azure 区块链服务的区块链数据管理器是什么？
+    - url: ./service/data-manager-portal.md
+      itemType: how-to-guide
+      text: 使用 Azure 门户创建区块链数据管理器实例
+    - url: https://aka.ms/BTDataManager
+      itemType: video
+      text: 观看区块链数据管理器简介
   - title: 使用适合你的用例的账本进行构建
     links:
     - url: ./templates/ethereum-poa-deployment.md

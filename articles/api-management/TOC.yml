@@ -61,6 +61,8 @@
       href: api-management-error-handling-policies.md
     - name: API 导入限制
       href: api-management-api-import-restrictions.md
+    - name: 自托管网关概述
+      href: self-hosted-gateway-overview.md
 - name: 操作指南
   items:
     - name: 定义 API
@@ -93,6 +95,16 @@
           href: api-management-howto-autoscale.md
         - name: 配置自定义域
           href: configure-custom-domain.md
+        - name: 部署到多个 Azure 区域
+          href: api-management-howto-deploy-multi-region.md
+        - name: 预配自托管网关
+          href: api-management-howto-provision-self-hosted-gateway.md
+        - name: 将自托管网关部署到 Kubernetes
+          href: api-management-howto-deploy-self-hosted-gateway-to-k8s.md
+        - name: 将自托管网关部署到 Docker
+          href: api-management-howto-deploy-self-hosted-gateway-to-docker.md
+        - name: 为自托管网关配置自定义域
+          href: api-management-howto-configure-custom-domain-gateway.md
     - name: 缓存
       items:
         - name: 添加缓存以提升性能
@@ -195,8 +207,6 @@
       items:
         - name: 管理组
           href: api-management-howto-create-groups.md
-        - name: 部署到多个 Azure 区域
-          href: api-management-howto-deploy-multi-region.md
         - name: 检索 IP 地址
           href: api-management-howto-ip-addresses.md
         - name: 将事件记录到 Azure 事件中心

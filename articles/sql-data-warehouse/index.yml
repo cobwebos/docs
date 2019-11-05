@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure SQL 数据仓库
-summary: 了解如何使用将 SQL 关系数据库与大规模并行处理 (MPP) 相结合的 Azure SQL 数据仓库。 教程和其他文档介绍了如何使用数据仓库设计、加载、管理和分析数据。
+title: Azure Synapse Analytics（以前称为 Azure SQL 数据仓库）
+summary: Azure Synapse 是一种无限制的分析服务，它将企业数据仓库和大数据分析结合在一起。 它可让你使用无服务器的按需资源或使用预配的资源，按自己决定的条件自由地大规模查询数据。
 metadata:
-  title: Azure SQL 数据仓库
-  description: description
+  title: Azure Synapse Analytics
+  description: Azure Synapse 是一种无限制的分析服务，它将企业数据仓库和大数据分析结合在一起。 它可让你使用无服务器的按需资源或使用预配的资源，按自己决定的条件自由地大规模查询数据。
   services: sql-data-warehouse
   ms.service: sql-data-warehouse
   ms.subservice: design
@@ -12,38 +12,38 @@ metadata:
   author: julieMSFT
   ms.author: jrasnick
   ms.date: 10/03/2019
-  ms.openlocfilehash: ffb90d5d15b83570511c3f70b39f9f83f000ab35
-  ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+  ms.openlocfilehash: 2ad2e5b4d17c4642b42efd51de2b91308f49a101
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/10/2019
-  ms.locfileid: "72245841"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73492224"
 landingContent:
-- title: 关于 SQL 数据仓库
+- title: 关于 Azure Synapse Analytics
   linkLists:
   - linkListType: overview
     links:
-    - text: 什么是 SQL 数据仓库？
+    - text: 什么是 Azure Synapse？
       url: sql-data-warehouse-overview-what-is.md
   - linkListType: architecture
     links:
-    - text: SQL 数据仓库 - MPP 体系结构
+    - text: Azure Synapse 体系结构
       url: massively-parallel-processing-mpp-architecture.md
-    - text: 有关数据仓库的提示和最佳做法
+    - text: 提示和最佳做法
       url: cheat-sheet.md
 - title: 入门
   linkLists:
   - linkListType: deploy
     links:
-    - text: 创建 SQL 数据仓库
+    - text: 创建 SQL 池（数据仓库）
       url: create-data-warehouse-portal.md
 - title: 加载数据
   linkLists:
   - linkListType: concept
     links:
-    - text: 设计 PolyBase 数据加载策略
+    - text: 设计数据加载策略
       url: design-elt-data-loading.md
-    - text: 数据加载最佳做法
+    - text: 最佳做法
       url: guidance-for-loading-data.md
   - linkListType: how-to-guide
     links:
@@ -57,7 +57,7 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: SQL 数据仓库最佳做法
+    - text: 最佳做法
       url: sql-data-warehouse-best-practices.md
     - text: 有序聚集列存储索引优化
       url: performance-tuning-ordered-cci.md
@@ -67,11 +67,11 @@ landingContent:
     links:
     - text: 分析工作负荷
       url: analyze-your-workload.md
-- title: 管理和监视 SQL 数据仓库
+- title: 管理和监视
   linkLists:
   - linkListType: overview
     links:
-    - text: 了解如何管理和监视 SQL 数据仓库
+    - text: 了解如何管理和监视数据仓库
       url: sql-data-warehouse-overview-manageability-monitoring.md
   - linkListType: how-to-guide
     links:
@@ -79,11 +79,11 @@ landingContent:
       url: sql-data-warehouse-manage-monitor.md
     - text: 管理和监视工作负荷重要性
       url: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
-- title: 保护 SQL 数据仓库
+- title: 保护数据仓库
   linkLists:
   - linkListType: overview
     links:
-    - text: 了解保护 SQL 数据仓库的基础知识
+    - text: 了解保护数据仓库的基础知识
       url: sql-data-warehouse-overview-manage-security.md
   - linkListType: how-to-guide
     links:
@@ -93,5 +93,5 @@ landingContent:
   linkLists:
   - linkListType: video
     links:
-    - text: 观看最新的 Azure SQL 数据仓库视频
+    - text: 观看最新的数据仓库视频
       url: sql-data-warehouse-videos.md

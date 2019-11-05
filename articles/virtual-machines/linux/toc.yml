@@ -137,6 +137,8 @@
           href: disk-encryption.md
         - name: 为实现高性能而设计
           href: premium-storage-performance.md
+        - name: 磁盘突发
+          href: disk-bursting.md
         - name: 磁盘的可伸缩性目标
           href: disk-scalability-targets.md
         - name: 磁盘的备份和灾难恢复
