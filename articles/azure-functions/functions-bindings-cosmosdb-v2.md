@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 419241bf1e8511dd6015cd3f791099d6959c3e34
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d8aee88f6ef3f6a73beadfdf242d79d9b361de0a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086753"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469388"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 绑定
 
@@ -98,7 +98,7 @@ namespace CosmosDBSamplesV2
 
 以下示例演示 *function.json* 文件中的一个 Cosmos DB 触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 修改 Cosmos DB 记录时，该函数会写入日志消息。
 
-下面是 function.json 文件中的绑定数据：
+下面是 *function.json* 文件中的绑定数据：
 
 ```json
 {
@@ -136,7 +136,7 @@ C# 脚本代码如下所示：
 
 以下示例演示 *function.json* 文件中的一个 Cosmos DB 触发器绑定以及使用该绑定的 [JavaScript 脚本函数](functions-reference-node.md)。 修改 Cosmos DB 记录时，该函数会写入日志消息。
 
-下面是 function.json 文件中的绑定数据：
+下面是 *function.json* 文件中的绑定数据：
 
 ```json
 {
@@ -195,7 +195,7 @@ JavaScript 代码如下所示：
 ```
 
 
-在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 Cosmos DB 的参数使用 `@CosmosDBTrigger` 注释。  此批注可用于本机 Java 类型、pojo 或可为 null 的值, >\<使用可选的。
+在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 Cosmos DB 的参数使用 `@CosmosDBTrigger` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 Optional\<T> 的可为 null 的值一起使用。
 
 
 跳过触发器示例
@@ -204,7 +204,7 @@ JavaScript 代码如下所示：
 
 以下示例演示 *function.json* 文件中的一个 Cosmos DB 触发器绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。 修改 Cosmos DB 记录时，该函数会写入日志消息。
 
-下面是 function.json 文件中的绑定数据：
+下面是 *function.json* 文件中的绑定数据：
 
 ```json
 {
@@ -257,9 +257,9 @@ JavaScript 代码如下所示：
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** || 必须设置为 `cosmosDBTrigger`。 |
-|**direction** || 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
-|**名称** || 函数代码中使用的变量名称，表示发生更改的文档列表。 |
+|type || 必须设置为 `cosmosDBTrigger`。 |
+|direction || 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
+|**name** || 函数代码中使用的变量名称，表示发生更改的文档列表。 |
 |**connectionStringSetting**|**ConnectionStringSetting** | 应用设置的名称，该应用设置包含用于连接到受监视的 Azure Cosmos DB 帐户的连接字符串。 |
 |**databaseName**|**DatabaseName**  | 带有受监视的集合的 Azure Cosmos DB 数据库的名称。 |
 |**collectionName** |**CollectionName** | 受监视的集合的名称。 |
@@ -274,7 +274,7 @@ JavaScript 代码如下所示：
 |**leaseExpirationInterval**| **LeaseExpirationInterval**| （可选）设置后，此项以毫秒为单位定义在表示分区的租用上进行租用的时间间隔。 如果在此时间间隔内不续订租用，则该租用会过期，分区的所有权会转移到另一个实例。 默认为 60000（60 秒）。
 |**leaseRenewInterval**| **LeaseRenewInterval**| （可选）设置后，此项以毫秒为单位定义当前由实例拥有的分区的所有租用的续订时间间隔。 默认为 17000（17 秒）。
 |**checkpointFrequency**| **CheckpointFrequency**| （可选）设置后，此项以毫秒为单位定义租用检查点的时间间隔。 默认为始终在进行每个 Function 调用之后进行检查。
-|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| （可选）设置后，此项对每次 Function 调用收到的项目的最大数目进行自定义。
+|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| 可有可无如果设置此属性，则此属性将设置每个函数调用接收的最大项数。 如果监视的集合中的操作通过存储过程执行，则在从更改源读取项时，将保留[事务范围](../cosmos-db/stored-procedures-triggers-udfs.md#transactions)。 因此，接收的项数可能大于指定的值，因此，同一事务所更改的项将作为一个原子批处理的一部分返回。
 |**startFromBeginning**| **StartFromBeginning**| （可选）设置时，它会告诉触发器从集合历史记录的开头而不是当前时间开始读取更改。 这仅在触发器第一次启动时起作用，因为在后续运行中，已存储检查点。 如果已经创建租约，则将此值设置为 `true` 无效。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -567,7 +567,7 @@ namespace CosmosDBSamplesV2
 以下示例演示检索文档列表的 [C# 函数](functions-dotnet-class-library.md)。 此函数由 HTTP 请求触发。 此代码使用 Azure Cosmos DB 绑定提供的 `DocumentClient` 实例来读取文档列表。 `DocumentClient` 实例也可用于写入操作。
 
 > [!NOTE]
-> 还可以使用[IDocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet)接口来简化测试。
+> 还可以使用 [IDocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet) 接口来简化测试。
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -657,7 +657,7 @@ namespace CosmosDBSamplesV2
 
 以下示例演示 *function.json* 文件中的一个 Cosmos DB 输入绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数读取单个文档，并更新文档的文本值。
 
-下面是 function.json 文件中的绑定数据：
+下面是 *function.json* 文件中的绑定数据：
 
 ```json
 {
@@ -693,7 +693,7 @@ C# 脚本代码如下所示：
 
 队列触发器提供参数 `departmentId`。 `{ "departmentId" : "Finance" }` 的队列消息将返回财务部的所有记录。
 
-下面是 function.json 文件中的绑定数据：
+下面是 *function.json* 文件中的绑定数据：
 
 ```json
 {
@@ -732,7 +732,7 @@ C# 脚本代码如下所示：
 
 以下示例演示检索单个文档的 [C# 脚本函数](functions-reference-csharp.md)。 此函数由 HTTP 请求触发，该请求使用的查询字符串用于指定要查找的 ID。 该 ID 用于从指定的数据库和集合检索 `ToDoItem` 文档。
 
-function.json 文件如下所示：
+*function.json* 文件如下所示：
 
 ```json
 {
@@ -794,7 +794,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 
 以下示例演示检索单个文档的 [C# 脚本函数](functions-reference-csharp.md)。 此函数由 HTTP 请求触发，该请求使用的路由数据用于指定要查找的 ID。 该 ID 用于从指定的数据库和集合检索 `ToDoItem` 文档。
 
-function.json 文件如下所示：
+*function.json* 文件如下所示：
 
 ```json
 {
@@ -857,7 +857,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 
 以下示例演示检索文档列表的 [C# 脚本函数](functions-reference-csharp.md)。 此函数由 HTTP 请求触发。 此查询在 `SqlQuery` 特性属性中指定。
 
-function.json 文件如下所示：
+*function.json* 文件如下所示：
 
 ```json
 {
@@ -915,7 +915,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, IEnumerable<ToDoIt
 
 以下示例演示检索文档列表的 [C# 脚本函数](functions-reference-csharp.md)。 此函数由 HTTP 请求触发。 此代码使用 Azure Cosmos DB 绑定提供的 `DocumentClient` 实例来读取文档列表。 `DocumentClient` 实例也可用于写入操作。
 
-function.json 文件如下所示：
+*function.json* 文件如下所示：
 
 ```json
 {
@@ -1005,7 +1005,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 
 以下示例演示 *function.json* 文件中的一个 Cosmos DB 输入绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数读取单个文档，并更新文档的文本值。
 
-下面是 function.json 文件中的绑定数据：
+下面是 *function.json* 文件中的绑定数据：
 
 ```json
 {
@@ -1048,7 +1048,7 @@ JavaScript 代码如下所示：
 
 以下示例演示检索单个文档的 [JavaScript 函数](functions-reference-node.md)。 此函数由 HTTP 请求触发，该请求使用的查询字符串用于指定要查找的 ID。 该 ID 用于从指定的数据库和集合检索 `ToDoItem` 文档。
 
-function.json 文件如下所示：
+*function.json* 文件如下所示：
 
 ```json
 {
@@ -1106,7 +1106,7 @@ module.exports = function (context, req, toDoItem) {
 
 以下示例演示检索单个文档的 [JavaScript 函数](functions-reference-node.md)。 此函数由 HTTP 请求触发，该请求使用的查询字符串用于指定要查找的 ID。 该 ID 用于从指定的数据库和集合检索 `ToDoItem` 文档。
 
-function.json 文件如下所示：
+*function.json* 文件如下所示：
 
 ```json
 {
@@ -1167,7 +1167,7 @@ module.exports = function (context, req, toDoItem) {
 
 队列触发器提供参数 `departmentId`。 `{ "departmentId" : "Finance" }` 的队列消息将返回财务部的所有记录。
 
-下面是 function.json 文件中的绑定数据：
+下面是 *function.json* 文件中的绑定数据：
 
 ```json
 {
@@ -1213,7 +1213,7 @@ JavaScript 代码如下所示：
 
 以下示例演示 *function.json* 文件中的一个 Cosmos DB 输入绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。 该函数读取单个文档，并更新文档的文本值。
 
-下面是 function.json 文件中的绑定数据：
+下面是 *function.json* 文件中的绑定数据：
 
 ```json
 {
@@ -1259,7 +1259,7 @@ def main(queuemsg: func.QueueMessage, documents: func.DocumentList) -> func.Docu
 
 以下示例展示了检索单个文档的 [Python 函数](functions-reference-python.md)。 此函数由 HTTP 请求触发，该请求使用的查询字符串用于指定要查找的 ID。 该 ID 用于从指定的数据库和集合检索 `ToDoItem` 文档。
 
-function.json 文件如下所示：
+*function.json* 文件如下所示：
 
 ```json
 {
@@ -1317,7 +1317,7 @@ def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
 
 以下示例展示了检索单个文档的 [Python 函数](functions-reference-python.md)。 此函数由 HTTP 请求触发，该请求使用的查询字符串用于指定要查找的 ID。 该 ID 用于从指定的数据库和集合检索 `ToDoItem` 文档。
 
-function.json 文件如下所示：
+*function.json* 文件如下所示：
 
 ```json
 {
@@ -1377,7 +1377,7 @@ def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
 
 队列触发器提供参数 `departmentId`。 `{ "departmentId" : "Finance" }` 的队列消息将返回财务部的所有记录。
 
-下面是 function.json 文件中的绑定数据：
+下面是 *function.json* 文件中的绑定数据：
 
 ```json
 {
@@ -1412,7 +1412,7 @@ def main(queuemsg: func.QueueMessage, documents: func.DocumentList):
 
 以下示例演示 *function.json* 文件中的一个 Cosmos DB 输入绑定以及使用该绑定的 [F# 函数](functions-reference-fsharp.md)。 该函数读取单个文档，并更新文档的文本值。
 
-下面是 function.json 文件中的绑定数据：
+下面是 *function.json* 文件中的绑定数据：
 
 ```json
 {
@@ -1437,7 +1437,7 @@ F# 代码如下所示：
     inputDocument?text <- "This has changed."
 ```
 
-此示例要求具有指定 `FSharp.Interop.Dynamic` 和 `Dynamitey` NuGet 依赖关系的 `project.json` 文件：
+此示例要求具有指定 `project.json` 和 `FSharp.Interop.Dynamic` NuGet 依赖关系的 `Dynamitey` 文件：
 
 ```json
 {
@@ -1531,7 +1531,7 @@ public class DocByIdFromQueryString {
 }
  ```
 
-在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 Cosmos DB 的函数参数使用 `@CosmosDBInput` 注释。  此批注可用于本机 Java 类型、pojo 或可为 null 的值, >\<使用可选的。
+在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 Cosmos DB 的函数参数使用 `@CosmosDBInput` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 Optional\<T> 的可为 null 的值一起使用。
 
 #### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>HTTP 触发器，从查询字符串查找 ID - POJO 参数 (Java)
 
@@ -1712,13 +1712,13 @@ public class DocsFromRouteSqlQuery {
 
 ## <a name="input---configuration"></a>输入 - 配置
 
-下表解释了在 *function.json* 文件和 `CosmosDB` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `CosmosDB` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**     || 必须设置为 `cosmosDB`。        |
-|**direction**     || 必须设置为 `in`。         |
-|**名称**     || 表示函数中的文档的绑定参数的名称。  |
+|type     || 必须设置为 `cosmosDB`。        |
+|direction     || 必须设置为 `in`。         |
+|**name**     || 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** |**DatabaseName** |包含文档的数据库。        |
 |**collectionName** |**CollectionName** | 包含文档的集合的名称。 |
 |**id**    | **Id** | 要检索的文档的 ID。 此属性支持[绑定表达式](./functions-bindings-expressions-patterns.md)。 不要同时设置 **id** 和 **sqlQuery** 属性。 如果上述两个属性都未设置，则会检索整个集合。 |
@@ -1734,7 +1734,7 @@ public class DocsFromRouteSqlQuery {
 
 在 JavaScript 函数中，函数退出时不会自动进行更新。 请改用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 进行更新。 请参阅 JavaScript 示例。
 
-## <a name="output"></a>Output
+## <a name="output"></a>输出
 
 Azure Cosmos DB 输出绑定允许使用 SQL API 将新文档写入 Azure Cosmos DB 数据库。
 
@@ -1749,7 +1749,7 @@ Azure Cosmos DB 输出绑定允许使用 SQL API 将新文档写入 Azure Cosmos
 * [JavaScript](#output---javascript-examples)
 * [Python](#output---python-examples)
 
-另请参阅使用 `DocumentClient` 的[输入示例](#input---c-examples)。
+另请参阅使用 [ 的](#input---c-examples)输入示例`DocumentClient`。
 
 [跳过输出示例](#output---attributes)
 
@@ -1879,7 +1879,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-下面是 function.json 文件中的绑定数据：
+下面是 *function.json* 文件中的绑定数据：
 
 ```json
 {
@@ -2004,7 +2004,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 }
 ```
 
-下面是 function.json 文件中的绑定数据：
+下面是 *function.json* 文件中的绑定数据：
 
 ```json
 {
@@ -2061,7 +2061,7 @@ JavaScript 代码如下所示：
 }
 ```
 
-下面是 function.json 文件中的绑定数据：
+下面是 *function.json* 文件中的绑定数据：
 
 ```json
 {
@@ -2100,7 +2100,7 @@ F# 代码如下所示：
           address = employee?address }
 ```
 
-此示例要求具有指定 `FSharp.Interop.Dynamic` 和 `Dynamitey` NuGet 依赖关系的 `project.json` 文件：
+此示例要求具有指定 `project.json` 和 `FSharp.Interop.Dynamic` NuGet 依赖关系的 `Dynamitey` 文件：
 
 ```json
 {
@@ -2277,11 +2277,11 @@ public String cosmosDbQueryById(
 
 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将写入到 Cosmos DB 的参数使用 `@CosmosDBOutput` 注释。  注释参数类型应当为 ```OutputBinding<T>```，其中 T 是本机 Java 类型或 POJO。
 
-### <a name="output---python-examples"></a>输出-Python 示例
+### <a name="output---python-examples"></a>输出 - Python 示例
 
 下面的示例演示如何将文档作为函数的输出写入 Azure CosmosDB 数据库。
 
-绑定定义在*类型*设置为`cosmosDB`的*函数 json*中定义。
+绑定定义在 function.json 中定义，其中 type 设置为 `cosmosDB`。
 
 ```json
 {
@@ -2315,7 +2315,7 @@ public String cosmosDbQueryById(
 }
 ```
 
-若要写入数据库, 请将文档对象传递到`set` database 参数的方法。
+若要写入数据库，请将文档对象传递给数据库参数的 `set` 方法。
 
 ```python
 import azure.functions as func
@@ -2353,9 +2353,9 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**     || 必须设置为 `cosmosDB`。        |
-|**direction**     || 必须设置为 `out`。         |
-|**名称**     || 表示函数中的文档的绑定参数的名称。  |
+|type     || 必须设置为 `cosmosDB`。        |
+|direction     || 必须设置为 `out`。         |
+|**name**     || 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** | **DatabaseName**|包含在其中创建文档的集合的数据库。     |
 |**collectionName** |**CollectionName**  | 包含在其中创建文档的集合的名称。 |
 |**createIfNotExists**  |**CreateIfNotExists**    | 一个用于指示是否创建集合（如果不存在）的布尔值。 默认值为 *false*，因为新集合是使用保留的吞吐量创建的，具有成本方面的隐含意义。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。  |
@@ -2399,10 +2399,10 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
 }
 ```
 
-|属性  |默认 | 描述 |
+|属性  |默认 | 说明 |
 |---------|---------|---------|
 |GatewayMode|网关|连接到 Azure Cosmos DB 服务时该函数使用的连接模式。 选项为 `Direct` 和 `Gateway`|
-|Protocol|Https|连接到 Azure Cosmos DB 服务时该函数使用的连接协议。  参阅[此处，了解两种模式的说明](../cosmos-db/performance-tips.md#networking)|
+|协议|Https|连接到 Azure Cosmos DB 服务时该函数使用的连接协议。  参阅[此处，了解两种模式的说明](../cosmos-db/performance-tips.md#networking)|
 |leasePrefix|不适用|应用中所有函数要使用的租用前缀。|
 
 ## <a name="next-steps"></a>后续步骤

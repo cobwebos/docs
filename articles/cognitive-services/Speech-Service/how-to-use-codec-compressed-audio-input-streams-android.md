@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: df5eb123a2fd47a3eceea8153786442bf56a2718
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 2e741e8a8df2cebff167a381cef41351ead4c6cf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803829"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464370"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>在 Android 上将编解码器压缩的音频输入与 Speech SDK 一起使用
 
@@ -43,7 +43,7 @@ ms.locfileid: "71803829"
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 audioresample audioparsers ogg opusparse opus wavparse alaw mulaw flac
 ```
 
-下面提供了一个示例 `Android.mk` 和 @no__t 1 文件。 按照以下步骤创建适用 gstreamer 共享对象： `libgstreamer_android.so`。
+下面提供了一个示例 `Android.mk` 和 `Application.mk` 文件。 按照以下步骤创建适用 gstreamer 共享对象： `libgstreamer_android.so`。
 
 ```make
 # Android.mk
@@ -97,7 +97,7 @@ APP_PLATFORM = android-21
 APP_BUILD_SCRIPT = Android.mk
 ```
 
-可以在 Ubuntu 16.04 或18.04 上使用以下命令生成 @no__t 0。 以下命令行仅针对使用[ANDROID NDK b16b](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)的[适用 gstreamer Android 版本 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2)进行测试。
+可以在 Ubuntu 16.04 或18.04 上使用以下命令生成 `libgstreamer_android.so`。 以下命令行仅针对使用[ANDROID NDK b16b](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)的[适用 gstreamer Android 版本 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2)进行测试。
 
 ```sh
 # assuming wget and unzip already installed on the system
@@ -160,4 +160,4 @@ String text = result.getText();
 ## <a name="next-steps"></a>后续步骤
 
 - [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-- [了解如何在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)
+* [请参阅如何在 Java 中识别语音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

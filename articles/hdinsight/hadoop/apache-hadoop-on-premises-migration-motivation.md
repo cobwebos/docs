@@ -1,5 +1,5 @@
 ---
-title: 将本地 Apache Hadoop 迁移到 Azure HDInsight-动机和优势
+title: 优势：将本地 Apache Hadoop 迁移到 Azure HDInsight
 description: 了解将本地 Hadoop 群集迁移到 Azure HDInsight 的动机和权益。
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: a65b775a516bfccac2dee5ce00bc7d6495df256d
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 7f67b85b66748ae98cbb520bf4ebc11a2eef9efb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718362"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494938"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 动机和权益
 
@@ -53,7 +53,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 
 - **自定义工具或第三方应用程序的可扩展性** - HDInsight 群集可使用已安装的组件进行扩展，也可以通过 Azure 市场中的[一键式](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) 部署与其他大数据解决方案进行集成。
 
-- **轻松管理、管理和监视**-Azure HDInsight 与 [Azure Monitor 日志](../hdinsight-hadoop-oms-log-analytics-tutorial.md)集成 @no__t 2to 提供单一界面来监视所有群集。
+- **易于管理、管理和监视**-Azure HDInsight 与 [Azure Monitor 日志](../hdinsight-hadoop-oms-log-analytics-tutorial.md)集成 提供单一界面，可用于监视所有群集。
 
 - **与其他 Azure 服务集成** - HDInsight 可轻松地与其他常用 Azure 服务进行集成，例如：
 
@@ -89,7 +89,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 
 | **问题** | **示例** | **答案** |
 |---|---|---|
-|**主题**：**环境**|||
+|**主题**：环境|||
 |群集分发版本|HDP 2.6.5、CDH 5.7|
 |大数据生态系统组件|HDFS、Yarn、Hive、LLAP、Impala、Kudu、HBase、Spark、MapReduce、Kafka、Zookeeper、Solr、Sqoop、Oozie、Ranger、Atlas、Falcon、Zeppelin、R|
 |群集类型|Hadoop、Spark、Confluent Kafka、Storm、Solr|
@@ -130,7 +130,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |机器学习模型训练作业|2 个作业 -- 每周一次||
 |编程语言|Python、Scala、Java||
 |脚本|Shell、Python||
-|**主题**：**数据**|||
+|**主题**：数据|||
 |数据源|平面文件、Json、Kafka、RDBMS||
 |数据业务流程|Oozie 工作流、气流||
 |内存中查找|Apache Ignite、Redis||
@@ -141,7 +141,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |Hive 表的数目|100||
 |Ranger 策略数|20||
 |Oozie 工作流数|100||
-|**主题**：**缩放**|||
+|**主题**：缩放|||
 |数据量包括复制|100 TB||
 |每日引入量|50 GB||
 |数据增长率|每年 10%||
@@ -157,7 +157,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |最终用户数|100||
 |技能|Hadoop、Spark||
 |用于迁移的可用资源数|2||
-|**主题**：**限制**|||
+|**主题**：限制|||
 |当前限制|延迟较高||
 |当前挑战|并发问题||
 
@@ -170,13 +170,13 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |首选 VNet？|是||
 |需要 HA/DR？|是||
 |与其他云服务进行集成？|ADF、CosmosDB||
-|**主题**： **数据移动**  |||
+|**主题**：数据移动  |||
 |初始加载首选项|DistCp、Data box、ADF、WANDisco||
 |数据传输增量|DistCp、AzCopy||
 |正在进行的增量数据传输|DistCp、Sqoop||
-|**主题**： 监视和警报 |||
+|**主题**：监视和警报 |||
 |使用 Azure 监控和警报与集成第三方监视|使用 Azure 监视和警报||
-|**主题**： 安全性首选项 |||
+|**主题**：安全性首选项 |||
 |专用和受保护的数据管道？|是||
 |已加入域的群集 (ESP)？|     是||
 |本地 AD 同步到云？|     是||
@@ -189,7 +189,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |需要审核？|                  是||
 |静态数据加密？|          是||
 |在传输中进行数据加密？|       是||
-|**主题**： 重建体系结构首选项 |||
+|**主题**：重建体系结构首选项 |||
 |单个群集与特定群集类型|特定群集类型||
 |共存存储与远程存储？|远程存储||
 |在远程存储数据群集大小更小？|群集大小更小||
@@ -201,6 +201,6 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读本系列教程的下一篇文章：
+阅读本系列的下一篇文章：
 
 - [本地到 Azure HDInsight Hadoop 迁移的体系结构最佳做法](apache-hadoop-on-premises-migration-best-practices-architecture.md)

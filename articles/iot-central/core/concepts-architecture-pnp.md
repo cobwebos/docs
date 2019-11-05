@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a9d74d94e139427027f68b2c26675447ae6da18c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3dacea5c1d77bfead85e42ae312bfafbe70d8ca1
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954872"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990379"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Azure IoT Central 体系结构（预览功能）
 
@@ -32,7 +32,7 @@ ms.locfileid: "72954872"
 
 在 Azure IoT Central 中，设备可以与应用程序交换的数据在设备模板中指定。 有关设备模板的详细信息，请参阅[元数据管理](#metadata-management)。
 
-若要详细了解设备如何连接到 Azure IoT Central 应用程序，请参阅[设备连接](concepts-connectivity-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)。
+若要详细了解设备如何连接到 Azure IoT Central 应用程序，请参阅[设备连接](overview-iot-central-get-connected-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)。
 
 ## <a name="cloud-gateway"></a>云网关
 
@@ -44,7 +44,7 @@ Azure IoT Central 使用 Azure IoT 中心作为启用设备连接的云网关。
 
 若要详细了解 IoT 中心，请参阅 [Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/)。
 
-若要详细了解 Azure IoT Central 中的设备连接，请参阅[设备连接](concepts-connectivity-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)。
+若要详细了解 Azure IoT Central 中的设备连接，请参阅[设备连接](overview-iot-central-get-connected-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)。
 
 ## <a name="data-stores"></a>数据存储
 
@@ -110,4 +110,4 @@ UI Shell 是一个现代的基于 HTML5 浏览器的应用程序，响应速度�
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已了解 Azure IoT Central 的体系结构，接下来要介绍 Azure IoT Central 中的[设备连接](concepts-connectivity-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)。
+现在，你已了解 Azure IoT Central 的体系结构，接下来要介绍 Azure IoT Central 中的[设备连接](overview-iot-central-get-connected-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)。

@@ -10,14 +10,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: 80508a31db8d86569c52df98697ceb62520059d2
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: a47ce44a325720fb1b6df919a0a324a4d3319d86
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002751"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489893"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>在 Azure 机器学习中启用日志记录
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 借助 Azure 机器学习 Python SDK，可以使用默认的 Python 日志记录包以及 SDK 特定的功能启用日志记录，以便在门户中进行本地日志记录，以及对工作区进行日志记录。 日志可为开发人员提供有关应用程序状态的实时信息，并可以帮助诊断错误或警告。 本文介绍如何针对以下场景启用日志记录：
 
@@ -27,11 +28,11 @@ ms.locfileid: "71002751"
 > * 部署的模型
 > * Python `logging` 设置
 
-[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。 有关 SDK 的详细信息, 请使用[指南](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。 有关 SDK 的详细信息，请使用[指南](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 
 ## <a name="training-models-and-compute-target-logging"></a>训练模型和计算目标日志记录
 
-在模型训练过程中，可通过多种方法启用日志记录，示例将演示常用设计模式。 可以使用 `Experiment` 类中的 `start_logging` 函数，将运行相关的数据轻松记录到云中的工作区。
+在模型训练过程中，可通过多种方法启用日志记录，示例将演示常用设计模式。 可以使用 `start_logging` 类中的 `Experiment` 函数，将运行相关的数据轻松记录到云中的工作区。
 
 ```python
 from azureml.core import Experiment
@@ -41,7 +42,7 @@ run = exp.start_logging()
 run.log("test-val", 10)
 ```
 
-有关其他日志记录功能, 请参阅[Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)类的参考文档。
+有关其他日志记录功能，请参阅[Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)类的参考文档。
 
 若要在训练过程中启用应用程序状态的本地日志记录，请使用 `show_output` 参数。 启用详细日志记录可以查看训练过程的详细信息，以及有关任何远程资源或计算目标的信息。 提交试验时使用以下代码启用日志记录。
 
@@ -58,7 +59,7 @@ run = experiment.submit(config=run_config_object, show_output=True)
 run.wait_for_completion(show_output=True)
 ```
 
-在某些训练场景中，SDK 还支持使用默认的 Python 日志记录包。 以下示例在 `AutoMLConfig` 对象中启用日志记录级别 `INFO`。
+在某些训练场景中，SDK 还支持使用默认的 Python 日志记录包。 以下示例在 `INFO` 对象中启用日志记录级别 `AutoMLConfig`。
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -85,7 +86,7 @@ compute.wait_for_completion(show_output=True)
 
 ## <a name="logging-during-image-creation"></a>在创建映像期间进行日志记录
 
-在创建映像期间启用日志记录可在生成过程中看到任何错误。 在 `wait_for_deployment()` 函数中设置 `show_output` 参数。
+在创建映像期间启用日志记录可在生成过程中看到任何错误。 在 `show_output` 函数中设置 `wait_for_deployment()` 参数。
 
 ```python
 from azureml.core.webservice import Webservice
@@ -117,7 +118,7 @@ logs = service.get_logs()
 service.update(enable_app_insights=True)
 ```
 
-有关如何在 Azure 门户中使用 Application Insights 的详细信息，请参阅[操作指南](how-to-enable-app-insights.md)。
+有关如何在 Azure 机器学习 studio 中使用 Application Insights 的详细信息，请参阅操作[方法](how-to-enable-app-insights.md)。
 
 ## <a name="python-native-logging-settings"></a>Python 本机日志记录设置
 

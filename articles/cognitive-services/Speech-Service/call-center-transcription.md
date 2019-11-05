@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 4f5163ba448e4cc7e18b0e794a44003ce5ab1dce
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 858ca114ca4c4b469ce4a5dd5275c9ac9874feb5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516764"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464998"
 ---
 # <a name="speech-services-for-telephony-data"></a>用于处理电话数据的语音服务
 
@@ -38,7 +38,7 @@ ms.locfileid: "72516764"
 
 * 呼叫后分析，即，对通话录音进行批处理
 * 在通话过程中，对音频信号进行实时的分析处理，以提取各种见解（最常见的用例是情绪分析）
-* 使用虚拟助手（机器人）推动客户与机器人之间的对话，以尝试在无需座席干预的情况下解决客户的问题，或者应用 AI 协议来为座席提供辅助。
+* 语音助手（bot）可以在客户与机器人之间驱动对话，尝试解决客户的问题，无代理参与，或使用 AI 协议来帮助代理。
 
 下面的![呼叫中心听录体系结构](media/scenarios/call-center-transcription-architecture.png)插图描绘了批处理方案实现的典型体系结构示意图
 
@@ -59,7 +59,7 @@ ms.locfileid: "72516764"
 ### <a name="translation"></a>翻译
 某些公司正在试验提供从外语支持呼叫翻译的听录内容，使交付经理能够了解其客户的全球体验。 我们的[翻译](translation.md)功能非常优秀。 我们可以将大量区域中的音频翻译成音频，或者将音频翻译成文本。
 
-### <a name="text-to-speech"></a>文本转语音
+### <a name="text-to-speech"></a>文本到语音转换
 在实现可与客户交互的机器人时，[文本转语音](text-to-speech.md)是另一个重要的方面。 典型的流程是客户讲话、将客户的语音转录为文本、分析文本中的意向、基于识别的意向合成响应，然后向客户呈现一个资产，或者生成合成的语音响应。 当然，所有这些步骤必须快速完成 – 因此，这些系统的成功与否与延迟密切相关。
 
 考虑到涉及的[语音转文本](speech-to-text.md)、[LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)、[Bot Framework](https://dev.botframework.com/)、[文本转语音](text-to-speech.md)等各种技术，我们的端到端延迟非常低。
@@ -116,7 +116,7 @@ ms.locfileid: "72516764"
 
 Azure 语音服务能够很好地与内置模型配合工作，但是，你可能想要根据自己的产品或环境，进一步自定义和优化体验。 自定义选项的范围从声学模型优化，到专属于自有品牌的语音字体。 生成自定义模型后，可将其与实时或批量模式下的任何 Azure 语音服务配合使用。
 
-| 语音服务 | 模型 | 描述 |
+| 语音服务 | 模型 | 说明 |
 |----------------|-------|-------------|
 | 语音转文本 | [声学模型](how-to-customize-acoustic-models.md) | 为特定环境（例如汽车或工厂车间）中使用的应用程序、工具或设备创建自定义声学模型，每个模型具有特定的录制条件。 示例包括带有口音的讲话、特定的背景噪音，或使用特定的麦克风录制音频。 |
 | | [语言模型](how-to-customize-language-model.md) | 创建自定义语言模型来改善行业特定的词汇和语法的听录，例如医疗术语中或 IT 行话。 |

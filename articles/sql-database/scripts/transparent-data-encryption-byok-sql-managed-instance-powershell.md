@@ -1,5 +1,5 @@
 ---
-title: PowerShell：启用 BYOK TDE - Azure SQL 数据库托管实例 | Microsoft Docs
+title: PowerShell： Enable BYOK TDE-Azure SQL 数据库托管实例 |Microsoft Docs
 description: 了解如何配置 Azure SQL 托管实例，以开始使用 BYOK 透明数据加密 (TDE) 通过 PowerShell 进行静态加密。
 services: sql-database
 ms.service: sql-database
@@ -10,31 +10,31 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
-ms.date: 04/19/2019
-ms.openlocfilehash: d8f0f4a8e603a9040d166b00682077cff23abd8d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 11/04/2019
+ms.openlocfilehash: 0413216bc666aff504193d6723d46a6ee26be8ee
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569704"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500054"
 ---
-# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault-preview"></a>使用 Azure Key Vault (预览版) 中的密钥管理托管实例中的透明数据加密
+# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>使用 Azure Key Vault 中自己的密钥管理托管实例中的透明数据加密
 
-此 PowerShell 脚本示例使用 Azure Key Vault 中的密钥, 为 Azure SQL 托管实例的创建自己的密钥 (预览) 方案中的透明数据加密 (TDE) 配置。 若要详细了解支持“创建自己的密钥”(BYOK) 的 TDE，请参阅[适用于 Azure SQL 的支持“创建自己的密钥”的 TDE](../transparent-data-encryption-byok-azure-sql.md)。
+此 PowerShell 脚本示例使用 Azure Key Vault 中的密钥在自带密钥（预览版）方案中为 Azure SQL 托管实例配置透明数据加密 (TDE)。 若要详细了解支持“创建自己的密钥”(BYOK) 的 TDE，请参阅[适用于 Azure SQL 的支持“创建自己的密钥”的 TDE](../transparent-data-encryption-byok-azure-sql.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>必备组件
 
-- 现有托管实例。 请参阅[使用 PowerShell 创建 AZURE SQL 数据库托管实例](sql-database-create-configure-managed-instance-powershell.md)。
+- 现有托管实例。 请参阅[使用 PowerShell 创建 Azure SQL 数据库托管实例](sql-database-create-configure-managed-instance-powershell.md)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-在本地或使用 Azure Cloud Shell 都需要 AZ PowerShell 1.1.1-预览版或更高版本的预览版本。 如果需要升级, 请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps), 或运行下面的示例脚本以安装模块。
+在本地或使用 Azure Cloud Shell 都需要 AZ PowerShell 1.1.1-预览版或更高版本的预览版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)，或运行以下示例脚本来安装该模块。
 
 `Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease -Force`
 
-如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="sample-scripts"></a>示例脚本
 

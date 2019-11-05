@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 540435e3e018ae77477030ae8b9f727d71782121
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45415af479c9581ee04b97af4fb5297d09c5769d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704591"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496332"
 ---
 # <a name="use-firewall-rules"></a>使用防火墙规则
 
@@ -24,17 +24,17 @@ ms.locfileid: "64704591"
 
 ## <a name="when-to-use"></a>使用时机
 
-如果要安装服务总线，使其仅接收来自指定 IP 地址范围的流量并拒绝其他所有流量，则可以利用“防火墙”来阻止来自其他 IP 地址的服务总线终结点  。 例如，结合使用服务总线和 [Azure Express Route][express-route]，以创建到本地基础结构的专用连接。 
+如果要安装服务总线，使其仅接收来自指定 IP 地址范围的流量并拒绝其他所有流量，则可以利用“防火墙”来阻止来自其他 IP 地址的服务总线终结点。 例如，结合使用服务总线和 [Azure Express Route][express-route]，以创建到本地基础结构的专用连接。 
 
 ## <a name="how-filter-rules-are-applied"></a>筛选器规则的应用方式
 
-IP 筛选器规则应用于服务总线命名空间级别。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。
+IP 筛选器规则应用于服务总线命名空间级别。 因此，这些规则适用于通过各种受支持协议从客户端发出的所有连接。
 
 如果某 IP 地址与服务总线命名空间上的允许 IP 规则不匹配，则将拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。
 
 ## <a name="default-setting"></a>默认设置
 
-门户中服务总线的“IP 筛选器”网格默认为空  。 此默认设置表示命名空间接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。
+门户中服务总线的“IP 筛选器”网格默认为空。 此默认设置表示命名空间接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。
 
 ## <a name="ip-filter-rule-evaluation"></a>IP 筛选器规则评估
 
@@ -45,13 +45,12 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
 >
 > 实施 IP 筛选（防火墙规则）时，受信任的 Microsoft 服务不受支持，但很快就会变得可用。
 >
-> 不适用于 IP 筛选的常见 Azure 方案（请注意，该列表内容并不详尽）  -
+> 不适用于 IP 筛选的常见 Azure 方案（请注意，该列表内容并不详尽）-
 > - Azure Monitor
 > - Azure 流分析
 > - 与 Azure 事件网格的集成
 > - Azure IoT 中心路由
 > - Azure IoT Device Explorer
-> - Azure 数据资源管理器
 >
 > 以下 Microsoft 服务必须在虚拟网络中
 > - Azure 应用服务
@@ -60,23 +59,23 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
 ### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建虚拟网络和防火墙规则
 
 > [!IMPORTANT]
-> 仅在支持防火墙和虚拟网络**高级**层的服务总线。
+> 防火墙和虚拟网络仅在服务总线的**高级**层中受支持。
 
 以下资源管理器模板支持向现有服务总线命名空间添加虚拟网络规则。
 
 模板参数：
 
-- ipMask 是单个 IPv4 地址或者是以 CIDR 表示法表示的一个 IP 地址块  。 例如，在 CIDR 表示法中，70.37.104.0/24 表示从 70.37.104.0 到 70.37.104.255 的 256 个 IPv4 地址，其中 24 表示范围的有效前缀位数。
+- ipMask 是单个 IPv4 地址或者是以 CIDR 表示法表示的一个 IP 地址块。 例如，在 CIDR 表示法中，70.37.104.0/24 表示从 70.37.104.0 到 70.37.104.255 的 256 个 IPv4 地址，其中 24 表示范围的有效前缀位数。
 
 > [!NOTE]
-> 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接  。
+> 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接。
 > 制定虚拟网络或防火墙规则时，必须更改“defaultAction”
 > 
 > from
 > ```json
 > "defaultAction": "Allow"
 > ```
-> 至
+> to
 > ```json
 > "defaultAction": "Deny"
 > ```

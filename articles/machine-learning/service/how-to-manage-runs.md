@@ -10,15 +10,16 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 07/31/2019
-ms.openlocfilehash: 7ebbc7575ad52bbf7a399babb048113bc505a7f8
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: 525fc8beafbdbe15435c59697d136ae06c91c135
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174540"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489707"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中启动、监视和取消定型运行
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 用于 Python 和[机器学习 CLI](reference-azure-machine-learning-cli.md)的[Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)提供多种方法来监视、组织和管理运行以进行定型和试验。
 
@@ -29,11 +30,11 @@ ms.locfileid: "72174540"
 * 创建子运行。
 * 标记和查找运行。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 你将需要以下项：
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
 * [Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -85,18 +86,18 @@ notebook_run.log(name="message", value="Hello from run!")
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
 
-    此命令创建一个 `.azureml` 子目录，其中包含 .runconfig 和 conda 环境文件示例。 它还包含一个 @no__t 0 文件，用于与 Azure 机器学习工作区进行通信。
+    此命令创建一个 `.azureml` 子目录，其中包含 .runconfig 和 conda 环境文件示例。 它还包含用于与 Azure 机器学习工作区进行通信的 `config.json` 文件。
 
     有关详细信息，请参阅[az ml folder attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach)。
 
-2. 若要开始运行，请使用以下命令。 使用此命令时，请指定 .runconfig 文件的名称（如果您正在查看文件系统，请在查看文件系统 @no__t 之前，使用 .runconfig 参数）。
+2. 若要开始运行，请使用以下命令。 使用此命令时，请指定 .runconfig 文件的名称 \*（如果您正在查看文件系统，则为 .runconfig）。
 
     ```azurecli-interactive
     az ml run submit-script -c sklearn -e testexperiment train.py
     ```
 
     > [!TIP]
-    > @No__t-0 命令创建了一个 @no__t 的子目录，其中包含两个 .runconfig 文件示例。
+    > `az ml folder attach` 命令创建了一个 `.azureml` 子目录，其中包含两个 .runconfig 文件示例。
     >
     > 如果你的 Python 脚本以编程方式创建运行配置对象，则可以使用[.runconfig （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-)将其另存为 .runconfig 文件。
     >
@@ -120,7 +121,7 @@ print(notebook_run.get_status())
 print(notebook_run.get_details())
 ```
 
-如果运行成功完成，请使用[`complete()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-)方法将其标记为已完成。
+成功完成运行后，使用[`complete()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-)方法将其标记为已完成。
 
 ```python
 notebook_run.complete()
@@ -176,7 +177,7 @@ local_script_run.cancel()
 print(local_script_run.get_status())
 ```
 
-如果运行已完成，但它包含错误（例如，使用了错误的定型脚本），则可以使用[`fail()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)#fail-error-details-none--error-code-none---set-status-true-)方法将其标记为失败。
+如果您的运行已完成，但它包含错误（例如，使用的训练脚本不正确），则可以使用[`fail()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)#fail-error-details-none--error-code-none---set-status-true-)方法将其标记为失败。
 
 ```python
 local_script_run = exp.submit(run_config)
@@ -226,7 +227,7 @@ with exp.start_logging() as parent_run:
 
 还可以从父运行提交子运行。 这样，你便可以创建父和子运行的层次结构，每个层次结构都在不同的计算目标上运行，这些层次结构由通用父运行 ID 连接。
 
-使用["submit_child （）"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-)方法可从父运行中提交子运行。 若要在父运行脚本中执行此操作，请获取运行上下文，并使用上下文实例的 @no__t 0 方法提交子运行。
+使用["submit_child （）"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-)方法可从父运行中提交子运行。 若要在父运行脚本中执行此操作，请获取运行上下文，并使用上下文实例的 ``submit_child`` 方法提交子运行。
 
 ```python
 ## In parent run script
@@ -245,7 +246,7 @@ child_run.parent.id
 
 ### <a name="query-child-runs"></a>查询子运行
 
-若要查询特定父对象的子运行，请使用[`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-)方法。 @No__t 的参数可用于查询子级和孙级的嵌套树。
+若要查询特定父对象的子运行，请使用[`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-)方法。 使用 ``recursive = True`` 参数可以查询子级和孙级的嵌套树。
 
 ```python
 print(parent_run.get_children())
@@ -266,7 +267,7 @@ local_script_run.add_properties({"author":"azureml-user"})
 print(local_script_run.get_properties())
 ```
 
-属性是不可变的，因此它们会出于审核目的创建永久记录。 下面的代码示例会导致错误，因为我们已添加 `"azureml-user"` 作为前面代码中的 @no__t 1 属性值：
+属性是不可变的，因此它们会出于审核目的创建永久记录。 下面的代码示例会导致错误，因为我们已添加 `"azureml-user"` 作为前面代码中 `"author"` 属性值：
 
 ```Python
 try:
@@ -318,7 +319,7 @@ list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"
 
 #### <a name="using-the-cli"></a>使用 CLI
 
-Azure CLI 支持[JMESPath](http://jmespath.org)查询，该查询可用于基于属性和标记来筛选运行。 若要将 JMESPath 查询与 Azure CLI 一起使用，请使用 @no__t 参数指定它。 下面的示例显示了使用属性和标记的基本查询：
+Azure CLI 支持[JMESPath](http://jmespath.org)查询，该查询可用于基于属性和标记来筛选运行。 若要将 JMESPath 查询与 Azure CLI 一起使用，请使用 `--query` 参数指定它。 下面的示例显示了使用属性和标记的基本查询：
 
 ```azurecli-interactive
 # list runs where the author property = 'azureml-user'

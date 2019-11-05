@@ -1,93 +1,98 @@
 ---
-title: Azure Migrate 中的依赖项可视化 | Microsoft 文档
+title: Azure Migrate 中的依赖项可视化
 description: 概述中的服务器评估服务中的评估计算 Azure Migrate
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/18/2019
+ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: 5b71146f0c2aff51a0c2498705b047e9fa4632c8
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 17ba06d6ac09f220b4343092292275a1cc315377
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178122"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489214"
 ---
 # <a name="dependency-visualization"></a>依赖项可视化
 
-“Azure Migrate:服务器评估将评估要迁移到 Azure 的本地计算机组。 您可以使用服务器评估中的依赖项可视化功能来创建组。 本文提供了有关此功能的信息。
+本文介绍 Azure Migrate：服务器评估中的依赖关系可视化功能。
+
+依赖关系可视化有助于了解要评估和迁移的计算机之间的依赖关系。 当您想要评估具有更高置信度的计算机时，通常使用依赖关系映射。
+
+- 在 Azure Migrate：服务器评估中，将计算机组合到一起进行评估。 组通常由要一起迁移的计算机组成，依赖关系可视化可帮助您交叉检查计算机依赖项，以便您可以准确地对计算机进行分组。
+- 使用可视化效果，可以发现需要一起迁移的相互依赖的系统。 您可以确定正在使用的系统是仍在使用中，还是可以取消使用（而不是迁移）系统。
+- 可视化依赖项有助于确保不会遗留任何内容，并避免在迁移过程中出现意外中断。
+- 如果你未完全了解作为应用一部分的计算机，并且应将其一起迁移到 Azure，则此功能特别有用。
+
 
 > [!NOTE]
 > 依赖项可视化功能在 Azure 政府中不可用。
 
-## <a name="overview"></a>概述
+## <a name="agent-based-and-agentless"></a>基于代理和无代理
 
-服务器评估中的依赖关系可视化允许您为迁移评估创建高可信度组。 使用依赖关系可视化，你可以查看计算机的网络依赖关系，并确定需要一起迁移到 Azure 的相关计算机。 在不完全了解构成应用程序并需要一起迁移到 Azure 的计算机的情况下，此功能非常有用。
+可通过两个选项来部署依赖关系可视化：
 
-## <a name="before-you-start"></a>开始之前
+- **无代理依赖项可视化**：此选项当前为预览版。 不需要在计算机上安装任何代理。 
+    - 它的工作原理是从启用了它的计算机捕获 TCP 连接数据。 [了解详细信息](how-to-create-group-machine-dependencies-agentless.md)。
+启动依赖项发现后，设备会按5分钟的轮询间隔从计算机收集数据。
+    - 收集以下数据：
+        - TCP 连接
+        - 具有活动连接的进程的名称
+        - 运行上述进程的已安装应用程序的名称
+        - 不能。 每个轮询间隔检测到的连接
+- **基于代理的依赖项可视化**：若要使用基于代理的依赖项可视化，需要在要分析的每台本地计算机上下载并安装以下代理。  
+    - 需要在每台计算机上安装 [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)。 [了解](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma)有关如何安装 MMA 代理的详细信息。
+    - 需要在每台计算机上安装[依赖项代理](../azure-monitor/platform/agents-overview.md#dependency-agent)。 [了解](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent)有关如何安装依赖关系代理的详细信息。
+    - 此外，如果计算机未连接到 Internet，则需要在计算机上下载并安装 Log Analytics 网关。
 
-- 请确保已[创建](how-to-add-tool-first-time.md)Azure Migrate 项目。
-- 如果已创建项目，请确保已[添加](how-to-assess.md)Azure Migrate：服务器评估”工具评估本地 VMware VM。
-- 请确保已在 Azure Migrate 中发现了计算机;为此，可以设置适用于[VMware](how-to-set-up-appliance-vmware.md)或[hyper-v](how-to-set-up-appliance-hyper-v.md)的 Azure Migrate 设备。 设备将发现本地计算机，并将元数据和性能数据发送到 Azure Migrate：两种类型的评估。 [了解详细信息](migrate-appliance.md)。
+## <a name="agent-based-requirements"></a>基于代理的要求
 
-## <a name="how-does-it-work"></a>工作原理
+### <a name="what-do-i-need-to-deploy-dependency-visualization"></a>部署依赖关系可视化需要执行哪些操作？
+
+在部署依赖项可视化之前，应准备好一个 Azure Migrate 项目，并将 Azure Migrate： Server 评估工具添加到项目。 将 Azure Migrate 设备设置为发现本地计算机后，部署依赖关系可视化。
+
+[详细了解](how-to-assess.md)如何添加该工具，以及如何为[hyper-v](how-to-set-up-appliance-hyper-v.md)、 [VMware](how-to-set-up-appliance-vmware.md)或物理服务器部署设备。
+
+
+### <a name="how-does-it-work"></a>工作原理
 
 Azure Migrate 使用[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)中的[服务映射](../operations-management-suite/operations-management-suite-service-map.md)解决方案进行依赖关系可视化。
-- 若要利用依赖项可视化功能，需要将现有或新的 Log Analytics 工作区与 Azure Migrate 项目进行关联。
-- 只能在创建 Azure Migrate 项目的同一订阅中创建或附加工作区。
-- 将 Log Analytics 工作区附加到项目：
-    1. 在“服务器”选项卡上的“Azure Migrate:**服务器评估 @ no__t 磁贴，单击 "**概述**"。
-    2. 在 "**概述**" 中，单击向下箭头以展开 " **Essentials**"。
-    3. 在**OMS 工作区**中，单击 "**需要配置**"。
-    4. 在 "**配置工作区**" 中，指定是否要创建新的工作区或使用现有工作区：
-    
-    ![添加工作区](./media/how-to-create-group-machine-dependencies/workspace.png)
 
-- 关联一个工作区时，可以选择是创建新的工作区还是附加现有工作区：
-  - 创建新工作区时，需要指定工作区的名称。 你可以选择将在其中创建工作区的[区域](https://azure.microsoft.com/global-infrastructure/regions/)。
-  - 附加现有的工作区时，可以从迁移项目所在订阅中的所有可用工作区进行选择。 请注意，只有在[服务映射受支持](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)的区域中创建的那些工作区才会列出。 为了能够附加工作区，请确保对该工作区有“读取者”访问权限。
-
-  > [!NOTE]
-  > 工作区附加到一个项目后，你将无法再对其进行更改。
-
-  > [!NOTE]
-  > Azure Migrate 当前支持创建或关联位于美国东部、东南亚和西欧区域的 Log Analytics 工作区。 如果在不受支持的区域中的 Azure Migrate 之外创建工作区，则该工作区当前无法与 Azure Migrate 项目关联。 
-
-- 关联的工作区通过“迁移项目”键和“项目名称”值（可用于在 Azure 门户中进行搜索）进行标记。
-- 若要导航到与项目关联的工作区，可以转到项目“概述”页的“Essentials”部分并访问工作区
+- 若要利用依赖项可视化，需要将 Log Analytics 工作区（新的或现有的）与 Azure Migrate 的项目相关联。
+- 工作区必须与在其中创建 Azure Migrate 项目的订阅相同。
+- Azure Migrate 支持位于美国东部、东南亚和西欧区域的工作区。 其他区域中的工作区不能与项目关联。 另请注意，工作区必须位于[支持服务映射](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)的区域中。
+- 添加 Azure Migrate 项目后，不能修改该工作区的工作区。
+- 在 Log Analytics 中，与 Azure Migrate 相关联的工作区用迁移项目密钥和项目名称进行标记。
 
     ![导航 Log Analytics 工作区](./media/concepts-dependency-visualization/oms-workspace.png)
 
-若要使用依赖项可视化，你需要在要分析的每台本地计算机上下载并安装代理。  
 
-- 需要在每台计算机上安装 [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)。 [了解](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma)有关如何安装 MMA 代理的详细信息。
-- 需要在每台计算机上安装[依赖项代理](../azure-monitor/platform/agents-overview.md#dependency-agent)。 [了解](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent)有关如何安装依赖关系代理的详细信息。
-- 此外，如果计算机未连接到 Internet，则需要在计算机上下载并安装 Log Analytics 网关。
 
-除非要使用依赖项可视化，否则在要评估的计算机上不需要安装这些代理。
+### <a name="do-i-need-to-pay-for-it"></a>是否需要对其付费？
 
-## <a name="do-i-need-to-pay-for-it"></a>是否需要对其付费？
+依赖项可视化需要服务映射和关联的 Log Analytics 工作区。 
 
-依赖关系可视化功能免费提供。 使用服务器评估中的依赖项可视化功能需要服务映射，需要将 Log Analytics 工作区（新的或现有的）与 Azure Migrate 项目关联。 服务器评估中的依赖项可视化功能在前180天内免费。
-
-1. 在此 Log Analytics 工作区中使用服务映射以外的任何其他解决方案都会产生[标准 Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) 费用。
-2. 为了不另外收费地支持迁移方案，服务映射解决方案在将 Log Analytics 工作区与 Azure Migrate 项目关联之日起的前 180 天内不会产生任何费用。 在 180 天之后，将收取标准 Log Analytics 费用。
-
-将代理注册到工作区时，请在“安装代理步骤”页上使用项目提供的 ID 和密钥。
-
-删除 Azure Migrate 项目时，工作区不会随之一起删除。 发布项目删除后，使用服务映射不会免费，每个节点将按照 Log Analytics 工作区的付费层进行收费。
-
-> [!NOTE]
-> 依赖项可视化功能通过 Log Analytics 工作区使用服务映射。 自 2018 年 2 月 28 日起，随着公告 Azure Migrate 正式发布，现在使用该功能无需额外付费。 你需要创建一个新项目，以便利用免费使用的工作区。 正式发布前的现有工作区仍收费，因此我们建议你迁移到新项目。
+- 服务映射解决方案在前180天不会产生任何费用。 这是从你将 Log Analytics 工作区与 Azure Migrate 项目关联的那一天。
+- 在 180 天之后，将收取标准 Log Analytics 费用。
+- 使用关联 Log Analytics 工作区中服务映射以外的任何解决方案将产生[标准 Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)费用。
+- 删除 Azure Migrate 项目时，工作区不会随之一起删除。 删除项目后，服务映射使用情况并不免费，每个节点将按 Log Analytics 工作区的付费层收费。
 
 [在此处](https://azure.microsoft.com/pricing/details/azure-migrate/)详细了解 Azure Migrate 定价。
 
-## <a name="how-do-i-manage-the-workspace"></a>如何管理工作区？
+> [!NOTE]
+> 如果你的项目是在2018年2月28日 Azure Migrate 公开上市之前创建的，则可能会产生额外服务映射费用。 为了确保你只需在180天后支付费用，我们建议你创建一个新项目，因为在正式发布前现有工作区仍可计费。
 
-你可以使用 Azure Migrate 外部的 Log Analytics 工作区。 如果删除创建该项目的 Azure Migrate 项目，则不会将其删除。 如果你不再需要工作区，请手动[删除工作区](../azure-monitor/platform/manage-access.md)。
 
-请勿删除 Azure Migrate 创建的工作区，除非删除 Azure Migrate 项目。 否则，依赖项可视化功能将不会按预期工作。
+
+### <a name="how-do-i-manage-the-workspace"></a>如何管理工作区？
+
+- 将代理注册到工作区时，将使用 Azure Migrate 项目提供的 ID 和密钥。
+- 你可以使用 Azure Migrate 外部的 Log Analytics 工作区。
+- 如果删除关联的 Azure Migrate 项目，则不会自动删除该工作区。 需要手动将[其删除](../azure-monitor/platform/manage-access.md)。
+- 请勿删除 Azure Migrate 创建的工作区，除非删除 Azure Migrate 项目。 否则，依赖项可视化功能将不会按预期工作。
 
 ## <a name="next-steps"></a>后续步骤
 - [使用计算机依赖项分组计算机](how-to-create-group-machine-dependencies.md)
-- [详细了解有关依赖项可视化的常见问题解答](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization)。
+- [详细了解](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization)依赖项可视化相关的常见问题解答。
+
+

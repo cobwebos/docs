@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 10/08/2019
 ms.author: makromer
-ms.openlocfilehash: 5cf4773ac781ae51a60ef7d987c3dc324c125d95
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 53c38af2208be6bb7cdb794ad0403456613f2df6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387730"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486186"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>排查 Azure 数据工厂数据流问题
 
@@ -67,6 +67,14 @@ ms.locfileid: "72387730"
 - **原因**：目标数据库中已存在具有相同名称的现有表名称，这些名称在源或数据集中定义
 
 - **解决方法**：更改尝试创建的表的名称
+
+### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-string-or-binary-data-would-be-truncated"></a>错误消息： DF-SYS-01： SQLServerException： String 或 binary 数据将被截断。 
+
+- **症状**：向 SQL 接收器写入数据时，数据流在管道执行上失败，出现截断错误。
+
+- **原因**：数据流中的字段映射到 SQL 数据库中的某一列的宽度不足，无法存储该值，导致 SQL 驱动程序引发此错误
+
+- **解决方法**：可以使用派生列中 ```left()``` 或实现["错误行" 模式](how-to-data-flow-error-rows.md)来减小字符串列的数据长度。
 
 ## <a name="general-troubleshooting-guidance"></a>一般故障排除指南
 

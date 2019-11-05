@@ -1,6 +1,6 @@
 ---
 title: 数据评估
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: Azure Machine Learning Studio (classic)
 description: 数据可用于数据科学需要满足的四个条件。 本视频提供具体示例，帮助了解基本数据评估。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 1d9475b49b3ef8a2e672e1ce505a7d94d19cb14f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 0903bbd5e0000e26472660271bd2fc8970279061
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875327"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493129"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>数据是否可用于数据科研？
 ## <a name="video-2-data-science-for-beginners-series"></a>视频 2：适合初学者的数据科学系列
@@ -29,16 +29,16 @@ ms.locfileid: "67875327"
 >
 
 ## <a name="other-videos-in-this-series"></a>本系列中的其他视频
-“适合初学者的数据科学”  对数据科学进行简要介绍，共五个短视频。
+“适合初学者的数据科学”对数据科学进行简要介绍，共五个短视频。
 
-* 视频 1：[数据科学可解答的 5 个问题](data-science-for-beginners-the-5-questions-data-science-answers.md)（5 分 14 秒） 
-* 视频 2：数据是否可用于数据科研？
-* 视频 3：[提出可用数据回答的问题](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)（4 分钟 17 秒） 
-* 视频 4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md)（7 分 42 秒） 
-* 视频 5：[复制他人的工作以执行数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)（3 分 18 秒） 
+* 视频 1：[数据科学可解答的 5 个问题](data-science-for-beginners-the-5-questions-data-science-answers.md)（5 分 14 秒）
+* 视频 2：数据是否可用于数据科学？
+* 视频 3：[提出一个可用数据回答的问题](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)（4 分 17 秒）
+* 视频 4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md)（7 分 42 秒）
+* 视频 5：[复制他人的工作以研究数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)（3 分 18 秒）
 
-## <a name="transcript-is-your-data-ready-for-data-science"></a>脚本：数据是否可用于数据科研？
-欢迎观看“数据是否可用于数据科学？” “适合初学者的数据科学”  系列中的第二个视频。  
+## <a name="transcript-is-your-data-ready-for-data-science"></a>脚本：数据是否可用于数据科学？
+欢迎观看“数据是否可用于数据科学？” “适合初学者的数据科学”系列中的第二个视频。  
 
 必须先提供一些优质原材料供数据科学分析，它才能提供你所需的答案。 就像做披萨一样，开始制作前准备的原料越好，最终的产品越好。 
 
@@ -46,7 +46,7 @@ ms.locfileid: "67875327"
 在数据科学中，有一些需要汇总的要素，包括：
 
 * 相关
-* 连续
+* 已连接
 * 准确
 * 足够使用
 
@@ -57,9 +57,9 @@ ms.locfileid: "67875327"
 
 表格左侧列出了在波士顿酒吧外测试的七个人的血液酒精含量、红袜队在最后一场比赛中的击球率以及最邻近的便利店中的牛奶价格。
 
-这些都是不错的数据。 唯一的问题是它不相关。 这些数字之间没有明显的关系。 如果提供现在的牛奶价格和红袜队的击球率，无法猜出血液酒精含量。
+此数据完全合法。 唯一的问题是它不相关。 这些数字之间没有明显的关系。 如果提供现在的牛奶价格和红袜队的击球率，无法猜出血液酒精含量。
 
-现在，观察右侧的表。 这一次，我们测量每个人的体重以及他们的饮酒杯数。  现在，每行中的数字彼此相关。 如果提供体重和喝的玛格丽塔数量，便可猜测血液酒精含量。
+现在，观察右侧的表。 这一次，我们测量每个人的体重以及他们饮酒的数量。  现在，每行中的数字彼此相关。 如果提供体重和喝的玛格丽塔数量，便可猜测血液酒精含量。
 
 ## <a name="do-you-have-connected-data"></a>数据是否连续？
 下一个要素是连续的数据。
@@ -70,7 +70,7 @@ ms.locfileid: "67875327"
 
 大多数数据集都缺少某些值。 这样的空白很常见，这一问题是可以解决的。 但是如果值缺失过多，数据看起来就像瑞士奶酪。
 
-如果观察左侧的表，会发现有太多缺失数据，因此很难找出烤制温度和肉饼重量之间存在任何关系。 此示例显示中断的数据。
+如果观察左侧的表，会发现有太多缺失数据，因此很难找出烤制温度和肉饼重量之间存在任何关系。 此示例显示已断开连接的数据。
 
 但是，右侧的表数据很完整，是连续数据的示例。
 
@@ -98,10 +98,10 @@ ms.locfileid: "67875327"
 
 随着添加的数据增多，图片变得更为清晰，可以进行一些更具体的判断。 现在，你可以看到左河岸上的三个旅店。 并注意到近景中那家旅店的建筑特色。 你甚至可以选择留在三楼，因为风景优美。
 
-有了相关、连续、准确且充足的数据，就有了进行优质数据科学分析所需的全部要素。
+有了相关、已连接、准确且充足的数据，就有了进行优质数据科学分析所需的全部要素。
 
-务必观看 Microsoft Azure 机器学习工作室“适合初学者的数据科学”中的其他四个视频  。
+请确保从 Microsoft Azure 机器学习工作室（经典）中查看*适用于初学者的数据科学*中的其他四个视频。
 
 ## <a name="next-steps"></a>后续步骤
-* [使用机器学习工作室尝试第一个数据科学实验](create-experiment.md)
-* [在 Microsoft Azure 上获取机器学习简介](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [试用机器学习 Studio （经典）进行第一次数据科学试验](create-experiment.md)
+* [获取 Microsoft Azure 上的机器学习的简介](/azure/machine-learning/preview/overview-what-is-azure-ml)

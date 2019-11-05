@@ -8,18 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 6fe959a661f23673bb5d3e6df630ef4ee25128f7
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 894396686a54ed3a685366fcf3e933fa8f03bee8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958548"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474519"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>管理 Azure AD 域服务托管域中的组策略
 
 Azure Active Directory 域服务（Azure AD DS）中的用户和计算机对象的设置通常是使用组策略对象（Gpo）来管理的。 Azure AD DS 包括*AADDC Users*和*AADDC 计算机*容器的内置 gpo。 你可以根据环境的需要自定义这些内置 Gpo 来配置组策略。 *AZURE AD DC administrators*组的成员具有 Azure AD DS 域中组策略的管理权限，还可以创建自定义 gpo 和组织单位（ou）。 有关组策略的定义及其工作原理的详细信息，请参阅[组策略概述][group-policy-overview]。
+
+在混合环境中，本地 AD DS 环境中配置的组策略不会同步到 Azure AD DS。 若要为 Azure AD DS 中的用户或计算机定义配置设置，请编辑其中一个默认 Gpo 或创建自定义 GPO。
 
 本文介绍如何安装组策略管理工具，然后编辑内置 Gpo 并创建自定义 Gpo。
 
@@ -51,7 +53,7 @@ Azure Active Directory 域服务（Azure AD DS）中的用户和计算机对象�
 1. 在“服务器管理器”窗口的“仪表板”窗格中，选择“添加角色和功能”。
 1. 在“添加角色和功能向导”的“准备工作”页上，选择“下一步”。
 1. 对于“安装类型”，请保留选中“基于角色或基于功能的安装”选项，然后选择“下一步”。
-1. 在“服务器选择”页上，从服务器池中选择当前的 VM（例如 *myvm.contoso.com*），然后选择“下一步”。
+1. 在“服务器选择”页上，从服务器池中选择当前的 VM（例如 **myvm.contoso.com**），然后选择“下一步”。
 1. 在“服务器角色”页上，单击“下一步”。
 1. 在“功能”页上，选择“组策略管理”功能。
 

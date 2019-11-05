@@ -1,5 +1,5 @@
 ---
-title: 排查 HDInsight 群集上的作业缓慢或失败作业-Azure HDInsight
+title: 排查 Azure HDInsight 群集上的作业速度缓慢或失败的问题
 description: 诊断并解决 Azure HDInsight 群集上的作业速度缓慢或失败的问题。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: efb2ac4be074508107bb31ae321c27a3d1263d9e
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 69711f7ac20882617de175b1b90d8df4f2858c4d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105346"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498084"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>排查 HDInsight 群集速度慢或作业失败问题
 
@@ -21,13 +21,13 @@ ms.locfileid: "71105346"
 
 若要诊断群集变慢或故障的原因，请收集有关环境的各个方面的信息，例如，关联的 Azure 服务、群集配置和作业执行信息。 一种有效的诊断方法是尝试在另一个群集上再现错误状态。
 
-* 步骤 1：收集有关问题的数据。
-* 步骤 2：验证 HDInsight 群集环境。
-* 步骤 3：查看群集的运行状况。
-* 步骤 4：查看环境堆栈和版本。
-* 步骤 5：检查群集日志文件。
-* 步骤 6：请检查配置设置。
-* 步骤 7：在其他群集上重现失败。
+* 步骤1：收集有关问题的数据。
+* 步骤2：验证 HDInsight 群集环境。
+* 步骤3：查看群集的运行状况。
+* 步骤4：查看环境堆栈和版本。
+* 步骤5：检查群集日志文件。
+* 步骤6：检查配置设置。
+* 步骤7：在不同的群集上再现故障。
 
 ## <a name="step-1-gather-data-about-the-issue"></a>步骤 1：收集有关问题的数据
 

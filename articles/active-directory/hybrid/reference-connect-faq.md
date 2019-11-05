@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70f0badc170c65b11bc244b5ed4ec2f9a205c72d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9dbc7f8068ed84f42ec41ebd969e0aa91ffbb264
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084867"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473315"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
@@ -30,7 +30,7 @@ ms.locfileid: "70084867"
 
 Microsoft 建议你加固 Azure AD Connect 服务器来减小 IT 环境中的此关键组件的安全攻击面。  遵循以下建议可降低你的组织的安全风险。
 
-* 将 Azure AD Connect 部署在已加入域的服务器上, 并限制对域管理员或其他严格控制的安全组的管理访问权限
+* 将 Azure AD Connect 部署在已加入域的服务器上，并仅限域管理员或其他严格受控的安全组进行管理性访问
 
 若要了解更多信息，请参阅以下文章： 
 
@@ -48,7 +48,7 @@ Microsoft 建议你加固 Azure AD Connect 服务器来减小 IT 环境中的此
 **问：Azure AD Connect 是否提供无人值守安装方法？**  
 仅支持使用安装向导来安装 Azure AD Connect。 不支持无人值守的静默安装。
 
-**问：我有一个林，但无法连接到其中的某个域。如何安装 Azure AD Connect？**  
+**问：我有一个林，但无法连接到其中的某个域。我应该如何安装 Azure AD Connect？**  
 2016 年 2 月版开始支持此方案。
 
 **问：Azure Active Directory 域服务 (Azure AD DS) 运行状况代理是否能够在服务器核心上运行？**  
@@ -56,7 +56,7 @@ Microsoft 建议你加固 Azure AD Connect 服务器来减小 IT 环境中的此
 
 `Register-AzureADConnectHealthADDSAgent -Credentials $cred`
 
-**问：Azure AD Connect 是否支持从两个域同步到一个 Azure AD？**  
+**问： Azure AD Connect 是否支持从两个域同步到 Azure AD？**  
 是的。支持此方案。 请参阅[多个域](how-to-connect-install-multiple-domains.md)。
  
 **问：是否可对 Azure AD Connect 中的同一个 Active Directory 域使用多个连接器？**  
@@ -78,21 +78,21 @@ Microsoft 建议你加固 Azure AD Connect 服务器来减小 IT 环境中的此
 
 为简单起见，我们建议安装 Azure AD Connect 的用户是 SQL 中的系统管理员。 但是，在最新的版本中，现在也可以根据[使用 SQL 委派的管理员权限安装 Azure AD Connect](how-to-connect-install-sql-delegation.md) 中所述，使用委派的 SQL 管理员。
 
-**问：此字段有哪些最佳实践？**  
+**问：现场的一些最佳做法是什么？**  
 
-下面是一个信息性文档, 其中提供了工程、支持和我们的顾问多年开发的一些最佳实践。  这会显示在可以快速引用的项目符号列表中。  虽然此列表会尝试全面, 但可能还有其他一些可能尚未在列表中进行此操作的最佳实践。
+下面是一个信息性文档，其中提供了工程、支持和我们的顾问多年开发的一些最佳实践。  这会显示在可以快速引用的项目符号列表中。  虽然此列表会尝试全面，但可能还有其他一些可能尚未在列表中进行此操作的最佳实践。
 
-- 如果使用完整 SQL, 则它应保留在本地与远程
+- 如果使用完整 SQL，则它应保留在本地与远程
     - 更少跃点
     - 更易于进行故障排除
     - 复杂性较低
     - 需要为 SQL 指定资源并允许 Azure AD Connect 和操作系统的开销
-- 绕过代理如果可能, 如果你无法绕过代理, 则需要确保超时值大于5分钟。
-- 如果需要代理, 则必须将代理添加到 machine.config 文件
-- 请注意本地 SQL 作业和维护及其对 Azure AD Connect 的影响, 尤其是重新编制索引
+- 绕过代理如果可能，如果你无法绕过代理，则需要确保超时值大于5分钟。
+- 如果需要代理，则必须将代理添加到 machine.config 文件
+- 请注意本地 SQL 作业和维护及其对 Azure AD Connect 的影响，尤其是重新编制索引
 - 确保不能在外部解析 DNS
-- 无论你使用的是物理服务器还是虚拟服务器, 请确保[服务器规范](how-to-connect-install-prerequisites.md#hardware-requirements-for-azure-ad-connect)按建议
-- 如果你使用的是需要专用资源的虚拟服务器, 请确保
+- 无论你使用的是物理服务器还是虚拟服务器，请确保[服务器规范](how-to-connect-install-prerequisites.md#hardware-requirements-for-azure-ad-connect)按建议
+- 如果你使用的是需要专用资源的虚拟服务器，请确保
 - 确保磁盘和磁盘配置符合 SQL Server 的最佳实践
 - 安装和配置用于监视的 Azure AD Connect Health
 - 使用内置 Azure AD Connect 的删除阈值。
@@ -102,28 +102,28 @@ Microsoft 建议你加固 Azure AD Connect 服务器来减小 IT 环境中的此
     - 备份同步规则
     - 备份服务器配置
     - 备份 SQL 数据库
-- 确保在没有 SQL VSS 编写器的情况下, 没有任何第三方备份代理在备份 SQL (在具有第三方快照的虚拟服务器中常见)
+- 确保在没有 SQL VSS 编写器的情况下，没有任何第三方备份代理在备份 SQL （在具有第三方快照的虚拟服务器中常见）
 - 限制在增加复杂性时使用的自定义同步规则数量
 - 将 Azure AD Connect 服务器视为第0层服务器
-- Leery 修改云同步规则, 而无需充分了解影响和正确的业务驱动因素
-- 请确保打开正确的 URL 和防火墙端口, 以便支持 Azure AD Connect 和 Azure AD Connect Health
+- Leery 修改云同步规则，而无需充分了解影响和正确的业务驱动因素
+- 请确保打开正确的 URL 和防火墙端口，以便支持 Azure AD Connect 和 Azure AD Connect Health
 - 利用云筛选属性来排查和阻止虚拟对象
-- 使用过渡服务器时, 请确保使用的是 Azure AD Connect 的配置文档服务器, 以便在服务器之间保持一致性
-- 过渡服务器应位于不同的数据中心 (物理位置)
-- 过渡服务器并不是一种高可用性解决方案, 但可以有多个过渡服务器
+- 使用过渡服务器时，请确保使用的是 Azure AD Connect 的配置文档服务器，以便在服务器之间保持一致性
+- 过渡服务器应位于不同的数据中心（物理位置）
+- 过渡服务器并不是一种高可用性解决方案，但可以有多个过渡服务器
 - 引入 "延迟" 过渡服务器可在出现错误的情况下减少某些可能的停机时间
 - 首先测试并验证过渡服务器上的所有升级
 - 在切换到过渡之前始终验证导出 serverLeverage 过渡服务器进行完全导入和完全同步以降低业务影响
 - 尽可能保持 Azure AD Connect 服务器之间的版本一致性 
 
-**问：能否允许 Azure AD Connect 在工作组计算机上创建 Azure AD 连接器帐户？**
-否。  为了允许 Azure AD Connect 自动创建 Azure AD 连接器帐户, 计算机必须已加入域。  
+**问：我是否可以允许 Azure AD Connect 在工作组计算机上创建 Azure AD 连接器帐户？**
+不能。  为了允许 Azure AD Connect 自动创建 Azure AD 连接器帐户，计算机必须已加入域。  
 
 ## <a name="network"></a>网络
-**问：我的防火墙、网络设备或其他软硬件会限制在网络上打开连接的时间。使用 Azure AD Connect 时，客户端超时阈值应设为多少？**  
-所有网络软件、物理设备或其他软硬件限制最长连接时间的阈值应该至少为 5 分钟 (300 秒)，使装有 Azure AD Connect 客户端的服务器能够与 Azure Active Directory 连接。 此项建议同样适用于以前发布的 Microsoft 标识同步工具。
+**问：我的防火墙、网络设备或其他设备限制了连接在网络上保持打开状态的时间。使用 Azure AD Connect 时，我的客户端的超时阈值是多少？**  
+所有网络软件、物理设备或其他软硬件限制最长连接时间的阈值应该至少为 5 分钟 (300 秒)，使装有 Azure AD Connect 客户端的服务器能够与 Azure Active Directory 连接。 此项建议同样适用于以前发布的所有 Microsoft 标识同步工具。
 
-**问：是否支持单一标签域 (SLD)？**  
+**是否支持单一标签域 (SLD)？**  
 虽然我们强烈建议不要使用此网络配置（[请参阅相关文章](https://support.microsoft.com/help/2269810/microsoft-support-for-single-label-domains)），但只要单级域的网络配置正常发挥作用，将 Azure AD Connect 同步与单标签域配合使用就是受支持的。
 
 **问：是否支持具有非连续 AD 域的林？**  
@@ -135,28 +135,28 @@ Azure AD Connect 不支持 NetBIOS 名称包含点号 (.) 的本地林或域。
 **问：是否支持纯 IPv6 环境？**  
 Azure AD Connect 不支持纯 IPv6 环境。
 
-**问：我有一个多林环境，两个林之间的网络使用 NAT（网络地址转换）。是否支持在这两个林之间使用 Azure AD Connect？**</br>
+**问：具有多林环境，而两个林之间的网络使用 NAT （网络地址转换）。是否在受支持的两个林之间使用 Azure AD Connect？**</br>
 否，不支持通过 NAT 使用 Azure AD Connect。 
 
-## <a name="federation"></a>联合身份验证
+## <a name="federation"></a>联合
 **问：如果我收到一封电子邮件，要求我续订 Office 365 证书，我该怎么办？**  
 有关续订证书的指导，请参阅[续订证书](how-to-connect-fed-o365-certs.md)。
 
-**问：我为 Office 365 信赖方设置了“自动更新信赖方”。当我的令牌签名证书自动滚动更新时，我是否需要采取任何措施？**  
+**问：我为 Office 365 信赖方设置了 "自动更新信赖方"。当我的令牌签名证书自动滚动时，我是否需要采取任何措施？**  
 请参考[续订证书](how-to-connect-fed-o365-certs.md)一文中所述的指导。
 
 ## <a name="environment"></a>环境
 **问：安装 Azure AD Connect 之后，是否支持重命名服务器？**  
-否。 更改服务器名称将导致同步引擎无法连接到 SQL 数据库实例，并且服务将无法启动。
+不能。 更改服务器名称将导致同步引擎无法连接到 SQL 数据库实例，并且服务将无法启动。
 
-**问：已启用 FIPS 的计算机是否支持下一代加密 (NGC) 同步规则？**  
-否。  不支持。
+**问：是否在启用 FIPS 的计算机上支持下一代加密（NGC）同步规则？**  
+不能。  不支持。
 
-**问：如果我禁用了同步的设备 (例如:HAADJ) 在 Azure 门户中, 为什么重新启用它？**<br>
-同步的设备可能会在本地创作或掌控。 如果在本地启用了同步的设备, 即使管理员之前禁用了同步设备, 也可能会在 Azure 门户中重新启用它。 若要禁用已同步的设备, 请使用本地 Active Directory 禁用计算机帐户。
+**问：如果我在 Azure 门户中禁用了同步的设备（例如： HAADJ），为什么会重新启用它？**<br>
+可以在本地创作或掌控同步设备。 如果在本地启用了同步设备，即使管理员之前禁用了该设备，也可能会在 Azure 门户中重新启用它。 若要禁用同步设备，请使用本地 Active Directory 禁用计算机帐户。
 
-**问：如果在 Office 365 或 Azure AD 门户中阻止用户登录到已同步的用户, 则在重新登录时, 为什么会取消阻止用户登录？**<br>
-同步的用户可能会在本地创作或掌控。 如果帐户在本地启用, 则它可以取消阻止管理员所放置的登录块。
+**问：如果我在 Office 365 或 Azure AD 门户中阻止用户登录到已同步的用户，该用户在重新登录时不会阻止用户登录？**<br>
+可以在本地创作或掌控同步用户。 如果在本地启用了该帐户，则可以取消管理员放置的登录阻止。
 
 ## <a name="identity-data"></a>标识数据
 **问：Azure AD 中的 userPrincipalName (UPN) 属性为何与本地 UPN 不匹配？**  
@@ -178,16 +178,16 @@ Azure AD Connect 不支持纯 IPv6 环境。
 仅支持客户使用本站点上介绍的 cmdlet，而不支持使用 Azure AD Connect 中的其他 PowerShell cmdlet。
 
 **问：是否可以使用 Synchronization Service Manager 中的“服务器导出/服务器导入”选项在服务器之间移动配置？**  
-否。 此选项不会检索所有配置设置，因此不应使用。 请改用向导在第二台服务器上创建基础配置，并使用同步规则编辑器生成 PowerShell 脚本，如此即可在服务器之间移动任何自定义规则。 有关详细信息，请参阅[交叉迁移](how-to-upgrade-previous-version.md#swing-migration)。
+不能。 此选项不会检索所有配置设置，因此不应使用。 请改用向导在第二台服务器上创建基础配置，并使用同步规则编辑器生成 PowerShell 脚本，如此即可在服务器之间移动任何自定义规则。 有关详细信息，请参阅[交叉迁移](how-to-upgrade-previous-version.md#swing-migration)。
 
 **问：是否可以为 Azure 登录页缓存密码，这是否会因为包含一个具有 *autocomplete = "false"* 属性的密码输入元素而阻止此缓存？**  
 目前不支持修改“密码”字段的 HTML 属性，包括 autocomplete 标记。 我们目前正在开发一种功能，它将允许使用自定义 JavaScript 向“密码”字段添加任何属性。
 
-**问：Azure 登录页会显示之前已成功登录的用户的用户名。是否可以关闭此行为？**  
+**问： Azure 登录页显示已成功登录的用户的用户名。此行为是否可以关闭？**  
 目前不支持修改“密码”输入字段的 HTML 属性，包括 autocomplete 标记。 我们目前正在开发一种功能，它将允许使用自定义 JavaScript 向“密码”字段添加任何属性。
 
 **问：是否有方法来阻止并发会话？**  
-否。
+不能。
 
 ## <a name="auto-upgrade"></a>自动升级
 
@@ -198,7 +198,7 @@ Azure AD Connect 不支持纯 IPv6 环境。
 
 根据环境大小，此过程可能需要数小时才能完成。 在升级过程中，不会在 Windows Server Active Directory 和 Azure AD 之间进行同步。
 
-**问：我收到一封电子邮件，指出我的自动升级失效，需安装新版本。为什么我需要这样做？**  
+**问：我收到了一封电子邮件，告诉我自动升级不再工作，需要安装新版本。为什么需要这样做？**  
 我们去年发布了一个 Azure AD Connect 版本，该版本在特定情况下会禁用服务器上的自动升级功能。 Azure AD Connect 1.1.750.0 版中已修复此问题。 如果你受此问题的影响，可通过以下方式进行缓解：运行一个 PowerShell 脚本来修复此问题，或者手动升级到最新版本的 Azure AD Connect。 
 
 若要运行该 PowerShell 脚本，请[下载该脚本](https://aka.ms/repairaadconnect)，并在 PowerShell 管理窗口中的 Azure AD Connect 服务器上运行该脚本。 若要了解如何运行该脚本，请[观看此简短视频](https://aka.ms/repairaadcau)。
@@ -208,39 +208,39 @@ Azure AD Connect 不支持纯 IPv6 环境。
 -  如果当前版本低于 1.1.750.0，请[下载并升级到最新版本](https://www.microsoft.com/download/details.aspx?id=47594)。
 - 如果 Azure AD Connect 版本为 1.1.750.0 或更高，则不需要采取其他措施。 所用的版本已包含自动升级修复程序。 
 
-**问：我收到一封电子邮件，要求我升级到最新版本，以便重新启用自动升级。我使用的版本是 1.1.654.0，需要升级吗？**  
+**问：我收到了一封电子邮件，告诉我升级到最新版本以重新启用自动升级。我使用的是版本1.1.654.0。是否需要升级？**  
 需要。需要升级到 1.1.750.0 或更高版本才能重新启用自动升级。 [下载并升级到最新版本](https://www.microsoft.com/download/details.aspx?id=47594)。
 
-**问：我收到一封电子邮件，要求我升级到最新版本，以便重新启用自动升级。如果我已经通过 PowerShell 启用了自动升级，是否仍需安装最新版本？**  
+**问：我收到了一封电子邮件，告诉我升级到最新版本以重新启用自动升级。如果我使用 PowerShell 启用了自动升级，是否仍需要安装最新版本？**  
 是的，仍需要升级到 1.1.750.0 或更高版本。 通过 PowerShell 启用自动升级服务不会解决在 1.1.750.0 之前的版本中发现的自动升级问题。
 
-**问：我想要升级到更高版本，但不确定谁安装了 Azure AD Connect，而且我们没有用户名和密码。我们需要该凭据吗？**
+**问：我想要升级到较新版本，但不确定安装 Azure AD Connect 的用户，并且没有用户名和密码。是否需要这样做？**
 不需要知道最初用来升级 Azure AD Connect 的用户名和密码。 可以使用任何具有全局管理员角色的 Azure AD 帐户。
 
 **问：如何确定所用 Azure AD Connect 的版本？**  
-若要确定安装在服务器上的 Azure AD Connect 的具体版本，请转到“控制面板”，然后选择“程序” > “程序和功能”并找到已安装的 Microsoft Azure AD Connect 版本，如下所示：
+若要确定安装在服务器上的 Azure AD Connect 的具体版本，请转到“控制面板”，然后选择“程序” **“程序和功能”并找到已安装的 Microsoft Azure AD Connect 版本，如下所示：**  > 
 
 ![控制面板中的 Azure AD Connect 版本](./media/reference-connect-faq/faq1.png)
 
 **问：如何升级到最新版本的 Azure AD Connect？**  
 若要了解如何升级到最新版本，请参阅 [Azure AD Connect：从旧版升级到最新版本](how-to-upgrade-previous-version.md)。 
 
-**问：我们去年已升级到最新版本的 Azure AD Connect。是否需要再次升级？**  
+**问：我们已在去年 Azure AD Connect 升级到最新版本。是否需要再次升级？**  
 Azure AD Connect 团队会对该服务进行频繁的更新。 若要充分利用 Bug 修复、安全更新和新功能的优势，必须使用最新版本来保持服务器的最新状态。 如果启用自动升级，则会自动更新软件版本。 若要查找 Azure AD Connect 的版本发布历史记录，请参阅 [Azure AD Connect：版本发布历史记录](reference-connect-version-history.md)。
 
 **问：执行升级需要多长时间？对我的用户有什么影响？**  
 升级所需时间取决于租户大小。 对于大型组织而言，最好是在晚上或周末升级。 在升级期间不会发生同步活动。
 
-**问：我认为我升级到了 Azure AD Connect，但在 Office 门户中，仍然显示 DirSync。为什么会这样？**  
+**问：我相信升级到了 Azure AD Connect，但 Office 门户仍提到 DirSync。为什么要这样做呢？**  
 Office 团队会更新 Office 门户，使之反映当前的产品名称。 它不会反映所用的同步工具。
 
-**问：我的自动升级状态显示为“已暂停”。为什么是“已暂停”？我应该启用它吗？**  
+**问：我的自动升级状态显示为 "已挂起"。为什么暂停？是否应启用它？**  
 在以前的版本中存在一个 Bug，该 Bug 在特定情况下会将自动升级状态设置为“已暂停”。 手动启用它在技术上是可行的，但需要执行多个复杂的步骤。 最好是安装最新版本的 Azure AD Connect。
 
-**问：我的公司有严格的更改管理要求，而我希望控制它的推出时间，我能控制自动升级的启动时间吗？**  
+**问：我的公司拥有严格的更改管理要求，我想要控制何时推出。能否控制自动升级启动的时间？**  
 不能。目前没有此类功能。 我们正在评估是否在将来的版本中推出此功能。
 
-**问：如果自动升级失败，是否会通过电子邮件通知我？怎么才能知道升级成功？**  
+**问：如果自动升级失败，是否会收到一封电子邮件？我如何知道它已成功？**  
 你不会收到升级结果的通知。 我们正在评估是否在将来的版本中推出此功能。
 
 **问：你们是否会发布一个关于何时计划推出自动升级的时间线？**  
@@ -255,10 +255,10 @@ Office 团队会更新 Office 门户，使之反映当前的产品名称。 它�
 **问：如果自动升级失败而 Azure AD Connect 服务器无法启动，该怎么办？**  
 Azure AD Connect 服务偶尔会在升级以后无法启动。 在这种情况下，重新启动服务器通常就会解决问题。 如果 Azure AD Connect 服务仍然无法启动，请开具支持票证。 有关详细信息，请参阅[创建服务请求以联系 Office 365 支持部门](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/)。 
 
-**问：我不知道升级到新版 Azure AD Connect 后会有什么风险。你们能通过电话帮助我升级吗？**  
+**问：我不确定升级到较新版本的 Azure AD Connect 时的风险。您可以打电话帮我进行升级吗？**  
 如果在升级到新版 Azure AD Connect 时需要帮助，请参阅[创建服务请求以联系 Office 365 支持部门](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/)开具支持票证。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 **问：如何获取有关 Azure AD Connect 的帮助？**
 
 [搜索 Microsoft 知识库 (KB)](https://www.microsoft.com/en-us/search/result.aspx?q=azure+active+directory+connect)
@@ -273,4 +273,4 @@ Azure AD Connect 服务偶尔会在升级以后无法启动。 在这种情况�
 
 **问：为什么在同步步骤错误后出现事件6311和6401？**
 
-事件 6311-**服务器在执行回调时遇到意外错误**, 6401-**管理代理控制器遇到意外错误**-在同步步骤出错后总是会记录该错误。 若要解决这些错误, 需要清除同步步骤错误。  有关详细信息, 请参阅[在同步过程中排查错误](tshoot-connect-sync-errors.md)和[排查 Azure AD Connect 同步中的对象同步](tshoot-connect-objectsync.md)
+事件 6311 - **服务器在执行回叫时遇到意外错误**，而 6401 - **管理代理控制器遇到意外错误** - 始终在同步步骤错误之后记录。 若要解决这些错误，需要清除同步步骤错误。  有关详细信息，请参阅[对同步期间的错误进行故障排除](tshoot-connect-sync-errors.md)和[使用 Azure AD Connect 同步进行对象同步故障排除](tshoot-connect-objectsync.md)

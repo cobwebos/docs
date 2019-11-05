@@ -1,5 +1,5 @@
 ---
-title: 利用 Azure HDInsight IO 缓存（预览版） Apache Spark 工作负荷性能
+title: Apache Spark 性能-Azure HDInsight IO 缓存（预览版）
 description: 了解 Azure HDInsight IO 缓存以及如何将其用于提高 Apache Spark 性能。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,16 +7,16 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/29/2019
-ms.openlocfilehash: b60906df01f640877e90281812acf64082ffad01
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 3ef2def6329dc31eb1b175133b4525f87de9181c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162831"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494650"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>使用 Azure HDInsight IO 缓存提高 Apache Spark 工作负荷的性能
 
-IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spark 作业的性能。 IO 缓存也适用于可在 [Apache Spark](https://spark.apache.org/) 群集上运行的 [Apache TEZ](https://tez.apache.org/) 和 [Apache Hive](https://hive.apache.org/) 工作负载。 IO 缓存使用名为 RubiX 的开源缓存组件。 RubiX 是用于可从云存储系统访问数据的大数据分析引擎的本地磁盘缓存。 RubiX 在缓存系统中是唯一的，因为它使用固态硬盘 (SSD)，而不是保留操作内存以供缓存。 IO 缓存服务可在群集的每个工作节点上启动和管理 RubiX 元数据服务器。 它还可以配置群集的所有服务以便透明使用 RubiX 缓存。
+IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spark 作业的性能。 IO 缓存也适用于可在 [Apache Spark](https://tez.apache.org/) 群集上运行的 [Apache TEZ](https://hive.apache.org/) 和 [Apache Hive](https://spark.apache.org/) 工作负载。 IO 缓存使用名为 RubiX 的开源缓存组件。 RubiX 是用于可从云存储系统访问数据的大数据分析引擎的本地磁盘缓存。 RubiX 在缓存系统中是唯一的，因为它使用固态硬盘 (SSD)，而不是保留操作内存以供缓存。 IO 缓存服务可在群集的每个工作节点上启动和管理 RubiX 元数据服务器。 它还可以配置群集的所有服务以便透明使用 RubiX 缓存。
 
 大多数 SSD 提供超过 1 GB/秒的带宽。 此带宽由操作系统内存中文件缓存补充，提供的带宽足以加载大数据计算处理引擎（如 Apache Spark）。 剩余的操作内存可供 Apache Spark 处理很大程度依赖于内存的任务（如数据重组）。 独占使用操作内存可让 Apache Spark 实现最佳资源使用情况。  
 

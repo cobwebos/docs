@@ -19,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1184d210f5b7ea25b9f73cbd70b5f960402126a1
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 3fca872d639ab5c2d4053656cdd3e68a59fdc1e6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803533"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473958"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>应用程序身份验证的证书凭据
 
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) 允许应用程序使用自己的凭据进行�
 | 参数 |  备注 |
 | --- | --- |
 | `aud` | 受众：应为 **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** |
-| `exp` | 到期日期：令牌的到期日期。 该时间表示为自 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 至令牌有效期到期的秒数。|
+| `exp` | 过期日期：令牌过期的日期。 该时间表示为自 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 至令牌失效时间的秒数。|
 | `iss` | 颁发者：应为 client_id（客户端服务的应用程序 ID） |
 | `jti` | GUID：JWT ID |
 | `nbf` | 生效时间：此日期之前不能使用令牌。 该时间表示为自 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 至令牌颁发时间的秒数。 |
@@ -100,9 +100,9 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 在客户端应用程序的 Azure 应用注册中：
 1. 选择“证书和机密”。 
-2. 单击 "上**传证书**"，然后选择要上传的证书文件。
+2. 单击“上传证书”，然后选择要上传的证书文件。
 3. 单击“添加”。
-  上载证书后，将显示指纹、开始日期和过期值。 
+  上传证书后，将显示指纹、开始日期和到期日期值。 
 
 ### <a name="updating-the-application-manifest"></a>更新应用程序清单
 
@@ -114,7 +114,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 还需要提供 GUID 来标识应用程序清单中的密钥 (`$keyId`)。
 
 在客户端应用程序的 Azure 应用注册中：
-1. 选择 "**清单**" 打开应用程序清单。
+1. 选择“清单”以打开应用程序清单。
 2. 使用以下架构将 *keyCredentials* 属性替换为新的证书信息。
 
    ```
@@ -134,4 +134,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
    
 ## <a name="code-sample"></a>代码示例
 
-[在守护程序应用中使用证书向 Azure AD 进行身份验证](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)中的代码示例演示了应用程序如何使用自己的凭据进行身份验证。 它还演示了如何使用 `New-SelfSignedCertificate` Powershell命令[创建自签名证书](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate)。 还可以利用和使用[应用创建脚本](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md)执行创建证书、计算指纹等操作。
+> [!NOTE]
+> 必须通过使用证书的哈希来计算 X5T 标头，并将其转换为 base64 字符串。 C#其中类似于： `System.Convert.ToBase64String(cert.GetCertHash());`
+
+[在守护程序应用中使用证书向 Azure AD 进行身份验证](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)中的代码示例演示了应用程序如何使用自己的凭据进行身份验证。 它还演示了如何使用 [ Powershell命令](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate)创建自签名证书`New-SelfSignedCertificate`。 还可以利用和使用[应用创建脚本](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md)执行创建证书、计算指纹等操作。

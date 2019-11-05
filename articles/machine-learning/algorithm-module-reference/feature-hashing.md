@@ -1,7 +1,7 @@
 ---
 title: 功能哈希模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的 "特征哈希" 模块来对文本数据进行特征。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的 "特征哈希" 模块来对文本数据进行特征。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: bbcab6e94783583c7e13ae482d68fd013ba4c91d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 48960eae4941bb744a937639e1308e1b5f6aaf9f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170877"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497837"
 ---
 # <a name="feature-hashing-module-reference"></a>功能哈希模块引用
 
-本文介绍 Azure 机器学习服务的可视界面（预览）的模块。
+本文介绍 Azure 机器学习设计器（预览版）中包含的模块。
 
 使用 "特征哈希" 模块将英语文本转换为一组整数特征。 然后，你可以将此哈希功能集传递到机器学习算法，以训练文本分析模型。
 
@@ -53,7 +53,7 @@ ms.locfileid: "71170877"
 |通讯|3|
 |I|3|
 |帐簿|1|
-|为|1|
+|尝试|1|
 
 生成字典后，"特征哈希" 模块将字典字词转换为哈希值。 然后，它计算每个事例中是否使用了某个功能。 对于每行文本数据，模块将输出一组列，每个哈希特征对应一列。
 
@@ -73,7 +73,7 @@ ms.locfileid: "71170877"
 
 ## <a name="configure-the-feature-hashing-module"></a>配置特征哈希模块
 
-1.  将特征哈希模块添加到视觉对象界面中的试验。
+1.  在设计器中将特征哈希模块添加到管道。
 
 1. 连接包含要分析的文本的数据集。
 
@@ -94,7 +94,7 @@ ms.locfileid: "71170877"
 
     例如，如果输入3，则将创建获得单元语法、二元语法和 trigrams。
 
-1. 运行试验。
+1. 运行管道。
 
 ## <a name="results"></a>结果
 
@@ -127,8 +127,8 @@ ms.locfileid: "71170877"
     * 删除标点和特殊字符
     * 词干  
 
-适用于任何解决方案的一组最佳的预处理方法取决于域、词汇和业务需求。 试验您的数据以查看哪些文本处理方法最有效。
+适用于任何解决方案的一组最佳的预处理方法取决于域、词汇和业务需求。 包含数据的管道，用于查看哪些文本处理方法最有效。
 
 ## <a name="next-steps"></a>后续步骤
             
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md) 

@@ -1,30 +1,30 @@
 ---
 title: 决策林回归：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的 "决策林回归" 模块根据决策树的系综创建回归模型。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的 "决策林回归" 模块根据决策树的系综创建回归模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 7b89d08f4621ecde77a60510b05d96decff0cfde
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: d930a6d856c6608e7792ce8ef3204b39aba0028a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693173"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497969"
 ---
 # <a name="decision-forest-regression-module"></a>决策林回归模块
 
-本文介绍了 Azure 机器学习服务的可视界面（预览）的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块可以基于决策树的系综创建回归模型。
 
-配置该模型后，必须使用标记的数据集和[训练模型](./train-model.md)模块来训练该模型。  然后，可以使用训练后的模型进行预测。 
+配置该模型后，必须使用标记的数据集和[训练模型](./train-model.md)模块来训练该模型。 然后，可以使用训练后的模型进行预测。 
 
-## <a name="how-it-works"></a>如何运作
+## <a name="how-it-works"></a>工作原理
 
 决策树是非参数模型，可对每个实例执行一系列简单测试，遍历二进制树数据结构，直到到达叶节点（决策）。
 
@@ -42,11 +42,11 @@ ms.locfileid: "72693173"
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>如何配置决策林回归模型
 
-1. 将 "**决策林回归**" 模块添加到管道。 可以在接口中的 "**机器学习**"、"**初始化模型**" 和 "**回归**" 下找到该模块。
+1. 将 "**决策林回归**" 模块添加到管道。 可以在设计器的 "**机器学习**"、"**初始化模型**" 和 "**回归**" 中找到该模块。
 
 2. 打开 "模块属性"，为 "重新**采样" 方法**选择用于创建单个树的方法。  可以从**装袋**或**复制**中进行选择。
 
-    - **装袋**：装袋也称为*启动聚合*。 回归决策林中的每个树都通过预测方式输出高斯分布。 聚合将查找其前两分钟与由单个树返回的所有 Gaussians 组合在一起的 Gaussians 混合时间的高斯。
+    - **装袋**：装袋也称为*启动聚合*。 回归决策林中的每个树都通过预测方式输出高斯分布。 此聚合用于查找其前两分钟与通过组合各个树返回的所有分布的时间相匹配的高斯分布的时刻。
 
          有关详细信息，请参阅用于[启动聚合](https://wikipedia.org/wiki/Bootstrap_aggregating)的维基百科条目。
 
@@ -96,4 +96,4 @@ ms.locfileid: "72693173"
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

@@ -16,16 +16,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: eca3a969d56d9b016afbf2d104aaf951cdbf6360
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: edba2a18e3b086a132f0bba7622df5df389671c3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372403"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489190"
 ---
-# <a name="hunt-for-threats-with-in-azure-sentinel"></a>利用 Azure Sentinel 寻找威胁
-
-
+# <a name="hunt-for-threats-with-azure-sentinel"></a>利用 Azure Sentinel 寻找威胁
 
 如果你是一位调查人员，想要主动应对安全威胁，Azure 可以通过强大的搜索和查询工具来寻找组织数据源的安全威胁。 但您的系统和安全设备生成的数据山上很难分析和筛选成有意义的事件。 为了帮助安全分析师主动了解你的安全应用程序未检测到的新异常，Azure Sentinel 的内置搜索查询可指导你请求正确的问题，以便在你的网络上发现已有的数据中的问题。 
 
@@ -48,7 +46,7 @@ ms.locfileid: "72372403"
 ## <a name="get-started-hunting"></a>开始搜寻
 
 1. 在 Azure Sentinel 门户中，单击 "**搜寻**"。
-  @no__t 0Azure Sentinel 开始搜寻 @ no__t-1
+  ![Azure Sentinel 开始搜寻](media/tutorial-hunting/hunting-start.png)
 
 2. 打开**搜寻**页面时，所有搜寻查询都显示在一个表中。 此表列出了由 Microsoft 的安全分析师团队编写的所有查询，以及你创建或修改的任何其他查询。 每个查询都提供了它 hunts 的内容以及它在其上运行的数据类型的说明。 这些模板按其各种策略分组，右侧的图标将对威胁类型进行分类，例如，初始访问、暂留和渗透。 您可以使用任意字段筛选这些搜寻查询模板。 可以将任何查询保存到收藏夹。 通过将查询保存到收藏夹，每次访问该**搜寻**页面时都会自动运行该查询。 你可以创建自己的搜寻查询或克隆并自定义现有的搜寻查询模板。 
  
@@ -78,7 +76,7 @@ Azure Sentinel 中的搜寻基于 Kusto 查询语言。 有关查询语言和支
 
 ## <a name="sample-query"></a>示例查询
 
-典型查询以表名称开头，后面是由 \| 分隔的一系列运算符。
+典型查询以表名称开头，后面是由 \|分隔的一系列运算符。
 
 在上面的示例中，从表名称 SecurityEvent 开始，并根据需要添加了管道元素。
 

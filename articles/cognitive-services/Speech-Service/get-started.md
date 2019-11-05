@@ -1,7 +1,7 @@
 ---
 title: 免费试用语音服务
 titleSuffix: Azure Cognitive Services
-description: 语音服务入门简单且经济实惠。 可利用 30 天免费试用了解此服务的功能并确定它能否满足应用程序需求。
+description: 以简单、经济的方式开始使用语音服务。 可利用 30 天免费试用了解此服务的功能并确定它能否满足应用程序需求。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: eb4478a435fbfc899055a60e13b318be771652f7
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 46ada91060aa095b7c041ff75abb6256f3d05853
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527579"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464692"
 ---
 # <a name="try-speech-services-for-free"></a>免费试用语音服务
 
@@ -89,8 +89,8 @@ ms.locfileid: "72527579"
 
    * 新资源的名称。 名称有助于区分同一服务的多个订阅。
    * 选择新资源关联的 Azure 订阅，以确定计费方式。
-   * 选择将使用该资源的[区域](regions.md)。
-   * 选择免费或付费定价层。 选择 "**查看完整的定价详细信息**"，获取有关每个层的定价和使用配额的完整信息。
+   * 选择将使用资源的[区域](regions.md)。
+   * 选择免费或付费定价层。 选择“查看全部定价详细信息”，获取每个层的定价和用量配额的完整信息。
    * 为此“语音”订阅创建新的资源组或将订阅分配到现有资源组。 资源组有助于使多种 Azure 订阅保持有序状态。
    * 为了以后可便捷访问订阅，请选中“固定到仪表板”复选框。
    * 选择“创建”。
@@ -101,7 +101,7 @@ ms.locfileid: "72527579"
 
      ![语音 API-部署资源](media/index/speech-api-deploy-resource.png)
 
-1. 在 "**快速**启动" 下，选择 "步骤 1" 下的 "**密钥**" 链接以显示你的订阅密钥。 每个订阅有两个密钥；可在应用程序中使用任意一个密钥。 选择每个密钥旁的按钮，可将其复制到剪贴板以粘贴到代码中。
+1. 在“快速入门”下，选择步骤 1 中的“密钥”链接，以显示订阅密钥。 每个订阅有两个密钥；可在应用程序中使用任意一个密钥。 选择每个密钥旁的按钮，可将其复制到剪贴板以粘贴到代码中。
 
 > [!NOTE]
 > 可在一个或多个区域中创建数量不受限的标准层订阅。 但是，只能创建一个免费层订阅。 在免费层上进行的模型部署如果连续 7 天处于未使用状态，则会被系统自动停用。
@@ -123,5 +123,5 @@ ms.locfileid: "72527579"
 完成我们的 10 分钟快速入门之一，或查看我们的 SDK 示例：
 
 > [!div class="nextstepaction"]
-> [快速入门：在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)
+> [快速入门：在 C# 中识别语音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
 > [语音 SDK 示例](speech-sdk.md#get-the-samples)

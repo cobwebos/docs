@@ -11,108 +11,76 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 4a1bc9ae7ccf48b9dc8b47b57ea43b9259786d01
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 6f262752a50b58eae8ffbea81b8e7fc4d8c65b98
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677681"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464982"
 ---
 # <a name="email-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的电子邮件预生成实体
 电子邮件提取包括陈述中的整个电子邮件地址。 此实体已定型，因此不需要将包含电子邮件的陈述示例添加到应用程序意向中。 只有 `en-us` 语言区域中支持电子邮件实体。 
 
 ## <a name="resolution-for-prebuilt-email"></a>预构建电子邮件解析
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+为查询返回以下实体对象：
 
-以下示例显示了 **builtin.email** 实体的解析。
+`please send the information to patti@contoso.com`
 
-```json
-{
-  "query": "please send the information to patti@contoso.com",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.811592042
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.811592042
-    }
-  ],
-  "entities": [
-    {
-      "entity": "patti@contoso.com",
-      "type": "builtin.email",
-      "startIndex": 31,
-      "endIndex": 55,
-      "resolution": {
-        "value": "patti@contoso.com"
-      }
-    }
-  ]
-}
-```
-
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-responsetabv3"></a>[V3 响应](#tab/V3)
 
 以下 JSON 的 `verbose` 参数设置为 `false`：
 
 ```json
-{
-    "query": "please send the information to patti@contoso.com",
-    "prediction": {
-        "normalizedQuery": "please send the information to patti@contoso.com",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.5023781
-            }
-        },
-        "entities": {
-            "email": [
-                "patti@contoso.com"
-            ]
-        }
-    }
+"entities": {
+    "email": [
+        "patti@contoso.com"
+    ]
 }
 ```
-
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 详细响应](#tab/V3-verbose)
 
 以下 JSON 的 `verbose` 参数设置为 `true`：
 
 ```json
-{
-    "query": "please send the information to patti@contoso.com",
-    "prediction": {
-        "normalizedQuery": "please send the information to patti@contoso.com",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.5023781
-            }
-        },
-        "entities": {
-            "email": [
-                "patti@contoso.com"
-            ],
-            "$instance": {
-                "email": [
-                    {
-                        "type": "builtin.email",
-                        "text": "patti@contoso.com",
-                        "startIndex": 31,
-                        "length": 25,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
+"entities": {
+    "email": [
+        "patti@contoso.com"
+    ],
+    "$instance": {
+        "email": [
+            {
+                "type": "builtin.email",
+                "text": "patti@contoso.com",
+                "startIndex": 31,
+                "length": 17,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
 ```
+#### <a name="v2-responsetabv2"></a>[V2 响应](#tab/V2)
 
+以下示例显示了 **builtin.email** 实体的解析。
+
+```json
+"entities": [
+    {
+        "entity": "patti@contoso.com",
+        "type": "builtin.email",
+        "startIndex": 31,
+        "endIndex": 55,
+        "resolution": {
+        "value": "patti@contoso.com"
+        }
+    }
+]
+```
 * * * 
 
 ## <a name="next-steps"></a>后续步骤

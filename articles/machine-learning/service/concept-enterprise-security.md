@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 08/07/2019
-ms.openlocfilehash: 309cef6ec058d8192bc7a6341b49a59c0000a305
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 11/04/2019
+ms.openlocfilehash: e834c55ec35195ff627176603c7611abbf6adf1c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035559"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497512"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
 
@@ -31,7 +31,7 @@ ms.locfileid: "71035559"
 1. 客户端将令牌提供给 Azure 资源管理器和所有 Azure 机器学习。
 1. 机器学习服务向用户计算目标（例如机器学习计算）提供机器学习服务标记。 在运行完成后，用户计算目标使用此标记回拨到机器学习服务。 范围限制为工作区。
 
-[![Azure 机器学习中的身份验证](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
+[Azure 机器学习中的 ![身份验证](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
 
 ### <a name="authentication-for-web-service-deployment"></a>Web 服务部署的身份验证
 
@@ -39,7 +39,7 @@ ms.locfileid: "71035559"
 
 |身份验证方法|Azure 容器实例|AKS|
 |---|---|---|
-|Key|默认情况下禁用| 默认情况下启用|
+|键|默认情况下禁用| 默认已启用|
 |令牌| 不可用| 默认情况下禁用 |
 
 #### <a name="authentication-with-keys"></a>密钥身份验证
@@ -49,9 +49,9 @@ ms.locfileid: "71035559"
 * 部署到 Azure Kubernetes Service （AKS）时，默认情况下会启用身份验证。
 * 在部署到 Azure 容器实例时，默认情况下禁用身份验证。
 
-若要启用密钥身份验证， `auth_enabled`请在创建或更新部署时使用参数。
+若要启用密钥身份验证，请在创建或更新部署时使用 `auth_enabled` 参数。
 
-如果启用密钥身份验证，则可以使用`get_keys`方法检索主要和辅助身份验证密钥：
+如果启用密钥身份验证，则可以使用 `get_keys` 方法检索主要和辅助身份验证密钥：
 
 ```python
 primary, secondary = service.get_keys()
@@ -68,9 +68,9 @@ print(primary)
 * 部署到 Azure Kubernetes 服务时，令牌身份验证默认情况下处于禁用状态。
 * 当你部署到 Azure 容器实例时，令牌身份验证不受支持。
 
-若要控制令牌身份验证， `token_auth_enabled`请在创建或更新部署时使用参数。
+若要控制令牌身份验证，请在创建或更新部署时使用 `token_auth_enabled` 参数。
 
-如果启用了令牌身份验证，则可以使用`get_token`方法检索 JSON Web 令牌（JWT），并使用该令牌的过期时间：
+如果启用了令牌身份验证，则可以使用 `get_token` 方法检索 JSON Web 令牌（JWT）和令牌的过期时间：
 
 ```python
 token, refresh_by = service.get_token()
@@ -78,7 +78,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> 需要在令牌`refresh_by`时间之后请求新令牌。
+> 需要在令牌的 `refresh_by` 时间之后请求新令牌。
 >
 > 强烈建议在 Azure Kubernetes Service 群集所在的同一区域中创建 Azure 机器学习工作区。 
 >
@@ -86,20 +86,21 @@ print(token)
 >
 > 此外，群集区域与工作区区域之间的距离越大，提取令牌所需的时间就越长。
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>授权
 
 你可以创建多个工作区，并且每个工作区可由多个用户共享。 共享工作区时，可以通过将这些角色分配给用户，来控制对工作区的访问权限：
 
 * 所有者
 * 参与者
-* 读者
+* 读取器
 
 下表列出了一些主要 Azure 机器学习操作和可执行这些操作的角色：
 
-| Azure 机器学习操作 | 所有者 | 参与者 | 读者 |
+| Azure 机器学习操作 | 所有者 | 参与者 | 读取器 |
 | ---- |:----:|:----:|:----:|
 | 创建工作区 | ✓ | ✓ | |
 | 共享工作区 | ✓ | |  |
+| 将工作区升级到 Enterprise edition | ✓ | |
 | 创建计算目标 | ✓ | ✓ | |
 | 附加计算目标 | ✓ | ✓ | |
 | 附加数据存储区 | ✓ | ✓ | |
@@ -121,7 +122,7 @@ print(token)
 
 有关托管标识的详细信息，请参阅[Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
 
-| Resource | 权限 |
+| 资源 | 权限 |
 | ----- | ----- |
 | 工作区 | 参与者 |
 | 存储帐户 | 存储 Blob 数据参与者 |
@@ -132,7 +133,7 @@ print(token)
 
 建议管理员不要向上表中提到的资源撤销对托管标识的访问权限。 你可以使用 "重新同步密钥" 操作还原访问权限。
 
-Azure 机器学习将在每个工作区区域的订阅`aml-`中`Microsoft-AzureML-Support-App-`创建一个其他应用程序（名称以或开头）和参与者级别的访问权限。 例如，如果你在美国东部有一个工作区，在同一订阅中的北欧中有另一个工作区，你会看到其中两个应用程序。 通过这些应用程序，Azure 机器学习可帮助你管理计算资源。
+Azure 机器学习将在每个工作区区域的订阅中创建一个其他应用程序（名称以 `aml-` 或 `Microsoft-AzureML-Support-App-`开头）和参与者级别的访问权限。 例如，如果你在美国东部有一个工作区，在同一订阅中的北欧中有另一个工作区，你会看到其中两个应用程序。 通过这些应用程序，Azure 机器学习可帮助你管理计算资源。
 
 ## <a name="network-security"></a>网络安全
 
@@ -189,11 +190,11 @@ Azure 机器学习使用与工作区关联的 Azure Key Vault 实例来存储各
 
 ## <a name="monitoring"></a>监视
 
-### <a name="metrics"></a>指标
+### <a name="metrics"></a>度量值
 
 你可以使用 Azure Monitor 度量值来查看和监视 Azure 机器学习工作区的指标。 在[Azure 门户](https://portal.azure.com)中，选择工作区，然后选择 "**度量值**"：
 
-[![显示工作区的示例指标的屏幕截图](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
+[显示工作区的示例指标 ![屏幕截图](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
 
 指标包括有关运行、部署和注册的信息。
 
@@ -205,7 +206,7 @@ Azure 机器学习使用与工作区关联的 Azure Key Vault 实例来存储各
 
 此屏幕截图显示工作区的活动日志：
 
-[![显示工作区的活动日志的屏幕截图](./media/enterprise-readiness/workspace-activity-log.png)](./media/enterprise-readiness/workspace-activity-log-expanded.png)
+[显示工作区活动日志 ![屏幕截图](./media/enterprise-readiness/workspace-activity-log.png)](./media/enterprise-readiness/workspace-activity-log-expanded.png)
 
 评分请求详细信息存储在 Application Insights 中。 创建工作区时，会在订阅中创建 Application Insights。 记录的信息包括 HTTPMethod、UserAgent、ComputeType、RequestUrl、StatusCode、RequestId 和 Duration 等字段。
 
@@ -268,7 +269,7 @@ Azure 机器学习使用与工作区关联的 Azure Key Vault 实例来存储各
 
 在下流关系图中，当定型计算目标将运行度量写入 Cosmos DB 数据库中的存储 Azure 机器学习时，将发生此步骤。 客户端可以调用 Azure 机器学习。 机器学习将从 Cosmos DB 数据库中转而取度量值，并将其返回给客户端。
 
-[![训练工作流](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
+[![定型工作流](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
 
 ### <a name="creating-web-services"></a>创建 web 服务
 

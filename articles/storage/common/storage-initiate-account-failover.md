@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d94f6297f27eb3ea130b443ccf94052d391eb46d
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2bac51a86c8acdba0f6c2f03e5a24ab2b133aa8e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985328"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521010"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>启动存储帐户故障转移（预览版）
 
@@ -27,24 +27,24 @@ ms.locfileid: "68985328"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 请先确保已按照以下步骤操作，然后才能对存储帐户执行帐户故障转移：
 
 - 注册帐户故障转移（预览版）。 若要了解如何注册，请参阅[关于预览版](storage-disaster-recovery-guidance.md#about-the-preview)。
-- 确保存储帐户已配置为，使用异地冗余存储 (GRS) 或读取访问权限异地冗余存储 (RA-GRS)。 若要详细了解异地冗余存储，请参阅[异地冗余存储 (GRS)：Azure 存储的跨区域复制](storage-redundancy-grs.md)。 
+- 确保存储帐户已配置为，使用异地冗余存储 (GRS) 或读取访问权限异地冗余存储 (RA-GRS)。 有关异地冗余存储的详细信息，请参阅[异地冗余存储（GRS）： Azure 存储的跨区域复制](storage-redundancy-grs.md)。 
 
 ## <a name="important-implications-of-account-failover"></a>帐户故障转移的重要影响
 
 在你为存储帐户启动帐户故障转移后，辅助终结点的 DNS 记录更新为，辅助终结点成为主终结点。 启动故障转移前，请务必先了解它对存储帐户的潜在影响。
 
-若要在启动故障转移前估计可能造成的数据丢失程度，请使用 `Get-AzStorageAccount` PowerShell cmdlet 检查“上次同步时间”属性，并添加 `-IncludeGeoReplicationStats` 参数。 然后，检查帐户的 `GeoReplicationStats` 属性。 
+若要在启动故障转移前估计可能造成的数据丢失程度，请使用  **PowerShell cmdlet 检查“上次同步时间”** `Get-AzStorageAccount`属性，并添加 `-IncludeGeoReplicationStats` 参数。 然后，检查帐户的 `GeoReplicationStats` 属性。 
 
 在故障转移完成后，存储帐户类型自动转换为新的主要区域中的本地冗余存储 (LRS)。 可以为帐户重新启用异地冗余存储 (GRS) 或读取访问权限异地冗余存储 (RA-GRS)。 请注意，从 LRS 转换为 GRS 或 RA-GRS 会产生额外费用。 有关其他信息，请参阅[带宽定价详细信息](https://azure.microsoft.com/pricing/details/bandwidth/)。 
 
 在你为存储帐户重新启用 GRS 后，Microsoft 便会开始将帐户中的数据复制到新的次要区域。 复制时间取决于要复制的数据量。  
 
-## <a name="azure-portal"></a>Azure 门户
+## <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
 若要通过 Azure 门户启动帐户故障转移，请按照以下步骤操作：
 
@@ -60,14 +60,14 @@ ms.locfileid: "68985328"
 
     ![显示帐户故障转移确认对话框的屏幕截图](media/storage-initiate-account-failover/portal-failover-confirm.png)
 
-## <a name="powershell"></a>PowerShell
+## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 必须先安装 6.0.1 预览版模块，才能使用 PowerShell 启动帐户故障转移。 若要安装此模块，请按照以下步骤操作：
 
 1. 卸载以前安装的所有 Azure PowerShell：
 
     - 使用“设置”下的“应用和功能”设置从 Windows 中删除以前安装的所有 Azure PowerShell。
-    - 从中 `%Program Files%\WindowsPowerShell\Modules`删除所有 Azure 模块。
+    - 从 `%Program Files%\WindowsPowerShell\Modules`中移除所有**Azure**模块。
 
 1. 确保已安装 PowerShellGet 最新版本。 打开 Windows PowerShell 窗口，然后运行以下命令以安装最新版本：
 
@@ -83,7 +83,7 @@ ms.locfileid: "68985328"
     Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. 安装支持帐户故障转移的 Azure 存储预览模块:
+1. 安装支持帐户故障转移的 Azure 存储预览模块：
 
     ```powershell
     Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force 
@@ -97,7 +97,7 @@ ms.locfileid: "68985328"
 Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name> 
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要使用 Azure CLI 启动帐户故障转移，请执行以下命令：
 
@@ -106,8 +106,10 @@ az storage account show \ --name accountName \ --expand geoReplicationStats
 az storage account failover \ --name accountName
 ```
 
+---
+
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 存储中的灾难恢复和帐户故障转移（预览版）](storage-disaster-recovery-guidance.md)
 - [使用 RA-GRS 设计高度可用的应用程序](storage-designing-ha-apps-with-ragrs.md)
-- [教程：生成使用 Blob 存储的高可用性应用程序](../blobs/storage-create-geo-redundant-storage.md) 
+- [教程：使用 Blob 存储构建高度可用的应用程序](../blobs/storage-create-geo-redundant-storage.md) 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: a45755ca13aed6a514b548674ef424c40238fa42
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 704b7c8a0c55bdcdd69bd8a44b0f9f44e8ddf457
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694735"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493827"
 ---
 # <a name="clip-values"></a>剪辑值
 
-本文介绍 Azure 机器学习可视界面的模块。
+本文介绍 Azure 机器学习设计器（预览）的模块。
 
 使用 "剪裁值" 模块来确定和（可选）将高于或低于指定阈值的数据值替换为平均值、常量或其他替代值。  
 
@@ -116,7 +116,7 @@ ms.locfileid: "72694735"
   
 |原始数据|替换为缺失|替换为阈值|  
 |-------------------|--------------------------|----------------------------|  
-|第<br /><br /> 2<br /><br /> 3<br /><br /> 4<br /><br /> 5<br /><br /> 6<br /><br /> 7<br /><br /> 8<br /><br /> 9<br /><br /> 10|TRUE<br /><br /> TRUE<br /><br /> 3、FALSE<br /><br /> 4、FALSE<br /><br /> 5、FALSE<br /><br /> 6、FALSE<br /><br /> 7、FALSE<br /><br /> 8，FALSE<br /><br /> 9，FALSE<br /><br /> TRUE|4，TRUE<br /><br /> 4，TRUE<br /><br /> 4，TRUE<br /><br /> 4，TRUE<br /><br /> 5、FALSE<br /><br /> 6、FALSE<br /><br /> 7、TRUE<br /><br /> 7、TRUE<br /><br /> 7、TRUE<br /><br /> 7、TRUE| 
+|1<br /><br /> 2<br /><br /> 3<br /><br /> 4<br /><br /> 5<br /><br /> 6<br /><br /> 7<br /><br /> 8<br /><br /> 9<br /><br /> 10|TRUE<br /><br /> TRUE<br /><br /> 3、FALSE<br /><br /> 4、FALSE<br /><br /> 5、FALSE<br /><br /> 6、FALSE<br /><br /> 7、FALSE<br /><br /> 8，FALSE<br /><br /> 9，FALSE<br /><br /> TRUE|4，TRUE<br /><br /> 4，TRUE<br /><br /> 4，TRUE<br /><br /> 4，TRUE<br /><br /> 5、FALSE<br /><br /> 6、FALSE<br /><br /> 7、TRUE<br /><br /> 7、TRUE<br /><br /> 7、TRUE<br /><br /> 7、TRUE| 
  
 ## <a name="next-steps"></a>后续步骤
 

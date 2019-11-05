@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bf0e679ab46752d71ba4f5ef2b014e0cb2b4c6ad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e9daf1be1f931bb13cda446cbb9d6e37acce3bcf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593997"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498111"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>使用 Azure 机器学习 Python 客户端库通过 Python 访问数据集
 Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Python 环境安全访问 Azure 机器学习数据集，以及允许在工作区创建并管理数据集。
@@ -27,8 +27,6 @@ Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Pyth
 * 访问和上传数据集，包括如何获取授权以从本地 Python 环境访问 Azure 机器学习数据集的说明
 * 从实验访问中间数据集
 * 使用 Python 客户端库枚举数据集、访问元数据、读取数据集内容、创建新的数据集和更新现有数据集
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="prerequisites"></a>先决条件
 已在以下环境下测试 Python 客户端库：
@@ -66,28 +64,28 @@ Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Pyth
 ### <a name="security"></a>数据访问的安全
 Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和授权令牌。 这些将提供工作区的完全访问，必须受到保护，如密码。
 
-出于安全原因，代码片段功能仅适用于其角色设置为工作区**所有者**的用户。 在“设置”  下的“用户”  页面上 Azure 机器学习工作室中会显示你的角色。
+出于安全原因，代码片段功能仅适用于其角色设置为工作区**所有者**的用户。 你的角色会显示在 "**用户**" 页上的 "**设置**" 中 Azure 机器学习 Studio （经典） "。
 
-![安全][security]
+![“安全”][security]
 
 如果角色未设置为**所有者**，可以请求重新邀请为所有者，或询问工作区所有者以提供代码片段。
 
 若要获取授权令牌，可以执行以下任一操作：
 
-* 向所有者请求令牌。 所有者可从 Studio 中其工作区“设置”页面中访问授权令牌。 从左窗格中选择“设置”  ，单击“授权令牌”  以查看主要和次要令牌。 尽管主要或次要授权都可在代码片段中使用，但是建议所有者只共享次要授权令牌。
+* 向所有者请求令牌。 所有者可从 Studio 中其工作区“设置”页面中访问授权令牌。 从左窗格中选择“设置”，单击“授权令牌”以查看主要和次要令牌。 尽管主要或次要授权都可在代码片段中使用，但是建议所有者只共享次要授权令牌。
 
 ![授权令牌](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* 请求升级为所有者角色。 要执行此操作，当前工作区所有者需要先你将从工作区中删除，然后重新邀请你作为所有者加入。
+* 请求升级为所有者角色。 要执行此操作，当前工作区所有者需要先将用户从工作区中删除，然后重新邀请用户作为所有者加入。
 
 开发人员获取工作区 ID 和授权令牌之后，能够使用代码片段访问工作区，无论其角色是什么。
 
-在“设置”  下的“授权令牌”  上托管授权令牌。 可以撤销它们，但是此过程会撤销上一个令牌的访问权限。
+在“设置”下的“授权令牌”上托管授权令牌。 可以撤销它们，但是此过程会撤销上一个令牌的访问权限。
 
 ### <a name="accessingDatasets"></a>从本地 Python 应用程序访问数据集
-1. 在机器学习工作室中，单击左侧导航栏中的“数据集”  。
-2. 选择想要访问的数据集。 可以从“我的数据集”  列表或“示例”  列表中选择任一数据集。
-3. 从底部工具栏，单击“生成数据访问代码”  。 如果数据格式与 Python 客户端库不兼容，则禁用此按钮。
+1. 在机器学习工作室中，单击左侧导航栏中的“数据集”。
+2. 选择想要访问的数据集。 可以从“我的数据集”列表或“示例”列表中选择任一数据集。
+3. 从底部工具栏，单击“生成数据访问代码”。 如果数据格式与 Python 客户端库不兼容，则禁用此按钮。
    
     ![数据集][datasets]
 4. 从显示的窗口中选择代码片段，并将其复制到剪贴板。
@@ -112,23 +110,23 @@ Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和�
 
 将鼠标悬停在模块输出节点上，可确定格式。 工具提示中同时会显示节点名。
 
-一些模块（如[拆分][split]模块）会输出名为 `Dataset` 的格式，而 Python 客户端库不支持此格式。
+某些模块（如[Split][split]模块）输出为名为 `Dataset`的格式，而 Python 客户端库不支持此格式。
 
 ![数据集格式][dataset-format]
 
-需要使用转换模块，如[转换为 CSV][convert-to-csv]，以将输出转换为受支持的格式。
+需要使用转换模块，如[转换为 CSV][convert-to-csv]，以将输出获取为支持的格式。
 
 ![GenericCSV 格式][csv-format]
 
 以下步骤介绍创建实验、运行实验并访问中间数据集的示例。
 
 1. 创建新实验。
-2. 插入“成年人口收入二元分类数据集”  模块。
+2. 插入“成年人口收入二元分类数据集”模块。
 3. 插入[拆分][split]模块，并将其输入连接到数据集模块输出。
-4. 插入[转换为 CSV][convert-to-csv] 模块，并将其输入连接到其中一个[拆分][split]模块输出。
+4. 插入 "[转换为 CSV][convert-to-csv] " 模块，并将其输入连接到[拆分][split]模块输出之一。
 5. 保存此实验并运行，并等待运行完成。
-6. 单击[转换为 CSV][convert-to-csv] 模块上的输出节点。
-7. 上下文菜单出现时，选择“生成数据访问代码”  。
+6. 单击 "[转换为 CSV][convert-to-csv] " 模块上的 "输出" 节点。
+7. 上下文菜单出现时，选择“生成数据访问代码”。
    
     ![上下文菜单][experiment]
 8. 从显示的窗口中选择代码片段，并将其复制到剪贴板。
@@ -193,7 +191,7 @@ Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和�
 请参阅 `SourceDataset` 类以获取关于可用元数据的详细信息。
 
 ### <a name="read-contents"></a>读取内容
-机器学习工作室提供的代码片段会自动将数据集下载并反序列化到 pandas DataFrame 对象。 通过 `to_dataframe` 方法完成此操作：
+机器学习 Studio （经典）提供的代码段会自动下载数据集并将其反序列化为 pandas 数据帧对象。 通过 `to_dataframe` 方法完成此操作：
 
     frame = ds.to_dataframe()
 

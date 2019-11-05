@@ -10,14 +10,15 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 707c6d99d4c5f4335ff771bdd916b2ee37092604
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
-ms.translationtype: MT
+ms.openlocfilehash: ec1ea8bac35906969f051a70c44bd6f0685dc942
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710065"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489435"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>构建 scikit-learn-通过 Azure 机器学习的规模了解模型
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何使用 Azure 机器学习的[spark-sklearn 估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)类在企业范围内运行 scikit-learn-了解培训脚本。 
 
@@ -25,12 +26,12 @@ ms.locfileid: "71710065"
 
 无论你是要从头开始培训机器学习 scikit-learn 模型，还是将现有模型引入到云中，都可以使用 Azure 机器学习来使用弹性云计算资源来横向扩展开源培训作业。 可以通过 Azure 机器学习来构建、部署、版本和监视生产级模型。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在以下任一环境中运行此代码：
- - Azure 机器学习笔记本 VM-无需下载或安装
+ - Azure 机器学习计算实例-无需下载或安装
 
-    - 在开始本教程之前完成[教程：设置环境和工作](tutorial-1st-experiment-sdk-setup.md)区，创建随 SDK 和示例存储库预先加载的专用笔记本服务器。
+    - 完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)，创建随 SDK 和示例存储库预先加载的专用笔记本服务器。
     - 在笔记本服务器上的 "示例训练" 文件夹中，通过导航到以下目录查找已完成且扩展的笔记本： **scikit-learn >->-了解 > 培训 > 超参数--spark-sklearn**文件夹。
 
  - 你自己的 Jupyter 笔记本服务器
@@ -46,7 +47,7 @@ ms.locfileid: "71710065"
 
 本部分通过加载所需的 python 包、初始化工作区、创建试验以及上传定型数据和训练脚本来设置训练实验。
 
-### <a name="import-packages"></a>导入包
+### <a name="import-packages"></a>导入程序包
 
 首先，导入必需的 Python 库。
 
@@ -67,7 +68,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 [Azure 机器学习工作区](concept-workspace.md)是服务的顶级资源。 它为您提供了一个集中的位置来处理您创建的所有项目。 在 Python SDK 中，可以通过创建[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)对象来访问工作区项目。
 
-从 "[先决条件" 部分](#prerequisites)创建`config.json`的文件中创建工作区对象。
+从 "[先决条件" 部分](#prerequisites)创建的 `config.json` 文件创建工作区对象。
 
 ```Python
 ws = Workspace.from_config()
@@ -127,7 +128,7 @@ except ComputeTargetException:
 
 [Scikit-learn 估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py)提供了一种简单的方法来启动计算目标上的 scikit-learn 培训作业。 它通过[`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)类实现，该类可用于支持单节点 CPU 定型。
 
-如果训练脚本需要额外的 pip 或 conda 包来运行，则可以通过`pip_packages`和`conda_packages`参数传递包，从而将包安装在生成的 docker 映像中。
+如果训练脚本需要额外的 pip 或 conda 包来运行，则可以通过将包的名称通过 `pip_packages` 和 `conda_packages` 参数传递这些包，从而将包安装在生成的 docker 映像中。
 
 ```Python
 from azureml.train.sklearn import SKLearn
@@ -156,13 +157,13 @@ run.wait_for_completion(show_output=True)
 
 在执行运行时，它将经历以下几个阶段：
 
-- **准备**：根据 TensorFlow 估计器创建 docker 映像。 该映像将上传到工作区的容器注册表中，并进行缓存以供稍后运行。 还会将日志流式传输到运行历史记录，并可以查看日志来监视进度。
+- **准备**：按 TensorFlow 估计器创建 docker 映像。 该映像将上传到工作区的容器注册表中，并进行缓存以供稍后运行。 还会将日志流式传输到运行历史记录，并可以查看日志来监视进度。
 
 - **缩放**：如果 Batch AI 群集需要的节点数多于当前可用的节点数，则群集将尝试增加。
 
-- **Running**：脚本文件夹中的所有脚本都将上载到计算目标，装载或复制数据存储，并执行 entry_script。 输出从 stdout 开始，/logs 文件夹将流式传输到运行历史记录，并可用于监视运行情况。
+- **正在运行**：脚本文件夹中的所有脚本都将上载到计算目标，装载或复制数据存储，然后执行 entry_script。 输出从 stdout 开始，/logs 文件夹将流式传输到运行历史记录，并可用于监视运行情况。
 
-- **后期处理**：运行的/outputs 文件夹将复制到运行历史记录中。
+- **后期处理**：将运行的/outputs 文件夹复制到运行历史记录中。
 
 ## <a name="save-and-register-the-model"></a>保存并注册模型
 

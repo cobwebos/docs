@@ -1,24 +1,24 @@
 ---
 title: 手动输入数据：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的 "手动输入数据" 模块通过键入值来创建小型数据集。 数据集可以有多个列。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的 "手动输入数据" 模块通过键入值来创建小型数据集。 数据集可以有多个列。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: bd5fb636dbf79534e84a21a461f8912ceb6d9633
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 7c4d62c19984e1316a01213f579c059b97f709c3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693160"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497935"
 ---
 # <a name="enter-data-manually-module"></a>手动输入数据模块
 
-本文介绍了 Azure 机器学习服务的可视界面（预览）的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块通过键入值来创建小型数据集。 数据集可以有多个列。
   
@@ -86,8 +86,8 @@ ms.locfileid: "72693160"
   
         |Col1|Col2|Col3|Col4|标签|  
         |-|-|-|-|-|  
-        |0.00016|0.004|0.999961|0.00784|第|  
-        |0|0.004|0.999955|0.008615|第|  
+        |0.00016|0.004|0.999961|0.00784|1|  
+        |0|0.004|0.999955|0.008615|1|  
   
 4.  在每一行后按 ENTER 以开始新行。  
   
@@ -102,4 +102,4 @@ ms.locfileid: "72693160"
      若要查看数据集，请单击输出端口并选择 "**可视化**"。  
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

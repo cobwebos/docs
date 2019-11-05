@@ -1,24 +1,24 @@
 ---
 title: 转换为 CSV：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的 "转换为 CSV" 模块将数据集转换为 CSV 格式，以便可以下载、导出或与 R 或 Python 脚本模块共享。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的 "转换为 CSV" 模块将数据集转换为可下载、导出或与 R 或 Python 脚本模块共享的 CSV 格式。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 37c1653b31049dc0142cf8c0c6f6d405338b1d1f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 999f78ab08e1a2c9dd6b28d853e49fbb559fab83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693199"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493846"
 ---
 # <a name="convert-to-csv-module"></a>转换为 CSV 模块
 
-本文介绍了 Azure 机器学习服务的可视界面（预览）的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块将数据集转换为 CSV 格式，以便可以下载、导出或与 R 或 Python 脚本模块共享。
 
@@ -36,7 +36,8 @@ CSV 格式（代表 "逗号分隔值"）是许多外部机器学习工具使用�
 
 ## <a name="how-to-configure-convert-to-csv"></a>如何配置转换为 CSV
 
-1.  将 "[转换为 CSV](./convert-to-csv.md) " 模块添加到管道。 可以在接口中的**数据格式转换**组中找到此模块。 
+
+1.  将 "[转换为 CSV](./convert-to-csv.md) " 模块添加到管道。 可以在设计器中的 "**数据格式转换**" 组中找到此模块。 
 
 2. 将其连接到输出数据集的任何模块。   
   
@@ -56,4 +57,4 @@ CSV 格式（代表 "逗号分隔值"）是许多外部机器学习工具使用�
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

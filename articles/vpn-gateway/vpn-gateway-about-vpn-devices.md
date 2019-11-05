@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 10/17/2019
 ms.author: yushwang
-ms.openlocfilehash: 1d80c30e3573d76aabcf854b2d97ea849197577c
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: c945fa7e2e8eccb12cc105610adee3d25a5e5316
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173035"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495799"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数
 
@@ -40,17 +40,17 @@ ms.locfileid: "71173035"
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |不兼容  |[配置指南](https://www.a10networks.com/wp-content/uploads/A10-DG-16161-EN.pdf)|
 | Allied Telesis     |AR 系列 VPN 路由器 |AR 系列 5.4.7+               | [配置指南](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router) |[配置指南](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
 | Barracuda Networks, Inc. |Barracuda CloudGen 防火墙 |PolicyBased：5.4.3<br>RouteBased：6.2.0 |[配置指南](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462887/how-to-configure-an-ikev1-ipsec-site-to-site-vpn-to-the-static-microsoft-azure-vpn-gateway/) |[配置指南](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462889/how-to-configure-bgp-over-ikev2-ipsec-site-to-site-vpn-to-an-azure-vpn-gateway/) |
-| Check Point |安全网关 |R80.10 |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
+| 检查点 |安全网关 |R80.10 |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |支持 |[配置指南*](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/214109-configure-asa-ipsec-vti-connection-to-az.html) |
 | Cisco |ASR |PolicyBased：IOS 15.1<br>RouteBased：IOS 15.2 |支持 |支持 |
-| Cisco | CSR | RouteBased：IOS-XE 16.10 | （未测试） | [配置脚本](vpn-gateway-download-vpndevicescript.md) |
+| Cisco | CSR | RouteBased： IOS-XE 16.10 | （未测试） | [配置脚本](vpn-gateway-download-vpndevicescript.md) |
 | Cisco |ISR |PolicyBased：IOS 15.0<br>RouteBased*：IOS 15.1 |支持 |支持 |
-| Cisco |Meraki |不可用 |不兼容 |不兼容 |
+| Cisco |Meraki |不适用 |不兼容 |不兼容 |
 | Cisco | vEdge （Viptela OS） | 18.4.0 （主动/被动模式）<br><br>19.2 （主动/主动模式） | 不兼容 |  [手动配置（主动/被动）](https://community.cisco.com/t5/networking-documents/how-to-configure-ipsec-vpn-connection-between-cisco-vedge-and/ta-p/3841454)<br><br>[Cloud 云中配置（主动/主动）](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/Network-Optimization-and-High-Availability/Network-Optimization-High-Availability-book/b_Network-Optimization-and-HA_chapter_00.html) |
-| Citrix |NetScaler MPX、SDX、VPX |10.1 及以上 |[配置指南](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |不兼容 |
+| Citrix |NetScaler MPX，SDX，VPX |10.1 及以上 |[配置指南](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |不兼容 |
 | F5 |BIG-IP 系列 |12.0 |[配置指南](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[配置指南](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.6 | （未测试） |[配置指南](https://docs.fortinet.com/document/fortigate/5.6.0/cookbook/255100/ipsec-vpn-to-azure) |
-| Hillstone 网络 | 下一代防火墙（NGFW） | 5.5 R7  | （未测试） | [配置指南](https://www.hillstonenet.com/wp-content/uploads/How-to-setup-Site-to-Site-VPN-between-Microsoft-Azure-and-an-on-premise-Hillstone-Networks-Security-Gateway.pdf) |
+| Hillstone Networks | 下一代防火墙 (NGFW) | 5.5R7  | （未测试） | [配置指南](https://www.hillstonenet.com/wp-content/uploads/How-to-setup-Site-to-Site-VPN-between-Microsoft-Azure-and-an-on-premise-Hillstone-Networks-Security-Gateway.pdf) |
 | Internet Initiative Japan (IIJ) |SEIL 系列 |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[配置指南](https://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |不兼容 |
 | Juniper |SRX |PolicyBased：JunOS 10.2<br>Routebased：JunOS 11.4 |支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |J 系列 |PolicyBased：JunOS 10.4r9<br>RouteBased：JunOS 11.4 |支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
@@ -58,7 +58,7 @@ ms.locfileid: "71173035"
 | Juniper |SSG |ScreenOS 6.2 |支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |MX |JunOS 12.x|支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
 | Microsoft |路由和远程访问服务 |Windows Server 2012 |不兼容 |支持 |
-| 打开系统 AG |任务控制安全网关 |不可用 |[配置指南](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |不兼容 |
+| 打开系统 AG |任务控制安全网关 |不适用 |[配置指南](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |不兼容 |
 | Palo Alto Networks |运行 PAN-OS 的所有设备 |PAN-OS<br>PolicyBased：6.1.5 或更高版本<br>RouteBased：7.1.4 |支持 |[配置指南](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | Sentrium （开发人员） | VyOS | VyOS 1.2。2 | （未测试） | [配置指南](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
 | ShareTech | Next Generation UTM（NU 系列） | 9.0.1.3 | 不兼容 | [配置指南](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
@@ -83,7 +83,7 @@ ms.locfileid: "71173035"
 
 [!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 
-## <a name="additionaldevices"></a>非验证的 VPN 设备
+## <a name="additionaldevices"></a>未验证的 VPN 设备
 
 即使没有看到设备在“已验证的 VPN 设备”表列出中，该设备也有可能适用于站点到站点连接。 请联系设备制造商，了解更多支持和配置说明。
 
@@ -103,10 +103,10 @@ ms.locfileid: "71173035"
 | &lt;RP_AccessList&gt; |为此对象选择的名称。 示例：myAzureAccessList |
 | &lt;RP_IPSecTransformSet&gt; |为此对象选择的名称。 示例：myIPSecTransformSet |
 | &lt;RP_IPSecCryptoMap&gt; |为此对象选择的名称。 示例：myIPSecCryptoMap |
-| &lt;SP_AzureNetworkIpRange&gt; |指定范围。 例如：192.168.0.0 |
-| &lt;SP_AzureNetworkSubnetMask&gt; |指定子网掩码。 例如：255.255.0.0 |
-| &lt;SP_OnPremisesNetworkIpRange&gt; |指定本地范围。 例如：10.2.1.0 |
-| &lt;SP_OnPremisesNetworkSubnetMask&gt; |指定本地子网掩码。 例如：255.255.255.0 |
+| &lt;SP_AzureNetworkIpRange&gt; |指定范围。 示例：192.168.0.0 |
+| &lt;SP_AzureNetworkSubnetMask&gt; |指定子网掩码。 示例：255.255.0.0 |
+| &lt;SP_OnPremisesNetworkIpRange&gt; |指定本地范围。 示例：10.2.1.0 |
+| &lt;SP_OnPremisesNetworkSubnetMask&gt; |指定本地子网掩码。 示例：255.255.255.0 |
 | &lt;SP_AzureGatewayIpAddress&gt; |此信息特定于虚拟网络，位于管理门户的“网关 IP 地址”中。 |
 | &lt;SP_PresharedKey&gt; |此信息特定于虚拟网络，位于管理门户的“管理密钥”中。 |
 
@@ -128,19 +128,19 @@ ms.locfileid: "71173035"
 
 | **属性**          |**PolicyBased**    | **RouteBased**    |
 | ---                   | ---               | ---               |
-| SDK 版本           |IKEv1              |IKEv2              |
+| SDK 版本           |IKEv1              |IKEv1 和 IKEv2    |
 | Diffie-Hellman 组  |组 2（1024 位） |组 2（1024 位） |
 | 身份验证方法 |预共享密钥     |预共享密钥     |
-| 加密和哈希算法 |1.AES256、SHA256<br>2.AES256、SHA1<br>3.AES128、SHA1<br>4. 3DES、SHA1 |1.AES256、SHA1<br>2.AES256、SHA256<br>3.AES128、SHA1<br>4.AES128、SHA256<br>5. 3DES、SHA1<br>6. 3DES、SHA256 |
+| 加密和哈希算法 |1. AES256、SHA256<br>AES256、SHA1<br>3. AES128，SHA1<br>4. 3DES、SHA1 |1. AES256，SHA1<br>2. AES256、SHA256<br>3. AES128，SHA1<br>4. AES128、SHA256<br>5. 3DES、SHA1<br>6. 3DES、SHA256 |
 | SA 生存期           |28,800 秒     |28,800 秒     |
 
 ### <a name="ike-phase-2-quick-mode-parameters"></a>IKE 阶段 2（快速模式）参数
 
-| **Property**                  |**PolicyBased**| **RouteBased**                              |
+| **属性**                  |**PolicyBased**| **RouteBased**                              |
 | ---                           | ---           | ---                                         |
-| SDK 版本                   |IKEv1          |IKEv2                                        |
-| 加密和哈希算法 |1.AES256、SHA256<br>2.AES256、SHA1<br>3.AES128、SHA1<br>4. 3DES、SHA1 |[RouteBased QM SA 产品/服务](#RouteBasedOffers) |
-| SA 生存期（时间）            |3,600 秒  |27,000 秒                                |
+| SDK 版本                   |IKEv1          |IKEv1 和 IKEv2                              |
+| 加密和哈希算法 |1. AES256、SHA256<br>AES256、SHA1<br>3. AES128，SHA1<br>4. 3DES、SHA1 |[RouteBased QM SA 产品/服务](#RouteBasedOffers) |
+| SA 生存期（时间）            |3,600 秒  |27,000 秒                               |
 | SA 生存期（字节数）           |102,400,000 KB | -                                           |
 | 完全向前保密 (PFS) |否             |[RouteBased QM SA 产品/服务](#RouteBasedOffers) |
 | 死对等体检测 (DPD)     |不支持  |支持                                    |
@@ -204,7 +204,7 @@ ms.locfileid: "71173035"
 
 ### <a name="feb-16-2017"></a>2017 年 2 月 16 日
 
-**早于 7.1.4 版的 Palo Alto Networks 设备**（针对 Azure 基于路由的 VPN）：如果使用的是早于 7.1.4 版的 Palo Alto Networks VPN 设备，并且遇到 Azure 基于路由的 VPN 网关的连接问题，请执行以下步骤：
+**早于 7.1.4 版的 Palo Alto Networks 设备**（针对 Azure 基于路由的 VPN）：如果通过 PAN-OS 版本早于 7.1.4 的 Palo Alto Networks 使用 VPN 设备，并且遇到 Azure 基于路由的 VPN 网关的连接问题，请执行以下步骤：
 
 1. 检查 Palo Alto Networks 设备的固件版本。 如果 PAN-OS 版本低于 7.1.4，请升级到 7.1.4。
 2. 连接到 Azure VPN 网关时，请在 Palo Alto Networks 设备上将阶段 2 SA（或快速模式 SA）生存期更改为 28,800 秒（8 小时）。

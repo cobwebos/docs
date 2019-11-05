@@ -11,14 +11,15 @@ ms.author: jordane
 author: jpe316
 ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 597cc4e03257b544187fc2bc131974954b64c84b
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: dcbe535bb92f7755980929956093b0f0121ef41b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819872"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476454"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>使用 CLI 扩展进行 Azure 机器学习
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure 机器学习 CLI 是 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)（适用于 Azure 平台的跨平台命令行接口）的一个扩展。 此扩展提供用于处理 Azure 机器学习的命令。 它允许您自动执行机器学习活动。 以下列表提供了一些可以通过 CLI 扩展执行的示例操作：
 
@@ -32,7 +33,7 @@ CLI 不能取代 Azure 机器学习 SDK。 它是一种补充工具，经过优�
 
 ## <a name="prerequisites"></a>必备组件
 
-* 若要使用 CLI，必须拥有 Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* 若要使用 CLI，必须拥有 Azure 订阅。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
 
@@ -149,7 +150,7 @@ az extension remove -n azure-cli-ml
     >
     > 如果你的 Python 脚本以编程方式创建运行配置对象，则可以使用[.runconfig （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-)将其另存为 .runconfig 文件。
     >
-    > 有关 .runconfig 文件的更多示例，请参阅[https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml)。
+    > 在此[JSON 文件](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)中可以找到完整的 .runconfig 架构。
 
     有关详细信息，请参阅[az ml run 提交脚本](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)。
 

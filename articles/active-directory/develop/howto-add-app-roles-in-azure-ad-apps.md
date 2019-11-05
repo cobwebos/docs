@@ -18,12 +18,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87660c6ef8266d3ebfbad1b7a8a7cb98b936e9c6
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 2c838c6fe256e2960842c5b40f58f8a5d5b1fdf3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803358"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473771"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
 
@@ -43,18 +43,18 @@ ms.locfileid: "72803358"
 1. 在顶栏中选择帐户，然后选择“切换目录”。
 1. “目录 + 订阅”窗格打开后，请从“收藏夹”或“所有目录”列表中选择要在其中注册应用程序的 Active Directory 租户。
 1. 选择左侧导航栏中的“所有服务”，并选择“Azure Active Directory”。
-1. 在“Azure Active Directory”窗格中选择“应用注册”，查看一个包含所有应用程序的列表。
+1. 在 " **Azure Active Directory** " 窗格中，选择 "**应用注册（旧）** " 查看所有应用程序的列表。
 
-     如果看不到希望其显示在这里的应用程序，请使用“应用注册”列表顶部的各种筛选器来限制此列表，或者在列表中向下滚动，以便找到应用程序。
+     如果看不到要在此处显示的应用程序，请使用**应用注册（旧）** 列表顶部的各种筛选器限制列表，或向下滚动列表以查找应用程序。
 
 1. 选择一个应用程序，以便在其中定义应用角色。
 1. 在应用程序的边栏选项卡中，选择“清单”。
 1. 编辑应用清单，方法是先查找 `appRoles` 设置，然后添加所有应用程序角色。
 
      > [!NOTE]
-     > 此清单中的每个应用角色定义必须具有不同于 `id` 属性的有效 GUID。 
+     > 此清单中的每个应用角色定义都必须对 `id` 属性具有不同的有效 GUID。 
      > 
-     > 每个应用程序角色定义的 `value` 属性应该与应用程序中的代码中使用的字符串完全匹配。 `value` 属性不能包含空格。 如果是这样，则在保存清单时，会收到错误。
+     > 每个应用角色定义的 `value` 属性应该与应用程序的代码中使用的字符串完全匹配。 `value` 属性不能包含空格。 如果包含，则在保存清单时会收到错误消息。
      
 1. 保存清单。
 
@@ -104,7 +104,7 @@ ms.locfileid: "72803358"
 "availableToOtherTenants": false,
 ```
 
-定义的角色数量将影响应用程序清单具有的限制。 它们已在 "[清单限制](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits)" 页上详细讨论。
+定义的角色数会影响应用程序清单的限制。 已在[清单限制](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits)页上对这些限制进行了详细讨论。
 
 ### <a name="assign-users-and-groups-to-roles"></a>将用户和组分配到角色
 

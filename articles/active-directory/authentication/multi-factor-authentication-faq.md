@@ -1,5 +1,5 @@
 ---
-title: Azure 多重身份验证常见问题-Azure Active Directory
+title: Azure 多重身份验证常见问题解答 - Azure Active Directory
 description: 与 Azure 多重身份验证相关的常见问题与解答。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ecec4d0701f6f55385937f872151a373b2f62e
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: ea174de04d0e75bc996c6f692edd474a9396346a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808104"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474278"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题解答
 
 本“常见问题解答”文章解答有关 Azure 多重身份验证和使用多重身份验证服务的常见问题。 其中的问题已划分为常规服务问题、计费模式问题、用户体验问题和故障排除问题。
 
-## <a name="general"></a>一般信息
+## <a name="general"></a>常规
 
 **问：Azure 多重身份验证服务器如何处理用户数据？**
 
@@ -148,7 +148,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 如果用户经常无法可靠地接收短信，请告诉他们改用移动应用或电话验证方法。 移动应用可以同时通过手机网络和 Wi-Fi 连接接收通知。 此外，即使设备根本没有信号，也可以生成验证码。 Microsoft 验证器应用适用于 [Android](https://go.microsoft.com/fwlink/?Linkid=825072)、[iOS](https://go.microsoft.com/fwlink/?Linkid=825073) 和 [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)。
 
-如果必须使用短信，建议尽可能使用单向短信，而不要使用双向短信。 单向短信更加可靠，并且可以防止用户从其他国家/地区发送的短信中产生全局短信费。
+如果必须使用短信，建议尽可能使用单向短信，而不要使用双向短信。 单向短信更加可靠，并可以防止用户由于回复从其他国家/地区发来的短信而产生的全球短信费用。
 
 **问：是否可以更改在系统超时之前，用户必须输入短信中验证代码的时限？**
 
@@ -168,7 +168,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 **问：是否可以在 Azure 多重身份验证服务器上使用硬件令牌？**
 
-如果使用的是 Azure 多重身份验证服务器，可以导入第三方基于时间的一次性密码 (TOTP) 开放式身份验证 (OATH) 令牌，然后将其用于双重验证。
+如果使用的是 Azure 多重身份验证服务器，可以导入第三方基于时间的一次性密码 (TOTP) 开放式身份验证 (OATH) 令牌，并将其用于双重验证。
 
 如果将机密密钥放在可以导入 Azure 多重身份验证服务器的 CSV 文件中，可以使用充当 OATH TOTP 令牌的 ActiveIdentity 令牌。 可将 OATH 令牌与以下服务配合使用：Active Directory 联合身份验证服务 (ADFS)、基于 Internet Information Server (IIS) 表单的身份验证和远程身份验证拨入用户服务 (RADIUS)（只要客户端系统能够接受用户输入）。
 
@@ -198,9 +198,9 @@ Windows Server 2012 R2 中的安全性更改改变了 Azure 多重身份验证�
 - 组织已创建并启用一个 MFA 注册策略，该策略已应用到该用户。
 - 该用户以前已注册 MFA，但选择的验证方法后来被管理员禁用。 因此，该用户必须再次完成 MFA 注册，以选择新的默认验证方法。
 
-## <a name="errors"></a>Errors
+## <a name="errors"></a>错误
 
-**问：如果用户在使用移动应用通知时看到“身份验证请求不适用于已激活的帐户”错误消息，该怎么办？**
+**问：如果用户使用移动应用通知时看到“身份验证请求不适用于已激活的帐户”错误消息，该怎么办？**
 
 告诉他们按照此过程从移动应用中删除帐户，并重新添加：
 
@@ -219,7 +219,7 @@ Windows Server 2012 R2 中的安全性更改改变了 Azure 多重身份验证�
 
 如果此处未解答问题，请在页面底部留言。 或者，通过一些其他方法获得帮助：
 
-* 在 [Microsoft 支持知识库](https://www.microsoft.com/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport)中搜索常见技术问题的解决方法。
+* 在 [Microsoft 支持知识库](https://www.microsoft.com/en-us/search?form=mssupport&q=phonefactor&rtc=1) 中搜索常见技术问题的解决方法。
 * 在 [Azure Active Directory 论坛](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)中搜索和浏览来自社区的技术问题与解答，或者提出自己的问题。
 * 对于旧版 PhoneFactor 客户，如果有疑问或需要重置密码方面的帮助，请使用[密码重置](mailto:phonefactorsupport@microsoft.com)链接建立支持案例。
 * 通过 [Azure 多重身份验证服务器 (PhoneFactor) 支持](https://support.microsoft.com/oas/default.aspx?prid=14947)联系支持专业人员。 与我们联系时，尽可能包含有关问题的更多信息将很有帮助。 可提供的信息包括看到错误的页面、特定错误代码、特定会话 ID 和看到错误的用户的 ID。

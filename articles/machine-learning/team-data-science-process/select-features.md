@@ -11,24 +11,22 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a74f2c21746deb16372174d4a769f9abb825a1cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da5da64538ceaf906388c49963c0d5115e1b5ab9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60809604"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480228"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Team Data Science Process (TDSP) 中的功能选择
-本文介绍特征工程的目的，并提供其在机器学习数据增强过程中作用的相关示例。 这些示例来自 Azure 机器学习工作室。 
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+本文介绍特征工程的目的，并提供其在机器学习数据增强过程中作用的相关示例。 这些示例来自 Azure 机器学习工作室。
 
 特征的工程设计和选择是 [Team Data Science Process (TDSP) 是什么？](overview.md)一文中所述的 Team Data Science Process (TDSP) 的一部分。 特征工程和选择是 TDSP 的**开发特征**步骤的一部分。
 
 * **特征工程**：该过程尝试从数据中的现有原始特征创建其他相关特征，并提高学习算法的预测能力。
-* **特性选择**：该过程选择原始数据特征的关键子集，试图降低定型问题的维度。
+* **特征选择**：该过程选择原始数据特征的关键子集，试图降低定型问题的维度。
 
-通常，首先应用**特征工程**生成其他特征，然后执行**特征选择**步骤，消除不相关、冗余或高度相关的特征。
+通常，首先应用**特征工程**生成其他特征，然后执行**功能选择**步骤，消除不相关、冗余或高度相关的特征。
 
 ## <a name="filter-features-from-your-data---feature-selection"></a>从数据中筛选特征 - 特征选择
 特征选择是一个过程，通常适用于为预测建模任务（如分类或回归任务）构建定型数据集。 目标是从原始数据集中选择特征子集，即通过使用最少特征集来表示数据中最大方差量以减少其维度。 此特征子集用于定型模型。 特征选择有两个主要目的。
@@ -40,11 +38,11 @@ ms.locfileid: "60809604"
 
 其中特征选择方法在监管上下文中的一个广泛应用类别称为“基于筛选器的特征选择”。 通过评估每个特征和目标属性之间的相关性，这些方法应用统计测量来为每个特征分配分数。 将按分数对这些特征排名，从而有助于基于该排名针对保留或消除特定特征设置阈值。 这些方法中使用的统计度量值示例包括积差相关、互信息和卡方分布检验。
 
-在 Azure 机器学习工作室中，为特征选择提供了多个模块。 如下图中所示，这些模块包括[基于筛选器的特征选择][filter-based-feature-selection]和[费舍尔线性判别分析][fisher-linear-discriminant-analysis]。
+在 Azure 机器学习工作室中，为特征选择提供了多个模块。 如下图所示，这些模块包括[基于筛选器的特征选择][filter-based-feature-selection]和[费舍尔线性判别分析][fisher-linear-discriminant-analysis]。
 
 ![特征选择模块](./media/select-features/feature-Selection.png)
 
-例如，考虑使用[基于筛选器的特征选择][filter-based-feature-selection]模块。 为方便起见，继续使用文本挖掘示例。 假设在通过[特征哈希][feature-hashing]模块创建了一组 256 个特征后想要生成回归模型，并且响应变量为“Col1”（包含范围为 1 到 5 的书籍审核评级）。 通过将“特征评分方法”设为“皮尔逊相关”，“目标列”将设为“Col1”，而“所需特征数”将设为 50。 然后，[基于筛选器的特征选择][filter-based-feature-selection]模块将生成一个包含 50 个特征且目标属性为“Col1”的数据集。 下图显示了此实验的流程以及输入参数：
+例如，请考虑使用[基于筛选器的特征选择][filter-based-feature-selection]模块。 为方便起见，继续使用文本挖掘示例。 假设您想要在通过[特征哈希][feature-hashing]模块创建一组256功能后构建回归模型，并且响应变量为包含书籍考核分级的 "Col1" （范围从1到5）。 通过将“特征评分方法”设为“皮尔逊相关”，“目标列”将设为“Col1”，而“所需特征数”将设为 50。 然后，[基于模块筛选器的特征选择][filter-based-feature-selection]将生成一个包含50功能的数据集以及目标属性 "Col1"。 下图显示了此实验的流程以及输入参数：
 
 ![基于筛选器的特征选择模块属性](./media/select-features/feature-Selection1.png)
 
@@ -58,7 +56,7 @@ ms.locfileid: "60809604"
 
 ![分数，用于基于筛选器的特征选择模块](./media/select-features/feature-Selection3.png)
 
-通过应用此[基于筛选器的特征选择][filter-based-feature-selection]模块，将从256 个特征中选出 50 个，因为它们基于评分方法“皮尔逊相关”具有与目标变量“Col1”最相关的特征。
+通过应用此[基于筛选器的特征选择][filter-based-feature-selection]模块，将会选择50的256功能，因为它们具有与目标变量 "Col1" 最相关的特征，基于计分方法 "皮尔逊相关"。
 
 ## <a name="conclusion"></a>结束语
 特征工程和特征选择是两个常见的工程和选择的特征，用于提高定型过程的效率，此过程尝试提取数据中包含的关键信息。 它们还提高了这些模型准确分类输入数据以及更加可靠地预测感兴趣的结果的能力。 特征工程和选择也可以结合起来使用，以使学习在计算上更易处理。 它通过增加然后减少校准或定型模型所需的特征数量来实现这一目标。 从数学上来说，所选的定型模型的特征是一组最小的独立变量，它们解释数据中的模式，并成功预测结果。

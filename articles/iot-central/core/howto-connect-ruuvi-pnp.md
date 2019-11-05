@@ -10,12 +10,12 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 10/19/2019
-ms.openlocfilehash: 0a93bedb697a0d5a514fddab55c79b969b2bd77b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f1d152c921d38931f8c67396fc5769cfd2dfcf58
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954222"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468232"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>将 RuuviTag 传感器连接到 Azure IoT Central 应用程序
 
@@ -34,7 +34,7 @@ RuuviTag 通过 BLE （蓝牙低能耗）进行通信，因此要求网关设备
 
 * RuuviTag 传感器。 有关详细信息，请访问[RuuviTag](https://ruuvi.com/)。 
 * Rigado Cascade 500 设备或其他 BLE 网关。 有关详细信息，请访问[Rigado](https://www.rigado.com/)。
-* 从一个预览版应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建新的应用程序](https://docs.microsoft.com/azure/iot-central/quick-deploy-iot-central-pnp?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)。
+* 从一个预览版应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建新的应用程序](https://docs.microsoft.com/azure/iot-central/core/quick-deploy-iot-central-pnp?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)。
 
 ## <a name="add-a-ruuvitag-device-template"></a>添加 RuuviTag 设备模板
 
@@ -66,7 +66,7 @@ RuuviTag 通过 BLE （蓝牙低能耗）进行通信，因此要求网关设备
 1. 选择 " **+ 新建**"。 
 1. 指定唯一的**设备 ID**和友好**设备名称**。  
 1. 启用**模拟**设置。
-1. 选择**创建**。  
+1. 选择“创建”。  
 
 ## <a name="next-steps"></a>后续步骤
 

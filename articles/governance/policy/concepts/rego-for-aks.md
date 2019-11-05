@@ -3,20 +3,20 @@ title: 了解 azure Kubernetes Service 的 Azure 策略
 description: 了解 Azure 策略如何使用 Rego 并打开策略代理来管理 Azure Kubernetes 服务中的群集。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 06/24/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 6a3d1fb347819015887ffc4fd8089bbc1f3a70de
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 248f96b4385e97605986b53bd94fd83236ec8f08
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176316"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480907"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>了解 azure Kubernetes Service 的 Azure 策略
 
 Azure 策略与[Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)（AKS）集成，以集中、一致的方式在群集上应用大规模操作和安全措施。
-Azure 策略通过扩展了对[守卫](https://github.com/open-policy-agent/gatekeeper)的使用（[打开策略代理](https://www.openpolicyagent.org/)（OPA）的_许可控制器 webhook_ ），可以从一个位置管理和报告 azure 资源和 AKS 群集的符合性状态。
+Azure 策略通过扩展了对[守卫](https://github.com/open-policy-agent/gatekeeper/tree/master/deprecated)V2 （[开放策略代理](https://www.openpolicyagent.org/)（OPA）的_许可控制器 webhook_ ）的使用，可以从一个位置管理和报告 azure 资源和 AKS 群集的符合性状态。
 
 > [!NOTE]
 > 适用于 AKS 的 Azure 策略处于有限预览版中，仅支持内置策略定义。
@@ -96,7 +96,7 @@ Azure 策略通过扩展了对[守卫](https://github.com/open-policy-agent/gate
 
 在 AKS 群集中安装外接程序之前，必须安装预览扩展。 此步骤通过 Azure CLI 来完成：
 
-1. 需要安装并配置 Azure CLI 版本2.0.62 或更高版本。 可以运行 `az --version` 来查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+1. 需要安装并配置 Azure CLI 版本2.0.62 或更高版本。 运行 `az --version` 即可查找版本。 如需安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 1. AKS 群集必须是_1.10_版或更高版本。 使用以下脚本验证 AKS 群集版本：
 
@@ -162,7 +162,7 @@ Azure 策略通过扩展了对[守卫](https://github.com/open-policy-agent/gate
 
 ## <a name="policy-language"></a>策略语言
 
-用于管理 AKS 的 Azure 策略语言结构遵循现有策略。 效果_EnforceRegoPolicy_用于管理 AKS 群集，并使用特定于使用 OPA 和网关守卫的_详细信息_属性。 有关详细信息和示例，请参阅[EnforceRegoPolicy](effects.md#enforceregopolicy)效果。
+用于管理 AKS 的 Azure 策略语言结构遵循现有策略。 效果_EnforceRegoPolicy_用于管理 AKS 群集，并使用特定于使用 OPA 和看门程序 v2 的_详细信息_属性。 有关详细信息和示例，请参阅[EnforceRegoPolicy](effects.md#enforceregopolicy)效果。
 
 作为策略定义中 "_详细信息_" 属性的一部分，Azure 策略将 rego 策略的 URI 传递到该外接程序。 Rego 是 OPA 和看门程序支持的语言，用于验证或改变对 Kubernetes 群集的请求。 通过支持现有的 Kubernetes 管理标准，Azure 策略可以重复使用现有规则并将其与 Azure 策略配对，以获得统一的云相容性报告体验。 有关详细信息，请参阅[什么是 Rego？](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)。
 
@@ -182,6 +182,9 @@ Azure 策略通过扩展了对[守卫](https://github.com/open-policy-agent/gate
 > 为 AKS 定义分配 Azure 策略时，**作用域**必须包括 AKS 群集资源。
 
 或者，使用[分配策略-门户](../assign-policy-portal.md)快速入门查找并分配 AKS 策略。 搜索 Kubernetes 策略定义，而不是示例 "审核 vm"。
+
+> [!IMPORTANT]
+> 类别**Kubernetes service**中的内置策略仅适用于 AKS。
 
 ## <a name="logging"></a>日志记录
 
@@ -228,12 +231,35 @@ Azure 策略通过扩展了对[守卫](https://github.com/open-policy-agent/gate
   az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group MyResourceGroup
   ```
 
+## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Azure 策略加载项收集的诊断数据
+
+用于 Kubernetes 的 Azure 策略外接程序将收集有限的群集诊断数据。 此诊断数据是与软件和性能相关的重要技术数据。 它按以下方式使用：
+
+- 将 Azure 策略添加到最新
+- 保持 Azure 策略附加安全安全、可靠、高性能
+- 改进 Azure 策略附加项-通过聚合分析来使用外接程序
+
+外接程序收集的信息不是个人数据。 当前正在收集以下详细信息：
+
+- Azure 策略附加代理版本
+- 群集类型
+- 群集区域
+- 群集资源组
+- 群集资源 ID
+- 群集订阅 ID
+- 群集操作系统（示例： Linux）
+- 分类城（示例：西雅图）
+- 群集省/直辖市/自治区（例如：华盛顿州）
+- 群集国家或地区（示例：美国）
+- 在策略评估过程中安装代理期间 Azure 策略外接程序遇到的异常/错误
+- Azure 策略外接程序未安装的网关守卫策略数
+
 ## <a name="next-steps"></a>后续步骤
 
-- 查看[Azure 策略示例](../samples/index.md)中的示例。
+- 在 [Azure Policy 示例](../samples/index.md)中查看示例。
 - 查看[策略定义结构](definition-structure.md)。
 - 查看[了解策略效果](effects.md)。
-- 了解如何以[编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取相容性数据](../how-to/getting-compliance-data.md)。
-- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
+- 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
+- 了解如何[获取合规性数据](../how-to/getting-compliance-data.md)。
+- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

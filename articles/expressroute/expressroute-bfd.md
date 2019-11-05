@@ -5,19 +5,19 @@ services: expressroute
 author: rambk
 ms.service: expressroute
 ms.topic: article
-ms.date: 8/17/2018
+ms.date: 11/1/2018
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: e33e90d988251afde630401bed165a4d3614d2cd
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: a24e021c34fe1ad315ca7f75f9bfdb29d94b253a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881454"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495001"
 ---
 # <a name="configure-bfd-over-expressroute"></a>配置基于 ExpressRoute 的 BFD
 
-ExpressRoute 支持基于专用对等互连的双向转发检测 (BFD)。 通过 ExpressRoute 启用 BFD，可以加快 Microsoft 企业边缘（MSEE）设备与终止 ExpressRoute 线路（PE/CE）的路由器之间的链接故障检测。 可以通过客户边缘路由设备或合作伙伴边缘路由设备终止 ExpressRoute（如果使用托管的第 3 层连接服务）。 本文档将逐步讲解 BFD 的需求，以及如何启用基于 ExpressRoute 的 BFD。
+ExpressRoute 支持通过专用和 Microsoft 对等互连进行双向转发检测（BFD）。 通过 ExpressRoute 启用 BFD，可以加快 Microsoft 企业边缘（MSEE）设备与终止 ExpressRoute 线路（CE/PE）的路由器之间的链接故障检测。 可以通过客户边缘路由设备或合作伙伴边缘路由设备终止 ExpressRoute（如果使用托管的第 3 层连接服务）。 本文档将逐步讲解 BFD 的需求，以及如何启用基于 ExpressRoute 的 BFD。
 
 ## <a name="need-for-bfd"></a>BFD 的需求
 
@@ -27,16 +27,16 @@ ExpressRoute 支持基于专用对等互连的双向转发检测 (BFD)。 通过
 
 在 MSEE 设备上，BGP keepalive 和保持时间通常分别配置为 60 和 180 秒。 因此，在发生链路故障后，最多需要三分钟才能检测到任何链路故障并将流量切换到备用连接。
 
-可以通过在客户边缘对等互连设备上配置较低的 BGP keepalive 和保持时间来控制 BGP 计时器。 如果两个对等互连设备之间的 BGP 计时器不匹配，则对等方之间的 BGP 会话将使用较低的计时器值。 BGP keepalive 最低可设置为 3 秒，保持时间是 10 的数量级秒。 但是，由于协议是进程密集型的，因此，激进地设置 BGP 计时器不太可取。
+可以通过在客户边缘对等互连设备上配置较低的 BGP keepalive 和保持时间来控制 BGP 计时器。 如果两个对等互连设备之间的 BGP 计时器不匹配，则对等方之间的 BGP 会话将使用较低的计时器值。 BGP keepalive 最低可设置为 3 秒，保持时间是 10 的数量级秒。 不过，由于协议的处理工作量很高，因此主动设置 BGP 计时器更不可取。
 
 在这种情况下，BFD 可发挥作用。 BFD 能够以亚秒级的时间间隔提供低开销的链路故障检测。 
 
 
 ## <a name="enabling-bfd"></a>启用 BFD
 
-在 MSEE 上所有新建的 ExpressRoute 专用对等互连接口中，默认已配置 BFD。 因此，若要启用 BFD，只需在你的 Pe/CEs 上配置 BFD （主要和辅助设备上）。 配置 BFD 的过程分为两步：需要在接口上配置 BFD，并将其链接到 BGP 会话。
+在 MSEE 上所有新建的 ExpressRoute 专用对等互连接口中，默认已配置 BFD。 因此，若要启用 BFD，只需在你的 CEs/Pe 上配置 BFD （主要和辅助设备上）。 配置 BFD 的过程分为两步：需要在接口上配置 BFD，并将其链接到 BGP 会话。
 
-下面显示了一个 PE/CE （使用 Cisco IOS XE）配置示例。 
+下面显示了一个示例 CE/PE （使用 Cisco IOS XE）配置。 
 
     interface TenGigabitEthernet2/0/0.150
       description private peering to Azure
@@ -64,7 +64,7 @@ ExpressRoute 支持基于专用对等互连的双向转发检测 (BFD)。 通过
 在两个 BFD 对等方之间，速度较慢的对等方决定了传输速率。 MSEE BFD 传输/接收间隔设置为 300 毫秒。 在某些情况下，可以将间隔设置为 750 毫秒的较高值。 通过配置较高的值，可以强制这些间隔变得更长；但无法变得更短。
 
 >[!NOTE]
->如果已配置异地冗余的 ExpressRoute 专用对等互连线路，或使用站点到站点 IPSec VPN 连接作为 ExpressRoute 专用对等互连的备用连接，则启用基于专用对等互连的 BFD 有助于在发生 ExpressRoute 连接故障后加快故障转移的速度。 
+>如果已配置异地冗余 ExpressRoute 线路，或者使用站点到站点 IPSec VPN 连接作为备份，则为;启用 BFD 有助于在 ExpressRoute 连接失败之后更快地进行故障转移。 
 >
 
 ## <a name="next-steps"></a>后续步骤

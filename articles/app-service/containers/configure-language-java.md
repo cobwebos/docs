@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 26f9bac42ef98f1063194340a5aa20aef6fe316e
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: fa3cd84978119a5858e63712b4d22c2ea89ea528
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972938"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470900"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>为 Azure App Service 配置 Linux Java 应用
 
@@ -53,13 +53,13 @@ Linux 上的 Azure 应用服务可让 Java 开发人员在完全托管的基于 
 
 ### <a name="app-logging"></a>应用日志记录
 
-通过 Azure 门户或 [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) 启用[应用程序日志记录](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enable-application-logging-windows)，以将应用服务配置为向本地文件系统或 Azure Blob 存储写入应用程序的标准控制台输出和标准控制台错误流。 在完成配置并经过 12 个小时后，将禁用记录到应用服务本地文件系统实例。 如果需要保留日志更长时间，请将应用程序配置为向 Blob 存储容器写入输出。 可以在 */home/LogFiles/Application/* 目录中找到 Java 和 Tomcat 应用日志。
+通过 Azure 门户或 [Azure CLI](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enable-application-logging-windows) 启用[应用程序日志记录](/cli/azure/webapp/log#az-webapp-log-config)，以将应用服务配置为向本地文件系统或 Azure Blob 存储写入应用程序的标准控制台输出和标准控制台错误流。 在完成配置并经过 12 个小时后，将禁用记录到应用服务本地文件系统实例。 如果需要保留日志更长时间，请将应用程序配置为向 Blob 存储容器写入输出。 可以在 */home/LogFiles/Application/* 目录中找到 Java 和 Tomcat 应用日志。
 
 如果应用程序使用 [Logback](https://logback.qos.ch/) 或 [Log4j](https://logging.apache.org/log4j) 进行跟踪，则你可以遵照[在 Application Insights 中浏览 Java 跟踪日志](/azure/application-insights/app-insights-java-trace-logs)中的日志记录框架配置说明，将这些用于审查的跟踪写入到 Azure Application Insights。
 
 ### <a name="troubleshooting-tools"></a>疑难解答工具
 
-内置 Java 映像基于[Alpine Linux](https://alpine-linux.readthedocs.io/en/latest/getting_started.html)操作系统。 使用 `apk` 包管理器安装任何故障排除工具或命令。
+内置 Java 映像基于[Alpine Linux](https://alpine-linux.readthedocs.io/en/latest/getting_started.html)操作系统。 使用 `apk` 程序包管理器安装任何故障排除工具或命令。
 
 ### <a name="flight-recorder"></a>网络流量记录器
 
@@ -67,7 +67,7 @@ Linux 上的 Azure 应用服务可让 Java 开发人员在完全托管的基于 
 
 #### <a name="timed-recording"></a>定时录制
 
-若要开始，请通过 SSH 连接到应用服务，并运行 `jcmd` 命令以查看所有正在运行的 Java 进程的列表。 除了 jcmd 本身以外，你还应该看到你的 Java 应用程序运行时使用的是进程 ID 号（pid）。
+若要开始，请通过 SSH 连接到应用服务，并运行 `jcmd` 命令，以查看所有正在运行的 Java 进程的列表。 除了 jcmd 本身以外，你还应该看到你的 Java 应用程序运行时使用的是进程 ID 号（pid）。
 
 ```shell
 078990bbcd11:/home# jcmd
@@ -82,7 +82,7 @@ Picked up JAVA_TOOL_OPTIONS: -Djava.net.preferIPv4Stack=true
 jcmd 116 JFR.start name=MyRecording settings=profile duration=30s filename="/home/jfr_example.jfr"
 ```
 
-在30秒的时间间隔内，可以通过运行 `jcmd 116 JFR.check` 来验证录制是否正在进行。 这会显示给定 Java 进程的所有录制。
+在30秒的时间间隔内，可以通过运行 `jcmd 116 JFR.check`来验证录制是否正在进行。 这会显示给定 Java 进程的所有录制。
 
 #### <a name="continuous-recording"></a>连续录制
 
@@ -110,7 +110,7 @@ jcmd <pid> JFR.dump name=continuous_recording filename="/home/recording1.jfr"
 
 - [配置应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)
 - [设置自定义域](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [启用 SSL](../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [配置 SSL 绑定](../configure-ssl-bindings.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [添加 CDN](../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [配置 Kudu 站点](https://github.com/projectkudu/kudu/wiki/Configurable-settings#linux-on-app-service-settings)
 
@@ -118,7 +118,7 @@ jcmd <pid> JFR.dump name=continuous_recording filename="/home/recording1.jfr"
 
 若要在 Tomcat 和 Java SE 环境中设置分配的内存或其他 JVM 运行时选项，请使用选项创建名为 `JAVA_OPTS` 的[应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 应用服务 Linux 在启动时，会将此设置作为环境变量传递给 Java 运行时。
 
-在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含其他设置的新应用设置，例如 `-Xms512m -Xmx1204m`。
+在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 **且包含其他设置的新应用设置，例如**。`JAVA_OPTS``-Xms512m -Xmx1204m`
 
 若要通过 Maven 插件配置应用设置，请在 Azure 插件部分中添加设置/值标记。 以下示例设置特定的最小和最大 Java 堆大小：
 
@@ -160,7 +160,7 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ### <a name="set-default-character-encoding"></a>设置默认的字符编码
 
-在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含值 `-Dfile.encoding=UTF-8` 的新应用设置。
+在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 **且包含值** 的新应用设置。`JAVA_OPTS``-Dfile.encoding=UTF-8`
 
 或者，可以使用应用服务 Maven 插件配置应用设置。 在插件配置中添加设置名称和值标记：
 
@@ -229,7 +229,7 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 
 ### <a name="configure-tlsssl"></a>配置 TLS/SSL
 
-遵照[绑定现有的自定义 SSL 证书](../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)中的说明上传现有的 SSL 证书，并将其绑定到应用程序的域名。 默认情况下，应用程序仍允许 HTTP 连接 - 请遵循教程中的具体步骤来强制实施 SSL 和 TLS。
+按照[使用 Azure App Service 中的 SSL 绑定安全自定义 DNS 名称](../configure-ssl-bindings.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)中的说明上载现有的 SSL 证书，并将其绑定到应用程序的域名。 默认情况下，应用程序仍允许 HTTP 连接 - 请遵循教程中的具体步骤来强制实施 SSL 和 TLS。
 
 ### <a name="use-keyvault-references"></a>使用 KeyVault 引用
 
@@ -273,13 +273,13 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 
 ### <a name="starting-jar-apps"></a>启动 JAR 应用
 
-默认情况下，应用服务需要 JAR 应用程序的名称为*app.config*。 如果它具有此名称，它将自动运行。 对于 Maven 用户，可以通过在*pom*的 @no__t 部分包含 `<finalName>app</finalName>` 来设置 JAR 名称。 可以通过设置 `archiveFileName` 属性[在 Gradle 中执行相同的操作](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName)。
+默认情况下，应用服务需要 JAR 应用程序的名称为*app.config*。 如果它具有此名称，它将自动运行。 对于 Maven 用户，你可以通过将 `<finalName>app</finalName>` 包含在*pom*的 `<build>` 部分来设置 JAR 名称。 可以通过设置 `archiveFileName` 属性[在 Gradle 中执行相同的操作](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName)。
 
-如果要将其他名称用于 JAR，则还必须提供执行 JAR 文件的[启动命令](app-service-linux-faq.md#built-in-images)。 例如， `java -jar my-jar-app.jar` 。 你可以在门户中的 "配置" > "常规设置" 下或使用名为 "@no__t" 的应用程序设置中设置 "启动" 命令的值。
+如果要将其他名称用于 JAR，则还必须提供执行 JAR 文件的[启动命令](app-service-linux-faq.md#built-in-images)。 例如，`java -jar my-jar-app.jar`。 可以在门户中的 "配置" > "常规设置" 下或使用名为 "`STARTUP_COMMAND`" 的应用程序设置中设置 "启动" 命令的值。
 
 ### <a name="server-port"></a>服务器端口
 
-应用服务 Linux 将传入的请求路由到端口80，因此，应用程序还应在端口80上进行侦听。 你可以在应用程序的配置（如春季的*application. properties*文件）中或在启动命令中执行此操作（例如 `java -jar spring-app.jar --server.port=80`）。 有关常见 Java 框架，请参阅以下文档：
+应用服务 Linux 将传入的请求路由到端口80，因此，应用程序还应在端口80上进行侦听。 你可以在应用程序的配置（如春季的*application. properties*文件）中或在启动命令中执行此操作（例如，`java -jar spring-app.jar --server.port=80`）。 有关常见 Java 框架，请参阅以下文档：
 
 - [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-properties-and-configuration.html#howto-use-short-command-line-arguments)
 - [SparkJava](http://sparkjava.com/documentation#embedded-web-server)
@@ -311,7 +311,7 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 </appSettings>
 ```
 
-或者在 Azure 门户中的“配置” > “应用程序设置”页上设置环境变量。
+或者在 Azure 门户中的“配置” **“应用程序设置”页上设置环境变量。**  > 
 
 接下来，确定数据源应当供一个应用程序使用，还是供在 Tomcat servlet 上运行的所有应用程序使用。
 
@@ -352,7 +352,7 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
     cp -a /usr/local/tomcat/conf /home/tomcat/conf
     ```
 
-2. 在 `<Server>` 元素内的*server .xml*中添加一个上下文元素。
+2. 在 `<Server>` 元素内的*服务器 .xml*中添加一个上下文元素。
 
     ```xml
     <Server>
@@ -384,7 +384,7 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 
 最后，将驱动程序 Jar 置于 Tomcat 类路径中，然后重新启动应用服务。
 
-1. 将 JDBC 驱动程序文件放入 */home/tomcat/lib* 目录，确保它们可供 Tomcat 类加载器使用。 （如果此目录尚未存在，请创建它。）若要将这些文件上传到应用服务实例，请执行以下步骤：
+1. 将 JDBC 驱动程序文件放入 */home/tomcat/lib* 目录，确保它们可供 Tomcat 类加载器使用。 （如果此目录尚不存在，请创建它。）若要将这些文件上传到应用服务实例，请执行以下步骤：
 
     1. 在[Cloud Shell](https://shell.azure.com)中，安装 webapp 扩展：
 
@@ -410,7 +410,7 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 
 1. 在 "应用服务" 页的 "配置" 部分中，设置字符串的名称，将 JDBC 连接字符串粘贴到 "值" 字段，并将 "类型" 设置为 "自定义"。 您可以选择将此连接字符串设置为槽设置。
 
-    应用程序可以访问此连接字符串，作为名为 `CUSTOMCONNSTR_<your-string-name>` 的环境变量。 例如，我们在上面创建的连接字符串将命名为 `CUSTOMCONNSTR_exampledb`。
+    应用程序可以访问此连接字符串，作为名为 `CUSTOMCONNSTR_<your-string-name>`的环境变量。 例如，我们在上面创建的连接字符串将命名为 `CUSTOMCONNSTR_exampledb`。
 
 2. 在*应用程序*的 "属性" 文件中，用环境变量名称引用此连接字符串。 对于我们的示例，我们将使用以下方法。
 
@@ -471,7 +471,7 @@ Web 应用实例是无状态的，因此在启动时必须配置每个新实例�
 - [XML 模块描述符](https://jboss-modules.github.io/jboss-modules/manual/#descriptors)。 此 XML 文件定义模块的名称、属性和依赖项。 此[示例 module.xml 文件](https://access.redhat.com/documentation/en-us/jboss_enterprise_application_platform/6/html/administration_and_configuration_guide/example_postgresql_xa_datasource)定义了 Postgres 模块、其 JAR 文件 JDBC 依赖项以及所需的其他模块依赖项。
 - 模块的任何必要 JAR 文件依赖项。
 - 具有 JBoss CLI 命令的脚本，用于配置新模块。 该文件将包含 JBoss CLI 要执行的命令，以配置服务器使用依赖项。 有关添加模块、数据源和消息提供程序的命令的文档，请参阅[本文档](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli)。
-- 用于调用 JBoss CLI 和执行上一步中脚本的 Bash 启动脚本。 重启应用服务实例或在横向扩展期间配置新实例时，将执行此文件。当 JBoss 命令传递给 JBoss CLI 时，可在此启动脚本中为应用程序执行任何其他配置。 此文件可以是将 JBoss CLI 命令脚本传递给 JBoss CLI 的最小单个命令：
+- 用于调用 JBoss CLI 和执行上一步中脚本的 Bash 启动脚本。 当你的应用服务实例已重启或在扩展期间设置新实例时，将执行此文件。此启动脚本用于在将 JBoss 命令传递到 JBoss CLI 时，为应用程序执行任何其他配置。 此文件可以是将 JBoss CLI 命令脚本传递给 JBoss CLI 的最小单个命令：
 
 ```bash
 /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/path/to/your/jboss_commands.cli
@@ -480,7 +480,7 @@ Web 应用实例是无状态的，因此在启动时必须配置每个新实例�
 获取模块的文件和内容后，请按照以下步骤将模块添加到 WildFly 应用程序服务器。
 
 1. 使用 FTP 将文件上传到 */home*目录下应用服务实例中的某个位置，例如 */home/site/deployments/tools*。 有关详细信息，请参阅[使用 FTP/S 将应用部署到 Azure App Service](../deploy-ftp.md)。
-2. 在 "**配置**@no__t" Azure 门户的 "**常规设置**" 页中，将 "**启动脚本**" 字段设置为启动 shell 脚本的位置，例如 */home/site/deployments/tools/startup.sh*。
+2. 在 "**配置** > Azure 门户的"**常规设置**"页中，将"**启动脚本**"字段设置为启动 shell 脚本的位置，例如 */home/site/deployments/tools/startup.sh*。
 3. 按门户的 "**概述**" 部分中的 "**重新启动**" 按钮或使用 Azure CLI 重启应用服务实例。
 
 ### <a name="configure-data-sources"></a>配置数据源
@@ -489,13 +489,13 @@ Web 应用实例是无状态的，因此在启动时必须配置每个新实例�
 
 本部分假定你已有应用程序、应用服务实例和 Azure 数据库服务实例。 以下说明涉及到你的应用服务名称、其资源组和数据库连接信息。 可以在 Azure 门户中找到此信息。
 
-如果你想要从开始使用示例应用的整个过程开始，请参阅 [Tutorial：在 Azure @ no__t 中生成 Java EE 和 Postgres web 应用。
+如果你想要从开始使用示例应用的整个过程开始，请参阅[教程：在 Azure 中生成 JAVA EE 和 Postgres web 应用](tutorial-java-enterprise-postgresql-app.md)。
 
 以下步骤说明了连接现有应用服务和数据库的要求。
 
 1. 下载适用于[PostgreSQL](https://jdbc.postgresql.org/download.html)、 [MySQL](https://dev.mysql.com/downloads/connector/j/)或[SQL Server](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)的 JDBC 驱动程序。 解压缩已下载的存档以获取驱动程序 .jar 文件。
 
-2. 使用类似于*module*的名称创建文件，并添加以下标记。 将 `<module name>` 占位符（包括尖括号）替换为 PostgreSQL 的 `org.postgres`，`com.mysql` for MySQL，或 SQL Server @no__t 为3。 将 `<JDBC .jar file path>` 替换为上一步骤中的 .jar 文件的名称，包括将文件放置在应用服务实例中的位置的完整路径。 这可以是 */home*目录下的任何位置。
+2. 使用类似于*module*的名称创建文件，并添加以下标记。 将 `<module name>` 占位符（包括尖括号）替换为适用于 PostgreSQL 的 `org.postgres`，为 MySQL `com.mysql`，或将 `com.microsoft` 用于 SQL Server。 将 `<JDBC .jar file path>` 替换为上一步骤中 .jar 文件的名称，包括将文件放置在应用服务实例中的位置的完整路径。 这可以是 */home*目录下的任何位置。
 
     ```xml
     <?xml version="1.0" ?>
@@ -510,7 +510,7 @@ Web 应用实例是无状态的，因此在启动时必须配置每个新实例�
     </module>
     ```
 
-3. 使用类似于*datasource-commands*的名称创建文件，并添加以下代码。 将 `<JDBC .jar file path>` 替换为在上一步中使用的值。 将 `<module file path>` 替换为上一步骤中的文件名和应用服务路径，例如 */home/module.xml*。
+3. 使用类似于*datasource-commands*的名称创建文件，并添加以下代码。 将 `<JDBC .jar file path>` 替换为在上一步中使用的值。 将 `<module file path>` 替换为上一步中的文件名和应用服务路径，例如 */home/module.xml*。
 
     **PostgreSQL**
 
@@ -559,7 +559,7 @@ Web 应用实例是无状态的，因此在启动时必须配置每个新实例�
 
 5. 使用 FTP 将 JDBC .jar 文件、模块 XML 文件、JBoss CLI 脚本和启动脚本上传到应用服务实例。 将这些文件放在之前步骤中指定的位置，例如 */home*。 有关 FTP 的详细信息，请参阅[使用 ftp/S 将应用部署到 Azure App Service](https://docs.microsoft.com/azure/app-service/deploy-ftp)。
 
-6. 使用 Azure CLI 向应用服务添加保存数据库连接信息的设置。 使用应用服务使用的值替换 `<resource group>` 并 `<webapp name>`。 将 `<database server name>`、`<database name>`、`<admin name>` 和 @no__t 3 替换为你的数据库连接信息。 可以从 Azure 门户获取应用服务和数据库信息。
+6. 使用 Azure CLI 向应用服务添加保存数据库连接信息的设置。 将 `<resource group>` 和 `<webapp name>` 替换为应用服务使用的值。 将 `<database server name>`、`<database name>`、`<admin name>`和 `<admin password>` 替换为你的数据库连接信息。 可以从 Azure 门户获取应用服务和数据库信息。
 
     **PostgreSQL**
 
@@ -601,7 +601,7 @@ Web 应用实例是无状态的，因此在启动时必须配置每个新实例�
     * **MySQL：** `jdbc:mysql://<database server name>:3306/<database name>?ssl=true\&useLegacyDatetimeCode=false\&serverTimezone=GMT`
     * **SQL Server：** `jdbc:sqlserver://<database server name>:1433;database=<database name>;user=<admin name>;password=<admin password>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;`
 
-7. 在 Azure 门户中，导航到应用服务，并找到 "**配置** > **常规设置**" 页。 将 "**启动脚本**" 字段设置为启动脚本的名称和位置，例如 */home/startup.sh*。
+7. 在 Azure 门户中，导航到应用服务，并找到 "**配置**" > "**常规设置**" 页。 将 "**启动脚本**" 字段设置为启动脚本的名称和位置，例如 */home/startup.sh*。
 
 下次应用服务重新启动时，它将运行启动脚本并执行必要的配置步骤。 若要测试此配置是否正常发生，可以使用 SSH 访问应用服务，然后从 Bash 提示符自行运行启动脚本。 你还可以检查应用服务日志。 有关这些选项的详细信息，请参阅[日志记录和调试应用](#logging-and-debugging-apps)。
 
@@ -659,7 +659,7 @@ Web 应用实例是无状态的，因此在启动时必须配置每个新实例�
 
 1. 打开 Bash 终端并使用 `export <variable>=<value>` 设置以下每个环境变量。
 
-    | 变量                 | ReplTest1                                                                      |
+    | 变量                 | 值                                                                      |
     |--------------------------|----------------------------------------------------------------------------|
     | RESOURCEGROUP_NAME       | 包含应用服务实例的资源组的名称。       |
     | WEBAPP_NAME              | 应用服务实例的名称。                                     |
@@ -710,9 +710,9 @@ Web 应用实例是无状态的，因此在启动时必须配置每个新实例�
 
 7. 导航到 Redis 实例的 "**高级设置**" 部分，将 "**仅允许通过 SSL 访问**" 设置为 "**否**"。 这样，应用服务实例便可通过 Azure 基础结构与 Redis 缓存通信。
 
-8. 在应用的*pom .xml*文件中更新 `azure-webapp-maven-plugin` 配置以引用你的 Redis 帐户信息。 此文件使用您之前设置的环境变量来保留源文件中的帐户信息。
+8. 更新应用的*pom .xml*文件中的 `azure-webapp-maven-plugin` 配置，以引用你的 Redis 帐户信息。 此文件使用您之前设置的环境变量来保留源文件中的帐户信息。
 
-    如有必要，请将 `1.7.0` 更改为[适用于 Azure 应用服务的 Maven 插件](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)的当前版本。
+    如有必要，请将 `1.7.0` 更改为 Azure App Service 的[Maven 插件](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)的当前版本。
 
     ```xml
     <plugin>
@@ -769,7 +769,7 @@ Web 应用实例是无状态的，因此在启动时必须配置每个新实例�
 
 ## <a name="docker-containers"></a>Docker 容器
 
-若要在容器中使用 Azure 支持的 Zulu JDK，请确保拉取并使用[受支持的 Azul Zulu Enterprise for Azure 下载页面](https://www.azul.com/downloads/azure-only/zulu/)中提到的预构建的映像，或使用 [Microsoft Java GitHub 存储库](https://github.com/Microsoft/java/tree/master/docker)中的 `Dockerfile` 示例。
+若要在容器中使用 Azure 支持的 Zulu JDK，请确保拉取并使用[受支持的 Azul Zulu Enterprise for Azure 下载页面](https://www.azul.com/downloads/azure-only/zulu/)中提到的预构建的映像，或使用 `Dockerfile`Microsoft Java GitHub 存储库[中的 ](https://github.com/Microsoft/java/tree/master/docker) 示例。
 
 ## <a name="statement-of-support"></a>支持声明
 

@@ -1,5 +1,5 @@
 ---
-title: MLOps:管理、部署、& 监视 ML 模型
+title: MLOps：管理、部署 & 监视 ML 模型
 titleSuffix: Azure Machine Learning
 description: 了解如何使用用于 MLOps 的 Azure 机器学习：部署、管理和监视模型，以便不断地改善它们。 可以在本地计算机上部署通过 Azure 机器学习训练的模型，也可从其他源进行部署。
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 06/24/2019
+ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98a3102d47504b40a6b62eb329b508468947ca79
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 8741a9a362a10dfdb0150c9dc0dfddeed54594a7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035469"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497442"
 ---
-# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps:通过 Azure 机器学习管理、部署和监视模型
+# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps：管理、部署和监视 Azure 机器学习的模型
 
 本文介绍如何使用 Azure 机器学习来管理模型的生命周期。 Azure 机器学习使用机器学习操作（MLOps）方法，该方法可提高机器学习解决方案的质量和一致性。 
 
@@ -45,7 +45,7 @@ Azure 机器学习提供以下 MLOps 功能：
 通过模型注册，可在 Azure 云的工作区中存储模型并确定模型版本。 使用模型注册表，可轻松组织和跟踪定型的模型。
 
 > [!TIP]
-> 已注册的模型是组成模型的一个或多个文件的逻辑容器。 例如, 如果您有一个存储在多个文件中的模型, 则可以将它们作为一个模型注册到 Azure 机器学习工作区中。 注册后, 可以下载或部署已注册的模型, 并接收已注册的所有文件。
+> 已注册的模型是组成模型的一个或多个文件的逻辑容器。 例如，如果您有一个存储在多个文件中的模型，则可以将它们作为一个模型注册到 Azure 机器学习工作区中。 注册后，可以下载或部署已注册的模型，并接收已注册的所有文件。
  
 按名称和版本标识已注册的模型。 每次使用与现有名称相同的名称来注册模型时，注册表都会将版本递增。 也可在注册过程中提供其他的元数据标记，这些标记可以在搜索模型时使用。 Azure 机器学习支持可使用 Python 3.5.2 或更高版本加载的任何模型。
 
@@ -89,7 +89,7 @@ Azure 机器学习可以使用分析来确定部署模型时要使用的理想 C
 或者，你可以使用以下参数来进一步优化部署：
 
 * 启用 GPU：用于在 Docker 映像中启用 GPU 支持。 必须在 Microsoft Azure 服务（如 Azure 容器实例、Azure Kubernetes 服务、Azure 机器学习计算或 Azure 虚拟机）上使用映像。
-* 额外的 docker 文件步骤：一个文件，其中包含创建 Docker 映像时要运行的其他 Docker 步骤。
+* 额外的 docker 文件步骤：包含创建 Docker 映像时要运行的其他 Docker 步骤的文件。
 * 基本映像：用作基础映像的自定义映像。 如果不使用自定义映像，则 Azure 机器学习提供基本映像。
 
 还提供目标部署平台的配置。 例如，在部署到 Azure Kubernetes 服务时，VM 家族类型、可用内存和核心数。
@@ -137,7 +137,7 @@ Microsoft Power BI 支持使用机器学习模型进行数据分析。 有关详
 
 ## <a name="capture-an-end-to-end-audit-trail-of-the-ml-lifecycle"></a>捕获 ML 生命周期的端到端审核线索
 
-Azure ML 使你能够跟踪所有 ML 资产的端到端审核记录。 尤其是在下列情况下：
+Azure ML 使你能够跟踪所有 ML 资产的端到端审核记录。 具体而言：
 
 - Azure ML[与 Git 集成](how-to-set-up-training-targets.md#gitintegration)，以跟踪你的代码所来自的存储库/分支/提交的信息。
 - [AZURE ML 数据集](how-to-create-register-datasets.md)可帮助你跟踪和版本数据。
@@ -157,7 +157,7 @@ Azure ML 使你能够跟踪所有 ML 资产的端到端审核记录。 尤其是
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解[如何以及在何处部署](how-to-deploy-and-where.md)具有 Azure 机器学习的模型。 有关部署的示例，请参阅[教程：在 Azure 容器实例](tutorial-deploy-models-with-aml.md)中部署图像分类模型。
+详细了解[如何以及在何处部署](how-to-deploy-and-where.md)具有 Azure 机器学习的模型。 有关部署的示例，请参阅[教程：在 Azure 容器实例中部署图像分类模型](tutorial-deploy-models-with-aml.md)。
 
 了解如何[通过 Azure Pipelines 创建 ML 模型的持续集成和部署](/azure/devops/pipelines/targets/azure-machine-learning)。 
 

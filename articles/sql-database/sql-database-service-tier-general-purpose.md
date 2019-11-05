@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/07/2019
-ms.openlocfilehash: 1c6bb557c11cf32449b440b0007e1cef929a026f
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: b4c0f88a1a21b0734c1652d19f74dc662d0a7ce1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259414"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496208"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>“常规用途”服务层级 - Azure SQL 数据库
 
@@ -48,7 +48,7 @@ Azure SQL 数据库基于 SQL Server 数据库引擎体系结构，该体系结�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在[托管实例](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)中查找“常规用途/标准”层级的资源特征（核心数、IO 数、内存数），在 [vCore 模型](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute)或 [DTU 模型](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)中查找单一数据库，在 [vCore 模型](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)和 [DTU 模型](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits)中查找弹性池。
+- 在[托管实例](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)中查找“常规用途/标准”层级的资源特征（核心数、IO 数、内存数），在 [vCore 模型](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4)或 [DTU 模型](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)中查找单一数据库，在 [vCore 模型](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose---provisioned-compute---gen4)和 [DTU 模型](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits)中查找弹性池。
 - 了解[业务关键](sql-database-service-tier-business-critical.md)和[超大规模](sql-database-service-tier-hyperscale.md)层。
 - 了解 [Service Fabric](../service-fabric/service-fabric-overview.md)。
 - 有关高可用性和灾难恢复的更多选项，请参阅[业务连续性](sql-database-business-continuity.md)。

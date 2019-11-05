@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: hrasheed
-ms.openlocfilehash: c26c0b16331ae01f7505e44cef3fe91b3282750b
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 09696f5a3df7cc4170c57b862a11bbd5a82e2bc9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809861"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494802"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>使用 Azure CLI 创建 HDInsight 群集
 
@@ -23,9 +23,9 @@ ms.locfileid: "70809861"
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 Azure CLI。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 来了解步骤。
 
@@ -44,12 +44,12 @@ Azure CLI。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](https://
 
 2. 设置环境变量。 本文中的变量用法基于 Bash。 在其他环境中需要进行细微的更改。 有关用于群集创建的可能参数的完整列表，请参见 [az-hdinsight-create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)。
 
-    |参数 | 描述 |
+    |参数 | 说明 |
     |---|---|
     |`--size`| 群集中的工作器节点数。 本文使用变量 `clusterSizeInNodes` 作为传递给 `--size` 的值。 |
     |`--version`| HDInsight 群集版本。 本文使用变量 `clusterVersion` 作为传递给 `--version` 的值。 另请参阅：[支持的 HDInsight 版本](./hdinsight-component-versioning.md#supported-hdinsight-versions)。|
     |`--type`| HDInsight 群集的类型，如：hadoop、interactivehive、hbase、Kafka、storm、spark、rserver、mlservices。  本文使用变量 `clusterType` 作为传递给 `--type` 的值。 另请参阅：[群集类型和配置](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。|
-    |`--component-version`|各种 Hadoop 组件的版本，采用“component=version”格式的空格分隔版本。 本文使用变量 `componentVersion` 作为传递给 `--component-version` 的值。 另请参阅：[Hadoop 组件](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)。|
+    |`--component-version`|各种 Hadoop 组件的版本，采用“component=version”格式的空格分隔版本。 本文使用变量 `componentVersion` 作为传递给 `--component-version` 的值。 另请参阅： [Hadoop 组件](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)。|
 
     将 `RESOURCEGROUPNAME`、`LOCATION`、`CLUSTERNAME`、`STORAGEACCOUNTNAME` 和 `PASSWORD` 替换为所需的值。 根据需要更改其他变量的值。 然后输入 CLI 命令。
 
@@ -130,13 +130,13 @@ Azure CLI。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](https://
     ```
 
     > [!IMPORTANT]  
-    > HDInsight 群集具有各种不同的类型，与该群集进行优化的工作负荷或技术相对应。 没有任何方法支持创建组合多种类型的群集，如一个群集同时具有 Storm 和 HBase 类型。
+    > HDInsight 群集具有各种不同的类型，与该群集进行优化的工作负荷或技术相对应。 不支持在一个群集上创建合并了多个类型（如 Storm 和 HBase）的群集。
 
     可能需要几分钟时间才能完成群集创建过程。 通常大约为 15 分钟。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本文后，可以删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。
+完成本文后，可以删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要支付 HDInsight 群集费用，即使未使用。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。
 
 输入以下命令中的全部或部分来删除资源：
 

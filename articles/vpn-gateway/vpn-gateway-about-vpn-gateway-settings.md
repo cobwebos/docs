@@ -5,20 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: fa08ea44722b2def684c269c3f9a0a30a4890a12
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 64a162b9d2f83b4bc703f5912116fd302fcb601c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970909"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495716"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>关于 VPN 网关配置设置
 
-VPN 网关是一种虚拟网络网关，它通过公共连接在虚拟网络和本地位置之间发送加密流量。 还可使用 VPN 网关跨 Azure 主干网在虚拟网络间发送流量。
+VPN 网关是一种虚拟网络网关，可跨公共连接在虚拟网络和本地位置发送加密的流量。 还可使用 VPN 网关跨 Azure 主干网在虚拟网络间发送流量。
 
-VPN 网关连接依赖于多个资源的配置，每个资源都包含可配置的设置。 本文的各部分介绍了与在 Resource Manager 部署模型中创建的虚拟网络的 VPN 网关相关的资源和设置。 可在 [关于 VPN 网关](vpn-gateway-about-vpngateways.md)一文中找到每种连接解决方案的介绍和拓扑图。
+VPN 网关连接依赖于多个资源配置，其中每个资源包含可配置的设置。 本文的各部分介绍了与在 Resource Manager 部署模型中创建的虚拟网络的 VPN 网关相关的资源和设置。 可在 [关于 VPN 网关](vpn-gateway-about-vpngateways.md)一文中找到每种连接解决方案的介绍和拓扑图。
 
 本文中的值适用于 VPN 网关（使用 -GatewayType Vpn 的虚拟网络网关）。 本文未涵盖所有网关类型或区域冗余网关。
 
@@ -79,9 +79,9 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --r
 
 如果具有 VPN 网关并且希望使用不同的网关 SKU，则可以采用的选项是调整网关 SKU 的大小，或者更改为另一个 SKU。 如果更改为另一个网关 SKU，这会完全删除现有网关并构建一个新网关。 构建网关最多可能需要 45 分钟。 与之相比，当调整网关 SKU 的大小时，停机时间非常短，因为这不需要删除并重建网关。 如果能够调整网关 SKU 的大小而不需要更改它，则这是首选方式。 但是，大小调整有如下规则：
 
-1. 可以在 VpnGw1 SKU、VpnGw2 SKU 和 VpnGw3 SKU 之间调整大小。
+1. 除了基本 SKU 以外，你还可以将 VPN 网关 SKU 重设为同一代内的另一个 VPN 网关 SKU （Generation1.xml 或 Generation2）。 例如，可以将 Generation1.xml 的 VpnGw1 调整为 VpnGw2 of Generation1.xml，而不是 VpnGw2 的 Generation2。
 2. 使用旧版网关 SKU 时，仍可在基本、标准和高性能 SKU 之间调整大小。
-3. 不能从基本/标准/高性能 SKU 调整为新版 VpnGw1/VpnGw2/VpnGw3 SKU， 而只能[更改](#change)为新版 SKU。
+3. **不能**从基本/标准/高性能 sku 调整为 VpnGw sku。 而只能[更改](#change)为新版 SKU。
 
 #### <a name="resizegwsku"></a>重设网关大小
 
@@ -100,7 +100,7 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --r
 * ExpressRoute
 * VPNClient
 
-以下 PowerShell 示例创建需要 *IPsec* 连接类型的 S2S 连接。
+在以下 PowerShell 示例中，我们将创建需要 *IPsec* 连接类型的 S2S 连接。
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
@@ -169,7 +169,7 @@ New-AzLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 
 有关将 REST API、PowerShell cmdlet 或 Azure CLI 用于 VPN 网关配置的其他技术资源和具体语法要求，请参阅以下页面：
 
-| **经典** | **资源管理器** |
+| **经典** | **Resource Manager** |
 | --- | --- |
 | [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
 | [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |

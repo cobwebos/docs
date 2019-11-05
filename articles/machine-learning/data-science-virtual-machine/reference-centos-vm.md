@@ -1,5 +1,5 @@
 ---
-title: 参考：CentOS DSVM
+title: 参考： CentOS DSVM
 description: CentOS 中包含的工具的详细信息 Data Science Virtual Machine
 author: gvashishtha
 ms.service: machine-learning
@@ -7,14 +7,14 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: d50bb18d15bcad72eed3a97088b61c623e6208fe
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 0f71a8af2f7d2cfbfe43c0cfcc84cc7c08109c32
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71199989"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493719"
 ---
-# <a name="reference-centos-linux-data-science-virtual-machine"></a>参考：CentOS （Linux） Data Science Virtual Machine
+# <a name="reference-centos-linux-data-science-virtual-machine"></a>参考： CentOS （Linux） Data Science Virtual Machine
 
 Linux Data Science Virtual Machine (DSVM) 是基于 CentOS 的 Azure 虚拟机。 Linux DSVM 随附一系列预安装的工具，用于进行数据分析和机器学习。 
 
@@ -57,7 +57,7 @@ R 是数据分析和机器学习的最常用语言之一。 若要使用 R 进�
 
 可以使用 Machine Learning Server 将 R 模型缩放和实施为 Web 服务。 可以在其中一个默认编辑器（如 RStudio、vi 或 Emacs）中编辑 R 程序。 Emacs 编辑器已预装在 DSVM 上。 Emacs ESS (Emacs Speaks Statistics) 可简化 Emacs 编辑器中 R 文件的处理。
 
-若要打开 R 控制台，请在 shell 中输入 **R**。执行此命令将进入交互式环境。 若要开发 R 程序，通常会使用 Emacs 或 vi 等编辑器，然后在 R 中运行脚本。RStudio 提供一个完整的图形 IDE 来开发 R 程序。
+若要打开 R 控制台，请在 shell 中输入**R**。此命令会将你带到交互式环境。 若要开发 R 程序，通常会使用 Emacs 或 vi 等编辑器，然后在 R 中运行脚本。RStudio 提供一个完整的图形 IDE 来开发 R 程序。
 
 DSVM 中包含了一个用于安装[最重要的 20 个 R 包](https://www.kdnuggets.com/2015/06/top-20-r-packages.html)的 R 脚本。 在 R 交互式界面中可以运行此脚本。 如前所述，若要打开该界面，请在 shell 中输入 **R**。  
 
@@ -100,7 +100,7 @@ conda install <package> -n py35
 
 如果在图形界面上操作或者已设置 X11 转发，可以输入 **pycharm** 打开 PyCharm Python IDE。 可以使用默认文本编辑器。 此外，可以使用 Spyder，它是与 Anaconda Python 分发版捆绑在一起的 Python IDE。 Spyder 需要图形桌面或 X11 转发。 图形桌面中提供了 Spyder 的快捷方式。
 
-## <a name="jupyter-notebook"></a>Jupyter Notebook
+## <a name="jupyter-notebook"></a>Jupyter 笔记本
 
 Anaconda 分发版还附带 Jupyter Notebook - 用于共享代码和分析的环境。 通过 JupyterHub 访问 Jupyter Notebook。 使用本地 Linux 用户名和密码登录。
 
@@ -186,11 +186,11 @@ SQuirreL SQL 是一个图形 SQL 客户端，可以连接到各种数据库（�
 
 SQL Server 的 ODBC 驱动程序包还附带两个命令行工具：
 
-* **bcp**：bcp 工具可在 SQL Server 实例与用户指定格式的数据文件之间批量复制数据。 可以使用 bcp 工具将大量新行导入 SQL Server 表，或者将表中的数据导出到数据文件。 要将数据导入表中，必须使用为该表创建的格式文件。 或者，必须了解表的结构，以及对其列有效的数据类型。
+* **bcp**： bcp 工具在 SQL Server 实例和用户指定格式的数据文件之间大容量复制数据。 可以使用 bcp 工具将大量新行导入 SQL Server 表，或者将表中的数据导出到数据文件。 要将数据导入表中，必须使用为该表创建的格式文件。 或者，必须了解表的结构，以及对其列有效的数据类型。
 
   有关详细信息，请参阅[使用 bcp 进行连接](https://msdn.microsoft.com/library/hh568446.aspx)。
 
-* **sqlcmd**：可以在命令提示符下，使用 sqlcmd 实用工具输入 Transact-SQL 语句、系统过程和脚本文件。 sqlcmd 实用工具使用 ODBC 执行 Transact-SQL 批处理。
+* **sqlcmd**：可以使用 sqlcmd 实用工具在命令提示符下输入 transact-sql 语句、系统过程和脚本文件。 sqlcmd 实用工具使用 ODBC 执行 Transact-SQL 批处理。
 
   有关详细信息，请参阅[使用 sqlcmd 进行连接](https://msdn.microsoft.com/library/hh568447.aspx)。
 
@@ -209,20 +209,20 @@ SQL Server 的 ODBC 驱动程序包还附带两个命令行工具：
 DSVM 上已安装以下 Azure 工具：
 
 * **Azure CLI**：可以使用 Azure 中的命令行接口通过 shell 命令创建和管理 Azure 资源。 若要打开 Azure 工具，请输入 **azure help**。 有关详细信息，请参阅 [Azure CLI 文档页](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)。
-* **Azure 存储资源管理器**：Azure 存储资源管理器是一个图形工具，用于浏览在 Azure 存储帐户中存储的对象，以及将数据上传到 Azure Blob 和从中下载数据。 可通过桌面快捷方式图标访问存储资源管理器。 还可以通过输入 **StorageExplorer** 从 shell 提示符打开此工具。 必须从 X2Go 客户端登录，或设置 X11 转发。
-* **Azure 库**：DSVM 上已预装以下库：
+* **Azure 存储资源管理器**： Azure 存储资源管理器是一种图形工具，可用于浏览存储在 azure 存储帐户中的对象，以及将数据上传到 azure blob 并从中下载数据。 可通过桌面快捷方式图标访问存储资源管理器。 还可以通过输入 **StorageExplorer** 从 shell 提示符打开此工具。 必须从 X2Go 客户端登录，或设置 X11 转发。
+* **Azure 库**：在 DSVM 上预安装以下库：
   
-  * **Python**：Python 中的 Azure 相关库包括 *azure*、*azureml*、*pydocumentdb* 和 *pyodbc*。 使用前三个库，可以访问 Azure 存储服务、Azure 机器学习和 Azure Cosmos DB（Azure 上的 NoSQL 数据库）。 使用第四个库 pyodbc（以及 SQL Server 的 Microsoft ODBC 驱动程序），可以通过使用 ODBC 接口从 Python 访问 SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库。 输入 **pip 列表**查看所有列出的库。 请确保在 Python 2.7 和 3.5 环境中都运行此命令。
-  * **R**：R 中的 Azure 相关库包括 AzureML 和 RODBC。
-  * **Java**：可在 DSVM 上的 /dsvm/sdk/AzureSDKJava 目录中找到 Azure Java 库列表。 密钥库是 Azure 存储和用于 SQL Server 的管理 API、Azure Cosmos DB 和 JDBC 驱动程序。  
+  * **Python**： python 中与 azure 相关的库是*azure*、 *azureml*、 *pydocumentdb*和*pyodbc*。 使用前三个库，可以访问 Azure 存储服务、Azure 机器学习和 Azure Cosmos DB（Azure 上的 NoSQL 数据库）。 使用第四个库 pyodbc（以及 SQL Server 的 Microsoft ODBC 驱动程序），可以通过使用 ODBC 接口从 Python 访问 SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库。 输入 **pip 列表**查看所有列出的库。 请确保在 Python 2.7 和 3.5 环境中都运行此命令。
+  * **R**： r 中与 Azure 相关的库是 AZUREML 和 RODBC。
+  * **Java**： Azure Java 库的列表可以在 dsvm 上的/dsvm/sdk/AzureSDKJava 目录中找到。 密钥库是 Azure 存储和用于 SQL Server 的管理 API、Azure Cosmos DB 和 JDBC 驱动程序。  
 
 可以从预装的 Firefox 浏览器访问 [Azure 门户](https://portal.azure.com)。 在 Azure 门户中，可以创建、管理和监视 Azure 资源。
 
 ## <a name="azure-machine-learning"></a>Azure 机器学习
 
-Azure 机器学习是完全托管的云服务，可用于生成、部署和共享预测分析解决方案。 从 Azure 机器学习工作室中构建实验和模型。 若要从 DSVM 上的 Web 浏览器访问 Azure 机器学习，请参阅 [Microsoft Azure 机器学习](https://studio.azureml.net)。
+Azure 机器学习是完全托管的云服务，可用于生成、部署和共享预测分析解决方案。 从 Azure 机器学习 Studio （经典）构建试验和模型。 若要从 DSVM 上的 web 浏览器访问 Azure 机器学习，请访问[Microsoft Azure 机器学习](https://studio.azureml.net)。
 
-登录到 Azure 机器学习工作室后，可以使用试验画布来生成机器学习算法的逻辑流。 还可以访问 Azure 机器学习上托管的 Jupyter Notebook。 Notebook 可与机器学习工作室中的试验无缝配合。 
+登录到 Azure 机器学习 Studio （经典）后，可以使用试验画布来构建机器学习算法的逻辑流。 还可以访问 Azure 机器学习上托管的 Jupyter Notebook。 笔记本可与 Azure 机器学习 Studio （经典）中的试验无缝配合使用。 
 
 将生成的机器学习模型包装在 Web 服务接口中可将其操作化。 实施机器学习模型使得以任何语言编写的客户端都能从这些模型中调用预测。 有关详细信息，请参阅[机器学习文档](https://azure.microsoft.com/documentation/services/machine-learning/)。
 
@@ -235,13 +235,13 @@ Azure 机器学习是完全托管的云服务，可用于生成、部署和共�
 
 ## <a name="machine-learning-tools"></a>机器学习工具
 
-DSVM 随附一些已预编译并已在本地预装的机器学习工具和算法。 这些问题包括：
+DSVM 随附一些已预编译并已在本地预装的机器学习工具和算法。 其中包括：
 
-* **Microsoft 认知工具包**：深度学习工具包。
-* **Vowpal Wabbit**：一种快速的在线学习算法。
-* **XGBoost**：提供经过优化的提升树算法的工具。
+* **Microsoft Cognitive Toolkit**：深度学习工具包。
+* **Vowpal Wabbit**：快速在线学习算法。
+* **XGBoost**：一种提供优化、提升的树算法的工具。
 * **Python**：Anaconda Python 附带机器学习算法，这些算法含有库（如 Scikit-learn）。 可以通过使用 `pip install` 命令安装其他库。
-* **R**：有丰富的机器学习函数库可供 R 使用。预装的库包括 lm、glm、randomForest 和 rpart。 运行 `install.packages(<lib name>)` 可安装其他库。
+* **R**：适用于 r 的计算机学习函数的丰富库。预装库包括 lm、Glm、randomForest 和 rpart。 运行 `install.packages(<lib name>)` 可安装其他库。
 
 后续部分将更详细介绍 Microsoft Cognitive Toolkit、Vowpal Wabbit 和 XGBoost。
 
@@ -329,7 +329,7 @@ rattle()
 > [!NOTE]
 > 如果你无权在系统目录（默认目录）中安装包，可能会在 R 控制台窗口中看到一个提示，指出包将安装到个人库中。 如果看到这些提示，请输入 **y**。
 
-1. 选择“执行”。
+1. 选择”**执行**“。
 1. 此时会出现一个对话框，提示是否要加载示例气象数据集。 选择“是”以加载示例。
 1. 选择“模型”选项卡。
 1. 选择“执行”以生成决策树。
@@ -338,7 +338,7 @@ rattle()
 1. 选择“评估”选项卡。
 1. 选择“风险”选项，然后选择“执行”以显示两个“风险(累积)”性能绘图。
 1. 选择“日志”选项卡以显示为上述操作生成的 R 代码。 （由于当前 Rattle 版本中的 bug，必须在日志文本中的“导出此日志”前面插入 **#** 字符。）
-1. 选择“导出”按钮，将名为 *weather_script.R* 的 R 脚本文件保存到主文件夹。
+1. 选择“导出”按钮，将名为 **weather_script.R** 的 R 脚本文件保存到主文件夹。
 
 可以退出 Rattle 和 R。现在，可以修改生成的 R 脚本。 或者，可以按原样使用该脚本，并可随时运行它来重复 Rattle UI 中的所有操作。 尤其是对于 R 初学者而言，使用此方法可在简单的图形界面中快速执行分析和机器学习，同时在 R 中自动生成代码来修改项目或用于学习。
 

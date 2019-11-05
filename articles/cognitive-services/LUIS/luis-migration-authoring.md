@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/04/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 19852fe3a6925ada3dea141a1472683ee264f6d5
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 86a7575c173b4515eaf0f690bcd00c6fb70ee581
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973296"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492719"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>迁移到 Azure 资源创作密钥
 
 语言理解（LUIS）创作身份验证从电子邮件帐户更改为 Azure 资源。 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="why-migrate"></a>为何要迁移？
 
@@ -81,7 +83,7 @@ ms.locfileid: "71973296"
 
 您可以在该资源的 "**访问控制（IAM）** " 页上，将参与者添加到_Azure 门户_中的创作资源。 有关详细信息，请参阅[添加参与者访问](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)。
 
-|门户|用途|
+|门户|目的|
 |--|--|
 |[Azure](https://azure.microsoft.com/free/)|* 创建预测和创作资源。<br>* 分配参与者。|
 |[LUIS](https://www.luis.ai)|* 迁移到新的创作资源。<br>* 通过 "**管理-> Azure 资源**" 页为应用分配预测和创作资源。| 
@@ -100,7 +102,7 @@ LUIS 的每个用户都需要迁移，包括协作者/参与者。
 
 迁移过程完成后，LUIS 门户的 "**我的应用**" 页上提供了你拥有的任何应用。  
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 迁移过程完成后，LUIS 创作密钥仅在 LUIS 门户中可见。 如果创建了创作密钥，例如 with LUIS CLI，则用户仍需完成迁移过程。 
 

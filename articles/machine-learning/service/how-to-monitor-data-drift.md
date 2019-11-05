@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
-ms.date: 09/13/2019
-ms.openlocfilehash: 3b3fbce40c93389037435a7cdb1271e773163de3
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: 536f3ab506dcbe2b8997f2c1870f25244b6c070f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123271"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489656"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>在部署到 Azure Kubernetes Service （AKS）的模型上检测数据偏差（预览）
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 本文介绍如何监视已部署模型的定型数据集和推理数据之间的数据偏移。 在机器学习的上下文中，经过训练的机器学习模型可能会因为偏差而遇到下降的预测性能。 使用 Azure 机器学习，可以监视数据偏移，在检测到偏差时，服务可以向你发送电子邮件警报。
 
@@ -40,9 +41,9 @@ ms.locfileid: "71123271"
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning"></a>如何监视数据偏移 Azure 机器学习
 
-使用 Azure 机器学习，数据偏移通过数据集或部署来监视。 若要监视数据偏移，请指定基线数据集，这通常是模型的定型数据集。 第二个数据集（通常是从部署中收集的模型输入数据）根据基线数据集进行测试。 这两个数据集都被分析并输入到数据偏移监视服务。 训练机器学习模型来检测两个数据集之间的差异。 模型的性能转换为偏移系数，这会测量两个数据集之间的偏差量。 使用[model interpretability](machine-learning-interpretability-explainability.md)，将计算构成偏移系数的特征。 在数据集配置文件中，将跟踪有关每个功能的统计信息。 
+使用 Azure 机器学习，数据偏移通过数据集或部署来监视。 若要监视数据偏移，请指定基线数据集，这通常是模型的定型数据集。 第二个数据集（通常是从部署中收集的模型输入数据）根据基线数据集进行测试。 这两个数据集都被分析并输入到数据偏移监视服务。 训练机器学习模型来检测两个数据集之间的差异。 模型的性能转换为偏移系数，这会测量两个数据集之间的偏差量。 使用[model interpretability](how-to-machine-learning-interpretability.md)，将计算构成偏移系数的特征。 在数据集配置文件中，将跟踪有关每个功能的统计信息。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - Azure 订阅。 如果没有，请在开始之前创建一个免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
@@ -58,12 +59,12 @@ ms.locfileid: "71123271"
 - 使用以下命令安装数据偏移 SDK：
 
     ```shell
-    pip install azureml-contrib-datadrift
+    pip install azureml-datadrift
     ```
 
 - 从模型的定型数据创建[数据集](how-to-create-register-datasets.md)。
 
-- [注册](concept-model-management-and-deployment.md)模型时指定定型数据集。 下面的示例演示如何使用`datasets`参数指定定型数据集：
+- [注册](concept-model-management-and-deployment.md)模型时指定定型数据集。 下面的示例演示如何使用 `datasets` 参数指定定型数据集：
 
     ```python
     model = Model.register(model_path=model_file,
@@ -74,7 +75,7 @@ ms.locfileid: "71123271"
     print(model_name, image_name, service_name, model)
     ```
 
-- [启用模型数据收集](how-to-enable-data-collection.md)，从模型的 AKS 部署收集数据，并确认在`modeldata` blob 容器中收集数据。
+- [启用模型数据收集](how-to-enable-data-collection.md)，从模型的 AKS 部署收集数据，并在 `modeldata` blob 容器中收集确认数据。
 
 ## <a name="configure-data-drift"></a>配置数据偏移
 若要为试验配置数据偏移，请导入依赖项，如以下 Python 示例中所示。 
@@ -84,7 +85,7 @@ ms.locfileid: "71123271"
 ```python
 # Import Azure ML packages
 from azureml.core import Experiment, Run, RunDetails
-from azureml.contrib.datadrift import DataDriftDetector, AlertConfiguration
+from azureml.datadrift import DataDriftDetector, AlertConfiguration
 
 # if email address is specified, setup AlertConfiguration
 alert_config = AlertConfiguration('your_email@contoso.com')
@@ -97,7 +98,7 @@ print('Details of Datadrift Object:\n{}'.format(datadrift))
 
 ## <a name="submit-a-datadriftdetector-run"></a>提交 DataDriftDetector 运行
 
-在配置`DataDriftDetector`了对象的情况下，你可以在给定日期为模型提交[数据偏移](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-)。 在运行过程中，通过设置`drift_threshold`参数启用 DataDriftDetector 警报。 如果[datadrift_coefficient](#metrics)超出给定`drift_threshold`的，则发送电子邮件。
+配置 `DataDriftDetector` 对象后，可以在给定日期为模型提交[数据偏移](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-)。 在运行过程中，通过设置 `drift_threshold` 参数启用 DataDriftDetector 警报。 如果[datadrift_coefficient](#metrics)位于给定 `drift_threshold`以上，则发送电子邮件。
 
 ```python
 # adhoc run today
@@ -122,7 +123,7 @@ RunDetails(dd_run).show()
 提交 DataDriftDetector 运行后，可以在每次运行迭代中看到为数据偏差任务保存的偏差度量值：
 
 
-|指标|描述|
+|指标|说明|
 --|--|
 wasserstein_distance|为一维数值分布定义的统计距离。|
 energy_distance|为一维数值分布定义的统计距离。|
@@ -131,9 +132,9 @@ datadrift_contribution|导致偏移的功能的重要性。|
 
 可以通过多种方式查看偏差指标：
 
-* 使用 Jupyter[小组件。](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) `RunDetails`
-* 对任何`datadrift`运行对象使用[函数。`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-)
-* 从[工作区登录页](https://ml.azure.com)的 "**模型**" 部分查看指标（预览）。
+* 使用 `RunDetails`[Jupyter 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)。
+* 对任何 `datadrift` run 对象使用[`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-)函数。
+* 在[Azure 机器学习 studio](https://ml.azure.com)中，从工作区的 "**模型**" 部分查看度量值。
 
 以下 Python 示例演示如何绘制相关的数据偏差指标。 可以使用返回的度量值生成自定义可视化效果：
 
@@ -151,22 +152,22 @@ drift_figures = datadrift.show(with_details=True)
 
 ## <a name="schedule-data-drift-scans"></a>计划数据偏移扫描 
 
-启用数据偏移检测时，将按指定的计划频率运行 DataDriftDetector。 如果 datadrift_coefficient 到达给定`drift_threshold`的，则会随每个计划运行发送一封电子邮件。 
+启用数据偏移检测时，将按指定的计划频率运行 DataDriftDetector。 如果 datadrift_coefficient 到达给定的 `drift_threshold`，则会随每个计划运行发送一封电子邮件。 
 
 ```python
 datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-在[工作区登陆页面（预览）](https://ml.azure.com)的 "**详细信息**" 选项卡中的 "**模型**" 下，可以查看数据偏移检测程序的配置。
+在[Azure 机器学习 studio](https://ml.azure.com)上的工作区中的 "**详细信息**" 选项卡中的 "**模型**" 下，可以查看数据偏移检测程序的配置。
 
-![Azure 门户数据偏移](media/how-to-monitor-data-drift/drift-config.png)
+![Azure 机器学习 studio 数据偏移](media/how-to-monitor-data-drift/drift-config.png)
 
-## <a name="view-results-in-your-workspace-landing-page"></a>在工作区登录页中查看结果
+## <a name="view-results-in-your-azure-machine-learning-studio"></a>在 Azure 机器学习 studio 中查看结果
 
-若要在[工作区登录页（预览版）](https://ml.azure.com)中查看工作区中的结果，请导航到 "模型" 页。 在模型的 "详细信息" 选项卡上，将显示数据偏移配置。 现在，**数据偏移**选项卡可用来可视化数据偏差指标。 
+若要在[Azure 机器学习 studio](https://ml.azure.com)中查看工作区中的结果，请导航到 "模型" 页。 在模型的 "详细信息" 选项卡上，将显示数据偏移配置。 现在，**数据偏移**选项卡可用来可视化数据偏差指标。 
 
-[![工作区登录页数据偏移](media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
+[![Azure 机器学习 studio 数据偏移](media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
 
 
 ## <a name="receiving-drift-alerts"></a>接收偏移警报

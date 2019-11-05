@@ -1,24 +1,24 @@
 ---
 title: 评分模型：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的评分模型模块，通过定型的分类或回归模型生成预测。
+titleSuffix: Azure Machine Learning
+description: 了解如何在 Azure 机器学习中使用 "评分模型" 模块，以使用训练的分类或回归模型生成预测。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: f046b41d02ac392d003a9ecd15f25b43e5449cd0
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: e7ab953a7ac0907244ebaab70b3b86cbe6f0f4d9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692673"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497642"
 ---
 # <a name="score-model-module"></a>“评分模型”模块
 
-本文介绍了 Azure 机器学习服务的可视界面（预览）的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块可以使用训练的分类或回归模型生成预测。
 
@@ -50,7 +50,6 @@ ms.locfileid: "72692673"
 
 评分的一个常见用途是在预测 web 服务中返回输出。 有关详细信息，请参阅本教程，了解如何在 Azure 机器学习中基于管道创建 web 服务：
 
-
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

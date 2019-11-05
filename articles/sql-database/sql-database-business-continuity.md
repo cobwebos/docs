@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 5cc033787e1045926ff4fece6826e41f430d48fd
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 69ff1a5681fbb0b434d7114b069610ed34d9e843
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744469"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492203"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL 数据库确保业务连续性的相关概述
 
@@ -27,7 +27,7 @@ Azure SQL 数据库中的**业务连续性**是指在遇到中断（尤其是计
 - 恶意攻击者成功删除了数据或数据库。
 - 地震导致断电和暂时性的数据中心停运。
 
-本概述介绍 Azure SQL 数据库针对业务连续性和灾难恢复所提供的功能。 了解用于从干扰性事件恢复的选项、建议和教程，这些事件可能导致数据丢失或者数据库和应用程序无法使用。 了解对一些情况的处理方式，包括用户或应用程序错误影响数据完整性、Azure 区域服务中断，或者应用程序需要维护。
+本概述介绍 Azure SQL 数据库针对业务连续性和灾难恢复所提供的功能。 了解用于从干扰性事件恢复的选项、建议和教程，这些事件可能导致数据丢失或者数据库和应用程序无法使用。 了解对一些情况的处理方式，包括用户或应用程序错误影响数据完整性、Azure 区域发生服务中断，或者应用程序需要维护。
 
 ## <a name="sql-database-features-that-you-can-use-to-provide-business-continuity"></a>有利于业务连续性的 SQL 数据库功能
 
@@ -46,14 +46,14 @@ SQL 数据库还提供多种业务连续性功能，用于缓解各种计划外�
 
 - 使用[时态表](sql-database-temporal-tables.md)可以从任意时间点还原行版本。
 - 使用[内置自动备份](sql-database-automated-backups.md)和[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)可将整个数据库还原到已配置保留期（最长为 35 天）内的某个时间点。
-- 如果 **SQL 数据库服务器尚未删除**，可将[已删除的数据库还原](sql-database-recovery-using-backups.md#deleted-database-restore)到删除时的时间点。
+- 如果 [SQL 数据库服务器尚未删除](sql-database-recovery-using-backups.md#deleted-database-restore)，可将**已删除的数据库还原**到删除时的时间点。
 - 使用[长期备份保留](sql-database-long-term-retention.md)可将备份保留长达 10 年之久。
 - 使用[活动异地复制](sql-database-active-geo-replication.md)，可以创建可读取的副本，并且在发生数据中心中断或应用程序升级期间手动故障转移到任何副本。
 - 发生数据中心中断时，应用程序可以通过[自动故障转移组](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities)自动恢复。
 
 ## <a name="recover-a-database-within-the-same-azure-region"></a>恢复同一 Azure 区域内的数据库
 
-可以使用自动数据库备份将数据库还原到过去的某个时间点。 可以通过这种方式从人为错误导致的数据损坏中恢复。 可以通过时间点还原在同一服务器中创建一个新数据库，代表损坏事件发生之前的数据状态。 大多数数据库的还原操作需要不到 12 小时的时间。 恢复非常大或十分活跃的数据库可能需要更长时间。 有关恢复时间的详细信息，请参阅[数据库恢复时间](sql-database-recovery-using-backups.md#recovery-time)。 
+可以使用自动数据库备份将数据库还原到过去的某个时间点。 可以通过这种方式从人为错误导致的数据损坏中恢复。 使用时间点还原，可以在同一服务器中创建新的数据库，该数据库表示损坏事件之前的数据状态。 大多数数据库的还原操作需要不到 12 小时的时间。 恢复非常大或十分活跃的数据库可能需要更长时间。 有关恢复时间的详细信息，请参阅[数据库恢复时间](sql-database-recovery-using-backups.md#recovery-time)。 
 
 如果支持的最长时间点还原 (PITR) 备份保留期对你的应用程序而言不足，可以通过为数据库配置长期保留 (LTR) 策略来延长保留期。 有关详细信息，请参阅[长期备份保留](sql-database-long-term-retention.md)。
 
@@ -66,8 +66,8 @@ SQL 数据库还提供多种业务连续性功能，用于缓解各种计划外�
 | 自动故障转移                           |     否          |      是         |
 | 同时故障转移多个数据库  |     否          |      是         |
 | 在故障转移后更新连接字符串      |     是         |      否          |
-| 支持的托管实例                   |     否          |      是         |
-| 可以与主要区域位于同一区域             |     是         |      否          |
+| 支持托管实例                   |     否          |      是         |
+| 可以与主服务器位于同一区域             |     是         |      否          |
 | 多个副本                            |     是         |      否          |
 | 支持读取缩放                          |     是         |      是         |
 | &nbsp; | &nbsp; | &nbsp; |

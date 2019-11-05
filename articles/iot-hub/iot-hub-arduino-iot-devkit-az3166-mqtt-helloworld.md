@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 60520f5a72fd7e27d4ea64ac76511a00a727426e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6afe0a2fe366b83af45682245776c803c99483d3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61369266"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73484037"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>向 MQTT 服务器发送消息
 
@@ -45,10 +45,10 @@ ms.locfileid: "61369266"
 
 ## <a name="open-the-mqttclient-sample"></a>打开 MQTTClient 示例
 
-展开左侧的“ARDUINO 示例”  部分，浏览到  “MXCHIP AZ3166 的示例 > MQTT”，然后选择“MQTTClient”  。 此时会打开一个新的 VS Code 窗口，其中包含一个项目文件夹。
+展开左侧的“ARDUINO 示例”部分，浏览到“MXCHIP AZ3166 的示例 > MQTT”，然后选择“MQTTClient”。 此时会打开一个新的 VS Code 窗口，其中包含一个项目文件夹。
 
 > [!NOTE]
-> 也可以从命令面板打开示例。 使用 `Ctrl+Shift+P`（macOS: `Cmd+Shift+P`）打开命令面板，键入“Arduino”，然后找到并选择“Arduino:   Examples”。
+> 也可以从命令面板打开示例。 使用 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino: Examples”。
 
 ## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>生成 Arduino 草图并将其上传到 DevKit
 
@@ -57,7 +57,7 @@ ms.locfileid: "61369266"
 ![设备上传](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
 
 > [!NOTE]
-> 可能会收到“错误:AZ3166:未知程序包”错误消息。 如果未正确刷新板包索引，则会出现此错误。 若要解决此错误，请参阅 [IoT DevKit 常见问题解答的开发部分](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)。
+> 可能会出现“错误: AZ3166: 未知程序包”错误消息。 如果未正确刷新板包索引，则会出现此错误。 若要解决此错误，请参阅 [IoT DevKit 常见问题解答的开发部分](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)。
 
 ## <a name="test-the-project"></a>测试项目
 
@@ -90,4 +90,4 @@ ms.locfileid: "61369266"
 现在，你已学习了如何将 MXChip Iot DevKit 配置为 MQTT 客户端以及如何使用 MQTT 客户端库向 MQTT 代理发送消息，下面是建议的后续步骤：
 
 * [Azure IoT 远程监视解决方案加速器概述](https://docs.microsoft.com/azure/iot-suite/)
-* [将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序](/azure/iot-central/core/howto-connect-devkit)

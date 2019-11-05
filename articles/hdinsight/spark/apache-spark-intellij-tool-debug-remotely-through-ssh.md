@@ -1,5 +1,5 @@
 ---
-title: 'Azure Toolkit for IntelliJ：通过 SSH 远程调试 Spark 应用程序 '
+title: Azure Toolkit for IntelliJ：通过 SSH 调试 Spark 应用
 description: 逐步介绍如何使用用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具通过 SSH 远程调试 HDInsight 群集上的应用程序
 keywords: 远程调试 intellij, 远程调试 intellij, ssh, intellij, hdinsight, 调试 intellij, 调试
 author: hrasheed-msft
@@ -9,24 +9,24 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: 1f3f08385ac4f7044f4e6c4e4110be701e8f576d
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 82aaead87fad0ed9fc7b715baf3dc5ebbd4941be
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266226"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494617"
 ---
-# <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>通过 SSH 在 HDInsight 群集上调试 Apache Spark 的应用程序 Azure Toolkit for IntelliJ
+# <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>使用用于 IntelliJ 的 Azure 工具包通过 SSH 调试 HDInsight 群集上的 Apache Spark 应用程序
 
 本文逐步介绍如何使用 [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) 中的 HDInsight 工具远程调试 HDInsight 群集上的应用程序。 要调试项目，还可以观看 [Debug HDInsight Spark applications with Azure Toolkit for IntelliJ](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)（使用用于 IntelliJ 的 Azure 工具包调试 HDInsight Spark 应用程序）视频。
 
 **先决条件**
-* **Azure Toolkit for IntelliJ 中的 HDInsight 工具**。 此工具是用于 IntelliJ 的 Azure 工具包的一部分。 有关详细信息，请参阅[安装用于 IntelliJ 的 Azure 工具包](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation)。 **用于 IntelliJ 的 Azure 工具包**。 使用此工具包为 HDInsight 群集创建 Apache Spark 应用程序。 有关详细信息，请遵循[使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-plugin)中的说明。
+* **用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具**。 此工具是用于 IntelliJ 的 Azure 工具包的一部分。 有关详细信息，请参阅[安装用于 IntelliJ 的 Azure 工具包](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation)。 **用于 IntelliJ 的 Azure 工具包**。 使用此工具包为 HDInsight 群集创建 Apache Spark 应用程序。 有关详细信息，请遵循[使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-plugin)中的说明。
 
 * **可管理用户名和密码的 HDInsight SSH 服务**。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) 和[使用 SSH 隧道访问 Ambari Web UI、JobHistory、NameNode、Apache Oozie 和其他 Web UI](https://docs.microsoft.com/azure/hdinsight/hdinsight-linux-ambari-ssh-tunnel)。 
  
 ## <a name="learn-how-to-perform-local-run-and-debugging"></a>了解如何执行本地运行和调试
-### <a name="scenario-1-create-a-spark-scala-application"></a>方案 1：创建 Spark Scala 应用程序 
+### <a name="scenario-1-create-a-spark-scala-application"></a>情景 1：创建 Spark Scala 应用程序 
 
 1. 启动 IntelliJ IDEA 并创建一个项目。 在“新建项目”对话框中执行以下操作：
 
@@ -73,11 +73,11 @@ ms.locfileid: "71266226"
 
 若要解决此错误，请[下载该可执行文件](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)到某个位置（例如 **C:\WinUtils\bin**）。 然后，必须添加环境变量 HADOOP_HOME，并将其值设置为 C:\WinUtils。
 
-### <a name="scenario-2-perform-local-run"></a>方案 2：执行本地运行
+### <a name="scenario-2-perform-local-run"></a>情景 2：执行本地运行
 
 1. 打开 SparkCore_wasbloTest 脚本，右键单击脚本编辑器，然后选择“运行 [Spark 作业]XXX”选项来执行本地运行。
 
-1. 本地运行完成后，可以看到输出文件保存到当前的项目资源管理器的“数据” > “默认”中。
+1. 本地运行完成后，可以看到输出文件保存到当前的项目资源管理器的“数据” **“默认”中** > 。
 
     ![Intellij 项目本地运行结果](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png)
 
@@ -85,28 +85,28 @@ ms.locfileid: "71266226"
 
     ![Intellij 运行调试配置本地运行](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
 
-    - [环境变量](#prerequisite-for-windows)：如果已将系统环境变量“HADOOP_HOME”设置为“C:\WinUtils”，则它可自动检测到此设置，而无需手动添加。
+    - [环境变量](#prerequisite-for-windows)：如果已将系统环境变量“HADOOP_HOME”设置为“C:\WinUtils”，则它可自动检测到此设置，而无需手动添加此变量。
     - [WinUtils.exe 位置](#prerequisite-for-windows)：如果尚未设置此系统环境变量，则可单击其按钮找到它的位置。
     - 只需选择两个选项之一，在 MacOS 和 Linux 上不需要它们。
 
-1. 也可在执行本地运行和本地调试前手动设置此配置。 在前面的屏幕截图中，选择加号（“+”）。 然后选择“HDInsight 上的 Apache Spark”选项。 输入“名称”、“主类名称”信息并保存，然后单击本地运行按钮。
+1. 也可在执行本地运行和本地调试前手动设置此配置。 在前面的屏幕截图中，选择加号（“ **+** ”）。 然后选择“HDInsight 上的 Apache Spark”选项。 输入“名称”、“主类名称”信息并保存，然后单击本地运行按钮。
 
-### <a name="scenario-3-perform-local-debugging"></a>方案 3：执行本地调试
+### <a name="scenario-3-perform-local-debugging"></a>情景 3：执行本地调试
 1. 打开“SparkCore_wasbloTest”脚本，设置断点。
 1. 右键单击脚本编辑器，然后选择“调试‘[HDInsight 上的 Spark]XXX’”选项来执行本地调试。
 
 ## <a name="learn-how-to-perform-remote-run-and-debugging"></a>了解如何执行远程运行和调试
-### <a name="scenario-1-perform-remote-run"></a>方案 1：执行远程运行
+### <a name="scenario-1-perform-remote-run"></a>情景 1：执行远程运行
 
 1. 要访问“编辑配置”菜单，请选择右上角的图标。 在此菜单中，可以创建或编辑配置以进行远程调试。
 
    ![HDI Intellij 编辑配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-edit-configurations.png)
 
-1. 在“运行/调试配置”对话框中，选择加号 (+)。 然后选择“HDInsight 上的 Apache Spark”选项。
+1. 在“运行/调试配置”对话框中，选择加号 ( **)** **+** 。 然后选择“HDInsight 上的 Apache Spark”选项。
 
    ![Intellij 添加新配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-add-new-Configuration.png)
 
-1. 切换到“在群集中远程运行”选项卡。为“名称”、“Spark 群集” 和“Main 类名”输入信息。 然后单击“高级配置(远程调试)”。 工具支持使用“执行器”进行调试。 numExectors 默认值为 5。 设置的值最好不要大于 3。
+1. 切换到 "**在群集中远程运行**" 选项卡。输入**名称**、 **Spark 群集**和**主类名**的信息。 然后单击“高级配置(远程调试)”。 工具支持使用“执行器”进行调试。 numExectors 默认值为 5。 设置的值最好不要大于 3。
 
    ![Intellij 运行调试配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-run-debug-configurations.png)
 
@@ -149,7 +149,7 @@ ms.locfileid: "71266226"
 
 1. 要使用 IntelliJ 调试功能动态更新变量值，请再次选择“调试”。 “变量”窗格会再次出现。
 
-1. 右键单击“调试”选项卡上的目标，然后选择“设置值”。 接下来，输入变量的新值。 然后选择 **Enter** 保存该值。
+1. 在“调试”选项卡上右键单击目标，选择“设置值”。 接下来，输入变量的新值。 然后选择 **Enter** 保存该值。
 
    ![Intellij 调试远程 Spark 作业集值](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value1.png)
 
@@ -162,13 +162,13 @@ ms.locfileid: "71266226"
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 
 ### <a name="demo"></a>演示
-* 创建 Scala 项目（视频）：[Create Apache Spark Scala Applications](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)（创建 Apache Spark Scala 应用程序）
-* 远程调试（视频）：[Use Azure Toolkit for IntelliJ to debug Apache Spark applications remotely on an HDInsight cluster](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)（使用 Azure Toolkit for IntelliJ 远程调试 HDInsight 群集上的 Apache Spark 应用程序）
+* 创建 Scala 项目（视频）：[创建 Apache Spark Scala 应用程序](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
+* 远程调试（视频）：[使用 Azure Toolkit for IntelliJ 远程调试 HDInsight 群集上的 Apache Spark 应用程序](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>方案
-* [Apache Spark 与 BI：将 HDInsight 中的 Spark 与 BI 工具配合使用来执行交互式数据分析](apache-spark-use-bi-tools.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 来通过 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](apache-spark-use-bi-tools.md)
+* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
 * [使用 HDInsight 中的 Apache Spark 分析网站日志](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>创建和运行应用程序

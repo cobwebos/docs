@@ -1,24 +1,24 @@
 ---
 title: 拆分数据：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的 "拆分数据" 模块将数据集拆分为两个不同的集。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的 "拆分数据" 模块将数据集划分为两个不同的集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 3fa6b61b1b1761756339d6a7f05c74eb4a968777
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 0f6ba3c608c90d8634309a1843dc803b98be3d6d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692655"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492638"
 ---
 # <a name="split-data-module"></a>拆分数据模块
 
-本文介绍了 Azure 机器学习服务的可视界面（预览）的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块将数据集划分为两个不同的集。
 
@@ -30,7 +30,7 @@ ms.locfileid: "72692655"
 > 在选择拆分模式之前，请阅读所有选项以确定所需的拆分类型。
 > 如果更改拆分模式，则所有其他选项都可以重置。
 
-1. 将 "**拆分数据**" 模块添加到接口中的管道。 可以在 "**示例" 和 "拆分**" 类别中的 "**数据转换**" 下找到此模块。
+1. 在设计器中将 "**拆分数据**" 模块添加到管道。 可以在 "**示例" 和 "拆分**" 类别中的 "**数据转换**" 下找到此模块。
 
 2. **拆分模式**：根据所拥有的数据类型以及要如何划分，选择以下模式之一。 每个拆分模式都有不同的选项。 有关详细说明和示例，请单击以下主题。 
 
@@ -45,7 +45,8 @@ ms.locfileid: "72692655"
     - **相对表达式拆分**：每当要对数字列应用条件时，请使用此选项。 该数字可以是日期/时间字段、包含年龄或美元量的列，甚至可以是百分比。 例如，你可能想要根据项目成本、按年龄范围分组人员或按日历日期分隔数据来划分数据集。
 
 ### <a name="split-rows"></a>拆分行
-1.  将 "[拆分数据](./split-data.md)" 模块添加到接口中的管道，并连接要拆分的数据集。
+
+1.  在设计器中将 "[拆分数据](./split-data.md)" 模块添加到管道中，并连接要拆分的数据集。
   
 2.  对于**拆分模式**，请选择 "**拆分行**"。 
 
@@ -101,7 +102,7 @@ ms.locfileid: "72692655"
 
     - 支持以下运算符： `<`、`>`、`<=`、`>=`、`==`、`!=`
 
-    - 不能使用 `(` 和 `)` 对操作进行分组。
+    - 不能使用 `(` 和 `)`对操作进行分组。
 
  - 字符串列： 
     - 支持以下运算符： `==`、`!=`
@@ -114,4 +115,4 @@ ms.locfileid: "72692655"
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

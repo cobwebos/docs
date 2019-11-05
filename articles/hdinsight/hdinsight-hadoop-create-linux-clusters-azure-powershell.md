@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 51270f1fd7a662cdfd747bd0bfaf9ff03dd438a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a6847e75a0a6dcf944b033054ac466841294d28b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257921"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494792"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>使用 Azure PowerShell 在 HDInsight 中创建基于 Linux 的群集
 
@@ -27,11 +27,11 @@ Azure PowerShell 是强大的脚本环境，可以用于在 Microsoft Azure 中�
 
 开始执行此过程之前请做好以下准备：
 
-* Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * [Azure PowerShell](/powershell/azure/install-Az-ps)
 
     > [!IMPORTANT]  
-    > 使用 Azure Service Manager 管理 HDInsight 资源的 Azure PowerShell 支持**已弃用**，已在 2017 年 1 月 1 日删除。 本文档中的步骤使用的是与 Azure Resource Manager 兼容的新 HDInsight cmdlet。
+    > 使用 Azure Service Manager 管理 HDInsight 资源的 Azure PowerShell 支持**已弃用**，已在 2017 年 1 月 1 日删除。 本文档中的步骤使用的是与 Azure 资源管理器兼容的新 HDInsight cmdlet。
     >
     > 请按照[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 中的步骤安装最新版本的 Azure PowerShell。 如果脚本需要修改后才能使用与 Azure 资源管理器兼容的新 cmdlet，请参阅[迁移到适用于 HDInsight 群集的基于 Azure 资源管理器的开发工具](hdinsight-hadoop-development-using-azure-resource-manager.md)，了解详细信息。
 
@@ -50,7 +50,7 @@ Azure PowerShell 是强大的脚本环境，可以用于在 Microsoft Azure 中�
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/create-cluster/create-cluster.ps1?range=5-71)]
 
-使用为群集登录指定的值创建群集的 Hadoop 用户帐户。 使用此帐户连接到群集上托管的 Web UI 或 REST API 等服务。
+为群集登录指定的值用于创建群集的 Hadoop 用户帐户。 使用此帐户连接到 Web UI 或 REST API 等群集上托管的服务。
 
 为 SSH 用户指定的值用于创建群集的 SSH 用户。 使用此帐户在群集上启动远程 SSH 会话和运行作业。 有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)文档。
 
@@ -63,7 +63,7 @@ Azure PowerShell 是强大的脚本环境，可以用于在 Microsoft Azure 中�
 
 ## <a name="create-cluster-configuration-object"></a>创建群集：配置对象
 
-还可以使用 `New-AzHDInsightClusterConfig` cmdlet 创建 HDInsight 配置对象。 然后，可以修改此配置对象，为群集启用其他配置选项。 最后，使用 `New-AzHDInsightCluster` cmdlet 的 `-Config` 参数以利用该配置。
+还可以使用 `New-AzHDInsightClusterConfig` cmdlet 创建 HDInsight 配置对象。 然后，可以修改此配置对象，为群集启用其他配置选项。 最后，使用 `-Config` cmdlet 的 `New-AzHDInsightCluster` 参数以利用该配置。
 
 下面的脚本创建了一个配置对象，用于在 HDInsight 群集类型上配置 R Server。 该配置支持边缘节点、RStudio 和其他存储帐户。
 
@@ -110,6 +110,6 @@ Azure PowerShell 是强大的脚本环境，可以用于在 Microsoft Azure 中�
 
 * [使用 Scala 创建独立的应用程序](spark/apache-spark-create-standalone-application.md)
 * [使用 Apache Livy 在 Apache Spark 群集中远程运行作业](spark/apache-spark-livy-rest-interface.md)
-* [Apache Spark 与 BI：将 HDInsight 中的 Spark 与 BI 工具配合使用来执行交互式数据分析](spark/apache-spark-use-bi-tools.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](spark/apache-spark-use-bi-tools.md)
+* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](spark/apache-spark-machine-learning-mllib-ipython.md)
 

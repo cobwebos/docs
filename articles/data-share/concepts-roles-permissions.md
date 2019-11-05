@@ -1,27 +1,29 @@
 ---
-title: Azure 数据共享预览版的角色和要求
-description: 了解用于在 Azure 数据共享预览中共享数据的数据访问接口和数据使用者的访问控制角色和要求。
+title: Azure 数据共享的角色和要求
+description: 了解用于在 Azure 数据共享中共享数据的数据访问接口和数据使用者的访问控制角色和要求。
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: c0841f6386440776c6ea719f9932a53cada9d9c4
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 34c73a6bd400da076c68f308a2100a0f4569bd04
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166378"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490585"
 ---
-# <a name="roles-and-requirements-for-azure-data-share-preview"></a>Azure 数据共享预览版的角色和要求
+# <a name="roles-and-requirements-for-azure-data-share"></a>Azure 数据共享的角色和要求 
 
-本文介绍了使用 Azure 数据共享预览来共享数据所需的角色，以及如何使用 Azure 数据共享预览来接受和接收数据。 
+本文介绍了使用 Azure 数据共享共享数据以及使用 Azure 数据共享接受和接收数据所需的角色。 
 
 ## <a name="roles-and-requirements"></a>角色和要求
 
 Azure 数据共享使用 Azure 服务的托管标识（以前称为 Msi）对基础存储帐户进行身份验证，以便能够读取数据提供程序共享的数据，以及接收作为数据使用者共享的数据。 因此，数据提供程序和数据使用者之间不会交换凭据。 
 
-需要授予托管服务标识对基础存储帐户的访问权限。 Azure 数据共享服务使用 Azure 数据共享资源的托管服务标识来读取和写入数据。 Azure 数据共享的用户需要能够为要从/向其共享数据的存储帐户创建托管服务标识角色分配。 **所有者**角色、用户访问管理员角色或分配了 Microsoft 的自定义角色中存在创建角色分配的权限。 
+需要授予托管服务标识对基础存储帐户或 SQL 数据库的访问权限。 Azure 数据共享服务使用 Azure 数据共享资源的托管服务标识来读取和写入数据。 Azure 数据共享的用户需要能够为要从/向其共享数据的存储帐户或 SQL 数据库创建托管服务标识角色分配。 
+
+对于存储，创建角色分配的权限存在于**所有者**角色、用户访问管理员角色或分配了 Microsoft 的自定义角色中。 
 
 如果你不是相关存储帐户的所有者，并且无法自行为 Azure 数据共享资源的托管标识创建角色分配，则可以请求 Azure 管理员以你的名义创建角色分配。 
 
@@ -29,12 +31,14 @@ Azure 数据共享使用 Azure 服务的托管标识（以前称为 Msi）对基
 
 | |  |  |
 |---|---|---|
-|**存储类型**|**数据访问接口源存储帐户**|**数据使用者目标存储帐户**|
+|**存储类型**|**数据提供程序存储**|**数据使用者目标存储**|
 |Azure Blob 存储| 存储 Blob 数据读取者 | 存储 Blob 数据参与者
 |Azure Data Lake Gen1 | 所有者 | 不支持
 |Azure Data Lake Gen2 | 存储 Blob 数据读取者 | 存储 Blob 数据参与者
+|Azure SQL | dbo | dbo 
 |
-### <a name="data-providers"></a>数据访问接口 
+
+### <a name="data-providers"></a>数据提供程序 
 若要将数据集添加到 Azure 数据共享，需要将数据访问接口数据共享资源托管标识添加到存储 Blob 数据读取器角色。 如果用户是通过 Azure 添加数据集，并且是存储帐户的所有者，或者是分配了 Microsoft 授权/角色分配/写入权限的自定义角色的成员，则 Azure 数据共享服务会自动完成此操作。 
 
 或者，用户可以让 Azure 管理员手动将数据共享资源管理标识添加到存储 Blob 数据读取器角色。 如果管理员手动创建此角色分配，则必须是存储帐户的所有者或具有自定义角色分配。 这适用于从 Azure 存储或 Azure Data Lake Gen2 共享的数据。 
@@ -50,8 +54,12 @@ Azure 数据共享使用 Azure 服务的托管标识（以前称为 Msi）对基
 1. 在 "*选择*" 下，键入 Azure 数据共享帐户的名称。
 1. 单击“保存”。
 
+对于基于 SQL 的源，需要从 SQL 数据库中的外部提供程序创建一个用户，该提供程序将从与 Azure 数据共享帐户相同的名称共享数据。 可以在 "[共享数据](share-your-data.md)" 教程中找到与基于 SQL 的共享一起使用的示例脚本和其他先决条件。 
+
 ### <a name="data-consumers"></a>数据使用者
-若要接收数据，需要将数据使用者数据共享资源托管标识添加到存储 Blob 数据参与者角色。 要使 Azure 数据共享服务能够写入存储帐户，此角色是必需的。 如果用户是通过 Azure 添加数据集，并且是存储帐户的所有者，或者是分配了 Microsoft. Authorization/role 分配/写入权限的自定义角色的成员，则 Azure 数据共享服务会自动完成此操作。 
+若要接收数据，如果将数据接收到 SQL 数据库，则需要将数据使用者数据共享资源托管的标识添加到 SQL 数据库的 "存储 Blob 数据参与者" 角色和/或 "dbo" 角色中。 
+
+如果是存储，则 Azure 数据共享服务会自动完成此操作，如果用户是通过 Azure 添加数据集，并且是存储帐户的所有者，或者是具有 Microsoft. 授权/角色分配/写入权限的自定义角色的成员。已. 
 
 或者，用户可以让 Azure 管理员手动将数据共享资源管理标识添加到存储 Blob 数据参与者角色。 如果管理员手动创建此角色分配，则必须是存储帐户的所有者或具有自定义角色分配。 请注意，这适用于将数据共享到 Azure 存储或 Azure Data Lake Gen2。 不支持将数据接收到 Azure Data Lake Gen1。 
 
@@ -65,6 +73,8 @@ Azure 数据共享使用 Azure 服务的托管标识（以前称为 Msi）对基
 1. 单击“保存”。
 
 如果要使用 REST Api 共享数据，则需要通过将中的数据共享帐户添加到相应的角色中，手动创建这些角色分配。 
+
+如果要将数据接收到基于 SQL 的源，请确保使用与 Azure 数据共享帐户相同的名称创建一个新用户。 请参阅[接受和接收数据](subscribe-to-data-share.md)教程中的先决条件。 
 
 若要了解有关如何添加角色分配的详细信息，请参阅[此文档，](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)其中概述了如何将角色分配添加到 Azure 资源。 
 

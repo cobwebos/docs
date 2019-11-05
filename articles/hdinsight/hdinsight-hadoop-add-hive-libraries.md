@@ -1,5 +1,5 @@
 ---
-title: 在 HDInsight 群集创建过程中添加 Apache Hive 库 - Azure
+title: 群集创建过程中的 Apache Hive 库-Azure HDInsight
 description: 了解如何在群集创建中将 Apache Hive 库（jar 文件）添加到 HDInsight 群集中。
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: c3ef5362c4d97b8d805212f9cf813c7bc9c8c18c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 51a93aaec4abdb2dd9d8fad042c079a48d4ea7a3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059450"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494828"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>创建 HDInsight 群集时添加自定义 Apache Hive 库
 
@@ -23,7 +23,7 @@ ms.locfileid: "67059450"
 
 创建群集时，可以使用脚本操作修改创建的群集节点。 本文档中的脚本接受一个参数，即库的位置。 此位置必须位于 Azure 存储帐户中，并且库必须作为 jar 文件存储。
 
-在群集创建过程中，该脚本将枚举文件、将这些文件复制到头节点和工作节点上的 `/usr/lib/customhivelibs/` 目录，然后将它们添加到 `core-site.xml` 文件中的 `hive.aux.jars.path` 属性。 在基于 Linux 的群集中，它还会针对文件位置更新 `hive-env.sh` 文件。
+在群集创建过程中，该脚本将枚举文件、将这些文件复制到头节点和工作节点上的 `/usr/lib/customhivelibs/` 目录，然后将它们添加到 `hive.aux.jars.path` 文件中的 `core-site.xml` 属性。 在基于 Linux 的群集中，它还会针对文件位置更新 `hive-env.sh` 文件。
 
 > [!NOTE]  
 > 使用本文中的脚本操作使库可用于以下方案：
@@ -41,13 +41,13 @@ ms.locfileid: "67059450"
 
 **要求**
 
-* 这些脚本必须同时应用于“头节点”  和“辅助角色节点”  。
+* 这些脚本必须同时应用于“头节点”和“辅助角色节点”。
 
 * 要安装的 jar 必须存储在**单个容器**中的 Azure Blob 存储中。
 
-* 在创建期间，包含 jar 文件的库的存储帐户 **必须** 链接到 HDInsight 群集。 它必须是默认的存储帐户，或者是通过__可选配置__添加的帐户。
+* 在创建期间，包含 jar 文件的库的存储帐户**必须**链接到 HDInsight 群集。 它必须是默认的存储帐户，或者是通过__可选配置__添加的帐户。
 
-* 必须指定容器的 WASB 路径作为脚本操作的参数。 例如，如果 jar 存储在名为的容器**libs**的存储帐户中名为**mystorage**，该参数应为**wasb://libs\@mystorage.blob.core.windows.net/** 。
+* 必须指定容器的 WASB 路径作为脚本操作的参数。 例如，如果 jar 存储在名为**mystorage**的存储帐户**上名**为 lib 的容器中，则参数将为**wasb://libs\@mystorage.blob.core.windows.net/** 。
 
   > [!NOTE]  
   > 本文档假定已创建存储帐户、blob 容器，并已将文件上传到该容器。
@@ -63,11 +63,11 @@ ms.locfileid: "67059450"
 
 1. 使用[预配 Linux 上的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)中的步骤开始预配群集，但不要完成预配。
 
-2. 在“可选配置”  部分中，选择“脚本操作”  ，并提供以下信息：
+2. 在“可选配置”部分中，选择“脚本操作”，并提供以下信息：
 
    * **名称**：输入脚本操作的友好名称。
 
-   * **脚本 URI**： https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh 。
+   * **脚本 URI**： https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh。
 
    * **标头**：选中此选项。
 
@@ -77,15 +77,15 @@ ms.locfileid: "67059450"
 
    * **参数**：输入包含 jar 的容器和存储帐户的 WASB 地址。 例如， **wasb://libs\@mystorage.blob.core.windows.net/** 。
 
-3. 在“脚本操作”  的底部，使用“选择”  按钮保存配置。
+3. 在“脚本操作”的底部，使用“选择”按钮保存配置。
 
-4. 在“可选配置”  部分中，选择“链接存储帐户”  ，并选择“添加存储密钥”  链接。 选择包含 jar 的存储帐户。 然后使用“选择”  按钮保存设置并返回“可选配置”  。
+4. 在“可选配置”部分中，选择“链接存储帐户”，并选择“添加存储密钥”链接。 选择包含 jar 的存储帐户。 然后使用“选择”按钮保存设置并返回“可选配置”。
 
-5. 若要保存可选配置，请使用“可选配置”  部分底部的“选择”  按钮。
+5. 若要保存可选配置，请使用“可选配置”部分底部的“选择”按钮。
 
 6. 继续按[预配 Linux 上的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)中所述预配群集。
 
-群集创建完成后，你能够使用通过此脚本从 Hive 添加的 jar，而无需使用 `ADD JAR` 语句。
+群集创建完成后，能够使用通过此脚本从 Hive 添加的 jar，而无需使用 `ADD JAR` 语句。
 
 ## <a name="next-steps"></a>后续步骤
 

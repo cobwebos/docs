@@ -8,18 +8,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5df6ab47c45a64077a39974a30c65fe13f3c851d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 90de0b4bfad4c5096ebc38eb3d31fc41bca6649b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091497"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494858"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上为 Apache Hadoop 服务启用堆转储
 
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
-堆转储包含应用程序的内存快照，其中包括创建转储时各变量的值。 因此，它们在诊断发生在运行时的问题时很有用。
+堆转储包含应用程序的内存快照，包括创建转储时各变量的值。 因此，它们在诊断发生在运行时的问题时很有用。
 
 ## <a name="whichServices"></a>服务
 
@@ -39,7 +39,7 @@ ms.locfileid: "71091497"
 
 在每个脚本中，有一个针对 **\*\_OPTS** 的导出，其中包含传递到 JVM 的选项。 例如，在 **hadoop-env.sh** 脚本中，以 `export HADOOP_NAMENODE_OPTS=` 开头的行包含用于 NameNode 服务的选项。
 
-映射和化简进程稍有不同，因为这些操作是 MapReduce 服务的子进程。 每个映射或化简进程都在子容器中运行，并且有两个包含 JVM 选项的条目。 二者均包含在 **mapred-site.xml** 中：
+映射和化简进程稍有不同，因为这些操作是 MapReduce 服务的子进程。 每个映射或化简进程都在子容器中运行，并且有两个包含 JVM 选项的条目。 二者均包含在 **mapred-site.xml**中：
 
 * **mapreduce.admin.map.child.java.opts**
 * **mapreduce.admin.reduce.child.java.opts**
@@ -53,7 +53,7 @@ ms.locfileid: "71091497"
 
     -XX:+HeapDumpOnOutOfMemoryError
 
-**+** 指示是否启用了此选项。 默认为禁用。
+**指示是否启用了此选项+** 。 默认为禁用。
 
 > [!WARNING]  
 > 默认情况下，在 HDInsight 上不为 Hadoop 服务启用堆转储，因为转储文件可能很大。 如果启用了堆转储来进行故障诊断，请记住在重现问题并收集转储文件后禁用堆转储。
@@ -81,7 +81,7 @@ ms.locfileid: "71091497"
 
 若要修改服务配置，请使用以下步骤：
 
-1. 打开群集的 Ambari Web UI。 该 URL 为 https://YOURCLUSTERNAME.azurehdinsight.net 。
+1. 打开群集的 Ambari Web UI。 该 URL 为 https://YOURCLUSTERNAME.azurehdinsight.net。
 
     出现提示时，在该站点中使用群集的 HTTP 帐户名（默认为 admin）和密码进行身份验证。
 

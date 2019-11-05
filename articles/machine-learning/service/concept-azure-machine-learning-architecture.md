@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/12/2019
+ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 706f76c00022c5f5661ea261a5bb35eedc13d5ba
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: MT
+ms.openlocfilehash: ba6d81596cd8a690f5c17e1ca55b91c5ff27b916
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756035"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497530"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作方式：体系结构和概念
 
@@ -28,13 +28,13 @@ ms.locfileid: "72756035"
 机器学习模型工作流通常遵循此顺序：
 
 1. **辆**
-    + 在**Python**中或通过视觉对象界面开发机器学习培训脚本。
+    + 在**Python**或可视化设计器中开发机器学习训练脚本。
     + 创建和配置**计算目标**。
     + **将脚本提交**到配置的计算目标以在该环境中运行。 在训练期间，脚本可以读取或写入**数据存储**。 并且执行记录在**工作区**中保存为**运行**，并在**试验**下分组。
 
 1. **包**-发现满意的运行后，在**模型注册表**中注册持久化模型。
 
-1. **验证** -  从当前和过去的运行中查询记录的度量值**试验**。 如果指标未指示所需结果，请循环回到步骤 1 并循环访问脚本。
+1. **验证** - 从当前和过去的运行中查询记录的度量值**试验**。 如果指标未指示所需结果，请循环回到步骤 1 并循环访问脚本。
 
 1. **部署**-开发一个计分脚本，该脚本使用模型并将**模型部署**为 Azure 中的**web 服务**，或部署到**IoT Edge 设备**。
 
@@ -45,23 +45,26 @@ ms.locfileid: "72756035"
 使用这些工具进行 Azure 机器学习：
 
 +  与[适用于 python 的 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)的任何 Python 环境中的服务进行交互。
++ 与[适用于 r 的 AZURE 机器学习 SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html)的任何 r 环境中的服务进行交互。
 + 通过[AZURE 机器学习 CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)自动执行机器学习活动。
 + 用[Azure 机器学习 VS Code 扩展](how-to-vscode-tools.md)在 Visual Studio Code 中编写代码
-+ 使用[visual interface （预览版） for Azure 机器学习](ui-concept-visual-interface.md)在不编写代码的情况下执行工作流步骤。
++ 在不编写代码的情况下，使用[Azure 机器学习设计器（预览版）](concept-designer.md)来执行工作流步骤。
+
 
 > [!NOTE]
 > 尽管本文定义 Azure 机器学习所使用的术语和概念，但它并不定义 Azure 平台的术语和概念。 有关 Azure 平台术语的详细信息，请参阅 [Microsoft Azure 词汇表](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)。
 
 ## <a name="glossary"></a>术语表
 + <a href="#activities">活动</a>
++ <a href="#compute-instance">计算实例</a>
 + <a href="#compute-targets">计算目标</a>
 + <a href="#datasets-and-datastores">数据集 & 数据存储</a>
-+ <a href="#deployment">部署</a>
++ <a href="#endpoints">Endpoints</a>
 + <a href="#environments">情形</a>
 + [估算](#estimators)
 + <a href="#experiments">试验</a>
 + <a href="#github-tracking-and-integration">Git 跟踪</a>
-+ <a href="#iot-module-deployments">IoT 模块</a>
++ <a href="#iot-module-endpoints">IoT 模块</a>
 + <a href="#logging">Logging</a>
 + <a href="#ml-pipelines">ML 管道</a>
 + <a href="#models">机型</a>
@@ -69,7 +72,7 @@ ms.locfileid: "72756035"
 + <a href="#run-configurations">运行配置</a>
 + <a href="#snapshots">快照</a>
 + <a href="#training-scripts">训练脚本</a>
-+ <a href="#web-service-deployments">Web 服务</a>
++ <a href="#web-service-endpoint">Web 服务</a>
 + <a href="#workspaces">空间</a>
 
 ### <a name="activities"></a>活动
@@ -81,9 +84,19 @@ ms.locfileid: "72756035"
 
 活动可通过 SDK 或 Web UI 提供通知，使你能够轻松监视这些操作的进度。
 
+### <a name="compute-instance"></a>计算实例
+
+> [!NOTE]
+> 计算实例仅适用于区域为**美国中北部**或**英国南部**的工作区。
+>如果你的工作区在任何其他区域，你可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm) 。 
+
+**Azure 机器学习计算实例**（以前称为笔记本 VM）是一种完全托管的基于云的工作站，其中包含为机器学习安装的多个工具和环境。 计算实例可用作定型和推断作业的计算目标。 对于大型任务，使用多节点缩放功能[Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)是更好的计算目标选择。
+
+详细了解[计算实例](concept-compute-instance.md)。
+
 ### <a name="compute-targets"></a>计算目标
 
-[计算目标](concept-compute-target.md)使你可以指定运行训练脚本或托管服务部署的计算资源。 此位置可以是本地计算机，也可以是基于云的计算资源。 计算目标可以在不更改代码的情况下轻松更改你的计算环境。
+[计算目标](concept-compute-target.md)使你可以指定运行训练脚本或托管服务部署的计算资源。 此位置可以是本地计算机，也可以是基于云的计算资源。
 
 详细了解[培训和部署可用的计算目标](concept-compute-target.md)。
 
@@ -97,23 +110,23 @@ ms.locfileid: "72756035"
 
 **数据**存储是通过 Azure 存储帐户进行的存储提取。 数据存储可以使用 Azure blob 容器或 Azure 文件共享作为后端存储。 每个工作区都有默认数据存储，并且你可以注册其他数据存储。 使用 Python SDK API 或 Azure 机器学习 CLI 可从数据存储中存储和检索文件。
 
-### <a name="deployment"></a>部署
+### <a name="endpoints"></a>终结点
 
-部署是将模型实例化到可在云中托管的 web 服务，也可以是集成设备部署的 IoT 模块。
+终结点是模型的实例化，可以托管在云中托管的 web 服务，也可以是集成设备部署的 IoT 模块。
 
-#### <a name="web-service-deployments"></a>Web 服务部署
+#### <a name="web-service-endpoint"></a>Web 服务终结点
 
-已部署的 Web 服务可以使用 Azure 容器实例、Azure Kubernetes 服务或 FPGA。 您可以从模型、脚本和关联的文件创建该服务。 这些封装在映像中，后者提供 web 服务的运行时环境。 映像具有负载均衡的 HTTP 终结点，可接收发送到 Web 服务的评分请求。
+将模型部署为 web 服务时，可以在 Azure 容器实例、Azure Kubernetes 服务或 Fpga 上部署终结点。 您可以从模型、脚本和关联的文件创建该服务。 这些将放置到包含模型的执行环境的基本容器映像中。 映像具有负载均衡的 HTTP 终结点，可接收发送到 Web 服务的评分请求。
 
-如果已选择启用此功能，Azure 可通过收集 Application Insight 遥测数据或模型遥测数据帮助监视 Web 服务部署。 遥测数据仅供你访问，并且存储在 Application Insights 和存储帐户实例中。
+如果已选择启用此功能，Azure 将通过收集 Application Insights 遥测数据或模型遥测数据来帮助监视 web 服务。 遥测数据仅供你访问，并且存储在 Application Insights 和存储帐户实例中。
 
 如果已启用自动缩放，Azure 将自动缩放部署。
 
-有关将模型部署为 Web 服务的示例，请参阅[在 Azure 容器实例中部署映像分类模型](tutorial-deploy-models-with-aml.md)。
+有关将模型部署为 web 服务的示例，请参阅[在 Azure 容器实例中部署图像分类模型](tutorial-deploy-models-with-aml.md)。
 
-#### <a name="iot-module-deployments"></a>IoT 模块部署
+#### <a name="iot-module-endpoints"></a>IoT 模块终结点
 
-已部署 IoT 模块是一个 Docker 容器，包括模型和关联脚本或应用程序，以及任何其他依赖项。 使用边缘设备上的 Azure IoT Edge 部署这些模块。
+已部署的 IoT 模块终结点是一个 Docker 容器，其中包括模型和关联的脚本或应用程序以及任何其他依赖项。 使用边缘设备上的 Azure IoT Edge 部署这些模块。
 
 如果已启用监视，Azure 会从 Azure IoT Edge 模块内的模型中收集遥测数据。 遥测数据仅供你访问，并且存储在存储帐户实例中。
 
@@ -188,8 +201,7 @@ Azure 机器学习与框架无关。 创建模型时，可以使用任何主流�
 
 有关注册模型的示例，请参阅[使用 Azure 机器学习训练映像分类模型](tutorial-train-models-with-aml.md)。
 
-
-### <a name="runs"></a>运行
+### <a name="runs"></a>运行次数
 
 "运行" 是训练脚本的单次执行。 Azure 机器学习记录所有运行并存储以下信息：
 
@@ -223,7 +235,6 @@ Azure 机器学习与框架无关。 创建模型时，可以使用任何主流�
 ### <a name="workspaces"></a>工作区
 
 [工作区](concept-workspace.md)是 Azure 机器学习的顶级资源。 使用 Azure 机器学习时，它提供了一个集中的位置来处理所创建的所有项目。 可以与他人共享工作区。 有关工作区的详细说明，请参阅[什么是 Azure 机器学习工作区？](concept-workspace.md)。
-
 
 ### <a name="next-steps"></a>后续步骤
 

@@ -7,67 +7,29 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 5819a6c6d73b2ee51fc72d2b56d99b0efb3ea0be
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 8418499cc3e094162ac7483aaa6c71e74db95ae1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241127"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472968"
 ---
-# <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service （AKS）中的授权 IP 地址范围进行预览-安全访问 API 服务器
+# <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service （AKS）中的授权 IP 地址范围保护对 API 服务器的访问
 
 在 Kubernetes 中，API 服务器接收到在群集中执行操作的请求，如创建资源或缩放节点数。 API 服务器是与群集进行交互和管理群集的中心方法。 若要提高群集安全性并将攻击降到最低，只能从有限的一组 IP 地址范围访问 API 服务器。
 
-本文介绍如何使用 API 服务器授权的 IP 地址范围来限制对控制平面的请求。 此功能目前处于预览状态。
+本文介绍如何使用 API 服务器授权的 IP 地址范围来限制哪些 IP 地址和 CIDRs 可以访问控制平面。
 
 > [!IMPORTANT]
-> AKS 预览功能是自助式选择加入功能。 预览版“按原样”提供，并且仅在“可用情况下”提供，不包含在服务级别协议和有限保障中。 AKS 预览版的内容部分包含在客户支持中，我们只能尽力提供支持。 因此，这些功能不应用于生产。 有关其他信息，请参阅以下支持文章：
->
-> * [AKS 支持策略][aks-support-policies]
-> * [Azure 支持常见问题][aks-faq]
+> 在新群集上，仅在*标准*SKU 负载平衡器上支持 API 服务器授权的 IP 地址范围。 配置了*基本*SKU 负载平衡器和 API 服务器授权 IP 地址范围的现有群集将继续按原样工作。 这些现有的群集也可以升级，它们将继续工作。
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文 assumess 了使用[kubenet][kubenet]的群集。  使用基于[Azure 容器网络接口（CNI）][cni-networking]的群集时，你将不会获得安全访问所需的路由表。  你将需要手动创建路由表。  有关详细信息，请参阅[管理路由表](https://docs.microsoft.com/azure/virtual-network/manage-route-table)。
+本文假设使用的是使用[kubenet][kubenet]的群集。  使用基于[Azure 容器网络接口（CNI）][cni-networking]的群集时，你将不会获得安全访问所需的路由表。  你将需要手动创建路由表。  有关详细信息，请参阅[管理路由表](https://docs.microsoft.com/azure/virtual-network/manage-route-table)。
 
 API 服务器授权的 IP 范围仅适用于你创建的新 AKS 群集。 本文介绍如何使用 Azure CLI 创建 AKS 群集。
 
-需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
-
-### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
-
-若要配置 API 服务器授权的 IP 范围，需要*aks* CLI 扩展版本0.4.1 或更高版本。 使用[az extension add][az-extension-add]命令安装*aks-preview* Azure CLI 扩展，然后使用[az extension update][az-extension-update]命令检查是否有任何可用的更新：
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
-
-### <a name="register-feature-flag-for-your-subscription"></a>注册订阅的功能标志
-
-若要使用 API 服务器授权的 IP 范围，请首先在订阅上启用功能标志。 若要注册*APIServerSecurityPreview*功能标志，请使用[az feature register][az-feature-register]命令，如以下示例中所示：
-
-> [!CAUTION]
-> 在订阅上注册功能时，当前无法注册该功能。 启用某些预览功能后，默认值可用于在订阅中创建的所有 AKS 群集。 不要对生产订阅启用预览功能。 使用单独的订阅来测试预览功能并收集反馈。
-
-```azurecli-interactive
-az feature register --name APIServerSecurityPreview --namespace Microsoft.ContainerService
-```
-
-状态显示为“已注册”需要几分钟时间。 您可以使用[az feature list][az-feature-list]命令检查注册状态：
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/APIServerSecurityPreview')].{Name:name,State:properties.state}"
-```
-
-准备就绪后，请使用[az provider register][az-provider-register]命令刷新*ContainerService*资源提供程序的注册：
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+需要安装并配置 Azure CLI 版本2.0.76 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 ## <a name="limitations"></a>限制
 
@@ -98,143 +60,33 @@ az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --node-count 1 \
+    --vm-set-type VirtualMachineScaleSets \
+    --load-balancer-sku standard \
     --generate-ssh-keys
 
 # Get credentials to access the cluster
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="create-outbound-gateway-for-firewall-rules"></a>为防火墙规则创建出站网关
+## <a name="update-cluster-with-authorized-ip-ranges"></a>更新具有授权 IP 范围的群集
 
-若要确保在下一部分中启用授权的 IP 范围时，群集中的节点可以可靠地与 API 服务器通信，请创建一个用作出站网关的 Azure 防火墙。 然后，将 Azure 防火墙的 IP 地址添加到下一节中的授权 API 服务器 IP 地址列表。
-
-> [!WARNING]
-> 使用 Azure 防火墙可能会在每月计费周期内产生显著的成本。 只有在此初始预览期间才需要使用 Azure 防火墙。 有关详细信息和成本计划，请参阅[Azure 防火墙定价][azure-firewall-costs]。
->
-> 或者，如果群集使用[标准 SKU 负载平衡器][standard-sku-lb]，则无需将 Azure 防火墙配置为出站网关。 使用[az network 公共 ip 列表][az-network-public-ip-list]并指定 AKS 群集的资源组，该资源组通常以*MC_* 开头。 这会显示你的群集的公共 IP，你可以将该 IP 列入允许列表。 例如：
->
-> ```azurecli-interactive
-> RG=$(az aks show --resource-group myResourceGroup --name myAKSClusterSLB --query nodeResourceGroup -o tsv)
-> SLB_PublicIP=$(az network public-ip list --resource-group $RG --query [].ipAddress -o tsv)
-> az aks update --api-server-authorized-ip-ranges $SLB_PublicIP --resource-group myResourceGroup --name myAKSClusterSLB
-> ```
-
-首先，获取 AKS 群集和虚拟网络的*MC_* 资源组名称。 然后，使用[az network vnet subnet create][az-network-vnet-subnet-create]命令创建一个子网。 以下示例创建一个名为*AzureFirewallSubnet*的子网，其中 CIDR 范围为*10.200.0.0/16*：
+默认情况下，你的群集使用[标准 SKU 负载平衡器][standard-sku-lb]，你可以使用它来配置出站网关。 使用[az network 公共 ip 列表][az-network-public-ip-list]并指定 AKS 群集的资源组，该资源组通常以*MC_* 开头。 这会显示你的群集的公共 IP，你可以允许。 使用[az aks update][az-aks-update]命令并指定 *--api-服务器授权的 ip 范围*参数以允许群集的 ip。 例如：
 
 ```azurecli-interactive
-# Get the name of the MC_ cluster resource group
-MC_RESOURCE_GROUP=$(az aks show \
-    --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --query nodeResourceGroup -o tsv)
-
-# Get the name of the virtual network used by the cluster
-VNET_NAME=$(az network vnet list \
-    --resource-group $MC_RESOURCE_GROUP \
-    --query [0].name -o tsv)
-
-# Create a subnet in the virtual network for Azure Firewall
-az network vnet subnet create \
-    --resource-group $MC_RESOURCE_GROUP \
-    --vnet-name $VNET_NAME \
-    --name AzureFirewallSubnet \
-    --address-prefixes 10.200.0.0/16
+RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+SLB_PublicIP=$(az network public-ip list --resource-group $RG --query [].ipAddress -o tsv)
+az aks update --api-server-authorized-ip-ranges $SLB_PublicIP --resource-group myResourceGroup --name myAKSCluster
 ```
 
-若要创建 Azure 防火墙，请使用[az extension add][az-extension-add]命令安装*azure 防火墙*CLI 扩展。 然后，使用[az network firewall create][az-network-firewall-create]命令创建防火墙。 以下示例创建名为*myAzureFirewall*的 Azure 防火墙：
+若要启用 API 服务器授权的 IP 范围，请使用[az aks update][az-aks-update]命令并指定 *--API-服务器授权的 ip 范围*参数，以提供授权 IP 地址范围的列表。 这些 IP 地址范围通常是本地网络或公共 Ip 使用的地址范围。 指定 CIDR 范围时，请从该范围中的第一个 IP 地址开始。 例如， *137.117.106.90/29*是有效的范围，但请确保指定范围内的第一个 IP 地址，例如*137.117.106.88/29*。
 
-```azurecli-interactive
-# Install the CLI extension for Azure Firewall
-az extension add --name azure-firewall
-
-# Create an Azure firewall
-az network firewall create \
-    --resource-group $MC_RESOURCE_GROUP\
-    --name myAzureFirewall
-```
-
-向 Azure 防火墙分配传出流量流过的公共 IP 地址。 使用[az network 公共 ip create][az-network-public-ip-create]命令创建公用地址，然后使用[az network firewall ip-config create][az-network-firewall-ip-config-create] （应用公共 ip）在防火墙上创建 ip 配置：
-
-```azurecli-interactive
-# Create a public IP address for the firewall
-FIREWALL_PUBLIC_IP=$(az network public-ip create \
-    --resource-group $MC_RESOURCE_GROUP \
-    --name myAzureFirewallPublicIP \
-    --sku Standard \
-    --query publicIp.ipAddress -o tsv)
-
-# Associated the firewall with virtual network
-az network firewall ip-config create \
-    --resource-group $MC_RESOURCE_GROUP \
-    --name myAzureFirewallIPConfig \
-    --vnet-name $VNET_NAME \
-    --firewall-name myAzureFirewall \
-    --public-ip-address myAzureFirewallPublicIP
-```
-
-现在，创建 Azure 防火墙网络规则，以*允许*使用[az 网络防火墙网络规则 create][az-network-firewall-network-rule-create]命令的所有*TCP*流量。 下面的示例创建一个名为*AllowTCPOutbound*的网络规则，该规则具有任何源或目标地址的流量：
-
-```azurecli-interactive
-az network firewall network-rule create \
-    --resource-group $MC_RESOURCE_GROUP \
-    --firewall-name myAzureFirewall \
-    --name AllowTCPOutbound \
-    --collection-name myAzureFirewallCollection \
-    --priority 200 \
-    --action Allow \
-    --protocols TCP \
-    --source-addresses '*' \
-    --destination-addresses '*' \
-    --destination-ports '*'
-```
-
-若要将 Azure 防火墙与网络路由关联，请获取现有路由表信息、Azure 防火墙的内部 IP 地址，然后获取 API 服务器的 IP 地址。 下一节中将指定这些 IP 地址，以控制应如何路由流量以进行群集通信。
-
-```azurecli-interactive
-# Get the AKS cluster route table
-ROUTE_TABLE=$(az network route-table list \
-    --resource-group $MC_RESOURCE_GROUP \
-    --query "[?contains(name,'agentpool')].name" -o tsv)
-
-# Get internal IP address of the firewall
-FIREWALL_INTERNAL_IP=$(az network firewall show \
-    --resource-group $MC_RESOURCE_GROUP \
-    --name myAzureFirewall \
-    --query ipConfigurations[0].privateIpAddress -o tsv)
-
-# Get the IP address of API server endpoint
-K8S_ENDPOINT_IP=$(kubectl get endpoints -o=jsonpath='{.items[?(@.metadata.name == "kubernetes")].subsets[].addresses[].ip}')
-```
-
-最后，在现有 AKS 网络路由表中创建一个路由，使用[az network route-table route create][az-network-route-table-route-create]命令，该命令允许流量使用 Azure 防火墙设备进行 API 服务器通信。
-
-```azurecli-interactive
-az network route-table route create \
-    --resource-group $MC_RESOURCE_GROUP \
-    --route-table-name $ROUTE_TABLE \
-    --name AzureFirewallAPIServer \
-    --address-prefix $K8S_ENDPOINT_IP/32 \
-    --next-hop-ip-address $FIREWALL_INTERNAL_IP \
-    --next-hop-type VirtualAppliance
-
-echo "Public IP address for the Azure Firewall instance that should be added to the list of API server authorized addresses is:" $FIREWALL_PUBLIC_IP
-```
-
-记下 Azure 防火墙设备的公共 IP 地址。 在下一部分中，此地址已添加到 API 服务器授权的 IP 范围列表。
-
-## <a name="enable-authorized-ip-ranges"></a>启用授权的 IP 范围
-
-若要启用 API 服务器授权的 IP 范围，请提供授权 IP 地址范围的列表。 指定 CIDR 范围时，请从该范围中的第一个 IP 地址开始。 例如， *137.117.106.90/29*是有效的范围，但请确保指定范围内的第一个 IP 地址，例如*137.117.106.88/29*。
-
-使用[az aks update][az-aks-update]命令并指定 *--api-服务器授权的 ip 范围*以允许。 这些 IP 地址范围通常是本地网络所使用的地址范围。 添加在上一步中获取的自己的 Azure 防火墙的公共 IP 地址，例如*20.42.25.196/32*。
-
-以下示例在名为*myResourceGroup*的资源组中名为*myAKSCluster*的群集上启用 API 服务器授权的 IP 范围。 要授权的 IP 地址范围为*20.42.25.196/32* （Azure 防火墙公共 IP 地址）、 *172.0.0.0/16* （Pod/节点地址范围）和*168.10.0.0/18* （ServiceCidr）：
+以下示例在名为*myResourceGroup*的资源组中名为*myAKSCluster*的群集上启用 API 服务器授权的 IP 范围。 要授权的 IP 地址范围为*172.0.0.0/16* （Pod/节点地址范围）和*168.10.0.0/18* （ServiceCidr）：
 
 ```azurecli-interactive
 az aks update \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --api-server-authorized-ip-ranges 20.42.25.196/32,172.0.0.0/16,168.10.0.0/18
+    --api-server-authorized-ip-ranges 172.0.0.0/16,168.10.0.0/18
 ```
 
 > [!NOTE]
@@ -244,9 +96,9 @@ az aks update \
 > - 子网的地址范围，其中包含节点和盒
 > - 任何表示你要从中管理群集的网络的范围
 
-## <a name="update-or-disable-authorized-ip-ranges"></a>更新或禁用授权的 IP 范围
+## <a name="disable-authorized-ip-ranges"></a>禁用授权的 IP 范围
 
-若要更新或禁用授权 IP 范围，请再次使用[az aks update][az-aks-update]命令。 指定要允许的已更新 CIDR 范围，或指定一个空范围以禁用 API 服务器授权的 IP 范围，如以下示例中所示：
+若要禁用授权的 IP 范围，请使用[az aks update][az-aks-update]并指定一个空范围，以禁用 API 服务器授权的 ip 范围。 例如：
 
 ```azurecli-interactive
 az aks update \
@@ -262,34 +114,15 @@ az aks update \
 有关详细信息，请参阅[AKS 中的应用程序和群集的安全概念][concepts-security]和[AKS 中群集安全性和升级的最佳方案][operator-best-practices-cluster-security]。
 
 <!-- LINKS - external -->
-[azure-firewall-costs]: https://azure.microsoft.com/pricing/details/azure-firewall/
-[kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
+[kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
 
 <!-- LINKS - internal -->
-[aks-quickstart-cli]: kubernetes-walkthrough.md
-[install-azure-cli]: /cli/azure/install-azure-cli
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
 [az-aks-update]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-update
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
 [concepts-security]: concepts-security.md
+[install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
-[create-aks-sp]: kubernetes-service-principal.md#manually-create-a-service-principal
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-show]: /cli/azure/aks#az-aks-show
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-create
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-network-firewall-create]: /cli/azure/ext/azure-firewall/network/firewall#ext-azure-firewall-az-network-firewall-create
-[az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
-[az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
-[az-network-firewall-ip-config-create]: /cli/azure/ext/azure-firewall/network/firewall/ip-config#ext-azure-firewall-az-network-firewall-ip-config-create
-[az-network-firewall-network-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/network-rule#ext-azure-firewall-az-network-firewall-network-rule-create
-[az-network-route-table-route-create]: /cli/azure/network/route-table/route#az-network-route-table-route-create
-[aks-support-policies]: support-policies.md
-[aks-faq]: faq.md
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
 [standard-sku-lb]: load-balancer-standard.md

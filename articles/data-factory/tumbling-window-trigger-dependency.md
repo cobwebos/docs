@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: daperlov
-ms.openlocfilehash: 6e5e293e9759f091b6537d5efab9884e0a20fabc
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 24a1a5d132990db2aa10b7860774eecafb4b4edb
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725461"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "73520483"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>创建翻转窗口触发器依赖项
 
@@ -34,7 +34,7 @@ ms.locfileid: "68725461"
 
 ## <a name="tumbling-window-dependency-properties"></a>翻转窗口依赖项属性
 
-具有依赖项的翻转窗口触发器具有以下属性:
+具有依赖项的翻转窗口触发器具有以下属性：
 
 ```json
 {
@@ -76,18 +76,18 @@ ms.locfileid: "68725461"
 
 下表提供了定义翻转窗口依赖项所需的属性列表。
 
-| **属性名称** | **说明**  | 类型 | **必需** |
+| **属性名称** | **说明**  | **类型** | **必需** |
 |---|---|---|---|
 | type  | 所有现有翻转窗口触发器将显示在此下拉列表中。 选择要依赖的触发器。  | TumblingWindowTriggerDependencyReference 或 SelfDependencyTumblingWindowTriggerReference | 是 |
-| offset | 依赖项触发器的偏移量。 提供一个时间跨度格式的值, 同时允许负数和正偏移量。 如果触发器依赖于自身, 而在所有其他情况下, 此属性是可选的, 则此属性是必需的。 自我依赖项应始终为负偏移量。 如果未指定任何值, 则窗口与触发器本身相同。 | 时间范围<br/>(hh:mm:ss) | 自我依赖项：是<br/>其他:否 |
-| 大小 | 依赖项翻转窗口的大小。 提供正的 timespan 值。 此属性是可选的。 | 时间范围<br/>(hh:mm:ss) | 否  |
+| offset | 依赖项触发器的偏移量。 提供一个时间跨度格式的值，同时允许负数和正偏移量。 如果触发器依赖于自身，而在所有其他情况下，此属性是可选的，则此属性是必需的。 自我依赖项应始终为负偏移量。 如果未指定任何值，则窗口与触发器本身相同。 | Timespan<br/>(hh:mm:ss) | 自依赖项：是<br/>其他：否 |
+| size | 依赖项翻转窗口的大小。 提供正的 timespan 值。 此属性是可选的。 | Timespan<br/>(hh:mm:ss) | 否  |
 
 > [!NOTE]
 > 翻转窗口触发器最多可以有两个其他触发器。
 
 ## <a name="tumbling-window-self-dependency-properties"></a>翻转窗口自我依赖项属性
 
-如果在上一窗口成功完成之前, 触发器不应继续到下一个窗口, 则生成一个自依赖项。 依赖于以前的 hr 中自身运行的成功的依赖项触发器将具有以下属性:
+如果在上一窗口成功完成之前，触发器不应继续到下一个窗口，则生成一个自依赖项。 依赖于以前的 hr 中自身运行的成功的依赖项触发器将具有以下属性：
 
 ```json
 {
@@ -135,11 +135,11 @@ ms.locfileid: "68725461"
 
 ### <a name="self-dependency"></a>自我依赖项
 
-![自依赖项](media/tumbling-window-trigger-dependency/tumbling-window-dependency04.png "自依赖项")
+![自依赖项](media/tumbling-window-trigger-dependency/tumbling-window-dependency04.png "自我依赖项")
 
 ### <a name="dependency-on-another-tumbling-window-trigger"></a>依赖于另一个翻转窗口触发器
 
-每日遥测处理作业, 具体取决于每日聚合最后七天的作业输出, 并生成七天的滚动窗口流:
+每日遥测处理作业，具体取决于每日聚合最后七天的作业输出，并生成七天的滚动窗口流：
 
 ![依赖项示例](media/tumbling-window-trigger-dependency/tumbling-window-dependency05.png "依赖项示例")
 
@@ -151,15 +151,17 @@ ms.locfileid: "68725461"
 
 ## <a name="monitor-dependencies"></a>监视依赖项
 
-你可以从 "触发器运行监视" 页监视依赖关系链和对应的窗口。 导航到“监视”>“触发器运行”。
+你可以从 "触发器运行监视" 页监视依赖关系链和对应的窗口。 导航到“监视”>“触发器运行”。 在 "操作" 列下，您可以重新运行触发器或查看其依赖项。
 
 ![监视触发器运行](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "监视触发器运行")
 
-单击 "操作" 图标可查看所选窗口的所有依赖触发器运行。
+如果单击 "查看触发器依赖项"，可以查看依赖关系的状态。 如果某个依赖项触发器失败，则必须成功重新运行它才能运行相关触发器。 翻转窗口触发器将等待依赖项在七天后超时。
 
 ![监视依赖项](media/tumbling-window-trigger-dependency/tumbling-window-dependency08.png "监视依赖项")
 
-在上面的示例中, 每日触发器依赖于未定义窗口的每小时触发器, 偏移量为3小时。 因此, 触发器在24次成功运行依赖项之后运行。
+若要更直观地查看触发器依赖关系计划，请选择 "甘特图" 视图。
+
+![监视依赖项](media/tumbling-window-trigger-dependency/tumbling-window-dependency09.png "监视依赖项")
 
 ## <a name="next-steps"></a>后续步骤
 

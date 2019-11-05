@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: e1e89612ee48aaf5ee9bda51f954add426bf6720
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: bebfad57da41d257749acd3842a75ace114ed643
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516797"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492797"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>迁移到 Azure 创作资源的步骤
 
 从语言理解（LUIS）门户中，迁移所有拥有的应用以使用 Azure 创作资源。
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -38,7 +40,7 @@ ms.locfileid: "72516797"
 
 如果你是任何 LUIS 应用的所有者，则可以使用迁移过程。 
 
-1. 登录到[LUIS 门户](https://www.luis.ai)，并同意使用条款。
+1. 登录 [LUIS 门户](https://www.luis.ai)并同意使用条款。
 1. 可以在 "迁移" 弹出窗口中继续进行迁移或迁移。 选择 "**立即迁移**"。 如果选择稍后迁移，则在 Azure 中迁移到新的创作密钥需要9个月的时间。
 
     ![迁移过程中的第一个弹出窗口，选择 "立即迁移"。](./media/migrate-authoring-key/migrate-now.png)
@@ -98,7 +100,7 @@ ms.locfileid: "72516797"
 
 ## <a name="app-contributor-begins-the-migration-process"></a>应用参与者开始迁移过程
 
-按照与应用所有者相同的步骤进行迁移。 此过程将创建一个 `LUIS.Authoring` 的新创作资源。 
+按照与应用所有者相同的步骤进行迁移。 此过程将创建一个 `LUIS.Authoring`的新创作资源。 
 
 你需要迁移你的帐户，以便作为参与者添加到其他人拥有的迁移应用程序。  
 

@@ -10,14 +10,15 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 70d6bd9507670a8846b2a79509b6b6e571f17e37
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
-ms.translationtype: MT
+ms.openlocfilehash: 91278bdc1748615c91675e3894ebae4cf5fce1e4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710088"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489500"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>大规模定型并注册 Chainer 模型 Azure 机器学习
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在本文中，了解如何使用 Azure 机器学习的[Chainer 估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)类在企业范围内运行[Chainer](https://chainer.org/)训练脚本。 本文中的示例训练脚本使用常见的[MNIST 数据集](http://yann.lecun.com/exdb/mnist/)，通过使用在[numpy](https://www.numpy.org/)顶部运行的 Chainer Python 库生成的深度神经网络（DNN）对手写数字进行分类。
 
@@ -25,15 +26,15 @@ ms.locfileid: "71710088"
 
 了解有关[深度学习与机器学习](concept-deep-learning-vs-machine-learning.md)的详细信息。
 
-如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在以下任一环境中运行此代码：
 
-- Azure 机器学习笔记本 VM-无需下载或安装
+- Azure 机器学习计算实例-无需下载或安装
 
-    - 在开始本教程之前完成[教程：设置环境和工作](tutorial-1st-experiment-sdk-setup.md)区，创建随 SDK 和示例存储库预先加载的专用笔记本服务器。
+    - 完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)，创建随 SDK 和示例存储库预先加载的专用笔记本服务器。
     - 在笔记本服务器上的示例深度学习文件夹中，在 "操作**方法" > ml-框架 > chainer > 部署 > chainer**文件夹中查找已完成的笔记本和文件。  此笔记本包含扩展的部分，涵盖智能超参数优化、模型部署和笔记本小组件。
 
 - 你自己的 Jupyter 笔记本服务器
@@ -47,7 +48,7 @@ ms.locfileid: "71710088"
 
 本部分通过加载所需的 python 包、初始化工作区、创建试验以及上传定型数据和训练脚本来设置训练实验。
 
-### <a name="import-packages"></a>导入包
+### <a name="import-packages"></a>导入程序包
 
 首先，导入 azureml 的 Python 库并显示版本号。
 
@@ -62,7 +63,7 @@ print("SDK version:", azureml.core.VERSION)
 
 [Azure 机器学习工作区](concept-workspace.md)是服务的顶级资源。 它为您提供了一个集中的位置来处理您创建的所有项目。 在 Python SDK 中，可以通过创建[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)对象来访问工作区项目。
 
-通过读取在[先决条件部分](#prerequisites)中创建`config.json`的文件来创建工作区对象：
+通过读取在[先决条件部分](#prerequisites)中创建的 `config.json` 文件来创建工作区对象：
 
 ```Python
 ws = Workspace.from_config()
@@ -84,7 +85,7 @@ os.makedirs(project_folder, exist_ok=True)
 
 若要使用 Azure ML 的跟踪和指标功能，请在训练脚本中添加少量的 Azure ML 代码。  训练脚本**chainer_mnist。 py**演示如何使用脚本中的 `Run` 对象将一些指标记录到 Azure ML 运行中。
 
-提供的训练脚本使用 chainer `datasets.mnist.get_mnist`函数中的示例数据。  对于您自己的数据，您可能需要使用 "[上传数据集" 和 "脚本](how-to-train-keras.md#data-upload)" 等步骤，使数据在训练过程中可用。
+提供的训练脚本使用 chainer `datasets.mnist.get_mnist` 函数中的示例数据。  对于您自己的数据，您可能需要使用 "[上传数据集" 和 "脚本](how-to-train-keras.md#data-upload)" 等步骤，使数据在训练过程中可用。
 
 将训练脚本**chainer_mnist**复制到项目目录中。
 
@@ -172,13 +173,13 @@ run.wait_for_completion(show_output=True)
 
 在执行运行时，它将经历以下几个阶段：
 
-- **准备**：根据 Chainer 估计器创建 docker 映像。 该映像将上传到工作区的容器注册表中，并进行缓存以供稍后运行。 还会将日志流式传输到运行历史记录，并可以查看日志来监视进度。
+- **准备**：按 Chainer 估计器创建 docker 映像。 该映像将上传到工作区的容器注册表中，并进行缓存以供稍后运行。 还会将日志流式传输到运行历史记录，并可以查看日志来监视进度。
 
 - **缩放**：如果 Batch AI 群集需要的节点数多于当前可用的节点数，则群集将尝试增加。
 
-- **Running**：脚本文件夹中的所有脚本都将上载到计算目标，装载或复制数据存储，并执行 entry_script。 输出从 stdout 开始，/logs 文件夹将流式传输到运行历史记录，并可用于监视运行情况。
+- **正在运行**：脚本文件夹中的所有脚本都将上载到计算目标，装载或复制数据存储，然后执行 entry_script。 输出从 stdout 开始，/logs 文件夹将流式传输到运行历史记录，并可用于监视运行情况。
 
-- **后期处理**：运行的/outputs 文件夹将复制到运行历史记录中。
+- **后期处理**：将运行的/outputs 文件夹复制到运行历史记录中。
 
 ## <a name="save-and-register-the-model"></a>保存并注册模型
 
@@ -194,7 +195,7 @@ model = run.register_model(model_name='chainer-dnn-mnist', model_path='outputs/m
 > [!TIP]
 > 如果收到错误消息，指出找不到该模型，请稍等片刻，然后重试。  有时训练运行结束与输出目录中模型的可用性之间略有延迟。
 
-您还可以下载模型的本地副本。 这对于在本地执行其他模型验证工作非常有用。 在训练脚本`chainer_mnist.py`中，"保护程序" 对象将模型保留到本地文件夹（计算目标的本地）。 可以使用 "运行" 对象从数据存储下载副本。
+您还可以下载模型的本地副本。 这对于在本地执行其他模型验证工作非常有用。 在训练脚本中 `chainer_mnist.py`，保护程序对象将模型保留到本地文件夹（在计算目标的本地）。 可以使用 "运行" 对象从数据存储下载副本。
 
 ```Python
 # Create a model folder in the current directory

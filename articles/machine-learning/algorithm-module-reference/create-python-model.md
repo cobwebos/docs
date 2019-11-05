@@ -1,7 +1,7 @@
 ---
 title: 创建 Python 模型：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的创建 Python 模型模型创建自定义建模或数据处理模块。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的 "创建 Python 模型" 模型创建自定义建模或数据处理模块。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 2a035644dc0d3d533aa052217c89968a5692230b
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 33e15055958ac99f2aa9eb160f9e5cf3c5b0cd41
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693891"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493792"
 ---
 # <a name="create-python-model"></a>创建 Python 模型
 
 本文介绍如何使用 "**创建 Python 模型**" 模块通过 Python 脚本创建未经训练的模型。 
 
-您可以基于 Azure 机器学习环境中包含在 Python 包中的任何学习器的模型。 
+您可以在 Azure 机器学习设计器环境中包含在 Python 包中的任何学习器基础上建模。 
 
 创建模型后，可以使用[定型模型](train-model.md)对数据集上的模型进行定型，就像 Azure 机器学习中的任何其他学习器一样。 训练的模型可以传递给[评分模型](score-model.md)，使用该模型进行预测。 然后，就可以保存训练后的模型，并且可以将评分工作流发布为 web 服务。
 

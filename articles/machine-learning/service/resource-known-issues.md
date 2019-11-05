@@ -9,35 +9,34 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 08/09/2019
-ms.custom: seodec18
-ms.openlocfilehash: 5edf4a4f53e6b4255970f86dd942795ad2e4cbe2
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: 7c52adfb919586fc590ef60215592a5b5c1c1cb3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025393"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476076"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知问题和故障排除 Azure 机器学习
 
 本文可帮助你查找和更正使用 Azure 机器学习时遇到的错误或故障。
 
-## <a name="upcoming-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>即将推出 SR-IOV 升级到 AmlCompute 中的 NCv3 计算机
+## <a name="outage-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>中断： SR-IOV 升级到 AmlCompute 中的 NCv3 计算机
 
-Azure 计算将更新从11月提前开始的 NCv3 Sku，以支持所有 MPI 实现和版本，并提供适用于未受支持的虚拟机的 RDMA 谓词。 这将需要较短的停机时间-[详细了解 sr-iov 升级](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku)。
+Azure 计算将更新从11月 2019 11 日年初开始的 NCv3 Sku，以支持所有 MPI 实现和版本，并提供适用于未受支持的虚拟机的 RDMA 谓词。 这将需要较短的停机时间-[详细了解 sr-iov 升级](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku)。
 
 作为 Azure 机器学习托管计算产品（AmlCompute）的客户，此时不需要进行任何更改。 根据[更新计划](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku)，你需要在训练中计划一个短暂的中断。 服务将负责更新群集节点上的 VM 映像，并自动扩展群集。 升级完成后，除了获得更高的带宽、延迟时间和更好的分布式应用程序性能之外，您还可以使用其他所有 MPI discibutions （如 OpenMPI 和 Pytorch）。
 
-## <a name="visual-interface-issues"></a>视觉对象接口问题
+## <a name="azure-machine-learning-designer-issues"></a>Azure 机器学习设计器问题
 
-机器学习服务问题的可视化界面。
+设计器的已知问题。
 
 ### <a name="long-compute-preparation-time"></a>长计算准备时间
 
 创建新的计算或调用它保留计算需要时间，可能需要几分钟甚至更长时间。 团队正在努力优化。
 
 
-### <a name="cannot-run-an-experiment-only-contains-dataset"></a>无法运行只包含数据集的试验 
+### <a name="cannot-run-an-experiment-only-contains-a-dataset"></a>无法运行只包含数据集的试验 
 
 你可能想要运行一个试验，只包含数据集来可视化数据集。 但是，不允许运行仅包含数据集的试验。 我们正在积极地解决此问题。
  
@@ -55,7 +54,7 @@ Azure 计算将更新从11月提前开始的 NCv3 Sku，以支持所有 MPI 实�
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
 
-错误消息：`ERROR: No matching distribution found for azureml-dataprep-native`
+错误消息： **`ERROR: No matching distribution found for azureml-dataprep-native`**
 
 Anaconda 的 Python 3.7.4 分发有一个破坏 azureml-sdk 安装的缺陷。 此[GitHub 问题](https://github.com/ContinuumIO/anaconda-issues/issues/11195)中讨论了此问题，可通过使用此命令创建新的 Conda 环境来解决此问题：
 ```bash
@@ -79,7 +78,7 @@ conda create -n <env-name> python=3.7.3
 
 你将无法在 FPGA 上部署模型，直到已请求并获得 FPGA 配额批准为止。 若要请求访问权限，请填写配额请求表单： https://aka.ms/aml-real-time-ai
 
-## <a name="automated-machine-learning"></a>自动执行机器学习
+## <a name="automated-machine-learning"></a>自动化机器学习
 
 Tensor Flow 自动化机器学习当前不支持 Tensor 流版本1.13。 安装此版本将导致包依赖关系停止工作。 我们正在努力解决此问题。 
 
@@ -117,7 +116,7 @@ psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
 
 ### <a name="10-iterations-for-automated-machine-learning"></a>自动机器学习 > 10 次迭代
 
-在自动机器学习设置中，如果迭代次数超过10个，则在提交运行时，将 `show_output` 设置为 `False`。
+在自动机器学习设置中，如果有10个以上的迭代，请将 `show_output` 设置为提交运行时 `False`。
 
 ### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Azure 机器学习 SDK/自动机器学习的小组件
 
@@ -144,11 +143,12 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 
 ### <a name="failtosendfeather"></a>FailToSendFeather
 
-如果在 Azure Databricks 群集上读取数据时出现 `FailToSendFeather` 错误，请参阅以下解决方案：
+如果在 Azure Databricks 群集上读取数据时看到 `FailToSendFeather` 错误，请参阅以下解决方案：
 
 * 将 `azureml-sdk[automl]` 包升级到最新版本。
 * 添加 `azure-dataprep` 版本1.1.8 或更高版本。
 * 添加 `pyarrow` 版本0.11 或更高版本。
+
 
 ## <a name="datasets"></a>数据集
 
@@ -158,11 +158,11 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 
 ## <a name="azure-portal"></a>Azure 门户
 
-如果直接通过 SDK 或门户的共享链接查看工作区，则将无法在扩展程序中查看包含订阅信息的常规概述页。 也将无法切换到另一个工作区。 如果需要查看其他工作区，解决方法是直接转到 [Azure 门户](https://portal.azure.com)并搜索工作区名称。
+如果直接通过 SDK 或门户的共享链接查看工作区，则将无法在扩展程序中查看包含订阅信息的常规概述页。 也将无法切换到另一个工作区。 如果需要查看其他工作区，则解决方法是直接执行[Azure 机器学习 studio](https://ml.azure.com)并搜索工作区名称。
 
 ## <a name="diagnostic-logs"></a>诊断日志
 
-如果在请求帮助时可以提供诊断信息，有时会很有帮助。 若要查看某些日志，请访问[Azure 门户](https://portal.azure.com)并访问工作区，并选择 "**工作区" > 试验 > 运行 > 日志**。  你还可以在[工作区登陆页面（预览）](https://ml.azure.com)的**试验**部分中找到此信息。
+如果在请求帮助时可以提供诊断信息，有时会很有帮助。 若要查看某些日志，请访问[Azure 机器学习 studio](https://ml.azure.com)并访问工作区，并选择 "**工作区" > 试验 > 运行 > 日志**。  
 
 > [!NOTE]
 > Azure 机器学习在定型期间记录来自各种来源的信息，如 AutoML 或运行训练作业的 Docker 容器。 其中许多日志没有记录。 如果遇到问题，请与 Microsoft 支持部门联系，他们可以在故障排除过程中使用这些日志。
@@ -193,7 +193,7 @@ Azure 机器学习工作区中的某些操作不会将信息记录到__活动日
 
 ## <a name="overloaded-azurefile-storage"></a>重载的 AzureFile 存储
 
-如果收到 `Unable to upload project files to working directory in AzureFile because the storage is overloaded` 错误，请应用以下解决方法。
+如果收到错误 `Unable to upload project files to working directory in AzureFile because the storage is overloaded`，请应用以下解决方法。
 
 如果对其他工作负荷（如数据传输）使用文件共享，则建议使用 blob，以便可以自由地使用文件共享来提交运行。 你还可以在两个不同的工作区之间拆分工作负荷。
 
@@ -233,7 +233,7 @@ compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceNa
 compute_target.wait_for_completion(show_output=True)
 ```
 
-如果不再具有 SSL 证书和私钥，或者使用的是 Azure 机器学习生成的证书，则可以在分离群集之前通过使用 `kubectl` 和 `azuremlfessl` 检索机密来检索这些文件。
+如果不再具有 SSL 证书和私钥，或者使用的是 Azure 机器学习生成的证书，则可以在分离群集之前通过使用 `kubectl` 和 `azuremlfessl`检索机密来检索这些文件。
 
 ```bash
 kubectl get secret/azuremlfessl -o yaml
@@ -248,7 +248,7 @@ kubectl get secret/azuremlfessl -o yaml
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors （没有名为的模块）
 如果在 Azure ML 中提交试验时运行到 ModuleErrors 中，则表示训练脚本需要安装一个包，但不会添加它。 提供包名称后，Azure ML 会在用于定型的环境中安装包。 
 
-如果使用[估算](concept-azure-machine-learning-architecture.md#estimators)提交试验，则可以通过基于要安装包的源中的估计器 `pip_packages` 或 `conda_packages` 参数指定包名称。 你还可以使用 `conda_dependencies_file`指定包含所有依赖项的 docker-compose.override.yml 文件，或者使用 `pip_requirements_file` 参数列出 txt 文件中的所有 pip 要求。
+如果使用[估算](concept-azure-machine-learning-architecture.md#estimators)提交试验，则可以通过基于要安装包的源中的估计器 `pip_packages` 或 `conda_packages` 参数指定包名称。 你还可以使用 `pip_requirements_file` 参数，通过 `conda_dependencies_file`or 列出 txt 文件中的所有 pip 要求来指定具有所有依赖项的 docker-compose.override.yml 文件。
 
 Azure ML 还为 Tensorflow、PyTorch、Chainer 和 Spark-sklearn 提供框架特定的估算。 使用这些估算将确保在用于定型的环境中代表您安装框架依赖项。 您可以选择指定额外的依赖项，如上所述。 
  
@@ -261,4 +261,4 @@ Azure ML 还为 Tensorflow、PyTorch、Chainer 和 Spark-sklearn 提供框架特
 此异常应来自训练脚本。 你可以查看 Azure 门户的日志文件，以获取有关特定名称（未定义）或属性错误的详细信息。 从 SDK，你可以使用 `run.get_details()` 来查看错误消息。 这还将列出为运行生成的所有日志文件。 请确保查看训练脚本，并修复错误，然后重试。 
 
 ### <a name="horovod-is-shutdown"></a>Horovod 关闭
-在大多数情况下，此异常表示某个进程中存在导致 horovod 关闭的基础异常。 MPI 作业中的每个排名都在 Azure ML 中获得专用的日志文件。 这些日志命名为 `70_driver_logs`。 对于分布式培训，日志名称以 `_rank` 为后缀，以方便区分日志。 若要查找导致 horovod 关闭的确切错误，请浏览所有日志文件，并在 driver_log 文件的末尾查找 `Traceback`。 其中一项文件会为你带来实际的基础异常。 
+在大多数情况下，此异常表示某个进程中存在导致 horovod 关闭的基础异常。 MPI 作业中的每个排名都在 Azure ML 中获得专用的日志文件。 这些日志命名为 `70_driver_logs`。 对于分布式培训，日志名称的后缀为 `_rank` 以便于区分日志。 若要查找导致 horovod 关闭的确切错误，请浏览所有日志文件，并在 driver_log 文件的末尾查找 `Traceback`。 其中一项文件会为你带来实际的基础异常。 

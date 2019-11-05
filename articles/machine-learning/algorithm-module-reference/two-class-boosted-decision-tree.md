@@ -1,24 +1,24 @@
 ---
 title: 双类提升决策树：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何在 Azure 机器学习服务中使用 "双类提升决策树" 模块来创建基于提升决策树算法的机器学习模型。
+titleSuffix: Azure Machine Learning
+description: 了解如何在 Azure 机器学习中使用 "双类提升决策树" 模块来创建基于提升决策树算法的机器学习模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 5795dc994872ac5da37a1226524dddd35aa35126
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 7590cab00670c92e8a5b90006778542ec44bf83f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692636"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490175"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>双类提升决策树模块
 
-本文介绍了 Azure 机器学习服务的可视界面（预览）的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块来创建基于提升决策树算法的机器学习模型。 
 
@@ -75,4 +75,4 @@ ms.locfileid: "72692636"
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

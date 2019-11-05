@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: b9e910f24503f6bbf86e8ed8cdcb6f422d2490d9
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1cfab9b065fd4e28a9ce11ac85682a298011200b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073993"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470120"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>监视 Azure 应用服务中的应用
 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)针对 [Azure 门户](https://portal.azure.com)中的 Web 应用、移动后端和 API 应用提供内置监视功能。
@@ -38,7 +38,7 @@ ms.locfileid: "70073993"
 
 “免费”或“共享”应用的配额如下：
 
-| 配额 | 描述 |
+| 配额 | 说明 |
 | --- | --- |
 | **CPU（短期）** | 5 分钟间隔内允许此应用使用的 CPU 量。 此配额每五分钟重置。 |
 | **CPU（天）** | 一天内允许此应用使用的 CPU 总量。 此配额每隔 24 小时在 UTC 午夜时间重置。 |
@@ -68,9 +68,9 @@ ms.locfileid: "70073993"
 
 应用的可用指标包括：
 
-| 指标 | 描述 |
+| 指标 | 说明 |
 | --- | --- |
-| **平均响应时间** | 应用处理请求的平均时间，以毫秒为单位。 |
+| **平均响应时间** | 应用处理请求所用的平均时间（以秒为单位）。 |
 | **平均内存工作集** | 应用使用的平均内存量，以兆字节 (MiB) 为单位。 |
 | **连接** | 沙盒中存在的绑定套接字的数目（w3wp.exe 及其子进程）。  绑定套接字是通过调用 bind()/connect() API 创建的，并一直保留到通过 CloseHandle()/closesocket() 关闭所述的套接字。 |
 | **CPU 时间** | 应用消耗的 CPU 量，以秒为单位。 有关此指标的详细信息，请参阅 [CPU 时间与 CPU 百分比](#cpu-time-vs-cpu-percentage)。 |
@@ -110,7 +110,7 @@ ms.locfileid: "70073993"
 > 应用服务计划指标仅适用于“基本”、“标准”和“高级”层中的计划。
 > 
 
-| 指标 | 描述 |
+| 指标 | 说明 |
 | --- | --- |
 | **CPU 百分比** | 计划的所有实例使用的平均 CPU 量。 |
 | **内存百分比** | 计划的所有实例使用的平均内存量。 |
@@ -124,9 +124,9 @@ ms.locfileid: "70073993"
 
 有两个反映 CPU 使用率的指标：
 
-**CPU 时间**：适用于托管在“免费”或“共享”计划中的应用，因为这些应用的其中一个配额由应用所用的 CPU 时间定义。
+**CPU 时间**：对于在免费或共享计划中托管的应用很有用，因为其中一个配额是在应用使用的 CPU 分钟数中定义的。
 
-**CPU 百分比**：适用于托管在“基本”、“标准”和“高级”计划中的应用，因为它们可横向扩展。CPU 百分比是所有实例中总用量的良好指标。
+**CPU 百分比**：对于托管在基本、标准和高级计划中的应用很有用，因为它们可以横向扩展。CPU 百分比是所有实例的总体使用情况的良好指示。
 
 ## <a name="metrics-granularity-and-retention-policy"></a>指标粒度和保留策略
 应用和应用服务计划的指标由具有下列粒度和保留策略的服务进行记录和聚合：
@@ -140,7 +140,7 @@ ms.locfileid: "70073993"
 
 ![Azure 门户中的“配额”图表][quotas]
 
-若要查找配额，请选择“设置” > “配额”。 在图表中，可以查看： 
+若要查找配额，请选择“设置” **“配额”。**  >  在图表中，可以查看： 
 1. 配额名称。
 1. 配额的重置时间间隔。
 1. 配额的当前限制。

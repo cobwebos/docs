@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB 的 SQL JOIN 查询
-description: 了解 Azure Cosmos DB 的联接的 SQL 语法。
+description: 了解 Azure Cosmos DB 的 JOIN SQL 语法。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: 408ee11b318143b3128833a741e04dd68f3816ed
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: d78904fde53da0e800a69d2148a9c4e3acf57307
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342948"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494414"
 ---
-# <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB 中联接
+# <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB 中的联接
 
-在关系数据库中，跨表联接是设计规范化架构的逻辑定理。 相比之下，SQL API 使用无架构项的反规范化数据模型，这在逻辑上等效于自联接。 
+在关系数据库中，跨表联接是设计规范化架构的逻辑定理。 相比之下，SQL API 使用无架构项的反规范化数据模型，这在逻辑上等效于自联接。
 
 内联会导致加入联接的集产生完整叉积。 N 向联接的结果是获得一组 N-元素元组，其中元组中的每个值与参与联接的别名集相关联，并且可以通过引用其他子句中的这些别名来访问。
 
@@ -27,7 +27,7 @@ ms.locfileid: "67342948"
   
  让每个源定义 `input_alias1, input_alias2, …, input_aliasN`。 此 FROM 子句将返回一组 N 元组（带有 N 个值的元组）。 每个元组拥有通过对它们相应的集遍历所有容器别名所产生的值。  
   
-示例 1 - 2 个源   
+示例 1 - 2 个源  
   
 - 让 `<from_source1>` 的范围为容器，并表示集 {A, B, C}。  
   
@@ -35,44 +35,44 @@ ms.locfileid: "67342948"
   
     若 `input_alias1 = A,`，表示集 {1, 2}  
   
-    若 `input_alias1 = B,`，表示集 {3}  
+    若 {3}，表示 `input_alias1 = B,`  
   
     若 `input_alias1 = C,`，表示集 {4, 5}  
   
-- FROM 子句 `<from_source1> JOIN <from_source2>` 将生成以下元组：  
+- FROM 子句 `<from_source1> JOIN <from_source2>` 将产生以下元组：  
   
     (`input_alias1, input_alias2`):  
   
     `(A, 1), (A, 2), (B, 3), (C, 4), (C, 5)`  
   
-示例 2 - 3 个源   
+示例 2 - 3 个源  
   
 - 让 `<from_source1>` 的范围为容器，并表示集 {A, B, C}。  
   
-- 让 `<from_source2>` 作为文档范围的引用 `input_alias1`，表示的集如下所示：  
+- 让 `<from_source2>` 以文档为作用域，引用 `input_alias1` 并表示以下集：  
   
     若 `input_alias1 = A,`，表示集 {1, 2}  
   
-    若 `input_alias1 = B,`，表示集 {3}  
+    若 {3}，表示 `input_alias1 = B,`  
   
     若 `input_alias1 = C,`，表示集 {4, 5}  
   
-- 让 `<from_source3>` 作为文档范围的引用 `input_alias2`，表示的集如下所示：  
+- 让 `<from_source3>` 以文档为作用域，引用 `input_alias2` 并表示以下集：  
   
     若 `input_alias2 = 1,`，表示集 {100, 200}  
   
-    若 `input_alias2 = 3,`，表示集 {300}  
+    若 {300}，表示 `input_alias2 = 3,`  
   
 - FROM 子句 `<from_source1> JOIN <from_source2> JOIN <from_source3>` 将产生以下元组：  
   
-    (input_alias1, input_alias2, input_alias3):  
+    (input_alias1, input_alias2, input_alias3)：  
   
     (A, 1, 100), (A, 1, 200), (B, 3, 300)  
   
   > [!NOTE]
   > `input_alias1` 和 `input_alias2` 的其他值缺少元组，`<from_source3>` 不对其返回任何值。  
   
-示例 3 - 3 个源   
+示例 3 - 3 个源  
   
 - 让 <from_source1> 的范围为容器，并表示集 {A, B, C}。  
   
@@ -82,7 +82,7 @@ ms.locfileid: "67342948"
   
     若 `input_alias1 = A,`，表示集 {1, 2}  
   
-    若 `input_alias1 = B,`，表示集 {3}  
+    若 {3}，表示 `input_alias1 = B,`  
   
     若 `input_alias1 = C,`，表示集 {4, 5}  
   
@@ -90,11 +90,11 @@ ms.locfileid: "67342948"
   
     若 `input_alias2 = A,`，表示集 {100, 200}  
   
-    若 `input_alias2 = C,`，表示集 {300}  
+    若 {300}，表示 `input_alias2 = C,`  
   
 - FROM 子句 `<from_source1> JOIN <from_source2> JOIN <from_source3>` 将产生以下元组：  
   
-    (`input_alias1, input_alias2, input_alias3`)：  
+    (`input_alias1, input_alias2, input_alias3`):  
   
     (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200),  (C, 4, 300) ,  (C, 5, 300)  
   
@@ -103,7 +103,7 @@ ms.locfileid: "67342948"
   
 ## <a name="examples"></a>示例
 
-下面的示例演示了 JOIN 子句是如何工作的。 在以下示例中，由于源中每个项和空集的叉积为空，因此结果为空：
+下面的示例演示了 JOIN 子句是如何工作的。 在运行这些示例之前，请上传示例[系列数据](sql-query-getting-started.md#upload-sample-data)。 在以下示例中，由于源中每个项和空集的叉积为空，因此结果为空：
 
 ```sql
     SELECT f.id

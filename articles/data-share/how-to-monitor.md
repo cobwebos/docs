@@ -1,21 +1,21 @@
 ---
-title: 如何监视 Azure 数据共享预览
-description: 了解如何在 Azure 数据共享预览中监视邀请状态、共享订阅和快照历史记录。
+title: 如何监视 Azure 数据共享
+description: 了解如何在 Azure 数据共享中监视邀请状态、共享订阅和快照历史记录
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 22c95f1ac541e1288494ed85cc9654d42780ea60
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 15089dd99de0471c244a6c0d93931438442599a7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169123"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490515"
 ---
-# <a name="monitor-azure-data-share-preview"></a>监视 Azure 数据共享预览 
+# <a name="monitor-azure-data-share"></a>监视 Azure Data Share  
 
-本文介绍如何使用 Azure 数据共享预览来监视数据共享。 作为数据提供程序，您可以监视数据共享关系的各个方面。 详细信息，例如，数据使用者是否接受了你对数据共享的邀请，以及他们是否已创建共享订阅并开始使用你的数据，以供监视。 
+本文介绍如何使用 Azure 数据共享来监视数据共享。 作为数据提供程序，您可以监视数据共享关系的各个方面。 详细信息，例如，数据使用者是否接受了你对数据共享的邀请，以及他们是否已创建共享订阅并开始使用你的数据，以供监视。 
 
 作为数据使用者，你可以监视已触发到你的 Azure 订阅中的快照。 
 

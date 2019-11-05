@@ -1,5 +1,5 @@
 ---
-title: 好示例最谈话-LUIS
+title: 良好的示例话语 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 话语是应用需要解释的用户输入。 收集你认为用户会输入的短语。 包括意思相同但在单词长度和单词位置上以不同方式构造的陈述。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 10/15/2019
 ms.author: diberry
-ms.openlocfilehash: 3c3c54faa882a38fb6c55c9fc0476a569f25cb98
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 8069b3b9c9a226e29a3eae3261948ee92291726d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638327"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486627"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解哪些良好的话语适用于你的 LUIS 应用
 
@@ -88,7 +88,7 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 İ ı Ş Ğ ş ğ ö ü
 ```
 
-如果应用打开规范化，则对于使用音调符号或标点的所有话语来说，“测试”窗格、批量测试和终结点查询中的分数会变化。 
+如果应用打开规范化，则对于使用音调符号或标点的所有话语来说，“测试”窗格、批量测试和终结点查询中的分数会变化。
 
 在 `settings` 参数中针对 LUIS JSON 应用文件的音调符号或标点打开话语规范化。
 
@@ -118,23 +118,37 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 
 ### <a name="ignoring-words-and-punctuation"></a>忽略单词和标点
 
-若要忽略模式中的特定单词或标点，请将 [pattern](luis-concept-patterns.md#pattern-syntax) 与方括号 `[]` 的 _ignore_ 语法配合使用。 
+若要忽略模式中的特定单词或标点，请将 [pattern](luis-concept-patterns.md#pattern-syntax) 与方括号 _的_ignore`[]` 语法配合使用。 
 
 ## <a name="training-utterances"></a>训练陈述
 
-训练通常是非确定性的：在不同版本或应用中，陈述预测可能略有不同。 可以通过使用 `UseAllTrainingData` 名称/值对更新[版本设置](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) API 来使用所有训练数据。
+训练通常是非确定性的：在不同版本或应用中，陈述预测可能略有不同。 可以通过使用 [ 名称/值对更新](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings)版本设置`UseAllTrainingData` API 来使用所有训练数据。
 
 ## <a name="testing-utterances"></a>测试陈述 
 
 开发人员应通过向[预测终结点](luis-how-to-azure-subscription.md) URL 发送话语来开始使用实际流量测试其 LUIS 应用程序。 这些陈述用于通过[审查陈述](luis-how-to-review-endpoint-utterances.md)来改善意向和实体的表现。 使用 LUIS 网站测试窗格提交的测试不会通过终结点发送，因此不会对主动学习有所帮助。 
 
-## <a name="review-utterances"></a>审查陈述
+## <a name="review-utterances"></a>评审陈述
 
 在模型经过训练、发布并接收[终结点](luis-glossary.md#endpoint)查询后，请[审查 LUIS 建议的陈述](luis-how-to-review-endpoint-utterances.md)。 LUIS 会选择意向或实体得分较低的终结点陈述。 
 
 ## <a name="best-practices"></a>最佳实践
 
 查看[最佳做法](luis-concept-best-practices.md)并将其应用为常规创作周期的一部分。
+
+## <a name="label-for-word-meaning"></a>字词含义的标签
+
+如果选词或字词排列方式相同，但含义并不相同，请勿将其标记为实体。 
+
+以下话语中，`fair` 一词为同形异义词。 该词虽拼写相同但含义不同：
+
+|陈述|
+|--|
+|今年夏天西雅图地区会举办什么样的乡村集市？|
+|西雅图评审的当前评级公平吗？|
+
+如果希望事件实体查找所有事件数据，请标记第一个话语中的 `fair` 一词，而不是第二个话语。
+
 
 ## <a name="next-steps"></a>后续步骤
 有关定型 LUIS 应用以理解用户话语的信息，请参阅[添加示例话语](luis-how-to-add-example-utterances.md)。

@@ -1,5 +1,5 @@
 ---
-title: 将本地 Apache Hadoop 群集迁移到 Azure HDInsight-安全性
+title: 安全性：将本地 Apache Hadoop 迁移到 Azure HDInsight
 description: 了解有关将本地 Hadoop 群集迁移到 Azure HDInsight 的安全性和 DevOps 最佳做法。
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: c1523ccb3952bce904deac375d11de692ac235ef
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 1cebe425e323eefda6e26b0f32ddeda0118a70d1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736141"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494973"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 安全性和 DevOps 最佳做法
 
@@ -108,7 +108,7 @@ ESP 适用于以下群集类型：Apache Hadoop、Apache Spark、Apache HBase、
 1. 导入任何已备份的临时数据。
 1. 使用新群集启动作业/继续处理。
 
-有关详细信息，请参阅文章：[将 HDInsight 群集升级到新版本](../hdinsight-upgrade-cluster.md)。
+有关详细信息，请参阅文章：将[HDInsight 群集升级到新版本](../hdinsight-upgrade-cluster.md)。
 
 ## <a name="patch-cluster-operating-systems"></a>修补群集操作系统
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Apache Ambari 优化群集配置 - Azure HDInsight
+title: 用于优化群集配置的 Apache Ambari-Azure HDInsight
 description: 使用 Apache Ambari web UI 配置和优化 Azure HDInsight 群集。
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7261aad8f42168449f2c892fe8aaaa6667964654
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: e0d94a41febdba1bea6818309e05d287bef6d3a1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076960"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492506"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>使用 Apache Ambari 优化 HDInsight 群集配置
 
@@ -53,7 +53,7 @@ NameNode Java 堆大小取决于许多因素，例如群集上的负载、文件
 
 1. NameNode Java 堆大小已从 2 GB 更改为 1 GB。
 
-    ![已编辑 NameNode Java 堆 z e 1](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
+    ![已编辑 NameNode Java 堆大小 2](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
 
 1. 单击配置屏幕顶部的绿色“保存”按钮保存所做的更改。
 
@@ -89,7 +89,7 @@ Hadoop 会尝试将单个文件拆分（映射）为多个文件，以并行方�
 
 例如，若要为数据大小 128 MB 设置四个映射器任务，可将每个任务的这两个参数设置为 32 MB（33,554,432 字节）。
 
-1. 若要修改限制参数，请导航到 Tez 服务的“配置”选项卡。 展开“常规”面板并找到 `tez.grouping.max-size` 和 `tez.grouping.min-size` 参数。
+1. 若要修改限制参数，请导航到 Tez 服务的“配置”选项卡。 展开“常规”面板并找到 **和** 参数。`tez.grouping.max-size``tez.grouping.min-size`
 
 1. 将这两个参数设置为 **33,554,432** 字节 (32 MB)。
 
@@ -123,7 +123,7 @@ Hadoop 会尝试将单个文件拆分（映射）为多个文件，以并行方�
 
 一个 Hive 查询是在一个或多个阶段中执行的。 如果可以并行运行各个独立阶段，则会提高查询性能。
 
-1. 若要启用并行查询执行，请导航到 Hive 的“配置”选项卡并搜索 `hive.exec.parallel` 属性。 默认值为 false。 将该值更改为 true，然后按 **Enter** 保存该值。
+1. 若要启用并行查询执行，请导航到 Hive 的“配置”选项卡并搜索  **属性。** `hive.exec.parallel` 默认值为 false。 将该值更改为 true，然后按 **Enter** 保存该值。
 
 1. 若要限制并行运行的作业数，请修改 `hive.exec.parallel.thread.number` 属性。 默认值为 8。
 
@@ -133,7 +133,7 @@ Hadoop 会尝试将单个文件拆分（映射）为多个文件，以并行方�
 
 Hive 逐行处理数据。 矢量化指示 Hive 以块（一个块包含 1,024 行）的方式处理数据，而不是以一次一行的方式处理数据。 矢量化只适用于 ORC 文件格式。
 
-1. 若要启用矢量化查询执行，请导航到 Hive 的“配置”选项卡并搜索 `hive.vectorized.execution.enabled` 参数。 Hive 0.13.0 或更高版本的默认值为 true。
+1. 若要启用矢量化查询执行，请导航到 Hive 的“配置”选项卡并搜索  **参数。** `hive.vectorized.execution.enabled` Hive 0.13.0 或更高版本的默认值为 true。
 
 1. 若要为查询的化简端启用矢量化执行，请将 `hive.vectorized.execution.reduce.enabled` 参数设置为 true。 默认值为 false。
 
@@ -143,7 +143,7 @@ Hive 逐行处理数据。 矢量化指示 Hive 以块（一个块包含 1,024 �
 
 默认情况下，Hive 遵循一组规则来找到一个最佳的查询执行计划。 基于成本的优化 (CBO) 可以评估多个查询执行计划并向每个计划分配一个成本，然后确定成本最低的查询执行计划。
 
-若要启用 CBO，请导航到 Hive 的“配置”选项卡并搜索 `parameter hive.cbo.enable`，然后将开关按钮切换到“开”。
+若要启用 CBO，请导航到 Hive 的“配置”选项卡并搜索 **，然后将开关按钮切换到“开”。** `parameter hive.cbo.enable`
 
 ![基于 HDInsight 开销的优化程序](./media/hdinsight-changing-configs-via-ambari/hdinsight-cbo-config.png)
 
@@ -175,16 +175,16 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
 可用的压缩类型包括：
 
-| 格式 | Tool | 算法 | 文件扩展名 | 是否可拆分？ |
+| 格式 | 工具 | 算法 | 文件扩展名 | 是否可拆分？ |
 | -- | -- | -- | -- | -- |
 | Gzip | Gzip | DEFLATE | .gz | 否 |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | 是 |
 | LZO | Lzop | LZO | .lzo | 是（如果已编制索引） |
-| Snappy | 不可用 | Snappy | Snappy | 否 |
+| Snappy | 不适用 | Snappy | Snappy | 否 |
 
 一般规则是，尽量使用可拆分的压缩方法，否则会创建极少的映射器。 如果输入数据为文本，则 `bzip2` 是最佳选项。 对于 ORC 格式，Snappy 是最快的压缩选项。
 
-1. 若要启用中间压缩，请导航到 Hive 的“配置”选项卡，并将 `hive.exec.compress.intermediate` 参数设置为 true。 默认值为 false。
+1. 若要启用中间压缩，请导航到 Hive 的“配置”选项卡，并将  **参数设置为 true。** `hive.exec.compress.intermediate` 默认值为 false。
 
     ![Hive 执行 - 中间压缩](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
 
@@ -216,7 +216,7 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
 还可以压缩最终的 Hive 输出。
 
-1. 若要压缩最终的 Hive 输出，请导航到 Hive 的“配置”选项卡，并将 `hive.exec.compress.output` 参数设置为 true。 默认值为 false。
+1. 若要压缩最终的 Hive 输出，请导航到 Hive 的“配置”选项卡，并将  **参数设置为 true。** `hive.exec.compress.output` 默认值为 false。
 
 1. 若要选择输出压缩编解码器，请根据上一部分的步骤 3 所述，将 `mapred.output.compression.codec` 自定义属性添加到“自定义 hive-site”窗格。
 
@@ -228,7 +228,7 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
 不应该对输入量较大的长时间运行的 MapReduce 任务启用推理执行。
 
-* 若要启用推理执行，请导航到 Hive 的“配置”选项卡，并将 `hive.mapred.reduce.tasks.speculative.execution` 参数设置为 true。 默认值为 false。
+* 若要启用推理执行，请导航到 Hive 的“配置”选项卡，并将  **参数设置为 true。** `hive.mapred.reduce.tasks.speculative.execution` 默认值为 false。
 
     ![Hive mapred 化简任务推理执行](./media/hdinsight-changing-configs-via-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
 
@@ -238,7 +238,7 @@ Hive 允许在表中插入记录时创建动态分区，且无需预定义每个
 
 1. 要让 Hive 执行动态分区，应将 `hive.exec.dynamic.partition` 参数值设置为 true（默认值）。
 
-1. 将动态分区模式更改为 *strict*。 在 strict（严格）模式下，必须至少有一个分区是静态的。 这可以阻止未在 WHERE 子句中包含分区筛选器的查询，即，*strict* 可阻止扫描所有分区的查询。 导航到 Hive 的“配置”选项卡，并将 `hive.exec.dynamic.partition.mode` 设置为 **strict**。 默认值为 **nonstrict**。
+1. 将动态分区模式更改为 *strict*。 在 strict（严格）模式下，必须至少有一个分区是静态的。 这可以阻止未在 WHERE 子句中包含分区筛选器的查询，即，*strict* 可阻止扫描所有分区的查询。 导航到 Hive 的“配置”选项卡，并将 **设置为**strict`hive.exec.dynamic.partition.mode`。 默认值为 **nonstrict**。
 
 1. 若要限制要创建的动态分区数，请修改 `hive.exec.max.dynamic.partitions` 参数。 默认值为 5000。
 
@@ -248,7 +248,7 @@ Hive 允许在表中插入记录时创建动态分区，且无需预定义每个
 
 本地模式可让 Hive 在一台计算机上（有时是在单个进程中）执行某个作业的所有任务。 如果输入数据较小，并且查询启动任务的开销会消耗总体查询执行资源的绝大部分，则此模式可以提高查询性能。
 
-若要启用本地模式，请根据[启用中间压缩](#enable-intermediate-compression)部分的步骤 3 所述，将 `hive.exec.mode.local.auto` 参数添加到“自定义 hive-site”面板。
+若要启用本地模式，请根据`hive.exec.mode.local.auto`启用中间压缩[部分的步骤 3 所述，将 ](#enable-intermediate-compression) 参数添加到“自定义 hive-site”面板。
 
 ![Apache Hive exec 模式本地自动](./media/hdinsight-changing-configs-via-ambari/hive-exec-mode-local-auto.png)
 
@@ -256,7 +256,7 @@ Hive 允许在表中插入记录时创建动态分区，且无需预定义每个
 
 如果此属性设置为 true，则包含通用 group-by 键的 MultiGROUP BY 查询将生成单个 MapReduce 作业。  
 
-若要启用此行为，请根据[启用中间压缩](#enable-intermediate-compression)部分的步骤 3 所述，将 `hive.multigroupby.singlereducer` 参数添加到“自定义 hive-site”窗格。
+若要启用此行为，请根据`hive.multigroupby.singlereducer`启用中间压缩[部分的步骤 3 所述，将 ](#enable-intermediate-compression) 参数添加到“自定义 hive-site”窗格。
 
 ![在 Hive 中设置单个 MapReduce MultiGROUP BY](./media/hdinsight-changing-configs-via-ambari/hive-multigroupby-singlereducer.png)
 
@@ -280,7 +280,7 @@ Hive 中的默认联接类型是“随机联接”。 在 Hive 中，特殊的�
 
 | 设置 | 建议 | HDInsight 默认值 |
 | -- | -- | -- |
-| `hive.mapjoin.hybridgrace.hashtable` | True = 更安全，但速度更慢；false = 速度更快 | 假 |
+| `hive.mapjoin.hybridgrace.hashtable` | True = 更安全，但速度更慢；false = 速度更快 | false |
 | `tez.am.resource.memory.mb` | 最大大小为 4 GB 的上限 | 自动优化 |
 | `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10000 |
@@ -305,7 +305,7 @@ Hive 中的默认联接类型是“随机联接”。 在 Hive 中，特殊的�
 
 可以使用两个执行引擎来执行 Pig 脚本：MapReduce 和 Tez。 Tez 是经过优化的引擎，比 MapReduce 要快得多。
 
-1. 若要修改执行引擎，请在“高级 pig-properties”窗格中找到 `exectype` 属性。
+1. 若要修改执行引擎，请在“高级 pig-properties”窗格中找到  **属性。** `exectype`
 
 1. 默认值为 **MapReduce**。 请将它更改为 **Tez**。
 
@@ -323,7 +323,7 @@ Pig 可将 UDF 所需的 JAR 文件复制到分布式缓存，使这些文件可
 
 1. 若要启用，请将 `pig.user.cache.enabled` 设置为 true。 默认值为 false。
 
-1. 若要设置缓存 jar 的基本路径，请将 `pig.user.cache.location` 设置为基本路径。 默认值为 `/tmp`。
+1. 若要设置缓存 jar 的基本路径，请将 `pig.user.cache.location` 设置为基本路径。 默认为 `/tmp`。
 
 ### <a name="optimize-performance-with-memory-settings"></a>使用内存设置优化性能
 
@@ -355,13 +355,13 @@ Pig 在作业执行期间生成临时文件。 压缩临时文件可以在将文
 
 ## <a name="apache-hbase-optimization-with-the-ambari-web-ui"></a>使用 Ambari Web UI 优化 Apache HBase
 
-可以通过“HBase 配置”选项卡修改 [Apache HBase](https://hbase.apache.org/) 配置。以下部分介绍了一些影响 HBase 性能的重要配置设置。
+[Apache HBase](https://hbase.apache.org/)配置从**HBase**配置选项卡中修改。以下各节介绍一些影响 HBase 性能的重要配置设置。
 
 ### <a name="set-hbase_heapsize"></a>设置 HBASE_HEAPSIZE
 
 HBase 堆大小指定区域服务器和主服务器要使用的最大堆数量（以 MB 为单位）。 默认值为 1,000 MB。 应该优化群集工作负荷的此项设置。
 
-1. 若要修改，请导航到 HBase“配置”选项卡中的“高级 HBase-env”窗格，然后找到 `HBASE_HEAPSIZE` 设置。
+1. 若要修改，请导航到 HBase“配置”选项卡中的“高级 HBase-env”窗格，然后找到  **设置。** `HBASE_HEAPSIZE`
 
 1. 将默认值更改为 5,000 MB。
 
@@ -385,9 +385,9 @@ HBase 堆大小指定区域服务器和主服务器要使用的最大堆数量�
 
 所有编辑内容都存储在称作 *Memstore* 的内存缓冲区中。 此机制增大了可在单个操作中写入磁盘的总数据量，并可加速以后对最近编辑内容的访问。 Memstore 大小由以下两个参数定义：
 
-* `hbase.regionserver.global.memstore.UpperLimit`：定义 Memstore 总共可以使用的区域服务器的最大内存百分比。
+* `hbase.regionserver.global.memstore.UpperLimit`：定义 Memstore 总共可以使用的区域服务器最大内存百分比。
 
-* `hbase.regionserver.global.memstore.LowerLimit`：定义 Memstore 总共可以使用的区域服务器的最小内存百分比。
+* `hbase.regionserver.global.memstore.LowerLimit`：定义 Memstore 总共可以使用的区域服务器最小内存百分比。
 
 若要优化随机读取，可以减小 Memstore 的上限和下限。
 

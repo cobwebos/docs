@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab1caeb59cf7fc0a6baef5ba0001e734a75fccd2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 25d1aec836f66ae2ebc007e920cf6ef8a4450919
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72758229"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473332"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>规划自动用户预配部署
 
@@ -27,7 +27,7 @@ Azure Active Directory （Azure AD）自动用户预配可通过安全地根据�
 
 请参阅[利用 Azure Active Directory 自动执行用户预配和取消预配到 SaaS 应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)，以更好地了解功能。
 
-## <a name="learn"></a>了解
+## <a name="learn"></a>学习
 
 用户预配为正在进行的标识管理创建了基础，并增强了依赖于权威标识数据的业务流程的质量。
 
@@ -63,7 +63,7 @@ Azure AD 使用应用程序库菜单中提供的模板为任何应用程序提�
 
 * 目标系统-Azure AD 预配到的用户的存储库。 目标系统通常是 SaaS 应用程序，如 ServiceNow、Zscaler 和时差。 目标系统也可以是本地系统，例如 AD。
 
-* [跨域标识管理的系统（SCIM）](http://www.simplecloud.info/)）-允许自动化用户预配的开放标准。 SCIM 在标识提供程序（如 Microsoft）与服务提供商（如 Salesforce 或其他需要用户标识信息的 SaaS 应用程序）之间传达用户标识数据。
+* [用于跨域标识管理（SCIM）的系统](https://aka.ms/scimoverview)-一种开放标准，允许用户预配的自动化。 SCIM 在标识提供程序（如 Microsoft）与服务提供商（如 Salesforce 或其他需要用户标识信息的 SaaS 应用程序）之间传达用户标识数据。
 
 ### <a name="training-resources"></a>定型资源
 
@@ -72,9 +72,9 @@ Azure AD 使用应用程序库菜单中提供的模板为任何应用程序提�
 | 点播网络研讨会| [利用 Azure AD 管理企业应用程序](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>了解 Azure AD 如何帮助你为企业 SaaS 应用程序实现 SSO，并了解控制访问的最佳做法。 |
 | 视频| [什么是活动 Azure 目录中的用户预配？](https://youtu.be/_ZjARPpI6NI) <br> [如何在 Active Azure Directory 中部署用户预配？](https://youtu.be/pKzyts6kfrw) <br> [将 Salesforce 与 Azure AD 集成：如何实现用户预配](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | 在线课程| SkillUp Online：[管理标识](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> 了解如何将 Azure AD 与多个 SaaS 应用程序集成，并确保用户对这些应用程序的访问权限。 |
-| 帐簿| [针对 Web 应用程序的 Azure Active Directory 新式身份验证（开发人员参考）第一版](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0)。  <br> 这是为这些新环境构建 Active Directory 身份验证解决方案的权威深入指南。 |
+| 书籍| [针对 Web 应用程序的 Azure Active Directory 新式身份验证（开发人员参考）第一版](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0)。  <br> 这是为这些新环境构建 Active Directory 身份验证解决方案的权威深入指南。 |
 | 教程| 请参阅[有关如何将 SaaS 应用与 Azure AD 集成的教程的列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)。 |
-| 常见问题解答| [有关自动](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)用户预配的常见问题 |
+| 常见问题| [有关自动](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)用户预配的常见问题 |
 
 ### <a name="solution-architectures"></a>解决方案体系结构
 
@@ -133,7 +133,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 ### <a name="plan-communications"></a>规划沟通
 
-通信对于任何新服务的成功至关重要。 主动与用户交流他们的体验将如何更改，何时会发生更改，以及在遇到问题时如何获取支持。
+沟通对于任何新服务的成功至关重要。 主动与用户交流他们的体验将如何更改，何时会发生更改，以及在遇到问题时如何获取支持。
 
 ### <a name="plan-a-pilot"></a>规划试点
 
@@ -281,6 +281,8 @@ Azure AD 通过直接的特性到属性映射、提供常量值或[为属性映�
 * 预配过程会因为较高的错误率而进入隔离状态，并且在超过四周后会自动禁用。
 
 若要查看这些事件以及预配服务执行的所有其他活动，请参阅 Azure AD[设置日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context)。
+
+若要了解预配周期所需的时间和监视预配作业的进度，可以[检查用户预配的状态](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)。
 
 ### <a name="gain-insights-from-reports"></a>从报表获取见解
 

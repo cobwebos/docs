@@ -1,6 +1,6 @@
 ---
 title: 解释模型结果
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: Azure Machine Learning Studio (classic)
 description: 如何为使用并可视化评分模型输出的算法选择最佳的参数集。
 services: machine-learning
 ms.service: machine-learning
@@ -10,19 +10,19 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: c46f22fb5c906aaffa48f39a0c643ca2a48573f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07f446daafea8b866083933bb414b0f5ef04bb4d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60866878"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492908"
 ---
-# <a name="interpret-model-results-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中解释模型结果
-本主题说明如何在 Azure 机器学习工作室中可视化和解释预测结果。 训练模型并根据它进行预测（“为模型评分”）后，需要了解并解释预测结果。
+# <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习 Studio （经典）中解释模型结果
+本主题说明如何在 Azure 机器学习 Studio （经典）中可视化和解释预测结果。 训练模型并根据它进行预测（“为模型评分”）后，需要了解并解释预测结果。
 
 
 
-Azure 机器学习工作室中有四种主要的机器学习模型：
+在经典版的 Azure 机器学习 Studio 中，有四种主要的机器学习模型：
 
 * 分类
 * 群集功能
@@ -31,15 +31,15 @@ Azure 机器学习工作室中有四种主要的机器学习模型：
 
 用于基于这些模型进行预测的模块包括：
 
-* 用于分类和回归的[评分模型][score-model]模块
-* 用于聚类分析的[分配到群集][assign-to-clusters]模块
-* 用于推荐系统的[ Matchbox 推荐器评分][score-matchbox-recommender]
+* 分类和回归的[评分模型][score-model]模块
+* [分配到][assign-to-clusters]群集模块
+* 为推荐系统[评分 Matchbox 推荐器][score-matchbox-recommender]
 
-文本档说明如何解释其中每个模块的预测结果。 有关这些模块的概述，请参阅[如何选择参数以优化 Azure 机器学习工作室中的算法](algorithm-parameters-optimize.md)。
+文本档说明如何解释其中每个模块的预测结果。 有关这些模块的概述，请参阅[如何在 Azure 机器学习 Studio （经典）中选择用于优化算法的参数](algorithm-parameters-optimize.md)。
 
-本主题介绍预测解释，而不是模型评估。 有关如何评估模型的详细信息，请参阅[如何在 Azure 机器学习工作室中评估模型性能](evaluate-model-performance.md)。
+本主题介绍预测解释，而不是模型评估。 有关如何评估模型的详细信息，请参阅[如何在 Azure 机器学习 Studio （经典）中评估模型性能](evaluate-model-performance.md)。
 
-如果不熟悉 Azure 机器学习工作室，并需要创建简单实验的帮助以开始，请参阅 Azure 机器学习工作室中的[在 Azure 机器学习工作室中创建一个简单的实验](create-experiment.md)。
+如果你不熟悉经典版的 Azure 机器学习 Studio，并需要帮助创建一个简单的试验即可开始使用，请参阅[在 Azure 机器学习 Studio （经典）中创建简单实验](create-experiment.md)。
 
 ## <a name="classification"></a>分类
 分类问题有两个子类别：
@@ -47,18 +47,18 @@ Azure 机器学习工作室中有四种主要的机器学习模型：
 * 仅两个类的问题（双类或二元分类）
 * 多于两个类的问题（多类分类）
 
-Azure 机器学习工作室具有不同的模块用于处理其中每一种分类，但用于解释其预测结果的方法都相似。
+Azure 机器学习 Studio （经典）提供了不同的模块来处理每种类型的分类，但解释其预测结果的方法是类似的。
 
 ### <a name="two-class-classification"></a>双类分类
 **示例实验**
 
-双类分类问题的一个示例是鸢尾花的分类。 任务是根据特征为鸢尾花分类。 Azure 机器学习工作室中提供的鸢尾花数据集是流行的[鸢尾花数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set)的子集，仅包含两种花卉种类（类 0 和类 1）的实例。 每个花卉有四个特征（花萼长度、花萼宽度、花瓣长度和花瓣宽度）。
+双类分类问题的一个示例是鸢尾花的分类。 任务是根据特征为鸢尾花分类。 Azure 机器学习 Studio 经典版中提供的 Iris 数据集是包含只包含两个花卉物种（类0和1）的实例的常用[Iris 数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set)的子集。 每个花卉有四个特征（花萼长度、花萼宽度、花瓣长度和花瓣宽度）。
 
 ![鸢尾花实验的屏幕截图](./media/interpret-model-results/1.png)
 
 图 1. 鸢尾花双类分类问题实验
 
-已执行实验来解决此问题，如图 1 所示。 已训练并评分双类提升决策树模型。 现在，可以可视化[评分模型][score-model]模块的预测结果，方法是单击[评分模型][score-model]模块的输出端口，并单击“可视化”  。
+已执行实验来解决此问题，如图 1 所示。 已训练并评分双类提升决策树模型。 现在，你可以通过单击 "[评分模型][score-model]" 模块的输出端口，然后单击 "**可视化**"，将 "[评分模型][score-model]" 模块的预测结果可视化。
 
 ![评分模型模块](./media/interpret-model-results/1_1.png)
 
@@ -66,7 +66,7 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 
 ![鸢尾花双类分类实验的结果](./media/interpret-model-results/2.png)
 
-图 2。 在双类分类中可视化评分模型结果
+图 2. 在双类分类中可视化评分模型结果
 
 **结果解释**
 
@@ -74,13 +74,13 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 
 **Web 服务发布**
 
-在了解了预测结果并判断其为优良后，可以将实验发布为 Web 服务，以便可以将其部署在各种应用程序中，并对任何新的鸢尾花调用它以获取类预测。 若要了解如何将训练实验更改为评分实验并将其作为 Web 服务发布，请参阅[教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)。 此过程提供评分实验，如图 3 所示。
+在了解了预测结果并判断其为优良后，可以将实验发布为 Web 服务，以便可以将其部署在各种应用程序中，并对任何新的鸢尾花调用它以获取类预测。 若要了解如何将训练实验更改为评分实验并将其发布为 web 服务，请参阅[教程3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)。 此过程提供评分实验，如图 3 所示。
 
 ![评分实验的屏幕截图](./media/interpret-model-results/3.png)
 
 图 3。 为鸢尾花双类分类问题实验评分
 
-现在需要设置 Web 服务的输入和输出。 输入是[评分模型][score-model]的右输入端口，即鸢尾花特征输入。 输出的选择取决于对预测的类（评分标签）、评分概率还是两者都感兴趣。 在本示例中，假设用户对两者都感兴趣。 若要选择所需的输出列，请使用[选择数据集中的列][select-columns]模块。 单击[选择数据集中的列][select-columns]，单击“启动列选择器”  ，并选择“评分标签”  和“评分概率”  。 设置[选择数据集中的列][select-columns]的输出端口并再次运行它之后，应准备好通过单击“发布 Web 服务”  将评分实验发布为 Web 服务。 最终实验类似于图 4。
+现在需要设置 Web 服务的输入和输出。 输入是[评分模型][score-model]的右输入端口，这是 "Iris" 的 "输入" 功能。 输出的选择取决于对预测的类（评分标签）、评分概率还是两者都感兴趣。 在本示例中，假设用户对两者都感兴趣。 若要选择所需的输出列，请使用 "[在数据集中选择列][select-columns]" 模块。 单击 "[选择数据集中的列][select-columns]"，单击 "**启动列选择器**"，然后选择 "**评分标签**" 和 "**评分概率**"。 设置[在数据集中选择列][select-columns]的输出端口并再次运行它后，应准备好通过单击 "**发布 web 服务**" 将评分实验发布为 web 服务。 最终实验类似于图 4。
 
 ![鸢尾花双类分类实验](./media/interpret-model-results/4.png)
 
@@ -107,7 +107,7 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 
 图 6。 字母识别多类分类实验问题
 
-可视化[评分模型][score-model]模块的结果，方法是单击[评分模型][score-model]模块的输出端口，并单击“可视化”  ，应看到如图 7 所示的内容。
+通过单击[评分模型][score-model]模块的输出端口，然后单击 "**可视化**"，从 "[评分模型][score-model]" 模块中直观显示结果，你应看到如图7所示的内容。
 
 ![评分模型结果](./media/interpret-model-results/7.png)
 
@@ -119,7 +119,7 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 
 **Web 服务发布**
 
-还可获取每个项的评分标签和评分标签的概率。 基本逻辑是查找所有评分概率中最大的概率。 若要执行此操作，需要使用[执行 R 脚本][execute-r-script]模块。 R 代码显示在图 8 中，实验结果显示在图 9 中。
+还可获取每个项的评分标签和评分标签的概率。 基本逻辑是查找所有评分概率中最大的概率。 要执行此操作，需要使用[执行 R 脚本][execute-r-script]模块。 R 代码显示在图 8 中，实验结果显示在图 9 中。
 
 ![R 代码示例](./media/interpret-model-results/8.png)
 
@@ -127,7 +127,7 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 
 ![实验结果](./media/interpret-model-results/9.png)
 
-图 9。 字母识别多类分类问题的最终评分实验
+图 9. 字母识别多类分类问题的最终评分实验
 
 发布和运行 Web 服务并输入某些输入特征值后，返回的结果类似于图 10。 此手写字母及其提取的 16 个特征预测为“T”，概率为 0.9715。
 
@@ -148,7 +148,7 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 
 图 11. 汽车价格回归问题实验
 
-可视化[评分模型][score-model]模块，结果类似于图 12。
+可视化 "[评分模型][score-model]" 模块，结果如图12所示。
 
 ![汽车价格预测问题的评分结果](./media/interpret-model-results/12.png)
 
@@ -185,7 +185,7 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 
 聚类不同于分类，因为训练数据集本身没有地面实况标签。 聚类将训练数据集实例分组为离散群集。 在训练过程中，模型通过了解项特征之间的差异标记项。 在那之后，训练的模型可用于进一步分类将来的项。 在聚类问题中，我们对结果的两个部分感兴趣。 第一个部分是训练数据集，第二个部分是使用训练的模型为新数据集分类。
 
-结果的第一个部分可以可视化，方法是单击[聚类分析模型定型][train-clustering-model]的左输出端口，并单击“可视化”  。 可视化显示在图 16 中。
+通过单击 "[定型聚类分析模型][train-clustering-model]" 的左侧输出端口，然后单击 "**可视化**"，可以可视化结果的第一个部分。 可视化显示在图 16 中。
 
 ![聚类结果](./media/interpret-model-results/16.png)
 
@@ -226,18 +226,18 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 * 客户特征数据
 * 餐馆特色数据
 
-使用 Azure 机器学习工作室中的 [Matchbox 推荐器定型][train-matchbox-recommender]模块，可以执行多个操作：
+在经典版 Azure 机器学习 Studio 中，我们可以在 "[训练" 推荐器][train-matchbox-recommender]模块中执行以下几项操作：
 
 * 预测给定用户和项目的评级
 * 向给定用户推荐项目
 * 查找与给定用户相关的用户
 * 查找与给定项目相关的项目
 
-通过从“推荐器预测类型”  菜单中的四种选项中选择，可选择要执行的操作。 下面演练全部四种方案。
+通过从“推荐器预测类型”菜单中的四种选项中选择，可选择要执行的操作。 下面演练全部四种方案。
 
 ![Matchbox 推荐器](./media/interpret-model-results/19_1.png)
 
-推荐器系统的典型 Azure 机器学习工作室实验类似于图 20。 有关如何使用这些推荐器系统模块的信息，请参阅 [Matchbox 推荐器定型][train-matchbox-recommender]和 [Matchbox 推荐器评分][score-matchbox-recommender]。
+推荐器系统的典型 Azure 机器学习 Studio （经典）试验如图20所示。 有关如何使用这些推荐器系统模块的信息，请参阅[训练 matchbox 推荐器][train-matchbox-recommender]和[评分 matchbox 推荐器][score-matchbox-recommender]。
 
 ![推荐器系统实验](./media/interpret-model-results/20.png)
 
@@ -247,7 +247,7 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 
 **预测给定用户和项目的评级**
 
-选择“推荐器预测类型”  下的“评分预测”  即要求推荐器系统预测给定用户和项目的评级。 [Matchbox 推荐器评分][score-matchbox-recommender]输出的可视化类似于图 21。
+选择“推荐器预测类型”下的“评分预测”即要求推荐器系统预测给定用户和项目的评级。 [分数 Matchbox 推荐器][score-matchbox-recommender]输出的可视化效果如图21所示。
 
 ![推荐器系统的评分结果 - 评级预测](./media/interpret-model-results/21.png)
 
@@ -257,7 +257,7 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 
 **向给定用户推荐项目**
 
-选择“推荐器预测类型”  下的“项目推荐”  即要求推荐器系统向给定用户推荐项目。 此方案中要选择的最后一个参数是*推荐项目选择*。 选项“从评级项目(用于模型评估)”  主要用于训练过程中的模型评估。 对于此预测阶段，我们选择“从所有项目”  。 [Matchbox 推荐器评分][score-matchbox-recommender]输出的可视化类似于图 22。
+选择“推荐器预测类型”下的“项目推荐”即要求推荐器系统向给定用户推荐项目。 此方案中要选择的最后一个参数是*推荐项目选择*。 选项“从评级项目(用于模型评估)”主要用于训练过程中的模型评估。 对于此预测阶段，我们选择“从所有项目”。 [分数 Matchbox 推荐器][score-matchbox-recommender]输出的可视化效果如图22所示。
 
 ![推荐器系统的评分结果 - 项目推荐](./media/interpret-model-results/22.png)
 
@@ -267,7 +267,7 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 
 **查找与给定用户相关的用户**
 
-选择“推荐器预测类型”  下的“相关用户”  即要求推荐器系统查找给定用户的相关用户。 相关用户是具有相似偏好的用户。 此方案中要选择的最后一个参数是*相关用户选择*。 选项“从已为项目评级的用户(用于模型评估)”  主要用于训练过程中的模型评估。 对于此预测阶段，选择“从所有用户”  。 [Matchbox 推荐器评分][score-matchbox-recommender]输出的可视化类似于图 23。
+选择“推荐器预测类型”下的“相关用户”即要求推荐器系统查找给定用户的相关用户。 相关用户是具有相似偏好的用户。 此方案中要选择的最后一个参数是*相关用户选择*。 选项“从已为项目评级的用户(用于模型评估)”主要用于训练过程中的模型评估。 对于此预测阶段，选择“从所有用户”。 [分数 Matchbox 推荐器][score-matchbox-recommender]输出的可视化效果如图23所示。
 
 ![推荐器系统的评分结果 --相关用户](./media/interpret-model-results/23.png)
 
@@ -277,7 +277,7 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 
 **查找与给定项目相关的项目**
 
-选择“推荐器预测类型”  下的“相关项目”  即要求推荐器系统查找给定项目的相关项目。 相关项目是同一个用户最有可能喜欢的项目。 此方案中要选择的最后一个参数是*相关项目选择*。 选项“从评级项目(用于模型评估)”  主要用于训练过程中的模型评估。 对于此预测阶段，我们选择“从所有项目”  。 [Matchbox 推荐器评分][score-matchbox-recommender]输出的可视化类似于图 24。
+选择“推荐器预测类型”下的“相关项目”即要求推荐器系统查找给定项目的相关项目。 相关项目是同一个用户最有可能喜欢的项目。 此方案中要选择的最后一个参数是*相关项目选择*。 选项“从评级项目(用于模型评估)”主要用于训练过程中的模型评估。 对于此预测阶段，我们选择“从所有项目”。 [分数 Matchbox 推荐器][score-matchbox-recommender]输出的可视化效果如图24所示。
 
 ![推荐器系统的评分结果 --相关项目](./media/interpret-model-results/24.png)
 

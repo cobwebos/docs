@@ -11,12 +11,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: ccb2fa7b0805b332957513c52c0c1051d068d2cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f96c25dbb85ed92141636487f10d861a8c5e5f28
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821661"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468439"
 ---
 # <a name="use-firewall-rules"></a>使用防火墙规则
 
@@ -24,17 +24,17 @@ ms.locfileid: "60821661"
 
 ## <a name="when-to-use"></a>使用时机
 
-如果要设置事件中心命名空间，使其仅接收来自指定 IP 地址范围的流量并拒绝其他所有流量，则可以利用“防火墙规则”来阻止来自其他 IP 地址的事件中心终结点  。 例如，如果将事件中心与 [Azure 快速路由][express-route]结合使用，则可以创建防火墙规则  来限制来自本地基础结构 IP地址的流量。
+如果要设置事件中心命名空间，使其仅接收来自指定 IP 地址范围的流量并拒绝其他所有流量，则可以利用“防火墙规则”来阻止来自其他 IP 地址的事件中心终结点。 例如，如果将事件中心与[Azure Express Route][express-route]一起使用，则可以创建*防火墙规则*，以限制来自本地基础结构 IP 地址的流量。
 
 ## <a name="how-filter-rules-are-applied"></a>筛选器规则的应用方式
 
-IP 筛选器规则应用于事件中心命名空间级别。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。
+IP 筛选器规则应用于事件中心命名空间级别。 因此，这些规则适用于通过各种受支持协议从客户端发出的所有连接。
 
 如果某 IP 地址与事件中心命名空间上的允许 IP 规则不匹配，则将拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。
 
 ## <a name="default-setting"></a>默认设置
 
-默认情况下，门户中针对事件中心的“IP 筛选器”网格为空。  此默认设置意味着事件中心会接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。
+默认情况下，门户中针对事件中心的“IP 筛选器”网格为空。 此默认设置意味着事件中心会接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。
 
 ## <a name="ip-filter-rule-evaluation"></a>IP 筛选器规则评估
 
@@ -45,13 +45,12 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
 >
 > 实施 IP 筛选（防火墙）时，受信任的 Microsoft 服务不受支持，但很快就会变得可用。
 >
-> 不适用于 IP 筛选的常见 Azure 方案（请注意，该列表内容并不详尽）  -
+> 不适用于 IP 筛选的常见 Azure 方案（请注意，该列表内容并不详尽）-
 > - Azure Monitor
 > - Azure 流分析
 > - 与 Azure 事件网格的集成
 > - Azure IoT 中心路由
 > - Azure IoT Device Explorer
-> - Azure 数据资源管理器
 >
 > 以下 Microsoft 服务必须在虚拟网络中
 > - Azure Web 应用
@@ -60,23 +59,23 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
 ### <a name="creating-a-firewall-rule-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建防火墙规则
 
 > [!IMPORTANT]
-> 事件中心的标准层和专用层支持防火墙规则   。 基本层不支持它。
+> 事件中心的标准层和专用层支持防火墙规则。 基本层不支持它。
 
 以下资源管理器模板可用于向现有的事件中心命名空间添加 IP 筛选器规则。
 
 模板参数：
 
-- ipMask 是单个 IPv4 地址或者是以 CIDR 表示法表示的一个 IP 地址块  。 例如，在 CIDR 表示法中，70.37.104.0/24 表示从 70.37.104.0 到 70.37.104.255 的 256 个 IPv4 地址，其中 24 表示范围的有效前缀位数。
+- ipMask 是单个 IPv4 地址或者是以 CIDR 表示法表示的一个 IP 地址块。 例如，在 CIDR 表示法中，70.37.104.0/24 表示从 70.37.104.0 到 70.37.104.255 的 256 个 IPv4 地址，其中 24 表示范围的有效前缀位数。
 
 > [!NOTE]
-> 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接  。
+> 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接。
 > 制定虚拟网络或防火墙规则时，必须更改“defaultAction”
 > 
 > from
 > ```json
 > "defaultAction": "Allow"
 > ```
-> 至
+> to
 > ```json
 > "defaultAction": "Deny"
 > ```

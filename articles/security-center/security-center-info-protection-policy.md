@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: edd415c330656d4cecc42a39d27598a88a1a8d2c
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
-ms.translationtype: MT
+ms.openlocfilehash: f9b161bbb692c1336083640250b93f9d87f1e0d9
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202088"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520803"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>在 Azure 安全中心（预览版）中自定义 SQL 信息保护策略
  
@@ -83,8 +83,5 @@ ms.locfileid: "71202088"
 
 有关 Azure 安全中心中的安全策略和数据安全性的详细信息，请参阅以下文章：
  
-- [安全策略概述](security-center-policies-overview.md)：获取安全中心中的安全策略概述
-- [在 Azure 安全中心设置安全策略](tutorial-security-policy.md)：了解如何为 Azure 订阅和资源组配置安全策略
-- [Azure 安全中心数据安全性](security-center-data-security.md)：了解安全中心如何管理和保护数据
-
-
+- [在 Azure 安全中心中设置安全策略](tutorial-security-policy.md)：了解如何配置 Azure 订阅和资源组的安全策略
+- [Azure 安全中心的数据安全](security-center-data-security.md)：了解安全中心如何管理数据并确保数据安全性

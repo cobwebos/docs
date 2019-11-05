@@ -1,5 +1,5 @@
 ---
-title: 将本地 Apache Hadoop 群集迁移到 Azure HDInsight-数据迁移
+title: 数据迁移：本地 Apache Hadoop 到 Azure HDInsight
 description: 了解有关将本地 Hadoop 群集迁移到 Azure HDInsight 的数据迁移最佳做法。
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 567edca422237c71f0d69c862a17fbc0d2a72795
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 30f7ae2eeb928e3f8dc71baed20d9c9b2129d1f9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735912"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494994"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 数据迁移最佳做法
 
@@ -24,7 +24,7 @@ ms.locfileid: "70735912"
 有两个主要选项可将数据从本地迁移到 Azure 环境：
 
 1.  使用 TLS 通过网络传输数据
-    1. 通过 Internet - 可以使用以下多个工具中的任意一个将数据通过常规 Internet 连接传输到 Azure 存储：Azure 存储资源管理器、AzCopy、Azure Powershell 和 Azure CLI。  有关详细信息，请参阅[将数据移入和移出 Azure 存储](../../storage/common/storage-moving-data.md)。
+    1. 通过 Internet - 可以使用以下多个工具中的任意一个将数据通过 Internet 传输到 Azure 存储：Azure 存储资源管理器、AzCopy、Azure Powershell 和 Azure CLI。  有关详细信息，请参阅[将数据移入和移出 Azure 存储](../../storage/common/storage-moving-data.md)。
     2. Express Route - ExpressRoute 是一项 Azure 服务，允许在 Microsoft 数据中心与本地环境或共同租用设施中的基础结构之间创建专用连接。 ExpressRoute 连接不通过公共 Internet，与通过 Internet 的典型连接相比，提供更高的安全性、可靠性、速度和更低的延迟。 有关详细信息，请参阅[创建和修改 ExpressRoute 线路](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)。
     1. Data Box 联机数据传输 - Data Box Edge 和 Data Box Gateway 是联机数据传输产品，它们用作网络存储网关来管理站点和 Azure 之间的数据。 Data Box Edge 是一种本地网络设备，可将数据传入和传出 Azure，并使用支持人工智能 (AI) 的边缘计算来处理数据。 Data Box Gateway 是具有存储网关功能的虚拟设备。 有关详细信息，请参阅 [Azure Data Box 文档 - 联机传输](https://docs.microsoft.com/azure/databox-online/)。
 1.  脱机寄送数据
@@ -114,6 +114,6 @@ hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatus
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读本系列教程的下一篇文章：
+阅读本系列的下一篇文章：
 
 - [有关从本地迁移到 Azure HDInsight Hadoop 的安全和 DevOps 最佳做法](apache-hadoop-on-premises-migration-best-practices-security-devops.md)

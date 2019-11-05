@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f40043b920fab4cb38f935618c7aaecc6bf40a87
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a8b8e7270851c71869b1a67f0f0f0ba2187f0e87
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069713"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470667"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>证书和应用服务环境 
 
@@ -33,7 +33,7 @@ ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使�
 可以使用两个选项配置 ILB ASE 的证书。  可为 ILB ASE 设置通配符默认证书，或者在 ASE 中的单个 Web 应用上设置证书。  无论做出哪种选择，都必须正确配置以下证书属性：
 
 - **使用者：** 对于通配符 ILB ASE 证书，此属性必须设置为 *.[根域]。 如果为应用创建证书，则此属性应是 [应用名称].[根域]
-- **使用者可选名称：** 此属性必须同时包括通配符 ILB ASE 证书的 *.[根域] 和 *.scm.[根域]。 如果为应用创建证书，则此属性应是 [应用名称].[根域] 和 [应用名称].scm.[根域]
+- **使用者可选名称**：此属性必须同时通配符 ILB ASE 证书的 *.[根域] 和 *.scm.[根域]。 如果为应用创建证书，则此属性应是 [应用名称].[根域] 和 [应用名称].scm.[根域]
 
 作为第三种变体，可以创建在证书 SAN 中包含所有应用名称的 ILB ASE 证书，而不使用通配符引用。 此方法的问题在于，需要事先知道要放入 ASE 的应用名称，或者需要不断更新 ILB ASE 证书。
 
@@ -54,7 +54,7 @@ ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使�
 
     $fileName = "exportedcert.pfx"
     Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
-创建自签名证书时, 需要确保使用者名称的格式为 CN = {ASE_NAME_HERE} _InternalLoadBalancingASE。
+创建自签名证书时，需确保使用者名称的格式为 CN={ASE_NAME_HERE}_InternalLoadBalancingASE。
 
 ## <a name="application-certificates"></a>应用程序证书 
 
@@ -64,7 +64,7 @@ ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使�
 - 基于 IP 的 SSL，仅在外部 ASE 中受支持。  ILB ASE 不支持基于 IP 的 SSL。
 - KeyVault 托管的证书 
 
-应用服务 SSL 教程 https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl 中提供了有关上传和管理这些证书的说明。  如果只需将证书配置为与分配到 Web 应用的自定义域名相匹配，则遵照这些说明操作即可。 若要上传使用默认域名的 ILB ASE Web 应用的证书，则需要根据前文所述，在证书的 SAN 中指定 scm 站点。 
+Azure App Service 中的 "[添加 SSL 证书](../configure-ssl-certificate.md)" 中提供了有关上传和管理这些证书的说明。  如果只需将证书配置为与分配到 Web 应用的自定义域名相匹配，则遵照这些说明操作即可。 若要上传使用默认域名的 ILB ASE Web 应用的证书，则需要根据前文所述，在证书的 SAN 中指定 scm 站点。 
 
 ## <a name="tls-settings"></a>TLS 设置 
 
@@ -84,7 +84,7 @@ ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使�
 
     84EC242A4EC7957817B8E48913E50953552DAFA6,6A5C65DC9247F762FE17BF8D4906E04FE6B31819
 
-配置了该设置的应用所在的同一个应用服务计划中的所有应用都可以使用该证书。 如果需要将该证书提供给不同应用服务计划中的应用使用，则需要在该应用服务计划中的应用上重复“应用设置”操作。 若要检查是否已设置证书, 请在 PowerShell 调试控制台中转到 Kudu 控制台并发出以下命令:
+配置了该设置的应用所在的同一个应用服务计划中的所有应用都可以使用该证书。 如果需要将该证书提供给不同应用服务计划中的应用使用，则需要在该应用服务计划中的应用上重复“应用设置”操作。 若要检查是否设置了证书，请转到 Kudu 控制台，并在 PowerShell 调试控制台中发出以下命令：
 
     dir cert:\localmachine\root
 

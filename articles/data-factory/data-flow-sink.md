@@ -6,16 +6,14 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: da8dc332794cadc0eb6677390c566e67a6df6f3f
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 7cfe0cf291e8c39a4600234632090c39ab5cd78e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882448"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73519320"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>数据流的接收器转换
-
-
 
 转换数据流后，可以将数据接收到目标数据集。 在接收器转换中，选择目标输出数据的数据集定义。 您可以根据数据流需要任意数量的接收器转换。
 
@@ -107,6 +105,13 @@ ms.locfileid: "72882448"
 
 > [!NOTE]
 > 在数据库接收器中更新或删除行时，必须设置键列。 此设置允许更改行转换来确定数据移动库（DML）中的唯一行。
+
+### <a name="cosmosdb-specific-settings"></a>CosmosDB 特定设置
+
+当 CosmosDB 中的登陆数据时，需要考虑以下附加选项：
+
+* 分区键：这是必填字段。 输入一个字符串，该字符串表示集合的分区键。 示例： ```/movies/title```
+* 吞吐量：为此数据流的每次执行，设置要应用于 CosmosDB 集合的 ru 数的可选值。 最小值为400。
 
 ## <a name="next-steps"></a>后续步骤
 创建数据流后，请将数据流[活动添加到管道](concepts-data-flow-overview.md)。

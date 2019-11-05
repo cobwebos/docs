@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: db3581616b369345ad654593192048e8573c6fa4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0d132a46db39308911f472941c02f8bb04a44e0d
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935209"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72988794"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT 即插即用预览版术语表
 
@@ -38,7 +38,7 @@ Azure CLI 是一种跨平台的命令行工具，用于管理 Azure 资源。 �
 - 调用设备[命令](#commands)。
 - 管理[模型存储库](#model-repository)、[接口](#interface)和[设备功能模型](#device-capability-model)。
 
-## <a name="azure-iot-central"></a>Azure IoT 中心
+## <a name="azure-iot-central"></a>Azure IoT Central
 
 Azure IoT Central 是一种完全托管的软件即服务解决方案，可让你轻松地连接、监视和管理[IoT 即插即用设备](#iot-plug-and-play-device)。 你可以使用[设备功能模型](#device-capability-model)自动配置 IoT Central 应用程序，以监视和管理你的设备。
 
@@ -117,7 +117,7 @@ IoT 中心托管服务在云中进行托管，充当中央消息中心，用于 
 
 ## <a name="device-provisioning-service"></a>设备预配服务
 
-[Azure IoT Central](#azure-iot-central)使用设备预配服务来管理所有设备注册和连接。 有关详细信息，请参阅[Azure IoT Central 中的设备连接](../iot-central/core/concepts-connectivity-pnp.md)。 你还可以使用设备预配服务管理设备注册并连接到基于 IoT 中心的 IoT 解决方案。 有关详细信息，请参阅[通过 Azure IoT 中心设备预配服务预配设备](../iot-dps/about-iot-dps.md)。
+[Azure IoT Central](#azure-iot-central)使用设备预配服务来管理所有设备注册和连接。 有关详细信息，请参阅[Azure IoT Central 中的设备连接](../iot-central/core/overview-iot-central-get-connected-pnp.md)。 你还可以使用设备预配服务管理设备注册并连接到基于 IoT 中心的 IoT 解决方案。 有关详细信息，请参阅[通过 Azure IoT 中心设备预配服务预配设备](../iot-dps/about-iot-dps.md)。
 
 ## <a name="device-registration"></a>设备注册
 

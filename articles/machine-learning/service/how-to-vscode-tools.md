@@ -10,24 +10,24 @@ ms.author: jimgries
 author: greazer
 ms.date: 09/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: a93c71a97cdb1f6296919a248cf7ef545f7b307f
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: df23c41629dfe86058f0f2fb6602e85fd5a6d494
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269238"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489297"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Azure Machine Learning for Visual Studio Code 入门
 
 在本文中，你将学习如何使用 Visual Studio Code 扩展的**Azure 机器学习**来训练和部署机器学习模型。
 
-[Azure 机器学习服务](overview-what-is-azure-ml.md)简化了机器学习模型的构建、培训和部署。
+[Azure 机器学习](overview-what-is-azure-ml.md)简化了机器学习模型的构建、培训和部署。
 + 对于培训，它为在本地或远程运行试验提供支持。 对于每个试验，可以记录多个运行的自定义指标来微调超参数
-+ 你还可以使用 Azure 机器学习服务轻松部署机器学习模型，以满足测试和生产需求。
++ 你还可以使用 Azure 机器学习轻松部署机器学习模型，以满足测试和生产需求。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-+ 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
++ 如果还没有 Azure 订阅，请在开始前创建免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 
 + 安装[Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview)，这是在 Windows、Mac 和 Linux 上运行的轻型代码编辑器。
 
@@ -38,27 +38,27 @@ ms.locfileid: "71269238"
 
 安装 Azure 机器学习扩展时，会自动安装两个扩展。 它们是[Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)和[Microsoft Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-Python.Python)。 有关使用 Python 扩展编辑、运行和调试 Python 代码的详细信息，请参阅[python hello world 教程](https://code.visualstudio.com/docs/Python/Python-tutorial)。
 
-安装 Azure 机器学习扩展:
+安装 Azure 机器学习扩展：
 
 1. 打开 Visual Studio Code。
 
 1. 切换到 "扩展" 选项卡，搜索 "Azure 机器学习"。
 
-1. 在 "扩展" 选项卡上, 选择 "**安装**"。
+1. 在 "扩展" 选项卡上，选择 "**安装**"。
 
 1. 此时会在 Visual Studio Code 中打开扩展的 "欢迎" 选项卡，并将 Azure 符号（在以下屏幕截图中突出显示为红色）添加到活动栏。
 
    ![Visual Studio Code 活动栏上的 Azure 图标](./media/vscode-tools-for-ai/azure-activity-bar.png)
 
-1. 在对话框中, 选择 "**登录**", 然后按照提示进行 Azure 身份验证。
+1. 在对话框中，选择 "**登录**"，然后按照提示进行 Azure 身份验证。
 
-   与 Visual Studio Code 扩展的 Azure 机器学习一起安装的 Azure 帐户扩展可帮助你通过 Azure 帐户进行身份验证。 有关命令列表, 请参阅[Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)的页面。
+   与 Visual Studio Code 扩展的 Azure 机器学习一起安装的 Azure 帐户扩展可帮助你通过 Azure 帐户进行身份验证。 有关命令列表，请参阅[Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)的页面。
 
 > [!TIP]
 > 你还可以直接从 Azure 机器学习下载扩展安装程序[以 Visual Studio Code 扩展（预览版）](https://aka.ms/vscodetoolsforai)。
 
 ## <a name="quickstart-with-azure-machine-learning"></a>Azure 机器学习快速入门
-可以通过多种方式使用 Azure 机器学习服务运行训练脚本。 如果刚开始，我们首先演练如何快速提交要在 Azure 中运行的训练脚本。
+可以通过多种方式使用 Azure 机器学习运行训练脚本。 如果刚开始，我们首先演练如何快速提交要在 Azure 中运行的训练脚本。
 
 如果你已经熟悉 Azure 机器学习概念，并且想要更详细地了解如何管理和使用扩展的详细信息，请参阅以下[VS Code Azure 机器学习深入](./how-to-vscode-tools.md#azure-machine-learning-in-depth-with-vs-code)了解。
 
@@ -155,10 +155,10 @@ ms.locfileid: "71269238"
 
     [![在云中定型](./media/vscode-tools-for-ai/run-golden-path.gif)](./media/vscode-tools-for-ai/run-golden-path.gif#lightbox)
 
-几秒钟后，将会通知你实验已提交到 Azure，此时你可以在 Azure 门户中通过单击 VS Code 通知中的 "**查看试验运行**" 链接或通过命中刷新来查看其进度 VS Code按钮。
+几秒钟后，将会通知你实验已提交到 Azure，此时你 Azure 机器学习可以通过单击 VS Code 通知中的 "**查看试验运行**" 链接，或在 VS Code按 "Azure" 选项卡中的 "刷新" 按钮。
 
-目前，Azure 门户仅支持查看运行度量值。 上面提到的 "**查看试验运行**" 链接会将你转到运行，你会在其中看到你记录的度量值。
-[![在门户中运行试验](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG)](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG#lightbox)
+目前，在工作室中仅支持查看运行度量值。 上面提到的 "**查看试验运行**" 链接会将你转到运行，你会在其中看到你记录的度量值。
+[在门户中运行 ![试验](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG)](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG#lightbox)
 
 ## <a name="azure-machine-learning-in-depth-with-vs-code"></a>Azure 机器学习深入了解 VS Code
 
@@ -168,7 +168,7 @@ ms.locfileid: "71269238"
 
 ### <a name="create-a-workspace"></a>创建工作区
 
-1. 在 "Visual Studio Code" 活动栏上, 选择 "Azure" 图标。 此时会显示“Azure 机器学习”边栏。
+1. 在 "Visual Studio Code" 活动栏上，选择 "Azure" 图标。 此时会显示“Azure 机器学习”边栏。
 
     [![创建工作区](./media/vscode-tools-for-ai/create-workspace.gif)](./media/vscode-tools-for-ai/create-workspace.gif#lightbox)
 
@@ -186,26 +186,26 @@ ms.locfileid: "71269238"
 
 1. 展开 " **TeamWorkspace** " 工作区。 右键单击 "**试验**" 节点，然后从上下文菜单中选择 "**创建试验**"。
 
-1. 在提示符下，为试验输入名称。 在示例屏幕截图中, 试验命名为**MNIST**。
+1. 在提示符下，为试验输入名称。 在示例屏幕截图中，试验命名为**MNIST**。
 
 1. 选择 Enter 以创建新试验。 新实验作为**试验**节点的子节点出现在树中。
 
-1. 在工作区中, 可以右键单击某个试验, 将其设置为**活动**试验。 **活动**试验会将云中试验的链接到当前已在 Visual Studio Code 中打开的文件夹中。 此文件夹应包含本地 Python 脚本。 设置活动试验后，所有训练运行的关键指标都将存储在试验中，而不考虑它们的执行位置。
+1. 在工作区中，可以右键单击某个试验，将其设置为**活动**试验。 **活动**试验会将云中试验的链接到当前已在 Visual Studio Code 中打开的文件夹中。 此文件夹应包含本地 Python 脚本。 设置活动试验后，所有训练运行的关键指标都将存储在试验中，而不考虑它们的执行位置。
 
     [![创建试验](./media/vscode-tools-for-ai/create-experiment.gif)](./media/vscode-tools-for-ai/create-experiment.gif#lightbox)
 
 
 ### <a name="create-and-manage-compute-targets"></a>创建和管理计算目标
 
-利用 Azure 机器学习 Visual Studio Code, 你可以准备你的数据、训练模型, 并在本地和远程计算目标上部署它们。
+利用 Azure 机器学习 Visual Studio Code，你可以准备你的数据、训练模型，并在本地和远程计算目标上部署它们。
 
-扩展插件支持 Azure 机器学习的多个远程计算目标。 有关详细信息, 请参阅 Azure 机器学习支持的[计算目标](how-to-set-up-training-targets.md)的完整列表。
+扩展插件支持 Azure 机器学习的多个远程计算目标。 有关详细信息，请参阅 Azure 机器学习支持的[计算目标](how-to-set-up-training-targets.md)的完整列表。
 
 ### <a name="create-compute-targets-for-azure-machine-learning-in-visual-studio-code"></a>为中的 Azure 机器学习创建计算目标 Visual Studio Code
 
-创建计算目标:
+创建计算目标：
 
-1. 在 "Visual Studio Code" 活动栏上, 选择 "Azure" 图标。 此时会显示“Azure 机器学习”边栏。
+1. 在 "Visual Studio Code" 活动栏上，选择 "Azure" 图标。 此时会显示“Azure 机器学习”边栏。
 
 1. 在树视图中，展开 Azure 订阅并 Azure 机器学习 "工作区。
 
@@ -219,7 +219,7 @@ ms.locfileid: "71269238"
 
 1. 输入名称后，将使用默认参数创建计算。 若要更改参数，请右键单击新计算，然后选择 "**编辑计算**"。
 
-1. 在显示的 json 中，进行所需的更改，然后单击 "保存并继续" CodeLens （使用键盘，可以按**ctrl + shift-p**来调用命令面板并运行**Azure ML：保存并继续**命令）
+1. 在显示的 json 中，进行所需的更改，然后单击 "保存并继续" CodeLens （使用键盘，可以按**ctrl + shift-p**来调用命令面板并运行**Azure ML： "保存并继续**" 命令）
 
 下面是有关如何创建和编辑 Azure 机器学习计算（AMLCompute）的示例：
 
@@ -239,14 +239,14 @@ ms.locfileid: "71269238"
 
 使用适用于 VS Code 的 Azure ML 扩展，可以通过多种方式在试验中运行训练脚本。
 
-1. 右键单击训练脚本，然后选择 **"Azure ML"：在 Azure 中运行为试验**
+1. 右键单击训练脚本，并选择 " **AZURE ML：在 azure 中运行为试验"**
 1. 单击 "运行试验" 工具栏图标。
 1. 右键单击 "运行配置" 节点。
-1. 使用 VS Code 命令面板执行**Azure ML：运行试验**
+1. 使用 VS Code 命令面板执行**AZURE ML：运行试验**
 
 运行 Azure 机器学习试验：
 
-1. 在 "Visual Studio Code" 活动栏上, 选择 "Azure" 图标。
+1. 在 "Visual Studio Code" 活动栏上，选择 "Azure" 图标。
 
 1. 在树视图中，展开 Azure 订阅并 Azure 机器学习 "工作区。
 
@@ -254,73 +254,73 @@ ms.locfileid: "71269238"
 
 1. 选择“运行试验”。
 
-1. 选择要运行的 Python 文件的名称，以对模型进行定型并按 enter 提交运行。 注意:所选文件必须位于当前在 VS Code 中打开的文件夹中。
+1. 选择要运行的 Python 文件的名称，以对模型进行定型并按 enter 提交运行。 注意：所选文件必须位于当前在 VS Code 中打开的文件夹中。
 
-1. 提交运行后，**运行节点**将显示在所选试验的下方。 使用此节点监视运行状态。 注意:可能需要定期刷新窗口才能查看最新状态。
+1. 提交运行后，**运行节点**将显示在所选试验的下方。 使用此节点监视运行状态。 注意：可能需要定期刷新窗口才能查看最新状态。
 
 下面的示例演示如何对先前创建的计算运行试验：
 
 [![在本地运行试验](./media/vscode-tools-for-ai/run-experiment.gif)](./media/vscode-tools-for-ai/run-experiment.gif#lightbox)
 
 ### <a name="deploy-and-manage-models"></a>部署和管理模型
-在 Azure 机器学习中, 可以在云中和边缘部署和管理机器学习模型。
+在 Azure 机器学习中，可以在云中和边缘部署和管理机器学习模型。
 
 #### <a name="register-your-model-to-azure-machine-learning-from-visual-studio-code"></a>将模型注册到 Azure 机器学习 Visual Studio Code
 
-现在您已训练了模型, 接下来可以在工作区中注册它。 您可以跟踪和部署已注册的模型。
+现在您已训练了模型，接下来可以在工作区中注册它。 您可以跟踪和部署已注册的模型。
 
-注册模型:
+注册模型：
 
-1. 在 "Visual Studio Code" 活动栏上, 选择 "Azure" 图标。 此时会显示“Azure 机器学习”边栏。
+1. 在 "Visual Studio Code" 活动栏上，选择 "Azure" 图标。 此时会显示“Azure 机器学习”边栏。
 
 1. 在树视图中，展开 Azure 订阅并 Azure 机器学习 "工作区。
 
 1. 在工作区节点下，右键单击“模型”，再选择“注册模型”。
 
-1. 在 "命令" 面板的 "字段" 中, 输入模型名称。
+1. 在 "命令" 面板的 "字段" 中，输入模型名称。
 
-1. 从列表中, 选择是上载**模型文件**(适用于单个模型) 还是**模型文件夹**(对于包含多个文件的模型, 如 TensorFlow)。
+1. 从列表中，选择是上载**模型文件**（适用于单个模型）还是**模型文件夹**（对于包含多个文件的模型，如 TensorFlow）。
 
 1. 选择你的文件夹或文件。
 
-1. 完成模型属性配置后, 在窗口右下角, 选择 "**提交**"。
+1. 完成模型属性配置后，在窗口右下角，选择 "**提交**"。
 
-下面的示例演示如何将模型注册到 Azure 机器学习:
+下面的示例演示如何将模型注册到 Azure 机器学习：
 
 [![将模型注册到 AML](./media/vscode-tools-for-ai/register-model.gif)](./media/vscode-tools-for-ai/register-model.gif#lightbox)
 
 
 #### <a name="deploy-your-service-from-visual-studio-code"></a>从 Visual Studio Code 部署服务
 
-在 Visual Studio Code 中, 你可以将 web 服务部署到:
-+ 用于测试的 Azure 容器实例 (ACI)。
-+ 用于生产的 Azure Kubernetes 服务 (AKS)。
+在 Visual Studio Code 中，你可以将 web 服务部署到：
++ 用于测试的 Azure 容器实例（ACI）。
++ 用于生产的 Azure Kubernetes 服务（AKS）。
 
-不需要事先创建 ACI 容器来进行测试，因为可以根据需要创建 ACI 容器。 但是, 您需要提前配置 AKS 群集。 有关详细信息，请参阅[部署模型与 Azure 机器学习](how-to-deploy-and-where.md)。
+不需要事先创建 ACI 容器来进行测试，因为可以根据需要创建 ACI 容器。 但是，您需要提前配置 AKS 群集。 有关详细信息，请参阅[部署模型与 Azure 机器学习](how-to-deploy-and-where.md)。
 
-部署 web 服务:
+部署 web 服务：
 
-1. 在 "Visual Studio Code" 活动栏上, 选择 "Azure" 图标。 此时会显示“Azure 机器学习”边栏。
+1. 在 "Visual Studio Code" 活动栏上，选择 "Azure" 图标。 此时会显示“Azure 机器学习”边栏。
 
 1. 在树视图中，展开 "Azure 订阅" 和 "Azure 机器学习" 工作区。
 
 1. 在工作区节点下，展开“模型”节点。
 
-1. 右键单击要部署的模型, 然后从上下文菜单中选择 "**从已注册的模型部署服务**"。
+1. 右键单击要部署的模型，然后从上下文菜单中选择 "**从已注册的模型部署服务**"。
 
-1. 在 "命令" 面板中, 选择要部署到的计算目标。
+1. 在 "命令" 面板中，选择要部署到的计算目标。
 
-1. 在 "命令" 面板上的 "字段" 中, 输入此服务的名称。
+1. 在 "命令" 面板上的 "字段" 中，输入此服务的名称。
 
-1. 在 "命令" 面板中, 选择键盘上的 Enter 键以浏览并选择该脚本文件。
+1. 在 "命令" 面板中，选择键盘上的 Enter 键以浏览并选择该脚本文件。
 
-1. 在命令面板中, 选择键盘上的 Enter 键以浏览并选择 conda 依赖项文件。
+1. 在命令面板中，选择键盘上的 Enter 键以浏览并选择 conda 依赖项文件。
 
-1. 完成服务属性配置后, 请在窗口右下角选择 "**提交**" 以进行部署。 在服务属性文件中, 可以指定本地 docker 文件或架构文件。
+1. 完成服务属性配置后，请在窗口右下角选择 "**提交**" 以进行部署。 在服务属性文件中，可以指定本地 docker 文件或架构文件。
 
 此时，Web 服务已部署。
 
-下面是有关如何部署 web 服务的示例:
+下面是有关如何部署 web 服务的示例：
 
 [![部署 web 服务](./media/vscode-tools-for-ai/create-image.gif)](./media/vscode-tools-for-ai/create-image.gif#lightbox)
 
@@ -328,9 +328,9 @@ ms.locfileid: "71269238"
 
 您可以使用命令面板访问 Visual Studio Code 中的许多 Azure 机器学习功能。 若要调用命令面板，请按 Ctrl + Shift + P。 可在此处搜索扩展的其他 Azure ML 功能。
 
-[![Visual Studio Code 的 Azure 机器学习的键盘快捷方式](./media/vscode-tools-for-ai/commands.gif)](./media/vscode-tools-for-ai/commands.gif#lightbox)
+[![用于 Azure 机器学习的键盘快捷方式 Visual Studio Code](./media/vscode-tools-for-ai/commands.gif)](./media/vscode-tools-for-ai/commands.gif#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关如何在 Visual Studio Code 外训练 Azure 机器学习的演练, 请参阅[教程:使用 Azure 机器学习训练模型](tutorial-train-models-with-aml.md)。
-* 有关如何在本地编辑、运行和调试代码的演练, 请参阅[Python hello world 教程](https://code.visualstudio.com/docs/Python/Python-tutorial)。
+* 有关如何在 Visual Studio Code 外训练 Azure 机器学习的演练，请参阅[教程：使用 Azure 机器学习训练模型](tutorial-train-models-with-aml.md)。
+* 有关如何在本地编辑、运行和调试代码的演练，请参阅[Python hello world 教程](https://code.visualstudio.com/docs/Python/Python-tutorial)。

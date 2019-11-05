@@ -3,17 +3,17 @@ title: 在 Azure Maps 中管理身份验证 | Microsoft Docs
 description: 可以使用 Azure 门户管理 Azure Maps 中的身份验证。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 07/11/2019
+ms.date: 10/24/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2f4a3d791e6b5d6ff20c09408d1a0bf5995c32fd
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 496edb4f3528daa5bd06193383f0277922e8a93a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756560"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73478783"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>在 Azure Maps 中管理身份验证
 
@@ -32,7 +32,7 @@ ms.locfileid: "72756560"
 
 创建 Azure Maps 帐户后，需要在 Azure AD 租户与 Azure Maps 资源之间建立链接。
 
-1. 请中转到 Azure AD 边栏选项卡，并创建应用注册。 提供注册的名称。 在 "**登录 URL** " 框中，提供 web 应用/API 的主页（例如，https： \//localhost/）。 如果已注册应用，请执行步骤2。
+1. 请中转到 Azure AD 边栏选项卡，并创建应用注册。 提供注册的名称。 在 "**登录 URL** " 框中，提供 web 应用/API 的主页（例如，https：\//localhost/）。 如果已注册应用，请执行步骤2。
 
     ![应用注册](./media/how-to-manage-authentication/app-registration.png)
 
@@ -91,7 +91,12 @@ RBAC 提供粒度访问控制。
 
 * 如果你的应用程序对 Azure Maps Web SDK 使用用户令牌身份验证，则需要使用 Azure Maps 的客户端 ID 和 Azure AD 应用 ID 来配置 HTML 页面。
 
-* 如果你的应用程序使用服务器/应用程序身份验证，则需要使用 Azure AD 资源 ID `https://atlas.microsoft.com/`、Azure Maps 的客户端 ID、Azure AD 的应用程序 ID 和 Azure AD 的应用注册密码 Azure AD 登录终结点 `https://login.microsoftonline.com` 请求令牌，或证书.
+* 如果你的应用程序使用服务器/应用程序身份验证，则需要使用 Azure AD 资源 ID `https://atlas.microsoft.com/`Azure AD 令牌终结点 `https://login.microsoftonline.com` 请求令牌、Azure Maps 的客户端 ID、Azure AD 的应用程序 ID 和 Azure AD 应用注册密码，或证书.
+
+| Azure 环境   | Azure AD 令牌终结点 | Azure 资源 ID |
+| --------------------|-------------------------|-------------------|
+| Azure Public        | https://login.microsoftonline.com | https://atlas.microsoft.com/ |
+| Azure Government    | https://login.microsoftonline.us  | https://atlas.microsoft.com/ | 
 
 有关请求用户和服务主体 Azure AD 的访问令牌的详细信息，请参阅[Azure AD 的身份验证方案](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)。
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/27/2019
-ms.openlocfilehash: 41cb27096782f525a531f38efda539c065fa4c72
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 44089ea4b997e06cb7654fc6665a1a9a59ae2658
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163591"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494116"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 群集上的 Jupyter notebook 的内核
 
@@ -24,7 +24,7 @@ HDInsight Spark 群集提供可在 [Apache Spark](https://spark.apache.org/) 上
 - **PySpark3** - 适用于以 Python3 编写的应用程序。
 - **Spark** - 适用于以 Scala 编写的应用程序。
 
-在本文中，学习如何使用这些内核以及使用它们的优势。
+本文介绍如何使用这些内核以及使用它们的优势。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -32,20 +32,20 @@ HDInsight 中的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDIns
 
 ## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>在 Spark HDInsight 上创建 Jupyter 笔记本
 
-1. 在[Azure 门户](https://portal.azure.com/)中，选择 Spark 群集。  有关说明，请参阅[列出和显示群集](../hdinsight-administer-use-portal-linux.md#showClusters)。 **概述**视图将打开。
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Spark 群集。  有关说明，请参阅[列出和显示群集](../hdinsight-administer-use-portal-linux.md#showClusters)。 此时将打开“概述”视图。
 
-2. 在**概述**视图的 "**群集仪表板**" 框中，选择 " **Jupyter 笔记本**"。 出现提示时，请输入群集的管理员凭据。
+2. 在“概述”视图的“群集仪表板”框中，选择 **Jupyter Notebook**。 出现提示时，请输入群集的管理员凭据。
 
-    ![Apache Spark 上的 Jupyter 笔记本](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Spark 上的 Jupyter 笔记本")
+    ![Apache Spark 上的 Jupyter 笔记本](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Spark 上的 Jupyter Notebook")
   
    > [!NOTE]  
    > 也可以在浏览器中打开以下 URL 来访问 Spark 群集中的 Jupyter 笔记本。 将 **CLUSTERNAME** 替换为群集的名称：
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-3. 选择 "**新建**"，然后选择 " **Pyspark**"、" **PySpark3**" 或 " **Spark** " 创建笔记本。 使用适用于 Scala 应用程序的 Spark 内核，适用于 Python2 应用程序的 PySpark 内核，以及适用于 Python3 应用程序的 PySpark3 内核。
+3. 选择“新建”，然后选择“Pyspark”、“PySpark3”或“Spark”创建 Notebook。 使用适用于 Scala 应用程序的 Spark 内核，适用于 Python2 应用程序的 PySpark 内核，以及适用于 Python3 应用程序的 PySpark3 内核。
 
-    ![Spark 上适用于 Jupyter 笔记本的内核](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Spark 上适用于 Jupyter 笔记本的内核")
+    ![Spark 上适用于 Jupyter Notebook 的内核](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Spark 上适用于 Jupyter Notebook 的内核")
 
 4. 此时会打开使用所选内核的笔记本。
 
@@ -69,15 +69,15 @@ HDInsight 中的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDIns
 
     下表列出可通过内核提供的不同 magic。
 
-   | Magic | 示例 | 描述 |
+   | Magic | 示例 | 说明 |
    | --- | --- | --- |
    | help |`%%help` |生成所有可用 magic 的表，其中包含示例和说明 |
    | info |`%%info` |输出当前 Livy 终结点的会话信息 |
    | 配置 |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |配置用于创建会话的参数。 如果已创建会话，则必须指定 force 标志 (-f)，确保删除再重新创建该会话。 有关有效参数的列表，请查看 [Livy 的 POST /sessions 请求正文](https://github.com/cloudera/livy#request-body)。 参数必须以 JSON 字符串传入，并且必须位于 magic 后面的下一行，如示例列中所示。 |
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |针对 sqlContext 执行 Hive 查询。 如果传递了 `-o` 参数，则查询的结果以 [Pandas](https://pandas.pydata.org/) 数据帧的形式保存在 %%local Python 上下文中。 |
-   | local |`%%local`<br>`a=1` |后续行中的所有代码在本地执行。 代码必须是有效的 Python2 代码，即使不考虑所使用的内核。 因此，即使在创建笔记本时选择了**PySpark3**或**Spark**内核，如果在单元中使用 `%%local` 幻数，该单元格必须仅具有有效的 Python2 代码。 |
+   | local |`%%local`<br>`a=1` |后续行中的所有代码在本地执行。 代码必须是有效的 Python2 代码，即使不考虑所使用的内核。 因此，即使在创建 Notebook 时选择了“PySpark3”或“Spark”，但如果在单元中使用  **magic，该单元也只能包含有效的 Python2 代码。** `%%local` |
    | 日志 |`%%logs` |输出当前 Livy 会话的日志。 |
-   | delete |`%%delete -f -s <session number>` |删除当前 Livy 终结点的特定会话。 你无法删除为内核本身启动的会话。 |
+   | 删除 |`%%delete -f -s <session number>` |删除当前 Livy 终结点的特定会话。 你无法删除为内核本身启动的会话。 |
    | cleanup |`%%cleanup -f` |删除当前 Livy 终结点的所有会话，包括此笔记本的会话。 force 标志 -f 是必需的。 |
 
    > [!NOTE]  
@@ -89,10 +89,10 @@ HDInsight 中的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDIns
 
 `%%sql` magic 支持不同的参数，可以使用这些参数控制运行查询时收到的输出类型。 下表列出了输出。
 
-| 参数 | 示例 | 描述 |
+| 参数 | 示例 | 说明 |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |使用此参数将查询结果以 [Pandas](https://pandas.pydata.org/) 数据帧的形式保存在 %%local Python 上下文中。 数据帧变量的名称是指定的变量名称。 |
-| -q |`-q` |使用此参数可关闭单元可视化。 如果不想 autovisualize 单元格的内容，而只想将其捕获为数据帧，请使用 `-q -o <VARIABLE>`。 如果想要关闭可视化而不捕获结果（例如，运行诸如 `CREATE TABLE` 语句的 SQL 查询），请使用不带 `-o` 参数的 `-q`。 |
+| -q |`-q` |使用此参数可关闭单元可视化。 如果不想自动将单元内容可视化，而只想将它作为数据帧捕获，可以使用 `-q -o <VARIABLE>`。 如果想要关闭可视化而不捕获结果（例如，运行诸如 `CREATE TABLE` 语句的 SQL 查询），请使用不带 `-q` 参数的 `-o`。 |
 | -m |`-m <METHOD>` |其中，**METHOD** 是 **take** 或 **sample**（默认为 **take**）。 如果方法为 **take**，内核将从 MAXROWS 指定的结果数据集顶部选择元素（如此表中稍后所述）。 如果方法为 **sample**，内核会根据 `-r` 参数进行数据集的元素随机采样，如此表中稍后所述。 |
 | -r |`-r <FRACTION>` |此处的 **FRACTION** 是介于 0.0 与 1.0 之间的浮点数。 如果 SQL 查询的采样方法为 `sample`，则内核将针对结果集元素的指定分数随机采样。 例如，如果使用参数 `-m sample -r 0.01` 运行 SQL 查询，则会随机采样 1% 的结果行。 |
 | -n |`-n <MAXROWS>` |**MAXROWS** 是整数值。 内核将输出行的数目限制为 **MAXROWS**。 如果**MAXROWS**是负数（例如 **-1**），则结果集中的行数没有限制。 |
@@ -105,7 +105,7 @@ HDInsight 中的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDIns
 上述语句执行以下操作：
 
 - 从 **hivesampletable** 中选择所有记录。
-- 由于我们使用-q，因此会关闭 autovisualization。
+- 由于使用了 -q，因此将关闭自动可视化。
 - 由于使用了 `-m sample -r 0.1 -n 500`，因此将从 hivesampletable 的行中随机采样 10%，并将结果集的大小限制为 500 行。
 - 最后，由于使用了 `-o query2`，因此也会将输出保存到名为 **query2** 的数据帧中。
 
@@ -134,7 +134,7 @@ Google Chrome 仅支持 Spark HDInsight 群集中的 Jupyter 笔记本。
 
 ## <a name="feedback"></a>反馈
 
-新内核正处于发展阶段，一段时间后将变得成熟。 这可能也意味着，API 可随着这些内核的成熟而改变。 如果在使用这些新内核时有任何反馈，我们将不胜感激。 这对于内核最终版本的定调会很有帮助。 你可以在本文底部的 "**反馈**" 部分下留言。
+新内核正处于发展阶段，一段时间后将变得成熟。 这可能也意味着，API 可随着这些内核的成熟而改变。 如果在使用这些新内核时有任何反馈，我们将不胜感激。 这对于内核最终版本的定调会很有帮助。 可以在本文末尾的“反馈”部分下面留下意见/反馈。
 
 ## <a name="seealso"></a>另请参阅
 

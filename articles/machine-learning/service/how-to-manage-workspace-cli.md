@@ -9,20 +9,21 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 08/30/2019
-ms.openlocfilehash: 75487906e4323ea12a47d75164617212bd3e65d9
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8606ac2578c45062182517b5e67d669a09b8e5c0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002630"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489717"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 创建 Azure 机器学习的工作区
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何使用 Azure CLI 创建 Azure 机器学习工作区。 Azure CLI 提供了用于管理 Azure 资源的命令。 CLI 的机器学习扩展提供了用于处理 Azure 机器学习资源的命令。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* 一个 **Azure 订阅**。 如果没有，请尝试[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
+* **Azure 订阅帐户**。 如果没有，请尝试[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 
 * 若要在**本地环境**中使用本文档中的 CLI 命令，需要[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
@@ -39,7 +40,7 @@ ms.locfileid: "71002630"
 az login
 ```
 
-如果 CLI 可以打开默认的浏览器，则它会打开该浏览器并加载登录页。 否则，你需要打开浏览器并按照命令行中的说明进行操作。 这些说明涉及到[https://aka.ms/devicelogin](https://aka.ms/devicelogin)浏览和输入授权代码。
+如果 CLI 可以打开默认的浏览器，则它会打开该浏览器并加载登录页。 否则，你需要打开浏览器并按照命令行中的说明进行操作。 说明涉及浏览到[https://aka.ms/devicelogin](https://aka.ms/devicelogin)并输入授权代码。
 
 有关其他身份验证方法，请参阅[登录 Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
 
@@ -63,12 +64,12 @@ Azure 机器学习工作区依赖于以下 Azure 服务或实体：
 | **Azure 资源组** | `-g <resource-group-name>`
 | **Azure 存储帐户** | `--storage-account <service-id>` |
 | **Azure Application Insights** | `--application-insights <service-id>` |
-| **Azure Key Vault** | `--keyvault <service-id>` |
+| **Azure 密钥保管库** | `--keyvault <service-id>` |
 | **Azure 容器注册表** | `--container-registry <service-id>` |
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-必须在资源组中创建 Azure 机器学习工作区。 可以使用现有资源组，也可以创建新组。 若要__创建新的资源组__，请使用以下命令。 替换`<resource-group-name>`为要用于此资源组的名称。 替换`<location>`为要用于此资源组的 Azure 区域：
+必须在资源组中创建 Azure 机器学习工作区。 可以使用现有资源组，也可以创建新组。 若要__创建新的资源组__，请使用以下命令。 将 `<resource-group-name>` 替换为此资源组要使用的名称。 将 `<location>` 替换为要用于此资源组的 Azure 区域：
 
 > [!TIP]
 > 应选择可用 Azure 机器学习区域。 有关信息，请参阅[可用产品（按区域](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service)）。
@@ -133,7 +134,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 > [!IMPORTANT]
 > 无需指定所有现有资源。 您可以指定一个或多个。 例如，可以指定现有的存储帐户，工作区将创建其他资源。
 
-+ **Azure 存储帐户**：`az storage account show --name <storage-account-name> --query "id"`
++ **Azure 存储帐户**： `az storage account show --name <storage-account-name> --query "id"`
 
     此命令的响应类似于以下文本，是存储帐户的 ID：
 
@@ -163,7 +164,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure 容器注册表**：`az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure 容器注册表**： `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
     此命令的响应类似于以下文本，是容器注册表的 ID：
 
@@ -172,7 +173,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
     > [!IMPORTANT]
     > 容器注册表必须先启用[管理员帐户](/azure/container-registry/container-registry-authentication#admin-account)，然后才能将其与 Azure 机器学习工作区一起使用。
 
-如果你有要用于工作区的资源的 id，请使用基本`az workspace create -w <workspace-name> -g <resource-group-name>`命令并添加现有资源的参数和 ID （s）中。 例如，以下命令将创建一个使用现有容器注册表的工作区：
+如果你有要用于工作区的资源的 Id，请使用 base `az workspace create -w <workspace-name> -g <resource-group-name>` 命令，然后添加现有资源的参数和 ID （s）。 例如，以下命令将创建一个使用现有容器注册表的工作区：
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name> --container-registry "/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"

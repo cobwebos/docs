@@ -3,15 +3,15 @@ title: 了解效果的工作原理
 description: Azure 策略定义具有各种影响，决定了如何管理和报告合规性。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/17/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 4f657cd8c804a597220a7e74d1fce0401c4cd9ae
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: c448ab889ad263f4f8b6c9a59048551ca761d69a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176336"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464052"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -19,18 +19,19 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 
 策略定义目前支持以下效果：
 
-- [附加](#append)
+- [Append](#append)
 - [审核](#audit)
 - [AuditIfNotExists](#auditifnotexists)
-- [注销](#deny)
+- [Deny](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [已禁用](#disabled)
+- [EnforceOPAConstraint](#enforceopaconstraint) （预览版）
 - [EnforceRegoPolicy](#enforceregopolicy) （预览版）
 - [Modify](#modify)
 
 ## <a name="order-of-evaluation"></a>评估顺序
 
-通过 Azure 资源管理器创建或更新资源的请求优先于 Azure 策略进行评估。 Azure 策略将创建应用于该资源的所有分配的列表，并根据每个定义计算资源。 在将请求提交到相应的资源提供程序之前，Azure 策略将处理多个影响。 这样做可以防止资源提供程序在资源不符合 Azure 策略的设计调控控制时不必要地处理。
+Azure Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。 Azure Policy 创建应用于资源的所有分配列表，然后根据每个定义评估资源。 Azure Policy 在将请求转交给相应的资源提供程序之前处理多个效果。 这样做可以防止资源提供程序在资源不符合 Azure Policy 的设计治理控制时进行不必要的处理。
 
 - 首先检查**已禁用**以确定是否应评估策略规则。
 - 然后计算**追加**和**修改**。 由于可能会改变请求，所做的更改可能会阻止审核或拒绝的影响。
@@ -39,9 +40,9 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 
 资源提供程序返回成功代码后，将会评估 **AuditIfNotExists** 和 **DeployIfNotExists** 以确定是否需要其他合规性日志记录或操作。
 
-目前没有任何**EnforceRegoPolicy**效果的评估顺序。
+目前没有任何**EnforceOPAConstraint**或**EnforceRegoPolicy**效果的评估顺序。
 
-## <a name="disabled"></a>Disabled
+## <a name="disabled"></a>已禁用
 
 对于测试情况以及在策略定义已参数化效果时，此效果很有用。 借助这种灵活性可以禁用单个分配，而无需禁用该策略的所有分配。
 
@@ -63,7 +64,7 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 
 ### <a name="append-properties"></a>“附加”属性
 
-附加效果只有“详细信息”数组，它是必需的。 因为“详细信息”是一个数组，它可能需要单个或多个字段/值对。 请参阅[定义结构](definition-structure.md#fields)，获取可接受的字段列表。
+附加效果只有“详细信息”数组，它是必需的。 因为“详细信息”是一个数组，它可能需要单个字段/值对或倍数。 请参阅[定义结构](definition-structure.md#fields)，获取可接受的字段列表。
 
 ### <a name="append-examples"></a>“附加”示例
 
@@ -160,11 +161,11 @@ Modify 用于在创建或更新时在资源上添加、更新或删除标记。 
 
 **操作**属性具有以下选项：
 
-|Operation |描述 |
+|Operation |说明 |
 |-|-|
 |addOrReplace |将已定义的标记和值添加到资源，即使已存在具有不同值的标记也是如此。 |
 |添加 |将已定义的标记和值添加到资源。 |
-|移除 |从资源中删除定义的标记。 |
+|删除 |从资源中删除定义的标记。 |
 
 ### <a name="modify-examples"></a>修改示例
 
@@ -212,7 +213,7 @@ Modify 用于在创建或更新时在资源上添加、更新或删除标记。 
 }
 ```
 
-## <a name="deny"></a>拒绝
+## <a name="deny"></a>DENY
 
 “拒绝”用于通过策略定义防止与定义的标准不匹配的资源请求，并使请求失败。
 
@@ -242,7 +243,7 @@ Modify 用于在创建或更新时在资源上添加、更新或删除标记。 
 
 ### <a name="audit-evaluation"></a>“审核”评估
 
-Audit 是在创建或更新资源的过程中由 Azure 策略检查的最后一个影响。 然后，Azure 策略将资源发送到资源提供程序。 “审核”对于资源请求和评估周期的工作方式相同。 Azure 策略将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志，并将资源标记为不合规。
+“审核”是创建或更新资源期间由 Azure Policy 检查的最后一个效果。 然后，Azure Policy 将资源发送到资源提供程序。 “审核”对于资源请求和评估周期的工作方式相同。 Azure Policy 将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志，并将资源标记为不合规。
 
 ### <a name="audit-properties"></a>“审核”属性
 
@@ -264,7 +265,7 @@ AuditIfNotExists 对匹配 **if** 条件的资源启用审核，但没有在 **t
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists 评估
 
-AuditIfNotExists 在资源提供程序处理资源创建或更新请求并返回成功状态代码后运行。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生审核。 Azure 策略将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志，其方式与审核效果相同。 触发后，满足 if 条件的资源是标记为不符合的资源。
+AuditIfNotExists 在资源提供程序处理资源创建或更新请求并返回成功状态代码后运行。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生审核。 与使用“审核”效果时一样，Azure Policy 会将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志。 触发后，满足 if 条件的资源是标记为不符合的资源。
 
 ### <a name="auditifnotexists-properties"></a>AuditIfNotExists 属性
 
@@ -272,10 +273,10 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 
 - **Type** [必选]
   - 指定要匹配的相关资源的类型。
-  - 如果**详细信息**为，则 type 是**if**条件资源下面的资源类型，策略在计算资源的作用域内查询此**类型**的资源。 否则，策略查询将与计算资源位于同一资源组中。
+  - 如果 **details.type** 是 **If** 条件资源下的资源类型，则策略将在已评估资源的范围内查询此**类型**的资源。 否则，策略将在与已评估资源相同的资源组内进行查询。
 - **Name**（可选）
   - 指定要匹配的资源的确切名称，并使策略提取一个特定资源，而不是指定类型的所有资源。
-  - 如果 When 的条件值为，**则** **键入**，然后按 "**名称**" 是_必需_的，并且必须 `[field('name')]`。 但是，应考虑使用[审核](#audit)效果。
+  - 当 **if.field.type** 和 **then.details.type** 的条件值匹配时，**Name** 将变为_必需_且必须为 `[field('name')]`。 但是，应改为考虑 [audit](#audit) 效果。
 - **ResourceGroupName**（可选）
   - 允许相关资源的匹配来自不同的资源组。
   - 如果 **type** 是 **if** 条件资源下的一个资源，则不适用。
@@ -329,7 +330,7 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 与 AuditIfNotExists 类似，DeployIfNotExists 策略定义在满足条件时执行模板部署。
 
 > [!NOTE]
-> **deployIfNotExists** 支持[嵌套模板](../../../azure-resource-manager/resource-group-linked-templates.md#nested-template)，但目前不支持[链接模版](../../../azure-resource-manager/resource-group-linked-templates.md)。
+> [deployIfNotExists](../../../azure-resource-manager/resource-group-linked-templates.md#nested-template) 支持**嵌套模板**，但目前不支持[链接模版](../../../azure-resource-manager/resource-group-linked-templates.md)。
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists 评估
 
@@ -346,7 +347,7 @@ DeployIfNotExists 效果的 "**详细信息**" 属性包含定义要匹配的相
   - 首先尝试提取 if条件资源下的资源，然后在与 if 条件资源相同的资源组中进行查询。
 - **Name**（可选）
   - 指定要匹配的资源的确切名称，并使策略提取一个特定资源，而不是指定类型的所有资源。
-  - 如果 When 的条件值为，**则** **键入**，然后按 "**名称**" 是_必需_的，并且必须 `[field('name')]`。
+  - 当 **if.field.type** 和 **then.details.type** 的条件值匹配时，**Name** 将变为_必需_且必须为 `[field('name')]`。
 - **ResourceGroupName**（可选）
   - 允许相关资源的匹配来自不同的资源组。
   - 如果 **type** 是 **if** 条件资源下的一个资源，则不适用。
@@ -431,12 +432,68 @@ DeployIfNotExists 效果的 "**详细信息**" 属性包含定义要匹配的相
 }
 ```
 
-## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
-此效果与 `Microsoft.ContainerService.Data` 的策略定义*模式*一起使用。 它用于传递使用[Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)定义的许可控制规则，以打开[Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)上的[策略代理](https://www.openpolicyagent.org/)（OPA）。
+此效果与 `Microsoft.Kubernetes.Data`的策略定义*模式*一起使用。 它用于传递使用[OPA 约束框架](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework)定义的网关守卫 v3 许可控制规则，以将[策略代理](https://www.openpolicyagent.org/)（OPA）打开 Azure 上的自托管 Kubernetes 群集。
 
 > [!NOTE]
-> [适用于 Kubernetes 的 Azure 策略](rego-for-aks.md)处于公共预览中，仅支持内置策略定义。
+> [适用于 AKS 引擎的 Azure 策略](aks-engine.md)处于公共预览中，仅支持内置策略定义。
+
+### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint 评估
+
+开放策略代理许可控制器会实时评估群集上的任何新请求。
+每5分钟一次，完成群集的完全扫描，并报告给 Azure 策略的结果。
+
+### <a name="enforceopaconstraint-properties"></a>EnforceOPAConstraint 属性
+
+EnforceOPAConstraint 效果的 "**详细信息**" 属性具有描述 "看门程序 v3 许可控制规则" 的子属性。
+
+- **constraintTemplate** [必需]
+  - 定义新约束的约束模板 CustomResourceDefinition （.CRD）。 该模板定义 Rego 逻辑、约束架构和通过 Azure 策略中的**值**传递的约束参数。
+- **约束**[必需]
+  - 约束模板的 .CRD 实现。 使用通过**值**传递的参数作为 `{{ .Values.<valuename> }}`。 在下面的示例中，这将是 `{{ .Values.cpuLimit }}` 和 `{{ .Values.memoryLimit }}`。
+- **值**[可选]
+  - 定义要传递给约束的任何参数和值。 每个值都必须存在于 Constraint 模板 .CRD 中。
+
+### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy 示例
+
+示例：守卫 v3 许可控制规则，用于设置 AKS 引擎中的容器 CPU 和内存资源限制。
+
+```json
+"if": {
+    "allOf": [
+        {
+            "field": "type",
+            "in": [
+                "Microsoft.ContainerService/managedClusters",
+                "AKS Engine"
+            ]
+        },
+        {
+            "field": "location",
+            "equals": "westus2"
+        }
+    ]
+},
+"then": {
+    "effect": "enforceOPAConstraint",
+    "details": {
+        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/template.yaml",
+        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/constraint.yaml",
+        "values": {
+            "cpuLimit": "[parameters('cpuLimit')]",
+            "memoryLimit": "[parameters('memoryLimit')]"
+        }
+    }
+}
+```
+
+## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+
+此效果与 `Microsoft.ContainerService.Data`的策略定义*模式*一起使用。 它用于传递使用[Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)定义的网关 v2 的许可控制规则，以打开[Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)上的[策略代理](https://www.openpolicyagent.org/)（OPA）。
+
+> [!NOTE]
+> 适用于[AKS 的 Azure 策略](rego-for-aks.md)处于有限预览版中，仅支持内置策略定义
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy 评估
 
@@ -445,7 +502,7 @@ DeployIfNotExists 效果的 "**详细信息**" 属性包含定义要匹配的相
 
 ### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy 属性
 
-EnforceRegoPolicy 效果的**详细信息**属性具有描述 Rego 许可控制规则的子属性。
+EnforceRegoPolicy 效果的**详细信息**属性具有描述 "看门程序 v2" 许可控制规则的子属性。
 
 - **policyId** [必需]
   - 作为参数传递给 Rego 许可控制规则的唯一名称。
@@ -456,7 +513,7 @@ EnforceRegoPolicy 效果的**详细信息**属性具有描述 Rego 许可控制�
 
 ### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy 示例
 
-示例： Rego 许可控制规则，只允许在 AKS 中指定容器映像。
+示例：网关 v2 "许可控制" 规则，只允许在 AKS 中指定的容器映像。
 
 ```json
 "if": {
@@ -514,9 +571,9 @@ EnforceRegoPolicy 效果的**详细信息**属性具有描述 Rego 许可控制�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看[Azure 策略示例](../samples/index.md)中的示例。
+- 在 [Azure Policy 示例](../samples/index.md)中查看示例。
 - 查看 [Azure Policy 定义结构](definition-structure.md)。
-- 了解如何以[编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取相容性数据](../how-to/getting-compliance-data.md)。
-- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
+- 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
+- 了解如何[获取合规性数据](../how-to/getting-compliance-data.md)。
+- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

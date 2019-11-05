@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 26a751924985f94a7d7d12a382d4e6654f36ea48
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1301ee2494aa24720905b9e3e68edce04fb17e72
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793706"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466442"
 ---
 # <a name="how-to-rebuild-an-azure-cognitive-search-index"></a>如何重建 Azure 认知搜索索引
 
@@ -25,7 +25,7 @@ ms.locfileid: "72793706"
 
 ## <a name="rebuild-conditions"></a>重新生成条件
 
-| 条件 | 描述 |
+| 条件 | 说明 |
 |-----------|-------------|
 | 更改字段定义 | 修改字段名称、数据类型或特定的[索引属性](https://docs.microsoft.com/rest/api/searchservice/create-index)（可搜索、可筛选、可排序、可查找）需要完全重新生成。 |
 | 向字段分配分析器 | [分析器](search-analyzers.md)是在索引中定义的，然后分配给字段。 随时都可以向索引添加新的分析器定义，但只有在创建字段时才能分配分析器。 对于 **analyzer** 和 **indexAnalyzer** 属性都是如此。 **searchAnalyzer** 属性是一个例外（可以向现有字段分配此属性）。 |
@@ -46,7 +46,7 @@ ms.locfileid: "72793706"
 
 添加新字段时，将在新字段中为已编制索引的现有文档提供 null 值。 将来的数据刷新时，来自外部源数据的值将替换 Azure 认知搜索添加的 null 值。 有关更新索引内容的详细信息，请参阅[添加、更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。
 
-## <a name="partial-or-incremental-indexing"></a>部分或增量索引
+## <a name="partial-indexing"></a>部分索引
 
 在 Azure 认知搜索中，不能按字段控制索引，而是选择删除或重新创建特定字段。 同样，也没有用于[基于条件为文档编制索引](https://stackoverflow.com/questions/40539019/azure-search-what-is-the-best-way-to-update-a-batch-of-documents)的内置机制。 必须通过自定义代码满足针对条件驱动的索引的任何要求。
 
@@ -74,7 +74,7 @@ ms.locfileid: "72793706"
 
    任何针对该索引的查询都会被立即删除。 删除索引是不可逆的，此操作会销毁字段集合和其他构造的物理存储空间。 在删除索引之前，请确保自己清楚删除索引的影响。 
 
-2. 使用服务终结点、API 密钥和[管理密钥](https://docs.microsoft.com/azure/search/search-security-api-keys)构造[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)请求。 写入操作需要使用管理密钥。
+2. 使用服务终结点、API 密钥和[管理密钥](https://docs.microsoft.com/rest/api/searchservice/update-index)构造[更新索引](https://docs.microsoft.com/azure/search/search-security-api-keys)请求。 写入操作需要使用管理密钥。
 
 3. 在请求正文中，提供具有已更改或已修改字段定义的索引架构。 请求正文包含索引架构，以及用于计分概要文件、分析器、建议器和 CORS 选项的构造。 架构要求都记录在[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)中。
 

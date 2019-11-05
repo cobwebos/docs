@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/08/2019
-ms.openlocfilehash: dfaa39b33839406ffdf484299cb520aebf011c7d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 10/25/2019
+ms.openlocfilehash: 45d76328f4a5de4a5cf26b0a126825c1b0a906c7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299683"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496952"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes Service 群集
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 了解如何使用 Azure 机器学习将模型部署为 Azure Kubernetes Service （AKS）上的 web 服务。 Azure Kubernetes 服务适用于大规模生产部署。 如果需要以下一个或多个功能，请使用 Azure Kubernetes 服务：
 
@@ -30,13 +31,13 @@ ms.locfileid: "72299683"
 
 部署到 Azure Kubernetes 服务时，部署到__连接到工作区__的 AKS 群集。 可通过两种方式将 AKS 群集连接到工作区：
 
-* 使用 Azure 机器学习 SDK、机器学习 CLI、 [Azure 门户](https://portal.azure.com)或[工作区登陆页面（预览版）](https://ml.azure.com)创建 AKS 群集。 此过程会自动将群集连接到工作区。
-* 将现有的 AKS 群集附加到 Azure 机器学习工作区。 可以使用 Azure 机器学习 SDK、机器学习 CLI 或 Azure 门户来连接群集。
+* 使用 Azure 机器学习 SDK、机器学习 CLI 或[Azure 机器学习 studio](https://ml.azure.com)创建 AKS 群集。 此过程会自动将群集连接到工作区。
+* 将现有的 AKS 群集附加到 Azure 机器学习工作区。 可以使用 Azure 机器学习 SDK、机器学习 CLI 或 Azure 机器学习 studio 附加群集。
 
 > [!IMPORTANT]
 > 创建或附件过程是一次性任务。 将 AKS 群集连接到工作区后，可以将其用于部署。 如果不再需要 AKS 群集，可以分离或删除它。 Detatched 或删除后，将无法再部署到群集。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -52,11 +53,11 @@ ms.locfileid: "72299683"
 
     有关设置这些变量的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-- 本文中的__CLI__代码段假设你已创建 @no__t 1 文档。 有关创建此文档的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
+- 本文中的__CLI__代码段假设你已创建 `inferenceconfig.json` 文档。 有关创建此文档的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 ## <a name="create-a-new-aks-cluster"></a>创建新的 AKS 群集
 
-**时间估计**：大约 20 分钟。
+**估计时间**：约20分钟。
 
 创建或附加 AKS 群集是工作区的一次过程。 可以将此群集重复用于多个部署。 如果删除群集或包含该群集的资源组，则下次需要部署时，必须创建新群集。 可以将多个 AKS 群集附加到工作区。
 
@@ -66,7 +67,7 @@ ms.locfileid: "72299683"
 如果要创建 AKS 群集以进行__开发__、__验证__和__测试__，而不是生产，则可以将__群集目的__指定为进行开发__测试__。
 
 > [!WARNING]
-> 如果将 @no__t 设置为 "0"，则创建的群集不适用于生产级别的流量，可能会增加推理时间。 开发/测试群集也不保证容错能力。 对于开发/测试群集，建议至少2个虚拟 Cpu。
+> 如果设置 `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`，则创建的群集不适用于生产级别的流量，可能会增加推理时间。 开发/测试群集也不保证容错能力。 对于开发/测试群集，建议至少2个虚拟 Cpu。
 
 以下示例演示如何使用 SDK 和 CLI 创建新的 AKS 群集：
 
@@ -91,9 +92,9 @@ aks_target.wait_for_completion(show_output = True)
 ```
 
 > [!IMPORTANT]
-> 对于[`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)，如果选择 `agent_count` 和 `vm_size` 的自定义值，并且 `cluster_purpose` 不是 @no__t 5，则需要确保 `vm_size` 乘以 @no__t 大于或等于12个虚拟 cpu。 例如，如果使用的是具有4个虚拟 Cpu 的 @no__t "Standard_D3_v2"，则应选择3个或更高的 @no__t。
+> 对于[`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)，如果为 `agent_count` 和 `vm_size`选取了自定义值，并且 `cluster_purpose` 不 `DEV_TEST`，则需要确保 `agent_count` 乘以 `vm_size` 大于或等于12个虚拟 cpu。 例如，如果使用的是具有4个虚拟 Cpu 的 "Standard_D3_v2" `vm_size`，则应选择3个或更多的 `agent_count`。
 >
-> Azure 机器学习 SDK 不支持缩放 AKS 群集。 若要缩放群集中的节点，请在 Azure 门户中使用 AKS 群集的 UI。 只能更改节点计数，而不能更改群集的 VM 大小。
+> Azure 机器学习 SDK 不支持缩放 AKS 群集。 若要缩放群集中的节点，请在 Azure 机器学习 studio 中使用 AKS 群集的 UI。 只能更改节点计数，而不能更改群集的 VM 大小。
 
 有关此示例中使用的类、方法和参数的详细信息，请参阅以下参考文档：
 
@@ -122,11 +123,11 @@ az ml computetarget create aks -n myaks
 > 如果要使用 Azure 虚拟网络保护 AKS 群集，必须先创建虚拟网络。 有关详细信息，请参阅[通过 Azure 虚拟网络进行安全试验和推理](how-to-enable-virtual-network.md#aksvnet)。
 
 > [!WARNING]
-> 将 AKS 群集附加到工作区时，可以通过设置 @no__t 参数来定义使用群集的方式。
+> 将 AKS 群集附加到工作区时，可以通过设置 `cluster_purpose` 参数来定义使用群集的方式。
 >
-> 如果未设置 @no__t 参数或将 @no__t 设置为-1，则群集必须有至少12个可用的虚拟 Cpu。
+> 如果未设置 `cluster_purpose` 参数或设置 `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`，则群集必须有至少12个可用的虚拟 Cpu。
 >
-> 如果将 @no__t 设置为0，则群集不需要有12个虚拟 Cpu。 建议至少2个虚拟 Cpu 用于开发/测试。 但是，为开发/测试配置的群集不适用于生产级别的流量，可能会增加推理时间。 开发/测试群集也不保证容错能力。
+> 如果设置 `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`，则群集不需要有12个虚拟 Cpu。 建议至少2个虚拟 Cpu 用于开发/测试。 但是，为开发/测试配置的群集不适用于生产级别的流量，可能会增加推理时间。 开发/测试群集也不保证容错能力。
 
 有关使用 Azure CLI 或门户创建 AKS 群集的详细信息，请参阅以下文章：
 
@@ -227,6 +228,69 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 > [!IMPORTANT] 
 > 通过 VS Code 部署要求提前创建或将 AKS 群集附加到工作区。
 
+## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>使用受控推出（预览版）将模型部署到 AKS
+使用终结点以受控方式分析和升级模型版本。 在单个终结点上部署最多6个版本，并配置到每个已部署版本的评分流量百分比。 可以启用 app insights 来查看终结点和已部署版本的操作指标。
+
+### <a name="create-an-endpoint"></a>创建终结点
+准备好部署模型后，请创建评分终结点，并部署第一个版本。 下面的步骤演示如何使用 SDK 部署和创建终结点。 第一个部署将被定义为默认版本，这意味着所有版本中未指定的流量百分比将会转为默认版本。  
+
+```python
+import azureml.core,
+from azureml.core.webservice import AksEndpoint
+from azureml.core.compute import AksCompute
+from azureml.core.compute import ComputeTarget
+# select a created compute
+compute = ComputeTarget(ws, 'myaks')
+namespace_name= endpointnamespace 
+# define the endpoint and version name
+endpoint_name = "mynewendpoint",
+version_name= "versiona",
+# create the deployment config and define the scoring traffic percentile for the first deployment
+endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, memory_gb = 0.2,
+                                                              enable_app_insights = true, 
+                                                              tags = {'sckitlearn':'demo'},
+                                                              decription = testing versions,
+                                                              version_name = version_name,
+                                                              traffic_percentile = 20)
+ # deploy the model and endpoint
+ endpoint = Model.deploy(ws, endpoint_name, [model], inference_config, endpoint_deployment_config, compute)
+ ```
+
+### <a name="update-and-add-versions-to-an-endpoint"></a>更新版本并将其添加到终结点
+
+将另一个版本添加到终结点，并配置转到该版本的评分流量百分比。 有两种类型的版本：控件和处理版本。 可以使用多个处理版本来帮助比较单个控制版本。 
+
+ ```python
+from azureml.core.webservice import AksEndpoint
+
+# add another model deployment to the same endpoint as above
+version_name_add = "versionb" 
+endpoint.create_version(version_name = version_name_add, 
+                        inference_config=inference_config,
+                        models=[model], 
+                        tags = {'modelVersion':'b'}, 
+                        description = "my second version", 
+                        traffic_percentile = 10)
+```
+
+更新现有版本或在终结点中删除现有版本。 您可以更改版本的默认类型、控件类型和流量百分比。 
+ 
+ ```python
+from azureml.core.webservice import AksEndpoint
+
+# update the version's scoring traffic percentage and if it is a default or control type 
+endpoint.update_version(version_name=endpoint.versions["versionb"].name, 
+                        description="my second version update", 
+                        traffic_percentile=40,
+                        is_default=True,
+                        is_control_version_type=True)
+
+# delete a version in an endpoint 
+endpoint.delete_version(version_name="versionb")
+
+```
+
+
 ## <a name="web-service-authentication"></a>Web 服务身份验证
 
 部署到 Azure Kubernetes 服务时，默认情况下启用__基于密钥的__身份验证。 你还可以启用__基于令牌的__身份验证。 基于令牌的身份验证要求客户端使用 Azure Active Directory 帐户来请求身份验证令牌，该令牌用于向部署的服务发出请求。
@@ -253,7 +317,7 @@ print(primary)
 
 ### <a name="authentication-with-tokens"></a>带令牌的身份验证
 
-若要启用令牌身份验证，请在创建或更新部署时设置 @no__t 参数。 下面的示例使用 SDK 启用令牌身份验证：
+若要启用令牌身份验证，请在创建或更新部署时设置 `token_auth_enabled=True` 参数。 下面的示例使用 SDK 启用令牌身份验证：
 
 ```python
 deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, token_auth_enabled=True)

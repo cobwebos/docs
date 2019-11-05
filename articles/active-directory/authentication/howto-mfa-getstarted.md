@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7504d14d522a440572aa25491270c0afc73325a9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 2d80ac949dea3c9d6c3d28d2a343c4ed7bad8983
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554386"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474329"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>规划基于云的 Azure 多重身份验证部署
 
@@ -28,7 +28,7 @@ ms.locfileid: "72554386"
 
 在开始部署 Azure 多重身份验证之前，需要考虑必备项。
 
-| 场景 | 先决条件 |
+| 方案 | 先决条件 |
 | --- | --- |
 | 具有新式身份验证的**仅限云**的标识环境 | **无其他先决条件任务** |
 | **混合**标识方案 | 部署[Azure AD Connect](../hybrid/whatis-hybrid-identity.md) ，并且用户标识与 Azure Active Directory 的本地 Active Directory 域服务同步或联合。 |
@@ -220,14 +220,15 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 1. 使用全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 浏览到“Azure Active Directory”、“条件访问”。
 1. 选择“新策略”。
+   ![创建条件性访问策略，以便在试点组中为 Azure 门户用户启用 MFA](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. 为策略提供一个有意义的名称。
 1. 在“用户和组”下：
    * 在“包括”选项卡上，选中“所有用户”单选按钮
    * 在 "**排除**" 选项卡上，选中 "**用户和组**" 旁边的框，然后选择紧急访问帐户。
-   * 单击“完成”。
+   * 单击“Done”（完成）。
 1. 在“云应用”下，选中“所有云应用”单选按钮。
    * 可选：在“排除”选项卡上，选择组织不需要对其执行 MFA 的云应用。
-   * 单击“完成”。
+   * 单击“Done”（完成）。
 1. 在“条件”部分下：
    * 可选：如果已启用 Azure 标识保护，则可以选择在实施该策略的过程中评估登录风险。
    * 可选：如果已配置受信任的位置或命名的位置，则可以指定在策略中包括或排除这些位置。
@@ -237,8 +238,6 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 1. 跳过“会话”部分。
 1. 将“启用策略”开关设置为“开”。
 1. 单击“创建”。
-
-![创建条件性访问策略，以便在试点组中为 Azure 门户用户启用 MFA](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 
 ## <a name="plan-integration-with-on-premises-systems"></a>规划与本地系统的集成
 
@@ -275,7 +274,7 @@ NPS 扩展在 RADIUS 与基于云的 Azure MFA 之间充当适配器，以提供
 
 选择在未注册 MFA 的用户尝试进行身份验证时所发生的情况。 使用注册表路径中的注册表设置 `REQUIRE_USER_MATCH` `HKLM\Software\Microsoft\AzureMFA` 控制功能行为。 此设置包含一个配置选项。
 
-| 密钥 | Value | 默认 |
+| 键 | 值 | 默认 |
 | --- | --- | --- |
 | `REQUIRE_USER_MATCH` | TRUE/FALSE | 未设置（相当于 TRUE） |
 
@@ -345,7 +344,7 @@ Azure MFA 的报告
 
 Azure 多重身份验证通过 Azure 门户提供报告：
 
-| 报告 | Location | 描述 |
+| 报表 | 位置 | 说明 |
 | --- | --- | --- |
 | 使用情况和欺诈警报 | Azure AD > 登录 | 提供有关总体使用情况、用户摘要和用户详细信息的信息；以及指定日期范围内提交的欺诈警报的历史记录。 |
 

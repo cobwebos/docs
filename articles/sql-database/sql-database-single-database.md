@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: c5de4277915e71763f034596d372554e4f88e204
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 2f55ad795cc76d59581b25ca60a1c89e7db96b04
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316658"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496010"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>什么是 Azure SQL 数据库中的单一数据库
 
@@ -29,7 +29,7 @@ ms.locfileid: "71316658"
 
 ## <a name="dynamic-scalability"></a>动态可伸缩性
 
-可以在无服务器（预览版）计算层级中以低成本构建第一个基于小型单一数据库的应用，或者在预配的计算层级中构建小型计算大小。 可以根据解决方案的需要，随时以手动或编程方式更改[计算或服务层级](sql-database-single-database-scale.md)。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
+可以在无服务器计算层的小型单一数据库中构建第一个应用，或者在预配的计算层中生成较小的计算大小。 可以根据解决方案的需要，随时以手动或编程方式更改[计算或服务层级](sql-database-single-database-scale.md)。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
 
 ## <a name="single-databases-and-elastic-pools"></a>单一数据库和弹性池
 
@@ -50,12 +50,12 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 
 有关详细信息，请参阅[解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异](sql-database-transact-sql-information.md)。
 
-## <a name="security"></a>安全性
+## <a name="security"></a>“安全”
 
 SQL 数据库提供一系列[内置安全性和符合性](sql-database-security-overview.md)功能，帮助应用程序满足各种安全性和符合性要求。
 
 > [!IMPORTANT]
-> Azure SQL 数据库（所有部署选项）已通过了许多合规性标准的认证。 有关详细信息, 请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), 你可以在其中找到最新的 SQL 数据库符合性认证列表。
+> Azure SQL 数据库（所有部署选项）已通过了许多符合性标准的认证。 有关详细信息，请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，你可以在其中找到最新的 SQL 数据库符合性认证列表。
 
 ## <a name="next-steps"></a>后续步骤
 

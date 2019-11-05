@@ -1,21 +1,21 @@
 ---
-title: Azure 数据共享预览版术语
-description: 了解用于描述 Azure 数据共享预览中使用的资源的常见术语（数据访问接口、数据使用者、数据共享、共享订阅、快照、邀请、收件人。）
+title: Azure Data Share 术语
+description: 了解用于描述 Azure 数据共享中使用的资源（数据访问接口、数据使用者、数据共享、共享订阅、快照、邀请、收件人）的常用术语。
+ms.service: data-share
 author: joannapea
 ms.author: joanpo
-ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: dd3235b7d87d8e02f44a440741b90f675263d147
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 33532380d8f98df44029eeea998130d1da5fdafd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166275"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468556"
 ---
-# <a name="azure-data-share-preview-concepts"></a>Azure 数据共享预览概念 
+# <a name="azure-data-share-concepts"></a>Azure 数据共享概念 
 
-Azure 数据共享预览引入了一些与数据共享相关的新术语。 本文介绍了在整个服务中可能会看到的一些常用术语。 
+Azure 数据共享引入了一些与数据共享相关的新术语。 本文介绍了在整个服务中可能会看到的一些常用术语。 
 
 ## <a name="data-provider"></a>数据访问接口
 
@@ -64,4 +64,3 @@ Azure 数据共享预览引入了一些与数据共享相关的新术语。 本�
 ## <a name="next-steps"></a>后续步骤
 
 若要了解如何开始共享数据，请继续阅读[共享数据](share-your-data.md)教程。
-

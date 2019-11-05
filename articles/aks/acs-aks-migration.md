@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: 66f76a8a706f60df786786cbd1ce00b7eafd8d7e
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 84e0af89e2b3247bc922ab84286a79a0934323a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097885"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472999"
 ---
 # <a name="migrate-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>从 Azure 容器服务 (ACS) 迁移到 Azure Kubernetes 服务 (AKS)
 
@@ -28,7 +28,7 @@ ACS 与 AKS 之间存在一些会影响迁移的重要差异。 在执行任何�
     * 非托管磁盘必须在转换之后才可附加到 AKS 节点。
     * Azure 磁盘的自定义 `StorageClass` 对象必须从 `unmanaged` 更改为 `managed`。
     * 任何 `PersistentVolumes` 应使用 `kind: Managed`。
-* AKS 支持[多个节点池](https://docs.microsoft.com/azure/aks/use-multiple-node-pools)（当前为预览版）。
+* AKS 支持[多个节点池](https://docs.microsoft.com/azure/aks/use-multiple-node-pools)。
 * 基于 Windows Server 的节点当前在 AKS 中为[预览版](https://azure.microsoft.com/blog/kubernetes-on-azure/)。
 * AKS 支持有限的一组[区域](https://docs.microsoft.com/azure/aks/quotas-skus-regions)。
 * AKS 是带有托管 Kubernetes 控制平面的托管服务。 如果以前修改了 ACS 主节点的配置，则现在可能需要修改应用程序。
@@ -45,9 +45,9 @@ ACS 与 AKS 之间存在一些会影响迁移的重要差异。 在执行任何�
 
 尽管 AKS 会管理 Kubernetes 控制平面，但你仍需定义要包含在新群集中的节点的大小和数目。 假设你要在 ACS 与 AKS 之间设置 1 对 1 的映射，则需要捕获现有的 ACS 节点信息。 新建 AKS 群集时将要使用此数据。
 
-例如：
+示例：
 
-| 姓名 | Count | VM 大小 | 操作系统 |
+| 名称 | 计数 | VM 大小 | 操作系统 |
 | --- | --- | --- | --- |
 | agentpool0 | 3 | Standard_D8_v2 | Linux |
 | agentpool1 | 1 | Standard_D2_v2 | Windows |
@@ -137,7 +137,7 @@ kubectl get deployment -o=yaml --export > deployments.yaml
    > [!NOTE]
    > 在 GitHub 上的 [Azure/AKS](https://github.com/Azure/AKS/tree/master/examples/vnet) 存储库中找到 AKS 的示例 Azure 资源管理器模板。
 
-2. 对 YAML 定义进行任何必要的更改。 例如，将 `apps/v1beta1` 替换为 `Deployments` 的 `apps/v1`。
+2. 对 YAML 定义进行任何必要的更改。 例如，将 `apps/v1beta1` 替换为 `apps/v1` 的 `Deployments`。
 
 3. 将卷从 ACS 群集[迁移](#migrating-persistent-volumes)到 AKS 群集（可选步骤）。
 

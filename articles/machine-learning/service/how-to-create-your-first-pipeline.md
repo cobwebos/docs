@@ -11,16 +11,17 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: fe4a2082647ef1325d03ce4eec428ed1579704c5
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: MT
+ms.openlocfilehash: 373713cc92379236385024beff201d16fbbfd4b5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755987"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497051"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure 机器学习 SDK 中创建和运行机器学习管道
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何使用 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 创建、发布、运行和跟踪[机器学习管道](concept-ml-pipelines.md)。  使用**ML 管道**创建一个工作流，该工作流将拼结多个 ML 阶段，然后将该管道发布到 Azure 机器学习工作区，以便以后访问或与他人共享。  ML 管道非常适合用于批处理评分方案，使用各种计算，重复使用步骤，而不是重新运行，以及与他人共享 ML 工作流。 
+本文介绍如何使用 [Azure 机器学习 SDK](concept-ml-pipelines.md) 创建、发布、运行和跟踪[机器学习管道](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。  使用**ML 管道**创建一个工作流，该工作流将拼结多个 ML 阶段，然后将该管道发布到 Azure 机器学习工作区，以便以后访问或与他人共享。  ML 管道非常适合用于批处理评分方案，使用各种计算，重复使用步骤，而不是重新运行，以及与他人共享 ML 工作流。 
 
 虽然你可以使用一种称为[Azure 管道](https://docs.microsoft.com/azure/devops/pipelines/targets/azure-machine-learning?context=azure%2Fmachine-learning%2Fservice%2Fcontext%2Fml-context&view=azure-devops&tabs=yaml)的不同类型的管道来实现 ML 任务的 CI/CD 自动化，但这种类型的管道永远不会存储在工作区中。 [比较这些不同的管道](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use)。
 
@@ -30,13 +31,17 @@ ML 管道的每个阶段（如数据准备和模型定型）都可以包含一�
 
 ML 管道使用远程计算目标进行计算，并使用与该管道关联的中间数据和最终数据的存储。 它们可在支持的[Azure 存储](https://docs.microsoft.com/azure/storage/)位置读取和写入数据。
 
-如果还没有 Azure 订阅，可以在开始前创建一个免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
+如果还没有 Azure 订阅，请在开始前创建免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 
 ## <a name="prerequisites"></a>必备组件
 
 * 创建用于保存所有管道资源的 [Azure 机器学习工作区](how-to-manage-workspace.md)。
 
-* [配置开发环境](how-to-configure-environment.md)以安装 Azure 机器学习 SDK，或使用已安装 Sdk 的[笔记本 VM](tutorial-1st-experiment-sdk-setup.md#azure) 。
+* [配置开发环境](how-to-configure-environment.md)以安装 Azure 机器学习 sdk，或使用已安装 sdk 的[Azure 机器学习计算实例](concept-compute-instance.md)。
+
+> [!NOTE]
+> 计算实例仅适用于区域为**美国中北部**或**英国南部**的工作区。
+>如果你的工作区在任何其他区域，你可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm) 。 
 
 首先附加工作区：
 
@@ -113,7 +118,7 @@ output_data1 = PipelineData(
 
 ## <a name="set-up-compute-target"></a>设置计算目标
 
-在 Azure 机器学习中，术语 "computes__ （或__计算目标__）" 是指在机器学习管道中执行计算步骤的计算机或群集。   有关计算目标的完整列表以及如何创建计算目标并将其附加到工作区的详细信息，请参阅[模型训练的计算目标](how-to-set-up-training-targets.md)。  无论是在训练模型还是运行管道步骤，创建和/或附加计算目标的过程都是相同的。 创建并附加计算目标后，请使用[管道步骤](#steps)中的 `ComputeTarget` 对象。
+在 Azure 机器学习中，术语 "computes__ （或__计算目标__）" 是指在机器学习管道中执行计算步骤的计算机或群集。   有关计算目标的完整列表以及如何创建计算目标并将其附加到工作区的详细信息，请参阅[模型训练的计算目标](how-to-set-up-training-targets.md)。  无论是在训练模型还是运行管道步骤，创建和/或附加计算目标的过程都是相同的。 创建并附加计算目标后，请使用`ComputeTarget`管道步骤[中的 ](#steps) 对象。
 
 > [!IMPORTANT]
 > 内部远程作业不支持对计算目标执行管理操作。 由于机器学习管道作为远程作业提交，因此请勿对管道内的计算目标使用管理操作。
@@ -325,7 +330,7 @@ pipeline1 = Pipeline(workspace=ws, steps=steps)
 提交管道时，Azure 机器学习会检查每个步骤的依赖项，并上传指定的源目录的快照。 如果未指定源目录，则上传当前的本地目录。 快照也作为工作区试验的一部分存储。
 
 > [!IMPORTANT]
-> 若要防止文件包含在快照中，请在目录中创建一个[.gitignore](https://git-scm.com/docs/gitignore)或 `.amlignore` 文件，并将文件添加到其中。 @No__t_0 文件使用与[.gitignore](https://git-scm.com/docs/gitignore)文件相同的语法和模式。 如果这两个文件都存在，则 `.amlignore` 文件优先。
+> 若要防止文件包含在快照中，请在目录中创建一个[.gitignore](https://git-scm.com/docs/gitignore)或 `.amlignore` 文件，并将文件添加到其中。 `.amlignore` 文件使用与[.gitignore](https://git-scm.com/docs/gitignore)文件相同的语法和模式。 如果这两个文件都存在，则 `.amlignore` 文件优先。
 >
 > 有关详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshots)。
 
@@ -410,26 +415,26 @@ response = requests.post(published_pipeline1.endpoint,
 ### <a name="view-results-of-a-published-pipeline"></a>查看已发布管道的结果
 
 查看所有已发布管道的列表及其运行详细信息：
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录到[Azure 机器学习 studio](https://ml.azure.com)。
 
 1. [查看工作区](how-to-manage-workspace.md#view)以查找管道列表。
  ![机器学习管道列表](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. 选择特定的管道以查看运行结果。
 
-[工作区登陆页面（预览版）](https://ml.azure.com)中也提供了这些结果。
+[Azure 机器学习 studio]] （ https://ml.azure.com)中的工作区也提供这些结果。
 
 ### <a name="disable-a-published-pipeline"></a>禁用已发布的管道
 
 若要从已发布的管道列表中隐藏管道，请将其禁用：
 
 ```
-# Get the pipeline by using its ID from the Azure portal
+# Get the pipeline by using its ID from Azure Machine Learning studio
 p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 
-您可以使用 `p.enable()` 再次启用它。 有关详细信息，请参阅[PublishedPipeline 类](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py)引用。
+您可以使用 `p.enable()`再次启用它。 有关详细信息，请参阅[PublishedPipeline 类](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py)引用。
 
 
 ## <a name="caching--reuse"></a>缓存 & 重用  

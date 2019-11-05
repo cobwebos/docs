@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/08/2019
-ms.openlocfilehash: 27988edaf9d6fe70288352b0ba45945e32976d4d
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 10/25/2019
+ms.openlocfilehash: 6590b6c3ecf1efc43822a4fefab79cdc7f624dcd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034637"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496979"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>将模型部署到 Azure 容器实例
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 了解如何使用 Azure 机器学习将模型部署为 Azure 容器实例（ACI）上的 web 服务。 如果满足以下条件之一，请使用 Azure 容器实例：
 
@@ -26,7 +27,7 @@ ms.locfileid: "71034637"
 
 有关 ACI 的配额和区域可用性的详细信息，请参阅[Azure 容器实例的配额和区域可用性](https://docs.microsoft.com/azure/container-instances/container-instances-quotas)一文。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -38,11 +39,11 @@ ms.locfileid: "71034637"
 
     * `ws`-设置为你的工作区。
     * `model`-设置为已注册的模型。
-    * `inference_config`-将设置为模型的推理配置。
+    * `inference_config`-设置为模型的推理配置。
 
     有关设置这些变量的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-- 本文中的__CLI__代码段假定您已创建一个`inferenceconfig.json`文档。 有关创建此文档的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
+- 本文中的__CLI__代码段假设你已创建 `inferenceconfig.json` 文档。 有关创建此文档的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 ## <a name="deploy-to-aci"></a>部署到 ACI
 
@@ -68,7 +69,7 @@ print(service.state)
 
 ### <a name="using-the-cli"></a>使用 CLI
 
-若要使用 CLI 进行部署, 请使用以下命令。 替换`mymodel:1`为注册的模型的名称和版本。 替换`myservice`为要为此服务提供的名称:
+若要使用 CLI 进行部署，请使用以下命令。 将 `mymodel:1` 替换为已注册的模型的名称和版本。 将 `myservice` 替换为要为此服务提供的名称：
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json

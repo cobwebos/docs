@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 8a0fe871685f2a140cd8272d93f49f594cd2c910
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 53d656d8d39c71c813d7dd7a504ec45667bf18b4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947487"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482431"
 ---
 # <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL 中的分布式数据–超大规模（Citus）
 
-本文概述了 Azure Database for PostgreSQL –超大规模（Citus）预览版中的三个表类型。
+本文概述了 Azure Database for PostgreSQL –超大规模（Citus）中的三个表类型。
 它显示分布式表如何存储为分片，以及分片在节点上的放置方式。
 
 ## <a name="table-types"></a>表类型
@@ -51,7 +51,7 @@ ms.locfileid: "71947487"
 
 上一部分介绍了如何将分布式表存储为辅助角色节点上的分片。 本部分将讨论更多技术详细信息。
 
-协调器的 `pg_dist_shard` 元数据表对系统中每个分布式表的每个分片都包含一行。 该行与哈希空间中包含一系列整数（shardminvalue，shardmaxvalue）的分片 ID 匹配。
+协调器的 `pg_dist_shard` 元数据表对于系统中每个分布式表的每个分片都包含一行。 该行与哈希空间中包含一系列整数（shardminvalue，shardmaxvalue）的分片 ID 匹配。
 
 ```sql
 SELECT * from pg_dist_shard;
@@ -64,13 +64,13 @@ SELECT * from pg_dist_shard;
  (4 rows)
 ```
 
-如果协调器节点要确定哪些分片包含 `github_events` 的行，则将对该行中分布列的值进行哈希处理。 然后，该节点检查哪些分片 @ no__t 范围包含该哈希值。 定义这些范围是为了使哈希函数的图像是其不相交的联合。
+如果协调器节点要确定哪些分片包含 `github_events`的行，则将对该行中分布列的值进行哈希处理。 然后，该节点检查哪些分片\'s 范围包含该哈希值。 定义这些范围是为了使哈希函数的图像是其不相交的联合。
 
 ### <a name="shard-placements"></a>分片放置
 
 假设分片102027与相关行相关联。 在其中一个辅助角色中名为 `github_events_102027` 的表中读取或写入该行。 哪个工作线程？ 这完全由元数据表确定。 分片到辅助角色的映射称为分片位置。
 
-协调器节点将查询重写为引用特定表（如 `github_events_102027`）的段，并在相应的辅助角色上运行这些片段。 下面是在幕后运行的查询示例，用于查找包含分片 ID 102027 的节点。
+协调器节点将查询重写为引用特定表（如 `github_events_102027`）的片段，并在相应的辅助角色上运行这些片段。 下面是在幕后运行的查询示例，用于查找包含分片 ID 102027 的节点。
 
 ```sql
 SELECT

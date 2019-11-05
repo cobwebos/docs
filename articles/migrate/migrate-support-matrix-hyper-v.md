@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 0964dac6b4f381e2ec52bd9ec078741d0ee85712
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: dd100e2390cdd2731df498379e376bde4cf2b87d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802182"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498700"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>用于 Hyper-V 评估和迁移的支持矩阵
 
@@ -35,26 +35,7 @@ ms.locfileid: "72802182"
 --- | ---
 Azure 权限 | 你需要订阅中的 "参与者" 或 "所有者" 权限才能创建 Azure Migrate 项目。
 Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。 Azure 订阅中可以有多个项目。 项目可以包括 VMware Vm 和 Hyper-v Vm，最高可达评估限制。
-地理位置 | 你可以在多个地理区域中创建 Azure Migrate 项目。 虽然你可以在特定地理区域创建项目，但你可以为其他目标位置评估或迁移计算机。 项目地域仅用于存储已发现的元数据。
-
-  **地域** | **元数据存储位置**
-  --- | ---
-  Azure Government | 美国弗吉尼亚州政府
-  亚太 | 东亚或东南亚
-  澳大利亚 | 澳大利亚东部或澳大利亚东南部
-  巴西 | 巴西南部
-  加拿大 | 加拿大中部或加拿大东部
-  欧洲 | 欧洲北部或欧洲西部
-  法国 | 法国中部
-  印度 | 印度中部或印度南部
-  日本 |  日本东部或日本西部
-  韩国 | 韩国中部或韩国南部
-  英国 | 英国南部或英国西部
-  美国 | 美国中部或美国西部2
-
-
- > [!NOTE]
- > Azure 政府版支持目前仅适用于[较旧版本](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions)的 Azure Migrate。
+地理位置 | [查看](migrate-support-matrix.md#supported-geographies)支持的地理位置。
 
 
 ## <a name="assessment-hyper-v-host-requirements"></a>评估-Hyper-v 主机要求
@@ -63,7 +44,7 @@ Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。 Azure 订阅�
 | :-------------------       | :------------------- |
 | **主机部署**       | Hyper-v 主机可以是独立的，也可以部署到群集中。 |
 | **权限**           | 你需要在 Hyper-v 主机上具有管理员权限。 <br/> 或者，如果不想分配管理员权限，请创建本地或域用户帐户，并将用户添加到这些组-远程管理用户、Hyper-v 管理员和性能监视器用户。 |
-| **主机操作系统** | Windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2。<br/> 不能访问运行 Windows Server 2012 的 Hyper-V 主机上的 VM。 |
+| **主机操作系统** | Windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2。<br/> 无法评估位于运行 Windows Server 2012 的 Hyper-v 主机上的 Vm。 |
 | **PowerShell 远程处理**   | 必须在每个主机上启用。 |
 | **Hyper-v 副本**       | 如果使用 Hyper-v 副本（或具有具有相同 VM 标识符的多个 Vm），并使用 Azure Migrate 发现原始 Vm 和复制的 Vm，则 Azure Migrate 生成的评估可能不准确。 |
 
@@ -104,7 +85,7 @@ Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。 Azure 订阅�
 **URL** | **详细信息**  
 --- | ---
 *.portal.azure.com | 导航到 Azure 门户
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | 登录 Azure 订阅
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | 登录到 Azure 订阅
 *.microsoftonline.com <br/> *.microsoftonline-p.com | 为设备到服务通信创建 Azure Active Directory 应用程序。
 management.azure.com | 为设备到服务通信创建 Azure Active Directory 应用程序。
 dc.services.visualstudio.com | 日志记录和监视
@@ -141,7 +122,7 @@ https://download.microsoft.com/download/* | 允许从 Microsoft 下载站点下�
 | **操作系统** | Azure 支持的所有[Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)操作系统。 |
 | **权限**           | 需要在要评估的每个 Hyper-v VM 上都有管理员权限。 |
 | **Integration Services**       | [Hyper-v Integration Services](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services)必须在你评估的 vm 上运行，才能捕获操作系统信息。 |
-| **Azure 所需的更改** | 某些 VM 可能需要经过更改才能在 Azure 中运行。 Azure Migrate 会自动对以下操作系统进行这些更改：<br/> -Red Hat Enterprise Linux 6.5 +、7.0 +<br/> -CentOS 6.5 +、7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8<br/><br/> 对于其他操作系统，需要在迁移之前手动进行调整。 相关文章包含有关如何执行此操作的说明。 |
+| **Azure 所需的更改** | 某些 Vm 可能需要更改才能在 Azure 中运行。 Azure Migrate 会自动对以下操作系统进行这些更改：<br/> -Red Hat Enterprise Linux 6.5 +、7.0 +<br/> -CentOS 6.5 +、7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8<br/><br/> 对于其他操作系统，需要在迁移之前手动进行调整。 相关文章包含有关如何执行此操作的说明。 |
 | **Linux 启动**                 | 如果/boot 位于专用分区上，则它应驻留在 OS 磁盘上，而不会分布在多个磁盘上。<br/> 如果/boot 是根（/）分区的一部分，则 "/" 分区应在 OS 磁盘上，而不是在其他磁盘上。 |
 | **UEFI 启动**                  | Azure 中迁移的 VM 将自动转换为 BIOS 启动 VM。 VM 应仅运行 Windows Server 2012 和更高版本。 OS 磁盘最多可以有5个分区或更少，操作系统磁盘的大小应小于 300 GB。
   |
@@ -169,8 +150,8 @@ https://download.microsoft.com/download/* | 允许从 Microsoft 下载站点下�
 --- | ---
 login.microsoftonline.com | 使用 Active Directory 进行访问控制和标识管理。
 *.backup.windowsazure.com | 复制数据传输和协调。
-\* .hypervrecoverymanager.windowsazure.com | 连接到 Azure Migrate 服务 Url。
-\* .blob.core.windows.net | 将数据上传到存储帐户。
+*.hypervrecoverymanager.windowsazure.com | 连接到 Azure Migrate 服务 Url。
+*.blob.core.windows.net | 将数据上传到存储帐户。
 dc.services.visualstudio.com | 上传用于内部监视的应用日志。
 time.windows.com | 验证系统与全局时间之间的时间同步。
 

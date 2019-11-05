@@ -7,22 +7,22 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: a3c25553e7abbe39c00407e8000880dc99056bcd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ccc3da6f2dd49775ff4d4486fcd2af9f08a396d6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172983"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475924"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
-Azure 专用终结点是一个网络接口，该接口将你私下并安全地连接到由 Azure 专用链接提供支持的服务。 专用终结点使用 VNet 中的专用 IP 地址，从而有效地将服务引入 VNet。 服务可以是 azure 服务，例如 Azure 存储、SQL 等，也可以是你自己的[专用链接服务](private-link-service-overview.md)。
+Azure 专用终结点是一个网络接口，该接口将你私下并安全地连接到由 Azure 专用链接提供支持的服务。 专用终结点使用 VNet 中的专用 IP 地址，从而有效地将服务引入 VNet。 服务可以是 azure 服务，例如 Azure 存储、Azure Cosmos DB、SQL 等，也可以是你自己的[专用链接服务](private-link-service-overview.md)。
   
 ## <a name="private-endpoint-properties"></a>私有终结点属性 
  专用终结点指定以下属性： 
 
 
-|properties  |描述 |
+|属性  |说明 |
 |---------|---------|
 |名称    |    资源组中的唯一名称。      |
 |子网    |  要从虚拟网络部署和分配专用 IP 地址的子网。 如需子网要求，请参阅本文中的限制部分。         |
@@ -57,7 +57,7 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
 |**Azure SQL 数据仓库** | Microsoft.Sql/servers    |  Sql Server （sqlServer）        |
 |**Azure 存储**  | Microsoft.Storage/storageAccounts    |  Blob （blob、blob_secondary）<BR> Table （table，table_secondary）<BR> Queue （queue，queue_secondary）<BR> 文件（file，file_secondary）<BR> Web （web、web_secondary）        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  Blob （blob、blob_secondary）       |
- 
+|**Azure Cosmos DB** | AzureCosmosDB/databaseAccounts | Sql、MongoDB、Cassandra、Gremlin、表|
  
 ## <a name="network-security-of-private-endpoints"></a>专用终结点的网络安全 
 使用 Azure 服务的专用终结点时，流量将受到特定专用链接资源的保护。 平台会执行访问控制来验证仅到达指定的专用链接资源的网络连接。 若要访问同一 Azure 服务中的其他资源，需要额外的专用终结点。 
@@ -107,9 +107,12 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
 |存储帐户（storageAccounts/）   |    文件（file，file_secondary）      |    privatelink.file.core.windows.net      |
 |存储帐户（storageAccounts/）     |  Web （web、web_secondary）        |    privatelink.web.core.windows.net      |
 |Data Lake 文件系统 Gen2 （storageAccounts/）  |  Data Lake 文件系统 Gen2 （dfs、dfs_secondary）        |     privatelink.dfs.core.windows.net     |
-||||
+|Azure Cosmos DB （AzureCosmosDB/databaseAccounts）|SQL |privatelink.documents.azure.com|
+|Azure Cosmos DB （AzureCosmosDB/databaseAccounts）|MongoDB |privatelink.mongo.cosmos.azure.com|
+|Azure Cosmos DB （AzureCosmosDB/databaseAccounts）|Cassandra|privatelink.cassandra.cosmos.azure.com|
+|Azure Cosmos DB （AzureCosmosDB/databaseAccounts）|Gremlin |privatelink.gremlin.cosmos.azure.com|
+|Azure Cosmos DB （AzureCosmosDB/databaseAccounts）|表|privatelink.table.cosmos.azure.com|
  
-
 Azure 会在公共 DNS 上创建规范名称 DNS 记录（CNAME），以将解析重定向到建议的域名。 你将能够用专用终结点的专用 IP 地址替代解析。 
  
 您的应用程序不需要更改连接 URL。 尝试使用公共 DNS 进行解析时，DNS 服务器现在会解析为你的专用终结点。 此过程不会影响你的应用程序。 
@@ -119,7 +122,7 @@ Azure 会在公共 DNS 上创建规范名称 DNS 记录（CNAME），以将解�
 下表列出了使用专用终结点时的已知限制： 
 
 
-|限制 |描述 |缓解措施  |
+|升级到 V12 |说明 |缓解措施  |
 |---------|---------|---------|
 |网络安全组（NSG）规则和用户定义的路由不适用于专用终结点    |专用终结点不支持 NSG。 尽管包含专用终结点的子网可以有与之关联的 NSG，但这些规则对专用终结点处理的流量不起作用。 必须[禁用网络策略强制](disable-private-endpoint-network-policy.md)，才能在子网中部署专用终结点。 NSG 仍在同一子网上托管的其他工作负荷上强制实施。 任何客户端子网上的路由都将使用/32 前缀，更改默认路由行为时需要类似的 UDR  | 在源客户端上使用 NSG 规则控制流量。 部署具有/32 前缀的各个路由以替代专用终结点路由        |
 |  不支持仅具有专用终结点的对等互连虚拟网络   |   不支持在不使用任何其他工作负荷的情况下连接到对等互连虚拟网络上的专用终结点       | 在对等互连虚拟网络上部署单个 VM，以启用连接 |
@@ -128,7 +131,8 @@ Azure 会在公共 DNS 上创建规范名称 DNS 记录（CNAME），以将解�
 
 ## <a name="next-steps"></a>后续步骤
 - [使用门户创建 SQL 数据库服务器的专用终结点](create-private-endpoint-portal.md)
-- [使用 PowerShell 创建 SQL 数据库服务器的专用终结点](create-private-endpoint-powershell.md)
+- [使用 PowerShell 为 SQL 数据库服务器创建专用终结点](create-private-endpoint-powershell.md)
 - [使用 CLI 创建 SQL 数据库服务器的专用终结点](create-private-endpoint-cli.md)
-- [使用门户创建存储帐户的专用终结点](create-private-endpoint-storage-portal.md)
+- [使用门户为存储帐户创建专用终结点](create-private-endpoint-storage-portal.md)
+- [使用门户创建 Azure Cosmos 帐户的专用终结点](../cosmos-db/how-to-configure-private-endpoints.md)
 - [使用 Azure PowerShell 创建自己的专用链接服务](create-private-link-service-powershell.md)

@@ -1,26 +1,25 @@
 ---
-title: 常见错误和警告-Azure 搜索
-description: 本文提供了有关在 Azure 搜索中进行 AI 扩充时可能遇到的常见错误和警告的信息和解决方案。
-services: search
-manager: heidist
+title: 常见错误和警告
+titleSuffix: Azure Cognitive Search
+description: 本文提供了有关在 Azure 认知搜索中的 AI 扩充期间可能遇到的常见错误和警告的信息和解决方案。
+manager: nitinme
 author: amotley
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 09/18/2019
 ms.author: abmotley
-ms.openlocfilehash: 6455ac9dbe0933f6d46d1137e0a19dcc388d8c80
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
-ms.translationtype: MT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 540e72a4472fce626822f0b22bfac11a23aea205
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73243037"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466778"
 ---
-# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Azure 搜索中的 AI 扩充管道的常见错误和警告
+# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充管道的常见错误和警告
 
-本文提供了有关在 Azure 搜索中进行 AI 扩充时可能遇到的常见错误和警告的信息和解决方案。
+本文提供了有关在 Azure 认知搜索中的 AI 扩充期间可能遇到的常见错误和警告的信息和解决方案。
 
-## <a name="errors"></a>Errors
+## <a name="errors"></a>错误
 当错误计数超过["maxFailedItems"](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures)时，索引将停止。 
 
 如果希望索引器忽略这些错误（并跳过 "失败的文档"），请考虑更新 `maxFailedItems` 和 `maxFailedItemsPerBatch`，如[此处](https://docs.microsoft.com/rest/api/searchservice/create-indexer#general-parameters-for-all-indexers)所述。
@@ -57,7 +56,7 @@ ms.locfileid: "73243037"
 | 缺少文档键 | 文档键不能为空或为空 | 确保所有文档都具有有效的文档键 |
 | 文档键无效 | 文档键的长度不能超过1024个字符 | 修改文档键以满足验证要求。 |
 | 未能将字段映射应用于字段 | 无法将映射函数 `'functionName'` 应用于字段 `'fieldName'`。 数组不能为 null。 参数名称：字节 | 仔细检查在索引器上定义的[字段映射](search-indexer-field-mappings.md)，并将与已失败文档的指定字段的数据进行比较。 可能需要修改字段映射或文档数据。 |
-| 无法读取字段值 | 无法在索引 `'fieldIndex'` 读取列 `'fieldName'` 的值。 在接收来自服务器的结果时发生传输级错误。 （提供程序： TCP 提供程序，错误： 0-现有连接被远程主机强行关闭。） | 这些错误通常是由于数据源的基础服务的意外连接问题导致的。 稍后再次尝试通过索引器运行文档。 |
+| 无法读取字段值 | 无法在索引 `'fieldIndex'`读取列 `'fieldName'` 的值。 在接收来自服务器的结果时发生传输级错误。 （提供程序： TCP 提供程序，错误： 0-现有连接被远程主机强行关闭。） | 这些错误通常是由于数据源的基础服务的意外连接问题导致的。 稍后再次尝试通过索引器运行文档。 |
 
 ### <a name="could-not-execute-skill"></a>无法执行技能
 索引器无法在技能组合中运行技能。
@@ -107,7 +106,7 @@ ms.locfileid: "73243037"
 
 可以为 `timeout` 参数设置的最大值为230秒。  如果自定义技能无法在230秒内持续执行，则可以考虑降低自定义技能的 `batchSize`，使其在单个执行中处理的文档更少。  如果已将 `batchSize` 设置为1，则需要重写可在230秒内执行的技能，或将其拆分为多个自定义技能，以便任何单个自定义技能的执行时间最大为230秒。 有关详细信息，请查看[自定义技能文档](cognitive-search-custom-skill-web-api.md)。
 
-### <a name="could-not-mergeorupload--delete-document-to-the-search-index"></a>无法 "`MergeOrUpload`" |"`Delete`" 文档到搜索索引
+### <a name="could-not-mergeorupload--delete-document-to-the-search-index"></a>不能 "`MergeOrUpload`" |"`Delete`" 文档到搜索索引
 
 文档已读取并处理，但索引器无法将其添加到搜索索引。 这可能是由于以下原因导致的：
 
@@ -118,6 +117,7 @@ ms.locfileid: "73243037"
 | 连接到目标索引时出现问题（重试后仍存在），因为该服务处于其他负载下，如查询或索引。 | 未能建立与更新索引的连接。 搜索服务负载过重。 | [向上缩放搜索服务](search-capacity-planning.md)
 | 搜索服务正在为服务更新进行修补，或者正在重新配置拓扑。 | 未能建立与更新索引的连接。 搜索服务当前处于关闭状态，搜索服务正在进行转换。 | 为服务配置至少3个副本，每个[SLA 文档](https://azure.microsoft.com/support/legal/sla/search/v1_0/)99.9% 的可用性
 | 基础计算/网络资源失败（极少） | 未能建立与更新索引的连接。 出现未知错误。 | 将索引器配置为[按计划运行](search-howto-schedule-indexers.md)以从失败状态中选取。
+| 由于网络问题，在超时期限内未确认对目标索引进行的索引请求。 | 未能及时建立与搜索索引的连接。 | 将索引器配置为[按计划运行](search-howto-schedule-indexers.md)以从失败状态中选取。 此外，如果此错误情况持续存在，请尝试降低索引器[批处理大小](https://docs.microsoft.com/rest/api/searchservice/create-indexer#parameters)。
 
 ### <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>由于索引的索引器数据无效，无法为文档编制索引
 
@@ -131,7 +131,7 @@ ms.locfileid: "73243037"
 | 在源文档中发现未知类型。 | 无法为未知类型 "_unknown_" 建立索引 |
 | 在源文档中使用了不兼容的地理点表示法。 | 不支持 WKT 点字符串。 请改用 GeoJson point 文本 |
 
-在所有这些情况下，请参考[支持的数据类型（Azure 搜索）](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)和[Azure 搜索中索引器的数据类型映射](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search)，以确保正确生成索引架构，并设置适当的[索引器字段映射](search-indexer-field-mappings.md)。 错误消息将包括有助于跟踪不匹配源的详细信息。
+在所有这些情况下，请参考索引器[支持的数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)和[数据类型映射](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search)，以确保正确生成索引架构，并设置相应的[索引器字段映射](search-indexer-field-mappings.md)。 错误消息将包括有助于跟踪不匹配源的详细信息。
 
 ### <a name="could-not-process-document-within-indexer-max-run-time"></a>无法在索引器最大运行时间内处理文档
 
@@ -143,7 +143,7 @@ ms.locfileid: "73243037"
 ### <a name="could-not-execute-skill-because-a-skill-input-was-invalid"></a>无法执行技能，因为技能输入无效
 由于缺少技能的输入、错误的类型或无效，索引器无法在技能组合中运行技能。
 
-认知技能需要输入和可选输入。 例如，[关键短语提取技能](cognitive-search-skill-keyphrases.md)`text`、`languageCode` 和无可选输入提供两个必需的输入。 如果任何必需的输入无效，则会跳过该技能，并生成警告。 跳过的技能不会生成任何输出，因此，如果其他技能使用跳过的技能的输出，则他们可能会生成其他警告。
+认知技能需要输入和可选输入。 例如，[关键短语提取技能](cognitive-search-skill-keyphrases.md)`text`、`languageCode`和无可选输入提供两个必需的输入。 如果任何必需的输入无效，则会跳过该技能，并生成警告。 跳过的技能不会生成任何输出，因此，如果其他技能使用跳过的技能的输出，则他们可能会生成其他警告。
 
 如果要在缺少输入的情况下提供默认值，则可以使用[条件技能](cognitive-search-skill-conditional.md)生成默认值，然后使用[条件技能](cognitive-search-skill-conditional.md)的输出作为技能输入。
 
@@ -168,7 +168,7 @@ ms.locfileid: "73243037"
 | 技能语言代码输入无效 | 技能输入 `languageCode` 具有以下语言代码 `X,Y,Z`，其中至少有一个是无效的。 | 请参阅[下面](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid)的详细信息 |
 
 ### <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>技能输入 "languageCode" 具有以下语言代码 "X"、"Y"、"Z"，其中至少有一个是无效的。
-不支持传递到下游技能的可选 `languageCode` 输入的一个或多个值。 如果将[LanguageDetectionSkill](cognitive-search-skill-language-detection.md)的输出传递给后续技能，并且输出包含的语言比这些下游技能支持的语言多，则会发生这种情况。
+不支持传递给下游技能的可选 `languageCode` 输入的一个或多个值。 如果将[LanguageDetectionSkill](cognitive-search-skill-language-detection.md)的输出传递给后续技能，并且输出包含的语言比这些下游技能支持的语言多，则会发生这种情况。
 
 如果你知道数据集全部使用一种语言，则应删除[LanguageDetectionSkill](cognitive-search-skill-language-detection.md)和 `languageCode` 技能输入，并改为使用该技能 `defaultLanguageCode` 技能参数，前提是该技术支持该语言。
 
@@ -195,7 +195,7 @@ ms.locfileid: "73243037"
 ### <a name="skill-input-was-truncated"></a>技能输入已截断
 认知技能限制了一次可以分析的文本长度。 如果这些技能的文本输入超过此限制，我们将截断文本以满足限制，然后对截断后的文本执行扩充。 这意味着将执行该技能，而不是对所有数据执行该技能。
 
-在下面的示例 LanguageDetectionSkill 中，如果 "`'text'` 输入字段超出字符限制，则可能会触发此警告。 可以在[技能文档](cognitive-search-predefined-skills.md)中找到技能输入限制。
+在下面的示例 LanguageDetectionSkill 中，如果 "`'text'`" 输入字段超出字符限制，则可能会触发此警告。 可以在[技能文档](cognitive-search-predefined-skills.md)中找到技能输入限制。
 
 ```json
  {
@@ -225,3 +225,8 @@ ms.locfileid: "73243037"
 可以重写此行为，启用增量进度，并使用 `assumeOrderByHighWatermarkColumn` 配置属性禁止显示此警告。
 
 [有关 Cosmos DB 增量进度和自定义查询的详细信息。](https://go.microsoft.com/fwlink/?linkid=2099593)
+
+### <a name="could-not-map-output-field-x-to-search-index"></a>无法将输出字段 "X" 映射到搜索索引
+引用不存在/null 数据的输出字段映射将为每个文档生成警告，并产生空的索引字段。 若要解决此问题，请仔细检查输出字段映射源路径是否存在拼写错误，或使用[条件技能](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist)设置默认值。
+
+索引器能够在技能组合中运行技能，但 Web API 请求的响应指示在执行过程中出现警告。 查看警告，了解你的数据是如何受影响的，以及是否需要执行操作。

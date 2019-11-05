@@ -1,23 +1,23 @@
 ---
-title: Azure 批处理服务作业
-titleSuffix: Azure Machine Learning Studio
-description: 机器学习工作室作业的 Azure Batch 服务概述。 可以通过批处理池处理创建池，在其中提交批处理作业。
+title: Azure Batch 服务作业
+titleSuffix: Azure Machine Learning Studio (classic)
+description: 机器学习 Studio （经典）作业 Azure Batch 服务的概述。 可以通过批处理池处理创建池，在其中提交批处理作业。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
-ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs'
+ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: 24efa3caba3918a38c09b1c921c600b117dedbc1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1de7ad10a54c34595f69a543843097cee1377067
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751140"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493027"
 ---
-# <a name="azure-batch-service-for-azure-machine-learning-studio-jobs"></a>适用于 Azure 机器学习工作室作业的 Azure Batch 服务
+# <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>Azure 机器学习 Studio （经典）作业的 Azure Batch 服务
 
 机器学习批处理池处理为 Azure 机器学习批处理执行服务提供客户管理的缩放。 适用于机器学习的经典批处理发生在多租户环境中，限制了可以提交的并发作业的数目，作业按先进先出的原则排队处理。 这种不确定性意味着无法准确地预测作业何时会运行。
 
@@ -111,4 +111,4 @@ https://ussouthcentral.services.azureml.net/subscriptions/80c77c7674ba4c8c82294c
 
 | **使用批处理池处理的时机**    | **使用经典批处理的时机**  |
 |---|---|
-|需要运行大量作业<br>或<br/>需要确定作业将立即运行<br/>或<br/>需要吞吐量保证。 例如，需要在给定时段内运行多项作业，且需按需求扩大计算资源。    | 只运行数项作业<br/>And<br/> 不需立即运行作业 |
+|需要运行大量作业<br>或<br/>需要确定作业将立即运行<br/>或<br/>需要吞吐量保证。 例如，需要在给定时段内运行多项作业，且需按需求扩大计算资源。    | 只运行数项作业<br/>且<br/> 不需立即运行作业 |

@@ -1,7 +1,7 @@
 ---
-title: 如何将模型部署到笔记本 Vm
+title: 如何将模型部署到计算实例
 titleSuffix: Azure Machine Learning
-description: 了解如何使用笔记本 Vm 将 Azure 机器学习模型部署为 web 服务。
+description: 了解如何使用计算实例将 Azure 机器学习模型部署为 web 服务。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,47 +9,59 @@ ms.topic: conceptual
 ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
-ms.date: 08/08/2019
-ms.openlocfilehash: 046f998038c47a48a8528bf36d87ac836395eec2
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
-ms.translationtype: MT
+ms.date: 10/25/2019
+ms.openlocfilehash: bb187826250b3edc9ac3d9e36a243d75819a45b3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002827"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496880"
 ---
-# <a name="deploy-a-model-to-notebook-vms"></a>将模型部署到笔记本 Vm
+# <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>将模型部署到 Azure 机器学习计算实例
 
-了解如何使用 Azure 机器学习在笔记本 VM 上将模型部署为 web 服务。 如果满足以下条件之一，则使用笔记本 Vm：
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
+> [!NOTE]
+> 计算实例仅适用于区域为**美国中北部**或**英国南部**的工作区。
+>如果你的工作区在任何其他区域，你可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm) 。  可以使用本文中的步骤，将模型部署到计算实例或笔记本 VM。
+
+了解如何使用 Azure 机器学习将模型作为 web 服务部署到 Azure 机器学习计算实例上。 如果满足以下条件之一，请使用计算实例：
 
 - 你需要快速部署并验证你的模型。
 - 正在测试一个开发中的模型。
 
 > [!TIP]
-> 将模型从笔记本 VM 上的 Jupyter Notebook 部署到同一 VM 上的 web 服务是_本地部署_。 在这种情况下，"本地" 计算机是笔记本 VM。 有关部署的详细信息，请参阅[部署具有 Azure 机器学习的模型](how-to-deploy-and-where.md)。
+> 将模型从计算实例的 Jupyter Notebook 部署到同一 VM 上的 web 服务是_本地部署_。 在这种情况下，"本地" 计算机是计算实例。 有关部署的详细信息，请参阅[部署具有 Azure 机器学习的模型](how-to-deploy-and-where.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-- 一个运行了笔记本 VM 的 Azure 机器学习工作区。 有关详细信息，请参阅[设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
+- 计算实例正在运行的 Azure 机器学习工作区。 有关详细信息，请参阅[设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
 
-## <a name="deploy-to-the-notebook-vms"></a>部署到笔记本 Vm
+## <a name="deploy-to-the-compute-instances"></a>部署到计算实例
 
-笔记本 VM 上包含了演示本地部署的示例笔记本。 使用以下步骤加载笔记本，并将模型部署为 VM 上的 web 服务：
+用于演示本地部署的示例笔记本包含在计算实例上。 使用以下步骤加载笔记本，并将模型部署为 VM 上的 web 服务：
 
-1. 在[Azure 门户](https://portal.azure.com)中，选择 Azure 机器学习笔记本 vm。
+1. 在[Azure 机器学习 studio](https://ml.azure.com)中，选择你的 Azure 机器学习计算实例。
 
-1. 打开子目录，然后打开`how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`。 `samples-*` 打开后，运行笔记本。
+1. 打开 `samples-*` 的子目录，然后打开 `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`。 打开后，运行笔记本。
 
     ![笔记本上运行的本地服务的屏幕截图](media/how-to-deploy-local-container-notebookvm/deploy-local-service.png)
 
-1. 笔记本将显示服务在其上运行的 URL 和端口。 例如， `https://localhost:6789` 。 您还可以运行包含`print('Local service port: {}'.format(local_service.port))`的单元来显示端口。
+1. 笔记本将显示服务在其上运行的 URL 和端口。 例如，`https://localhost:6789`。 还可以运行包含 `print('Local service port: {}'.format(local_service.port))` 的单元格以显示端口。
 
     ![正在运行的本地服务端口的屏幕截图](media/how-to-deploy-local-container-notebookvm/deploy-local-service-port.png)
 
-1. 若要从笔记本 VM 测试服务，请使用`https://localhost:<local_service.port>` URL。 若要从远程客户端测试，请获取在笔记本 VM 上运行的服务的公共 URL。可以使用以下公式来确定公共 URL;`https://<notebookvm_name>-<local_service_port>.<azure_region_of_notebook>.notebooks.azureml.net/score`. 例如， `https://mynotebookvm-6789.eastus2.notebooks.azureml.net/score` 。
+1. 若要从计算实例测试服务，请使用 `https://localhost:<local_service.port>` URL。 若要从远程客户端测试，请获取在计算实例上运行的服务的公共 URL。 可以使用以下公式来确定公共 URL; 
+    * 笔记本 VM： `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score`。 
+    * 计算实例： `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score`。 
+    
+    例如， 
+    * 笔记本 VM： `https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
+    * 计算实例： `https://vm-name-6789.northcentralus.instances.azureml.net/score`
 
 ## <a name="test-the-service"></a>测试服务
 
-若要将示例数据提交到正在运行的服务，请使用以下代码。 将的值`service_url`替换为上一步中的 URL：
+若要将示例数据提交到正在运行的服务，请使用以下代码。 将 `service_url` 的值替换为上一步中的 URL：
 
 ```python
 import requests
@@ -61,7 +73,8 @@ test_sample = json.dumps({'data': [
 test_sample = bytes(test_sample,encoding = 'utf8')
 access_token = "your bearer token"
 headers = {'Content-Type':'application/json', 'Authorization': 'Bearer ' + access_token}
-service_url = "https://mynotebookvm-6789.eastus2.notebooks.azureml.net/score"
+service_url = "https://vm-name-6789.northcentralus.notebooks.azureml.net/score"
+# for a compute instance, the url would be https://vm-name-6789.northcentralus.instances.azureml.net/score
 resp = requests.post(service_url, test_sample, headers=headers)
 print("prediction:", resp.text)
 ```

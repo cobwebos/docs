@@ -1,6 +1,6 @@
 ---
 title: 使用 API 管理管理 web 服务
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: Azure Machine Learning Studio (classic)
 description: 介绍如何使用 API 管理来管理 AzureML Web 服务的指南。 通过定义用户访问权限、使用限制和仪表板监视管理 REST API 终结点。
 services: machine-learning
 ms.service: machine-learning
@@ -10,26 +10,26 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 5b6ece20f67258391e31b941edfc1ec0aa5db98f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 60f890912874cfda993ae45f84fa3d1c04503d00
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279263"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489262"
 ---
-# <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>使用 API 管理以管理 Azure 机器学习工作室 Web 服务
+# <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>使用 API 管理管理 Azure 机器学习 Studio （经典） web 服务
 ## <a name="overview"></a>概述
-本指南介绍如何快速入门，即使用 API 管理来管理 Azure 机器学习工作室 Web 服务。
+本指南演示如何快速开始使用 API 管理来管理 Azure 机器学习 Studio （经典） web 服务。
 
 ## <a name="what-is-azure-api-management"></a>什么是 Azure API 管理？
-Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、使用限制和仪表板监视管理 REST API 终结点。 单击[此处](https://azure.microsoft.com/services/api-management/)获取有关 Azure API 管理的详细信息。 单击[此处](/azure/api-management/import-and-publish)获取如何使用 Azure API 管理的指南。 这份额外指南（作为本指南的依据）涵盖更多主题，包括通知配置、层定价、响应处理、用户身份验证、创建产品、开发人员订阅和使用仪表板。
+Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、使用限制和仪表板监视管理 REST API 终结点。 有关更多详细信息，请参阅[AZURE API 管理站点](https://azure.microsoft.com/services/api-management/)。 若要开始进行 Azure API 管理，请参阅[导入和发布指南](/azure/api-management/import-and-publish)。 这份额外指南（作为本指南的依据）涵盖更多主题，包括通知配置、层定价、响应处理、用户身份验证、创建产品、开发人员订阅和使用仪表板。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要完成本指南，需要：
 
-* 一个 Azure 帐户。 如果没有 Azure 帐户，请单击[此处](https://azure.microsoft.com/pricing/free-trial/)了解有关如何创建免费试用版帐户的详细信息。
-* AzureML 帐户。 如果没有 AzureML 帐户，请单击[此处](https://studio.azureml.net/)了解有关如何创建免费测试版帐户的详细信息。
-* AzureML 实验的工作区、服务和 api_key 均部署为 Web 服务。 单击[此处](create-experiment.md)了解如何创建 AzureML 实验的详细信息。 单击[此处](publish-a-machine-learning-web-service.md)了解如何将 AzureML 实验部署为 Web 服务的详细信息。 另外，附录 A 说明了如何创建并测试简单 AzureML 实验并将其部署为 Web 服务。
+* 一个 Azure 帐户。
+* AzureML 帐户。
+* AzureML 实验的工作区、服务和 api_key 均部署为 Web 服务。 有关如何创建 AzureML 试验的详细信息，请参阅[Studio 快速入门](create-experiment.md)。 有关如何将 Studio （经典）试验部署为 web 服务的信息，请参阅[Studio 部署](publish-a-machine-learning-web-service.md)操作指南，了解有关如何将 AzureML 试验部署为 web 服务的详细信息。 另外，附录 A 说明了如何创建并测试简单 AzureML 实验并将其部署为 Web 服务。
 
 ## <a name="create-an-api-management-instance"></a>创建 API 管理实例
 
@@ -55,14 +55,14 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
 创建 API：
 
-1. 在 Azure 门户中，打开刚刚创建的服务实例。
+1. 在 Azure 门户中，打开创建的服务实例。
 2. 在左侧导航窗格中，选择“API”。
 
    ![api-management-menu](./media/manage-web-service-endpoints-using-api-management/api-management.png)
 
 1. 单击“添加 API”。
 2. 输入“Web API 名称”（本示例使用“AzureML 演示 API”）。
-3. 对于“Web 服务 URL”，请输入“`https://ussouthcentral.services.azureml.net`”。
+3. 对于“Web 服务 URL”，请输入“ **”。** `https://ussouthcentral.services.azureml.net`
 4. 输入“Web API URL 后缀”。 这是客户向服务实例发送请求时使用的 URL 的最后一个部分（本示例使用“azureml-demo”）。
 5. 对于“Web API URL 方案”，请选择“HTTPS”。
 6. 对于“产品”，请选择“初学者”。
@@ -71,7 +71,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
 ## <a name="add-the-operations"></a>添加操作
 
-在发布者门户中将操作添加并配置到 API。 若要访问发布者门户，请在 API 管理服务的 Azure 门户中单击“发布者门户”，依次选择“API”、“操作”，然后单击“添加操作”。
+可以在发布者门户中将操作添加并配置到 API。 若要访问发布者门户，请在 API 管理服务的 Azure 门户中单击“发布者门户”，依次选择“API”、“操作”，然后单击“添加操作”。
 
 ![add-operation](./media/manage-web-service-endpoints-using-api-management/add-an-operation.png)
 
@@ -81,7 +81,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 首先为 AzureML RRS 服务创建一个操作：
 
 1. 对于“HTTP 谓词”，请选择“POST”。
-2. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}`”。
+2. 对于“URL 模板”，请键入“ **”。** `/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}`
 3. 输入“显示名称”（本示例使用“RRS 执行”）。
 
    ![add-rrs-operation-signature](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
@@ -100,7 +100,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
 1. 单击“添加操作”，将一个 BES 操作添加到 API。
 2. 对于“HTTP 谓词”，请选择“POST”。
-3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`”。
+3. 对于“URL 模板”，请键入“ **”。** `/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`
 4. 输入“显示名称”（本示例使用“BES 提交”）。
 5. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
 6. 单击“保存”。
@@ -109,7 +109,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
 1. 单击“添加操作”，将一个 BES 操作添加到 API。
 2. 对于“HTTP 谓词”，请选择“POST”。
-3. 对于“HTTP 谓词”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`”。
+3. 对于“HTTP 谓词”，请键入“ **”。** `/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`
 4. 输入“显示名称”（本示例使用“BES 启动”）。
 6. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
 7. 单击“保存”。
@@ -118,7 +118,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
 1. 单击“添加操作”，将一个 BES 操作添加到 API。
 2. 对于“HTTP 谓词”，请选择“GET”。
-3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`”。
+3. 对于“URL 模板”，请键入“ **”。** `/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`
 4. 输入“显示名称”（本示例使用“BES 状态”）。
 6. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
 7. 单击“保存”。
@@ -127,14 +127,14 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
 1. 单击“添加操作”，将一个 BES 操作添加到 API。
 2. 对于“HTTP 谓词”，请选择“DELETE”。
-3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`”。
+3. 对于“URL 模板”，请键入“ **”。** `/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`
 4. 输入“显示名称”（本示例使用“BES 删除”）。
 5. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
 6. 单击“保存”。
 
 ## <a name="call-an-operation-from-the-developer-portal"></a>从开发人员门户调用操作
 
-可以直接从开发人员门户调用操作，这样可以方便地查看和测试 API 的操作。 此步骤将调用已添加到“AzureML 演示 API”的“RRS 执行”方法。 
+可以直接从开发人员门户调用操作，这样可以方便地查看和测试 API 的操作。 在此步骤中，你将调用已添加到**AzureML 演示 API**的**rr Execute**方法。 
 
 1. 单击“开发人员门户”。
 
@@ -150,9 +150,9 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
 4. 对于“请求参数”，请键入自己的**工作区**和**服务**，为 **apiversion** 键入“2.0”，为 **details** 键入“true”。 可在 AzureML Web 服务仪表板中查找“工作区”和“服务”（请参阅附录 A 中的**测试 Web 服务**）。
 
-   对于“请求标头”，请单击“添加标头”，并键入“Content-Type”和“application/json”。 再次单击“添加标头”，键入“Authorization”和“Bearer \<服务 API-KEY\>”。 可在 AzureML Web 服务仪表板中找到 API-KEY（请参阅附录 A 中的**测试 Web 服务**）。
+   对于“请求标头”，请单击“添加标头”，并键入“Content-Type”和“application/json”。 再次单击“添加标头”，键入“Authorization”和“Bearer **服务 API-KEY**”。 *\<\>* 可在 AzureML Web 服务仪表板中找到 API-KEY（请参阅附录 A 中的**测试 Web 服务**）。
 
-   对于“请求正文”，请键入 `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`。
+   对于“请求正文”，请键入 **。** `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`
 
    ![azureml-demo-api](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 
@@ -214,7 +214,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 ![yes-to-publish](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>测试 Web 服务
-AzureML Web 服务包含 RSS（请求/响应服务）和 BES（批处理执行服务）终结点。 RSS 适用于同步执行。 BES 适用于异步作业执行。 若要通过下面的示例 Python 源测试 Web 服务，可能需要下载并安装 Azure SDK for Python（请参阅：[如何安装 Python](/azure/python/python-sdk-azure-install)）。
+AzureML Web 服务包含 RSS（请求/响应服务）和 BES（批处理执行服务）终结点。 RSS 适用于同步执行。 BES 适用于异步作业执行。 若要通过下面的 Python 源示例测试 Web 服务，可能需要下载并安装 Azure SDK for Python（请参阅[如何安装 Python](/azure/python/python-sdk-azure-install)）。
 
 还需要下面源示例实验的“工作区”、“服务”和“api_key”。 在 Web 服务仪表板中单击实验的“请求/响应”或“批处理执行”，查找工作区和服务。
 

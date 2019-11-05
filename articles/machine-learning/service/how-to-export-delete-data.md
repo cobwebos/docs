@@ -1,24 +1,25 @@
 ---
 title: 导出或删除工作区数据
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 门户、CLI、SDK 和经过身份验证的 REST API 导出或删除工作区。
+description: 了解如何通过 Azure 机器学习 studio、CLI、SDK 和通过身份验证的 REST Api 导出或删除工作区。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-author: ph-com
-ms.author: pahusban
+author: lobrien
+ms.author: laobri
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 18e2ab18dac214e73eaf6ad7dfcb9dbbab0b5cf5
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: d653d1cd719ac59bf6c98bee588c41858052bc61
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002842"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489840"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>导出或删除机器学习服务工作区数据 
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在 Azure 机器学习中，可以使用经过身份验证的 REST API 导出或删除工作区数据。 本文介绍了相关实现方法。
 
@@ -27,7 +28,7 @@ ms.locfileid: "71002842"
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="control-your-workspace-data"></a>控制工作区数据
-通过 Azure 门户、CLI、SDK 和通过身份验证的 REST Api，Azure 机器学习存储的产品内数据可用于导出和删除。 可通过 Azure 隐私门户访问遥测数据。 
+通过 Azure 机器学习 studio、CLI、SDK 和通过身份验证的 REST Api，Azure 机器学习存储的产品内数据可用于导出和删除。 可通过 Azure 隐私门户访问遥测数据。 
 
 在 Azure 机器学习中，个人数据包括运行历史记录文档中的用户信息以及用户与服务之间的一些交互的遥测数据记录。
 
@@ -232,28 +233,27 @@ ms.locfileid: "71002842"
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
 
-## <a name="delete-visual-interface-assets"></a>删除可视界面资产
+## <a name="delete-assets-in-the-designer"></a>在设计器中删除资产
 
-在创建试验的视觉对象界面中，删除各个资产：
+在创建试验的设计器中，删除各个资产：
 
-1. 在左侧，选择要删除的资产类型。
+1. 中转到设计器
 
     ![删除资产](media/how-to-export-delete-data.md/delete-experiment.png)
 
-1. 在列表中，选择要删除的单个资产。
+1. 在列表中，选择要删除的单个管道草案。
 
 1. 在底部选择 "**删除**"。
 
-## <a name="export-visual-interface-data"></a>导出视觉对象接口数据
+## <a name="unregister-data-in-the-designer"></a>在设计器中取消注册数据
 
-在创建试验的视觉对象界面中，导出已添加的数据：
+在创建了实验的设计器中，导出已添加的数据：
 
-1. 在左侧选择 "**数据**"。
+1. 在左侧选择 "**数据集**"。
 
-1. 在顶部，选择 "**我**的数据集" 或 "**示例**" 以找到要导出的数据。
 
-    ![下载数据](media/how-to-export-delete-data.md/download-data.png)
 
-1. 在列表中，选择要导出的单个数据集。
+    ![下载数据](media/how-to-export-delete-data.md/unregister-dataset.png)
 
-1. 在底部选择 "**下载**"。
+1. 在列表中，选择单个数据集，然后单击 "注销"。
+

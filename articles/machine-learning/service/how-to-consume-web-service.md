@@ -11,14 +11,15 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: fda6c72504a75d600931185e224bb46db03e23ed
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e9d262380a8e0769b1191673a7e00eed770f7ab2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374294"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497080"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 将 Azure 机器学习模型部署为 Web 服务可创建 REST API。 可将数据发送到此 API，并接收模型返回的预测。 本文档介绍了如何使用 C#、Go、Java 和 Python 为 Web 服务创建客户端。
 
@@ -78,10 +79,10 @@ Azure 机器学习提供了两种方法来控制对 web 服务的访问。
 
 |身份验证方法|ACI|AKS|
 |---|---|---|
-|密钥|默认情况下禁用| 默认情况下启用|
+|键|默认情况下禁用| 默认已启用|
 |令牌| 不可用| 默认情况下禁用 |
 
-将请求发送到使用密钥或令牌保护的服务时，请使用__Authorization__标头传递密钥或令牌。 密钥或令牌的格式必须为 `Bearer <key-or-token>`，其中 @no__t 为密钥或令牌值。
+将请求发送到使用密钥或令牌保护的服务时，请使用__Authorization__标头传递密钥或令牌。 密钥或令牌的格式必须为 `Bearer <key-or-token>`，其中 `<key-or-token>` 为密钥或令牌值。
 
 #### <a name="authentication-with-keys"></a>密钥身份验证
 
@@ -109,9 +110,9 @@ print(primary)
 * 在部署到 Azure Kubernetes 服务时，令牌身份验证默认情况下处于禁用状态。
 * 在部署到 Azure 容器实例时，令牌身份验证不受支持。
 
-若要控制令牌身份验证，请在创建或更新部署时使用 @no__t 的参数。
+若要控制令牌身份验证，请在创建或更新部署时使用 `token_auth_enabled` 参数。
 
-如果启用了令牌身份验证，则可以使用 `get_token` 方法检索持有者令牌，并确保令牌过期时间：
+如果启用了令牌身份验证，则可以使用 `get_token` 方法来检索持有者令牌，并且令牌过期时间：
 
 ```python
 token, refresh_by = service.get_token()
@@ -165,7 +166,7 @@ Web 服务可以接受一个请求中的多个数据集。 它会返回包含响
 
 有关如何在服务中启用对二进制数据的支持的信息，请参阅[二进制数据](how-to-deploy-and-where.md#binary)。
 
-### <a name="cross-origin-resource-sharing-cors"></a>跨域资源共享（CORS）
+### <a name="cross-origin-resource-sharing-cors"></a>跨域资源共享 (CORS)
 
 有关在服务中启用 CORS 支持的信息，请参阅[跨域资源共享](how-to-deploy-and-where.md#cors)。
 

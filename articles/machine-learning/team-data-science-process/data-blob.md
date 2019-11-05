@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a91c4d9f5dcdcee436f2dbf012eb5485b7a92192
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d056226ce8ade93e63d7bca49b975a6983dc126a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60398531"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492427"
 ---
 # <a name="heading"></a>使用高级分析处理 Azure Blob 数据
 本文档介绍了如何浏览数据，以及如何从 Azure Blob 存储中存储的数据生成功能。 
@@ -131,7 +131,7 @@ ms.locfileid: "60398531"
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
 ## <a name="sql-featuregen"></a>将数据写回 Azure blob 并在 Azure 机器学习中使用
-探索过数据并创建必要功能后，可将数据（已采样或已特征化）上传至 Azure blob 并在 Azure 机器学习中使用数据，操作步骤如下：请注意，也可在 Azure 机器学习工作室中创建其他功能。 
+浏览数据并创建必要的功能后，可以使用以下步骤将数据（抽样或特征化）上传到 Azure blob 并在 Azure 机器学习中使用：请注意，可以在 Azure 计算机中创建其他功能也是学习工作室（经典）。 
 
 1. 将数据帧写入本地文件
    

@@ -1,5 +1,5 @@
 ---
-title: 用于调试 Spark 应用程序的扩展 Spark 历史记录服务器-Azure HDInsight
+title: 用于调试应用的扩展 Spark 历史记录服务器-Azure HDInsight
 description: 使用扩展的 Spark History Server 调试和诊断 Spark 应用程序 - Azure HDInsight。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 9398745cb240e7b7dff45ff5d6d9cdf064239bfd
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 1320764687f3eb2f033ca70703a9bcb16ab616ea
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130352"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494736"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>使用扩展的 Apache Spark History Server 调试和诊断 Apache Spark 应用程序
 
-本文提供有关如何使用扩展的 Apache Spark History Server 来调试和诊断已完成的和正在运行的 Spark 应用程序的指导。 该扩展包含数据选项卡、图形选项卡和诊断选项卡。在“数据”选项卡中，用户可以检查 Spark 作业的输入和输出数据。 在“图形”选项卡中，用户可以检查数据流和重播作业图形。 在“诊断”选项卡中，用户可以参阅“数据偏斜”、“时间偏斜”和“执行程序使用情况分析”。
+本文提供有关如何使用扩展的 Apache Spark History Server 来调试和诊断已完成的和正在运行的 Spark 应用程序的指导。 该扩展插件包括数据选项卡和图形选项卡和诊断选项卡。在 "**数据**" 选项卡上，用户可以检查 Spark 作业的输入和输出数据。 在“图形”选项卡中，用户可以检查数据流和重播作业图形。 在“诊断”选项卡中，用户可以参阅“数据偏斜”、“时间偏斜”和“执行程序使用情况分析”。
 
 ## <a name="get-access-to-apache-spark-history-server"></a>获取 Apache Spark History Server 的访问权限
 
@@ -28,7 +28,7 @@ Apache Spark History Server 是已完成的和正在运行的 Spark 应用程序
 1. 从 [Azure 门户](https://portal.azure.com/)打开 Spark 群集。 有关详细信息，请参阅[列出和显示群集](../hdinsight-administer-use-portal-linux.md#showClusters)。
 2. 在“快速链接”中，依次单击“群集仪表板”、“Spark History Server”。 出现提示时，输入 Spark 群集的管理员凭据。
 
-    ![门户启动 Spark 历史记录服务器](./media/apache-azure-spark-history-server/launch-history-server.png "Spark 历史记录服务器")
+    ![门户启动 Spark 历史记录服务器](./media/apache-azure-spark-history-server/launch-history-server.png "Spark History Server")
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>通过 URL 打开 Spark History Server Web UI
 
@@ -106,16 +106,16 @@ Spark History Server Web UI 如下所示：
 
 + 单击“播放”按钮可播放作业，单击“停止”按钮可随时停止播放。 彩色任务视图，其中显示了播放时的不同状态：
 
-  + 绿色表示已成功：已成功完成作业。
+  + 绿色表示成功：作业已成功完成。
   + 橙色表示已重试：失败的任务实例，但不影响作业的最终结果。 这些任务具有稍后可能成功的重复实例或重试实例。
   + 蓝色表示正在运行：任务正在运行。
   + 白色表示正在等待或已跳过：任务正在等待运行，或已跳过执行阶段。
-  + 红色表示已失败：任务已失败。
+  + 红色表示失败：任务失败。
 
     ![Spark 应用程序和作业图形颜色示例，运行](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
 
     跳过的阶段显示为白色。
-    ![Spark 应用程序和作业图形颜色示例，跳过](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
+    ![Spark 应用程序和作业图形颜色示例，请跳过](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
 
     ![Spark 应用程序和作业图形颜色示例，失败](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
 
@@ -202,7 +202,7 @@ Spark History Server Web UI 如下所示：
 
 ## <a name="faq"></a>常见问题
 
-### <a name="1-revert-to-community-version"></a>1.还原到社区版本
+### <a name="1-revert-to-community-version"></a>1. 还原到社区版本
 
 若要还原到社区版本，请执行以下步骤：
 
@@ -211,7 +211,7 @@ Spark History Server Web UI 如下所示：
 3. 展开“自定义 spark2-defaults”组。
 4. 单击“添加属性”，添加 **spark.ui.enhancement.enabled=false** 并保存。
 5. 现在，该属性设置为 **false**。
-6. 单击 **保存** 以保存配置。
+6. 单击“保存”以保存配置。
 
     ![Apache Ambari 功能关闭](./media/apache-azure-spark-history-server/apache-spark-turn-off.png)
 
@@ -224,7 +224,7 @@ Spark History Server Web UI 如下所示：
     ![Apache Ambari Custom-spark2-defaults 史重新启动](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
 9. 刷新 Spark History Server Web UI，该服务将还原到社区版本。
 
-### <a name="2-upload-history-server-event"></a>2.上传 History Server 事件
+### <a name="2-upload-history-server-event"></a>2. 上载历史记录服务器事件
 
 如果遇到 History Server 错误，请执行以下步骤来提供事件：
 
@@ -240,7 +240,7 @@ Spark History Server Web UI 如下所示：
 
     ![apache spark 文件问题示例](./media/apache-azure-spark-history-server/apache-spark-file-issue.png)
 
-### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3.通过修补方案升级 jar 文件
+### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3. 升级适用于修补程序的 jar 文件方案
 
 若要使用修补程序进行升级，请使用以下脚本，该脚本会升级 spark-enhancement.jar*。
 

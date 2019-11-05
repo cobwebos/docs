@@ -1,28 +1,30 @@
 ---
-title: 使用 PowerShell 管理 HDInsight 中的 Apache Hadoop 群集 - Azure
+title: 通过 PowerShell 管理 Apache Hadoop 群集-Azure HDInsight
 description: 了解如何使用 Azure PowerShell 针对 HDInsight 中的 Apache Hadoop 群集执行管理任务。
-ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/17/2019
-ms.author: tyfox
-ms.openlocfilehash: 751f064df271aeb0899a00aea8b1ff09e8b8bdf4
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: b3cdc673d5d99229e3e6934d85cae55f79590830
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077043"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494394"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 HDInsight 中的 Apache Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
 Azure PowerShell 可用于在 Azure 中控制和自动执行工作负荷的部署和管理。 本文介绍了如何使用 Azure PowerShell Az 模块管理 Azure HDInsight 中的 [Apache Hadoop](https://hadoop.apache.org/) 群集。 有关 HDInsight PowerShell cmdlet 的列表，请查看 [Az.HDInsight 参考](https://docs.microsoft.com/powershell/module/az.hdinsight)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+* Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 * 已安装 PowerShell [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
 
@@ -57,13 +59,13 @@ Remove-AzResourceGroup -Name <Resource Group Name>
 ```
 
 ## <a name="scale-clusters"></a>缩放群集
-使用群集缩放功能可更改 Azure HDInsight 中运行的群集使用的工作节点数，而无需重新创建群集。
+使用群集缩放功能，可更改 Azure HDInsight 中运行的群集使用的辅助节点数，而无需重新创建群集。
 
 更改 HDInsight 支持的每种类型的群集所用数据节点数的影响：
 
 * Apache Hadoop
 
-    可以顺利地增加正在运行的 Hadoop 群集中的辅助节点数，而不会影响任何挂起或运行中的作业。 也可在操作进行中提交新作业。 系统会正常处理失败的缩放操作，让群集始终保持正常运行状态。
+    可以顺利地增加正在运行的 Hadoop 群集中的辅助节点数，而不会影响任何挂起或运行中的作业。 还可以在操作进行中提交新作业。 系统会正常处理失败的缩放操作，让群集始终保持正常运行状态。
 
     减少数据节点数目以缩减 Hadoop 群集时，系统会重新启动群集中的某些服务。 重启服务将导致所有正在运行和挂起的作业在缩放操作完成时失败。 但是，可以在操作完成后重新提交这些作业。
 * Apache HBase
@@ -206,7 +208,7 @@ $resourceGroupName = $cluster.ResourceGroup
 
 请参阅[将数据上传到 HDInsight](hdinsight-upload-data.md)。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [HDInsight cmdlet 参考文档](https://msdn.microsoft.com/library/azure/dn479228.aspx)
 * [使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集](hdinsight-administer-use-portal-linux.md)

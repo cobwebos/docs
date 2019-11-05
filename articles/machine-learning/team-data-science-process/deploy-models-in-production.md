@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1a75c842989cfbaf7bb1880831fda2bc6994622b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 94843bfc30b0d0d44284d533c715ff9632e6a6bd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60238347"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492368"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>将模型部署到生产中，使这些模型在制定业务决策方面能够发挥积极作用
 
@@ -25,7 +25,7 @@ ms.locfileid: "60238347"
 
 可通过多种方法和平台将模型投入生产。 下面是几个选项：
 
-- [使用 Azure 机器学习服务部署模型的位置](../service/how-to-deploy-and-where.md)
+- [在何处部署模型 Azure 机器学习](../service/how-to-deploy-and-where.md)
 - [SQL-Server 中的模型部署](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
@@ -43,4 +43,4 @@ ms.locfileid: "60238347"
  
 ## <a name="next-steps"></a>后续步骤
 
-我们还提供了相应的演练，用于演示**具体方案**的操作过程的所有步骤。 [示例演练](walkthroughs.md)一文列出了相关步骤并以缩略图说明的形式提供了链接。 这些演练演示如何将云、本地工具和服务合并到工作流或管道中，以创建智能应用程序。 
+我们还提供了相应的演练，用于演示**具体方案**的操作过程的所有步骤。 在[示例演练](walkthroughs.md)一文中，列出了相关步骤并链接了缩略图说明。 这些演练演示如何将云、本地工具和服务合并到工作流或管道中，以创建智能应用程序。 

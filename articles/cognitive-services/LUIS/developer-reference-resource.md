@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/16/2019
 ms.author: diberry
-ms.openlocfilehash: 8accac7fe6068007180403fdab27013da161b28c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: b2b32d6ccca69f330cfe15faa1446aa91fdb687a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437186"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465733"
 ---
 # <a name="developer-resources-for-language-understanding"></a>语言理解的开发人员资源
 
@@ -54,6 +54,17 @@ ms.locfileid: "72437186"
 |Node.js|[创作](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[预测](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM 创作](https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring)<br>[NPM 预测](https://www.npmjs.com/package/azure-cognitiveservices-luis-runtime)|[创作](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/node)<br>[预测](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/node)|[使用 REST 创作](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-node-get-intent)<br>[使用 REST 进行预测](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-node-add-utterance)|
 |Python|[创作和预测](sdk-python-quickstart-authoring-app.md)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[创作](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[创作](sdk-python-quickstart-authoring-app.md)<br>[使用 REST 进行预测](luis-get-started-python-get-intent.md)
 
+
+### <a name="containers"></a>容器
+
+语言理解（LUIS）提供一个[容器](luis-container-howto.md)，用于提供应用程序的本地版本和包含版本。 
+
+### <a name="export-and-import-formats"></a>导出和导入格式
+
+语言理解提供了以 JSON 格式、`.LU` （[LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)）格式以及语言理解容器的压缩包来管理应用及其模型的功能。 
+
+导入和导出这些格式可从 Api 和 LUIS 门户中获取。 门户提供了导入和导出作为应用列表和版本列表的一部分。 
+
 ## <a name="other-tools-and-sdks"></a>其他工具和 Sdk
 
 机器人框架作为使用[Azure 机器人服务](https://dev.botframework.com/)的各种语言和服务提供的[SDK](https://github.com/Microsoft/botframework) 。 
@@ -61,7 +72,7 @@ ms.locfileid: "72437186"
 机器人框架提供[多种工具](https://github.com/microsoft/botbuilder-tools)来帮助语言理解，其中包括：
 
 * [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown) -使用 markdown 文件构建 LUIS 语言理解模型
-* [LUIS Cli](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUIS) -创建和管理 LUIS.ai 应用程序
+* [LUIS CLI](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUIS) -创建和管理 LUIS.ai 应用程序
 * [调度](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch)-管理父和子应用
 * [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) -自动生成 LUIS C#意向和实体的支持/Typescript 类。
 * [机器人模拟器](https://github.com/Microsoft/BotFramework-Emulator/releases)-一种桌面应用程序，允许机器人开发人员测试和调试使用 BOT Framework SDK 生成的机器人
@@ -69,4 +80,8 @@ ms.locfileid: "72437186"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解常见的[HTTP 错误代码](luis-reference-response-codes.md)
+* 了解常见的[HTTP 错误代码](luis-reference-response-codes.md)
+* 所有 Api 和 Sdk 的[参考文档](https://docs.microsoft.com/azure/index#pivot=sdkstools)
+* [机器人框架](https://github.com/Microsoft/botbuilder-dotnet)和[Azure 机器人服务](https://dev.botframework.com/)
+* [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)
+* [认知容器](../cognitive-services-container-support.md)

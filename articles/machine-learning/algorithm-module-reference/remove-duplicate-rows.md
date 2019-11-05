@@ -1,40 +1,40 @@
 ---
 title: 删除重复行：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的 "删除重复行" 模块，从数据集中删除可能的重复项。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的 "删除重复行" 模块从数据集中删除可能的重复行。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 8b3f73c56d85eecd50633085eca0e632abaa6b4c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: a0faba895c5717d061bacee2ce724c20464f8150
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693666"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497692"
 ---
 # <a name="remove-duplicate-rows-module"></a>删除重复行模块
 
-本文介绍了 Azure 机器学习服务的可视界面（预览）的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块可从数据集中删除可能的重复项。
 
 例如，假设您的数据如下所示，表示患者的多条记录。 
 
-| PatientID | Initials| 性别|年龄|主办|
+| PatientID | Initials| 性别|Age|主办|
 |----|----|----|----|----|
-|第|F.M.| 百万次| 53| 1 月|
-|2| F.A.M.| 百万次| 53| 1 月|
-|3| F.A.M.| 百万次| 24| 1 月|
-|3| F.M.| 百万次| 24| Feb|
-|4| F.M.| 百万次| 23| Feb|
-| | F.M.| 百万次| 23| |
-|5| F.A.M.| 百万次| 53| |
-|6| F.A.M.| 百万次| NaN| |
-|7| F.A.M.| 百万次| NaN| |
+|1|F.M.| M| 53| Jan|
+|2| F.A.M.| M| 53| Jan|
+|3| F.A.M.| M| 24| Jan|
+|3| F.M.| M| 24| Feb|
+|4| F.M.| M| 23| Feb|
+| | F.M.| M| 23| |
+|5| F.A.M.| M| 53| |
+|6| F.A.M.| M| NaN| |
+|7| F.A.M.| M| NaN| |
 
 很明显，此示例包含多个包含可能重复数据的列。 它们是否确实是重复项取决于你对数据的了解。 
 
@@ -59,7 +59,7 @@ ms.locfileid: "72693666"
 
     在此上下文中，**键**不表示唯一标识符。 使用列选择器选择的所有列都被指定为**键列**。 所有未选定的列都被视为非键列。 选择作为键的列的组合决定了记录的唯一性。 （可将其视为使用多个 equalities 联接的 SQL 语句。）
 
-    示例：
+    示例:
 
     + "我想要确保 Id 是唯一的"：仅选择 ID 列。
     + "我想要确保名字、姓氏和 ID 的组合是唯一的"：选择所有三列。
@@ -78,4 +78,4 @@ ms.locfileid: "72693666"
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

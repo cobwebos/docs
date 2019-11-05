@@ -1,24 +1,24 @@
 ---
 title: 清理缺失数据：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的 "清理缺失数据" 模块删除、替换或推断缺失值。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的 "清理缺失数据" 模块删除、替换或推断缺失值。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 7167d53cce2c44f754f438753acda008e53bb2b3
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: fef8cb0c29eac4b26b93abee54faa4fe1078678d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693216"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493820"
 ---
 # <a name="clean-missing-data-module"></a>清理缺失数据模块
 
-本文介绍了 Azure 机器学习服务的可视界面（预览）的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块可以删除、替换或推断缺失的值。 
 
@@ -133,8 +133,8 @@ ms.locfileid: "72693216"
   
 2.  添加要清理的数据集，并将数据集连接到右侧输入端口。  
   
-3.  在接口的左窗格中展开 "**转换**" 组。 找到保存的转换，并将其拖放到管道中。  
-  
+3.  展开设计器的左窗格中的 "**转换**" 组。 找到保存的转换，并将其拖放到管道中。  
+
 4.  将保存的转换连接到 "[应用转换](./apply-transformation.md)" 的左侧输入端口。 
 
     应用保存的转换时，不能选择要应用转换的列。 这是因为已经定义了转换，并自动将其应用到原始操作中指定的列。
@@ -145,4 +145,4 @@ ms.locfileid: "72693216"
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

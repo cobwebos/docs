@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: a343601ec126549926cfd4035d901862c0a585a8
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: e075091461949639fc36ffb9feab69ac5399ae61
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673093"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491983"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>用于构建高度可用的 Azure 存储应用程序的区域冗余存储（ZRS）
 
@@ -42,6 +42,7 @@ ZRS 适用于块 Blob、非磁盘页 Blob、文件、表和队列。
 对于 FileStorage 帐户，ZRS 在以下区域公开提供：
 
 - 西欧
+- 美国东部
 
 Microsoft 将继续在其他 Azure 区域推出 ZRS。 请不时地查看 [Azure 服务更新](https://azure.microsoft.com/updates/)来了解有关新区域的信息。
 
@@ -72,16 +73,16 @@ Microsoft 将继续在其他 Azure 区域推出 ZRS。 请不时地查看 [Azure
 > [!IMPORTANT]
 > 高级文件共享目前不支持实时迁移。 目前仅支持手动复制或移动数据。
 
-如果需要在特定日期之前完成迁移，请考虑进行手动迁移。 手动迁移比实时迁移更灵活。 使用手动迁移可以控制时间。
+如果需要在特定日期完成迁移，请考虑执行手动迁移。 手动迁移比实时迁移更灵活。 使用手动迁移可以控制时间。
 
 若要执行手动迁移，可使用以下选项：
 - 使用现有的工具（例如 AzCopy）、某个 Azure 存储客户端库或可靠的第三方工具。
 - 如果你熟悉 Hadoop 或 HDInsight，可将源和目标 (ZRS) 帐户附加到群集。 然后使用 DistCp 等工具来并行化数据复制过程。
 - 使用某个 Azure 存储客户端库生成自己的工具。
 
-手动迁移可能导致应用程序关闭。 如果应用程序需要高可用性，则还可以使用 Microsoft 提供的实时迁移选项。 实时迁移属于就地迁移，不停机。 
+手动迁移可能导致应用程序关闭。 如果应用程序需要高可用性，则还可以使用 Microsoft 提供的实时迁移选项。 实时迁移是一种就地迁移，无需停机。 
 
-在实时迁移过程中，在源与目标存储阵列之间迁移数据时，可以使用自己的存储帐户。 在迁移期间，持久性和可用性 SLA 级别与平时相同。
+在实时迁移过程中，在源与目标存储阵列之间迁移数据时，可以使用自己的存储帐户。 在迁移过程中，你可以使用与往常相同的持久性和可用性 SLA。
 
 请注意实时迁移的以下限制：
 
@@ -101,9 +102,9 @@ Microsoft 将继续在其他 Azure 区域推出 ZRS。 请不时地查看 [Azure
 4. 在“问题”部分指定以下值： 
     - **严重性**：保留默认值。
     - **问题类型**：选择“数据迁移”。
-    - **类别**：选择 "**迁移到 ZRS**"。
+    - **类别**：选择**迁移到 ZRS**。
     - **标题**：键入描述性的标题，例如“ZRS 帐户迁移”。
-    - **详细信息**：在“详细信息”框中键入更多详细信息，例如，“我想要从 \_\_ 区域中的 [LRS, GRS] 迁移到 ZRS”。 
+    - **详细信息**：在 "**详细**信息" 框中键入其他详细信息，例如，我想要从 \_\_ 区域中的 [LRS，GRS] 迁移到 ZRS。 
 5. 选择“**下一步**”。
 6. 检查“联系信息”边栏选项卡中的联系信息是否正确。
 7. 选择“创建”。
@@ -114,11 +115,11 @@ Microsoft 将继续在其他 Azure 区域推出 ZRS。 请不时地查看 [Azure
 
 **是否应该在迁移期间计划停机时间？**
 
-迁移不会造成停机。 在实时迁移期间，你可以继续使用存储帐户，同时在源和目标存储 stamp 之间迁移数据。 在迁移期间，持久性和可用性 SLA 级别与平时相同。
+迁移不会造成停机。 在实时迁移期间，你可以继续使用存储帐户，同时在源和目标存储 stamp 之间迁移数据。 在迁移过程中，你可以使用与往常相同的持久性和可用性 SLA。
 
 **迁移是否有任何数据丢失？**
 
-与迁移关联的数据不会丢失。 在迁移期间，持久性和可用性 SLA 级别与平时相同。
+与迁移关联的数据不会丢失。 在迁移过程中，你可以使用与往常相同的持久性和可用性 SLA。
 
 **迁移完成后，是否需要对应用程序进行任何更新？**
 
@@ -136,7 +137,7 @@ ZRS 仅支持常规用途 v2 帐户，以便在将实时迁移的请求提交到
 
 如果要将数据迁移到不同于源帐户区域的区域中的 ZRS 帐户，必须执行手动迁移。
 
-## <a name="zrs-classic-a-legacy-option-for-block-blobs-redundancy"></a>ZRS 经典版：用于块 blob 冗余的传统选项
+## <a name="zrs-classic-a-legacy-option-for-block-blobs-redundancy"></a>ZRS 经典版：用于块 Blob 冗余的传统选项
 > [!NOTE]
 > Microsoft 将于 2021 年 3 月 31 日弃用并迁移 ZRS 经典版帐户。 在弃用之前会向 ZRS 经典版客户提供更多详细信息。 
 >
@@ -162,7 +163,7 @@ Set-AzStorageAccount -ResourceGroupName <resource_group> -AccountName <storage_a
 az storage account update -g <resource_group> -n <storage_account> --set kind=StorageV2
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 - [Azure 存储复制](storage-redundancy.md)
 - [本地冗余存储 (LRS)：Azure 存储的低成本数据冗余](storage-redundancy-lrs.md)
 - [异地冗余存储 (GRS)：Azure 存储的跨区域复制](storage-redundancy-grs.md)

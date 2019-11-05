@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 2147ca2565d5977e3e47d5182627483aa3d8d1b2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 9a7599cd71c087201b54c594954a6fff377b3e45
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756109"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490760"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>特征是指有关操作和上下文的信息
 
@@ -26,7 +26,7 @@ ms.locfileid: "72756109"
 例如，**特征**可能与以下对象相关：
 
 * _用户角色_，如 `Sports_Shopper`。 这不应是单个用户 ID。 
-* 内容，视频是 `Documentary`、`Movie` 还是 `TV Series`，或者某个零售商品在商店中是否有货。
+* 内容，视频是 _、_ 还是 `Documentary`，或者某个零售商品在商店中是否有货。`Movie``TV Series`
 * 当前时间段，例如星期几。
 
 Personalizer 不规定、限制或修复您可以为操作和上下文发送哪些功能：
@@ -69,7 +69,10 @@ Personalizer 不规定、限制或修复您可以为操作和上下文发送哪�
 可以根据自己的约定来命名特征命名空间，只要它们是有效的 JSON 键即可。 命名空间用于将功能组织成不同的集，以及区分名称相似的功能。 可以将命名空间视为添加到功能名称的 "前缀"。 命名空间不能嵌套。
 
 
-在以下 JSON 中，`user`、`state` 和 `device` 是特征命名空间。 公共预览说明：目前，我们强烈建议使用基于 UTF-8 并以不同字母开头的功能命名空间的名称。 例如，`user`、`state` 和 `device` 以 `u`、`s` 和 `d` 开头。 当前具有具有相同第一个字符的命名空间可能会导致用于机器学习的索引出现冲突。
+在以下 JSON 中，`user`、`state` 和 `device` 是特征命名空间。 
+
+> [!Note]
+> 目前，我们强烈建议使用基于 UTF-8 并以不同字母开头的功能命名空间的名称。 例如，`user`、`state`和 `device` 以 `u`、`s`和 `d`开头。 当前具有具有相同第一个字符的命名空间可能会导致用于机器学习的索引出现冲突。
 
 JSON 对象可以包括嵌套的 JSON 对象和简单的属性/值。 仅当数组项为数字时才可以包含数组。 
 
@@ -175,7 +178,7 @@ JSON 对象可以包括嵌套的 JSON 对象和简单的属性/值。 仅当数�
 
 下面是一些示例：
 
-|用途|行动|
+|目的|行动|
 |--|--|
 |个性化要在新闻网站上突出显示的文章。|每个操作是一篇潜在的新闻文章。|
 |优化网站上的广告位置。|每个操作是一个布局或有关创建广告布局的规则（例如，在顶部排列、在右侧排列、使用小图像、使用大图像）。|

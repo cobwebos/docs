@@ -10,14 +10,15 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 11b16f91d600c20b48fbdc5887a4a0a4b538e916
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: MT
+ms.openlocfilehash: a1ab8f881aaee9e29519e99a5cd2a0e6fdbc9846
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330659"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489408"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模构建 TensorFlow 深度学习模型
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何使用 Azure 机器学习的[TensorFlow 估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)类，按比例运行你的[TensorFlow](https://www.tensorflow.org/overview)训练脚本。 此示例训练并注册 TensorFlow 模型，以便使用深层神经网络（DNN）对手写数字进行分类。
 
@@ -29,7 +30,7 @@ ms.locfileid: "72330659"
 
 在以下任一环境中运行此代码：
 
- - Azure 机器学习笔记本 VM-无需下载或安装
+ - Azure 机器学习计算实例-无需下载或安装
 
      - 完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)，创建随 SDK 和示例存储库预先加载的专用笔记本服务器。
     - 在笔记本服务器上的示例深度学习文件夹中，通过导航到以下目录查找已完成且扩展的笔记本：操作**说明 > ml-框架 > tensorflow > 部署 >超参数-tensorflow**文件夹的优化。 
@@ -38,7 +39,7 @@ ms.locfileid: "72330659"
 
     - [安装 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
     - [创建工作区配置文件](how-to-configure-environment.md#workspace)。
-    - [下载示例脚本文件](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)`mnist-tf.py` 和 `utils.py`
+    - `mnist-tf.py` 和 `utils.py`[下载示例脚本文件](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
      
     你还可以在 GitHub 示例页上找到本指南的已完成[Jupyter Notebook 版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow/train-hyperparameter-tune-deploy-with-tensorflow.ipynb)。 此笔记本包含扩展的部分，涵盖智能超参数优化、模型部署和笔记本小组件。
 
@@ -46,7 +47,7 @@ ms.locfileid: "72330659"
 
 本部分通过加载所需的 Python 包、初始化工作区、创建试验以及上传定型数据和训练脚本来设置训练实验。
 
-### <a name="import-packages"></a>导入包
+### <a name="import-packages"></a>导入程序包
 
 首先，导入必需的 Python 库。
 
@@ -67,7 +68,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 [Azure 机器学习工作区](concept-workspace.md)是服务的顶级资源。 它为您提供了一个集中的位置来处理您创建的所有项目。 在 Python SDK 中，可以通过创建[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)对象来访问工作区项目。
 
-从 "[先决条件" 部分](#prerequisites)创建的 @no__t 0 文件创建工作区对象。
+从 "[先决条件" 部分](#prerequisites)创建的 `config.json` 文件创建工作区对象。
 
 ```Python
 ws = Workspace.from_config()
@@ -86,7 +87,7 @@ exp = Experiment(workspace=ws, name='tf-mnist')
 
 ### <a name="create-a-file-dataset"></a>创建文件数据集
 
-`FileDataset` 对象引用工作区数据存储或公共 URL 中的一个或多个文件。 文件可以是任何格式，该类提供将文件下载或装载到计算机的功能。 通过创建 `FileDataset`，可以创建对数据源位置的引用。 如果将任何转换应用于数据集，则它们也会存储在数据集中。 数据会保留在其现有位置，因此不会产生额外的存储成本。 有关详细信息，请参阅 `Dataset` 包中的[操作](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets)指南。
+`FileDataset` 对象引用工作区数据存储或公共 url 中的一个或多个文件。 文件可以是任何格式，类可让你将文件下载或装载到你的计算中。 通过创建 `FileDataset`，可以创建对数据源位置的引用。 如果将任何转换应用于数据集，则它们也会存储在数据集中。 数据会保留在其现有位置，因此不会产生额外的存储成本。 有关详细信息，请参阅 `Dataset` 包上的操作[方法](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets)指南。
 
 ```python
 from azureml.core.dataset import Dataset
@@ -100,7 +101,7 @@ web_paths = [
 dataset = Dataset.File.from_files(path=web_paths)
 ```
 
-使用 `register()` 方法将数据集注册到你的工作区，以便可以与其他人共享数据集、在各种试验中重复使用这些数据集，并在训练脚本中按名称引用这些数据集。
+使用 `register()` 方法将数据集注册到你的工作区，以便将其与他人共享，在各种试验中重复使用，并在训练脚本中按名称引用。
 
 ```python
 dataset = dataset.register(workspace=ws,
@@ -138,9 +139,9 @@ except ComputeTargetException:
 
 [TensorFlow 估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)提供了一种简单的方法来启动计算目标上的 TensorFlow 培训作业。
 
-TensorFlow 估计器是通过泛型[@no__t 1](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)类实现的，可用于支持任何框架。 有关使用泛型估计器定型模型的详细信息，请参阅[使用估计器 Azure 机器学习训练模型](how-to-train-ml-models.md)
+TensorFlow 估计器是通过泛型[`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)类实现的，它可用于支持任何框架。 有关使用泛型估计器定型模型的详细信息，请参阅[使用估计器 Azure 机器学习训练模型](how-to-train-ml-models.md)
 
-如果训练脚本需要额外的 pip 或 conda 包来运行，则可以通过将包的名称通过 `pip_packages` 和 @no__t 1 参数传递，将包安装在生成的 Docker 映像中。
+如果训练脚本需要额外的 pip 或 conda 包来运行，则可以通过将包的名称通过 `pip_packages` 和 `conda_packages` 参数传递这些包，从而将包安装在生成的 Docker 映像中。
 
 ```python
 script_params = {
@@ -185,7 +186,7 @@ run.wait_for_completion(show_output=True)
 model = run.register_model(model_name='tf-dnn-mnist', model_path='outputs/model')
 ```
 
-您还可以使用 Run 对象下载模型的本地副本。 在训练脚本 `mnist-tf.py` 中，TensorFlow 的保护程序对象将模型保留到本地文件夹（计算目标的本地）。 您可以使用 "运行" 对象下载副本。
+您还可以使用 Run 对象下载模型的本地副本。 在训练脚本 `mnist-tf.py`中，TensorFlow 的保护程序对象将模型保留到本地文件夹（计算目标的本地）。 您可以使用 "运行" 对象下载副本。
 
 ```Python
 # Create a model folder in the current directory
@@ -200,7 +201,7 @@ for f in run.get_file_names():
 
 ## <a name="distributed-training"></a>分布式训练
 
-[@No__t-1](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)估计器还支持跨 CPU 和 GPU 群集的分布式培训。 您可以轻松地运行分布式 TensorFlow 作业，Azure 机器学习将为您管理业务流程。
+[`TensorFlow`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)估计器还支持跨 CPU 和 GPU 群集的分布式培训。 您可以轻松地运行分布式 TensorFlow 作业，Azure 机器学习将为您管理业务流程。
 
 Azure 机器学习支持 TensorFlow 中的两种分布式训练方法：
 
@@ -211,7 +212,7 @@ Azure 机器学习支持 TensorFlow 中的两种分布式训练方法：
 
 [Horovod](https://github.com/uber/horovod)是一个开源框架，用于由 Uber 开发的分布式培训。 它提供了到分布式 GPU TensorFlow 作业的简单途径。
 
-若要使用 Horovod，请在 TensorFlow 构造函数中为 `distributed_training` 参数指定[`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py)对象。 此参数可确保安装 Horovod 库，以便在训练脚本中使用。
+若要使用 Horovod，请在 TensorFlow 构造函数中指定 `distributed_training` 参数的[`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py)对象。 此参数可确保安装 Horovod 库，以便在训练脚本中使用。
 
 ```Python
 from azureml.core.runconfig import MpiConfiguration
@@ -233,7 +234,7 @@ estimator= TensorFlow(source_directory=project_folder,
 
 此外，你还可以运行[本机分布式 TensorFlow](https://www.tensorflow.org/deploy/distributed)，它使用参数服务器模型。 在此方法中，你将在一组参数服务器和工作线程中进行训练。 工作线程在训练期间计算梯度，而参数服务器聚合梯度。
 
-若要使用参数服务器方法，请在 TensorFlow 构造函数中为 `distributed_training` 参数指定[`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py)对象。
+若要使用参数服务器方法，请在 TensorFlow 构造函数中指定 `distributed_training` 参数的[`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py)对象。
 
 ```Python
 from azureml.train.dnn import TensorFlow
@@ -257,7 +258,7 @@ run = exp.submit(tf_est)
 
 #### <a name="define-cluster-specifications-in-tf_config"></a>定义 "TF_CONFIG" 中的群集规范
 
-还需要[@no__t](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec)的群集的网络地址和端口，因此 Azure 机器学习为你设置 @no__t 2 环境变量。
+还需要[`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec)群集的网络地址和端口，因此 Azure 机器学习为你设置 `TF_CONFIG` 环境变量。
 
 `TF_CONFIG` 环境变量是一个 JSON 字符串。 下面是介绍参数服务器变量的示例：
 
@@ -272,9 +273,9 @@ TF_CONFIG='{
 }'
 ```
 
-对于 TensorFlow 的高级别[`tf.estimator`](https://www.tensorflow.org/api_docs/python/tf/estimator) API，TensorFlow 会分析 @no__t 2 变量并为你生成群集规范。
+对于 TensorFlow 的高级别[`tf.estimator`](https://www.tensorflow.org/api_docs/python/tf/estimator) API，TensorFlow 会分析 `TF_CONFIG` 变量，并为你生成群集规范。
 
-对于 TensorFlow 的低级别核心 Api，请分析 `TF_CONFIG` 变量，并在训练代码中生成 @no__t。
+对于 TensorFlow 的低级别核心 Api 进行定型，分析 `TF_CONFIG` 变量，并在定型代码中生成 `tf.train.ClusterSpec`。
 
 ```Python
 import os, json

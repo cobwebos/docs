@@ -8,12 +8,12 @@ manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: 7ccf6d93419b981203067e28f8c85ef8445ab0c2
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6e85e33cf0488cf688303c590c2bbaf5d671d9b7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595288"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467101"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -21,7 +21,7 @@ ms.locfileid: "72595288"
 
 此限制有一个重要的例外情况。 若用户已选择允许受信任的 Microsoft 服务访问，则会允许来自这些服务的连接通过防火墙。 这些服务包括 Office 365 Exchange Online、Office 365 SharePoint Online、Azure 计算、Azure 资源管理器和 Azure 备份等。 此类用户仍需提供有效的 Azure Active Directory 令牌，并且必须具有执行所请求的操作的权限（配置为访问策略）。 有关详细信息，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。
 
-## <a name="usage-scenarios"></a>使用情景
+## <a name="usage-scenarios"></a>使用方案
 
 可以将 [Key Vault 防火墙和虚拟网络](key-vault-network-security.md)配置为默认拒绝访问来自所有网络的流量（包括 Internet 流量）。 可以向来自特定 Azure 虚拟网络和公共 Internet IP 地址范围的流量授予访问权限，为应用程序构建安全的网络边界。
 
@@ -68,12 +68,13 @@ ms.locfileid: "72595288"
 |Azure 备份|允许使用 [Azure 备份](../backup/backup-introduction-to-azure-backup.md)在 Azure 虚拟机备份期间备份和还原相关密钥和机密。|
 |Exchange Online 和 SharePoint Online|允许使用[客户密钥](https://support.office.com/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697)访问 Azure 存储服务加密的客户密钥。|
 |Azure 信息保护|允许访问 [Azure 信息保护](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)的租户密钥。|
-|Azure App Service|[通过 Key Vault 部署 Azure Web 应用证书](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)。|
-|Azure SQL Database|[使用 Azure SQL 数据库和数据仓库的“创建自己的密钥”支持进行透明数据加密](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
-|Azure 存储器|[在 Azure Key Vault 中使用客户托管密钥进行存储服务加密](../storage/common/storage-service-encryption-customer-managed-keys.md)。|
+|Azure 应用服务|[通过 Key Vault 部署 Azure Web 应用证书](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)。|
+|Azure SQL 数据库|[使用 Azure SQL 数据库和数据仓库的“创建自己的密钥”支持进行透明数据加密](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
+|Azure 存储|[在 Azure Key Vault 中使用客户托管密钥进行存储服务加密](../storage/common/storage-service-encryption-customer-managed-keys.md)。|
 |Azure Data Lake Store|[在 Azure Data Lake Store 中使用客户托管密钥进行数据加密](../data-lake-store/data-lake-store-encryption.md)。|
 |Azure Databricks|[基于 Apache Spark 的快速、简单、协作分析服务](../azure-databricks/what-is-azure-databricks.md)|
 |Azure API 管理|[使用 MSI 从 Key Vault 部署自定义域证书](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
+|Azure 数据工厂|[从数据工厂获取 Key Vault 中的数据存储凭据](https://go.microsoft.com/fwlink/?linkid=2109491)|
 
 
 

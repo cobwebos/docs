@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 07/24/2019
-ms.openlocfilehash: d0e0c5601a6cddf936604df6d5b48b8bf48e7c8d
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 10/25/2019
+ms.openlocfilehash: 2e088557bf61141d3ea3cbeb25d53f711a71fd97
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162444"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496855"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 为推理部署深度学习模型
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何使用 Azure 机器学习将支持 GPU 的模型部署为 web 服务。 本文中的信息基于在 Azure Kubernetes 服务（AKS）上部署模型。 AKS 群集提供模型用于推理的 GPU 资源。
 
@@ -32,7 +33,7 @@ ms.locfileid: "71162444"
 > [!NOTE]
 > 本文中的信息基于[如何部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)一文中的信息。 本文通常会涵盖部署到 AKS，本文介绍特定于 GPU 的部署。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -40,7 +41,7 @@ ms.locfileid: "71162444"
 
 * 使用 GPU 的已注册模型。
 
-    * 若要了解如何注册模型, 请参阅[部署模型](../service/how-to-deploy-and-where.md#registermodel)。
+    * 若要了解如何注册模型，请参阅[部署模型](../service/how-to-deploy-and-where.md#registermodel)。
 
     * 若要创建并注册用于创建此文档的 Tensorflow 模型，请参阅[如何定型 Tensorflow 模型](how-to-train-tensorflow.md)。
 
@@ -62,7 +63,7 @@ ws = Workspace.from_config()
 
 ## <a name="create-a-kubernetes-cluster-with-gpus"></a>使用 Gpu 创建 Kubernetes 群集
 
-Azure Kubernetes 服务提供了许多不同的 GPU 选项。 您可以将其中任何一个用于模型推理。 若要全面了解功能和成本, 请参阅[N 系列 vm 列表](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series)。
+Azure Kubernetes 服务提供了许多不同的 GPU 选项。 您可以将其中任何一个用于模型推理。 若要全面了解功能和成本，请参阅[N 系列 vm 列表](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series)。
 
 以下代码演示了如何为工作区创建新的 AKS 群集：
 
@@ -91,7 +92,7 @@ except ComputeTargetException:
 ```
 
 > [!IMPORTANT]
-> 只要存在 AKS 群集，Azure 就会向你收费。 完成后, 请务必删除 AKS 群集。
+> 只要存在 AKS 群集，Azure 就会向你收费。 完成后，请务必删除 AKS 群集。
 
 有关将 AKS 与 Azure 机器学习一起使用的详细信息，请参阅[如何部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)。
 
@@ -132,11 +133,11 @@ def run(raw_data):
     return y_hat.tolist()
 ```
 
-此文件的名称`score.py`为。 有关输入脚本的详细信息，请参阅 "[如何部署" 和 "部署位置](how-to-deploy-and-where.md)"。
+此文件的名称为 `score.py`。 有关输入脚本的详细信息，请参阅 "[如何部署" 和 "部署位置](how-to-deploy-and-where.md)"。
 
 ## <a name="define-the-conda-environment"></a>定义 conda 环境
 
-Conda 环境文件指定服务的依赖关系。 它包括模型和条目脚本所需的依赖项。 以下 YAML 定义了 Tensorflow 模型的环境。 它指定`tensorflow-gpu`将使用在此部署中使用的 GPU：
+Conda 环境文件指定服务的依赖关系。 它包括模型和条目脚本所需的依赖项。 以下 YAML 定义了 Tensorflow 模型的环境。 它指定 `tensorflow-gpu`，它将使用在此部署中使用的 GPU：
 
 ```yaml
 name: project_environment
@@ -153,7 +154,7 @@ channels:
 - conda-forge
 ```
 
-在此示例中，该文件保存为`myenv.yml`。
+在此示例中，该文件将保存为 `myenv.yml`。
 
 ## <a name="define-the-deployment-configuration"></a>定义部署配置
 
@@ -187,7 +188,7 @@ inference_config = InferenceConfig(runtime="python",
 
 ## <a name="deploy-the-model"></a>部署模型
 
-将模型部署到 AKS 群集, 并等待其创建服务。
+将模型部署到 AKS 群集，并等待其创建服务。
 
 ```python
 from azureml.core.model import Model
@@ -209,13 +210,13 @@ print(aks_service.state)
 ```
 
 > [!NOTE]
-> 如果对象具有`enable_gpu=True`，则`deployment_target`参数必须引用提供 GPU 的群集。 `InferenceConfig` 否则，部署会失败。
+> 如果 `InferenceConfig` 对象已 `enable_gpu=True`，则 `deployment_target` 参数必须引用提供 GPU 的群集。 否则，部署会失败。
 
 有关详细信息，请参阅[模型](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)的参考文档。
 
 ## <a name="issue-a-sample-query-to-your-service"></a>向服务发出示例查询
 
-将测试查询发送到已部署的模型。 当你将 jpeg 图像发送到模型时, 它将对该图像进行评分。 下面的代码示例将下载测试数据，然后选择要发送到服务的随机测试映像。 
+将测试查询发送到已部署的模型。 当你将 jpeg 图像发送到模型时，它将对该图像进行评分。 下面的代码示例将下载测试数据，然后选择要发送到服务的随机测试映像。 
 
 ```python
 # Used to test your webservice
@@ -272,10 +273,10 @@ print("prediction:", resp.text)
 
 ## <a name="clean-up-the-resources"></a>清理资源
 
-如果专门为此示例创建了 AKS 群集, 请在完成后删除资源。
+如果专门为此示例创建了 AKS 群集，请在完成后删除资源。
 
 > [!IMPORTANT]
-> Azure 会根据部署 AKS 群集的时间来对你进行计费。 完成后, 请务必将其清除。
+> Azure 会根据部署 AKS 群集的时间来对你进行计费。 完成后，请务必将其清除。
 
 ```python
 aks_service.delete()

@@ -7,30 +7,31 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: larryfr
-ms.author: tedway
-author: tedway
-ms.date: 07/25/2019
+ms.author: jordane
+author: jpe316
+ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9c3c844ba7044f8e1c9c313f1ac63b94310ea322
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 5e8dc6181660f0c1545df0688e2749f8f0187027
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350540"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496896"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>什么是现场可编程的入口阵列（FPGA）以及如何部署
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍了现场可编程的入口数组（FPGA），并说明了如何使用 Azure 机器学习向 Azure FPGA 部署模型。 
 
 FPGA 包含一组可编程的逻辑块以及由可反复配置的互连组成的层次结构。 这种互连可以在生产之后以不同方式来配置块。 与其他芯片相比，FPGA 既有可编程性，又有很好的性能。
 
-## <a name="fpgas-vs-cpu-gpu-and-asic"></a>FPGA 与CPU、GPU 和 ASIC 的对比
+## <a name="fpgas-vs-cpu-gpu-and-asic"></a>Fpga 与 CPU、GPU 和 ASIC
 
 下面的示意图和表将 FPGA 与其他处理器进行了比较。
 
 ![Azure 机器学习 FPGA 比较示意图](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
 
-|处理器||描述|
+|处理器||说明|
 |---|:-------:|------|
 |特定于应用程序的集成电路|ASIC|自定义电路（例如 Google 的 TensorFlow 处理器单元 (TPU)）的效率最高。 它们不能根据需求的变化重新配置。|
 |现场可编程门阵列|FPGA|FPGA（例如 Azure 上提供的那些）提供接近于 ASIC 的性能。 它们也是灵活的，并且可以在一段时间后重新配置以实现新逻辑。|
@@ -61,9 +62,9 @@ Azure 上的 Fpga 支持：
   - SSD-VGG
 
 以下 Azure 区域提供 Fpga：
-  - East US
+  - 美国东部
   - 东南亚
-  - 西欧
+  - 欧洲西部
   - 美国西部 2
 
 > [!IMPORTANT]
@@ -82,14 +83,14 @@ Azure Fpga 与 Azure 机器学习集成。 Microsoft 使用 FPGA 进行 DNN 评�
 
 
 
-## <a name="example-deploy-models-on-fpgas"></a>例如：在 FPGA 上部署模型 
+## <a name="example-deploy-models-on-fpgas"></a>示例：在 Fpga 上部署模型 
 
-你可以使用 Azure 机器学习硬件加速模型将模型部署为 Fpga 上的 web 服务。 使用 Fpga 可提供超高延迟推理，即使只使用一批。 推理或模型计分是部署模型用于预测的阶段, 最常见的是生产数据。
+你可以使用 Azure 机器学习硬件加速模型将模型部署为 Fpga 上的 web 服务。 使用 Fpga 可提供超高延迟推理，即使只使用一批。 推理或模型计分是部署模型用于预测的阶段，最常见的是生产数据。
 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
-- Azure 订阅。  如果没有，请在开始前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+- Azure 订阅。  如果没有，请在开始前创建一个免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
 - FPGA 配额。 使用 Azure CLI 检查是否有配额：
 
@@ -98,7 +99,7 @@ Azure Fpga 与 Azure 机器学习集成。 Microsoft 使用 FPGA 进行 DNN 评�
     ```
 
     > [!TIP]
-    > 其他可能的位置为``southeastasia``、 ``westeurope``和``westus2``。
+    > 其他可能的位置为 ``southeastasia``、``westeurope``和 ``westus2``。
 
     此命令返回类似于下面的文本：
 
@@ -110,7 +111,7 @@ Azure Fpga 与 Azure 机器学习集成。 Microsoft 使用 FPGA 进行 DNN 评�
 
     请确保在__CurrentValue__下至少有6个个 vcpu。
 
-    如果没有配额，则提交请求[https://aka.ms/accelerateAI](https://aka.ms/accelerateAI)。
+    如果没有配额，则提交[https://aka.ms/accelerateAI](https://aka.ms/accelerateAI)的请求。
 
 - 已安装 Azure 机器学习工作区以及用于 Python 的 Azure 机器学习 SDK。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)。
  
@@ -121,7 +122,7 @@ Azure Fpga 与 Azure 机器学习集成。 Microsoft 使用 FPGA 进行 DNN 评�
     ```
 
 
-## <a name="1-create-and-containerize-models"></a>1.创建和容器化模型
+## <a name="1-create-and-containerize-models"></a>1. 创建模型并容器化
 
 本文档将介绍如何创建 TensorFlow 图来预处理输入图像、如何在 FPGA 上使用 ResNet 50 使其成为特征化器，然后通过针对 ImageNet 数据集定型的分类器来运行这些功能。
 
@@ -315,11 +316,11 @@ for i in Image.list(workspace=ws):
         i.name, i.version, i.creation_state, i.image_location, i.image_build_log_uri))
 ```
 
-## <a name="2-deploy-to-cloud-or-edge"></a>2.部署到云或边缘
+## <a name="2-deploy-to-cloud-or-edge"></a>2. 部署到云或边缘
 
 ### <a name="deploy-to-the-cloud"></a>部署到云
 
-若要将模型部署为大规模生产 Web 服务，请使用 Azure Kubernetes 服务 (AKS)。 你可以使用 Azure 机器学习 SDK、CLI、" [Azure 门户](https://portal.azure.com)" 或 "[工作区" 登陆页（预览版）](https://ml.azure.com)创建一个新的。
+若要将模型部署为大规模生产 Web 服务，请使用 Azure Kubernetes 服务 (AKS)。 你可以使用 Azure 机器学习 SDK、CLI 或[Azure 机器学习 studio](https://ml.azure.com)创建一个新的。
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -433,7 +434,7 @@ converted_model.delete()
 
 + 几个[示例笔记本](https://aka.ms/aml-accel-models-notebooks)。
 
-+ [“超大规模”硬件：ML at scale on top of Azure + FPGA :Build 2018 (video)](https://channel9.msdn.com/events/Build/2018/BRK3202)（超大规模的硬件：基于 Azure + FPGA 的大规模机器学习：Build 2018（视频））
++ [Hyperscale hardware: ML at scale on top of Azure + FPGA : Build 2018 (video)](https://channel9.msdn.com/events/Build/2018/BRK3202)（超大规模硬件：基于 Azure + FPGA：内部版本 2018 的大规模机器学习（视频））
 
 + [Inside the Microsoft FPGA-based configurable cloud (video)](https://channel9.msdn.com/Events/Build/2017/B8063)（深入了解基于 Microsoft FPGA 的可配置云（视频））
 

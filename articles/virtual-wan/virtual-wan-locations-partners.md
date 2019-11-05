@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect find a Virtual WAN partner
-ms.openlocfilehash: cefd0653985e4340e62e0ea56f73ff2cabf5741b
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 985823e5aa806244596277c982cc129554d890f2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312128"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489031"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>虚拟 WAN 合作伙伴和虚拟中心位置
 
@@ -40,7 +40,7 @@ Azure Virtual WAN 是一种网络服务，它通过 Azure 提供经优化、自�
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-在不久的将来，我们的路线图中将列出以下合作伙伴：Arista、F5 Networks、Fortinet、Silver-Peak、Velocloud、Nuage Nokia。
+以下合作伙伴在我们的计划中针对不久的未来进行了预定： Arista、F5 网络、Velocloud。
 
 ## <a name="locations"></a>位置
 

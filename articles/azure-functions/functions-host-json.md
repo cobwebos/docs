@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 2a61a2ba74ccdaa69b26cae65dd4f74a7b837ccf
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
-ms.translationtype: MT
+ms.openlocfilehash: 96c346db74c1e6c43c3501b657621d09e019309c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927446"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469201"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x 的 host.json 参考  
 
@@ -71,6 +71,9 @@ ms.locfileid: "72927446"
             }
         }
     },
+    "managedDependency": {
+        "enabled": true
+    },
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",
@@ -78,10 +81,7 @@ ms.locfileid: "72927446"
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ],
-    "managedDependency": {
-        "enabled": true
-    }
+    "watchDirectories": [ "Shared", "Test" ]
 }
 ```
 
@@ -111,13 +111,13 @@ ms.locfileid: "72927446"
 > [!NOTE]
 > 日志采样可能会导致一些执行不会显示在 Application Insights 监视器边栏选项卡中。
 
-|properties  |默认 | 描述 |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
-|isEnabled|是|启用或禁用采样。| 
+|isEnabled|true|启用或禁用采样。| 
 |maxTelemetryItemsPerSecond|20|开始采样所要达到的阈值。| 
-|EnableLiveMetrics |是|启用实时指标收集。|
-|EnableDependencyTracking|是|启用依赖项跟踪。|
-|EnablePerformanceCountersCollection|是|启用 Kudu 性能计数器集合。|
+|EnableLiveMetrics |true|启用实时指标收集。|
+|EnableDependencyTracking|true|启用依赖项跟踪。|
+|EnablePerformanceCountersCollection|true|启用 Kudu 性能计数器集合。|
 
 ## <a name="cosmosdb"></a>CosmosDB
 
@@ -147,8 +147,8 @@ ms.locfileid: "72927446"
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-指示所有函数的超时持续时间。 它遵循 timespan 字符串格式。 在无服务器消耗计划中，有效范围为 1 秒至 10 分钟，默认值为 5 分钟。  
-在专用（应用服务）计划中，没有总限制，默认值为30分钟。 值 `-1` 表示未绑定的执行。
+指示所有函数的超时持续时间。 它采用 timespan 字符串格式。 在无服务器消耗计划中，有效范围为 1 秒至 10 分钟，默认值为 5 分钟。  
+在专用（应用服务）计划中，没有总限制，默认值为30分钟。 值 `-1` 表示无限执行。
 
 ```json
 {
@@ -172,9 +172,9 @@ ms.locfileid: "72927446"
 }
 ```
 
-|properties  |默认 | 描述 |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
-|已启用|是|指定是否启用此功能。 | 
+|已启用|true|指定是否已启用该功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
 |healthCheckWindow|2 分钟|与 `healthCheckThreshold` 设置结合使用的滑动时间窗口。| 
 |healthCheckThreshold|6|在启动主机回收之前，运行状况检查可以失败的最大次数。| 
@@ -220,7 +220,7 @@ ms.locfileid: "72927446"
 }
 ```
 
-|properties  |默认 | 描述 |
+|属性  |默认 | 说明 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|定义启用哪种级别的文件日志记录。  选项包括 `never`、`always` 和 `debugOnly`。 |
 |logLevel|不适用|一个对象，它定义了用于筛选应用中的函数的日志类别。 版本 2.x 遵循 ASP.NET Core 布局进行日志类别筛选。 这允许你筛选特定函数的日志记录。 有关详细信息，请参阅 ASP.NET Core 文档中的[日志筛选](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
@@ -243,9 +243,21 @@ ms.locfileid: "72927446"
 }
 ```
 
-|properties  |默认 | 描述 |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
 |isEnabled|false|启用或禁用控制台日志记录。| 
+
+## <a name="manageddependency"></a>managedDependency
+
+托管依赖项是目前仅支持基于 PowerShell 的函数的一项功能。 它允许服务自动管理依赖项。 `enabled` 属性设置为 `true`时，将处理 `requirements.psd1` 文件。 发布任何次要版本时，会更新依赖项。 有关详细信息，请参阅 PowerShell 文章中的[托管依赖项](functions-reference-powershell.md#dependency-management)。
+
+```json
+{
+    "managedDependency": {
+        "enabled": true
+    }
+}
+```
 
 ## <a name="queues"></a>queues
 
@@ -275,7 +287,7 @@ ms.locfileid: "72927446"
 }
 ```
 
-|properties  |默认 | 描述 |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|占用函数级锁的时间段。 锁自动续订。| 
 |listenerLockPeriod|00:01:00|占用侦听器锁的时间段。| 
@@ -283,7 +295,7 @@ ms.locfileid: "72927446"
 |lockAcquisitionTimeout|00:01:00|运行时尝试获取锁的最长时间。| 
 |lockAcquisitionPollingInterval|不适用|尝试获取锁的间隔时间。| 
 
-## <a name="version"></a>版本
+## <a name="version"></a>version
 
 对于面向 v2 运行时的函数应用，版本字符串 `"version": "2.0"` 是必需的。
 
@@ -294,18 +306,6 @@ ms.locfileid: "72927446"
 ```json
 {
     "watchDirectories": [ "Shared" ]
-}
-```
-
-## <a name="manageddependency"></a>managedDependency
-
-托管依赖项是当前仅支持基于 PowerShell 的函数的预览功能。 它允许服务自动管理依赖项。 如果 enabled 属性设置为 true，则将处理[psd1](functions-reference-powershell.md#dependency-management)文件。 发布任何次要版本时，将更新依赖项。
-
-```json
-{
-    "managedDependency": {
-        "enabled": true
-    }
 }
 ```
 
