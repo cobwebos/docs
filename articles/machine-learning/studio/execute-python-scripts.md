@@ -1,6 +1,6 @@
 ---
 title: 执行 Python 机器学习脚本
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: Azure Machine Learning Studio (classic)
 description: 了解如何使用 "执行 Python 脚本" 模块在机器学习 Studio （经典）试验和 web 服务中使用 Python 代码。
 services: machine-learning
 ms.service: machine-learning
@@ -10,22 +10,22 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: bfc2efca0786838d528b3019a3aff405f46ef645
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 1be367191ab042611f45d1f773df0d499400c500
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053788"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492998"
 ---
-# <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中执行 Python 机器学习脚本
+# <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习 Studio （经典）中执行 Python 机器学习脚本
 
 Python 是披肩多个数据科学家的工具中的一个重要工具。 它在典型机器学习工作流的每个阶段中使用，包括数据浏览、功能提取、模型定型和验证和部署。
 
-本文介绍如何使用 "执行 Python 脚本" 模块在 Azure 机器学习 Studio 试验和 web 服务中使用 Python 代码。
+本文介绍如何使用 "执行 Python 脚本" 模块在 Azure 机器学习 Studio （经典）试验和 web 服务中使用 Python 代码。
 
 ## <a name="using-the-execute-python-script-module"></a>使用执行 Python 脚本模块
 
-Studio 中的 Python 的主要界面是通过[执行 Python 脚本][execute-python-script]模块。 它最多可接受三个输入，生成最多两个输出，类似于 "[执行 R 脚本][execute-r-script]" 模块。 通过名为 `azureml_main`的特殊命名入口点函数将 Python 代码输入到参数框。
+Studio （经典）中的 Python 的主要界面是通过[执行 Python 脚本][execute-python-script]模块。 它最多可接受三个输入，生成最多两个输出，类似于 "[执行 R 脚本][execute-r-script]" 模块。 通过名为 `azureml_main`的特殊命名入口点函数将 Python 代码输入到参数框。
 
 ![执行 Python 脚本模块](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
@@ -53,7 +53,7 @@ Python 模块的输入公开为 Pandas DataFrames。 `azureml_main` 函数最多
 
 ## <a name="translation-of-input-and-output-data-types"></a>输入和输出数据类型的转换
 
-Studio 数据集不同于 Panda DataFrames。 因此，Studio 中的输入数据集会转换为 Pandas 数据帧，并且输出 DataFrames 将转换回 Studio 数据集。 在此转换过程中，还会执行以下转换：
+Studio 数据集不同于 Panda DataFrames。 因此，经典版 Studio 中的输入数据集会转换为 Pandas 数据帧，并且输出 DataFrames 将转换回 Studio （经典）数据集。 在此转换过程中，还会执行以下转换：
 
  **Python 数据类型** | **Studio 翻译过程** |
 | --- | --- |
@@ -67,9 +67,9 @@ Studio 数据集不同于 Panda DataFrames。 因此，Studio 中的输入数据
 
 ## <a id="import-modules"></a>导入现有的 Python 脚本模块
 
-用于执行 Python 的后端基于[Anaconda](https://www.anaconda.com/distribution/)，这是一种广泛使用的科学 Python 分布。 它200包含在以数据为中心的工作负荷中最常见的 Python 包。 Studio 目前不支持使用 package 管理系统（如 Pip 或 Conda）来安装和管理外部库。  如果你发现需要合并其他库，请使用以下方案作为指导。
+用于执行 Python 的后端基于[Anaconda](https://www.anaconda.com/distribution/)，这是一种广泛使用的科学 Python 分布。 它200包含在以数据为中心的工作负荷中最常见的 Python 包。 经典版 Studio 目前不支持使用 Conda 等包管理系统来安装和管理外部库。  如果你发现需要合并其他库，请使用以下方案作为指导。
 
-常见的用例是将现有 Python 脚本合并到工作室试验中。 [执行 Python 脚本][execute-python-script]模块接受包含第三个输入端口的 Python 模块的 zip 文件。 在运行时执行框架会解压缩该文件，内容将添加到 Python 解释器的库路径。 然后，`azureml_main` 入口点函数可直接导入这些模块。 
+常见的用例是将现有 Python 脚本合并到经典版本的 Studio 试验中。 [执行 Python 脚本][execute-python-script]模块接受包含第三个输入端口的 Python 模块的 zip 文件。 在运行时执行框架会解压缩该文件，内容将添加到 Python 解释器的库路径。 然后，`azureml_main` 入口点函数可直接导入这些模块。 
 
 例如，请考虑包含简单“Hello, World”函数的 Hello.py 文件。
 
@@ -79,7 +79,7 @@ Studio 数据集不同于 Panda DataFrames。 因此，Studio 中的输入数据
 
 ![Zip 文件包含用户定义的 Python 代码](./media/execute-python-scripts/figure5.png)
 
-将 zip 文件作为数据集上传到 Studio 中。 然后，通过将 Python 代码附加到**执行 Python 脚本**模块的第三个输入端口（如下图所示），创建并运行一个试验。
+将 zip 文件作为数据集上传到经典版 Studio 中。 然后，通过将 Python 代码附加到**执行 Python 脚本**模块的第三个输入端口（如下图所示），创建并运行一个试验。
 
 ![使用 Hello 作为执行 Python 脚本模块输入的示例试验](./media/execute-python-scripts/figure6a.png)
 
@@ -94,7 +94,7 @@ Studio 数据集不同于 Panda DataFrames。 因此，Studio 中的输入数据
 可以使用以下步骤访问存储在 Azure Blob 存储帐户中的数据：
 
 1. 在本地下载[适用于 Python 的 Azure Blob 存储包](https://azuremlpackagesupport.blob.core.windows.net/python/azure.zip)。
-1. 将 zip 文件作为数据集上传到工作室工作区。
+1. 将 zip 文件作为数据集上传到 Studio （经典）工作区。
 1. 通过 `protocol='http'` 创建 BlobService 对象
 
 ```
@@ -141,11 +141,11 @@ block_blob_service = BlockBlobService(account_name='account_name', account_key='
 
 ![使用 Python 代码为示例试验可视化绘图](./media/execute-python-scripts/figure-v2-9b.png)
 
-可以通过将多个图形保存到不同图像来返回这些图形。 Studio 运行时选取所有图像，并将其连接起来以进行可视化。
+可以通过将多个图形保存到不同图像来返回这些图形。 经典版 Studio 运行时选取所有图像，并将其连接起来以进行可视化。
 
 ## <a name="advanced-examples"></a>高级示例
 
-Studio 中安装的 Anaconda 环境包含常用包，例如 NumPy、SciPy 和 Scikits-learn。 这些包可在机器学习管道中有效地用于处理数据。
+Studio 中安装的 Anaconda 环境包含常用包，如 NumPy、SciPy 和 Scikits-learn。 这些包可在机器学习管道中有效地用于处理数据。
 
 例如，以下试验和脚本说明了如何在 Scikits-learn 中使用系综学习器-了解如何计算数据集的功能重要性分数。 得分可用于在送入其他模型之前执行受监督的功能选择。
 
@@ -153,7 +153,7 @@ Studio 中安装的 Anaconda 环境包含常用包，例如 NumPy、SciPy 和 Sc
 
 ![用于按分数对功能进行排序的函数](./media/execute-python-scripts/figure8.png)
 
-以下实验则在 Azure 机器学习工作室的“Pima Indian Diabetes”数据集中计算并返回功能的重要性得分：
+接下来，试验将计算并返回 Azure 机器学习 Studio 经典版的 "Pima indian diabetes 印度糖尿病" 数据集中的特征的重要性分数：
 
 ![使用 Python 对 Pima indian diabetes 印度糖尿病数据集中的功能进行试验](./media/execute-python-scripts/figure9a.png)
 
@@ -173,7 +173,7 @@ Python 模块当前不支持诸如 intellisense 和调试等 IDE 功能。 此�
 
 ### <a name="single-data-frame-output"></a>单个数据帧输出
 
-Python 入口点仅允许将单个数据帧返回为输出。 目前不能将任意 Python 对象（如训练的模型直接返回到 Studio 运行时）。 与具有相同限制的[执行 R 脚本][execute-r-script]一样，在许多情况下，可以将对象 pickle 到字节数组中，然后将其返回到数据帧中。
+Python 入口点仅允许将单个数据帧返回为输出。 目前不能直接返回任意 Python 对象，例如经过训练的模型直接返回到 Studio （经典）运行时。 与具有相同限制的[执行 R 脚本][execute-r-script]一样，在许多情况下，可以将对象 pickle 到字节数组中，然后将其返回到数据帧中。
 
 ### <a name="inability-to-customize-python-installation"></a>无法自定义 Python 安装
 

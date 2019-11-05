@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: eb5e2c2e2eeb0f29eb74b3727ecf14d70d2381f6
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 1311328dde6fc70202ce3c6271b33f79d52102cc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176661"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472224"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理开发人员门户概述
 
@@ -25,19 +25,22 @@ ms.locfileid: "73176661"
 
 本文介绍了 API 管理中开发人员门户的自承载和托管版本之间的差异。 它还介绍了其体系结构，并提供常见问题的解答。
 
-> [!IMPORTANT]
+> [!WARNING]
+> 新的开发人员门户当前正在部署到 API 管理服务。
+> 如果你的服务是新创建的或开发人员层服务，则你应该已经有最新版本。 否则，你可能会遇到问题（例如，通过发布功能）。 功能推出将于2019年11月11日星期一完成。
+>
 > [了解如何从预览版迁移到开发人员门户的正式发布版本](#preview-to-ga)。
 
 ![API 管理开发人员门户](media/api-management-howto-developer-portal/cover.png)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="managed-vs-self-hosted"></a>托管和自承载版本
+## <a name="managed-vs-self-hosted"></a> 托管版本和自承载版本
 
-可以通过两种方式生成开发人员门户：
+可通过两种方式构建开发人员门户：
 
-- **托管版本**-通过编辑和自定义门户，该门户内置于 API 管理实例，并可通过 URL `<your-api-management-instance-name>.developer.azure-api.net`进行访问。 请参阅[此文档一文](api-management-howto-developer-portal-customize.md)，了解如何访问和自定义托管门户。
-- **自承载版本**-通过在 API 管理实例之外部署和自我托管你的门户。 此方法允许您编辑门户的基本代码并扩展提供的核心功能。 还需要自己将门户升级到最新版本。 有关详细信息和说明，请参阅[GitHub 存储库，其中包含门户的源代码][1]。 [托管版本教程](api-management-howto-developer-portal-customize.md)介绍了门户的管理面板，该面板还在自承载版本中提供。
+- **托管版本** - 通过编辑和自定义 API 管理实例中内置的、可通过 URL `<your-api-management-instance-name>.developer.azure-api.net` 访问的门户。 请参阅[此文档一文](api-management-howto-developer-portal-customize.md)，了解如何访问和自定义托管门户。
+- **自承载版本** - 通过在 API 管理实例外部部署和自承载门户。 使用此方法可以编辑门户的基代码并扩展所提供的核心功能。 还需要自己将门户升级到最新版本。 有关详细信息和说明，请参阅[包含门户源代码的 GitHub 存储库][1]。 [托管版本教程](api-management-howto-developer-portal-customize.md)介绍了门户的管理面板，该面板还在自承载版本中提供。
 
 ## <a name="portal-architectural-concepts"></a>门户体系结构概念
 
@@ -66,9 +69,9 @@ ms.locfileid: "73176661"
 
 门户基于[Paperbits 框架](https://paperbits.io/)的改编分叉。 已对原始 Paperbits 功能进行了扩展，以提供特定于 API 管理的小组件（例如，Api 列表、产品列表）和 API 管理服务的连接器，用于保存和检索内容。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a> 常见问题
 
-在本部分中，我们将回答有关新开发人员门户的常见问题，这些问题是一般的。 有关特定于自承载版本的问题，请参阅[GitHub 存储库的 wiki 部分](https://github.com/Azure/api-management-developer-portal/wiki)。
+在本部分中，我们将回答有关新开发人员门户的常见问题，这些问题是一般的。 有关自承载版本的特定问题，请参阅 [GitHub 存储库的 wiki 部分](https://github.com/Azure/api-management-developer-portal/wiki)。
 
 ### <a name="a-idpreview-to-ga-how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/> 如何从门户预览版本进行迁移？
 
@@ -88,7 +91,7 @@ ms.locfileid: "73176661"
 
 门户不兼容，需要手动迁移内容。
 
-### <a name="does-the-new-portal-have-all-the-features-of-the-old-portal"></a>新门户是否具有旧门户的所有功能？
+### <a name="does-the-new-portal-have-all-the-features-of-the-old-portal"></a>新门户是否拥有旧门户的所有功能？
 
 新的开发人员门户不支持*应用程序*和*问题*。 如果在旧门户中使用了问题，并在新门户中使用了这些*问题*，请在[专用 GitHub 问题](https://github.com/Azure/api-management-developer-portal/issues/122)中发布评论。
 
@@ -106,27 +109,27 @@ ms.locfileid: "73176661"
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>门户是否支持 Azure 资源管理器模板和/或它是否与 API 管理 DevOps 资源工具包兼容？
 
-不。
+不能。
 
 ### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>是否需要为托管门户依赖项启用附加 VNET 连接？
 
-不。
+不能。
 
-### <a name="im-getting-a-cors-error-when-using-the-interactive-console-what-should-i-do"></a>使用交互式控制台时，出现 CORS 错误。 我应该怎么做？
+### <a name="im-getting-a-cors-error-when-using-the-interactive-console-what-should-i-do"></a>使用交互式控制台时，出现 CORS 错误。 我该怎么办？
 
-交互式控制台从浏览器发出客户端 API 请求。 可以通过在 API 上添加[CORS 策略](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS)来解决 CORS 问题。 您可以手动指定所有参数（例如，作为 https://contoso.com) 原点或使用通配符 `*` 值。
+交互式控制台从浏览器发出客户端 API 请求。 在 API 中添加 [CORS 策略](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS)可以解决 CORS 问题。 可以手动指定所有参数 (例如，来源为 https://contoso.com)，或使用通配符值 `*`。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关新开发人员门户的详细信息：
+详细了解新开发人员门户：
 
 - [访问和自定义托管开发人员门户](api-management-howto-developer-portal-customize.md)
 - [设置门户的自承载版本][2]
 
 浏览其他资源：
 
-- [带有源代码的 GitHub 存储库][1]
-- [项目的公共路线图][3]
+- [包含源代码的 GitHub 存储库][1]
+- [项目的公开路线图][3]
 
 [1]: https://aka.ms/apimdevportal
 [2]: https://github.com/Azure/api-management-developer-portal/wiki

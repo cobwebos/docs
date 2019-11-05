@@ -1,7 +1,7 @@
 ---
 title: 使用 Web 服务
-titleSuffix: Azure Machine Learning Studio
-description: 从 Azure 机器学习工作室部署机器学习服务后，即可将 RESTFul Web 服务用作实时请求响应服务或批处理执行服务。
+titleSuffix: Azure Machine Learning Studio (classic)
+description: 从 Azure 机器学习 Studio （经典）部署机器学习服务后，可以将 RESTFul Web 服务作为实时请求响应服务或批处理执行服务使用。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,20 +10,20 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: a537227a7003391122e10f7f39233040cef49db3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5f73e9814adeb44c2838a1fd3bd9c9fd34d4de5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751291"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493304"
 ---
-# <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>如何使用 Azure 机器学习工作室 Web 服务
+# <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>如何使用 Azure 机器学习 Studio （经典） web 服务
 
-将 Azure 机器学习工作室预测模型部署为 Web 服务后，可以使用 REST API 向其发送数据并获取预测。 可以实时或者以批处理模式发送数据。
+将 Azure 机器学习 Studio （经典）预测模型部署为 Web 服务后，你可以使用 REST API 来发送数据并获取预测。 可以实时或者以批处理模式发送数据。
 
-可以在以下位置查找有关如何使用机器学习工作室创建和部署机器学习 Web 服务的详细信息：
+可在此处找到有关如何使用机器学习 Studio （经典）创建和部署机器学习 Web 服务的详细信息。
 
-* 有关如何在机器学习工作室中创建试验的教程，请参阅[Create your first experiment](create-experiment.md)（创建第一个实验）。
+* 有关如何在机器学习 Studio （经典）中创建实验的教程，请参阅[创建第一个试验](create-experiment.md)。
 * 有关如何部署 Web 服务的详细信息，请参阅 [Deploy a Machine Learning web service](publish-a-machine-learning-web-service.md)（部署机器学习 Web 服务）。
 * 有关机器学习的概括信息，请访问[机器学习文档中心](https://azure.microsoft.com/documentation/services/machine-learning/)。
 
@@ -32,14 +32,14 @@ ms.locfileid: "60751291"
 ## <a name="overview"></a>概述
 外部应用程序可使用 Azure 机器学习 Web 服务实时与机器学习服务工作流评分模型通信。 机器学习 Web 服务调用将预测结果返回到外部应用程序。 若要执行机器学习 Web 服务调用，可以传递部署 Web 服务时创建的 API 密钥。 机器学习 Web 服务基于 REST（流行的 Web 编程项目体系结构）。
 
-Azure 机器学习工作室有两种类型的服务：
+Azure 机器学习 Studio 的经典版具有两种类型的服务：
 
-* 请求响应服务 (RRS) - 低延迟、高度可缩放的服务，针对从机器学习工作室创建和部署的无状态模型提供接口。
+* 请求-响应服务（RR）–低延迟、高度可缩放的服务，它为从机器学习 Studio （经典）创建和部署的无状态模型提供接口。
 * 批处理执行服务 (BES) - 为一批数据记录进行评分的异步服务。
 
 有关机器学习 Web 服务的详细信息，请参阅 [Deploy a Machine Learning Web service](publish-a-machine-learning-web-service.md)（部署机器学习 Web 服务）。
 
-## <a name="get-an-azure-machine-learning-studio-authorization-key"></a>获取 Azure 机器学习工作室授权密钥
+## <a name="get-an-authorization-key"></a>获取授权密钥
 部署实验时，会为 Web 服务生成 API 密钥。 可从多个位置检索密钥。
 
 ### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>从 Microsoft Azure 机器学习 Web 服务门户检索
@@ -47,47 +47,47 @@ Azure 机器学习工作室有两种类型的服务：
 
 为新的机器学习 Web 服务检索 API 密钥：
 
-1. 在 Azure 机器学习 Web 服务门户中，单击“Web 服务”  顶部菜单。
+1. 在 Azure 机器学习 Web 服务门户中，单击“Web 服务”顶部菜单。
 2. 单击想要为其检索密钥的 Web 服务。
-3. 单击顶部菜单上的“使用”  。
-4. 复制并保存“主密钥”  。
+3. 单击顶部菜单上的“使用”。
+4. 复制并保存“主密钥”。
 
 为经典机器学习 Web 服务检索 API 密钥：
 
-1. 在 Azure 机器学习 Web 服务门户中，单击“经典 Web 服务”  顶部菜单。
+1. 在 Azure 机器学习 Web 服务门户中，单击“经典 Web 服务”顶部菜单。
 2. 单击正在使用的 Web 服务。
 3. 单击想要为其检索密钥的终结点。
-4. 单击顶部菜单上的“使用”  。
-5. 复制并保存“主密钥”  。
+4. 单击顶部菜单上的“使用”。
+5. 复制并保存“主密钥”。
 
 ### <a name="classic-web-service"></a>经典 Web 服务
- 还可以从机器学习工作室来检索经典 Web 服务的密钥。
+ 还可以从机器学习 Studio （经典）检索经典 Web 服务的密钥。
 
-#### <a name="machine-learning-studio"></a>机器学习工作室
-1. 在机器学习工作室左侧，单击“Web 服务”  。
-2. 单击一个 Web 服务。 “API 密钥”  位于“仪表板”  选项卡。
+#### <a name="machine-learning-studio-classic"></a>机器学习 Studio （经典）
+1. 在机器学习 Studio （经典）中，单击左侧的 " **WEB 服务**"。
+2. 单击一个 Web 服务。 “API 密钥”位于“仪表板”选项卡。
 
 ## <a id="connect"></a>连接到机器学习 Web 服务
 可使用支持 HTTP 请求和响应的编程语言连接到机器学习 Web 服务。 可从机器学习 Web 服务帮助页，查看 C#、Python 和 R 示例。
 
-**机器学习 API 帮助**部署 Web 服务时会创建机器学习 API 帮助。 请参阅[教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)。
+**机器学习 API 帮助**部署 Web 服务时会创建机器学习 API 帮助。 请参阅[教程3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)。
 机器学习 API 帮助包含有关预测 Web 服务的详细信息。
 
 1. 单击正在使用的 Web 服务。
 2. 单击想要为其查看 API 帮助页的终结点。
-3. 单击顶部菜单上的“使用”  。
-4. 在请求响应或批处理执行终结点下方单击“API 帮助页”  。
+3. 单击顶部菜单上的“使用”。
+4. 在请求响应或批处理执行终结点下方单击“API 帮助页”。
 
 **查看新 Web 服务的机器学习 API 帮助**
 
 在 [Azure 机器学习 Web 服务门户](https://services.azureml.net/)：
 
-1. 在顶部菜单单击“WEB 服务”  。
+1. 在顶部菜单单击“WEB 服务”。
 2. 单击想要为其检索密钥的 Web 服务。
 
-单击“使用 Web 服务”  获取请求响应和批处理执行服务以及 C#、R 和 Python 示例代码的 URI。
+单击“使用 Web 服务”获取请求响应和批处理执行服务以及 C#、R 和 Python 示例代码的 URI。
 
-单击“Swagger API”  从提供的 URI 为调用的 API 获取基于 Swagger 的文档。
+单击“Swagger API”从提供的 URI 为调用的 API 获取基于 Swagger 的文档。
 
 ### <a name="c-sample"></a>C# 示例
 若要连接到机器学习 Web 服务，请使用 **HttpClient** 传递 ScoreData。 ScoreData 包含 FeatureVector以及表示 ScoreData 的具有数字特征的 N 维向量。 使用 API 密钥对机器学习服务进行身份验证。
@@ -96,17 +96,17 @@ Azure 机器学习工作室有两种类型的服务：
 
 **在 Visual Studio 中安装 Microsoft.AspNet.WebApi.Client NuGet**
 
-1. 从 UCI 发布下载数据集：成人 2 类数据集 Web 服务。
-2. 单击“工具”   > “NuGet 包管理器”   > “包管理器控制台”  。
+1. 发布 UCI 下载数据集：成人 2 类数据集 Web 服务。
+2. 单击“工具” > “NuGet 包管理器” > “包管理器控制台”。
 3. 选择 **Microsoft.AspNet.WebApi.Client 安装包**。
 
 **运行代码示例**
 
-1. 发布“示例 1：从 UCI 下载数据集：成人 2 类数据集”实验（机器学习示例集合的一部分）。
-2. 使用 Web 服务密钥分配 API 密钥。 请参阅前文的“获取 Azure 机器学习工作室授权密钥”  部分。
+1. 发布“示例 1：从 UCI 下载数据集：成人 2 类数据集”实验、机器学习示例集合的一部分。
+2. 使用 Web 服务密钥分配 API 密钥。 请参阅上面**的获取授权密钥**。
 3. 使用请求 URI 分配服务 URI。
 
- 以下是完整请求的示例。
+以下是完整请求的示例。
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -194,15 +194,15 @@ namespace CallRequestResponseService
 ```
 
 ### <a name="python-sample"></a>Python 示例
-若要连接到机器学习 Web 服务，请使用 Python 2.X 的 urllib2  库和 Python 3.X 的 urllib.request  库。 将传递 ScoreData，其中包含 FeatureVector 以及表示 ScoreData 的具有数字特征的 N 维向量。 使用 API 密钥对机器学习服务进行身份验证。
+若要连接到机器学习 Web 服务，请使用 Python 2.X 的 urllib2库和 Python 3.X 的 urllib.request 库。 将传递 ScoreData，其中包含 FeatureVector 以及表示 ScoreData 的具有数字特征的 N 维向量。 使用 API 密钥对机器学习服务进行身份验证。
 
 **运行代码示例**
 
-1. 部署“示例 1：从 UCI 下载数据集：成人 2 类数据集”实验（机器学习示例集合的一部分）。
-2. 使用 Web 服务密钥分配 API 密钥。 请参阅本文开篇附近位置的“获取 Azure 机器学习工作室授权密钥”部分  。
+1. 部署“示例 1：从 UCI 下载数据集：成人 2 类数据集”实验、机器学习示例集合的一部分。
+2. 使用 Web 服务密钥分配 API 密钥。 请参阅本文开头部分附近的 "**获取授权密钥**" 部分。
 3. 使用请求 URI 分配服务 URI。
 
- 以下是完整请求的示例。
+以下是完整请求的示例。
 ```python
 import urllib2 # urllib.request for Python 3.X
 import json
@@ -248,9 +248,9 @@ except urllib2.HTTPError, error:
 
 ### <a name="r-sample"></a>R 示例
 
-若要连接到机器学习 Web 服务，请使用 RCurl 和 rjson 库发出请求，并处理返回的 JSON 响应   。 将传递 ScoreData，其中包含 FeatureVector 以及表示 ScoreData 的具有数字特征的 N 维向量。 使用 API 密钥对机器学习服务进行身份验证。
+若要连接到机器学习 Web 服务，请使用 RCurl 和 rjson 库发出请求，并处理返回的 JSON 响应。 将传递 ScoreData，其中包含 FeatureVector 以及表示 ScoreData 的具有数字特征的 N 维向量。 使用 API 密钥对机器学习服务进行身份验证。
 
- 以下是完整请求的示例。
+以下是完整请求的示例。
 ```r
 library("RCurl")
 library("rjson")
@@ -304,9 +304,9 @@ print(fromJSON(result))
 
 ### <a name="javascript-sample"></a>JavaScript 示例
 
-若要连接到机器学习 Web 服务，请在项目中使用 request  npm 库。 还将使用 `JSON` 对象设置输入的格式并分析结果。 使用 `npm install request --save` 进行安装，或将 `"request": "*"` 添加到 `dependencies` 下的 package.json，并运行 `npm install`。
+若要连接到机器学习 Web 服务，请在项目中使用 requestnpm 库。 还将使用 `JSON` 对象设置输入的格式并分析结果。 使用 `npm install request --save` 进行安装，或将 `"request": "*"` 添加到 `dependencies` 下的 package.json，并运行 `npm install`。
 
- 以下是完整请求的示例。
+以下是完整请求的示例。
 ```js
 let req = require("request");
 

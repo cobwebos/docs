@@ -1,7 +1,7 @@
 ---
 title: 常见问题-常见问题
 titleSuffix: Microsoft Genomics
-description: 有关 Microsoft 基因组学的用户常见问题解答。
+description: 获取与使用 Microsoft 基因组学 service 相关的常见问题的解答，包括技术信息、SLA 和计费。
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: 80a656ee687b71fcaf09a02d70d0a5a4300186bc
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 4a2b66f95467e7f6cb99f632548351f827e259c3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249231"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476439"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft 基因组学：常见问题
 
@@ -36,7 +36,7 @@ Microsoft 基因组学将按每个工作流处理的千兆碱基数计费。 有
 通过运行 `msgen help` 可获得可用命令和参数的完整列表。 如果未提供进一步的参数，它会显示可用帮助部分的列表，每个 `submit`、`list`、`cancel` 和 `status` 各有一个列表。 若要获取有关特定命令的帮助，请键入 `msgen help command`；例如，`msgen help submit` 会列出所有提交选项。
 
 ## <a name="what-are-the-most-commonly-used-commands-for-the-msgen-client"></a>`msgen` 客户端最常用的命令有哪些？
-最常用的命令是 `msgen` 客户端的参数，包括： 
+`msgen` 客户端最常用的命令参数包括： 
 
  |**命令**          |  **字段说明** |
  |:--------------------|:-------------         |
@@ -61,7 +61,7 @@ Microsoft 基因组学将按每个工作流处理的千兆碱基数计费。 有
 
 支持以下这些引用：
 
- |引用              | `-pa/--process-args` 的值 |
+ |参考              | `-pa/--process-args` 的值 |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
  |hg38                   | `R=hg38m1`                    |      
@@ -78,13 +78,13 @@ msgen 可识别采用以下格式的配置文件：
 
   |命令行参数            | 配置文件行 |
   |:-------------                   |:-------------                 |
-  |`-u/--api-url-base https://url`  | api_url_base: https://url    |
+  |`-u/--api-url-base https://url`  | *api_url_base: https://url*    |
   |`-k/--access-key KEY`            | access_key:KEY              |      
   |`-pa/--process-args R=B37m1`     | process_args:R-b37m1        |  
 
 ## <a name="next-steps"></a>后续步骤
 
-使用以下资源进行 Microsoft 基因组学入门：
+使用以下资源来开始使用 Microsoft 基因组学：
 - 通过 Microsoft 基因组学服务开始运行第一个工作流。 [通过 Microsoft 基因组学服务运行工作流](quickstart-run-genomics-workflow-portal.md)
 - 提交自己的数据并通过以下 Microsoft 基因组学服务进行处理：[配对 FASTQ](quickstart-input-pair-FASTQ.md) | [BAM ](quickstart-input-BAM.md) | [多个 FASTQ 或 BAM](quickstart-input-multiple.md) 
 

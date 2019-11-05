@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5f11173c7b7f7396a8cf5cda4b9c8975cd7bb38e
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 172003b13807720df2431a3610947b36d8303fed
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679800"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470360"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>将活动 DNS 名称迁移到 Azure 应用服务
 
@@ -37,7 +37,7 @@ ms.locfileid: "72679800"
 
 ## <a name="bind-the-domain-name-preemptively"></a>提前绑定域名
 
-提前绑定自定义域时，对 DNS 记录进行任何更改之前，需要完成以下两项操作：
+提前绑定自定义域时，请先完成下面的两项操作，再对 DNS 记录进行更改：
 
 - 验证域所有权
 - 启用应用的域名
@@ -48,15 +48,15 @@ ms.locfileid: "72679800"
 
 ### <a name="create-domain-verification-record"></a>创建域验证记录
 
-若要验证域所有权，请添加 TXT 记录。 TXT 记录从 awverify.&lt;subdomain> 映射到 &lt;appname>.azurewebsites.net。 
+若要验证域所有权，请添加 TXT 记录。 TXT 记录从 awverify._subdomain>&lt;_ 映射到 _appname>.azurewebsites.net&lt;_ 。 
 
 你需要的 TXT 记录取决于要迁移的 DNS 记录。 有关示例，请参阅下表（`@` 通常表示根域）：
 
 | DNS 记录示例 | TXT 主机 | TXT 值 |
 | - | - | - |
-| \@（根） | awverify | &lt;appname>.azurewebsites.net |
-| www（子域） | awverify.www | &lt;appname>.azurewebsites.net |
-| \*（通配符） | awverify.\* | &lt;appname>.azurewebsites.net |
+| \@（根） | awverify | _appname>.azurewebsites.net&lt;_ |
+| www（子域） | awverify.www | _appname>.azurewebsites.net&lt;_ |
+| \*（通配符） | awverify. _\*_ | _appname>.azurewebsites.net&lt;_ |
 
 在 DNS 记录页中，记下要迁移的 DNS 名称的记录类型。 应用服务支持来自 CNAME 和 A 记录的映射。
 
@@ -73,7 +73,7 @@ ms.locfileid: "72679800"
 
 ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-在“自定义域”页中，选择“添加主机名”旁的 + 图标。
+在“自定义域”页中，选择“添加主机名” **+旁的**  图标。
 
 ![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
@@ -89,7 +89,7 @@ ms.locfileid: "72679800"
 
 ![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-新主机名可能需要经过一段时间后才会反映在应用的“自定义域”页面中。 请尝试刷新浏览器来更新数据。
+新主机名可能需要经过一段时间后才会反映在应用的“自定义域”页中。 请尝试刷新浏览器来更新数据。
 
 ![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
@@ -119,11 +119,11 @@ ms.locfileid: "72679800"
 
 对于 `contoso.com` 根域示例，重新映射 A 或 CNAME 记录，如下表中的示例所示： 
 
-| FQDN 示例 | 记录类型 | 主机 | Value |
+| FQDN 示例 | 记录类型 | 主机 | 值 |
 | - | - | - | - |
-| contoso.com（根域） | A | `@` | 在[复制应用的 IP 地址](#info)步骤中复制的 IP 地址 |
-| www \.contoso .com （sub） | CNAME | `www` | &lt;appname>.azurewebsites.net |
-| \*.contoso.com（通配符域） | CNAME | _\*_ | &lt;appname>.azurewebsites.net |
+| contoso.com（根域） | A | `@` | 通过[复制应用的 IP 地址](#info)获得的 IP 地址 |
+| www\.contoso.com (sub) | CNAME | `www` | _appname>.azurewebsites.net&lt;_ |
+| \*.contoso.com（通配符域） | CNAME | _\*_ | _appname>.azurewebsites.net&lt;_ |
 
 保存设置。
 
@@ -133,11 +133,11 @@ ms.locfileid: "72679800"
 
 可以在 Azure 中的订阅之间或在同一订阅中迁移活动自定义域。 但是，这种无停机时间的迁移需要在特定时间为源应用和目标应用分配相同的自定义域。 因此，需要确保两个应用未部署到相同的部署单元（在内部称为 web 空间）。 域名只能分配给每个部署单位中的一个应用。
 
-通过查看 `<deployment-unit>.ftp.azurewebsites.windows.net` 的 FTP/S URL 的域名，可以找到应用的部署单元。 检查并确保源应用与目标应用之间的部署单位不同。 应用的部署单位取决于其所在的[应用服务计划](overview-hosting-plans.md)。 它是在创建计划时由 Azure 随机选择的，无法更改。 仅当在[同一资源组*和*同一区域中创建](app-service-plan-manage.md#create-an-app-service-plan)两个计划时，Azure 才会确保两个计划处于相同的部署单元中，但它没有任何逻辑来确保计划处于不同的部署单元。 在不同的部署单元中创建计划的唯一方法是在新的资源组或区域中继续创建计划，直到获取不同的部署单元。
+通过查看 `<deployment-unit>.ftp.azurewebsites.windows.net`的 FTP/S URL 的域名，可以找到应用的部署单元。 检查并确保源应用与目标应用之间的部署单位不同。 应用的部署单位取决于其所在的[应用服务计划](overview-hosting-plans.md)。 它是在创建计划时由 Azure 随机选择的，无法更改。 仅当在[同一资源组*和*同一区域中创建](app-service-plan-manage.md#create-an-app-service-plan)两个计划时，Azure 才会确保两个计划处于相同的部署单元中，但它没有任何逻辑来确保计划处于不同的部署单元。 在不同的部署单元中创建计划的唯一方法是在新的资源组或区域中继续创建计划，直到获取不同的部署单元。
 
 ## <a name="next-steps"></a>后续步骤
 
 了解如何将自定义 SSL 证书绑定到应用服务。
 
 > [!div class="nextstepaction"]
-> [将现有的自定义 SSL 证书绑定到 Azure 应用服务](app-service-web-tutorial-custom-ssl.md)
+> [将 SSL 证书绑定到 Azure App Service](configure-ssl-bindings.md)

@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 06/19/2019
-ms.openlocfilehash: a864ec8c9bbdf90f04c98c8d9656c863fb32b653
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 10/25/2019
+ms.openlocfilehash: 60596a8e157ebe1d6423c89e69f1c01b2f130310
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162474"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496909"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>将现有模型用于 Azure 机器学习
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 了解如何将现有机器学习模型与 Azure 机器学习配合使用。
 
@@ -30,14 +31,14 @@ ms.locfileid: "71162474"
 >
 > 有关部署过程的一般信息，请参阅[部署具有 Azure 机器学习的模型](how-to-deploy-and-where.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)。
 
     > [!TIP]
-    > 本文中的 Python 示例假设`ws`将变量设置为 Azure 机器学习工作区。
+    > 本文中的 Python 示例假定 `ws` 变量设置为 Azure 机器学习工作区。
     >
-    > CLI 示例使用和`myworkspace` `myresourcegroup`的占位符。 将这些名称替换为你的工作区的名称以及包含它的资源组。
+    > CLI 示例使用 `myworkspace` 的占位符和 `myresourcegroup`。 将这些名称替换为你的工作区的名称以及包含它的资源组。
 
 * [AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。  
 
@@ -46,11 +47,11 @@ ms.locfileid: "71162474"
 * 定型的模型。 必须将模型保存到开发环境中的一个或多个文件中。
 
     > [!NOTE]
-    > 为了演示如何注册在 Azure 机器学习之外训练的模型，本文中的示例代码片段使用由 Paolo Ripamonti 的 Twitter 情绪分析项目创建的模型[https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)：。
+    > 为了演示如何注册在 Azure 机器学习之外训练的模型，本文中的示例代码片段使用了由 Paolo Ripamonti 的 Twitter 情绪分析项目： [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)创建的模型。
 
 ## <a name="register-the-models"></a>注册模型
 
-通过注册模型，可以在工作区中存储、版本和跟踪有关模型的元数据。 在下面的 Python 和 CLI 示例中， `models`目录`model.h5`包含、 `model.w2v`、 `encoder.pkl`和`tokenizer.pkl`文件。 此示例将`models`目录中包含的文件上传为名`sentiment`为的新模型注册：
+通过注册模型，可以在工作区中存储、版本和跟踪有关模型的元数据。 在下面的 Python 和 CLI 示例中，`models` 目录包含 `model.h5`、`model.w2v`、`encoder.pkl`和 `tokenizer.pkl` 文件。 此示例将 `models` 目录中包含的文件上传为名为 `sentiment`的新型号注册：
 
 ```python
 from azureml.core.model import Model
@@ -78,7 +79,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 
 推理配置定义用于运行已部署模型的环境。 推理配置引用以下实体，这些实体用于在部署模型时运行模型：
 
-* 一个项脚本。 此文件（名`score.py`为）在部署的服务启动时加载模型。 它还负责接收数据，将数据传递到模型，然后返回响应。
+* 一个项脚本。 此文件（名为 `score.py`）将在部署的服务启动时加载模型。 它还负责接收数据，将数据传递到模型，然后返回响应。
 * Azure 机器学习[环境](how-to-use-environments.md)。 环境定义运行模型和条目脚本所需的软件依赖关系。
 
 下面的示例演示如何使用 SDK 来创建环境，然后将其用于推理配置：
@@ -121,7 +122,7 @@ CLI 从 YAML 文件加载推理配置：
 }
 ```
 
-使用 CLI 时，conda 环境在推理配置引用的`myenv.yml`文件中定义。 以下 YAML 是此文件的内容：
+使用 CLI，conda 环境在推理配置引用的 `myenv.yml` 文件中定义。 以下 YAML 是此文件的内容：
 
 ```yaml
 name: inference_environment
@@ -139,7 +140,7 @@ dependencies:
 
 ### <a name="entry-script"></a>输入脚本
 
-条目脚本仅包含两个必需函数： `init()`和`run(data)`。 这些函数用于在启动时初始化服务，并使用客户端传入的请求数据运行模型。 脚本的其余部分将处理模型的加载和运行。
+条目脚本只包含两个所需的函数，`init()` 和 `run(data)`。 这些函数用于在启动时初始化服务，并使用客户端传入的请求数据运行模型。 脚本的其余部分将处理模型的加载和运行。
 
 > [!IMPORTANT]
 > 没有适用于所有模型的通用条目脚本。 它始终特定于所使用的模型。 它必须了解如何加载模型、模型所需的数据格式，以及如何使用模型对数据进行评分。
@@ -251,7 +252,7 @@ CLI 从 YAML 文件加载部署配置：
 
 ## <a name="deploy-the-model"></a>部署模型
 
-下面的示例加载名为`sentiment`的注册模型的信息，然后将其部署为名为`sentiment`的服务。 在部署期间，推理配置和部署配置用于创建和配置服务环境：
+下面的示例加载名为 `sentiment`的注册模型的信息，然后将其部署为名为 `sentiment`的服务。 在部署期间，推理配置和部署配置用于创建和配置服务环境：
 
 ```python
 from azureml.core.model import Model
@@ -266,7 +267,7 @@ print("scoring URI: " + service.scoring_uri)
 
 有关详细信息，请参阅[Model （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-)引用。
 
-若要从 CLI 部署模型，请使用以下命令。 此命令使用存储`sentiment:1` `inferenceConfig.json`在和`deploymentConfig.json`文件中的推理和部署配置来部署已注册模型的版本1（）：
+若要从 CLI 部署模型，请使用以下命令。 此命令使用存储在 `inferenceConfig.json` 和 `deploymentConfig.json` 文件中的推理和部署配置来部署已注册模型的版本1（`sentiment:1`）：
 
 ```azurecli
 az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc deploymentConfig.json

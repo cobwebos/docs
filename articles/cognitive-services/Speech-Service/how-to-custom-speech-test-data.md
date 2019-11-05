@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b18e1b755b4e1339bf00380d8228fc28e355d3e1
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 577a76b628e40b7651345698a46cba255b16a828
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802514"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464559"
 ---
 # <a name="prepare-data-for-custom-speech"></a>准备自定义语音的数据
 
@@ -52,11 +52,11 @@ ms.locfileid: "70802514"
 
 使用此表可以确保正确设置音频文件的格式，以便与自定义语音一起使用：
 
-| 属性 | ReplTest1 |
+| 属性 | 值 |
 |----------|-------|
 | 文件格式 | RIFF (WAV) |
-| 采样频率 | 8000 hz 或 16000 Hz |
-| 频道 | 1（单音） |
+| 采样速率 | 8000 hz 或 16000 Hz |
+| 声道 | 1（单音） |
 | 每个音频的最大长度 | 2 小时 |
 | 示例格式 | PCM，16 位 |
 | 存档格式 | .zip |
@@ -64,7 +64,7 @@ ms.locfileid: "70802514"
 
 如果您的音频不满足这些属性，或者您想要检查它是否有，我们建议您下载[sox](http://sox.sourceforge.net)来检查或转换音频。 下面的示例演示如何通过命令行完成每个活动：
 
-| activities | 描述 | Sox 命令 |
+| 活动 | 说明 | Sox 命令 |
 |----------|-------------|-------------|
 | 检查音频格式 | 使用此命令检查音频文件格式。 | `sox --i <filename>` |
 | 转换音频格式 | 使用此命令可将音频文件转换为单通道，16位，16 KHz。 | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
@@ -73,11 +73,11 @@ ms.locfileid: "70802514"
 
 若要在处理音频文件时测量 Microsoft 语音到文本准确性的准确性，必须提供人机标记的转录（单词字词）进行比较。 尽管人为标记的脚本通常非常耗时，但还是需要评估准确性并为用例定型模型。 请记住，识别的改进仅适用于所提供的数据。 出于此原因，仅上传高质量的脚本很重要。  
 
-| 属性 | ReplTest1 |
+| 属性 | 值 |
 |----------|-------|
 | 文件格式 | RIFF (WAV) |
-| 采样频率 | 8000 hz 或 16000 Hz |
-| 频道 | 1（单音） |
+| 采样速率 | 8000 hz 或 16000 Hz |
+| 声道 | 1（单音） |
 | 每个音频的最大长度 | 60秒 |
 | 示例格式 | PCM，16 位 |
 | 存档格式 | .zip |
@@ -94,7 +94,7 @@ ms.locfileid: "70802514"
 > [!NOTE]
 > 听录应编码为 UTF-8 字节顺序标记 (BOM)。
 
-听录内容应经过文本规范化，以便可由系统处理。 但是，用户在将数据上传到自定义语音服务之前，必须完成一些重要的规范化操作。 若要在准备转录时使用合适的语言，请参阅[如何创建带标签的](how-to-custom-speech-human-labeled-transcriptions.md)脚本
+听录内容应经过文本规范化，以便可由系统处理。 但是，在将数据上传到 Speech Studio_之前_，用户必须完成一些重要的 normalizations。 若要在准备转录时使用合适的语言，请参阅[如何创建带标签的](how-to-custom-speech-human-labeled-transcriptions.md)脚本
 
 收集音频文件和相应的转录后，应在上传到[自定义语音门户](https://speech.microsoft.com/customspeech)之前将它们打包为一个 .zip 文件。 这是一个包含三个音频文件和一个人标记的脚本文件的示例数据集：
 
@@ -117,7 +117,7 @@ ms.locfileid: "70802514"
 
 使用此表可确保最谈话的相关数据文件的格式正确：
 
-| 属性 | ReplTest1 |
+| 属性 | 值 |
 |----------|-------|
 | 文本编码 | UTF-8 BOM |
 | 每行的话语数 | 1 |
@@ -140,22 +140,22 @@ ms.locfileid: "70802514"
 
 | 已识别/显示的窗体 | 口头形式 |
 |--------------|--------------------------|
-| 3CPO | three c p o |  
+| 3CPO | 三个 c p o |  
 | CNTK | c n t k |
-| IEEE | i triple e |
+| IEEE | 我三个 e |
 
 口述的窗体是拼写出的拼音顺序。它可以由字母、字、音节或这三三项的组合组成。
 
 自定义发音提供英语（zh-cn）和德语（de）。 此表按语言显示支持的字符：
 
-| 语言 | 区域设置 | 角色 |
+| 语言 | Locale | 字符 |
 |----------|--------|------------|
 | 英语 | en-US | a、b、c、d、e、f、g、h，i，j，k，l，m，n，o，p，q，r，s，t，u，v，w，x，y，z |
 | 德语 | de-DE | ä，ö，ü，a，b，c，d，e，f，g，h，i，j，k，l，m，n，o，p，q，r，s，t，u，v，w，x，y，z |
 
 使用此表可确保发音的相关数据文件的格式正确。 发音文件较小，不应超过几 Kb。
 
-| 属性 | ReplTest1 |
+| 属性 | 值 |
 |----------|-------|
 | 文本编码 | UTF-8 BOM （英语还支持 ANSI） |
 | 每行的发音数 | 1 |

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: meladie
-ms.openlocfilehash: 35c696e47c0a01c2cdb4d91db5a654208f2196e2
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9dd24a962ddece4ae7841effea7fc36bba1b727b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71257271"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496459"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-ffiec-financial-services"></a>Azure 安全性和符合性蓝图 - 针对 FFIEC 金融服务的分析
 
@@ -27,11 +27,11 @@ ms.locfileid: "71257271"
 
 ## <a name="architecture-diagram-and-components"></a>体系结构示意图和组件
 
-本文中的 Azure 安全性和符合性蓝天提供了一个分析平台，客户可在此平台上自行构建分析工具。 该参考体系结构概述了一个泛型用例，其中客户通过 SQL/数据管理员的批量数据导入或通过经操作用户的操作数据更新输入数据。 两个工作流都将导入数据的 Azure Functions 合并到 Azure SQL 数据库。 Azure Functions 必须由客户通过 Azure 门户进行配置，以处理特定于客户每个分析需求的导入任务。
+本文中的 Azure 安全性和符合性蓝天提供了一个分析平台，客户可在此平台上自行构建分析工具。 参考体系结构概述了一个泛型用例，其中客户通过 SQL/数据管理员的批量数据导入或者通过经操作用户的操作数据更新输入数据。 两个工作流都将导入数据的 Azure Functions 合并到 Azure SQL 数据库。 Azure Functions 必须由客户通过 Azure 门户进行配置，以处理特定于客户每个分析需求的导入任务。
 
-Azure 为客户提供各种报告和分析服务。 此解决方案将 Azure 机器学习服务与 Azure SQL 数据库 相结合，从而快速浏览数据并通过更智能的客户数据建模更快传递结果。 Azure 机器学习通过探索数据集间的新关系加快查询速度。 一旦通过多个统计函数训练数据，最多 7 个额外查询池（包括客户服务器一共 8 个）可以与相同的表格模式同步，从而分散查询工作负荷并减少响应时间。
+Azure 为客户提供各种报告和分析服务。 此解决方案结合了与 Azure SQL 数据库的 Azure 机器学习，可快速浏览数据并通过更智能的建模提供更快的结果。 Azure 机器学习通过探索数据集间的新关系加快查询速度。 一旦通过多个统计函数训练数据，最多 7 个额外查询池（包括客户服务器一共 8 个）可以与相同的表格模式同步，从而分散查询工作负荷并减少响应时间。
 
-对于增强的分析和报告，可以通过列存储索引配置 Azure SQL 数据库。 Azure 机器学习和 Azure SQL 数据库都可以响应客户使用情况进行纵向扩展、减少或关闭。 所有 SQL 流量都通过包含自签名证书使用 SSL 加密。 Azure 建议使用受信任的证书颁发机构来增强安全性，这是最佳做法。
+对于增强的分析和报告，可以通过列存储索引配置 Azure SQL 数据库。 Azure 机器学习和 Azure SQL 数据库都可以响应客户使用情况进行纵向扩展、减少或关闭。 所有 SQL 流量都通过包含自签名证书使用 SSL 加密。 作为最佳做法，Azure 建议使用受信任的证书颁发机构来增强安全性。
 
 一旦数据上传到 Azure SQL 数据库并被 Azure 机器学习训练，操作用户和 SQL/数据管理员通过 Power BI 提取其摘要。 Power BI 可直观地显示数据并整合多个数据集的信息以提供更好的见解。 它具有很高的适应性，并能够与 Azure SQL 数据库轻松集成。因此，客户可以按照自己的业务需求进行配置，处理各种情况。
 
@@ -51,14 +51,14 @@ Azure SQL 数据库通常通过 SQL Server Management Studio (SSMS) 进行管理
 - Azure 磁盘加密
 - Azure 事件网格
 - Azure Functions
-- Azure 密钥保管库
+- Azure Key Vault
 - Azure 机器学习
 - Azure Monitor （日志）
 - Azure 安全中心
-- Azure SQL Database
-- Azure 存储器
+- Azure SQL 数据库
+- Azure 存储
 - Azure 虚拟网络
-    - (1) /16 网络
+    - (1)/16 网络
     - (2)/24 网络
     - (2) 网络安全组
 - Power BI 仪表板
@@ -71,7 +71,7 @@ Azure SQL 数据库通常通过 SQL Server Management Studio (SSMS) 进行管理
 
 **Azure Functions**：[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 是一项无服务器的计算服务，用户可使用它按需运行代码，而无需显式预配或管理基础结构。 使用 Azure Functions 可以运行脚本或代码片段，以响应各种事件。
 
-**Azure 机器学习服务**： [Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/service/)是一种数据科学技术，它允许计算机使用现有数据来预测将来的行为、结果和趋势。
+**Azure 机器学习**：[Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/service/)是一项数据科研技术，可让计算机根据现有的数据来预测将来的行为、结果和趋势。
 
 **Azure 数据目录**：[数据目录](../../data-catalog/overview.md)可帮助管理数据的用户更轻松地发现和理解数据源。 常见的数据源可针对金融数据进行注册、标记和搜索。 数据将保留在现有位置，但其元数据的副本将连同数据源位置的引用一起添加到数据目录。 此元数据还会编制索引，方便通过搜索功能轻松发现每个数据源，并让发现数据源的用户理解该数据源。
 
@@ -101,7 +101,7 @@ Azure SQL 数据库通常通过 SQL Server Management Studio (SSMS) 进行管理
 
 **Azure 存储**：为了满足静态数据加密要求，所有 [Azure 存储](https://azure.microsoft.com/services/storage/)均使用[存储服务加密](../../storage/common/storage-service-encryption.md)。 这有助于保护数据，以支持 FFIEC 定义的组织安全承诺和符合性要求。
 
-**Azure 磁盘加密**：[Azure 磁盘加密](../azure-security-disk-encryption-overview.md)利用 Windows 的 BitLocker 功能，为数据磁盘提供卷加密。 此解决方案与 Azure Key Vault 集成，可帮助控制和管理磁盘加密密钥。
+**Azure 磁盘加密**：[Azure 磁盘加密](../azure-security-disk-encryption-overview.md)利用 Windows 的 BitLocker 功能为数据磁盘提供卷加密。 此解决方案与 Azure Key Vault 集成，可帮助控制和管理磁盘加密密钥。
 
 **Azure SQL 数据库**：Azure SQL 数据库实例使用以下数据库安全措施：
 
@@ -127,7 +127,7 @@ Azure SQL 数据库通常通过 SQL Server Management Studio (SSMS) 进行管理
 
 ### <a name="security"></a>“安全”
 
-**机密管理**：解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 以下 Azure Key Vault 功能可帮助客户保护和访问此类数据：
+**机密管理**：此解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 以下 Azure Key Vault 功能可帮助客户保护和访问此类数据：
 
 - 根据需要配置高级访问权限策略。
 - 使用对密钥和机密所需的最低权限来定义 Key Vault 访问策略。
@@ -153,7 +153,7 @@ Azure 服务广泛记录系统和用户活动以及系统运行状况：
 
 以下 Azure[监视解决方案](../../monitoring/monitoring-solutions.md)包括在此体系结构中：
 -   [Active Directory 评估](../../azure-monitor/insights/ad-assessment.md)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署服务器基础结构的优先建议列表。
-- [SQL 评估](../../azure-monitor/insights/sql-assessment.md)：SQL 运行状况检查解决方案定期评估服务器环境的风险和运行状况，并且为客户提供特定于已部署服务器基础结构的优先建议列表。
+- [SQL 评估](../../azure-monitor/insights/sql-assessment.md)：SQL 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并为客户提供特定于部署服务器基础结构的优先建议列表。
 - [代理运行状况](../../monitoring/monitoring-solution-agenthealth.md)：“代理运行状况”解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。
 -   [Activity Log Analytics](../../azure-monitor/platform/collect-activity-logs.md)：Activity Log Analytics 解决方案可帮助分析客户所有 Azure 订阅的 Azure 活动日志。
 
@@ -182,7 +182,7 @@ Azure 服务广泛记录系统和用户活动以及系统运行状况：
 
 需要配置安全 VPN 隧道或 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)，以安全地建立与作为此数据分析参考体系结构的一部分部署的资源的连接。 通过适当设置 VPN 或 ExpressRoute，客户可以为传输中的数据添加一层保护。
 
-在 Azure 中实施安全 VPN 隧道，可在本地网络与 Azure 虚拟网络之间创建虚拟专用连接。 此连接通过 Internet 进行，可让客户在其网络与 Azure 之间的加密链路内通过&quot;隧道&quot;安全地传输信息。 站点到站点 VPN 是安全成熟的技术，各种规模的企业已部署数十年。 此选项使用 [IPsec 隧道模式](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10))作为加密机制。
+在 Azure 中实施安全 VPN 隧道，可在本地网络与 Azure 虚拟网络之间创建虚拟专用连接。 此连接通过 Internet 进行，可让客户在其网络与 Azure 之间的加密链路内通过“隧道”安全地传输信息。 站点到站点 VPN 是安全成熟的技术，各种规模的企业已部署数十年。 此选项使用 [IPsec 隧道模式](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10))作为加密机制。
 
 由于 VPN 隧道中的流量会通过站点到站点 VPN 在 Internet 上遍历，Microsoft 提供了另一个更安全的连接选项。 Azure ExpressRoute 是 Azure 与本地位置或 Exchange 托管提供商之间专用的 WAN 链接。 ExpressRoute 连接并不绕过 Internet，并且与通过 Internet 的典型连接相比，这些连接可靠性更高、速度更快、延迟时间更短且安全性更高。 此外，由于使用的是客户电信提供商的直接连接，数据不会通过 Internet 遍历，因此不会在 Internet 上公开。
 

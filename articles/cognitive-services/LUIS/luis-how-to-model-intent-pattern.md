@@ -1,7 +1,7 @@
 ---
-title: 模式添加准确性-LUIS
+title: 模式添加准确性 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 添加模式模板以提高语言理解 (LUIS) 应用程序中的预测准确性。
+description: 在语言理解 (LUIS) 应用程序中添加模式模板，以提高预测准确性。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,20 +9,22 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 7b6c8ba1517de44d01ffbceec812749403465e63
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: cbd8ad73ff4a03790dd6b22d5ce33acf09a2b125
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638090"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491364"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>如何添加模式以提高预测准确性
-在 LUIS 应用接收到终结点话语后，请使用[模式](luis-concept-patterns.md)提高话语（按字词顺序和字词选择呈现模式）的预测准确性。 模式使用特定[语法](luis-concept-patterns.md#pattern-syntax)来指示的位置:[实体](luis-concept-entity-types.md)、实体[角色](luis-concept-roles.md)和可选文本。
+在 LUIS 应用接收到终结点话语后，请使用[模式](luis-concept-patterns.md)提高话语（按字词顺序和字词选择呈现模式）的预测准确性。 模式使用特定[语法](luis-concept-patterns.md#pattern-syntax)来指示的位置：[实体](luis-concept-entity-types.md)、实体[角色](luis-concept-roles.md)和可选文本。
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="add-template-utterance-to-create-pattern"></a>添加模板表述以创建模式
-1. 通过选择“我的应用”页上的应用名称来打开应用，然后选择“提高应用性能”下左侧面板中的“模式”    。
+1. 通过选择“我的应用”页上的应用名称来打开应用，然后选择“提高应用性能”下左侧面板中的“模式”。
 
     ![模式列表的屏幕截图](./media/luis-how-to-model-intent-pattern/patterns-1.png)
 
@@ -34,7 +36,7 @@ ms.locfileid: "68638090"
 
     ![模式实体的屏幕截图](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    如果实体包含一个[角色](luis-concept-roles.md), 请在实体`:` `{Location:Origin}`名称后面用一个冒号 () 指示角色, 如。 实体的角色列表将以列表形式显示。 选择该角色，然后按 Enter。 
+    如果实体包含一个[角色](luis-concept-roles.md)，请在实体名称后指定具有单个冒号 `:`的角色，如 `{Location:Origin}`。 实体的角色列表将以列表形式显示。 选择该角色，然后按 Enter。 
 
     ![包含角色的实体的屏幕截图](./media/luis-how-to-model-intent-pattern/patterns-4.png)
 

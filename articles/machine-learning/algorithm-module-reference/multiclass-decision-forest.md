@@ -1,24 +1,24 @@
 ---
 title: 多类决策林：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的多类决策林模块根据*决策林*算法创建机器学习模型。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的多类决策林模块来基于*决策林*算法创建机器学习模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 80d8fc886ec62cf6abea7620f0c5763b619b5de4
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 85459fe586ccbb5adb1e86b153ec63252c0cce2d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692769"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466018"
 ---
 # <a name="multiclass-decision-forest-module"></a>多类决策林模块
 
-本文介绍了 Azure 机器学习服务的可视界面（预览）的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块可以基于*决策林*算法创建机器学习模型。 决策林是一种系综的模型，可快速生成一系列决策树，同时从标记的数据进行学习。
 
@@ -39,9 +39,7 @@ Azure 机器学习中的决策林分类器由决策树的系综组成。 通常�
 
 ## <a name="how-to-configure-multiclass-decision-forest"></a>如何配置多类决策林
 
-
-
-1. 将**多类决策林**模块添加到接口中的管道。 可以在 "**机器学习**"、"**初始化模型**" 和 "**分类**" 下找到此模块。
+1. 在设计器中将**多类决策林**模块添加到管道。 可以在 "**机器学习**"、"**初始化模型**" 和 "**分类**" 下找到此模块。
 
 2. 双击该模块以打开 "**属性**" 窗格。
 
@@ -88,4 +86,4 @@ Azure 机器学习中的决策林分类器由决策树的系综组成。 通常�
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

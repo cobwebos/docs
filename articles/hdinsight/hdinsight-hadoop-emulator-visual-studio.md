@@ -1,5 +1,5 @@
 ---
-title: 将针对 Visual Studio 的 Data Lake 工具与 Hortonworks 沙盒配合使用 - Azure HDInsight
+title: 适用于 Visual Studio 的 Data Lake 工具 & Hortonworks-Azure HDInsight
 description: 了解如何将针对 Visual Studio 的 Azure Data Lake 工具与本地 VM 中运行的 Hortonworks 沙盒配合使用。 使用这些工具，可以在沙盒中创建和运行 Hive 与 Pig 作业，并查看作业输出和历史记录。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 1edab776ec93f057ebf7e37ac887747f86a27db9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: e128aaf6e1726b7a1341fefc6df3cdafd3beb880
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098775"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500157"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>将针对 Visual Studio 的 Azure Data Lake 工具与 Hortonworks 沙盒配合使用
 
@@ -21,7 +21,7 @@ Azure Data Lake 包含用于处理常规 Apache Hadoop 群集的工具。 本文
 
 借助 Hortonworks 沙盒可以在开发环境本地使用 Hadoop。 开发一个解决方案后，如果想要大规模部署该解决方案，可以转移到 HDInsight 群集。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 在开发环境上的虚拟机中运行的 Hortonworks 沙盒。 本文档是根据 Oracle VirtualBox 中运行的沙盒编写和测试的， 有关设置沙盒的详细信息，请参阅 [Hortonworks 沙盒入门](hadoop/apache-hadoop-emulator-get-started.md) 文档。
 
@@ -29,7 +29,7 @@ Azure Data Lake 包含用于处理常规 Apache Hadoop 群集的工具。 本文
 
 * [用于 .NET 的 Azure SDK](https://azure.microsoft.com/downloads/) 2.7.1 或更高版本。
 
-* [针对 Visual Studio 的 Azure Data Lake 工具](https://www.microsoft.com/download/details.aspx?id=49504)。
+* [用于 Visual Studio 的 Azure Data Lake 工具](https://www.microsoft.com/download/details.aspx?id=49504)。
 
 ## <a name="configure-passwords-for-the-sandbox"></a>配置沙盒的密码
 
@@ -45,13 +45,13 @@ Azure Data Lake 包含用于处理常规 Apache Hadoop 群集的工具。 本文
 
 3. 在“连接到 HDInsight 模拟器”对话框中，输入为 Ambari 配置的密码。
 
-    ![突出显示 "ambari 密码" 文本框的对话框屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/enter-ambari-password.png)
+    ![对话框屏幕截图，其中突出显示了 ambari 密码文本框](./media/hdinsight-hadoop-emulator-visual-studio/enter-ambari-password.png)
 
     选择“下一步”继续。
 
 4. 使用“密码”字段输入为 `root` 帐户配置的密码。 将其他字段保留默认值。
 
-    ![突出显示 "root 密码" 文本框的对话框屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password1.png)
+    ![对话框屏幕截图，其中突出显示了 root 密码文本框](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password1.png)
 
     选择“下一步”继续。
 
@@ -60,9 +60,9 @@ Azure Data Lake 包含用于处理常规 Apache Hadoop 群集的工具。 本文
     ![突出显示“更新”按钮的对话框屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update-window.png)
 
     > [!NOTE]  
-    > 更新过程使用 Ambari 将 Hortonworks 沙盒配置修改为针对 Visual Studio 的 Data Lake 工具所需的配置。
+    > 更新过程使用 Ambari 将 Hortonworks 沙盒配置修改为用于 Visual Studio 的 Data Lake 工具所需的配置。
 
-6. 验证完成后，选择“完成”以完成配置。
+6. 验证完成后，请选择“完成”以完成配置。
     ![突出显示“完成”按钮的对话框屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect-dialog.png)
 
      >[!NOTE]  
@@ -90,7 +90,7 @@ Hive 提供类似于 SQL 的查询语言 (HiveQL) 来处理结构化数据。 �
 
     还可以使用“提交”旁边的下拉菜单选择“高级”。 使用高级选项，可以在提交作业时提供其他选项。
 
-    !["提交脚本" 对话框 hive 的屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/advanced-apache-hive.png)
+    ![“提交脚本”对话框 hive 的屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/advanced-apache-hive.png)
 
 3. 提交查询后，会显示作业状态。 作业状态显示 Hadoop 处理作业时有关作业的信息。 “作业状态”提供作业的状态。 状态会定期更新，也可以使用刷新图标手动刷新状态。
 
@@ -99,13 +99,13 @@ Hive 提供类似于 SQL 的查询语言 (HiveQL) 来处理结构化数据。 �
     “作业状态”更改为“已完成”后，会显示有向无环图 (DAG)。 此图描述 Tez 处理 Hive 查询时确定的执行路径。 Tez 是用于本地群集上 Hive 的默认执行引擎。
 
     > [!NOTE]  
-    > 使用基于 Linux 的 HDInsight 群集时，Apache Tez 也是默认引擎。 它不是基于 Windows 的 HDInsight 上的默认引擎。 若要在这种群集上使用 Tez，必须在 Hive 查询的开头处添加 `set hive.execution.engine = tez;` 行。
+    > 使用基于 Linux 的 HDInsight 群集时，Apache Tez 也是默认引擎。 它不是基于 Windows 的 HDInsight 上的默认引擎。 若要在这种群集上使用 Tez，必须在 Hive 查询的开头添加代码行 `set hive.execution.engine = tez;`。
 
     使用“作业输出”链接查看输出。 在本例中，输出为 823，即 sample_08 表中的行数。 可以使用“作业日志”和“下载 YARN 日志”链接查看有关作业的诊断信息。
 
 4. 还可以按交互方式运行 Hive 作业，方法是将“批处理”字段更改为“交互”。 然后选择“执行”。
 
-    ![突出显示“交互”和“执行”按钮的屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/hdi-interactive-query.png)
+    ![突出显示“交互式”和“执行”按钮的屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/hdi-interactive-query.png)
 
     交互式查询会将处理期间生成的输出日志流式传输到“HiveServer2 输出”窗口。
 
@@ -130,9 +130,9 @@ Hive 提供类似于 SQL 的查询语言 (HiveQL) 来处理结构化数据。 �
 
 Hive 提供了类似 SQL 的语言用于处理结构化数据，Pig 通过对数据执行转换来工作。 Pig 提供了一种语言 (Pig Latin)，可用于开发转换管道。 若要在本地群集上使用 Pig，请执行以下步骤：
 
-1. 打开 Visual Studio，依次选择“文件”、“新建”、“项目”。 在项目列表中，依次展开“模板”、“Azure Data Lake”，然后选择“Pig (HDInsight)”。 在模板列表中，选择“Pig 应用程序”。 输入名称和位置，然后选择“确定”。
+1. 打开 Visual Studio，依次选择“文件”、“新建”、“项目”。 在项目列表中，展开“模板”、“Azure Data Lake”，然后选择“Pig (HDInsight)”。 在模板列表中，选择“Pig 应用程序”。 输入名称和位置，然后选择“确定”。
 
-    ![突出显示“Azure Data Lake”、“Pig”、“Pig 应用程序”和“确定”的“新建项目”窗口屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/new-apche-pig-project.png)
+    ![“新建项目”窗口的屏幕截图，其中已突出显示“Azure Data Lake”、“Pig”、“Pig 应用程序”和“确定”](./media/hdinsight-hadoop-emulator-visual-studio/new-apche-pig-project.png)
 
 2. 输入以下文本作为使用此项目创建的 **script.pig** 文件内容。
 
@@ -149,7 +149,7 @@ Hive 提供了类似 SQL 的语言用于处理结构化数据，Pig 通过对数
 
     尽管 Pig 使用的语言与 Hive 不同，但通过“提交”按钮运行作业的方式在这两种语言之间是一致的。 选择“提交”旁边的下拉列表会显示 Pig 的高级提交对话框。
 
-    !["提交脚本" 对话框的屏幕截图 pig](./media/hdinsight-hadoop-emulator-visual-studio/advanced-apache-pig1.png)
+    ![“提交脚本”对话框 pig 的屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/advanced-apache-pig1.png)
 
 3. 显示的作业状态和输出也与 Hive 查询相同。
 
@@ -157,7 +157,7 @@ Hive 提供了类似 SQL 的语言用于处理结构化数据，Pig 通过对数
 
 ## <a name="view-jobs"></a>查看作业
 
-使用 Data Lake 工具还可以轻松查看有关 Hadoop 上运行的作业的信息。 使用以下步骤可以查看本地群集上运行的作业。
+使用 Data Lake 工具还可以轻松查看有关 Hadoop 上运行的作业的信息。 使用以下步骤可以查看已在本地群集上运行的作业。
 
 1. 在“服务器资源管理器”中，右键单击本地群集，然后选择“查看作业”。 此时会显示已提交到群集的作业列表。
 
@@ -165,7 +165,7 @@ Hive 提供了类似 SQL 的语言用于处理结构化数据，Pig 通过对数
 
 2. 在作业列表中，选择一个作业查看其详细信息。
 
-    ![突出显示其中一个作业的作业浏览器屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-job-details.png)
+    ![作业浏览器的屏幕截图，其中突出显示了一个作业](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-job-details.png)
 
     显示的信息类似于运行 Hive 或 Pig 查询后看到的信息，其中包括用于查看输出和日志信息的链接。
 
@@ -173,7 +173,7 @@ Hive 提供了类似 SQL 的语言用于处理结构化数据，Pig 通过对数
 
 ## <a name="view-hive-databases"></a>查看 Hive 数据库
 
-1. 在“服务器资源管理器”中，展开“HDInsight 本地群集”项，然后展开“Hive 数据库”。 此时将显示本地群集上的“默认”和“xademo”数据库。 展开数据库可显示该数据库中的表。
+1. 在“服务器资源管理器”中，展开“HDInsight 本地群集”项，然后展开“Hive 数据库”。 此时会显示本地群集上的“默认”和“xademo”数据库。 展开数据库可显示该数据库中的表。
 
     ![展开了数据库的服务器资源管理器屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/expanded-databases-view.png)
 
@@ -199,5 +199,5 @@ Hive 提供了类似 SQL 的语言用于处理结构化数据，Pig 通过对数
 
 ## <a name="next-steps"></a>后续步骤
 
-* [学习 Hortonworks 沙盒的重要知识](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+* [了解 Hortonworks 沙盒的重要知识](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 * [Apache Hadoop 教程 - HDP 入门](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 0b29567dcd22c79c30e70594066f7ff87c18fdb0
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: a61c52773c4c6036a76d7b233988c713c1da861f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947594"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482861"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>在 Azure Database for PostgreSQL 中选择分布列–超大规模（Citus）
 
-选择每个表的分布列是您将进行的最重要的建模决策之一。 Azure Database for PostgreSQL –超大规模（Citus）预览版基于行 "分布" 列的值将行存储在分片中。
+选择每个表的分布列是您将进行的最重要的建模决策之一。 Azure Database for PostgreSQL –超大规模（Citus）根据行的 "分布" 列的值将行存储在分片中。
 
 正确的选择将相关数据组合在同一物理节点上，以便快速查询并添加对所有 SQL 功能的支持。 如果选择不正确，则系统会运行缓慢，并且不支持跨节点的所有 SQL 功能。
 
@@ -28,18 +28,18 @@ ms.locfileid: "71947594"
 
 超大规模（Citus）检查查询以查看其所涉及的租户 ID，并找到匹配表分片。 它将查询路由到包含分片的单个工作节点。 在同一节点上运行包含所有相关数据的查询称为归置。
 
-下图说明了多租户数据模型中的归置。 它包含两个表：帐户和活动，每个表由 `account_id` 分发。 带阴影的框代表分片。 绿色分片存储在一个工作节点上，而蓝色分片存储在另一个辅助节点上。 请注意，当两个表限制为同一个帐户 @ no__t-0id 时，帐户和市场活动之间的联接查询如何将所有必要的数据同时包含在一个节点上。
+下图说明了多租户数据模型中的归置。 它包含两个表：帐户和市场活动，每个表由 `account_id`分布。 带阴影的框代表分片。 绿色分片存储在一个工作节点上，而蓝色分片存储在另一个辅助节点上。 请注意，在两个表都被限制为同一帐户\_id 时，帐户和市场活动之间的联接查询如何将所有必要的数据组合在一起。
 
 ![多租户归置](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
 
-若要在自己的架构中应用此设计，请确定在应用程序中构成租户的内容。 常见实例包括公司、帐户、组织或客户。 列名称将为 `company_id` 或 `customer_id` 之类的内容。 检查每个查询并问自己，如果它有其他 WHERE 子句来将涉及的所有表限制为具有相同租户 ID 的行，它是否起作用？
+若要在自己的架构中应用此设计，请确定在应用程序中构成租户的内容。 常见实例包括公司、帐户、组织或客户。 列名如 `company_id` 或 `customer_id`。 检查每个查询并问自己，如果它有其他 WHERE 子句来将涉及的所有表限制为具有相同租户 ID 的行，它是否起作用？
 多租户模型中的查询的作用域限定为租户。 例如，针对销售或库存的查询在特定商店内的范围内。
 
 #### <a name="best-practices"></a>最佳实践
 
--   **按常见租户 @ no__t-1id 列对分布式表进行分区。** 例如，在租户为公司的 SaaS 应用程序中，租户 @ no__t 0id 可能是公司 @ no__t-1id。
+-   **按常见租户\_id 列分区分布式表。** 例如，在租户为公司的 SaaS 应用程序中，租户\_id 可能是公司\_id。
 -   **将小型跨租户表转换为引用表。** 当多个租户共享一个较小的信息表时，将它作为引用表进行分发。
--   **限制租户 @ no__t-1id 筛选所有应用程序查询。** 每个查询一次应请求一个租户的信息。
+-   **按租户\_id 限制筛选所有应用程序查询。** 每个查询一次应请求一个租户的信息。
 
 有关如何生成此类应用程序的示例，请参阅[多租户教程](./tutorial-design-database-hyperscale-multi-tenant.md)。
 

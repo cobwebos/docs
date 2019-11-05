@@ -7,18 +7,18 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/24/2019
+ms.date: 09/30/2019
 ms.author: dapine
-ms.openlocfilehash: 7322d356d972635b81bc1bdd4b329bd3d5ac02df
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 35f5cffdc644370082e229c88d67db33e853c446
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71842573"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499185"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure 认知服务容器安全性
 
-无论何时开发应用程序，安全性都应该是主要关注点。 安全的重要性是成功的指标。 构建包含认知服务容器的软件解决方案时，请务必了解可用的限制和功能。 有关详细信息，请参阅[Azure 安全性][az-security]。
+无论何时开发应用程序，安全性都应该是主要关注点。 安全的重要性是成功的指标。 构建包含认知服务容器的软件解决方案时，请务必了解可用的限制和功能。 有关网络安全的详细信息，请参阅[配置 Azure 认知服务虚拟网络][az-security]。
 
 > [!IMPORTANT]
 > 默认情况下，认知服务容器 API*没有安全性*。 这样做的原因是：容器最常见的情况是，容器将作为 pod 的一部分运行，而该 pod 由网桥保护。 但是，可以启用与访问[基于云的认知服务][request-authentication]时所使用的身份验证相同的身份验证。
@@ -44,11 +44,11 @@ ms.locfileid: "71842573"
 
 #### <a name="disable-deep-packet-inspection"></a>禁用深层数据包检查
 
-> [深层数据包检查](https://en.wikipedia.org/wiki/Deep_packet_inspection)（DPI）是一种数据处理方式，用于检查通过计算机网络发送的数据，并且通常会通过相应地阻止、重新路由或记录它来采取措施。
+> [深度数据包检查](https://en.wikipedia.org/wiki/Deep_packet_inspection)（DPI）是一种数据处理方式，用于检查通过计算机网络发送的数据，并且通常通过阻止、重新路由或记录它来采取措施。
 
 禁用认知服务容器为 Microsoft 服务器创建的安全通道上的 DPI。 否则，将无法正常运行容器。
 
 [istio]: https://istio.io/
 [nginx]: https://www.nginx.com
 [request-authentication]: ../../authentication.md
-[az-security]: ../../../security/fundamentals/overview.md
+[az-security]: ../../cognitive-services-virtual-networks.md

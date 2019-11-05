@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: de98f972a43f3845d2a01b928d90283732ef4843
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 26033192ee841262345b0fc7f6aec76872379070
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329779"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470183"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure 应用服务中的入站和出站 IP 地址
 
@@ -32,9 +32,9 @@ ms.locfileid: "72329779"
 
 - 删除应用，然后在不同的资源组中重新创建它。
 - 删除资源组和区域组合中的最后一个应用，然后重新创建它。
-- 在证书续订等操作期间删除现有的 SSL 绑定（请参阅[续订证书](app-service-web-tutorial-custom-ssl.md#renew-certificates)）。
+- 删除现有的 SSL 绑定，如证书续订期间（请参阅[续订证书](configure-ssl-certificate.md#renew-certificate)）。
 
-## <a name="find-the-inbound-ip"></a>查找入站 IP
+## <a name="find-the-inbound-ip"></a>找到入站 IP
 
 只需在本地终端中运行以下命令：
 
@@ -44,7 +44,7 @@ nslookup <app-name>.azurewebsites.net
 
 ## <a name="get-a-static-inbound-ip"></a>获取静态入站 IP
 
-有时，你可能需要对应用使用专用静态 IP 地址。 若要获取静态入站 IP 地址，需要配置[基于 IP 的 SSL 绑定](app-service-web-tutorial-custom-ssl.md#secure-a-custom-domain)。 如果并不真正需要使用 SSL 功能来保护应用，甚至可以上传一个自签名证书来实现此绑定。 在基于 IP 的 SSL 绑定中，证书将绑定到 IP 地址本身，因此，应用服务会预配一个静态 IP 地址来实现此目的。 
+有时，你可能需要对应用使用专用静态 IP 地址。 若要获取静态入站 IP 地址，需要配置[基于 IP 的 SSL 绑定](configure-ssl-bindings.md#secure-a-custom-domain)。 如果并不真正需要使用 SSL 功能来保护应用，甚至可以上传一个自签名证书来实现此绑定。 在基于 IP 的 SSL 绑定中，证书将绑定到 IP 地址本身，因此，应用服务会预配一个静态 IP 地址来实现此目的。 
 
 ## <a name="when-outbound-ips-change"></a>出站 IP 更改时
 
@@ -52,11 +52,11 @@ nslookup <app-name>.azurewebsites.net
 
 在较低层（“基本”、“标准”和“高级”）与“高级 V2”层之间缩放应用时，应用的出站 IP 地址集会发生更改。
 
-通过在 Azure 门户的 "**属性**" 边栏选项卡中查找 "@no__t" 或 "**其他出站 ip 地址**" 字段，你可以查找应用可以使用的所有可能的出站 ip 地址集，而不考虑定价层。 请参阅[查找出站 IP](#find-outbound-ips)。
+无论是哪个定价层，你都可以通过查找 `possibleOutboundIpAddresses` 属性或者在 Azure 门户的“属性”边栏选项卡中的“其他出站 IP 地址”字段中查找你的应用可以使用的所有可能的出站 IP 地址。 请参阅[查找出站 IP](#find-outbound-ips)。
 
 ## <a name="find-outbound-ips"></a>查找出站 IP
 
-若要在 Azure 门户中查找应用当前使用的出站 IP 地址，请单击应用左侧导航窗格中的“属性”。 它们列在 "**出站 IP 地址**" 字段中。
+若要在 Azure 门户中查找应用当前使用的出站 IP 地址，请单击应用左侧导航窗格中的“属性”。 它们列出在“出站 IP 地址”字段中。
 
 在 [Cloud Shell](../cloud-shell/quickstart.md) 中运行以下命令也可以找到相同的信息。
 
@@ -68,7 +68,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query outboundI
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).OutboundIpAddresses
 ```
 
-若要查找应用的_所有_可能的出站 IP 地址，而不考虑定价层，请单击应用左侧导航栏中的 "**属性**"。 它们列在 "**其他出站 IP 地址**" 字段中。
+若要查找你的应用可能使用的所有出站 IP 地址（无论是哪个定价层），请在你的应用的左侧导航栏中单击“属性”。 它们列出在“其他出站 IP 地址”字段中。
 
 在 [Cloud Shell](../cloud-shell/quickstart.md) 中运行以下命令也可以找到相同的信息。
 

@@ -8,14 +8,14 @@ manager: xdh
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: af5bb7126af65a755cb1d58788d39cb8bdcbbb3b
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 6ec31df7cef8391728eae7845f64f55bb1c6466a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959028"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491345"
 ---
 # <a name="scenario-availability"></a>方案可用性
 
@@ -31,13 +31,13 @@ ms.locfileid: "71959028"
   - Swift
   - Objective-C
   - TTS REST API 可以在所有其他情况下使用。
-- **唤醒词（关键字监视器/KWS）**
+- **关键字发现（KWS）**
   - C++/Windows 和 Linux
   - C#/Windows 和 Linux
   - Python/Windows 和 Linux
   - Java/Windows 和 Linux 和 Android（语音设备 SDK）
-  - 唤醒 Word （关键字 Spotter/KWS）功能可能适用于任何麦克风类型，但官方 KWS 支持目前仅限于在 Azure Kinect 深色硬件或语音设备 SDK 中找到的麦克风阵列
-- **语音-首次虚拟助手**
+  - 关键字发现（KWS）功能可能适用于任何麦克风类型，但官方 KWS 支持目前仅限于在 Azure Kinect 深色硬件或语音设备 SDK 中找到的麦克风阵列
+- **语音助手**
   - C++/Windows & Linux & macOS
   - C#/Windows
   - Java/Windows & Linux & macOS & Android （语音设备 SDK）

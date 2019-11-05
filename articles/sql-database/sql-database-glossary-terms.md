@@ -11,27 +11,27 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/26/2019
-ms.openlocfilehash: 5fccf1ffc76c824c81f8b8b826f90bf8314ff1e3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f23ef5506027a5de9f4189a11636d323679707f3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883345"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488476"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL 数据库术语表
 
-|上下文|术语|详细信息|
+|上下文|条款|详细信息|
 |:---|:---|:---|
 |Azure 服务名称|Azure SQL 数据库或 SQL 数据库|[Azure SQL 数据库服务](sql-database-technical-overview.md)|
-|计算层|无服务器（预览版）|[无服务器计算层](sql-database-serverless.md)
-||已设置|[无服务器计算层](sql-database-serverless.md)
-|部署选项 |单一数据库|[单一数据库](sql-database-single-database.md)|
+|计算层|无服务器 |[无服务器计算层](sql-database-serverless.md)
+||已预配|[无服务器计算层](sql-database-serverless.md)
+|部署选项 |单个数据库|[单一数据库](sql-database-single-database.md)|
 ||弹性池|[弹性池](sql-database-elastic-pool.md)|
 ||托管实例|[托管实例](sql-database-managed-instance.md)|
 |服务器对象|SQL 数据库服务器或数据库服务器|[数据库服务器](sql-database-servers.md)|
 ||SQL 数据库托管实例服务器、托管实例服务器或实例服务器|[托管实例](sql-database-managed-instance.md)|
 数据库对象|Azure SQL 数据库|Azure SQL 数据库中的任何数据库|
-||单一数据库|使用单一数据库部署选项创建的数据库|
+||单个数据库|使用单一数据库部署选项创建的数据库|
 ||共用数据库|在弹性池内创建或移入其中的数据库|
 ||实例数据库|在托管实例中创建的数据库|
 ||基本数据库|在基于 DTU 的购买模型的“基本”服务层级内创建或移入其中的数据库|

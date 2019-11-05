@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ae1c1a6c151d0bfae1b608ccefdfeaaaa74b608
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4df5067317170e18a52fbac53bc02a2ba7d35aba
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803832"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473794"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>如何：将 iOS 和 macOS 的 MSAL 配置为使用不同的标识提供程序
 
@@ -34,7 +34,7 @@ ms.locfileid: "72803832"
 使用 `https://login.microsoftonline.com/common`的默认授权 URL （适用于大多数 Azure Active Directory （AAD）方案）配置 `MSALPublicClientApplication`。 除非你要实现高级方案（如国家云）或使用 B2C，否则不需要更改它。
 
 > [!NOTE]
-> 不支持将 Active Directory 联合身份验证服务用作标识提供程序（ADFS）的新式身份验证（有关详细信息，请参阅[ADFS For 开发人员](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers)）。 通过联合支持 ADFS。
+> 不支持将 Active Directory 联合身份验证服务用作标识提供程序（ADFS）的新式身份验证（有关详细信息，请参阅[ADFS For 开发人员](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)）。 通过联合支持 ADFS。
 
 ## <a name="change-the-default-authority"></a>更改默认权限
 

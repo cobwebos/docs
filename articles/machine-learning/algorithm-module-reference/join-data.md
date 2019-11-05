@@ -1,7 +1,7 @@
 ---
 title: 联接数据：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的联接联接数据模块来合并数据集。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的联接联接数据模块来合并数据集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: ec9de6975931219ae45543833421234c4d71e6af
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 587490284b2886764c137a01e0eb4b3c9c755d41
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693095"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495091"
 ---
 # <a name="join-data"></a>联接数据
 
-本文介绍如何使用 Azure 机器学习服务视觉对象界面中的**联接数据**模块，通过数据库样式的联接操作来合并两个数据集。  
+本文介绍如何使用 "Azure 机器学习设计器（预览）" 中的**联接数据**模块，通过数据库样式的联接操作来合并两个数据集。  
 
 ## <a name="how-to-configure-join-data"></a>如何配置联接数据
 
@@ -68,4 +68,4 @@ ms.locfileid: "72693095"
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

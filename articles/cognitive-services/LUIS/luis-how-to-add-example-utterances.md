@@ -1,5 +1,5 @@
 ---
-title: Add example 最谈话-LUIS
+title: 添加示例话语 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 示例表述是用户问题或命令的文本示例。 若要传授语言理解 (LUIS)，需将示例话语添加到意向。
 services: cognitive-services
@@ -9,20 +9,23 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 1e170b86f573112cc5bc8dddd6f080921ef29d2d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ed6321963422cf17c858f43593092f8ffa4a1119
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932939"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467731"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>将实体添加到示例话语 
 
 示例表述是用户问题或命令的文本示例。 若要教授语言理解 (LUIS)，需将[示例表述](luis-concept-utterance.md)添加到[意向](luis-concept-intent.md)。
 
+
 通常先将示例话语添加到意向，然后创建实体并在“意向”页上标记话语。 若要先创建实体，请参阅[添加实体](luis-how-to-add-entities.md)。
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="marking-entities-in-example-utterances"></a>在示例话语中标记实体
 

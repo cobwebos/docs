@@ -5,18 +5,18 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/31/2019
 ms.author: helohr
-ms.openlocfilehash: 561dad566d7f1caaf609c8013fa075062e4471ea
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
-ms.translationtype: MT
+ms.openlocfilehash: 1d7f08dbaa9b91cd2dbac28daf5c17ea85d09985
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676747"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482210"
 ---
-# <a name="connect-with-the-windows-desktop-client"></a>使用 Windows 桌面客户端进行连接
+# <a name="connect-with-the-windows-desktop-client"></a>与 Windows 桌面客户端连接
 
-> 适用于：Windows 7 和 Windows 10
+> 适用于： Windows 7 和 Windows 10
 
 可以使用 windows 桌面客户端通过 Windows 7 或 Windows 10 访问 Windows 虚拟桌面资源。
 
@@ -25,11 +25,11 @@ ms.locfileid: "71676747"
 
 ## <a name="install-the-windows-desktop-client"></a>安装 Windows 桌面客户端
 
-下面是你当前可以下载的客户端：
+选择与您的 Windows 版本相匹配的客户端：
 
 - [Windows 64 位](https://go.microsoft.com/fwlink/?linkid=2068602)
-
-我们将更新此列表，因为客户端将可用于更多版本的 Windows。
+- [Windows 32 位预览版](https://go.microsoft.com/fwlink/?linkid=2098960)
+- [Windows ARM64 预览版](https://go.microsoft.com/fwlink/?linkid=2098961)
 
 您可以为当前用户安装客户端，而不需要管理员权限，或者您的管理员可以安装和配置客户端，以便设备上的所有用户都可以访问该客户端。
 

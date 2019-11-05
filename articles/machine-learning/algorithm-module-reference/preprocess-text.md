@@ -1,7 +1,7 @@
 ---
 title: 预处理文本：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的 "预处理文本" 模块来清理和简化文本。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的 "预处理文本" 模块来清理和简化文本。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 2213d26e6d3b2b6a7aca9d65e74a4499ff0da6c1
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9bf81b4e4c305c864592c32a8737d1a5eeb18651
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692689"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497682"
 ---
 # <a name="preprocess-text"></a>预处理文本
 
-本文介绍了 Azure 机器学习服务的可视界面（预览）的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用 "**预处理文本**" 模块清除和简化文本。 它支持以下常见文本处理操作：
 
@@ -33,7 +33,7 @@ ms.locfileid: "72692689"
 
 ## <a name="configure-text-preprocessing"></a>配置文本预处理  
 
-1.  在 Azure 机器学习服务中，将 "**预处理文本**" 模块添加到试验中。 可以在**文本分析**下找到此模块。
+1.  在 Azure 机器学习中，将 "**预处理文本**" 模块添加到管道。 可以在**文本分析**下找到此模块。
 
 1. 连接至少包含一个包含文本的列的数据集。
 
@@ -47,7 +47,7 @@ ms.locfileid: "72692689"
 
 1. **词形还原**：如果希望以规范形式表示字词，请选择此选项。 此选项可用于减少其他类似文本标记的唯一匹配项的数量。
 
-    词形还原过程依赖于与语言相关的高度。
+    词形还原进程依赖于与语言相关的。
 
 1. **检测句子**：如果希望模块在执行分析时插入句子边界标记，请选择此选项。
 
@@ -70,7 +70,7 @@ ms.locfileid: "72692689"
     
     * **删除重复字符**：选择此选项可以删除重复次数超过两次的任何序列中的多余字符。 例如，类似于 "aaaaa-bbbbb-ccccc-dddddd-eeeeee" 的序列将减少到 "aa"。
     
-    * **删除电子邮件地址**：选择此选项以删除格式 `<string>@<string>` 的任何序列。  
+    * **删除电子邮件地址**：选择此选项以删除格式 `<string>@<string>`的任何序列。  
     * **删除 url**：选择此选项以删除任何包含以下 URL 前缀的序列： `http`、`https`、`ftp`、`www`
     
 1. **展开 verb 缩写**：此选项仅适用于使用 verb 缩写的语言;目前仅限英语。 
@@ -79,12 +79,12 @@ ms.locfileid: "72692689"
 
 1. **将反斜杠标准化为斜杠**：选择此选项可将 `\\` 的所有实例映射到 `/`。
 
-1. **对特殊字符拆分标记**：如果想要在 `&`、`-` 等字符上换行，请选择此选项。 此选项还可以减少重复次数超过两次时的特殊字符。 
+1. **对特殊字符拆分标记**：如果想要在 `&`、`-`等字符上换行，请选择此选项。 此选项还可以减少重复次数超过两次时的特殊字符。 
 
-    例如，字符串 `MS---WORD` 将分成三个标记，`MS`、`-` 和 `WORD`。
+    例如，字符串 `MS---WORD` 将分成三个标记，`MS`、`-`和 `WORD`。
 
-1. 运行试验。
+1. 运行管道。
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

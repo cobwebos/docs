@@ -7,19 +7,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2019
+ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 91f07b8da2cbc9beaa24730f2ec9f2ddb4639f37
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
-ms.translationtype: MT
+ms.openlocfilehash: e6e4c0018f11e216afd5a8c295fc336036885e68
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302540"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468941"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题解答 (FAQ)
 
-本页回答了有关 Azure Active Directory B2C （Azure AD B2C）的常见问题。 请随时返回查看更新信息。
+此页面解答了有关 Azure Active Directory B2C (Azure AD B2C) 的常见问题。 请随时返回查看更新信息。
 
 ### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>为什么我在 Azure 门户中无法访问 Azure AD B2C 扩展？
 
@@ -27,7 +27,7 @@ ms.locfileid: "72302540"
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>我可以在基于员工的现有 Azure AD 租户中使用 Azure AD B2C 功能吗？
 
-Azure AD 和 Azure AD B2C 是独立的产品/服务，不能在同一租户中共存。 Azure AD 租户表示组织。 Azure AD B2C 租户表示信赖方应用使用的标识集合。 使用自定义策略，Azure AD B2C 可以联合到 Azure AD 以允许对组织中的员工进行身份验证。
+Azure AD 和 Azure AD B2C 是独立的产品/服务，不能在同一租户中共存。 Azure AD 租户表示组织。 Azure AD B2C 租户表示信赖方应用使用的标识集合。 通过自定义策略，Azure AD B2C 可以联合 Azure AD，允许对组织中的员工进行身份验证。
 
 ### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>我可以使用 Azure AD B2C 提供 Office 365 的社交登录（Facebook 和 Google+）吗？
 
@@ -43,13 +43,13 @@ Azure AD B2C 不用于 Microsoft Office 365 用户的身份验证。 Azure AD �
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>现在支持哪些社交标识提供者？ 计划在未来支持哪些？
 
-目前，我们支持多个社交标识提供者，包括 Amazon、Facebook、GitHub （预览版）、Google、LinkedIn、Microsoft 帐户（MSA）、QQ （预览版）、Twitter、WeChat （预览版）和 Weibo （预览版）。 我们会根据客户需求评估添加其他热门社交标识提供者的支持。
+目前，我们支持多个社交标识提供者，包括 Amazon、Facebook、GitHub （预览版）、Google、LinkedIn、Microsoft 帐户（MSA）、QQ （预览版）、Twitter、WeChat （预览版）和 Weibo （预览版）。 我们会根据客户需求来评估是否增加对其他常见社交标识提供者的支持。
 
 Azure AD B2C 还支持[自定义策略](active-directory-b2c-overview-custom.md)。 自定义策略允许你为支持 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 或 SAML 的任何标识提供者创建自己的策略。 查看我们的[自定义策略初学者包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)，开始使用自定义策略。
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>我可以配置范围，从各种社交标识提供者收集更多使用者的相关信息吗？
 
-否。 一组受支持的社交标识提供者使用的默认范围是：
+不能。 一组受支持的社交标识提供者使用的默认范围是：
 
 * Facebook：电子邮件
 * Google+：电子邮件
@@ -59,7 +59,7 @@ Azure AD B2C 还支持[自定义策略](active-directory-b2c-overview-custom.md)
 
 ### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>必须在 Azure 上运行应用程序才能将其与 Azure AD B2C 一起使用吗？
 
-不，可以在任何位置（在云中或本地）托管应用程序。 只要能在公共可访问的端点上发送和接收 HTTP 请求，它就可以与 Azure AD B2C 进行交互。
+不，可以在任何位置（在云中或本地）托管应用程序。 只要能在公共可访问的终结点上发送和接收 HTTP 请求，它就可以与 Azure AD B2C 进行交互。
 
 ### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>我有多个 Azure AD B2C 租户。 如何在 Azure 门户上管理它们？
 
@@ -122,7 +122,7 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>我可以本地化 Azure AD B2C 所提供页面的 UI 吗？ 支持哪些语言？
 
-是，请参阅[语言自定义](active-directory-b2c-reference-language-customization.md)。 我们提供 36 种语言的翻译版本，并且你可以根据需要替代任何字符串。
+可以，请参阅[语言自定义](active-directory-b2c-reference-language-customization.md)。 我们提供 36 种语言的翻译版本，并且你可以根据需要替代任何字符串。
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>我可以在 Azure AD B2C 提供的注册和登录页面上使用自己的 URL 吗？ 例如，是否可以将 URL 从 contoso.b2clogin.com 更改为 login.contoso.com？
 
@@ -130,15 +130,20 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>如何删除 Azure AD B2C 租户？
 
-请按照以下步骤删除 Azure AD B2C 租户：
+按照以下步骤删除 Azure AD B2C 租户。
 
+你可以使用当前**应用程序**体验或我们的新统一**应用注册（预览版）** 体验。 [了解有关预览版体验的详细信息](http://aka.ms/b2cappregintro)。
+
+#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+
+1. 以*订阅管理员身份*登录到[Azure 门户](https://portal.azure.com/)。 使用相同的工作或学校帐户或用于注册 Azure 的相同 Microsoft 帐户。
+1. 在顶部菜单中选择 "**目录 + 订阅**" 筛选器，然后选择包含 Azure AD B2C 租户的目录。
+1. 在左侧菜单中，选择 " **Azure AD B2C**"。 或者选择 "**所有服务**"，搜索并选择 " **Azure AD B2C**"。
 1. 删除 Azure AD B2C 租户中的所有**用户流(策略)** 。
 1. 删除你在 Azure AD B2C 租户中注册的所有**应用程序**。
-1. 接下来，以订阅管理员身份登录到 [Azure 门户](https://portal.azure.com/)。 使用相同的工作或学校帐户或用于注册 Azure 的相同 Microsoft 帐户。
-1. 切换到要删除的 Azure AD B2C 租户。
 1. 在左侧菜单中，选择“Azure Active Directory”。
 1. 在“管理”下，选择“用户”。
-1. 依次选择每个用户（排除当前以订阅管理员身份登录的用户）。 选择页面底部的“删除”，并在出现提示时选择“是”。
+1. 依次选择每个用户（排除你当前登录时所用的*订阅管理员*用户）。 选择页面底部的“删除”，并在出现提示时选择“是”。
 1. 在“管理”下，选择“应用注册”或“应用注册(旧版)”。
 1. 选择“查看所有应用程序”
 1. 选择名为“b2c-extensions-app”的应用程序，选择“删除”，然后在出现提示时选择“是”。
@@ -149,6 +154,28 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 1. 从 Azure 门户注销，然后重新登录以刷新你的访问权限。
 1. 在左侧菜单中，选择“Azure Active Directory”。
 1. 在“概述”页上，选择“删除目录”。 按照屏幕上的说明完成该过程。
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览）](#tab/app-reg-preview/)
+
+1. 以*订阅管理员身份*登录到[Azure 门户](https://portal.azure.com/)。 使用相同的工作或学校帐户或用于注册 Azure 的相同 Microsoft 帐户。
+1. 在顶部菜单中选择 "**目录 + 订阅**" 筛选器，然后选择包含 Azure AD B2C 租户的目录。
+1. 在左侧菜单中，选择 " **Azure AD B2C**"。 或者选择 "**所有服务**"，搜索并选择 " **Azure AD B2C**"。
+1. 删除 Azure AD B2C 租户中的所有**用户流（策略）** 。
+1. 选择**应用注册（预览）** ，然后选择 "**所有应用程序**" 选项卡。
+1. 删除已注册的所有应用程序。
+1. 删除**b2c 扩展-应用**。
+1. 在“管理”下，选择“用户”。
+1. 依次选择每个用户（排除你当前登录时所用的*订阅管理员*用户）。 选择页面底部的 "**删除**"，并在出现提示时选择 **"是"** 。
+1. 在左侧菜单中，选择“Azure Active Directory”。
+1. 在 "**管理**" 下选择 "**用户设置**"。
+1. 如果存在，则在 " **LinkedIn 帐户连接**" 下，选择 "**否**"，然后选择 "**保存**"。
+1. 在“管理”下，选择“属性”
+1. 在“Azure 资源的访问管理”下，选择“是”，然后选择“保存”。
+1. 从 Azure 门户注销，然后重新登录以刷新你的访问权限。
+1. 在左侧菜单中，选择“Azure Active Directory”。
+1. 在“概述”页上，选择“删除目录”。 按照屏幕上的说明完成该过程。
+
+* * *
 
 ### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>我可以将 Azure AD B2C 作为企业移动性套件的一部分吗？
 

@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/14/2019
+ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bf9b6a3ad40d46b628bfcdb3fa3e32b2419360c9
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: bf87b1709c355faf6f06ff2d23b2c819f88750cd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802111"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475212"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>访问 Azure AD B2C 审核日志
 
@@ -31,13 +31,13 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 
 审核日志中的“B2C”类别包含以下类型的活动：
 
-|活动类型 |描述  |
+|活动类型 |说明  |
 |---------|---------|
-|Authorization |涉及授权用户访问 B2C 资源（例如，管理员访问 B2C 策略列表）的活动。         |
-|目录 |与管理员使用 Azure 门户登录时检索到的目录属性相关的活动。 |
+|授权 |涉及授权用户访问 B2C 资源（例如，管理员访问 B2C 策略列表）的活动。         |
+|Directory |与管理员使用 Azure 门户登录时检索到的目录属性相关的活动。 |
 |应用程序 | 与 B2C 应用程序相关的创建、读取、更新和删除 (CRUD) 操作。 |
-|Key |与 B2C 密钥容器中存储的密钥相关的 CRUD 操作。 |
-|Resource |与 B2C 资源相关的 CRUD 操作。 例如，策略和标识提供者。
+|键 |与 B2C 密钥容器中存储的密钥相关的 CRUD 操作。 |
+|资源 |与 B2C 资源相关的 CRUD 操作。 例如，策略和标识提供者。
 |身份验证 |用户凭据和令牌颁发的验证。|
 
 有关用户对象 CRUD 活动，请参阅“核心目录”类别。
@@ -50,9 +50,9 @@ Azure 门户中的此示例图像显示用户使用外部标识提供者（在�
 
 活动详细信息面板包含以下相关信息：
 
-|节|字段|描述|
+|部分|字段|说明|
 |-------|-----|-----------|
-| activities | 姓名 | 发生了哪项活动。 例如，“向应用程序颁发 id_token”（这将结束实际的用户登录）。 |
+| 活动 | 名称 | 发生了哪项活动。 例如，“向应用程序颁发 id_token”（这将结束实际的用户登录）。 |
 | 发起者（参与者） | ObjectId | 用户登录的 B2C 应用程序的**对象 ID**。 此标识符在 Azure 门户中不可见，但可以通过 Microsoft Graph API 访问它。 |
 | 发起者（参与者） | SPN | 用户登录的 B2C 应用程序的**应用程序 ID**。 |
 | 目标 | ObjectId | 正在登录的用户的**对象 ID**。 |
@@ -89,8 +89,7 @@ Azure 门户中的此示例图像显示用户使用外部标识提供者（在�
 
 若要允许对 Azure AD 报告 API 进行基于脚本或应用程序的访问，需要使用以下 API 权限在 Azure AD B2C 租户中注册 Azure Active Directory 应用程序：
 
-* Microsoft Graph
-  * 应用程序：读取所有审核日志数据
+* Microsoft Graph > 应用程序权限 > 审核日志
 
 可对 B2C 租户中的现有 Azure Active Directory 应用程序注册中启用这些权限，或者创建专用于审核日志自动化的新权限。
 
@@ -102,6 +101,8 @@ Azure 门户中的此示例图像显示用户使用外部标识提供者（在�
 
 ### <a name="assign-api-access-permissions"></a>分配 API 访问权限
 
+#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+
 1. 在“已注册的应用”概述页上，选择“设置”。
 1. 在“API 访问”下，选择“所需的权限”。
 1. 依次选择“添加”、“选择 API”。
@@ -109,6 +110,22 @@ Azure 门户中的此示例图像显示用户使用外部标识提供者（在�
 1. 在“应用程序权限”下，选择“读取所有审核日志数据”。
 1. 依次选择“选择”按钮、“完成”。
 1. 选择“授予权限”，然后选择“是”。
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览）](#tab/app-reg-preview/)
+
+1. 在 "**管理**" 下，选择 " **API 权限**"。
+1. 在 "**配置的权限**" 下，选择 "**添加权限**"。
+1. 选择 " **Microsoft api** " 选项卡。
+1. 选择“Microsoft Graph”。
+1. 选择“应用程序权限”。
+1. 展开 "**审核日志**"，然后选中 "**审核日志**" 复选框。
+1. 选择“添加权限”。 按照指示，请等待几分钟，然后再继续下一步。
+1. 选择 "**授予管理员同意（你的租户名称）** "。
+1. 如果已为你分配了*全局管理员*角色，请选择你当前登录的帐户，或者使用你的 Azure AD B2C 租户中被分配了*全局管理员*角色的帐户登录。
+1. 选择“接受”。
+1. 选择 "**刷新**"，然后验证 "授权给 ..."显示在*审核日志*权限的 "**状态**" 下。 传播权限可能需要几分钟时间。
+
+* * *
 
 ### <a name="create-client-secret"></a>创建客户端机密
 
@@ -128,15 +145,15 @@ https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByServi
 
 以下 PowerShell 脚本通过一个示例演示如何查询 Azure AD 报告 API。 查询 API 后，该脚本将以标准输出的形式列显记录的事件，然后将 JSON 输出写入到某个文件。
 
-可以在[Azure Cloud Shell](../cloud-shell/overview.md)中尝试此脚本。 请务必使用自己的应用程序 ID、密钥和 Azure AD B2C 租户名称更新此脚本。
+可以在[Azure Cloud Shell](../cloud-shell/overview.md)中尝试此脚本。 请确保将其更新为你的应用程序 ID、客户端密钥和 Azure AD B2C 租户的名称。
 
 ```powershell
 # This script requires the registration of a Web Application in Azure Active Directory:
 # https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api
 
 # Constants
-$ClientID       = "your-client-application-id-here"       # Insert your application's Client ID, a GUID (registered by Global Admin)
-$ClientSecret   = "your-client-application-secret-here"   # Insert your application's Client secret/key
+$ClientID       = "your-client-application-id-here"       # Insert your application's client ID, a GUID (registered by Global Admin)
+$ClientSecret   = "your-client-application-secret-here"   # Insert your application's client secret
 $tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant; for example, contoso.onmicrosoft.com
 $loginURL       = "https://login.microsoftonline.com"
 $resource       = "https://graph.microsoft.com"           # Microsoft Graph API resource URI

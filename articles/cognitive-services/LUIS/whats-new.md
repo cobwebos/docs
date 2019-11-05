@@ -9,20 +9,39 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3a32499a85b1cd782c808166c516be7ad9c78913
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 0788df1c05d70c01d4de7f7a6ba62a476252f75a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813283"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498919"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
-了解该服务中的新增功能。 这些项可能会包括发行说明、视频、博客文章和其他类型的信息。 将此页添加为书签，以便及时了解该服务。  
+了解该服务中的新增功能。 这些项包括发行说明、视频、博客文章和其他类型的信息。 将此页添加为书签，以便及时了解该服务。  
 
 ## <a name="release-notes"></a>发行说明 
+
+### <a name="november-4-2019---ignite"></a>2019年11月4日-Ignite
+
+* 提高开发人员工作效率
+    * [预测终结点 V3](luis-migration-api-v3.md)的公开上市。 
+    * 能够导入和导出应用程序（[LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)）格式。 这铺平了道路了一种有效的 CI/CD 处理方式。 
+* 语言扩展
+    * 公共预览版中的[阿拉伯语和印地语](luis-language-support.md)。
+* 称之为 fakes.prebuild 模型
+    * [预](luis-reference-prebuilt-domains.md)生成的域现已正式发布（GA）
+    * V3 中不支持日语[预建实体](luis-reference-prebuilt-entities.md#japanese-entity-support)-年龄、货币、数字、百分比。
+    * 意大利语[预生成实体](luis-reference-prebuilt-entities.md#italian-entity-support)-age、currency、dimension、number、百分比分辨率已从 V2 更改。
+* 增强[preview.luis.ai 门户](https://preview.luis.ai)中的用户体验-改进标记体验，以启用生成和调试复杂模型。
+* 高级语言理解功能-采用更少的精力[构建复杂的语言模型](luis-concept-entity-types.md)。 
+* 在模型级别定义机器学习功能，并允许将模型用作其他模型的信号，如使用实体作为功能和其他实体。
+* 新的扩展[限制](luis-boundaries.md)-词组列表和短语的最大上限，新模型作为功能限制
+* 以深层层次结构的格式从文本中提取信息，使会话应用程序功能更强大。
+
+    ![计算机学习的实体图像](./media/whats-new/deep-entity-extraction-example.png)
 
 ### <a name="september-3-2019"></a>2019年9月3日
 
@@ -32,13 +51,13 @@ ms.locfileid: "70813283"
 * 预构建实体的土耳其语支持
 * 意大利语对 datetimeV2 的支持
 
-### <a name="july-23-2019"></a>2019年7月23日
+### <a name="july-23-2019"></a>2019 年 7 月 23 日
 
-* 将[识别器文本](https://github.com/microsoft/Recognizers-Text/releases/tag/dotnet-v1.2.3)更新为1.2。3
-    * 意大利语的年龄、温度、维度和币种识别器。
-    * 为了正确计算基于感恩节的日期，可以改进英语的假日识别。
-    * 法语日期时间的改进，可减少非日期和非时间实体的误报。
-    * 支持在英文 DateRange 中提供日历/学校/财政年度和首字母缩写词。
+* 将 [Recognizers-Text](https://github.com/microsoft/Recognizers-Text/releases/tag/dotnet-v1.2.3) 更新为 1.2.3
+    * 意大利语中的年龄、温度、维度和货币识别器。
+    * 改进了英语中的假期识别，以正确计算基于感恩节的日期。
+    * 改进了法语日期/时间，以减少非日期和非时间实体的误报。
+    * 在英文的日期范围中支持日历/学校/会计年度和首字母缩写。
     * 改进了中文和日语的 PhoneNumber 识别。
     * 改进了对英语 NumberRange 的支持。
     * 性能改进。

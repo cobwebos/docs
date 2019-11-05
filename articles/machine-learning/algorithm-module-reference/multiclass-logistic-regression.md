@@ -1,24 +1,24 @@
 ---
 title: 多类逻辑回归：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的 "多类逻辑回归" 模块来创建逻辑回归模型，该模型可用于预测多个值。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的 "多类逻辑回归" 模块来创建逻辑回归模型，该模型可用于预测多个值。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: d31329d6d45fd9f137bd6d57a638915e0833ee4a
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 9d6e6c11f0e2a8fb7e08385f7abf26fb4a8d21c8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692755"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465968"
 ---
 # <a name="multiclass-logistic-regression-module"></a>多类逻辑回归模块
 
-本文介绍了 Azure 机器学习服务的可视界面（预览）的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块可以创建逻辑回归模型，该模型可用于预测多个值。
 
@@ -48,7 +48,7 @@ Azure 机器学习还提供了[双类逻辑回归](./two-class-logistic-regressi
 
     正则化是一种防止使用极端系数值的处罚模型的过度拟合的方法。 正则化的工作原理是将与系数值相关联的处罚添加到假设的错误。 具有极端系数值的准确模型会因处罚更多的数据，但具有更保守值的更不准确的模型将因处罚更少。
 
-     L1 和 L2 正则化具有不同的效果，并使用。 L1 可应用于稀疏模型，这在处理多维数据时非常有用。 与此相反，L2 正则化更适用于非稀疏数据。  此算法支持 L1 和 L2 正则化值的线性组合：也就是说，如果 `x = L1` 和 `y = L2` `ax + by = c` 定义正则化术语的线性跨度。
+     L1 和 L2 正则化具有不同的效果，并使用。 L1 可应用于稀疏模型，这在处理多维数据时非常有用。 与此相反，L2 正则化更适用于非稀疏数据。  此算法支持 L1 和 L2 正则化值的线性组合：也就是说，如果 `x = L1` 和 `y = L2``ax + by = c` 定义正则化术语的线性跨度。
 
      为逻辑回归模型（如[弹性网络正则化](https://wikipedia.org/wiki/Elastic_net_regularization)）设计了 L1 和 L2 术语的不同线性组合。
 
@@ -67,4 +67,4 @@ Azure 机器学习还提供了[双类逻辑回归](./two-class-logistic-regressi
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

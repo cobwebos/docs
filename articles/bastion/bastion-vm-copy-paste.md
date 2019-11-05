@@ -1,66 +1,59 @@
 ---
-title: 复制并粘贴到和从虚拟机：Azure 堡垒 |Microsoft Docs
-description: 在本文中，了解如何复制并粘贴到和从 Azure VM 使用堡垒。
+title: 在虚拟机之间进行复制和粘贴： Azure 堡垒 |Microsoft Docs
+description: 本文介绍如何使用堡垒在 Azure VM 之间进行复制和粘贴。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 10/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9d69d1a9fae258c9546a8c794fc0b0c68b952049
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: ed8d52a4932271020dfb2a010392b312fa38703b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191806"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73519349"
 ---
-# <a name="copy-and-paste-to-a-virtual-machine-azure-bastion-preview"></a>复制并粘贴到虚拟机：Azure 堡垒 （预览版）
+# <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>复制并粘贴到虚拟机： Azure 堡垒
 
-本文可帮助您文本复制并粘贴到和从虚拟机使用 Azure 堡垒时。 在使用 VM 之前，请确保你已按相关步骤[创建的堡垒主机](bastion-create-host-portal.md)。 然后，连接到你想要使用使用 VM [RDP](bastion-connect-vm-rdp.md)或[SSH](bastion-connect-vm-ssh.md)。
+本文将帮助你在使用 Azure 堡垒时，将文本复制并粘贴到虚拟机中。 使用 VM 之前，请确保已按照[创建堡垒主机](bastion-create-host-portal.md)的步骤进行操作。 然后，使用[RDP](bastion-connect-vm-rdp.md)或[SSH](bastion-connect-vm-ssh.md)连接到要使用的虚拟机。
 
-> [!IMPORTANT]
-> 此公共预览版在提供时没有附带服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
+对于支持高级剪贴板 API 访问的浏览器，你可以使用在本地设备上的应用程序之间进行复制和粘贴的相同方式在本地设备与远程会话之间复制和粘贴文本。 对于其他浏览器，可以使用堡垒剪贴板访问工具面板。
 
-对于支持高级的剪贴板 API 访问权限的浏览器，可以复制并粘贴文本在本地设备和远程会话之间在复制和粘贴您的本地设备上的应用程序之间的相同方式。 对于其他浏览器，可以使用堡垒剪贴板访问工具调色板。
+   ![允许剪贴板](./media/bastion-vm-manage/allow.png)
 
-  ![允许剪贴板](./media/bastion-vm-manage/allow.png)
+仅支持文本复制/粘贴。 对于直接复制和粘贴，浏览器可能会提示你在启动堡垒会话时进行剪贴板访问。 **允许**网页访问剪贴板。
 
-支持仅文本复制/粘贴。 有关直接复制和粘贴，你的浏览器可能会提示你的剪贴板访问权限堡垒会话在初始化时。 **允许**web 页后，可以访问剪贴板。
+## <a name="to"></a>复制到远程会话
 
-## <a name="to"></a>将复制到远程会话
+使用[Azure 门户](https://portal.azure.com)连接到虚拟机后，请完成以下步骤：
 
-连接到虚拟机使用后[Azure 门户](https://aka.ms/BastionHost)堡垒预览版：
+1. 将本地设备中的文本/内容复制到本地剪贴板。
+1. 在远程会话期间，通过选择两个箭头启动堡垒剪贴板访问工具面板。 箭头位于会话的左侧。
 
-1. 将文本/内容从本地设备复制到本地剪贴板。
-1. 在远程会话中，选择两个箭头启动堡垒剪贴板访问工具调色板。 箭头都位于该会话靠左居中。
+   ![工具调色板](./media/bastion-vm-manage/left.png)
 
-    ![工具调色板](./media/bastion-vm-manage/left.png)
+   ![笔记](./media/bastion-vm-manage/clipboard.png)
+1. 通常，已复制的文本会自动显示在 "堡垒复制粘贴" 面板上。 如果不存在文本，请将文本粘贴到调色板上的文本区域中。
+1. 文本置于文本区域后，可以将其粘贴到远程会话。
 
-    ![剪贴板](./media/bastion-vm-manage/clipboard.png)
+   ![粘](./media/bastion-vm-manage/local.png)
 
-1. 通常情况下，复制的文本自动堡垒复制粘贴选项板上显示。 如果不存在您的文本，然后将文本粘贴调色板上的文本区域中。
-1. 文本区域文本后，可以将其粘贴到远程会话中。
+## <a name="from"></a>从远程会话复制
 
-    ![粘贴](./media/bastion-vm-manage/local.png)
+使用[Azure 门户](https://portal.azure.com)连接到虚拟机后，请完成以下步骤：
 
-## <a name="from"></a>将从远程会话复制
+1. 将远程会话中的文本/内容复制到远程剪贴板（使用 Ctrl + C）。
 
-连接到虚拟机使用后[Azure 门户](https://aka.ms/BastionHost)堡垒预览版：
+   ![工具调色板](./media/bastion-vm-manage/remote.png)
+1. 在远程会话期间，通过选择两个箭头启动堡垒剪贴板访问工具面板。 箭头位于会话的左侧。
 
-1. 远程会话中的文本/内容复制到远程剪贴板 （使用 Ctrl + C）。
+   ![笔记](./media/bastion-vm-manage/clipboard2.png)
+1. 通常，已复制的文本会自动显示在 "堡垒复制粘贴" 面板上。 如果不存在文本，请将文本粘贴到调色板上的文本区域中。
+1. 文本置于文本区域后，可以将其粘贴到本地设备。
 
-    ![工具调色板](./media/bastion-vm-manage/remote.png)
-
-1. 在远程会话中，选择两个箭头启动堡垒剪贴板访问工具调色板。 箭头都位于该会话靠左居中。
-
-    ![剪贴板](./media/bastion-vm-manage/clipboard2.png)
-
-1. 通常情况下，复制的文本自动堡垒复制粘贴选项板上显示。 如果不存在您的文本，然后将文本粘贴调色板上的文本区域中。
-1. 文本区域文本后，可以将其粘贴到本地设备。
-
-    ![粘贴](./media/bastion-vm-manage/local2.png)
+   ![粘](./media/bastion-vm-manage/local2.png)
  
 ## <a name="next-steps"></a>后续步骤
 
-读取[堡垒常见问题解答](bastion-faq.md)。
+阅读[堡垒常见问题解答](bastion-faq.md)。

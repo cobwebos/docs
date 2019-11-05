@@ -1,5 +1,5 @@
 ---
-title: 短语列表-LUIS
+title: 短语列表 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 使用语言理解 (LUIS) 添加应用功能，可以改进对类别和模式的意向和实体的检测或预测
 services: cognitive-services
@@ -9,22 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: f51f5a8583a73219ffb419c76fcd009d102f6ffb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 0e3e4226eaaa0505eea96d8b3aca820f2327349e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932917"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467614"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>使用短语列表来增强字词列表的信号
 
 可以将功能添加到 LUIS 应用以提高其准确性。 特征通过提供某些字词和短语是应用域词汇表的一部分的提示来帮助 LUIS。 
 
-[短语列表](luis-concept-feature.md)包括一组值（词或短语），它们属于同一个类，并且必须以同样的方式处理它们（例如城市或产品名称）。 LUIS 对其中一个值的了解也自动应用到其他值。 此列表的内容与匹配的单词的[列表实体](reference-entity-list.md)(精确文本匹配) 不同。
+[短语列表](luis-concept-feature.md)包括一组值（词或短语），它们属于同一个类，并且必须以同样的方式处理它们（例如城市或产品名称）。 LUIS 对其中一个值的了解也自动应用到其他值。 此列表的内容与匹配的单词的[列表实体](reference-entity-list.md)（精确文本匹配）不同。
 
 短语列表添加到应用域的词汇中，作为这些字词的第二个 LUIS 信号。
+
+查看[功能概念](luis-concept-feature.md)以了解何时以及为何使用短语列表。 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="add-phrase-list"></a>添加短语列表
 
@@ -34,7 +38,7 @@ LUIS 允许每个应用最多有 10 个短语列表。
 
 1. 在“短语列表”页上，单击“新建短语列表”。 
  
-1. 在 "**添加短语列表**" 对话框中, `Cities`键入作为短语列表的名称。 在“值”框中，键入短语列表的值。 可以一次键入一个值或者用逗号分隔的一组值，然后按 Enter。
+1. 在“添加短语列表”对话框中，键入  **作为短语列表的名称**`Cities`。 在“值”框中，键入短语列表的值。 可以一次键入一个值或者用逗号分隔的一组值，然后按 Enter。
 
     ![添加短语列表“城市”](./media/luis-add-features/add-phrase-list-cities.png)
 
@@ -46,7 +50,7 @@ LUIS 允许每个应用最多有 10 个短语列表。
 
     ![短语列表建议的值 - 选择可互换框](./media/luis-add-features/interchangeable.png)
 
-1. 单击“完成”。 将“城市”短语列表添加到“短语列表”页。
+1. 单击“Done”（完成）。 将“城市”短语列表添加到“短语列表”页。
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>

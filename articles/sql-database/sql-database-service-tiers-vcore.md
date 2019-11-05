@@ -1,141 +1,183 @@
 ---
-title: Azure SQL 数据库服务 - vCore | Microsoft 文档
-description: 使用基于 vCore 的购买模型，可以单独缩放计算和存储资源、匹配本地性能，以及优化价格。
+title: Azure SQL 数据库服务-vCore model 概述 |Microsoft Docs
+description: VCore 购买模式使你可以独立缩放计算和存储资源、匹配本地性能和优化价格。
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/01/2019
-ms.openlocfilehash: af2e8826c40fb0d16844b6c67f151b0affbf3efd
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 11/04/2019
+ms.openlocfilehash: 2bbdd565a861004014ca4161856bba83ec0be511
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035000"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496061"
 ---
-# <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>在 vCore 服务层级中进行选择，然后从 DTU 服务层级进行迁移
+# <a name="vcore-model-overview"></a>vCore 模型概述
 
-使用基于虚拟核心 (vCore) 的购买模型，可以单独缩放计算和存储资源、匹配本地性能，以及优化价格。 它还可让选择硬件的代系：
+虚拟核心（vCore）模型具有以下几个优点：
 
-- **第 4 代**：最多 24 个基于 Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器的逻辑 CPU，vCore = 1 PP（物理核心），每个 vCore 7 GB，附加了 SSD
-- **第 5 代**：最多 80 个基于 Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器的逻辑 CPU，vCore = 1 LP（超线程），每个 vCore 5.1 GB 用于预配计算，每个 vCore 最多 24 GB 用于无服务器计算，快速 eNVM SSD
+- 更高的计算、内存、IO 和存储限制。
+- 控制硬件的生成，以便更好地匹配工作负载的计算和内存要求。
+- [Azure 混合权益（AHB）](sql-database-azure-hybrid-benefit.md)和[预订实例（RI）](sql-database-reserved-capacity.md)的定价折扣。
+- 提高计算能力的硬件细节的透明度;有助于规划从本地部署迁移。
 
-第 4 代为每个 vCore 提供的内存要大得多。 但是，第 5 代硬件允许以高得多的力度纵向扩展计算资源。
+## <a name="service-tiers"></a>服务层
 
-> [!IMPORTANT]
-> 澳大利亚东部或巴西南部区域不再支持新的 Gen4 数据库。
-> [!NOTE]
-> 有关基于 DTU 的服务层级的信息，请参阅[基于 DTU 的购买模型的服务层级](sql-database-service-tiers-dtu.md)。 有关基于 DTU 和基于 vCore 的购买模型的服务层级之间的差异信息，请参阅 [Azure SQL 数据库购买模型](sql-database-purchase-models.md)。
-
-## <a name="service-tier-characteristics"></a>服务层级的特征
-
-基于 vCore 的购买模型提供三个服务层级：“常规用途”、“超大规模”和“业务关键”。 这些服务层级根据一系列计算大小、高可用性设计、故障隔离方法、存储类型和大小以及 I/O 范围进行区分。
-
-必须单独配置所需的存储和备份保持期。 若要设置备份保留期，请打开 Azure 门户，转到服务器（而不是数据库），然后转到“管理备份” > “配置策略” > “时间点还原配置” > “7 - 35 天”。
-
-下表解释了这三个层级之间的差别：
+VCore 模型中的服务层选项包括常规用途、业务关键和超大规模。 服务层通常定义与可用性和灾难恢复相关的存储体系结构、空间和 IO 限制以及业务连续性选项。
 
 ||**常规用途**|**业务关键**|**超大规模**|
 |---|---|---|---|
-|最适用于|提供以预算导向的、均衡的计算和存储选项。|事务速率较高和 IO 延迟较低的 OLTP 应用程序。 使用多个同步更新的副本提供最高的故障恢复能力和快速故障转移。|大多数业务工作负荷。 自动缩放存储大小，最高可达 100 TB、流体垂直和水平计算缩放、快速数据库还原。|
-|计算|**预配计算**：<br/>Gen4：1 到 24 个 vCore<br/>Gen5：2 到 80 个 vCore<br/>**无服务器计算**<br/>Gen5：0.5 到 16 个 vCore|**预配计算**：<br/>Gen4：1 到 24 个 vCore<br/>Gen5：2 到 80 个 vCore|**预配计算**：<br/>Gen4：1 到 24 个 vCore<br/>Gen5：2 到 80 个 vCore|
-|内存|**预配计算**：<br/>Gen4：每个 vCore 7 GB<br/>Gen5：每个 vCore 5.1 GB<br/>**无服务器计算**<br/>Gen5：每个 vCore 最多 24 GB|**预配计算**：<br/>Gen4：每个 vCore 7 GB<br/>Gen5：每个 vCore 5.1 GB |**预配计算**：<br/>Gen4：每个 vCore 7 GB<br/>Gen5：每个 vCore 5.1 GB|
-|存储|使用远程存储。<br/>**单一数据库和弹性池预配计算**：<br/>5 GB – 4 TB<br/>**无服务器计算**<br/>5 GB - 3 TB<br/>**托管实例**：32 GB - 8 TB |使用本地 SSD 存储。<br/>**单一数据库和弹性池预配计算**：<br/>5 GB – 4 TB<br/>**托管实例**：<br/>32 GB - 4 TB |可以根据需要灵活地自动扩展存储。 最多支持 100 TB 存储空间。 使用本地 SSD 存储作为本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终的长期数据存储。 |
-|I/O 吞吐量（近似值）|**单一数据库和弹性池**：每个 vCore 提供 500 IOPS，最大 40000 IOPS。<br/>**托管实例**：取决于[文件大小](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)。|每个核心提供 5000 IOPS，最大 200,000 IOPS|超大规模是具有多个级别缓存的多层体系结构。 有效 IOPs 将取决于工作负荷。|
+|最适用于|大多数业务工作负荷。 提供预算导向的、均衡且可缩放的计算和存储选项。 |通过使用多个独立副本，为业务应用程序提供故障的最高复原能力，并为每个数据库副本提供最高的 i/o 性能。|具有很高的可缩放存储和读取缩放要求的大多数业务工作负荷。  允许配置多个独立的数据库副本，从而提供更高的故障恢复能力。 |
+|存储|使用远程存储。<br/>**单一数据库和弹性池预配计算**：<br/>5 GB – 4 TB<br/>**无服务器计算**<br/>5 GB - 3 TB<br/>**托管实例**： 32 GB-8 TB |使用本地 SSD 存储。<br/>**单一数据库和弹性池预配计算**：<br/>5 GB – 8 TB<br/>**托管实例**：<br/>32 GB - 4 TB |可以根据需要灵活地自动扩展存储。 最多支持 100 TB 存储空间。 使用本地 SSD 存储作为本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终的长期数据存储。 |
+|I/O 吞吐量（近似值）|**单一数据库和弹性池**：每个 VCORE 500 iops，最大 iops 为40000。<br/>**托管实例**：依赖于[文件的大小](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)。|每 vCore 5000 IOPS，最大 IOPS 为320000|超大规模是具有多个级别缓存的多层体系结构。 有效 IOPs 将取决于工作负荷。|
 |可用性|1 个副本，无读取缩放副本|3 个副本，1 个[读取缩放副本](sql-database-read-scale-out.md)，<br/>区域冗余高可用性 (HA)|1 个读写副本加 0-4 个[读取缩放副本](sql-database-read-scale-out.md)|
 |备份|[读取访问异地冗余存储 (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为 7 天）|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为 7 天）|Azure 远程存储中基于快照的备份。 还原使用这些快照进行快速恢复。 备份瞬间完成，不会影响计算 I/O 性能。 还原速度很快，不基于数据操作的大小（需要几分钟，而不是几小时或几天）。|
 |内存中|不支持|支持|不支持|
 |||
 
-> [!NOTE]
-> 可以结合 Azure 免费帐户在基本服务层获取免费的 Azure SQL 数据库。 有关详细信息，请参阅[使用 Azure 免费帐户创建托管的云数据库](https://azure.microsoft.com/free/services/sql-database/)。
 
-- 有关 vCore 资源限制的详细信息，请参阅[单一数据库中的 vCore 资源限制](sql-database-vcore-resource-limits-single-databases.md)和[托管实例中的 vCore 资源限制](sql-database-managed-instance.md#vcore-based-purchasing-model)。
-- 若要详细了解常规用途服务层级和业务关键服务层级，请参阅[常规用途服务层级和业务关键服务层级](sql-database-service-tiers-general-purpose-business-critical.md)。
-- 若要详细了解基于 vCore 的购买模型中的超大规模服务层级，请参阅[超大规模服务层级](sql-database-service-tier-hyperscale.md)。  
+### <a name="choosing-a-service-tier"></a>选择服务层级
 
-## <a name="azure-hybrid-benefit"></a>Azure 混合权益
+有关为特定工作负荷选择服务层的信息，请参阅以下文章：
 
-在基于 vCore 的购买模型的预配计算机层级中，可以使用[适用于 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)交换现有许可证，以获得 SQL 数据库的折扣价格。 借助这项 Azure 权益，可以使用附带软件保障的本地 SQL Server 许可证，将 Azure SQL 数据库的成本最多节省 30%。
+- [何时选择 "常规用途" 服务层](sql-database-service-tier-general-purpose.md#when-to-choose-this-service-tier)
+- [何时选择业务关键的服务层](sql-database-service-tier-business-critical.md#when-to-choose-this-service-tier)
+- [选择超大规模服务层的时间](sql-database-service-tier-hyperscale.md#who-should-consider-the-hyperscale-service-tier)
 
-![定价](./media/sql-database-service-tiers/pricing.png)
 
-使用 Azure 混合权益，可以选择仅为底层 Azure 基础结构付费且将现有的 SQL Server 许可证用于 SQL 数据库引擎自身（基本计算定价），或者可以选择同时为底层基础结构和 SQL Server 许可证付费（许可证涵盖的定价）。
+## <a name="compute-tiers"></a>计算层
 
-可以使用 Azure 门户或下列 API 之一来选择或更改许可模型：
+VCore 模型中的计算层选项包括预配的和无服务器的计算层。
 
-- 使用 PowerShell 设置或更新许可证类型：
 
-  - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase)
-  - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
-  - [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
-  - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)
+### <a name="provisioned-compute"></a>已预配计算
 
-- 使用 Azure CLI 设置或更新许可证类型：
+预配的计算层提供了一种特定数量的计算资源，这些资源的配置与工作负荷活动无关，并按固定价格（每小时）预配计算数量。
 
-  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
-  - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
-  - [az sql mi create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
-  - [az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
 
-- 使用 REST API 设置或更新许可证类型：
+### <a name="serverless-compute"></a>无服务器计算
 
-  - [数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
-  - [数据库 - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)
-  - [托管实例 - 创建或更新](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
-  - [托管实例 - 更新](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
+[无服务器计算层](sql-database-serverless.md)根据工作负荷活动自动缩放计算资源，并按每秒使用的计算量计费。
 
-## <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>从基于 DTU 的模型迁移到基于 vCore 的模型
 
-### <a name="migrate-a-database"></a>迁移数据库
 
-将数据库从基于 DTU 的购买模型迁移到基于 vCore 的购买模型，与在基于 DTU 的购买模型中的标准和高级服务层级之间进行升级或降级的操作类似。
+## <a name="hardware-generations"></a>硬件代
 
-### <a name="migrate-databases-with-geo-replication-links"></a>使用异地复制链接迁移数据库
+VCore 模型中的硬件生成选项包括 Gen 4/5、M 系列（预览版）和 Fsv2 （预览版）。 硬件生成通常定义计算和内存限制以及影响工作负荷性能的其他特征。
 
-从基于 DTU 的模型迁移到基于 vCore 的购买模型类似于在标准和高级服务层级中的数据库之间升级或降级异地复制关系。 在迁移过程中无需停止异地复制，但必须遵循以下顺序规则：
+### <a name="gen4gen5"></a>Gen4/Gen5
 
-- 升级时，必须先升级辅助数据库，再升级主数据库。
-- 降级时，必须反转顺序：先降级主数据库，再降级辅助数据库。
+- Gen4/Gen5 硬件提供均衡的计算和内存资源，适用于不具有更高内存、更高 vCore 或更快的单一 vCore 要求的大多数数据库工作负荷，如 Fsv2 系列或 M 系列所提供。
 
-在两个弹性池之间使用异地复制时，建议将一个池指定为主池，另一个池指定为辅助池。 在这种情况下，迁移弹性池时应遵循相同的顺序指导。 但是，如果弹性池同时包含主数据库和辅助数据库，请将利用率较高的池视为主池，并相应地遵循顺序规则。  
+对于 Gen4/Gen5 可用的区域，请参阅[Gen4/Gen5 可用性](#gen4gen5-1)。
 
-下表提供具体迁移场景的指导：
+### <a name="fsv2-seriespreview"></a>Fsv2 系列（预览）
 
-|当前服务层级|目标服务层级|迁移类型|用户操作|
-|---|---|---|---|
-|标准|常规用途|横向|可按任意顺序迁移，但需确保 vCore 大小适当*|
-|高级|业务关键|横向|可按任意顺序迁移，但需确保 vCore 大小适当*|
-|标准|业务关键|升级|必须先迁移辅助数据库|
-|业务关键|标准|降级|必须先迁移主数据库|
-|高级|常规用途|降级|必须先迁移主数据库|
-|常规用途|高级|升级|必须先迁移辅助数据库|
-|业务关键|常规用途|降级|必须先迁移主数据库|
-|常规用途|业务关键|升级|必须先迁移辅助数据库|
-||||
+- Fsv2 系列是一种计算优化硬件选项，可为大多数 CPU 要求的工作负荷提供低 CPU 延迟和较高的时钟速度。
+- 根据工作负荷的不同，Fsv2 系列可以为每个 vCore 提供比 Gen5 更多的 CPU 性能，72 vCore 大小可提供更多的 CPU 性能，而不是 Vcore 上 80 Gen5。 
+- Fsv2 对每个 vCore 提供的内存和 tempdb 比其他硬件更少，因此，对这些限制敏感的工作负荷可能需要考虑 Gen5 或 M 系列。  
 
-\* 标准层中的每 100 个 DTU 至少需要 1 个 vCore，高级层中的每 125 个 DTU 至少需要 1 个 vCore。
+对于 Fsv2 系列可用的区域，请参阅[Fsv2 系列的可用性](#fsv2-series)。
 
-### <a name="migrate-failover-groups"></a>迁移故障转移组
 
-迁移包含多个数据库的故障转移组需要单独迁移主数据库和辅助数据库。 在此过程中，请遵循相同的注意事项和顺序规则。 将数据库转换到基于 vCore 的购买模型后，故障转移组将保持有效并使用相同的策略设置。
+### <a name="m-seriespreview"></a>M 系列（预览）
 
-### <a name="create-a-geo-replication-secondary-database"></a>创建异地复制辅助数据库
+- M 系列是内存优化硬件选项，适用于需要更多内存和更高计算限制的工作负荷，而不是由 Gen5 提供。
+- M 系列提供每 vCore 29 GB 和 128 Vcore，这会将相对于 Gen5 的内存限制增加到将近 4 TB。
 
-只能使用与主数据库所用的相同服务层级来创建异地复制辅助数据库。 对于日志生成速率较高的数据库，我们建议使用与主数据库相同的计算大小创建异地辅助数据库。
+若要为订阅和区域启用 M 系列硬件，必须打开支持请求。 如果支持请求获得批准，M 系列的选择和预配体验将遵循与其他硬件代相同的模式。 对于 M 系列可用的区域，请参阅[m 系列可用性](#m-series)。
 
-如果在弹性池中为单个主数据库创建异地辅助数据库，请确保对该池使用的 `maxVCore` 设置与主数据库计算大小相匹配。 如果为另一个弹性池中的主数据库创建异地辅助数据库，我们建议对该池使用相同的 `maxVCore` 设置。
 
-### <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>使用数据库复制将基于 DTU 的数据库转换为基于 vCore 的数据库
+### <a name="compute-and-memory-specifications"></a>计算和内存规格
 
-可将采用基于 DTU 的计算大小的任何数据库复制到采用基于 vCore 的计算大小的数据库，且无需遵守上述限制或特殊的顺序，前提是目标计算大小支持源数据库的最大数据库大小。 数据库复制会在复制操作启动时创建数据快照，且不会在源数据库与目标数据库之间同步数据。
+
+|硬件代次  |计算  |内存  |
+|:---------|:---------|:---------|
+|Gen4     |-Intel E5-2673 v3 （Haswell） 2.4 GHz 处理器<br>-预配多达24个 Vcore （1 vCore = 1 个物理内核）  |-每个 vCore 7 GB<br>-预配高达 168 GB|
+|Gen5     |**预配计算**<br>-Intel E5-2673 v4 （Broadwell） 2.3 GHz 处理器<br>-预配多达 80 Vcore （1 vCore = 1 个超线程）<br><br>**无服务器计算**<br>-Intel E5-2673 v4 （Broadwell） 2.3 GHz 处理器<br>-自动缩放多达16个 Vcore （1 vCore = 1 个超线程）|**预配计算**<br>-5.1 GB/vCore<br>-预配高达 408 GB<br><br>**无服务器计算**<br>-每 vCore 自动扩展到 24 GB<br>-自动缩放最大为 48 GB|
+|Fsv2 系列     |-Intel 至强白金8168（SkyLake）处理器<br>-将所有核心 turbo 时钟速度保持为 3.4 GHz，最大单一核心 turbo 时钟速度为 3.7 GHz。<br>-设置 72 Vcore （1 vCore = 1 个超线程）|-1.9 GB/vCore<br>-预配 136 GB|
+|M 系列     |-Intel E7-8890 v3 2.5 GHz 处理器<br>-设置 128 Vcore （1 vCore = 1 个超线程）|-每个 vCore 29 GB<br>-预配 3.7 TB|
+
+
+有关资源限制的详细信息，请参阅[单一数据库的资源限制（vCore）](sql-database-vcore-resource-limits-single-databases.md)或[弹性池的资源限制（vCore）](sql-database-vcore-resource-limits-elastic-pools.md)。
+
+### <a name="selecting-a-hardware-generation"></a>选择硬件生成
+
+在 Azure 门户中，可以选择在创建时为 SQL 数据库或池生成硬件，也可以更改现有 SQL 数据库或池的硬件生成。
+
+**创建 SQL 数据库或池时选择硬件生成**
+
+有关详细信息，请参阅[创建 SQL 数据库](sql-database-single-database-get-started.md)。
+
+在 "**基本**信息" 选项卡上，选择 "**计算 + 存储**" 部分中的 "**配置数据库**" 链接，然后选择 "**更改配置**" 链接：
+
+  ![配置数据库](media/sql-database-service-tiers-vcore/configure-sql-database.png)
+
+选择所需的硬件生成：
+
+  ![选择硬件](media/sql-database-service-tiers-vcore/select-hardware.png)
+
+
+**更改现有 SQL 数据库或池的硬件生成**
+
+对于数据库，在 "概述" 页上，选择 "**定价层**" 链接：
+
+  ![更改硬件](media/sql-database-service-tiers-vcore/change-hardware.png)
+
+对于池，请在 "概述" 页上选择 "**配置**"。
+
+按照上述步骤更改配置，并按前面的步骤中所述选择硬件生成。
+
+### <a name="hardware-availability"></a>硬件可用性
+
+#### <a name="gen4gen5"></a>Gen4/Gen5
+
+澳大利亚东部或巴西南部区域不再支持新的 Gen4 数据库。 
+
+Gen5 在世界各地的大多数区域中都可用。
+
+#### <a name="fsv2-series"></a>Fsv2 系列
+
+Fsv2 系列在以下区域中提供：澳大利亚中部、澳大利亚中部2、澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、东亚、美国东部、法国中部、印度中部、印度西部、韩国中部、韩国南部、北部欧洲、南非北部、东南亚、英国南部、英国西部、西欧、美国西部2。
+
+
+#### <a name="m-series"></a>M 系列
+
+M 系列在以下区域提供：美国东部、北欧、西欧、美国西部2。
+在其他区域，M 系列也可能具有有限的可用性。 你可以请求与此处列出的区域不同的区域，但可能无法在不同的区域执行请求。
+
+若要在订阅中启用 M 系列的可用性，必须通过[归档新的支持请求](#create-a-support-request-to-enable-m-series)来请求访问权限。
+
+
+##### <a name="create-a-support-request-to-enable-m-series"></a>创建支持请求以启用 M 系列： 
+
+1. 选择门户中的 "**帮助 + 支持**"。
+2. 选择“新建支持请求”。
+
+在 "**基本**信息" 页上，提供以下内容：
+
+1. 对于“问题类型”，选择“服务和订阅限制(配额)”。
+2. 对于**订阅**= 选择订阅以启用 M 系列。
+3. 对于 "**配额类型**"，请选择 " **SQL 数据库**"。
+4. 选择 "**下一步**" 以中转到**详细信息**页。
+
+在**详细信息**页上，提供以下内容：
+
+5. 在 "**问题详细信息**" 部分中，选择 "**提供详细信息**" 链接。 
+6. 对于**SQL 数据库配额类型**，请选择**M 系列**。
+7. 对于 "**区域**"，选择区域以启用 M 系列。
+    对于 M 系列可用的区域，请参阅[m 系列可用性](#m-series)。
+
+批准的支持请求通常在5个工作日内完成。
+
 
 ## <a name="next-steps"></a>后续步骤
 
+- 若要创建 SQL 数据库，请参阅[使用 Azure 门户创建 sql 数据库](sql-database-single-database-get-started.md)。
 - 有关适用于单一数据库的特定计算大小和存储大小选项，请参阅[适用于单一数据库的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-single-databases.md)。
-- 有关适用于弹性池的特定计算大小和存储大小选项，请参阅[适用于弹性池的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)。
+- 有关适用于弹性池的特定计算大小和存储大小选项，请参阅[适用于弹性池的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-elastic-pools.md)。
+- 有关定价的详细信息，请参阅[AZURE SQL 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/single/)。

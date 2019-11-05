@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 2fc22a8f2a9e1e9410f2e6a9738c50a296a6287f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 62fb5552d86a802c3ba0213d99be2f91f21025e2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180714"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472126"
 ---
 # <a name="access-and-customize-developer-portal"></a>访问和自定义开发人员门户
 
 开发人员门户是一个自动生成的、可完全自定义的网站，其中包含 Api 的文档。 API 使用者可以在其中发现你的 Api、了解如何使用它们并请求访问。
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 访问开发人员门户的托管版本
@@ -36,6 +36,10 @@ ms.locfileid: "73180714"
 
 ![API 管理开发人员门户-管理模式](media/api-management-howto-developer-portal-customize/cover.png)
 
+> [!WARNING]
+> 当前正在向 API 管理服务推出开发人员门户。
+> 如果你的服务是新创建的或开发人员层服务，则你应该已经有最新版本。 否则，你可能会遇到问题（例如，通过发布功能）。 功能推出将于2019年11月11日星期一完成。 
+
 ## <a name="prerequisites"></a>必备组件
 
 - 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)
@@ -45,10 +49,10 @@ ms.locfileid: "73180714"
 
 ## <a name="access-the-portal-as-an-administrator"></a>以管理员身份访问门户
 
-按照以下步骤访问门户的托管版本。
+遵循以下步骤访问托管版本的门户。
 
-1. 在 Azure 门户中转到 API 管理服务实例。
-1. 单击顶部导航栏中的 "**开发人员门户**" 按钮。 将打开新的浏览器选项卡，其中包含门户的管理版本。
+1. 在 Azure 门户中转到你的 API 管理服务实例。
+1. 单击顶部导航栏中的 "**开发人员门户**" 按钮。 此时会打开一个新的浏览器标签页，其中包含管理版本的门户。
 
 ## <a name="understand-the-portals-administrative-interface"></a>了解门户的管理界面
 
@@ -107,7 +111,7 @@ ms.locfileid: "73180714"
 
 ### <a name="customization-example"></a>自定义示例
 
-在下面的视频中，我们将演示如何编辑门户的内容，自定义网站的外观并发布所做的更改。
+以下视频演示了如何编辑门户的内容、自定义网站的外观，以及发布所做的更改。
 
 > [!VIDEO https://www.youtube.com/embed/5mMtUSmfUlw]
 

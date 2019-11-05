@@ -1,7 +1,7 @@
 ---
 title: 使用示例数据集
-titleSuffix: Azure Machine Learning Studio
-description: 机器学习工作室中包含的示例模型中使用的数据集说明。 可以将这些示例数据集用于实验。
+titleSuffix: Azure Machine Learning Studio (classic)
+description: 机器学习 Studio （经典）中包含的示例模型中使用的数据集的说明。 可以将这些示例数据集用于实验。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,21 +10,21 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: f86ae4977621927a09d9b83287a00dfa3bc17196
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c44fd4fcc6672d81332d79d1f5cc6845868a09d5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736609"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466963"
 ---
-# <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中使用示例数据集
+# <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习 Studio 中使用示例数据集（经典）
 [top]: #machine-learning-sample-datasets
 
-在 Azure 机器学习工作室中创建新的工作区时，默认情况下包含大量的示例数据集和实验。 其中许多示例数据集由 [Azure AI 库](https://gallery.azure.ai/)中的示例模型使用。 其他示例数据集作为通常在机器学习中使用的各种类型数据的示例包含在内。
+在 Azure 机器学习 Studio （经典）中创建新的工作区时，默认情况下会包含一些示例数据集和试验。 其中许多示例数据集由 [Azure AI 库](https://gallery.azure.ai/)中的示例模型使用。 其他示例数据集作为通常在机器学习中使用的各种类型数据的示例包含在内。
 
-一些数据集可在 Azure Blob 存储中使用。 对于这些数据集，下表提供了直接链接。 可以在实验中通过使用[导入数据][import-data]模块使用这些数据集。
+一些数据集可在 Azure Blob 存储中使用。 对于这些数据集，下表提供了直接链接。 您可以使用 "[导入数据][import-data]" 模块在试验中使用这些数据集。
 
-余下的这些示例数据集可在“保存的数据集”  下的工作区中使用。 可以在机器学习工作室中试验画布左侧的模块调色板中找到此项。
+余下的这些示例数据集可在“保存的数据集”下的工作区中使用。 可以在机器学习 Studio （经典）中试验画布左侧的模块面板中找到此项。
 通过将其中的任何数据集拖放到实验画布中，即可在自己的实验中使用它们。
 
 ## <a name="datasets"></a>数据集
@@ -41,7 +41,7 @@ ms.locfileid: "60736609"
   <td>
 1994 年人口普查数据库的子集（其中在职人士年龄大于 16，调整后的收入指数大于 100）。
 <p></p>
-<b>用途：</b>使用人口统计信息对人员分类，预测某人的年收入是否超过 5 万。
+<b>用途</b>：使用人口统计信息对国民进行分类，预测是否有国民的年收入超过 50K。
 <p></p>
 <b>相关研究：</b>Kohavi, R.、Becker, B.（1996 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
@@ -106,7 +106,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
   <td>
 肿瘤学研究所提供的三个癌症相关数据集之一，经常出现在机器学习文献中。 将诊断信息与来自约 300 个组织样本的实验室分析的特征相结合。
 <p></p>
-<b>用途：</b>基于 9 种属性（其中有一些是线性的，一些是无条件的）对癌症类型分类。 
+<b>用途：</b>基于 9 种属性（其中有一些是线性的，一些是无条件的）分类癌症类型。 
 <p></p>
 <b>相关研究：</b>Wohlberg, W.H.、Street, W.N. 和 Mangasarian, O.L. （1995 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
@@ -161,15 +161,15 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>使用回归或分类来预测基于两个实值响应之一的能效等级。 对于多类分类，将响应变量舍入为最接近的整数。 
 <p></p>
-<b>相关研究：</b>Xifara, A. & Tsanas, A.（2012 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+<b>相关研究：</b>Xifara、& Tsanas （2012）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr>
   <td>航班延误数据</td>
   <td>
-从美国的 TranStats 数据收集中获得的客运航班正常率数据。交通部（<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">准时</a>）。
+乘客航班时间从美国交通部的 TranStats 数据收集获取的时间性能数据（<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">按时）。</a>
 <p></p>
-数据集涵盖 2013 年 4 月到 10 月的时间段。 在上传到 Azure 机器学习工作室之前，数据集的处理如下所示：
+数据集涵盖 2013 年 4 月到 10 月的时间段。 将数据集上传到经典版 Azure 机器学习 Studio 之前，将按如下所示处理数据集：
 <ul>
   <li>数据集经筛选，仅包含美国本土 70 个最繁忙的机场</li>
   <li>取消的航班标记为延误超过 15 分钟</li>
@@ -197,7 +197,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>这项回归任务非常难，其目的是预测森林火灾的焚毁面积。 
 <p></p>
-<b>相关研究：</b>Cortez, P. 和 Morais, A.（2008 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院
+<b>相关研究：</b>Cortez、、& Morais （2008）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院
 <p></p>
 [Cortez 和 Morais，2007 年] P. Cortez 和 A. Morais。 使用气象数据预测森林火灾的数据挖掘方法。 在 J. Neves, M. F. Santos 和 J. Machado 编辑，“人工智能新趋势”，2007 年第 13 届 EPIA 会议记录 - 有关人工智能的葡萄牙会议于 2007 年 12 月在葡萄牙吉马良斯召开，第 512-523 页。 APPIA, ISBN-13 978-989-95618-0-9。 如需获取，请访问 <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a>。
   </td>
@@ -232,7 +232,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <tr>
   <td>电影推文</td>
   <td>
-该数据集是电影迷你推文数据集的扩展版本。 数据集中具有 170K 个电影评分，从 Twitter 上结构良好的推文中提取。 每个实例表示推文，并为一个元组： 用户 ID、 IMDB 电影 ID、 分级、 时间戳、 收藏此推文的数目和数篇此推文的转推会。 数据集由 A. Said、S. Dooms、B. Loni 和 D. Tikk 提供，用于 Recommender Systems Challenge 2014。
+该数据集是电影迷你推文数据集的扩展版本。 数据集中具有 170K 个电影评分，从 Twitter 上结构良好的推文中提取。 每个实例表示一个推文，是一个元组：用户 ID、IMDB 电影 ID、分级、时间戳、此推文的收藏夹数，以及此推文的篇以上数。 数据集由 A. Said、S. Dooms、B. Loni 和 D. Tikk 提供，用于 Recommender Systems Challenge 2014。
   </td>
 </tr>
 
@@ -255,7 +255,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>预测观察对象是否患有糖尿病（二元分类）。 
 <p></p>
-<b>相关研究：</b>Sigillito, V.（1990 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml"</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+<b>相关研究：</b>Sigillito，V. （1990）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml"</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr>
@@ -265,7 +265,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>将此数据集与其他两个餐馆数据集结合使用，以便训练和测试推荐器系统。 
 <p></p>
-<b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
+<b>相关研究：</b>Bache，K. 和 Lichman，M. （2013）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
   </td>
 </tr>
 
@@ -276,7 +276,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>将此数据集与其他两个餐馆数据集结合使用，以便训练和测试推荐器系统。 
 <p></p>
-<b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
+<b>相关研究：</b>Bache，K. 和 Lichman，M. （2013）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
   </td>
 </tr>
 
@@ -287,7 +287,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>将此数据集与其他两个餐馆数据集结合使用，以便训练和测试推荐器系统。 
 <p></p>
-<b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
+<b>相关研究：</b>Bache，K. 和 Lichman，M. （2013）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
   </td>
 </tr>
 
@@ -300,7 +300,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 钢种遵循由 SAE 和其他组织定义的一组标准。 正在寻找特定“种类”（类变量），并想要了解所需值。 
 <p></p>
-<b>相关研究：</b>Sterling, D. 和 Buntine, W.(NA)。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院
+<b>相关研究：</b>Sterling，d. & Buntine，W. （NA）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院
 <p></p>
 可访问此处获取有关钢等级的帮助指南：<a href="https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf">https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
@@ -329,7 +329,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
   <td>
 美国国家海洋和大气局每小时发布的陆基天气观测（<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">从 201304 到 201310 的合并数据</a>）。
 <p></p>
-该天气数据包括从机场气象站获取的观测结果，涵盖的时间段为 2013 年 4 月到 10 月。 在上传到 Azure 机器学习工作室之前，数据集的处理如下所示：
+该天气数据包括从机场气象站获取的观测结果，涵盖的时间段为 2013 年 4 月到 10 月。 将数据集上传到经典版 Azure 机器学习 Studio 之前，将按如下所示处理数据集：
 <ul>
   <li>气象站 ID 已映射到相应的机场 ID</li>
   <li>与 70 个最繁忙的机场无关的气象站已筛选掉</li>
@@ -344,7 +344,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
   <td>
 数据来自维基百科 (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>)，基于每个标准普尔 500 强公司的文章，存储为 XML 数据。
 <p></p>
-在上传到 Azure 机器学习工作室之前，数据集的处理如下所示：
+将数据集上传到经典版 Azure 机器学习 Studio 之前，将按如下所示处理数据集：
 <ul>
   <li>提取每个特定公司的文本内容</li>
   <li>去除维基百科的格式设置</li>
@@ -374,7 +374,7 @@ RCV1-V2 路透社新闻数据集中测试示例的特征。 该数据集中具�
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train.csv</a></td>
   <td>
-RCV1-V2 路透社新闻数据集中训练示例的特征。 该数据集中具有 23K 个新闻文章及其 ID（数据集的第一列）。 每篇文章已经过标记化、设置了停用词并去除了枝枝叶叶。 数据集由 David 提供。 D. Lewis。
+RCV1-V2 路透社新闻数据集中训练示例的特征。 该数据集中具有 23K 个新闻文章及其 ID（数据集的第一列）。 每篇文章已经过标记化、设置了停用词和去除枝枝叶叶。 数据集由 David 提供。 D. Lewis。
   </td>
 </tr>
 
@@ -408,7 +408,7 @@ RCV1-V2 路透社新闻数据集中新闻文章的主题分配。 可以分配�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [启动示例试验](sample-experiments.md)
+> [用示例 Kickstart 试验](sample-experiments.md)
 
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/

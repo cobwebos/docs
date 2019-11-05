@@ -11,14 +11,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4872ba8a707192cd61ec371fa982a076d410e918
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: c0d696e3fc060a2779eba7d7e895397ea3245383
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996572"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489272"
 ---
 # <a name="use-secrets-in-training-runs"></a>在定型运行中使用机密
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何安全地运行训练中的机密。 例如，若要连接到外部数据库以查询定型数据，则需要将用户名和密码传递到远程运行上下文。 将此类值编码为以明文形式定型脚本是不安全的，因为它会公开机密。 
 

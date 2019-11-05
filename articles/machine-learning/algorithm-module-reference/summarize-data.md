@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 54d7235ef56a94c9c0e7b780c53cbd9791bf4f53
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 503eb533b83cbeedcc16b73a9c1dbe821a4d4d94
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694709"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492570"
 ---
 # <a name="summarize-data"></a>汇总数据
 
-本文介绍 Azure 机器学习可视界面的模块。
+本文介绍 Azure 机器学习设计器（预览）的模块。
 
 使用 "汇总数据" 模块可创建一组标准统计度量值，这些度量值用于描述输入表中的每一列。
 
@@ -32,7 +32,7 @@ ms.locfileid: "72694709"
 
 ## <a name="how-to-configure-summarize-data"></a>如何配置汇总数据  
 
-1. 将 "**汇总数据**" 模块添加到管道。 可以在可视界面的 "**统计函数**" 类别中找到此模块。
+1. 将 "**汇总数据**" 模块添加到管道。 您可以在设计器的 "**统计函数**" 类别中找到此模块。
 
 1. 连接要为其生成报表的数据集。
 
@@ -46,7 +46,7 @@ ms.locfileid: "72694709"
 
 模块中的报表可以包含以下统计信息。 
 
-|列名称|描述|
+|列名称|说明|
 |------|------|  
 |**功能**|列的名称|
 |**Count**|所有行的计数|
