@@ -1,5 +1,5 @@
 ---
-title: 创建 Apache Spark 机器学习管道 - Azure HDInsight
+title: 创建 Apache Spark 机器学习管道-Azure HDInsight
 description: 使用 Apache Spark 机器学习库在 Azure HDInsight 中创建数据管道。
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 22583d82d8e422d8176fdb7cd70a98d229e8b6bb
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: b0de9103fd022dc74e7c75017a602eb6701686fe
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736385"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494671"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>创建 Apache Spark 机器学习管道
 
@@ -95,7 +95,7 @@ pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
 model = pipeline.fit(training)
 ```
 
-若要查看由 `Tokenizer` 和 `HashingTF` 转换器添加的新的 `words` 和 `features` 列以及 `LogisticRegression` 估算器示例，在原始数据帧上运行 `PipelineModel.transform()` 方法。 在生产代码中，下一步为传入测试数据帧，以验证培训。
+若要查看由 `words` 和 `features` 转换器添加的新的 `Tokenizer` 和 `HashingTF` 列以及 `LogisticRegression` 估算器示例，在原始数据帧上运行 `PipelineModel.transform()` 方法。 在生产代码中，下一步为传入测试数据帧，以验证培训。
 
 ```python
 peek = model.transform(training)
@@ -132,6 +132,6 @@ only showing top 20 rows
 
 现在可以使用 `model` 对象来进行预测。 有关此机器学习应用程序的完整示例以及运行此应用程序的分步说明，请参阅[在 Azure HDInsight 上生成 Apache Spark 机器学习应用程序](apache-spark-ipython-notebook-machine-learning.md)。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [在 Azure 上使用 Scala 和 Apache Spark 展开数据科研](../../machine-learning/team-data-science-process/scala-walkthrough.md)

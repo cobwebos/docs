@@ -9,12 +9,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: 92a1fda85e5ee49f12a13123e8a296492fd9eb4b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: fa8b02cf5ee6f24bcc77aae057f41842da721981
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598177"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521140"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL 超大规模性能疑难解答诊断
 
@@ -29,7 +29,7 @@ ms.locfileid: "72598177"
 
 以下等待类型（在[_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)中）描述了在主要计算副本上可限制日志速率的原因：
 
-|等待类型    |描述                         |
+|Wait 类型    |说明                         |
 |-------------          |------------------------------------|
 |RBIO_RG_STORAGE        | 由于页面服务器上延迟的日志消耗导致超大规模数据库主计算节点日志生成速率被阻止时发生。         |
 |RBIO_RG_DESTAGE        | 当超大规模数据库计算节点日志生成速率由于长期日志存储延迟的日志消耗而受到限制时发生。         |
@@ -101,7 +101,7 @@ ms.locfileid: "72598177"
 
 ## <a name="additional-resources"></a>其他资源
 
-- 对于超大规模单一数据库的 vCore 资源限制，请参阅[超大规模服务层 VCore 限制](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute)
+- 对于超大规模单一数据库的 vCore 资源限制，请参阅[超大规模服务层 VCore 限制](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5)
 - 对于 Azure SQL 数据库性能优化，请参阅[AZURE Sql 数据库中的查询性能](sql-database-performance-guidance.md)
 - 有关使用查询存储进行性能优化的详细情况，请参阅[使用查询存储进行性能监视](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store/)
 - 有关 DMV 监视脚本，请参阅[使用动态管理视图监视性能 AZURE SQL 数据库](sql-database-monitoring-with-dmvs.md)

@@ -1,7 +1,7 @@
 ---
 title: K 平均值聚类分析：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何在 Azure 机器学习服务中使用 K 平均值聚类分析模块来定型聚类分析模型。
+titleSuffix: Azure Machine Learning
+description: 了解如何在 Azure 机器学习中使用 K 平均值聚类分析模块来定型聚类分析模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: bb39a57f565a542e5106b7ba14e58bc39041f53d
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 4634519f55582a3184472d28acfd98fa849be86a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693116"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497755"
 ---
 # <a name="module-k-means-clustering"></a>模块： K 平均值聚类
 
-本文介绍如何在 Azure 机器学习 Studio 中使用*K 平均值聚类分析*模块来创建未经训练的 K 平均值聚类分析模型。 
+本文介绍如何在 Azure 机器学习设计器（预览版）中使用*K 平均值聚类分析*模块来创建未经训练的 K 平均值聚类分析模型。 
  
 K 平均值是最简单的*无人监督*学习算法之一。 可以将算法用于各种机器学习任务，如： 
 

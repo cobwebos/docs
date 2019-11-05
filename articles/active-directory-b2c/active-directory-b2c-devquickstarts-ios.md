@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 96221ffc8249f722268ea5778bee4b4389ded26e
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 0fb5341c2e7ee55391cb38251b0ea66b55b93301
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326599"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469155"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C：使用 iOS 应用程序登录
 
@@ -37,7 +37,9 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-记录**应用程序 ID** ，以便在后面的步骤中使用。 接下来，在列表中选择应用程序，并记录**自定义重定向 URI**，还可在后面的步骤中使用。 例如， `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
+记录**应用程序（客户端） ID** ，以便在后面的步骤中使用。
+
+还应记录自定义重定向 URI，以便在后面的步骤中使用。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`。
 
 ## <a name="create-your-user-flows"></a>创建用户流
 在 Azure AD B2C 中，每个用户体验由[用户流](active-directory-b2c-reference-policies.md)定义。 此应用程序包含一个标识体验：合并的登录和注册。 创建用户流时，请务必：
@@ -89,8 +91,8 @@ OIDServiceConfiguration *configuration =
 
 配置或检索授权服务配置后，可以构造授权请求。 若要创建该请求，需要提供以下信息：
 
-* 之前记录的客户端 ID （应用程序 ID）。 例如， `00000000-0000-0000-0000-000000000000` 。
-* 之前记录的自定义重定向 URI。 例如， `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
+* 之前记录的客户端 ID（应用程序 ID）。 例如，`00000000-0000-0000-0000-000000000000`。
+* 之前记录的自定义重定向 URI。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`。
 
 [注册应用](#create-an-application)时应已保存这两项信息。
 
@@ -120,7 +122,7 @@ appDelegate.currentAuthorizationFlow =
 
 要将应用程序设置为处理重定向到使用自定义方案的 URI，需要在 Info.pList 中更新“URL 方案”列表：
 * 打开 Info.pList。
-* 将鼠标悬停在带有“BBundle OS 类型代码”字样的行上，然后单击 \+ 符号。
+* 将鼠标悬停在带有“BBundle OS 类型代码”字样的行上，并单击 \+ 符号。
 * 将新行重命名为“URL 类型”。
 * 单击“URL 类型”左侧的箭头打开该树。
 * 单击“项目 0”左侧的箭头打开该树。

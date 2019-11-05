@@ -1,0 +1,70 @@
+---
+title: 在 Azure 安全中心创建自定义安全策略 |Microsoft Docs
+description: Azure 安全中心监视的 azure 自定义策略定义。
+services: security-center
+author: memildin
+manager: rkarlin
+ms.service: security-center
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.author: memildin
+ms.openlocfilehash: d5432c794c26e350b23fe47aa1574422143ca4b2
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521951"
+---
+# <a name="using-custom-security-policies-preview"></a>使用自定义安全策略（预览）
+
+为了帮助保护你的系统和环境，Azure 安全中心会生成安全建议。 这些建议基于行业最佳实践，该方案合并到为所有客户提供的通用默认安全策略中。 它们还可以来自安全中心的行业和法规标准知识。
+
+通过此预览功能，你可以添加自己的*自定义*计划。 如果你的计算机不遵循你所创建的策略，则会收到建议。
+
+## <a name="to-add-a-custom-initiative-to-your-subscription"></a>向订阅中添加自定义计划 
+
+1. 在安全中心的边栏中，打开 "**安全策略**" 页。
+
+1. 选择要向其添加自定义计划的订阅或管理组。
+
+    [选择要为其创建自定义策略的订阅 ![](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
+
+    > [!NOTE]
+    > 添加自定义标准时，它将向该范围分配*计划*。 因此，建议您选择该分配所需的范围最广的作用域。 
+
+1. 在 "安全策略" 页的 "自定义计划（预览）" 下，单击 "**添加自定义计划**"。
+
+    [![单击 "添加自定义计划"](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
+
+    将显示以下页面：
+
+    ![创建或添加策略](media/custom-security-policies/create-or-add-custom-policy.png)
+
+1. 在 "添加自定义计划" 页上，查看已在组织中创建的自定义策略的列表。 如果你看到要分配给订阅的一个，请单击 "**添加**"。 如果列表中没有符合需求的计划，则跳过此步骤。
+
+1. 若要创建新的自定义计划：
+
+    1. 单击 "**新建**"。
+    1. 输入定义的 "位置" 和 "名称"。
+    1. 选择要包括的策略，然后单击 "**添加**"。
+    1. 输入任何所需的参数。
+    1. 单击“保存”。
+    1. 在 "添加自定义计划" 页中，单击 "刷新"，你的新计划将显示为 "可用"。
+    1. 单击 "**添加**" 并将其分配给你的订阅。
+
+    > [!NOTE]
+    > 创建新的计划需要订阅所有者凭据。 有关 Azure 角色的详细信息，请参阅[Azure 安全中心中的权限](security-center-permissions.md)。
+
+1. 若要查看策略的结果建议，请单击边栏中的 "**建议**" 以打开 "建议" 页。 建议将显示 "自定义" 标签，最长可达30分钟。
+
+    [![自定义建议](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
+
+
+## <a name="next-steps"></a>后续步骤
+
+本文介绍了如何创建自定义安全策略。 
+
+有关其他相关材料，请参阅以下文章： 
+
+- [安全策略概述](tutorial-security-policy.md)
+- [内置安全策略的列表](security-center-policy-definitions.md)

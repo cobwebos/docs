@@ -1,7 +1,7 @@
 ---
 title: 执行 R 脚本：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的执行 R 脚本模块来运行 R 代码。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的执行 R 脚本模块来运行 R 代码。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,25 +9,25 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: 01d4e3a06b8c6a95374b9ee246864167e6d2ac85
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: f9aae1302f0d83c27d5d8f01745ddecbaeea9467
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693769"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497889"
 ---
 # <a name="execute-r-script"></a>执行 R 脚本
 
-本文介绍如何使用 "**执行 r 脚本**" 模块在视觉界面管道中运行 R 代码。
+本文介绍如何使用 "**执行 r 脚本**" 模块在 Azure 机器学习设计器（预览）管道中运行 R 代码。
 
 使用 R，你可以执行现有模块当前不支持的任务，例如： 
 - 创建自定义数据转换
 - 使用你自己的度量值来评估预测
-- 使用在 visual interface 中未实现为独立模块的算法生成模型
+- 使用未在设计器中作为独立模块实现的算法生成模型
 
 ## <a name="r-version-support"></a>R 版本支持
 
-Azure 机器学习 service 视觉对象接口使用 R 的 CRAN （全面 R 存档网络）分发。当前使用的版本为 CRAN 3.5.1。
+Azure 机器学习设计器使用 R 的 CRAN （全面 R 存档网络）分发。当前使用的版本为 CRAN 3.5.1。
 
 ## <a name="supported-r-packages"></a>支持的 R 包
 
@@ -73,7 +73,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ![R-模块](media/module/execute-r-script.png)
 
-使用此模块加载时，存储在可视化界面中的数据集将自动转换为 R 数据帧。
+使用此模块加载时，存储在设计器中的数据集将自动转换为 R 数据帧。
 
 1.  将**执行 R 脚本**模块添加到管道。
 
@@ -81,9 +81,9 @@ azureml_main <- function(dataframe1, dataframe2){
 
 1. 连接脚本所需的任何输入。 输入是可选的，可以包含数据和其他 R 代码。
 
-    * **Dataset1**：引用 `dataframe1` 的第一个输入。 输入数据集的格式必须为 CSV、TSV、ARFF，或者可以连接 Azure 机器学习数据集。
+    * **Dataset1**：引用 `dataframe1`的第一个输入。 输入数据集的格式必须为 CSV、TSV、ARFF，或者可以连接 Azure 机器学习数据集。
 
-    * **Dataset2**：引用 `dataframe2` 的第二个输入。 此数据集也必须设置为 CSV、TSV、ARFF 文件或 Azure 机器学习数据集格式。
+    * **Dataset2**：引用 `dataframe2`的第二个输入。 此数据集也必须设置为 CSV、TSV、ARFF 文件或 Azure 机器学习数据集格式。
 
     * **脚本捆绑包**：第三个输入接受 ZIP 文件。 压缩的文件可以包含多个文件和多个文件类型。
 
@@ -111,15 +111,15 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
- * 脚本必须包含名为 `azureml_main` 的函数，这是此模块的入口点。
+ * 脚本必须包含名为 `azureml_main`的函数，这是此模块的入口点。
 
  * 入口点函数最多可以包含两个输入参数： `Param<dataframe1>` 和 `Param<dataframe2>`
  
    > [!NOTE]
-    > 传递给 "**执行 R 脚本**" 模块的数据被引用为 `dataframe1` 和 `dataframe2`，这不同于 Azure 机器学习 Studio （studio 引用为 `dataset1` `dataset2`）。 请检查以确保在脚本中正确 referneced 输入数据。  
+    > 传递给 "**执行 R 脚本**" 模块的数据被称为 `dataframe1` 和 `dataframe2`，这不同于 Azure 机器学习设计器（设计器引用为 `dataset1``dataset2`）。 请检查以确保在脚本中正确 referneced 输入数据。  
  
     > [!NOTE]
-    >  现有 R 代码可能需要稍作更改才能在视觉界面管道中运行。 例如，你以 CSV 格式提供的输入数据应显式转换为数据集，然后才能在代码中使用它。 R 语言中使用的数据和列类型也不同于可视界面中所使用的数据和列类型的某些方式。
+    >  现有 R 代码可能需要稍作更改才能在设计器管道中运行。 例如，你以 CSV 格式提供的输入数据应显式转换为数据集，然后才能在代码中使用它。 R 语言中使用的数据和列类型在设计器中使用的数据和列类型的某些方面也有所不同。
 
 1.  **随机种子**：键入要在 R 环境中用作随机种子值的值。 此参数等效于在 R 代码中调用 `set.seed(value)`。  
 
@@ -127,7 +127,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="results"></a>结果
 
-**执行 r 脚本**模块可以返回多个输出，但它们必须作为 R 数据帧提供。 数据帧会自动转换为视觉对象接口数据集，以与其他模块兼容。
+**执行 r 脚本**模块可以返回多个输出，但它们必须作为 R 数据帧提供。 数据帧会自动转换为设计器中的数据集，以便与其他模块兼容。
 
 来自 R 的标准消息和错误将返回到模块的日志中。
 
@@ -235,7 +235,7 @@ azureml_main <- function(dataframe1, dataframe2){
     }
     ```
 
-    已完成到整数类型的显式转换，因为序列化函数会输出 R `Raw` 格式的数据，而视觉对象接口不支持该格式。
+    已完成到整数类型的显式转换，因为序列化函数会输出 R `Raw` 格式的数据，设计器不支持该格式。
 
 1. 添加**执行 R 脚本**模块的第二个实例，并将其连接到上一个模块的输出端口。
 
@@ -322,7 +322,7 @@ azureml_main <- function(dataframe1, dataframe2){
 | lazyeval     | 0.2.2      | 
 | lubridate    | avro-mapred-1.7.4-hadoop2.jar      | 
 | magrittr     | 1.5        | 
-| markdown     | 第          | 
+| markdown     | 1          | 
 | 成批         | 7.3-51。4   | 
 | 矩阵       | 1.2-17     | 
 | 方法      | 3.5.1      | 
@@ -402,4 +402,4 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

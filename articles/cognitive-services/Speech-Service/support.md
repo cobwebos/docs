@@ -1,5 +1,5 @@
 ---
-title: 支持和帮助选项-语音服务
+title: 支持和帮助选项 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 在创建与语音服务集成的应用程序时，如何针对所遇到的问题获取帮助和支持
 services: cognitive-services
@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 26d66868ab4c003dbd962e0c94009bc38bb36345
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f8793975d920e24924fca7c2ae366f70972e6ab7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558844"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468615"
 ---
 # <a name="support-and-help-options"></a>支持和帮助选项
 
-您是否刚开始探索语音服务的功能？ 你是否正在为你的应用程序实现一项新功能？ 下面是一些提示，作为开发人员你可以从中获得帮助。
+你是否刚开始探索语音服务的功能？ 你是否正在为你的应用程序实现一项新功能？ 下面是一些提示，作为开发人员你可以从中获得帮助。
 
 > [!div class="checklist"]
 > * 随时获取 Azure 认知服务中新开发的最新消息或查找与语音服务相关的最新消息。
-> * 发行说明包含所有发布的信息。
+> * 发行说明包含所有发布版的信息。
 > * 搜索以查看社区是否讨论你的问题，或者是否已存在有关要实现的功能的现有文档。
 > * 如果未找到满意答案，请在 Stack Overflow 上提问。
 > * 如果发现 GitHub 上的某个示例有问题，请提交 GitHub 问题。
@@ -31,11 +31,11 @@ ms.locfileid: "68558844"
 
 ## <a name="stay-informed"></a>随时获取最新信息
 
-有关认知服务的新闻，请关注[认知服务博客](https://azure.microsoft.com/blog/topics/cognitive-services/)。 有关语音服务的最新信息, 请跟踪[语音服务博客](https://azure.microsoft.com/blog/tag/speech-service/)。
+有关认知服务的新闻，请关注[认知服务博客](https://azure.microsoft.com/blog/topics/cognitive-services/)。 有关语音服务的最新消息，请关注[语音服务博客](https://azure.microsoft.com/blog/tag/speech-service/)。
 
 ## <a name="release-notes"></a>发行说明
 
-推出新版本后, 将立即更新[发行说明](https://aka.ms/csspeech/whatsnew)。 注释包含有关新功能、改进和 bug 修复的信息。
+推出新版本后，将立即更新[发行说明](https://aka.ms/csspeech/whatsnew)。 说明包含有关新功能、改进和 bug 修复的信息。
 
 ## <a name="search"></a>搜索
 
@@ -64,14 +64,14 @@ Stack Overflow 是开发相关问题的首选渠道。 在 Stack Overflow 中，
 
 如果通过搜索未找到你的问题的解答，请在 Stack Overflow 中提交新问题。 表述问题时，请使用以下标记之一：
 
-|组件/方面  |Tags  |
+|组件/方面  |标记  |
 |---------|---------|
 |语音识别 |[[microsoft-cognitive+speech-to-text]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
 |语音合成 |[[microsoft-cognitive+text-to-speech]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
 |语音翻译 |[[microsoft-cognitive+translation]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
 |语音意向 |[[microsoft-cognitive+luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
 |常规语音 SDK |[[microsoft-cognitive+microsoft-speech-api]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
-| 语音首次虚拟助手 (预览) | [[microsoft-cognitive+virtual-assistant+botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
+|语音助手 | [[microsoft 认知 + virtual-助手 + botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
 
 > [!TIP]
 > Stack Overflow 中的以下文帖包含有关如何提交问题和添加源代码的提示。 遵循以下准则有助于提高社区成员快速评估和响应问题的可能性：  
@@ -85,7 +85,7 @@ Stack Overflow 是开发相关问题的首选渠道。 在 Stack Overflow 中，
 * [语音 SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
 * [语音设备 SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
-您可以创建 bug 报告和功能请求, 或提出一般问题并分享最佳实践。 对于 bug 报告，请遵循所提供的模板：
+你可以创建一个 bug 报告、功能请求，或者提出一般问题并共享最佳做法。 对于 bug 报告，请遵循所提供的模板：
 
 **描述 bug**
 
@@ -114,7 +114,7 @@ Stack Overflow 是开发相关问题的首选渠道。 在 Stack Overflow 中，
 **其他上下文**
 
  - 错误消息、日志信息、堆栈跟踪、...
- - 如果针对特定服务交互报告错误, 则报告所报告事件的 SessionId 和 time (包括时区)。 你收到的所有回调/事件中都会报告 SessionId。
+ - 如果你针对特定的服务交互报告了一个错误，请报告所报告的事件的 SessionId 和时间（包括时区）。 你收到的所有回调/事件中都会报告 SessionId。
  - 任何其他附加信息
 
 

@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: f1450399dc027a6977f4c99507e2e15b301272c4
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 62ec5d4e85a6e72982b49872af59e7b579c4fd77
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249382"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496271"
 ---
 # <a name="sql-database-release-notes"></a>SQL 数据库发行说明
 
@@ -24,8 +24,9 @@ ms.locfileid: "72249382"
 
 ### <a name="single-databasetabsingle-database"></a>[单个数据库](#tab/single-database)
 
-| 功能 | 详细信息 |
+| Feature | 详细信息 |
 | ---| --- |
+| 新的 Fsv2 系列和 M 系列硬件代| 有关信息，请参阅[硬件代](sql-database-service-tiers-vcore.md#hardware-generations)。|
 | [Azure 专用链接](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| 专用链接简化了网络架构，并通过将数据保留在 Azure 网络中来消除向 Internet 暴露数据的风险，从而保护 Azure 中终结点间的连接。 专用链接让你能够在 Azure 中创建和呈现自己的服务。 |
 | 通过单一数据库和弹性池加速数据库恢复 | 有关信息，请参阅[加速数据库恢复](sql-database-accelerated-database-recovery.md)。|
 |估计非重复计数|有关信息，请参阅[估计非重复计数](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing)。|
@@ -37,18 +38,17 @@ ms.locfileid: "72249382"
 |内存授予反馈（行模式）（在兼容性级别 150 下）|有关信息，请参阅[内存授予反馈（行模式）](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)。|
 | Azure 门户中的查询编辑器 |有关信息，请参阅[使用 Azure 门户的 SQL 查询编辑器进行连接并查询数据](sql-database-connect-query-portal.md)。|
 | 带有单一数据库和弹性池的 R services/机器学习 |有关信息，请参阅[AZURE SQL 数据库中的机器学习服务](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database)。|
-| 无服务器计算层 | 有关信息，请参阅 [SQL 数据库无服务器（预览版）](sql-database-serverless.md)。|
 |SQL Analytics|有关信息，请参阅[Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)。|
 |表变量延迟编译（在兼容性级别 150 下）|有关信息，请参阅[表变量延迟的编译](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation)。|
 | &nbsp; |
 
 ### <a name="managed-instancetabmanaged-instance"></a>[托管实例](#tab/managed-instance)
 
-| 功能 | 详细信息 |
+| Feature | 详细信息 |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-managed-instance-connectivity-architecture#service-aided-subnet-configuration-public-preview-in-east-us-and-west-us">服务辅助子网配置</a> | 管理子网配置的一种安全且方便的方式。 |
 | <a href="/azure/sql-database/sql-database-instance-pools">实例池</a> | 将较小的 SQL 实例迁移到云的方便且经济高效的方式。 |
-| <a href="https://aka.ms/managed-instance-tde-byok">使用“创建自己的密钥”(BYOK) 进行透明数据加密 (TDE)</a> |有关信息，请参阅[使用 Azure Key Vault 中由客户管理的密钥进行 Azure SQL 透明数据加密：自带密钥支持](transparent-data-encryption-byok-azure-sql.md)。|
+| <a href="https://aka.ms/managed-instance-tde-byok">使用“创建自己的密钥”(BYOK) 进行透明数据加密 (TDE)</a> |有关信息，请参阅[Azure Key Vault 中的客户托管密钥的 AZURE SQL 透明数据加密：创建自己的密钥支持](transparent-data-encryption-byok-azure-sql.md)。|
 | <a href="https://aka.ms/managed-instance-aadlogins">实例级 Azure AD 服务器主体（登录名）</a> | 使用 <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> 语句创建服务器级登录名。 |
 | [事务复制](sql-database-managed-instance-transactional-replication.md) | 将表中的更改复制到托管实例、单一数据库或 SQL Server 实例上放置的其他数据库中，或者在其他托管实例或 SQL Server 实例中的某些行发生更改时更新表。 有关信息，请参阅[在 Azure SQL 数据库托管实例数据库中配置复制](replication-with-sql-database-managed-instance.md)。 |
 | 威胁检测 |有关信息，请参阅[在 Azure SQL 数据库托管实例中配置威胁检测](sql-database-managed-instance-threat-detection.md)。|
@@ -74,7 +74,7 @@ ms.locfileid: "72249382"
   - 将实例配置为使用[公用终结点](sql-database-managed-instance-public-endpoint-configure.md)、[代理替代](sql-database-connectivity-architecture.md#connection-policy)连接以获得更好的网络性能、<a href="https://aka.ms/four-cores-sql-mi-update">在 Gen5 硬件生成上有4个 Vcore</a> ，或针对时间点还原<a href="https://aka.ms/managed-instance-configurable-backup-retention">将备份保留配置为35天</a>。 仍未启用长期备份保留（长达10年），因此你可以使用<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">只复制备份</a>作为替代方法。
   - 利用新功能，你可以<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">使用 PowerShell 将数据库异地还原到另一个数据中心</a>，[重命名数据库](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/)，[删除虚拟群集](sql-database-managed-instance-delete-virtual-cluster.md)。
   - 新的内置[实例参与者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor)允许将职责分离（SoD）与安全原则区分开来，并符合企业标准。
-  - 托管实例在以下 Azure 政府版区域中提供（US Gov 德克萨斯州、US Gov 亚利桑那州）以及中国北部2和中国东部2。 还可在以下公共区域中使用：澳大利亚中部、澳大利亚中部2、巴西南部、法国南部、阿拉伯联合酋长国中部、阿拉伯联合酋长国北部、南非北部、南非西北部。
+  - 托管实例在以下 Azure 政府版区域中提供（US Gov 德克萨斯州、US Gov 亚利桑那州）以及中国北部2和中国东部2。 它还在以下公共区域中提供：澳大利亚中部、澳大利亚中部2、巴西南部、法国南部、阿拉伯联合酋长国中部、阿拉伯联合酋长国北部、南非北部、南非西北部。
 
 ## <a name="fixed-known-issues"></a>修复了已知问题
 

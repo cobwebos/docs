@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b6f122abff1ac75bb1cb836f3389c96dfcdf60e0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 07dbbb956dcf6f1204bef2af3a28a0af3eeb5226
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074115"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470096"
 ---
 # <a name="security-in-azure-app-service"></a>Azure 应用服务中的安全性
 
@@ -40,16 +40,20 @@ ms.locfileid: "70074115"
 
 ## <a name="https-and-certificates"></a>HTTPS 和证书
 
-应用服务允许通过 [HTTPS](https://wikipedia.org/wiki/HTTPS) 保护应用。 创建应用后，便可使用 HTTPS 访问其默认域名 (\<app_name>.azurewebsites.net)。 如果[为应用配置自定义域](app-service-web-tutorial-custom-domain.md)，则还应该[使用自定义证书对其进行保护](app-service-web-tutorial-custom-ssl.md)，以便客户端浏览器与自定义域建立安全的 HTTPS 连接。 可通过两种方式来执行此操作：
+应用服务允许通过 [HTTPS](https://wikipedia.org/wiki/HTTPS) 保护应用。 创建应用后，便可使用 HTTPS 访问其默认域名 (\<app_name>.azurewebsites.net)。 如果[为应用程序配置自定义域](app-service-web-tutorial-custom-domain.md)，还应[使用 SSL 证书对其进行保护](configure-ssl-bindings.md)，以便客户端浏览器可以建立与自定义域的安全 HTTPS 连接。 应用服务支持多种类型的证书：
 
-- **应用服务证书**：直接在 Azure 中创建证书。 该证书在 [Azure Key Vault](/azure/key-vault/) 中受到保护，并且可以导入到应用服务应用中。 有关详细信息，请参阅[为 Azure 应用服务购买和配置 SSL 证书](web-sites-purchase-ssl-web-site.md)。
-- **第三方证书**：上传从可信证书颁发机构购买的自定义 SSL 证书，并将其绑定到应用服务应用。 应用服务既支持单域证书，也支持通配型证书。 它还支持用于测试目的的自签名证书。 有关详细信息，请参阅[将现有的自定义 SSL 证书绑定到 Azure 应用服务](app-service-web-tutorial-custom-ssl.md)。
+- 免费应用服务托管证书
+- 应用服务证书
+- 第三方证书
+- 从 Azure Key Vault 导入的证书
+
+有关详细信息，请参阅[在 Azure App Service 中添加 SSL 证书](configure-ssl-certificate.md)。
 
 ## <a name="insecure-protocols-http-tls-10-ftp"></a>不安全的协议（HTTP、TLS 1.0、FTP）
 
-为了保护应用免受所有未加密 (HTTP) 连接的攻击，应用服务提供一键式配置以实施 HTTPS。 不安全的请求在到达你的应用程序代码之前就会被拒绝。 有关详细信息，请参阅[实施 HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https)。
+为了保护应用免受所有未加密 (HTTP) 连接的攻击，应用服务提供一键式配置以实施 HTTPS。 不安全的请求在到达你的应用程序代码之前就会被拒绝。 有关详细信息，请参阅[实施 HTTPS](configure-ssl-bindings.md#enforce-https)。
 
-[PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) 等行业标准已不再将 [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 视为安全协议。 应用服务允许通过[实施 TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions) 来禁用过时的协议。
+[PCI DSS](https://wikipedia.org/wiki/Transport_Layer_Security) 等行业标准已不再将 [TLS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) 1.0 视为安全协议。 应用服务允许通过[实施 TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions) 来禁用过时的协议。
 
 应用服务支持使用 FTP 和 FTPS 来部署文件。 但是，如果可能的话，应使用 FTPS 而不是 FTP。 如果未使用这两种协议或其中一种协议，则应[将其禁用](deploy-ftp.md#enforce-ftps)。
 
@@ -57,7 +61,7 @@ ms.locfileid: "70074115"
 
 默认情况下，应用服务应用接受来自 Internet 的所有 IP 地址的请求，但你可以将该访问权限限定于一小部分 IP 地址。 通过 Windows 上的应用服务，可定义允许访问应用的 IP 地址的列表。 允许列表可包括单个 IP 地址或由子网掩码定义的 IP 地址范围。 有关详细信息，请参阅 [Azure 应用服务静态 IP 限制](app-service-ip-restrictions.md)。
 
-对于 Windows 上的应用服务，还可以通过配置 _web.config_ 来动态限制 IP 地址。有关详细信息, 请参阅[动态 IP \<Security dynamicIpSecurity >](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/)。
+对于 Windows 上的应用服务，你还可以通过配置_web.config_动态限制 IP 地址。有关详细信息，请参阅[动态 IP 安全 \<dynamicIpSecurity >](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/)。
 
 ## <a name="client-authentication-and-authorization"></a>客户端身份验证和授权
 
@@ -90,7 +94,7 @@ Azure 应用服务提供用户或客户端应用的统包身份验证和授权�
 
 ### <a name="resources-inside-an-azure-virtual-network"></a>Azure 虚拟网络中的资源
 
-应用可以通过[虚拟网络集成](web-sites-integrate-with-vnet.md)访问 [Azure 虚拟网络](/azure/virtual-network/)中的资源。 该集成通过点到站点 VPN 随虚拟网络一起建立。 之后，应用可以使用虚拟网络资源的专用 IP 地址来访问这些资源。 但是，点到站点连接仍然会遍历 Azure 中的共享网络。 
+应用可以通过[虚拟网络集成](/azure/virtual-network/)访问 [Azure 虚拟网络](web-sites-integrate-with-vnet.md)中的资源。 该集成通过点到站点 VPN 随虚拟网络一起建立。 之后，应用可以使用虚拟网络资源的专用 IP 地址来访问这些资源。 但是，点到站点连接仍然会遍历 Azure 中的共享网络。 
 
 若要将资源连接与 Azure 中的共享网络完全隔离，请在[应用服务环境](environment/intro.md)中创建应用。 由于应用服务环境始终部署到专用虚拟网络，因此，应用与虚拟网络资源之间的连接是完全隔离的。 有关应用服务环境中网络安全的其他方面，请参阅[网络隔离](#network-isolation)。
 
@@ -110,7 +114,7 @@ Azure 应用服务提供用户或客户端应用的统包身份验证和授权�
 
 ## <a name="network-isolation"></a>网络隔离
 
-除了**独立**定价层，所有层都在应用服务的共享网络基础结构上运行应用。 例如，公共 IP 地址和前端负载均衡器与其他租户共享。 通过在专用的[应用服务环境](environment/intro.md)中运行应用，**独立**层可提供完整的网络隔离。 应用服务环境在你自己的 [Azure 虚拟网络](/azure/virtual-network/)实例中运行。 它允许： 
+除了**独立**定价层，所有层都在应用服务的共享网络基础结构上运行应用。 例如，公共 IP 地址和前端负载均衡器与其他租户共享。 通过在专用的**应用服务环境**中运行应用，[独立](environment/intro.md)层可提供完整的网络隔离。 应用服务环境在你自己的 [Azure 虚拟网络](/azure/virtual-network/)实例中运行。 它允许： 
 
 - 通过专用的公共终结点为应用提供专用前端。
 - 使用内部负载均衡器 (ILB) 为内部应用程序提供服务，该内部负载均衡器仅允许从 Azure 虚拟网络内部进行访问。 ILB 有一个来自专用子网的 IP 地址，它可以让应用与 Internet 完全隔离。

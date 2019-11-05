@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 7ae3eb74b0d0c3f0bd6124362608e14555179697
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 7e341cf8a4ff2a18e44e36d73ad5dbc642582802
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710154"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496278"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL 数据库托管实例常见问题解答 (FAQ)
 
@@ -124,7 +124,7 @@ ms.locfileid: "71710154"
 - 使用低特权 DBA 帐户访问实例。
 - 为 sysadmin 帐户配置 JiT jumpbox 访问权限。
 - 启用 [SQL 审核](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)，并将其与警报机制相集成。
-- 启用[高级数据安全 (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) 套件中的[威胁检测](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)。
+- 启用[高级数据安全 (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) 套件中的[威胁检测](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)。
 
 
 ## <a name="where-can-i-find-use-cases-and-resulting-cost-savings-with-managed-instance"></a>在何处可以找到用例，以及使用托管实例可实现的成本节省？
@@ -135,7 +135,7 @@ ms.locfileid: "71710154"
 - [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
 - [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
 - [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)   
-为了让用户更好地了解部署 Azure SQL 数据库托管实例的优势、成本和风险，我们还提供了一份 Forrester 案例研究：[MI 产生的总体经济影响](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance)。
+为了更好地了解与部署 Azure SQL 数据库托管实例相关的优势、成本和风险，另外还提供了一个 Forrester 的研究：[英里的总体经济影响](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance)。
 
 
 ## <a name="can-i-do-dns-refresh"></a>是否可以执行 DNS 刷新？ 
@@ -179,7 +179,7 @@ DNS 配置最终会刷新：
 可以，无需解密数据库即可将其还原到托管实例。 需将一个在源系统中用作加密密钥保护器的证书/密钥提供给托管实例，才能从加密的备份文件中读取数据。 要运行此操作有两个可行的方式：
 
 - 将证书保护器上传到托管实例。 只能使用 PowerShell 执行此操作。 [示例脚本](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate-tde-certificate)描述了整个过程。
-- 将非对称密钥保护器上传到 Azure Key Vault (AKV)，并将托管实例指向该保护器。 此方法类似于自带密钥 (BYOK) TDE 用例，该用例也使用 AKV 集成来存储加密密钥。 如果你不想使用密钥作为加密密钥保护程序, 只想让托管实例提供密钥来还原加密的数据库, 请按照[设置 BYOK TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption-in-the-azure-portal)的说明进行操作, 并不要选中 "*生成所选密钥" 复选框默认的 TDE 保护*程序。
+- 将非对称密钥保护器上传到 Azure Key Vault (AKV)，并将托管实例指向该保护器。 此方法类似于自带密钥 (BYOK) TDE 用例，该用例也使用 AKV 集成来存储加密密钥。 如果你不想使用密钥作为加密密钥保护程序，只想让托管实例提供密钥来还原加密的数据库，请按照[设置 BYOK TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)的说明进行操作，并不要选中 "*生成所选密钥" 复选框默认的 TDE 保护*程序。
 
 将加密保护器提供给托管实例使用后，可以继续执行标准的数据库还原过程。
 

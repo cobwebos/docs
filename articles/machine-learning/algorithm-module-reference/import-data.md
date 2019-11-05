@@ -1,53 +1,64 @@
 ---
 title: 导入数据：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的 "导入数据" 模块将数据从现有的云数据服务加载到机器学习管道。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的 "导入数据" 模块将数据从现有的云数据服务加载到机器学习管道。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: fef7d686479b24b0402ab6f1e6990df74231b8d6
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 5fa8d3984c758d0bf95372864f3bffeb6f302c83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693136"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497781"
 ---
 # <a name="import-data-module"></a>导入数据模块
 
-本文介绍了 Azure 机器学习服务的可视界面（预览）的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
-使用此模块将数据从现有的云数据服务加载到机器学习管道。  
+使用此模块将数据从现有的云数据服务加载到机器学习管道。 
 
-首先，选择要从中进行读取的基于云的存储类型，然后完成其他设置。 定义所需的数据并连接到源后，[导入数据](./import-data.md)会根据其包含的值推断每个列的数据类型，并将数据加载到 Azure 机器学习工作区中。 [导入数据](./import-data.md)的输出是可以与任何管道一起使用的数据集。
+> [!Note]
+> 此模块提供的所有功能都可以通过工作区登陆页面上的**数据存储**和**数据集**来完成。 建议使用包含其他功能（例如数据监视）的**数据存储**和**数据集**。 若要了解详细信息，请参阅[如何访问数据](../service/how-to-access-data.md)和[如何注册数据集](../service/how-to-create-register-datasets.md)一文。
+> 注册数据集后，可以在设计器界面**中 -> "** 我的**数据**集" 类别中找到它。 此模块是为 Studio （经典）用户保留的，以获得熟悉的体验。 
+>
 
-  
-如果源数据发生更改，可以通过重新运行 "[导入数据](./import-data.md)" 来刷新数据集并添加新的数据。 但是，如果你不想在每次运行管道时从源重新读取源，请选择 "**使用缓存的结果**" 选项 TRUE。 选中此选项后，模块将检查管道是否以前使用相同的源和相同的输入选项运行过。 如果找到了以前的运行，则将使用缓存中的数据，而不是从数据源重新加载数据。
- 
+首先，选择要从中进行读取的源，并完成其他设置。 **导入数据**模块支持从以下源读取数据：
 
-## <a name="data-sources"></a>数据源
+- 通过 HTTP 的 URL
+- 通过[**数据存储**](../service/how-to-access-data.md)的 Azure 云存储）
+    - Azure Blob 容器
+    - Azure 文件共享
+    - Azure Data Lake
+    - Azure Data Lake Gen2
+    - Azure SQL 数据库
+    - Azure PostgreSQL    
 
-导入数据模块支持以下数据源。 单击链接以获取有关使用每个数据源的详细说明和示例。 
- 
-如果你不确定应如何或在何处存储数据，请参阅数据科学过程中常见数据方案的指南： [Azure 机器学习中的高级分析方案](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-plan-sample-scenarios)。 
+使用云存储之前，需要先在 Azure 机器学习工作区中注册数据存储。 有关详细信息，请参阅[如何访问数据](../service/how-to-access-data.md)。 
 
+定义所需的数据并连接到源后， **[导入数据](./import-data.md)** 会根据其包含的值推断每个列的数据类型，并将数据加载到设计器管道。 **导入数据**的输出是一个可与任何设计器管道一起使用的数据集。
 
-|数据源| 使用|
-|-----------|-----------|  
-|[通过 HTTP 的 Web URL](./import-from-web-url-via-http.md)|获取在使用 HTTP 并已提供 CSV、TSV、ARFF 或 SvmLight 格式的 web URL 上承载的数据|  
-|[从 Azure Blob 存储导入](./import-from-azure-blob-storage.md) |获取存储在 Azure blob 服务中的数据|  
-|[从 Azure SQL 数据库导入](./import-from-azure-sql-database.md) |获取 Azure SQL 数据库中的数据|
+如果源数据发生更改，可以通过重新运行 "[导入数据](./import-data.md)" 来刷新数据集并添加新的数据。 但是，如果不希望每次运行管道时从源重新读取源，请将 "**使用缓存的结果**" 选项设置为 TRUE。 选中此选项后，模块将检查管道是否以前使用相同的源和相同的输入选项运行过。 如果找到了以前的运行，则将使用缓存中的数据，而不是从数据源重新加载数据。
 
 ## <a name="how-to-configure-import-data"></a>如何配置导入数据
- 
-1. 将**导入数据**模块添加到管道。 可以在接口的 "**数据输入和输出**" 类别中找到此模块。
 
-1. 单击 "**数据源**"，然后选择要从中进行读取的基于云的存储的类型。 
+1. 将**导入数据**模块添加到管道。 可以在设计器的 "**数据输入和输出**" 类别中找到此模块。
 
-    其他设置取决于你选择的存储类型以及存储是否受保护。 你可能需要提供帐户名称、文件类型或凭据。 某些源不需要身份验证;对于其他用户，可能需要知道帐户名称、密钥或容器名称。
+1. 单击 "**启动数据导入向导**"，使用向导配置数据源。
+
+    向导将获取帐户名称和凭据，并帮助您配置其他选项。 如果正在编辑现有配置，则会先加载当前值。
+
+1. 选择 "**数据源**"，然后选择数据源类型。 它可以是 HTTP 或数据存储。
+
+    如果选择 "数据存储"，则可以选择已注册到 Azure 机器学习工作区或创建新数据存储的现有数据存储。 然后，定义要在数据存储中导入的数据的路径。 可以通过单击 "**浏览路径**" !["导入-数据-路径" 来轻松浏览该路径](media/module/import-data-path.png)
+
+1. 选择预览架构以筛选要包括的列。 你还可以在分析选项中定义诸如分隔符这样的高级设置。
+
+    ![导入-数据-预览](media/module/import-data.png)
 
 1. 如果要缓存数据集以便在连续运行时重复使用，请选择 "**使用缓存的结果**" 选项。
 
@@ -57,11 +68,11 @@ ms.locfileid: "72693136"
 
 1. 运行管道。
 
-    当导入数据将数据加载到接口时，它将根据它包含的值（数字或分类）推断每一列的数据类型。
+    当导入数据将数据加载到设计器中时，它将根据它包含的值（数字或分类）推断每一列的数据类型。
 
-    - 如果标头存在，则使用标头来命名输出数据集的列。
+    如果标头存在，则使用标头来命名输出数据集的列。
 
-    - 如果数据中没有现有列标题，将使用格式 col1、col2,... 生成新的列名称。 , coln*.
+    如果数据中没有现有列标题，将使用格式 col1、col2,... 生成新的列名称。 , coln*.
 
 ## <a name="results"></a>结果
 
@@ -71,7 +82,6 @@ ms.locfileid: "72693136"
 
 导入数据后，可能需要对建模和分析进行一些额外的准备工作：
 
-
 - 使用 "[编辑元数据](./edit-metadata.md)" 可以更改列名，将列处理为不同的数据类型，或指示某些列是标签或特征。
 
 - 使用["选择数据集中的列"](./select-columns-in-dataset.md)可以选择要在建模中转换或使用的列的子集。 通过使用 "[添加列](./add-columns.md)" 模块，可以轻松地将转换或删除的列重新加入原始数据集。  
@@ -80,4 +90,4 @@ ms.locfileid: "72693136"
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

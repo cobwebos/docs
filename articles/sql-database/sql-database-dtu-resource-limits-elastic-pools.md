@@ -1,6 +1,6 @@
 ---
-title: Azure SQL 数据库中弹性池的基于 DTU 的资源限制 | Microsoft Docs
-description: 本页介绍了 Azure SQL 数据库中弹性池的一些常见资源限制（基于 DTU）。
+title: Azure SQL 数据库 DTU 资源限制弹性池 |Microsoft Docs
+description: 本页介绍 Azure SQL 数据库中的弹性池的一些常见 DTU 资源限制。
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -11,18 +11,18 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
-ms.openlocfilehash: 2bd193c53ee85a1423dc63bf669021de954231c8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 08e6c27b359e8fcf48caed6faf21c0aed8fad224
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568818"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521024"
 ---
-# <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>使用基于 DTU 的购买模型的弹性池的资源限制
+# <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>使用 DTU 购买模型的弹性池的资源限制
 
-本文详细介绍了 Azure SQL 数据库中使用基于 DTU 的购买模型的弹性池和共用数据库的资源限制。
+本文提供了有关使用 DTU 购买模型的 Azure SQL 数据库弹性池和共用数据库的详细资源限制。
 
-若要了解使用基于 DTU 的购买模型的单一数据库的资源限制，请参阅[基于 DTU 的资源限制 - 单一数据库](sql-database-vcore-resource-limits-elastic-pools.md)。 有关基于 vCore 的资源限制，请参阅[基于 vCore 的资源限制 - 单一数据库](sql-database-vcore-resource-limits-single-databases.md)和[基于 vCore 的资源限制 - 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)。
+有关单一数据库的 DTU 购买模型资源限制，请参阅[dtu 资源限制-单个数据库](sql-database-vcore-resource-limits-elastic-pools.md)。 有关 vCore 资源限制，请参阅[vCore 资源限制-单数据库](sql-database-vcore-resource-limits-single-databases.md)和[vCore 资源限制-弹性池](sql-database-vcore-resource-limits-elastic-pools.md)。
 
 ## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>弹性池：存储大小和计算大小
 
@@ -39,7 +39,7 @@ ms.locfileid: "68568818"
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | 每个池包含的存储 (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | 每个池的最大存储选择 (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| 每个池的最大内存中 OLTP 存储 (GB) | 不可用 | 不可用 | 不可用 | 不可用 | 不可用 | 不可用 | 不可用 | 不可用 |
+| 每个池的最大内存中 OLTP 存储 (GB) | 不适用 | 不适用 | 不适用 | 不适用 | 不适用 | 不适用 | 不适用 | 不适用 |
 | 每个池的最大数据库数 | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | 每个池的最大并发工作线程数（请求数） | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | 每个池的最大并发会话数 | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
@@ -54,7 +54,7 @@ ms.locfileid: "68568818"
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | 每个池包含的存储 (GB) | 50 | 100 | 200 | 300 | 400 | 800 |
 | 每个池的最大存储选择 (GB) | 50, 250, 500 | 100, 250, 500, 750 | 200, 250, 500, 750, 1024 | 300, 500, 750, 1024, 1280 | 400, 500, 750, 1024, 1280, 1536 | 800, 1024, 1280, 1536, 1792, 2048 |
-| 每个池的最大内存中 OLTP 存储 (GB) | 不可用 | 不可用 | 不可用 | 不可用 | 不可用 | 不可用 |
+| 每个池的最大内存中 OLTP 存储 (GB) | 不适用 | 不适用 | 不适用 | 不适用 | 不适用 | 不适用 |
 | 每个池的最大数据库数 | 100 | 200 | 500 | 500 | 500 | 500 |
 | 每个池的最大并发工作线程数（请求数） | 100 | 200 | 400 | 600 | 800 | 1600 |
 | 每个池的最大并发会话数 | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -69,7 +69,7 @@ ms.locfileid: "68568818"
 |:---|---:|---:|---:| ---: | ---: |
 | 每个池包含的存储 (GB) | 1200 | 1600 | 2000 | 2500 | 3000 |
 | 每个池的最大存储选择 (GB) | 1200, 1280, 1536, 1792, 2048, 2304, 2560 | 1600, 1792, 2048, 2304, 2560, 2816, 3072 | 2000, 2048, 2304, 2560, 2816, 3072, 3328, 3584 | 2500, 2560, 2816, 3072, 3328, 3584, 3840, 4096 | 3000, 3072, 3328, 3584, 3840, 4096 |
-| 每个池的最大内存中 OLTP 存储 (GB) | 不可用 | 不可用 | 不可用 | 不可用 | 不可用 |
+| 每个池的最大内存中 OLTP 存储 (GB) | 不适用 | 不适用 | 不适用 | 不适用 | 不适用 |
 | 每个池的最大数据库数 | 500 | 500 | 500 | 500 | 500 |
 | 每个池的最大并发工作线程数（请求数） | 2400 | 3200 | 4000 | 5000 | 6000 |
 | 每个池的最大并发会话数 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -109,9 +109,9 @@ ms.locfileid: "68568818"
 |||||||
 
 > [!IMPORTANT]
-> 除以下区域外，其他所有区域的高级层目前均可提供超过 1 TB 的存储：中国东部、中国北部、德国中部、德国东北部、美国中西部、US DoD 区域和美国政府中部。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。
+> 高级层中的存储空间超过 1 TB 目前在除：中国东部、中国北部、德国中部、德国北部、美国中部、US DoD 地区和美国政府中心以外的所有地区都可用。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。
 
-如果使用了弹性池的所有 DTU，那么池中的每个数据库将接收相同数量的资源来处理查询。 SQL 数据库服务通过确保相等的计算时间片，在数据库之间提供资源共享的公平性。 弹性池资源共享公平性是在将每个数据库的 DTU 最小值设为非零值时，对另外为每个数据库保证的任意资源量的补充。
+如果使用了弹性池的所有 DTU，那么池中的每个数据库会接收相同数量的资源来处理查询。 SQL 数据库服务通过确保相等的计算时间片，在数据库之间提供资源共享的公平性。 弹性池资源共享公平性是在将每个数据库的 DTU 最小值设为非零值时，对另外为每个数据库保证的任意资源量的补充。
 
 > [!NOTE]
 > 有关 `tempdb` 限制，请参阅 [tempdb 限制](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)。
@@ -120,7 +120,7 @@ ms.locfileid: "68568818"
 
 下表介绍了共用数据库的属性。
 
-| 属性 | 描述 |
+| 属性 | 说明 |
 |:--- |:--- |
 | 每个数据库的最大 eDTU 数 |根据池中其他数据库的 eDTU 使用率，池中任何数据库可以使用的 eDTU 的最大数目。 每个数据库的 eDTU 上限并不是数据库的资源保障。 此设置是应用于池中所有数据库的全局设置。 将每个数据库的最大 eDTU 数设置得足够高，以处理数据库使用高峰情况。 因为池通常会假定数据库存在热使用模式和冷使用模式，在这些模式中并非所有数据库同时处于高峰使用状态，所以预期会存在某种程度的过量使用情况。 例如，假设每个数据库的高峰使用量为 20 个 eDTU，并且池中 100 个数据库仅有 20% 同时处于高峰使用中。 如果将每个数据库的 eDTU 最大值设为 20 个 eDTU，则可以认为超量 5 倍使用该池是合理的，并且将每个池的 eDTU 数设为 400。 |
 | 每个数据库的最小 eDTU 数 |池中任何数据库可以保证的 eDTU 最小数目。 此设置是应用于池中所有数据库的全局设置。 每个数据库的最小 eDTU 可能设为 0，这也是默认值。 该属性值可以设置为介于 0 和每个数据库的平均 eDTU 使用量之间的任意值。 池中数据库数目和每个数据库的 eDTU 下限的积不能超过每个池的 eDTU 数。 例如，如果一个池有 20 个数据库，每个数据库的 eDTU 最小值设为 10 个 eDTU，则池的 eDTU 数目必须大于或等于 200 个 eDTU。 |
@@ -129,9 +129,9 @@ ms.locfileid: "68568818"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关单一数据库的 vCore 资源限制，请参阅[使用基于 vCore 的购买模型的单一数据库的资源限制](sql-database-vcore-resource-limits-single-databases.md)
-- 有关单一数据库的 DTU 资源限制，请参阅[使用基于 DTU 的购买模型的单一数据库的资源限制](sql-database-dtu-resource-limits-single-databases.md)
-- 有关弹性池的 vCore 资源限制，请参阅[使用基于 vCore 的购买模型的弹性池的资源限制](sql-database-vcore-resource-limits-elastic-pools.md)
+- 有关单个数据库的 vCore 资源限制，请参阅[使用 vCore 购买模型的单一数据库的资源限制](sql-database-vcore-resource-limits-single-databases.md)
+- 有关单个数据库的 DTU 资源限制，请参阅[使用 DTU 购买模型的单一数据库的资源限制](sql-database-dtu-resource-limits-single-databases.md)
+- 有关弹性池的 vCore 资源限制，请参阅[使用 vCore 购买模型的弹性池的资源限制](sql-database-vcore-resource-limits-elastic-pools.md)
 - 有关托管实例的资源限制，请参阅[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。
 - 有关常规 Azure 限制的相关信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md)。
 - 有关数据库服务器上的资源限制的信息，请参阅 [SQL 数据库服务器资源限制概述](sql-database-resource-limits-database-server.md)了解有关服务器级别和订阅级别限制的信息。

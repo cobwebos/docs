@@ -1,7 +1,7 @@
 ---
 title: 将数据分配到群集：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的 "将数据分配给群集" 模块来评分聚类分析模型。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的 "将数据分配到群集" 模块来评分聚类分析模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,23 +9,23 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 3caf568590beb5b1f9d346d472c93f134a4f3a5f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 75a547a26057ad05444753253666dceea160d714
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693230"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493867"
 ---
 # <a name="module-assign-data-to-clusters"></a>模块：向群集分配数据
 
-本文介绍如何使用 Azure 机器学习可视化界面中的 "*将数据分配到群集*" 模块。 该模块通过使用*K 平均值聚类分析*算法训练的聚类分析模型来生成预测。
+本文介绍如何在 Azure 机器学习设计器（预览版）中使用 "*将数据分配到群集*" 模块。 该模块通过使用*K 平均值聚类分析*算法训练的聚类分析模型来生成预测。
 
 "将数据分配到群集" 模块将返回一个数据集，其中包含每个新数据点的可能分配。 
 
 
 ## <a name="how-to-use-assign-data-to-clusters"></a>如何使用向群集分配数据
   
-1. 在 Azure 机器学习的可视化界面中，找到先前训练的聚类分析模型。 您可以使用以下方法之一创建和定型聚类分析模型：  
+1. 在 Azure 机器学习设计器中，找到先前训练的聚类分析模型。 您可以使用以下方法之一创建和定型聚类分析模型：  
   
     - 使用[k 平均值聚类分析](k-means-clustering.md)模块配置 k 平均值聚类分析算法，并使用数据集和定型聚类分析模型模块（本文）来训练模型。  
   
@@ -38,7 +38,7 @@ ms.locfileid: "72693230"
    在此数据集中，标签是可选的。 通常情况下，聚类分析是一种无人监督的学习方法。 你不会提前知道这些类别。 但输入列必须与在定型聚类分析模型中使用的列相同，否则会发生错误。
 
     > [!TIP]
-    > 若要减少从分类预测写入接口的列数，请使用[选择数据集中的列](select-columns-in-dataset.md)，然后选择列的子集。 
+    > 若要减少从分类预测写入设计器的列数，请使用["选择数据集中的列](select-columns-in-dataset.md)"，然后选择列的子集。 
     
 4. 如果希望结果包含完整的输入数据集（包括显示结果的列（群集分配）），请选中 "**检查是否仅显示结果**" 复选框。
   

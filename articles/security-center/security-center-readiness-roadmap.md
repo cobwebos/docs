@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: b2b4dc1aa9486e432fb2fae48343c21fba620221
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: ea029e62ac1273d9796e52edc3f7a46868964d2a
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996689"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520755"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure 安全中心就绪情况路线图
 本文档提供的就绪情况路线图有助于 Azure 安全中心入门。
@@ -105,7 +105,7 @@ Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能�
 
 * [安全中心动手实验](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=78871abf-6f35-4aa0-840f-d801f5cdbd72)
 * [安全中心的 Web 应用程序防火墙 (WAF) 建议攻略](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff)
-* [Azure 安全中心 Playbook：安全警报](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
+* [Azure Security Center Playbook: Security Alerts](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)（Azure 安全中心 Playbook：安全警报）
 
 ## <a name="additional-resources"></a>其他资源
 * [安全中心文档页](https://docs.microsoft.com/azure/security-center/)
@@ -113,9 +113,9 @@ Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能�
 * [Azure 安全中心常见问题 (FAQ)](https://docs.microsoft.com/azure/security-center/security-center-faq)
 * [安全中心定价页](https://azure.microsoft.com/pricing/details/security-center/)
 * [标识安全最佳做法](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
-* [网络安全最佳实践](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
+* [网络安全最佳做法](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
 * [PaaS 建议](https://docs.microsoft.com/azure/security/security-paas-deployments)
-* [合规性](https://www.microsoft.com/en-us/trustcenter/compliance/due-diligence-checklist)
+* [合规性](https://www.microsoft.com/trustcenter/compliance/due-diligence-checklist)
 * [Log analytics 客户现在可以使用 Azure 安全中心来保护其混合云工作负荷](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
 
 ## <a name="community-resources"></a>社区资源

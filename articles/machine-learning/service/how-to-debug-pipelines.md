@@ -10,14 +10,15 @@ ms.reviewer: trbye
 ms.author: trbye
 author: trevorbye
 ms.date: 10/03/2019
-ms.openlocfilehash: 3df95f88c057fa564078dbf05d5dfa4b26150f6a
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: fc19e864f00489d3ebc0162705af864785af0811
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959663"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497058"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>调试机器学习管道并对其进行故障排除
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何调试[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)中的[机器学习管道](concept-ml-pipelines.md)并对其进行故障排除。
 
@@ -25,7 +26,7 @@ ms.locfileid: "71959663"
 
 ## <a name="testing-scripts-locally"></a>本地测试脚本
 
-管道中最常见的失败之一是附加的脚本（数据清除脚本、计分脚本等）未按预期运行，或者包含远程计算上下文中的运行时错误，这些错误很难在 Azure 门户的工作区中进行调试。 
+管道中最常见的失败之一是附加的脚本（数据清除脚本、计分脚本等）未按预期运行，或者包含在 Azure 计算机的工作区中难以调试的远程计算上下文中的运行时错误。学习工作室。 
 
 管道本身不能在本地运行，但在本地计算机上运行隔离的脚本可以更快地进行调试，因为无需等待计算和环境生成过程。 执行此操作需要执行某些开发工作：
 
@@ -44,7 +45,7 @@ ms.locfileid: "71959663"
 
 ## <a name="debugging-scripts-from-remote-context"></a>从远程上下文调试脚本
 
-在开始生成管道之前，本地测试脚本是调试主要代码片段和复杂逻辑的好方法，但在某些时候，你可能需要在实际管道运行时调试脚本，尤其是在诊断发生的行为时。在管道步骤之间进行交互的过程中。 建议你在步骤脚本中使用大量的 @no__t 语句，以便在远程执行过程中可以看到对象状态和预期值，这与调试 JavaScript 代码的方式类似。
+在开始生成管道之前，本地测试脚本是调试主要代码片段和复杂逻辑的好方法，但在某些时候，你可能需要在实际管道运行时调试脚本，尤其是在诊断发生的行为时。在管道步骤之间进行交互的过程中。 建议在步骤脚本中使用 `print()` 语句，以便在远程执行过程中可以看到对象状态和预期值，这与调试 JavaScript 代码的方式类似。
 
 日志文件 `70_driver_log.txt` 包含： 
 
@@ -76,11 +77,11 @@ ms.locfileid: "71959663"
 
 | 问题 | 可能的解决方案 |
 |--|--|
-| 无法将数据传递到 `PipelineData` 目录 | 请确保已在脚本中创建了一个目录，该目录对应于管道期望步骤输出数据的位置。 在大多数情况下，输入参数将定义输出目录，然后显式创建目录。 使用 `os.makedirs(args.output_dir, exist_ok=True)` 创建输出目录。 有关显示此设计模式的评分脚本示例，请参阅[教程](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script)。 |
+| 无法将数据传递到 `PipelineData` directory | 请确保已在脚本中创建了一个目录，该目录对应于管道期望步骤输出数据的位置。 在大多数情况下，输入参数将定义输出目录，然后显式创建目录。 使用 `os.makedirs(args.output_dir, exist_ok=True)` 创建输出目录。 有关显示此设计模式的评分脚本示例，请参阅[教程](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script)。 |
 | 依赖项 bug | 如果你在本地开发并测试了脚本，但在管道中的远程计算上运行时发现依赖项问题，请确保你的计算环境依赖项和版本与你的测试环境匹配。 |
 | 计算目标存在不明确错误 | 删除并重新创建计算目标可以解决计算目标的某些问题。 |
 | 管道未重复使用步骤 | 默认情况下，将启用步骤重用，但请确保未在管道步骤中禁用它。 如果重新使用处于禁用状态，则步骤中的 `allow_reuse` 参数将设置为 `False`。 |
-| 不必要地重新运行管道 | 若要确保步骤仅在基础数据或脚本更改时重新运行，请为每个步骤分离你的目录。 如果对多个步骤使用相同的源目录，则可能会遇到不必要的重新运行。 使用管道步骤对象上的 `source_directory` 参数指向该步骤的隔离目录，并确保没有为多个步骤使用相同的 @no__t 1 路径。 |
+| 不必要地重新运行管道 | 若要确保步骤仅在基础数据或脚本更改时重新运行，请为每个步骤分离你的目录。 如果对多个步骤使用相同的源目录，则可能会遇到不必要的重新运行。 使用管道步骤对象上的 `source_directory` 参数指向该步骤的隔离目录，并确保没有为多个步骤使用相同的 `source_directory` 路径。 |
 
 ## <a name="next-steps"></a>后续步骤
 

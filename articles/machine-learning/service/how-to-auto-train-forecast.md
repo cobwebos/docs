@@ -9,15 +9,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 06/20/2019
-ms.openlocfilehash: 3cec6ee9368b1d9d1f2c9a627108aaf41c6da3c3
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: d9a879e92f78275f2366ccfc008068afbe208e5a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819846"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497392"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何使用 Azure 机器学习中的自动化机器学习来训练时序预测回归模型。 配置预测模型类似于使用自动机器学习设置标准回归模型，但存在某些配置选项和预处理步骤来处理时序数据。 下面的示例演示如何执行以下操作：
 
@@ -50,7 +51,7 @@ ms.locfileid: "72819846"
 1. 它们支持多个输入和输出
 1. 它们可以自动提取跨越较长序列的输入数据中的模式
 
-对于更大的数据，深度学习模型（如 Microsoft ' ForecasTCN）可以改进生成的模型的分数。 
+对于更大的数据，深度学习模型（如 Microsoft ' ForecastTCN）可以改进生成的模型的分数。 
 
 本机时序学习器也作为自动 ML 的一部分提供。 Prophet 最适合用于具有极大季节性效果和几个季节历史数据的时序。 Prophet 是准确的 & 快速、强健、离群值、丢失数据，以及在时序方面产生巨大的变化。 
 
@@ -63,7 +64,7 @@ ms.locfileid: "72819846"
 
 ## <a name="preparing-data"></a>准备数据
 
-自动机器学习中预测回归任务类型和回归任务类型之间最重要的区别在于，数据中包含的一项功能是表示有效时序的一项功能。 一个固定时间系列具有明确定义且一致的频率，并在连续时间范围内的每个采样点上都有一个值。 请考虑以下文件快照 `sample.csv`。
+自动机器学习中预测回归任务类型和回归任务类型之间最重要的区别在于，数据中包含的一项功能是表示有效时序的一项功能。 一个固定时间系列具有明确定义且一致的频率，并在连续时间范围内的每个采样点上都有一个值。 请考虑 `sample.csv`的文件快照。
 
     day_datetime,store,sales_quantity,week_of_year
     9/3/2018,A,2000,36
@@ -112,13 +113,14 @@ test_labels = test_data.pop(label).values
 
 `AutoMLConfig` 对象定义自动机器学习任务所需的设置和数据。 与回归问题类似，定义了标准定型参数，如任务类型、迭代数、定型数据和交叉验证次数。 对于预测任务，还必须设置其他参数，这些参数会影响试验。 下表说明了每个参数及其用法。
 
-| Param | 描述 | 需要 |
+| Param | 说明 | 需要 |
 |-------|-------|-------|
 |`time_column_name`|用于指定输入数据中的日期时间列，这些数据用于生成时序并推断其频率。|✓|
 |`grain_column_names`|定义输入数据中各个序列组的名称。 如果未定义颗粒，则假定数据集为一系列时间。||
 |`max_horizon`|定义以时间序列频率为单位的最大预期预测范围。 单位基于定型数据的时间间隔（例如每月、每周预测应预测）。|✓|
 |`target_lags`|要基于数据频率延迟目标值的行数。 这表示为一个列表或单个整数。 默认情况下，在独立变量和依赖变量之间的关系不匹配或关联时，应使用 Lag。 例如，在尝试预测某个产品的需求时，任意月份的需求可能会依赖于之前3个月的特定商品价格。 在此示例中，您可能希望将目标（需求）的滞后时间降低3个月，使模型是针对正确关系的定型。||
 |`target_rolling_window_size`|*n*用于生成预测值的历史时间段，< = 定型集大小。 如果省略，则*n*为完全定型集的大小。 如果只想在训练模型时考虑一定数量的历史记录，请指定此参数。||
+|`enable_dnn`|启用预测 Dnn。||
 
 有关详细信息，请参阅[参考文档](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)。
 
@@ -150,7 +152,8 @@ import logging
 
 automl_config = AutoMLConfig(task='forecasting',
                              primary_metric='normalized_root_mean_squared_error',
-                             iterations=10,
+                             experiment_timeout_minutes=15,
+                             enable_early_stopping=True,
                              training_data=train_data,
                              label_column_name=label,
                              n_cross_validations=5,
@@ -170,6 +173,17 @@ best_run, fitted_model = local_run.get_output()
 * 滚动-原点交叉验证
 * 可配置滞后
 * 滚动窗口聚合功能
+
+### <a name="configure-a-dnn-enable-forecasting-experiment"></a>配置 DNN 启用预测试验
+
+> [!NOTE]
+> 自动机器学习中预测的 DNN 支持处于预览阶段。
+
+若要利用 Dnn 进行预测，需要将 AutoMLConfig 中的 `enable_dnn` 参数设置为 true。 
+
+为了使用 Dnn，建议使用 GPU Sku 和至少2个节点作为计算目标的 AML 计算群集。 有关详细信息，请参阅[AML 计算文档](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-set-up-training-targets#amlcompute)。 有关包含 Gpu 的 VM 大小的详细信息，请参阅[GPU 优化虚拟机大小](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-gpu)。
+
+若要留出足够的时间让 DNN 培训完成，建议将试验超时设置为至少几个小时。
 
 ### <a name="view-feature-engineering-summary"></a>查看功能设计摘要
 
@@ -194,7 +208,7 @@ predict_labels = fitted_model.predict(test_data)
 actual_labels = test_labels.flatten()
 ```
 
-或者，您可以使用 `forecast()` 函数，而不是 `predict()`，这将允许指定预测应开始的时间。 在下面的示例中，首先将 `y_pred` 中的所有值替换为 `NaN`。 在这种情况下，预测源将位于定型数据的末尾，因为使用 `predict()` 时通常会出现这种情况。 但是，如果只用 `NaN`替换了 `y_pred` 的后半部分，则函数将在前半部分中未修改数值，但会在第二部分中预测 `NaN` 值。 函数同时返回预测值和对齐功能。
+或者，您可以使用 `forecast()` 函数，而不是 `predict()`，这将允许指定预测应开始的时间。 在下面的示例中，首先将 `y_pred` 中的所有值替换为 `NaN`。 在这种情况下，预测源将位于定型数据的末尾，因为在使用 `predict()`时通常会出现这种情况。 但是，如果只用 `NaN`替换了 `y_pred` 的后半部分，则函数将在前半部分中未修改数值，但会在第二部分中预测 `NaN` 值。 函数同时返回预测值和对齐功能。
 
 你还可以使用 `forecast()` 函数中的 `forecast_destination` 参数将值向上预测到指定的日期。
 

@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 80a1ac3ebe5f49d6a63f47e08e0b16114d75e91f
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 97541484501a3ecdd1bd5998314c1ee9e7a4e3a5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199216"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489079"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>利用 SQL VM 资源提供程序在 Azure 中大容量注册 SQL 虚拟机
 
@@ -37,7 +37,7 @@ ms.locfileid: "73199216"
 - 已[向资源提供程序注册](virtual-machines-windows-sql-register-with-resource-provider.md#register-subscription-with-rp)并包含未注册 SQL Server 虚拟机的[Azure 订阅](https://azure.microsoft.com/free/)。 
 - 用于注册虚拟机的客户端凭据位于以下任何 RBAC 角色中： "**虚拟机参与者**"、"**参与者**" 或 "**所有者**"。 
 - [Az PowerShell](/powershell/azure/new-azureps-module-az)的最新版本。 
-- 最新版本的 [Az SqlVirtualMachine] （ https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0 。
+- [SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0)的最新版本。
 
 ## <a name="getting-started"></a>入门
 
@@ -198,7 +198,7 @@ Please find the detailed report in  file RegisterSqlVMScriptReport1571314821.txt
 
 每次使用 `Register-SqlVMs` cmdlet 时都会生成报告文件和日志文件。 
 
-### <a name="report"></a>报告
+### <a name="report"></a>报表
 
 报表生成为名为 `RegisterSqlVMScriptReport<Timestamp>.txt` 的 `.txt` 文件，其中时间戳是启动 cmdlet 的时间。 该报表列出了以下详细信息：
 
@@ -208,28 +208,28 @@ Please find the detailed report in  file RegisterSqlVMScriptReport1571314821.txt
 | 由于未向 RP 注册而无法尝试的订阅数 | 此部分包含尚未注册到 SQL VM 资源提供程序的订阅的计数和列表。 |
 | 找到的 Vm 总数 | 在传递到 cmdlet 的参数作用域中找到的虚拟机的计数。 | 
 | 已注册 Vm | 已在资源提供程序中注册的虚拟机的计数。 |
-| 成功注册的 Vm 数 | The count of virtual machines that were successfully registered after running the cmdlet. Lists the registered virtual machines in the format `SubscriptionID, Resource Group, Virtual Machine`. | 
-| Number of VMs failed to register due to error | Count of virtual machines that failed to register due to some error. The details of the error can be found in the log file. | 
-| Number of VMs skipped as the VM or the gust agent on VM is not running | Count and list of virtual machines that could not be registered as either the virtual machine or the guest agent on the virtual machine were not running. These can be retried once the virtual machine or guest agent has been started. Details can be found in the log file. |
-| Number of VMs skipped as they are not running SQL Server on Windows | Count of virtual machines that were skipped as they are not running SQL Server or are not a Windows virtual machine. The virtual machines are listed in the format `SubscriptionID, Resource Group, Virtual Machine`. | 
+| 成功注册的 Vm 数 | 运行 cmdlet 后成功注册的虚拟机的计数。 以 `SubscriptionID, Resource Group, Virtual Machine`的格式列出已注册的虚拟机。 | 
+| 由于出错，无法注册的 Vm 数 | 由于一些错误无法注册的虚拟机的计数。 此错误的详细信息可在日志文件中找到。 | 
+| 虚拟机上跳过的 vm 数或 VM 上的阵风代理未运行 | 无法注册为虚拟机或虚拟机上的来宾代理的虚拟机计数和列表未在运行。 启动虚拟机或来宾代理后，可以重试这些工作。 详细信息可在日志文件中找到。 |
+| 由于未在 Windows 上运行 SQL Server 而跳过的 Vm 数 | 由于虚拟机未运行 SQL Server 或不是 Windows 虚拟机而跳过的虚拟机的计数。 虚拟机以 `SubscriptionID, Resource Group, Virtual Machine`格式列出。 | 
 | &nbsp; | &nbsp; |
 
 ### <a name="log"></a>日志 
 
-Errors are logged in the log file named `VMsNotRegisteredDueToError<Timestamp>.log` where timestamp is the time when the script started. If the error is at the subscription level, the log contains the comma-separated SubscriptionID and the error message. If the error is with the virtual machine registration, the log contains the Subscription ID, Resource group name, virtual machine name, error code and message separated by commas. 
+错误记录在名为 `VMsNotRegisteredDueToError<Timestamp>.log` 的日志文件中，其中 timestamp 是脚本开始的时间。 如果错误是在订阅级别，则日志包含以逗号分隔的 SubscriptionID 和错误消息。 如果错误是与虚拟机注册有关的，则日志包含订阅 ID、资源组名称、虚拟机名称、错误代码和以逗号分隔的消息。 
 
 ## <a name="remarks"></a>备注
 
-When you register SQL Server VMs with the resource provider using the provided script, consider the following:
+使用提供的脚本向资源提供程序注册 SQL Server Vm 时，请考虑以下事项：
 
-- Registration with the resource provider requires a guest agent running on the SQL Server VM. Windows Server 2008 images do not have a guest agent, so these virtual machines will fail and must be registered manually using the [NoAgent management mode](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms).
-- There is retry logic built-in to overcome transparent errors. If the virtual machine is successfully registered, then it is a rapid operation. However, if the registration fails, then each virtual machine will be retried.  As such, you should allow significant time to complete the registration process -  though actual time requirement is dependent on the type and number of errors. 
+- 向资源提供程序注册需要在 SQL Server VM 上运行一个来宾代理。 Windows Server 2008 映像没有来宾代理，因此这些虚拟机将失败，必须使用[NoAgent 管理模式](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)手动注册。
+- 已内置重试逻辑来克服透明错误。 如果成功注册了虚拟机，则这是一个快速操作。 但是，如果注册失败，则会重试每个虚拟机。  因此，您应该留出足够的时间来完成注册过程，但实际时间要求取决于错误的类型和数量。 
 
 ## <a name="full-script"></a>完整脚本
 
-For the full script on GitHub, see [Bulk register SQL VMs with Az PowerShell](https://github.com/Azure/azure-docs-powershell-samples/blob/master/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1). 
+有关 GitHub 上的完整脚本，请参阅[用 Az PowerShell 批量注册 SQL vm](https://github.com/Azure/azure-docs-powershell-samples/blob/master/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1)。 
 
-Copy the full script and save it as `RegisterSqLVMs.psm1`.
+复制完整的脚本并将其保存为 `RegisterSqLVMs.psm1`。
 
 [!code-powershell-interactive[main](../../../../powershell_scripts/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1 "Bulk register SQL Server virtual machines")]
 
@@ -240,6 +240,6 @@ Copy the full script and save it as `RegisterSqLVMs.psm1`.
 有关详细信息，请参阅以下文章： 
 
 * [Windows VM 上的 SQL Server 概述](virtual-machines-windows-sql-server-iaas-overview.md)
-* [FAQ for SQL Server on a Windows VM](virtual-machines-windows-sql-server-iaas-faq.md)
-* [Pricing guidance for SQL Server on a Windows VM](virtual-machines-windows-sql-server-pricing-guidance.md)
-* [Release notes for SQL Server on a Windows VM](virtual-machines-windows-sql-server-iaas-release-notes.md)
+* [Windows VM 上的 SQL Server 常见问题](virtual-machines-windows-sql-server-iaas-faq.md)
+* [Windows VM 上 SQL Server 的定价指南](virtual-machines-windows-sql-server-pricing-guidance.md)
+* [Windows VM 上 SQL Server 的发行说明](virtual-machines-windows-sql-server-iaas-release-notes.md)

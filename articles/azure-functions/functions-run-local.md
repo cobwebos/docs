@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 28502c49c0eebce84ffd5aa376e7b20bd52213c0
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 60ef89308eceeb8ae74caba7230f1dc9c6940f47
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674969"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469066"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -22,14 +22,14 @@ ms.locfileid: "72674969"
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
-在本地计算机上开发功能，并使用核心工具将其发布到 Azure 后，请遵循以下基本步骤：
+按照以下基本步骤在本地计算机上开发函数并使用 Core Tools 将其发布到 Azure：
 
 > [!div class="checklist"]
-> * [安装核心工具和依赖项。](#v2)
-> * [使用特定于语言的模板创建 function app 项目。](#create-a-local-functions-project)
-> * [注册触发器和绑定扩展。](#register-extensions)
-> * [定义存储和其他连接。](#local-settings-file)
-> * [从触发器和语言特定的模板创建函数。](#create-func)
+> * [安装 Core Tools 和依赖项](#v2)。
+> * [从特定于语言的模板创建函数应用项目](#create-a-local-functions-project)。
+> * [注册触发器和绑定扩展](#register-extensions)。
+> * [定义存储和其他连接](#local-settings-file)。
+> * [从触发器和特定于语言的模板创建函数](#create-func)。
 > * [在本地运行函数](#start)
 > * [将项目发布到 Azure](#publish)
 
@@ -52,7 +52,7 @@ Azure Functions Core Tools 有两个版本。 使用的版本取决于本地开�
 2\.x 版工具使用构建在 .NET Core 之上的 Azure Functions 运行时 2.x。 .NET Core 2.x 支持的所有平台（包括 [Windows](#windows-npm)、[macOS](#brew) 和 [Linux](#linux)）都支持此版本。 
 
 > [!IMPORTANT]
-> 可以通过使用[扩展捆绑]来绕过安装 .net CORE 2.x SDK 的要求。
+> 可以使用[扩展捆绑包]绕过安装 .NET Core 2.x SDK 的要求。
 
 #### <a name="windows-npm"></a>Windows
 
@@ -66,9 +66,9 @@ Azure Functions Core Tools 有两个版本。 使用的版本取决于本地开�
     npm install -g azure-functions-core-tools
     ```
 
-   Npm 下载和安装核心工具包可能需要几分钟时间。
+   npm 下载并安装 Core Tools 包可能需要几分钟的时间。
 
-1. 如果不打算使用[扩展捆绑]，请安装[.NET Core 2.X SDK for Windows](https://www.microsoft.com/net/download/windows)。
+1. 如果不打算使用[扩展捆绑包]，请安装[用于 Windows 的 .NET Core 2.x SDK](https://www.microsoft.com/net/download/windows)。
 
 #### <a name="brew"></a>带 Homebrew 的 MacOS
 
@@ -83,14 +83,14 @@ Azure Functions Core Tools 有两个版本。 使用的版本取决于本地开�
     brew install azure-functions-core-tools
     ```
 
-1. 如果不打算使用[扩展捆绑]，请安装[适用于 MacOS 的 .NET Core 2.x SDK](https://www.microsoft.com/net/download/macos)。
+1. 如果不打算使用[扩展捆绑包]，请安装[用于 macOS 的 .NET Core 2.x SDK](https://www.microsoft.com/net/download/macos)。
 
 
 #### <a name="linux"></a> 带 APT 的 Linux (Ubuntu/Debian)
 
 以下步骤使用 [APT](https://wiki.debian.org/Apt) 在 Ubuntu/Debian Linux 发行版上安装 Core Tools。 有关其他 Linux 发行版，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux)。
 
-1. 安装 Microsoft package 存储库 GPG 密钥，验证包的完整性：
+1. 安装 Microsoft 包存储库 GPG 密钥，以验证包完整性：
 
     ```bash
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
@@ -135,7 +135,7 @@ Azure Functions Core Tools 有两个版本。 使用的版本取决于本地开�
     sudo apt-get install azure-functions-core-tools
     ```
 
-1. 如果不打算使用[扩展捆绑]，请安装[适用于 Linux 的 .NET Core 2.x SDK](https://www.microsoft.com/net/download/linux)。
+1. 如果不打算使用[扩展捆绑包]，请安装[用于 Linux 的 .NET Core 2.x SDK](https://www.microsoft.com/net/download/linux)。
 
 ## <a name="create-a-local-functions-project"></a>创建本地 Functions 项目
 
@@ -149,18 +149,18 @@ Functions 项目目录包含文件 [host.json](functions-host-json.md) 和 [loca
 func init MyFunctionProj
 ```
 
-提供项目名称时，将创建并初始化具有该名称的新文件夹。 否则，初始化当前文件夹。  
+提供项目名称后，系统就会创建并初始化使用该名称的新文件夹， 否则，初始化当前文件夹。  
 在版本 2.x 中运行命令时，必须为项目选择一个运行时。 
 
 ```output
 Select a worker runtime:
 dotnet
 node
-python (preview)
-powershell (preview)
+python 
+powershell
 ```
 
-使用向上/向下箭头键选择语言，然后按 Enter。 如果打算开发 JavaScript 或 TypeScript 函数，请选择 "**节点**"，然后选择语言。 TypeScript 有[一些额外的要求](functions-reference-node.md#typescript)。 
+使用向上/向下箭头键选择语言，然后按 Enter。 如果计划开发 JavaScript 或 TypeScript 函数，请选择“节点”，然后选择语言。 TypeScript 具有[一些其他要求](functions-reference-node.md#typescript)。 
 
 JavaScript 项目的输出如以下示例所示：
 
@@ -175,10 +175,10 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init` 支持以下选项，除非另有说明，否则这些选项仅限版本 2.x：
 
-| 选项     | 描述                            |
+| 选项     | 说明                            |
 | ------------ | -------------------------------------- |
 | **`--csx`** | 初始化 C# 脚本 (.csx) 项目。 必须在后续命令中指定 `--csx`。 |
-| **`--docker`** | 使用基于所选 `--worker-runtime` 的基础映像创建容器的 Dockerfile。 如果你打算发布到自定义 Linux 容器，请使用此选项。 |
+| **`--docker`** | 使用基于所选 `--worker-runtime` 的基础映像创建容器的 Dockerfile。 如果打算发布到自定义 Linux 容器，请使用此选项。 |
 | **`--force`** | 即使项目中存在现有的文件，也要初始化该项目。 此设置会覆盖同名的现有文件。 项目文件夹中的其他文件不受影响。 |
 | **`--no-source-control -n`** | 阻止版本 1.x 中默认创建 Git 存储库的行为。 在版本 2.x 中，默认不会创建 git 存储库。 |
 | **`--source-control`** | 控制是否创建 git 存储库。 默认不会创建存储库。 如果为 `true`，则会创建存储库。 |
@@ -191,7 +191,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-默认情况下，将项目发布到 Azure 时，这些设置不会自动迁移。 [发布时](#publish)使用 `--publish-local-settings` 开关确保已将这些设置添加到 Azure 中的函数应用。 请注意，**ConnectionStrings** 中的值永远不会发布。
+默认情况下，将项目发布到 Azure 时，这些设置不会自动迁移。 `--publish-local-settings`发布时[使用 ](#publish) 开关确保已将这些设置添加到 Azure 中的函数应用。 请注意，**ConnectionStrings** 中的值永远不会发布。
 
 还可以在代码中将函数应用设置值读取为环境变量。 有关详细信息，请参阅以下特定于语言的参考主题的“环境变量”部分：
 
@@ -200,7 +200,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
-如果没有为[`AzureWebJobsStorage`]设置有效的存储连接字符串，并且未使用模拟器，则会显示以下错误消息：
+如果没有为 [`AzureWebJobsStorage`] 设置有效的存储连接字符串并且没有使用模拟器，则会显示以下错误消息：
 
 > local.settings.json 中的 AzureWebJobsStorage 缺少值。 该值对除 HTTP 以外的所有触发器都是必需的。 可运行“func azure functionapp fetch-app-settings \<functionAppName\>”或在 local.settings.json 中指定连接字符串。
 
@@ -208,11 +208,13 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 即使在使用存储仿真器进行开发时，你也可能希望使用实际的存储连接进行测试。 假设已[创建了存储帐户](../storage/common/storage-create-storage-account.md)，则可以通过下列方式之一获取有效的存储连接字符串：
 
-+ 通过 [Azure 门户]。 导航到你的存储帐户，在“设置”中选择“访问密钥”，然后复制其中一个**连接字符串**值。
+- 在[Azure 门户]中，搜索并选择 "**存储帐户**"。 
+  ![从 Azure 门户中选择存储 polybase 帐户](./media/functions-run-local/select-storage-accounts.png)
+  
+  选择存储帐户，在 "**设置**" 中选择 "**访问密钥**"，然后复制其中一个**连接字符串**值。
+  从 Azure 门户中复制连接字符串 ![](./media/functions-run-local/copy-storage-connection-portal.png)
 
-  ![从 Azure 门户复制连接字符串](./media/functions-run-local/copy-storage-connection-portal.png)
-
-+ 使用 [Azure 存储资源管理器](https://storageexplorer.com/)连接到你的 Azure 帐户。 在“资源管理器”中，展开你的订阅，选择你的存储帐户，然后复制主或辅助连接字符串。
+- 使用 [Azure 存储资源管理器](https://storageexplorer.com/)连接到你的 Azure 帐户。 在“资源管理器”中，展开你的订阅，选择你的存储帐户，然后复制主或辅助连接字符串。
 
   ![从存储资源管理器复制连接字符串](./media/functions-run-local/storage-explorer.png)
 
@@ -267,7 +269,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 也可以在命令中使用以下参数指定这些选项：
 
-| 参数     | 描述                            |
+| 参数     | 说明                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | （版本 2.x）生成版本 1.x 和门户所用的相同 C# 脚本 (.csx) 模板。 |
 | **`--language -l`**| C#、F# 或 JavaScript 等模板编程语言。 此选项在版本 1.x 中是必需的。 在版本 2.x 中，请不要使用此选项，或选择与辅助角色运行时匹配的语言。 |
@@ -288,11 +290,11 @@ func new --template "Queue Trigger" --name QueueTriggerJS
 
 ## <a name="start"></a>在本地运行函数
 
-若要运行 Functions 项目，请运行 Functions 主机。 宿主为项目中的所有函数启用触发器。 
+若要运行 Functions 项目，请运行 Functions 主机。 主机会为项目中的所有函数启用触发器。 
 
 ### <a name="version-2x"></a>版本 2.x
 
-在运行时的版本2.x 中，start 命令因项目语言而异。
+在 2.x 版的运行时中，启动命令因项目语言而异。
 
 #### <a name="c"></a>C\#
 
@@ -315,7 +317,7 @@ npm start
 
 ### <a name="version-1x"></a>版本 1.x
 
-函数运行时的版本1.x 需要 `host` 命令，如以下示例中所示：
+1\.x 版的 Functions 运行时需要 `host` 命令，如下例所示：
 
 ```command
 func host start
@@ -323,7 +325,7 @@ func host start
 
 `func start` 支持以下选项：
 
-| 选项     | 描述                            |
+| 选项     | 说明                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | 在运行之前请勿生成当前项目。 仅限于 dotnet 项目。 默认设置为 false。 仅限版本 2.x。 |
 | **`--cert`** | 包含私钥的 .pfx 文件的路径。 仅与 `--useHttps` 结合使用。 仅限版本 2.x。 |
@@ -334,7 +336,7 @@ func host start
 | **`--password`** | 密码或包含 .pfx 文件密码的文件。 仅与 `--cert` 结合使用。 仅限版本 2.x。 |
 | **`--port -p`** | 要侦听的本地端口。 默认值：7071。 |
 | **`--pause-on-error`** | 退出进程前，暂停增加其他输入。 仅当从集成开发环境 (IDE) 启动 Core Tools 时才使用。|
-| **`--script-root --prefix`** | 用于指定要运行或部署的函数应用的根目录路径。 此选项用于可在子文件夹中生成项目文件的已编译项目。 例如，生成 C# 类库项目时，将在某个根子文件夹中生成 host.json、local.settings.json 和 function.json 文件，其路径类似于 `MyProject/bin/Debug/netstandard2.0`。 在这种情况下，请将前缀设置为 `--script-root MyProject/bin/Debug/netstandard2.0`。 这是在 Azure 中运行的函数应用的根目录。 |
+| **`--script-root --prefix`** | 用于指定要运行或部署的函数应用的根目录路径。 此选项用于可在子文件夹中生成项目文件的已编译项目。 例如，生成 C# 类库项目时，将在某个根子文件夹中生成 host.json、local.settings.json 和 function.json 文件，其路径类似于 *。* `MyProject/bin/Debug/netstandard2.0` 在这种情况下，请将前缀设置为 `--script-root MyProject/bin/Debug/netstandard2.0`。 这是在 Azure 中运行的函数应用的根目录。 |
 | **`--timeout -t`** | Functions 主机启动的超时时间（以秒为单位）。 默认值：20 秒。|
 | **`--useHttps`** | 绑定到 `https://localhost:{port}` ，而不是绑定到 `http://localhost:{port}` 。 默认情况下，此选项会在计算机上创建可信证书。|
 
@@ -356,7 +358,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 若要在本地测试函数，请[启动 Functions 主机](#start)，并在本地服务器上使用 HTTP 请求调用终结点。 你调用的终结点要取决于函数的类型。
 
 >[!NOTE]
-> 本主题中的示例使用 cURL 工具从终端或命令提示符发送 HTTP 请求。 你可以使用所选的工具将 HTTP 请求发送到本地服务器。 默认情况下，在基于 Linux 的系统和 Windows 10 版本17063及更高版本中，可以使用卷工具。 在较旧的 Windows 上，必须先下载并安装[卷工具](https://curl.haxx.se/)。
+> 本主题中的示例使用 cURL 工具从终端或命令提示符发送 HTTP 请求。 你可以使用所选的工具将 HTTP 请求发送到本地服务器。 默认情况下，cURL 工具在基于 Linux 的系统和 Windows 10 内部版本 17063 及更高版本上可用。 在较旧的 Windows 上，必须先下载并安装 [cURL 工具](https://curl.haxx.se/)。
 
 有关测试函数的更多常规信息，请参阅[在 Azure Functions 中测试代码的策略](functions-test-a-function.md)。
 
@@ -368,7 +370,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 
 请确保使用相同的服务器名称和 Functions 主机正在侦听的端口。 在启动 Function 主机时所生成的输出中可以看到该信息。 可以使用触发器所支持的任何 HTTP 方法来调用此 URL。
 
-以下 cURL 命令使用查询字符串中传递的 name 参数从 GET 请求触发 `MyHttpTrigger` quickstart 函数。
+以下 cURL 命令使用查询字符串中传递的 name`MyHttpTrigger`_参数从 GET 请求触发_ quickstart 函数。
 
 ```bash
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
@@ -413,7 +415,7 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 `func run` 支持以下选项：
 
-| 选项     | 描述                            |
+| 选项     | 说明                            |
 | ------------ | -------------------------------------- |
 | **`--content -c`** | 内联内容。 |
 | **`--debug -d`** | 运行函数前，将调试程序附加到主机进程。|
@@ -429,9 +431,9 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 ## <a name="publish"></a>发布到 Azure
 
-Azure Functions Core Tools 支持两种类型的部署：通过[Zip](functions-deployment-technologies.md#zip-deploy)部署和[部署自定义 Docker 容器](functions-deployment-technologies.md#docker-container)将函数项目文件直接部署到 function app。 你必须已[在 Azure 订阅中创建了一个函数应用](functions-cli-samples.md#create)，以便将你的代码部署到该应用。 应该生成需要编译的项目，以便可以部署二进制文件。
+Azure Functions Core Tools 支持两种类型的部署：通过 [Zip Deploy](functions-deployment-technologies.md#zip-deploy) 将函数项目文件直接部署到函数应用，以及[部署自定义 Docker 容器](functions-deployment-technologies.md#docker-container)。 必须已[在 Azure 订阅中创建了一个函数应用](functions-cli-samples.md#create)，你将向其部署代码。 应该生成需要编译的项目，以便可以部署二进制文件。
 
-项目文件夹可能包含不应发布的特定于语言的文件和目录。 排除的项在根项目文件夹中的 funcignore 文件中列出。     
+项目文件夹可能包含不应该发布的特定于语言的文件和目录。 排除的项在根项目文件夹的 .funcignore 文件中列出。     
 
 ### <a name="project-file-deployment"></a>部署（项目文件）
 
@@ -441,22 +443,22 @@ Azure Functions Core Tools 支持两种类型的部署：通过[Zip](functions-d
 func azure functionapp publish <FunctionAppName>
 ```
 
-此命令发布到 Azure 中的现有函数应用。 如果你尝试发布到你的订阅中不存在的 `<FunctionAppName>`，将会出现错误。 若要了解如何使用 Azure CLI 从命令提示符或终端窗口创建函数应用，请参阅[为无服务器执行创建函数应用](./scripts/functions-cli-create-serverless.md)。 默认情况下，此命令使用[远程生成](functions-deployment-technologies.md#remote-build)并部署你的应用程序，以便[从部署包中运行](run-functions-from-deployment-package.md)。 若要禁用此建议的部署模式，请使用 `--nozip` 选项。
+此命令发布到 Azure 中的现有函数应用。 如果尝试发布到订阅中不存在的 `<FunctionAppName>`，则会收到错误。 若要了解如何使用 Azure CLI 从命令提示符或终端窗口创建函数应用，请参阅[为无服务器执行创建函数应用](./scripts/functions-cli-create-serverless.md)。 默认情况下，此命令使用[远程生成](functions-deployment-technologies.md#remote-build)并部署你的应用程序，以便[从部署包中运行](run-functions-from-deployment-package.md)。 若要禁用此建议的部署模式，请使用 `--nozip` 选项。
 
 >[!IMPORTANT]
 > 在 Azure 门户中创建函数应用时，该应用默认使用 2.x 版函数运行时。 要让函数应用使用 1.x 版运行时，请遵照[在版本 1.x 上运行](functions-versions.md#creating-1x-apps)中的说明。
 > 无法为包含现有函数的函数应用更改运行时版本。
 
-以下发布选项适用于这两个版本：1.x 和2.x：
+以下发布选项同时适用于 1.x 和 2.x 版本：
 
-| 选项     | 描述                            |
+| 选项     | 说明                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  将 local.settings.json 中的设置发布到 Azure，如果该设置已存在，则提示进行覆盖。 如果使用的是存储模拟器，请先将应用设置更改为[实际的存储连接](#get-your-storage-connection-strings)。 |
 | **`--overwrite-settings -y`** | 使用 `--publish-local-settings -i` 时隐藏覆盖应用设置的提示。|
 
 以下发布选项仅在版本 2.x 中受支持：
 
-| 选项     | 描述                            |
+| 选项     | 说明                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only -o`** |  仅发布设置，并跳过内容。 默认为提示。 |
 |**`--list-ignored-files`** | 基于 .funcignore 文件显示发布期间忽略的文件列表。 |
@@ -472,7 +474,7 @@ func azure functionapp publish <FunctionAppName>
 
 ### <a name="deployment-custom-container"></a>部署（自定义容器）
 
-Azure Functions 允许在[自定义 Docker 容器](functions-deployment-technologies.md#docker-container)中部署函数项目。 有关详细信息，请参阅[使用自定义映像在 Linux 上创建函数](functions-create-function-linux-custom-image.md)。 自定义容器必须有一个 Dockerfile。 若要创建具有 Dockerfile 的应用，请在 `func init` 上使用--Dockerfile 选项。
+Azure Functions 可让你在[自定义 Docker 容器](functions-deployment-technologies.md#docker-container)中部署函数项目。 有关详细信息，请参阅[使用自定义映像在 Linux 上创建函数](functions-create-function-linux-custom-image.md)。 自定义容器必须有一个 Dockerfile。 若要使用 Dockerfile 创建应用，请在 `func init` 中使用 -dockerfile 选项。
 
 ```bash
 func deploy
@@ -480,7 +482,7 @@ func deploy
 
 可使用以下自定义容器部署选项：
 
-| 选项     | 描述                            |
+| 选项     | 说明                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | 当前用户登录到的 Docker 注册表的名称。 |
 | **`--platform`** | 函数应用的托管平台。 有效选项为 `kubernetes` |
@@ -521,5 +523,5 @@ Azure Functions Core Tools 是[开源工具且托管在 GitHub 上](https://gith
 [Azure 门户]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
-[AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage
-[扩展捆绑]: functions-bindings-register.md#extension-bundles
+[`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
+[扩展捆绑包]: functions-bindings-register.md#extension-bundles

@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: c19b64441d7afbe7544a4401314078b807a8c939
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: b9413807cda096adf1056c07e026373ea19359b9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673256"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495962"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>适用于 Azure 存储的高级威胁防护
 
 适用于 Azure 存储的高级威胁防护提供额外的安全智能层，用于检测访问或利用存储帐户的异常和潜在有害尝试。 这一层保护使你可以在不是安全专家或管理安全监视系统的情况下解决威胁。
 
-当发生异常时, 将触发安全警报。 这些安全警报与[Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成, 还会通过电子邮件发送给订阅管理员, 并详细介绍了可疑活动以及如何调查和修正威胁的建议。
+当发生异常时，将触发安全警报。 这些安全警报与[Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成，还会通过电子邮件发送给订阅管理员，并详细介绍了可疑活动以及如何调查和修正威胁的建议。
 
 > [!NOTE]
-> Azure 存储的高级威胁防护目前仅适用于 Blob 存储。 它在 Azure 政府版和主权云区域中不可用。 有关定价详细信息 (包括免费的30天试用版), 请参阅[Azure 安全中心定价页]( https://azure.microsoft.com/pricing/details/security-center/)。
+> Azure 存储的高级威胁防护目前仅适用于 Blob 存储。 它在 Azure 政府版和主权云区域中不可用。 有关定价详细信息（包括免费的30天试用版），请参阅[Azure 安全中心定价页]( https://azure.microsoft.com/pricing/details/security-center/)。
 
 适用于 Azure 存储的高级威胁防护引入对 Blob 存储的读取、写入和删除请求的诊断日志进行威胁检测。 若要调查高级威胁防护中的警报，可以使用存储分析日志记录查看相关的存储活动。 有关详细信息，请参阅在[Azure 门户中监视存储帐户](storage-monitor-storage-account.md#configure-logging)中的 "**配置日志记录**"。
 
@@ -30,7 +30,7 @@ ms.locfileid: "71673256"
 
 默认情况下，将为你的存储帐户启用高级威胁防护。 可以通过多种方式来配置高级威胁防护，如以下部分中所述。
 
-### <a name="use-the-azure-portal"></a>使用 Azure 门户
+### <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
 1. 启动 [Azure 门户](https://portal.azure.com/)。
 1. 导航到你的 Azure 存储帐户。 在 "**设置**" 下，选择 "**高级安全**"。
@@ -40,27 +40,27 @@ ms.locfileid: "71673256"
 
     ![打开 Azure 存储高级威胁防护](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
-### <a name="using-azure-security-center"></a>使用 Azure 安全中心
+### <a name="azure-security-centertabazure-security-center"></a>[Azure 安全中心](#tab/azure-security-center)
 
 当你订阅 Azure 安全中心的 "标准" 层时，会自动对所有存储帐户设置高级威胁防护。 你可以在特定订阅下为你的存储帐户启用或禁用高级威胁防护，如下所示：
 
 1. 在[Azure 门户](https://portal.azure.com)中启动**Azure 安全中心**。
-1. 在主菜单中, 单击 "**定价 & 设置**"。
+1. 在主菜单中，单击 "**定价 & 设置**"。
 1. 单击要为其存储帐户启用或禁用威胁防护的订阅。
 
     ![选择订阅](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-subscription.png)
 
 1. 单击“定价层”。
-1. 在 "**按资源类型选择定价层**" 部分的 "**存储帐户**" 行中, 单击 "**已启用**" 或 "**已禁用**"。
+1. 在 "**按资源类型选择定价层**" 部分的 "**存储帐户**" 行中，单击 "**已启用**" 或 "**已禁用**"。
 
     ![在安全中心启用 ATP](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
 1. 单击“保存”。
 
-### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
+### <a name="templatetabtemplate"></a>[模板](#tab/template)
 
 使用 Azure 资源管理器模板来部署启用了高级威胁防护的 Azure 存储帐户。 有关详细信息，请参阅[具有高级威胁防护的存储帐户](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)。
 
-### <a name="using-an-azure-policy"></a>使用 Azure 策略
+### <a name="azure-policytabazure-policy"></a>[Azure Policy](#tab/azure-policy)
 
 使用 Azure 策略在特定订阅或资源组中的存储帐户之间启用高级威胁防护。
 
@@ -78,20 +78,22 @@ ms.locfileid: "71673256"
 
     !["策略定义" 页](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
-### <a name="using-the-rest-api"></a>使用 REST API
+### <a name="rest-apitabrest-api"></a>[REST API](#tab/rest-api)
 
 使用 Rest API 命令创建、更新或获取特定存储帐户的高级威胁防护设置。
 
 * [高级威胁防护-创建](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
 * [高级威胁防护-获取](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
-### <a name="using-azure-powershell"></a>使用 Azure PowerShell
+### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用以下 PowerShell cmdlet:
+使用以下 PowerShell cmdlet：
 
 * [启用高级威胁防护](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
 * [获取高级威胁防护](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
 * [禁用高级威胁防护](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+
+---
 
 ## <a name="explore-security-anomalies"></a>探索安全异常
 

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 08e9656e3b899cbb6d4de733696175e8f31b0e66
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 559d8cb25624c1d8bebb2969fbeeb80bdcc020e6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792013"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479738"
 ---
 #   <a name="entity-recognition-cognitive-skill"></a>实体识别认知技能
 
@@ -29,24 +29,23 @@ ms.locfileid: "72792013"
 Microsoft.Skills.Text.EntityRecognitionSkill
 
 ## <a name="data-limits"></a>数据限制
-记录的最大大小应为50000个字符， [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)度量。 如果在将数据发送到关键短语提取器之前需要拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
+记录的最大大小应为 50,000 个字符，通过 [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) 进行测量。 如果在将数据发送到关键短语提取器之前需要拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="skill-parameters"></a>技能参数
 
 参数区分大小写并且都是可选的。
 
-| 参数名称     | 描述 |
+| 参数名称     | 说明 |
 |--------------------|-------------|
 | categories    | 应提取的类别的数组。  可能的类别类型有：`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"Datetime"`、`"URL"`、`"Email"`。 如果不提供类别，则返回所有类型。|
 |defaultLanguageCode |  输入文本的语言代码。 支持以下语言：`de, en, es, fr, it`|
-|minimumPrecision | 未使用。 保留供将来使用。 |
-|includeTypelessEntities | 当设置为 true 时，如果文本包含某个已知实体，但无法分类为受支持的类别之一，则它将作为 `"entities"` 复杂输出字段的一部分返回。 
-这些是众所周知但未分类为当前支持的 "类别" 的一部分的实体。 例如，"Windows 10" 是众所周知的实体（产品），但目前不支持 "产品"。 默认为 `false` |
+|minimumPrecision | 一个介于 0 和 1 之间的值。 如果置信度（`namedEntities` 输出）低于此值，则不会返回该实体。 默认值为 0。 |
+|includeTypelessEntities | 如果要识别不符合当前类别的已知实体，则设置为 `true`。 可识别的实体将在 `entities` 的复杂输出字段中返回。 例如，"Windows 10" 是众所周知的实体（产品），但由于 "产品" 不是受支持的类别，因此此实体将包含在实体输出字段中。 默认为 `false` |
 
 
 ## <a name="skill-inputs"></a>技能输入
 
-| 输入名称      | 描述                   |
+| 输入名称      | 说明                   |
 |---------------|-------------------------------|
 | languageCode  | 可选。 默认值为 `"en"`。  |
 | text          | 要分析的文本。          |
@@ -56,7 +55,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 > [!NOTE]
 > 并非所有实体类别都支持所有语言。 只有 _en_、_es_ 支持 `"Quantity"`、`"Datetime"`、`"URL"`、`"Email"` 类型的提取。
 
-| 输出名称     | 描述                   |
+| 输出名称     | 说明                   |
 |---------------|-------------------------------|
 | 人员      | 一个字符串数组，其中，一个字符串表示一个人员名称。 |
 | 位置  | 一个字符串数组，其中，一个字符串表示一个位置。 |
@@ -65,7 +64,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 | dateTimes  | 一个字符串数组，其中，每个字符串都表示一个日期时间（因为它以文本形式显示）值。 |
 | urls | 一个字符串数组，其中，每个字符串都表示一个 URL |
 | emails | 一个字符串数组，其中，每个字符串都表示一个电子邮件地址 |
-| namedEntities | 复杂类型的数组，包含以下字段： <ul><li>category</li> <li>值（实际实体名称）</li><li>偏移（在文本中找到它的位置）</li><li>confidence（现在未使用。 将设置为值为 -1）</li></ul> |
+| namedEntities | 复杂类型的数组，包含以下字段： <ul><li>category</li> <li>value（实际实体名称）</li><li>偏移（在文本中找到它的位置）</li><li>置信度（较高的值意味着它更多是真正的实体）</li></ul> |
 | 实体 | 一个复杂类型数组，包含有关从文本提取的实体的丰富信息，具有以下字段 <ul><li> name（实际实体名称。 这表示一个“规范化”窗体）</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl（实体的 Wikipedia 页面的链接）</li><li>bingId</li><li>type（识别的实体的类别）</li><li>subType（仅适用于某些类别，这提供实体类型的更精细视图）</li><li> matches（包含的复杂集合）<ul><li>text（实体的原始文本）</li><li>offset（找到它的位置）</li><li>length（原始实体文本的长度）</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>示例定义
@@ -76,6 +75,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
     "categories": [ "Person", "Email"],
     "defaultLanguageCode": "en",
     "includeTypelessEntities": true,
+    "minimumPrecision": 0.5,
     "inputs": [
       {
         "name": "text",
@@ -131,7 +131,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
             "category":"Person",
             "value": "John Smith",
             "offset": 35,
-            "confidence": -1
+            "confidence": 0.98
           }
         ],
         "entities":  
@@ -189,7 +189,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 
 
 ## <a name="error-cases"></a>错误案例
-如果不支持文档的语言代码，则返回错误，并且不提取任何实体。
+如果文档的语言代码不受支持，则返回错误，并且不提取任何实体。
 
 ## <a name="see-also"></a>另请参阅
 

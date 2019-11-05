@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: bd57880b11f56b13b4225652071593d29dcc6280
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 9d7336fb933ee5e9781d15214fa3e59446aa5b6a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515225"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490717"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>使用脱机评估来分析学习循环
 
 了解如何完成脱机评估并理解结果。
 
-使用脱机评估可以衡量个性化体验创建服务相比应用程序默认行为的有效性，了解哪些特征对个性化的作用最大，并自动发现新的机器学习设置。
+脱机评估允许您度量与应用程序的默认行为相比，如何将有效的 Personalizer 进行比较、了解哪些功能最适合进行个性化设置，以及自动发现新机器学习值。
 
 请阅读[脱机评估](concepts-offline-evaluation.md)了解详细信息。
 
@@ -35,11 +35,11 @@ ms.locfileid: "72515225"
 
 1. 在[Azure 门户](https://azure.microsoft.com/free/)中，找到个性化资源。
 1. 在 Azure 门户中，请参阅 "**评估**" 部分，并选择 "**创建评估**"。
-    ![In Azure 门户，请参阅 "评估" 部分，并选择 "创建评估"。](./media/offline-evaluation/create-new-offline-evaluation.png)
-1. 选择以下设置：
+    ![在 Azure 门户中，请参阅 "评估" 部分，并选择 "创建评估"。](./media/offline-evaluation/create-new-offline-evaluation.png)
+1. 配置以下值：
 
     * 计算名称
-    * 开始和结束日期-这是过去的日期，用于指定要在计算中使用的数据的范围。 这些数据必须根据[数据保留期](how-to-settings.md)设置中的指定存在于日志中。
+    * 开始和结束日期-这是过去的日期，用于指定要在计算中使用的数据的范围。 此数据必须出现在日志中，如[数据保持](how-to-settings.md)值中所指定。
     * 优化发现设置为 **"是"**
 
     ![选择脱机评估设置](./media/offline-evaluation/create-an-evaluation-form.png)

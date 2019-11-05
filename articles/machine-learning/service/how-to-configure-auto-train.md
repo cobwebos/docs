@@ -2,23 +2,24 @@
 title: 创建自动化机器学习试验
 titleSuffix: Azure Machine Learning
 description: 自动化机器学习将为你选择一种算法，并生成随时可用于部署的模型。 了解可用于配置自动化机器学习试验的选项。
-author: nacharya1
-ms.author: nilesha
+author: cartacioS
+ms.author: sacartac
 ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 181f11bd5cfda479c25b5bce20649b8f382968fe
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
-ms.translationtype: MT
+ms.openlocfilehash: 4d050385bb76817c8aeada1bef4c4697a1f58d09
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935372"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497273"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中配置自动 ML 试验
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本指南介绍如何通过[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)定义自动机器学习试验的各种配置设置。 自动化机器学习将自动选择算法和超参数，并生成随时可用于部署的模型。 可以使用多个选项来配置自动化机器学习试验。
 
@@ -34,7 +35,7 @@ ms.locfileid: "72935372"
 * 探索模型指标
 * 注册和部署模型
 
-如果你不愿意，还可以[在 Azure 门户中创建自动化机器学习试验](how-to-create-portal-experiments.md)。
+如果你不愿意，还可以[在 Azure 机器学习 studio 中创建自动化机器学习试验](how-to-create-portal-experiments.md)。
 
 ## <a name="select-your-experiment-type"></a>选择试验类型
 
@@ -61,7 +62,7 @@ ms.locfileid: "72935372"
 |[平均感知器分类器](https://docs.microsoft.com/en-us/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||ForecastTCN
 |[线性 SVM 分类器](https://docs.microsoft.com/en-us/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)||
 
-使用 `AutoMLConfig` 构造函数中的 `task` 参数指定实验类型。
+使用 `AutoMLConfig` 构造函数中的 `task` 参数来指定实验类型。
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -72,7 +73,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 ## <a name="data-source-and-format"></a>数据源和格式
 
-自动化机器学习支持驻留在本地桌面上或云中（例如 Azure Blob 存储）的数据。 数据可以读入**Pandas 数据帧**或**Azure 机器学习 TabularDataset**。  [了解有关 datatsets 的详细信息](https://github.com/MicrosoftDocs/azure-docs-pr/pull/how-to-create-register-datasets.md)。
+自动化机器学习支持驻留在本地桌面上或云中（例如 Azure Blob 存储）的数据。 数据可以读入**Pandas 数据帧**或**Azure 机器学习 TabularDataset**。  [了解有关数据集的详细信息](https://github.com/MicrosoftDocs/azure-docs-pr/pull/how-to-create-register-datasets.md)。
 
 定型数据的要求：
 - 数据必须为表格格式。
@@ -111,7 +112,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 ## <a name="train-and-validation-data"></a>训练和验证数据
 
-可以直接在 `AutoMLConfig` 构造函数中指定单独的定型集和验证集。
+您可以直接在 `AutoMLConfig` 构造函数中指定单独的定型集和验证集。
 
 ### <a name="k-folds-cross-validation"></a>K 折交叉验证
 
@@ -145,26 +146,24 @@ automl_config = AutoMLConfig(task = "classification")
 
 示例包括：
 
-1.  使用 AUC 加权作为主要指标的分类试验，每次迭代的最大时间为12000秒，试验在50次迭代之后结束，2次交叉验证折叠。
+1.  使用 AUC 加权作为主要指标的分类试验，其中 "试验超时分钟数" 设置为30分钟，2次交叉验证折叠。
 
     ```python
     automl_classifier=AutoMLConfig(
         task='classification',
         primary_metric='AUC_weighted',
-        max_time_sec=12000,
-        iterations=50,
+        experiment_timeout_minutes=30,
         blacklist_models='XGBoostClassifier',
         training_data=train_data,
         label_column_name=label,
         n_cross_validations=2)
     ```
-2.  下面是设置为在 100 次迭代后结束的回归试验示例，每次迭代最长持续 600 秒，并完成 5 个交叉验证折。
+2.  下面是在60分钟之后结束的回归试验集的一个示例，其中5次验证交叉折叠。
 
     ```python
     automl_regressor = AutoMLConfig(
         task='regression',
-        max_time_sec=600,
-        iterations=100,
+        experiment_timeout_minutes=60,
         whitelist_models='kNN regressor'
         primary_metric='r2_score',
         training_data=train_data,
@@ -172,7 +171,7 @@ automl_config = AutoMLConfig(task = "classification")
         n_cross_validations=5)
     ```
 
-三个不同的 `task` 参数值（第三个任务类型为 `forecasting`，并使用与 `regression` 任务相同的算法池）确定要应用的模型的列表。 使用 `whitelist` 或 `blacklist` 参数，以使用可用模型进一步修改迭代，以包含或排除。 支持的模型的列表可以在[SupportedModels 类](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)中找到。
+三个不同的 `task` 参数值（第三个任务类型为 `forecasting`，并使用与 `regression` 任务相同的算法池）确定要应用的模型的列表。 使用 "`whitelist`" 或 "`blacklist` 参数" 可以进一步修改包含或排除的可用模型的迭代。 支持的模型的列表可以在[SupportedModels 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)中找到。
 
 ### <a name="primary-metric"></a>主要指标
 主要指标用于确定要在模型定型期间用于优化的指标。 您可以选择的可用指标由您选择的任务类型决定，下表显示了每种任务类型的有效主要指标。
@@ -225,7 +224,7 @@ time_series_settings = {
 automl_config = AutoMLConfig(task = 'forecasting',
                              debug_log='automl_oj_sales_errors.log',
                              primary_metric='normalized_root_mean_squared_error',
-                             iterations=10,
+                             experiment_timeout_minutes=20,
                              training_data=train_data,
                              label_column_name=label,
                              n_cross_validations=5,
@@ -240,7 +239,7 @@ automl_config = AutoMLConfig(task = 'forecasting',
 
 有多个默认参数可以作为 `kwargs` 在 `AutoMLConfig` 对象中提供，以更改默认 stack 系综行为。
 
-* `stack_meta_learner_type`：学习器是针对单个不同模型的输出训练的模型。 默认的元学习器在分类任务 `LogisticRegression` （如果启用了交叉验证，则为 `LogisticRegressionCV`）; 对于回归/预测任务为 `ElasticNet` （如果启用了交叉验证，则为 `ElasticNetCV`）。 此参数可以是下列字符串之一： `LogisticRegression`、`LogisticRegressionCV`、`LightGBMClassifier`、`ElasticNet`、`ElasticNetCV`、`LightGBMRegressor`或 `LinearRegression`。
+* `stack_meta_learner_type`：学习器是针对单个不同模型的输出训练的模型。 默认的元学习器 `LogisticRegression` 用于分类任务（或者，如果启用了交叉验证，则 `LogisticRegressionCV`）和 `ElasticNet` 用于回归/预测任务（如果启用了交叉验证，则为 `ElasticNetCV`）。 此参数可以是下列字符串之一： `LogisticRegression`、`LogisticRegressionCV`、`LightGBMClassifier`、`ElasticNet`、`ElasticNetCV`、`LightGBMRegressor`或 `LinearRegression`。
 * `stack_meta_learner_train_percentage`：指定为定型学习器而保留定型集的比例（选择定型定型类型时）。 默认值为 `0.2`。
 * `stack_meta_learner_kwargs`：要传递给学习器的初始值设定项的可选参数。 这些参数和参数类型从相应的模型构造函数中镜像这些参数和参数类型，并将其转发到模型构造函数。
 
@@ -262,7 +261,7 @@ ensemble_settings = {
 automl_classifier = AutoMLConfig(
         task='classification',
         primary_metric='AUC_weighted',
-        iterations=20,
+        experiment_timeout_minutes=30,
         training_data=train_data,
         label_column_name=label,
         n_cross_validations=5,
@@ -276,7 +275,7 @@ automl_classifier = AutoMLConfig(
 automl_classifier = AutoMLConfig(
         task='classification',
         primary_metric='AUC_weighted',
-        iterations=20,
+        experiment_timeout_minutes=30,
         training_data=data_train,
         label_column_name=label,
         n_cross_validations=5,
@@ -314,7 +313,6 @@ run = experiment.submit(automl_config, show_output=True)
 ### <a name="exit-criteria"></a>退出条件
 可以定义几个选项来结束实验。
 1. 无标准：如果未定义任何退出参数，则试验将继续，直到不会对主要指标进行进一步的处理。
-1. 迭代次数：定义要运行的实验的迭代次数。 您可以根据需要添加 `iteration_timeout_minutes` 来定义每个迭代的时间限制（以分钟为单位）。
 1. 在一段时间后退出：通过使用设置中的 `experiment_timeout_minutes`，你可以定义实验在运行中的运行时间（分钟）。
 1. 达到分数后退出：使用 `experiment_exit_score` 将在达到主要指标分数后完成试验。
 
@@ -338,7 +336,7 @@ best_run, fitted_model = automl_run.get_output()
 
 ### <a name="automated-feature-engineering"></a>自动功能设计
 
-查看预处理 = True 时发生的预处理和[自动功能工程](concept-automated-ml.md#preprocess)的列表。
+请参阅 feauturization = auto 时发生的预处理和[自动功能工程](concept-automated-ml.md#preprocess)的列表。
 
 请看以下示例：
 + 有4种输入功能： A （数值）、B （数值）、C （数值）、D （日期时间）
@@ -398,7 +396,7 @@ best_run, fitted_model = automl_run.get_output()
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   地点：
+   其中：
 
    |输出|定义|
    |----|--------|
@@ -407,6 +405,32 @@ best_run, fitted_model = automl_run.get_output()
    |删除|指示输入功能是否已删除或已被使用。|
    |EngineeringFeatureCount|通过自动功能工程转换生成的功能的数量。|
    |转换|应用于输入功能以生成工程功能的转换的列表。|
+   
+### <a name="customize-feature-engineering"></a>自定义功能设计
+若要自定义功能设计，请指定 `"feauturization":FeaturizationConfig`。
+
+支持的自定义项包括：
+
+|自定义|定义|
+|--|--|
+|列用途更新|重写指定列的功能类型。|
+|转换器参数更新 |更新指定转换器的参数。 目前支持 Imputer 和 HashOneHotEncoder。|
+|删除列 |要从特征化中删除的列。|
+|块转换器| 阻止用于特征化进程的转换器。|
+
+使用 API 调用创建 FeaturizationConfig 对象：
+```python
+featurization_config = FeaturizationConfig()
+featurization_config.blocked_transformers = ['LabelEncoder']
+featurization_config.drop_columns = ['aspiration', 'stroke']
+featurization_config.add_column_purpose('engine-size', 'Numeric')
+featurization_config.add_column_purpose('body-style', 'CategoricalHash')
+#default strategy mean, add transformer param for for 3 columns
+featurization_config.add_transformer_params('Imputer', ['engine-size'], {"strategy": "median"})
+featurization_config.add_transformer_params('Imputer', ['city-mpg'], {"strategy": "median"})
+featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "most_frequent"})
+featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})
+```
 
 ### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>缩放/规范化和具有超参数值的算法：
 
@@ -467,78 +491,13 @@ LogisticRegression
 
 <a name="explain"></a>
 
-## <a name="explain-the-model-interpretability"></a>说明模型（interpretability）
+## <a name="model-interpretability"></a>模型可解释性
 
-使用自动化机器学习可以了解特征重要性。  在训练过程中，可以获取模型的全局特征重要性。  对于分类方案，还可以获取类级特征重要性。  必须提供验证数据集（validation_data），才能获得功能重要性。
+模型 interpretability 使您可以了解模型为何进行预测，以及基础特征重要性值。 SDK 包括各种包，用于在定型和推理时间为本地和已部署的模型启用模型 interpretability 功能。
 
-可通过两种方式生成特征重要性。
+有关如何在自动机器学习试验中启用 interpretability 功能的详细说明，请参阅操作[方法](how-to-machine-learning-interpretability-automl.md)。
 
-*   完成试验后，可以针对任何迭代使用 `explain_model` 方法。
-
-    ```python
-    from azureml.train.automl.automlexplainer import explain_model
-
-    shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
-        explain_model(fitted_model, train_data, test_data)
-
-    #Overall feature importance
-    print(overall_imp)
-    print(overall_summary)
-
-    #Class-level feature importance
-    print(per_class_imp)
-    print(per_class_summary)
-    ```
-
-*   若要查看所有迭代的特征重要性，请在 AutoMLConfig 中将 `model_explainability` 标志设置为 `True`。
-
-    ```python
-    automl_config = AutoMLConfig(task='classification',
-                                 debug_log='automl_errors.log',
-                                 primary_metric='AUC_weighted',
-                                 max_time_sec=12000,
-                                 iterations=10,
-                                 verbosity=logging.INFO,
-                                 training_data=train_data,
-                                 label_column_name=y_train,
-                                 validation_data=test_data,
-                                 model_explainability=True,
-                                 path=project_folder)
-    ```
-
-    完成后，可以使用 retrieve_model_explanation 方法检索特定迭代的特征重要性。
-
-    ```python
-    from azureml.train.automl.automlexplainer import retrieve_model_explanation
-
-    shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
-        retrieve_model_explanation(best_run)
-
-    #Overall feature importance
-    print(overall_imp)
-    print(overall_summary)
-
-    #Class-level feature importance
-    print(per_class_imp)
-    print(per_class_summary)
-    ```
-
-使用 run 对象显示 URL 以查看功能重要性：
-
-```
-automl_run.get_portal_url()
-```
-
-您可以在工作区的 Azure 门户中或从[工作区登陆页面（预览版）](https://ml.azure.com)中可视化功能重要性图表。 使用笔记本中的 `RunDetails` [Jupyter 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)时，也会显示该图表。 若要了解有关图表的详细信息，请参阅[了解自动化机器学习结果](how-to-understand-automated-ml.md)。
-
-```Python
-from azureml.widgets import RunDetails
-RunDetails(automl_run).show()
-```
-
-![特征重要性图形](./media/how-to-configure-auto-train/feature-importance.png)
-
-若要详细了解如何在 SDK 的其他区域中启用模型解释和功能重要性，请参阅 interpretability 上的[概念](machine-learning-interpretability-explainability.md)文章。
+有关如何在自动化机器学习之外的其他 SDK 区域中启用模型解释和功能重要性的一般信息，请参阅 interpretability 上的[概念](how-to-machine-learning-interpretability.md)文章。
 
 ## <a name="next-steps"></a>后续步骤
 

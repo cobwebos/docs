@@ -3,32 +3,34 @@ title: 自动 ML 远程计算目标
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习的 Azure 机器学习远程计算目标上的自动机器学习生成模型
 services: machine-learning
-author: nacharya1
-ms.author: nilesha
+author: cartacioS
+ms.author: sacartac
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 7/12/2019
-ms.openlocfilehash: 9eab21fe6b5269229de186a7553e11a147c1033e
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 11/04/2019
+ms.openlocfilehash: 4276a713e62f96cc5340fc7be0e8391939d32342
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034988"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497314"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>在云中使用自动化机器学习对模型进行训练
 
-在 Azure 机器学习中，我们在所管理的不同类型的计算资源上训练模型。 计算目标可以是本地计算机, 也可以是云中的资源。
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-可以通过添加更多计算目标 (例如 Azure 机器学习计算 (AmlCompute)) 来轻松增加或减少机器学习试验。 AmlCompute 是一种托管计算基础结构, 可让你轻松创建单个或多节点计算。
+在 Azure 机器学习中，我们在所管理的不同类型的计算资源上训练模型。 计算目标可以是本地计算机，也可以是云中的资源。
+
+可以通过添加更多计算目标（例如 Azure 机器学习计算（AmlCompute））来轻松增加或减少机器学习试验。 AmlCompute 是一种托管计算基础结构，可让你轻松创建单个或多节点计算。
 
 本文介绍如何通过 AmlCompute 使用自动 ML 构建模型。
 
 ## <a name="how-does-remote-differ-from-local"></a>远程与本地有何区别？
 
-本教程 "使用[自动机器学习训练分类模型](tutorial-auto-train-models.md)" 教程介绍了如何使用本地计算机通过自动 ML 训练模型。 本地培训的工作流同样适用于远程目标。 但是，使用远程计算，能够以异步方式执行自动化机器学习试验迭代。 此功能允许你取消特定迭代，观察执行状态，或继续在 Jupyter 笔记本的其他单元格上处理。 若要进行远程训练, 请先创建一个远程计算目标, 如 AmlCompute。 然后，配置远程资源，并在那里提交代码。
+本教程 "使用[自动机器学习训练分类模型](tutorial-auto-train-models.md)" 教程介绍了如何使用本地计算机通过自动 ML 训练模型。 本地培训的工作流同样适用于远程目标。 但是，使用远程计算，能够以异步方式执行自动化机器学习试验迭代。 此功能允许你取消特定迭代，观察执行状态，或继续在 Jupyter 笔记本的其他单元格上处理。 若要进行远程训练，请先创建一个远程计算目标，如 AmlCompute。 然后，配置远程资源，并在那里提交代码。
 
 本文介绍了在远程 AmlCompute 目标上运行自动 ML 实验所需的额外步骤。 本教程中的工作区对象 `ws` 将会在此处的整个代码中使用。
 
@@ -38,9 +40,9 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>创建资源
 
-如果工作区中不存在 AmlCompute 目标`ws`, 请在工作区中创建它。
+在工作区中创建 AmlCompute 目标（`ws`）（如果尚未存在）。
 
-**时间估计**：AmlCompute 目标的创建时间大约为5分钟。
+**估计时间**： AmlCompute 目标的创建时间大约为5分钟。
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -62,15 +64,15 @@ compute_target.wait_for_completion(
 
 现在，可以使用 `compute_target` 对象作为远程计算目标。
 
-群集名称限制包括:
+群集名称限制包括：
 + 必须小于 64 个字符。
 + 不得包含以下任何字符：`\` ~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \\\\ | ; : \' \\" , < > / ?.`
 
 ## <a name="access-data-using-tabulardataset-function"></a>使用 TabularDataset 函数访问数据
 
-将 X 和 y 定义`TabularDataset`为，它们会传递到 AutoMLConfig 中的自动 ML。 `from_delimited_files`默认情况下， `infer_column_types`将设置为 true，这将自动推断列类型。 
+将 X 和 y 定义为 `TabularDataset`s，它们将传递到 AutoMLConfig 中的自动 ML。 默认情况下，`from_delimited_files` 将 `infer_column_types` 设置为 true，这将自动推断列类型。 
 
-如果要手动设置列类型，可以将`set_column_types`参数设置为手动设置每个列的类型。 在下面的代码示例中，数据来自 sklearn 包。
+如果要手动设置列类型，可以将 `set_column_types` 参数设置为手动设置每个列的类型。 在下面的代码示例中，数据来自 sklearn 包。
 
 ```python
 # Create a project_folder if it doesn't exist
@@ -101,7 +103,7 @@ y = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/y_train.csv'))
 
 ## <a name="create-run-configuration"></a>创建运行配置
 
-若要使依赖项可用于 get_data. py 脚本，请`RunConfiguration`定义具有定义`CondaDependencies`的对象。 对中`run_configuration` `AutoMLConfig`的参数使用此对象。
+若要使依赖项可用于 get_data. py 脚本，请使用定义的 `CondaDependencies`定义 `RunConfiguration` 对象。 对 `AutoMLConfig`中的 `run_configuration` 参数使用此对象。
 
 ```python
 from azureml.core.runconfig import RunConfiguration
@@ -117,7 +119,7 @@ dependencies = CondaDependencies.create(
 run_config.environment.python.conda_dependencies = dependencies
 ```
 
-有关此设计模式的其他示例, 请参阅此[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb)。
+有关此设计模式的其他示例，请参阅此[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb)。
 
 ## <a name="configure-experiment"></a>配置试验
 为 `AutoMLConfig` 指定设置。  （请参阅[完整参数列表](how-to-configure-auto-train.md#configure-experiment)及其可能值。）
@@ -151,7 +153,7 @@ automl_config = AutoMLConfig(task='classification',
 
 ### <a name="enable-model-explanations"></a>启用模型说明
 
-在 `AutoMLConfig` 构造函数中设置可选的 `model_explainability` 参数。 另外，若要使用模型说明功能，必须将验证 dataframe 对象作为参数 `X_valid` 进行传递。
+在 `model_explainability` 构造函数中设置可选的 `AutoMLConfig` 参数。 另外，若要使用模型说明功能，必须将验证 dataframe 对象作为参数 `X_valid` 进行传递。
 
 ```python
 automl_config = AutoMLConfig(task='classification',
@@ -243,12 +245,12 @@ remote_run.get_portal_url()
 
 检索模型说明数据可以详细了解这些模型，更好地了解在后端运行的内容。 在此示例中，我们仅为最佳拟合模型运行模型说明。 如果为管道中的所有模型运行该说明，则会导致运行时间显著增加。 模型说明信息包括：
 
-* shap_values：Shap lib 生成的解释信息。
-* expected_values：适用于 X_train 数据集的模型的预期值。
+* shap_values： shap lib 生成的解释信息。
+* expected_values：应用于 X_train 数据集的模型的预期值。
 * overall_summary：模型级别特征重要性值以降序排序。
-* overall_imp：功能名称的排序顺序与 overall_summary 中的顺序相同。
-* per_class_summary：类级别功能重要性值，按降序排列。 仅适用于分类案例。
-* per_class_imp：功能名称，排序方式与 per_class_summary 相同。 仅适用于分类案例。
+* overall_imp：功能名称按与 overall_summary 中相同的顺序进行排序。
+* per_class_summary：按降序排序的类级别特征重要性值。 仅适用于分类案例。
+* per_class_imp：功能名称按与 per_class_summary 中相同的顺序进行排序。 仅适用于分类案例。
 
 使用以下代码，从迭代中选择最佳管道。 `get_output` 方法针对上次拟合调用返回最佳运行和拟合的模型。
 
@@ -278,7 +280,7 @@ print(per_class_imp)
 
 ![模型可说明性控制台输出](./media/how-to-auto-train-remote/expl-print.png)
 
-还可以通过小组件 UI、Azure 门户上的 web UI 或[工作区登陆页面（预览）](https://ml.azure.com)来可视化功能重要性。 
+还可以通过小组件 UI 或[Azure 机器学习 studio](https://ml.azure.com)中的工作区直观显示功能重要性。 
 
 ![模型可说明性 UI](./media/how-to-auto-train-remote/model-exp.png)
 

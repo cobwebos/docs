@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: d1c7edc2973231607cade89df56906190c2abbcf
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3ad82a1312ccce5029685d903a3c5e3caff50f8a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671149"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495972"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升级到常规用途 v2 存储帐户
 
@@ -23,7 +23,7 @@ ms.locfileid: "71671149"
 > [!IMPORTANT]
 > 将常规用途 v1 或 Blob 存储帐户升级为常规用途 v2 是永久性的，无法撤消。
 
-## <a name="upgrade-using-the-azure-portal"></a>使用 Azure 门户进行升级
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到存储帐户。
@@ -34,7 +34,7 @@ ms.locfileid: "71671149"
 
     ![升级帐户种类](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
-## <a name="upgrade-with-powershell"></a>使用 PowerShell 进行升级
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -45,8 +45,7 @@ ms.locfileid: "71671149"
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
 ```
-
-## <a name="upgrade-with-azure-cli"></a>使用 Azure CLI 进行升级
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要使用 Azure CLI 将常规用途 v1 帐户升级为常规用途 v2 帐户，请首先安装 Azure CLI 的最新版本。 请参阅 [Install the Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)（安装 Azure CLI 2.0），了解如何安装 CLI。
 
@@ -56,11 +55,13 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
 ```
 
+---
+
 ## <a name="specify-an-access-tier-for-blob-data"></a>指定 Blob 数据的访问层
 
 常规用途 v2 帐户支持所有 Azure 存储服务和数据对象，但访问层仅适用于 Blob 存储中的块 Blob。 升级到常规用途 v2 存储帐户时，可以指定 blob 数据的访问层。
 
-有了访问层，就可以根据预期的使用模式选择最经济有效的存储。 块 Blob 可以存储在热层、冷层或存档层中。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热、冷、存档存储层](../blobs/storage-blob-storage-tiers.md)。
+有了访问层，就可以根据预期的使用模式选择最经济有效的存储。 块 Blob 可以存储在热层、冷层或存档层中。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热存储层、冷存储层和存档存储层](../blobs/storage-blob-storage-tiers.md)。
 
 默认情况下，将在热访问层中创建新的存储帐户，并将常规用途 v1 存储帐户升级到热访问层。 若要探索将哪个访问层用于升级后数据，请考虑一下你的方案。 迁移到常规用途 v2 帐户有两种典型的用户方案：
 
@@ -75,7 +76,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 所有存储帐户使用的定价模型都适用于 Blob 存储，具体取决于每个 Blob 的层。 使用存储帐户时，需要考虑到以下计费因素：
 
-* **存储成本**：除了存储的数据量，存储数据的成本将因存储访问层而异。 层越冷，单 GB 成本越低。
+* **存储成本**：除了存储的数据量，存储数据的成本因存储访问层而异。 层越冷，单 GB 成本越低。
 
 * **数据访问成本**：层越冷，数据访问费用越高。 对于冷存储访问层和存档存储访问层中的数据，需要按 GB 支付读取方面的数据访问费用。
 
@@ -83,9 +84,9 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 * **异地复制数据传输成本**：此费用仅适用于配置了异地复制的帐户，包括 GRS 和 RA-GRS。 异地复制数据传输会产生每 GB 费用。
 
-* **出站数据传输成本**：出站数据传输（传出 Azure 区域的数据）会按每 gb 产生带宽使用量计费，与通用存储帐户一致。
+* **出站数据传输成本**：出站数据传输（传出 Azure 区域的数据）会按每 gb 产生带宽用量计费，与通用存储帐户一致。
 
-* **更改存储访问层**：将帐户存储访问层从“冷”更改为“热”会产生费用，费用等于读取存储帐户中存在的所有数据的费用。 但是，将帐户访问层从“热”更改为“冷”产生的费用则相当于将所有数据写入冷层（仅限 GPv2 帐户）。
+* **更改存储访问层**：将帐户存储访问层从 "冷" 更改为 "热" 会产生一个费用，此费用等于读取存储帐户中的所有数据。 但是，将帐户访问层从“热”更改为“冷”产生的费用则相当于将所有数据写入冷层（仅限 GPv2 帐户）。
 
 > [!NOTE]
 > 有关存储帐户的定价模型的详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)页。 有关出站数据传输收费的详细信息，请参阅[数据传输定价详细信息](https://azure.microsoft.com/pricing/details/data-transfers/)页。
@@ -155,7 +156,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 * 从存储帐户检索的数据量可以通过查看主要为 'GetBlob' 和 'CopyBlob' 操作的 'TotalEgress' 计得之和来估算。
 
-* 写入到存储帐户的数据量可以通过查看主要为 'PutBlob'、'PutBlock'、'CopyBlob' 和 'AppendBlock' 操作的 'TotalIngress' 计得之和来估算。
+* 写入到存储帐户的数据量可以通过查看主要为 *'PutBlob'* 、 *'PutBlock'* 、 *'CopyBlob'* 和 *'AppendBlock'* 操作的 *'TotalIngress'* 计算之和来估算。
 
 在使用 GRS 或 RA-GRS 存储帐户时，也可以通过所写入数据量的估算值来计算 Blob 存储帐户的异地复制数据传输费用。
 

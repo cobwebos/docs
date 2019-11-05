@@ -10,14 +10,15 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 47387108de09c9b24471c4afc06a25fa0cbeca00
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 3f822e0089772f06245d80c1323cf1f5dfe10361
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053390"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496934"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基本映像部署模型
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 了解如何在使用 Azure 机器学习部署定型模型时使用自定义 Docker 基本映像。
 
@@ -171,7 +172,7 @@ Azure 机器学习提供了一个默认 Docker 基本映像，因此你无需担
 * __映像名称__。 例如，`mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` 是 Microsoft 提供的基本 Docker 映像的路径。
 * 如果映像在__专用存储库__中，则需要以下信息：
 
-    * 注册表__地址__。 例如，`myregistry.azureecr.io` 。
+    * 注册表__地址__。 例如，`myregistry.azureecr.io`。
     * 具有注册表读取访问权限的服务主体__用户名__和__密码__。
 
     如果没有此信息，请向管理员咨询包含映像的 Azure 容器注册表。
@@ -180,10 +181,10 @@ Azure 机器学习提供了一个默认 Docker 基本映像，因此你无需担
 
 Microsoft 在可公开访问的存储库上提供了几个 docker 映像，可用于本部分中的步骤：
 
-| 映像 | 描述 |
+| 映像 | 说明 |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure 机器学习的基本映像 |
-| `mcr.microsoft.com/azureml/onnxruntime:latest` | 包含 CPU inferecning 的 ONNX 运行时 |
+| `mcr.microsoft.com/azureml/onnxruntime:latest` | 包含 CPU 推断的 ONNX 运行时 |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | 包含用于 GPU 的 ONNX 运行时和 CUDA |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | 包含用于 GPU 的 ONNX 运行时和 TensorRT |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | 包含 ONNX 运行时和 OpenVINO，<sup> </sup>适用于基于 Movidius<sup>TM</sup> MyriadX VPUs 的 Intel 远景加速器设计 |

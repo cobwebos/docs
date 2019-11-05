@@ -1,26 +1,26 @@
 ---
 title: 执行 Python 脚本：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的执行 Python 脚本模块来运行 Python 代码。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的 "执行 Python 脚本" 模块来运行 Python 代码。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: ac68239c12fb284dd3cb5179b5719f3d36acbd34
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 1ba10bf682d900a45f345f2ebe2707ba1275e94e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693797"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497860"
 ---
 # <a name="execute-python-script-module"></a>执行 Python 脚本模块
 
-本文介绍了 Azure 机器学习服务的可视界面（预览）的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
-使用此模块可以运行 Python 代码。 有关 Python 的体系结构和设计原则的详细信息，请参阅[以下文章。](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)
+使用此模块可以运行 Python 代码。 有关 Python 的体系结构和设计原则的详细信息，请参阅[以下文章](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)。
 
 使用 Python，你可以执行现有模块当前不支持的任务，例如：
 
@@ -81,7 +81,7 @@ os.system(f"pip install scikit-misc")
 
 1. 将**执行 Python 脚本**模块添加到管道。
 
-2. 在**Dataset1**上添加并连接要用于输入的接口中的任何数据集。 在 Python 脚本中将此数据集引用为**DataFrame1**。
+2. 在**Dataset1**上添加并连接到要用于输入的设计器中的任何数据集。 在 Python 脚本中将此数据集引用为**DataFrame1**。
 
     如果要使用 Python 生成数据，或使用 Python 代码直接将数据导入到模块中，则可以使用数据集。
 
@@ -97,15 +97,15 @@ os.system(f"pip install scikit-misc")
 
 5. 在 " **Python 脚本**" 文本框中，键入或粘贴有效的 Python 脚本。
 
-    " **Python 脚本**" 文本框预填充了注释中的某些说明，并预先填充了用于数据访问和输出的示例代码。 **必须编辑或替换此代码。** 请务必遵循有关缩进和大小写的 Python 约定。
+    " **Python 脚本**" 文本框预填充了注释中的某些说明，并预先填充了用于数据访问和输出的示例代码。 必须编辑或替换此代码。 请务必遵循有关缩进和大小写的 Python 约定。
 
     + 脚本必须包含一个名为 `azureml_main` 的函数作为此模块的入口点。
     + 入口点函数最多可以包含两个输入参数： `Param<dataframe1>` 和 `Param<dataframe2>`
-    + 连接到第三个输入端口的压缩文件将被解压缩并存储在目录 `.\Script Bundle` 中，该目录还会添加到 Python `sys.path`。 
+    + 连接到第三个输入端口的压缩文件将被解压缩并存储在目录 `.\Script Bundle`中，该目录还会添加到 Python `sys.path`。 
 
-    因此，如果 zip 文件包含 `mymodule.py`，请使用 `import mymodule` 导入它。
+    因此，如果 zip 文件包含 `mymodule.py`，请使用 `import mymodule`导入它。
 
-    + 可以将两个数据集返回到接口，该接口必须是 `pandas.DataFrame` 类型的序列。 可以在 Python 代码中创建其他输出，并将其直接写入 Azure 存储。
+    + 可以将两个数据集返回到设计器，该设计器必须是 `pandas.DataFrame`类型的序列。 可以在 Python 代码中创建其他输出，并将其直接写入 Azure 存储。
 
 6. 运行管道，或选择模块，然后单击 "**运行所选项**" 以仅运行 Python 脚本。
 
@@ -124,4 +124,4 @@ os.system(f"pip install scikit-misc")
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

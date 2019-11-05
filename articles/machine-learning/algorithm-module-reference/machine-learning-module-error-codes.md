@@ -1,6 +1,6 @@
 ---
 title: 模块错误疑难解答
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 使用错误代码对 Azure 机器学习 Studio 中的模块异常进行故障排除
 services: machine-learning
 ms.service: machine-learning
@@ -8,25 +8,25 @@ ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: a1a6817c08223b360c08804e0595f12f2947ea5f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: b07b1fc14ac7ac72a30f75a098b4aab35f2de713
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693071"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497737"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>算法的异常和错误代码 & 模块引用
 
-了解在 Azure 机器学习 Studio 中使用模块时可能会遇到的错误消息和异常代码。 
+了解在 Azure 机器学习设计器（预览版）中使用模块时可能会遇到的错误消息和异常代码。 
 
-若要解决此问题，请查看本文中的错误以了解常见原因。 可以通过两种方式获取 Studio 中的错误消息的完整文本：  
+若要解决此问题，请查看本文中的错误以了解常见原因。 可以通过两种方法获取设计器中的错误消息的完整文本：  
  
 - 单击右窗格中的 "**查看输出日志**" 链接，并滚动到底部。 详细的错误消息将显示在窗口的最后两行中。  
   
 - 选择出现错误的模块，然后单击红色 X。只显示相关的错误文本。  
   
-如果错误消息文本不起作用，请向我们发送有关上下文的信息以及所需的任何添加或更改。 你可以提交有关错误主题的反馈，或访问[AZURE 机器学习 STUDIO 论坛](https://aka.ms/aml-forum-studio)并发布问题。  
+如果错误消息文本不起作用，请通过提交反馈向我们发送有关上下文以及任何所需的添加或更改的信息。
 
 
 ## <a name="error-0001"></a>错误0001  
@@ -40,7 +40,7 @@ ms.locfileid: "72693071"
 |------------------------|  
 |找不到一个或多个指定列|  
 |找不到名称或索引为 "{0}" 的列|  
-|"@No__t_1" 中不存在名为或索引为 "{0}" 的列|  
+|"{1}" 中不存在名为或索引为 "{0}" 的列|  
  
 
 ## <a name="error-0002"></a>错误0002  
@@ -105,7 +105,7 @@ ms.locfileid: "72693071"
 |------------------------|  
 |参数应大于或等于边界值。|  
 |参数 "{0}" 值应大于或等于 {1}。|  
-|参数 "{0}" 的值应大于或等于 {2} 的值 "{1}"。|  
+|参数 "{0}" 的值应大于或等于 {2}的值 "{1}"。|  
   
 
 ## <a name="error-0006"></a>错误 myhpccn-0006  
@@ -119,7 +119,7 @@ ms.locfileid: "72693071"
 |------------------------|  
 |参数不匹配。 其中一个参数应小于另一个参数。|  
 |参数 "{0}" 值应小于参数 "{1}" 值。|  
-|参数 "{0}" 的值应小于 {2} 的值 "{1}"。|  
+|参数 "{0}" 的值应小于 {2}的值 "{1}"。|  
   
 
 ## <a name="error-0007"></a>错误0007  
@@ -141,7 +141,7 @@ ms.locfileid: "72693071"
 |------------------------|  
 |参数不匹配。 其中一个参数应小于或等于另一个参数。|  
 |参数 "{0}" 的值应小于或等于参数 "{1}" 值。|  
-|参数 "{0}" 的值应小于或等于 {2} 的值 "{1}"。|  
+|参数 "{0}" 的值应小于或等于 {2}的值 "{1}"。|  
   
 
 ## <a name="error-0008"></a>错误0008  
@@ -163,9 +163,9 @@ ms.locfileid: "72693071"
 ## <a name="error-0009"></a>错误0009  
  如果错误地指定了 Azure 存储帐户名称或容器名称，则会出现异常。  
   
-当你为 Azure 存储帐户指定参数，但无法解析名称或密码时，Azure 机器学习 Studio 中会出现此错误。 密码或帐户名称错误的发生可能有多种原因：
+当你为 Azure 存储帐户指定参数，但无法解析名称或密码时，Azure 机器学习设计器中会出现此错误。 密码或帐户名称错误的发生可能有多种原因：
  
- + 帐户的类型错误。 某些新的帐户类型不支持与机器学习 Studio 一起使用。 有关详细信息，请参阅[导入数据](import-data.md)。
+ + 帐户的类型错误。 某些新的帐户类型不支持与机器学习设计器一起使用。 有关详细信息，请参阅[导入数据](import-data.md)。
  + 你输入了不正确的帐户名
  + 帐户已不存在
  + 存储帐户的密码错误或已更改
@@ -201,7 +201,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|  
 |------------------------|  
 |输入数据集中具有相应索引的列具有不同的名称。|  
-|对于输入数据集的列 {0} （从零开始）（分别为 {1} 和 {2}），列名称不同。|  
+|对于输入数据集的列 {0} （从零开始）（分别为{1} 和 {2}），列名称不同。|  
   
 
 ## <a name="error-0011"></a>错误 myhpccn-0011  
@@ -287,7 +287,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|  
 |------------------------|  
 |列唯一值的数目大于允许值。|  
-|列中的唯一值数： "{0}" 超出 {1} 的元组计数。|  
+|列中的唯一值数： "{0}" 超出 {1}的元组计数。|  
   
 
 ## <a name="error-0015"></a>错误0015  
@@ -315,7 +315,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |------------------------|  
 |输入数据集中具有相应索引的列具有不兼容的类型。|  
 |列 {0} 和 {1} 不兼容。|  
-|列元素类型与输入数据集的列 {0} （从零开始）不兼容（分别为 {1} 和 {2}）。|  
+|列元素类型与输入数据集的列 {0} （从零开始）不兼容（分别为{1} 和 {2}）。|  
   
 
 ## <a name="error-0017"></a>错误0017  
@@ -339,9 +339,9 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|  
 |------------------------|  
 |无法处理当前类型的列。 模块不支持该类型。|  
-|无法处理 {0} 类型的列。 模块不支持该类型。|  
-|无法处理 {0} 类型的 "{1}" 列。 模块不支持该类型。|  
-|无法处理 {0} 类型的 "{1}" 列。 模块不支持该类型。 参数名称： {2}|  
+|无法处理 {0}类型的列。 模块不支持该类型。|  
+|无法处理 {0}类型的 "{1}" 列。 模块不支持该类型。|  
+|无法处理 {0}类型的 "{1}" 列。 模块不支持该类型。 参数名称： {2}|  
   
 
 ## <a name="error-0018"></a>错误0018  
@@ -362,7 +362,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
   
  若要确定要求和数据的可能方式，请查看将使用数据集作为输入的模块的帮助主题。  
   
- <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->.  
+ <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->。  
   
 |异常消息|  
 |------------------------|  
@@ -455,7 +455,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |------------------------|  
 |输入数据集包含不支持的目标列。|  
 |输入数据集包含不支持的目标列 "{0}"。|  
-|对于 {1} 类型的学习器，输入数据集包含不支持的目标列 "{0}"。|  
+|对于 {1}类型的学习器，输入数据集包含不支持的目标列 "{0}"。|  
  
 
 ## <a name="error-0024"></a>错误024  
@@ -475,7 +475,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|  
 |------------------------|  
 |数据集中没有标签列。|  
-|"@No__t_0" 中没有标签列。|  
+|"{0}" 中没有标签列。|  
   
 
 ## <a name="error-0025"></a>错误0025  
@@ -488,8 +488,8 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|  
 |------------------------|  
 |数据集中没有评分列。|  
-|"@No__t_0" 中没有评分列。|  
-|"@No__t_1" 生成的 "{0}" 中没有评分列。 使用正确的学习器类型对数据集进行评分。|  
+|"{0}" 中没有评分列。|  
+|"{1}" 生成的 "{0}" 中没有评分列。 使用正确的学习器类型对数据集进行评分。|  
   
 
 ## <a name="error-0026"></a>错误0026  
@@ -521,7 +521,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|  
 |------------------------|  
 |传递的对象的大小不一致。|  
-|"@No__t_0" 的大小与 "{1}" 的大小不一致。|  
+|"{0}" 的大小与 "{1}" 的大小不一致。|  
   
 
 ## <a name="error-0028"></a>错误0028  
@@ -660,7 +660,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|  
 |------------------------|  
 |用户或项的功能定义重复。|  
-|@No__t_0 的复制功能定义。|  
+|{0}的复制功能定义。|  
   
 
 ## <a name="error-0037"></a>错误0037  
@@ -685,8 +685,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|  
 |------------------------|  
 |元素数无效。|  
-|"@No__t_0" 中的元素数无效。|  
-|"@No__t_0" 中的元素数不等于 {1} 元素的有效数目。|  
+|"{0}" 中的元素数无效。|  
+|"{0}" 中的元素数不等于 {1} 元素的有效数目。|  
   
 
 ## <a name="error-0039"></a>错误0039  
@@ -764,9 +764,9 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|  
 |------------------------|  
 |不允许转换。|  
-|无法将 {0} 类型的列转换为类型 {1} 的列。|  
-|无法将类型 {0} 的列 "{2}" 转换为类型 {1} 的列。|  
-|无法将类型 {0} 的列 "{2}" 转换为类型 {1} 的列 "{3}"。|  
+|无法将 {0} 类型的列转换为类型 {1}的列。|  
+|无法将类型 {0} 的列 "{2}" 转换为类型 {1}的列。|  
+|无法将类型 {0} 的列 "{2}" 转换为类型 {1}的列 "{3}"。|  
   
 
 ## <a name="error-0043"></a>错误0043  
@@ -779,7 +779,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|  
 |------------------------|  
 |找不到可访问的显式方法。|  
-|无法比较类型 {1} 的 "{0} \\" 列 \\ 的值。 找不到可访问的显式方法。|  
+|无法比较类型 {1}的 "{0}\\" 列 \\的值。 找不到可访问的显式方法。|  
 
 
 ## <a name="error-0044"></a>错误0044  
@@ -806,7 +806,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|  
 |------------------------|  
 |无法创建具有混合元素类型的列。|  
-|无法创建混合元素类型 ID 为 "{0}" 的列： \ n\tType of data [{1}，{0}] {2} \n\tType 数据 [{3}，{0}] 为 {4}。|  
+|无法创建混合元素类型 ID 为 "{0}" 的列： \ n\tType of data [{1}，{0}] {2}\n\tType 数据 [{3}，{0}] 为 {4}。|  
   
 
 ## <a name="error-0046"></a>错误0046  
@@ -1000,8 +1000,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|  
 |------------------------|  
 |标签列不符合预期|  
-|"@No__t_0" 中的标签列不符合预期。|  
-|"@No__t_1" 中不应有标签列 "{0}"。|  
+|"{0}" 中的标签列不符合预期。|  
+|"{1}" 中不应有标签列 "{0}"。|  
   
 
 ## <a name="error-0059"></a>错误0059  
@@ -1063,7 +1063,7 @@ For general information about how the Matchbox recommendation algorithm works, a
   
 **Resolution:**
 
-1. In Azure Machine Learning Studio, right-click the module that has the error, and select **View Log**.
+1. In Azure Machine Learning designer, right-click the module that has the error, and select **View Log**.
 2. Examine the standard error log of the module, which contains the stack trace.
     + Lines beginning with [ModuleOutput] indicate output from R.
     + Messages from R marked as **warnings** typically do not cause the pipeline to fail.
@@ -1134,7 +1134,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|  
 |------------------------|  
 |无法将资源上传到 Azure 存储。|  
-|无法将文件 "{0}" 作为 {1} 上传到 Azure 存储。|  
+|无法将文件 "{0}" 作为 {1}上传到 Azure 存储。|  
   
 
 ## <a name="error-0067"></a>错误0067  
@@ -1192,7 +1192,7 @@ For general information about how the Matchbox recommendation algorithm works, a
   
  如果有由模块异常报告的 SQL 生成的消息，请根据报告的错误采取措施。 例如，错误消息有时包含有关可能的错误的特定指导：
 + *不存在这样的列或缺少数据库*，这表示您可能键入了错误的列名称。 如果确定列名正确，请尝试使用括号或引号将列标识符括起来。
-+ *SQL 逻辑错误 \<SQL 关键字 \> 附近*，指示在指定关键字之前可能出现语法错误
++ *Sql 逻辑错误 \<sql 关键字\>附近*，指示在指定关键字之前可能出现语法错误
 
   
 |异常消息|  
@@ -1616,7 +1616,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|  
 |------------------------|  
 |超出了支持的输入或输出端口数。|  
-|超出了支持的 "{0}" 端口数。 允许的最大端口数为 "{0}" {1} "。| 
+|超出了支持的 "{0}" 端口数。 允许的最大端口数为 "{0}"{1}"。| 
 
 ## <a name="error-0109"></a>错误0109  
  当模块定义文件错误定义列选取器时引发  
@@ -1827,9 +1827,9 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|  
 |------------------------|  
 |数据集中的列数超出了允许的限制。|  
-|"@No__t_0" 中的数据集中的列数超过了允许的值。 "|  
-|"@No__t_0" 中的数据集中的列数超出了允许的 "{1}" 限制。 "|  
-|"@No__t_0" 中的数据集中的列数超过了允许的 "{1}" 限制 "{2}"。|  
+|"{0}" 中的数据集中的列数超过了允许的值。 "|  
+|"{0}" 中的数据集中的列数超出了允许的 "{1}" 限制。 "|  
+|"{0}" 中的数据集中的列数超过了允许的 "{1}" 限制 "{2}"。|  
 ## <a name="error-0130"></a>错误0130  
  当定型数据集中的所有行都包含缺少值时，将发生异常。  
   
@@ -1979,10 +1979,10 @@ For general information about how the Matchbox recommendation algorithm works, a
 |------------------------|  
 |不允许转换。|  
 |未能转换： {0}。|  
-|无法在行 {1} 上转换： {0}。|  
-|无法将 {0} 类型的列转换为 {2} 行 {1} 类型的列。|  
-|未能将类型 {0} 的列 "{2}" 转换为行 {3} {1} 的类型的列。|  
-|未能将类型 {0} 的列 "{2}" 转换为行 {4} 上类型 {1} 的列 "{3}"。| 
+|无法在行 {1}上转换： {0}。|  
+|无法将 {0} 类型的列转换为 {2}行 {1} 类型的列。|  
+|未能将类型 {0} 的列 "{2}" 转换为行 {3}{1} 的类型的列。|  
+|未能将类型 {0} 的列 "{2}" 转换为行 {4}上类型 {1} 的列 "{3}"。| 
 
 ## <a name="error-0140"></a>错误0140  
  如果传递的列集参数不包含除标签列以外的其他列，则会出现异常。  
@@ -2041,12 +2041,12 @@ For general information about how the Matchbox recommendation algorithm works, a
   
  如果使用无效的 URL 格式指定 GitHub 文件源，则会出现 Azure 机器学习中的错误。  
   
-**解决方法：** 检查 GitHub 存储库的 URL 是否有效，并以 \blob\ 或 \tree \\ 结尾。  
+**解决方法：** 检查 GitHub 存储库的 URL 是否有效，并以 \blob\ 或 \tree\\结尾。  
   
 |异常消息|  
 |------------------------|  
 |无法分析 GitHub URL。|  
-|无法分析 GitHub URL （存储库名称后应为 "\blob \\" 或 "\tree \\"）： {0}|  
+|无法分析 GitHub URL （存储库名称后应为 "\blob\\" 或 "\tree\\"）： {0}|  
 
 ## <a name="error-0145"></a>错误0145  
  由于某种原因，无法创建复制目录。  
@@ -2155,7 +2155,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|  
 |------------------------|  
 |指定的服务器名称无法解析|  
-|无法解析指定的服务器 {0} documents.azure.com|
+|无法解析指定的服务器 {0}documents.azure.com|
 
 ## <a name="error-0155"></a>错误0155  
  DocDb 客户端引发异常  
@@ -2171,7 +2171,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|  
 |------------------------|  
 |HCatalog 服务器的响应错误。 检查所有服务是否都在运行。|  
-|HCatalog 服务器的响应错误。 检查所有服务是否都在运行。 错误详细信息： {0}|
+|HCatalog 服务器的响应错误。 检查所有服务是否都在运行。 错误详细信息：{0}|
 
 ## <a name="error-0157"></a>错误0157  
  由于不一致的或不同的文档架构，从 Azure Cosmos DB 读取时出错。 读者要求所有文档都具有相同的架构。  

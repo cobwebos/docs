@@ -1,5 +1,5 @@
 ---
-title: 将本地 Apache Hadoop 群集迁移到 Azure HDInsight-体系结构
+title: 体系结构：本地 Apache Hadoop 到 Azure HDInsight
 description: 了解有关将本地 Hadoop 群集迁移到 Azure HDInsight 的体系结构最佳做法。
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4243100d74515576463a6812e31625ddc0ca1f48
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 4ef3cded9aba7bd95ecc48e1feadf6c55acd7bdc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735885"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499255"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 体系结构最佳做法
 
@@ -25,13 +25,13 @@ ms.locfileid: "70735885"
 
 Azure HDInsight 群集是针对特定类型的计算用途设计的。 由于可在多个群集之间共享存储，可以根据不同作业的需求创建多个工作负荷优化的计算群集。 每个群集类型根据该特定工作负荷采用最佳的配置。 下表列出了 HDInsight 中支持的群集类型和对应的工作负荷。
 
-|**工作负载**|**HDInsight 群集类型**|
+|**工作负荷**|**HDInsight 群集类型**|
 |---|---|
 |批处理 (ETL/ELT)|Hadoop、Spark|
 |数据仓库|Hadoop、Spark、交互式查询|
 |IoT/流式处理|Kafka、Storm、Spark|
-|NoSQL 事务处理|Hbase|
-|使用内存中缓存的更快交互式查询|Interactive Query|
+|NoSQL 事务处理|HBase|
+|使用内存中缓存的更快交互式查询|交互式查询|
 |数据科学|ML Services、Spark|
 
 下表显示了可用于创建 HDInsight 群集的各种方法。
@@ -75,7 +75,7 @@ HDInsight 群集可能长时间不被使用。 为了帮助节省资源成本，
 ## <a name="use-external-metadata-stores"></a>使用外部元数据存储
 
 
-有两个主要元存储适用于 HDInsight 群集：[Apache Hive](https://hive.apache.org/) 和 [Apache Oozie](https://oozie.apache.org/)。 Hive 元存储是 Hadoop、Spark、LLAP、Presto 和 Apache Pig 等数据处理引擎可以使用的中央架构存储库。 Oozie 元存储存储有关计划以及正在进行和已完成的 Hadoop 作业状态的详细信息。
+有两个适用于 HDInsight 群集的主要元存储： [Apache Hive](https://hive.apache.org/)和[Apache Oozie](https://oozie.apache.org/)。 Hive 元存储是 Hadoop、Spark、LLAP、Presto 和 Apache Pig 等数据处理引擎可以使用的中央架构存储库。 Oozie 元存储存储有关计划以及正在进行和已完成的 Hadoop 作业状态的详细信息。
 
 
 HDInsight 对 Hive 和 Oozie 元存储使用 Azure SQL 数据库。 可通过两种方式在 HDInsight 群集中设置元存储：
@@ -105,7 +105,7 @@ HDInsight 对 Hive 和 Oozie 元存储使用 Azure SQL 数据库。 可通过两
 - 定期备份自定义元存储。
 - 将元存储和 HDInsight 群集保留在同一区域。
 - 使用 Azure SQL 数据库监视工具（例如 Azure 门户或 Azure Monitor 日志）监视元存储的性能和可用性。
-- 根据需要执行 **ANALYZE TABLE** 命令，以生成表和列的统计信息。 例如， `ANALYZE TABLE [table_name] COMPUTE STATISTICS` 。
+- 根据需要执行 **ANALYZE TABLE** 命令，以生成表和列的统计信息。 例如，`ANALYZE TABLE [table_name] COMPUTE STATISTICS`。
 
 ## <a name="best-practices-for-different-workloads"></a>不同工作负荷的最佳做法
 
@@ -122,6 +122,6 @@ HDInsight 对 Hive 和 Oozie 元存储使用 Azure SQL 数据库。 可通过两
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读本系列教程的下一篇文章：
+阅读本系列的下一篇文章：
 
 - [有关从本地迁移到 Azure HDInsight Hadoop 的基础结构最佳做法](apache-hadoop-on-premises-migration-best-practices-infrastructure.md)

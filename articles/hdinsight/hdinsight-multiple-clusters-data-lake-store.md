@@ -1,5 +1,5 @@
 ---
-title: 将多个 HDInsight 群集与一个 Azure Data Lake Storage 帐户一起使用
+title: 多个 HDInsight 群集 & 一个 Azure Data Lake Storage 帐户
 description: 了解如何通过单个 Data Lake Storage 帐户使用多个 HDInsight 群集
 keywords: hdinsight 存储, hdfs, 结构化数据, 非结构化数据, data lake store
 author: hrasheed-msft
@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 776d8f31a5353604ff1c887bdfa214d07b2bfb48
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: ba0c26d87f2161af514c9430eae5c9949ef92b15
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733186"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498190"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>通过一个 Azure Data Lake Storage 帐户使用多个 HDInsight 群集
 
 从 HDInsight 版本 3.5 开始，可以创建将 Azure Data Lake Storage 帐户用作默认文件系统的 HDInsight 群集。
-Data Lake Storage 支持无限存储，因此不仅非常适合用于托管大量数据，而且还适合用于托管共享单个 Data Lake Storage 帐户的多个 HDInsight 群集。 有关如何创建使用 Data Lake Storage 作为存储的 HDInsight 群集的说明，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
+Data Lake Storage 支持无限存储，因此不仅非常适合用于托管大量数据，而且还适合用于托管共享单个 Data Lake Storage 帐户的多个 HDInsight 群集。 有关如何创建 Data Lake Storage 作为存储的 HDInsight 群集的说明，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
 
 本文就如何设置可在多个**活动** HDInsight 群集之间使用的单个和共享 Data Lake Storage 帐户，向 Data Lake Storage 管理员提供了一些建议。 这些建议适用于在共享的 Data Lake Storage 帐户中托管多个安全以及不安全的 Apache Hadoop 群集。
 
@@ -90,7 +90,7 @@ Data Lake Storage 支持无限存储，因此不仅非常适合用于托管大�
 #### <a name="workaround"></a>解决方法
 通过层次结构为**其他对象**设置读取-执行权限，例如，在上表中所示的 **/** 、 **/clusters** 和 **/clusters/finance** 级别。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](hdinsight-hadoop-use-data-lake-storage-gen2.md)

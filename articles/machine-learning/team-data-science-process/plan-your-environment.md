@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d8eed4f2425cdbfec7d3addad11ddaba57e5370e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46d0e8aa1fa934f778e950f0187a853ba46772d1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704489"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495045"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>如何规定高级分析数据处理的方案和计划
 
@@ -30,8 +30,6 @@ ms.locfileid: "64704489"
 * 数据特征
 * 数据集质量
 * 首选的工具和语言
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="logistic-questions-data-locations-and-movement"></a>物流问题：数据位置和移动
 
@@ -68,7 +66,7 @@ ms.locfileid: "64704489"
 有关用于将数据引入或载入不同存储和处理环境的过程和资源，请参阅：
 
 * [将数据载入存储环境以进行分析](ingest-data.md)
-* [将训练数据从各种数据源导入 Azure 机器学习工作室](../studio/import-data.md)
+* [将训练数据从各种数据源导入 Azure 机器学习 Studio （经典）](../studio/import-data.md)
 
 ### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>是否需要按定期计划移动数据或在迁移期间修改数据？
 
@@ -81,7 +79,7 @@ ms.locfileid: "64704489"
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>要将多少数据移动到 Azure？
 
-非常大的数据集可能会超过某些环境的存储容量。 有关示例，请参阅下一部分中针对机器学习工作室大小限制的讨论。 在这种情况下，在分析过程中可以使用一个数据样本。 有关如何在不同 Azure 环境中向下采样数据集的详细信息，请参阅[ Team Data Science Process 中的示例数据](sample-data.md)。
+非常大的数据集可能会超过某些环境的存储容量。 有关示例，请参阅下一部分中有关机器学习 Studio （经典）的大小限制的讨论。 在这种情况下，在分析过程中可以使用一个数据样本。 有关如何在不同 Azure 环境中向下采样数据集的详细信息，请参阅[ Team Data Science Process 中的示例数据](sample-data.md)。
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>数据特征问题：类型、格式和大小
 
@@ -92,7 +90,7 @@ ms.locfileid: "64704489"
 * 数值
 * 分类
 * 字符串
-* Binary
+* 二进制
 
 ### <a name="how-is-your-data-formatted"></a>数据格式是如何设置的？
 
@@ -108,7 +106,7 @@ ms.locfileid: "64704489"
 * 中型：大于 2 GB 且小于 10 GB
 * 大型：大于 10 GB
 
-以 Azure 机器学习工作室环境为例：
+采用 Azure 机器学习 Studio （经典）环境例如：
 
 * 关于 Azure 机器学习工作室支持的数据格式和类型的列表，请参阅[受支持的数据格式和数据类型](../studio/import-data.md#supported-data-formats-and-data-types)部分。
 * 有关分析过程中使用的其他 Azure 服务的限制的信息，请参阅 [Azure 订阅和服务限制、配额及约束](../../azure-subscription-service-limits.md)。

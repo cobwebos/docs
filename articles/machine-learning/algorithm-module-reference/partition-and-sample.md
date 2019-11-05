@@ -1,24 +1,24 @@
 ---
 title: 分区和示例：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的分区和示例模块来对数据集执行采样或从数据集创建分区。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的分区和示例模块来对数据集执行采样或从数据集创建分区。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: fcbf9fae3306c43613ef0b67a79c9c0b53f6b923
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 659dcae0bee0fe1015ba6225797c31bad438013f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693752"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497708"
 ---
 # <a name="partition-and-sample-module"></a>分区和示例模块
 
-本文介绍了 Azure 机器学习服务的可视界面（预览）的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块可对数据集执行采样或从数据集创建分区。
 
@@ -44,7 +44,7 @@ ms.locfileid: "72693752"
 
 此模块支持多种方法，将数据划分为多个分区或进行采样。 首先选择方法，然后设置方法所需的其他选项。
 
-- Head
+- 标头
 - 采样
 - 分配给折叠
 - 选择折叠
@@ -156,7 +156,7 @@ ms.locfileid: "72693752"
 
     例如，假设之前已使用 age 将患者分区为四个折叠。 若要处理每个折叠，需要**分区和示例**模块的四个副本，并在每个副本中选择不同的折叠，如下所示。 使用 "**分配到折叠**" 输出是不正确的。  
 
-    [![Partition 和示例](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
+    [![分区和示例](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
 
 5. 运行管道。
 
@@ -167,4 +167,4 @@ ms.locfileid: "72693752"
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 
