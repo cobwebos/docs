@@ -5,12 +5,12 @@ ms.subservice: custom-vision
 ms.topic: include
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 4d4c37a31a279fab9af0f3d84575641d10ff09ce
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e478c005ade1320a7a45449c59a1fca49ba7f147
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173275"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "73519118"
 ---
 ## <a name="clean-up-resources"></a>清理资源
 

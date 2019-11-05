@@ -8,15 +8,15 @@ ms.topic: include
 author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
-ms.openlocfilehash: 46a7eb25152c8c7e9ac22c5b4df67bbf6416df4d
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 00980cc69acbe0da8773aa798b693171d07cc1e1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69894090"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476149"
 ---
 >[!IMPORTANT]
->已创建的资源可以用作其他 Azure 机器学习服务教程和操作方法文章的先决条件。 
+>已创建的资源可以用作其他 Azure 机器学习教程和操作方法文章的先决条件。 
 
 
 如果不打算使用已创建的资源，请删除它们，以免产生任何费用：

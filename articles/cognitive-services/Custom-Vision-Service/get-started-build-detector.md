@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: anroth
-ms.openlocfilehash: 40f30ddece9881f565f45f4ef6c9d0e2ad85fe95
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0ca849e75f01573bbb356105b281f03d267836e6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561131"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "73520465"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>快速入门：如何使用自定义视觉生成对象检测器
 
@@ -29,7 +29,7 @@ ms.locfileid: "68561131"
 
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>在 Azure 门户中创建自定义视觉资源
 
-若要使用自定义视觉服务，需要在 Azure 门户中创建“自定义视觉训练和预测”资源。 填写[“创建自定义视觉”](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision)页上的对话框窗口，以创建“训练和预测”资源。 
+[!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="create-a-new-project"></a>创建新项目
 
