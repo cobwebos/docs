@@ -469,9 +469,6 @@
           href: change-feed-functions.md
     - name: 全球分布式分析和 AI
       items:
-        - name: 介绍
-          displayName: 'Apache Spark, spark'
-          href: spark-api-introduction.md
         - name: 分析用例
           href: analytics-usecases.md
         - name: 分析 - 解决方案体系结构

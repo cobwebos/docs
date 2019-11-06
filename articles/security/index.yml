@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 08/29/2019
-  ms.openlocfilehash: 6ae54a18ebb5358c7fde1a854238984ea7ec2c57
-  ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+  ms.openlocfilehash: c3f75decc72cbc314309b8cfb0bd81d9c0be2774
+  ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/29/2019
-  ms.locfileid: "73053700"
+  ms.lasthandoff: 11/06/2019
+  ms.locfileid: "73686325"
 highlightedContent:
   items:
   - title: Azure 安全性简介
@@ -175,9 +175,6 @@ conceptualContent:
     - url: ./fundamentals/management-monitoring-overview.md
       itemType: overview
       text: 管理和监视概述
-    - url: ./fundamentals/azure-log-integration-overview.md
-      itemType: overview
-      text: Azure 日志集成简介
     footerLink:
       url: https://docs.microsoft.com/search/?search=security+audit+log&scope=azure&category=Documentation
       text: 搜索更多内容
@@ -230,9 +227,6 @@ conceptualContent:
       text: 安全清单
   - title: 管理和符合性
     links:
-    - url: ./blueprints/au-protected-iaaswa-overview.md
-      itemType: tutorial
-      text: 符合性解决方案
     - url: ../governance/policy/overview.md
       itemType: overview
       text: Azure Policy 服务
