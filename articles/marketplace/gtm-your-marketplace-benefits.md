@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: c09e685d10764470d328e7c66293551287b5b1b2
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 6ae761b9558a0d6c1b663c1202bc560382c7b0b6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962705"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752351"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>你的商业应用商店权益
 
@@ -41,10 +41,10 @@ Marketplace 奖励旨在支持你在增长的特定阶段，从了解活动开�
 入门步骤非常简单：
 
 1. 在 Microsoft AppSource 或 Azure Marketplace 中发布产品/服务。
-2. 团队可以访问每个 marketplace 产品的 "所有者" 或 "主要联系人"。 最佳做法是输入定期检查的个人或别名：发送给别名的消息（例如， info@company.com通常会丢失）。
+2. 团队可以访问每个 marketplace 产品的 "所有者" 或 "主要联系人"。 最佳做法是输入定期检查的个人或别名：发送给别名的消息（如 info@company.com 通常会丢失）。
 
 >[!Note]
->如果产品/服务的运行时间已超过四周并且尚未收到消息，请通过查看云合作伙伴门户或合作伙伴中心来查看你的组织中是否有该产品/服务的所有者。 它们应该具有通信和后续步骤。 <br> <br> 如果你无法确定所有者，或者所有者离开了你的公司，你可以在处 https://aka.ms/marketplacepublishersupport 提出一个支持票证。
+>如果产品/服务的运行时间已超过四周并且尚未收到消息，请通过查看云合作伙伴门户或合作伙伴中心来查看你的组织中是否有该产品/服务的所有者。 它们应该具有通信和后续步骤。 <br> <br> 如果你无法确定所有者，或者所有者离开了你的公司，你可以在 https://aka.ms/marketplacepublishersupport提出支持票证。
 
 随着市场中套餐的不断增加，可用的活动范围也会不断扩大。 所有列表都接收基本级别的优化建议和促销活动，作为自助服务电子邮件的一部分，以及最佳做法。
 
@@ -60,7 +60,10 @@ Marketplace 奖励旨在支持你在增长的特定阶段，从了解活动开�
 
 ## <a name="marketplace-rewards-for-transact-partners"></a>适用于交易合作伙伴的 Marketplace 奖励
 
-当你在 Azure Marketplace 或 Microsoft AppSource 中开始使用你的事务产品/服务时，你可以在通过商业市场增长计费的销售交易时，访问其他权益。 
+当你在 Azure Marketplace 或 Microsoft AppSource 中开始使用你的事务产品/服务时，你可以在增加已计费的销售交易或通过商业市场销售的座位时，访问其他权益。 
+
+>[!Note]
+>席位销售阈值仅适用于 Microsoft 365 应用（与 Microsoft 团队、Office、Outlook 或 SharePoint 集成的 SaaS 应用程序）和权益必须在2020年6月30日完成。
 
 这些优势旨在为您提供营销、销售和技术活动，从而帮助您获得更多的访问者、获得更多的潜在客户，以及转换更多业务。
 
@@ -71,6 +74,8 @@ Marketplace 奖励旨在支持你在增长的特定阶段，从了解活动开�
 ![销售权益](./media/marketplace-publishers-guide/sales-benefit.png)
 
 ![技术权益](./media/marketplace-publishers-guide/technical-benefit.png)
+
+\* 座位销售阈值仅适用于 Microsoft 365 应用（与 Microsoft 团队、Office、Outlook 或 SharePoint 集成的 SaaS 应用程序），并且权益必须在2020年6月30日完成。
 
 [市场奖励计划](https://aka.ms/marketplacerewards)中提供了所有这些优势的详细说明。
 

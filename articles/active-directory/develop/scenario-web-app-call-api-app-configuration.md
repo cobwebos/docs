@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1131cba204b7b7af33cc0441ee455b6e333aba20
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 231ecdb6afae1fc36d11b2c12aa82c7e860bb708
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310082"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175312"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>调用 Web API 的 Web 应用 - 代码配置
 
@@ -35,11 +35,11 @@ ms.locfileid: "71310082"
 
 支持 web 应用的授权代码流的库有：
 
-| MSAL 库 | 描述 |
+| MSAL 库 | 说明 |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持的平台包括 .NET Framework 和 .NET Core 平台（不包括 UWP、Xamarin.iOS 和 Xamarin.Android，因为这些平台用于生成公共客户端应用程序） |
-| ![MSAL.Python](media/sample-v2-code/logo_python.png) <br/> MSAL.Python | 开发中 -目前为公共预览版 |
-| ![MSAL.Java](media/sample-v2-code/logo_java.png) <br/> MSAL.Java | 开发中 -目前为公共预览版 |
+| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 开发中 -目前为公共预览版 |
+| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 开发中 -目前为公共预览版 |
 
 选择与你感兴趣的平台相对应的选项卡：
 
@@ -70,8 +70,8 @@ ms.locfileid: "71310082"
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-本文中的代码片段和以下代码片段从调用 Microsoft graph msal4j web 应用示例的[Java web 应用程序](https://github.com/Azure-Samples/ms-identity-java-webapp)中提取。
-该示例当前允许 msal4j 生成授权代码 URL，并处理到 Microsoft 标识平台授权终结点的导航。 还可以使用冲刺（Sprint）安全性来登录用户。 你可能想要参考此示例以获取完整的实现细节。
+本文中的代码片段和以下代码片段从调用 Microsoft graph MSAL Java web 应用示例的[java web 应用程序](https://github.com/Azure-Samples/ms-identity-java-webapp)中提取。
+该示例当前允许 MSAL Java 生成授权代码 URL，并处理到 Microsoft 标识平台授权终结点的导航。 还可以使用冲刺（Sprint）安全性来登录用户。 你可能想要参考此示例以获取完整的实现细节。
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -86,11 +86,11 @@ ms.locfileid: "71310082"
 
 ### <a name="startupcs"></a>Startup.cs
 
-在 ASP.NET Core 中，原则是在`Startup.cs`文件中。 你需要订阅`OnAuthorizationCodeReceived` open ID connect 事件，并在此事件中调用 MSAL。NET 的方法`AcquireTokenFromAuthorizationCode`，它的作用是在令牌缓存中存储、所请求`scopes`的访问令牌和刷新令牌，该令牌将用于在接近过期时刷新访问令牌，或代表同一个用户获取令牌，但对于不同的资源。
+在 ASP.NET Core 中，原则是在 `Startup.cs` 文件中。 你需要订阅 `OnAuthorizationCodeReceived` open ID connect 事件，并在此事件中调用 MSAL。NET 的方法 `AcquireTokenFromAuthorizationCode`，这种方法可以在令牌缓存中存储、所请求 `scopes`的访问令牌和刷新令牌，该令牌将用于在接近过期时刷新访问令牌，或代表同一个用户获取令牌，但对于不同的资源。
 
 在实践中， [ASP.NET Core web 应用教程](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2)试图为你的 web 应用提供可重复使用的代码。
 
-下面是[启动 .cs # L40-L42](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Startup.cs#L40-L42)代码，它提供了对`AddMicrosoftIdentityPlatformAuthentication`向 web 应用程序添加身份验证的方法的调用，并`AddMsal`添加了调用 web api 的功能。 对`AddInMemoryTokenCaches`的调用是关于在可能的中选择令牌缓存实现：
+下面是[启动 .cs # L40 L42](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Startup.cs#L40-L42)代码，它提供对 `AddMicrosoftIdentityPlatformAuthentication` 方法的调用，该方法将身份验证添加到 web 应用，以及添加调用 web api 的功能 `AddMsal`。 对 `AddInMemoryTokenCaches` 的调用涉及到在可能的中选择令牌缓存实现：
 
 ```CSharp
 public class Startup
@@ -110,7 +110,7 @@ public class Startup
 }
 ```
 
-`Constants.ScopeUserRead`在常量中定义[。 cs # L5](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Infrastructure/Constants.cs#L5)
+`Constants.ScopeUserRead` 在常量中定义[。 cs # L5](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Infrastructure/Constants.cs#L5)
 
 ```CSharp
 public static class Constants
@@ -119,11 +119,11 @@ public static class Constants
 }
 ```
 
-你已`AddMicrosoftIdentityPlatformAuthentication`在 Web 应用中学习了登录用户的内容[-代码配置](scenario-web-app-sign-user-app-configuration.md?tabs=aspnetcore#initialization-code)
+你已经学习了 Web 应用中登录用户的 `AddMicrosoftIdentityPlatformAuthentication` 内容[-代码配置](scenario-web-app-sign-user-app-configuration.md?tabs=aspnetcore#initialization-code)
 
 ### <a name="the-addmsal-method"></a>AddMsal 方法
 
-的代码`AddMsal`位于 WebAppServiceCollectionExtensions [/.cs # L108-L159](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L108-L159)中。
+`AddMsal` 的代码位于 WebAppServiceCollectionExtensions [/L108 #-L159](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L108-L159)中。
 
 ```CSharp
 
@@ -182,21 +182,21 @@ public static class WebAppServiceCollectionExtensions
 }
 ```
 
-`AddMsal`方法可确保：
+`AddMsal` 方法可确保：
 
 - ASP.NET Core Web 应用请求用户的 IDToken 和身份验证代码（`options.ResponseType = OpenIdConnectResponseType.CodeIdToken`）
-- 添加`offline_access`作用域。 这是必需的，以便用户同意允许应用程序获取刷新令牌。
-- 应用订阅 OIDC `OnAuthorizationCodeReceived`事件，并使用 MSAL.NET （此处封装为实现`ITokenAcquisition`的可重用组件）兑换调用。
+- 添加 `offline_access` 范围。 这是必需的，以便用户同意允许应用程序获取刷新令牌。
+- 应用程序订阅 OIDC `OnAuthorizationCodeReceived` 事件，并使用 MSAL.NET 兑换调用，此调用将封装到实现 `ITokenAcquisition`的可重用组件。
 
 ### <a name="the-tokenacquisitionaddaccounttocachefromauthorizationcodeasync-method"></a>TokenAcquisition. AddAccountToCacheFromAuthorizationCodeAsync 方法
 
-方法位于 TokenAcquisition [/.cs # L101-L145](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L101-L145)中。 `TokenAcquisition.AddAccountToCacheFromAuthorizationCodeAsync` 它可确保：
+`TokenAcquisition.AddAccountToCacheFromAuthorizationCodeAsync` 方法位于 TokenAcquisition [/L101 #-L145](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L101-L145)中。 它可确保：
 
-- ASP.NET 不会尝试以并行方式将身份验证代码兑换为 MSAL.NET`context.HandleCodeRedemption();`（）
+- ASP.NET 不会尝试以并行方式将身份验证代码兑换为 MSAL.NET （`context.HandleCodeRedemption();`）
 - IDToken 中的声明可用于 MSAL 计算用户帐户的令牌缓存密钥
 - MSAL.NET 应用程序在需要时进行实例化
 - 此代码由 MSAL.NET 应用程序兑换
-- 新 ID 令牌与 ASP.NET Core 共享（在调用`context.HandleCodeRedemption(null, result.IdToken);`期间）。 访问令牌不与 ASP.NET Core 共享。 它保留在与用户关联的 MSAL.NET 令牌缓存中，并已准备好在 ASP.NET Core 控制器中使用。
+- 新 ID 令牌与 ASP.NET Core 共享（在调用 `context.HandleCodeRedemption(null, result.IdToken);`的过程中）。 访问令牌不与 ASP.NET Core 共享。 它保留在与用户关联的 MSAL.NET 令牌缓存中，并已准备好在 ASP.NET Core 控制器中使用。
 
 ```csharp
 public class TokenAcquisition : ITokenAcquisition
@@ -246,12 +246,12 @@ public class TokenAcquisition : ITokenAcquisition
 
 ### <a name="the-tokenacquisitionbuildconfidentialclientapplication-method"></a>TokenAcquisition. BuildConfidentialClientApplication 方法
 
-在 ASP.NET Core 中，生成机密客户端应用程序会用到 HttpContext 中的信息。 通过`CurrentHttpContext`与请求关联的属性（HttpContext）进行访问，知道 Web 应用的 URL，以及已登录的用户（ `ClaimsPrincipal`在中）。 `BuildConfidentialClientApplication`还使用 ASP.NET Core 配置，该配置包含 "AzureAD" 部分，并绑定到：
+在 ASP.NET Core 中，生成机密客户端应用程序会用到 HttpContext 中的信息。 通过与请求关联的 `CurrentHttpContext` 属性、HttpContext 知道 Web 应用的 URL 以及已登录用户（在 `ClaimsPrincipal`中）进行访问。 `BuildConfidentialClientApplication` 还使用 ASP.NET Core 配置，该配置包含 "AzureAD" 部分，并同时绑定到：
 
-- 类型为 [ConfidentialClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationoptions?view=azure-dotnet) 的 `_applicationOptions` 数据结构
-- 在 ASP.NET Core `Authentication.AzureAD.UI` 中定义的`azureAdOptions`AzureAdOptions[类型的](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/AzureADOptions.cs)实例。 最后，应用程序需要维护令牌缓存。 你将在下一部分中了解有关此内容的详细信息。
+- 类型为 `_applicationOptions`ConfidentialClientApplicationOptions[ 的 ](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationoptions?view=azure-dotnet) 数据结构
+- ASP.NET Core `azureAdOptions` 中定义的 [AzureAdOptions](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/AzureADOptions.cs) 类型的 `Authentication.AzureAD.UI` 实例。 最后，应用程序需要维护令牌缓存。 你将在下一部分中了解有关此内容的详细信息。
 
-此`GetOrBuildConfidentialClientApplication()`方法的代码位于 TokenAcquisition [/L290 #-L333](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L290-L333)中。 它使用由依赖关系注入注入的成员（在 TokenAcquisition [/TokenAcquisition # L47-L59](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L47-L59)中传递到的构造函数中）
+`GetOrBuildConfidentialClientApplication()` 方法的代码位于 TokenAcquisition [/# L290-L333](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L290-L333)中。 它使用由依赖关系注入注入的成员（在 TokenAcquisition [/TokenAcquisition # L47-L59](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L47-L59)中传递到的构造函数中）
 
 ```CSharp
 public class TokenAcquisition : ITokenAcquisition
@@ -314,13 +314,13 @@ public class TokenAcquisition : ITokenAcquisition
 
 ```
 
-### <a name="summary"></a>总结
+### <a name="summary"></a>摘要
 
-若要求和，请`AcquireTokenByAuthorizationCode`真的兑换 ASP.NET 请求的授权代码，并获取添加到 MSAL.NET 用户令牌缓存中的令牌。 然后在 ASP.NET Core 控制器中使用这些令牌。
+若要求和，`AcquireTokenByAuthorizationCode` 确实兑换了 ASP.NET 请求的授权代码，并获取添加到 MSAL.NET 用户令牌缓存中的令牌。 然后在 ASP.NET Core 控制器中使用这些令牌。
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET 处理内容的方式与 ASP.NET Core 类似，不同之处在于 OpenIdConnect 的配置和`OnAuthorizationCodeReceived`事件的订阅发生在[App_Start\Startup.Auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs)文件中。 你将找到类似于 ASP.NET Core 中的类似概念，只是在 ASP.NET 中，你需要在[web.config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15)中指定 RedirectUri。 此配置比 ASP.NET Core 中所执行的配置低一点，因为你需要在部署应用程序时对其进行更改。
+ASP.NET 处理内容的方式与 ASP.NET Core 类似，不同之处在于 OpenIdConnect 的配置以及对 `OnAuthorizationCodeReceived` 事件的订阅发生在[App_Start\Startup.Auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs)文件中。 你将找到类似于 ASP.NET Core 中的类似概念，只是在 ASP.NET 中，你需要在[web.config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15)中指定 RedirectUri。 此配置比 ASP.NET Core 中所执行的配置低一点，因为你需要在部署应用程序时对其进行更改。
 
 ```CSharp
 public partial class Startup
@@ -370,14 +370,14 @@ public partial class Startup
         }
       });
   }
-  
+
   private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotification context)
   {
       // Upon successful sign in, get the access token & cache it using MSAL
       IConfidentialClientApplication clientApp = MsalAppBuilder.BuildConfidentialClientApplication(new ClaimsPrincipal(context.AuthenticationTicket.Identity));
       AuthenticationResult result = await clientApp.AcquireTokenByAuthorizationCode(new[] { "Mail.Read" }, context.Code).ExecuteAsync();
   }
-  
+
   private Task OnAuthenticationFailed(AuthenticationFailedNotification<OpenIdConnectMessage, OpenIdConnectAuthenticationOptions> notification)
   {
       notification.HandleResponse();
@@ -389,7 +389,7 @@ public partial class Startup
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-请参阅登录[用户代码配置中的 Web 应用](scenario-web-app-sign-user-app-configuration.md?tabs=java#initialization-code)中的，了解 Java 示例如何获取授权代码。 应用收到后， [AuthFilter # L51-L56](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java#L51-L56)将委托给`AuthHelper.processAuthenticationCodeRedirect` [authhelper.java # L67-L97](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L67-L97)中的方法，然后调用`getAuthResultByAuthCode`：
+请参阅登录[用户代码配置中的 Web 应用](scenario-web-app-sign-user-app-configuration.md?tabs=java#initialization-code)中的，了解 Java 示例如何获取授权代码。 应用收到后， [AuthFilter # L51-L56](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java#L51-L56)将委托给[authhelper.java # L67-L97](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L67-L97)中的 `AuthHelper.processAuthenticationCodeRedirect` 方法，然后调用 `getAuthResultByAuthCode`：
 
 ```Java
 class AuthHelper {
@@ -411,7 +411,7 @@ class AuthHelper {
 }
 ```
 
-方法在[authhelper.java # L176](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L176)中定义。 `getAuthResultByAuthCode` 它将创建一个`ConfidentialClientApplication` MSAL， `acquireToken()`并`AuthorizationCodeParameters`从授权代码的创建调用。
+`getAuthResultByAuthCode` 方法是在[authhelper.java # L176](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L176)中定义的。 它将创建一个 MSAL `ConfidentialClientApplication`，并使用从授权代码创建的 `AuthorizationCodeParameters` 调用 `acquireToken()`。
 
 ```Java
    private IAuthenticationResult getAuthResultByAuthCode(
@@ -455,7 +455,7 @@ class AuthHelper {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-在[登录用户代码配置的 Web 应用](scenario-web-app-sign-user-app-configuration.md?tabs=python#initialization-code)中，请求授权代码流后，将从/getAToken URL Flask 路由的`authorized`函数接收授权代码。 请参阅[py # L30-L44](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L30-L44)
+在[登录用户代码配置的 Web 应用](scenario-web-app-sign-user-app-configuration.md?tabs=python#initialization-code)中，请求授权代码流后，就会在 `authorized` 函数上收到授权代码，该函数将从/GetAToken URL Flask 路由。 请参阅[py # L30-L44](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L30-L44)
 
 ```python
  @app.route("/getAToken")  # Its absolute URL must match your app's redirect_uri set in AAD
@@ -534,17 +534,17 @@ public static class MsalAppBuilder
             .WithRedirectUri(AuthenticationConfig.RedirectUri)
             .WithAuthority(new Uri(AuthenticationConfig.Authority))
             .Build();
-  
+
       // After the ConfidentialClientApplication is created, we overwrite its default UserTokenCache with our implementation
       MSALPerUserMemoryTokenCache userTokenCache = new MSALPerUserMemoryTokenCache(clientapp.UserTokenCache, currentUser ?? ClaimsPrincipal.Current);
-  
+
       return clientapp;
   }
 ```
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-msal4j 提供用于序列化和反序列化令牌缓存的方法。 Java 示例处理来自会话的序列化，如`getAuthResultBySilentFlow` [authhelper.java # L99-L122](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L99-L122)方法中所示。
+MSAL Java 提供用于序列化和反序列化令牌缓存的方法。 Java 示例处理来自会话的序列化，如[authhelper.java # L99-L122](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L99-L122)中的 `getAuthResultBySilentFlow` 方法中所示。
 
 ```Java
 IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, HttpServletResponse httpResponse)
@@ -560,7 +560,7 @@ IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, 
   }
 
   SilentParameters parameters = SilentParameters.builder(
-          Collections.singleton("User.ReadBasic.All"),
+          Collections.singleton("User.Read"),
           result.account()).build();
 
   CompletableFuture<IAuthenticationResult> future = app.acquireTokenSilently(parameters);
@@ -573,7 +573,7 @@ IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, 
 }
 ```
 
-[](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/SessionManagementHelper.java)中提供了 `SessionManagementHelper` 类的详细信息
+`SessionManagementHelper`[中提供了 ](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/SessionManagementHelper.java) 类的详细信息
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
