@@ -43,6 +43,8 @@
       items:
         - name: 定价层
           href: concepts-pricing-tiers.md
+        - name: 为预留容量预付费
+          href: concept-reserved-pricing.md
         - name: 限制
           href: concepts-limits.md
     - name: 数据访问和安全性

@@ -218,9 +218,6 @@
             - name: 审核 SQL Server 级别的审核设置
               displayName: auditIfNotExists
               href: samples/audit-sql-server-audit-setting.md
-            - name: 需要 SQL Server 版本 12.0
-              displayName: 'deny, builtin'
-              href: samples/require-sql-12.md
         - name: SQL 数据库
           items:
             - name: 允许的 SQL DB SKU

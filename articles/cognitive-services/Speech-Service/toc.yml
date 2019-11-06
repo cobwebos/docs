@@ -6,6 +6,8 @@
   items:
     - name: 什么是语音服务？
       href: overview.md
+    - name: 语言和区域支持
+      href: language-support.md
 - name: 语音转文本
   expanded: false
   items:
@@ -38,7 +40,7 @@
         - name: 使用压缩的音频输入格式
           href: how-to-use-codec-compressed-audio-input-streams.md
         - name: 将语音识别与 Docker 容器配合使用
-          href: speech-container-howto.md
+          href: speech-container-howto.md?tabs=stt
     - name: 引用
       items:
         - name: 语音 SDK API
@@ -87,7 +89,7 @@
         - name: 使用长音频 API 合成语音
           href: long-audio-api.md
         - name: 将语音合成与 Docker 容器配合使用
-          href: speech-container-howto.md
+          href: speech-container-howto.md?tabs=tts
     - name: 引用
       items:
         - name: 语音 SDK

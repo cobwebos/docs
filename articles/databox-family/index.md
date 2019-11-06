@@ -9,14 +9,14 @@ ms.service: databox
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hub-page
-ms.date: 09/24/2018
+ms.date: 10/28/2019
 ms.author: alkohli
-ms.openlocfilehash: c0c5ea8dc069d24d01313bb68c0afb7c7aac1a33
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2a3d17dda5f0d7a1cecc13583981d3659775283
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456580"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583208"
 ---
 <div id="main" class="v2">
 <h1>Azure Data Box</h1>
@@ -94,24 +94,6 @@ ms.locfileid: "61456580"
                         </div>
                         <div class="cardText">
                             <p><b>Data Box Gateway</b> 虚拟设备，带有存储功能。 使用此设备通过网络将数据发送到 Azure。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/databox-online/data-box-edge-overview">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage"> 
-                                <img src="media/Edge_Icon_w_gear.svg" alt="" />
-                            </div>
-                        </div>
-                        <div class="cardText">
-                            <p><b>Data Box Edge</b> 物理设备，带有存储和计算功能。 若要在将数据移动到 Azure 的过程中分析、转换或筛选数据，请使用此设备。</p>
                         </div>
                     </div>
                 </div>

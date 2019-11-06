@@ -11,12 +11,12 @@ metadata:
   author: mamccrea
   ms.author: mamccrea
   ms.date: 09/11/2019
-  ms.openlocfilehash: 40a023ee9498f8d5c487ab7317bc020260b98cce
-  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.openlocfilehash: 3d82583617ac5ee2efc7f19bd937a01d557eb5ba
+  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/12/2019
-  ms.locfileid: "70933526"
+  ms.lasthandoff: 11/05/2019
+  ms.locfileid: "73606059"
 landingContent:
 - title: 关于 Azure Databricks
   linkLists:
@@ -31,7 +31,7 @@ landingContent:
   - linkListType: reference
     links:
     - text: 发行说明
-      url: https://docs.azuredatabricks.net/release-notes/index.html
+      url: /azure/databricks/release-notes/product/
   - linkListType: learn
     links:
     - text: Azure Databricks 简介
@@ -47,7 +47,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 创建 Apache Spark 群集
-      url: https://docs.azuredatabricks.net/user-guide/clusters/index.html
+      url: /azure/databricks/clusters/create
     - text: 连接到数据源
       url: databricks-connect-to-data-sources.md
     - text: 从 Azure Cloud Shell 中使用 Databricks CLI
@@ -99,7 +99,7 @@ landingContent:
     - text: 使用事件中心对数据进行流式传输
       url: databricks-stream-from-eventhubs.md
     - text: 从 HDInsight Kafka 对数据进行流式传输
-      url: https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html
+      url: /azure/databricks/spark/latest/structured-streaming/kafka
 - title: 面向开发人员的指南
   linkLists:
   - linkListType: learn

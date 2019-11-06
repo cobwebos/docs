@@ -9,7 +9,7 @@
     - name: 使用门户创建 Internet 分析器测试
       href: internet-analyzer-create-test-portal.md
     - name: 使用 CLI 创建 Internet 分析器测试
-      herf: internet-analyzer-cli.md
+      href: internet-analyzer-cli.md
 - name: 操作指南
   items:
     - name: 嵌入客户端

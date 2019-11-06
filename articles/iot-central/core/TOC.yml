@@ -49,8 +49,6 @@
           href: howto-connect-windowsiotcore.md
         - name: 准备和连接 SensorTile.box 设备
           href: howto-connect-sensortile.md
-        - name: 准备和连接 RuuviTag 设备
-          href: howto-connect-ruuvi-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: 使用命令行监视设备连接
           href: howto-use-iotc-explorer.md
     - name: 管理设备

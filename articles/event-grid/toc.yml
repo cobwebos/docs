@@ -176,6 +176,8 @@
           href: event-schema-app-configuration.md
         - name: Azure SignalR
           href: event-schema-azure-signalr.md
+        - name: Azure 机器学习
+          href: event-schema-machine-learning.md
     - name: 模板资源
       items:
         - name: 事件订阅

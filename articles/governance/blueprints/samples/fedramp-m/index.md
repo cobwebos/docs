@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/31/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: b5723bc4a8c74255abd23c1e13ead26af52390e1
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: c728e6d52b00ea21ba985c20bcb7854099319919
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200848"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581265"
 ---
 # <a name="overview-of-the-fedramp-moderate-blueprint-sample"></a>FedRAMP Moderate 蓝图示例概述
 
@@ -29,7 +29,7 @@ FedRAMP Moderate 蓝图示例提供了监管防护措施，其中使用 [Azure P
 > [FedRAMP Moderate 蓝图 - 控件映射](./control-mapping.md)
 > [FedRAMP Moderate 蓝图 - 部署步骤](./deploy.md)
 
-有关蓝图和如何使用这些蓝图的更多文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。
