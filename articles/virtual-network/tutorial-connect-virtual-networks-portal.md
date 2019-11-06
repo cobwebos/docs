@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: cbf19d941e63429b6a5edcc6745d04834cf18621
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b32f3762f2546a4d4956bf38c914173657e9d3da
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164052"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499878"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>教程：通过 Azure 门户使用虚拟网络对等互连连接虚拟网络
 
@@ -44,7 +44,7 @@ ms.locfileid: "73164052"
 
 ## <a name="create-virtual-networks"></a>创建虚拟网络
 
-1. 选择 Azure 门户左上角的“+ 创建资源”  。
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。
 2. 选择“网络”，然后选择“虚拟网络”   。
 3. 在“基本信息”  页上，输入或选择以下信息并接受其余设置的默认值：
 
@@ -54,7 +54,7 @@ ms.locfileid: "73164052"
     |资源组| 选择“新建”，并输入 myResourceGroup  |
     |区域| 选择“美国东部”  。|
     |Name|myVirtualNetwork1|
-   
+
 4. 在“IP 地址”  页上，为“地址空间”  字段输入 10.0.0.0/16。 单击下面的“添加子网”  按钮，并输入 Subnet1 作为**子网名称**，输入 10.0.0.0/24 作为**子网地址范围**。
    
 5. 再次完成步骤 1-3，并做出以下更改：
@@ -69,7 +69,7 @@ ms.locfileid: "73164052"
 ## <a name="peer-virtual-networks"></a>将虚拟网络对等互连
 
 1. 在 Azure 门户顶部的“搜索”  框中，开始键入“MyVirtualNetwork1”。 当“myVirtualNetwork1”出现在搜索结果中时，将其选中。 
-2. 在“设置”下选择“对等互连”，然后选择“+ 添加”，如下图所示：   
+2. 在“设置”下选择“对等互连”，然后选择“添加”，如下图所示：   
 
     ![创建对等互连](./media/tutorial-connect-virtual-networks-portal/create-peering.png)
 
@@ -96,7 +96,7 @@ ms.locfileid: "73164052"
 
 ### <a name="create-the-first-vm"></a>创建第一个 VM
 
-1. 选择 Azure 门户左上角的“+ 创建资源”  。
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。
 2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”。   可以选择不同的操作系统，但剩余步骤假定你选择了“Windows Server 2016 Datacenter”。  
 3. 对于“基本信息”输入或选择以下信息，接受剩下的默认设置，然后选择“创建”   ：
 

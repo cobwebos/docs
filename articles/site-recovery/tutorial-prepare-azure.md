@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1b8bdde64ee003d93ad15df8f1d4d8b1e3a2b5f9
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 32aa2c8f4c97f247bfcff5fc82a3f810b8005591
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814335"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488517"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>准备 Azure 资源，以便对本地计算机进行灾难恢复
 
@@ -54,16 +54,17 @@ ms.locfileid: "70814335"
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
-1. 在 Azure 门户中单击“+创建资源”，然后在市场中搜索“恢复”   。
-2. 单击“备份和站点恢复”  ，然后在“备份和站点恢复”页中单击“创建”  。 
-1. 在“恢复服务保管库”   > “名称”  中，输入一个友好名称以标识此保管库。 对于这组教程，我们使用 **ContosoVMVault**。
-2. 在**资源组**中，选择现有资源组或创建新资源组。 在本教程中，我们使用 **contosoRG**。
-3. 在**位置**中，选择保管库应位于的区域。 我们将使用“西欧”  。
-4. 若要从仪表板快速访问保管库，请选择“固定到仪表板”   >   “创建”。
+1. 在 Azure 门户菜单中选择“创建资源”，然后在市场中搜索“恢复”   。
+2. 从搜索结果中选择“备份和站点恢复”  ，然后在“备份和站点恢复”页中单击“创建”  。 
+3. 在“创建恢复服务保管库”  页中，选择“订阅”。  我们将使用“Contoso 订阅”。 
+4. 在**资源组**中，选择现有资源组或创建新资源组。 在本教程中，我们使用 **contosoRG**。
+5. 在“保管库名称”中输入一个易记名称，用于标识此保管库。  对于这组教程，我们使用 **ContosoVMVault**。
+6. 在“区域”  中，选择保管库应位于的区域。 我们将使用“西欧”  。
+7. 选择“查看 + 创建”  。
 
    ![创建新的保管库](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-   新保管库显示在“仪表板”   > “所有资源”  中，以及“恢复服务保管库”  主页上。
+   新保管库此时会列在“仪表板” > “所有资源”中，以及“恢复服务保管库”主页上。   
 
 ## <a name="set-up-an-azure-network"></a>设置 Azure 网络
 
@@ -72,16 +73,17 @@ ms.locfileid: "70814335"
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源”   >   “网络” >   “虚拟网络”。
 2. 选择“资源管理器”作为部署模型  。
 3. 在“名称”中  ，输入网络名称。 名称在 Azure 资源组中必须唯一。 在本教程中我们将使用 **ContosoASRnet**。
-4. 指定将在其中创建网络的资源组。 我们将使用现有资源组 contosoRG  。
-5. 在“地址范围”  中，输入网络的范围。 我们将使用 10.1.0.0/24，而不使用子网  。
-6. 在“订阅”中，选择要在其中创建网络的订阅。 
+4. 在“地址空间”中，输入用 CDR 标记表示的虚拟网络地址范围。  我们将使用 **10.1.0.0/24**。
+5. 在“订阅”中，选择要在其中创建网络的订阅。 
+6. 指定将在其中创建网络的“资源组”。  我们将使用现有资源组 contosoRG  。
 7. 在“位置”中，选择创建了恢复服务保管库的同一个区域  。 本教程使用“西欧”  。 该网络必须位于与保管库相同的区域中。
-8. 我们将保留基本 DDoS 防护的默认选项，网络上没有服务终结点。
-9. 单击“创建”。 
+8. 在“地址范围”  中，输入网络的范围。 我们将使用 10.1.0.0/24，而不使用子网  。
+9. 我们将保留基本 DDoS 防护的默认选项，网络上没有服务终结点或防火墙。
+9. 选择“创建”  。
 
    ![创建虚拟网络](media/tutorial-prepare-azure/create-network.png)
 
-创建虚拟网络需要几秒钟的时间。 创建后，即可在 Azure 门户仪表板中看到它。
+创建虚拟网络需要几秒钟的时间。 创建后，可在 Azure 门户仪表板中看到它。
 
 
 

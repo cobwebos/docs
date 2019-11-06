@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/04/2019
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: c20a14ef2bc74d73b93ab39ee52fe1be8a5f984f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 12661c77c6a950b482187b09e4465c964e6d6652
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173068"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494078"
 ---
 Azure IoT Edge 的主要功能之一是能够从云中将代码部署到 IoT Edge 设备。 **IoT Edge 模块**是以容器形式实现的可执行程序包。 在本部分中，你将从 [Azure 市场的“IoT Edge 模块”部分](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)部署一个预建的模块。 
 
@@ -37,7 +37,7 @@ Azure IoT Edge 的主要功能之一是能够从云中将代码部署到 IoT Edg
 
 3. 现在，你已从 Azure 市场选择了 IoT Edge 模块，并且选择了要接收该模块的 IoT Edge 设备，接下来，你将转到一个具有三个步骤的向导，该向导可帮助你确切定义如何部署该模块。 在向导的“添加模块”步骤中，请注意“SimulatedTemperatureSensor”模块会自动填充   。 在教程中，将使用此页向部署添加其他模块。 对于本快速入门，只需要部署这一个模块。 选择“下一步”继续执行向导的下一步  。
 
-4. 在向导的“指定路由”步骤中，定义消息在模块之间传递以及传递到 IoT 中心的方式  。 对于本快速入门，需要来自所有模块的所有消息都转到 IoT 中心 (`$upstream`)。 如果未自动填充，请添加以下代码，然后选择“下一步”  ：
+4. 在向导的“指定路由”步骤中，定义消息在模块之间传递以及传递到 IoT 中心的方式  。 对于本快速入门，需要来自所有模块的所有消息都转到 IoT 中心 (`$upstream`)。 如果未自动填充，请添加以下代码：
 
    ```json
     {
@@ -46,6 +46,7 @@ Azure IoT Edge 的主要功能之一是能够从云中将代码部署到 IoT Edg
         }
     }
    ```
+   然后，选择“下一步”  。
 
 5. 在向导的“查看部署”步骤中，可以预览定义部署到 IoT Edge 设备的所有模块的 JSON 文件  。 请注意，包括 **SimulatedTemperatureSensor** 模块以及名为 **edgeAgent** 和 **edgeHub** 的两个其他系统模块。 查看完成后，选择“提交”  。
 

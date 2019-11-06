@@ -7,16 +7,16 @@ ms.custom: include file
 ms.topic: include
 author: sgilley
 ms.author: sgilley
-ms.date: 10/16/2019
-ms.openlocfilehash: 0071b0df2c2e173eced1722372f88b1de2708afa
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 5a66212122745d0f4426e48e9487e9d674cec53f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692361"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489915"
 ---
 >[!IMPORTANT]
->可以使用你创建的、用作其他 Azure 机器学习服务教程和操作指南文章的先决条件的资源。
+>可以使用你创建的、用作其他 Azure 机器学习教程和操作指南文章的先决条件的资源。
 
 ### <a name="delete-everything"></a>删除所有内容
 
@@ -32,7 +32,7 @@ ms.locfileid: "72692361"
 
 1. 选择“删除资源组”  。
 
-删除该资源组也会删除在可视界面中创建的所有资源。  
+删除该资源组也会删除在设计器中创建的所有资源。  
 
 ### <a name="delete-only-the-compute-target"></a>仅删除计算目标
 
@@ -48,6 +48,12 @@ ms.locfileid: "72692361"
 
 ### <a name="delete-individual-assets"></a>删除各项资产
 
-在创建试验的可视界面中删除各个资产，方法是将其选中，然后选择“删除”按钮。  可以通过选择每个数据集并选择“注销”  ，从工作区中注销数据集。
+在创建试验的设计器中删除各个资产，方法是将其选中，然后选择“删除”按钮。 
 
 ![删除资产](./media/aml-ui-cleanup/delete-asset.png)
+
+可以通过选择每个数据集并选择“注销”  ，从工作区中注销数据集。
+
+![取消注册数据集](./media/aml-ui-cleanup/unregister-dataset.png)
+
+

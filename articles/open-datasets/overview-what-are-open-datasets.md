@@ -1,22 +1,22 @@
 ---
 title: 什么是开放数据集？ 精选公共数据集
-titleSuffix: Azure Open Datasets (preview)
-description: 了解 Azure 开放数据集（预览版），即不受任何限制的精选数据集，可用于机器学习和分析解决方案。 数据集包括天气、人口普查、节假日和位置等公共数据，有助于扩充预测解决方案。
+titleSuffix: Azure Open Datasets
+description: 了解 Azure 开放数据集，这是从天气、人口普查、节假日和位置等公共域策展的数据集，用于扩充预测解决方案。
 ms.service: open-datasets
 ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
-ms.date: 05/02/2019
-ms.openlocfilehash: 0c4bf3143bbf1ceb2f2f3c4a22477daa03690a0e
-ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
+ms.date: 11/04/2019
+ms.openlocfilehash: b8633bd91abc1f336870158f54d75829ed5cf6a0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70213593"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496605"
 ---
-# <a name="what-are-azure-open-datasets-preview-and-how-can-you-use-them"></a>什么是 Azure 开放数据集（预览版）？如何使用它们？
+# <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>什么是 Azure 开放数据集？如何使用它们？
 
-[Azure 开放数据集](https://azure.microsoft.com/services/open-datasets/)是精选公共数据集，可用于将方案专属特征添加到机器学习解决方案，以提高模型的准确度。 开放数据集位于云中的 Microsoft Azure 上，随时可供 Azure Databricks、机器学习服务和机器学习工作室使用。 也可以通过 API 访问数据集，并在 Power BI 和 Azure 数据工厂等其他产品中使用它们。
+[Azure 开放数据集](https://azure.microsoft.com/services/open-datasets/)是精选公共数据集，可用于将方案专属特征添加到机器学习解决方案，以提高模型的准确度。 开放数据集位于云中的 Microsoft Azure 上并已集成到 Azure 机器学习中，随时可供 Azure Databricks 和机器学习工作室（经典版）使用。 也可以通过 API 访问数据集，并在 Power BI 和 Azure 数据工厂等其他产品中使用它们。
 
 数据集包括不受任何限制的天气、人口普查、节假日、公共安全和位置数据，有助于定型机器学习模型和扩充预测解决方案。 还可以共享 Azure 开放数据集中的公共数据集。 
 
@@ -47,7 +47,7 @@ Azure 开放数据集中的精选开放公共数据集更适合用于机器学�
 ## <a name="access-to-datasets"></a>访问数据集  
 借助 Azure 帐户，可以使用代码或通过 Azure 服务界面访问开放数据集。 数据与 Azure 云计算资源共置在一起，以供用于机器学习解决方案。  
 
-开放数据集提供了 Azure Notebooks 和 Azure Databricks 笔记本，可用于将数据连接到 Azure 机器学习服务和 Azure Databricks。 也可以通过 Python SDK 访问数据集。 
+开放数据集通过 Azure 机器学习 UI 和 SDK 提供。 开放数据集还提供 Azure Notebooks 和 Azure Databricks 笔记本，可用于将数据连接到 Azure 机器学习和 Azure Databricks。 也可以通过 Python SDK 访问数据集。 
 
 不过，无需使用 Azure 帐户，即可访问开放数据集；可以在含或不含 Spark 的任意 Python 环境中访问它们。
 

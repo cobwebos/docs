@@ -8,14 +8,14 @@ ms.custom: include file
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
-ms.date: 09/02/2018
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 00eb6f40e77cbdb64249600e35ca8531f1a744a8
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 1effd07cef439a6257028549b7b7114b742eb478
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258140"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488796"
 ---
 ## <a name="sign-in-to-luis-portal"></a>登录到 LUIS 门户
 
@@ -41,8 +41,8 @@ LUIS 的新用户需要执行此过程：
 
 1. 此时将显示要创建的资源的摘要。 选择“**下一步**”。
 
-    ![创建创作资源](./media/sign-in-confirm-key-selection.png)
+    ![创建创作资源](../media/sign-in/sign-in-confirm-key-selection.png)
 
-1. 步骤 3 是一个确认步骤。 选择“继续”  以确认你的选择。 
+1. 选择“继续”进行确认  。 
 
-    ![创建创作资源](./media/sign-in-confirm-continue.png)
+    ![创建创作资源](../media/sign-in/sign-in-confirm-continue.png)

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Database for PostgreSQL 设计实时仪表板 – Hyperscale (Citus)（预览版）教程
-description: 本教程介绍如何在 Azure Database for PostgreSQL Hyperscale (Citus)（预览版）中创建、填充和查询分布式表。
+title: 使用 Azure Database for PostgreSQL 设计实时仪表板 – Hyperscale (Citus) 教程
+description: 本教程介绍如何在 Azure Database for PostgreSQL Hyperscale (Citus) 中创建、填充和查询分布式表。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,16 +8,16 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: a5e4b2073a29785ee851b2733c12d6331afe59d8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 32487d65397a96d9e96ae3bf3476eed23ddb8adc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791305"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482878"
 ---
-# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>教程：使用 Azure Database for PostgreSQL 设计实时分析仪表板 – Hyperscale (Citus)（预览版）
+# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>教程：使用 Azure Database for PostgreSQL 设计实时分析仪表板 – Hyperscale (Citus)
 
-在本教程中，你将了解如何使用 Azure Database for PostgreSQL - Hyperscale (Citus)（预览版）来执行以下操作：
+在本教程中，你将了解如何使用 Azure Database for PostgreSQL - Hyperscale (Citus)来执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Hyperscale (Citus) 服务器组
@@ -34,7 +34,7 @@ ms.locfileid: "65791305"
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>使用 psql 实用工具创建架构
 
-使用 psql 连接到 Azure Database for PostgreSQL - Hyperscale (Citus)（预览版）后，可以完成一些基本任务。 本教程将引导你从 Web 分析引入流量数据，然后汇总数据以基于这些数据提供实时仪表板。
+使用 psql 连接到 Azure Database for PostgreSQL - Hyperscale (Citus)后，可以完成一些基本任务。 本教程将引导你从 Web 分析引入流量数据，然后汇总数据以基于这些数据提供实时仪表板。
 
 让我们创建一个使用所有原始 Web 流量数据的表。 在 psql 终端中运行以下命令：
 
@@ -128,7 +128,7 @@ END $$;
    > 让数据生成查询保持运行，并针对本教程中所述的剩余命令打开另一个 psql 连接。
    >
 
-## <a name="query"></a>Query
+## <a name="query"></a>查询
 
 使用超大规模托管选项可让多个节点并行处理查询以加快速度。 例如，数据库可在工作器节点上计算 SUM 和 COUNT 等聚合，并将结果合并成最终的应答。
 

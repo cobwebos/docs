@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: c6ad1cd7af02f281c53ece23a018f8b5ec0c7da9
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 18e7e75b259475b9e360dc3441ed83ccb577e557
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640938"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492036"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>教程：使用 SSMS 在 Azure SQL 数据库的单一数据库中设计关系数据库
 
@@ -52,7 +52,7 @@ Azure SQL 数据库是 Microsoft 云 (Azure) 中的关系型数据库即服务 (
 
 遵循以下步骤创建空白的单一数据库。
 
-1. 在 Azure 门户的左上角单击“创建资源”。 
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。
 2. 在“新建”  页上的“Azure 市场”部分中选择“数据库”  ，然后在“特别推荐”部分中单击“SQL 数据库”   。
 
    ![创建空数据库](./media/sql-database-design-first-database/create-empty-database.png)
@@ -97,21 +97,23 @@ SQL 数据库服务在服务器级别创建 IP 防火墙。 此防火墙阻止�
 > [!IMPORTANT]
 > SQL 数据库服务通过端口 1433 进行通信。 如果尝试从企业网络内部连接到此服务，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到单一数据库，除非管理员打开端口 1433。
 
-1. 部署完成后，在左侧菜单中单击“SQL 数据库”，然后在“SQL 数据库”页上单击“yourDatabase”    。 此时会打开数据库的概览页，其中显示了完全限定的“服务器名称”（例如 yourserver.database.windows.net），并提供了其他配置的选项   。
+1. 部署完成后，请从 Azure 门户菜单中选择“SQL 数据库”，或在任何页面上搜索并选择“SQL 数据库”   。  
 
-2. 复制此完全限定的服务器名称，将其用于从 SQL Server Management Studio 连接到服务器和数据库。
+1. 在“SQL 数据库”页上选择“yourDatabase”   。 此时会打开数据库的概览页，其中显示了完全限定的**服务器名称**（例如 `contosodatabaseserver01.database.windows.net`），并提供了其他配置的选项。
 
    ![服务器名称](./media/sql-database-design-first-database/server-name.png)
 
-3. 单击工具栏上的“设置服务器防火墙”  。 此时会打开 SQL 数据库服务器的“防火墙设置”页。 
+1. 复制此完全限定的服务器名称，将其用于从 SQL Server Management Studio 连接到服务器和数据库。
+
+1. 单击工具栏上的“设置服务器防火墙”  。 此时会打开 SQL 数据库服务器的“防火墙设置”页。 
 
    ![服务器级别 IP 防火墙规则](./media/sql-database-design-first-database/server-firewall-rule.png)
 
-4. 在工具栏上单击“添加客户端 IP”，将当前的 IP 地址添加到新的 IP 防火墙规则。  IP 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
+1. 在工具栏上单击“添加客户端 IP”，将当前的 IP 地址添加到新的 IP 防火墙规则。  IP 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
 
-5. 单击“ **保存**”。 此时会针对当前的 IP 地址创建服务器级 IP 防火墙规则，在 SQL 数据库服务器上打开端口 1433。
+1. 单击“ **保存**”。 此时会针对当前的 IP 地址创建服务器级 IP 防火墙规则，在 SQL 数据库服务器上打开端口 1433。
 
-6. 单击“确定”，然后关闭“防火墙设置”页。  
+1. 单击“确定”，然后关闭“防火墙设置”页。  
 
 你的 IP 地址现在可以通过 IP 防火墙。 现在可以使用 SQL Server Management Studio 或其他所选工具连接到单一数据库。 确保使用之前创建的服务器管理员帐户。
 

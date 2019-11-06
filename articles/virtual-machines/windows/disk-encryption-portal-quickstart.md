@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: bde0c483eacec7fb8e076530bba594eb33a32a12
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 2590b9851b654990795f111e76f6cc5ea6c96723
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553434"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491947"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>快速入门：使用 Azure 门户创建和加密 Windows 虚拟机
 
@@ -55,8 +55,8 @@ ms.locfileid: "72553434"
 
 1. 在“新建”页的“常用”下，选择“Windows Server 2016 Datacenter”。 
 1. 在“基本信息”  选项卡中的“项目详细信息”  下，确保选择了正确的订阅。
-1. 对于“资源组”，  请选择你在构建上面的密钥保管库时创建的资源组（例如 **myResourceGroup**）
-1. 对于“虚拟机名称”，请输入  *MyVM*。 
+1. 对于“资源组”，  请选择你在构建上面的密钥保管库时创建的资源组（例如 **myResourceGroup**）。
+1. 对于“虚拟机名称”，请输入  *MyVM*。
 1. 对于“区域”，请选择在构建密钥保管库时使用的区域（例如“美国东部”）。  
 1. 确定“大小”为“标准 D2s v3”。  
 1. 在“管理员帐户”下，选择“密码”。   输入用户名和密码。

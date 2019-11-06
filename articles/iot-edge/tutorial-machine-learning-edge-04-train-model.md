@@ -8,19 +8,19 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: acf0b1984eb3e68858be6ed68731612448e672f4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6e1ee1fda658ef0884975e4055891f705c4f5058
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67432710"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493988"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>教程：训练和部署 Azure 机器学习模型
 
 > [!NOTE]
 > 本文是介绍如何在 IoT Edge 上使用 Azure 机器学习的教程系列的一部分。 如果你是直接转到本文的，建议你从该系列中的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)开始，以获得最佳学习效果。
 
-在本文中，我们先使用 Azure Notebooks 通过 Azure 机器学习训练机器学习模型，然后将该模型打包为可作为 Azure IoT Edge 模块部署的容器映像。 Azure Notebooks 利用 Azure 机器学习服务工作区，该工作区是用于试验、训练和部署机器学习模型的基块。
+在本文中，我们先使用 Azure Notebooks 通过 Azure 机器学习训练机器学习模型，然后将该模型打包为可作为 Azure IoT Edge 模块部署的容器映像。 Azure Notebooks 利用 Azure 机器学习工作区，该工作区是用于试验、训练和部署机器学习模型的基块。
 
 本教程部分中的活动已划分到两个 Notebook。
 
@@ -72,7 +72,7 @@ Azure Notebooks 帐户独立于 Azure 订阅。 若要使用 Azure Notebooks，�
 
 * **01-turbofan\_regression.ipynb**：Jupyter Notebook 文件，用于演练以下过程：从 Azure 存储帐户下载设备装备生成的数据；探索并准备用于训练分类器的数据；训练模型；使用 Test\_FD003.txt 文件中的测试数据集测试数据；最后，在机器学习服务工作区中保存分类器模型。
 
-* **02-turbofan\_deploy\_model.ipynb：** Jupyter Notebook，引导你完成使用机器学习服务工作区中保存的分类器模型生成容器映像的过程。 创建映像后，该 Notebook 会引导你完成将映像部署为 Web 服务的过程，以便可以验证该映像是否按预期方式工作。 已验证的映像将部署到本教程的[创建并部署自定义 IoT Edge 模块](tutorial-machine-learning-edge-06-custom-modules.md)部分所述的 Edge 设备中。
+* **02-turbofan\_deploy\_model.ipynb：** Jupyter Notebook，引导你完成使用机器学习服务工作区中保存的分类器模型生成容器映像的过程。 创建映像后，该 Notebook 会引导你完成将映像部署为 Web 服务的过程，以便可以验证该映像是否按预期方式工作。 已验证的映像将部署到本教程的[创建并部署自定义 IoT Edge 模块](tutorial-machine-learning-edge-06-custom-modules.md)部分所述的 IoT Edge 设备中。
 
 * **Test\_FD003.txt：** 此文件包含我们在验证已训练的分类器时用作测试集的数据。 为方便演示本示例，我们已选择为原始竞赛提供的测试数据作为测试集。
 

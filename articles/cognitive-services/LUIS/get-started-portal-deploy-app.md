@@ -8,16 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/27/2019
+ms.date: 10/17/2019
 ms.author: diberry
-ms.openlocfilehash: f640921e6f48559db3f1414551d6ed974df15e4f
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: ecae5c7db02436fe34fec19989f174504fd1e03a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703217"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488721"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>快速入门：在 LUIS 门户中部署应用
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
 
 LUIS 应用准备好将话语预测返回到客户端应用程序（例如聊天机器人）后，就需要将应用部署到预测终结点。
 
@@ -77,60 +80,67 @@ LUIS 应用准备好将话语预测返回到客户端应用程序（例如聊天
 
 1. 如果应用未经过训练，请从右上方的菜单中选择“训练”  。
 
-1. 从顶部菜单中选择“发布”  。 接受默认环境设置，然后选择“发布”  。
+1. 从顶部菜单中选择“发布”  。 选择生产槽，然后进行发布。
 
-1. 绿色的成功通知栏出现在浏览器窗口顶部时，请选择“参阅终结点列表”  。
+1. 显示通知栏即表示发布已完成。
 
-   ![在浏览器中成功发布了应用通知栏](./media/get-started-portal-deploy-app/successfully-published-notification.png)
+1. 在“管理”部分的“Azure 资源”页上，找到已分配资源和相应终结点 URL 的列表。 
 
-1. 在“密钥和终结点设置”页的底部找到已分配资源和相应终结点 URL 的列表。 
-
-1. 选择与新资源名称关联的终结点 URL。 此操作将打开包含正确构造的 URL Web 浏览器，以便向预测终结点运行时发出 `GET` 请求。
+1. 将示例查询复制到浏览器窗口中，并将用户言语作为 `query` 参数添加。
 
 ## <a name="prediction-endpoint-request"></a>预测终结点请求
 
-<!-- V3FIX -->
-
-URL 末尾的 `q=` 是查询的缩写，并且是用户的言语追加到 GET 请求的位置  。 在 `q=` 之后，输入在上一个快速入门结束时使用的相同用户言语：
+URL 末尾的 `query=` 是查询的缩写，并且是用户的言语追加到 GET 请求的位置  。 在 `query=` 之后，输入在上一个快速入门结束时使用的相同用户言语：
 
 ```Is there a form named hrf-234098```
 
-浏览器会显示响应，该响应与客户端应用程序将收到的 JSON 相同：
+确保查询字符串包含以下对：
+
+* `show-all-intents=true`
+* `verbose=true`
+
+浏览器会显示响应：
 
 ```JSON
 {
-"query": "Is there a form named hrf-234098",
-"topScoringIntent": {
-    "intent": "FindForm",
-    "score": 0.9768753
-},
-"intents": [
-    {
-    "intent": "FindForm",
-    "score": 0.9768753
-    },
-    {
-    "intent": "None",
-    "score": 0.0216071066
+    "query": "Is there a form named hrf-234098",
+    "prediction": {
+        "topIntent": "FindForm",
+        "intents": {
+            "FindForm": {
+                "score": 0.9768753
+            },
+            "None": {
+                "score": 0.0216071177
+            }
+        },
+        "entities": {
+            "Human Resources Form Number": [
+                "hrf-234098"
+            ],
+            "$instance": {
+                "Human Resources Form Number": [
+                    {
+                        "type": "Human Resources Form Number",
+                        "text": "hrf-234098",
+                        "startIndex": 22,
+                        "length": 10,
+                        "modelTypeId": 8,
+                        "modelType": "Regex Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ]
+            }
+        }
     }
-],
-"entities": [
-    {
-    "entity": "hrf-234098",
-    "type": "Human Resources Form Number",
-    "startIndex": 22,
-    "endIndex": 31
-    }
-    ]
 }
 ```
 
-此响应提供的信息比上一个教程中的默认测试窗格提供的信息更详细。 若要在测试窗格中看到相同级别的信息，必须发布应用。 发布应用后，在测试窗格中选择“与已发布版本进行比较”  。 在发布的测试窗格中使用“显示 JSON 视图”，以查看与上一步相同的 JSON  。 这样可以比较当前正在使用的应用和发布到终结点的应用。
+若要在测试窗格中看到相同级别的信息，必须发布应用。 发布应用后，在测试窗格中选择“与已发布版本进行比较”  。 在发布的测试窗格中使用“显示 JSON 视图”，以查看与上一步相同的 JSON  。 这样可以比较当前正在使用的应用和发布到终结点的应用。
 
 [![比较当前正在编辑的应用和已发布版本的应用](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
-
-
-
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -7,12 +7,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: c9b72c90bc23cfac6f064445c4f6f98d05d7fe16
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: afc026ccb602538b0749fa294cee763efa3d27d0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331769"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73483228"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>快速入门：设置适用于 Windows 的 Data Science Virtual Machine
 
@@ -34,7 +34,7 @@ ms.locfileid: "72331769"
 
 1. 选择底部的“创建”按钮。 
 
-    [![](media/provision-vm/create-windows.png "用于创建 Windows 虚拟机的按钮")](media/provision-vm/create-windows-expanded.png#lightbox)
+    [![](media/provision-vm/create-windows.png "Button to create a Windows machine")](media/provision-vm/create-windows-expanded.png#lightbox)
 
 1. 你应该被重定向到“创建虚拟机”边栏选项卡。
    ![Windows 虚拟机所对应的“基本信息”选项卡](./media/provision-vm/review-create-windows.png)
@@ -72,7 +72,7 @@ ms.locfileid: "72331769"
 ## <a name="next-steps"></a>后续步骤
 
 * 打开“开始”菜单探索 DSVM 上的工具。 
-* 阅读[什么是 Azure 机器学习服务？](../service/overview-what-is-azure-ml.md)并尝试通过[教程](../index.yml)来了解 Azure 机器学习服务。
+* 阅读[什么是 Azure 机器学习？](../service/overview-what-is-azure-ml.md)并尝试通过[教程](../index.yml)来了解 Azure 机器学习。
 * 在文件资源管理器中浏览到 C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts，获取有关在 R 中使用支持企业级数据分析的 RevoScaleR 库的示例。 
 * 阅读文章：[Data Science Virtual Machine 的十大功能](https://aka.ms/dsvmtenthings)。
 * 通过使用 [Team Data Science Process](../team-data-science-process/index.yml)，了解如何系统地构建端到端分析解决方案。

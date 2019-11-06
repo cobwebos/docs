@@ -1,5 +1,5 @@
 ---
-title: 教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询
+title: 教程：使用 Apache Spark 加载数据并运行查询 - Azure HDInsight
 description: 教程 - 了解如何在 Azure HDInsight 中的 Spark 群集上加载数据并运行交互式查询。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 10/03/2019
-ms.openlocfilehash: 3d6b7cf67faa94d0947d16cc79d0d5b839de7acb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 8c5fe1970857a04c7b237a101ac228dea024815b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027792"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494491"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询
 
@@ -36,7 +36,7 @@ Jupyter Notebook 是支持各种编程语言的交互式笔记本环境。 通�
 
 2. 从 Jupyter 网页中选择“新建” > “PySpark”，以创建笔记本   。
 
-   ![创建 Jupyter Notebook 来运行交互式 Spark SQL 查询](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "创建 Jupyter Notebook 来运行交互式 Spark SQL 查询")
+   ![创建 Jupyter Notebook 以运行交互式 Spark SQL 查询](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "创建 Jupyter Notebook 以运行交互式 Spark SQL 查询")
 
    新笔记本随即创建，并以名称 Untitled(`Untitled.ipynb`) 打开。
 

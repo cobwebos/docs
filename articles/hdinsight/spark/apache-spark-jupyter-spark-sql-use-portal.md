@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.custom: mvc
-ms.openlocfilehash: a4c7fe0d01bc9e5045cfe585c3f235636aa3dd22
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 214a88ad8b0f5dd0352004edc125705ad2f04fc7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676976"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494132"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Spark 群集
 
@@ -30,7 +30,7 @@ ms.locfileid: "71676976"
 
 1. 在 Azure 门户中，选择“创建资源” > “分析” > “HDInsight”    。
 
-    ![在 Azure 门户中创建资源 HDInsight](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster.png "Azure 门户上的 HDInsight")
+    ![Azure 门户创建资源 HDInsight](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster.png "Azure 门户中的 HDInsight")
 
 1. 在“基本”下，提供以下值  ：
 
@@ -46,7 +46,7 @@ ms.locfileid: "71676976"
     |群集登录密码| 输入群集登录密码。 |
     |安全外壳 (SSH) 用户名| 输入 SSH 用户名。 用于此快速入门的 SSH 用户名为“sshuser”  。 默认情况下，此帐户的密码与群集登录用户名帐户的密码相同  。 |
 
-    ![创建 HDInsight Spark 群集基本配置](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-basics-spark.png "在 HDInsight 中创建 Spark 群集基本配置")
+    ![创建 HDInsight Spark 群集基本配置](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-basics-spark.png "使用 HDInsight 基本配置创建 Spark 群集")
 
     在完成时选择“下一步:  存储 >>”转到“存储”页  。
 
@@ -59,7 +59,7 @@ ms.locfileid: "71676976"
     |主存储帐户|使用自动填充的值。|
     |容器|使用自动填充的值。|
 
-    ![创建 HDInsight Spark 群集基本配置](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage-spark.png "在 HDInsight 中创建 Spark 群集基本配置")
+    ![创建 HDInsight Spark 群集基本配置](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage-spark.png "使用 HDInsight 基本配置创建 Spark 群集")
 
     选择“查看 + 创建”以继续。 
 
@@ -79,11 +79,11 @@ Jupyter Notebook 是支持各种编程语言的交互式笔记本环境。 通�
 
 1. 在门户中，选择“群集仪表板”，然后选择“Jupyter Notebook”   。 出现提示时，请输入群集的群集登录凭据。
 
-   ![打开 Jupyter Notebook 来运行交互式 Spark SQL 查询](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "打开 Jupyter Notebook 来运行交互式 Spark SQL 查询")
+   ![打开 Jupyter Notebook 以运行交互式 Spark SQL 查询](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "打开 Jupyter Notebook 以运行交互式 Spark SQL 查询")
 
 1. 选择“新建” > “PySpark”，创建笔记本   。
 
-   ![创建 Jupyter Notebook 来运行交互式 Spark SQL 查询](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "创建 Jupyter Notebook 来运行交互式 Spark SQL 查询")
+   ![创建 Jupyter Notebook 以运行交互式 Spark SQL 查询](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "创建 Jupyter Notebook 以运行交互式 Spark SQL 查询")
 
    新笔记本随即已创建，并以 Untitled(Untitled.pynb) 名称打开。
 
@@ -129,7 +129,7 @@ HDInsight 将数据保存在 Azure 存储或 Azure Data Lake Storage 中，因�
 
 切换回 Azure 门户，并选择“删除”  。
 
-![在 Azure 门户中删除 HDInsight 群集](./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png "删除 HDInsight 群集")
+![Azure 门户删除 HDInsight 群集](./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png "删除 HDInsight 群集")
 
 还可以选择资源组名称来打开“资源组”页，然后选择“删除资源组”  。 通过删除资源组，可以删除 HDInsight Spark 群集和默认存储帐户。
 
