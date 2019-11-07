@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: f7039b525cf0d52670b8d76a24d8ec3ea5115772
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: acb041ce29d0340686a09764158063ad8d000c7c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559102"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491318"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>快速入门：在 Android 上运行语音设备 SDK 示例应用
 
@@ -102,14 +102,14 @@ ms.locfileid: "68559102"
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
     ```
 
-1. 默认唤醒字（关键字）为“Computer”。 还可以尝试提供的其他唤醒字，例如“Machine”或“Assistant”。 这些替换唤醒字的资源文件位于语音设备 SDK 的 keyword 文件夹中。 例如，C:\SDSDK\Android-Sample-Release\keyword\Computer 包含用于唤醒字“Computer”的文件。
+1. 默认关键字为“Computer”。 还可以尝试所提供的其他关键字之一，例如“Machine”或“Assistant”。 这些备用关键字的资源文件位于语音设备 SDK 的 keyword 文件夹中。 例如，C:\SDSDK\Android-Sample-Release\keyword\Computer 包含用于关键字“Computer”的文件。
 
    > [!TIP]
-   > 还可以[创建自定义唤醒字](speech-devices-sdk-create-kws.md)。
+   > 还可以[创建自定义关键字](speech-devices-sdk-create-kws.md)。
 
-    若要使用新的唤醒语，请更新 `MainActivity.java` 中的下面两行，并将唤醒语包复制到应用。 例如，若要使用唤醒语包 kws-machine.zip 中的唤醒语“Machine”，请执行以下操作：
+    若要使用新的关键字，请更新 `MainActivity.java` 中的下面两行，并将关键字包复制到应用。 例如，若要使用关键字包 kws-machine.zip 中的关键字“Machine”，请执行以下操作：
 
-   * 将该唤醒语包复制到“C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\”文件夹中。
+   * 将该关键字包复制到“C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\”文件夹中。
    * 使用关键字和包名称更新 `MainActivity.java`：
 
      ```java

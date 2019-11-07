@@ -1,81 +1,74 @@
 ---
-title: 对包含管道的大型数据运行批预测
+title: 对大量数据运行批处理推理
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习在大量数据上异步生成批处理预测。
+description: 了解如何使用 Azure 机器学习中的批处理推理对大量数据进行异步推理。 批处理推理提供现成的并行处理功能，可针对大数据用例优化高吞吐量、触发后不理推理。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.reviewer: jmartens, garye
-ms.author: jordane
-author: jpe316
-ms.date: 07/12/2019
-ms.openlocfilehash: 910974eac6a67c9c9fe68c502f2876ef68bb94eb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
-ms.translationtype: MT
+ms.topic: tutorial
+ms.reviewer: trbye, jmartens, larryfr
+ms.author: tracych
+author: tracych
+ms.date: 11/04/2019
+ms.custom: Ignite2019
+ms.openlocfilehash: 4390fab3d59706bf692de46d17923dad4f9a8f21
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028517"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489614"
 ---
-# <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>对包含 Azure 机器学习管道的大型数据集运行批处理预测
+# <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure 机器学习对大量数据运行批处理推理
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何使用 Azure 机器学习的 ML 管道异步对大量数据进行预测。
+在本操作指南中，你将了解如何使用 Azure 机器学习以异步方式和并行方式对大量数据进行推理。 此处所述的批处理推理功能在公共预览版中提供。 这是一种用于生成推理和处理数据的高性能和高吞吐量的方式。 它提供现成的异步功能。
 
-批量预测（或批量评分）可以针对异步应用程序空前未有的吞吐量进行经济有效的推理。 批量预测管道可以进行缩放，以便在数 TB 生产数据的基础上进行推理。 批量预测针对高吞吐量的即发即弃预测进行优化，适用于大量的数据。
+通过批处理推理，可以轻松地将离线推理扩展到数 TB 的生产数据的大计算机群集，从而提高工作效率和优化成本。
 
->[!TIP]
-> 如果系统要求低延迟处理（以便快速处理单个文档或少量文档），则请使用[实时评分](how-to-consume-web-service.md)而不是批量预测。
+在本操作指南中，你将学习如何执行以下任务：
 
-在以下步骤中，你将创建一个[机器学习管道](concept-ml-pipelines.md)来注册预先训练的计算机视觉模型（[开始-V3](https://arxiv.org/abs/1512.00567)）。 然后使用预先训练的模型对 Azure Blob 存储帐户中提供的映像执行批处理评分。 这些用于评分的图像是 [ImageNet](http://image-net.org/) 数据集中的未标记图像。
+> * 创建远程计算资源。
+> * 编写自定义推理脚本。
+> * 创建[机器学习管道](concept-ml-pipelines.md)，以根据 [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/) 数据集注册预先训练的图像分类模型。 
+> * 使用该模型可对 Azure Blob 存储帐户中提供的示例映像运行批处理推理。 
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
+* 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
-- 配置安装 Azure 机器学习 SDK 所需的开发环境。 有关详细信息，请参阅[配置 Azure 机器学习的开发环境](how-to-configure-environment.md)。
+* 对于引导式快速入门，如果你还没有 Azure 机器学习的工作区或笔记本虚拟机，请完成[安装教程](tutorial-1st-experiment-sdk-setup.md)。 
 
-- 创建用于保存所有管道资源的 Azure 机器学习工作区。 可以使用以下代码；如需更多选项，请参阅[创建工作区配置文件](how-to-configure-environment.md#workspace)。
-
-  ```python
-  from azureml.core import Workspace
-  ws = Workspace.create(name = '<workspace-name>',
-                        subscription_id = '<subscription-id>',
-                        resource_group = '<resource-group>',
-                        location = '<workspace_region>',
-                        exist_ok = True
-                        )
-  ```
+* 若要管理你自己的环境和依赖项，请参阅关于配置你自己的环境的[操作指南](how-to-configure-environment.md)。 在你的环境中运行 `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` 以下载必要的依赖项。
 
 ## <a name="set-up-machine-learning-resources"></a>设置机器学习资源
 
-以下步骤会设置运行管道所需的资源：
+以下操作设置运行批处理推理管道所需的资源：
 
-- 访问数据存储，该数据存储已经有用于评分的预先训练的模型、输入标签和图像（已经为你设置好）。
-- 设置用于存储输出的数据存储。
-- 配置 `DataReference` 对象，使之指向前述数据存储中的数据。
-- 设置将在其中运行管道步骤的计算机或计算群集。
+- 创建一个数据存储以指向包含要推理的映像的 blob 容器。
+- 将数据引用设置为批处理推理管道步骤的输入和输出。
+- 设置计算群集以运行批处理推理步骤。
 
-### <a name="access-the-datastores"></a>访问数据存储
+### <a name="create-a-datastore-with-sample-images"></a>使用示例映像创建数据存储
 
-首先，访问包含模型、标签和图像的数据存储。
+在名为 `pipelinedata` 的帐户上获取公共 blob 容器 `sampledata` 中的 MNIST 评估集。 创建一个指向此容器的名为 `mnist_datastore` 的数据存储。 在对 `register_azure_blob_container` 的以下调用中，将 `overwrite` 标志设置为 `True` 会覆盖以前用该名称创建的所有数据存储。 
 
-使用名为*sampledata*的公共 blob 容器 *，该容器*包含 ImageNet 评估集中的图像。 此公共容器的数据存储名称为 *images_datastore*。 将此数据存储注册到工作区：
+可以通过为 `datastore_name`、`container_name` 和 `account_name` 提供自己的值，将此步骤更改为指向 blob 容器。
 
 ```python
 from azureml.core import Datastore
+from azureml.core import Workspace
 
-account_name = "pipelinedata"
-datastore_name = "images_datastore"
-container_name = "sampledata"
+# Load workspace authorization details from config.json
+ws = Workspace.from_config()
 
-batchscore_blob = Datastore.register_azure_blob_container(ws,
-                                                          datastore_name=datastore_name,
-                                                          container_name=container_name,
-                                                          account_name=account_name,
-                                                          overwrite=True)
+mnist_blob = Datastore.register_azure_blob_container(ws, 
+                      datastore_name="mnist_datastore", 
+                      container_name="sampledata", 
+                      account_name="pipelinedata",
+                      overwrite=True)
 ```
 
-接下来进行设置，以便使用输出的默认数据存储。
+接下来，将工作区的默认数据存储指定为输出数据存储。 你将使用它进行推理输出。
 
 创建工作区时，会默认将 [Azure 文件存储](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) 和 [Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) 附加到工作区。 Azure 文件存储是工作区的默认数据存储，但你也可以使用 Blob 存储作为数据存储。 有关详细信息，请参阅 [Azure 存储选项](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)。
 
@@ -83,78 +76,82 @@ batchscore_blob = Datastore.register_azure_blob_container(ws,
 def_data_store = ws.get_default_datastore()
 ```
 
-### <a name="configure-data-references"></a>配置数据引用
+### <a name="configure-data-inputs-and-outputs"></a>配置数据输入和输出
 
-现在，请将管道中的数据作为管道步骤的输入引入。
+现在你需要配置数据输入和输出，其中包括：
 
-管道中的数据源由 [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) 对象表示。  `DataReference` 对象指向驻留在数据存储中的或者可从数据存储访问的数据。 不管是用于输入图像的目录、用于存储预先训练的模型的目录、用于标签的目录还是输出目录，都需要 `DataReference` 对象。
+- 包含输入图像的目录。
+- 存储预先训练的模型的目录。
+- 包含标签的目录。
+- 输出的目录。
+
+`Dataset` 是一个用于在 Azure 机器学习中浏览、转换和管理数据的类。 此类有两种类型：`TabularDataset` 和 `FileDataset`。 在此示例中，将使用 `FileDataset` 作为批处理推理管道步骤的输入。 
+
+> [!NOTE] 
+> 现在，批处理推理中的 `FileDataset` 支持仅限于 Azure Blob 存储。 
+
+你还可以在自定义推理脚本中引用其他数据集。 例如，你可以使用它来访问脚本中的标签，以便使用 `Dataset.register` 和 `Dataset.get_by_name` 来标记映像。
+
+有关 Azure 机器学习数据集的详细信息，请参阅[创建和访问数据集（预览版）](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets)。
+
+`PipelineData` 对象用于在管道步骤之间传输中间数据。 在此示例中，将其用于推理输出。
 
 ```python
-from azureml.data.data_reference import DataReference
+from azureml.core.dataset import Dataset
 
-input_images = DataReference(datastore=batchscore_blob,
-                             data_reference_name="input_images",
-                             path_on_datastore="batchscoring/images",
-                             mode="download")
+mnist_ds_name = 'mnist_sample_data'
 
-model_dir = DataReference(datastore=batchscore_blob,
-                          data_reference_name="input_model",
-                          path_on_datastore="batchscoring/models",
-                          mode="download")
+path_on_datastore = mnist_blob.path('mnist/')
+input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
+registered_mnist_ds = input_mnist_ds.register(ws, mnist_ds_name, create_new_version=True)
+named_mnist_ds = registered_mnist_ds.as_named_input(mnist_ds_name)
 
-label_dir = DataReference(datastore=batchscore_blob,
-                          data_reference_name="input_labels",
-                          path_on_datastore="batchscoring/labels",
-                          mode="download")
-
-output_dir = PipelineData(name="scores",
-                          datastore=def_data_store,
-                          output_path_on_compute="batchscoring/results")
+output_dir = PipelineData(name="inferences", 
+                          datastore=def_data_store, 
+                          output_path_on_compute="mnist/results")
 ```
 
-### <a name="set-up-compute-target"></a>设置计算目标
+### <a name="set-up-a-compute-target"></a>设置计算目标
 
-在 Azure 机器学习中，*计算*（或*计算目标*）是指在机器学习管道中执行计算步骤的计算机或群集。 例如，可以使用[AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py)类创建计算 Azure 机器学习。
+在 Azure 机器学习中，*计算*（或*计算目标*）是指在机器学习管道中执行计算步骤的计算机或群集。 运行以下代码以创建基于 CPU 的 [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) 目标。
 
 ```python
-from azureml.core.compute import AmlCompute
-from azureml.core.compute import ComputeTarget
+from azureml.core.compute import AmlCompute, ComputeTarget
+from azureml.core.compute_target import ComputeTargetException
 
-compute_name = "gpucluster"
-compute_min_nodes = 0
-compute_max_nodes = 4
-vm_size = "STANDARD_NC6"
+# choose a name for your cluster
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpu-cluster")
+compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
+compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
+
+# This example uses CPU VM. For using GPU VM, set SKU to STANDARD_NC6
+vm_size = os.environ.get("AML_COMPUTE_CLUSTER_SKU", "STANDARD_D2_V2")
+
 
 if compute_name in ws.compute_targets:
     compute_target = ws.compute_targets[compute_name]
     if compute_target and type(compute_target) is AmlCompute:
-        print('Found compute target. just use it. ' + compute_name)
+        print('found compute target. just use it. ' + compute_name)
 else:
-    print('Creating a new compute target...')
-    provisioning_config = AmlCompute.provisioning_configuration(
-        vm_size=vm_size,  # NC6 is GPU-enabled
-        vm_priority='lowpriority',  # optional
-        min_nodes=compute_min_nodes,
-        max_nodes=compute_max_nodes)
+    print('creating a new compute target...')
+    provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size,
+                                                                min_nodes = compute_min_nodes, 
+                                                                max_nodes = compute_max_nodes)
 
     # create the cluster
-    compute_target = ComputeTarget.create(ws,
-                                          compute_name,
-                                          provisioning_config)
-
-    compute_target.wait_for_completion(
-        show_output=True,
-        min_node_count=None,
-        timeout_in_minutes=20)
+    compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
+    
+    # can poll for a minimum number of nodes and for a specific timeout. 
+    # if no min node count is provided it will use the scale settings for the cluster
+    compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
+    
+     # For a more detailed view of current AmlCompute status, use get_status()
+    print(compute_target.get_status().serialize())
 ```
 
 ## <a name="prepare-the-model"></a>准备模型
 
-在使用预先训练的模型之前，需下载该模型并将其注册到工作区。
-
-### <a name="download-the-pretrained-model"></a>下载预先训练的模型
-
-从 <http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz> 下载预先训练的计算机视觉模型 (InceptionV3)。 然后将其提取到 `models` 子文件夹。
+[下载预先训练的映像分类模型](https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz)，然后将其提取到 `models` 目录。
 
 ```python
 import os
@@ -165,197 +162,194 @@ model_dir = 'models'
 if not os.path.isdir(model_dir):
     os.mkdir(model_dir)
 
-url = "http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz"
+url="https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz"
 response = urllib.request.urlretrieve(url, "model.tar.gz")
 tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall(model_dir)
 ```
 
-### <a name="register-the-model"></a>注册模型
-
-下面展示了如何注册模型：
+然后，将该模型注册到你的工作区，使其可用于你的远程计算资源。
 
 ```python
-import shutil
 from azureml.core.model import Model
 
-# register downloaded model
-model = Model.register(
-    model_path="models/inception_v3.ckpt",
-    model_name="inception",  # This is the name of the registered model
-    tags={'pretrained': "inception"},
-    description="Imagenet trained tensorflow inception",
-    workspace=ws)
+# Register the downloaded model 
+model = Model.register(model_path="models/",
+                       model_name="mnist",
+                       tags={'pretrained': "mnist"},
+                       description="Mnist trained tensorflow model",
+                       workspace=ws)
 ```
 
-## <a name="write-your-scoring-script"></a>编写评分脚本
+## <a name="write-your-inference-script"></a>编写推理脚本
 
 >[!Warning]
->以下代码只是一个示例，说明了在[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/pipeline-batch-scoring.ipynb)使用的 [batch_score.py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/batch_scoring.py) 中包含了什么内容。 你需要根据具体情况创建自己的评分脚本。
+>下面的代码只是[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/notebooks/contrib/batch_inferencing/file-dataset-image-inference-mnist.ipynb)使用的示例。 你需要根据具体情况创建自己的脚本。
 
-@No__t-0 脚本在*model_dir*中使用*dataset_path*预先训练模型中的输入图像，并将*results-label*输出到*output_dir*。
+脚本必须包含  两个函数：
+- `init()`：此函数适用于后续推理的任何成本高昂或常见的准备工作。 例如，使用它将模型加载到全局对象。
+-  `run(mini_batch)`：将针对每个 `mini_batch` 实例运行此函数。
+    -  `mini_batch`：批处理推理将调用 run 方法，并将列表或 Pandas 数据帧作为参数传递给该方法。 如果输入是 FileDataset，则 min_batch 中的每个条目都将为-filepath，如果输入为 TabularDataset，则为 Pandas 数据帧。
+    -  `response`：run() 方法应返回 Pandas 数据帧或数组。 对于 append_row output_action，这些返回的元素将追加到公共输出文件中。 对于 summary_only，将忽略元素的内容。 对于所有的输出操作，每个返回的输出元素都指示输入微型批处理中输入元素的一个成功推理。 用户应确保推理结果中包含足够的数据，以便将输入映射到推理。 推理输出将写入输出文件中，并且不保证按顺序写入，用户应使用输出中的某些键将其映射到输入。
 
 ```python
-# Snippets from a sample scoring script
-# Refer to the accompanying batch-scoring Notebook
-# https://github.com/Azure/MachineLearningNotebooks/blob/master/pipeline/pipeline-batch-scoring.ipynb
-# for the implementation script
+# Snippets from a sample script.
+# Refer to the accompanying digit_identification.py
+# (https://github.com/Azure/MachineLearningNotebooks/blob/master/pipeline/digit_identification.py)
+# for the implementation script.
 
-# Get labels
-def get_class_label_dict(label_file):
-  label = []
-  proto_as_ascii_lines = tf.gfile.GFile(label_file).readlines()
-  for l in proto_as_ascii_lines:
-    label.append(l.rstrip())
-  return label
+import os
+import numpy as np
+import tensorflow as tf
+from PIL import Image
+from azureml.core import Model
 
-class DataIterator:
-  # Definition of the DataIterator here
 
-def main(_):
-    # Refer to batch-scoring Notebook for implementation.
-    label_file_name = os.path.join(args.label_dir, "labels.txt")
-    label_dict = get_class_label_dict(label_file_name)
-    classes_num = len(label_dict)
-    test_feeder = DataIterator(data_dir=args.dataset_path)
-    total_size = len(test_feeder.labels)
+def init():
+    global g_tf_sess
 
-    # get model from model registry
-    model_path = Model.get_model_path(args.model_name)
-    with tf.Session() as sess:
-        test_images = test_feeder.input_pipeline(batch_size=args.batch_size)
-        with slim.arg_scope(inception_v3.inception_v3_arg_scope()):
-            input_images = tf.placeholder(tf.float32, [args.batch_size, image_size, image_size, num_channel])
-            logits, _ = inception_v3.inception_v3(input_images,
-                                                        num_classes=classes_num,
-                                                        is_training=False)
-            probabilities = tf.argmax(logits, 1)
+    # Pull down the model from the workspace
+    model_path = Model.get_model_path("mnist")
 
-        sess.run(tf.global_variables_initializer())
-        sess.run(tf.local_variables_initializer())
-        coord = tf.train.Coordinator()
-        threads = tf.train.start_queue_runners(sess=sess, coord=coord)
-        saver = tf.train.Saver()
-        saver.restore(sess, model_path)
-        out_filename = os.path.join(args.output_dir, "result-labels.txt")
+    # Construct a graph to execute
+    tf.reset_default_graph()
+    saver = tf.train.import_meta_graph(os.path.join(model_path, 'mnist-tf.model.meta'))
+    g_tf_sess = tf.Session()
+    saver.restore(g_tf_sess, os.path.join(model_path, 'mnist-tf.model'))
 
-        # copy the file to artifacts
-        shutil.copy(out_filename, "./outputs/")
+
+def run(mini_batch):
+    print(f'run method start: {__file__}, run({mini_batch})')
+    resultList = []
+    in_tensor = g_tf_sess.graph.get_tensor_by_name("network/X:0")
+    output = g_tf_sess.graph.get_tensor_by_name("network/output/MatMul:0")
+
+    for image in mini_batch:
+        # Prepare each image
+        data = Image.open(image)
+        np_im = np.array(data).reshape((1, 784))
+        # Perform inference
+        inference_result = output.eval(feed_dict={in_tensor: np_im}, session=g_tf_sess)
+        # Find the best probability, and add it to the result list
+        best_result = np.argmax(inference_result)
+        resultList.append("{}: {}".format(os.path.basename(image), best_result))
+
+    return resultList
 ```
 
-## <a name="build-and-run-the-batch-scoring-pipeline"></a>生成并运行批量评分管道
+## <a name="build-and-run-the-batch-inference-pipeline"></a>生成并运行批处理推理管道
+
+现在，你有了生成管道所需的一切。
 
 ### <a name="prepare-the-run-environment"></a>准备运行环境
 
-指定脚本的 conda 依赖项。 稍后创建管道步骤时，需要此对象。
+首先，指定脚本的依赖项。 稍后创建管道步骤时，将使用此对象。
 
 ```python
-from azureml.core.runconfig import DEFAULT_GPU_IMAGE
-from azureml.core.runconfig import RunConfiguration
+from azureml.core import Environment
 from azureml.core.conda_dependencies import CondaDependencies
+from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-cd = CondaDependencies.create(
-    pip_packages=["tensorflow-gpu==1.10.0", "azureml-defaults"])
+batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow"])
 
-# Runconfig
-amlcompute_run_config = RunConfiguration(conda_dependencies=cd)
-amlcompute_run_config.environment.docker.enabled = True
-amlcompute_run_config.environment.docker.gpu_support = True
-amlcompute_run_config.environment.docker.base_image = DEFAULT_GPU_IMAGE
-amlcompute_run_config.environment.spark.precache_packages = False
+batch_env = Environment(name="batch_environment")
+batch_env.python.conda_dependencies = batch_conda_deps
+batch_env.docker.enabled = True
+batch_env.docker.base_image = DEFAULT_CPU_IMAGE
+batch_env.spark.precache_packages = False
 ```
 
-### <a name="specify-the-parameter-for-your-pipeline"></a>指定管道的参数
+### <a name="specify-the-parameters-for-your-batch-inference-pipeline-step"></a>为批处理推理管道步骤指定参数
 
-使用带默认值的 [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) 对象创建一个管道参数。
+`ParallelRunConfig` 是新引入的批处理推理 `ParallelRunStep` 实例在 Azure 机器学习管道中的主要配置。 使用它来包装脚本并配置所需的参数，包括所有以下各项：
+- `entry_script`：作为将在多个节点上并行运行的本地文件路径的用户脚本。 如果 `source_directly` 存在，则使用相对路径。 否则，请使用计算机上可访问的任何路径。
+- `mini_batch_size`：传递给单个 `run()` 调用的微型批处理的大小。 （可选；默认值为 `1`。）
+    - 对于 `FileDataset`，它是最小值为 `1` 的文件数。 可以将多个文件合并成一个微型批处理。
+    - 对于 `TabularDataset`，它是数据的大小。 示例值为 `1024`、`1024KB`、`10MB` 和 `1GB`。 建议值为 `1MB`。 请注意，`TabularDataset` 中的微型批处理永远不会跨越文件边界。 例如，如果你有各种大小的 .csv 文件，最小的文件为 100 KB，最大的文件为 10 MB。 如果设置 `mini_batch_size = 1MB`，则大小小于 1 MB 的文件将被视为一个微型批处理。 大小大于 1 MB 的文件将被拆分为多个微型批处理。
+- `error_threshold`：在处理过程中应忽略的 `TabularDataset` 记录失败数和 `FileDataset` 文件失败数。 如果整个输入的错误计数超出此值，则作业将停止。 错误阈值适用于整个输入，而不仅适用于发送给 `run()` 方法的单个微型批处理。 范围为 `[-1, int.max]`。 `-1` 部分指示在处理过程中忽略所有失败。
+- `output_action`：以下值之一指示将如何组织输出：
+    - `summary_only`：用户脚本将存储输出。 `ParallelRunStep` 仅将输出用于错误阈值计算。
+    - `append_row`：对于所有输入文件，将只在输出文件夹中创建一个文件，以追加按行分隔的所有输出。 文件名将为 parallel_run_step.txt。
+- `source_directory`：文件夹的路径，这些文件夹包含要在计算目标上执行的所有文件（可选）。
+- `compute_target`：仅支持 `AmlCompute`。
+- `node_count`：用于运行用户脚本的计算节点数。
+- `process_count_per_node`：每个节点的进程数。
+- `environment`：Python 环境定义。 你可以将其配置为使用现有的 Python 环境进行试验，或设置临时环境进行试验。 定义还负责设置所需的应用程序依赖项（可选）。
+- `logging_level`：日志详细程度。 递增详细程度的值为：`WARNING`、`INFO` 和 `DEBUG`。 默认值为 `INFO`（可选）。
+- `run_invocation_timeout`：`run()` 方法调用超时（以秒为单位）。 默认值为 `60`。
 
 ```python
-from azureml.pipeline.core.graph import PipelineParameter
-batch_size_param = PipelineParameter(
-    name="param_batch_size",
-    default_value=20)
+from azureml.contrib.pipeline.steps import ParallelRunConfig
+
+parallel_run_config = ParallelRunConfig(
+    source_directory=scripts_folder,
+    entry_script="digit_identification.py",
+    mini_batch_size="5",
+    error_threshold=10,
+    output_action="append_row",
+    environment=batch_env,
+    compute_target=compute_target,
+    node_count=4)
 ```
 
 ### <a name="create-the-pipeline-step"></a>创建管道步骤
 
-使用脚本、环境配置和参数创建管道步骤。 将已附加到工作区的计算目标指定为执行脚本时的目标。 使用 [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) 创建管道步骤。
+使用脚本、环境配置和参数创建管道步骤。 将已附加到工作区的计算目标指定为脚本的执行目标。 使用 `ParallelRunStep` 创建批处理推理管道步骤，该步骤采用以下所有参数：
+- `name`：步骤的名称，但具有以下命名限制：唯一、3-32 个字符和正则表达式 ^\[a-z\]([-a-z0-9]*[a-z0-9])?$。
+- `models`：在 Azure 机器学习模型注册表中已注册的零个或多个模型名称。
+- `parallel_run_config`：`ParallelRunConfig` 对象，如前文所述。
+- `inputs`：一个或多个单类型 Azure 机器学习数据集。
+- `output`：与输出目录相对应的 `PipelineData` 对象。
+- `arguments`：传递给用户脚本的参数的列表（可选）。
+- `allow_reuse`：当使用相同的设置/输入运行时，该步骤是否应重用以前的结果。 如果此参数为 `False`，则在管道执行过程中将始终为此步骤生成新的运行。 （可选；默认值为 `True`。）
 
 ```python
-from azureml.pipeline.steps import PythonScriptStep
-inception_model_name = "inception_v3.ckpt"
+from azureml.contrib.pipeline.steps import ParallelRunStep
 
-batch_score_step = PythonScriptStep(
-    name="batch_scoring",
-    script_name="batch_score.py",
-    arguments=["--dataset_path", input_images,
-               "--model_name", "inception",
-               "--label_dir", label_dir,
-               "--output_dir", output_dir,
-               "--batch_size", batch_size_param],
-    compute_target=compute_target,
-    inputs=[input_images, label_dir],
-    outputs=[output_dir],
-    runconfig=amlcompute_run_config,
-    source_directory=scripts_folder
+parallelrun_step = ParallelRunStep(
+    name="batch-mnist",
+    models=[model],
+    parallel_run_config=parallel_run_config,
+    inputs=[named_mnist_ds],
+    output=output_dir,
+    arguments=[],
+    allow_reuse=True
+)
 ```
 
 ### <a name="run-the-pipeline"></a>运行管道
 
-现在请运行管道并检查其生成的输出。 输出会有一个与每个输入图像相对应的分数。
+现在请运行管道。 首先，使用工作区引用和创建的管道步骤创建一个 `Pipeline` 对象。 `steps` 参数是步骤数组。 在本例中，批量评分只有一个步骤。 若要生成包含多个步骤的管道，请将步骤按顺序放入此数组。
+
+接下来，使用 `Experiment.submit()` 函数提交管道以供执行。
 
 ```python
-import pandas as pd
 from azureml.pipeline.core import Pipeline
+from azureml.core.experiment import Experiment
 
-# Run the pipeline
-pipeline = Pipeline(workspace=ws, steps=[batch_score_step])
-pipeline_run = Experiment(ws, 'batch_scoring').submit(
-    pipeline, pipeline_params={"param_batch_size": 20})
+pipeline = Pipeline(workspace=ws, steps=[parallelrun_step])
+pipeline_run = Experiment(ws, 'digit_identification').submit(pipeline)
+```
 
-# Wait for the run to finish (this might take several minutes)
+## <a name="monitor-the-batch-inference-job"></a>监视批处理推理作业
+
+批处理推理作业可能需要很长时间才能完成。 此示例使用 Jupyter 小组件监视进度。 你还可以使用以下项来管理作业的进度：
+
+* Azure 机器学习工作室。 
+* 来自 [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py) 对象的控制台输出。
+
+```python
+from azureml.widgets import RunDetails
+RunDetails(pipeline_run).show()
+
 pipeline_run.wait_for_completion(show_output=True)
-
-# Download and review the output
-step_run = list(pipeline_run.get_children())[0]
-step_run.download_file("./outputs/result-labels.txt")
-
-df = pd.read_csv("result-labels.txt", delimiter=":", header=None)
-df.columns = ["Filename", "Prediction"]
-df.head()
-```
-
-## <a name="publish-the-pipeline"></a>发布管道
-
-对运行结果满意以后，请发布管道，以便以后使用不同的输入值来运行它。 发布管道时，你会获得一个 REST 终结点。 此终结点允许使用已通过 [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) 纳入的参数集来调用管道。
-
-```python
-published_pipeline = pipeline_run.publish_pipeline(
-    name="Inception_v3_scoring",
-    description="Batch scoring using Inception v3 model",
-    version="1.0")
-```
-
-## <a name="rerun-the-pipeline-by-using-the-rest-endpoint"></a>使用 REST 终结点重新运行管道
-
-若要重新运行管道，需要一个 Azure Active Directory 身份验证标头令牌，如 [AzureCliAuthentication 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py)中所述。
-
-```python
-from azureml.pipeline.core.run import PipelineRun
-from azureml.pipeline.core import PublishedPipeline
-
-rest_endpoint = published_pipeline.endpoint
-# specify batch size when running the pipeline
-response = requests.post(rest_endpoint,
-                         headers=aad_token,
-                         json={"ExperimentName": "batch_scoring",
-                               "ParameterAssignments": {"param_batch_size": 50}})
-
-# Monitor the run
-published_pipeline_run = PipelineRun(ws.experiments["batch_scoring"], run_id)
-
-RunDetails(published_pipeline_run).show()
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-若要查看此端到端工作，请在[GitHub](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)中尝试使用 batch 计分笔记本，或访问[Azure 体系结构中心](/azure/architecture/reference-architectures/ai/batch-scoring-python)来查看示例解决方案体系结构。
+若要了解此过程的端到端运行机制，请尝试[批处理推理笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/)。 
+
+有关管道的调试和故障排除指南，请参阅[操作指南](how-to-debug-pipelines.md)。
+
+[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
+

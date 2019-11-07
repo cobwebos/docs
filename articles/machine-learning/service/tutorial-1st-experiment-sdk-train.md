@@ -9,15 +9,17 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 09/03/2019
-ms.openlocfilehash: c78a45cedbeb5cfa0f0cc7c5c976fceb36f1da2a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 11/04/2019
+ms.openlocfilehash: b5b3ca127aba62b39bd7236412d4c6a542347db3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173306"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476171"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>教程：训练第一个 ML 模型
+
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本教程是由两个部分构成的系列教程的第二部分  。 在上一篇教程中，你[创建了一个工作区并选择了一个开发环境](tutorial-1st-experiment-sdk-setup.md)。 本教程介绍 Azure 机器学习中的基础设计模式，并基于糖尿病数据集训练一个简单的 scikit-learn 模型。 完成本教程后，你将获得 SDK 的实践知识，继而可以开发更复杂的试验和工作流。
 
@@ -37,7 +39,7 @@ ms.locfileid: "72173306"
 
 ## <a name="open-the-notebook"></a>打开笔记本
 
-1. 登录到[工作区登陆页面](https://ml.azure.com/)。
+1. 登录到 [Azure 机器学习工作室](https://ml.azure.com/)。
 
 1. 打开[第一部分](tutorial-1st-experiment-sdk-setup.md#open)中所示的文件夹中的 **tutorial-1st-experiment-sdk-train.ipynb**。
 
@@ -62,7 +64,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-现在，请在工作区中创建一个试验。 试验是代表一系列试运行（各个模型运行）的另一个基础云资源。 本教程使用试验来创建运行并在 Azure 门户中跟踪模型训练。 参数包含工作区引用，以及试验的字符串名称。
+现在，请在工作区中创建一个试验。 试验是代表一系列试运行（各个模型运行）的另一个基础云资源。 本教程使用试验来创建运行并在 Azure 机器学习工作室中跟踪模型训练。 参数包含工作区引用，以及试验的字符串名称。
 
 
 ```python
@@ -72,15 +74,17 @@ experiment = Experiment(workspace=ws, name="diabetes-experiment")
 
 ## <a name="load-data-and-prepare-for-training"></a>加载数据并准备训练
 
-本教程使用糖尿病数据集，它是 scikit-learn 中包含的预规范化数据集。 此数据集使用年龄、性别和 BMI 等特征来预测糖尿病的发展阶段。 从 `load_diabetes()` 静态函数加载数据，并使用 `train_test_split()` 将其拆分为训练集和测试集。 此函数将隔离数据，以便在训练后为模型提供不可见的数据进行测试。
+对于本教程，使用糖尿病数据集，其中使用年龄、性别和 BMI 等特征来预测糖尿病的发展阶段。 从 [Azure 开放数据集](https://azure.microsoft.com/services/open-datasets/)类加载数据，并使用 `train_test_split()` 将其拆分为训练集和测试集。 此函数将隔离数据，以便在训练后为模型提供不可见的数据进行测试。
 
 
 ```python
-from sklearn.datasets import load_diabetes
+from azureml.opendatasets import Diabetes
 from sklearn.model_selection import train_test_split
 
-X, y = load_diabetes(return_X_y = True)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=66)
+x_df = Diabetes.get_tabular_dataset().to_pandas_dataframe().dropna()
+y_df = x_df.pop("Y")
+
+X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=66)
 ```
 
 ## <a name="train-a-model"></a>训练模型
@@ -193,19 +197,9 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 如果打算运行其他 Azure 机器学习教程，请不要完成本部分。
 
-### <a name="stop-the-notebook-vm"></a>停止笔记本 VM
+### <a name="stop-the-compute-instance"></a>停止计算实例
 
-如果你使用了云笔记本服务器，请停止未使用的 VM，以降低成本。
-
-1. 在工作区中，选择“笔记本 VM”。 
-
-   ![停止 VM 服务器](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
-
-1. 从列表中选择 VM。
-
-1. 选择“停止”  。
-
-1. 准备好再次使用服务器时，选择“启动”  。
+[!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 
 ### <a name="delete-everything"></a>删除所有内容
 

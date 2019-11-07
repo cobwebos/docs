@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36cb3b1555a339249528e290e376454dd78f1e53
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 7a23f8fc10e0e5a19be1f93cc6d6e5e8e301f86d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509061"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474021"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>快速入门：使用 Azure Active Directory 条件访问要求针对特定应用进行 MFA
 
@@ -66,7 +66,7 @@ ms.locfileid: "67509061"
 **若要配置条件访问策略，请执行以下操作：**
 
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
-1. 在 Azure 门户的左侧导航栏中，单击“Azure Active Directory”。 
+1. 在 Azure 门户中，搜索并选择“Azure Active Directory”。 
 
    ![Azure Active Directory](./media/app-based-mfa/02.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "67509061"
 
 1. 在“新建”页面的“名称”文本框中，键入“需要 MFA 才能访问 Azure 门户”    。
 
-   ![名称](./media/app-based-mfa/05.png)
+   ![Name](./media/app-based-mfa/05.png)
 
 1. 在“分配”部分中，单击“用户和组”。  
 

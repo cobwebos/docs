@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 27578e50c56a9c7dac3d74b88e14d0f8fbe9d402
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 97622df578b6c1357601b32a22c806e9eef77c96
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784995"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466877"
 ---
-# <a name="introduction-to-ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充简介
+# <a name="introduction-to-ai-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 简介
 
-AI 扩充是 Azure 认知搜索索引的一项功能，用于从图像、Blob 和其他非结构化的数据源中提取文本，这样就可以丰富内容，使其在索引或知识存储中更易于搜索。 通过附加到索引管道的“认知技能”来实现提取和丰富  。 认知技能分为以下类别： 
+AI 扩充是 Azure 认知搜索索引的一项功能，用于从图像、Blob 和其他非结构化的数据源中提取文本，这样就可以丰富内容，使其在索引或知识存储中更易于搜索。 通过附加到索引管道的“认知技能”来实现提取和丰富  。 服务内置的认知技能分为以下几类： 
 
 + “自然语言处理”技能包括[实体识别](cognitive-search-skill-entity-recognition.md)、[语言检测](cognitive-search-skill-language-detection.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、文本操作和[情绪检测](cognitive-search-skill-sentiment.md)  。 通过这些技能，非结构化文本可以假定新窗体，在索引中映射为可搜索和可筛选字段。
 
@@ -36,6 +36,12 @@ Azure 认知搜索中的认知技能基于认知服务 API 中的机器学习模
 
 ## <a name="when-to-use-cognitive-skills"></a>何时使用认知技能
 
+如果原始内容为非结构化文本、图像内容或需要语言检测和翻译的内容，则应考虑使用内置认知技能。 通过内置认知技能应用 AI，可以对此内容进行解锁，在搜索和数据科学应用中提高其价值和实用性。 
+
+此外，如果你有要集成到管道中的开源、第三方或第一方代码，则可以考虑添加自定义技能。 标识各种文档类型的突出特征的分类模型属于此类别，但也可以使用将值添加到内容的任何包。
+
+### <a name="more-about-built-in-skills"></a>有关内置技能的详细信息
+
 使用内置技能组合起来的技能组非常适合以下应用方案：
 
 + 需要对其启用全文搜索的已扫描文档 (JPEG)。 可以附加光学字符识别 (OCR) 技能，以便标识、提取和引入 JPEG 文件中的文本。
@@ -49,6 +55,8 @@ Azure 认知搜索中的认知技能基于认知服务 API 中的机器学习模
   具体说来，Blob 通常包含大量的内容，这些内容打包到单个“字段”中。 将图像和自然语言处理技能附加到索引器以后，即可创建新信息，该信息存在于原始内容中，但在其他情况下并不显示为非重复字段。 某些对你有帮助的可用内置认知技能：关键短语提取、情绪分析、实体识别（人、组织和位置）。
 
   另外，内置技能还可以用来通过文本拆分、合并和形状操作来重新构造内容。
+
+### <a name="more-about-custom-skills"></a>有关自定义技能的详细信息
 
 自定义技能可以支持更复杂的方案，例如识别表单，或者使用你提供的模型进行自定义实体检测，以及在[自定义技能 Web 界面](cognitive-search-custom-skill-interface.md)中进行包装。 自定义技能的一些示例：[表单识别器](/azure/cognitive-services/form-recognizer/overview)、集成[必应实体搜索 API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)、[自定义实体识别](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)。
 

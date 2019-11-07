@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 08a18dc115990ad7d44a8b20412e07995c9af390
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 07b47374484cf954b1fc4279c93dddcc6cec7e61
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069510"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470570"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>创建和使用内部负载均衡器应用服务环境 
 
@@ -31,7 +31,7 @@ Azure 应用服务环境是指将 Azure 应用服务部署到 Azure 虚拟网络
 
 ## <a name="overview"></a>概述 
 
-可以使用可访问 Internet 的终结点或 VNet 中的 IP 地址部署 ASE。 若要将 IP 地址设置为 VNet 地址，必须为 ASE 部署 ILB。 为 ASE 部署 ILB 时，必须提供 ASE 的名称。 该 ASE 名称将在 ASE 内的应用的域后缀中使用。  ILB ASE 的域后缀是 &lt;ASE 名称&gt;.appservicewebsites.net。 在 ILB ASE 中创建的应用不会被放入公共 DNS 中。 
+可以使用可访问 Internet 的终结点或 VNet 中的 IP 地址部署 ASE。 若要将 IP 地址设置为 VNet 地址，必须为 ASE 部署 ILB。 为 ASE 部署 ILB 时，必须提供 ASE 的名称。 该 ASE 名称将在 ASE 内的应用的域后缀中使用。  ILB ASE 的域后缀是 &lt;ASE 名称&gt;.appserviceenvironment.net。 在 ILB ASE 中创建的应用不会被放入公共 DNS 中。 
 
 早期版本的 ILB ASE 要求提供一个域后缀和一个用于建立 HTTPS 连接的默认证书。 创建 ILB ASE 时不再收集域后缀，且不再收集默认证书。 现在，在创建 ILB ASE 时，默认证书将由 Microsoft 提供，并受浏览器的信任。 仍可以在 ASE 中的应用上设置自定义域名，并在这些自定义域名中设置证书。 
 
@@ -107,9 +107,10 @@ ILB ASE 上同时支持函数和 Web 作业，但对于与其配合使用的门�
 若要配置 DNS：
 
 - 为 *&lt;ASE 名称&gt;.appserviceenvironment.net* 创建一个区域
-- 在该区域中创建一条指向* ILB IP 地址的 A 记录 
+- 在该区域中创建一条指向* ILB IP 地址的 A 记录
+- 在该区域中创建一条指向 @ ILB IP 地址的 A 记录
 - 在 *&lt;ASE 名称&gt;.appserviceenvironment.net* 中创建名为 scm 的区域
-- 在 scm 区域中创建一条指向 ILB IP 地址的 A 记录
+- 在 scm 区域中创建一条指向 * ILB IP 地址的 A 记录
 
 ## <a name="publish-with-an-ilb-ase"></a>使用 ILB ASE 发布
 
@@ -156,7 +157,7 @@ ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 此�
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

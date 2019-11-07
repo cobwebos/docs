@@ -8,24 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 09/19/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: e2af5cb193653736a0d75b4194e09d42282d2fa6
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 6b55ce851bb12e37aed37039889aa8e69223a286
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203783"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467188"
 ---
 # <a name="what-is-personalizer"></a>什么是个性化体验创建服务？
 
-Azure 个性化体验创建服务是基于云的 API 服务，可让你选择要显示给用户的最佳体验，并从其实时行为中学习信息。
+Azure 个性化体验创建服务是基于云的 API 服务，可让你选择要显示给用户的最佳体验，并从其集体实时行为中学习信息。
 
 * 提供有关用户和内容的信息，并接收要显示给用户的排名最高的操作。 
 * 无需清理和标记数据即可使用个性化体验创建服务。
 * 在方便的时候向个性化体验创建服务提供反馈。 
 * 查看实时分析。 
-* 在较大规模的数据科学工作中使用个性化体验创建服务来验证现有试验。
+
+观看[个性化体验创建服务工作方式](https://personalizercontentdemo.azurewebsites.net/)的演示
 
 ## <a name="how-does-personalizer-work"></a>个性化体验创建服务的工作原理
 
@@ -37,9 +38,9 @@ Azure 个性化体验创建服务是基于云的 API 服务，可让你选择要
 
 1. 在应用中选择要个性化的体验。
 1. 在 Azure 门户中创建并配置个性化服务的实例。 每个实例都是一个个性化体验创建服务循环。
-1. 结合有关用户的信息（特征）以及内容（操作）使用 SDK 调用个性化体验创建服务。   使用个性化体验创建服务之前，无需提供清理的带标签的数据。 
+1. 结合有关用户的信息（特征）以及内容（操作）使用 [Rank API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank) 调用个性化体验创建服务。   使用个性化体验创建服务之前，无需提供清理的带标签的数据。 可以直接调用 API，也可以使用适用于不同编程语言的 SDK。
 1. 在客户端应用程序中，向用户显示个性化体验创建服务选择的操作。
-1. 使用 SDK 向个性化体验创建服务提供反馈，指示用户是否选择了个性化体验创建服务的操作。 这是 _[奖励评分](concept-rewards.md)_ 。
+1. 使用 [Reward API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) 向个性化体验创建服务提供反馈，指示用户是否选择了个性化体验创建服务的操作。 这是 _[奖励评分](concept-rewards.md)_ 。
 1. 在 Azure 门户中查看分析，以评估系统的工作状态以及数据为个性化提供的帮助大小。
 
 ## <a name="where-can-i-use-personalizer"></a>可在哪种场合下使用个性化体验创建服务？

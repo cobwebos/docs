@@ -8,27 +8,30 @@ ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 7852eda849dfb05343829875ba5a66fa47970e7e
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 03f28cb40708b7ec77a0a342b5ec1b6faeaa8e3b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790069"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485151"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>使用 Power BI 连接知识存储
 
 > [!Note]
-> 知识存储目前以预览版提供，不应在生产环境中使用。 [Azure 认知搜索 REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供此功能。 目前不支持 .NET SDK。
+> 知识存储目前以预览版提供，不应在生产环境中使用。 门户和[搜索 REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供此功能。 目前不支持 .NET SDK。
 >
-本文介绍如何使用 Power BI Desktop 应用中的 Power Query 来连接和浏览知识存储。 若要创建本演练中使用的知识存储示例，请参阅[在 Azure 门户中创建知识存储](knowledge-store-create-portal.md)。
+
+本文介绍如何使用 Power BI Desktop 应用中的 Power Query 来连接和浏览知识存储。 使用模板可以更快地开始操作，也可以从头开始构建自定义仪表板。
 
 ## <a name="prerequisites"></a>先决条件
 
-+ 按照[在 Azure 门户中创建知识存储](knowledge-store-create-portal.md)中的步骤创建本演练中使用的示例知识存储。 还需要用于创建知识存储的 Azure 存储帐户的名称，以及从 Azure 门户获得的其访问密钥。
-
 + [安装 Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 
-## <a name="connect-with-power-bi"></a>使用 Power BI 进行连接
++ 你将需要一个包含在 Azure 表存储中的知识存储。 还需要用于创建知识存储的 Azure 存储帐户的名称，以及从 Azure 门户获得的其访问密钥。
+
+如果要使用示例知识库，请按照说明[创建知识库存储](knowledge-store-create-portal.md)。
+
+## <a name="create-a-custom-report"></a>创建自定义报表
 
 1. 启动 Power BI Desktop 并单击“获取数据”。 
 

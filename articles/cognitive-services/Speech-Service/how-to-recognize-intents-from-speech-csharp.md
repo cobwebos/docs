@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: cf5bf3dfd7b6a408179bb267156433168e562a8e
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 7f42d5914a2ec7f479a8b3d1df1b8672f318036b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326830"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464623"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>教程：使用适用于 C# 的语音 SDK 从语音中识别意向
 
@@ -45,11 +45,12 @@ ms.locfileid: "71326830"
 
 LUIS 与语音服务集成，可从语音中识别意向。 不需要语音服务订阅，只需要 LUIS。
 
-LUIS 使用两种密钥：
+LUIS 使用三种密钥：
 
 |密钥类型|目的|
 |--------|-------|
 |创作|用于以编程方式创建和修改 LUIS 应用|
+|入门|仅允许使用纯文本测试 LUIS 应用程序|
 |终结点 |授权访问特定的 LUIS 应用|
 
 对于本教程，需要使用终结点密钥类型。 本教程使用一个示例家庭自动化 LUIS 应用，可以遵循[使用预生成的家庭自动化应用](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)快速入门来创建该应用。 如果你已创建自己的 LUIS 应用，可以改用该应用。
@@ -195,4 +196,4 @@ result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_Js
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [如何识别语音](quickstart-csharp-dotnetcore-windows.md)
+> [如何识别语音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)

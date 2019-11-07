@@ -8,12 +8,12 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: be918ecef3a9fb346d9aa441bef9b4c3991009d6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bc013469610d5535c89870947fe094da93660012
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60530865"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488424"
 ---
 # <a name="app-service-documentation"></a>应用服务文档
 使用 Azure 应用服务，可以采用所选编程语言构建和托管 Web 应用程序，不需要对基础结构进行管理，也不需要对语言或 Web 框架运行时进行管理。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps Services 或任何 Git 存储库进行自动部署。 可以参考我们的快速入门、教程和示例来了解如何使用 Azure 应用服务。
@@ -42,7 +42,7 @@ ms.locfileid: "60530865"
   - [将 Java 与 MySQL 配合使用](/app-service/app-service-web-tutorial-java-mysql)
   - [将 Python 与 PostgreSQL 配合使用](/app-service/containers/tutorial-python-postgresql-app)
 - [将现有自定义域映射到应用程序](/azure/app-service/app-service-web-tutorial-custom-domain)
-- [将现有 SSL 证书绑定到应用程序](/azure/app-service/app-service-web-tutorial-custom-SSL)
+- [将 SSL 证书绑定到应用程序](/azure/app-service/configure-ssl-bindings)
 
 ## <a name="free-pluralsight-video-training"></a>免费 Pluralsight 视频培训
 

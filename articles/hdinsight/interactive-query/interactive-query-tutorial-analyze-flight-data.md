@@ -1,5 +1,5 @@
 ---
-title: 教程：在 Azure HDInsight 中使用交互式查询执行 ETL 操作
+title: 教程：使用交互式查询执行 ETL 操作 - Azure HDInsight
 description: 教程 - 了解如何从原始 CSV 数据集提取数据，在 HDInsight 上使用交互式查询将其转换，然后使用 Apache Sqoop 将已转换的数据加载到 Azure SQL 数据库。
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/02/2019
 ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: 9ff215bb687ea2b6aa32ecb01dba7a61385b15a4
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: d1136c153a529f58db1de277ec84ac332b9f78ae
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735835"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494160"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用交互式查询提取、转换和加载数据
 

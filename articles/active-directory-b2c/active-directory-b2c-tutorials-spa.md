@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 07/24/2019
+ms.date: 10/14/2019
 ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9b3d18a7f59415b27b1a70067c9a8a610140ca25
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: f6a417e33ac9c60c978d8638539a1e5a0772a034
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672922"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475062"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>教程：使用 Azure Active Directory B2C (Azure AD B2C) 在单页应用程序中启用身份验证
 
@@ -48,6 +48,10 @@ ms.locfileid: "71672922"
 
 在按照先决条件完成的第二个教程中，你已在 Azure AD B2C 中注册了 Web 应用程序。 若要与教程中的示例通信，需添加一个指向 Azure AD B2C 中的应用程序的重定向 URI。
 
+你可以使用当前的“应用程序”体验，或者使用我们新推出的统一“应用注册(预览版)”体验来更新应用程序   。 [详细了解预览版体验](http://aka.ms/b2cappregintro)。
+
+#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
@@ -55,6 +59,19 @@ ms.locfileid: "71672922"
 1. 在“回复 URL”下添加 `http://localhost:6420`。 
 1. 选择“保存”。 
 1. 在属性页上记录“应用程序 ID”。  在后面的步骤中，当你在单页 Web 应用程序中更新代码时，需使用此应用 ID。
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册(预览版)](#tab/app-reg-preview/)
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 在顶部菜单中选择“目录 + 订阅”  筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 在左侧菜单中，选择“Azure AD B2C”  。 或者，选择“所有服务”  并搜索并选择“Azure AD B2C”  。
+1. 依次选择“应用注册(预览版)”、“拥有的应用程序”选项卡，然后选择“webapp1”应用程序    。
+1. 选择“身份验证”，然后选择“尝试新体验”（如果显示）   。
+1. 在“Web”下，选择“添加 URI”链接，输入 `http://localhost:6420`，然后选择“保存”    。
+1. 选择“概述”。 
+1. 记录“应用程序(客户端) ID”，以便稍后在单页 Web 应用程序中更新代码时使用  。
+
+* * *
 
 ## <a name="get-the-sample-code"></a>获取示例代码
 
@@ -115,13 +132,16 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 ### <a name="sign-up-using-an-email-address"></a>使用电子邮件地址注册
 
+> [!WARNING]
+> 注册或登录后，你可能会看到[“权限不足”错误](#error-insufficient-permissions)。 由于代码示例的当前实现，因此预期会出现此错误。 此问题将在代码示例的未来版本中解决，此时将删除此警告。
+
 1. 选择“登录”  以启动在前面步骤中指定的 B2C_1_signupsignin1  用户流。
 1. Azure AD B2C 会显示带注册链接的登录页面。 由于你还没有帐户，因此请选择“立即注册”链接。 
 1. 注册工作流会显示一个页面，用于收集用户的标识并通过电子邮件地址对其进行验证。 注册工作流还收集用户的密码和请求的属性（在用户流中定义）。
 
     请使用有效的电子邮件地址，并使用验证码进行验证。 设置密码。 输入请求的属性的值。
 
-    ![登录/注册用户流提供的注册页](./media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
+    ![登录/注册用户流提供的注册页](./media/active-directory-b2c-tutorials-spa/azure-ad-b2c-sign-up-workflow.png)
 
 1. 选择“创建”，  在 Azure AD B2C 目录中创建本地帐户。
 
@@ -131,7 +151,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 ### <a name="error-insufficient-permissions"></a>错误: 权限不足
 
-登录后，应用显示“权限不足”错误 - 这是**预期行为**：
+登录后，应用程序可能会返回“权限不足”错误：
 
 ```Output
 ServerError: AADB2C90205: This application does not have sufficient permissions against this web resource to perform the operation.
@@ -139,7 +159,7 @@ Correlation ID: ce15bbcc-0000-0000-0000-494a52e95cd7
 Timestamp: 2019-07-20 22:17:27Z
 ```
 
-你会收到此错误，是因为 Web 应用程序正在尝试访问受演示目录 fabrikamb2c  保护的 Web API。 由于你的访问令牌仅对 Azure AD 目录有效，因此 API 调用是未经授权的。
+你会收到此错误，是因为 Web 应用程序正在尝试访问受演示目录 fabrikamb2c  保护的 Web API。 由于你的访问令牌仅对 Azure AD 目录有效，因此此 API 调用是未经授权的。
 
 若要修复此错误，请继续学习本系列中的下一教程（请参阅[后续步骤](#next-steps)），了解如何为目录创建受保护的 Web API。
 

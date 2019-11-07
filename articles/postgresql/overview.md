@@ -7,15 +7,15 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 05/06/2019
-ms.openlocfilehash: 5194cf51fd7f1debeba76edb48e8377919ae448a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 9d4389ed2c0cc5d7b632380fba691ae2e9a6b257
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177950"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466749"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>什么是用于 PostgreSQL 的 Azure 数据库？
-Azure Database for PostgreSQL 是 Microsoft 云中为开发人员构建的关系型数据库服务。 它基于开源 [PostgreSQL](https://www.postgresql.org/) 数据库引擎的社区版本，提供两部署选项：单一服务器和超大规模 (Citus)（预览版）。
+Azure Database for PostgreSQL 是 Microsoft 云中为开发人员构建的关系型数据库服务。 它基于开源 [PostgreSQL](https://www.postgresql.org/) 数据库引擎的社区版本，提供两部署选项：单一服务器和超大规模 (Citus)。
 
 ## <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器
 “单一服务器”部署选项提供：
@@ -32,7 +32,7 @@ Azure Database for PostgreSQL 是 Microsoft 云中为开发人员构建的关系
 
 “单一服务器”部署选项提供三个定价层：“基本”、“常规用途”和“内存优化”。 每个层提供不同的资源功能以支持数据库工作负荷。 可以在一个月内花费很少的费用基于小型数据库构建第一个应用，然后根据解决方案的需求调整缩放。 动态可伸缩性使得数据库能够以透明方式对不断变化的资源需求做出响应。 只需在需要资源时为所需的资源付费。 有关详细信息，请参阅 [定价层](concepts-pricing-tiers.md)。
 
-## <a name="azure-database-for-postgresql---hyperscale-citus-preview"></a>Azure Database for PostgreSQL - 超大规模 (Citus)（预览版）
+## <a name="azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - 超大规模 (Citus)
 “超大规模(Citus)”选项可以使用分片跨多个计算机来水平缩放查询。 其查询引擎会将这些服务器的传入 SQL 查询并行化，加快大型数据集上的响应。 它为需要更大规模和更高性能的应用程序提供服务，通常情况下工作负荷接近或超过 100 GB 的数据。
 
 “超大规模(Citus)”部署选项提供：
@@ -42,8 +42,6 @@ Azure Database for PostgreSQL 是 Microsoft 云中为开发人员构建的关系
 - 为多租户应用程序提供卓越的支持，并支持实时运营分析以及高吞吐量事务工作负荷
 
 针对 PostgreSQL 构建的应用程序可以在超大规模 (Citus) 部署的基础上运行分布式查询，使用标准的[连接库](./concepts-connection-libraries.md)，基本不需要什么更改。
-
-请注意，超大规模 (Citus) 为公共预览版，因此尚不提供 SLA。
 
 ## <a name="data-security"></a>数据安全
 Azure Database for PostgreSQL 沿袭了 Azure 数据库服务的数据安全传统。 其功能包括限制访问、保护静态数据和移动数据，以及帮助监视活动。 有关 Azure 平台安全性的信息，请访问 [Azure 信任中心](https://azure.microsoft.com/overview/trusted-cloud/)。
@@ -59,5 +57,5 @@ Azure Database for PostgreSQL 服务使用 FIPS 140-2 验证的加密模块对�
 
 ## <a name="next-steps"></a>后续步骤
 - 有关成本比较和计算器，请参阅[定价页](https://azure.microsoft.com/pricing/details/postgresql/)。
-- 开始时，请创建第一个 Azure Database for PostgreSQL [单一服务器](./quickstart-create-server-database-portal.md)或[超大规模 (Citus)（预览版）](./quickstart-create-hyperscale-portal.md)
+- 开始时，请创建第一个 Azure Database for PostgreSQL [单一服务器](./quickstart-create-server-database-portal.md)或[超大规模 (Citus)](./quickstart-create-hyperscale-portal.md)
 - 使用 Python、PHP、Ruby、C\#、Java、Node.js 构建第一个应用：[连接库](./concepts-connection-libraries.md)

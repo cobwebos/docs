@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 10/28/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 0892bde09891d2edbd7f8cc8715ccc0d2f047ed4
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 124a87728a8d201c329b15d94ae7e61a225646ab
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113472"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468447"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>教程：使用 Azure 门户部署和配置 Azure 防火墙
 
@@ -57,8 +57,8 @@ ms.locfileid: "70113472"
 资源组包含本教程所需的所有资源。
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-2. 在 Azure 门户主页上，选择“资源组” > “添加”   。
-3. 对于“资源组名称”，请键入 **Test-FW-RG**。 
+2. 在 Azure 门户菜单上，选择“资源组”或从任意页面搜索并选择“资源组”   。 然后选择“添加”  。
+3. 对于“资源组名称”，请输入“Test-FW-RG”   。
 4. 对于“订阅”，请选择自己的订阅。 
 5. 对于“资源组位置”，请选择一个位置。  创建的所有后续资源必须位于同一位置。
 6. 选择“创建”  。
@@ -70,22 +70,22 @@ ms.locfileid: "70113472"
 > [!NOTE]
 > AzureFirewallSubnet 子网的大小为 /26。 有关子网大小的详细信息，请参阅 [Azure 防火墙常见问题解答](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)。
 
-1. 在 Azure 门户主页上，选择“创建资源”。 
-2. 在“网络”下，选择“虚拟网络”。  
-4. 对于“名称”，请键入 **Test-FW-VN**。 
-5. 对于“地址空间”，请键入 **10.0.0.0/16**。 
-6. 对于“订阅”，请选择自己的订阅。 
-7. 对于“资源组”，请选择“Test-FW-RG”。  
-8. 对于“位置”，请选择前面使用的同一位置。 
-9. 在“子网”下，为“名称”键入 **AzureFirewallSubnet**。   防火墙将位于此子网中，子网名称**必须**是 AzureFirewallSubnet。
-10. 对于“地址范围”，请键入 **10.0.1.0/26**。 
-11. 接受其他默认设置，然后选择“创建”。 
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。
+1. 选择“网络” > “虚拟网络”。  
+1. 对于“名称”，请键入 **Test-FW-VN**。 
+1. 对于“地址空间”，请键入 **10.0.0.0/16**。 
+1. 对于“订阅”，请选择自己的订阅。 
+1. 对于“资源组”，请选择“Test-FW-RG”。  
+1. 对于“位置”，请选择前面使用的同一位置。 
+1. 在“子网”下，为“名称”键入 **AzureFirewallSubnet**。   防火墙将位于此子网中，子网名称**必须**是 AzureFirewallSubnet。
+1. 对于“地址范围”，请键入 **10.0.1.0/26**。 
+1. 接受其他默认设置，然后选择“创建”。 
 
 ### <a name="create-additional-subnets"></a>创建更多的子网
 
 接下来，为跳转服务器和工作负荷服务器创建子网。
 
-1. 在 Azure 门户主页上，选择“资源组” > “Test-FW-RG”   。
+1. 在 Azure 门户菜单上，选择“资源组”或从任意页面搜索并选择“资源组”   。 然后选择“Test-FW-RG”  "。
 2. 选择“Test-FW-VN”虚拟网络。 
 3. 选择“子网”   > “+子网”  。
 4. 对于“名称”，请键入 **Workload-SN**。 
@@ -98,7 +98,7 @@ ms.locfileid: "70113472"
 
 现在，创建跳转虚拟机和工作负荷虚拟机，并将其放入相应的子网。
 
-1. 在 Azure 门户中，选择“创建资源”。 
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。
 2. 选择“计算”，然后在“特色”列表中选择“Windows Server 2016 Datacenter”。  
 3. 输入虚拟机的以下值：
 
@@ -133,7 +133,7 @@ ms.locfileid: "70113472"
 
 将防火墙部署到 VNet。
 
-1. 在门户主页上，选择“创建资源”。 
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。
 2. 在搜索框中键入“防火墙”，然后按 **Enter**。 
 3. 选择“防火墙”，然后选择“创建”   。
 4. 在“创建防火墙”页上，使用下表配置防火墙： 
@@ -158,7 +158,7 @@ ms.locfileid: "70113472"
 
 对于“Workload-SN”子网，请配置要通过防火墙的出站默认路由。 
 
-1. 在 Azure 门户主页上，选择“所有服务”。 
+1. 在 Azure 门户菜单上，选择“所有服务”或在任何页面中搜索并选择“所有服务”   。
 2. 在“网络”下，选择“路由表”。  
 3. 选择 **添加** 。
 4. 对于“名称”，请键入 **Firewall-route**。 
@@ -209,19 +209,20 @@ Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则�
 3. 对于“名称”，请键入 **Net-Coll01**。 
 4. 对于“优先级”，请键入 **200**。 
 5. 对于“操作”，请选择“允许”。  
-
 6. 在“规则”下，为“名称”键入 **Allow-DNS**。  
 7. 对于“协议”，请选择“UDP”。  
 8. 对于“源地址”，请键入 **10.0.2.0/24**。 
 9. 对于“目标地址”，请键入 **209.244.0.3,209.244.0.4**
-10. 对于“目标端口”，请键入 **53**。 
-11. 选择 **添加** 。
+
+   这些是由 CenturyLink 操作的公共 DNS 服务器。
+1. 对于“目标端口”，请键入 **53**。 
+2. 选择 **添加** 。
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>更改 **Srv-Work** 网络接口的主要和辅助 DNS 地址
 
 为了在本教程中进行测试，请配置服务器的主要和辅助 DNS 地址。 这并不是一项常规的 Azure 防火墙要求。
 
-1. 在 Azure 门户中，打开“Test-FW-RG”资源组。 
+1. 在 Azure 门户菜单上，选择“资源组”或从任意页面搜索并选择“资源组”   。 选择“Test-FW-RG”资源组。 
 2. 选择 **Srv-Work** 虚拟机的网络接口。
 3. 在“设置”下，选择“DNS 服务器”。  
 4. 在“DNS 服务器”下，选择“自定义”。  
@@ -235,7 +236,6 @@ Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则�
 
 1. 在 Azure 门户中，查看 **Srv-Work** 虚拟机的网络设置并记下专用 IP 地址。
 2. 将远程桌面连接到 **Srv-Jump** 虚拟机，然后登录。 在该虚拟机中，与 **Srv-Work** 专用 IP 地址建立远程桌面连接。
-
 3. 打开 Internet Explorer 并浏览到 https://www.google.com 。
 4. 出现 Internet Explorer 安全警报时，请选择“确定” > “关闭”。  
 

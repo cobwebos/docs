@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/18/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: b99eafeae60e81fd7d902289a47190a2cbe1daa3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2a1fbe8d47af8a2215b0d0a3d81fbe67a62d4755
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786988"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474413"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>教程：创建和配置 Azure Active Directory 域服务实例
 
@@ -55,7 +55,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 若要启动“启用 Azure AD 域服务”  向导，请完成以下步骤：
 
-1. 在 Azure 门户的左上角选择“+ 创建资源”。 
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。
 1. 在搜索栏中输入“域服务”，然后从搜索建议中选择“Azure AD 域服务”。  
 1. 在“Azure AD 域服务”页上选择“创建”。  “启用 Azure AD 域服务”  向导随即启动。
 1. 选择要在其中创建托管域的 Azure“订阅”  。
@@ -87,7 +87,11 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 填写 Azure 门户的“基本信息”窗口中的字段，以创建 Azure AD DS 实例： 
 
 1. 输入托管域的 **DNS 域名**，并注意前面所述的问题。
-1. 选择应在其中创建托管域的 Azure“位置”  。
+1. 选择应在其中创建托管域的 Azure“位置”  。 如果选择支持可用性区域的区域，则 Azure AD DS 资源会跨区域分布以实现额外的冗余。
+
+    可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。
+
+    对于要跨区域分布 Azure AD DS，无需进行任何配置。 Azure 平台会自动处理资源的区域分配。 若要查看区域可用性的详细信息，请参阅[Azure 中的可用性区域是什么？][availability-zones]
 
     ![为 Azure AD 域服务实例配置基本设置](./media/tutorial-create-instance/basics-window.png)
 
@@ -117,7 +121,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
     ![成功预配后的域服务状态](./media/tutorial-create-instance/successfully-provisioned.png)
 
-我们会在 Azure Active Directory 租户和 Azure AD 域服务资源上预配 Azure AD 域服务，因为此服务在关联的 Azure 订阅中创建。 在预配过程中，Azure AD DS 会在 Azure Active Directory 实例（已在其中启用 Azure AD 域服务）中创建名为 *Domain Controller Services* 和 *AzureActiveDirectoryDomainControllerServices* 的两个企业应用程序。 需要这些企业应用程序来为托管域提供服务。  无论何时，都不得删除这些应用程序。
+托管域与 Azure AD 租户相关联。 在预配过程中，Azure AD DS 会在 Azure AD 租户中创建名为 Domain Controller Services  和 AzureActiveDirectoryDomainControllerServices  的两个企业应用程序。 需要这些企业应用程序来为托管域提供服务。 不要删除这些应用程序。
 
 ## <a name="update-dns-settings-for-the-azure-virtual-network"></a>更新 Azure 虚拟网络的 DNS 设置
 
@@ -188,6 +192,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+[availability-zones]: ../availability-zones/az-overview.md
 
 <!-- EXTERNAL LINKS -->
 [naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

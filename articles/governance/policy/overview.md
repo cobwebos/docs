@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
-ms.openlocfilehash: b8628d60110818fe64e5b09b400a1396213147b6
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 46d78ca9f82017e1a11642af6e5dcdc68e239c8a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980775"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498268"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Azure Policy 服务概述
 
@@ -48,12 +48,11 @@ Azure Policy 在两个资源提供程序中具有多个权限（称为操作）�
 
 在 Azure Policy 中，我们将提供一些默认可供使用的内置策略。 例如：
 
-- **需要 SQL Server 12.0**：验证是否所有 SQL Server 都使用版本 12.0。 其效果是拒绝所有不符合这些条件的服务器。
 - **允许的存储帐户 SKU**：确定正在部署的存储帐户是否在 SKU 大小集内。 其效果是拒绝所有不符合定义的 SKU 大小集的存储帐户。
 - **允许的资源类型**：定义可以部署的资源类型。 其效果是拒绝所有不属于此定义列表的资源。
 - **允许的位置**：限制新资源的可用位置。 其效果是用于强制执行异地符合性要求。
 - **允许的虚拟机 SKU**：指定可以部署的虚拟机 SKU 集。
-- **应用标记及其默认值**：如果部署请求未指定，则应用所需的标记及其默认值。
+- **向资源添加标记**：如果部署请求未指定，则应用所需的标记及其默认值。
 - **强制实施标记及其值**：对资源强制执行所需的标记及其值。
 - **不允许的资源类型**：禁止部署资源类型的列表。
 

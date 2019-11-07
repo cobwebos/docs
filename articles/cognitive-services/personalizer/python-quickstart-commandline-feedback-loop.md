@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/26/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 947ca0b603483479479285ff14636240d2ac7433
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 02c4e0142ed7b3719cc07306f089769c532d6653
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515186"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494427"
 ---
 # <a name="quickstart-personalizer-client-library-for-python"></a>快速入门：适用于 Python 的个性化体验创建服务客户端库
 
@@ -39,7 +39,7 @@ ms.locfileid: "72515186"
 使用此快速入门有几个步骤：
 
 * 在 Azure 门户中，创建一个个性化体验创建服务资源
-* 在 Azure 门户中，对于个性化体验创建服务资源，在“设置”  页上，更改模型更新频率
+* 在 Azure 门户中，对于个性化体验创建服务资源，在“配置”页上，更改模型更新频率 
 * 在代码编辑器中，创建一个代码文件并编辑该代码文件
 * 在命令行或终端中，从命令行安装 SDK
 * 在命令行或终端中，运行代码文件
@@ -70,7 +70,7 @@ pip install azure-cognitiveservices-personalizer
 
 ## <a name="change-the-model-update-frequency"></a>更改模型更新频率
 
-在 Azure 门户的“设置”  页上的个性化体验创建服务资源中，将“模型更新频率”  更改为 10 秒。 这将快速训练服务，使你可以看到顶部操作如何针对每次迭代而变化。
+在 Azure 门户的“配置”页上的个性化体验创建服务资源中，将“模型更新频率”更改为 10 秒   。 这将快速训练服务，使你可以看到顶部操作如何针对每次迭代而变化。
 
 ![更改模型更新频率](./media/settings/configure-model-update-frequency-settings.png)
 

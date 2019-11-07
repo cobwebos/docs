@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 5fb1050fed2ab7318ad5b4ecafec7a96a9324575
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: cf0332909e053a0875d41a00d15f196b193ba15e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792053"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466715"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充文档资源
 
@@ -22,8 +22,8 @@ AI 扩充是 Azure 认知搜索索引的一项功能，用于查找非文本源�
 下文是 AI 扩充的完整文档。
 
 ## <a name="getting-started"></a>入门
-+ [Azure 认知搜索中的 AI 扩充简介](cognitive-search-concept-intro.md)
-+ [快速入门：在门户中试用 AI 扩充](cognitive-search-quickstart-blob.md)
++ [认知搜索中的 AI 简介](cognitive-search-concept-intro.md)
++ [快速入门：在 Azure 门户中创建认知技能集](cognitive-search-quickstart-blob.md)
 + [教程：使用 AI 扩充的索引](cognitive-search-tutorial-blob.md)
 + 示例：[创建 AI 扩充的自定义技能](cognitive-search-create-custom-skill-example.md)
 
@@ -49,6 +49,7 @@ AI 扩充是 Azure 认知搜索索引的一项功能，用于查找非文本源�
   + [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md)
   + [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md)
   + [Microsoft.Skills.Util.ConditionalSkill](cognitive-search-skill-conditional.md)
+  + [Microsoft.Skills.Util.DocumentExtractionSkill](cognitive-search-skill-document-extraction.md)
   + [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md)
 
 + 自定义技能

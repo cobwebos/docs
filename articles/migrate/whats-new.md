@@ -4,33 +4,44 @@ description: 概述 Azure Migrate 服务。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 06/10/2019
+ms.date: 10/22/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2c3bc596076f3ec4f9d41f0da819ddd386fee63c
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 1ecd15b36b677e65eadbe4e979925723c9eedd51
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811041"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498424"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate 中的新增功能
 
-[Azure Migrate](migrate-services-overview.md) 可帮助发现和访问服务器、应用和数据并将其迁移到 Microsoft Azure 云。 本文汇总了 Azure Migrate 中的新增功能。
+[Azure Migrate](migrate-services-overview.md) 可帮助发现和访问本地服务器、应用和数据并将其迁移到 Microsoft Azure 云。 本文汇总了 Azure Migrate 中的新增功能。
 
 
 
-## <a name="azure-migrate-new-version"></a>Azure Migrate 新版本
+## <a name="update-november-2019"></a>更新（2019 年 11 月）
 
-2019 年 7 月发布了 Azure Migrate 的新版本。 
+Azure Migrate 增加了许多新功能：
 
-- **当前（新）版本**：使用此版本创建 Azure Migrate 项目，发现本地计算机，并安排评估和迁移。 
-- **以前的版本**：如果客户使用的是以前版本的 Azure Migrate（仅支持对本地 VMware VM 的评估），则现在应使用当前版本。 在以前的版本中，已无法创建新的 Azure Migrate 项目，也无法执行新发现。 仍可以访问现有项目。 在“Azure 门户”>“所有服务”中执行此操作，搜索“Azure Migrate”。 Azure Migrate 通知中提供了一个用于访问旧 Azure Migrate 项目的链接。
+- **物理服务器评估**。 除了已支持的物理服务器迁移外，现在还支持对本地物理服务器进行评估。
+- **基于导入的评估**。 现在支持使用 CSV 文件中提供的元数据和性能数据评估计算机。
+- **应用程序发现**：Azure Migrate 现在支持使用 Azure Migrate 设备实现应用、角色和功能的应用程序级发现。 目前仅适用于 VMware VM，并且仅限于发现（目前不支持评估）。 [了解详细信息](how-to-discover-applications.md)
+- **无代理依赖项可视化效果**：不再需要为依赖项可视化效果显式安装代理。 现在同时支持无代理和基于代理。
+- **虚拟桌面**：使用 ISV 工具来评估本地虚拟桌面基础结构 (VDI) 并将其迁移到 Azure 中的 Windows 虚拟桌面。
+- **Web 应用**：用于评估和迁移 Web 应用的 Azure 应用服务迁移助手现已集成到 Azure Migrate 中。
+
+## <a name="release-version-july-2019"></a>发行版（2019 年 7 月）
+
+2019 年 7 月发布了 Azure Migrate 的当前版本。 
+
+- **当前版本**：使用此版本创建 Azure Migrate 项目，发现本地计算机，并安排评估和迁移。 
+- **以前的版本**：如果客户使用的是以前版本的 Azure Migrate（仅支持对本地 VMware VM 的评估），则现在应使用当前版本。 在以前的版本中，已无法创建新的 Azure Migrate 项目，也无法执行新发现。 仍可以访问现有项目。 在“Azure 门户”>“所有服务”中执行此操作，搜索“Azure Migrate”   。 Azure Migrate 通知中提供了一个用于访问旧 Azure Migrate 项目的链接。
 
 
-## <a name="azure-migrate-features"></a>Azure Migrate 功能
+### <a name="azure-migrate-features"></a>Azure Migrate 功能
 
-Azure Migrate 的新版本提供许多新功能：
+Azure Migrate 的当前版本提供许多新功能：
 
 
 - **统一迁移平台**：Azure Migrate 现在提供单个门户，可以集中、管理和跟踪到 Azure 的迁移旅程，并改进了部署流和门户体验。

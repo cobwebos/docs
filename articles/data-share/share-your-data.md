@@ -1,19 +1,19 @@
 ---
-title: 教程：在组织外共享 - Azure Data Share 预览版
-description: 教程 - 使用 Azure Data Share 预览版与客户和合作伙伴共享数据
+title: 教程：在组织外共享 - Azure Data Share
+description: 教程 - 使用 Azure Data Share 与客户和合作伙伴共享数据
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: f7df46a6a6f149ef0228fda8c967469a25dc3d50
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 4ef9256404b0d0d4d6379e4f5a76c0d41a38c7cd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327418"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499333"
 ---
-# <a name="tutorial-share-your-data-using-azure-data-share-preview"></a>教程：使用 Azure Data Share 预览版共享数据
+# <a name="tutorial-share-data-using-azure-data-share"></a>教程：使用 Azure Data Share 共享数据  
 
 本教程介绍如何设置新的 Azure Data Share，然后开始与 Azure 组织外部的客户和合作伙伴共享数据。 
 
@@ -28,9 +28,28 @@ ms.locfileid: "71327418"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* 收件人的 Azure 登录电子邮件地址（使用其电子邮件别名将无效）。
+
+### <a name="share-from-a-storage-account"></a>从存储帐户共享：
+
 * 一个 Azure 存储帐户：如果没有，可以创建一个 [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
 * 向存储帐户添加角色分配的权限，该权限存在于 *Microsoft.Authorization/role assignments/write* 权限中。 所有者角色中存在此权限。 
-* 收件人 Azure 登录电子邮件地址（使用其电子邮件别名将无效）。
+
+### <a name="share-from-a-sql-based-source"></a>从基于 SQL 的源共享：
+
+* 包含要共享的表和视图的 Azure SQL 数据库或 Azure SQL 数据仓库。
+* 用于访问数据仓库的数据共享权限。 可以通过以下步骤完成此操作： 
+    1. 将自己设置为服务器的 Azure Active Directory 管理员。
+    1. 使用 Azure Active Directory 连接到 Azure SQL 数据库/数据仓库。
+    1. 使用查询编辑器（预览版）执行以下脚本，以将数据共享 MSI 添加为 db_owner。 必须使用 Active Directory 而非 SQL Server 身份验证进行连接。 
+    
+```sql
+    create user <share_acct_name> from external provider;     
+    exec sp_addrolemember db_owner, <share_acct_name>; 
+```                   
+请注意，<share_acc_name>  是数据共享帐户的名称。 如果尚未创建数据共享帐户，则可以稍后返回到该先决条件。  
+
+* 客户端 IP SQL Server 防火墙访问：可以通过以下步骤完成此操作：1. 导航到“防火墙和虚拟网络”  1。 单击“启动”  切换以允许访问 Azure 服务。 
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -44,7 +63,7 @@ ms.locfileid: "71327418"
 
 1. 搜索“Data Share”。 
 
-1. 选择“Data Share (预览版)”，然后选择“创建”。 
+1. 选择“Data Share”，然后选择“创建”  。
 
 1. 根据以下信息填写 Azure Data Share 资源的基本详细信息。 
 
@@ -82,7 +101,7 @@ ms.locfileid: "71327418"
 
 1. 选择要添加的数据集类型。 
 
-    ![AddDatasets](./media/add-datasets.png "提交数据集")    
+    ![AddDatasets](./media/add-datasets.png "添加数据集")    
 
 1. 导航到要共享的对象，选择“添加数据集”。 
 
@@ -90,7 +109,7 @@ ms.locfileid: "71327418"
 
 1. 在“接收者”选项卡中，选择“+ 添加接收者”，输入数据使用者的电子邮件地址。 
 
-    ![AddRecipients](./media/add-recipient.png "添加接收者") 
+    ![AddRecipients](./media/add-recipient.png "添加收件人") 
 
 1. 选择“继续” 
 

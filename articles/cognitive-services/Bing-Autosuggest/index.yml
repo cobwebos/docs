@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/28/2019
   ms.author: aahi
-  ms.openlocfilehash: e79afa5e1329e55ce2d9ece9df9767142340ba8b
-  ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+  ms.openlocfilehash: b0618f5bd0ed9deb1241dd3ff752a49686ca9073
+  ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/06/2019
-  ms.locfileid: "73669447"
+  ms.lasthandoff: 11/07/2019
+  ms.locfileid: "73746133"
 landingContent:
 - title: 关于必应自动建议 API
   linkLists:
@@ -65,3 +65,5 @@ landingContent:
       url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-java-stable
     - text: Go SDK
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest
+    - text: Node.js SDK
+      url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-autosuggest/?view=azure-node-latest

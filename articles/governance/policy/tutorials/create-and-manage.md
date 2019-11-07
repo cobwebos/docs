@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-policy
-ms.openlocfilehash: 43d39039d01b22e7d918755e9557d6a1030ef7a8
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: d01a28e1b4cbd9b2dacef8059d46ea72e789094d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302862"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490459"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>教程：创建和管理策略以强制实施符合性
 
@@ -29,9 +29,9 @@ ms.locfileid: "72302862"
 
 使用 Azure Policy 强制实施符合性的第一步是分配策略定义。 策略定义用于定义实施策略的条件，以及要达到的效果。 在本示例中，我们将分配名为“需要 SQL Server 版本 12.0”  的内置策略定义，强制执行“所有 SQL Server 数据库都必须是 v12.0 才视为符合”的条件。
 
-1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。  
+1. 转到 Azure 门户以分配策略。 搜索并选择“策略”  。
 
-   ![在所有服务中搜索策略](../media/create-and-manage/search-policy.png)
+   ![在搜索栏中搜索“策略”](../media/create-and-manage/search-policy.png)
 
 1. 选择“Azure Policy”页左侧的“分配”  。 分配即为在特定范围内分配策略以供执行。
 
@@ -41,7 +41,7 @@ ms.locfileid: "72302862"
 
    ![从“分配”页分配策略](../media/create-and-manage/select-assign-policy.png)
 
-1. 在“分配策略”页上，通过单击省略号并选择管理组或订阅，选择“范围”   。 或者，请选择一个资源组。 范围用于确定对其强制执行策略分配的资源或资源组。 然后在“范围”页的底部单击“选择”。  
+1. 在“分配策略”页上，通过选择省略号并选择管理组或订阅，选择“范围”   。 或者，请选择一个资源组。 范围用于确定对其强制执行策略分配的资源或资源组。 然后在“范围”页的底部选择“选择”。  
 
    此示例使用 Contoso 订阅  。 你的订阅将有所不同。
 
@@ -49,7 +49,7 @@ ms.locfileid: "72302862"
 
 1. 选择“策略定义”旁边的省略号打开可用定义的列表。  可以使用“内置”来筛选策略定义的**类型**，以查看所有相关策略定义及其说明。 
 
-1. 选择“需要 SQL Server 版本 12.0”  。 如果不能立即找到它，请在搜索框中键入“需要 SQL Server”，然后按 ENTER 或者单击搜索框的外部。  找到并选择策略定义后，单击“可用定义”页底部的“选择”。  
+1. 选择“需要 SQL Server 版本 12.0”  。 如果不能立即找到它，请在搜索框中键入“需要 SQL Server”，然后按 ENTER 或者选择搜索框的外部。  找到并选择策略定义后，选择“可用定义”页底部的“选择”。  
 
    ![使用搜索筛选器来查找策略](../media/create-and-manage/select-available-definition.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "72302862"
 
 1. 不选中“创建托管标识”  。 当分配的策略或计划包含具有 [deployIfNotExists](../concepts/effects.md#deployifnotexists) 效果的策略时，必须勾选此框  。 本教程所使用的策略不属于这种情况，因此请将其留空。 有关详细信息，请参阅[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)和[修正安全性工作原理](../how-to/remediate-resources.md#how-remediation-security-works)。
 
-1. 单击“分配”  。
+1. 选择“分配”。 
 
 ## <a name="implement-a-new-custom-policy"></a>实施新的自定义策略
 
@@ -340,7 +340,7 @@ az policy definition list
 
 1. 对于“类别”，请从现有的选项中选择，或者创建新类别。 
 
-1. 浏览“可用定义”的列表（在“计划定义”页的右半部分），然后选择要添加到此计划的策略定义。   对于“保证安全”计划，请单击策略定义信息旁边的 **+** ，或单击策略定义行并选择详细信息页中的“+ 添加”选项，来添加以下内置策略定义：  
+1. 浏览“可用定义”的列表（在“计划定义”页的右半部分），然后选择要添加到此计划的策略定义。   对于“保证安全”计划，请选择策略定义信息旁边的 **+** ，或选择策略定义行并选择详细信息页中的“+ 添加”选项，来添加以下内置策略定义：  
 
    - 需要 SQL Server 版本 12.0
    - [Preview]: Monitor unprotected web applications in Security Center.
@@ -357,19 +357,19 @@ az policy definition list
    ![更改允许的值中的计划定义参数](../media/create-and-manage/initiative-definition-3.png)
 
    > [!NOTE]
-   > 在使用某些 `strongType` 参数时，不能自动确定值的列表。 在这种情况下，会在参数行的右侧显示省略号。 单击它会打开“参数范围(&lt;参数名称&gt;)”页。 在此页中，选择用于提供值选项的订阅。 此参数范围仅在创建计划定义过程中使用，对策略评估或分配后的计划范围没有影响。
+   > 在使用某些 `strongType` 参数时，不能自动确定值的列表。 在这种情况下，会在参数行的右侧显示省略号。 选择它会打开“参数范围(&lt;参数名称&gt;)”页。 在此页中，选择用于提供值选项的订阅。 此参数范围仅在创建计划定义过程中使用，对策略评估或分配后的计划范围没有影响。
 
-1. 单击“ **保存**”。
+1. 选择“保存”。 
 
 ### <a name="assign-an-initiative-definition"></a>分配计划定义
 
 1. 选择“Azure Policy”页左侧“创作”下的“定义”   。
 
-1. 找到前面创建的“保证安全”计划定义并单击它  。 选择页面顶部的“分配”，打开“保证安全:   分配计划”页。
+1. 找到前面创建的“保证安全”计划定义并选择它。  选择页面顶部的“分配”，打开“保证安全:   分配计划”页。
 
    ![从计划定义页分配定义](../media/create-and-manage/assign-definition.png)
 
-   也可右键单击选定的行，或者左键单击上下文菜单行末尾处的省略号。 然后选择“分配”。 
+   也可右键单击选定的行，或者选择上下文菜单行末尾处的省略号。 然后选择“分配”。 
 
    ![计划的备用选项](../media/create-and-manage/select-right-click.png)
 
@@ -384,14 +384,14 @@ az policy definition list
 
 1. 不选中“创建托管标识”  。 当分配的策略或计划包含具有 [deployIfNotExists](../concepts/effects.md#deployifnotexists) 效果的策略时，必须勾选此框  。 本教程所使用的策略不属于这种情况，因此请将其留空。 有关详细信息，请参阅[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)和[修正安全性工作原理](../how-to/remediate-resources.md#how-remediation-security-works)。
 
-1. 单击“分配”  。
+1. 选择“分配”。 
 
 ## <a name="check-initial-compliance"></a>检查初始符合性
 
 1. 选择“Azure Policy”页左侧的“符合性”  。
 
 1. 找到“保证安全”  计划。 可能仍处于“未启动”符合性状态   。
-   单击计划，获取有关分配进度的完整详细信息。
+   选择计划，获取有关分配进度的完整详细信息。
 
    ![计划符合性页 - 评估未启动](../media/create-and-manage/compliance-status-not-started.png)
 
@@ -399,7 +399,7 @@ az policy definition list
 
    ![计划符合性页 - 资源符合性](../media/create-and-manage/compliance-status-compliant.png)
 
-1. 单击计划符合性页上的任何策略均可打开该策略的符合性详细信息页。 此页提供符合性的资源级别详细信息。
+1. 选择计划符合性页上的任何策略均可打开该策略的符合性详细信息页。 此页提供符合性的资源级别详细信息。
 
 ## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>使用“排除”豁免不符合或遭拒绝的资源
 
@@ -408,11 +408,12 @@ az policy definition list
 
 可在两个位置查看被分配的策略或计划阻止的部署：
 
-- 在部署针对的资源组中：选择页面左侧的“部署”，然后单击失败部署的“部署名称”。   随后将会列出带有“禁止”状态的被拒绝资源  。 若要确定拒绝该资源的策略或计划和分配，请在“部署概述”页上单击“失败。  单击此处了解详细信息 ->”。 页面右侧会打开一个窗口，其中显示了错误信息。 “错误详细信息”下显示了相关策略对象的 GUID  。
+- 在部署针对的资源组中：选择页面左侧的“部署”，然后选择失败部署的“部署名称”。   随后将会列出带有“禁止”状态的被拒绝资源  。 若要确定拒绝该资源的策略或计划和分配，请在“部署概述”页上选择“失败。  单击此处了解详细信息 ->”。
+  页面右侧会打开一个窗口，其中显示了错误信息。 “错误详细信息”下显示了相关策略对象的 GUID  。
 
   ![策略分配拒绝的部署](../media/create-and-manage/rg-deployment-denied.png)
 
-- 在“Azure Policy”页上：选择页面左侧的“符合性”，然后单击“需要 SQL Server 版本 12.0”策略。   在打开的页面上，会看到“拒绝”计数已递增。  在“事件”选项卡下，还会看到谁尝试执行了被策略拒绝的部署。 
+- 在“Azure Policy”页上：选择页面左侧的“符合性”，然后选择“需要 SQL Server 版本 12.0”策略。   在打开的页面上，会看到“拒绝”计数已递增。  在“事件”选项卡下，还会看到谁尝试执行了被策略拒绝的部署。 
 
   ![分配策略的符合性概述](../media/create-and-manage/compliance-overview.png)
 
@@ -424,14 +425,14 @@ az policy definition list
 
 1. 浏览所有策略分配并打开“需要 SQL Server 版本 12.0”  分配。
 
-1. 设置“排除项”：单击省略号并选择要排除的资源组（在本示例中为 *SQLServers_Excluded*）。 
+1. 设置“排除项”：选择省略号并选择要排除的资源组（在本示例中为 *SQLServers_Excluded*）。 
 
    ![向策略分配添加排除的资源组](../media/create-and-manage/request-exclusion.png)
 
    > [!NOTE]
    > 根据策略及其效果，也可以将排除项指定为分配范围内某个资源组中的特定资源。 由于本教程使用了“拒绝”效果，对已存在的特定资源设置排除项没有意义。 
 
-1. 单击“选择”，并单击“保存”。  
+1. 选择“选择”，然后选择“保存”   。
 
 本部分介绍如何通过创建单个资源组中的排除项，来解决请求被拒绝的问题。
 

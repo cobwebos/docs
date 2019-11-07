@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a863c8fe81a08f00385cb267bf360994918fe82
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 9adf083f8e4c8c269b895dac87b4e4613ec1b023
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212103"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474370"
 ---
 # <a name="quickstart-self-service-password-reset"></a>快速入门：自助式密码重置
 
@@ -33,7 +33,7 @@ ms.locfileid: "71212103"
 
 [在 YouTube 上以视频形式查看此过程](https://youtu.be/Pa0eyqjEjvQ)
 
-1. 在现有的 Azure AD 租户（位于 **Azure 门户**的 **Azure Active Directory** 下）中选择“密码重置”。 
+1. 在现有的 Azure AD 租户中，从 Azure 门户菜单或主页，选择“Azure Active Directory”   。 然后，选择“密码重置”  。
 
 2. 在“属性”页中，在“启用自助式密码重置”选项下，选择“选定”。   
     * 在“选择组”  中，选择在本文的先决条件部分中创建的试点组。

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/26/2019
+ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: 4308ed6d00bd3900986f08a93a686f0d7d00bcfb
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: b86a8df86b7f9b8a5936752a5f0413aa863ae85f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515591"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490808"
 ---
 # <a name="quickstart-personalizer-client-library-for-net"></a>快速入门：适用于 .NET 的个性化体验创建服务客户端库
 
@@ -38,19 +38,18 @@ ms.locfileid: "72515591"
 使用此快速入门有几个步骤：
 
 * 在 Azure 门户中，创建一个个性化体验创建服务资源
-* 在 Azure 门户中，对于个性化体验创建服务资源，在“设置”  页上，更改模型更新频率
+* 在 Azure 门户中，对于个性化体验创建服务资源，在“配置”页上，更改模型更新频率 
 * 在代码编辑器中，创建一个代码文件并编辑该代码文件
 * 在命令行或终端中，从命令行安装 SDK
 * 在命令行或终端中，运行代码文件
 
 ## <a name="create-a-personalizer-azure-resource"></a>创建个性化体验创建服务 Azure 资源
 
-Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本地计算机上创建用于个性化体验创建服务的资源。 还可以：
+使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本地计算机上创建用于个性化体验创建服务的资源。 还可以：
 
 * 免费获取在 7 天内有效的[试用版密钥](https://azure.microsoft.com/try/cognitive-services)。 注册之后，它将在 [Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上提供。  
 * 在 [Azure 门户](https://portal.azure.com/)上查看资源。
 
-<!-- rename TBD_KEY to something meaningful for your service, like TEXT_ANALYTICS_KEY -->
 从试用订阅或资源获取密钥后，创建两个[环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)：
 
 * `PERSONALIZER_RESOURCE_KEY`（代表资源键）。
@@ -60,7 +59,7 @@ Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](ht
 
 ## <a name="change-the-model-update-frequency"></a>更改模型更新频率
 
-在 Azure 门户的“设置”  页上的个性化体验创建服务资源中，将“模型更新频率”  更改为 10 秒。 这将快速训练服务，使你可以看到顶部操作如何针对每次迭代而变化。
+在 Azure 门户的“配置”页上的个性化体验创建服务资源中，将“模型更新频率”更改为 10 秒   。 此短暂持续时间可快速训练服务，使你可以看到顶部操作如何针对每次迭代而变化。
 
 ![更改模型更新频率](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -110,11 +109,11 @@ dotnet add package Microsoft.Azure.CognitiveServices.Personalizer --version 0.8.
 
 若要向个性化体验创建服务发送奖励，请创建一个 [RewardRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rewardrequest?view=azure-dotnet-preview)，然后将其传递给 [client.Reward](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.reward?view=azure-dotnet-preview) 方法。 
 
-在本快速入门中，可以很容易地确定奖励。 在生产系统中，确定哪些因素会影响[奖励评分](concept-rewards.md)以及影响程度可能是一个复杂的过程，你的判断可能会随时改变。 这应是个性化体验创建服务体系结构中的主要设计决策之一。 
+在本快速入门中，可以很容易地确定奖励。 在生产系统中，确定哪些因素会影响[奖励评分](concept-rewards.md)以及影响程度可能是一个复杂的过程，你的判断可能会随时改变。 此设计决策应是个性化体验创建服务体系结构中的主要决策之一。 
 
 ## <a name="code-examples"></a>代码示例
 
-这些代码片段演示如何使用适用于 .NET 的个性化体验创建服务客户端库执行以下操作：
+这些代码片段演示如何使用适用于 .NET 的个性化体验创建服务客户端库执行以下任务：
 
 * [创建个性化体验创建服务客户端](#create-a-personalizer-client)
 * [请求排名](#request-a-rank)

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: fe40eb27b07304aba48be4a47fb22168cb60434c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5bf8aea05855d81e88face1dd507f0006cc19cab
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332280"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73483892"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教程：设置教室实验室 
 在本教程中，请设置带虚拟机的课堂实验室，供学生在课堂上使用。  
@@ -112,10 +112,10 @@ ms.locfileid: "72332280"
 
     ![“日程安排”页上的“添加日程安排”按钮](../media/how-to-create-schedules/add-schedule-button.png)
 2. 确认已选择“标准”作为“事件类型”。   选择“仅启动”，这样就可以只指定 VM 的启动时间。  选择“仅停止”，这样就可以只指定 VM 的停止时间。  
-7. 在“重复”部分，选择当前计划。  
+3. 在“重复”部分，选择当前计划。  
 
     ![“日程安排”页上的“添加日程安排”按钮](../media/how-to-create-schedules/select-current-schedule.png)
-5. 在“重复”  对话框中，执行以下步骤：
+4. 选择该计划将打开“重复”  对话框。 在此对话框中，执行以下步骤：
     1. 对于“重复”字段，请确认已设置“每周”   。 
     3. 指定“启动日期”。 
     4. 指定“启动时间”  ，这是你希望 VM 启动的时间。
@@ -124,10 +124,8 @@ ms.locfileid: "72332280"
     2. 选择希望计划生效的日期。 在下面的示例中，选中的是“星期一到星期四”。 
     8. 选择“保存”。  
 
-        ![设置重复计划](../media/how-to-create-schedules/set-repeat-schedule.png)
-
-3. 现在，请在“添加计划事件”页上  输入该计划的任何说明或备注作为“备注(可选)”。  
-4. 在“添加计划事件”  页上，选择“保存”  。 
+5. 现在，请在“添加计划事件”页上  输入该计划的任何说明或备注作为“备注(可选)”。  
+6. 在“添加计划事件”  页上，选择“保存”  。 
 
     ![每周日程安排](../media/how-to-create-schedules/add-schedule-page-weekly.png)
 

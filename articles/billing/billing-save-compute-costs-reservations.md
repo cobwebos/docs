@@ -7,12 +7,12 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: b2c3fd9b59b371330e37dceb52b2e89b3db6c48e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 02a4ccc1bd7c18c36a7203f7d81cce8923ecf59a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390162"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499241"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
@@ -125,7 +125,7 @@ ms.locfileid: "72390162"
 
 ## <a name="when-the-reservation-term-expires"></a>当预留期限过期时
 
-在预留期限结束时，计费折扣将会失效。 虚拟机、SQL 数据库、Azure Cosmos DB 或其他资源将按即用即付价格计费。 Azure 预留项不会自动续订。 若要继续获得计费折扣，必须为符合条件的服务和软件购买新的预订。
+预留期限结束时，计费折扣随即过期，资源将按即用即付价格计费。 默认情况下，预留未设置为自动续订。 可以通过在续订设置中选择相应的选项来选择启用预留的自动续订。 如果使用自动续订，则在现有预留到期后，将购买替换预留。 默认情况下，替换预留具有与过期预留相同的属性，你可以选择更改续订设置中的计费频率、期限或数量。 对用于计费的预留和订阅拥有所有者访问权限的任何用户都可以设置续订。  
 
 ## <a name="discount-applies-to-different-sizes"></a>折扣适用于不同的大小
 

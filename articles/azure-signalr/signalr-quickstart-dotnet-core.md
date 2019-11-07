@@ -5,19 +5,19 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/01/2019
+ms.date: 11/04/2019
 ms.author: zhshang
-ms.openlocfilehash: 3dc893ea10e47e867110f674a458498a6bd24a4f
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: 022780f2b37c8bed49c81774d443b69bae41e5e7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560718"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476754"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>快速入门：使用 SignalR 服务创建聊天室
 
 
-Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具有实时功能的 Web 应用程序。 此服务基于[适用于 ASP.NET Core 2.0 的 SignalR](https://docs.microsoft.com/aspnet/core/signalr/introduction)。
+Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具有实时功能的 Web 应用程序。 此服务基于[适用于 ASP.NET Core 2.1 的 SignalR](https://docs.microsoft.com/aspnet/core/signalr/introduction?view=aspnetcore-2.1)，但也支持[适用于 ASP.NET Core 3.0 的 SignalR](https://docs.microsoft.com/aspnet/core/signalr/introduction?view=aspnetcore-3.0)。
 
 本文介绍如何开始使用 Azure SignalR 服务。 在本快速入门中，你将使用 ASP.NET Core MVC Web 应用创建一个聊天应用程序。 此应用将与 Azure SignalR 服务资源建立连接，以启用实时内容更新。 将在本地托管该 Web 应用程序并与多个浏览器客户端连接。 每个客户端都可以将内容更新推送到所有其他客户端。 
 
@@ -52,7 +52,7 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
 
 在本部分，你要将[机密管理器工具](https://docs.microsoft.com/aspnet/core/security/app-secrets)添加到项目。 机密管理器工具存储敏感数据，以用于项目树外部的开发工作。 此方法有助于防止意外共享源代码中的应用机密。
 
-1. 打开 .csproj 文件。 添加 `DotNetCliToolReference` 元素以包含 Microsoft.Extensions.SecretManager.Tools。 另外，为 *chattest.csproj* 添加以下代码中所示的 `UserSecretsId` 元素，并保存文件。
+1. 打开 .csproj 文件  。 添加 `DotNetCliToolReference` 元素以包含 Microsoft.Extensions.SecretManager.Tools  。 另外，为 *chattest.csproj* 添加以下代码中所示的 `UserSecretsId` 元素，并保存文件。
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -80,7 +80,7 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
 
         dotnet restore
 
-3. 向机密管理器添加名为“Azure: SignalR:ConnectionString”的机密。 
+3. 向机密管理器添加名为“Azure: SignalR:ConnectionString”的机密  。 
 
     此机密将包含用于访问 SignalR 服务资源的连接字符串。 *Azure:SignalR:ConnectionString* 是 SignalR 查找的用于建立连接的默认配置密钥。 将以下命令中的值替换为 SignalR 服务资源的连接字符串。
 
@@ -95,7 +95,7 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
     此机密使用配置 API 进行访问。 在所有支持的平台上，冒号 (:) 可以在配置 API 的配置名称中使用。 请参阅[按环境进行的配置](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0)。 
 
 
-4. 打开 Startup.cs，并通过调用 `services.AddSignalR().AddAzureSignalR()` 方法更新 `ConfigureServices` 方法，从而使用 Azure SignalR 服务：
+4. 打开 Startup.cs，并通过调用仅适用于 ASP.NET Core 2 的 `services.AddSignalR().AddAzureSignalR()` 方法更新 `ConfigureServices` 方法，从而使用 Azure SignalR 服务  ：
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -104,10 +104,11 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
         services.AddSignalR().AddAzureSignalR();
     }
     ```
+    对于 ASP.NET Core 3+，`ConfigureServices` 方法不需要进行任何更改。
 
     此代码不会向 `AddAzureSignalR()` 传递参数，而是使用默认配置密钥作为 SignalR 服务资源连接字符串。 默认配置密钥为 *Azure:SignalR:ConnectionString*。
 
-5. 另外，在 Startup.cs 中，通过将 `app.UseStaticFiles()` 的调用替换为以下代码，更新 `Configure` 方法并保存该文件。
+5. 另外，在 Startup.cs 中，通过将 `app.UseStaticFiles()` 的调用替换为以下代码来更新 `Configure` 方法并保存该文件  （仅适用于 ASP.NET Core 2）。
 
     ```csharp
     app.UseFileServer();
@@ -116,6 +117,18 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
         routes.MapHub<Chat>("/chat");
     });
     ```            
+    对于 ASP.NET Core 3+，将上面的代码替换为：
+
+    ```csharp
+    app.UseFileServer();
+    app.UseRouting();
+    app.UseAuthorization();
+
+    app.UseEndpoints(routes =>
+    {
+        routes.MapHub<Chat>("/chat");
+    });
+    ```
 
 ### <a name="add-a-hub-class"></a>添加集线器类
 
@@ -126,11 +139,11 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
 
 这两个方法都使用 ASP.NET Core SignalR SDK 提供的 `Clients` 接口。 使用此接口可以访问所有已连接的客户端，因此你可将内容推送到客户端。
 
-1. 在项目目录中，添加名为“Hub”的新文件夹。 向该新文件夹添加名为“Chat.cs”的新集线器代码文件。
+1. 在项目目录中，添加名为“Hub”的新文件夹  。 向该新文件夹添加名为“Chat.cs”的新集线器代码文件  。
 
 2. 将以下代码添加到 *Chat.cs* 以定义中心类，然后保存文件。 
 
-    如果使用的项目名称与 chattest 不同，请更新此类的命名空间。
+    如果使用的项目名称与 chattest 不同，请更新此类的命名空间  。
 
     ```csharp
     using Microsoft.AspNetCore.SignalR;
@@ -226,7 +239,7 @@ connection.start()
         Now listening on: http://localhost:5000
         Application started. Press Ctrl+C to shut down.    
 
-3. 打开两个浏览器窗口。 在每个浏览器中，转到 `http://localhost:5000`。 系统会提示你输入名称。 输入两个客户端的客户端名称，然后使用“发送”按钮测试能否在两个客户端之间推送消息内容。
+3. 打开两个浏览器窗口。 在每个浏览器中，转到 `http://localhost:5000`。 系统会提示你输入名称。 输入两个客户端的客户端名称，然后使用“发送”按钮测试能否在两个客户端之间推送消息内容  。
 
     ![Azure SignalR 群组聊天示例](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
 
@@ -243,15 +256,15 @@ connection.start()
 > 
 > 
 
-登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。
+登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。 
 
-在“按名称筛选”文本框中键入资源组的名称。 本快速入门的说明使用了名为“SignalRTestResources”的资源组。 在结果列表中的资源组上选择省略号 ( **...** )，然后选择“删除资源组”。
+在“按名称筛选”文本框中键入资源组的名称  。 本快速入门的说明使用了名为“SignalRTestResources”的资源组  。 在结果列表中的资源组上选择省略号 ( **...** )，然后选择“删除资源组”  。
 
    
 ![用于删除资源组的选项](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 
 
-系统会要求确认是否删除资源组。 重新键入资源组的名称进行确认，然后选择“删除”。
+系统会要求确认是否删除资源组。 重新键入资源组的名称进行确认，然后选择“删除”  。
    
 片刻之后，将会删除该资源组及其所有资源。
 
