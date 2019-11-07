@@ -436,7 +436,7 @@
                   href: msal-js-prompt-behavior.md
             - name: 适用于 iOS 和 MacOS 的 MSAL
               items:
-                - name: 适用于 iOS 的 Microsoft 身份验证库和适用于 macOS 的 Microsoft 身份验证库的差异
+                - name: 分别适用于 iOS 和 macOS 的 MSAL 的差异
                   href: msal-differences-ios-macos.md
                 - name: 配置密钥链
                   href: howto-v2-keychain-objc.md
