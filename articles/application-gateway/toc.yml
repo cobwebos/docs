@@ -17,8 +17,6 @@
       href: quick-create-cli.md
 - name: 教程
   items:
-    - name: 启用 Web 应用程序防火墙
-      href: application-gateway-web-application-firewall-portal.md
     - name: 使用 SSL 进行保护
       href: create-ssl-portal.md
     - name: 托管多个站点
@@ -127,12 +125,6 @@
           items:
             - name: 配置 SSL 策略
               href: application-gateway-configure-ssl-policy-powershell.md
-    - name: 配置 Web 应用程序防火墙
-      items:
-        - name: Azure PowerShell
-          href: tutorial-restrict-web-traffic-powershell.md
-        - name: Azure CLI
-          href: tutorial-restrict-web-traffic-cli.md
     - name: 用于 AKS 的入口
       items:
         - name: 使用现有应用程序网关进行安装

@@ -7,18 +7,18 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2017
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b0a58251530467d788710b0584b15715a207e20f
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: b42294fdcf60add8496116bd1f83bf64f54a5f63
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734320"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614722"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions 中的任务中心 (Azure Functions)
 
-[Durable Functions](durable-functions-overview.md) 中的*任务中心*是用于业务流程的 Azure 存储资源的逻辑容器。 只有当业务流程协调程序函数与活动函数属于同一任务中心时，它们才能彼此进行交互。
+*Durable Functions* 中的[任务中心](durable-functions-overview.md)是用于业务流程的 Azure 存储资源的逻辑容器。 只有当业务流程协调程序函数与活动函数属于同一任务中心时，它们才能彼此进行交互。
 
 如果多个函数应用共享存储帐户，则必须使用单独的任务中心名称配置每个函数应用。 一个存储帐户可以包含多个任务中心。 下图说明了在共享和专用存储帐户中每个函数应用有一个任务中心。
 
@@ -33,24 +33,15 @@ ms.locfileid: "70734320"
 * 一个历史记录表。
 * 一个实例表。
 * 一个包含一个或多个租用 blob 的存储容器。
+* 包含大型消息有效负载的存储容器（如果适用）。
 
-当业务流程协调程序或活动函数运行时或调度它们运行时，将自动在默认 Azure 存储帐户中创建所有这些资源。 [性能和缩放](durable-functions-perf-and-scale.md)一文介绍了如何使用这些资源。
+在运行或计划运行 orchestrator、entity 或 activity 函数时，会自动在默认 Azure 存储帐户中创建所有这些资源。 [性能和缩放](durable-functions-perf-and-scale.md)一文介绍了如何使用这些资源。
 
 ## <a name="task-hub-names"></a>任务中心名称
 
 任务中心由 *host.json* 文件中声明的名称标识，如以下示例所示：
 
-### <a name="hostjson-functions-1x"></a>host.json (Functions 1.x)
-
-```json
-{
-  "durableTask": {
-    "hubName": "MyTaskHub"
-  }
-}
-```
-
-### <a name="hostjson-functions-2x"></a>host.json (Functions 2.x)
+### <a name="hostjson-functions-20"></a>host json （函数2.0）
 
 ```json
 {
@@ -63,9 +54,19 @@ ms.locfileid: "70734320"
 }
 ```
 
-还可以使用应用设置配置任务中心，如以下 *host.json* 示例文件所示：
-
 ### <a name="hostjson-functions-1x"></a>host.json (Functions 1.x)
+
+```json
+{
+  "durableTask": {
+    "hubName": "MyTaskHub"
+  }
+}
+```
+
+还可以使用应用设置来配置任务中心，如以下 `host.json` 示例文件所示：
+
+### <a name="hostjson-functions-10"></a>host json （函数1.0）
 
 ```json
 {
@@ -75,7 +76,7 @@ ms.locfileid: "70734320"
 }
 ```
 
-### <a name="hostjson-functions-2x"></a>host.json (Functions 2.x)
+### <a name="hostjson-functions-20"></a>host json （函数2.0）
 
 ```json
 {
@@ -99,7 +100,7 @@ ms.locfileid: "70734320"
 }
 ```
 
-这是一个预编译的 C# 示例，说明如何编写这样一个函数，该函数使用 [OrchestrationClientBinding](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) 来处理配置为应用设置的任务中心：
+下面的代码是一个预C#编译示例，说明如何编写一个函数，该函数使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)来处理配置为应用设置的任务中心：
 
 ### <a name="c"></a>C#
 
@@ -107,7 +108,7 @@ ms.locfileid: "70734320"
 [FunctionName("HttpStart")]
 public static async Task<HttpResponseMessage> Run(
     [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}")] HttpRequestMessage req,
-    [OrchestrationClient(TaskHub = "%MyTaskHub%")] DurableOrchestrationClientBase starter,
+    [OrchestrationClient(TaskHub = "%MyTaskHub%")] IDurableOrchestrationClient starter,
     string functionName,
     ILogger log)
 {
@@ -121,9 +122,13 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
+> [!NOTE]
+> 上面C#的示例适用于 Durable Functions 1.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
+
 ### <a name="javascript"></a>JavaScript
 
 `function.json` 文件中的任务中心属性通过应用设置进行设置：
+
 ```json
 {
     "name": "input",
@@ -133,12 +138,19 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-任务中心名称必须以字母开头且只能包含字母和数字。 如果未指定，默认名称是 **DurableFunctionsHub**。
+任务中心名称必须以字母开头且只能包含字母和数字。 如果未指定，则将使用默认的任务中心名称，如下表所示：
+
+| 持久扩展版本 | 默认任务中心名称 |
+| - | - |
+| 2.x | 在 Azure 中部署时，任务中心名称从_函数应用_的名称派生而来。 在 Azure 外部运行时，将 `TestHubName`默认的任务中心名称。 |
+| 1.x | 所有环境的默认任务中心名称都是 `DurableFunctionsHub`。 |
+
+有关扩展版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
 
 > [!NOTE]
-> 当共享存储帐户中有多个任务中心时，名称用于将一个任务中心与其他任务中心区分开来。 如果有多个函数应用共享一个共享存储帐户，则必须在 host.json 文件中为每个任务中心显式配置不同的名称。 否则多个函数应用会相互竞争消息，这可能会导致未定义的行为。
+> 当共享存储帐户中有多个任务中心时，名称用于将一个任务中心与其他任务中心区分开来。 如果有多个函数应用共享一个共享存储帐户，则必须在 host.json 文件中为每个任务中心显式配置不同的名称。 否则，多个函数应用将为消息彼此竞争，这可能会导致未定义的行为，包括在 `Pending` 或 `Running` 状态下意外 "停滞" 的业务流程。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解如何处理版本控制](durable-functions-versioning.md)
+> [了解如何处理业务流程版本管理](durable-functions-versioning.md)

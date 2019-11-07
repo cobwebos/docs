@@ -6,14 +6,17 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: d646187627d74810a846d7126562e2e796c5c9f7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e9f9e812d5463f0a503b100780f9b988e43f748d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512803"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720266"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>设置无代理依赖项可视化以进行评估
+
+> [!NOTE]
+> 如果你尚未在 Azure Migrate 门户中看到此功能，请稍候。 它将在下周显示。
 
 本文介绍如何在 Azure Migrate：服务器评估中设置无代理依赖项映射。 此功能目前以预览版提供，可使用 Azure Migrate 设备发现的 VMware 计算机。 
 

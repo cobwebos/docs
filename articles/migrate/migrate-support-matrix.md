@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: raynew
-ms.openlocfilehash: 18032250bc5c321d638ad46204738f49f1a0c744
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 90b1250009e6efdb2f8cb9351fe270c8324cc77a
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480140"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715483"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate 支持矩阵
 
@@ -34,20 +34,30 @@ ms.locfileid: "73480140"
 **部署** | **详细信息** 
 --- | --- 
 **特定于应用的发现** | 你可以发现在 VMware Vm 上运行的应用、角色和功能。 当前此功能仅限于发现。 评估目前处于计算机级别。 我们尚未提供应用、角色或功能特定的评估。 
-**本地评估** | 评估 VMware Vm 和 Hyper-v Vm 上运行的本地工作负荷和数据。 使用 Azure Migrate Server 评估和 Microsoft 数据迁移助手（DMA）以及第三方工具（包括 Cloudamize、Corent Tech 和 Turbonomic 服务器）进行评估。
-**本地迁移到 Azure** | 将物理服务器、VMware Vm、Hyper-v Vm、物理服务器以及基于云的虚拟机上运行的工作负荷和数据迁移到 Azure。 使用 Azure Migrate Server 评估和 Azure 数据库迁移服务（DMS）迁移，并使用包含 Carbonite 和 CorentTech 的第三方工具。
+**本地评估** | 评估 VMware Vm、Hyper-v Vm 和物理服务器上运行的本地工作负荷和数据。 使用 Azure Migrate Server 评估和 Microsoft 数据迁移助手（DMA）以及其他工具和 ISV 产品进行评估。
+**本地迁移到 Azure** | 将物理服务器、VMware Vm、Hyper-v Vm、物理服务器以及基于云的虚拟机上运行的工作负荷和数据迁移到 Azure。 使用 Azure Migrate Server 评估和 Azure 数据库迁移服务（DMS）以及其他工具和 ISV 产品/服务进行迁移。
 
-下面总结了特定工具支持。
 
-**工具** | **评估/迁移** | **详细信息**
+## <a name="supported-tools"></a>支持的工具
+
+表中汇总了特定工具支持。
+
+**工具** | **评估** | **迁移** 
 --- | --- | ---
-Azure Migrate 服务器评估 | 评估 | 试用适用于[hyper-v](tutorial-prepare-hyper-v.md)和[VMware](tutorial-prepare-vmware.md)的服务器评估。
-Cloudamize | 评估 | [了解详细信息](https://www.cloudamize.com/platform#tab-0)。
-CorentTech | 评估 | [了解详细信息](https://www.corenttech.com/)。
-Turbonomic | 评估 | [了解详细信息](https://turbonomic.com/solutions/technologies/azure-cloud/)。
-Azure Migrate 服务器迁移 | 迁移 | 试用适用于[hyper-v](tutorial-migrate-hyper-v.md)和[VMware](tutorial-migrate-vmware.md)的服务器迁移。
-Carbonite | 迁移 | [了解详细信息](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure)。
-CorentTech | 迁移 | [了解详细信息](https://www.corenttech.com/)。
+Azure Migrate 服务器评估 | 评估[VMware vm](tutorial-prepare-vmware.md)、 [hyper-v vm](tutorial-prepare-hyper-v.md)和[物理服务器](tutorial-prepare-physical.md)。 |  不可用（NA）
+Azure Migrate 服务器迁移 | 不可用 | 迁移[VMware vm](tutorial-migrate-vmware.md)、 [hyper-v vm](tutorial-migrate-hyper-v.md)和[物理服务器](tutorial-migrate-physical-virtual-machines.md)。
+[Carbonite](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure) | 不可用 | 迁移 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 
+[Cloudamize](https://www.cloudamize.com/platform#tab-0)| 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 | 不可用
+[Corent Technology](https://go.microsoft.com/fwlink/?linkid=2084928) | 评估和迁移 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 |  迁移 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。
+[设备 42](https://go.microsoft.com/fwlink/?linkid=2097158) | 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。| 不可用
+[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | 评估本地 SQL Server 数据库。 | 不可用
+[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | 迁移 SQL Server、Oracle、MySQL、PostgreSQL、MongoDB。 | 不可用
+[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | 评估虚拟桌面基础结构（VDI） | 不可用
+[Movere](https://go.microsoft.com/fwlink/?linkid=2109528) | 评估 VMWare Vm、Hyper-v Vm、Xen Vm、物理计算机、工作站（包括 VDI）、公有云工作负荷 | 不可用
+[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | 不可用 | 迁移 VMWare Vm、Hyper-v Vm、Xen Vm、KVM Vm、物理计算机、公有云工作负荷 
+[Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 | 不可用
+[UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷和 SQL Server 数据库。 | 不可用
+[Webapp 迁移助手](https://appmigration.microsoft.com/) | 评估 web 应用 | 迁移 web 应用。
 
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate 项目

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
-ms.date: 05/02/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: d653d1cd719ac59bf6c98bee588c41858052bc61
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 34ff3f9704b9c84a7daddcfd14fb9cd3e990f794
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489840"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716512"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>导出或删除机器学习服务工作区数据 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -243,17 +243,16 @@ ms.locfileid: "73489840"
 
 1. 在列表中，选择要删除的单个管道草案。
 
-1. 在底部选择 "**删除**"。
+1. 选择“删除”。
 
-## <a name="unregister-data-in-the-designer"></a>在设计器中取消注册数据
+### <a name="delete-datasets-in-the-designer"></a>在设计器中删除数据集
+
+若要在设计器中删除数据集，请使用 Azure 门户或存储资源管理器导航到已连接的存储帐户，并删除其中的数据集。 在设计器中注销数据集仅删除存储中的引用点。 
+
+## <a name="export-data-in-the-designer"></a>在设计器中导出数据
 
 在创建了实验的设计器中，导出已添加的数据：
 
 1. 在左侧选择 "**数据集**"。
 
-
-
     ![下载数据](media/how-to-export-delete-data.md/unregister-dataset.png)
-
-1. 在列表中，选择单个数据集，然后单击 "注销"。
-

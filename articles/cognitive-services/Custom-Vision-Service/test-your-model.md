@@ -1,7 +1,7 @@
 ---
 title: 测试和重新训练模型 - 自定义影像服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何测试图像，然后将其用于重新训练模型。
+description: 本文将演示如何测试映像，然后使用它来重新训练自定义视觉服务中的模型。
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 3f78f0b992581a44b030387f1bd0e37664df4cfd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c6ed8869f6d33609381a42fd22d728e9e5542802
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560915"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721198"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>使用自定义影像服务测试和重新训练模型
 
@@ -39,7 +39,7 @@ ms.locfileid: "68560915"
 
 要使用之前提交的图像进行训练，请执行以下步骤：
 
-1. 若要查看提交给分类器的图像，请打开[自定义影像服务网页](https://customvision.ai)，然后选择“预测”选项卡。
+1. 若要查看提交到分类器的图像，请打开[自定义影像网页](https://customvision.ai)，然后选择“预测”选项卡。
 
     ![“预测”选项卡的图像](./media/test-your-model/predictions-tab.png)
 
@@ -55,7 +55,7 @@ ms.locfileid: "68560915"
 
     ![“标记”页面的图像](./media/test-your-model/tag-image.png)
 
-3. 使用“定型”按钮重新定型分类器。
+3. 使用“训练”按钮重新训练分类器。
 
 ## <a name="next-steps"></a>后续步骤
 

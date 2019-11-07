@@ -1,22 +1,20 @@
 ---
-title: Azure Functions 高级计划（预览版） |Microsoft Docs
+title: Azure Functions 高级计划
 description: Azure Functions 高级计划的详细信息和配置选项（VNet，无冷启动，无限制执行持续时间）。
-services: functions
 author: jeffhollan
-manager: jeconnoc
-ms.assetid: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 4/11/2019
+ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: ce83d521d5bc986be7bb24ef874f1f0e1051e3ae
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 8cda3ce85e6e7e9d5d7787406eb3b9785c1f7724
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755403"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719037"
 ---
-# <a name="azure-functions-premium-plan-preview"></a>Azure Functions 高级计划（预览）
+# <a name="azure-functions-premium-plan"></a>Azure Functions 高级计划
 
 Azure Functions 高级计划是函数应用的托管选项。 高级计划提供 VNet 连接、无冷启动和高级硬件等功能。  可以将多个函数应用部署到相同的高级计划，该计划允许配置计算实例大小、基本计划大小和最大计划大小。  有关高级计划以及其他计划和托管类型的比较，请参阅[函数缩放和宿主选项](functions-scale.md)。
 
@@ -59,7 +57,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 部署到高级计划的 Azure Functions 将利用[适用于 web 应用的新 VNet 集成](../app-service/web-sites-integrate-with-vnet.md)。  配置后，你的应用可以与 VNet 中的资源通信，或通过服务终结点进行保护。  应用上也提供了 IP 限制，以限制传入流量。
 
-在高级计划中向函数应用分配子网时，需要一个子网，其中每个潜在实例都有足够的 IP 地址。 尽管在预览期间最大实例数可能有所不同，但我们需要至少有100个可用地址的 IP 块。
+在高级计划中向函数应用分配子网时，需要一个子网，其中每个潜在实例都有足够的 IP 地址。 需要至少具有100个可用地址的 IP 块。
 
 有关详细信息，请参阅[将 function app 与 VNet 集成](functions-create-vnet.md)。
 
@@ -71,11 +69,9 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 对于单个执行，消耗计划中的 Azure Functions 限制为10分钟。  在高级计划中，运行持续时间默认为30分钟，以防止执行失控。 不过，你可以[修改 host json 配置](./functions-host-json.md#functiontimeout)，使其不受高级计划应用的限制。
 
-在预览版中，你的持续时间不一定超过12分钟，并且如果你的应用未缩放到超出其最小辅助角色计数，则最有可能运行30分钟以上。
-
 ## <a name="plan-and-sku-settings"></a>计划和 SKU 设置
 
-创建计划时，需要配置两个设置：实例的最小数目（或计划大小）和最大猝发限制。  高级计划的最小实例数为1，预览期间的最大突发值为20。  最小实例保留并始终运行。
+创建计划时，需要配置两个设置：实例的最小数目（或计划大小）和最大猝发限制。  最小实例保留并始终运行。
 
 > [!IMPORTANT]
 > 对于在最小实例计数中分配的每个实例，无论函数是否正在执行，都将向你收费。
@@ -94,26 +90,26 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 创建或缩放计划时，可以在三种实例大小之间进行选择。  将按照内核总数和每秒使用的内存数计费。  应用可根据需要自动向外扩展到多个实例。  
 
-|SKU|内核数|内存|存储空间|
+|SKU|核心数|内存|存储|
 |--|--|--|--|
-|EP1|第|3.5 GB|250GB|
+|EP1|1|3.5 GB|250GB|
 |EP2|2|7GB|250GB|
 |EP3|4|14 GB|250GB|
 
 ## <a name="regions"></a>区域
 
-下面是每个操作系统的公共预览版当前支持的区域。
+下面是每个操作系统当前支持的区域。
 
-|地区| Windows | Linux |
+|区域| Windows | Linux |
 |--| -- | -- |
-|澳大利亚中部| ✔ * | |
-|澳大利亚中部 2| ✔ * | |
+|澳大利亚中部| ✔<sup>1</sup> | |
+|澳大利亚中部 2| ✔<sup>1</sup> | |
 |澳大利亚东部| ✔ | |
 |澳大利亚东南部 | ✔ | ✔ |
-|巴西南部| ✔ * * |  |
+|巴西南部| ✔<sup>2</sup> |  |
 |加拿大中部| ✔ |  |
 |美国中部| ✔ |  |
-|亚洲东部| ✔ |  |
+|东亚| ✔ |  |
 |美国东部 | ✔ | ✔ |
 |美国东部 2| ✔ |  |
 |法国中部| ✔ |  |
@@ -124,20 +120,17 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |北欧| ✔ | ✔ |
 |美国中南部| ✔ |  |
 |印度南部 | ✔ | |
-|亚洲东南部| ✔ | ✔ |
+|东南亚| ✔ | ✔ |
 |英国南部| ✔ | |
 |英国西部| ✔ |  |
 |欧洲西部| ✔ | ✔ |
 |印度西部| ✔ |  |
 |美国西部| ✔ | ✔ |
+|美国西部 2| ✔ |  |
 
-\* 上限限制为20个实例
+<sup>1</sup>最大扩大范围限制为20个实例。  
+<sup>2</sup>最大扩大规模限制为60实例。
 
-\* * 最大 scale out 限制为60实例
-
-## <a name="known-issues"></a>已知问题
-
-可以跟踪[GitHub 上公共预览版](https://github.com/Azure/Azure-Functions/wiki/Premium-plan-known-issues)的已知问题状态。
 
 ## <a name="next-steps"></a>后续步骤
 

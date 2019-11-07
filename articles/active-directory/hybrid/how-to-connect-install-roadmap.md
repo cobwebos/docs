@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect 和 Azure AD Connect Health 安装路线图。 | Microsoft Docs
+title: Azure AD Connect 和 Azure AD Connect Health 安装路线图。 | Microsoft 文档
 description: 本文档概述可用于安装 Azure AD Connect 和 Connect Health 的安装选项和路径。
 services: active-directory
 author: billmath
@@ -13,23 +13,23 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d6cce859aa26935f0b6007fe8e5ff2c2239b210
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cddf2ab36b2372ce93ae8a2a6230ccb02ae30117
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109448"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721024"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect 和 Azure AD Connect Health 安装路线图
 
 ## <a name="install-azure-ad-connect"></a>安装 Azure AD Connect
 
 > [!IMPORTANT]
-> Microsoft 不支持在正式记录的这些操作之外修改或操作 Azure AD Connect 同步。 其中的任何操作都可能会导致 Azure AD Connect 同步出现不一致或不受支持状态。因此，Microsoft 无法提供这种部署的技术支持。
+> Microsoft 不支持在正式记录的这些操作之外修改或操作 Azure AD Connect 同步。 其中的任何操作都可能导致 Azure AD Connect 同步的状态不一致或不受支持。因此，Microsoft 无法为此类部署提供技术支持。
 
 可以在 [Microsoft 下载中心](https://go.microsoft.com/fwlink/?LinkId=615771)找到 Azure AD Connect 的下载文件。
 
-| 解决方案 | 场景 |
+| 解决方案 | 方案 |
 | --- | --- |
 | 开始之前 - [硬件和先决条件](how-to-connect-install-prerequisites.md) |<li>开始安装 Azure AD Connect 之前所要完成的步骤。</li> |
 | [快速设置](how-to-connect-install-express.md) |<li>如果只有一个林 AD，我们建议使用此选项。</li> <li>使用密码同步以同一密码进行用户登录。</li> |
@@ -64,11 +64,11 @@ Azure AD Connect 随附了多个可以选择启用或已按默认启用的功能
 
 [筛选](how-to-connect-sync-configure-filtering.md) 。 默认情况下，同步所有用户、联系人、组和 Windows 10 计算机。 可以根据域、OU 或属性更改筛选。
 
-[密码哈希同步](how-to-connect-password-hash-synchronization.md) 可将 Active Directory 中的密码哈希同步到 Azure AD。 最终用户可以在本地与云中使用相同的密码，且只需在一个位置管理此密码。 由于它将本地 Active Directory 用作颁发机构，因此，还可以使用自己的密码策略。
+[密码哈希同步](how-to-connect-password-hash-synchronization.md) 可将 Active Directory 中的密码哈希同步到 Azure AD。 最终用户可以在本地与云中使用相同的密码，且只需在一个位置管理此密码。 由于它使用本地 Active Directory，因此用户还可以使用自己的密码策略。
 
 [密码写回](../authentication/quickstart-sspr.md) 可让用户在云中更改和重置其密码，及应用本地密码策略。
 
-[设备写回](how-to-connect-device-writeback.md)将允许在 Azure AD，以便用于条件性访问，返回写入到的本地 Active Directory 中注册的设备。
+[设备写回](how-to-connect-device-writeback.md)将允许在 Azure AD 中注册的设备写回到本地 Active Directory，因此它可用于条件性访问。
 
 [防止意外删除](how-to-connect-sync-feature-prevent-accidental-deletes.md) 功能默认处于打开状态，它可以保护云目录，避免同时进行多次删除。 默认情况下，允许每次运行执行 500 次删除。 可以更改此设置，具体取决于组织规模。
 
@@ -79,7 +79,7 @@ Azure AD Connect 随附了多个可以选择启用或已按默认启用的功能
 | --- | --- |
 |配置筛选 | [Azure AD Connect 同步：配置筛选](how-to-connect-sync-configure-filtering.md)|
 |密码哈希同步 | [密码哈希同步](how-to-connect-password-hash-synchronization.md)|
-|传递身份验证 | [直通身份验证](how-to-connect-pta.md)
+|直通身份验证 | [直通身份验证](how-to-connect-pta.md)
 |密码写回 | [密码管理入门](../authentication/quickstart-sspr.md)|
 |设备写回 | [在 Azure AD Connect 中启用设备写回](how-to-connect-device-writeback.md)|
 |防止意外删除 | [Azure AD Connect 同步：防止意外删除](how-to-connect-sync-feature-prevent-accidental-deletes.md)|
@@ -88,7 +88,7 @@ Azure AD Connect 随附了多个可以选择启用或已按默认启用的功能
 ## <a name="customize-azure-ad-connect-sync"></a>自定义 Azure AD Connect 同步
 Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配置。 但总会有一些情况使得默认配置不适用，因此必须进行调整。 可以根据本部分和链接主题中所述进行更改。
 
-如果以前没有用过同步拓扑，请先了解[技术概念](how-to-connect-sync-technical-concepts.md)中所述的基本概念和术语。 Azure AD Connect 是在 MIIS2003、ILM2007 和 FIM2010 基础上演进而来的。 即使有些功能相同，但改变的部分也有很多。
+如果以前没有用过同步拓扑，请先了解 [技术概念](how-to-connect-sync-technical-concepts.md)中所述的基本概念和术语。 Azure AD Connect 是在 MIIS2003、ILM2007 和 FIM2010 基础上演进而来的。 即使有些功能相同，但改变的部分也有很多。
 
 [默认配置](concept-azure-ad-connect-sync-default-configuration.md) 假设配置中可能存在多个林。 在这些拓扑中，用户对象可能表示为另一个林中的联系人。 用户还可能在另一个资源林中具有链接的邮箱。 [用户和联系人](concept-azure-ad-connect-sync-user-and-contacts.md)中介绍了默认配置的行为。
 
@@ -101,7 +101,7 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 |技术概念 | [Azure AD Connect 同步：技术概念](how-to-connect-sync-technical-concepts.md)|
 |了解默认配置 | [Azure AD Connect 同步：了解默认配置](concept-azure-ad-connect-sync-default-configuration.md)|
 |了解用户和联系人 | [Azure AD Connect 同步：了解用户和联系人](concept-azure-ad-connect-sync-user-and-contacts.md)|
-|声明性预配 | [Azure AD Connect 同步：了解声明性预配表达式](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|
+|声明性预配 | [Azure AD Connect Sync：了解声明性设置表达式](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|
 |更改默认配置 | [更改默认配置的最佳做法](how-to-connect-sync-best-practices-changing-default-configuration.md)|
 
 ## <a name="configure-federation-features"></a>配置联合身份验证功能
@@ -152,21 +152,22 @@ Azure AD Connect 提供多项功能，简化了使用 AD FS 通过 Azure AD 进�
 
 
 ## <a name="azure-ad-connect-health-portal"></a>Azure AD Connect Health 门户
-Azure AD Connect Health 门户显示警报、性能监视和使用情况分析的视图。 单击 https://aka.ms/aadconnecthealth URL 可转到 Azure AD Connect Health 的主边栏选项卡。 可以将边栏选项卡视为窗口。 在主边栏选项卡上，可以看到“快速启动”、Azure AD Connect Health 中的服务和其他配置选项。  请参阅下面的屏幕截图及其后面的简要说明。 部署代理后，运行状况服务会自动标识 Azure AD Connect Health 正在监视的服务。
+Azure AD Connect Health 门户显示警报、性能监视和使用情况分析的视图。 单击 https://aka.ms/aadconnecthealth URL 可转到 Azure AD Connect Health 的主边栏选项卡。 可以将边栏选项卡视为窗口。 在主边栏选项卡上，可以看到“快速启动”、Azure AD Connect Health 中的服务和其他配置选项。 请参阅下面的屏幕截图及其后面的简要说明。 部署代理后，运行状况服务会自动标识 Azure AD Connect Health 正在监视的服务。
 
 > [!NOTE]
 > 有关许可信息，请参阅 [Azure AD Connect Health 常见问题解答](reference-connect-health-faq.md)或 [Azure AD 定价页](https://aka.ms/aadpricing)。
     
 ![Azure AD Connect Health 门户](./media/whatis-hybrid-identity-health/portalsidebar.png)
 
-* **快速入门**：选择此选项会打开“快速入门”边栏选项卡。  可以选择“获取工具”来下载 Azure AD Connect Health 代理。  还可以访问文档并提供反馈。
-* **Azure Active Directory Connect (同步)** ：此选项显示 Azure AD Connect Health 当前正在监视的 Azure AD Connect 服务器。 “同步错误”  条目将按类别显示第一个已载入的同步服务的基本同步错误。 选择“同步错误”  条目时，打开的边栏选项卡会显示有关 Azure AD Connect 服务器的信息。 通过[使用用于同步的 Azure AD Connect Health](how-to-connect-health-sync.md) 详细了解相关功能。
+* **快速启动**：选择此选项会打开“快速启动”边栏选项卡。 可以选择“获取工具”来下载 Azure AD Connect Health 代理。 还可以访问文档并提供反馈。
+* **Azure Active Directory Connect (同步)** ：此选项显示 Azure AD Connect Health 当前正在监视的 Azure AD Connect 服务器。 “同步错误”条目将按类别显示第一个已载入的同步服务的基本同步错误。 选择“同步错误”条目时，打开的边栏选项卡会显示有关 Azure AD Connect 服务器的信息。 通过[使用用于同步的 Azure AD Connect Health](how-to-connect-health-sync.md) 详细了解相关功能。
 * **Active Directory 联合身份验证服务**：此选项显示 Azure AD Connect Health 当前正在监视的所有 AD FS 服务。 选择某个实例时，打开的边栏选项卡会显示有关该服务实例的信息。 该信息包括概述、属性、警报、监视情况，以及使用情况分析。 通过[在 AD FS 中使用 Azure AD Connect Health](how-to-connect-health-adfs.md) 详细了解相关功能。
 * **Active Directory 域服务**：此选项显示 Azure AD Connect Health 当前正在监视的所有 AD DS 林。 选择某个林时，打开的边栏选项卡会显示有关该林的信息。 这些信息包括基本信息、域控制器仪表板、复制状态仪表板、警报和监视的概述。 通过[在 AD DS 中使用 Azure AD Connect Health](how-to-connect-health-adds.md) 详细了解相关功能。
 * **配置**：此部分包含用于打开或关闭以下功能的选项：
 
-  - “设置”  条目包括代理的基本配置。 使用自动升级设置，可以自动将 Azure AD Connect Health 代理更新到最新版本：在 Azure AD Connect Health 代理发布时自动更新到最新版本的该软件。 此项已默认启用。 允许 Microsoft 访问 Azure AD 目录的运行状况数据，但只能将其用于故障排除目的：如果启用此功能，Microsoft 可以查看你所看到的数据。 这些信息有助于故障排除，并帮助解决问题。 此项已默认禁用。
-* 在“基于角色的访问控制(IAM)”  部分中，可以管理基于角色对 Connect Health 数据的访问。 
+   - **自动更新**到最新版本的 Azure AD Connect Health 代理：只要有新版本可用，就会自动更新 Azure AD Connect Health 代理。 默认情况下启用此选项。
+   - 仅出于故障排除目的，从 Azure AD 目录的完整性**访问数据**：如果启用此选项，则 Microsoft 可以访问用户查看的相同数据。 此信息可用于故障排除，并提供必要的帮助。 默认情况下禁用此选项
+* 在“基于角色的访问控制(IAM)”部分中，可以管理基于角色对 Connect Health 数据的访问。 
 
 ## <a name="next-steps"></a>后续步骤
 

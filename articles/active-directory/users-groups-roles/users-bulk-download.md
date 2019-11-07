@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd0829afca05058892d3a0ceeb50c9955d792dc3
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: d106e803fdef4f054b7e4717ba59a43359d1d68a
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72517056"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720301"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>在 Azure Active Directory 门户中下载用户列表（预览）
 
@@ -31,8 +31,9 @@ Azure Active Directory （Azure AD）支持批量用户导入（创建）操作�
 ## <a name="to-download-a-list-of-users"></a>下载用户列表
 
 1. 使用组织中的用户管理员帐户[登录到 Azure AD 组织](https://aad.portal.azure.com)。
-1. 在 Azure AD 中，选择 "**用户** > **下载用户**"。
-1. 在 "**下载用户**" 页上，选择 "**启动**" 以接收列出用户配置文件属性的 CSV 文件。 如果有错误，则可以在 "批量操作结果" 页上下载并查看结果文件。 文件包含每个错误的原因。
+2. 导航到 Azure Active Directory > 用户 "。 然后通过勾选每个用户旁边的左侧栏中的框来选择要包含在下载中的用户。 注意：此时无法选择要导出的所有用户。 必须单独选择每个。
+3. 在 Azure AD 中，选择 "**用户** > **下载用户**"。
+4. 在 "**下载用户**" 页上，选择 "**启动**" 以接收列出用户配置文件属性的 CSV 文件。 如果有错误，则可以在 "批量操作结果" 页上下载并查看结果文件。 文件包含每个错误的原因。
 
    ![选择要将列表下载到的位置。](./media/users-bulk-download/bulk-download.png)
 

@@ -1,39 +1,39 @@
 ---
-title: 使用 Azure 门户和各种 Sdk 创建具有大分区键的 Azure Cosmos 容器。
-description: 了解如何使用 Azure 门户和不同的 Sdk 在 Azure Cosmos DB 中创建具有大分区键的容器。
+title: 使用 Azure 门户和各种 SDK 通过大分区键创建 Azure Cosmos 容器。
+description: 了解如何使用 Azure 门户和不同的 SDK 通过大分区键在 Azure Cosmos DB 中创建容器。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: be639a67f70ab40f8d7dcc0f3793cbbd4a2ec4a3
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e2ea934140322a13f07a90f4246bacd3f9dbe6c9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436811"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721096"
 ---
-# <a name="create-containers-with-large-partition-key"></a>创建具有大分区键的容器
+# <a name="create-containers-with-large-partition-key"></a>使用大分区键创建容器
 
-Azure Cosmos DB 使用基于哈希的分区方案来实现数据的水平缩放。 在 3 2019 月5月之前创建的所有 Azure Cosmos 容器均使用哈希函数，该函数根据分区键的前100字节计算哈希值。 如果有多个具有相同前100个字节的分区键，则该服务会将这些逻辑分区视为相同的逻辑分区。 这可能会导致分区大小配额不正确，以及跨分区键应用唯一索引等问题。 为了解决此问题，会引入大的分区键。 Azure Cosmos DB 现在支持大分区键，其值最大为 2 KB。
+Azure Cosmos DB 使用基于哈希的分区方案实现数据的水平缩放。 在 2019 年 5 月 3 日之前创建的所有 Azure Cosmos 容器都使用哈希函数根据分区键的前 100 个字节计算哈希。 如果多个分区键的前 100 个字节相同，则服务会将这些逻辑分区视为同一逻辑分区。 这可能会导致问题，例如分区大小配额不正确、对不同的分区键应用了唯一索引。 为了解决此问题，我们引入了大分区键。 Azure Cosmos DB 现在支持其值最高为 2 KB 的大分区键。
 
-使用哈希函数的增强版本功能支持大分区键，此功能可从最大为 2 KB 的大分区键生成唯一哈希。 对于具有高分区键基数的方案（与分区键的大小无关），也建议使用此哈希版本。 分区键基数定义为唯一逻辑分区数，例如，容器中 ~ 30000 逻辑分区的顺序。 本文介绍如何使用 Azure 门户和不同的 Sdk 创建具有大分区键的容器。
+可以使用增强版哈希函数来支持大分区键，该增强版可以使用最高为 2 KB 的分区键生成唯一哈希。 也可将该哈希版本建议用于分区键基数高的情况，不管分区键的大小如何。 根据定义，分区键基数是指唯一逻辑分区的数目，例如，某个容器中有大约 30000 个逻辑分区。 本文介绍如何使用 Azure 门户和不同的 SDK 通过大分区键创建容器。
 
 ## <a name="create-a-large-partition-key-azure-portal"></a>创建大分区键（Azure 门户）
 
-若要创建大分区键，请在使用 Azure 门户创建新容器时，选中 "**我的分区键大于 100-Bytes"** 选项。 如果不需要较大的分区键，或者运行的 Sdk 版本低于1.18 的应用程序，请取消选中该复选框。
+若要在使用 Azure 门户创建新容器时创建大分区键，请选中“我的分区键大于 100 字节”选项。 如果不需要大分区键，或者应用程序在 1.18 之前的 SDK 版本上运行，请取消选中该复选框。
 
 ![使用 Azure 门户创建大分区键](./media/large-partition-keys/large-partition-key-with-portal.png)
 
-## <a name="create-a-large-partition-key-powershell"></a>创建大分区键（PowerShell）
+## <a name="create-a-large-partition-key-powershell"></a>创建大分区键 (PowerShell)
 
-若要创建具有大分区键支持的容器，请参阅。
+若要创建具有大分区键支持的容器，请参阅
 
-* [创建分区键大小较大的 Azure Cosmos 容器](manage-with-powershell.md##create-container-big-pk)
+* [创建具有大分区键大小的 Azure Cosmos 容器](manage-with-powershell.md##create-container-big-pk)
 
-## <a name="create-a-large-partition-key-net-sdk"></a>创建大分区键（.Net SDK）
+## <a name="create-a-large-partition-key-net-sdk"></a>创建大分区键 (.Net SDK)
 
-若要使用 .NET SDK 创建具有大分区键的容器，请指定 `PartitionKeyDefinitionVersion.V2` 属性。 下面的示例演示如何在 PartitionKeyDefinition 对象中指定 Version 属性，并将其设置为 PartitionKeyDefinitionVersion。
+若要使用 .NET SDK 创建具有大分区键的容器，请指定 `PartitionKeyDefinitionVersion.V2` 属性。 以下示例说明如何在 PartitionKeyDefinition 对象中指定 Version 属性，以及如何将其设置为 PartitionKeyDefinitionVersion.V2。
 
 ### <a name="v3-net-sdk"></a>v3 .NET SDK
 
@@ -64,16 +64,17 @@ database,
 
 ## <a name="supported-sdk-versions"></a>支持的 SDK 版本
 
-以下最小版本的 Sdk 支持较大的分区键：
+以下 SDK 最低版本支持大分区键：
 
 |SDK 类型  | 最低版本   |
 |---------|---------|
 |.Net     |    1.18     |
 |Java 同步     |   2.4.0      |
 |Java 异步   |  2.5.0        |
-| REST API | 版本高于 `2017-05-03` 通过使用 @no__t 请求标头。|
+| REST API | 使用 `2017-05-03` 请求标头时版本高于 `x-ms-version`。|
+| 资源管理器模板 | 版本2，方法是使用 `partitionKey` 对象中的 `"version":2` 属性。 |
 
-目前，在 Power BI 和 Azure 逻辑应用中，不能在中使用具有大分区键的容器。 在这些应用程序中，可以使用没有大分区键的容器。
+目前不能在 Power BI 和 Azure Logic Apps 中将容器与大分区键配合使用。 在这些应用程序中，可以在没有大分区键的情况下使用容器。
 
 ## <a name="next-steps"></a>后续步骤
 

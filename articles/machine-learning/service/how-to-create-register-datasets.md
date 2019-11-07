@@ -1,7 +1,7 @@
 ---
 title: 创建数据集以访问包含 azureml 数据集的数据
 titleSuffix: Azure Machine Learning
-description: 了解如何从各种源创建数据集，以及如何将数据集注册到工作区
+description: 了解如何从各种源创建数据集，以及如何将数据集注册到工作区。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: aabbac60acc53cfccc29fc3dbd06575e09840d83
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 1379085e410ddf119ae4ed1fe45389f00eb1b2a5
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497138"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716587"
 ---
-# <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>在 Azure 机器学习中创建和访问数据集（预览）
+# <a name="create-and-access-datasets-in-azure-machine-learning"></a>在 Azure 机器学习中创建和访问数据集
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -26,68 +26,68 @@ ms.locfileid: "73497138"
 
 利用 Azure 机器学习数据集，您可以：
 
-* 在数据集引用的**存储中保留数据的单个副本**。
+* 在存储中保留数据的单个副本，由数据集引用。
 
-* **在模型训练过程中轻松访问数据**，无需担心连接字符串或数据路径。
+* 无需担心连接字符串或数据路径即可在模型训练过程中无缝地访问数据。
 
-* 与其他用户**协作 & 共享数据**。
+* 与其他用户共享数据和进行协作。
 
 ## <a name="prerequisites"></a>必备组件
 
 若要创建和使用数据集，需要：
 
-* Azure 订阅。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有，请在开始之前创建一个免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 
-* [Azure 机器学习工作区](how-to-manage-workspace.md)
+* [Azure 机器学习工作区](how-to-manage-workspace.md)。
 
 * [安装的适用于 Python 的 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)，其中包含 azureml 数据集包。
 
-> [!Note]
+> [!NOTE]
 > 某些数据集类（预览版）与[dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)包之间存在依赖关系。 对于 Linux 用户，仅以下分发版支持这些类： Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
 
 ## <a name="dataset-types"></a>数据集类型
 
-根据用户在定型中使用数据集的方式，将数据集分为两种类型。
+有两种数据集类型，具体取决于用户在定型中使用它们的方式：
 
-* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)通过分析提供的文件或文件列表，以表格格式表示数据。 这使你能够将数据具体化为 Pandas 或 Spark 数据帧。 可以从 csv、tsv、parquet 文件、SQL 查询结果等创建一个 `TabularDataset` 对象。有关完整列表，请访问我们的[文档](https://aka.ms/tabulardataset-api-reference)。
+* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)通过分析提供的文件或文件列表，以表格格式表示数据。 这使你能够将数据具体化为 Pandas 或 Spark 数据帧。 可从 .csv、tsv、parquet 文件和 SQL 查询结果创建 `TabularDataset` 对象。 有关完整列表，请参阅[TabularDatasetFactory 类](https://aka.ms/tabulardataset-api-reference)。
 
-* [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py)引用数据存储或公用 url 中的单个或多个文件。 这使您能够将文件下载或装载到您的计算中。 文件可以是任何格式，这使得各种机器学习方案（包括深度学习）更广泛。
+* [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py)类引用数据存储或公用 url 中的单个或多个文件。 通过此方法，您可以将文件作为 FileDataset 对象下载或装载到您的计算中。 文件可以采用任何格式，这可以实现更广泛的机器学习方案，包括深度学习。
 
-若要了解有关即将发生的 API 更改的详细信息，请参阅[此处](https://aka.ms/tabular-dataset)。
+若要了解有关即将发生的 API 更改的详细信息，请参阅[数据集 api 更改通知](https://aka.ms/tabular-dataset)。
 
 ## <a name="create-datasets"></a>创建数据集
 
-通过创建数据集，可以创建对数据源位置的引用以及其元数据的副本。 数据会保留在其现有位置，因此不会产生额外的存储成本。 可以使用 Python SDK 或工作区登陆页面（预览版）创建 TabularDatasets 和 FileDatasets。 
+通过创建数据集，可以创建对数据源位置的引用以及其元数据的副本。 由于数据仍保留在其现有位置，因此不会产生额外的存储成本。 您可以使用 Python SDK 或工作区登陆页面（预览版）创建 `TabularDataset` 和 `FileDataset` 数据集。
 
 要使数据可 Azure 机器学习访问，必须从[Azure 数据存储](how-to-access-data.md)或公共 web url 中的路径创建数据集。
 
-### <a name="using-the-sdk"></a>使用 SDK
+### <a name="use-the-sdk"></a>使用 SDK
 
 使用 Python SDK 通过[Azure 数据存储](how-to-access-data.md)创建数据集：
 
-* 验证是否有 `contributor` 或 `owner` 访问已注册的 Azure 数据存储。
+1. 验证你是否已 `contributor` 或 `owner` 对已注册的 Azure 数据存储的访问权限。
 
-* 通过引用数据存储中的路径来创建数据集。
+1. 通过引用数据存储中的路径来创建数据集：
 
-```Python
-from azureml.core.workspace import Workspace
-from azureml.core.datastore import Datastore
-from azureml.core.dataset import Dataset
-
-datastore_name = 'your datastore name'
-
-# get existing workspace
-workspace = Workspace.from_config()
-
-# retrieve an existing datastore in the workspace by name
-datastore = Datastore.get(workspace, datastore_name)
-```
+    ```Python
+    from azureml.core.workspace import Workspace
+    from azureml.core.datastore import Datastore
+    from azureml.core.dataset import Dataset
+    
+    datastore_name = 'your datastore name'
+    
+    # get existing workspace
+    workspace = Workspace.from_config()
+    
+    # retrieve an existing datastore in the workspace by name
+    datastore = Datastore.get(workspace, datastore_name)
+    ```
 
 #### <a name="create-a-tabulardataset"></a>创建 TabularDataset
 
-可以通过 SDK 或 Azure 机器学习 studio 创建 TabularDatasets。 可以从数据中的列指定时间戳，或将路径模式数据存储在中以启用时序特征，这允许按时间轻松有效地进行筛选。
+可以通过 SDK 或 Azure 机器学习 Studio 创建 TabularDatasets。 您可以从数据中的列或存储数据的路径模式指定时间戳，以启用时序特征。 此规范允许按时间轻松有效地筛选。
 
-使用 `TabularDatasetFactory` 类的[`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none-)方法读取 csv 或 tsv 格式的文件，并创建未注册的 TabularDataset。 如果要从多个文件读取，结果将聚合为一个表格表示形式。
+使用 `TabularDatasetFactory` 类的[`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none-)方法可读取 .csv 或 tsv 格式的文件，以及创建未注册的 TabularDataset。 如果要从多个文件读取，结果将聚合为一个表格表示形式。
 
 ```Python
 # create a TabularDataset from multiple paths in datastore
@@ -99,7 +99,7 @@ datastore_paths = [
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
 
-默认情况下，创建 TabularDataset 时，将自动推断列数据类型。 如果推断出的类型与预期不同，可以使用以下代码指定列类型。 [在此处](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py)了解有关支持的数据类型的详细信息。
+默认情况下，当您创建 TabularDataset 时，将自动推断列数据类型。 如果推断出的类型与预期不符，则可以使用以下代码指定列类型。 你还可以[了解有关支持的数据类型的详细信息](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py)。
 
 ```Python
 from azureml.data.dataset_factory import DataType
@@ -118,7 +118,7 @@ titanic_ds.take(3).to_pandas_dataframe()
 1|2|正确|1|Cumings，Mrs Bradley （Florence Briggs 。|女|38.0|1|0|电脑17599|71.2833|C85|C
 2|3|正确|3|Heikkinen，未命中。 Laina|女|26.0|0|0|STON/O2。 3101282|7.9250||S
 
-使用 `TabularDatasetFactory` 类的[`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-)方法从 Azure SQL 数据库读取数据。
+使用 `TabularDatasetFactory` 类的[`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-)方法从 Azure SQL 数据库读取：
 
 ```Python
 
@@ -129,9 +129,9 @@ sql_datastore = Datastore.get(workspace, 'mssql')
 sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'))
 ```
 
-在 TabularDatasets 中，可以从数据中的列指定时间戳，或将路径模式数据存储在中以启用时序特征，这允许按时间轻松有效地进行筛选。
+在 TabularDatasets 中，可以从数据中的列指定时间戳，或从存储路径模式数据的位置指定时间戳，以启用时序特征。 此规范允许按时间轻松有效地筛选。
 
-使用 `TabularDataset` 类的[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-)方法指定时间戳列并按时间启用筛选。 可在[此处](https://aka.ms/azureml-tsd-notebook)找到更多示例和详细信息。
+使用`TabularDataset` 类的[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-)方法可以指定时间戳列并按时间启用筛选。 有关详细信息，请参阅[具有 NOAA 天气数据的表格时序相关 API 演示](https://aka.ms/azureml-tsd-notebook)。
 
 ```Python
 # create a TabularDataset with time series trait
@@ -152,7 +152,7 @@ data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 
 #### <a name="create-a-filedataset"></a>创建 FileDataset
 
-对 `FileDatasetFactory` 类使用[`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-)方法可加载任意格式的文件，并创建未注册的 FileDataset。
+使用 `FileDatasetFactory` 类的[`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-)方法以任意格式加载文件，并创建未注册的 FileDataset：
 
 ```Python
 # create a FileDataset from multiple paths in datastore
@@ -172,23 +172,21 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
 
 #### <a name="on-the-web"></a>在 Web 上 
-以下步骤和动画演示了如何在 Azure 机器学习 studio https://ml.azure.com中创建数据集。
+以下步骤和动画演示了如何在 Azure 机器学习 Studio https://ml.azure.com中创建数据集。
 
 ![使用 UI 创建数据集](media/how-to-create-register-datasets/create-dataset-ui.gif)
 
 在工作室中创建数据集：
 1. 在 https://ml.azure.com登录。
 1. 在左侧窗格的 "**资产**" 部分中选择 "**数据集**"。 
-1. 选择 " **+ 创建数据集**"，选择数据集的源;这可以是本地文件、数据存储或公共 web url。
+1. 选择 "**创建数据集**"，选择数据集的源。 此源可以是本地文件、数据存储或公共 Url。
 1. 选择 "**表格**或**文件**" 作为数据集类型。
 1. 选择 "**下一步**" 查看**设置和预览**、**架构**和**确认详细信息**窗体;它们根据文件类型进行智能填充。 使用这些窗体检查你的选择，并在创建之前进一步配置你的数据集。  
 1. 选择 "**创建**" 以完成数据集创建。
 
 ## <a name="register-datasets"></a>注册数据集
 
-若要完成创建过程，请将数据集注册到工作区。
-
-使用[`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-)方法可将数据集注册到工作区，以便与其他人共享数据集，并在各种试验中重复使用。
+若要完成创建过程，请将数据集注册到工作区。 使用[`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-)方法将数据集注册到你的工作区，以便与其他人共享数据集，并跨各种试验重复使用这些数据集：
 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,
@@ -197,15 +195,15 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 ```
 
 > [!Note]
-> 通过 Azure 机器学习 studio 创建的数据集将自动注册到工作区。
+> 通过 Azure 机器学习 Studio 创建的数据集自动注册到工作区。
 
 ## <a name="create-datasets-with-azure-open-datasets"></a>用 Azure 开放数据集创建数据集
 
 [Azure 开放数据集](https://azure.microsoft.com/services/open-datasets/)是精选公共数据集，可用于将方案专属特征添加到机器学习解决方案，以提高模型的准确度。 数据集包括不受任何限制的天气、人口普查、节假日、公共安全和位置数据，有助于定型机器学习模型和扩充预测解决方案。 打开的数据集位于 Microsoft Azure 云中，同时包含在 SDK 和工作区 UI 中。
 
-### <a name="using-the-sdk"></a>使用 SDK
+### <a name="use-the-sdk"></a>使用 SDK
 
-若要从 SDK 创建包含 Azure 开放数据集的数据集，请确保已安装 `pip install azureml-opendatasets`的包。 每个离散数据集都是在 SDK 中由自己的类表示的，某些类可作为 `TabularDataset`和/或 `FileDataset`。 有关类的完整列表，请参阅[参考文档](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)。
+若要从 SDK 创建包含 Azure 开放数据集的数据集，请确保已安装 `pip install azureml-opendatasets`的包。 每个离散数据集均由其在 SDK 中的类来表示，某些类可作为 `TabularDataset`、`FileDataset`或这两者。 有关类的完整列表，请参阅[参考文档](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)。
 
 大多数类从继承并返回 `TabularDataset`的实例。 这些类的示例包括 `PublicHolidays`、`BostonSafety`和 `UsPopulationZip`。 若要从这些类型的类创建 `TabularDataset`，请使用不带参数的构造函数。 在注册从打开的数据集创建的数据集时，不会立即下载数据，但会在以后请求时（例如在训练期间）访问数据（例如，在训练过程中）。 
 
@@ -216,7 +214,7 @@ tabular_dataset = UsPopulationZip()
 tabular_dataset = tabular_dataset.register(workspace=workspace, name="pop data", description="US population data by zip code")
 ```
 
-某些类可以检索为 `TabularDataset` 或 `FileDataset`，这使你可以直接操作和/或下载文件。 其他类只能使用 `get_tabular_dataset()`**或**`get_file_dataset()` 函数获取数据集。 下面的代码示例演示了这些类类型的一些示例。
+您可以检索某些类作为 `TabularDataset` 或 `FileDataset`，这允许您直接操作和/或下载文件。 其他类只能通过使用 `get_tabular_dataset()` 或 `get_file_dataset()` 函数获取数据集。 下面的代码示例演示了这些类型的类的几个示例：
 
 ```python
 from azureml.opendatasets import MNIST
@@ -231,25 +229,25 @@ from azureml.opendatasets import Diabetes
 diabetes_tabular = Diabetes.get_tabular_dataset()
 ```
 
-### <a name="using-the-ui"></a>使用 UI
+### <a name="use-the-ui"></a>使用 UI
 
-你还可以使用 UI 从开放式数据集类创建数据集。 在工作区中，导航到 "*资产*" 下的 "**数据集**" 选项卡。 单击 "**创建数据集**" 下拉列表，然后单击 "**从打开的数据集**"。
+还可以通过 UI 从开放式数据集类创建数据集。 在工作区中，选择 "**资产**" 下的 "**数据集**" 选项卡。 在 "**创建数据集**" 下拉菜单上，选择 "**从打开的数据集**"。
 
 ![用 UI 打开数据集](media/how-to-create-register-datasets/open-datasets-1.png)
 
-接下来，选择数据集，方法是选择 "磁贴" （可选） "使用搜索栏进行筛选"。 然后单击“下一步”。
+选择数据集的磁贴来选择数据集。 （您可以选择使用搜索栏进行筛选。）选择 "**下一步**"。
 
 ![选择数据集](media/how-to-create-register-datasets/open-datasets-2.png)
 
-接下来，选择一个名称来注册数据集，并根据需要使用可用的筛选器筛选数据。 在这种情况下，对于公共假日数据集，请将时间段筛选为一年，将国家/地区代码筛选为仅限美国。 然后单击“创建”。
+选择要在其下注册数据集的名称，并根据需要使用可用的筛选器来筛选数据。 在这种情况下，对于公共假日数据集，请将时间段筛选为一年，将国家/地区代码筛选为仅限美国。 选择“创建”。
 
 ![设置数据集参数并创建数据集](media/how-to-create-register-datasets/open-datasets-3.png)
 
-数据集现已在工作区中创建并在工作区中**提供，并且**可与你创建的其他数据集相同。
+数据集现已在工作区中的 "**数据集**" 下提供。 您可以使用与创建的其他数据集相同的方式来使用它。
 
 ## <a name="version-datasets"></a>版本数据集
 
-可以通过创建新的版本，将新的数据集注册到相同的名称。 数据集版本是将数据的状态做成书签的一种方式，因此可以应用特定版本的数据集进行试验或未来的复制。 详细了解[数据集版本](how-to-version-track-datasets.md)。
+可以通过创建新的版本，将新的数据集注册到相同的名称。 数据集版本是将数据的状态做成书签的一种方法，以便可以应用特定版本的数据集进行试验或未来的复制。 详细了解[数据集版本](how-to-version-track-datasets.md)。
 ```Python
 # create a TabularDataset from Titanic training data
 web_paths = [
@@ -268,7 +266,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ## <a name="access-datasets-in-your-script"></a>访问脚本中的数据集
 
-已注册的数据集可在 Azure 机器学习计算的计算群集上本地和远程访问。 若要跨试验访问已注册的数据集，请使用以下代码按名称获取工作区和已注册的数据集。 默认情况下，`Dataset` 类的[`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--)方法返回注册到工作区中的最新版本的数据集。
+在计算群集上本地和远程都可以访问已注册的数据集，如 Azure 机器学习计算。 若要跨试验访问已注册的数据集，请使用以下代码访问工作区，并按名称访问已注册的数据集。 默认情况下，`Dataset` 类的[`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--)方法返回注册到工作区中的最新版本的数据集。
 
 ```Python
 %%writefile $script_folder/train.py
@@ -291,4 +289,4 @@ df = titanic_ds.to_pandas_dataframe()
 
 * 了解[如何定型数据集](how-to-train-with-datasets.md)。
 * 使用自动机器学习来[通过 TabularDatasets 进行训练](https://aka.ms/automl-dataset)。
-* 有关数据集定型的更多示例，请参阅[示例笔记本](https://aka.ms/dataset-tutorial)。
+* 有关数据集定型示例的详细信息，请参阅[示例笔记本](https://aka.ms/dataset-tutorial)。

@@ -1,7 +1,7 @@
 ---
 title: 品牌检测 - 计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 与使用计算机视觉 API 检测品牌/徽标相关的概念。
+description: 本文介绍对象检测的专用模式;使用计算机视觉 API 的品牌和/或徽标检测。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: c3a80cbdd166f77681665ee3675c1a71ce3a9bd6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 117beca1284f28c75c1ac772425423f732b8a236
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967091"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718634"
 ---
 # <a name="detect-popular-brands-in-images"></a>检测图像中的常用品牌
 
@@ -77,4 +77,4 @@ ms.locfileid: "70967091"
 品牌检测功能属于[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API。 可以通过本机 SDK 或 REST 调用来调用此 API。 将 `Brands` 包括在 **visualFeatures** 查询参数中。 然后，在获取完整 JSON 响应时，就只需分析 `"brands"` 部分内容的字符串。
 
 * [快速入门：计算机视觉 .NET SDK](./quickstarts-sdk/csharp-sdk.md)
-* [快速入门：分析图像 (REST API)](./quickstarts/csharp-analyze.md)
+* [快速入门：分析图像（REST API）](./quickstarts/csharp-analyze.md)

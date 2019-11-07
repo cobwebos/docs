@@ -1,7 +1,7 @@
 ---
-title: 用 Azure 认知搜索 Blob 索引器为 CSV blob 编制索引
+title: 使用 delimitedText 分析模式（预览版）索引 CSV blob
 titleSuffix: Azure Cognitive Search
-description: 使用 Azure 认知搜索索引爬行 Azure Blob 存储中的 CSV blob，以便进行全文搜索。 索引器可自动为所选数据源（如 Azure Blob 存储）引入数据。
+description: 使用 delimitedText 分析模式（目前为公共预览版）从 Azure Blob 存储提取并导入 CSV。
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 18d0eb704deba80bf83b5cae0a598f47181700f7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4edeb8d535504c305319aad35637bb1b09f65984
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793783"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719247"
 ---
-# <a name="how-to-index-csv-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>如何在 Azure 中使用 Blob 索引器对 CSV blob 编制索引认知搜索 
+# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中使用 delimitedText 分析模式和 Blob 索引器为 CSV blob 编制索引 
 
-> [!Note]
-> delimitedText 分析模式处于预览状态，不适用于生产。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持 .NET SDK。
->
+> [!IMPORTANT] 
+> DelimitedText 分析模式目前为公共预览版。 提供的预览功能不带服务级别协议，不建议用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前没有门户或 .NET SDK 支持。
 
 默认情况下， [Azure 认知搜索 blob 索引器](search-howto-indexing-azure-blob-storage.md)将分隔的文本 blob 分析为单个文本块。 但在 blob 含有 CSV 数据的情况下，通常希望将 blob 中的每一行视为一个单独文档。 例如，给定以下带分隔符的文本，可能要将其分析为两个文档，每个文档包含“id”、“datePublished”和“tags”字段： 
 
@@ -28,13 +27,13 @@ ms.locfileid: "72793783"
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-本文介绍如何使用 Azure 认知搜索 blob indexerby 设置 `delimitedText` 分析模式来分析 CSV blob。 
+本文介绍如何通过设置 `delimitedText` 分析模式，使用 Azure 认知搜索 blob 索引器分析 CSV blob。 
 
 > [!NOTE]
-> 按照[一对多索引](search-howto-index-one-to-many-blobs.md)中的索引器配置建议，从一个 Azure blob 输出多个搜索文档。
+> 请遵循[一对多索引](search-howto-index-one-to-many-blobs.md)中的索引器配置建议从一个 Azure Blob 输出多个搜索文档。
 
 ## <a name="setting-up-csv-indexing"></a>设置 CSV 索引
-若要为 CSV blob 编制索引，请在[create](https://docs.microsoft.com/rest/api/searchservice/create-indexer) index 请求上使用 `delimitedText` 分析模式创建或更新索引器定义：
+若要对 CSV blob 编制索引，请使用 `delimitedText` 分析模式根据[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)请求创建或更新索引器定义：
 
     {
       "name" : "my-csv-indexer",

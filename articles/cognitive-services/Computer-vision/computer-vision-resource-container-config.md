@@ -1,7 +1,7 @@
 ---
 title: 配置容器 - 计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 在计算机视觉中为识别文本容器配置各种设置。
+description: 本文介绍如何在计算机视觉中配置识别文本容器的必需和可选设置。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 1df8199abbbc195db873ab3da515cb1dd5fe9761
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ddbee3695c2a7ef7cb63c48cccacbd2d53a8c1a9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73484075"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718992"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>配置计算机视觉 Docker 容器
 
@@ -51,7 +51,7 @@ ms.locfileid: "73484075"
 
 请记住将 `vision/v1.0` 路由添加到终结点 URI，如下表所示。 
 
-|需要| 名称 | 数据类型 | 说明 |
+|必选| 名称 | 数据类型 | 说明 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 

@@ -1,7 +1,7 @@
 ---
 title: 受支持的数据源 - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker 从半结构化内容（例如常见问题解答、产品手册、指南、支持文档，以及以网页、PDF 文件或 MS Word 文档文件形式存储的策略）中自动提取问答对。 也可以将内容从结构化 QnA 内容文件添加到知识库中。
+description: QnA Maker 会自动提取作为网页、PDF 文件或 MS Word doc 文件或结构化 QnA 内容文件存储的问答对。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 39746032fd012de8e0868c3bc7f810cd8e780b68
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: a1fcc1bec5db3ad64dc045cf5e1a449fce808132
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176375"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721206"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>QnA Maker 内容的数据源
 
@@ -29,7 +29,7 @@ QnA Maker 从半结构化内容（例如常见问题解答、产品手册、指�
 
 |源类型|内容类型| 示例|
 |--|--|--|
-|URL|常见问题解答<br> （平面，包含节或主题主页）<br>支持页面 <br> （单页操作指南文章、故障排除文章，等等）|[纯文本常见问题解答](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs)、 <br>[包含链接的常见问题解答](https://www.microsoft.com/en-us/software-download/faq)、<br> [包含主题主页的常见问题解答](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[支持文章](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
+|代码|常见问题<br> （平面，包含节或主题主页）<br>支持页面 <br> （单页操作指南文章、故障排除文章，等等）|[纯文本常见问题解答](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs)、 <br>[包含链接的常见问题解答](https://www.microsoft.com/en-us/software-download/faq)、<br> [包含主题主页的常见问题解答](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[支持文章](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
 |PDF / DOC|常见问题解答、<br> 产品手册、<br> 小册子、<br> 论文、<br> 传单策略、<br> 支持指南、<br> 结构化 QnA，<br> 等等|[Structured QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、<br> [Sample Product Manual.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)、<br> [Sample semi-structured.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、<br> [示例白皮书 .pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)，<br>[示例 multi-turn](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)|
 |\* Excel|结构化 QnA 文件<br> （包括 RTF、HTML 支持）|[Sample QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |\* TXT/TSV|结构化 QnA 文件|[示例 chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
@@ -144,7 +144,7 @@ Answer2
 
 采用结构化 *.txt*、 *.tsv* 或 *.xls* 文件形式的 QnA 也可上传到 QnA Maker，以便创建或增强知识库。  它们的内容可以是纯文本，也可以是 RTF 或 HTML 格式。 
 
-| 问题  | 答案  | 元数据（1键：1值） |
+| 问题  | Answer  | 元数据（1键：1值） |
 |-----------|---------|-------------------------|
 | 问题 1 | 答案 1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | 问题 2 | 答案 2 |      `Key:Value`           |
@@ -171,7 +171,7 @@ Answer2
 
 导入知识库将替换现有知识库的内容。 导入需要包含数据源信息的结构化 .tsv 文件。 这些信息可帮助 QnA Maker 将问答对分组，并将它们归因于特定数据源。
 
-| 问题  | 答案  | Source| 元数据（1键：1值） |          
+| 问题  | Answer  | 源| 元数据（1键：1值） |          
 |-----------|---------|----|---------------------|
 | 问题 1 | 答案 1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | 问题 2 | 答案 2 | 编辑|    `Key:Value`       |
@@ -190,7 +190,7 @@ Answer2
 
 下面是可以在 QnA Maker 中使用的 markdown 格式的列表： 
 
-|用途|格式|示例 markdown|渲染<br>如聊天机器人中所示|
+|目的|格式|示例 markdown|渲染<br>如聊天机器人中所示|
 |--|--|--|--|
 2个句子之间的新行。|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![在两个句子之间设置换行符的格式](../media/qnamaker-concepts-datasources/format-newline.png)|
 |从 h1 到 h6 的标头，`#` 数表示哪个标头。 1 `#` 为 h1。|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![带有 markdown 标头的格式](../media/qnamaker-concepts-datasources/format-headers.png)<br>![markdown 标头 H1 到 H5 的格式](../media/qnamaker-concepts-datasources/format-h1-h5.png)|

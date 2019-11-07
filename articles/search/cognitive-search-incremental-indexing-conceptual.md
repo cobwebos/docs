@@ -1,25 +1,24 @@
 ---
 title: 增量索引简介（预览）
 titleSuffix: Azure Cognitive Search
-description: 配置 AI 扩充管道，使数据的最终一致性，处理对技能、技能集、索引器或数据源的任何更新。
+description: 配置 AI 扩充管道，使数据的最终一致性，处理对技能、技能集、索引器或数据源的任何更新。 此功能目前处于公共预览阶段
 manager: nitinme
 author: Vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ea3bcfc25040f09b6871d85412ac64061ec2f9e8
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 94ce056185ff6a804521bf583ac4f6ffaa513fb0
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73549116"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715418"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Azure 认知搜索中的增量索引是什么？
 
-> [!Note]
-> 增量索引处于预览阶段，不适用于生产。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持门户或 .NET SDK。
->
+> [!IMPORTANT] 
+> 增量索引当前为公共预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持门户或 .NET SDK。
 
 增量索引是 Azure 认知搜索的一项新功能，它将缓存和状态添加到认知技能组合中增强的内容，使你可以控制扩充管道中的单个步骤的处理和重新处理。 这不仅会保留你的资金投入，还会使系统更有效。 缓存结构和内容时，索引器可以确定哪些技能发生了变化，并且仅运行了已修改的技能以及任何下游相关技能。 
 

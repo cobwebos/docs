@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 10/25/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8741a9a362a10dfdb0150c9dc0dfddeed54594a7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0d0e567198fd25243b89245d54bbed5a658cc663
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497442"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716594"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps：管理、部署和监视 Azure 机器学习的模型
 
@@ -126,7 +126,7 @@ Azure 机器学习可以使用分析来确定部署模型时要使用的理想 C
 Microsoft Power BI 支持使用机器学习模型进行数据分析。 有关详细信息，请参阅[Power BI （预览版）中的 Azure 机器学习集成](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。
 
 
-## <a name="monitor-ml-applications-for-operational-and-ml-related-issues"></a>监视 ML 应用程序的操作和 ML 相关问题
+## <a name="monitor-for-operational--ml-issues"></a>监视操作 & ML 问题
 
 利用监视功能，您可以了解要发送到您的模型的数据以及返回的预测。
 
@@ -135,7 +135,7 @@ Microsoft Power BI 支持使用机器学习模型进行数据分析。 有关详
 有关详细信息，请参阅[如何启用模型数据收集](how-to-enable-data-collection.md)。
 
 
-## <a name="capture-an-end-to-end-audit-trail-of-the-ml-lifecycle"></a>捕获 ML 生命周期的端到端审核线索
+## <a name="audit-trail-of-the-ml-lifecycle"></a>ML 生命周期的审核线索
 
 Azure ML 使你能够跟踪所有 ML 资产的端到端审核记录。 具体而言：
 
@@ -144,7 +144,7 @@ Azure ML 使你能够跟踪所有 ML 资产的端到端审核记录。 具体而
 - Azure ML 运行历史记录存储用于定型模型的代码、数据和计算的快照。
 - Azure ML 模型注册表捕获与模型关联的所有元数据（这会对它进行定型，以便在部署时进行定型）。
 
-## <a name="automate-the-end-to-end-ml-lifecycle"></a>自动化端到端 ML 生命周期 
+## <a name="automate-the-ml-lifecycle"></a>自动执行 ML 生命周期 
 
 您可以使用 GitHub 和 Azure Pipelines 来创建用于训练模型的持续集成过程。 在典型方案中，当数据科研人员将更改签入项目的 Git 存储库时，Azure 管道将开始训练运行。 然后，可以检查运行的结果，以查看定型模型的性能特征。 还可以创建一个管道，用于将模型部署为 web 服务。
 
@@ -157,8 +157,18 @@ Azure ML 使你能够跟踪所有 ML 资产的端到端审核记录。 具体而
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解[如何以及在何处部署](how-to-deploy-and-where.md)具有 Azure 机器学习的模型。 有关部署的示例，请参阅[教程：在 Azure 容器实例中部署图像分类模型](tutorial-deploy-models-with-aml.md)。
+阅读并浏览以下资源了解详细信息：
 
-了解如何[通过 Azure Pipelines 创建 ML 模型的持续集成和部署](/azure/devops/pipelines/targets/azure-machine-learning)。 
++ [& 如何 Azure 机器学习部署模型](how-to-deploy-and-where.md)
 
-了解如何创建[使用部署为 Web 服务的模型](how-to-consume-web-service.md)的客户端应用程序和服务。
++ [教程：在 ACI 中部署图像分类模型](tutorial-deploy-models-with-aml.md)。
+
++ [端到端 MLOps 示例存储库](https://github.com/microsoft/MLOps)
+
++ [具有 Azure Pipelines 的 ML 型号的 CI/CD](/azure/devops/pipelines/targets/azure-machine-learning)
+
++ 创建使用已[部署模型](how-to-consume-web-service.md)的客户端
+
++ [规模化机器学习](/architecture/data-guide/big-data/machine-learning-at-scale)
+
++ [Azure AI 参考体系结构 & 最佳实践代表](https://github.com/microsoft/AI)

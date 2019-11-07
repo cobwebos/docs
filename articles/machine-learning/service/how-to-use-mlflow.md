@@ -1,5 +1,5 @@
 ---
-title: 使用 MLflow
+title: 用于 ML 试验的 MLflow 跟踪
 titleSuffix: Azure Machine Learning
 description: 设置 MLflow 与 Azure 机器学习以记录指标 & 项目，并从 Databricks、本地环境或 VM 环境部署模型。
 services: machine-learning
@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: d98e45d3ef77fea6b64efef10c20ecce3787b14c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 946350af0c1a4e8140fbf7f926061aae250e9969
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489321"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716484"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>跟踪指标并通过 MLflow 和 Azure 机器学习部署模型（预览）
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,11 +27,14 @@ ms.locfileid: "73489321"
 
 + 将 MLflow 试验部署为 Azure 机器学习 web 服务。 通过将部署为 web 服务，可以将 Azure 机器学习监视和数据偏差检测功能应用到生产模型。 
 
-[MLflow](https://www.mlflow.org)是一个开源库，用于管理机器学习试验的生命周期。 MLFlow 跟踪是 MLflow 的一个组件，无论是在本地还是在虚拟机上（即使在 Azure Databricks 上），都可记录和跟踪你的培训运行指标和模型项目，无论是在本地还是在虚拟机上进行测试。
+[MLflow](https://www.mlflow.org)是一个开源库，用于管理机器学习试验的生命周期。 MLFlow 跟踪是 MLflow 的一个组件，用于记录和跟踪你的培训运行指标和模型项目，无论实验环境如何--在远程计算目标、虚拟机上、本地计算机上，还是在 Azure Databricks 群集上。
 
-下图说明了使用 MLflow 跟踪时，可以执行任何试验，无论它位于虚拟机上的远程计算目标上、是否在本地计算机上，还是在 Azure Databricks 群集上，并跟踪其运行指标和存储模型项目在 Azure 机器学习工作区中。
+下图说明，使用 MLflow 跟踪，可以跟踪试验的运行度量值并将模型项目存储在 Azure 机器学习工作区中。
 
 ![mlflow 与 azure 机器学习示意图](media/how-to-use-mlflow/mlflow-diagram-track.png)
+
+> [!TIP]
+> 本文档中的信息主要面向需要监视模型定型过程的数据科学家和开发人员。 如果你是对监视 Azure 机器学习中的资源使用情况和事件（如配额、已完成的培训运行或已完成的模型部署）感兴趣的管理员，请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
 
 ## <a name="compare-mlflow-and-azure-machine-learning-clients"></a>比较 MLflow 和 Azure 机器学习客户端
 
@@ -134,7 +137,7 @@ with mlflow.start_run():
     mlflow.log_metric('example', 1.23)
 ```
 
-使用此计算和训练运行配置时，请使用 `Experiment.submit('train.py')` 方法提交运行。 这会自动设置 MLflow 跟踪 URI，并将日志记录从 MLflow 定向到你的工作区。
+使用此计算和训练运行配置时，请使用 `Experiment.submit('train.py')` 方法提交运行。 此方法自动设置 MLflow 跟踪 URI，并将日志记录从 MLflow 定向到你的工作区。
 
 ```Python
 run = exp.submit(src)
@@ -163,7 +166,7 @@ MLflow 跟踪与 Azure 机器学习使你能够将 Databricks 中记录的指标
 
 设置群集后，请导入你的实验笔记本，将其打开，并将你的群集附加到其中。
 
-下面的代码应在实验笔记本中。 这将获取用于实例化你的工作区的 Azure 订阅的详细信息。 这假定你已有一个资源组和 Azure 机器学习工作区，否则你可以[创建它们](how-to-manage-workspace.md)。 
+下面的代码应在实验笔记本中。 此代码将获取用于实例化你的工作区的 Azure 订阅的详细信息。 此代码假定你已有一个资源组和 Azure 机器学习工作区，否则你可以[创建它们](how-to-manage-workspace.md)。 
 
 ```python
 import mlflow
@@ -194,7 +197,7 @@ ws = Workspace.get(name=workspace_name,
 
 ### <a name="link-mlflow-tracking-to-your-workspace"></a>将跟踪链接 MLflow 到你的工作区
 
-实例化工作区后，设置 MLflow 跟踪 URI。 这样，便可以将 MLflow 跟踪链接到 Azure 机器学习工作区。 此后，你的所有实验都将位于托管 Azure 机器学习跟踪服务中。
+实例化工作区后，设置 MLflow 跟踪 URI。 这样，便可以将 MLflow 跟踪链接到 Azure 机器学习工作区。 链接后，所有实验都将位于托管 Azure 机器学习跟踪服务中。
 
 #### <a name="directly-set-mlflow-tracking-in-your-notebook"></a>直接在笔记本中设置 MLflow 跟踪
 
@@ -249,7 +252,7 @@ mlflow.sklearn.log_model(regression_model, model_save_path)
 
 ### <a name="retrieve-model-from-previous-run"></a>检索以前运行的模型
 
-若要检索所需的运行，需要运行 ID 和在其中保存模型的运行历史记录中的路径。 
+若要检索运行，您需要运行 ID 以及在其中保存模型的运行历史记录中的路径。 
 
 ```python
 # gets the list of runs for your experiment as an array
@@ -312,7 +315,7 @@ webservice.wait_for_deployment(show_output=True)
 ```
 #### <a name="deploy-to-aks"></a>部署到 AKS
 
-若要部署到 AKS，你需要创建一个 AKS 群集，并选择要部署的 Docker 映像。 在此示例中，从 ACI 部署中引入前面创建的映像。
+若要部署到 AKS，请先创建 AKS 群集，并选择要部署的 Docker 映像。 在此示例中，从 ACI 部署中引入前面创建的映像。
 
 若要从以前的 ACI 部署获取映像，请使用[image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py)类。 
 
@@ -323,7 +326,7 @@ from azureml.core.image import Image
 myimage = Image(workspace=ws, name='sklearn-image') 
 ```
 
-创建 AKS 计算可能需要20-25 分钟才能创建新群集
+使用[ComputeTarget （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-)方法创建 AKS 群集。 创建新群集可能需要20-25 分钟。
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget

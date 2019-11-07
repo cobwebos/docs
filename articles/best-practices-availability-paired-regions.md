@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: 90111325677e1bdd12a03081ad7513a34f68fd40
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: b71048412f5715fd1b8ef3edf742716916672bd5
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044138"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718747"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>业务连续性和灾难恢复 (BCDR)：Azure 配对区域
 
@@ -28,7 +28,7 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 
 | 地理位置 | 配对区域 |  |
 |:--- |:--- |:--- |
-| 亚洲 |亚洲东部 |亚洲东南部 |
+| 亚洲 |东亚 |东南亚 |
 | 澳大利亚 |澳大利亚东部 |澳大利亚东南部 |
 | 澳大利亚 |澳大利亚中部 |澳大利亚中部 2 |
 | 巴西 |巴西南部 |美国中南部 |
@@ -49,10 +49,10 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 | 南非 | 南非北部 | 南非西部
 | 英国 |英国西部 |英国南部 |
 | 阿拉伯联合酋长国 | 阿拉伯联合酋长国北部 | 阿拉伯联合酋长国中部
-| 美国国防部 |US DoD 东部 |US DoD 中部 |
-| US Government |US Gov 亚利桑那州 |US Gov 德克萨斯州 |
-| US Government |US Gov 爱荷华州 |美国弗吉尼亚州政府 |
-| US Government |美国弗吉尼亚州政府 |US Gov 德克萨斯州 |
+| 美国国防部 |美国 DoD 东部 |美国 DoD 中部 |
+| 美国政府 |美国亚利桑那州政府 |美国德克萨斯州政府 |
+| 美国政府 |US Gov 爱荷华州 |美国政府弗吉尼亚州 |
+| 美国政府 |美国政府弗吉尼亚州 |美国德克萨斯州政府 |
 
 表 1 - Azure 区域对映射
 
@@ -75,7 +75,7 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 ## <a name="cross-region-activities"></a>跨区域活动
 如图 2 所示。
 
-![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure 计算 (IaaS)** - 必须提前预配附加的计算资源，以确保在发生灾难期间另一个区域可以提供资源。 有关详细信息，请参阅 [Azure resiliency technical guidance](resiliency/resiliency-technical-guidance.md)（Azure 复原技术指南）。
+![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure 计算 (IaaS)** - 必须提前预配附加的计算资源，以确保在发生灾难期间另一个区域可以提供资源。 有关详细信息，请参阅 [Azure resiliency technical guidance](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md)（Azure 复原技术指南）。
 
 ![存储](./media/best-practices-availability-paired-regions/2Green.png) **Azure 存储**-如果使用托管磁盘，请参阅使用 Azure 备份进行[跨区域备份](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines)，并使用 Azure Site Recovery 将 vm 从一个区域[复制](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)到另一个区域。 如果使用的是存储帐户，则在创建 Azure 存储帐户时，将默认配置异地冗余存储（GRS）。 使用 GRS 时，数据会在主要区域自动复制三次，并在配对区域复制三次。 有关详细信息，请参阅 [Azure 存储冗余选项](storage/common/storage-redundancy.md)。
 

@@ -1,25 +1,24 @@
 ---
 title: 知识库简介（预览版）
 titleSuffix: Azure Cognitive Search
-description: 将丰富的文档发送到 Azure 存储，可在其中查看、重设和使用 Azure 认知搜索中和其他应用程序中丰富的文档。
+description: 将丰富的文档发送到 Azure 存储，可在其中查看、重设和使用 Azure 认知搜索中和其他应用程序中丰富的文档。 此功能目前以公共预览版提供。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2e6d20a1eca7a6b3281e33d8534ab3456e79ccdf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a1c6f2d869d8d7ad865005ebd319beac56bdbacd
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485090"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720094"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure 认知搜索中的知识库简介
 
-> [!Note]
-> 知识存储目前为预览版，不适合在生产环境中使用。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持 .NET SDK。
->
+> [!IMPORTANT] 
+> 知识存储目前为公共预览版。 提供的预览功能不带服务级别协议，不建议用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-preview](search-api-preview.md)提供了预览功能。 目前支持的门户支持不受支持，也没有 .NET SDK 支持。
 
 "知识库" 是 Azure 认知搜索的一项功能，可保留[AI 扩充管道](cognitive-search-concept-intro.md)的输出以供以后分析或其他下游处理。 扩充的*文档*是从已使用 AI 进程提取、构建和分析的内容创建的管道输出。 在标准 AI 管道中，丰富的文档是暂时的，仅在编制索引期间使用，然后被丢弃。 对于知识存储，将保留已丰富的文档。 
 

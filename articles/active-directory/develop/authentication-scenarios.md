@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3d87ab57a5cf3bcd768a28f7867dac37371570b
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 1ab2180c54f07ff5009e2c57d8522f2eb0b81aad
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200361"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718369"
 ---
 # <a name="authentication-basics"></a>身份验证基础知识
 
@@ -37,7 +37,7 @@ ms.locfileid: "73200361"
 
 应用程序不是创建每个应用程序来维护自己的用户名和密码信息，而是需要在多个应用程序中添加或删除用户时，这会产生较高的管理负担，应用可以将该责任委派给一个集中的标识提供者。
 
-Azure Active Directory （Azure AD）是云中集中的标识提供者。 将身份验证和授权委派给它可以实现这样的方案：要求用户位于特定位置、使用多重身份验证的条件性访问策略，以及允许用户登录一次，然后自动登录到共享同一集中式目录的所有 web 应用。 此功能称为单一登录（SSO）。
+Azure Active Directory （Azure AD）是云中的集中式标识提供者。 将身份验证和授权委派给它可以实现这样的方案：要求用户位于特定位置、使用多重身份验证的条件性访问策略，以及允许用户登录一次，然后自动登录到共享同一集中式目录的所有 web 应用。 此功能称为单一登录（SSO）。
 
 集中标识提供者更重要的是，其用户位于全球各地的用户不需要从企业网络登录。 Azure AD 对用户进行身份验证并提供访问令牌。 访问令牌是由授权服务器颁发的安全令牌。 它包含有关标记所针对的用户和应用的信息，可用于访问 Web Api 和其他受保护的资源。
 
@@ -53,7 +53,7 @@ Azure AD 还提供 Azure Active Directory B2C 以便组织可以使用诸如 Goo
 
 ### <a name="security-tokens"></a>安全令牌
 
-安全令牌包含用户和应用的相关信息。 Azure AD 使用包含声明的基于 JSon 的标记（Jwt）。 声明向另一个实体提供有关实体的断言。 应用程序可以对各种任务使用声明，如：
+安全令牌包含用户和应用的相关信息。 Azure AD 使用包含声明的基于 JSON 的标记（Jwt）。 声明向另一个实体提供有关实体的断言。 应用程序可以对各种任务使用声明，如：
 
 * 验证令牌
 * 标识使用者的目录租户
@@ -83,7 +83,7 @@ Azure AD 还提供 Azure Active Directory B2C 以便组织可以使用诸如 Goo
 对于标识提供者，若要知道用户有权访问特定的应用，则必须向标识提供者注册用户和应用程序。 向 Azure AD 注册应用程序时，将为应用程序提供标识配置，使其能够与 Azure AD 集成。 注册应用程序还允许：
 
 - 在登录对话框中自定义应用程序的商标。 这一点很重要，因为这是用户对你的应用程序的首次体验。
-- 决定是否只允许用户登录到你的组织。 这是单租户应用程序。 或者允许用户使用任何工作或学校帐户登录。 这是一个多租户应用程序。 你还可以允许使用个人 Microsoft 帐户，或通过链接的、Google 等使用社交帐户。
+- 决定是否只允许用户登录到你的组织。 这是单租户应用程序。 或者允许用户使用任何工作或学校帐户登录。 这是一个多租户应用程序。 你还可以允许个人 Microsoft 帐户，或来自 LinkedIn、Google 的社交帐户，等等。
 - 请求范围权限。 例如，你可以请求 "用户读取" 作用域，该作用域授予读取已登录用户的配置文件的权限。
 - 定义定义对 Web API 的访问权限的作用域。 通常情况下，当应用程序想要访问你的 API 时，它需要请求对你定义的作用域的权限。
 - 与 Azure AD 共享机密，以便向 Azure AD 证明应用的标识。  这适用于应用是机密客户端应用程序的情况。 机密客户端应用程序是可以安全地保存凭据的应用程序。 它们要求使用受信任的后端服务器来存储凭据。
@@ -98,8 +98,9 @@ Microsoft 标识平台：
 * 保存支持在运行时进行身份验证所需的所有数据。
 * 保存所有数据以确定应用可能需要访问的资源，以及在什么情况下应满足给定请求。
 * 提供基础结构，用于实现应用程序开发人员租户内的应用程序预配和任何其他 Azure AD 租户。
+* 处理令牌请求时间期间的用户同意，并协助跨租户动态预配应用
 
-处理令牌请求时间期间的用户同意，并促进在租户许可范围内动态预配应用程序，使资源所有者授权客户端应用程序访问受保护的资源（在特定权限下）代表资源所有者。 Microsoft 标识平台：
+"同意" 是资源所有者授权客户端应用程序，以代表资源所有者访问受保护资源的权限。 Microsoft 标识平台：
 
 * 使用户和管理员能够动态地同意或拒绝应用以他们的名义访问资源。
 * 使管理员能够最终决定允许执行哪些应用、哪些用户可以使用特定的应用，以及如何访问目录资源。
@@ -142,7 +143,7 @@ Microsoft 标识平台：
 
 Web 应用开发人员可以指示是所有页面还是仅某些页面都要求身份验证。 例如，在 ASP.NET/ASP.NET Core 中，这是通过将 `[Authorize]` 特性添加到控制器操作来完成的。 
 
-此属性会导致 ASP.NET 检查是否存在包含用户标识的会话 cookie。 如果 cookie 不存在，ASP.NET 会将身份验证重定向到指定的标识提供者。 如果 Azure AD 标识提供者，则 web 应用将身份验证重定向到 https://login.microsoftonline.com ，这会显示登录对话框。
+此属性会导致 ASP.NET 检查是否存在包含用户标识的会话 cookie。 如果 cookie 不存在，ASP.NET 会将身份验证重定向到指定的标识提供者。 如果 Azure AD 标识提供者，则 web 应用会将身份验证重定向到 https://login.microsoftonline.com，这会显示登录对话框。
 
 ### <a name="how-a-web-app-delegates-sign-in-to-azure-ad-and-obtains-a-token"></a>Web 应用如何委托登录 Azure AD 和获取令牌
 

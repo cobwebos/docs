@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/22/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 6d59964013a2631430ecd7e46d1ce0f6be60a05f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 611b3e608d9b0de9423c861ec70e9fc2e7ad67d5
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802038"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720751"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>适用于合作伙伴的 Azure 成本管理入门
 
@@ -83,9 +83,9 @@ Azure 成本管理要求对计费帐户或订阅具有 "读取" 权限。 可以
 合作伙伴可以使用范围来协调发票。 而且，它们使用范围为以下各项设置计费货币中的预算：
 
 - 特定筛选的发票
-- 客户
-- Subscription
-- Resource group
+- Customer
+- 订阅
+- 资源组
 - 资源
 - Azure 服务
 - 计量
@@ -139,7 +139,7 @@ Azure 成本管理要求对计费帐户或订阅具有 "读取" 权限。 可以
 ![选择 Azure 订阅客户](./media/get-started-partners/subscriptions-select-customer.png)
 
 单击 "**成本分析**" 并开始查看成本。
-现在，按即用即付费率的成本对订阅和资源组 RBAC 范围提供成本分析、预算和警报。
+按即用即付费率的成本提供订阅和资源组 RBAC 范围的成本分析、预算和警报。
 
 ![以客户身份查看成本分析 ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
 
@@ -147,22 +147,23 @@ RBAC 范围内的预留实例的分期查看和实际成本显示零收费。 �
 
 ## <a name="analyze-costs-in-cost-analysis"></a>分析成本分析中的成本
 
-合作伙伴可以探索和分析客户对于特定客户或发票的成本分析成本。 使用筛选器和分组依据功能可以按多个字段来分析成本，包括：
+合作伙伴可以探索和分析客户对于特定客户或发票的成本分析成本。
 
-| **字段** | **说明** |
+使用情况详细信息文件和成本管理 Api 中有以下字段。 您可以使用 "筛选和分组依据" 成本分析中的功能来按多个字段分析成本。 若要查看字段的完整列表，请参阅[成本管理数据字段](understand-cost-mgt-data.md#cost-management-data-fields)。
+
+| 字段名 | 说明 |
 | --- | --- |
-| PartnerTenantID | 合作伙伴的 Azure Active Directory 租户的标识符 |
-| PartnerName | Azure Active Directory 租户的合作伙伴的名称 |
-| CustomerTenantID | 客户订阅的 Azure Active Directory 租户的标识符 |
-| CustomerName | 包含客户订阅的 Azure Active Directory 租户的名称 |
-| ResellerMPNID | 与订阅关联的分销商的 MPNID |
-| 订阅 ID | Azure 订阅的唯一 Microsoft 生成的标识符 |
-| subscriptionName | Azure 订阅的名称 |
-| billingProfileID | 计费配置文件的标识符。 它采用单个计费货币跨客户对发票中的成本进行分组。
-| invoiceID | 显示特定交易记录的发票上的发票 ID |
-| resourceGroup | Azure 资源组的名称。 用于资源生命周期管理。 |
+| CustomerTenantID | 客户&#39;订阅的 Azure Active Directory 租户的标识符。 |
+| CustomerName | 客户&#39;订阅的 Azure Active Directory 租户的名称。 |
+| CustomerTenantDomainName | 客户&#39;订阅的 Azure Active Directory 租户的域名。 |
+| PartnerTenantID | 合作伙伴&#39;Azure Active Directory 租户的标识符。 |
+| PartnerName | Azure Active Directory 租户的合作伙伴的名称。 |
+| ResellerMPNID | 与订阅关联的分销商的 MPNID。 |
+| costinUSD | 以 USD 为单位的估计 ExtendedCost 或混合成本。 |
+| paygCostInBillingCurrency | 如果定价价格为零售价格，则显示成本。 以计费币种显示即用即付价格。 仅在 RBAC 范围内可用。 |
+| paygCostInUSD | 如果定价价格为零售价格，则显示成本。 显示即用即付价格（美元）。 仅在 RBAC 范围内可用。 |
 | partnerEarnedCreditRate | 基于合作伙伴管理员链接访问权限的合作伙伴获得的信用额度（PEC）时应用的折扣率。 |
-| partnerEarnedCreditApplied | 指示是否应用了合作伙伴挣贷记。 |
+| partnerEarnedCreditApplied | 指示是否已应用合作伙伴获得的信用额度。 |
 
 在 "[成本分析](quick-acm-cost-analysis.md)" 视图中，还可以[保存视图](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)并将数据导出到[CSV 和 PNG 文件](quick-acm-cost-analysis.md#automation-and-offline-analysis)。
 
@@ -203,36 +204,67 @@ RBAC 范围内的预留实例的分期查看和实际成本显示零收费。 �
 #### <a name="to-get-a-list-of-billing-accounts"></a>获取计费帐户列表
 
 ```
-armclient get "providers/Microsoft.billing/billingAccounts?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts?api-version=2019-10-01-preview
 ```
 
 #### <a name="to-get-a-list-of-customers"></a>获取客户列表
 
 ```
-armclient get "providers/Microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers?api-version=2019-10-01-preview
 ```
+
 #### <a name="to-get-a-list-of-subscriptions"></a>获取订阅列表
 
 ```
-armclient get "/providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/billingSubscriptions?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions?api-version=2019-10-01-preview
 ```
+
+#### <a name="to-get-a-list-of-invoices-for-a-period-of-time"></a>获取一段时间的发票列表
+
+```
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices?api-version=2019-10-01-preview&periodStartDate={periodStartDate}&periodEndDate={periodEndDate}
+```
+
+API 调用返回一个发票数组，其中包含类似于下面的 JSON 代码的元素。
+
+```
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/{billingAccountID}/billingProfiles/{BillingProfileID}/invoices/{InvoiceID}",
+      "name": "{InvoiceID}",
+      "properties": {
+        "amountDue": {
+          "currency": "USD",
+          "value": x.xx
+        },
+        ...
+    }
+```
+
+使用前面返回的 ID 字段值，并将其替换为范围以查询使用情况详细信息。
+
+```
+GET https://management.azure.com/{id}/providers/Microsoft.Consumption/UsageDetails?api-version=2019-10-01
+```
+
+该示例返回与特定发票关联的使用记录。
+
 
 #### <a name="to-get-the-policy-for-customers-to-view-costs"></a>获取客户的策略以查看成本
 
 ```
-armclient get "providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/policies/default?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/policies/default?api-version=2019-10-01-preview
 ```
 
 #### <a name="to-set-the-policy-for-customers-to-view-costs"></a>设置客户要查看成本的策略
 
 ```
-armclient put "providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/policies/default?api-version=2019-10-01-preview" @policy.json
+PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/policies/default?api-version=2019-10-01-preview
 ```
 
 #### <a name="to-get-azure-service-usage-for-a-billing-account"></a>获取计费帐户的 Azure 服务使用情况
 
 ```
-armclient GET /providers/Microsoft.Billing/BillingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/providers/Microsoft.Consumption/usageDetails?api-version=2019-10-01
+GET https://management.azure.com/providers/Microsoft.Billing/BillingAccounts/{billingAccountName}/providers/Microsoft.Consumption/usageDetails?api-version=2019-10-01
 ```
 
 #### <a name="to-download-a-customers-azure-service-usage"></a>下载客户的 Azure 服务使用情况
@@ -240,7 +272,7 @@ armclient GET /providers/Microsoft.Billing/BillingAccounts/XXXXXXXX-XXXX-XXXX-XX
 以下 get 调用是一个异步操作。
 
 ```
-armclient get providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/providers/Microsoft.Consumption/usageDetails/download?api-version=2019-10-01 -verbose
+GET https://management.azure.com/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/providers/Microsoft.Consumption/usageDetails/download?api-version=2019-10-01 -verbose
 ```
 
 调用在响应中返回的 `Location` URI 以检查操作状态。 当状态为 "*已完成*" 时，`downloadUrl` 属性包含一个链接，可用于下载生成的报表。
@@ -251,50 +283,40 @@ armclient get providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXX
 首先，使用以下文章。
 
 ```
-armclient post "/providers/Microsoft.Billing/BillingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/billingProfiles/YYYY-YYYY-YYY-YYYY-YYY/pricesheet/default/download?api-version=2019-10-01-preview&format=csv" -verbose
+POST https://management.azure.com/providers/Microsoft.Billing/BillingAccounts/{billingAccountName}/billingProfiles/{billingProfileID}/pricesheet/default/download?api-version=2019-10-01-preview&format=csv" -verbose
 ```
 
 然后，调用异步操作属性值。 例如：
 
 ```
-armclient get "providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/billingProfiles/YYYY-YYYY-YYY-YYYY-YYY/pricesheetDownloadOperations/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX?sessiontoken=0:11186&api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileID}/pricesheetDownloadOperations/{operation}?sessiontoken=0:11186&api-version=2019-10-01-preview
 ```
 前面的 get 调用返回包含价目表的下载链接。
 
-#### <a name="to-get-customer-costs-for-the-last-two-months-sorted-by-month"></a>若要获取过去两个月的客户成本，按月排序
+
+#### <a name="to-get-aggregated-costs"></a>获取聚合成本
 
 ```
-armclient post providers/microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryCustomer.json
-```
-
-#### <a name="to-get-azure-subscription-costs-for-the-last-two-months-sorted-by-month"></a>若要获取过去两个月的 Azure 订阅成本，按月排序
-
-```
-armclient post providers/microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQuerySubscription.json
-```
-
-#### <a name="to-get-daily-costs-for-the-current-month"></a>获取当月的每日成本
-
-```
-armclient post providers/microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryDaily.json
+POST https://management.azure.com/providers/microsoft.billing/billingAccounts/{billingAccountName}/providers/microsoft.costmanagement/query?api-version=2019-10-01
 ```
 
 #### <a name="create-a-budget-for-a-partner"></a>为合作伙伴创建预算
 
 ```
-armclient put providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01 @budgetCreate.json
+PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01
 ```
-
 
 #### <a name="create-a-budget-for-a-customer"></a>为客户创建预算
 
 ```
-armclient put providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/providers/Microsoft.Consumption/budgets/test-partner-demo?api-version=2019-10-01 @budgetCreate.json
+PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/providers/Microsoft.Consumption/budgets/{budgetName}?api-version=2019-10-01
 ```
+
 #### <a name="delete-a-budget"></a>删除预算
 
 ```
-armclient delete providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01
+PUT
+https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/budgets/{budgetName}?api-version=2019-10-01
 ```
 
 

@@ -1,5 +1,5 @@
 ---
-title: 自动优化电子邮件通知操作指南 - Azure SQL 数据库 | Microsoft Docs
+title: 自动优化电子邮件通知操作指南-Azure SQL 数据库
 description: 为 Azure SQL 数据库自动查询优化启用电子邮件通知。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: df9390c00c34fce82de8cc17efb5cc3bce2e4e3d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e1478ab6abc9705a67f2d47bc076d3c2fe54ccd4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569447"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691143"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自动优化的电子邮件通知
 
@@ -58,9 +58,9 @@ SQL 数据库自动优化建议可在 [Azure 门户](sql-database-advisor-portal
 
 ## <a name="update-azure-automation-modules"></a>更新 Azure 自动化模块
 
-用于检索自动优化建议的 PowerShell 脚本使用[AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource)和[AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction)命令, 该命令适用于所需的 Azure 模块版本4及更高版本。
+用于检索自动优化建议的 PowerShell 脚本使用[AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource)和[AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction)命令，该命令适用于所需的 Azure 模块版本4及更高版本。
 
-- 如果需要更新 Azure 模块, 请参阅[Azure 自动化中的 Az module 支持](../automation/az-modules.md)。
+- 如果需要更新 Azure 模块，请参阅[Azure 自动化中的 Az module 支持](../automation/az-modules.md)。
 
 ## <a name="create-azure-automation-runbook"></a>创建 Azure 自动化 Runbook
 

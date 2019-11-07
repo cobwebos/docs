@@ -1,21 +1,24 @@
 ---
-title: 文档提取认知搜索技能
+title: 文档提取认知搜索技能（预览）
 titleSuffix: Azure Cognitive Search
-description: 从扩充管道内的文件中提取内容。
+description: 从扩充管道内的文件中提取内容。 此技能目前为公共预览版。
 manager: nitinme
 author: careyjmac
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: chalton
-ms.openlocfilehash: 8656896fe1a113ab143c43b4d1973e4196c5f087
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e4274f1cb2eacaf78ab83bfb9d637d044d2290bd
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512192"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720126"
 ---
 # <a name="document-extraction-cognitive-skill"></a>文档提取认知技能
+
+> [!IMPORTANT] 
+> 此技能目前为公共预览版。 提供的预览功能不带服务级别协议，不建议用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-preview](search-api-preview.md)提供了预览功能。 目前没有门户或 .NET SDK 支持。
 
 **文档提取**技能从扩充管道内的文件中提取内容。 这使您可以利用通常在技能组合执行之前发生的文档提取步骤，而这些文件可能会由其他技能生成。
 
@@ -63,7 +66,7 @@ Util. DocumentExtractionSkill
 
  - 将索引器定义上的 `allowSkillsetToReadFileData` 参数设置为 "true"。  这将创建一个路径 `/document/file_data` 该路径是一个对象，该对象表示从 blob 数据源下载的原始文件数据。 此参数仅适用于 Blob 存储中的数据。
 
- - 将索引器定义上的 `imageAction` 参数设置为除 `none`之外的值。  这将创建一个图像数组，`/document/normalized_images` 按照此技能的输入所需的约定（如 `/document/normalized_images/*`）。
+ - 将索引器定义上的 `imageAction` 参数设置为除 `none`之外的值。  这将创建一个图像数组，该数组遵循在为此技能输入所需约定的情况下（例如 `/document/normalized_images/*`）。
 
  - 自定义技能返回完全按如上所述定义的 json 对象。  `$type` 参数必须设置为完全 `file` 并且 `data` 参数必须是文件内容的基本64编码字节数组数据。
 

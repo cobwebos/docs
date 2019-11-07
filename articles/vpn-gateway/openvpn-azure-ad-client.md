@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: cherylmc
-ms.openlocfilehash: f4241b2ace2d7c86e1ed9036ca6d1da4a59eb61f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 704dcd6335766a6058de4e520b8dcbca0d304c9d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517522"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721470"
 ---
 # <a name="configure-a-vpn-client-for-p2s-vpn-connections-azure-ad-authentication-preview"></a>配置 VPN 客户端以进行 P2S VPN 连接： Azure AD 身份验证（预览版）
 
@@ -20,7 +20,7 @@ ms.locfileid: "73517522"
 
 ## <a name="profile"></a>使用客户端配置文件
 
-若要连接，需要在要连接到 VNet 的每台计算机上配置 VPN 客户端配置文件。 你可以在计算机上创建客户端配置文件，将其导出，然后将其导入到其他计算机。
+若要连接，需要[下载](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)Azure Vpn 客户端，并在要连接到 VNet 的每台计算机上配置 VPN 客户端配置文件。 你可以在计算机上创建客户端配置文件，将其导出，然后将其导入到其他计算机。
 
 ### <a name="cert"></a>创建基于证书的客户端配置文件
 

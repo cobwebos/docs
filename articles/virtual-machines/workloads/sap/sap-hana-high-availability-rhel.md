@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: f51870fb8f6ed71aab2558099c2361bf6e340493
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 62bb00c05359682503d2e99ef282f2523871147d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078518"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721538"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -66,7 +66,7 @@ SAP HANA 复制由一个主节点和至少一个辅助节点组成。 对主节�
 * SAP 说明 [1999351] 包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
-* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署 (本文)][deployment-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署（本文）][deployment-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * [SAP HANA system replication in pacemaker cluster](https://access.redhat.com/articles/3004101)（Pacemaker 群集中的 SAP HANA 系统复制）
 * 通用 RHEL 文档
@@ -103,11 +103,11 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 1. 打开 Azure 门户上的[数据库模板][template-multisid-db]。
 1. 输入以下参数：
     * **SAP 系统 ID**：输入要安装的 SAP 系统的 SAP 系统 ID。 该 ID 将用作所要部署的资源的前缀。
-    * **OS 类型**：选择一个 Linux 发行版。 对于此示例，请选择“RHEL 7”。
+    * **OS 类型**：选择一个 Linux 分发版。 对于此示例，请选择“RHEL 7”。
     * **数据库类型**：选择“HANA”。
     * **SAP 系统大小**：输入新系统将提供的 SAPS 数量。 如果不确定系统需要多少 SAPS，请咨询 SAP 技术合作伙伴或系统集成商。
     * **系统可用性**：选择“HA”。
-    * **管理员用户名、管理员密码或 SSH 密钥**：将创建一个可用于登录计算机的新用户。
+    * **管理员用户名、管理员密码或 SSH 密钥**：创建可用于登录计算机的新用户。
     * **子网 ID**：如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示： **/subscriptions/\<订阅 ID>/resourceGroups/\<资源组名称>/providers/Microsoft.Network/virtualNetworks/\<虚拟网络名称>/subnets/\<子网名称>** 。 如果要创建新的虚拟网络，请将其留空
 
 ### <a name="manual-deployment"></a>手动部署
@@ -116,74 +116,113 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 1. 创建虚拟网络。
 1. 创建可用性集。  
    设置最大更新域。
-1. 创建负载均衡器（内部）。
+1. 创建负载均衡器（内部）。 建议[标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。
    * 选择在步骤 2 中创建的虚拟网络。
 1. 创建虚拟机 1。  
    最低使用 Red Hat Enterprise Linux 7.4 for SAP HANA。 本示例使用 Red Hat Enterprise Linux 7.4 for SAP HANA 映像 <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> 选择在步骤 3 中创建的可用性集。
 1. 创建虚拟机 2。  
    最低使用 Red Hat Enterprise Linux 7.4 for SAP HANA。 本示例使用 Red Hat Enterprise Linux 7.4 for SAP HANA 映像 <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> 选择在步骤 3 中创建的可用性集。
 1. 添加数据磁盘。
-1. 配置负载均衡器。 首先创建前端 IP 池：
+1. 如果使用标准负载均衡器，请执行以下配置步骤：
+   1. 首先创建前端 IP 池：
 
-   1. 打开负载均衡器，选择**前端 IP 池**，然后选择“添加”。
-   1. 输入新前端 IP 池的名称（例如 **hana-frontend**）。
-   1. 将“分配”设置为“静态”并输入 IP 地址（例如 **10.0.0.13**）。
-   1. 选择“确定”。
-   1. 创建新前端 IP 池后，请记下池 IP 地址。
+      1. 打开负载均衡器，选择**前端 IP 池**，然后选择“添加”。
+      1. 输入新前端 IP 池的名称（例如 **hana-frontend**）。
+      1. 将“分配”设置为“静态”并输入 IP 地址（例如 **10.0.0.13**）。
+      1. 选择“确定”。
+      1. 创建新前端 IP 池后，请记下池 IP 地址。
 
-1. 接下来创建后端池：
+   1. 接下来创建后端池：
 
-   1. 打开负载均衡器，选择**后端池**，然后选择“添加”。
-   1. 输入新后端池的名称（例如 **hana-backend**）。
-   1. 选择“添加虚拟机”。
-   1. 选择在步骤 3 中创建的可用性集。
-   1. 选择 SAP HANA 群集的虚拟机。
-   1. 选择“确定”。
+      1. 打开负载均衡器，选择**后端池**，然后选择“添加”。
+      1. 输入新后端池的名称（例如 **hana-backend**）。
+      1. 选择“添加虚拟机”。
+      1. 选择 "虚拟机"。
+      1. 选择 SAP HANA 群集的虚拟机及其 IP 地址。
+      1. 选择“设置”（应用程序对象和服务主体对象）。
 
-1. 接下来创建运行状况探测：
+   1. 接下来创建运行状况探测：
 
-   1. 打开负载均衡器，选择**运行状况探测**，然后选择“添加”。
-   1. 输入新运行状况探测的名称（例如 **hana-hp**）。
-   1. 选择“TCP”作为协议，并选择端口 625**03**。 将“间隔”值保留设置为 5，将“不正常阈”值设置为 2。
-   1. 选择“确定”。
+      1. 打开负载均衡器，选择**运行状况探测**，然后选择“添加”。
+      1. 输入新运行状况探测的名称（例如 **hana-hp**）。
+      1. 选择“TCP”作为协议，并选择端口 625**03**。 将“间隔”值保留设置为 5，将“不正常阈”值设置为 2。
+      1. 选择“确定”。
 
-1. 对于 SAP HANA 1.0，请创建负载均衡规则：
+   1. 接下来，创建负载均衡规则：
+   
+      1. 打开负载均衡器，选择**负载均衡规则**，然后选择“添加”。
+      1. 输入新负载均衡器规则的名称（例如**hana-lb**）。
+      1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如， **hana-前端**、 **hana-后端**和**hana**）。
+      1. 选择 " **HA 端口**"。
+      1. 将“空闲超时”增大到 30 分钟。
+      1. 确保**启用浮动 IP**。
+      1. 选择“确定”。
 
-   1. 打开负载均衡器，选择**负载均衡规则**，然后选择“添加”。
-   1. 输入新负载均衡器规则的名称（例如 hana-lb-3**03**15）。
-   1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **hana-frontend**）。
-   1. 将“协议”保留设置为“TCP”，输入端口 3**03**15。
-   1. 将“空闲超时”增大到 30 分钟。
-   1. 确保**启用浮动 IP**。
-   1. 选择“确定”。
-   1. 针对端口 3**03**17 重复上述步骤。
+   > [!Note]
+   > 如果没有公共 IP 地址的 Vm 放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，则不会有出站 internet 连接，除非执行其他配置以允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅[使用 Azure 标准负载均衡器在 SAP 高可用性方案中的虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
 
-1. 对于 SAP HANA 2.0，请为系统数据库创建负载均衡规则：
+1. 或者，如果你的方案指示使用基本负载均衡器，请执行以下配置步骤：
+   1. 配置负载均衡器。 首先创建前端 IP 池：
 
-   1. 打开负载均衡器，选择**负载均衡规则**，然后选择“添加”。
-   1. 输入新负载均衡器规则的名称（例如 hana-lb-3**03**13）。
-   1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **hana-frontend**）。
-   1. 将“协议”保留设置为“TCP”，输入端口 3**03**13。
-   1. 将“空闲超时”增大到 30 分钟。
-   1. 确保**启用浮动 IP**。
-   1. 选择“确定”。
-   1. 针对端口 3**03**14 重复上述步骤。
+      1. 打开负载均衡器，选择**前端 IP 池**，然后选择“添加”。
+      1. 输入新前端 IP 池的名称（例如 **hana-frontend**）。
+      1. 将“分配”设置为“静态”并输入 IP 地址（例如 **10.0.0.13**）。
+      1. 选择“确定”。
+      1. 创建新前端 IP 池后，请记下池 IP 地址。
 
-1. 对于 SAP HANA 2.0，请先为租户数据库创建负载均衡规则：
+   1. 接下来创建后端池：
 
-   1. 打开负载均衡器，选择**负载均衡规则**，然后选择“添加”。
-   1. 输入新负载均衡器规则的名称（例如 hana-lb-3**03**40）。
-   1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **hana-frontend**）。
-   1. 将“协议”保留设置为“TCP”，输入端口 3**03**40。
-   1. 将“空闲超时”增大到 30 分钟。
-   1. 确保**启用浮动 IP**。
-   1. 选择“确定”。
-   1. 针对端口 3**03**41 和 3**03**42 重复上述步骤。
+      1. 打开负载均衡器，选择**后端池**，然后选择“添加”。
+      1. 输入新后端池的名称（例如 **hana-backend**）。
+      1. 选择“添加虚拟机”。
+      1. 选择在步骤 3 中创建的可用性集。
+      1. 选择 SAP HANA 群集的虚拟机。
+      1. 选择“确定”。
 
-有关 SAP HANA 所需的端口的详细信息, 请参阅[SAP HANA 租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南或[SAP 说明 2388694][2388694]中的[连接到租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)的章节。
+   1. 接下来创建运行状况探测：
+
+      1. 打开负载均衡器，选择**运行状况探测**，然后选择“添加”。
+      1. 输入新运行状况探测的名称（例如 **hana-hp**）。
+      1. 选择“TCP”作为协议，并选择端口 625**03**。 将“间隔”值保留设置为 5，将“不正常阈”值设置为 2。
+      1. 选择“确定”。
+
+   1. 对于 SAP HANA 1.0，请创建负载均衡规则：
+
+      1. 打开负载均衡器，选择**负载均衡规则**，然后选择“添加”。
+      1. 输入新负载均衡器规则的名称（例如 hana-lb-3**03**15）。
+      1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **hana-frontend**）。
+      1. 将“协议”保留设置为“TCP”，输入端口 3**03**15。
+      1. 将“空闲超时”增大到 30 分钟。
+      1. 确保**启用浮动 IP**。
+      1. 选择“确定”。
+      1. 针对端口 3**03**17 重复上述步骤。
+
+   1. 对于 SAP HANA 2.0，请为系统数据库创建负载均衡规则：
+
+      1. 打开负载均衡器，选择**负载均衡规则**，然后选择“添加”。
+      1. 输入新负载均衡器规则的名称（例如 hana-lb-3**03**13）。
+      1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **hana-frontend**）。
+      1. 将“协议”保留设置为“TCP”，输入端口 3**03**13。
+      1. 将“空闲超时”增大到 30 分钟。
+      1. 确保**启用浮动 IP**。
+      1. 选择“确定”。
+      1. 针对端口 3**03**14 重复上述步骤。
+
+   1. 对于 SAP HANA 2.0，请先为租户数据库创建负载均衡规则：
+
+      1. 打开负载均衡器，选择**负载均衡规则**，然后选择“添加”。
+      1. 输入新负载均衡器规则的名称（例如 hana-lb-3**03**40）。
+      1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **hana-frontend**）。
+      1. 将“协议”保留设置为“TCP”，输入端口 3**03**40。
+      1. 将“空闲超时”增大到 30 分钟。
+      1. 确保**启用浮动 IP**。
+      1. 选择“确定”。
+      1. 针对端口 3**03**41 和 3**03**42 重复上述步骤。
+
+有关 SAP HANA 所需的端口的详细信息，请参阅[SAP HANA 租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南或[SAP 说明 2388694][2388694]中的[连接到租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)的章节。
 
 > [!IMPORTANT]
-> 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**net.tcp _timestamps**设置为**0**。 有关详细信息, 请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**net.tcp _timestamps**设置为**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
 > 另请参阅 SAP 说明[2382421](https://launchpad.support.sap.com/#/notes/2382421)。 
 
 ## <a name="install-sap-hana"></a>安装 SAP HANA
@@ -224,7 +263,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   创建逻辑卷。 线性卷是使用不带 `-i` 开关的 `lvcreate` 创建的。 我们建议创建条带化卷以获得更好的 I/O 性能，`-i` 参数应是基础物理卷的数量。 在本文档中，两个物理卷用于数据卷，因此 `-i` 开关参数设置为 **2**。 一个物理卷用于日志卷，因此未显式使用 `-i` 开关。 对每个数据、日志或共享卷使用多个物理卷时，请使用 `-i` 开关，并将其设置为基础物理卷的数量。
+   创建逻辑卷。 线性卷是使用不带 `lvcreate` 开关的 `-i` 创建的。 我们建议创建条带化卷以获得更好的 I/O 性能，`-i` 参数应是基础物理卷的数量。 在本文档中，两个物理卷用于数据卷，因此 `-i` 开关参数设置为 **2**。 一个物理卷用于日志卷，因此未显式使用 `-i` 开关。 对每个数据、日志或共享卷使用多个物理卷时，请使用 `-i` 开关，并将其设置为基础物理卷的数量。
 
    <pre><code>sudo lvcreate <b>-i 2</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
@@ -308,33 +347,33 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
    * 从 HANA DVD 运行 hdblcm 程序。 在提示符下输入以下值：
    * 选择安装：输入 **1**。
    * 选择要安装的其他组件：输入 **1**。
-   * 输入安装路径 [/hana/shared]：选择 Enter。
-   * 输入本地主机名 [..]：选择 Enter。
-   * 是否要将其他主机添加到系统? (y/n) [n]：选择 Enter。
+   * 输入安装路径 [/hana/shared]：按 Enter。
+   * 输入本地主机名 [..]：按 Enter。
+   * 是否要将其他主机添加到系统? (y/n) [n]：按 Enter。
    * 输入 SAP HANA 系统 ID：输入 HANA 的 SID，例如：**HN1**。
    * 输入实例编号 [00]：输入 HANA 实例编号。 如果使用了 Azure 模板或者遵循了本文的手动部署部分，请输入 **03**。
-   * 选择数据库模式 / 输入索引 [1]：选择 Enter。
+   * 选择数据库模式/输入索引 [1]：按 Enter。
    * 选择系统用途/输入索引 [4]：选择系统用途值。
-   * 输入数据卷的位置 [/hana/data/HN1]：选择 Enter。
-   * 输入日志卷的位置 [/hana/log/HN1]：选择 Enter。
-   * 是否限制最大内存分配? [n]：选择 Enter。
-   * 输入主机 '...' [...] 的证书主机名：选择 Enter。
+   * 输入数据卷的位置 [/hana/data/HN1]：按 Enter。
+   * 输入日志卷的位置 [/hana/log/HN1]：按 Enter。
+   * 是否限制最大内存分配? [n]：按 Enter。
+   * 输入主机 '...' 的证书主机名 [...]：按 Enter。
    * 输入 SAP 主机代理用户 (sapadm) 密码：输入主机代理用户密码。
-   * 确认 SAP 主机代理用户 (sapadm) 密码：再次输入主机代理用户密码以进行确认。
+   * 确认 SAP 主机代理用户 (sapadm) 密码：再次输入主机代理用户密码以确认。
    * 输入系统管理员 (hdbadm) 密码：输入系统管理员密码。
-   * 确认系统管理员 (hdbadm) 密码：再次输入系统管理员密码以进行确认。
-   * 输入系统管理员主目录 [/usr/sap/HN1/home]：选择 Enter。
-   * 输入系统管理员登录 Shell [/ bin/sh]：选择 Enter。
-   * 输入系统管理员用户 ID [1001]：选择 Enter。
-   * 输入用户组 (sapsys) 的 ID [79]：选择 Enter。
+   * 确认系统管理员 (hdbadm) 密码：再次输入系统管理员密码以确认。
+   * 输入系统管理员主目录 [/usr/sap/HN1/home]：按 Enter。
+   * 输入系统管理员登录 Shell [/ bin/sh]：按 Enter。
+   * 输入系统管理员用户 ID [1001]：按 Enter。
+   * 输入用户组 (sapsys) 的 ID [79]：按 Enter。
    * 输入数据库用户 (SYSTEM) 密码：输入数据库用户密码。
-   * 确认数据库用户 (SYSTEM) 密码：再次输入数据库用户密码以进行确认。
-   * 重新引导计算机后是否重新启动系统? [n]：选择 Enter。
+   * 确认数据库用户 (SYSTEM) 密码：再次输入数据库用户密码以确认。
+   * 重新引导计算机后是否重新启动系统? [n]：按 Enter。
    * 是否继续? (y/n)：验证摘要。 按 **y** 继续。
 
 1. **[A]** 升级 SAP 主机代理。
 
-   从[Sap 软件中心][sap-swcenter]下载最新的 Sap 主机代理, 并运行以下命令来升级代理。 替换存档的路径，使其指向已下载的文件：
+   从[Sap 软件中心][sap-swcenter]下载最新的 Sap 主机代理，并运行以下命令来升级代理。 替换存档的路径，使其指向已下载的文件：
 
    <pre><code>sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive &lt;path to SAP Host Agent SAR&gt;
    </code></pre>
@@ -381,14 +420,14 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 
    如果使用的是 SAP HANA 2.0 或 MDC，请为 SAP NetWeaver 系统创建一个租户数据库。 将 **NW1** 替换为 SAP 系统的 SID。
 
-   < Hanasid\>adm 执行以下命令:
+   以 < hanasid\>adm 执行以下命令：
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
 1. **[1]** 在第一个节点上配置系统复制：
 
-   将数据库备份为 < hanasid\>adm:
+   将数据库备份为 < hanasid\>adm：
 
    <pre><code>hdbsql -d SYSTEMDB -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupSYS</b>')"
    hdbsql -d <b>HN1</b> -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupHN1</b>')"
@@ -408,7 +447,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 
 1. **[2]** 在第二个节点上配置系统复制：
     
-   注册第二个节点以启动系统复制。 运行以下命令作为 < hanasid\>adm:
+   注册第二个节点以启动系统复制。 运行以下命令作为 < hanasid\>adm：
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b>
@@ -416,7 +455,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 
 1. **[1]** 检查复制状态
 
-   检查复制状态并等待，直到所有数据库都保持同步。如果状态一直“未知”，请检查防火墙设置。
+   检查复制状态，并等待所有数据库都同步。如果状态为 "未知"，请检查防火墙设置。
 
    <pre><code>sudo su - <b>hn1</b>adm -c "python /usr/sap/<b>HN1</b>/HDB<b>03</b>/exe/python_support/systemReplicationStatus.py"
    # | Database | Host     | Port  | Service Name | Volume ID | Site ID | Site Name | Secondary | Secondary | Secondary | Secondary | Secondary     | Replication | Replication | Replication    |
@@ -466,7 +505,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 
 1. **[A]** 创建密钥存储条目。
 
-   以 root 身份运行以下命令, 创建新的密钥存储条目:
+   以 root 身份运行以下命令，创建新的密钥存储条目：
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbuserstore SET <b>hdb</b>haloc localhost:3<b>03</b>15 <b>hdb</b>hasync <b>passwd</b>
@@ -474,7 +513,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 
 1. **[1]** 备份数据库。
 
-   以 root 身份备份数据库:
+   以 root 身份备份数据库：
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -d SYSTEMDB -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')"
@@ -487,7 +526,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 
 1. **[1]** 在第一个节点上配置系统复制。
 
-   创建主站点作为 < hanasid\>adm:
+   创建主站点作为 < hanasid\>adm：
 
    <pre><code>su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
@@ -495,7 +534,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 
 1. **[2]** 在第二个节点上配置系统复制。
 
-   将辅助站点注册为 < hanasid\>adm:
+   将辅助站点注册为 < hanasid\>adm：
 
    <pre><code>HDB stop
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b>
@@ -646,7 +685,7 @@ Resource Group: g_ip_HN1_03
 </code></pre>
 
 可以通过禁用节点上的网络接口（SAP HANA 作为主控节点运行）来测试 Azure 隔离代理的设置。
-有关如何模拟网络故障的说明, 请参阅[Red Hat 知识库文章 79523](https://access.redhat.com/solutions/79523) 。 此示例使用 net_breaker 脚本阻止对网络的所有访问。
+有关如何模拟网络故障的说明，请参阅[Red Hat 知识库文章 79523](https://access.redhat.com/solutions/79523) 。 此示例使用 net_breaker 脚本阻止对网络的所有访问。
 
 <pre><code>[root@hn1-db-1 ~]# sh ./net_breaker.sh BreakCommCmd 10.0.0.6
 </code></pre>

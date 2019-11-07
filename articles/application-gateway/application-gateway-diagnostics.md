@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: 7b9cbd4e84f60b42e8eb6cb250a9b25f398fd4a0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 9e1fe0e5bae462715a8cb2950cca100f0f409325
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176445"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718730"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>应用程序网关的后端运行状况和诊断日志
 
@@ -96,7 +96,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 * 活动日志：可使用 [Azure 活动日志](../monitoring-and-diagnostics/insights-debugging-with-events.md)（以前称为操作日志和审核日志）查看提交到 Azure 订阅的所有操作及其状态。 默认情况下会收集活动日志条目，可在 Azure 门户中查看这些条目。
 * **访问日志**：可以使用此日志查看应用程序网关访问模式并分析重要信息。 这包括调用方的 IP、请求的 URL、响应延迟、返回代码，以及传入和传出的字节数。每300秒收集一次访问日志。 此日志包含每个应用程序网关实例的一条记录。 应用程序网关实例由 instanceId 属性标识。
-* 性能日志：可使用此日志查看应用程序网关实例的执行情况。 此日志会捕获每个实例的性能信息，包括服务的总请求数、吞吐量（以字节为单位）、失败请求计数、正常和不正常的后端实例计数。 每隔 60 秒会收集一次性能日志。 性能日志仅适用于 v1 SKU。 对于 v2 SKU，使用性能数据的[指标](application-gateway-metrics.md)。
+* 性能日志：可使用此日志查看应用程序网关实例的执行情况。 此日志会捕获每个实例的性能信息，包括服务的总请求数、吞吐量（以字节为单位）、失败请求计数、正常和不正常的后端实例计数。 每隔 60 秒会收集一次性能日志。 性能日志仅适用于 v1 SKU。 对于 v2 SKU，请对性能数据使用[指标](application-gateway-metrics.md)。
 * 防火墙日志：可使用此日志查看通过应用程序网关（配置有 Web 应用程序防火墙）的检测模式或阻止模式记录的请求。
 
 > [!NOTE]
@@ -131,7 +131,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="enable-logging-through-the-azure-portal"></a>通过 Azure 门户启用日志记录
 
-1. 在 Azure 门户中找到资源，然后选择 "**诊断设置**"。
+1. 在 Azure 门户中找到资源，然后选择“诊断设置”。
 
    对于应用程序网关，提供 3 种日志：
 
@@ -139,7 +139,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
    * 性能日志
    * 防火墙日志
 
-2. 若要开始收集数据，请选择 **"启用诊断"** 。
+2. 若要开始收集数据，请选择“启用诊断”。
 
    ![启用诊断][1]
 
@@ -147,7 +147,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
    ![启动配置过程][2]
 
-5. 键入设置的名称，确认设置，然后选择 "**保存**"。
+5. 键入设置的名称，确认设置，然后选择“保存”。
 
 ### <a name="activity-log"></a>活动日志
 
@@ -155,13 +155,13 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="access-log"></a>访问日志
 
-只有在每个应用程序网关实例上启用了访问日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 应用程序网关的每次访问均以 JSON 格式记录，如 v1 中的以下示例所示：
+只有在每个应用程序网关实例上启用了访问日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 应用程序网关的每次访问均以 JSON 格式记录下来，如下面 v1 示例所示：
 
-|Value  |描述  |
+|值  |说明  |
 |---------|---------|
 |instanceId     | 为请求服务的应用程序网关实例。        |
 |clientIP     | 请求的初始 IP。        |
-|clientPort     | 请求的初始端口。       |
+|clientPort     | 请求的起始端口。       |
 |httpMethod     | 请求使用的 HTTP 方法。       |
 |requestUri     | 已收到请求的 URI。        |
 |RequestQuery     | 服务器路由：请求已发送至后端池实例。</br>X-AzureApplicationGateway-LOG-ID：用于请求的相关 ID。 它可用于排查后端服务器上的流量问题。 </br>服务器状态： 应用程序网关接收从后端的 HTTP 响应代码。       |
@@ -169,11 +169,11 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |httpStatus     | 从应用程序网关返回到客户端的 HTTP 状态代码。       |
 |httpVersion     | 请求的 HTTP 版本。        |
 |receivedBytes     | 接收的数据包大小（以字节为单位）。        |
-|sentBytes| 发送的数据包大小（以字节为单位）。|
+|sentBytes| 发送的数据包的大小（以字节为单位）。|
 |timeTaken| 处理请求并发送其响应所需的时长（以毫秒为单位）。 这是计算从应用程序网关接收到 HTTP 请求的第一个字节到响应发送操作完成这两个时间点之间的时间间隔。 请务必注意，所用时间字段通常包含请求和响应数据包通过网络传输的时间。 |
 |sslEnabled| 与后端池的通信是否使用 SSL。 有效值为打开和关闭。|
-|host| 向后端服务器发送请求时所用的主机名。 如果即将覆盖后端主机名，则此名称将反映该主机名。|
-|originalHost| 应用程序网关从客户端收到请求时使用的主机名。|
+|host| 向后端服务器发送请求时所用的主机名。 如果正在重写后端主机名，则此名称将反映该主机名。|
+|originalHost| 应用程序网关从客户端接收请求时所用的主机名。|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -201,25 +201,25 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 ```
 对于应用程序网关和 WAF v2，日志显示了一些详细信息：
 
-|Value  |描述  |
+|值  |说明  |
 |---------|---------|
 |instanceId     | 为请求服务的应用程序网关实例。        |
 |clientIP     | 请求的初始 IP。        |
-|clientPort     | 请求的初始端口。       |
+|clientPort     | 请求的起始端口。       |
 |httpMethod     | 请求使用的 HTTP 方法。       |
 |requestUri     | 已收到请求的 URI。        |
 |UserAgent     | HTTP 请求标头中的用户代理。        |
 |httpStatus     | 从应用程序网关返回到客户端的 HTTP 状态代码。       |
 |httpVersion     | 请求的 HTTP 版本。        |
 |receivedBytes     | 接收的数据包大小（以字节为单位）。        |
-|sentBytes| 发送的数据包大小（以字节为单位）。|
-|timeTaken| 处理请求并发送其响应所需的时长（以毫秒为单位）。 这是计算从应用程序网关接收到 HTTP 请求的第一个字节到响应发送操作完成这两个时间点之间的时间间隔。 请务必注意，所用时间字段通常包含请求和响应数据包通过网络传输的时间。 |
+|sentBytes| 发送的数据包的大小（以字节为单位）。|
+|timeTaken| 处理请求所花费的时间长度（以**秒为单位**）以及发送的响应。 这是计算从应用程序网关接收到 HTTP 请求的第一个字节到响应发送操作完成这两个时间点之间的时间间隔。 请务必注意，所用时间字段通常包含请求和响应数据包通过网络传输的时间。 |
 |sslEnabled| 与后端池的通信是否使用 SSL。 有效值为打开和关闭。|
 |sslCipher| 用于 SSL 通信的密码套件（如果已启用 SSL）。|
 |sslProtocol| 使用的 SSL/TLS 协议（如果已启用 SSL）。|
 |serverRouted| 应用程序网关将请求路由到的后端服务器。|
-|Serverstatus.checkauthentication| 后端服务器的 HTTP 状态代码。|
-|serverResponseLatency| 后端服务器响应的延迟。|
+|serverStatus| 后端服务器的 HTTP 状态代码。|
+|serverResponseLatency| 后端服务器的响应延迟。|
 |host| 请求的主机标头中列出的地址。|
 ```json
 {
@@ -252,10 +252,10 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="performance-log"></a>性能日志
 
-只有在每个应用程序网关实例上启用了性能日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 每隔 1 分钟生成性能日志数据。 它仅适用于 v1 SKU。 对于 v2 SKU，使用性能数据的[指标](application-gateway-metrics.md)。 将记录以下数据：
+只有在每个应用程序网关实例上启用了性能日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 每隔 1 分钟生成性能日志数据。 性能日志数据仅适用于 v1 SKU。 对于 v2 SKU，请对性能数据使用[指标](application-gateway-metrics.md)。 将记录以下数据：
 
 
-|Value  |描述  |
+|值  |说明  |
 |---------|---------|
 |instanceId     |  正在为其生成性能数据的应用程序网关实例。 对于多实例应用程序网关，每个实例有一行性能数据。        |
 |healthyHostCount     | 后端池中运行正常的主机数。        |
@@ -292,11 +292,11 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有为每个应用程序网关启用了防火墙日志，才会生成此日志，如上述步骤所示。 此日志还需在应用程序网关上配置 Web 应用程序防火墙。 数据存储在启用日志记录时指定的存储帐户中。 将记录以下数据：
 
 
-|Value  |描述  |
+|值  |说明  |
 |---------|---------|
 |instanceId     | 正在为其生成防火墙数据的应用程序网关实例。 对于多实例应用程序网关，每个实例有一行性能数据。         |
 |clientIp     |   请求的初始 IP。      |
-|clientPort     |  请求的初始端口。       |
+|clientPort     |  请求的起始端口。       |
 |requestUri     | 已收到请求的 URL。       |
 |ruleSetType     | 规则集类型。 可用值为 OWASP。        |
 |ruleSetVersion     | 使用的规则集版本。 可用值为 2.2.9 和 3.0。     |
@@ -306,11 +306,11 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |site     | 为其生成日志的站点。 目前，由于规则为全局性规则，所以仅列出了“全局”站点。|
 |详细信息     | 触发事件的详细信息。        |
 |details.message     | 规则说明。        |
-|details.data     | 在请求中找到的匹配规则的特定数据。         |
+|details.data     | 在请求中找到的与规则匹配的特定数据。         |
 |details.file     | 包含此规则的配置文件。        |
 |details.line     | 配置文件中触发事件的行号。       |
 |hostname   | 应用程序网关的主机名或 IP 地址。    |
-|transactionId  | 给定事务的唯一 ID，有助于对同一请求中发生的多个规则冲突进行分组。   |
+|transactionId  | 给定事务的唯一 ID，它有助于对同一请求中发生的多个违反规则的情况进行分组。   |
 
 ```json
 {
@@ -347,13 +347,13 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 可使用以下任一方法查看和分析活动日志数据：
 
 * Azure 工具：通过 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 门户检索活动日志中的信息。 [使用 Resource Manager 活动操作](../azure-resource-manager/resource-group-audit.md)一文中详细介绍了每种方法的分步说明。
-* Power BI：如果尚无 [Power BI](https://powerbi.microsoft.com/pricing) 帐户，可免费试用。 通过使用[Power BI 模板应用](https://docs.microsoft.com/power-bi/service-template-apps-overview)，你可以分析数据。
+* Power BI：如果尚无 [Power BI](https://powerbi.microsoft.com/pricing) 帐户，可免费试用。 使用 [Power BI 模板应用](https://docs.microsoft.com/power-bi/service-template-apps-overview)，可以分析数据。
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>查看并分析访问、性能和防火墙日志
 
 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)可从 Blob 存储帐户收集计数器和事件日志文件。 它含有可视化和强大的搜索功能，可用于分析日志。
 
-还可以连接到存储帐户并检索访问和性能日志的 JSON 日志条目。 下载 JSON 文件后，可以将它们转换为 CSV 并在 Excel、Power BI 或任何其他数据可视化工具中查看。
+还可以连接到存储帐户并检索访问和性能日志的 JSON 日志条目。 下载 JSON 文件后，可以将其转换为 CSV 并在 Excel、Power BI 或任何其他数据可视化工具中查看。
 
 > [!TIP]
 > 如果熟悉 Visual Studio 和更改 C# 中的常量和变量值的基本概念，则可以使用 GitHub 提供的[日志转换器工具](https://github.com/Azure-Samples/networking-dotnet-log-converter)。
@@ -367,7 +367,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 ## <a name="next-steps"></a>后续步骤
 
 * 使用 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)可视化计数器和事件日志。
-* [Visualize your Azure activity log with Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)（使用 Power BI 可视化 Azure 活动日志）博客文章。
+* [Visualize your Azure Activity Log with Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)（使用 Power BI 直观显示 Azure 活动日志）博客文章。
 * [View and analyze Azure activity logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)（在 Power BI 和其他组件中查看和分析 Azure 活动日志）博客文章。
 
 [1]: ./media/application-gateway-diagnostics/figure1.png

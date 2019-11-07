@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 07/26/2019
-ms.openlocfilehash: 5d42b9fc2dfd7cbee230b65f7d9844c9e7332147
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.date: 11/06/2019
+ms.openlocfilehash: adb89c04a83bbfbd5bddd5c23b0fa88019a88991
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680507"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721381"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络资源
 
@@ -28,7 +28,7 @@ ms.locfileid: "72680507"
 
 逻辑应用现在可以使用以下任一项直接访问内部或连接到虚拟网络的系统：
 
-* 用于该系统的**ISE**标记的连接器，例如 SQL Server
+* 用于该系统的**ISE**标记的连接器
 * **核心**标记的内置触发器或操作，例如 HTTP 触发器或操作
 * 自定义连接器
 
@@ -51,7 +51,7 @@ ISE 中的逻辑应用可提供与全局逻辑应用服务相同的用户体验�
 * Azure Blob 存储、文件存储和表存储
 * Azure 队列、Azure 服务总线、Azure 事件中心和 IBM MQ
 * FTP 和 SFTP-SSH
-* SQL Server、SQL 数据仓库、Azure Cosmos DB
+* SQL Server、Azure SQL 数据仓库、Azure Cosmos DB
 * AS2、X12 和 EDIFACT
 
 ISE 和非 ISE 连接器之间的区别在于触发器和操作运行的位置：
@@ -92,6 +92,7 @@ ISE 还为运行持续时间、存储保留、吞吐量、HTTP 请求和响应�
 创建 ISE 时，可以选择使用内部或外部访问终结点。 这些终结点确定 ISE 中逻辑应用的请求或 webhook 触发器是否可以从虚拟网络外部接收调用。 这些终结点还会影响对逻辑应用运行历史记录中的输入和输出的访问。
 
 * **内部**：允许在 ISE 中调用逻辑应用的专用终结点，以及仅*从虚拟网络内部*运行历史记录中的输入和输出的访问权限
+
 * **External**：允许在 ISE 中调用逻辑应用的公共终结点，以及*从虚拟网络外部*运行历史记录中的输入和输出的访问权限
 
 > [!IMPORTANT]
@@ -103,15 +104,20 @@ ISE 还为运行持续时间、存储保留、吞吐量、HTTP 请求和响应�
 
 对于连接到 Azure 虚拟网络的本地系统，请将 ISE 注入该网络，以便逻辑应用可以使用以下任一项直接访问这些系统：
 
-* 适用于该系统的 ISE 版本连接器，例如 SQL Server
 * HTTP 操作
+
+* 用于该系统的 ISE 标记的连接器
+
+  > [!IMPORTANT]
+  > 若要将 Windows 身份验证与 SQL Server 连接器一起使用，必须使用[本地数据网关](../logic-apps/logic-apps-gateway-install.md)。 SQL Server 连接器不支持 ISE 中逻辑应用的 Windows 身份验证。
+
 * 自定义连接器
 
   * 如果你有需要本地数据网关的自定义连接器，并且你在 ISE 外部创建了这些连接器，则 ISE 中的逻辑应用还可以使用这些连接器。
   
   * 在 ISE 中创建的自定义连接器不适用于本地数据网关。 但是，这些连接器可以直接访问连接到托管 ISE 的虚拟网络的本地数据源。 因此，在与这些资源通信时，ISE 中的逻辑应用最有可能不需要数据网关。
 
-对于未连接到虚拟网络或没有 ISE 版本连接器的本地系统，你必须首先[设置本地数据网关](../logic-apps/logic-apps-gateway-install.md)，然后才能将逻辑应用连接到这些系统。
+对于未连接到虚拟网络或没有标记连接器的本地系统，你必须首先[设置本地数据网关](../logic-apps/logic-apps-gateway-install.md)，然后才能将逻辑应用连接到这些系统。
 
 <a name="create-integration-account-environment"></a>
 

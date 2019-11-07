@@ -1,5 +1,5 @@
 ---
-title: 排查 Azure 数据工厂数据流问题 |Microsoft Docs
+title: 排查 Azure 数据工厂数据流问题
 description: 了解如何对 Azure 数据工厂中的数据流问题进行故障排除。
 services: data-factory
 author: kromerm
@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 10/08/2019
 ms.author: makromer
-ms.openlocfilehash: 53c38af2208be6bb7cdb794ad0403456613f2df6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1b2309ec71cb3d43f4e5a39b80db593ab201c614
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486186"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721348"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>排查 Azure 数据工厂数据流问题
 
@@ -75,6 +75,15 @@ ms.locfileid: "73486186"
 - **原因**：数据流中的字段映射到 SQL 数据库中的某一列的宽度不足，无法存储该值，导致 SQL 驱动程序引发此错误
 
 - **解决方法**：可以使用派生列中 ```left()``` 或实现["错误行" 模式](how-to-data-flow-error-rows.md)来减小字符串列的数据长度。
+
+### <a name="error-message-since-spark-23-the-queries-from-raw-jsoncsv-files-are-disallowed-when-the-referenced-columns-only-include-the-internal-corrupt-record-column"></a>错误消息：从 Spark 2.3 开始，当被引用的列仅包含内部损坏的记录列时，不允许来自原始 JSON/CSV 文件的查询。 
+
+- **症状**：从 JSON 源读取失败
+
+- **原因**：从具有多个嵌套行上的单个文档的 JSON 源读取时，无法确定新文档的开始位置和上一个文档的结束位置。
+
+- **解决方法**：在使用 JSON 数据集的源转换上，展开 "JSON 设置" 并打开 "单一文档"。
+
 
 ## <a name="general-troubleshooting-guidance"></a>一般故障排除指南
 

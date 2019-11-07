@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7256791c0b6bfbc72a26f6093cdd3c39410f702f
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 6a08779d171367d982392ae4e987fb46e019e61f
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807593"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720278"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中对企业应用禁用用户登录
 
@@ -30,12 +30,31 @@ ms.locfileid: "67807593"
 ## <a name="how-do-i-disable-user-sign-ins"></a>如何禁用用户登录？
 
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 选择“所有服务”  ，在文本框中输入 **Azure Active Directory**，并选择“Enter”  。
-1. 在“Azure Active Directory   -  目录名”窗格（即，正在管理的目录的 Azure AD 窗格）中，选择“企业应用程序”  。
-1. 在“企业应用程序 - 所有应用程序”  窗格上，你会看到你可以管理的应用的列表。 选择一个应用。
-1. 在 ***appname*** 窗格（即标题中包含所选应用的名称的窗格）中，选择“属性”  。
-1. 在“appname - 属性”  窗格中，对“启用以让用户登录?”  设置选择“否”  。
-1. 选择“保存”  命令。
+1. 选择“所有服务”，在文本框中输入 **Azure Active Directory**，并选择“Enter”。
+1. 在“Azure Active Directory -  目录名”窗格（即，正在管理的目录的 Azure AD 窗格）中，选择“企业应用程序”。
+1. 在“企业应用程序 - 所有应用程序”窗格上，你会看到你可以管理的应用的列表。 选择一个应用。
+1. 在 ***appname*** 窗格（即标题中包含所选应用的名称的窗格）中，选择“属性”。
+1. 在“appname - 属性”窗格中，对“启用以让用户登录?”设置选择“否”。
+1. 选择“保存”命令。
+
+## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>使用 Azure AD PowerShell 禁用未列出的应用
+
+如果你知道在 "企业应用" 列表中未显示某个应用的 AppId （例如，由于 Microsoft 已将应用程序预授权而删除了该应用程序或服务主体，则可以手动创建然后，使用[AzureAD PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azuread/New-AzureADServicePrincipal?view=azureadps-2.0)禁用该应用。
+
+```PowerShell
+# The AppId of the app to be disabled
+$appId = "{AppId}"
+
+# Check if a service principal already exists for the app
+$servicePrincipal = Get-AzureADServicePrincipal -Filter "appId eq '$appId'"
+if ($servicePrincipal) {
+    # Service principal exists already, disable it
+    Set-AzureADServicePrincipal -ObjectId $servicePrincipal.ObjectId -AccountEnabled $false
+} else {
+    # Service principal does not yet exist, create it and disable it at the same time
+    $servicePrincipal = New-AzureADServicePrincipal -AppId $appId -AccountEnabled $false
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 

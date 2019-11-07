@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: dff6473fd01fc2d41c5bb100eefd583afe4175b0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 24e16942410c72640628bd4120d05a85e68de993
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496481"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720024"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Azure 认知搜索服务 REST api-版本 2019-05-06-预览版
 
@@ -25,20 +25,27 @@ ms.locfileid: "73496481"
 
 ## <a name="new-in-2019-05-06-preview"></a>2019-05-06-Preview 中的新增功能
 
-[* * 增量索引](cognitive-search-incremental-indexing-conceptual.md)是一种新的索引模式，用于添加状态和缓存，使您可以在数据、索引器和技能组合定义保持不变时重复使用现有输出。 此功能仅适用于通过认知技能组合的根据。
++ [增量索引](cognitive-search-incremental-indexing-conceptual.md)是一种新的索引模式，用于将状态和缓存添加到技能组合，以便在源数据、索引器和技能组合定义保持不变时重复使用现有输出。 此功能仅适用于根据定义的认知技能组合。
 
-[**知识存储**](knowledge-store-concept-intro.md)是基于 AI 的扩充管道的新目标。 除了索引，现在还可以将填充的数据结构（在索引编制过程中创建）持久保存在 Azure 存储中。 可以通过技能集中的元素控制数据的物理结构，包括如何塑造数据、是将数据存储在表存储中还是 Blob 存储中，以及是否需要多个视图。
++ [Cosmos DB 索引器](search-howto-index-cosmosdb.md)支持 MongoDB Api、Gremlin api 和 Cassandra API。
 
-用于服务端静态加密的[**客户托管加密密钥**](search-security-manage-encryption-keys.md)也是一项新的预览版功能。 如果你是密钥的唯一所有者，则除了应用 Microsoft 管理的内置静态加密以外，还可以应用一个额外的加密层。
++ [Azure Data Lake Storage Gen2 索引器](search-howto-index-azure-data-lake-storage.md)可以从 Data Lake Storage Gen2 中为内容和元数据编制索引。
 
-## <a name="other-preview-features"></a>其他预览功能
++ [文档提取（预览版）](cognitive-search-skill-document-extraction.md)是在编制索引期间使用的一种认知技巧，可用于从技能组合中提取文件的内容。 以前，文档破解仅在技能组合执行之前发生。 添加了这一技能后，还可以在执行技能组合的过程中执行此操作。
+
++ [文本翻译（预览）](cognitive-search-skill-text-translation.md)是在编制索引时使用的一项认知技巧，用于计算文本，对于每个记录，将返回转换为指定目标语言的文本。
+
++ [知识存储](knowledge-store-concept-intro.md)是基于 AI 的扩充管道的新目标。 物理数据结构存在于 Azure Blob 存储和 Azure 表存储中，并在运行具有附加认知技能组合的索引器时创建并填充。 在技能组合定义内指定知识存储本身的定义。 在知识存储定义中，通过确定数据的形状、数据是否存储在表存储或 Blob 存储中，以及是否有多个视图的*投影*元素来控制数据的物理结构。
+
++ 用于服务端加密的[客户管理的加密密钥](search-security-manage-encryption-keys.md)也是一项全新的预览功能。 如果你是密钥的唯一所有者，则除了应用 Microsoft 管理的内置静态加密以外，还可以应用一个额外的加密层。
+
+## <a name="earlier-preview-features"></a>更早的预览功能
 
 公共预览版中仍包含早期预览版中发布的功能。 如果你正在调用使用较早预览版 API 版本的 API，可以继续使用该版本或切换到 `2019-05-06-Preview`，而不会对预期行为作出任何更改。
 
 + [moreLikeThis 查询参数](search-more-like-this.md)查找与特定文档相关的文档。 早期预览版中已有此功能。 
-* [CSV Blob 索引](search-howto-index-csv-blobs.md)每行创建一个文档，而不是每个文本 Blob 创建一个文档。
-* [对 Cosmos DB 索引器的 MongoDB API 支持](search-howto-index-cosmosdb.md)为预览版。
 
++ [CSV Blob 索引](search-howto-index-csv-blobs.md)每行创建一个文档，而不是每个文本 Blob 创建一个文档。
 
 ## <a name="how-to-call-a-preview-api"></a>如何调用预览版 API
 

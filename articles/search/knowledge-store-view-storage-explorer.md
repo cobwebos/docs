@@ -1,30 +1,30 @@
 ---
-title: 查看包含存储资源管理器的知识库
+title: 使用存储资源管理器查看知识 store （预览版）
 titleSuffix: Azure Cognitive Search
-description: 使用 Azure 门户的存储资源管理器查看和分析 Azure 认知搜索知识 store。
+description: 使用 Azure 门户的存储资源管理器查看和分析 Azure 认知搜索知识 store。 知识存储目前为公共预览版。
 manager: nitinme
 author: lisaleib
 ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9ba11b69a51a5bc563764a7e75189bed67cb2ac6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: e3ea879a419aa14d3a6693e23f4f120aca8d9d51
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485001"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720064"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>查看包含存储资源管理器的知识库
 
-> [!Note]
-> 知识存储目前以预览版提供，不应在生产环境中使用。 门户和[Search REST API 版本 2019-05-06-Preview](search-api-preview.md)提供此功能。 目前不支持 .NET SDK。
->
+> [!IMPORTANT] 
+> 知识存储目前为公共预览版。 提供的预览功能不带服务级别协议，不建议用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-preview](search-api-preview.md)提供了预览功能。 目前支持的门户支持不受支持，也没有 .NET SDK 支持。
+
 在本文中，你将学习如何使用 Azure 门户中的存储资源管理器连接到知识库并进行浏览。
 
 ## <a name="prerequisites"></a>必备组件
 
-+ 按照在 Azure 门户中[创建知识库](knowledge-store-create-portal.md)中的步骤创建本演练中使用的示例知识存储。
++ 按照在 Azure 门户中[创建知识库](knowledge-store-create-portal.md)中的步骤或[通过使用 REST 创建 Azure 认知搜索知识库](knowledge-store-create-rest.md)中的步骤创建本演练中使用的示例知识存储。
 
 + 还需要用于创建知识库的 Azure 存储帐户的名称，以及其从 Azure 门户的访问密钥。
 
