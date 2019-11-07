@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 43c4b363f223c61bac3d3f7dbd272519a0cd014d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 7c730ad3f14cc26cd1251b497ef2d146fe99e448
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899044"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584354"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Key Vault 虚拟机扩展
 
@@ -28,7 +28,7 @@ Key Vault VM 扩展支持以下版本的 Windows：
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 Key Vault VM 代理扩展的架构。 扩展不需要受保护的设置-其所有设置均被视为公用信息。 扩展需要一个列表，其中列出了监视的证书、轮询频率和目标证书存储。 具体如下：  
+以下 JSON 显示 Key Vault VM 代理扩展的架构。 扩展不需要受保护的设置-其所有设置均被视为公用信息。 扩展需要一个列表，其中列出了监视的证书、轮询频率和目标证书存储。 具体而言：  
 
 ```json
     {
@@ -59,29 +59,29 @@ Key Vault VM 扩展支持以下版本的 Windows：
 ```
 
 > [!NOTE]
-> 观察到的证书 Url 应采用格式 `https://myVaultName.vault.azure.net/secrets/myCertName`。
+> 观察到的证书 Url 的格式应为 `https://myVaultName.vault.azure.net/secrets/myCertName`。
 > 
 > 这是因为 `/secrets` 路径将返回包含私钥的完整证书，而 `/certificates` 路径不会。 可在此处找到有关证书的详细信息： [Key Vault 证书](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
 ### <a name="property-values"></a>属性值
 
-| 名称 | 值/示例 | 数据类型 |
+| Name | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | date |
+| apiVersion | 2019-07-01 | 日期 |
 | 发布者 | Microsoft.Azure.KeyVault.Edp | 字符串 |
 | type | KeyVaultForWindows | 字符串 |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | int |
+| pollingIntervalInS | 3600 | 字符串 |
 | certificateStoreName | MY | 字符串 |
 | linkOnRenewal | false | 布尔值 |
 | certificateStoreLocation  | LocalMachine | 字符串 |
-| requiredInitialSync | 是 | 布尔值 |
+| requiredInitialSync | true | 布尔值 |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 字符串数组
 
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 部署需要部署后刷新证书的一个或多个虚拟机时，模板是理想选择。 此扩展可以部署到单个 Vm 或虚拟机规模集。 架构和配置对于这两种模板类型通用。 
+可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 部署需要部署后刷新证书的一个或多个虚拟机时，模板是理想选择。 此扩展可以部署到单个 Vm 或虚拟机规模集。 架构和配置对于这两种模板类型通用。 
 
 虚拟机扩展的 JSON 配置必须嵌套在模板的虚拟机资源片段中，具体而言，`"resources": []` 虚拟机模板的对象和 `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` 对象下的虚拟机规模集。
 
@@ -214,4 +214,4 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 
 ### <a name="support"></a>支持
 
-如果你对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

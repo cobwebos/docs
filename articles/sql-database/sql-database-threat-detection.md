@@ -1,28 +1,29 @@
 ---
-title: 高级威胁防护 - Azure SQL 数据库 | Microsoft Docs
-description: 高级威胁防护可检测异常的数据库活动, 指出单一数据库或弹性池中数据库的潜在安全威胁。
+title: 配置高级威胁防护-Azure SQL 数据库
+description: 高级威胁防护会检测异常的数据库活动，这些活动指示单一数据库或弹性池中存在对数据库的潜在安全威胁。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+ms.custom: seo-dt-2019
 ms.topic: conceptual
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 08/05/2019
-ms.openlocfilehash: 755a3b391cb7b4909169b034cc8d89892ec2ed05
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 8a6d40f37dec3488009a702d52d6437cd345717b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816545"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686942"
 ---
-# <a name="azure-sql-database-advanced-threat-protection-for-single-or-pooled-databases"></a>适用于单个或共用数据库的 Azure SQL 数据库高级威胁防护
+# <a name="azure-sql-database-advanced-threat-protection-for-single-or-pooled-databases"></a>针对单一数据库或共用数据库的 Azure SQL 数据库高级威胁防护
 
-针对单个和共用数据库的[高级威胁防护](sql-database-threat-detection-overview.md)可检测异常活动, 这些活动表明访问或利用数据库的异常和潜在有害尝试。 高级威胁防护可以识别**潜在的 SQL 注入**、**从异常位置或数据中心进行访问**、**从不熟悉的主体或潜在有害的应用程序访问**和**暴力破解 SQL 凭据**-请参阅[高级威胁防护警报](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts)中的更多详细信息。
+针对单一数据库或共用数据库的[高级威胁防护](sql-database-threat-detection-overview.md)可以检测异常活动，这些活动指示对数据库的异常和可能有害的访问或利用企图。 高级威胁防护可以识别**潜在的 SQL 注入**、**来自异常位置或数据中心的访问**、**来自陌生主体或可能有害的应用程序的访问**以及**暴力破解 SQL 凭据** - 请在[高级威胁防护警报](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts)中查看更多详细信息。
 
 你可以通过[电子邮件通知](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event)或 [Azure 门户](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal)接收有关检测到的威胁的通知
 
-[高级威胁防护](sql-database-threat-detection-overview.md)是[高级的数据安全](sql-database-advanced-data-security.md)(ADS) 产品/服务的一部分, 它是高级 SQL 安全功能的统一包。 可通过中心 SQL ADS 门户访问和管理高级威胁防护。
+[高级威胁防护](sql-database-threat-detection-overview.md)包含在[高级数据安全](sql-database-advanced-data-security.md) (ADS) 产品/服务中，是一个针对高级 SQL 安全功能的统一软件包。 可通过中心 SQL ADS 门户访问和管理高级威胁防护。
 
 ## <a name="set-up-advanced-threat-protection-in-the-azure-portal"></a>在 Azure 门户中设置高级威胁防护
 
@@ -36,11 +37,11 @@ ms.locfileid: "68816545"
    ![设置高级威胁防护](./media/sql-database-threat-detection/set_up_threat_detection.png)
 
    > [!NOTE]
-   > 屏幕截图中的价格并不总是反映当前价格, 而是一个示例。
+   > 屏幕截图中的价格并非始终反映当前价格，只是一个示例。
 
 ## <a name="set-up-advanced-threat-protection-using-powershell"></a>使用 PowerShell 设置高级威胁防护
 
-有关脚本示例, 请参阅[使用 PowerShell 配置审核和高级威胁防护](scripts/sql-database-auditing-and-threat-detection-powershell.md)。
+有关脚本示例，请参阅[使用 PowerShell 配置审核和高级威胁防护](scripts/sql-database-auditing-and-threat-detection-powershell.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 升级到安全中心的标准层以增强安全性 | Microsoft Docs
+title: Azure 安全中心层的定价
 description: 本文提供有关 Azure 安全中心定价的信息。
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 43ae34b946fada4d27c6843dbb8c3f9511aefd81
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 0c3fdc48d9b3bc77b629d4d6f1da081d70658c88
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520782"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664249"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>升级到安全中心的标准层以增强安全性
 Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供统一的安全管理和高级威胁防护功能。 它可以提供针对混合云工作负载的可见性和可控性、可减小在威胁下的曝光面的积极防御功能以及有助于随时响应快速演变的网络攻击的智能检测功能。
@@ -54,7 +54,7 @@ Vm 的大多数免费层安全评估以及许多标准层安全警报都需要�
 安全中心可为混合云工作负载提供增强的安全和威胁防护功能，其中包括：
 
 - 混合安全 – 在所有本地和云工作负载上获得统一的安全视图。 应用安全策略并持续评估混合云工作负载的安全性，确保符合安全标准。 收集、搜索并分析来自多个源（包括防火墙和其他合作伙伴解决方案）的安全数据。
-- 高级威胁检测 - 使用高级分析和 Microsoft Intelligent Security Graph，获得针对不断演变的网络攻击的优势。  利用内置行为分析和机器学习来识别攻击和零时差攻击。 监视网络、计算机和云服务是否出现有即将来袭的攻击和攻破后活动。 使用交互工具和上下文威胁智能简化调查。
+- 高级威胁检测 - 使用高级分析和 Microsoft Intelligent Security Graph，获得针对不断演变的网络攻击的优势。 利用内置行为分析和机器学习来识别攻击和零时差攻击。 监视网络、计算机和云服务是否出现有即将来袭的攻击和攻破后活动。 使用交互工具和上下文威胁智能简化调查。
 - **访问和应用程序控件**-通过应用适用于特定工作负荷的机器学习驱动的允许列表建议，阻止恶意软件和其他不需要的应用程序。 使用对 Azure Vm 上管理端口的实时控制访问权限减少网络攻击面。 这大大减少了暴力破解和其他网络攻击。
 - **容器安全功能**-从容器化环境中的漏洞管理和实时威胁检测中获益。 启用容器注册表资源时，可能需要12hrs，直到启用了所有功能。
 

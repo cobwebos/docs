@@ -1,23 +1,20 @@
 ---
 title: 为 Azure Functions 中的函数应用自动执行资源部署 | Microsoft Docs
 description: 了解如何生成用于部署函数应用的 Azure 资源管理器模板。
-services: Functions
-documtationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: azure functions, functions 无服务体系结构, 基础结构即代码, azure resource manager
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.service: azure-functions
-ms.server: functions
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
-ms.openlocfilehash: ff5b104c9fa1bedf1f710c06761b6449b20bbf05
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 8435aab65d26627de26fb8b5ad0510fcd7c57c33
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263194"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73575938"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -29,18 +26,15 @@ ms.locfileid: "72263194"
 - [基于消耗计划的函数应用]
 - [基于 Azure 应用服务计划的函数应用]
 
-> [!NOTE]
-> Azure Functions 托管的高级计划目前处于预览阶段。 有关详细信息，请参阅[Azure Functions 高级计划](functions-premium-plan.md)。
-
 ## <a name="required-resources"></a>所需资源
 
 Azure Functions 部署通常包括以下资源：
 
-| Resource                                                                           | 要求 | 语法和属性参考                                                         |   |
+| 资源                                                                           | 要求 | 语法和属性参考                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| 函数应用                                                                     | 需要    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
-| [Azure 存储](../storage/index.yml)帐户                                   | 需要    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
-| [Application Insights](../azure-monitor/app/app-insights-overview.md)组件 | 可选    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |   |
+| 函数应用                                                                     | 必选    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
+| [Azure 存储](../storage/index.yml)帐户                                   | 必选    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
+| [Application Insights](../azure-monitor/app/app-insights-overview.md)组件 | 可选    | [Microsoft Insights/组件](/azure/templates/microsoft.insights/components)         |   |
 | [托管计划](./functions-scale.md)                                             | 可选<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
 
 <sup>1</sup>仅当您选择在[高级计划](./functions-premium-plan.md)（预览中）或[应用服务计划](../app-service/overview-hosting-plans.md)上运行函数应用时，才需要托管计划。
@@ -70,7 +64,7 @@ Azure Functions 部署通常包括以下资源：
 
 Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内部队列。  未启用 Application Insights 时，运行时使用 `AzureWebJobsDashboard` 连接字符串登录到 Azure 表存储并启动门户中的“监视”选项卡。
 
-这些属性在 `siteConfig` 对象中的 `appSettings` 集合中指定：
+这些属性在 `appSettings` 对象中的 `siteConfig` 集合中指定：
 
 ```json
 "appSettings": [
@@ -106,7 +100,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
         },
 ```
 
-此外，需要使用 `APPINSIGHTS_INSTRUMENTATIONKEY` 应用程序设置向函数应用提供检测密钥。 此属性在 `siteConfig` 对象的 @no__t 集合中指定：
+此外，需要使用 `APPINSIGHTS_INSTRUMENTATIONKEY` 应用程序设置向函数应用提供检测密钥。 此属性在 `siteConfig` 对象的 `appSettings` 集合中指定：
 
 ```json
 "appSettings": [
@@ -146,14 +140,14 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 函数应用必须包括以下应用程序设置：
 
-| 设置名称                 | 描述                                                                               | 示例值                        |
+| 设置名称                 | 说明                                                                               | 示例值                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Functions 运行时用于内部排队的存储帐户的连接字符串 | 请参阅[存储帐户](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Functions 运行时的版本                                                | `~2`                                  |
 | FUNCTIONS_WORKER_RUNTIME     | 要为此应用中的函数使用的语言堆栈                                   | `dotnet`、`node`、`java` 或 `python` |
 | WEBSITE_NODE_DEFAULT_VERSION | 只有当使用 `node` 语言堆栈时必需，指定要使用的版本              | `10.14.1`                             |
 
-这些属性是在 `siteConfig` 属性中的 `appSettings` 集合中指定的：
+这些属性是在 `appSettings` 属性中的 `siteConfig` 集合中指定的：
 
 ```json
 "properties": {
@@ -184,7 +178,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ## <a name="deploy-on-consumption-plan"></a>在消耗计划上部署
 
-代码运行时，消耗计划会自动分配计算能力，根据处理负载的需要进行扩展，然后在代码停止运行时进行缩减。 你不需要为空闲的 VM 付费，也不需要提前保留容量。 若要了解详细信息，请参阅 [Azure Functions 的缩放和托管](functions-scale.md#consumption-plan)。
+代码运行时，消耗计划会自动分配计算能力，根据处理负载的需要进行扩展，然后在代码停止运行时进行缩减。 你不需要为空闲的 VM 付费，也不需要提前保留容量。 若要了解更多信息，请参阅 [Azure Functions 的缩放和托管](functions-scale.md#consumption-plan)。
 
 有关 Azure 资源管理器模板示例，请参阅[基于消耗计划的函数应用]。
 
@@ -192,7 +186,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 不需要定义消耗计划。 创建函数应用资源本身时，不会基于区域自动创建或选择消耗计划。
 
-消耗计划是一种特殊的“serverfarm”资源。 对于 Windows，可以通过为 `computeMode` 和 `sku` 属性使用 `Dynamic` 值来指定它：
+消耗计划是一种特殊的“serverfarm”资源。 对于 Windows，可以通过为 `Dynamic` 和 `computeMode` 属性使用 `sku` 值来指定它：
 
 ```json
 {  
@@ -219,7 +213,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 如果你显式定义你的消耗计划，则需要在应用上设置 `serverFarmId` 属性，以使其指向计划的资源 ID。 你还应当确保函数应用有一个针对该计划的 `dependsOn` 设置。
 
-### <a name="create-a-function-app"></a>创建函数应用
+### <a name="create-a-function-app"></a>创建 Function App
 
 #### <a name="windows"></a>Windows
 
@@ -270,7 +264,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 #### <a name="linux"></a>Linux
 
-在 Linux 上，函数应用必须将其 @no__t 设置为 `functionapp,linux`，并且它必须将 `reserved` 属性设置为 `true`：
+在 Linux 上，函数应用必须将其 `kind` 设置为 `functionapp,linux`，并且它必须将 `reserved` 属性设置为 `true`：
 
 ```json
 {
@@ -314,7 +308,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ## <a name="deploy-on-premium-plan"></a>部署高级计划
 
-高级计划提供与消耗计划相同的缩放，但包括专用资源和附加功能。 若要了解详细信息，请参阅[Azure Functions 高级计划（预览）](./functions-premium-plan.md)。
+高级计划提供与消耗计划相同的缩放，但包括专用资源和附加功能。 若要了解详细信息，请参阅[Azure Functions 高级计划](./functions-premium-plan.md)。
 
 ### <a name="create-a-premium-plan"></a>创建高级计划
 
@@ -333,7 +327,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 }
 ```
 
-### <a name="create-a-function-app"></a>创建函数应用
+### <a name="create-a-function-app"></a>创建 Function App
 
 高级计划中的函数应用必须将 `serverFarmId` 属性设置为之前创建的计划的资源 ID。 此外，高级计划还需要站点配置中的两个附加设置： `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE`。 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
 
@@ -430,7 +424,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 }
 ```
 
-### <a name="create-a-function-app"></a>创建函数应用 
+### <a name="create-a-function-app"></a>创建 Function App 
 
 应用服务计划上的函数应用必须将 `serverFarmId` 属性设置为之前创建的计划的资源 ID。
 
@@ -517,7 +511,7 @@ Linux 应用还应在 `siteConfig` 下包含 `linuxFxVersion` 属性。 如果�
 }
 ```
 
-如果要[部署自定义容器映像](./functions-create-function-linux-custom-image.md)，则必须将其指定为 `linuxFxVersion`，并包括允许请求映像的配置，如[用于容器的 Web 应用](/azure/app-service/containers)中所示。 另外，将 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 设置为 `false`，因为应用内容在容器本身中提供：
+如果要[部署自定义容器映像](./functions-create-function-linux-custom-image.md)，则必须使用 `linuxFxVersion` 指定该映像，并包括允许提取映像的配置，如[用于容器的 Web 应用](/azure/app-service/containers)中所示。 另外，将 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 设置为 `false`，因为应用内容在容器本身中提供：
 
 ```json
 {
@@ -578,7 +572,7 @@ Linux 应用还应在 `siteConfig` 下包含 `linuxFxVersion` 属性。 如果�
 函数应用有许多可用于部署的子资源，包括应用设置和源代码管理选项。 还可以选择删除 **sourcecontrols** 子资源，改用另一个[部署选项](functions-continuous-deployment.md)。
 
 > [!IMPORTANT]
-> 若要使用 Azure 资源管理器成功部署应用程序，了解如何在 Azure 中部署资源尤为重要。 在下面的示例中，通过使用 **siteConfig** 应用顶级配置。 请务必在顶级设置这些配置，因为这些配置会将信息传达给 Functions 运行时和部署引擎。 应用 **sourcecontrols/web** 子资源前，需要顶级信息。 虽然可以在子级别 **config/appSettings** 资源中配置这些设置，但在某些情况下，需要在应用 **config/appSettings** *之前*部署函数应用。 比如在[逻辑应用](../logic-apps/index.yml)中使用函数时，函数是另一资源的依赖项。
+> 若要使用 Azure 资源管理器成功部署应用程序，了解如何在 Azure 中部署资源尤为重要。 在下面的示例中，通过使用 **siteConfig** 应用顶级配置。 请务必在顶级设置这些配置，因为这些配置会将信息传达给 Functions 运行时和部署引擎。 应用 **sourcecontrols/web** 子资源前，需要顶级信息。 虽然可以在子级别 **config/appSettings** 资源中配置这些设置，但在某些情况下，需要在应用 *config/appSettings* **之前**部署函数应用。 比如在[逻辑应用](../logic-apps/index.yml)中使用函数时，函数是另一资源的依赖项。
 
 ```json
 {
@@ -655,7 +649,7 @@ Linux 应用还应在 `siteConfig` 下包含 `linuxFxVersion` 属性。 如果�
 
 ### <a name="deploy-to-azure-button"></a>“部署到 Azure”按钮
 
-将 ```<url-encoded-path-to-azuredeploy-json>``` 替换为 GitHub 中 `azuredeploy.json` 文件的原始路径的 [URL 编码](https://www.bing.com/search?q=url+encode)版本。
+将 ```<url-encoded-path-to-azuredeploy-json>``` 替换为 GitHub 中 [ 文件的原始路径的 ](https://www.bing.com/search?q=url+encode)URL 编码`azuredeploy.json`版本。
 
 以下示例使用 Markdown：
 

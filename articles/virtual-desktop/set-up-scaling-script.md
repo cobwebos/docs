@@ -1,5 +1,5 @@
 ---
-title: 自动缩放 Windows 虚拟桌面会话主机-Azure
+title: 动态缩放 Windows 虚拟桌面会话主机-Azure
 description: 描述如何为 Windows 虚拟桌面会话主机设置自动缩放脚本。
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 932fbe6814df8ec324dd3360bcacfcbcf1c19b62
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 744f7d5c191180757620e87d926422c9f1e0baba
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71842771"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607456"
 ---
 # <a name="scale-session-hosts-dynamically"></a>动态缩放会话主机
 
@@ -49,7 +49,7 @@ ms.locfileid: "71842771"
 首先，为缩放脚本准备环境：
 
 1. 登录到将使用域管理帐户运行计划任务的 VM （scaler VM）。
-2. 在 scaler VM 上创建一个文件夹来保存缩放脚本及其配置（例如， **C @no__t： 1scaling-HostPool1**）。
+2. 在 scaler VM 上创建一个文件夹来保存缩放脚本及其配置（例如， **C：\\缩放-HostPool1**）。
 3. 下载**basicScale**和**Functions-PSStoredCredentials** **文件，并**从[扩展脚本存储库](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script)下载**PowershellModules**文件夹，并将其复制到在步骤2中创建的文件夹。 可以通过两种主要方式获取文件，然后将其复制到 scaler VM：
     - 将 git 存储库克隆到本地计算机。
     - 查看每个文件的**原始**版本，将每个文件的内容复制并粘贴到文本编辑器中，然后使用相应的文件名和文件类型保存文件。 
@@ -72,8 +72,8 @@ ms.locfileid: "71842771"
     Set-Variable -Name KeyPath -Scope Global -Value <LocalScalingScriptFolder>
     ```
     
-    例如， **KeyPath-Scope 全局值 "c @no__t： 1scaling-HostPool1"**
-5. 运行**StoredCredential-@no__t KeyPath 1KeyPath** cmdlet。 出现提示时，输入具有查询主机池权限的 Windows 虚拟桌面凭据（在**config.xml**中指定主机池）。
+    例如， **KeyPath-Scope 全局值 "c：\\HostPool1"**
+5. 运行**StoredCredential-KeyPath \$KeyPath** cmdlet。 出现提示时，输入具有查询主机池权限的 Windows 虚拟桌面凭据（在**config.xml**中指定主机池）。
     - 如果使用不同的服务主体或标准帐户，请对每个帐户运行**StoredCredential-KeyPath \$KeyPath** cmdlet，以创建本地存储的凭据。
 6. 运行**StoredCredential-List**确认已成功创建凭据。
 
@@ -81,7 +81,7 @@ ms.locfileid: "71842771"
 
 在以下字段中输入相关值，以更新 config.xml 中的缩放脚本设置：
 
-| 字段                     | 描述                    |
+| 字段                     | 说明                    |
 |-------------------------------|------------------------------------|
 | AADTenantId                   | 将会话主机 Vm 运行到的订阅关联的 Azure AD 租户 ID     |
 | AADApplicationId              | 服务主体应用程序 ID                                                       |
@@ -89,7 +89,7 @@ ms.locfileid: "71842771"
 | currentAzureSubscriptionId    | 运行会话主机 Vm 的 Azure 订阅的 ID                        |
 | tenantName                    | Windows 虚拟桌面租户名称                                                    |
 | hostPoolName                  | Windows 虚拟桌面主机池名称                                                 |
-| RDBroker                      | WVD 服务的 URL，默认值 https： \//rdbroker. WVD             |
+| RDBroker                      | WVD 服务的 URL，默认值 https：\//rdbroker.wvd.microsoft.com             |
 | 用户名                      | 服务主体应用程序 ID （在 AADApplicationId 中可能具有相同的服务主体）或没有多重身份验证的标准用户 |
 | isServicePrincipal            | 接受的值为**true**或**false**。 指示所使用的第二组凭据是否为服务主体或标准帐户。 |
 | BeginPeakTime                 | 当高峰使用时间开始时                                                            |
@@ -111,7 +111,7 @@ ms.locfileid: "71842771"
 4. 中转到 "**触发器**" 选项卡，然后选择 "**新建 ...** "
 5. 在 "**新建触发器**" 对话框中的 "**高级设置**" 下，选中 "**重复任务**"，然后选择适当的时间段和持续时间（例如**15 分钟**或**无限期**）。
 6. 选择 "**操作**" 选项卡和 "**新建 ...** "
-7. 在 "**新建操作**" 对话框中，在 "**程序/脚本**" 字段**中输入 "** 4Scaling"，然后在 "**添加参数（可选）** " 字段中输入**C： @no__t @ no__t-5basicScale。**
+7. 在 "**新建操作**" 对话框中，在 "**程序/脚本**" 字段中输入 " **powershell** "，然后在 "**添加参数（可选）** " 字段中输入**C：\\缩放\\basicScale** 。
 8. 前往 "**条件**和**设置**" 选项卡，然后选择 **"确定"** 以接受每个选项的默认设置。
 9. 输入计划运行缩放脚本的管理帐户的密码。
 

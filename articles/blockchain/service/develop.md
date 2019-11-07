@@ -6,16 +6,16 @@ keywords: ''
 author: PatAltimore
 ms.author: patricka
 ms.date: 10/11/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 2990917243507d93cb6a86da11cf771f3a42eebd
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a9444847fb75bdf01cabba98057605afbe03c9fc
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298424"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73577434"
 ---
 # <a name="azure-blockchain-service-development-overview"></a>Azure 区块链服务开发概述
 
@@ -39,7 +39,7 @@ Geth 是命令行接口，用于运行在中转中实现的完全以太坊节点
 
 Truffle 是一种常用的区块链开发框架，用于在以太坊区块链上编写、编译、部署和测试分散的应用程序。 你还可以将 Truffle 看作是一个框架，它尝试无缝集成智能协定开发和传统 web 开发。
 
-即使是最小的项目与至少两个区块链节点交互：一个在开发人员的计算机上，另一个表示开发人员在其中部署应用程序的网络。 例如，主公共以太坊网络或 Azure 区块链服务。 Truffle 提供一个系统，用于管理每个网络的编译和部署项目，并以简化最终应用程序部署的方式实现此目的。 有关详细信息，请参阅[快速入门：使用 Truffle 连接到 Azure 区块链 Service network @ no__t-0。
+即使是最小的项目与至少两个区块链节点交互：一个在开发人员的计算机上，另一个表示开发人员在其中部署应用程序的网络。 例如，主公共以太坊网络或 Azure 区块链服务。 Truffle 提供一个系统，用于管理每个网络的编译和部署项目，并以简化最终应用程序部署的方式实现此目的。 有关详细信息，请参阅[快速入门：使用 Truffle 连接到 Azure 区块链服务网络](connect-truffle.md)。
 
 ## <a name="ethereum-quorum-private-transaction"></a>以太坊仲裁私有事务
 
@@ -51,7 +51,7 @@ Truffle 是一种常用的区块链开发框架，用于在以太坊区块链上
 * 对等互连-使用智能协定的节点和对等节点，确保只有已知的参与方可以加入网络
 * 更高的性能-仲裁比公共 Geth 提供更高的性能
 
-有关分步说明，请参阅[教程：使用 Azure 区块链服务 @ no__t 发送事务，以获取专用事务的示例。
+有关私有事务的示例，请参阅[教程：使用 Azure 区块链服务发送事务](send-transaction.md)。
 
 ## <a name="block-explorers"></a>阻止资源管理器
 
@@ -66,4 +66,4 @@ Truffle 是一种常用的区块链开发框架，用于在以太坊区块链上
 
 ## <a name="next-steps"></a>后续步骤
 
-[快速入门：使用 Truffle 连接到 Azure 区块链服务网络 @ no__t-0
+[快速入门：使用 Truffle 连接到 Azure 区块链服务网络](connect-truffle.md)

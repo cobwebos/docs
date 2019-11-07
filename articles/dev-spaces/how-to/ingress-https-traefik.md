@@ -9,12 +9,12 @@ ms.date: 08/13/2019
 ms.topic: conceptual
 description: 了解如何配置 Azure Dev Spaces 以使用自定义 traefik 入口控制器并使用该入口控制器配置 HTTPS
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: 50908bde65b69cb475391cd30bca758dd571f114
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c015fe8e7108f07d66d2464c4f8b6287e8f54446
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036938"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582322"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>使用自定义 traefik 入口控制器并配置 HTTPS
 
@@ -24,10 +24,10 @@ ms.locfileid: "69036938"
 
 * Azure 订阅。 如果没有帐户，可以[创建一个免费帐户][azure-account-create]。
 * [已安装 Azure CLI][az-cli]。
-* [启用 Azure Dev Spaces 的 Azure Kubernetes 服务 (AKS) 群集][qs-cli]。
+* [启用 Azure Dev Spaces 的 Azure Kubernetes 服务（AKS）群集][qs-cli]。
 * 已安装[kubectl][kubectl] 。
 * [已安装 Helm 2.13 或更高版本][helm-installed]。
-* [一个自定义域][custom-domain], 其中包含与你的 AKS 群集位于同一资源组中的[DNS 区域][dns-zone]。
+* [一个自定义域][custom-domain]，其中包含与你的 AKS 群集位于同一资源组中的[DNS 区域][dns-zone]。
 
 ## <a name="configure-a-custom-traefik-ingress-controller"></a>配置自定义 traefik 入口控制器
 
@@ -45,7 +45,7 @@ NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 ```
 
-为 traefik 入口控制器创建 Kubernetes 命名空间, 并使用`helm`安装它。
+为 traefik 入口控制器创建 Kubernetes 命名空间，并使用 `helm`安装该命名空间。
 
 ```console
 kubectl create ns traefik
@@ -68,7 +68,7 @@ traefik   LoadBalancer   10.0.205.78   <pending>     80:32484/TCP,443:30620/TCP 
 traefik   LoadBalancer   10.0.205.78   MY_EXTERNAL_IP   80:32484/TCP,443:30620/TCP   60s
 ```
 
-使用[az network DNS record][az-network-dns-record-set-a-add-record]将*a*记录添加到 DNS 区域, 使用 TRAEFIK 服务的外部 IP 地址, 并设置添加记录。
+使用[az network DNS record][az-network-dns-record-set-a-add-record]将*a*记录添加到 DNS 区域，使用 TRAEFIK 服务的外部 IP 地址，并设置添加记录。
 
 ```console
 az network dns record-set a add-record \
@@ -87,7 +87,7 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-打开[yaml][values-yaml] , 并将 *< REPLACE_ME_WITH_HOST_SUFFIX >* 的所有实例替换为*traefik。MY_CUSTOM_DOMAIN*将你的域用于*MY_CUSTOM_DOMAIN*。 另外, 请将*kubernetes.io/ingress.class: traefik-azds # Dev Spaces 指定*为*kubernetes.io/ingress.class: Traefik # Custom 入口*。 下面是已更新`values.yaml`文件的示例:
+打开[yaml][values-yaml] ，并将 *< REPLACE_ME_WITH_HOST_SUFFIX >* 的所有实例替换为*traefik。MY_CUSTOM_DOMAIN*将你的域用于*MY_CUSTOM_DOMAIN*。 另外，请将*kubernetes.io/ingress.class： traefik-azds # Dev Spaces 指定*为*kubernetes.io/ingress.class： Traefik # Custom 入口*。 下面是更新的 `values.yaml` 文件的示例：
 
 ```yaml
 # This is a YAML-formatted file.
@@ -110,7 +110,7 @@ gateway:
 
 保存更改并关闭该文件。
 
-使用`helm install`部署示例应用程序。
+使用 `helm install`部署示例应用程序。
 
 ```console
 helm install -n bikesharing . --dep-up --namespace dev --atomic
@@ -118,14 +118,14 @@ helm install -n bikesharing . --dep-up --namespace dev --atomic
 
 上面的示例将示例应用程序部署到*dev*命名空间。
 
-使用`azds space select`选择包含示例应用程序的*开发人员*空间, 并显示使用`azds list-uris`访问示例应用程序的 url。
+使用 `azds space select` 选择与示例应用程序的*开发*环境，并显示 url 以使用 `azds list-uris`访问示例应用程序。
 
 ```console
 azds space select -n dev
 azds list-uris
 ```
 
-下面的输出显示了来自`azds list-uris`的示例 url。
+下面的输出显示来自 `azds list-uris`的示例 Url。
 
 ```console
 Uri                                                  Status
@@ -134,16 +134,16 @@ http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-通过 `azds list-uris` 命令打开公共 URL，导航到 *bikesharingweb* 服务。 在以上示例中，*bikesharingweb* 服务的公共 URL 为 `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`。
+通过 *命令打开公共 URL，导航到*bikesharingweb`azds list-uris` 服务。 在以上示例中，*bikesharingweb* 服务的公共 URL 为 `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`。
 
-使用命令在 "开发" 下创建子空间, 并列出用于访问子开发人员空间的 url。 `azds space select`
+使用 `azds space select` 命令在 "*开发*" 下创建子空间，并列出用于访问子 dev 空间的 url。
 
 ```console
 azds space select -n dev/azureuser1 -y
 azds list-uris
 ```
 
-以下输出显示了中`azds list-uris`的示例 url, 可用于访问*azureuser1*子开发人员空间中的示例应用程序。
+下面的输出显示 `azds list-uris` 中用于访问*azureuser1*子开发人员空间中的示例应用程序的示例 url。
 
 ```console
 Uri                                                  Status
@@ -152,11 +152,11 @@ http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-通过从`azds list-uris`命令中打开公共 URL, 导航到*azureuser1*子 dev 空间中的*bikesharingweb*服务。 在上面的示例中, *azureuser1*子开发人员空间中`http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` *bikesharingweb*服务的公共 URL 是。
+通过从 "`azds list-uris`" 命令打开 "公共 URL"，导航到*azureuser1*子 dev 空间中的*bikesharingweb*服务。 在上面的示例中， *bikesharingweb*服务的公共 URL 在*azureuser1*子开发人员空间中 `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`。
 
 ## <a name="configure-the-traefik-ingress-controller-to-use-https"></a>将 traefik 入口控制器配置为使用 HTTPS
 
-创建类似于以下示例的文件。`dev-spaces/samples/BikeSharingApp/traefik-values.yaml` 使用你自己的电子邮件更新 "*电子邮件*" 值, 此电子邮件用于生成证书, 并使用 "加密"。
+创建类似于以下示例的 `dev-spaces/samples/BikeSharingApp/traefik-values.yaml` 文件。 使用你自己的电子邮件更新 "*电子邮件*" 值，此电子邮件用于生成证书，并使用 "加密"。
 
 ```yaml
 fullnameOverride: traefik
@@ -201,25 +201,25 @@ ssl:
     - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 ```
 
-使用`helm repo update`更新你的*traefik*服务, 并包括你创建的*traefik yaml*文件。
+使用 `helm repo update` 更新你的*traefik*服务，并包括你创建的*traefik yaml*文件。
 
 ```console
 cd ..
 helm upgrade traefik stable/traefik --namespace traefik --values traefik-values.yaml
 ```
 
-上述命令使用*traefik 值 yaml*中的值运行 traefik 服务的新版本, 并删除以前的服务。 Traefik 服务还会创建一个 TLS 证书, 使用我们的加密, 并开始重定向 web 流量以使用 HTTPS。
+上述命令使用*traefik 值 yaml*中的值运行 traefik 服务的新版本，并删除以前的服务。 Traefik 服务还会创建一个 TLS 证书，使用我们的加密，并开始重定向 web 流量以使用 HTTPS。
 
 > [!NOTE]
-> 新版本的 traefik 服务可能需要几分钟时间才能启动。 您可以使用`kubectl get pods --namespace traefik --watch`检查进度。
+> 新版本的 traefik 服务可能需要几分钟时间才能启动。 您可以使用 `kubectl get pods --namespace traefik --watch`来检查进度。
 
-导航到*dev/azureuser1*子空间中的示例应用程序, 注意将重定向到 "使用 HTTPS"。 另请注意, 页面加载, 但浏览器显示一些错误。 打开浏览器控制台时, 将显示与尝试加载 HTTP 资源的 HTTPS 页相关的错误。 例如：
+导航到*dev/azureuser1*子空间中的示例应用程序，注意将重定向到 "使用 HTTPS"。 另请注意，页面加载，但浏览器显示一些错误。 打开浏览器控制台时，将显示与尝试加载 HTTP 资源的 HTTPS 页相关的错误。 例如：
 
 ```console
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
 ```
 
-若要修复此错误, 请更新[BikeSharingWeb/azds yaml][azds-yaml] , 以将*traefik*用于*kubernetes.io/ingress.class* , 并将自定义域用于 *$ (hostSuffix)* 。 例如：
+若要修复此错误，请更新[BikeSharingWeb/azds yaml][azds-yaml] ，以将*traefik*用于*kubernetes.io/ingress.class* ，并将自定义域用于 *$ （hostSuffix）* 。 例如：
 
 ```yaml
 ...
@@ -244,7 +244,7 @@ Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_C
 ...
 ```
 
-将[BikeSharingWeb/pages/][helpers-js] *getApiHostAsync*中的方法更新为使用 HTTPS:
+将[BikeSharingWeb/pages/][helpers-js] *getApiHostAsync*中的方法更新为使用 HTTPS：
 
 ```javascript
 ...
@@ -261,14 +261,14 @@ Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_C
 ...
 ```
 
-导航到`BikeSharingWeb`目录并使用`azds up`运行更新后的 BikeSharingWeb 服务。
+导航到 `BikeSharingWeb` 目录，并使用 `azds up` 运行更新的 BikeSharingWeb 服务。
 
 ```console
 cd BikeSharingWeb/
 azds up
 ```
 
-导航到*dev/azureuser1*子空间中的示例应用程序, 请注意, 将重定向到使用 HTTPS, 但不会出现任何错误。
+导航到*dev/azureuser1*子空间中的示例应用程序，请注意，将重定向到使用 HTTPS，但不会出现任何错误。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -288,7 +288,7 @@ azds up
 
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free
-[helm-installed]: https://github.com/helm/helm/blob/master/docs/install.md
+[helm-installed]: https://helm.sh/docs/using_helm/#installing-helm
 [helpers-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/pages/helpers.js#L7
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

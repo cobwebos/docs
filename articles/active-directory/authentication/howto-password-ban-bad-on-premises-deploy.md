@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e2328bcd2b2d9fe957df82c46730091ffdf9366
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 695bd461ae7e979c0a803cd2d6cb450003a6bcee
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474291"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603000"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>部署 Azure AD 密码保护
 
@@ -135,7 +135,7 @@ Azure AD 密码保护有两个必需的安装程序。 可从[Microsoft 下载�
 
      此 cmdlet 需要 Azure 租户的全局管理员凭据。 还需要在目录林根级域中本地 Active Directory 域管理员权限。 在此命令对代理服务成功执行一次后，对它的其他调用将成功，但没有必要。
 
-      `Register-AzureADPasswordProtectionProxy` cmdlet 支持以下三种身份验证模式。
+      `Register-AzureADPasswordProtectionProxy` cmdlet 支持以下三种身份验证模式。 前两种模式支持 Azure 多重身份验证，但第三种模式不支持。 有关更多详细信息，请参阅下面的注释。
 
      * 交互式身份验证模式：
 
@@ -179,7 +179,7 @@ Azure AD 密码保护有两个必需的安装程序。 可从[Microsoft 下载�
 1. 注册林。
    * 必须使用 `Register-AzureADPasswordProtectionForest` PowerShell cmdlet 来初始化本地 Active Directory 林，其中包含所需的凭据才能与 Azure 进行通信。 Cmdlet 需要 Azure 租户的全局管理员凭据。 它还需要本地 Active Directory 企业管理员权限。 针对每个林运行此步骤一次。
 
-      `Register-AzureADPasswordProtectionForest` cmdlet 支持以下三种身份验证模式。
+      `Register-AzureADPasswordProtectionForest` cmdlet 支持以下三种身份验证模式。 前两种模式支持 Azure 多重身份验证，但第三种模式不支持。 有关更多详细信息，请参阅下面的注释。
 
      * 交互式身份验证模式：
 

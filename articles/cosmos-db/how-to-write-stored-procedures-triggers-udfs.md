@@ -4,14 +4,14 @@ description: 了解如何在 Azure Cosmos DB 中定义存储过程、触发器�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: bec28874bbd67ece4b29f6975e8c7fdcea457bd5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cdac8321ec4ac7b2e13c5545a2483527118daae3
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092835"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606262"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中编写存储过程、触发器和用户定义的函数
 
@@ -21,6 +21,9 @@ Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行用于编写**�
 
 > [!NOTE]
 > 对于已分区的容器，在执行存储过程时，必须在请求选项中提供分区键值。 存储过程的范围始终限定为分区键。 存储过程看不到具有不同分区键值的项。 这一点也适用于触发器。
+
+> [!Tip]
+> Cosmos 支持通过存储过程、触发器和用户定义的函数部署容器。 有关详细信息，请参阅[使用服务器端功能创建 Azure Cosmos DB 容器。](manage-sql-with-resource-manager.md#create-sproc)
 
 ## <a id="stored-procedures"></a>如何编写存储过程
 
@@ -48,11 +51,11 @@ var helloWorldStoredProc = {
 
 ### <a id="create-an-item"></a>使用存储过程创建项
 
-使用存储过程创建某个项时，该项将会插入到 Azure Cosmos 容器，并返回新建项的 ID。 创建项是一种异步操作，依赖于 JavaScript 回调函数。 回调函数包含两个参数 - 一个参数用于操作失败时返回的错误对象，另一个参数用于返回值（在本例中为创建的对象）。 在回调内部，可以处理异常或引发错误。 如果未提供回调并出现错误，则 Azure Cosmos DB 运行时将引发错误。 
+使用存储过程创建项时，会将项插入 Azure Cosmos 容器，并返回新创建的项的 ID。 创建项是一种异步操作，依赖于 JavaScript 回调函数。 回调函数包含两个参数 - 一个参数用于操作失败时返回的错误对象，另一个参数用于返回值（在本例中为创建的对象）。 在回调内部，可以处理异常或引发错误。 如果未提供回调并出现错误，则 Azure Cosmos DB 运行时将引发错误。 
 
 存储过程还包含一个用于设置说明的参数（一个布尔值）。 如果该参数设置为 true，同时缺少说明，则存储过程将引发异常。 否则，存储过程的剩余部分将继续运行。
 
-以下示例存储过程采用新的 Azure Cosmos 项作为输入，将此项插入到 Azure Cosmos 容器，然后返回新建项的 ID。 此示例利用[快速入门 .NET SQL API](create-sql-api-dotnet.md) 中的 ToDoList 示例
+以下示例存储过程使用新的 Azure Cosmos 项作为输入，将其插入 Azure Cosmos 容器，并返回新创建的项的 ID。 此示例利用[快速入门 .NET SQL API](create-sql-api-dotnet.md) 中的 ToDoList 示例
 
 ```javascript
 function createToDoItem(itemToCreate) {
@@ -237,7 +240,7 @@ function validateToDoItemTimestamp() {
 
 预触发器不能有任何输入参数。 使用触发器中的请求对象来处理与操作关联的请求消息。 在前面的示例中，创建 Azure Cosmos 项时将运行前触发器，请求消息正文包含要以 JSON 格式创建的项。
 
-注册触发器后，可以指定可对哪些操作运行该触发器。 应使用 `TriggerOperation.Create` 的 `TriggerOperation` 值创建此触发器，这意味着，不允许在以下代码所示的 replace 操作中使用此触发器。
+注册触发器后，可以指定可对哪些操作运行该触发器。 应使用 `TriggerOperation` 的 `TriggerOperation.Create` 值创建此触发器，这意味着，不允许在以下代码所示的 replace 操作中使用此触发器。
 
 有关如何注册和调用前触发器的示例，请参阅[前触发器](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)和[后触发器](how-to-use-stored-procedures-triggers-udfs.md#post-triggers)文章。 
 

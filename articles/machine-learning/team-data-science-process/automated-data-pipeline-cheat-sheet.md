@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: b41241d3f0223e7c96dce4a9e98262b403cb0660
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7c7011991deb632110264233ea0e7aeabe793fbb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495075"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670470"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Azure 机器学习预测中自动化数据管道的速查表
 **Microsoft Azure 机器学习自动化数据管道速查表**帮助你浏览各项技术，这些技术可用来将数据移到预测分析模型可对其进行评分的机器学习 Web 服务中。
@@ -36,6 +36,6 @@ ms.locfileid: "73495075"
 
 ## <a name="more-help-with-machine-learning-studio"></a>有关机器学习工作室的更多帮助
 * 有关 Microsoft Azure 机器学习的概述，请参阅 [Microsoft Azure 机器学习简介](../studio/what-is-machine-learning.md)。
-* 有关如何部署评分 Web 服务的说明，请参阅 [部署 Azure 机器学习 Web 服务](../studio/publish-a-machine-learning-web-service.md)。
+* 有关如何部署评分 Web 服务的说明，请参阅 [部署 Azure 机器学习 Web 服务](../studio/deploy-a-machine-learning-web-service.md)。
 * 有关如何使用评分 Web 服务的说明，请参阅[如何使用 Azure 机器学习 Web 服务](../studio/consume-web-services.md)。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 766dacb69a3f1857197684f552d05a1376e94509
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 267a63eba90c74b79078a7c04c1d2d8929cf2a44
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514863"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615778"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 
@@ -29,24 +29,24 @@ Azure 文件共享的父资源是 Azure 存储帐户。 存储帐户表示 Azure
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
 > [!Important]  
-> 其他存储服务中的常规用途存储帐户利用率会影响存储帐户中的 Azure 文件共享。 例如，如果由于 Azure Blob 存储而达到了最大存储帐户容量，则将无法在 Azure 文件共享上创建新文件，即使 Azure 文件共享低于最大共享大小。
+> 其他存储服务的常规用途存储帐户利用率会影响存储帐户中的 Azure 文件共享。 例如，如果由于 Azure Blob 存储而达到了最大存储帐户容量，则将无法在 Azure 文件共享上创建新文件，即使 Azure 文件共享低于最大共享大小。
 
 ## <a name="azure-files-scale-targets"></a>Azure 文件缩放目标
 
-对于 Azure 文件，有三种类别的限制：存储帐户、共享和文件。
+对于 Azure 文件存储，需要考虑三类限制：存储帐户、共享和文件。
 
-例如：使用高级文件共享时，一个共享可以实现 100000 IOPS，一个文件最多可以扩展到 5000 IOPS。 因此，如果一个共享中有三个文件，则可以从该共享获取的最大 IOPS 为15000。
+例如：使用高级文件共享时，一个共享可以实现 100000 IOPS，一个文件最多可以扩展到 5000 IOPS。 因此，如果一个共享中有三个文件，则可以从该共享获取的最大 IOPS 为 15,000。
 
 ### <a name="standard-storage-account-limits"></a>标准存储帐户限制
 
-有关这些限制，请参阅[Azure 存储帐户缩放目标](#azure-storage-account-scale-targets)部分。
+有关这些限制，请参阅 [Azure 存储帐户规模目标](#azure-storage-account-scale-targets)部分。
 
 ### <a name="premium-filestorage-account-limits"></a>高级 FileStorage 帐户限制
 
 [!INCLUDE [azure-storage-limits-filestorage](../../../includes/azure-storage-limits-filestorage.md)]
 
 > [!IMPORTANT]
-> 存储帐户限制适用于所有共享。 仅当每个 FileStorage 帐户只有一个共享时，才能实现最大 FileStorage 帐户数。
+> 存储帐户限制适用于所有共享。 仅当每个 FileStorage 帐户只有一个共享时，才能实现 FileStorage 帐户的最大扩展。
 
 ### <a name="file-share-and-file-scale-targets"></a>文件共享和文件规模目标
 
@@ -58,7 +58,7 @@ Azure 文件共享的父资源是 Azure 存储帐户。 存储帐户表示 Azure
 
 [!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
 
-## <a name="azure-file-sync-scale-targets"></a>Azure 文件同步缩放目标
+## <a name="azure-file-sync-scale-targets"></a>Azure 文件同步规模目标
 
 Azure 文件同步的设计目标是无限使用，但并非总是可以无限使用。 下表指示了 Microsoft 测试的边界，还指出了哪些目标是硬限制：
 
@@ -81,7 +81,7 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 | 内存 | 128 GiB |
 | 磁盘 | 采用 RAID 10 且带有以电池供电的高速缓存的 SAS 磁盘 |
 | 网络 | 1 Gbps 网络 |
-| 工作负荷 | 常规用途文件服务器|
+| 工作负载 | 常规用途文件服务器|
 
 | 初始的一次性预配  |  |
 |-|-|
@@ -98,7 +98,7 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 | 同步的对象数| 125,000 个对象（~1% 的改动） |
 | 数据集大小| 50 GiB |
 | 平均文件大小 | ~500 KiB |
-| 上传吞吐量 | 每秒 30 个对象 |
+| 上传吞吐量 | 每秒 20 个对象 |
 | 完整下载吞吐量* | 每秒 60 个对象 |
 
 *如果启用了云分层，则性能可能更好，因为只会下载一部分文件数据。 只有当已缓存文件的数据在任何终结点上发生更改时，Azure 文件同步才会下载这些数据。 对于任何已分层的或新创建的文件，代理不会下载文件数据，而仅会将命名空间同步到所有服务器终结点。 代理还支持在用户访问已分层文件时下载这些文件的一部分。 

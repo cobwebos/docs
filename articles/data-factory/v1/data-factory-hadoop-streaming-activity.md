@@ -1,5 +1,5 @@
 ---
-title: 使用 Hadoop 流式处理活动转换数据 - Azure | Microsoft Docs
+title: 使用 Hadoop 流式处理活动转换数据-Azure
 description: 了解如何使用 Azure 数据工厂中的 Hadoop 流式处理活动通过运行 Hadoop 流式处理程序在按需的/自己的 HDInsight 群集上转换数据。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: fd9512f4ede8d9b8b1a8fd69b7120303fe6a0ad5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c56961b28750f3ba6450c26c897c1ef6c54b3ed8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139544"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73667502"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Hadoop 流式处理活动转换数据
 > [!div class="op_single_selector" title1="转换活动"]
@@ -41,7 +41,7 @@ ms.locfileid: "70139544"
 数据工厂[管道](data-factory-create-pipelines.md)中的 HDInsight Streaming 活动会在[自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或基于 Windows/Linux 的[按需](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 HDInsight Streaming 程序。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
 
 > [!NOTE] 
-> 如果不熟悉 Azure 数据工厂，请在阅读本文之前，先通读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习以下教程：[构建第一个数据管道](data-factory-build-your-first-pipeline.md)。 
+> 如果是刚开始接触 Azure 数据工厂，请仔细阅读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习[教程：生成首个数据管道](data-factory-build-your-first-pipeline.md)，然后再阅读本文。 
 
 ## <a name="json-sample"></a>JSON 示例
 HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt) 自动填充。 默认情况下，HDInsight 群集所用的容器名称就是群集本身的名称。 例如，如果群集名称为 myhdicluster，则关联的 blob 容器名称也是 myhdicluster。 
@@ -113,7 +113,7 @@ HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt
 ## <a name="example"></a>示例
 此演练中的管道在 Azure HDInsight 群集上运行字数统计流式处理 Map/Reduce 程序。 
 
-### <a name="linked-services"></a>链接的服务
+### <a name="linked-services"></a>链接服务
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
 首先，创建一个链接服务，将 Azure HDInsight 群集使用的 Azure 存储链接到 Azure 数据工厂。 如果要复制/粘贴以下代码，请记住将帐户名和帐户密钥替换为自己的 Azure 存储的名称和密钥。 
 
@@ -174,7 +174,7 @@ HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt
 ```
 
 ### <a name="pipeline"></a>管道
-此示例中的管道仅包含一个活动，其类型为：**HDInsightStreaming**。 
+此示例中的管道仅具有一个 **HDInsightStreaming** 类型的活动。 
 
 HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt) 自动填充。 默认情况下，HDInsight 群集所用的容器名称就是群集本身的名称。 例如，如果群集名称为 myhdicluster，则关联的 blob 容器名称也是 myhdicluster。  
 
@@ -222,7 +222,7 @@ HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt
     }
 }
 ```
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [Hive 活动](data-factory-hive-activity.md)
 * [Pig 活动](data-factory-pig-activity.md)
 * [MapReduce 活动](data-factory-map-reduce.md)

@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: 1f934bc5627331cc92ad3f497f1f7e4e0e5526cd
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 3b957181015cba06eb361272ca1004ba3e7a7008
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595340"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579679"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
 如果在本常见问题解答中找不到你的问题的解答，请检查[其他支持选项](support.md)。
 
-## <a name="general"></a>一般信息
+## <a name="general"></a>常规
 
 问：基线模型和自定义语音转文本模型之间有什么区别？
 
@@ -63,7 +63,7 @@ ms.locfileid: "72595340"
 
 答：部署不会自动更新。
 
-如果已调整并部署了具有基线 V1.0 的模型，该部署将保持原样。 客户可以停止部署的模型，使用较新版本的基线重新调整，并重新部署。
+如果已调整并部署了具有基线 V1.0 的模型，该部署将保持原样。 客户可以解除已部署的模型，使用较新版本的基线重新调整并重新部署。
 
 问：如果我的已部署模型需要比门户提供的并发性更高的并发性，该怎么办？
 
@@ -87,7 +87,7 @@ ms.locfileid: "72595340"
 或
 
 - 订阅的资源 ID：
-  - 请参阅 https://portal.azure.com 。
+  - 请参阅 https://portal.azure.com。
   - 在搜索框中选择 "`Cognitive Services`"，
   - 从显示的服务中，选择要为其增加并发的语音服务，
   - 显示此服务的属性，
@@ -107,7 +107,7 @@ ms.locfileid: "72595340"
 
 **问：如何对双通道音频收费？**
 
-**答**：如果单独提交每个通道（每个通道位于其自己的文件中），则会按每个文件的持续时间向你收费。 如果您提交一个文件，其中每个通道都多路复用，则会向您收取单个文件的持续时间。
+**答**：如果单独提交每个通道（每个通道位于其自己的文件中），则会按每个文件的持续时间向你收费。 如果你提交单个文件，其中每个声道都一起多路复用，则按单个文件的持续时间对你收费。
 
 > [!IMPORTANT]
 > 如果有禁止使用自定义语音服务的其他隐私问题，请联系其中一个支持渠道。
@@ -175,6 +175,18 @@ ms.locfileid: "72595340"
 问：能否只上传字词列表？
 
 答：上传字词列表会将字词添加到词汇中，但不会告知系统这些字词的通常用法。 通过提供完整或部分话语（用户很可能会说事物的句子或短语），语言模型可以学习这些新字词及其用法。 自定义语言模型不仅适用于向系统中添加新字词，还适用于调整应用程序已知字词的概率。 提供完整话语可帮助系统更好地学习。 
+
+## <a name="tenant-model-custom-speech-with-office-365-data"></a>租户模型（自定义语音 Office 365 数据）
+
+**问：租户模型中包含哪些信息，如何创建？**
+
+**答：** 租户模型是使用[公用组](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)电子邮件和文档生成的，你的组织中的任何人都可以看到该模型。 
+ 
+**问：租户模型改进了哪些语音体验？**
+
+**答：** 启用并发布租户模型后，它将用于改进使用语音服务生成的任何企业应用程序的识别;这也会传递指示企业成员身份的用户 AAD 标记。 
+ 
+当你为语音服务应用程序创建租户模型时，Office 365 中内置的语音体验（如听写和 PowerPoint 字幕）不会更改。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 8a6bc8b71f5f8edda76faa1a8d1b20417dfba1d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 84af496a92bd3c7b30062e965335782f7661aa4a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478655"
+ms.locfileid: "73575656"
 ---
 # <a name="authentication-with-azure-maps"></a>使用 Azure Maps 进行身份验证
 
@@ -49,7 +49,7 @@ Azure Maps 为每个 Azure Maps 帐户生成一个唯一的标识符（客户端
 | Azure Government    | https://login.microsoftonline.us |
 
 
-有关如何为 Azure Maps 配置 Azure AD 和请求令牌的详细信息，请参阅[在 Azure Maps 中管理身份验证](https://review.docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)。
+有关如何为 Azure Maps 配置 Azure AD 和请求令牌的详细信息，请参阅[在 Azure Maps 中管理身份验证](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)。
 
 有关如何从 Azure AD 请求令牌的一般信息，请参阅[什么是身份验证？](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)。
 
@@ -92,6 +92,6 @@ Azure Maps 通过 Azure 资源的托管标识，支持单个 Azure AD 用户、�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解如何使用 Azure AD 和 Azure Maps 对应用程序进行身份验证，请参阅[在 Azure Maps 中管理身份验证](https://review.docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)。
+* 若要详细了解如何使用 Azure AD 和 Azure Maps 对应用程序进行身份验证，请参阅[在 Azure Maps 中管理身份验证](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)。
 
 * 若要详细了解如何对 Azure Maps、Map Control 和 Azure AD 进行身份验证，请参阅[使用 Azure Maps Map Control](https://aka.ms/amaadmc)。

@@ -1,174 +1,170 @@
 ---
 title: 将 Azure Functions 与 Azure 虚拟网络集成
-description: 分步教程演示如何将函数连接到 Azure 虚拟网络
-services: functions
+description: 演示如何将函数连接到 Azure 虚拟网络的分步教程
 author: alexkarcher-msft
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: article
 ms.date: 5/03/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 0a31b58a3c843a2add0c84dc1a3ad4ab6417815e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: bc6c87a28078d25a212a681206258d6d369f2867
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612891"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73575545"
 ---
-# <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>教程： 将与 Azure 虚拟网络集成函数
+# <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>教程：将函数与 Azure 虚拟网络集成
 
-本教程演示如何使用 Azure Functions 连接到 Azure 虚拟网络中的资源。 你将创建具有对这两个 internet 和虚拟网络中运行 WordPress 的 VM 访问的函数。
+本教程介绍如何使用 Azure Functions 连接到 Azure 虚拟网络中的资源。 你将创建一个函数，该函数可访问 internet 和在虚拟网络中运行 WordPress 的 VM。
 
 > [!div class="checklist"]
-> * 在高级版计划中创建函数应用
-> * 在虚拟网络中将 WordPress 站点部署到 VM
-> * 函数应用连接到虚拟网络
+> * 在高级计划中创建函数应用
+> * 将 WordPress 站点部署到虚拟网络中的 VM
+> * 将函数应用连接到虚拟网络
 > * 创建函数代理以访问 WordPress 资源
-> * 请求从虚拟网络中的 WordPress 文件
-
-> [!NOTE]  
-> 本教程中的高级计划创建 function app。 此托管计划目前处于预览状态。 有关详细信息，请参阅[高级版计划]。
+> * 从虚拟网络内部请求 WordPress 文件
 
 ## <a name="topology"></a>拓扑
 
-下图显示了你创建的解决方案体系结构：
+下图显示了您创建的解决方案的体系结构：
 
- ![虚拟网络集成的用户界面](./media/functions-create-vnet/topology.png)
+ ![虚拟网络集成的 UI](./media/functions-create-vnet/topology.png)
 
-在高级版计划中运行的函数具有与 web 应用相同的托管功能在 Azure 应用服务中，其中包括 VNet 集成功能。 若要详细了解 VNet 集成，包括故障排除和高级配置，请参阅[将应用与 Azure 虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md)。
+高级计划中运行的函数与 Azure App Service 中的 web 应用具有相同的承载功能，其中包括 VNet 集成功能。 若要了解有关 VNet 集成的详细信息，包括疑难解答和高级配置，请参阅将[应用与 Azure 虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-对于本教程中，它是必须了解 IP 寻址和子网。 可以使用启动[本文介绍了寻址和子网的基础知识](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics)。 很多更多文章和视频，请联机参阅。
+对于本教程，请务必了解 IP 寻址和子网。 可以从本文开始[，其中介绍了寻址和子网的基本知识](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics)。 其他更多的文章和视频可在线获得。
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-a-function-app-in-a-premium-plan"></a>在高级版计划中创建函数应用
+## <a name="create-a-function-app-in-a-premium-plan"></a>在高级计划中创建 function app
 
-首先，创建函数应用中的[高级版计划]。 此计划在支持虚拟网络集成的同时提供无服务器的规模。
+首先，在[高级计划]中创建一个函数应用。 此计划提供无服务器规模，同时支持虚拟网络集成。
 
 [!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]  
 
-可以通过选择右上角的图钉图标固定到仪表板的函数应用。 固定可以更轻松地在创建 VM 后，返回到此函数应用。
+您可以通过选择右上角的图钉图标将函数应用固定到仪表板。 在创建 VM 后，可以更轻松地返回到此函数应用。
 
-## <a name="create-a-vm-inside-a-virtual-network"></a>创建虚拟网络中的 VM
+## <a name="create-a-vm-inside-a-virtual-network"></a>在虚拟网络中创建 VM
 
-接下来，创建虚拟网络中运行 WordPress 的预配置的 VM ([WordPress LEMP7 最大性能](https://jetware.io/appliances/jetware/wordpress4_lemp7-170526/profile?us=azure)jetware 的适用情况)。 由于其低成本和方便使用 WordPress VM。 这同一情况下适用于虚拟网络，如 REST Api、 应用服务环境和其他 Azure 服务中的任何资源。 
+接下来，创建一个在虚拟网络中运行 WordPress 的预配置 VM （[WORDPRESS LEMP7 Max Performance](https://jetware.io/appliances/jetware/wordpress4_lemp7-170526/profile?us=azure) by Jetware）。 使用 WordPress VM 的原因是成本较低且方便。 此同一方案适用于虚拟网络中的任何资源，例如 REST Api、应用服务环境和其他 Azure 服务。 
 
-1. 在门户中，选择 **+ 创建资源**在左侧的导航窗格中，在搜索字段中键入`WordPress LEMP7 Max Performance`，然后按 Enter。
+1. 在门户中，在左侧导航窗格中选择 " **+ 创建资源**"，在 "搜索" 字段中键入 "`WordPress LEMP7 Max Performance`"，然后按 enter。
 
-1. 选择**Wordpress LEMP Max Performance**在搜索结果中。 选择的软件计划**针对 CentOS 的 Wordpress LEMP Max Performance**作为**软件计划**，然后选择**创建**。
+1. 在搜索结果中选择 " **WORDPRESS LEMP Max 性能**"。 选择**WORDPRESS LEMP Max Performance For CentOS**的**软件计划，并选择 "** **创建**"。
 
-1. 在中**基础知识**选项卡上，使用图像下的表中指定的 VM 设置：
+1. 在 "**基本**信息" 选项卡中，使用映像下下表中指定的 VM 设置：
 
-    ![用于创建 VM 的基础知识选项卡](./media/functions-create-vnet/create-vm-1.png)
-
-    | 设置      | 建议的值  | Description      |
-    | ------------ | ---------------- | ---------------- |
-    | **订阅** | 订阅 | 你的资源在其下创建的订阅。 | 
-    | **[资源组](../azure-resource-manager/resource-group-overview.md)**  | myResourceGroup | 选择`myResourceGroup`，或使用 function app 创建的资源组。 为函数应用，WordPress VM 使用相同的资源组和托管计划轻松完成本教程时清理资源。 |
-    | **虚拟机名称** | VNET-Wordpress | VM 名称必须是唯一的资源组中 |
-    | **[区域](https://azure.microsoft.com/regions/)** | （欧洲）西欧 | 选择你附近的区域或附近函数的访问 VM。 |
-    | **大小** | B1s | 选择**更改大小**，然后选择 B1s 标准映像，具有 1 个 vCPU 和 1 GB 的内存。 |
-    | **身份验证类型** | 密码 | 若要使用密码身份验证，还必须指定**用户名**，一种安全**密码**，然后**确认密码**。 对于本教程，您不需要登录到 VM，除非需要进行故障排除。 |
-
-1. 选择**联网**选项卡，然后在配置虚拟网络下选择**新建**。
-
-1. 在中**创建虚拟网络**，使用图像下的表中的设置：
-
-    ![网络选项卡创建 VM](./media/functions-create-vnet/create-vm-2.png)
+    ![用于创建 VM 的 "基本信息" 选项卡](./media/functions-create-vnet/create-vm-1.png)
 
     | 设置      | 建议的值  | 说明      |
     | ------------ | ---------------- | ---------------- |
-    | **名称** | myResourceGroup-vnet | 可以使用生成的虚拟网络的默认名称。 |
-    | **地址范围** | 10.10.0.0/16 | 为虚拟网络中使用单个地址范围。 |
-    | **子网名称** | 教程-Net | 子网的名称。 |
-    | **地址范围**（子网） | 10.10.1.0/24   | 子网大小定义多少个接口可以添加到子网。 WordPress 站点使用此子网。  一个`/24`子网提供 254 个主机地址。 |
+    | **订阅** | 订阅 | 用于创建资源的订阅。 | 
+    | **[资源组](../azure-resource-manager/resource-group-overview.md)**  | myResourceGroup | 选择 "`myResourceGroup`"，或选择 "函数应用" 创建的资源组。 对于 function app、WordPress VM 和托管计划使用同一资源组，可以在完成本教程后更轻松地清理资源。 |
+    | **虚拟机名称** | VNET-Wordpress | VM 名称在资源组中必须是唯一的 |
+    | **[区](https://azure.microsoft.com/regions/)** | （欧洲）西欧 | 在访问 VM 的函数附近或附近选择一个区域。 |
+    | **大小** | B1s | 选择 "**更改大小**"，然后选择 B1s 标准映像，其中包含1个 vCPU 和 1 GB 的内存。 |
+    | **身份验证类型** | 密码 | 若要使用密码身份验证，还必须指定**用户名**、安全**密码**，然后**确认密码**。 对于本教程，无需登录到 VM，除非需要进行故障排除。 |
 
-1. 选择**确定**创建虚拟网络。
+1. 选择 "**网络**" 选项卡，然后在 "配置虚拟网络" 下选择 "**新建**"。
 
-1. 回到**联网**选项卡上，选择**None**有关**公共 IP**。
+1. 在 "**创建虚拟网络**" 中，使用映像下表中的设置：
 
-1. 选择**管理**选项卡上，然后在**诊断存储帐户**，选择与你的函数应用创建的存储帐户。
+    ![创建 VM 的 "网络" 选项卡](./media/functions-create-vnet/create-vm-2.png)
 
-1. 选择“查看 + 创建”  。 验证完成后，选择**创建**。 VM 创建过程需要几分钟时间。 将创建的 VM 只能访问虚拟网络。
+    | 设置      | 建议的值  | 说明      |
+    | ------------ | ---------------- | ---------------- |
+    | **名称** | MyResourceGroup-vnet | 你可以使用为虚拟网络生成的默认名称。 |
+    | **地址范围** | 10.10.0.0/16 | 为虚拟网络使用单个地址范围。 |
+    | **子网名称** | 教程-网络 | 子网的名称。 |
+    | **地址范围**（子网） | 10.10.1.0/24   | 子网大小定义可向子网添加多少个接口。 此子网由 WordPress 站点使用。  `/24` 子网提供254主机地址。 |
 
-1. 创建 VM 后，请选择**转到资源**若要查看的页面，为新的 VM，然后选择**网络**下**设置**。
+1. 选择 **"确定"** 以创建虚拟网络。
 
-1. 验证是否有任何**公共 IP**。 记下**专用 IP**，可用于从函数应用连接到 VM。
+1. 返回 "**网络**" 选项卡，选择 "**无**" 作为**公共 IP**。
 
-    ![在 VM 中的网络设置](./media/functions-create-vnet/vm-networking.png)
+1. 选择 "**管理**" 选项卡，然后在 "**诊断存储帐户**" 中，选择你用 Function app 创建的存储帐户。
 
-现可在虚拟网络内完全部署的 WordPress 网站。 此站点不是可从公共 internet 访问。
+1. 选择“查看 + 创建”。 验证完成后，选择 "**创建**"。 VM 创建过程需花费几分钟时间。 创建的 VM 只能访问虚拟网络。
+
+1. 创建 VM 后，选择 "**前往资源**" 查看新 vm 的页面，然后在 "**设置**" 下选择 "**网络**"。
+
+1. 验证没有**公共 IP**。 记下**专用 IP**，它用于从函数应用连接到 VM。
+
+    ![VM 中的网络设置](./media/functions-create-vnet/vm-networking.png)
+
+你现在已完全在虚拟网络中部署了 WordPress 站点。 无法从公共 internet 访问此站点。
 
 ## <a name="connect-your-function-app-to-the-virtual-network"></a>将函数应用连接到虚拟网络
 
-与在虚拟网络中的 VM 中运行的 WordPress 站点，现在可以为该虚拟网络连接 function app。
+通过在虚拟网络中的 VM 上运行 WordPress 站点，你现在可以将函数应用连接到该虚拟网络。
 
-1. 在新 function app 中，选择**平台功能** > **网络**。
+1. 在新的函数应用中，选择 "**平台功能** > **网络**"。
 
     ![在 function app 中选择网络](./media/functions-create-vnet/networking-0.png)
 
-1. 下**VNet 集成**，选择**单击这里以配置**。
+1. 在 " **VNet 集成**" 下，选择 **"单击此处进行配置**"。
 
-    ![用于配置网络功能状态](./media/functions-create-vnet/Networking-1.png)
+    ![配置网络功能的状态](./media/functions-create-vnet/Networking-1.png)
 
-1. 在虚拟网络集成页中，选择**添加 VNet （预览版）** 。
+1. 在 "虚拟网络集成" 页上，选择 "**添加 VNet （预览版）** "。
 
-    ![添加 VNet 集成预览版](./media/functions-create-vnet/networking-2.png)
+    ![添加 VNet 集成预览](./media/functions-create-vnet/networking-2.png)
 
-1. 在中**网络功能状态**，使用图像下的表中的设置：
+1. 在 "**网络功能状态**" 中，使用映像下表中的设置：
 
-    ![将函数应用虚拟网络定义](./media/functions-create-vnet/networking-3.png)
+    ![定义函数应用虚拟网络](./media/functions-create-vnet/networking-3.png)
 
-    | 设置      | 建议的值  | 描述      |
+    | 设置      | 建议的值  | 说明      |
     | ------------ | ---------------- | ---------------- |
-    | **虚拟网络** | MyResourceGroup-vnet | 此虚拟网络是前面创建的一个。 |
-    | **子网** | 创建新的子网 | 在函数应用使用的虚拟网络中创建子网。 VNet 集成必须配置为使用空的子网。 它并不重要函数使用比 VM 的不同子网。 虚拟网络会自动将路由两个子网之间的流量。 |
-    | **子网名称** | Function-Net | 新子网的名称。 |
-    | **虚拟网络地址块** | 10.10.0.0/16 | 选择 WordPress 站点使用的同一个地址块。 你只应具有定义的一个地址块。 |
-    | **地址范围** | 10.10.2.0/24   | 子网大小限制高级计划函数应用可以横向扩展到的实例的总数。 此示例使用`/24`254 个可用的主机地址的子网。 此子网是过度预配，但计算更容易。 |
+    | **虚拟网络** | MyResourceGroup-vnet | 此虚拟网络是你之前创建的网络。 |
+    | **子网** | 创建新子网 | 在虚拟网络中创建一个子网，以便函数应用使用。 必须将 VNet 集成配置为使用空子网。 函数使用不同于 VM 的子网并不重要。 虚拟网络自动在两个子网之间路由流量。 |
+    | **子网名称** | 函数-Net | 新子网的名称。 |
+    | **虚拟网络地址块** | 10.10.0.0/16 | 选择 WordPress 站点使用的同一个地址块。 只应定义一个地址块。 |
+    | **地址范围** | 10.10.2.0/24   | 子网大小限制高级计划函数应用可以向外扩展到的实例总数。 此示例使用具有254可用主机地址的 `/24` 子网。 此子网过度预配，但易于计算。 |
 
-1. 选择**确定**添加子网。 关闭要返回到函数应用页的 VNet 集成和网络功能状态页。
+1. 选择 **"确定"** 以添加子网。 关闭 "VNet 集成" 和 "网络功能状态" 页，返回到 "function app" 页。
 
-函数应用现在可以访问在其中运行 WordPress 站点的虚拟网络。 接下来，使用[Azure Functions 代理](functions-proxies.md)若要将文件返回从 WordPress 网站。
+函数应用现在可以访问运行 WordPress 站点的虚拟网络。 接下来，使用[Azure Functions 代理](functions-proxies.md)从 WordPress 站点返回文件。
 
-## <a name="create-a-proxy-to-access-vm-resources"></a>创建访问 VM 资源的代理帐户
+## <a name="create-a-proxy-to-access-vm-resources"></a>创建用于访问 VM 资源的代理
 
-启用 VNet 集成，可以在函数应用将请求转发到虚拟网络中运行的 VM 中创建代理。
+启用 VNet 集成后，可以在 function app 中创建一个代理，以将请求转发到虚拟网络中运行的 VM。
 
-1. 在 function app 中，选择**代理** >  **+** ，然后在图像下的表中使用的代理设置：
+1. 在函数应用中，选择 "**代理** >  **+** "，然后使用映像下表中的代理设置：
 
     ![定义代理设置](./media/functions-create-vnet/create-proxy.png)
 
     | 设置  | 建议的值  | 说明      |
     | -------- | ---------------- | ---------------- |
-    | **名称** | 工厂 | 名称可以是任何值。 它用于标识代理。 |
+    | **名称** | 花草 | 该名称可以是任何值。 它用于标识代理。 |
     | **路由模板** | /plant | 映射到 VM 资源的路由。 |
-    | **后端 URL** | http://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | 替换为`<YOUR_VM_IP>`WordPress VM 之前创建的 IP 地址。 此映射返回从站点的单个文件。 |
+    | **后端 URL** | http：//< YOUR_VM_IP >/wp-content/themes/twentyseventeen/assets/images/header.jpg | 将 `<YOUR_VM_IP>` 替换为之前创建的 WordPress VM 的 IP 地址。 此映射返回站点中的单个文件。 |
 
-1. 选择**创建**将代理添加到函数应用。
+1. 选择 "**创建**"，将代理添加到 function app。
 
 ## <a name="try-it-out"></a>试用
 
-1. 在浏览器中，尝试访问作为所用的 URL**后端 URL**。 按预期运行，该请求将会超时。因为你的 WordPress 站点仅连接到虚拟网络并不是 internet 发生超时。
+1. 在浏览器中，尝试访问用作**后端 url**的 URL。 如预期那样，请求会超时。发生超时的原因是你的 WordPress 站点仅连接到你的虚拟网络而不是 internet。
 
-1. 复制**代理 URL**值从新代理，并将其粘贴到你的浏览器的地址栏。 返回的映像是从虚拟网络内部运行的 WordPress 站点。
+1. 复制新代理中的 "**代理 URL** " 值，并将其粘贴到浏览器的地址栏中。 返回的映像来自虚拟网络内运行的 WordPress 站点。
 
-    ![返回从 WordPress 站点的工厂图像文件](./media/functions-create-vnet/plant.png)
+    ![从 WordPress 站点返回的植物映像文件](./media/functions-create-vnet/plant.png)
 
-函数应用连接到 internet 和虚拟网络。 代理是通过公共 internet，接收请求，然后充当简单的 HTTP 代理，该请求转发到连接的虚拟网络。 代理然后中继回给你的响应公开通过 internet。
+函数应用已连接到 internet 和虚拟网络。 代理正在通过公共 internet 接收请求，然后充当简单的 HTTP 代理，以便将该请求转发到连接的虚拟网络。 然后，代理通过 internet 将响应中继回给你。
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，WordPress 站点用作 API 调用的函数应用中使用代理。 因为这样可以轻松设置和可视化，此方案可以很好的教程。 您可以使用虚拟网络内部署的任何其他 API。 您可能也已创建的函数调用的虚拟网络内部署的 Api 的代码。 更现实的方案是使用数据的客户端 Api 调用在虚拟网络中部署的 SQL Server 实例的函数。
+在本教程中，WordPress 站点充当 API，该 API 是通过在 function app 中使用代理来调用的。 此方案可以很好地实现教程，因为它易于设置和可视化。 你可以使用虚拟网络中部署的任何其他 API。 你还可以创建一个函数，该函数包含调用虚拟网络内部署的 Api 的代码。 一个更现实的方案是使用数据客户端 Api 调用部署在虚拟网络中的 SQL Server 实例的函数。
 
-在高级版计划中运行的函数共享相同的基础应用服务基础结构即高级 V2 计划上的 web 应用。 所有的文档[Azure 应用服务中的 web 应用](../app-service/overview.md)适用于高级计划函数。
+高级计划中运行的函数在 PremiumV2 计划上共享与 web 应用相同的基础应用服务基础结构。 [Azure App Service 中的 web 应用](../app-service/overview.md)的所有文档都适用于高级计划功能。
 
 > [!div class="nextstepaction"]
-> [了解有关在函数中的网络选项的详细信息](./functions-networking-options.md)
+> [了解有关函数中的网络选项的详细信息](./functions-networking-options.md)
 
-[高级版计划]: functions-scale.md#premium-plan
+[高级计划]: functions-scale.md#premium-plan

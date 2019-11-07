@@ -1,5 +1,5 @@
 ---
-title: Windows 虚拟桌面故障排除概述、反馈和支持-Azure
+title: Windows 虚拟桌面故障排除概述-Azure
 description: 有关在设置 Windows 虚拟桌面租户环境时解决问题的概述。
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: b16d993717529953da1dc31604e6112f53ed7ac9
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: aa4254673d426579a5e5f0e90e389db7c6cadff0
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679436"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607352"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>故障排除概述、反馈和支持
 
@@ -47,11 +47,11 @@ ms.locfileid: "71679436"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要在 Windows 虚拟桌面环境中创建租户和主机池时排查问题, 请参阅[租户和主机池创建](troubleshoot-set-up-issues.md)。
-- 若要解决在 Windows 虚拟桌面中配置虚拟机 (VM) 时遇到的问题, 请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
-- 若要解决 Windows 虚拟桌面客户端连接问题, 请参阅[远程桌面客户端连接](troubleshoot-client-connection.md)。
-- 若要解决将 PowerShell 与 Windows 虚拟桌面结合使用时遇到的问题, 请参阅[Windows 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
+- 若要在 Windows 虚拟桌面环境中创建租户和主机池时排查问题，请参阅[租户和主机池创建](troubleshoot-set-up-issues.md)。
+- 若要解决在 Windows 虚拟桌面中配置虚拟机（VM）时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
+- 若要解决 Windows 虚拟桌面客户端连接问题，请参阅[远程桌面客户端连接](troubleshoot-client-connection.md)。
+- 若要解决将 PowerShell 与 Windows 虚拟桌面结合使用时遇到的问题，请参阅[Windows 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
 - 若要了解有关该服务的详细信息，请参阅[Windows 虚拟桌面环境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)。
-- 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)问题。
+- 若要浏览疑难解答教程，请参阅[教程：排查资源管理器模板部署问题](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)。
 - 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)。
 - 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations)。

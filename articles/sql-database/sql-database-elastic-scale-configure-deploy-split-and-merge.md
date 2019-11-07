@@ -1,5 +1,5 @@
 ---
-title: 部署拆分 / 合并服务 | Microsoft 文档
+title: 部署拆分/合并服务
 description: 可使用拆分/合并工具在分片数据库之间移动数据。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: a8c50f492c28bf1e009d15d6332e939959190a49
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 009fb4be61aad5c700c7520764e9414ed9422721
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568500"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690313"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署拆分/合并服务以在分片数据库之间移动数据
 
@@ -24,7 +24,7 @@ ms.locfileid: "68568500"
 
 ## <a name="download-the-split-merge-packages"></a>下载拆分/合并包
 1. 从 [NuGet](https://docs.nuget.org/docs/start-here/installing-nuget) 下载最新的 NuGet 版本。
-2. 打开命令提示符，并导航到下载 nuget.exe 的目录。 此下载包括 PowerShell 命令。
+2. 打开命令提示符，并导航到用户下载 nuget.exe 的目录。 此下载包括 PowerShell 命令。
 3. 使用以下命令将最新的拆分/合并包下载到当前目录中：
    ```
    nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge
@@ -42,7 +42,7 @@ ms.locfileid: "68568500"
 ### <a name="split-merge-service-configuration"></a>拆分/合并服务配置
 1. 在下载了拆分/合并程序集的文件夹中，创建 **SplitMergeService.cspkg** 随附的 **ServiceConfiguration.Template.cscfg** 文件的副本，并将其重命名为 **ServiceConfiguration.cscfg**。
 2. 在文本编辑器（如 Visual Studio）中打开 **ServiceConfiguration.cscfg**，它会验证输入内容（例如，证书指纹的格式）。
-3. 创建新的数据库或选择现有的数据库，以将其用作拆分/合并操作的状态数据库并检索该数据库的连接字符串。 
+3. 新建数据库或选择现有数据库，以将其用作拆分/合并操作的状态数据库并检索该数据库的连接字符串。 
    
    > [!IMPORTANT]
    > 目前，状态数据库必须使用拉丁语排序规则 (SQL\_Latin1\_General\_CP1\_CI\_AS)。 有关详细信息，请参阅 [Windows 排序规则名称 (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx)。
@@ -62,7 +62,7 @@ ms.locfileid: "68568500"
 为了针对本教程创建一个简单的测试部署，我们将执行少量的配置步骤来使服务正常运行。 仅一个计算机/帐户可以执行这些步骤，以便与服务进行通信。
 
 ### <a name="create-a-self-signed-certificate"></a>创建自签名证书
-创建新的目录并使用 [Visual Studio 的开发人员命令提示符](https://msdn.microsoft.com/library/ms229859.aspx)窗口从该目录执行以下命令：
+新建目录并使用 [Visual Studio 的开发人员命令提示符](https://msdn.microsoft.com/library/ms229859.aspx) 窗口从该目录执行以下命令：
 
    ```
     makecert ^
@@ -73,7 +73,7 @@ ms.locfileid: "68568500"
     -sv MyCert.pvk MyCert.cer
    ```
 
-将要求提供密码以保护私钥。 输入强密码并进行确认。 之后，系统会提示再次输入该密码。 在完成后单击“是”，以将证书导入到“受信任的根证书颁发机构”存储中。
+将要求提供密码以保护私钥。 输入强密码并进行确认。 之后，系统会提示再次输入该密码。 在完成后单击“是” ，以将证书导入到“受信任的根证书颁发机构”存储中。
 
 ### <a name="create-a-pfx-file"></a>创建 PFX 文件
 从执行 makecert 的相同窗口中执行以下命令；使用用于创建证书的相同密码：
@@ -85,7 +85,7 @@ ms.locfileid: "68568500"
 2. 在“证书导入向导”中，选择“当前用户”，并单击“下一步”。
 3. 确认文件路径，并单击“下一步”。
 4. 键入密码，保持选中“包括所有扩展属性”，并单击“下一步”。
-5. 保持选中“自动选择证书存储[…]”，并单击“下一步”。
+5. 保持选中“自动选择证书存储[…]”，然后单击“下一步”。
 6. 依次单击“完成”和“确定”。
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>将 PFX 文件上传到云服务
@@ -93,7 +93,7 @@ ms.locfileid: "68568500"
 2. 选择“云服务”。
 3. 选择之前为拆分/合并服务创建的云服务。
 4. 单击顶部菜单上的“证书”。
-5. 单击底部栏中的“上载”。
+5. 单击底部栏中的“上传”。
 6. 选择 PFX 文件并输入上面所述的相同密码。
 7. 完成操作后，从列表中的新条目复制证书指纹。
 
@@ -116,7 +116,7 @@ ms.locfileid: "68568500"
     <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
    ```
 
-请注意，对于生产部署，应针对用于加密的 CA 使用单独的证书（服务器证书和客户端证书）。 有关此内容的详细说明，请参阅[安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)。
+请注意，对于生产部署，应针对用于加密的 CA 使用单独的证书（服务器证书和客户端证书）。 有关此内容的详细说明，请参阅 [安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)。
 
 ## <a name="deploy-your-service"></a>部署服务
 1. 转到 [Azure 门户](https://portal.azure.com)
@@ -129,7 +129,7 @@ ms.locfileid: "68568500"
 
 
 ## <a name="troubleshoot-the-deployment"></a>排查部署问题
-如果 Web 角色无法联机，可能是安全配置出了问题。 检查 SSL 是否按照上面的描述进行了配置。
+如果 Web 角色无法联机，可能是安全配置出现了问题。 检查 SSL 是否按照上面的描述进行了配置。
 
 如果辅助角色无法联机，但是 Web 角色已成功，很可能是在连接到之前创建的状态数据库时出现了问题。
 
@@ -209,12 +209,12 @@ ms.locfileid: "68568500"
    > 在默认情况下，SetupSampleSplitMergeEnvironment.ps1 脚本会在相同的服务器上创建所有这些数据库以简化脚本。 这并不表示拆分/合并服务本身存在限制。
    >
    
-   拆分/合并服务将需要具有数据库读/写访问权限的 SQL 身份验证登录，才能移动数据并更新分片映射。 由于拆分/合并服务在云中运行，因此它当前不支持集成的身份验证。
+   拆分/合并服务需要具有数据库读/写访问权限的 SQL 身份验证登录，才能移动数据并更新分片映射。 由于拆分/合并服务在云中运行，因此它当前不支持集成的身份验证。
    
    确保 Azure SQL 服务器已配置为允许从运行这些脚本的计算机的 IP 地址进行访问。 可以在“Azure SQL 服务器”/“配置”/“允许的 IP 地址”下找到此设置。
 3. 执行 SetupSampleSplitMergeEnvironment.ps1 脚本以创建示例环境。
    
-   运行此脚本将擦除分片映射管理器数据库和分片上任何现有的分片映射管理数据结构。 如果要重新初始化分片映射或分片，重新运行脚本可能会很有用。
+   运行此脚本会擦除分片映射管理器数据库和分片上任何现有的分片映射管理数据结构。 如果要重新初始化分片映射或分片，重新运行脚本可能会很有用。
    
    示例命令行：
 
@@ -235,7 +235,7 @@ ms.locfileid: "68568500"
          -ShardMapManagerServerName 'abcdefghij.database.windows.net'
 
    ```         
-5. 执行 ExecuteSampleSplitMerge.ps1 脚本以执行拆分操作（将第一个分片上一半的数据移至第二个分片），然后执行合并操作（将数据移回第一个分片）。 如果已配置 SSL 并且已将 http 终结点保留为禁用，请确保改为使用 https:// 终结点。
+5. 执行 ExecuteSampleSplitMerge.ps1 脚本以执行拆分操作（将第一个分片上一半的数据移至第二个分片），并执行合并操作（将数据移回第一个分片）。 如果已配置 SSL 并且已将 http 终结点保留为禁用，请确保改为使用 https:// 终结点。
    
    示例命令行：
 
@@ -310,7 +310,7 @@ ms.locfileid: "68568500"
 
 拆分/合并服务不会为用户创建目标数据库（或为数据库中的任何表创建架构）。 在将请求发送到服务之前，必须预先创建它们。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 在运行示例 powershell 脚本时，可能会看到下面的消息：
 
    ```
@@ -319,7 +319,7 @@ ms.locfileid: "68568500"
 
 此错误表示 SSL 证书未正确配置。 请按照“与 Web 浏览器连接”部分中的说明进行操作。
 
-如果无法提交请求，可能会看到:
+如果无法提交请求，可能会看到：
 
 ```
 [Exception] System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'dbo.InsertRequest'. 

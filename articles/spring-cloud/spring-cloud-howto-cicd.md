@@ -1,20 +1,17 @@
 ---
 title: 适用于 Azure 春季云的 CI/CD
 description: 适用于 Azure 春季云的 CI/CD
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 96795315fcb0dd9b90cd55e8baa46c6a394882ce
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.author: jeconnoc
+ms.openlocfilehash: c19d32f0be2eb817f9f7d73e6c6eaad8d90ce350
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038829"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607788"
 ---
 # <a name="cicd-for-azure-spring-cloud"></a>适用于 Azure 春季云的 CI/CD
 
@@ -28,7 +25,7 @@ ms.locfileid: "72038829"
 
 ### <a name="deploy-artifacts"></a>部署项目
 
-可以使用一系列 @no__t 来生成和部署项目。 此代码段首先定义用于生成应用程序的 Maven 任务，接下来是使用 Azure 春季云 Azure CLI 扩展部署 JAR 文件的第二个任务。
+你可以使用一系列 `tasks`来构建和部署项目。 此代码段首先定义用于生成应用程序的 Maven 任务，接下来是使用 Azure 春季云 Azure CLI 扩展部署 JAR 文件的第二个任务。
 
 ```yaml
 steps:

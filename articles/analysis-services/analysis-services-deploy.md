@@ -1,24 +1,24 @@
 ---
-title: 使用 Visual Studio 部署到 Azure Analysis Services |Microsoft Docs
+title: 使用 Visual Studio 将模型部署到 Azure Analysis Services |Microsoft Docs
 description: 了解如何使用 Visual Studio 将表格模型部署到 Azure Analysis Services 服务器。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 60681739854515078a521a4ff795e52aa7d74183
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 71b3b7815d2a4b0b4de3afdca9db93156f505445
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146952"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572881"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>从 Visual Studio 部署模型
 
 在 Azure 订阅中创建服务器之后，便可以开始将表格模型数据库部署到其中。 可以将 Visual Studio 与 Analysis Services 项目配合使用来生成和部署正在处理的表格模型项目。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 要开始，需要：
 

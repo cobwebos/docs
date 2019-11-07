@@ -1,5 +1,5 @@
 ---
-title: 配置公共终结点 - Azure SQL 数据库托管实例 | Microsoft Docs
+title: 配置公共终结点-Azure SQL 数据库托管实例
 description: 了解如何配置托管实例的公共终结点
 services: sql-database
 ms.service: sql-database
@@ -10,18 +10,18 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: cebe6b4ca61b835e7c77f51592c20799fe271853
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6f953e4c549619a30564bdb061e98761474174c3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567407"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687961"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>在 Azure SQL 数据库托管实例中配置公共终结点
 
 使用[托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)的公共终结点可以从[虚拟网络](../virtual-network/virtual-networks-overview.md)外部对托管实例进行数据访问。 可以从多租户 Azure 服务（例如 Power BI）、Azure 应用服务或本地网络访问托管实例。 如果使用托管实例上的公共终结点，则无需使用 VPN，这有助于避免 VPN 吞吐量问题。
 
-本文介绍如何执行以下操作：
+本文将介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > - 在 Azure 门户中为托管实例启用公共终结点
@@ -33,8 +33,8 @@ ms.locfileid: "68567407"
 
 由于托管实例中数据的敏感性，需要执行两个步骤才能完成启用托管实例公共终结点的配置。 这种安全措施遵守职责分离 (SoD) 的原则：
 
-- 在托管实例上启用公共终结点的操作需要由托管实例管理员来完成。可以在 SQL 托管实例资源的“概述”页上找到托管实例管理员。
-- 使用网络安全组允许流量的操作需要由网络管理员来完成。有关详细信息，请参阅[网络安全组权限](../virtual-network/manage-network-security-group.md#permissions)。
+- 在托管实例上启用公共终结点需要由托管实例管理员完成。托管实例管理员可以在 SQL 托管实例资源的 "**概述**" 页中找到。
+- 使用需要由网络管理员完成的网络安全组来允许流量。有关详细信息，请参阅[网络安全组权限](../virtual-network/manage-network-security-group.md#permissions)。
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>在 Azure 门户中为托管实例启用公共终结点
 
@@ -80,7 +80,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 ## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>在网络安全组上允许公共终结点流量
 
-1. 如果托管实例的配置页仍处于打开状态，请导航到“概述”选项卡。否则，请返回 **SQL 托管实例**资源。 选择“虚拟网络/子网”链接，转到虚拟网络配置页。
+1. 如果您的托管实例的 "配置" 页仍处于打开状态，请导航到 "**概述**" 选项卡。否则，请返回到**SQL 托管实例**资源。 选择“虚拟网络/子网”链接，转到虚拟网络配置页。
 
     ![mi-overview.png](media/sql-database-managed-instance-public-endpoint-configure/mi-overview.png)
 
@@ -92,15 +92,15 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 1. 选择“入站安全规则”选项卡，并**添加**一个优先级高于 **deny_all_inbound** 规则且采用以下设置的规则： </br> </br>
 
-    |设置  |建议的值  |描述  |
+    |设置  |建议的值  |说明  |
     |---------|---------|---------|
     |**源**     |任何 IP 地址或服务标记         |<ul><li>对于 Power BI 等 Azure 服务，请选择“Azure 云服务标记”</li> <li>对于你的计算机或 Azure VM，请使用 NAT IP 地址</li></ul> |
     |**源端口范围**     |*         |请将此字段保留为 *（任何），因为源端口通常是动态分配的，因而也是不可预测的 |
-    |**目标**     |Any         |将目标保留为“任何”，以允许流量进入托管实例子网 |
+    |**目标**     |任意         |将目标保留为“任何”，以允许流量进入托管实例子网 |
     |**目标端口范围**     |3342         |将目标端口的范围限定为 3342，这是托管实例的公共 TDS 终结点 |
-    |协议     |TCP         |托管实例对 TDS 使用 TCP 协议 |
-    |**Action**     |Allow         |允许入站流量通过公共终结点传送到托管实例 |
-    |**Priority**     |1300         |请确保此规则的优先级高于 **deny_all_inbound** 规则 |
+    |**协议**     |TCP         |托管实例对 TDS 使用 TCP 协议 |
+    |**操作**     |ALLOW         |允许入站流量通过公共终结点传送到托管实例 |
+    |**优先级**     |1300         |请确保此规则的优先级高于 **deny_all_inbound** 规则 |
 
     ![mi-nsg-rules.png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)
 
@@ -110,7 +110,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>获取托管实例公共终结点的连接字符串
 
 1. 导航到为公共终结点启用的 SQL 托管实例配置页。 选择“设置”配置下的“连接字符串”选项卡。
-1. 请注意, 公用终结点主机名的格式 < mi_name >。< > dns_zone, 则为连接使用的端口为 3342, 则为。
+1. 请注意，公用终结点主机名的格式 < mi_name >。< > dns_zone，则为连接使用的端口为3342，**则为。**
 
     ![mi-public-endpoint-conn-string.png](media/sql-database-managed-instance-public-endpoint-configure/mi-public-endpoint-conn-string.png)
 

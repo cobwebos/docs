@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 93961b44f1c0d063774395ab384cb84b1aa05d99
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 64a8bc9f4c9f5192dad22cb55cb4d2c4816d4fa5
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812496"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73575145"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中的数据库上预配吞吐量
 
@@ -34,9 +34,9 @@ ms.locfileid: "71812496"
 
     ![“新建数据库”对话框屏幕截图](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
 
-## <a name="provision-throughput-using-azure-cli-or-powershell"></a>使用 Azure CLI 或 PowerShell 设置吞吐量
+## <a name="provision-throughput-using-azure-cli-or-powershell"></a>使用 Azure CLI 或 PowerShell 预配吞吐量
 
-若要创建具有共享吞吐量的数据库，请参阅。
+若要创建具有共享吞吐量的数据库，请参阅：
 
 * [使用 Azure CLI 创建数据库](manage-with-cli.md#create-a-database-with-shared-throughput)
 * [使用 Powershell 创建数据库](manage-with-powershell.md#create-db-ru)
@@ -68,12 +68,12 @@ await client.CreateDatabaseIfNotExistsAsync(
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs?name=DatabaseCreateWithThroughput)]
 
 ### <a id="dotnet-cassandra"></a>Cassandra API
-
+类似的命令可以通过任何 CQL 兼容的驱动程序执行。 
 ```csharp
 // Create a Cassandra keyspace and provision throughput of 400 RU/s
-session.Execute(CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisioned_throughput=400);
+session.Execute("CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisioned_throughput=400");
 ```
-
+ 
 ## <a name="next-steps"></a>后续步骤
 
 请参阅以下文章，了解在 Azure Cosmos DB 中预配的吞吐量：

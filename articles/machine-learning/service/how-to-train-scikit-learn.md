@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec1ea8bac35906969f051a70c44bd6f0685dc942
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: ed93eff6c137e125c2bc1707de441dc9971d6f3f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489435"
+ms.locfileid: "73584457"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>构建 scikit-learn-通过 Azure 机器学习的规模了解模型
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,10 +26,10 @@ ms.locfileid: "73489435"
 
 无论你是要从头开始培训机器学习 scikit-learn 模型，还是将现有模型引入到云中，都可以使用 Azure 机器学习来使用弹性云计算资源来横向扩展开源培训作业。 可以通过 Azure 机器学习来构建、部署、版本和监视生产级模型。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在以下任一环境中运行此代码：
- - Azure 机器学习计算实例-无需下载或安装
+ - Azure 机器学习笔记本 VM-无需下载或安装
 
     - 完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)，创建随 SDK 和示例存储库预先加载的专用笔记本服务器。
     - 在笔记本服务器上的 "示例训练" 文件夹中，通过导航到以下目录查找已完成且扩展的笔记本： **scikit-learn >->-了解 > 培训 > 超参数--spark-sklearn**文件夹。

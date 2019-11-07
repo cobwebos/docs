@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 资源管理器模板创建 Windows 虚拟机主机池-Azure
+title: Windows 虚拟桌面主机池 Azure 资源管理器-Azure
 description: 如何使用 Azure 资源管理器模板在 Windows 虚拟桌面中创建主机池。
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: b96ecad93c481a762b81a7888940850ed3a73e5f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 23d032a2496e975c7e6ceafb61691c2cb1216218
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679613"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605752"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建主机池
 
@@ -42,7 +42,7 @@ ms.locfileid: "71679613"
 
 1. 向下滚动并右键单击“部署到 Azure”，然后选择“复制链接位置”。
 2. 打开一个文本编辑器（例如记事本）并在其中粘贴该链接。
-3. 紧靠在 "https://portal.azure.com/ " 和井号标签 (#) 之前, 请输入一个 at 符号 (@), 后跟租户域名。 下面是应使用的格式示例： https://portal.azure.com/@Contoso.onmicrosoft.com#create/ 。
+3. 紧靠在 "https://portal.azure.com/" 和井号标签 (#) 之前, 请输入一个 at 符号 (@), 后跟租户域名。 下面是应使用的格式示例： https://portal.azure.com/@Contoso.onmicrosoft.com#create/。
 4. 以对“云解决方案提供商”订阅拥有“管理员/参与者”权限的用户身份登录到 Azure 门户。
 5. 将已复制到文本编辑器的链接粘贴到地址栏中。
 

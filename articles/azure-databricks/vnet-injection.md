@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: 0bb3221c201e6dd4dd17cca8ef7e3ed3331de228
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 5eded3217e96ccc45951acae004d1424e16cb098
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432657"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605668"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network"></a>在虚拟网络中部署 Azure Databricks
 
@@ -37,7 +37,7 @@ Azure Databricks 的默认部署是 Azure 上完全托管的服务：所有数�
 
 部署 Azure Databricks 工作区所需的虚拟网络必须满足以下要求：
 
-### <a name="location"></a>Location
+### <a name="location"></a>位置
 
 虚拟网络必须位于与 Azure Databricks 工作区相同的位置。
 
@@ -61,7 +61,7 @@ Azure Databricks 的默认部署是 Azure 上完全托管的服务：所有数�
 
 本部分介绍如何在 Azure 门户中创建 Azure Databricks 工作区，并将其部署到自己的现有虚拟网络。 Azure Databricks 使用您提供的 CIDR 范围、白名单入站和出站子网流量更新具有两个新子网和网络安全组的虚拟网络，并将该工作区部署到更新的虚拟网络。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 你必须有一个虚拟网络，你将 Azure Databricks 工作区部署到该网络。 你可以使用现有的虚拟网络，也可以创建一个新的虚拟网络，但该虚拟网络必须与你计划创建的 Azure Databricks 工作区位于同一区域。 虚拟网络需要介于/16-/24 之间的 CIDR 范围。
 
@@ -119,9 +119,9 @@ Azure Databricks 的默认部署是 Azure 上完全托管的服务：所有数�
 
 ## <a name="whitelisting-subnet-traffic"></a>允许列表子网流量
 
-如果不使用[Azure 门户](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal)或[Azure 资源管理器模板](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced)来创建网络安全组，则必须在子网上手动将以下流量列入允许列表。
+如果不使用[Azure 门户](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-portal)或[Azure 资源管理器模板](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced)来创建网络安全组，则必须在子网上手动将以下流量列入允许列表。
 
-|Direction|协议|Source|Source Port|目标|Destination Port|
+|Direction|协议|源|Source Port|目标|Destination Port|
 |---------|--------|------|-----------|-----------|----------------|
 |入站|\*|VirtualNetwork|\*|\*|\*|
 |入站|\*|控制平面 NAT IP|\*|\*|22|
@@ -151,8 +151,8 @@ Azure Databricks 的默认部署是 Azure 上完全托管的服务：所有数�
 |印度中部|控制平面 NAT </br></br>Webapp|104.211.89.81/32 </br></br>104.211.101.14/32|
 |印度南部|控制平面 NAT </br></br>Webapp|104.211.89.81/32 </br></br>104.211.101.14/32|
 |印度西部|控制平面 NAT </br></br>Webapp|104.211.89.81/32 </br></br>104.211.101.14/32|
-|亚洲东南部|控制平面 NAT </br></br>Webapp|52.187.0.85/32 </br></br>52.187.145.107/32|
-|亚洲东部|控制平面 NAT </br></br>Webapp|52.187.0.85/32 </br></br>52.187.145.107/32|
+|东南亚|控制平面 NAT </br></br>Webapp|52.187.0.85/32 </br></br>52.187.145.107/32|
+|东亚|控制平面 NAT </br></br>Webapp|52.187.0.85/32 </br></br>52.187.145.107/32|
 |澳大利亚东部|控制平面 NAT </br></br>Webapp|13.70.105.50/32 </br></br>13.75.218.172/32|
 |澳大利亚东南部|控制平面 NAT </br></br>Webapp|13.70.105.50/32 </br></br>13.75.218.172/32|
 |澳大利亚中部|控制平面 NAT </br></br>Webapp|13.70.105.50/32 </br></br>13.75.218.172/32|

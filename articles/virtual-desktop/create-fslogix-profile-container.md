@@ -1,5 +1,5 @@
 ---
-title: 使用 Windows 虚拟桌面中的 Azure NetApp 文件为主机池创建 FSLogix 配置文件容器-Azure
+title: FSLogix 配置文件容器 NetApp Windows 虚拟桌面-Azure
 description: 如何使用 Windows 虚拟桌面中的 Azure NetApp 文件创建 FSLogix 配置文件容器。
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: 4e714b872ae43eb313efe549c77f5610342f430c
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 1f5d1050815961f51c2bb1cfce256b1ea37d3ac1
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311632"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605764"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>使用 Azure NetApp 文件为主机池创建 FSLogix 配置文件容器
 
@@ -134,7 +134,7 @@ ms.locfileid: "72311632"
     - 对于 "**虚拟网络**"，请从下拉菜单中选择一个已连接到域控制器的现有虚拟网络。
     - 在 "**子网**" 下，选择 "**新建**"。 请记住，此子网将委托给 Azure NetApp 文件。
 
-3.  在完成时选择“下一步:**Protocol \> @ no__t-1 @ no__t-2 打开 "协议" 选项卡并配置卷访问参数。
+3.  选择 "**下一步：协议 \>\>** " 打开 "协议" 选项卡并配置卷访问参数。
 
 ## <a name="configure-volume-access-parameters"></a>配置卷访问参数
 
@@ -160,7 +160,7 @@ ms.locfileid: "72311632"
 
 2. 解压缩下载的文件。
 
-3. 在文件中，中转到**x64** > **版本**，并运行**FSLogixAppsSetup**。 将打开安装菜单。
+3. 在文件中，中转到**x64** > **版本**并运行**FSLogixAppsSetup**。 将打开安装菜单。
 
 4.  如果有产品密钥，请在 "产品密钥" 文本框中输入该密钥。
 
@@ -168,11 +168,11 @@ ms.locfileid: "72311632"
 
 6. 选择“安装”。
 
-7. 导航到**C @no__t： 1Program Files @ no__t-2FSLogix @ no__t-3Apps** ，以确认安装了代理。
+7. 导航到**C：\\Program Files\\FSLogix\\应用**以确认安装的代理。
 
 8. 从 "开始" 菜单中，以管理员身份运行**RegEdit** 。
 
-9. 导航到**Computer @ no__t-1HKEY_LOCAL_MACHINE @ no__t-2software @ no__t-3FSLogix**。
+9. 导航到**计算机\\HKEY_LOCAL_MACHINE\\software\\FSLogix**。
 
 10. 创建名为 "**配置文件**" 的密钥。
 
@@ -219,7 +219,7 @@ ms.locfileid: "72311632"
 
 5. 请在 "**概述**" 选项卡上，确认 FSLogix 配置文件容器正在使用空间。
 
-6. 使用远程桌面直接连接到主机池的任何 VM 部分，并打开**文件资源管理器。** 然后导航到**装载路径**（在以下示例中，装载路径为 \\\\anf-SMB-3863.gt1107.onmicrosoft.com @ no__t-3anf）。
+6. 使用远程桌面直接连接到主机池的任何 VM 部分，并打开**文件资源管理器。** 然后导航到**装载路径**（在以下示例中，装载路径为 \\\\anf-SMB-3863.gt1107.onmicrosoft.com\\和）。
 
    在此文件夹中，应存在一个配置文件 VHD （或 VHDX），如以下示例中所示。
 

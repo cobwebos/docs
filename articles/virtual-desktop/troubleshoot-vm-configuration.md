@@ -1,5 +1,5 @@
 ---
-title: 会话主机虚拟机配置-Azure
+title: Windows 虚拟桌面会话主机故障排除-Azure
 description: 如何解决在配置 Windows 虚拟桌面会话主机虚拟机时遇到的问题。
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: a847ba7d782b332d9cae7f83bc1278fea58b8811
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 1470bb049cffce52ae921057bdaece40f3d3161c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330823"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607396"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>会话主机虚拟机配置
 
@@ -80,7 +80,7 @@ ms.locfileid: "72330823"
 
 按照以下说明确认是否已安装组件并检查是否有错误消息。
 
-1. 通过在 **"控制面板**"  >  "**程序**@no__t" 程序**和功能 "，** 确认是否安装了这两个组件。 如果**Windows 虚拟桌面代理**和**Windows 虚拟桌面代理启动加载程序**不可见，则不会在 VM 上安装它们。
+1. 检查 "**控制面板**" > **程序**" > "**程序和功能**"，确认是否安装了这两个组件。 如果**Windows 虚拟桌面代理**和**Windows 虚拟桌面代理启动加载程序**不可见，则不会在 VM 上安装它们。
 2. 打开**文件资源管理器**并导航到**C:\Windows\Temp\scriptlogs.log**。 如果缺少该文件，则表示安装了这两个组件的 PowerShell DSC 无法在提供的安全上下文中运行。
 3. 如果文件**C:\Windows\Temp\scriptlogs.log**存在，请将其打开，并检查错误消息。
 
@@ -233,7 +233,7 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 按照以下说明从同一子网和域运行修正：
 
 1. 将与标准远程桌面协议（RDP）连接到将应用修复的 VM。
-2. 从 @no__t 下载 PsExec。
+2. 从 https://docs.microsoft.com/sysinternals/downloads/psexec下载 PsExec。
 3. 解压缩下载的文件。
 4. 以本地管理员身份启动命令提示符。
 5. 导航到在其中解压缩了 PsExec 的文件夹。
@@ -309,7 +309,7 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>禁用 "远程桌面授权模式" 组策略设置
 
-打开 "组策略" 设置，方法是在 VM 中打开组策略编辑器，然后导航到**管理模板**@no__t 1 个**Windows 组件** > **远程桌面服务** **@no__t 远程桌面会话主机 @no**__t**许可** > **设置远程桌面授权模式**。 如果 "组策略" 设置已**启用**，请将其更改为 "**已禁用**"。 如果已禁用，则将其保持原样。
+通过在 VM 中打开组策略编辑器并导航到**管理模板** > **Windows 组件** > **远程桌面服务** > 来检查组策略设置**远程桌面会话主机** > **授权** > **设置远程桌面授权模式**。 如果 "组策略" 设置已**启用**，请将其更改为 "**已禁用**"。 如果已禁用，则将其保持原样。
 
 >[!NOTE]
 >如果通过域设置组策略，则在面向这些 Windows 10 企业多会话 Vm 的策略上禁用此设置。

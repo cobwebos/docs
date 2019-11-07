@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 00710183828892c81d3ea887e4394237288eb6bb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 156f2e95913dffd88de0b4669b13a5af5fc9605c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303530"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684680"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期部署阶段
 
-本文概述了与 Team Data Science Process (TDSP) 的部署相关联的目标、任务和可交付结果。 此过程提供可用于构建数据科学项目的建议生命周期。 该生命周期概述了项目通常执行的主要阶段（通常以迭代方式进行）：
+本文概述了与 Team Data Science Process (TDSP) 的部署相关联的目标、任务和可交付结果。 此过程提供可用于构建数据科学项目的建议生命周期。 生命周期概括了项目通常执行且经常重复的主要阶段：
 
    1. **了解业务**
    2. **数据采集和理解**
@@ -39,7 +39,7 @@ ms.locfileid: "60303530"
 ## <a name="how-to-do-it"></a>如何执行
 在此阶段中解决的主要任务：
 
-操作模型  ：将模型和管道部署到生产或类似生产的环境中供应用程序操作。
+**操作模型**：将模型和管道部署到生产中或生产类似的环境中供应用程序操作。
 
 ### <a name="operationalize-a-model"></a>操作模型
 如果拥有一组运行良好的模型，则可操作这些模型，以供其他应用程序使用。 根据具体的业务需求，实时作出预测或基于批处理作出预测。 若要部署模型，请使用开放 API 接口公开模型。 通过该接口，各种应用程序可轻松使用模型，例如：
@@ -50,7 +50,7 @@ ms.locfileid: "60303530"
    * 业务线应用程序 
    * 后端应用程序 
 
-有关使用 Azure 机器学习 Web 服务使模型可操作化的示例，请参阅[部署 Azure 机器学习 Web 服务](../studio/publish-a-machine-learning-web-service.md)。 将遥测和监视功能构建到部署的生产模型和数据管道中是一种最佳做法。 此做法有助于后续进行系统状态报告和故障排除。  
+有关使用 Azure 机器学习 Web 服务使模型可操作化的示例，请参阅[部署 Azure 机器学习 Web 服务](../studio/deploy-a-machine-learning-web-service.md)。 将遥测和监视功能构建到部署的生产模型和数据管道中是一种最佳做法。 此做法有助于后续进行系统状态报告和故障排除。  
 
 ## <a name="artifacts"></a>项目
 

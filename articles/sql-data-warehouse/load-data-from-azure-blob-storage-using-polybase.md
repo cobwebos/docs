@@ -1,5 +1,5 @@
 ---
-title: 教程：将纽约出租车数据加载到 Azure SQL 数据仓库 | Microsoft Docs
+title: 教程：加载纽约出租车数据
 description: 教程使用 Azure 门户和 SQL Server Management Studio 将纽约出租车数据从全局 Azure blob 加载到 Azure SQL 数据仓库。
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,13 @@ ms.subservice: load-data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 2e799d84aee9ba4d3bfb00ddfad358c9b90c3d59
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 5bf1a600bf57ecb598aac485e11f3618dda7244e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482406"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686078"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>教程：将纽约出租车数据加载到 Azure SQL 数据仓库
 
@@ -44,7 +45,7 @@ ms.locfileid: "73482406"
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>创建空白 SQL 数据仓库
 
-使用一组定义好的[计算资源](memory-and-concurrency-limits.md)创建 Azure SQL 数据仓库。 数据库在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)和 [Azure SQL 逻辑服务器](../sql-database/sql-database-features.md)中创建。 
+Azure SQL 数据仓库是使用一组定义的 [计算资源] limits.md）创建的。 数据库在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)和 [Azure SQL 逻辑服务器](../sql-database/sql-database-features.md)中创建。 
 
 按照以下步骤创建空白 SQL 数据仓库。 
 
@@ -564,7 +565,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 ## <a name="authenticate-using-managed-identities-to-load-optional"></a>使用托管标识进行身份验证，以便进行加载（可选）
 使用 PolyBase 进行加载和通过托管标识进行身份验证是最安全的机制，可以让你通过 Azure 存储来利用 VNet 服务终结点。 
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 1.  按照此[指南](https://docs.microsoft.com/powershell/azure/install-az-ps)安装 Azure PowerShell。
 2.  如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户升级到常规用途 v2 帐户。
 3.  必须在 Azure 存储帐户的“防火墙和虚拟网络”设置菜单下启用“允许受信任的 Microsoft 服务访问此存储帐户”。 有关详细信息，请参阅此[指南](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。

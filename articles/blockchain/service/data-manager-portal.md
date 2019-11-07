@@ -8,12 +8,12 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 1f46fe92fd6650daa3ba4b9a930c4d781925d3fc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 484322fb0486eeb4ab67366d32350c69a18da743
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518250"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605925"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>使用 Azure 门户配置区块链数据管理器
 
@@ -24,7 +24,7 @@ ms.locfileid: "73518250"
 * 为 Azure 区块链 Service transaction 节点创建区块链数据管理器实例
 * 添加区块链应用程序
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 完成[快速入门：使用 Azure 门户或快速入门创建区块链成员](create-member.md) [：使用 Azure CLI 创建 Azure 区块链 Service 区块链成员](create-member-cli.md)
 * 创建[事件网格主题](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
@@ -46,14 +46,14 @@ ms.locfileid: "73518250"
 
     设置 | 说明
     --------|------------
-    名称 | 为连接的区块链数据管理器输入唯一的名称。 区块链数据管理器名称可以包含小写字母和数字，并且最大长度为20个字符。
+    Name | 为连接的区块链数据管理器输入唯一的名称。 区块链数据管理器名称可以包含小写字母和数字，并且最大长度为20个字符。
     事务节点 | 选择事务节点。 仅列出具有读取访问权限的事务节点。
     连接名称 | 输入用于发送区块链事务数据的出站连接的唯一名称。
     事件网格端点 | 选择与区块链数据管理器实例相同的订阅中的事件网格主题。
 
 1. 选择“确定”。
 
-    创建区块链数据管理器实例需要不到一分钟的时间。 部署实例后，它会自动启动。 正在运行的区块链数据管理器实例从事务节点捕获区块链事件，并将数据发送到出站连接。 如果还希望从事务节点捕获解码的事件和属性数据，请为区块链数据管理器实例创建区块链应用程序。
+    创建区块链数据管理器实例需要不到一分钟的时间。 部署实例后，它会自动启动。 正在运行的区块链数据管理器实例从事务节点捕获区块链事件，并将数据发送到出站连接。
 
     新实例将出现在 Azure 区块链服务成员的区块链数据管理器实例列表中。
 
@@ -63,7 +63,10 @@ ms.locfileid: "73518250"
 
 如果添加区块链应用程序，则区块链数据管理器对应用程序的事件和属性状态进行解码。 否则，只会发送原始块和原始事务数据。 区块链数据管理器还会在部署协定时发现协定地址。 可以将多个区块链应用程序添加到区块链数据管理器实例。
 
-区块链数据管理器需要智能协定 ABI 和字节码文件来添加应用程序。
+> [!IMPORTANT]
+> 目前，不完全支持声明密度[数组类型](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays)或[映射类型](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types)的区块链应用程序。 声明为数组或映射类型的属性将不会在*ContractPropertiesMsg*或*DecodedContractEventsMsg*消息中进行解码。
+
+区块链数据管理器需要智能协定 ABI 并部署了字节码文件来添加应用程序。
 
 ### <a name="get-contract-abi-and-bytecode"></a>获取协定 ABI 和字节码
 
@@ -79,17 +82,15 @@ ms.locfileid: "73518250"
 
 1. 将**abi**数组保存为 JSON 文件。 例如， *abi*。 稍后的步骤中会用到该文件。
 
-协定字节码是以太坊虚拟机执行的编译的智能协定。 可以使用扩展将协定字节码复制到剪贴板。
+区块链数据管理器需要为智能协定部署字节码。 部署的字节码不同于智能协定字节码。 可以从已编译的协定元数据文件中获取部署的字节码。
 
-1. 在 "Visual Studio Code 资源管理器" 窗格中，展开 "密度" 项目的 "**生成"/"协定**" 文件夹。
-1. 右键单击协定元数据 JSON 文件。 文件名为智能协定名称，后跟**json**扩展名。
-1. 选择 "**复制协定字节码**"。
+1. 打开包含在你的密度项目的**生成/协定**文件夹中的协定元数据文件。 文件名为智能协定名称，后跟**json**扩展名。
+1. 在 JSON 文件中查找**deployedBytecode**元素。
+1. 复制不带引号的十六进制值。
 
-    ![带有复制协定字节码选择的 Visual Studio Code 窗格](./media/data-manager-portal/bytecode-devkit.png)
+    ![元数据中包含字节码的 Visual Studio Code 窗格](./media/data-manager-portal/bytecode-metadata.png)
 
-    协定字节码将被复制到剪贴板。
-
-1. 将**字节码**值保存为 JSON 文件。 例如，*字节码。* 仅保存十六进制值。 稍后的步骤中会用到该文件。
+1. 将**字节码**值保存为 JSON 文件。 例如，*字节码。* 稍后的步骤中会用到该文件。
 
 下面的示例演示如何在 VS Code 编辑器中打开*abi*和*字节文件。* 文件应类似于。
 
@@ -111,7 +112,7 @@ ms.locfileid: "73518250"
 
     | 字段 | 说明 |
     |-------|-------------|
-    | 名称  | 命名该容器。 例如， *smartcontract* |
+    | Name  | 命名该容器。 例如， *smartcontract* |
     | 公共访问级别 | 选择*专用（无匿名访问）* |
 
 1. 选择“确定”创建容器。
@@ -147,7 +148,7 @@ ms.locfileid: "73518250"
 
     设置 | 说明
     --------|------------
-    名称 | 输入要跟踪的区块链应用程序的唯一名称。
+    Name | 输入要跟踪的区块链应用程序的唯一名称。
     协定 ABI | 协定 ABI 文件的 URL 路径。 有关详细信息，请参阅[创建协定 ABI 和字节码 URL](#create-contract-abi-and-bytecode-url)。
     协定字节码 | 字节码文件的 URL 路径。 有关详细信息，请参阅[创建协定 ABI 和字节码 URL](#create-contract-abi-and-bytecode-url)。
 
@@ -169,4 +170,7 @@ ms.locfileid: "73518250"
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解[Azure 事件网格中的事件处理程序](../../event-grid/event-handlers.md)。
+尝试使用区块链数据管理器和 Azure Cosmos DB 创建区块链事务消息资源管理器。
+
+> [!div class="nextstepaction"]
+> [教程：使用区块链数据管理器向 Azure Cosmos DB 发送数据](data-manager-cosmosdb.md)

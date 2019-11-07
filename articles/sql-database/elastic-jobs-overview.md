@@ -1,6 +1,6 @@
 ---
-title: Azure SQL 弹性数据库作业 (预览版) |Microsoft Docs
-description: 配置弹性数据库作业 (预览版) 以在一个或多个 Azure SQL 数据库集上运行 Transact-sql (T-sql) 脚本
+title: Azure SQL 弹性数据库作业（预览版）
+description: 配置弹性数据库作业（预览）以在包含一个或多个 Azure SQL 数据库的集合中运行 Transact-SQL (T-SQL) 脚本
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3a0aa6e28ea4c40d5cad5ba99edec344c7979acf
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 2afe7d5c9667002c97d354cd1e94f292c6302558
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935077"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685295"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>创建、配置和管理弹性作业
 

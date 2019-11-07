@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ee1168c32cf4d8797b3957340e0acee5605ccc0f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eb7319d665f228c552423a60a3b1529dc9b1143f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951882"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583215"
 ---
 # <a name="what-are-application-templates"></a>什么是应用程序模板？
 
@@ -37,15 +37,14 @@ Azure IoT Central 是行业无关的应用程序平台。 应用程序模板是�
   - 应用商店内分析-结帐
   - 智能库存管理
 - [能源](../energy/overview-iot-central-energy.md)
-  - 连接的后勤
   - 智能计量监视
   - 阳历面板监视
 - [政府](../government/overview-iot-central-government.md)
-  - 连接废物管理
-  - 水消耗监视
-  - 水源质量监视
+  - 连接的废弃物管理
+  - 水消耗量监测
+  - 水质监测
 - [医疗保健](../healthcare/overview-iot-central-healthcare.md)。
-  - 持续患者监视
+  - 持续监视患者
 
 ## <a name="next-steps"></a>后续步骤
 

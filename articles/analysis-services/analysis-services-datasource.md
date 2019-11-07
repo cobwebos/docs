@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services 中支持的数据源 | Microsoft Docs
-description: 介绍 Azure Analysis Services 中数据模型支持的数据源。
+description: 介绍 Azure Analysis Services 中表格1200和更高版本数据模型支持的数据源和连接器。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cc47ff50aa7bb6dce58ed83f75f69fb600ad040b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5539d290ea182e24a50a103a762f011202ebf33a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146936"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572962"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -24,16 +24,16 @@ ms.locfileid: "73146936"
 |---------|---------|---------|
 |Azure SQL 数据库<sup>[2](#azsqlmanaged)</sup>     |   是      |    是      |
 |Azure SQL 数据仓库     |   是      |   是       |
-|Azure Blob 存储<sup>[1](#tab1400a)</sup>     |   是       |    No      |
-|Azure 表存储<sup>[1](#tab1400a)</sup>    |   是       |    No      |
-|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  是        |  No        |
-|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   是       |    No      |
-|Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     是     |   No       |
-|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   是       |   No       |
+|Azure Blob 存储<sup>[1](#tab1400a)</sup>     |   是       |    否      |
+|Azure 表存储<sup>[1](#tab1400a)</sup>    |   是       |    否      |
+|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  是        |  否        |
+|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   是       |    否      |
+|Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     是     |   否       |
+|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   是       |   否       |
 ||||
 
 <a name="tab1400a">1</a> - 仅限表格 1400 和更高模型。   
-<a name="azsqlmanaged">2</a> - 支持 Azure SQL 数据库托管实例。 由于托管实例在使用专用 IP 地址的 Azure VNet 中运行，因此必须在实例上启用公共终结点。 如果未启用，则需要本地数据网关。    
+<a name="azsqlmanaged">2</a> - 支持 Azure SQL 数据库托管实例。 由于托管实例使用专用 IP 地址在 Azure VNet 中运行，因此必须在实例上启用公共终结点。 如果未启用，则需要本地数据网关。    
 <a name="databricks">3</a> - 目前不支持使用 Spark 连接器的 Azure Databricks。   
 <a name="gen2">4</a> - 目前不支持 ADLS Gen2。
 
@@ -51,8 +51,8 @@ ms.locfileid: "73146936"
 |  --- | --- | --- |
 | SQL Server |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据提供程序 |
 | SQL Server 数据仓库 |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据提供程序 |
-| Oracle | 适用于 Oracle 的 OLE DB 提供程序、用于 .NET 的 Oracle 数据提供程序 |用于 .Net 的 Oracle 数据提供程序 |
-| Teradata |用于 Teradata 的 OLE DB 提供程序、用于 .NET 的 Teradata 数据提供程序 |用于 .Net 的 Teradata 数据提供程序 |
+| Oracle | 用于 Oracle 的 OLE DB 提供程序、用于 .NET 的 Oracle 数据提供程序 |用于 .Net 的 Oracle 数据提供程序 |
+| Teradata |用于 Teradata 的 OLE DB 提供程序、用于 .NET 的 Teradata 数据提供程序 |用于 .NET 的 Teradata 数据提供程序 |
 | | | |
 
 ### <a name="in-memory-only"></a>仅限内存中
@@ -80,14 +80,14 @@ ms.locfileid: "73146936"
 |Salesforce 报表<sup>[1](#tab1400b)</sup> |
 |SAP HANA<sup>[1](#tab1400b)</sup>    |  
 |SAP Business Warehouse<sup>[1](#tab1400b)</sup>    |  
-|SharePoint 列表<sup>[1](#tab1400b)</sup>、 <sup>[2](#filesSP)</sup>     |   
+|SharePoint 列表<sup>[1](#tab1400b)</sup>、<sup>[2](#filesSP)</sup>     |   
 |Sybase 数据库     |  
 |TXT 文件  |
 |XML 表<sup>[1](#tab1400b)</sup>    |  
 ||
  
 <a name="tab1400b">1</a> - 仅限表格 1400 和更高模型。   
-<a name="filesSP">2</a> -不支持本地 SharePoint 中的文件。
+<a name="filesSP">2</a> - 不支持本地 SharePoint 中的文件。
 
 ## <a name="specifying-a-different-provider"></a>指定不同的提供程序
 

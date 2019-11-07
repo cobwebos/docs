@@ -1,5 +1,5 @@
 ---
-title: Azure 安全中心中的云智能警报关联 (事件) |Microsoft Docs
+title: Azure 安全中心事件-警报的智能关联
 description: 本主题介绍了合成如何使用云智能警报相关来生成 Azure 安全中心的安全事件。
 services: security-center
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: 4c2f084fe03271b29a12aa6906f5e36612d50674
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b26f0bab073ce248ca23bb8a815fa3e293ddba51
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202686"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686488"
 ---
-# <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Azure 安全中心中的云智能警报关联 (事件)
+# <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Azure 安全中心中的云智能警报关联（事件）
 
 Azure 安全中心使用高级分析和威胁智能提醒你了解恶意活动，从而持续分析混合云工作负荷。
 
@@ -30,11 +30,11 @@ Azure 安全中心使用高级分析和威胁智能提醒你了解恶意活动�
 
 合成 analytics 结合了安全域知识和 AI，分析警报，发现新的攻击模式。 
 
-安全中心利用 MITRE 攻击矩阵将警报与其感知意向关联起来, 从而帮助将安全域的知识正式化。 此外，通过使用为攻击的每个步骤收集的信息，安全中心可以排除似乎是攻击步骤的活动，但实际上并非如此。  
+安全中心利用 MITRE 攻击矩阵将警报与其感知意向关联起来，从而帮助将安全域的知识正式化。 此外，通过使用为攻击的每个步骤收集的信息，安全中心可以排除似乎是攻击步骤的活动，但实际上并非如此。
 
 由于攻击通常发生在不同租户之间，安全中心可以结合 AI 算法来分析每个订阅上报告的攻击顺序。 此方法将攻击序列标识为常见警报模式，而不是只是相互关联的。
 
-调查事件时, 分析人员通常需要额外的上下文来了解有关威胁性质和如何缓解威胁的结论。 例如，即使在检测到网络异常的情况下也不了解网络上所发生的其他情况，或对于目标资源，很难理解接下来要采取的操作。 为了提供帮助, 安全事件可能包括项目、相关事件和信息。 根据检测到的威胁类型和环境的配置，适用于安全事件的其他信息会有所不同。 
+调查事件时，分析人员通常需要额外的上下文来了解有关威胁性质和如何缓解威胁的结论。 例如，即使在检测到网络异常的情况下也不了解网络上所发生的其他情况，或对于目标资源，很难理解接下来要采取的操作。 为了提供帮助，安全事件可能包括项目、相关事件和信息。 根据检测到的威胁类型和环境的配置，适用于安全事件的其他信息会有所不同。 
 
 ![检测到的安全事件的屏幕截图报表](./media/security-center-alerts-cloud-smart/security-incident.png)
 

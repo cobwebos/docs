@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 647edcab5ec2925016e8a099ae43b6133037f8de
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: efb2fd8fd6b77a27130b834c2b192c1e88eec97c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491175"
+ms.locfileid: "73578385"
 ---
 # <a name="install-and-run-speech-service-containers"></a>安装和运行语音服务容器
 
@@ -33,13 +33,13 @@ ms.locfileid: "73491175"
 | 文本转语音 | 用纯文本输入或语音合成标记语言（SSML）将文本转换为自然声音语音。 | 1.3.0 |
 | 自定义文本到语音转换 | 使用[自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言（SSML）将文本转换为自然声音声音。 | 1.3.0 |
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 使用语音容器之前的先决条件如下：
 
-| 需要 | 目的 |
+| 必选 | 目的 |
 |--|--|
 | Docker 引擎 | 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br> |
 | 熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。 |
@@ -167,19 +167,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 2.0.0-amd64-en-us-preview
 ```
 
-下表列出了2.0.0 版本的容器中的**语音到文本**的支持区域设置：
-
-| 语言区域设置 | 标记 |
-|--|--|
-| 中文 | `zh-CN` |
-| 英语 | `en-US`<br>`en-GB`<br>`en-AU`<br>`en-IN` |
-| 法语 | `fr-CA`<br>`fr-FR` |
-| 德语 | `de-DE` |
-| 意大利语 | `it-IT` |
-| 日语 | `ja-JP` |
-| 韩语 | `ko-KR` |
-| 葡萄牙语 | `pt-BR` |
-| 西班牙语 | `es-ES`<br>`es-MX` |
+对于 "**语音到文本**" 容器的2.0.0 版本中的所有受支持的区域设置，租约请参阅[语音到文本语言支持](language-support.md#speech-to-text)表的**容器支持**列。
 
 # <a name="custom-speech-to-texttabcstt"></a>[自定义语音到文本](#tab/cstt)
 
@@ -221,24 +209,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 1.3.0-amd64-en-us-jessarus-preview
 ```
 
-下表列出了1.3.0 版本的容器中的**文本到语音功能**的支持区域设置：
-
-| 语言区域设置 | 标记 | 支持的语音 |
-|--|--|--|
-| 中文 | `zh-CN` | huihuirus<br>kangkang-apollo<br>yaoyao-apollo |
-| 英语 | `en-AU` | catherine<br>hayleyrus |
-| 英语 | `en-GB` | george-apollo<br>hazelrus<br>susan-apollo |
-| 英语 | `en-IN` | heera-apollo<br>priyarus<br>ravi-apollo<br> |
-| 英语 | `en-US` | jessarus<br>benjaminrus<br>jessa24krus<br>zirarus<br>guy24krus |
-| 法语 | `fr-CA` | caroline<br>harmonierus |
-| 法语 | `fr-FR` | hortenserus<br>julie-apollo<br>paul-apollo |
-| 德语 | `de-DE` | hedda<br>heddarus<br>stefan-apollo |
-| 意大利语 | `it-IT` | cosimo-apollo<br>luciarus |
-| 日语 | `ja-JP` | ayumi-apollo<br>harukarus<br>ichiro-apollo |
-| 韩语 | `ko-KR` | heamirus |
-| 葡萄牙语 | `pt-BR` | daniel-apollo<br>heloisarus |
-| 西班牙语 | `es-ES` | elenarus<br>laura-apollo<br>pablo-apollo<br> |
-| 西班牙语 | `es-MX` | hildarus<br>raul-apollo |
+对于**文本到语音转换**容器的1.3.0 版本中的所有受支持的区域设置和相应的声音，请参阅[标准语音语言支持](language-support.md#standard-voices)表的**容器支持**列。
 
 > [!IMPORTANT]
 > 构造*标准文本到语音转换*HTTP POST 时，[语音合成标记语言（SSML）](speech-synthesis-markup.md)消息需要具有 `name` 属性的 `voice` 元素。 该值是对应的容器区域设置和语音，也称为["短名称"](language-support.md#standard-voices)。 例如，`latest` 标记的语音名称应为 `en-US-JessaRUS`。

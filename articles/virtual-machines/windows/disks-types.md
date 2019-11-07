@@ -1,22 +1,22 @@
 ---
 title: 选择 Azure IaaS Windows VM 的磁盘类型 - 托管磁盘
-description: 了解适用于 Windows 虚拟机的 Azure 磁盘类型, 包括超磁盘、高级 Ssd、标准 Ssd 和标准 Hdd。
+description: 了解 Windows 虚拟机的可用 Azure 磁盘类型，包括超级磁盘、高级 SSD、标准 SSD 和标准 HDD。
 author: roygara
 ms.author: rogarana
-ms.date: 08/15/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 634ff02b216403788c1ded9223909e2cce230207
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5f06af41f2ad75d704836944e9d8d8d180aed730
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512665"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606591"
 ---
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-overview.md)]
 
-如果要开始使用超磁盘, 请参阅主题的文章:[使用 Azure ultra 磁盘](disks-enable-ultra-ssd.md)。
+如果你想要开始使用超磁盘，请参阅主题：[使用 Azure 超磁盘](disks-enable-ultra-ssd.md)中的文章。
 
 [!INCLUDE [virtual-machines-managed-disks-types-ga](../../../includes/virtual-machines-managed-disks-types-ga.md)]
 

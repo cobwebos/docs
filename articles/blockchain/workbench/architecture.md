@@ -6,16 +6,16 @@ keywords: ''
 author: PatAltimore
 ms.author: patricka
 ms.date: 09/05/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: d50ee0fa06f34167cd4be9e787f6e351d3ef7e3b
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 4613d441fd0d363654073d4832de19139a7781e7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845216"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579740"
 ---
 # <a name="azure-blockchain-workbench-preview-architecture"></a>Azure 区块链工作台预览体系结构
 
@@ -31,25 +31,25 @@ Azure 区块链工作台预览版通过使用几个 Azure 组件提供解决方�
 
 用户通过向参与者的电子邮件地址发送电子邮件邀请，将其自己的标识联合到联盟 Azure AD。 用户登录时，系统会使用名称、密码和策略对这些用户进行身份验证。 例如，使用其组织的双重身份验证。
 
-Azure AD 用于管理有权访问 Blockchain Workbench 的所有用户。 连接到智能合同的每台设备也与 Azure AD 相关联。
+Azure AD 用于管理有权访问 Blockchain Workbench 的所有用户。 连接到智能合约的每台设备也与 Azure AD 相关联。
 
 Azure AD 还用于将用户分配到特殊的管理员组。 与管理员组关联的用户将被授予对 Blockchain Workbench 中权限和操作的访问权限，包括部署合同以及向用户授予访问合同的权限。 此组外部的用户无权访问管理员操作。
 
 ## <a name="client-applications"></a>客户端应用程序
 
-Workbench 为可用于验证、测试和查看区块链应用程序的 Web 和移动应用（iOS、Android）提供自动生成的客户端应用程序。 应用程序接口根据智能合同元数据动态生成，并可适应任何用例。 客户端应用程序向 Blockchain Workbench 生成的完整区块链应用程序提供面向用户的前端。 客户端应用程序通过 Azure Active Directory (Azure AD) 对用户进行身份验证，然后提供根据智能合同业务上下文定制的用户体验。 用户体验可让获得授权的个人创建新的智能合同实例，然后提供所需的功能用于在智能合同表示的业务流程中的相应阶段执行特定类型的事务。
+Workbench 为可用于验证、测试和查看区块链应用程序的 Web 和移动应用（iOS、Android）提供自动生成的客户端应用程序。 应用程序接口根据智能合约元数据动态生成，并可适应任何用例。 客户端应用程序向 Blockchain Workbench 生成的完整区块链应用程序提供面向用户的前端。 客户端应用程序通过 Azure Active Directory (Azure AD) 对用户进行身份验证，然后提供根据智能合同业务上下文定制的用户体验。 用户体验可让获得授权的个人创建新的智能合约实例，然后提供所需的功能用于在智能合约表示的业务流程中的相应阶段执行特定类型的事务。
 
 在 Web 应用程序中，获得授权的用户可以访问管理员控制台。 控制台可供 Azure AD 管理员组中的用户使用，并提供以下功能的访问权限：
 
-* 为常见方案（例如资产转让方案）部署 Microsoft 提供的 智能合同。
+* 为常见方案（例如资产转让方案）部署 Microsoft 提供的 智能合约。
 * 上传并部署用户自己的智能合约。
-* 在特定角色的上下文中为用户分配智能合约的访问权限。
+* 在特定角色的上下文中为用户分配智能合同的访问权限。
 
 有关详细信息，请参阅 [GitHub 上的 Azure Blockchain Workbench 示例客户端应用程序](https://github.com/Azure-Samples/blockchain-devkit/tree/master/connect/mobile)。
 
 ## <a name="gateway-service-api"></a>网关服务 API
 
-Blockchain Workbench 包括基于 REST 的网关服务 API。 写入区块链时，该 API 会生成消息并将其传送到事件中转站。 当 API 请求数据时，会向链外 SQL 数据库发送查询。 SQL 数据库包含链中数据和元数据的副本，这些数据提供受支持智能合同的上下文和配置信息。 查询以合同元数据指定的格式从链外副本返回所需的数据。
+Blockchain Workbench 包括基于 REST 的网关服务 API。 写入区块链时，该 API 会生成消息并将其传送到事件中转站。 当 API 请求数据时，会向链外 SQL 数据库发送查询。 SQL 数据库包含链中数据和元数据的副本，这些数据提供受支持智能合约的上下文和配置信息。 查询以合约元数据指定的格式从链外副本返回所需的数据。
 
 开发人员可以访问网关服务 API 来生成或集成区块链解决方案，而无需依赖于 Blockchain Workbench 客户端应用。
 
@@ -95,7 +95,7 @@ Blockchain Workbench 自动部署两种类型的事件使用者。 一种使用�
 ## <a name="dlt-watcher"></a>DLT 观察程序
 
 分布式账本技术 (DLT) 观察程序监视已附加到 Blockchain Workbench 的区块链上发生的事件。
-事件反映个人和系统相关的信息。 例如，新合同实例的创建、事务执行和状态更改。 系统会捕获事件并将其发送到出站消息中转站，使其可供下游使用者使用。
+事件反映个人和系统相关的信息。 例如，新合约实例的创建、事务执行和状态更改。 系统会捕获事件并将其发送到出站消息中转站，使其可供下游使用者使用。
 
 例如，SQL 使用者会监视事件、使用事件，并在 SQL 数据库中填充包含的值。 使用复制可在链外存储中重新创建链中数据的副本。
 
@@ -107,7 +107,7 @@ Blockchain Workbench 自动部署两种类型的事件使用者。 一种使用�
 
 ## <a name="azure-storage"></a>Azure 存储
 
-Azure 存储用于存储合约以及与合约关联的元数据。
+Azure 存储用于存储合同以及与合同关联的元数据。
 
 从采购订单和提单，到新闻和医疗成像使用的图像，再到源自连拍摄像（包括治安摄像头）的视频和大型动画，文档在许多以区块链为中心的方案中发挥作用。 文档不适合直接放入区块链。
 

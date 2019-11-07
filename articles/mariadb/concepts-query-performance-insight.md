@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: b1007080c907eecc940b57184954c793b85f5eec
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 11/04/2019
+ms.openlocfilehash: 31aacfea7c68614add0229c3a9c494de4714fe16
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595588"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604034"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的 Query Performance Insight
 
 **适用于：** Azure Database for MariaDB 10。2
-
-> [!IMPORTANT]
-> Query Performance Insight 处于预览阶段。
 
 Query Performance Insight 可帮助你快速确定运行时间最长的查询、它们如何随时间的推移而变化，以及哪些等待因素会影响它们。
 
@@ -32,13 +29,13 @@ Query Performance Insight 可帮助你快速确定运行时间最长的查询、
 ### <a name="wait-statistics"></a>等待统计信息
 
 - 了解查询的等待性质
-- 了解资源等待和资源争用的存在趋势
+- 了解资源等待趋势以及发生资源争用的位置
 
 ## <a name="permissions"></a>权限
 
 查看 Query Performance Insight 中查询文本所需的“所有者”或“参与者”权限。 读者可以查看图表和表格，但不能查看查询文本。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要运行 Query Performance Insight，数据必须存在于[查询存储](concepts-query-store.md)中。
 

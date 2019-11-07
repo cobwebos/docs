@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 7ad3f932e9a10723d6cc1bae2fc4854c932d4c64
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: eccf2a7a1b9c7ea7a21cd5d0cf0f60728284c05d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507073"
+ms.locfileid: "73579670"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>语音助手：常见问题
 
@@ -29,7 +29,7 @@ ms.locfileid: "73507073"
 
 **问：我是否应使用自定义命令（预览）或直接语音语音？区别是什么？**
 
-**答：** [自定义命令（预览）](custom-commands.md)是一组低复杂性的工具，可以轻松创建和承载非常适合于任务完成方案的助手。 [直接线路语音](direct-line-speech.md)提供功能更丰富且更复杂的功能，可实现强大的对话方案。 有关详细信息，请参阅[助手解决方案的比较](voice-assistants.md#comparing-assistant-solutions)。
+**答：** [自定义命令（预览）](custom-commands.md)是一组低复杂性的工具，可以轻松创建和承载非常适合于任务完成方案的助手。 [直接线路语音](direct-line-speech.md)提供功能更丰富且更复杂的功能，可实现强大的对话方案。 有关详细信息，请参阅[助手解决方案的比较](voice-assistants.md#choosing-an-assistant-solution)。
 
 **问：如何开始使用？**
 
@@ -40,6 +40,17 @@ ms.locfileid: "73507073"
 * [将机器人连接到直接连线语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>调试
+
+**问：我的频道机密在哪里？**
+
+**答：** 如果你使用了直接行语音的预览版本或正在阅读相关文档，则可能需要在 "语音通道注册" 页上找到密钥。 Speech SDK 中的版本 1.7 `DialogServiceConfig` 工厂方法 `FromBotSecret` 也需要此值。
+
+最新版本的直接连线语音简化了从设备联系机器人的过程。 在 "通道注册" 页上，顶部的下拉箭头会将你的直接线路语音频道注册与语音资源相关联。 关联后，v2.0 Speech SDK 包含一种 `BotFrameworkConfig::FromSubscription` 工厂方法，该方法将配置 `DialogServiceConnector`，以联系与订阅关联的机器人。
+
+如果仍要将客户端应用程序从版本1.7 升级到5v，`DialogServiceConfig::FromBotSecret` 可能会继续使用其通道机密参数的非空、非 null 值（例如，使用的上一个机密）。 使用与较新的频道注册相关联的语音订阅时，将直接忽略此功能。 请注意，该值*必须*为非 null 和非空，因为在服务端关联之前，将在设备上检查这些值。
+
+
+有关更详细的指南，请参阅[教程部分](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel)，该部分介绍了渠道注册。
 
 **问：在连接时收到401错误，无任何工作。我知道我的语音订阅密钥有效。这是怎么回事？**
 

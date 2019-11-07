@@ -6,27 +6,29 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 82d15f342e6c0a4f107e8b089be14c0e670a33ca
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f50a6980cb26d6a89e2564b492a8be900ad57736
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815057"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606784"
 ---
 # <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB Gremlin API 资源
+
+本文介绍如何使用 Azure 资源管理器模板执行不同的操作来自动管理 Azure Cosmos DB 帐户、数据库和容器。 本文仅提供 Gremlin API 帐户的示例，若要查找其他 API 类型帐户的示例，请参阅：将资源管理器模板与[Cassandra](manage-cassandra-with-resource-manager.md)、 [SQL](manage-sql-with-resource-manager.md)、 [MongoDB](manage-mongodb-with-resource-manager.md)、[表](manage-table-with-resource-manager.md)项目的 Azure Cosmos DB API 配合使用。
 
 ## 创建 Azure Cosmos DB API for MongoDB 帐户、数据库和集合 <a id="create-resource"></a>
 
 使用 Azure 资源管理器模板创建 Azure Cosmos DB 资源。 此模板将创建 Gremlin API 的 Azure Cosmos 帐户，所使用的两个图形在数据库级别共享 400 RU/秒的吞吐量。 复制模板并按如下所示进行部署，或者访问 [Azure 快速入门库](https://azure.microsoft.com/resources/templates/101-cosmosdb-gremlin/)，然后从 Azure 门户进行部署。 还可以将模板下载到本地计算机，或者创建新模板并使用 `--template-file` 参数指定本地路径。
 
 > [!NOTE]
-> 帐户名称必须为小写并且 < 31 个字符。
+> 帐户名称必须为小写且 < 31 个字符。
 
 [!code-json[create-cosmos-gremlin](~/quickstart-templates/101-cosmosdb-gremlin/azuredeploy.json)]
 
 ## <a name="deploy-with-azure-cli"></a>使用 Azure CLI 进行部署
 
-若要使用 Azure CLI 部署资源管理器模板, 请**复制**该脚本, 然后选择 "**尝试**" 以打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+若要使用 Azure CLI 部署资源管理器模板，请**复制**该脚本，然后选择 "**尝试**" 以打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
 
 ```azurecli-interactive
 
@@ -48,7 +50,7 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-`az cosmosdb show` 命令显示预配后的新建 Azure Cosmos 帐户。 如果选择使用 Azure CLI 本地安装的版本, 而不是使用 CloudShell, 请参阅[Azure 命令行接口 (CLI) 一](/cli/azure/)文。
+`az cosmosdb show` 命令显示预配后的新建 Azure Cosmos 帐户。 如果选择使用 Azure CLI 本地安装的版本，而不是使用 CloudShell，请参阅[Azure 命令行接口（CLI）](/cli/azure/)一文。
 
 ## 更新数据库的吞吐量（RU/秒）<a id="database-ru-update"></a>
 
@@ -71,7 +73,7 @@ az group deployment create --resource-group $resourceGroupName \
    --parameters accountName=$accountName databaseName=$databaseName throughput=$throughput
 ```
 
-## 更新图形上的吞吐量 (RU/秒)<a id="graph-ru-update"></a>
+## 更新图形上的吞吐量（RU/秒）<a id="graph-ru-update"></a>
 
 以下模板将更新图形的吞吐量。 复制模板并按如下所示进行部署，或者访问 [Azure 快速入门库](https://azure.microsoft.com/resources/templates/101-cosmosdb-gremlin-graph-ru-update/)，然后从 Azure 门户进行部署。 还可以将模板下载到本地计算机，或者创建新模板并使用 `--template-file` 参数指定本地路径。
 

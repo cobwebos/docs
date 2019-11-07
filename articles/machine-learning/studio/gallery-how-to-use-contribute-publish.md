@@ -1,6 +1,6 @@
 ---
 title: Azure AI 库
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: 在 Azure AI 库中共享和发现分析资源以及更多内容。 学习其他人的经验，为社区做出自己的贡献。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 445ea2fa299e32d0ceae7b3eee9bbf0a82dd75af
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3f02c7377242dc031cd2d21d2b57bbd5f839eec3
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492938"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619143"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>在 Azure AI 库中共享和发现资源
 

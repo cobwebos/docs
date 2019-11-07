@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 49bf7984efe74edd2a19909509e0c6b9564fc2e9
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: e42fa7f48b5e6475604570a95f2ffc034b43b8f7
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274429"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604620"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>为应用服务和 Azure Functions 使用 Key Vault 引用
 
@@ -46,18 +46,20 @@ ms.locfileid: "72274429"
 Key Vault 引用采用 `@Microsoft.KeyVault({referenceString})` 格式，其中 `{referenceString}` 将替换为下述选项之一：
 
 > [!div class="mx-tdBreakAll"]
-> | 引用字符串                                                            | 描述                                                                                                                                                                                 |
+> | 引用字符串                                                            | 说明                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri=_secretUri_                                                       | **SecretUri** 应该是 Key Vault 中机密的完整数据平面 URI（包括版本），例如 https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** 应该是 Key Vault 资源的名称。 **SecretName** 应该是目标机密的名称。 **SecretVersion** 应该是要使用的机密的版本。 |
 
-> [!NOTE] 
-> 当前需要版本。 轮换机密时，需在应用程序配置中更新版本。
-
-例如，完整的引用将如下所示：
+例如，使用版本的完整引用如下所示：
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
+```
+不含版本的完整引用如下所示：
+
+```
+@Microsoft.KeyVault(SecretUri=https://<MYKEYVAULT>.vault.azure.net/secrets/eShopStorageAccountCS/)
 ```
 
 也可使用以下命令：
@@ -69,7 +71,7 @@ Key Vault 引用采用 `@Microsoft.KeyVault({referenceString})` 格式，其中 
 
 ## <a name="source-application-settings-from-key-vault"></a>Key Vault 中的源应用程序设置
 
-Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-app-settings)的值，以便将机密保存在 Key Vault 而不是站点配置中。可以对应用程序设置进行安全的静态加密，但如果需要机密管理功能，则应将它们置于 Key Vault 中。
+Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-app-settings)的值，从而使你可以在 Key Vault 而不是站点配置中保存机密。应用程序设置在静态上进行安全加密，但是，如果你需要机密管理功能，它们应该进入 Key Vault。
 
 若要将 Key Vault 引用用于应用程序设置，请将引用设为设置的值。 应用可以通过密钥正常引用机密。 不需更改代码。
 
@@ -188,7 +190,7 @@ Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-a
 
 ## <a name="troubleshooting-key-vault-references"></a>Key Vault 引用疑难解答
 
-如果引用未正确解析，则将改用引用值。 这意味着，对于应用程序设置，将创建值具有 @no__t 的语法的环境变量。 这可能导致应用程序引发错误，因为它需要特定结构的机密。
+如果引用未正确解析，则将改用引用值。 这意味着，对于应用程序设置，将创建值具有 `@Microsoft.KeyVault(...)` 语法的环境变量。 这可能导致应用程序引发错误，因为它需要特定结构的机密。
 
 最常见的原因是， [Key Vault 访问策略](#granting-your-app-access-to-key-vault)的配置错误。 但是，这也可能是由于机密已不再存在，或者引用本身中存在语法错误。
 

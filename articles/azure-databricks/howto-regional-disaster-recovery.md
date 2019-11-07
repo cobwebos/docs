@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 06ab1783a6e0f4884ab46d3f00a26c47f28d02b0
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 410b945f1a9a8d659f55668e272e2d9d08482bde
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596902"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601762"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks 群集的区域性灾难恢复
 
@@ -47,7 +47,7 @@ Databricks 控制平面管理并监视 Databricks 工作区环境。 任何管�
 
    本文演示的许多代码示例使用命令行接口来执行大多数自动化步骤，因为命令行接口是基于 Azure Databricks REST API 的易用包装器。
 
-   在执行任何迁移步骤之前，请在台式机或打算使用的虚拟机上安装 databricks-cli。 有关详细信息，请参阅[安装 Databricks CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)
+   在执行任何迁移步骤之前，请在台式机或打算使用的虚拟机上安装 databricks-cli。 有关详细信息，请参阅[安装 Databricks CLI](/azure/databricks/dev-tools/databricks-cli)
 
    ```bash
    pip install databricks-cli
@@ -90,7 +90,7 @@ Databricks 控制平面管理并监视 Databricks 工作区环境。 任何管�
    > [!NOTE]
    > 此步骤不会复制库，因为基础 API 不支持库。
 
-   复制以下 python 脚本并将其保存到某个文件，然后在 Databricks 命令行中运行它。 例如，`python scriptname.py` 。
+   复制以下 python 脚本并将其保存到某个文件，然后在 Databricks 命令行中运行它。 例如，`python scriptname.py`。
 
    ```python
    from subprocess import call, check_output
@@ -133,7 +133,7 @@ Databricks 控制平面管理并监视 Databricks 工作区环境。 任何管�
 
    下面提供的脚本列显从旧群集 ID 到新群集 ID 的映射，稍后可对作业迁移（配置为使用现有群集的作业）使用该映射。
 
-   复制以下 python 脚本并将其保存到某个文件，然后在 Databricks 命令行中运行它。 例如，`python scriptname.py` 。
+   复制以下 python 脚本并将其保存到某个文件，然后在 Databricks 命令行中运行它。 例如，`python scriptname.py`。
 
    ```python
    from subprocess import call, check_output
@@ -286,7 +286,7 @@ Databricks 控制平面管理并监视 Databricks 工作区环境。 任何管�
 
 8. **迁移 Azure blob 存储和 Azure Data Lake Storage 装载**
 
-   使用基于笔记本的解决方案手动重新装载所有[Azure Blob 存储](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html)和[Azure Data Lake Storage （第2代）](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)装入点。 存储资源应已装载到主要工作区，必须在辅助工作区中重复该操作。 无法使用外部 API 进行装载。
+   使用基于笔记本的解决方案手动重新装载所有[Azure Blob 存储](/azure/databricks/data/data-sources/azure/azure-storage.html)和[Azure Data Lake Storage （第2代）](/azure/databricks/data/data-sources/azure/azure-datalake-gen2.html)装入点。 存储资源应已装载到主要工作区，必须在辅助工作区中重复该操作。 无法使用外部 API 进行装载。
 
 9. **迁移群集初始化脚本**
 
@@ -302,7 +302,7 @@ Databricks 控制平面管理并监视 Databricks 工作区环境。 任何管�
 
 10. **手动重新配置和重新应用访问控制。**
 
-    如果现有的主要工作区配置为使用高级层 (SKU)，则有可能你同时在使用[访问控制功能](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control)。
+    如果现有的主要工作区配置为使用高级层 (SKU)，则有可能你同时在使用[访问控制功能](/azure/databricks/administration-guide/access-control/index)。
 
     如果确实使用了访问控制功能，请手动将访问控制重新应用到资源（笔记本、群集、作业、表）。
 
@@ -312,4 +312,4 @@ Databricks 控制平面管理并监视 Databricks 工作区环境。 任何管�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅 [Azure Databricks 文档](https://docs.azuredatabricks.net/user-guide/index.html)。
+有关详细信息，请参阅 [Azure Databricks 文档](index.yml)。

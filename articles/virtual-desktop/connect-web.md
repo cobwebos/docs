@@ -1,5 +1,5 @@
 ---
-title: 从 web 浏览器连接到 Windows 虚拟桌面-Azure
+title: 连接 Windows 虚拟桌面 web 客户端-Azure
 description: 如何使用 web 客户端连接到 Windows 虚拟桌面。
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: e7fa1d2b21bfde6495a63676bc2aa1faa07e6bc5
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a29081f77587a96dc48930eab359610a42fc0be5
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676752"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605813"
 ---
 # <a name="connect-with-the-web-client"></a>使用 Web 客户端进行连接
 
@@ -25,7 +25,7 @@ Web 客户端允许从 web 浏览器访问 Windows 虚拟桌面资源，而无�
 
 尽管任何支持 HTML5 的浏览器都应该运行，但我们正式支持以下操作系统和浏览器。
 
-| Browser           | 支持的 OS                     | 说明               |
+| 浏览器           | 支持的 OS                     | 说明               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          |                     |

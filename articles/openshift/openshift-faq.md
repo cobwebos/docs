@@ -7,27 +7,17 @@ ms.author: jzim
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: 8f7349310f72c8cccc7b1906239ece3038dd7861
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.date: 11/04/2019
+ms.openlocfilehash: d8707e2edccf144cbe58a530bcfe2c176e656915
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249212"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582401"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift 常见问题
 
 本文解决 Microsoft Azure Red Hat OpenShift 的常见问题（Faq）。
-
-## <a name="how-do-i-get-started"></a>如何入门？
-
-使用 Azure Red Hat OpenShift 之前，需要购买至少4个 Azure Red Hat OpenShift 保留应用程序节点。
-
-如果你是 Azure 客户，请通过 Azure 门户[购买 Azure Red Hat OpenShift 的预订实例](https://aka.ms/openshift/buy)。 购买后，你的订阅将在24小时内激活，此后你将能够设置群集。
-
-如果你不是 Azure 客户，请[联系 sales](https://aka.ms/openshift/contact-sales)并填写页面底部的 "销售" 窗体，以启动该过程。
-
-有关详细信息，请参阅[Azure Red Hat OpenShift 定价页](https://aka.ms/openshift/pricing)。
 
 ## <a name="which-azure-regions-are-supported"></a>支持哪些 Azure 区域？
 
@@ -35,11 +25,11 @@ ms.locfileid: "72249212"
 
 ## <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>是否可以将群集部署到现有的虚拟网络？
 
-否。 但可以通过对等互连将 Azure Red Hat OpenShift 群集连接到现有 VNET。 有关详细信息，请参阅[将群集的虚拟网络连接到现有虚拟网络](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)。
+不能。 但可以通过对等互连将 Azure Red Hat OpenShift 群集连接到现有 VNET。 有关详细信息，请参阅[将群集的虚拟网络连接到现有虚拟网络](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)。
 
 ## <a name="what-cluster-operations-are-available"></a>哪些群集操作可用？
 
-只能增加或减少计算节点数。 创建后，不允许对 @no__t 资源进行任何其他修改。 计算节点的最大数目限制为20个。
+只能增加或减少计算节点数。 创建后，不允许对 `Microsoft.ContainerService/openShiftManagedClusters` 资源进行任何其他修改。 计算节点的最大数目限制为20个。
 
 ## <a name="what-virtual-machine-sizes-can-i-use"></a>我可以使用哪些虚拟机大小？
 
@@ -63,27 +53,27 @@ Docker 注册表可从 `https://docker-registry.apps.<clustername>.<region>.azmo
 
 ## <a name="is-cross-namespace-networking-supported"></a>是否支持交叉命名空间网络？
 
-客户和单独的项目管理员可使用 @no__t 0 对象基于每个项目自定义跨命名空间网络（包括拒绝此网络）。
+客户和单个项目管理员可使用 `NetworkPolicy` 对象基于每个项目自定义跨命名空间网络（包括拒绝此网络）。
 
 ## <a name="can-an-admin-manage-users-and-quotas"></a>管理员是否可以管理用户和配额？
 
-是。 Azure Red Hat OpenShift 管理员可以管理用户和配额，还可以访问所有用户创建的项目。
+可以。 Azure Red Hat OpenShift 管理员可以管理用户和配额，还可以访问所有用户创建的项目。
 
 ## <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>是否可以将群集限制为仅限特定 Azure AD 的用户？
 
-是。 你可以通过配置 Azure AD 应用程序限制用户可以登录到群集的 Azure AD。 有关详细信息，请参阅 [How to：将你的应用限制为一组用户 @ no__t-0
+可以。 你可以通过配置 Azure AD 应用程序限制用户可以登录到群集的 Azure AD。 有关详细信息，请参阅[如何：将应用限制到一组用户](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)
 
 ## <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>群集是否可以跨多个 Azure 区域具有计算节点？
 
-否。 Azure Red Hat OpenShift 群集中的所有节点都必须源自同一 Azure 区域。
+不能。 Azure Red Hat OpenShift 群集中的所有节点都必须源自同一 Azure 区域。
 
 ## <a name="are-master-and-infrastructure-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>主节点和基础结构节点在与 Azure Kubernetes 服务（AKS）配合时是否会被抽象掉？
 
-否。 所有资源（包括群集主机）都在您的客户订阅中运行。 这些类型的资源置于只读资源组中。
+不能。 所有资源（包括群集主机）都在您的客户订阅中运行。 这些类型的资源置于只读资源组中。
 
 ## <a name="is-open-service-broker-for-azure-osba-supported"></a>是否支持 Azure （OSBA）的开放 Service Broker？
 
-是。 可以将 OSBA 与 Azure Red Hat OpenShift 配合使用。 有关详细信息，请参阅[Open Service Broker For Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) 。
+可以。 可以将 OSBA 与 Azure Red Hat OpenShift 配合使用。 有关详细信息，请参阅[Open Service Broker For Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) 。
 
 ## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>我尝试对另一个订阅中的虚拟网络进行对等互连，但收到 `Failed to get vnet CIDR` 错误。
 
@@ -191,7 +181,7 @@ SDN 为 openshift-ovs-es-networkpolicy，不可配置。
 
 ## <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>能否选择任何持久性存储解决方案，如 OCS？ 
 
-有两个存储类可供选择：Azure 磁盘和 Azure 文件。
+有两个存储类可供选择： Azure 磁盘和 Azure 文件。
 
 ## <a name="how-is-a-cluster-updated-including-majors-and-minors-due-to-vulnerabilities"></a>群集是如何更新的（包括专业和不安全的）？
 

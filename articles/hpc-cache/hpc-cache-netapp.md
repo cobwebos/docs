@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure HPC 缓存（预览版）和 Azure NetApp 文件
+title: 使用 Azure HPC 缓存和 Azure NetApp 文件
 description: 如何使用 Azure HPC 缓存来改善对 Azure NetApp 文件中存储的数据的访问
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 35d7a11c4f39f15c6b2f904df77b88b85c2208e5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c6259dabd5ee9c53d37a3396f36832720a103c23
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954937"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582172"
 ---
-# <a name="use-azure-hpc-cache-preview-with-azure-netapp-files"></a>将 Azure HPC 缓存（预览版）与 Azure NetApp 文件配合使用
+# <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>将 Azure HPC 缓存用于 Azure NetApp 文件
 
 可以使用[Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)作为 Azure HPC 缓存的存储目标。 本文介绍了这两个服务如何协同工作，并提供了设置这些服务的技巧。
 

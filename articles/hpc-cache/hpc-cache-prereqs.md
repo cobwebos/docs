@@ -1,19 +1,19 @@
 ---
-title: Azure HPC 缓存（预览版）先决条件
+title: Azure HPC 缓存先决条件
 description: 使用 Azure HPC 缓存的先决条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: cfaa8f94dbb836a61b7f024c9426625d874dc524
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ca7a12f45f8d907ee65df85e349883e4c14af47a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709958"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582150"
 ---
-# <a name="prerequisites-for-azure-hpc-cache-preview"></a>Azure HPC 缓存的先决条件（预览版）
+# <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 缓存的先决条件
 
 使用 Azure 门户创建新的 Azure HPC 缓存之前，请确保你的环境满足这些要求。
 
@@ -22,7 +22,7 @@ ms.locfileid: "71709958"
 建议使用付费订阅。
 
 > [!NOTE]
-> 在预览版本中，Azure HPC 缓存团队必须先将订阅添加到访问列表，然后才能将其用于创建缓存实例。 此过程有助于确保每个客户从其测试缓存获得高质量的响应能力。 填写[此窗体](https://aka.ms/onboard-hpc-cache)以请求访问。
+> 在 GA 版本的前几个月内，Azure HPC 缓存团队必须先将订阅添加到访问列表，然后才能将其用于创建缓存实例。 此过程有助于确保每个客户从其缓存中获得高质量的响应能力。 填写[此窗体](https://aka.ms/onboard-hpc-cache)以请求访问。
 
 ## <a name="network-infrastructure"></a>网络基础结构
 
@@ -81,12 +81,12 @@ NFS 后端存储必须是兼容的硬件/软件平台。 有关详细信息，�
 若要创建兼容的存储帐户，请使用以下设置：
 
 * 性能：**标准**
-* 帐户类型：**StorageV2 （常规用途 v2）**
-* 复制：**本地冗余存储 (LRS)**
-* 访问层（默认）：**热访问层**
+* 帐户类型： **StorageV2 （常规用途 v2）**
+* 复制：**本地冗余存储(LRS)**
+* 访问层（默认）：**热**
 
 最好使用与缓存位于同一位置的存储帐户。
-<!-- need to clarify location - same region or same resource group or same virtual network? -->
+<!-- clarify location - same region or same resource group or same virtual network? -->
 
 还必须为缓存应用程序授予对 Azure 存储帐户的访问权限。 按照[添加存储目标](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)中的说明，为缓存授予访问角色存储帐户参与者和存储 Blob 数据参与者的缓存。 如果你不是存储帐户所有者，请让所有者执行此步骤。
 

@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 91278bdc1748615c91675e3894ebae4cf5fce1e4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 8427bd8532895e95de82a6ed577052971f15a25d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489500"
+ms.locfileid: "73584506"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>大规模定型并注册 Chainer 模型 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,11 +28,11 @@ ms.locfileid: "73489500"
 
 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在以下任一环境中运行此代码：
 
-- Azure 机器学习计算实例-无需下载或安装
+- Azure 机器学习笔记本 VM-无需下载或安装
 
     - 完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)，创建随 SDK 和示例存储库预先加载的专用笔记本服务器。
     - 在笔记本服务器上的示例深度学习文件夹中，在 "操作**方法" > ml-框架 > chainer > 部署 > chainer**文件夹中查找已完成的笔记本和文件。  此笔记本包含扩展的部分，涵盖智能超参数优化、模型部署和笔记本小组件。
