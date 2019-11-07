@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: ba6d81596cd8a690f5c17e1ca55b91c5ff27b916
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 36c496b77be5bfda83b3ed424a7fdf2b53101aa4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497530"
+ms.locfileid: "73580617"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作方式：体系结构和概念
 
@@ -56,7 +56,7 @@ ms.locfileid: "73497530"
 
 ## <a name="glossary"></a>术语表
 + <a href="#activities">活动</a>
-+ <a href="#compute-instance">计算实例</a>
++ <a href="#compute-instance">笔记本 VM</a>
 + <a href="#compute-targets">计算目标</a>
 + <a href="#datasets-and-datastores">数据集 & 数据存储</a>
 + <a href="#endpoints">Endpoints</a>
@@ -84,15 +84,11 @@ ms.locfileid: "73497530"
 
 活动可通过 SDK 或 Web UI 提供通知，使你能够轻松监视这些操作的进度。
 
-### <a name="compute-instance"></a>计算实例
+### <a name="compute-instance"></a>笔记本 VM
 
-> [!NOTE]
-> 计算实例仅适用于区域为**美国中北部**或**英国南部**的工作区。
->如果你的工作区在任何其他区域，你可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm) 。 
+**Azure 机器学习笔记本 VM**是一种完全托管的基于云的工作站，其中包含为机器学习安装的多个工具和环境。 笔记本 Vm 可用作小型培训和推断作业的计算目标。 对于大型任务，使用多节点缩放功能[Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)是更好的计算目标选择。
 
-**Azure 机器学习计算实例**（以前称为笔记本 VM）是一种完全托管的基于云的工作站，其中包含为机器学习安装的多个工具和环境。 计算实例可用作定型和推断作业的计算目标。 对于大型任务，使用多节点缩放功能[Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)是更好的计算目标选择。
-
-详细了解[计算实例](concept-compute-instance.md)。
+了解有关笔记本 Vm 的详细信息。
 
 ### <a name="compute-targets"></a>计算目标
 

@@ -1,5 +1,5 @@
 ---
-title: 规划 Azure 维护事件 - Azure SQL 数据库 | Microsoft Docs
+title: 规划 Azure 维护事件-Azure SQL 数据库
 description: 了解如何为针对 Azure SQL 数据库执行计划内维护事件做准备。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 01/30/2019
-ms.openlocfilehash: 1bb88d6f74ab4b93e226fe8630f07f0a96f4ba47
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5598d5a465645ce20d9244011de6d9cef47ac3c4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567036"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687627"
 ---
 # <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>规划 Azure 维护事件 - Azure SQL 数据库
 
@@ -28,7 +28,7 @@ Azure SQL DB 为每个数据库维护了一组正常运营所需的最低数量�
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>计划内维护事件期间会发生什么
 
-重新配置/故障转移进程通常在 30 秒内完成 – 平均时长为 8 秒。 如果应用程序处于已连接状态，则必须重新连接至新的数据库健康主副本。 如果在进行连接时数据库正在进行重新配置，且新的主副本尚未处于联机状态，会显示错误 40613（数据库不可用）：“服务器 '{服务器名}' 上的数据库 '{数据库名}' 当前不可用。 请稍后重试连接”错误。” 如果数据库有一个长时间运行的查询，重新配置期间此查询会中断，需要重新启动。
+重新配置/故障转移进程通常在 30 秒内完成 – 平均时长为 8 秒。 如果应用程序处于已连接状态，则必须重新连接至新的数据库健康主副本。 如果尝试在新的主副本处于联机状态的情况下重新配置数据库，则会出现错误40613（数据库不可用）：当前不支持服务器 "{servername}" 上的数据库 "{databasename}"。 请稍后重试连接”错误。” 如果数据库有一个长时间运行的查询，重新配置期间此查询会中断，需要重新启动。
 
 ## <a name="retry-logic"></a>重试逻辑
 
@@ -40,7 +40,7 @@ Azure SQL DB 为每个数据库维护了一组正常运营所需的最低数量�
 
 ## <a name="resource-health"></a>资源运行状况
 
-如果 SQL 数据库发生登录失败的情况，请在 [Azure 门户](https://portal.azure.com)的[资源运行状况](../service-health/resource-health-overview.md#get-started)窗口中查看当前状态。 运行状况历史记录部分包含每个事件（如果有）的停机原因。
+如果 SQL 数据库发生登录失败的情况，请在 [Azure 门户](../service-health/resource-health-overview.md#get-started)的[资源运行状况](https://portal.azure.com)窗口中查看当前状态。 运行状况历史记录部分包含每个事件（如果有）的停机原因。
 
 
 ## <a name="next-steps"></a>后续步骤

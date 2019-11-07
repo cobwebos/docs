@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d9a879e92f78275f2366ccfc008068afbe208e5a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 276e741a9462c19a3cba9ad1f9ac44e2da7ef1d3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497392"
+ms.locfileid: "73580708"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,7 +57,7 @@ ms.locfileid: "73497392"
 
 自动回归集成的移动平均线（ARIMA）是时序预测的常用统计方法。 此预测技术通常用于短期预测方案，其中的数据显示了循环（如循环）的证据，这可能是不可预测的，很难建模或预测。 自动 ARIMA 将数据转换为静态数据，以获得一致、可靠的结果。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 机器学习工作区。 若要创建工作区，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 * 本文假设基本熟悉如何设置自动化机器学习试验。 按照[教程](tutorial-auto-train-models.md)或操作[方法](how-to-configure-auto-train.md)，查看基本的自动化机器学习试验设计模式。
@@ -113,7 +113,7 @@ test_labels = test_data.pop(label).values
 
 `AutoMLConfig` 对象定义自动机器学习任务所需的设置和数据。 与回归问题类似，定义了标准定型参数，如任务类型、迭代数、定型数据和交叉验证次数。 对于预测任务，还必须设置其他参数，这些参数会影响试验。 下表说明了每个参数及其用法。
 
-| Param | 说明 | 需要 |
+| Param | 说明 | 必选 |
 |-------|-------|-------|
 |`time_column_name`|用于指定输入数据中的日期时间列，这些数据用于生成时序并推断其频率。|✓|
 |`grain_column_names`|定义输入数据中各个序列组的名称。 如果未定义颗粒，则假定数据集为一系列时间。||
@@ -181,7 +181,7 @@ best_run, fitted_model = local_run.get_output()
 
 若要利用 Dnn 进行预测，需要将 AutoMLConfig 中的 `enable_dnn` 参数设置为 true。 
 
-为了使用 Dnn，建议使用 GPU Sku 和至少2个节点作为计算目标的 AML 计算群集。 有关详细信息，请参阅[AML 计算文档](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-set-up-training-targets#amlcompute)。 有关包含 Gpu 的 VM 大小的详细信息，请参阅[GPU 优化虚拟机大小](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-gpu)。
+为了使用 Dnn，建议使用 GPU Sku 和至少2个节点作为计算目标的 AML 计算群集。 有关详细信息，请参阅[AML 计算文档](how-to-set-up-training-targets.md#amlcompute)。 有关包含 Gpu 的 VM 大小的详细信息，请参阅[GPU 优化虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)。
 
 若要留出足够的时间让 DNN 培训完成，建议将试验超时设置为至少几个小时。
 

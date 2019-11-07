@@ -7,16 +7,19 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 10/26/2019
 ms.author: victorh
-ms.openlocfilehash: a7622489008a8fabef8aee3ffb2ffc4f33b48296
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 31a5ad92942b40e42b66e404df2d09cd8158f7a2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516664"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606487"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>创建应用程序网关的 Web 应用程序防火墙策略
 
 将 WAF 策略与侦听器相关联，可允许单个 WAF 后面的多个站点受到不同策略的保护。 例如，如果 WAF 后面有5个站点，则可以使用五个单独的 WAF 策略（每个侦听器一个）为一个站点自定义排除项、自定义规则和托管规则集，而不会影响其他四个策略。 如果希望将单个策略应用到所有站点，只需将该策略与应用程序网关相关联，而不是将它应用于单个侦听器，使其全局应用。 策略还可以应用于基于路径的路由规则。 
+
+   > [!NOTE]
+   > 每站点 WAF 策略在美国中南部和北欧提供。 若要在门户中访问它们，请使用[此链接](https://aka.ms/AppgwwafWithAllFeatureFlags)，直到所有人都可以使用。  
 
 你可以根据需要创建任意多个策略。 创建策略后，必须将它关联到应用程序网关才能生效，但它可以与应用程序网关和侦听器的任何组合关联。 
 

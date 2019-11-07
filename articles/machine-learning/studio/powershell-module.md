@@ -1,6 +1,6 @@
 ---
-title: 适用于机器学习 Studio 的 PowerShell 模块（经典）
-titleSuffix: Azure Machine Learning Studio (classic)
+title: PowerShell 模块
+titleSuffix: ML Studio (classic) Azure
 description: 使用 PowerShell 创建和管理 Azure 机器学习 Studio （经典）工作区、试验、web 服务等。
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 04/25/2019
-ms.openlocfilehash: dae20a86c7a16e1d989b529a3f2dd4e32253a354
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7de760e9bdaaf9a00cf170b3383e0e93e8806a87
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496808"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670854"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>适用于 Azure 机器学习 Studio 的 PowerShell 模块（经典）
 

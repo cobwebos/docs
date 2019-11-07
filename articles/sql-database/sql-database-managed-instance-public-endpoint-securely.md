@@ -1,5 +1,5 @@
 ---
-title: 保护托管实例公共终结点 - Azure SQL 数据库托管实例 | Microsoft Docs
+title: 安全托管实例公共终结点-Azure SQL 数据库托管实例
 description: 在 Azure 中安全使用包含托管实例的公共终结点
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: c7f57a636e95bb137dd4285b8f9ce8343b27d2a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3d97eb16ee2a8b3203b187dca7b2a17974473098
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567367"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687949"
 ---
 # <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>在公共终结点中安全使用 Azure SQL 数据库托管实例
 
@@ -53,4 +53,4 @@ SQL 数据库托管实例提供专用终结点用于从其虚拟网络内部启�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何配置托管实例的公共终结点：[配置公共终结点](sql-database-managed-instance-public-endpoint-configure.md)
+- 了解如何为管理实例配置公共终结点：[配置公共终结点](sql-database-managed-instance-public-endpoint-configure.md)

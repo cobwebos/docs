@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3dfc3c309fe3583ddd4307cbfe4e55bf6522ffc3
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 60d0425a7dbc532e856c7bf3c91065d2548c9b9a
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955852"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601381"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure 有哪些可用的磁盘类型？
 
@@ -23,10 +23,10 @@ Azure 托管磁盘当前提供四种磁盘类型，每种类型都面向特定�
 
 下表提供了对托管磁盘的 ultra 磁盘、高级固态驱动器（SSD）、标准 SSD 和标准硬盘驱动器（HDD）的比较，有助于你决定要使用的内容。
 
-|   | 超磁盘   | 高级 SSD   | 标准 SSD   | 标准 HDD   |
+|   | 超磁盘   | 高级·SSD   | 标准 SSD   | 标准 HDD   |
 |---------|---------|---------|---------|---------|
 |磁盘类型   |SSD   |SSD   |SSD   |HDD   |
-|应用场景   |SAP HANA、顶层数据库等 IO 密集型工作负荷（例如，SQL、Oracle），以及其他事务密集型工作负荷。   |生产和性能敏感型工作负荷   |Web 服务器、不常使用的企业应用程序和开发/测试   |备份、非关键、不常访问   |
+|方案   |IO 密集型工作负荷，如[SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)、顶级数据库（例如 SQL、Oracle）和其他事务密集型工作负荷。   |生产和性能敏感型工作负荷   |Web 服务器、不常使用的企业应用程序和开发/测试   |备份、非关键、不常访问   |
 |最大磁盘大小   |65536 gibibyte （GiB）    |32,767 GiB    |32,767 GiB   |32,767 GiB   |
 |最大吞吐量   |2000 MiB/秒    |900 MiB/秒   |750 MiB/秒   |500 MiB/秒   |
 |最大 IOPS   |160,000    |20,000   |6,000   |2,000   |
@@ -41,8 +41,8 @@ Azure ultra 磁盘为 Azure IaaS Vm 提供高吞吐量、高 IOPS 和一致的�
 
 超磁盘的一些关键功能是：
 
-- 磁盘容量：超高磁盘容量的范围为 4 GiB 至 64 TiB。
-- 磁盘 IOPS：超磁盘支持 300 IOPS/GiB 的 IOPS 限制，每个磁盘最多可达 160 K IOPS。 若要实现预配的 IOPS，请确保所选磁盘 IOPS 小于 VM IOPS 限制。 每个磁盘的最小 IOPS 是 2 IOPS/GiB，整体基线至少为 100 IOPS。 例如，如果有4个 GiB 的超磁盘，则至少需要 100 IOPS，而不是 8 IOPS。
+- 磁盘容量：超小型磁盘容量范围为 4 GiB 至 64 TiB。
+- 磁盘 IOPS： Ultra 磁盘支持 300 IOPS/GiB 的 IOPS 限制，每个磁盘最多可达 160 K IOPS。 若要实现预配的 IOPS，请确保所选磁盘 IOPS 小于 VM IOPS 限制。 每个磁盘的最小 IOPS 是 2 IOPS/GiB，整体基线至少为 100 IOPS。 例如，如果有4个 GiB 的超磁盘，则至少需要 100 IOPS，而不是 8 IOPS。
 - 磁盘吞吐量：对于超磁盘，单个磁盘的吞吐量限制为每个预配 IOPS 256 KiB/s，每个磁盘最大可达 2000 MBps （其中 Mbits = 10 ^ 6 字节/秒）。 对于每个预配的 IOPS，每个磁盘的最小吞吐量为 4KiB/s，整体基线最小为 1 MBps。
 - 超磁盘支持在运行时调整磁盘性能属性（IOPS 和吞吐量），而无需从虚拟机中分离该磁盘。 在对磁盘上发出磁盘性能调整大小操作后，更改实际上可能最多需要一个小时才能生效。 24小时内，在24小时内调整操作的性能限制为四个。 性能调整大小操作可能会因为缺乏性能带宽容量而失败。
 
@@ -62,13 +62,4 @@ Azure ultra 磁盘为 Azure IaaS Vm 提供高吞吐量、高 IOPS 和一致的�
 
 ### <a name="ga-scope-and-limitations"></a>GA 范围和限制
 
-目前，超磁盘有其他限制，如下所示：
-
-- 支持在每个区域的两个可用性区域中的美国东部2、东南亚和北欧中  
-- 只能在可用性区域中使用（区域外部的可用性集和单一 VM 部署无法附加超级磁盘）
-- 仅在 ES/DS v3 VM 上受支持
-- 只可用作数据磁盘，并且仅支持 4k 物理扇区大小  
-- 只能以空磁盘的形式创建  
-- 尚不支持磁盘快照、VM 映像、可用性集、虚拟机规模集和 Azure 磁盘加密
-- 尚不支持与 Azure 备份或 Azure Site Recovery 的集成
-- GA Vm 上的 IOPS 的当前最大限制为80000。
+[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](managed-disks-ultra-disks-GA-scope-and-limitations.md)]

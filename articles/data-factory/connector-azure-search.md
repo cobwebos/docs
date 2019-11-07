@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂将数据复制到搜索索引 | Microsoft Docs
+title: 使用 Azure 数据工厂将数据复制到搜索索引
 description: 了解如何使用 Azure 数据工厂管道中的复制活动将数据推送或复制到 Azure 搜索索引。
 services: data-factory
 documentationcenter: ''
@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 703dcb5fee0c31328eee91c9673e62653d7aa698
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: f4e9e9f66d9bf1fecd4565d5eb469703e7a83d0d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286346"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681189"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure 搜索索引
 
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-azure-search-connector.md)
 > * [当前版本](connector-azure-search.md)
 
-本文概述了如何使用 Azure 数据工厂中的复制活动将数据复制到 Azure 搜索索引。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述了如何使用 Azure 数据工厂中的复制活动将数据复制到 Azure 搜索索引。 本文基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -43,9 +43,9 @@ Azure 搜索链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：**AzureSearch** | 是 |
+| type | type 属性必须设置为：AzureSearch | 是 |
 | url | Azure 搜索服务的 URL。 | 是 |
-| 钥 | Azure 搜索服务的管理密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| key | Azure 搜索服务的管理密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure Integration Runtime 或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 > [!IMPORTANT]
@@ -81,7 +81,7 @@ Azure 搜索链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：**AzureSearchIndex** | 是 |
+| type | 数据集的 type 属性必须设置为：AzureSearchIndex | 是 |
 | indexName | Azure 搜索索引的名称。 数据工厂不创建索引。 索引必须存在于 Azure 搜索中。 | 是 |
 
 **示例：**
@@ -105,7 +105,7 @@ Azure 搜索链接的服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Azure 搜索源支持的属性列表。
+有关可用于定义活动的各节和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Azure 搜索源支持的属性列表。
 
 ### <a name="azure-search-as-sink"></a>Azure 搜索作为接收器
 
@@ -113,8 +113,8 @@ Azure 搜索链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**AzureSearchIndexSink** | 是 |
-| writeBehavior | 指定索引中已存在文档时要合并还是替换该文档。 请参阅 [WriteBehavior 属性](#writebehavior-property)。<br/><br/>允许值包括：**Merge**（默认值）和 **Upload**。 | 否 |
+| type | 复制活动源的 type 属性必须设置为：AzureSearchIndexSink | 是 |
+| writeBehavior | 指定索引中已存在文档时要合并还是替换该文档。 请参阅 [WriteBehavior 属性](#writebehavior-property)。<br/><br/>允许的值为：**Merge**（默认）和**Upload**。 | 否 |
 | writeBatchSize | 缓冲区大小达到 writeBatchSize 时会数据上传到 Azure 搜索索引。 有关详细信息，请参阅 [WriteBatchSize 属性](#writebatchsize-property)。<br/><br/>允许的值为：整数 1 到 1,000；默认值为 1000。 | 否 |
 
 ### <a name="writebehavior-property"></a>WriteBehavior 属性
@@ -174,7 +174,7 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
 | Int32 | Y |
 | Int64 | Y |
 | Double | Y |
-| Boolean | Y |
+| 布尔值 | Y |
 | DataTimeOffset | Y |
 | String Array | N |
 | GeographyPoint | N |
@@ -182,4 +182,4 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
 当前不支持其他数据类型，例如 ComplexType。 有关 Azure 搜索支持的数据类型的完整列表，请参阅[支持的数据类型（Azure 搜索）](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

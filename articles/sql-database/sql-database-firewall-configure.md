@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库和 Azure SQL 数据仓库 IP 防火墙规则 | Microsoft Docs
+title: Azure SQL 数据库和 Azure SQL 数据仓库 IP 防火墙规则
 description: 配置 SQL 数据库或 SQL 数据仓库防火墙的服务器级 IP 防火墙规则。 管理访问权限，并配置单一数据库或共用数据库的数据库级 IP 防火墙规则。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: e3e65a6deadfbcad563a6b64c0a9f48182cdd571
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 52566dbc60c3c2fd532891ab4f7d3461f9d77557
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686472"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690046"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL 数据库和 Azure SQL 数据仓库 IP 防火墙规则
 
@@ -85,7 +85,7 @@ IP 地址用户是否需要访问所有数据库？
 
 能否同时使用服务器级和数据库级 IP 防火墙规则？
 
-是。 一些用户（如管理员）可能需要服务器级 IP 防火墙规则。 另一些用户（如数据库应用程序用户）可能需要数据库级别 IP 防火墙规则。
+可以。 一些用户（如管理员）可能需要服务器级 IP 防火墙规则。 另一些用户（如数据库应用程序用户）可能需要数据库级别 IP 防火墙规则。
 
 ### <a name="connections-from-the-internet"></a>从 Internet 连接
 
@@ -144,7 +144,7 @@ IP 地址用户是否需要访问所有数据库？
 
 ### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>使用 Transact-SQL 管理 IP 防火墙规则
 
-| 目录视图或存储过程 | Level | 描述 |
+| 目录视图或存储过程 | 级别 | 说明 |
 | --- | --- | --- |
 | [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |服务器 |显示当前服务器级别 IP 防火墙规则 |
 | [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |服务器 |创建或更新服务器级别 IP 防火墙规则 |
@@ -178,7 +178,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有开发现在都是针对 Az.Sql 模块。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 和 AzureRm 模块中的命令参数大体上是相同的。
 
-| Cmdlet | Level | 描述 |
+| Cmdlet | 级别 | 说明 |
 | --- | --- | --- |
 | [Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |服务器 |返回当前的服务器级防火墙规则 |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |服务器 |新建服务器级防火墙规则 |
@@ -198,7 +198,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 ### <a name="use-cli-to-manage-server-level-ip-firewall-rules"></a>使用 CLI 管理服务器级 IP 防火墙规则
 
-| Cmdlet | Level | 描述 |
+| Cmdlet | 级别 | 说明 |
 | --- | --- | --- |
 |[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|服务器|创建服务器 IP 防火墙规则|
 |[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|服务器|列出服务器上的 IP 防火墙规则|
@@ -218,7 +218,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 ### <a name="use-a-rest-api-to-manage-server-level-ip-firewall-rules"></a>使用 REST API 管理服务器级 IP 防火墙规则
 
-| API | Level | 描述 |
+| API | 级别 | 说明 |
 | --- | --- | --- |
 | [列出防火墙规则](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |服务器 |显示当前服务器级别 IP 防火墙规则 |
 | [创建或更新防火墙规则](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |服务器 |创建或更新服务器级别 IP 防火墙规则 |
@@ -231,7 +231,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 - **本地防火墙配置：**
 
-  在计算机可以访问 SQL 数据库之前，可能需要在计算机上创建针对 TCP 端口 1433 的防火墙例外。 若要在 Azure 云边界内部建立连接，可能需要打开其他端口。 有关详细信息，请参阅[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)中的“SQL 数据库：外部与内部”部分。
+  在计算机可以访问 SQL 数据库之前，可能需要在计算机上创建针对 TCP 端口 1433 的防火墙例外。 若要在 Azure 云边界内部建立连接，可能需要打开其他端口。 有关详细信息，请参阅[ADO.NET 4.5 和 SQL 数据库的端口1433以外的端口](sql-database-develop-direct-route-ports-adonet-v12.md)中的 "SQL 数据库：外部与内部" 部分。
 
 - **网络地址转换：**
 
@@ -260,7 +260,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 - 确认公司网络环境允许来自 Azure 数据中心使用的计算 IP 地址范围（包括 SQL 范围）的入站通信。 可能需要将这些 IP 地址添加到允许列表。 请参阅[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。  
 - 有关创建服务器级 IP 防火墙规则的快速入门，请参阅[创建 Azure SQL 数据库](sql-database-single-database-get-started.md)。
 - 在从开源或第三方应用程序连接到 Azure SQL 数据库时如需帮助，请参阅 [SQL 数据库的客户端快速入门代码示例](https://msdn.microsoft.com/library/azure/ee336282.aspx)。
-- 有关可能需要打开的其他端口的信息，请参阅[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)中的“SQL 数据库：外部与内部”部分
+- 有关可能需要打开的其他端口的信息，请参阅[ADO.NET 4.5 和 SQL 数据库的端口1433以外的端口](sql-database-develop-direct-route-ports-adonet-v12.md)中的 "SQL 数据库：外部与内部" 部分
 - 有关 Azure SQL 数据库安全概述，请参阅[保护数据库](sql-database-security-overview.md)。
 
 <!--Image references-->

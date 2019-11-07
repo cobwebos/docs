@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 540e72a4472fce626822f0b22bfac11a23aea205
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 6ed04c875140f3ecd14eff31829e931efbe84ea2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466778"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606652"
 ---
 # <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充管道的常见错误和警告
 
@@ -32,7 +32,7 @@ ms.locfileid: "73466778"
 ### <a name="could-not-read-document"></a>无法读取文档
 索引器无法从数据源中读取文档。 这可能是由于以下原因导致的：
 
-| 原因 | 示例 | 行动 |
+| 原因 | 示例 | 操作 |
 | --- | --- | --- |
 | 不同文档中的字段类型不一致 | 值的类型与列类型不匹配。 无法将 `'{47.6,-122.1}'` 存储在作者列中。  预期类型为 JArray。 | 确保每个字段的类型在不同的文档中是相同的。 例如，如果第一个文档 `'startTime'` 字段是日期时间，在第二个文档中为字符串，则会命中此错误。 |
 | 来自数据源的基础服务的错误 | （从 Cosmos DB） `{"Errors":["Request rate is large"]}` | 检查存储实例，确保其正常运行。 可能需要调整缩放/分区。 |
@@ -41,7 +41,7 @@ ms.locfileid: "73466778"
 ### <a name="could-not-extract-document-content"></a>无法提取文档内容
 具有 Blob 数据源的索引器无法从文档中提取内容（例如，PDF 文件）。 这可能是由于以下原因导致的：
 
-| 原因 | 示例 | 行动 |
+| 原因 | 示例 | 操作 |
 | --- | --- | --- |
 | blob 大于大小限制 | 文档是 `'150441598'` 字节，超过了当前服务层的文档提取的最大大小 `'134217728'` 字节。 | [blob 索引错误](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | blob 的内容类型不受支持 | 文档具有不受支持的内容类型 `'image/png'` | [blob 索引错误](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
@@ -51,7 +51,7 @@ ms.locfileid: "73466778"
 ### <a name="could-not-parse-document"></a>无法分析文档
 索引器从数据源中读取文档，但将文档内容转换为指定的字段映射架构时出现问题。 这可能是由于以下原因导致的：
 
-| 原因 | 示例 | 行动 |
+| 原因 | 示例 | 操作 |
 | --- | --- | --- |
 | 缺少文档键 | 文档键不能为空或为空 | 确保所有文档都具有有效的文档键 |
 | 文档键无效 | 文档键的长度不能超过1024个字符 | 修改文档键以满足验证要求。 |
@@ -61,7 +61,7 @@ ms.locfileid: "73466778"
 ### <a name="could-not-execute-skill"></a>无法执行技能
 索引器无法在技能组合中运行技能。
 
-| 原因 | 示例 | 行动 |
+| 原因 | 示例 | 操作 |
 | --- | --- | --- |
 | 暂时性连接问题 | 发生暂时性错误。 请稍后重试。 | 偶尔会出现意外的连接问题。 稍后再次尝试通过索引器运行文档。 |
 | 潜在的产品 bug | 发生了意外错误。 | 这表示未知的失败类别，并可能表示存在产品错误。 请提交[支持票证](https://ms.portal.azure.com/#create/Microsoft.Support)以获得帮助。 |
@@ -110,7 +110,7 @@ ms.locfileid: "73466778"
 
 文档已读取并处理，但索引器无法将其添加到搜索索引。 这可能是由于以下原因导致的：
 
-| 原因 | 示例 | 行动 |
+| 原因 | 示例 | 操作 |
 | --- | --- | --- |
 | 文档中的术语大于[32 KB 的限制](search-limits-quotas-capacity.md#api-request-limits) | 字段包含的字词太大 | 可以确保字段未配置为可筛选、可查找或可排序，从而避免此限制。
 | 文档大于[最大 api 请求大小](search-limits-quotas-capacity.md#api-request-limits) | 文档太大，无法建立索引 | [如何为大型数据集编制索引](search-howto-large-index.md)
@@ -161,7 +161,7 @@ ms.locfileid: "73466778"
 }
 ```
 
-| 原因 | 示例 | 行动 |
+| 原因 | 示例 | 操作 |
 | --- | --- | --- |
 | 技能输入的类型错误 | 所需的技能输入 `X` 不是所需的类型 `String`。 所需的技能输入 `X` 未采用预期格式。 | 某些技能需要特定类型的输入，例如，[情绪技能](cognitive-search-skill-sentiment.md)要求 `text` 是一个字符串。 如果输入指定非字符串值，则不会执行技能，也不会生成任何输出。 确保你的数据集在类型中具有一致的输入值，或使用[自定义的 WEB API 技能](cognitive-search-custom-skill-web-api.md)对输入进行预处理。 如果要在数组上循环访问技能，请检查技能上下文和输入在正确位置 `*`。 通常，上下文和输入源都应以数组的 `*` 结束。 |
 | 缺少技能输入 | 缺少必需的技能输入 `X`。 | 如果你的所有文档均收到此警告，则很可能是输入路径中有一个拼写错误，你应仔细检查属性名称大小写、路径中的多余或缺失 `*`，以及来自数据源的文档定义所需的输入。 |
@@ -224,7 +224,12 @@ ms.locfileid: "73466778"
 
 可以重写此行为，启用增量进度，并使用 `assumeOrderByHighWatermarkColumn` 配置属性禁止显示此警告。
 
-[有关 Cosmos DB 增量进度和自定义查询的详细信息。](https://go.microsoft.com/fwlink/?linkid=2099593)
+有关详细信息，请参阅[增量进度和自定义查询](search-howto-index-cosmosdb.md#IncrementalProgress)。
+
+### <a name="truncated-extracted-text-to-x-characters"></a>将提取的文本截断为 X 个字符
+索引器限制可以从任何一个文档中提取的文本量。 此限制取决于定价层：免费64000级别为32000个字符，适用于基本、标准 S2 和标准 S3 层的4000000。 不会为被截断的文本编制索引。 若要避免此警告，请尝试将包含大量文本的文档拆分为多个较小的文档。 
+
+有关详细信息，请参阅[索引器限制](search-limits-quotas-capacity.md#indexer-limits)。
 
 ### <a name="could-not-map-output-field-x-to-search-index"></a>无法将输出字段 "X" 映射到搜索索引
 引用不存在/null 数据的输出字段映射将为每个文档生成警告，并产生空的索引字段。 若要解决此问题，请仔细检查输出字段映射源路径是否存在拼写错误，或使用[条件技能](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist)设置默认值。

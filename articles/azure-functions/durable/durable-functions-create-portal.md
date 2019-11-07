@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: glenga
 ms.reviewer: azfuncdf
-ms.openlocfilehash: b765e7a03f84211d4a86c4242e9484b3517c95f9
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 238969b320608c08491c3d3e85870d57f41c1589
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933566"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614976"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>使用 Azure 门户创建 Durable Functions
 
@@ -26,7 +26,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 > * 如果在 C# 中开发 Durable Functions，则应改为考虑 [Visual Studio 2019 开发](durable-functions-create-first-csharp.md)。
 > * 如果在 JavaScript 中开发 Durable Functions，则应改为考虑 [Visual Studio Code 开发](./quickstart-js-vscode.md)。
 
-## <a name="create-a-function-app"></a>创建函数应用
+## <a name="create-a-function-app"></a>创建 Function App
 
 必须使用函数应用托管任何函数的执行。 函数应用可将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 你可以创建 .NET 或 JavaScript 应用。
 
@@ -51,7 +51,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
     ```json
     {
       "dependencies": {
-        "durable-functions": "^1.1.2"
+        "durable-functions": "^1.3.1"
       }
     }
     ```
@@ -64,7 +64,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 ## <a name="create-an-orchestrator-function"></a>创建一个业务流程协调程序函数
 
-1. 展开 Function App，单击“Functions”旁边的 + 按钮。 如果这是函数应用中的第一个函数，请依次选择“门户中”、“继续”。 否则，请转到第三步。
+1. 展开 Function App，单击“Functions”旁边的  **按钮+** 。 如果这是函数应用中的第一个函数，请依次选择“门户中”、“继续”。 否则，请转到第三步。
 
    ![Azure 门户中的 Functions 快速入门页](./media/durable-functions-create-portal/function-app-quickstart-choose-portal.png)
 
@@ -82,7 +82,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 1. 在函数应用中创建另一函数，这次使用 **Durable Functions 业务流程协调程序**模板。 将新的业务流程函数命名为 `HelloSequence`。
 
-1. 使用 **Durable Functions 活动**模板创建第三个函数，该函数名为 `Hello`。
+1. 使用 `Hello`Durable Functions 活动**模板创建第三个函数，该函数名为** 。
 
 ## <a name="test-the-durable-function-orchestration"></a>测试持久函数业务流程
 

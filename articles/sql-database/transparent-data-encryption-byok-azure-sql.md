@@ -1,5 +1,5 @@
 ---
-title: TDE - Azure Key Vault 集成或创建自己的密钥 (BYOK) - Azure SQL 数据库 |Microsoft Docs
+title: 客户托管的透明数据加密（TDE）-Azure SQL 数据库 |Microsoft Docs
 description: SQL 数据库和数据仓库 Azure Key Vault 的透明数据加密 (TDE) 的“创建自己的密钥”(BYOK) 支持。 支持 BYOK 的 TDE 概述、优势、工作原理、注意事项和建议。
 services: sql-database
 ms.service: sql-database
@@ -10,204 +10,194 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-ms.date: 07/18/2019
-ms.openlocfilehash: 35e768e15aae13376ca6663ed5ca5109cb0a159b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.date: 11/04/2019
+ms.openlocfilehash: 49ffed06936f8de2aed6d34ed83fca9e71ac0daf
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893533"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615706"
 ---
-# <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Azure SQL 透明数据加密中的客户托管密钥 Azure Key Vault：创建自己的密钥支持
+# <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL 透明数据加密与客户托管的密钥
 
-集成了 Azure Key Vault 的[透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) 允许使用由客户管理的非对称密钥（称为 TDE 保护器）对数据库加密密钥 (DEK) 进行加密。 这通常也称为透明数据加密的创建自己的密匙 (BYOK) 支持。  在 BYOK 方案中，TDE 保护器存储在由客户拥有和管理的 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)（Azure 的基于云的外部密钥管理系统）中。 TDE 保护器可由密钥保管库[生成](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates)，也可以从本地 HSM 设备[转移](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)到密钥保管库。 TDE DEK 存储在数据库的启动页上，由 TDE 保护器进行加密和解密，该保护器存储在 Azure Key Vault 中并且从不会离开密钥保管库。  需要向 SQL 数据库授予对客户管理的密钥保管库的权限才能对 DEK 进行解密和加密。 如果对 key vault 的逻辑 SQL 服务器的权限已被吊销，则数据库将无法访问，连接将被拒绝，并且所有数据都将被加密。 对于 Azure SQL 数据库，TDE 保护器是在逻辑 SQL Server 级别设置的，并由该服务器关联的所有数据库继承。 对于 [Azure SQL 托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-howto-managed-instance)，TDE 保护器是在实例级别设置的，并由该实例上所有加密的数据库继承。 除非另有说明，否则术语“服务器”指的是整个文档中的服务器和实例。
+Azure SQL[透明数据加密（TDE）](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption)与客户托管的密钥可用于静态数据保护的创建自己的密钥（BYOK）方案，并使组织能够在密钥和数据的管理中实现职责分离。 通过客户托管的透明数据加密，客户负责和完全控制密钥生命周期管理（密钥创建、上传、旋转、删除）、密钥使用权限，以及对密钥的操作进行审核。
 
-> [!NOTE]
-> 用于 Azure SQL 数据库托管实例的 Azure Key Vault 集成（创建自己的密钥）的透明数据加密处于预览阶段。
+在此方案中，用于加密数据库加密密钥（DEK）（称为 TDE 保护程序）的密钥是客户托管的非对称密钥，存储在客户拥有和客户管理的[Azure Key Vault （AKV）](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)中，后者是基于云的外部密钥管理主板. Key Vault 是适用于 RSA 加密密钥的高度可用且可缩放的安全存储，由 FIPS 140-2 第2级验证的硬件安全模块（Hsm）提供支持。 它不允许直接访问存储的密钥，但使用授权实体的密钥提供加密/解密服务。 密钥保管库可以从本地 HSM 设备生成密钥保管库，将其导入或[传输到密钥保管库](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)。
 
-
-使用集成了 Azure Key Vault 的 TDE，用户可以控制密钥管理任务，包括密钥轮换、密钥保管库权限、密钥备份，以及使用 Azure Key Vault 功能对所有 TDE 保护器启用审核/报告。 Key Vault 提供了集中化密钥管理功能，利用严格监控的硬件安全模块 (HSM)，并可在密钥与数据管理之间实现职责分离，以帮助满足安全策略的要求。  
-
-集成了 Azure Key Vault 的 TDE 具有以下优势：
-
-- 更高的透明度和细化控制，能够自我管理 TDE 保护器
-- 随时能够撤销权限，使数据库不可访问
-- 通过将 TDE 保护器（以及其他 Azure 服务中使用的其他密钥和机密）托管在 Key Vault 中，对其进行集中管理
-- 将组织内部的密钥与数据管理责任相分离，以支持职责分离
-- 自己的客户端更值得信赖，因为 Key Vault 的设计可以防止 Microsoft 查看或提取任何加密密钥。
-- 支持密钥轮换
+对于 Azure SQL 数据库和 Azure SQL 数据仓库，将在逻辑服务器级别设置 TDE 保护程序，并将其继承给与该服务器关联的所有加密数据库。 对于 Azure SQL 托管实例，TDE 保护程序在实例级别设置，并由该实例上的所有加密数据库继承。 在整个文档中，术语 "*服务器*" 同时引用 SQL 数据库逻辑服务器和托管实例，除非另行说明。 
 
 > [!IMPORTANT]
-> 对于目前正在使用服务托管的 TDE，但想要开始使用 Key Vault 的用户，在切换到 Key Vault 中 TDE 保护器的过程中，会保持启用 TDE。 这既不会造成停机，也无需重新加密数据库文件。 从服务托管的密钥切换到 Key Vault 密钥只需重新加密数据库加密密钥 (DEK)，此操作非常快捷且可在线完成。
+> 对于使用服务托管的 TDE 的用户，如果想要开始使用客户管理的 TDE，则在切换的过程中数据将保持加密，且不会造成停机，也不会重新加密数据库文件。 从服务托管的密钥切换到客户托管的密钥只需要重新加密 DEK，这是一项快速、联机的操作。
 
-## <a name="how-does-tde-with-azure-key-vault-integration-support-work"></a>支持 Azure Key Vault 集成的 TDE 如何工作
+## <a name="benefits-of-the-customer-managed-tde"></a>客户托管的 TDE 的优点
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> Azure SQL 数据库仍支持 PowerShell Azure 资源管理器模块，但所有将来的开发都适用于 Az .Sql 模块。 有关这些 cmdlet，请参阅[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令的参数完全相同。
+客户托管的 TDE 为客户提供以下好处：
 
-![在 Key Vault 中对服务器进行身份验证](./media/transparent-data-encryption-byok-azure-sql/tde-byok-server-authentication-flow.PNG)
+- 完全和精细控制 TDE 保护程序的使用情况和管理;
 
-首次将 TDE 配置为使用 Key Vault 中的 TDE 保护器后，服务器会将每个已启用 TDE 的数据库的 DEK 发送到 Key Vault，以发出包装密钥请求。 Key Vault 返回存储在用户数据库中的已加密数据库加密密钥。  
+- TDE 保护程序使用情况的透明度;
 
-> [!IMPORTANT]
-> 必须注意，将 TDE 保护器存储在 Azure Key Vault 中之后，它永远不会离开 Azure Key Vault。 服务器只能将密钥操作请求发送到 Key Vault 中的 TDE 保护器密钥材料，并且永远不会访问或缓存 TDE 保护器。 Key Vault 管理员有权随时撤销服务器的 Key Vault 权限，在这种情况下，将拒绝与该数据库的所有连接。
+- 能够实现组织中密钥和数据的管理中的职责分离;
 
-## <a name="guidelines-for-configuring-tde-with-azure-key-vault"></a>有关配置采用 Azure Key Vault 的 TDE 的准则
+- Key Vault 管理员可以撤消密钥访问权限，以使加密数据库不可访问;
 
-### <a name="general-guidelines"></a>一般性指导
+- AKV 中密钥的集中管理;
 
-- 确保 Azure Key Vault 和 Azure SQL 数据库/托管实例位于同一租户中。  **不支持** Key Vault 与服务器进行跨租户的交互。
-- 如果计划租户迁移，则必须重新配置使用 AKV 的 TDE，以了解有关[移动资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)的详细信息。
-- 配置采用 Azure Key Vault 的 TDE 时，必须考虑到重复的包装/解包操作在密钥保管库中施加的负载。 例如，由于与 SQL 数据库服务器关联的所有数据库使用相同的 TDE 保护器，因此，该服务器的故障转移将会针对保管库触发密钥操作：服务器中有多少个数据库，就会触发多少次密钥操作。 根据我们的经验以及 [Key Vault 服务限制](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)中所述，我们建议将最多 500 个标准/常规用途库或 200 个高级/业务关键型数据库与单个订阅中的 1 个 Azure Key Vault 相关联，以确保在访问保管库中的 TDE 保护器时能够获得一致的高可用性。
-- 建议：在本地保留 TDE 保护器的副本。  这要求 HSM 设备在本地创建一个 TDE 保护器，并创建一个密钥托管系统来存储 TDE 保护器的本地副本。  了解[如何将密钥从本地 HSM 转移到 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)。
+- 比最终客户更好地信任，因为 AKV 的设计使 Microsoft 无法看到或提取加密密钥;
 
+## <a name="how-customer-managed-tde-works"></a>客户托管的 TDE 的工作原理
 
-### <a name="guidelines-for-configuring-azure-key-vault"></a>有关配置 Azure Key Vault 的指导
+![客户管理的 TDE 的设置和功能](./media/transparent-data-encryption-byok-azure-sql/customer-managed-tde-with-roles.PNG)
 
-- 创建启用[软删除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)和清除保护的密钥保管库，以防意外的密钥或密钥保管库删除时丢失数据。 必须通过[CLI](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-soft-delete-cli#enabling-soft-delete)或[Powershell](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-soft-delete-powershell#enabling-soft-delete)启用密钥保管库上的 "软删除" 属性（此选项在 AKV 门户中不可用，但 Azure SQL 需要该选项）：  
-  - 除非进行恢复或清除，否则软删除的资源将保留设置的一段时间（90 天）。
-  - “恢复”和“清除”操作在密钥保管库访问策略中各自具有相关联的权限。
-- 在 Key Vault 中设置资源锁可以控制谁能删除此关键资源，并帮助防止意外或未经授权的删除。  [详细了解资源锁](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)
+为了使服务器能够使用存储在 AKV 中的 TDE 保护程序来加密 DEK，key vault 管理员需要使用其唯一 AAD 标识向服务器授予以下访问权限：
 
-- 使用 SQL 数据库服务器的 Azure Active Directory (Azure AD) 标识授予其对密钥保管库的访问权限。  使用门户 UI 时，会自动创建 Azure AD 标识，并向服务器授予 Key Vault 访问权限。  使用 PowerShell 配置支持 BYOK 的 TDE 时，必须手动创建 Azure AD 标识，且验证完成进度。 有关使用 PowerShell 进行配置的详细分步说明，请参阅[配置支持 BYOK 的 TDE](transparent-data-encryption-byok-azure-sql-configure.md) 和[配置支持托管实例 BYOK 的 TDE](https://aka.ms/sqlmibyoktdepowershell)。
+- **获取**-用于检索 Key Vault 中的密钥的公共部分和属性
 
-   > [!NOTE]
-   > 如果意外删除了 Azure AD 标识或者使用密钥保管库的访问策略**撤销了服务器的权限**，或将服务器移到不同的租户，则服务器将失去对密钥保管库的访问权限，并 TDE 加密的数据库。在逻辑服务器的 Azure AD 标识和权限已还原之前，将无法访问和登录。  
+- **wrapKey** -能够保护（加密） DEK
 
-- 将防火墙和虚拟网络与 Azure Key Vault 一起使用时，必须允许受信任的 Microsoft 服务跳过此防火墙。 选择 "是"。
+- **unwrapKey** -能够取消对 DEK 的保护（解密）
 
-   > [!NOTE]
-   > 如果 TDE 加密的 SQL 数据库将失去对密钥保管库的访问权限，因为它们不能跳过防火墙，数据库将无法访问，并且在防火墙绕过权限还原之前，登录将被拒绝。
+Key vault 管理员还可以[对 key vault 审核事件启用日志记录](https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault)，以便以后可以对其进行审核。
 
-- 针对所有加密密钥启用审核和报告：Key Vault 提供可以轻松注入到其他安全信息和事件管理 (SIEM) 工具的日志。 Operations Management Suite (OMS) [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault) 是已集成的服务的一个示例。
-- 若要确保加密数据库的高可用性，请将每个 SQL 数据库服务器配置为驻留在不同区域的两个 Azure 密钥保管库。
+当服务器配置为使用来自 AKV 的 TDE 保护程序时，服务器会将每个启用了 TDE 的数据库的 DEK 发送到密钥保管库以进行加密。 Key vault 返回已加密的 DEK，然后将其存储在用户数据库中。
+
+如果需要，服务器会将受保护的 DEK 发送到密钥保管库进行解密。
+
+如果启用了日志记录，审核员可以使用 Azure Monitor 查看 key vault AuditEvent 日志。
 
 
-### <a name="guidelines-for-configuring-the-tde-protector-asymmetric-key"></a>有关配置 TDE 保护器（非对称密钥）的指导
+## <a name="requirements-for-configuring-customer-managed-tde"></a>配置客户管理的 TDE 的要求
 
-- 在本地 HSM 设备上创建加密密钥。 请确保这是不对称的、RSA 2048 或 RSA HSM 2048 的密钥，以便 Azure Key Vault 中存储。
-- 将密钥托管在密钥托管系统中。  
-- 将加密密钥文件（.pfx、.byok 或 .backup）导入 Azure Key Vault。
+### <a name="requirements-for-configuring-akv"></a>配置 AKV 的要求
 
-   > [!NOTE]
-   > 测试时，可以使用 Azure Key Vault 创建密钥，但无法托管此密钥，因为私钥永远无法离开 Key Vault。  始终备份并托管用于加密生产数据的密钥，因为丢失密钥（在 Key Vault 中意外删除、过期等等）会导致永久性的数据丢失。
+- Key vault 和 SQL 数据库/托管实例必须属于同一个 Azure Active Directory 租户。 不支持跨租户的密钥保管库和服务器交互。 若要以后移动资源，则必须重新配置使用 AKV 的 TDE。 了解有关[移动资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)的详细信息。
 
-- 如果你使用具有到期日期的密钥–实现过期警告系统以便在密钥过期之前对其进行轮替：**一旦密钥过期，加密的数据库将失去对其 TDE 保护程序的访问权限**，并且所有登录都将被拒绝，直到该键已轮换到新键，并选择作为逻辑 SQL 服务器的新键和默认 TDE 保护程序。
-- 确保密钥已启用并有权执行“获取”、“包装密钥”和“解包密钥”操作。
-- 在首次使用 Azure Key Vault 中的密钥之前，请创建 Azure Key Vault 密钥备份。 了解有关[AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey)命令的详细信息。
-- 每次对密钥进行任何更改后（例如，添加 ACL、添加标记、添加密钥属性），请创建新备份。
-- 轮换密钥时保留 Key Vault 中密钥的**先前版本**，以便可以还原旧数据库备份。 更改数据库的 TDE 保护器后，数据库的旧备份**不会更新**为使用最新的 TDE 保护器。  在还原时，每个备份需要创建该备份时所用的 TDE 保护器。 可以遵照[使用 PowerShell 轮换透明数据加密保护器](transparent-data-encryption-byok-azure-sql-key-rotation.md)中的说明执行密钥轮换。
-- 改回到服务托管的密钥后，请保留 Azure Key Vault 中以前用过的所有密钥。  这可以确保能够使用 Azure Key Vault 中存储的 TDE 保护器还原数据库备份。  通过 Azure Key Vault 创建的 TDE 保护器必须一直保留到使用服务托管的密钥创建所有存储的备份为止。  
-- 使用[AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey)创建这些密钥的可恢复副本。
-- 若要在出现安全事件期间删除可能已泄露的密钥并避免数据丢失的风险，请遵循[删除可能已泄露的密钥](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)中所述的步骤。
+- 必须在密钥保管库上启用[软删除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)功能，以防止意外删除意外密钥（或密钥保管库）。 软删除的资源将保留90天，除非客户在此期间恢复或清除。 “恢复”和“清除”操作在密钥保管库访问策略中各自具有相关联的权限。 软删除功能在默认情况下处于关闭状态，可通过[Powershell](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell#enabling-soft-delete)或[CLI](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-cli#enabling-soft-delete)启用。 不能通过 Azure 门户启用此功能。  
 
-### <a name="guidelines-for-monitoring-the-tde-with-azure-key-vault-configuration"></a>用于监视 TDE 与 Azure Key Vault 配置的准则
+- 使用 Azure Active Directory 标识向 SQL 数据库服务器或托管实例授予对密钥保管库的访问权限（get、wrapKey、unwrapKey）。 使用 Azure 门户时，会自动创建 Azure AD 标识。 使用 PowerShell 或 CLI 时，必须显式创建 Azure AD 标识并且应验证完成。 有关使用 PowerShell 进行配置的详细分步说明，请参阅[配置支持 BYOK 的 TDE](transparent-data-encryption-byok-azure-sql-configure.md) 和[配置支持托管实例 BYOK 的 TDE](https://aka.ms/sqlmibyoktdepowershell)。
 
-如果逻辑 SQL server 在 Azure Key Vault 中无法访问客户托管的 TDE 保护程序，则该数据库将拒绝所有连接，并在 Azure 门户中显示为无法访问。  最常见的原因是：
-- 意外删除或位于防火墙后面的密钥保管库
-- 意外删除、禁用或过期的密钥保管库密钥
-- 意外删除了逻辑 SQL Server 实例 AppId
-- 已吊销逻辑 SQL Server 实例 AppId 的特定于密钥的权限
+- 使用带有 AKV 的防火墙时，必须启用 "*允许受信任的 Microsoft 服务" 选项来绕过防火墙*。
 
- > [!NOTE]
- > 如果在48小时内恢复客户托管的 TDE 保护程序的访问权限，则数据库将自动进行自我修复，并自动变为联机状态。  如果数据库由于间歇性网络中断而无法访问，则无需执行任何操作，数据库也会自动返回到联机状态。
-  
-- 有关排除现有配置故障的详细信息，请参阅[排查 TDE 问题](https://docs.microsoft.com/sql/relational-databases/security/encryption/troubleshoot-tde)
+### <a name="requirements-for-configuring-tde-protector"></a>配置 TDE 保护程序的要求
 
-- 若要监视数据库状态并为丢失 TDE 保护程序访问启用警报，请配置以下 Azure 功能：
-    - [Azure 资源运行状况](https://docs.microsoft.com/azure/service-health/resource-health-overview)。 在第一次连接到数据库后，无法访问的数据库将显示为 "不可用"。
-    - [活动日志](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications)当客户管理的密钥保管库中的 TDE 保护程序发生故障时，会将条目添加到活动日志。  通过为这些事件创建警报，你可以尽快恢复访问权限。
-    - [操作组](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)可以定义为根据你的偏好发送通知和警报，例如电子邮件/短信/推送/语音、逻辑应用、WEBHOOK、ITSM 或自动化 Runbook。
-    
+- TDE 保护程序只能为非对称、RSA 2048 或 RSA HSM 2048 密钥。
 
-## <a name="high-availability-geo-replication-and-backup--restore"></a>高可用性、异地复制和备份/还原
+- 此密钥不能具有激活或过期日期设置。
 
-### <a name="high-availability-and-disaster-recovery"></a>高可用性和灾难恢复
+- 密钥保管库中的密钥必须处于 "已启用" 状态。
 
-如何使用 Azure Key Vault 配置高可用性取决于数据库和 SQL 数据库服务器的配置，下面针对两种不同的情况提供了建议的配置。  第一种情况是未配置异地冗余的独立数据库或 SQL 数据库服务器。  第二种情况是配置了故障转移组或异地冗余的数据库或 SQL 数据库服务器，其中，必须确保每个异地冗余副本在故障转移组中具有一个本地 Azure Key Vault，以保证异地故障转移能够正常工作。
+- 如果要将现有密钥导入到密钥保管库中，请确保以支持的文件格式（.pfx、byok 或 backup）提供该密钥。
 
-对于第一种情况，如果要求未配置异地冗余的数据库和 SQL 数据库服务器具有高可用性，我们强烈建议将服务器配置为使用两个不同区域中具有相同密钥材料的两个不同 Key Vault。 若要实现此目的，可以使用与 SQL 数据库服务器共置在同一区域中的主要 Key Vault 来创建一个 TDE 保护器，并将密钥克隆到位于不同 Azure 区域中的 Key Vault，以便在主要 Key Vault 遇到服务中断时，服务器能够访问另一个 Key Vault，同时让数据库保持正常运行。 使用 AzKeyVaultKey cmdlet 从主密钥保管库中检索加密格式的密钥，然后使用 AzKeyVaultKey cmdlet 并在第二个区域中指定密钥保管库。
+## <a name="recommendations-when-configuring-customer-managed-tde"></a>配置客户托管的 TDE 时的建议
 
-![单服务器 HA 和无异地灾难恢复](./media/transparent-data-encryption-byok-azure-sql/SingleServer_HA_Config.PNG)
+### <a name="recommendations-when-configuring-akv"></a>配置 AKV 时的建议
 
-## <a name="how-to-configure-geo-dr-with-azure-key-vault"></a>如何使用 Azure Key Vault 配置异地灾难恢复
+- 在单个订阅中，最多可将500常规用途或200业务关键数据库关联到一个密钥保管库，以确保服务器访问 key vault 中的 TDE 保护程序时的高可用性。 这些数字以[密钥保管库服务限制](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)中的经验和文档为基础。 此处的目的是在服务器故障转移后防止出现问题，因为它会触发对保管库的关键操作，因为该服务器中有数据库。 
 
-若要保持已加密数据库的 TDE 保护器的高可用性，必须基于现有或所需的 SQL 数据库故障转移组或活动异地复制实例配置冗余的 Azure Key Vault。  每个异地复制的服务器需要一个单独的 Key Vault，该 Key Vault 必须与服务器共置在同一 Azure 区域中。 如果一个区域发生的服务中断导致主数据库不可访问，并且触发了故障转移，则辅助数据库能够使用辅助 Key Vault 接管工作。
+- 设置密钥保管库上的资源锁，以控制谁可以删除此重要资源并防止意外或未经授权的删除。 详细了解[资源锁](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
 
-对于异地复制的 Azure SQL 数据库，需要使用以下 Azure Key Vault 配置：
+- 对所有加密密钥启用审核和报告： Key vault 提供了可轻松注入到其他安全信息和事件管理工具的日志。 Operations Management Suite [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault)是已集成的服务的一个示例。
 
-- 一个主数据库和一个辅助数据库各自使用区域中的某个 Key Vault。
-- 至少需要一个辅助数据库，最多支持四个辅助数据库。
-- 不支持辅助数据库的辅助数据库（链接）。
+- 将每个服务器与驻留在不同区域的两个密钥保管库相链接，并保存相同的密钥材料，以确保加密数据库的高可用性。 将密钥保管库中的密钥仅标记为与 TDE 保护程序位于同一区域。 系统将使用
 
-以下部分将更详细地介绍设置和配置步骤。
+### <a name="recommendations-when-configuring-tde-protector"></a>配置 TDE 保护程序时的建议
+- 将 TDE 保护程序的副本保存在安全的位置，或将其托管到托管服务。 
 
-### <a name="azure-key-vault-configuration-steps"></a>Azure Key Vault 配置步骤
+- 如果在密钥保管库中生成密钥，请在第一次在 AKV 中使用该密钥之前创建密钥备份。 只能将备份还原到 Azure Key Vault。 了解有关[AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey)命令的详细信息。
 
-- 安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)
-- 使用 [PowerShell 在 Key Vault 中启用“软删除”属性](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)（目前无法从 AKV 门户使用此选项 – 但 SQL 需要此选项），在两个不同的区域中创建两个 Azure Key Vault。
-- 这两个 Azure Key Vault 必须位于同一 Azure 地理位置中的两个区域，这样才能正常备份和还原密钥。  如果需要将两个密钥保管库定位在不同的地理位置以满足 SQL 异地灾难恢复的要求，请遵循从本地 HSM 导入密钥的 [BYOK 过程](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)。
-- 在第一个 Key Vault 中创建新密钥：  
-  - RSA/RSA-HSM 2048 密钥
-  - 无过期日期
-  - 密钥已启用并有权执行“获取”、“包装密钥”和“解包密钥”操作
-- 备份主密钥，并将密钥还原到第二个 Key Vault。  请参阅[BackupAzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey)和[AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey)。
+- 无论何时对密钥进行了任何更改（例如，密钥属性、标记、Acl），都要创建一个新备份。
 
-### <a name="azure-sql-database-configuration-steps"></a>Azure SQL 数据库配置步骤
+- 轮换密钥时保留 Key Vault 中密钥的**先前版本**，以便可以还原旧数据库备份。 当数据库的 TDE 保护程序更改时，数据库的旧备份**不会更新**为使用最新的 TDE 保护程序。 在还原时，每个备份都需要在创建时对它进行加密的 TDE 保护程序。 可以遵照[使用 PowerShell 轮换透明数据加密保护器](transparent-data-encryption-byok-azure-sql-key-rotation.md)中的说明执行密钥轮换。
 
-根据是要从新的 SQL 部署开始，还是使用现有的 SQL 异地灾难恢复部署，以下配置步骤会有所不同。  我们先概述新部署的配置步骤，然后说明如何将 Azure Key Vault 中存储的 TDE 保护器分配到已建立异地灾难恢复链接的现有部署。
+- 即使在切换到服务托管的密钥后，仍在 AKV 中保留所有以前使用的密钥。 它可确保在 AKV 中存储的 TDE 保护程序中还原数据库备份。  必须保留使用 Azure Key Vault 创建的 TDE 保护程序，直到使用服务托管的密钥创建了所有剩余的存储备份。 使用[AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey)创建这些密钥的可恢复副本。
 
-**适用于新部署的步骤**：
+- 若要在安全事件期间删除可能泄露的密钥，而不会造成数据丢失的风险，请执行[删除可能已泄露的密钥](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)中的步骤。
 
-- 在前面创建的密钥保管库所在的两个相同区域创建两个 SQL 数据库服务器。
-- 选择 SQL 数据库服务器 TDE 窗格，并为每个 SQL 数据库服务器：  
-  - 选择同一区域中的 AKV
-  - 选择用作 TDE 保护器的密钥 - 每个服务器将使用 TDE 保护器的本地副本。
-  - 在门户中执行此操作会创建 SQL 数据库服务器的 [AppID](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)，此标识用于向 SQL 数据库服务器分配密钥保管库的访问权限 - 请不要删除此标识。 可以通过在 Azure Key Vault 中删除相应的权限（而不是对 SQL 数据库服务器执行此类操作），以撤销 SQL 数据库服务器对密钥保管库的访问权限。
-- 创建主数据库。
-- 遵循[活动异地复制指导](sql-database-geo-replication-overview.md)来完成该方案，此步骤会创建辅助数据库。
+## <a name="inaccessible-tde-protector"></a>无法访问 TDE 保护程序
 
-![故障转移组和异地灾难恢复](./media/transparent-data-encryption-byok-azure-sql/Geo_DR_Config.PNG)
+如果将透明数据加密配置为使用客户管理的密钥，则数据库保持联机状态需要持续访问 TDE 保护程序。 如果服务器在 AKV 中失去了对客户托管的 TDE 保护程序的访问权限，则在最多10分钟内，数据库将开始拒绝所有连接与相应的错误消息，并将其状态更改为 "*不可访问*"。 不能访问的数据库中允许的唯一操作是将其删除。
 
 > [!NOTE]
-> 继续在数据库之间建立异地链接之前，必须确保相同的 TDE 保护器在这两个 Key Vault 中存在。
+> 如果数据库由于间歇性网络中断而无法访问，则无需执行任何操作，数据库也会自动返回到联机状态。
 
-**适用于异地灾难恢复部署中现有 SQL 数据库的步骤：** ：
+在恢复对密钥的访问权限后，使数据库重新联机需要额外的时间和步骤，这可能会因所用时间而异，但不需要访问数据库中数据的密钥和大小：
 
-由于 SQL 数据库服务器已存在并且已分配主数据库和辅助数据库，因此，必须按以下顺序执行配置 Azure Key Vault 的步骤：
+- 如果在8小时内还原密钥访问，数据库将在接下来的一小时内自动修复。
 
-- 从托管辅助数据库的 SQL 数据库服务器开始：
-  - 分配位于同一区域中的 Key Vault
-  - 分配 TDE 保护器
-- 现在，请转到托管主数据库的 SQL 数据库服务器：
-  - 选择用于辅助数据库的同一 TDE 保护器
+- 如果在超过8小时后恢复密钥访问权限，则无法进行自动修复，并使数据库恢复工作可能需要很长时间，具体取决于数据库的大小，需要打开支持票证。 数据库重新联机后，以前配置的服务器级别设置（如[故障转移组](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)配置、时间点还原历史记录和标记）将丢失。 因此，建议实施通知系统，以便在8小时内确定并解决基础密钥访问问题。
 
-![故障转移组和异地灾难恢复](./media/transparent-data-encryption-byok-azure-sql/geo_DR_ex_config.PNG)
+### <a name="accidental-tde-protector-access-revocation"></a>意外的 TDE 保护程序访问吊销
 
-> [!NOTE]
-> 将 Key Vault 分配到服务器时，必须从辅助服务器开始。  在第二个步骤中，将 Key Vault 分配到主服务器并更新 TDE 保护器；异地灾难恢复链接会继续工作，因为复制的数据库使用的 TDE 保护器此时可供这两个服务器使用。
+有权访问密钥保管库的用户可能会意外地禁用对密钥的服务器访问权限：
 
-在使用 Azure Key Vault 中客户管理的密钥为 SQL 数据库异地灾难恢复方案启用 TDE 之前，必须使用同一区域中用于 SQL 数据库异地复制的相同内容创建并维护两个 Azure Key Vault。  具体而言，“相同内容”是指这两个 Key Vault 必须包含相同 TDE 保护器的副本，以便这两个服务器能够访问所有数据库使用的 TDE 保护器。  接下来，必须使这两个 Key Vault 保持同步，这意味着，它们在密钥轮换之后必须包含 TDE 保护器的相同副本，并保留用于日志文件或备份的旧版密钥；TDE 保护器必须保留相同的密钥属性；Key Vault 必须保留 SQL 的相同访问权限。  
+- 从服务器撤消 key vault 的*get*、 *wrapKey*、 *unwrapKey*权限
 
-遵循[活动异地复制概述](sql-database-geo-replication-overview.md)中的步骤来测试和触发故障转移，应定期执行此操作，以确认保留了 SQL 对这两个 Key Vault 的访问权限。
+- 删除密钥
 
-### <a name="backup-and-restore"></a>备份和还原
+- 删除密钥保管库
 
-使用 Key Vault 中的密钥通过 TDE 加密数据库后，也会使用相同的 TDE 保护器加密所有生成的备份。
+- 更改密钥保管库的防火墙规则
 
-若要从 Key Vault 中还原使用 TDE 保护器加密的备份，请确保密钥材料仍在原始保管库中，并使用原始密钥名称。 更改数据库的 TDE 保护器后，数据库的旧备份**不会**更新为使用最新的 TDE 保护器。 因此，我们建议在 Key Vault 中保留所有旧版 TDE 保护器，以便可以还原数据库备份。
+- 正在删除 Azure Active Directory 中服务器的托管标识
 
-如果还原备份所需的密钥不再在其原始密钥保管库中，则返回以下错误消息： "目标服务器 `<Servername>` 无权访问在 \<时间戳之间创建的所有 AKV Uri #1 > 和 \<时间戳 #2. 请在还原所有 AKV URI 之后重试操作。”
+了解更多有关[数据库无法访问的常见原因](https://docs.microsoft.com/sql/relational-databases/security/encryption/troubleshoot-tde?view=azuresqldb-current#common-errors-causing-databases-to-become-inaccessible)的信息。
 
-若要缓解这种情况，请运行[AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet，以返回已添加到服务器的 Key Vault 中的密钥列表（除非用户删除了它们）。 为了确保可以还原所有备份，请确保备份的目标服务器能够访问所有这些密钥。
+## <a name="monitoring-of-the-customer-managed-tde"></a>监视客户托管的 TDE
 
-```powershell
-Get-AzSqlServerKeyVaultKey `
-  -ServerName <LogicalServerName> `
-  -ResourceGroup <SQLDatabaseResourceGroupName>
-```
+若要监视数据库状态并为丢失 TDE 保护程序访问启用警报，请配置以下 Azure 功能：
+- [Azure 资源运行状况](https://docs.microsoft.com/azure/service-health/resource-health-overview)。 在第一次连接到数据库后，无法访问的数据库将显示为 "不可用"。
+- [活动日志](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications)当客户管理的密钥保管库中的 TDE 保护程序发生故障时，会将条目添加到活动日志。  通过为这些事件创建警报，你可以尽快恢复访问权限。
+- [操作组](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)可以定义为根据你的偏好发送通知和警报，例如电子邮件/短信/推送/语音、逻辑应用、WEBHOOK、ITSM 或自动化 Runbook。
 
-若要详细了解 SQL 数据库的备份恢复，请参阅[恢复 Azure SQL 数据库](sql-database-recovery-using-backups.md)。 若要详细了解 SQL 数据仓库的备份恢复，请参阅[恢复 Azure SQL 数据仓库](../sql-data-warehouse/backup-and-restore.md)。
+## <a name="database-backup-and-restore-with-customer-managed-tde"></a>通过客户托管的 TDE 进行数据库备份和还原
 
-有关备份的日志文件的其他注意事项：备份的日志文件仍会使用原始 TDE 加密器保持加密，即使 TDE 保护器已轮换，并且数据库正在使用新的 TDE 保护器。  还原时，需要使用这两个密钥来还原数据库。  如果日志文件使用 Azure Key Vault 中存储的 TDE 保护器，则还原时需要此密钥，即使数据库同时已改用服务托管的 TDE。
+使用 Key Vault 中的密钥对数据库进行加密后，所有新生成的备份也将使用相同的 TDE 保护程序进行加密。 更改 TDE 保护程序时，**不会更新**数据库的旧备份以使用最新的 TDE 保护程序。
+
+若要使用 Key Vault 中的 TDE 保护程序还原加密的备份，请确保密钥材料可供目标服务器使用。 因此，建议你将所有旧版本的 TDE 保护程序保留在密钥保管库中，以便可以还原数据库备份。 
+
+> [!IMPORTANT]
+> 在任何时候，为服务器设置的 TDE 保护程序都不能超过一个。 这是在 Azure 门户边栏选项卡中标记为 "使密钥成为默认的 TDE 保护程序" 的密钥。 但是，可以将多个附加密钥链接到服务器，而无需将其标记为 TDE 保护程序。 这些密钥不用于保护 DEK，但如果备份文件是使用具有相应指纹的密钥加密的，则可以在从备份还原期间使用。
+
+如果还原备份所需的密钥对于目标服务器不再可用，则还原尝试： "目标服务器 `<Servername>` 无权访问在 \<时间戳之间创建的所有 AKV Uri #1 > 和 \<时间戳 #2 >。 请在还原所有 AKV Uri 后重试操作。 "
+
+若要缓解这种情况，请运行面向目标的 SQL 数据库逻辑服务器的[AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet 或目标托管实例的[AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) ，以返回可用密钥列表并标识缺失的密钥列表。 若要确保可以还原所有备份，请确保还原目标服务器有权访问所需的所有密钥。 这些密钥无需标记为 TDE 保护程序。
+
+若要详细了解 SQL 数据库的备份恢复，请参阅[恢复 Azure SQL 数据库](sql-database-recovery-using-backups.md)。 若要详细了解 SQL 数据仓库的备份恢复，请参阅[恢复 Azure SQL 数据仓库](../sql-data-warehouse/backup-and-restore.md)。 有关使用托管实例进行 SQL Server 的本机备份/还原，请参阅[快速入门：将数据库还原到托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) 
+
+日志文件的其他注意事项：已备份的日志文件仍然使用原始 TDE 保护程序进行加密，即使它已被旋转并且数据库现在使用新的 TDE 保护程序。  还原时，需要使用这两个密钥来还原数据库。  如果日志文件使用存储在 Azure Key Vault 中的 TDE 保护程序，则还原时需要此密钥，即使数据库在此期间已更改为使用服务托管的 TDE。
+
+## <a name="high-availability-with-customer-managed-tde"></a>通过客户托管的 TDE 实现高可用性
+
+即使在没有为服务器配置异地冗余的情况下，也强烈建议将服务器配置为在两个不同的区域中使用两个不同的密钥保管库。 可以通过使用与服务器相同的区域中的主密钥保管库创建 TDE 保护程序来完成此操作，并将密钥克隆到另一个 Azure 区域中的密钥保管库，使服务器有权访问第二个密钥保管库，以确保 primary key vault exper当数据库启动并运行时 ience 中断。 
+
+使用 AzKeyVaultKey cmdlet 从主密钥保管库中检索加密格式的密钥，然后使用 AzKeyVaultKey cmdlet 并在第二个区域中指定密钥保管库来克隆该密钥。 或者，使用 Azure 门户来备份和还原密钥。 Se 其他区域的辅助密钥保管库中的密钥不应标记为 TDE 保护程序，甚至不允许这样做。
+
+ 如果中断影响主密钥保管库，并且只有这样，系统会自动切换到辅助密钥保管库中具有相同指纹的其他链接密钥（如果存在）。 请注意，如果 TDE 保护程序由于吊销访问权限而无法访问，或者由于删除了密钥或密钥保管库，则不会发生此开关，因为这可能表明客户有意要限制服务器访问密钥。
+
+![单服务器 HA](./media/transparent-data-encryption-byok-azure-sql/customer-managed-tde-with-ha.png)
+
+## <a name="geo-dr-and-customer-managed-tde"></a>异地灾难恢复和客户管理的 TDE
+
+在[活动异地复制](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication)和[故障转移组](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)方案中，所涉及的每个服务器都需要一个单独的密钥保管库，该密钥保管库必须与服务器共存于同一 Azure 区域中。 客户负责使密钥保管库中的密钥材料保持一致，以便异地辅助副本处于同步状态，并且如果由于区域中的服务中断而无法访问主保管库中的密钥，则可以接管该密钥，并触发故障转移. 最多可配置四个辅助数据库，并且不支持链接（辅助副本）。
+
+若要避免在建立或进行地域复制的过程中因密钥材料不完整而发生的问题，请务必在配置客户托管的 TDE 时遵循这些规则：
+
+- 涉及的所有密钥保管库必须具有相同的属性，并且具有与各自服务器相同的访问权限。
+
+- 涉及的所有密钥保管库必须包含相同的密钥材料。 它不仅适用于当前的 TDE 保护程序，还适用于在备份文件中使用的所有以前的 TDE 保护程序。
+
+- TDE 保护程序的初始设置和旋转必须首先在辅助数据库上完成，然后在主副本上执行。
+
+![故障转移组和异地灾难恢复](./media/transparent-data-encryption-byok-azure-sql/customer-managed-tde-with-bcdr.png)
+
+若要测试故障转移，请按照[活动异地复制概述](sql-database-geo-replication-overview.md)中的步骤进行操作。 应定期完成此操作，以确认已维护对两个密钥保管库的访问权限。
+
+## <a name="next-steps"></a>后续步骤
+
+你可能还需要查看以下 PowerShell 示例脚本，以了解如何通过客户托管的 TDE 执行常见操作：
+
+- [使用 PowerShell 为 SQL 数据库旋转透明数据加密保护程序](transparent-data-encryption-byok-azure-sql-key-rotation.md)
+
+- [使用 PowerShell 删除用于 SQL 数据库的透明数据加密（TDE）保护程序](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql-remove-tde-protector)
+
+- [使用 PowerShell 管理托管实例中的透明数据加密](https://docs.microsoft.com/azure/sql-database/scripts/transparent-data-encryption-byok-sql-managed-instance-powershell?toc=%2fpowershell%2fmodule%2ftoc.json)

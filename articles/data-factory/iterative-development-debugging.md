@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 数据工厂中进行迭代开发和调试 | Microsoft Docs
+title: Azure 数据工厂中的迭代开发和调试
 description: 了解如何在 Azure 门户中以迭代方式开发和调试数据工厂管道。
 ms.date: 09/26/2018
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: a1c4bf55fbb8242293fc0e30bbe16a6884b901cb
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 38e51e33ef487da8879132eb1ce9cf1e63a814e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178623"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672846"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>使用 Azure 数据工厂进行迭代开发和调试
 
@@ -58,7 +58,7 @@ Azure 数据工厂允许以迭代方式开发和调试数据工厂管道。
 
 ## <a name="monitoring-debug-runs"></a>监视调试运行
 
-通过**调试**功能启动的测试运行不会显示在“监视器”选项卡上的列表中。在“监视器”选项卡上，只能查看通过“立即触发”、“计划”或“翻转窗口”触发器触发的运行。可以在管道画布的“输出”窗口中查看通过**调试**功能启动的最后一个测试运行。
+使用**调试**功能启动的测试运行在 "**监视**" 选项卡上的列表中不可用。只能在 "**监视**" 选项卡中看到 "**立即触发**"、"**计划**" 或 "**翻转窗口**" 触发器触发的运行。您可以在管道画布的 "**输出**" 窗口中看到上次用**调试**功能启动的测试运行。
 
 ## <a name="setting-breakpoints-for-debugging"></a>设置用于调试的断点
 

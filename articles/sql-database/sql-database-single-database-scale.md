@@ -1,5 +1,5 @@
 ---
-title: 缩放单一数据库资源 - Azure SQL 数据库 | Microsoft Docs
+title: 缩放单一数据库资源-Azure SQL 数据库
 description: 本文介绍如何在 Azure SQL 数据库中缩放适用于单一数据库的计算和存储资源。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: d2571b04f10bbbd3a461e553a56904abb3b46588
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7f3e0c6a5f2d3594e8a03ed4034248b1fd43c73d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496023"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687175"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放单一数据库资源
 

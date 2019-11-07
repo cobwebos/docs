@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 05bae18d35eafc47eddc7c1450eb06af5bbe5562
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: e1bb84c142fb24086cf6c11a7b1070bdd29ae3f2
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497185"
+ms.locfileid: "73581286"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>通过 Azure 机器学习 studio 创建、探索和部署自动化机器学习试验
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "73497185"
 
  如果你更喜欢更多基于代码的体验，还可以使用[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)[在 Python 中配置自动化机器学习试验](how-to-configure-auto-train.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
@@ -104,7 +104,7 @@ ms.locfileid: "73497185"
 
     选择“**下一步**”。
 
-1. 在 "**任务类型" 和 "设置**" 窗体上，选择任务类型：分类、回归或预测。 
+1. 在 "**任务类型" 和 "设置**" 窗体上，选择任务类型：分类、回归或预测。 有关详细信息，请参阅[如何定义任务类型](how-to-define-task-type.md)。
 
     1. 对于分类，还可以启用用于文本 featurizations 的深度学习。
 
@@ -135,7 +135,7 @@ ms.locfileid: "73497185"
 
 信息|说明
 ------|------
-Feature| 正在汇总的列的名称。
+功能| 正在汇总的列的名称。
 配置文件| 基于推断类型的行内可视化。 例如，字符串、布尔值和日期具有值计数，而小数（数字）则具有近似的直方图。 这使你可以快速了解数据的分布情况。
 类型分发| 列中类型的行内值计数。 Null 是其自己的类型，因此此可视化效果可用于检测奇值或缺失值。
 类型|推断列的类型。 可能的值包括：字符串、布尔值、日期和小数。
@@ -205,12 +205,17 @@ Variance| 此列的数据超出其平均值的度量值。
 
     字段| 值
     ----|----
-    部署名称| 输入部署的唯一名称。
-    部署说明| 输入说明以更好地识别此部署的用途。
-    评分脚本| 自动生成或上传自己的评分文件。 [了解有关评分脚本的详细信息](how-to-deploy-and-where.md#script)。
-    环境脚本| 自动生成或上传自己的环境文件。
+    Name| 输入部署的唯一名称。
+    说明| 输入说明以更好地识别此部署的用途。
+    计算类型| 选择要部署的终结点类型： *Azure Kubernetes Service （AKS）* 或*azure 容器实例（ACI）* 。
+    Name| *仅适用于 AKS：* 选择要部署到的 AKS 群集的名称。
+    启用身份验证 | 选择此项可允许基于令牌或基于密钥的身份验证。
+    使用自定义部署资产| 如果要上传自己的评分脚本和环境文件，请启用此功能。 [了解有关评分脚本的详细信息](how-to-deploy-and-where.md#script)。
+
     >[!Important]
     > 文件名的长度必须为32个字符，并且必须以字母数字开头和结尾。 可能包括短划线、下划线、点和之间的字母数字。 不允许使用空格。
+
+    "*高级*" 菜单提供默认部署功能，如 "数据收集" 和 "资源使用情况" 设置。 如果希望覆盖这些默认设置，请在此菜单中执行此操作。
 
 1. 选择“部署”。 部署可能需要大约20分钟才能完成。
 

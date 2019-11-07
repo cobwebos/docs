@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库“超大规模”服务层级概述 | Microsoft Docs
+title: Azure SQL Database 超大规模概述
 description: 本文介绍 Azure SQL 数据库中基于 vCore 的购买模型中的“超大规模”服务层级，并说明它与“常规用途”服务层级和“业务关键”服务层级的不同之处。
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: dimitri-furman
+ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: db6e47b39b7ebe35a6c0fef42af53f91e96c363f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 38402d6ccf5c5582fff878ad60bf1c9fd4a07118
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496198"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687322"
 ---
 # <a name="hyperscale-service-tier"></a>“超大规模”服务层级
 
@@ -82,7 +82,7 @@ Azure SQL 数据库中的“超大规模”服务层级提供了以下附加功�
 
 下图说明了“超大规模”数据库中不同类型的节点：
 
-![体系结构](./media/sql-database-hyperscale/hyperscale-architecture.png)
+![体系结构](./media/sql-database-hyperscale/hyperscale-architecture2.png)
 
 超大规模数据库包含以下不同类型的组件：
 
@@ -104,7 +104,7 @@ Azure 存储包含数据库中的所有数据文件。 页面服务器将 Azure 
 
 ## <a name="backup-and-restore"></a>备份和还原
 
-备份是基于文件快照的，因此它们几乎是瞬时的。 通过存储和计算分离功能，可以将备份/还原操作推送到存储层，以减少主计算副本上的处理负担。 因此，数据库备份不会影响主计算节点的性能;同样，还原是通过还原到文件快照来完成的，因此不是数据操作的大小。 还原是一项恒定的操作，甚至可以在几分钟内（而不是几小时或几天）还原多 tb 数据库。 通过还原现有备份来创建新数据库还利用了此功能：创建用于开发或测试用途的数据库副本（甚至是 tb 大小的数据库）是可行的。
+备份是基于文件快照的，因此它们几乎是瞬时的。 通过存储和计算分离功能，可以将备份/还原操作推送到存储层，以减少主计算副本上的处理负担。 因此，数据库备份不会影响主计算节点的性能;同样，还原是通过还原到文件快照来完成的，因此不是数据操作的大小。 还原是一项恒定的操作，甚至可以在几分钟内（而不是几小时或几天）还原多 tb 数据库。 通过还原现有备份来创建新数据库时，还可以利用此功能：在同一逻辑服务器中创建用于开发或测试的数据库副本（甚至是 tb 大小的数据库）是可行。
 
 ## <a name="scale-and-performance-advantages"></a>缩放和性能优势
 

@@ -9,24 +9,24 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
-ms.openlocfilehash: 1805f04d7833dea180847defadd865cb23e9df62
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: f7494d36cf9b16ac6c7a1287a6ff96dd2285c6e2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340856"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601948"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>从 Excel、Python 或 R 连接到 Azure Databricks
 
 在本文中，你将学习如何使用 Microsoft Excel、Python 或 R 语言通过 Databricks ODBC 驱动程序来连接 Azure Databricks。 在建立连接后，可以从 Excel、Python 或 R 客户端访问 Azure Databricks 中的数据。 还可以使用这些客户端来进一步分析数据。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 必须具有 Azure Databricks 工作区、Spark 群集以及与群集关联的示例数据。 如果尚不具备这些先决条件，请完成[使用 Azure 门户在 Azure Databricks 上运行 Spark 作业](quickstart-create-databricks-workspace-portal.md)中的快速入门。
 
 * 从 [Databricks 驱动程序下载页面](https://databricks.com/spark/odbc-driver-download)下载 Databricks ODBC 驱动程序。 根据要从中连接到 Azure Databricks 的应用程序安装 32 位或 64 位版本。 例如，若要从 Excel 进行连接，请安装该驱动程序的 32 位版本。 若要从 R 和 Python 进行连接，请安装该驱动程序的 64 位版本。
 
-* 在 Databricks 中设置个人访问令牌。 有关说明，请参阅[令牌管理](https://docs.azuredatabricks.net/api/latest/authentication.html#token-management)。
+* 在 Databricks 中设置个人访问令牌。 有关说明，请参阅[令牌管理](/azure/databricks/dev-tools/api/latest/authentication)。
 
 ## <a name="set-up-a-dsn"></a>设置 DSN
 
@@ -36,7 +36,7 @@ ms.locfileid: "67340856"
 
     ![打开 Databricks 群集](./media/connect-databricks-excel-python-r/open-databricks-cluster.png "打开 Databricks 群集")
 
-2. 在“配置”  选项卡下，单击“JDBC/ODBC”  选项卡并复制“服务器主机名”  和“HTTP 路径”  的值。 需要使用这些值来完成本文中的步骤。
+2. 在“配置”选项卡下，单击“JDBC/ODBC”选项卡并复制“服务器主机名”和“HTTP 路径”的值。 需要使用这些值来完成本文中的步骤。
 
     ![获取 Databricks 配置](./media/connect-databricks-excel-python-r/get-databricks-jdbc-configuration.png "获取 Databricks 配置")
 
@@ -44,11 +44,11 @@ ms.locfileid: "67340856"
 
     ![启动 ODBC](./media/connect-databricks-excel-python-r/launch-odbc-app.png "启动 ODBC 应用")
 
-4. 在“用户 DSN”  选项卡下，单击“添加”  。 在“创建新数据源”对话框中，选择“Simba Spark ODBC 驱动程序”，然后单击“完成”。   
+4. 在“用户 DSN”选项卡下，单击“添加”。 在“创建新数据源”对话框中，选择“Simba Spark ODBC 驱动程序”，然后单击“完成”。
 
     ![启动 ODBC](./media/connect-databricks-excel-python-r/add-new-user-dsn.png "启动 ODBC 应用")
 
-5. 在“Simba Spark ODBC 驱动程序”  对话框中，提供以下值：
+5. 在“Simba Spark ODBC 驱动程序”对话框中，提供以下值：
 
     ![配置 DSN](./media/connect-databricks-excel-python-r/odbc-dsn-setup.png "配置 DSN")
 
@@ -58,17 +58,17 @@ ms.locfileid: "67340856"
     |---------|---------|
     |**数据源名称**     | 为数据源提供一个名称。        |
     |**主机**     | 提供从 Databricks 工作区中为*服务器主机名*复制的值。        |
-    |端口      | 输入 *443*。        |
-    |**身份验证** > **机制**     | 选择“用户名和密码”  。        |
+    |**端口**     | 输入 *443*。        |
+    |**身份验证** > **机制**     | 选择“用户名和密码”。        |
     |**用户名**     | 输入 *token*。        |
     |**密码**     | 输入从 Databricks 工作区中复制的令牌值。 |
     
     在“DSN 设置”对话框中执行以下附加步骤。
     
-    * 单击“HTTP 选项”  。 在打开的对话框中，粘贴从 Databricks 工作区中复制的“HTTP 路径”值。  单击“确定”。 
-    * 单击“SSL 选项”。  在打开的对话框中，选中“启用 SSL”  复选框。 单击“确定”。 
-    * 单击“测试”  以测试到 Azure Databricks 的连接。 单击“确定”以保存配置。 
-    * 在“ODBC 数据源管理器”  对话框中，单击“确定”。 
+    * 单击“HTTP 选项”。 在打开的对话框中，粘贴从 Databricks 工作区中复制的“HTTP 路径”值。 单击 **“确定”** 。
+    * 单击“SSL 选项”。 在打开的对话框中，选中“启用 SSL”复选框。 单击 **“确定”** 。
+    * 单击“测试”以测试到 Azure Databricks 的连接。 单击“确定”以保存配置。
+    * 在“ODBC 数据源管理器”对话框中，单击“确定”。
 
 现在已设置了 DSN。 在接下来的各部分中，你将使用此 DSN 从 Excel、Python 或 R 连接到 Azure Databricks。
 
@@ -76,28 +76,28 @@ ms.locfileid: "67340856"
 
 在本部分中，你将使用之前创建的 DSN 将数据从 Azure Databricks 拉取到 Microsoft Excel 中。 在开始之前，请确保已在计算机上安装了 Microsoft Excel。 可以使用从 [Microsoft Excel 试用版链接](https://products.office.com/excel)获取的 Excel 试用版。
 
-1. 在 Microsoft Excel 中打开一个空白工作簿。 在“数据”  功能区中，单击“获取数据”  。 单击“从其他源”  ，然后单击“从 ODBC”  。
+1. 在 Microsoft Excel 中打开一个空白工作簿。 在“数据”功能区中，单击“获取数据”。 单击“从其他源”，然后单击“从 ODBC”。
 
     ![从 Excel 启动 ODBC](./media/connect-databricks-excel-python-r/launch-odbc-from-excel.png "从 Excel 启动 ODBC")
 
-2. 在“从 ODBC”  对话框中，选择之前创建的 DSN，然后单击“确定”。 
+2. 在“从 ODBC”对话框中，选择之前创建的 DSN，然后单击“确定”。
 
     ![选择 DSN](./media/connect-databricks-excel-python-r/excel-select-dsn.png "选择 DSN")
 
 3. 如果系统提示输入凭据，对于用户名，输入 **token**。 对于密码，提供从 Databricks 工作区中检索到的令牌值。
 
-    ![为 Databricks 提供凭据](./media/connect-databricks-excel-python-r/excel-databricks-token.png "选择 DSN")
+    ![提供 Databricks 的凭据](./media/connect-databricks-excel-python-r/excel-databricks-token.png "选择 DSN")
 
-4. 从导航器窗口中，选择 Databricks 中要加载到 Excel 的表，然后单击“加载”。  
+4. 从导航器窗口中，选择 Databricks 中要加载到 Excel 的表，然后单击“加载”。 
 
-    ![将数据加载到 Excel](./media/connect-databricks-excel-python-r/excel-load-data.png "将数据加载到 Excel")
+    ![将 dta 加载到 Excel](./media/connect-databricks-excel-python-r/excel-load-data.png "将 dta 加载到 Excel")
 
 将数据加载到 Excel 工作簿后，可以对其执行分析操作。
 
 ## <a name="connect-from-r"></a>从 R 进行连接
 
 > [!NOTE]
-> 本部分提供有关如何将桌面上运行的 R Studio 客户端与 Azure Databricks 集成的信息。 有关如何在 Azure Databricks 群集本身上使用 R Studio 的说明，请参阅 [Azure Databricks 上的 R Studio](https://docs.azuredatabricks.net/spark/latest/sparkr/rstudio.html)。
+> 本部分提供有关如何将桌面上运行的 R Studio 客户端与 Azure Databricks 集成的信息。 有关如何在 Azure Databricks 群集本身上使用 R Studio 的说明，请参阅 [Azure Databricks 上的 R Studio](/azure/databricks/spark/latest/sparkr/rstudio)。
 
 在本部分中，你将使用 R 语言 IDE 来引用 Azure Databricks 中可用的数据。 在开始之前，必须在计算机上安装以下各项。
 
@@ -165,6 +165,6 @@ for row in cursor.fetchall():
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解可以从中将数据导入到 Azure Databricks 中的源，请参阅 [Azure Databricks 的数据源](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html#)
+* 若要了解可以从中将数据导入到 Azure Databricks 中的源，请参阅 [Azure Databricks 的数据源](/azure/databricks/data/data-sources/index)
 
 

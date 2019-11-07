@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 数据工厂中映射数据流 |Microsoft Docs
+title: 在 Azure 数据工厂中映射数据流
 description: 在 Azure 数据工厂中映射数据流的概述
 author: kromerm
 ms.author: makromer
@@ -7,14 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/7/2019
-ms.openlocfilehash: 7f6c131737ca63d120e111b3ef4504a36dbd7fc1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ed2502ffebbacf5e66e3e4738e2e88ce7fb8a562
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754708"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681562"
 ---
-# <a name="what-are-mapping-data-flows"></a>映射数据流是什么？
+# <a name="what-are-mapping-data-flows"></a>什么是映射数据流？
 
 映射数据流是在 Azure 数据工厂中以可视方式设计的数据转换。 数据流允许数据工程师开发图形数据转换逻辑，而无需编写代码。 生成的数据流将作为使用扩展 Spark 群集的 Azure 数据工厂管道中的活动执行。 数据流活动可以通过现有的数据工厂计划、控制、流和监视功能来操作化。
 
@@ -34,7 +34,7 @@ ms.locfileid: "72754708"
 
 ![画布](media/data-flow/canvas1.png "画布")
 
-### <a name="graph"></a>图形
+### <a name="graph"></a>Graph
 
 关系图显示转换流。 它显示源数据流入一个或多个接收器时的沿袭。 若要添加新源，请选择 "**添加源**"。 若要添加新的转换，请选择现有转换右下方的加号。
 
@@ -118,7 +118,7 @@ Azure 数据工厂将生成列的哈希来生成统一的分区，使包含类�
 
 生成一个表达式，该表达式为分区数据列中的值提供固定范围。 若要避免分区歪斜，应在使用此选项之前对数据有充分的了解。 为表达式输入的值将用作分区函数的一部分。 可以设置物理分区数目。
 
-##### <a name="key"></a>密钥
+##### <a name="key"></a>键
 
 如果您对数据的基数有充分了解，键分区可能是一个不错的策略。 键分区将为列中的每个唯一值创建分区。 不能设置分区数，因为数字将基于数据中的唯一值。
 

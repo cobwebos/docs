@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: e41a037e657a8d2b484a3fcb62eb3bc03f53682d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 62210bf480d09ce2a256a44b7554ac53aa06eb0c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507084"
+ms.locfileid: "73579704"
 ---
 # <a name="custom-commands-preview"></a>自定义命令（预览）
 
 [语音助手](voice-assistants.md)会倾听用户的响应，并在响应时执行操作，这通常是一回谈话。 他们使用[语音到文本](speech-to-text.md)转录用户的语音，然后对文本的自然语言理解采取措施。 此操作通常包含用[文本到语音功能](text-to-speech.md)生成的助手的语音输出。 设备通过语音 SDK 的 `DialogServiceConnector` 对象连接到助手。
 
-**自定义命令（预览）** 是用于创建语音助手的简化解决方案。 它提供统一的创作体验、自动托管模型，以及相对较低的复杂性和其他助手创建选项（如[直接行语音](direct-line-speech.md)）。 不过，这种简化的灵活性。 自定义命令（预览版）最适用于任务完成或命令和控制方案。
+**自定义命令（预览）** 是用于创建语音助手的简化解决方案。 它提供统一的创作体验、自动托管模型，以及相对较低的复杂性和其他助手创建选项（如[直接行语音](direct-line-speech.md)）。 不过，这种简化的灵活性。 自定义命令（预览版）最适用于任务完成或命令和控制方案。 它对于物联网（IoT）和无外设设备特别适用。
 
 对于复杂的对话交互以及与其他解决方案（如[虚拟助手解决方案和企业模板](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)）的集成，建议使用直行语音。
 

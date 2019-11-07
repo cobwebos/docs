@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/26/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 8e3a76abe840a70ba7410855cde1d82ec96c28eb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 6ec98d1f7956ef1460909f62384a931400b596c4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506952"
+ms.locfileid: "73579630"
 ---
 # <a name="audio-content-creation"></a>音频内容创建
 
@@ -29,7 +29,7 @@ ms.locfileid: "73506952"
 
 ![](media/audio-content-creation/audio-content-creation-diagram.jpg)
 
-1. 第一步是[创建 Azure 帐户、注册语音资源并获取订阅密钥](#create-a-speech-resource)。 获得订阅密钥后，可以使用它来调用语音服务，并访问[音频内容创建](https://aka.ms/audiocontentcreation)。
+1. 第一步是[创建 Azure 帐户、注册语音资源并获取订阅密钥](#create-a-speech-resource)。 拥有订阅密钥后，可以使用它来调用语音服务，并访问[音频内容创建](https://aka.ms/audiocontentcreation)。
 2. 使用纯文本或 SSML[创建音频优化文件](#create-an-audio-tuning-file)。
 3. 选择要优化的语音和语言。 音频内容创建包括[Microsoft 的文本到语音转换](language-support.md#text-to-speech)的所有声音。 您可以使用标准、神经或您自己的自定义语音。
    >[!NOTE]
@@ -43,7 +43,7 @@ ms.locfileid: "73506952"
 
 按照以下步骤创建语音资源，并将其连接到 Speech Studio。
 
-1. 按照以下说明[注册 Azure 帐户并创建语音资源](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)。 请确保定价层设置为**S0**。 如果正在使用其中一个神经声音，请确保在[受支持的区域](regions.md#standard-and-neural-voices)中创建资源。
+1. 按照以下说明[注册 Azure 帐户](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account)并[创建语音资源](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)。 请确保定价层设置为**S0**。 如果正在使用其中一个神经声音，请确保在[受支持的区域](regions.md#standard-and-neural-voices)中创建资源。
 2. 登录到[音频内容创建](https://aka.ms/audiocontentcreation)。
 3. 选择一个现有项目，或单击 "**新建**"。
 4. 你随时都可以通过 "**设置**" 选项修改订阅，该选项位于顶部导航栏中。

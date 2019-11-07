@@ -1,5 +1,5 @@
 ---
-title: 设置 Azure SQL 数据同步 | Microsoft Docs
+title: 设置 Azure SQL 数据同步
 description: 本教程介绍了如何设置 Azure SQL 数据同步
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 37b8f64360e871236be7a8623460bbe75bd1d8b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 082721ef1436d0b6668016aca29870016038af86
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568162"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689993"
 ---
-# <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>教程：设置 Azure SQL 数据库和本地 SQL Server 之间的 SQL 数据同步
+# <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>教程：在 Azure SQL 数据库和本地 SQL Server 之间设置 SQL 数据同步
 
 本教程将介绍如何创建包含 Azure SQL 数据库和 SQL Server 实例的同步组，从而设置 Azure SQL 数据同步。 同步组进行了自定义配置，并根据设置的计划进行同步。
 
@@ -48,7 +48,7 @@ ms.locfileid: "68568162"
 
    在“创建数据同步组”页中，请更改以下设置：
 
-   | 设置                        | 描述 |
+   | 设置                        | 说明 |
    | ------------------------------ | ------------------------------------------------- |
    | **同步组名称** | 输入新同步组的名称。 此名称不同于数据库本身的名称。 |
    | **同步元数据数据库** | 选择创建数据库（推荐）或使用现有数据库。<br/><br/>如果选择“新建数据库”，请选择“创建新数据库”。 然后在“SQL 数据库”页中，命名并配置新数据库，再选择“确定”。<br/><br/>如果选择“使用现有数据库”，请从列表中选择数据库。 |
@@ -76,7 +76,7 @@ ms.locfileid: "68568162"
 
   在“配置 Azure SQL 数据库”页中，更改以下设置：
 
-  | 设置                       | 描述 |
+  | 设置                       | 说明 |
   | ----------------------------- | ------------------------------------------------- |
   | **同步成员名称** | 提供新同步成员的名称。 此名称不同于数据库本身的名称。 |
   | **订阅** | 选择关联的 Azure 订阅，以用于计费。 |
@@ -119,7 +119,7 @@ ms.locfileid: "68568162"
 
     1. 在同步代理应用程序中，选择“提交代理密钥”。 此时，“同步元数据数据库配置”对话框打开。
 
-    1. 在“同步元数据数据库配置”对话框中，粘贴从 Azure 门户复制的代理密钥。 还需要输入元数据数据库所在 Azure SQL 数据库服务器的现有凭据。 （如果创建了元数据数据库，则此数据库与中心数据库位于同一服务器上。）选择“确定”，并等待配置完成。
+    1. 在“同步元数据数据库配置”对话框中，粘贴从 Azure 门户复制的代理密钥。 还需要输入元数据数据库所在 Azure SQL 数据库服务器的现有凭据。 （如果创建了元数据数据库，则此数据库与中心数据库位于同一服务器上。）选择 **"确定"** ，并等待配置完成。
 
         ![输入代理密钥和服务器凭据](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-enterkey.png)
 
@@ -155,9 +155,9 @@ ms.locfileid: "68568162"
 
 1. 在“表”页中，依次选择同步组成员列表中的数据库和“刷新架构”。
 
-1. 从列表中，选择要同步的表。默认情况下，所有列都处于选中状态，因此请禁用不想同步的列的复选框。请务必保持主键列的选中状态不变。
+1. 从列表中，选择要同步的表。默认情况下，所有列都处于选中状态，因此禁用不想同步的列的复选框。请确保选中 "主键" 列。
 
-1. 选择**保存**。
+1. 选择“保存”。
 
 1. 默认情况下，在计划或手动运行数据库之前，不会同步数据库。 要运行手动同步，请导航到 Azure 门户中的 SQL 数据库，选择“同步到其他数据库”，然后选择同步组。 “数据同步”页随即打开。 选择“同步”。
 

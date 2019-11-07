@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 3f619caf7e2713e1c9251550b06c8bdefba5936f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 1854599956755716955a6e691c3266ac54ddafd9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493398"
+ms.locfileid: "73581552"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教程：从 CLI 训练和部署模型
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "73493398"
 > * 将模型部署为 Web 服务
 > * 使用 web 服务对数据进行评分
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
@@ -183,7 +183,7 @@ az ml folder attach -w <workspace-name> -g <resource-group-name>
 
 ## <a name="create-the-compute-target-for-training"></a>创建用于定型的计算目标
 
-此示例使用 Azure 机器学习计算群集来定型模型。 若要创建新的计算群集，请使用以下命令：
+此示例使用 Azure 机器学习笔记本 VM 来训练模型。 若要创建新的笔记本 VM，请使用以下命令：
 
 ```azurecli-interactive
 az ml computetarget create amlcompute -n cpu --max-nodes 4 --vm-size Standard_D2_V2
@@ -239,7 +239,7 @@ Cleaning up all outstanding Run operations, waiting 300.0 seconds
 
 如果检查 `train-sklearn.py`，您会注意到，在将训练的模型存储到文件时，它也会使用 alpha 值。 在这种情况下，它训练多个模型。 最高 alpha 应为最大的一个。 查看上面的输出和代码，将 alpha 为0.95 的模型另存为 `./outputs/ridge_0.95.pkl`
 
-模型已保存到定型目标计算目标上的 `./outputs` 目录中。 在这种情况下，Azure 云中 Azure 机器学习计算实例。 训练过程会自动将 `./outputs` 目录的内容从发生定型的计算目标上载到 Azure 机器学习工作区。 它存储为试验的一部分（在本示例中为`myexperiment`）。
+模型已保存到定型目标计算目标上的 `./outputs` 目录中。 在这种情况下，Azure 云中 Azure 机器学习笔记本 VM。 训练过程会自动将 `./outputs` 目录的内容从发生定型的计算目标上载到 Azure 机器学习工作区。 它存储为试验的一部分（在本示例中为`myexperiment`）。
 
 ## <a name="register-the-model"></a>注册模型
 

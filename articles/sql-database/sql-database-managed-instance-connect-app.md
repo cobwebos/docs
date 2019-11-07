@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库托管实例 - 连接应用程序 | Microsoft Docs
+title: Azure SQL 数据库托管实例连接应用程序
 description: 本文介绍如何将应用程序连接到 Azure SQL 数据库托管实例。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 133110d015ac7a26f18f14f6ff957729a4f079b5
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 5dc287ab58636b4921c14ae71f9a62ab36d9c596
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060655"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688245"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>将应用程序连接到 Azure SQL 数据库托管实例
 
@@ -65,7 +65,7 @@ ms.locfileid: "70060655"
 
 通过客户实现的另一方案是将 VPN 网关安装在单独的虚拟网络中，从承载托管实例的虚拟网络进行订阅。 然后，将两个虚拟网络对等互连。 下面的示例性体系结构图介绍了实现方法。
 
-![VNet 对等](./media/sql-database-managed-instance-connect-app/vnet-peering.png)
+![VNet 对等互连](./media/sql-database-managed-instance-connect-app/vnet-peering.png)
 
 设置基本的体系结构以后，需修改某些设置，使 VPN 网关能够看到承载托管实例的虚拟网络中的 IP 地址。 为此，请在“对等互连设置”下进行下述很具体的更改。
 
@@ -137,7 +137,7 @@ ms.locfileid: "70060655"
 
 如果要连接到托管实例，建议使用以下最低版本的工具和驱动程序：
 
-| 驱动程序/工具 | Version |
+| 驱动程序/工具 | 版本 |
 | --- | --- |
 |.NET framework | 4.6.1（或 .NET Core） |
 |ODBC 驱动程序| v17 |

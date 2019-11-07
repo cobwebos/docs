@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: a1ab8f881aaee9e29519e99a5cd2a0e6fdbc9846
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: b3d5a61b93175559bce92a17e27602a4f79d88ad
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489408"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603964"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模构建 TensorFlow 深度学习模型
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,11 +26,11 @@ ms.locfileid: "73489408"
 
 了解有关[深度学习与机器学习](concept-deep-learning-vs-machine-learning.md)的详细信息。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在以下任一环境中运行此代码：
 
- - Azure 机器学习计算实例-无需下载或安装
+ - Azure 机器学习笔记本 VM-无需下载或安装
 
      - 完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)，创建随 SDK 和示例存储库预先加载的专用笔记本服务器。
     - 在笔记本服务器上的示例深度学习文件夹中，通过导航到以下目录查找已完成且扩展的笔记本：操作**说明 > ml-框架 > tensorflow > 部署 >超参数-tensorflow**文件夹的优化。 
@@ -158,6 +158,9 @@ est = TensorFlow(source_directory=script_folder,
                  compute_target=compute_target,
                  use_gpu=True)
 ```
+
+> [!TIP]
+> 已将对**Tensorflow 2.0**的支持添加到 Tensorflow 估计器类中。 有关详细信息，请参阅[博客文章](https://azure.microsoft.com/blog/tensorflow-2-0-on-azure-fine-tuning-bert-for-question-tagging/)。
 
 ## <a name="submit-a-run"></a>提交运行
 

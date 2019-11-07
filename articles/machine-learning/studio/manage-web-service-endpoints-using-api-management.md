@@ -1,6 +1,6 @@
 ---
 title: 使用 API 管理管理 web 服务
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: 介绍如何使用 API 管理来管理 AzureML Web 服务的指南。 通过定义用户访问权限、使用限制和仪表板监视管理 REST API 终结点。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 60f890912874cfda993ae45f84fa3d1c04503d00
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 227a7205788194cc507dcd9dab7e5cad57abc7f9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489262"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671574"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>使用 API 管理管理 Azure 机器学习 Studio （经典） web 服务
 ## <a name="overview"></a>概述
@@ -24,12 +24,12 @@ ms.locfileid: "73489262"
 ## <a name="what-is-azure-api-management"></a>什么是 Azure API 管理？
 Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、使用限制和仪表板监视管理 REST API 终结点。 有关更多详细信息，请参阅[AZURE API 管理站点](https://azure.microsoft.com/services/api-management/)。 若要开始进行 Azure API 管理，请参阅[导入和发布指南](/azure/api-management/import-and-publish)。 这份额外指南（作为本指南的依据）涵盖更多主题，包括通知配置、层定价、响应处理、用户身份验证、创建产品、开发人员订阅和使用仪表板。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要完成本指南，需要：
 
 * 一个 Azure 帐户。
 * AzureML 帐户。
-* AzureML 实验的工作区、服务和 api_key 均部署为 Web 服务。 有关如何创建 AzureML 试验的详细信息，请参阅[Studio 快速入门](create-experiment.md)。 有关如何将 Studio （经典）试验部署为 web 服务的信息，请参阅[Studio 部署](publish-a-machine-learning-web-service.md)操作指南，了解有关如何将 AzureML 试验部署为 web 服务的详细信息。 另外，附录 A 说明了如何创建并测试简单 AzureML 实验并将其部署为 Web 服务。
+* AzureML 实验的工作区、服务和 api_key 均部署为 Web 服务。 有关如何创建 AzureML 试验的详细信息，请参阅[Studio 快速入门](create-experiment.md)。 有关如何将 Studio （经典）试验部署为 web 服务的信息，请参阅[Studio 部署](deploy-a-machine-learning-web-service.md)操作指南，了解有关如何将 AzureML 试验部署为 web 服务的详细信息。 另外，附录 A 说明了如何创建并测试简单 AzureML 实验并将其部署为 Web 服务。
 
 ## <a name="create-an-api-management-instance"></a>创建 API 管理实例
 

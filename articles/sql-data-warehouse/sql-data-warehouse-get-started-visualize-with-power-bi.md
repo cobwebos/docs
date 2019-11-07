@@ -1,5 +1,5 @@
 ---
-title: 使用 Power BI 可视化 SQL 数据仓库数据 | Microsoft Azure
+title: 利用 Power BI Microsoft Azure 实现数据的可视化
 description: 使用 Power BI 可视化 SQL 数据仓库数据
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,13 @@ ms.subservice: integration
 ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 4650e171c180653e94d78451d66bba1bcc71b136
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: eea4e3b0b1f0e4ec3eaf3e0aba8952f6693d2921
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241288"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685792"
 ---
 # <a name="visualize-data-with-power-bi"></a>使用 Power BI 可视化数据
 本教程说明如何使用 Power BI 连接到 SQL 数据仓库，并创建一些基本的视觉效果。
@@ -24,16 +25,16 @@ ms.locfileid: "66241288"
 > 
 > 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 要逐步完成本教程，需要：
 
 * 已随 AdventureWorksDW 数据库预先加载的 SQL 数据仓库。 若要完成数据仓库预配，请参阅[创建 SQL 数据仓库](create-data-warehouse-portal.md)，并选择加载示例数据。 如果已有数据仓库但没有示例数据，可以[加载 WideWorldImportersDW](load-data-wideworldimportersdw.md)。
 
-## <a name="1-connect-to-your-database"></a>1.连接到数据库
+## <a name="1-connect-to-your-database"></a>1. 连接到数据库
 若要打开 Power BI 并连接到 AdventureWorksDW 数据库，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 单击“SQL 数据库”  ，并选择 AdventureWorks SQL 数据仓库数据库。
+2. 单击“SQL 数据库”，并选择 AdventureWorks SQL 数据仓库数据库。
    
     ![查找数据库](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png)
 3. 单击“在 Power BI 中打开”按钮。
@@ -49,7 +50,7 @@ ms.locfileid: "66241288"
    
     ![在 Power BI 中打开 AdventureWorksDW](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-open-adventureworks.png)
 
-## <a name="2-create-a-report"></a>2.创建报告
+## <a name="2-create-a-report"></a>2. 创建报表
 现在，可以使用 Power BI 来分析 AdventureWorksDW 示例数据。 为了执行分析，AdventureWorksDW 提供了一个名为 AggregateSales 的视图。 此视图包含用于分析公司销售情况的一些关键指标。
 
 1. 要根据邮政编码创建销售金额图表，请在右侧字段窗格中，单击 AggregateSales 视图将它展开。 单击“PostalCode”和“SalesAmount”列以将其选中。
@@ -75,7 +76,7 @@ ms.locfileid: "66241288"
    
     ![Power BI 折线图](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-line.png)
 
-随时可以通过单击“文件”  ，并选择“保存”  来保存进度。
+随时可以通过单击“文件”，并选择“保存”来保存进度。
 
 ## <a name="using-direct-connect"></a>使用直接连接
 在 Azure SQL 数据库中，SQL 数据仓库直接连接可以使用逻辑下推，以及 Power BI 的分析功能。 使用直接连接，可在浏览数据时将查询实时发回 Azure SQL 数据仓库。  此项功能与 SQL 数据仓库的缩放性相结合，用户可在数分钟内针对 TB 量级的数据创建动态报表。 此外，“在 Power BI 中打开”按钮的引入可让用户直接将 Power BI 连接到其 SQL 数据仓库，而无需从其他 Azure 部分收集信息。
@@ -93,4 +94,4 @@ ms.locfileid: "66241288"
 随着体验的改善，这些限制和说明可能会更改。
 
 ## <a name="next-steps"></a>后续步骤
-现在，我们已提供的示例数据尝试一些时间，请参阅如何[开发](sql-data-warehouse-overview-develop.md)或[加载](design-elt-data-loading.md)。 也可浏览 [Power BI 网站](https://www.powerbi.com/)。
+现在，我们已向你提供了一些时间来处理示例数据，请参阅如何[开发](sql-data-warehouse-overview-develop.md)或[加载](design-elt-data-loading.md)。 也可浏览 [Power BI 网站](https://www.powerbi.com/)。

@@ -1,25 +1,25 @@
 ---
-title: Azure HPC 缓存预览版数据摄取-msrsync
+title: Azure HPC 缓存数据引入-msrsync
 description: 如何使用 msrsync 将数据移动到 Azure HPC 缓存中的 Blob 存储目标
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 6eac6c367be42021a4654f85c8f4ec980c9f6925
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 3e5937a036763fab57f9e37494ace33e8452b1f2
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255288"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582275"
 ---
-# <a name="azure-hpc-cache-preview-data-ingest---msrsync-method"></a>Azure HPC 缓存（预览）数据引入-msrsync 方法
+# <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC 缓存数据引入-msrsync 方法
 
 本文详细说明了如何使用 ``msrsync`` 实用工具将数据复制到 Azure Blob 存储容器，以便与 Azure HPC 缓存一起使用。
 
 若要详细了解如何将数据移到 Azure HPC 缓存的 Blob 存储，请参阅[将数据移到 AZURE Hpc 缓存的 Azure blob 存储](hpc-cache-ingest.md)。
 
-@No__t-0 工具可用于将数据移到 Azure HPC 缓存的后端存储目标。 此工具旨在通过运行多个并行 ``rsync`` 进程来优化带宽的使用。 可从 GitHub 获取此工具： https://github.com/jbd/msrsync 。
+``msrsync`` 工具可用于将数据移到 Azure HPC 缓存的后端存储目标。 此工具旨在通过运行多个并行 ``rsync`` 进程来优化带宽的使用。 可从 GitHub 获取此工具： https://github.com/jbd/msrsync。
 
 ``msrsync`` 将源目录分解成独立的“桶”，然后针对每个桶运行单个 ``rsync`` 进程。
 
@@ -29,7 +29,7 @@ ms.locfileid: "72255288"
 
 按照以下说明使用 ``msrsync`` 来使用 Azure HPC 缓存填充 Azure Blob 存储：
 
-1. 安装 ``msrsync`` 及其必备组件（@no__t 1 和 Python 2.6 或更高版本）
+1. 安装 ``msrsync`` 及其必备组件（``rsync`` 和 Python 2.6 或更高版本）
 1. 确定要复制的文件和目录总数。
 
    例如，使用实用程序 ``prime.py``，参数 ```prime.py --directory /path/to/some/directory``` （可通过下载 <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>）使用。

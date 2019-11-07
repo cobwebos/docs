@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services 诊断日志记录 | Microsoft Docs
-description: 了解如何设置 Azure Analysis Services 诊断日志记录。
+description: 描述如何设置 Azure 资源诊断日志记录以监视 Azure Analysis Services 服务器。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/31/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a9684042a76c9c906a75334c319b4ca8ee0b727b
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b8ae2c529bebebae4ebc2d7b0b8a7e420fe9bcc7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298610"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572775"
 ---
 # <a name="setup-diagnostic-logging"></a>设置诊断日志记录
 
@@ -42,7 +42,7 @@ ms.locfileid: "72298610"
 |查询     |   查询结束      |
 |命令     |  命令开始       |
 |命令     |  命令结束       |
-|错误和警告     |   Error      |
+|错误和警告     |   错误      |
 |发现     |   发现结束      |
 |通知     |    通知     |
 |会话     |  会话初始化       |
@@ -90,7 +90,7 @@ ms.locfileid: "72298610"
 
 3. 单击“保存”。
 
-    如果收到错误，指出“无法更新诊断 \<工作区名称> 的诊断。 订阅 \<订阅 ID> 未注册为使用 microsoft.insights”， 请遵照[排查 Azure 诊断问题](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)中的说明注册帐户，然后重试此过程。
+    如果收到错误，指出“无法更新诊断 \<工作区名称> 的诊断。 订阅 \<订阅 ID> 未注册，无法使用 microsoft.insights。”， 请遵照[排查 Azure 诊断问题](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)中的说明注册帐户，然后重试此过程。
 
     若要更改在将来的任意时间点保存诊断日志的方式，可以随时返回此页以修改设置。
 
@@ -158,7 +158,7 @@ ms.locfileid: "72298610"
 
 ![Azure 门户中的“日志搜索”选项](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-在查询生成器中，展开 LogManagement > AzureDiagnostics。 AzureDiagnostics 包括引擎和服务事件。 注意即时创建了一个查询。 EventClass\_s 字段包含 xEvent 名称，如果使用 Xevent 进行本地日志记录，你可能觉得该名称很眼熟。 单击“EventClass\_s”或某个事件名称，Log Analytics 工作区将继续构造查询。 请务必保存查询以便稍后重复使用。
+在查询生成器中，展开 LogManagement**AzureDiagnostics** > 。 AzureDiagnostics 包括引擎和服务事件。 注意即时创建了一个查询。 EventClass\_s 字段包含 xEvent 名称，如果使用 Xevent 进行本地日志记录，你可能觉得该名称很眼熟。 单击“EventClass**s”或某个事件名称，Log Analytics 工作区将继续构造查询\_** 。 请务必保存查询以便稍后重复使用。
 
 ### <a name="example-queries"></a>查询示例
 
@@ -222,7 +222,7 @@ window
 
 ### <a name="aconnect-to-your-subscriptions"></a></a>连接到订阅
 
-启动 Azure PowerShell 会话，并使用以下命令登录 Azure 帐户：  
+启动 Azure PowerShell 会话，然后使用以下命令登录 Azure 帐户：  
 
 ```powershell
 Connect-AzAccount

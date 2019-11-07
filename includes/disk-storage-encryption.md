@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 762d6991eb8c45abc7de4f331f1b9335d68c0143
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 0659e57f5a5b223c199becf492b27c7a70cbdc63
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "73034523"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612005"
 ---
 默认情况下，在将数据保存到云时，Azure 托管磁盘会自动加密数据。 服务器端加密可保护你的数据，并可帮助你满足组织的安全性和符合性承诺。 Azure 托管磁盘中的数据以透明方式使用256位[AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)（可用的最强阻止密码之一）进行加密，且符合 FIPS 140-2。   
 
@@ -25,7 +25,7 @@ ms.locfileid: "73034523"
 
 你可以依赖于平台托管的密钥来加密托管磁盘，也可以使用自己的密钥（公共预览版）管理加密。 如果选择使用自己的密钥管理加密，则可以指定*客户托管的密钥*，用于加密和解密托管磁盘中的所有数据。 
 
-以下部分更详细地介绍了密钥管理的每个选项。
+以下部分更详细地介绍了每个密钥管理选项。
 
 ## <a name="platform-managed-keys"></a>平台托管密钥
 
@@ -40,7 +40,7 @@ ms.locfileid: "73034523"
 ![托管磁盘客户管理的密钥工作流](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
 
 
-以下列表说明了图中的编号步骤：
+以下列表解释了示意图中带编号的步骤：
 
 1. Azure Key Vault 管理员创建密钥保管库资源。
 1. Key vault 管理员会将其 RSA 密钥导入 Key Vault 或在 Key Vault 中生成新的 RSA 密钥。
@@ -51,7 +51,7 @@ ms.locfileid: "73034523"
 1. 托管磁盘使用托管标识将请求发送到 Azure Key Vault。
 1. 对于读取或写入数据，托管磁盘会将请求发送到 Azure Key Vault，以便对数据加密密钥进行加密（wrap）和解密（解包），以便对数据进行加密和解密。 
 
-若要撤消对客户管理的密钥的访问权限，请参阅[Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/)和[Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 有效地吊销访问权限会阻止对存储帐户中所有数据的访问，因为 Azure 存储无法访问加密密钥。
+若要撤销对客户管理的密钥的访问权限，请参阅 [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) 和 [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 撤销访问权限会实际阻止对存储帐户中所有数据的访问，因为 Azure 存储帐户无法访问加密密钥。
 
 ### <a name="supported-scenarios-and-restrictions"></a>支持的方案和限制
 
@@ -157,11 +157,12 @@ New-AzResourceGroupDeployment -ResourceGroupName $rgName `
 $vm = Get-AzVM -Name $vmName -ResourceGroupName $rgName 
 $disk = Get-AzDisk -DiskName $diskName -ResourceGroupName $rgName
 $vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $disk.Id -Lun 1
+Update-AzVM -ResourceGroupName $rgName -VM $vm
 ```
 
 
 > [!IMPORTANT]
-> 客户托管的密钥依赖于 Azure 资源的托管标识，一项功能 Azure Active Directory （Azure AD）。 配置客户管理的密钥时，会自动将托管标识分配给你的资源。 如果随后将订阅、资源组或托管磁盘从一个 Azure AD 目录移动到另一个目录，则与托管磁盘关联的托管标识不会传输到新租户，因此，客户管理的密钥可能不再有效。 有关详细信息，请参阅在[Azure AD 目录之间传输订阅](../articles/active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。
+> 客户托管密钥依赖于 Azure 资源的托管标识，后者是 Azure Active Directory (Azure AD) 的一项功能。 配置客户管理的密钥时，会自动将托管标识分配给你的资源。 如果随后将订阅、资源组或托管磁盘从一个 Azure AD 目录移动到另一个目录，则与托管磁盘关联的托管标识不会传输到新租户，因此，客户管理的密钥可能不再有效。 有关详细信息，请参阅在[Azure AD 目录之间传输订阅](../articles/active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>服务器端加密与 Azure 磁盘加密
 

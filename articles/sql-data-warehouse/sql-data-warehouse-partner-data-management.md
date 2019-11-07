@@ -1,6 +1,6 @@
 ---
-title: SQL 数据仓库数据管理合作伙伴 | Microsoft 文档
-description: 其解决方案支持 SQL 数据仓库的第三方数据管理合作伙伴列表。
+title: 数据管理合作伙伴
+description: 具有支持 Azure SQL 数据仓库的解决方案的第三方数据管理合作伙伴列表。
 services: sql-data-warehouse
 author: mabasile-MSFT
 manager: craigg
@@ -10,27 +10,28 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
-ms.openlocfilehash: 98f581eca893fc3f0cf2eae12fdcffbe0440bdd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b26d81a125cd64987a9725d88b2f3fcadbdb19ac
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873691"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685585"
 ---
 # <a name="sql-data-warehouse-data-management-partners"></a>SQL 数据仓库数据管理合作伙伴
 要创建数据仓库解决方案，请从行业领先的各种工具中进行选择。 本文重点介绍其数据管理工具和解决方案支持 Azure SQL 数据仓库的 Microsoft 合作伙伴公司。
 
 ## <a name="data-management-partners"></a>数据管理合作伙伴
-| 合作伙伴 | 描述 | 网站/产品链接 |
+| 合作伙伴 | 说明 | 网站/产品链接 |
 | ------- | ----------- | -------------------- |
 | ![Coffing Data Warehousing][1] |**Coffing Data Warehousing**<br>Coffing Data Warehousing 提供 Nexus Chameleon（专门用于查询系统的工具），已有 10 多年的历史。 Nexus 可用作 SQL 数据仓库的查询工具。 使用 Nexus 可以查询本地和云计算机，并联接不同平台的数据。 点击式报告！ |[产品页][coffing_website]<br> |
 | ![Inbrein][2] |**Inbrein MicroERD**<br>Inbrein MicroERD 提供创建准确的数据模型、减少数据冗余、提升产能及遵守标准所必需的工具。 根据广泛的用户体验所开发的 UI，可让模型塑造者轻松又方便地处理 DB 模型。 通过及时的功能改进和更新，可以持续享有 MicroERD 最新改善的功能。 |[产品页][inbrein_website]<br> |
-| ![Infolibrarian][3] |**Infolibrarian 能够归类 （元数据管理服务器）**<br>InfoLibrarian 能够归类、存储和管理元数据，有助于解决数据管理的主要难题。 此外，Infolibrarian 还提供元数据管理、数据控制和资产管理软件解决方案，让用户管理和发布各种不同工具和技术的元数据。 |[产品页][infolibrarian_website]<br> [Azure Marketplace][infolibrarian_marketplace]<br> |
-| ![Redpoint Global][4] |**RedPoint Data Management**<br>RedPoint Data Management 使营销人员应用其所有数据促进跨渠道客户的参与，同时运行结构化和非结构化的数据管理。 用户可以利用 Azure SQL 数据仓库和 RedPoint，让其所有的结构化或非结构化数据发挥最大的价值，经由高度个人化和情境式交互，吸引现今泛通路的客户。 拖放式界面使设计和运行数据管理过程变得轻松。 |[产品页][redpoint_dm_website]<br> [Azure Marketplace][redpoint_dm_marketplace]<br> |
-| ![Sentry One][5] |**SentryOne (DW Sentry)**<br>借助智能数据移动仪表板和事件日历，可以始终知道什么在影响工作负荷。 旨在可视化运行的查询和加载、备份或还原数据等作业，永远无需担心是否充分利用 Azure 资源。 |[产品页][sql_sentry_website]<br>[Azure Marketplace][sql_sentry_marketplace]<br> |
+| ![Infolibrarian][3] |**Infolibrarian （元数据管理服务器）**<br>InfoLibrarian 能够归类、存储和管理元数据，有助于解决数据管理的主要难题。 此外，Infolibrarian 还提供元数据管理、数据控制和资产管理软件解决方案，让用户管理和发布各种不同工具和技术的元数据。 |[产品页][infolibrarian_website]<br> [Azure 市场][infolibrarian_marketplace]<br> |
+| ![Redpoint Global][4] |**RedPoint Data Management**<br>RedPoint 数据管理允许市场营销人员应用其所有数据，在执行结构化和非结构化的数据管理时，推动跨渠道客户的参与。 用户可以利用 Azure SQL 数据仓库和 RedPoint，让其所有的结构化或非结构化数据发挥最大的价值，经由高度个人化和情境式交互，吸引现今泛通路的客户。 拖放式界面使设计和运行数据管理过程变得轻松。 |[产品页][redpoint_dm_website]<br> [Azure 市场][redpoint_dm_marketplace]<br> |
+| ![Sentry One][5] |**SentryOne （DW 卫士）**<br>借助智能数据移动仪表板和事件日历，可以始终知道什么在影响工作负荷。 旨在可视化运行的查询和加载、备份或还原数据等作业，永远无需担心是否充分利用 Azure 资源。 |[产品页][sql_sentry_website]<br>[Azure 市场][sql_sentry_marketplace]<br> |
 
 ## <a name="next-steps"></a>后续步骤
-要详细了解其他合作伙伴，请参阅[商业智能合作伙伴][bi_partners]和[数据集成合作伙伴][di_partners]。
+若要详细了解其他合作伙伴，请参阅[商业智能合作伙伴][bi_partners]和[数据集成合作伙伴][di_partners]。
 
 <!--Image references-->
 

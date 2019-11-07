@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂支持的计算环境 | Microsoft Docs
+title: Azure 数据工厂支持的计算环境
 description: 了解可在 Azure 数据工厂管道（例如 Azure HDInsight）中用于转换或处理数据的计算环境。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 12d12e96616d94360e5d193cf2b778a9ae389062
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 0cc7c3b7d8b364e0bcca671efaff2cf324695428
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140248"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73667749"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "70140248"
 
 下表提供了数据工厂所支持的计算环境以及可以在其上运行的活动的列表。 
 
-| 计算环境                      | activities                               |
+| 计算环境                      | 活动                               |
 | ---------------------------------------- | ---------------------------------------- |
 | [按需 Azure HDInsight 群集](#azure-hdinsight-on-demand-linked-service)或[自己的 HDInsight 群集](#azure-hdinsight-linked-service) | [DotNet](data-factory-use-custom-activities.md)、[Hive](data-factory-hive-activity.md)、[Pig](data-factory-pig-activity.md)、[MapReduce](data-factory-map-reduce.md)、[Hadoop 流式处理](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |
@@ -49,7 +49,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 2017 年 12 月 15日后：
 
 - 客户不再能够使用数据工厂版本 1 中的按需 HDInsight 链接服务创建基于 Linux 的 HDInsight 版本 3.3（或更低版本）的群集。 
-- 如果未在现有数据工厂版本 1 按需 HDInsight 链接服务的 JSON 定义中显式指定 [osType 和 Version 属性](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)，则默认值将 从“Version=3.1, osType=Windows”更改为“Version=\<最新 HDI 默认版本\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning), osType=Linux”。
+- 如果未在现有数据工厂版本 1 按需 HDInsight 链接服务的 JSON 定义中显式指定 [osType 和 Version 属性 **，则默认值将 从“Version=3.1, osType=Windows”更改为“Version=** 最新 HDI 默认版本 **(** , osType=Linux”](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) **\<\>https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)** 。
 
 2018 年 7 月 31 日后：
 
@@ -112,7 +112,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ```
 
 > [!IMPORTANT]
-> HDInsight 群集在 JSON **linkedServiceName** 属性中指定的 Azure Blob 存储内创建默认容器。 根据设计，HDInsight 不会在删除群集时删除此容器。 在按需 HDInsight 链接服务中，除非存在现有的实时群集 (**timeToLive**)，否则每次需要处理切片时，都会创建 HDInsight 群集。 处理完成后会删除该群集。 
+> HDInsight 群集在 JSON *linkedServiceName* 属性中指定的 Azure Blob 存储内创建默认容器。 根据设计，HDInsight 不会在删除群集时删除此容器。 在按需 HDInsight 链接服务中，除非存在现有的实时群集 (**timeToLive**)，否则每次需要处理切片时，都会创建 HDInsight 群集。 处理完成后会删除该群集。 
 >
 > 随着处理的切片越来越多，Blob 存储中会出现大量的容器。 如果不需要使用容器来排查作业问题，可以删除容器以降低存储成本。 这些容器的名称遵循 `adf<your Data Factory name>-<linked service name>-<date and time>` 模式。 可以使用 [Microsoft 存储资源管理器](https://storageexplorer.com/)等工具来删除 Blob 存储中的容器。
 >
@@ -130,7 +130,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 | osType                       | 操作系统的类型。 允许的值为 **Linux** 和 **Windows**。 如果未指定此值，将使用 **Linux**。  <br /><br />我们强烈建议使用基于 Linux 的 HDInsight 群集。 Windows 上的 HDInsight 的停用日期是 2018 年 7 月 31 日。 | 否       |
 | hcatalogLinkedServiceName    | 指向 HCatalog 数据库的 Azure SQL 链接服务的名称。 按需 HDInsight 群集是使用 SQL 数据库作为元存储创建的。 | 否       |
 
-#### <a name="example-linkedservicenames-json"></a>例如：LinkedServiceNames JSON
+#### <a name="example-linkedservicenames-json"></a>示例：LinkedServiceNames JSON
 
 ```json
 "additionalLinkedServiceNames": [
@@ -142,7 +142,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ### <a name="advanced-properties"></a>高级属性
 若要对按需 HDInsight 群集进行粒度配置，可指定以下属性：
 
-| 属性               | 说明                              | 必填 |
+| 属性               | 说明                              | 必选 |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | 为要创建的 HDInsight 群集指定核心配置参数 (core-site.xml)。 | 否       |
 | hBaseConfiguration     | 为 HDInsight 群集指定 HBase 配置参数 (hbase-site.xml)。 | 否       |
@@ -153,7 +153,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 | stormConfiguration     | 为 HDInsight 群集指定 Storm 配置参数 (storm-site.xml)。 | 否       |
 | yarnConfiguration      | 为 HDInsight 群集指定 YARN 配置参数 (yarn-site.xml)。 | 否       |
 
-#### <a name="example-on-demand-hdinsight-cluster-configuration-with-advanced-properties"></a>例如：具有高级属性的按需 HDInsight 群集配置
+#### <a name="example-on-demand-hdinsight-cluster-configuration-with-advanced-properties"></a>示例：具有高级属性的按需 HDInsight 群集配置
 
 ```json
 {
@@ -195,7 +195,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ### <a name="node-sizes"></a>节点大小
 若要指定头节点、数据节点和 ZooKeeper 节点的大小，请使用以下属性： 
 
-| 属性          | 说明                              | 必填 |
+| 属性          | 说明                              | 必选 |
 | :---------------- | :--------------------------------------- | :------- |
 | headNodeSize      | 设置头节点的大小。 默认值为 **Standard_D3**。 有关详细信息，请参阅[指定节点大小](#specify-node-sizes)。 | 否       |
 | dataNodeSize      | 设置数据节点的大小。 默认值为 **Standard_D3**。 | 否       |
@@ -213,7 +213,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 
 如果为这些属性设置了错误的值，可能会看到以下消息：
 
-  未能创建群集。 异常：无法完成群集创建操作。 操作失败，代码为 '400'。 群集保持为 'Error' 状态。 消息：'PreClusterCreationValidationFailure'。 
+  未能创建群集。 异常: 无法完成群集创建操作。 操作失败，代码为 '400'。 群集保持为 'Error' 状态。 消息: “PreClusterCreationValidationFailure”。 
   
 如果看到此消息，请确保使用[虚拟机大小](../../virtual-machines/linux/sizes.md)的表格中的 cmdlet 和 API 名称。  
 
@@ -229,7 +229,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 此类型的配置支持以下计算环境：
 
 * Azure HDInsight
-* Azure 批处理
+* Azure Batch
 * Azure 机器学习
 * Azure Data Lake Analytics
 * Azure SQL 数据库、Azure SQL 数据仓库、SQL Server
@@ -330,7 +330,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ```
 
 ### <a name="properties"></a>属性
-| 属性   | 说明                              | 必填 |
+| 属性   | 说明                              | 必选 |
 | ---------- | ---------------------------------------- | -------- |
 | 类型       | 将 type 属性设置为 **AzureML**。 | 是      |
 | mlEndpoint | 批处理计分 URL。                   | 是      |
@@ -360,11 +360,11 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 
 通过指定以下属性使用服务主体身份验证：
 
-| 属性                | 说明                              | 必填 |
+| 属性                | 说明                              | 必选 |
 | :---------------------- | :--------------------------------------- | :------- |
 | servicePrincipalId  | 应用程序的客户端 ID。     | 是      |
 | servicePrincipalKey | 应用程序的密钥。           | 是      |
-| 租户              | 应用程序所在的租户的信息（域名或租户 ID）。 若要获取此信息，请将鼠标悬停在 Azure 门户的右上角。 | 是      |
+| tenant              | 应用程序所在的租户的信息（域名或租户 ID）。 若要获取此信息，请将鼠标悬停在 Azure 门户的右上角。 | 是      |
 
 **示例：服务主体身份验证**
 ```json
@@ -388,12 +388,12 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 #### <a name="user-credential-authentication"></a>用户凭据身份验证
 若要对 Data Lake Analytics 使用用户凭据身份验证，请指定以下属性：
 
-| 属性          | 说明                              | 必填 |
+| 属性          | 说明                              | 必选 |
 | :---------------- | :--------------------------------------- | :------- |
 | authorization | 在数据工厂编辑器中，选择“授权”按钮。 在此属性中输入用于分配自动生成的授权 URL 的凭据。 | 是      |
 | sessionId     | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时，会自动生成此设置。 | 是      |
 
-示例：**用户凭据身份验证**
+**示例：用户凭据身份验证**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -416,7 +416,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 
 身份验证令牌过期时，可能会显示以下错误消息： 
 
-  凭据操作错误：invalid_grant - AADSTS70002：验证凭据时出错。 AADSTS70008：提供的访问权限已过期或已被吊销。 跟踪 ID：d18629e8-af88-43c5-88e3-d8419eb1fca1 相关 ID：fac30a0c-6be6-4e02-8d69-a776d2ffefd7 时间戳：2015-12-15 21:09:31Z
+  凭据操作错误: invalid_grant - AADSTS70002: 验证凭据时出错。 AADSTS70008：提供的访问权限已过期或已被吊销。 跟踪 ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 相关 ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 时间戳: 2015-12-15 21:09:31Z
 
 下表按用户帐户类型显示了过期时间： 
 

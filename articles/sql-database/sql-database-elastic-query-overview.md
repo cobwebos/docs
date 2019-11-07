@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库弹性查询概述 | Microsoft Docs
+title: Azure SQL 数据库弹性查询概述
 description: 使用弹性查询可运行跨多个数据库的 Transact-SQL 查询。
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 07/01/2019
-ms.openlocfilehash: 313e8af0e42f5108a22261a475b5340208adb7bf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 08c191742425c448618db255491c709130df33a1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568559"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690366"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL 数据库弹性查询概述（预览版）
 
-使用弹性查询功能（处于预览状态）可以跨 Azure SQL 数据库中的多个数据库运行 Transact-SQL 查询。 它允许执行跨数据库查询以访问远程表，以及连接 Microsoft 和第三方工具（Excel、Power BI、Tableau 等）以跨多个数据库的数据层进行查询。 使用此功能，可以将查询扩大到 SQL 数据库中的较大数据层，并直观显示商业智能 (BI) 报表中的结果。
+使用弹性查询功能（处于预览状态）可以跨 Azure SQL 数据库中的多个数据库运行 Transact-SQL 查询。 它允许执行跨数据库查询以访问远程表，以及连接 Microsoft 和第三方工具（Excel、Power BI、Tableau 等）以跨多个数据库的数据层进行查询。 使用此功能，可以将查询横向扩展到 SQL 数据库中的较大数据层，并直观显示商业智能 (BI) 报表中的结果。
 
 ## <a name="why-use-elastic-queries"></a>为什么要使用弹性查询？
 
@@ -38,7 +38,7 @@ ms.locfileid: "68568559"
 
 ### <a name="stored-procedure-execution"></a>存储过程执行
 
-执行远程存储的过程调用或使用远程运行 [sp\_ 执行\_远程](https://msdn.microsoft.com/library/mt703714)。
+使用 [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) 执行远程存储过程调用或远程函数。
 
 ### <a name="flexibility"></a>灵活性
 
@@ -55,8 +55,8 @@ ms.locfileid: "68568559"
 
 弹性查询的客户方案的特征包括以下拓扑：
 
-* **垂直分区 - 跨数据库查询**（拓扑 1）：数据在数据层中的多个数据库之间垂直分区。 通常，不同的表集驻留在不同的数据库上。 这意味着不同数据库上的架构是不同的。 例如，清单的所有表都位于一个数据库上，而与会计相关的所有表都位于第二个数据库上。 采用此拓扑的常见使用案例需要使用一个查询跨多个数据库中的表进行查询或编译报表。
-* **水平分区 - 分片**（拓扑 2）：将数据进行水平分区以将行分布到扩大的数据层上。 使用此方法时，所有参与数据库中的架构是相同的。 此方法也称为“分片”。 可以使用 (1) 弹性数据库客户端库或 (2) 自我分片来执行和管理分片。 可使用弹性查询跨多个分片查询或编译报表。
+* **垂直分区 - 跨数据库查询**（拓扑 1）：在数据层中的多个数据库之间对数据进行垂直分区。 通常，不同的表集驻留在不同的数据库上。 这意味着不同数据库上的架构是不同的。 例如，清单的所有表都位于一个数据库上，而与会计相关的所有表都位于第二个数据库上。 采用此拓扑的常见使用案例需要使用一个查询跨多个数据库中的表进行查询或编译报表。
+* **水平分区 - 分片**（拓扑 2）：对数据进行水平分区以将行分布到扩大的数据层上。 使用此方法时，所有参与数据库中的架构是相同的。 此方法也称为“分片”。 可以使用 (1) 弹性数据库客户端库或 (2) 自我分片来执行和管理分片。 可使用弹性查询跨多个分片查询或编译报表。
 
 > [!NOTE]
 > 弹性查询最适用于可以在外部源端执行大多数处理（筛选、聚合）的报告方案。 它不适用于从远程数据库传输大量数据的 ETL 操作。 对于使用更复杂查询的大量报表工作负荷或数据仓库方案，还可以考虑使用 [Azure SQL 数据仓库](https://azure.microsoft.com/services/sql-data-warehouse/)。
@@ -78,7 +78,7 @@ ms.locfileid: "68568559"
 
 ![垂直分区 - 使用弹性查询来查询引用数据][3]
 
-**跨数据库查询**：弹性查询支持需要跨多个 SQL 数据库进行查询的用例。 图 3 显示了四个不同的数据库：CRM、库存、人力资源和产品。 在其中一个数据库中执行的查询还需要访问一个或所有其他数据库。 使用弹性查询时，可以通过在这四个数据库的每个数据库上运行几个简单的 DDL 语句来为此案例配置数据库。 经过此一次性配置后，对远程表的访问就像从 T-SQL 查询或 BI 工具引用本地表一样简单。 如果远程查询不返回大型结果，建议使用此方法。
+**跨数据库查询**：弹性查询支持需要跨多个 SQL 数据库进行查询的用例。 图 3 显示了四个不同的数据库：CRM、Inventory、HR 和 Products。 在其中一个数据库中执行的查询还需要访问一个或所有其他数据库。 使用弹性查询时，可以通过在这四个数据库的每个数据库上运行几个简单的 DDL 语句来为此案例配置数据库。 经过此一次性配置后，对远程表的访问就像从 T-SQL 查询或 BI 工具引用本地表一样简单。 如果远程查询不返回大型结果，建议使用此方法。
 
 **图 3** 垂直分区 - 使用弹性查询来跨多个数据库查询
 
@@ -88,7 +88,7 @@ ms.locfileid: "68568559"
 
 * [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx) mymasterkey
 * [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx) mycredential
-* **RDBMS** 类型的 [CREATE/DROP 外部数据源](https://msdn.microsoft.com/library/dn935022.aspx) mydatasource
+* [RDBMS](https://msdn.microsoft.com/library/dn935022.aspx) 类型的 **CREATE/DROP 外部数据源** mydatasource
 * [CREATE/DROP EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) mytable
 
 运行 DDL 语句后，可以访问远程表“mytable”就像它是本地表一样。 Azure SQL 数据库会自动打开与远程数据库的连接，处理远程数据库上的请求并返回结果。
@@ -110,7 +110,7 @@ ms.locfileid: "68568559"
 * [CREATE MASTER KEY](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
 * [CREATE DATABASE SCOPED CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
 * 使用弹性数据库客户端库创建表示数据层的[分片映射](sql-database-elastic-scale-shard-map-management.md)。
-* **SHARD_MAP_MANAGER** 类型的 [CREATE/DROP 外部数据源](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource
+* [SHARD_MAP_MANAGER](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) 类型的 **CREATE/DROP 外部数据源** mydatasource
 * [CREATE/DROP EXTERNAL TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) mytable
 
 执行这些步骤后，便可以访问水平分区的表“mytable”就像它是本地表一样。 Azure SQL 数据库会自动打开与远程数据库（在其中表以物理方式存储）的多个并行连接，处理远程数据库上的请求并返回结果。
@@ -129,7 +129,7 @@ ms.locfileid: "68568559"
 > [!IMPORTANT]
 > 当前不支持使用 Azure Active Directory 通过弹性查询进行身份验证。
 
-## <a name="cost"></a>开销
+## <a name="cost"></a>成本
 
 弹性查询包含在 Azure SQL 数据库的数据库成本中。 请注意，支持远程数据库与弹性查询终结点在不同的数据中心的拓扑，但通常按 [Azure 费率](https://azure.microsoft.com/pricing/details/data-transfers/)对远程数据库的数据流出量进行收费。
 
@@ -139,10 +139,10 @@ ms.locfileid: "68568559"
 * 尚不支持从 SSMS 或 SSDT 对外部数据源或外部表进行脚本编写。
 * SQL 数据库的导入/导出尚不支持外部数据源和外部表。 如果需要使用导入/导出，请在导出之前删除这些对象，并在导入后重新创建它们。
 * 弹性查询当前仅支持对外部表进行只读访问。 但是，可以对在其中定义了外部表的数据库使用完整的 T-SQL 功能。 这可能对以下操作很有用：例如，使用（例如）SELECT <column_list> INTO <local_table>持久保存临时结果，或在引用外部表的弹性查询数据库中定义存储过程。
-* 除了 nvarchar (max), LOB 类型 (包括空间类型) 在外部表定义中不受支持。 一种解决方法是，可以在远程数据库上创建将 LOB 类型强制转换为 nvarchar(max) 的视图，通过该视图（而不是基表）定义外部表，然后在查询中将其强制转换回原始 LOB 类型。
+* 除 nvarchar(max) 外，外部表定义不支持 LOB 类型（包括空间类型）。 一种解决方法是，可以在远程数据库上创建将 LOB 类型强制转换为 nvarchar(max) 的视图，通过该视图（而不是基表）定义外部表，然后在查询中将其强制转换回原始 LOB 类型。
 * 结果集中的 nvarchar(max) 数据类型列禁用弹性查询实现中使用的高级批处理技术，并且在大量非聚合数据正在作为查询的结果进行传输的非规范用例中可能会影响一个数量级甚至两个数量级的查询性能。
 * 当前不支持外部表上的列统计信息。 支持表统计信息，但需要手动创建。
-* 弹性查询仅适用于 Azure SQL 数据库。 不能将其用于在 VM 中查询本地 SQL Server 或 SQL Server。
+* 弹性查询仅适用于 Azure SQL 数据库。 不能使用它来查询本地 SQL Server 或 VM 中的 SQL Server。
 
 ## <a name="feedback"></a>反馈
 

@@ -7,21 +7,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 725a9d67e6a6412fc48a4278b5a8a163272e5133
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 76807c8ed10e30c554b6aa06ec096c830a86e36e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000986"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571981"
 ---
 # <a name="ssl-termination-with-key-vault-certificates"></a>使用 Key Vault 证书实现 SSL 终止
 
-[Azure Key Vault](../key-vault/key-vault-overview.md) 是由平台管理的机密存储，可以用来保证机密、密钥和 SSL 证书的安全。 Azure 应用程序网关支持与 Key Vault（公共预览版）集成，以存储附加到支持 HTTPS 的侦听器的服务器证书。 此支持仅限 v2 SKU 版应用程序网关。
+[Azure Key Vault](../key-vault/key-vault-overview.md) 是由平台管理的机密存储，可以用来保证机密、密钥和 SSL 证书的安全。 对于附加到启用 HTTPS 的侦听器的服务器证书，Azure 应用程序网关支持与 Key Vault 集成。 此支持仅限 v2 SKU 版应用程序网关。
 
-> [!IMPORTANT]
-> 将应用程序网关与 Key Vault 集成的功能目前为公共预览版。 此预览版在提供时没有附带服务级别协议 (SLA)，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-此公共预览版提供两种用于 SSL 终止的模型：
+Key Vault 集成为 SSL 终止提供两种模型：
 
 - 可以显式提供附加到侦听器的 SSL 证书。 此模型是将 SSL 证书传递到应用程序网关进行 SSL 终止的传统方式。
 - 可以选择在创建支持 HTTPS 的侦听器时提供对现有 Key Vault 证书或机密的引用。
@@ -35,7 +32,7 @@ ms.locfileid: "71000986"
 - 支持将现有证书导入密钥保管库中。 或者使用 Key Vault API 与任何受信任的 Key Vault 合作伙伴一起创建并管理新证书。
 - 支持自动续订存储在密钥保管库中的证书。
 
-应用程序网关目前仅支持经软件验证的证书。 不支持硬件安全模块（HSM）验证的证书。 应用程序网关在配置为使用 Key Vault 证书以后，其实例会从 Key Vault 检索证书并将其安装到本地进行 SSL 终止。 实例还按 24 小时的时间间隔轮询 Key Vault，以便检索续订版的证书（如果存在）。 如果发现更新的证书，则目前与 HTTPS 侦听器关联的 SSL 证书会自动轮换。
+应用程序网关目前仅支持经软件验证的证书。 不支持硬件安全模块 (HSM) 验证的证书。 应用程序网关在配置为使用 Key Vault 证书以后，其实例会从 Key Vault 检索证书并将其安装到本地进行 SSL 终止。 实例还按 24 小时的时间间隔轮询 Key Vault，以便检索续订版的证书（如果存在）。 如果发现更新的证书，则目前与 HTTPS 侦听器关联的 SSL 证书会自动轮换。
 
 ## <a name="how-integration-works"></a>集成工作原理
 

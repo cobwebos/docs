@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c3d07c95592c1c43a070afbbf5091693ce0a6611
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: adcaa29ed894f2d61871f467369bcdd05f8cc593
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950348"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601595"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中管理设备
 
@@ -21,7 +21,7 @@ ms.locfileid: "72950348"
 
 本文介绍如何以操作员的身份在 Azure IoT Central 应用程序中管理设备。 操作员可以：
 
-- 使用“Device Explorer”页查看、添加和删除与 Azure IoT Central 应用程序相连接的设备。
+- 使用 "**设备**" 页可以查看、添加和删除连接到 Azure IoT Central 应用程序的设备。
 - 维护最新的设备清单。
 - 通过更改设备属性中存储的值，使设备元数据保持最新状态。
 - 通过在“设置”页中更新特定设备的设置，来控制设备的行为。
@@ -30,11 +30,11 @@ ms.locfileid: "72950348"
 
 若要查看单个设备：
 
-1. 选择左窗格中的 " **Device Explorer** "。 此处会显示[设备模板](howto-set-up-template.md)的列表。
+1. 选择左窗格中的 "**设备**"。 此处会显示[设备模板](howto-set-up-template.md)的列表。
 
 1. 在“模板”列表中选择设备模板。
 
-1. 在“Device Explorer”页面的右侧窗格中，可以看到根据该设备模板创建的设备的列表。 选择单个设备以查看该设备的“设备详细信息”页：
+1. 在 "**设备**" 页的右侧窗格中，可以看到从该设备模板创建的设备列表。 选择单个设备以查看该设备的“设备详细信息”页：
 
     ![设备详细信息页](./media/howto-manage-devices/devicelist.png)
 
@@ -42,7 +42,7 @@ ms.locfileid: "72950348"
 
 若要将设备添加到 Azure IoT Central 应用程序：
 
-1. 选择左窗格中的 " **Device Explorer** "。
+1. 选择左窗格中的 "**设备**"。
 
 1. 选择要从中创建设备的设备模板。
 
@@ -59,7 +59,7 @@ ms.locfileid: "72950348"
 
 若要在应用程序中批量注册设备：
 
-1. 选择左窗格中的 " **Device Explorer** "。
+1. 选择左窗格中的 "**设备**"。
 
 1. 在左面板中，选择要为其批量创建设备的设备模板。
 
@@ -84,7 +84,7 @@ ms.locfileid: "72950348"
 
 如果通过在“未关联设备”下启动导入来注册设备，则无需任何设备模板关联即可创建设备。 设备必须与模板关联起来，才能浏览有关设备的数据和其他详细信息。 请按照以下步骤将设备与模板进行关联：
 
-1. 选择左窗格中的 " **Device Explorer** "。
+1. 选择左窗格中的 "**设备**"。
 
 1. 在左面板中，选择“未关联的设备”：
 
@@ -109,7 +109,7 @@ ms.locfileid: "72950348"
 
 从应用程序中批量导出设备：
 
-1. 选择左窗格中的 " **Device Explorer** "。
+1. 选择左窗格中的 "**设备**"。
 
 1. 在左面板中，选择要从中导出设备的设备模板。
 
@@ -140,7 +140,7 @@ ms.locfileid: "72950348"
 
 若要从 Azure IoT Central 应用程序中删除真实设备或模拟设备：
 
-1. 选择左窗格中的 " **Device Explorer** "。
+1. 选择左窗格中的 "**设备**"。
 
 1. 选择要删除的设备的设备模板。
 
@@ -152,7 +152,7 @@ ms.locfileid: "72950348"
 
 设置控制设备的行为。 换而言之，设置可用于提供设备的输入。 可以在“设备详细信息”页上查看和更新设备设置。
 
-1. 选择左窗格中的 " **Device Explorer** "。
+1. 选择左窗格中的 "**设备**"。
 
 1. 选择要更改其设置的设备的设备模板。
 
@@ -166,7 +166,7 @@ ms.locfileid: "72950348"
 
 属性是与设备关联的设备元数据，例如城市和序列号。 可以在“设备详细信息”页上查看和更新属性。
 
-1. 选择左窗格中的 " **Device Explorer** "。
+1. 选择左窗格中的 "**设备**"。
 
 1. 选择要更改其属性的设备的设备模板。
 

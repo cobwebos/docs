@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂从 Google BigQuery 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 Google BigQuery 复制数据
 description: 了解如何使用数据工厂管道中的复制活动，将数据从 Google BigQuery 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: e46bb5e79b20c303dc2d3c29277047aad9f3ffb1
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: d57260db74a1373eb461c560e013be620910eee9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090319"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680927"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google BigQuery 复制数据
 
@@ -37,7 +37,7 @@ ms.locfileid: "71090319"
 >[!NOTE]
 >此 Google BigQuery 连接器在 BigQuery API 的基础上构建。 请注意，BigQuery 会限制传入请求的最大速率并按项目强制实施适当的配额，请参阅[配额和限制 - API 请求](https://cloud.google.com/bigquery/quotas#api_requests)。 请确保不会触发过多的帐户并发请求。
 
-## <a name="get-started"></a>开始使用
+## <a name="get-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -59,7 +59,7 @@ Google BigQuery 链接服务支持以下属性。
 
 将“authenticationType”属性设置为“UserAuthentication”，并指定以下属性及上节所述的泛型属性：
 
-| 属性 | 说明 | 必填 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | clientId | 应用程序的 ID，用于生成刷新令牌。 | 否 |
 | clientSecret | 应用程序的机密，用于生成刷新令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
@@ -95,7 +95,7 @@ Google BigQuery 链接服务支持以下属性。
 
 将“authenticationType”属性设置为“ServiceAuthentication”，并指定以下属性及上节所述的泛型属性。 此身份验证类型只能在自承载 Integration Runtime 上使用。
 
-| 属性 | 说明 | 必填 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | email | 用于 ServiceAuthentication 的服务帐户电子邮件 ID。 它只能在自承载集成运行时上使用。  | 否 |
 | keyFilePath | .p12 密钥文件的完整路径，该文件用于对服务帐户电子邮件地址进行身份验证。 | 否 |
@@ -126,16 +126,16 @@ Google BigQuery 链接服务支持以下属性。
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Google BigQuery 数据集支持的属性列表。
+有关可用于定义数据集的各个部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Google BigQuery 数据集支持的属性列表。
 
 要从 Google BigQuery 复制数据，请将数据集的 type 属性设置为 **GoogleBigQueryObject**。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：**GoogleBigQueryObject** | 是 |
+| type | 数据集的 type 属性必须设置为： **GoogleBigQueryObject** | 是 |
 | dataset | Google BigQuery 数据集的名称。 |否（如果指定了活动源中的“query”）  |
 | 表 | 表名称。 |否（如果指定了活动源中的“query”）  |
-| tableName | 表名称。 支持此属性是为了向后兼容。 对于新工作负荷， `dataset`请`table`使用和。 | 否（如果指定了活动源中的“query”） |
+| tableName | 表名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `dataset` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -156,16 +156,16 @@ Google BigQuery 链接服务支持以下属性。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Google BigQuery 源类型支持的属性列表。
+有关可用于定义活动的各节和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Google BigQuery 源类型支持的属性列表。
 
 ### <a name="googlebigquerysource-as-a-source-type"></a>以 GoogleBigQuerySource 作为源类型
 
-要从 Google BigQuery 复制数据，请将复制活动中的源类型设置为“GoogleBigQuerySource”。 复制活动的 **source** 节支持以下属性。
+要从 Google BigQuery 复制数据，请将复制活动中的源类型设置为“GoogleBigQuerySource”。 复制活动**源**部分支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **GoogleBigQuerySource**。 | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 
@@ -199,9 +199,9 @@ Google BigQuery 链接服务支持以下属性。
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>查找活动属性
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
 
-若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据仓库中的工作负荷管理的资源类 |Microsoft Docs
+title: 用于工作负荷管理的资源类
 description: 有关使用资源类管理并发性以及计算 Azure SQL 数据仓库中查询的资源的指导。
 services: sql-data-warehouse
 author: ronortloff
@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 10/04/2019
+ms.date: 11/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5ef95faf162a6774e42b7cf258515757fdc9c7eb
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 558a6e3faa207e15000657a17bec99a7b1ac99e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035076"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685926"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>使用 Azure SQL 数据仓库中的资源类管理工作负荷
 
@@ -35,7 +36,7 @@ ms.locfileid: "72035076"
 
 资源类使用并发性槽位来测量资源消耗。  本文稍后将介绍[并发性槽位](#concurrency-slots)。
 
-- 若要查看资源类的资源利用率，请参阅[内存和并发性限制](memory-and-concurrency-limits.md#concurrency-maximums)。
+- 若要查看资源类的资源利用率，请参阅 [内存和并发限制] 内存-limits.md）。
 - 若要调整资源类，可以使用不同的用户身份运行查询，或[更改当前用户的资源类](#change-a-users-resource-class)成员身份。
 
 ### <a name="static-resource-classes"></a>静态资源类
@@ -71,7 +72,7 @@ ms.locfileid: "72035076"
 | smallrc        | 3%                | 32                     |
 | mediumrc       | 10%               | 10                     |
 | largerc        | 22%               | 4                      |
-| xlargerc       | 70%               | 第                      |
+| xlargerc       | 70%               | 1                      |
 
 ### <a name="default-resource-class"></a>默认资源类
 
@@ -331,7 +332,7 @@ SELECT 'DW100c' AS DWU,4 AS max_queries,4 AS max_slots,1 AS slots_used_
     SELECT 'DW30000c', 128, 1200, 36, 120, 264, 840, 1, 2, 4, 8, 16, 32, 64, 128 
 )
 -- Creating workload mapping to their corresponding slot consumption and default memory grant.
-,map
+,map  
 AS
 (
   SELECT CONVERT(varchar(20), 'SloDWGroupSmall') AS wg_name, slots_used_smallrc AS slots_used FROM alloc WHERE DWU = @DWU
@@ -580,9 +581,9 @@ SELECT  CASE
 GO
 ```
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
-有关如何管理数据库用户和安全性的详细信息，请参阅[保护 SQL 数据仓库中的数据库][Secure a database in SQL Data Warehouse]。 有关较大资源类如何改进聚集列存储索引质量的详细信息，请参阅[列存储压缩的内存优化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
+有关如何管理数据库用户和安全性的详细信息，请参阅 [保护 SQL 数据仓库中的数据库][Secure a database in SQL Data Warehouse]。 有关较大资源类如何改进聚集列存储索引质量的详细信息，请参阅[列存储压缩的内存优化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
 
 <!--Image references-->
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 035a559f27d11a89dba1983f1bcaf406ef6a0d05
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: cab67a9a50d8e9d91897c170ef2cb0884f169c64
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331948"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606675"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>在 Azure 中选择正确的 MySQL Server 选项
 
@@ -38,7 +38,7 @@ ms.locfileid: "72331948"
 | MySQL 修补     | 自动  | 由客户管理 |
 | 高可用性 | 高可用性（HA）模型基于内置故障转移机制，适用于发生节点级中断的时间。 在这种情况下，服务将自动创建一个新实例，并将存储附加到此实例。 | 客户构建、测试和维护高可用性。 功能可能包括 always on 故障转移群集、always on 组复制、日志传送或事务复制。|
 | 区域冗余 | 目前不受支持。 | 可以将 Azure Vm 设置为在不同的可用性区域中运行。 对于本地解决方案，客户必须创建、管理和维护其自己的辅助数据中心。|
-| 混合场景 | 使用[数据传入复制](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)，你可以将外部 MySQL 服务器中的数据同步到 Azure Database for MySQL 服务。 外部服务器可以处于本地、虚拟机中或是其他云提供商托管的数据库服务。<br/><br/> 使用[读取副本](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas)功能，可以将 Azure Database for MySQL 主服务器中的数据复制到最多5个只读副本服务器。 副本在同一 Azure 区域内或跨区域。 使用 binlog 复制技术异步更新只读副本。<br/><br/>跨区域读取复制当前为公共预览版。| 由客户管理
+| 混合场景 | 使用[数据传入复制](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)，你可以将外部 MySQL 服务器中的数据同步到 Azure Database for MySQL 服务。 外部服务器可以处于本地、虚拟机中或是其他云提供商托管的数据库服务。<br/><br/> 使用[读取副本](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas)功能，可以将 Azure Database for MySQL 主服务器中的数据复制到最多5个只读副本服务器。 副本在同一 Azure 区域内或跨区域。 使用 binlog 复制技术异步更新只读副本。| 由客户管理
 | 备份和还原 | 自动创建[服务器备份](https://docs.microsoft.com/azure/mysql/concepts-backup#backups)并将其存储在用户配置的存储中，该存储是本地冗余或异地冗余的。 该服务将进行完整备份、差异备份和事务日志备份 | 由客户管理 |
 | 监视数据库操作 | 为客户提供对数据库操作[设置警报](https://docs.microsoft.com/azure/mysql/concepts-monitoring)的功能，并在达到阈值时采取措施。 | 由客户管理 |
 | 高级威胁防护 | 提供[高级威胁防护](https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal)。 此保护可检测异常活动，这些活动表示异常和可能有害的数据库访问或利用尝试。 | 客户必须为自己构建这种保护。
@@ -49,13 +49,13 @@ ms.locfileid: "72331948"
 
 有多种因素可能会影响选择 PaaS 或 IaaS 来托管 MySQL 数据库的决策。
 
-### <a name="cost"></a>费用
+### <a name="cost"></a>成本
 
 有限的资金通常是确定用于托管数据库的最佳解决方案的主要考虑因素。 无论你是在一家已建立的公司中使用极少的现金或团队，还是在超出预算限制的情况下启动的，都是如此。 本部分介绍 Azure 中的计费和许可基础知识，因为它们适用于 Azure Vm 上的 Azure Database for MySQL 和 MySQL。
 
 #### <a name="billing"></a>计费
 
-Azure Database for MySQL 当前在具有不同资源价格的多个层中作为服务提供。 所有资源都按固定费率按小时计费。 有关当前支持的服务层、计算大小和存储量的最新信息，请参阅[基于 vCore 的购买模型](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers)。 你可以根据应用程序的不同吞吐量需求，动态调整服务层和计算大小。 按常规[数据传输费率](https://azure.microsoft.com/pricing/details/data-transfers/)对传出 Internet 流量收费。
+Azure Database for MySQL 当前在具有不同资源价格的多个层中作为服务提供。 所有资源都按固定费率按小时计费。 有关当前支持的服务层、计算大小和存储量的最新信息，请参阅[基于 vCore 的购买模型](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers)。 可以动态调整服务层级和计算大小，以满足应用程序的不同吞吐量需求。 按常规[数据传输费率](https://azure.microsoft.com/pricing/details/data-transfers/)对传出 Internet 流量收费。
 
 在 Azure Database for MySQL 中，Microsoft 自动配置、修补和升级数据库软件。 这些自动操作降低了管理成本。 此外，Azure Database for MySQL 还[提供内置的备份](https://docs.microsoft.com/azure/mysql/concepts-backup)功能。 这些功能可帮助你显著节省成本，尤其是在拥有大量数据库的情况下。 与在 Azure Vm 上运行 MySQL 相比，你可以选择并运行任何 MySQL 版本。 无论使用何种 MySQL 版本，都需要为预配的 VM 付费，并为使用的特定 MySQL 许可证类型收费。
 
@@ -85,7 +85,7 @@ Azure Database for MySQL 为任何类型的节点级别中断提供内置的高�
   - 索引优化
   - 查询优化
   - 审核
-  - “安全”
+  - 安全性
 
   此外，将高可用性配置为另一数据中心需要进行少量的配置或管理。
 

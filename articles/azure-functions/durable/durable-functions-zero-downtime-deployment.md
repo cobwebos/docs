@@ -8,17 +8,21 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5e6e51d2a058f89a04a81800b81f3c316be4eab7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b47604f2c8703ba587e98d68dc30552e5944f562
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301485"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614505"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions 的零停机时间部署
+
 Durable Functions 的[可靠执行模型](durable-functions-checkpointing-and-replay.md)要求业务流程是确定性的，这会在部署更新时产生额外的挑战。 当部署包含对活动函数签名或 orchestrator 逻辑的更改时，正在进行的业务流程实例将失败。 对于长时间运行的业务流程的实例，这种情况尤其重要，它可能代表几个小时或几天的工作。
 
 若要防止这些故障发生，你必须将部署延迟到所有正在运行的业务流程实例都已完成，或者确保任何正在运行的业务流程实例都使用现有版本的函数。 有关版本控制的详细信息，请参阅[Durable Functions 中的版本控制](durable-functions-versioning.md)。
+
+> [!NOTE]
+> 本文提供针对 Durable Functions 1.x 的函数应用的指南。 尚未对其进行更新，以考虑 Durable Functions 1.x 中引入的更改。 有关扩展版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
 
 下图比较了这三个主要策略来实现 Durable Functions 的零停机部署： 
 
@@ -29,6 +33,7 @@ Durable Functions 的[可靠执行模型](durable-functions-checkpointing-and-re
 | **[应用程序路由](#application-routing)** | 在业务流程不运行的情况下没有时间段的系统，例如，业务流程持续时间超过24小时的系统或具有经常重叠的业务流程的系统。 | 处理持续运行包含重大更改的业务流程的新版本系统。 | 需要智能应用程序路由器。<br/>可能会超出订阅所允许的函数应用数（默认值为100）。 |
 
 ## <a name="versioning"></a>版本控制
+
 定义新版本的函数，并在 function app 中保留旧版本。 如图中所示，函数的版本将成为其名称的一部分。 由于保留了以前版本的函数，因此正在进行的业务流程实例可以继续引用它们。 同时，对新的业务流程实例的请求将调用最新版本，你的业务流程客户端函数可以从应用设置引用该版本。
 
 ![版本控制策略](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
@@ -62,7 +67,7 @@ Durable Functions 的[可靠执行模型](durable-functions-checkpointing-and-re
 
 下面的 JSON 片段是 host json 文件中的连接字符串设置的示例。
 
-#### <a name="functions-2x"></a>Functions 2.x
+#### <a name="functions-20"></a>函数2。0
 
 ```json
 {
@@ -146,7 +151,7 @@ Azure Pipelines 在部署开始之前检查函数应用以运行业务流程实�
 
 ![应用程序路由（首次）](media/durable-functions-zero-downtime-deployment/application-routing.png)
 
-路由器根据请求发送的 @no__t，将忽略修补程序版本，将部署和业务流程请求定向到相应的函数应用。
+路由器会根据随请求发送的 `version`，将部署和业务流程请求定向到相应的函数应用，忽略修补程序版本。
 
 部署新版本的应用时，如果*不*进行重大更改，则可以递增修补程序版本。 路由器部署到现有 function app，并将新版本的代码的请求发送到相同的函数应用。
 
@@ -160,7 +165,7 @@ Azure Pipelines 在部署开始之前检查函数应用以运行业务流程实�
 
 ### <a name="tracking-store-settings"></a>跟踪存储设置
 
-每个函数应用应使用单独的计划队列，这些队列可能位于不同的存储帐户中。 但是，如果你想要跨应用程序的所有版本查询所有业务流程实例，则可以在 function app 中共享实例和历史记录表。 您可以通过在 " [host" 设置](durable-functions-bindings.md#host-json)文件中配置 `trackingStoreConnectionStringName` 和 `trackingStoreNamePrefix` 来共享表，以使它们均使用相同的值。
+每个函数应用应使用单独的计划队列，这些队列可能位于不同的存储帐户中。 但是，如果你想要跨应用程序的所有版本查询所有业务流程实例，则可以在 function app 中共享实例和历史记录表。 您可以通过在[host. json 设置](durable-functions-bindings.md#host-json)文件中配置 `trackingStoreConnectionStringName` 和 `trackingStoreNamePrefix` 来共享表，以便它们都使用相同的值。
 
 有关更多详细信息，请[在 Azure 中的 Durable Functions 中管理实例](durable-functions-instance-management.md)。
 

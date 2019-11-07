@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: eae1ac9c4e4b5a5a8927aa45e898c6f1c47a052d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 19045b54b97fdb69f9fdab3d17066faa5dbcc435
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497280"
+ms.locfileid: "73580721"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,10 +27,10 @@ ms.locfileid: "73497280"
 
 | 环境 | 优点 | 缺点 |
 | --- | --- | --- |
-| [基于云的 Azure 机器学习计算实例](#compute-instance) | 入门的最简单方法。 整个 SDK 已安装到你的工作区 VM 中，笔记本教程已预克隆并可随时运行。 | 缺乏对开发环境和依赖项的控制。 Linux VM 产生的额外成本（VM 可以在不使用时停止，以避免收费）。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。 |
+| [基于云的 Azure 机器学习笔记本 VM](#notebookvm) | 入门的最简单方法。 整个 SDK 已安装到你的工作区 VM 中，笔记本教程已预克隆并可随时运行。 | 缺乏对开发环境和依赖项的控制。 Linux VM 产生的额外成本（VM 可以在不使用时停止，以避免收费）。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。 |
 | [本地环境](#local) | 完全控制开发环境和依赖项。 在您选择的任何生成工具、环境或 IDE 中运行。 | 需要更长的时间才能开始。 必须安装必需的 SDK 包，并且还必须安装环境（如果尚未安装）。 |
 | [Azure Databricks](#aml-databricks) | 适用于在可缩放的 Apache Spark 平台上运行大规模密集型机器学习工作流。 | 用于试验机器学习或小规模试验和工作流的多余。 Azure Databricks 产生的额外成本。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/databricks/)。 |
-| [Data Science Virtual Machine （DSVM）](#dsvm) | 与基于云的计算实例（即预装的 Python 和 SDK）类似，但预安装了其他热门数据科学和机器学习工具。 易于缩放，并与其他自定义工具和工作流组合。 | 与基于云的计算实例相比，较慢的入门体验。 |
+| [Data Science Virtual Machine （DSVM）](#dsvm) | 类似于基于云的笔记本 VM （已预装 Python，并且已预装 SDK），但预安装了其他热门数据科学和机器学习工具。 易于缩放，并与其他自定义工具和工作流组合。 | 与基于云的笔记本 VM 相比，较慢的入门体验。 |
 
 
 本文还提供了以下工具的其他使用技巧：
@@ -39,9 +39,9 @@ ms.locfileid: "73497280"
 
 * [Visual Studio Code](#vscode)：如果你使用 Visual Studio Code，则[Azure 机器学习扩展](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)包含对 Python 的广泛语言支持以及用于使使用 Azure 机器学习更方便、更有效的功能。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-Azure 机器学习工作区。 若要创建工作区，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。 工作区是您开始使用自己的[基于云的笔记本服务器](#compute-instance)、 [DSVM](#dsvm)或[Azure Databricks](#aml-databricks)所需的所有工作区。
+Azure 机器学习工作区。 若要创建工作区，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。 工作区是您开始使用自己的[基于云的笔记本服务器](#notebookvm)、 [DSVM](#dsvm)或[Azure Databricks](#aml-databricks)所需的所有工作区。
 
 若要为[本地计算机](#local)安装 SDK 环境，请[Jupyter Notebook 服务器](#jupyter)或[Visual Studio Code](#vscode)你还需要：
 
@@ -54,20 +54,16 @@ Azure 机器学习工作区。 若要创建工作区，请参阅[创建 Azure �
 
 - 在 Windows 上，需要命令提示符或 Anaconda 提示符（由 Anaconda 和 Miniconda 安装）。
 
-## <a id="compute-instance"></a>你自己的基于云的计算实例
+## <a id="notebookvm"></a>你自己的基于云的笔记本 VM
 
-Azure 机器学习[计算实例](concept-compute-instance.md)是一种基于云的安全 Azure 工作站，它向数据科学家提供 Jupyter 笔记本服务器、JupyterLab 和完全准备好的 ML 环境。
+Azure 机器学习笔记本 VM 是一种基于云的安全 Azure 工作站，它向数据科学家提供 Jupyter 笔记本服务器、JupyterLab 和完全准备好的 ML 环境。
 
-> [!NOTE]
-> 计算实例仅适用于区域为**美国中北部**或**英国南部**的工作区。
->如果你的工作区在任何其他区域，你可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm) 。
+笔记本 VM 为：
 
 对于计算实例，无需安装或配置任何内容。  随时从 Azure 机器学习工作区中创建一个。 仅提供名称并指定 Azure VM 类型。 请通过本教程立即试用[：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
 
 
-详细了解[计算实例](concept-compute-instance.md)。
-
-若要停止产生计算费用，请[停止计算实例](tutorial-1st-experiment-sdk-train.md#clean-up-resources)。
+若要停止产生计算费用，请[停止笔记本 VM](tutorial-1st-experiment-sdk-train.md#clean-up-resources)。
 
 ## <a id="dsvm"></a>Data Science Virtual Machine
 

@@ -1,5 +1,5 @@
 ---
-title: 管理多个具有弹性池的 SQL 数据库 - Azure | Microsoft 文档
+title: 利用弹性池管理多个 SQL 数据库-Azure
 description: 使用弹性池管理和缩放多个 SQL 数据库（成千上万的）。 可以按一个价格将资源分布到需要的任何位置。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 0b0a6bec7916c056c187ed9e588dd3ac8fea8d84
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 68bb68b47ca240d6c20153af3ed4b0eb42475282
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876406"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690455"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>弹性池有助于管理和缩放多个 Azure SQL 数据库
 
@@ -48,7 +48,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 池很适合具有特定使用模式的大量数据库。 对于给定的数据库，此模式的特征是低平均使用量与相对不频繁的使用高峰。
 
-可以加入池的数据库越多，实现的节省就越大。 但根据应用程序使用模式，可能会看到与使用两个 S3 数据库一样少的节约。
+可以加入池的数据库越多，实现的节省就越大。 具体取决于应用程序使用模式，可能会看到与使用两个 S3 数据库相同的成本节约。
 
 以下各部分有助于了解如何评估特定的数据库集合是否会因使用池而受益。 这些示例使用标准池，但同样的原理也适用于基本和高级池。
 
@@ -68,7 +68,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
    ![使用模式适用于池的 20 个数据库](./media/sql-database-elastic-pool/twenty-databases.png)
 
-在上图中，黑线表示跨所有 20 个数据库的聚合 DTU 使用量。 其中表明聚合 DTU 使用量永远不会超过 100 个 DTU，并指出 20 个数据库可以在这段期间共享 100 个 eDTU。 相比于将每个数据库放入单一数据库的 S3 计算大小，这会导致 DTU 减少 20 倍和价格降低 13 倍。
+在上图中，黑线表示跨所有 20 个数据库的聚合 DTU 使用量。 其中表明聚合 DTU 使用量永远不会超过 100 个 DTU，并指出 20 个数据库可以在此时间段内共享 100 个 eDTU。 相比于将每个数据库放入单一数据库的 S3 计算大小，这会导致 DTU 减少 20 倍和价格降低 13 倍。
 
 由于以下原因，此示例很理想：
 
@@ -101,7 +101,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 数据库的高峰和平均使用率之间的差异为，长时间的低使用率和短时间的高使用率。 这个使用模式非常适合在数据库之间共享资源。 当数据库的高峰使用率比平均使用率大 1.5 倍左右时，应考虑将数据库用作池。
 
-**基于 DTU 的购买模型示例**：高峰为 100 个 DTU 且平均使用 67 个或更少 DTU 的 S3 数据库是在池中共享 eDTU 的良好候选项。 或者，高峰为 20 个 DTU 且平均使用 13 个或更少 DTU 的 S1 数据库是池的良好候选项。
+**基于 DTU 的购买模型示例**：高峰为 100 dtu 且平均使用67个 dtu 或更少的 S3 数据库是在池中共享 edtu 的良好候选项。 或者，高峰为 20 个 DTU 且平均使用 13 个或更少 DTU 的 S1 数据库是池的良好候选项。
 
 ## <a name="how-do-i-choose-the-correct-pool-size"></a>如何选择正确的池大小
 
@@ -112,15 +112,15 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 有关每个资源模型提供的服务层级，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 
-在无法使用工具的情况下，以下分步步骤可以帮助你评估池是否比单一数据库更具成本效益：
+在无法使用工具的情况下，以下分步步骤有助于评估池是否比单一数据库更具成本效益：
 
 1. 通过如下方式来估算池所需的 eDTU 或 vCore：
 
-   对于基于 DTU 的购买模型：MAX（<数据库的总数目 X 每一数据库的平均 DTU 使用率>、<br>  
-   <并发高峰数据库的数目 X 每一数据库的高峰 DTU 使用率)
+   对于基于 DTU 的购买模型：MAX(<数据库的总数目 X 每一数据库的平均 DTU 使用率>、<br>  
+   <并发高峰数据库的数目 X 每一数据库的高峰 DTU 使用率）
 
-   对于基于 vCore 的购买模型：MAX（<*数据库的总数目* X *每一数据库的平均 vCore 使用率*>、<br>  
-   <*并发高峰数据库的数目* X *每一数据库的高峰 vCore 使用率*)
+   对于基于 vCore 的购买模型：MAX(&lt;数据库的总数目 X 每一数据库的平均 vCore 使用率&gt;,<br>  
+   <并发高峰数据库的数目 X 每一数据库的高峰 vCore 使用率)
 
 2. 通过将池内所有的数据库所需的字节数相加来估算池所需要的存储空间。 然后，确定提供此存储量的 eDTU 池的大小。
 3. 对于基于 DTU 的购买模型，请取步骤 1 和步骤 2 中 eDTU 估算值中较大的那个。 对于基于 vCore 的购买模型，请取步骤 1 中的 vCore 估算值。
@@ -131,7 +131,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 ### <a name="elastic-jobs-and-elastic-pools"></a>弹性作业和弹性池
 
-借助池，可以通过在 **[弹性作业](elastic-jobs-overview.md)** 中运行脚本来简化管理任务。 弹性作业可消除与大量数据库有关的大部分麻烦。
+借助池，可以通过在 **[elastic jobs](elastic-jobs-overview.md)** 。 弹性作业可消除与大量数据库有关的大部分麻烦。
 
 有关用于操作多个数据库的其他数据库工具的详细信息，请参阅[使用 Azure SQL 数据库进行扩展](sql-database-elastic-scale-introduction.md)。
 
@@ -155,14 +155,14 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 在 Azure 门户中可以通过两种方法创建弹性池。
 
-1. 在 Azure 门户的左侧菜单中选择 " **AZURE SQL** "。 如果 Azure SQL 不在列表中, 请选择 "**所有服务**", 然后在搜索框中键入 " *Azure sql* "。
-2. 选择 " **+ 添加**", 打开 "**选择 SQL 部署" 选项**页。 通过选择 "**数据库**" 磁贴上的 "**显示详细**信息", 可以查看有关弹性池的其他信息。
-3. 在 "**数据库**" 磁贴上的 "**资源类型**" 下拉列表中选择 "**弹性池**", 然后选择 "**创建**":
+1. 在 Azure 门户的左侧菜单中选择“Azure SQL”。 如果 Azure SQL 不在列表中，请选择“所有服务”，然后在搜索框中键入“Azure SQL”。
+2. 选择“+添加”以打开“选择 SQL 部署选项”页。 通过选择 "**数据库**" 磁贴上的 "**显示详细**信息"，可以查看有关弹性池的其他信息。
+3. 在 "**数据库**" 磁贴上的 "**资源类型**" 下拉列表中选择 "**弹性池**"，然后选择 "**创建**"：
 
    ![创建弹性池](./media/sql-database-elastic-pool/create-elastic-pool.png)
 
 
-1. 或者, 你可以通过导航到现有的 Azure SQL server 并单击 " **+ 新建池**" 来创建弹性池, 以便直接在该服务器中创建池。
+1. 或者可以创建一个弹性池：导航到现有 Azure SQL 服务器，然后单击“+ 新建池”，直接在该服务器中创建一个池。
 
 > [!NOTE]
 > 可以在服务器上创建多个池，但不能将数据库从不同的服务器添加到同一个池中。
@@ -210,11 +210,11 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 - [SnelStart](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-snelstart/)
 
-  SnelStart 在 Azure SQL 数据库中使用弹性池, 以每月快速扩展其业务服务, 每个 Azure SQL 数据库1000。
+  SnelStart 在 Azure SQL 数据库中使用弹性池，以每月快速扩展其业务服务，每个 Azure SQL 数据库1000。
 
 - [Umbraco](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-umbraco/)
 
-  Umbraco 对 Azure SQL 数据库使用弹性池, 以便在云中为数千个租户快速预配和缩放服务。
+  Umbraco 对 Azure SQL 数据库使用弹性池，以便在云中为数千个租户快速预配和缩放服务。
 
 - [Daxko/CSI](https://customers.microsoft.com/story/726277-csi-daxko-partner-professional-service-azure)    
 

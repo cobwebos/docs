@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: d52cb4d7b8e29838338baddd45a175661801b19b
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 744958fc44a8d10bbc8ca5d44af8c473548ae5ca
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844663"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669159"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor 中的自定义指标
 
@@ -36,7 +36,7 @@ ms.locfileid: "70844663"
 为了对请求进行身份验证，Azure Monitor 将使用 Azure AD 公钥来验证应用程序令牌。 现有的“监视指标发布者”角色已拥有此权限。 可在 Azure 门户中使用此权限。 可以根据服务主体要发出哪些资源的自定义指标，在所需的范围为该服务主体授予“监视指标发布者”角色。 范围的示例包括订阅、资源组或特定资源。
 
 > [!NOTE]  
-> 请求用于发出自定义指标的 Azure AD 令牌时，请确保请求该令牌的受众或资源是 https://monitoring.azure.com/ 。 请务必包含尾部的“/”。
+> 请求用于发出自定义指标的 Azure AD 令牌时，请确保请求该令牌的受众或资源是 https://monitoring.azure.com/。 请务必包含尾部的“/”。
 
 ### <a name="subject"></a>使用者
 此属性捕获自定义指标报告的 Azure 资源 ID。 将在 API 调用的 URL 中为此信息编码。 每个 API 只能提交单个 Azure 资源的指标值。
@@ -46,7 +46,7 @@ ms.locfileid: "70844663"
 >
 >
 
-### <a name="region"></a>地区
+### <a name="region"></a>区域
 此属性捕获针对其发出指标的资源所部署到的 Azure 区域。 必须将指标发出到资源部署区域所在的同一个 Azure Monitor 区域终结点。 例如，部署在美国西部的 VM 的自定义指标必须发送到美国西部区域 Azure Monitor 终结点。 区域信息也在 API 调用的 URL 中编码。
 
 > [!NOTE]  
@@ -54,13 +54,13 @@ ms.locfileid: "70844663"
 >
 >
 
-### <a name="timestamp"></a>时间戳
+### <a name="timestamp"></a>Timestamp
 发送到 Azure Monitor 的每个数据点必须带有时间戳标记。 此时间戳捕获测量或收集指标值的日期时间。 Azure Monitor 接受带有过去最多 20 分钟和将来最多 5 分钟时间戳的指标数据。 时间戳必须采用 ISO 8601 格式。
 
 ### <a name="namespace"></a>命名空间
-命名空间可将类似的指标分类或分组到一起。 使用命名空间能够在可收集不同见解或性能指标的指标组之间实现隔离。 例如，可以使用名为 **ContosoMemoryMetrics** 的命名空间来跟踪用于分析应用的内存用量指标， 并使用名为 **ContosoAppTransaction** 的另一个命名空间来跟踪有关应用程序中用户事务的所有指标。
+命名空间可将类似的指标分类或分组到一起。 使用命名空间能够在可收集不同见解或性能指标的指标组之间实现隔离。 例如，你可能有一个名为**contosomemorymetrics**的命名空间，用于跟踪分析你的应用程序的内存使用度量值。 另一个名为**contosoapptransaction**的命名空间可能会跟踪有关应用程序中的用户事务的所有指标。
 
-### <a name="name"></a>姓名
+### <a name="name"></a>Name
 “名称”是正在报告的指标的名称。 通常，该名称具有足够的自述性，可帮助识别所要测量的指标。 以测量给定 VM 上所用内存字节数的指标为例， 该指标可以使用类似于“已使用内存字节数”的名称。
 
 ### <a name="dimension-keys"></a>维度键
@@ -171,16 +171,16 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 |Azure 区域 |区域终结点前缀|
 |---|---|
 | **美国和加拿大** | |
-|美国中西部 | https:\//westcentralus.monitoring.azure.com/ |
-|美国西部 2       | https:\//westus2.monitoring.azure.com/ |
+|美国中西部 | https：\//westcentralus.monitoring.azure.com/ |
+|美国西部 2       | https：\//westus2.monitoring.azure.com/ |
 |美国中北部 | https：\//northcentralus.monitoring.azure.com
-|美国中南部| https:\//southcentralus.monitoring.azure.com/ |
+|美国中南部| https：\//southcentralus.monitoring.azure.com/ |
 |美国中部      | https：\//centralus.monitoring.azure.com |
 |加拿大中部 | https：\//canadacentral.monitoring.azure.comc
-|East US| https：\//eastus.monitoring.azure.com/ |
+|美国东部| https：\//eastus.monitoring.azure.com/ |
 | **欧洲** | |
 |北欧    | https：\//northeurope.monitoring.azure.com/ |
-|西欧     | https:\//westeurope.monitoring.azure.com/ |
+|欧洲西部     | https：\//westeurope.monitoring.azure.com/ |
 |英国南部 | https：\//uksouth.monitoring.azure.com
 |法国中部 | https：\//francecentral.monitoring.azure.com |
 | **非洲** | |
@@ -197,7 +197,7 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 ## <a name="quotas-and-limits"></a>配额和限制
 Azure Monitor 针对自定义指标实施以下用量限制：
 
-|类别|限制|
+|Category|限制|
 |---|---|
 |活动的时序/订阅/区域|50,000|
 |每个指标的维度键数|10|

@@ -4,16 +4,16 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 10/23/2019
 ms.author: lugoldbe
-ms.openlocfilehash: 9aca01b24bc3351460c462c08689fdaa41e3a755
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: d0cef9f8ec4d7afde4f83e4f83bccdb44d5615ca
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73057278"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581796"
 ---
 ## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
 
-本文使用 Azure 资源管理器模板创建资源组、存储帐户和容器、事件中心以及 Azure 数据资源管理器群集和数据库。 将以下内容保存到名为 `template.json`的文件中，该文件将用于运行代码示例。
+本文介绍如何使用 Azure 资源管理器模板创建资源组、存储帐户和容器、事件中心以及 Azure 数据资源管理器群集和数据库。 将以下内容保存到名为 `template.json`的文件中。 将使用此文件来运行代码示例。
 
 ```json
 {

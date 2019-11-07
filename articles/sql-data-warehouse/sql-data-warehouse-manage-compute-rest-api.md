@@ -1,6 +1,6 @@
 ---
-title: 在 Azure SQL 数据仓库中借助 REST 进行暂停、恢复、缩放 | Microsoft Docs
-description: 通过 REST API 管理 SQL 数据仓库中的计算能力。
+title: 暂停、恢复、缩放 REST Api
+description: 通过 REST Api 管理 Azure SQL 数据仓库中的计算能力。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: implement
 ms.date: 03/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5b8652a0b08b426e708a909ff988e51eee9c0821
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f72b3fd1024a68a6f48d2e9e676fc7ca23bf2a4f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476075"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686052"
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的 REST API
 用于管理 Azure SQL 数据仓库中的计算的 REST API。
@@ -36,7 +37,7 @@ Content-Type: application/json; charset=UTF-8
 
 ## <a name="pause-compute"></a>暂停计算
 
-若要暂停数据库，请使用[暂停数据库](/rest/api/sql/databases/pause) REST API。 以下示例将暂停 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
+若要暂停数据库，请使用[暂停数据库](/rest/api/sql/databases/pause) REST API。 以下示例暂停 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/pause?api-version=2014-04-01-preview HTTP/1.1
@@ -53,14 +54,14 @@ POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups
 ## <a name="check-database-state"></a>检查数据库状态
 
 > [!NOTE]
-> 当前检查数据库状态可能会返回联机，而数据库正在完成联机工作流，从而导致连接错误。 您可能需要在应用程序代码中添加 2 到 3 分钟延迟，如果使用此 API 调用来触发的连接尝试。
+> 当前 Check database state 可能会在数据库完成联机工作流时返回 ONLINE，从而导致连接错误。 如果使用此 API 调用触发连接尝试，则可能需要在应用程序代码中添加 2 到 3 分钟的延迟。
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01 HTTP/1.1
 ```
 
-## <a name="get-maintenance-schedule"></a>获取维护日程安排
-检查已设置为数据仓库的维护计划。 
+## <a name="get-maintenance-schedule"></a>获取维护计划
+检查已为数据仓库设置的维护计划。 
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
@@ -68,7 +69,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 ```
 
 ## <a name="set-maintenance-schedule"></a>设置维护计划
-若要设置和更新 maintnenance 计划上的现有数据仓库。
+设置和更新现有数据仓库的维护计划。
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1

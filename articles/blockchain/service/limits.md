@@ -2,24 +2,24 @@
 title: Azure 区块链限制
 description: Azure 区块链服务中的服务和功能限制概述
 services: azure-blockchain
-keywords: 区块链
+keywords: ''
 author: PatAltimore
 ms.author: patricka
 ms.date: 05/02/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: aeed84f19da3843d043eafef9d7444661901c53e
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 20c26db9453220270d17801b74d904384c74cb36
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147149"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73577221"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Azure 区块链服务中的限制
 
-Azure 区块链服务具有服务和功能限制, 如成员可以具有的节点数、联合会限制和存储量。
+Azure 区块链服务具有服务和功能限制，如成员可以具有的节点数、联合会限制和存储量。
 
 ## <a name="pricing-tier"></a>定价层
 
@@ -52,15 +52,15 @@ Azure 区块链服务具有服务和功能限制, 如成员可以具有的节点
 
 * **联盟至少必须有一个管理员**
 
-    如果联盟中只有一个管理员, 则他们不能将其自身从协会中删除, 也不能删除其成员, 直到在协会中添加或升级其他管理员。
+    如果联盟中只有一个管理员，则他们不能将其自身从协会中删除，也不能删除其成员，直到在协会中添加或升级其他管理员。
 
 * **不能再次添加从联合会删除的成员**
 
-    相反, 他们必须重新邀请加入联盟并创建新成员。 不会删除其现有成员资源来保留历史事务。
+    相反，他们必须重新邀请加入联盟并创建新成员。 不会删除其现有成员资源来保留历史事务。
 
 * **联盟中的所有成员都必须使用同一分类帐版本**
 
-    有关 Azure 区块链服务中可用的修补、更新和分类帐版本的详细信息, 请参阅[修补程序、更新和版本](ledger-versions.md)。
+    有关 Azure 区块链服务中可用的修补、更新和分类帐版本的详细信息，请参阅[修补程序、更新和版本](ledger-versions.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

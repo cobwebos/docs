@@ -6,21 +6,23 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4dd636be60233beafca8e8680551bd7c711a4ccc
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: aa169ed7001ad858a2a0373f9d5bbbe770a2a727
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814870"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604482"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB 表 API 资源
+
+本文介绍如何使用 Azure 资源管理器模板执行不同的操作来自动管理 Azure Cosmos DB 帐户、数据库和容器。 本文仅提供表 API 帐户的示例，若要查找其他 API 类型帐户的示例，请参阅：将资源管理器模板与 Azure Cosmos DB 的 API for [Cassandra](manage-cassandra-with-resource-manager.md)、 [Gremlin](manage-gremlin-with-resource-manager.md)、 [MongoDB](manage-mongodb-with-resource-manager.md)、 [SQL](manage-sql-with-resource-manager.md)文章结合使用。
 
 ## 创建 Azure Cosmos 帐户和表<a id="create-resource"></a>
 
 使用 Azure 资源管理器模板创建 Azure Cosmos DB 资源。 此模板将创建一个适用于表 API 的 Azure Cosmos 帐户，所使用的一个表的吞吐量为 400 RU/秒。 复制模板并按如下所示进行部署，或者访问 [Azure 快速入门库](https://azure.microsoft.com/resources/templates/101-cosmosdb-table/)，然后从 Azure 门户进行部署。 还可以将模板下载到本地计算机，或者创建新模板并使用 `--template-file` 参数指定本地路径。
 
 > [!NOTE]
-> 帐户名称必须为小写并且 < 31 个字符。
+> 帐户名称必须为小写且 < 31 个字符。
 
 [!code-json[create-cosmos-table](~/quickstart-templates/101-cosmosdb-table/azuredeploy.json)]
 
@@ -48,11 +50,11 @@ New-AzResourceGroupDeployment `
  (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2015-04-08" --ResourceGroupName $resourceGroupName).name
 ```
 
-如果选择使用本地安装的 PowerShell 版本, 而不是 Azure Cloud shell, 则必须[安装](/powershell/azure/install-az-ps)Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。
+如果选择使用本地安装的 PowerShell 版本，而不是 Azure Cloud shell，则必须[安装](/powershell/azure/install-az-ps)Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。
 
 ### <a name="deploy-via-azure-cli"></a>通过 Azure CLI 部署
 
-若要使用 Azure CLI 部署资源管理器模板, 请**复制**该脚本, 然后选择 "**尝试**" 以打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+若要使用 Azure CLI 部署资源管理器模板，请**复制**该脚本，然后选择 "**尝试**" 以打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -70,7 +72,7 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-`az cosmosdb show` 命令显示预配后的新建 Azure Cosmos 帐户。 如果选择使用 Azure CLI 本地安装的版本, 而不是使用 CloudShell, 请参阅[Azure 命令行接口 (CLI) 一](/cli/azure/)文。
+`az cosmosdb show` 命令显示预配后的新建 Azure Cosmos 帐户。 如果选择使用 Azure CLI 本地安装的版本，而不是使用 CloudShell，请参阅[Azure 命令行接口（CLI）](/cli/azure/)一文。
 
 ## 更新表的吞吐量（RU/秒）<a id="table-ru-update"></a>
 

@@ -1,19 +1,19 @@
 ---
-title: Azure HPC 缓存预览数据引入-手动复制
+title: Azure HPC 缓存数据引入-手动复制
 description: 如何使用 cp 命令将数据移动到 Azure HPC 缓存中的 Blob 存储目标
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 7e29cbd202b32897026bed074743de543d3fd587
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b2514eaaf70d13d3be63963f24ea7be99c4fbcce
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254470"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582281"
 ---
-# <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC 缓存（预览）数据引入-手动复制方法
+# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC 缓存数据引入-手动复制方法
 
 本文提供了有关将数据手动复制到 Blob 存储容器以用于 Azure HPC 缓存的详细说明。 它使用多线程并行操作来优化副本速度。
 
@@ -81,7 +81,7 @@ cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 
 ## <a name="when-to-add-mount-points"></a>何时添加装入点
 
-在针对单个目标文件系统装入点执行足够的并行线程后，添加更多线程并不会给出更多吞吐量。 （将会根据每秒文件数或每秒字节数来测量吞吐量，具体取决于数据类型。）更糟糕的是，过多的线程有时会导致吞吐量下降。  
+在针对单个目标文件系统装入点执行足够的并行线程后，添加更多线程并不会给出更多吞吐量。 （吞吐量将按每秒的文件数或字节数/秒来度量，具体取决于你的数据类型。）或者更糟的是，超线程可能会导致吞吐量下降。  
 
 发生这种情况时，可以使用相同的远程文件系统装载路径，将客户端装入点添加到其他 Azure HPC 缓存装载点：
 
@@ -136,7 +136,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ## <a name="create-file-manifests"></a>创建文件清单
 
-了解以上方法之后（每个目标多个复制线程，每个客户端多个目标，每个网络可访问的源文件系统多个客户端），请考虑以下建议：生成文件清单，然后在多个客户端中将这些清单用于复制命令。
+了解以上方法之后（每个目标多个复制线程，每个客户端多个目标，每个网络可访问的源文件系统有多个客户端），请考虑此建议：生成文件清单，然后将其用于复制跨多个客户端的命令。
 
 此方案使用 UNIX ``find`` 命令创建文件或目录的清单：
 
@@ -208,13 +208,13 @@ for i in 1 2 3 4 ; do sed -n ${i}~4p /tmp/foo > /tmp/client${i}; done
 for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 ```
 
-如果有六个...根据需要进行推断。
+六 ...。根据需要推断。
 
 ```bash
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-你将获得 *N* 个生成的文件，包含 `find` 命令输出中获取的四级目录的路径名称的每个（共 *N* 个）客户端各有一个生成的文件。 
+你将获得 *N* 个生成的文件，包含 *命令输出中获取的四级目录的路径名称的每个（共*N`find` 个）客户端各有一个生成的文件。 
 
 使用每个文件生成复制命令：
 

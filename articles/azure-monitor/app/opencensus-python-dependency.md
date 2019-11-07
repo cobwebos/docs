@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: 00ebf86bf6d0d57b29d660f78aae3dd828d44ded
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: c28ef627e9ef65f9985a520c8c4f3facc7a160da
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819138"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73575503"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>跟踪 OpenCensus Python 的依赖项
 
-依赖项是应用程序调用的外部组件。 使用 OpenCensus Python 及其各种集成收集依赖关系数据。 然后，将数据发送到 Azure Monitor 下的 Application Insights。
+依赖项是应用程序调用的外部组件。 使用 OpenCensus Python 及其各种集成收集依赖关系数据。 然后，将数据发送到 Azure Monitor 下作为 `dependencies` 遥测 Application Insights。
 
 首先，通过最新的[OpenCensus PYTHON SDK](../../azure-monitor/app/opencensus-python.md)检测你的 Python 应用程序。
 

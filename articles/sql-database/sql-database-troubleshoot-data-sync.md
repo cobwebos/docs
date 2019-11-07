@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据同步故障排除| Microsoft 文档
+title: '排查 Azure SQL 数据同步问题 '
 description: 了解如何排查 Azure SQL 数据同步的常见问题。
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: f1345c7de3ef56473b8ebd16cea20cfe76f0380e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 31cf2693ba33461f38ea6361bf2ca8b688f177ff
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566284"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686903"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>排查 SQL 数据同步的问题
 
-本文介绍如何排查 Azure SQL 数据同步的已知问题。如果某个问题有了解决方法，会在本文中提供。
+本文介绍如何解决 Azure SQL 数据同步的已知问题。如果解决了问题，请在此处提供。
 
 有关 SQL 数据同步的概述，请参阅[使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
 
@@ -39,9 +39,9 @@ ms.locfileid: "68566284"
 
 - [发现性能显著降低](#sync-perf)
 
-- [看到此消息：“无法在列 \<column> 中插入 NULL 值。此列不允许 null 值。”这是什么意思，如何解决该错误？](#sync-nulls)
+- [我看到以下消息： "无法将值 NULL 插入列 \<列 >。列不允许空值。 "这是什么意思，如何解决此问题？](#sync-nulls)
 
-- [数据同步如何处理循环引用？也就是说，如果在多个同步组中同步相同的数据，这些数据是否不断更改？](#sync-circ)
+- [数据同步如何处理循环引用？也就是说，当相同数据在多个同步组中同步时，并不断变化时，](#sync-circ)
 
 ### <a name="sync-fails"></a>门户 UI 中针对与客户端代理关联的本地数据库执行同步失败
 
@@ -104,7 +104,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
 - **解决方法**。 最佳解决方案就是预防。 确保同步组中没有循环引用。 由一个同步组同步的任何行都不能由其他同步组同步。
 
-### <a name="sync-nulls"></a>看到此消息：“无法在列 \<column> 中插入 NULL 值。 此列不允许 null 值。” 这是什么意思，如何解决该错误？ 
+### <a name="sync-nulls"></a>我看到以下消息： "无法将值 NULL 插入列 \<列 >。 此列不允许 null 值。” 这是什么意思，如何解决该错误？ 
 此错误消息表示发生了两个以下问题之一：
 -  某个表没有主键。 若要解决此问题，请将主键添加到要同步的所有表。
 -  CREATE INDEX 语句中可能存在 WHERE 子句。 数据同步不会处理这种情况。 若要解决此问题，请删除 WHERE 子句，或手动对所有数据库进行更改。 
@@ -193,7 +193,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
 - **解决方法**。 向用户帐户授予“作为服务登录”凭据：
 
-  1. 转到“开始” > “控制面板” > “管理工具” > “本地安全策略” > “本地策略” > “用户权限管理”。
+  1. 转到“开始” **“控制面板”** “管理工具” > “本地安全策略” **“本地策略”** “用户权限管理”。 >  >  >  > 
   1. 选择“作为服务登录”。
   1. 在“属性”对话框中添加用户帐户。
   1. 依次选择“应用”、“确定”。

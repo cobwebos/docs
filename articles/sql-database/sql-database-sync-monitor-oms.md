@@ -1,5 +1,5 @@
 ---
-title: 利用 Azure Monitor 日志监视 Azure SQL 数据同步 |Microsoft Docs
+title: '利用 Azure Monitor 日志监视 Azure SQL 数据同步 '
 description: 了解如何使用 Azure Monitor 日志监视 Azure SQL 数据同步
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 26dc1ebef1c627ed2b20eb0fda68b2ca2d01b82a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9e89ad8e6ac556df87a674efdf2d3bbc2041c38b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791763"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687030"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>利用 Azure Monitor 日志监视 SQL 数据同步 
 
@@ -61,7 +61,7 @@ ms.locfileid: "72791763"
 
 -   [数据同步 Azure Monitor 视图](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 请确保已设置以下内容：
 
@@ -85,7 +85,7 @@ ms.locfileid: "72791763"
 
 4.  在“Runbook 文件”下，使用给定的 `DataSyncLogPowerShellRunbook` 文件。 将“Runbook 类型”设置为 `PowerShell`。 为 runbook 提供一个名称。
 
-5.  选择**创建**。 现在你拥有了一个 runbook。
+5.  选择“创建”。 现在你拥有了一个 runbook。
 
 6.  在 Azure 自动化帐户下，请选择“共享资源”下的“变量”选项卡。
 
@@ -123,7 +123,7 @@ ms.locfileid: "72791763"
 
 5.  将“定期”设置为“重复执行”，并设置所需间隔。 请在脚本中使用相同的间隔，并在 Azure Monitor 日志中使用相同的间隔。
 
-6.  选择**创建**。
+6.  选择“创建”。
 
 ### <a name="check-the-automation"></a>检查自动化
 

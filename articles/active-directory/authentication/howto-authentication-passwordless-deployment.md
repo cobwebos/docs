@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5aab9d8c2b7993598c602ae6b730baff06d807e1
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 9b6f07e1dd8e9252d2b6e00b85a47ba2e19f8bd8
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73151628"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603455"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>完成无密码 authentication 部署
 
@@ -51,7 +51,7 @@ Microsoft 的无密码身份验证方法可实现不同的方案。 请考虑你
 
 ### <a name="passwordless-authentication-scenarios"></a>无密码 authentication 方案
 
-| 场景 | 电话身份验证 | 安全密钥 | Windows Hello for Business |
+| 方案 | 电话身份验证 | 安全密钥 | Windows Hello for Business |
 | --- | --- | --- | --- |
 | **计算机登录**： <br> 从分配的 Windows 10 设备 | **否** | **是** <br> 带生物识别、PIN | **是**<br>带有生物识别识别和或 PIN |
 | **计算机登录**： <br> 从共享 Windows 10 设备 | **否** | **是** <br> 带生物识别、PIN  | **否** |
@@ -67,7 +67,7 @@ Microsoft 的无密码身份验证方法可实现不同的方案。 请考虑你
 
 **设备注册**-若要使用验证器应用进行无密码身份验证，设备必须在 Azure AD 租户中注册，并且不能是共享设备。 设备只能在单个租户中注册。 此限制意味着使用验证器应用的手机登录仅支持一个工作或学校帐户。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在开始无密码部署之前，组织必须满足以下先决条件。
 
@@ -93,7 +93,7 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 利用安全密钥，你可以访问你的资源，你应该计划对这些物理设备进行管理。
 
 1. 密钥分发：规划为组织设置密钥的方式。 您可能有一个集中的设置过程或允许最终用户购买 FIDO 2.0 兼容的密钥。
-1. 密钥激活：最终用户必须自行激活安全密钥。 最终用户将其安全密钥注册到[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) ，并在首次使用时启用第二因素（PIN 或生物识别）。
+1. 密钥激活：最终用户必须自行激活安全密钥。 最终用户在[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)上注册其安全密钥，并在首次使用时启用第二因素（PIN 或生物识别）。
 1. 禁用密钥：尽管安全密钥功能处于预览阶段，但管理员无法从用户帐户中删除密钥。 用户必须将其删除。 如果密钥丢失或被盗：
    1. 从任何启用了无密码 authentication 的组中删除用户。
    1. 验证它们已删除密钥作为身份验证方法。
@@ -110,15 +110,6 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
    - 如果无法部署 Intune，则管理员必须在每台计算机上部署包以启用凭据提供程序功能。 可以通过以下选项之一来执行包安装：
       - 组策略或 System Center Configuration Manager （SCCM）
       - Windows 10 计算机上的本地安装
-- [使用组策略启用凭据提供程序](howto-authentication-passwordless-security-key-windows.md#enable-with-group-policy)
-   - 仅支持混合 Azure AD 连接设备。
-
-#### <a name="enable-on-premises-integration"></a>启用本地集成
-
-按照文章[启用无密码 security key 登录到本地资源（预览版）](howto-authentication-passwordless-security-key-on-premises.md)中的步骤，启用对本地资源的访问。
-
-> [!IMPORTANT]
-> 还必须完成所有混合 Azure AD 联接的设备的这些步骤，才能利用 Windows 10 登录的 FIDO2 安全密钥。
 
 ### <a name="register-security-keys"></a>注册安全密钥
 
@@ -138,12 +129,12 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 
 下表概述了要在此项目中实现的用例。
 
-| 区域 | 描述 |
+| 区域 | 说明 |
 | --- | --- |
 | **访问** | 在公司网络内部或外部的公司或个人设备中，可以使用无密码登录。 |
 | **审核** | 管理员可使用使用情况数据进行近实时审核。 <br> 使用情况数据至少每29天下载到企业系统，或使用 SIEM 工具。 |
 | **管理** | 定义和监视相应身份验证方法和关联组的用户分配生命周期。 |
-| **安全性** | 可以通过用户和组分配来控制对适当身份验证方法的访问。 <br> 只有经过授权的用户才能使用无密码登录。 |
+| 安全性 | 可以通过用户和组分配来控制对适当身份验证方法的访问。 <br> 只有经过授权的用户才能使用无密码登录。 |
 | **性能** | 访问分配传播时间线已记录并被监视。 <br> 为便于使用，对登录时间进行度量。 |
 | **用户体验** | 用户了解移动兼容性。 <br> 用户可以配置身份验证器应用无密码登录。 |
 | **支持** | 用户了解如何查找对无密码登录问题的支持。 |
@@ -154,7 +145,7 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 
 ### <a name="organization-communications"></a>组织通信
 
-通信对于任何新服务的成功至关重要。 主动传达用户体验如何更改、何时发生更改，以及如何在遇到问题时获得支持。
+沟通对于任何新服务的成功至关重要。 主动传达用户体验如何更改、何时发生更改，以及如何在遇到问题时获得支持。
 
 与最终用户的通信需要包括：
 
@@ -163,7 +154,7 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 - [在 Microsoft Authenticator 应用中注册](howto-authentication-passwordless-phone.md)
 - [用手机登录](../user-help/user-help-auth-app-sign-in.md)
 
-Microsoft 提供了 MFA[通信模板](https://aka.ms/mfatemplates)、自助服务密码重置（SSPR）[通信模板](https://www.microsoft.com/download/details.aspx?id=56768)和[最终用户文档](../user-help/security-info-setup-signin.md)，有助于草拟你的通信。 您可以通过选择该页面上的安全信息链接，将用户发送到[https://myprofile.microsoft.com](https://myprofile.microsoft.com/)进行直接注册。
+Microsoft 提供了 MFA[通信模板](https://aka.ms/mfatemplates)、自助服务密码重置（SSPR）[通信模板](https://www.microsoft.com/download/details.aspx?id=56768)和[最终用户文档](../user-help/security-info-setup-signin.md)，有助于草拟你的通信。 您可以通过选择该页面上的安全信息链接，将用户发送到[https://myprofile.microsoft.com](https://myprofile.microsoft.com/)以直接注册。
 
 ### <a name="testing-passwordless"></a>测试无密码
 
@@ -173,7 +164,7 @@ Microsoft 提供了 MFA[通信模板](https://aka.ms/mfatemplates)、自助服�
 
 下面是 Microsoft Authenticator 应用进行无密码身份验证的示例测试案例
 
-| 场景 | 预期结果 |
+| 方案 | 预期结果 |
 | --- | --- |
 | 用户可以注册 Microsoft Authenticator 应用 | 用户可以从 aka.ms/mysecurityinfo 注册应用程序 |
 | 用户可以启用手机登录 | 为工作帐户配置的电话登录 |
@@ -187,7 +178,7 @@ Microsoft 提供了 MFA[通信模板](https://aka.ms/mfatemplates)、自助服�
 
 **无密码 FIDO 登录到 Azure Active Directory 联接的 Windows 10 设备**
 
-| 场景 | 预期结果 |
+| 方案 | 预期结果 |
 | --- | --- |
 | 用户可以注册 FIDO2 设备（1809） | 用户可以使用 at > 帐户 > 登录选项 > 安全密钥注册 FIDO2 设备 |
 | 用户可以重置 FIDO2 设备（1809） | 用户可以使用制造商软件重置 FIDO2 设备 |
@@ -198,7 +189,7 @@ Microsoft 提供了 MFA[通信模板](https://aka.ms/mfatemplates)、自助服�
 
 **无密码 FIDO 登录到 Azure AD web 应用**
 
-| 场景 | 预期结果 |
+| 方案 | 预期结果 |
 | --- | --- |
 | 用户可以使用 Microsoft Edge 在 aka.ms/mysecurityinfo 上注册 FIDO2 设备 | 注册应成功 |
 | 用户可以使用 Firefox 在 aka.ms/mysecurityinfo 上注册 FIDO2 设备 | 注册应成功 |
@@ -254,7 +245,7 @@ Azure AD 将条目添加到审核日志中：
 
 ### <a name="required-administrative-roles"></a>必需的管理角色
 
-| Azure AD 角色 | 描述 |
+| Azure AD 角色 | 说明 |
 | --- | --- |
 | 身份验证管理员 | 最小特权角色可以实现和管理身份验证方法 |
 | 用户 | 用于在设备上配置验证器应用的最小特权角色，或用于注册 web 或 Windows 10 登录的安全密钥设备。 |
@@ -269,7 +260,7 @@ Azure AD 将条目添加到审核日志中：
 
 ### <a name="troubleshoot-phone-sign-in"></a>电话登录疑难解答
 
-| 场景 | 解决方案 |
+| 方案 | 解决方案 |
 | --- | --- |
 | 用户无法执行组合注册 | 确保启用了[组合注册](concept-registration-mfa-sspr-combined.md)。 |
 | 用户无法在验证器应用中启用电话登录 | 确保用户处于部署范围内 |
@@ -277,7 +268,7 @@ Azure AD 将条目添加到审核日志中：
 
 ### <a name="troubleshoot-security-key-sign-in"></a>安全密钥登录疑难解答
 
-| 场景 | 解决方案 |
+| 方案 | 解决方案 |
 | --- | --- |
 | 用户无法执行组合注册 | 确保启用了[组合注册](concept-registration-mfa-sspr-combined.md)。 |
 | 用户无法在其[安全设置](https://aka.ms/mysecurityinfo)中添加安全密钥 | 确保启用[安全密钥](howto-authentication-passwordless-security-key.md)。 |
@@ -285,7 +276,7 @@ Azure AD 将条目添加到审核日志中：
 | **错误消息**：我们检测到此浏览器或操作系统不支持 FIDO2 安全密钥。 | 无密码 FIDO2 security 设备只能在 Windows 10 版本1809或更高版本上受支持的浏览器（Microsoft Edge，Firefox 版本67）中注册。 |
 | **错误消息**：你的公司策略要求你使用其他方法登录。 | 不确定租户中已启用安全密钥。 |
 | 用户无法在 Windows 10 版本1809上管理我的安全密钥 | 版本1809要求你使用 FIDO2 密钥供应商提供的安全密钥管理软件。 请与供应商联系以获得支持。 |
-| 我认为我的 FIDO2 安全密钥可能有问题，如何对其进行测试 | 导航到[https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/)，输入测试帐户的凭据，插入可疑安全密钥，单击屏幕右上角的 "+" 按钮，单击 "创建"，然后执行创建过程。 如果此方案失败，则设备可能已损坏。 |
+| 我认为我的 FIDO2 安全密钥可能有问题，如何对其进行测试 | 导航到 " [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/)"，输入测试帐户的凭据，插入可疑安全密钥，单击屏幕右上角的 "+" 按钮，单击 "创建"，并完成创建过程。 如果此方案失败，则设备可能已损坏。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 适用于 Azure SQL 数据仓库的 PowerShell cmdlet
+title: PowerShell cmdlet
 description: 了解 Azure SQL 数据仓库的最常用 PowerShell cmdlet，包括如何暂停和恢复数据库。
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,15 +10,16 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 095e66c6c5f75a27b1f0231dfe8cabfd4d741d18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b36a64bb82449ace7acc1de0b3c2bc7c5efebe70
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205180"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685560"
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>适用于 SQL 数据仓库的 PowerShell cmdlet 和 REST API
-可以使用 Azure PowerShell cmdlet 或 REST API 来管理许多 SQL 数据仓库管理任务。  下面是如何使用 PowerShell 命令自动执行 SQL 数据仓库中的常见任务的一些示例。  如需一些典型的 REST 示例，请参阅[使用 REST 管理可伸缩性][Manage scalability with REST]一文。
+可以使用 Azure PowerShell cmdlet 或 REST API 来管理许多 SQL 数据仓库管理任务。  下面是如何使用 PowerShell 命令自动执行 SQL 数据仓库中的常见任务的一些示例。  有关一些更好的 REST 示例，请参阅[通过 REST 管理可伸缩性][Manage scalability with REST]一文。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -38,7 +39,7 @@ ms.locfileid: "65205180"
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
-作为一种变体，此示例可通过管道将检索到的对象传递给 [Suspend-AzSqlDatabase][Suspend-AzSqlDatabase]。  因此会暂停该数据库。 最后一个命令显示结果。
+变体，此示例将检索到的对象传递给[AzSqlDatabase][Suspend-AzSqlDatabase]。  因此会暂停该数据库。 最后一个命令显示结果。
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -53,7 +54,7 @@ $resultDatabase
 Resume-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" -DatabaseName "Database02"
 ```
 
-作为一种变体，此示例可从“ResourceGroup1”资源组包含的“Server01”服务器中检索“Database02”数据库。 它通过管道将检索到的对象传递给 [Resume-AzSqlDatabase][Resume-AzSqlDatabase]。
+作为一种变体，此示例可从“ResourceGroup1”资源组包含的“Server01”服务器中检索“Database02”数据库。 它将检索到的对象传递给[AzSqlDatabase][Resume-AzSqlDatabase]。
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -70,14 +71,14 @@ Azure SQL 数据仓库支持以下 PowerShell cmdlet。
 
 * [Get-AzSqlDatabase][Get-AzSqlDatabase]
 * [Get-AzSqlDeletedDatabaseBackup][Get-AzSqlDeletedDatabaseBackup]
-* [Get-AzSqlDatabaseRestorePoint][Get-AzSqlDatabaseRestorePoint]
+* [AzSqlDatabaseRestorePoint][Get-AzSqlDatabaseRestorePoint]
 * [New-AzSqlDatabase][New-AzSqlDatabase]
 * [Remove-AzSqlDatabase][Remove-AzSqlDatabase]
 * [Restore-AzSqlDatabase][Restore-AzSqlDatabase]
 * [Resume-AzSqlDatabase][Resume-AzSqlDatabase]
 * [Select-AzSubscription][Select-AzSubscription]
 * [Set-AzSqlDatabase][Set-AzSqlDatabase]
-* [Suspend-AzSqlDatabase][Suspend-AzSqlDatabase]
+* [挂起-AzSqlDatabase][Suspend-AzSqlDatabase]
 
 ## <a name="next-steps"></a>后续步骤
 有关更多的 PowerShell 示例，请参阅：
@@ -85,7 +86,7 @@ Azure SQL 数据仓库支持以下 PowerShell cmdlet。
 * [使用 PowerShell 创建 SQL 数据仓库][Create a SQL Data Warehouse using PowerShell]
 * [数据库还原][Database restore]
 
-有关可使用 PowerShell 自动执行的其他列表，请参阅 [Azure SQL 数据库 Cmdlet][Azure SQL Database Cmdlets]。 请注意，Azure SQL 数据仓库并非支持全部 Azure SQL 数据库 cmdlet。  有关可以使用 REST 自动执行的任务的列表，请参阅 [Azure SQL 数据库的操作][Operations for Azure SQL Database]。
+有关可通过 PowerShell 自动执行的其他任务，请参阅[AZURE SQL 数据库 cmdlet][Azure SQL Database Cmdlets]。 请注意，Azure SQL 数据仓库并非支持全部 Azure SQL 数据库 cmdlet。  有关可以使用 REST 自动执行的任务的列表，请参阅[AZURE SQL 数据库的操作][Operations for Azure SQL Database]。
 
 <!--Image references-->
 

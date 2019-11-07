@@ -1,5 +1,5 @@
 ---
-title: 如何配置 Azure SQL 数据库托管实例 | Microsoft Docs
+title: 如何配置 Azure SQL 数据库托管实例
 description: 了解如何配置和管理 Azure SQL 数据库托管实例。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: b8c05ab05630e92e64a4885d5e6cdc6f5471dff2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 22bad381a59a74237a5539cd4294a08797c017b1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568059"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689923"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>如何在 Azure SQL 数据库中使用托管实例
 

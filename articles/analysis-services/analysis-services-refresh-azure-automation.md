@@ -1,17 +1,17 @@
 ---
 title: 通过 Azure 自动化刷新 Azure Analysis Services 模型 |Microsoft Docs
-description: 了解如何使用 Azure 自动化对模型进行代码刷新。
+description: 本文介绍如何使用 Azure 自动化为 Azure Analysis Services 编写模型刷新。
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: ed1634ef1009149dc2937174b20248eab9cd335f
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a79123d57f80474e1871ef68f9a92ea9417089ac
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294793"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572356"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自动化进行刷新
 
@@ -101,7 +101,7 @@ ms.locfileid: "72294793"
  
     ![创建计划](./media/analysis-services-refresh-azure-automation/14.png)
 
-2. 单击 "**计划** > **创建新计划**，然后填写详细信息。
+2. 单击 "**计划**" > **创建新计划**，然后填写详细信息。
 
     ![配置计划](./media/analysis-services-refresh-azure-automation/15.png)
 
@@ -144,11 +144,11 @@ ms.locfileid: "72294793"
 **正文**是包含以下属性的 JSON 文档：
 
 
-|属性  |ReplTest1  |
+|属性  |值  |
 |---------|---------|
-|**AnalysisServicesDatabase**     |Azure Analysis Services 数据库的名称 <br/> 例如：AdventureWorksDB         |
+|**AnalysisServicesDatabase**     |Azure Analysis Services 数据库的名称 <br/> 示例： Adventureworksdb.msi         |
 |**AnalysisServicesServer**     |Azure Analysis Services 服务器名称。 <br/> 示例： https： \//westus/servers/asazure/模型/AdventureWorks/         |
-|**DatabaseRefreshType**     |要执行的刷新类型。 <br/> 例如：完整         |
+|**DatabaseRefreshType**     |要执行的刷新类型。 <br/> 示例： Full         |
 
 示例 JSON 正文：
 
@@ -175,7 +175,7 @@ ms.locfileid: "72294793"
 >
 >若要详细了解如何配置 Azure 自动化混合辅助角色，请参阅[使用混合 Runbook 辅助角色自动执行数据中心或云中的资源](../automation/automation-hybrid-runbook-worker.md#install-a-hybrid-runbook-worker)。
 
-配置混合辅助角色后，请按照使用[数据工厂使用](#consume-with-data-factory)部分中所述创建一个 Webhook。  唯一的区别在于，在配置 Webhook 时，请选择 "在  > **混合辅助角色** **上运行**" 选项。
+配置混合辅助角色后，请按照使用[数据工厂使用](#consume-with-data-factory)部分中所述创建一个 Webhook。  唯一的区别在于，在配置 Webhook 时，请选择 "在 > **混合辅助角色** **上运行**" 选项。
 
 使用混合辅助角色的 webhook 示例：
 

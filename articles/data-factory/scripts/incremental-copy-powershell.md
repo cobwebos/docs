@@ -1,5 +1,5 @@
 ---
-title: PowerShell 脚本：使用 Azure 数据工厂以增量方式加载数据 | Microsoft Docs
+title: 'PowerShell 脚本：使用 Azure 数据工厂以增量方式加载数据 '
 description: 此 PowerShell 脚本演示如何使用 Azure 数据工厂以增量方式将数据从 Azure SQL 数据库复制到 Azure Blob 存储。
 services: data-factory
 author: linda33wj
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: jingwang
-ms.openlocfilehash: 5ae6d6ed06aa5734dc601e6e72ba55ec8ddf7bcf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ef7b00172f0371e09d6462ed357744166b5fb08a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160623"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684332"
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>PowerShell 脚本 - 使用 Azure 数据工厂以增量方式加载数据
 将源中的数据初始完全复制到接收器后，此示例 PowerShell 脚本仅从源数据存储将新的或已更新记录加载到接收器数据存储。  
@@ -30,7 +30,7 @@ ms.locfileid: "66160623"
 ## <a name="sample-script"></a>示例脚本
 
 > [!IMPORTANT]
-> 此脚本在硬盘驱动器上的 c:\ 文件夹中创建 JSON 文件，用于定义数据工厂实体（链接服务、数据集和管道）。
+> 此脚本在硬盘驱动器上的 c:\ 文件夹中创建用于定义数据工厂实体（链接服务、数据集和管道）的 JSON 文件。
 
 [!code-powershell[main](../../../powershell_scripts/data-factory/incremental-copy-from-azure-sql-to-blob/incremental-copy-from-azure-sql-to-blob.ps1 "Incremental copy from Azure SQL Database to Azure Blob Storage")]
 

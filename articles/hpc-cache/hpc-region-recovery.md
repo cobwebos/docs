@@ -1,17 +1,17 @@
 ---
-title: Azure HPC 缓存的区域冗余和故障转移恢复（预览版）
+title: Azure HPC 缓存的区域冗余和故障转移恢复
 description: 用于通过 Azure HPC 缓存为灾难恢复提供故障转移功能的技术
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: ca771ceed433c6eb0ed26bba6fcb1bf11db211f0
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: e0ff9bc66c7d185f8fe07b4b4574833fcd7e2604
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031612"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582084"
 ---
 # <a name="use-multiple-caches-for-regional-failover-recovery"></a>使用多个缓存进行区域故障转移恢复
 

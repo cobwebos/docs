@@ -8,12 +8,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 4f1b8b116cf2a8411a90946dd5801dd1e541323c
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: bcdc6633980ec3684217c8c19b4799befe2af3a3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063949"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576858"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -29,13 +29,13 @@ Application Insights 定义了用于分配遥测关联的[数据模型](../../az
 
 每个传出操作（例如，对另一个组件的 HTTP 调用）是由[依赖项遥测](../../azure-monitor/app/data-model-dependency-telemetry.md)表示的。 依赖项遥测也定义了自身的全局唯一的 `id`。 此依赖项调用发起的请求遥测将此 `id` 用作其 `operation_parentId`。
 
-可以结合 `dependency.id` 使用 `operation_Id`、`operation_parentId` 和 `request.id`，生成分布式逻辑操作的视图。 这些字段还定义了遥测调用的因果关系顺序。
+可以结合 `operation_Id` 使用 `operation_parentId`、`request.id` 和 `dependency.id`，生成分布式逻辑操作的视图。 这些字段还定义了遥测调用的因果关系顺序。
 
-在微服务环境中，来自组件的跟踪可能会进入不同的存储项。 每个组件可能在 Application Insights 中具有其自身的检测密钥。 若要获取逻辑操作的遥测数据，Application Insights UX 查询每个存储项中的数据。 如果存储项的数目极大，需要提示后续查找位置。 Application Insights 数据模型定义了以下两个字段来解决此问题：`request.source` 和 `dependency.target`。 第一个字段定义发起依赖项请求的组件，第二个字段定义哪个组件返回依赖项调用的响应。
+在微服务环境中，来自组件的跟踪可能会进入不同的存储项。 每个组件可能在 Application Insights 中具有其自身的检测密钥。 为了获取逻辑操作的遥测数据，Application Insights UX 会查询每个存储项中的数据。 如果存储项的数目极大，需要提示后续查找位置。 Application Insights 数据模型定义了以下两个字段来解决此问题：`request.source` 和 `dependency.target`。 第一个字段定义发起依赖项请求的组件，第二个字段定义哪个组件返回依赖项调用的响应。
 
 ## <a name="example"></a>示例
 
-我们以名为 Stock Prices 的应用程序为例。该应用程序使用名为 `Stock` 的外部 API 显示某只股票的当前市价。 Stock Prices 应用程序有一个名为 `Stock page` 的页面，可以由客户端 Web 浏览器通过 `GET /Home/Stock` 打开。 应用程序使用 HTTP 调用 `GET /api/stock/value` 来查询 `Stock` API。
+我们以名为 Stock Prices 的应用程序为例。该应用程序使用名为 `Stock` 的外部 API 显示某只股票的当前市价。 Stock Prices 应用程序有一个名为 `Stock page` 的页面，可以由客户端 Web 浏览器通过 `GET /Home/Stock` 打开。 应用程序使用 HTTP 调用 `Stock` 来查询 `GET /api/stock/value` API。
 
 可以运行一个查询来分析生成的遥测数据：
 
@@ -51,7 +51,7 @@ Application Insights 定义了用于分配遥测关联的[数据模型](../../az
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Stock page                |              | STYz               | STYz         |
 | dependency | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
-| 请求    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
+| request    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | dependency | GET /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
 在对外部服务发出 `GET /api/stock/value` 调用时，需要知道该服务器的标识，以便对 `dependency.target` 字段进行相应的设置。 如果外部服务不支持监视，则会将 `target` 设置为服务的主机名（例如 `stock-prices-api.com`）。 但是，如果该服务通过返回预定义的 HTTP 标头来标识自身，则 `target` 会包含服务标识，使 Application Insights 能够通过查询该服务中的遥测数据来生成分布式跟踪。
@@ -92,7 +92,7 @@ W3C 跟踪上下文支持是以向后兼容的方式完成的，相关内容应�
 
 - 在 `RequestTrackingTelemetryModule` 下，添加 `EnableW3CHeadersExtraction` 元素，并将值设为 `true`。
 - 在 `DependencyTrackingTelemetryModule` 下，添加 `EnableW3CHeadersInjection` 元素，并将值设为 `true`。
-- 将 `W3COperationCorrelationTelemetryInitializer` 添加到 `TelemetryInitializers` 下，如下所示 
+- 在 `W3COperationCorrelationTelemetryInitializer` 下添加 `TelemetryInitializers`，类似于 
 
 ```xml
 <TelemetryInitializers>
@@ -166,11 +166,11 @@ public void ConfigureServices(IServiceCollection services)
 > [!IMPORTANT]
 > 请确保传入和传出配置完全相同。
 
-### <a name="enable-w3c-distributed-tracing-support-for-web-apps"></a>为 Web 应用启用 W3C 分布式跟踪支持
+### <a name="enable-w3c-distributed-tracing-support-for-web-apps"></a>启用对 Web 应用的 W3C 分布式跟踪支持
 
-此功能 `Microsoft.ApplicationInsights.JavaScript`。 此项默认禁用。 若要启用它，请使用 `distributedTracingMode` config。提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测的服务进行后向兼容：
+此功能在 `Microsoft.ApplicationInsights.JavaScript` 中。 此项默认禁用。 若要启用它，请使用 `distributedTracingMode` config。提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测的服务进行后向兼容：
 
-- **NPM 安装程序（如果使用代码段设置，则忽略）**
+- **NPM 设置（如果使用代码段设置，则忽略）**
 
   ```javascript
   import { ApplicationInsights, DistributedTracingModes } from '@microsoft/applicationinsights-web';
@@ -183,7 +183,7 @@ public void ConfigureServices(IServiceCollection services)
   appInsights.loadAppInsights();
   ```
   
-- **代码段设置（如果使用 NPM 安装程序则忽略）**
+- **代码段设置（如果使用 NPM 设置，则忽略）**
 
   ```
   <script type="text/javascript">
@@ -205,11 +205,11 @@ public void ConfigureServices(IServiceCollection services)
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`，`PageView`                 | 带 `span.kind = server` 的 `Span`                  |
-| `Dependency`                          | 带 `span.kind = client` 的 `Span`                  |
-| `Request` 和 `Dependency` 的 `Id`    | `SpanId`                                          |
+| `Request`、`PageView`                 | 带 `Span` 的 `span.kind = server`                  |
+| `Dependency`                          | 带 `Span` 的 `span.kind = client`                  |
+| `Id` 和 `Request` 的 `Dependency`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
-| `Operation_ParentId`                  | `ChildOf` 类型的 `Reference`（父级范围）   |
+| `Operation_ParentId`                  | `Reference` 类型的 `ChildOf`（父级范围）   |
 
 有关详细信息，请参阅 [Application Insights 遥测数据模型](../../azure-monitor/app/data-model.md)。 
 
@@ -248,10 +248,10 @@ if __name__ == '__main__':
 ```
 curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01" localhost:8080
 ```
-查看[跟踪上下文标题格式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)，派生以下信息： `version`： `00` 
- `trace-id`： `4bf92f3577b34da6a3ce929d0e0e4736` 
- `parent-id/span-id`： `00f067aa0ba902b7` 
- 0： 1
+查看[跟踪上下文标题格式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)，派生以下信息： `version`： `00`
+`trace-id`： `4bf92f3577b34da6a3ce929d0e0e4736`
+`parent-id/span-id`： `00f067aa0ba902b7`
+`trace-flags`： `01`
 
 如果我们看一下发送到 Azure Monitor 的请求条目，则可以看到使用跟踪标头信息填充的字段。 你可以在 "日志（Analytics）" 下的 "Azure Monitor Application Insights 资源" 中找到此数据。
 
@@ -289,7 +289,7 @@ logger.warning('After the span')
 2019-10-17 11:25:59,384 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=70da28f5a4831014 In the span
 2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
 ```
-观察在该跨度内的日志消息中是否存在 spanId，该日志消息与名为 `hello` 的范围相同。
+观察在该跨度内的日志消息中是否存在 spanId，该日志消息与名为 `hello`的范围相同。
 
 您可以使用 `AzureLogHandler`导出日志数据。 可在[此处](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs)找到更多信息
 
@@ -304,7 +304,7 @@ logger.warning('After the span')
 
 但是，这些方法并未实现自动分布式跟踪支持。 `DiagnosticSource` 是支持跨计算机自动关联的一种方式。 .NET 库支持“DiagnosticSource”，并允许通过 HTTP 等传输方法自动跨计算机传播关联上下文。
 
-`DiagnosticSource` 中的[指南活动](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)解释了跟踪活动的基础知识。
+[ 中的](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)指南活动`DiagnosticSource`解释了跟踪活动的基础知识。
 
 ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 
@@ -326,7 +326,7 @@ ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 
 ### <a name="telemetry-correlation-in-asynchronous-java-application"></a>异步 Java 应用程序中的遥测关联
 
-若要在异步春季 Boot 应用程序中关联遥测，请遵循[此](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications)深入文章。 它为检测弹簧的[ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html)和[ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html)提供了指导。 
+若要在异步 Spring Boot 应用程序中关联遥测，请遵循[此](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications)深入文章。 它为检测 Spring 的 [ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) 和 [ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html) 提供了指导。 
 
 
 <a name="java-role-name"></a>
@@ -334,25 +334,22 @@ ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 
 有时候，可能需要对组件名称在[应用程序映射](../../azure-monitor/app/app-map.md)中的显示方式进行自定义。 为此，可执行以下操作之一，以便手动设置 `cloud_RoleName`：
 
+- 从 Application Insights Java SDK 2.5.0 开始，可以通过将 `<RoleName>` 添加到 `ApplicationInsights.xml` 文件来指定云角色名称，例如
+
+  ```XML
+  <?xml version="1.0" encoding="utf-8"?>
+  <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+     <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+     <RoleName>** Your role name **</RoleName>
+     ...
+  </ApplicationInsights>
+  ```
+
 - 如果你通过 Application Insights Spring Boot 入门版使用 Spring Boot，则唯一需要执行的更改是在 application.properties 文件中为应用程序设置自定义名称。
 
   `spring.application.name=<name-of-app>`
 
   Spring Boot 入门版会自动将 `cloudRoleName` 分配给你为 `spring.application.name` 属性输入的值。
-
-- 如果使用的是 `WebRequestTrackingFilter`，则 `WebAppNameContextInitializer` 将自动设置应用程序名称。 将以下内容添加到配置文件 (ApplicationInsights.xml)：
-
-  ```XML
-  <ContextInitializers>
-    <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebAppNameContextInitializer" />
-  </ContextInitializers>
-  ```
-
-- 如果使用云上下文类，则执行以下命令：
-
-  ```Java
-  telemetryClient.getContext().getCloud().setRole("My Component Name");
-  ```
 
 ## <a name="next-steps"></a>后续步骤
 

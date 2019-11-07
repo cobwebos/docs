@@ -1,21 +1,21 @@
 ---
-title: 创建 Azure HPC 缓存（预览）
+title: 创建 Azure HPC 缓存
 description: 如何创建 Azure HPC 缓存实例
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: fa6408d33504c6ac73eacec079e9c08acd4cece2
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: aaa939051a1aeafdb0650119772fc7214506aa8d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255265"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582177"
 ---
 # <a name="plan-the-aggregated-namespace"></a>规划聚合命名空间
 
-Azure HPC 缓存（预览版）允许客户端通过虚拟命名空间访问各种存储系统，该命名空间隐藏后端存储系统的详细信息。
+Azure HPC 缓存允许客户端通过虚拟命名空间访问各种存储系统，该命名空间隐藏后端存储系统的详细信息。
 
 添加存储目标时，将设置面向客户端的文件路径。 客户端计算机安装此文件路径，并可以将文件读取请求发送到缓存，而不是直接装载存储系统。
 

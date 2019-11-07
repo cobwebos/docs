@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 9fbe4f34bb27d2de662f11dbdd047356ff3d3941
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 4fe405d4027535eb6b0211f7a3f997194b8819aa
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497382"
+ms.locfileid: "73580752"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
 
@@ -32,7 +32,7 @@ ms.locfileid: "73497382"
 
 此图显示了工作区的以下组件：
 
-+ 工作区可以包含[Azure 机器学习计算实例](concept-compute-instance.md)、使用运行 Azure 机器学习所需的 Python 环境配置的云资源。
++ 工作区可以包含 Azure 机器学习笔记本 Vm、使用运行 Azure 机器学习所需的 Python 环境配置的云资源。
 + [用户角色](how-to-assign-roles.md)使你可以与其他用户、团队或项目共享你的工作区。
 + [计算目标](concept-azure-machine-learning-architecture.md#compute-targets)用于运行试验。
 + 创建工作区时，还会为您创建[关联的资源](#resources)。
@@ -75,11 +75,8 @@ ms.locfileid: "73497382"
 | 管理工作区访问    | **&check;**   || |  **&check;**    |
 | 升级到 Enterprise edition    | **&check;** |  | |     |
 | 创建和管理计算资源    |   | **&check;** | **&check;** |  **&check;**   |
-| 创建计算实例 | **&check;**  | **&check;** | **&check;** |     |
+| 创建笔记本 VM |   | **&check;** | |     |
 
-> [!NOTE]
-> 计算实例仅适用于区域为**美国中北部**或**英国南部**的工作区。
->如果你的工作区在任何其他区域，你可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm) 。
 
 ## <a name='create-workspace'></a>创建工作区
 
@@ -101,7 +98,7 @@ ms.locfileid: "73497382"
 创建新工作区时，它会自动创建工作区使用的几个 Azure 资源：
 
 + [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)：注册在训练和部署模型时使用的 docker 容器。 若要最大程度地降低成本，请在创建部署映像之前**延迟加载**ACR。
-+ [Azure 存储帐户](https://azure.microsoft.com/services/storage/)：用作工作区的默认数据存储。  与 Azure 机器学习计算实例一起使用的 Jupyter 笔记本也存储在此处。
++ [Azure 存储帐户](https://azure.microsoft.com/services/storage/)：用作工作区的默认数据存储。  与 Azure 机器学习笔记本 VM 一起使用的 Jupyter 笔记本也存储在此处。
 + [Azure 应用程序 Insights](https://azure.microsoft.com/services/application-insights/)：存储有关模型的监视信息。
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)：存储工作区所需的计算目标和其他敏感信息所使用的机密。
 

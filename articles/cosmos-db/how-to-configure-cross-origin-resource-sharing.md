@@ -6,21 +6,21 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: 82c49854611e6c425b75f0830a1402c8f5a4694e
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 2823ae22c8128f52ae67cf283a9a619a03abd719
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299174"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580675"
 ---
-# <a name="configure-cross-origin-resource-sharing-cors"></a>配置跨源资源共享 (CORS) 
+# <a name="configure-cross-origin-resource-sharing-cors"></a>配置跨源资源共享 (CORS)
 
-跨源资源共享 (CORS) 是一项 HTTP 功能，使在一个域中运行的 Web 应用程序能够访问另一个域中的资源。 Web 浏览器实施一种称为“同源策略”的安全限制，防止网页调用不同域中的 API。 但是，CORS 提供了一种安全的方法来允许源域调用另一个域中的 Api。 Azure Cosmos DB 中的核心（SQL） API 现在支持跨域资源共享（CORS），方法是使用 "allowedOrigins" 标头。 为 Azure Cosmos 帐户启用 CORS 支持后，仅对经过身份验证的请求进行评估，以根据指定的规则确定是否允许这些请求。
+跨源资源共享 (CORS) 是一项 HTTP 功能，使在一个域中运行的 Web 应用程序能够访问另一个域中的资源。 Web 浏览器实施一种称为“同源策略”的安全限制，防止网页调用不同域中的 API。 但是，CORS 提供了一种安全的方式，允许源域调用另一个域中的 API。 Azure Cosmos DB 中的核心（SQL） API 现在支持跨域资源共享（CORS），方法是使用 "allowedOrigins" 标头。 为 Azure Cosmos 帐户启用 CORS 支持后，仅对经过身份验证的请求进行评估，以根据指定的规则确定是否允许这些请求。
 
-可以使用 Azure 门户或 Azure 资源管理器模板配置跨源资源共享 (CORS) 设置。 对于使用核心（SQL） API 的 Cosmos 帐户，Azure Cosmos DB 支持在 node.js 和基于浏览器的环境中工作的 JavaScript 库。 使用网关模式时，该库现在可以充分利用 CORS 支持。 无需客户端配置即可使用此功能。 借助 CORS 支持，来自浏览器的资源可以通过 [JavaScript 库](https://www.npmjs.com/package/@azure/cosmos)直接访问 Azure Cosmos DB 或直接通过 [REST API](https://docs.microsoft.com/rest/api/cosmos-db/) 进行访问来执行简单操作。 
+可以使用 Azure 门户或 Azure 资源管理器模板配置跨源资源共享 (CORS) 设置。 对于使用 Core (SQL) API 的 Cosmos 帐户，Azure Cosmos DB 支持在 Node.js 和基于浏览器的环境中均可使用的 JavaScript 库。 使用网关模式时，该库现在可以充分利用 CORS 支持。 无需客户端配置即可使用此功能。 借助 CORS 支持，来自浏览器的资源可以通过 [JavaScript 库](https://www.npmjs.com/package/@azure/cosmos)直接访问 Azure Cosmos DB 或直接通过 [REST API](https://docs.microsoft.com/rest/api/cosmos-db/) 进行访问来执行简单操作。
 
 > [!NOTE]
-> CORS 支持仅适用于 Azure Cosmos DB 核心（SQL） API 并受其支持。 它不适用于 Cassandra、Gremlin 或 MongoDB 的 Azure Cosmos DB Api，因为这些协议不使用 HTTP 进行客户端到服务器通信。 
+> CORS 支持仅适用于 Azure Cosmos DB Core (SQL) API 并受其支持。 它不适用于用于 Cassandra、Gremlin 或 MongoDB 的 Azure Cosmos DB API，因为这些协议不使用 HTTP 进行客户端-服务器通信。
 
 ## <a name="enable-cors-support-from-azure-portal"></a>通过 Azure 门户启用 CORS 支持
 
@@ -32,49 +32,32 @@ ms.locfileid: "72299174"
 
    > [!NOTE]
    > 目前，不能将通配符用作域名的一部分。 例如，尚不支持 `https://*.mydomain.net` 格式。 
-   
+
    ![使用 Azure 门户启用跨源资源共享](./media/how-to-configure-cross-origin-resource-sharing/enable-cross-origin-resource-sharing-using-azure-portal.png)
- 
+
 ## <a name="enable-cors-support-from-resource-manager-template"></a>使用资源管理器模板启用 CORS 支持
 
 若要使用资源管理器模板启用 CORS，请将具有“allowedOrigins”属性的“cors”部分添加到任何现有模板。 以下 JSON 是用于创建启用了 CORS 的新 Azure Cosmos 帐户的模板的示例。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "variables": {},
-    "resources": [
-        {
-            "name": "test",
-            "type": "Microsoft.DocumentDB/databaseAccounts",
-            "apiVersion": "2015-04-08",
-            "location": "East US 2",
-            "properties": {
-                "databaseAccountOfferType": "Standard",
-                "consistencyPolicy": {
-                    "defaultConsistencyLevel": "Session",
-                    "maxIntervalInSeconds": 5,
-                    "maxStalenessPrefix": 100
-                },
-                "locations": [
-                    {
-                        "id": "test-eastus2",
-                        "failoverPriority": 0,
-                        "locationName": "East US 2"
-                    }
-                ],
-                "cors": [
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "name": "[variables('accountName')]",
+      "apiVersion": "2019-08-01",
+      "location": "[parameters('location')]",
+      "kind": "GlobalDocumentDB",
+      "properties": {
+        "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
+        "locations": "[variables('locations')]",
+        "databaseAccountOfferType": "Standard",
+        "cors": [
                     {
                         "allowedOrigins": "*"
                     }
                 ]
-            },
-            "dependsOn": [
-            ]
         }
-    ]
+    }
 }
 ```
 
@@ -109,5 +92,3 @@ module.exports = {
 * [为 Azure Cosmos DB 配置防火墙](how-to-configure-firewall.md)一文。
 
 * [为 Azure Cosmos DB 帐户配置基于虚拟网络和子网的访问](how-to-configure-vnet-service-endpoint.md)
-    
-

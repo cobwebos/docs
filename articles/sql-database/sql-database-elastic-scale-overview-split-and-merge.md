@@ -1,5 +1,5 @@
 ---
-title: 在扩展云数据库之间移动数据 | Microsoft 文档
+title: 在扩展云数据库之间移动数据
 description: 介绍如何使用弹性数据库 API 通过自托管服务来操作分片和移动数据。
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 841794dcbb41249ea25f615524150df4bd257b45
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9b2203b7fb9e168b251eda16a9505ae2004b0460
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568391"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690190"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>在扩展云数据库之间移动数据
 
-如果是软件即服务开发人员，应用程序突然遇到巨大需求，那么需要适应该需求增长。 因此，你添加了更多数据库（分片）。 如何在不破坏数据完整性的情况下将数据重新分配到新数据库？ 使用**拆分 / 合并工具**将数据从受约束的数据库移到新的数据库。  
+如果是软件即服务开发人员，应用程序突然遇到巨大需求，那么需要适应该需求增长。 因此，添加了更多数据库（分片）。 如何在不破坏数据完整性的情况下将数据重新分配到新数据库？ 使用**拆分 / 合并工具**将数据从受约束的数据库移到新的数据库。  
 
 将拆分/合并工具作为 Azure web 服务运行。 管理员或开发人员使用该工具在不同数据库 （分片）之间移动 shardlet（一个分片中的数据）。 该工具使用分片映射管理来维护服务元数据数据库，并确保一致的映射。
 
@@ -33,18 +33,18 @@ ms.locfileid: "68568391"
 ## <a name="documentation"></a>文档
 
 1. [弹性数据库拆分 / 合并工具教程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
-2. [拆分 / 合并安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)
-3. [拆分 / 合并安全注意事项](sql-database-elastic-scale-split-merge-security-configuration.md)
+2. [拆分/合并安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)
+3. [拆分/合并安全注意事项](sql-database-elastic-scale-split-merge-security-configuration.md)
 4. [分片映射管理](sql-database-elastic-scale-shard-map-management.md)
 5. [迁移要扩大的现有数据库](sql-database-elastic-convert-to-use-elastic-tools.md)
 6. [弹性数据库工具](sql-database-elastic-scale-introduction.md)
-7. [弹性数据库工具术语表](sql-database-elastic-scale-glossary.md)
+7. [弹性数据库工具词汇表](sql-database-elastic-scale-glossary.md)
 
 ## <a name="why-use-the-split-merge-tool"></a>为什么使用拆分/合并工具
 
 - **灵活性**
 
-  应用程序需要灵活伸展到超出单个 Azure SQL DB 的限制。 根据需要使用该工具将数据移到新的数据库，同时保留完整性。
+  应用程序需要灵活伸展到超出单个 Azure SQL DB 数据库的限制。 根据需要使用该工具将数据移到新的数据库，同时保留完整性。
 
 - **拆分以实现增长**
 
@@ -64,15 +64,15 @@ ms.locfileid: "68568391"
 
   拆分/合并将作为客户托管服务交付。 必须在 Microsoft Azure 订阅中部署并托管该服务。 从 NuGet 下载的程序包将包含一个要使用特定部署信息完成的配置模板。 有关详细信息，请参阅[拆分 / 合并教程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)。 Azure 订阅运行有该服务，可以控制和配置该服务的大多数安全设置。 默认模板包括配置 SSL 的选项、基于证书的客户端身份验证、存储凭据的加密、DoS 防护和 IP 限制。 可以在以下[拆分 / 合并安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)文档中找到有关安全方面的详细信息。
 
-  默认部署的服务可与一个辅助角色和一个 Web 角色同时运行。 在 Azure 云服务中，每个角色都使用 A1 VM 大小。 虽然你无法在部署程序包时修改这些设置，但是可以在运行的云服务中成功进行部署之后更改它们（通过 Azure 门户）。 请注意，出于技术方面的原因，不得为多个实例配置辅助角色。
+  默认部署的服务可与一个辅助角色和一个 Web 角色同时运行。 在 Azure 云服务中，每个角色都使用 A1 VM 大小。 虽然无法在部署程序包时修改这些设置，但是可以在运行的云服务中成功进行部署之后更改它们（通过 Azure 门户）。 请注意，出于技术方面的原因，不得为多个实例配置辅助角色。
 
 - **分片映射集成**
 
-  拆分/合并服务可与应用程序的分片映射进行交互。 使用拆分/合并服务拆分或合并范围或者在分片之间移动 shardlet 时，该服务会使分片映射自动保持最新。 为实现此目的，该服务将连接到应用程序的分片映射管理器数据库并将这些范围和映射保留为拆分/合并/移动请求进度。 这可确保在进行拆分/合并操作时，分片映射始终显示最新视图。 通过将一批 shardlet 从源分片移动到目标分片来实现拆分、合并和 shardlet 移动操作。 在 shardlet 移动操作过程中，属于当前批的 shardlet 在分片映射中标记为脱机，并且不可用于使用 **OpenConnectionForKey** API 进行依赖于数据的路由连接。
+  拆分/合并服务可与应用程序的分片映射进行交互。 使用拆分/合并服务拆分或合并范围或者在分片之间移动 shardlet 时，该服务会使分片映射自动保持最新。 为实现此目的，该服务将连接到应用程序的分片映射管理器数据库并将这些范围和映射保留为拆分/合并/移动请求进度。 这可确保在进行拆分/合并操作时，分片映射始终显示最新视图。 通过将一批 shardlet 从源分片移动到目标分片来实现拆分、合并和 shardlet 移动操作。 在 shardlet 移动操作过程中，属于当前批的 shardlet 会在分片映射中被标记为脱机状态，并且不可用于使用 **OpenConnectionForKey** API 进行数据依赖型路由连接。
 
 - **一致的 shardlet 连接**
 
-  为了避免不一致，当一批新的 shardlet 开始进行数据移动时，将断开到存储 shardlet 的分片的所有分片映射提供的数据依赖型路由连接；当数据移动正在进行时，将阻止从分片映射 API 到这些 shardlet 的后续连接。 到同一分片上其他 shardlet 的连接也会断开，但是重试时会立即再次成功连接。 移动此批后，目标分片的 shardlet 将再次被标记为联机状态，并且源数据将从源分片中删除。 该服务将针对每一批执行以上步骤，直到所有 shardlet 都已移动。 在完成拆分/合并/移动操作过程中，这会导致几个连接中断操作。  
+  为了避免不一致，当一批新的 shardlet 开始进行数据移动时，将断开到存储 shardlet 的分片的所有分片映射提供的数据依赖型路由连接；当数据移动正在进行时，将阻止从分片映射 API 到这些 shardlet 的后续连接。 到同一分片上其他 shardlet 的连接也会断开，但是重试时会立即再次成功连接。 移动此批后，目标分片的 shardlet 会再次标记为联机，并且源数据将从源分片中删除。 该服务针对每一批执行以上步骤，直到所有 shardlet 都已移动。 在完成拆分/合并/移动操作过程中，这会导致几个连接中断操作。  
 
 - **管理 shardlet 可用性**
 
@@ -119,7 +119,7 @@ ms.locfileid: "68568391"
 
 - **引用完整性**
 
-  拆分/合并服务将分析各表之间的依赖关系，并使用外键-主键关系来暂存用于移动引用表和 shardlet 的操作。 通常，首先按依赖项顺序复制引用表，然后按每一批中 shardlet 的依赖项顺序复制 shardlet。 这是必要的，以便在新的数据到达时遵循目标分片上的外键-主键约束。
+  拆分/合并服务会分析各表之间的依赖关系，并使用外键-主键关系来暂存用于移动引用表和 shardlet 的操作。 通常，首先按依赖项顺序复制引用表，然后按每一批中 shardlet 的依赖项顺序复制 shardlet。 这是必要的，以便在新的数据到达时遵循目标分片上的外键-主键约束。
 
 - **分片映射一致性和最终完成**
 
@@ -127,7 +127,7 @@ ms.locfileid: "68568391"
 
 ## <a name="the-split-merge-user-interface"></a>拆分/合并用户界面
 
-拆分/合并 Service Pack 包含辅助角色和 web 角色。 Web 角色用于以交互方式提交拆分/合并请求。 用户界面的主要组件如下：
+拆分/合并 Service Pack 包含辅助角色和 Web 角色。 Web 角色用于以交互方式提交拆分/合并请求。 用户界面的主要组件如下：
 
 - **操作类型**
 
@@ -139,7 +139,7 @@ ms.locfileid: "68568391"
 
 - **源范围（拆分与合并）**
 
-  拆分与合并操作将使用范围的低键和高键来处理该范围。 要使用无边界的高键值指定操作，请选中“高键为最大值”复选框，并将高键字段留空。 指定的范围键值不需要与分片映射中的映射及其边界精确匹配。 如果未指定任何范围边界，服务会自动推断最接近的范围。 可以使用 GetMappings.ps1 PowerShell 脚本检索给定分片映射中的当前映射。
+  拆分与合并操作将使用范围的低键和高键来处理该范围。 要使用无边界的高键值指定操作，请选中“高键为最大值”复选框，并将高键字段留空。 指定的范围键值不需要与分片映射中的映射及其边界精确匹配。 如果未指定任何范围边界，服务自动为你推断最接近的范围。 可以使用 GetMappings.ps1 PowerShell 脚本检索给定分片映射中的当前映射。
 
 - **拆分源行为（拆分）**
 
@@ -170,12 +170,12 @@ ms.locfileid: "68568391"
 拆分/合并服务的当前实现遵循以下要求和限制：
 
 - 必须存在分片并且这些分片已在分片映射中注册，才可以对这些分片执行拆分/合并操作。
-- 该服务未将表或任何其他数据库对象的自动创建作为其操作的一部分。 这意味着在任何拆分/合并/移动操作之前，所有分片表和引用表的架构都需要存在于目标分片上。 在将通过拆分/合并/移动操作添加新的 shardlet 的范围中，尤其要求分片表为空。 否则，该操作将无法通过目标分片上的初始一致性检查。 此外，请注意，仅当引用表为空时才复制引用数据，而且对于引用表上的其他并发写入操作没有一致性保证。 我们建议，在运行拆分/合并操作的同时不要使其他写入操作对引用表做出更改。
+- 该服务未将表或任何其他数据库对象的自动创建作为其操作的一部分。 这意味着在任何拆分/合并/移动操作之前，所有分片表和引用表的架构都需要存在于目标分片上。 在将通过拆分/合并/移动操作添加新的 shardlet 的范围中，尤其要求分片表为空。 否则，该操作无法通过目标分片上的初始一致性检查。 此外，请注意，仅当引用表为空时才复制引用数据，而且对于引用表上的其他并发写入操作没有一致性保证。 我们建议，在运行拆分/合并操作的同时不要使其他写入操作对引用表做出更改。
 - 该服务依赖于行标识（由包含分片键的唯一索引或键构建）来提高较大 shardlet 的性能和可靠性。 这使该服务能够移动粒度比分片键值更加精细的数据。 这有助于减少操作过程中必需的日志空间和锁定的最大数量。 如果希望通过拆分/合并/移动请求使用给定表，请考虑在该表上创建一个包括分片键的唯一索引或主键。 出于性能原因，分片键应为键或索引中的起始列。
 - 在请求处理过程中，一些 shardlet 数据可能会同时存在于源分片和目标分片上。 为了防止在 shardlet 移动过程中出现故障，这是必需的。 拆分/合并服务与分片映射功能的集成可以确保在分片映射上使用“OpenConnectionForKey”方法通过依赖于数据的路由 API 建立的连接不会显示任何不一致的中间状态。 但是，在不使用 **OpenConnectionForKey** 方法连接到源分片或目标分片时，如果正在执行拆分 / 合并/移动请求，则不一致的中间状态可能可见。 这些连接可能会显示部分或重复的结果，具体取决于时间设置或进行基础连接的分片。 此限制当前包括由 Elastic Scale 多分片查询建立的连接。
 - 不能在不同的角色之间共享用于拆分/合并服务的元数据数据库。 例如，在过渡环境中运行的拆分/合并服务的角色需要指向其他元数据数据库而不是生产角色。
 
-## <a name="billing"></a>帐单
+## <a name="billing"></a>计费
 
 在 Microsoft Azure 订阅中拆分 / 合并服务作为云服务运行。 因此将对服务实例收取云服务费用。 除非频繁地执行拆分/合并/移动操作，否则建议删除拆分/合并云服务。 这可以节省用于运行中的或已部署的云服务实例的成本。 只要需要执行拆分或合并操作，便可以重新部署和启用已准备好的可运行配置。
 
@@ -183,7 +183,7 @@ ms.locfileid: "68568391"
 
 ### <a name="status-tables"></a>状态表
 
-拆分 / 合并服务在元数据存储数据库中为已完成和正在进行的请求提供 **RequestStatus** 表。 该表将为已提交到拆分/合并服务的此实例的每个拆分/合并请求列出一行。 它将为每个请求提供以下信息：
+拆分/合并服务在元数据存储数据库中提供用于监视已完成和正在进行的请求的 **RequestStatus** 表。 该表将为已提交到拆分/合并服务的此实例的每个拆分/合并请求列出一行。 它将为每个请求提供以下信息：
 
 - **Timestamp**
 
@@ -193,7 +193,7 @@ ms.locfileid: "68568391"
 
   唯一标识请求的 GUID。 此请求也可用于取消仍在进行的操作。
 
-- **Status**
+- **状态**
 
   该请求的当前状态。 对于正在进行的请求，它还会列出请求所在的当前阶段。
 
@@ -211,7 +211,7 @@ ms.locfileid: "68568391"
 
 ### <a name="azure-diagnostics"></a>Azure 诊断
 
-拆分/合并服务使用基于 Azure SDK 2.5 的 Azure Diagnostics 进行监视与诊断。 可以按照此处的说明控制诊断配置：[在 Azure 云服务和虚拟机中启用诊断](../cloud-services/cloud-services-dotnet-diagnostics.md) 下载包包含两个诊断配置 – 一个用于 Web 角色，另一个用于辅助角色。 它包括用于记录性能计数器、IIS 日志、Windows 事件日志和拆分/合并应用程序事件日志的定义。
+拆分/合并服务使用基于 Azure SDK 2.5 的 Azure Diagnostics 进行监视与诊断。 可以根据此处所述控制诊断配置： [在 Azure 云服务和虚拟机中启用诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)。 下载包包含两个诊断配置 – 一个用于 Web 角色，另一个用于辅助角色。 它包括用于记录性能计数器、IIS 日志、Windows 事件日志和拆分/合并应用程序事件日志的定义。
 
 ## <a name="deploy-diagnostics"></a>部署诊断
 
@@ -233,7 +233,7 @@ ms.locfileid: "68568391"
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker"
 ```
 
-可以在此处找到有关如何配置和部署诊断设置的详细信息：[在 Azure 云服务和虚拟机中启用诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)
+可以在此处找到有关如何配置和部署诊断设置的详细信息：[在 Azure 云服务和虚拟机中启用诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)。
 
 ## <a name="retrieve-diagnostics"></a>检索诊断信息
 
@@ -241,7 +241,7 @@ ms.locfileid: "68568391"
 
 ![WADLogsTable][2]
 
-上图中突出显示的 WADLogsTable 包含来自拆分/合并服务的应用程序日志的详细事件。 请注意，已下载包提供的默认配置面向生产部署。 因此，从服务实例中提取日志和计数器的时间间隔较大（5 分钟）。 对于测试和部署，可以通过按需调整 Web 或辅助角色的诊断设置来减少该时间间隔。 右键单击 Visual Studio 服务器资源管理器中的角色（如上所示），然后在对话框中调整诊断配置设置的传输时间段：
+上图中突出显示的 WADLogsTable 包含来自拆分/合并服务的应用程序日志的详细事件。 请注意，已下载包提供的默认配置面向生产部署。 因此，从服务实例中提取日志和计数器的时间间隔较大（5 分钟）。 对于测试和部署，可以通过按需调整 Web 或辅助角色的诊断设置来减少该时间间隔。 右键单击 Visual Studio 服务器资源管理器中的角色（如上所示），并在对话框中调整诊断配置设置的传输时间段：
 
 ![配置][3]
 
@@ -258,7 +258,7 @@ ms.locfileid: "68568391"
 1. 请按照[部署拆分 / 合并服务](sql-database-elastic-scale-configure-deploy-split-and-merge.md)中的步骤进行操作。
 2. 更改拆分/合并部署的云服务配置文件，以反映新的配置参数。 新的必需参数是用于加密的证书的相关信息。 执行此操作的简单方法是将下载的新配置模板文件与现有配置进行比较。 请确保添加 Web 和辅助角色的“DataEncryptionPrimaryCertificateThumbprint”与“DataEncryptionPrimary”设置。
 3. 将更新部署到 Azure 之前，请确保当前运行的所有拆分/合并操作都已完成。 做法很简单，可以针对进行中的请求，查询拆分/合并元数据数据库中的 RequestStatus 和 PendingWorkflows 表。
-4. 使用新包和更新后服务配置文件为 Azure 订阅中的拆分 / 合并更新现有云服务部署。
+4. 使用新程序包和更新的服务配置文件，在 Azure 订阅中更新拆分/合并的现有云服务部署。
 
 无需设置新的元数据数据库，即可升级拆分/合并。 新版本会自动将现有的元数据数据库升级到新版本。
 

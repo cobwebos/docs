@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: mamccrea
-ms.openlocfilehash: b327403b29f26f6c1f43f9dfe7aabd5c3c7e0a68
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: efb0d3222bfd98b15502163979425d47fa459e07
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299911"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605722"
 ---
 # <a name="use-databricks-cli-from-azure-cloud-shell"></a>从 Azure Cloud Shell 中使用 Databricks CLI
 
@@ -24,7 +24,7 @@ ms.locfileid: "72299911"
 
 * 一个 Azure Databricks 工作区和群集。 有关说明，请参阅 [Azure Databricks 入门](quickstart-create-databricks-workspace-portal.md)。 
 
-* 在 Databricks 中设置个人访问令牌。 有关说明，请参阅[令牌管理](https://docs.azuredatabricks.net/api/latest/authentication.html#token-management)。
+* 在 Databricks 中设置个人访问令牌。 有关说明，请参阅[令牌管理](/azure/databricks/dev-tools/api/latest/authentication)。
 
 ## <a name="use-the-azure-cloud-shell"></a>使用 Azure Cloud Shell
 
@@ -36,7 +36,7 @@ ms.locfileid: "72299911"
 
 3. 请确保已选择 **Bash** 作为 Cloud Shell 环境。 可以从下拉列表选项中进行选择，如以下屏幕截图中所示。
 
-   ![选择 Bash 作为 Cloud Shell 环境](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "选择 Bash") 
+   ![为 Cloud Shell 环境选择 Bash](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "选择 Bash") 
 
 4. 创建可在其中安装 Databricks CLI 的虚拟环境。 在下面的代码片段中，将创建一个名为 `databrickscli` 的虚拟环境。
 
@@ -73,13 +73,13 @@ ms.locfileid: "72299911"
     databricks fs ls
 
 
-有关命令的完整参考，请参阅 [Databricks CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)。
+有关命令的完整参考，请参阅 [Databricks CLI](/azure/databricks/dev-tools/databricks-cli)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解有关 Azure CLI 的详细信息，请参阅 [Azure CLI 概述](../cloud-shell/overview.md)
 * 若要查看 Azure CLI 命令的列表，请参阅 [Azure CLI 参考](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest)
-* 若要查看 Databricks CLI 命令的列表，请参阅 [Databricks CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)
+* 若要查看 Databricks CLI 命令的列表，请参阅 [Databricks CLI](/azure/databricks/dev-tools/databricks-cli)
 
 

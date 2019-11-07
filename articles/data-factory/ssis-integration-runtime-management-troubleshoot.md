@@ -1,6 +1,6 @@
 ---
-title: 排查 Azure 数据工厂中的 SSIS Integration Runtime 管理问题 |Microsoft Docs
-description: 本文提供了有关 SSIS Integration Runtime （SSIS IR）的管理问题的疑难解答指南
+title: '在 Azure 数据工厂中排查 SSIS Integration Runtime 管理问题 '
+description: 本文提供有关排查 SSIS Integration Runtime (SSIS IR) 管理问题的指导
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,24 +12,24 @@ author: chinadragon0515
 ms.author: dashe
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: d16267e104d753770dc40ce99b0f56e5c749b2d0
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 3452fc2274eb646acb19c0e6a203ebadcb81cad5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752168"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684020"
 ---
-# <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>排查 Azure 数据工厂中的 SSIS Integration Runtime 管理问题
+# <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>在 Azure 数据工厂中排查 SSIS Integration Runtime 管理问题
 
-本文提供 Azure SQL Server Integration Services （SSIS） Integration Runtime （IR）（也称为 SSIS IR）中管理问题的疑难解答指导。
+本文提供的故障排除指南针对 Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR)（简称 SSIS IR）中的管理问题。
 
 ## <a name="overview"></a>概述
 
-如果在预配或取消预配 SSIS IR 时遇到任何问题，则会在 Microsoft Azure 数据工厂门户中看到一条错误消息或从 PowerShell cmdlet 返回错误消息。 错误始终显示为错误代码的格式，并显示详细的错误消息。
+如果在预配或取消预配 SSIS IR 时出现任何问题，则 Microsoft Azure 数据工厂门户中会显示错误消息，或者 PowerShell cmdlet 会返回一条错误。 错误始终以错误代码的格式显示，并附带详细的错误消息。
 
-如果错误代码为 InternalServerError，则服务存在暂时性问题，应稍后重试该操作。 如果重试不起作用，请联系 Azure 数据工厂支持团队。
+如果错误代码为 InternalServerError，则表示服务出现了暂时性的问题，应该在以后重试该操作。 如果重试不起作用，请联系 Azure 数据工厂支持团队。
 
-否则，三个主要的外部依赖项可能会导致错误： Azure SQL 数据库服务器、托管实例、自定义安装脚本以及虚拟网络配置。
+否则，以下三个主要的外部依赖项可能会导致错误：Azure SQL 数据库服务器或托管实例、自定义安装脚本和虚拟网络配置。
 
 ## <a name="azure-sql-database-server-or-managed-instance-issues"></a>Azure SQL 数据库服务器或托管实例问题
 
@@ -43,9 +43,9 @@ ms.locfileid: "72752168"
 * SQL 身份验证期间登录失败。 提供的帐户无法登录 SQL Server 数据库。 请确保提供正确的用户帐户。
 * Microsoft Azure Active Directory (Azure AD) 身份验证（托管标识）期间登录失败。 将工厂的托管标识添加到 AAD 组，并确保托管标识具有对目录数据库服务器的访问权限。
 * 连接超时。 此错误始终是由与安全相关的配置引起的。 建议：
-  1. 创建新的 VM。
+  1. 创建新 VM。
   1. 如果 IR 在虚拟网络中，请将 VM 加入相同的 IR Microsoft Azure 虚拟网络。
-  1. 安装 SSMS 并检查 Azure SQL 数据库服务器或托管实例状态。
+  1. 安装 SSMS 并检查 Azure SQL Database 服务器或托管实例状态。
 
 对于其他问题，请修复详细的 SQL 异常错误消息中显示的问题。 如果仍有问题，请联系 Azure SQL Database 服务器或托管实例支持团队。
 
@@ -53,13 +53,13 @@ ms.locfileid: "72752168"
 
 ### <a name="catalogcapacitylimiterror"></a>CatalogCapacityLimitError
 
-下面这种错误消息可能如下所示： "数据库 ' SSISDB ' 已达到其大小配额"。 分区或删除数据、删除索引或查阅文档以获取可能的解决方法。 " 
+下面这种错误消息可能如下所示： "数据库 ' SSISDB ' 已达到其大小配额"。 请将数据分区或删除、删除索引，或查阅文档以找到可能的解决方法。” 
 
 可能的解决方法包括：
 * 增加 SSISDB 的配额大小。
 * 通过以下方法更改 SSISDB 的配置以减小大小：
-   * 缩短保留期和项目版本的数量。
-   * 减少日志的保留期。
+   * 缩短保留期，减少项目版本数。
+   * 缩短日志的保持期。
    * 更改日志的默认级别。
 
 ### <a name="catalogdbbelongstoanotherir"></a>CatalogDbBelongsToAnotherIR
@@ -87,7 +87,7 @@ ms.locfileid: "72752168"
 
 在 IR 运行时，将检查自定义安装脚本容器，因为 SSIS IR 会定期更新。 此更新需要访问该容器才能下载自定义安装脚本并再次安装。 此过程还会检查容器是否可访问，以及 main.cmd 文件是否存在。
 
-对于涉及自定义安装的任何错误，您将看到 CustomSetupScriptFailure 错误代码和子代码，如 CustomSetupScriptBlobContainerInaccessible 或 CustomSetupScriptNotFound。
+对于任何涉及自定义安装的错误，你将看到一个 CustomSetupScriptFailure 错误代码，其中包含 CustomSetupScriptBlobContainerInaccessible 或 CustomSetupScriptNotFound 之类的子代码。
 
 ### <a name="customsetupscriptblobcontainerinaccessible"></a>CustomSetupScriptBlobContainerInaccessible
 
@@ -123,7 +123,7 @@ ms.locfileid: "72752168"
 
 ### <a name="forbidden"></a>禁止
 
-这种错误可能类似于： "未为当前帐户启用 SubnetId。 Microsoft。批处理资源提供程序未在 VNet 的同一订阅下注册。
+这种错误可能类似于： "未为当前帐户启用 SubnetId。 Microsoft.Batch 资源提供程序未在 VNet 的同一订阅下注册。”
 
 这些详细信息表示 Azure Batch 无法访问虚拟网络。 在与虚拟网络相同的订阅下注册 Microsoft.Batch 资源提供程序。
 
@@ -131,14 +131,14 @@ ms.locfileid: "72752168"
 
 这种错误可能类似于下面的一种情况： 
 
-- "指定的 VNet 不存在，或者 Batch 服务无权访问它。"
-- "指定的子网 xxx 不存在。"
+- “指定的 VNet 不存在，或 Batch 服务无权访问它。”
+- “指定的子网 xxx 不存在。”
 
 这些错误表示虚拟网络不存在，Azure Batch 服务无法访问它，或者提供的子网不存在。 请确保该虚拟网络和子网存在，并且 Azure Batch 可访问它们。
 
 ### <a name="misconfigureddnsserverornsgsettings"></a>MisconfiguredDnsServerOrNsgSettings
 
-这种错误消息可能如下所示： "未能在 VNet 中预配 Integration Runtime。 如果配置了 DNS 服务器或 NSG 设置，请确保 DNS 服务器可访问且 NSG 配置正确。 "
+这种错误消息可能如下所示： "未能在 VNet 中预配 Integration Runtime。 如果配置了 DNS 服务器或 NSG 设置，请确保 DNS 服务器可访问，并且 NSG 配置正确。”
 
 在这种情况下，你可能有一个自定义的 DNS 服务器或 NSG 设置配置，这将阻止解析或访问 SSIS IR 所需的 Azure 服务器名称。 有关详细信息，请参阅 [SSIS IR 虚拟网络配置](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。 如果仍有问题，请联系 Azure 数据工厂支持团队。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 中的单一数据库和共用数据库的 VNet 终结点和规则 | Microsoft Docs
+title: '适用于 Azure SQL 中的单个和共用数据库的 VNet 终结点和规则 '
 description: 将子网标记为虚拟网络服务终结点。 然后将终结点标记为适用于 Azure SQL 数据库 ACL 的虚拟网络规则。 然后，SQL 数据库就会接受来自子网上所有虚拟机和其他节点的通信。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: 5506f95d532f69286bf29ec8916485bd63ce94da
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: e1f8ab6725c58d9e1f15f88e6d2465ab88df79e2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828823"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686917"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>为数据库服务器使用虚拟网络服务终结点和规则
 
@@ -53,14 +53,14 @@ ms.locfileid: "71828823"
 
 在管理虚拟网络服务终结点时，安全角色是分开的。 下述每个角色都需要进行操作：
 
-- **网络管理员：** &nbsp; 启用终结点。
-- **数据库管理员：** &nbsp;更新访问控制列表 (ACL)，将给定的子网添加到 SQL 数据库服务器。
+- 网络管理员：&nbsp;启用终结点。
+- 数据库管理员：&nbsp;更新访问控制列表 (ACL)，将给定的子网添加到 SQL 数据库服务器。
 
 RBAC 备用：
 
 网络管理员和数据库管理员角色的权限超出虚拟网络规则的管理需要， 只有部分权限是必需的。
 
-可以选择在 Azure 中使用[基于角色的访问控制 (RBAC)][rbac-what-is-813s]，创建一个只有部分必需权限的自定义角色。 在涉及到网络管理员或数据库管理员时，可以使用自定义角色来代替。与向两个主要的管理员角色添加用户相比，向自定义角色添加用户的安全风险较低。
+可以选择在 Azure 中使用[基于角色的访问控制 (RBAC)][rbac-what-is-813s]，创建一个只有部分必需权限的自定义角色。 可以使用自定义角色，而不是涉及网络管理员或数据库管理员。如果将用户添加到自定义角色，并将用户添加到其他两个主要管理员角色中，则安全暴露的外围应用会较低。
 
 > [!NOTE]
 > 在某些情况下，Azure SQL 数据库和 VNet-子网位于不同的订阅中。 在这些情况下，必须确保以下配置：
@@ -89,7 +89,7 @@ RBAC 备用：
 
 在使用 Azure SQL 数据库的服务终结点时，请查看以下注意事项：
 
-- **需要到 Azure SQL 数据库公共 IP 的出站连接**：必须为 Azure SQL 数据库 IP 启用网络安全组 (NSG) 才能进行连接。 可以使用 Azure SQL 数据库的 NSG [服务标记](../virtual-network/security-overview.md#service-tags)执行此操作。
+- **需要 Azure SQL 数据库公共 IP 的出站连接**：必须为 Azure SQL 数据库 IP 启用网络安全组 (NSG) 才能进行连接。 可以使用 Azure SQL 数据库的 NSG [服务标记](../virtual-network/security-overview.md#service-tags)执行此操作。
 
 ### <a name="expressroute"></a>ExpressRoute
 
@@ -132,10 +132,10 @@ PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure SQL 数据�
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
     
-   1. 按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)创建**常规用途 v2 存储帐户**。
+   1. 按照此**指南**创建[常规用途 v2 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)。
 
    > [!NOTE]
-   > - 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户**升级到 v2** 帐户。
+   > - 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此**指南**将该帐户[升级到 v2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) 帐户。
    > - 若要了解 Azure Data Lake Storage Gen2 的已知问题，请参阅此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)。
     
 1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后单击“添加角色分配”。 将**存储 Blob 数据参与者**RBAC 角色分配给 azure SQL Server 托管你的 Azure SQL 数据仓库，该数据仓库已注册到你的 Azure SQL 数据仓库，该数据仓库已注册到你的 AZURE ACTIVE DIRECTORY （AAD），
@@ -189,17 +189,17 @@ Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储�
 
 ### <a name="error-40914"></a>错误 40914
 
-消息文本：无法打开登录时请求的服务器‘[服务器-名称]’。 不允许客户端访问服务器。
+消息正文：无法打开登录时请求的服务器 [server-name]。 不允许客户端访问服务器。
 
-错误说明：客户端位于包含虚拟网络服务器终结点的子网中。 不过，Azure SQL 数据库服务器没有授权子网与 SQL 数据库进行通信的虚拟网络规则。
+错误描述：客户端位于包含虚拟网络服务器终结点的子网中。 不过，Azure SQL 数据库服务器没有授权子网与 SQL 数据库进行通信的虚拟网络规则。
 
 错误解决方法：在 Azure 门户的“防火墙”窗格中，使用虚拟网络规则控件为子网[添加虚拟网络规则](#anchor-how-to-by-using-firewall-portal-59j)。
 
 ### <a name="error-40615"></a>错误 40615
 
-消息文本：无法打开此登录请求的服务器“{0}”。 不允许 IP 地址为“{1}”的客户端访问此服务器。
+消息文本：无法打开登录时请求的服务器“{0}”。 不允许 IP 地址为“{1}”的客户端访问此服务器。
 
-错误说明：客户端尝试从未经授权连接到 Azure SQL 数据库服务器的 IP 地址进行连接。 服务器防火墙没有 IP 地址规则允许客户端从给定 IP 地址与 SQL 数据库进行通信。
+错误描述：客户端尝试从未经授权连接到 Azure SQL 数据库服务器的 IP 地址进行连接。 服务器防火墙没有 IP 地址规则允许客户端从给定 IP 地址与 SQL 数据库进行通信。
 
 错误解决方法：输入客户端 IP 地址作为 IP 规则。 为此，可以使用 Azure 门户中的“防火墙”窗格。
 
@@ -283,7 +283,7 @@ Azure SQL 数据库的虚拟网络规则功能已在 2017 年 9 月末推出。
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 PowerShell 创建虚拟网络服务终结点，然后创建 Azure SQL 数据库的虚拟网络规则。][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
-- [虚拟网络规则：操作][rest-api-virtual-network-rules-operations-862r]（使用 REST API）
+- [虚拟网络规则：][rest-api-virtual-network-rules-operations-862r]包含 REST Api 的操作
 
 <!-- Link references, to images. -->
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂映射数据流中的有条件拆分转换 |Microsoft Docs
+title: Azure 数据工厂映射数据流中的有条件拆分转换
 description: 使用 Azure 数据工厂映射数据流中的有条件拆分转换将数据拆分为不同的流
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 2d794714f27340e8886843988b6c075dd8d3366e
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9ace415aa725a82d8feda5702d25d7e5ff9875d9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72527412"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676812"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>映射数据流中的有条件拆分转换
 
@@ -42,7 +42,7 @@ ms.locfileid: "72527412"
 
 ### <a name="example"></a>示例
 
-下面的示例是一个名为 `SplitByYear` 的有条件拆分转换，它采用传入流 `CleanData`。 此转换有两个拆分条件 `year < 1960` 和 `year > 1980`。 `disjoint` 为 false，因为数据转到第一个匹配的条件。 每个匹配第一个条件的行都会转到输出流 `moviesBefore1960`。 与第二个条件匹配的所有剩余行都将移到 `moviesAFter1980` 的输出流中。 所有其他行都流过默认流 `AllOtherMovies`。
+下面的示例是一个名为 `SplitByYear` 的有条件拆分转换，它采用传入流 `CleanData`。 此转换有两个拆分条件 `year < 1960` 和 `year > 1980`。 `disjoint` 为 false，因为数据转到第一个匹配的条件。 每个匹配第一个条件的行都会转到输出流 `moviesBefore1960`。 与第二个条件匹配的所有剩余行都将移到 `moviesAFter1980`的输出流中。 所有其他行都流过默认流 `AllOtherMovies`。
 
 在数据工厂 UX 中，此转换如下图所示：
 

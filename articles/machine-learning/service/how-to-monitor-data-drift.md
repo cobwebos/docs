@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: 536f3ab506dcbe2b8997f2c1870f25244b6c070f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: eddfddc994482bcb6e60604703e7f306fee9c32b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489656"
+ms.locfileid: "73574323"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>在部署到 Azure Kubernetes Service （AKS）的模型上检测数据偏差（预览）
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "73489656"
 
 使用 Azure 机器学习，数据偏移通过数据集或部署来监视。 若要监视数据偏移，请指定基线数据集，这通常是模型的定型数据集。 第二个数据集（通常是从部署中收集的模型输入数据）根据基线数据集进行测试。 这两个数据集都被分析并输入到数据偏移监视服务。 训练机器学习模型来检测两个数据集之间的差异。 模型的性能转换为偏移系数，这会测量两个数据集之间的偏差量。 使用[model interpretability](how-to-machine-learning-interpretability.md)，将计算构成偏移系数的特征。 在数据集配置文件中，将跟踪有关每个功能的统计信息。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有，请在开始之前创建一个免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
@@ -161,14 +161,13 @@ datadrift.disable_schedule()
 
 在[Azure 机器学习 studio](https://ml.azure.com)上的工作区中的 "**详细信息**" 选项卡中的 "**模型**" 下，可以查看数据偏移检测程序的配置。
 
-![Azure 机器学习 studio 数据偏移](media/how-to-monitor-data-drift/drift-config.png)
+[![Azure 机器学习 studio 数据偏移](media/how-to-monitor-data-drift/drift-config.png)](media/how-to-monitor-data-drift/drift-config-expanded.png)
 
 ## <a name="view-results-in-your-azure-machine-learning-studio"></a>在 Azure 机器学习 studio 中查看结果
 
 若要在[Azure 机器学习 studio](https://ml.azure.com)中查看工作区中的结果，请导航到 "模型" 页。 在模型的 "详细信息" 选项卡上，将显示数据偏移配置。 现在，**数据偏移**选项卡可用来可视化数据偏差指标。 
 
 [![Azure 机器学习 studio 数据偏移](media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
-
 
 ## <a name="receiving-drift-alerts"></a>接收偏移警报
 

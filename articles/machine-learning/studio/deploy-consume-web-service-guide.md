@@ -1,6 +1,6 @@
 ---
 title: 部署和使用
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: 你可以使用 Azure 机器学习 Studio （经典）将机器学习工作流和模型部署为 web 服务。 然后，可以使用这些 Web 服务，通过 Internet 从应用程序调用机器学习模型，从而实时或者在批处理模式下进行预测。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: bf169a9b7064bd83caf0c9f8ec6dd6dd55894d67
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 47cd04615919fcc9db757ed4b9e8fd06eb297592
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493019"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684821"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure 机器学习 Studio （经典） Web 服务：部署和使用
 
@@ -31,8 +31,8 @@ Studio （经典）门户和 Microsoft Azure 机器学习 Web 服务门户可帮
 
 以下链接提供有关如何部署新 Web 服务的常规信息：
 
-* 有关如何部署基于 Azure 资源管理器的新 Web 服务的概述，请参阅[部署新 Web 服务](publish-a-machine-learning-web-service.md)。
-* 有关如何部署 Web 服务的演练，请参阅[部署 Azure 机器学习 Web 服务](publish-a-machine-learning-web-service.md)。
+* 有关如何部署基于 Azure 资源管理器的新 Web 服务的概述，请参阅[部署新 Web 服务](deploy-a-machine-learning-web-service.md)。
+* 有关如何部署 Web 服务的演练，请参阅[部署 Azure 机器学习 Web 服务](deploy-a-machine-learning-web-service.md)。
 * 有关如何创建和部署 web 服务的完整演练，请从[教程1：预测信用风险](tutorial-part1-credit-risk.md)开始。
 * 有关部署 Web 服务的特定示例，请参阅：
 
@@ -87,8 +87,8 @@ Studio （经典）门户和 Microsoft Azure 机器学习 Web 服务门户可帮
 
 可以从 Azure 机器学习 Web 服务门户测试 Web 服务。 这包括测试请求-响应服务 (RRS) 和批处理执行服务 (BES) 接口。
 
-* [部署新 Web 服务](publish-a-machine-learning-web-service.md)
-* [部署 Azure 机器学习 Web 服务](publish-a-machine-learning-web-service.md)
+* [部署新 Web 服务](deploy-a-machine-learning-web-service.md)
+* [部署 Azure 机器学习 Web 服务](deploy-a-machine-learning-web-service.md)
 * [教程3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>从 Excel

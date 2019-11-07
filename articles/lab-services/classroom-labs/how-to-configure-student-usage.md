@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 691907d1c221283f99ba59f0937cfbaf673f427a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 0ab8d8688c7856eeae7d75527620c2b77ae78029
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72324339"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584149"
 ---
 # <a name="add-and-manage-lab-users"></a>添加和管理实验室用户
 本文介绍了如何向实验室添加用户，将用户注册到实验室，控制用户可以使用 VM 的小时数，以及其他内容。 
@@ -36,6 +36,9 @@ ms.locfileid: "72324339"
 4. 选择“保存”。 可以在列表中看到用户的电子邮件地址及其状态（已注册或未注册）。 
 
     ![用户列表](../media/how-to-configure-student-usage/users-list-new.png)
+
+    > [!NOTE]
+    > 注册到实验室后，会看到列表中的用户的名称。 列表中显示的名称是通过在 Azure Active Directory 中使用用户的名字和姓氏来构造的。 
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>通过上传 CSV 文件添加用户
 还可通过上传包含用户电子邮件地址的 CSV 文件来添加用户。
@@ -60,15 +63,16 @@ ms.locfileid: "72324339"
 如果为实验室启用了“限制访问”，则只有用户列表中的用户可以使用注册链接注册到实验室。 默认情况下启用此选项。 
 
 ### <a name="invite-all-users"></a>邀请所有用户
+1. 如果你不在页面上，请切换到 "**用户**" 视图，然后在工具栏上选择 "**全部邀请**"。 
 
-1. 切换到实验室的 "**用户**" 页。 
-2. 从工具栏中选择 "**全部邀请**"。 
-3. 输入用户的**消息**。 这是可选步骤。
-4. 然后选择 "**发送**"。
+    ![选择学生](../media/tutorial-setup-classroom-lab/invite-all-button.png)
 
-    ![邀请所有用户](../media/how-to-configure-student-usage/invite-all.png)
+1. 在 "**通过电子邮件发送邀请**" 页上，输入可选消息，然后选择 "**发送**"。 电子邮件自动包含注册链接。 可以**通过选择 "..."（省略号）** ，然后在 "**注册" 链接**。 
 
-    你将在**用户**列表的 "**邀请**" 列中看到此操作的状态。 邀请电子邮件将包含用户可用于向实验室注册的注册链接。 
+    ![通过电子邮件发送注册链接](../media/tutorial-setup-classroom-lab/send-email.png)
+4. "**用户**" 列表中会显示 "**邀请**" 的状态。 在 **\<日期 > 上**，状态应更改为 "**发送**" 和 "发送"。 
+
+    若要详细了解如何将学生添加到类并管理实验室的使用情况，请参阅[如何配置学生使用情况](how-to-configure-student-usage.md)。
 
 ### <a name="invite-selected-users"></a>邀请所选用户
 
@@ -80,9 +84,9 @@ ms.locfileid: "72324339"
 
     ![向选定用户发送电子邮件](../media/how-to-configure-student-usage/send-invitation-to-selected-users.png)
 
-    你将在**用户**列表的 "**邀请**" 列中看到此操作的状态。 邀请电子邮件将包含用户可用于向实验室注册的注册链接。
+    **用户**列表的 "**邀请**" 列中会显示此操作的状态。 邀请电子邮件包含用户可用于向实验室注册的注册链接。
 
-1. 切换到“用户”视图（如果尚未转到该页）。 
+1. 切换到 "**用户**" 视图（如果尚未在页面上）。 
 
 ## <a name="get-registration-link"></a>获取注册链接
 你还可以从门户获取注册链接，并使用你自己的电子邮件客户端应用程序发送该链接。 
@@ -107,19 +111,21 @@ ms.locfileid: "72324339"
 可以使用以下步骤来设置每个用户的配额： 
 
 1. 如果页面尚未处于活动状态，请在左侧菜单中选择“用户”。 
-2. 在工具栏上，选择 "**每个用户的配额： &lt;number @ no__t-2 小时**"。 
+2. 在工具栏上选择 "**每用户配额： \<数 > 小时**"。 
 3. 在 "**每个用户的配额**" 页上，指定你想要在计划的类时间之外为每个用户（学生）指定的小时数，然后选择 "**保存**"。
 
     ![每个用户的配额](../media/how-to-configure-student-usage/quota-per-user.png)    
-5. 现在，工具栏上已更改的值： "**每个用户的配额： @no__t-小时的 1number" @ no__t-2**。 
+5. 现在，工具栏上已更改的值： "**每用户配额： \<小时数 >** 。 
 
     ![每个用户的配额-之后](../media/how-to-configure-student-usage/quot-per-user-after.png)
 
     > [!IMPORTANT]
-    > [VM 的计划运行时间](how-to-create-schedules.md)不计入分配给用户的配额。 配额是指学生在 VM 上花费的计划外时间。 
+    > [VM 的计划运行时间](how-to-create-schedules.md)不计入分配给用户的配额。 配额是指学生在 VM 上花费的计划时间之外的时间。 
 
 ## <a name="set-additional-quota-for-a-specific-user"></a>为特定用户设置附加配额
-可以为用户设置单独的配额。 为此，请执行下列步骤：
+可以指定用户的额外配额。 除了之前部分中的所有用户所设置的通用配额外，此配额也是如此。 例如，如果您（作为指导员）将所有用户的配额设置为10小时，并为特定用户设置5小时的额外配额，则该用户将获得15（10 + 5）小时的配额。 如果稍后将常见配额更改为，例如15，则用户将获得20（15 + 5）小时的配额。 请记住，此整体配额在计划时间之外。 学生在计划时间内使用实验室 VM 的时间不计为此配额。 
+
+为此，请执行以下步骤：
 
 1. 从 "**用户**" 页上的用户列表中选择一个用户（student）。
 2. 然后，从工具栏中选择 "**调整配额**"。 
@@ -132,6 +138,38 @@ ms.locfileid: "72324339"
 
     ![用户的新使用情况](../media/how-to-configure-student-usage/new-usage-hours.png)
 
+## <a name="student-accounts"></a>学生帐户
+若要将学生添加到课堂实验室，请使用其电子邮件帐户。 可以使用以下类型的电子邮件帐户：
+
+- 大学的 Office 365 Azure Active Directory （AAD）提供的学生电子邮件帐户。 
+- Microsoft 电子邮件帐户，如 `@outlook.com`、`@hotmail.com`、`@msn.com`或 `@live.com`。
+- 非 Microsoft 电子邮件帐户，如 Yahoo 或 Google 提供的帐户。 但是，这些类型的帐户必须与 Microsoft 帐户链接。
+- 一个 GitHub 帐户。 此帐户必须与 Microsoft 帐户链接。
+
+### <a name="using-a-non-microsoft-email-account"></a>使用非 Microsoft 电子邮件帐户
+学生可以使用非 Microsoft 电子邮件帐户来注册和登录到教室实验室。  但注册要求学生首先创建一个链接到非 Microsoft 电子邮件地址的 Microsoft 帐户。
+
+许多学生可能已经有一个链接到非 Microsoft 电子邮件地址的 Microsoft 帐户。 例如，如果学生已经将其电子邮件地址与 Microsoft 的其他产品或服务（如 Office、Skype、OneDrive 或 Windows）一起使用，则学生已经有了一个 Microsoft 帐户。  
+
+当学生单击注册 URL 登录到课堂时，系统将提示他们输入其电子邮件地址和密码。 如果学生尝试使用未链接 Microsoft 帐户的非 Microsoft 帐户进行登录，则该学生会收到以下错误消息： 
+
+![错误消息](../media/how-to-configure-student-usage/cant-find-account.png)
+
+若要注册 Microsoft 帐户，学员应[http://signup.live.com](http://signup.live.com)。  
+
+> [!IMPORTANT]
+> 学生登录到教室实验室时，不会为他们提供创建 Microsoft 帐户的选项。 因此，我们建议在向使用非 Microsoft 帐户的学生发送的课堂实验室注册电子邮件中包含此注册链接。
+
+### <a name="using-a-github-account"></a>使用 GitHub 帐户
+学生还可以使用现有的 GitHub 帐户注册和登录到教室实验室。 如果学生已经有一个链接到其 GitHub 帐户的 Microsoft 帐户，则他们可以登录并提供其密码，如前一部分中所示。 如果尚未将其 GitHub 帐户链接到 Microsoft 帐户，则应选择 "**登录" 选项**：
+
+![登录选项链接](../media/how-to-configure-student-usage/signin-options.png)
+
+在 "**登录选项**" 页面上，选择 "**用 GitHub 登录**"。
+
+![用 GitHub 链接登录](../media/how-to-configure-student-usage/signin-github.png)
+
+最后，系统将提示他们创建链接到其 GitHub 帐户的 Microsoft 帐户。 当学生选择**下一个**时，会自动发生此情况。  然后，该学生会立即登录并连接到教室实验室。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：

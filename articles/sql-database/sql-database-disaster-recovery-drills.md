@@ -1,5 +1,5 @@
 ---
-title: SQL 数据库灾难恢复演练 | Microsoft 文档
+title: SQL 数据库灾难恢复演练
 description: 了解使用 Azure SQL 数据库执行灾难恢复演练的指南和最佳做法。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 2923ae8b9b25932ae214cfa45780dffb8780dd39
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bf337b1312abc59048649aabe3e4f895d07a8d51
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568854"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690627"
 ---
 # <a name="performing-disaster-recovery-drill"></a>执行灾难恢复演练
 
@@ -69,5 +69,5 @@ ms.locfileid: "68568854"
 
 * 若要了解业务连续性方案，请参阅[连续性方案](sql-database-business-continuity.md)。
 * 若要了解 Azure SQL 数据库的自动备份，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)
-* 若要了解如何使用自动备份进行恢复，请参阅[从服务启动的备份中还原数据库](sql-database-recovery-using-backups.md)。
+* 若要了解如何使用自动备份进行恢复，请参阅 [从服务启动的备份中还原数据库](sql-database-recovery-using-backups.md)。
 * 要了解更快的恢复选项，请参阅[活动异地复制](sql-database-active-geo-replication.md)和[自动故障转移组](sql-database-auto-failover-group.md)。

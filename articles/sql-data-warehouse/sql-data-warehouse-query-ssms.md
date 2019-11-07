@@ -1,5 +1,5 @@
 ---
-title: 连接到 Azure SQL 数据仓库 - SSMS | Microsoft 文档
+title: 使用 SSMS 进行连接
 description: 使用 SQL Server Management Studio (SSMS) 来连接并查询 Azure SQL 数据仓库。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: b96896c0366c6fba2548480b166bdb9cf6ca692c
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d5c903a24ea47cb152555330688dd0bc515c625b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575343"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692597"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 连接到 SQL 数据仓库
 > [!div class="op_single_selector"]
@@ -32,11 +33,11 @@ ms.locfileid: "69575343"
 ## <a name="prerequisites"></a>先决条件
 要使用本教程，需要：
 
-* 现有的 SQL 数据仓库。 若要创建这样一个数据仓库，请参阅 [创建 SQL 数据仓库][Create a SQL Data Warehouse]。
-* 安装了 SQL Server Management Studio (SSMS)。 如果尚未[安装 SSMS][Install SSMS] , 请免费安装。
+* 现有 SQL 数据仓库。 若要创建这样一个数据仓库，请参阅 [创建 SQL 数据仓库][Create a SQL Data Warehouse]。
+* 安装了 SQL Server Management Studio (SSMS)。 免费[安装 SSMS][Install SSMS]（如果尚未安装）。
 * 完全限定的 SQL Server 名称。 若要查找此名称，请参阅 [连接到 SQL 数据仓库][Connect to SQL Data Warehouse]。
 
-## <a name="1-connect-to-your-sql-data-warehouse"></a>1.连接到 SQL 数据仓库
+## <a name="1-connect-to-your-sql-data-warehouse"></a>1. 连接到 SQL 数据仓库
 1. 打开 SSMS。
 2. 打开对象资源管理器。 若要执行此操作，选择“**文件**” > “**连接对象资源管理器**”。
    
@@ -46,18 +47,18 @@ ms.locfileid: "69575343"
     ![连接到服务器][2]
    
    * **服务器名称**。 输入前面标识的 **服务器名称** 。
-   * “身份验证”。 选择“SQL Server 身份验证”或“Active Directory 集成身份验证”。
+   * **身份验证**。 选择“SQL Server 身份验证”或“Active Directory 集成身份验证”。
    * “用户名”和“密码”。 如果上面选择了 SQL Server 身份验证，请输入用户名和密码。
    * 单击“连接”。
 4. 要浏览，请展开 Azure SQL 服务器。 可以查看与服务器关联的数据库。 展开 AdventureWorksDW 以查看示例数据库中的表。
    
     ![浏览 AdventureWorksDW][3]
 
-## <a name="2-run-a-sample-query"></a>2.运行示例查询
+## <a name="2-run-a-sample-query"></a>2. 运行示例查询
 现在，已建立了与数据库的连接，接下来让我们编写查询。
 
 1. 在 SQL Server 对象资源管理器中右键单击数据库。
-2. 选择“新建查询”。 此时将打开一个新的查询窗口。
+2. 选择“新建查询”。 此时会打开一个新的查询窗口。
    
     ![新建查询][4]
 3. 将以下 TSQL 查询复制到查询窗口中：
@@ -65,7 +66,7 @@ ms.locfileid: "69575343"
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. 运行该查询。 为此，请单击 `Execute` 或使用以下快捷键：`F5`。
+4. 运行该查询。 为此，请单击 `Execute` 使用以下快捷键：`F5`
    
     ![运行查询][5]
 5. 查看查询结果。 在此示例中，FactInternetSales 表包含 60398 行。
@@ -75,7 +76,7 @@ ms.locfileid: "69575343"
 ## <a name="next-steps"></a>后续步骤
 既然可以执行连接和查询，接下来请尝试 [使用 PowerBI 可视化数据][visualizing the data with PowerBI]。
 
-若要为 Azure Active Directory 配置环境，请参阅 [SQL 数据仓库身份验证][Authenticate to SQL Data Warehouse]。
+若要为 Azure Active Directory 身份验证配置环境，请参阅 [SQL 数据仓库身份验证][Authenticate to SQL Data Warehouse]。
 
 <!--Arcticles-->
 [Connect to SQL Data Warehouse]: sql-data-warehouse-connect-overview.md

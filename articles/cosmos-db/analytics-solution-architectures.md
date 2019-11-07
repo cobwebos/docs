@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: cosmos-db
 ms.date: 09/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d50b946e67bbcc171850b71021165356011f58e3
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: d0b5042c1401a95cc75f4c01ace843659b6babfe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755200"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681749"
 ---
 # <a name="solutions-using-globally-distributed-analytics-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用全局分布式分析的解决方案
 
@@ -34,12 +34,12 @@ ms.locfileid: "72755200"
 
 下图显示了如何使用 Azure Cosmos DB Spark 支持来优化定价和促销：
 
-![Azure Cosmos DB 的用于优化定价和促销的 Spark 支持](./media/spark-api-introduction/optimize-pricing-and-promotions.png)
+![Azure Cosmos DB 的用于优化定价和促销的 Spark 支持](./media/analytics-solution-architectures/optimize-pricing-and-promotions.png)
 
 
 下图显示了如何在实时建议引擎中使用 Azure Cosmos DB Spark 支持：
 
-![实时建议引擎中的 Azure Cosmos DB Spark 支持](./media/spark-api-introduction/real-time-recommendation-engine.png)
+![实时建议引擎中的 Azure Cosmos DB Spark 支持](./media/analytics-solution-architectures/real-time-recommendation-engine.png)
 
 ## <a name="manufacturing-and-iot"></a>制造和 IoT
 
@@ -49,9 +49,9 @@ ms.locfileid: "72755200"
 
 下图显示了如何使用 Azure Cosmos DB 的 Spark 支持，以便从 IoT 设备读取指标并应用智能电网分析：
 
-![Azure Cosmos DB 的用于从 IoT 设备读取指标的 Spark 支持](./media/spark-api-introduction/read-metrics-from-iot-devices.png)
+![Azure Cosmos DB 的用于从 IoT 设备读取指标的 Spark 支持](./media/analytics-solution-architectures/read-metrics-from-iot-devices.png)
 
-## <a name="predictive-maintenance"></a>预测性维护
+## <a name="predictive-maintenance"></a>预见性维护
 
 * 维护资产（例如在从小型钻井平台到深水平台中使用的压缩机）是一项复杂的工作。 这些资产位于全球，生成数 PB 的数据。 可以使用 Azure Cosmos DB 构建端到端预测性数据管道，该管道使用 Spark 流式处理来处理大量的传感器遥测数据、存储资产部件以及传感器映射数据。
 
@@ -59,11 +59,11 @@ ms.locfileid: "72755200"
 
 下图显示了如何使用 Azure Cosmos DB 的 Spark 支持来构建预测性维护系统：
 
-![Azure Cosmos DB 的 Spark 支持，用于构建预测性维护系统](./media/spark-api-introduction/predictive-maintenance-system.png)
+![Azure Cosmos DB 的 Spark 支持，用于构建预测性维护系统](./media/analytics-solution-architectures/predictive-maintenance-system.png)
 
 下图显示了如何使用 Azure Cosmos DB 的 Spark 支持来构建实时车辆诊断系统：
 
-![Azure Cosmos DB 的 Spark 支持，用于构建实时车辆诊断系统](./media/spark-api-introduction/real-time-vehicle-diagnostic-system.png)
+![Azure Cosmos DB 的 Spark 支持，用于构建实时车辆诊断系统](./media/analytics-solution-architectures/real-time-vehicle-diagnostic-system.png)
 
 ## <a name="gaming"></a>游戏
 
@@ -75,7 +75,7 @@ ms.locfileid: "72755200"
 
 下图显示了如何在游戏分析中使用 Azure Cosmos DB 的 Spark 支持：
 
-![Azure Cosmos DB 的 Spark 支持，用于游戏分析](./media/spark-api-introduction/gaming-analytics.png)
+![Azure Cosmos DB 的 Spark 支持，用于游戏分析](./media/analytics-solution-architectures/gaming-analytics.png)
 
 ## <a name="next-steps"></a>后续步骤
 

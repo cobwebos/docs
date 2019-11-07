@@ -1,5 +1,5 @@
 ---
-title: 弹性数据库工具入门 - Azure | Microsoft Docs
+title: 弹性数据库工具入门-Azure
 description: 大致介绍 Azure SQL 数据库的弹性数据库工具功能，包括易于使用的示例应用。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: aa0827bdf6deb388123ed701013ee95f5493eee3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8f5d5bbf6509dd908f94f1500e585913cbb34e41
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568467"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690226"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>弹性数据库工具入门
 
@@ -32,7 +32,7 @@ ms.locfileid: "68568467"
 
 ### <a name="download-and-run-the-sample-app"></a>下载并运行示例应用
 
-要生成 JAR 文件并开始使用示例项目，请按照以下步骤操作： 
+若要生成 JAR 文件并开始使用示例项目，请执行以下操作： 
 1. 克隆包含客户端库以及示例应用的 [GitHub 存储库](https://github.com/Microsoft/elastic-db-tools-for-java)。 
 
 2. 编辑 _./sample/src/main/resources/resource.properties_ 文件以设置以下内容：
@@ -87,7 +87,7 @@ ms.locfileid: "68568467"
 
 3. 在示例项目的解决方案中打开 app.config 文件。 然后遵循该文件中的说明，添加 Azure SQL 数据库服务器名称和登录信息（用户名和密码）。
 
-4. 生成并运行应用程序。 出现提示时，请允许 Visual Studio 还原该解决方案的 NuGet 包。 此操作会从 NuGet 下载最新版本的弹性数据库客户端库。
+4. 构建并运行应用程序。 出现提示时，请允许 Visual Studio 还原该解决方案的 NuGet 包。 此操作会从 NuGet 下载最新版本的弹性数据库客户端库。
 
 5. 要深入了解客户端库功能，请尝试使用不同的选项。 请注意应用程序在控制台输出中执行的步骤，并随意浏览后台代码。
    
@@ -100,21 +100,21 @@ ms.locfileid: "68568467"
 
 ## <a name="key-pieces-of-the-code-sample"></a>重要的代码示例片段
 
-* **管理分片和分片映射**：该代码演示如何在“ShardManagementUtils.cs”文件中处理分片、范围和映射。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](https://go.microsoft.com/?linkid=9862595)。  
+* 管理分片和分片映射：该代码演示如何在 ShardManagementUtils.cs 文件中处理分片、范围和映射。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](https://go.microsoft.com/?linkid=9862595)。  
 
-* **数据依赖型路由**：“DataDependentRoutingSample.cs”文件演示了如何向正确的分片路由事务。 有关详细信息，请参阅[数据依赖型路由](https://go.microsoft.com/?linkid=9862596)。 
+* 数据依赖型路由：DataDependentRoutingSample.cs 文件演示了如何向正确的分片路由事务。 有关详细信息，请参阅[数据依赖型路由](https://go.microsoft.com/?linkid=9862596)。 
 
-* **跨多个分片进行查询**：“MultiShardQuerySample.cs”文件演示了如何跨多个分片进行查询。 有关详细信息，请参阅[多分片查询](https://go.microsoft.com/?linkid=9862597)。
+* 查询多个分片：MultiShardQuerySample.cs 文件演示了如何跨多个分片进行查询。 有关详细信息，请参阅[多分片查询](https://go.microsoft.com/?linkid=9862597)。
 
-* **添加空分片**：“CreateShardSample.cs”文件中的代码以迭代方式添加新的空分片。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](https://go.microsoft.com/?linkid=9862595)。
+* 添加空分片：CreateShardSample.cs 文件中的代码以迭代方式添加新的空分片。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](https://go.microsoft.com/?linkid=9862595)。
 
 ## <a name="other-elastic-scale-operations"></a>其他弹性缩放操作
 
-* **拆分现有分片**：拆分分片的功能由拆分/合并工具提供。 有关详细信息，请参阅[在已扩展的云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md)。
+* 拆分现有分片：拆分分片的功能由拆分/合并工具提供。 有关详细信息，请参阅[在横向扩展的云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md)。
 
-* **合并现有分片**：分片合并也是使用拆分/合并工具执行的。 有关详细信息，请参阅[在已扩展的云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md)。   
+* 合并现有分片：分片合并也是使用拆分/合并工具执行的。 有关详细信息，请参阅[在横向扩展的云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md)。   
 
-## <a name="cost"></a>开销
+## <a name="cost"></a>成本
 
 弹性数据库工具库免费。 使用弹性数据库工具时，除 Azure 使用成本外，无需支付其他任何费用。 
 
@@ -130,10 +130,10 @@ ms.locfileid: "68568467"
   * 弹性数据库工具（[.NET](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)、[Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22)）
   * [Elastic Database Tools for Azure SQL - Entity Framework Integration](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)（Azure SQL 的弹性数据库工具 – 实体框架集成）
   * [脚本中心上的分片弹性](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
-* 博客：[弹性缩放公告](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
+* 博客：[弹性缩放通告](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
 * 第 9 频道：[弹性缩放概述视频](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
-* 讨论论坛：[Azure SQL 数据库论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
-* 衡量性能：[分片映射管理器的性能计数器](sql-database-elastic-database-client-library.md)
+* 论坛：[Azure SQL 数据库论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
+* 要测量性能：[分片映射管理器的性能计数器](sql-database-elastic-database-client-library.md)
 
 <!--Anchors-->
 [The Elastic Scale Sample Application]: #The-Elastic-Scale-Sample-Application

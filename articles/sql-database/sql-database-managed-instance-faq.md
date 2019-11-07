@@ -1,5 +1,5 @@
 ---
-title: SQL 数据库托管实例常见问题解答 | Microsoft Docs
+title: SQL 数据库托管实例常见问题
 description: SQL 数据库托管实例常见问题解答 (FAQ)
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 7e341cf8a4ff2a18e44e36d73ad5dbc642582802
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 214b35cf5b56dcfc268ee26e8ca892b7814c2547
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496278"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688111"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL 数据库托管实例常见问题解答 (FAQ)
 
