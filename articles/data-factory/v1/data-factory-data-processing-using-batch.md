@@ -1,5 +1,5 @@
 ---
-title: 使用数据工厂和 Batch 来处理大规模数据集 | Microsoft Docs
+title: 使用数据工厂和 Batch 来处理大规模数据集
 description: 描述如何使用 Azure Batch 的并行处理功能在 Azure 数据工厂管道中处理大量数据。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: fe015e2ffa371c0c31f7f5f43c433d44f3ca3c42
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 611c2a36cac5a589ecd6f9063f5f1bc325860ef6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140042"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682662"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
 > [!NOTE]
@@ -41,7 +41,7 @@ ms.locfileid: "70140042"
 * [Batch 基本信息](../../batch/batch-technical-overview.md)
 * [批处理功能概述](../../batch/batch-api-basics.md)
 
-或者, 若要了解有关批处理的详细信息, 请参阅[批处理文档](https://docs.microsoft.com/azure/batch/)。
+或者，若要了解有关批处理的详细信息，请参阅[批处理文档](https://docs.microsoft.com/azure/batch/)。
 
 ## <a name="why-azure-data-factory"></a>为什么使用 Azure 数据工厂？
 数据工厂是一项基于云的数据集成服务，可对数据移动和转换进行安排并使其实现自动化。 可以使用数据工厂创建将数据从本地和云数据存储移动到集中数据存储的托管数据管道。 Azure Blob 存储是一个示例。 可以使用数据工厂，通过 Azure HDInsight 和 Azure 机器学习等服务来处理/转换数据。 还可以计划数据管道，以便按计划方法（例如每小时、每天和每周）运行。 可以一目了然地监视和管理管道，以便确定问题和采取措施。
@@ -109,7 +109,7 @@ ms.locfileid: "70140042"
 
 1. 在“池”边栏选项卡中，选择工具栏上的“添加”按钮以添加池。
 
-   a. 输入池的 ID（“池 ID”）。 记下池的 ID。 创建数据工厂解决方案时需要它。
+   a. 输入池的 ID（**池 ID**）。 记下池的 ID。 创建数据工厂解决方案时需要它。
 
    b. 为“操作系统系列”设置指定“Windows Server 2012 R2”。
 
@@ -180,15 +180,15 @@ public IDictionary<string, string> Execute(
 
    a. 启动 Visual Studio 2012/2013/2015。
 
-   b. 选择“文件” > “新建” > “项目”。
+   b. 选择“文件” **“新建”** “项目” >  > 。
 
-   c. 展开“模板”，并选择“Visual C\#”。 在此演练中使用的是 C\#，但也可使用任意 .NET 语言开发自定义活动。
+   c. 展开“模板”，并选择“Visual C **”\#** 。 在此演练中使用的是 C\#，但也可使用任意 .NET 语言开发自定义活动。
 
    d. 从右侧项目类型列表中选择“类库”。
 
-   e. 对于“名称”，输入 **MyDotNetActivity**。
+   e. 对**名称**输入 **MyDotNetActivity**。
 
-   f. 对于“位置”，选择“C:\\ADFGetStarted”。 如果不存在，则创建 **ADF** 文件夹。
+   f. 对于“位置” **\\，选择“C:** ADFGetStarted”。 如果不存在，则创建 **ADF** 文件夹。
 
    g. 选择“确定”创建该项目。
 
@@ -398,7 +398,7 @@ public IDictionary<string, string> Execute(
 
 1. 启动 Windows 资源管理器，然后转到 **bin\\debug** 或 **bin\\release** 文件夹。 文件夹选择取决于生成的类型。
 
-1. 在 **\\bin\\Debug** 文件夹内创建包含所有二进制文件的 zip 文件 **MyDotNetActivity.zip**。 可能需要包括 MyDotNetActivity.**pdb** 文件以便获取其他详细信息，例如出现故障时引发问题的源代码中的行号。
+1. 在bin**Debug\\ 文件夹内创建包含所有二进制文件的 zip 文件 \\MyDotNetActivity.zip**。 可能需要包括 MyDotNetActivity.**pdb** 文件以便获取其他详细信息，例如出现故障时引发问题的源代码中的行号。
 
    ![bin\Debug 文件夹列表](./media/data-factory-data-processing-using-batch/image5.png)
 
@@ -734,7 +734,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. 选择工具栏上的“部署”，创建并部署 **OutputDataset**。
 
-#### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>步骤 4：创建和运行含自定义活动的管道
+#### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>步骤 4：创建和运行带自定义活动的管道
 在此步骤中，创建含一个活动（之前创建的自定义活动）的管道。
 
 > [!IMPORTANT]
@@ -803,14 +803,14 @@ test custom activity Microsoft test custom activity Microsoft
      - **isPaused** 属性默认设置为 false。 在此示例中管道会立即运行，因为切片从过去启动。 可将此属性设置为 **true** 以暂停管道，然后将其设置回 **false** 以重新启动。
      -   **开始**和**结束**时间相差五小时。 切片会每小时生成，因此管道会生成五个切片。
 
-1. 选择命令栏中的“部署”来部署管道。
+1. 选择命令栏上的“部署”来部署管道。
 
 #### <a name="step-5-test-the-pipeline"></a>步骤 5：测试管道
 在此步骤中，将文件拖放到输入文件夹以测试管道。 首先，通过每个输入文件夹对应一个文件的方式来测试管道。
 
 1. 在 Azure 门户的“数据工厂”边栏选项卡中，选择“图示”。
 
-   ![关系图](./media/data-factory-data-processing-using-batch/image10.png)
+   ![图表](./media/data-factory-data-processing-using-batch/image10.png)
 
 1. 在“图示”视图中，双击输入数据集“InputDataset”。
 
@@ -828,7 +828,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. 使用门户查看与切片关联的任务，并查看每个切片在哪些 VM 上运行。 有关详细信息，请参阅[数据工厂和 Batch 集成](#data-factory-and-batch-integration)部分。
 
-1. 输出文件会出现在 blob 存储中 `outputfolder` 中的 `mycontainer` 下。
+1. 输出文件会出现在 blob 存储中 `mycontainer` 中的 `outputfolder` 下。
 
    ![存储中的输出文件](./media/data-factory-data-processing-using-batch/image15.png)
 
@@ -849,7 +849,7 @@ test custom activity Microsoft test custom activity Microsoft
 
     ![运行](./media/data-factory-data-processing-using-batch/image17.png)
 
-1. 切片运行且其状态为“就绪”后，验证此切片的输出文件 (**2015-11-16-01.txt**) 中的内容。 输出文件会出现在 blob 存储中 `outputfolder` 中的 `mycontainer` 下。 该切片的每个文件都应有一个行。
+1. 切片运行且其状态为“就绪”后，验证此切片的输出文件 (**2015-11-16-01.txt**) 中的内容。 输出文件会出现在 blob 存储中 `mycontainer` 中的 `outputfolder` 下。 该切片的每个文件都应有一个行。
 
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-01/file.txt.
@@ -930,11 +930,11 @@ test custom activity Microsoft test custom activity Microsoft
 #### <a name="extend-the-sample"></a>扩展该示例
 可扩展此示例，深入了解数据工厂和 Batch 功能。 例如，若要在不同时间范围处理切片，请执行以下步骤：
 
-1. 在 `inputfolder` 中添加以下子文件夹：2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08 和 2015-11-16-09。 将输入文件放置在这些文件夹中。 将管道结束时间从 `2015-11-16T05:00:00Z` 更改为 `2015-11-16T10:00:00Z`。 在“图示”视图中，双击“InputDataset”，并确认输入切片是否就绪。 双击“OutputDataset”，查看输出切片的状态。 如果其处于“就绪”状态，请检查输出文件夹中的输出文件。
+1. 在 `inputfolder` 中添加以下子文件夹中：2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08 和 2015-11-16-09。 将输入文件放置在这些文件夹中。 将管道结束时间从 `2015-11-16T05:00:00Z` 更改为 `2015-11-16T10:00:00Z`。 在“图示”视图中，双击“InputDataset”，并确认输入切片是否就绪。 双击“OutputDataset”，查看输出切片的状态。 如果其处于“就绪”状态，请检查输出文件夹中的输出文件。
 
-1. 增加或减少**并发**设置，了解其对解决方案性能的影响，尤其是对 Batch 上进行的处理的影响。 有关“并发”设置的详细信息，请参阅“步骤 4：创建和运行含自定义活动的管道”。
+1. 增加或减少**并发**设置，了解其对解决方案性能的影响，尤其是对 Batch 上进行的处理的影响。 有关**并发**设置的详细信息，请参阅“步骤 4：创建和运行带自定义活动的管道”。
 
-1. 创建含较高/较低的**每个 VM 的最大任务数**的池。 若要使用创建的新池，请更新数据工厂解决方案中的 Batch 链接服务。 有关“每个 VM 的最大任务数”设置的详细信息，请参阅“步骤 4：创建和运行含自定义活动的管道”。
+1. 创建含较高/较低的**每个 VM 的最大任务数**的池。 若要使用创建的新池，请更新数据工厂解决方案中的 Batch 链接服务。 有关**每个 VM 的最大任务数**设置的详细信息，请参阅“步骤 4：创建和运行带自定义活动的管道”。
 
 1. 创建带有**自动缩放**功能的 Batch 池。 自动缩放 Batch 池中的计算节点是指动态调整应用程序使用的处理能力。 
 
@@ -964,7 +964,7 @@ test custom activity Microsoft test custom activity Microsoft
 * [Power BI 中的数据刷新](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure 和 Power BI：基本概述](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
-## <a name="references"></a>参考资料
+## <a name="references"></a>参考
 * [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [数据工厂服务简介](data-factory-introduction.md)

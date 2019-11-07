@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂中数据移动的安全注意事项 | Microsoft Docs
+title: Azure 数据工厂中数据移动的安全注意事项
 description: 了解如何为 Azure 数据工厂中的数据移动提供保护。
 services: data-factory
 documentationcenter: ''
@@ -12,26 +12,26 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b425db761375c705d3c810002234a937bac46d78
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 7f18505e02c5d65d21e93759eb5da480c20e2eb3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610166"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682626"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure 数据工厂 - 数据移动的安全注意事项
 
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[数据工厂的数据移动安全注意事项](../data-movement-security-considerations.md)。
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 本文介绍了 Azure 数据工厂中数据移动服务用于保护数据的基本安全基础结构。 Azure 数据工厂管理资源建立在 Azure 安全基础结构上，并使用 Azure 提供的所有可能的安全措施。
 
 在数据工厂解决方案中，可以创建一个或多个数据[管道](data-factory-create-pipelines.md)。 “管道”是共同执行一项任务的活动的逻辑分组。 这些管道位于创建数据工厂的区域。 
 
 尽管数据工厂只能在美国西部、美国东部和北欧区域使用，但数据移动服务可在[全球多个区域](data-factory-data-movement-activities.md#global)使用。 数据工厂服务确保数据不会离开某个地理区域，除非在数据移动服务尚未部署到该区域的情况下，明确指示服务使用备用区域。 
 
-除使用证书加密的云数据存储的链接服务凭据外，Azure 数据工厂本身不存储任何其他数据。 它允许创建数据驱动的工作流，协调[受支持数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)之间的数据移动，以及使用[计算服务](data-factory-compute-linked-services.md)在其他区域或本地环境中处理数据。 它还允许使用编程方式及 UI 机制来 [监视和管理工作流](data-factory-monitor-manage-pipelines.md) 。
+除使用证书加密的云数据存储的链接服务凭据外，Azure 数据工厂本身不存储任何其他数据。 它允许创建数据驱动型工作流，协调[受支持数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)之间的数据移动，以及使用[计算服务](data-factory-compute-linked-services.md)在其他区域或本地环境中处理数据。 它还允许使用编程方式及 UI 机制来 [监视和管理工作流](data-factory-monitor-manage-pipelines.md) 。
 
 使用 Azure 数据工厂的数据移动已获得以下认证：
 -   [HIPAA/HITECH](https://www.microsoft.com/en-us/trustcenter/Compliance/HIPAA)  
@@ -95,10 +95,10 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 - 从 Azure 门户/复制向导通过 HTTPS 使用纯文本（较不安全）。 凭据以纯文本形式传递到本地网关。
 - 使用复制向导中的 JavaScript 加密库。
 - 使用一键式凭据管理器应用。 一键式应用程序在有权访问网关的本地计算机上执行，并为数据存储设置凭据。 此选项与下一选项是最安全的选项。 默认情况下，凭据管理器应用在计算机上使用端口 8050，借助网关确保安全通信。  
-- 使用[AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) PowerShell cmdlet 来加密凭据。 此 cmdlet 使用的证书是配置网关加密凭据所用的证书。 你可以使用此 cmdlet 返回的加密凭据, 并将其添加到 JSON 文件中**connectionString**的**EncryptedCredential**元素中, 该文件与[AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) cmdlet 一起使用, 或在门户中的数据工厂编辑器。 此选项与一键式应用程序是最安全的选项。 
+- 使用[AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) PowerShell cmdlet 来加密凭据。 此 cmdlet 使用的证书是配置网关加密凭据所用的证书。 你可以使用此 cmdlet 返回的加密凭据，并将其添加到 JSON 文件中**connectionString**的**EncryptedCredential**元素中，该文件与[AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) cmdlet 一起使用，或在门户中的数据工厂编辑器。 此选项与一键式应用程序是最安全的选项。 
 
 #### <a name="javascript-cryptography-library-based-encryption"></a>基于 JavaScript 加密库的加密
-可以使用[复制向导](data-factory-copy-wizard.md)中的 [JavaScript 加密库](https://www.microsoft.com/download/details.aspx?id=52439)对数据存储凭据加密。 选择此选项时，复制向导将检索网关的公共密钥，并将其用于加密数据存储凭据。 凭据由网关计算机解密，并受 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 保护。
+可以使用[复制向导](https://www.microsoft.com/download/details.aspx?id=52439)中的 [JavaScript 加密库](data-factory-copy-wizard.md)对数据存储凭据加密。 选择此选项时，复制向导将检索网关的公共密钥，并将其用于加密数据存储凭据。 凭据由网关计算机解密，并受 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 保护。
 
 **支持的浏览器：** IE8、IE9、IE10、IE11、Microsoft Edge 以及最新的 Firefox、Chrome、Opera、Safari 浏览器。 
 
@@ -127,7 +127,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 
 下表基于混合数据移动的源和目标位置的不同组合，总结了相关的网络和网关配置建议。
 
-| Source | 目标 | 网络配置 | 网关设置 |
+| 源 | 目标 | 网络配置 | 网关设置 |
 | ------ | ----------- | --------------------- | ------------- | 
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | IPSec VPN（点到站点或站点到站点） | 网关可以安装在本地或 VNet 中的 Azure 虚拟机 (VM) 上 | 
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | ExpressRoute（私有对等互连） | 网关可以安装在本地或 VNet 中的 Azure VM 上 | 
@@ -150,7 +150,7 @@ IPSec VPN：
 
 下表提供了企业防火墙的出站端口和域要求。
 
-| 域名 | 出站端口 | 描述 |
+| 域名 | 出站端口 | 说明 |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | 用于将网关连接到数据工厂中的数据移动服务 |
 | `*.core.windows.net` | 443 | 使用[暂存复制](data-factory-copy-activity-performance.md#staged-copy)功能时，由网关用于连接到 Azure 存储帐户。 | 
@@ -159,11 +159,11 @@ IPSec VPN：
 | `*.azuredatalakestore.net` | 443 | （可选）目标为 Azure Data Lake Store 时需要 | 
 
 > [!NOTE] 
-> 可能需要按相应数据源的要求在企业防火墙级别管理端口/允许列表域。 此表仅以 Azure SQL 数据库、Azure SQL 数据仓库和 Azure Data Lake Store 为例。   
+> 可能需要按相应数据源的要求在企业防火墙级别管理端口/白名单域。 此表仅以 Azure SQL 数据库、Azure SQL 数据仓库和 Azure Data Lake Store 为例。   
 
 下表提供了 Windows 防火墙的入站端口要求。
 
-| 入站端口 | 描述 | 
+| 入站端口 | 说明 | 
 | ------------- | ----------- | 
 | 8050 (TCP) | 由凭据管理器应用程序用于为网关上的本地数据存储安全地设置凭据。 | 
 
@@ -182,14 +182,14 @@ IPSec VPN：
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-**问题：** 可否在不同的数据工厂之间共享网关？
-**答案：** 我们尚不支持此功能。 我们正致力于解决该问题。
+问题：可否在不同的数据工厂之间共享网关？
+答案：我们尚不支持此功能。 我们正致力于解决该问题。
 
-**问题：** 确保网关正常工作的端口要求是什么？
-**答案：** 网关建立基于 HTTP 的连接，以打开 Internet。 必须打开出站端口 443 和 80，网关才能建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8050。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源/目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和允许列表 IP 地址](#firewall-configurations-and-whitelisting-ip-address-of gateway)部分。 
+问题：确保网关正常工作的端口要求是什么？
+答案：网关建立基于 HTTP 的连接，以打开 Internet。 必须打开出站端口 443 和 80，网关才能建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8050。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源/目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和白名单 IP 地址](#firewall-configurations-and-whitelisting-ip-address-of gateway)部分。 
 
-**问题：** 网关的证书要求是什么？
-**答案：** 当前网关需要凭据管理器应用程序用于安全设置数据存储凭据的证书。 该证书是由网关安装程序创建并配置的自签名证书。 可以改用自己的 TLS/SSL 证书。 有关详细信息，请参阅[一键式凭据管理器应用程序](#click-once-credentials-manager-app)部分。 
+问题：网关的证书要求是什么？
+答案：当前网关需要凭据管理器应用程序用于安全设置数据存储凭据的证书。 该证书是由网关安装程序创建并配置的自签名证书。 可以改用自己的 TLS/SSL 证书。 有关详细信息，请参阅[一键式凭据管理器应用程序](#click-once-credentials-manager-app)部分。 
 
 ## <a name="next-steps"></a>后续步骤
 有关复制活动性能的信息，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。

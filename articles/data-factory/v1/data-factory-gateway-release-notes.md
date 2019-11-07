@@ -1,5 +1,5 @@
 ---
-title: 数据管理网关的发行说明 | Microsoft Docs
+title: 数据管理网关的发行说明
 description: 数据管理网关发行说明
 services: data-factory
 author: nabhishek
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 865bfdae199bca7ebee888be527db239d34511d1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb89ed08b05f9a8f271ceee400bc609881e7048d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486458"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682572"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>数据管理网关的发行说明
 > [!NOTE]
@@ -47,7 +47,7 @@ ms.locfileid: "60486458"
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>增强功能
--   可将 DNS 条目添加到允许列表服务总线，而不是将防火墙中的所有 Azure IP 地址列入允许列表（如果需要）。 在此处了解更多详情。
+-   可将 DNS 条目添加到白名单服务总线，而不是将防火墙中的所有 Azure IP 地址列入允许列表（如果需要）。 在此处了解更多详情。
 -   现在可以向/从最大 4.75 TB（这是块 Blob 支持的最大大小）的单块 Blob 复制数据。 （早期的限制为 195 GB）。
 -   已修复：在复制活动期间解压缩多个小文件时出现的内存不足问题。
 -   已修复：使用幂等性功能从 Document DB 复制到本地 SQL Server 时发生的索引超出范围问题。
@@ -103,7 +103,7 @@ ms.locfileid: "60486458"
 *  支持使用网关配置管理器设置网管的 HTTP 代理。 配置后，可通过 HTTP 代理访问 Azure Blob、Azure 表、Azure Data Lake 和 Document DB。
 *  在从/向 Azure Blob、Azure Data Lake Store、本地文件系统和本地 HDFS 复制数据时，支持对 TextFormat 进行标头处理。
 *  支持从追加 Blob、页 Blob 以及现已支持的块 Blob 复制数据。
-*  引入了一种新的网关状态“在线(受限)”  ，其指示网关主要功能正常工作，但对复制向导的交互操作支持例外。
+*  引入了一种新的网关状态“在线(受限)”，其指示网关主要功能正常工作，但对复制向导的交互操作支持例外。
 *  增强了使用注册密钥注册网关的可靠性。
 
 ## <a name="216040"></a>2.1.6040.
