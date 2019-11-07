@@ -3,18 +3,18 @@ title: Azure 媒体剪辑器入门 | Microsoft 文档
 description: 开始使用 Azure 媒体剪辑器工具，用于基于 AMS 资产生成视频剪辑
 services: media-services
 keywords: 剪辑;子剪辑;编码;媒体
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 51848b9ba4d18b3ac7d652cfbd97cab6b85f2ee8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45ecc81967d6a95f817b10bce7f8396d9379bc94
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466266"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685075"
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>使用 Azure 媒体剪辑器创建剪辑
 本部分介绍开始使用 Azure 媒体剪辑器的基本步骤。 以下部分介绍如何配置 Azure 媒体剪辑器的具体信息。
@@ -98,7 +98,7 @@ var subclipper = new subclipper({
 - `keymap` {OPTIONAL, json object}：允许自定义小组件的键盘快捷方式。 有关详细信息，请参阅[可自定义的键盘快捷方式](media-services-azure-media-clipper-keyboard-shortcuts.md)。
 - `assetsPanelLoaderCallback` {OPTIONAL, promise}：每当用户滚动到窗格底部时，将资产的新页面（异步）加载到资产窗格所调用的回调函数。 有关详细信息，请参阅资产窗格加载程序回调。
 - `height` {OPTIONAL, number}：小组件的总高度（最小高度为 600 px（不含资产窗格）和 850 px（含资产窗格））。
-- `subclippingMode` (OPTIONAL, {'all', 'render', 'filter'})：允许的子剪辑模式。 默认值为全部。
+- `subclippingMode` (OPTIONAL, {'all', 'render', 'filter'})：所允许的子剪辑模式。 默认值为全部。
 - `filterAssetsTypes` (OPTIONAL, bool)：借助 filterAssetsTypes，可以显示/隐藏资产窗格中的筛选器下拉列表。 默认值为 true。
 - `speedLevels` (OPTIONAL, array)：speedLevels 允许为视频播放器设置不同的速度级别，请参阅 [Azure 媒体播放器文档](https://amp.azure.net/libs/amp/latest/docs/#amp.player.playbackspeedoptions)，以了解详细信息。
 - `resetOnJobDone` (OPTIONAL, bool)：当作业成功提交时，resetOnJobDone 允许剪辑器将子剪辑器重置为初始状态。
@@ -108,7 +108,7 @@ var subclipper = new subclipper({
 - `extraLanguages` (OPTIONAL, JSON)：extraLanguages 参数向默认字典添加新语言。 有关详细信息，请参阅[配置本地化](media-services-azure-media-clipper-localization.md)部分。
 
 ## <a name="typescript-definition"></a>TypeScript 定义
-可以在[此处](https://amp.azure.net/libs/amc/latest/azuremediaclipper.d.ts)查看剪辑器的 [TypeScript](https://www.typescriptlang.org/) 定义文件。
+可以在[此处](https://www.typescriptlang.org/)查看剪辑器的 [TypeScript](https://amp.azure.net/libs/amc/latest/azuremediaclipper.d.ts) 定义文件。
 
 ## <a name="azure-media-clipper-api"></a>Azure 媒体剪辑器 API
 本部分介绍剪辑器提供的 API 图面。

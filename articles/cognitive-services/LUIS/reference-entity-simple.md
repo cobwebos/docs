@@ -1,7 +1,7 @@
 ---
 title: 简单实体类型 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 简单实体是描述单个概念的泛型实体，通过机器学习的上下文习得。 由于简单实体通常是名称，例如公司名称、产品名称或其他类别的名称，因此，在使用简单实体时，请添加一个短语列表，以提升所用名称的信号。
+description: 简单实体介绍了机器学习的上下文中的单个概念。 使用简单实体来改善结果时添加短语列表。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2eb3ff847f9bfc162adfb281d2ac1fad6f8c5093
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 27eb4d827c1488b0d051505e62286fd66d6a286b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695136"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671515"
 ---
 # <a name="simple-entity"></a>简单实体 
 
@@ -51,7 +51,7 @@ ms.locfileid: "71695136"
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
 
-如果在查询字符串中设置了 `verbose=false`，则这是 JSON：
+如果在查询字符串中设置 `verbose=false`，则这是 JSON：
 
 ```json
 "entities": {
@@ -88,7 +88,7 @@ This is the JSON if `verbose=true` is set in the query string:
 
 * * * 
 
-|数据对象|实体名称|ReplTest1|
+|数据对象|实体名称|值|
 |--|--|--|
 |简单实体|`Customer`|`bob jones`|
 

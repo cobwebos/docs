@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据仓库的可管理性和监视 - 查询活动、资源利用率 | Microsoft Docs
+title: 可管理性和监视-查询活动，资源利用率
 description: 了解可以使用哪些功能来管理和监视 Azure SQL 数据仓库。 使用 Azure 门户和动态管理视图 (DMV) 来了解数据仓库的查询活动和资源利用率。
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 08/09/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 786ae1f18d52c6763b60f5019ecfe365f1cd540a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 1a210e2622212ed59dfa12f9f9a108c6ffe08714
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71334107"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692896"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>监视 Azure SQL 数据仓库中的资源利用率和查询活动
 Azure SQL 数据仓库在 Azure 门户中提供丰富的监视体验用于洞察数据仓库工作负荷。 建议使用 Azure 门户来监视数据仓库，因为它提供可配置的保持期、警报、建议，并为指标和日志提供可自定义的图表与仪表板。 在门户中，还可与 Operations Management Suite (OMS)、Azure Monitor（日志）等其他 Azure 监视服务集成。这样，不仅可以针对数据仓库，而且还能针对整个 Azure 分析平台提供一体式监视体验，构成一种集成式监视体验。 本文档介绍可在 SQL 数据仓库中使用哪些监视功能来优化和管理分析平台。 
@@ -24,14 +25,14 @@ Azure SQL 数据仓库在 Azure 门户中提供丰富的监视体验用于洞察
 Azure 门户中提供了以下可用于 SQL 数据仓库的指标。 这些指标通过 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics) 显示。
 
 
-| 指标名称             | 描述                                                  | 聚合类型 |
+| 指标名称             | 说明                                                  | 聚合类型 |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | CPU 百分比          | 数据仓库所有节点的 CPU 利用率      | 最大值          |
 | 数据 IO 百分比      | 数据仓库所有节点的 IO 利用率       | 最大值          |
 | 内存百分比       | 数据仓库所有节点的内存利用率 (SQL Server) | 最大值          |
-| 成功的连接  | 数据的成功连接数                 | 总计            |
-| 连接失败      | 数据仓库的失败连接数           | 总计            |
-| 由防火墙阻止     | 登录数据仓库受阻次数     | 总计            |
+| 成功的连接数  | 数据的成功连接数                 | 总计            |
+| 失败的连接数      | 数据仓库的失败连接数           | 总计            |
+| 被防火墙阻止     | 登录数据仓库受阻次数     | 总计            |
 | DWU 限制               | 数据仓库的服务级别目标                | 最大值          |
 | DWU 百分比          | CPU 百分比与数据 IO 百分比之间的最大值        | 最大值          |
 | 已用的 DWU                | DWU 限制 * DWU 百分比                                   | 最大值          |

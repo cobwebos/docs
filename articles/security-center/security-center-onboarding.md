@@ -1,5 +1,5 @@
 ---
-title: 载入到 Azure 安全中心标准层以增强安全性 | Microsoft Docs
+title: 标准层的增强安全-Azure 安全中心
 description: " 了解如何载入到 Azure 安全中心标准层以增强安全性。 "
 services: security-center
 documentationcenter: na
@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: memildin
-ms.openlocfilehash: 01cc625767cbf437031f503cf4b0d4dc59b62e08
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: db74415d3c6c5f6636a150d212bc2bc3d790fbec
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996299"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686384"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>载入到 Azure 安全中心标准层以增强安全性
-升级到安全中心标准层后，可以将增强的安全管理和威胁防护功能用于混合云工作负载。  可以免费试用标准层。 请参阅安全中心[定价页](https://azure.microsoft.com/pricing/details/security-center/)了解详细信息。
+升级到安全中心标准层后，可以将增强的安全管理和威胁防护功能用于混合云工作负载。 可以免费试用标准层。 请参阅安全中心[定价页](https://azure.microsoft.com/pricing/details/security-center/)了解详细信息。
 
 安全中心标准层包括：
 
 - 混合安全 – 在所有本地和云工作负载上获得统一的安全视图。 应用安全策略并持续评估混合云工作负载的安全性，确保符合安全标准。 收集、搜索并分析来自各种来源（包括防火墙和其他合作伙伴解决方案）的安全数据。
-- 高级威胁检测 - 使用高级分析和 Microsoft Intelligent Security Graph，获得针对不断演变的网络攻击的优势。  利用内置行为分析和机器学习来识别攻击和零时差攻击。 监视网络、计算机和云服务是否出现有即将来袭的攻击和攻破后活动。 使用交互工具和上下文威胁智能简化调查。
-- 访问和应用程序控件 - 通过应用适合特定工作负载且由机器学习提供支持的允许列表建议，阻止恶意软件和其他不需要的应用程序。 通过对 Azure VM 上管理端口的实时控制访问减小网络攻击面，显著减小在暴力和其他网络攻击下的曝光面。
+- 高级威胁检测 - 使用高级分析和 Microsoft Intelligent Security Graph，获得针对不断演变的网络攻击的优势。 利用内置行为分析和机器学习来识别攻击和零时差攻击。 监视网络、计算机和云服务是否出现有即将来袭的攻击和攻破后活动。 使用交互工具和上下文威胁智能简化调查。
+- 访问和应用程序控件 - 通过应用适合特定工作负载且由机器学习提供支持的白名单建议，阻止恶意软件和其他不需要的应用程序。 通过对 Azure VM 上管理端口的实时控制访问减小网络攻击面，显著减小在暴力和其他网络攻击下的曝光面。
 
-## <a name="detecting-unprotected-resources"></a>检测未受保护的资源     
+## <a name="detecting-unprotected-resources"></a>检测未受保护的资源
 安全中心将自动检测未启用安全中心标准层的所有 Azure 订阅或工作区。 其中包括使用安全中心免费层的 Azure 订阅和未启用安全解决方案的工作区。
 
 你可以将整个 Azure 订阅升级到标准层，这会由订阅中所有受支持的资源继承。 将标准层应用到工作区适用于向工作区报告的所有资源。
 
 > [!NOTE]
-> 你可能希望管理成本，并通过将解决方案的应用范围限制为特定的一组代理来限制为解决方案收集的数据量。 [解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)使用户可以向解决方案应用一个范围，并可将目标设定为工作区中的一个计算机子集。  如果使用解决方案目标功能，安全中心会将工作区列为没有解决方案。
+> 你可能希望管理成本，并通过将解决方案的应用范围限制为特定的一组代理来限制为解决方案收集的数据量。 [解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)使用户可以向解决方案应用一个范围，并可将目标设定为工作区中的一个计算机子集。 如果使用解决方案目标功能，安全中心会将工作区列为没有解决方案。
 >
 >
 
@@ -54,14 +54,13 @@ ms.locfileid: "71996299"
    > [!NOTE]
    > 安全中心的免费功能仅适用于 Azure Vm 和 VMSS。 免费层功能不会应用到非 Azure 计算机。 如果选择 "标准"，则标准功能将应用于向工作区报告的所有 Azure Vm、VM 规模集和非 Azure 计算机。 建议应用标准层，以便为 Azure 和非 Azure 资源提供高级安全功能。
    >
-   >
 
 ## <a name="onboard-non-azure-computers"></a>载入非 Azure 计算机
 安全中心可以监视非 Azure 计算机的安全状态，但首先需要载入这些资源。 可以从“入门”边栏选项卡或“计算”边栏选项卡添加非 Azure 计算机。 我们将逐步介绍这两种方法。
 
 ### <a name="add-new-non-azure-computers-from-getting-started"></a>从“入门”添加新的非 Azure 计算机
 
-1. 返回到“入门”。   
+1. 返回到“入门”。
 2. 选择“入门”选项卡。
 
    ![非 Azure](./media/security-center-onboarding/non-azure.png)
@@ -84,7 +83,7 @@ ms.locfileid: "71996299"
    > [!NOTE]
    > OMS 工作区现在称为 Log Analytics 工作区。
 3. 在“OMS 工作区”下，输入工作区的相关信息。
-4. 在“OMS 工作区”下，选择“确定”。  选择“确定”后，将获取一个用于下载 Windows 或 Linux 代理的链接和工作区 ID 的密钥（用于配置此代理）。
+4. 在“OMS 工作区”下，选择“确定”。 选择“确定”后，将获取一个用于下载 Windows 或 Linux 代理的链接和工作区 ID 的密钥（用于配置此代理）。
 5. 在“安全和审核”下，选择“确定”。
 
 **选择现有的工作区并添加计算机**
@@ -104,10 +103,10 @@ ms.locfileid: "71996299"
 
    ![添加计算机][7]
 
-   “直接代理”边栏选项卡会提供一个用于下载 Windows 或 Linux 代理的链接，以及要在配置此代理时使用的工作区 ID 和密钥。   
+   “直接代理”边栏选项卡会提供一个用于下载 Windows 或 Linux 代理的链接，以及要在配置此代理时使用的工作区 ID 和密钥。
 
 ## <a name="next-steps"></a>后续步骤
-在本文中，你已了解如何载入 Azure 和非 Azure 资源，以便利用安全中心的高级安全功能的优势。  若要对载入资源执行更多操作，请参阅
+在本文中，你已了解如何载入 Azure 和非 Azure 资源，以便利用安全中心的高级安全功能的优势。 若要对载入资源执行更多操作，请参阅
 
 - [启用数据收集](security-center-enable-data-collection.md)
 - [威胁智能报告](security-center-threat-report.md)

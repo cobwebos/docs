@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库托管实例时区 | Microsoft Docs
+title: Azure SQL 数据库托管实例时区 "
 description: 了解有关 Azure SQL 数据库托管实例时区的具体信息
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 09/03/2019
-ms.openlocfilehash: e81ae2fc563300402339fc40893fbbdbbd326dcd
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a578c626cd1edd4a3f7474e59c2e795be2e3c121
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233240"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687849"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Azure SQL 数据库托管实例中的时区
 
@@ -83,14 +83,14 @@ ms.locfileid: "70233240"
 
 ### <a name="point-in-time-restore"></a>时间点还原
 
-执行时间点还原时，要还原到的时间将解释为 UTC 时间。 这样, 就可以避免因夏令时而产生的任何歧义, 并避免其发生更改。
+执行时间点还原时，要还原到的时间将解释为 UTC 时间。 这样就可避免由于夏令时及其潜在变化而产生的任何歧义。
 
 ### <a name="auto-failover-groups"></a>自动故障转移组
 
 不强制要求在故障转移组中的主要和辅助实例之间使用相同的时区，但我们强烈建议这样做。
 
   >[!WARNING]
-  > 我们强烈建议对故障转移组中的主要和辅助实例使用相同的时区。 由于某些罕见用例不会强制实施跨主实例和辅助实例的相同时区。 必须知道，在手动或自动故障转移时，辅助实例将保留其原始时区。
+  > 我们强烈建议对故障转移组中的主要和辅助实例使用相同的时区。 由于某些罕见的用例，不强制要求在主要实例和辅助实例之间使用相同的时区。 必须知道，在手动或自动故障转移时，辅助实例将保留其原始时区。
 
 ## <a name="limitations"></a>限制
 
@@ -149,7 +149,7 @@ ms.locfileid: "70233240"
 | UTC | (UTC) 协调世界时 |
 | GMT 标准时间 | (UTC+00:00) 都柏林，爱丁堡，里斯本，伦敦 |
 | 格林威治标准时间 | (UTC+00:00) 蒙罗维亚，雷克雅未克 |
-| 西欧 标准时间 | (UTC+01:00) 阿姆斯特丹，柏林，伯尔尼，罗马，斯德哥尔摩，维也纳 |
+| 中非 标准时间 | (UTC+01:00) 阿姆斯特丹，柏林，伯尔尼，罗马，斯德哥尔摩，维也纳 |
 | 中欧标准时间 | (UTC+01:00) 贝尔格莱德，布拉迪斯拉发，布达佩斯，卢布尔雅那，布拉格 |
 | 罗马标准时间 | (UTC+01:00) 布鲁塞尔，哥本哈根，马德里，巴黎 |
 | 摩洛哥标准时间 | (UTC+01:00) 卡萨布兰卡 |
@@ -193,20 +193,20 @@ ms.locfileid: "70233240"
 | 印度标准时间 | (UTC+05:30) 钦奈，加尔各答，孟买，新德里 |
 | 斯里兰卡标准时间 | (UTC+05:30) 斯里加亚渥登普拉 |
 | 尼泊尔标准时间 | (UTC+05:45) 加德满都 |
-| 中亚标准时间 | (UTC+06:00) 阿斯塔纳 |
+| 亚标准时间 | (UTC+06:00) 阿斯塔纳 |
 | 孟加拉标准时间 | (UTC+06:00) 达卡 |
 | 鄂木斯克标准时间 | (UTC+06:00) 鄂木斯克 |
 | 缅甸标准时间 | (UTC+06:30) 仰光 |
 | 东南亚标准时间 | (UTC+07:00) 曼谷，河内，雅加达 |
 | 阿尔泰标准时间 | (UTC+07:00) 巴尔瑙尔，戈尔诺-阿尔泰斯克 |
-| 西 蒙古标准时间 | (UTC+07:00) 科布多 |
+| 中非 蒙古标准时间 | (UTC+07:00) 科布多 |
 | 北亚标准时间 | (UTC+07:00) 克拉斯诺亚尔斯克 |
 | 中北 亚标准时间 | (UTC+07:00) 新西伯利亚 |
 | 托木斯克标准时间 | (UTC+07:00) 托木斯克 |
 | 中国标准时间 | (UTC+08:00) 北京，重庆，香港特别行政区，乌鲁木齐 |
 | 东北亚标准时间 | (UTC+08:00) 伊尔库次克 |
 | 新加坡标准时间 | (UTC+08:00) 吉隆坡，新加坡 |
-| 西 澳大利亚标准时间 | (UTC+08:00) 珀斯 |
+| 中非 澳大利亚标准时间 | (UTC+08:00) 珀斯 |
 | 台北标准时间 | (UTC+08:00) 台北 |
 | 乌兰巴托标准时间 | (UTC+08:00) 乌兰巴托 |
 | 澳大利亚中西部标准时间 | (UTC+08:45) 尤克拉 |
@@ -240,7 +240,7 @@ ms.locfileid: "70233240"
 | 萨摩亚群岛标准时间 | (UTC+13:00) 萨摩亚 |
 | 莱恩群岛标准时间 | (UTC+14:00) 基里巴斯岛 |
 
-## <a name="see-also"></a>请参阅 
+## <a name="see-also"></a>另请参阅 
 
 - [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
 - [AT TIME ZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)

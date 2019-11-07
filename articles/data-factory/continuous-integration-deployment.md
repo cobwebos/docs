@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 数据工厂中进行持续集成和交付 | Microsoft Docs
+title: Azure 数据工厂中的持续集成和交付
 description: 了解如何使用持续集成和交付将数据工厂管道从一个环境（开发、测试、生产）移到另一个环境。
 services: data-factory
 documentationcenter: ''
@@ -11,18 +11,18 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: ff1d34852890a8d5005153ebdfa2fa0f9749d129
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7c5c1e91e97087bf28b03629659e5194f67c22b3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030623"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680027"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>在 Azure 数据工厂中进行持续集成和交付 (CI/CD)
 
 ## <a name="overview"></a>概述
 
-持续集成是这样一种做法：自动地尽早测试对代码库所做的每项更改。 在测试之后进行的持续交付可将更改推送到过渡或生产系统，而测试发生在持续集成期间。
+持续集成是这样一种做法：自动地尽早测试对代码库所做的每项更改。 持续交付遵循在持续集成期间进行的测试，并将更改推送到过渡或生产系统。
 
 在 Azure 数据工厂中，持续集成 & 提供意味着将数据工厂管道从一个环境（开发、测试、生产）移到另一个环境。 若要 & 传递进行持续集成，你可以将数据工厂 UX 集成与 Azure 资源管理器模板结合使用。 数据工厂 UX 可以从**ARM 模板**下拉列表中生成资源管理器模板。 选择“导出 ARM 模板”时，门户会为数据工厂生成资源管理器模板，并生成一个包含所有连接字符串和其他参数的配置文件。 然后，你必须为每个环境（开发、测试、生产）创建一个配置文件。 所有环境的主资源管理器模板文件始终相同。
 
@@ -118,15 +118,15 @@ ms.locfileid: "72030623"
 
     d.  在 "操作" 下拉列表中，选择 "**创建或更新资源组**"。
 
-    e.  在“替代模板参数”字段旁边 选择“…”。 通过为[每个环境创建资源管理器模板](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment)中的 "**导入 ARM 模板**" 步骤，浏览 Azure 资源管理器模板创建。 在 `adf_publish` 分支的文件夹 `<FactoryName>` 中查找该文件。
+    e.  在“模板”字段中 选择“…”。 通过为[每个环境创建资源管理器模板](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment)中的 "**导入 ARM 模板**" 步骤，浏览 Azure 资源管理器模板创建。 在 `<FactoryName>` 分支的文件夹 `adf_publish` 中查找该文件。
 
-    f.  在“替代模板参数”字段旁边 在 "**模板参数" 字段中。** 选择参数文件。 选择正确的文件，具体取决于你是创建了副本，还是使用默认的 *ARMTemplateParametersForFactory.json* 文件。
+    f.  在“模板”字段中 在 "**模板参数" 字段中。** 选择参数文件。 选择正确的文件，具体取决于你是创建了副本，还是使用默认的 *ARMTemplateParametersForFactory.json* 文件。
 
-    g.  在“替代模板参数”字段旁边 选择“…”，然后填充目标数据工厂的信息。 对于来自密钥保管库的凭据，请在双引号之间输入密钥名称。 例如，如果密码的名称为 `cred1`，请输入 @no__t 1for 其值。
+    g.  在“模板”字段中 选择“…”，然后填充目标数据工厂的信息。 对于来自密钥保管库的凭据，请在双引号之间输入密钥名称。 例如，如果密码的名称为 `cred1`，请输入 `"$(cred1)"`作为其值。
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-    h. 选择“增量”部署模式。
+    h.如果该值不存在，请单击“添加行”。 选择“增量”部署模式。
 
     > [!WARNING]
     > 如果选择 "**完成**部署模式"，则可能会删除现有资源，其中包括未在资源管理器模板中定义的目标资源组中的所有资源。
@@ -196,7 +196,7 @@ ms.locfileid: "72030623"
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)
 
-部署后，可以执行类似的 @no__t 步骤来重新启动触发器。
+部署后，可以执行类似的 `Start-AzDataFactoryV2Trigger` 步骤来重新启动触发器。
 
 > [!IMPORTANT]
 > 在持续集成和部署方案中，不同环境之间的集成运行时类型必须相同。 例如，如果在开发环境中有自承载集成运行时 (IR)，则在测试和生产等其他环境中同一 IR 的类型必须为自承载。 同样，如果跨多个阶段共享集成运行时，则必须在所有环境（如开发、测试和生产）中将集成运行时配置为“链接自承载”。
@@ -335,14 +335,14 @@ else {
 
 下面是在创作自定义参数文件时使用的一些准则。 该文件由每个实体类型的部分组成：触发器、管道、链接服务、数据集、集成运行时等。
 * 输入相关实体类型下的属性路径。
-* 将属性名称设置为 "\*" 时，表示要将其下的所有属性参数化（仅向下到第一个级别，而不是以递归方式）。 你还可以向此提供任何例外。
-* 将属性的值设置为字符串时，表示你希望参数化该属性。 使用 @ no__t-0 格式。
-   *  `<action>` @ no__t-1can 是以下字符之一：
-      * `=` @ no__t-1means 保持当前值为参数的默认值。
-      * `-` @ no__t-1means 不保留参数的默认值。
-      * `|` @ no__t-1 来自连接字符串或键的 Azure Key Vault 的密码的特例。
-   * `<name>` @ no__t-1 参数的名称。 如果为空，则采用属性的名称。 如果值以 @no__t 0 字符开头，则名称将被缩短。 例如，`AzureStorage1_properties_typeProperties_connectionString` 会缩短为 `AzureStorage1_connectionString`。
-   * `<stype>` @ no__t-1 参数的类型。 如果 @ no__t-0 @ no__t-1 空白，则默认类型为 `string`。 支持的值： `string`、`bool`、`number`、`object` 和 @no__t。
+* 将属性名称设置为 "\*" 时，指示要参数化其下的所有属性（仅向下到第一级，而不是递归）。 你还可以向此提供任何例外。
+* 将属性的值设置为字符串时，表示你希望参数化该属性。 使用格式 `<action>:<name>:<stype>`。
+   *  `<action>` 可以是以下字符之一：
+      * `=` 意味着保留当前值作为参数的默认值。
+      * `-` 表示不保留参数的默认值。
+      * 对于连接字符串或密钥，`|` 是 Azure Key Vault 机密的特殊情况。
+   * `<name>` 是参数的名称。 如果为空，则采用属性的名称。 如果值以 `-` 字符开头，则将缩短名称。 例如，`AzureStorage1_properties_typeProperties_connectionString` 会缩短为 `AzureStorage1_connectionString`。
+   * `<stype>` 是参数的类型。 如果 `<stype>` 为空白，则默认类型为 `string`。 支持的值： `string`、`bool`、`number`、`object`和 `securestring`。
 * 如果在定义文件中指定数组，则表明模板中的匹配属性是数组。 数据工厂使用数组的 Integration Runtime 对象中指定的定义来循环访问数组中的所有对象。 第二个对象（一个字符串）成为属性的名称，这用作每次遍历的参数的名称。
 * 不能有特定于资源实例的定义。 任何定义都适用于该类型的所有资源。
 * 默认情况下，所有安全字符串（如 Key Vault 机密）和安全字符串（如连接字符串、密钥和令牌）都是参数化的。
@@ -415,26 +415,26 @@ else {
 #### <a name="pipelines"></a>管道
     
 * Path activity/typeProperties/waitTimeInSeconds 中的任何属性均已参数化。 管道中具有名为 `waitTimeInSeconds` 的代码级属性的任何活动（例如，`Wait` 活动）都被参数化为数字，具有默认名称。 但资源管理器模板中没有默认值。 在资源管理器部署过程中，它将是必需的输入。
-* 同样，名为 `headers` 的属性（例如，在 @no__t 1 活动中）使用类型 `object` （JObject）进行参数化。 它有一个默认值，该值与源工厂中的值相同。
+* 同样，名为 `headers` 的属性（例如，在 `Web` 活动中）使用类型 `object` （JObject）进行参数化。 它有一个默认值，该值与源工厂中的值相同。
 
 #### <a name="integrationruntimes"></a>IntegrationRuntimes
 
-* 路径 `typeProperties` 下的所有属性均由其各自的默认值参数化。 例如，" **IntegrationRuntimes** " 类型 "属性" 下有两个属性： `computeProperties` 和 `ssisProperties`。 这两个属性类型都是用各自的默认值和类型（对象）创建的。
+* 路径 `typeProperties` 下的所有属性均由其各自的默认值参数化。 例如，" **IntegrationRuntimes** " 类型 "属性： `computeProperties`" 和 "`ssisProperties`" 下有两个属性。 这两个属性类型都是用各自的默认值和类型（对象）创建的。
 
-#### <a name="triggers"></a>Triggers
+#### <a name="triggers"></a>触发器
 
-* 在 `typeProperties` 下，参数化两个属性。 第一个是 @no__t 0，它指定为具有默认值，并且的类型为 @ no__t-1。 它的默认参数名称为 `<entityName>_properties_typeProperties_maxConcurrency`。
-* @No__t 的属性也是参数化的。 在该级别下，将指定该级别的所有属性指定为字符串，并将默认值和参数名称指定为参数。 例外情况是 `interval` 属性（参数化为数字类型），参数名称后缀 `<entityName>_properties_typeProperties_recurrence_triggerSuffix`。 同样，`freq` 属性为字符串，参数化为字符串。 但是，不使用默认值参数化 `freq` 属性。 名称将被缩短并带有后缀。 例如， `<entityName>_freq` 。
+* 在 `typeProperties` 下，参数化两个属性。 第一个是 `maxConcurrency`，它指定为具有默认值，并且为`string`类型。 它的默认参数名称为 `<entityName>_properties_typeProperties_maxConcurrency`。
+* `recurrence` 属性也是参数化的。 在该级别下，将指定该级别的所有属性指定为字符串，并将默认值和参数名称指定为参数。 例外情况是 `interval` 属性（参数化为数字类型），参数名称后缀 `<entityName>_properties_typeProperties_recurrence_triggerSuffix`。 同样，`freq` 属性为字符串，参数化为字符串。 但是，不使用默认值参数化 `freq` 属性。 名称将被缩短并带有后缀。 例如，`<entityName>_freq`。
 
-#### <a name="linkedservices"></a>LinkedServices
+#### <a name="linkedservices"></a>Linkedservices.json
 
 * 链接服务是唯一的。 由于链接服务和数据集具有各种类型，因此你可以提供特定于类型的自定义。 在此示例中，所有类型的链接服务 `AzureDataLakeStore`，将应用特定的模板，并且所有其他模板（通过 \*）将应用不同的模板。
-* @No__t-0 属性将参数化为 @no__t 1 值，它不会有默认值，并且它将具有一个带有后缀 `connectionString` 后缀的短型参数名称。
-* 属性 `secretAccessKey` 应为 `AzureKeyVaultSecret` （例如，@no__t 2 链接服务）。 它自动参数化为 Azure Key Vault 机密，并从配置的密钥保管库提取。 还可以参数化密钥保管库本身。
+* `connectionString` 属性将参数化为 `securestring` 值，它不会有默认值，并且它将具有一个带有后缀 `connectionString`的短型参数名称。
+* 属性 `secretAccessKey` `AzureKeyVaultSecret` （例如，`AmazonS3` 链接的服务）。 它自动参数化为 Azure Key Vault 机密，并从配置的密钥保管库提取。 还可以参数化密钥保管库本身。
 
 #### <a name="datasets"></a>数据集
 
-* 尽管特定于类型的自定义可用于数据集，但可以提供配置，而无需明确 @no__t 旁1/-0 级配置。 在上面的示例中，参数化 @no__t 下的所有数据集属性。
+* 尽管特定于类型的自定义可用于数据集，但可以提供配置，而无需显式配置 \*级别。 在上面的示例中，`typeProperties` 中的所有数据集属性都进行了参数化。
 
 ### <a name="default-parameterization-template"></a>默认参数化模板
 

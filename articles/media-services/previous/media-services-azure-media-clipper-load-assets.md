@@ -3,18 +3,18 @@ title: 将资产加载到 Azure 媒体剪辑器 | Microsoft Docs
 description: 将资产加载到 Azure 媒体剪辑器的步骤
 services: media-services
 keywords: 剪辑;子剪辑;编码;媒体
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: ec8cd06be78bbd8df0bca390696e736c3a6ee075
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66b4ca5b2859dd306f6eb1c669a07840189f53d5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465875"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685038"
 ---
 # <a name="loading-assets-into-azure-media-clipper"></a>将资产加载到 Azure 媒体剪辑器  
 
@@ -28,9 +28,9 @@ ms.locfileid: "61465875"
 在这种情况下，将一组静态资产传递到剪辑器。 每个资产都包括 AMS 资产/筛选器 ID、名称、已发布的流式处理 URL。 如果适用，则可以传入内容保护身份验证令牌或一组缩略图 URL。 如果传入，缩略图将填充到界面中。 在资产库为静态且较小的情况下，可以传入库中每个资产的资产协定。
 
 > [!NOTE]
-> 将资产静态加载到剪辑器时，资产会直接添加到时间线，且不呈现资产窗格   。 第一个资产添加到时间线，其余资产堆叠在时间线右侧。
+> 将资产静态加载到剪辑器时，资产会直接添加到时间线，且不呈现资产窗格。 第一个资产添加到时间线，其余资产堆叠在时间线右侧。
 
-若要加载静态资产库，请使用 load 方法，传入每个资产的 JSON 表示形式  。 以下代码示例举例说明一个资产的 JSON 表示形式。
+若要加载静态资产库，请使用 load 方法，传入每个资产的 JSON 表示形式。 以下代码示例举例说明一个资产的 JSON 表示形式。
 
 ```javascript
 var assets = [
@@ -126,7 +126,7 @@ subclipper.ready(function () {
 或者，可以通过回调动态加载资产。 在资产为动态生成或库较大的情况下，应通过回调进行加载。 若要动态加载资产，则必须实现可选的 onLoadAssets 回调函数。 此函数在初始化时传递到剪辑器。 已解析资产应遵循与静态加载资产相同的协定。 以下代码示例举例说明方法签名、预期输入和预期输出。
 
 > [!NOTE]
-> 将资产动态加载到剪辑器时，资产呈现在“资产选择面板”中  。
+> 将资产动态加载到剪辑器时，资产呈现在“资产选择面板”中。
 
 ```javascript
 // Video Assets Pane Callback

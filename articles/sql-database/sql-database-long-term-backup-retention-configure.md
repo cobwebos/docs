@@ -1,5 +1,5 @@
 ---
-title: 管理 Azure SQL 数据库长期备份保留 | Microsoft Docs
+title: '管理 Azure SQL 数据库长期备份保留 '
 description: 了解如何在 SQL Azure 存储中存储自动备份，以及如何还原它们
 services: sql-database
 ms.service: sql-database
@@ -12,16 +12,16 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 08/21/2019
-ms.openlocfilehash: b90e364442e46269fc949ef4aecd9a756cff5595
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 32eb021ecd584e0b1b734abb236f383a32b79131
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904620"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689549"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL 数据库长期备份保留
 
-在 Azure SQL 数据库中, 可以使用长期[备份保留](sql-database-long-term-retention.md)策略 (LTR) 配置单个或共用数据库, 以将数据库备份自动保留在单独的 Azure Blob 存储容器中, 最长可达10年。 然后，可以通过 Azure 门户或 PowerShell 使用这些备份来恢复数据库。
+在 Azure SQL 数据库中，可以使用[长期备份保留](sql-database-long-term-retention.md)策略 (LTR) 配置单一数据库或共用数据库，以自动将数据库备份保留在单独的 Azure Blob 存储容器中最多 10 年。 然后，可以通过 Azure 门户或 PowerShell 使用这些备份来恢复数据库。
 
 > [!IMPORTANT]
 > [Azure SQL 数据库托管实例](sql-database-managed-instance.md)目前不支持长期备份保留。
@@ -61,7 +61,7 @@ ms.locfileid: "69904620"
 
 4. 选择要从中进行还原的备份，然后指定新的数据库名称。
 
-   ![还原 (restore)](./media/sql-database-long-term-retention/ltr-restore.png)
+   ![还原](./media/sql-database-long-term-retention/ltr-restore.png)
 
 5. 单击“确定”将数据库从 Azure SQL 存储中的备份还原到新数据库。
 
@@ -86,26 +86,26 @@ ms.locfileid: "69904620"
 
 ### <a name="rbac-roles-to-manage-long-term-retention"></a>用于管理长期保留的 RBAC 角色
 
-对于**AzSqlDatabaseLongTermRetentionBackup**和**AzSqlDatabase**, 你将需要具有以下角色之一:
+对于 **Get-AzSqlDatabaseLongTermRetentionBackup** 和 **Restore-AzSqlDatabase**，需要具有以下角色之一：
 
-- 订阅所有者角色或
-- SQL Server 参与者角色或
-- 具有以下权限的自定义角色:
+- “订阅所有者”角色或
+- “SQL Server 参与者”角色或
+- 具有以下权限的自定义角色：
 
-   Sql-dmo/位置/longTermRetentionBackups/read Sql-dmo/位置/longTermRetentionServers/longTermRetentionBackups/read sql-dmo/位置/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/read
+   Microsoft.Sql/locations/longTermRetentionBackups/read  Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionBackups/read  Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/read
  
-对于**AzSqlDatabaseLongTermRetentionBackup**, 你将需要具有以下角色之一:
+对于 **Remove-AzSqlDatabaseLongTermRetentionBackup**，需要具有以下角色之一：
 
-- 订阅所有者角色或
-- 具有以下权限的自定义角色:
+- “订阅所有者”角色或
+- 具有以下权限的自定义角色：
 
    Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
 
 
 > [!NOTE]
-> SQL Server 参与者角色没有删除 LTR 备份的权限。
+> “SQL Server 参与者”角色没有删除 LTR 备份的权限。
 
-可以在*订阅*或*资源组*作用域中授予 RBAC 权限。 但是, 若要访问属于已删除服务器的 LTR 备份, 必须在该服务器的*订阅*作用域中授予权限。
+可以在“订阅”或“资源组”范围内授予 RBAC 权限。 但是，若要访问属于已删除服务器的 LTR 备份，必须在该服务器的*订阅*作用域中授予权限。
 
 
 ### <a name="create-an-ltr-policy"></a>创建 LTR 策略
@@ -192,7 +192,7 @@ $ltrBackup = $ltrBackups[0]
 Remove-AzSqlDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId
 ```
 > [!IMPORTANT]
-> 删除 LTR 备份操作是不可逆的。 若要在删除服务器后删除 LTR 备份, 则必须具有订阅范围权限。 可以通过筛选“删除长期保留备份”操作来在 Azure Monitor 中设置有关每次删除的通知。 活动日志包含有关发出请求的人员和时间的信息。 有关详细说明，请参阅[创建活动日志警报](../azure-monitor/platform/alerts-activity-log.md)。
+> 删除 LTR 备份操作是不可逆的。 若要在删除服务器后删除 LTR 备份，必须具有“订阅”范围权限。 可以通过筛选“删除长期保留备份”操作来在 Azure Monitor 中设置有关每次删除的通知。 活动日志包含有关发出请求的人员和时间的信息。 有关详细说明，请参阅[创建活动日志警报](../azure-monitor/platform/alerts-activity-log.md)。
 >
 
 ### <a name="restore-from-ltr-backups"></a>从 LTR 备份进行还原
@@ -204,7 +204,7 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 ```
 
 > [!IMPORTANT]
-> 若要在删除服务器后从 LTR 备份进行还原, 则必须具有范围内服务器订阅的权限, 并且该订阅必须处于活动状态。 还必须省略 ResourceGroupName 参数。  
+> 若要在删除服务器后从 LTR 备份进行还原，必须具有服务器订阅范围内的权限，并且该订阅必须处于活动状态。 还必须省略可选的 -ResourceGroupName 参数。  
 >
 
 > [!NOTE]
@@ -212,5 +212,5 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解服务生成的自动备份，请参阅 [自动备份](sql-database-automated-backups.md)
+- 若要了解服务生成的自动备份，请参阅[自动备份](sql-database-automated-backups.md)
 - 若要了解长期备份保留，请参阅[长期备份保留](sql-database-long-term-retention.md)

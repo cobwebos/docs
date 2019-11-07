@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库和数据仓库网络访问控制 | Microsoft Docs
+title: Azure SQL 数据库和数据仓库网络访问控制
 description: 用于管理访问及配置单一数据库或共用数据库的 Azure SQL 数据库和数据仓库网络访问控制的概述。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: b2c1f01e53cfe41b72e3e079059c66e4e2409012
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: deee668c3597047a5d5f0fd153626916c3fd8517
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703276"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687711"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL 数据库和数据仓库网络访问控制
 
@@ -79,13 +79,13 @@ Azure SQL 数据库具有数据同步功能，可使用 Azure IP 连接到数据
  ### <a name="azure-networking-terminology"></a>Azure 网络术语  
 在了解虚拟网络防火墙规则时，请注意以下 Azure 网络术语
 
-**虚拟网络：** 可以让虚拟网络与 Azure 订阅相关联 
+**虚拟网络：** 你可以具有与你的 Azure 订阅关联的虚拟网络 
 
-**子网：** 虚拟网络包含**子网**。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
+**子网:** 虚拟网络包含子网。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
 
-**虚拟网络服务终结点：** [虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d] 是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。
+**虚拟网络服务终结点：** [虚拟网络服务终结点] [649d] 是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。
 
-**虚拟网络规则：** 适用于 SQL 数据库服务器的虚拟网络规则是一个子网，列在 SQL 数据库服务器的访问控制列表 (ACL) 中。 子网必须包含“Microsoft.Sql”类型名称才会将其列在 SQL 数据库的 ACL 中。 虚拟网络规则要求 SQL 数据库服务器接受来自子网上所有节点的通信。
+虚拟网络规则：适用于 SQL 数据库服务器的虚拟网络规则是一个子网，列在 SQL 数据库服务器的访问控制列表 (ACL) 中。 子网必须包含“Microsoft.Sql”类型名称才会将其列在 SQL 数据库的 ACL 中。 虚拟网络规则要求 SQL 数据库服务器接受来自子网上所有节点的通信。
 
 
 ## <a name="ip-vs-virtual-network-firewall-rules"></a>IP 与虚拟网络防火墙规则
@@ -107,7 +107,7 @@ Azure SQL 数据库具有数据同步功能，可使用 Azure IP 连接到数据
 
 - 有关从开源或第三方应用程序连接到 Azure SQL 数据库的帮助，请参阅 [SQL 数据库的客户端快速入门代码示例](https://msdn.microsoft.com/library/azure/ee336282.aspx)。
 
-- 有关可能需要打开的其他端口的信息，请参阅 **SQL 数据库：外部与内部**部分（在[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)中）
+- 有关可能需要打开的其他端口的信息，请参阅**用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口**中的 [SQL 数据库：外部与内部](sql-database-develop-direct-route-ports-adonet-v12.md)部分
 
 - 有关 Azure SQL 数据库的连接概述，请参阅 [Azure SQL 连接体系结构](sql-database-connectivity-architecture.md)
 

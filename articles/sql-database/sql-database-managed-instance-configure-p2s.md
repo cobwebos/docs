@@ -1,5 +1,5 @@
 ---
-title: 配置 P2S - Azure SQL 数据库托管实例 | Microsoft Docs
+title: '配置 P2S-Azure SQL 数据库托管实例 '
 description: 使用本地客户端计算机的点到站点连接，通过 SQL Server Management Studio 连接到 Azure SQL 数据库托管实例。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 3ba5190050d45385ad17a87f6dce88ffd601e83d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3b3a0ce28c4a936e185ac5f07ba3810c93f4c866
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567688"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689409"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>快速入门：配置从本地到 Azure SQL 数据库托管实例的点到站点连接
 
@@ -27,14 +27,14 @@ ms.locfileid: "68567688"
 本快速入门：
 
 - 从[创建托管实例](sql-database-managed-instance-get-started.md)中创建的资源着手。
-- 本地客户端计算机需要 PowerShell 5.1 和 AZ PowerShell 1.4.0 或更高版本。 如有必要，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module)的说明。
+- 本地客户端计算机需要 PowerShell 5.1 和 AZ PowerShell 1.4.0 或更高版本。 必要时，请根据说明来[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module)。
 - 本地客户端计算机需要最新版本的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS)。
 
 ## <a name="attach-a-vpn-gateway-to-your-managed-instance-virtual-network"></a>将 VPN 网关附加到托管实例虚拟网络
 
 1. 在本地客户端计算机上打开 PowerShell。
 
-2. 复制此 PowerShell 脚本。 此脚本将 VPN 网关附加到在[创建托管实例](sql-database-managed-instance-get-started.md)快速入门中创建的托管实例虚拟网络。 此脚本使用 Azure PowerShell Az 模块, 将对基于 Windows 或 Linux 的主机执行以下操作:
+2. 复制此 PowerShell 脚本。 此脚本将 VPN 网关附加到在[创建托管实例](sql-database-managed-instance-get-started.md)快速入门中创建的托管实例虚拟网络。 此脚本使用 Azure PowerShell Az 模块，并将对基于 Windows 或 Linux 的主机执行以下操作：
 
    - 在客户端计算机上创建并安装证书
    - 计算未来的 VPN 网关子网 IP 范围
@@ -64,7 +64,7 @@ ms.locfileid: "68567688"
 ## <a name="create-a-vpn-connection-to-your-managed-instance"></a>创建连接到托管实例的 VPN 连接
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 打开在其中创建了虚拟网络网关的资源组，然后打开虚拟网络网关资源。
+2. 打开在其中创建了虚拟网关的资源组，然后打开虚拟网关资源。
 3. 选择“点到站点配置”，然后选择“下载 VPN 客户端”。
 
     ![下载 VPN 客户端](./media/sql-database-managed-instance-configure-p2s/download-vpn-client.png)  
@@ -100,7 +100,7 @@ ms.locfileid: "68567688"
 
     ![ssms 连接](./media/sql-database-managed-instance-configure-vm/ssms-connect.png)  
 
-连接后，可在数据库节点中查看系统和用户数据库。 还可在安全性、服务器对象、复制、管理、SQL Server 代理和 XEvent Profiler 节点中查看各种对象。
+连接后，可以在“数据库”节点中查看系统和用户数据库。 还可在安全性、服务器对象、复制、管理、SQL Server 代理和 XEvent Profiler 节点中查看各种对象。
 
 ## <a name="next-steps"></a>后续步骤
 

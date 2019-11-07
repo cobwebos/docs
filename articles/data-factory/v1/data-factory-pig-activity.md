@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 数据工厂中使用 Pig 活动转换数据 | Microsoft Docs
+title: 在 Azure 数据工厂中使用 Pig 活动转换数据
 description: 了解如何使用 Azure 数据工厂中的 Pig 活动在按需或自己的 HDInsight 群集上运行 Pig 脚本。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 72f532c277096a20387ab1b4922def2cd35a9afb
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a6861a22f853bb0b48eb7c9832adb251bc3467ca
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139130"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682392"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Pig 活动转换数据
 > [!div class="op_single_selector" title1="转换活动"]
@@ -39,7 +39,7 @@ ms.locfileid: "70139130"
 数据工厂[管道](data-factory-create-pipelines.md)中的 HDInsight Pig 活动会在[自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或基于 Windows/Linux 的[按需](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 Pig 查询。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
 
 > [!NOTE] 
-> 如果不熟悉 Azure 数据工厂，请在阅读本文之前，先通读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习以下教程：[构建第一个数据管道](data-factory-build-your-first-pipeline.md)。 
+> 如果是刚开始接触 Azure 数据工厂，请仔细阅读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习[教程：生成首个数据管道](data-factory-build-your-first-pipeline.md)，然后再阅读本文。 
 
 ## <a name="syntax"></a>语法
 
@@ -82,17 +82,17 @@ ms.locfileid: "70139130"
 
 ## <a name="syntax-details"></a>语法详细信息
 
-| 属性 | 说明 | 必填 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | name |活动名称 |是 |
-| description |描述活动用途的文本 |否 |
+| 说明 |描述活动用途的文本 |否 |
 | type |HDinsightPig |是 |
 | inputs |Pig 活动使用的一个或多个输入 |否 |
 | outputs |Pig 活动生成的一个或多个输出 |是 |
 | linkedServiceName |参考在数据工厂中注册为链接服务的 HDInsight 群集 |是 |
-| script |指定 Pig 脚本内联 |否 |
+| 脚本 |指定 Pig 脚本内联 |否 |
 | scriptPath |将 Pig 脚本存储在 Azure Blob 存储中，并提供该文件的路径。 使用“script”或“scriptPath”属性。 两者不能一起使用。 文件名称需区分大小写。 |否 |
-| defines |在 Pig 脚本中指定参数作为键/值对，以供引用 |否 |
+| 定义 |在 Pig 脚本中指定参数作为键/值对，以供引用 |否 |
 
 ## <a name="example"></a>示例
 请考虑游戏日志分析的示例，在此示例中，需确定玩家用在公司所发行游戏上的时间。
@@ -172,7 +172,7 @@ Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/
 
 若要使用参数化的 Pig 脚本，请执行以下操作：
 
-* 定义 **defines** 中的参数。
+* 定义**定义**中的参数。
 
     ```JSON
     {
@@ -219,7 +219,7 @@ Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/
     Store PigSampleOut into '$Output' USING PigStorage (','); 
     ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [Hive 活动](data-factory-hive-activity.md)
 * [MapReduce 活动](data-factory-map-reduce.md)
 * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)

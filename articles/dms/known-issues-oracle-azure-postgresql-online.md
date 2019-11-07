@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/03/2019
-ms.openlocfilehash: cc7e510d9a6db93edc211799eda8df79116236a7
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 11/05/2019
+ms.openlocfilehash: ecd2750926fd04c84d2d6b48f5fde06363dd15df
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053651"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606756"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>从 Oracle 到 Azure DB for PostgreSQL 的联机迁移的已知问题/迁移限制-单服务器
 
@@ -26,7 +26,7 @@ ms.locfileid: "73053651"
 
 Azure 数据库迁移服务支持连接到：
 
-- Oracle 版本10g、11c 和12c。
+- Oracle 版本10g、11g 和12c。
 - Oracle 企业版、标准版、Express 版和个人版。
 
 Azure 数据库迁移服务不支持连接到多租户容器数据库（CDBs）。

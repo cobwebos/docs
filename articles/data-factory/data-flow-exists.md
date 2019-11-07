@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂映射数据流中的存在转换 |Microsoft Docs
+title: Azure 数据工厂映射数据流中存在转换
 description: 使用 Azure 数据工厂映射数据流中的存在转换检查现有行
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 79bdfc84310686b2648e12d73d783de049e9d2fa
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: a477eba246c4ebcfbd32e92f1fd30c301ea1cc5b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596511"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676730"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>映射数据流中存在转换
 
@@ -54,7 +54,7 @@ Exists 转换是一个行筛选转换，用于检查数据是否存在于另一�
 
 ### <a name="example"></a>示例
 
-下面的示例是一个名为 `checkForChanges` 的 exists 转换，它采用 `NameNorm2` 和右流 `TypeConversions` 的左流。  Exists 条件是表达式 `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` 如果每个流中的 `EMPID` 和 `Region` 列都匹配，则返回 true。 由于我们要检查是否存在，`negate` 为 false。 我们未在 "优化" 选项卡中启用任何广播，因此 `broadcast` 的值 `'none'`。
+下面的示例是一个名为 `checkForChanges` 的 exists 转换，它采用 `NameNorm2` 和右流 `TypeConversions`的左流。  Exists 条件是表达式 `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` 如果每个流中的 `EMPID` 和 `Region` 列都匹配，则返回 true。 由于我们要检查是否存在，`negate` 为 false。 我们未在 "优化" 选项卡中启用任何广播，因此 `broadcast` 的值 `'none'`。
 
 在数据工厂 UX 中，此转换如下图所示：
 

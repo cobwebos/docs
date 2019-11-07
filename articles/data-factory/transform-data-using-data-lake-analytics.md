@@ -1,5 +1,5 @@
 ---
-title: 使用 U-SQL 脚本转换数据 - Azure | Microsoft Docs
+title: 使用 U-SQL 脚本转换数据-Azure
 description: 了解如何通过在 Azure Data Lake Analytics 计算服务上运行 U-SQL 脚本来处理或转换数据。
 services: data-factory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: abnarain
-ms.openlocfilehash: d5b074fcf182bcc9bf4dc17ba21215d27e13cbdd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53fb6773becff9f76c9658171965fbd148e94bc8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60888429"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683873"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来转换数据 
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-usql-activity.md)
 > * [当前版本](transform-data-using-data-lake-analytics.md)
 
@@ -34,9 +34,9 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 
 下表介绍了 JSON 定义中使用的一般属性。 
 
-| 属性                 | 说明                              | 需要                                 |
+| 属性                 | 说明                              | 必选                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| **type**                 | 类型属性应设置为：  AzureDataLakeAnalytics。 | 是                                      |
+| **type**                 | 类型属性应设置为：**AzureDataLakeAnalytics**。 | 是                                      |
 | **accountName**          | Azure Data Lake Analytics 帐户名。  | 是                                      |
 | **dataLakeAnalyticsUri** | Azure Data Lake Analytics URI。           | 否                                       |
 | **subscriptionId**       | Azure 订阅 ID                    | 否                                       |
@@ -117,19 +117,19 @@ Azure Data Lake Analytics 链接服务需要进行服务主体身份验证，才
 
 下表描述了此活动特有的属性的名称和描述。 
 
-| 属性            | 说明                              | 需要 |
+| 属性            | 说明                              | 必选 |
 | :------------------ | :--------------------------------------- | :------- |
-| 名称                | 管道中活动的名称     | 是      |
-| description         | 描述活动用途的文本。  | 否       |
+| name                | 管道中活动的名称     | 是      |
+| 说明         | 描述活动用途的文本。  | 否       |
 | type                | 对于 Data Lake Analytics U-SQL 活动，活动类型是 **DataLakeAnalyticsU-SQL**。 | 是      |
 | linkedServiceName   | Azure Data Lake Analytics 的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。  |是       |
 | scriptPath          | 包含 U-SQL 脚本的文件夹路径。 文件的名称区分大小写。 | 是      |
 | scriptLinkedService | 将包含脚本的 **Azure Data Lake Store** 或 **Azure 存储**链接到数据工厂的链接服务 | 是      |
 | degreeOfParallelism | 同时用于运行作业的最大节点数。 | 否       |
 | priority            | 确定应在所有排队的作业中选择哪些作业首先运行。 编号越低，优先级越高。 | 否       |
-| parameters          | 要传入 U-SQL 脚本的参数。    | 否       |
+| 参数          | 要传入 U-SQL 脚本的参数。    | 否       |
 | runtimeVersion      | 要使用的 U-SQL 引擎的运行时版本。 | 否       |
-| compilationMode     | <p>U-SQL 编译模式。 必须是这些值之一：**Semantic：** 只执行语义检查和必要的健全性检查；**Full：** 执行完整编译，包括语法检查、优化、代码生成等；**SingleBox：** 执行完整编译，且 TargetType 设置为 SingleBox。 如果该属性未指定值，则服务器将确定最佳编译模式。 | 否 |
+| compilationMode     | <p>U-SQL 编译模式。 必须是以下值之一：**Semantic：** 只执行语义检查和必要的完整性检查；**Full：** 执行完整的编译，包括语法检查、优化、代码生成，等等；**SingleBox：** 通过将 TargetType 设置为 SingleBox，可执行完整编译。 如果该属性未指定值，则服务器将确定最佳编译模式。 | 否 |
 
 请参阅 [SearchLogProcessing.txt](#sample-u-sql-script) 了解有关脚本定义的信息。 
 
@@ -162,7 +162,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-在上面的脚本示例的输入和输出到脚本中定义 **\@中**并 **\@出**参数。 值 **\@中**并 **\@出**参数在 U-SQL 脚本中的使用动态传递由数据工厂参数部分。 
+在上面的脚本示例中，脚本的输入和输出在 **\@in**和 **\@out**参数中定义。 使用 "parameters" 节通过数据工厂动态传递 U SQL 脚本中 **\@in**和 **\@out**参数的值。 
 
 也可在 Azure Data Lake Analytics 服务上运行的作业的管道定义中指定其他属性，如 degreeOfParallelism 和 priority。
 
@@ -188,7 +188,7 @@ OUTPUT @rs1
 在这种情况下，输入文件仍从 /datalake/input 文件夹中获取，输出文件仍在 /datalake/output 文件夹中生成。 文件名是基于触发管道时传入的窗口开始时间动态生成的。  
 
 ## <a name="next-steps"></a>后续步骤
-参阅以下文章了解如何以其他方式转换数据： 
+请参阅以下文章了解如何以其他方式转换数据： 
 
 * [Hive 活动](transform-data-using-hadoop-hive.md)
 * [Pig 活动](transform-data-using-hadoop-pig.md)

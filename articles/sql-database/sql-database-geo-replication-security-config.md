@@ -1,5 +1,5 @@
 ---
-title: 配置灾难恢复的 Azure SQL 数据库安全性 | Microsoft Docs
+title: 配置用于灾难恢复的 Azure SQL 数据库安全性
 description: 了解在数据库还原或故障转移到辅助服务器后配置和管理安全性的安全注意事项。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 4d4939b7a0179216d11f594ce12f384276d15e05
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3c08ba1a37d7b0d16042d6496c27e0de8d070b75
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568134"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689969"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>针对异地还原或故障转移配置和管理 Azure SQL 数据库的安全性
 
@@ -24,7 +24,7 @@ ms.locfileid: "68568134"
 
 ## <a name="disaster-recovery-with-contained-users"></a>使用包含的用户进行灾难恢复
 
-不同于必须映射到 master 数据库中登录名的传统用户，包含的用户完全由数据库自身管理。 这带来了两个好处。 在灾难恢复方案中，用户可以继续连接到新的主数据库或使用异地还原恢复的数据库，不需进行任何额外的配置，因为数据库会管理用户。 从登录的立场来看，此配置还有潜在的缩放性和性能优势。 有关详细信息，请参阅[包含数据库用户 - 使数据库可移植](https://msdn.microsoft.com/library/ff929188.aspx)。
+不同于必须映射到 master 数据库中登录名的传统用户，包含的用户完全由数据库自身管理。 这带来了两个好处。 在灾难恢复方案中，用户可以继续连接到新的主数据库或使用异地还原恢复的数据库，不需进行任何额外的配置，因为数据库会管理用户。 从登录的立场来看，此配置还有潜在的缩放性和性能优势。 有关详细信息，请参阅[包含的数据库用户 - 使数据库可移植](https://msdn.microsoft.com/library/ff929188.aspx)。
 
 主要的不足是，在规模较大的情况下，管理灾难恢复过程更具挑战性。 当有多个使用同一登录名的数据库时，在多个数据库中使用包含用户来维护凭据可能会抵消包含用户的好处。 例如，密码轮换策略要求在多个数据库中进行一致性的更改，而不是在 master 数据库中更改登录名的密码一次。 因此，如果多个数据库使用同一用户名和密码，则不建议使用包含用户。
 
@@ -48,7 +48,7 @@ ms.locfileid: "68568134"
 
 在目标服务器上设置登录名涉及三个步骤，概述如下：
 
-#### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1.确定有权访问主数据库的登录名
+#### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1. 确定有权访问主数据库的登录名
 
 该过程的第一个步骤就是确定必须在目标服务器上复制哪些登录名。 可以使用一对 SELECT 语句来完成此操作，其中一个语句用于源服务器上的逻辑 master 数据库，另一个语句用于主数据库本身。
 
@@ -64,7 +64,7 @@ ms.locfileid: "68568134"
     FROM [sys].[database_principals]
     WHERE [type_desc] = 'SQL_USER'
 
-#### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2.查找步骤 1 中确定的登录名的 SID
+#### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2. 查找步骤1中确定的登录名的 SID
 
 通过将前一部分中所述的查询的输出进行比较以及对 SID 进行匹配，可以将服务器登录名映射到数据库用户。 包含数据库用户以及匹配的 SID 的登录名有权以该数据库用户主体的身份访问该数据库。
 
@@ -75,9 +75,9 @@ ms.locfileid: "68568134"
     WHERE [type_desc] = 'SQL_USER'
 
 > [!NOTE]
-> **INFORMATION_SCHEMA** 和 **sys** 用户具有 *NULL* SID，**guest** SID 为 **0x00**。 如果数据库创建者是服务器管理员而不是 **DbManager** 的成员，则 **dbo** SID 可能以 *0x01060000000001648000000000048454* 开头。
+> **INFORMATION_SCHEMA** 和 **sys** 用户具有 *NULL* SID，**guest** SID 为 **0x00**。 如果数据库创建者是服务器管理员而不是 **DbManager** 的成员，则 *dbo* SID 可能以 **0x01060000000001648000000000048454** 开头。
 
-#### <a name="3-create-the-logins-on-the-target-server"></a>3.在目标服务器上创建登录名
+#### <a name="3-create-the-logins-on-the-target-server"></a>3. 在目标服务器上创建登录名
 
 最后一个步骤是转到一个或多个目标服务器，并使用相应的 SID 生成登录名。 基本语法如下。
 

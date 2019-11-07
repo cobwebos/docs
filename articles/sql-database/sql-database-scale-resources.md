@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库缩放资源 | Microsoft Docs
+title: Azure SQL 数据库缩放资源
 description: 本文介绍如何通过添加或删除已分配的资源来缩放数据库。
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 98d24b4f497f09e982101917296b572a5c381f42
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: fe93dbac74348166ed623754e5e1460132ca968c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053598"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687439"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>以最短的停机时间动态缩放数据库资源
 
-利用 Azure SQL 数据库，你可以将更多资源动态添加到数据库，使[停机时间](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)最短;但是，在一段较短的时间内，会有一次与数据库的连接丢失的情况，可以使用重试逻辑来缓解这种情况。
+Azure SQL 数据库使你能够以最小的[停机时间](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)向数据库动态添加更多资源；但是，存在一个切换期间，在此期间与数据库的连接会短时间丢失，可以使用重试逻辑来缓解这种情况。
 
 ## <a name="overview"></a>概述
 
@@ -40,7 +40,7 @@ Azure SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers
 可以在小型单一数据库中构建第一个应用，每个月只需在“常规用途”服务层级中花费少量资金。然后可以根据解决方案的需要，随时手动或以编程方式将服务层级更改为“业务关键”服务层级。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
 
 > [!NOTE]
-> 动态可伸缩性不同于自动缩放。 自动缩放是指服务根据条件自动缩放的时间，而动态可伸缩性允许在最短的停机时间内进行手动缩放。
+> 动态可伸缩性不同于自动缩放。 自动缩放是指服务根据条件自动缩放，而动态可伸缩性允许在最短停机时间的情况下进行手动缩放。
 
 单个 Azure SQL 数据库支持手动动态可伸缩性，但不支持自动缩放。 若要获得更多*自动*体验，请考虑使用弹性池，它允许数据库根据各个数据库需求共享池中的资源。
 但是，有一些脚本可帮助自动执行单个 Azure SQL 数据库的可伸缩性。 有关示例，请参阅[使用 PowerShell 监视和缩放单个 SQL 数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
@@ -58,7 +58,7 @@ Azure SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers
 如果需要，可以在任何一种风格中启动 "扩展" 或 "缩小" 操作，以重新启动数据库引擎进程，并将其移到不同的虚拟机。 将数据库引擎进程迁移到新的虚拟机是**在线过程**，在此过程中，你可以继续使用现有的 Azure SQL 数据库服务。 在目标数据库引擎完全初始化并准备好处理查询后，连接将从源[数据库引擎切换到目标数据库引擎](sql-database-single-database-scale.md#impact-of-changing-service-tier-or-rescaling-compute-size)。
 
 > [!NOTE]
-> 缩小/缩小过程完成时，可能会出现短暂的连接中断。 如果已实现了[标准暂时性错误的重试逻辑](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)，则不会注意到故障转移。
+> 当放大/缩小过程完成时，可能会出现短暂的连接中断。 如果已实现了[标准暂时性错误的重试逻辑](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)，则不会注意到故障转移。
 
 ## <a name="alternative-scale-methods"></a>替代缩放方法
 

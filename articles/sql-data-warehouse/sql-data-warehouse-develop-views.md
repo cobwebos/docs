@@ -1,5 +1,5 @@
 ---
-title: 在 Azure SQL 数据仓库中使用 T-SQL 视图 | Microsoft Docs
+title: 使用 T-sql 视图
 description: 有关在开发解决方案时使用 Azure SQL 数据仓库中的 T-SQL 视图的技巧。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 1fd406243f0f2f5339c4170c4ec17286fcf2ef6d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 14ff990fa21f4af3c77b4dba10b4fea758ff32b6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901713"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685757"
 ---
 # <a name="views-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的视图
 可以通过多种不同的方式使用视图来提升解决方案的质量。 

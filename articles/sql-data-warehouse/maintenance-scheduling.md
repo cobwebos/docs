@@ -1,5 +1,5 @@
 ---
-title: Azure 维护计划（预览版）| Microsoft Docs
+title: Azure 维护计划
 description: 维护计划使客户能够围绕 Azure SQL 数据仓库服务用于推出新功能、升级和修补程序的必要计划性维护事件进行规划。
 services: sql-data-warehouse
 author: antvgski
@@ -10,18 +10,18 @@ ms.subservice: design
 ms.date: 07/16/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e5df583112bbb6db9651004e5deaceb6b5b9d12
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 91b202f8a5df841fa3d6aa1f0903999b395f8137
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958896"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686066"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>使用维护计划管理服务更新和维护
 
 维护计划现已在所有 Azure SQL 数据仓库区域中可用。 维护计划功能集成了服务运行状况计划内维护通知、资源运行状况检查监视器和 Azure SQL 数据仓库维护计划服务。
 
-使用维护计划可以选择一个方便接收新功能、升级和修补程序的时间范围。 请选择 7 天内的主要和辅助维护时段。 要使用此功能，需要在单独的一天中确定主窗口和辅助窗口。
+使用维护计划可以选择一个方便接收新功能、升级和修补程序的时间范围。 请选择 7 天内的主要和辅助维护时段。 若要使用此功能，需要在不同的日期范围内标识主要时段和辅助时段。
 
 例如，你可以将周六22:00 的主窗口安排到星期日01:00，然后将星期三19:00 的辅助窗口计划为22:00。 如果 SQL 数据仓库在主要维护时段无法执行维护，则它会尝试在辅助维护时段再次执行维护。 主窗口和辅助窗口中都可能发生服务维护。 为了确保快速完成所有维护操作，DW400(C) 和更低的数据仓库层可以在指定的维护时段之外完成维护。
 

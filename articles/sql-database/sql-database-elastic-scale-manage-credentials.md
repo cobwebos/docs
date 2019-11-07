@@ -1,5 +1,5 @@
 ---
-title: 管理弹性数据库客户端库中的凭据 | Microsoft 文档
+title: 管理弹性数据库客户端库中的凭据
 description: 如何为弹性数据库应用设置正确的凭据级别（从管理员到只读权限）
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: d89e83092775828016c2c47a96164319f5474c1e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8856b827ad2c6719cdc6e8c387be1b63b3f44b22
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568424"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690209"
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>用于访问弹性数据库客户端库的凭据
 
@@ -43,7 +43,7 @@ ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager(s
 "Server=<yourserver>.database.windows.net;Database=<yourdatabase>;User ID=<yourmgmtusername>;Password=<yourmgmtpassword>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;”
 ```
 
-请勿使用 username@server 格式的值 - 只需使用“username”格式的值。  这是因为凭据必须同时适用于分片映射管理器数据库和各个分片，而它们可能位于不同的服务器上。
+请不要使用“username@server”格式的值 - 而只需使用“username”格式的值。  这是因为凭据必须同时适用于分片映射管理器数据库和各个分片，它们可能位于不同的服务器上。
 
 ## <a name="access-credentials"></a>访问凭据
 
@@ -72,7 +72,7 @@ using (SqlConnection conn = rangeMap.OpenConnectionForKey<int>(targetWarehouse, 
 
 与管理员凭据一样，请不要使用“username@server”格式的值， 而应使用“用户名”格式的值。  另请注意，连接字符串不包含服务器名称和数据库名称。 这是因为，**OpenConnectionForKey** 调用会自动根据键将连接定向到正确的分片。 因此，不需提供数据库名称和服务器名称。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)
 

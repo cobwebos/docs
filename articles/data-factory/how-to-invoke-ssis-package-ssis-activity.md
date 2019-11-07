@@ -1,5 +1,5 @@
 ---
-title: 使用 "执行 SSIS 包" 活动运行 SSIS 包-Azure |Microsoft Docs
+title: 使用 "执行 SSIS 包" 活动运行 SSIS 包-Azure
 description: 本文介绍如何使用 "执行 SSIS 包" 活动在 Azure 数据工厂管道中运行 SQL Server Integration Services （SSIS）包。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 965bb0641aac3224ac98820006f308e6b5fb0f71
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b8ed0a04d2d13556f38873ef5f346d49ba4d1845
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255636"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73673735"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
 本文介绍如何使用 "执行 SSIS 包" 活动在 Azure 数据工厂管道中运行 SQL Server Integration Services （SSIS）包。 
@@ -27,7 +27,7 @@ ms.locfileid: "72255636"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-如果尚未按照 [Tutorial 中的分步说明操作，请创建 Azure SSIS 集成运行时（IR）：预配 Azure-SSIS IR](tutorial-create-azure-ssis-runtime-portal.md)。
+如果尚未按照本教程中的分步说明操作，请创建 Azure SSIS 集成运行时（IR） [：预配 Azure-SSIS IR](tutorial-create-azure-ssis-runtime-portal.md)。
 
 ## <a name="run-a-package-in-the-azure-portal"></a>在 Azure 门户中运行包
 在本部分中，将使用数据工厂用户界面（UI）或应用通过运行 SSIS 包的 "执行 SSIS 包" 活动来创建数据工厂管道。
@@ -65,7 +65,7 @@ ms.locfileid: "72255636"
 
    ![在“设置”选项卡上设置属性 - 自动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
-   如果 Azure-SSIS IR 未运行或已选中 "**手动输入**" 复选框，请按以下格式从 SSISDB 直接输入包和环境路径： `<folder name>/<project name>/<package name>.dtsx` 和 `<folder name>/<environment name>`。
+   如果 Azure-SSIS IR 未运行或已选中 "**手动输入**" 复选框，请按以下格式直接从 SSISDB 输入包和环境路径： `<folder name>/<project name>/<package name>.dtsx` 和 `<folder name>/<environment name>`。
 
    ![在“设置”选项卡上设置属性 - 手动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
@@ -75,21 +75,21 @@ ms.locfileid: "72255636"
 
    ![在“设置”选项卡上设置属性 - 手动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
 
-   如果选择 "**文件系统（项目）** " 作为包位置，请在 "**项目路径**" 框中提供项目文件的 UNC 路径（`.ispac`），并在**包名称**的项目中提供包文件（`.dtsx`），指定要运行的包。文本框. 例如，如果你将项目存储在 Azure 文件中，则其项目路径 `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`。
+   如果选择 "**文件系统（项目）** " 作为包位置，请在 "**项目路径**" 框中提供项目文件的 UNC 路径（`.ispac`），并在**包名称**中提供项目的包文件（`.dtsx`），以指定要运行的包。文本框. 例如，如果你将项目存储在 Azure 文件中，则其项目路径 `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`。
 
    ![在“设置”选项卡上设置属性 - 手动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
 
-   接下来，指定用于访问项目、包或配置文件的凭据。 如果你之前输入了包执行凭据的值（请参阅上一步），可以通过选择 "与**包执行凭据相同**" 复选框重复使用它们。 否则，请在 "**域**"、"**用户名**" 和 "**密码**" 框中输入包访问凭据的值。 例如，如果在 Azure 文件中存储项目、包或配置，则域 @no__t 为-0，用户名为 `<storage account name>`，密码为 `<storage account key>`。 
+   接下来，指定用于访问项目、包或配置文件的凭据。 如果你之前输入了包执行凭据的值（请参阅上一步），可以通过选择 "与**包执行凭据相同**" 复选框重复使用它们。 否则，请在 "**域**"、"**用户名**" 和 "**密码**" 框中输入包访问凭据的值。 例如，如果将项目、包或配置存储在 Azure 文件中，则会 `Azure`域，用户名 `<storage account name>`，并 `<storage account key>`密码。 
 
    或者，你可以使用存储在密钥保管库中的机密作为它们的值（请参阅上一节）。 这些凭据用于访问 "执行包" 任务中的包和子包，全部来自其自己的路径或相同的项目，以及配置（包括包中指定的包和配置）。 
    
    如果在通过 SQL Server Data Tools 创建包时使用了 " **EncryptAllWithPassword** " 或 " **EncryptSensitiveWithPassword** " 保护级别，请在 "**加密密码**" 框中输入密码的值。 或者，你可以使用存储在密钥保管库中的机密作为其值（请参阅上一节）。 如果使用了**EncryptSensitiveWithUserKey**保护级别，请在配置文件中或在**SSIS 参数**、**连接管理器**或**属性替代**选项卡上重新输入敏感值（请参阅下文）。 
 
-   如果使用**EncryptAllWithUserKey**保护级别，则不受支持。 需要通过 SQL Server Data Tools 或 @no__t 的命令行实用程序将包重新配置为使用另一个保护级别。 
+   如果使用**EncryptAllWithUserKey**保护级别，则不受支持。 你需要通过 SQL Server Data Tools 或 `dtutil` 命令行实用程序将包重新配置为使用另一个保护级别。 
    
    对于“日志记录级别”，请为包执行选择预定义的日志记录范围。 如果要改为输入自定义日志记录名称，请选中 "**自定义**" 复选框。 如果要使用可以在包中指定的标准日志提供程序来记录包的执行，请通过在 "**日志记录路径**" 框中提供其 UNC 路径来指定日志文件夹。 例如，如果将日志存储在 Azure 文件中，则日志记录路径 `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>`。 对于每个单独的包运行，将在此路径中创建一个子文件夹，每隔五分钟生成一次日志文件。 
    
-   最后，指定访问日志文件夹所用的凭据。 如果你之前输入了包访问凭据的值（请参阅上一步），则可以通过选择 "与**包访问凭据相同**" 复选框来重复使用这些值。 否则，请在 "**域**"、"**用户名**" 和 "**密码**" 框中输入日志访问凭据的值。 例如，如果你将日志存储在 Azure 文件中，则域 @no__t 为-0，用户名为 `<storage account name>`，并且密码为 `<storage account key>`。 
+   最后，指定访问日志文件夹所用的凭据。 如果你之前输入了包访问凭据的值（请参阅上一步），则可以通过选择 "与**包访问凭据相同**" 复选框来重复使用这些值。 否则，请在 "**域**"、"**用户名**" 和 "**密码**" 框中输入日志访问凭据的值。 例如，如果将日志存储在 Azure 文件中，则会 `Azure`域，用户名 `<storage account name>`，并 `<storage account key>`密码。 
 
     或者，你可以使用存储在密钥保管库中的机密作为它们的值（请参阅上一节）。 这些凭据用于存储日志。 
    
@@ -121,7 +121,7 @@ ms.locfileid: "72255636"
 
    使用 "**连接管理器**" 或 "**属性替代**" 选项卡，可以重写在 "配置文件" 和 " **SSIS 参数**" 选项卡中分配的值。 还可以通过使用 "**属性替代**" 选项卡来替代在 "**连接管理器**" 选项卡上分配的值。
 
-1. 若要验证管道配置，请在工具栏上选择 "**验证**"。 若要关闭**管道验证报告**，请选择 **>>** 。
+1. 若要验证管道配置，请在工具栏上选择 "**验证**"。 若要关闭**管道验证报告**，请选择 " **>>** "。
 
 1. 若要将管道发布到数据工厂，请选择 "**全部发布**"。 
 
@@ -166,7 +166,7 @@ ms.locfileid: "72255636"
 按照[如何安装和配置 Azure PowerShell](/powershell/azure/install-az-ps) 中的分步说明安装最新的 Azure PowerShell 模块。
 
 ### <a name="create-a-data-factory-with-azure-ssis-ir"></a>使用 Azure-SSIS IR 创建数据工厂
-可以使用已预配 Azure-SSIS IR 的现有数据工厂，也可以使用 Azure-SSIS IR 创建新的数据工厂。 按照 [Tutorial 中的分步说明进行操作：通过 PowerShell 将 SSIS 包部署到 Azure](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure-powershell) 中的分步说明，创建包含 Azure-SSIS IR 的新 ADF。
+可以使用已预配 Azure-SSIS IR 的现有数据工厂，也可以使用 Azure-SSIS IR 创建新的数据工厂。 按照本教程中的分步说明[操作：通过 PowerShell 将 SSIS 包部署到 Azure](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure-powershell)。
 
 ### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>使用“执行 SSIS 包”活动创建管道 
 在此步骤中创建包含“执行 SSIS 包”活动的管道。 该活动运行 SSIS 包。 

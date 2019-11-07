@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂的角色和权限 | Microsoft Docs
+title: Azure 数据工厂的角色和权限
 description: 介绍创建数据工厂并使用子资源所需的角色和权限。
 ms.date: 11/5/2018
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 9df65322958bffd3182aaa8d734e8b29717d939d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f5b4cbc670a429a84f42be79adb00057656a5483
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142528"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681428"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure 数据工厂的角色和权限
 
@@ -80,9 +80,9 @@ Azure Repos 和 GitHub 上的权限独立于数据工厂权限。 因此，具�
   1. 在数据工厂级别分配内置的“参与者”角色。
   2. 创建权限为 **Microsoft.Resources/deployments/** 的自定义角色。 将此自定义角色分配给资源组级别的用户。
 
-- 允许用户仅能在链接的服务中测试连接
+- 让用户仅能在链接服务中测试连接
 
-    为以下操作创建具有权限的自定义角色角色:**DataFactory/工厂/getFeatureValue/read**和**DataFactory/工厂/getDataPlaneAccess/read**。 将此自定义角色分配给用户的数据工厂资源。
+    创建具有以下操作权限的自定义角色角色： **DataFactory/工厂/getFeatureValue/read**和**DataFactory/工厂/getDataPlaneAccess/read**。 在用户的数据工厂资源上分配此自定义角色。
 
 - 允许用户通过 PowerShell 或 SDK 更新数据工厂，但不允许其在 Azure 门户中进行更新。
 

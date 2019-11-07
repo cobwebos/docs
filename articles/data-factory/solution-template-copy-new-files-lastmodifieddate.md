@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂根据 LastModifiedDate 复制新的和已更改的文件 | Microsoft Docs
+title: 使用 Azure 数据工厂根据 LastModifiedDate 复制新的和已更改的文件
 description: 了解如何在 Azure 数据工厂中使用解决方案模板根据 LastModifiedDate 复制新的和已更改的文件。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/8/2019
-ms.openlocfilehash: a2a8f0478d1ae4fb19cb911b02572145ff59839b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: aaa7114113d5f0330d2dc7d656b0d91963931512
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030074"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684230"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>使用 Azure 数据工厂根据 LastModifiedDate 复制新的和已更改的文件
 
@@ -88,8 +88,8 @@ ms.locfileid: "72030074"
 11. 按如下所示写入“触发器运行参数”的值，然后选择“完成”。
     - **FolderPath_Source** =  **/source/** 。  可替换为源数据存储中的文件夹。
     - **FolderPath_Destination** =  **/destination/** 。  可替换为目标数据存储中的文件夹。
-    - **LastModified_From** =   **\@Trigger （） .windowstarttime**。  这是触发器中的一个系统变量，确定上次触发管道的时间。
-    - **LastModified_To** =  **\@Trigger （） .windowendtime**。  这是触发器中的一个系统变量，确定本次触发管道的时间。
+    - **LastModified_From** =   **\@trigger （）. .windowstarttime**。  这是触发器中的一个系统变量，确定上次触发管道的时间。
+    - **LastModified_To** =  **\@trigger （）. .windowendtime**。  这是触发器中的一个系统变量，确定本次触发管道的时间。
     
     ![输入参数](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     

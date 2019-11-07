@@ -1,21 +1,22 @@
 ---
-title: SQL 数据仓库 (T-SQL) 中的透明数据加密 | Microsoft 文档
+title: 透明数据加密（T-sql）
 description: SQL 数据仓库 (T-SQL) 中的透明数据加密 (TDE)
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 04/30/2019
-ms.author: kavithaj
+ms.author: jrasnick
 ms.reviewer: rortloff
-ms.openlocfilehash: 1d62bc5cb080f2167f13bd58e9a8a334b8ae5163
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 98695aa7578e90be9ada2f86640e68b05a9812ed
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65146070"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692744"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>透明数据加密 (TDE) 入门
 > [!div class="op_single_selector"]
@@ -32,7 +33,7 @@ ms.locfileid: "65146070"
 ## <a name="enabling-encryption"></a>启用加密
 执行以下步骤，对 SQL 数据仓库启用 TDE：
 
-1. 使用在 master 数据库中充当管理员或 **dbmanager** 角色成员的登录名，连接到托管数据库的服务器上的 *master* 数据库
+1. 使用在 master 数据库中充当管理员或 *dbmanager* 角色成员的登录名，连接到托管数据库的服务器上的 **master** 数据库
 2. 执行以下语句来加密数据库。
 
 ```sql
@@ -42,7 +43,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ## <a name="disabling-encryption"></a>禁用加密
 执行以下步骤，对 SQL 数据仓库禁用 TDE：
 
-1. 使用在 master 数据库中充当管理员或 **dbmanager** 角色成员的登录名，连接到 *master* 数据库
+1. 使用在 master 数据库中充当管理员或 *dbmanager* 角色成员的登录名，连接到 **master** 数据库
 2. 执行以下语句来加密数据库。
 
 ```sql
@@ -57,7 +58,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 ## <a name="verifying-encryption"></a>验证加密
 若要验证 SQL 数据仓库的加密状态，请遵循以下步骤：
 
-1. 使用在 master 数据库中充当管理员或 **dbmanager** 角色成员的登录名，连接到 *master* 数据库或实例数据库
+1. 使用在 master 数据库中充当管理员或 *dbmanager* 角色成员的登录名，连接到 **master** 数据库或实例数据库
 2. 执行以下语句来加密数据库。
 
 ```sql

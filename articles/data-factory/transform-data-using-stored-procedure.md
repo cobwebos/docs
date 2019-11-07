@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 数据工厂中使用存储过程活动转换数据 | Microsoft Docs
+title: 在 Azure 数据工厂中使用存储过程活动转换数据
 description: 说明如何使用 SQL Server 存储过程活动从数据工厂管道调用 Azure SQL 数据库/数据仓库中的存储过程。
 services: data-factory
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.date: 11/27/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: e063875e4c619b65290511d61923fd7c715aba49
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 5ebb2b9cdcbef59e07476dbebd289bb4402ca5fa
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742181"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683719"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 SQL Server 存储过程活动转换数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -25,7 +25,7 @@ ms.locfileid: "68742181"
 可使用数据工厂[管道](concepts-pipelines-activities.md)中的数据转换活动将原始数据转换和处理为预测和见解。 存储过程活动是数据工厂支持的转换活动之一。 本文基于[转换数据](transform-data.md)一文编写，它概述了数据转换和数据工厂中支持的转换活动。
 
 > [!NOTE]
-> 如果不熟悉 Azure 数据工厂，请在阅读本文之前，先通读 [Azure 数据工厂简介](introduction.md)，并学习以下教程：[教程：转换数据](tutorial-transform-data-spark-powershell.md)。 
+> 如果不熟悉 Azure 数据工厂，请在阅读本文之前，先通读 [Azure 数据工厂简介](introduction.md)，并学习教程：[教程：转换数据](tutorial-transform-data-spark-powershell.md)。 
 
 可以使用存储过程活动调用企业或 Azure 虚拟机 (VM) 中以下数据存储中的存储过程： 
 
@@ -65,24 +65,24 @@ ms.locfileid: "68742181"
 
 下表描述了其中的 JSON 属性：
 
-| 属性                  | 说明                              | 必填 |
+| 属性                  | 说明                              | 必选 |
 | ------------------------- | ---------------------------------------- | -------- |
 | name                      | 活动名称                     | 是      |
-| description               | 描述活动用途的文本 | 否       |
+| 说明               | 描述活动用途的文本 | 否       |
 | type                      | 对于存储过程活动，活动类型是 SqlServerStoredProcedure | 是      |
 | linkedServiceName         | 引用注册为数据工厂中的链接服务的 Azure SQL 数据库或 Azure SQL 数据仓库或 SQL Server。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
 | storedProcedureName       | 指定要调用的存储过程的名称。 | 是      |
 | storedProcedureParameters | 指定存储过程的参数值。 使用 `"param1": { "value": "param1Value","type":"param1Type" }` 传递数据源支持的参数值及其类型。 如果需要为参数传递 null，请使用 `"param1": { "value": null }`（全部小写）。 | 否       |
 
 ## <a name="parameter-data-type-mapping"></a>参数数据类型映射
-为参数指定的数据类型是 Azure 数据工厂类型, 它映射到所使用数据源中的数据类型。 可以在 "连接器" 区域中找到数据源的数据类型映射。 一些示例
+为参数指定的数据类型是 Azure 数据工厂类型，该类型映射到正在使用的数据源中的数据类型。 可以在连接器区域中找到数据源的数据类型映射。 下面是一些示例
 
 | 数据源          | 数据类型映射 |
 | ---------------------|-------------------|
-| Azure SQL 数据仓库 | https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
-| Azure SQL 数据库   | https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
-| Oracle               | https://docs.microsoft.com/en-us/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
-| SQL Server           | https://docs.microsoft.com/en-us/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
+| Azure SQL 数据仓库 | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
+| Azure SQL 数据库   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
+| Oracle               | https://docs.microsoft.com/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
+| SQL Server           | https://docs.microsoft.com/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
 
 
 ## <a name="error-info"></a>错误信息
@@ -90,7 +90,7 @@ ms.locfileid: "68742181"
 当存储过程失败并返回错误详细信息时，你无法直接在活动输出中捕获错误信息。 但是，数据工厂会将其所有活动运行事件抽取到 Azure Monitor。 在数据工厂抽取到 Azure Monitor 的事件中，它会在那里推送错误详细信息。 例如，可以通过这些事件设置电子邮件警报。 有关详细信息，请参阅[使用 Azure Monitor 发警报和监视数据工厂](monitor-using-azure-monitor.md)。
 
 ## <a name="next-steps"></a>后续步骤
-参阅以下文章了解如何以其他方式转换数据： 
+请参阅以下文章了解如何以其他方式转换数据： 
 
 * [U-SQL 活动](transform-data-using-data-lake-analytics.md)
 * [Hive 活动](transform-data-using-hadoop-hive.md)

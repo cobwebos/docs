@@ -7,18 +7,20 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 81c1279670e786ddaa03946869773121a859d3b7
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: e2f1042fe1210fe51ae79b1152e51191e7fb066a
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735237"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615032"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions 中的扇出/扇入方案 - 云备份示例
 
 “扇出/扇入”是指同时执行多个函数，然后针对结果执行某种聚合的模式。 本文讲解一个使用 [Durable Functions](durable-functions-overview.md) 实现扇入/扇出方案的示例。 该示例是一个持久函数，可将应用的全部或部分站点内容备份到 Azure 存储中。
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -26,9 +28,9 @@ ms.locfileid: "70735237"
 
 在此示例中，函数会将指定目录下的所有文件以递归方式上传到 Blob 存储。 它们还会统计已上传的字节总数。
 
-可以编写单个函数来处理所有这些操作。 会遇到的主要问题是**可伸缩性**。 单个函数执行只能在单个 VM 上运行，因此，吞吐量会受到该 VM 的吞吐量限制。 另一个问题是**可靠性**。 如果中途失败或者整个过程花费的时间超过 5 分钟，则备份可能以部分完成状态失败。 然后，需要重新开始备份。
+可以编写单个函数来处理所有这些操作。 会遇到的主要问题是**可伸缩性**。 单个函数执行只能在单个 VM 上运行，因此，吞吐量会受到该 VM 的吞吐量限制。 另一个问题是**可靠性**。 如果在中间发生故障，或者整个进程需要5分钟以上，则备份可能会在部分完成状态下失败。 然后，需要重新开始备份。
 
-更可靠的方法是编写两个正则函数：一个函数枚举文件并将文件名添加到队列，另一个函数从队列读取数据并将文件上传到 Blob 存储。 这样可以提高吞吐量和可靠性，但需要预配和管理队列。 更重要的是，如果想要执行其他任何操作，例如报告已上传的字节总数，则这种做法会明显增大**状态管理**和**协调**的复杂性。
+更可靠的方法是编写两个正则函数：一个函数枚举文件并将文件名添加到队列，另一个函数从队列读取数据并将文件上传到 Blob 存储。 此方法在吞吐量和可靠性方面更好，但它需要你预配和管理队列。 更重要的是，如果想要执行其他任何操作，例如报告已上传的字节总数，则这种做法会明显增大**状态管理**和**协调**的复杂性。
 
 Durable Functions 方法提供前面所述的所有优势，并且其系统开销极低。
 
@@ -40,7 +42,7 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 * `E2_GetFileList`
 * `E2_CopyFileToBlob`
 
-以下部分介绍用于 C# 脚本的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
+以下部分介绍用于C#脚本编写的配置和代码。 本文末尾显示了用于 Visual Studio 开发的代码。
 
 ## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>云备份业务流程（Visual Studio Code 和 Azure 门户的示例代码）
 
@@ -54,7 +56,7 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
@@ -66,7 +68,7 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 4. 等待所有上传完成。
 5. 返回已上传到 Azure Blob 存储的总字节数。
 
-请注意 `await Task.WhenAll(tasks);` (C#) 和 `yield context.df.Task.all(tasks);` (JavaScript) 所在的行。 对 `E2_CopyFileToBlob` 函数的所有单个调用都未处于等待状态。 这是有意而为的，目的是让这些调用同时运行。 将此任务数组传递给 `Task.WhenAll` (C#) 或 `context.df.Task.all` (JavaScript) 时，会获得所有复制操作完成之前不会完成的任务。 如果熟悉 .NET 中的任务并行库 (TPL) 或 JavaScript 中的 [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)，则对此过程也不会陌生。 差别在于，这些任务可在多个 VM 上同时运行，Durable Functions 扩展可确保端到端执行能够弹性应对进程回收。
+请注意 `await Task.WhenAll(tasks);` (C#) 和 `yield context.df.Task.all(tasks);` (JavaScript) 所在的行。 对 `E2_CopyFileToBlob` 函数的所有单独调用都*不会*等待，从而使它们可以并行运行。 将此任务数组传递给 `Task.WhenAll` (C#) 或 `context.df.Task.all` (JavaScript) 时，会获得所有复制操作完成之前不会完成的任务。 如果熟悉 .NET 中的任务并行库 (TPL) 或 JavaScript 中的 [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)，则对此过程也不会陌生。 差别在于，这些任务可在多个 VM 上同时运行，Durable Functions 扩展可确保端到端执行能够弹性应对进程回收。
 
 > [!NOTE]
 > 虽然任务在概念上类似于 JavaScript 承诺，但业务流程协调程序函数应使用 `context.df.Task.all` 和 `context.df.Task.any`（而不是 `Promise.all` 和 `Promise.race`）来管理任务并行化。
@@ -75,7 +77,7 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 
 ## <a name="helper-activity-functions"></a>帮助器活动函数
 
-与其他示例一样，帮助器活动函数无非是使用 `activityTrigger` 触发器绑定的正则函数。 例如，`E2_GetFileList` 的 *function.json* 文件如下所示：
+与其他示例一样，帮助器活动函数无非是使用 `activityTrigger` 触发器绑定的正则函数。 例如，*的*function.json`E2_GetFileList` 文件如下所示：
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/function.json)]
 
@@ -85,7 +87,7 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
@@ -94,17 +96,17 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 > [!NOTE]
 > 你可能会疑惑，为何不直接将此代码放入业务流程协调程序函数？ 可以这样做，不过，这会破坏业务流程协调程序函数的基本规则，即，它们不得执行 I/O，包括本地文件系统的访问。
 
-`E2_CopyFileToBlob` 的 *function.json* 文件同样也很简单：
+*的*function.json`E2_CopyFileToBlob` 文件同样也很简单：
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/function.json)]
 
-C# 实现也十分直截了当。 本示例恰好使用了 Azure Functions 绑定的某些高级功能（即使用了 `Binder` 参数），但对于本演练，无需考虑这些细节。
+C#实现也非常简单。 本示例恰好使用了 Azure Functions 绑定的某些高级功能（即使用了 `Binder` 参数），但对于本演练，无需考虑这些细节。
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
 
 JavaScript 实现无法访问 Azure Functions 的 `Binder` 功能，因此[用于 Node 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-node) 将取而代之。
 
@@ -136,7 +138,7 @@ Content-Length: 20
 HTTP/1.1 202 Accepted
 Content-Length: 719
 Content-Type: application/json; charset=utf-8
-Location: http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
+Location: http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 
 (...trimmed...)
 ```
@@ -144,16 +146,16 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc
 根据函数应用中包含的日志文件数，此操作可能需要几分钟才能完成。 可以通过查询上述 HTTP 202 响应的 `Location` 标头中的 URL 来获取最新状态。
 
 ```
-GET http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
+GET http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 ```
 
 ```
 HTTP/1.1 202 Accepted
 Content-Length: 148
 Content-Type: application/json; charset=utf-8
-Location: http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
+Location: http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 
-{"runtimeStatus":"Running","input":"D:\\home\\LogFiles","output":null,"createdTime":"2017-06-29T18:50:55Z","lastUpdatedTime":"2017-06-29T18:51:16Z"}
+{"runtimeStatus":"Running","input":"D:\\home\\LogFiles","output":null,"createdTime":"2019-06-29T18:50:55Z","lastUpdatedTime":"2019-06-29T18:51:16Z"}
 ```
 
 在本例中，函数仍在运行。 可以查看已保存到业务流程协调程序状态中的输入，以及上次更新时间。 可以继续使用 `Location` 标头值来轮询完成状态。 当状态为“Completed”时，会看到如下所示的 HTTP 响应值：
@@ -163,17 +165,17 @@ HTTP/1.1 200 OK
 Content-Length: 152
 Content-Type: application/json; charset=utf-8
 
-{"runtimeStatus":"Completed","input":"D:\\home\\LogFiles","output":452071,"createdTime":"2017-06-29T18:50:55Z","lastUpdatedTime":"2017-06-29T18:51:26Z"}
+{"runtimeStatus":"Completed","input":"D:\\home\\LogFiles","output":452071,"createdTime":"2019-06-29T18:50:55Z","lastUpdatedTime":"2019-06-29T18:51:26Z"}
 ```
 
 现在，可以看到业务流程已完成，以及完成它大约花费的时间。 另外，还会看到 `output` 字段的值，指示已上传大约 450 KB 的日志。
 
-## <a name="visual-studio-sample-code"></a>Visual Studio 示例代码
+## <a name="visual-studio-sample-code"></a>Visual Studio 代码示例
 
 下面是 Visual Studio 项目中以单个 C# 文件形式提供的业务流程：
 
 > [!NOTE]
-> 需要安装 `Microsoft.Azure.WebJobs.Extensions.Storage` Nuget 包才能运行下面的示例代码。
+> 你将需要安装 `Microsoft.Azure.WebJobs.Extensions.Storage` NuGet 包以运行下面的示例代码。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs)]
 

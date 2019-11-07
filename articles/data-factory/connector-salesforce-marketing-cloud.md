@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂从 Salesforce Marketing Cloud 复制数据 | Microsoft 文档
+title: 使用 Azure 数据工厂从 Salesforce Marketing Cloud 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Salesforce Marketing Cloud 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -12,34 +12,34 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 93d875fa67e9954268cec26f7413b6a4a4131f9c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d66341507b9237e4d41c31997fd59b8a038cb433
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931027"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680366"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>使用 Azure 数据工厂从 Salesforce Marketing Cloud 复制数据
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Salesforce Marketing Cloud 复制数据。 是基于总体介绍复制活动的[复制活动概述](copy-activity-overview.md)一文进行扩展的。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 Salesforce Marketing Cloud 复制数据。 本文基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
-以下活动支持此 Salesforce 营销云连接器：
+以下活动支持此 Salesforce Marketing Cloud 连接器：
 
-- [复制活动](copy-activity-overview.md)与[支持的源/接收器矩阵](copy-activity-overview.md)
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 Salesforce Marketing Cloud 复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-Salesforce 营销云连接器支持 OAuth 2 身份验证。 它基于[Salesforce 营销云 REST API](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm)构建。
+Salesforce Marketing Cloud 连接器支持 OAuth 2 身份验证。 它在 [Salesforce Marketing Cloud REST API](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm) 的基础上构建。
 
 >[!NOTE]
 >此连接器不支持检索自定义对象或自定义数据扩展。
 
 ## <a name="getting-started"></a>入门
 
-可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建包含复制活动的管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
+可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板通过复制活动创建管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
 
 对于特定于 Salesforce Marketing Cloud 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -47,14 +47,14 @@ Salesforce 营销云连接器支持 OAuth 2 身份验证。 它基于[Salesforce
 
 Salesforce Marketing Cloud 链接的服务支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为：SalesforceMarketingCloud。 | 是 |
 | clientId | 与 Salesforce Marketing Cloud 应用程序关联的客户端 ID。  | 是 |
 | clientSecret | 与 Salesforce Marketing Cloud 应用程序关联的客户端密码。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
-| useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | No |
-| useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | No |
-| usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | No |
+| useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
+| useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
+| usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
 
 **示例：**
 
@@ -84,7 +84,7 @@ Salesforce Marketing Cloud 链接的服务支持以下属性：
 
 要从 Salesforce Marketing Cloud 复制数据，请将数据集的 type 属性设置为 SalesforceMarketingCloudObject。 支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为： **SalesforceMarketingCloudObject** | 是 |
 | tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
@@ -108,13 +108,13 @@ Salesforce Marketing Cloud 链接的服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Salesforce Marketing Cloud 源支持的属性列表。
+有关可用于定义活动的各节和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Salesforce Marketing Cloud 源支持的属性列表。
 
 ### <a name="salesforce-marketing-cloud-as-source"></a>Salesforce Marketing Cloud 作为源
 
-要从 Salesforce Marketing Cloud 复制数据，请将复制活动中的源类型设置为 SalesforceMarketingCloudSource。 复制活动源部分支持以下属性：
+要从 Salesforce Marketing Cloud 复制数据，请将复制活动中的源类型设置为 SalesforceMarketingCloudSource。 复制活动**source**部分支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：SalesforceMarketingCloudSource | 是 |
 | 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
@@ -151,9 +151,9 @@ Salesforce Marketing Cloud 链接的服务支持以下属性：
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>查找活动属性
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
 
-若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

@@ -1,5 +1,5 @@
 ---
-title: Azure 安全中心中的 Endpoint protection 解决方案发现和运行状况评估 |Microsoft Docs
+title: Azure 安全中心中的 Endpoint protection 建议
 description: 如何发现 endpoint protection 解决方案并将其识别为正常。
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2019
 ms.author: memildin
-ms.openlocfilehash: 8de0caa5db4a7e1d97c7d6c055bcb01fed635821
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: dad8c6173495d11abd6c9f5babb4ef8bc789e4ce
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202255"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686413"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure 安全中心的 Endpoint protection 评估和建议
 
@@ -29,29 +29,29 @@ Azure 安全中心为 Endpoint protection 解决方案[支持](https://docs.micr
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* 安全中心建议在[MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps)运行并且结果为**AMServiceEnabled 时， **"在虚拟机上安装 endpoint protection 解决方案"** ：False**
+* 安全中心建议在[MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps)运行且结果为 AMServiceEnabled 时， **"在虚拟机上安装 endpoint protection 解决方案"** **： False**
 
 * 安全中心建议在[MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps)运行和以下任何情况时， **"解决计算机上的 endpoint protection 运行状况问题"** ：
 
   * 以下任何属性均为 false：
 
-     **AMServiceEnabled**
+    **AMServiceEnabled**
 
-     **AntispywareEnabled**
+    **AntispywareEnabled**
 
-     **RealTimeProtectionEnabled**
+    **RealTimeProtectionEnabled**
 
-     **BehaviorMonitorEnabled**
+    **BehaviorMonitorEnabled**
 
-     **IoavProtectionEnabled**
+    **IoavProtectionEnabled**
 
-     **OnAccessProtectionEnabled**
+    **OnAccessProtectionEnabled**
 
   * 如果以下一个或两个属性为7或更多。
 
-     **AntispywareSignatureAge**
+    **AntispywareSignatureAge**
 
-     **AntivirusSignatureAge**
+    **AntivirusSignatureAge**
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center endpoint protection
 
@@ -61,23 +61,23 @@ Azure 安全中心为 Endpoint protection 解决方案[支持](https://docs.micr
 
     * 以下至少一个属性为 false：
 
-       **AMServiceEnabled**
+            **AMServiceEnabled**
+
+            **AntispywareEnabled**
     
-       **AntispywareEnabled**
+            **RealTimeProtectionEnabled**
     
-       **RealTimeProtectionEnabled**
+            **BehaviorMonitorEnabled**
     
-       **BehaviorMonitorEnabled**
+            **IoavProtectionEnabled**
     
-       **IoavProtectionEnabled**
-    
-       **OnAccessProtectionEnabled**
+            **OnAccessProtectionEnabled**
           
     * 如果以下一个或两个签名更新大于或等于7。 
 
-       **AntispywareSignatureAge**
+            **AntispywareSignatureAge**
     
-       **AntivirusSignatureAge**
+            **AntivirusSignatureAge**
 
 ## <a name="trend-micro"></a>Trend Micro
 
@@ -92,27 +92,27 @@ Azure 安全中心为 Endpoint protection 解决方案[支持](https://docs.micr
 
 * **HKLM： \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM： \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
 或
 
-* **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
+* **HKLM： \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM： \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
 安全中心建议在不满足以下任何检查时， **"解决计算机上的 endpoint protection 运行状况问题"** ：
 
-* 检查 Symantec 版本 > = 12：注册表位置：**HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion" -Value "PRODUCTVERSION"**
+* 检查 Symantec 版本 > = 12：注册表位置： **HKLM： \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion "-Value" PRODUCTVERSION "**
 
-* 检查实时保护状态：**HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff == 1**
+* 检查实时保护状态： **HKLM： \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff = = 1**
 
-* 检查签名更新状态：**HKLM\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LatestVirusDefsDate < = 7 天**
+* 检查签名更新状态： **HKLM\Software\Symantec\Symantec 终结点 Protection\CurrentVersion\public-opstate\LatestVirusDefsDate < = 7 天**
 
-* 查看完全扫描状态：**HKLM： \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTime < = 7 天**
+* 检查完全扫描状态： **HKLM： \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTime < = 7 天**
 
-* 查找 Symantec 12 的签名版本的签名版本号路径：**Registry Paths+ "CurrentVersion\SharedDefs" -Value "SRTSP"** 
+* 查找 Symantec 12 的签名版本的签名版本号路径：**注册表路径 + "CurrentVersion\SharedDefs"-值 "SRTSP"** 
 
-* Symantec 14 的签名版本的路径：**Registry Paths+ "CurrentVersion\SharedDefs\SDSDefs" -Value "SRTSP"**
+* Symantec 14 的签名版本路径：**注册表路径 + "CurrentVersion\SharedDefs\SDSDefs"-Value "SRTSP"**
 
 注册表路径：
 
@@ -129,13 +129,13 @@ Azure 安全中心为 Endpoint protection 解决方案[支持](https://docs.micr
 
 安全中心建议在不满足以下任何检查时， **"解决计算机上的 endpoint protection 运行状况问题"** ：
 
-* McAfee 版本：**HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion >= 10**
+* McAfee 版本： **HKLM： \ SOFTWARE\McAfee\Endpoint\AV\ProductVersion > = 10**
 
-* 查找签名版本：**HKLM:\Software\McAfee\AVSolution\DS\DS -Value "dwContentMajorVersion"**
+* 查找签名版本： **HKLM： \ Software\McAfee\AVSolution\DS\DS 值 "dwContentMajorVersion"**
 
-* 查找签名日期：**HKLM:\Software\McAfee\AVSolution\DS\DS -Value "szContentCreationDate" >= 7 days**
+* 查找签名日期： **HKLM： \ Software\McAfee\AVSolution\DS\DS-Value "szContentCreationDate" > = 7 天**
 
-* 查找扫描日期：**HKLM:\Software\McAfee\Endpoint\AV\ODS -Value "LastFullScanOdsRunTime" >= 7 days**
+* 查找扫描日期： **HKLM： \ Software\McAfee\Endpoint\AV\ODS-Value "LastFullScanOdsRunTime" > = 7 天**
 
 ## <a name="mcafee-endpoint-security-for-linux-threat-prevention"></a>适用于 Linux 的 McAfee 终结点安全威胁防护 
 
@@ -143,7 +143,7 @@ Azure 安全中心为 Endpoint protection 解决方案[支持](https://docs.micr
 
 - 文件 **/opt/isec/ens/threatprevention/bin/isecav**退出 
 
-- **"/opt/isec/ens/threatprevention/bin/isecav--version"** 输出是：**McAfee name = 适用于 Linux 的 McAfee 终结点安全威胁防护和迈克菲版本 > = 10**
+- **"/opt/isec/ens/threatprevention/bin/isecav--version"** 输出是： **mcafee name = 适用于 Linux 的 Mcafee Endpoint Security 威胁防护和迈克菲版本 > = 10**
 
 安全中心建议在不满足以下任何检查时， **"解决计算机上的 endpoint protection 运行状况问题"** ：
 
@@ -163,22 +163,21 @@ Azure 安全中心为 Endpoint protection 解决方案[支持](https://docs.micr
 
 安全中心建议在不满足以下任何检查时， **"解决计算机上的 endpoint protection 运行状况问题"** ：
 
-- **"/opt/sophos-av/bin/savlog--maxage = 7 |grep-i "计划的扫描。已\*完成 "| tail-1"** ，返回值   
+- **"/opt/sophos-av/bin/savlog--maxage = 7 |grep-i "计划的扫描。\* 完成 "|tail-1 "** ，返回值
 
-- **"/opt/sophos-av/bin/savlog--maxage = 7 |grep "扫描已完成"** |tail-1 "，返回值   
+- **"/opt/sophos-av/bin/savlog--maxage = 7 |grep "扫描已完成"** |tail-1 "，返回值
 
 - **"/opt/sophos-av/bin/savdstatus--lastupdate"** 返回 lastupdate，该值应 < = 7 天 
 
 - **"/opt/sophos-av/bin/savdstatus-v"** 等于 **"访问时扫描正在运行"** 
 
-- **"/opt/sophos-av/bin/savconfig Get LiveProtection"** 返回已启用  
+- **"/opt/sophos-av/bin/savconfig Get LiveProtection"** 返回已启用
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
 ### <a name="troubleshoot"></a>故障排除
 
-Microsoft 反恶意软件扩展日志位于：  
-**%Systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware(Or PaaSAntimalware)\1.5.5.x(version#)\CommandExecution.log**
+Microsoft 反恶意软件扩展日志位于： **%Systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware （或 PaaSAntimalware） \1.5.5.x （版本 #） \CommandExecution.log**
 
 ### <a name="support"></a>支持
 

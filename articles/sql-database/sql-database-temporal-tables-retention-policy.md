@@ -1,5 +1,5 @@
 ---
-title: 使用保留策略管理临时表中的历史数据 | Microsoft 文档
+title: 使用保留策略管理临时表中的历史数据
 description: 了解如何使用临时保留策略来控制历史数据。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: 72022510676548fad79031d4334a2c95571fc16d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2568f3be96604856d5353f7f5f94926162880bfd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566385"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686998"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>使用保留策略管理临时表中的历史数据
 
@@ -83,7 +83,7 @@ SET (SYSTEM_VERSIONING = ON (HISTORY_RETENTION_PERIOD = 9 MONTHS));
 ```
 
 > [!IMPORTANT]
-> 将 SYSTEM_VERSIONING 设置为 OFF 不会保存保留期值。 在未显式指定 HISTORY_RETENTION_PERIOD 的情况下将 SYSTEM_VERSIONING 设置为 ON 会导致保留期为 INFINITE。
+> 将 SYSTEM_VERSIONING 设置为 OFF *不会保存*保留期值。 在未显式指定 HISTORY_RETENTION_PERIOD 的情况下将 SYSTEM_VERSIONING 设置为 ON 会导致保留期为 INFINITE。
 
 要查看保留策略的当前状态，请使用以下查询，该查询将数据库级别的临时保留启用标志与单个表的保留期相联接：
 
@@ -116,11 +116,11 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 
 针对具有行存储聚集索引的表的清理任务要求索引的开头为对应于 SYSTEM_TIME 期限结束时间的列。 若没有此类索引，则无法配置有限保留期：
 
-*消息 13765，级别 16，状态 1 <br></br>在版本由系统控制的时态表 'temporalstagetestdb.dbo.WebsiteUserInfo' 中设置有限保留期失败，因为历史记录表 'temporalstagetestdb.dbo.WebsiteUserInfoHistory' 不包含所需的聚集索引。请考虑在历史记录表中创建聚集列存储，或者创建开头为与 SYSTEM_TIME 期限结束时间匹配的列的 B 树索引。*
+*消息13765、级别16、状态 1 <br></br> 在经系统版本控制的时态表 "temporalstagetestdb.dbo.websiteuserinfohistory" 上设置有限保留期失败，因为历史记录表 "temporalstagetestdb.dbo.websiteuserinfohistory WebsiteUserInfoHistory" 不包含所需的聚集索引。请考虑在历史记录表中创建聚集列存储或 B 树索引，并以与 SYSTEM_TIME 时间段的结束时间匹配的列开始。*
 
 请务必注意，Azure SQL 数据库创建的默认历史记录表已有聚集索引，这符合保留策略。 如果尝试在具有有限保留期的表中删除该索引，该操作会失败并出现以下错误：
 
-*Msg 13766，级别 16，状态 1 <br></br>无法删除聚集索引 'WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory'，因为它正用于自动清理陈旧数据。如果需要删除此索引，请考虑在版本由系统控制的临时表中将 HISTORY_RETENTION_PERIOD 设置为 INFINITE。*
+*消息13766、级别16、状态 1 <br></br> 无法删除聚集索引 ' IX_WebsiteUserInfoHistory '，因为它正用于自动清理过时数据。如果需要删除此索引，请考虑在相应的系统版本控制临时表中将 HISTORY_RETENTION_PERIOD 设置为 "无限"。*
 
 如果按升序插入历史行（按期限结束时间列排序），则清理聚集列存储索引的过程最为顺利。当历史记录表是由 SYSTEM_VERSIONIOING 机制以独占方式填充时，情况往往如此。 如果历史记录表中的行未按期限结束时间列排序（如果迁移了现有历史数据，可能会存在这种情况），则应在正确排序的 B 树行存储索引顶层重新创建聚集列存储索引，以获得最佳性能。
 
@@ -168,7 +168,7 @@ SELECT * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME ALL;
 
 ## <a name="point-in-time-restore-considerations"></a>时间点还原注意事项
 
-通过[将现有数据库还原到特定时间点](sql-database-recovery-using-backups.md)创建新数据库时，将在数据库级别禁用临时保留。 （**is_temporal_history_retention_enabled** 标志设置为 OFF） 使用此功能可以在还原时检查所有历史行，无需担心在查询陈旧行之前它们是否已删除。 可以使用此功能*检查已超过配置的保留期的历史数据*。
+通过[将现有数据库还原到特定时间点](sql-database-recovery-using-backups.md)创建新数据库时，会在数据库级别禁用临时保留。 （**is_temporal_history_retention_enabled** 标志设置为 OFF） 使用此功能可以在还原时检查所有历史行，无需担心在查询陈旧行之前它们是否已删除。 可以使用此功能*检查已超过配置的保留期的历史数据*。
 
 假设为某个时态表指定了一个月的保留期。 如果数据库是在高级服务层中创建的，则可以使用保持过去最多 35 天前状态的数据库创建数据库副本。 这样，便可以通过直接查询历史记录表，有效分析保留时间最长为 65 天前的历史行。
 

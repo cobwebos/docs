@@ -1,6 +1,6 @@
 ---
-title: 提高 Azure SQL 数据仓库中的列存储索引性能 |Microsoft Docs
-description: 减少内存需求或增加可用内存，使列存储索引压缩到每个行组中的行数最大化。
+title: 提高列存储索引性能
+description: Azure SQL 数据仓库减少内存需求或增加可用内存，使列存储索引压缩到每个行组的行数最大化。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: load-data
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ec85bcc764ba7a7ae6341e0490530c31fdb5a02b
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d5dba4e9a086502f638252a0ce2b16b4abeeb643
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595458"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685659"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
 
@@ -86,7 +87,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 其中，short-string-columns 使用 <= 32 字节的字符串数据类型，long-string-columns 使用 > 32 字节的字符串数据类型。
 
-使用专为压缩文本设计的压缩方法来压缩长字符串。 此压缩方法使用*字典*来存储文本模式。 字典最大大小为 16 MB。 行组中每个长字符串列只能有一个字典。
+使用专为压缩文本设计的压缩方法来压缩长字符串。 此压缩方法使用*字典*来存储文本模式。 字典最大大小为 16 MB。 行组中每个长字符串列只能有一个词典。
 
 有关列存储内存需求的深入讨论，请观看视频 [Azure SQL Data Warehouse scaling: configuration and guidance](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)（Azure SQL 数据仓库缩放：配置和指南）。
 
@@ -95,7 +96,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 使用以下技巧来减少内存需求，以便能将行组压缩到列存储索引中。
 
 ### <a name="use-fewer-columns"></a>减少所用列数
-设计表时尽可能减少所用列数。 如果行组已压缩到列存储中，列存储索引会单独压缩每个列段。 因此，用于压缩行组的内存需求将随列数的增加而增加。
+设计表时尽可能减少所用列数。 如果行组已压缩到列存储中，列存储索引将单独压缩每个列段。 因此，用于压缩行组的内存需求将随列数的增加而增加。
 
 
 ### <a name="use-fewer-string-columns"></a>减少字符串列数
@@ -116,7 +117,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 数据库会在查询的所有运算符之间共享查询的内存授予。 如果加载查询的排序和联接复杂，可用于压缩的内存将减少。
 
-请仅针对加载查询而设计加载查询。 如果要对数据运行转换，请与加载查询分开来运行转换。 例如，将数据暂存在一个堆表中，运行转换，然后将临时表加载到列存储索引中。 也可先加载数据，并使用 MPP 系统来转换数据。
+请仅针对加载查询而设计加载查询。 如果要对数据运行转换，请与加载查询分开来运行转换。 例如，将数据暂存在一个堆表中，运行转换，并将临时表加载到列存储索引中。 也可先加载数据，然后使用 MPP 系统来转换数据。
 
 ### <a name="adjust-maxdop"></a>调整 MAXDOP
 

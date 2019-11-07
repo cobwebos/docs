@@ -1,5 +1,5 @@
 ---
-title: 在 Azure SQL 数据仓库中使用 T-SQL 循环 | Microsoft Docs
+title: 使用 T-sql 循环
 description: 有关在开发解决方案时在 Azure SQL 数据仓库中使用 T-SQL 循环和替换游标的技巧。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: e27edcc1383a235fbdb9513066e69e2f680ea2f9
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b57358e32bda83ef51fe67aa1057411d51773fa6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479628"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685827"
 ---
 # <a name="using-t-sql-loops-in-sql-data-warehouse"></a>在 SQL 数据仓库中使用 T-SQL 循环
 有关在开发解决方案时在 Azure SQL 数据仓库中使用 T-SQL 循环和替换游标的技巧。
@@ -25,7 +26,7 @@ ms.locfileid: "68479628"
 SQL 数据仓库支持对重复执行的语句块使用 [WHILE](/sql/t-sql/language-elements/while-transact-sql) 循环。 只要指定的条件都成立，或者在代码专门使用 BREAK 关键字终止循环之前，此 WHILE 循环将一直继续。 循环适合用于替换 SQL 代码中定义的游标。 幸运的是，几乎所有以 SQL 代码编写的游标都是快进的只读变体。 因此，[WHILE] 循环是用于替换游标的绝佳替代方案。
 
 ## <a name="replacing-cursors-in-sql-data-warehouse"></a>在 SQL 数据仓库中替换游标
-但是，在一头扎进去之前，你应该问自己以下问题：“是否可以重写此游标以使用基于集的操作？”。 在许多情况下，答案是肯定的，通常这也是最佳方法。 基于集的操作的执行速度通常比迭代性的逐行方法要快得多。
+但是，在深入学习之前，应该先自问以下问题：“此游标是否可重写以使用基于集的操作？”。 在许多情况下，答案是肯定的，通常这也是最佳方法。 基于集的操作的执行速度通常比迭代性的逐行方法要快得多。
 
 可以轻松使用循环构造来替换快进只读游标。 下面是一个简单的示例。 此代码示例将更新数据库中每个表的统计信息。 通过迭代循环中的表，每个命令将依次执行。
 
@@ -70,5 +71,5 @@ DROP TABLE #tbl;
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅[开发概述](sql-data-warehouse-overview-develop.md)。
+有关更多开发技巧，请参阅 [开发概述](sql-data-warehouse-overview-develop.md)。
 

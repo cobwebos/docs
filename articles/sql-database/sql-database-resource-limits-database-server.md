@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库服务器资源限制 | Microsoft Docs
+title: Azure SQL 数据库服务器资源限制
 description: 本文概述了使用弹性池的单一数据库和弹性池的 Azure SQL 数据库服务器资源限制。 它还提供了有关在达到或超过这些资源限制时会发生什么情况的信息。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 04/18/2019
-ms.openlocfilehash: 175f694cbe46f871349136c9ce91888b6de48d21
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b358e69df1df579e91a9098c120c7e6b4e3f2ead
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566853"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687496"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Azure SQL 数据库服务器的 SQL 数据库资源限制
 
@@ -27,7 +27,7 @@ ms.locfileid: "68566853"
 
 ## <a name="maximum-resource-limits"></a>最大资源限制
 
-| Resource | 限制 |
+| 资源 | 限制 |
 | :--- | :--- |
 | 每个服务器的数据库数 | 5000 |
 | 任意区域中每个订阅的服务器默认数量 | 20 |
@@ -45,13 +45,13 @@ ms.locfileid: "68566853"
 > - 管理操作和呈现门户视点（涉及枚举服务器中的数据库）的延迟增加。
 
 ### <a name="storage-size"></a>存储大小
-- 对于单一数据库 rources, 请参阅[基于 DTU 的资源限制](sql-database-dtu-resource-limits-single-databases.md)或[基于 vCore 的资源限制](sql-database-vcore-resource-limits-single-databases.md), 了解每个定价层的存储大小限制。
+- 对于单个数据库资源，请参阅[基于 DTU 的资源限制](sql-database-dtu-resource-limits-single-databases.md)或[基于 vCore 的资源限制](sql-database-vcore-resource-limits-single-databases.md)，了解每个定价层的存储大小限制。
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>如果达到数据库资源限制，会发生什么？
 
 ### <a name="compute-dtus-and-edtus--vcores"></a>计算（DTU 和 eDTU/vCore）
 
-如果数据库计算资源利用率（衡量依据为 DTU 和 eDTU 或 vCore）变高，查询延迟会增加，甚至可能会出现超时。在上述情况下，服务可能对查询排队，并在资源可用时向查询提供资源以用于执行。
+当数据库计算使用率（以 Dtu 和 Edtu 或 Vcore 度量）变得较高时，查询延迟会增加，甚至可能会超时。在这些情况下，查询可能会通过服务排队，并在资源可用时提供用于执行的资源。
 计算使用率变高时，风险缓解选项包括：
 
 - 提高数据库或弹性池的计算大小，为数据库提供更多计算资源。 请参阅[缩放单一数据库资源](sql-database-single-database-scale.md)和[缩放弹性池资源](sql-database-elastic-pool-scale.md)。

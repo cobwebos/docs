@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: d93c3599bb4a52a03d4ac436ca664ce6be1c55b9
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200822"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682211"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>为 Azure HDInsight 群集选择适当的 VM 大小
 
@@ -38,14 +38,14 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 
 Azure 中的虚拟机系列经过优化，可适应不同的用例。 在下表中，可以找到一些最常用的用例以及与它们匹配的 VM 系列。
 
-| Type                     | 大小           |    描述       |
+| 类型                     | 大小           |    说明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [入门级](../virtual-machines/linux/sizes-general.md)          | A、Av2  | 具有最适合于入门级工作负荷（如开发和测试）的 CPU 性能和内存配置。 A 系列 VM 提供低成本的 Azure 入门选项，非常经济合算。 |
 | [常规用途](../virtual-machines/linux/sizes-general.md)          | D、DSv2、Dv2  | CPU 与内存之比平衡。 适用于测试和开发、小到中型数据库和低到中等流量 Web 服务器。 |
 | [计算优化](../virtual-machines/linux/sizes-compute.md)        | F           | 高 CPU 与内存之比。 适用于中等流量的 Web 服务器、网络设备、批处理和应用程序服务器。        |
 | [内存优化](../virtual-machines/linux/sizes-memory.md)         | Esv3、Ev3  | 高内存与 CPU 之比。 适用于关系数据库服务器、中到大型规模的缓存和内存中分析。                 |
 
-- 有关 HDInsight 支持的区域内可用 VM 实例的定价的信息，请参阅[Hdinsight 定价](https://azure.microsoft.com/en-us/pricing/details/hdinsight/)。
+- 有关 HDInsight 支持的区域内可用 VM 实例的定价的信息，请参阅[Hdinsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
 ## <a name="cost-saving-vm-types-for-light-workloads"></a>节省成本的 VM 类型适用于轻型工作负荷
 
@@ -55,10 +55,10 @@ Azure 中的虚拟机系列经过优化，可适应不同的用例。 在下表�
 
 | 群集类型 | 版本 | 工作器节点 | 头节点 | Zookeeper 节点 |
 |---|---|---|---|---|
-| Spark | 所有 | F4 和更高版本 | 否 | 否 |
-| Hadoop | 所有 | F4 和更高版本 | 否 | 否 |
-| Kafka | 所有 | F4 和更高版本 | 否 | 否 |
-| HBase | 所有 | F4 和更高版本 | 否 | 否 |
+| Spark | All | F4 和更高版本 | 否 | 否 |
+| Hadoop | All | F4 和更高版本 | 否 | 否 |
+| Kafka | All | F4 和更高版本 | 否 | 否 |
+| HBase | All | F4 和更高版本 | 否 | 否 |
 | LLAP | disabled | 否 | 否 | 否 |
 | Storm | disabled | 否 | 否 | 否 |
 | ML 服务 | 仅限 HDI 3。6 | F4 和更高版本 | 否 | 否 |

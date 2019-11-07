@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库托管实例审核 | Microsoft Docs
+title: Azure SQL 数据库托管实例审核
 description: 了解如何通过 T-SQL 开始使用 Azure SQL 数据库托管实例审核
 services: sql-database
 ms.service: sql-database
@@ -13,19 +13,19 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: 23e3a15ac26cdf0950ee31fddad2af4a3b7414c2
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 915d804cd3ae67848b4b9aa2f50fb5f1b4f1f092
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025386"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689424"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>开始使用 Azure SQL 数据库托管实例审核
 
 [托管实例](sql-database-managed-instance.md)审核会跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核还可：
 
 - 帮助保持合规性、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
-- 实现并促进遵从合规标准，但不能保证合规性。 有关支持标准符合性的 Azure 程序的详细信息，请参阅[Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，从中可以找到最新的 SQL 数据库符合性认证列表。
+- 实现并促进遵从合规标准，但不能保证合规性。 有关支持标准符合性的 Azure 程序的详细信息，请参阅 [Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，可以从中找到 SQL 数据库符合性认证的最新列表。
 
 ## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>将服务器的审核设置为 Azure 存储
 
@@ -134,7 +134,7 @@ ms.locfileid: "73025386"
 
      1. 从下拉列表中选择订阅、存储帐户和 Blob 容器，或者单击“创建”来创建自己的容器。 完成后，单击“确定”：
 
-        ![选择 Azure 订阅、存储帐户和 blob 容器](./media/sql-managed-instance-auditing/13_mi_SSMS_select_subscription_account_container.png)
+        ![选择 Azure 订阅、存储帐户和 Blob 容器](./media/sql-managed-instance-auditing/13_mi_SSMS_select_subscription_account_container.png)
 
      1. 在“创建审核”对话框中单击“确定”。
 
@@ -157,9 +157,9 @@ ms.locfileid: "73025386"
 - [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
-## <a name="set-up-auditing-for-your-server-to-event-hub-or-azure-monitor-logs"></a>为服务器设置到事件中心或 Azure Monitor 日志的审核
+## <a name="set-up-auditing-for-your-server-to-event-hub-or-azure-monitor-logs"></a>将服务器的审核设置为事件中心或 Azure Monitor 日志
 
-托管实例中的审核日志甚至可以发送到中心或 Azure Monitor 日志。 本部分介绍如何进行以下配置：
+可将托管实例的审核日志发送到事件中心或 Azure Monitor 日志。 本部分介绍如何进行以下配置：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中导航到托管实例。
 
@@ -169,7 +169,7 @@ ms.locfileid: "73025386"
 
 4. 在日志列表中选择“SQLSecurityAuditEvents”。
 
-5. 选择审核事件的目标-事件中心、Azure Monitor 日志，或同时选择两者。 为每个目标配置所需的参数（例如，Log Analytics 工作区）。
+5. 选择审核事件的目标 - 事件中心和/或 Azure Monitor 日志。 为每个目标配置所需的参数（例如，Log Analytics 工作区）。
 
 6. 单击“保存”。
 
@@ -189,7 +189,7 @@ ms.locfileid: "73025386"
    - [创建服务器审核规范 T-SQL 指南](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [创建数据库审核规范 T-SQL 指南](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
-10. 启用在步骤8：
+10. 启用在步骤 8 中创建的服务器审核：
  
     ```SQL
     ALTER SERVER AUDIT [<your_audit_name>] WITH (STATE=ON);
@@ -214,9 +214,9 @@ ms.locfileid: "73025386"
 
 ### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>使用和分析存储在 Azure Monitor 日志中的日志
 
-如果审核日志写入 Azure Monitor 日志，则它们将在 "Log Analytics" 工作区中提供，您可以在其中对审核数据运行高级搜索。 作为起点，请导航到 "Log Analytics" 工作区，然后在 "*常规*" 部分中单击 "*日志*"，然后输入简单查询，例如： `search "SQLSecurityAuditEvents"` 查看审核日志。  
+如果将审核日志写入到 Azure Monitor 日志，则可以在 Log Analytics 工作区中使用它们，可以在其中对审核数据运行高级搜索。 首先，导航到 Log Analytics 工作区，在“常规”部分下单击“日志”，然后输入一个简单查询（例如： *）以查看审核日志*`search "SQLSecurityAuditEvents"`。  
 
-Azure Monitor 日志使用集成的搜索和自定义仪表板，可以在所有工作负荷和服务器之间轻松分析数百万条记录，从而为你提供实时操作见解。 有关 Azure Monitor 日志搜索语言和命令的其他有用信息，请参阅[Azure Monitor 日志搜索引用](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)。
+有了 Azure Monitor 日志，就可以使用集成的搜索和自定义仪表板来轻松分析所有工作负荷和服务器上的数百万记录，获得实时操作见解。 有关 Azure Monitor 日志搜索语言和命令的其他有用信息，请参阅 [Azure Monitor 日志搜索参考](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -232,15 +232,15 @@ Azure Monitor 日志使用集成的搜索和自定义仪表板，可以在所有
 Azure Blob 存储审核的主要 `CREATE AUDIT` 语法差异为：
 
 - 提供了新语法 `TO URL`，该语法允许指定用于放置 `.xel` 文件的 Azure Blob 存储容器的 URL。
-- 提供了一个新的语法 `TO EXTERNAL MONITOR` 来实现即使是中心和 Azure Monitor 日志目标。
-- **不支持** `TO FILE` 语法，因为 SQL 数据库无法访问 Windows 文件共享。
+- 提供了新语法 `TO EXTERNAL MONITOR` 以启用事件中心和 Azure Monitor 日志这两个目标。
+- `TO FILE`不支持 语法，因为 SQL 数据库无法访问 Windows 文件共享。
 - **不支持**关闭选项。
-- **不支持** `queue_delay` 为 0。
+- `queue_delay`不支持 为 0。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关审核日志使用方法的完整列表，请参阅 [SQL 数据库审核入门](sql-database-auditing.md)。
-- 有关支持标准符合性的 Azure 程序的详细信息，请参阅[Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，从中可以找到最新的 SQL 数据库符合性认证列表。
+- 有关支持标准符合性的 Azure 程序的详细信息，请参阅 [Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，可以从中找到 SQL 数据库符合性认证的最新列表。
 
 <!--Image references-->
 

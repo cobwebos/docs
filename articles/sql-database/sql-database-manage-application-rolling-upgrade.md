@@ -1,5 +1,5 @@
 ---
-title: 滚动应用程序升级 - Azure SQL 数据库 | Microsoft Docs
+title: 滚动应用程序升级-Azure SQL 数据库
 description: 了解如何使用 Azure SQL 数据库的异地复制来支持云应用程序的在线升级。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 55b23b8d8e03a79aa0806a68306017f89c747760
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 253a10e75832cf6ee8294405e34fa93b801c1b49
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567773"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689498"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>使用 SQL 数据库活动异地复制管理云应用程序的滚动升级
 
@@ -144,13 +144,13 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 
 此方法的主要缺点是它需要每个应用程序组件的双倍冗余，因此会导致更高的成本。 它还涉及更复杂的工作流。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 本文中所述的两种升级方法具有不同的复杂性和成本，但它们都注重于最小化用户仅限于执行只读操作的时间。 该时间由升级脚本的持续时间直接定义。 该时间不依赖于数据库大小、所选的服务层级、网站配置或你无法轻松控制的其他因素。 所有准备步骤都从升级步骤中分离出来，不影响生产应用程序。 升级脚本的效率是决定升级期间的用户体验的关键因素。 因此，改进体验的最佳做法是将工作重心放在尽可能提高升级脚本的效率上。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)。
+* 有关业务连续性概述和应用场景，请参阅 [业务连续性概述](sql-database-business-continuity.md)。
 * 若要了解 Azure SQL 数据库活动异地复制，请参阅[使用活动异地复制创建可读辅助数据库](sql-database-active-geo-replication.md)。
 * 若要了解 Azure SQL 数据库自动故障转移组，请参阅[使用自动故障转移组实现多个数据库的透明、协调式故障转移](sql-database-auto-failover-group.md)。
 * 若要了解 Azure 应用服务中的过渡环境，请参阅[在 Azure 应用服务中设置过渡环境](../app-service/deploy-staging-slots.md)。

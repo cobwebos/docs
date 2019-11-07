@@ -1,5 +1,5 @@
 ---
-title: 通过示例了解 Azure 数据工厂定价 | Microsoft Docs
+title: 了解 Azure 数据工厂的定价示例
 description: 本文使用详细的示例介绍并演示 Azure 数据工厂定价模型
 documentationcenter: ''
 author: djpmsft
@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.openlocfilehash: 168d977b9dc0ea6117796cf98a8562f168258d28
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: c42946733ee49ed6acf2c8deadf850208e003339
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387455"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684535"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>通过示例了解数据工厂定价
 
 本文使用详细的示例介绍并演示 Azure 数据工厂定价模型。
 
 > [!NOTE]
-> 以下示例中使用的价格是假设的，并不是指实际定价。
+> 以下这些示例中使用的价格是假设的，并不意味着实际定价。
 
 ## <a name="copy-data-from-aws-s3-to-azure-blob-storage-hourly"></a>将数据每隔一小时从 AWS S3 复制到 Azure Blob 存储
 
@@ -153,7 +153,7 @@ ms.locfileid: "72387455"
 | 创建管道 | 3 个读/写实体（1 个用于创建管道，2 个用于数据集引用） |
 | 获取管道 | 1 个读/写实体 |
 | 运行管道 | 2 个活动运行（1 个用于触发器运行，1 个用于活动运行） |
-| 数据流假设：执行时间 = 10 分钟 + 10 分钟 TTL | 10 \* 8 的一般计算核心，TTL 为10 |
+| 数据流假设：执行时间 = 10 分钟 + 10 分钟 TTL | 10 \* 8 核一般计算，TTL 为10 |
 | 监视管道假设：仅发生 1 次运行 | 重试了 2 个监视运行记录（1 个用于管道运行，1 个用于活动运行） |
 
 **方案总定价： $0.3011**

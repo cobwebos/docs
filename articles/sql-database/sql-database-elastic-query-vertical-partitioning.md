@@ -1,5 +1,5 @@
 ---
-title: 在具有不同架构的云数据库中进行查询 | Microsoft 文档
+title: 在具有不同架构的云数据库中进行查询
 description: 如何在垂直分区上设置跨数据库查询
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 5657490474a401d9e3074ed6ab250a34ef0a5d8d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 998513c942cf1b6ceae861160abfe3dc6dac7792
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568547"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690328"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>在具有不同架构的云数据库中进行查询。（预览）
 
@@ -38,7 +38,7 @@ ms.locfileid: "68568547"
 1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
 2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
 3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)（创建外部数据源）
-4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) 
+4. [创建外部表](https://msdn.microsoft.com/library/dn935021.aspx) 
 
 ## <a name="create-database-scoped-master-key-and-credentials"></a>创建数据库范围的主密钥和凭据
 
@@ -50,7 +50,7 @@ ms.locfileid: "68568547"
     [;]
 
 > [!NOTE]
-> 确保 `<username>` 不包含任何“\@servername”后缀。 
+> 确保 `<username>` 不包含任何“**servername”\@** 后缀。 
 >
 
 ## <a name="create-external-data-sources"></a>创建外部数据源
@@ -165,7 +165,7 @@ DATA_SOURCE 子句定义用于外部表的外部数据源（即，在垂直分�
     WHERE c_id = 100
 ```
 
-## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>远程 T-SQL 执行的存储过程：sp\_execute_remote
+## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>远程 T-SQL 执行的存储过程：sp\_execute_remote
 
 弹性查询还引入了一个存储过程，以便提供对远程数据库的直接访问。 该存储过程名为 [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714)，可用于执行远程存储过程或远程数据库上的 T-SQL 代码。 它采用了以下参数： 
 
@@ -174,9 +174,9 @@ DATA_SOURCE 子句定义用于外部表的外部数据源（即，在垂直分�
 * 参数声明 (nvarchar) - 可选：在查询参数（如 sp_executesql）中使用的参数的字符串（包含数据类型定义）。 
 * 参数值列表 - 可选：以逗号分隔的参数值（如 sp_executesql）的列表。
 
-Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据库上执行给定的 T-SQL 语句。 它使用外部数据源的凭据连接到远程数据库。  
+sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据库上执行给定的 T-SQL 语句。 它使用外部数据源的凭据连接到远程数据库。  
 
-例如： 
+示例： 
 
 ```sql
     EXEC sp_execute_remote

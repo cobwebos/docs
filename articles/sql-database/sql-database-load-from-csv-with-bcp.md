@@ -1,5 +1,5 @@
 ---
-title: 将数据从 CSV 文件载入 Azure SQL 数据库 (bcp) | Microsoft Docs
+title: 将数据从 CSV 文件载入 Azure SQL 数据库（bcp）
 description: 对于较小的数据，请使用 bcp 将数据导入到 Azure SQL 数据库。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: b3dff4e100d3859978667ad0df7d895a24ca8a8d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d9c4a6293fe2c52870e61488713455ac6c2ed4a1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567827"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689567"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>将数据从 CSV 加载到 Azure SQL 数据库（平面文件）
 
@@ -38,7 +38,7 @@ ms.locfileid: "68567827"
 
 如果使用自己的数据尝试学习本教程，则数据需要使用 ASCII 或 UTF-16 编码，因为 bcp 不支持 UTF-8。 
 
-## <a name="1-create-a-destination-table"></a>1.创建目标表
+## <a name="1-create-a-destination-table"></a>1. 创建目标表
 
 将 SQL 数据库中的某个表定义为目标表。 该表中的列必须对应于数据文件每一行中的数据。
 
@@ -57,9 +57,9 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 
-## <a name="2-create-a-source-data-file"></a>2.创建源数据文件
+## <a name="2-create-a-source-data-file"></a>2. 创建源数据文件
 
-打开记事本，将以下几行数据复制到新文本文件，然后将此文件保存到本地临时目录 C:\Temp\DimDate2.txt。 此数据采用 ASCII 格式。
+打开记事本，将以下几行数据复制到新文本文件，然后将此文件保存到本地临时目录，路径为 C:\Temp\DimDate2.txt。 此数据采用 ASCII 格式。
 
 ```
 20150301,1,3
@@ -82,7 +82,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t , 
 ```
 
-## <a name="3-load-the-data"></a>3.加载数据
+## <a name="3-load-the-data"></a>3. 加载数据
 
 要加载数据，请打开命令提示符并运行以下命令，请注意将 Server Name、Database Name、Username 和 Password 替换成自己的信息。
 

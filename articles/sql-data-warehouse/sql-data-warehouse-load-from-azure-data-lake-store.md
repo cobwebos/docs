@@ -1,5 +1,5 @@
 ---
-title: 从 Azure Data Lake Storage 到 Azure SQL 数据仓库的教程负载 |Microsoft Docs
+title: 教程从 Azure Data Lake Storage 加载数据
 description: 使用 PolyBase 外部表将数据从 Azure Data Lake Storage 加载到 Azure SQL 数据仓库。
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,38 +10,39 @@ ms.subservice: load-data
 ms.date: 08/08/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 3db355cf5782620bda3a9e04afbee073c8929856
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 522cb9b75d5c0db270f8ba4a65850e35a2e8c4fd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935119"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685692"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>将数据从 Azure Data Lake Storage 加载到 SQL 数据仓库
-使用 PolyBase 外部表将数据从 Azure Data Lake Storage 加载到 Azure SQL 数据仓库。 尽管可以对存储在 Data Lake Storage 中的数据运行即席查询, 但我们建议将数据导入 SQL 数据仓库以获得最佳性能。
+使用 PolyBase 外部表将数据从 Azure Data Lake Storage 加载到 Azure SQL 数据仓库。 尽管可以对存储在 Data Lake Storage 中的数据运行即席查询，但我们建议将数据导入 SQL 数据仓库以获得最佳性能。
 
 > [!div class="checklist"]
 > * 创建从 Data Lake Storage 加载所需的数据库对象。
 > * 连接到 Data Lake Storage 目录。
 > * 将数据载入 Azure SQL 数据仓库。
 
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="before-you-begin"></a>开始之前
 开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
 
 若要运行本教程，需要：
 
-* 要用于服务到服务身份验证的 Azure Active Directory 应用程序。 若要创建，请遵循 [Active directory 身份验证](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
+* 用于服务到服务身份验证的 Azure Active Directory 应用程序。 若要创建，请遵循 [Active directory 身份验证](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
 
 * Azure SQL 数据仓库。 请参阅[创建和查询 Azure SQL 数据仓库](create-data-warehouse-portal.md)。
 
 * Data Lake Storage 帐户。 请参阅[Azure Data Lake Storage 入门](../data-lake-store/data-lake-store-get-started-portal.md)。 
 
 ##  <a name="create-a-credential"></a>创建凭据
-若要访问你的 Data Lake Storage 帐户, 你将需要创建一个数据库主密钥, 以加密下一步中使用的凭据机密。 然后创建数据库范围的凭据。 使用服务主体进行身份验证时, 数据库范围凭据存储 AAD 中设置的服务主体凭据。 你还可以在 Gen2 的数据库作用域凭据中使用存储帐户密钥。 
+若要访问你的 Data Lake Storage 帐户，你将需要创建一个数据库主密钥，以加密下一步中使用的凭据机密。 然后创建数据库范围的凭据。 使用服务主体进行身份验证时，数据库范围凭据存储 AAD 中设置的服务主体凭据。 你还可以在 Gen2 的数据库作用域凭据中使用存储帐户密钥。 
 
-若要使用服务主体连接到 Data Lake Storage, 你必须**首先**创建一个 Azure Active Directory 应用程序, 创建一个访问密钥, 并授予应用程序对 Data Lake Storage 帐户的访问权限。 有关说明, 请参阅[使用 Active Directory 对 Azure Data Lake Storage 进行身份验证](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。
+若要使用服务主体连接到 Data Lake Storage，你必须**首先**创建一个 Azure Active Directory 应用程序，创建一个访问密钥，并授予应用程序对 Data Lake Storage 帐户的访问权限。 有关说明，请参阅[使用 Active Directory 对 Azure Data Lake Storage 进行身份验证](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。
 
 ```sql
 -- A: Create a Database Master Key.
@@ -112,7 +113,7 @@ WITH (
 ```
 
 ## <a name="configure-data-format"></a>配置数据格式
-若要从 Data Lake Storage 导入数据, 需要指定外部文件格式。 此对象定义了如何在 Data Lake Storage 中编写文件。
+若要从 Data Lake Storage 导入数据，需要指定外部文件格式。 此对象定义了如何在 Data Lake Storage 中编写文件。
 有关完整列表，请查看我们的 T-SQL 文档 [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql)（创建外部文件格式）
 
 ```sql
@@ -173,7 +174,7 @@ WITH
 Data Lake Storage Gen1 使用基于角色的访问控制 (RBAC) 控制对数据的访问。 也就是说，服务主体必须拥有对位置参数中定义的目录以及最终目录和文件的子项的读取权限。 这样一来，PolyBase 就可以进行身份验证，并加载该数据。 
 
 ## <a name="load-the-data"></a>加载数据
-若要从加载数据 Data Lake Storage 请使用[CREATE TABLE AS SELECT (transact-sql)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)语句。 
+若要从加载数据 Data Lake Storage 请使用[CREATE TABLE AS SELECT （transact-sql）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)语句。 
 
 CTAS 将创建新表，并在该表中填充 select 语句的结果。 CTAS 将新表定义为包含与 select 语句结果相同的列和数据类型。 如果选择了外部表中的所有列，则新表将是外部表中的列和数据类型的副本。
 
@@ -203,7 +204,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 ## <a name="optimize-statistics"></a>优化统计信息
 最好是在加载之后马上创建单列统计信息。 对于统计信息，可以使用多个选项。 例如，如果针对每个列创建单列统计信息，则重新生成所有统计信息可能需要花费很长时间。 如果知道某些列不会在查询谓词中使用，可以不创建有关这些列的统计信息。
 
-如果决定针对每个表的每个列创建单列统计信息，可以使用 [statistics](sql-data-warehouse-tables-statistics.md)（统计信息）一文中的存储过程代码示例 `prc_sqldw_create_stats`。
+如果决定针对每个表的每个列创建单列统计信息，可以使用 `prc_sqldw_create_stats`statistics[（统计信息）一文中的存储过程代码示例 ](sql-data-warehouse-tables-statistics.md)。
 
 以下示例是创建统计信息的不错起点。 它会针对维度表中的每个列以及事实表中的每个联接列创建单列统计信息。 以后，随时可以将单列或多列统计信息添加到其他事实表列。
 

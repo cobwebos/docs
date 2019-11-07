@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure SQL 数据库中的 JSON 数据 | Microsoft Docs
+title: 使用 Azure SQL 数据库中的 JSON 数据
 description: 使用 Azure SQL 数据库可以分析、查询数据，以 JavaScript 对象表示法 (JSON) 设置数据格式。
 services: sql-database
 ms.service: sql-database
@@ -11,22 +11,22 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 01/15/2019
-ms.openlocfilehash: 3a09fba3f01eec6c712bad67ef10b8b5c55fb33e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2fe760e3792b5540b18946fd9dbcc5d571b50ee9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567837"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689642"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Azure SQL 数据库中的 JSON 功能入门
-使用 Azure SQL 数据库可以分析和查询以 JavaScript 对象表示法 [(JSON)](https://www.json.org/) 格式表示的数据，然后将关系数据导出为 JSON 文本。 以下 JSON 方案在 Azure SQL 数据库中可用：
-- 使用 `FOR JSON` 字句[将关系数据设置为 JSON 格式](#formatting-relational-data-in-json-format)。
+使用 Azure SQL 数据库可以分析和查询以 JavaScript 对象表示法 [(JSON)](https://www.json.org/) 格式表示的数据，并将关系数据导出为 JSON 文本。 以下 JSON 方案在 Azure SQL 数据库中可用：
+- 使用 [ 字句](#formatting-relational-data-in-json-format)将关系数据设置为 JSON 格式`FOR JSON`。
 - [处理 JSON 数据](#working-with-json-data)
 - 使用 JSON 标量函数[查询 JSON 数据](#querying-json-data)。
-- 使用 `OPENJSON` 函数[将 JSON 转换为表格格式](#transforming-json-into-tabular-format)。
+- 使用 [ 函数](#transforming-json-into-tabular-format)将 JSON 转换为表格格式`OPENJSON`。
 
 ## <a name="formatting-relational-data-in-json-format"></a>将关系数据设置为 JSON 格式
-如果 Web 服务从数据库层提取数据并以 JSON 格式提供响应，或者客户端 JavaScript 框架或库接受 JSON 格式的数据，则可以直接在 SQL 查询中将数据库内容格式化为 JSON。 不再需要编写应用程序代码将 Azure SQL 数据库中的结果格式化为 JSON，也不再需要包含一些 JSON 序列化库来转换表格查询结果，然后将对象序列化为 JSON 格式。 可以使用 FOR JSON 子句将 Azure SQL 数据库中的 SQL 查询结果格式化为 JSON，并直接在应用程序中使用这种格式。
+如果 Web 服务从数据库层提取数据并以 JSON 格式提供响应，或者客户端 JavaScript 框架或库接受 JSON 格式的数据，则可以直接在 SQL 查询中将数据库内容格式化为 JSON。 不再需要编写应用程序代码将 Azure SQL 数据库中的结果格式化为 JSON，也不再需要包含一些 JSON 序列化库来转换表格查询结果，然后将对象序列化为 JSON 格式。 可以使用 FOR JSON 子句将 Azure SQL 数据库中的 SQL 查询结果格式化为 JSON，然后直接在应用程序中使用这种格式。
 
 以下示例使用 FOR JSON 子句，将 Sales.Customer 表中的行格式化为 JSON：
 
@@ -71,7 +71,7 @@ FOR JSON PATH, WITHOUT_ARRAY_WRAPPER
 
 在本示例中，通过指定 [WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx) 选项返回了单个 JSON 对象而不是数组。 如果确定要返回单个对象作为查询结果，可以使用此选项。
 
-FOR JSON 子句的主要作用是从数据库返回格式化为嵌套 JSON 对象或数组的复杂分层数据。 以下示例显示如何将属于 `Customer` 的 `Orders` 表中的行包含为嵌套的 `Orders` 数组：
+FOR JSON 子句的主要作用是从数据库返回格式化为嵌套 JSON 对象或数组的复杂分层数据。 以下示例显示如何将属于 `Orders` 的 `Customer` 表中的行包含为嵌套的 `Orders` 数组：
 
 ```
 select CustomerName as Name, PhoneNumber as Phone, FaxNumber as Fax,
@@ -158,13 +158,13 @@ ALTER TABLE Products
 如果输入的文本是格式正确的 JSON，ISJSON 函数将返回值 1。 在每次插入或更新 JSON 列时，此约束都会验证新文本值是否为格式正确的 JSON。
 
 ## <a name="transforming-json-into-tabular-format"></a>将 JSON 转换为表格格式
-Azure SQL 数据库还允许将 JSON 集合转换为表格格式，并加载或查询 JSON 数据。
+Azure SQL 数据库还允许将 JSON 集合转换为表格格式，然后加载或查询 JSON 数据。
 
 OPENJSON 是一个表值函数，可分析 JSON 文本、查找 JSON 对象数组、迭代数组的元素，并在输出结果中针对每个数组元素返回一行。
 
 ![JSON 表格](./media/sql-database-json-features/image_2.png)
 
-在以上示例中，可以指定要在何处查找应打开的 JSON 数组（在 $.Orders 路径中）、应返回哪些列作为结果，以及要在何处查找将作为单元格返回的 JSON 值。
+在以上示例中，可以指定要在何处查找应打开的 JSON 数组（在 $.Orders 路径中）、应返回哪些列作为结果，以及要在何处查找以单元格形式返回的 JSON 值。
 
 可以将 @orders 变量中的 JSON 数组转换为行集、分析此结果集，或将行插入标准表中：
 
@@ -184,7 +184,7 @@ AS BEGIN
 
 END
 ```
-可以分析采用 JSON 数组格式并作为参数提供给存储过程的订单集合，然后将它插入 Orders 表。
+可以分析采用 JSON 数组格式并作为参数提供给存储过程的订单集合，并将它插入 Orders 表。
 
 ## <a name="next-steps"></a>后续步骤
 要了解如何将 JSON 集成到应用程序中，请参阅以下资源：
@@ -193,5 +193,5 @@ END
 * [MSDN 文档](https://msdn.microsoft.com/library/dn921897.aspx)
 * [第 9 频道视频](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 
-若要了解将 JSON 集成到应用程序的各种方案，请参阅[第 9 频道视频](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds)中的演示，或者在 [JSON 博客文章](https://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/)中查找与用例相符的方案。
+要了解将 JSON 集成到应用程序中的各种方案，请参阅这部第 [9 频道视频](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds)中的演示，或者在 [JSON 博客文章](https://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/)中查找与应用场合相符的方案。
 

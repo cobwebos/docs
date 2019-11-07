@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂：常见问题解答 | Microsoft Docs
+title: 'Azure 数据工厂：常见问题 '
 description: 获取有关 Azure 数据工厂的常见问题的解答。
 services: data-factory
 documentationcenter: ''
@@ -9,20 +9,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 7ebcf865ad23e75b2aa9070fe14fc3ee8f1397c7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2da12bbc760ff06ad0737ed9d48e12ea81260655
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73481141"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73674731"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 本文提供有关 Azure 数据工厂的常见问题解答。  
 
 ## <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？ 
-数据工厂是一项完全托管的基于云的数据集成服务，可以自动移动和转换数据。 如同工厂运转设备将原材料转换为成品一样，Azure 数据工厂可协调现有的服务，收集原始数据并将其转换为随时可用的信息。 
+数据工厂是一项完全托管的基于云的数据集成 ETL 服务，可自动执行数据移动和转换。 如同工厂运转设备将原材料转换为成品一样，Azure 数据工厂可协调现有的服务，收集原始数据并将其转换为随时可用的信息。 
 
-使用 Azure 数据工厂可以创建数据驱动的工作流，用于在本地与云数据存储之间移动数据。 并且可以使用计算服务（例如 Azure HDInsight、Azure Data Lake Analytics 和 SQL Server Integration Services （SSIS）集成运行时）处理和转换数据。 
+使用 Azure 数据工厂可以创建数据驱动的工作流，用于在本地与云数据存储之间移动数据。 您可以处理数据并将数据转换为数据流。 ADF 还支持使用计算服务（例如 Azure HDInsight、Azure Databricks 和 SQL Server Integration Services （SSIS）集成运行时）进行手动编码转换的外部计算引擎。 
 
 使用数据工厂，可在基于 Azure 的云服务或自己的自承载计算环境（例如 SSIS、SQL Server 或 Oracle）中执行数据处理。 创建用于执行所需操作的管道后，可将它计划为定期运行（例如每小时、每天或每周）、按时间范围运行或者在发生某个事件时触发。 有关详细信息，请参阅 [Azure 数据工厂简介](introduction.md)。
 
@@ -109,6 +109,9 @@ ms.locfileid: "73481141"
 ### <a name="pipelines"></a>管道
 数据工厂可以包含一个或多个数据管道。 管道是执行任务单元的活动的逻辑分组。 管道中的活动可以共同执行一项任务。 例如，一个管道可以包含一组活动，这些活动从 Azure Blob 引入数据，并在 HDInsight 群集上运行 Hive 查询，以便对数据分区。 优点在于，可以使用管道以集的形式管理活动，而无需单独管理每个活动。 管道中的活动可以链接在一起来按顺序运行，也可以独立并行运行。
 
+### <a name="data-flows"></a>数据流
+数据流是在数据工厂中直观地生成的对象，可在后端 Spark 服务大规模转换数据。 不需要了解编程或 Spark 内部机制。 只需使用图形（映射）或电子表格（整理）设计数据转换方法。
+
 ### <a name="activities"></a>活动
 活动表示管道中的处理步骤。 例如，可以使用复制活动将数据从一个数据存储复制到另一个数据存储。 同样，可以使用在 Azure HDInsight 群集上运行 Hive 查询的 Hive 活动来转换或分析数据。 数据工厂支持三种类型的活动：数据移动活动、数据转换活动和控制活动。
 
@@ -165,13 +168,13 @@ ms.locfileid: "73481141"
 可以，在数据工厂中，参数是最重要的顶层概念。 可以在管道级别定义参数，并在按需或使用触发器执行管道运行时传递自变量。  
 
 ### <a name="can-i-define-default-values-for-the-pipeline-parameters"></a>是否可以为管道参数定义默认值？ 
-是的。 可以为管道中的参数定义默认值。 
+可以。 可以为管道中的参数定义默认值。 
 
 ### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>管道中的活动是否可以使用传递给管道运行的自变量？ 
-是的。 管道中的每个活动都可以使用通过 `@parameter` 构造传递给管道运行的参数值。 
+可以。 管道中的每个活动都可以使用通过 `@parameter` 构造传递给管道运行的参数值。 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>活动输出属性是否可以在其他活动中使用？ 
-是的。 在后续活动中可以通过 `@activity` 构造来使用活动输出。
+可以。 在后续活动中可以通过 `@activity` 构造来使用活动输出。
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>如何得体地处理活动输出中的 NULL 值？ 
 可以在表达式中使用 `@coalesce` 构造来得体地处理 NULL 值。 

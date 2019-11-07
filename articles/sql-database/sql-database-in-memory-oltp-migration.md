@@ -1,5 +1,5 @@
 ---
-title: 内存中 OLTP 改善了 SQL 事务性能 | Microsoft 文档
+title: 内存中 OLTP 提高了 SQL txn 性能
 description: 利用内存中 OLTP 改善现有 SQL 数据库中的事务性能。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: e869b2bba3bd64b58d9063e9445889ef709efdc3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 82b24b51a103d31bf20bbb7a9fc304095be523d5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567940"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689836"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>使用内存中 OLTP 改善 SQL 数据库中的应用程序性能
 
@@ -30,7 +30,7 @@ ms.locfileid: "68567940"
 
 ## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>步骤 1：确保使用的是高级和业务关键层数据库
 
-只有高级和业务关键层数据库才支持内存中 OLTP。 如果返回的结果为 1（不是 0），则支持 In-Memory：
+只有高级和业务关键层数据库才支持内存中 OLTP。 如果返回的结果为 1（不是 0），则支持内存中 OLTP：
 
 ```
 SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
@@ -41,12 +41,12 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 
 ## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>步骤 2：标识要迁移到 In-Memory OLTP 的对象
-SSMS 包含可以针对具有活动工作负荷的数据库运行的**事务性能分析概述**。 该报告识别要迁移到 In-Memory OLTP 的候选表和存储过程。
+SSMS 包含可以针对具有活动工作负荷的数据库运行的**事务性能分析概述**。 该报告识别要迁移到内存中 OLTP 的候选表和存储过程。
 
 若要在 SSMS 中生成报告，请执行以下操作：
 
 * 在“对象资源管理器”中，右键单击数据库节点。
-* 单击“报表” > “标准报表” > “事务能分析概述”。
+* 单击“报表” > “标准报表” > “事务性能分析概述”。
 
 有关详细信息，请参阅[确定表或存储过程是否应移植到内存中 OLTP](https://msdn.microsoft.com/library/dn205133.aspx)
 
@@ -76,12 +76,12 @@ SSMS 包含可以针对具有活动工作负荷的数据库运行的**事务性�
 若要使用此迁移选项，请执行以下操作：
 
 1. 使用 SSMS 连接到测试数据库。
-2. 在“对象资源管理器”中，右键单击该表，并单击“内存优化顾问”。
+2. 在“对象资源管理器”中，右键单击该表，然后单击“内存优化顾问”。
    
-   * 此时将显示“表内存优化顾问”向导。
+   * 此时会显示“表内存优化顾问”向导。
 3. 在向导中，单击“迁移验证”（或“下一步”按钮），以查看该表是否有任何在内存优化表中不受支持的功能。 有关详细信息，请参阅：
    
-   * [内存优化顾问中的](https://msdn.microsoft.com/library/dn284308.aspx)*内存优化清单*。
+   * *内存优化顾问中的*[内存优化清单](https://msdn.microsoft.com/library/dn284308.aspx)。
    * [内存中 OLTP 不支持的 Transact-SQL 构造](https://msdn.microsoft.com/library/dn246937.aspx)。
    * [迁移到内存中 OLTP](https://msdn.microsoft.com/library/dn247639.aspx)。
 4. 如果该表没有不受支持的功能，顾问可执行实际的架构和数据迁移。
@@ -146,7 +146,7 @@ CREATE PROCEDURE schemaname.procedurename
 2. 重写其标头以符合前面的模板。
 3. 确认存储过程 T-SQL 代码是否使用了任何不支持本机编译存储过程的功能。 根据需要实施应对措施。
    
-   * 有关详细信息，请参阅[本机编译存储过程的迁移问题](https://msdn.microsoft.com/library/dn296678.aspx)。
+   * 有关详细信息，请参阅 [本机编译存储过程的迁移问题](https://msdn.microsoft.com/library/dn296678.aspx)。
 4. 使用 SP_RENAME 重命名旧存储过程。 或直接将它删除。
 5. 运行已编辑的 CREATE PROCEDURE T-SQL 脚本。
 

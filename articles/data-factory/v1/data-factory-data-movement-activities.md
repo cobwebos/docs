@@ -1,5 +1,5 @@
 ---
-title: 使用复制活动移动数据 | Microsoft Docs
+title: 使用复制活动移动数据
 description: 了解数据工厂管道中的数据移动：云存储之间以及本地存储和云存储之间的数据迁移。 使用复制活动。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: bfb15e717e3cb726aba782d9a9506330d7ea39fe
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 0f7771c55bfdc837921fb731b29e88c970b5d283
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839320"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682652"
 ---
 # <a name="move-data-by-using-copy-activity"></a>使用复制活动移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -76,15 +76,15 @@ ms.locfileid: "67839320"
 > 带 * 的数据存储既可位于本地，也可位于 Azure IaaS 上，需要用户在本地/Azure IaaS 计算机上安装[数据管理网关](data-factory-data-management-gateway.md)。
 
 ### <a name="supported-file-formats"></a>支持的文件格式
-可使用“复制活动”在两个基于文件的数据存储之间“按原样复制文件”  ，可以同时在输入和输出数据集定义中跳过[格式部分](data-factory-create-datasets.md)。 无需任何序列化/反序列化操作即可有效复制数据。
+可使用“复制活动”在两个基于文件的数据存储之间“按原样复制文件”，可以同时在输入和输出数据集定义中跳过[格式部分](data-factory-create-datasets.md)。 无需任何序列化/反序列化操作即可有效复制数据。
 
-复制活动还可读取和写入特定格式的文件：支持文本、JSON、Avro、ORC 和 Parquet，以及压缩编解码器 GZip、Deflate、BZip2 和 ZipDeflate   。 有关详细信息，请参阅[支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)。
+“复制活动”还以指定格式从文件中读取并写入到文件：**Text、JSON、Avro、ORC 和 Parquet**，并且压缩编解码器**GZip、Deflate、BZip2 和 ZipDeflate** 也受支持。 有关详细信息，请参阅[支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)。
 
 例如，可执行以下复制活动：
 
 * 从本地 SQL Server 中复制数据，并将其以 ORC 格式写入 Azure Data Lake Store。
 * 从本地文件系统中复制文本 (CSV) 格式文件，并将其以 Avro 格式写入 Azure Blob。
-* 从本地文件系统中复制压缩文件，并将其解压缩然后传到 Azure Data Lake Store。
+* 从本地文件系统中复制压缩文件，并将其解压缩并传到 Azure Data Lake Store。
 * 从 Azure Blob 复制 GZip 压缩文本 (CSV) 格式的数据，并将其写入 Azure SQL 数据库。
 
 ## <a name="global"></a>全局可用的数据移动
@@ -95,7 +95,7 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 
 | 目标数据存储的地域 | 目标数据存储的区域 | 用于数据移动的区域 |
 |:--- |:--- |:--- |
-| 美国 | East US | East US |
+| 美国 | 美国东部 | 美国东部 |
 | &nbsp; | 美国东部 2 | 美国东部 2 |
 | &nbsp; | 美国中部 | 美国中部 |
 | &nbsp; | 美国中北部 | 美国中北部 |
@@ -107,7 +107,7 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 | &nbsp; | 加拿大中部 | 加拿大中部 |
 | 巴西 | 巴西南部 | 巴西南部 |
 | 欧洲 | 北欧 | 北欧 |
-| &nbsp; | 西欧 | 西欧 |
+| &nbsp; | 欧洲西部 | 欧洲西部 |
 | 英国 | 英国西部 | 英国南部 |
 | &nbsp; | 英国南部 | 英国南部 |
 | 亚太区 | 东南亚 | 东南亚 |
@@ -122,7 +122,7 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 | 韩国 | 韩国中部 | 韩国中部 |
 | &nbsp; | 韩国南部 | 韩国中部 |
 
-或者可以通过指定复制活动 `typeProperties` 下的 `executionLocation` 属性，明确指示要用于执行复制的数据工厂服务的区域。 上述**用于数据移动的区域**列中列举了此属性支持的值。 请注意复制过程中数据将通过网络经过该区域。 例如，若要在韩国的 Azure 存储间进行复制，可以指定 `"executionLocation": "Japan East"`，以便经过日本区域（请参阅[示例 JSON](#by-using-json-scripts) 作为参考）。
+或者可以通过指定复制活动 `executionLocation` 下的 `typeProperties` 属性，明确指示要用于执行复制的数据工厂服务的区域。 上述**用于数据移动的区域**列中列举了此属性支持的值。 请注意复制过程中数据将通过网络经过该区域。 例如，若要在韩国的 Azure 存储间进行复制，可以指定 `"executionLocation": "Japan East"`，以便经过日本区域（请参阅[示例 JSON](#by-using-json-scripts) 作为参考）。
 
 > [!NOTE]
 > 如果目标数据存储的区域不在上方列表中或未找到该区域，默认情况下，复制活动会失败，而不会通过其他区域完成，除非指定了 `executionLocation`。 以后支持的区域列表还将扩大。
@@ -135,10 +135,10 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 可通过以下几种方法创建包含复制活动的管道：
 
 ### <a name="by-using-the-copy-wizard"></a>使用复制向导
-数据工厂复制向导有助于创建包含复制活动的管道。 使用此管道，无需对链接服务、数据集和管道编写 JSON 定义  ，即可将数据从支持的源复制到目标源。 有关此向导的详细信息，请参阅[数据工厂复制向导](data-factory-copy-wizard.md)。  
+数据工厂复制向导有助于创建包含复制活动的管道。 使用此管道，无需对链接服务、数据集和管道编写 JSON 定义，即可将数据从支持的源复制到目标源。 有关此向导的详细信息，请参阅[数据工厂复制向导](data-factory-copy-wizard.md)。  
 
 ### <a name="by-using-json-scripts"></a>使用 JSON 脚本
-可以使用 Visual Studio 或 Azure PowerShell 中的数据工厂编辑器创建管道的 JSON 定义 （通过使用复制活动）。 然后，可对其进行部署以在数据工厂中创建管道。 有关分步说明，请参阅[教程：在 Azure 数据工厂管道中使用复制活动](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。    
+您可以使用 Visual Studio 中的数据工厂编辑器或 Azure PowerShell 来创建管道的 JSON 定义（通过使用复制活动）。 然后，可对其进行部署以在数据工厂中创建管道。 有关包含分步说明的教程，请参阅[教程：在 Azure 数据工厂管道中使用复制活动](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。    
 
 JSON 属性（例如名称、说明、输入和输出表，以及策略）可用于所有类型的活动。 可用于此活动的 `typeProperties` 节的属性因每个活动类型而异。
 

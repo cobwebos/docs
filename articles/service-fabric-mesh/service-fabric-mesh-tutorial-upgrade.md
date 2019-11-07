@@ -1,6 +1,6 @@
 ---
 title: 教程 - 升级 Azure Service Fabric 网格应用程序 | Microsoft Docs
-description: 了解如何使用 Visual Studio 升级 Service Fabric 应用程序
+description: 本教程是一个系列的第四部分，介绍如何直接从 Visual Studio 升级 Azure Service Fabric 网格应用程序。
 services: service-fabric-mesh
 documentationcenter: .net
 author: dkkapur
@@ -14,12 +14,12 @@ ms.workload: NA
 ms.date: 11/29/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 20aa65f0a8e47485e71fd03d73ff144f5290bcb7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 81f155d5708a2fca2fc1145feb20af12d2fd151e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036076"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686196"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>教程：了解如何使用 Visual Studio 升级 Service Fabric 应用程序
 
@@ -29,7 +29,7 @@ ms.locfileid: "69036076"
 > [!div class="checklist"]
 > * 使用 Visual Studio 升级 Service Fabric 网格服务
 
-在此系列教程中，你会学习如何：
+在此系列教程中，学习如何：
 > [!div class="checklist"]
 > * [在 Visual Studio 中创建 Service Fabric 网格应用](service-fabric-mesh-tutorial-create-dotnetcore.md)
 > * [调试在本地开发群集中运行的 Service Fabric 网格应用](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
@@ -61,19 +61,19 @@ ms.locfileid: "69036076"
     WebFrontEnd_cpu: 1.5
     ```
 
-2. 在“WebFrontEnd” > “服务资源”下打开 WebFrontEnd 项目的 service.yaml 文件。
+2. 在“WebFrontEnd” **“服务资源”** **下打开 WebFrontEnd** >  项目的 service.yaml 文件。
 
-    请注意，在 `resources:` 部分中，`cpu:` 将设置为 `"[parameters('WebFrontEnd_cpu')]"`。 如果正在为云生成项目，则将从“环境” > “云” > “parameters.yaml”文件中获取 `'WebFrontEnd_cpu` 的值，并且该值将为 `1.5`。 如果正在生成要本地运行的项目，则将从“环境” > “本地” > “parameters.yaml”文件中获取值，并且该值将为“0.5”。
+    请注意，在 `resources:` 部分中，`cpu:` 将设置为 `"[parameters('WebFrontEnd_cpu')]"`。 如果正在为云生成项目，则将从“环境”`'WebFrontEnd_cpu`“云” > “parameters.yaml” > **文件中获取**  的值，并且该值将为 `1.5`。 如果正在生成要本地运行的项目，则将从“环境” > “本地” > “parameters.yaml”文件中获取值，并且该值将为“0.5”。
 
 > [!Tip]
 > 默认情况下，与 profile.yaml 文件对等的参数文件将用于提供该 profile.yaml 文件的值。
 > 例如，“环境”>“云”>“parameters.yaml”提供了“环境”>“云”>“profile.yaml”的参数值。
 >
-> 可以通过将以下内容添加到 profile.yaml 文件进行覆盖：`parametersFilePath=”relative or full path to the parameters file”`例如， 或 `parametersFilePath=”..\CommonParameters.yaml”`
+> 可以通过将以下内容添加到 yaml 文件来覆盖此项：`parametersFilePath=”relative or full path to the parameters file”` 例如 `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` 或 `parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>修改模型
 
-要引入代码更改，请将 `Category` 属性添加到 `ToDoItem.cs` 文件中的 `ToDoItem` 类。
+要引入代码更改，请将 `Category` 属性添加到 `ToDoItem` 文件中的 `ToDoItem.cs` 类。
 
 ```csharp
 public class ToDoItem

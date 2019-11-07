@@ -1,17 +1,17 @@
 ---
-title: 在 Azure 数据工厂中映射数据流性能和优化指南 |Microsoft Docs
+title: 在 Azure 数据工厂中映射数据流性能和优化指南
 description: 了解影响 Azure 数据工厂中映射数据流的性能的关键因素。
 author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 10/07/2019
-ms.openlocfilehash: 24b0deb60f1047228dc3ff6000d423e7cb6939ca
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 20a08345d8335b4857ca9777efb55f953ee63e9f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72387323"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681536"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据流性能和优化指南
 
@@ -66,7 +66,7 @@ ms.locfileid: "72387323"
 * 通过设置查询，可以在源中的行到达数据流进行处理之前对其进行筛选。 这可以使初始数据采集更快。 如果使用查询，可以为 Azure SQL DB 添加可选的查询提示，如 "未提交读"。
 * 未提交读将提供更快的源转换查询结果
 
-![源](media/data-flow/source4.png "Source")
+![源](media/data-flow/source4.png "源")
 
 ### <a name="sink-batch-size"></a>接收器批大小
 

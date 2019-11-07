@@ -1,5 +1,5 @@
 ---
-title: 复制活动性能和优化指南 | Microsoft Docs
+title: 复制活动性能和优化指南
 description: 了解使用复制活动时影响 Azure 数据工厂中数据移动性能的关键因素。
 services: data-factory
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ec8c58e4ced0d8df958e242b9c1671aeed8c2ee6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c1cabbe3587079fa3fa5947eddbcf6cecaff3b98
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60488158"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682916"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-copy-activity-performance.md)
 > * [版本 2（当前版本）](../copy-activity-performance.md)
 
@@ -72,7 +72,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
     </tr>
     <tr>
         <td>网络</td>
-        <td>Internet 接口：10 Gbps；Intranet 接口：40 Gbps</td>
+        <td>Internet 接口：10 Gbps；intranet 接口：40 Gbps</td>
     </tr>
     </table>
 
@@ -141,7 +141,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 | --- | --- |
 | 在基于文件的存储（Blob 存储；Data Lake Store；Amazon S3；本地文件系统；本地 HDFS）之间复制数据 |介于 1 和 32 之间。 取决于文件大小以及用于在两个云数据存储之间复制数据的云数据移动单元 (DMU) 数，或用于混合复制的网关计算机的物理配置（将数据粘贴到本地数据存储或从本地数据存储复制）。 |
 | 将数据**从任何源数据存储复制到 Azure 表存储** |4 |
-| 所有其他源和接收器对 |第 |
+| 所有其他源和接收器对 |1 |
 
 默认行为通常应可提供最佳吞吐量。 但是，若要控制托管数据存储的计算机上的负载或优化复制性能，可选择替代默认值并为 **parallelCopies** 属性指定值。 该值必须介于 1 和 32 之间（两者均含）。 在运行时，为了获得最佳性能，复制活动使用小于或等于所设置的值。
 
@@ -251,7 +251,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 1. **建立基准**。 在开发阶段，通过对代表性数据示例使用复制活动来测试管道。 可使用数据工厂[切片模型](data-factory-scheduling-and-execution.md)来限制处理的数据量。
 
-   使用**监视和管理应用**收集执行时间和性能特征。 在数据工厂主页上选择“监视和管理”  。 在树视图中，选择“输出数据集”  。 在“活动窗口”  列表中，选择复制活动运行。 **活动窗口**列出了复制活动持续时间和所复制的数据大小。 **活动窗口资源管理器**中列出了吞吐量。 有关此应用的详细信息，请参阅[使用监视和管理应用来监视和管理 Azure 数据工厂管道](data-factory-monitor-manage-app.md)。
+   使用**监视和管理应用**收集执行时间和性能特征。 在数据工厂主页上选择“监视和管理”。 在树视图中，选择“输出数据集”。 在“活动窗口”列表中，选择复制活动运行。 **活动窗口**列出了复制活动持续时间和所复制的数据大小。 **活动窗口资源管理器**中列出了吞吐量。 有关此应用的详细信息，请参阅[使用监视和管理应用来监视和管理 Azure 数据工厂管道](data-factory-monitor-manage-app.md)。
 
    ![活动运行详细信息](./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png)
 
@@ -286,18 +286,18 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 如果将数据从 Blob 存储复制到 SQL 数据仓库，请考虑使用 **PolyBase** 来提高性能。 有关详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库](data-factory-load-sql-data-warehouse.md)。
 
 ### <a name="file-based-data-stores"></a>基于文件的数据存储
-（包括 Blob 存储、Data Lake Store、Amazon S3、本地文件系统和本地 HDFS） 
+（包括 Blob 存储、Data Lake Store、Amazon S3、本地文件系统和本地 HDFS）
 
 * **平均文件大小和文件计数**：复制活动一次传输一个文件的数据。 在移动相同数据量的情况下，如果数据由许多小文件而不是几个大文件组成，则由于每个文件都有启动阶段，总吞吐量会较低。 因此，尽可能将小文件合并为较大的文件，以获得更高的吞吐量。
 * **文件格式和压缩**：有关提高性能的更多方法，请参阅[序列化和反序列化注意事项](#considerations-for-serialization-and-deserialization)和[压缩注意事项](#considerations-for-compression)部分。
 * 对于其中需要**数据管理网关**的**本地文件系统**方案，请参阅[数据管理网关注意事项](#considerations-for-data-management-gateway)部分。
 
 ### <a name="relational-data-stores"></a>关系数据存储
-（包括 SQL 数据库；SQL 数据仓库；Amazon Redshift；SQL Server 数据库；以及 Oracle、MySQL、DB2、Teradata、Sybase 和 PostgreSQL 数据库等。） 
+（包括 SQL 数据库；SQL 数据仓库；Amazon Redshift；SQL Server 数据库；以及 Oracle、MySQL、DB2、Teradata、Sybase 和 PostgreSQL 数据库等。）
 
 * **数据模式**：表架构会影响复制吞吐量。 复制相同数据量时，较大行大小可比较小行大小提供更佳的性能。 原因是数据库可以更有效地检索包含较少行的较少批量数据。
 * **查询或存储过程**：优化在复制活动源中指定的查询或存储过程的逻辑，以更有效地提取数据。
-* 对于需要使用数据管理网关的本地关系数据库（如 SQL Server 和 Oracle），请参阅“数据管理网关注意事项”部分   。
+* 对于需要使用数据管理网关的本地关系数据库（如 SQL Server 和 Oracle），请参阅“数据管理网关注意事项”部分。
 
 ## <a name="considerations-for-the-sink"></a>有关接收器的注意事项
 ### <a name="general"></a>常规
@@ -308,17 +308,17 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 如果将数据从 **Blob 存储**复制到 **SQL 数据仓库**，请考虑使用 **PolyBase** 来提高性能。 有关详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库](data-factory-load-sql-data-warehouse.md)。
 
 ### <a name="file-based-data-stores"></a>基于文件的数据存储
-（包括 Blob 存储、Data Lake Store、Amazon S3、本地文件系统和本地 HDFS） 
+（包括 Blob 存储、Data Lake Store、Amazon S3、本地文件系统和本地 HDFS）
 
-* **复制行为**：如果从基于文件的不同数据存储复制数据，则复制活动可通过 copyBehavior  属性提供三个选项。 它将保留层次结构、平展层次结构或合并文件。 保留或平展层次结构有少量的性能开销或没有性能开销，但合并文件会导致性能开销增加。
+* **复制行为**：如果从基于文件的不同数据存储复制数据，则复制活动可通过 **copyBehavior** 属性提供三个选项。 它将保留层次结构、平展层次结构或合并文件。 保留或平展层次结构有少量的性能开销或没有性能开销，但合并文件会导致性能开销增加。
 * **文件格式和压缩**：有关提高性能的更多方法，请参阅[序列化和反序列化注意事项](#considerations-for-serialization-and-deserialization)和[压缩注意事项](#considerations-for-compression)部分。
 * **Blob 存储**：目前，对于优化的数据传输和吞吐量，Blob 存储仅支持块 blob。
 * 对于需要使用**数据管理网关**的**本地文件系统**方案，请参阅[数据管理网关注意事项](#considerations-for-data-management-gateway)部分。
 
 ### <a name="relational-data-stores"></a>关系数据存储
-（包括 SQL 数据库、SQL 数据仓库、SQL Server 数据库和 Oracle 数据库） 
+（包括 SQL 数据库、SQL 数据仓库、SQL Server 数据库和 Oracle 数据库）
 
-* **复制行为**：根据已为 sqlSink  设置的属性，复制活动以不同的方式将数据写入目标数据库。
+* **复制行为**：根据已为 **sqlSink** 设置的属性，复制活动以不同的方式将数据写入目标数据库。
   * 数据移动服务默认使用大容量复制 API 以追加模式插入数据，这提供最佳性能。
   * 如果在接收器中配置存储过程，数据库一次会应用一行数据，而不是大容量加载。 性能会大大降低。 如果数据集较大，请考虑切换为使用 **sqlWriterCleanupScript** 属性（如适用）。
   * 如果为每个复制活动运行配置 **sqlWriterCleanupScript** 属性，该服务将触发脚本，然后使用大容量复制 API 插入数据。 例如，若要使用最新数据覆盖整个表，可指定一个脚本，先删除所有记录，再从源大容量加载新数据。
@@ -343,7 +343,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 * 在基于文件的数据存储之间复制文件：
   * 输入和输出数据集具有相同的文件格式设置或没有文件格式设置时，数据移动服务将执行二进制复制，而不进行任何序列化或反序列化。 与源和接收器文件格式设置彼此不同的情况相比，这提供的吞吐量更高。
   * 输入和输出数据集都为文本格式且只有编码类型不同时，数据移动服务仅进行编码转换。 它不进行任何序列化和反序列化，与二进制复制相比，这会产生一些性能开销。
-  * 当输入和输出数据集具有不同的文件格式或不同的配置时（如分隔符），数据移动服务会反序列化源数据，以进行流式传输、转换，然后将其序列化为指示的输出格式。 与其他方案相比，此操作会产生更多的性能开销。
+  * 当输入和输出数据集具有不同的文件格式或不同的配置时（如分隔符），数据移动服务会反序列化源数据，以进行流式传输、转换，并将其序列化为指示的输出格式。 与其他方案相比，此操作会产生更多的性能开销。
 * 向/从不基于文件的数据存储复制文件时（例如，从基于文件的存储到关系存储），需要序列化或反序列化步骤。 此步骤将造成大量的性能开销。
 
 **文件格式**：选择的文件格式可能会影响复制性能。 例如，Avro 是一种将元数据与数据一起存储的压缩二进制格式。 它在 Hadoop 生态系统中对处理和查询具有广泛的支持。 然而，Avro 进行序列化和反序列化的代价更高，这会导致比文本格式更低的复制吞吐量。 在选择整个处理流中使用的文件格式时，应考虑全面。 首先考虑数据存储的格式（源数据存储或从外部系统提取）；存储、分析处理和查询的最佳格式；应将数据导出到数据集市、供报表和可视化工具使用的格式。 有时，读取和写入性能不是最佳的文件格式可能对于整体分析处理来说却是不错的选择。
@@ -368,7 +368,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 请谨慎对待需要数据工厂同时连接到同一数据存储的数据集数和复制活动数。 许多并发复制作业可能会限制数据存储，并导致性能下降，复制作业内部重试，甚至在某些情况下导致执行失败。
 
 ## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>示例方案：从本地 SQL Server 复制到 Blob 存储
-**场景**：构建管道，以 CSV 格式将数据从本地 SQL Server 复制到 Blob 存储。 要使复制作业更快，应将 CSV 文件压缩为 bzip2 格式。
+**方案**：构建管道，以 CSV 格式将数据从本地 SQL Server 复制到 Blob 存储。 要使复制作业更快，应将 CSV 文件压缩为 bzip2 格式。
 
 **测试和分析**：复制活动的吞吐量小于 2 MBps，这比性能基准慢得多。
 
@@ -378,7 +378,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 2. **序列化和压缩数据**：网关将数据流序列化为 CSV 格式，并将数据压缩为 bzip2 流。
 3. **写入数据**：网关通过 Internet 将 bzip2 流上传到 Blob 存储。
 
-如你所见，数据以流式处理顺序方式进行处理和移动：SQL Server > LAN > 网关 > WAN > Blob 存储。 **整体性能受管道中最小吞吐量的限制**。
+如你所见，数据以流式处理顺序方式进行处理和移动：SQL Server > LAN> 网关 > WAN > Blob 存储。 **整体性能受管道中最小吞吐量的限制**。
 
 ![数据流](./media/data-factory-copy-activity-performance/case-study-pic-1.png)
 
@@ -386,7 +386,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 * **源**：SQL Server 本身由于负载过重而吞吐量低。
 * **数据管理网关**：
-  * **LAN**：网关的位置离 SQL Server 计算机很远，且具有低带宽连接。
+  * **LAN**：网关的位置离 SQL Server 计算机很远，且带宽连接低。
   * **网关**：网关已达到其执行以下操作的负载限制：
     * **序列化**：将数据流序列化为 CSV 格式时吞吐量缓慢。
     * **压缩**：选择慢速压缩编解码器（例如，bzip2，其采用 Core i7，速度为 2.8 MBps）。
@@ -410,11 +410,11 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 **方案 III**：个别文件大小大于几十 MB 且总量很大。
 
-**分析和性能优化**：因为单一云 DMU 的资源限制，增加 **parallelCopies** 不会产生更好的复制性能。 而应指定更多云 DMU，获取更多资源来执行数据移动。 请勿指定 **parallelCopies** 属性的值。 数据工厂处理并行度。 在此情况下，如果将 **cloudDataMovementUnits** 设置为 4，则会产生大约 4 倍的吞吐量。
+**分析和优化性能**：因为单一云 DMU 的资源限制，增加 **parallelCopies** 不会产生更好的复制性能。 而应指定更多云 DMU，获取更多资源来执行数据移动。 请勿指定 **parallelCopies** 属性的值。 数据工厂处理并行度。 在此情况下，如果将 **cloudDataMovementUnits** 设置为 4，则会产生大约 4 倍的吞吐量。
 
 ![方案 3](./media/data-factory-copy-activity-performance/scenario-3.png)
 
-## <a name="reference"></a>参考
+## <a name="reference"></a>引用
 下面是有关一些受支持数据存储的性能监视和优化参考：
 
 * Azure 存储（包括 Blob 存储和表存储）：[Azure 存储可伸缩性目标](../../storage/common/storage-scalability-targets.md)和 [Azure存储性能和可伸缩性清单](../../storage/common/storage-performance-checklist.md)
@@ -422,4 +422,4 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 * Azure SQL 数据仓库：其功能以数据仓库单位 (DWU) 衡量；请参阅[管理 Azure SQL 数据仓库中的计算能力（概述）](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Azure Cosmos DB：[Azure Cosmos DB 中的性能级别](../../cosmos-db/performance-levels.md)
 * 本地 SQL Server：[监视和优化性能](https://msdn.microsoft.com/library/ms189081.aspx)
-* 本地文件服务器：[文件服务器性能优化](https://msdn.microsoft.com/library/dn567661.aspx)
+* 本地文件服务器：[Performance tuning for file servers](https://msdn.microsoft.com/library/dn567661.aspx)（文件服务器性能优化）

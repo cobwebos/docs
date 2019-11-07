@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据同步 | Microsoft Docs
+title: Azure SQL 数据同步
 description: 此概述介绍 Azure SQL 数据同步
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 7ff7712130372dcfd277750e881cccce23b36465
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 925977edf267510399dc631f0d0efe5fc1941803
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648347"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687050"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
 
@@ -31,11 +31,11 @@ ms.locfileid: "69648347"
 
 - **混合数据同步：** 借助数据同步，可以在本地数据库和 Azure SQL 数据库之间保持数据同步，以便启用混合应用程序。 此功能可能会吸引在考虑迁移到云中，并希望启用 Azure 应用程序的客户。
 - **分布式应用程序：** 在许多情况下，跨各个数据库分散不同的工作负载会大有裨益。 例如，如果有大型生产数据库，但还需要对此数据运行报表或分析工作负载，那么使用第二个数据库来处理此额外工作负载将会有所帮助。 这种方法可最大限度地减轻对生产工作负载造成的性能影响。 可以使用 SQL 数据同步来同步这两个数据库。
-- **全球分布的应用程序：** 许多企业的业务分布在多个区域，甚至是多个国家/地区/区域。 为了最大限度地缩短网络延迟时间，最好将数据存储在靠近的区域中。 借助 SQL 数据同步，可轻松同步世界各地区域中的数据库。
+- **全球分布式应用程序：** 许多企业跨多个区域，甚至几个国家/地区。 为了最大限度地缩短网络延迟时间，最好将数据存储在靠近的区域中。 借助 SQL 数据同步，可轻松同步世界各地区域中的数据库。
 
 数据同步不是以下场景的首选解决方案：
 
-| 应用场景 | 一些建议的解决方案 |
+| 方案 | 一些建议的解决方案 |
 |----------|----------------------------|
 | 灾难恢复 | [Azure 异地冗余备份](sql-database-automated-backups.md) |
 | 读取缩放 | [使用只读副本对只读的查询工作负荷进行负载均衡（预览版）](sql-database-read-scale-out.md) |
@@ -51,7 +51,7 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 
 - 中心数据库必须是 Azure SQL 数据库。
 - 成员数据库可以是 SQL 数据库、本地 SQL Server 数据库或 Azure 虚拟机上的 SQL Server 实例。
-- 同步数据库包含数据同步的元数据和日志。同步数据库必须是与中心数据库位于同一区域的 Azure SQL 数据库。 同步数据库的创建者和所有者均为客户。
+- **同步数据库**包含数据同步的元数据和日志。同步数据库必须是与中心数据库位于同一区域中的 Azure SQL 数据库。 同步数据库的创建者和所有者均为客户。
 
 > [!NOTE]
 > 如果使用本地数据库作为成员数据库，则必须[安装并配置本地同步代理](sql-database-get-started-sql-data-sync.md#add-on-prem)。
@@ -75,7 +75,7 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 
 ## <a name="compare-data-sync-with-transactional-replication"></a>将数据同步与事务复制进行比较
 
-| | 数据同步 | 事务复制 |
+| | 数据同步 | 事务性复制 |
 |---|---|---|
 | 优点 | - 主动-主动支持<br/>- 在本地和 Azure SQL 数据库之间双向同步 | - 更低的延迟<br/>- 事务一致性<br/>- 迁移后重用现有拓扑 |
 | 缺点 | - 5 分钟或更长的延迟<br/>- 无事务一致性<br/>- 更高的性能影响 | - 无法从 Azure SQL 数据库单一数据库或共用数据库发布<br/>- 维护成本高 |
@@ -120,9 +120,9 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 - 每个表都必须有主键。 请勿更改任何一行中的主键值。 如果必须更改主键值，请先删除行，再使用新的主键值重新创建此行。 
 
 > [!IMPORTANT]
-> 更改现有主键的值将导致以下错误行为:   
->   - 即使同步未报告任何问题, 集线器和成员之间的数据也会丢失。
-> - 同步可能会失败, 因为跟踪表包含源中不存在的行, 因为主键发生更改。
+> 更改现有主键的值会导致以下错误行为：   
+>   - 即使同步未报告任何问题，中心和成员之间的数据也会丢失。
+> - 由于主键更改，跟踪表的源行不存在，同步可能会失败。
 
 - 必须启用快照隔离。 有关详细信息，请参阅 [SQL Server 中的快照隔离](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)。
 
@@ -178,26 +178,26 @@ SQL 数据同步在所有区域中都可用。
 
 ### <a name="is-a-sql-database-account-required"></a>是否需要 SQL 数据库帐户
 
-是的。 必须拥有 SQL 数据库帐户才能托管中心数据库。
+可以。 必须拥有 SQL 数据库帐户才能托管中心数据库。
 
 ### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>是否可以使用数据同步只在 SQL Server 本地数据库之间同步
 
-无法直接配合使用。 但是，可以间接地在 SQL Server 本地数据库之间同步，方法是在 Azure 中创建一个中心数据库，然后将本地数据库添加到同步组。
+无法直接关闭。 但是，可以间接地在 SQL Server 本地数据库之间同步，方法是在 Azure 中创建一个中心数据库，然后将本地数据库添加到同步组。
 
 ### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>是否可以使用数据同步在属于不同订阅的 SQL 数据库之间进行同步
 
-是的。 可以在由不同订阅拥有的资源组中的 SQL 数据库之间进行同步。
+可以。 可以在由不同订阅拥有的资源组中的 SQL 数据库之间进行同步。
 
 - 如果订阅属于同一租户，并且你对所有订阅都有权限，则可以在 Azure 门户中配置同步组。
 - 否则，必须使用 PowerShell 来添加属于不同订阅的同步成员。
 
 ### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china"></a>是否可以使用数据同步在属于不同云（例如 Azure 公有云和 Azure 中国）的 SQL 数据库之间进行同步
 
-是的。 可以在属于不同云的 SQL 数据库之间进行同步，但必须使用 PowerShell 添加属于不同订阅的同步成员。
+可以。 可以在属于不同云的 SQL 数据库之间进行同步，但必须使用 PowerShell 添加属于不同订阅的同步成员。
 
 ### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>是否可以使用数据同步将生产数据库中的数据种子植入到空数据库，然后将这两个数据库同步
 
-是的。 通过从原始数据库编写脚本，在新数据库中手动创建架构。 创建架构后，将表添加到同步组以复制数据并使其同步。
+可以。 通过从原始数据库编写脚本，在新数据库中手动创建架构。 创建架构后，将表添加到同步组以复制数据并使其同步。
 
 ### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>我应该使用 SQL 数据同步备份和还原数据库吗
 
@@ -212,7 +212,7 @@ SQL 数据同步在所有区域中都可用。
 
 ### <a name="is-collation-supported-in-sql-data-sync"></a>SQL 数据同步是否支持排序规则
 
-是的。 SQL 数据同步在以下情况下支持排序规则：
+可以。 SQL 数据同步在以下情况下支持排序规则：
 
 - 如果所选同步架构表不在中心或成员数据库中，则部署同步组时，该服务会使用空目标数据库中选择的排序规则设置自动创建相应的表和列。
 - 如果要同步的表已经存在于中心和成员数据库中，则 SQL 数据同步要求中心数据库和成员数据库之间的主键列具有相同的排序规则，以成功部署同步组。 主键列以外的列没有排序规则限制。

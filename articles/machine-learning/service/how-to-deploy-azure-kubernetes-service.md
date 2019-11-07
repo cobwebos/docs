@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 10/25/2019
-ms.openlocfilehash: 45d76328f4a5de4a5cf26b0a126825c1b0a906c7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/06/2019
+ms.openlocfilehash: 9055223d1e4ed056ad606533219925972b623f86
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496952"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682087"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes Service 群集
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "73496952"
 > [!IMPORTANT]
 > 创建或附件过程是一次性任务。 将 AKS 群集连接到工作区后，可以将其用于部署。 如果不再需要 AKS 群集，可以分离或删除它。 Detatched 或删除后，将无法再部署到群集。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -122,12 +122,16 @@ az ml computetarget create aks -n myaks
 >
 > 如果要使用 Azure 虚拟网络保护 AKS 群集，必须先创建虚拟网络。 有关详细信息，请参阅[通过 Azure 虚拟网络进行安全试验和推理](how-to-enable-virtual-network.md#aksvnet)。
 
+将 AKS 群集附加到工作区时，可以通过设置 `cluster_purpose` 参数来定义使用群集的方式。
+
+如果未设置 `cluster_purpose` 参数或设置 `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`，则群集必须有至少12个可用的虚拟 Cpu。
+
+如果设置 `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`，则群集不需要有12个虚拟 Cpu。 建议至少2个虚拟 Cpu 用于开发/测试。 但是，为开发/测试配置的群集不适用于生产级别的流量，可能会增加推理时间。 开发/测试群集也不保证容错能力。
+
 > [!WARNING]
-> 将 AKS 群集附加到工作区时，可以通过设置 `cluster_purpose` 参数来定义使用群集的方式。
+> 不要从工作区中创建多个同时从同一 AKS 群集同时同步的附件。 例如，使用两个不同的名称将一个 AKS 群集附加到工作区。 每个新附件将破坏以前的现有附件。
 >
-> 如果未设置 `cluster_purpose` 参数或设置 `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`，则群集必须有至少12个可用的虚拟 Cpu。
->
-> 如果设置 `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`，则群集不需要有12个虚拟 Cpu。 建议至少2个虚拟 Cpu 用于开发/测试。 但是，为开发/测试配置的群集不适用于生产级别的流量，可能会增加推理时间。 开发/测试群集也不保证容错能力。
+> 如果要重新附加 AKS 群集（例如，更改 SSL 或其他群集配置设置），则必须先使用[AksCompute （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--)删除现有附件。
 
 有关使用 Azure CLI 或门户创建 AKS 群集的详细信息，请参阅以下文章：
 

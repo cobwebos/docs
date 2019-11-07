@@ -1,5 +1,5 @@
 ---
-title: 预配 Azure-SSIS 集成运行时企业版 | Microsoft Docs
+title: '预配 Azure-SSIS 集成运行时企业版 '
 description: 本文介绍 Azure-SSIS 集成运行时企业版的功能以及如何配置它
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d2b06d044f68972ef72dd9b53401980e84ef779f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c9db18d416d508dd5a98cbacc14b7db6c075a55
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66152433"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73673956"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>预配 Azure-SSIS 集成运行时企业版
 

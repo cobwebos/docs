@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂中的设置变量活动 | Microsoft Docs
+title: Azure 数据工厂中的设置变量活动
 description: 了解如何使用“设置变量”活动来设置数据工厂管道中定义的现有变量的值
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: cfe6dd63234a7750fe01614d6f1b38bb7cce1adb
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 2589e56d3170b235f31d07f902eb75c749e8573f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142444"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679303"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Azure 数据工厂中的设置变量活动
 
@@ -25,12 +25,12 @@ ms.locfileid: "70142444"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 必填
+属性 | 说明 | 必选
 -------- | ----------- | --------
 name | 管道中活动的名称 | 是
-description | 描述活动用途的文本 | 否
+说明 | 描述活动用途的文本 | 否
 type | 活动类型为 SetVariable | 是
-value | 用于设置指定变量的字符串文本或表达式对象值 | 是
+值 | 用于设置指定变量的字符串文本或表达式对象值 | 是
 variableName | 此活动将设置的变量的名称 | 是
 
 

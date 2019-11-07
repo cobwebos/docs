@@ -1,6 +1,6 @@
 ---
-title: SQL 数据库的 XEvent 事件文件代码 | Microsoft 文档
-description: 提供一个双阶段代码示例的 PowerShell 和 Transact-SQL，该示例演示 Azure SQL 数据库的扩展事件中的事件文件目标。 完成此方案部分必须用到 Azure 存储空间。
+title: SQL 数据库的 XEvent 事件文件代码
+description: 提供一个双阶段代码示例的 PowerShell 和 Transact-SQL，该示例演示 Azure SQL 数据库的扩展事件中的事件文件目标。 完成此方案部分必须用到 Azure 存储。
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -11,18 +11,18 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 03/12/2019
-ms.openlocfilehash: f0994f92444da338b18447eb1b248c74df9aa2d2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ea5c90433a4d2928e5fb88df149631c80df9dacf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566102"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686835"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的事件文件目标代码
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-需要完整的代码示例来可靠捕获和报告扩展事件的信息。
+需要一个完整的代码示例来可靠捕获和报告扩展事件的信息。
 
 在 Microsoft SQL Server 中，[事件文件目标](https://msdn.microsoft.com/library/ff878115.aspx)用于将事件输出存储在本地硬盘驱动器文件中。 但是，此类文件并不适用于 Azure SQL 数据库。 我们改为使用 Azure 存储空间服务来支持事件文件目标。
 
@@ -53,21 +53,21 @@ ms.locfileid: "68566102"
   
   * 这些模块提供 **New-AzStorageAccount** 等命令。
 
-## <a name="phase-1-powershell-code-for-azure-storage-container"></a>阶段 1：Azure 存储容器的 PowerShell 代码
+## <a name="phase-1-powershell-code-for-azure-storage-container"></a>阶段 1：Azure 存储空间容器的 PowerShell 代码
 
 此 PowerShell 是两阶段代码示例的第 1 阶段。
 
 脚本开头的命令将清除以前可能运行后的结果，并且可重复运行。
 
-1. 将 PowerShell 脚本粘贴到 Notepad.exe 等简单的文本编辑器中，并将脚本保存为扩展名为 **.ps1** 的文件。
+1. 将 PowerShell 脚本粘贴到 Notepad.exe 等简单的文本编辑器中，并将脚本保存为扩展名为 **.ps1**的文件。
 2. 以管理员身份启动 PowerShell ISE。
 3. 在提示符下键入<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>然后按 Enter。
 4. 在 PowerShell ISE 中打开 **.ps1** 文件。 运行该脚本。
 5. 该脚本先启动一个新窗口，供你在其中登录到 Azure。
    
-   * 如果想要重新运行脚本而不中断会话，可以很方便地选择注释禁止 **Add-AzureAccount** 命令。
+   * 如果想要重新运行脚本而不中断会话，可以方便地选择注释禁止 **Add-AzureAccount** 命令。
 
-![在准备运行脚本之前，必须准备好已装有 Azure 模块的 PowerShell ISE。][30_powershell_ise]
+![装有 Azure 模块的 PowerShell ISE，可运行脚本。][30_powershell_ise]
 
 ### <a name="powershell-code"></a>PowerShell 代码
 
@@ -233,14 +233,14 @@ Now shift to the Transact-SQL portion of the two-part code sample!';
 
 记下 PowerShell 脚本结束时输出的几个命名值。 必须将这些值编辑成阶段 2 中使用的 Transact-SQL 脚本。
 
-## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>阶段 2：使用 Azure 存储容器的 Transact-SQL 代码
+## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>阶段 2：使用 Azure 存储空间容器的 Transact-SQL 代码
 
 * 在此代码示例的第 1 阶段，已运行 PowerShell 脚本来创建 Azure 存储容器。
 * 接下来在第 2 阶段，以下 Transact-SQL 脚本必须使用该容器。
 
-脚本以用于在可能的上次运行后进行清理的命令开头，且可重复运行。
+脚本开头的命令将清除以前可能运行后的结果，并且可重复运行。
 
-PowerShell 脚本在结束时输出了几个命名值。 必须编辑 Transact-SQL 脚本才能使用这些值。 在 Transact-SQL 脚本中查找 **TODO** 以找到编辑点。
+PowerShell 脚本在结束时输出了几个命名值。 必须编辑 Transact-SQL 脚本以使用这些值。 在 Transact-SQL 脚本中查找 **TODO** 以找到编辑点。
 
 1. 打开 SQL Server Management Studio (ssms.exe)。
 2. 连接到 Azure SQL 数据库。
@@ -451,7 +451,7 @@ GO
 ```
 
 
-如果运行脚本时无法附加目标，必须停止再重新启动事件会话：
+如果运行脚本时无法附加目标，则你必须停止再重新启动事件会话：
 
 ```sql
 ALTER EVENT SESSION ... STATE = STOP;
@@ -512,7 +512,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 * [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
 
-用于查看扩展事件数据的高级选项的说明可在此处获取：
+可在以下位置获取用于查看扩展事件数据的高级选项的说明：
 
 * [扩展事件的目标数据的高级视图](https://msdn.microsoft.com/library/mt752502.aspx)
 
@@ -521,7 +521,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 假设要在 Microsoft SQL Server 上运行上述 Transact-SQL 示例。
 
-* 为简单起见，会想要将 Azure 存储容器完全替换为一个简单文件（例如 **C:\myeventdata.xel**）。 该文件将写入托管 SQL Server 的计算机的本地硬盘驱动器上。
+* 为了方便，想要将 Azure 存储容器完全替换为一个简单文件（例如 **C:\myeventdata.xel**）。 该文件将写入托管 SQL Server 的计算机的本地硬盘驱动器上。
 * 不需要为 **CREATE MASTER KEY** 和 **CREATE CREDENTIAL** 使用任何类型的 Transact-SQL 语句。
 * 在 **CREATE EVENT SESSION** 语句的 **ADD TARGET** 子句中，将对 **filename=** 分配的 Http 值替换为完整路径字符串（例如 **C:\myfile.xel**）。
   

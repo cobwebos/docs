@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 08/16/2019
-ms.openlocfilehash: 7f6744590a81d2fb29854b103f4ad63bea2d8aca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/06/2019
+ms.openlocfilehash: fe0d2380eff373dd97d389c69cf7d57fe79e3fa9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497299"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682178"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新生成存储帐户访问密钥
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "73497299"
 
 出于安全考虑，可能需要更改 Azure 存储帐户的访问密钥。 重新生成访问密钥时，必须将 Azure 机器学习更新为使用新密钥。 Azure 机器学习可以将存储帐户同时用于模型存储和数据存储。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区一](how-to-manage-workspace.md)文。
 

@@ -1,5 +1,5 @@
 ---
-title: 复制活动中的架构映射 | Microsoft Docs
+title: 复制活动中的架构映射
 description: 了解复制数据时，Azure 数据工厂中的复制活动如何将架构和数据类型从源数据映射到接收器数据。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: b705123dc6492466c30b3c1ddaf4b330b0d684a1
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: ed0823930b819661baf384d51478547cb2e0eccf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272262"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678142"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>复制活动中的架构映射
 
@@ -88,18 +88,18 @@ ms.locfileid: "71272262"
 
 以下属性在 `translator` -> `mappings` 下带 `source` 和 `sink` 的对象中受支持：
 
-| 属性 | 说明                                                  | 必填 |
+| 属性 | 说明                                                  | 必选 |
 | -------- | ------------------------------------------------------------ | -------- |
 | name     | 源或接收器列的名称。                           | 是      |
-| ordinal  | 列索引。 从 1 开始。 <br>在使用带分隔符的文本但没有标头行时应用，为必填项。 | 否       |
-| path     | 要提取或映射的每个字段的 JSON 路径表达式。 适用于分层数据，例如 MongoDB/REST。<br>对于根对象下的字段，JSON 路径以根 $ 开头对于 " `collectionReference`属性" 所选数组中的字段，JSON 路径从数组元素开始。 | 否       |
+| 序号  | 列索引。 从 1 开始。 <br>在使用带分隔符的文本但没有标头行时应用，为必填项。 | 否       |
+| path     | 要提取或映射的每个字段的 JSON 路径表达式。 适用于分层数据，例如 MongoDB/REST。<br>对于根对象下的字段，JSON 路径以根 $ 开头对于 `collectionReference` 属性选择的数组中的字段，JSON 路径从数组元素开始。 | 否       |
 | type     | 源或接收器列的数据工厂临时数据类型。 | 否       |
-| 区域性  | 源或接收器列的区域性。 <br>当类型为 `Datetime` 或 `Datetimeoffset` 时应用。 默认值为 `en-us`。 | 否       |
-| format   | 当类型为 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 | 否       |
+| culture  | 源或接收器列的区域性。 <br>当类型为 `Datetime` 或 `Datetimeoffset` 时应用。 默认为 `en-us`。 | 否       |
+| 格式   | 当类型为 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 | 否       |
 
 以下属性在 `translator` -> `mappings` 下带 `source` 和 `sink` 的对象中受支持：
 
-| 属性            | 说明                                                  | 必填 |
+| 属性            | 说明                                                  | 必选 |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | collectionReference | 仅当分层数据（例如 MongoDB/REST）为源时，才支持此项。<br>若要进行迭代操作，以同一模式从**数组字段中**的对象提取数据并按行和对象进行转换，请指定要进行交叉应用的该数组的 JSON 路径。 | 否       |
 
@@ -203,7 +203,7 @@ ms.locfileid: "71272262"
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动转换器的 type 属性必须设置为：**TabularTranslator** | 是 |
+| type | 复制活动转换器的 type 属性必须设置为： **TabularTranslator** | 是 |
 | schemaMapping | 键值对的集合，代表**从源端到接收器端**的映射关系。<br/>- **键：** 代表源。 对于**表格源**，指定数据集结构中定义的列名称；对于**分层源**，指定要提取和映射的每个字段的 JSON 路径表达式。<br>- **值：** 代表接收器。 对于**表格接收器**，指定数据集结构中定义的列名称；对于**分层接收器**，指定要提取和映射的每个字段的 JSON 路径表达式。 <br>在使用分层数据时，对于根对象下的字段，JSON 路径以根 $ 开头；对于按 `collectionReference` 属性选择的数组中的字段，JSON 路径以数组元素开头。  | 是 |
 | collectionReference | 若要进行迭代操作，以同一模式从**数组字段中**的对象提取数据并按行和对象进行转换，请指定要进行交叉应用的该数组的 JSON 路径。 仅当分层数据为源时，才支持此属性。 | 否 |
 
@@ -286,8 +286,8 @@ ms.locfileid: "71272262"
 数据工厂支持以下临时数据类型：在[数据集结构](concepts-datasets-linked-services.md#dataset-structure-or-schema)配置中配置类型信息时，可以指定以下值：
 
 * Byte[]
-* 布尔
-* 日期时间
+* 布尔值
+* Datetime
 * Datetimeoffset
 * Decimal
 * Double
@@ -296,8 +296,8 @@ ms.locfileid: "71272262"
 * Int32
 * Int64
 * Single
-* 字符串
-* 时间范围
+* String
+* Timespan
 
 ## <a name="next-steps"></a>后续步骤
 请参阅其他复制活动文章：

@@ -1,5 +1,5 @@
 ---
-title: Intelligent Insights 性能诊断日志 - Azure SQL 数据库 | Microsoft Docs
+title: 智能见解性能诊断日志-Azure SQL 数据库
 description: Intelligent Insights 提供 Azure SQL 数据库性能问题的诊断日志
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: c25d37a4d1695ab94cc0667a13e36e4da640e12a
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 86381f5670f09b5e6a215793dc1ea4eab7ecbb8e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262152"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689698"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>使用 Intelligent Insights Azure SQL 数据库性能诊断日志
 
@@ -71,7 +71,7 @@ Intelligent Insights 性能日志的下一部分包括通过内置人工智能�
 
 ### <a name="detection-category"></a>检测类别
 
-类别 (category) 属性介绍了可检测性能模式的类别。 请查看下表，了解可检测性能模式的所有可能类别。 有关详细信息，请参阅[使用 Intelligent Insights 排查数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
+类别 (category) 属性介绍了可检测性能模式的类别。 请查看下表，了解可检测性能模式的所有可能类别。 有关详细信息，请参阅[使用 Intelligent Insights 解决数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
 
 相应地，诊断日志文件中输出的详细信息可能因检测到的性能问题而异。
 
@@ -101,7 +101,7 @@ Intelligent Insights 性能日志的下一部分包括通过内置人工智能�
 
 Intelligent Insights 日志的下一部分提供关于受检测到的性能问题影响的特定查询信息。 此信息公开为嵌入 impact_s 属性的一组对象。 影响属性包含实体和指标。 实体引用特定查询（类型：Query）。 唯一的查询哈希值在值 (Value) 属性下公开。 此外，每个公开的查询后跟指标和值，指示检测到的性能问题。
 
-在以下日志示例中，使用哈希 0x9102EXZ4 的查询被检测到其执行持续时间延长（指标：DurationIncreaseSeconds）。 值 110 秒表示此特定查询的执行时间延长 110 秒。 因为可以检测到多个查询，所以此特定日志部分可能包含多个查询条目。
+在以下日志示例中，使用哈希 0x9102EXZ4 的 查询被检测到其执行持续时间延长（指标：DurationIncreaseSeconds）。 值 110 秒表示此特定查询的执行时间延长 110 秒。 因为可以检测到多个查询，所以此特定日志部分可能包含多个查询条目。
 
 ```json
 "impact" : [{
@@ -113,7 +113,7 @@ Intelligent Insights 日志的下一部分提供关于受检测到的性能问�
 }]
 ```
 
-### <a name="metrics"></a>指标
+### <a name="metrics"></a>度量值
 
 每个报告的指标的测量单位在指标 (metric) 属性下提供，可能的值有：秒、数字和百分比。 测量的指标值在值 (value) 属性中报告。
 

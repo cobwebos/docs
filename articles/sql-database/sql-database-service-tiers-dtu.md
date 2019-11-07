@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库服务层级 - 基于 DTU 的购买模型 | Microsoft Docs
+title: 'Azure SQL 数据库服务层-基于 DTU 的购买模型 '
 description: 了解单一数据库和共用数据库的基于 DTU 的购买模型中的服务层级，以提供计算大小和存储大小。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: e735d8832912f5b512b7cfe015ca47efbe641da7
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 43f4f9e0d1e5f33dde32e5274dddf9d17776db21
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72000429"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687299"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 
@@ -39,8 +39,8 @@ ms.locfileid: "72000429"
 |CPU|低|低、中、高|中、高|
 |IO 吞吐量（近似） |每个 DTU 1-5 IOPS| 每个 DTU 1-5 IOPS | 每个 DTU 25 IOPS|
 |IO 延迟（近似）|5 毫秒（读取），10 毫秒（写入）|5 毫秒（读取），10 毫秒（写入）|2 毫秒（读取/写入）|
-|列存储索引 |不可用|S3 及更高版本|支持|
-|内存中 OLTP|不可用|不可用|支持|
+|列存储索引 |不适用|S3 及更高版本|支持|
+|内存中 OLTP|不适用|不适用|支持|
 |||||
 
 > [!NOTE]
@@ -71,7 +71,7 @@ ms.locfileid: "72000429"
 |||||
 
 > [!IMPORTANT]
-> 除以下区域外，其他所有区域的高级层目前均可提供超过 1 TB 的存储：中国东部、中国北部、德国中部、德国东北部、美国中西部、US DoD 区域和美国政府中部。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。  
+> 高级层中的存储空间超过 1 TB 目前在除：中国东部、中国北部、德国中部、德国北部、美国中部、US DoD 地区和美国政府中心以外的所有地区都可用。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。  
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
@@ -103,7 +103,7 @@ ms.locfileid: "72000429"
 
 工作负荷由九种事务类型组成，如下表中所示。 每种事务旨在强调数据库引擎和系统硬件中的特定一组系统特征，与其他事务形成高反差。 此方法可更方便地评估不同组件对总体性能的影响。 例如，事务“Read Heavy”将从磁盘生成大量的读取操作。
 
-| 事务类型 | 描述 |
+| 事务类型 | 说明 |
 | --- | --- |
 | Read Lite |SELECT；在内存中；只读 |
 | Read Medium |SELECT；大多数在内存中；只读 |
@@ -112,7 +112,7 @@ ms.locfileid: "72000429"
 | Update Heavy |UPDATE；大多数在内存中；读写 |
 | Insert Lite |INSERT；在内存中；读写 |
 | Insert Heavy |INSERT；大多数不在内存中；读写 |
-| DELETE |DELETE；在内存中和不在内存中的组合；读写 |
+| 删除 |DELETE；在内存中和不在内存中的组合；读写 |
 | CPU Heavy |SELECT；在内存中；相对较高的 CPU 负载；只读 |
 
 ### <a name="workload-mix"></a>工作负荷组合
@@ -128,7 +128,7 @@ ms.locfileid: "72000429"
 | Update Heavy |3 |
 | Insert Lite |3 |
 | Insert Heavy |2 |
-| Delete |2 |
+| 删除 |2 |
 | CPU Heavy |10 |
 
 ### <a name="users-and-pacing"></a>用户和步调
@@ -149,13 +149,13 @@ ms.locfileid: "72000429"
 
 用户数由数据库大小（以缩放比例单位数表示）确定。 每个五个缩放比例单位有一个用户。 由于步调延迟，一个用户平均每秒最多可以生成一个事务。
 
-例如，比例因子为 500 (SF = 500) 的数据库将具有 100 个用户，并且可以实现的最大速率为 100 TPS。 若要驱动更高的 TPS 速率，需要更多的用户和更大的数据库。
+例如，缩放比例为 500 (SF = 500) 的数据库将具有 100 个用户，并且可以实现的最大速率为 100 TPS。 若要驱动更高的 TPS 速率，需要更多的用户和更大的数据库。
 
 ### <a name="measurement-duration"></a>度量持续时间
 
 有效地运行基准检验需要稳定状态度量持续时间至少为 1 小时。
 
-### <a name="metrics"></a>指标
+### <a name="metrics"></a>度量值
 
 基准检验中的关键指标是吞吐量和响应时间。
 

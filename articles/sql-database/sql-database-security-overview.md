@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库安全概述 | Microsoft 文档
+title: Azure SQL 数据库安全概述
 description: 了解 Azure SQL 数据库和 SQL Server 的安全性，包括云与本地 SQL Server 之间的差异。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 44b330fcf93b9d2d2d305b3da954421e4fbbcbbc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2365f9cedef73c61870f6e83fa491de5e950c801
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566834"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687456"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL 数据库安全功能概述
 
@@ -24,7 +24,7 @@ ms.locfileid: "68566834"
 
 ![sql-security-layer.png](media/sql-database-security-overview/sql-security-layer.png)
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 
 Microsoft Azure SQL 数据库为云和企业应用程序提供关系数据库服务。 为了帮助保护客户数据，防火墙会阻止对数据库服务器的网络访问，直到根据 IP 地址或 Azure 虚拟网络流量源显式授予访问权限。
 
@@ -65,7 +65,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
 > [!IMPORTANT]
 > 管理 Azure 中的数据库和服务器由门户用户帐户的角色分配控制。 有关本文的详细信息，请参阅 [Azure 门户中基于角色的访问控制](../role-based-access-control/overview.md)。 使用防火墙规则控制访问权限不适用于托管实例。 有关所需网络配置的详细信息，请参阅以下有关[连接到托管实例](sql-database-managed-instance-connect-app.md)的文章。
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>授权
 
 授权是指在 Azure SQL 数据库中分配给用户的权限，并决定允许用户执行的操作。 权限控制通过将用户帐户添加到[数据库角色](/sql/relational-databases/security/authentication-access/database-level-roles)并向这些角色分配数据库级权限来实现，也可以通过授予用户特定的[对象级权限](/sql/relational-databases/security/permissions-database-engine)来实现。 有关详细信息，请参阅[登录和用户](sql-database-manage-logins.md)
 
@@ -87,7 +87,7 @@ SQL 数据库审核可跟踪数据库活动，通过将数据库事件记录到�
 
 ### <a name="advanced-threat-protection"></a>高级威胁防护
 
-高级威胁防护通过对你的 SQL Server 日志进行分析来检测异常行为和对数据库的潜在恶意访问或利用。 针对可疑活动（例如 SQL注入、潜在的数据渗透和暴力攻击）或访问模式中的异常情况创建警报，以捕获特权提升和违规的凭据使用。 警报可从[Azure 安全中心](https://azure.microsoft.com/services/security-center/)查看, 其中提供了可疑活动的详细信息, 并提供了进一步调查的建议, 以及用于缓解威胁的操作。 可以为每台服务器启用高级威胁防护，但需要额外付费。 有关详细信息，请参阅 [SQL 数据库高级威胁防护入门](sql-database-threat-detection.md)。
+高级威胁防护通过对你的 SQL Server 日志进行分析来检测异常行为和对数据库的潜在恶意访问或利用。 针对可疑活动（例如 SQL注入、潜在的数据渗透和暴力攻击）或访问模式中的异常情况创建警报，以捕获特权提升和违规的凭据使用。 警报可从[Azure 安全中心](https://azure.microsoft.com/services/security-center/)查看，其中提供了可疑活动的详细信息，并提供了进一步调查的建议，以及用于缓解威胁的操作。 可以为每台服务器启用高级威胁防护，但需要额外付费。 有关详细信息，请参阅 [SQL 数据库高级威胁防护入门](sql-database-threat-detection.md)。
 
 ![azure-database-td.jpg](media/sql-database-security-overview/azure-database-td.jpg)
 
@@ -99,18 +99,18 @@ SQL 数据库通过使用[传输层安全](https://support.microsoft.com/help/31
 
 SQL Server 始终对所有连接强制要求加密 (SSL/TLS)。 这样可以确保在客户端与服务器之间传输的所有数据经过加密，而不管连接字符串中的 **Encrypt** 或 **TrustServerCertificate** 设置如何。
 
-作为最佳做法，我们建议在应用程序的连接字符串中指定加密的连接，而不要信任服务器证书。  这会强制您的应用程序验证服务器证书, 从而防止您的应用程序容易受到中间人攻击。
+作为最佳做法，我们建议在应用程序的连接字符串中指定加密的连接，而不要信任服务器证书。 这会强制应用程序验证服务器证书，从而防止应用程序容易受到中间人类型的攻击。
 
-例如, 使用 ADO.NET 驱动程序时, 可以通过**Encrypt = True**和**TrustServerCertificate = False**完成此操作。 如果是从 Azure 门户中获取连接字符串，则它将具有正确的设置。
+例如，在使用 ADO.NET 驱动程序时，这是通过 **Encrypt=True** 和 **TrustServerCertificate=False** 实现的。 如果是从 Azure 门户中获取连接字符串，则它将具有正确的设置。
 
 > [!IMPORTANT]
-> 请注意, 某些非 Microsoft 驱动程序在默认情况下可能不使用 TLS, 或者依赖于较旧版本的 TLS (< 1.2) 才能正常运行。 在这种情况下，SQL Server 仍允许连接到数据库。 但是，我们建议评估允许此类驱动程序和应用程序连接到 SQL 数据库所带来的安全风险，尤其是存储敏感数据时。 
+> 请注意，某些非 Microsoft 驱动程序在默认情况下可能不使用 TLS，或者依赖于较旧版本的 TLS （< 1.2）才能正常运行。 在这种情况下，SQL Server 仍允许连接到数据库。 但是，我们建议评估允许此类驱动程序和应用程序连接到 SQL 数据库所带来的安全风险，尤其是存储敏感数据时。 
 >
 > 有关 TLS 和连接的更多信息，请参阅 [TLS 注意事项](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)。
 
 ### <a name="transparent-data-encryption-encryption-at-rest"></a>透明数据加密（静态加密）
 
-[Azure SQL 数据库的透明数据加密 (TDE)](transparent-data-encryption-azure-sql.md) 进一步加强了安全性，帮助保护静态数据不受未经授权或脱机访问原始文件或备份的影响。 常见方案包括数据中心被盗或对硬件或媒体（如磁盘驱动器和备份磁带）的不安全处置。 TDE 使用 AES 加密算法加密整个数据库，无需应用程序开发人员对现有应用程序进行任何更改。
+[Azure SQL 数据库的透明数据加密 (TDE)](transparent-data-encryption-azure-sql.md) 进一步加强了安全性，帮助保护静态数据不受未经授权或脱机访问原始文件或备份的影响。 常见方案包括数据中心被盗或对硬件或媒体（如磁盘驱动器和备份磁带）的不安全处置。 TDE 使用 AES 加密算法来加密整个数据库，这不需要应用程序开发人员对现有应用程序进行任何更改。
 
 在 Azure 中，所有新创建的 SQL 数据库都默认处于加密状态，且数据库加密密钥通过一个内置的服务器证书保护。  证书维护和轮换由服务管理，无需用户输入。 喜欢控制加密密钥的客户可以管理 [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md) 中的密钥。
 
@@ -146,13 +146,13 @@ SQL 数据库动态数据掩码通过对非特权用户模糊化敏感数据来�
 
 有关详细信息，请参阅[数据发现和分类入门](sql-database-data-discovery-and-classification.md)。
 
-### <a name="compliance"></a>符合性
+### <a name="compliance"></a>合规性
 
-除了上述有助于应用程序符合各项安全要求的特性和功能以外，Azure SQL 数据库还定期参与审核，并已通过许多法规标准的认证。 有关详细信息, 请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), 你可以在其中找到最新的 SQL 数据库符合性认证列表。
+除了上述有助于应用程序符合各项安全要求的特性和功能以外，Azure SQL 数据库还定期参与审核，并已通过许多法规标准的认证。 有关详细信息，请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，你可以在其中找到最新的 SQL 数据库符合性认证列表。
 
 ### <a name="feature-restrictions"></a>功能限制
 
-功能限制可帮助防止某些形式的 SQL 注入泄露有关数据库的信息, 即使 SQL 注入成功也是如此。 有关详细信息, 请参阅[AZURE SQL 数据库功能限制](sql-database-feature-restrictions.md)。
+功能限制有助于防止某些形式的 SQL 注入泄漏有关数据库的信息，即使在 SQL 注入成功时也是如此。 有关详细信息，请参阅 [Azure SQL 数据库功能限制](sql-database-feature-restrictions.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

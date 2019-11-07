@@ -1,5 +1,5 @@
 ---
-title: 连接到 Azure SQL 数据仓库 |Microsoft Docs
+title: 连接到 Azure SQL 数据仓库
 description: 连接到 Azure SQL 数据仓库。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 71f5c8ca56bc188c0664604a78c38a05be3c3b01
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 5a14b99753c9f06f2e0cf32dd8b5c7776cfdad89
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68479747"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685877"
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>连接到 Azure SQL 数据仓库
 连接到 Azure SQL 数据仓库。
@@ -63,13 +64,13 @@ SQL 数据仓库在连接和创建对象期间标准化一些设置。 这些设
 
 | 数据库设置 | 值 |
 |:--- |:--- |
-| [ANSI_NULLS][ANSI_NULLS] |开 |
-| [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |开 |
+| [ANSI_NULLS][ANSI_NULLS] |亮起 |
+| [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |亮起 |
 | [DATEFORMAT][DATEFORMAT] |mdy |
 | [DATEFIRST][DATEFIRST] |7 |
 
 ## <a name="next-steps"></a>后续步骤
-若要通过 Visual Studio 进行连接和查询, 请参阅[通过 Visual studio 进行查询][Query with Visual Studio]。 若要详细了解身份验证选项, 请参阅[对 AZURE SQL 数据仓库进行身份验证][Authentication to Azure SQL Data Warehouse]。
+若要通过 Visual Studio 进行连接和查询，请参阅[通过 Visual studio 进行查询][Query with Visual Studio]。 若要详细了解身份验证选项，请参阅[对 AZURE SQL 数据仓库进行身份验证][Authentication to Azure SQL Data Warehouse]。
 
 <!--Articles-->
 [Query with Visual Studio]: ./sql-data-warehouse-query-visual-studio.md

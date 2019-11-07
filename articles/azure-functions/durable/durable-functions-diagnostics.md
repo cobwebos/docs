@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d2badee3eaa5a9af48e89adc1b59beacc1571792
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 333ddbc15e3ff62b1cd46383c4e3be75fb3dbb88
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933503"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614939"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure Durable Functions 中的诊断
 
@@ -24,17 +24,17 @@ ms.locfileid: "70933503"
 
 使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 是在 Azure Functions 中执行诊断和监视的建议方法。 这同样适用于 Durable Functions。 有关如何在函数应用中利用 Application Insights 的概述，请参阅[监视 Azure Functions](../functions-monitoring.md)。
 
-Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流程的端到端执行。 可在 Azure 门户中使用 [Application Insights Analytics](../../azure-monitor/app/analytics.md) 工具来查找和查询这些事件。
+Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流程的端到端执行。 可以在 Azure 门户中使用[Application Insights 分析](../../azure-monitor/app/analytics.md)工具找到并查询这些跟踪事件。
 
 ### <a name="tracking-data"></a>跟踪数据
 
 业务流程实例的每个生命周期事件会导致将一个跟踪事件写入 Application Insights 中的**跟踪**集合。 此事件包含带有多个字段的 **customDimensions** 有效负载。  字段名称的前面都附有 `prop__`。
 
 * **hubName**：运行业务流程的任务中心的名称。
-* **appName**：函数应用的名称。 当有多个函数应用共享同一个 Application Insights 实例时，此字段非常有用。
-* **slotName**：当前函数应用在其中运行的[部署槽位](../functions-deployment-slots.md)。 利用部署槽位控制业务流程的版本时，此字段非常有用。
+* **appName**：函数应用的名称。 如果有多个函数应用共享同一个 Application Insights 实例，则此字段非常有用。
+* **slotName**：运行当前函数应用的[部署槽位](../functions-deployment-slots.md)。 当你利用部署槽位对你的业务流程进行版本调整时，此字段非常有用。
 * **functionName**：业务流程协调程序或活动函数的名称。
-* **functionType**：函数的类型，例如 **Orchestrator** 或 **Activity**。
+* **functionType**：函数的类型，例如“业务流程协调程序”或“活动”。
 * **instanceId**：业务流程实例的唯一 ID。
 * **state**：实例的生命周期执行状态。 有效值包括：
   * **Scheduled**：函数已计划执行，但尚未开始运行。
@@ -43,14 +43,14 @@ Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流�
   * **Listening**：业务流程协调程序正在侦听外部事件通知。
   * **Completed**：函数已成功完成。
   * **Failed**：函数失败并出错。
-* **reason**：与跟踪事件关联的其他数据。 例如，如果某个实例正在等待外部事件通知，则此字段指示该实例正在等待的事件的名称。 如果函数失败，此字段会包含错误详细信息。
+* **reason**：与跟踪事件关联的其他数据。 例如，如果某个实例正在等待外部事件通知，则此字段指示该实例正在等待的事件的名称。 如果函数失败，则此字段将包含错误详细信息。
 * **isReplay**：指示跟踪事件是否用于重播执行的布尔值。
-* **extensionVersion**：持久任务扩展的版本。 在报告扩展中可能存在的 bug 时，此字段是特别重要的数据。 如果长时间运行的实例在运行时发生更新，它可能会报告多个版本。
+* **extensionVersion**：持久任务扩展的版本。 当报告扩展中的可能 bug 时，版本信息尤其重要。 如果长时间运行的实例在运行时发生更新，它可能会报告多个版本。
 * **sequenceNumber**：事件的执行序列号。 与时间戳组合使用可以帮助按执行时间对事件进行排序。 *请注意，如果主机在实例正在运行时重新启动，则此数字将重置为零，因此始终先按时间戳然后按 sequenceNumber 排序很重要。*
 
-可以在 `host.json` 文件的 `logger` (Functions 1.x) 或 `logging` (Functions 2.x) 节中配置对发出到 Application Insights 的数据的跟踪详细程度。
+可以在 `host.json` 文件的 `logger` （函数1.x）或 `logging` （函数2.0）部分中配置发出到 Application Insights 的跟踪数据的详细级别。
 
-#### <a name="functions-1x"></a>Functions 1.x
+#### <a name="functions-10"></a>函数1。0
 
 ```json
 {
@@ -64,7 +64,7 @@ Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流�
 }
 ```
 
-#### <a name="functions-2x"></a>Functions 2.x
+#### <a name="functions-20"></a>函数2。0
 
 ```json
 {
@@ -78,9 +78,9 @@ Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流�
 
 默认情况下，会发出所有非重播跟踪事件。 可通过将 `Host.Triggers.DurableTask` 设置为 `"Warning"` 或 `"Error"` 来减少数据量，在这种情况下，只会在发生异常情况时发出跟踪事件。
 
-若要启用发出详细业务流程重播事件，可以在 `host.json` 文件中的 `durableTask` 下将 `LogReplayEvents` 设置为 `true`，如下所示：
+若要启用发出详细业务流程重播事件，可以在 `LogReplayEvents` 文件中的 `true` 下将 `host.json` 设置为 `durableTask`，如下所示：
 
-#### <a name="functions-1x"></a>Functions 1.x
+#### <a name="functions-10"></a>函数1。0
 
 ```json
 {
@@ -90,7 +90,7 @@ Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流�
 }
 ```
 
-#### <a name="functions-2x"></a>Functions 2.x
+#### <a name="functions-20"></a>函数2。0
 
 ```javascript
 {
@@ -161,8 +161,9 @@ traces
 ### <a name="precompiled-c"></a>预编译 C#
 
 ```csharp
+[FunctionName("FunctionChain")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context,
+    [OrchestrationTrigger] IDurableOrchestrationContext context,
     ILogger log)
 {
     log.LogInformation("Calling F1.");
@@ -179,7 +180,7 @@ public static async Task Run(
 
 ```csharp
 public static async Task Run(
-    DurableOrchestrationContext context,
+    IDurableOrchestrationContext context,
     ILogger log)
 {
     log.LogInformation("Calling F1.");
@@ -192,7 +193,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
 
 ```javascript
 const df = require("durable-functions");
@@ -208,7 +209,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-生成的日志数据应如下所示：
+生成的日志数据类似于以下示例输出：
 
 ```txt
 Calling F1.
@@ -231,8 +232,9 @@ Done!
 #### <a name="precompiled-c"></a>预编译 C#
 
 ```csharp
+[FunctionName("FunctionChain")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context,
+    [OrchestrationTrigger] IDurableOrchestrationContext context,
     ILogger log)
 {
     if (!context.IsReplaying) log.LogInformation("Calling F1.");
@@ -249,7 +251,7 @@ public static async Task Run(
 
 ```cs
 public static async Task Run(
-    DurableOrchestrationContext context,
+    IDurableOrchestrationContext context,
     ILogger log)
 {
     if (!context.IsReplaying) log.LogInformation("Calling F1.");
@@ -262,7 +264,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+#### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
 
 ```javascript
 const df = require("durable-functions");
@@ -278,7 +280,26 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-做出这种更改后，日志输出如下所示：
+从 Durable Functions 2.0 开始，.NET orchestrator 函数还可以选择创建一个在重播期间自动筛选出日志语句的 `ILogger`。 这种自动筛选是使用 `IDurableOrchestrationContext.CreateReplaySafeLogger(ILogger)` API 完成的。
+
+```csharp
+[FunctionName("FunctionChain")]
+public static async Task Run(
+    [OrchestrationTrigger] IDurableOrchestrationContext context,
+    ILogger log)
+{
+    log = context.CreateReplaySafeLogger(log);
+    log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
+
+随着前面提到的更改，日志输出如下所示：
 
 ```txt
 Calling F1.
@@ -287,14 +308,18 @@ Calling F3.
 Done!
 ```
 
+> [!NOTE]
+> 前面C#的示例适用于 Durable Functions 1.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
+
 ## <a name="custom-status"></a>自定义状态
 
-使用自定义业务流程状态，可以为业务流程协调程序函数设置自定义状态值。 此状态是通过 HTTP 状态查询 API 或 `DurableOrchestrationClient.GetStatusAsync` API 提供的。 自定义业务流程状态为业务流程协调程序函数实现了更丰富的监视。 例如，业务流程协调程序函数代码可以包括 `DurableOrchestrationContext.SetCustomStatus` 调用来更新长时间运行的操作的进度。 然后，客户端（例如网页或其他外部系统）可以定期查询 HTTP 状态查询 API 以获得更丰富的进度信息。 下面提供了使用 `DurableOrchestrationContext.SetCustomStatus` 的示例：
+使用自定义业务流程状态，可以为业务流程协调程序函数设置自定义状态值。 此状态是通过 HTTP 状态查询 API 或 `IDurableOrchestrationClient.GetStatusAsync` API 提供的。 自定义业务流程状态为业务流程协调程序函数实现了更丰富的监视。 例如，业务流程协调程序函数代码可以包括 `IDurableOrchestrationContext.SetCustomStatus` 调用来更新长时间运行的操作的进度。 然后，客户端（例如网页或其他外部系统）可以定期查询 HTTP 状态查询 API 以获得更丰富的进度信息。 下面提供了使用 `IDurableOrchestrationContext.SetCustomStatus` 的示例：
 
 ### <a name="precompiled-c"></a>预编译 C#
 
 ```csharp
-public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext context)
+[FunctionName("SetStatusTest")]
+public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     // ...do work...
 
@@ -306,7 +331,10 @@ public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrati
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+> [!NOTE]
+> 上面C#的示例适用于 Durable Functions 1.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
+
+### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
 
 ```javascript
 const df = require("durable-functions");
@@ -349,17 +377,17 @@ GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 Azure Functions 支持直接调试函数代码，Durable Functions 承袭了这项支持，不管它是在 Azure 中还是在本地运行。 但是，调试时需注意几种行为：
 
-* **重播**：当收到新输入时，Orchestrator 函数会定期[重播](durable-functions-orchestrations.md#reliability)。 这意味着，业务流程协调程序函数的单次逻辑执行可能导致多次命中同一断点，尤其是事先已在函数代码中设置了该断点时。
-* **等待**：每当在`await`业务流程协调程序函数中遇到时，它都会向持久任务框架调度程序返回控制权。 如果这是首次遇到特定的 `await`，则关联的任务永远不可恢复。 由于任务永远不可恢复，实际上也就无法跳过等待（在 Visual Studio 中按 F10）。 仅当任务正在重播时，才能跳过。
-* **消息超时**：Durable Functions 在内部使用队列消息来驱动 orchestrator、活动和实体函数的执行。 在多 VM 环境中，长时间中断调试可能会使另一个 VM 拾取消息，从而导致重复执行。 正则队列触发器函数也存在此行为，但必须在此上下文中指出，因为队列属于实现细节。
-* **停止和启动**：持久函数中的消息在调试会话之间保持不变。 如果在执行持久函数时停止调试并终止本地主机进程，则该函数可能会在将来的调试会话中自动重新执行。 如果不需要，这可能会造成混淆。 在调试会话之间从[内部存储队列](durable-functions-perf-and-scale.md#internal-queue-triggers)中清除所有消息是一种避免此行为的方法。
+* **重播**：收到新输入时，Orchestrator 函数定期[重播](durable-functions-orchestrations.md#reliability)。 此行为意味着，业务流程协调程序函数的单个*逻辑*执行可能导致多次命中同一个断点，尤其是在函数代码早期设置的情况下。
+* **Await**：每当在业务流程协调程序函数中遇到 `await` 时，它都会向持久任务框架调度程序返回控制权。 如果是第一次遇到特定的 `await`，则*不会*恢复关联的任务。 由于任务永远不会恢复，因此*无法逐过程执行 await* （Visual Studio 中的 F10）。 仅当任务正在重播时，才能跳过。
+* **消息超时**： Durable Functions 在内部使用队列消息来驱动 orchestrator、活动和实体函数的执行。 在多 VM 环境中，长时间中断调试可能会使另一个 VM 拾取消息，从而导致重复执行。 正则队列触发器函数也存在此行为，但必须在此上下文中指出，因为队列属于实现细节。
+* **停止和启动**：持久性函数中的消息在调试会话之间保持不变。 如果在执行持久函数时停止调试并终止本地主机进程，则该函数可能会在将来的调试会话中自动重新执行。 如果不需要，此行为可能会造成混淆。 在调试会话之间从[内部存储队列](durable-functions-perf-and-scale.md#internal-queue-triggers)中清除所有消息是一种避免此行为的方法。
 
 > [!TIP]
-> 在业务流程协调程序函数中设置断点时，如果只想在非重播执行时中断，则可以设置仅当`IsReplaying`为时`false`中断的条件断点。
+> 在业务流程协调程序函数中设置断点时，如果只想在非重播执行时中断，则可以设置一个条件断点，该断点仅在 `false``IsReplaying` 时才中断。
 
 ## <a name="storage"></a>存储
 
-默认情况下，Durable Functions 在 Azure 存储中存储状态。 这意味着，可以使用 [Microsoft Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)等工具检查业务流程的状态。
+默认情况下，Durable Functions 在 Azure 存储中存储状态。 此行为意味着可以使用[Microsoft Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)的工具检查业务流程的状态。
 
 ![Azure 存储资源管理器屏幕快照](./media/durable-functions-diagnostics/storage-explorer.png)
 

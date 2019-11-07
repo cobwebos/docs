@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse Analytics （以前称为 SQL DW）中的数据仓库单位（Dwu，Cdwu） |Microsoft Docs
+title: Azure Synapse Analytics （以前称为 SQL DW）中的数据仓库单位（Dwu，Cdwu）
 description: 针对选择理想数目的数据仓库单位（DWU、cDWU）来优化价格和性能以及如何更改单位数提供了建议。
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,13 +10,13 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-mscustom: sqlfreshmay19
-ms.openlocfilehash: 32e75b78b8a5c304fc65a9c20d16fb85b4f8307b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f3415522a6ae80723500ba2d38867322fdef0dd7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475759"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685341"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>数据仓库单位 (DWU) 和计算数据仓库单位 (cDWU)
 
@@ -215,4 +215,4 @@ DWU 更改可能需要几分钟才能完成。 如果要自动缩放，建议实
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关如何管理性能的详细信息，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)和[内存和并发限制](memory-and-concurrency-limits.md)。
+若要了解有关管理性能的详细信息，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)和 [内存和并发限制] 内存-limits.md）。

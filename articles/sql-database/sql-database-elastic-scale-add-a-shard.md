@@ -1,5 +1,5 @@
 ---
-title: 使用弹性数据库工具添加分片 | Microsoft 文档
+title: 使用弹性数据库工具添加分片
 description: 如何使用弹性缩放 API 将新分片添加到分片集。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 679c1bea640644cd46c436ec04278558f610ceda
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3243c8dfcfa83129f57bcd3ea7969fb4f8b07156
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568516"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690351"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>使用弹性数据库工具添加分片
 
@@ -49,7 +49,7 @@ sm.CreateRangeMapping(new RangeMappingCreationInfo<long>
 
 ## <a name="to-add-a-shard-for-an-empty-part-of-an-existing-range"></a>为现有范围的空部分添加分片
 
-在某些情况下，可能已将某个范围映射到某个分片，并在该分片中填充了部分数据，但是，现在希望将后续数据定向到其他分片。 例如，以前按日期范围分片，并且已在某个分片中分配了 50 天的数据，但从第 24 天开始，你希望以后的数据驻留在其他分片中。 弹性数据库[拆分/合并工具](sql-database-elastic-scale-overview-split-and-merge.md)可以执行此操作，但是，如果不需要数据移动（例如，[25, 50) 天范围的数据 - 即，从第 25 天（含）到第 50 天（不含）的数据尚不存在），完全可以直接使用分片映射管理 API 执行此操作。
+在某些情况下，用户可能已将某个范围映射到了某个分片，并在该分片中填充了部分数据，但是，现在用户希望将以后的数据定向到其他的分片。 例如，用户以前按日期范围进行分片，并且已在某个分片中分配了 50 天的数据，但从第 24 天开始，用户希望以后的数据都驻留在其他分片中。 弹性数据库[拆分/合并工具](sql-database-elastic-scale-overview-split-and-merge.md)可以执行此操作，但是，如果不需要数据移动（例如，[25, 50) 天范围的数据 - 即，从第 25 天（含）到第 50 天（不含）的数据尚不存在），完全可以直接使用分片映射管理 API 执行此操作。
 
 ### <a name="example-splitting-a-range-and-assigning-the-empty-portion-to-a-newly-added-shard"></a>示例：拆分范围并将空部分分配到新增的分片
 
@@ -78,6 +78,6 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**重要说明：** 仅当确定所更新映射的范围为空时，才使用此方法。  上述方法不会在数据中检查要移动的范围，因此最好在代码中包含检查操作。  如果要移动的范围中存在行，则实际数据分发将不匹配更新的分片映射。 在这种情况下，请改用[拆分 / 合并工具](sql-database-elastic-scale-overview-split-and-merge.md)来执行操作。  
+重要说明：仅当确定所更新映射的范围为空时，才使用此方法。  上述方法不会在数据中检查要移动的范围，因此最好在代码中包含检查操作。  如果要移动的范围中存在行，则实际数据分发将不匹配更新的分片映射。 在这种情况下，请改用[拆分 / 合并工具](sql-database-elastic-scale-overview-split-and-merge.md)来执行操作。  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

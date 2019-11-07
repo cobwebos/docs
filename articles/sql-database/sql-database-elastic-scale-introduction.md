@@ -1,5 +1,5 @@
 ---
-title: 扩大 Azure SQL 数据库 | Microsoft 文档
+title: 扩大 Azure SQL 数据库
 description: 软件即服务 (SaaS) 开发人员可以使用这些工具轻松地在云中创建可缩放的弹性数据库
 services: sql-database
 ms.service: sql-database
@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e5ae56b2050243831f10863bbb4184a9e89f5911
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 56556576dffd4e022f919af89459d92e48c6c895
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568399"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690240"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>扩大 Azure SQL 数据库
 可以使用**弹性数据库**工具轻松扩大 Azure SQL 数据库。 借助这些工具和功能，可以使用 Azure SQL 数据库中的数据库资源来为事务工作负荷，尤其是服务型软件 (SaaS) 应用程序创建解决方案。 弹性数据库包括：
 
 * [弹性数据库客户端库](sql-database-elastic-database-client-library.md)：客户端库是一项功能，可用于创建和维护分片数据库。  请参阅[弹性数据库工具入门](sql-database-elastic-scale-get-started.md)。
 * [弹性数据库拆分/合并工具](sql-database-elastic-scale-overview-split-and-merge.md)：在分片数据库之间移动数据。 此工具对于将数据从多租户数据库移动到单租户数据库很有用（反之亦然）。 请参阅[弹性数据库拆分/合并工具教程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)。
-* [弹性数据库作业](elastic-jobs-overview.md):使用作业来管理大量的 Azure SQL 数据库。 轻松执行管理操作，例如，使用作业更改架构、管理凭据、更新引用数据、收集性能数据，或收集租户（客户）遥测数据。
+* [弹性数据库作业](elastic-jobs-overview.md)：使用作业来管理大量的 Azure SQL 数据库。 轻松执行管理操作，例如，使用作业更改架构、管理凭据、更新引用数据、收集性能数据，或收集租户（客户）遥测数据。
 * [弹性数据库查询](sql-database-elastic-query-overview.md)（预览版）：可跨多个数据库运行 Transact-SQL 查询。 这样，便可以连接到 Excel、Power BI、Tableau 等报表工具。
 * [弹性事务](sql-database-elastic-transactions-overview.md)：使用此功能可在 Azure SQL 数据库中跨多个数据库运行事务。 弹性数据库事务适用于使用 ADO .NET 的 .NET 应用程序，并且与熟悉的使用 [System.Transaction 类](https://msdn.microsoft.com/library/system.transactions.aspx)的编程体验相集成。
 
@@ -32,7 +32,7 @@ ms.locfileid: "68568399"
 在此图中，数据库颜色表示架构。 颜色相同的数据库具有相同的架构。
 
 1. 一组使用分片体系结构的 **Azure SQL 数据库**托管在 Azure 上。
-2. **弹性数据库客户端库**用于管理分片集。
+2. **弹性数据库客户端库** 用于管理分片集。
 3. 一个数据库子集已放入**弹性池**。 （请参阅[什么是池？](sql-database-elastic-pool.md)）。
 4. 弹性数据库针对所有数据库运行计划的或即席的 T-SQL 脚本。
 5. **拆分/合并工具**用于将数据从一个分片移到另一个分片。

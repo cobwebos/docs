@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure SQ 数据仓库中的 Group By 选项 | Microsoft Docs
+title: 使用 group by 选项
 description: 有关在开发解决方案时实现 Azure SQL 数据仓库中的 Group By 选项的技巧。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: query
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2f6614f32c31338c9cf4f00307c475db4e02f553
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 8d5d0f28fa210a56460ced25323b96a68f245895
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479639"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685847"
 ---
 # <a name="group-by-options-in-sql-data-warehouse"></a>SQL 数据仓库中的 Group By 选项
 有关在开发解决方案时实现 Azure SQL 数据仓库中的 Group By 选项的技巧。
@@ -50,7 +51,7 @@ GROUP BY ROLLUP (
 通过使用 ROLLUP，前面的示例请求以下聚合：
 
 * 国家/地区和区域
-* Country
+* 国家/地区
 * 总计
 
 若要替换 ROLLUP 并返回相同的结果，可以使用 UNION ALL 并显式指定所需的聚合：
@@ -181,5 +182,5 @@ ORDER BY 1,2,3
 通过将代码拆分成不同的部分并生成循环构造，代码将更好管理和维护。
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅[开发概述](sql-data-warehouse-overview-develop.md)。
+有关更多开发技巧，请参阅 [开发概述](sql-data-warehouse-overview-develop.md)。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂 - 客户案例研究 | Microsoft Docs
+title: Azure 数据工厂 - 客户案例研究
 description: 了解一些客户是怎样使用 Azure 数据工厂的。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 4944a870d27fd9ca0b64234b303906739bdc0d04
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9b0318cf293428f0d2ce125b190b0b8625c9df97
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139953"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682686"
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Azure 数据工厂 - 客户案例研究
 数据工厂是一项基于云的信息管理服务，可以自动移动和转换数据。 各个行业的用户通过数据工厂和其他 Azure 服务生成其分析管道以及解决业务问题。  直接通过客户了解其如何以及为什么使用数据工厂。
@@ -28,7 +28,7 @@ ms.locfileid: "70139953"
 [Industrial Automation Firm Cuts Costs up to 90 Percent with big data Solutions](https://customers.microsoft.com/en-us/story/726192-industrial-automation-firm-cuts-costs-up-to-90-percent)（工业自动化公司利用大数据解决方案节省 90% 的成本）
 
 ## <a name="ziosk"></a>Ziosk
-[面对这个汉堡你有什么点子？Ziosk 可能已经知道了。](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)
+[您想要将哪种游戏用于该快餐？Ziosk 可能已知道。](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)
 
 ## <a name="alaska-airlines"></a>阿拉斯加航空公司
 [使用平板电脑，云服务提供更有趣的机上娱乐](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=19357)

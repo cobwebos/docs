@@ -8,12 +8,12 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 1e92ae36aee5e62cd05b40bbaa38a226943f0adb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 9f408b090db40e5145b424034c39cdba4de14a8f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518016"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605903"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>使用 Azure CLI 配置区块链数据管理器
 
@@ -27,7 +27,7 @@ ms.locfileid: "73518016"
 * 添加区块链应用程序
 * 启动实例
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 使用 `az login`安装最新的[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)并登录。
 * 完成[快速入门：使用 Visual Studio Code 连接到 Azure 区块链 Service 联合会网络](connect-vscode.md)
@@ -259,6 +259,10 @@ az resource create \
 
 如果添加区块链应用程序，则区块链数据管理器对应用程序的事件和属性状态进行解码。 否则，只会发送原始块和原始事务数据。 区块链数据管理器还会在部署协定时发现协定地址。 可以将多个区块链应用程序添加到区块链数据管理器实例。
 
+
+> [!IMPORTANT]
+> 目前，不完全支持声明密度[数组类型](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays)或[映射类型](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types)的区块链应用程序。 声明为数组或映射类型的属性将不会在*ContractPropertiesMsg*或*DecodedContractEventsMsg*消息中进行解码。
+
 ``` azurecli
 az resource create \
                    --resource-group <Resource group> \
@@ -306,7 +310,7 @@ az resource create \
 | location | 要在其中创建应用程序资源的区域。 |
 | artifactType | 应用程序类型。 目前支持**EthereumSmartContract** 。 |
 | abiFileUrl | 智能协定 ABI JSON 文件的 URL。 若要详细了解如何获取协定 ABI 和创建 URL，请参阅[获取协定 abi 和字节码](data-manager-portal.md#get-contract-abi-and-bytecode)和[创建协定 abi 和字节码 URL](data-manager-portal.md#create-contract-abi-and-bytecode-url)。 |
-| bytecodeFileUrl | 智能协定字节码 JSON 文件的 URL。 有关获取智能协定字节码和创建 URL 的详细信息，请参阅[获取协定 abi 和字节码](data-manager-portal.md#get-contract-abi-and-bytecode)和[创建协定 abi 和字节码 URL](data-manager-portal.md#create-contract-abi-and-bytecode-url)。 |
+| bytecodeFileUrl | 已部署的智能协定字节码 JSON 文件的 URL。 若要详细了解如何获取智能协定部署的字节码和创建 URL，请参阅[获取协定 abi 和字节码](data-manager-portal.md#get-contract-abi-and-bytecode)，并[创建协定 abi 和字节码 URL](data-manager-portal.md#create-contract-abi-and-bytecode-url)。 注意：区块链数据管理器需要**部署的字节码**。 |
 | queryTargetTypes | 已发布消息类型。 指定**ContractProperties**将发布*ContractPropertiesMsg*消息类型。 指定**ContractEvents**将发布*DecodedContractEventsMsg*消息类型。 注意：始终发布*RawBlockAndTransactionMsg*和*RawTransactionContractCreationMsg*消息类型。 |
 
 为*mywatcher*创建一个名为*myApplication*的应用程序，该应用程序监视 JSON 字符串定义的智能协定。
@@ -415,4 +419,7 @@ az resource delete \
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解[Azure 事件网格中的事件处理程序](../../event-grid/event-handlers.md)。
+尝试使用区块链数据管理器和 Azure Cosmos DB 创建区块链事务消息资源管理器。
+
+> [!div class="nextstepaction"]
+> [教程：使用区块链数据管理器向 Azure Cosmos DB 发送数据](data-manager-cosmosdb.md)
