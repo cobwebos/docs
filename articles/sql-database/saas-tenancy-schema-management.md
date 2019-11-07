@@ -1,5 +1,5 @@
 ---
-title: 在单租户应用中管理 Azure SQL 数据库架构 | Microsoft Docs
+title: 在单租户应用程序中管理 Azure SQL 数据库架构
 description: 在使用 Azure SQL 数据库的单租户应用中管理多个租户的架构
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/19/2018
-ms.openlocfilehash: 95d13c997d3871815ebd541e5985eb9fef726a76
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 32460feebeb55b2639a237db32dbc3923ba27171
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029753"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691839"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>通过将“租户各有数据库”模式与 Azure SQL 数据库配合使用，在 SaaS 应用程序中管理架构
  
@@ -41,7 +41,7 @@ ms.locfileid: "72029753"
 * 已安装最新版的 SQL Server Management Studio (SSMS)。 [下载并安装 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
 > [!NOTE]
-> 本教程使用的是有限预览版（弹性数据库作业）中 SQL 数据库服务的功能。 如果希望完成本教程，请将订阅 ID 提供给 SaaSFeedback@microsoft.com，并在邮件主题中注明“Elastic Jobs Preview”。 收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。 此预览版的功能有限，如果有相关问题或者需要支持，请联系 SaaSFeedback@microsoft.com。
+> 本教程使用的是有限预览版（弹性数据库作业）中 SQL 数据库服务的功能。 如果希望完成本教程，请将订阅 ID 提供给 SaaSFeedback@microsoft.com，并在邮件主题中注明“弹性作业预览版”。 收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。 此预览版的功能有限，如果有相关问题或者需要支持，请联系 SaaSFeedback@microsoft.com。
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS 架构管理模式简介
 
@@ -55,7 +55,7 @@ ms.locfileid: "72029753"
 有一个新版的弹性作业，该作业现为 Azure SQL 数据库的集成功能。 此新版弹性作业目前为有限预览版。 此有限预览版目前支持使用 PowerShell 创建作业代理，同时支持使用 T-SQL 创建和管理作业。
 
 > [!NOTE]
-> 本教程使用的是有限预览版（弹性数据库作业）中 SQL 数据库服务的功能。 如果希望完成本教程，请将订阅 ID 提供给 SaaSFeedback@microsoft.com，并在邮件主题中注明“Elastic Jobs Preview”。 收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。 此预览版的功能有限，如果有相关问题或者需要支持，请联系 SaaSFeedback@microsoft.com。
+> 本教程使用的是有限预览版（弹性数据库作业）中 SQL 数据库服务的功能。 如果希望完成本教程，请将订阅 ID 提供给 SaaSFeedback@microsoft.com，并在邮件主题中注明“弹性作业预览版”。 收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。 此预览版的功能有限，如果有相关问题或者需要支持，请联系 SaaSFeedback@microsoft.com。
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>获取 Wingtip Tickets SaaS“租户各有数据库”应用程序脚本
 
@@ -65,19 +65,19 @@ ms.locfileid: "72029753"
 
 本教程要求使用 PowerShell 来创建作业代理及其充当支持的作业代理数据库。 作业代理数据库存储作业定义、作业状态和历史记录。 创建作业代理及其数据库后，即可立刻创建和监视作业。
 
-1. 在 PowerShell ISE 中打开 …\\Learning Modules\\Schema Management\\Demo-SchemaManagement.ps1。
+1. 在 PowerShell ISE 中打开 …**Learning Modules**Schema Management\\Demo-SchemaManagement.ps1\\\\。
 1. 按 **F5** 运行脚本。
 
 Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目的是在编录服务器上创建名为 *osagent* 的 SQL 数据库。 然后该脚本创建作业代理，将数据库用作参数。
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>创建一个将新的引用数据部署到所有租户的作业
 
-在 Wingtip Tickets 应用中，每个租户数据库都包含一组支持的地点类型。 每个地点都有一个具体的地点类型，用于定义可以主持的活动的种类，并且决定了在应用中使用的背景图像。 如果需要应用程序支持新的活动类型，必须更新此引用数据并添加新的地点类型。  在此练习中，将更新部署到所有租户数据库，以添加另外两个地点类型：“摩托车赛”和“游泳俱乐部”。
+在 Wingtip Tickets 应用中，每个租户数据库都包含一组支持的地点类型。 每个地点都有一个具体的地点类型，用于定义可以主持的活动的种类，并且决定了在应用中使用的背景图像。 如果需要应用程序支持新的活动类型，必须更新此引用数据并添加新的地点类型。  在本练习中，将一个更新部署到所有租户数据库，以便添加两种额外的地点类型：“赛车”和“游泳俱乐部”。
 
 首先，查看每个租户数据库中包含的地点类型。 连接 SQL Server Management Studio (SSMS) 中的一个租户数据库，并检查 VenueTypes 表。  还可在通过数据库页访问的 Azure 门户的查询编辑器中查询此表。 
 
 1. 打开 SSMS 并连接到租户服务器：*tenants1-dpt-&lt;user&gt;.database.windows.net*
-1. 浏览到 tenants1-dpt-&lt;user&gt; 服务器上的 contosoconcerthall 数据库，查询 VenueTypes 表以确认“赛车”和“游泳俱乐部”不在结果列表中。
+1. 浏览到 tenants1-dpt-*user* 服务器上的 contosoconcerthall 数据库，查询 VenueTypes 表以确认“赛车”和“游泳俱乐部”不在结果列表中 *&lt;&gt;* 。
 
 现在请创建一个作业，对所有租户数据库中的“VenueTypes”表进行更新，以便添加新的地点类型。
 
@@ -85,7 +85,7 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 
 1. 在 SSMS 中连接到编录服务器：*catalog-dpt-&lt;user&gt;.database.windows.net* 服务器 
 1. 在 SSMS 中，打开 …\\Learning Modules\\Schema Management\\DeployReferenceData.sql 文件
-1. 修改语句：SET @wtpUser = &lt;user @ no__t; 替换部署 Wingtip 票证 SaaS 每个租户应用时使用的用户值
+1. 修改语句：SET @wtpUser = &lt;user&gt;，并将其替换为部署 Wingtip Tickets SaaS Database Per Tenant 应用时所用的“用户”值
 1. 确保已连接到 _jobagent_ 数据库，然后按 **F5** 运行该脚本
 
 在 *DeployReferenceData.sql* 脚本中观察以下元素：
@@ -95,7 +95,7 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 * **sp\_add\_jobstep** 创建包含 T-SQL 命令文本的作业步骤，该文本用于更新引用表 VenueTypes。
 * 脚本中的剩余视图显示存在的对象以及监视作业执行情况。 使用这些查询查看“生命周期”列中的状态值，确定何时作业在所有目标数据库上完成。
 
-完成脚本后，可以验证引用数据是否已更新。  在 SSMS 中浏览到 *tenants1-dpt-&lt;user&gt;* 服务器上的 *contosoconcerthall* 数据库，然后查询 *VenueTypes* 表。  查看“赛车”和“游泳俱乐部”现在是否存在。
+完成脚本后，可以验证引用数据是否已更新。  在 SSMS 中浏览到 *tenants1-dpt-* user *&lt; 服务器上的 &gt;contosoconcerthall* 数据库，然后查询 *VenueTypes* 表。  查看“赛车”和“游泳俱乐部”现在是否存在。
 
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>创建管理引用表索引的作业
@@ -110,8 +110,8 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 1. 确保已连接到 _jobagent_ 数据库，然后按 **F5** 运行该脚本
 
 在 _OnlineReindex.sql_ 脚本中观察以下元素：
-* sp\_add\_job 创建一个名为“Online Reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885”的新作业
-* sp\_add\_jobstep 创建包含 T-SQL 命令文本的作业步骤，以更新索引
+* sp**add\_job\_** 创建一个名为“Online Reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885”的新作业
+* sp**add\_jobstep\_** 创建包含 T-SQL 命令文本的作业步骤，以更新索引
 * 脚本监视器作业执行中的剩余视图。 使用这些查询查看“生命周期”列中的状态值，确定何时作业成功地在目标组会员上完成。
 
 

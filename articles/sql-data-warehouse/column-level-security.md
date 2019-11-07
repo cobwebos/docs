@@ -1,21 +1,22 @@
 ---
-title: Azure SQL 数据仓库列级别安全性 | Microsoft Docs
+title: 行级别安全性
 description: 借助列级别安全性 (CLS)，客户可以根据用户的执行上下文或其组成员身份，控制对数据库表列的访问。 CLS 简化了应用程序中的安全性设计和编程。 借助 CLS，可以实现列访问限制。
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 04/02/2019
-ms.author: kavithaj
+ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
-ms.openlocfilehash: aa91bd586e064239d0e05c754427947963c9ee3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 605dfadaf4cd1686b124b120151e6a88a43f1a68
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61082790"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693087"
 ---
 # <a name="column-level-security"></a>列级别安全性
 借助列级别安全性 (CLS)，客户可以根据用户的执行上下文或其组成员身份，控制对数据库表列的访问。

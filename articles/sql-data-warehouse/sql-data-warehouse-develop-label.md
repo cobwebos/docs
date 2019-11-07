@@ -1,5 +1,5 @@
 ---
-title: 在 SQL 数据仓库中使用标签检测查询 | Microsoft Docs
+title: 使用标签检测查询
 description: 有关在开发解决方案时于 Azure SQL 数据仓库中使用标签检测查询的技巧。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: query
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ee991fdfcd93ea064d1205d61d07adf377cce667
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 4ca0b3564418aafe774158057bc3efd541f71f66
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480035"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692834"
 ---
 # <a name="using-labels-to-instrument-queries-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中使用标签检测查询
 有关在开发解决方案时于 Azure SQL 数据仓库中使用标签检测查询的技巧。
@@ -50,6 +51,6 @@ WHERE   r.[label] = 'My Query Label'
 > 
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅[开发概述](sql-data-warehouse-overview-develop.md)。
+有关更多开发技巧，请参阅 [开发概述](sql-data-warehouse-overview-develop.md)。
 
 

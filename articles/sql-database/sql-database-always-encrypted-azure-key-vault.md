@@ -1,5 +1,5 @@
 ---
-title: Always Encrypted：SQL 数据库 - Azure Key Vault | Microsoft Docs
+title: 'Always Encrypted： SQL 数据库-Azure Key Vault '
 description: 本文演示如何使用 SQL Server Management Studio 中的始终加密向导，通过数据加密来保护 SQL 数据库中的敏感数据。
 keywords: 数据加密, 加密密钥, 云加密
 services: sql-database
@@ -12,14 +12,14 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 924ec20b9922d12da7291dc4f44b7413c68728c6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7ba19f3f3e03c414d651082898976c5bd17e89c9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569577"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691269"
 ---
-# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted：保护敏感数据并将加密密钥存储在 Azure Key Vault 中
+# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted：保护敏感数据并将加密密钥存储在 Azure 密钥保管库中
 
 本文演示如何使用 [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt459280.aspx) 中的[始终加密向导](https://msdn.microsoft.com/library/hh213248.aspx)，通过数据加密来保护 SQL 数据库中的敏感数据。 它还包括如何将每个加密密钥存储在 Azure 密钥保管库的说明。
 
@@ -104,14 +104,14 @@ ms.locfileid: "68569577"
    
     ![复制连接字符串](./media/sql-database-always-encrypted-azure-key-vault/ssms-connect.png)
 
-如果“新建防火墙规则”窗口打开，请登录到 Azure，让 SSMS 创建新的防火墙规则。
+如果“新建防火墙规则” 窗口打开，请登录到 Azure，让 SSMS 创建新的防火墙规则。
 
 ## <a name="create-a-table"></a>创建表
 在本部分中，将创建一个表以保存患者数据。 它最初尚未加密 - 可在下一部分配置加密。
 
 1. 展开“数据库”。
 2. 右键单击“Clinic”数据库，并单击“新建查询”。
-3. 将以下 Transact-SQL (T-SQL) 粘贴到新查询窗口中，然后“执行”它。
+3. 将以下 Transact-SQL (T-SQL) 粘贴到新查询窗口中，并“执行”它。
 
 ```sql
         CREATE TABLE [dbo].[Patients](
@@ -137,7 +137,7 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
    
     ![加密列](./media/sql-database-always-encrypted-azure-key-vault/encrypt-columns.png)
 
-Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置**、**验证**和**摘要**。
+始终加密向导包括以下部分：**列选择**、**主密钥配置**、**验证**和**摘要**。
 
 ### <a name="column-selection"></a>列选择
 单击“简介”页上的“下一步”，可以打开“列选择”页。 在此页上，选择想要加密的列，[加密类型和要使用的列加密密钥 (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2)。
@@ -162,10 +162,10 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置**�
 ### <a name="validation"></a>验证
 可以现在就加密这些列，也可以保存 PowerShell 脚本供以后运行。 对于本教程，请选择“现在完成”，并单击“下一步”。
 
-### <a name="summary"></a>总结
+### <a name="summary"></a>摘要
 验证设置是否全都正确，并单击“完成”以完成“始终加密”的设置。
 
-![总结](./media/sql-database-always-encrypted-azure-key-vault/summary.png)
+![摘要](./media/sql-database-always-encrypted-azure-key-vault/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>验证向导的操作
 向导完成后，数据库就会设置为始终加密。 该向导执行以下操作：
@@ -185,7 +185,7 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置**�
 > 
 
 1. 打开 Visual Studio 并创建新的 C# **控制台应用程序**（Visual Studio 2015 和更低版本）或**控制台应用 (.NET Framework)** （Visual Studio 2017 和更高版本）。 确保将项目设置为 **.NET Framework 4.6** 或更高版本。
-2. 将项目命名为 **AlwaysEncryptedConsoleAKVApp**，然后单击“确定”。
+2. 将项目命名为 **AlwaysEncryptedConsoleAKVApp**，并单击“确定”。
 3. 通过转到“工具” > “NuGet 包管理器” > “包管理器控制台”来安装以下 NuGet 包。
 
 在包管理器控制台中运行以下 2 行代码。
@@ -199,7 +199,7 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置**�
 ## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>修改连接字符串以启用始终加密
 本节介绍如何在数据库连接字符串中启用始终加密。
 
-要启用“始终加密”，需要将“列加密设置”关键字添加到连接字符串中，并将其设置为“启用”。
+要启用“始终加密”，你需要将“列加密设置”关键字添加到连接字符串中，并将其设置为“启用”。
 
 可以在连接字符串中直接进行该设置，也可以使用 [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx) 进行设置。 下一节中的示例应用程序演示如何使用 **SqlConnectionStringBuilder**。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据同步的 Data Sync Agent | Microsoft Docs
+title: Azure SQL 数据同步的 Data Sync Agent
 description: 了解如何安装并运行 Azure SQL 数据同步的 Data Sync Agent 来将数据与本地 SQL Server 数据库进行同步
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 13a59a9b536a25897d7c545b6fb466c1192cb545
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 097c8547093a13f73f1ae5facdc0f7e6c75c071d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177709"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690783"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Azure SQL 数据同步的 Data Sync Agent
 
@@ -37,7 +37,7 @@ ms.locfileid: "73177709"
 
 - 如果提供 `LocalSystem` 作为 **SERVICEACCOUNT** 的值，请在将代理配置为连接到本地 SQL Server 时使用 SQL Server 身份验证。
 
-- 如果提供域用户帐户或本地用户帐户作为 **SERVICEACCOUNT** 的值，则还必须使用 **SERVICEPASSWORD** 参数提供密码。 例如，`SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"` 。
+- 如果提供域用户帐户或本地用户帐户作为 **SERVICEACCOUNT** 的值，则还必须使用 **SERVICEPASSWORD** 参数提供密码。 例如，`SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`。
 
 ```cmd
 msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn
@@ -147,10 +147,10 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 - **解决方法**。 将代理的密码更新为当前服务器密码：
 
   1. 找到 SQL 数据同步客户端代理服务。  
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“启动”。  
+    a. 选择“启动”。  
     b. 在搜索框中输入 **services.msc**。  
     c. 在搜索结果中，选择“服务”。  
-    d.单击“下一步”。 在“服务”窗口中，滚动到 **SQL Data Sync Agent** 所对应的条目。  
+    d. 在“服务”窗口中，滚动到 **SQL Data Sync Agent** 所对应的条目。  
   1. 右键单击“SQL Data Sync Agent”并选择“停止”。
   1. 右键单击“SQL Data Sync Agent”并选择“属性”。
   1. 在“SQL Data Sync Agent 属性”中，选择“登录”选项卡。
@@ -213,7 +213,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 
   1. 退出应用。  
   1. 打开组件服务面板。  
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在任务栏上的搜索框中输入 **services.msc**。  
+    a. 在任务栏上的搜索框中输入 **services.msc**。  
     b. 在搜索结果中，双击“服务”。  
   1. 停止“SQL 数据同步”服务。
   1. 重启“SQL 数据同步”服务。  

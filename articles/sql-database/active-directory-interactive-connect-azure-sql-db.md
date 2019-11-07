@@ -1,5 +1,5 @@
 ---
-title: ActiveDirectoryInteractive 连接到 SQL | Microsoft Docs
+title: ActiveDirectoryInteractive 连接到 SQL
 description: 使用 SqlAuthenticationMethod.ActiveDirectoryInteractive 模式连接到 Azure SQL 数据库的 C# 代码示例（附带说明）。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi, vanto
 ms.date: 10/11/2019
-ms.openlocfilehash: c55fa6d58109345a0c600bd0c1c76c5a229c03bc
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 5e7d58e5e0fc79e407e77ae9d73314a1d5d22666
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554456"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692304"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>通过 Azure 多重身份验证连接到 Azure SQL 数据库
 
@@ -45,7 +45,7 @@ ms.locfileid: "72554456"
 > [!TIP]
 > 可以通过[.NET API 浏览器工具页](https://docs.microsoft.com/dotnet/api/)搜索 .NET Framework api。
 >
-> 你还可以直接搜索可选的[？ term = &lt;search 值 &gt; 参数](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod)。
+> 你还可以直接搜索可选的[？ term =&lt;搜索值&gt; 参数](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod)。
 
 ## <a name="configure-your-c-application-in-the-azure-portal"></a>在 Azure 门户中配置 C# 应用程序
 
@@ -59,7 +59,7 @@ ms.locfileid: "72554456"
 
 注册应用程序并为其设置所需的权限：
 
-1. 在 Azure 门户中，选择 " **Azure Active Directory**  > **应用注册**"  > **新注册**"。
+1. 在 Azure 门户中，选择 " **Azure Active Directory** > **应用注册**" > **新注册**"。
 
     ![应用注册](media/active-directory-interactive-connect-azure-sql-db/image1.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "72554456"
 
     ![显示的应用 ID](media/active-directory-interactive-connect-azure-sql-db/image2.png)
 
-2. 选择 " **API 权限**"  >  "**添加权限**"。
+2. 选择 " **API 权限**" > "**添加权限**"。
 
     ![已注册应用的权限设置](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
 
@@ -75,7 +75,7 @@ ms.locfileid: "72554456"
 
     ![为 Azure SQL 数据库添加对 API 的访问](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
 
-4. @No__t_1**user_impersonation**  >  "**添加权限**" 选择 "**委托的权限**"。
+4.  > **user_impersonation** > "**添加权限**" 选择 "**委托的权限**"。
 
     ![为 Azure SQL 数据库委托对 API 的权限](media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 
@@ -117,11 +117,11 @@ SQL 数据库服务器的 Azure AD 管理员可以运行 C# 示例程序。 数�
 
 | 静态字段名称 | 示例值 | Azure 门户中的位置 |
 | :---------------- | :------------ | :-------------------- |
-| Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | “SQL 服务器” > “按名称筛选” |
-| AzureAD_UserID | "用户名 \@abc. onmicrosoft.com" | “Azure Active Directory” > “用户” > “新建来宾用户” |
+| Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | “SQL 服务器” **“按名称筛选”**  >  |
+| AzureAD_UserID | "用户名\@abc.onmicrosoft.com" | “Azure Active Directory” > “用户” > “新建来宾用户” |
 | Initial_DatabaseName | "myDatabase" | “SQL 服务器” > “SQL 数据库” |
-| ClientApplicationID | “a94f9c62-97fe-4d19-b06d-111111111111” | “Azure Active Directory” > “应用注册” > “按名称搜索” > “应用程序 ID” |
-| RedirectUri | new Uri("https://mywebserver.com/") | **Azure Active Directory**  > **应用注册** > **按名称搜索** *[应用注册]*  > **设置** > **RedirectURIs**<br /><br />对于本文，任何有效的值都适用于 RedirectUri，因为此处没有使用它。 |
+| ClientApplicationID | “a94f9c62-97fe-4d19-b06d-111111111111” | “Azure Active Directory” **“应用注册”** “按名称搜索” > “应用程序 ID” >  >  |
+| RedirectUri | new Uri("https://mywebserver.com/") | **Azure Active Directory** > **应用注册** > **按名称搜索** *[应用注册]*  > **设置** > **RedirectURIs** > <br /><br />对于本文，任何有效的值都适用于 RedirectUri，因为此处没有使用它。 |
 | &nbsp; | &nbsp; | &nbsp; |
 
 ## <a name="verify-with-sql-server-management-studio"></a>验证 SQL Server Management Studio
@@ -139,13 +139,13 @@ SQL 数据库服务器的 Azure AD 管理员可以运行 C# 示例程序。 数�
 有关详细信息，请参阅[为 SSMS 和 Azure AD 配置多重身份验证](sql-database-ssms-mfa-authentication-configure.md)。
 
 > [!NOTE]
-> 如果你是数据库中的来宾用户，还需要为数据库提供 Azure AD 的域名：选择**选项** > **AD 域名或租户 ID**。 若要在 Azure 门户中查找域名，请选择“Azure Active Directory” > “自定义域名”。 在 C# 示例程序中，不必要提供域名。
+> 如果你是数据库中的来宾用户，还需要为数据库提供 Azure AD 的域名：选择**选项** > **AD 域名或租户 ID**。 若要在 Azure 门户中查找域名，请选择“Azure Active Directory” **“自定义域名”。**  >  在 C# 示例程序中，不必要提供域名。
 
 ## <a name="c-code-example"></a>C# 代码示例
 
 示例 C# 程序依赖于 [*Microsoft.IdentityModel.Clients.ActiveDirectory*](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory) DLL 程序集。
 
-若要安装此包，请在 Visual Studio 中选择“项目” > “管理 NuGet 包”。 搜索并安装 **Microsoft.IdentityModel.Clients.ActiveDirectory**。
+若要安装此包，请在 Visual Studio 中选择“项目” **“管理 NuGet 包”。**  >  搜索并安装 **Microsoft.IdentityModel.Clients.ActiveDirectory**。
 
 这是源代码的C#示例。
 
@@ -335,6 +335,6 @@ In method 'AcquireTokenAsync', case_0 == '.ActiveDirectoryInteractive'.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Azure SQL 数据库仍支持 PowerShell Azure 资源管理器模块，但所有将来的开发都适用于 Az .Sql 模块。 有关这些 cmdlet，请参阅[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令的参数完全相同。
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
-- [AzSqlServerActiveDirectoryAdministrator](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator)
+- [Get-AzSqlServerActiveDirectoryAdministrator](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator)

@@ -1,6 +1,6 @@
 ---
-title: 排查 Azure SQL 数据仓库问题 | Microsoft Docs
-description: 排查 Azure SQL 数据仓库问题。
+title: 排查连接问题
+description: 排查 Azure SQL 数据仓库中的连接问题。
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: ebdeaf21253e89a9a14e3a56ca7be0f6e8adceb0
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d1139032176b3b44c58471b87cabd10ffeaa3d20
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859227"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692423"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>排查连接问题
 
@@ -57,7 +58,7 @@ SQL 数据仓库的状态将显示在这里。 如果服务未显示为“可用
 
 ## <a name="check-your-firewall-settings"></a>检查防火墙设置
 
-SQL 数据仓库通过端口 1433 进行通信。   如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 在这种情况下，将无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 1433。 可从[此处](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)找到有关防火墙配置的更多信息。
+SQL 数据仓库通过端口 1433 进行通信。   如果尝试从企业网络内部进行连接，则网络防火墙可能不允许通过端口1433的出站流量。 在这种情况下，将无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 1433。 可从[此处](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)找到有关防火墙配置的更多信息。
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>检查 VNet/服务终结点设置
 
@@ -75,7 +76,7 @@ SQL 数据仓库通过端口 1433 进行通信。   如果尝试从企业网
 
 ### <a name="drivers"></a>驱动程序
 
-请进行检查，确保使用最新的驱动程序版本。  使用旧版驱动程序可能会导致意外行为，因为旧驱动程序可能不支持新功能。
+请进行检查，确保使用最新的驱动程序版本。  使用较旧版本的驱动程序可能会导致意外的行为，因为旧驱动程序可能不支持新功能。
 
 * [ODBC](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server)
 * [JDBC](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)

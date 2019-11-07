@@ -1,5 +1,5 @@
 ---
-title: 复制到 Azure SQL 数据库 | Microsoft Docs
+title: 复制到 Azure SQL 数据库 "
 description: 了解如何对 Azure SQL 数据库的单个数据库和弹性池中的数据库使用 SQL Server 复制
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: eab8f4809742b69e92cb835801493722d28afe49
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ae564a98b77b1ac564fa9aae152b27c491187d0c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570471"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692221"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>复制到 SQL 数据库的单一数据库和共用数据库
 
@@ -51,7 +51,7 @@ ms.locfileid: "68570471"
 - SQL Server 上的单一发布可以支持 Azure SQL 数据库和 SQL Server（本地的以及 Azure 虚拟机中的 SQL Server）订阅服务器。  
 - 复制管理、监视和故障排除必须从本地 SQL Server 执行。  
 - 仅支持推送订阅 Azure SQL 数据库。  
-- 在适用于 SQL 数据库的 **sp_addsubscription** 中，仅 `@subscriber_type = 0` 受支持。  
+- 在适用于 SQL 数据库的 `@subscriber_type = 0`sp_addsubscription**中，仅** 受支持。  
 - Azure SQL 数据库不支持双向、即时、可更新或对等复制。
 
 ## <a name="replication-architecture"></a>复制体系结构  
@@ -108,7 +108,7 @@ Azure SQL 数据库订阅不支持以下选项：
 - [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)，方法是将 Azure SQL 数据库服务器名称用作订阅服务器（例如 N'azuresqldbdns.database.windows.net'），将 Azure SQL 数据库名称用作目标数据库（例如 AdventureWorks）。  
 
-## <a name="see-also"></a>请参阅  
+## <a name="see-also"></a>另请参阅  
 
 - [事务复制](sql-database-managed-instance-transactional-replication.md)
 - [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)

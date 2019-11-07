@@ -1,5 +1,5 @@
 ---
-title: 针对 Azure SQL 数据库运行分析查询 | Microsoft 文档
+title: '针对 Azure SQL 数据库运行分析查询 '
 description: 在多租户应用中使用从多个“Azure SQL 数据库”数据库提取的数据运行跨租户分析查询。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 09/19/2018
-ms.openlocfilehash: b36911d274a3afb3582d60ea7e85b5afd5f52ece
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2044e72697526a1c757fa13aeffb85260a9b821e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570296"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691999"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>使用提取的数据运行跨租户分析 - 多租户应用
  
@@ -63,7 +63,7 @@ ms.locfileid: "68570296"
 
 了解每个租户如何一致使用服务提供了根据需要创建服务计划的机会。 本教程提供从租户数据收集见解的基本示例。
 
-## <a name="setup"></a>安装
+## <a name="setup"></a>设置
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -91,9 +91,9 @@ ms.locfileid: "68570296"
 2. 设置脚本中的 $DemoScenario 变量，使其与所选的分析存储匹配。 为了方便学习，建议使用不包含列存储的 SQL 数据库。
     - 若要使用不包含列存储的 SQL 数据库，请设置 **$DemoScenario** = **2**
     - 若要使用包含列存储的 SQL 数据库，请设置 **$DemoScenario** = **3**  
-3. 按**F5**运行演示脚本 (调用*TenantAnalytics\<XX > ps1*脚本), 该脚本会创建租户分析存储。 
+3. 按**F5**运行演示脚本（用于调用*TenantAnalytics\<XX > ps1*脚本），该脚本会创建租户分析存储。 
 
-现在, 你已部署了应用程序, 并使用了兴趣的租户数据对其进行了填充, 请使用[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)连接**tenants1\<-用户\>** 和**目录-mt\<\>** 使用 Login = *developer*, Password = *P\@ssword1*的服务器。
+现在，你已部署了应用程序，并使用了兴趣的租户数据对其进行了填充，请使用[SQL Server Management Studio （SSMS）](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)连接**tenants1-Mt-\<用户\>** **\>\<** 和Login = *developer*，Password = *P\@ssword1*。
 
 ![architectureOverView](media/saas-multitenantdb-tenant-analytics/ssmsSignIn.png)
 
@@ -118,7 +118,7 @@ ms.locfileid: "68570296"
 
 在继续下一步之前，请确保已部署作业帐户和作业帐户数据库。 在接下来的一系列步骤中，将使用弹性作业从分片租户数据库提取数据，并将数据存储在分析存储中。 然后，第二个作业将数据分片，并将其存储到星型架构的表中。 这两个作业针对两个不同的目标组（即 **TenantGroup** 和 **AnalyticsGroup**）运行。 提取作业针对包含所有租户数据库的 TenantGroup 运行。 分片作业针对只包含分析存储的 AnalyticsGroup 运行。 使用以下步骤创建目标组：
 
-1. 在 SSMS 中，连接到 catalog-mt-\<User\> 中的 **jobaccount** 数据库。
+1. 在 SSMS 中，连接到 catalog-mt-**User** 中的 \<jobaccount\> 数据库。
 2. 在 SSMS 中，打开 *…\Learning Modules\Operational Analytics\Tenant Analytics\ TargetGroups.sql* 
 3. 修改脚本顶部的 @User 变量，将 `<User>` 替换为部署 Wingtip Tickets SaaS 多租户数据库应用程序时使用的用户值。
 4. 按 **F5** 运行脚本，以创建两个目标组。
@@ -132,7 +132,7 @@ ms.locfileid: "68570296"
 
 每个作业提取自身的目标数据，并将其发布到分析存储。 有一个单独的作业会将提取的数据分片到分析星型架构。
 
-1. 在 SSMS 中，连接到 catalog-mt-\<User\> 服务器中的 **jobaccount** 数据库。
+1. 在 SSMS 中，连接到 catalog-mt-**User** 服务器中的 \<jobaccount\> 数据库。
 2. 在 SSMS 中，打开 *...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql*。
 3. 修改脚本顶部的 @User，并将 `<User>` 替换为部署 Wingtip Tickets SaaS 多租户数据库应用程序时使用的用户名。 
 4. 按“F5”，以运行创建和运行从每个租户数据库提取票证和客户数据的作业脚本。 该作业会将数据保存到分析存储中。
@@ -152,7 +152,7 @@ ms.locfileid: "68570296"
 
 在本教程部分，定义并运行一个用于将提取的原始数据与星型架构表中的数据合并的作业。 合并作业完成后，将删除原始数据，以便下一个租户数据提取作业可以填充表。
 
-1. 在 SSMS 中，连接到 catalog-mt-\<User\> 中的 **jobaccount** 数据库。
+1. 在 SSMS 中，连接到 catalog-mt-**User** 中的 \<jobaccount\> 数据库。
 2. 在 SSMS 中，打开 *…\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql*。
 3. 按 **F5** 运行脚本，以定义一个调用分析存储中 sp_ShredRawExtractedData 存储过程的作业。
 4. 请耐心等待，让作业成功运行。
@@ -175,7 +175,7 @@ ms.locfileid: "68570296"
 
     ![powerBISignIn](media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
-5. 选择左窗格中的 "**数据库**", 然后输入 "用户名 =*开发人员*", 并输入 password = *P\@ssword1*。 单击“连接”。  
+5. 选择左窗格中的 "**数据库**"，然后输入 "用户名 =*开发人员*"，并输入 password = *P\@ssword1*"。 单击“连接”。  
 
     ![DatabaseSignIn](media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
@@ -227,7 +227,7 @@ AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[V
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+在本教程中，你已学习了如何执行以下操作：
 
 > [!div class="checklist"]
 > - 部署包含预定义星型架构表的租户分析数据库

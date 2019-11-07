@@ -1,5 +1,5 @@
 ---
-title: Azure 门户：SQL 数据库异地复制 | Microsoft Docs
+title: 'Azure 门户： SQL 数据库异地复制 '
 description: 使用 Azure 门户为 Azure SQL 数据库中的单个或共用数据库配置异地复制，并启动故障转移
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 049122b97a26e63188142dd5494927c2ae71d852
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 2a9d627cb2b51d0d7d0b07052f18a8dbe1dc2f19
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103227"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691335"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>在 Azure 门户中为 Azure SQL 数据库配置活动异地复制，并启动故障转移
 
-本文说明如何使用 [Azure 门户](https://portal.azure.com)为 Azure SQL 数据库中的[单一和共用数据库配置活动异地复制](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities)，以及如何启动故障转移。
+本文说明如何使用 [Azure 门户](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities)为 Azure SQL 数据库中的[单一和共用数据库配置活动异地复制](https://portal.azure.com)，以及如何启动故障转移。
 
 有关自动故障转移组与单一数据库和共用数据库的信息，请参阅[将故障转移组与单一数据库和共用数据库配合使用的最佳做法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools)。 有关使用托管实例的自动故障转移组的信息，请参阅将[故障转移组与托管实例配合使用的最佳做法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances)。
 
@@ -52,7 +52,7 @@ ms.locfileid: "71103227"
 3. 选择或配置辅助数据库的服务器和定价层。
 
     ![配置辅助数据库](./media/sql-database-geo-replication-portal/create-secondary.png)
-4. 可以选择将辅助数据库添加到弹性池中。 如果要在池中创建辅助数据库，请单击“弹性池” ，并在目标服务器上选择池。 池必须已在目标服务器上存在。 此工作流不会创建池。
+4. 可以选择将辅助数据库添加到弹性池中。 要在池中创建辅助数据库，单击“弹性池”，并在目标服务器上选择一个池。 池必须已在目标服务器上存在。 此工作流不会创建池。
 5. 单击“创建”添加辅助数据库。
 6. 此时会创建辅助数据库，种子设定过程开始。
 
@@ -95,4 +95,4 @@ ms.locfileid: "71103227"
 
 * 若要深入了解活动异地复制，请参阅[活动异地复制](sql-database-active-geo-replication.md)。
 * 若要了解自动故障转移组，请参阅[自动故障转移组](sql-database-auto-failover-group.md)
-* 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)。
+* 有关业务连续性概述和应用场景，请参阅 [业务连续性概述](sql-database-business-continuity.md)。

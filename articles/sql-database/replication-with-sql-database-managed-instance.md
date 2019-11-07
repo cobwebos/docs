@@ -1,5 +1,5 @@
 ---
-title: 在 Azure SQL 数据库托管实例数据库中配置复制 | Microsoft Docs
+title: '在 Azure SQL 数据库托管实例数据库中配置复制 '
 description: 了解如何在 Azure SQL 数据库托管实例数据库中配置事务复制
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: b940be1d1b68e4e2a41e3f8353cb54fdb51bb886
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 21275ce7716ffc394c1e7445c3f6836f09b44c87
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338732"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692162"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>在 Azure SQL 数据库托管实例数据库中配置复制
 
@@ -41,7 +41,7 @@ ms.locfileid: "71338732"
 - 发布服务器托管实例位于分发服务器和订阅服务器所在的同一个虚拟网络中，或者已在所有三个实体的虚拟网络之间建立 [vNet 对等互连](../virtual-network/tutorial-connect-virtual-networks-powershell.md)。 
 - 连接时，在复制参与者之间使用 SQL 身份验证。
 - 适用于复制工作目录的 Azure 存储帐户共享。
-- 需要在托管实例的 NSG 安全规则中打开端口 445（TCP 出站）才能访问 Azure 文件共享。  如果遇到错误 "无法连接到 azure 存储 \<storage 帐户名称 > 操作系统错误 53"，则需要向相应 SQL 托管实例子网的 NSG 添加出站规则。
+- 需要在托管实例的 NSG 安全规则中打开端口 445（TCP 出站）才能访问 Azure 文件共享。  如果遇到错误 "无法连接到 azure 存储 \<的存储帐户名称 > 操作系统错误 53"，则需要向相应 SQL 托管实例子网的 NSG 添加出站规则。
 
 
  > [!NOTE]
@@ -325,7 +325,7 @@ GO
 可以通过[从资源组中删除托管实例资源](../azure-resource-manager/manage-resources-portal.md#delete-resources)，然后删除资源组 `SQLMI-Repl`，来清理 Azure 资源。 
 
    
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [事务复制](sql-database-managed-instance-transactional-replication.md)
 - [什么是托管实例？](sql-database-managed-instance.md)

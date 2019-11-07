@@ -1,5 +1,5 @@
 ---
-title: 在 Azure SQL 数据仓库中分配变量 | Microsoft Docs
+title: 分配变量
 description: 有关开发解决方案时在 Azure SQL 数据仓库中分配 T-SQL 变量的技巧。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 6c943478f3904aac17a572f012f2b2b69ffa2223
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 1ae5285a8d1cf6fa391c082d0196b213e6b6a9c5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479561"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692755"
 ---
 # <a name="assigning-variables-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中分配变量
 
@@ -67,4 +68,4 @@ SET     @v +=1;
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多开发技巧，请参阅[开发概述](sql-data-warehouse-overview-develop.md)。
+有关更多开发技巧，请参阅 [开发概述](sql-data-warehouse-overview-develop.md)。

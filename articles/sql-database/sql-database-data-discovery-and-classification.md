@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库和 SQL 数据仓库数据发现和分类 | Microsoft Docs
+title: Azure SQL 数据库和 SQL 数据仓库数据发现和分类
 description: Azure SQL 数据库数据发现和分类
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: b85793223e23aa3d668d6f86494da3ee78c43e91
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 9bcb8ce69a65892109702f0f0a409310945b6781
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009995"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690770"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL 数据库和 SQL 数据仓库数据发现和分类
 
-数据发现 & 分类提供了内置于 Azure SQL 数据库的高级**功能，用于** & **发现**、**分类**、**保护**数据库中的敏感数据。
+数据发现和分类提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和保护数据库中的敏感数据。 & **
 
 发现最敏感的数据（业务、财务、医疗保健、个人身份数据 (PII)，等等）并进行分类可在组织的信息保护方面发挥关键作用。 它可以作为基础结构，用于：
 
@@ -77,7 +77,7 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 
-2. 导航到 Azure SQL 数据库窗格“安全”标题下的“高级数据安全”。 单击 "启用高级数据安全性"，然后单击 "**数据发现" & 分类**卡 "。
+2. 导航到 Azure SQL 数据库窗格“安全”标题下的“高级数据安全”。 单击以启用“高级数据安全”，然后单击“数据发现和分类”卡。
 
    ![扫描数据库](./media/sql-data-discovery-and-classification/data_classification.png)
 
@@ -138,14 +138,14 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 - 删除一列或多列分类：[删除敏感度分类](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - 查看数据库上的所有分类：[sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-### <a name="manage-classifications-using-rest-apis"></a>使用 Rest Api 管理分类
+### <a name="manage-classifications-using-rest-apis"></a>使用 Rest API 管理分类
 
 此外，还可以使用 REST API 通过编程方式管理分类。 已发布的 REST API 支持以下操作：
 
-- [创建或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate)-创建或更新给定列的敏感度标签
+- [创建或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) - 创建或更新给定列的敏感度标签
 - [删除](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) - 删除给定列的敏感度标签
-- [禁用建议](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/disablerecommendation)-对给定列禁用敏感性建议
-- [启用建议](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/enablerecommendation)-对给定列启用敏感性建议（默认情况下，对所有列启用建议）
+- [禁用建议](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation) - 对给定列禁用敏感度建议
+- [启用建议](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation) - 对给定列启用敏感度建议（默认情况下，对所有列启用建议）
 - [获取](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) - 获取给定列的敏感度标签
 - [按数据库列出当前项](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) - 获取给定数据库的当前敏感度标签
 

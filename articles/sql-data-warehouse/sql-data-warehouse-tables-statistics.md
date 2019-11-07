@@ -1,5 +1,5 @@
 ---
-title: 创建、更新统计信息 - Azure SQL 数据仓库 | Microsoft Docs
+title: 创建和更新统计信息
 description: 用于创建和更新 Azure SQL 数据仓库中表的查询优化统计信息的建议和示例。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,13 +10,13 @@ ms.subservice: development
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 00643e303b3352ce9ce39e5a27fd8b42246aac51
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c995358fc0135a1f9b504b57b23ecb3f6b41d6da
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479171"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692412"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的表统计信息
 
@@ -46,11 +46,11 @@ SET AUTO_CREATE_STATISTICS ON
 
 当检测到包含联接或存在某个谓词时，这些语句将触发统计信息的自动创建：
 
-- 选择
+- SELECT
 - INSERT-SELECT
 - CTAS
 - UPDATE
-- DELETE
+- 删除
 - EXPLAIN
 
 > [!NOTE]
@@ -61,7 +61,7 @@ SET AUTO_CREATE_STATISTICS ON
 > [!NOTE]
 > 统计信息的创建将记录在其他用户上下文中的 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) 中。
 
-创建自动统计信息时，它们将采用以下格式：_WA_Sys_<以十六进制表示的 8 位列 ID>_<以十六进制表示的 8 位表 ID>。 可以通过运行 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) 命令查看已创建的统计信息：
+在创建自动统计信息时，它们将采用以下格式：_WA_Sys_<以十六进制表示的 8 位列 ID>_<以十六进制表示的 8 位表 ID>。 可以通过运行 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) 命令查看已创建的统计信息：
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -71,13 +71,13 @@ table_name 是包含要显示的统计信息的表的名称。 该表不能为�
 
 ## <a name="updating-statistics"></a>更新统计信息
 
-最佳实践之一是每天在添加新日期后，更新有关日期列的统计信息。 每次有新行载入数据仓库时，就会添加新的加载日期或事务日期。 这些操作会更改数据分布情况并使统计信息过时。 相反地, 客户表中的国家/地区列的统计信息可能永远不需要更新, 因为值的分布通常不会更改。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。 但是，如果数据仓库只包含一个国家/地区，并且引入了来自新国家/地区的数据，从而导致存储了多个国家/地区的数据，那么，就需要更新有关国家/地区列的统计信息。
+最佳实践之一是每天在添加新日期后，更新有关日期列的统计信息。 每次有新行载入数据仓库时，就会添加新的加载日期或事务日期。 这些操作会更改数据分布情况并使统计信息过时。 相反地，客户表中的国家/地区列的统计信息可能永远不需要更新，因为值的分布通常不会更改。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。 但是，如果数据仓库只包含一个国家/地区，并且引入了来自新国家/地区的数据，从而导致存储了多个国家/地区的数据，那么，就需要更新有关国家/地区列的统计信息。
 
 下面是关于更新统计信息的建议：
 
 |||
 |-|-|
-| **统计信息更新频率**  | 保守：每天 </br> 加载或转换数据之后 |
+| **统计信息更新频率**  | 保守：每日 </br> 加载或转换数据之后 |
 | **采样** |  如果行数少于 10 亿，则使用默认采样率 (20%)。 </br> 如果行数超过 10 亿，则使用 2% 的采样率。 |
 
 在排查查询问题时，首先要询问的问题之一就是 **“统计信息是最新的吗？”**
@@ -134,7 +134,7 @@ WHERE
 
 有关详细信息，请参阅[基数估计](/sql/relational-databases/performance/cardinality-estimation-sql-server)。
 
-## <a name="examples-create-statistics"></a>示例:创建统计信息
+## <a name="examples-create-statistics"></a>示例：创建统计信息
 
 以下示例演示如何使用各种选项来创建统计信息。 用于每个列的选项取决于数据特征以及在查询中使用列的方式。
 
@@ -210,7 +210,7 @@ CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < 
 > [!NOTE]
 > 用于估计查询结果中行数的直方图只适用于统计信息对象定义中所列的第一个列。
 
-在此示例中，直方图位于 product\_category。 跨列统计信息是根据 *product\_category* 和 *product\_sub_category* 计算的：
+在此示例中，直方图针对的是 product*category\_* 。 跨列统计信息是根据 *product\_category* 和 *product\_sub_category* 计算的：
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
@@ -242,7 +242,7 @@ CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 
 ### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>使用存储过程基于数据库中的所有列创建统计信息
 
-SQL 数据仓库不提供相当于 SQL Server 中 sp_create_stats 的系统存储过程。 此存储过程将基于数据库中尚不包含统计信息的每个列创建单列统计信息对象。
+SQL 数据仓库不提供相当于 SQL Server 中 sp_create_stats 的系统存储过程。 此存储过程基于数据库中尚不包含统计信息的每个列创建单列统计信息对象。
 
 以下示例可以帮助你开始进行数据库设计。 可以根据需要任意改写此存储过程：
 
@@ -352,7 +352,7 @@ EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 
 基于所有列创建示例统计信息
 
-## <a name="examples-update-statistics"></a>示例:Update statistics
+## <a name="examples-update-statistics"></a>示例：更新统计信息
 
 要更新统计信息，可以：
 
@@ -406,7 +406,7 @@ UPDATE STATISTICS 语句很容易使用。 只要记住，这会更新表中的�
 
 这些系统视图提供有关统计信息的信息：
 
-| 目录视图 | 描述 |
+| 目录视图 | 说明 |
 |:--- |:--- |
 | [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |针对每个列提供一行。 |
 | [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |针对数据库中的每个对象提供一行。 |
@@ -420,7 +420,7 @@ UPDATE STATISTICS 语句很容易使用。 只要记住，这会更新表中的�
 
 这些系统函数适合用于处理统计信息：
 
-| 系统函数 | 描述 |
+| 系统函数 | 说明 |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |上次更新统计信息对象的日期。 |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |有关统计信息对象识别的值分布的摘要级别和详细信息。 |
@@ -465,11 +465,11 @@ AND     st.[user_created] = 1
 ;
 ```
 
-## <a name="dbcc-showstatistics-examples"></a>DBCC SHOW_STATISTICS() 示例
+## <a name="dbcc-show_statistics-examples"></a>DBCC SHOW_STATISTICS() 示例
 
 DBCC SHOW_STATISTICS() 显示统计信息对象中保存的数据。 这些数据包括三个组成部分：
 
-- Header
+- 标头
 - 密度矢量
 - 直方图
 
@@ -489,7 +489,7 @@ DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 ```
 
-### <a name="show-one-or-more-parts-of-dbcc-showstatistics"></a>显示 DBCC SHOW_STATISTICS() 的一个或多个组成部分
+### <a name="show-one-or-more-parts-of-dbcc-show_statistics"></a>显示 DBCC SHOW_STATISTICS() 的一个或多个组成部分
 
 如果只想要查看特定部分，请使用 `WITH` 子句并指定要查看哪些部分：
 
@@ -503,7 +503,7 @@ DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 ```
 
-## <a name="dbcc-showstatistics-differences"></a>DBCC SHOW_STATISTICS() 差异
+## <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS() 差异
 
 相比于 SQL Server，在 SQL 数据仓库中，DBCC SHOW_STATISTICS() 的实现更加严格：
 

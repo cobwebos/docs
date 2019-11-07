@@ -1,8 +1,8 @@
 ---
-title: 安装适用于 SQL 数据仓库的 Visual Studio 2019 | Microsoft Docs
+title: 安装 Visual Studio 2019
 description: 安装适用于 Azure SQL 数据仓库的 Visual Studio 和 SQL Server 开发工具 (SSDT)
 services: sql-data-warehouse
-ms.custom: vs-azure
+ms.custom: seo-lt-2019
 ms.workload: azure-vs
 author: kevinvngo
 manager: craigg
@@ -12,12 +12,12 @@ ms.subservice: development
 ms.date: 10/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 0ca59080b4056ba74e2f05038e07d647f12de765
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: caf4a3efbfafcdb10a8834c213b2469e30296501
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485048"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692673"
 ---
 # <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>适用于 SQL 数据仓库的 Visual Studio 2019 入门
 Visual Studio **2019** SQL Server Data Tools (SSDT) 是一个工具，可用于执行以下操作：

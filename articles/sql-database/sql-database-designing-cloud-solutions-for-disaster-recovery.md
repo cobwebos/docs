@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure SQL 数据库设计全球可用的服务 | Microsoft Docs
+title: 使用 Azure SQL 数据库设计全局可用服务
 description: 了解使用 Azure SQL 数据库对应用程序设计高可用性服务。
 keywords: 云灾难恢复, 灾难恢复解决方案, 应用数据备份, 异地复制, 业务连续性规划
 services: sql-database
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: a79fa40568502a73194e467de2227d54931d0100
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 034d696fd8c9aae826d0bbc7e4d028cefad09840
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568940"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690722"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>使用 Azure SQL 数据库设计全球可用的服务
 
@@ -35,7 +35,7 @@ ms.locfileid: "68568940"
 * 必须并置 Web 层和数据层以减少延迟和流量成本
 * 从根本上讲，相比数据丢失，停机时间对于那些应用程序来说是更高的业务风险
 
-在这种情况下，当所有应用程序组件需要一同故障转移时，将针对处理区域灾难对应用程序部署拓扑进行优化。 下图展示了此拓扑。 对于地理冗余，应用程序的资源部署到区域 A 和 B。但是，只有当区域 A 失败后才会利用区域 B 中的资源。 两个区域之间会配置故障转移组，用于管理数据库连接、复制和故障转移。 两个区域中的 Web 服务配置为通过读写侦听器 &lt;failover-group-name&gt;.database.windows.net 访问数据库 (1)。 设置流量管理器以使用[优先级路由方法](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2)。  
+在这种情况下，当所有应用程序组件需要一同故障转移时，将针对处理区域灾难对应用程序部署拓扑进行优化。 下图展示了此拓扑。 对于地理冗余，应用程序的资源部署到区域 A 和 B。但是，只有当区域 A 失败后才会利用区域 B 中的资源。 两个区域之间会配置故障转移组，用于管理数据库连接、复制和故障转移。 两个区域中的 Web 服务配置为通过读写侦听器 **failover-group-name&lt;.database.windows.net 访问数据库 (1)。&gt;** 设置流量管理器以使用[优先级路由方法](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2)。  
 
 > [!NOTE]
 > [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)在这篇文章中仅供说明之用。 可以使用任何支持优先级路由方法的负载均衡解决方案。
@@ -54,7 +54,7 @@ ms.locfileid: "68568940"
 如果区域 B 中发生中断，那么主数据库和辅助数据库之间的复制进程会挂起，但是两者之间的链接不会受影响 (1)。 管理的通信流检测出到区域 B 的连接中断，于是将终结点 Web 应用 2 标记为“降级”(2)。 在这种情况下应用程序性能不会受影响，但数据库已暴露，所以如果区域 A 跟着失败时会产生更高的数据丢失风险。
 
 > [!NOTE]
-> 对于灾难恢复，建议将应用程序部署配置限于两个区域。 这是因为大多数 Azure 地理位置仅有两个区域。 如果两个区域同时发生灾难性故障，此配置不会为你的应用程序提供保护。 在此类失败的不可能事件中，可以使用[异地恢复操作](sql-database-disaster-recovery.md#recover-using-geo-restore)在第三个区域中恢复数据库。
+> 对于灾难恢复，建议将应用程序部署配置限于两个区域。 这是因为大多数 Azure 地理位置仅有两个区域。 如果两个区域同时发生灾难性故障，此配置不会为你的应用程序提供保护。 在此类失败的不可能事件中，可以使用[异地还原操作](sql-database-disaster-recovery.md#recover-using-geo-restore)在第三个区域中恢复数据库。
 >
 
  中断问题缓解后，辅助数据库会立即自动重新与主数据库同步。 同步期间，主数据库的性能可能受影响。 具体影响取决于新主数据库自故障转移开始后获取的数据量。 下图说明了次要区域中的服务中断：
@@ -110,9 +110,9 @@ ms.locfileid: "68568940"
 * 应针对大多用户支持同一地理位置的数据写入访问权限
 * 读取延迟对最终用户体验而言很关键
 
-若要满足这些需求，需要保证用户设备始终连接至部署到同一地理位置的应用程序以实现只读操作，例如浏览数据、分析等。然而，大多时候都在同一地理位置处理 OLTP 操作。 例如，工作时间在同一个地理位置处理 OLTP 操作，而非工作时间可能会在另一个地理位置处理这些操作。 如果终端用户活动大多发生在工作时间，那么可以保证大多时间对于大多用户，均可实现最佳性能。 下图显示了此拓扑。
+为了满足这些要求，你需要确保用户设备**始终**连接到在同一地理位置部署的应用程序以执行只读操作，如浏览数据、分析等。然而，在**大多数情况**下，在同一地理位置处理 OLTP 操作。 例如，工作时间在同一个地理位置处理 OLTP 操作，而非工作时间可能会在另一个地理位置处理这些操作。 如果终端用户活动大多发生在工作时间，那么可以保证大多时间对于大多用户，均可实现最佳性能。 下图显示了此拓扑。
 
-应用程序的资源应部署到每个有大量使用需求的地理位置。 例如，如果在美国、欧盟和东南亚，应用程序使用率很高，则应在所有这些区域部署该应用程序。 主数据库应在工作时间结束时从一个地理区域动态转至下一个区域。 此方法称为“循日”。 OLTP 工作负载始终通过读写侦听器 &lt;failover-group-name&gt;.database.windows.net 连接到数据库 (1)。 只读工作负载直接使用数据库服务器终结点 &lt;server-name&gt;.database.windows.net 连接到本地数据库 (2)。 使用[性能路由方法](../traffic-manager/traffic-manager-configure-performance-routing-method.md)配置流量管理器。 它确保最终用户设备连接到最近的 Web 服务。 设置流量管理器时应为每个 Web 服务终结点启用终结点监视 (3)。
+应用程序的资源应部署到每个有大量使用需求的地理位置。 例如，如果在美国、欧盟和东南亚，应用程序使用率很高，则应在所有这些区域部署该应用程序。 主数据库应在工作时间结束时从一个地理区域动态转至下一个区域。 此方法称为“循日”。 OLTP 工作负载始终通过读写侦听器 **failover-group-name&lt;.database.windows.net 连接到数据库 (1)。&gt;** 只读工作负载直接使用数据库服务器终结点 **server-name&lt;.database.windows.net 连接到本地数据库 (2)。&gt;** 使用[性能路由方法](../traffic-manager/traffic-manager-configure-performance-routing-method.md)配置流量管理器。 它确保最终用户设备连接到最近的 Web 服务。 设置流量管理器时应为每个 Web 服务终结点启用终结点监视 (3)。
 
 > [!NOTE]
 > 故障转移组配置定义要用于故障转移的区域。 由于新的主区域位于另一个地理位置，所以对于 OLTP 和只读工作负载，故障转移会导致更长的延迟，直到受影响的区域恢复联机状态为止。
@@ -162,7 +162,7 @@ ms.locfileid: "68568940"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)
+* 有关业务连续性概述和应用场景，请参阅 [业务连续性概述](sql-database-business-continuity.md)
 * 若要了解活动异地复制，请参阅[活动异地复制](sql-database-active-geo-replication.md)。
 * 若要了解自动故障转移组，请参阅[自动故障转移组](sql-database-auto-failover-group.md)。
 * 有关弹性池的活动异地复制的信息，请参阅[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。

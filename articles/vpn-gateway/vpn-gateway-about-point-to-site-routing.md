@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: anzaman
-ms.openlocfilehash: cb5969ccb4ee9780b597326a3811395c3b7d9971
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ced1bc647f93beec73b8101a952944f31e497658
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168481"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693224"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>关于点到站点 VPN 路由
 
@@ -32,7 +32,7 @@ Azure 当前支持两种远程访问协议：IKEv2 和 SSTP。 IKEv2 可用于�
 
 本示例中的点到站点 VPN 网关连接适用于未连接或未与其他任何虚拟网络 (VNet1) 对等互连的 VNet。 在此示例中，客户端可以访问 VNet1。
 
-![独立 VNet 路由](./media/vpn-gateway-about-point-to-site-routing/1.jpg "isolated VNet routing")
+![独立 VNet 路由](./media/vpn-gateway-about-point-to-site-routing/1.jpg "独立 VNet 路由")
 
 ### <a name="address-space"></a>地址空间
 
@@ -56,7 +56,7 @@ Azure 当前支持两种远程访问协议：IKEv2 和 SSTP。 IKEv2 可用于�
 
 使用 Windows 的客户端可以直接访问对等互连 VNet，但如果 VNet 对等互连或网络拓扑发生任何更改，必须重新下载 VPN 客户端。 非 Windows 客户端可直接访问对等互连 VNet。 访问不可传递，且仅限直接对等互连的 VNet。
 
-![多个对等互连 VNet](./media/vpn-gateway-about-point-to-site-routing/2.jpg "multiple peered VNets")
+![多个对等互连 Vnet](./media/vpn-gateway-about-point-to-site-routing/2.jpg "多个对等互连 Vnet")
 
 ### <a name="address-space"></a>地址空间：
 
@@ -86,7 +86,7 @@ Azure 当前支持两种远程访问协议：IKEv2 和 SSTP。 IKEv2 可用于�
 
 使用 Windows 或其他受支持 OS 的客户端只能访问 VNet1。 若要访问其他 VNet，必须使用 BGP。
 
-![多个 VNet 和 S2S](./media/vpn-gateway-about-point-to-site-routing/3.jpg "multiple VNets and S2S")
+![多个 Vnet 和 S2S](./media/vpn-gateway-about-point-to-site-routing/3.jpg "多个 Vnet 和 S2S")
 
 ### <a name="address-space"></a>地址空间
 
@@ -114,7 +114,7 @@ Azure 当前支持两种远程访问协议：IKEv2 和 SSTP。 IKEv2 可用于�
 
 使用 Windows 或其他受支持的 OS 的客户端可以访问使用站点到站点 VPN 连接连接的所有 VNet，但必须将到已连接 VNet 的路由手动添加到 Windows 客户端。
 
-![多个 VNet 和 S2S (BGP)](./media/vpn-gateway-about-point-to-site-routing/4.jpg "multiple VNets and S2S BGP")
+![多个 Vnet 和 S2S （BGP）](./media/vpn-gateway-about-point-to-site-routing/4.jpg "多个 Vnet 和 S2S BGP")
 
 ### <a name="address-space"></a>地址空间
 
@@ -142,7 +142,7 @@ Azure 当前支持两种远程访问协议：IKEv2 和 SSTP。 IKEv2 可用于�
 
 Windows 客户端和非 Windows 客户端只能访问 VNet1。
 
-![VNet 和分支机构的路由](./media/vpn-gateway-about-point-to-site-routing/5.jpg "routing with a VNet and a branch office")
+![使用 VNet 和分支机构进行路由](./media/vpn-gateway-about-point-to-site-routing/5.jpg "使用 VNet 和分支机构进行路由")
 
 ### <a name="address-space"></a>地址空间
 
@@ -168,7 +168,7 @@ Windows 客户端和非 Windows 客户端只能访问 VNet1。
 
 Windows 客户端可以访问 VNet 和其他分支机构 (Site1)，但必须将到 Site1 的路由手动添加到客户端。 非 Windows 客户端可以访问 VNet 以及本地分支机构。
 
-![一个 VNet 和一个分支机构 (BGP)](./media/vpn-gateway-about-point-to-site-routing/6.jpg "one VNet and a branch office")
+![一个 VNet 和一个分支机构（BGP）](./media/vpn-gateway-about-point-to-site-routing/6.jpg "一个 VNet 和一个分支机构")
 
 ### <a name="address-space"></a>地址空间
 
@@ -195,7 +195,7 @@ Windows 客户端可以访问 VNet 和其他分支机构 (Site1)，但必须将�
 
 所有客户端都只能访问 VNet1。
 
-![多 VNet S2S 和分支机构](./media/vpn-gateway-about-point-to-site-routing/7.jpg "multi-VNet S2S and branch office")
+![多 VNet S2S 和分支机构](./media/vpn-gateway-about-point-to-site-routing/7.jpg "多 VNet S2S 和分支机构")
 
 ### <a name="address-space"></a>地址空间
 
@@ -209,7 +209,7 @@ Windows 客户端可以访问 VNet 和其他分支机构 (Site1)，但必须将�
 
 ### <a name="routes-added"></a>已添加的路由
 
-* 已添加路由的客户端：10.1.0.0/16、192.168.0.0/24
+* 已添加到 Windows 客户端的路由：10.1.0.0/16、192.168.0.0/24
 
 * 已添加到非 Windows 客户端的路由：10.1.0.0/16、10.2.0.0/16、10.3.0.0/16、10.101.0.0/16、192.168.0.0/24
 
@@ -225,7 +225,7 @@ Windows 客户端可以访问 VNet 和其他分支机构 (Site1)，但必须将�
 
 使用 Windows 的客户端可以访问使用站点到站点 VPN 连接连接的 VNet 和站点，但必须将到 VNet2、VNet3 和 Site1 的路由手动添加到该客户端。 非 Windows 客户端可以访问使用站点到站点 VPN 连接连接的 VNet 和站点，而无需任何手动干预。 访问权限是可传递的，并且客户端可访问所有已连接 VNet 和站点（本地）中的资源。
 
-![多 VNet S2S 和分支机构](./media/vpn-gateway-about-point-to-site-routing/8.jpg "multi-VNet S2S and branch office")
+![多 VNet S2S 和分支机构](./media/vpn-gateway-about-point-to-site-routing/8.jpg "多 VNet S2S 和分支机构")
 
 ### <a name="address-space"></a>地址空间
 
@@ -239,7 +239,7 @@ Windows 客户端可以访问 VNet 和其他分支机构 (Site1)，但必须将�
 
 ### <a name="routes-added"></a>已添加的路由
 
-* 已添加路由的客户端：10.1.0.0/16、192.168.0.0/24
+* 已添加到 Windows 客户端的路由：10.1.0.0/16、192.168.0.0/24
 
 * 已添加到非 Windows 客户端的路由：10.1.0.0/16、10.2.0.0/16、10.3.0.0/16、10.101.0.0/16、192.168.0.0/24
 

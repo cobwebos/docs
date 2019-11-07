@@ -1,6 +1,6 @@
 ---
-title: 性能优化和结果集缓存 |Microsoft Docs
-description: 功能概述
+title: 性能优化和结果集缓存
+description: Azure SQL 数据仓库的结果集缓存功能概述
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
-ms.openlocfilehash: 6dd3172dd9098db0cb7ec09e812eec65f717340a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 461320b9c3ed48176fb60fe695704c582edcd552
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163202"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692952"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>性能优化和结果集缓存  
 启用结果集缓存后，Azure SQL 数据仓库会自动缓存用户数据库中的查询结果以供重复使用。  这允许后续查询执行直接从持久缓存中获取结果，因此不需要重新计算。   结果集缓存提高了查询性能，并减少了计算资源的使用。  此外，使用缓存的结果集的查询不使用任何并发槽，因此不会对现有并发限制进行计数。 为安全，如果用户具有与创建缓存结果相同的数据访问权限，则用户只能访问缓存的结果。  

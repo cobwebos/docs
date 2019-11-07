@@ -1,5 +1,5 @@
 ---
-title: 针对多个 Azure SQL 数据库运行报告查询 | Microsoft Docs
+title: 跨多个 Azure SQL 数据库运行报表查询
 description: 使用分布式查询实现跨租户报告。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewers: billgib,ayolubek
 ms.date: 01/25/2019
-ms.openlocfilehash: fa8dbbbb09fbdc14049e168afe6eb4810ccc8254
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f9af2af7893bd908988ee45476ce14a56f9768a9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570235"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691889"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>使用分布式查询实现跨租户报告
 
@@ -32,7 +32,7 @@ ms.locfileid: "68570235"
 > * 每个数据库中的全局视图如何实现跨租户的有效查询
 
 
-若要完成本教程，请确保已完成了以下先决条件：
+若要完成本教程，请确保已完成以下先决条件：
 
 
 * 已部署 Wingtip Tickets SaaS Database Per Tenant 应用。 若要在五分钟内完成部署，请参阅[部署和浏览 Wingtip Tickets SaaS Database Per Tenant 应用程序](saas-dbpertenant-get-started-deploy.md)
@@ -46,7 +46,7 @@ ms.locfileid: "68570235"
 
 SaaS 应用程序具有诸多优势，包括可让你使用云端存储的大量租户数据来深入了解应用程序的操作和使用情况。 这些见解可指导应用和服务的功能开发、可用性改进和其他投资。
 
-在单个多租户数据库中访问此数据很简单，但当数据大规模分布在可能数千个数据库中时便不那么容易了。 一种方法是使用[弹性查询](sql-database-elastic-query-overview.md)，这样可以对具有常见架构的一组分布式数据库进行查询。 这些数据库分布在不同资源组和订阅中，但需要共享共同登录。 弹性查询使用单个头数据库，其中定义的外部表会镜像分布式（租户）数据库中的表或视图。 提交到此头数据库的查询将进行编译以生成分布式查询计划，其中的部分查询将根据需要向下推送到租户数据库。 弹性查询在目录数据库中使用分片映射确定所有租户数据库的位置。 可使用标准 [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference) 轻松设置和查询头像数据库，并可通过 Power BI 和 Excel 等工具进行查询。
+在单个多租户数据库中访问此数据很简单，但当数据大规模分布在可能数千个数据库中时便不那么容易了。 一种方法是使用[弹性查询](sql-database-elastic-query-overview.md)，这样可以对具有常见架构的一组分布式数据库进行查询。 这些数据库分布在不同资源组和订阅中，但需要共享共同登录。 弹性查询使用单个头数据库，其中定义的外部表会镜像分布式（租户）数据库中的表或视图。 提交到此头数据库的查询将进行编译以生成分布式查询计划，其中的部分查询会根据需要向下推送到租户数据库。 弹性查询在目录数据库中使用分片映射确定所有租户数据库的位置。 可使用标准 [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference) 轻松设置和查询头像数据库，并可通过 Power BI 和 Excel 等工具进行查询。
 
 通过跨租户数据库的分布式查询，弹性查询可以即时了解实时生产数据。 由于弹性查询从潜在的许多数据库中拉取数据，因此相比于提交到单个多租户数据库的等效查询，此查询的延迟时间更长。 请设计查询，使其尽量减少返回到头像数据库的数据量。 弹性查询通常最适合查询少量实时数据，而不是构建频繁使用的或复杂的分析查询或报告。 如果查询效果不佳，请查看[执行计划](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan)，了解要将查询的哪部分推送到远程数据库以及要返回多少数据。 可将租户数据提取到针对分析查询进行优化的数据库或数据仓库中，从而使需要复杂聚合或分析处理的查询效果更佳。 这种模式在[租户分析教程](saas-tenancy-tenant-analytics.md)中进行了介绍。 
 
@@ -58,7 +58,7 @@ SaaS 应用程序具有诸多优势，包括可让你使用云端存储的大量
 
 要针对更有趣的数据集运行查询，请通过运行票证生成器创建票证销售数据。
 
-1. 在 PowerShell ISE 中，打开 ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\Demo-AdhocReporting.ps1 脚本并设置以下值：
+1. 在 PowerShell ISE 中，打开 ...*Learning Modules*Operational Analytics\\Adhoc Reporting\\Demo-AdhocReporting.ps1\\\\ 脚本并设置以下值：
    * $DemoScenario = 1，购买在所有地点举行的活动的票证。
 2. 按 F5 运行脚本并生成票证销售。 脚本运行时，请继续执行本教程中的步骤。 票证数据在“运行即席分布式查询”部分中查询，因此请等待票证生成器完成。
 
@@ -103,9 +103,9 @@ SaaS 应用程序具有诸多优势，包括可让你使用云端存储的大量
 
 本练习部署 adhocreporting 数据库。 这是包含用于跨所有租户数据库进行查询的架构的头数据库。 该数据库部署到现有的编录服务器中，后者是用于在示例应用中所有管理相关数据库的服务器。
 
-1. 在 PowerShell ISE 中打开 ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReporting.ps1*。 
+1. 在 PowerShell ISE 中打开 ...*Learning Modules*Operational Analytics\\Adhoc Reporting\\\\Demo-AdhocReporting.ps1\\。 
 
-1. 设置 **$DemoScenario = 2**,_部署特别报告数据库_。
+1. 设置 **$DemoScenario = 2**，_部署特别报告数据库_。
 
 1. 按 F5 运行脚本并创建 adhocreporting 数据库。
 
@@ -147,7 +147,7 @@ SaaS 应用程序具有诸多优势，包括可让你使用云端存储的大量
 
 检查执行计划时，将鼠标悬停在计划图标上方可获取详细信息。 
 
-特别要注意是，定义外部数据源时的设置 DISTRIBUTION = SHARDED(VenueId) 可以提升许多方案的性能。 由于每个*VenueId*映射到单个数据库, 因此可以轻松地远程执行筛选, 仅返回所需数据。
+特别要注意是，定义外部数据源时的设置 DISTRIBUTION = SHARDED(VenueId) 可以提升许多方案的性能。 由于每个*VenueId*映射到单个数据库，因此可以轻松地远程执行筛选，仅返回所需数据。
 
 1. 在 SSMS 中打开 ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\Demo-AdhocReportingQueries.sql。
 2. 确保已连接到 adhocanalytics 数据库。

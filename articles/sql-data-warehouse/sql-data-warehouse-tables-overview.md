@@ -1,5 +1,5 @@
 ---
-title: 设计表 - Azure SQL 数据仓库 | Microsoft Docs
+title: 设计表
 description: 有关在 Azure SQL 数据仓库中设计表的简介。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 55da4e3dc9c7f1c1f86a649a654ce41ef59ad839
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 9220d3adb31005551b6358034207f1071065b1a7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310097"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692381"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中设计表
 
@@ -42,7 +43,7 @@ CREATE SCHEMA wwi;
 
 | WideWorldImportersDW 表  | 表类型 | SQL 数据仓库 |
 |:-----|:-----|:------|:-----|
-| City | 维度 | wwi.DimCity |
+| 城市 | 维度 | wwi.DimCity |
 | 顺序 | Fact | wwi.FactOrder |
 
 
@@ -115,10 +116,10 @@ ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION
 ## <a name="commands-for-creating-tables"></a>用于创建表的命令
 可以创建一个新的空表。 还可以创建一个表并在其中填充 select 语句的结果。 下面是用于创建表的 T-SQL 命令。
 
-| T-SQL 语句 | 描述 |
+| T-SQL 语句 | 说明 |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) | 通过定义所有表列和选项来创建空表。 |
-| [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql) | 创建外部表。 表定义存储在 SQL 数据仓库中。 表数据存储在 Azure Blob 存储或 Azure Data Lake Store 中。 |
+| [创建外部表](/sql/t-sql/statements/create-external-table-transact-sql) | 创建外部表。 表定义存储在 SQL 数据仓库中。 表数据存储在 Azure Blob 存储或 Azure Data Lake Store 中。 |
 | [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) | 在新表中填充 select 语句的结果。 表列和数据类型基于 select 语句的结果。 若要导入数据，此语句可从外部表中进行选择。 |
 | [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql) | 通过将 select 语句的结果导出到外部位置，来创建新的外部表。  该位置为 Azure Blob 存储或 Azure Data Lake Store。 |
 
@@ -134,7 +135,7 @@ SQL 数据仓库支持其他数据库所提供的许多（但不是全部）表�
 - 外键、检查[表约束](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
 - [计算列](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql)
 - [索引视图](/sql/relational-databases/views/create-indexed-views)
-- [Sequence](/sql/t-sql/statements/create-sequence-transact-sql)
+- [序列](/sql/t-sql/statements/create-sequence-transact-sql)
 - [稀疏列](/sql/relational-databases/tables/use-sparse-columns)
 - 代理键。 使用[标识](sql-data-warehouse-tables-identity.md)实现。
 - [同义词](/sql/t-sql/statements/create-synonym-transact-sql)

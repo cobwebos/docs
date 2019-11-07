@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 身份验证 - Azure SQL | Microsoft 文档
+title: Azure Active Directory 身份验证-Azure SQL
 description: 了解如何将 Azure Active Directory 身份验证与 SQL 数据库、托管实例和 SQL 数据仓库结合使用
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: 848cfc96a7da4e69ff77d16a42226a983153ac63
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4516f75d80345312a6ca3b6dac3e5156d7e239e8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897005"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691364"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>使用 Azure Active Directory 身份验证进行 SQL 身份验证
 
@@ -149,7 +149,7 @@ Azure AD 服务器主体（登录名）（**公共预览版**）支持以下身�
 - 有关将 Azure AD 服务器主体（登录名）与托管实例配合使用的教程，请参阅 [Azure AD 服务器主体（登录名）与托管实例](sql-database-managed-instance-aad-security-tutorial.md)
 - 有关 SQL 数据库中的访问和控制的概述，请参阅 [SQL 数据库访问和控制](sql-database-control-access.md)。
 - 有关 SQL 数据库中的登录名、用户和数据库角色的概述，请参阅[登录名、用户和数据库角色](sql-database-manage-logins.md)。
-- 有关数据库主体的详细信息，请参阅[主体](https://msdn.microsoft.com/library/ms181127.aspx)。
+- 有关数据库主体的详细信息，请参阅 [主体](https://msdn.microsoft.com/library/ms181127.aspx)。
 - 有关数据库角色的详细信息，请参阅[数据库角色](https://msdn.microsoft.com/library/ms189121.aspx)。
 - 有关为托管实例创建 Azure AD 服务器主体（登录名）的语法，请参阅 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。
 - 有关 SQL 数据库中的防火墙规则的详细信息，请参阅 [SQL 数据库防火墙规则](sql-database-firewall-configure.md)。

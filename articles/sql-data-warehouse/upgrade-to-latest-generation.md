@@ -1,5 +1,5 @@
 ---
-title: 升级到最新一代的 Azure SQL 数据仓库 | Microsoft Docs
+title: 升级到最新版本
 description: 将 Azure SQL 数据仓库升级到最新一代 Azure 硬件和存储体系结构。
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2864e3d29a0beccd2ef52732a85ea1495e1efab8
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 02c426cd921f4af19f3b8c271e4b1c08eae2c3c2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575287"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692453"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>通过升级 SQL 数据仓库优化性能
 
@@ -27,7 +28,7 @@ ms.locfileid: "69575287"
 
 > [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
-## <a name="applies-to"></a>适用对象
+## <a name="applies-to"></a>适用于
 
 此升级适用于[受支持的区域](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)中的“计算优化第 1 代”层级数据仓库。
 
@@ -111,7 +112,7 @@ ms.locfileid: "69575287"
 ## <a name="start-the-upgrade"></a>开始升级
 
 1. 在 Azure 门户中转到你的“计算优化第 1 代”层级数据仓库。 如果要升级的“计算优化第 1 代”层级数据仓库已暂停，请[恢复数据仓库](pause-and-resume-compute-portal.md)。 
-2. 在“任务”选项卡下选择“升级到第 2 代”卡：![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+2. 选择 "任务" 选项卡下的 "**升级到 Gen2**卡"： ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
     
     > [!NOTE]
     > 如果在“任务”选项卡下未看到“升级到第 2 代”卡，则你的订阅类型在当前区域中受到限制。
@@ -129,7 +130,7 @@ ms.locfileid: "69575287"
 
    升级过程的第二个步骤是数据迁移（“升级 - 联机”）。 数据迁移是一个联机缓慢执行的后台进程。 此进程使用本地 SSD 缓存，缓慢地将列式数据从旧的存储体系结构移动到新的存储体系结构。 在此期间，你的数据仓库将处于联机状态以便用于查询和加载。 你的数据将可供查询，无论它是否已迁移。 数据迁移以可变速率进行，具体取决于数据大小、性能级别和列存储段的数目。 
 
-5. **可选建议**：在缩放操作完成后，你可以加速执行数据迁移后台进程。 可以通过以更大的 SLO 和资源类对要查询的所有主要列存储表运行 [Alter Index rebuild](sql-data-warehouse-tables-index.md) 来强制数据移动。 与缓慢执行的后台进程（可能需要数小时才能完成，具体取决于表的数量和大小）相对比，此操作是**脱机**的。 但是，一旦完成，数据迁移将更快，因为新的增强的存储体系结构具有高质量的行组。
+5. **可选建议：** 缩放操作完成后，可以加速数据迁移后台进程。 可以通过以更大的 SLO 和资源类对要查询的所有主要列存储表运行 [Alter Index rebuild](sql-data-warehouse-tables-index.md) 来强制数据移动。 与缓慢执行的后台进程（可能需要数小时才能完成，具体取决于表的数量和大小）相对比，此操作是**脱机**的。 但是，一旦完成，数据迁移将更快，因为新的增强的存储体系结构具有高质量的行组。
  
 > [!NOTE]
 > Alter Index rebuild 是一项脱机操作，在重新生成完成之前，这些表将不可用。
@@ -189,7 +190,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 3. 在“概述”部分的顶部，选择“+ 新建还原点”。
 
-    ![新还原点](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_0.png)
+    ![新建还原点](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_0.png)
 
 4. 为还原点指定一个名称。
 
@@ -198,7 +199,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>使用 Azure 门户还原活动或暂停的数据库
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 导航到要从中还原的 SQL 数据仓库。
+2. 导航到要从中进行还原的 SQL 数据仓库。
 3. 在“概述”部分的顶部，选择“还原”。
 
     ![ 还原概述](./media/sql-data-warehouse-restore-database-portal/restoring_0.png)

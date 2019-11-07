@@ -1,5 +1,5 @@
 ---
-title: 在 SaaS 多租户 Azure 中预配 | Microsoft Docs
+title: SaaS 多租户 Azure 中的预配
 description: 了解如何在 Azure SQL 数据库多租户 SaaS 应用中预配和编录新租户
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 ms.date: 09/24/2018
-ms.openlocfilehash: 3e8e0c69c93c992f31c515c2033a9ae57d2ee3e0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f829c0d734838de42a82343876cefa007dcca04d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570316"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692015"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>在使用分片多租户 Azure SQL 数据库的 SaaS 应用程序中预配和编录新租户
 
@@ -118,13 +118,13 @@ ms.locfileid: "68570316"
 
 > [!div class="checklist"]
 > * 将租户预配到多租户数据库中
-> * 将租户预配到单租户数据库中
+> * 将租户预配置为单租户数据库
 > * 将一批租户同时预配到多租户和单租户数据库中
 > * 在目录中注册数据库和租户映射
 
 #### <a name="prerequisites"></a>先决条件
 
-若要完成本教程，请确保已完成了以下先决条件：
+若要完成本教程，请确保已完成以下先决条件：
 
 - Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
@@ -144,12 +144,12 @@ ms.locfileid: "68570316"
 
 - **计算新租户密钥**：哈希函数用于从租户名称创建租户密钥。
 - **检查租户密钥是否已存在**：检查目录，确保尚未注册密钥。
-- **初始化默认租户数据库中的租户**：更新租户数据库，添加新租户信息。  
+- **初始化默认租户数据库中的租户**：更新租户数据库，以添加新租户信息。  
 - **在目录中注册租户**：新租户密钥和现有 tenants1 数据库之间的映射将添加到目录中。 
-- **向目录扩展表添加租户名称**：向目录中的租户表添加地点名称。  此项添加内容说明如何扩展目录数据库来支持其他特定于应用程序的数据。
-- **打开新租户的“事件”页**：在浏览器中打开 Bushwillow Blues 事件页。
+- **将租户的名称添加到目录扩展表**：将地点名称添加到目录中的“租户”表。  此项添加内容说明如何扩展目录数据库来支持其他特定于应用程序的数据。
+- **打开新租户的“事件”页**：在浏览器中打开 *Bushwillow Blues* 事件页。
 
-   ![事件](media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
+   ![活动](media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
 
 #### <a name="debugger-steps"></a>调试程序步骤
 
@@ -160,7 +160,7 @@ ms.locfileid: "68570316"
    - **$VenueType** = **blues**（预定义的地点类型之一）：blues、classicalmusic、dance、jazz、judo、motorracing、multipurpose、opera、rockmusic、soccer（小写，不含空格）。
    - **$DemoScenario** = **1**，可在拥有其他租户的共享数据库中预配租户。
 
-2. 通过将游标置于 38 行的任意位置来添加断点，该行显示：New-Tenant `，并按 F9。
+2. 通过将游标置于 38 行（该行显示：*New-Tenant `* ）的任意位置来添加断点，并按 **F9**。
 
    ![断点](media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
 
@@ -168,7 +168,7 @@ ms.locfileid: "68570316"
 
 4. 脚本执行在断点处停止之后，按 F11 单步执行代码。
 
-   ![调试](media/saas-multitenantdb-provision-and-catalog/debug.png)
+   ![debug](media/saas-multitenantdb-provision-and-catalog/debug.png)
 
 5. 使用“调试”菜单选项（F10 和 F11）逐过程或单步执行调用的函数，跟踪脚本的执行。
 
@@ -182,14 +182,14 @@ ms.locfileid: "68570316"
 
 - **计算新租户密钥**：哈希函数用于从租户名称创建租户密钥。
 - **检查租户密钥是否已存在**：检查目录，确保尚未注册密钥。
-- **创建新租户数据库**：通过使用资源管理器模板复制 basetenantdb 数据库来创建此数据库。  新数据库名称取决于租户名称。
-- **向目录添加数据库**：新租户数据库在目录中注册为分片。
-- **初始化默认租户数据库中的租户**：更新租户数据库，添加新租户信息。  
-- **在目录中注册租户**：新租户密钥和 sequoiasoccer 数据库之间的映射将添加到目录中。
-- **将租户名称添加到目录**：将地点名称添加到目录的租户扩展表中。
-- **打开新租户的“事件”页**：在浏览器中打开 Sequoia Soccer 事件页。
+- **创建新租户数据库**：通过使用资源管理器模板复制 *basetenantdb* 数据库来创建此数据库。  新数据库名称取决于租户名称。
+- **将数据库添加到目录**：新租户数据库在目录中注册为分片。
+- **初始化默认租户数据库中的租户**：更新租户数据库，以添加新租户信息。  
+- **在目录中注册租户**：新的租户密钥和 *sequoiasoccer* 数据库之间的映射添加到目录中。
+- **将租户名称添加到目录**：将地点名称添加到目录的“租户”扩展表中。
+- **打开新租户的“事件”页**：在浏览器中打开 *Sequoia Soccer* 事件页。
 
-   ![事件](media/saas-multitenantdb-provision-and-catalog/sequoiasoccer.png)
+   ![活动](media/saas-multitenantdb-provision-and-catalog/sequoiasoccer.png)
 
 #### <a name="debugger-steps"></a>调试程序步骤
 
@@ -200,7 +200,7 @@ ms.locfileid: "68570316"
    - **$VenueType** = **soccer**（预定义的地点类型之一）：blues、classicalmusic、dance、jazz、judo、motorracing、multipurpose、opera、rockmusic、soccer（小写，不含空格）。
    - **$DemoScenario** = **2**，用于将租户预配到其自身的数据库。
 
-2. 通过将游标置于 57 行（该行显示：&&nbsp;$PSScriptRoot\New-TenantAndDatabase `）的任意位置来添加新断点，并按 F9。
+2. 通过将游标置于 57 行（该行显示： *&$PSScriptRoot\New-TenantAndDatabase `）的任意位置来添加新断点，并按 F9&nbsp;* 。
 
    ![断点](media/saas-multitenantdb-provision-and-catalog/breakpoint2.png)
 
@@ -219,7 +219,7 @@ ms.locfileid: "68570316"
 
 ### <a name="verify-the-deployed-set-of-tenants"></a>验证部署的一组租户 
 
-在此阶段，将混合的租户部署到共享数据库中，并将租户部署到各自的数据库中。 Azure 门户可用于检查创建的数据库。 在 [Azure 门户](https://portal.azure.com)中，通过浏览到 SQL Server 列表来打开 tenants1-mt-\<USER\> 服务器。  SQL 数据库列表应包含共享的 tenants1数据库和各自数据库中的租户的数据库：
+在此阶段，将混合的租户部署到共享数据库中，并将租户部署到各自的数据库中。 Azure 门户可用于检查创建的数据库。 在 [Azure 门户](https://portal.azure.com)中，通过浏览到 SQL Server 列表来打开 tenants1-mt-**USER\< 服务器\>** 。  SQL 数据库列表应包含共享的 tenants1数据库和各自数据库中的租户的数据库：
 
    ![数据库列表](media/saas-multitenantdb-provision-and-catalog/Databases.png)
 
@@ -236,7 +236,7 @@ ms.locfileid: "68570316"
 - 租户名称存储在“租户”表中。
 - 数据库名称存储在“分片管理”表中。
 
-1. 在 SQL Server Management Studio (SSMS) 中, 连接到 database.windows.net 的租户 **\<\>** 服务器, 登录名 = **developer**, 密码 = **\@P ssword1**
+1. 在 SQL Server Management Studio （SSMS）中，连接到**目录-mt.\<用户\>** 上的租户服务器，登录名 = **developer**，密码 = **P\@ssword1**
 
     ![“SSMS 连接”对话框](media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 
