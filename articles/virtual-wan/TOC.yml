@@ -34,6 +34,8 @@
       href: vpn-over-expressroute.md
     - name: 将虚拟网络网关连接到虚拟 WAN
       href: connect-virtual-network-gateway-vwan.md
+    - name: 配置全局 VNet 对等互连
+      href: global-peering-vnet.md
     - name: 配置自定义 IPsec 策略
       href: virtual-wan-custom-ipsec-portal.md
     - name: 为用户 VPN 配置证书

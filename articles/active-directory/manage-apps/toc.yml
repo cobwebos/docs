@@ -5,7 +5,7 @@
   items:
     - name: 云应用管理和单一登录是什么？
       href: what-is-application-management.md
-    - name: 自动用户预配是什么？
+    - name: 什么是应用程序预配？
       href: user-provisioning.md
     - name: 本地应用的应用程序代理是什么？
       href: what-is-application-proxy.md
@@ -17,7 +17,7 @@
       href: view-applications-portal.md
 - name: 教程
   items:
-    - name: SaaS 应用教程
+    - name: 集成库应用（例如 ServiceNow、Salesforce、Dropbox）
       href: /azure/active-directory/saas-apps/
     - name: 添加通过应用程序代理访问的本地应用
       href: application-proxy-add-on-premises-application.md
@@ -66,12 +66,12 @@
               href: howto-saml-token-encryption.md
             - name: 最终用户门户
               href: end-user-experiences.md
-    - name: 自动用户预配
+    - name: 应用程序预配 (SCIM)
       items:
-        - name: 规划自动用户预配部署
-          href: plan-auto-user-provisioning.md
         - name: 对启用 SCIM 的应用自动执行预配
           href: use-scim-to-provision-users-and-groups.md
+        - name: 规划自动用户预配部署
+          href: plan-auto-user-provisioning.md
     - name: 本地应用的应用程序代理
       items:
         - name: 应用程序代理
@@ -223,23 +223,21 @@
                   href: access-panel-extension-problem-installing.md
                 - name: 使用自助服务应用访问权限时出错
                   href: access-panel-troubleshoot-self-service-access.md
-    - name: 自动用户预配
+    - name: 应用程序预配 (SCIM)
       items:
         - name: 配置用户设置
           items:
-            - name: 库应用的用户预配
+            - name: 手动预配与自动预配
               href: application-provisioning-config-how-to.md
-            - name: 为多租户应用启用自动用户预配
-              href: isv-automatic-provisioning-multi-tenant-apps.md
             - name: 配置自动用户预配
               href: configure-automatic-user-provisioning-portal.md
-            - name: 自定义应用程序属性
+            - name: 自定义属性映射
               href: Customize-application-attributes.md
-            - name: 范围筛选器
+            - name: 设置要预配的用户或组的范围
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: 对超出范围的用户跳过删除
               href: skip-out-of-scope-deletions.md
-            - name: 检查预配状态
+            - name: 监视预配状态和性能
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: 针对自动用户预配进行报告
               href: check-status-user-account-provisioning.md
@@ -249,20 +247,20 @@
           items:
             - name: 排查用户预配问题
               href: application-provisioning-config-problem.md
-            - name: 隔离状态
+            - name: 授权问题（无法保存管理员凭据）
+              href: application-provisioning-config-problem-storage-limit.md
+            - name: 未预配用户
+              href: application-provisioning-config-problem-no-users-provisioned.md
+            - name: 预配了错误的用户
+              href: application-provisioning-config-problem-wrong-users-provisioned.md
+            - name: 处于隔离状态的预配作业
               href: application-provisioning-quarantine-status.md
+            - name: 缺少源属性
+              href: user-provisioning-sync-attributes-for-mapping.md
+            - name: 预配作业的运行速度缓慢
+              href: application-provisioning-when-will-provisioning-finish.md
             - name: “预配”日志
               href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
-            - name: 同步属性以进行映射 - 库应用
-              href: user-provisioning-sync-attributes-for-mapping.md
-            - name: 花费数小时 - 库应用
-              href: application-provisioning-when-will-provisioning-finish.md
-            - name: 配置用户预配时保存管理员凭据出现问题 - 库应用
-              href: application-provisioning-config-problem-storage-limit.md
-            - name: 未预配用户 - 库应用
-              href: application-provisioning-config-problem-no-users-provisioned.md
-            - name: 预配了错误的用户 - 库应用
-              href: application-provisioning-config-problem-wrong-users-provisioned.md
     - name: 本地应用的应用程序代理
       items:
         - name: 配置连接器
@@ -357,10 +355,12 @@
               href: application-proxy-understand-cors-issues.md
 - name: 引用
   items:
-    - name: 自动用户预配
+    - name: 应用程序预配 (SCIM)
       items:
         - name: 为属性映射编写表达式
           href: functions-for-customizing-application-data.md
+        - name: 选择预配方法
+          href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: Azure AD Connect 预配代理
       items:
         - name: 预配代理版本历史记录

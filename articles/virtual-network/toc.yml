@@ -39,6 +39,8 @@
       href: security-overview.md
     - name: 路由
       href: virtual-networks-udr-overview.md
+    - name: 服务标记
+      href: service-tags-overview.md
     - name: 服务终结点
       href: virtual-network-service-endpoints-overview.md
     - name: 服务终结点策略
@@ -65,6 +67,8 @@
       href: ipv6-public-ip-address-prefix.md
     - name: DDOS 保护
       href: ddos-protection-overview.md
+    - name: 子网扩展
+      href: subnet-extension.md
     - name: 后端连接互操作性
       items:
         - name: 前言和测试设置
@@ -297,6 +301,8 @@
           href: diagnose-network-routing-problem.md
         - name: 吞吐量测试
           href: virtual-network-bandwidth-testing.md
+        - name: 测试 VM 网络延迟
+          href: virtual-network-test-latency.md
         - name: 无法删除虚拟网络
           href: virtual-network-troubleshoot-cannot-delete-vnet.md
         - name: VM 到 VM 连接问题

@@ -31,6 +31,8 @@
       href: publish-marketplace-app.md
     - name: 创建包含自定义提供程序的托管应用程序
       href: tutorial-create-managed-app-with-custom-provider.md
+    - name: 使用自定义提供程序进行资源载入
+      href: tutorial-custom-providers-resource-onboarding.md
 - name: 示例
   items:
     - name: Azure CLI
@@ -45,6 +47,10 @@
       href: custom-providers-overview.md
     - name: 视图定义项目
       href: concepts-view-definition.md
+    - name: 角色定义项目
+      href: concepts-custom-role-definition.md
+    - name: 资源载入
+      href: concepts-custom-providers-resourceonboarding.md
 - name: 操作指南
   items:
     - name: 自定义提供程序

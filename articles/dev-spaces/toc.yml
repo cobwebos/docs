@@ -91,7 +91,7 @@
           href: how-to/run-dev-spaces-windows-containers.md
         - name: 将 traefik 用于自定义入口和 HTTPS
           href: how-to/ingress-https-traefik.md
-        - name: 使用 Azure Dev Spaces Connect（预览）
+        - name: 将开发计算机连接到 AKS 群集（预览版）
           href: how-to/connect.md
     - name: 故障排除
       href: troubleshooting.md

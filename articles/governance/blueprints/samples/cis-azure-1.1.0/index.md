@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 08/09/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 0c33c0832590fdfd4fe78a1645ef1b0e3e391163
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: bf4b79dbb3da15605dc4362b5f0578a457886316
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200571"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581371"
 ---
 # <a name="overview-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure 基础基准蓝图示例的概述
 
@@ -19,16 +19,16 @@ CIS Microsoft Azure 基础基准蓝图示例使用 [Azure Policy](../../../polic
 
 ## <a name="recommendation-mapping"></a>建议映射
 
-“建议映射”部分提供了有关此蓝图中包含的策略的详细信息，以及这些策略如何处理 CIS Microsoft Azure 基础基准中的各种建议。
-分配给一个体系结构时，资源由 Azure Policy 评估是否不符合已分配的策略。 有关详细信息，请参阅 [Azure Policy](../../../policy/overview.md)。
+“建议映射”部分提供了有关此蓝图中包含的策略的详细信息，以及这些策略如何处理 CIS Microsoft Azure 基础基准 v1.1.0 中的各种建议。 分配给一个体系结构时，资源由 Azure Policy 评估是否不符合已分配的策略。 有关详细信息，请参阅 [Azure Policy](../../../policy/overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 你已查看了 CIS Microsoft Azure 基础基准蓝图示例的概述。
-接下来，请参阅以下文章，了解建议映射：
+接下来，请访问以下文章，了解建议映射：
 
 > [!div class="nextstepaction"]
 > [CIS Microsoft Azure 基础基准蓝图 - 建议映射](./control-mapping.md)
+> [CIS Microsoft Azure 基础基准蓝图 - 部署步骤](./deploy.md)
 
 有关蓝图及其使用方式的更多文章：
 

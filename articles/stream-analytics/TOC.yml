@@ -97,6 +97,8 @@
           href: stream-analytics-power-bi-dashboard.md
         - name: 停止或删除作业
           href: stream-analytics-clean-up-your-job.md
+        - name: 复制或备份作业
+          href: copy-job.md
         - name: 进行作业配对以确保可靠性
           href: stream-analytics-job-reliability.md
         - name: 使用托管标识进行身份验证 - ADLS Gen 1 输出

@@ -121,11 +121,17 @@
     - name: 了解适用于 U-SQL 开发人员的 Apache Spark
       items:
         - name: 了解适用于 U-SQL 开发人员的 Apache Spark
-          href: data-lake-analytics-understand-spark-for-usql-developers.md
+          href: understand-spark-for-usql-developers.md
         - name: 了解 Apache Spark 数据格式
-          href: data-lake-analytics-understand-spark-data-formats.md
+          href: understand-spark-data-formats.md
         - name: 了解 Apache Spark 代码概念
-          href: data-lake-analytics-understand-spark-code-concepts.md
+          href: understand-spark-code-concepts.md
+    - name: 排查 U-SQL 作业问题
+      items:
+        - name: 排查 U-SQL 运行时故障
+          href: runtime-troubleshoot.md
+        - name: 排查 .NET 升级问题
+          href: dotnet-upgrade-troubleshoot.md
 - name: 引用
   items:
     - name: Azure PowerShell

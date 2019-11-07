@@ -30,6 +30,8 @@
                   href: hpc-cache-ingest-msrsync.md
                 - name: 通过手动文件复制填充缓存
                   href: hpc-cache-ingest-manual.md
+        - name: 编辑存储目标
+          href: hpc-cache-edit-storage.md
     - name: 连接到缓存
       href: hpc-cache-mount.md
     - name: 管理缓存

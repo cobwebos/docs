@@ -295,7 +295,7 @@
                 - name: 例外
                   href: app/asp-net-exceptions.md
                 - name: 日志跟踪
-                  href: app/java-trace-logs.md
+                  href: app/asp-net-trace-logs.md
                 - name: Unix 指标
                   href: app/java-collectd.md
                 - name: 依赖项
@@ -318,6 +318,8 @@
                   href: app/opencensus-python.md
                 - name: 依赖项
                   href: app/opencensus-python-dependency.md
+                - name: Requests
+                  href: app/opencensus-python-request.md
             - name: 网页
               items:
                 - name: 客户端 JavaScript
@@ -593,26 +595,39 @@
         - name: 资源日志
           items:
             - name: 概述
+              displayname: Resource logs
               href: platform/resource-logs-overview.md
             - name: 在 Azure Monitor 日志中收集
+              displayname: Resource logs
               href: platform/resource-logs-collect-workspace.md
             - name: 存档到存储
+              displayname: Resource logs
               href: platform/resource-logs-collect-storage.md
             - name: 流式传输到事件中心
+              displayname: Resource logs
               href: platform/resource-logs-stream-event-hubs.md
         - name: 活动日志
           items:
             - name: 概述
+              displayname: Activity log
               href: platform/activity-logs-overview.md
+            - name: 通过诊断设置收集
+              displayname: Activity log
+              href: platform/diagnostic-settings-subscription.md
             - name: 查看和检索
+              displayname: Activity log
               href: platform/activity-log-view.md
             - name: 收集和分析
+              displayname: Activity log
               href: platform/activity-log-collect.md
             - name: 在租户之间收集
+              displayname: Activity log
               href: platform/activity-log-collect-tenants.md
             - name: 导出
+              displayname: Activity log
               href: platform/activity-log-export.md
             - name: 架构
+              displayname: Activity log
               href: platform/activity-log-schema.md
         - name: 诊断设置
           items:
@@ -621,6 +636,7 @@
             - name: 使用资源管理器创建诊断设置
               href: platform/diagnostic-settings-template.md
             - name: 更改为 Blob 存储格式
+              displayname: Diagnostic settings
               href: platform/resource-logs-blob-format.md
         - name: 将数据流式传输到事件中心
           href: platform/stream-monitoring-data-event-hubs.md

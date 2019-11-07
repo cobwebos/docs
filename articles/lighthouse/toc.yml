@@ -18,6 +18,9 @@
     - name: 跨租户管理体验
       displayName: scenarios
       href: ./concepts/cross-tenant-management-experience.md
+    - name: 租户、角色和用户
+      displayName: 'Azure AD, Azure Active Directory'
+      href: ./concepts/tenants-users-roles.md
     - name: Azure 市场中的托管服务产品
       displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md

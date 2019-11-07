@@ -84,9 +84,6 @@
     - name: 自动化机器学习
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
-    - name: 计算实例
-      displayName: 'resource, dsvm, Data Science Virtual Machine'
-      href: concept-compute-instance.md
     - name: 计算目标
       displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
       href: concept-compute-target.md
@@ -115,6 +112,8 @@
     - name: 深度学习
       displayName: 'deep learning vs machine learning, deep learning, vs, versus'
       href: concept-deep-learning-vs-machine-learning.md
+    - name: 事件网格集成
+      href: concept-event-grid-integration.md
     - name: Git 集成
       displayName: git github gitlab
       href: concept-train-model-git-integration.md
@@ -163,6 +162,12 @@
         - name: 版本和跟踪数据集
           displayName: 'data, data set'
           href: how-to-version-track-datasets.md
+        - name: 标记数据
+          displayName: 'data, dataset, labeling'
+          href: how-to-create-labeling-projects.md
+        - name: 标记图像
+          displayName: 'data, dataset, labeling'
+          href: how-to-label-images.md
     - name: 训练模型
       items:
         - name: 使用设计器
@@ -180,7 +185,7 @@
             - name: 预测信用风险（高级）
               displayName: 'classification, studio'
               href: how-to-designer-sample-classification-credit-risk-cost-sensitive.md
-            - name: 预测流失
+            - name: 预测变动率
               displayName: 'classification, studio'
               href: how-to-designer-sample-classification-churn.md
             - name: 预测航班延误
@@ -227,11 +232,14 @@
         - name: 使用自动化 ML (Python)
           displayName: SDK automl
           href: how-to-configure-auto-train.md
-        - name: 使用自动化 ML（工作区登录页）
+        - name: 使用自动化 ML（界面）
           href: how-to-create-portal-experiments.md
         - name: 使用远程计算目标
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
+        - name: 定义 ML 任务
+          displayName: 'machine learning, task type'
+          href: how-to-define-task-type.md
         - name: 自动训练预测模型
           displayName: time series
           href: how-to-auto-train-forecast.md
@@ -270,7 +278,7 @@
         - name: Azure 应用服务
           displayName: web app
           href: how-to-deploy-app-service.md
-        - name: 计算实例
+        - name: Notebook VM
           href: how-to-deploy-local-container-notebook-vm.md
         - name: 使用自定义 Docker 映像
           href: how-to-deploy-custom-docker-image.md
@@ -295,7 +303,7 @@
         - name: 收集和评估模型数据
           displayName: track production
           href: how-to-enable-data-collection.md
-        - name: 检测数据偏移
+        - name: 检测数据偏差
           href: how-to-monitor-data-drift.md
         - name: 使用 Application Insights 进行监视
           href: how-to-enable-app-insights.md
@@ -317,6 +325,9 @@
     - name: 导出和删除数据
       displayName: GDPR
       href: how-to-export-delete-data.md
+    - name: 创建事件驱动的工作流
+      displayName: event grid
+      href: how-to-use-event-grid.md
 - name: 引用
   items:
     - name: ML SDK (Python)
@@ -328,6 +339,8 @@
     - name: 机器学习 CLI
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/azureml/'
     - name: 监视数据参考
       href: monitor-resource-reference.md
     - name: 机器学习管道 YAML 参考
@@ -395,7 +408,7 @@
               href: ../algorithm-module-reference/apply-sql-transformation.md
         - name: 机器学习
           items:
-            - name: 为模型评分
+            - name: 评分模型
               href: ../algorithm-module-reference/score-model.md
             - name: 为 SVD 推荐器评分
               href: ../algorithm-module-reference/score-svd-recommender.md

@@ -12,12 +12,12 @@ metadata:
   title: 个性化体验创建服务文档
   titleSuffix: Azure Cognitive Services
   description: Azure 个性化体验创建服务是基于云的 API 服务，可让你选择要显示给用户的最佳体验，并从其实时行为中学习信息。
-  ms.openlocfilehash: f3ba5f5eef7885896d774fd8aab35784cfb6465e
-  ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+  ms.openlocfilehash: 19736d881400a311964920f5669a0e9423891f9e
+  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/04/2019
-  ms.locfileid: "71950046"
+  ms.lasthandoff: 11/05/2019
+  ms.locfileid: "73604197"
 landingContent:
 - title: 关于个性化体验创建服务
   linkLists:
@@ -97,7 +97,7 @@ landingContent:
       url: concepts-exploration.md
     - text: 特征、操作和上下文
       url: concepts-features.md
-    - text: 主动学习
+    - text: 活动和非活动事件
       url: concept-active-learning.md
     - text: 奖励
       url: concept-rewards.md
@@ -107,7 +107,7 @@ landingContent:
     links:
     - text: 通过脱机评估改善循环
       url: concepts-offline-evaluation.md
-    - text: 主动学习
+    - text: 活动和非活动事件
       url: concept-active-learning.md
     - text: 可伸缩性和性能
       url: concepts-scalability-performance.md

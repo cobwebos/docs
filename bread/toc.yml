@@ -714,6 +714,9 @@
     - name: 流分析
       tocHref: /azure/stream-analytics/
       topicHref: /azure/stream-analytics/
+    - name: Internet 分析器
+      tocHref: /azure/internet-analyzer/
+      topicHref: /azure/internet-analyzer/
     - name: 流量管理器
       tocHref: /azure/traffic-manager/
       topicHref: /azure/traffic-manager/

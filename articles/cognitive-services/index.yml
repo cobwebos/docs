@@ -10,13 +10,13 @@ metadata:
   author: nitinme
   ms.author: nitinme
   manager: nitinme
-  ms.date: 09/16/2019
-  ms.openlocfilehash: f360150a06bd7cf0d41ebb193ab91823ea815dfc
-  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.date: 11/04/2019
+  ms.openlocfilehash: 4f9c17fabdcb333d172e7a983921ef89d879fce7
+  ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73466229"
+  ms.lasthandoff: 11/05/2019
+  ms.locfileid: "73622732"
 highlightedContent:
   items:
   - title: 什么是认知服务？
@@ -25,15 +25,21 @@ highlightedContent:
   - title: 认知服务和机器学习
     itemType: concept
     url: ./cognitive-services-and-machine-learning.md
-  - title: 创建认知服务资源
-    itemType: how-to-guide
-    url: ./cognitive-services-apis-create-account.md
   - title: 认知服务中的语言支持
     itemType: reference
     url: ./language-support.md
+  - title: 创建认知服务资源
+    itemType: how-to-guide
+    url: ./cognitive-services-apis-create-account.md
   - title: 在容器中使用认知服务
     itemType: concept
     url: ./cognitive-services-container-support.md
+  - title: 用于认知服务的虚拟网络
+    itemType: architecture
+    url: cognitive-services-virtual-networks.md
+  - title: 认知服务的自定义子域
+    itemType: how-to-guide
+    url: cognitive-services-custom-subdomains.md
   - title: 对请求进行身份验证
     itemType: how-to-guide
     url: ./authentication.md
@@ -101,7 +107,7 @@ conceptualContent:
       text: 内容审查器
     - url: ./personalizer/index.yml
       itemType: overview
-      text: 个性化体验创建服务（预览版）
+      text: 个性化体验创建服务
   - title: 搜索
     summary: 将必应搜索 API 添加到应用，并利用该功能通过单个 API 调用实现数十亿网页、图像、视频和新闻的梳理。
     links:

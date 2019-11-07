@@ -65,6 +65,10 @@
               href: rest-speech-to-text.md
             - name: 批量听录 REST API
               href: batch-transcription.md
+    - name: 资源
+      items:
+        - name: 语音转文本常见问题解答
+          href: faq-stt.md
 - name: 文本转语音
   exanded: false
   items:
@@ -112,6 +116,10 @@
           items:
             - name: 文本转语音 REST API
               href: rest-text-to-speech.md
+    - name: 资源
+      items:
+        - name: 文本转语音常见问题解答
+          href: faq-text-to-speech.md
 - name: 意向识别
   exanded: false
   items:
@@ -182,6 +190,10 @@
               href: 'https://aka.ms/csspeech/pythonref'
             - name: 发行说明
               href: releasenotes.md
+    - name: 资源
+      items:
+        - name: 语音翻译常见问题解答
+          href: 'https://www.microsoft.com/translator/faq.aspx'
 - name: 对话听录
   expanded: false
   items:
@@ -254,7 +266,7 @@
       items:
         - name: 使用语音 SDK 为机器人启用语音
           href: tutorial-voice-enable-your-bot-speech-sdk.md
-    - name: 引用
+    - name: 资源
       items:
         - name: 语音助手常见问题解答
           href: faq-voice-assistants.md
@@ -368,6 +380,8 @@
           href: scenario-availability.md
     - name: 快速入门
       items:
+        - name: 创建一个项目
+          href: quickstarts/create-project.md
         - name: '安装用于 C# 的语音 SDK'
           href: quickstarts/setup-platform.md?pivots=programming-language-csharp
         - name: 安装用于 C++ 的语音 SDK

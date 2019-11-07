@@ -41,7 +41,7 @@
         - name: 特征 - 操作和上下文
           href: concepts-features.md
           displayName: 'action, context, feature, namespace, JSON, best practice, set, ID, guid, event id,'
-        - name: 主动学习
+        - name: 活动和非活动事件
           href: concept-active-learning.md
           displayName: 'active, inactive'
         - name: 奖励

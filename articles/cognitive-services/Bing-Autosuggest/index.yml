@@ -1,6 +1,6 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: 必应自动建议文档
+summary: 必应自动建议 API 可用于将部分搜索查询发送到必应，并根据用户意向和过去的搜索获取建议列表。 调用该 API 可在用户键入时使用建议填充应用中的搜索框和下拉列表。
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
   title: 必应自动建议文档 - 教程、快速入门和 API 参考
@@ -12,80 +12,56 @@ metadata:
   ms.service: cognitive-services
   ms.subservice: bing-autosuggest
   ms.topic: landing-page
-  ms.date: 07/25/2019
+  ms.date: 10/28/2019
   ms.author: aahi
-abstract:
-  description: 通过必应自动建议 API，可向必应发送部分搜索查询词，并取回其他用户已搜索的建议查询列表。  例如，当用户键入其搜索词的每个字符时，可以调用此 API，以便使用建议词填充搜索框的下拉列表。 使用我们的快速入门、教程和示例了解如何使用自动建议 API。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/bing-autosuggest/get-suggested-search-terms
-            html: <p>了解必应自动建议 API</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: 什么是必应自动建议 API？
-          - href: /azure/cognitive-services/bing-autosuggest/concepts/get-suggestions
-            html: <p>了解如何实时获取搜索建议</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: 从必应自动建议 API 获取建议
-          - href: /azure/cognitive-services/bing-autosuggest/language-support
-            html: <p>找出 API 支持的语言。</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: 支持的语言
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 通过发出查询并查看 JSON 响应，开始使用必应自动建议 API：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/logo_csharp.svg
-            href: quickstarts/csharp
-            text: 'C&#35;'
-          - image:
-              src: media/index/logo_java.svg
-            href: quickstarts/java
-            text: Java
-          - image:
-              src: media/index/logo_nodejs.svg
-            href: quickstarts/nodejs
-            text: Node.js
-          - image:
-              src: media/index/logo_php.svg
-            href: quickstarts/php
-            text: PHP
-          - image:
-              src: media/index/logo_python.svg
-            href: quickstarts/python
-            text: Python
-          - image:
-              src: media/index/logo_ruby.svg
-            href: quickstarts/ruby
-            text: Ruby
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何使用必应自动建议 API 开发应用程序：
-      - type: paragraph
-        text: <a href="tutorials/autosuggest.md">单页 Web 应用</a>
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: API
-            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference">必应自动建议 API v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference">必应自动建议 API v5</p>'
-          - title: SDK
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet">.NET</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-java-stable">Java</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'
+  ms.openlocfilehash: 3e7126b4f98ecc7729afd5abd003caffc2644d75
+  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73580125"
+landingContent:
+- title: 关于必应自动建议 API
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是必应自动建议 API？
+      url: get-suggested-search-terms.md
+    - text: 比较必应搜索 API
+      url: ../bing-web-search/bing-api-comparison.md
+- title: 获取建议的搜索词
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 C#
+      url: quickstarts/csharp.md
+    - text: 使用 Python
+      url: quickstarts/python.md
+    - text: 使用 Java
+      url: quickstarts/java.md
+    - text: 使用 Node.js
+      url: quickstarts/nodejs.md
+  - linkListType: tutorial
+    links:
+    - text: 构建单页 Web 应用
+      url: tutorials/autosuggest.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用建议的词
+      url: concepts/get-suggestions.md
+    - text: 发送 API 请求
+      url: quickstarts/csharp.md
+- title: 引用
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 自动建议 REST API v7
+      url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference
+    - text: 自动建议 REST API v5
+      url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v5-reference
+    - text: .NET SDK
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet
+    - text: Java SDK
+      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-java-stable
+    - text: Go SDK
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest

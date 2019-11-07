@@ -1,4 +1,4 @@
-- name: Azure Data Box 文档 - 联机传输
+- name: Azure Stack Edge 和 Data Box Gateway 文档
   href: /azure/databox-online/
   expanded: true
 - name: Data Box Gateway
@@ -57,11 +57,11 @@
           href: data-box-gateway-1905-release-notes.md
         - name: 正式发布版 (GA)
           href: data-box-gateway-release-notes.md
-- name: Data Box Edge
+- name: Azure Stack Edge
   items:
     - name: 概述
       items:
-        - name: 什么是 Azure Data Box Edge？
+        - name: 什么是 Azure Stack Edge？
           href: data-box-edge-overview.md
     - name: 教程
       items:
@@ -125,9 +125,9 @@
           href: data-box-gateway-release-notes.md
 - name: 资源
   items:
-    - name: 'Data Box Edge C# 模块示例 (.NET)'
+    - name: 'Azure Stack Edge C# 模块示例 (.NET)'
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
-    - name: Data Box Edge/Gateway 产品
+    - name: Azure Stack Edge/Data Box Gateway 产品
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

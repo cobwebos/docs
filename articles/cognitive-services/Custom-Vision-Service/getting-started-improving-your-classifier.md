@@ -1,7 +1,7 @@
 ---
 title: 改进分类器 - 自定义影像服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何提高分类器的质量。
+description: 在本文中，你将了解如何在自定义视觉服务中提高分类分类的质量、质量和各种数据。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: d71c750185589fd488df70b63fd48e9e674ee3dc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c2858d5f9bca662cbbcd48b2345a7dc2c7ae48b2
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561041"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718544"
 ---
 # <a name="how-to-improve-your-classifier"></a>如何改进分类器
 
@@ -53,23 +53,23 @@ ms.locfileid: "68561041"
 
 若要更正此问题，请包含多样化的图像，以确保分类器能够适当通用化。 以下是可使定型集更加多样化的一些方法：
 
-* __背景：__ 在不同背景的前面提供对象的图像。 自然场景中的照片比中性背景前的照片更好，因为前者为分类器提供了更多信息。
+* __背景：__ 在不同背景的前面提供对象图像。 自然场景中的照片比中性背景前的照片更好，因为前者为分类器提供了更多信息。
 
     ![背景图像示例](./media/getting-started-improving-your-classifier/background.png)
 
-* __光照：__ 提供不同照明下的图像（即在闪光、高曝光等设置下拍摄），尤其是在用于预测的图像具有不同照明的情况下。 使用不同饱和度、色调和亮度的图像也很有帮助。
+* __照明：__ 提供具有各种光源的图像（即，使用 flash、高曝光度，等等），尤其是用于预测的图像具有不同的光源。 使用不同饱和度、色调和亮度的图像也很有帮助。
 
     ![光照图像示例](./media/getting-started-improving-your-classifier/lighting.png)
 
-* __对象大小：__ 提供具有不同大小和数量的对象的图像（例如，几串香蕉的照片和一根香蕉的特写照片）。 不同的大小有助于分类器涵盖所有方面。
+* __对象大小：__ 提供的图像的大小和数量各不相同（例如，部分 of bananas 的照片和单个香蕉的特写）。 不同的大小有助于分类器涵盖所有方面。
 
     ![大小图像示例](./media/getting-started-improving-your-classifier/size.png)
 
-* __照相机角度：__ 提供以不同照相机角度拍摄的图像。 或者，如果必须使用固定相机（例如监控摄像头）拍摄所有照片，请确保为每个定期出现的对象分配不同的标签，以避免过度拟合 &mdash; 将不相关的对象（例如灯柱）解释为关键特征。
+* 照相机角度：提供以不同照相机角度拍摄的图像。 或者，如果必须使用固定相机（例如监控摄像头）拍摄所有照片，请确保为每个定期出现的对象分配不同的标签，以避免过度拟合 &mdash; 将不相关的对象（例如灯柱）解释为关键特征。
 
     ![角度图像示例](./media/getting-started-improving-your-classifier/angle.png)
 
-* __样式：__ 提供类相同、样式不同的图像（例如，不同品种的同一种水果）。 但是，如果对象的样式有很大的差异（例如，“米老鼠”与现实的老鼠），我们建议将它们标记为单独的类，以更好地表示其独特特征。
+* __样式：__ 提供相同类的不同样式的图像（例如，相同水果的不同形式）。 但是，如果对象的样式有很大的差异（例如，“米老鼠”与现实的老鼠），我们建议将它们标记为单独的类，以更好地表示其独特特征。
 
     ![样式图像示例](./media/getting-started-improving-your-classifier/style.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "68561041"
 
 通过将图像提交到预测终结点来使用或测试图像分类器时，自定义视觉服务会存储这些图像。 然后，你可以使用这些图像来改进模型。
 
-1. 若要查看提交到分类器的图像，请打开[自定义视觉网页](https://customvision.ai)，转到相应项目，然后选择“预测”选项卡。默认视图显示当前迭代的图像。 可使用“迭代”下拉菜单查看先前迭代期间提交的图像。
+1. 若要查看提交到分类器的图像，请打开[自定义视觉](https://customvision.ai)网页，前往你的项目，然后选择 "__预测__" 选项卡。默认视图显示当前迭代中的图像。 可使用“迭代”下拉菜单查看先前迭代期间提交的图像。
 
     ![预测选项卡的屏幕截图，视图中包含图像](./media/getting-started-improving-your-classifier/predictions.png)
 

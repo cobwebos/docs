@@ -518,6 +518,8 @@
           href: data-movement-security-considerations.md
         - name: 在 Azure Key Vault 中存储凭据
           href: store-credentials-in-key-vault.md
+        - name: 在管道活动中使用 Azure Key Vault 机密
+          href: how-to-use-azure-key-vault-secrets-pipeline-activities.md
         - name: 为自承载集成运行时加密凭据
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: 数据工厂的托管标识

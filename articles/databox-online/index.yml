@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure Data Box 文档 - 联机传输
-summary: 使用 Azure Data Box Gateway 和 Azure Data Box Edge 设备通过网络进行高性能数据传输。 选择 Data Box Gateway 发送数据，以便进行云存档、灾难恢复，或者处理云规模的数据。 在数据移动到 Azure 之前，使用 Data Box Edge 可对其进行筛选、分析和转换。
+title: Azure Stack Edge 和 Azure Data Box Gateway 文档 - 联机传输
+summary: 使用 Azure Data Box Gateway 和 Azure Stack Edge 设备通过网络进行高性能数据传输。 选择 Data Box Gateway 发送数据，以便进行云存档、灾难恢复，或者处理云规模的数据。 在数据移动到 Azure 之前，使用 Azure Stack Edge 可对其进行筛选、分析和转换。 Azure Data Box Edge 最近已更名为 Azure Stack Edge。
 metadata:
-  title: Azure Data Box 文档 - 联机传输
-  description: 介绍如何通过网络向 Azure 进行高性能数据传输的 Data Box Gateway 和 Data Box Edge 文档。
+  title: Azure Stack Edge 和 Azure Data Box Gateway 文档 - 联机传输
+  description: 介绍如何通过网络向 Azure 进行高性能数据传输的 Data Box Gateway 和 Azure Stack Edge（已更名的 Data Box Edge）文档。
   services: databox
   ms.service: databox
   ms.subservice: edge
@@ -11,21 +11,21 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 08/15/2019
-  ms.openlocfilehash: f1b3c4f8473807b7bbffa2b40f1d3a89b6acff5a
-  ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+  ms.date: 11/04/2019
+  ms.openlocfilehash: 61cda4ccab69396c13581598f399104b0a4fb181
+  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/23/2019
-  ms.locfileid: "70012868"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73570119"
 landingContent:
-- title: 关于 Data Box 系列
+- title: 关于 Azure Stack Edge 和 Data Box Gateway
   linkLists:
   - linkListType: overview
     links:
     - text: 什么是 Data Box Gateway？
       url: data-box-gateway-overview.md
-    - text: 什么是 Data Box Edge？
+    - text: 什么是 Azure Stack Edge？
       url: data-box-edge-overview.md
   - linkListType: architecture
     links:
@@ -43,11 +43,11 @@ landingContent:
     links:
     - text: Data Box Gateway 要求
       url: data-box-gateway-system-requirements.md
-    - text: Data Box Edge 要求
+    - text: Azure Stack Edge 要求
       url: data-box-edge-system-requirements.md
     - text: Data Box Gateway 限制
       url: data-box-gateway-limits.md
-    - text: Data Box Edge 限制
+    - text: Azure Stack Edge 限制
       url: data-box-edge-limits.md
 - title: 部署
   linkLists:
@@ -55,7 +55,7 @@ landingContent:
     links:
     - text: Data Box Gateway
       url: data-box-gateway-deploy-prep.md
-    - text: Data Box Edge
+    - text: Azure Stack Edge
       url: data-box-edge-deploy-prep.md
 - title: 开发
   linkLists:
@@ -65,7 +65,7 @@ landingContent:
       url: data-box-edge-create-iot-edge-module.md
   - linkListType: download
     links:
-    - text: 示例- 用于 Data Box Edge 的 C#
+    - text: 示例 - 用于 Azure Stack Edge 的 C#
       url: https://docs.microsoft.com/samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
 - title: 管理
   linkLists:
@@ -73,7 +73,7 @@ landingContent:
     links:
     - text: Data Box Gateway 共享
       url: data-box-gateway-manage-shares.md
-    - text: Data Box Edge 共享
+    - text: Azure Stack Edge 共享
       url: data-box-edge-manage-shares.md
     - text: Edge 计算
       url: data-box-edge-manage-compute.md
@@ -85,11 +85,11 @@ landingContent:
     links:
     - text: Data Box Gateway
       url: data-box-gateway-troubleshoot.md
-    - text: Data Box Edge
+    - text: Azure Stack Edge
       url: data-box-edge-troubleshoot.md
     - text: Edge 计算模块
       url: data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules
-    - text: 退回或更换 Data Box Edge
+    - text: 返回或替换 Azure Stack Edge
       url: data-box-edge-return-device.md
     - text: 创建支持票证
       url: data-box-edge-contact-microsoft-support.md

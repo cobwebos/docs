@@ -4,12 +4,12 @@ ms.date: 10-19-2019
 ms.topic: hub-page
 title: 语音服务文档
 description: 开始使用语音服务。
-ms.openlocfilehash: 0a878e3ad736347e61ea62aed96a15a1c2167a4a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0a07125764908b661216c20279ab4bdf80ae91ca
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73508085"
+ms.locfileid: "73580333"
 ---
 <div id="main" class="v2">    
     <div class="container">
@@ -560,32 +560,13 @@ ms.locfileid: "73508085"
                                 </a>
                             </li>
                             <li>
-                                <a href="https://aka.ms/speech/va-no-code">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_conversational_agent.jpg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>构建助手，无需代码</h3>
-                                                    <p>创建启用语音的助手，无需编写一行代码。</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>          
-                            <li>
                                 <a href="https://aka.ms/speech/va-bot-framework">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_how_to.jpg" alt="" />
+                                                        <img src="media/hub/speech_conversational_agent.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -596,7 +577,26 @@ ms.locfileid: "73508085"
                                         </div>
                                     </div>
                                 </a>
-                            </li>                            
+                            </li>
+                            <li>
+                                <a href="https://aka.ms/speech/va-no-code">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech_generic_how_to.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>使用自定义命令</h3>
+                                                    <p>了解如何构建简单可靠的命令并通过语言理解和纠错来控制交互。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -748,7 +748,7 @@ ms.locfileid: "73508085"
                                 </a>
                             </li>
                             <li>
-                                <a href="https://aka.ms/speech/custom-tts-overview">
+                                <a href="https://aka.ms/speech/custom-tts-audio-content-creation">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">

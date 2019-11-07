@@ -502,6 +502,8 @@
           href: sql-database-elastic-pool-failover-group-tutorial.md
         - name: 配置安全性
           href: sql-database-security-tutorial.md
+        - name: 使用流分析对数据进行流式处理
+          href: sql-database-stream-analytics.md
     - name: 概念
       items:
         - name: 单一数据库资源

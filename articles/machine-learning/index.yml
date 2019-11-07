@@ -12,12 +12,12 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 10/29/2019
-  ms.openlocfilehash: 400ebc88faad1ba5d55aa81dd737c8913b131340
-  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.openlocfilehash: 3459782fc0cad6767889d7377fcbfeaf00e99b1e
+  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73497547"
+  ms.locfileid: "73580645"
 landingContent:
 - title: Azure ML 入门
   linkLists:
@@ -29,7 +29,7 @@ landingContent:
       url: service/tutorial-1st-r-experiment.md
     - text: 使用拖放设计器进行试验
       url: service/tutorial-designer-automobile-price-train-score.md
-    - text: 自动执行第一个 ML 试验
+    - text: 通过自动化 ML 进行试验
       url: service/tutorial-first-experiment-automated-ml.md
   - linkListType: overview
     links:

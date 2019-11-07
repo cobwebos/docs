@@ -12,12 +12,12 @@ metadata:
   author: eross-msft
   ms.author: lizross
   ms.date: 08/26/2019
-  ms.openlocfilehash: 96fd0f6612b6c91ce4021b50ffe121b571a5032b
-  ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+  ms.openlocfilehash: c60b536c43b8a82a46ef9176eb077b212da529c0
+  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/30/2019
-  ms.locfileid: "73160993"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73574209"
 landingContent:
 - title: 设置并使用 Microsoft Authenticator 应用
   linkLists:
@@ -73,18 +73,20 @@ landingContent:
       url: security-info-add-update-methods-overview.md
     - text: 在登录提示过程中添加信息
       url: security-info-setup-signin.md
-- title: 在“我的个人资料”门户中管理信息（预览版）
+- title: 在“我的帐户”门户中管理信息
   linkLists:
   - linkListType: overview
     links:
-    - text: 什么是“我的个人资料”（预览版）门户？
-      url: myprofile-portal-overview.md
+    - text: 什么是“我的帐户”门户？
+      url: my-account-portal-overview.md
   - linkListType: how-to-guide
     links:
-    - text: 管理组织
-      url: myprofile-portal-organizations-page.md
     - text: 管理连接的设备
-      url: myprofile-portal-devices-page.md
+      url: my-account-portal-devices-page.md
+    - text: 管理组织
+      url: my-account-portal-organizations-page.md
+    - text: 查看近期的登录活动
+      url: my-account-portal-sign-ins-page.md
 - title: 重置自己的密码
   linkLists:
   - linkListType: overview

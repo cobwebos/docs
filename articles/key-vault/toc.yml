@@ -7,17 +7,21 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 设置和检索机密 - CLI
+    - name: CLI
       href: quick-create-cli.md
-    - name: 设置和检索机密 - PowerShell
+    - name: PowerShell
       href: quick-create-powershell.md
-    - name: 设置和检索机密 - 门户
+    - name: 门户
       href: quick-create-portal.md
-    - name: 设置和检索机密 - .NET
+    - name: Python
+      href: quick-create-python.md
+    - name: .NET (SDK v4)
       href: quick-create-net.md
-    - name: 设置和检索机密 - Node.js
+    - name: .NET (SDK v3)
+      href: quick-create-net-v3.md
+    - name: Node.js
       href: quick-create-node.md
-    - name: 设置和检索机密 - 模板
+    - name: Azure 资源管理器模板
       displayName: 'resource manager, resource manager template, arm'
       href: quick-create-template.md
 - name: 教程

@@ -147,9 +147,9 @@
           href: azure-disks-dynamic-pv.md
         - name: Azure 磁盘 - 静态
           href: azure-disk-volume.md
-        - name: Azure 文件 - 动态
+        - name: Azure 文件存储 - 动态
           href: azure-files-dynamic-pv.md
-        - name: Azure 文件 - 静态
+        - name: Azure 文件存储 - 静态
           href: azure-files-volume.md
         - name: NFS 服务器 - 静态
           href: azure-nfs-volume.md
@@ -345,6 +345,8 @@
           maintainContext: true
         - name: 部署中心启动器
           href: deployment-center-launcher.md
+        - name: 适用于 Kubernetes 的 GitHub 操作
+          href: ../aks/kubernetes-action.md
     - name: 故障排除
       items:
         - name: 常见问题

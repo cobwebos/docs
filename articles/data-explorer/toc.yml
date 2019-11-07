@@ -88,10 +88,6 @@
           href: ingest-data-logstash.md
         - name: 使用 Azure 数据工厂复制数据
           href: data-factory-load-data.md
-    - name: 部署
-      items:
-        - name: DevOps 任务
-          href: devops.md
     - name: 查询数据
       items:
         - name: 编写查询
@@ -136,6 +132,8 @@
           href: tableau.md
         - name: Sisense
           href: sisense.md
+        - name: Redash
+          href: redash.md
     - name: 管理
       items:
         - name: 群集
@@ -166,6 +164,10 @@
               href: delete-data.md
             - name: 处理重复数据
               href: dealing-with-duplicates.md
+    - name: 部署
+      items:
+        - name: 将群集部署到 VNet 中
+          href: vnet-deployment.md
     - name: 监视
       items:
         - name: 使用诊断日志监视引入
@@ -186,6 +188,8 @@
           href: connect-from-databricks.md
         - name: 在 Jupyter Notebook 和 Kqlmagic 中分析数据
           href: kqlmagic.md
+        - name: Azure Pipelines
+          href: devops.md
     - name: 故障排除
       items:
         - name: 创建群集
@@ -220,9 +224,13 @@
           href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto'
     - name: 产品反馈
       href: 'https://aka.ms/adefeedback'
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/data-explorer/'
-    - name: 成本估算器
-      href: 'https://aka.ms/adecostestimator'
+    - name: 定价和计费
+      items:
+        - name: 定价页面
+          href: 'https://azure.microsoft.com/pricing/details/data-explorer/'
+        - name: 成本估算器
+          href: 'https://aka.ms/adecostestimator'
+        - name: 预留容量
+          href: pricing-reserved-capacity.md
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=data-explorer'

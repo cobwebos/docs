@@ -84,6 +84,14 @@
               href: entitlement-management-request-access.md
     - name: 访问评审
       items:
+        - name: 访问包
+          items:
+            - name: 创建访问评审
+              href: entitlement-management-access-reviews-create.md
+            - name: 评审访问权限
+              href: entitlement-management-access-reviews-review-access.md
+            - name: 评审自己的访问权限
+              href: entitlement-management-access-reviews-self-review.md
         - name: 组和应用
           items:
             - name: 创建访问评审

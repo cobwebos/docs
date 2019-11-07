@@ -8,6 +8,8 @@
   items:
     - name: 创建服务 - 门户
       href: quickstart-create-data-migration-service-portal.md
+    - name: 以混合模式创建服务 - 门户
+      href: quickstart-create-data-migration-service-hybrid-portal.md
 - name: 教程
   items:
     - name: 将 SQL Server 脱机迁移到 Azure SQL DB 单一数据库

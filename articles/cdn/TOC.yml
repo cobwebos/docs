@@ -26,6 +26,8 @@
       href: cdn-custom-ssl.md
     - name: 设置缓存规则
       href: cdn-caching-rules-tutorial.md
+    - name: 使用标准规则引擎强制执行 HTTPS
+      href: cdn-standard-rules-engine.md
 - name: 示例
   items:
     - name: 代码示例
@@ -134,6 +136,13 @@
           href: cdn-troubleshoot-allowed-ca.md
 - name: 引用
   items:
+    - name: Microsoft 标准规则引擎参考
+      href: cdn-standard-rules-engine-reference.md
+      items:
+        - name: 标准规则引擎匹配条件
+          href: cdn-standard-rules-engine-match-conditions.md
+        - name: 标准规则引擎操作
+          href: cdn-standard-rules-engine-actions.md
     - name: Verizon Premium 规则引擎参考
       href: cdn-verizon-premium-rules-engine-reference.md
       items:

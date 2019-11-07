@@ -1,7 +1,7 @@
 ---
-title: 为基于内容的更改跟踪设置增量索引
+title: 设置基于内容的更改跟踪的增量索引（预览）
 titleSuffix: Azure Cognitive Search
-description: 对于认知技能组合中的受控处理，启用更改跟踪并保留丰富内容的状态。
+description: 对于认知技能组合中的受控处理，启用更改跟踪并保留丰富内容的状态。 此功能目前处于公开预览状态。
 author: vkurpad
 manager: eladz
 ms.author: vikurpad
@@ -9,24 +9,21 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ac082d6ecb6624dc0d5bc0ab927ff8b91ebdabce
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 74631ee3167c65e59fbd05f53fe5327d1b532dba
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512179"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719941"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>如何在 Azure 中设置增强的文档的增量索引认知搜索
+
+> [!IMPORTANT] 
+> 增量索引当前为公共预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持门户或 .NET SDK。
 
 本文介绍如何将状态和缓存添加到通过 Azure 认知搜索扩充管道移动的大量文档，以便可以从任何支持的数据源增量索引文档。 默认情况下，技能组合是无状态的，并且更改其组合的任何部分都需要完全重新运行索引器。 通过增量索引，索引器可以确定管道的哪些部分发生了更改，为未更改的部分重复使用现有的根据，并为确实发生变化的步骤修改根据。 缓存的内容放置在 Azure 存储中。
 
 如果你不熟悉如何设置索引器，请从[索引器概述](search-indexer-overview.md)开始，然后继续转到[技能集](cognitive-search-working-with-skillsets.md)了解扩充管道。 有关关键概念的更多背景信息，请参阅[增量索引](cognitive-search-incremental-indexing-conceptual.md)。
-
-增量索引使用[搜索 REST api 版本 = 2019-05-06-01.5.1](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)进行配置。
-
-> [!NOTE]
-> 此功能在门户中尚不可用，必须以编程方式使用。
->
 
 ## <a name="modify-an-existing-indexer"></a>修改现有索引器
 

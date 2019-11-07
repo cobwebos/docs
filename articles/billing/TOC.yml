@@ -67,10 +67,14 @@
               href: billing-prepay-sql-data-warehouse-charges-with-reserved-capacity.md
             - name: 虚拟机
               href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+            - name: Azure 存储
+              href: ../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/billing/TOC.json
             - name: Cosmos DB
               href: ../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json
             - name: SQL 数据库
               href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
+            - name: Azure 数据资源管理器
+              href: ../data-explorer/pricing-reserved-capacity.md?toc=/azure/billing/TOC.json
             - name: Azure Databricks
               href: billing-prepay-databricks-reserved-capacity.md
             - name: 应用服务
@@ -85,14 +89,24 @@
           items:
             - name: 虚拟机预留实例
               href: billing-understand-vm-reservation-charges.md
+            - name: Azure 存储预留容量
+              href: billing-understand-storage-charges.md
             - name: Cosmos DB 保留容量
               href: billing-understand-cosmosdb-reservation-charges.md
             - name: SQL 数据库预留容量
               href: billing-understand-reservation-charges.md
             - name: SQL 数据仓库
               href: billing-how-reservation-discount-is-applied-to-azure-sql-dw.md
+            - name: Azure 数据资源管理器
+              href: billing-understand-kusto-azuredataexplorer-reservation-charges.md
             - name: Azure Databricks
               href: billing-reservation-discount-databricks.md
+            - name: Azure Database for MySQL
+              href: billing-understand-reservation-charges-mysql.md
+            - name: Azure Database for PostgreSQL
+              href: billing-understand-reservation-charges-postgresql.md
+            - name: Azure Database for MariaDB
+              href: billing-understand-reservation-charges-mariadb.md
             - name: 应用服务
               href: billing-reservation-discount-app-service-isolated-stamp.md
             - name: Azure 软件计划

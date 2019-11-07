@@ -12,12 +12,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: 48140c014492383fd4c714669b070df1fa6214e6
-  ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+  ms.openlocfilehash: 8174498a5cc94eca0883102c95b543630cd37fdf
+  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73521154"
+  ms.lasthandoff: 11/05/2019
+  ms.locfileid: "73607503"
 landingContent:
 - title: 关于安全中心
   linkLists:
@@ -27,6 +27,22 @@ landingContent:
       url: security-center-intro.md
     - text: 哪些版本的 Windows Server 和 Linux 受支持？
       url: security-center-os-coverage.md
+- title: 了解最新功能
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: 保护容器
+      url: container-security.md
+    - text: 添加动态符合性包
+      url: update-regulatory-compliance-packages.md
+    - text: 与 Windows Admin Center 集成
+      url: windows-admin-center-integration.md
+    - text: 自动响应警报和建议
+      url: workflow-automation.md
+    - text: 导出安全警报和建议
+      url: continuous-export.md
+    - text: 为 Azure Key Vault 设置高级威胁防护
+      url: advanced-threat-protection-key-vault.md
 - title: 入门
   linkLists:
   - linkListType: get-started

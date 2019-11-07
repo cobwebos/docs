@@ -26,15 +26,31 @@
         - name: 使用 Blob 进行开发
           items:
             - name: .NET
-              href: storage-quickstart-blobs-dotnet.md
+              items:
+                - name: .NET (v12 SDK)
+                  href: storage-quickstart-blobs-dotnet.md
+                - name: .NET (v11 SDK)
+                  href: storage-quickstart-blobs-dotnet-legacy.md
             - name: Java
-              href: storage-quickstart-blobs-java.md
+              items:
+                - name: Java (v12 SDK)
+                  href: storage-quickstart-blobs-java.md
+                - name: Java (v8 SDK)
+                  href: storage-quickstart-blobs-java-legacy.md
             - name: Python
-              href: storage-quickstart-blobs-python.md
-            - name: Javascript (Node.js)
-              href: storage-quickstart-blobs-nodejs-v10.md
-            - name: JavaScript（浏览器）
-              href: storage-quickstart-blobs-javascript-client-libraries-v10.md
+              items:
+                - name: Python (v12 SDK)
+                  href: storage-quickstart-blobs-python.md
+                - name: Python (v2.1 SDK)
+                  href: storage-quickstart-blobs-python-legacy.md
+            - name: JavaScript
+              items:
+                - name: JavaScript（适用于 Node.js 的 v12 SDK）
+                  href: storage-quickstart-blobs-nodejs.md
+                - name: JavaScript（适用于 Node.js 的 v10 SDK）
+                  href: storage-quickstart-blobs-nodejs-v10.md
+                - name: JavaScript（适用于浏览器的 v10 SDK）
+                  href: storage-quickstart-blobs-javascript-client-libraries-v10.md
             - name: Go
               href: storage-quickstart-blobs-go.md
             - name: PHP
@@ -147,7 +163,7 @@
               href: storage-blob-performance-tiers.md
             - name: 管理 Azure Blob 存储生命周期
               href: storage-lifecycle-management-concepts.md
-        - name: 性能和缩放
+        - name: 性能、缩放和成本优化
           items:
             - name: 可伸缩性和性能目标
               href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -155,8 +171,16 @@
               href: storage-performance-checklist.md
             - name: Blob 存储中的延迟
               href: storage-blobs-latency.md
+            - name: Azure 存储预留容量
+              href: storage-blob-reserved-capacity.md
         - name: 并发
           href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 搜索和了解 Blob 数据
+          items:
+            - name: 使用 AI 了解 Blob 数据
+              href: ../../search/search-blob-ai-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 用于 Blob 数据的全文搜索
+              href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 数据迁移
           items:
             - name: 比较数据传输解决方案
@@ -384,9 +408,9 @@
               href: storage-xamarin-blob-storage.md
             - name: 以前的 SDK 版本
               items:
-                - name: Javascript (Node.js)（存储 SDK v2）
-                  href: storage-quickstart-blobs-nodejs.md
-                - name: Javascript（浏览器）（存储 SDK v2）
+                - name: JavaScript (Node.js)（存储 SDK v2）
+                  href: storage-quickstart-blobs-nodejs-legacy.md
+                - name: JavaScript（浏览器）（存储 SDK v2）
                   href: storage-quickstart-blobs-javascript-client-libraries.md
         - name: 管理 Blob
           items:
@@ -600,7 +624,7 @@
         - name: 处理大数据
           href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 与 Azure 服务集成
-          href: ../blobs/data-lake-store-integrate-with-azure-services.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: ../blobs/data-lake-storage-integrate-with-azure-services.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 适用于 Hadoop 的 Azure Blob 文件系统驱动程序
           href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure Blob 文件系统 URI
