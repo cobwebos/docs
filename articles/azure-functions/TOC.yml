@@ -125,7 +125,7 @@
         - name: TypeScript
           href: 'functions-reference-node.md#typescript'
     - name: 诊断
-      href: ../app-service/overview-diagnostics.md?toc=%2fazure%2fazure-functions%2ftoc.json
+      href: functions-diagnostics.md
     - name: 消耗计划成本
       href: functions-consumption-costs.md
     - name: 性能注意事项
