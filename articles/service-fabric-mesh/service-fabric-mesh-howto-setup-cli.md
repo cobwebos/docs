@@ -1,6 +1,6 @@
 ---
 title: 设置 Azure Service Fabric 网格 CLI | Microsoft Docs
-description: 了解如何设置 Azure Service Fabric 网格 CLI。
+description: Service Fabric 网格命令行界面 (CLI) 是在本地以及 Azure Service Fabric 网格中部署和管理资源所必需的。 下面介绍如何设置它。
 services: service-fabric-mesh
 keywords: ''
 author: dkkapur
@@ -9,23 +9,23 @@ ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 46b2a9a0c4d8a1d9e0fa069d512670dffb94fc28
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5c9733a5fc5aec337a326fe39e78c3e5c0b8ca4f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173764"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686300"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>设置 Service Fabric 网格 CLI
-Service Fabric 网格命令行界面 (CLI) 是在本地以及 Azure Service Fabric 网格中部署和管理资源所必需的。 
+Service Fabric 网格命令行界面 (CLI) 是在本地以及 Azure Service Fabric 网格中部署和管理资源所必需的。 下面介绍如何设置它。
 
-有三种可以使用的 CLI，下表对它们进行了汇总。 
+有三种可以使用的 CLI，下表对它们进行了汇总。
 
 | CLI 模块 | 目标环境 |  说明 | 
 |---|---|---|
 | az mesh | Azure Service Fabric 网格 | 主要 CLI，允许针对 Azure Service Fabric 网格环境部署应用程序并管理资源。 
 | sfctl | 本地群集 | Service Fabric CLI 允许针对本地群集部署和测试 Service Fabric 资源。  
-| Maven CLI | 本地群集与 Azure Service Fabric 网格 | 围绕`az mesh` 和`sfctl`的包装，它允许 Java 开发人员使用熟悉的命令行体验来实现本地和 Azure 开发体验。  
+| Maven CLI | 本地群集与 Azure Service Fabric 网格 | 围绕 `az mesh` 和 `sfctl` 的包装，允许 Java 开发人员使用熟悉的命令行体验来实现本地和 Azure 开发体验。  
 
 对于预览版，Azure Service Fabric 网格 CLI 编写为 Azure CLI 的一个扩展。 可以在 Azure Cloud Shell 中安装它，也可以在 Azure CLI 的本地安装中进行安装。 
 

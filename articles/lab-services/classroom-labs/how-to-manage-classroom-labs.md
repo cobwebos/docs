@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 85a3a9f7afac8250b225d42462f6b29042e34a2a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 91469f27e1ca86650cf94fde5cff5d1864300183
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330327"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606352"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 实验室服务中的教室实验室 
 本文介绍如何创建和删除教室实验室。 它还说明如何查看实验室帐户中的所有教室实验室。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要在实验室帐户中设置课堂实验室，你必须是实验室帐户中“实验室创建者”角色的成员。 用来创建实验室帐户的帐户会自动添加到此角色。 实验室所有者可以根据[将用户添加为“实验室创建者”角色](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)一文中的步骤将其他用户添加为“实验室创建者”角色。
 
 ## <a name="create-a-classroom-lab"></a>创建课堂实验室
 
-1. 导航到 [Azure 实验室服务网站](https://labs.azure.com)。 请注意，尚不支持 Internet Explorer 11。 
+1. 导航到 [Azure 实验室服务网站](https://labs.azure.com)。 目前尚不支持 Internet Explorer 11。 
 2. 选择“登录”并输入凭据。 选择或输入属于实验室帐户中“实验室创建者”角色成员的“用户 ID”，然后输入密码。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。 
 3. 选择 "**新建实验室**"。 
     
@@ -92,12 +92,12 @@ ms.locfileid: "72330327"
 
 ### <a name="vm-sizes"></a>VM 大小  
 
-| 大小 | 内核数 | RAM | 描述 | 
+| 大小 | 核心数 | RAM | 说明 | 
 | ---- | ----- | --- | ----------- | 
 | 小型 | 2 | 3.5 GB | 此大小最适用于命令行、打开 web 浏览器、低流量 web 服务器、小到中型数据库。 |
 | 中型 | 4 | 7 GB | 此大小最适合用于关系数据库、内存中缓存和分析 | 
 | 中（嵌套虚拟化） | 4 | 16 GB | 此大小最适合用于关系数据库、内存中缓存和分析。 此大小还支持嵌套虚拟化。 <p>如果每个学生都需要多个 Vm，则可以使用此大小。 教师可以使用嵌套虚拟化在虚拟机中设置几个小大小的嵌套虚拟机。 </p> |
-| 大 | 8 | 32 GB | 此大小最适用于需要更快的 Cpu、更好的本地磁盘性能、大型数据库、大内存缓存的应用程序。 此大小还支持嵌套虚拟化 |  
+| 大型 | 8 | 32 GB | 此大小最适用于需要更快的 Cpu、更好的本地磁盘性能、大型数据库、大内存缓存的应用程序。 此大小还支持嵌套虚拟化 |  
 | 小型 GPU （可视化效果） | 6 | 56 GB | 此大小最适合用于使用框架（如 OpenGL 和 DirectX）进行远程可视化、流式处理、游戏、编码。 | 
 | 小型 GPU （计算） | 6 | 56 GB | 此大小最适用于计算密集型和网络密集型应用程序，如人工智能和深度学习应用程序。 | 
 | 中等 GPU （可视化效果） | 12 | 112 GB | 此大小最适合用于使用框架（如 OpenGL 和 DirectX）进行远程可视化、流式处理、游戏、编码。 | 
@@ -123,6 +123,10 @@ ms.locfileid: "72330327"
 
 你还可以使用此下拉列表中的**新实验室**创建新的实验室。 
 
+> [!NOTE]
+> 还可以使用 LabServices PowerShell 模块（预览版）管理实验室。 有关详细信息，请参阅[GitHub 上的 LabServices 主页](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library)。
+
+若要切换到其他实验室帐户，请选择实验室帐户旁边的下拉箭头，然后选择其他实验室帐户。 
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：

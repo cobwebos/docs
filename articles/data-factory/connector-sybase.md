@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂从 Sybase 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 Sybase 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Sybase 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: f6fcdddb2da005d563ee0a10381e7aa4f26487d0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4877706c487f389539e8e5c73bb984b01d200f38
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089255"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680123"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 复制数据
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-sybase-connector.md)
 > * [当前版本](connector-sybase.md)
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Sybase 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 Sybase 数据库复制数据。 本文基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -38,7 +38,7 @@ ms.locfileid: "71089255"
 具体而言，此 Sybase 连接器支持：
 
 - SAP Sybase SQL 随处 (ASA) **版本 16 和更高版本**；不支持智能和 ASE。
-- 使用**Basic**或 **Windows** 身份验证复制数据。
+- 使用**基本**或 **Windows** 身份验证复制数据。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -60,9 +60,9 @@ Sybase 链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Sybase** | 是 |
-| 服务器 | Sybase 服务器的名称。 |是 |
+| server | Sybase 服务器的名称。 |是 |
 | database | Sybase 数据库的名称。 |是 |
-| authenticationType | 用于连接 Sybase 数据库的身份验证类型。<br/>允许值包括：**Basic** 和 **Windows**。 |是 |
+| authenticationType | 用于连接 Sybase 数据库的身份验证类型。<br/>允许的值为：Basic 和 Windows。 |是 |
 | username | 指定用于连接到 Sybase 数据库的用户名。 |是 |
 | password | 指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
@@ -100,7 +100,7 @@ Sybase 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：**SybaseTable** | 是 |
+| type | 数据集的 type 属性必须设置为： **SybaseTable** | 是 |
 | tableName | Sybase 数据库中的表名。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -120,20 +120,20 @@ Sybase 链接的服务支持以下属性：
 }
 ```
 
-如果使用`RelationalTable`的是类型化的数据集，则仍支持原样，但建议使用新的数据集。
+如果使用 `RelationalTable` 类型数据集，该数据集仍按原样受支持，但我们建议今后使用新数据集。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Sybase 源支持的属性列表。
+有关可用于定义活动的各节和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Sybase 源支持的属性列表。
 
 ### <a name="sybase-as-source"></a>以 Sybase 作为源
 
-若要从 Sybase 复制数据，复制活动**源**部分支持以下属性：
+若要从 Sybase 复制数据，复制活动的 **source** 节支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**SybaseSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| type | 复制活动源的 type 属性必须设置为： **SybaseSource** | 是 |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 
@@ -167,7 +167,7 @@ Sybase 链接的服务支持以下属性：
 ]
 ```
 
-如果使用`RelationalSource`的是类型化的源，则仍支持原样，但建议使用新的源。
+如果使用 `RelationalSource` 类型源，该源仍按原样受支持，但我们建议今后使用新源。
 
 ## <a name="data-type-mapping-for-sybase"></a>Sybase 的数据类型映射
 
@@ -175,11 +175,11 @@ Sybase 链接的服务支持以下属性：
 
 Sybase 支持 T-SQL 类型。 有关从 SQL 类型到 Azure 数据工厂临时数据类型的映射表，请参阅 [Azure SQL 数据库连接器 - 数据类型映射](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database)一节。
 
-## <a name="lookup-activity-properties"></a>查找活动属性
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
 
-若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

@@ -1,5 +1,5 @@
 ---
-title: SQL 数据库多租户应用示例指南 - Wingtip SaaS | Microsoft Docs
+title: 'SQL 数据库多租户应用指南示例-Wingtip SaaS '
 description: 提供有关安装和运行使用 Azure SQL 数据库（Wingtip Tickets SaaS 示例）的示例多租户应用程序的步骤和指南。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 6c14fd69521be85dbda5ec4ceda991dfdff54ae0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9258e1e8219300c47e77ea8164e54edd5855bb39
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570064"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691807"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>使用 Wingtip Tickets 示例 SaaS 应用的一般指南
 
@@ -37,7 +37,7 @@ ms.locfileid: "68570064"
 6. 单击 **“确定”** 。
 7. 解压缩文件。
 
-脚本位于 ..\\Learning Modules 文件夹中。
+脚本位于 ..*Learning Modules 文件夹中\\* 。
 
 
 ## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>使用 Wingtip Tickets PowerShell 脚本
@@ -48,7 +48,7 @@ ms.locfileid: "68570064"
 
 使用在部署期间设置的资源组和用户值编辑 UserConfig.psm1 文件：
 
-1. 打开 PowerShell ISE，并加载 ...\\Learning Modules\\UserConfig.psm1 
+1. 打开 PowerShell ISE，并加载 ...*Learning Modules*UserConfig.psm1\\\\ 
 2. 使用部署（仅限 10 和 11 行）的特定值，更新 ResourceGroupName 和 Name。
 3. 保存更改！
 
@@ -56,7 +56,7 @@ ms.locfileid: "68570064"
 
 ### <a name="execute-the-scripts-by-pressing-f5"></a>按 F5 执行脚本
 
-多个脚本使用 $PSScriptRoot 来浏览文件夹，且仅在按 F5 执行脚本时才对 $PSScriptRoot 求值。  突出显示和运行某个选择的内容 (F8) 时，可能会生成错误，因此请在运行脚本时按 F5。
+多个脚本使用 $PSScriptRoot 来浏览文件夹，且仅在按 F5 执行脚本时才对 $PSScriptRoot 求值。  突出显示和运行选择（**F8**）可能会导致错误，因此请在运行脚本时按**F5** 。
 
 ### <a name="step-through-the-scripts-to-examine-the-implementation"></a>以分步执行脚本的方式检查实现情况
 
@@ -78,22 +78,22 @@ ms.locfileid: "68570064"
 
 该部署最初具有要连接到的租户和目录 SQL 数据库服务器。 服务器的命名取决于数据库租户模式（请参阅下文了解详细信息）。 
 
-   - **独立的应用程序：** 每个租户的服务器（例如： contosoconcerthall-&lt;User&gt; 服务器）和 catalog-sa-&lt;User&gt;
-   - **每个租户一个数据库：** tenants1-dpt-&lt;User&gt; 和 catalog-dpt-&lt;User&gt; 服务器
-   - **多租户数据库：** tenants1-mt-&lt;User&gt; 和 catalog-mt-&lt;User&gt; 服务器
+   - **独立的应用程序：** 每个租户的服务器（例如： contosoconcerthall-*User&lt; 服务器&gt;* ）和 catalog-sa-*User&lt;&gt;*
+   - **每个租户一个数据库：** tenants1-dpt-*User&lt;&gt;* 和 catalog-dpt-*User&lt;&gt;* 服务器
+   - **多租户数据库：** tenants1-mt-*User&lt;&gt;* 和 catalog-mt-*User&lt;&gt;* 服务器
 
 为确保成功连接演示，所有服务器的[防火墙规则](sql-database-firewall-configure.md)都允许所有 IP 通过。
 
 
 1. 打开 SSMS 并连接到租户。 服务器名称取决于所选数据库租户模式（请参阅下文了解详细信息）：
-    - **独立的应用程序：** 各个租户的服务器（例如： contosoconcerthall-&lt;User&gt;.database.windows.net） 
-    - **每个租户一个数据库：** tenants1-dpt-&lt;User&gt;.database.windows.net
-    - **多租户数据库：** tenants1-mt-&lt;User&gt;.database.windows.net 
+    - **独立的应用程序：** 各个租户的服务器（例如： contosoconcerthall-*User&lt;.database.windows.net&gt;* ） 
+    - **每个租户一个数据库：** tenants1-dpt-*User&lt;.database.windows.net&gt;*
+    - **多租户数据库：** tenants1-mt-*User&lt;.database.windows.net&gt;* 
 2. 单击“连接” > “数据库引擎...”：
 
    ![编录服务器](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. 演示凭据为：登录名 = *developer*, Password *=\@P ssword1*
+3. 演示凭据为：登录名 = *developer*，Password = *P\@ssword1*
 
     下图显示“每个租户一个数据库”模式的登录。 
     ![连接](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
@@ -101,9 +101,9 @@ ms.locfileid: "68570064"
    
 
 4. 重复步骤 2-3，并连接到目录服务器（请参阅下文，了解基于所选数据库租户模式的特定服务器名称）
-    - **独立的应用程序：** catalog-sa-&lt;User&gt;.database.windows.net
-    - **每个租户一个数据库：** catalog-dpt-&lt;User&gt;.database.windows.net
-    - **多租户数据库：** catalog-mt-&lt;User&gt;.database.windows.net
+    - **独立的应用程序：** catalog-sa-*User&lt;.database.windows.net&gt;*
+    - **每个租户一个数据库：** catalog-dpt-*User&lt;.database.windows.net&gt;*
+    - **多租户数据库：** catalog-mt-*User&lt;.database.windows.net&gt;*
 
 
 成功连接后，会看到所有服务器。 你的数据库列表可能会有所不同，具体取决于已预配的租户。

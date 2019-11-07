@@ -1,7 +1,7 @@
 ---
 title: 评审用户话语 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 主动学习捕获终结点查询并选择用户不确定的终结点话语。 你审核这些话语以选择意向并标记这些真实话语的实体。 在示例话语中接受这些更改，然后对其进行训练和发布。 然后 LUIS 更准确地识别话语。
+description: 查看活动学习捕获的最谈话，以选择目的并标记最谈话的实体。接受更改、定型和发布。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: d5652857f2f35e392d3f512001044fd06bc0a0c9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4a77ac26076fc1b1e4e94ee24dafb28a0e88c858
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499074"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669374"
 ---
 # <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>如何在 LUIS 门户中审核终结点话语以进行主动学习
 

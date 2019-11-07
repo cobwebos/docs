@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e17a99a522c6ab960c2ccd0cc2729076c54ed07f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8c8bfa5fc31ce8500d1ed339ba28afeed21e25a0
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73151843"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603514"
 ---
 # <a name="passwordless-authentication-options"></a>无密码身份验证选项
 
@@ -52,7 +52,7 @@ Windows Hello 企业版[规划指南](https://docs.microsoft.com/windows/securit
 
 FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，可采用任何形式。 Fast Identity Online （FIDO）是无密码 authentication 的开放标准。 它可让用户和组织利用标准登录到其资源，而无需使用外部安全密钥或设备内置的平台密钥。
 
-对于公共预览版，员工可以使用安全密钥登录到其 Azure AD 或混合 Azure AD 加入 Windows 10 设备，并对其云和本地资源进行单一登录。 他们还可以登录到受支持的浏览器。
+对于公共预览版，员工可以使用安全密钥登录到其 Azure AD 加入的 Windows 10 设备，并对其云和本地资源进行单一登录。 他们还可以登录到受支持的浏览器。
 
 ![使用安全密钥登录 Microsoft Edge](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -62,14 +62,14 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 
 | # | 功能/扩展信任 | 为什么需要此功能或扩展？ |
 | --- | --- | --- |
-| 第 | 居民密钥 | 此功能使安全密钥可移植，其中的凭据存储在安全密钥上。 |
+| 1 | 居民密钥 | 此功能使安全密钥可移植，其中的凭据存储在安全密钥上。 |
 | 2 | 客户端 pin | 利用此功能，你可以使用另一个因素来保护凭据，并将其应用于没有用户界面的安全密钥。 |
-| 3 | hmac 密钥 | 此扩展可确保你可以在设备处于脱机状态或处于飞行模式时登录到你的设备。 |
+| 3 | hmac-secret | 此扩展可确保你可以在设备处于脱机状态或处于飞行模式时登录到你的设备。 |
 | 4 | 每个 RP 多个帐户 | 此功能可确保你可以在多个服务（如 Microsoft 帐户和 Azure Active Directory）上使用相同的安全密钥。 |
 
 以下提供商提供了 FIDO2 安全密钥，它们具有已知兼容无密码体验的不同形式因素。 Microsoft 鼓励客户通过联系供应商和 FIDO 联盟来评估这些密钥的安全属性。
 
-| 提供商 | 联系人 |
+| 提供程序 | 联系人 |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |

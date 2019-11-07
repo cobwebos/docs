@@ -1,5 +1,5 @@
 ---
-title: 跨扩展云数据库进行报告 | Microsoft 文档
+title: 跨横向扩展的云数据库进行报告
 description: 如何对横向分区设置弹性查询
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: 1416cbdc29d355e2ed83737140b46306de734127
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 37b19cd86cd13dd2bdc8b3a38abf61898b81d01b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568571"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690383"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>跨扩展云数据库进行报告（预览）
 
@@ -31,7 +31,7 @@ ms.locfileid: "68568571"
 ## <a name="prerequisites"></a>先决条件
 
 * 使用弹性数据库客户端库创建分片映射。 [分片映射管理](sql-database-elastic-scale-shard-map-management.md)。 或者使用[弹性数据库工具入门](sql-database-elastic-scale-get-started.md)中的示例应用程序。
-* 另外，也可以参阅[将现有数据库迁移到横向扩展的数据库](sql-database-elastic-convert-to-use-elastic-tools.md)。
+* 也可以参阅[将现有数据库迁移到扩展数据库](sql-database-elastic-convert-to-use-elastic-tools.md)。
 * 用户必须拥有 ALTER ANY EXTERNAL DATA SOURCE 权限。 此权限包含在 ALTER DATABASE 权限中。
 * 引用基础数据源需要 ALTER ANY EXTERNAL DATA SOURCE 权限。
 
@@ -54,7 +54,7 @@ ms.locfileid: "68568571"
     [;]
 
 > [!NOTE]
-> 请确保“\<username\>”中不包括任何“\@servername”后缀。
+> 请确保“*username\<”\>* 中不包括任何“*servername”\@* 后缀。
 
 ## <a name="12-create-external-data-sources"></a>1.2 创建外部数据源
 
@@ -85,7 +85,7 @@ ms.locfileid: "68568571"
 
     select * from sys.external_data_sources;
 
-外部数据源引用分片映射。 然后，弹性查询使用外部数据源和基础分片映射，枚举参与数据层的数据库。
+外部数据源引用分片映射。 然后，弹性查询使用外部数据源和基础分片映射枚举参与数据层的数据库。
 在弹性查询处理过程中，相同的凭据用于读取分片映射和访问上分片的数据。
 
 ## <a name="13-create-external-tables"></a>1.3 创建外部表
@@ -138,7 +138,7 @@ ms.locfileid: "68568571"
 
 DATA\_SOURCE 子句定义了用于外部表的外部数据源（分片映射）。  
 
-SCHEMA\_NAME 和 OBJECT\_NAME 子句将外部表定义映射到不同架构的表。 如果省略，则假定远程对象的架构是“dbo”，并假定其名称与所定义的外部表名称相同。 如果远程表的名称已在要在其中创建外部表的数据库中使用，那么该做法很有用。 例如，你想要定义外部表以在横向扩展的数据层上获取目录视图或 DMV 的聚合视图。 由于目录视图和 DMV 已在本地存在，因此不能在外部表定义中使用其名称。 而是改用不同名称，并在 SCHEMA\_NAME 和/或 OBJECT\_NAME 子句中使用目录视图或 DMV 的名称。 （请参阅下面的示例。）
+SCHEMA\_NAME 和 OBJECT\_NAME 子句将外部表定义映射到不同架构的表。 如果省略，则假定远程对象的架构是“dbo”，并假定其名称与所定义的外部表名称相同。 如果远程表的名称已在要在其中创建外部表的数据库中使用，那么该做法很有用。 例如，希望定义一个外部表，用于获取扩展数据层上目录视图或 DMV 的聚合视图。 由于目录视图和 DMV 已在本地存在，因此不能在外部表定义中使用其名称。 而是改用不同名称，并在 SCHEMA\_NAME 和/或 OBJECT\_NAME 子句中使用目录视图或 DMV 的名称。 （请参阅下面的示例。）
 
 DISTRIBUTION 子句指定用于此表的数据分布。 查询处理器利用 DISTRIBUTION 子句中提供的信息来构建最有效的查询计划。
 
@@ -175,7 +175,7 @@ DISTRIBUTION 子句指定用于此表的数据分布。 查询处理器利用 DI
     group by w_id, o_c_id
 ```
 
-## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>远程 T-SQL 执行的存储过程：sp\_execute_remote
+## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>远程 T-SQL 执行的存储过程：sp\_execute_remote
 
 弹性查询还引入了一个存储过程，以便提供对分片的直接访问。 该存储过程名为 [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714)，可用于执行远程存储过程或远程数据库上的 T-SQL 代码。 它采用了以下参数：
 
@@ -184,9 +184,9 @@ DISTRIBUTION 子句指定用于此表的数据分布。 查询处理器利用 DI
 * 参数声明 (nvarchar) - 可选：在查询参数（如 sp_executesql）中使用的参数的字符串（包含数据类型定义）。
 * 参数值列表 - 可选：以逗号分隔的参数值（如 sp_executesql）的列表。
 
-Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据库上执行给定的 T-SQL 语句。 它使用外部数据源的凭据连接到分片映射管理器数据库和远程数据库。  
+sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据库上执行给定的 T-SQL 语句。 它使用外部数据源的凭据连接到分片映射管理器数据库和远程数据库。  
 
-例如：
+示例：
 
 ```sql
     EXEC sp_execute_remote

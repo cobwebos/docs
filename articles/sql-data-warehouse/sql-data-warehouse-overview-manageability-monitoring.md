@@ -1,6 +1,6 @@
 ---
-title: SQL 数据仓库可管理性和监控 - 概述 | Microsoft Docs
-description: 有关资源利用率、日志和查询活动、建议和数据保护（备份和还原）的监视和可管理性概述。
+title: 可管理性和监视-概述
+description: 监视和可管理性概述 Azure SQL 数据仓库中的资源利用率、日志和查询活动、建议以及数据保护（备份和还原）。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e9fb06b8ba34566689f769ca9a69328eee37e3c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 3bacd77f49f97bd98a5e1bee844bc80c595f5cbe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60747568"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685602"
 ---
 # <a name="manageability-and-monitoring-with-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的可管理性和监视
 
@@ -24,10 +25,10 @@ ms.locfileid: "60747568"
 ## <a name="overview"></a>概述
 
 * [了解计算管理和弹性][manage compute]
-* [了解 Azure 门户中可用的指标和日志][resource utilization]
+* [了解 Azure 门户中提供了哪些指标和日志][resource utilization]
 * [了解备份和还原功能][data protection]
-* [了解内置智能和建议][recommendations]
-* [了解维护期以及可用于最大限度地减少数据仓库停机时间的内容][maintenance]
+* [了解内置的智能和建议][recommendations]
+* [了解维护期间以及可用于最大程度减少数据仓库停机的时间][maintenance]
 * [查找常见的故障排除指南][troubleshoot]
 
 

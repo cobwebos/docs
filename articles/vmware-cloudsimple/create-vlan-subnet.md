@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0f8e605db3d647b5907c8c6741e4e2200bf14c4f
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 56e0f720221f8de531087e8b8d0476688feb2547
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772368"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601479"
 ---
 # <a name="create-and-manage-vlanssubnets-for-your-private-clouds"></a>创建和管理私有云的 Vlan/子网
 
@@ -34,6 +34,10 @@ ms.locfileid: "70772368"
 8. 单击“提交”。
 
     ![创建 VLAN/子网](media/create-new-vlan-subnet-details.png)
+
+
+> [!IMPORTANT]
+> 每个私有云的配额为30个 Vlan。 可以通过[联系支持人员](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来增加这些限制。
 
 ## <a name="use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere"></a>使用 VLAN 信息在 vSphere 中设置分布式端口组
 

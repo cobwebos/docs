@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 798f95281740213ac23892eb3b54ff780ca18395
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 411b4bb74c21a445f4001c949e1c7811af212453
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772346"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606456"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>为私有云设置防火墙表和规则
 
@@ -33,6 +33,9 @@ ms.locfileid: "70772346"
 4. 输入表的名称。
 5. 将列出该表的默认规则。 单击 "**新建规则**" 以创建其他规则。 有关详细信息，请参阅以下过程。
 6. 单击 "**完成**" 保存防火墙表。
+
+> [!IMPORTANT]
+> 每个私有云最多可以创建两个防火墙表。
 
 ## <a name="firewall-rules"></a>防火墙规则
 
@@ -61,6 +64,9 @@ ms.locfileid: "70772346"
     ![防火墙表添加规则](media/firewall-rule-create.png)
 
 3. 单击 "**完成**" 保存规则并将其添加到防火墙表的规则列表。
+
+> [!IMPORTANT]
+> 每个防火墙表最多可以有10个入站规则和20个出站规则。 可以通过[联系支持人员](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来增加这些限制。
 
 ## <a name="attach-vlanssubnets"></a>附加 Vlan/子网
 

@@ -3,28 +3,28 @@ title: 提交 Azure 媒体剪辑器剪辑作业 | Microsoft 文档
 description: 从 Azure 媒体剪辑器提交剪辑作业的步骤
 services: media-services
 keywords: 剪辑;子剪辑;编码;媒体
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: f0dc6879ccbb22dbebd57de98e4610cd593318db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 04d0d2bb8939c8036ec6817c58f9ac2fbb3acd72
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61242832"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684976"
 ---
 # <a name="submit-clipping-jobs-from-azure-media-clipper"></a>从 Azure 媒体剪辑器提交剪辑作业 
 
-Azure 媒体剪辑器需要实现 submitSubclipCallback  方法才可以处理剪辑作业提交。 该功能用于实现指向 Web 服务的 Clipper 输出的 HTTP POST。 此 Web 服务是可以在其中提交编码作业的位置。 Clipper 的输出是对呈现作业的 Media Encoder Standard 编码预设，或者是动态清单筛选器调用的 REST API 有效负载。 此传递模型是必需的，因为客户端浏览器中的媒体服务帐户凭据并不安全。
+Azure 媒体剪辑器需要实现 submitSubclipCallback 方法才可以处理剪辑作业提交。 该功能用于实现指向 Web 服务的 Clipper 输出的 HTTP POST。 此 Web 服务是可以在其中提交编码作业的位置。 Clipper 的输出是对呈现作业的 Media Encoder Standard 编码预设，或者是动态清单筛选器调用的 REST API 有效负载。 此传递模型是必需的，因为客户端浏览器中的媒体服务帐户凭据并不安全。
 
-以下序列图阐释了浏览器客户端、Web 服务和 Azure 媒体服务之间的工作流：![Azure 媒体剪辑器序列图](media/media-services-azure-media-clipper-submit-job/media-services-azure-media-clipper-sequence-diagram.PNG)
+以下序列图阐释浏览器客户端、Web 服务和 Azure 媒体服务之间的工作流程：![Azure 媒体剪辑器序列图](media/media-services-azure-media-clipper-submit-job/media-services-azure-media-clipper-sequence-diagram.PNG)
 
 在上图中，这四个实体是：最终用户的浏览器、Web 服务、承载剪辑器资源的 CDN 终结点和 Azure 媒体服务。 当最终用户导航到 Web 页时，该页从承载的 CDN 终结点获取剪辑器 JavaScript 和 CSS 资源。 最终用户从浏览器配置剪裁作业或动态清单筛选器创建调用。 当最终用户提交作业或筛选器创建调用时，浏览器会将作业有效负载放入必须部署的 Web 服务中。 此 Web 服务最终使用媒体服务帐户凭据将剪裁作业或筛选器创建调用提交到 Azure 媒体服务。
 
-下面的代码示例阐释了 submitSubclipCallback  示例方法。 此方法实现 Media Encoder Standard 编码预设的 HTTP POST。 如果 POST 成功（结果  ），则承诺  得到解决，否则，它会被拒绝并附带错误详细信息。
+下面的代码示例阐释了 submitSubclipCallback 示例方法。 此方法实现 Media Encoder Standard 编码预设的 HTTP POST。 如果 POST 成功（结果），则承诺得到解决，否则，它会被拒绝并附带错误详细信息。
 
 ```javascript
 // Submit Subclip Callback

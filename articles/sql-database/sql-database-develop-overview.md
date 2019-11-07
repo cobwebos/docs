@@ -1,5 +1,5 @@
 ---
-title: SQL 数据库应用程序开发概述 | Microsoft Docs
+title: SQL 数据库应用程序开发概述
 description: 了解可用于连接到 SQL 数据库的连接库和最佳实践。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 02/07/2019
-ms.openlocfilehash: 42fc73b5557fba91cc132a0abe8561f0a72bbb64
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 58f823aad157657de5445b1010a405af01c70171
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568862"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690642"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL 数据库应用程序开发概述
 
@@ -46,7 +46,7 @@ ms.locfileid: "68568862"
 
 避免长时间运行的事务，因为任何基础结构或连接故障可能会使事务回滚。 如果可能，将事务拆分为多个较小事务，并使用[批处理改进性能](sql-database-use-batching-to-improve-performance.md)。
 
-## <a name="resiliency"></a>复原
+## <a name="resiliency"></a>复原能力
 
 Azure SQL 数据库是一种云服务，在其中可能会遇到在底层基础结构中或云实体之间的通信中发生的暂时性错误。 尽管 Azure SQL 数据库在发生暂时性基础结构故障时可复原，但这些故障可能会影响连接。 如果在连接到 SQL 数据库时发生暂时性错误，代码应[重试调用](sql-database-connectivity-issues.md)。 建议让重试逻辑使用退让逻辑，这样就不会因为多个客户端同时重试而对 SQL 数据库造成混乱。 重试逻辑取决于 [SQL 数据库客户端程序的错误消息](sql-database-develop-error-messages.md)。
 
@@ -54,11 +54,11 @@ Azure SQL 数据库是一种云服务，在其中可能会遇到在底层基础�
 
 ## <a name="network-considerations"></a>网络注意事项
 
-- 在托管客户端程序的计算机上，确保防火墙允许端口 1433 上的传出 TCP 通信。  更多信息:[配置 Azure SQL 数据库防火墙](sql-database-configure-firewall-settings.md)。
-- 客户端在 Azure 虚拟机 (VM) 上运行时，如果客户端程序连接到 SQL 数据库，则必须打开 VM 上的某些端口范围。 更多信息:[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
-- 与 Azure SQL 数据库建立的客户端连接有时会绕过代理直接与数据库交互。 除 1433 以外的端口变得非常重要。 有关详细信息，请参阅 [Azure SQL 数据库连接体系结构](sql-database-develop-direct-route-ports-adonet-v12.md)和[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-connectivity-architecture.md)。
-- 有关托管实例的网络配置, 请参阅[托管实例的网络配置](sql-database-howto-managed-instance.md#network-configuration)。
+- 在托管客户端程序的计算机上，确保防火墙允许端口 1433 上的传出 TCP 通信。  详细信息：[配置 Azure SQL 数据库防火墙](sql-database-configure-firewall-settings.md)。
+- 客户端在 Azure 虚拟机 (VM) 上运行时，如果客户端程序连接到 SQL 数据库，则必须打开 VM 上的某些端口范围。 详细信息：[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
+- 与 Azure SQL 数据库建立的客户端连接有时会绕过代理直接与数据库交互。 除 1433 以外的端口变得非常重要。 有关详细信息，请参阅 [Azure SQL 数据库连接体系结构](sql-database-connectivity-architecture.md)和[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
+- 有关托管实例的网络配置，请参阅[托管实例的网络配置](sql-database-howto-managed-instance.md#network-configuration)。
 
 ## <a name="next-steps"></a>后续步骤
 
-浏览 [SQL 数据库的所有功能](sql-database-technical-overview.md)。
+浏览所有 [SQL 数据库的功能](sql-database-technical-overview.md)。

@@ -1,5 +1,5 @@
 ---
-title: 配置 Windows 虚拟桌面负载平衡方法-Azure
+title: 配置 Windows 虚拟桌面负载平衡-Azure
 description: 如何为 Windows 虚拟桌面环境配置负载平衡方法。
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 3a940dbf592087878cb9dd19f856f1a3d94291c5
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 61c11e342f3b4f906b453e0962018a8f8c34acd4
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676781"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605873"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>配置 Windows 虚拟桌面负载均衡方法
 

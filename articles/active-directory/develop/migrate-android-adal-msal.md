@@ -16,12 +16,12 @@ ms.author: twhitney
 ms.reviewer: shoatman
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d06c84e6afcabb19c985d242679d6db8616a62e2
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: be8129de8b1c12965810bd5d9b5dfd1093e18d1c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679758"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73667890"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>适用于 Android 的 ADAL 到 MSAL 迁移指南
 
@@ -29,45 +29,42 @@ ms.locfileid: "71679758"
 
 ## <a name="difference-highlights"></a>差异突出显示
 
-ADAL 适用于 Azure Active Directory 1.0 版终结点。 Microsoft 身份验证库（MSAL）与 Microsoft 标识平台（以前称为 Azure Active Directory v2.0 终结点）结合使用。
+ADAL 适用于 Azure Active Directory 1.0 版终结点。 Microsoft 身份验证库（MSAL）适用于 Microsoft 标识平台（以前称为 Azure Active Directory v2.0 终结点）。 Microsoft 标识平台与 Azure Active Directory v1.0 的不同之处在于：
 
-Microsoft 标识平台与 Azure Active Directory v1.0 的不同之处在于：
-
-- 支持两种：
+支持：
   - 组织标识（Azure Active Directory）
-  - 非组织标识，如 Outlook.com、Xbox Live 等。
-  - （仅限 B2C）与 Google、Facebook、Twitter 和 Amazon 联合登录。
+  - 非组织标识，如 Outlook.com、Xbox Live 等
+  - （仅限 B2C）与 Google、Facebook、Twitter 和 Amazon 联合登录
 
 - 与兼容的标准：
   - OAuth v2。0
   - OpenID Connect （OIDC）
 
-MSAL 公共 API 反映了重要的可用性变化，其中包括：
+MSAL 公共 API 引入了重要更改，包括：
 
 - 用于访问令牌的新模型：
-  - ADAL 通过表示服务器的 `AuthenticationContext` 提供对令牌的访问。 MSAL 通过代表客户端的 `PublicClientApplication` 提供对令牌的访问。 客户端开发人员无需为需要与之交互的每个颁发机构创建新的 `PublicClientApplication` 实例。 只需配置一个 `PublicClientApplication`。
+  - ADAL 通过表示服务器的 `AuthenticationContext`提供对令牌的访问。 MSAL 通过代表客户端的 `PublicClientApplication`提供对令牌的访问。 客户端开发人员无需为每个要与之交互的证书颁发机构创建新的 `PublicClientApplication` 实例。 只需要一个 `PublicClientApplication` 配置。
   - 除资源标识符外，还支持使用范围请求访问令牌。
-  - 支持增量许可。 开发人员可以请求范围，包括应用注册过程中未包括的范围。
-  - 授权验证-> 已知的颁发机构
-      * 在运行时不再验证权限;开发人员会在开发过程中声明 "已知的颁发机构" 列表。
+  - 支持增量许可。 开发人员可以请求范围，因为用户在应用中访问更多的功能，包括在应用注册过程中未包括的功能。
+  - 在运行时，将不再验证权限。 开发人员会在开发过程中声明 "已知的颁发机构" 列表。
 - 令牌 API 更改：
-  - 在 ADAL 中，`AcquireToken` 首次尝试发出无提示请求并失败，即进行交互式请求。 此行为导致某些开发人员仅依赖于 `AcquireToken`，这有时意味着用户可能会在意外的时刻发生交互。 MSAL 要求开发人员在用户收到 UI 提示符时有意了解相关信息。
-    - `AcquireTokenSilent` 总是导致无提示请求成功或失败。
-    - `AcquireToken` 总是导致交互式（用户通过 UI 提示）请求。
-- MSAL 支持来自默认浏览器或嵌入 web 视图的登录 UI 交互：
+  - 在 ADAL 中，`AcquireToken()` 首先发出无提示请求。 如果失败，它将发出交互式请求。 此行为导致某些开发人员仅依赖于 `AcquireToken`，从而导致用户在一段时间内意外提示输入凭据。 MSAL 要求开发人员在用户收到 UI 提示符时有意了解相关信息。
+    - `AcquireTokenSilent` 始终导致无提示请求成功或失败。
+    - `AcquireToken` 总是会导致通过 UI 提示用户的请求。
+- MSAL 支持从默认浏览器或嵌入式 web 视图登录：
   - 默认情况下，将使用设备上的默认浏览器。 这允许 MSAL 使用已为一个或多个已登录帐户提供的身份验证状态（cookie）。 如果未提供身份验证状态，则在通过 MSAL 授权期间进行身份验证将导致为在同一浏览器中使用的其他 web 应用程序带来的好处而创建身份验证状态（cookie）。
 - 新的异常模型：
-  - 异常对发生的异常类型以及开发人员需要执行哪些操作来解决异常，
-- MSAL 支持 @no__t 0 和 `AcquireTokenSilent` 调用的参数对象。
+  - 异常更清晰地定义了所发生错误的类型以及开发人员需要执行哪些操作来解决问题。
+- MSAL 支持 `AcquireToken` 和 `AcquireTokenSilent` 调用的参数对象。
 - MSAL 支持的声明性配置：
-  - 客户端 ID，重定向 URI
+  - 客户端 ID，重定向 URI。
   - 嵌入的 vs 默认浏览器
   - 授权
   - HTTP 设置，如读取和连接超时
 
 ## <a name="your-app-registration-and-migration-to-msal"></a>应用注册和迁移到 MSAL
 
-不需要对现有应用注册进行任何更改即可使用 MSAL。 如果你想要利用增量/渐进式许可，你可能需要查看注册，以确定要增量请求的特定范围。 下面是有关范围和增量许可的详细信息。
+无需更改现有的应用注册即可使用 MSAL。 如果你想要利用增量/渐进式许可，你可能需要查看注册，以确定要增量请求的特定范围。 下面是有关范围和增量许可的详细信息。
 
 在门户中的应用注册中，你将看到 " **API 权限**" 选项卡。这将提供应用当前配置为请求访问权限的 Api 和权限（作用域）的列表。 它还显示与每个 API 权限相关联的作用域名称列表。
 
@@ -89,26 +86,26 @@ MSAL 公共 API 反映了重要的可用性变化，其中包括：
 
 ### <a name="authenticate-and-request-authorization-for-all-permissions-on-first-use"></a>验证并请求首次使用时的所有权限的授权
 
-如果你当前使用的是 ADAL 并且不需要使用增量许可，则开始使用 MSAL 的最简单方法是使用新的 @no__t 1 对象并设置资源 ID 值来发出 @no__t 0 请求。
+如果你当前使用的是 ADAL 并且不需要使用增量许可，则开始使用 MSAL 的最简单方法是使用新的 `AcquireTokenParameter` 对象和设置资源 ID 值进行 `acquireToken` 请求。
 
 > [!CAUTION]
-> 不能同时设置作用域和资源 id。尝试同时设置这两个将导致 @no__t 0。
+> 不能同时设置作用域和资源 id。尝试同时设置这两个将导致 `IllegalArgumentException`。
 
  这将导致你使用相同的 v1 行为。 在应用注册过程中请求的所有权限都是在其第一次交互期间从用户请求的。
 
 ### <a name="authenticate-and-request-permissions-only-as-needed"></a>仅在需要时进行身份验证和请求权限
 
-若要利用增量许可，你将需要从应用注册中获取应用使用的权限（作用域）列表，然后根据以下内容将它们组织成两个列表：
+若要利用增量许可，请从应用注册中获取应用使用的权限（作用域）列表，并根据以下内容将它们组织成两个列表：
 
 - 用户首次与应用进行交互时要请求的作用域。
 - 与你的应用程序的一项重要功能关联的权限，你还需要向用户说明此功能。
 
-组织作用域后，需要按要为其请求令牌的资源（API）来组织每个列表。 以及希望用户同时授权的任何其他作用域。
+组织作用域后，按要为其请求令牌的资源（API）来组织每个列表。 以及希望用户同时授权的任何其他作用域。
 
 用于向 MSAL 发出请求的参数对象支持：
 
-- `Scope`：要为其请求授权的范围列表，并收到访问令牌。
-- `ExtraScopesToConsent`：在请求其他资源的访问令牌时，需要请求授权的作用域的其他列表。 通过此作用域列表，你可以最大程度地减少请求用户授权所需的次数。 这意味着更少的用户授权或许可提示。
+- `Scope`：要为其请求授权的作用域列表，并收到访问令牌。
+- `ExtraScopesToConsent`：在请求另一资源的访问令牌时，你想要为其请求授权的作用域的其他列表。 通过此作用域列表，你可以最大程度地减少请求用户授权所需的次数。 这意味着更少的用户授权或许可提示。
 
 ## <a name="migrate-from-authenticationcontext-to-publicclientapplications"></a>从 AuthenticationContext 迁移到 PublicClientApplications
 
@@ -118,11 +115,11 @@ MSAL 公共 API 反映了重要的可用性变化，其中包括：
 
 您可以使用 JSON 以声明方式配置此对象，您可以将其作为文件或存储提供给 APK 中的资源。
 
-尽管此对象不是单一实例，但在内部，它使用共享 `Executors` 同时用于交互式和无提示请求。
+尽管此对象不是单一实例，但在内部，它使用共享 `Executors` 处理交互式和无提示请求。
 
 ### <a name="business-to-business"></a>企业到企业
 
-在 ADAL 中，你请求的访问令牌的每个组织都需要 @no__t 的单独实例。 在 MSAL 中，这不再是必需的。 你可以指定要在无提示或交互式请求中请求令牌的授权机构。
+在 ADAL 中，你请求的访问令牌的每个组织都需要 `AuthenticationContext`的单独实例。 在 MSAL 中，这不再是必需的。 你可以指定要在无提示或交互式请求中请求令牌的授权机构。
 
 ### <a name="migrate-from-authority-validation-to-known-authorities"></a>从颁发机构验证迁移到已知颁发机构
 
@@ -131,11 +128,11 @@ MSAL 没有用于启用或禁用证书颁发机构验证的标志。 颁发机�
 > [!TIP]
 > 如果你是 Azure 企业对消费者（B2C）用户，这意味着你不再需要禁用授权机构验证。 相反，请将每个受支持的 Azure AD B2C 策略作为 MSAL 配置中的颁发机构。
 
-如果你尝试使用 Microsoft 无法识别的颁发机构，并且你的配置中不包含该机构，则你将收到 @no__t 0。
+如果你尝试使用 Microsoft 无法识别的颁发机构，并且你的配置中未包含该机构，你将获得 `UnknownAuthorityException`。
 
 ### <a name="logging"></a>日志记录
-你现在可以在配置中以声明方式配置日志记录，如下所示
- 
+你现在可以在配置中以声明方式配置日志记录，如下所示：
+
  ```
  "logging": {
     "pii_enabled": false,
@@ -146,25 +143,25 @@ MSAL 没有用于启用或禁用证书颁发机构验证的标志。 颁发机�
 
 ## <a name="migrate-from-userinfo-to-account"></a>从用户信息迁移到帐户
 
-在 ADAL 中，@no__t 提供了一个用于检索有关已验证帐户的信息的 @no__t 1 对象。 应用 "用户" 这一术语，它是一种使用人机或软件代理的方式，这使得难以传达某些应用是否支持具有多个帐户的单个用户（无论是人或软件代理）。
+在 ADAL 中，`AuthenticationResult` 提供了一个 `UserInfo` 对象，该对象用于检索有关经过身份验证的帐户的信息。 应用 "用户" 这一术语，它是一种使用人机或软件代理的方式，这使得难以传达某些应用是否支持具有多个帐户的单个用户（无论是人或软件代理）。
 
 以银行帐户为例。 您可能在多个金融机构有多个帐户。 当你打开某个帐户时，你（用户）将为每个帐户颁发凭据（例如 ATM 卡 & PIN），这些凭据用于访问余额、帐单付款等。 这些凭据只能在颁发它们的金融机构使用。
 
 如金融机构的帐户一样，使用凭据访问 Microsoft 标识平台中的帐户。 这些凭据是使用注册的，或由 Microsoft 颁发的。 或由 Microsoft 代表一家组织。
 
-Microsoft 标识平台与金融机构的不同之处在于，在此类比中，Microsoft 标识平台提供了一个框架，使用户能够使用一个帐户及其关联的凭据来访问属于多个人和组织。 这就像能够使用一个银行颁发的卡，还可以使用另一个金融机构。 这是因为所涉及的所有组织都在使用 Microsoft 标识平台，这允许在多个组织中使用一个帐户。 以下是一个示例：
+Microsoft 标识平台与金融机构的不同之处在于，在此类比中，Microsoft 标识平台提供了一个框架，使用户能够使用一个帐户及其关联的凭据来访问属于多个人和组织。 这就像能够使用一个银行颁发的卡，还可以使用另一个金融机构。 这是因为所涉及的所有组织都在使用 Microsoft 标识平台，这允许在多个组织中使用一个帐户。 下面是一个示例：
 
 Sam 适用于 Contoso.com，但管理属于 Fabrikam.com 的 Azure 虚拟机。 要使 Sam 管理 Fabrikam 的虚拟机，他需要有权访问它们。 可以通过以下方式授予此访问权限：向 Fabrikam.com 添加 Sam 帐户，并向其帐户授予允许他处理虚拟机的角色。 这将通过 Azure 门户完成。
 
 将 Sam 的 Contoso.com 帐户添加为 Fabrikam.com 的成员会导致在 Fabrikam Azure Active Directory 中为 Sam 创建新记录。 中 Sam 记录 Azure Active Directory 称为 "用户对象"。 在这种情况下，该用户对象将在 Contoso.com 中返回 Sam 的 user 对象。 Sam 的 Fabrikam 用户对象是 Sam 的本地表示形式，将用于在 Fabrikam.com 的上下文中存储与 Sam 关联的帐户的相关信息。 在 Contoso.com 中，Sam 的标题是高级 DevOps 顾问。 在 Fabrikam 中，Sam 的标题为 "承包商-虚拟机"。 在 Contoso.com 中，Sam 不负责管理虚拟机并对其进行授权。 在 Fabrikam.com 中，这是他唯一的工作职能。 但 Sam 仍只包含一组凭据来跟踪，这些凭据是 Contoso.com 颁发的凭据。
 
-成功 `acquireToken` 调用后，你将看到一个对 @no__t 的对象的引用，该对象可用于稍后 @no__t 的请求。
+成功进行 `acquireToken` 调用后，你将看到对 `IAccount` 对象的引用，该对象可在以后 `acquireTokenSilent` 请求中使用。
 
 ### <a name="imultitenantaccount"></a>IMultiTenantAccount
 
-如果你的应用程序从表示该帐户的每个租户访问有关该帐户的声明，则可以将 `IAccount` 对象强制转换为 @no__t。 此接口提供 `ITenantProfiles` 的地图，按租户 ID 进行键控，使你能够访问属于你从其请求令牌的每个租户（相对于当前帐户）中的帐户的声明。
+如果你的应用程序从表示该帐户的每个租户访问有关该帐户的声明，则可以将 `IAccount` 对象强制转换为 `IMultiTenantAccount`。 此接口提供按租户 ID 键控的 `ITenantProfiles`的映射，使你能够从相对于当前帐户的请求令牌的每个租户中的帐户访问声明。
 
-位于 @no__t 0 和 `IMultiTenantAccount` 的根的声明始终包含来自 home 租户的声明。 如果你尚未在 home 租户内请求令牌，此集合将为空。
+位于 `IAccount` 的根目录的声明和 `IMultiTenantAccount` 始终包含来自 home 租户的声明。 如果你尚未在 home 租户内请求令牌，此集合将为空。
 
 ## <a name="other-changes"></a>其他更改
 
@@ -241,12 +238,12 @@ public interface SilentAuthenticationCallback {
 
 ## <a name="migrate-to-the-new-exceptions"></a>迁移到新的异常
 
-在 ADAL 中，有一种类型的异常 `AuthenticationException`，其中包括用于检索 @no__t 枚举值的方法。
+在 ADAL 中，有一种类型的异常，`AuthenticationException`，其中包括用于检索 `ADALError` 枚举值的方法。
 在 MSAL 中，有一个异常层次结构，并且每个都有其自己的一组关联的特定错误代码。
 
 MSAL 异常列表
 
-|异常  | 描述  |
+|异常  | 说明  |
 |---------|---------|
 | `MsalException`     | MSAL 引发的默认选中异常。  |
 | `MsalClientException`     | 如果错误是客户端，则引发。 |

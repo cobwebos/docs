@@ -1,5 +1,5 @@
 ---
-title: 系统视图 - Azure SQL 数据仓库 | Microsoft Docs
+title: 系统视图
 description: 有关 Azure SQL 数据仓库支持的系统视图的文档的链接。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: query
 ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: adb82d035d69003abada1685d64255eace6e9d88
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: a8073084007d3174b92995c16785c3f8bc82b642
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543627"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692533"
 ---
 # <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库支持的系统视图
 有关 Azure SQL 数据仓库中支持的 T-SQL 语句文档的链接。
@@ -26,9 +27,9 @@ ms.locfileid: "69543627"
 * [sys.pdw_index_mappings](https://msdn.microsoft.com/library/mt203912.aspx)
 * [sys.pdw_loader_backup_run_details](https://msdn.microsoft.com/library/mt203877.aspx)
 * [sys.pdw_loader_backup_runs](https://msdn.microsoft.com/library/mt203884.aspx)
-* [sys.databases _materialized_view_column_distribution_properties](/sql/relational-databases/system-catalog-views/sys-pdw-materialized-view-column-distribution-properties-transact-sql?view=azure-sqldw-latest)效果
-* [sys.databases _materialized_view_distribution_properties](/sql/relational-databases/system-catalog-views/sys-pdw-materialized-view-distribution-properties-transact-sql?view=azure-sqldw-latest)效果
-* [sys.databases _materialized_view_mappings](/sql/relational-databases/system-catalog-views/sys-pdw-materialized-view-mappings-transact-sql?view=azure-sqldw-latest)效果
+* [sys.pdw_materialized_view_column_distribution_properties](/sql/relational-databases/system-catalog-views/sys-pdw-materialized-view-column-distribution-properties-transact-sql?view=azure-sqldw-latest)（预览版）
+* [sys.pdw_materialized_view_distribution_properties](/sql/relational-databases/system-catalog-views/sys-pdw-materialized-view-distribution-properties-transact-sql?view=azure-sqldw-latest)（预览版）
+* [sys.pdw_materialized_view_mappings](/sql/relational-databases/system-catalog-views/sys-pdw-materialized-view-mappings-transact-sql?view=azure-sqldw-latest)（预览版）
 * [sys.pdw_nodes_column_store_dictionaries](https://msdn.microsoft.com/library/mt203902.aspx)
 * [sys.pdw_nodes_column_store_row_groups](https://msdn.microsoft.com/library/mt203880.aspx)
 * [sys.pdw_nodes_column_store_segments](https://msdn.microsoft.com/library/mt203916.aspx)
@@ -90,7 +91,7 @@ ms.locfileid: "69543627"
 * [sys.database_files](https://msdn.microsoft.com/library/ms174397.aspx)
 * [sys.database_permissions](https://msdn.microsoft.com/library/ms188367.aspx)
 * [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx)
-* [sys. database_query_store_options](/sql/relational-databases/system-catalog-views/sys-database-query-store-options-transact-sql?view=azure-sqldw-latest)
+* [sys.database_query_store_options](/sql/relational-databases/system-catalog-views/sys-database-query-store-options-transact-sql?view=azure-sqldw-latest)
 * [sys.database_role_members](https://msdn.microsoft.com/library/ms189780.aspx)
 * [sys.databases](https://msdn.microsoft.com/library/ms178534.aspx)
 * [sys.default_constraints](https://msdn.microsoft.com/library/ms173758.aspx)
@@ -113,12 +114,12 @@ ms.locfileid: "69543627"
 * [sys.partition_schemes](https://msdn.microsoft.com/library/ms189752.aspx)
 * [sys.partitions](https://msdn.microsoft.com/library/ms175012.aspx)
 * [sys.procedures](https://msdn.microsoft.com/library/ms188737.aspx)
-* [sys. query_context_settings](/sql/relational-databases/system-catalog-views/sys-query-context-settings-transact-sql?view=azure-sqldw-latest)
-* [sys. query_store_plan](/sql/relational-databases/system-catalog-views/sys-query-store-plan-transact-sql?view=azure-sqldw-latest)
-* [sys. query_store_query](/sql/relational-databases/system-catalog-views/sys-query-store-query-transact-sql?view=azure-sqldw-latest)
-* [sys. query_store_query_text](/sql/relational-databases/system-catalog-views/sys-query-store-query-text-transact-sql?view=azure-sqldw-latest)
-* [sys. query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql?view=azure-sqldw-latest)
-* [sys. query_store_runtime_stats_interval](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-interval-transact-sql?view=azure-sqldw-latest)
+* [sys.query_context_settings](/sql/relational-databases/system-catalog-views/sys-query-context-settings-transact-sql?view=azure-sqldw-latest)
+* [sys.query_store_plan](/sql/relational-databases/system-catalog-views/sys-query-store-plan-transact-sql?view=azure-sqldw-latest)
+* [sys.query_store_query](/sql/relational-databases/system-catalog-views/sys-query-store-query-transact-sql?view=azure-sqldw-latest)
+* [sys.query_store_query_text](/sql/relational-databases/system-catalog-views/sys-query-store-query-text-transact-sql?view=azure-sqldw-latest)
+* [sys.query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql?view=azure-sqldw-latest)
+* [sys.query_store_runtime_stats_interval](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-interval-transact-sql?view=azure-sqldw-latest)
 * [sys.schemas](https://msdn.microsoft.com/library/ms176011.aspx)
 * [sys.securable_classes](https://msdn.microsoft.com/library/ms408301.aspx)
 * [sys.sql_expression_dependencies](https://msdn.microsoft.com/library/bb677315.aspx)

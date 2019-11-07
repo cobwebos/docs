@@ -1,5 +1,5 @@
 ---
-title: 监视和提高性能 - Azure SQL 数据库 | Microsoft Docs
+title: 监视和提高性能-Azure SQL 数据库
 description: Azure SQL 数据库提供的性能工具有助于发现可以提高当前查询性能的方面。
 ms.service: sql-database
 ms.subservice: performance
@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 39a100c487588fb717c642036c7713150a95e047
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 483cd9f185cfa626d21fe0a5b86ba782ebb2f612
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567084"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687665"
 ---
 # <a name="monitor-and-improve-performance"></a>监视和提高性能
 
@@ -29,7 +29,7 @@ Azure SQL 数据库确定数据库中的潜在问题，并通过提供智能优�
 
 
 1. [性能概述](#performance-overview)，用于监视数据库的性能。 
-2. [性能建议](#performance-recommendations)，用于查找可以改进工作负荷性能的性能建议。
+2. [性能建议](#performance-recommendations)：查找可提高工作负荷性能的性能建议。
 3. [查询性能见解](#query-performance-insight)，用于查找资源消耗排名靠前的查询。
 4. [自动优化](#automatic-tuning)，可让 Azure SQL 数据库自动优化数据库。
 
@@ -42,7 +42,7 @@ Azure SQL 数据库确定数据库中的潜在问题，并通过提供智能优�
 * “建议”磁贴提供数据库的优化建议明细（如果建议超出 3 条，则将显示前 3 条）。 单击此磁贴可转到 **[性能建议](#performance-recommendations)** 。 
 * “**优化活动**”磁贴提供正在进行的和已完成的数据库优化操作摘要，可快速查看优化活动的历史记录。 单击此磁贴可转到数据库的完整优化历史记录视图。
 * “自动优化”磁贴显示数据库的[自动优化配置](sql-database-automatic-tuning-enable.md)（自动应用于数据库的优化选项）。 单击此磁贴可打开自动化配置对话框。
-* “数据库查询”磁贴显示数据库的查询性能摘要（DTU 整体使用情况和排名靠前的资源消耗查询）。 单击此磁贴可转到 **[查询性能见解](#query-performance-insight)** 。
+* “**数据库查询**”磁贴显示数据库的查询性能摘要（DTU 整体使用情况和排名靠前的资源消耗查询）。 单击此磁贴可转到 **[查询性能见解](#query-performance-insight)** 。
 
 ## <a name="performance-recommendations"></a>性能建议
 
@@ -60,7 +60,7 @@ Azure SQL 数据库确定数据库中的潜在问题，并通过提供智能优�
 
 ## <a name="automatic-tuning"></a>自动优化
 
-Azure SQL 数据库可以通过应用[性能建议](sql-database-advisor.md)自动优化数据库性能。 若要了解详细信息，请阅读[自动优化文章](sql-database-automatic-tuning.md)。 若要启用它，请阅读[如何启用自动优化](sql-database-automatic-tuning-enable.md)。
+Azure SQL 数据库可以通过应用[性能建议](sql-database-advisor.md)自动优化数据库性能。 若要了解详细信息，请阅读[自动优化文章](sql-database-automatic-tuning.md)。 若要启用此功能，请阅读[如何启用自动优化](sql-database-automatic-tuning-enable.md)。
 
 ## <a name="query-performance-insight"></a>Query Performance Insight
 

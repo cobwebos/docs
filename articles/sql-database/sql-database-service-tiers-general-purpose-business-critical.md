@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库 - 常规用途和业务关键 | Microsoft Docs
+title: 'Azure SQL 数据库-常规用途和业务关键 '
 description: 本文讨论基于 vCore 的购买模型中的“常规用途”和“业务关键”服务层级。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 10/01/2019
-ms.openlocfilehash: a971b428da72028bcabd874e848d53bc2392a0f6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c6af083c4b3d16fa695da0ccc968c90b5480b6c4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496109"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687264"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL 数据库服务层级
 
@@ -35,7 +35,7 @@ Azure SQL 数据库基于 SQL Server 数据库引擎体系结构，该体系结�
 | | 资源类型 | 常规用途 |  超大规模 | 业务关键 |
 |:---:|:---:|:---:|:---:|:---:|
 | **最适用于** | |  提供以预算导向的、均衡的计算和存储选项。 | 大多数业务工作负荷。 自动缩放存储大小，最高可达 100 TB、流体垂直和水平计算缩放、快速数据库还原。 | 事务速率较高和 IO 延迟较低的 OLTP 应用程序。 使用多个同步更新的副本提供最高的故障恢复能力和快速故障转移。|
-|  **在以下资源类型中可用：** ||单一数据库/弹性池/托管实例 | 单个数据库 | 单一数据库/弹性池/托管实例 |
+|  **在以下资源类型中可用：** ||单一数据库/弹性池/托管实例 | 单一数据库 | 单一数据库/弹性池/托管实例 |
 | **计算大小**|单一数据库/弹性池 | 1 - 80 个 vCore | 1 - 80 个 vCore | 1 - 80 个 vCore |
 | | 托管实例 | 4、8、16、24、32、40、64、80 个 vCore | 不适用 | 4、8、16、24、32、40、64、80 个 vCore |
 | | 托管实例池 | 2，4，8，16，24，32，40，64，80 Vcore | 不适用 | 不适用 |
@@ -46,13 +46,13 @@ Azure SQL 数据库基于 SQL Server 数据库引擎体系结构，该体系结�
 | | 托管实例  | 32 GB – 8 TB | 不适用 | 32 GB – 4 TB |
 | **TempDB 大小** | 单一数据库/弹性池 | [每个 vCore 32 GB](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4) | [每个 vCore 32 GB](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5) | [每个 vCore 32 GB](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) |
 | | 托管实例  | [每个 vCore 24 GB](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | 不适用 | 最大 4 TB - [受存储大小限制](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
-| **日志写入吞吐量** | 单个数据库 | [每个 vCore 1.875 MB/秒（最大 30 MB/秒）](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4) | 100 MB/秒 | [每个 vCore 6 MB/秒（最大 96 MB/秒）](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) |
+| **日志写入吞吐量** | 单一数据库 | [每个 vCore 1.875 MB/秒（最大 30 MB/秒）](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4) | 100 MB/秒 | [每个 vCore 6 MB/秒（最大 96 MB/秒）](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) |
 | | 托管实例 | [每个 vCore 3 MB/秒（最大 22 MB/秒）](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | 不适用 | [每个 vCore 4 MB/秒（最大 48 MB/秒）](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
 |**可用性**|All| 99.99% |  [99.95%（具有一个次要副本），99.99%（具有更多副本）](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [99.995%（具有区域冗余单一数据库）](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
 |**备份**|All|RA-GRS，7-35 天（默认为 7 天）| RA-GRS，7 天，恒定的时间时点恢复 (PITR) | RA-GRS，7-35 天（默认为 7 天） |
 |**内存中 OLTP** | | 不适用 | 不适用 | 可用 |
 |**只读副本**| | 0  | 0 - 4 | 1（内置，包含在价格中） |
-|**定价/计费** | 单个数据库 | [vCore、保留存储和备份存储](https://azure.microsoft.com/pricing/details/sql-database/single/)收费。 <br/>IOPS 不收取费用。 | [每个副本的 vCore 和已用存储](https://azure.microsoft.com/pricing/details/sql-database/single/)收费。 <br/>尚未收费的 IOPS。 | [vCore、保留存储和备份存储](https://azure.microsoft.com/pricing/details/sql-database/single/)收费。 <br/>IOPS 不收取费用。 |
+|**定价/计费** | 单一数据库 | [vCore、保留存储和备份存储](https://azure.microsoft.com/pricing/details/sql-database/single/)收费。 <br/>IOPS 不收取费用。 | [每个副本的 vCore 和已用存储](https://azure.microsoft.com/pricing/details/sql-database/single/)收费。 <br/>尚未收费的 IOPS。 | [vCore、保留存储和备份存储](https://azure.microsoft.com/pricing/details/sql-database/single/)收费。 <br/>IOPS 不收取费用。 |
 || 托管实例 | [vCore 和保留存储](https://azure.microsoft.com/pricing/details/sql-database/managed/)收费。 <br/>IOPS 不收取费用。<br/>备份存储尚不收费。 | 不适用 | [vCore 和保留存储](https://azure.microsoft.com/pricing/details/sql-database/managed/)收费。 <br/>IOPS 不收取费用。<br/>备份存储尚不收费。 | 
 |**折扣模型**| | [预订实例](sql-database-reserved-capacity.md)<br/>[Azure 混合权益](sql-database-azure-hybrid-benefit.md)（不适用于开发/测试订阅）<br/>[企业](https://azure.microsoft.com/offers/ms-azr-0148p/)和即[用即付](https://azure.microsoft.com/offers/ms-azr-0023p/)开发/测试订阅| [Azure 混合权益](sql-database-azure-hybrid-benefit.md)（不适用于开发/测试订阅）<br/>[企业](https://azure.microsoft.com/offers/ms-azr-0148p/)和即[用即付](https://azure.microsoft.com/offers/ms-azr-0023p/)开发/测试订阅| [预订实例](sql-database-reserved-capacity.md)<br/>[Azure 混合权益](sql-database-azure-hybrid-benefit.md)（不适用于开发/测试订阅）<br/>[企业](https://azure.microsoft.com/offers/ms-azr-0148p/)和即[用即付](https://azure.microsoft.com/offers/ms-azr-0023p/)开发/测试订阅|
 

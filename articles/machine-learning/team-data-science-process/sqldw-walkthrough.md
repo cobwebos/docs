@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc70e2e6475620bfb8842fc740772e326f8ee8d0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 76afafb59de762776b7d2614e383320b7d8f79e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480335"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669407"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>团队数据科学过程实务：使用 SQL 数据仓库
 在本教程中，我们指导为某个公开提供的数据集（[NYC 出租车车程](https://www.andresmh.com/nyctaxitrips/)数据集）完成以下过程：使用 SQL 数据仓库 (SQL DW) 构建和部署机器学习模型。 构建的二元分类模型可预测是否为某段旅程支付了小费；而且还会讨论用于多类分类和回归的模型，这些模型可预测支付的小费金额的分布。
@@ -851,7 +851,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 >
 
 ## <a name="mldeploy"></a>在 Azure 机器学习中部署模型
-模型已就绪时，即可轻松地从实验直接将其部署为 Web 服务。 有关部署 Azure ML Web 服务的详细信息，请参阅[部署 Azure 机器学习 Web 服务](../studio/publish-a-machine-learning-web-service.md)。
+模型已就绪时，即可轻松地从实验直接将其部署为 Web 服务。 有关部署 Azure ML Web 服务的详细信息，请参阅[部署 Azure 机器学习 Web 服务](../studio/deploy-a-machine-learning-web-service.md)。
 
 要部署新 Web 服务，需要：
 

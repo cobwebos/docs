@@ -1,5 +1,5 @@
 ---
-title: 将 Azure 流分析与 SQL 数据仓库配合使用 | Microsoft 文档
+title: 使用 Azure 流分析
 description: 有关在开发解决方案时将 Azure 流分析与 Azure SQL 数据仓库配合使用的技巧。
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,20 +10,21 @@ ms.subservice: integration
 ms.date: 03/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 94646c41d9894dd00018ff5ca44d76534d35e8c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 63803f3ac477e48d8d1c14a72e2ee9b9d4860047
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873267"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685723"
 ---
 # <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>将 Azure 流分析与 SQL 数据仓库配合使用
-Azure 流分析是一种完全托管的服务，可以在云中通过流式数据进行低延迟、高度可用、可缩放且复杂的事件处理。 可以阅读 [Azure 流分析简介][Introduction to Azure Stream Analytics]了解基本知识。 然后，可以按照 [Azure 流分析入门][Get started using Azure Stream Analytics]教程，了解如何使用流分析创建端到端解决方案。
+Azure 流分析是一种完全托管的服务，可以在云中通过流式数据进行低延迟、高度可用、可缩放且复杂的事件处理。 可以通过阅读[Azure 流分析简介][Introduction to Azure Stream Analytics]了解基本知识。 然后，你可以使用[Azure 流分析入门][Get started using Azure Stream Analytics]教程，了解如何使用流分析创建端到端解决方案。
 
 在本文中，学习如何使用 Azure SQL 数据仓库数据库作为流分析作业的输出接收器。
 
-## <a name="prerequisites"></a>必备组件
-首先，完整执行 [Azure 流分析入门][Get started using Azure Stream Analytics]教程中所述的以下步骤。  
+## <a name="prerequisites"></a>先决条件
+首先，请在[开始使用 Azure 流分析][Get started using Azure Stream Analytics]教程中完成以下步骤。  
 
 1. 创建事件中心输入
 2. 配置并启动事件生成器应用程序
@@ -34,7 +35,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 ## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>指定作业输出：Azure SQL 数据仓库数据库
 ### <a name="step-1"></a>步骤 1
-在流分析作业中，单击页面顶部的“输出”  ，然后单击“添加”  。
+在流分析作业中，单击页面顶部的“输出”，然后单击“添加”。
 
 ### <a name="step-2"></a>步骤 2
 选择 SQL 数据库。
@@ -53,7 +54,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 * *用户名*：指定具有数据库写入访问权限的帐户的用户名。
 * *密码*：提供指定的用户帐户的密码。
-* *Table*：指定数据库中目标表的名称。
+* *表*：指定数据库中目标表的名称。
 
 ![][add-database]
 

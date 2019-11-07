@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: c3791946ee31183e4b3c5131a8e62934bf87dfee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 75e789ac1f9c161bc67ba90062be39f986f5b140
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497475"
+ms.locfileid: "73580584"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标？ 
 
@@ -46,22 +46,11 @@ Azure 机器学习在不同的计算资源中具有不同的支持。  你还可
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure 机器学习计算（托管）
 
-托管计算资源由 Azure 机器学习创建和管理。 此计算针对机器学习工作负荷进行了优化。 Azure 机器学习计算群集和[计算实例](concept-compute-instance.md)是唯一托管的计算。 将来可能会添加其他托管的计算资源。
+托管计算资源由 Azure 机器学习创建和管理。 此计算针对机器学习工作负荷进行了优化。 Azure 机器学习计算群集。 将来可能会添加其他托管的计算资源。
 
-您可以在中创建 Azure 机器学习计算实例或计算群集：
-
-| | Azure 机器学习工作室 | Azure 门户 | SDK 中 IsInRole 中的声明 | 资源管理器模板 | CLI |
-|---| ----- | ----- | ----- | ----- | ----- |
-| 计算实例 | 是 | 是 | 是 | 是 |  |
-| 计算群集 | 是 | 是 | 是 | 是 | 是 |
+可以在 Azure 机器学习 studio、Azure 门户、SDK、资源管理器模板或 CLI 中创建 Azure 机器学习的计算群集。
 
 创建这些计算资源时，会自动将工作区的一部分与其他类型的计算目标相同。
-
-> [!NOTE]
-> 计算实例仅适用于区域为**美国中北部**或**英国南部**的工作区。
->如果你的工作区在任何其他区域，你可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm) 。 
-
-### <a name="compute-clusters"></a>计算群集
 
 你可以使用 Azure 机器学习计算群集进行培训和批处理推断（预览版）。  使用此计算资源，你可以：
 

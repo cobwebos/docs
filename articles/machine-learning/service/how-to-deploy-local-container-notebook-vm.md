@@ -1,7 +1,7 @@
 ---
-title: 如何将模型部署到计算实例
+title: 如何将模型部署到笔记本 Vm
 titleSuffix: Azure Machine Learning
-description: 了解如何使用计算实例将 Azure 机器学习模型部署为 web 服务。
+description: 了解如何使用笔记本 Vm 将 Azure 机器学习模型部署为 web 服务。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,38 +10,34 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: bb187826250b3edc9ac3d9e36a243d75819a45b3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: d4e37b02b3d7a21546a04c8948fbbfb7262bfa6a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496880"
+ms.locfileid: "73584769"
 ---
-# <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>将模型部署到 Azure 机器学习计算实例
+# <a name="deploy-a-model-to-azure-machine-learning-notebook-vms"></a>将模型部署到 Azure 机器学习笔记本 Vm
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-> [!NOTE]
-> 计算实例仅适用于区域为**美国中北部**或**英国南部**的工作区。
->如果你的工作区在任何其他区域，你可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm) 。  可以使用本文中的步骤，将模型部署到计算实例或笔记本 VM。
-
-了解如何使用 Azure 机器学习将模型作为 web 服务部署到 Azure 机器学习计算实例上。 如果满足以下条件之一，请使用计算实例：
+了解如何使用 Azure 机器学习在 Azure 机器学习笔记本 VM 上将模型部署为 web 服务。 如果满足以下条件之一，则使用笔记本 Vm：
 
 - 你需要快速部署并验证你的模型。
 - 正在测试一个开发中的模型。
 
 > [!TIP]
-> 将模型从计算实例的 Jupyter Notebook 部署到同一 VM 上的 web 服务是_本地部署_。 在这种情况下，"本地" 计算机是计算实例。 有关部署的详细信息，请参阅[部署具有 Azure 机器学习的模型](how-to-deploy-and-where.md)。
+> 将模型从笔记本 VM 上的 Jupyter Notebook 部署到同一 VM 上的 web 服务是_本地部署_。 在这种情况下，"本地" 计算机是笔记本 VM。 有关部署的详细信息，请参阅[部署具有 Azure 机器学习的模型](how-to-deploy-and-where.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- 计算实例正在运行的 Azure 机器学习工作区。 有关详细信息，请参阅[设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
+- 一个运行了笔记本 VM 的 Azure 机器学习工作区。 有关详细信息，请参阅[设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
 
-## <a name="deploy-to-the-compute-instances"></a>部署到计算实例
+## <a name="deploy-to-the-notebook-vms"></a>部署到笔记本 Vm
 
-用于演示本地部署的示例笔记本包含在计算实例上。 使用以下步骤加载笔记本，并将模型部署为 VM 上的 web 服务：
+笔记本 VM 上包含了演示本地部署的示例笔记本。 使用以下步骤加载笔记本，并将模型部署为 VM 上的 web 服务：
 
-1. 在[Azure 机器学习 studio](https://ml.azure.com)中，选择你的 Azure 机器学习计算实例。
+1. 在[Azure 机器学习 studio](https://ml.azure.com)中，选择 Azure 机器学习笔记本 vm。
 
 1. 打开 `samples-*` 的子目录，然后打开 `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`。 打开后，运行笔记本。
 
@@ -51,13 +47,7 @@ ms.locfileid: "73496880"
 
     ![正在运行的本地服务端口的屏幕截图](media/how-to-deploy-local-container-notebookvm/deploy-local-service-port.png)
 
-1. 若要从计算实例测试服务，请使用 `https://localhost:<local_service.port>` URL。 若要从远程客户端测试，请获取在计算实例上运行的服务的公共 URL。 可以使用以下公式来确定公共 URL; 
-    * 笔记本 VM： `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score`。 
-    * 计算实例： `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score`。 
-    
-    例如， 
-    * 笔记本 VM： `https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
-    * 计算实例： `https://vm-name-6789.northcentralus.instances.azureml.net/score`
+1. 若要从笔记本 VM 测试服务，请使用 `https://localhost:<local_service.port>` URL。 若要从远程客户端测试，请获取笔记本 VM 上运行的服务的公共 URL。 可以使用以下公式来确定公共 URL;`https://<notebookvm_name>-<local_service_port>.<azure_region_of_notebook>.notebooks.azureml.net/score`。 例如，`https://mynotebookvm-6789.eastus2.notebooks.azureml.net/score`。
 
 ## <a name="test-the-service"></a>测试服务
 

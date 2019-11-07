@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: f0fc1e143ce7d271d5faaa8dda0eb40cdfc9e006
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: fd3396a98359aef966cd8bb2f984e556fc6abcc7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332744"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584792"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>在 Azure 实验室服务中创建和管理课堂模板
 实验室中的模板是基础虚拟机映像，用户的所有虚拟机均依据其创建。 设置模板虚拟机，为其准确配置需要提供给实验室用户的内容。 你可以提供实验室用户看到的模板的名称和描述。 然后发布此模板，让模板 VM 的实例可供实验室用户使用。 发布模板时，Azure 实验室服务会使用该模板在实验室中创建 VM。 在此过程中创建的 VM 数等于允许进入实验室的最大用户数，这可以在实验室的使用策略中设置。 所有虚拟机的配置都与模板相同。
@@ -40,12 +40,10 @@ ms.locfileid: "72332744"
 使用以下步骤更新模板 VM。  
 
 1. 在 "**模板**" 页上，选择工具栏上的 "**自定义模板**"。 
-
-    ![自定义模板按钮](../media/how-to-create-manage-template/customize-template-button.png)
 2. 在 "**自定义模板**" 对话框中，选择 "**继续**"。 一旦你启动了模板并进行了更改，它将不再与上次发布到用户的虚拟机具有相同的设置。 在再次发布后，模板更改将不会反映在用户的现有虚拟机上。
 
     !["自定义" 对话框](../media/how-to-create-manage-template/customize-template-dialog.png)
-1. 在工具栏上选择 "**连接到模板**" 按钮连接到模板 VM，并按照说明进行操作。 如果是 Windows 计算机，你将看到一个用于下载 RDP 文件的选项。 
+1. 等待模板 VM 开始，然后选择工具栏上的 "**连接到模板**" 以连接到模板 vm，并按照说明进行操作。 如果是 Windows 计算机，你将看到一个用于下载 RDP 文件的选项。 
 
     ![连接到模板 VM](../media/how-to-create-manage-template/connect-template-vm.png)
 1. 安装学生进行实验室操作所需的任何软件（例如，Visual Studio、Azure 存储资源管理器，等等）。 

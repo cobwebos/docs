@@ -7,20 +7,23 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5cb5ce82dcd5a1c22dd05c7bd6cc9485f413752e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d3b3ee1fabf59ae3b87185c4c9eb2f85aa8acd91
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933777"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614924"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Durable Functions 中的自定义业务流程状态 (Azure Functions)
 
 使用自定义业务流程状态，可以为业务流程协调程序函数设置自定义状态值。 此状态是通过 HTTP GetStatus API 或 `DurableOrchestrationClient.GetStatusAsync` API 提供的。
 
 ## <a name="sample-use-cases"></a>示例用例
+
+> [!NOTE]
+> 下面的示例演示如何使用中的C#自定义状态功能和 JavaScript。 C#示例是针对 Durable Functions 2.x 编写的，与 Durable Functions 1.x 不兼容。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
 
 ### <a name="visualize-progress"></a>显示进度
 
@@ -31,29 +34,29 @@ ms.locfileid: "70933777"
 ```csharp
 [FunctionName("E1_HelloSequence")]
 public static async Task<List<string>> Run(
-  [OrchestrationTrigger] DurableOrchestrationContextBase context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
-  var outputs = new List<string>();
+    var outputs = new List<string>();
 
-  outputs.Add(await context.CallActivityAsync<string>("E1_SayHello", "Tokyo"));
-  context.SetCustomStatus("Tokyo");
-  outputs.Add(await context.CallActivityAsync<string>("E1_SayHello", "Seattle"));
-  context.SetCustomStatus("Seattle");
-  outputs.Add(await context.CallActivityAsync<string>("E1_SayHello", "London"));
-  context.SetCustomStatus("London");
+    outputs.Add(await context.CallActivityAsync<string>("E1_SayHello", "Tokyo"));
+    context.SetCustomStatus("Tokyo");
+    outputs.Add(await context.CallActivityAsync<string>("E1_SayHello", "Seattle"));
+    context.SetCustomStatus("Seattle");
+    outputs.Add(await context.CallActivityAsync<string>("E1_SayHello", "London"));
+    context.SetCustomStatus("London");
 
-  // returns ["Hello Tokyo!", "Hello Seattle!", "Hello London!"]
-  return outputs;
+    // returns ["Hello Tokyo!", "Hello Seattle!", "Hello London!"]
+    return outputs;
 }
 
 [FunctionName("E1_SayHello")]
 public static string SayHello([ActivityTrigger] string name)
 {
-  return $"Hello {name}!";
+    return $"Hello {name}!";
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+#### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
 
 ```javascript
 const df = require("durable-functions");
@@ -86,10 +89,10 @@ module.exports = async function(context, name) {
 ```csharp
 [FunctionName("HttpStart")]
 public static async Task<HttpResponseMessage> Run(
-  [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}")] HttpRequestMessage req,
-  [OrchestrationClient] DurableOrchestrationClientBase starter,
-  string functionName,
-  ILogger log)
+    [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}")] HttpRequestMessage req,
+    [DurableClient] IDurableOrchestrationClient starter,
+    string functionName,
+    ILogger log)
 {
     // Function input comes from the request content.
     dynamic eventData = await req.Content.ReadAsAsync<object>();
@@ -100,13 +103,13 @@ public static async Task<HttpResponseMessage> Run(
     DurableOrchestrationStatus durableOrchestrationStatus = await starter.GetStatusAsync(instanceId);
     while (durableOrchestrationStatus.CustomStatus.ToString() != "London")
     {
-      await Task.Delay(200);
-      durableOrchestrationStatus = await starter.GetStatusAsync(instanceId);
+        await Task.Delay(200);
+        durableOrchestrationStatus = await starter.GetStatusAsync(instanceId);
     }
 
     HttpResponseMessage httpResponseMessage = new HttpResponseMessage(HttpStatusCode.OK)
     {
-      Content = new StringContent(JsonConvert.SerializeObject(durableOrchestrationStatus))
+        Content = new StringContent(JsonConvert.SerializeObject(durableOrchestrationStatus))
     };
 
     return httpResponseMessage;
@@ -114,7 +117,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+#### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
 
 ```javascript
 const df = require("durable-functions");
@@ -144,10 +147,7 @@ module.exports = async function(context, req) {
 ```
 
 > [!NOTE]
-> 在 JavaScript 中，在计划下一个 `yield` 或 `return` 操作时设置 `customStatus` 字段。
-
-> [!WARNING]
-> 在 JavaScript 中进行本地开发时，需将环境变量 `WEBSITE_HOSTNAME` 设置为 `localhost:<port>`（例如， 设置为 `localhost:7071`），以便使用 `DurableOrchestrationClient` 上的方法。 有关此要求的详细信息，请参阅 [GitHub 问题](https://github.com/Azure/azure-functions-durable-js/issues/28)。
+> 在 JavaScript 中，在计划下一个 `customStatus` 或 `yield` 操作时设置 `return` 字段。
 
 ### <a name="output-customization"></a>输出自定义
 
@@ -158,7 +158,7 @@ module.exports = async function(context, req) {
 ```csharp
 [FunctionName("CityRecommender")]
 public static void Run(
-  [OrchestrationTrigger] DurableOrchestrationContextBase context)
+  [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
   int userChoice = context.GetInput<int>();
 
@@ -191,7 +191,7 @@ public static void Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+#### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
 
 ```javascript
 const df = require("durable-functions");
@@ -233,7 +233,7 @@ module.exports = df.orchestrator(function*(context) {
 ```csharp
 [FunctionName("ReserveTicket")]
 public static async Task<bool> Run(
-  [OrchestrationTrigger] DurableOrchestrationContextBase context)
+  [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
   string userId = context.GetInput<string>();
 
@@ -256,7 +256,7 @@ public static async Task<bool> Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+#### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
 
 ```javascript
 const df = require("durable-functions");
@@ -290,7 +290,7 @@ module.exports = df.orchestrator(function*(context) {
 ### <a name="c"></a>C#
 
 ```csharp
-public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext context)
+public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     // ...do work...
 
@@ -302,7 +302,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrati
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
 
 ```javascript
 const df = require("durable-functions");
@@ -321,25 +321,24 @@ module.exports = df.orchestrator(function*(context) {
 在业务流程正在运行时，外部客户端可以提取此自定义状态：
 
 ```http
-GET /admin/extensions/DurableTaskExtension/instances/instance123
-
+GET /runtime/webhooks/durabletask/instances/instance123
 ```
 
 客户端将收到以下响应：
 
-```http
+```json
 {
   "runtimeStatus": "Running",
   "input": null,
   "customStatus": { "nextActions": ["A", "B", "C"], "foo": 2 },
   "output": null,
-  "createdTime": "2017-10-06T18:30:24Z",
-  "lastUpdatedTime": "2017-10-06T19:40:30Z"
+  "createdTime": "2019-10-06T18:30:24Z",
+  "lastUpdatedTime": "2019-10-06T19:40:30Z"
 }
 ```
 
 > [!WARNING]
-> 自定义状态有效负载限制为 16 KB 的 UTF-16 JSON 文本，因为它需要能够容纳在 Azure 表存储列中。 如果需要更大的有效负载，开发人员可以使用外部存储。
+> 自定义状态有效负载限制为 16 KB 的 UTF-16 JSON 文本，因为它需要能够容纳在 Azure 表存储列中。 如果需要更大的负载，建议使用外部存储。
 
 ## <a name="next-steps"></a>后续步骤
 

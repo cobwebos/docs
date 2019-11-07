@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure .NET SDK 创建数据管道 | Microsoft Docs
+title: 使用 Azure .NET SDK 创建数据管道
 description: 了解如何使用数据工厂 SDK 以编程方式创建、监视和管理 Azure 数据工厂。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 11120a84f2796061d76d8d813ba906da073b57c6
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: cabeb6314c16aa5bc37f1139954f8829a37af5bb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140219"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682760"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure 数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
 > [!NOTE]
@@ -38,7 +38,7 @@ ms.locfileid: "70140219"
 * Azure PowerShell。 遵循 [How to install and configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装 Azure PowerShell。 使用 Azure PowerShell 创建 Azure Active Directory 应用程序。
 
 ### <a name="create-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建应用程序
-创建一个 Azure Active Directory 应用程序，为该应用程序创建服务主体，然后将其分配到 **数据工厂参与者** 角色。
+创建一个 Azure Active Directory 应用程序，为该应用程序创建服务主体，并将其分配到 **数据工厂参与者** 角色。
 
 1. 启动 **PowerShell**。
 2. 运行以下命令并输入用于登录 Azure 门户的用户名和密码。
@@ -107,7 +107,7 @@ ms.locfileid: "70140219"
 ## <a name="walkthrough"></a>演练
 在本演练中，将使用包含复制活动的管道创建数据工厂。 复制活动将数据从 Azure blob 存储中的一个文件夹复制到同一 blob 存储中的另一个文件夹。 
 
-复制活动在 Azure 数据工厂中执行数据移动。 该活动由全球可用的服务提供支持，能以安全、可靠、可缩放的方式在各种数据存储区间复制数据。 有关复制活动的详细信息，请参阅 [Data Movement Activities](data-factory-data-movement-activities.md) （数据移动活动）。
+复制活动在 Azure 数据工厂中执行数据移动。 该活动由全球可用的服务提供支持，能以安全、可靠、可缩放的方式在各种数据存储区间复制数据。 有关复制活动的详细信息，请参阅 [数据移动活动](data-factory-data-movement-activities.md) 。
 
 1. 使用 Visual Studio 2012/2013/2015 创建 C# .NET 控制台应用程序。
    1. 启动 **Visual Studio** 2012/2013/2015。
@@ -116,7 +116,7 @@ ms.locfileid: "70140219"
    4. 从右侧项目类型列表中选择“控制台应用程序”。
    5. 在“名称”中输入 **DataFactoryAPITestApp** 。
    6. 在“位置”中选择“C:\ADFGetStarted”。
-   7. 单击**确定**以创建项目。
+   7. 单击“确定”以创建该项目 。
 2. 单击“工具”，指向“NuGet 包管理器”，并单击“包管理器控制台”。
 3. 在“包管理器控制台”中执行以下步骤：
    1. 运行以下命令安装数据工厂包：`Install-Package Microsoft.Azure.Management.DataFactories`
@@ -221,7 +221,7 @@ ms.locfileid: "70140219"
     ```
 9. 将以下用于创建**输入和输出数据集**的代码添加到 **Main** 方法。
 
-    输入 blob 的 **FolderPath** 设置为 **adftutorial/** ，其中 **adftutorial** 是 Blob 存储中的容器名称。 如果 Azure Blob 存储中不包含此容器，请创建名为 **adftutorial** 的容器，并将文本文件上传到该容器。
+    输入 blob 的 **FolderPath** 设置为 **adftutorial/** ，其中 **adftutorial** 是 Blob 存储中的容器名称。 如果 Azure Blob 存储中不包含此容器，请创建名为 **adftutorial** 的容器，然后将文本文件上传到该容器。
 
     输出 blob 的 FolderPath 设置为 **adftutorial/apifactoryoutput/{Slice}** ，在此位置基于 **SliceStart** 的值（每个切片的开始日期时间）动态评估**切片**。
 
@@ -301,7 +301,7 @@ ms.locfileid: "70140219"
     ```
 10. 将以下用于**创建和激活管道**的代码添加到 **Main** 方法。 此管道包含一个源为 **BlobSource**、接收器为 **BlobSink** 的 **CopyActivity**。
 
-    复制活动在 Azure 数据工厂中执行数据移动。 该活动由全球可用的服务提供支持，能以安全、可靠、可缩放的方式在各种数据存储区间复制数据。 有关复制活动的详细信息，请参阅 [Data Movement Activities](data-factory-data-movement-activities.md) （数据移动活动）。
+    复制活动在 Azure 数据工厂中执行数据移动。 该活动由全球可用的服务提供支持，能以安全、可靠、可缩放的方式在各种数据存储区间复制数据。 有关复制活动的详细信息，请参阅 [数据移动活动](data-factory-data-movement-activities.md) 。
 
     ```csharp
     // create a pipeline
@@ -446,7 +446,7 @@ ms.locfileid: "70140219"
     }
     ```
 
-15. 在“解决方案资源管理器”中，展开项目：**DataFactoryAPITestApp**，右键单击“引用”，然后单击“添加引用”。 选择 `System.Configuration` 程序集的复选框，并单击“确定”。
+15. 在“解决方案资源管理器”中展开项目 **DataFactoryAPITestApp**，右键单击“引用”，并单击“添加引用”。 选择 `System.Configuration` 程序集的复选框，并单击“确定”。
 15. 生成控制台应用程序。 在菜单中单击“生成”，并单击“生成解决方案”。
 16. 确认 Azure Blob 存储中的 adftutorial 容器内至少有一个文件。 如果没有，请在记事本中创建包含以下内容的 Emp.txt 文件，并将其上传到 adftutorial 容器。
 
@@ -454,11 +454,11 @@ ms.locfileid: "70140219"
     John, Doe
     Jane, Doe
     ```
-17. 在菜单中单击“调试” -> “开始调试”运行示例。 看到“正在获取数据切片的运行详细信息”时，请等待几分钟，并按 **ENTER**。
+17. 在菜单中单击“调试” **“开始调试”运行示例。**  ->  看到“正在获取数据切片的运行详细信息”时，请等待几分钟，并按 **ENTER**。
 18. 使用 Azure 门户验证是否创建了包含以下项目的数据工厂 **APITutorialFactory** ：
     * 链接服务：**AzureStorageLinkedService**
     * 数据集：**DatasetBlobSource** 和 **DatasetBlobDestination**。
-    * 管道：**PipelineBlobSample**
+    * 管道： **PipelineBlobSample**
 19. 验证 **adftutorial** 容器中的 **apifactoryoutput** 文件夹内是否创建了一个输出文件。
 
 ## <a name="get-a-list-of-failed-data-slices"></a>获取失败的数据切片的列表 

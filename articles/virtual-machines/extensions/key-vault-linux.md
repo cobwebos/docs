@@ -7,12 +7,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 60d5b8197e142306a51922ce0e042ed2463457d6
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 5991d3d2197822b239b946de66f020dd258f835a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301225"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584383"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>适用于 Linux 的虚拟机扩展 Key Vault
 
@@ -29,7 +29,7 @@ Key Vault VM 扩展支持以下 Linux 分发版：
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 Key Vault VM 代理扩展的架构。 该扩展不需要受保护的设置 - 其所有设置都被视为没有安全影响的信息。 该扩展需要受监视的密钥列表、轮询频率和目标证书存储。 尤其是在下列情况下：  
+以下 JSON 显示 Key Vault VM 代理扩展的架构。 该扩展不需要受保护的设置 - 其所有设置都被视为没有安全影响的信息。 该扩展需要受监视的密钥列表、轮询频率和目标证书存储。 具体而言：  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -61,30 +61,30 @@ Key Vault VM 扩展支持以下 Linux 分发版：
 > [!NOTE]
 > 观察到的证书 Url 的格式应为 `https://myVaultName.vault.azure.net/secrets/myCertName`。
 > 
-> 这是因为 `/secrets` 路径返回的是完整证书，包括私钥，而 @no__t 1 路径则不返回。 有关证书的详细信息可在此处找到：[Key Vault 证书](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
+> 这是因为 `/secrets` 路径将返回包含私钥的完整证书，而 `/certificates` 路径不会。 可在此处找到有关证书的详细信息： [Key Vault 证书](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
 
 ### <a name="property-values"></a>属性值
 
-| 名称 | 值/示例 | 数据类型 |
+| Name | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault.Edp | string |
-| type | KeyVaultForLinux | string |
+| apiVersion | 2019-07-01 | 日期 |
+| 发布者 | Microsoft.Azure.KeyVault.Edp | 字符串 |
+| type | KeyVaultForLinux | 字符串 |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | int |
-| certificateStoreName | MY | string |
-| linkOnRenewal | false | boolean |
-| certificateStoreLocation  | LocalMachine | string |
-| requiredInitialSync | true | boolean |
+| pollingIntervalInS | 3600 | 字符串 |
+| certificateStoreName | MY | 字符串 |
+| linkOnRenewal | false | 布尔值 |
+| certificateStoreLocation  | LocalMachine | 字符串 |
+| requiredInitialSync | true | 布尔值 |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 字符串数组
 
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 部署需要部署后刷新证书的一个或多个虚拟机时，模板是理想选择。 此扩展可以部署到单个 Vm 或虚拟机规模集。 架构和配置对于这两种模板类型通用。 
+可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 部署需要部署后刷新证书的一个或多个虚拟机时，模板是理想选择。 此扩展可以部署到单个 Vm 或虚拟机规模集。 架构和配置对于这两种模板类型通用。 
 
-虚拟机扩展的 JSON 配置必须嵌套在模板的虚拟机资源片段中，具体而言，@no__t 为虚拟机模板使用-0 对象，在 @no__t 1 对象下的虚拟机规模集。
+虚拟机扩展的 JSON 配置必须嵌套在模板的虚拟机资源片段中，具体而言，`"resources": []` 虚拟机模板的对象和 `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` 对象下的虚拟机规模集。
 
 ```json
     {
@@ -208,4 +208,4 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

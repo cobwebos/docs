@@ -8,35 +8,57 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b61e194bdea5fd8272ffc0fc9e16a2d80d3cf60
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: d0cdd78aaa2b58743e16a2e7cfe213a9daed85ff
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989706"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605883"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据存储和入口
 
-本文介绍适用于 Azure 时序见解预览的数据存储和入口更新。 其中包括底层存储结构、文件格式和时序 ID 属性。 它还讨论了底层入口过程、吞吐量和限制。
+本文介绍适用于 Azure 时序见解预览的数据存储和入口更新。 其中包括底层存储结构、文件格式和时序 ID 属性。 它还讨论了底层入口流程、最佳做法和当前预览限制。
 
 ## <a name="data-ingress"></a>数据入口
 
-在时序见解预览中，数据入口策略确定数据的来源位置以及数据应采用的格式。
+你的 Azure 时序见解环境包含一个引入引擎，用于收集、处理和存储时序数据。 规划环境时，需要考虑一些注意事项，以确保处理所有传入的数据，并实现高进入规模，并最大限度地减少引入延迟（由 TSI 读取和处理事件中的数据所花费的时间）源）。 在时序见解预览中，数据入口策略确定数据的来源位置以及数据应采用的格式。
 
-[![时序模型概述](media/v2-update-storage-ingress/tsi-data-ingress.png)](media/v2-update-storage-ingress/tsi-data-ingress.png#lightbox)
+### <a name="ingress-policies"></a>流入策略
 
-### <a name="ingress-policies"></a>入口策略
-
-时序见解预览版支持时序见解当前支持的相同事件源：
+时序见解预览版支持以下事件源：
 
 - [Azure IoT 中心](../iot-hub/about-iot-hub.md)
 - [Azure 事件中心](../event-hubs/event-hubs-about.md)
 
 时序见解预览版每个实例最多支持两个事件源。
   
-Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 JSON。 若要优化 IoT JSON 数据，请了解[如何为 json](./time-series-insights-send-events.md#supported-json-shapes)。
+Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 JSON。
+
+> [!WARNING] 
+> 将新的事件源附加到时序见解预览环境时，根据 IoT 中心或事件中心内当前的事件数，可能会遇到较高的初始引入延迟。 当数据引入时，你应预计到下降的延迟很高，但如果你的经验指出，请通过 Azure 门户提交支持票证来联系我们。
+
+## <a name="ingress-best-practices"></a>入口最佳实践
+
+建议使用以下最佳做法：
+
+* 在同一区域中配置时序见解和 IoT 中心或事件中心。 这会减少由于网络导致的引入延迟。
+* 通过计算预计引入率并验证其是否处于下面列出的支持费率中来规划规模需求
+* 通过阅读[如何将 json 用于入口和查询](./time-series-insights-update-how-to-shape-events.md)，了解如何优化和调整 json 数据以及预览版的当前限制。
+
+### <a name="ingress-scale-and-limitations-in-preview"></a>预览中的入口规模和限制
+
+默认情况下，时序见解预览版支持每秒最大为 1 mb/秒（MB/秒）的每个环境的初始入口。 如果需要，最高可达 16 MB/秒的吞吐量，请在 Azure 门户中提交支持票证（如果需要）。 此外，每个分区的限制为 0.5 MB/s。 这对于在 IoT 中心设备与分区之间的关联，特别适用于使用 IoT 中心的客户。 如果一个网关设备使用自己的设备 ID 和连接字符串将消息转发到中心，则给定消息到达单个分区时，可以达到 0.5 MB/s 的限制，即使事件负载指定了不同的 TS 也是如此。标识符. 通常，入口速率被视为你的组织中的设备数、事件发射频率以及事件大小的一个因素。 计算引入速率时，IoT 中心用户应该使用正在使用的集线器连接数，而不是组织中的设备总数。 我们正在增强缩放支持， 此文档将更新以反映这些改进。 
+
+> [!WARNING]
+> 对于使用 IoT 中心作为事件源的环境，请使用正在使用的集线器设备数来计算引入速率。
+
+有关吞吐量单元和分区的详细信息，请参阅以下链接：
+
+* [IoT 中心规模](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
+* [事件中心规模](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
+* [事件中心分区](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
 
 ### <a name="data-storage"></a>数据存储
 
@@ -53,21 +75,13 @@ Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 J
 > 作为冷存储数据所在的 Azure Blob 存储帐户的所有者，你对该帐户中的所有数据具有完全访问权限。 此访问权限包括 "写入" 和 "删除" 权限。 请勿编辑或删除时序见解预览写入的数据，因为这可能会导致数据丢失。
 
 ### <a name="data-availability"></a>数据可用性
+
 时序见解预览分区和索引数据以获得最佳查询性能。 索引数据后，可对其进行查询。 正在引入的数据量可能会影响此可用性。
 
 > [!IMPORTANT]
-> 时序见解的正式发布（GA）版本将使数据在从事件源读取后的60秒内可用。 预览期间，你可能会遇到较长的一段时间，然后数据才会可用。 如果遇到超过60秒的明显延迟，请联系我们。
+> 在从事件源读取数据后的60秒内，将推出时序见解的未来公开上市（GA）版本。 预览期间，你可能会遇到较长的一段时间，然后数据才可用。 如果遇到超过60秒的明显延迟，请通过 Azure 门户提交支持票证。
 
-### <a name="scale"></a>调整规模
-
-默认情况下，时序见解预览版支持每秒最大为 1 mb/秒（MB/秒）的每个环境的初始入口。 如果需要，最高可达 16 MB/秒的吞吐量。 如果需要增强的缩放支持，请联系我们。
-
-可以获取事件源的其他入口和缩放功能：
-
-* [IoT 中心](../iot-hub/iot-hub-scaling.md)
-* [事件中心](../event-hubs/event-hubs-scalability.md)
-
-## <a name="azure-storage"></a>Azure 存储器
+## <a name="azure-storage"></a>Azure 存储
 
 本部分介绍 azure 时序见解预览版中的 Azure 存储空间详细信息。
 
@@ -81,7 +95,7 @@ Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 J
 
 时序见解预览版对为时序见解查询进行优化的 Parquet 文件。 还会保存此数据的重新分区副本。
 
-公共预览期间，数据将无限期地存储在 Azure 存储帐户中。
+在公共预览版中，数据无限期存储在 Azure 存储帐户中。
 
 ### <a name="writing-and-editing-time-series-insights-blobs"></a>编写和编辑时序见解 Blob
 

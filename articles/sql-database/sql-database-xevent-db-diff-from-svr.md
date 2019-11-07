@@ -1,5 +1,5 @@
 ---
-title: SQL 数据库中的扩展事件 | Microsoft 文档
+title: SQL 数据库中的扩展事件
 description: 介绍 Azure SQL 数据库中的扩展事件 (XEvents)，以及这些事件会话与 Microsoft SQL Server 中的事件会话有怎样的细微差别。
 services: sql-database
 ms.service: sql-database
@@ -11,20 +11,20 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: f9af487e2eb35e7dc94e1b70945d5c03ffdde2ba
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 64cfcd9451416a6eb35301268b285bd00cf0cad4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566083"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686779"
 ---
 # <a name="extended-events-in-sql-database"></a>SQL 数据库中的扩展事件
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-本主题说明 Azure SQL 数据库中的扩展事件与 Microsoft SQL server 中的扩展事件在实现方式上的细微差别。
+本主题说明 Azure SQL 数据库中的扩展事件与 Microsoft SQL server 中的扩展事件在实现方式上有怎样的细微差别。
 
 - SQL 数据库 V12 在 2015 年下半年度推出了扩展事件功能。
-- SQL Server 自 2008 年即已推出扩展事件。
+- SQL Server 自 2008 年开始即已推出扩展事件。
 - SQL 数据库上的扩展事件功能集是强大的 SQL Server 功能子集。
 
 *XEvents* 是不正式的别名，有时在博客或其他非正式场合表示“扩展的事件”。
@@ -34,9 +34,9 @@ ms.locfileid: "68566083"
 - [快速入门：SQL Server 中的扩展事件](https://msdn.microsoft.com/library/mt733217.aspx)
 - [扩展的事件](https://msdn.microsoft.com/library/bb630282.aspx)
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
-本主题假设读者有以下方面的经验：
+本主题假设读者了解以下内容：
 
 - [Azure SQL 数据库服务](https://azure.microsoft.com/services/sql-database/)。
 - Microsoft SQL Server 中的[扩展事件](https://msdn.microsoft.com/library/bb630282.aspx)。
@@ -79,9 +79,9 @@ ms.locfileid: "68566083"
 
 ## <a name="new-catalog-views"></a>新的目录视图
 
-扩展事件功能受多个[目录视图](https://msdn.microsoft.com/library/ms174365.aspx)的支持。 目录视图显示有关当前数据库中用户创建的事件会话的*元数据或定义*的信息。 视图不会返回有关活动事件会话的实例的信息。
+扩展事件功能受多个[目录视图](https://msdn.microsoft.com/library/ms174365.aspx)的支持。 目录视图告诉你有关当前数据库中用户创建的事件会话的*元数据或定义*的信息。 视图不会返回有关活动事件会话的实例的信息。
 
-| 目录视图<br/>名称 | 描述 |
+| 目录视图<br/>名称 | 说明 |
 |:--- |:--- |
 | **sys.database_event_session_actions** |返回针对事件会话的每个事件执行的每个操作所对应的行。 |
 | **sys.database_event_session_events** |返回事件会话中每个事件所对应的行。 |
@@ -93,9 +93,9 @@ ms.locfileid: "68566083"
 
 ## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>新的动态管理视图 [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 
-Azure SQL 数据库具有支持扩展事件的[动态管理视图 (DMV)](https://msdn.microsoft.com/library/bb677293.aspx)。 DMV 显示有关 *活动* 事件会话的信息。
+Azure SQL 数据库具有支持扩展事件的[动态管理视图 (DMV)](https://msdn.microsoft.com/library/bb677293.aspx)。 DMV 告诉你有关*活动*事件会话的信息。
 
-| DMV 的名称 | 描述 |
+| DMV 的名称 | 说明 |
 |:--- |:--- |
 | **sys.dm_xe_database_session_event_actions** |返回有关事件会话操作的信息。 |
 | **sys.dm_xe_database_session_events** |返回有关会话事件的信息。 |
@@ -171,7 +171,7 @@ SELECT
 
 - 读取
 - 写入
-- 列表
+- 列出
 
 ## <a name="performance-considerations"></a>性能注意事项
 
@@ -186,7 +186,7 @@ SELECT
 
 **事件文件**目标在将数据保存到 Azure 存储 Blob 时可能会遇到网络延迟或故障。 SQL 数据库中的其他事件可能会延迟，因为它们要等待网络通信完成。 这种延迟可能会导致工作负荷变慢。
 
-- 若要缓解这种性能风险，请避免在事件会话定义中将 **EVENT_RETENTION_MODE** 选项设为 **NO_EVENT_LOSS**。
+- 要缓解这种性能风险，请避免在事件会话定义中将 **EVENT_RETENTION_MODE** 选项设为 **NO_EVENT_LOSS**。
 
 ## <a name="related-links"></a>相关链接
 

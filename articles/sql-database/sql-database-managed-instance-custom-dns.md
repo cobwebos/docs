@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库托管实例自定义 DNS | Microsoft Docs
+title: Azure SQL 数据库托管实例自定义 DNS
 description: 本主题介绍使用 Azure SQL 数据库托管实例的自定义 DNS 的配置选项。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 07/17/2019
-ms.openlocfilehash: 9b15ebc40e99c1cd454396ccde5cca6b1a46abbc
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b44c2b1fdf27f285868c5681c38fe3ffa6e5e86d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244750"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688148"
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例配置自定义 DNS
 
@@ -25,7 +25,7 @@ Azure SQL 数据库托管实例必须在 Azure [虚拟网络 (VNet)](../virtual-
 由于托管实例为其内部工作原理使用相同的 DNS，因此请配置自定义 DNS 服务器，使其能够解析公共域名。
 
 > [!IMPORTANT]
-> 始终对邮件服务器、SQL Server 实例和其他服务使用完全限定的域名（FQDN），即使它们在专用 DNS 区域内也是如此。 例如，对邮件服务器使用 `smtp.contoso.com`，因为 @no__t 不能正确解析。 创建引用同一虚拟网络中的 SQL Vm 的链接服务器或复制还需要 FQDN 和默认 DNS 后缀。 例如， `SQLVM.internal.cloudapp.net` 。 有关详细信息，请参阅[使用自己的 DNS 服务器的名称解析](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)。
+> 始终对邮件服务器、SQL Server 实例和其他服务使用完全限定的域名（FQDN），即使它们在专用 DNS 区域内也是如此。 例如，对邮件服务器使用 `smtp.contoso.com`，因为 `smtp` 无法正确解析。 创建引用同一虚拟网络中的 SQL Vm 的链接服务器或复制还需要 FQDN 和默认 DNS 后缀。 例如，`SQLVM.internal.cloudapp.net`。 有关详细信息，请参阅[使用自己的 DNS 服务器的名称解析](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)。
 
 > [!IMPORTANT]
 > 更新虚拟网络的 DNS 服务器不会立即影响托管实例。 托管实例在 DHCP 租约过期后或平台 upgarade 之后更新 DNS 配置（以先发生的情况为准）。 **建议用户在创建第一个托管实例之前，先设置其虚拟网络 DNS 配置。**

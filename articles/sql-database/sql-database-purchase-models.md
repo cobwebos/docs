@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库购买模型 | Microsoft Docs
+title: 'Azure SQL 数据库购买模型 '
 description: 了解适用于 Azure SQL 数据库的购买模型。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: ab291ab60a5e72b5c61552bc54c10e303c1df1a9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 48537ec4c62410565d32350b1e3a11bbc7a2ca6e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492486"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687558"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>在 vCore 和 DTU 购买模型之间进行选择
 

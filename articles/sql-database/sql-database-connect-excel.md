@@ -1,5 +1,5 @@
 ---
-title: 将 Excel 连接到 Azure SQL 数据库中的单一数据库 | Microsoft Docs
+title: 将 Excel 连接到 Azure SQL 数据库中的单个数据库
 description: 了解如何将 Microsoft Excel 连接到 Azure SQL 数据库中的单一数据库。 将数据导入 Excel 以进行报告和数据探索。
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: joseidz
 ms.author: craigg
 ms.reviewer: ''
 ms.date: 02/12/2019
-ms.openlocfilehash: 8711d8f7ebc00b2d0fa51ff9f420293e96766d1c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 603aa52aefc4c4d1200d433f7f73f6070849c8f7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569354"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691034"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>将 Excel 连接到 Azure SQL 数据库中的单一数据库并创建报表
 
-将 Excel 连接到 Azure SQL 数据库中的单一数据库，导入数据并根据数据库中的值来创建表和图表。 在本教程中，将设置 Excel 与数据库表之间的连接，保存用于存储 Excel 的数据和连接信息的文件，然后根据数据库值创建分析数据透视图。
+将 Excel 连接到 Azure SQL 数据库中的单一数据库，导入数据并根据数据库中的值来创建表和图表。 本教程将设置 Excel 与数据库表之间的连接，保存用于存储 Excel 的数据和连接信息的文件，并根据数据库值创建分析数据透视图。
 
 在开始之前，需要有一个单一数据库。 如果没有，请参阅[创建单一数据库](sql-database-single-database-get-started.md)和[创建服务器级 IP 防火墙](sql-database-server-level-firewall-rule.md)，以在几分钟内搭建并运行包含示例数据的单一数据库。
 
@@ -36,9 +36,9 @@ ms.locfileid: "68569354"
    ![选择数据源：将 Excel 连接到 SQL 数据库。](./media/sql-database-connect-excel/excel_data_source.png)
 
    此时会打开“数据连接”向导。
-3. 在“连接到数据库服务器”对话框中，以 <服务器名称> **.database.windows.net** 的格式键入要连接到的 SQL 数据库**服务器名称**。 例如“msftestserver.database.windows.net”。 输入数据库名称（可选）。 选择“确定”以打开凭据窗口。 
+3. 在“连接到数据库服务器”对话框中，以 <服务器名称.database.windows.net> 的格式键入要连接到的 SQL 数据库**服务器名称**。 例如“msftestserver.database.windows.net”。 输入数据库名称（可选）。 选择“确定”以打开凭据窗口。 
 
-   !["连接到数据库服务器" 对话框](media/sql-database-connect-excel/server-name.png)
+   ![“连接到数据库服务器”对话框](media/sql-database-connect-excel/server-name.png)
 
 4. 在“SQL Server 数据库”对话框中，选择左侧的“数据库”，然后输入要连接到的 SQL 数据库服务器的用户名和密码。 选择“连接”以打开“导航器”。 
 
@@ -67,7 +67,7 @@ ms.locfileid: "68569354"
 
 > [!TIP]
 > 如果想将其他 Excel 工作簿和工作表与数据库连接，请选择“数据”选项卡，然后选择“最近使用的源”以启动“最近使用的源”对话框。 从该对话框中的列表中选择之前创建的连接，然后单击“打开”。
-> !["最近使用的源" 对话框](media/sql-database-connect-excel/recent-connections.png)
+> ![“最近使用的源”对话框](media/sql-database-connect-excel/recent-connections.png)
 
 ## <a name="create-a-permanent-connection-using-odc-file"></a>使用 .odc 文件创建永久连接
 
@@ -77,7 +77,7 @@ ms.locfileid: "68569354"
    1. 选择“浏览更多”以打开“选择数据源”对话框。   
    2. 选择“+NewSqlServerConnection.odc”文件并选择“打开”以打开“数据连接向导”。
 
-      !["新建连接" 对话框](media/sql-database-connect-excel/new-connection.png)
+      ![“新建连接”对话框](media/sql-database-connect-excel/new-connection.png)
 
 2. 在“数据连接向导”中键入服务器名称和 SQL 数据库凭据。 选择“**下一步**”。 
    1. 从下拉列表中选择包含数据的数据库。 

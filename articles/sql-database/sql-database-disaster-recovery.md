@@ -1,5 +1,5 @@
 ---
-title: SQL 数据库灾难恢复 | Microsoft 文档
+title: SQL 数据库灾难恢复
 description: 了解在发生区域性的数据中心服务中断或故障后，如何使用 Azure SQL 数据库活动异地复制和异地还原功能来恢复数据库。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/21/2019
-ms.openlocfilehash: 95814805d0bcb2532c09f4f68c6b8d97c3b8c6a5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bc4968541c29e3bf18eb4caca2abe648d17342a4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568825"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690600"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>还原 Azure SQL 数据库或故障转移到辅助数据库
 
@@ -49,7 +49,7 @@ Azure SQL 数据库提供以下功能，以便在服务中断后进行恢复：
 - 标识（并选择性创建）新主服务器的 master 数据库中必须存在的登录信息，并确保这些登录信息在 master 数据库中具有相应权限（若有）。 相关详细信息，请参阅[灾难恢复后的 SQL 数据库安全性](sql-database-geo-replication-security-config.md)
 - 需要更新标识才可映射到新的主数据库的警报规则。
 - 记录当前主数据库上的审核配置
-- 执行[灾难恢复演练](sql-database-disaster-recovery-drills.md)。 若要模拟中断情况进行异地还原，可删除或重命名源数据库以引发应用程序连接失败。 若要使用故障转移组模拟中断，可禁用连接到数据库的 Web 应用程序或虚拟机，或者故障转移数据库以引发应用程序连接失败。
+- 执行[灾难恢复演练](sql-database-disaster-recovery-drills.md)。 若要模拟中断情况进行异地还原，可删除或重命名源数据库以引发应用程序连接失败。 若要使用故障转移组来模拟服务中断，可禁用连接到数据库的 Web 应用程序或虚拟机，或者故障转移数据库以引发应用程序连接失败。
 
 ## <a name="when-to-initiate-recovery"></a>何时启动恢复
 
@@ -97,7 +97,7 @@ Azure 团队会努力尽快还原服务可用性，但视根本原因而定，�
 
 ### <a name="configure-firewall-rules"></a>配置防火墙规则
 
-需确保服务器和数据库上配置的防火墙规则与主服务器和主数据库上配置的防火墙规则匹配。 有关更多信息，请参阅[如何：配置防火墙设置（Azure SQL 数据库）](sql-database-configure-firewall-settings.md)。
+需确保服务器和数据库上配置的防火墙规则与主服务器和主数据库上配置的防火墙规则匹配。 有关详细信息，请参阅[如何：配置防火墙设置（Azure SQL 数据库）](sql-database-configure-firewall-settings.md)。
 
 ### <a name="configure-logins-and-database-users"></a>配置登录名和数据库用户
 
@@ -114,10 +114,10 @@ Azure 团队会努力尽快还原服务可用性，但视根本原因而定，�
 
 ### <a name="enable-auditing"></a>启用审核
 
-如果需要通过审核来访问数据库，需要在恢复数据库后启用审核。 有关详细信息，请参阅[数据库审核](sql-database-auditing.md)。
+如果需要通过审核来访问数据库，则需要在恢复数据库后启用审核。 有关详细信息，请参阅[数据库审核](sql-database-auditing.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解 Azure SQL 数据库自动备份的信息，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)
+- 若要了解 Azure SQL 数据库的自动备份，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)
 - 若要了解业务连续性设计和恢复方案，请参阅[连续性方案](sql-database-business-continuity.md)
 - 若要了解如何使用自动备份进行恢复，请参阅[从服务启动的备份中还原数据库](sql-database-recovery-using-backups.md)

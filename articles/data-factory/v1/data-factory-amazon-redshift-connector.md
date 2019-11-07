@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂从 Amazon Redshift 移动数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 Amazon Redshift 移动数据
 description: 了解如何使用 Azure 数据工厂复制活动从 Amazon Redshift 移动数据。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3a1497211cc42c702537cbbdfea32ff71a400c7c
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 707061f523e5e991c851abfe7960a9aa66fb2066
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836683"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683263"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -44,7 +44,7 @@ ms.locfileid: "67836683"
 
 创建管道的最简单方法是使用 Azure 数据工厂复制向导。 有关使用复制数据向导创建管道的快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
 
-此外可以通过使用 Visual Studio、 Azure PowerShell 或其他工具创建的管道。 也可以使用 Azure 资源管理器模板、.NET API 或 REST API 创建管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+还可以使用 Visual Studio、Azure PowerShell 或其他工具创建管道。 也可以使用 Azure 资源管理器模板、.NET API 或 REST API 创建管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -52,7 +52,7 @@ ms.locfileid: "67836683"
 2. 创建数据集用于表示复制操作的输入和输出数据。
 3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。
 
-使用复制向导时，会自动创建这些数据工厂实体的 JSON 定义。 使用工具或 API（.NET API 除外）时，可使用 JSON 格式定义数据工厂实体。 “JSON 示例：将数据从 Amazon Redshift 复制到 Azure Blob 存储”中演示了用于从 Amazon Redshift 数据存储复制数据的数据工厂实体的 JSON 定义。
+使用复制向导时，会自动创建这些数据工厂实体的 JSON 定义。 使用工具或 API（.NET API 除外）时，可使用 JSON 格式定义数据工厂实体。 JSON 示例：将数据从 Amazon Redshift 复制到 Azure Blob 存储显示用于从 Amazon Redshift 数据存储复制数据的数据工厂实体的 JSON 定义。
 
 以下部分介绍了用于定义 Amazon Redshift 的数据工厂实体的的 JSON 属性。
 
@@ -60,11 +60,11 @@ ms.locfileid: "67836683"
 
 下表提供了特定于 Amazon Redshift 链接服务的 JSON 元素的说明。
 
-| 属性 | 说明 | 必填 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | **type** |该属性必须设置为 **AmazonRedshift**。 |是 |
 | **server** |Amazon Redshift 服务器的 IP 地址或主机名。 |是 |
-| **port** |Amazon Redshift 服务器用于侦听客户端连接的 TCP 端口数。 |否（默认值为 5439） |
+| port |Amazon Redshift 服务器用于侦听客户端连接的 TCP 端口数。 |否（默认值为 5439） |
 | **database** |Amazon Redshift 数据库的名称。 |是 |
 | **username** |有权访问数据库的用户的名称。 |是 |
 | **password** |用户帐户的密码。 |是 |
@@ -75,17 +75,17 @@ ms.locfileid: "67836683"
 
 每种数据集的 **typeProperties** 部分有所不同，该部分提供有关数据在存储区中的位置信息。 **RelationalTable** 类型数据集（包括 Amazon Redshift 数据集）的 **typeProperties** 部分具有以下属性：
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | **tableName** |Amazon Redshift 数据库中链接服务引用的表的名称。 |否（如果指定了 **RelationalSource** 类型复制活动的 **query** 属性） |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 **name**、**description**、**inputs** 表、**outputs** 表和 **policy** 属性可用于所有类型的活动。 typeProperties  节中可用的属性因每个活动的类型而异。 对于复制活动，其属性因数据源和接收器的类型而异。
+有关可用于定义活动的各部分和属性的列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 **name**、**description**、**inputs** 表、**outputs** 表和 **policy** 属性可用于所有类型的活动。 typeProperties 节中可用的属性因每个活动的类型而异。 对于复制活动，其属性因数据源和接收器的类型而异。
 
 对于复制活动，当源的类型为 **AmazonRedshiftSource** 时，则可在 **typeProperties** 部分中使用以下属性：
 
-| 属性 | 说明 | 必填 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | **query** | 使用自定义查询读取数据。 |否（如果指定了数据集的 **tableName** 属性） |
 | **redshiftUnloadSettings** | 使用 Redshift **UNLOAD** 命令时包含属性组。 | 否 |
@@ -94,7 +94,7 @@ ms.locfileid: "67836683"
 
 或者，也可将类型 **RelationalSource**（包括 Amazon Redshift）与 **typeProperties** 节中的以下属性配合使用。 请注意，此源类型不支持 Redshift **UNLOAD** 命令。
 
-| 属性 | 说明 | 必填 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | **query** |使用自定义查询读取数据。 | 否（如果指定了数据集的 **tableName** 属性） |
 
@@ -138,15 +138,15 @@ Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UN
 }
 ```
 
-## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>JSON 示例：将数据从 Amazon Redshift 复制到 Blob 存储
+## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>JSON 示例：将数据从 Amazon Redshift 复制到 Azure Blob 存储
 此示例演示如何将数据从 Amazon Redshift 数据库复制到 Azure Blob 存储。 可以使用复制活动将数据直接复制到任何[受支持的接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。
 
 此示例具有以下数据工厂实体：
 
 * [AmazonRedshift](#linked-service-properties) 类型的链接服务
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
-* [RelationalTable](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)
-* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)
+* [RelationalTable](data-factory-create-datasets.md) 类型的输入[数据集](#dataset-properties)
+* [AzureBlob](data-factory-create-datasets.md) 类型的输出[数据集](data-factory-azure-blob-connector.md#dataset-properties)
 * 包含复制活动的[管道](data-factory-create-pipelines.md)，该活动使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md##copy-activity-properties) 属性
 
 此示例每隔一小时将数据从 Amazon Redshift 中的查询结果复制到 Azure Blob。 实体定义后面的部分描述了本示例中使用的 JSON 属性。

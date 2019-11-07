@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：无缝单一登录 - 快速入门 | Microsoft Docs
+title: Azure AD Connect：无缝单一登录 - 快速入门 | Microsoft 文档
 description: 本文介绍如何开始使用 Azure Active Directory 无缝单一登录
 services: active-directory
 keywords: 什么是 Azure AD Connect, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
@@ -16,14 +16,14 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29f94d6ff8045b7cae64957eeae00d2460ca3e37
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 8cf1e5f9f47ebdc132bdc826af3e54d206095085
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71176834"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603405"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速启动
+# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
 
 ## <a name="deploy-seamless-single-sign-on"></a>部署无缝单一登录
 
@@ -35,19 +35,19 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
 请确保符合以下先决条件：
 
-* **设置 Azure AD Connect 服务器**：如果使用[传递身份验证](how-to-connect-pta.md)作为登录方法，则无需进行其他先决条件检查。 如果使用[密码哈希同步](how-to-connect-password-hash-synchronization.md)作为登录方法，并且 Azure AD Connect 与 Azure AD 之间有防火墙，则请确保：
+* 设置 Azure AD Connect 服务器：如果使用[直通身份验证](how-to-connect-pta.md)作为登录方法，则无需进行其他先决条件检查。 如果使用[密码哈希同步](how-to-connect-password-hash-synchronization.md)作为登录方法，并且 Azure AD Connect 与 Azure AD 之间有防火墙，则请确保：
    - 使用 Azure AD Connect 版本 1.1.644.0 或更高版本。 
-   - 如果防火墙或代理允许执行 DNS 允许列表，则可将通过端口 443 与 **\*.msappproxy.net** URL 的连接加入允许列表。 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此先决条件仅适用于启用了该功能的情况。 无需用户实际登录。
+   - 如果防火墙或代理允许执行 DNS 白名单，则可将通过端口 443 与 **\*.msappproxy.net** URL 的连接加入白名单。 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此先决条件仅适用于启用了该功能的情况。 无需用户实际登录。
 
     >[!NOTE]
     >Azure AD Connect 版本 1.1.557.0、1.1.558.0、1.1.561.0 和 1.1.614.0 具有密码哈希同步相关问题。 如果不打算将密码哈希同步与直通身份验证结合使用，请阅读 [Azure AD Connect 发行说明](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470)了解详细信息。
 
-* **使用支持的 Azure AD Connect 拓扑**:请确保使用 Azure AD Connect 支持的拓扑之一，如[此处](plan-connect-topologies.md)所述。
+* **使用受支持的 Azure AD Connect 拓扑**：请确保使用 Azure AD Connect 支持的拓扑之一，如[此处](plan-connect-topologies.md)所述。
 
     >[!NOTE]
     >无缝 SSO 支持多个 AD 林，无论它们之间是否存在 AD 信任。
 
-* **设置域管理员凭据**：需要为每个 Active Directory 林提供域管理员凭据，以便：
+* 设置域管理员凭据：你需要为每个 Active Directory 林提供域管理员凭据：
     * 通过 Azure AD Connect 同步到 Azure AD。
     * 包含你想要为其启用无缝 SSO 的用户。
     
@@ -90,15 +90,15 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 3. 选择“Azure AD Connect”。
 4. 验证无缝单一登录功能是否显示为“已启用”。
 
-![Azure 门户：“Azure AD Connect”窗格](./media/how-to-connect-sso-quick-start/sso10.png)
+![Azure 门户：Azure AD Connect 窗格](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> 无缝 SSO 在每个 ad `AZUREADSSOACC`林中的本地 Active Directory （AD）中创建名为的计算机帐户。 出于安全原因，需要对计算机帐户进行严格保护。`AZUREADSSOACC` 只有域管理员才能管理计算机帐户。 请确保计算机帐户上的 Kerberos 委派处于禁用状态，并且 Active Directory 中的其他帐户没有对`AZUREADSSOACC`计算机帐户的委派权限。 将计算机帐户存储在组织单位（OU）中，在这种情况下，用户可以放心地删除意外删除，并且只有域管理员才有权访问。
+> 无缝 SSO 在每个 AD 林中的本地 Active Directory （AD）中创建一个名为 `AZUREADSSOACC` 的计算机帐户。 出于安全原因，需要严格保护 `AZUREADSSOACC` 计算机帐户。 只有域管理员才能管理计算机帐户。 确保计算机帐户上的 Kerberos 委派处于禁用状态，并且 Active Directory 中的其他帐户没有 `AZUREADSSOACC` 计算机帐户的委派权限。 将计算机帐户存储在组织单位（OU）中，在这种情况下，用户可以放心地删除意外删除，并且只有域管理员才有权访问。
 
 >[!NOTE]
-> 如果你在本地环境中使用传递哈希和凭据盗窃缓解体系结构，请进行适当的更改，以确保`AZUREADSSOACC`计算机帐户不会在隔离容器中结束。 
+> 如果你在本地环境中使用传递哈希和凭据盗窃缓解体系结构，请进行适当的更改，以确保 `AZUREADSSOACC` 计算机帐户不会在隔离容器中结束。 
 
-## <a name="step-3-roll-out-the-feature"></a>步骤 3：推出此功能
+## <a name="step-3-roll-out-the-feature"></a>步骤 3：扩展此功能
 
 可使用以下说明向用户逐步推出无缝 SSO。 首先，使用 Active Directory 中的组策略将以下 Azure AD URL 添加到所有或所选用户的 Intranet 区域设置：
 
@@ -124,11 +124,11 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
 1. 打开“组策略管理编辑器”工具。
 2. 编辑适用于部分或全部用户的组策略。 此示例使用**默认域策略**。
-3. 浏览到**用户配置** > **策略** > **管理模板** **Windows 组件** **internet Explorer**internet >  >  > **控制面板**安全性**页**。 >  然后选择“站点到区域分配列表”。
+3. 浏览到 "**用户配置**" > **策略**" > **管理模板** > **Windows 组件** > internet **Explorer** > **internet" 控制面板** > **安全性页**。 然后选择“站点到区域分配列表”。
     ![单一登录](./media/how-to-connect-sso-quick-start/sso6.png)
 4. 启用策略，然后在对话框中输入以下值：
-   - **值名称**：要将 Kerberos 票证转发到的 Azure AD URL。
-   - **值**（数据）：1 指示 Intranet 区域。
+   - 值名称：要将 Kerberos 票证转发到的 Azure AD URL。
+   - 值（数据）：1 指示 Intranet 区域。
 
      结果如下所示：
 
@@ -144,7 +144,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
     ![单一登录](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. 浏览到**用户配置** > **策略** > **管理模板** **Windows 组件** **internet Explorer**internet >  >  > **控制面板安全**页Intranet > **区域**。 >  然后选择“允许通过脚本更新状态栏”。
+6. 浏览到 "**用户配置**" > **策略**" > **管理模板** > **Windows 组件** > internet **Explorer** > **internet" 控制面板** > **安全页** > **Intranet 区域**。 然后选择“允许通过脚本更新状态栏”。
 
     ![单一登录](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -156,7 +156,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
 1. 打开“组策略管理编辑器”工具。
 2. 编辑适用于部分或全部用户的组策略。 此示例使用**默认域策略**。
-3. 浏览到“用户配置” > “首选项” > “Windows 设置” > “注册” > “新建” > “注册项”。
+3. 浏览到“用户配置” **“首选项”** “Windows 设置” > “注册” **“新建”** “注册项” >  >  >  > 。
 
     ![单一登录](./media/how-to-connect-sso-quick-start/sso15.png)
 
@@ -185,6 +185,14 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
 
 确保运行 macOS 的计算机已加入 AD。 有关 AD 加入 macOS 设备的说明超出了本文的范围。
 
+#### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>基于 Chromium 的 Microsoft Edge （所有平台）
+
+如果已重写环境中的[AuthNegotiateDelegateAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist)或[AuthServerAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist)策略设置，请确保将 Azure AD 的 URL （`https://autologon.microsoftazuread-sso.com`）添加到它们。
+
+#### <a name="microsoft-edge-based-on-chromium-macos-and-other-non-windows-platforms"></a>基于 Chromium 的 Microsoft Edge （macOS 和其他非 Windows 平台）
+
+对于基于 Mac OS 上的 Chromium 和其他非 Windows 平台的 Microsoft Edge，请参阅[基于 Chromium 的 Microsoft Edge 策略列表](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist)，了解如何将集成身份验证的 Azure AD URL 添加到允许列表。
+
 #### <a name="google-chrome-all-platforms"></a>Google Chrome（所有平台）
 
 如果已替代环境中的 [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) 或 [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) 策略设置，请确保也向其添加 Azure AD 的 URL (`https://autologon.microsoftazuread-sso.com`)。
@@ -197,7 +205,7 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
 
 #### <a name="known-browser-limitations"></a>已知的浏览器限制
 
-无缝 SSO 在 Firefox 和 Microsoft Edge 浏览器的隐私浏览模式下不起作用。 它在以增强保护模式下运行的 Internet Explorer 中也不起作用。
+无缝 SSO 在 Firefox 和 Microsoft Edge 浏览器的隐私浏览模式下不起作用。 它在以增强保护模式下运行的 Internet Explorer 中也不起作用。 对于基于 Chromium 的 Microsoft Edge 的下一个版本，它在设计时无法在 InPrivate 和来宾模式下工作。
 
 ## <a name="step-4-test-the-feature"></a>步骤 4：测试功能
 
@@ -216,7 +224,7 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
 
 ## <a name="step-5-roll-over-keys"></a>步骤 5：滚动更新密钥
 
-在步骤 2 中，Azure AD Connect 在已启用无缝 SSO 的所有 Active Directory 林中创建计算机帐户（表示 Azure AD）。 若要了解详细信息，请参阅 [Azure Active Directory 无缝单一登录：技术深入了解](how-to-connect-sso-how-it-works.md)。
+在步骤 2 中，Azure AD Connect 在已启用无缝 SSO 的所有 Active Directory 林中创建计算机帐户（表示 Azure AD）。 若要了解详细信息，请参阅 [Azure Active Directory 无缝单一登录：深入技术探究](how-to-connect-sso-how-it-works.md)。
 
 >[!IMPORTANT]
 >如果泄露，可以使用计算机帐户上的 Kerberos 解密密钥为 AD 林中的任意用户生成 Kerberos 票证。 然后，恶意执行组件可以为遭到入侵的用户模拟 Azure AD 登录。 强烈建议定期滚动更新这些 Kerberos 解密密钥，至少每 30 天一次。
@@ -228,7 +236,7 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [技术深入了解](how-to-connect-sso-how-it-works.md)：了解无缝单一登录功能的工作原理。
+- [深入技术探究](how-to-connect-sso-how-it-works.md)：了解无缝单一登录功能的工作原理。
 - [常见问题](how-to-connect-sso-faq.md)：获取无缝单一登录常见问题的解答。
-- [故障排除](tshoot-connect-sso.md)：了解如何解决无缝单一登录功能的常见问题。
+- [疑难解答](tshoot-connect-sso.md)：了解如何解决无缝单一登录功能的常见问题。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect)：使用 Azure Active Directory 论坛来提交新的功能请求。

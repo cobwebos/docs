@@ -1,5 +1,5 @@
 ---
-title: 为 Azure SQL 数据库托管实例配置现有虚拟网络 | Microsoft Docs
+title: 为 Azure SQL 数据库托管实例配置现有虚拟网络
 description: 本文介绍如何配置可在其中部署 Azure SQL 数据库托管实例的现有虚拟网络和子网。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 01/15/2019
-ms.openlocfilehash: 509a08705d87e8f789e26ebbcec295a31f99f416
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0f6ababa9d25798f4b150c322d48d4c7af04a511
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567646"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689376"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例配置现有虚拟网络
 
@@ -31,7 +31,7 @@ Azure SQL 数据库托管实例必须部署在专用于托管实例的 Azure [�
 > [!Note]
 > 只能在通过 Azure 资源管理器部署模型创建的虚拟网络中创建托管实例。 不支持通过经典部署模型创建的 Azure 虚拟网络。 根据[确定托管实例的子网大小](sql-database-managed-instance-determine-size-vnet-subnet.md)一文中的指导计算子网大小。 在子网中部署资源后，无法调整子网大小。
 >
-> 创建托管实例后, 不支持将托管实例或 VNet 移到另一个资源组或订阅。
+> 创建托管实例后，不支持将托管实例或 VNet 移到另一个资源组或订阅。
 
 ## <a name="validate-and-modify-an-existing-virtual-network"></a>验证并修改现有虚拟网络
 
@@ -52,8 +52,8 @@ Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepar
 
 该脚本通过三个步骤来准备子网：
 
-1. 验证：根据托管实例的网络要求验证所选虚拟网络和子网。
-2. 确认：向用户显示为托管实例部署准备子网而需要执行的一组更改。 同时请求用户同意。
+1. Validate：验证所选的虚拟网络和子网是否满足托管实例网络要求。
+2. 确认：向用户显示准备子网进行托管实例部署所需的一组更改。 同时请求用户同意。
 3. 准备：正确配置虚拟网络和子网。
 
 ## <a name="next-steps"></a>后续步骤

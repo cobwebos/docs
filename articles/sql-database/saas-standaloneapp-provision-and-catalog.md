@@ -1,5 +1,5 @@
 ---
-title: 多租户 SaaS 教程 - Azure SQL 数据库 | Microsoft 文档
+title: 多租户 SaaS 教程-Azure SQL 数据库
 description: 使用独立应用程序模式预配和编录新租户
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/24/2018
-ms.openlocfilehash: f9087ff33bccb54497ec8d781a47469553683d65
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: de1007aac3988f2ea78b9d1b7b1de19b862f196a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570281"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691952"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>使用“每租户一个应用程序”的 SaaS 模式预配和编录新租户
 
@@ -69,19 +69,19 @@ Azure 资源管理器模板可用于部署和配置应用程序，创建租户�
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程，请确保已完成了以下先决条件： 
+若要完成本教程，请确保已完成以下先决条件： 
 
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * 部署三个示例租户应用。 若要在五分钟内完成这些部署，请参阅[部署和浏览 Wingtip Tickets SaaS 独立应用程序模式](saas-standaloneapp-get-started-deploy.md)。
 
 ## <a name="provision-the-catalog"></a>预配目录
 
-在此任务中，你将了解如何预配用来注册所有租户数据库的目录。 将能够： 
+在此任务中，你将了解如何预配用来注册所有租户数据库的目录。 可以： 
 
 * 使用 Azure 资源管理模板预配目录数据库。 通过导入 bacpac 文件初始化数据库。  
 * 注册以前部署的示例租户应用。  每个租户均使用通过租户名称的哈希构造的密钥进行注册。  租户名称也存储在目录的扩展表中。
 
-1. 在 PowerShell ISE 中，打开 ...\Learning Modules\UserConfig.psm 并将 \<user\> 值更新为部署三个示例应用程序时所用的值。  保存文件。  
+1. 在 PowerShell ISE 中，打开 ...\Learning Modules\UserConfig.psm 并将 *user* 值更新为部署三个示例应用程序时所用的值 **\<\>** 。  保存文件。  
 1. 在 PowerShell ISE 中打开 ...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1 并设置 $Scenario = 1。 部署租户目录并注册预定义的租户。
 
 1. 通过将游标置于显示有“`& $PSScriptRoot\New-Catalog.ps1`”的行中的任意位置来添加断点，并按 F9。
@@ -97,8 +97,8 @@ Azure 资源管理器模板可用于部署和配置应用程序，创建租户�
 
 现在来看一看创建的资源。
 
-1. 打开 [Azure 门户](https://portal.azure.com/)，并浏览资源组。  打开 wingtip-sa-catalog-\<user\> 资源组并查看目录服务器和数据库。
-1. 打开门户中的数据库并从左侧菜单中选择“数据资源管理器”。  单击 "登录" 命令, 然后输入 Password = **P\@ssword1**。
+1. 打开 [Azure 门户](https://portal.azure.com/)，并浏览资源组。  打开 wingtip-sa-catalog-**user\< 资源组并查看目录服务器和数据库\>** 。
+1. 打开门户中的数据库并从左侧菜单中选择“数据资源管理器”。  单击 "登录" 命令，然后输入 Password = **P\@ssword1**"。
 
 
 1. 浏览 tenantcatalog 数据库的架构。  
@@ -115,7 +115,7 @@ Azure 资源管理器模板可用于部署和配置应用程序，创建租户�
 
 ## <a name="provision-a-new-tenant-application"></a>预配新租户应用程序
 
-在此任务中，你将了解如何预配单租户应用程序。 将能够：  
+在此任务中，你将了解如何预配单租户应用程序。 可以：  
 
 * 为租户创建新的资源组。 
 * 使用 Azure 资源管理模板将应用程序和数据库预配到新的资源组中。  此操作包括通过导入 bacpac 文件，初始化具有常见架构和引用数据的数据库。 

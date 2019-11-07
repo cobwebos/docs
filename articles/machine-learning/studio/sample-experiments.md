@@ -1,6 +1,6 @@
 ---
-title: 从示例 Kickstart 试验
-titleSuffix: Azure Machine Learning Studio (classic)
+title: 示例中的 Kickstart 试验
+titleSuffix: ML Studio (classic) Azure
 description: 了解如何使用示例机器学习试验 Azure AI 库和 Azure 机器学习 Studio （经典）创建新试验。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: 547cd7c97ddf7aa08ef94f6aeea82e16119c7135
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fa23612070a5b0c1a33c2effb9cd9e533ca5eada
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496780"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670645"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>从 Azure AI 库中的工作示例创建 Azure 机器学习 Studio （经典）试验
 
@@ -59,4 +59,4 @@ ms.locfileid: "73496780"
 ## <a name="next-steps"></a>后续步骤
 * [从各种源导入数据](import-data.md)
 * [适用于机器学习的 R 语言快速入门教程](r-quickstart.md)
-* [部署机器学习 Web 服务](publish-a-machine-learning-web-service.md)
+* [部署机器学习 Web 服务](deploy-a-machine-learning-web-service.md)

@@ -1,5 +1,5 @@
 ---
-title: PowerShell 脚本 - 使用数据工厂转换云中的数据 | Microsoft Docs
+title: 'PowerShell 脚本-使用数据工厂转换云中的数据 '
 description: 此 PowerShell 脚本通过在 Azure HDInsight Spark 群集上运行 Spark 程序转换云中的数据。
 author: djpmsft
 ms.author: daperlov
@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/12/2017
-ms.openlocfilehash: 973efe90ea1da68e4c4e4b0dbbb4c191be18213d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 53f64103819476e4efe918bd7a7be4ee2a1bcca3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140876"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684322"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell 脚本 - 使用 Azure 数据工厂转换云中的数据
 
@@ -62,12 +62,12 @@ ms.locfileid: "70140876"
 
 ### <a name="upload-the-input-file"></a>上传输入文件
 1. 创建包含一些文本的名为 **minecraftstory.txt** 的文件。 Spark 程序会统计此文本中的单词数量。 
-2. 在 blob 容器的 `spark` 文件夹中创建一个名为 `inputfiles` 的子文件夹。 
+2. 在 blob 容器的 `inputfiles` 文件夹中创建一个名为 `spark` 的子文件夹。 
 3. 将 `minecraftstory.txt` 上传到 `inputfiles` 子文件夹。 
 
 ## <a name="sample-script"></a>示例脚本
 > [!IMPORTANT]
-> 此脚本在硬盘驱动器上的 c:\ 文件夹中创建 JSON 文件，用于定义数据工厂实体（链接服务、数据集和管道）。
+> 此脚本在硬盘驱动器上的 c:\ 文件夹中创建用于定义数据工厂实体（链接服务、数据集和管道）的 JSON 文件。
 
 [!code-powershell[main](../../../powershell_scripts/data-factory/transform-data-using-spark/transform-data-using-spark.ps1 "Transform data using Spark")]
 
@@ -88,12 +88,12 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 此脚本使用以下命令：
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | 创建数据工厂。 |
 | [Set-AzDataFactoryV2LinkedService](/powershell/module/az.datafactory/set-Azdatafactoryv2linkedservice) | 在数据工厂中创建链接服务。 链接服务可将数据存储或计算链接到数据工厂。 |
-| [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/set-Azdatafactoryv2pipeline) | 在数据工厂中创建管道。 一个管道包含一个或多个可执行特定操作的活动。 在此管道中，spark 活动通过在 Azure HDInsight Spark 群集上运行程序来转换数据。 |
+| [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/set-Azdatafactoryv2pipeline) | 在数据工厂中创建管道。 一个管道包含一个或多个执行某项操作的活动。 在此管道中，spark 活动通过在 Azure HDInsight Spark 群集上运行程序来转换数据。 |
 | [Invoke-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/invoke-Azdatafactoryv2pipeline) | 为管道创建运行。 换而言之，就是运行管道。 |
 | [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | 获取管道中活动的运行（活动运行）的相关详细信息。 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |

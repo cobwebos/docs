@@ -1,5 +1,5 @@
 ---
-title: Azure 应用服务 - 同步网络配置 | Microsoft Docs
+title: Azure App Service-同步网络配置
 description: 本文讨论了如何同步 Azure 应用服务托管计划的网络配置。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 12/13/2018
-ms.openlocfilehash: 920851e33255b0bcb5b085c541ae636c5988be72
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e7263d6a7716caf9f53e8496c6fb02b6d17b5509
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567323"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687896"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>Azure 应用服务托管计划的同步网络配置
 

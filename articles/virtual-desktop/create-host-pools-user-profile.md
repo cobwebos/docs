@@ -1,5 +1,5 @@
 ---
-title: 使用基于虚拟机的文件共享为主机池创建 FSLogix 配置文件容器-Azure
+title: Windows 虚拟桌面 FSLogix 配置文件容器共享-Azure
 description: 如何使用基于虚拟机的文件共享为 Windows 虚拟桌面主机池设置 FSLogix 配置文件容器。
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: 0e7516fc4874e4cbc387f2f494efc6ef745d64f7
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 65d800cc6c1b6818369807ffeae9cd350a34066f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311587"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606990"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>使用文件共享为主机池创建配置文件容器
 
@@ -59,15 +59,15 @@ Windows 虚拟桌面服务提供 FSLogix 配置文件容器作为推荐的用户
 
 1. 用在创建虚拟机时提供的凭据[连接到虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine)。
 2. 启动 internet 浏览器并导航到[此链接](https://go.microsoft.com/fwlink/?linkid=2084562)，下载 FSLogix 代理。
-3. 在 .zip 文件中导航到 \\ @ no__t-1Win32 @ no__t-2Release 或 \\ @ no__t-4X64 @ no__t-5Release，并运行**FSLogixAppsSetup**以安装 FSLogix 代理。  若要了解有关如何安装 FSLogix 的详细信息，请参阅[下载并安装 FSLogix](https://docs.microsoft.com/fslogix/install-ht)。
-4. 导航到 "**程序文件**"  > **FSLogix** > **应用**程序以确认安装的代理。
-5. 从 "开始" 菜单中，以管理员身份运行**RegEdit** 。 导航到**Computer @ no__t-1HKEY_LOCAL_MACHINE @ no__t-2software @ no__t-3FSLogix**。
+3. 在 .zip 文件中导航到 \\\\Win32\\版本或 \\\\X64\\发布，并运行**FSLogixAppsSetup**以安装 FSLogix 代理。  若要了解有关如何安装 FSLogix 的详细信息，请参阅[下载并安装 FSLogix](https://docs.microsoft.com/fslogix/install-ht)。
+4. 导航到 "**程序文件**" > **FSLogix** > **应用**"以确认已安装代理。
+5. 从 "开始" 菜单中，以管理员身份运行**RegEdit** 。 导航到**计算机\\HKEY_LOCAL_MACHINE\\software\\FSLogix**。
 6. 创建名为 "**配置文件**" 的密钥。
 7. 为配置文件密钥创建以下值：
 
-| 名称                | type               | 数据/值                        |
+| Name                | 类型               | 数据/值                        |
 |---------------------|--------------------|-----------------------------------|
-| Enabled             | DWORD              | 第                                 |
+| Enabled             | DWORD              | 1                                 |
 | VHDLocations        | 多字符串值 | "文件共享的网络路径"     |
 
 >[!IMPORTANT]

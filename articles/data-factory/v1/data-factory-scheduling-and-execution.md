@@ -1,5 +1,5 @@
 ---
-title: 使用数据工厂计划和执行 | Microsoft Docs
+title: 数据工厂计划和执行
 description: 了解 Azure 数据工厂应用程序模型的计划和执行方面。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6ea8a03f45a3655c5761e0011876c6232b5bf36b
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 15a2d6ae5d8b80468ffcdd00d60b1f36843ed677
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135293"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666135"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>数据工厂计划和执行
 > [!NOTE]
@@ -29,7 +29,7 @@ ms.locfileid: "70135293"
 * [数据集](data-factory-create-datasets.md) 
 
 ## <a name="start-and-end-times-of-pipeline"></a>管道的开始和结束时间
-仅在**开始**时间和**结束**时间之间，管道才处于活动状态。 开始时间之前或结束时间之后，不会执行管道。 如果暂停管道，则无论开始和结束时间，都不会执行管道。 不暂停才可运行管道。 可以在管道定义中找到这些设置（开始、结束、暂停）： 
+仅在开始时间和结束时间之间，管道才处于活动状态。 开始时间之前或结束时间之后，不会执行管道。 如果暂停管道，则无论开始和结束时间，都不会执行管道。 不暂停才可运行管道。 可以在管道定义中找到这些设置（开始、结束、暂停）： 
 
 ```json
 "start": "2017-04-01T08:00:00Z",
@@ -59,7 +59,7 @@ ms.locfileid: "70135293"
 ## <a name="specify-schedule-for-a-dataset"></a>为数据集指定计划
 数据工厂管道中的每个活动可获取零个或多个输入**数据集**，并生成一个或多个输出数据集。 对于活动，可以指定从该处有可用的输入的数据或使用生成的输出数据的频率**可用性**的数据集定义中的部分。 
 
-**可用性**部分中的**频率**指定时间单位。 频率允许的值包括：Minute、Hour、Day、Week 和 Month。 可用性部分中的**间隔**属性指定频率的乘数。 例如：如果频率设置为“天”且间隔设置为 1 的输出数据集，每天生成输出数据。 如果将频率指定为分钟，建议将间隔设置为小于 15 的值。 
+**可用性**部分中的**频率**指定时间单位。 频率的允许值为：分钟、小时、天、周和月。 可用性部分中的**间隔**属性指定频率的乘数。 例如：如果频率设置为“天”且间隔设置为 1 的输出数据集，每天生成输出数据。 如果将频率指定为分钟，建议将间隔设置为小于 15 的值。 
 
 在下面的示例中，输入有可用的数据每小时和每小时生成一次输出数据 (`"frequency": "Hour", "interval": 1`)。 
 
@@ -170,7 +170,7 @@ ms.locfileid: "70135293"
 
 上图中显示了输入和输出数据集的每小时数据切片。 图中还显示已准备好进行处理的三个输入切片。 “上午 10-11 点”活动正在进行，生成“上午 10-11 点”输出切片。 
 
-您可以访问使用变量与数据集 JSON 中的当前切片关联的时间间隔：[SliceStart](data-factory-functions-variables.md#data-factory-system-variables)并[SliceEnd](data-factory-functions-variables.md#data-factory-system-variables)。 同样，可以使用 WindowStart 和 WindowEnd 访问与活动窗口关联的时间间隔。 活动的计划必须匹配活动的输出数据集的计划。 因此，SliceStart 和 SliceEnd 值分别与 WindowStart 和 WindowEnd 值相同。 有关这些变量的详细信息，请参阅[数据工厂函数和系统变量](data-factory-functions-variables.md#data-factory-system-variables)一文。  
+可通过变量 [SliceStart](data-factory-functions-variables.md#data-factory-system-variables) 和 [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables) 访问与正在数据集 JSON 中生成的当前切片关联的时间间隔。 同样，可以使用 WindowStart 和 WindowEnd 访问与活动窗口关联的时间间隔。 活动的计划必须匹配活动的输出数据集的计划。 因此，SliceStart 和 SliceEnd 值分别与 WindowStart 和 WindowEnd 值相同。 有关这些变量的详细信息，请参阅[数据工厂函数和系统变量](data-factory-functions-variables.md#data-factory-system-variables)一文。  
 
 可在活动 JSON 中将这些变量用于不同目的。 例如，可用于从表示时序数据的输入和输出数据集中选择数据（例如：上午 8-9 点）。 此示例还使用 **WindowStart** 和 **WindowEnd** 选择活动运行的相关数据，并使用相应 **folderPath** 将其复制到 blob。 **FolderPath** 参数化为每小时具有一个单独文件夹。  
 
@@ -182,12 +182,12 @@ ms.locfileid: "70135293"
 ### <a name="dataset-availability"></a>数据集可用性 
 下表描述了可在 **availability** 节中使用的属性：
 
-| 属性 | 说明 | 必填 | 默认 |
+| 属性 | 说明 | 必选 | 默认 |
 | --- | --- | --- | --- |
 | frequency |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |不可用 |
 | interval |指定频率的乘数<br/><br/>“频率 x 间隔”确定生成切片的频率。<br/><br/>若需要数据集每小时生成切片，则将“频率”<b></b>设置为“小时”<b></b>，“间隔”<b></b>设置为“1”<b></b>。<br/><br/><b>注意</b>：如果将 Frequency 指定为 Minute，建议将 interval 设置为小于 15 的值 |是 |不可用 |
 | style |指定是否应在间隔的开头/结尾生成切片。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>若将 Month 设置为 Month，style 设置为 EndOfInterval，则会在每月的最后一天生成切片。 若将 style 设为 StartOfInterval，会在每月的第一天生成切片。<br/><br/>若将 Frequency 设置为 Day，style 设置为 EndOfInterval，则会在一天的最后一小时生成切片。<br/><br/>若将 Frequency 设置为 Hour，style 设置为 EndOfInterval，则会在一小时结束时生成切片。 例如，对于下午 1 点到下午 2 点期间的切片，则在下午 2 点生成切片。 |否 |EndOfInterval |
-| anchorDateTime |定义计划程序用于计算数据集切片边界的时间中的绝对位置。 <br/><br/><b>注意</b>：如果 AnchorDateTime 的日期部分比频率部分更精细，则忽略更精细部分。 <br/><br/>例如，如果“间隔”<b></b>是“每小时”<b></b>（frequency：hour 且 interval：: 1），而 <b> AnchorDateTime</b> 包含<b>分钟和秒</b>，则将忽略 AnchorDateTime 的<b>分钟和秒</b>部分。 |否 |01/01/0001 |
+| anchorDateTime |定义计划程序用于计算数据集切片边界的时间中的绝对位置。 <br/><br/><b>注意</b>：如果 AnchorDateTime 的日期部分比频率部分更精细，则忽略更精细部分。 <br/><br/>例如，如果“interval”<b></b>是“每小时”<b></b>（frequency: hour 且 interval: 1），而 <b> AnchorDateTime</b> 包含<b>分钟和秒</b>，则将忽略 AnchorDateTime 的<b>分钟和秒</b>部分。 |否 |01/01/0001 |
 | offset |所有数据集切片的开始和结束之间偏移的时间跨度。 <br/><br/><b>注意</b>：如果同时指定了 anchorDateTime 和 offset，则结果是组合偏移。 |否 |不可用 |
 
 ### <a name="offset-example"></a>偏移示例
@@ -228,9 +228,9 @@ ms.locfileid: "70135293"
 ### <a name="dataset-policy"></a>数据集策略
 数据集可以具有定义的验证策略，该策略指定切片执行生成的数据在准备好进行使用之前应如何验证。 在这种情况下，切片执行完成后，输出切片状态将变为“等待”且子状态为“验证”。 切片验证后，切片状态将更改为“就绪”。 如果数据切片已生成但没有通过验证，因此将不会处理依赖于此切片的下游切片的活动运行。 [监视和管理管道](data-factory-monitor-manage-pipelines.md)介绍数据工厂中的数据切片的各种状态。
 
-数据集定义中的**策略**部分定义了数据集切片必须满足的标准或条件。 下表描述了可在 **policy** 节中使用的属性：
+数据集定义中的**策略**节定义了数据集切片必须满足的标准或条件。 下表描述了可在 **policy** 节中使用的属性：
 
-| 策略名称 | 描述 | 适用对象 | 必填 | 默认 |
+| 策略名称 | 说明 | 适用对象 | 必选 | 默认 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB | 验证 **Azure Blob** 中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob |否 |不可用 |
 | minimumRows | 验证 **Azure SQL 数据库**中的数据或 **Azure 表**是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |不可用 |
@@ -266,14 +266,14 @@ ms.locfileid: "70135293"
 ## <a name="activity-policies"></a>活动策略
 策略会影响活动的运行时行为，尤其在处理表的切片时。 下表提供详细信息。
 
-| 属性 | 允许的值 | Default Value | 描述 |
+| 属性 | 允许的值 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| concurrency |整数 <br/><br/>最大值：10 |1 |活动的并发执行次数。<br/><br/>它决定可在不同切片上发生的并行活动执行次数。 例如，如果活动需要完成大量可用数据，更大的并发值能加快数据处理速度。 |
+| concurrency |Integer <br/><br/>最大值：10 |1 |活动的并发执行次数。<br/><br/>它决定可在不同切片上发生的并行活动执行次数。 例如，如果活动需要完成大量可用数据，更大的并发值能加快数据处理速度。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |确定正在处理的数据切片的顺序。<br/><br/>例如，有两个切片（分别发生在下午 4 点和下午 5 点），且均在等待执行。 如果将 executionPriorityOrder 设置为 NewestFirst，则首先处理下午 5 点的切片。 同理，如果将 executionPriorityORder 设置为 OldestFIrst，则先处理下午 4 点的切片。 |
-| 重试 |整数<br/><br/>最大值可为 10 |0 |将切片的数据处理标记为“失败”之前的重试次数。 数据切片的活动执行次数不能超过指定的重试次数。 出现故障后尽快重试。 |
-| timeout |TimeSpan |00:00:00 |活动的超时。 例如：00:10:00（表示超时 10 分钟）<br/><br/>如果不指定值或值为 0，则表示无限超时。<br/><br/>如果某个切片的数据处理时间超出了超时值，将取消该处理，且系统尝试重试处理。 重试次数取决于重试属性。 发生超时时，会将状态设置为“超时”。 |
-| delay |TimeSpan |00:00:00 |启动切片的数据处理前，需指定延迟。<br/><br/>延迟超过预期执行时间后，启动数据切片的活动执行。<br/><br/>例如：00:10:00（表示延迟 10 分钟） |
-| longRetry |整数<br/><br/>最大值：10 |1 |切片执行失败之前的长重试次数。<br/><br/>longRetryInterval 指定尝试 longRetry 的间隔。 因此，如果需要指定重试尝试之间的时间，请使用 longRetry。 如果同时指定 Retry 和 longRetry，则每次 longRetry 尝试均包含 Retry 尝试，且最大尝试次数为 Retry * longRetry。<br/><br/>例如，如果活动策略中具有以下设置：<br/>Retry:3<br/>longRetry:2<br/>longRetryInterval:01:00:00<br/><br/>假设仅执行一个切片（状态为“等待”），且活动执行每次都失败。 最初将有 3 次连续执行尝试。 每次尝试后，切片状态为“重试”。 前 3 次尝试结束后，切片状态为“长重试”。<br/><br/>1 小时（即 longRetryInteval 的值）后，开始另一组 3 次连续执行尝试。 之后，切片的状态变为“失败”，且不会再进行重试。 因此，共进行了 6 次尝试。<br/><br/>如果某次执行成功，切片状态“就绪”，且不会再重试。<br/><br/>如果依赖数据在非确定性时间到达，或处理数据的总体环境难以捉摸，可以使用 longRetry。 在这种情况下，一遍遍重试效果可能不理想，但一段时间后再重试可能会输出想要的结果。<br/><br/>注意：不要为 longRetry 或 longRetryInterval 设置高值。 通常，较高值可能会引起其他系统问题。 |
+| retry |Integer<br/><br/>最大值可为 10 |0 |将切片的数据处理标记为“失败”之前的重试次数。 数据切片的活动执行次数不能超过指定的重试次数。 出现故障后尽快重试。 |
+| timeout |TimeSpan |00:00:00 |活动的超时。 示例：00:10:00（表示超时 10 分钟）<br/><br/>如果不指定值或值为 0，则表示无限超时。<br/><br/>如果某个切片的数据处理时间超出了超时值，将取消该处理，且系统尝试重试处理。 重试次数取决于重试属性。 发生超时时，会将状态设置为“超时”。 |
+| delay |TimeSpan |00:00:00 |启动切片的数据处理前，需指定延迟。<br/><br/>延迟超过预期执行时间后，启动数据切片的活动执行。<br/><br/>示例：00:10:00（表示延迟 10 分钟） |
+| longRetry |Integer<br/><br/>最大值：10 |1 |切片执行失败之前的长重试次数。<br/><br/>longRetryInterval 指定尝试 longRetry 的间隔。 因此，如果需要指定重试尝试之间的时间，请使用 longRetry。 如果同时指定 Retry 和 longRetry，则每次 longRetry 尝试均包含 Retry 尝试，且最大尝试次数为 Retry * longRetry。<br/><br/>例如，如果活动策略中具有以下设置：<br/>Retry: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>假设仅执行一个切片（状态为“等待”），且活动执行每次都失败。 最初将有 3 次连续执行尝试。 每次尝试后，切片状态为“重试”。 前 3 次尝试结束后，切片状态为“长重试”。<br/><br/>1 小时（即 longRetryInteval 的值）后，开始另一组 3 次连续执行尝试。 之后，切片的状态变为“失败”，且不会再进行重试。 因此，共进行了 6 次尝试。<br/><br/>如果某次执行成功，切片状态“就绪”，且不会再重试。<br/><br/>如果依赖数据在非确定性时间到达，或处理数据的总体环境难以捉摸，可以使用 longRetry。 在这种情况下，一遍遍重试效果可能不理想，但一段时间后再重试可能会输出想要的结果。<br/><br/>注意：不要为 longRetry 或 longRetryInterval 设置高值。 通常，较高值可能会引起其他系统问题。 |
 | longRetryInterval |TimeSpan |00:00:00 |长重试尝试之间的延迟 |
 
 有关详细信息，请参阅[管道](data-factory-create-pipelines.md)一文。 
@@ -330,7 +330,7 @@ ms.locfileid: "70135293"
 
 **输入数据集**
 
-删除文件夹中某给定日期的每小时输入文件。 输入的 Availability 设置为 **Hour**（frequency：Hour，interval：1）。
+删除文件夹中某给定日期的每小时输入文件。 输入的 Availability 设置为 **Hour** (frequency: Hour, interval: 1)。
 
 ```json
 {
@@ -359,7 +359,7 @@ ms.locfileid: "70135293"
 ```
 **输出数据集**
 
-每天在当天的文件夹中创建一个输出文件。 输出的 Availability 设置为 **Day**（frequency：Day 且 interval：1）。
+每天在当天的文件夹中创建一个输出文件。 输出的 Availability 设置为 **Day** (frequency: Day and interval: 1)。
 
 ```json
 {
@@ -450,7 +450,7 @@ Hive 脚本接收相应的 *DateTime* 信息作为参数，这些参数使用 **
 
 必须为每个活动运行指定：数据工厂应对每周输入数据集使用上一周的数据切片。 使用以下代码段中所示的 Azure 数据工厂函数实现此行为。
 
-**输入 1：Azure blob**
+**Input1：Azure blob**
 
 第一个输入是每日更新的 Azure blob。
 
@@ -480,7 +480,7 @@ Hive 脚本接收相应的 *DateTime* 信息作为参数，这些参数使用 **
 }
 ```
 
-**输入 2：Azure blob**
+**Input2：Azure blob**
 
 Input2 是每周更新的 Azure blob。
 
@@ -512,7 +512,7 @@ Input2 是每周更新的 Azure blob。
 
 **输出：Azure blob**
 
-每天在当天的文件夹中创建一个输出文件。 输出的 Availability 设置为 **day**（frequency：Day，interval：1）。
+每天在当天的文件夹中创建一个输出文件。 输出的 Availability 设置为 **day** (frequency: Day, interval: 1)。
 
 ```json
 {

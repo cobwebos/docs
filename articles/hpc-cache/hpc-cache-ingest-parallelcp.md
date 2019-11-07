@@ -1,19 +1,19 @@
 ---
-title: Azure HPC 缓存预览数据引入-并行复制脚本
+title: Azure HPC 缓存数据引入-并行复制脚本
 description: 如何使用并行复制脚本在 Azure HPC 缓存中将数据移动到 Blob 存储目标
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 4899f946cb358693c969def3fa740af64675d934
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 0bb74dcd683145fbae22cf0b6d2827ad9e16de0e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254514"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582689"
 ---
-# <a name="azure-hpc-cache-preview-data-ingest---parallel-copy-script-method"></a>Azure HPC 缓存（预览）数据引入-并行复制脚本方法
+# <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Azure HPC 缓存数据引入-并行复制脚本方法
 
 本文介绍如何创建 ``parallelcp`` 脚本，并使用它将数据移动到 Blob 存储容器，以便与 Azure HPC 缓存一起使用。
 
@@ -75,7 +75,7 @@ EOM
 
 ## <a name="parallel-copy-example"></a>并行复制示例
 
-此示例使用并行复制脚本，使用 Azure HPC 缓存中的源文件编译 @no__t 0。
+此示例使用并行复制脚本，使用 Azure HPC 缓存中的源文件编译 ``glibc``。
 
 源文件缓存在 Azure HPC 缓存装载点，对象文件存储在本地硬盘上。
 

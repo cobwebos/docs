@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库多模型功能 | Microsoft Docs
+title: Azure SQL 数据库多模型功能
 description: Azure SQL 数据库允许使用同一数据库中的多个数据模型。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: e319daf322d688828c7d05d78dacd2359273223f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7156b9923c9cb98ae3dde143c98eb32a6eb11a9c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567126"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687732"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL 数据库的多模型功能
 
@@ -29,7 +29,7 @@ Azure SQL 数据库设计为使用关系模型，在大多数情况下，该模�
 - 某些信息或结构更适合 NoSQL 模型，并且你不想要使用独立的 NoSQL 数据库。
 - 大部分数据适合关系模型，并且你需要以 NoSQL 形式为某些数据部分建模。
 - 希望利用丰富的 Transact-SQL 语言来查询和分析关系数据与 NoSQL 数据，并将其集成到可以使用 SQL 语言的各种工具和应用程序。
-- 要应用数据库功能 (如[内存中技术](sql-database-in-memory.md)) 来提高分析或处理 NoSQL 数据 strucutres 的性能, 请使用[事务复制](sql-database-managed-instance-transactional-replication.md)或[可读副本](sql-database-read-scale-out.md)在上创建数据的副本其他位置, 并从主数据库中卸载一些分析工作负荷。
+- 要应用数据库功能（如[内存中技术](sql-database-in-memory.md)）来提高分析或处理 NoSQL 数据 strucutres 的性能，请使用[事务复制](sql-database-managed-instance-transactional-replication.md)或[可读副本](sql-database-read-scale-out.md)在上创建数据的副本其他位置，并从主数据库中卸载一些分析工作负荷。
 
 ## <a name="overview"></a>概述
 
@@ -66,7 +66,7 @@ Azure SQL 数据库提供图形数据库功能，用于对数据库中的多对�
 
 ## <a name="json-features"></a>JSON 功能
 
-使用 Azure SQL 数据库可以分析和查询以 JavaScript 对象表示法 [(JSON)](https://www.json.org/) 格式表示的数据，然后将关系数据导出为 JSON 文本。
+使用 Azure SQL 数据库可以分析和查询以 JavaScript 对象表示法 [(JSON)](https://www.json.org/) 格式表示的数据，并将关系数据导出为 JSON 文本。
 
 JSON 是用于在新式 Web 与移动应用程序中交换数据的流行数据格式。 JSON 还用于将半结构化数据存储在日志文件或 NoSQL 数据库（例如 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)）中。 许多 REST Web 服务返回采用 JSON 文本格式的结果，或接受采用 JSON 格式的数据。 大多数 Azure 服务（例如 [Azure 搜索](https://azure.microsoft.com/services/search/)、[Azure 存储](https://azure.microsoft.com/services/storage/)和 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)）都具有返回或使用 JSON 的 REST 终结点。
 
@@ -74,7 +74,7 @@ JSON 是用于在新式 Web 与移动应用程序中交换数据的流行数据�
 
 ![JSON 函数](./media/sql-database-json-features/image_1.png)
 
-对于 JSON 文本，可以使用内置函数 [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx)、[JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx) 和 [ISJSON](https://msdn.microsoft.com/library/dn921896.aspx)，从 JSON 中提取数据，或者验证 JSON 的格式是否正确。 使用 [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) 函数可以更新 JSON 文本中的值。 对于更高级的查询和分析，使用 [OPENJSON](https://msdn.microsoft.com/library/dn921885.aspx) 函数可将 JSON 对象数组转换成行集。 可对返回的结果集执行任何 SQL 查询。 最后，使用 [FOR JSON](https://msdn.microsoft.com/library/dn921882.aspx) 可将存储在关系表中的数据格式化为 JSON 文本。
+对于 JSON 文本，可以使用内置函数 [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx)、[JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx) 和 [ISJSON](https://msdn.microsoft.com/library/dn921896.aspx)，从 JSON 中提取数据，或者验证 JSON 的格式是否正确。 使用 [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) 函数可以更新 JSON 文本中的值。 对于更高级的查询和分析，[OPENJSON](https://msdn.microsoft.com/library/dn921885.aspx) 函数可将 JSON 对象数组转换成行集。 可对返回的结果集执行任何 SQL 查询。 最后，使用 [FOR JSON](https://msdn.microsoft.com/library/dn921882.aspx) 可将存储在关系表中的数据格式化为 JSON 文本。
 
 有关详细信息，请参阅[如何处理 Azure SQL 数据库中的 JSON 数据](sql-database-json-features.md)。
 [JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) 是一项核心 SQL Server 数据库引擎功能，可在此处找到有关 JSON 功能的更多信息。

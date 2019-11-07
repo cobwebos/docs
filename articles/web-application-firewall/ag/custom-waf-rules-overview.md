@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 10/04/2019
 ms.author: victorh
-ms.openlocfilehash: 844e24466e9a9b46be3212690767a408e75f234d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 0ac37378797c59d79af5d026200b68154836c5ac
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516612"
+ms.locfileid: "73585393"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure 应用程序网关上的 Web 应用程序防火墙 v2 的自定义规则
 
@@ -162,6 +162,11 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
 - Log –允许规则写入日志，但允许其余规则运行以进行评估。 后续的自定义规则将接在托管规则的后面按优先顺序进行评估。
 
 ## <a name="geomatch-custom-rules-preview"></a>Geomatch 自定义规则（预览）
+
+自定义规则允许创建定制的规则，以满足应用程序的确切需求和安全策略。 现在，你可以按国家/地区限制对你的 web 应用程序的访问，该国家/地区提供公共预览版。 与所有自定义规则一样，此逻辑可以与其他规则结合，以满足应用程序的需求。 
+
+   > [!NOTE]
+   > Geomatch 自定义规则在美国中南部和北欧提供。 若要在门户中访问它们，请使用[此链接](https://aka.ms/AppGWWAFGeoMatch)，直到所有人都可以使用。 
 
 如果使用的是 Geomatch 运算符，则选择器可以是以下两位数国家/地区代码中的任何一个。 
 

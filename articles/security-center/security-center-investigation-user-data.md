@@ -1,5 +1,5 @@
 ---
-title: 管理在 Azure 安全中心调查中找到的用户数据 | Microsoft Docs
+title: 管理在 Azure 安全中心调查中找到的用户数据
 description: " 了解如何管理在 Azure 安全中心调查功能中找到的用户数据。 "
 services: operations-management-suite
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
-ms.openlocfilehash: 8b6bde69f233fee9fe20b260e392966298f13a9a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 059ca2a26e50128d6bc4313dad9f995e97c06378
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202035"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686404"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>管理在 Azure 安全中心调查中找到的用户数据
 本文提供有关如何管理在 Azure 安全中心调查功能中找到的用户数据的信息。 调查数据存储在[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)中，并在安全中心公开。 管理用户数据包括导出或删除数据的能力。
@@ -31,7 +31,7 @@ ms.locfileid: "71202035"
 调查功能在“实体”选项卡下显示所有实体、用户信息和数据。
 
 ## <a name="securing-and-controlling-access-to-personal-information"></a>保护和控制对个人信息的访问
-分配了读者、所有者、参与者或帐户管理员角色的安全中心用户可以访问该工具中的客户数据。
+分配了读者、所有者、参与者或帐户管理员角色的安全中心用户可以在该工具中访问客户数据。
 
 若要详细了解读者、所有者和参与者角色，请参阅[针对 Azure 基于角色的访问控制的内置角色](../role-based-access-control/built-in-roles.md)。 若要了解有关帐户管理员角色的详细信息，请参阅 [Azure 订阅管理员](../billing/billing-add-change-azure-subscription-administrator.md)。
 
@@ -45,7 +45,7 @@ DELETE
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/features/security/incidents/{incidentName}
 ```
 
-可以通过使用 `GET` 请求列出所有事件找到 `incidentName` 输入：
+可以通过使用 `incidentName` 请求列出所有事件找到 `GET` 输入：
 
 ```HTTP
 GET

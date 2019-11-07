@@ -1,5 +1,5 @@
 ---
-title: 在 Windows 虚拟机上部署 Windows 7 虚拟机-Azure
+title: 部署 Windows 7 虚拟机 Windows 虚拟桌面-Azure
 description: 如何在 Windows 虚拟机上配置和部署 Windows 7 虚拟机。
 services: virtual-desktop
 author: Heidilohr
@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: 3a6fb67ce531ed8cc028d2d0a8dfc3022544efe0
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 90b871c2b75f7ed40c290231ef822258c6b4e6d4
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947570"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606875"
 ---
-# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>在 Windows 虚拟桌面上部署 Windows 7 虚拟机
+# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>在 Windows 虚拟机上部署 Windows 7 虚拟机
 
 在 Windows 虚拟机上部署 Windows 7 虚拟机（VM）的过程与运行更高版本 Windows 的 Vm 略有不同。 本指南将介绍如何部署 Windows 7。
 
@@ -35,7 +35,7 @@ ms.locfileid: "71947570"
 5. 请在 VM 上中转到 Windows 更新。
 6. 安装 "重要" 类别中的所有 Windows 更新。
 7. 在可选类别中安装所有 Windows 更新（语言包除外）。 这将安装完成这些说明所需的远程桌面协议8.0 更新（[KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)）。
-8. 打开本地组策略编辑器，导航到 "**计算机配置**"  > **管理模板**@no__t 3 个**Windows 组件** > **远程桌面服务** > **远程桌面会话主机** > **远程会话环境**。
+8. 打开本地组策略编辑器，导航到 "**计算机配置**" > **管理模板** > **Windows 组件** ** > 远程桌面服务 > 远程桌面会话主机** > **远程会话环境**。
 9. 启用远程桌面协议8.0 策略。
 10. 通过运行以下命令重新启动虚拟机：
     

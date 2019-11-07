@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4d050385bb76817c8aeada1bef4c4697a1f58d09
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: c70226ef58ed60a7be556b88366953796ed6fff1
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497273"
+ms.locfileid: "73580567"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中配置自动 ML 试验
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "73497273"
 
 ## <a name="select-your-experiment-type"></a>选择试验类型
 
-在开始试验之前，应确定要解决的机器学习问题类型。 自动化机器学习支持分类、回归和预测任务类型。
+在开始试验之前，应确定要解决的机器学习问题类型。 自动化机器学习支持分类、回归和预测任务类型。 详细了解[任务类型](how-to-define-task-type.md)。
 
 在自动化和优化过程中，自动化机器学习支持以下算法。 用户不需要指定算法。
 
@@ -57,10 +57,10 @@ ms.locfileid: "73497273"
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
 [DNN 分类器](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN 回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN 回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
 [DNN 线性分类器](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[线性回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[线性回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[朴素贝叶斯](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|[Fast 线性回归量](https://docs.microsoft.com/en-us/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[自动 ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[联机梯度下降回归量](https://docs.microsoft.com/en-us/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
-|[平均感知器分类器](https://docs.microsoft.com/en-us/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||ForecastTCN
-|[线性 SVM 分类器](https://docs.microsoft.com/en-us/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)||
+[朴素贝叶斯](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|[Fast 线性回归量](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[自动 ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[联机梯度下降回归量](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+|[平均感知器分类器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||ForecastTCN
+|[线性 SVM 分类器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)||
 
 使用 `AutoMLConfig` 构造函数中的 `task` 参数来指定实验类型。
 
@@ -108,7 +108,7 @@ automl_config = AutoMLConfig(task = "classification")
 * 轻松地将数据从静态文件或 URL 源传输到工作区
 * 在云计算资源上运行时，使数据可用于训练脚本
 
-有关使用 `Dataset` 类将数据装载到计算目标的示例，请参阅操作[方法](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target)。
+有关使用 [ 类将数据装载到计算目标的示例，请参阅](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target)操作方法`Dataset`。
 
 ## <a name="train-and-validation-data"></a>训练和验证数据
 
@@ -341,7 +341,7 @@ best_run, fitted_model = automl_run.get_output()
 请看以下示例：
 + 有4种输入功能： A （数值）、B （数值）、C （数值）、D （日期时间）
 + 数值特征 C 被丢弃，因为它是具有所有唯一值的 ID 列
-+ 数值特征 A 和 B 的值缺失，因此数据估算的是平均值
++ 数值特征 A 和 B 的值缺失，因此数据估算的平均值
 + DateTime 功能 D 特征化为11个不同的工程功能
 
 在拟合模型的第一个步骤中使用这两个 Api 来了解更多信息。  请参阅[此示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)。

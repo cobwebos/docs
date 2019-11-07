@@ -1,5 +1,5 @@
 ---
-title: Azure 安全中心的 Microsoft Defender 高级威胁防护
+title: Microsoft Defender 高级威胁防护-Azure 安全中心
 description: 本文档介绍 Azure 安全中心与 Microsoft Defender 高级威胁防护之间的集成。
 services: security-center
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 6ceed914d1c69ccdfce5d7acb6dcfc1afc9ef868
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 46b9fe5c6a038aa98cf8df64c40bf8ea1747efec
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819887"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663611"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Azure 安全中心的 Microsoft Defender 高级威胁防护
 
@@ -95,7 +95,7 @@ Azure 安全中心现在提供了以下功能：
 
 生成良性的 Microsoft Defender ATP 测试警报：
 
-1. 使用远程桌面访问 Windows Server 2012 R2 VM 或 Windows Server 2016 VM。  打开命令提示符窗口。
+1. 使用远程桌面访问 Windows Server 2012 R2 VM 或 Windows Server 2016 VM。 打开命令提示符窗口。
 
 2. 在提示符下，复制并运行以下命令。 命令提示符窗口将自动关闭。
 
@@ -107,7 +107,7 @@ Azure 安全中心现在提供了以下功能：
 
 3. 如果此命令成功，你将在 Azure 安全中心仪表板和 Microsoft Defender ATP 门户上看到新警报。 此警报可能要在几分钟之后才显示。
 
-4. 若要在安全中心查看该警报，请转到“安全警报” >  “可疑的 Powershell 命令行”。
+4. 若要在安全中心查看该警报，请转到“安全警报” **“可疑的 Powershell 命令行”。**  > 
 
 5. 从调查窗口中，选择要前往 Microsoft Defender ATP 门户的链接。
 

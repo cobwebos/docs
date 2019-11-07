@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/04/2019
-ms.openlocfilehash: 85346a2334d240eceb0daa4519ce69b4eb4906cc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: f1b061e92ce0650da4d5b95643eb6e9df917e3b8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497462"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671553"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什么是 Azure 机器学习管道？
 
@@ -119,7 +119,7 @@ Azure ML 管道与 Azure 机器学习工作区关联，管道步骤与该工作�
 
 在直观地设计管道时，步骤的输入和输出显示为可见。 您可以拖放数据连接，使您能够快速理解和修改管道的数据流。
  
-![Azure 机器学习设计器示例](./media/concept-ml-pipelines/visual-design-surface.gif)
+![Azure 机器学习设计器示例](./media/concept-ml-pipelines/designer-drag-and-drop.gif)
 
 ### <a name="understanding-the-execution-graph"></a>了解执行图
 
@@ -183,7 +183,7 @@ pipeline_run.wait_for_completion()
 
 * 使用管道作为单独的方法来分隔问题。 Python 的内置函数、对象和模块会非常长，以避免混淆编程状态！ 与函数调用相比，管道步骤要昂贵得多。
 
-* 管道步骤之间的繁重耦合。 如果重构依赖步骤通常需要修改上一个步骤的输出，则可能是单独的步骤的成本要低于权益。 步骤过于耦合的另一个提示是不是数据的步骤的参数，而是用于控制处理的标志。 
+* 管道步骤间的繁重耦合。 如果重构依赖步骤通常需要修改上一个步骤的输出，则可能是单独的步骤的成本要低于权益。 步骤过于耦合的另一个提示是不是数据的步骤的参数，而是用于控制处理的标志。 
 
 * 提前优化计算资源。 例如，有几个阶段可用于进行数据准备，其中一阶段经常会出现 "哦，这里，我可以将 `MpiStep` 用于并行编程，但此处可以使用具有不太强大计算目标的 `PythonScriptStep`"等。 而且，在很长一段时间内，创建如这样的细化步骤可能会很有价值，尤其是在有可能使用缓存的结果而不是始终重新计算时。 但管道并不旨在代替 `multiprocessing` 模块。 
 

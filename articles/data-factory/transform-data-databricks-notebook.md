@@ -1,5 +1,5 @@
 ---
-title: 使用 Databricks Notebook 转换数据 - Azure | Microsoft Docs
+title: 通过 Databricks 笔记本转换数据-Azure
 description: 了解如何通过运行 Databricks Notebook 处理或转换数据。
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 23166a4a0110629674db6ccc9d225118264b3c15
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 685a7863af74bf90c819453b41078b48ab6d2045
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233062"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683927"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>通过运行 Databricks Notebook 转换数据
 
-[数据工厂管道](concepts-pipelines-activities.md)中的 Azure Databricks Notebook 活动在 Azure Databricks 工作区中运行 Databricks Notebook。 本文基于 [数据转换活动](transform-data.md) 一文，后者概述了数据转换和受支持的转换活动。 Azure Databricks 是一个用于运行 Apache Spark 的托管平台。
+[数据工厂管道](concepts-pipelines-activities.md)中的 Azure Databricks Notebook 活动在 Azure Databricks 工作区中运行 Databricks Notebook。 本文基于 [数据转换活动](transform-data.md) 一文，后者概述了数据转换和受支持的转换活动。 Azure Databricks 是用于运行 Apache Spark 的托管平台。
 
 ## <a name="databricks-notebook-activity-definition"></a>Databricks Notebook 活动定义
 
@@ -57,10 +57,10 @@ ms.locfileid: "70233062"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-|属性|说明|必填|
+|属性|说明|必选|
 |---|---|---|
 |name|管道中活动的名称。|是|
-|description|描述活动用途的文本。|否|
+|说明|描述活动用途的文本。|否|
 |type|对于 Databricks Notebook 活动，活动类型是 DatabricksNotebook。|是|
 |linkedServiceName|Databricks 链接服务的名称，Databricks Notebook 在其上运行。 若要了解此链接服务，请参阅 [计算链接服务](compute-linked-services.md) 一文。|是|
 |notebookPath|要在 Databricks 工作区中运行的 Notebook 的绝对路径。 此路径必须以斜杠开头。|是|
@@ -70,7 +70,7 @@ ms.locfileid: "70233062"
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Databricks 活动支持的库
 
-在上面的 Databricks 活动定义中, 可以指定以下库类型: *jar*、*蛋状物*、 *whl*、 *maven*、 *pypi*、 *cran*。
+在上面的 Databricks 活动定义中，可以指定以下库类型： *jar*、*蛋状物*、 *whl*、 *maven*、 *pypi*、 *cran*。
 
 ```json
 {
@@ -116,14 +116,14 @@ ms.locfileid: "70233062"
 
 可以使用 databricks 活动中的*baseParameters*属性将数据工厂参数传递到笔记本。 
 
-在某些情况下, 你可能需要将笔记本中的某些值传递回数据工厂, 该数据工厂可用于数据工厂中的控制流 (条件检查) 或下游活动 (大小限制为 2MB) 使用。 
+在某些情况下，你可能需要将笔记本中的某些值传递回数据工厂，该数据工厂可用于数据工厂中的控制流（条件检查）或下游活动（大小限制为2MB）使用。 
 
-1. 在笔记本中, 可以调用[dbutils ("returnValue")](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit) , 并将相应的 "returnValue" 返回到数据工厂。
+1. 在笔记本中，可以调用[dbutils （"returnValue"）](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit) ，并将相应的 "returnValue" 返回到数据工厂。
 
-2. 您可以使用表达式 (例如) `'@activity('databricks notebook activity name').output.runOutput'`在数据工厂中使用输出。 
+2. 您可以使用表达式（如 `'@activity('databricks notebook activity name').output.runOutput'`）在数据工厂中使用输出。 
 
    > [!IMPORTANT]
-   > 如果要传递 JSON 对象, 可以通过追加属性名称来检索值。 示例： `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
+   > 如果要传递 JSON 对象，可以通过追加属性名称来检索值。 示例： `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>如何上传 Databricks 中的库
 

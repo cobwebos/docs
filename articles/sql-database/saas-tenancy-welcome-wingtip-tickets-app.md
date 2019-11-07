@@ -1,5 +1,5 @@
 ---
-title: 欢迎使用 Wingtips 应用 - Azure SQL 数据库 | Microsoft Docs
+title: '欢迎使用 Wingtips 应用-Azure SQL 数据库 '
 description: 了解有关云环境中的 Azure SQL 数据库的数据库租户模型和示例 Wingtips SaaS 应用程序的内容。
 keywords: sql 数据库教程
 services: sql-database
@@ -12,16 +12,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
-ms.openlocfilehash: ca534d3ffcfd1d4caeb9cf755934a846fafae26e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6b8cb9bed2f5fdd0b246e73c84731081d0f2e41e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570111"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691823"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>Wingtip Tickets SaaS 应用程序
 
-三个示例均实现了同一个 Wingtip Tickets SaaS应用程序。 此应用是面向小型场所（电影院、俱乐部等）的事件清单和票证 SaaS 应用。每个场所都是此应用的一个租户，并有自己的数据：场所详细信息、事件列表、客户、票证订单等。此应用与管理脚本和教程一起展示了一个端到端的 SaaS 方案。 此方案包括预配租户、监视并管理性能、架构管理和跨租户报告和分析。
+三个示例均实现了同一个 Wingtip Tickets SaaS应用程序。 该应用是一个简单的事件列表和票证 SaaS 应用，面向小型会场、俱乐部等。每个地点都是应用的租户，并有自己的数据：地点详细信息、事件列表、客户、票证订单等。 该应用与管理脚本和教程一起展示了一个端到端 SaaS 方案。 此方案包括预配租户、监视并管理性能、架构管理和跨租户报告和分析。
 
 ## <a name="three-saas-application-and-tenancy-patterns"></a>三种 SaaS 应用程序和租户模式
 

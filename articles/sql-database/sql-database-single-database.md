@@ -1,5 +1,5 @@
 ---
-title: 什么是 Azure SQL 数据库单一数据库 | Microsoft Docs
+title: 什么是 Azure SQL 数据库单一数据库
 description: 了解 Azure SQL 数据库中的单一数据库
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 2f55ad795cc76d59581b25ca60a1c89e7db96b04
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: add0288cb87fd41c8c6ebae982c999db2ea07d0f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496010"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687130"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>什么是 Azure SQL 数据库中的单一数据库
 
@@ -50,7 +50,7 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 
 有关详细信息，请参阅[解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异](sql-database-transact-sql-information.md)。
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全性
 
 SQL 数据库提供一系列[内置安全性和符合性](sql-database-security-overview.md)功能，帮助应用程序满足各种安全性和符合性要求。
 

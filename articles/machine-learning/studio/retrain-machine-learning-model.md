@@ -1,6 +1,6 @@
 ---
-title: 重新训练并部署 Web 服务
-titleSuffix: Azure Machine Learning Studio (classic)
+title: 重新导流 Web 服务
+titleSuffix: ML Studio (classic) Azure
 description: 了解如何在 Azure 机器学习 Studio （经典）中更新 web 服务以使用新训练的机器学习模型。
 services: machine-learning
 ms.service: machine-learning
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 55b054ffe55430ea106c72cdd91fdfba3a457cf5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e35ab4b3a45edd5a1172bc3a07d7c31abd2135f7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482992"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684772"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>重新训练和部署机器学习模型
 
 重新训练是确保机器学习模型保持准确的一种方法，该方法基于最相关的可用数据。 本文说明如何重新训练和部署机器学习模型，作为 Studio （经典）中的新 web 服务。 如果要重新训练经典 Web 服务，请参阅[此操作说明文章](retrain-classic-web-service.md)。
 
-本文假设你已部署了一个预测 Web 服务。 如果还没有预测性 web 服务，请[在此处了解如何部署 Studio （经典） web 服务。](publish-a-machine-learning-web-service.md)
+本文假设你已部署了一个预测 Web 服务。 如果还没有预测性 web 服务，请[在此处了解如何部署 Studio （经典） web 服务。](deploy-a-machine-learning-web-service.md)
 
 你将执行以下步骤来重新训练和部署机器学习新 Web 服务：
 

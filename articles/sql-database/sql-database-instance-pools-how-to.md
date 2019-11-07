@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库实例池操作方法指南（预览） |Microsoft Docs
+title: Azure SQL 数据库实例池操作方法指南（预览）
 description: 本文介绍如何创建和管理 Azure SQL 数据库实例池（预览版）。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 5862a54c92de7395ce42865ae32d453e926048d8
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 461de4da35905ed860fb2ed9d2c655b55b777683
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70294264"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689732"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Azure SQL 数据库实例池（预览）操作指南
 
@@ -26,7 +26,7 @@ ms.locfileid: "70294264"
 
 下表显示了与实例池相关的可用操作及其在 Azure 门户和 PowerShell 中的可用性。
 
-|Command|Azure 门户|PowerShell|
+|命令|Azure 门户|PowerShell|
 |:---|:---|:---|
 |创建实例池|否|是|
 |更新实例池（属性的数目有限）|否 |是 |
@@ -41,7 +41,7 @@ ms.locfileid: "70294264"
 
 可用的[PowerShell 命令](https://docs.microsoft.com/powershell/module/az.sql/)
 
-|Cmdlet |描述 |
+|Cmdlet |说明 |
 |:---|:---|
 |[新-AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | 创建 Azure SQL 数据库实例池。 |
 |[AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | 返回有关 Azure SQL 实例池的信息。 |
@@ -92,7 +92,7 @@ ms.locfileid: "70294264"
 
 - 仅常规用途和 Gen5 在公共预览版中可用。
 - 池名称只能包含小写字母、数字和连字符，并且不能以连字符开头。
-- 若要获取子网 ID， `Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork`请使用。
+- 若要获取子网 ID，请使用 `Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork`。
 - 如果要使用 AHB （Azure 混合权益），则它将应用于实例池级别。 可以在创建池时设置许可证类型，也可以在创建后随时对其进行更新。
 
 > [!IMPORTANT]

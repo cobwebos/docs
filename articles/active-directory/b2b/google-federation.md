@@ -5,31 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 11/1/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b26679542753d5fb429c33e4220c23a3937c5cb
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 68acf32660fe36ddd4c2982b818ce21adde7ddab
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430439"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603591"
 ---
-# <a name="add-google-as-an-identity-provider-for-b2b-guest-users-preview"></a>添加 Google 作为 B2B 来宾用户的标识提供者（预览版）
+# <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>将 Google 添加为 B2B 来宾用户的标识提供者
 
-|     |
-| --- |
-| Google federation 是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
+通过设置与 Google 的联合身份验证，你可以允许受邀用户使用其自己的 Gmail 帐户登录到你的共享应用和资源，而无需创建 Microsoft 帐户（Msa）。 
 
-通过设置与 Google 的联合身份验证，你可以允许受邀用户使用其自己的 Gmail 帐户登录到你的共享应用和资源，而无需创建 Microsoft 帐户（Msa）或 Azure AD 帐户。 Google federation 专为 Gmail 用户设计。 若要与 G Suite 域联合，请改用[直接联合身份验证功能](direct-federation.md)。
 > [!NOTE]
-> Google 来宾用户必须使用包含租户上下文的链接登录（例如，`https://myapps.microsoft.com/?tenantid=<tenant id>` 或 `https://portal.azure.com/<tenant id>`；对于经过验证的域，请使用 `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`）。 也可以使用应用程序和资源的直接链接，只要这些链接包含租户上下文即可。 来宾用户目前无法使用不包含租户上下文的终结点登录。 例如，使用 `https://myapps.microsoft.com`、`https://portal.azure.com` 或团队公共终结点会导致错误。
- 
+> Google federation 专为 Gmail 用户设计。 若要与 G Suite 域联合，请使用[直接联合身份验证功能](direct-federation.md)。
+
 ## <a name="what-is-the-experience-for-the-google-user"></a>Google 用户体验是什么？
 向某个 Google Gmail 用户发送邀请时，该来宾用户应使用包含租户上下文的链接来访问你的共享应用或资源。 他们的体验根据是否已登录到 Google 而异：
   - 如果来宾用户未登录到 Google，则系统会提示他们登录到 Google。
@@ -39,14 +35,27 @@ ms.locfileid: "72430439"
 
 ![显示 Google 登录页的屏幕截图](media/google-federation/google-sign-in.png)
 
+## <a name="limitations"></a>限制
+
+团队完全支持所有设备上的 Google guest 用户。 Google 用户可以从 `https://teams.microsoft.com`等常见终结点登录到团队。
+
+其他应用程序的常见终结点可能不支持 Google 用户。 Google guest 用户必须使用包含租户信息的链接登录。 下面是一些示例：
+  * `https://myapps.microsoft.com/?tenantid=<your tenant id>`
+  * `https://portal.azure.com/<your tenant id>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+
+   如果 Google guest 用户尝试使用 `https://myapps.microsoft.com` 或 `https://portal.azure.com`之类的链接，则会出现错误。
+
+你还可以为 Google guest 用户提供指向应用程序或资源的直接链接，只要此链接包含你的租户信息，例如 `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`。 
+
 ## <a name="step-1-configure-a-google-developer-project"></a>步骤 1：配置 Google 开发人员项目
 首先，在 Google Developers Console 中创建一个新项目，以获取稍后要添加到 Azure AD 的客户端 ID 和客户端机密。 
-1. 转到 Google API (https://console.developers.google.com )，并使用 Google 帐户登录。 我们建议使用共享团队 Google 帐户。
+1. 转到 Google API (https://console.developers.google.com)，并使用 Google 帐户登录。 我们建议使用共享团队 Google 帐户。
 2. 创建新项目：在仪表板上，依次选择“Create Project”（创建项目）、“Create”（创建）。 在“New Project”（新建项目）页上输入**项目名称**，然后选择“Create”（创建）。
    
    ![显示 Google 的新项目页的屏幕截图](media/google-federation/google-new-project.png)
 
-3. 确保已在项目菜单中选择该新项目。 然后，打开左上角的菜单，并选择“APIs & Services”（API 和服务） > “Credentials”（凭据）。
+3. 确保已在项目菜单中选择该新项目。 然后，打开左上角的菜单，并选择“APIs & Services”（API 和服务） **“Credentials”（凭据）。**  > 
 
    ![显示 Google API 凭据选项的屏幕截图](media/google-federation/google-api.png)
  
@@ -69,11 +78,11 @@ ms.locfileid: "72430439"
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>（其中，`<directory id>` 是你的目录 ID）
    
      > [!NOTE]
-     > 若要查找自己的目录 ID，请转到 https://portal.azure.com ，然后在“Azure Active Directory”下选择“Properties”（属性）并复制“Directory ID”（目录 ID）。
+     > 若要查找自己的目录 ID，请转到 https://portal.azure.com，然后在“Azure Active Directory”下选择“Properties”（属性）并复制“Directory ID”（目录 ID）。
 
    ![显示 "授权重定向 Uri" 部分的屏幕截图](media/google-federation/google-create-oauth-client-id.png)
 
-9. 选择**创建**。 复制客户端 ID 和客户端机密，稍后在 Azure AD 门户中添加标识提供者时需要用到。
+9. 选择“创建”。 复制客户端 ID 和客户端机密，稍后在 Azure AD 门户中添加标识提供者时需要用到。
 
    ![显示 OAuth 客户端 ID 和客户端密钥的屏幕截图](media/google-federation/google-auth-client-id-secret.png)
 

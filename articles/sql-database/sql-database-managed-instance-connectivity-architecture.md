@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库中托管实例的连接体系结构 | Microsoft Docs
+title: Azure SQL 数据库中托管实例的连接体系结构
 description: 了解 Azure SQL 数据库托管实例的通信和连接体系结构，以及如何组件如何将流量定向到托管实例。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 7e32cb302322f7a80154a3f2a246d7d4f1743c09
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 881f116988ae0c9a6a33c8454cd1e4012580bfab
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249366"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688205"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 数据库中托管实例的连接体系结构
 
@@ -85,29 +85,29 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 在虚拟网络中的专用子网内部署托管实例。 该子网必须具有以下特征：
 
-- **专用子网：** 托管实例的子网不能包含其他任何关联的云服务，且不能是网关子网。 该子网不能包含除该托管实例以外的其他任何资源，以后无法在该子网中添加其他类型的资源。
-- **网络安全组 (NSG)** ：与虚拟网络关联的 NSG 必须在其他任何规则的前面定义[入站安全规则](#mandatory-inbound-security-rules)和[出站安全规则](#mandatory-outbound-security-rules)。 当托管实例配置为使用重定向连接时，可以使用某个 NSG 通过筛选端口 1433 和端口 11000-11999 上的流量，来控制对托管实例数据终结点的访问。
-- **用户定义的路由 (UDR) 表：** 与虚拟网络关联的 UDR 表必须包含特定的[条目](#user-defined-routes)。
-- **没有服务终结点：** 不应将任何服务终结点与托管实例的子网相关联。 创建虚拟网络时，请务必禁用“服务终结点”选项。
-- **足够的 IP 地址：** 托管实例子网必须至少有 16 个 IP 地址。 建议的最少数目为 32 个 IP 地址。 有关详细信息，请参阅[确定托管实例的子网大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 根据[托管实例的网络要求](#network-requirements)配置托管实例后，可将其部署在[现有网络](sql-database-managed-instance-configure-vnet-subnet.md)中。 否则，请创建[新的网络和子网](sql-database-managed-instance-create-vnet-subnet.md)。
+- **专用子网：** 托管实例的子网不能包含与其关联的任何其他云服务，也不能是网关子网。 该子网不能包含除该托管实例以外的其他任何资源，以后无法在该子网中添加其他类型的资源。
+- **网络安全组（NSG）：** 与虚拟网络关联的 NSG 必须在任何其他规则之前定义[入站安全规则](#mandatory-inbound-security-rules)和[出站安全规则](#mandatory-outbound-security-rules)。 当托管实例配置为使用重定向连接时，可以使用某个 NSG 通过筛选端口 1433 和端口 11000-11999 上的流量，来控制对托管实例数据终结点的访问。
+- **用户定义的路由（UDR）表：** 与虚拟网络关联的 UDR 表必须包含特定[项](#user-defined-routes)。
+- **无服务终结点：** 不应将服务终结点与托管实例的子网相关联。 创建虚拟网络时，请务必禁用“服务终结点”选项。
+- **足够的 IP 地址：** 托管实例子网必须具有至少16个 IP 地址。 建议的最少数目为 32 个 IP 地址。 有关详细信息，请参阅[确定托管实例的子网大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 根据[托管实例的网络要求](sql-database-managed-instance-configure-vnet-subnet.md)配置托管实例后，可将其部署在[现有网络](#network-requirements)中。 否则，请创建[新的网络和子网](sql-database-managed-instance-create-vnet-subnet.md)。
 
 > [!IMPORTANT]
 > 如果目标子网缺少这些特征，则无法部署新的托管实例。 创建托管实例时，将会针对子网应用网络意向策略，以防止对网络设置进行不合规的更改。 从子网中删除最后一个实例后，网络意向策略也会一并删除。
 
 ### <a name="mandatory-inbound-security-rules"></a>强制性入站安全规则
 
-| 名称       |Port                        |Protocol|Source           |Destination|操作|
+| Name       |端口                        |协议|源           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|管理  |9000、9003、1438、1440、1452|TCP     |任意              |MI SUBNET  |Allow |
-|mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |Allow |
-|health_probe|任意                         |任意     |AzureLoadBalancer|MI SUBNET  |Allow |
+|管理  |9000、9003、1438、1440、1452|TCP     |任意              |MI SUBNET  |ALLOW |
+|mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |ALLOW |
+|health_probe|任意                         |任意     |AzureLoadBalancer|MI SUBNET  |ALLOW |
 
 ### <a name="mandatory-outbound-security-rules"></a>强制性出站安全规则
 
-| 名称       |Port          |Protocol|Source           |Destination|操作|
+| Name       |端口          |协议|源           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
-|管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |Allow |
-|mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |Allow |
+|管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |ALLOW |
+|mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |ALLOW |
 
 > [!IMPORTANT]
 > 确保端口 9000、9003、1438、1440、1452 只有一个入站规则，端口 80、443、12000 只有一个出站规则。 如果单独为每个端口配置入站和出站规则，则无法通过 Azure 资源管理器部署预配托管实例。 如果这些端口在单独的规则中，则部署将会失败并出现错误代码 `VnetSubnetConflictWithIntendedPolicy`
@@ -121,7 +121,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 ### <a name="user-defined-routes"></a>用户定义的路由
 
-|名称|地址前缀|下一跃点|
+|Name|地址前缀|下一跃点|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI SUBNET|虚拟网络|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|
@@ -239,36 +239,36 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 在虚拟网络中的专用子网内部署托管实例。 该子网必须具有以下特征：
 
-- **专用子网：** 托管实例的子网不能包含其他任何关联的云服务，且不能是网关子网。 该子网不能包含除该托管实例以外的其他任何资源，以后无法在该子网中添加其他类型的资源。
-- **子网委派**：需要将托管实例的子网委托给 @no__t 0 资源提供程序。
-- **网络安全组 (NSG)** ：NSG 需要与托管实例的子网相关联。 当托管实例配置为使用重定向连接时，可以使用某个 NSG 通过筛选端口 1433 和端口 11000-11999 上的流量，来控制对托管实例数据终结点的访问。 服务将自动添加允许不间断的管理流量流所需的[规则](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)。
-- **用户定义的路由 (UDR) 表：** UDR 表需要与托管实例的子网相关联。 你可以向路由表添加条目，以通过虚拟网络网关或虚拟网络设备（NVA）将具有本地专用 IP 范围的流量路由为目标。 服务将自动添加允许中断管理流量所需的[条目](#user-defined-routes-with-service-aided-subnet-configuration)。
+- **专用子网：** 托管实例的子网不能包含与其关联的任何其他云服务，也不能是网关子网。 该子网不能包含除该托管实例以外的其他任何资源，以后无法在该子网中添加其他类型的资源。
+- **子网委托：** 需要将托管实例的子网委托给 `Microsoft.Sql/managedInstances` 资源提供程序。
+- **网络安全组（NSG）：** NSG 需要与托管实例的子网相关联。 当托管实例配置为使用重定向连接时，可以使用某个 NSG 通过筛选端口 1433 和端口 11000-11999 上的流量，来控制对托管实例数据终结点的访问。 服务将自动添加允许不间断的管理流量流所需的[规则](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)。
+- **用户定义的路由（UDR）表：** UDR 表需要与托管实例的子网相关联。 你可以向路由表添加条目，以通过虚拟网络网关或虚拟网络设备（NVA）将具有本地专用 IP 范围的流量路由为目标。 服务将自动添加允许中断管理流量所需的[条目](#user-defined-routes-with-service-aided-subnet-configuration)。
 - **服务终结点：** 服务终结点可用于配置保存备份/审核日志的存储帐户的虚拟网络规则。
-- **足够的 IP 地址：** 托管实例子网必须至少有 16 个 IP 地址。 建议的最少数目为 32 个 IP 地址。 有关详细信息，请参阅[确定托管实例的子网大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 根据[托管实例的网络要求](#network-requirements)配置托管实例后，可将其部署在[现有网络](sql-database-managed-instance-configure-vnet-subnet.md)中。 否则，请创建[新的网络和子网](sql-database-managed-instance-create-vnet-subnet.md)。
+- **足够的 IP 地址：** 托管实例子网必须具有至少16个 IP 地址。 建议的最少数目为 32 个 IP 地址。 有关详细信息，请参阅[确定托管实例的子网大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 根据[托管实例的网络要求](sql-database-managed-instance-configure-vnet-subnet.md)配置托管实例后，可将其部署在[现有网络](#network-requirements)中。 否则，请创建[新的网络和子网](sql-database-managed-instance-create-vnet-subnet.md)。
 
 > [!IMPORTANT]
 > 创建托管实例时，将会针对子网应用网络意向策略，以防止对网络设置进行不合规的更改。 从子网中删除最后一个实例后，网络意向策略也会一并删除。
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>具有服务辅助子网配置的强制入站安全规则 
 
-| 名称       |Port                        |Protocol|Source           |Destination|操作|
+| Name       |端口                        |协议|源           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|管理  |9000、9003、1438、1440、1452|TCP     |SqlManagement    |MI SUBNET  |Allow |
-|            |9000、9003                  |TCP     |CorpnetSaw       |MI SUBNET  |Allow |
-|            |9000、9003                  |TCP     |65.55.188.0/24、167.220.0.0/16、131.107.0.0/16|MI SUBNET  |Allow |
-|mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |Allow |
-|health_probe|任意                         |任意     |AzureLoadBalancer|MI SUBNET  |Allow |
+|管理  |9000、9003、1438、1440、1452|TCP     |SqlManagement    |MI SUBNET  |ALLOW |
+|            |9000、9003                  |TCP     |CorpnetSaw       |MI SUBNET  |ALLOW |
+|            |9000、9003                  |TCP     |65.55.188.0/24、167.220.0.0/16、131.107.0.0/16|MI SUBNET  |ALLOW |
+|mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |ALLOW |
+|health_probe|任意                         |任意     |AzureLoadBalancer|MI SUBNET  |ALLOW |
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>具有服务辅助子网配置的强制出站安全规则 
 
-| 名称       |Port          |Protocol|Source           |Destination|操作|
+| Name       |端口          |协议|源           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
-|管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |Allow |
-|mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |Allow |
+|管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |ALLOW |
+|mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |ALLOW |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>具有服务辅助子网配置的用户定义路由 
 
-|名称|地址前缀|下一跃点|
+|Name|地址前缀|下一跃点|
 |----|--------------|-------|
 |vnetlocal 的子网|MI SUBNET|虚拟网络|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|
@@ -436,4 +436,4 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
   - 通过 [Azure 门户](sql-database-managed-instance-get-started.md)。
   - 使用 [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)。
   - 使用 [Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)。
-  - 使用 [Azure 资源管理器模板（使用包含 SSMS 的 JumpBox）](https://azure.microsoft.com/en-us/resources/templates/201-sqlmi-new-vnet-w-jumpbox/)。 
+  - 使用 [Azure 资源管理器模板（使用包含 SSMS 的 JumpBox）](https://azure.microsoft.com/resources/templates/201-sqlmi-new-vnet-w-jumpbox/)。 

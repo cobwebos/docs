@@ -1,6 +1,6 @@
 ---
-title: 创建情绪分析模型
-titleSuffix: Azure Machine Learning Studio (classic)
+title: 情绪分析用例
+titleSuffix: ML Studio (classic) Azure
 description: 如何使用用于文本预处理的模块在 Azure 机器学习 Studio （经典）中创建文本分析模型，N 元哈希或特征哈希
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: d24e4f98e987cb911a8bc0ffcd1b49e1bed8b920
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 63c1d19f1ab44fa56893c17edd78aeaf54a17314
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467162"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670703"
 ---
 # <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习 Studio （经典）中创建情绪分析模型
 

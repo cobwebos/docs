@@ -1,5 +1,5 @@
 ---
-title: 使用数据工厂向/从 Azure 表存储复制数据 | Microsoft Docs
+title: 使用数据工厂将数据复制到 Azure 表存储和从 Azure 表存储复制数据
 description: 了解如何使用数据工厂将数据从支持的源存储复制到 Azure 表存储，或从表存储复制到支持的接收器存储。
 services: data-factory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: 30685e59f6f8318c66a8500f33e8200743e487aa
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 9960c8cba2f1b9eb8c427163d02ecb337ef5ddfe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009887"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681140"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 表存储复制数据
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-azure-table-connector.md)
 > * [当前版本](connector-azure-table-storage.md)
 
@@ -39,7 +39,7 @@ ms.locfileid: "71009887"
 
 具体而言，此 Azure 表连接器支持使用帐户密钥和服务共享访问签名身份验证复制数据。
 
-## <a name="get-started"></a>开始使用
+## <a name="get-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -54,7 +54,7 @@ ms.locfileid: "71009887"
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureTableStorage**。 |是 |
-| connectionString | 为 connectionString 属性指定连接到存储所需的信息。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将帐户密钥放在 Azure 密钥保管库中，并从连接字符串中拉取 `accountKey` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 |是 |
+| connectionString | 为 connectionString 属性指定连接到存储所需的信息。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将帐户密钥放在 Azure 密钥保管库中，并从连接字符串中拉取 `accountKey` 配置。 有关更多详细信息，请参阅以下示例和[将凭据存储在 Azure 密钥保管库中](store-credentials-in-key-vault.md)一文。 |是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!NOTE]
@@ -129,7 +129,7 @@ ms.locfileid: "71009887"
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureTableStorage**。 |是 |
-| sasUri | 向表指定共享访问签名 URI 的 SAS URI。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将 SAS 令牌放在 Azure 密钥保管库中，以利用自动轮换以及删除令牌部分。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
+| sasUri | 向表指定共享访问签名 URI 的 SAS URI。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将 SAS 令牌放在 Azure 密钥保管库中，以利用自动轮换以及删除令牌部分。 有关更多详细信息，请参阅以下示例和[将凭据存储在 Azure 密钥保管库中](store-credentials-in-key-vault.md)一文。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!NOTE]
@@ -193,7 +193,7 @@ ms.locfileid: "71009887"
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Azure 表数据集支持的属性列表。
+有关可用于定义数据集的各个部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Azure 表数据集支持的属性列表。
 
 要向/从 Azure 表复制数据，请将数据集的 type 属性设置为 **AzureTable**。 支持以下属性。
 
@@ -227,15 +227,15 @@ ms.locfileid: "71009887"
 对于无架构的数据存储（如 Azure 表），数据工厂将使用下列方式之一推断架构：
 
 * 如果在复制活动中指定列映射，数据工厂将使用源端列列表来检索数据。 在这种情况下，如果行不包含列的值，则会为其提供 null 值。
-* 如果未在复制活动中指定列映射，数据工厂将使用数据中的第一行来推断架构。 在这种情况下，如果第一行不包含完整架构（例如，某些列的值为 null），则复制操作的结果中会丢失某些列。
+* 如果未在复制活动中指定列映射，数据工厂将使用数据中的第一行来推断架构。 在这种情况下，如果第一行不包含完整架构（例如，某些列具有 null 值），则复制操作的结果中会丢失部分列。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Azure 表源和接收器支持的属性列表。
+有关可用于定义活动的各节和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Azure 表源和接收器支持的属性列表。
 
 ### <a name="azure-table-as-a-source-type"></a>将 Azure 表用作源类型
 
-要从 Azure 表复制数据，请将复制活动中的源类型设置为“AzureTableSource”。 复制活动的 **source** 节支持以下属性。
+要从 Azure 表复制数据，请将复制活动中的源类型设置为“AzureTableSource”。 复制活动**源**部分支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -261,7 +261,7 @@ ms.locfileid: "71009887"
 
 ### <a name="azure-table-as-a-sink-type"></a>将 Azure 表用作接收器类型
 
-若要将数据复制到 Azure 表，请将复制活动中的接收器类型设置为“AzureTableSink”。 复制活动 **sink** 节支持以下属性。
+若要将数据复制到 Azure 表，请将复制活动中的接收器类型设置为“AzureTableSink”。 复制活动接收器部分中支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -339,15 +339,15 @@ ms.locfileid: "71009887"
 | Edm.Binary |byte[] |一个字节数组，最大 64 KB。 |
 | Edm.Boolean |bool |布尔值。 |
 | Edm.DateTime |DateTime |一个 64 位值，用协调世界时 (UTC) 表示。 支持的 DateTime 范围从 UTC 公元 (C.E.) 1601 年 1 月 1 日 午夜 12:00 开始。 该范围到 9999 年 12 月 31 日结束。 |
-| Edm.Double |双 |64 位浮点值。 |
+| Edm.Double |double |64 位浮点值。 |
 | Edm.Guid |Guid |128 位全局唯一标识符。 |
 | Edm.Int32 |Int32 |32 位整数。 |
 | Edm.Int64 |Int64 |64 位整数。 |
 | Edm.String |String |UTF-16 编码值。 字符串值最大可以为 64 KB。 |
 
-## <a name="lookup-activity-properties"></a>查找活动属性
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
 
-若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

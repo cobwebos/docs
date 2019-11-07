@@ -1,5 +1,5 @@
 ---
-title: 分布式表设计指南 - Azure SQL 数据仓库 | Microsoft Docs
+title: 分布式表设计指南
 description: 有关如何在 Azure SQL 数据仓库中设计哈希分布式表和轮循机制分布式表的一些建议。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,17 +10,18 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 4b322415592a7202387cb6776d2c040cda765b27
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f05e732e11fb9cd88d4671528d551c68e448a8d7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479347"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685463"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>有关如何在 Azure SQL 数据仓库中设计分布式表的指南
 有关如何在 Azure SQL 数据仓库中设计哈希分布式表和轮循机制分布式表的一些建议。
 
-本文假设读者熟悉 SQL 数据仓库中的数据分布和数据移动概念。  有关详细信息，请参阅 [Azure SQL 数据仓库 - 大规模并行处理 (MPP) 体系结构](massively-parallel-processing-mpp-architecture.md)。 
+本文假设读者熟悉 SQL 数据仓库中的数据分布和数据移动概念。  有关详细信息，请参阅[AZURE SQL 数据仓库-大规模并行处理（MPP）体系结构](massively-parallel-processing-mpp-architecture.md)。 
 
 ## <a name="what-is-a-distributed-table"></a>什么是分布式表？
 分布式表显示为单个表，但表中的行实际存储在 60 个分布区中。 这些行使用哈希或轮循机制算法进行分布。  
@@ -29,7 +30,7 @@ ms.locfileid: "68479347"
 
 另一个表存储选项是跨所有计算节点复制一个小型表。 有关详细信息，请参阅[复制表的设计准则](design-guidance-for-replicated-tables.md)。 若要在这三个选项之间快速选择其一，请参阅[表概述](sql-data-warehouse-tables-overview.md)中的分布式表。 
 
-在设计表的过程中，尽可能多地了解数据以及数据查询方式。  例如，考虑以下问题：
+在设计表的过程中，尽可能多地了解数据以及数据查询方式。  例如，请考虑以下问题：
 
 - 表有多大？   
 - 表的刷新频率是多少？   
@@ -57,7 +58,7 @@ ms.locfileid: "68479347"
 
 在以下情况下，考虑对表使用轮循机制分布：
 
-- 在最开始将其用作一个简单的起点，因为该分布是默认选项
+- 从一个简单的起点入门时，因为该分布是默认选项
 - 没有明显的联接键时
 - 没有合适的候选列可供哈希分布表时
 - 表没有与其他表共享通用的联接键时

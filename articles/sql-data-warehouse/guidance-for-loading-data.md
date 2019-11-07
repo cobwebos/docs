@@ -1,5 +1,5 @@
 ---
-title: 数据加载最佳做法 - Azure SQL 数据仓库 | Microsoft Docs
+title: 数据加载最佳做法
 description: 关于如何将数据加载到 Azure SQL 数据仓库中的建议以及与之相关的性能优化。
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,13 +10,13 @@ ms.subservice: load-data
 ms.date: 08/08/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: a1433139695eb59fa3fd721852fae3181b8f892b
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 01bb53488bf63f32d2bae804e4844400a7fd2d31
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882480"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686094"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>将数据加载到 Azure SQL 数据仓库中的最佳做法
 
@@ -89,7 +89,7 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 - 加载足够的行，以便完全填充新的行组。 在大容量加载期间，数据会以 1,048,576 行为一个完整的行组直接压缩到列存储中。 不到 102,400 行的加载会将行发送到增量存储中以 B 树索引的形式保存。 如果加载的行太少，这些行可能会全部进入增量存储中，不会立即压缩成列存储格式。
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SQLBulkCopy API 或 BCP 时增加批大小
-如前所述, 通过 PolyBase 加载可提供 SQL 数据仓库的最大吞吐量。 如果无法使用 PolyBase 加载并且必须使用 SQLBulkCopy API (或 BCP), 则应考虑增加批大小以提高吞吐量。 
+如前所述，使用 PolyBase 加载将为 SQL 数据仓库提供最高吞吐量。 如果无法使用 PolyBase 加载，并且必须使用 SQLBulkCopy API（或 BCP），则应考虑增加批大小以获得更高的吞吐量。 
 
 ## <a name="handling-loading-failures"></a>处理加载失败
 
@@ -105,7 +105,7 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 ## <a name="creating-statistics-after-the-load"></a>创建加载后的统计信息
 
-为了改进查询性能，在首次加载数据或者在数据发生重大更改之后，必须针对所有表的所有列创建统计信息。  这可以手动完成, 也可以启用[自动创建统计信息](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)。
+为了改进查询性能，在首次加载数据或者在数据发生重大更改之后，必须针对所有表的所有列创建统计信息。  这可以手动完成，也可以启用[自动创建统计信息](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)。
 
 有关统计信息的详细说明，请参阅[统计信息](sql-data-warehouse-tables-statistics.md)。 以下示例演示如何针对 Customer_Speed 表的五个列创建统计信息。
 
@@ -125,7 +125,7 @@ create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 
 对于每个已更改密钥的存储帐户，请发出 [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql) 命令。
 
-例如：
+示例：
 
 已创建原始密钥
 

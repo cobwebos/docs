@@ -1,6 +1,6 @@
 ---
-title: 使用 Net# 创建自定义神经网络
-titleSuffix: Azure Machine Learning Studio (classic)
+title: 'Net # 自定义神经网络'
+titleSuffix: ML Studio (classic) Azure
 description: Net# 神经网络规范语言的语法指南。 了解如何在 Azure 机器学习 Studio （经典）中创建自定义神经网络模型。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 7e7ad51622c3d3c8254755fb1ad24a047d48a58b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0c413bbc3c3b0bd4b1a6e6d6ff40dc1061bbc834
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493348"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684835"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>适用于 Azure 机器学习 Studio 的 Net # 神经网络规范语言指南（经典）
 
@@ -56,7 +56,7 @@ Net# 支持各种类型的连接捆绑，可自定义映射到隐藏层和映射
 
 ## <a name="supported-customizations"></a>支持的自定义项
 
-可以使用 Net # 广泛地自定义在经典版本的 Azure 机器学习 Studio 中创建的神经网络模型的体系结构。 你可以：
+可以使用 Net # 广泛地自定义在经典版本的 Azure 机器学习 Studio 中创建的神经网络模型的体系结构。 可以：
 
 + 创建隐藏层并控制每层的节点数。
 + 指定如何相互连接层。

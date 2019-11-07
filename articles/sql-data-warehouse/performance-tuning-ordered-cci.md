@@ -1,5 +1,5 @@
 ---
-title: 利用 Azure SQL 数据仓库按序聚集列存储索引进行性能优化 |Microsoft Docs
+title: 具有有序聚集列存储索引的性能优化
 description: 使用有序聚集列存储索引以提高查询性能时应了解的建议和注意事项。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 37d8f17e825daa3a1c160509b1a38f8c70256d1c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 3cc2f140eeed0a4667a01aa8c5ccbad7e4411521
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595367"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686004"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>具有有序聚集列存储索引的性能优化  
 
@@ -43,7 +44,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> 在有序的 CCI 表中，不会自动对由 DML 或数据加载操作生成的新数据进行排序。  用户可以重新生成按序的 CCI 来对表中的所有数据进行排序。  在 Azure SQL 数据仓库中，列存储索引重新生成是一项脱机操作。  对于已分区的表，每次重新生成一个分区。  重新生成的分区中的数据处于 "脱机" 状态，并且在该分区的重建完成前不可用。 
+> 在有序的 CCI 表中，在该批次中对相同的 DML 或数据加载操作生成的新数据进行排序，表中的所有数据没有全局排序。  用户可以重新生成按序的 CCI 来对表中的所有数据进行排序。  在 Azure SQL 数据仓库中，列存储索引重新生成是一项脱机操作。  对于已分区的表，每次重新生成一个分区。  重新生成的分区中的数据处于 "脱机" 状态，并且在该分区的重建完成前不可用。 
 
 ## <a name="query-performance"></a>查询性能
 
@@ -63,7 +64,7 @@ ORDER (Col_C, Col_B, Col_A)
 
 ```
 
-查询1的性能比其他3个查询更多地受益于按序的 CCI。 
+查询1的性能比其他三个查询更具序的 CCI。 
 
 ```sql
 -- Query #1: 
@@ -112,7 +113,7 @@ OPTION (MAXDOP 1);
 - 在将数据加载到 Azure SQL 数据仓库表之前，按排序关键字预先对数据进行排序。
 
 
-下面是一个有序的 CCI 表分布的示例，该分发具有与上述建议重叠的零段。 有序的 CCI 表是使用 MAXDOP 1 和 xlargerc 通过 CTAS 从 DWU1000c 数据库中创建的。  CCI 在不包含重复项的 BIGINT 列上排序。  
+下面是一个有序的 CCI 表分布的示例，该分发具有与上述建议重叠的零段。 有序的 CCI 表是使用 MAXDOP 1 和 xlargerc 通过 CTAS 从 20 GB 堆表中创建的，在 DWU1000c 数据库中创建的。  CCI 在不包含重复项的 BIGINT 列上排序。  
 
 ![Segment_No_Overlapping](media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 

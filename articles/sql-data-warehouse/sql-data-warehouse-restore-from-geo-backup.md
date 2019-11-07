@@ -1,6 +1,6 @@
 ---
-title: 从异地备份还原 Azure SQL 数据仓库 |Microsoft Docs
-description: 有关异地还原 Azure SQL 数据仓库的操作方法指南。
+title: 从异地备份还原数据仓库
+description: 用于异地还原 SQL 数据仓库的操作指南。
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 768646522c2589c302fd7a58031d4ebdb7fcdc12
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 69eb1221686da61868df8b06ed80664ae76d1627
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68426650"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685502"
 ---
 # <a name="geo-restore-azure-sql-data-warehouse"></a>异地还原 Azure SQL 数据仓库
 
@@ -25,22 +26,22 @@ ms.locfileid: "68426650"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**验证 DTU 容量。** 每个 SQL 数据仓库都由一个具有默认 DTU 配额的 SQL 服务器 (例如 myserver.database.windows.net) 托管。 验证 SQL server 是否有足够的剩余 DTU 配额来还原数据库。 若要了解如何计算所需 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改][Request a DTU quota change]。
+**验证 DTU 容量。** 每个 SQL 数据仓库都由一个具有默认 DTU 配额的 SQL 服务器（例如 myserver.database.windows.net）托管。 验证 SQL Server 的剩余 DTU 配额是否足够进行数据库还原。 若要了解如何计算所需 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改][Request a DTU quota change]。
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>通过 PowerShell 从 Azure 地理区域还原
 
-若要从异地备份还原, 请使用[AzSqlDatabaseGeoBackup][Get-AzSqlDatabaseGeoBackup]和[AzSqlDatabase][Restore-AzSqlDatabase] cmdlet。
+若要从异地备份还原，请使用 [Get-AzSqlDatabaseGeoBackup][Get-AzSqlDatabaseGeoBackup] 和 [Restore-AzSqlDatabase][Restore-AzSqlDatabase] cmdlet。
 
 > [!NOTE]
 > 可以执行到第 2 代的异地还原！ 若要执行此操作，请将一个第 2 代 ServiceObjectiveName（例如 DW1000**c**）指定为可选参数。
 >
 
-1. 在开始之前, 请确保[安装 Azure PowerShell][Install Azure PowerShell]。
+1. 开始之前，请确保[安装 Azure PowerShell][Install Azure PowerShell]。
 2. 打开 PowerShell。
 2. 连接到 Azure 帐户，并列出与帐户关联的所有订阅。
 3. 选择包含要还原的数据仓库的订阅。
 4. 获取要恢复的数据仓库。
-5. 为数据仓库创建恢复请求。
+5. 创建对数据仓库的恢复请求。
 6. 验证异地还原的数据仓库的状态。
 7. 若要在完成还原后配置数据仓库，请参阅[在恢复后配置数据库][Configure your database after recovery]。
 
@@ -73,19 +74,19 @@ $GeoRestoredDatabase.status
 
 ## <a name="restore-from-an-azure-geographical-region-through-azure-portal"></a>通过 Azure 门户从 Azure 地理区域还原
 
-按照以下概述的步骤从异地备份还原 Azure SQL 数据仓库:
+按下面概述的步骤从异地备份还原 Azure SQL 数据仓库：
 
-1. 登录到你的[Azure 门户][Azure portal]帐户。
-1. 单击 " **+ 创建资源**" 并搜索 "SQL 数据仓库", 然后单击 "**创建**"。
+1. 登录到 [Azure 门户][Azure portal]帐户。
+1. 单击“+ 创建资源”，搜索“SQL 数据仓库”，然后单击“创建”。
 
     ![新建 DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
-1. 填写 "**基本**信息" 选项卡中所需的**信息, 然后单击 "下一步":其他设置**。
+1. 填写 "**基本**信息" 选项卡中所需的信息，然后单击 "**下一步：其他设置**"。
 
-    ![基本](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
-1. 对于 "**使用现有数据**" 参数, 请选择 "**备份**", 然后从向下滚动选项中选择相应的备份。 单击 "**查看 + 创建**"。
+    ![基础知识](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+1. 对于“使用现有的数据”参数，请选择“备份”，然后从向下滚动选项中选择适当的备份。 单击“查看 + 创建”。
  
-   ![备份](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
-2. 还原数据仓库后, 请检查**状态**是否为 "联机"。
+   ![backup](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
+2. 数据仓库还原后，请检查“状态”是否为“联机”。
 
 ## <a name="next-steps"></a>后续步骤
 - [还原现有数据仓库][Restore an existing data warehouse]

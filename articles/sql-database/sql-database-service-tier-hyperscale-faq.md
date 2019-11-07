@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库“超大规模”常见问题解答 | Microsoft Docs
+title: Azure SQL Database 超大规模常见问题
 description: 对客户关于“超大规模”服务层级中的 Azure SQL 数据库（通常称为超大规模数据库）提出的常见问题的回答。
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: dimitri-furman
+ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: 379629cfe3c742bd247e02cdf7a891afab08107f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c7960ca4e2dc2e676bc8668981108ce0f8589c0d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496177"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687333"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database 超大规模常见问题
 
@@ -42,13 +42,13 @@ ms.locfileid: "73496177"
 | | 资源类型 | 常规用途 |  超大规模 | 业务关键 |
 |:---:|:---:|:---:|:---:|:---:|
 | **最适用于** |All|提供以预算导向的、均衡的计算和存储选项。|大多数业务工作负荷。 自动缩放存储大小，最高可达 100 TB、垂直和水平计算缩放和快速数据库还原。|事务速率较高和 IO 延迟较低的 OLTP 应用程序。 使用多个同步更新的副本提供最高的故障恢复能力和快速故障转移。|
-|  **资源类型** ||单一数据库/弹性池/托管实例 | 单个数据库 | 单一数据库/弹性池/托管实例 |
+|  **资源类型** ||单一数据库/弹性池/托管实例 | 单一数据库 | 单一数据库/弹性池/托管实例 |
 | **计算大小**|单一数据库/弹性池* | 1 - 80 个 vCore | 1 - 80 个 vCore* | 1 - 80 个 vCore |
 | |托管实例 | 8、16、24、32、40、64、80 个 vCore | 不适用 | 8、16、24、32、40、64、80 个 vCore |
 | **存储类型** | All |高级远程存储（每个实例） | 具有本地 SSD 缓存的分离的存储（每个实例） | 超快的本地 SSD 存储（每个实例） |
 | **存储大小** | 单一数据库/弹性池*| 5 GB – 4 TB | 最多 100 TB | 5 GB – 4 TB |
 | | 托管实例  | 32 GB – 8 TB | 不适用 | 32 GB – 4 TB |
-| **IOPS** | 单个数据库 | 每个 vCore 提供 500 IOPS，最大 7000 IOPS | 超大规模是具有多个级别缓存的多层体系结构。 有效 IOPS 将取决于工作负荷。 | 5000 IOPS，最大 200,000 IOPS|
+| **IOPS** | 单一数据库 | 每个 vCore 提供 500 IOPS，最大 7000 IOPS | 超大规模是具有多个级别缓存的多层体系结构。 有效 IOPS 将取决于工作负荷。 | 5000 IOPS，最大 200,000 IOPS|
 | | 托管实例 | 取决于文件大小 | 不适用 | 1375 IOPS/vCore |
 |**可用性**|All|1个副本，无读取横向扩展，无本地缓存 | 多个副本，多达4个读取横向扩展，局部本地缓存 | 3个副本，1个读取横向扩展，个区域冗余 HA，完整本地存储 |
 |**备份**|All|GRS，7-35 天保留期（默认为7天）| GRS，7天保留期，固定时间点恢复（PITR） | GRS，7-35 天保留期（默认为7天） |
@@ -72,7 +72,7 @@ ms.locfileid: "73496177"
 
 ### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>能否为每个逻辑服务器创建多个“超大规模”数据库
 
-是的。 有关每个逻辑服务器的“超大规模”数据库数量的详细信息和限制，请参阅[逻辑服务器上单一和共用数据库的 SQL 数据库资源限制](sql-database-resource-limits-logical-server.md)。
+可以。 有关每个逻辑服务器的“超大规模”数据库数量的详细信息和限制，请参阅[逻辑服务器上单一和共用数据库的 SQL 数据库资源限制](sql-database-resource-limits-logical-server.md)。
 
 ### <a name="what-are-the-performance-characteristics-of-a-hyperscale-database"></a>“超大规模”数据库的性能特征有哪些
 
@@ -197,13 +197,13 @@ ms.locfileid: "73496177"
 
 ### <a name="if-i-have-a-huge-table-does-my-table-data-get-spread-out-across-multiple-data-files"></a>如果表格巨大，表格数据是否会分布在多个数据文件中
 
-是的。 与给定表格关联的数据页可在多个数据文件中出现，它们均属于相同文件组。 SQL Server 使用按[比例填充策略](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy)将数据分发到数据文件。
+可以。 与给定表格关联的数据页可在多个数据文件中出现，它们均属于相同文件组。 SQL Server 使用按[比例填充策略](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy)将数据分发到数据文件。
 
 ## <a name="data-migration-questions"></a>数据迁移问题
 
 ### <a name="can-i-move-my-existing-azure-sql-databases-to-the-hyperscale-service-tier"></a>能否将现有 Azure SQL 数据库迁移到“超大规模”服务层级
 
-是的。 可以将现有 Azure SQL 数据库迁移到“超大规模”服务层级。 这是一种单向迁移。 无法将数据库从“超大规模”层级移到另一个服务层级。 对于概念证明（Poc），我们建议你创建数据库的副本，并将副本迁移到超大规模。
+可以。 可以将现有 Azure SQL 数据库迁移到“超大规模”服务层级。 这是一种单向迁移。 无法将数据库从“超大规模”层级移到另一个服务层级。 对于概念证明（Poc），我们建议你创建数据库的副本，并将副本迁移到超大规模。
   
 ### <a name="can-i-move-my-hyperscale-databases-to-other-service-tiers"></a>能否将我的超大规模数据库移到其他服务层
 
@@ -211,11 +211,11 @@ ms.locfileid: "73496177"
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>迁移到“超大规模”服务层级后，是否会丢失一些功能
 
-是的。 一些 Azure SQL 数据库功能在超大规模中不受支持，包括但不限于长期备份保留。 将数据库迁移到“超大规模”服务层级后，这些功能将停止运行。  我们预期这些限制是暂时性的。
+可以。 一些 Azure SQL 数据库功能在超大规模中不受支持，包括但不限于长期备份保留。 将数据库迁移到“超大规模”服务层级后，这些功能将停止运行。  我们预期这些限制是暂时性的。
 
 ### <a name="can-i-move-my-on-premises-sql-server-database-or-my-sql-server-database-in-a-cloud-virtual-machine-to-hyperscale"></a>我可以将我的本地 SQL Server 数据库或 SQL Server 的虚拟机中的数据库移动到超大规模
 
-是的。 你可以使用所有现有迁移技术迁移到超大规模，包括事务复制和任何其他数据移动技术（大容量复制、Azure 数据工厂、Azure Databricks、SSIS）。 另请参阅支持多种迁移方案的[Azure 数据库迁移服务](../dms/dms-overview.md)。
+可以。 你可以使用所有现有迁移技术迁移到超大规模，包括事务复制和任何其他数据移动技术（大容量复制、Azure 数据工厂、Azure Databricks、SSIS）。 另请参阅支持多种迁移方案的[Azure 数据库迁移服务](../dms/dms-overview.md)。
 
 ### <a name="what-is-my-downtime-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>在从本地或虚拟机环境迁移到超大规模时，我的停机时间是多少，如何将其最小化
 
@@ -244,7 +244,7 @@ SQL Server 2005。 有关详细信息，请参阅[迁移到单一数据库或共
 
 ### <a name="does-hyperscale-support-migration-from-other-data-sources-such-as-amazon-aurora-mysql-postgresql-oracle-db2-and-other-database-platforms"></a>超大规模支持从其他数据源（如 Amazon Aurora、MySQL、PostgreSQL、Oracle、DB2 和其他数据库平台）进行迁移
 
-是的。 [Azure 数据库迁移服务](../dms/dms-overview.md)支持许多迁移方案。
+可以。 [Azure 数据库迁移服务](../dms/dms-overview.md)支持许多迁移方案。
 
 ## <a name="business-continuity-and-disaster-recovery-questions"></a>业务连续性和灾难恢复问题
 
@@ -254,7 +254,7 @@ SQL Server 2005。 有关详细信息，请参阅[迁移到单一数据库或共
 
 ### <a name="are-the-database-backups-managed-for-me-by-the-azure-sql-database-service"></a>Azure SQL 数据库服务是否托管我的数据库备份
 
-是的。
+可以。
 
 ### <a name="how-often-are-the-database-backups-taken"></a>创建数据库备份的频率
 
@@ -262,7 +262,7 @@ SQL Server 2005。 有关详细信息，请参阅[迁移到单一数据库或共
 
 ### <a name="does-hyperscale-support-point-in-time-restore"></a>超大规模是否支持时间点还原
 
-是的。
+可以。
 
 ### <a name="what-is-the-recovery-point-objective-rporecovery-time-objective-rto-for-database-restore-in-hyperscale"></a>在超大规模中，数据库还原的恢复点目标（RPO）/Recovery 时间目标（RTO）是什么
 
@@ -274,7 +274,7 @@ RPO 为0分钟。不管数据库大小如何，RTO 目标不到10分钟。
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>能否对超大规模数据库执行异地还原
 
-是的。  完全支持异地还原。
+可以。  完全支持异地还原。
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>能否通过超大规模数据库设置异地复制
 
@@ -288,7 +288,7 @@ RPO 为0分钟。不管数据库大小如何，RTO 目标不到10分钟。
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>迁移到“超大规模”服务层级后，是否会丢失一些功能
 
-是的。 一些 Azure SQL 数据库功能在超大规模中不受支持，包括但不限于长期备份保留。 将数据库迁移到“超大规模”服务层级后，这些功能将停止运行。
+可以。 一些 Azure SQL 数据库功能在超大规模中不受支持，包括但不限于长期备份保留。 将数据库迁移到“超大规模”服务层级后，这些功能将停止运行。
 
 ### <a name="will-polybase-work-with-hyperscale"></a>Polybase 将与超大规模配合使用
 
@@ -340,7 +340,7 @@ IOPS 和 IO 延迟根据工作负荷模式而异。 如果要访问的数据缓�
 
 ### <a name="does-the-size-of-my-tempdb-database-also-grow-as-the-compute-is-scaled-up"></a>随着计算的增加，`tempdb` 数据库的大小也会增长
 
-是的。 当计算增长时，`tempdb` 数据库将自动向上扩展。  
+可以。 当计算增长时，`tempdb` 数据库将自动向上扩展。  
 
 ### <a name="can-i-provision-multiple-primary-compute-replicas-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>能否预配多个主要计算副本（例如多主系统），其中多个主要计算头可以驱动更高的并发级别
 

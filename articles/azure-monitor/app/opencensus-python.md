@@ -8,23 +8,21 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0d848027d6c754df371b4d87cf01c5b2fdbc8c02
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 7fb436ef8d915898bc8f36dd10766e71f63e4a59
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820737"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73575569"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>设置 Python 应用程序的 Azure Monitor （预览）
 
 Azure Monitor 通过与[OpenCensus](https://opencensus.io)集成，支持 Python 应用程序的分布式跟踪、指标收集和日志记录。 本文将指导你完成为 Python 设置 OpenCensus 并将监视数据发送到 Azure Monitor 的过程。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+- Azure 订阅。 如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 - Python 安装。 本文使用[Python 3.7.0](https://www.python.org/downloads/)，但较早的版本可能会使用细微的更改。
-
-
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -40,13 +38,13 @@ Azure Monitor 通过与[OpenCensus](https://opencensus.io)集成，支持 Python
 
 1. 此时将显示一个配置框。 使用下表填写输入字段。
 
-   | 设置        | Value           | 描述  |
+   | 设置        | 值           | 说明  |
    | ------------- |:-------------|:-----|
-   | 名称      | 全局唯一值 | 标识要监视的应用的名称 |
+   | **名称**      | 全局唯一值 | 标识要监视的应用的名称 |
    | **资源组**     | myResourceGroup      | 用于承载 Application Insights 数据的新资源组的名称 |
-   | 位置 | 美国东部 | 附近的位置或应用托管位置附近 |
+   | **位置** | 美国东部 | 附近的位置或应用托管位置附近 |
 
-1. 选择**创建**。
+1. 选择“创建”。
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>用于 Azure Monitor 的 OpenCensus Python SDK 检测
 
@@ -55,6 +53,8 @@ Azure Monitor 通过与[OpenCensus](https://opencensus.io)集成，支持 Python
 ```console
 python -m pip install opencensus-ext-azure
 ```
+
+有关包和集成的完整列表，请参阅[OpenCensus 包](https://docs.microsoft.com/azure/azure-monitor/app/nuget#common-packages-for-python-using-opencensus)。
 
 > [!NOTE]
 > `python -m pip install opencensus-ext-azure` 命令假设你为 Python 安装设置了 `PATH` 环境变量。 如果尚未配置此变量，则需要为 Python 可执行文件所在的位置指定完整的目录路径。 结果如下所示的命令： `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`。
@@ -98,7 +98,7 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测发送到 Azu
     [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     ```
 
-3. 尽管输入值有助于演示，但最终我们希望将 `SpanData` 发送到 Azure Monitor。 根据下面的代码示例，从上一步中修改代码：
+3. 尽管输入值有助于演示，但最终我们希望将 `SpanData` 发送到 Azure Monitor。 根据以下代码示例修改上一步中的代码：
 
     ```python
     from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -128,7 +128,11 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测发送到 Azu
 
 4. 现在，运行 Python 脚本时，系统仍会提示输入值，但会仅在 shell 中打印值。 创建的 `SpanData` 将发送到 Azure Monitor。 可以在 `dependencies` 下找到发出的范围数据。
 
-### <a name="metrics"></a>指标
+5. 有关 OpenCensus 中采样的详细信息，请参阅[OpenCensus 中的采样](https://docs.microsoft.com/azure/azure-monitor/app/sampling#configuring-fixed-rate-sampling-in-opencensus-python)。
+
+6. 有关跟踪数据中遥测关联的详细信息，请参阅 OpenCensus[遥测关联](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)。
+
+### <a name="metrics"></a>度量值
 
 1. 首先，让我们生成一些本地指标数据。 我们将创建一个简单的度量值，用于跟踪用户按 Enter 的次数。
 
@@ -181,7 +185,7 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测发送到 Azu
     Point(value=ValueLong(7), timestamp=2019-10-09 20:58:07.138614)
     ```
 
-3. 尽管输入值有助于演示目的，但最终我们希望将指标数据发送到 Azure Monitor。 根据下面的代码示例，从上一步中修改代码：
+3. 尽管输入值有助于演示目的，但最终我们希望将指标数据发送到 Azure Monitor。 根据以下代码示例修改上一步中的代码：
 
     ```python
     from datetime import datetime
@@ -265,7 +269,7 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测发送到 Azu
     90
     ```
 
-3. 尽管输入值有助于演示目的，但最终我们希望将指标数据发送到 Azure Monitor。 根据下面的代码示例，从上一步中修改代码：
+3. 尽管输入值有助于演示目的，但最终我们希望将指标数据发送到 Azure Monitor。 根据以下代码示例修改上一步中的代码：
 
     ```python
     import logging
@@ -291,6 +295,8 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测发送到 Azu
     ```
 
 4. 导出程序会将日志数据发送到 Azure Monitor。 可以在 `traces` 下查找数据。
+
+5. 有关如何利用跟踪上下文数据丰富日志的详细信息，请参阅 OpenCensus Python[日志集成](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation)。
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>开始在 Azure 门户中监视
 
@@ -324,9 +330,9 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测发送到 Azu
 
 在 "**活动**" 下的列表中：
 
-- 对于随 Azure Monitor 跟踪导出程序发送的遥测数据，传入的请求显示在 "`requests` 下。 传出或进程内请求出现在 `dependencies` 下。
+- 对于随 Azure Monitor 跟踪导出程序发送的遥测数据，传入的请求显示在 "`requests`下。 传出或进程内请求出现在 `dependencies`下。
 - 对于随 Azure Monitor 度量值导出程序一起发送的遥测数据，发送的度量值将显示在 "`customMetrics`"
-- 对于随 Azure Monitor 日志导出程序发送的遥测数据，日志显示在 "`traces` 下。 异常将显示在 `exceptions` 下。
+- 对于随 Azure Monitor 日志导出程序发送的遥测数据，日志显示在 "`traces`下。 异常将显示在 `exceptions`下。
 
 有关如何使用查询和日志的详细信息，请参阅[中的日志 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs)。
 

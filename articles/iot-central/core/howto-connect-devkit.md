@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 24ce6de63d06402e24abdeb33996a3853175ce91
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4e04ae7d9594ac064c9f3707c797fb2709a79cb6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954404"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582968"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序
 
@@ -104,7 +104,7 @@ ms.locfileid: "72954404"
 
 1. 按设备上的“重置”按钮。
 
-## <a name="view-the-telemetry"></a>查看遥测
+## <a name="view-the-telemetry"></a>查看遥测数据
 
 当 DevKit 设备重启时，设备上的屏幕会显示：
 
@@ -119,7 +119,7 @@ ms.locfileid: "72954404"
 
 可以在 Azure IoT Central 查看遥测度量和报告属性值，以及配置设置：
 
-1. 使用“Device Explorer”导航到所添加的真实 MXChip 设备的“度量”页：
+1. 使用**设备**导航到所添加的实际 MXChip 设备的 "**度量值**" 页：
 
     ![导航到真实设备](media/howto-connect-devkit/realdevicenew.png)
 
@@ -156,7 +156,7 @@ git clone https://github.com/Azure/iot-central-firmware
 上述命令会将源代码下载到名为 `iot-central-firmware` 的文件夹。
 
 > [!NOTE]
-> 如果开发环境中未安装 git，可以从 [https://git-scm.com/download](https://git-scm.com/download) 下载。
+> 如果开发环境中未安装 git，可以从[ 下载 https://git-scm.com/download](https://git-scm.com/download)。
 
 ## <a name="review-the-code"></a>查看代码
 
@@ -184,7 +184,7 @@ git clone https://github.com/Azure/iot-central-firmware
 
 **AzureIOTClient**源文件中的代码使用[Microsoft Azure IoT sdk 中的函数和用于 C 的库](https://github.com/Azure/azure-iot-sdk-c)来与 IoT 中心进行交互。
 
-有关如何修改、生成示例代码并将其上传到设备的信息，请参阅 `MXCHIP/mxchip_advanced` 文件夹中的 **readme.md** 文件。
+有关如何修改、生成示例代码并将其上传到设备的信息，请参阅 **文件夹中的**readme.md`MXCHIP/mxchip_advanced` 文件。
 
 ## <a name="mxchip-device-template-details"></a>MXChip 设备模板详细信息
 
@@ -194,7 +194,7 @@ git clone https://github.com/Azure/iot-central-firmware
 
 #### <a name="telemetry"></a>遥测
 
-| 字段名     | 单位  | 最小值 | 最大值 | 小数位数 |
+| 字段名称     | 单位  | 最小值 | 最大值 | 小数位数 |
 | -------------- | ------ | ------- | ------- | -------------- |
 | 湿度       | %      | 0       | 100     | 0              |
 | temp           | °C     | -40     | 120     | 0              |
@@ -210,12 +210,12 @@ git clone https://github.com/Azure/iot-central-firmware
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>States 
-| 名称          | 显示名称   | 正常 | 小心 | 危险 | 
+| Name          | 显示名称   | 正常 | 小心 | 危险 | 
 | ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | 设备状态   | 绿色  | Orange  | 红色    | 
+| DeviceState   | 设备状态   | 绿色  | 橙色  | 红色    | 
 
 #### <a name="events"></a>事件 
-| 名称             | 显示名称      | 
+| Name             | 显示名称      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | 按钮 B 已按下  | 
 
@@ -223,7 +223,7 @@ git clone https://github.com/Azure/iot-central-firmware
 
 数字设置
 
-| 显示名称 | 字段名 | 单位 | 小数位数 | 最小值 | 最大值 | 初始 |
+| 显示名称 | 字段名称 | 单位 | 小数位数 | 最小值 | 最大值 | 初始 |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | 电压      | setVoltage | 伏 | 0              | 0       | 240     | 0       |
 | 当前      | setCurrent | 安培  | 0              | 0       | 100     | 0       |
@@ -231,21 +231,21 @@ git clone https://github.com/Azure/iot-central-firmware
 
 切换设置
 
-| 显示名称 | 字段名 | 打开文本 | 关闭文本 | 初始 |
+| 显示名称 | 字段名称 | 打开文本 | 关闭文本 | 初始 |
 | ------------ | ---------- | ------- | -------- | ------- |
-| IR           | activateIR | ON      | OFF      | 关闭     |
+| IR           | activateIR | 亮起      | 熄灭      | 关闭     |
 
 ### <a name="properties"></a>属性
 
-| Type            | 显示名称 | 字段名 | 数据类型 |
+| 类型            | 显示名称 | 字段名称 | 数据类型 |
 | --------------- | ------------ | ---------- | --------- |
 | 设备属性 | 模具号   | dieNumber  | 数字    |
-| 设备属性 | 设备位置   | 位置  | 位置    |
-| 文本            | 制造于     | manufacturedIn   | N/A       |
+| 设备属性 | 设备位置   | location  | location    |
+| 文本            | 制造于     | manufacturedIn   | 不适用       |
 
 ### <a name="commands"></a>命令
 
-| 显示名称 | 字段名 | 返回类型 | 输入字段显示名称 | 输入字段名称 | 输入字段类型 |
+| 显示名称 | 字段名称 | 返回类型 | 输入字段显示名称 | 输入字段名称 | 输入字段类型 |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
 | 传回         | echo       | text        | 要显示的值         | displayedValue   | text             |
 | 倒    | 倒  | 数字      | 计数起始               | countFrom        | 数字           |

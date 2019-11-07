@@ -9,16 +9,18 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 992e3f7aa53fdd006d29c06113cd30b07a406f3b
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 5cb4602ac0431e09208953122f13b30124ab77f5
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734339"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614750"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions 中的监视场景 - 天气观察程序示例
 
-监视模式是工作流中灵活的重复过程 - 例如，反复轮询，直到满足特定的条件为止。 本文介绍使用 [Durable Functions](durable-functions-overview.md) 实现监视的示例。
+监视模式是指工作流中灵活的重复过程 - 例如，反复轮询，直到满足特定的条件为止。 本文介绍使用 [Durable Functions](durable-functions-overview.md) 实现监视的示例。
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -53,11 +55,11 @@ ms.locfileid: "70734339"
 
 本文介绍示例应用中的以下函数：
 
-* `E3_Monitor`：定期调用 `E3_GetIsClear` 的业务流程协调程序函数。 如果 `E3_GetIsClear` 返回 true，则此函数会调用 `E3_SendGoodWeatherAlert`。
+* `E3_Monitor`：定期调用 `E3_GetIsClear` 的业务流程协调程序函数。 如果 `E3_SendGoodWeatherAlert` 返回 true，则此函数会调用 `E3_GetIsClear`。
 * `E3_GetIsClear`：检查某个地点的当前天气状况的活动函数。
 * `E3_SendGoodWeatherAlert`：通过 Twilio 发送短信的活动函数。
 
-以下各部分介绍了用于 C# 脚本和 JavaScript 的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
+以下部分介绍用于C#脚本编写和 JavaScript 的配置和代码。 本文末尾显示了用于 Visual Studio 开发的代码。
 
 ## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>天气监视业务流程（Visual Studio Code 和 Azure 门户示例代码）
 
@@ -71,7 +73,7 @@ ms.locfileid: "70734339"
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
@@ -82,7 +84,7 @@ ms.locfileid: "70734339"
 3. 调用 **E3_GetIsClear** 来确定请求的地点是否为晴天。
 4. 如果是晴天，则调用 **E3_SendGoodWeatherAlert** 将短信通知发送到请求的电话号码。
 5. 创建一个持久计时器，以便在下一个轮询间隔恢复业务流程。 为简便起见，本示例使用了硬编码值。
-6. 持续运行，直到 [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (C#) 或 `currentUtcDateTime` (JavaScript) 超过了监视器的到期时间或者发送了短信提醒。
+6. 继续运行，直至 `CurrentUtcDateTime` （.NET）或 `currentUtcDateTime` （JavaScript）通过了监视器的过期时间或发送了短信警报。
 
 可以通过发送多个 **MonitorRequests** 来同时运行多个业务流程实例。 可以指定要监视的地点，以及要将短信提醒发送到的电话号码。
 
@@ -107,7 +109,7 @@ JavaScript 示例使用正则 JSON 对象作为参数。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
@@ -121,7 +123,7 @@ JavaScript 示例使用正则 JSON 对象作为参数。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
 
@@ -140,10 +142,10 @@ Content-Type: application/json
 ```
 HTTP/1.1 202 Accepted
 Content-Type: application/json; charset=utf-8
-Location: https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={SystemKey}
+Location: https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={SystemKey}
 RetryAfter: 10
 
-{"id": "f6893f25acf64df2ab53a35c09d52635", "statusQueryGetUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "sendEventPostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/raiseEvent/{eventName}?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "terminatePostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason={text}&taskHub=SampleHubVS&connection=Storage&code={systemKey}"}
+{"id": "f6893f25acf64df2ab53a35c09d52635", "statusQueryGetUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "sendEventPostUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/raiseEvent/{eventName}?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "terminatePostUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason={text}&taskHub=SampleHubVS&connection=Storage&code={systemKey}"}
 ```
 
 **E3_Monitor** 实例启动，并查询请求位置的当前天气状况。 如果天气为晴，则调用某个活动函数来发送提醒；否则将设置计时器。 当计时器过期时，业务流程将会恢复。
@@ -169,10 +171,10 @@ RetryAfter: 10
 业务流程的超时时间已到，或者检测到晴天时，业务流程将会[终止](durable-functions-instance-management.md)。 也可以在另一函数中使用 `TerminateAsync` (.NET) 或 `terminate` (JavaScript)，或调用上述 202 响应中提到的 **terminatePostUri** HTTP POST Webhook（请将 `{text}` 替换为终止原因）：
 
 ```
-POST https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
+POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
 ```
 
-## <a name="visual-studio-sample-code"></a>Visual Studio 示例代码
+## <a name="visual-studio-sample-code"></a>Visual Studio 代码示例
 
 下面是 Visual Studio 项目中以单个 C# 文件形式提供的业务流程：
 

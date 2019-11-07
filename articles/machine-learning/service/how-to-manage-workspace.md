@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1985c596b9f4b9b78b0055bfe1eab9888c30e201
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9e3915a2f55680fc2e24ac63d5e7170ada026c2e
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489732"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615179"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>在 Azure 门户中创建和管理 Azure 机器学习工作区
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,13 +30,13 @@ ms.locfileid: "73489732"
 
 1. 在 Azure 门户的左上角，选择“+ 创建资源”。
 
-      ![创建新资源](../../../includes/media/aml-create-in-portal/portal-create-resource.png)
+      ![创建新资源](../../../includes/media/aml-create-in-portal/create-workspace.gif)
 
-1. 使用搜索栏查找“机器学习服务工作区”。
+1. 使用搜索栏查找**机器学习**。
 
-1. 选择“机器学习服务工作区”。
+1. 选择**机器学习**。
 
-1. 在“机器学习服务工作区”窗格中，选择“创建”以开始。
+1. 在**机器学习**窗格中，选择 "**创建**" 以开始。
 
 1. 提供以下信息来配置新工作区：
 
@@ -89,18 +89,15 @@ ms.locfileid: "73489732"
 
 ## <a name="view"></a>查找工作区
 
-1. 选择门户左上角的“所有服务”。
+1. 在顶部搜索字段中，键入**机器学习**。  
 
-1. 在 "**所有服务**" 筛选器字段中，键入 "**机器学习**"。  
+1. 选择**机器学习**。
 
-1. 选择**Azure 机器学习**。
-
-   ![搜索 Azure 机器学习工作区](media/how-to-manage-workspace/all-services.png)
+   ![搜索 Azure 机器学习工作区](media/how-to-manage-workspace/find-workspaces.png)
 
 1. 浏览筛选出的工作区列表。 筛选依据可包括订阅、资源组和位置。  
 
 1. 选择要显示其属性的工作区。
-   ![工作区属性](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
 
 ## <a name="delete-a-workspace"></a>创建工作区
 
