@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据同步最佳做法 | Microsoft Docs
+title: 'Azure SQL 数据同步最佳做法 '
 description: 了解有关配置和运行 Azure SQL 数据同步的最佳做法。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 01962770c011a0107abd4e035c25d6c0d45fa0a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 728ac8ab42573e1cab30eaf12dd38a6d33b97aac
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569369"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691078"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL 数据同步最佳做法 
 
@@ -25,7 +25,7 @@ ms.locfileid: "68569369"
 有关 SQL 数据同步的概述，请参阅[使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
 
 > [!IMPORTANT]
-> 目前，Azure SQL 数据同步**不**支持 Azure SQL 数据库托管实例。
+> 目前，Azure SQL 数据同步不支持 Azure SQL 数据库托管实例。
 
 ## <a name="security-and-reliability"></a>安全性和可靠性
 
@@ -41,7 +41,7 @@ ms.locfileid: "68569369"
 
 -   对于同步设置。 创建/更改表、更改数据库、创建过程、选择/更改架构、创建用户定义的类型。
 
--   对于正在进行的同步。在选择用于同步的表上以及同步元数据和跟踪表上为“选择/插入/更新/删除”权限，在服务创建的存储过程上为“执行”权限，在用户定义的表类型上为“执行”权限。
+-   **对于正在进行的同步**。选择/插入/更新/删除选择用于同步的表以及同步元数据和跟踪表;对服务创建的存储过程的 Execute 权限;对用户定义的表类型执行权限。
 
 -   对于取消预配。 在同步的表部分为“更改”权限，在同步元数据表上为“选择/删除”权限，在同步跟踪表、存储的过程和用户定义类型上为“控制”权限。
 
@@ -50,7 +50,7 @@ Azure SQL 数据库仅支持单组凭据。 若要在此约束内完成这些任
 -   针对不同阶段更改凭据（例如 credential1 用于安装，credential2 用于正在运行）。  
 -   更改凭据的权限（即，在设置同步后更改权限）。
 
-## <a name="setup"></a>安装
+## <a name="setup"></a>设置
 
 ### <a name="database-considerations-and-constraints"></a> 数据库考虑因素和约束
 
@@ -94,9 +94,9 @@ SQL 数据同步自动预配的限制如下：
 -   不会预配源表上的现有触发器。  
 -   不会在目标数据库上创建视图和存储的过程。
 -   对外键约束的 ON UPDATE CASCADE 和 ON DELETE CASCADE 操作不会在目标表中重新创建。
--   如果具有精度大于 28 的十进制或数值列，则 SQL 数据同步在同步期间可能出现转换溢出问题。建议将十进制或数值列的精度限制为 28 或更小。
+-   如果小数列或数值列的精度大于28，则在同步过程中 SQL 数据同步可能会遇到转换溢出问题。建议将 decimal 或 numeric 列的精度限制为28或更少。
 
-#### <a name="recommendations"></a>推荐
+#### <a name="recommendations"></a>建议
 
 -   仅在尝试使用该服务时使用 SQL 数据同步自动预配功能。  
 -   对于生产环境，应预配数据库架构。
@@ -193,7 +193,7 @@ SQL 数据同步自动预配的限制如下：
 
 在某些情况下，向客户端代理取消注册数据库可能会导致同步失败。
 
-#### <a name="scenario"></a>应用场景
+#### <a name="scenario"></a>方案
 
 1. 使用 SQL 数据库实例和本地 SQL Server 数据库创建与本地代理 1 关联的同步组 A。
 2. 向本地代理 2（此代理不与任何同步组关联）注册同一本地数据库。

@@ -1,5 +1,5 @@
 ---
-title: 利用 Azure SQL 数据仓库具体化视图进行性能优化 |Microsoft Docs
+title: 利用具体化视图进行性能优化
 description: 在使用具体化视图提高查询性能时应了解的建议和注意事项。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 593841ac95c4c6f17f33a8d35d6b3f83a6db1124
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c1cfd3b4c365a04c3d4704f37e4ed4177fa74619
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338909"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692980"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>利用具体化视图进行性能优化 
 在 Azure SQL 数据仓库中，具体化视图为复杂的分析查询提供一种低维护方法，以实现快速性能，而无需更改任何查询。 本文讨论有关使用具体化视图的一般指南。
@@ -32,12 +33,12 @@ Azure SQL 数据仓库支持标准视图和具体化视图。  两者都是用 S
 
 
 
-| 比较                     | 视图                                         | 具体化视图             
+| 比较                     | 查看                                         | 具体化视图             
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------| 
 |查看定义                 | 存储在 Azure 数据仓库中。              | 存储在 Azure 数据仓库中。    
 |查看内容                    | 每次使用视图时生成。   | 在创建视图期间，预先处理并存储在 Azure 数据仓库中。 随着向基础表中添加数据而更新。                                             
 |数据刷新                    | 始终更新                               | 始终更新                          
-|从复杂查询检索视图数据的速度     | 低                                         | 快  
+|从复杂查询检索视图数据的速度     | 低                                         | 快速  
 |额外存储                   | 否                                           | 是                             
 |语法                          | 创建视图                                  | 创建具体化视图为 SELECT           
      

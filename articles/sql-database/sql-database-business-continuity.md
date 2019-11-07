@@ -1,5 +1,5 @@
 ---
-title: 云业务连续性 - 数据库恢复 - SQL 数据库 | Microsoft 文档
+title: 云业务连续性-数据库恢复-SQL 数据库
 description: 了解 Azure SQL 数据库如何支持云业务连续性和数据库恢复以及如何帮助保持运行任务关键型云应用程序。
 keywords: 业务连续性, 云业务连续性, 数据库灾难恢复, 数据库恢复
 services: sql-database
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 69ff1a5681fbb0b434d7114b069610ed34d9e843
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c4e82b0311e010eb8a4b8f37f3ff817d9a5400ad
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492203"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691046"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL 数据库确保业务连续性的相关概述
 

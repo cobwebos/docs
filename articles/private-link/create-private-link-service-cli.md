@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: c67d2cd4e90b2fa61a4d95e89a68c888a6e1fe3f
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 57ab18c8dfffb6994983179f434491b97589ebda
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273635"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693231"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>使用 Azure CLI 创建专用链接服务
 本文介绍如何使用 Azure CLI 在 Azure 中创建专用链接服务。
@@ -62,7 +62,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 
 ### <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 
-负载均衡器规则定义传入流量的前端 IP 配置和用于接收流量的后端 IP 池，以及所需源和目标端口。 使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) 创建负载均衡器规则 *myHTTPRule*，以便侦听前端池 *myFrontEnd* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *myBackEndPool*。 
+负载均衡器规则定义传入流量的前端 IP 配置和用于接收流量的后端 IP 池，以及所需源和目标端口。 使用 *az network lb rule create* 创建负载均衡器规则 [myHTTPRule](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest)，以便侦听前端池 *myFrontEnd* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *myBackEndPool*。 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -104,14 +104,14 @@ az network private-link-service create \
 ```
 创建后，请记下 "专用链接服务 ID"。 稍后需要请求连接到此服务。  
  
-在此阶段，专用链接服务已成功创建，并已准备好接收流量。 请注意，上面的示例仅演示如何使用 Azure CLI 创建专用链接服务。  我们尚未配置负载均衡器后端池或后端池上的任何应用程序来侦听流量。 若要查看端到端流量流，可以强烈建议将应用程序配置在标准负载均衡器后面。  
+在此阶段，专用链接服务已成功创建，并已准备好接收流量。 请注意，上面的示例仅演示如何使用 Azure CLI 创建专用链接服务。  我们尚未配置负载均衡器后端池或后端池上的任何应用程序来侦听流量。 如果你想要查看端到端流量流，强烈建议你将应用程序配置在标准负载均衡器后面。  
  
 接下来，我们将演示如何使用 Azure CLI 将此服务映射到不同虚拟网络中的专用终结点。 同样，此示例仅限于创建专用终结点，并使用 Azure CLI 连接到上面创建的专用链接服务。 此外，还可以在虚拟网络中创建虚拟机，以发送/接收到专用终结点的流量。        
  
 ## <a name="private-endpoints"></a>专用终结点
 
 ### <a name="create-the-virtual-network"></a>创建虚拟网络 
-使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create)创建虚拟网络。 此示例在名为*myResourcegroup*的资源组中创建名为 *myPEVNet* 的虚拟网络： 
+使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create)创建虚拟网络。 此示例将在名为*myResourcegroup*的资源组中创建名为  *myPEVNet*的虚拟网络： 
 ```azurecli-interactive
 az network vnet create \
 --resource-group myResourceGroup \
@@ -119,7 +119,7 @@ az network vnet create \
 --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-the-subnet"></a>创建子网 
-使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)在虚拟网络中创建子网。 此示例将在名为*myResourcegroup*的资源组中名为*myPEVnet*的虚拟网络中创建名为 *mySubnet* 的子网： 
+使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)在虚拟网络中创建子网。 此示例将在名为*myResourcegroup*的资源组中名为*myPEVnet*的虚拟网络中创建名为  *mySubnet*的子网： 
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -151,7 +151,7 @@ az network private-endpoint create \
 --connection-name myPEConnectingPLS \
 --location westcentralus 
 ```
-你可以`az network private-link-service show`在专用链接服务上获取*专用连接资源 id* 。 ID 如下所示：   
+你可以通过专用链接服务上的 `az network private-link-service show` 获取*专用连接资源 id* 。 ID 如下所示：   
 /subscriptions/subID/resourceGroups/*resourcegroupname*/providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
  
 ## <a name="show-private-link-service-connections"></a>显示专用链接服务连接 

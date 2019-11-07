@@ -1,5 +1,5 @@
 ---
-title: 使用 RLS 和弹性数据库工具的多租户应用 | Microsoft Docs
+title: '具有 RLS 和弹性数据库工具的多租户应用 '
 description: 使用弹性数据库工具以及行级安全性构建具有高可伸缩性数据层的应用程序。
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 996d4e2ba62c06992b0433fd255800ba8cea0af3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4d3f25a6e234c3d3dfd878aaae68cf58684f2fac
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570172"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691863"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>具有弹性数据库工具和行级安全性的多租户应用程序
 
-[弹性数据库工具](sql-database-elastic-scale-get-started.md)和[行级安全性 (RLS)][rls]合作, 可以使用 Azure SQL 数据库缩放多租户应用程序的数据层。 将这些技术综合在一起，即可生成数据层高度可缩放的应用程序。 该数据层支持多租户分片，并使用 **ADO.NET SqlClient** 或**实体框架**。 有关详细信息，请参阅[具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](saas-tenancy-app-design-patterns.md)。
+[弹性数据库工具](sql-database-elastic-scale-get-started.md)和[行级安全性（RLS）][rls]合作，可以使用 Azure SQL 数据库缩放多租户应用程序的数据层。 将这些技术综合在一起，即可生成数据层高度可缩放的应用程序。 该数据层支持多租户分片，并使用 **ADO.NET SqlClient** 或**实体框架**。 有关详细信息，请参阅[具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](saas-tenancy-app-design-patterns.md)。
 
 - **弹性数据库工具**可让开发人员使用 .NET 库和 Azure 服务模板通过标准分片做法横向扩展数据层。 使用[弹性数据库客户端库][s-d-elastic-database-client-library]管理分片有助于自动化和简化通常与分片关联的许多基础结构任务。
 - **行级安全性**允许开发人员将多个租户的数据安全地存储在同一数据库中。 RLS 安全策略筛选掉不属于执行查询的租户的行。 将筛选逻辑集中在数据库中可简化维护过程，降低发生安全错误的风险。 替代方法是依赖所有客户端代码来强制实施安全措施，这是很危险的。
@@ -40,12 +40,12 @@ ms.locfileid: "68570172"
 
 - 使用 Visual Studio（2012 或更高版本）
 - 创建三个 Azure SQL 数据库
-- 下载示例项目：[适用于 Azure SQL 的弹性数据库工具 - 多租户分片](https://go.microsoft.com/?linkid=9888163)
+- 下载示例项目：[Azure SQL 的弹性数据库工具 - 多租户分片](https://go.microsoft.com/?linkid=9888163)
   - 在 **Program.cs** 的开头填入数据库的信息
 
-此项目通过添加对多租户分片数据库的支持，扩展了 [Azure SQL 的弹性数据库工具 - 实体框架集成](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)中所述的项目。 此项目生成一个简单的控制台应用程序，用于创建博客和文章。 此项目包括四个租户，以及两个多租户分片数据库。 上图说明了此配置。
+此项目通过添加对多租户分片数据库的支持，扩展了 [Azure SQL 的弹性数据库工具 - 实体框架集成](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) 中所述的项目。 此项目生成一个简单的控制台应用程序，用于创建博客和文章。 此项目包括四个租户，以及两个多租户分片数据库。 上图说明了此配置。
 
-生成并运行应用程序。 此运行会引导弹性数据库工具的分片映射管理器，并进行以下测试：
+构建并运行应用程序。 此运行会引导弹性数据库工具的分片映射管理器，并进行以下测试：
 
 1. 使用实体框架和 LINQ 创建新博客，并显示每个租户的所有博客文章
 2. 使用 ADO.NET SqlClient 显示租户的所有博客文章
@@ -53,18 +53,18 @@ ms.locfileid: "68570172"
 
 请注意，由于 RLS 尚未在分片数据库中启用，其中的每个测试都会揭露一个问题：租户能够看到不属于他们的博客，并且系统不会阻止应用程序插入错误租户的博客。 本文的余下部分介绍如何通过使用 RLS 强制隔离租户来解决这些问题。 执行以下两个步骤：
 
-1. **应用层**：将应用程序代码修改为打开连接后始终在 SESSION\_CONTEXT 中设置当前 TenantId。 示例项目已通过这种方式设置 TenantId。
+1. **应用程序层**：打开连接后，将应用程序代码修改为始终设置 SESSION\_CONTEXT 中的当前 TenantId。 示例项目已通过这种方式设置 TenantId。
 2. **数据层**：在每个分片数据库中创建一个 RLS 安全策略，以根据 SESSION\_CONTEXT 中存储的 TenantId 筛选行。 针对每个分片数据库创建一个 策略，否则不会筛选多租户分片中的行。
 
-## <a name="1-application-tier-set-tenantid-in-the-sessioncontext"></a>1.应用层：在 SESSION\_CONTEXT 中设置 TenantId
+## <a name="1-application-tier-set-tenantid-in-the-session_context"></a>1. 应用程序层：在会话中设置 TenantId\_上下文
 
 首先，使用弹性数据库客户端库的数据依赖路由 API 连接到分片数据库。 应用程序仍需告知数据库，哪个 TenantId 在使用连接。 TenantId 告知 RLS 安全策略，必须筛选掉哪些属于其他租户的行。 将当前 TenantId 存储在连接的 [SESSION\_CONTEXT](https://docs.microsoft.com/sql/t-sql/functions/session-context-transact-sql) 中。
 
-可以使用 [CONTEXT\_INFO](https://docs.microsoft.com/sql/t-sql/functions/context-info-transact-sql) 来替代 SESSION\_CONTEXT。 不过，SESSION\_CONTEXT 是较好的选择。 SESSION\_CONTEXT 更易于使用，默认情况下返回 NULL，并支持键值对。
+可以使用 \_CONTEXT[INFO\_ 来替代 SESSION](https://docs.microsoft.com/sql/t-sql/functions/context-info-transact-sql)CONTEXT。 不过，SESSION\_CONTEXT 是较好的选择。 SESSION\_CONTEXT 更易于使用，默认情况下返回 NULL，并支持键值对。
 
 ### <a name="entity-framework"></a>实体框架
 
-对于使用实体框架的应用程序，最简单的方法是根据[使用 EF DbContext 进行数据相关的路由](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext)中所述，在 ElasticScaleContext 重写中设置 SESSION\_CONTEXT。 创建和执行 SqlCommand，将 SESSION\_CONTEXT 中的 TenantId 设置为为连接指定的 shardingKey。 然后，返回通过数据依赖路由进行中转的连接。 这样，只需编写代码一次就能设置 SESSION\_CONTEXT。
+对于使用实体框架的应用程序，最简单的方法是根据\_使用 EF DbContext 进行数据相关的路由[中所述，在 ElasticScaleContext 重写中设置 SESSION](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext)CONTEXT。 创建和执行 SqlCommand，将 SESSION\_CONTEXT 中的 TenantId 设置为为连接指定的 shardingKey。 然后，返回通过数据依赖路由进行中转的连接。 这样，只需编写代码一次就能设置 SESSION\_CONTEXT。
 
 ```csharp
 // ElasticScaleContext.cs
@@ -212,7 +212,7 @@ All blogs for TenantId {0} (using ADO.NET SqlClient):", tenantId4);
 
 ```
 
-## <a name="2-data-tier-create-row-level-security-policy"></a>2.数据层：创建行级安全策略
+## <a name="2-data-tier-create-row-level-security-policy"></a>2. 数据层：创建行级安全策略
 
 ### <a name="create-a-security-policy-to-filter-the-rows-each-tenant-can-access"></a>创建安全策略，以便筛选每个租户可以访问的行
 
@@ -340,10 +340,10 @@ GO
 
 ### <a name="maintenance"></a>维护
 
-- **添加新分片**：对所有新分片执行 T-SQL 脚本以启用 RLS，否则不会筛选针对这些分片的查询。
-- **添加新表**：每次创建新表时，将 FILTER 和 BLOCK 谓词添加到所有分片上的安全策略。 否则不会筛选对新表的查询。 根据 [Apply Row-Level Security automatically to newly created tables](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-automatically-to-newly-created-tables.aspx)（自动向新建的表应用行级安全性）（博客）中所述，此添加操作可以使用 DDL 触发器来自动完成。
+- **添加新分片**：对所有新分片执行 T-SQL 脚本以启用 RLS，否则，不会筛选针对这些分片的查询。
+- **添加新表**：每当创建新表时，将 FILTER 和 BLOCK 谓词添加到所有分片上的安全策略， 否则不会筛选对新表的查询。 根据 [Apply Row-Level Security automatically to newly created tables](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-automatically-to-newly-created-tables.aspx)（自动向新建的表应用行级安全性）（博客）中所述，此添加操作可以使用 DDL 触发器来自动完成。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 可将弹性数据库工具和行级安全性一起使用，以扩大支持多租户和单租户分片的应用程序的数据层。 可以使用多租户分片来提高数据存储效率。 如果大量的租户只有几行数据，则此效率提升很显著。 单租户分片可以支持其性能和隔离要求更严格的高级租户。 有关详细信息，请参阅[行级安全性参考][rls]。
 

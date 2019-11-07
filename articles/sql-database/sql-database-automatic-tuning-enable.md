@@ -1,5 +1,5 @@
 ---
-title: 为 Azure SQL 数据库启动自动优化 | Microsoft Docs
+title: 为 Azure SQL 数据库启用自动优化
 description: 可轻松对 Azure SQL 数据库启用自动优化。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: c9339b5c7c35378fb85daeae19a6daa01d54f350
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 52e3dd01446a6292c3404f14bd8ebfb32aa00dd6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809641"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691125"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>启用自动优化以监视查询并提高工作负荷性能
 
@@ -25,10 +25,10 @@ Azure SQL 数据库是自动托管的数据服务，可持续监视查询并识�
 可以通过 [Azure 门户](sql-database-automatic-tuning-enable.md#azure-portal)、[REST API](sql-database-automatic-tuning-enable.md#rest-api) 调用和 [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) 命令在服务器或数据库级别启用自动优化。
 
 > [!NOTE]
-> 对于托管实例，只能通过[t-sql](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management)配置受支持的 FORCE_LAST_GOOD_PLAN 选项。 本文中所述的基于门户的配置和自动索引优化选项不适用于托管实例。
+> 对于托管实例，支持的选项 FORCE_LAST_GOOD_PLAN 只能通过 [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management) 进行配置。 本文中所述的基于门户的配置和自动索引优化选项不适用于托管实例。
 
 > [!NOTE]
-> 目前不支持通过 ARM （Azure 资源管理器）模板配置自动优化选项。
+> 目前不支持通过 ARM（Azure 资源管理器）模板配置自动优化选项。
 
 ## <a name="enable-automatic-tuning-on-server"></a>对服务器启用自动优化
 
@@ -116,6 +116,6 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请阅读[自动优化文章](sql-database-automatic-tuning.md)，详细了解自动优化及其如何帮助提高性能。
+* 请参阅[自动优化文章](sql-database-automatic-tuning.md)，详细了解自动优化以及如何借助它来提高性能。
 * 请参阅[性能建议](sql-database-advisor.md)，了解有关 Azure SQL 数据库性能建议的概述。
-* 若要了解排名靠前的查询的性能影响，请参阅[查询性能见解](sql-database-query-performance.md)。
+* 请参阅[查询性能见解](sql-database-query-performance.md)，了解排名靠前的查询的性能影响。

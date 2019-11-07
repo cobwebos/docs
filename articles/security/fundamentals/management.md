@@ -4,7 +4,7 @@ description: 本文讨论在管理 Microsoft Azure 环境（包括云服务、�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 2431feba-3364-4a63-8e66-858926061dd3
 ms.service: security
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: 5efd82a2cb0652f6dd2aab621c578ff90aca0111
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 45efaadf7d15fff290165fe831c45c0bc063db53
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927855"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643801"
 ---
 # <a name="security-management-in-azure"></a>Azure 中的安全管理
-Azure 订阅者可从多个设备管理他们的云环境，这些设备包括管理工作站、开发人员电脑，甚至是具有特定于任务的权限的特权最终用户设备。 在某些情况下，可通过基于 Web 的控制台（例如 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)）来执行管理功能。 有其他情况下，可以从本地系统通过虚拟专用网络 (VPN)、终端服务、客户端应用程序协议或 Azure 服务管理 API (SMAPI)（以编程方式）直接连接到 Azure。 此外，客户端终结点（例如平板电脑或智能手机）可以加入域或者受到隔离且不受管理。
+Azure 订阅者可从多种设备管理其云环境，这些设备包括管理工作站、开发人员电脑，甚至是具有任务特定权限的特权最终用户设备。 在某些情况下，可通过基于 Web 的控制台（例如 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)）来执行管理功能。 有其他情况下，可以从本地系统通过虚拟专用网络 (VPN)、终端服务、客户端应用程序协议或 Azure 服务管理 API (SMAPI)（以编程方式）直接连接到 Azure。 此外，客户端终结点（例如平板电脑或智能手机）可以加入域或者受到隔离且不受管理。
 
 尽管这么多种的访问和管理功能可提供丰富的选项，但选项太多也可能会让云部署承受巨大风险。 它可能变得难以管理、跟踪和审核管理操作。 这种差异还可能由于用于管理云服务的客户端终结点进行的访问不受管制而带来安全威胁。 使用普通工作站或专用工作站开发和管理基础结构将会打开诸如 Web 浏览（例如水坑攻击）或电子邮件（例如社交工程和网络钓鱼）等不可预测的威胁媒介。
 
 ![](./media/management/typical-management-network-topology.png)
 
-在这种类型的环境中，发生攻击的可能性将会增加，因为难以构造安全策略和机制来适当管理各种终结点对 Azure 接口（例如 SMAPI）的访问。
+在这种类型的环境中，发生攻击的可能性会增加，因为难以构造安全策略和机制来适当管理各种终结点对 Azure 接口（例如 SMAPI）的访问。
 
 ### <a name="remote-management-threats"></a>远程管理威胁
 攻击者经常会尝试通过入侵帐户凭据（例如，通过暴力破解密码、网络钓鱼和搜集凭据）或诱骗用户运行有害代码（例如，从具有偷渡式下载的有害网站或从有害电子邮件的附件）来获取特殊访问权限。 远程管理的云环境由于具有随时随地访问的特性，因此如果帐户遭到入侵，风险会大增。
@@ -48,7 +48,7 @@ Azure 订阅者可从多个设备管理他们的云环境，这些设备包括�
 * 管理任务不应该与可能将造成入侵的活动合并（例如，管理员的电子邮件中有恶意代码，从而感染基础结构服务器）。
 * 用于高敏感性操作的工作站也不应该是用于高风险用途（例如浏览 Internet）的同一系统。
 
-通过删除不必要的软件来减少系统的受攻击面。 例如：
+通过删除不必要的软件来减少系统的受攻击面。 示例：
 
 * 如果设备的主要用途是管理云服务，则标准的管理、支持或开发工作站都不应该请求安装电子邮件客户端或其他生产力应用程序。
 
@@ -75,18 +75,18 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 借助客户端安全配置和管理网关的数据中心部署，可以限制并监视管理员对于云应用程序和数据的访问。
 
 > [!NOTE]
-> 本文中的某些建议可能会导致数据、网络或计算资源使用量增加，从而增加许可或订阅成本。
+> 本文中的某些建议可能会导致数据、网络或计算资源使用量增加，还可能导致许可或订阅成本增加。
 >
 >
 
 ## <a name="hardened-workstation-for-management"></a>强化的管理工作站
 强化工作站的目标是要去除其他所有功能，只留下其运行所需的最重要功能，尽可能缩小潜在的受攻击面。 系统强化包括安装最少量的服务和应用程序、限制应用程序执行、限制网络只能访问所需资源，以及让系统随时保持最新状态。 此外，使用经过强化的管理工作站能够将管理工具和活动与其他最终用户任务隔离开来。
 
-在本地企业环境中，可以通过专用的管理网络、必须用身份卡才能进入的服务器机房以及在受保护的网络区域上执行的工作站，限制物理基础结构的受攻击面。 在云或混合 IT 模型中，由于无法实际接触到 IT 资源，因此想要让管理服务保持安全将是更复杂的任务。 实现保护解决方案需要小心软件设置、安全为主的处理程序及完善的策略。
+在本地企业环境中，可以通过专用的管理网络、必须用身份卡才能进入的服务器机房以及在受保护的网络区域上执行的工作站，限制物理基础结构的受攻击面。 在云或混合 IT 模型中，由于无法实际接触到 IT 资源，因此想要让管理服务保持安全是更复杂的任务。 实现保护解决方案需要小心软件设置、安全为主的处理程序及完善的策略。
 
 在锁定的工作站中使用仅需最低特权的最少软件使用量来进行云管理（以及应用程序开发），可以通过将远程管理和开发环境标准化来降低引发安全事件的风险。 强化后的工作站配置可通过关闭恶意代码和入侵程序使用的许多常见手段，来帮助避免用于管理重要云资源的帐户遭到入侵。 具体而言，可以使用 [Windows AppLocker](https://technet.microsoft.com/library/dd759117.aspx) 和 Hyper-V 技术来控制和隔离客户端系统行为并缓解威胁，包括电子邮件或 Internet 浏览。
 
-在强化后的工作站上，管理员将运行标准用户帐户（它将阻止管理级别的执行），关联的应用程序将由允许列表进行控制。 强化后的工作站的基本要素如下：
+在强化后的工作站上，管理员将运行标准用户帐户（它将阻止管理级别的执行），关联的应用程序由允许列表进行控制。 强化后的工作站的基本要素如下：
 
 * 活动的扫描和修补。 部署反恶意代码软件，定期执行漏洞扫描，及时使用最新的安全更新来更新所有工作站。
 * 有限的功能。 卸载任何不需要的应用程序，并禁用不必要的（启动）服务。
@@ -109,7 +109,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 远程桌面网关是基于策略的 RDP 代理服务，可强制实施安全要求。 同时实现 RD 网关与 Windows Server 网络访问保护 (NAP)，可帮助确保只有符合 Active Directory 域服务 (AD DS) 组策略对象 (GPO) 创建的特定安全运行状况条件的客户端可以连接。 此外：
 
 * 在 RD 网关上预配 [Azure 管理证书](https://msdn.microsoft.com/library/azure/gg551722.aspx) ，使它成为可以访问 Azure 门户的唯一主机。
-* 将 RD 网关加入管理员工作站所在的同一个[管理域](https://technet.microsoft.com/library/bb727085.aspx)。 在具有对 Azure AD 的单向信任的域中使用站点到站点 IPsec VPN 或 ExpressRoute 时，或者要联合本地 AD DS 实例与 Azure AD 之间的凭据时，就必须这样做。
+* 将 RD 网关加入管理员工作站所在的同一个 [管理域](https://technet.microsoft.com/library/bb727085.aspx)。 在具有对 Azure AD 的单向信任的域中使用站点到站点 IPsec VPN 或 ExpressRoute 时，或者要联合本地 AD DS 实例与 Azure AD 之间的凭据时，就必须这样做。
 * 配置 [客户端连接授权策略](https://technet.microsoft.com/library/cc753324.aspx) ，以让 RD 网关验证客户端计算机名称是否有效（已加入域）并可以访问 Azure 门户。
 * 针对 [Azure VPN](https://azure.microsoft.com/documentation/services/vpn-gateway/) 使用 IPsec 以进一步防止管理流量遭到窃听和令牌失窃，或考虑使用通过 [Azure ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) 隔离的 Internet 链路。
 * 针对通过 RD 网关登录的管理员启用多重身份验证（通过 [Azure Multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)）或智能卡身份验证。
@@ -123,7 +123,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 
 部署到 Azure 的某些应用程序或服务可能将针对用户和管理员访问拥有自己的身份验证机制，而其他应用程序或服务则将充分利用 Azure AD。 根据是通过 Active Directory 联合身份验证服务 (AD FS)、使用目录同步还是仅在云中维护用户帐户来联合凭据，使用 [Microsoft 标识管理器](https://technet.microsoft.com/library/mt218776.aspx) （Azure AD 高级版中已随附）可帮助管理资源之间的标识生命周期。
 
-### <a name="connectivity"></a>连接性
+### <a name="connectivity"></a>连接
 有多种机制可供帮助保护客户端与 Azure 虚拟网络的连接。 在这些机制中，有两个机制（[站点到站点 VPN](https://channel9.msdn.com/series/Azure-Site-to-Site-VPN) (S2S) 和[点到站点 VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create) (P2S)）支持使用行业标准 IPsec (S2S) 或[安全套接字隧道协议](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) (SSTP) (P2S) 来进行加密和隧道传输。 当 Azure 连接到面向公众的 Azure 服务管理（例如 Azure 门户）时，Azure 需要超文本安全传输协议 (HTTPS)。
 
 未通过 RD 网关连接到 Azure 的独立强化工作站应使用基于 SSTP 的点到站点 VPN 来与 Azure 虚拟网络建立初始连接，并从 VPN 隧道与各个虚拟机建立 RDP 连接。
@@ -156,7 +156,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 对于没有任何本地基础结构的 IT 环境（例如，由于所有服务器都在云而不能访问 GPO 的本地 AD DS 实例）， [Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx) 等服务可以简化工作站配置的部署和维护任务。
 
 ### <a name="stand-alone-hardened-workstation-for-management"></a>用于管理的独立强化工作站
-使用独立的强化工作站时，管理员将使用一台电脑或膝上型计算机来执行管理任务，并使用另一台不同的电脑或膝上型计算机来执行非管理任务。 专门负责管理 Azure 服务的工作站不需要安装其他应用程序。 此外，使用的工作站如果支持[受信任的平台模块](https://technet.microsoft.com/library/cc766159) (TPM) 或类似的硬件级加密技术，将有助于进行设备身份验证和预防特定攻击。 TPM 还可以使用 [BitLocker 驱动器加密](https://technet.microsoft.com/library/cc732774.aspx)来支持系统驱动器的整卷保护。
+使用独立的强化工作站时，管理员将使用一台电脑或膝上型计算机来执行管理任务，并使用另一台不同的电脑或膝上型计算机来执行非管理任务。 专门负责管理 Azure 服务的工作站不需要安装其他应用程序。 此外，使用的工作站如果支持 [受信任的平台模块](https://technet.microsoft.com/library/cc766159) (TPM) 或类似的硬件级加密技术，将有助于进行设备身份验证和预防特定攻击。 TPM 还可以使用 [BitLocker 驱动器加密](https://technet.microsoft.com/library/cc732774.aspx)来支持系统驱动器的整卷保护。
 
 在独立的强化工作站方案中（如下所示），Windows 防火墙（或非 Microsoft 客户端防火墙）的本地实例将配置为阻止入站连接，例如 RDP。 管理员可以登录到强化的工作站，并在与 Azure 虚拟网络建立 VPN 连接之后启动连接到 Azure 的 RDP 会话，但无法登录到企业电脑并使用 RDP 连接到强化的工作站本身。
 
@@ -169,10 +169,10 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 
 若要避免使用单一工作站来进行管理和其他日常工作任务所可能引发的诸多安全风险，可以在强化的工作站部署 Windows Hyper-V 虚拟机。 此虚拟机可用作企业电脑。 企业电脑环境可以与主机保持隔离，以减少其受攻击面，并使得用户的日常活动（例如电子邮件）不会与机密的管理任务共存。
 
-企业电脑虚拟机会在受保护的空间内运行，并提供用户应用程序。 主机仍是“干净源”，并且将在根操作系统中强制实施严格的网络策略（例如，阻止来自虚拟机的 RDP 访问）。
+企业电脑虚拟机会在受保护的空间内运行，并提供用户应用程序。 主机仍是“干净源”，并且会在根操作系统中强制实施严格的网络策略（例如，阻止来自虚拟机的 RDP 访问）。
 
 ### <a name="windows-to-go"></a>Windows To Go
-需要独立的强化工作站的另一个替代方式是使用 [Windows To Go](https://technet.microsoft.com/library/hh831833.aspx) 驱动器，此功能支持客户端 USB 启动功能。 Windows To Go 可让用户将兼容的电脑启动到从加密 U 盘运行的隔离系统映像。 由于映像可以完全由企业 IT 团队负责管理、有严格的安全策略、最小的 OS 生成和 TPM 支持，因此 Windows To Go 可以提升对远程管理终结点的控制度。
+需要独立的强化工作站的另一个替代方式是使用 [Windows To Go](https://technet.microsoft.com/library/hh831833.aspx) 驱动器，此功能支持客户端 USB 启动功能。 Windows To Go 可让用户将兼容的电脑启动到从加密 USB 闪存驱动器运行的隔离系统映像。 由于映像可以完全由企业 IT 团队负责管理、有严格的安全策略、最小的 OS 生成和 TPM 支持，因此 Windows To Go 可以提升对远程管理终结点的控制度。
 
 在下图中，可移动映像是已加入域的系统，它已预配置为仅连接到 Azure、需要多重身份验证并阻止所有非管理流量。 如果用户将同一台电脑启动到标准企业映像，并尝试访问 Azure 管理工具的 RD 网关，会话会被阻止。 Windows To Go 将成为根级操作系统，并且不需要可能更容易遭受外部攻击的其他层（主机操作系统、虚拟机监控程序、虚拟机）。
 
@@ -199,7 +199,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 | - | 针对所有管理连接使用防火墙、VPN 和 NAP。 |
 
 ## <a name="azure-operations"></a>Azure 操作
-在 Microsoft 的 Azure 操作中，访问 Azure 的生产系统的操作工程师和支持人员将使用强化的[工作站电脑与其中预配的 VM](#stand-alone-hardened-workstation-for-management) 来进行内部企业网络访问和运行应用程序（例如电子邮件、Intranet 等）。 所有管理工作站计算机都装有 TPM，主机启动驱动器已使用 BitLocker 加密，并且已加入 Microsoft 主要企业域中的特殊组织单位 (OU)。
+在 Microsoft 的 Azure 操作中，访问 Azure 的生产系统的操作工程师和支持人员将使用强化的 [工作站电脑与其中预配的 VM](#stand-alone-hardened-workstation-for-management) 来进行内部企业网络访问和运行应用程序（例如电子邮件、Intranet 等）。 所有管理工作站计算机都装有 TPM，主机启动驱动器已使用 BitLocker 加密，并且已加入 Microsoft 主要企业域中的特殊组织单位 (OU)。
 
 系统强化是通过组策略以集中式软件更新来强制实施的。 为了审核和分析，将从管理工作站收集事件日志（例如安全性和 AppLocker）并将其保存到中心位置。
 
@@ -218,13 +218,12 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 * 加密。 确保管理工作站装有 TPM 以便能够更安全地启用 [加密文件系统](https://technet.microsoft.com/library/cc700811.aspx) (EFS) 和 BitLocker。 如果使用 Windows To Go，请只配合 BitLocker 使用加密的 USB 密钥。
 * 监管。 使用 AD DS GPO 来控制所有管理员的 Windows 接口，例如文件共享。 将管理工作站纳入审核、监视和日志记录过程中。 跟踪所有管理员和开发人员的访问和使用活动。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 使用强化的工作站配置来管理 Azure 云服务、虚拟机和应用程序，可帮助避免远程管理关键 IT 基础结构所造成的众多风险和威胁。 Azure 和 Windows 提供了相关机制来帮助保护和控制通信、身份验证与客户端行为。
 
 ## <a name="next-steps"></a>后续步骤
 除了本文中所提到的特定项以外，以下资源也提供了有关 Azure 及相关 Microsoft 服务的更多常规信息：
 
-* [保护特权访问](https://technet.microsoft.com/library/mt631194.aspx) – 获取有关设计和构建安全管理工作站以管理 Azure 的技术详细信息
+* [保护特权访问](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access) – 获取有关设计和构建安全管理工作站以管理 Azure 的技术详细信息
 * [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/cloudservices/azure) - 了解可保护 Azure 结构以及在 Azure 上运行的工作负荷的 Azure 平台功能
-* [Microsoft 安全响应中心](https://technet.microsoft.com/security/dn440717.aspx) - 可在其中报告 Microsoft 安全漏洞（包括 Azure 问题）或将其通过电子邮件发送到 [secure@microsoft.com](mailto:secure@microsoft.com)
-* [Azure 安全博客](https://blogs.msdn.com/b/azuresecurity/) – 随时掌握 Azure 安全性的最新信息
+* [Microsoft 安全响应中心](https://www.microsoft.com/msrc) - 可在其中报告 Microsoft 安全漏洞（包括 Azure 问题）或将其通过电子邮件发送到 [secure@microsoft.com](mailto:secure@microsoft.com)

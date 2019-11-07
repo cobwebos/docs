@@ -1,5 +1,5 @@
 ---
-title: 在应用程序代码中使用 SSL 证书-Azure App Service |Microsoft Docs
+title: 在代码 Azure App Service 中使用 SSL 证书 |Microsoft Docs
 description: 了解如何使用客户端证书连接到需要它们的远程资源。
 services: app-service
 documentationcenter: ''
@@ -10,26 +10,26 @@ ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/16/2019
+ms.date: 11/04/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 1f042f72f82d2198472fe81670c697c0c4b28321
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 93dfe784d45cd9cd93d22c5e8c3275c563f7f88b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513687"
+ms.locfileid: "73572081"
 ---
-# <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>在 Azure 应用服务的应用程序代码中使用 SSL 证书
+# <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>在代码中使用 SSL 证书 Azure App Service
 
-应用服务应用代码可充当客户端，并可访问需要证书身份验证的外部服务。 本操作方法指南介绍如何在应用程序代码中使用公共或专用证书。
+在应用程序代码中，你可以访问[添加到应用服务的公共或私有证书](configure-ssl-certificate.md)。 应用代码可充当客户端和访问需要证书身份验证的外部服务，或者可能需要执行加密任务。 本操作方法指南介绍如何在应用程序代码中使用公共或专用证书。
 
-这种在代码中使用证书的方法利用应用服务中的 SSL 功能，要求应用位于“基本”层或更高层。 也可[将证书文件包括到应用存储库中](#load-certificate-from-file)，但建议不要对专用证书这样做。
+这种在代码中使用证书的方法利用应用服务中的 SSL 功能，要求应用位于“基本”层或更高层。 如果你的应用处于 "**免费**" 或 "**共享**" 层，你可以[在应用存储库中包含该证书文件](#load-certificate-from-file)。
 
 让应用服务管理 SSL 证书时，可以分开维护证书和应用程序代码，并保护敏感数据。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 按照本操作方法指南操作：
 
@@ -46,9 +46,9 @@ ms.locfileid: "73513687"
 
 ![复制证书指纹](./media/configure-ssl-certificate/create-free-cert-finished.png)
 
-## <a name="load-the-certificate"></a>加载证书
+## <a name="make-the-certificate-accessible"></a>使证书可供访问
 
-若要在应用代码中使用证书，请在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中运行以下命令，将其指纹添加到 `WEBSITE_LOAD_CERTIFICATES` 应用设置：
+若要在应用代码中访问证书，请在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中运行以下命令，将其指纹添加到 `WEBSITE_LOAD_CERTIFICATES` 应用设置：
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
@@ -56,15 +56,14 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 若要使所有证书可供访问，请将值设置为 `*`。
 
-> [!NOTE]
-> 此设置将指定的证书放置在[当前 User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores)存储中的大多数定价层，但在**隔离**层中（即应用在[应用服务环境](environment/intro.md)中运行），将证书放入[本地 Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores)店.
->
+## <a name="load-certificate-in-windows-apps"></a>在 Windows 应用中加载证书
 
-现在，配置的证书可供代码使用了。
+`WEBSITE_LOAD_CERTIFICATES` 应用设置使指定证书可供 windows 证书存储中的 Windows 托管应用程序访问，位置取决于[定价层](overview-hosting-plans.md)：
 
-## <a name="load-the-certificate-in-code"></a>在代码中加载证书
+- **隔离**层-位于[本地 Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores)。 
+- 所有其他层-在[当前 User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores)中。
 
-证书可供访问后，可在 C# 代码中通过证书指纹访问它。 以下代码加载具有指纹 `E661583E8FABEF4C0BEF694CBC41C28FB81CD870` 的证书。
+在C#代码中，可以通过证书指纹访问证书。 以下代码加载具有指纹 `E661583E8FABEF4C0BEF694CBC41C28FB81CD870` 的证书。
 
 ```csharp
 using System;
@@ -89,30 +88,74 @@ certStore.Close();
 ...
 ```
 
-<a name="file"></a>
-## <a name="load-certificate-from-file"></a>从文件加载证书
+在 Java 代码中，可以使用 "使用者公用名" 字段从 "Windows-MY" 存储区访问证书（请参阅[公钥证书](https://en.wikipedia.org/wiki/Public_key_certificate)）。 下面的代码演示如何加载私钥证书：
 
-如需从应用程序目录加载证书文件，则可首选某些方式，例如，使用 [FTPS](deploy-ftp.md) 会比使用 [Git](deploy-local-git.md) 更好。 应将专用证书之类的敏感信息置于源代码管理之外。
+```java
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import java.security.KeyStore;
+import java.security.cert.Certificate;
+import java.security.PrivateKey;
 
-即使是在 .NET 代码中直接加载文件，库仍会验证是否加载当前的用户配置文件。 若要加载当前用户配置文件，请在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中用以下命令设置 "`WEBSITE_LOAD_USER_PROFILE` 应用" 设置。
+...
+KeyStore ks = KeyStore.getInstance("Windows-MY");
+ks.load(null, null); 
+Certificate cert = ks.getCertificate("<subject-cn>");
+PrivateKey privKey = (PrivateKey) ks.getKey("<subject-cn>", ("<password>").toCharArray());
 
-```azurecli-interactive
-az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
+// Use the certificate and key
+...
 ```
 
-设置此设置以后，以下 C# 示例会从应用存储库的 `mycert.pfx` 目录中加载名为 `certs` 的证书。
+对于不支持或未提供对 Windows 证书存储区的支持的语言，请参阅[从文件中加载证书](#load-certificate-from-file)。
+
+## <a name="load-certificate-in-linux-apps"></a>在 Linux 应用中加载证书
+
+`WEBSITE_LOAD_CERTIFICATES` 应用设置使 Linux 托管应用（包括自定义容器应用）可以访问指定的证书作为文件。 这些文件位于以下目录中：
+
+- 专用证书-`/var/ssl/private` （`.p12` 文件）
+- 公共证书-`/var/ssl/certs` （`.der` 文件）
+
+证书文件名是证书指纹。 以下C#代码演示了如何在 Linux 应用中加载公共证书。
 
 ```csharp
 using System;
 using System.Security.Cryptography.X509Certificates;
 
 ...
-// Replace the parameter with "~/<relative-path-to-cert-file>".
-string certPath = Server.MapPath("~/certs/mycert.pfx");
+var bytes = System.IO.File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
+var cert = new X509Certificate2(bytes);
 
-X509Certificate2 cert = GetCertificate(certPath, signatureBlob.Thumbprint);
-...
+// Use the loaded certificate
 ```
+
+若要查看如何从 node.js、PHP、Python、Java 或 Ruby 中的文件加载 SSL 证书，请参阅相应语言或 web 平台的文档。
+
+## <a name="load-certificate-from-file"></a>从文件加载证书
+
+例如，如果需要加载手动上传的证书文件，则最好使用[FTPS](deploy-ftp.md)而不是[Git](deploy-local-git.md)来上载证书。 应将专用证书之类的敏感信息置于源代码管理之外。
+
+> [!NOTE]
+> 即使您从文件中加载证书，Windows 上的 ASP.NET 和 ASP.NET Core 也必须访问证书存储区。 若要在 Windows .NET 应用中加载证书文件，请在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中使用以下命令加载当前用户配置文件：
+>
+> ```azurecli-interactive
+> az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
+> ```
+
+以下C#示例从应用中的相对路径加载公共证书：
+
+```csharp
+using System;
+using System.Security.Cryptography.X509Certificates;
+
+...
+var bytes = System.IO.File.ReadAllBytes("~/<relative-path-to-cert-file>");
+var cert = new X509Certificate2(bytes);
+
+// Use the loaded certificate
+```
+
+若要查看如何从 node.js、PHP、Python、Java 或 Ruby 中的文件加载 SSL 证书，请参阅相应语言或 web 平台的文档。
 
 ## <a name="more-resources"></a>更多资源
 

@@ -1,5 +1,5 @@
 ---
-title: 在使用 Azure SQL 数据库的多租户应用中预配新租户 | Microsoft Docs
+title: 在使用 Azure SQL 数据库的多租户应用中预配新租户
 description: 了解如何在 Azure SQL 数据库多租户 SaaS 应用中预配和编录新租户
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: b5a996fe6be5aa839b78b6693accac9b1000cef8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f0f1ebd8b2ef719a9556b6b20f6685d1da493263
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570421"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692110"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>了解如何预配新租户并将其注册到目录中
 
@@ -30,7 +30,7 @@ ms.locfileid: "68570421"
 > * 预配一批其他租户。
 
 
-若要完成本教程，请确保已完成了以下先决条件：
+若要完成本教程，请确保已完成以下先决条件：
 
 * 已部署了 Wingtip Tickets SaaS“每租户一个数据库”应用。 若要在五分钟内完成部署，请参阅[部署和浏览 Wingtip Tickets SaaS database-per-tenant 应用程序](saas-dbpertenant-get-started-deploy.md)
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
@@ -45,7 +45,7 @@ ms.locfileid: "68570421"
 
 该目录还存储其他租户或数据库元数据，如架构版本、服务计划或提供给租户的 SLA。 该目录可以存储其他在进行应用程序管理、客户支持或 DevOps 时所需的信息。 
 
-除了 SaaS 应用程序，该目录还可以启用数据库工具。 在 Wingtip 票证 SaaS 每个租户的数据库示例中, 目录用于启用跨租户查询, 这在[即席报表教程](saas-tenancy-cross-tenant-reporting.md)中进行了介绍。 [架构管理](saas-tenancy-schema-management.md)和[租户分析](saas-tenancy-tenant-analytics.md)教程中探讨了跨数据库作业管理。 
+除了 SaaS 应用程序，该目录还可以启用数据库工具。 在 Wingtip 票证 SaaS 每个租户的数据库示例中，目录用于启用跨租户查询，这在[即席报表教程](saas-tenancy-cross-tenant-reporting.md)中进行了介绍。 [架构管理](saas-tenancy-schema-management.md)和[租户分析](saas-tenancy-tenant-analytics.md)教程中探讨了跨数据库作业管理。 
 
 在 Wingtip Tickets SaaS 示例中，目录通过使用[弹性数据库客户端库 (EDCL)](sql-database-elastic-database-client-library.md) 的“分片管理”功能来实现。 EDCL 在 Java 和 .NET Framework 中可用。 EDCL 允许应用程序创建、管理和使用支持数据库的分片映射。 
 
@@ -154,7 +154,7 @@ Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服�
 
 此教程中未包含的其他预配模式：
 
-**预先预配数据库**：预先预配模式利用了“弹性池中的数据库不会添加额外费用”这一事实。 计费针对弹性池而不是数据库。 空闲数据库不使用任何资源。 通过在池中预先预配数据库，然后在需要时分配它们，可以显著降低租户加入时间。 可以根据需要调整预先预配数据库的数目，以保留适合预期预配率的缓冲区。
+**预先预配数据库**：预配模式利用了“弹性池中的数据库不会添加额外费用”这一事实。 计费针对弹性池而不是数据库。 空闲数据库不使用任何资源。 通过在池中预先预配数据库，然后在需要时分配它们，可以显著降低租户加入时间。 可以根据需要调整预先预配数据库的数目，以保留适合预期预配率的缓冲区。
 
 **自动预配**：在自动预配模式下，某个预配服务会自动根据需要预配服务器、池和数据库。 如果需要，可以包括弹性池中的预先预配数据库。 如果数据库已停用并已删除，则可以通过预配服务来填充弹性池中的间隙。 此类服务可简单，也可复杂（例如，处理跨多个地理区域的预配），并且可以设置异地复制以用于灾难恢复。 
 

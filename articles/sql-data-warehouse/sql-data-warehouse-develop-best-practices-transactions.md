@@ -1,5 +1,5 @@
 ---
-title: 优化 Azure SQL 数据仓库的事务 | Microsoft Docs
+title: 优化事务
 description: 了解如何在尽量降低长时间回退风险的情况下优化 Azure SQL 数据仓库中的事务性代码的性能。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2299c526dd63eb8e8772661ee8fae66153fc36c3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b8b8be9467ade870e57355be91b0de329b0f6217
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479675"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692857"
 ---
 # <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>优化 Azure SQL 数据仓库中的事务
 了解如何在尽量降低长时间回退风险的情况下优化 Azure SQL 数据仓库中的事务性代码的性能。
@@ -67,14 +68,14 @@ CTAS 和 INSERT...SELECT 都是批量加载操作。 但两者都受目标表定
 
 | 主索引 | 加载方案 | 日志记录模式 |
 | --- | --- | --- |
-| 堆 |Any |**最少** |
+| 堆 |任意 |**最少** |
 | 聚集索引 |空目标表 |**最少** |
 | 聚集索引 |加载的行不与目标中现有页面重叠 |**最少** |
 | 聚集索引 |加载的行与目标中现有页面重叠 |完整 |
 | 聚集列存储索引 |批大小 >= 102,400/每分区对齐的分布区 |**最少** |
 | 聚集列存储索引 |批大小 < 102,400/每分区对齐的分布区 |完整 |
 
-值得注意的是，任何更新辅助或非聚集索引的写入都将始终是完整记录的操作。
+值得注意的是，任何更新辅助或非聚集索引的写入都会始终是完整记录的操作。
 
 > [!IMPORTANT]
 > SQL 数据仓库具有 60 个分布区。 因此，假设所有行均匀分布且处于单个分区中，批在写入到聚集列存储索引时会需有 6,144,000 行（或更多）要按最少记录的方式记入日志。 如果对表进行分区且正插入的行跨越分区边界，则每个分区边界都需 6,144,000 行，假定数据分布很均匀。 每个分布区的每个分区各自必须超过 102,400 行的阈值，从而使插入以最少记录的方式记录到分布区中。

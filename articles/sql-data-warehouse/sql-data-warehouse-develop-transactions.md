@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure SQL 数据仓库中的事务 | Microsoft Docs
+title: 使用事务
 description: 有关在开发解决方案时实现 Azure SQL 数据仓库中的事务的技巧。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,17 +10,18 @@ ms.subservice: development
 ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 7f00f8a25d0abf3af6d76b372b44145546a79879
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 09fc0f7cee38f799322a1914848a5176e9a223a1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479610"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692777"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>使用 SQL 数据仓库中的事务
 有关在开发解决方案时实现 Azure SQL 数据仓库中的事务的技巧。
 
-## <a name="what-to-expect"></a>预期结果
+## <a name="what-to-expect"></a>期望
 与预期一样，SQL 数据仓库支持将事务纳入数据仓库工作负载。 但是，为了确保 SQL 数据仓库的性能维持在一定的程度，相比于 SQL Server，其某些功能会受到限制。 本文将突出两者的差异，并列出其他信息。 
 
 ## <a name="transaction-isolation-levels"></a>事务隔离级别
@@ -175,7 +176,7 @@ SELECT @xact_state AS TransactionState;
 
 所做的一切改变是事务的 ROLLBACK 必须发生于在 CATCH 块中读取错误信息之前。
 
-## <a name="errorline-function"></a>Error_Line() 函数
+## <a name="error_line-function"></a>Error_Line() 函数
 另外值得注意的是，SQL 数据仓库不实现或支持 ERROR_LINE() 函数。 如果代码中包含此函数，需要将它删除才能符合 SQL 数据仓库的要求。 请在代码中使用查询标签，而不是实现等效的功能。 有关详细信息，请参阅 [LABEL](sql-data-warehouse-develop-label.md) 一文。
 
 ## <a name="using-throw-and-raiserror"></a>使用 THROW 和 RAISERROR

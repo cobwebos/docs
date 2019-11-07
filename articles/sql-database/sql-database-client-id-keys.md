@@ -1,5 +1,5 @@
 ---
-title: 获取应用身份验证的值 - Azure SQL 数据库 | Microsoft Docs
+title: 获取应用身份验证的值-Azure SQL 数据库
 description: 创建服务主体以便从代码访问 SQL 数据库。
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: d7c8c6788a8699c5b57c39731c148454ad8dcfcf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6a8f5263e2f79f130814aa520712f679430440fd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569329"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691014"
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>获取对应用程序进行身份验证所需的值以便从代码访问 SQL 数据库
 
-要在代码中创建并管理 SQL 数据库，必须在创建 Azure 资源的订阅中的 Azure Active Directory (AAD) 域内注册应用。
+若要在代码中创建并管理 SQL 数据库，必须在创建 Azure 资源的订阅中的 Azure Active Directory (AAD) 域内注册你的应用。
 
 ## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>创建服务主体以便从应用程序访问资源
 
@@ -28,7 +28,7 @@ ms.locfileid: "68569329"
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
-以下 PowerShell 脚本创建 Active Directory (AD) 应用程序和服务主体，我们需要对 C# 应用进行身份验证。 该脚本输出我们需要用于前面 C# 示例的值。 有关详细信息，请参阅[使用 Azure PowerShell 创建服务主体以访问资源](../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
+以下 PowerShell 脚本创建 Active Directory (AD) 应用程序和服务主体，我们需要对 C# 应用进行身份验证。 该脚本输出我们需要用于前面 C# 示例的值。 有关详细信息，请参阅 [使用 Azure PowerShell 创建服务主体以访问资源](../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 
     # Sign in to Azure.
     Connect-AzAccount
@@ -71,7 +71,7 @@ ms.locfileid: "68569329"
 
 
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [使用 C# 创建 SQL 数据库](sql-database-get-started-csharp.md)
 * [使用 Azure Active Directory 身份验证连接到 SQL 数据库](sql-database-aad-authentication.md)
 

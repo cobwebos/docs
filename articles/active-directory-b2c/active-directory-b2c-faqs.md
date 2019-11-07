@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e6e4c0018f11e216afd5a8c295fc336036885e68
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 577dc6d4344cd6d7a38c4d538218c9dd89e883aa
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468941"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643643"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题解答 (FAQ)
 
@@ -59,7 +59,7 @@ Azure AD B2C 还支持[自定义策略](active-directory-b2c-overview-custom.md)
 
 ### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>必须在 Azure 上运行应用程序才能将其与 Azure AD B2C 一起使用吗？
 
-不，可以在任何位置（在云中或本地）托管应用程序。 只要能在公共可访问的终结点上发送和接收 HTTP 请求，它就可以与 Azure AD B2C 进行交互。
+不，可以在任何位置（在云中或本地）托管应用程序。 只要能在公共可访问的端点上发送和接收 HTTP 请求，它就可以与 Azure AD B2C 进行交互。
 
 ### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>我有多个 Azure AD B2C 租户。 如何在 Azure 门户上管理它们？
 
@@ -132,7 +132,7 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 
 按照以下步骤删除 Azure AD B2C 租户。
 
-你可以使用当前**应用程序**体验或我们的新统一**应用注册（预览版）** 体验。 [了解有关预览版体验的详细信息](http://aka.ms/b2cappregintro)。
+你可以使用当前**应用程序**体验或我们的新统一**应用注册（预览版）** 体验。 [详细了解此新体验](https://aka.ms/b2cappregintro)。
 
 #### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
 

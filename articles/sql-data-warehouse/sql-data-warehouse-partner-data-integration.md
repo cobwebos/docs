@@ -1,5 +1,5 @@
 ---
-title: SQL 数据仓库数据集成合作伙伴 | Microsoft 文档
+title: 数据集成合作伙伴
 description: 其数据集成解决方案支持 Azure SQL 数据仓库的第三方合作伙伴列表。
 services: sql-data-warehouse
 author: mabasile-MSFT
@@ -10,18 +10,19 @@ ms.subservice: consume
 ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
-ms.openlocfilehash: 96ffeb12413f236ca0c131051245306ae16d4288
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e368894d7036d071285ebc7ba85056676d8d670d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045178"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692642"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>SQL 数据仓库数据集成合作伙伴
 要创建数据仓库解决方案，请从行业领先的各种工具中进行选择。 本文重点介绍了具有支持 Azure SQL 数据仓库的官方数据集成解决方案的 Microsoft 合作伙伴公司。
 
 ## <a name="data-integration-partners"></a>数据集成合作伙伴
-| Partner | 描述 | 网站/产品链接 |
+| 合作伙伴 | 说明 | 网站/产品链接 |
 | ------- | ----------- | -------------------- |
 | ![Alooma][7] |**Alooma**<br> Alooma 是一种 ETL 解决方案，使数据团队能够实时将各种数据接收器的数据集成、丰富并流式传输到 SQL 数据仓库。 |[产品页][alooma_website] |
 | ![Alteryx][1] |**Alteryx**<br> Alteryx Designer 通过可重复的工作流进行自助性数据分析，在数小时内即可获得深入的见解，这与传统方法动辄需数周的时间形成鲜明的对比！ Alteryx Designer 使用同一种直观的用户界面将数据准备、数据混合和分析组合在一起，有助于数据分析师进行预测、统计和空间分析。 |[产品页][alteryx_designer_website]<br>[Azure 市场][alteryx_marketplace]<br>|

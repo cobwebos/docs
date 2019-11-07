@@ -7,28 +7,28 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 34f5daaf074e011176610caed883cef9d1dbb2ea
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 49c55b580abdaea6c876a0fac4e7dd4e73d496af
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152037"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643827"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 Azure 数据资源管理器群集和数据库
 
 > [!div class="op_single_selector"]
-> * [Portal](create-cluster-database-portal.md)
+> * [门户](create-cluster-database-portal.md)
 > * [CLI](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [ARM 模板](create-cluster-database-resource-manager.md)
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 
+Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服务，适用于日志和遥测数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 
 
 本文介绍如何使用[azure 资源管理器模板](../azure-resource-manager/resource-group-overview.md)创建 azure 数据资源管理器群集和数据库。 本文介绍如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。 有关创建模板的信息，请参阅[创作 Azure 资源管理器模板](/azure/azure-resource-manager/resource-group-authoring-templates)。 有关在模板中使用的 JSON 语法和属性，请参阅[Kusto 资源类型](/azure/templates/microsoft.kusto/allversions)。
 
-如果没有 Azure 订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="azure-resource-manager-template-for-cluster-and-database-creation"></a>用于群集和数据库创建的 Azure 资源管理器模板
 
@@ -94,7 +94,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 }
 ```
 
-若要查找更多模板示例，请参阅[Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)。
+若要查找更多模板示例，请参阅 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/)。
 
 ## <a name="deploy-the-template-and-verify-template-deployment"></a>部署模板并验证模板部署
 
@@ -104,11 +104,11 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 1. 若要创建群集和数据库，请使用以下按钮启动部署。 右键单击并选择“在新窗口中打开”，以便按本文中的剩余步骤操作。
 
-    [![部署到 Azure](media/create-cluster-database-resource-manager/deploybutton.png)](https://github.com/Azure/azure-quickstart-templates/blob/master/101-kusto-cluster-database/azuredeploy.json)
+    [![部署到 Azure](media/create-cluster-database-resource-manager/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-kusto-cluster-database%2Fazuredeploy.json)
 
     “部署到 Azure”按钮将转到 Azure 门户以填写部署窗体。
 
-    ![“部署到 Azure”](media/create-cluster-database-resource-manager/deploy-2-azure.png)
+    ![部署到 Azure](media/create-cluster-database-resource-manager/deploy-2-azure.png)
 
     您可以使用窗体[在 Azure 门户中编辑和部署模板](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template)。
 
@@ -121,7 +121,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 #### <a name="deploy-the-template-using-powershell"></a>使用 powershell 部署模板
 
-1. 从以下代码块中选择 "**试用**"，然后按照说明登录到 Azure Cloud shell。
+1. 从以下代码块中选择“试用”，然后按照说明登录 Azure Cloud shell。
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -137,7 +137,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     ```
 
 1. 选择“复制”以复制 PowerShell 脚本。
-1. 右键单击 shell 控制台，然后选择 "**粘贴**"。
+1. 右键单击 shell 控制台，然后选择“粘贴”。
 创建 Azure 数据资源管理器群集和数据库需要几分钟时间。
 
 #### <a name="verify-the-deployment-using-powershell"></a>使用 PowerShell 验证部署

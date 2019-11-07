@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7c52adfb919586fc590ef60215592a5b5c1c1cb3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 3fd97e33c88e7767e1d9b230792aea675a744f27
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476076"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619784"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知问题和故障排除 Azure 机器学习
 
@@ -88,9 +88,19 @@ Tensor Flow 自动化机器学习当前不支持 Tensor 流版本1.13。 安装�
 
 ## <a name="datasets-and-data-preparation"></a>数据集和数据准备
 
+这些是 Azure 机器学习数据集的已知问题。
+
 ### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>无法从 HTTP 或 ADLS Gen 2 读取 Parquet 文件
 
-AzureML DataPrep SDK 版本1.1.25 中存在一个已知问题，它会在通过从 HTTP 或 ADLS Gen 2 读取 Parquet 文件创建数据集时导致失败。 若要解决此问题，请升级到高于1.1.26 的版本，或降级到低于1.1.24 的版本。
+AzureML DataPrep SDK 版本1.1.25 中存在一个已知问题，它会在通过从 HTTP 或 ADLS Gen 2 读取 Parquet 文件创建数据集时导致失败。 它将失败，并 `Cannot seek once reading started.`。 若要解决此问题，请将 `azureml-dataprep` 升级到高于1.1.26 的版本，或降级到低于1.1.24 的版本。
+
+```python
+pip install --upgrade azureml-dataprep
+```
+
+### <a name="typeerror-mount-got-an-unexpected-keyword-argument-invocation_id"></a>TypeError： mount （）获取了意外的关键字参数 "invocation_id"
+
+如果 `azureml-core` 和 `azureml-dataprep`不兼容，则会出现此错误。 如果看到此错误，请将 `azureml-dataprep` 包升级到较新版本（大于或等于1.1.29）。
 
 ```python
 pip install --upgrade azureml-dataprep
@@ -146,15 +156,8 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 如果在 Azure Databricks 群集上读取数据时看到 `FailToSendFeather` 错误，请参阅以下解决方案：
 
 * 将 `azureml-sdk[automl]` 包升级到最新版本。
-* 添加 `azure-dataprep` 版本1.1.8 或更高版本。
+* 添加 `azureml-dataprep` 版本1.1.8 或更高版本。
 * 添加 `pyarrow` 版本0.11 或更高版本。
-
-
-## <a name="datasets"></a>数据集
-
-这些是 Azure 机器学习数据集的已知问题。
-
-+ **无法读取 Azure Data Lake Storage Gen2 上的 parquet 文件**如果安装了 `azureml-dataprep==1.1.25`，从 Azure Data Lake Storage Gen2 数据存储读取 parquet 文件不起作用。 它将失败，并 `Cannot seek once reading started.`。 如果看到此错误，则可以安装 `azureml-dataprep<=1.1.24` 或安装 `azureml-dataprep>=1.1.26`。
 
 ## <a name="azure-portal"></a>Azure 门户
 
@@ -262,3 +265,23 @@ Azure ML 还为 Tensorflow、PyTorch、Chainer 和 Spark-sklearn 提供框架特
 
 ### <a name="horovod-is-shutdown"></a>Horovod 关闭
 在大多数情况下，此异常表示某个进程中存在导致 horovod 关闭的基础异常。 MPI 作业中的每个排名都在 Azure ML 中获得专用的日志文件。 这些日志命名为 `70_driver_logs`。 对于分布式培训，日志名称的后缀为 `_rank` 以便于区分日志。 若要查找导致 horovod 关闭的确切错误，请浏览所有日志文件，并在 driver_log 文件的末尾查找 `Traceback`。 其中一项文件会为你带来实际的基础异常。 
+
+## <a name="labeling-projects-issues"></a>标记项目问题
+
+标记项目的已知问题。
+
+### <a name="only-datasets-created-on-blob-datastores-can-be-used"></a>只能使用在 blob 数据存储上创建的数据集
+
+这是当前版本的已知限制。 
+
+### <a name="after-creation-the-project-shows-initializing-for-a-long-time"></a>在创建后，项目会长时间显示 "正在初始化"
+
+手动刷新页面。 初始化应大约每秒大约20个数据点。 缺少 autorefresh 是一个已知问题。 
+
+### <a name="bounding-box-cannot-be-drawn-all-the-way-to-right-edge-of-image"></a>边界框无法绘制到图像的右边缘 
+
+尝试调整浏览器窗口的大小。 我们正在研究确定此行为的原因。 
+
+### <a name="when-reviewing-images-newly-labeled-images-are-not-shown"></a>查看图像时，不会显示新标记的图像
+
+若要加载所有标记的图像，请选择**第一个**按钮。 **第一个**按钮将返回到列表的前面，但会加载所有标记的数据。

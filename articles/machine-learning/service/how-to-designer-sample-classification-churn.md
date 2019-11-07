@@ -1,5 +1,5 @@
 ---
-title: '设计器示例 #5：用于预测流失的分类 + 亲和力 + 向上销售'
+title: 设计器：分类、预测改动
 titleSuffix: Azure Machine Learning
 description: 此设计器（预览）示例管道显示了更改的二元分类器预测，这是客户关系管理（CRM）的常见任务。
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 52fcebb201fbdeebd7b75d9735fd81c3a647c337
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a09060e16b877df4412b785edbb60930cb4122bc
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516235"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647176"
 ---
 # <a name="sample-5---classification-predict-churn"></a>示例 5-分类：预测改动
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "73516235"
 
 ![管道图形](./media/how-to-ui-sample-classification-predict-churn/pipeline-graph.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
