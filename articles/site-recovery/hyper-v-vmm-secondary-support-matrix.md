@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure Site Recovery 在 VMM 云中将 Hyper-v Vm 灾难恢复到辅助站点的支持矩阵
+title: 支持矩阵-通过 Azure Site Recovery 将 Hyper-v 灾难恢复到辅助 VMM 站点
 description: 汇总了对使用 Azure Site Recovery 将 VMM 云中的 Hyper-V VM 复制到辅助站点的支持。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 46d6cba1d702773639420a3bc5ac74b9c16ce706
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7711ebaaddccd68d4322c1d3ebdd049a57bc709b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933815"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686161"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>将 Hyper-V VM 灾难恢复到辅助站点时的支持矩阵
 
-本文总结了使用[Azure Site Recovery](site-recovery-overview.md)服务将托管在 SYSTEM CENTER VIRTUAL MACHINE MANAGER （VMM）云中的 hyper-v vm 复制到辅助站点时所支持的内容。 如果要将 Hyper-V VM 复制到 Azure，请查看[此支持矩阵](hyper-v-azure-support-matrix.md)。
+本文汇总了使用 [Azure Site Recovery](site-recovery-overview.md) 服务将 System Center Virtual Machine Manager (VMM) 云中托管的 Hyper-V VM 复制到辅助站点时所支持的内容。 如果要将 Hyper-V VM 复制到 Azure，请查看[此支持矩阵](hyper-v-azure-support-matrix.md)。
 
 > [!NOTE]
 > Hyper-V 主机在 VMM 云中托管时，只能复制到辅助站点。
@@ -37,7 +37,7 @@ Windows Server 2016 |  目前不支持混合使用 Windows Server 2016 和 2012 
 
 下表总结了通过 Site Recovery 完成复制的计算机的操作系统支持。 支持的操作系统上可运行任何工作负荷。
 
-**Windows 版本** | **Hyper-V（包含 VMM）**
+**Windows 版本** | Hyper-V（有 VMM）
 --- | ---
 Windows Server 2016 | Windows Server 2016 上的[Hyper-V 支持](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows)的所有来宾操作系统 
 Windows Server 2012 R2 | Windows Server 2012 R2 上的[Hyper-V 支持](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29)的所有来宾操作系统
@@ -59,21 +59,21 @@ Windows Server 2012 R2 | Windows Server 2012 R2 上的[Hyper-V 支持](https://d
 主机 - NIC 组合 | 是 
 主机 - VLAN | 是 
 主机 - IPv4 | 是 
-主机 - IPv6 | No 
-来宾 VM - NIC 组合 | No
+主机 - IPv6 | 否 
+来宾 VM - NIC 组合 | 否
 来宾 VM - IPv4 | 是
-来宾 VM - IPv6 | No
+来宾 VM - IPv6 | 否
 来宾 VM - Windows/Linux - 静态 IP 地址 | 是
 来宾 VM - 多 NIC | 是
 
 
-## <a name="storage"></a>存储空间
+## <a name="storage"></a>存储
 
 ### <a name="host-storage"></a>主机存储
 
-**存储（主机）** | **支持**
+存储（主机） | **支持**
 --- | --- 
-NFS | N/A
+NFS | 不适用
 SMB 3.0 |  是
 SAN (ISCSI) | 是
 多路径 (MPIO) | 是
@@ -82,28 +82,28 @@ SAN (ISCSI) | 是
 
 **配置** | **支持**
 --- | --- | 
-VMDK |  N/A
+VMDK |  不适用
 VHD/VHDX | 是（最多 16 个磁盘）
 第 2 代 VM | 是
-共享群集磁盘 | No
-加密磁盘 | No
-UEFI| N/A
-NFS | No
-SMB 3.0 | No
-RDM | N/A
+共享群集磁盘 | 否
+加密磁盘 | 否
+UEFI| 不适用
+NFS | 否
+SMB 3.0 | 否
+RDM | 不适用
 磁盘 > 1 TB | 是
 包含条带化磁盘的卷 > 1 TB<br/><br/> LVM | 是
 存储空间 | 是
-热添加/移除磁盘 | No
+热添加/移除磁盘 | 否
 排除磁盘 | 是
 多路径 (MPIO) | 是
 
 ## <a name="vaults"></a>保管库
 
-**Action** | **支持**
+**操作** | **支持**
 --- | --- 
-跨资源组移动保管库（订阅内或跨订阅移动） |  No
-跨资源组移动存储、网络和 Azure VM（订阅内或跨订阅移动） | No
+跨资源组移动保管库（订阅内或跨订阅移动） |  否
+跨资源组移动存储、网络和 Azure VM（订阅内或跨订阅移动） | 否
 
 ## <a name="azure-site-recovery-provider"></a>Azure Site Recovery 提供程序
 

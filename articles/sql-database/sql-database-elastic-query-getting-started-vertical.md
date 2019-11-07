@@ -1,5 +1,5 @@
 ---
-title: 跨数据库查询（垂直分区）入门 | Microsoft 文档
+title: 跨数据库查询入门（垂直分区）
 description: 如何在垂直分区数据库中使用弹性数据库查询
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: a6a87f90586dc4392dc1304a83349bc386590ee4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b6d9ba0c57850c61626d7b6d99fcb1fffc2d3c25
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568584"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690405"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>跨数据库查询（纵向分区）入门（预览）
 
@@ -104,7 +104,7 @@ ms.locfileid: "68568584"
     INNER JOIN CustomerInformation
     ON CustomerInformation.CustomerID = OrderInformation.CustomerID
 
-## <a name="cost"></a>开销
+## <a name="cost"></a>成本
 
 目前，弹性数据库查询功能包含在 Azure SQL 数据库的成本中。  
 

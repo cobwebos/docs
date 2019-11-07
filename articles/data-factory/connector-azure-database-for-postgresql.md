@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 数据工厂将数据复制到 Azure Database for PostgreSQL 和从中复制数据 |Microsoft Docs
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据复制到 Azure Database for PostgreSQL。
+title: 使用 Azure 数据工厂向/从 Azure Database for PostgreSQL 复制数据
+description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，向/从 Azure Database for PostgreSQL 复制数据。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: jingwang
-ms.openlocfilehash: b92177b162f4649f253bf74372b175fc16130af6
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 7443ab3abb12451619e77d925912b4bfc118cfaa
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300391"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681228"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure Database for PostgreSQL
 
@@ -32,7 +32,7 @@ ms.locfileid: "71300391"
 - [复制活动](copy-activity-overview.md)与[支持的源/接收器矩阵](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
-可将数据从 Azure Database for PostgreSQL 复制到任何支持的接收器数据存储。 或者，你可以将数据从任何支持的源数据存储复制到 Azure Database for PostgreSQL。 有关复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
+可将数据从 Azure Database for PostgreSQL 复制到任何支持的接收器数据存储。 或者，可将数据从任何支持的源数据存储复制到 Azure Database for PostgreSQL。 有关复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 Azure 数据工厂提供内置驱动程序以启用连接。 因此，无需手动安装任何驱动程序即可使用此连接器。
 
@@ -48,13 +48,13 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：**AzurePostgreSql**。 | 是 |
-| connectionString | 用于连接到 Azure Database for PostgreSQL 的 ODBC 连接字符串。<br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 你还可以在 Azure Key Vault 中放置一个密码，并`password`将配置从连接字符串中提取出来。 有关更多详细信息，请参阅以下示例并[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
+| type | Type 属性必须设置为： **AzurePostgreSql**。 | 是 |
+| connectionString | 用于连接到 Azure Database for PostgreSQL 的 ODBC 连接字符串。<br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 你还可以将密码放在 Azure Key Vault，并将 `password` 配置从连接字符串中提取出来。 有关更多详细信息，请参阅以下示例并[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 此属性表示要用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure Integration Runtime 或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 典型的连接字符串为 `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`。 以下是每种情况下可以设置的更多属性：
 
-| 属性 | 描述 | 选项 | 必填 |
+| 属性 | 说明 | 选项 | 必选 |
 |:--- |:--- |:--- |:--- |
 | EncryptionMethod (EM)| 驱动程序用于加密在驱动程序和数据库服务器之间发送的数据的方法。 例如 `EncryptionMethod=<0/1/6>;`| 0 (No Encryption) **(Default)** / 1 (SSL) / 6 (RequestSSL) | 否 |
 | ValidateServerCertificate (VSC) | 确定在启用 SSL 加密时，驱动程序是否验证数据库服务器发送的证书（加密方法 = 1）。 例如 `ValidateServerCertificate=<0/1>;`| 0 (Disabled) **(Default)** / 1 (Enabled) | 否 |
@@ -112,7 +112,7 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为**AzurePostgreSqlTable** | 是 |
-| tableName | 表名称 | 否（如果指定了活动源中的“query”） |
+| tableName | 表的名称 | 否（如果指定了活动源中的“query”） |
 
 **示例**：
 
@@ -141,7 +141,7 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为**AzurePostgreSqlSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如： `"SELECT * FROM MyTable"` | 否（如果指定了数据集中的 tableName 属性） |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如： `"SELECT * FROM MyTable"` | 否（如果指定了数据集中的 tableName 属性） |
 
 **示例**：
 
@@ -175,16 +175,16 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 ]
 ```
 
-### <a name="azure-database-for-postgresql-as-sink"></a>作为接收器 Azure Database for PostgreSQL
+### <a name="azure-database-for-postgresql-as-sink"></a>Azure Database for PostgreSQL 作为接收器
 
-若要将数据复制到 Azure Database for PostgreSQL，请在复制活动**接收器**部分中支持以下属性：
+将数据复制到 Azure Database for PostgreSQL 时，复制活动的 **sink** 节支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为**AzurePostgreSQLSink**。 | 是 |
 | preCopyScript | 指定要在每次运行中将数据写入 Azure Database for PostgreSQL 之前要执行的复制活动的 SQL 查询。 可以使用此属性清除预加载的数据。 | 否 |
-| writeBatchSize | 当缓冲区大小达到 writeBatchSize 时，将数据插入 Azure Database for PostgreSQL 表。<br>允许的值是表示行数的整数。 | 否（默认值为 10,000） |
-| writeBatchTimeout | 超时之前等待批插入操作完成时的等待时间。<br>允许的值为 Timespan 字符串。 示例为 00:30:00（30 分钟）。 | 否（默认值为00:00:30） |
+| writeBatchSize | 当缓冲区大小达到 writeBatchSize 时，会将数据插入 Azure Database for PostgreSQL 表。<br>允许的值是表示行数的整数。 | 否（默认值为 10,000） |
+| writeBatchTimeout | 超时之前等待批插入操作完成时的等待时间。<br>允许的值为 Timespan 字符串。 示例为 00:30:00（30 分钟）。 | 否（默认值为 00:00:30） |
 
 **示例**：
 
@@ -219,7 +219,7 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>查找活动属性
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
 
 有关属性的详细信息，请参阅[Azure 数据工厂中的查找活动](control-flow-lookup-activity.md)。
 

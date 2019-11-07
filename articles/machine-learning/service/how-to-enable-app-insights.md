@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 10/11/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9da057683f3da41f077b309db79271a10738b59d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: c02c502dc2ab85a6ae1c602c53723e9b5a758250
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490012"
+ms.locfileid: "73576743"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>监视和收集 ML web 服务终结点中的数据
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "73490012"
 [详细了解 Azure 应用程序 Insights](../../azure-monitor/app/app-insights-overview.md)。 
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
@@ -112,39 +112,6 @@ ms.locfileid: "73490012"
 ## replace <service_name> with the name of the web service
 <service_name>.update(enable_app_insights=False)
 ```
-    
-## <a name="use-studio-to-configure"></a>使用 studio 配置
-
-可以在 Azure 机器学习 studio 中启用和禁用 Application Insights。
-
-1. 在[Azure 机器学习 studio](https://ml.azure.com)中，打开工作区。
-
-1. 在“部署”选项卡上，选择要启用 Application Insights 的服务。
-
-   [![“部署”选项卡上的服务列表](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
-
-3. 选择“编辑”。
-
-   [![编辑按钮](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-4. 在“高级设置”中，选中“启用 AppInsights 诊断”复选框。
-
-   [![已选中启用诊断的复选框](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
-
-1. 选择屏幕底部的“更新”以应用更改。 
-
-### <a name="disable"></a>禁用
-1. 在[Azure 机器学习 studio](https://ml.azure.com)中，打开工作区。
-1. 依次选择“部署”、所需服务、“编辑”。
-
-   [![使用编辑按钮](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-1. 在“高级设置”中，清除“启用 AppInsights 诊断”复选框。 
-
-   [![已清除启用诊断的复选框](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
-
-1. 选择屏幕底部的“更新”以应用更改。 
- 
 
 ## <a name="evaluate-data"></a>评估数据
 你的服务数据存储在与 Azure 机器学习相同的资源组中的 Azure 应用程序 Insights 帐户中。

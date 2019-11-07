@@ -1,5 +1,5 @@
 ---
-title: 使用 IDENTITY 创建代理键 - Azure SQL 数据仓库 | Microsoft Docs
+title: 使用 IDENTITY 创建代理键
 description: 关于如何使用 IDENTITY 属性在 Azure SQL 数据仓库中创建基于表的代理键的建议和示例。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 4c65bf7cc8edfa246508bb22001aed40c34414f3
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 0ee15b975b5513077b26cceeb80ea3fb8c02456b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515587"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692470"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>使用 IDENTITY 在 Azure SQL 数据仓库中创建代理键
 
@@ -76,11 +77,11 @@ FROM dbo.T1;
 DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
-在前面的示例中，两行位于分布 1 中。 第一行在列 `C1` 中包含代理值 1，且第二行包含代理值 61。 这两个值均由 IDENTITY 属性生成。 但是，值的分配是不连续的。 此行为是设计使然。
+在前面的示例中，两行位于分布 1 中。 第一行在列 `C1` 中包含代理值 1，且第二行包含代理值 61。 这两个值均由 IDENTITY 属性生成。 但是，值的分配不是连续的。 这是设计的行为。
 
-### <a name="skewed-data"></a>偏斜数据
+### <a name="skewed-data"></a>倾斜的数据
 
-数据类型的值范围跨分发均匀分配。 如果分布式表受偏斜数据的影响，则可用于数据类型的值范围可能会过早耗尽。 例如，如果所有数据最终都会处于单个分发中，则表实际上只能访问六十分之一的数据类型值。 为此，IDENTITY 属性仅限于 `INT` 和 `BIGINT` 数据类型。
+数据类型的值范围在各个分布区之间是均匀分配的。 如果分布式表受偏斜数据的影响，则可用于数据类型的值范围可能会过早耗尽。 例如，如果所有数据最终都会处于单个分发中，则表实际上只能访问六十分之一的数据类型值。 为此，IDENTITY 属性仅限于 `INT` 和 `BIGINT` 数据类型。
 
 ### <a name="selectinto"></a>SELECT..INTO
 
@@ -122,13 +123,13 @@ FROM    dbo.T1
 ;
 ```
 
-## <a name="loading-data"></a>正在加载数据
+## <a name="loading-data"></a>加载数据
 
 IDENTITY 属性的存在对数据加载代码有一定影响。 本节重点介绍使用 IDENTITY 将数据加载到表中的一些基本模式。
 
 若要使用 IDENTITY 将数据加载到表中并生成代理键，请创建表，然后使用 INSERT..SELECT 或 INSERT..VALUES 执行加载。
 
-以下示例重点介绍基本模式：
+下面的示例重点介绍了基本模式：
 
 ```sql
 --CREATE TABLE with IDENTITY

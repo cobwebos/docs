@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂中的整理数据流入门 |Microsoft Docs
+title: Azure 数据工厂中的整理数据流入门
 description: 有关如何使用整理数据流在 Azure 数据工厂中准备数据的教程
 author: djpmsft
 ms.author: daperlov
@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 6de6f6976643360613b7bd44d8cb390c409e33e1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ae109045381dba77610dedc5bb95e233b213eee
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518523"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682278"
 ---
 # <a name="prepare-data-with-wrangling-data-flow"></a>用整理数据流准备数据
 

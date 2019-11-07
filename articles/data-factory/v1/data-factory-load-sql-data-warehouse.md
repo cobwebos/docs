@@ -1,5 +1,5 @@
 ---
-title: 将 TB 级数据载入 SQL 数据仓库 | Microsoft Docs
+title: 将 tb 数据加载到 SQL 数据仓库
 description: 演示如何在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 50a653648f3ae4b40e0bfe2c6f168cfb890bcc59
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 05dcff2276a799b1debc76e4f85fbbac6606eb59
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839104"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682550"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>在不到 15 分钟的时间里通过数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库
 > [!NOTE]
@@ -30,7 +30,7 @@ ms.locfileid: "67839104"
 现在通过使用 **Azure 数据工厂**，Azure SQL 数据仓库入门变得前所未有地简单。  Azure 数据工厂是一个完全托管的基于云的数据集成服务，它可用于使用现有系统中的数据填充 SQL 数据仓库，在节省宝贵时间的同时评估 SQL 数据仓库并生成分析解决方案。 以下是使用 Azure 数据工厂将数据加载到 Azure SQL 数据仓库的主要优点：
 
 * **轻松设置**：无需脚本的 5 步直观的向导。
-* **丰富的数据存储支持**：对一组丰富的本地和基于云的数据存储的内置支持。
+* **丰富的数据存储支持**：内置支持一组丰富的本地和基于云的数据存储。
 * **安全且合规**：通过 HTTPS 或 ExpressRoute 传输数据，并且全局服务可确保数据不会离开地理边界
 * **通过使用 PolyBase 提供无与伦比的性能** - 使用 Polybase 是将数据移动到 Azure SQL 数据仓库的最高效的方法。 使用临时 blob 功能，可以实现所有类型的数据存储（包括 Azure Blob 存储）的高加载速度，默认情况下，Polybase 支持此功能。
 
@@ -41,13 +41,13 @@ ms.locfileid: "67839104"
 > [!NOTE]
 >  有关数据工厂将数据移入/移出 Azure SQL 数据仓库的功能的一般信息，请参阅[使用 Azure 数据工厂将数据移入和移出 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md)一文。
 >
-> 此外可以生成使用 Visual Studio、 PowerShell 等的管道。有关分步说明，请参阅[教程：将数据从 Azure Blob 复制到 Azure SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。  
+> 你还可以使用 Visual Studio、PowerShell 等生成管道。有关使用 Azure 数据工厂中的复制活动的分步说明，请参阅[教程：将数据从 Azure Blob 复制到 AZURE SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。  
 >
 >
 
 ## <a name="prerequisites"></a>先决条件
 * Azure Blob 存储：此试验使用 Azure Blob 存储 (GRS) 来存储 TPC-H 测试数据集。  如果还没有 Azure 存储帐户，请参阅[如何创建存储帐户](../../storage/common/storage-quickstart-create-account.md)。
-* [TPC-H](http://www.tpc.org/tpch/) 数据：我们将使用 TPC-H 作为测试数据集。  为此，需要使用 TPC-H 工具包中的 `dbgen`，它将有助于生成数据集。  可以从 [TPC 工具](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp)下载 `dbgen` 的源代码，并自己进行编译，或从 [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TPCHTools) 下载已编译的二进制。  使用以下命令运行 dbgen.exe，为分布在 10 个文件中的 `lineitem` 表生成 1 TB 的平面文件：
+* [TPC-H](http://www.tpc.org/tpch/) 数据：我们将使用 TPC-H 作为测试数据集。  为此，需要使用 TPC-H 工具包中的 `dbgen`，它将有助于生成数据集。  可以从 `dbgen`TPC 工具[下载 ](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) 的源代码，并自己进行编译，或从 [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TPCHTools) 下载已编译的二进制。  使用以下命令运行 dbgen.exe，为分布在 10 个文件中的 `lineitem` 表生成 1 TB 的平面文件：
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
   * `Dbgen -s 1000 -S **2** -C 10 -T L -v`
@@ -70,11 +70,11 @@ ms.locfileid: "67839104"
 
     ![性能滑块](media/data-factory-load-sql-data-warehouse/performance-slider.png)
 
-    对于未配置为 6,000 DWU 的现有数据库，可以使用 Azure 门户对其进行扩展。  导航到 Azure 门户中的数据库，在“概述”  面板中有一个“缩放”  按钮，如下图所示：
+    对于未配置为 6,000 DWU 的现有数据库，可以使用 Azure 门户对其进行扩展。  导航到 Azure 门户中的数据库，在“概述”面板中有一个“缩放”按钮，如下图所示：
 
     ![“缩放”按钮](media/data-factory-load-sql-data-warehouse/scale-button.png)    
 
-    单击“缩放”  按钮以打开以下面板，将滑块移动到最大值，然后单击“保存”  按钮。
+    单击“缩放”按钮以打开以下面板，将滑块移动到最大值，然后单击“保存”按钮。
 
     ![“缩放”对话框](media/data-factory-load-sql-data-warehouse/scale-dialog.png)
 
@@ -113,93 +113,93 @@ ms.locfileid: "67839104"
 
 ## <a name="launch-copy-wizard"></a>启动复制向导
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 单击左上角的“创建资源”  ，单击“智能 + 分析”  ，然后单击“数据工厂”  。
-3. 在“新建数据工厂”  窗格中：
+2. 单击左上角的“创建资源”，单击“智能 + 分析”，然后单击“数据工厂”。
+3. 在“新建数据工厂”窗格中：
 
    1. 输入 **LoadIntoSQLDWDataFactory** 作为**名称**。
-       Azure 数据工厂的名称必须全局唯一。 如果收到错误：**数据工厂名称“LoadIntoSQLDWDataFactory”不可用**，请更改该数据工厂名称（例如改为“yournameLoadIntoSQLDWDataFactory”），并尝试再次创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。  
+       Azure 数据工厂的名称必须是全局唯一的。 如果收到错误：**数据工厂名称“LoadIntoSQLDWDataFactory”不可用**，请更改该数据工厂名称（例如改为“yournameLoadIntoSQLDWDataFactory”），并尝试再次创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。  
    2. 选择 **Azure 订阅**。
    3. 对于资源组，请执行以下步骤之一：
-      1. 选择“使用现有资源组”并选择一个现有的资源组。 
-      2. 选择“新建”并输入资源组的名称。 
+      1. 选择“使用现有资源组”并选择一个现有的资源组。
+      2. 选择“新建”并输入资源组的名称。
    4. 选择数据工厂的**位置**。
-   5. 选中位于边栏选项卡底部的“固定到仪表板”复选框。   
-   6. 单击“创建”。 
-4. 完成创建后，将看到如下图所示的“数据工厂”边栏选项卡： 
+   5. 选中位于边栏选项卡底部的“固定到仪表板”复选框。  
+   6. 单击“创建”。
+4. 完成创建后，将看到如下图所示的“数据工厂”边栏选项卡：
 
    ![数据工厂主页](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
-5. 在“数据工厂”主页上，单击“复制数据”磁贴，启动“复制向导”。  
+5. 在“数据工厂”主页上，单击“复制数据”磁贴，启动“复制向导”。
 
    > [!NOTE]
-   > 如果 Web 浏览器卡在“正在授权...”处，请禁用或取消选中“阻止第三方 Cookie 和站点数据”设置，或在保持启用该项的状态下为 **login.microsoftonline.com** 创建一个例外，然后尝试再次启动该向导。 
+   > 如果 Web 浏览器卡在“正在授权...”处，请禁用或取消选中“阻止第三方 Cookie 和站点数据”设置，或在保持启用该项的状态下为 **login.microsoftonline.com** 创建一个例外，然后尝试再次启动该向导。
    >
    >
 
 ## <a name="step-1-configure-data-loading-schedule"></a>步骤 1：配置数据加载计划
 第一步是配置数据加载计划。  
 
-在“属性”  页中：
+在“属性” 页中：
 
 1. 输入 **CopyFromBlobToAzureSqlDataWarehouse** 作为**任务名称**
-2. 选择“立即运行一次”  选项。   
-3. 单击“下一步”  。  
+2. 选择“立即运行一次”选项。   
+3. 单击“下一步”。  
 
     ![复制向导 - 属性页](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
 ## <a name="step-2-configure-source"></a>步骤 2：配置源
-本部分介绍配置以下源的步骤：包含 1-TB TPC-H 行项目文件的 Azure Blob。
+本部分说明配置源的步骤：包含 1-TB TPC-H 行项目文件的 Azure Blob。
 
-1. 选择“Azure Blob 存储”  作为数据存储，并单击“下一步”  。
+1. 选择“Azure Blob 存储”作为数据存储，并单击“下一步”。
 
     ![复制向导 - 选择源页](media/data-factory-load-sql-data-warehouse/select-source-connection.png)
 
-2. 填写 Azure Blob 存储帐户的连接信息，并单击“下一步”  。
+2. 填写 Azure Blob 存储帐户的连接信息，并单击“下一步”。
 
     ![复制向导 - 源连接信息](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
 
-3. 选择包含 TPC-H 行项目文件的“文件夹”  ，并单击“下一步”  。
+3. 选择包含 TPC-H 行项目文件的“文件夹”，并单击“下一步”。
 
     ![复制向导 - 选择输入文件夹](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
-4. 单击“下一步”  时会自动检测文件格式设置。  请检查，以确保列分隔符为“|”而非默认的逗号“，”。  预览数据后，单击“下一步”  。
+4. 单击“下一步”时会自动检测文件格式设置。  请检查，以确保列分隔符为“|”而非默认的逗号“，”。  预览数据后，单击“下一步”。
 
     ![复制向导 - 文件格式设置](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
 ## <a name="step-3-configure-destination"></a>步骤 3：配置目标
 本部分演示如何配置目标：Azure SQL 数据仓库数据库中的 `lineitem` 表。
 
-1. 选择“Azure SQL 数据仓库”  作为目标存储，并单击“下一步”  。
+1. 选择“Azure SQL 数据仓库”作为目标存储，并单击“下一步”。
 
     ![复制向导 - 选择目标数据存储](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-2. 填写 Azure SQL 数据仓库的连接信息。  请确保指定作为 `xlargerc` 角色的成员的用户（有关详细说明，请参阅**先决条件**部分），并单击“下一步”  。
+2. 填写 Azure SQL 数据仓库的连接信息。  请确保指定作为 `xlargerc` 角色的成员的用户（有关详细说明，请参阅**先决条件**部分），并单击“下一步”。
 
     ![复制向导 - 目标连接信息](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
-3. 选择目标表，并单击“下一步”  。
+3. 选择目标表，并单击“下一步”。
 
     ![复制向导 - 表映射页](media/data-factory-load-sql-data-warehouse/table-mapping-page.png)
 
-4. 在架构映射页中，保留“应用列映射”选项的未勾选状态，并单击“下一步”  。
+4. 在架构映射页中，保留“应用列映射”选项的未勾选状态，并单击“下一步”。
 
 ## <a name="step-4-performance-settings"></a>步骤 4：性能设置
 
-默认选中“允许 polybase”  。  单击“下一步”  。
+默认选中“允许 polybase”。  单击“下一步”。
 
 ![复制向导 - 架构映射页](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
 ## <a name="step-5-deploy-and-monitor-load-results"></a>步骤 5：部署和监视加载结果
-1. 单击“完成”  按钮以便部署。
+1. 单击“完成”按钮以便部署。
 
     ![复制向导 - 摘要页](media/data-factory-load-sql-data-warehouse/summary-page.png)
 
-2. 部署完成后，单击 `Click here to monitor copy pipeline` 以监视副本运行进度。 选择在“活动窗口”  列表中创建的副本管道。
+2. 部署完成后，单击 `Click here to monitor copy pipeline` 以监视副本运行进度。 选择在“活动窗口”列表中创建的副本管道。
 
     ![复制向导 - 摘要页](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
 
-    可以在右侧面板中的“活动窗口资源管理器”  中查看副本运行的详细信息，包括从源中读取和写入到目标中的数据量、持续时间以及运行的平均吞吐量。
+    可以在右侧面板中的“活动窗口资源管理器”中查看副本运行的详细信息，包括从源中读取和写入到目标中的数据量、持续时间以及运行的平均吞吐量。
 
-    您可以看到以下屏幕截图中，将 1 TB 从 Azure Blob 存储复制到 SQL 数据仓库花费 14 分钟，有效地实现了 1.22 GBps 的吞吐量 ！
+    如以下屏幕截图中所示，从 Azure Blob 存储复制到 SQL 数据仓库的 1 TB 花费14分钟，有效实现 1.22 GBps 吞吐量！
 
     ![复制向导 - “成功”对话框](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 

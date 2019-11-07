@@ -1,5 +1,5 @@
 ---
-title: 在 Azure SQL 数据同步中自动复制架构更改 | Microsoft Docs
+title: 在 Azure SQL 数据同步中自动复制架构更改
 description: 了解如何在 Azure SQL 数据同步中自动复制架构更改。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 11/14/2018
-ms.openlocfilehash: b1c3f49808a59576f02178dee1107b4019e34b5e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 01cc82a2ada1f4ac8f26b223b7168b2cca157793
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566270"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686883"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>在 Azure SQL 数据同步中自动复制架构更改
 
@@ -31,7 +31,7 @@ SQL 数据同步可让用户在 Azure SQL 数据库与本地 SQL Server 之间�
 本文使用 ALTER TABLE 作为架构更改的示例，但此解决方案也适用于其他类型的架构更改。
 
 > [!IMPORTANT]
-> 我们建议仔细阅读本文，尤其是[故障排除](#troubleshoot)和[其他注意事项](#other)部分，然后在同步环境中开始实现自动架构更改复制。 我们还建议阅读[使用 SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。某些数据库操作可能导致本文所述的解决方法不起作用。 可能需要有 SQL Server 和 Transact-SQL 领域的其他知识才能排查这些问题。
+> 我们建议仔细阅读本文，尤其是[故障排除](#troubleshoot)和[其他注意事项](#other)部分，然后在同步环境中开始实现自动架构更改复制。 此外，我们还建议你[通过 SQL 数据同步在多个云和本地数据库中读取同步数据](sql-database-sync-data.md)。某些数据库操作可能会破坏本文中所述的解决方案。 可能需要有 SQL Server 和 Transact-SQL 领域的其他知识才能排查这些问题。
 
 ![自动复制架构更改](media/sql-database-update-sync-schema/automate-schema-changes.png)
 

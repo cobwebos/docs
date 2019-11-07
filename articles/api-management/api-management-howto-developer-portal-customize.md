@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 62fb5552d86a802c3ba0213d99be2f91f21025e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7547db502056304307094541dcfd2474eda999d8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472126"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620422"
 ---
 # <a name="access-and-customize-developer-portal"></a>访问和自定义开发人员门户
 
@@ -40,7 +40,7 @@ ms.locfileid: "73472126"
 > 当前正在向 API 管理服务推出开发人员门户。
 > 如果你的服务是新创建的或开发人员层服务，则你应该已经有最新版本。 否则，你可能会遇到问题（例如，通过发布功能）。 功能推出将于2019年11月11日星期一完成。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)
 - 导入并发布 Azure API 管理实例。 有关详细信息，请参阅[导入和发布](import-and-publish.md)
@@ -125,7 +125,7 @@ ms.locfileid: "73472126"
 
 ## <a name="visit-the-published-portal"></a>访问发布的门户
 
-发布门户后，可以使用与管理面板相同的 URL 访问它，例如 `https://contoso-api.portal.azure-api.net`。 在新的浏览器选项卡中打开它，以将其作为外部访问者查看。
+发布门户后，可以使用与管理面板相同的 URL 访问它，例如 `https://contoso-api.developer.azure-api.net`。 在单独的浏览器会话（incognito/专用浏览模式）中以外部访问者身份查看它。
 
 ## <a name="next-steps"></a>后续步骤
 

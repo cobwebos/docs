@@ -11,12 +11,12 @@ ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bf87b1709c355faf6f06ff2d23b2c819f88750cd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b1070314767f280ec9d15390dc838fa80b5508e2
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475212"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643606"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>访问 Azure AD B2C 审核日志
 
@@ -35,7 +35,7 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 |---------|---------|
 |授权 |涉及授权用户访问 B2C 资源（例如，管理员访问 B2C 策略列表）的活动。         |
 |Directory |与管理员使用 Azure 门户登录时检索到的目录属性相关的活动。 |
-|应用程序 | 与 B2C 应用程序相关的创建、读取、更新和删除 (CRUD) 操作。 |
+|Application | 与 B2C 应用程序相关的创建、读取、更新和删除 (CRUD) 操作。 |
 |键 |与 B2C 密钥容器中存储的密钥相关的 CRUD 操作。 |
 |资源 |与 B2C 资源相关的 CRUD 操作。 例如，策略和标识提供者。
 |身份验证 |用户凭据和令牌颁发的验证。|
@@ -52,7 +52,7 @@ Azure 门户中的此示例图像显示用户使用外部标识提供者（在�
 
 |部分|字段|说明|
 |-------|-----|-----------|
-| 活动 | 名称 | 发生了哪项活动。 例如，“向应用程序颁发 id_token”（这将结束实际的用户登录）。 |
+| 活动 | Name | 发生了哪项活动。 例如，“向应用程序颁发 id_token”（这将结束实际的用户登录）。 |
 | 发起者（参与者） | ObjectId | 用户登录的 B2C 应用程序的**对象 ID**。 此标识符在 Azure 门户中不可见，但可以通过 Microsoft Graph API 访问它。 |
 | 发起者（参与者） | SPN | 用户登录的 B2C 应用程序的**应用程序 ID**。 |
 | 目标 | ObjectId | 正在登录的用户的**对象 ID**。 |

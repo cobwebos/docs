@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 8a78c854e9c842915700d4a20c1a57e4f1594a2e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 3495d62c7447ba50d9ffe48e68b15dbe36867ac9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472450"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73662593"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中创建和管理群集的多个节点池
 
@@ -33,19 +33,20 @@ ms.locfileid: "73472450"
 
 * 不能删除默认（第一个）节点池。
 * 无法使用 HTTP 应用程序路由加载项。
+* AKS 群集必须使用标准 SKU 负载均衡器来使用多个节点池，但基本 SKU 负载均衡器不支持此功能。
+* AKS 群集必须使用节点的虚拟机规模集。
 * 不能使用与大多数操作一样的现有资源管理器模板来添加或删除节点池。 请改用[单独的资源管理器模板](#manage-node-pools-using-a-resource-manager-template)来更改 AKS 群集中的节点池。
 * 节点池的名称必须以小写字母开头，且只能包含字母数字字符。 对于 Linux 节点池，长度必须在1到12个字符之间，对于 Windows 节点池，长度必须介于1到6个字符之间。
 * AKS 群集最多可以有8个节点池。
 * AKS 群集在这八个节点池中最多可以有400个节点。
 * 所有节点池必须位于同一子网中。
-* AKS 群集必须使用节点的虚拟机规模集。
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
 若要开始，请创建具有单个节点池的 AKS 群集。 以下示例使用[az group create][az-group-create]命令在*eastus*区域中创建名为*myResourceGroup*的资源组。 然后，使用[az AKS create][az-aks-create]命令创建名为*myAKSCluster*的 AKS 群集。 *1.13.10*的*kubernetes 版本*用于说明如何在以下步骤中更新节点池。 可以指定任何[受支持的 Kubernetes 版本][supported-versions]。
 
 > [!NOTE]
-> 使用多节点池时，不支持*基本*负载 balanacer SKU。 默认情况下，使用*标准*loadbalacer SKU 创建 AKS 群集。
+> 使用多节点池时，不支持*基本*负载 balanacer SKU。 默认情况下，使用*标准*负载均衡器 SKU Azure CLI 和 AZURE 门户创建 AKS 群集。
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -547,20 +548,7 @@ AKS 节点不需要自己的公共 IP 地址进行通信。 但某些情况下�
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-注册成功后，按照[上述](#manage-node-pools-using-a-resource-manager-template)相同说明部署 Azure 资源管理器模板，并在 agentPoolProfiles 上添加以下布尔值属性 "enableNodePublicIP"。 将此设置为 `true` 默认情况下，如果未指定，则将其设置为 `false`。 这只是一个创建时的属性，需要的最低 API 版本为2019-06-01。 这可同时适用于 Linux 和 Windows 节点池。
-
-```
-"agentPoolProfiles":[  
-    {  
-      "maxPods": 30,
-      "osDiskSizeGB": 0,
-      "agentCount": 3,
-      "agentVmSize": "Standard_DS2_v2",
-      "osType": "Linux",
-      "vnetSubnetId": "[parameters('vnetSubnetId')]",
-      "enableNodePublicIP":true
-    }
-```
+注册成功后，按照[上述](#manage-node-pools-using-a-resource-manager-template)相同说明部署 Azure 资源管理器模板，并将 "布尔值" 属性 `enableNodePublicIP` 添加到 "agentPoolProfiles"。 将值设置为 `true` 默认情况下，如果未指定，则将其设置为 `false`。 这只是一个创建时的属性，需要的最低 API 版本为2019-06-01。 这可同时适用于 Linux 和 Windows 节点池。
 
 ## <a name="clean-up-resources"></a>清理资源
 

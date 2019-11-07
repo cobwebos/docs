@@ -1,7 +1,7 @@
 ---
 title: 如何上传文档 - 自定义翻译
 titleSuffix: Azure Cognitive Services
-description: 使用文档上传功能可以上传用于训练的并行文档。 并行文档是配对的文档，其中的一个文档是另一个文档的翻译。 该对中的一个文档包含采用源语言的句子，另一个文档包含这些句子的目标语言翻译。
+description: 文档上传功能将并行文档（两个文档（其中一个是源，另一个是转换）上载到服务中。
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f2bd6103c27d455265ee967554fb27513f78a472
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b2a249a40d8c782d54a12df43d33655f3409753c
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595646"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647381"
 ---
 # <a name="upload-a-document"></a>上传文档
 
@@ -41,7 +41,7 @@ ms.locfileid: "68595646"
     -  优化：这些文档将用于优化集。
     -  测试：这些文档将用于测试集。
     -  短语字典：这些文档将用于短语字典。
-    -  句子字典：这些文档将用于句子字典
+    -  句子字典：这些文档将用于句子字典。
 
     b.  语言对
 
@@ -52,7 +52,7 @@ ms.locfileid: "68595646"
     -  并行数据：
         -  源文件：从本地计算机中选择源语言文件。
         -  目标文件：从本地计算机中选择目标语言文件。
-        -  文档名：仅当上传并行文件时才使用。
+        -  文档名称：仅当上传并行文件时才使用。
 
     - 组合数据：
         -  组合文件：从本地计算机中选择组合文件。 组合文件同时包含源语言句子和目标语言句子。 [命名约定](document-formats-naming-convention.md)对于组合文件而言非常重要。

@@ -1,5 +1,5 @@
 ---
-title: ONNX 的高性能、跨平台推理
+title: ONNX：高性能、跨平台推理
 titleSuffix: Azure Machine Learning
 description: 了解如何使用开放式神经网络交换（ONNX）来帮助优化机器学习模型的推理。
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: dc4a5984f42e87aa42c6873bb1ee63d66744e633
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: c94d36065b27b0afcaeb214b8a86e5e2a09df14b
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053590"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73648020"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX 和 Azure 机器学习：创建并加速 ML 模型
 
@@ -30,7 +30,7 @@ Microsoft 和合作伙伴社区创建 ONNX 作为表示机器学习模型的开�
 
 ONNX 运行时用于高规模 Microsoft 服务，如必应、Office 和认知服务。 性能提升取决于许多因素，但这些 Microsoft 服务已看到__CPU 平均性能__大幅提高。 ONNX 运行时也用作数百个设备上 Windows ML 的一部分。 可以在 Azure 机器学习中使用运行时。 通过使用 ONNX 运行时，您可以从广泛的生产级优化、测试和不断改进中受益。
 
-[显示培训、转换器和部署的![ONNX 流程图](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
+[显示培训、转换器和部署的 ![ONNX 流程图](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>获取 ONNX 模型
 

@@ -1,5 +1,5 @@
 ---
-title: 针对多个 Azure SQL 数据库运行特别报告查询 | Microsoft Docs
+title: 跨多个 Azure SQL 数据库运行即席报表查询
 description: 在多租户应用示例中针对多个 SQL 数据库运行特别报告查询。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 10/30/2018
-ms.openlocfilehash: 0a6b45db3c8b4071b591ca2b5fc604b986598c0c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3d345e222dac98a63400dd2661ce92674f2534f6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570361"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692086"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>针对多个 Azure SQL 数据库运行即席分析查询
 
@@ -31,7 +31,7 @@ ms.locfileid: "68570361"
 > * 如何对所有租户数据库运行分布式查询
 
 
-若要完成本教程，请确保已完成了以下先决条件：
+若要完成本教程，请确保已完成以下先决条件：
 
 * 已部署 Wingtip Tickets SaaS 多租户数据库应用。 若要在五分钟内完成部署，请参阅[部署和浏览 Wingtip Tickets SaaS 多租户数据库应用程序](saas-multitenantdb-get-started-deploy.md)。
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
@@ -44,7 +44,7 @@ ms.locfileid: "68570361"
 
 SaaS 应用程序可分析大量集中存储在云中的租户数据。 此分析可显示出应用程序的运行和使用情况。 这些见解可指导应用和服务的功能开发、可用性改进和其他投资。
 
-在单个多租户数据库中访问此数据很简单，但当数据大规模分布在可能数千个数据库中时便不那么容易了。 一种方法是使用[弹性查询](sql-database-elastic-query-overview.md)，这样可以对具有常见架构的一组分布式数据库进行查询。 这些数据库分布在不同资源组和订阅中。 但是，公用登录名必须具有访问从所有数据库提取的数据的权限。 弹性查询使用单个头数据库，其中定义的外部表会镜像分布式（租户）数据库中的表或视图。 提交到此头数据库的查询将进行编译以生成分布式查询计划，其中的部分查询将根据需要向下推送到租户数据库。 弹性查询在目录数据库中使用分片映射确定所有租户数据库的位置。 设置和查询直接使用标准 [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference) 进行，并支持从 Power BI 和 Excel 等工具进行即席查询。
+在单个多租户数据库中访问此数据很简单，但当数据大规模分布在可能数千个数据库中时便不那么容易了。 一种方法是使用[弹性查询](sql-database-elastic-query-overview.md)，这样可以对具有常见架构的一组分布式数据库进行查询。 这些数据库分布在不同资源组和订阅中。 但是，公用登录名必须具有访问从所有数据库提取的数据的权限。 弹性查询使用单个头数据库，其中定义的外部表会镜像分布式（租户）数据库中的表或视图。 提交到此头数据库的查询将进行编译以生成分布式查询计划，其中的部分查询会根据需要向下推送到租户数据库。 弹性查询在目录数据库中使用分片映射确定所有租户数据库的位置。 设置和查询直接使用标准 [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference) 进行，并支持从 Power BI 和 Excel 等工具进行即席查询。
 
 通过跨租户数据库的分布式查询，弹性查询可以即时了解实时生产数据。 但是，由于弹性查询从潜在的许多数据库中拉取数据，因此查询延迟有时可能高于提交到单个多租户数据库的等效查询的延迟。 请确保设计查询以最小化返回的数据。 弹性查询通常最适合查询少量实时数据，而不是构建频繁使用的或复杂的分析查询或报告。 如果查询效果不佳，请查看[执行计划](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan)，了解将查询的哪部分推送到远程数据库。 并评估返回多少数据。 将已提取的租户数据保存到针对分析查询进行了优化的数据库，从而使需要进行复杂分析处理的查询获取到更好的服务。 SQL 数据库和 SQL 数据仓库可以托管此类分析数据库。
 

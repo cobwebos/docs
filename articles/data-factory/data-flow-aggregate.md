@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂映射数据流中的聚合转换 |Microsoft Docs
+title: Azure 数据工厂映射数据流中的聚合转换
 description: 了解如何在 Azure 数据工厂中大规模聚合数据以及映射数据流聚合转换。
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: add548a184440c408b8b74e131f2249b4f616ddc
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 3f21367c36ae31aa2115c109933a581bef464baf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514828"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676917"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>映射数据流中的聚合转换 
 
@@ -42,7 +42,7 @@ ms.locfileid: "72514828"
 
 聚合转换类似于 SQL 聚合 select 查询。 未包含在 group by 子句或聚合函数中的列不会流向聚合转换的输出。 如果希望将其他列包含在聚合输出中，请执行以下方法之一：
 
-* 使用聚合函数（如 `last()` 或 `first()`）包含该附加列。
+* 使用聚合函数（如 `last()` 或 `first()`）来包含该其他列。
 * 使用[自联接模式](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/)将这些列重新加入到输出流中。
 
 ## <a name="data-flow-script"></a>数据流脚本
@@ -68,7 +68,7 @@ ms.locfileid: "72514828"
 
 ### <a name="example"></a>示例
 
-下面的示例使用传入的流 `MoviesYear` 并按列 `year` 对行进行分组。 转换将创建一个聚合列 `avgrating`，其计算结果为 `Rating` 列的平均值。 此聚合转换的名称为 `AvgComedyRatingsByYear`。
+下面的示例使用传入流 `MoviesYear` 并按列 `year`对行进行分组。 转换将创建一个 `avgrating` 计算为列 `Rating`平均值的聚合列。 此聚合转换名为 `AvgComedyRatingsByYear`。
 
 在数据工厂 UX 中，此转换如下图所示：
 

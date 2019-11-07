@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 531f6d86d57be550d0a1147e131d93ae6e298406
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 942c565c885d59a14d64e7ec06beee0354e7c4ca
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474769"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641617"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>使用 Azure AD B2C 保护 Azure API 管理 API
 
 了解如何将 Azure API 管理 (APIM) API 的访问权限限制给已使用 Azure Active Directory B2C (Azure AD B2C) 进行身份验证的客户端。 请遵循本文中的步骤在 APIM 中创建并测试一个入站策略，用于将访问权限限制给包含 Azure AD B2C 所颁发的有效访问令牌的请求。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在继续执行本文中的步骤之前，需要准备好以下资源：
 
@@ -35,7 +35,7 @@ ms.locfileid: "73474769"
 
 使用 Azure AD B2C 保护 Azure API 管理中的 API 时，需要为 APIM 中创建的[入站策略](../api-management/api-management-howto-policies.md)提供多个值。 首先，请记下以前在 Azure AD B2C 租户中创建的应用程序的 ID。 如果使用的是在先决条件中创建的应用程序，请使用 *webbapp1* 的应用程序 ID。
 
-你可以使用当前**应用程序**体验或我们的新统一**应用注册（预览版）** 体验获取应用程序 ID。 [了解有关预览版体验的详细信息](http://aka.ms/b2cappregintro)。
+你可以使用当前**应用程序**体验或我们的新统一**应用注册（预览版）** 体验获取应用程序 ID。 [详细了解此新体验](https://aka.ms/b2cappregintro)。
 
 #### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 执行 VMware 到 Azure 的灾难恢复时的配置服务器要求 | Microsoft Docs
+title: VMware 灾难恢复-Azure Site Recovery 中的配置服务器要求
 description: 本文介绍了为了使用 Azure Site Recovery 执行 VMware 到 Azure 的灾难恢复而部署配置服务器时的支持和要求。
 author: rayne-wiselman
 manager: carmonm
@@ -8,19 +8,19 @@ services: site-recovery
 ms.topic: article
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: d83b99ea540d6232f4c0786d3a743f97332e1c9f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 0b0942b517c8dc83c048bd1203a58d9861515dfb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792312"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663050"
 ---
 # <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>VMware 到 Azure 的灾难恢复的配置服务器要求
 
 使用 [Azure Site Recovery](site-recovery-overview.md) 进行 VMware VM 和物理服务器到 Azure 的灾难恢复时，需要部署本地配置服务器。
 
 - 配置服务器协调本地 VMware 与 Azure 之间的通信。 它还管理数据复制。
-- [详细了解](vmware-azure-architecture.md)配置服务器组件和流程。
+- 了解有关配置服务器组件和进程的[详细信息](vmware-azure-architecture.md)。
 
 ## <a name="configuration-server-deployment"></a>配置服务器部署
 

@@ -1,5 +1,5 @@
 ---
-title: 还原多租户 SaaS 应用中的 Azure SQL 数据库 | Microsoft Docs
+title: 在多租户 SaaS 应用中还原 Azure SQL 数据库
 description: 了解如何在意外删除数据后还原单个租户的 SQL 数据库
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 12/04/2018
-ms.openlocfilehash: 0776935215b608211ad4f6cd66112fb92e33a34b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0719fc5482e583218d42e808a4d94045a497f33c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570398"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692104"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>通过“每租户一个数据库”SaaS 应用程序还原单个租户
 
@@ -34,7 +34,7 @@ ms.locfileid: "68570398"
 | 就地还原 | 此模式通常用于在租户误删除或误损坏数据后，将租户还原到之前的某个时间。 原始数据库将处于脱机状态，并且会被替换为还原的数据库。 |
 |||
 
-若要完成本教程，请确保已完成了以下先决条件：
+若要完成本教程，请确保已完成以下先决条件：
 
 * Wingtip SaaS 应用已部署。 若要在五分钟内进行部署，请参阅[部署并探究 Wingtip SaaS 应用程序](saas-dbpertenant-get-started-deploy.md)。
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
@@ -90,11 +90,11 @@ ms.locfileid: "68570398"
 
 本练习将 Contoso Concert Hall 数据库还原到删除该事件前的某个时间点。 此方案假设你希望在并行数据库中查看已删除的数据。
 
- Restore-TenantInParallel.ps1 脚本会创建一个名为 ContosoConcertHall\_old 的并行租户数据库（内附并行目录条目）。 此还原模式最适用于在丢失少量数据后进行恢复。 如果出于符合性或审核目的而需要审查数据，也可以使用此模式。 使用[活动异地复制](sql-database-active-geo-replication.md)时，建议使用此方法。
+ Restore-TenantInParallel.ps1 脚本会创建一个名为 ContosoConcertHall*old 的并行租户数据库（内附并行目录条目）* *\_* 。 此还原模式最适用于在丢失少量数据后进行恢复。 如果出于符合性或审核目的而需要审查数据，也可以使用此模式。 使用[活动异地复制](sql-database-active-geo-replication.md)时，建议使用此方法。
 
 1. 完成[模拟租户意外删除数据](#simulate-a-tenant-accidentally-deleting-data)部分。
 2. 在 PowerShell ISE 中，打开 ...\\Learning Modules\\Business Continuity and Disaster Recovery\\RestoreTenant\\_Demo-RestoreTenant.ps1_。
-3. 设置 $DemoScenario = 2，它表示并行还原租户。
+3. 设置 $DemoScenario**2，它表示并行还原租户** = 。
 4. 若要运行脚本，请按 F5。
 
 此脚本会将租户数据库还原到删除事件之前的某个时间点。 数据库将还原到名为 _ContosoConcertHall\_old_ 的新数据库中。 将删除此已还原数据中存在的目录元数据，然后使用基于 *ContosoConcertHall\_old* 名称构造的密钥将此数据库添加到目录中。
@@ -107,14 +107,14 @@ ms.locfileid: "68570398"
 
 1. 设置 **$DemoScenario** = **4**，它表示删除已还原的租户。
 2. 若要运行脚本，请按 F5。
-3. 现在已从目录中删除了 ContosoConcertHall\_old 条目。 在浏览器中关闭此租户的事件页面。
+3. 现在已从目录中删除了 ContosoConcertHall*old\_* 条目。 在浏览器中关闭此租户的事件页面。
 
 ## <a name="restore-a-tenant-in-place-replacing-the-existing-tenant-database"></a>就地还原租户，替换现有租户数据库
 
 本练习会将 Contoso Concert Hall 租户还原到删除事件之间的某个时间点。 Restore-TenantInPlace 脚本会将租户数据库还原到新的数据库中并删除原始数据库。 此还原模式最适用于在发生严重数据损坏后进行恢复，并且租户可能必须承受大量数据丢失。
 
 1. 在 PowerShell ISE 中，打开 **Demo-RestoreTenant.ps1** 文件。
-2. 设置 $DemoScenario = 5，它表示就地还原租户。
+2. 设置 $DemoScenario**5，它表示就地还原租户** = 。
 3. 若要运行脚本，请按 F5。
 
 该脚本会将租户数据库还原到删除事件之前的某个时间点。 它首先使 Contoso Concert Hall 脱机，以防止进一步更新。 然后，通过从还原点进行恢复来创建一个并行数据库。 还原后的数据库以时间戳命名，以确保该数据库名称不与现有租户数据库名称冲突。 接着，删除旧租户数据库，并将还原的数据库重命名为原始数据库名称。 最后，将 Contoso Concert Hall 联机，使应用能够访问还原的数据库。
@@ -125,7 +125,7 @@ ms.locfileid: "68570398"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+在本教程中，你已学习了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 将数据库还原为并行数据库（并行）。

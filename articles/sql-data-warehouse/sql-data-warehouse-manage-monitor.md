@@ -1,5 +1,5 @@
 ---
-title: 使用 DMV 监视工作负荷 | Microsoft 文档
+title: 使用 DMV 监视工作负荷
 description: 了解如何使用 DMV 监视工作负荷。
 services: sql-data-warehouse
 author: ronortloff
@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d1af13eb54daf060f0172a0506370ca459f2ece
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: e1a754747ae5c0fb7c50653f4881b67a81e011ef
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018943"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645671"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>使用 DMV 监视工作负荷
 本文介绍如何使用动态管理视图 (DMV) 监视工作负荷。 这包括调查 Azure SQL 数据仓库中的查询执行情况。
@@ -36,7 +36,7 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <
 ```
 
 ## <a name="monitor-query-execution"></a>监视查询执行
-在 SQL 数据仓库上执行的所有查询都记录到 [sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests]。  此 DMV 包含最后 10,000 个执行的查询。  request_id 对每个查询进行唯一标识，并且为此 DMV 的主键。  request_id 在每次进行新的查询时按顺序分配，并会加上前缀 QID，代表查询 ID。  针对给定 session_id 查询此 DMV 将显示给定登录的所有查询。
+在 SQL 数据仓库上执行的所有查询都记录到 [sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests]。  此 DMV 包含最后 10,000 个执行的查询。  request_id 对每个查询进行唯一标识，并且为此 DMV 的主键。  request_id 在每次进行新的查询时按顺序分配，并会加上前缀 QID，代表查询 ID。  针对给定 session_id 查询此 DMV 会显示给定登录的所有查询。
 
 > [!NOTE]
 > 存储过程使用多个请求 ID。  按先后顺序分配请求 ID。 
@@ -65,7 +65,7 @@ ORDER BY total_elapsed_time DESC;
 
 由于存在大量活动的运行查询，因此处于“挂起”状态的查询可以排队。 这些查询也出现在类型为 UserConcurrencyResourceType 的 [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) 等待查询中。 有关并发限制的信息，请参阅[性能层](performance-tiers.md)或[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。 查询也可能因其他原因（如对象锁定）处于等待状态。  如果查询正在等待资源，请参阅本文后面的[调查等待资源的查询][Investigating queries waiting for resources]。
 
-若要简化对[sys.databases _pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)表中的查询的查找, 请使用[标签][LABEL]为可以在 sys.databases _pdw_exec_requests 视图中查找的查询分配注释。
+为了简化在 [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) 表中查找查询的过程，请使用 [LABEL][LABEL] 将注释分配给可在 sys.dm_pdw_exec_requests 视图中查找的查询。
 
 ```sql
 -- Query with Label
@@ -97,10 +97,10 @@ ORDER BY step_index;
 
 若要进一步调查单个步骤的详细信息，可检查长时间运行的查询步骤的 *operation_type* 列并记下**步骤索引**：
 
-* 针对 SQL 操作继续执行步骤 3a：OnOperation、RemoteOperation、ReturnOperation。
-* 针对数据移动操作继续执行步骤 3b：ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation。
+* 针对以下 **SQL 操作**继续执行步骤 3a：OnOperation、RemoteOperation、ReturnOperation。
+* 针对以下**数据移动操作**继续执行步骤 3b：ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation。
 
-### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>步骤 3a：调查分布式数据库上的 SQL
+### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>步骤 3a：查看分布式数据库上的 SQL
 使用请求 ID 和步骤索引从 [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests] 中检索详细信息，其中包含所有分布式数据库上的查询步骤的执行信息。
 
 ```sql
@@ -120,7 +120,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>步骤 3b：调查在分布式数据库上进行的数据移动
+### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>步骤 3b：查看在分布式数据库上进行的数据移动
 使用请求 ID 和步骤索引检索在 [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers] 中的每个分布上运行的数据移动步骤的相关信息。
 
 ```sql
@@ -174,7 +174,7 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 tempdb 用于在查询执行期间保存临时结果。 重度使用 tempdb 数据库可能会导致查询性能变慢。 Azure SQL 数据仓库中的每个节点大约会占用 1 TB 的原始 tempdb 空间。 下面是有关监视 tempdb 用量以及在查询中减少 tempdb 用量的提示。 
 
 ### <a name="monitoring-tempdb-with-views"></a>使用视图监视 tempdb
-若要监视 tempdb 用量，请先从[适用于 SQL 数据仓库的 Microsoft 工具包](https://github.com/Microsoft/sql-data-warehouse-samples/tree/master/solutions/monitoring)安装 [microsoft.vw_sql_requests](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/solutions/monitoring/scripts/views/microsoft.vw_sql_requests.sql) 视图。 然后可执行以下查询，以查看在每个节点中执行的所有查询所消耗的 tempdb 用量：
+若要监视 tempdb 用量，请先从[适用于 SQL 数据仓库的 Microsoft 工具包](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/solutions/monitoring/scripts/views/microsoft.vw_sql_requests.sql)安装 [microsoft.vw_sql_requests](https://github.com/Microsoft/sql-data-warehouse-samples/tree/master/solutions/monitoring) 视图。 然后可执行以下查询，以查看在每个节点中执行的所有查询所消耗的 tempdb 用量：
 
 ```sql
 -- Monitor tempdb
@@ -206,11 +206,11 @@ WHERE DB_NAME(ssu.database_id) = 'tempdb'
 ORDER BY sr.request_id;
 ```
 
-如果查询正在消耗大量内存或收到一条与 tempdb 的分配相关的错误消息, 则可能是[CREATE TABLE 由于 SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)或在中失败的[INSERT select](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql)语句正在运行最终数据移动操作。 在分布式查询计划中，紧靠在最后一条 INSERT SELECT 前面的语句会将此操作识别为 ShuffleMove 操作。  使用[sys.databases _pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)监视 ShuffleMove 操作。 
+如果某个查询消耗了大量内存或收到了与 tempdb 分配相关的错误消息，原因可能是运行的极大规模 [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 或 [INSERT SELECT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) 语句在最终的数据移动操作期间失败。 在分布式查询计划中，紧靠在最后一条 INSERT SELECT 前面的语句会将此操作识别为 ShuffleMove 操作。  使用 [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) 监视 ShuffleMove 操作。 
 
 最常见的缓解措施是将 CTAS 或 INSERT SELECT 语句分解为多个加载语句，使数据量不会超过每个节点不超过 1 TB tempdb 空间的限制。 也可以将群集扩展到更大的大小，以便将 tempdb 大小分散到更多的节点，从而减少每个节点的 tempdb 空间量。
 
-除了 CTAS 和 INSERT SELECT 语句外, 运行内存不足的大型复杂查询也可能溢出到 tempdb 中, 导致查询失败。  请考虑使用较大的[资源类](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management)运行, 以避免溢出到 tempdb 中。
+除了 CTAS 和 INSERT SELECT 语句外，在内存不足的情况下运行的大型复杂查询可能会溢出到 tempdb 中，导致查询失败。  请考虑使用更大的[资源类](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management)运行，以避免溢出到 tempdb。
 
 ## <a name="monitor-memory"></a>监视内存
 
@@ -265,7 +265,7 @@ GROUP BY t.pdw_node_id, nod.[type]
 ```
 
 ## <a name="monitor-polybase-load"></a>监视 PolyBase 负载
-以下查询提供负载的大概估计值。 查询仅显示当前正在处理的文件。 
+以下查询提供了负载进度的大致估算。 查询仅显示当前正在处理的文件。 
 
 ```sql
 
@@ -290,7 +290,7 @@ ORDER BY
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关 Dmv 的详细信息, 请参阅[系统视图][System views]。
+有关 DMV 的详细信息，请参阅[系统视图][System views]。
 
 
 <!--Image references-->

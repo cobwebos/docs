@@ -1,5 +1,5 @@
 ---
-title: T-SQL 语言元素 - Azure SQL 数据仓库 | Microsoft Docs
+title: T-SQL 语言元素
 description: 有关 Azure SQL 数据仓库中支持的 T-SQL 语句文档的链接。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: query
 ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 5d623ebbb5434338e2d7263ca63dd545230a612d
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 02f463e12547ba64a05e04988d9c192bba4f6a27
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479422"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692525"
 ---
 # <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中支持的 T-SQL 语言元素
 有关 Azure SQL 数据仓库中支持的 T-SQL 语言元素文档的链接。
@@ -226,7 +227,7 @@ ms.locfileid: "68479422"
 * [XACT_STATE](https://msdn.microsoft.com/library/ms189797.aspx)
 
 ## <a name="transactions"></a>事务
-* [transactions](https://msdn.microsoft.com/library/mt204031.aspx)
+* [事务](https://msdn.microsoft.com/library/mt204031.aspx)
 
 ## <a name="diagnostic-sessions"></a>诊断会话
 * [创建诊断会话](https://msdn.microsoft.com/library/mt204029.aspx)

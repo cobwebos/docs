@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 数据工厂管道中执行 Azure 机器学习管道 |Microsoft Docs
+title: 在 Azure 数据工厂管道中执行 Azure 机器学习管道
 description: 了解如何在 Azure 数据工厂管道中运行 Azure 机器学习管道。
 services: data-factory
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 author: djpmsft
 ms.author: daperlov
-ms.openlocfilehash: c05a0fde7019d9162a051a04696c2251301d70dc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a257c7d3f288f9a2e1998bf0679b7146b089cb50
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490604"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683889"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>在 Azure 数据工厂中执行 Azure 机器学习管道
 
@@ -44,7 +44,7 @@ ms.locfileid: "73490604"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 需要
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
 name | 管道中活动的名称 | String | 是
 type | Activity 的类型为 "AzureMLExecutePipeline" | String | 是

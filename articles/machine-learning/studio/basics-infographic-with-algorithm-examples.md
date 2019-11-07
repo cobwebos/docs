@@ -1,6 +1,6 @@
 ---
 title: 算法示例
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: 关于机器学习基础知识的易于理解的概述包括算法示例。 可下载的信息图涵盖大多数机器学习问题。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodc18
 ms.date: 03/04/2019
-ms.openlocfilehash: 0864bdaf31d94469d30a745cfb911cda2c2e493d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 31bf3a5aed69e7fd903342ef229dbc4d1e2530bc
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493344"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619684"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>可下载的信息图：具有算法示例的机器学习基础知识
 

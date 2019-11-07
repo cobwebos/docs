@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Key Vault 中存储凭据 | Microsoft Docs
+title: 在 Azure Key Vault 中存储凭据
 description: 了解如何在 Azure Key Vault 中存储所使用的数据存储的凭据，以便在运行时 Azure 数据工厂可以自动检索这些凭据。
 services: data-factory
 author: linda33wj
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 3f46c54edff2bc765e75742848f83d30e7aa7c09
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 1e2458fa125ee4d223ef46001534fb7ae72b805e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003404"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684008"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>在 Azure Key Vault 中存储凭据
 
@@ -48,7 +48,7 @@ Azure Key Vault 链接服务支持以下属性：
 
 **使用创作 UI：**
 
-单击“连接” -> “链接服务” -> “+新建”，然后搜索“Azure Key Vault”：
+单击“连接” **“链接服务”** “+新建”，然后搜索“Azure Key Vault” ->  -> ：
 
 ![搜索 AKV](media/store-credentials-in-key-vault/search-akv.png)
 
@@ -77,8 +77,8 @@ Azure Key Vault 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 字段的 type 属性必须设置为：**AzureKeyVaultSecret**。 | 是 |
-| secretName | Azure Key Vault 中的机密名称。 | 是 |
-| secretVersion | Azure Key Vault 中的机密版本。<br/>如果未指定，将始终使用最新版本的机密。<br/>如果指定，然后它遵循给定的版本。| 否 |
+| secretName | Azure Key Vault 中机密的名称。 | 是 |
+| secretVersion | Azure Key Vault 中机密的版本。<br/>如果未指定，将始终使用最新版本的机密。<br/>如果指定，然后它遵循给定的版本。| 否 |
 | store | 指用于存储凭据的 Azure Key Vault 链接服务。 | 是 |
 
 **使用创作 UI：**
@@ -116,4 +116,4 @@ Azure Key Vault 链接服务支持以下属性：
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

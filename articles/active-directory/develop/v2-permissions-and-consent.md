@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c0fcb748262b20fd4550d08d74056c0219dbc09
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: edb6d96dfdca63f1bacf45ab0af01d18aafcf302
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694004"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73667878"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
 
@@ -45,15 +45,15 @@ Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授�
 > [!NOTE]
 > 我们强烈建议使用 Microsoft Graph，而不要使用 Azure AD Graph、Office 365 邮件 API 等。
 
-这同样适用于已与 Microsoft 标识平台集成的任何第三方资源。 这些资源还可以定义一组可用于将该资源的功能分成较小区块的权限。 例如，[Microsoft Graph](https://graph.microsoft.com) 定义了执行以下（以及其他）任务的权限：
+这同样适用于已与 Microsoft 标识平台集成的任何第三方资源。 这些资源还可以定义一组可用于将该资源的功能分成较小区块的权限。 例如， [Microsoft Graph](https://graph.microsoft.com) 已定义执行以下任务及其他任务所需的权限：
 
 * 读取用户的日历
 * 写入用户的日历
 * 以用户身份发送邮件
 
-通过定义这些类型的权限，资源可以更精细地控制其数据以及 API 功能的公开方式。 第三方应用可以从用户和管理员请求这些权限，只有在用户或管理员批准该请求之后，应用才能代表用户访问或处理数据。 将资源的功能切割成较小的权限集，即可将第三方应用构建为只请求执行其功能所需的特定权限。 用户和管理员可以确切地知道应用有权访问哪些数据，并且他们可以更加确信应用不会怀有恶意的企图。 开发人员应始终遵守“最低特权”的概念，仅请求分配正常运行应用程序所需的权限。
+通过定义这些类型的权限，资源可以更精细地控制其数据以及 API 功能的公开方式。 第三方应用可以从用户和管理员请求这些权限，只有在用户或管理员批准该请求之后，应用才能代表用户访问或处理数据。 通过将资源的功能分割成较小的权限集，可将第三方应用构建为只请求所需的特定权限来执行其功能。 用户和管理员可以确切地知道应用有权访问哪些数据，并且他们可以更加确信应用不会怀有恶意的企图。 开发人员应始终遵守“最低特权”的概念，仅请求分配正常运行应用程序所需的权限。
 
-在 OAuth 2.0 中，这些类型的权限称为“范围”。 它们也通常称为 "*权限*"。 权限在 Microsoft 标识平台中以字符串值表示。 仍以 Microsoft Graph 为例，每个权限的字符串值为：
+在 OAuth 2.0 中，这些类型的权限称为“范围”。 它们通常也称为“权限”。 权限在 Microsoft 标识平台中以字符串值表示。 仍以 Microsoft Graph 为例，每个权限的字符串值为：
 
 * 使用 `Calendars.Read` 读取用户的日历
 * 使用 `Calendars.ReadWrite` 写入用户的日历
@@ -83,21 +83,21 @@ OpenID Connect 的 Microsoft 标识平台实现有一些明确定义但未应用
 
 ### <a name="openid"></a>openid
 
-如果应用使用 [OpenID Connect](active-directory-v2-protocols.md) 执行登录，则必须请求 `openid` 范围。 `openid` 范围在工作帐户同意页上显示为“登录”权限，而在个人 Microsoft 帐户同意页上显示为“查看配置文件并使用 Microsoft 帐户连接到应用和服务”权限。 此权限使应用能够以 `sub` 声明的形式接收用户的唯一标识符。 它还会向应用提供对 UserInfo 终结点的访问权限。 可以在 Microsoft 标识平台令牌终结点中使用 `openid` 范围来获取 ID 令牌，应用可以使用该令牌进行身份验证。
+如果应用使用 [OpenID Connect](active-directory-v2-protocols.md) 执行登录，则必须请求 `openid` 范围。 `openid` 范围在工作帐户许可页上显示为“登录”权限，而在个人 Microsoft 帐户许可页上显示为“查看个人资料并使用 Microsoft 帐户连接到应用和服务”权限。 此权限使应用能够以 `sub` 声明的形式接收用户的唯一标识符。 它还会向应用提供对 UserInfo 终结点的访问权限。 可以在 Microsoft 标识平台令牌终结点中使用 `openid` 范围来获取 ID 令牌，应用可以使用该令牌进行身份验证。
 
 ### <a name="email"></a>email
 
 `email` 范围可与 `openid` 范围和任何其他范围一起使用。 它以 `email` 声明的形式向应用提供对用户主要电子邮件地址的访问权限。 仅当某个电子邮件地址与用户帐户相关联（并非总是如此）时， `email` 声明才包含在令牌中。 如果使用 `email` 范围，则应用应准备好处理 `email` 声明不存在于令牌中的情况。
 
-### <a name="profile"></a>profile
+### <a name="profile"></a>个人资料
 
 `profile` 范围可与 `openid` 范围和任何其他范围一起使用。 它使应用可以访问大量关于用户的信息。 可访问的信息包括但不限于用户的名字、姓氏、首选用户名和对象 ID。 有关指定用户的 id_token 参数中可用配置文件声明的完整列表，请参阅 [`id_tokens` 参考](id-tokens.md)。
 
-### <a name="offlineaccess"></a>offline_access
+### <a name="offline_access"></a>offline_access
 
 [`offline_access` 范围](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess)允许应用在较长时间内代表用户访问资源。 在同意页上，此范围将显示为“维持对已授予访问权限的数据的访问”权限。 用户批准 `offline_access` 范围后，应用可接收来自 Microsoft 标识平台令牌终结点的刷新令牌。 刷新令牌的生存期较长。 旧的访问令牌过期时，应用可获取新的访问令牌。
 
-如果应用未显式请求 `offline_access` 范围，则收不到刷新令牌。 这意味着，当在 [OAuth 2.0 授权代码流](active-directory-v2-protocols.md)中兑换 authorization_code 时，只从 `/token` 终结点接收 access_token。 访问令牌在短期内有效。 访问令牌的有效期通常为一小时。 到时，应用需要将用户重定向回到 `/authorize` 终结点以获取新的授权代码。 在此重定向期间，根据应用的类型，用户或许无需再次输入其凭据或重新同意权限。 当服务器自动请求 `offline_access` 范围时，客户端必须继续请求它才能收到刷新令牌。
+如果应用未显式请求 `offline_access` 范围，则收不到刷新令牌。 这意味着，当在 [OAuth 2.0 授权代码流](active-directory-v2-protocols.md)中兑换 authorization_code 时，只从 `/token` 终结点接收 access_token。 访问令牌在短期内有效。 访问令牌的有效期通常为一小时。 到时，应用需要将用户重定向回到 `/authorize` 终结点以获取新的 authorization_code。 在此重定向期间，根据应用的类型，用户或许无需再次输入其凭据或重新同意权限。 当服务器自动请求 `offline_access` 范围时，客户端必须继续请求它才能收到刷新令牌。
 
 有关如何获取及使用刷新令牌的详细信息，请参阅 [Microsoft 标识平台协议参考](active-directory-v2-protocols.md)。
 
@@ -128,7 +128,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 当用户批准权限请求时，会记录许可，使用户在后续登录到应用程序时无需再次许可。
 
-## <a name="requesting-consent-for-an-entire-tenant"></a>请求整个租户的同意
+## <a name="requesting-consent-for-an-entire-tenant"></a>请求整个租户的许可
 
 组织购买应用程序的许可证或订阅时，需要主动设置组织所有成员使用的应用程序。 在此过程中，管理员可以代表租户中的任何用户授予对该应用程序的许可。 如果管理员为整个租户授予许可，则组织的用户不会看到该应用程序的许可页。
 
@@ -155,13 +155,13 @@ Microsoft 生态系统中的某些高特权权限可以设置为受管理员限�
 ## <a name="using-the-admin-consent-endpoint"></a>使用管理员同意终结点
 
 > [!NOTE] 
-> 请注意, 在使用管理员许可终结点授予管理员许可后, 你已完成授予管理员许可, 并且用户无需执行任何其他操作。 授予管理员许可后, 用户可以通过典型的身份验证流获取访问令牌, 并且生成的访问令牌将具有许可的权限。 
+> 请注意，在使用管理员同意终结点授予管理员同意后，你已经完成授予管理员同意，用户不需要执行任何其他操作。 授予管理员同意后，用户可以通过典型的授权流获得访问令牌，并且生成的访问令牌将具有同意的权限。 
 
 当公司管理员使用你的应用程序并定向到授权终结点时，Microsoft 标识平台将检测用户的角色，并询问他们是否要代表整个租户许可请求的权限。 但是，如果你想要主动请求管理员代表整个租户授予权限，则还可以使用一个专用的管理员许可终结点。 请求应用程序权限（不能使用授权终结点来请求）时，也必须使用此终结点。
 
 如果你遵循了这些步骤，则应用就能为租户中的所有用户请求权限，包括受管理员限制的范围。 这是一个高特权操作，只能根据方案的需要来执行。
 
-若要查看实现步骤的代码示例，请参阅[受管理员限制的范围示例](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2)。
+若要查看实现这些步骤的代码示例，请参阅 [受管理员限制的范围示例](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2)。
 
 ### <a name="request-the-permissions-in-the-app-registration-portal"></a>在应用注册门户中请求权限
 
@@ -169,14 +169,14 @@ Microsoft 生态系统中的某些高特权权限可以设置为受管理员限�
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>配置应用程序的静态请求权限列表
 
-1. 在 Azure 门户中,[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中转到你的应用程序, 或[创建应用](quickstart-register-app.md)(如果尚未这样做)。
-2. 找到 " **Api 权限**" 部分, 并在 API 权限中单击 "添加权限"。
-3. 从可用 Api 列表中选择 " **Microsoft Graph** ", 并添加应用所需的权限。
+1. 在 Azure 门户中，[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中转到你的应用程序，或[创建应用](quickstart-register-app.md)（如果尚未这样做）。
+2. 找到“API 权限”部分，然后在“API 权限”中单击“添加权限”。
+3. 从可用 API 列表中选择 **Microsoft Graph**，然后添加应用所需的权限。
 3. **保存**应用注册。
 
-### <a name="recommended-sign-the-user-into-your-app"></a>建议：让用户登录到应用
+### <a name="recommended-sign-the-user-into-your-app"></a>建议：让用户登录到你的应用
 
-生成使用管理员同意终结点的应用程序时，应用需要一个页面/视图，使管理员能够批准应用的权限。 此页面可以是应用注册流的一部分、应用设置的一部分，或专用“连接”流的一部分。 在许多情况下，合理的结果是应用只在用户使用工作或学校 Microsoft 帐户登录之后才显示此“连接”视图。
+在构建使用管理员许可终结点的应用程序时，应用通常需要一个页面或视图，使管理员能够批准应用的权限。 此页面可以是应用注册流的一部分、应用设置的一部分，或专用“连接”流的一部分。 在许多情况下，合理的结果是应用只在用户使用工作或学校 Microsoft 帐户登录之后才显示此“连接”视图。
 
 将用户登录到应用后，便可识别管理员所属的组织，然后要求他们批准必要的权限。 尽管在严格意义上不需要这样做，但有助于为组织用户带来更直观的体验。 若要将用户登录，请遵循 [Microsoft 标识平台协议教程](active-directory-v2-protocols.md)。
 
@@ -186,29 +186,26 @@ Microsoft 生态系统中的某些高特权权限可以设置为受管理员限�
 
 ```
 // Line breaks are for legibility only.
-
-GET https://login.microsoftonline.com/{tenant}/adminconsent?
-client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-&state=12345
-&redirect_uri=http://localhost/myapp/permissions
+    GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
+  client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+  &state=12345
+  &redirect_uri=http://localhost/myapp/permissions
+    &scope=
+    https://graph.microsoft.com/calendars.read 
+    https://graph.microsoft.com/mail.send
 ```
 
-```
-// Pro tip: Try pasting the below request in a browser!
-```
 
-```
-https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
-```
-
-| 参数 | 条件 | 描述 |
-| --- | --- | --- |
-| `tenant` | 必填 | 要向其请求权限的目录租户。 可以采用 GUID 或友好名称格式提供或使用 `common` 以一般方式引用，如示例所示。 |
-| `client_id` | 必填 | Azure 门户的**应用程序 (客户端) ID** [-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给应用程序的体验。 |
-| `redirect_uri` | 必填 |要向其发送响应以供应用处理的重定向 URI。 其必须与在门户中注册的重定向 URI 之一完全匹配。 |
+| 参数     | 条件     | 说明                                                                               |
+|--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
+| `tenant` | 必选 | 要向其请求权限的目录租户。 可以采用 GUID 或友好名称格式提供或使用 `common` 以一般方式引用，如示例所示。 |
+| `client_id` | 必选 | Azure 门户的**应用程序（客户端） ID** [-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给应用程序的体验。 |
+| `redirect_uri` | 必选 |要向其发送响应，供应用处理的重定向 URI。 其必须与在门户中注册的重定向 URI 之一完全匹配。 |
 | `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 其可以是关于想要的任何内容的字符串。 在发出身份验证请求出现之前，使用该状态对有关用户在应用中的状态的信息（例如前面所在的页面或视图）进行编码。 |
+|`scope`        | 必选      | 定义应用程序请求的权限集。 这可以是静态的（使用/.default）或动态作用域。  这可能包括 OIDC 范围（`openid`、`profile``email`）。 | 
 
-此时，Azure AD 会要求租户管理员进行登录来完成请求。 系统会要求管理员批准在应用注册门户中针对应用请求的所有权限。
+
+此时，Azure AD 会要求租户管理员进行登录来完成请求。 系统会要求管理员批准在 `scope` 参数中请求的所有权限。  如果使用了静态（`/.default`）值，则它的作用类似于1.0 版管理员同意终结点，并请求为在应用所需的权限中找到的所有范围请求许可。
 
 #### <a name="successful-response"></a>成功的响应
 
@@ -218,10 +215,10 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
 | `tenant` | 向应用程序授予所请求权限的目录租户（采用 GUID 格式）。 |
-| `state` | 同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
+| `state` | 同样随令牌响应返回的请求中所包含的值。 其可以是关于想要的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
 | `admin_consent` | 将设置为 `True`。 |
 
 #### <a name="error-response"></a>错误响应
@@ -232,7 +229,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
 | `error` | 用于分类发生的错误类型与响应错误的错误码字符串。 |
 | `error_description` | 帮助开发人员识别错误根本原因的具体错误消息。 |
@@ -279,15 +276,15 @@ Content-Type: application/json
 
 由于 `/.default` 功能上等同于 `resource`-centric v1.0 终结点的行为，因此也附带了 v1.0 终结点的许可行为。 也就是说，如果用户在客户端和资源之间未授予任何权限，则 `/.default` 仅触发许可提示。 如果存在任何此类许可，则将返回一个令牌，该令牌包含由该资源的用户授予的所有范围。 但是，如果尚未授予任何权限，或未提供 `prompt=consent` 参数，则将对客户端应用程序注册的所有范围显示许可提示。
 
-#### <a name="example-1-the-user-or-tenant-admin-has-granted-permissions"></a>示例 1:用户或租户管理员已授予权限
+#### <a name="example-1-the-user-or-tenant-admin-has-granted-permissions"></a>示例1：用户或租户管理员已授予权限
 
 用户（或租户管理员）已授予客户端 Microsoft Graph 权限 `mail.read` 和 `user.read`。 如果客户端发出 `scope=https://graph.microsoft.com/.default` 请求，则不会显示任何许可提示，而不考虑针对 Microsoft Graph 的客户端应用程序注册权限的许可。 将返回包含范围 `mail.read` 和 `user.read` 的令牌。
 
-#### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>示例 2：用户在客户端和资源之间未授予权限
+#### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>示例2：用户未授予客户端和资源之间的权限
 
 客户端和 Microsoft Graph 之间不存在任何用户许可。 客户端已针对 `user.read` 和 `contacts.read` 权限，以及 Azure Key Vault 范围`https://vault.azure.net/user_impersonation`注册。 当客户端请求用于 `scope=https://graph.microsoft.com/.default` 的令牌时，用户将看到用于 `user.read`、`contacts.read`和 Key Vault `user_impersonation` 范围的许可屏幕。 返回的令牌中将仅包含 `user.read` 和 `contacts.read` 范围。
 
-#### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>示例 3：用户已同意且客户端请求了其他范围
+#### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>示例3：用户已同意，并且客户端请求其他范围
 
 用户已针对客户端同意 `mail.read`。 客户端已在其注册中注册 `contacts.read` 范围。 当客户端使用 `scope=https://graph.microsoft.com/.default` 发出令牌请求，并通过 `prompt=consent` 请求许可时，用户将看到一个许可屏幕，该屏幕仅显示由应用程序注册的所有权限。 许可屏幕中将显示 `contacts.read`，但不会显示 `mail.read`。 返回的令牌将用于 Microsoft Graph，并且将包含 `mail.read` 和 `contacts.read`。
 
@@ -310,4 +307,4 @@ response_type=token            //code or a hybrid flow is also possible here
 
 ## <a name="troubleshooting-permissions-and-consent"></a>权限和许可故障排除
 
-如果你或应用程序的用户在许可过程中看到意外的错误，请参阅以下文章获取故障排除步骤：[对应用程序执行许可时发生意外错误](../manage-apps/application-sign-in-unexpected-user-consent-error.md)。
+如果你或你的应用程序的用户在同意过程中出现意外错误，请参阅此文，了解故障排除步骤：[对应用程序执行许可时出现意外错误](../manage-apps/application-sign-in-unexpected-user-consent-error.md)。

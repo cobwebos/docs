@@ -1,5 +1,5 @@
 ---
-title: 使用 DMV 监视性能 Azure SQL 数据库 | Microsoft Docs
+title: 使用 Dmv 监视性能 Azure SQL 数据库
 description: 了解如何通过使用动态管理视图检测常见性能问题来监视 Microsoft Azure SQL 数据库。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: a630ceb1748f38dc169a4ebabcbb4e021de4273c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: c7eed3fc8e9d0328a3e793e1ff4b3652ab86e2bc
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881560"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687752"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>使用动态管理视图监视性能 Azure SQL 数据库
 
@@ -237,7 +237,7 @@ GO
 
 ## <a name="identify-tempdb-performance-issues"></a>识别 `tempdb` 性能问题
 
-识别 IO 性能问题时，与 `tempdb` 问题最相关的等待类型是 `PAGELATCH_*`（而不是 `PAGEIOLATCH_*`）。 但是，出现 `PAGELATCH_*` 等待并不总是意味着发生了 `tempdb` 争用。  这种等待可能还意味着，由于并发请求面向相同的数据页面，发生了用户对象数据页面争用。 若要进一步`tempdb`确认争用, 请使用[sys.databases _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)来确认`2:x:y` wait_resource 值以的开头, 其中2是`tempdb`数据库 id, `x`是文件 id, `y`是页面 id。  
+识别 IO 性能问题时，与 `tempdb` 问题最相关的等待类型是 `PAGELATCH_*`（而不是 `PAGEIOLATCH_*`）。 但是，出现 `PAGELATCH_*` 等待并不总是意味着发生了 `tempdb` 争用。  这种等待可能还意味着，由于并发请求面向相同的数据页面，发生了用户对象数据页面争用。 若要进一步确认 `tempdb` 争用，请使用 [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 确认 wait_resource 值是否以 `2:x:y` 开头，其中，`tempdb` 是数据库 ID，`x` 是文件 ID，`y` 是页 ID。  
 
 对于 tempdb 争用，常用的方法是减少依赖于 `tempdb` 的重写应用程序代码。  常见的 `tempdb` 使用区域包括：
 
@@ -535,17 +535,17 @@ FROM sys.dm_db_resource_stats;
 
 ### <a name="sysresource_stats"></a>sys.resource_stats
 
-**master** 数据库中的 [Sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) 视图包含可帮助监视 SQL 数据库在特定服务层级和计算大小的性能。 每 5 分钟收集一次数据，并且会保留大约 14 天。 此视图可用于 SQL 数据库使用资源的方式的长期历史分析。
+[master](https://msdn.microsoft.com/library/dn269979.aspx) 数据库中的 **Sys.resource_stats** 视图包含可帮助监视 SQL 数据库在特定服务层级和计算大小的性能。 每 5 分钟收集一次数据，并且会保留大约 14 天。 此视图可用于 SQL 数据库使用资源的方式的长期历史分析。
 
 下图显示一周内每小时的 P2 计算大小高级数据库的 CPU 资源使用情况。 此图形从周一开始，显示 5 个工作日，并显示周末（应用程序上很少发生的情况）。
 
 ![SQL 数据库资源使用情况](./media/sql-database-performance-guidance/sql_db_resource_utilization.png)
 
-从数据而言，此数据库当前有一个峰值 CPU 负载刚好超过相对于 P2 计算大小的 50% CPU 使用率（星期二中午）。 如果 CPU 是应用程序资源配置文件的决定因素，可以决定 P2 是适当的计算大小以保证工作负荷始终适合。 如果希望应用程序可以随时间增长，最好具有额外的资源缓冲，以便应用程序不会达到性能级别的限制。 如果增加计算大小，则有助于避免当数据库没有足够能力有效处理请求（尤其是在易受延迟影响的环境中）时向客户显示错误。 一个示例是支持应用程序根据数据库调用结果绘制网页的数据库。
+从数据而言，此数据库当前有一个峰值 CPU 负载刚好超过相对于 P2 计算大小的 50% CPU 使用率（星期二中午）。 如果 CPU 是应用程序资源配置文件的决定因素，可以决定 P2 是适当的计算大小以保证工作负荷始终适合。 如果希望应用程序可以随时间增长，最好具有额外的资源缓冲，以便应用程序不会达到性能级别的限制。 如果增加计算大小，则有助于避免当数据库没有足够能力有效处理请求（尤其是在易受延迟影响的环境中）时向客户显示错误。 例如，如果数据库支持的应用程序根据数据库调用结果绘制网页，则属于这种情况。
 
-其他应用程序类型可能以不同的方式解释同一图形。 例如，如果某个应用程序尝试每天处理工资数据并使用相同的图表，则在 P1 计算大小也许就能让此类“批处理作业”模型正常工作。 P1 计算大小有 100 个 DTU，P2 计算大小有 200 个 DTU。 P1 计算大小提供的性能是 P2 计算大小的一半。 因此，P2 中 50% 的 CPU 使用率相当于 P1 中 100 % 的 CPU 使用率。 如果应用程序没有超时，则作业耗时 2 小时或 2.5 小时完成并不重要（如果今天完成）。 此类别中的应用程序可能使用 P1 计算大小。 可以充分利用一天之中资源使用率较低的时间段，以便“大峰值”可以溢出到当天稍后的某个低谷。 只要作业可以每天按时完成，P1 计算大小就适用于该类型的应用程序（且节省费用）。
+其他应用程序类型可能以不同的方式解释同一图形。 例如，如果某个应用程序尝试每天处理工资数据并使用相同的图表，则在 P1 计算大小也许就能让此类“批处理作业”模型正常工作。 P1 计算大小有 100 个 DTU，P2 计算大小有 200 个 DTU。 P1 计算大小提供的性能是 P2 计算大小的一半。 因此，P2 级别 50% 的 CPU 使用率相当于 P1 级别 100% 的 CPU 使用率。 如果应用程序没有超时，则作业耗时 2 小时或 2.5 小时完成并不重要（如果今天完成）。 此类别中的应用程序可能使用 P1 计算大小。 可以充分利用一天之中资源使用率较低的时间段，以便“大峰值”可以溢出到当天稍后的某个低谷。 只要作业可以每天按时完成，P1 计算大小就适用于该类型的应用程序（且节省费用）。
 
-Azure SQL 数据库在每个服务器的 **master** 数据库的 **sys.resource_stats** 视图中，公开每个活动数据库的资源耗用信息。 表中的数据以 5 分钟为间隔收集而得。 对于“基本”、“标准”和“高级”服务层级，数据可能需要再耗费 5 分钟才会出现在表中，以使此数据更有利于历史分析而非接近实时的分析。 查询 **sys.resource_stats** 视图，以查看数据库的最近历史记录和验证你选择的预留是否提供了所需的性能。
+Azure SQL 数据库在每个服务器的 **master** 数据库的 **sys.resource_stats** 视图中公开每个活动数据库的已使用资源信息。 表中的数据以 5 分钟为间隔收集而得。 对于“基本”、“标准”和“高级”服务层级，数据可能需要再耗费 5 分钟才会出现在表中，以使此数据更有利于历史分析而非接近实时的分析。 查询 **sys.resource_stats** 视图，以查看数据库的最近历史记录和验证你选择的预留是否提供了所需的性能。
 
 > [!NOTE]
 > 必须连接到 SQL 数据库服务器的 master 数据库，才能查询下面示例中的 sys.resource_stats。
@@ -629,7 +629,7 @@ ORDER BY start_time DESC
 
 4. 本练习还应将未来预计的工作负荷增加考虑在内。
 
-对于弹性池，可以使用本节中所述的方法来监视池中的单个数据库。 但也可总体监视该池。 有关信息，请参阅[监视和管理弹性池](sql-database-elastic-pool-manage-portal.md)。
+对于弹性池，可以使用本节中所述的方法来监视池中的单个数据库。 但你还可以在总体上监视池。 有关信息，请参阅[监视和管理弹性池](sql-database-elastic-pool-manage-portal.md)。
 
 ### <a name="maximum-concurrent-requests"></a>最大并发请求数
 
@@ -653,9 +653,9 @@ ORDER BY start_time DESC
 
 ### <a name="maximum-concurrent-logins"></a>最大并发登录数
 
-可以通过分析用户和应用程序模式来了解登录频率。 还可以在测试环境中运行实际负荷，确保不会超过本文所讨论的这样或那样的限制。 无法通过单一查询或动态管理视图 (DMV) 了解并发登录计数或历史记录。
+可以通过分析用户和应用程序模式来了解登录频率。 还可以在测试环境中运行实际负荷，确保不会超过本文所讨论的这样或那样的限制。 没有单个查询或动态管理视图 (DMV) 可以显示并发登录计数或历史记录。
 
-如果多个客户端使用相同的连接字符串，该服务也会对每个登录名进行身份验证。 如果 10 个用户使用相同的用户名和密码同时连接到数据库，则会有 10 个并发登录。 此限制仅适用于登录和身份验证期间。 如果相同的 10 个用户按顺序连接到数据库，则并发登录数将不会大于 1。
+如果多个客户端使用相同的连接字符串，该服务也会对每个登录名进行身份验证。 如果 10 个用户使用相同的用户名和密码同时连接到数据库，将有 10 个并发登录。 此限制仅适用于登录和身份验证期间。 如果相同的 10 个用户按顺序连接到数据库，则并发登录数将不会大于 1。
 
 > [!NOTE]
 > 此限制目前不适用于弹性池中的数据库。
@@ -667,7 +667,7 @@ ORDER BY start_time DESC
     SELECT COUNT(*) AS [Sessions]
     FROM sys.dm_exec_connections
 
-若要分析本地 SQL Server 工作负荷，可以对查询进行修改，使之专注于特定的数据库。 如果考虑将数据库移至 Azure SQL 数据库，此查询可帮助你确定该数据库可能的会话需求。
+如果要分析本地 SQL Server 工作负荷，可以对查询进行修改，使之专注于特定的数据库。 如果考虑将数据库移至 Azure SQL 数据库，此查询可帮助你确定该数据库可能的会话需求。
 
     SELECT COUNT(*)  AS [Sessions]
     FROM sys.dm_exec_connections C
@@ -732,6 +732,6 @@ ORDER BY start_time DESC
     ORDER BY highest_cpu_queries.total_worker_time DESC;
     ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [SQL 数据库简介](sql-database-technical-overview.md)

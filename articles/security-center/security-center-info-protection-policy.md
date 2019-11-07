@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 安全中心中自定义 SQL 信息保护策略 | Microsoft Docs
+title: 自定义 SQL 信息保护-Azure 安全中心
 description: 了解如何在 Azure 安全中心中自定义信息保护策略。
 services: security-center
 documentationcenter: na
@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: f9b161bbb692c1336083640250b93f9d87f1e0d9
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
-ms.translationtype: HT
+ms.openlocfilehash: d37333c0ca3f8acab7a35c23bbab67beef056b72
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520803"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664391"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>在 Azure 安全中心（预览版）中自定义 SQL 信息保护策略
  
-可以在 Azure 安全中心为整个 Azure 租户定义和定制 SQL 信息保护策略。
+可以在 Azure 安全中心为整个 Azure 租户定义和自定义 SQL 信息保护策略。
 
-信息保护是一种高级安全功能，用于发现、分类、标记和保护 Azure 数据资源中的敏感数据。 发现和分类最敏感的数据（业务、财务、医疗保健、个人数据等）可以在组织信息保护威望中扮演 pivotal 角色。 它可以作为基础结构，用于：
+信息保护是一项高级安全功能，可用于发现、分类、标记和保护 Azure 数据资源中的敏感数据。 发现和分类最敏感的数据（业务、财务、医疗保健、个人数据等）可以在组织信息保护威望中扮演 pivotal 角色。 它可以作为基础结构，用于：
 - 帮助满足数据隐私标准和法规符合性要求
-- 各种安全方案，如监视（审核）并在敏感数据存在异常访问时发出警报
+- 安全方案，如监视（审核）和对敏感数据的异常访问发出警报
 - 控制对包含高度敏感数据的数据存储的访问并增强其安全性
  
-[SQL 信息保护](../sql-database/sql-database-data-discovery-and-classification.md)为 SQL 数据存储实现此范例，目前 Azure SQL 数据库支持该范例。 SQL 信息保护自动发现和分类潜在的敏感数据，提供标记机制，用于通过分类属性永久标记敏感数据，并提供显示数据库分类状态的详细仪表板。 此外，它还会计算 SQL 查询的结果集敏感性，以便可以显式审核提取敏感数据的查询，并且可以保护数据。 有关 SQL 信息保护的更多详细信息，请参阅 [Azure SQL 数据库数据发现和分类](../sql-database/sql-database-data-discovery-and-classification.md)。
+[SQL 信息保护](../sql-database/sql-database-data-discovery-and-classification.md)为 SQL 数据存储实现此范例，目前 Azure SQL 数据库支持该范例。 SQL 信息保护自动发现和分类潜在的敏感数据，提供标记机制，用于通过分类属性永久标记敏感数据，并提供显示数据库分类状态的详细仪表板。 此外，它还会计算 SQL 查询的结果集敏感性，以便可以显式审核提取敏感数据的查询，并且可以保护数据。 有关 SQL 信息保护的详细信息，请参阅[AZURE SQL 数据库数据发现和分类](../sql-database/sql-database-data-discovery-and-classification.md)。
  
 该分类机制基于构成分类的两个主要构造：标签和信息类型。
 - **标签**：主要分类属性，用于定义列中存储的数据的敏感度级别。 
 - **信息类型**：为列中存储的数据的类型提供其他粒度。
  
-信息保护服务随内置的一组标签和信息类型（默认使用）提供。 要自定义这些内容，可以在 Azure 安全中心中自定义信息保护策略。
+信息保护服务随内置的一组标签和信息类型（默认使用）提供。 若要自定义这些标签和类型，可以在安全中心自定义信息保护策略。
  
 ## <a name="customize-the-information-protection-policy"></a>自定义信息保护策略
 要自定义 Azure 租户的信息保护策略，需要拥有[租户根管理组的管理权限](security-center-management-groups.md)。 

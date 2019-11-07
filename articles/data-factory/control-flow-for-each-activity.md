@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂中的 ForEach 活动 | Microsoft Docs
+title: Azure 数据工厂中的 ForEach 活动
 description: ForEach 活动在管道中定义重复的控制流。 它用于循环访问集合并执行指定的活动。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 319f4e722184ce840d43b8f23e61711851a6d4a0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: b8f95f22553a3b4639b1aba6576ce844116ae20b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142465"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679876"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure 数据工厂中的 ForEach 活动
 ForEach 活动在管道中定义重复的控制流。 此活动用于循环访问集合，并在循环中执行指定的活动。 此活动的循环实现类似于采用编程语言的 Foreach 循环结构。
@@ -68,14 +68,14 @@ ForEach 活动在管道中定义重复的控制流。 此活动用于循环访�
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必填
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
 name | For-Each 活动的名称。 | String | 是
 type | 必须设置为 **ForEach** | String | 是
-isSequential | 指定是否应按顺序或并行执行循环。  一次最多可以并行执行 20 个循环迭代。 例如，如果你有 ForEach 活动，在 **isSequential** 设置为 False 的情况下循环访问含有 10 个不同源和接收器数据集的复制活动，所有副本都执行一次。 默认值为 false。 <br/><br/> 如果“isSequential”被设置为 False，则确保有运行多个可执行文件的正确配置。 否则，应谨慎使用此属性，以避免产生写入冲突。 有关详细信息，请参阅[并行执行](#parallel-execution)部分。 | Boolean | 否。 默认值为 false。
-batchCount | 要用于控制并行执行数的批计数（当 isSequential 设为 false 时）。 | 整数（最大值为 50） | 否。 默认值为 20。
-项 | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回 JSON 数组） | 是
-activities | 要执行的活动。 | 活动列表 | 是
+isSequential | 指定是否应按顺序或并行执行循环。  一次最多可以并行执行 20 个循环迭代。 例如，如果你有 ForEach 活动，在 **isSequential** 设置为 False 的情况下循环访问含有 10 个不同源和接收器数据集的复制活动，所有副本都执行一次。 默认值为 false。 <br/><br/> 如果“isSequential”被设置为 False，则确保有运行多个可执行文件的正确配置。 否则，应谨慎使用此属性，以避免产生写入冲突。 有关详细信息，请参阅[并行执行](#parallel-execution)部分。 | 布尔值 | 不能。 默认值为 false。
+batchCount | 要用于控制并行执行数的批计数（当 isSequential 设为 false 时）。 | 整数（最大值为 50） | 不能。 默认值为 20。
+Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回 JSON 数组） | 是
+活动 | 要执行的活动。 | 活动列表 | 是
 
 ## <a name="parallel-execution"></a>并行执行
 如果 **isSequential** 被设置为 False，则活动以并行方式迭代，最多包含 20 个并发迭代。 应谨慎使用此设置。 如果并发迭代写入同一文件夹中的不同文件，此方法仍然适用。 如果并发迭代以并发的方式写入同一文件，则此方法很有可能出错。 
@@ -84,7 +84,7 @@ activities | 要执行的活动。 | 活动列表 | 是
 在 ForEach 活动中，为属性 **items** 提供要循环访问的数组。 使用 `@item()` 循环访问 ForEach 活动中的单个枚举。 例如，如果 **items** 是数组：[1, 2, 3]，则 `@item()` 在第一次迭代中返回 1，在第二次迭代中返回 2，在第三次迭代中返回 3。
 
 ## <a name="iterating-over-a-single-activity"></a>循环访问单个活动
-**场景：** 从 Azure Blob 中的同一源文件复制到 Azure Blob 中的多个目标文件。
+**方案：** 将 Azure Blob 中的同一源文件复制到 Azure Blob 中的多个目标文件。
 
 ### <a name="pipeline-definition"></a>管道定义
 
@@ -236,7 +236,7 @@ activities | 要执行的活动。 | 活动列表 | 是
 ```
 
 ### <a name="example"></a>示例
-**场景：** 在包含执行管道活动的 ForEach 活动中循环访问 InnerPipeline。 内部管道使用参数化的架构定义进行复制。
+**方案：** 在包含执行管道活动的 ForEach 活动中循环访问 InnerPipeline。 内部管道使用参数化的架构定义进行复制。
 
 #### <a name="master-pipeline-definition"></a>主管道定义
 
@@ -481,14 +481,14 @@ activities | 要执行的活动。 | 活动列表 | 是
 
 以下是 ForEach 活动的一些限制以及建议的解决方法。
 
-| 限制 | 解决方法 |
+| 升级到 V12 | 解决方法 |
 |---|---|
 | 不能将 ForEach 循环嵌套在另一个 ForEach 循环（或 Until 循环）中。 | 设计一个两级管道，其中具有外部 ForEach 循环的外部管道使用嵌套循环对内部管道进行迭代。 |
 | 对于并行处理，ForEach 活动的最大 `batchCount` 为 50，最大项数为 100,000 个。 | 设计一个两级管道，其中具有 ForEach 活动的外部管道对内部管道进行迭代。 |
 | | |
 
 ## <a name="next-steps"></a>后续步骤
-查看数据工厂支持的其他控制流活动： 
+请参阅数据工厂支持的其他控制流活动： 
 
 - [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
 - [Get Metadata 活动](control-flow-get-metadata-activity.md)

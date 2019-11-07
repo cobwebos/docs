@@ -1,41 +1,42 @@
 ---
 title: 使用 Studio 3T 连接到 Azure Cosmos DB 的 API for MongoDB
-titleSuffix: Azure Cosmos DB
-description: 了解如何使用 Studio 3T 和 Azure Cosmos DB 的 API for MongoDB 连接到 Cosmos DB。
+description: 了解如何使用 Studio 3T 连接到 Azure Cosmos DB 的 API for MongoDB。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 12/26/2018
+ms.date: 11/01/2019
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 46cac6720bbef133d6b3f7a269cf97a81cddd0c5
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: c9be9893d28439fdcff9f33f0303a816bd94c7b8
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70062116"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584423"
 ---
-# <a name="connect-to-cosmos-account-using-studio-3t"></a>使用 Studio 3T 连接到 Cosmos 帐户
+# <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>使用 Studio 3T 连接到 Azure Cosmos 帐户
 
-若要使用 Azure Cosmos DB 的 API for MongoDB 连接到 Cosmos 帐户，必须：
+若要使用 Studio 3T 连接到 Azure Cosmos DB 的 API for MongoDB，必须执行以下操作：
 
-* 下载并安装 [Studio 3T](https://studio3t.com/)
-* 获得 Cosmos DB [连接字符串](connect-mongodb-account.md)信息
+* 下载并安装[Studio 3T](https://studio3t.com/)。
+* 使用 Azure Cosmos 帐户的[连接字符串](connect-mongodb-account.md)信息。
 
 > [!NOTE]
-> 目前, Cosmos DB 的适用于 MongoDB 的 API 支持 Robo 3T 和更低版本。 
+> 目前，Cosmos DB 的适用于 MongoDB 的 API 支持 Robo 3T 1.2 版和更低版本。
 
 ## <a name="create-the-connection-in-studio-3t"></a>在 Studio 3T 中创建连接
-要将 Cosmos 帐户添加到 Studio 3T 连接管理器，请执行以下步骤：
 
-1. 按照[将 MongoDB 应用程序连接到 Azure Cosmos DB](connect-mongodb-account.md) 一文中的说明，检索使用 Azure Cosmos DB MongoDB API 配置的 Cosmos 帐户的连接信息。
+若要将 Azure Cosmos 帐户添加到 Studio 3T 连接管理器，请使用以下步骤：
+
+1. 按照将[mongodb 应用程序连接到 Azure Cosmos DB](connect-mongodb-account.md)一文中的说明，检索 AZURE COSMOS DB 的 API for MongoDB 帐户的连接信息。
 
     ![连接字符串页的屏幕截图](./media/mongodb-mongochef/ConnectionStringBlade.png)
+
 2. 单击“连接”以打开“连接管理器”，并单击“新建连接”
 
     ![Studio 3T 连接管理器的屏幕截图](./media/mongodb-mongochef/ConnectionManager.png)
-3. 在“新建连接”窗口中的“服务器”选项卡上，输入 Azure Cosmos DB 帐户的主机 (FQDN) 和端口。
+3. 在 "**新建连接**" 窗口中的 "**服务器**" 选项卡上，输入 AZURE Cosmos 帐户的主机（FQDN）和端口。
 
     ![Studio 3T 连接管理器服务器选项卡的屏幕截图](./media/mongodb-mongochef/ConnectionManagerServerTab.png)
 4. 在“新建连接”窗口中的“身份验证”选项卡上，选择“基本(MONGODB-CR 或 SCARM-SHA-1)”身份验证模式，并输入用户名和密码。  接受默认的身份验证数据库（管理员），或提供自己的值。
@@ -114,5 +115,5 @@ ms.locfileid: "70062116"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何配合[使用 Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API。
+- 了解如何将 [Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 使用 Azure Cosmos DB 的用于 MongoDB 的 API 浏览 MongoDB [示例](mongodb-samples.md)。

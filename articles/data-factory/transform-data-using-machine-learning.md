@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂创建预测数据管道 | Microsoft Docs
+title: 使用 Azure 数据工厂创建预测数据管道
 description: 了解如何使用 Azure 机器学习创建预测管道 - Azure 数据工厂中的批处理执行活动。
 services: data-factory
 documentationcenter: ''
@@ -11,15 +11,15 @@ ms.date: 02/20/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: aaf1d72a0c9c56e7d140fb615caf014507ebf263
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 24568940a0f6e550ae0fe7658b81ba1c3b3d3556
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60928048"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683766"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure 机器学习和 Azure 数据工厂创建预测管道
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-azure-ml-batch-execution-activity.md)
 > * [当前版本](transform-data-using-machine-learning.md)
 
@@ -30,7 +30,7 @@ ms.locfileid: "60928048"
 3. **将其部署为 Web 服务**。 可将评分实验作为 Azure Web 服务发布。 可通过此 Web 服务终结点向模型发送数据，并从模型接收结果预测。
 
 ### <a name="data-factory-and-machine-learning-together"></a>结合数据工厂和机器学习
-Azure 数据工厂，可轻松地创建使用已发布的管道[Azure 机器学习](https://azure.microsoft.com/documentation/services/machine-learning)web 服务进行预测分析。 使用 Azure 数据工厂管道中的**批处理执行活动**，可以调用 Azure 机器学习工作室 Web 服务成批对数据进行预测。
+使用 Azure 数据工厂，可轻松创建使用已发布的[Azure 机器学习](https://azure.microsoft.com/documentation/services/machine-learning)web 服务进行预测分析的管道。 使用 Azure 数据工厂管道中的**批处理执行活动**，可以调用 Azure 机器学习工作室 Web 服务成批对数据进行预测。
 
 随着时间推移，需要使用新的输入数据集重新训练 Azure 机器学习工作室评分实验中的预测模型。 可以通过执行以下步骤来重新训练数据工厂管道中的模型：
 
@@ -66,13 +66,13 @@ Azure 数据工厂，可轻松地创建使用已发布的管道[Azure 机器学�
 
 请参阅[计算链接服务](compute-linked-services.md)一文，获取有关 JSON 定义中的属性的说明。
 
-Azure 机器学习支持将经典 Web 服务和新 Web 服务用于预测试验。 可以从数据工厂选择要使用的合适 Web 服务。 若要获取创建 Azure 机器学习链接服务所需的信息，请转到 https://services.azureml.net ，其中列出了所有（新式）Web 服务和经典 Web 服务。 单击要访问的 Web 服务，然后单击“使用”  页。 复制**主密钥**作为 **apiKey** 属性，复制**批处理请求**作为 **mlEndpoint** 属性。
+Azure 机器学习支持将经典 Web 服务和新 Web 服务用于预测试验。 可以从数据工厂选择要使用的合适 Web 服务。 若要获取创建 Azure 机器学习链接服务所需的信息，请转到 https://services.azureml.net，其中列出了所有（新式）Web 服务和经典 Web 服务。 单击要访问的 Web 服务，然后单击“使用”页。 复制**主密钥**作为 **apiKey** 属性，复制**批处理请求**作为 **mlEndpoint** 属性。
 
 ![Azure 机器学习 Web 服务](./media/transform-data-using-machine-learning/web-services.png)
 
 ## <a name="azure-machine-learning-batch-execution-activity"></a>Azure 机器学习批处理执行活动
 
-以下 JSON 代码片段定义 Azure 机器学习批处理执行活动。 活动定义包含对先前创建的 Azure 机器学习链接服务的引用。
+以下 JSON 代码片段定义了一个 Azure 机器学习“批处理执行”活动。 活动定义包含对先前创建的 Azure 机器学习链接服务的引用。
 
 ```JSON
 {
@@ -124,11 +124,11 @@ Azure 机器学习支持将经典 Web 服务和新 Web 服务用于预测试验�
 }
 ```
 
-| 属性          | 说明                              | 需要 |
+| 属性          | 说明                              | 必选 |
 | :---------------- | :--------------------------------------- | :------- |
-| 名称              | 管道中活动的名称     | 是      |
-| description       | 描述活动用途的文本。  | 否       |
-| type              | 对于 Data Lake Analytics U-SQL 活动，活动类型是 AzureMLBatchExecution  。 | 是      |
+| name              | 管道中活动的名称     | 是      |
+| 说明       | 描述活动用途的文本。  | 否       |
+| type              | 对于 Data Lake Analytics U-SQL 活动，活动类型是 AzureMLBatchExecution。 | 是      |
 | linkedServiceName | Azure 机器学习链接服务的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
 | webServiceInputs  | 映射 Azure 机器学习 Web 服务输入名称的键/值对。 键必须与已发布 Azure 机器学习 Web 服务中定义的输入参数匹配。 值是 Azure 存储链接服务和指定输入 Blob 位置的 FilePath 属性对。 | 否       |
 | webServiceOutputs | 映射 Azure 机器学习 Web 服务输出名称的键/值对。 键必须与已发布 Azure 机器学习 Web 服务中定义的输出参数匹配。 值是 Azure 存储链接服务和指定输出 Blob 位置的 FilePath 属性对。 | 否       |
@@ -191,14 +191,14 @@ Azure 机器学习支持将经典 Web 服务和新 Web 服务用于预测试验�
 ### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>方案 2：使用读取器/写入器模块引用各种存储中的数据的试验
 创建 Azure 机器学习工作室试验时，另一种常见方案是使用“导入数据”和“输出数据”模块。 “导入数据”模块用于将数据加载到试验，“输出数据”模块用于保存试验中的数据。 有关“导入数据”和“输出数据”模块的详细信息，请参阅 MSDN 库中的[导入数据](https://msdn.microsoft.com/library/azure/dn905997.aspx)和[输出数据](https://msdn.microsoft.com/library/azure/dn905984.aspx)主题。
 
-使用“导入数据”和“输出数据”模块时，最好对这些模块的每个属性使用 Web 服务参数。 使用这些 Web 参数，可在运行时配置值。 例如，可通过使用 Azure SQL 数据库的导入数据模块创建试验：XXX.database.windows.net。 部署 Web 服务后，需要让 Web 服务使用者能够指定另一个名为 `YYY.database.windows.net` 的 Azure SQL Server。 Web 服务参数可用于允许配置此值。
+使用“导入数据”和“输出数据”模块时，最好对这些模块的每个属性使用 Web 服务参数。 使用这些 Web 参数，可在运行时配置值。 例如，可通过使用 Azure SQL 数据库 XXX.database.windows.net 的“导入数据”模块创建试验。 部署 Web 服务后，需要让 Web 服务使用者能够指定另一个名为 `YYY.database.windows.net` 的 Azure SQL Server。 Web 服务参数可用于允许配置此值。
 
 > [!NOTE]
 > Web 服务输入和输出与 Web 服务参数不同。 在第一个方案中，你已了解了可以如何为 Azure 机器学习工作室 Web 服务指定输入和输出。 在此方案中，为 Web 服务传递对应于“导入数据”/“输出数据”模块属性的参数。
 >
 >
 
-我们来看看使用 Web 服务参数的情况。 有一个已部署的 Azure 机器学习 Web 服务，它使用读取器模块从 Azure 机器学习支持的一个数据源（例如：Azure SQL 数据库）。 完成批处理执行后，使用读取器模块（Azure SQL 数据库）写入结果。  实验中未定义任何 Web 服务输入和输出。 在此情况下，建议为读取器和编写器模块配置相关的 Web 服务参数。 此配置允许在使用 AzureMLBatchExecution 活动时配置读取器/编写器模块。 在活动 JSON 中的 **globalParameters** 部分指定 Web 服务参数，如下所示。
+我们来看看使用 Web 服务参数的情况。 有一个已部署的 Azure 机器学习 Web 服务，它使用读取器模块从 Azure 机器学习支持的一个数据源（例如：Azure SQL 数据库）读取数据。 完成批处理执行后，使用读取器模块（Azure SQL 数据库）写入结果。  实验中未定义任何 Web 服务输入和输出。 在此情况下，建议为读取器和编写器模块配置相关的 Web 服务参数。 此配置允许在使用 AzureMLBatchExecution 活动时配置读取器/编写器模块。 在活动 JSON 中的 **globalParameters** 部分指定 Web 服务参数，如下所示。
 
 ```JSON
 "typeProperties": {
@@ -218,7 +218,7 @@ Azure 机器学习支持将经典 Web 服务和新 Web 服务用于预测试验�
 完成重新训练后，使用 **Azure 机器学习工作室更新资源活动**通过新的定型模型更新评分 Web 服务（作为 Web 服务公开的预测实验）。 有关详细信息，请参阅[使用更新资源活动更新模型](update-machine-learning-models.md)一文。
 
 ## <a name="next-steps"></a>后续步骤
-参阅以下文章了解如何以其他方式转换数据：
+请参阅以下文章了解如何以其他方式转换数据：
 
 * [U-SQL 活动](transform-data-using-data-lake-analytics.md)
 * [Hive 活动](transform-data-using-hadoop-hive.md)

@@ -1,6 +1,6 @@
 ---
 title: Azure Service Fabric 网格应用的可伸缩性 | Microsoft Docs
-description: 了解如何缩放 Azure Service Fabric 网格中的服务。
+description: 将应用程序部署到 Service Fabric 网格的优点之一是能够轻松地或通过自动缩放策略轻松地缩放服务。
 services: service-fabric-mesh
 keywords: ''
 author: dkkapur
@@ -9,16 +9,16 @@ ms.date: 10/26/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 1688cac35ea9de43bac529a4994bd4ea55eb0ab7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 59fdf68ed1ead4665ec8944d67f2d5112d370716
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811088"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73662998"
 ---
 # <a name="scaling-service-fabric-mesh-applications"></a>缩放 Service Fabric 网格应用程序
 
-将应用程序部署到 Service Fabric 网格的一个主要优势是能够轻松地对服务进行横向缩放。此功能应该用于处理服务上的各种数量的负载，或者用于改进可用性。 可以手动横向收缩或扩展服务，或者设置自动缩放策略。
+将应用程序部署到 Service Fabric 网格的一个主要优点是可以轻松地放大或缩小服务。这应该用于处理服务上的不同负载量，或提高可用性。 可以手动横向收缩或扩展服务，或者设置自动缩放策略。
 
 ## <a name="manual-scaling-instances"></a>手动缩放实例
 
@@ -31,9 +31,9 @@ ms.locfileid: "60811088"
 
 自动缩放策略是在服务资源文件中针对每个服务定义的。 每个缩放策略由两部分组成：
 
-- 一个缩放触发器，它描述将于何时执行服务的缩放。 三个因素决定了何时缩放服务。 负载阈值下限是一个用于确定何时将横向收缩服务的值  。 如果分区的所有实例的平均负载低于此值，将缩小该服务。 负载阈值上限是一个用于确定何时将横向扩展服务的值  。如果分区的所有实例的平均负载高于此值，将扩大该服务。缩放间隔确定检查触发器的频率（以秒为单位）  。 一旦检查触发器，如果需要缩放，则将应用该机制。 如果不需要缩放，则不会采取任何操作。 在这两种情况下，在缩放间隔到期之前，不会再次检查触发器。
+- 一个缩放触发器，它描述将于何时执行服务的缩放。 三个因素决定了何时缩放服务。 负载阈值下限是一个用于确定何时将横向收缩服务的值。 如果分区的所有实例的平均负载低于此值，将缩小该服务。 *负载阈值上限*是确定何时向外扩展服务的值。如果分区的所有实例的平均负载高于此值，则服务将向外扩展。*缩放间隔*确定将检查触发器的频率（以秒为单位）。 一旦检查触发器，如果需要缩放，则将应用该机制。 如果不需要缩放，则不会采取任何操作。 在这两种情况下，在缩放间隔到期之前，不会再次检查触发器。
 
-- 一种缩放机制，它描述在触发时将如何执行缩放。 缩放增量确定该机制触发时将添加或删除多少个实例  。 最大实例计数定义了缩放上限  。 如果实例数量达到此限制，则无论负载如何，都不会横向扩展服务。 最小实例计数定义了缩放下限  。 如果分区的实例数量达到此限制，则无论负载如何，都不会缩小服务。
+- 一种缩放机制，它描述在触发时将如何执行缩放。 缩放增量确定该机制触发时将添加或删除多少个实例。 最大实例计数定义了缩放上限。 如果实例数量达到此限制，则无论负载如何，都不会横向扩展服务。 最小实例计数定义了缩放下限。 如果分区的实例数量达到此限制，则无论负载如何，都不会缩小服务。
 
 若要了解如何为服务设置自动缩放策略，请阅读[自动缩放服务](service-fabric-mesh-howto-auto-scale-services.md)。
 

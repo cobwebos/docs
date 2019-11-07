@@ -1,5 +1,5 @@
 ---
-title: '设计器示例 #4：用于预测信用风险的分类（区分成本）'
+title: 设计器：预测信用风险（区分成本）
 titleSuffix: Azure Machine Learning
 description: 本文介绍如何使用设计器（预览）生成复杂的机器学习管道。 你将了解如何实现自定义 Python 脚本并比较多个模型，以选择最佳选项。
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 92f8acf56d79cd641222fc897bd2c9dba4ed0940
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7af0ee31c7d7e5dae4a38db7f6c74ff3e5f964bb
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515546"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647987"
 ---
 # <a name="sample-4---classification-with-custom-python-script-predict-credit-risk"></a>示例 4-具有自定义 Python 脚本的分类：预测信用风险
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "73515546"
 
 [管道 ![图](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 

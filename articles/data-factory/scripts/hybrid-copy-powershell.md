@@ -1,5 +1,5 @@
 ---
-title: PowerShell 脚本：使用数据工厂将数据从本地复制到 Azure | Microsoft Docs
+title: 'PowerShell 脚本：使用数据工厂将数据从本地复制到 Azure '
 description: 此 PowerShell 脚本将数据从本地 SQL Server 数据库复制到其他 Azure Blob 存储。
 services: data-factory
 author: linda33wj
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: jingwang
-ms.openlocfilehash: 1218408bee067d6edb274fdcbf4fae62b8245a01
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d7f8d67291c0b6b2a384331c014fdd5cd247ceae
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160665"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684340"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>使用 PowerShell 创建用于将数据从本地复制到 Azure 的数据工厂管道
 
@@ -26,14 +26,14 @@ ms.locfileid: "66160665"
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- **SQL Server**。 在本示例中，将本地 SQL Server 数据库用作源数据存储。 
-- **Azure 存储帐户**。 本示例使用 Azure Blob 存储作为“目标/接收器”数据存储。  如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。
-- 自承载集成运行时。  从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载并运行 MSI 文件，在计算机上安装自承载集成运行时。  
+- **SQL Server**。 在本示例中，将本地 SQL Server 数据库用作源数据存储。
+- **Azure 存储帐户**。 本示例使用 Azure Blob 存储作为“目标/接收器”数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。
+- 自承载集成运行时。 从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载并运行 MSI 文件，在计算机上安装自承载集成运行时。  
 
 ### <a name="create-sample-database-in-sql-server"></a>在 SQL Server 中创建示例数据库
-1. 在本地 SQL Server 数据库中，使用以下 SQL 脚本创建名为“emp”的表：  
+1. 在本地 SQL Server 数据库中，使用以下 SQL 脚本创建名为“emp”的表： 
 
    ```sql   
      CREATE TABLE dbo.emp
@@ -56,7 +56,7 @@ ms.locfileid: "66160665"
 ## <a name="sample-script"></a>示例脚本
 
 > [!IMPORTANT]
-> 此脚本在硬盘驱动器上的 c:\ 文件夹中创建 JSON 文件，用于定义数据工厂实体（链接服务、数据集和管道）。
+> 此脚本在硬盘驱动器上的 c:\ 文件夹中创建用于定义数据工厂实体（链接服务、数据集和管道）的 JSON 文件。
 
 [!code-powershell[main](../../../powershell_scripts/data-factory/copy-from-onprem-sql-server-to-azure-blob/copy-from-onprem-sql-server-to-azure-blob.ps1 "Copy from on-premises SQL Server -> Azure Blob Storage")]
 

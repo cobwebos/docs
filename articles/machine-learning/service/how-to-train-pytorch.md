@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0c3157d3ff020fd8c4974bf694b9a96d98e83c58
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: f08e19ac08d39b19838582cdfbb0d00dfde9de62
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489440"
+ms.locfileid: "73584483"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>大规模定型 Pytorch 深度学习模型，Azure 机器学习
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,11 +29,11 @@ ms.locfileid: "73489440"
 
 了解有关[深度学习与机器学习](concept-deep-learning-vs-machine-learning.md)的详细信息。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在以下任一环境中运行此代码：
 
- - Azure 机器学习计算实例-无需下载或安装
+ - Azure 机器学习笔记本 VM-无需下载或安装
 
     - 完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)，创建随 SDK 和示例存储库预先加载的专用笔记本服务器。
     - 在笔记本服务器上的 "示例深度学习" 文件夹中，通过导航到以下目录查找已完成且展开的笔记本：通过导航到以下目录：**超参数-azureml > 培训-深入了解-深入 > 了解-pytorch**文件夹。 

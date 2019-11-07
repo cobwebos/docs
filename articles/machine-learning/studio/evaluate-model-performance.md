@@ -1,6 +1,6 @@
 ---
 title: 评估模型性能
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: 本文演示了如何在 Azure 机器学习 Studio （经典）中评估模型的性能，并简要说明了可用于此任务的指标。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 7947c1be552e72cea9fb0b9214e82a1ecc481fb1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0a3ceb8c46c883e76c06053e395dca1310a86419
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493079"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621732"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>如何在 Azure 机器学习 Studio （经典）中评估模型性能
 

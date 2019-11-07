@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: cfa8efe0b73811474b1e50a7d2fb1e9abe9045c6
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 88c4b2065576bd5bdcb29a266bd564c60b0e537c
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286512"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622711"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题解答
 
@@ -31,11 +31,11 @@ ms.locfileid: "72286512"
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>是否可以使用资源管理器模板创建 Azure 容器注册表？
 
-是。 下面是可用于创建注册表的[模版](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry)。
+可以。 下面是可用于创建注册表的[模版](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry)。
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>是否会对 ACR 中的映像执行安全漏洞扫描？
 
-是。 请参阅 [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) 和 [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) 的文档。
+可以。 请参阅 [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) 和 [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) 的文档。
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>如何使用 Azure 容器注册表配置 Kubernetes？
 
@@ -127,7 +127,7 @@ az acr repository show-manifests -n myRegistry --repository myRepository --query
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
 ```
 
-注意:在 delete 命令中添加 `-y` 可跳过确认。
+注意：可以在 delete 命令中添加 `-y` 来跳过确认。
 
 有关详细信息，请参阅[删除 Azure 容器注册表中的容器映像](container-registry-delete.md)。
 
@@ -186,7 +186,7 @@ az acr login -n MyRegistry
 
 ### <a name="does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12"></a>Azure 容器注册表是否提供仅限 TLS v1.2 的配置，如何启用 TLS v1.2？
 
-是。 使用任何最近发布的 Docker 客户端（18.03.0 和更高版本）启用 TLS。 
+可以。 使用任何最近发布的 Docker 客户端（18.03.0 和更高版本）启用 TLS。 
 
 ### <a name="does-azure-container-registry-support-content-trust"></a>Azure 容器注册表是否支持内容信任？
 
@@ -195,7 +195,7 @@ az acr login -n MyRegistry
 
 ####  <a name="where-is-the-file-for-the-thumbprint-located"></a>指纹位于何处？
 
-@No__t 下-0：
+`~/.docker/trust/tuf/myregistry.azurecr.io/myrepository/metadata`下：
 
 * 所有角色（委托角色除外）的公钥和证书都存储在 `root.json` 中。
 * 委托角色的公钥和证书存储在其父角色的 JSON 文件中（例如，`targets/releases` 角色 `targets.json`）。
@@ -206,8 +206,8 @@ az acr login -n MyRegistry
 
 ACR 支持提供不同权限级别的[自定义角色](container-registry-roles.md)。 具体而言，`AcrPull` 和 `AcrPush` 角色允许用户在无权管理 Azure 中的注册表资源的情况下提取和/或推送映像。
 
-* Azure 门户：你的注册表 >“访问控制(IAM)”->“添加”（为“角色”选择 `AcrPull` 或 `AcrPush`）。
-* Azure CLI：运行以下命令找到注册表的资源 ID：
+* Azure 门户：注册表 > 访问控制（IAM）-> 添加（为角色选择 "`AcrPull`" 或 "`AcrPush`"。
+* Azure CLI：通过运行以下命令查找注册表的资源 ID：
 
   ```azurecli
   az acr show -n myRegistry
@@ -317,11 +317,11 @@ unauthorized: authentication required
   sudo systemctl restart docker.service
   ```
 
-运行 `man dockerd` 可以找到 `--signature-verification` 的详细信息。
+运行 `--signature-verification` 可以找到 `man dockerd` 的详细信息。
 
 ### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>启用和获取 Docker 守护程序的调试日志  
 
-使用 `debug` 选项启动 `dockerd`。 首先创建 Docker 守护程序配置文件 (`/etc/docker/daemon.json`)（如果不存在），并添加 `debug` 选项：
+使用 `dockerd` 选项启动 `debug`。 首先创建 Docker 守护程序配置文件 (`/etc/docker/daemon.json`)（如果不存在），并添加 `debug` 选项：
 
 ```json
 {   
@@ -382,8 +382,8 @@ sudo service docker restart
 
 ### <a name="authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls"></a>未在 REST API 调用中以正确的格式指定身份验证信息
 
-你可能会遇到 `InvalidAuthenticationInfo` 错误，尤其是结合选项 `-L`（`--location`，跟踪重定向）使用 `curl` 工具时。
-例如，结合 `-L` 选项和基本身份验证使用 `curl` 提取 Blob：
+你可能会遇到 `InvalidAuthenticationInfo` 错误，尤其是结合选项 `curl`（`-L`，跟踪重定向）使用 `--location` 工具时。
+例如，结合 `curl` 选项和基本身份验证使用 `-L` 提取 Blob：
 
 ```bash
 curl -L -H "Authorization: basic $credential" https://$registry.azurecr.io/v2/$repository/blobs/$digest
@@ -400,7 +400,7 @@ Time:2019-01-01T00:00:00.0000000Z</Message></Error>
 
 根本原因是某些 `curl` 实现使用原始请求中的标头跟踪重定向。
 
-若要解决此问题，需要在不使用标头的情况下手动跟踪重定向。 使用 `curl` 的 `-D -` 选项输出响应标头，然后提取 `Location` 标头：
+若要解决此问题，需要在不使用标头的情况下手动跟踪重定向。 使用 `-D -` 的 `curl` 选项输出响应标头，然后提取 `Location` 标头：
 
 ```bash
 redirect_url=$(curl -s -D - -H "Authorization: basic $credential" https://$registry.azurecr.io/v2/$repository/blobs/$digest | grep "^Location: " | cut -d " " -f2 | tr -d '\r')
@@ -448,6 +448,8 @@ curl $redirect_url
 
 - [如何批量取消运行？](#how-do-i-batch-cancel-runs)
 - [如何在 az acr build 命令中包含 .git 文件夹？](#how-do-i-include-the-git-folder-in-az-acr-build-command)
+- [任务是否支持源触发器的 GitLab？](#does-tasks-support-gitlab-for-source-triggers)
+- [哪些 git 存储库管理服务支持任务？](#what-git-repository-management-service-does-tasks-support)
 
 ### <a name="how-do-i-batch-cancel-runs"></a>如何批量取消运行？
 
@@ -462,11 +464,30 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 如果将本地源文件夹传递到 `az acr build` 命令，则默认会从上传的包中排除 `.git` 文件夹。 可以使用以下设置创建 `.dockerignore` 文件。 这会告知命令还原已上传包中 `.git` 下的所有文件。 
 
-```
+```sh
 !.git/**
 ```
 
 此设置也适用于 `az acr run` 命令。
+
+### <a name="does-tasks-support-gitlab-for-source-triggers"></a>任务是否支持源触发器的 GitLab？
+
+对于源触发器，当前不支持 GitLab。
+
+### <a name="what-git-repository-management-service-does-tasks-support"></a>哪些 git 存储库管理服务支持任务？
+
+| Git 服务 | 源上下文 | 手动生成 | 通过 commit 触发器自动生成 |
+|---|---|---|---|
+| GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | 是 | 是 |
+| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | 是 | 是 |
+| GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | 是 | 否 |
+| BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | 是 | 否 |
+
+## <a name="run-error-message-troubleshooting"></a>运行错误消息疑难解答
+
+| 错误消息 | 故障排除指南 |
+|---|---|
+|未为 VM 配置任何访问权限，因此找不到任何订阅|如果在 ACR 任务中使用 `az login --identity`，则可能会发生这种情况。 这是暂时性错误，并且在你的托管标识的角色分配未传播时出现。 请等待几秒钟，然后重试。|
 
 ## <a name="cicd-integration"></a>CI/CD 集成
 

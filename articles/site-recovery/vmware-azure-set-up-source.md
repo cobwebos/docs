@@ -1,5 +1,5 @@
 ---
-title: 设置源环境以便使用 Azure Site Recovery 从 VMware 复制到 Azure | Microsoft Docs
+title: 设置源设置以便将 VMware 灾难恢复到 Azure，并提供 Azure Site Recovery
 description: 本文介绍如何设置本地环境，以便使用 Azure Site Recovery 将 VMware VM 复制到 Azure。
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -8,23 +8,23 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: bf1ff4dfba105b6c90ab949217453e1db82d109d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791772"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622212"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>设置源环境以便从 VMware 复制到 Azure
 
 本文介绍如何设置源本地环境，以便将 VMware VM 复制到 Azure。 本文包括选择复制方案、将本地计算机设置为 Site Recovery 配置服务器以及自动发现本地 Vm 的步骤。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本文假设已完成以下操作：
 
 - 借助 [Azure Site Recovery 部署规划器](site-recovery-deployment-planner.md)规划了你的部署。 这可以帮助你根据每日数据更改率分配足够的带宽以满足你需要的恢复点目标 (RPO)。
-- 在 [Azure 门户](https://portal.azure.com)中[设置资源](tutorial-prepare-azure.md)。
+- 在 [Azure 门户](tutorial-prepare-azure.md)中[设置资源](https://portal.azure.com)。
 - [设置本地 VMware](vmware-azure-tutorial-prepare-on-premises.md)，包括用于自动发现的专用帐户。
 
 ## <a name="choose-your-protection-goals"></a>选择保护目标
@@ -41,7 +41,7 @@ ms.locfileid: "72791772"
 
 1. 了解配置服务器部署的[先决条件](vmware-azure-deploy-configuration-server.md#prerequisites)。
 2. [检查容量数字](vmware-azure-deploy-configuration-server.md#sizing-and-capacity-requirements)以便进行部署。
-3. [下载](vmware-azure-deploy-configuration-server.md#download-the-template)并[导入](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) OVA 模板，设置运行配置服务器的本地 VMware VM。 随模板提供的许可证是评估版许可证，有效期为180天。 在此期间，客户需要使用采购许可证激活 windows。
+3. [下载](vmware-azure-deploy-configuration-server.md#download-the-template)并[导入](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) OVA 模板，设置运行配置服务器的本地 VMware VM。 通过模板提供的许可证是评估许可证，有效期为 180 天。 超过有效期之后，客户需要使用购买的许可证来激活 Windows。
 4. 打开 VMware VM，并将其[注册](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services)到恢复服务保管库中。
 
 ## <a name="azure-site-recovery-folder-exclusions-from-antivirus-program"></a>从防病毒程序中排除 Azure Site Recovery 文件夹

@@ -1,7 +1,7 @@
 ---
-title: '设计器示例 #7：对书籍审阅进行分类'
+title: 设计&#58;人员分类书籍评审
 titleSuffix: Azure Machine Learning
-description: 了解如何构建机器学习模型，将书籍评论分为不同的类别。
+description: 构建机器学习模型，将书籍评论分为不同的类别。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 6f9a2327953177f29ba7a1f5948d24c7df428c09
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 949ddc847a6011d460f2a3685008d12e64868767
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515442"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647128"
 ---
 # <a name="sample-7---text-classification-predict-company-category"></a>示例 7-文本分类：预测公司类别 
 

@@ -4,7 +4,7 @@ description: 本文概述 Azure 操作安全性。
 services: security
 documentationcenter: na
 author: unifycloud
-manager: barbkess
+manager: rkarlin
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 52d74983458a2c6a4de27ec91bc23a8dd9bee387
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: c5ab994ce7b4e3d195ec3a4c83094974c5767e66
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899825"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643770"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 
@@ -30,13 +30,13 @@ ms.locfileid: "69899825"
 
 IT 运营团队负责管理数据中心基础结构、应用程序和数据，包括这些系统的稳定性和安全性。 但是，若要获得日益增多的复杂 IT 环境的安全洞察信息，通常需要组织从多个安全性和管理系统收集数据。
 
-[Microsoft Azure 监视器日志](/azure/operations-management-suite/operations-management-suite-overview)是一种基于云的 IT 管理解决方案, 可帮助你管理和保护本地和云基础结构。 其核心功能由在 Azure 中运行的以下服务提供。 Azure 包含多个服务，这些服务可帮助你管理和保护本地和云基础结构。 每项服务都提供特定的管理功能。 可合并服务，实现不同的管理方案。 
+[Microsoft Azure 监视器日志](/azure/operations-management-suite/operations-management-suite-overview)是一种基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。 其核心功能由在 Azure 中运行的以下服务提供。 Azure 包含多个服务，这些服务可帮助你管理和保护本地和云基础结构。 每项服务都提供特定的管理功能。 可合并服务，实现不同的管理方案。 
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
-[Azure Monitor](/azure/azure-monitor/overview) 可将来自托管源的数据收集到中央数据存储中。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集数据后，可分析、导出数据或发出警报。 
+[Azure Monitor](/azure/azure-monitor/overview) 可将来自托管源的数据收集到中央数据存储中。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集数据后，可分析、导出数据或发出警报。
 
-可整合来自各种源的数据，并将 Azure 服务中的数据合并到现有的本地环境。 Azure Monitor 日志还清楚地将数据收集与对数据执行的操作进行分隔, 以便所有操作都可用于所有类型的数据。
+可整合来自各种源的数据，并将 Azure 服务中的数据合并到现有的本地环境。 Azure Monitor 日志还清楚地将数据收集与对数据执行的操作进行分隔，以便所有操作都可用于所有类型的数据。
 
 ### <a name="automation"></a>自动化
 
@@ -44,13 +44,13 @@ IT 运营团队负责管理数据中心基础结构、应用程序和数据，�
 
 ### <a name="backup"></a>备份
 
-[Azure 备份](/azure/backup/backup-introduction-to-azure-backup)是基于 Azure 的服务，可用于备份（或保护）和还原 Microsoft 云中的数据。 Azure 备份将现有的本地或异地备份解决方案替换为安全可靠、性价比高的云端解决方案。 
+[Azure 备份](/azure/backup/backup-introduction-to-azure-backup)是基于 Azure 的服务，可用于备份（或保护）和还原 Microsoft 云中的数据。 Azure 备份将现有的本地或异地备份解决方案替换为安全可靠、性价比高的云端解决方案。
 
-Azure 备份提供多个组件，可将其下载并部署到适当计算机、服务器或云端。 依据要保护的内容选择部署的组件或代理。 无论是保护本地数据还是云端数据，所有 Azure 备份组件均可用于将数据备份到 Azure 中的 Azure 恢复服务保管库中。 
+Azure 备份提供多个组件，可将其下载并部署到适当计算机、服务器或云端。 依据要保护的内容选择部署的组件或代理。 无论是保护本地数据还是云端数据，所有 Azure 备份组件均可用于将数据备份到 Azure 中的 Azure 恢复服务保管库中。
 
 有关详细信息，请参阅 [Azure 备份组件表](/azure/backup/backup-introduction-to-azure-backup#which-backup-agent-should-i-use)。
 
-### <a name="site-recovery"></a>Site Recovery
+### <a name="site-recovery"></a>站点恢复
 
 [Azure Site Recovery](https://azure.microsoft.com/documentation/services/site-recovery) 通过协调本地虚拟机和物理机到 Azure 或辅助站点的复制来提供业务连续性。 如果主站点不可用，可故障转移到辅助位置，使用户能够继续工作。 系统恢复正常后可故障回复。 使用 Azure 安全中心执行更智能和更有效的威胁检测。
 
@@ -98,11 +98,11 @@ Azure AD 中还包括了整套[标识管理功能](/azure/security/security-iden
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-云应用中的性能问题可能会影响业务。 使用多个互连的组件和频繁发布版本时，性能随时可能会下降。 开发一款应用后，用户通常会发现其中的问题，而你在测试时却找不到这样的问题。 应该立即发现这些问题，并使用工具来诊断和解决问题。
+云应用中的性能问题可能会影响业务。 使用多个互连的组件和频繁发布版本时，性能随时可能会下降。 开发一款应用后，你的用户通常会发现其中的问题，而你在测试时却找不到这样的问题。 应该立即发现这些问题，并使用工具来诊断和解决问题。
 
 [Azure Monitor](/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) 是用于监视 Azure 中运行的服务的基本工具。 它可以提供有关服务吞吐量和周边环境的基础结构级数据。 如果在 Azure 中管理所有应用，并想要确定是否需要增加或减少资源，则可使用 Azure Monitor。
 
-还可以利用监视数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。 
+还可以利用监视数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
 
 Azure Monitor 包括以下组件。
 
@@ -118,7 +118,7 @@ Windows 事件系统日志是一种 VM 诊断日志类别。 Blob、表和队列
 
 诊断日志与[活动日志](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)不同。 活动日志提供针对订阅中的资源执行的操作的深入信息。 诊断日志提供资源本身执行的操作的深入信息。
 
-### <a name="metrics"></a>指标
+### <a name="metrics"></a>度量值
 
 Azure Monitor 可提供遥测数据，以便用户了解 Azure 上工作负荷的性能与运行状况。 最重要的 Azure 遥测数据类型是大多数 Azure 资源发出的[指标](/azure/monitoring-and-diagnostics/monitoring-overview-metrics)（也称为性能计数器）。 Azure 监视器提供多种方式来配置和使用这些指标，以便进行监视与故障排除。
 
@@ -145,22 +145,24 @@ Azure 诊断可在部署的应用程序上启用诊断数据收集功能。 可�
 - [IP 流验证](/azure/network-watcher/network-watcher-ip-flow-verify-overview)：根据流信息的 5 元组数据包参数（目标 IP、源 IP、目标端口、源端口和协议）检查数据包是被允许还是被拒绝。 如果安全组拒绝数据包，则返回拒绝数据包的规则和组。
 - [下一跃点](/azure/network-watcher/network-watcher-next-hop-overview)：确定 Azure 网络结构中路由的数据包的下一跃点，以便诊断任何配置不正确的用户定义的路由。
 - [安全组视图](/azure/network-watcher/network-watcher-security-group-view-overview)：获取在 VM 上应用的有效安全规则。
-- [网络安全组的 NSG 流日志](/azure/network-watcher/network-watcher-nsg-flow-logging-overview)：用于捕获被组中的安全规则允许或拒绝的流量的相关日志。 流由 5 元组信息（源 IP、目标 IP、源端口、目标端口和协议）定义。
-- [虚拟网络网关和连接故障排除](/azure/network-watcher/network-watcher-troubleshoot-manage-rest)：提供对虚拟网关和连接进行故障排除的功能。
-- [网络订阅限制](/azure/network-watcher/network-watcher-monitoring-overview)：用于查看网络资源用量与限制。
+- [网络安全组的 NSG 流日志](/azure/network-watcher/network-watcher-nsg-flow-logging-overview)：可捕获被组中的安全规则允许或拒绝的流量的相关日志。 流由 5 元组信息（源 IP、目标 IP、源端口、目标端口和协议）定义。
+- [虚拟网络网关和连接故障排除](/azure/network-watcher/network-watcher-troubleshoot-manage-rest)：提供排查虚拟网络网关和连接问题的功能。
+- [网络订阅限制](/azure/network-watcher/network-watcher-monitoring-overview)：可查看网络资源用量与限制。
 - [诊断日志](/azure/network-watcher/network-watcher-monitoring-overview)：提供单个窗格来为资源组中的网络资源启用或禁用诊断日志。
 
 有关详细信息，请参阅[配置网络观察程序](/azure/network-watcher/network-watcher-create)。
 
 ## <a name="cloud-service-provider-access-transparency"></a>云服务提供程序访问透明度
 
-[Microsoft Azure 客户密码箱](https://azure.microsoft.com/blog/approve-audit-support-access-requests-to-vms-using-customer-lockbox-for-azure/)是集成到 Azure 门户中的一项服务，它允许你在 Microsoft 支持工程师需要访问你的数据来解决问题时进行显式控制，这种情况极少出现。 在极少数情况下，例如调试远程访问问题时，Microsoft 支持工程师需要提升的权限来解决此问题。 在这种情况下，Microsoft 工程师使用恰时访问服务，该服务提供有限的限定了时间范围的授权，且仅限访问相关服务。  
+[Microsoft Azure 客户密码箱](customer-lockbox-overview.md)是集成到 Azure 门户中的一项服务，它允许你在 Microsoft 支持工程师需要访问你的数据来解决问题时进行显式控制，这种情况极少出现。
+在极少数情况下，例如调试远程访问问题时，Microsoft 支持工程师需要提升的权限来解决此问题。 在这种情况下，Microsoft 工程师使用恰时访问服务，该服务提供有限的限定了时间范围的授权，且仅限访问相关服务。  
 虽然 Microsoft 在进行访问时始终征求客户同意，但客户密码箱使你能够从 Azure 门户查看并批准或拒绝这样的请求。 在你批准请求前，不会向 Microsoft 支持工程师授予访问权限。
 
 ## <a name="standardized-and-compliant-deployments"></a>标准且合规的部署
 
 通过 [Azure 蓝图](/azure/governance/blueprints/overview)，云架构师和中心信息技术组同样可以定义一组可重复的 Azure 资源，这些资源实现并遵守组织的标准、模式和要求。  
-这使得 DevOps 团队可以快速构建并启动新环境，并有信心使用满足组织合规性的基础设施构建它们。 蓝图提供了一种声明性方法，用于协调各个资源模板和其他项目的部署，例如： 
+这使得 DevOps 团队可以快速构建并启动新环境，并有信心使用满足组织合规性的基础设施构建它们。
+蓝图提供了一种声明性方法，用于协调各个资源模板和其他项目的部署，例如：
 
 - 角色分配
 - 策略分配
@@ -189,6 +191,6 @@ Microsoft Azure 等云平台消除了传统的瓶颈，帮助将基础结构商�
 
 若要了解有关安全和审核解决方案的信息，请参阅以下文章：
 
-- [安全性和符合性](https://www.microsoft.com/cloud-platform/security-and-compliance)
+- [安全性和符合性](https://azure.microsoft.com/overview/trusted-cloud/)
 - [Azure 安全中心](/azure/security-center/security-center-intro)
 - [Azure Monitor](/azure/azure-monitor/overview)

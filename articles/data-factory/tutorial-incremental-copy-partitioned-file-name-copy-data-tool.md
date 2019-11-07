@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂仅根据时间分区文件名以增量方式复制新文件 | Microsoft Docs
+title: 使用 Azure 数据工厂以增量方式复制新文件，只基于时间分区的文件名
 description: 创建一个 Azure 数据工厂，然后使用复制数据工具仅根据时间分区文件名以增量方式加载新文件。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 8081d7112d67e3bb4e72c6f6e88d765a159e047f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 273aaaa2ac51f75edfad6da03d6720f58b7c3c47
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933918"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683446"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>使用复制数据工具仅根据时间分区文件名以增量方式复制新文件
 
@@ -36,8 +36,8 @@ ms.locfileid: "68933918"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
-* **Azure 存储帐户**：将 Blob 存储用作源和接收器数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)中的说明。
+* **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* **Azure 存储帐户**：使用 Blob 存储作为_源_和_接收器_数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)中的说明。
 
 ### <a name="create-two-containers-in-blob-storage"></a>在 Blob 存储中创建两个容器
 
@@ -196,7 +196,7 @@ ms.locfileid: "68933918"
     
     ![监视管道运行](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs7.png) 
     
-    也可在 **destination** 容器中使用 Azure 存储资源管理器进行相同的验证 (https://storageexplorer.com/) 以扫描这些文件
+    也可在 https://storageexplorer.com/)destination **容器中使用 Azure 存储资源管理器进行相同的验证 (** 以扫描这些文件
     
     ![监视管道运行](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs8.png)
 

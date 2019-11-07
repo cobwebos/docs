@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery - 使用 Azure PowerShell 设置和测试 Azure 虚拟机的灾难恢复 | Microsoft Docs
+title: 使用 Azure PowerShell 和 Azure Site Recovery 的 Azure Vm 的灾难恢复
 description: 了解如何在 Azure PowerShell 中使用 Azure Site Recovery 为 Azure 虚拟机设置灾难恢复。
 services: site-recovery
 author: sujayt
@@ -8,19 +8,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: fe74080387f76b858f60c5285a98c9b67f051449
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: aa91725daf36113334849dd15dd01b6ce6ed4389
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671890"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621092"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 为 Azure 虚拟机设置灾难恢复
 
 
 本文介绍如何使用 Azure PowerShell 来设置和测试 Azure 虚拟机的灾难恢复。
 
-学习如何：
+你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > - 创建恢复服务保管库。
@@ -42,7 +42,7 @@ ms.locfileid: "67671890"
 ## <a name="prerequisites"></a>先决条件
 
 开始之前：
-- 请确保了解[方案体系结构和组件](azure-to-azure-architecture.md)。
+- 确保了解[方案体系结构和组件](azure-to-azure-architecture.md)。
 - 查看所有组件的[支持要求](azure-to-azure-support-matrix.md)。
 - 设置 Azure PowerShell `Az` 模块。 如需进安装或升级 Azure PowerShell，请遵循此[安装和配置 Azure PowerShell 指南](/powershell/azure/install-az-ps)。
 
@@ -154,7 +154,7 @@ a2aDemoRecoveryVault a2ademorecoveryrg Microsoft.RecoveryServices Vaults
 Remove-Item -Path $Vaultsettingsfile.FilePath
 ```
 
-为 Azure 到 Azure 迁移，可以为新创建的保管库设置保管库上下文： 
+对于 Azure 到 Azure 迁移，可以将保管库上下文设置为新创建的保管库： 
 
 ```azurepowershell
 
@@ -609,11 +609,11 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 -ProtectionContainerMapping $RecoveryProtContainer -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.Id
 ```
 
-重新保护完成后，可以启动反方向 （到美国东部的美国西部） 和故障回复到源区域中的故障转移。
+重新保护完成后，可以按相反方向（美国西部到美国东部）启动故障转移，并故障回复到源区域。
 
 ## <a name="disable-replication"></a>禁用复制
 
-可以使用删除 ASRReplicationProtectedItem cmdlet 来禁用复制。
+可以使用 Remove-ASRReplicationProtectedItem cmdlet 禁用复制。
 
 ```azurepowershell
 Remove-ASRReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem

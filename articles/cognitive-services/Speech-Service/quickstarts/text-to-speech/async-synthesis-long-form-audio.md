@@ -8,26 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/26/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 52e9fd986973c15d30790b981a5c2ccd1e6974d6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 2c1e6ef84a472ccec5116b12e18ad80c92b68960
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507689"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681881"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>快速入门： Python 中长格式音频的异步合成（预览版）
 
 在本快速入门中，你将使用长音频 API 将文本异步转换为语音，并从服务提供的 URI 检索音频输出。 此 REST API 非常适合于需要将超过10000个字符或50段的文本文件转换为合成语音的内容提供商。 有关详细信息，请参阅[长音频 API](../../long-audio-api.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本快速入门需要：
 
 * Python 2.7. x 或1.x。
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、 [Visual Studio Code](https://code.visualstudio.com/download)或你喜欢的文本编辑器。
-* 一个 Azure 订阅和一个语音服务订阅密钥。 [创建帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。
+* 一个 Azure 订阅和一个语音服务订阅密钥。 [创建一个 Azure 帐户](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account)，并[创建一个语音资源](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)以获取密钥。 创建语音资源时，请确保将定价层设置为**S0**，并将位置设置为[受支持的区域](../../regions.md#standard-and-neural-voices)。
 
 ## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块
 
@@ -47,7 +47,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 ```
 
 > [!NOTE]
-> 如果尚未使用这些模块，则需在运行程序之前安装它们。 若要安装这些包，请运行 `pip install requests`。
+> 如果尚未使用这些模块，则需在运行程序之前安装它们。 若要安装这些包，请运行 `pip install requests urllib3`。
 
 这些模块用于分析参数、构造 HTTP 请求，以及调用文本到语音转换长音频 REST API。
 

@@ -1,6 +1,6 @@
 ---
 title: 工作区疑难解答
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: 本指南提供了一些常见问题的解决方案，用于在设置经典版 Azure 机器学习 Studio 工作区时遇到问题。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 7d4aebf71ef16287a415e4c39eed1328c9359f6c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2f305f74a4bbf15fdda9a8801e73bda70fab6deb
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492587"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622102"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-classic-workspace"></a>故障排除指南：创建并连接到 Azure 机器学习 Studio （经典）工作区
 本指南提供了一些在设置 Azure 机器学习 Studio （经典）工作区时遇到的一些常见问题的解决方案。

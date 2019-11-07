@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂映射数据流中的筛选转换 |Microsoft Docs
+title: Azure 数据工厂映射数据流中的筛选转换
 description: 使用 Azure 数据工厂映射数据流中的筛选器转换筛选出行
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: a4dd53f37a8a963d05a3ad9c49769528e945f6a1
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 77587d007d9bfcdc1461201f676c79880bd89d6b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527373"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676178"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>映射数据流中的筛选转换
 
@@ -37,7 +37,7 @@ ms.locfileid: "72527373"
 
 ### <a name="example"></a>示例
 
-下面的示例是一个名为 `FilterBefore1960` 的有条件拆分转换，它采用传入流 `CleanData`。 筛选条件是 `year <= 1960` 的表达式。
+下面的示例是一个名为 `FilterBefore1960` 的有条件拆分转换，它采用传入流 `CleanData`。 筛选条件是 `year <= 1960`的表达式。
 
 在数据工厂 UX 中，此转换如下图所示：
 

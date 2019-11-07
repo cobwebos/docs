@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 938511069500c551eb526b6c7238546b85d59dce
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 5ae043c356559b2e675f05af3eb7eb61973eb170
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818927"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621933"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 资源
 
@@ -235,7 +235,7 @@ Get-AzApplicationInsights -ResourceGroupName Fabrikam -Name FabrikamProd | Forma
 
 ## <a name="set-the-data-retention"></a>设置数据保持期 
 
-若要获取 Application Insights 资源的当前数据保留，可以使用 OSS 工具[ARMClient](https://github.com/projectkudu/ARMClient)。  （了解有关 ARMClient 的详细信息，请参阅[David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)和[Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)。） 下面是一个示例，使用 `ARMClient` 获取当前的保留期：
+若要获取 Application Insights 资源的当前数据保留，可以使用 OSS 工具[ARMClient](https://github.com/projectkudu/ARMClient)。  （了解有关 ARMClient 的详细信息，请参阅[David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)和[Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)。） 下面是一个示例，使用 `ARMClient`获取当前的保留期：
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview
@@ -250,10 +250,10 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 若要使用上述模板将数据保留设置为365天，请运行：
 
 ```PS
-        New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
-               -TemplateFile .\template1.json `
-               -retentionInDays 365 `
-               -appName myApp
+New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
+       -TemplateFile .\template1.json `
+       -retentionInDays 365 `
+       -appName myApp
 ```
 
 以下脚本还可用于更改保留期。 复制此脚本，将其另存为 `Set-ApplicationInsightsRetention.ps1`。
@@ -356,7 +356,7 @@ Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <
 
 |价格代码|计划|
 |---|---|
-|第|每 GB （以前称为基本计划）|
+|1|每 GB （以前称为基本计划）|
 |2|每节点（以前称为企业计划）|
 
 ## <a name="add-a-metric-alert"></a>添加指标警报

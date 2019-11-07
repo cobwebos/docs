@@ -1,7 +1,7 @@
 ---
 title: 分析和监视数据集上的数据偏移（预览）
 titleSuffix: Azure Machine Learning
-description: 创建 Azure 机器学习数据集监视器（预览）、监视数据集中的数据偏移和安装警报。
+description: 创建 Azure 机器学习数据集监视器（预览）、监视数据集中的数据偏移以及设置警报。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 88da346b3367ffd20d1a28d1d8cc45364e4f862f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 6fa7ee6663aae24451af195de4a8225c7a6b351e
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515286"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647152"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>检测数据集上的数据偏移（预览）
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,10 @@ ms.locfileid: "73515286"
 
 可以通过与 Azure 机器学习服务工作区关联的[Azure 应用程序 insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)资源来获取指标和见解。
 
-## <a name="prerequisites"></a>必备组件
+> [!Important]
+> 请注意，在所有版本中都提供监视与 SDK 的数据偏移，而通过 web 上的 studio 监视数据偏移仅适用于企业版。
+
+## <a name="prerequisites"></a>先决条件
 
 若要创建和使用数据集监视器，需要：
 * Azure 订阅。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
@@ -54,7 +57,7 @@ ms.locfileid: "73515286"
 
 ### <a name="dataset-monitors"></a>数据集监视器 
 
-您可以创建数据集监视器来检测和警报数据集中的新数据的数据偏移，分析历史数据的偏差，并分析一段时间内的新数据。 数据偏移算法提供数据更改的整体度量，并指明哪些功能负责进一步调查。 数据集监视器通过分析 timeseries 数据集中的新数据来生成多个其他指标。 可以通过[Azure 应用程序 Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)在监视器生成的所有指标上设置自定义警报。 数据集监视器可用于快速捕获数据问题，并通过识别可能的原因来减少调试问题的时间。  
+您可以创建数据集监视器来检测和警报数据集中的新数据的数据偏移，分析历史数据的偏差，并分析一段时间内的新数据。 数据偏移算法提供数据更改的整体度量，并指明哪些功能负责进一步调查。 数据集监视器通过分析 `timeseries` 数据集中的新数据来产生多个其他指标。 可以通过[Azure 应用程序 Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)在监视器生成的所有指标上设置自定义警报。 数据集监视器可用于快速捕获数据问题，并通过识别可能的原因来减少调试问题的时间。  
 
 从概念上讲，在 Azure 机器学习中设置数据集监视器有三个主要方案。
 
@@ -64,11 +67,11 @@ ms.locfileid: "73515286"
 监视时序数据集的时间与以前的时间段之间的偏差。 | 此方案更常见，可用于监视正在生成的上游或下游的数据集。  目标数据集必须具有时间戳列，而基线数据集可以是具有与目标数据集共有的功能的任何表格数据集。
 对过去的数据执行分析。 | 这可用于在数据集监视器的设置中了解历史数据并通知决策。
 
-## <a name="how-dataset-monitors-work-in-azure-machine-learning"></a>数据集监视器在 Azure 机器学习中的工作方式
+## <a name="how-dataset-can-monitor-data"></a>数据集如何监视数据
 
 使用 Azure 机器学习，数据偏移通过数据集进行监视。 若要监视数据偏移，请指定基线数据集，这通常是模型的定型数据集。 目标数据集（通常为模型输入数据）会随着时间的推移与基准数据集进行比较。 这意味着目标数据集必须指定时间戳列。
 
-### <a name="setting-the-timeseries-trait-in-the-target-dataset"></a>在目标数据集中设置 `timeseries` 特征
+### <a name="set-the-timeseries-trait-in-the-target-dataset"></a>设置目标数据集中的 `timeseries` 特征
 
 目标数据集需要在其上设置 `timeseries` 特征，方法是从数据中的列或从文件的路径模式派生的虚拟列指定时间戳列。 可以通过 Python SDK 或 Azure 机器学习 studio 完成此操作。 必须指定一个表示 "精细" 时间戳的列，才能将 `timeseries` 特征添加到数据集。 如果将数据分区到带有时间信息的文件夹结构中（如 "{yyyy/MM/dd}"），则可以通过 "路径模式" 设置创建虚拟列，并将其设置为 "粗粒度" 时间戳以提高时序功能的重要性。 
 
@@ -81,21 +84,27 @@ from azureml.core import Workspace, Dataset, Datastore
 
 # get workspace object
 ws = Workspace.from_config()
+
 # get datastore object 
 dstore = Datastore.get(ws, 'your datastore name')
+
 # specify datastore paths
 dstore_paths = [(dstore, 'weather/*/*/*/*/data.parquet')]
+
 # specify partition format
 partition_format = 'weather/{state}/{date:yyyy/MM/dd}/data.parquet'
+
 # create the Tabular dataset with 'state' and 'date' as virtual columns 
 dset = Dataset.Tabular.from_parquet_files(path=dstore_paths, partition_format=partition_format)
+
 # assign the timestamp attribute to a real or virtual column in the dataset
 dset = dset.with_timestamp_columns('date')
+
 # register the dataset as the target dataset
 dset = dset.register(ws, 'target')
 ```
 
-有关使用数据集的 `timeseries` 特征的完整示例，请参阅[示例笔记本](http://aka.ms/azureml-tsd-notebook)或[数据集 SDK 文档](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-)。
+有关使用数据集的 `timeseries` 特征的完整示例，请参阅[示例笔记本](https://aka.ms/azureml-tsd-notebook)或[数据集 SDK 文档](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-)。
 
 #### <a name="azure-machine-learning-studio"></a>Azure 机器学习工作室
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku-inline.md)]
@@ -122,9 +131,9 @@ dset = dset.register(ws, 'target')
 
 | 设置 | 说明 | 提示 | 可变 | 
 | ------- | ----------- | ---- | ------- | 
-| 名称 | 数据集监视器的名称。 | | 否 |
+| Name | 数据集监视器的名称。 | | 否 |
 | 基线数据集 | 表格数据集，将用作一段时间内的目标数据集比较基线。 | 基线数据集必须具有与目标数据集共有的功能。 通常，应将基线设置为模型的定型数据集或目标数据集的切片。 | 否 |
-| 目标数据集 | 指定了时间戳列的表格数据集，将分析数据偏移 | 目标数据集必须具有与基线数据集共有的功能，并且应为追加新数据的 timeseries 数据集。 可以分析目标数据集中的历史数据，也可以监视新数据。 | 否 | 
+| 目标数据集 | 指定了时间戳列的表格数据集，将分析数据偏移 | 目标数据集必须与基线数据集具有相同的功能，并且应为追加新数据的 `timeseries` 数据集。 可以分析目标数据集中的历史数据，也可以监视新数据。 | 否 | 
 | 频率 | 这是将用于计划管道作业和分析历史数据（如果运行回填）的频率。 选项包括每日、每周或每月。 | 调整此设置以在基线中包含可比较的数据大小。 | 否 | 
 | 功能 | 将在一段时间内针对数据偏差进行分析的特征列表 | 设置为模型的输出功能以测量概念偏移。 不要包含在一段时间内自然变化（月、年、索引等）的功能。 调整功能列表后，可以回填和现有数据偏移监视器。 | 是 | 
 | 计算目标 | Azure 机器学习计算目标运行数据集监视作业。 | | 是 | 
@@ -170,7 +179,7 @@ dset = dset.register(ws, 'target')
 
 ### <a name="from-python-sdk"></a>从 Python SDK
 
-有关完整详细信息，请参阅[PYTHON SDK 参考文档有关数据偏移](http://aka.ms/datadriftapi)。 
+有关完整详细信息，请参阅[PYTHON SDK 参考文档有关数据偏移](https://aka.ms/datadriftapi)。 
 
 下面的示例使用 Python SDK 创建数据集监视器
 
@@ -181,29 +190,39 @@ from datetime import datetime
 
 # get the workspace object
 ws = Workspace.from_config()
+
 # get the target dataset
 dset = Dataset.get_by_name(ws, 'target')
+
 # set the baseline dataset
 baseline = target.time_before(datetime(2019, 2, 1))
+
 # set up feature list
 features = ['latitude', 'longitude', 'elevation', 'windAngle', 'windSpeed', 'temperature', 'snowDepth', 'stationName', 'countryOrRegion']
-# setup data drift detector
+
+# set up data drift detector
 monitor = DataDriftDetector.create_from_datasets(ws, 'drift-monitor', baseline, target, 
                                                       compute_target='cpu-cluster', 
                                                       frequency='Week', 
                                                       feature_list=None, 
                                                       drift_threshold=.6, 
                                                       latency=24)
+
 # get data drift detector by name
 monitor = DataDriftDetector.get_by_name(ws, 'drift-monitor')
+
 # update data drift detector
 monitor = monitor.update(feature_list=features)
+
 # run a backfill for January through May
 backfill1 = monitor.backfill(datetime(2019, 1, 1), datetime(2019, 5, 1))
+
 # run a backfill for May through today
 backfill1 = monitor.backfill(datetime(2019, 5, 1), datetime.today())
+
 # disable the pipeline schedule for the data drift detector
 monitor = monitor.disable_schedule()
+
 # enable the pipeline schedule for the data drift detector
 monitor = monitor.enable_schedule()
 ```
@@ -264,6 +283,30 @@ monitor = monitor.enable_schedule()
 
 ![功能详细信息分类](media/how-to-monitor-datasets/feature-details2.png)
 
+## <a name="metrics-alerts-and-events"></a>指标、警报和事件
+
+可以在与机器学习工作区关联的[Azure 应用程序 Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)资源中查询度量值。 这将授予对 Application Insights 的所有功能的访问权限，包括为自定义警报规则和操作组设置以触发操作，如电子邮件/短信/推送/语音或 Azure 功能。 有关详细信息，请参阅完整的 Application Insights 文档。 
+
+若要开始，请导航到 Azure 门户并选择工作区的 "**概述**" 页。  关联的 Application Insights 资源位于最右侧：
+
+[![Azure 门户概述](media/how-to-monitor-datasets/ap-overview.png)](media/how-to-monitor-datasets/ap-overview-expanded.png)
+
+在左侧窗格中选择 "监视" 下的 "日志（分析）"：
+
+![Application insights 概述](media/how-to-monitor-datasets/ai-overview.png)
+
+数据集监视器度量值存储为 `customMetrics`。 您可以在设置数据集监视器之后编写并运行一个简单的查询，以查看它们：
+
+[![Log analytics 查询](media/how-to-monitor-datasets/simple-query.png)](media/how-to-monitor-datasets/simple-query-expanded.png)
+
+确定用于设置预警规则的指标后，创建新的警报规则：
+
+![新建警报规则](media/how-to-monitor-datasets/alert-rule.png)
+
+您可以使用现有的操作组，或者创建一个新的操作组来定义满足设置条件时要执行的操作：
+
+![新建操作组](media/how-to-monitor-datasets/action-group.png)
+
 ## <a name="troubleshooting"></a>故障排除
 
 限制和已知问题：
@@ -271,6 +314,7 @@ monitor = monitor.enable_schedule()
 * 回填作业的时间范围限制为监视器频率设置的31个间隔。 
 * 200功能的限制，除非未指定功能列表（使用了所有功能）。
 * 计算大小必须足够大才能处理数据。 
+* 确保你的数据集在给定的监视器运行的开始和结束日期内具有数据。
 
 数据集中的列或功能根据下表中的条件分类为分类或数值。 如果该功能不满足这些条件，则为 string 类型的列 > 100 个唯一值，则会从数据偏移算法中删除该功能，但仍会对其进行分析。 
 
@@ -283,3 +327,4 @@ monitor = monitor.enable_schedule()
 
 * 转到[Azure 机器学习 studio](https://ml.azure.com)或[Python 笔记本](https://aka.ms/datadrift-notebook)，设置数据集监视器。
 * 请参阅如何在[部署到 Azure Kubernetes 服务的模型](how-to-monitor-data-drift.md)上设置数据偏移。
+* 设置带有[事件网格](how-to-use-event-grid.md)的数据集偏移监视器。 

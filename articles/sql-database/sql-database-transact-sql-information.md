@@ -1,5 +1,5 @@
 ---
-title: 解析 T-SQL 差异 - 迁移 - Azure SQL 数据库 | Microsoft 文档
+title: 解析 T-sql 差异-迁移-Azure SQL 数据库
 description: 在 Azure SQL 数据库中不完全支持的 Transact-SQL 语句
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: fbc4628ff3d3d7d90f7ec2c47c87f7afa3e9cd43
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: edb978e27621cbc0df66ab32ba7472629c3f8bd1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028835"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686929"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异
 
@@ -45,13 +45,13 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 除了与  [Azure SQL 数据库功能比较](sql-database-features.md)中所述的不支持功能相关的 Transact-SQL 语句外，也不支持以下语句和语句组。 因此，如果要迁移的数据库使用以下任一功能，请重新设计 T-SQL 以消除这些 T-SQL 功能和语句。
 
 - 系统对象的排序规则
-- 相关连接：终结点语句。 SQL 数据库不支持 Windows 身份验证，但支持类似的 Azure Active Directory 身份验证。 某些身份验证类型要求使用最新版本的 SSMS。 有关详细信息，请参阅[使用 Azure Active Directory 身份验证连接到 SQL 数据库或 SQL 数据仓库](sql-database-aad-authentication.md)。
+- 相关的连接：终结点语句。 SQL 数据库不支持 Windows 身份验证，但支持类似的 Azure Active Directory 身份验证。 某些身份验证类型要求使用最新版本的 SSMS。 有关详细信息，请参阅[使用 Azure Active Directory 身份验证连接到 SQL 数据库或 SQL 数据仓库](sql-database-aad-authentication.md)。
 - 使用三个或四个部分名称的跨数据库查询。 （使用[弹性数据库查询](sql-database-elastic-query-overview.md)支持只读跨数据库查询。）
 - 跨数据库所有权链接, `TRUSTWORTHY` 设置
 - `EXECUTE AS LOGIN` 改用“EXECUTE AS USER”。
 - 支持加密，但可扩展密钥管理除外
 - 事件：事件、事件通知、查询通知
-- 文件位置：与数据库文件定位、大小以及 Microsoft Azure 自动管理的数据库文件相关的语法。
+- 文件定位：与数据库文件定位、大小以及 Microsoft Azure 自动管理的数据库文件相关的语法。
 - 高可用性：与通过 Microsoft Azure 帐户管理的高可用性相关的语法。 这包括备份、还原、Always On、数据库镜像、日志传送、恢复模式的语法。
 - 日志读取器：依赖于在 SQL 数据库上不可用的日志读取器的语法：推送复制、更改数据捕获。 SQL 数据库可以是推送复制项目的订阅服务器。
 - 函数：`fn_get_sql`、`fn_virtualfilestats`、`fn_virtualservernodes`
@@ -61,7 +61,7 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 - .NET Framework：CLR 与 SQL Server 集成
 - 语义搜索
 - 服务器凭据：改用[数据库范围的凭据](https://msdn.microsoft.com/library/mt270260.aspx)。
-- 服务器级别项：服务器角色，`sys.login_token`。 `GRANT`、`REVOKE` 和 `DENY` 的服务器级权限不可用，某些权限已替换为数据库级权限。 一些有用的服务器级 DMV 具有等效的数据库级 DMV。
+- 服务器级项目：服务器角色、`sys.login_token`。 `GRANT`、`REVOKE` 和 `DENY` 的服务器级权限不可用，某些权限已替换为数据库级权限。 一些有用的服务器级 DMV 具有等效的数据库级 DMV。
 - `SET REMOTE_PROC_TRANSACTIONS`
 - `SHUTDOWN`
 - `sp_addmessage`
@@ -82,7 +82,7 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 
 ### <a name="about-the-applies-to-tags"></a>有关“适用于”标记
 
-Transact-SQL 参考包含从 SQL Server 2008 到最新版本的相关文章。 文章标题下面有一个图标栏，其中列出了四个 SQL Server 平台，并指明了适用性。 例如，SQL Server 2012 中引入了可用性组。  [CREATE AVAILABILITY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) article 指示该语句应用于**SQL Server （从2012开始）** 。 该语句不适用于 SQL Server 2008、SQL Server 2008 R2、Azure SQL 数据库、Azure SQL 数据仓库或并行数据仓库。
+Transact-SQL 参考包含从 SQL Server 2008 到最新版本的相关文章。 文章标题下面有一个图标栏，其中列出了四个 SQL Server 平台，并指明了适用性。 例如，SQL Server 2012 中引入了可用性组。 " [创建可用性组](https://msdn.microsoft.com/library/ff878399.aspx) " 一文指示该语句适用于**SQL Server （从2012开始）** 。 该语句不适用于 SQL Server 2008、SQL Server 2008 R2、Azure SQL 数据库、Azure SQL 数据仓库或并行数据仓库。
 
 在某些情况下，产品中可能使用了某篇文章的常规主旨，但产品之间存在细微差异。 在适当的情况下，我们会在文章的中间位置指出该差异。 在某些情况下，产品中可能使用了某篇文章的常规主旨，但产品之间存在细微差异。 在适当的情况下，我们会在文章的中间位置指出该差异。 例如，CREATE TRIGGER 文章在 SQL 数据库中可用。 但服务器级触发器的 **ALL SERVER** 选项指示不能在 SQL 数据库中使用服务器级触发器。 请改用数据库级触发器。
 

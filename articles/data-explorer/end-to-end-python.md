@@ -1,33 +1,35 @@
 ---
-title: 使用 Python 将端到端 Blob 引入到 Azure 数据资源管理器
-description: 本文介绍如何使用 Python 的端到端示例在 Azure 数据资源管理器中使用摄取 blob。
+title: 通过 Python 将端到端 blob 引入 Azure 数据资源管理器
+description: 本文介绍如何通过使用 Python 的端到端示例，将 blob 引入 Azure 数据资源管理器。
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 2cb3e73abf8a97e481a4260ee6abe79115521d18
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 1c78336880d685090ae21c725becc90d689c1817
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809614"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581813"
 ---
-# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-using-python"></a>使用 Python 将端到端 Blob 引入到 Azure 数据资源管理器
+# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-python"></a>通过 Python 将端到端 blob 引入 Azure 数据资源管理器
 
 > [!div class="op_single_selector"]
 > * [C#](end-to-end-csharp.md)
 > * [Python](end-to-end-python.md)
 >
 
-Azure 数据资源管理器是一项快速且可缩放的数据探索服务，适用于日志和遥测数据。 本文提供了有关如何将数据从 Blob 存储引入 Azure 数据资源管理器的端到端示例。 你将了解如何以编程方式创建资源组、存储帐户和容器、事件中心以及 Azure 数据资源管理器群集和数据库。 你还将了解如何以编程方式配置 Azure 数据资源管理器从新的存储帐户引入数据。
+Azure 数据资源管理器是一项快速且可缩放的数据探索服务，适用于日志和遥测数据。 本文提供了有关如何将数据从 Azure Blob 存储引入 Azure 数据资源管理器的端到端示例。 
 
-## <a name="prerequisites"></a>必备组件
+你将了解如何以编程方式创建资源组、存储帐户和容器、事件中心以及 Azure 数据资源管理器群集和数据库。 你还将了解如何以编程方式配置 Azure 数据资源管理器从新的存储帐户引入数据。
+
+## <a name="prerequisites"></a>先决条件
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-## <a name="install-python-package"></a>安装 Python 包
+## <a name="install-the-python-package"></a>安装 Python 包
 
 要为 Azure 数据资源管理器 (Kusto) 安装 Python 包，请打开其路径中包含 Python 的命令提示符。 运行以下命令：
 
@@ -44,7 +46,9 @@ pip install azure-storage-blob
 
 ## <a name="code-example"></a>代码示例 
 
-下面的代码示例提供了分步过程，该过程将数据引入到 Azure 数据资源管理器中。 首先创建一个资源组，以及 Azure 资源（例如存储帐户和容器、事件中心以及 Azure 数据资源管理器群集和数据库）。 然后在 Azure 数据资源管理器数据库中创建事件网格订阅和表和列映射。 最后，创建用于配置 Azure 数据资源管理器的数据连接，以便从新的存储帐户引入数据。
+下面的代码示例提供了一个分步过程，该过程将导致数据引入到 Azure 数据资源管理器中。 
+
+首先创建一个资源组。 还会创建 Azure 资源，例如存储帐户和容器、事件中心以及 Azure 数据资源管理器群集和数据库。 然后在 Azure 数据资源管理器数据库中创建 Azure 事件网格订阅以及表和列映射。 最后，创建用于配置 Azure 数据资源管理器的数据连接，以便从新的存储帐户引入数据。
 
 ```python
 from azure.common.credentials import ServicePrincipalCredentials
@@ -61,12 +65,12 @@ from azure.mgmt.kusto.models import EventGridDataConnection
 tenant_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
 #Application ID
 client_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
-#Client Secret
+#Client secret
 client_secret = "xxxxxxxxxxxxxx"
 subscription_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
 location = "West Europe"
 location_small_case = "westeurope"
-#path to the Azure Resource Manager template json from the previous section
+#Path to the Azure Resource Manager template JSON from the previous section
 azure_resource_template_path = "xxxxxxxxx/template.json";
 
 deployment_name = 'e2eexample'
@@ -118,7 +122,7 @@ deployment_properties = {
     'parameters': parameters
 }
 
-#Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller; see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = resource_client.deployments.create_or_update(
     resource_group_name,
     deployment_name,
@@ -161,7 +165,7 @@ kusto_client.execute_mgmt(database_name, create_column_mapping_command)
 print('Step 5: Add an Event Grid data connection. Azure Data Explorer will automatically ingest the data when new blobs are created.')
 kusto_management_client = KustoManagementClient(credentials, subscription_id)
 data_connections = kusto_management_client.data_connections
-#Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller; see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = data_connections.create_or_update(resource_group_name=resource_group_name, cluster_name=kusto_cluster_name, database_name=kusto_database_name, data_connection_name=kusto_data_connection_name,
                                            parameters=EventGridDataConnection(storage_account_resource_id=storage_resource_id,
                                                                               event_hub_resource_id=event_hub_resource_id, consumer_group="$Default", location=location, table_name=kusto_table_name, mapping_rule_name=kusto_column_mapping_name, data_format="csv"))
@@ -169,14 +173,14 @@ poller.wait()
 ```
 |**设置** | **字段说明**|
 |---|---|---|
-| tenant_id | 租户 ID。 也称为目录 ID。|
+| tenant_id | 租户 ID。 它也称为目录 ID。|
 | subscription_id | 用于创建资源的订阅 ID。|
 | client_id | 可以访问租户中资源的应用程序的客户端 ID。|
 | client_secret | 可以访问租户中资源的应用程序的客户端机密。 |
 
 ## <a name="test-the-code-example"></a>测试代码示例
 
-1. 将文件上传到存储帐户
+1. 将文件上传到存储帐户。
 
     ```python
     account_key = "xxxxxxxxxxxxxx"
@@ -190,7 +194,7 @@ poller.wait()
     |---|---|---|
     | account_key | 以编程方式创建的存储帐户的访问密钥。|
 
-2. 在 Azure 中运行测试查询数据资源管理器
+2. 在 Azure 数据资源管理器中运行测试查询。
 
     ```python
     kusto_uri = "https://{}.{}.kusto.windows.net".format(kusto_cluster_name, location_small_case)
@@ -206,14 +210,14 @@ poller.wait()
 若要删除资源组并清理资源，请使用以下命令：
 
 ```python
-#Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller; see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = resource_client.resource_groups.delete(resource_group_name=resource_group_name)
 poller.wait()
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-*  [创建 Azure 数据资源管理器群集和数据库](create-cluster-database-python.md)，了解创建群集和数据库的其他方法。
-* 请参阅 [Azure 数据资源管理器数据引入](ingest-data-overview.md)详细了解引入方法。
-* [快速入门：在 Azure 数据资源管理器中查询数据](web-query-data.md)Web UI。
+*  若要了解创建群集和数据库的其他方法，请参阅[创建 Azure 数据资源管理器群集和数据库](create-cluster-database-python.md)。
+* 若要详细了解引入方法，请参阅[Azure 数据资源管理器数据引入](ingest-data-overview.md)。
+* 若要了解有关 web 应用程序的信息，请参阅[快速入门：在 Azure 数据资源管理器 WEB UI 中查询数据](web-query-data.md)。
 * 使用 Kusto 查询语言[编写查询](write-queries.md)。

@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂映射数据流中的联接转换 |Microsoft Docs
+title: Azure 数据工厂映射数据流中的联接转换
 description: 使用 Azure 数据工厂映射数据流中的联接转换合并两个数据源中的数据
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 78de9f2bedfc36add567053e1de47e8893bfaf3c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4680804017a9b08248bb41ff999c6ba6371e99c8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597051"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675916"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>映射数据流中的联接转换
 
@@ -32,7 +32,7 @@ ms.locfileid: "72597051"
 
 ### <a name="right-outer"></a>右外部
 
-左外部联接返回右侧流中的所有行，并匹配左侧流中的记录。 如果右侧流中的某一行没有匹配项，则正确流中的输出列将设置为 NULL。 输出将是内部联接返回的行以及右侧流中不匹配的行。
+右外部联接返回右侧流中的所有行，并匹配左侧流中的记录。 如果右侧流中的某一行没有匹配项，则将左侧流中的输出列设置为 NULL。 输出将是内部联接返回的行以及右侧流中不匹配的行。
 
 ### <a name="full-outer"></a>完全外部
 
@@ -83,7 +83,7 @@ ms.locfileid: "72597051"
 
 ### <a name="inner-join-example"></a>内部联接示例
 
-下面的示例是一个名为 `JoinMatchedData` 的联接转换，它采用 `TripData` 和右流 `TripFare` 的左流。  联接条件是表达式 `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` 如果每个流中的 `hack_license`、`medallion`、`vendor_id` 和 `pickup_datetime` 列匹配，则返回 true。 @No__t_0 是 `'inner'` 的。 我们只启用左侧流中的广播，因此 `broadcast` 的值 `'left'`。
+下面的示例是一个名为 `JoinMatchedData` 的联接转换，它采用 `TripData` 和右流 `TripFare`的左流。  联接条件是表达式 `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` 如果每个流中的 `hack_license`、`medallion`、`vendor_id`和 `pickup_datetime` 列匹配，则返回 true。 `joinType` 是 `'inner'`的。 我们只启用左侧流中的广播，因此 `broadcast` 的值 `'left'`。
 
 在数据工厂 UX 中，此转换如下图所示：
 
@@ -105,7 +105,7 @@ TripData, TripFare
 
 ### <a name="cross-join-example"></a>交叉联接示例
 
-下面的示例是一个名为 `CartesianProduct` 的联接转换，它采用 `TripData` 和右流 `TripFare` 的左流。 此转换采用两个流，并返回其行的笛卡尔积。 联接条件是 `true()` 的，因为它会输出完整的笛卡尔积。 @No__t_1 中的 `joinType`。 我们只启用左侧流中的广播，因此 `broadcast` 的值 `'left'`。
+下面的示例是一个名为 `CartesianProduct` 的联接转换，它采用 `TripData` 和右流 `TripFare`的左流。 此转换采用两个流，并返回其行的笛卡尔积。 联接条件是 `true()` 的，因为它会输出完整的笛卡尔积。 `cross`中的 `joinType`。 我们只启用左侧流中的广播，因此 `broadcast` 的值 `'left'`。
 
 在数据工厂 UX 中，此转换如下图所示：
 

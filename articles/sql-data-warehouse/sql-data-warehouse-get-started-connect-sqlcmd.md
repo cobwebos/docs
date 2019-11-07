@@ -1,5 +1,5 @@
 ---
-title: 连接到 Azure SQL 数据仓库 sqlcmd |Microsoft 文档
+title: 连接 sqlcmd
 description: 使用 sqlcmd 命令行实用程序连接并查询 Azure SQL 数据仓库。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f3b93660fb9f8f3b0bfdddc37105b9e998ed9eee
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e4b432e0be0cdded5089965b9d272aa82e31bd36
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479504"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685737"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>使用 sqlcmd 连接到 SQL 数据仓库
 > [!div class="op_single_selector"]
@@ -29,7 +30,7 @@ ms.locfileid: "68479504"
 
 使用[sqlcmd][sqlcmd]命令行实用程序连接到 Azure SQL 数据仓库并进行查询。  
 
-## <a name="1-connect"></a>1.连接
+## <a name="1-connect"></a>1. 连接
 若要开始使用 [sqlcmd][sqlcmd]，请打开命令提示符并输入 **sqlcmd** ，后跟 SQL 数据仓库数据库的连接字符串。 连接字符串需要以下参数：
 
 * **服务器 (-S)：** 采用 `<`Server Name`>`.database.windows.net 格式的服务器
@@ -38,8 +39,8 @@ ms.locfileid: "68479504"
 
 若要使用 SQL Server 身份验证，需要添加用户名/密码参数：
 
-* **用户 (-U)：** 采用 `<`User`>` 格式的服务器用户
-* **密码 (-P)：** 与用户关联的密码。
+* **用户 (-U)：** 采用`<`用户`>`格式的服务器用户
+* **密码 (-P)：** 与用户关联的密码
 
 例如，连接字符串可能如下所示：
 
@@ -47,7 +48,7 @@ ms.locfileid: "68479504"
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
 ```
 
-若要使用 Azure Active Directory 集成的身份验证，需要添加 Azure Active Directory 参数：
+若要使用 Azure Active Directory 集成身份验证，需添加 Azure Active Directory 参数：
 
 * **Azure Active Directory 身份验证 (-G)：** 使用 Azure Active Directory 进行身份验证
 
@@ -58,11 +59,11 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 ```
 
 > [!NOTE]
-> 需要 [启用 Azure Active Directory 身份验证](sql-data-warehouse-authentication.md) 才能使用 Active Directory 进行身份验证。
+> 需 [启用 Azure Active Directory 身份验证](sql-data-warehouse-authentication.md) 才能使用 Active Directory 进行身份验证。
 > 
 > 
 
-## <a name="2-query"></a>2.查询
+## <a name="2-query"></a>2. 查询
 连接后，可以对实例发出任何支持的 Transact-SQL 语句。  在此示例中，查询以交互模式进行提交。
 
 ```sql
@@ -83,7 +84,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关 sqlcmd 中可用选项的详细信息, 请参阅[sqlcmd 文档][sqlcmd]。
+有关 sqlcmd 中可用选项的详细信息，请参阅[sqlcmd 文档][sqlcmd]。
 
 <!--Image references-->
 

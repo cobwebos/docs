@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 31d7299b0c14b35aad7a29c875630d8a7fa4827e
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: d8d5ecd64ba689dc9cce342513702d8359038162
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200589"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682255"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight 群集的容量规划
 
@@ -31,13 +31,13 @@ ms.locfileid: "73200589"
 
 Azure 区域确定群集的物理预配位置。 为了将读写延迟最小化，群集应靠近数据所在的位置。
 
-许多 Azure 区域提供 HDInsight。 若要查找最近的区域，请参阅[可用产品（按区域](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=hdinsight/)）。
+许多 Azure 区域提供 HDInsight。 若要查找最近的区域，请参阅[可用产品（按区域](https://azure.microsoft.com/global-infrastructure/services/?products=hdinsight)）。
 
 ## <a name="choose-storage-location-and-size"></a>选择存储位置和大小
 
 ### <a name="location-of-default-storage"></a>默认存储的位置
 
-默认存储（Azure 存储帐户或 Azure Data Lake Storage）必须与群集位于同一位置。 所有位置都提供 Azure 存储。 Data Lake Storage Gen1 在某些区域中可用-请参阅当前[Data Lake Storage 可用性](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=storage)。
+默认存储（Azure 存储帐户或 Azure Data Lake Storage）必须与群集位于同一位置。 所有位置都提供 Azure 存储。 Data Lake Storage Gen1 在某些区域中可用-请参阅当前[Data Lake Storage 可用性](https://azure.microsoft.com/global-infrastructure/services/?products=storage)。
 
 ### <a name="location-of-existing-data"></a>现有数据的位置
 
@@ -88,14 +88,14 @@ Azure 存储具有某些[容量限制](../azure-subscription-service-limits.md#s
 
 ### <a name="isolate-cluster-job-errors"></a>查明群集作业错误
 
-有时，多节点群集上多个映射和化简组件的并行执行可能导致出错。 若要解决此问题，请尝试通过在单个辅助角色节点上运行并发多个作业来进行分布式测试，然后展开此方法以在包含多个节点的群集上并发运行多个作业。 若要在 Azure 中创建单节点 HDInsight 群集，请在门户中设置新群集时，使用 "*自定义（大小、设置、应用）* " 选项，并将值1用于 "**群集大小**" 部分中的 "*工作节点数*"。
+有时，多节点群集上多个映射和化简组件的并行执行可能导致出错。 为了帮助查明问题，可以通过在单工作器节点群集上运行多个并发作业来尝试执行分布式测试，然后延伸这种方法，在包含多个节点的群集上并发运行多个作业。 若要在 Azure 中创建单节点 HDInsight 群集，请在门户中预配新群集时，使用“自定义(大小、设置、应用)”选项，并使用值 1 作为*群集大小*部分中的**工作器节点数**。
 
 ## <a name="quotas"></a>配额
 
 确定目标群集 VM 大小、规模和类型之后，请检查订阅的当前配额容量限制。 达到配额限制时，可能无法部署新群集，或通过添加更多工作节点来横向扩展现有群集。 唯一存在配额限制的是每个订阅的区域级别的 CPU 核心配额。 例如，订阅可能会在美国东部区域有 30 个核心的限制。 如果需要请求增加配额，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-1. 在页面的左下角选择 "**帮助 + 支持**"。
+1. 选择页面左下方的“帮助 + 支持”。
 1. 选择“新建支持请求”。
 1. 在“新建支持请求”页面的“基本信息”选项卡下，选择以下选项：
 
@@ -106,9 +106,9 @@ Azure 存储具有某些[容量限制](../azure-subscription-service-limits.md#s
      ![创建支持请求来增加 HDInsight 核心配额](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
 1. 选择 "**下一步：解决方案" > >** 。
-1. 在 "**详细信息**" 页上，输入问题的说明，选择问题的严重性、首选的联系方法和其他必填字段。
+1. 在“详细信息”页上，输入问题的说明，选择问题的严重性、首选联系方法和其他必需字段。
 1. 选择 "**下一步"：查看 + 创建 > >** 。
-1. 在 "**查看**" 和 "创建" 选项卡上，选择 "**创建**"。
+1. 在“查看 + 创建”选项卡中，选择“创建”。
 
 > [!NOTE]  
 > 如果需要增加专用区域中的 HDInsight 核心配额，请[提交允许列表请求](https://aka.ms/canaryintwhitelist)。

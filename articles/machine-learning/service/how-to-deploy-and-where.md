@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 856f00b17a5ee994f8864c5d46ce4d796d68d367
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: df2f22f91cbed17035485d25369965d3284dbaf7
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497013"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622390"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>部署模型与 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "73497013"
 
 有关部署工作流中所涉及的概念的详细信息，请参阅[管理、部署和监视具有 Azure 机器学习的模型](concept-model-management-and-deployment.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -254,7 +254,7 @@ model_path = Model.get_model_path('sklearn_mnist')
 * `pyspark`
 * 标准 Python 对象
 
-若要使用架构生成，请将 `inference-schema` 包包含在 Conda 环境文件中。
+若要使用架构生成，请将 `inference-schema` 包包含在 Conda 环境文件中。 有关此包的详细信息，请参阅[https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema)。
 
 ##### <a name="example-dependencies-file"></a>示例依赖关系文件
 
@@ -608,9 +608,9 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 
 有关详细信息，请参阅[az ml 模型部署](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy)文档。
 
-### <a id="notebookvm"></a>计算实例 web 服务（开发/测试）
+### <a id="notebookvm"></a>笔记本 VM web 服务（开发/测试）
 
-请参阅[将模型部署到 Azure 机器学习计算实例](how-to-deploy-local-container-notebook-vm.md)。
+请参阅[将模型部署到 Azure 机器学习笔记本 VM](how-to-deploy-local-container-notebook-vm.md)。
 
 ### <a id="aci"></a>Azure 容器实例（开发/测试）
 
@@ -999,10 +999,12 @@ docker kill mycontainer
 有关详细信息，请参阅[WebService （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--)和 Model 的文档[（）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)。
 
 ## <a name="preview-no-code-model-deployment"></a>效果无代码模型部署
+
 无代码模型部署目前处于预览阶段，支持以下机器学习框架：
 
 ### <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel 格式
-```
+
+```python
 from azureml.core import Model
 
 model = Model.register(workspace=ws,
@@ -1017,10 +1019,12 @@ service = Model.deploy(ws, service_name, [model])
 ```
 
 ### <a name="onnx-models"></a>ONNX 模型
+
 任何 ONNX 推理图形都支持 ONNX 模型注册和部署。 当前不支持预处理和 postprocess 步骤。
 
 下面是有关如何注册和部署 MNIST ONNX 模型的示例：
-```
+
+```python
 from azureml.core import Model
 
 model = Model.register(workspace=ws,
@@ -1033,11 +1037,14 @@ model = Model.register(workspace=ws,
 service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
+
 ### <a name="scikit-learn-models"></a>Scikit-learn-了解模型
+
 并非所有内置 scikit-learn 模型类型都支持代码模型部署。
 
 下面的示例演示如何注册和部署不带额外代码的 spark-sklearn 模型：
-```
+
+```python
 from azureml.core import Model
 from azureml.core.resource_configuration import ResourceConfiguration
 
@@ -1055,7 +1062,8 @@ service = Model.deploy(ws, service_name, [model])
 ```
 
 注意：这些依赖项包含在预生成的 spark-sklearn 推理容器中：
-```
+
+```yaml
     - azureml-defaults
     - inference-schema[numpy-support]
     - scikit-learn
@@ -1063,6 +1071,7 @@ service = Model.deploy(ws, service_name, [model])
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [部署故障排除](how-to-troubleshoot-deployment.md)
 * [使用 SSL 保护 Azure 机器学习 Web 服务](how-to-secure-web-service.md)

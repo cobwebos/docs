@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 数据工厂中将自承载集成运行时配置为 SSIS 的代理 |Microsoft Docs
+title: 在 Azure 数据工厂中将自承载集成运行时配置为 SSIS 的代理
 description: 了解如何配置自承载 Integration Runtime 作为 Azure-SSIS Integration Runtime 的代理。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2ade270011ad5c1e1e5f5940ca305687e52bba86
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 178628db11b95fbd345e94111ebf15809da3fc35
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200302"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684299"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>在 ADF 中将自承载 IR 配置为 Azure-SSIS IR 的代理
 本文介绍如何在 Azure 数据工厂（ADF）中使用配置为代理的自承载 IR 在 Azure-SSIS Integration Runtime （IR）上运行 SQL Server Integration Services （SSIS）包。  此功能允许你在本地访问数据而无需将[Azure-SSIS IR 加入虚拟网络](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。  当你的公司网络的配置/限制策略过于复杂时，这会很有用，你可以在其中插入 Azure-SSIS IR。
@@ -59,7 +59,7 @@ ms.locfileid: "71200302"
 ![启用 ConnectByProxy 属性](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
 你还可以在运行现有包时启用此属性，而无需逐个手动更改它们。  有2个选项：
-- 打开、重新生成和重新部署包含这些包的项目，其中包含要在 Azure-SSIS IR 上运行的最新 SSDT：然后，可以通过将属性设置为 True，将其设置为**True** ，以便在运行 SSMS 的包时出现在 "执行包" 弹出窗口的 "**连接管理**器" 选项卡上。
+- 使用最新的 SSDT 打开、重新生成和重新部署包含这些包的项目，以在 Azure-SSIS IR 上运行：然后，可以通过将连接上显示的相关连接管理器的属性设置为**True**来启用属性SSMS 中运行包时的 "执行包" 弹出窗口的 "管理器" 选项卡。
 
   ![Enable ConnectByProxy property2](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
 
@@ -67,16 +67,16 @@ ms.locfileid: "71200302"
   
   ![Enable ConnectByProxy property3](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- 重新部署包含这些包的项目，以便在 SSIS IR 上运行：然后，可以通过提供属性路径`\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`来启用属性，并将其设置为**True** ，以便在运行 SSMS 的包时在 "执行包" 弹出窗口的 "**高级**" 选项卡上进行属性重写。
+- 重新部署包含这些包的项目以在 SSIS IR 上运行：然后，可以通过提供属性路径、`\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`，并在 "执行包" 弹出窗口的 "**高级**" 选项卡上将其设置为**True**来启用属性。从 SSMS 运行包时。
 
   ![Enable ConnectByProxy property4](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
-  还可以通过`\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`提供其属性路径来启用属性，并将其设置为**True** ，以便在 ADF 管道中运行包时[执行 SSIS 包活动](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)的 "**属性替代**" 选项卡上的属性重写。
+  还可以通过在 ADF 管道中运行包时，提供属性路径、`\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`，并将其设置为**True**作为 "[执行 SSIS 包" 活动](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)的 "**属性重**写" 选项卡上的属性重写，来启用属性。
   
   ![Enable ConnectByProxy property5](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
 
 ## <a name="debug-the-first-and-second-staging-tasks"></a>调试第一个和第二个临时任务
-在自承载 IR 上，可以在文件夹中`C:\ProgramData\SSISTelemetry`找到运行时日志，并在文件夹中`C:\ProgramData\SSISTelemetry\ExecutionLog`找到第一次暂存任务的执行日志。  可以在 SSISDB 或指定的日志记录路径中找到第二个过渡任务的执行日志，具体取决于你是将包分别存储在 SSISDB 中还是文件系统/文件共享/Azure 文件中。  第一个暂存任务的唯一 Id 还可以在第二个过渡任务的执行日志中找到，例如 
+在自承载 IR 上，可以在 `C:\ProgramData\SSISTelemetry` "文件夹中找到运行时日志，并在 `C:\ProgramData\SSISTelemetry\ExecutionLog`" 文件夹中找到第一个暂存任务的执行日志。  可以在 SSISDB 或指定的日志记录路径中找到第二个过渡任务的执行日志，具体取决于你是将包分别存储在 SSISDB 中还是文件系统/文件共享/Azure 文件中。  第一个暂存任务的唯一 Id 还可以在第二个过渡任务的执行日志中找到，例如 
 
 ![第一个暂存任务的唯一 ID](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
@@ -88,7 +88,7 @@ Azure-SSIS IR 上运行的第二个过渡任务不会单独计费，但正在运
 ## <a name="current-limitations"></a>当前限制
 
 - 目前仅支持 OLEDB/平面文件连接管理器和 OLEDB/平面文件源。 
-- 目前仅支持用**帐户密钥**/**SAS URI**/**服务主体**身份验证配置的 Azure Blob 存储链接服务。
+- 目前仅支持配置有**帐户密钥**/**SAS URI**/**服务主体**身份验证的 Azure Blob 存储链接服务。
 - 当前支持在预配 Azure-SSIS IR 的同一 ADF 下预配自承载 IR。
 - 不支持使用 OLEDB/平面文件源和连接管理器属性中的 SSIS 参数/变量。
 

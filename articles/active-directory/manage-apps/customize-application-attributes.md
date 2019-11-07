@@ -1,5 +1,5 @@
 ---
-title: 自定义 Azure AD 属性映射 | Microsoft Docs
+title: 自定义 Azure AD 属性映射 |Microsoft Docs
 description: 了解 Azure Active Directory 中有哪些针对 SaaS 应用的属性映射，以及如何修改它们来满足业务需求。
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef3d6a47986056925f9964638c9c7192341ca5f9
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 82c1a536bb86f0b3a4fe6a24af00379686ccc292
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240996"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641501"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 
@@ -69,13 +69,23 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 在上一节中，已将你引入 "属性映射类型" 属性。
 除了此属性，属性映射还支持以下属性：
 
-- **源属性** - 来自源系统的用户属性（示例：Azure Active Directory）。
-- **目标属性** - 目标系统中的用户属性（示例：ServiceNow）。
+- **源属性** - 来自源系统的用户属性（例如 Azure Active Directory）。
+- **目标属性** – 目标系统中的用户属性（例如 ServiceNow）。
 - **使用此属性匹配对象**–是否应使用此映射唯一标识源系统和目标系统之间的用户。 它通常在 Azure AD 中的 userPrincipalName 或 mail 属性上设置，该属性通常映射到目标应用程序中的用户名字段。
 - 匹配优先级 – 可设置多个匹配属性。 如果有多个，则按此字段定义的顺序对它们进行评估。 一旦找到匹配，就不会进一步评估其他匹配属性。
 - **应用此映射**
   - **始终**–在用户的创建和更新操作中应用此映射。
   - **仅在创建过程中**-仅在用户创建操作时应用此映射。
+
+## <a name="matching-users-in-the-source-and-target--systems"></a>匹配源系统和目标系统中的用户
+Azure AD 预配服务可以部署在这两个领域中（用户不会在目标系统中退出）和要重建 mqtt （目标系统中已存在用户）方案。 为了同时支持这两种方案，预配服务使用匹配属性的概念。 匹配属性允许您确定如何唯一标识源中的用户并匹配目标中的用户。 在规划部署的过程中，确定可用于唯一标识源系统和目标系统中的用户的属性。 注意事项：
+
+- **匹配的属性应是唯一的：** 客户通常使用 userPrincipalName、mail 或对象 ID 等属性作为匹配属性。
+- **多个属性可用作匹配属性：** 您可以定义要在匹配用户和计算顺序时进行评估的多个属性（在 UI 中定义为匹配优先级）。 例如，如果将三个属性定义为匹配属性，并且在计算前两个属性后，用户将被唯一匹配，则该服务将不会 evaluat 第三个属性。 服务将按指定的顺序评估匹配的属性，并在找到匹配项时停止计算。  
+- **源和目标中的值不必完全匹配：** 目标中的值可以是源中值的一些简单函数。 因此，可以在源和目标中有一个 emailAddress 属性，并按 emailAddress 属性的函数进行匹配，将一些字符替换为一些常量值。  
+- **不支持基于属性组合的匹配：** 大多数应用程序不支持基于两个属性的查询，并且因此不能基于属性的组合匹配。 可以在一个之后计算单个属性。
+- **所有用户都必须具有至少一个匹配属性的值：** 如果定义了一个匹配属性，则所有用户都必须具有源系统中该属性的值。 例如，如果您将 userPrincipalName 定义为匹配属性，则所有用户都必须具有 userPrincipalName。 如果定义多个匹配属性（例如 extensionAttribute1 和 mail），则并非所有用户都必须具有相同的匹配属性。 一个用户可以有一个 extensionAttribute1，而不是邮件，而另一个用户可以拥有邮件，但不能包含 extensionAttribute1。 
+- **目标应用程序必须支持对匹配属性进行筛选：** 应用程序开发人员允许在其用户或组 API 上筛选属性的子集。 对于库中的应用程序，我们确保默认属性映射适用于目标应用程序的 API 支持筛选的属性。 更改目标应用程序的默认匹配属性时，请检查第三方 API 文档以确保可以筛选属性。  
 
 ## <a name="editing-group-attribute-mappings"></a>编辑组属性映射
 
@@ -125,6 +135,113 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 - **被引用的对象特性**-如果它是引用类型属性，则可以使用此菜单选择包含与属性关联的值的目标应用程序中的表和属性。 例如，如果名为“Department”的属性的存储值引用了独立“Departments”表中的对象，则需要选择“Departments.Name”。 给定应用程序支持的引用表和主要 ID 字段是预先配置的，目前无法使用 Azure 门户进行编辑，但可以使用[图形 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes)进行编辑。
 
 若要添加新属性，请滚动到受支持属性列表的末尾，使用提供的输入填充上述字段，然后选择“添加属性”。 添加完属性后选择“保存”。 然后，需要重新加载 "**预配**" 选项卡，以便新属性在 "属性映射编辑器" 中变得可用。
+## <a name="provisioning-a-role-to-a-scim-app"></a>将角色预配到 SCIM 应用
+使用以下步骤将用户的角色预配到应用程序。 请注意，以下说明特定于自定义的 SCIM 应用程序。 对于 Salesforce 和 ServiceNow 等库应用程序，请使用预定义的角色映射。 以下项目符号介绍了如何将 AppRoleAssignments 属性转换为应用程序所需的格式。
+
+- 将 Azure AD 中的 appRoleAssignment 映射到应用程序中的某个角色需要使用[表达式](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)来转换该特性。 **不应将 appRoleAssignment 特性直接映射**到 role 特性，而无需使用表达式来分析角色的详细信息。 
+
+- **SingleAppRoleAssignment** 
+  - **何时使用：** 使用 SingleAppRoleAssignment 表达式为用户设置单个角色并指定主角色。 
+  - **如何配置：** 使用上述步骤导航到 "属性映射" 页，并使用 SingleAppRoleAssignment 表达式映射到 roles 属性。 有三个角色属性可供选择：（角色 [主 eq "True"]。显示、角色 [主 eq "True"）、类型和角色 [主 eq "True"]。 你可以选择在映射中包含任何或所有角色属性。 如果要包含多个映射，只需添加一个新映射，并将其包含为目标属性即可。  
+  
+  ![添加 SingleAppRoleAssignment](./media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
+  - **要考虑的事项**
+    - 确保未向用户分配多个角色。 我们无法保证将预配哪个角色。
+    
+  - **示例输出** 
+
+   ```json
+    {
+      "schemas": [
+          "urn:ietf:params:scim:schemas:core:2.0:User"
+      ],
+      "externalId": "alias",
+      "userName": "alias@contoso.OnMicrosoft.com",
+      "active": true,
+      "displayName": "First Name Last Name",
+      "meta": {
+           "resourceType": "User"
+      },
+      "roles": [
+         {
+               "primary": true,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "value": "Admin"
+         }
+      ]
+   }
+   ```
+  
+- **AppRoleAssignmentsComplex** 
+  - **何时使用：** 使用 AppRoleAssignmentsComplex 表达式为用户预配多个角色。 
+  - **如何配置：** 如以上所述编辑受支持属性的列表，以便为角色包含一个新属性： 
+  
+    ![添加角色](./media/customize-application-attributes/add-roles.png)<br>
+
+    然后，使用 AppRoleAssignmentsComplex 表达式映射到自定义角色属性，如下图所示：
+
+    ![添加 AppRoleAssignmentsComplex](./media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
+  - **要考虑的事项**
+    - 所有角色都将设置为主 = false。
+    - POST 包含角色类型。 修补请求不包含类型。 我们正在努力发送 POST 和 PATCH 请求中的类型。
+    
+  - **示例输出** 
+  
+   ```json
+   {
+       "schemas": [
+           "urn:ietf:params:scim:schemas:core:2.0:User"
+      ],
+      "externalId": "alias",
+      "userName": "alias@contoso.OnMicrosoft.com",
+      "active": true,
+      "displayName": "First Name Last Name",
+      "meta": {
+           "resourceType": "User"
+      },
+      "roles": [
+         {
+               "primary": false,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "display": "Admin",
+               "value": "Admin"
+         },
+         {
+               "primary": false,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "display": "User",
+             "value": "User"
+         }
+      ]
+   }
+   ```
+
+  
+
+
+## <a name="provisioning-a-multi-value-attribute"></a>设置多值属性
+某些属性（如 phoneNumbers 和电子邮件）是多值属性，可能需要指定不同类型的电话号码或电子邮件。 对于多值属性，请使用下面的表达式。 它允许您指定属性类型，并将其映射到值的相应 Azure AD 用户特性。 
+
+* phoneNumbers[type eq "work"].value
+* phoneNumbers[type eq "mobile"].value
+* phoneNumbers[type eq "fax"].value
+
+   ```json
+   "phoneNumbers": [
+       {
+         "value": "555-555-5555",
+         "type": "work"
+      },
+      {
+         "value": "555-555-5555",
+         "type": "mobile"
+      },
+      {
+         "value": "555-555-5555",
+         "type": "fax"
+      }
+   ]
+   ```
 
 ## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>还原默认属性和属性映射
 

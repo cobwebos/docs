@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 为多层 SharePoint 应用程序设置灾难恢复 | Microsoft Docs
+title: 使用 Azure Site Recovery 的多层 SharePoint 应用程序的灾难恢复
 description: 本文介绍如何使用 Azure Site Recovery 功能为多层 SharePoint 应用程序设置灾难恢复。
 author: sujayt
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: e9b688d54049c21da3276a20e27dcc9ad3d4ceca
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: cc72cb4134e6492478805421e448df26a8dc4554
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231476"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622412"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>使用 Azure Site Recovery 为多层 SharePoint 应用程序设置灾难恢复
 
@@ -29,7 +29,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 
 本文详细介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 保护 SharePoint 应用程序。 内容包括如何将三层 SharePoint 应用程序复制到 Azure、如何执行灾难恢复演练，以及如何将应用程序故障转移到 Azure 的最佳做法。
 
-可观看以下视频, 了解如何将多层应用程序恢复到 Azure。
+可观看以下视频，了解如何将多层应用程序恢复到 Azure。
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/Disaster-Recovery-of-load-balanced-multi-tier-applications-using-Azure-Site-Recovery/player]
 
@@ -47,7 +47,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 
 ## <a name="sharepoint-architecture"></a>SharePoint 体系结构
 
-可以使用分层拓扑和服务器角色在一个或多个服务器上部署 SharePoint，实现符合特定目标的场设计。 支持大量并发用户和大量内容项的典型大型高要求 SharePoint 服务器场使用服务分组作为可伸缩性策略的一部分。 此方法涉及到在专用服务器上运行服务，将这些服务组合在一起，然后将服务器扩展为一个组。 以下拓扑演示了三层 SharePoint 服务器场的服务和服务器分组。 请参阅 SharePoint 文档和产品线体系结构，了解有关不同 SharePoint 拓扑的详细指导。 可在[此文档](https://technet.microsoft.com/library/cc303422.aspx)中找到有关 SharePoint 2013 部署的更多详细信息。
+可以使用分层拓扑和服务器角色在一个或多个服务器上部署 SharePoint，实现符合特定目标的场设计。 支持大量并发用户和大量内容项的典型大型高要求 SharePoint 服务器场使用服务分组作为可伸缩性策略的一部分。 此方法涉及到在专用服务器上运行服务，将这些服务组合在一起，并将服务器扩展为一个组。 以下拓扑演示了三层 SharePoint 服务器场的服务和服务器分组。 请参阅 SharePoint 文档和产品线体系结构，了解有关不同 SharePoint 拓扑的详细指导。 可在[此文档](https://technet.microsoft.com/library/cc303422.aspx)中找到有关 SharePoint 2013 部署的更多详细信息。
 
 
 
@@ -56,7 +56,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 
 ## <a name="site-recovery-support"></a>Site Recovery 支持
 
-Site Recovery 与应用程序无关, 应与在支持的计算机上运行的任何 SharePoint 版本配合使用。 制作本文时，使用了装有 Windows Server 2012 R2 Enterprise 的 VMware 虚拟机。 使用了 SharePoint 2013 Enterprise Edition 和 SQL server 2014 Enterprise Edition。
+Site Recovery 与应用程序无关，应与在受支持的计算机上运行的任何版本的 SharePoint 配合使用。 制作本文时，使用了装有 Windows Server 2012 R2 Enterprise 的 VMware 虚拟机。 使用了 SharePoint 2013 Enterprise Edition 和 SQL server 2014 Enterprise Edition。
 
 ### <a name="source-and-target"></a>源和目标
 
@@ -104,7 +104,7 @@ Site Recovery 与应用程序无关, 应与在支持的计算机上运行的任�
 
 | **Where** | **源** | **目标**|
 | --- | --- | --- |
-| 公共 DNS | SharePoint 站点的公共 DNS <br/><br/> 例如：sharepoint.contoso.com | 通信管理器 <br/><br/> contososharepoint.trafficmanager.net |
+| 公共 DNS | SharePoint 站点的公共 DNS <br/><br/> 例如：sharepoint.contoso.com | 流量管理器 <br/><br/> contososharepoint.trafficmanager.net |
 | 本地 DNS | sharepointonprem.contoso.com | 本地场中的公共 IP |
 
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 为多层 Dynamics AX 部署设置灾难恢复 | Microsoft Docs
+title: 使用 Azure Site Recovery 进行多层 Dynamics AX 部署的灾难恢复 |Microsoft Docs
 description: 本文介绍如何使用 Azure Site Recovery 为 Dynamics AX 设置灾难恢复
 author: asgang
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: b97bf56c23dfa96acf7cb5af5ac28b4270de117d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b8aaff3a3418177f92c3b54fb3bb3e99f93810e
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61281404"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620752"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>为多层 Dynamics AX 应用程序设置灾难恢复   
 
@@ -27,7 +27,7 @@ ms.locfileid: "61281404"
 
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 使用 Site Recovery 为 Dynamics AX 应用程序实现灾难恢复需以下先决条件：
 
@@ -53,7 +53,7 @@ ms.locfileid: "61281404"
 ### <a name="protect-your-dynamics-ax-application"></a>保护 Dynamics AX 应用程序
 若要实现完整应用程序复制与恢复，Dynamics AX 的每个组件都必须受到保护。
 
-### <a name="1-set-up-active-directory-and-dns-replication"></a>1.设置 Active Directory 和 DNS 复制
+### <a name="1-set-up-active-directory-and-dns-replication"></a>1. 设置 Active Directory 和 DNS 复制
 
 要使 Dynamics AX 应用程序正常运行，需要在灾难恢复站点上设置 Active Directory。 根据客户本地环境的复杂性，建议使用以下两个选项。
 
@@ -67,10 +67,10 @@ ms.locfileid: "61281404"
 
  有关详细信息，请参阅[在灾难恢复站点启用域控制器](site-recovery-active-directory.md)。 本文档余下内容假设灾难恢复站点上提供了域控制器。
 
-### <a name="2-set-up-sql-server-replication"></a>2.设置 SQL Server 复制
+### <a name="2-set-up-sql-server-replication"></a>2. 设置 SQL Server 复制
 有关保护 SQL 层的建议选项的技术指导，请参阅[使用 SQL Server 和 Azure Site Recovery 复制应用程序](site-recovery-sql.md)。
 
-### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3.为 Dynamics AX 客户端和应用程序对象服务器 VM 启用保护
+### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. 为 Dynamics AX 客户端和应用程序对象服务器 Vm 启用保护
 根据 VM 是在 [Hyper-V](site-recovery-hyper-v-site-to-azure.md) 还是在 [VMware](site-recovery-vmware-to-azure.md) 上部署的，执行相关的 Site Recovery 配置。
 
 > [!TIP]
@@ -81,7 +81,7 @@ ms.locfileid: "61281404"
 
 ![受保护的项](./media/site-recovery-dynamics-ax/protecteditems.png)
 
-### <a name="4-configure-networking"></a>4.配置网络
+### <a name="4-configure-networking"></a>4. 配置网络
 **配置 VM 计算和网络设置**
 
 对于 Dynamics AX 客户端和应用程序对象服务器 VM，请在 Site Recovery 中配置网络设置，以便在故障转移后将 VM 网络附加到适当的灾难恢复网络。 确保可将这些层的灾难恢复网络路由到 SQL 层。
@@ -90,20 +90,20 @@ ms.locfileid: "61281404"
 
 * 对于应用程序对象服务器，选择正确的可用性集。
 
-* 如果使用静态 IP，请在“目标 IP”文本框中指定希望 VM 采用的 IP  。
+* 如果使用静态 IP，请在“目标 IP”文本框中指定希望 VM 采用的 IP。
 
     ![网络设置](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
 
-### <a name="5-create-a-recovery-plan"></a>5.创建恢复计划
+### <a name="5-create-a-recovery-plan"></a>5. 创建恢复计划
 
 可以在 Site Recovery 中创建恢复计划，将故障转移过程自动化。 在恢复计划中添加应用层和 Web 层。 在不同的组中将它们排序，以便先关闭前端，再关闭应用层。
 
-1. 在订阅中选择 Site Recovery 保管库，并选择“恢复计划”  磁贴。
+1. 在订阅中选择 Site Recovery 保管库，并选择“恢复计划”磁贴。
 
-2. 选择“+ 恢复计划”  并指定名称。
+2. 选择“+ 恢复计划”并指定名称。
 
-3. 选择“源”  和“目标”  。 目标可以是 Azure 或辅助站点。 如果选择 Azure，则必须指定部署模型。
+3. 选择“源”和“目标”。 目标可以是 Azure 或辅助站点。 如果选择 Azure，则必须指定部署模型。
 
     ![创建恢复计划](./media/site-recovery-dynamics-ax/recoveryplancreation1.png)
 
@@ -118,15 +118,15 @@ ms.locfileid: "61281404"
 可通过添加以下步骤来自定义 Dynamics AX 应用程序的恢复计划。 以上快照显示添加所有步骤后的完整恢复计划。
 
 
-* **SQL Server 故障转移步骤**：有关 SQL Server 特定恢复步骤的信息，请参阅[使用 SQL Server 和 Azure Site Recovery 复制应用程序](site-recovery-sql.md)。
+* SQL Server 故障转移步骤：有关 SQL Server 特定恢复步骤的信息，请参阅[使用 SQL Server 和 Azure Site Recovery 复制应用程序](site-recovery-sql.md)。
 
-* **故障转移组 1**：对应用程序对象服务器 VM 进行故障转移。
+* 故障转移组 1：对应用程序对象服务器 VM 进行故障转移。
 确保选择的恢复点尽量靠近数据库 PIT，但不能在它的前面。
 
-* **脚本**：添加负载均衡器（仅限 E-A）。
+* 脚本：添加负载均衡器（仅限 E-A）。
 应用程序对象服务器 VM 组启动后，请添加一个脚本（通过 Azure 自动化），以便向其添加负载均衡器。 可以使用脚本完成此任务。 有关详细信息，请参阅[如何为多层应用程序灾难恢复添加负载均衡器](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/)。
 
-* **故障转移组 2**：对 Dynamics AX 客户端 VM 进行故障转移。 在执行恢复计划的过程中故障转移 Web 层 VM。
+* 故障转移组 2：对 Dynamics AX 客户端 VM 进行故障转移。 在执行恢复计划的过程中故障转移 Web 层 VM。
 
 
 ### <a name="perform-a-test-failover"></a>执行测试故障转移
@@ -139,13 +139,13 @@ ms.locfileid: "61281404"
 
 2. 选择针对 Dynamics AX 创建的恢复计划。
 
-3. 选择“测试故障转移”  。
+3. 选择“测试故障转移”。
 
 4. 选择虚拟网络开始测试故障转移过程。
 
 5. 辅助环境启动后，可以执行验证。
 
-6. 完成验证后，选择“验证完成”  ，随后将清理测试故障转移环境。
+6. 完成验证后，选择“验证完成”，随后将清理测试故障转移环境。
 
 有关执行测试故障转移的详细信息，请参阅[在 Site Recovery 中执行到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)。
 
@@ -155,9 +155,9 @@ ms.locfileid: "61281404"
 
 2. 选择针对 Dynamics AX 创建的恢复计划。
 
-3. 选择“故障转移”  ，然后选择“故障转移”  。
+3. 选择“故障转移”，然后选择“故障转移”。
 
-4. 选择目标网络，并选择 ✓  开始故障转移过程。
+4. 选择目标网络，并选择 ✓开始故障转移过程。
 
 有关执行故障转移的详细信息，请参阅 [Site Recovery 中的故障转移](site-recovery-failover.md)。
 
@@ -169,13 +169,13 @@ ms.locfileid: "61281404"
 
 2. 选择针对 Dynamics AX 创建的恢复计划。
 
-3. 选择“故障转移”  ，然后选择“故障转移”  。
+3. 选择“故障转移”，然后选择“故障转移”。
 
-4. 选择“更改方向”。 
+4. 选择“更改方向”。
 
 5. 选择适当的选项：数据同步和 VM 创建。
 
-6. 选择 ✓  开始执行故障回复过程。
+6. 选择 ✓开始执行故障回复过程。
 
 
 有关执行故障回复的详细信息，请参阅[将 VMware VM 从 Azure 故障回复到本地](site-recovery-failback-azure-to-vmware.md)。

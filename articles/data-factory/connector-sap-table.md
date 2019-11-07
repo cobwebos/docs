@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂从 SAP 表复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 SAP 表复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 SAP 表复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 87f97d674b1dd4334ac0ca07648baa1e7cc6607a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 9c4e22e997b4ad8c36d8aaf84d1bb8aacb5c5529
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089560"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680231"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP 表复制数据
 
 本文概述如何使用 Azure 数据工厂中的复制活动从 SAP 表复制数据。 有关详细信息，请参阅[复制活动概述](copy-activity-overview.md)。
 
 >[!TIP]
->若要了解 ADF 全面支持 SAP 数据集成方案，请参阅[使用 Azure 数据工厂的 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，并提供详细的简介、comparsion 和指南。
+>若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[使用 Azure 数据工厂进行 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含详细介绍、比较和指导。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -40,9 +40,9 @@ ms.locfileid: "71089560"
 - 在以下产品中从 SAP 表复制数据：
 
   - SAP ERP 中心组件 (SAP ECC) 7.01 或更高版本（包含在 2015 年之后发布的最新 SAP 支持包堆栈中）。
-  - SAP Business 仓库（SAP BW）版本7.01 或更高版本（在2015之后发布的最新 SAP 支持包堆栈中）。
+  - SAP Business Warehouse (SAP BW) 版本 7.01 或更高版本（位于最新的 SAP 支持包堆栈中，该堆栈是 2015 年以后发布的）。
   - SAP S/4HANA。
-  - SAP Business Suite 版本7.01 或更高版本中的其他产品（在2015之后发布的最新 SAP 支持包堆栈中）。
+  - SAP Business Suite 版本 7.01 或更高版本（位于最新的 SAP 支持包堆栈中，该堆栈是 2015 年以后发布的）中的其他产品。
 
 - 从 SAP 透明表、共用表、聚集表和视图复制数据。
 - 使用基本身份验证或安全网络通信 (SNC)（如果已配置 SNC）复制数据。
@@ -63,7 +63,7 @@ ms.locfileid: "71089560"
   - 使用远程函数调用 (RFC) 目标的授权。
   - 对 S_SDSAUTH 授权对象拥有“执行”活动权限。
 
-## <a name="get-started"></a>开始使用
+## <a name="get-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -73,7 +73,7 @@ ms.locfileid: "71089560"
 
 SAP BW Open Hub 链接服务支持以下属性：
 
-| 属性 | 说明 | 必填 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | `type` | `type` 属性必须设置为 `SapTable`。 | 是 |
 | `server` | SAP 实例所在的服务器的名称。<br/>用于连接到 SAP 应用程序服务器。 | 否 |
@@ -93,7 +93,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 | `sncQop` | 要应用的保护级别的 SNC 质量。<br/>当 `sncMode` 打开时适用。 <br/>允许的值为 `1`（身份验证）、`2`（完整性）、`3`（隐私）、`8`（默认值）和 `9`（最大值）。 | 否 |
 | `connectVia` | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如前面的[先决条件](#prerequisites)中所述，需要安装自承载集成运行时。 |是 |
 
-**示例 1：连接到 SAP 应用程序服务器**
+**示例1：连接到 SAP 应用程序服务器**
 
 ```json
 {
@@ -118,7 +118,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 }
 ```
 
-### <a name="example-2-connect-to-an-sap-message-server"></a>示例 2：连接到 SAP 消息服务器
+### <a name="example-2-connect-to-an-sap-message-server"></a>示例2：连接到 SAP 消息服务器
 
 ```json
 {
@@ -145,7 +145,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 }
 ```
 
-### <a name="example-3-connect-by-using-snc"></a>示例 3：使用 SNC 进行连接
+### <a name="example-3-connect-by-using-snc"></a>示例3：使用 SNC 进行连接
 
 ```json
 {
@@ -181,7 +181,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 
 支持使用以下属性从/向 SAP BW Open Hub 链接服务复制数据。
 
-| 属性 | 说明 | 必填 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | `type` | `type` 属性必须设置为 `SapTableResource`。 | 是 |
 | `tableName` | 要从中复制数据的 SAP 表的名称。 | 是 |
@@ -213,12 +213,12 @@ SAP BW Open Hub 链接服务支持以下属性：
 
 支持使用以下属性从 SAP 表复制数据：
 
-| 属性                         | 说明                                                  | 必填 |
+| 属性                         | 说明                                                  | 必选 |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | `type` 属性必须设置为 `SapTableSource`。         | 是      |
 | `rowCount`                         | 要检索的行数。                              | 否       |
-| `rfcTableFields`                   | 要从 SAP 表复制的字段（列）。 例如， `column0, column1` 。 | 否       |
-| `rfcTableOptions`                  | 用于筛选 SAP 表中的行的选项。 例如， `COLUMN0 EQ 'SOMEVALUE'` 。 另请参阅本文稍后提供的 SAP 查询运算符表。 | 否       |
+| `rfcTableFields`                   | 要从 SAP 表复制的字段（列）。 例如，`column0, column1`。 | 否       |
+| `rfcTableOptions`                  | 用于筛选 SAP 表中的行的选项。 例如，`COLUMN0 EQ 'SOMEVALUE'`。 另请参阅本文稍后提供的 SAP 查询运算符表。 | 否       |
 | `customRfcReadTableFunctionModule` | 可用于从 SAP 表读取数据的自定义 RFC 函数模块。<br>可以使用自定义 RFC 函数模块来定义如何从 SAP 系统检索数据并将其返回到数据工厂。 必须为自定义函数模块实现一个接口（导入、导出、表），类似于数据工厂使用的默认接口 `/SAPDS/RFC_READ_TABLE2`。 | 否       |
 | `partitionOption`                  | 要从 SAP 表中读取的分区机制。 支持的选项包括： <ul><li>`None`</li><li>`PartitionOnInt`（在左侧用零填充正常整数或整数值，例如 `0000012345`）</li><li>`PartitionOnCalendarYear`（采用“YYYY”格式的 4 位数）</li><li>`PartitionOnCalendarMonth`（采用“YYYYMM”格式的 6 位数）</li><li>`PartitionOnCalendarDate`（采用“YYYYMMDD”格式的 8 位数）</li></ul> | 否       |
 | `partitionColumnName`              | 用于将数据分区的列的名称。                | 否       |
@@ -231,16 +231,16 @@ SAP BW Open Hub 链接服务支持以下属性：
 <br/>
 >以 `partitionOption` 和 `partitionOnInt` 为例，每个分区中的行数的计算公式为：(处于 `partitionUpperBound` 与 `partitionLowerBound` 之间的总行数)/`maxPartitionsNumber`。<br/>
 <br/>
->若要并行加载数据分区以提高副本速度，并行度由复制活动的[`parallelCopies`](copy-activity-performance.md#parallel-copy)设置控制。 例如，如果将设置`parallelCopies`为4，则数据工厂会同时基于指定的分区选项和设置生成并运行四个查询，每个查询将从 SAP 表中检索部分数据。 强烈建议您创建`maxPartitionsNumber` `parallelCopies`属性值的倍数。 将数据复制到基于文件的数据存储时，还 recommanded 将文件夹作为多个文件写入（仅指定文件夹名称），在这种情况下，性能比写入单个文件更好。
+>若要并行加载数据分区以加快复制速度，并行程度由复制活动的 [`parallelCopies`](copy-activity-performance.md#parallel-copy) 设置控制。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 SAP 表检索一部分数据。 强烈建议将 `maxPartitionsNumber` 设为 `parallelCopies` 属性值的倍数。 将数据复制到基于文件的数据存储中时，还建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
 
 在 `rfcTableOptions` 中，可以使用以下常用 SAP 查询运算符来筛选行：
 
-| 运算符 | 描述 |
+| 运算符 | 说明 |
 | :------- | :------- |
 | `EQ` | 等于 |
 | `NE` | 不等于 |
 | `LT` | 小于 |
-| `LE` | 小于或等于 |
+| `LE` | 小于等于 |
 | `GT` | 大于 |
 | `GE` | 大于或等于 |
 | `LIKE` | 例如 `LIKE 'Emma%'` |
@@ -299,9 +299,9 @@ SAP BW Open Hub 链接服务支持以下属性：
 | `N`（数字） | `String` |
 | `X`（二进制和原始数据） | `String` |
 
-## <a name="lookup-activity-properties"></a>查找活动属性
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
 
-若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

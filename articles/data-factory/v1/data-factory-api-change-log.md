@@ -1,5 +1,5 @@
 ---
-title: 数据工厂 - .NET API 更改日志 | Microsoft Docs
+title: 数据工厂-.NET API 更改日志
 description: 描述 Azure 数据工厂的 .NET API 的特定版本中的重大更改、新增功能、Bug 修复等。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: 35f0145526aa596691fde26e92695f64f5ac35e0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: e1902db6bc3a127262f5e37f36e82b07ab15c7c9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140517"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683194"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure 数据工厂 - .NET API 更改日志
 > [!NOTE]
@@ -62,7 +62,7 @@ ms.locfileid: "70140517"
 * 向 CopyActivity 添加了 [EnableStaging](https://msdn.microsoft.com/library/mt767916.aspx) 和 [StagingSettings](https://msdn.microsoft.com/library/mt767918.aspx) 属性。 有关此功能的详细信息，请参阅[暂存复制](data-factory-copy-activity-performance.md#staged-copy)。
 
 ### <a name="bug-fix"></a>Bug 修复
-* 引入了 [ActivityWindowOperationExtensions.List](https://msdn.microsoft.com/library/mt767915.aspx) 方法的重载，该方法采用 [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) 实例。
+* 引入 [ActivityWindowOperationExtensions.List](https://msdn.microsoft.com/library/mt767915.aspx) 方法的重载，该方法采用 [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) 实例。
 * 在 CopySink 中将 [WriteBatchSize](https://msdn.microsoft.com/library/dn884293.aspx) 和 [WriteBatchTimeout](https://msdn.microsoft.com/library/dn884245.aspx) 标记为可选。
 
 ## <a name="version-480"></a>版本 4.8.0
@@ -116,7 +116,7 @@ ms.locfileid: "70140517"
 
 ## <a name="version-420"></a>版本 4.2.0
 ### <a name="feature-additions"></a>新增功能
-* 已添加以下新活动类型：[AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx)。 有关活动的详细信息，请参阅[使用更新资源活动更新 Azure ML 模型](data-factory-azure-ml-batch-execution-activity.md)。
+* 已添加以下新的活动类型：[AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx)。 有关活动的详细信息，请参阅[使用更新资源活动更新 Azure ML 模型](data-factory-azure-ml-batch-execution-activity.md)。
 * 一个新的可选属性 [updateResourceEndpoint](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.updateresourceendpoint.aspx) 已被添加到 [AzureMLLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.aspx)。
 * [LongRunningOperationInitialTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationinitialtimeout.aspx) 和 [LongRunningOperationRetryTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationretrytimeout.aspx) 属性已被添加到 [DataFactoryManagementClient](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.aspx) 类。
 * 允许对数据工厂服务的客户端调用配置超时。
@@ -135,7 +135,7 @@ ms.locfileid: "70140517"
   * [AzureDataLakeStoreSink](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoresink.aspx)
 
 ## <a name="version-401"></a>版本 4.0.1
-### <a name="breaking-changes"></a>中断性变更
+### <a name="breaking-changes"></a>重大变化
 已重命名下面的类。 新名称是 4.0.0 版之前的类的原始名称。
 
 | 4\.0.0 版中的名称 | 4\.0.1 版中的名称 |
@@ -148,7 +148,7 @@ ms.locfileid: "70140517"
 | SqlServerDataset |[SqlServerTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.sqlservertabledataset.aspx) |
 
 ## <a name="version-400"></a>版本 4.0.0
-### <a name="breaking-changes"></a>中断性变更
+### <a name="breaking-changes"></a>重大变化
 * 已重命名下面的类/接口。
 
 | 旧名称 | 新名称 |
@@ -182,4 +182,4 @@ ms.locfileid: "70140517"
 
 ### <a name="feature-additions"></a>新增功能
 * [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) 类支持两个新属性（即 **SliceIdentifierColumnName** 和 **SqlWriterCleanupScript**），以支持到 Azure SQL 数据仓库的幂等复制。 有关这些属性的详细信息，请参阅 [Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md)一文。
-* 当前支持针对 Azure SQL 数据库和 Azure SQL 数据仓库源作为复制活动的一部分运行存储过程。 [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) 和 [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) 类具有以下属性：**SqlReaderStoredProcedureName** 和 **StoredProcedureParameters**。 有关这些属性的详细信息，请参阅 Azure.com 上的 [Azure SQL 数据库](data-factory-azure-sql-connector.md#sqlsource)和 [Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource)文章。  
+* 当前支持针对 Azure SQL 数据库和 Azure SQL 数据仓库源作为复制活动的一部分运行存储过程。 [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) 和 [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) 类具有以下属性：**SqlReaderStoredProcedureName** 和 **StoredProcedureParameters**。 有关这些属性的详细信息，请参阅 Azure.com 上的 [Azure SQL 数据库](data-factory-azure-sql-connector.md#sqlsource) 和 [Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource)文章。  

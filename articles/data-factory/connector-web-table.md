@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂从 Web 表复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 Web 表复制数据
 description: 了解 Azure 数据工厂的 Web 表连接器，可通过它将数据从 Web 表复制到数据工厂支持作为接收器的数据存储中。
 services: data-factory
 documentationcenter: ''
@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 164b61d624efbe1ed6127f1ed974b221f4e4d304
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: a13f3c2d2bbebd2cd6fa95bd7aa144722447ac9d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089173"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680045"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表复制数据
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-web-table-connector.md)
 > * [当前版本](connector-web-table.md)
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Web 表数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 Web 表数据库复制数据。 本文基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 此 Web 表连接器、[REST 连接器](connector-rest.md)和 [HTTP 连接器](connector-http.md)之间的区别如下：
 
@@ -59,9 +59,9 @@ Web 表链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：**Web** |是 |
+| type | 类型属性必须设置为：**Web** |是 |
 | url | Web 源的 URL |是 |
-| authenticationType | 允许的值为：**Anonymous**。 |是 |
+| authenticationType | 允许的值为：Anonymous。 |是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
 
 **示例：**
@@ -92,7 +92,7 @@ Web 表链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**WebTable** | 是 |
-| path |包含表的资源的相对 URL。 |否。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
+| path |包含表的资源的相对 URL。 |不能。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
 | index |资源中表的索引。 请参阅[获取 HTML 页中表的索引](#get-index-of-a-table-in-an-html-page)，了解获取 HTML 页中表的索引的步骤。 |是 |
 
 **示例：**
@@ -117,7 +117,7 @@ Web 表链接的服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Web 表源支持的属性列表。
+有关可用于定义活动的各节和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Web 表源支持的属性列表。
 
 ### <a name="web-table-as-source"></a>Web 表作为源
 
@@ -162,7 +162,7 @@ Web 表链接的服务支持以下属性：
 2. 单击工具栏中的“新建查询”，指向“从其他源”，并单击“从 Web”。
 
     ![Power Query 菜单](./media/copy-data-from-web-table/PowerQuery-Menu.png)
-3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 **URL**（例如： https://en.wikipedia.org/wiki/) ）以及要为数据集指定的路径（例如：AFI%27s_100_Years...100_Movies），并单击“确定”。
+3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 URL（例如： **）以及要为数据集指定的路径（例如：AFI%27s_100_Years...100_Movies），并单击“确定”** https://en.wikipedia.org/wiki/)。
 
     ![“从 Web”对话框](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 
@@ -183,9 +183,9 @@ Web 表链接的服务支持以下属性：
 如果使用的是 Excel 2013，请使用 [Microsoft Power Query for Excel](https://www.microsoft.com/download/details.aspx?id=39379) 获取索引。 有关详细信息，请参阅[连接到网页](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8)一文。 如果使用的是 [Microsoft Power BI for Desktop](https://powerbi.microsoft.com/desktop/)，步骤与之类似。
 
 
-## <a name="lookup-activity-properties"></a>查找活动属性
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
 
-若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
