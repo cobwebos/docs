@@ -1,5 +1,5 @@
 ---
-title: 如何配置 Azure SQL 数据库 | Microsoft Docs
+title: 如何配置 Azure SQL 数据库
 description: 了解如何配置和管理 Azure SQL 数据库。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 98c522f3d2718691e32b4e78180027b69f28289f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ccdeb883dc9cf2cba499e45e25ff4706bb120463
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568011"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689877"
 ---
 # <a name="how-to-use-azure-sql-database"></a>如何使用 Azure SQL 数据库
 
@@ -50,7 +50,7 @@ ms.locfileid: "68568011"
 
 ### <a name="extended-events"></a>扩展的事件
 
-- [扩展事件](sql-database-xevent-db-diff-from-svr.md)
+- [扩展的事件](sql-database-xevent-db-diff-from-svr.md)
 - [将扩展的事件存储到事件文件](sql-database-xevent-code-event-file.md)
 - [将扩展的事件存储到环形缓冲区](sql-database-xevent-code-ring-buffer.md)
 

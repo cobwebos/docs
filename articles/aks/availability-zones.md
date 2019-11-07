@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: eb48afb15e1314dcf670ba04afd9609876dc9539
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 3790511bf3f71cdeb01853e4051a013719502d9f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472827"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605086"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>创建使用可用性区域的 Azure Kubernetes 服务（AKS）群集
 
@@ -72,9 +72,9 @@ Azure Kubernetes Service （AKS）群集跨底层 Azure 计算基础结构的逻
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>跨可用性区域创建 AKS 群集
 
-当使用[az aks create][az-aks-create]命令创建群集时，`--zones` 参数定义了代理节点部署到的区域。 当你创建指定 `--zones` 参数的群集时，群集的 AKS 控制平面组件还会在最高可用配置中跨区域分布。
+当使用[az aks create][az-aks-create]命令创建群集时，`--zones` 参数定义了代理节点部署到的区域。 当你在创建群集时定义 `--zones` 参数时，群集的 AKS 控制平面组件还会在最高可用配置中跨区域分布。
 
-如果在创建 AKS 群集时未为默认代理池定义任何区域，则群集的 AKS 控制平面组件将不使用可用性区域。 你可以使用[az aks nodepool add][az-aks-nodepool-add]命令添加更多节点池，并为这些新代理节点指定 `--zones`，但控制平面组件在没有可用性区域识别的情况下仍保持不变。 部署节点池或 AKS 控制平面组件后，无法更改其区域感知。
+如果在创建 AKS 群集时未为默认代理池定义任何区域，则群集的 AKS 控制平面组件将不使用可用性区域。 您可以使用[az aks nodepool add][az-aks-nodepool-add]命令添加更多节点池，并为这些新节点指定 `--zones`，但控制平面组件在没有可用性区域识别功能的情况下仍保持不变。 部署节点池或 AKS 控制平面组件后，无法更改其区域感知。
 
 以下示例在名为*myResourceGroup*的资源组中创建名为*myAKSCluster*的 AKS 群集。 总共创建*3*个节点-一个区域*1*中的一个代理，一个在*2*中，另一个在*3*中。 AKS 控制平面组件还在最高可用配置中跨区域分布，因为它们被定义为群集创建过程的一部分。
 

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: b92975e3fe73fb1c882bdfc4338fd8e169728e8b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 58eb5abc9a8857b81ada65c96eb7deaaa5cc5aeb
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387634"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622669"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>使用 Resource Graph 浏览 Azure 资源
 
@@ -107,7 +107,7 @@ JSON 结果的结构类似于下面的示例：
 ]
 ```
 
-属性告诉我们有关虚拟机资源本身的其他信息，这些信息来自 SKU、OS、磁盘、标记以及其所属的资源组和订阅。
+属性告诉我们有关虚拟机资源本身的其他信息，包括 SKU、OS、磁盘、标记以及它所属的资源组和订阅信息。
 
 ### <a name="virtual-machines-by-location"></a>按位置列出的虚拟机
 
@@ -260,7 +260,7 @@ JSON 结果的结构类似于下面的示例：
 
 ## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>浏览虚拟机以查找公共 IP 地址
 
-这组查询首先查找并存储连接到虚拟机的所有网络接口（NIC）资源。 然后，查询使用 Nic 列表来查找作为公共 IP 地址的每个 IP 地址资源，并存储这些值。 最后，查询提供公共 IP 地址的列表。
+这一组查询首先查找并存储已连接到虚拟机的所有网络接口 (NIC) 资源。 然后，查询使用 NIC 列表查找是公共 IP 地址的每个 IP 地址资源并存储这些值。 最后，查询提供公共 IP 地址的列表。
 
 ```azurecli-interactive
 # Use Resource Graph to get all NICs and store in the 'nics.txt' file
@@ -278,7 +278,7 @@ $nics = Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virt
 $nics.nic
 ```
 
-使用下一个查询中的文件（Azure CLI）或变量（Azure PowerShell）获取相关的网络接口资源详细信息，其中存在连接到 NIC 的公共 IP 地址。
+在下一个查询中使用文件 (Azure CLI) 或变量 (Azure PowerShell) 获取 NIC 附加了公共 IP 地址的相关网络接口资源详细信息。
 
 ```azurecli-interactive
 # Use Resource Graph with the 'nics.txt' file to get all related public IP addresses and store in 'publicIp.txt' file
@@ -296,7 +296,7 @@ $ips = Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/netwo
 $ips.publicIp
 ```
 
-最后，使用存储在文件中的公共 IP 地址资源的列表（Azure CLI）或变量（Azure PowerShell）从相关对象获取实际的公共 IP 地址，并显示。
+最后，使用存储在文件 (Azure CLI) 或变量 (Azure PowerShell) 中的公共 IP 地址资源列表从相关对象获取实际公共 IP 地址并显示。
 
 ```azurecli-interactive
 # Use Resource Graph with the 'ips.txt' file to get the IP address of the public IP address resources
@@ -308,10 +308,10 @@ az graph query -q="Resources | where type =~ 'Microsoft.Network/publicIPAddresse
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
 ```
 
-若要了解如何使用 `join` 运算符在单个查询中完成这些步骤，请参阅[使用其网络接口和公共 IP 示例列出虚拟机列表](../samples/advanced.md#join-vmpip)。
+若要了解如何使用 `join` 运算符在单个查询中完成这些步骤，请参阅[列出虚拟机及其网络接口和公共 IP](../samples/advanced.md#join-vmpip) 示例。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关[查询语言](query-language.md)的详细信息
-- 请参阅[初学者查询](../samples/starter.md)中使用中的语言
-- 请参阅[高级查询](../samples/advanced.md)中的高级使用
+- 了解有关[查询语言](query-language.md)的详细信息。
+- 在[初学者查询](../samples/starter.md)中了解使用的语言。
+- 在[高级查询](../samples/advanced.md)中了解高级用法。

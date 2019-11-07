@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂中的安全注意事项 | Microsoft Docs
+title: Azure 数据工厂中的安全注意事项
 description: 介绍 Azure 数据工厂中的数据移动服务用来帮助保护数据的基本安全基础结构。
 services: data-factory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: ca5a98fb4fd0fd07cd0e2557840a2e0aed6901e5
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 15178fd0b5253b34f21030665a5835646c13b75d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285615"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675847"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 >
 > * [版本 1](v1/data-factory-data-movement-security-considerations.md)
 > * [当前版本](data-movement-security-considerations.md)
@@ -46,7 +46,7 @@ ms.locfileid: "72285615"
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/default.aspx)。 有关所有 Azure 合规性产品检查的最新列表 - https://aka.ms/AzureCompliance 。
+如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/default.aspx)。 有关所有 Azure 合规性产品检查的最新列表 - https://aka.ms/AzureCompliance。
 
 在本文中，我们将查看以下两个数据移动方案中的安全注意事项： 
 
@@ -136,7 +136,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 下表根据混合数据移动的源和目标位置的不同组合，汇总了有关网络和自承载集成运行时的配置建议。
 
-| Source      | Destination                              | 网络配置                    | 集成运行时安装                |
+| 源      | 目标                              | 网络配置                    | 集成运行时安装                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | IPSec VPN（点到站点或站点到站点） | 自承载集成运行时应安装在虚拟网络中的 Azure 虚拟机上。  |
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | ExpressRoute（专用对等互连）           | 自承载集成运行时应安装在虚拟网络中的 Azure 虚拟机上。  |
@@ -166,7 +166,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 下表提供了 Windows 防火墙的入站端口要求：
 
-| 入站端口 | 描述                              |
+| 入站端口 | 说明                              |
 | ------------- | ---------------------------------------- |
 | 8060 (TCP)    | PowerShell 加密 cmdlet（参阅[在 Azure 数据工厂中加密本地数据存储的凭据](encrypt-credentials-self-hosted-integration-runtime.md)）和凭据管理器应用程序需要使用此端口在自承载集成运行时中安全设置本地数据存储的凭据。 |
 
@@ -187,7 +187,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 **是否可在不同的数据工厂之间共享自承载集成运行时？**
 
-是。 [此处](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/)提供了更多详细信息。
+可以。 [此处](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/)提供了更多详细信息。
 
 **需要满足哪些端口要求才能让自承载集成运行时正常工作？**
 

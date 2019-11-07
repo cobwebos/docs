@@ -15,16 +15,16 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ff6d9e33e15aa04adfa03705172166492f87e30
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ef2ce1ce7a754868a1adc2e78b4c0a83fc84f071
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330029"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641451"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配
 
-Azure Active Directory （Azure AD）可让你自动创建、维护和删除云（[SaaS](https://azure.microsoft.com/overview/what-is-saas/)）应用程序（如 Dropbox、Salesforce、ServiceNow 等）中的用户标识。 这称为 SaaS 应用的自动化用户预配。
+Azure Active Directory （Azure AD）可让你在云 SaaS 应用程序（如[Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial)、 [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial)、 [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)等）中自动创建、维护和删除用户标识。 这称为 SaaS 应用的自动化用户预配。
 
 > [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
 
@@ -56,11 +56,14 @@ Azure Active Directory （Azure AD）可让你自动创建、维护和删除云�
 
 **Azure AD 预配服务**通过连接到每个应用程序供应商提供的用户管理 API 终结点，将用户预配到 SaaS 应用和其他系统。 这些用户管理 API 终结点允许 Azure AD 以编程方式创建、更新和删除用户。 对于所选的应用程序，预配服务还可以创建、更新和删除其他标识相关对象，如组和角色。
 
-@no__t 0Azure AD 预配服务 @ no__t] *： Azure AD 预配服务*
+![Azure AD 预配服务](./media/user-provisioning/provisioning0.PNG)
+*图1： Azure AD 预配服务*
 
-@no__t 0Outbound 用户预配 workflow @ no__t-1*图2： "出站" 用户预配工作流从 Azure AD 到热门 SaaS 应用程序*
+![出站用户预配工作流](./media/user-provisioning/provisioning1.PNG)
+*图2： "出站" 用户预配工作流从 Azure AD 到热门 SaaS 应用程序*
 
-@no__t 0Inbound 用户预配 workflow @ no__t-1*图3： "入站" 用户预配工作流从常用的人力资本管理（HCM）应用程序到 Azure Active Directory 和 Windows Server Active Directory*
+![入站用户预配工作流](./media/user-provisioning/provisioning2.PNG)
+*图3： "入站" 用户预配工作流从常用的人力资本管理（HCM）应用程序到 Azure Active Directory 和 Windows Server Active Directory*
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>可在哪些应用程序和系统中使用 Azure AD 自动用户预配？
 
@@ -87,11 +90,7 @@ Azure AD 功能为许多常用 SaaS 应用和人力资源系统预集成的支�
 
 1. 打开 **[Azure Active Directory 门户](https://aad.portal.azure.com)** 。
 1. 从左窗格中选择 "**企业应用程序**"。 将显示所有已配置应用的列表。
-1. 选择 " **+ 新建应用程序**" 以添加应用程序。 根据你的方案添加以下任一内容：
-
-   - "**添加自己的应用**" 选项支持自定义开发的 SCIM 集成。
-   - "**从库中添加**"  > **特色应用程序**部分中的所有应用程序都支持自动预配。 有关其他应用程序，请参阅[支持用户预配的应用程序列表教程](../saas-apps/tutorial-list.md)。
-
+1. 选择 " **+ 新建应用程序**" 以添加应用程序。 
 1. 提供任何详细信息，然后选择 "**添加**"。 新应用将添加到企业应用程序列表中，并打开到其 "应用程序管理" 屏幕。
 1. 选择 "**预配**"，管理应用的用户帐户预配设置。
 
@@ -193,7 +192,7 @@ Azure AD 功能为许多常用 SaaS 应用和人力资源系统预集成的支�
 
 > [!VIDEO https://www.youtube.com/embed/MAy8s5WSe3A]
 
-有关向应用程序执行出站用户预配的示例分步部署计划，请参阅[有关用户预配的标识部署指南](https://aka.ms/userprovisioningdeploymentplan)。
+有关向应用程序执行出站用户预配的示例分步部署计划，请参阅[有关用户预配的标识部署指南](https://aka.ms/deploymentplans/userprovisioning)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
@@ -215,7 +214,7 @@ Azure AD 功能为许多常用 SaaS 应用和人力资源系统预集成的支�
 
 ### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-nested-groups-in-azure-ad"></a>SaaS 应用的自动用户预配是否适用于 Azure AD 中的嵌套组？
 
-不。 如果配置为 "仅同步分配的用户和组"，则 Azure AD 用户预配服务无法读取或设置嵌套组中的用户。 它只能读取和预配作为显式分配组的直接成员的用户。
+不能。 如果配置为 "仅同步分配的用户和组"，则 Azure AD 用户预配服务无法读取或设置嵌套组中的用户。 它只能读取和预配作为显式分配组的直接成员的用户。
 
 这是“应用程序基于组的分配”的限制，该限制还会影响单一登录，请参阅[使用组管理对 SaaS 应用程序的访问](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps )进行了解。
 

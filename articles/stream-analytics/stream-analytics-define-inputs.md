@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 8f64b3381f22c31b58604477260b5dae4b84d19a
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: df111d605b7c05bcb934771b6063f2be04770ea9
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72988269"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606460"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>将数据作为流分析的输入进行流式传输
 
@@ -31,27 +31,27 @@ ms.locfileid: "72988269"
 
 ## <a name="create-edit-or-test-inputs"></a>创建、编辑或测试输入
 
-你可以使用[Azure 门户](stream-analytics-quick-create-portal.md)、 [Visual Studio](stream-analytics-quick-create-vs.md)和[Visual Studio Code](quick-create-vs-code.md)来添加和查看或编辑流式处理作业上的现有输入。 你还可以从 Azure 门户、 [Visual Studio](stream-analytics-vs-tools-local-run.md)和[Visual Studio Code](vscode-local-run.md)测试输入连接和[测试查询](stream-analytics-manage-job.md#test-your-query)。 编写查询时，将在 FROM 子句中列出输入。 可以在门户的“查询”页中获取可用输入的列表。 若要使用多个输入，可以对其执行 `JOIN` 操作，也可以编写多个 `SELECT` 查询。
+可以使用 [Azure 门户](stream-analytics-quick-create-portal.md)、[Visual Studio](stream-analytics-quick-create-vs.md) 和 [Visual Studio Code](quick-create-vs-code.md) 在流式处理作业上添加输入和查看或编辑现有输入。 还可以基于 Azure 门户、[Visual Studio](stream-analytics-manage-job.md#test-your-query) 和d [Visual Studio Code](stream-analytics-vs-tools-local-run.md) 的示例数据测试输入连接和[测试查询](vscode-local-run.md)。 编写查询时，将在 FROM 子句中列出输入。 可以在门户的“查询”页中获取可用输入的列表。 若要使用多个输入，可以对其执行 `JOIN` 操作，也可以编写多个 `SELECT` 查询。
 
 
 ## <a name="stream-data-from-event-hubs"></a>从事件中心对数据进行流式传输
 
-Azure 事件中心提供高度可缩放的发布-订阅事件引入器。 事件中心每秒可收集数百万个事件，以便您可以处理和分析连接的设备和应用程序所产生的大量数据。 事件中心和流分析一起提供进行实时分析所需的端到端解决方案。 可以通过事件中心将事件实时馈送到 Azure 中，以便流分析作业对这些事件进行实时处理。 例如，用户可以将 Web 点击操作、传感器读数或联机日志事件发送到事件中心。 然后可以创建流分析作业，将事件中心用作输入数据流，以便进行实时筛选、聚合和关联操作。
+Azure 事件中心提供高度可缩放的发布-订阅事件引入器。 事件中心每秒可收集数百万个事件，使你能够处理和分析互连设备与应用程序生成的海量数据。 事件中心和流分析一起提供进行实时分析所需的端到端解决方案。 可以通过事件中心将事件实时馈送到 Azure 中，以便流分析作业对这些事件进行实时处理。 例如，用户可以将 Web 点击操作、传感器读数或联机日志事件发送到事件中心。 然后可以创建流分析作业，将事件中心用作输入数据流，以便进行实时筛选、聚合和关联操作。
 
 `EventEnqueuedUtcTime` 是事件到达事件中心的时间戳，也是事件从事件中心发送到流分析的默认时间戳。 若要在事件负载中使用时间戳以流方式处理数据，则必须使用 [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) 关键字。
 
 ### <a name="event-hubs-consumer-groups"></a>事件中心使用者组
 
-应对每个流分析事件中心输入进行配置，使之拥有自己的使用者组。 如果作业包含自联接或具有多个输入，则某些输入可能会由下游的多个读取器读取。 这种情况会影响单个使用者组中的读取器数量。 为了避免超出针对事件中心设置的每个分区每个使用者组 5 个读取器的限制，最好是为每个流分析作业指定一个使用者组。 标准层事件中心也有20个使用者组的限制。 有关详细信息，请参阅[排查 Azure 流分析输入问题](stream-analytics-troubleshoot-input.md)。
+应对每个流分析事件中心输入进行配置，使之拥有自己的使用者组。 如果作业包含自联接或具有多个输入，则某些输入可能会由下游的多个读取器读取。 这种情况会影响单个使用者组中的读取器数量。 为了避免超出针对事件中心设置的每个分区每个使用者组 5 个读取器的限制，最好是为每个流分析作业指定一个使用者组。 对于标准层事件中心，还有 20 个使用者组的限制。 有关详细信息，请参阅[排查 Azure 流分析输入问题](stream-analytics-troubleshoot-input.md)。
 
 ### <a name="create-an-input-from-event-hubs"></a>从事件中心创建输入
 
 下表介绍了 Azure 门户的“新输入”页中用于从事件中心流式传输数据输入的每个属性：
 
-| properties | 描述 |
+| 属性 | 说明 |
 | --- | --- |
 | **输入别名** |在作业查询中用于引用此输入的友好名称。 |
-| 订阅 | 选择事件中心资源所在的订阅。 | 
+| **订阅** | 选择事件中心资源所在的订阅。 | 
 | **事件中心命名空间** | 事件中心命名空间是包含一组消息传递实体的容器。 创建新的事件中心后，另请创建命名空间。 |
 | **事件中心名称** | 要用作输入的事件中心的名称。 |
 | **事件中心策略名称** | 提供对事件中心的访问权限的共享访问策略。 每个共享访问策略具有名称、所设权限以及访问密钥。 此选项会自动进行填充，除非已选择手动提供事件中心设置的选项。|
@@ -62,7 +62,7 @@ Azure 事件中心提供高度可缩放的发布-订阅事件引入器。 事件
 
 如果数据来自事件中心流输入，则可以在流分析查询中访问以下元数据字段：
 
-| properties | 描述 |
+| 属性 | 说明 |
 | --- | --- |
 | **EventProcessedUtcTime** |流分析处理事件的日期和时间。 |
 | **EventEnqueuedUtcTime** |事件中心收到事件的日期和时间。 |
@@ -88,7 +88,7 @@ Azure IoT 中心是一个高度可缩放的发布-订阅事件引入器，针对
 
 在流分析中，来自 IoT 中心的事件的默认时间戳是事件到达 IoT 中心的时间戳，即 `EventEnqueuedUtcTime`。 若要在事件负载中使用时间戳以流方式处理数据，则必须使用 [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) 关键字。
 
-### <a name="iot-hub-consumer-groups"></a>Iot 中心使用者组
+### <a name="iot-hub-consumer-groups"></a>IoT 中心使用者组
 
 应该对每个流分析 IoT 中心输入进行配置，使之拥有自己的使用者组。 如果作业包含自联接或具有多个输入，则某些输入可能会由下游的多个读取器读取。 这种情况会影响单个使用者组中的读取器数量。 为了避免超出针对 Azure IoT 中心设置的每个分区每个使用者组 5 个读取器的限制，最好是为每个流分析作业指定一个使用者组。
 
@@ -96,10 +96,10 @@ Azure IoT 中心是一个高度可缩放的发布-订阅事件引入器，针对
 
 下表介绍了将 IoT 中心配置为流输入时，Azure 门户的“新输入”页中的每个属性。
 
-| properties | 描述 |
+| 属性 | 说明 |
 | --- | --- |
 | **输入别名** | 在作业查询中用于引用此输入的友好名称。|
-| 订阅 | 选择 IoT 中心资源所在的订阅。 | 
+| **订阅** | 选择 IoT 中心资源所在的订阅。 | 
 | **IoT 中心** | 可用作输入的 IoT 中心的名称。 |
 | **终结点** | IoT 中心终结点。|
 | **共享访问策略名称** | 提供对 IoT 中心的访问权限的共享访问策略。 每个共享访问策略具有名称、所设权限以及访问密钥。 |
@@ -112,7 +112,7 @@ Azure IoT 中心是一个高度可缩放的发布-订阅事件引入器，针对
 
 如果使用的流数据来自 IoT 中心，则可以在流分析查询中访问以下元数据字段：
 
-| properties | 描述 |
+| 属性 | 说明 |
 | --- | --- |
 | **EventProcessedUtcTime** | 处理事件的日期和时间。 |
 | **EventEnqueuedUtcTime** | IoT 中心收到事件的日期和时间。 |
@@ -129,27 +129,33 @@ Azure IoT 中心是一个高度可缩放的发布-订阅事件引入器，针对
 
 通过流分析来使用 Blob 存储输入时，日志处理是一种常用方案。 在此方案中，首先从某个系统捕获遥测数据文件，然后根据需要对这些数据进行分析和处理以提取有意义的数据。
 
-流分析中 Blob 存储事件的默认时间戳是上次修改 Blob 的时间戳，即 `BlobLastModifiedUtcTime`。 若要在事件负载中使用时间戳以流方式处理数据，则必须使用 [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) 关键字。 如果 blob 文件可用，流分析作业将每秒从 Azure Blob 存储输入中拉取数据。 如果 blob 文件不可用，则存在指数回退，且最长时间延迟为 90 秒。
+流分析中 Blob 存储事件的默认时间戳是上次修改 Blob 的时间戳，即 `BlobLastModifiedUtcTime`。 如果将 blob 上传到13:00 的存储帐户，并使用*现在*13:01 上的选项启动了 Azure 流分析作业，则将不会选取该 blob，因为其修改时间超出了作业运行期。
 
-CSV 格式的输入需要标头行来定义数据集的字段，并且所有标题行字段必须是唯一的。
+如果将 blob 上传到13:00 的存储帐户容器，并使用*自定义时间*13:00 或更早的时间启动了 Azure 流分析作业，则将选取该 blob，因为其修改时间落在作业运行期间内。
+
+如果*现在*使用13:00 开始使用 Azure 流分析作业，并将 blob 上传到存储帐户容器13:01，Azure 流分析将选取 blob。
+
+若要在事件负载中使用时间戳以流方式处理数据，则必须使用 [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) 关键字。 如果 blob 文件可用，流分析作业将每秒从 Azure Blob 存储输入中拉取数据。 如果 blob 文件不可用，则存在指数回退，且最长时间延迟为 90 秒。
+
+CSV 格式的输入需要标头行来定义数据集的字段，并且所有标头行字段必须是唯一的。
 
 > [!NOTE]
 > 流分析不支持将内容添加到现有 blob 文件。 流分析将仅查看每个文件一次，并且在作业读取数据后对文件所做的任何更改都不会得到处理。 最佳做法是立即上传 blob 文件的全部数据，然后将其他较新的事件添加到其他全新的 blob 文件中。
 
-一次上传大量 blob 可能会导致流分析在极少数情况下跳过读取几个 blob。 建议至少在 Blob 存储空间的2秒内上传 blob。 如果此选项不可行，可以使用事件中心流式传输大量事件。 
+一次上传大量 blob 可能会导致流分析在极少数情况下跳过读取少量 blob。 建议将 Blob 上传到 Blob 存储时至少间隔 2 秒。 如果此选项不可行，可以使用事件中心流式传输大量事件。 
 
 ### <a name="configure-blob-storage-as-a-stream-input"></a>将 Blob 存储配置为流输入 
 
 下表介绍了将 Blob 存储配置为流输入时，Azure 门户的“新输入”页中的每个属性。
 
-| properties | 描述 |
+| 属性 | 说明 |
 | --- | --- |
 | **输入别名** | 在作业查询中用于引用此输入的友好名称。 |
-| 订阅 | 选择 IoT 中心资源所在的订阅。 | 
+| **订阅** | 选择 IoT 中心资源所在的订阅。 | 
 | **存储帐户** | 存储 Blob 文件所在的存储帐户的名称。 |
 | **存储帐户密钥** | 与存储帐户关联的密钥。 此选项会自动进行填充，除非已选择手动提供 Blob 存储设置的选项。 |
 | **容器** | 用于 Blob 输入的容器。 容器对存储在 Microsoft Azure Blob 服务中的 blob 进行逻辑分组。 将 Blob 上传到 Azure Blob 存储服务时，必须为该 Blob 指定一个容器。 可以选择“使用现有”，以便使用现有的容器；也可以选择“新建”，以便创建新的容器。|
-| **路径模式**（可选） | 用于定位指定容器中的 blob 的文件路径。 在路径中，可以指定以下 3 个变量的一个或多个实例：`{date}`、`{time}` 或 `{partition}`<br/><br/>示例 1：`cluster1/logs/{date}/{time}/{partition}`<br/><br/>示例 2：`cluster1/logs/{date}`<br/><br/>`*` 字符不是路径前缀允许使用的值。 仅允许使用有效的 <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure blob 字符</a>。 不包括容器名称或文件名。 |
+| **路径模式**（可选） | 用于定位指定容器中的 blob 的文件路径。 如果要从容器的根目录中读取 blob，请不要设置路径模式。 在路径中，可以指定以下 3 个变量的一个或多个实例：`{date}`、`{time}` 或 `{partition}`<br/><br/>示例 1：`cluster1/logs/{date}/{time}/{partition}`<br/><br/>示例 2：`cluster1/logs/{date}`<br/><br/>`*` 字符不是路径前缀允许使用的值。 仅允许使用有效的 <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure blob 字符</a>。 不包括容器名称或文件名。 |
 | **日期格式**（可选） | 如果在路径中使用日期变量，则为组织文件的日期格式。 示例： `YYYY/MM/DD` |
 | **时间格式**（可选） |  如果在路径中使用时间变量，则为组织文件的时间格式。 目前唯一支持的值是 `HH`，表示小时。 |
 | **事件序列化格式** | 传入数据流的序列化格式（JSON、CSV、Avro 或[其他（Protobuf，XML，专有 ...）](custom-deserializer.md)）。  请确保该 JSON 格式符合规范，对于十进制数字不包括前导 0。 |
@@ -158,7 +164,7 @@ CSV 格式的输入需要标头行来定义数据集的字段，并且所有标�
 
 如果数据来自 Blob 存储源，则可以在流分析查询中访问以下元数据字段：
 
-| properties | 描述 |
+| 属性 | 说明 |
 | --- | --- |
 | **BlobName** |提供事件的输入 blob 的名称。 |
 | **EventProcessedUtcTime** |流分析处理事件的日期和时间。 |

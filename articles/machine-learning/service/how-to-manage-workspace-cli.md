@@ -8,20 +8,20 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 08/30/2019
-ms.openlocfilehash: 8606ac2578c45062182517b5e67d669a09b8e5c0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/05/2019
+ms.openlocfilehash: c7eb18cf2f8868001c1937b03a63c6013e9cbea8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489717"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619877"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 创建 Azure 机器学习的工作区
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何使用 Azure CLI 创建 Azure 机器学习工作区。 Azure CLI 提供了用于管理 Azure 资源的命令。 CLI 的机器学习扩展提供了用于处理 Azure 机器学习资源的命令。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * **Azure 订阅帐户**。 如果没有，请尝试[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 
@@ -99,6 +99,9 @@ az group create --name <resource-group-name> --location <location>
 ### <a name="automatically-create-required-resources"></a>自动创建所需的资源
 
 若要创建__自动创建服务__的新工作区，请使用以下命令：
+
+> [!TIP]
+> 本部分中的命令将创建一个基本版本工作区。 若要创建企业工作区，请将 `--sku enterprise` 开关与 `az ml workspace create` 命令一起使用。 有关 Azure 机器学习版本的详细信息，请参阅[什么是 Azure 机器学习](overview-what-is-azure-ml.md#sku)。
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>

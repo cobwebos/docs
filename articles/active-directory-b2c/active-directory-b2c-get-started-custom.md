@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b8ce4565a2df3ad5f144508010265c1029a6856d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 411710280a631d341adeb55bc4b587a613ee3c4c
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468863"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643625"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略入门
 
@@ -23,7 +23,7 @@ ms.locfileid: "73468863"
 
 [自定义策略](active-directory-b2c-overview-custom.md)是定义 Azure Active Directory B2C （Azure AD B2C）租户行为的配置文件。 本文将介绍如何创建支持使用电子邮件地址和密码进行本地帐户注册或登录的自定义策略。 你还要准备好环境以添加标识提供者。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 如果还没有，请创建一个链接到 Azure 订阅的[Azure AD B2C 租户](tutorial-create-tenant.md)。
 - 在所创建的租户中[注册应用程序](tutorial-register-applications.md)，以便它可以与 Azure AD B2C 通信。
@@ -73,7 +73,7 @@ Azure AD B2C 要求注册两个应用程序，该应用程序使用本地帐户�
 
 ### <a name="register-the-identityexperienceframework-application"></a>注册 IdentityExperienceFramework 应用程序
 
-若要在 Azure AD B2C 租户中注册应用程序，你可以使用当前**应用程序**体验或我们的新的统一**应用注册（预览版）** 体验。 [了解有关预览版体验的详细信息](https://aka.ms/b2cappregintro)。
+若要在 Azure AD B2C 租户中注册应用程序，你可以使用当前**应用程序**体验或我们的新的统一**应用注册（预览版）** 体验。 [详细了解此新体验](https://aka.ms/b2cappregintro)。
 
 #### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂中的数据流活动 |Microsoft Docs
+title: Azure 数据工厂中的数据流活动
 description: 如何在数据工厂管道中执行数据流。
 services: data-factory
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 10/07/2019
-ms.openlocfilehash: cbfa1acac34187263f8c4203e41bbe61d7e4c745
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5623907346ee3882ad53a27695336ba4bc449db8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030505"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679948"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure 数据工厂中的数据流活动
 
@@ -49,7 +49,7 @@ ms.locfileid: "72030505"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 需要
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
 数据流 | 对正在执行的数据流的引用 | DataFlowReference | 是
 integrationRuntime | 运行数据流的计算环境 | IntegrationRuntimeReference | 是
@@ -64,7 +64,7 @@ integrationRuntime | 运行数据流的计算环境 | IntegrationRuntimeReferenc
 
 对于管道执行，群集是作业群集，在执行开始之前需要几分钟时间启动。 如果未指定 TTL，则每次运行管道时都需要此启动时间。 如果指定 TTL，则在上一次执行之后指定的时间，温群集池将保持活动状态，从而缩短启动时间。 例如，如果 TTL 为60分钟，并且一小时运行一次数据流，则群集池将保持活动状态。 有关详细信息，请参阅[Azure 集成运行时](concepts-integration-runtime.md)。
 
-![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
+![Azure Integration Runtime](media/data-flow/ir-new.png "Azure 集成运行时")
 
 > [!NOTE]
 > 数据流活动中的 Integration Runtime 选择仅适用于管道的已触发执行。 在调试会话中指定的群集上运行数据流时，调试管道。
@@ -79,7 +79,7 @@ integrationRuntime | 运行数据流的计算环境 | IntegrationRuntimeReferenc
 
 如果数据流使用参数化数据集，则在 "**设置**" 选项卡中设置参数值。
 
-![执行数据流参数](media/data-flow/params.png "参数")
+![执行数据流参数](media/data-flow/params.png "parameters")
 
 ### <a name="parameterized-data-flows"></a>参数化数据流
 
@@ -91,7 +91,7 @@ integrationRuntime | 运行数据流的计算环境 | IntegrationRuntimeReferenc
 
 若要执行带有数据流活动的调试管道运行，必须通过顶部栏上的 "数据流**调试**" 滑块来切换数据流调试模式。 调试模式允许您针对活动的 Spark 群集运行数据流。 有关详细信息，请参阅[调试模式](concepts-data-flow-debug-mode.md)。
 
-![“调试”按钮](media/data-flow/debugbutton.png "“调试”按钮")
+![调试按钮](media/data-flow/debugbutton.png "调试按钮")
 
 调试管道针对活动调试群集运行，而不是在数据流活动设置中指定的集成运行时环境。 启动调试模式时，可以选择调试计算环境。
 

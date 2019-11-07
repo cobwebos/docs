@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 06/28/2019
-ms.openlocfilehash: a45548d3698d28a0189be4f46c26e418da8c91ef
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 272dbbbc335574456feebfb85e4c5eafd544f8d6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489634"
+ms.locfileid: "73574295"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>用 TensorBoard 和 Azure 机器学习可视化试验运行和指标
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,13 +28,16 @@ ms.locfileid: "73489634"
 
 + 对于不以本机方式输出 TensorBoard 可耗用文件（如 Scikit-learn）的试验或 Azure 机器学习试验，请使用[`export_to_tensorboard()` 方法](#export)将运行历史记录导出为 TensorBoard 日志并从那里启动 TensorBoard。 
 
-## <a name="prerequisites"></a>必备组件
+> [!TIP]
+> 本文档中的信息主要面向需要监视模型定型过程的数据科学家和开发人员。 如果你是对监视 Azure 机器学习中的资源使用情况和事件（如配额、已完成的培训运行或已完成的模型部署）感兴趣的管理员，请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
+
+## <a name="prerequisites"></a>先决条件
 
 * 若要启动 TensorBoard 并查看试验运行历史记录，你的实验需要预先启用日志记录，以跟踪其指标和性能。  
 
-* 此操作方法中的代码可在以下任一环境中运行： 
+* 本文档中的代码可在以下任一环境中运行： 
 
-    * Azure 机器学习计算实例-无需下载或安装
+    * Azure 机器学习笔记本 VM-无需下载或安装
 
         * 完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)，创建随 SDK 和示例存储库预先加载的专用笔记本服务器。
 
@@ -216,7 +219,7 @@ data = {
 
 ### <a name="run-experiment-and-log-metrics"></a>运行试验和日志度量值
 
-在此代码中，我们将在运行历史记录中训练线性回归模型和日志关键指标、alpha 系数、`alpha` 和均值误差 `mse`。
+在此代码中，我们将在运行历史记录中训练线性回归模型和日志关键指标、alpha 系数、`alpha`和平均方形错误，`mse`。
 
 ```Python
 from tqdm import tqdm

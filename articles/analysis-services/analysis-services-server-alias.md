@@ -1,27 +1,27 @@
 ---
 title: Azure Analysis Services 别名服务器名称 | Microsoft Docs
-description: 介绍了如何创建和使用服务器名称别名。
+description: 了解如何创建 Azure Analysis Services 服务器名称别名。 然后，用户可以使用较短的别名，而不是服务器名称连接到服务器。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ea618ecb29451650cbb01e9c95d263f42d406555
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5e7017fad90e32cb8c4b952987fe248e463e4d03
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146346"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572293"
 ---
 # <a name="alias-server-names"></a>别名服务器名称
 
-通过使用服务器名称别名，用户可以使用较短的“别名”而非服务器名称来连接到 Azure Analysis Services 服务器。 从客户端应用程序进行连接时，将使用 **link://** 协议格式将别名指定为终结点。 然后，终结点返回实际的服务器名称以便进行连接。
+通过使用服务器名称别名，用户可以使用较短的“别名”而非服务器名称来连接到 Azure Analysis Services 服务器。 从客户端应用程序进行连接时，可以使用 **link://** 协议格式将别名指定为终结点。 然后，终结点会返回进行连接所需的真实的服务器名称。
 
 别名服务器名称在下列方面具有优势：
 
 - 在不影响用户的情况下在服务器之间迁移模型。 
-- 友好的服务器名称更方便用户记忆。 
+- 用户更容易记住友好的服务器名称。 
 - 在一天中的不同时间将用户定向到不同的服务器。 
 - 将不同区域中的用户定向到在地理上更近的实例，就像使用 Azure 流量管理器时一样。 
 

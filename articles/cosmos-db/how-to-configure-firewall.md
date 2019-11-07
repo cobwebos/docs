@@ -4,14 +4,14 @@ description: 了解如何配置 IP 访问控制策略，以为 Azure Cosmos 帐�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: d4fab572f31d3187135ea3ac406431ced98828b1
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 8522a537301c1d35da2a2eb46b4374fa4daf6a27
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815931"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580687"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置 IP 防火墙
 
@@ -36,11 +36,11 @@ ms.locfileid: "71815931"
 
 以编程的方式启用 IP 访问控制策略时，需将 Azure 门户的 IP 地址添加到 ipRangeFilter 属性以维持访问。 门户 IP 地址是：
 
-|地区|IP 地址|
+|区域|IP 地址|
 |------|----------|
 |德国|51.4.229.218|
 |中国|139.217.8.252|
-|US Gov|52.244.48.71|
+|美国政府|52.244.48.71|
 |所有其他区域|104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26|
 
 若要允许访问 Azure 门户，可以选择“允许从 Azure 门户访问”选项，如以下屏幕截图所示：
@@ -54,7 +54,7 @@ ms.locfileid: "71815931"
 > [!NOTE]
 > 该选项将防火墙配置为允许来自 Azure 的所有请求，包括来自 Azure 中部署的其他客户的订阅的请求。 此选项允许的 IP 地址较为广泛，因为限制了防火墙策略的有效性。 仅当请求并非来自虚拟网络中的静态 IP 或子网时，才使用此选项。 选择此选项将自动允许从 Azure 门户进行访问，因为 Azure 门户在 Azure 中部署。
 
-可以通过选择 "在**Azure 数据中心内接受连接**" 选项启用对 Azure 门户的访问权限，如以下屏幕截图所示：
+要想允许访问 Azure 门户，可以选择“接受来自 Azure 数据中心内部的连接”选项，如以下屏幕截图所示：
 
 ![此屏幕截图显示了如何在 Azure 门户中打开“防火墙”页](./media/how-to-configure-firewall/enable-azure-services.png)
 
@@ -84,7 +84,7 @@ ms.locfileid: "71815931"
 
 如以下屏幕截图所示，可以在 Azure 门户中检索虚拟机的 IP 地址：
 
-![该屏幕截图显示在 Azure 门户中显示的虚拟机的公共 IP 地址](./media/how-to-configure-firewall/public-ip-addresses-dns.png)
+![显示在 Azure 门户中显示的虚拟机的公共 IP 地址的屏幕截图](./media/how-to-configure-firewall/public-ip-addresses-dns.png)
 
 将虚拟机实例添加到组时，这些实例会自动获得 Azure Cosmos DB 帐户的访问权限。
 
@@ -94,13 +94,13 @@ ms.locfileid: "71815931"
 
 ## <a id="configure-ip-firewall-arm"></a>使用资源管理器模板配置 IP 防火墙
 
-若要配置对 Azure Cosmos DB 帐户的访问控制，请确保资源管理器模板指定 **ipRangeFilter** 属性，其中包含允许的 IP 范围列表。 如果将 IP 防火墙配置为已部署的 Cosmos 帐户，请确保 `locations` 数组与当前部署的位置匹配。 不能同时修改 `locations` 数组和其他属性。 有关 Azure Cosmos DB 的 Azure 资源管理器模板的详细信息和示例，请参阅[azure 资源管理器 Azure Cosmos DB 模板](resource-manager-samples.md)
+若要配置对 Azure Cosmos DB 帐户的访问控制，请确保资源管理器模板指定 **ipRangeFilter** 属性，其中包含允许的 IP 范围列表。 如果将 IP 防火墙配置为已部署的 Cosmos 帐户，请确保 `locations` 数组与当前部署的位置匹配。 不能同时修改 `locations` 数组和其他属性。 有关用于 Azure Cosmos DB 的 Azure 资源管理器模板的详细信息和示例，请参阅[用于 Azure Cosmos DB 的 Azure 资源管理器模板](resource-manager-samples.md)
 
 ```json
 {
   "type": "Microsoft.DocumentDB/databaseAccounts",
   "name": "[variables('accountName')]",
-  "apiVersion": "2016-03-31",
+  "apiVersion": "2019-08-01",
   "location": "[parameters('location')]",
   "kind": "GlobalDocumentDB",
   "properties": {
@@ -108,8 +108,7 @@ ms.locfileid: "71815931"
     "locations": "[variables('locations')]",
     "databaseAccountOfferType": "Standard",
     "enableAutomaticFailover": "[parameters('automaticFailover')]",
-    "enableMultipleWriteLocations": "[parameters('multipleWriteLocations')]",
-    "ipRangeFilter":"183.240.196.255,104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26"
+    "ipRangeFilter":"40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26"
   }
 }
 ```

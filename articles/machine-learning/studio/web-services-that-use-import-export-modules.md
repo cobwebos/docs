@@ -1,5 +1,6 @@
 ---
-title: 导入/导出 web services 中的数据-Azure 机器学习 Studio （经典） |Microsoft Docs
+title: 导入/导出 web 服务中的数据
+titleSuffix: ML Studio (classic) Azure
 description: 了解如何使用导入数据和导出数据模块从 Web 服务发送和接收数据。
 services: machine-learning
 author: xiaoharper
@@ -11,12 +12,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: a9259856a792dbd3c2f22ed98eef26c8e5f7b17d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3a88d3958378a0746a22e99a817ad9ecebf217dc
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500111"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684712"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>部署使用数据导入和数据导出模块 Azure 机器学习 Studio （经典） web 服务
 

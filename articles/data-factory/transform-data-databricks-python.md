@@ -1,5 +1,5 @@
 ---
-title: 使用 Databricks Python 转换数据 - Azure | Microsoft Docs
+title: 用 Databricks Python 转换数据-Azure
 description: 了解如何通过运行 Databricks Python 处理或转换数据。
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: maghan
 manager: craigg
-ms.openlocfilehash: 02c4644c4440c3a00a21ef22674bcc0d00902ac2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 47654e8183dab120376f94df63d7664ead5dd580
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140786"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683933"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Python 活动转换数据
 
-[数据工厂管道](concepts-pipelines-activities.md)中的 Azure Databricks Python 活动在 Azure Databricks 群集中运行 Python 文件。 本文基于 [数据转换活动](transform-data.md) 一文，后者概述了数据转换和受支持的转换活动。 Azure Databricks 是一个用于运行 Apache Spark 的托管平台。
+[数据工厂管道](concepts-pipelines-activities.md)中的 Azure Databricks Python 活动在 Azure Databricks 群集中运行 Python 文件。 本文基于 [数据转换活动](transform-data.md) 一文，后者概述了数据转换和受支持的转换活动。 Azure Databricks 是用于运行 Apache Spark 的托管平台。
 
 有关此功能的十一分钟介绍和演示，请观看以下视频：
 
@@ -62,10 +62,10 @@ ms.locfileid: "70140786"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-|属性|说明|必填|
+|属性|说明|必选|
 |---|---|---|
 |name|管道中活动的名称。|是|
-|description|描述活动用途的文本。|否|
+|说明|描述活动用途的文本。|否|
 |type|对于 Databricks Python 活动，活动类型是 DatabricksSparkPython。|是|
 |linkedServiceName|Databricks 链接服务的名称，Python 活动在其上运行。 若要了解此链接服务，请参阅 [计算链接服务](compute-linked-services.md) 一文。|是|
 |pythonFile|要执行的 Python 文件的 URI。 仅支持 DBFS 路径。|是|

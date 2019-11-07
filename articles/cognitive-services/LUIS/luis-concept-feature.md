@@ -11,18 +11,20 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: 08f78e4945b612a92d372c832490c380d3749811
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cab6eb38459a632f1e7bd1a21e6a7251d33f683
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487509"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647417"
 ---
 # <a name="machine-learned-features"></a>计算机学习的功能 
 
 在机器学习中，*功能*是您的系统在学习 & 的情况下所观察到的数据的特征或属性。 在语言理解（LUIS）中，一项功能描述和说明了对你的意图和实体的重要程度。
 
-## <a name="features-in-language-understanding"></a>语言理解中的功能
+在[预览版 LUIS 门户](https://preview.luis.ai)中，功能是_描述符_，因为它们用于_描述_意向或实体。  
+
+## <a name="features-_descriptors_-in-language-understanding"></a>语言理解中的功能（_描述符_）
 
 功能（也称为描述符）描述了有助于语言理解确定示例最谈话的线索。 功能包括： 
 

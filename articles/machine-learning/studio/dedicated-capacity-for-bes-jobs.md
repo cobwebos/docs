@@ -1,6 +1,6 @@
 ---
 title: Azure Batch 服务作业
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: 机器学习 Studio （经典）作业 Azure Batch 服务的概述。 可以通过批处理池处理创建池，在其中提交批处理作业。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: 1de7ad10a54c34595f69a543843097cee1377067
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a0e829f61117df25f8643301a0acdadeafd7c267
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493027"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684813"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>Azure 机器学习 Studio （经典）作业的 Azure Batch 服务
 
@@ -43,7 +43,7 @@ ms.locfileid: "73493027"
 
 可以使用任何基于新建 Resource Manager 的 Web 服务，但请注意，作业的计费取决于与该服务关联的计费计划。 可能需要特意为运行批处理池作业而创建 Web 服务和新的计费计划。
 
-有关如何创建 Web 服务的详细信息，请参阅[部署 Azure 机器学习 Web 服务](publish-a-machine-learning-web-service.md)。
+有关如何创建 Web 服务的详细信息，请参阅[部署 Azure 机器学习 Web 服务](deploy-a-machine-learning-web-service.md)。
 
 创建池后，即可使用 Web 服务的批处理请求 URL 提交 BES 作业。 可以选择将作业提交到池，或者提交到经典批处理。 要将作业提交到批处理池处理，请将以下参数添加到作业提交请求正文：
 

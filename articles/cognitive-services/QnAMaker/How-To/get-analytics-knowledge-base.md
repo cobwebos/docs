@@ -9,14 +9,14 @@ displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: 5c55084a57e46931049841f5011941b2115e9e69
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 72d2598c1ff17f80fc264e6d547a799ab74a163f
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961527"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621977"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>获取有关知识库的分析
 
@@ -33,15 +33,15 @@ ms.locfileid: "70961527"
     ```kusto
     requests
     | where url endswith "generateAnswer"
-    | project timestamp, id, name, resultCode, duration, performanceBucket
-    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer"
+    | project timestamp, id, url, resultCode, duration, performanceBucket
+    | parse kind = regex url with *"(?i)knowledgebases/"KbId"/generateAnswer"
     | join kind= inner (
     traces | extend id = operation_ParentId
     ) on id
     | extend question = tostring(customDimensions['Question'])
     | extend answer = tostring(customDimensions['Answer'])
     | extend score = tostring(customDimensions['Score'])
-    | project timestamp, resultCode, duration, id, question, answer, score, performanceBucket,KbId 
+    | project timestamp, resultCode, duration, id, question, answer, score, performanceBucket,KbId
     ```
 
     选择“运行”以运行查询。
@@ -53,50 +53,69 @@ ms.locfileid: "70961527"
 ### <a name="total-90-day-traffic"></a>90 天流量总计
 
 ```kusto
-    //Total Traffic
-    requests
-    | where url endswith "generateAnswer" and name startswith "POST"
-    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer" 
-    | summarize ChatCount=count() by bin(timestamp, 1d), KbId
+//Total Traffic
+requests
+| where url endswith "generateAnswer" and name startswith "POST"
+| parse kind = regex url with *"(?i)knowledgebases/"KbId"/generateAnswer" 
+| summarize ChatCount=count() by bin(timestamp, 1d), KbId
 ```
 
 ### <a name="total-question-traffic-in-a-given-time-period"></a>给定时间段内的问题流量总计
 
 ```kusto
-    //Total Question Traffic in a given time period
-    let startDate = todatetime('2018-02-18');
-    let endDate = todatetime('2018-03-12');
-    requests
-    | where timestamp <= endDate and timestamp >=startDate
-    | where url endswith "generateAnswer" and name startswith "POST" 
-    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer" 
-    | summarize ChatCount=count() by KbId
+//Total Question Traffic in a given time period
+let startDate = todatetime('2019-01-01');
+let endDate = todatetime('2020-12-31');
+requests
+| where timestamp <= endDate and timestamp >=startDate
+| where url endswith "generateAnswer" and name startswith "POST" 
+| parse kind = regex url with *"(?i)knowledgebases/"KbId"/generateAnswer" 
+| summarize ChatCount=count() by KbId
 ```
 
 ### <a name="user-traffic"></a>用户流量
 
 ```kusto
-    //User Traffic
-    requests
-    | where url endswith "generateAnswer"
-    | project timestamp, id, name, resultCode, duration
-    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer"
-    | join kind= inner (
-    traces | extend id = operation_ParentId 
-    ) on id
-    | extend UserId = tostring(customDimensions['UserId'])
-    | summarize ChatCount=count() by bin(timestamp, 1d), UserId, KbId
+//User Traffic
+requests
+| where url endswith "generateAnswer"
+| project timestamp, id, url, resultCode, duration
+| parse kind = regex url with *"(?i)knowledgebases/"KbId"/generateAnswer"
+| join kind= inner (
+traces | extend id = operation_ParentId 
+) on id
+| extend UserId = tostring(customDimensions['UserId'])
+| summarize ChatCount=count() by bin(timestamp, 1d), UserId, KbId
 ```
 
 ### <a name="latency-distribution-of-questions"></a>问题的延迟分布
 
 ```kusto
-    //Latency distribution of questions
-    requests
-    | where url endswith "generateAnswer" and name startswith "POST"
-    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer"
-    | project timestamp, id, name, resultCode, performanceBucket, KbId
-    | summarize count() by performanceBucket, KbId
+//Latency distribution of questions
+requests
+| where url endswith "generateAnswer" and name startswith "POST"
+| parse kind = regex url with *"(?i)knowledgebases/"KbId"/generateAnswer"
+| project timestamp, id, name, resultCode, performanceBucket, KbId
+| summarize count() by performanceBucket, KbId
+```
+
+### <a name="unanswered-questions"></a>未答复的问题
+
+```kusto
+// Unanswered questions
+requests
+| where url endswith "generateAnswer"
+| project timestamp, id, url
+| parse kind = regex url with *"(?i)knowledgebases/"KbId"/generateAnswer"
+| join kind= inner (
+traces | extend id = operation_ParentId
+) on id
+| extend question = tostring(customDimensions['Question'])
+| extend answer = tostring(customDimensions['Answer'])
+| extend score = tostring(customDimensions['Score'])
+| where  score  == "0"
+| project timestamp, KbId, question, answer, score 
+| order  by timestamp  desc
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,5 +1,5 @@
 ---
-title: Windows 虚拟桌面中的 FSLogix 配置文件容器和 Azure 文件-Azure
+title: Windows 虚拟桌面 FSLogix 配置文件容器文件-Azure
 description: 本文介绍 Windows 虚拟桌面和 Azure 文件中的 FSLogix 配置文件容器。
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: e651695055b9bfdbfbb5b6281af8c1d21235009b
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: cf4274931d83b51afb4a8ada7d1c9040ccce3c14
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311794"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606834"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix 配置文件容器和 Azure 文件
 
@@ -71,7 +71,7 @@ S2D 群集要求在安全状态下对操作系统进行修补、更新和维护�
 2018年11月19日， [Microsoft 获取了 FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/)。 FSLogix 解决了许多配置文件容器挑战。 其中的关键是：
 
 - **性能：** [FSLogix 配置文件容器](https://fslogix.com/products/profile-containers)具有高性能，并解决过去已阻止缓存 exchange 模式的性能问题。
-- **Business**如果没有 FSLogix 配置文件容器，则在非持久性 RDSH 或 VDI 环境中不支持 OneDrive for Business。 [OneDrive for business 和 FSLogix 最佳实践](https://fslogix.com/products/technical-faqs/284-onedrive-for-business-and-fslogix-best-practices)介绍了它们如何交互。 有关详细信息，请参阅[使用虚拟机上的同步客户端](https://docs.microsoft.com/deployoffice/rds-onedrive-business-vdi)。
+- **OneDrive：** 如果没有 FSLogix 配置文件容器，则在非持久性 RDSH 或 VDI 环境中不支持 OneDrive for Business。 [OneDrive for business 和 FSLogix 最佳实践](https://fslogix.com/products/technical-faqs/284-onedrive-for-business-and-fslogix-best-practices)介绍了它们如何交互。 有关详细信息，请参阅[使用虚拟机上的同步客户端](https://docs.microsoft.com/deployoffice/rds-onedrive-business-vdi)。
 - **其他文件夹：** FSLogix 提供扩展用户配置文件以包括更多文件夹的功能。
 
 由于收购，Microsoft 开始将现有用户配置文件解决方案（例如 UPD）替换为 FSLogix 配置文件容器。

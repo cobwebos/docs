@@ -3,28 +3,26 @@ title: 使用 GitHub 操作从 CI/CD 管道部署代码-Azure App Service |Micro
 description: 了解如何使用 GitHub 操作将代码部署到应用服务
 services: app-service
 documentationcenter: ''
-author: jasonfreeberg
-writer: ''
-manager: ''
-editor: ''
-ms.assetid: ''
+author: cephalin
+manager: gwallace
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2019
+ms.date: 10/25/2019
 ms.author: jafreebe
-ms.openlocfilehash: b7ec1ae1d04fb1dbe16fd9f4a2640b2b3d9584c2
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.reviewer: ushan
+ms.openlocfilehash: 9842057a590b08f2207a1ea166e0ce0d457e4381
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809768"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620517"
 ---
-# <a name="github-actions-for-deploying-to-app-service"></a>用于部署到应用服务的 GitHub 操作
+# <a name="deploy-to-app-service-using-github-actions"></a>使用 GitHub 操作部署到应用服务
 
-[GitHub 操作](https://help.github.com/en/articles/about-github-actions)使您可以灵活地生成自动软件开发生命周期工作流。 使用 GitHub Azure App Service 操作时，可以使用 GitHub 操作自动化工作流，以便部署[Azure Web 应用](https://azure.microsoft.com/services/app-service/web/)。
+[GitHub 操作](https://help.github.com/en/articles/about-github-actions)使您可以灵活地生成自动软件开发生命周期工作流。 使用 GitHub Azure App Service 操作时，可以使用 GitHub 操作自动完成要部署到[Azure App Service](overview.md)的工作流。
 
 > [!IMPORTANT]
 > GitHub 操作当前为 beta 版本。 必须首先[注册，才能](https://github.com/features/actions)使用 GitHub 帐户加入预览版。
@@ -32,7 +30,7 @@ ms.locfileid: "72809768"
 
 工作流是由存储库中 `/.github/workflows/` 路径中的 YAML （docker-compose.override.yml）文件定义的。 此定义包含组成工作流的各种步骤和参数。
 
-对于 Azure Web 应用工作流，该文件包含三个部分：
+对于 Azure App Service 工作流，文件包含三个部分：
 
 |部分  |任务  |
 |---------|---------|
@@ -42,25 +40,25 @@ ms.locfileid: "72809768"
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
-你可以使用[Azure CLI](https://docs.microsoft.com/cli/azure/)中的[az ad sp 创建-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)命令来创建[服务主体](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)。 你可以使用 Azure 门户中[Azure Cloud Shell](https://shell.azure.com/)或通过选择 "**试用**" 按钮来运行此命令。
+你可以使用[Azure CLI](https://docs.microsoft.com/cli/azure/)中的[az ad sp 创建-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)命令来创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 你可以使用 Azure 门户中[Azure Cloud Shell](https://shell.azure.com/)或通过选择 "**试用**" 按钮来运行此命令。
 
 ```azurecli-interactive
-az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
+az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> --sdk-auth
 ```
 
-在此示例中，请将资源中的占位符替换为你的订阅 ID、资源组和 web 应用名称。 输出是提供对 Web 应用的访问权限的角色分配凭据。 复制此 JSON 对象，该对象可用于从 GitHub 进行身份验证。
+在此示例中，将资源中的占位符替换为你的订阅 ID、资源组名称和应用名称。 输出是提供对应用服务应用的访问权限的角色分配凭据。 复制此 JSON 对象，该对象可用于从 GitHub 进行身份验证。
 
 > [!NOTE]
 > 如果决定使用发布配置文件进行身份验证，则不需要创建服务主体。
 
 > [!IMPORTANT]
-> 授予最小访问权限始终是一种很好的做法。 这就是上一个示例中的作用域仅限于特定的 web 应用，而不是整个资源组。
+> 授予最小访问权限始终是一种很好的做法。 这就是上一个示例中的作用域仅限于特定的应用服务应用，而不是整个资源组。
 
 ## <a name="configure-the-github-secret"></a>配置 GitHub 机密
 
 你还可以使用应用级凭据，即发布配置文件。 按照以下步骤配置机密：
 
-1. 使用 "**获取发布配置文件**" 选项从门户下载 Web 应用的发布配置文件。
+1. 使用 "**获取发布配置文件**" 选项从门户下载应用服务应用的发布配置文件。
 
 2. 在[GitHub](https://github.com/)中，浏览存储库，选择 "**设置" > 机密 "> 添加新密钥**
 
@@ -80,11 +78,11 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
     ![机密](media/app-service-github-actions/app-service-secrets.png)
 
-## <a name="setup-the-environment"></a>设置环境
+## <a name="set-up-the-environment"></a>设置环境
 
 可以使用其中一个安装操作来设置环境。
 
-|**语言**  |**设置操作**  |
+|语言  |**设置操作**  |
 |---------|---------|
 |**.NET**     | `actions/setup-dotnet` |
 |**Java**     | `actions/setup-java` |
@@ -130,9 +128,9 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
         java-version: '1.8.x'
 ```
 
-## <a name="build-the-web-app"></a>构建 Web 应用
+## <a name="build-the-web-app"></a>构建 web 应用
 
-这取决于语言和 Azure Web 应用支持的语言，本节应为每种语言的标准生成步骤。
+这取决于语言和 Azure App Service 支持的语言，此部分应为每种语言的标准生成步骤。
 
 下面的示例以各种支持的语言显示生成 web 应用的工作流部分。
 
@@ -189,20 +187,20 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 ```
-## <a name="deploy-the-web-app"></a>部署 Web 应用
+## <a name="deploy-to-app-service"></a>部署到应用服务
 
-若要将代码部署到 web 应用，需要使用 `Azure/appservice-actions/webapp@master` 操作。 此操作有4个参数：
+若要将代码部署到应用服务应用，请使用 `azure/webapps-deploy@v1 ` 操作。 此操作具有四个参数：
 
 | **Parameter**  | **解释**  |
 |---------|---------|
-| **应用名称** | 请求Azure Web 应用的名称 | 
+| **应用名称** | 请求应用服务应用的名称 | 
 | **发布-配置文件** | 可有可无用 Web 部署的机密发布配置文件内容 |
 | **package** | 可有可无包或文件夹的路径。 \* .zip、* war、* .jar 或要部署的文件夹 |
 | **槽名称** | 可有可无输入生产槽以外的现有槽 |
 
 ### <a name="deploy-using-publish-profile"></a>使用发布配置文件进行部署
 
-下面是使用发布配置文件构建 node.js Web 应用并将其部署到 Azure 的示例工作流。
+下面是使用发布配置文件生成 node.js 应用并将其部署到 Azure 的示例工作流。
 
 ```yaml
 # File: .github/workflows/workflow.yml
@@ -236,7 +234,7 @@ jobs:
 
 ### <a name="deploy-using-azure-service-principal"></a>使用 Azure 服务主体进行部署
 
-下面是使用 Azure 服务主体构建 node.js Web 应用并将其部署到 Azure 的示例工作流。
+下面是使用 Azure 服务主体生成 node.js 应用并将其部署到 Azure 的示例工作流。
 
 ```yaml
 on: [push]
@@ -281,7 +279,9 @@ jobs:
 
 可在 GitHub 上找到一组分组到不同存储库中的操作，其中每个操作都包含文档和示例，帮助你将 GitHub 用于 CI/CD 并将你的应用部署到 Azure。
 
-- [Azure 登录](https://github.com/Azure/actions)
+- [要部署到 Azure 的操作工作流](https://github.com/Azure/actions-workflow-samples)
+
+- [Azure 登录](https://github.com/Azure/login)
 
 - [Azure WebApp](https://github.com/Azure/webapps-deploy)
 

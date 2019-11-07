@@ -1,5 +1,5 @@
 ---
-title: '设计器示例 #3：回归到价格和比较算法'
+title: 设计器：预测车载价格（回归）
 titleSuffix: Azure Machine Learning
 description: 本文介绍如何使用设计器（预览）生成复杂的机器学习管道，无需编写单行代码。 了解如何定型和比较多个回归模型，以根据技术特征预测汽车的价格
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 4fb2e4c5c96c0c4c1b4d8ef14de65e470d545638
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d73f6d67afff13696de78d026ff65228fd68fb28
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515429"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647953"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>示例 2-回归：预测价格和比较算法
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "73515429"
 
 [管道 ![图](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 

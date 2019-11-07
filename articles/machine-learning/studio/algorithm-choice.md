@@ -1,6 +1,6 @@
 ---
 title: 如何选择算法
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: 如何在群集、分类或回归试验中选择 Azure 机器学习 Studio （经典）算法来监视和无人监督学习。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 03/04/2019
-ms.openlocfilehash: 02e72286e824de49be4fbfddcdc5d0e68625f5ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e8d296f8752e06e6e47c349be9c900b9d0489ec5
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493526"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619765"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio-classic"></a>如何为 Azure 机器学习 Studio （经典）选择算法
 

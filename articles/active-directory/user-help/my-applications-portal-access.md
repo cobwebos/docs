@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74033200bc365caf13035284108f2cf05eee7bbe
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e7eb3dbe3ce82b794a5ed530107781b634ceb32f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180746"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573858"
 ---
 # <a name="access-and-start-apps-from-the-my-apps-preview-portal"></a>从 "我的应用（预览版）" 门户访问和启动应用
 
@@ -53,7 +53,7 @@ ms.locfileid: "73180746"
 
 1. 登录到计算机上的工作或学校帐户。
 
-2. 打开受支持的 web 浏览器并中转到 https://myapps.microsoft.com ，或使用组织提供的链接。 例如，你可能会被定向到为你的组织使用自定义页面，如 `https://myapps.microsoft.com/contoso.com`。
+2. 打开受支持的 web 浏览器并中转到 https://myapps.microsoft.com，或使用组织提供的链接。 例如，你可能会被定向到为你的组织使用自定义页面，如 `https://myapps.microsoft.com/contoso.com`。
 
     此时将显示 "**应用**" 页，其中显示组织所拥有的所有基于云的应用程序，并可供你使用。
 
@@ -63,7 +63,7 @@ ms.locfileid: "73180746"
 
 1. 在移动设备上，从[Apple 应用商店](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)或[Google Play 商店](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)下载并安装 Intune Managed Browser 应用。
 
-2. 打开 Intune Managed Browser 应用，中转到 https://myapps.microsoft.com ，或者使用你的组织提供的链接。 例如，你可能会被定向到组织的自定义页面，如 https://myapps.microsoft.com/contoso.com 。
+2. 打开 Intune Managed Browser 应用，中转到 https://myapps.microsoft.com，或者使用你的组织提供的链接。 例如，你可能会被定向到组织的自定义页面，如 https://myapps.microsoft.com/contoso.com。
 
     此时将显示 "**应用**" 页，其中显示组织所拥有的所有基于云的应用程序，并可供你使用。
 
@@ -73,7 +73,7 @@ ms.locfileid: "73180746"
 
 1. 在移动设备上，启动 web 浏览器应用，如 Safari。
 
-2. 请参阅 https://myapps.microsoft.com ，或使用组织提供的链接。 例如，你可能会被定向到组织的自定义页面，如 https://myapps.microsoft.com/contoso.com 。
+2. 请参阅 https://myapps.microsoft.com，或使用组织提供的链接。 例如，你可能会被定向到组织的自定义页面，如 https://myapps.microsoft.com/contoso.com。
 
     此时将显示 "**应用**" 页，其中显示组织所拥有的所有基于云的应用程序，并可供你使用。
 
@@ -83,7 +83,7 @@ ms.locfileid: "73180746"
 
 1. 在移动设备上，启动 web 浏览器应用，如 Google Chrome。
 
-2. 请参阅 https://myapps.microsoft.com ，或使用组织提供的链接。 例如，你可能会被定向到组织的自定义页面，如 https://myapps.microsoft.com/contoso.com 。
+2. 请参阅 https://myapps.microsoft.com，或使用组织提供的链接。 例如，你可能会被定向到组织的自定义页面，如 https://myapps.microsoft.com/contoso.com。
 
     此时将显示 "**应用**" 页，其中显示组织所拥有的所有基于云的应用程序，并可供你使用。
 
@@ -108,8 +108,8 @@ ms.locfileid: "73180746"
 
 ## <a name="related-articles"></a>相关文章
 
-- [更新你的配置文件和帐户信息](myprofile-portal-overview.md)。 有关如何更新显示在 "我的个人**资料**（预览版）" 门户中的个人信息的说明。
+- [更新你的配置文件和帐户信息](my-account-portal-overview.md)。 有关如何更新显示在 "我的个人**资料**（预览版）" 门户中的个人信息的说明。
 
-- [管理你的组织](myprofile-portal-organizations-page.md)。 有关如何在 "**我的个人资料**" 门户的 "**组织**" 页上查看和管理组织相关信息的说明。
+- [管理你的组织](my-account-portal-organizations-page.md)。 有关如何在 "**我的个人资料**" 门户的 "**组织**" 页上查看和管理组织相关信息的说明。
 
-- [管理连接的设备](myprofile-portal-devices-page.md)。 有关如何使用工作或学校帐户在 "**我的配置文件**门户" 的 "**设备**" 页上管理所连接的设备的说明。
+- [管理连接的设备](my-account-portal-devices-page.md)。 有关如何使用工作或学校帐户在 "**我的配置文件**门户" 的 "**设备**" 页上管理所连接的设备的说明。

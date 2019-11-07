@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8da27773cc74324c1dde5a95de1abef3256c1f1c
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 06de71776cdf503ff0df9fbf3b28cf9e01a12e01
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811676"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73575275"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>在 Azure Cosmos 容器上预配吞吐量
 
@@ -33,9 +33,9 @@ ms.locfileid: "71811676"
 
     ![数据资源管理器的屏幕截图，突出显示“新建集合”](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
 
-## <a name="provision-throughput-using-azure-cli-or-powershell"></a>使用 Azure CLI 或 PowerShell 设置吞吐量
+## <a name="provision-throughput-using-azure-cli-or-powershell"></a>使用 Azure CLI 或 PowerShell 预配吞吐量
 
-若要创建具有专用吞吐量的容器，请参阅。
+若要创建具有专用吞吐量的容器，请参阅
 
 * [使用 Azure CLI 创建容器](manage-with-cli.md#create-a-container)
 * [使用 Powershell 创建容器](manage-with-powershell.md#create-container)
@@ -67,14 +67,23 @@ await client.CreateDocumentCollectionAsync(
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/ContainerDocsSampleCode.cs?name=ContainerCreateWithThroughput)]
 
 ### <a id="dotnet-cassandra"></a>Cassandra API
+类似的命令可以通过任何 CQL 兼容的驱动程序发出。
 
 ```csharp
 // Create a Cassandra table with a partition (primary) key and provision throughput of 400 RU/s
-session.Execute(CREATE TABLE myKeySpace.myTable(
+session.Execute("CREATE TABLE myKeySpace.myTable(
     user_id int PRIMARY KEY,
     firstName text,
-    lastName text) WITH cosmosdb_provisioned_throughput=400);
+    lastName text) WITH cosmosdb_provisioned_throughput=400");
+
 ```
+### <a name="alter-or-change-throughput-for-cassandra-table"></a>更改或更改 Cassandra 表的吞吐量
+
+```csharp
+// Altering the throughput too can be done through code by issuing following command
+session.Execute("ALTER TABLE myKeySpace.myTable WITH cosmosdb_provisioned_throughput=5000");
+```
+
 
 ## <a name="next-steps"></a>后续步骤
 

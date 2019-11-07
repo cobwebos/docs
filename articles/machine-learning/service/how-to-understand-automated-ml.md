@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 93695e0bbcb81a570519a6f74cfdeab4ef85f076
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 7f8789076b00cd2b5a0694cf1f52e5dfe1569aee
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489388"
+ms.locfileid: "73571284"
 ---
 # <a name="understand-automated-machine-learning-results"></a>了解自动化机器学习结果
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "73489388"
 + [回归模型的度量值、图表和图形](#regression)
 + [模型 interpretability 和特征重要性](#explain-model)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
@@ -50,11 +50,11 @@ ms.locfileid: "73489388"
 
    [![试验列表](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list-expanded.png)
 
-1. 在下表中，选择 "**运行号码**"。
+1. 在下表中，选择 "**运行**"。
 
    [![试验运行](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png)）
 
-1. 在 "迭代" 表中，选择要进一步浏览的模型的**迭代号**。
+1. 在模型中，选择要进一步浏览的模型的**算法名称**。
 
    [![试验模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
 
@@ -91,12 +91,12 @@ f1_score_micro|F1 评分是精度和召回率的调和平均值。 微通过计�
 f1_score_weighted|F1 评分是精度和召回率的调和平均值。 按每个类的 F1 评分类频率计算的加权平均值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="weighted"|
 log_loss|这是（多项式） 逻辑回归及其扩展（例如神经网络）中使用的损失函数，在给定概率分类器的预测的情况下，定义为真实标签的负对数可能性。 对于包含 true 标签 ca-yt 的单个样本，{0,1} 在 ca-yt = 1 的情况下估计概率 yp，日志丢失为-log P （&#124;ca-yt yp） =-（ca-yt log （yp） + （1-ca-yt） log （））。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|无|
 norm_macro_recall|规范化宏召回率是已规范化的宏召回率，因此，随机性能的评分为 0，完美性能的评分为 1。 这是通过 norm_macro_recall： = （recall_score_macro-R）/（1-R）实现的，其中 R 是用于随机预测的 recall_score_macro 的预期值（即，对二元分类使用 R = 0.5，对 C 类分类问题使用 R = （1/C））。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average = "宏" |
-precision_score_macro|Precision 是标记为特定类的，实际位于该类中的元素百分比。 宏是每个类的精度算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="macro"|
-precision_score_micro|Precision 是标记为特定类的，实际位于该类中的元素百分比。 通过计算总的实际正值和假正值，对微进行全局计算。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="micro"|
-precision_score_weighted|Precision 是标记为特定类的，实际位于该类中的元素百分比。 加权是每个类的精度的算术平均值，每个类中的真实实例的数量为加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="weighted"|
-recall_score_macro|Recall 是实际位于某个类中的已正确标记的元素百分比。 宏是每个类的算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="macro"|
-recall_score_micro|Recall 是实际位于某个类中的已正确标记的元素百分比。 通过计算总真实正值、假负值和假正值，来全局计算微|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="micro"|
-recall_score_weighted|Recall 是实际位于某个类中的已正确标记的元素百分比。 加权是每个类的每个类的算术平均值，按每个类中的真实实例的数目加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="weighted"|
+precision_score_macro|精度是正确标记的有效预测元素的百分比。 宏是每个类的精度算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="macro"|
+precision_score_micro|精度是正确标记的有效预测元素的百分比。 通过计算总的实际正值和假正值，对微进行全局计算。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="micro"|
+precision_score_weighted|精度是正确标记的有效预测元素的百分比。 加权是每个类的精度的算术平均值，每个类中的真实实例的数量为加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="weighted"|
+recall_score_macro|撤回是特定类中标记为正确的元素的百分比。 宏是每个类的算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="macro"|
+recall_score_micro|撤回是特定类中标记为正确的元素的百分比。 通过计算总真实正值、假负值和假正值，来全局计算微|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="micro"|
+recall_score_weighted|撤回是特定类中标记为正确的元素的百分比。 加权是每个类的每个类的算术平均值，按每个类中的真实实例的数目加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="weighted"|
 weighted_accuracy|加权准确度是精确的，其中每个示例给定的权重等于该示例的 true 类中的真实实例的比例。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight 是等于目标中每个元素的该类比例的向量|
 
 ### <a name="confusion-matrix"></a>混淆矩阵

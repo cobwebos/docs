@@ -1,5 +1,5 @@
 ---
-title: '设计器示例 #6：用于预测航班延迟的分类'
+title: 设计器：分类、预测航班延迟
 titleSuffix: Azure Machine Learning
 description: 本文介绍如何使用拖放设计器和自定义 R 代码生成机器学习模型，以预测航班延误。
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 4b21ebffe8959809acc71fc09aff7e58873e10b8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 10b3b78b4878eeddf2f786fda90ab9709e4bd2b4
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515520"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647199"
 ---
 # <a name="sample-6---classification-predict-flight-delays-using-r"></a>示例 6-分类：使用 R 预测航班延迟
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "73515520"
 
 [管道 ![图](media/how-to-ui-sample-classification-predict-flight-delay/pipeline-graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 

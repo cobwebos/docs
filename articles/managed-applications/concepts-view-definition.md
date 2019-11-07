@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: f51dbce3c251f4e89483d925ac657aac7eb928d8
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b23e844cb550a98328951bc6efae3c5039ff73bf
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804079"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607542"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>查看 Azure 托管应用程序中的定义项目
 
@@ -26,7 +26,7 @@ ms.locfileid: "72804079"
 
 ## <a name="view-definition-schema"></a>查看定义架构
 
-**ViewDefinition**文件只有一个顶级 `views` 属性，它是一组视图。 每个视图在托管应用程序用户界面中显示为目录中的单独菜单项。 每个视图都有一个设置视图类型的 `kind` 属性。 它必须设置为以下值之一：[概述](#overview)、[指标](#metrics)和[CustomResources](#custom-resources)。 有关详细信息，请参阅[viewDefinition 的当前 JSON 架构](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)。
+**ViewDefinition**文件只有一个顶级 `views` 属性，它是一组视图。 每个视图在托管应用程序用户界面中显示为目录中的单独菜单项。 每个视图都有一个设置视图类型的 `kind` 属性。 它必须设置为以下值之一：[概述](#overview)、[指标](#metrics)、 [CustomResources](#custom-resources)、[关联](#associations)。 有关详细信息，请参阅[viewDefinition 的当前 JSON 架构](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)。
 
 视图定义的示例 JSON：
 
@@ -91,10 +91,18 @@ ms.locfileid: "72804079"
                     {"key": "properties.myProperty2", "displayName": "Property 2", "optional": true}
                 ]
             }
+        },
+        {
+            "kind": "Associations",
+            "properties": {
+                "displayName": "Test association resource type",
+                "version": "1.0.0",
+                "targetResourceType": "Microsoft.Compute/virtualMachines",
+                "createUIDefinition": { }
+            }
         }
     ]
 }
-
 ```
 
 ## <a name="overview"></a>概述
@@ -119,15 +127,15 @@ ms.locfileid: "72804079"
 }
 ```
 
-|properties|需要|描述|
+|属性|必选|说明|
 |---------|---------|---------|
-|标头的值开始缓存响应|No|"概述" 页的标题。|
-|description|No|托管应用程序的说明。|
-|命令|No|"概述" 页的其他工具栏按钮的数组，请参阅[命令](#commands)。|
+|标头的值开始缓存响应|否|"概述" 页的标题。|
+|说明|否|托管应用程序的说明。|
+|命令|否|"概述" 页的其他工具栏按钮的数组，请参阅[命令](#commands)。|
 
 ![概述](./media/view-definition/overview.png)
 
-## <a name="metrics"></a>指标
+## <a name="metrics"></a>度量值
 
 `"kind": "Metrics"`
 
@@ -158,31 +166,31 @@ ms.locfileid: "72804079"
 }
 ```
 
-|properties|需要|描述|
+|属性|必选|说明|
 |---------|---------|---------|
-|displayName|No|视图的显示标题。|
-|版本|No|用于呈现视图的平台版本。|
+|displayName|否|视图的显示标题。|
+|version|否|用于呈现视图的平台版本。|
 |时间表|是|"指标" 页的图表数组。|
 
 ### <a name="chart"></a>图表
 
-|properties|需要|描述|
+|属性|必选|说明|
 |---------|---------|---------|
 |displayName|是|图表的显示标题。|
-|chartType|No|要用于此图表的可视化效果。 默认情况下，它使用折线图。 支持的图表类型： `Bar, Line, Area, Scatter`。|
+|chartType|否|要用于此图表的可视化效果。 默认情况下，它使用折线图。 支持的图表类型： `Bar, Line, Area, Scatter`。|
 |指标|是|要在此图表上绘制的度量值的数组。 若要详细了解 Azure 门户中支持的指标，请参阅[支持的指标和 Azure Monitor](../azure-monitor/platform/metrics-supported.md)|
 
 ### <a name="metric"></a>指标
 
-|properties|需要|描述|
+|属性|必选|说明|
 |---------|---------|---------|
 |name|是|指标的名称。|
 |aggregationType|是|要用于此指标的聚合类型。 支持的聚合类型： `none, sum, min, max, avg, unique, percentile, count`|
-|命名空间|No|确定正确的指标提供程序时要使用的其他信息。|
-|resourceTagFilter|No|将显示其度量值的资源标记数组（将用 `or` word 分隔）。 应用于资源类型筛选器之上。|
+|命名空间|否|确定正确的指标提供程序时要使用的其他信息。|
+|resourceTagFilter|否|将显示其度量值的资源标记数组（将用 `or` word 分隔）。 应用于资源类型筛选器之上。|
 |resourceType|是|要为其显示指标的资源类型。|
 
-![指标](./media/view-definition/metrics.png)
+![度量值](./media/view-definition/metrics.png)
 
 ## <a name="custom-resources"></a>自定义资源
 
@@ -218,15 +226,15 @@ ms.locfileid: "72804079"
 }
 ```
 
-|properties|需要|描述|
+|属性|必选|说明|
 |---------|---------|---------|
 |displayName|是|视图的显示标题。 对于**viewDefinition**中的每个 CustomResources 视图，标题应是**唯一**的。|
-|版本|No|用于呈现视图的平台版本。|
+|version|否|用于呈现视图的平台版本。|
 |resourceType|是|自定义资源类型。 必须是自定义提供程序的**唯一**自定义资源类型。|
-|icon|No|视图的图标。 示例图标列表在[JSON 架构](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)中定义。|
-|createUIDefinition|No|创建用于创建自定义资源命令的 UI 定义架构。 有关创建 UI 定义的简介，请参阅[CreateUiDefinition](create-uidefinition-overview.md)入门|
-|命令|No|CustomResources 视图的其他工具栏按钮的数组，请参阅[命令](#commands)。|
-|列|No|自定义资源的列的数组。 如果未定义，则默认情况下将显示 `name` 列。 列必须具有 `"key"` 和 `"displayName"`。 对于 "键"，提供要在视图中显示的属性的键。 如果是嵌套的，请使用点作为分隔符，例如 `"key": "name"` 或 `"key": "properties.property1"`。 对于 "显示名称"，提供要在视图中显示的属性的显示名称。 还可以提供 `"optional"` 属性。 如果设置为 true，则默认情况下将在视图中隐藏列。|
+|icon|否|视图的图标。 示例图标列表在[JSON 架构](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)中定义。|
+|createUIDefinition|否|创建用于创建自定义资源命令的 UI 定义架构。 有关创建 UI 定义的简介，请参阅[CreateUiDefinition](create-uidefinition-overview.md)入门|
+|命令|否|CustomResources 视图的其他工具栏按钮的数组，请参阅[命令](#commands)。|
+|列|否|自定义资源的列的数组。 如果未定义，则默认情况下将显示 `name` 列。 列必须具有 `"key"` 和 `"displayName"`。 对于 "键"，提供要在视图中显示的属性的键。 如果是嵌套的，请使用点作为分隔符，例如 `"key": "name"` 或 `"key": "properties.property1"`。 对于 "显示名称"，提供要在视图中显示的属性的显示名称。 还可以提供 `"optional"` 属性。 如果设置为 true，则默认情况下将在视图中隐藏列。|
 
 ![CustomResources](./media/view-definition/customresources.png)
 
@@ -247,12 +255,39 @@ ms.locfileid: "72804079"
 }
 ```
 
-|properties|需要|描述|
+|属性|必选|说明|
 |---------|---------|---------|
 |displayName|是|命令按钮的显示名称。|
-|路径|是|自定义提供程序操作名称。 操作必须在**maintemplate.json**中定义。|
-|icon|No|命令按钮的图标。 示例图标列表在[JSON 架构](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)中定义。|
-|createUIDefinition|No|为命令创建 UI 定义架构。 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。|
+|path|是|自定义提供程序操作名称。 操作必须在**maintemplate.json**中定义。|
+|icon|否|命令按钮的图标。 示例图标列表在[JSON 架构](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)中定义。|
+|createUIDefinition|否|为命令创建 UI 定义架构。 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。|
+
+## <a name="associations"></a>相关性
+
+`"kind": "Associations"`
+
+您可以定义此类型的多个视图。 此视图允许通过在**maintemplate.json**中定义的自定义提供程序将现有资源链接到托管应用程序。 有关自定义提供程序的简介，请参阅 [Azure 自定义提供程序预览版概述](custom-providers-overview.md)。
+
+在此视图中，你可以基于 `targetResourceType`扩展现有 Azure 资源。 选择资源时，它将创建对**公共**自定义提供程序的载入请求，这会对资源应用副作用。 
+
+```json
+{
+    "kind": "Associations",
+    "properties": {
+        "displayName": "Test association resource type",
+        "version": "1.0.0",
+        "targetResourceType": "Microsoft.Compute/virtualMachines",
+        "createUIDefinition": { }
+    }
+}
+```
+
+|属性|必选|说明|
+|---------|---------|---------|
+|displayName|是|视图的显示标题。 对于**viewDefinition**中的每个关联视图，标题应是**唯一**的。|
+|version|否|用于呈现视图的平台版本。|
+|targetResourceType|是|目标资源类型。 这是将为资源加入显示的资源类型。|
+|createUIDefinition|否|创建 "创建关联资源" 命令的 UI 定义架构。 有关创建 UI 定义的简介，请参阅[CreateUiDefinition](create-uidefinition-overview.md)入门|
 
 ## <a name="looking-for-help"></a>寻求帮助
 

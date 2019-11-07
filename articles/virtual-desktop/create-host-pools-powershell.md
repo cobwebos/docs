@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 创建 Windows 虚拟机主机池-Azure
+title: 创建 Windows 虚拟桌面主机池 PowerShell-Azure
 description: 如何使用 PowerShell cmdlet 在 Windows 虚拟桌面中创建主机池。
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 8ed0e1b1406eca6dd55e9e9faf184152a190da94
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: a50a7966af8f6453441ac19c9dafac064015f9a2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757498"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607098"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>使用 PowerShell 创建主机池
 

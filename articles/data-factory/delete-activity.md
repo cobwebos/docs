@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂中的 Delete 活动 | Microsoft Docs
+title: Azure 数据工厂中的 Delete 活动
 description: 了解如何使用 Azure 数据工厂中的 Delete 活动删除各种文件存储中的文件。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: d9a1c76e8ac386b954c68f16e2189df4e6c0e1b7
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 8efbf5cd6003781450afe70b8019b39d75290546
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996323"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675626"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Delete 活动
 
@@ -81,14 +81,14 @@ ms.locfileid: "69996323"
 
 ## <a name="type-properties"></a>Type 属性
 
-| 属性 | 说明 | 必填 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | dataset | 提供数据集引用以确定要删除的文件或文件夹 | 是 |
-| recursive | 表明从子文件夹中以递归方式删除数据，还是只从指定文件夹中删除数据。  | 否。 默认值为 `false`。 |
-| maxConcurrentConnections | 用于删除文件夹或文件而同时连接到“存储”库的连接数。   |  否。 默认值为 `1`。 |
+| recursive | 表明从子文件夹中以递归方式删除数据，还是只从指定文件夹中删除数据。  | 不能。 默认为 `false`。 |
+| maxConcurrentConnections | 用于删除文件夹或文件而同时连接到“存储”库的连接数。   |  不能。 默认为 `1`。 |
 | enablelogging | 表明是否需要记录已删除的文件夹或文件名。 如果为 true，则需要进一步提供存储帐户来保存日志文件，以便可以通过读取日志文件跟踪 Delete 活动的行为。 | 否 |
 | logStorageSettings | 仅适用于 enablelogging = true 时。<br/><br/>可指定的一组存储属性，您要在其中保存包含已由 Delete 活动删除的文件夹或文件名的日志文件。 | 否 |
-| linkedServiceName | 仅适用于 enablelogging = true 时。<br/><br/>[Azure 存储](connector-azure-blob-storage.md#linked-service-properties)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)或[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties)的链接服务, 用于存储包含删除活动删除的文件夹或文件名称的日志文件。 请注意, 必须使用与 delete 活动所使用的相同类型的 Integration Runtime 来配置文件。 | 否 |
+| linkedServiceName | 仅适用于 enablelogging = true 时。<br/><br/>[Azure 存储](connector-azure-blob-storage.md#linked-service-properties)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)或[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties)的链接服务，用于存储包含删除活动删除的文件夹或文件名称的日志文件。 请注意，必须为它配置与删除活动用来删除文件的集成运行时类型相同的集成运行时类型。 | 否 |
 | path | 仅适用于 enablelogging = true 时。<br/><br/>在存储帐户中保存日志文件的路径。 如果未提供路径，服务会为用户创建一个容器。 | 否 |
 
 ## <a name="monitoring"></a>监视
@@ -117,12 +117,12 @@ ms.locfileid: "69996323"
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Delete 活动的示例日志文件
 
-| 姓名 | 类别 | 状态 | Error |
+| Name | Category | Status | 错误 |
 |:--- |:--- |:--- |:--- |
-| test1/yyy.json | 文件 | 已删除 |  |
-| test2/hello789.txt | 文件 | 已删除 |  |
-| test2/test3/hello000.txt | 文件 | 已删除 |  |
-| test2/test3/zzz.json | 文件 | 已删除 |  |
+| test1/yyy.json | 文件 | Deleted |  |
+| test2/hello789.txt | 文件 | Deleted |  |
+| test2/test3/hello000.txt | 文件 | Deleted |  |
+| test2/test3/zzz.json | 文件 | Deleted |  |
 
 ## <a name="examples-of-using-the-delete-activity"></a>使用 Delete 活动的示例
 
@@ -134,10 +134,10 @@ Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 现在，使用的是 Delete 活动来删除文件夹或文件，方法是将来自数据集和 Delete 活动的不同属性值相结合：
 
-| folderPath（来自数据集） | fileName（来自数据集） | 递归（来自 Delete 活动） | Output |
+| folderPath（来自数据集） | fileName（来自数据集） | 递归（来自 Delete 活动） | 输出 |
 |:--- |:--- |:--- |:--- |
-| Root/ Folder_A_2 | NULL | False | Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt |
-| Root/ Folder_A_2 | NULL | True | Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
+| Root/ Folder_A_2 | Null | False | Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt |
+| Root/ Folder_A_2 | Null | True | Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
 | Root/ Folder_A_2 | *.txt | False | Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt |
 | Root/ Folder_A_2 | *.txt | True | Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
 
@@ -263,7 +263,7 @@ Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ### <a name="clean-up-the-expired-files-that-were-last-modified-before-201811"></a>清理于 2018 年 1 月 1 日之前进行了最后一次修改的过期文件
 
-可以利用文件属性筛选器创建清理旧文件或过期文件的管道：数据集中的“LastModified”。  
+可以通过利用文件属性筛选器来创建一个管道，以清理旧文件或过期文件：数据集中的 "LastModified"。  
 
 #### <a name="sample-pipeline"></a>示例管道
 
@@ -566,7 +566,7 @@ Copy 活动用于数据目标的数据集。
 }
 ```
 
-你还可以从[此处](solution-template-move-files.md)获取用于移动文件的模板。
+还可以从[此处](solution-template-move-files.md)获取移动文件的模板。
 
 ## <a name="known-limitation"></a>已知限制
 

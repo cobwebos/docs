@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/25/2019
-ms.openlocfilehash: 1f2380748c4feea6321bd8df1c29bd599f19b089
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 2559a3cbd786c737b316a860e9c75434c6c719a4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489911"
+ms.locfileid: "73576576"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中保护 Azure ML 试验和推理作业
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Azure 机器学习依赖于其他 Azure 服务计算资源。 计算资源（或
 > [!WARNING]
 > Microsoft 不支持将 Azure 机器学习设计器或自动化机器学习（通过 studio）用于虚拟网络内的资源。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 + Azure 机器学习[工作区](how-to-manage-workspace.md)。
 
@@ -46,7 +46,7 @@ Azure 机器学习依赖于其他 Azure 服务计算资源。 计算资源（或
 
 若要为虚拟网络中的工作区使用 Azure 存储帐户，请执行以下操作：
 
-1. 在虚拟网络后创建计算资源（例如机器学习计算实例或群集），或将计算资源附加到工作区（例如，HDInsight 群集、虚拟机或 Azure Kubernetes Service 群集）。 计算资源可用于试验或模型部署。
+1. 在虚拟网络后创建计算资源（例如机器学习群集），或将计算资源附加到工作区（例如 HDInsight 群集、虚拟机或 Azure Kubernetes Service 群集）。 计算资源可用于试验或模型部署。
 
    有关详细信息，请参阅本文中的[使用机器学习计算](#amlcompute)、[使用虚拟机或 HDInsight 群集](#vmorhdi)和[使用 Azure Kubernetes Service](#aksvnet)部分。
 
@@ -63,7 +63,7 @@ Azure 机器学习依赖于其他 Azure 服务计算资源。 计算资源（或
     - 在 "__虚拟网络__" 下，选择 "__添加现有虚拟网络__" 链接。 此操作将添加计算所在的虚拟网络（请参阅步骤1）。
 
         > [!IMPORTANT]
-        > 存储帐户必须与用于定型或推理的计算实例或群集位于同一虚拟网络中。
+        > 存储帐户必须与用于定型或推理的笔记本 Vm 或群集位于同一虚拟网络中。
 
     - 选中 "__允许受信任的 Microsoft 服务访问此存储帐户__" 复选框。
 
@@ -73,12 +73,6 @@ Azure 机器学习依赖于其他 Azure 服务计算资源。 计算资源（或
     > 若要启用对存储帐户的访问，请在*开发客户端的 web 浏览器中*访问存储帐户的__防火墙和虚拟网络__。 然后，使用 "__添加客户端 IP 地址__" 复选框将客户端的 ip 地址添加到__地址范围__。 你还可以使用 "__地址范围__" 字段手动输入开发环境的 IP 地址。 添加客户端的 IP 地址后，可以使用 SDK 访问存储帐户。
 
    [![Azure 门户中的 "防火墙和虚拟网络" 窗格](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
-
-1. __运行试验__时，在试验代码中更改运行配置以使用 Azure Blob 存储：
-
-    ```python
-    run_config.source_directory_data_store = "workspaceblobstore"
-    ```
 
 > [!IMPORTANT]
 > 你可以在虚拟网络中为 Azure 机器学习或_非默认存储帐户_放置_默认存储帐户_。
@@ -114,20 +108,16 @@ Azure 机器学习使用与工作区关联的密钥保管库实例来存储以�
 
 ## <a name="use-a-machine-learning-compute"></a>使用机器学习计算
 
-> [!NOTE]
-> 计算实例仅适用于区域为**美国中北部**或**英国南部**的工作区。
-> 使用其中一个区域创建可添加到虚拟网络的计算实例。
-
-若要在虚拟网络中使用 Azure 机器学习的计算实例或计算群集，必须满足以下网络要求：
+若要在虚拟网络中使用 Azure 机器学习笔记本 VM 或计算群集，必须满足以下网络要求：
 
 > [!div class="checklist"]
 > * 虚拟网络必须位于与 Azure 机器学习工作区相同的订阅和区域中。
-> * 为计算实例或群集指定的子网必须具有足够的未分配 IP 地址，才能容纳目标 Vm 的数量。 如果子网没有足够的未分配 IP 地址，则会部分分配计算群集。
+> * 为计算群集指定的子网必须具有足够的未分配 IP 地址，才能容纳目标 Vm 的数量。 如果子网没有足够的未分配 IP 地址，则会部分分配计算群集。
 > * 查看虚拟网络的订阅或资源组的安全策略或锁定是否限制了管理虚拟网络的权限。 如果打算通过限制流量来保护虚拟网络，请为计算服务留出一些打开的端口。 有关详细信息，请参阅[所需的端口](#mlcports)部分。
-> * 如果要在一个虚拟网络中放置多个计算实例或群集，则可能需要为一个或多个资源请求增加配额。
-> * 如果工作区的 Azure 存储帐户还在虚拟网络中受保护，则它们必须与 Azure 机器学习计算实例或群集位于同一虚拟网络中。
+> * 如果要在一个虚拟网络中放置多个计算群集，则可能需要为一个或多个资源请求增加配额。
+> * 如果工作区的 Azure 存储帐户还在虚拟网络中受保护，则它们必须位于与 Azure 机器学习计算群集相同的虚拟网络中。
 
-机器学习的计算实例或群集会自动分配包含虚拟网络的资源组中的其他网络资源。 对于每个计算实例或群集，服务分配以下资源：
+机器学习计算群集会自动分配包含虚拟网络的资源组中的其他网络资源。 对于每个计算群集，服务分配以下资源：
 
 * 一个网络安全组
 * 一个公共 IP 地址

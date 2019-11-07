@@ -1,5 +1,5 @@
 ---
-title: 从 Windows 10 或 Windows 7 连接到 Windows 虚拟桌面-Azure
+title: 连接到 Windows 虚拟桌面 Windows 10 或 7-Azure
 description: 如何使用 Windows 桌面客户端连接到 Windows 虚拟桌面。
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: helohr
-ms.openlocfilehash: 1d7f08dbaa9b91cd2dbac28daf5c17ea85d09985
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 2552fcbd860a0cc98aa7e2a6c7f92796a8d588ca
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482210"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605786"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>与 Windows 桌面客户端连接
 

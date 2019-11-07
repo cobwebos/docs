@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure Site Recovery 将 VMware VM 或物理服务器的灾难恢复设置到辅助站点 | Microsoft 文档
+title: 使用 Azure Site Recovery 将 VMware Vm/物理服务器灾难恢复到辅助站点
 description: 了解如何使用 Azure Site Recovery 将 VMware VM 或 Windows 和 Linux 物理服务器的灾难恢复设置到辅助站点。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: a87abfdd70db07e4310dc6a39a280e12f664d03b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972095"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620522"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>将本地 VMware 虚拟机或物理服务器的灾难恢复设置到辅助站点
 
@@ -58,7 +58,7 @@ Azure Site Recovery 为 VMware 和 Hyper-V 客户提供一流的无缝 DRaaS 解
 
 
 ## <a name="prerequisites"></a>先决条件
-完成本教程：
+完成本教程需要：
 
 - [查看](vmware-physical-secondary-support-matrix.md)所有组件的支持要求。
 - 确保要复制的计算机符合[复制计算机支持](vmware-physical-secondary-support-matrix.md#replicated-vm-support)。
@@ -118,14 +118,14 @@ Azure Site Recovery 为 VMware 和 Hyper-V 客户提供一流的无缝 DRaaS 解
 - InMage_UA_8.0.7.0_SLES11-SP3-64_GA_03Dec2018_release.tar.gz
 - InMage_UA_8.0.7.0_SLES11-SP4-64_GA_03Dec2018_release.tar.gz
   1. 解压缩 .zip 文件。
-  2. **RX 服务器**：将 **RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz** 复制到 RX 服务器，并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
-  3. **配置服务器和进程服务器**：将 **CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe** 复制到配置服务器和进程服务器。 双击以运行该文件。<br>
-  4. **Windows 主目标服务器**：若要更新统一代理，请将 **InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe** 复制到服务器。 双击以运行该文件。 同一文件还可用于全新安装。 相同的统一代理更新也适用于源服务器。
+  2. **Rx 服务器**：将**rx_ 8.0.7.0 _GA_UPDATE_7_2965621_28DEC18**复制到 RX 服务器，并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
+  3. **配置服务器和进程服务器**：将**cx_windows_ 8.0.7.0 _ga_update_7_2965621_28dec18**复制到配置服务器和进程服务器。 双击以运行该文件。<br>
+  4. **Windows 主目标服务器**：要更新统一代理，请将**inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release**复制到服务器。 双击以运行该文件。 同一文件还可用于全新安装。 相同的统一代理更新也适用于源服务器。
   由于 **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe** 是拥有所有最新更改的新 GA 安装程序，因此，在通过该安装程序执行了准备工作的主目标服务器上不需要应用更新。
-  5. **vContinuum 服务器**：将 **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe** 复制到服务器。  确保已关闭 vContinuum 向导。 双击以运行该文件。
-  6. **Linux 主目标服务器**：若要更新统一代理，请将 **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** 复制到 Linux 主目标服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
-  7. **Windows 源服务器**：若要更新统一代理，请将 **InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe** 复制到源服务器。 双击以运行该文件。 
-  8. **Linux 源服务器**：要更新统一代理，请将相应版本的统一代理文件复制到 Linux 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。  例如：对于 RHEL 6.7 64 位服务器，将 **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** 复制到服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
+  5. **vContinuum 服务器**：将**inmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release**复制到服务器。  确保已关闭 vContinuum 向导。 双击以运行该文件。
+  6. **Linux 主目标服务器**：要更新统一代理，请将**inmage_ua_ 8.0.7.0 _Rhel6-64_ga_03dec2018_release**复制到 Linux 主目标服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
+  7. **Windows 源服务器**：要更新统一代理，请将**inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release**复制到源服务器。 双击以运行该文件。 
+  8. Linux 源服务器：要更新统一代理，请将相应版本的统一代理文件复制到 Linux 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。  示例：对于 RHEL 6.7 64 位服务器，将**inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release**复制到服务器，并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
   9. 在使用上述安装程序升级配置服务器、进程服务器和 RX 服务器后，需要通过[快速安装指南](https://aka.ms/asr-scout-quick-install-guide)的第 7.4 部分中提到的步骤手动升级 PHP 和 MySQL 二进制文件。
 
 ## <a name="enable-replication"></a>启用复制
@@ -143,7 +143,7 @@ Azure Site Recovery 为 VMware 和 Hyper-V 客户提供一流的无缝 DRaaS 解
 ## <a name="updates"></a>更新
 
 ### <a name="site-recovery-scout-801-update-7"></a>Site Recovery Scout 8.0.1 Update 7 
-更新日期：2018 年 12 月 31 日，下载 [Scout update 7](https://aka.ms/asr-scout-update7)。
+更新日期：2018年12月31日下载[Scout 更新 7](https://aka.ms/asr-scout-update7)。
 Scout Update 7 是一个完整的安装程序，可用于全新安装以及升级采用早期更新（从 Update 1 到 Update 6）的现有代理/MT。 它包含从 Update 1 到 Update 6 的所有修补程序，以及下面所述的新修补程序和增强功能。
  
 #### <a name="new-features"></a>新增功能
@@ -151,10 +151,10 @@ Scout Update 7 是一个完整的安装程序，可用于全新安装以及升�
 * TLS v1.2 支持
 
 #### <a name="bug-and-security-fixes"></a>Bug 和安全修补程序
-* 已修复：Windows 群集/独立计算机在进行恢复/灾难恢复演练时具有不正确的 IP 配置。
-* 已修复：对于 V2V 群集，添加磁盘操作有时候会失败。
+* 已修复： Windows 群集/独立计算机在恢复/DR 演练中配置了错误的 IP。
+* 已修复：有时添加 V2V 群集的磁盘操作失败。
 * 已修复：如果主目标服务器是 Windows Server 2016，vContinuum 向导在恢复阶段中会停滞。
-* 已修复：通过将 MySQL 升级到版本 5.7.23 缓解了 MySQL 安全问题。
+* 已修复：通过将 MySQL 升级到版本5.7.23 来缓解 MySQL 安全问题
 
 #### <a name="manual-upgrade-for-php-and-mysql-on-csps-and-rx"></a>在 CS、PS 和 RX 上针对 PHP 和 MySQL 进行手动升级
 在配置服务器、进程服务器和 RX 服务器上，PHP 脚本平台应当升级到版本 7.2.10。
@@ -162,7 +162,7 @@ Scout Update 7 是一个完整的安装程序，可用于全新安装以及升�
 请按照[快速安装指南](https://aka.ms/asr-scout-quick-install-guide)中提供的手动步骤来升级 PHP 和 MySQL 版本。
 
 ### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 Update 6 
-更新日期：2017 年 10 月12 日
+更新时间：2017 年 10 月 12 日
 
 下载 [Scout Update 6](https://aka.ms/asr-scout-update6)。
 
@@ -188,18 +188,18 @@ Scout Update 6 是累积更新。 其中包含从 Update 1 到 Update 5 的所�
 - UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
 - UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
 - vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
-- RHEL5、OL5、OL6、SUSE 10、SUSE 11 的 UA update4 位：UA_\<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
+- UA update4 bits for RHEL5，OL5，OL6，SUSE 10，SUSE 11： UA_\<Linux OS > _ 8.0.4.0 _GA_Update_4_9035261_26Sep16 Gz
   1. 解压缩 .zip 文件。
-  2. **RX 服务器**：将 RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz 复制到 RX 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
-  3. **配置服务器和进程服务器**：将 **CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe** 复制到配置服务器和进程服务器。 双击以运行该文件。<br>
-  4. **Windows 主目标服务器**：若要更新统一代理，请将 **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** 复制到服务器。 双击以运行该文件。 相同的统一代理更新也适用于源服务器。 如果源尚未更新到 Update 4，则应更新统一代理。
+  2. RX 服务器：将 RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz 复制到 RX 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
+  3. 配置服务器和进程服务器：将 CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe 复制到配置服务器和进程服务器。 双击以运行该文件。<br>
+  4. Windows 主目标服务器：要更新统一代理，请将 UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe 复制到该服务器。 双击以运行该文件。 相同的统一代理更新也适用于源服务器。 如果源尚未更新到 Update 4，则应更新统一代理。
   更新不需要应用于备有 InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe 的主目标服务器，因为这是拥有所有最新更改的新 GA 安装程序。
-  5. **vContinuum 服务器**：将 **vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe** 复制到该服务器。  确保已关闭 vContinuum 向导。 双击以运行该文件。
+  5. vContinuum 服务器：将 vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe 复制到该服务器。  确保已关闭 vContinuum 向导。 双击以运行该文件。
   更新不需要应用于备有 InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe 的主目标服务器，因为这是拥有所有最新更改的新 GA 安装程序。
-  6. **Linux 主目标服务器**：要更新统一代理，请将 **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** 复制到主目标服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
-  7. **Windows 源服务器**：要更新统一代理，请将 **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** 复制到源服务器。 双击以运行该文件。 
+  6. Linux 主目标服务器：要更新统一代理，请将 UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz 复制到主目标服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
+  7. Windows 源服务器：要更新统一代理，请将 UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe 复制到该源服务器。 双击以运行该文件。 
   如果源服务器已更新到 Update 4 或源代理已安装有最新的基本安装程序 InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe，则不需要在源服务器上安装 Update 5 代理。
-  8. **Linux 源服务器**：要更新统一代理，请将相应版本的统一代理文件复制到 Linux 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。  例如：对于 RHEL 6.7 64 位服务器，将 **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** 复制到该服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
+  8. Linux 源服务器：要更新统一代理，请将相应版本的统一代理文件复制到 Linux 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。  示例：对于 RHEL 6.7 64 位服务器，将 UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz 复制到该服务器并进行文件提取。 在解压缩的文件夹中运行 **/Install**。
 
 
 > [!NOTE]
@@ -236,7 +236,7 @@ Scout Update 5 是累积更新。 其中包含从 Update 1 到 Update 4 的所�
 > [!NOTE]
 > * P2V 群集修补程序仅适用于使用 Site Recovery Scout Update 5 全新保护的物理 MSCS 群集。 若要在使用较旧更新程序保护的 P2V MSCS 群集上安装群集修补程序，请按照 [Site Recovery Scout 发行说明](https://aka.ms/asr-scout-release-notes)第 12 节中所述的升级步骤进行操作。
 > * 如果在重新保护时，同一组磁盘在最初受保护的每个群集节点上都处于活动状态，则物理 MSCS 群集的重新保护只能重新使用现有的目标磁盘。 如果不是，则需执行 [Site Recovery Scout 发行说明](https://aka.ms/asr-scout-release-notes)第 12 节中提到的手动步骤，将目标端磁盘移动到正确的数据存储路径，以便在重新保护期间重新使用它们。 如果在不执行以下升级步骤的情况下重新保护处于 P2V 模式的 MSCS 群集，则它会在目标 ESXi 服务器上创建新磁盘。 你将需要手动从数据存储中删除旧磁盘。
-> * 当源 SLES11 或 SLES11（具有任何 Service Pack）服务器正常重新启动时，手动标记根磁盘复制对，以便重新同步。 CX 界面中不显示任何通知。 如果不标记用于重新同步的根磁盘，则可能会发现数据完整性问题。
+> * 当源 SLES11 或 SLES11（具有任何 Service Pack）服务器正常重新启动时，手动标记根磁盘复制对，以便重新同步。 CX 界面中不显示任何通知。 如果不将根磁盘标记为重新同步，则可能会发现数据完整性问题。
 
 
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Azure Site Recovery Scout 8.0.1 Update 4
@@ -266,7 +266,7 @@ Scout Update 4 是累积更新。 其中包含从 Update 1 到 Update 3 的所�
 * 在故障转移和灾难恢复演练期间，针对网络配置更改添加了其他检查和日志。
 * 修复了导致保留信息无法报告给配置服务器的问题。  
 * 对于物理群集，修复了在 vContinuum 向导中收缩源卷时导致卷大小调整失败的问题。
-* 修复了当群集磁盘为 PRDM 磁盘时发生的一个群集保护失败问题，该问题显示以下错误：“未能找到磁盘签名”。
+* 修复了当群集磁盘为 PRDM 磁盘时，群集保护失败并出现“未能找到磁盘签名”错误的问题。
 * 修复了 cxps 传输服务器由于超出范围的异常而崩溃的问题。
 * 在 vContinuum 向导的“推送安装”页面中，现在可对服务器名称列和 IP 地址列的大小进行调整。
 * RX API 的增强功能：
@@ -309,7 +309,7 @@ Update 3 修复了以下问题：
   * CentOS 6 Update 7
 * 配置服务器和 RX 控制台现在显示进入位图模式的对的通知。
 * 已将以下安全修复程序添加到 RX 中：
-    * 通过篡改参数绕过授权：已将访问权限限制为不适用的用户。
+    * 通过参数篡改绕过授权：已将访问权限限制为不适用的用户。
     * 跨网站请求伪造：实现页令牌概念，将为每一页随机生成。 这意味着同一用户只有一个登录实例，并且页面刷新不起作用。 相反，它将重定向到仪表板。
     * 恶意文件上传：限制文件使用特定的扩展名：z、aiff、asf、avi、bmp、csv、doc、docx、fla、flv、gif、gz、gzip、jpeg、jpg、log、mid、mov、mp3、mp4、mpc、mpeg、mpg、ods、odt、pdf、png、ppt、pptx、pxd、qt、ram、rar、rm、rmi、rmvb、rtf、sdc、sitd、swf、sxc、sxw、tar、tgz、tif、tiff、txt、vsd、wav、wma、wmv、xls、xlsx、xml 和 zip。
     * 持久性跨站点脚本：添加了输入验证。
@@ -318,8 +318,8 @@ Update 3 修复了以下问题：
 
 Update 2 中的修复包括：
 
-* **配置服务器**：在将配置服务器注册到 Azure Site Recovery 保管库时阻止 31 天免费计量功能正常使用的问题。
-* **统一代理**：修复了 Update 1 中导致从版本 8.0 升级到 8.0.1 期间，更新无法安装在主目标服务器上的问题。
+* 配置服务器：在将配置服务器注册到 Azure Site Recovery 保管库时阻止 31 天免费计量功能正常使用的问题。
+* 统一代理：修复了 Update 1 中导致从版本 8.0 升级到 8.0.1 期间，更新无法安装在主目标服务器上的问题。
 
 ### <a name="azure-site-recovery-scout-801-update-1"></a>Azure Site Recovery Scout 8.0.1 Update 1
 Update 1 包含以下 bug 修复和新功能：

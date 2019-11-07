@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: b7395a8ab71e860c2e584339dcd581077a4f4020
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 11/04/2019
+ms.openlocfilehash: 38299a8ffd72722c2d2c1dda9227b7fbf76c0386
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595446"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603112"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的 Query Performance Insight
 
 **适用于：** Azure Database for MySQL 5。7
-
-> [!IMPORTANT]
-> Query Performance Insight 处于预览阶段。
 
 Query Performance Insight 可帮助你快速确定运行时间最长的查询、它们如何随时间的推移而变化，以及哪些等待因素会影响它们。
 
@@ -32,13 +29,13 @@ Query Performance Insight 可帮助你快速确定运行时间最长的查询、
 ### <a name="wait-statistics"></a>等待统计信息
 
 - 了解查询的等待性质
-- 了解资源等待和资源争用的存在趋势
+- 了解资源等待趋势以及发生资源争用的位置
 
 ## <a name="permissions"></a>权限
 
 查看 Query Performance Insight 中查询文本所需的“所有者”或“参与者”权限。 读者可以查看图表和表格，但不能查看查询文本。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要运行 Query Performance Insight，数据必须存在于[查询存储](concepts-query-store.md)中。
 

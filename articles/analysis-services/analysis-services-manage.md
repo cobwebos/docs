@@ -1,18 +1,18 @@
 ---
 title: 管理 Azure Analysis Services | Microsoft Docs
-description: 了解如何在 Azure 中管理 Analysis Services 服务器。
+description: 本文介绍用于管理 Azure Analysis Services 服务器的管理任务和管理任务的工具。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6846eaedc7f20f5a7597ee889193e977e86a5ed6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 28d7b2955c84833841760e441cd2919181e22bc7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146841"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572796"
 ---
 # <a name="manage-analysis-services"></a>管理 Analysis Services
 在 Azure 中创建 Analysis Services 服务器后，可能会有一些需要立即执行或在稍后操作期间执行的管理任务。 例如，处理刷新数据、控制谁有权访问服务器上的模型，或者监视服务器的运行状况。 某些管理任务仅可在 Azure 门户中执行，而其他一些可在 SQL Server Management Studio (SSMS) 中执行，还有部分在两者中均可执行。

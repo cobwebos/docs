@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 28a391fded422b00508e006bfd613d6c98d82f17
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 1fda05ffcac8952ee5a12c23383aad1a04d36b97
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166460"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601316"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
 
@@ -176,7 +176,7 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 ### <a name="cached-images"></a>缓存的图像
 
-Azure 容器实例使用缓存机制来帮助加快基于常见[Windows 基准映像](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括 `nanoserver:1809`、`servercore:ltsc2019` 和 `servercore:1809`）生成的映像的容器启动时间。 通常使用的 Linux 映像（例如 `ubuntu:1604` 和 `alpine:3.6`）也被缓存。 有关缓存的图像和标记的最新列表，请使用[列出缓存的映像][list-cached-images]API。
+Azure 容器实例使用缓存机制来帮助加快基于常见[Windows 基准映像](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括 `nanoserver:1809`、`servercore:ltsc2019`和 `servercore:1809`）生成的映像的容器启动时间。 通常使用的 Linux 映像（例如 `ubuntu:1604` 和 `alpine:3.6`）也被缓存。 有关缓存的图像和标记的最新列表，请使用[列出缓存的映像][list-cached-images]API。
 
 > [!NOTE]
 > 在 Azure 容器实例中使用基于 Windows Server 2019 的映像处于预览状态。
@@ -206,9 +206,9 @@ Azure 容器实例不公开对托管容器组的底层基础结构的直接访�
 
 Azure 容器实例尚不支持类似于常规 docker 配置的端口映射。 如果找不到可访问的容器组的 IP 地址，请确保已将容器映像配置为使用 `ports` 属性侦听容器组中公开的相同端口。
 
-如果要确认 Azure 容器实例可以侦听容器映像中配置的端口，请测试公开此端口的 @no__t 0 映像的部署。 同时运行 @no__t 的应用程序，使其侦听该端口。 `aci-helloworld` 接受可选的环境变量，`PORT` 重写它侦听的默认端口80。 例如，若要测试端口9000：
+如果要确认 Azure 容器实例可以侦听容器映像中配置的端口，请测试公开此端口 `aci-helloworld` 映像的部署。 同时运行 `aci-helloworld` 应用程序，使其侦听该端口。 `aci-helloworld` 接受可选的环境变量，`PORT` 重写它侦听的默认端口80。 例如，若要测试端口9000，请在创建容器组时设置[环境变量](container-instances-environment-variables.md)：
 
-1. 设置容器组以公开端口9000，并将端口号作为环境变量的值传递：
+1. 设置容器组以公开端口9000，并将端口号作为环境变量的值进行传递。 该示例的格式适用于 Bash shell。 如果希望使用其他 shell，如 PowerShell 或命令提示符，则需要相应地调整变量赋值。
     ```azurecli
     az container create --resource-group myResourceGroup \
     --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld \

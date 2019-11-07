@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 578f7a01c22bd5aafd4e4ac08c9f5ab78e340a34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 148d0c203248e4dcde5baaadc596d56e8b8ea17a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606529"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669380"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>团队数据科学过程实务：使用 SQL Server
 在本教程中，将逐步指导完成使用 SQL Server 和可公开取得的数据集 [NYC 出租车行程](https://www.andresmh.com/nyctaxitrips/)，构建和部署机器学习模型的过程。 该程序遵循标准数据科学工作流，包括：引入和浏览数据，设计功能以促进学习，并构建和部署模型。
 
 ## <a name="dataset"></a>NYC 出租车行程数据集介绍
-NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 CSV 文件，其中包含超过 1.73 亿个单独行程及每个行程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名的出租车司机驾驶证编号和徽章（出租车的唯一 ID）编号。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
+NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 CSV 文件，其中包含超过 1.73 亿个单独行程及每个行程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名的出租车司机驾驶证编号和徽章（出租车的唯一 ID）编号。 数据涵盖 2013 年的所有行程，并每月在以下两个数据集中提供：
 
 1. 'trip_data' CSV 包含行程的详细信息，例如乘客数、上车和下车地点、行程持续时间和行程距离。 下面是一些示例记录：
    
@@ -46,8 +46,8 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 ## <a name="mltasks"></a>预测任务示例
 我们会根据 *tip\_amount* 编写三个预测问题的公式，即：
 
-1. 二元分类：预测是否已支付某个行程的小费，即大于 $0 的 tip\_amount 是正例，等于 $0 的 tip\_amount 是反例   。
-2. 多类分类：预测为行程支付的小费的范围。 我们将 *tip\_amount* 划分五个分类收纳组或类别：
+1. 二元分类：预测是否已支付某个行程的小费，即大于 $0 的 *tip\_amount* 是正例，等于 $0 的 *tip\_amount* 是反例。
+2. 多元分类：预测为行程支付的小费金额范围。 我们将 *tip\_amount* 划分五个分类收纳组或类别：
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
@@ -60,7 +60,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 正如你从[规划环境](plan-your-environment.md)指南中看到的那样，在 Azure 中使用 NYC 出租车行程数据集时，有几个选项可以使用：
 
 * 使用 Azure blob 中的数据，并在 Azure 机器学习中模型化
-* 将数据加载到 SQL Server 数据库，然后在 Azure 机器学习中模型化
+* 将数据加载到 SQL Server 数据库，并在 Azure 机器学习中模型化
 
 在本教程中，我们将展示将数据并行批量导入 SQL Server、数据浏览、功能设计以及使用 SQL Server Management Studio 和 IPython Notebook 向下采样。 [示例脚本](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)和 [IPython notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks) 在 GitHub 中共享。 使用 Azure blob 中数据的示例 IPython notebook 也可以在同一位置取得。
 
@@ -87,7 +87,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 使用 AzCopy 复制数据：
 
 1. 登录到虚拟机 (VM)
-2. 在 VM 的数据磁盘中创建一个新目录（注意：不要将 VM 附带的临时磁盘用作数据磁盘）。
+2. 在 VM 数据磁盘中创建一个新的目录（注意：不要使用虚拟机附带的临时磁盘作为数据磁盘）。
 3. 在“命令提示符”窗口中，运行以下 Azcopy 命令行，将 < path_to_data_folder > 替换成在步骤 (2) 中创建的数据文件夹：
    
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
@@ -102,7 +102,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 2. 使用 Windows 身份验证进行连接。
    
     ![SSMS 连接][12]
-3. 如果尚未更改的 SQL Server 身份验证模式并尚未创建新的 SQL 登录用户，请打开 **Sample Scripts** 文件夹中名为 **change\_auth.sql** 的脚本文件。 更改默认用户名和密码。 单击工具栏中的“ **! 执行**”来运此该脚本。
+3. 如果尚未更改的 SQL Server 身份验证模式并尚未创建新的 SQL 登录用户，请打开 **Sample Scripts\_ 文件夹中名为** change**auth.sql** 的脚本文件。 更改默认用户名和密码。 单击工具栏中的“ **! 执行**”来运此该脚本。
    
     ![执行脚本][13]
 4. 验证和/或更改 SQL Server 默认数据库和日志文件夹，以确保新创建的数据库将存储在数据磁盘中。 系统将使用数据和日志磁盘，预配置针对数据存储加载进行优化的 SQL Server VM 映像。 如果 VM 不包含数据磁盘，并且在 VM 安装过程中添加了新的虚拟硬盘，则需按照如下步骤更改默认文件夹：
@@ -132,12 +132,12 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
    
     也可以选择身份验证模式，默认值为 Windows 身份验证。 单击工具栏中的绿色箭头运行。 该脚本将启动 24 个并行批量导入操作，每个分区表对应 12 个操作。 也可以通过打开上述步骤中设置的 SQL Server 默认数据文件夹，监测数据导入进度。
 9. PowerShell 脚本将报告起始和结束时间。 所有批量导入完成时，将报告结束时间。 检查目标日志文件夹，以验证批量导入成功，即未报告目标日志文件夹存在任何错误。
-10. 数据库已就绪，可以进行浏览、功能设计及需要的其他操作。 由于这些表是根据 **pickup\_datetime** 字段进行分区的，因此，分区方案将为在 **WHERE** 子句中包括 **pickup\_datetime** 条件的查询带来好处。
+10. 数据库已就绪，可以进行浏览、功能设计及需要的其他操作。 由于这些表是根据 **pickup\_datetime** 字段进行分区的，因此，分区方案将为在 **WHERE\_ 子句中包括** pickup**datetime** 条件的查询带来好处。
 11. 在 **SQL Server Management Studio** 中，探索提供的示例脚本 **sample\_queries.sql**。 要运行任意示例查询，请突出显示查询行，并单击工具栏中的“ **! 执行**”。
 12. NYC 出租车行程数据加载到两个独立的表中。 若要改进联接操作，强烈建议为表建立索引。 示例脚本 **create\_partitioned\_index.sql** 会在复合联接键 **medallion、hack\_license 和 pickup\_datetime** 上创建分区索引。
 
 ## <a name="dbexplore"></a>SQL Server 中的数据浏览和功能设计
-在此部分中，我们通过使用之前创建的 SQL Server 数据库，直接在 **SQL Server Management Studio** 中运行 SQL 查询来执行数据浏览和功能设计。 “**示例脚本**”文件夹中提供了名为 **sample\_queries.sql** 的示例脚本。 如果数据库名称不同于默认值：TaxiNYC，请修改此脚本以更改数据库名称  。
+在此部分中，我们通过使用之前创建的 SQL Server 数据库，直接在 **SQL Server Management Studio** 中运行 SQL 查询来执行数据浏览和功能设计。 “**示例脚本\_”文件夹中提供了名为** sample**queries.sql** 的示例脚本。 如果数据库名称不同于默认值：**TaxiNYC**，请修改此脚本以更改数据库名称。
 
 在本练习中，我们将：
 
@@ -150,8 +150,8 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 
 准备好进行 Azure 机器学习后，也可以：  
 
-1. 保存最终的 SQL 查询，以提取和采样数据，并直接将查询复制和粘贴到 Azure 机器学习中的“[导入数据][import-data]”模块，或者
-2. 保留计划用于在新数据库表中进行建模的抽样和工程数据，并使用 Azure 机器学习的[导入数据][import-data]模块中的新表。
+1. 保存最终的 SQL 查询，以提取和采样数据，并直接将查询复制到 Azure 机器学习中的 "[导入数据][import-data]" 模块，或者
+2. 保留计划用于在新数据库表中进行建模的抽样和工程数据，并使用 Azure 机器学习中的 "[导入数据][import-data]" 模块中的新表。
 
 在本部分中，我们将保存最终查询以提取和采样数据。 第二种方法在 [IPython Notebook 中的数据浏览和特征工程](#ipnb)部分进行了演示。
 
@@ -172,14 +172,14 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
     GROUP BY medallion
     HAVING COUNT(*) > 100
 
-#### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>浏览：依据徽章和 hack_license 的行程分布
+#### <a name="exploration-trip-distribution-by-medallion-and-hack_license"></a>浏览：依据徽章和 hack_license 的行程分布
     SELECT medallion, hack_license, COUNT(*)
     FROM nyctaxi_fare
     WHERE pickup_datetime BETWEEN '20130101' AND '20130131'
     GROUP BY medallion, hack_license
     HAVING COUNT(*) > 100
 
-#### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>数据质量评估：验证含有不正确的经度和/或纬度的记录
+#### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>数据质量评估：验证含有不正确经度和/或纬度的记录
 此示例将调查是否有任何一个经度和/或纬度字段包含无效的值（弧度应介于 -90 到 90 之间），或者具有（0，0）坐标。
 
     SELECT COUNT(*) FROM nyctaxi_trip
@@ -191,7 +191,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
     OR    (pickup_longitude = '0' AND pickup_latitude = '0')
     OR    (dropoff_longitude = '0' AND dropoff_latitude = '0'))
 
-#### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>浏览：已付小费与未付小费的行程分布
+#### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>浏览：附属和不是相对行程分布
 此示例将查找给定时间段（或如果时间段为全年，则是在完整的数据集）内，已付小费与未付小费的行程的数量。 此分布反映二元标签分布，以便以后用于二元分类建模。
 
     SELECT tipped, COUNT(*) AS tip_freq FROM (
@@ -201,7 +201,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
     GROUP BY tipped
 
 #### <a name="exploration-tip-classrange-distribution"></a>浏览：小费分类/范围分布
-此示例将计算给定的时间段（或如果时间段为全年，则表示完整的数据集）内的小费范围分布。 这是以后用于多类分类建模的标签类的分布。
+此示例将计算给定的时间段（或如果时间段为全年，则表示完整的数据集）内的小费范围分布。 这是标签类的分布，会在以后用于多类分类建模。
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
         SELECT CASE
@@ -233,7 +233,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 标签生成和地理转换浏览查询还可通过删除计数部分，用于生成标签/功能。 其他功能设计 SQL 示例在 [IPython Notebook 中的数据浏览和特征工程](#ipnb)部分提供。 使用可在 SQL Server 数据库实例直接运行的 SQL 查询，以更高效的方式在完整数据集或其大型子集上运行功能生成查询。 该查询可能会在 **SQL Server Management Studio**、IPython Notebook 或任何可本地或远程访问数据库的开发工具/环境中执行。
 
 #### <a name="preparing-data-for-model-building"></a>准备建模的数据
-下面的查询可联接 **nyctaxi\_trip** 和 **nyctaxi\_fare** 表，生成一个二元分类标签 **tipped**、多类分类标签 **tip\_class**，以及从完整联接的数据集中提取 1% 的随机样本。 可以复制此查询，然后将其直接粘贴到 [Azure 机器学习工作室](https://studio.azureml.net)的[导入数据][import-data]模块中，以便从 Azure 中的 SQL Server 数据库实例进行直接数据引入。 此查询将排除具有不正确（0，0）坐标的记录。
+下面的查询可联接 **nyctaxi\_trip** 和 **nyctaxi\_fare** 表，生成一个二元分类标签 **tipped**、多类分类标签 **tip\_class**，以及从完整联接的数据集中提取 1% 的随机样本。 可以复制此查询，然后将其直接粘贴到[Azure 机器学习 Studio](https://studio.azureml.net) [导入数据][import-data]模块中，以便从 Azure 中的 SQL Server 数据库实例进行直接数据引入。 此查询将排除具有不正确（0，0）坐标的记录。
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -264,8 +264,8 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 
 准备好继续进行 Azure 机器学习后，也可以：  
 
-1. 保存最终的 SQL 查询，以提取和采样数据，然后直接将查询复制和粘贴到 Azure 机器学习中的“[导入数据][import-data]”模块。 此方法于[在 Azure 机器学习中建模](#mlmodel)部分进行展示。    
-2. 保留计划用于在新数据库表中进行建模的抽样和工程数据，并在[导入数据][import-data]模块中使用新表。
+1. 保存最终的 SQL 查询，以提取和采样数据，并直接将查询复制并粘贴到 Azure 机器学习的[导入数据][import-data]模块中。 此方法于[在 Azure 机器学习中建模](#mlmodel)部分进行展示。    
+2. 保留计划用于在新数据库表中进行建模的抽样和工程数据，然后使用 "[导入数据][import-data]" 模块中的新表。
 
 以下是几个数据浏览、数据可视化和功能设计示例。 有关更多示例，请参阅 **Sample IPython Notebooks** 文件夹中的 SQL IPython Notebook 示例。
 
@@ -282,7 +282,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
     CONNECTION_STRING = 'DRIVER={'+DRIVER+'};SERVER='+SERVER_NAME+';DATABASE='+DATABASE_NAME+';UID='+USERID+';PWD='+PASSWORD
     conn = pyodbc.connect(CONNECTION_STRING)
 
-#### <a name="report-number-of-rows-and-columns-in-table-nyctaxitrip"></a>报告表 nyctaxi_trip 中的行数和列数
+#### <a name="report-number-of-rows-and-columns-in-table-nyctaxi_trip"></a>报告表 nyctaxi_trip 中的行数和列数
     nrows = pd.read_sql('''
         SELECT SUM(rows) FROM sys.partitions
         WHERE object_id = OBJECT_ID('nyctaxi_trip')
@@ -335,7 +335,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 
 ![Plot #1][1]
 
-#### <a name="visualization-distribution-plot-example"></a>可视化效果：分布图示例
+#### <a name="visualization-distribution-plot-example"></a>可视化效果：分布的盒须图示例
     fig = plt.figure()
     ax1 = fig.add_subplot(1,2,1)
     ax2 = fig.add_subplot(1,2,2)
@@ -344,7 +344,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 
 ![Plot #2][2]
 
-#### <a name="visualization-bar-and-line-plots"></a>可视化效果：条形图和折线图
+#### <a name="visualization-bar-and-line-plots"></a>可视化效果：条形和折线图
 在此示例中，我们可以将行程距离量化为五个分类收纳组，并将分类收纳结果可视化。
 
     trip_dist_bins = [0, 1, 2, 4, 10, 1000]
@@ -376,7 +376,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 ![Plot #8][8]
 
 ### <a name="sub-sampling-the-data-in-sql"></a>二次采样 SQL 中的数据
-在 [Azure 机器学习工作室](https://studio.azureml.net)中准备建模数据时，可以决定**在“导入数据”模块中直接使用 SQL 查询**，或者将工程和抽样数据保留在新表中，这样就可以通过简单的“SELECT * FROM <your\_new\_table\_name>”  在[导入数据][import-data]模块中使用。
+在[Azure 机器学习 Studio](https://studio.azureml.net)中准备用于模型生成的数据时，可以决定在 "**导入数据" 模块中直接使用 SQL 查询**，或者将工程和抽样数据保留在新表中，该表可在[导入中使用。数据][import-data]模块，其中包含一个简单的**SELECT * FROM < 你的\_新\_表\_名称 >** 。
 
 在本部分中，我们将创建新表以保存抽样和工程数据。 [SQL Server 中的数据浏览和特征工程](#dbexplore)部分提供了可用于模型构建的直接 SQL 查询示例。
 
@@ -405,7 +405,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
     cursor.commit()
 
 ### <a name="data-exploration-using-sql-queries-in-ipython-notebook"></a>在 IPython Notebook 中使用 SQL 查询进行数据浏览
-在本部分中，我们将使用之前创建的新表中保存的 1% 抽样数据来浏览数据分布。 请注意，如 [SQL Server 中的数据浏览和特征工程](#dbexplore)部分所示，可使用原始表或使用 **TABLESAMPLE** 执行类似浏览，以限制浏览示例，或通过使用 **pickup\_datetime** 分区，将结果限制为给定时间段。
+在本部分中，我们将使用之前创建的新表中保存的 1% 抽样数据来浏览数据分布。 请注意，如 **SQL Server 中的数据浏览和特征工程**部分所示，可使用原始表或使用 **TABLESAMPLE\_ 执行类似浏览，以限制浏览示例，或通过使用** pickup[datetime](#dbexplore) 分区，将结果限制为给定时间段。
 
 #### <a name="exploration-daily-distribution-of-trips"></a>浏览：每日行程分布
     query = '''
@@ -456,7 +456,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
         cursor.execute(nyctaxi_one_percent_update_col)
         cursor.commit()
 
-#### <a name="feature-engineering-count-features-for-categorical-columns"></a>特征工程：适用于分类列的计数功能
+#### <a name="feature-engineering-count-features-for-categorical-columns"></a>功能设计：适用于分类列的计数功能
 此示例会将分类字段替换为数字字段，方法是使用它在数据中发生的计数来替换每个类别。
 
     nyctaxi_one_percent_insert_col = '''
@@ -486,7 +486,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
     cursor.execute(nyctaxi_one_percent_update_col)
     cursor.commit()
 
-#### <a name="feature-engineering-bin-features-for-numerical-columns"></a>特征工程：适用于数值列的收纳组功能
+#### <a name="feature-engineering-bin-features-for-numerical-columns"></a>功能设计：适用于数值列的收纳组功能
 此示例会将连续的数值字段转换为预设的类别范围，即将数值字段转换为分类字段。
 
     nyctaxi_one_percent_insert_col = '''
@@ -514,8 +514,8 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
     cursor.execute(nyctaxi_one_percent_update_col)
     cursor.commit()
 
-#### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>特征工程：从十进制纬度/经度提取位置功能
-此示例中划分为纬度和/或经度字段的十进制表示形式不同粒度的多个区域字段如，国家/地区、 城市、 城镇、 块等。注意，新的地理位置字段不映射到实际位置。 有关规划地理编码位置的信息，请参 [Bing 地图 REST 服务](https://msdn.microsoft.com/library/ff701710.aspx)。
+#### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>功能设计：从十进制纬度/经度提取位置功能
+此示例将纬度和/或经度字段的十进制表示形式分解为不同粒度（如国家/地区、城市、城镇、块等）的多个区域字段。请注意，新的地理字段未映射到实际位置。 有关规划地理编码位置的信息，请参 [Bing 地图 REST 服务](https://msdn.microsoft.com/library/ff701710.aspx)。
 
     nyctaxi_one_percent_insert_col = '''
         ALTER TABLE nyctaxi_one_percent
@@ -546,7 +546,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 
 我们现已准备好在 [Azure 机器学习](https://studio.azureml.net) 中进行建模和模型部署。 数据已可用于之前识别的任意预测问题，即：
 
-1. 二元分类：预测某个行程是否支付小费。
+1. 二元分类：预测某个行程是否会支付小费。
 2. 多类分类：根据以前定义的类，预测小费支付范围。
 3. 回归任务：预测为行程支付的小费金额。  
 
@@ -572,13 +572,13 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 
 在此练习中，我们已经探讨和设计了 SQL Server 中的数据，并确定了要引入 Azure 机器学习中的样本大小。 若要构建一个或多个我们确定的预测模型：
 
-1. 使用**数据输入和输出**部分的[导入数据][import-data]模块，将数据放入 Azure 机器学习。 有关详细信息，请参阅[导入数据][import-data]模块参考页。
+1. 使用 "**数据输入和输出**" 部分中的 "[导入数据][import-data]" 模块获取要 Azure 机器学习的数据。 有关详细信息，请参阅[导入数据][import-data]模块参考页。
    
     ![Azure 机器学习导入数据][17]
 2. 在“**属性**”面板中，选择“**Azure SQL 数据库**”作为**数据源**。
 3. 在“**数据库服务器名称**”字段中输入数据库 DNS 名称。 格式：`tcp:<your_virtual_machine_DNS_name>,1433`
 4. 在相应字段中输入**数据库名称**。
-5. 在“服务器用户帐户名”  中输入 **SQL 用户名**，在“服务器用户帐户密码”  中输入**密码**。
+5. 在“服务器用户帐户名”中输入 **SQL 用户名**，在“服务器用户帐户密码”中输入**密码**。
 7. 在**数据库查询**编辑文本区域，粘贴提取必要数据库字段（包括任何计算的字段，例如标签）的查询，并向下采样数据至所需样本大小。
 
 二元分类实验直接从 SQL Server 数据库读取数据，示例如下图所示。 可以针对多类分类和回归问题构建类似实验。
@@ -588,12 +588,12 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 > [!IMPORTANT]
 > 在上一部分中提供的建模数据提取和采样查询示例中，**这三个建模练习的所有标签都包括在此查询中**。 每个建模练习的一个重要（必需）步骤是**排除**其他两个问题不需要的标签，以及任何其他的**目标泄漏**。 例如，使用二元分类时，使用标签 **tipped**并排除字段 **tip\_class**、**tip\_amount** 和 **total\_amount**。 后者是目标泄漏，因为它们指示支付的小费。
 > 
-> 为了排除不需要的列和/或目标泄漏，可以使用[选择数据集中的列][select-columns]模块或[编辑元数据][edit-metadata]。 有关详细信息，请参阅[选择数据集中的列][select-columns]和[编辑元数据][edit-metadata]参考页。
+> 若要排除不必要的列和/或目标泄漏，可以使用 "[选择数据集中的列][select-columns]" 模块或[编辑元数据][edit-metadata]。 有关详细信息，请参阅 "[选择数据集中的列][select-columns]" 和 "[编辑元数据][edit-metadata]引用页"。
 > 
 > 
 
 ## <a name="mldeploy"></a>在 Azure 机器学习中部署模型
-模型已就绪时，即可轻松地从实验直接将其部署为 Web 服务。 有关部署 Azure 机器学习 Web 服务的详细信息，请参阅[部署 Azure 机器学习 Web 服务](../studio/publish-a-machine-learning-web-service.md)。
+模型已就绪时，即可轻松地从实验直接将其部署为 Web 服务。 有关部署 Azure 机器学习 Web 服务的详细信息，请参阅[部署 Azure 机器学习 Web 服务](../studio/deploy-a-machine-learning-web-service.md)。
 
 要部署新 Web 服务，需要：
 
@@ -610,7 +610,7 @@ Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特�
 2. 标识逻辑**输入端口**，以表示预期输入数据架构。
 3. 标识逻辑**输出端口**，以表示预期 Web 服务输出架构。
 
-创建评分实验后，请检查并根据需要进行调整。 典型调整是将输入数据集和/或查询替换为排除标签字段的数据集和/或查询，因为这些数据集和/或查询在调用该服务时不可用。 如果将输入数据集和/或查询大小减少到几个记录，刚好能够表示输入架构，这也是一个非常好的做法。 对于输出端口，通常会使用[选择数据集中的列][select-columns]模块在输出中排除所有输入字段，仅包括“评分标签”  和“评分概率”  。
+创建评分实验后，请检查并根据需要进行调整。 典型调整是将输入数据集和/或查询替换为排除标签字段的数据集和/或查询，因为这些数据集和/或查询在调用该服务时不可用。 如果将输入数据集和/或查询大小减少到几个记录，刚好能够表示输入架构，这也是一个非常好的做法。 对于输出端口，通常使用 "[选择数据集中的列][select-columns]" 模块排除所有输入字段并仅在输出中包括**评分标签**和**评分概率**。
 
 评分实验示例如下图所示。 准备部署时，请单击下方操作栏中的“**发布 WEB 服务**”按钮。
 

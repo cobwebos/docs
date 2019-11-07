@@ -1,6 +1,6 @@
 ---
 title: 深度学习与机器学习
-titleSuffix: Azure Machine Learning
+titleSuffix: Azure
 description: 了解深度学习如何与机器学习和人工智能相关。 深度学习适用于欺诈检测、语音 & 面部识别、情绪分析和时序预测等方案。
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 11/04/2019
-ms.openlocfilehash: cc98e620194c5bf67d2efa12d61af44d5527bafc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ed9f933e790aa70b257e27fa2bbbc04f6a2e077
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497496"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647996"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>深度学习与机器学习
 

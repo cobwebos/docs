@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 373713cc92379236385024beff201d16fbbfd4b5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: a092647f9772aafdf610ee9a5ba85ded17d50def
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497051"
+ms.locfileid: "73577704"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure 机器学习 SDK 中创建和运行机器学习管道
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,15 +33,11 @@ ML 管道使用远程计算目标进行计算，并使用与该管道关联的�
 
 如果还没有 Azure 订阅，请在开始前创建免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 创建用于保存所有管道资源的 [Azure 机器学习工作区](how-to-manage-workspace.md)。
 
-* [配置开发环境](how-to-configure-environment.md)以安装 Azure 机器学习 sdk，或使用已安装 sdk 的[Azure 机器学习计算实例](concept-compute-instance.md)。
-
-> [!NOTE]
-> 计算实例仅适用于区域为**美国中北部**或**英国南部**的工作区。
->如果你的工作区在任何其他区域，你可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm) 。 
+* [配置开发环境](how-to-configure-environment.md)以安装 Azure 机器学习 SDK，或使用已安装 sdk 的[Azure 机器学习笔记本 VM](concept-azure-machine-learning-architecture.md#compute-instance) 。
 
 首先附加工作区：
 
@@ -330,7 +326,7 @@ pipeline1 = Pipeline(workspace=ws, steps=steps)
 提交管道时，Azure 机器学习会检查每个步骤的依赖项，并上传指定的源目录的快照。 如果未指定源目录，则上传当前的本地目录。 快照也作为工作区试验的一部分存储。
 
 > [!IMPORTANT]
-> 若要防止文件包含在快照中，请在目录中创建一个[.gitignore](https://git-scm.com/docs/gitignore)或 `.amlignore` 文件，并将文件添加到其中。 `.amlignore` 文件使用与[.gitignore](https://git-scm.com/docs/gitignore)文件相同的语法和模式。 如果这两个文件都存在，则 `.amlignore` 文件优先。
+> 若要防止文件包含在快照中, 请在目录中创建 [.gitignore](https://git-scm.com/docs/gitignore) 或`.amlignore`文件, 并将文件添加到其中。 `.amlignore`文件使用与 [.gitignore](https://git-scm.com/docs/gitignore) 文件相同的语法和模式。 如果这两个文件都存在，则 `.amlignore` 文件优先。
 >
 > 有关详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshots)。
 

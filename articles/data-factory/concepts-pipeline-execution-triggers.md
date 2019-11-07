@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂中的管道执行和触发器 | Microsoft Docs
+title: Azure 数据工厂中的管道执行和触发器
 description: 本文介绍了如何在 Azure 数据工厂中按需执行管道，或者通过创建触发器来执行管道。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: adc7b65b4e079c55b9400b06603625971efc3ea3
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 20a5a9c5513c165cd5add2e97f019a741dfd0b03
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177673"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681472"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
 > [!div class="op_single_selector" title1="选择要使用的数据工厂服务的版本："]
@@ -230,7 +230,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ### <a name="schema-overview"></a>架构概述
 下表概述了与触发器的定期触发和计划相关的主要架构元素：
 
-| JSON 属性 | 描述 |
+| JSON 属性 | 说明 |
 |:--- |:--- |
 | **startTime** | 一个日期时间值。 对于基本的计划，**startTime** 属性的值适用于第一个匹配项。 对于复杂的计划，触发器的启动时间不早于指定的 **startTime** 值。 |
 | **endTime** | 触发器的结束日期和时间。 该触发器不在指定的结束日期和时间之后执行。 属性的值不能是过去的时间。 <!-- This property is optional. --> |
@@ -276,13 +276,13 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 ### <a name="schema-defaults-limits-and-examples"></a>架构默认值、限制和示例
 
-| JSON 属性 | Type | 需要 | 默认值 | 有效值 | 示例 |
+| JSON 属性 | 类型 | 必选 | 默认值 | 有效值 | 示例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | 字符串 | 是 | None | ISO 8601 日期时间 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | 对象 | 是 | None | recurrence 对象 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | 数字 | No | 第 | 1 到 1000 | `"interval":10` |
-| **endTime** | 字符串 | 是 | None | 代表将来某个时间的日期/时间值 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | 对象 | No | None | schedule 对象 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **startTime** | 字符串 | 是 | 无 | ISO 8601 日期时间 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **recurrence** | 对象 | 是 | 无 | recurrence 对象 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **interval** | 数字 | 否 | 1 | 1 到 1000 | `"interval":10` |
+| **endTime** | 字符串 | 是 | 无 | 代表将来某个时间的日期/时间值 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **schedule** | 对象 | 否 | 无 | schedule 对象 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime 属性
 下表说明了 **startTime** 属性如何控制触发器运行：
@@ -309,7 +309,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 下表详细描述了 **schedule** 元素：
 
-| JSON 元素 | 描述 | 有效值 |
+| JSON 元素 | 说明 | 有效值 |
 |:--- |:--- |:--- |
 | **分钟数** | 运行触发器的小时中的分钟。 |- 整数<br />- 整数数组|
 | **小时数** | 运行触发器的日期中的小时。 |- 整数<br />- 整数数组|
@@ -333,7 +333,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 这些示例假定 **interval** 值为 1，且根据计划定义，**frequency** 值是正确的。 例如，不能在 **frequency** 值为 "day" 的同时，在 **schedule** 对象中有一个 **monthDays** 修改项。 这些类型的限制在上一部分的表中已说明过。
 
-| 示例 | 描述 |
+| 示例 | 说明 |
 |:--- |:--- |
 | `{"hours":[5]}` | 在每天早晨 5:00 运行。 |
 | `{"minutes":[15], "hours":[5]}` | 在每天早晨 5:15 运行。 |

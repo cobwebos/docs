@@ -4,22 +4,22 @@ description: 使用 REST API 管理备份策略（计划和保留期）
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
-keywords: REST API; Azure VM 备份; Azure VM 还原
+keywords: REST API、Azure VM 备份、Azure VM 还原；
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: dacurwin
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 8b812ea053cb8e9da7cd3ef021ab6b74196d36ca
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 50cc327c69529e420837571fdd60c1b2a1364b10
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954966"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670139"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>使用 REST API 创建 Azure 恢复服务备份策略
 
-[策略 REST API 文档](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate)中概述了为 Azure 恢复服务保管库创建备份策略的步骤。 让我们参考此文档来为 Azure VM 备份创建策略。
+[策略 REST API 文档](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate)中概述了为 Azure 恢复服务保管库创建备份策略的步骤。 让我们参考此文档来为 Azure VM 备份创建策略。
 
 ## <a name="backup-policy-essentials"></a>备份策略概要
 
@@ -30,18 +30,18 @@ ms.locfileid: "68954966"
   - Azure 文件共享
 - 可将一个策略分配到多个资源。 可以使用一个 Azure VM 备份策略来保护多个 Azure VM。
 - 策略由两个部分组成
-  - 编制进行备份的时间
-  - 保留每个备份应保留多长时间。
+  - 计划：何时创建备份
+  - 保留期：每个备份应保留多长时间。
 - 可将计划定义为带有特定时间点的“每日”或“每周”计划。
 - 可以针对“每日”、“每周”、“每月”、“每年”备份点定义保留期。
 - “每周”是指在特定的星期日期进行备份，“每月”是指在特定的月份日期进行备份，“每年”是指在特定的年份日期进行备份。
 - “每月”、“每年”备份点的保留期称为“LongTermRetention”。
-- 创建保管库后, 还会创建名为 "DefaultPolicy" 的 Azure VM 备份的策略, 并将其用于备份 Azure Vm。
+- 创建保管库时，也会为 Azure VM 备份创建名为“DefaultPolicy”的策略，此策略可用于备份 Azure VM。
 
 若要创建或更新 Azure 备份策略，请使用以下 *PUT* 操作
 
 ```http
-PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2016-12-01
+PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2019-05-13
 ```
 
 `{policyName}` 和 `{vaultName}` 在 URI 中提供。 其他信息在请求正文中提供。
@@ -50,12 +50,12 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 例如，若要为 Azure VM 备份创建策略，需在请求正文中包含以下组成部分。
 
-|名称  |必填  |类型  |描述  |
+|Name  |必选  |类型  |说明  |
 |---------|---------|---------|---------|
-|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 属性        |
-|标记     |         | Object        |  资源标记       |
+|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 属性        |
+|标记     |         | 对象        |  资源标记       |
 
-有关请求正文中的完整定义列表，请参阅[备份策略 REST API 文档](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate)。
+有关请求正文中的完整定义列表，请参阅[备份策略 REST API 文档](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate)。
 
 ### <a name="example-request-body"></a>示例请求正文
 
@@ -152,15 +152,15 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 > [!IMPORTANT]
 > 计划和保留期的时间格式仅支持日期时间， 不支持单独的时间格式。
 
-## <a name="responses"></a>Responses
+## <a name="responses"></a>响应
 
 创建/更新备份策略是一项[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 
-它将返回两个响应：创建另一个操作时为 202（已接受），该操作完成时为 200（正常）。
+当创建另一个操作时，它将返回两个响应：202（接受），然后在该操作完成时返回200（确定）。
 
-|名称  |类型  |描述  |
+|Name  |类型  |说明  |
 |---------|---------|---------|
-|200 正常     |    [Protection PolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  确定       |
+|200 正常     |    [Protection PolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#protectionpolicyresource)     |  OK       |
 |202 已接受     |         |     已接受    |
 
 ### <a name="example-responses"></a>示例响应
@@ -181,14 +181,14 @@ x-ms-correlation-request-id: db785be0-bb20-4598-bc9f-70c9428b170b
 x-ms-routing-request-id: SOUTHINDIA:20180521T073907Z:db785be0-bb20-4598-bc9f-70c9428b170b
 Cache-Control: no-cache
 Date: Mon, 21 May 2018 07:39:06 GMT
-Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2016-06-01
+Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
-然后，可以使用 location 标头或 Azure-AsyncOperation 标头以及简单的 *GET* 命令跟踪生成的操作。
+然后通过简单的 GET 命令并使用 location 标头或 Azure-AsyncOperation 标头跟踪生成的操作。
 
 ```http
-GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2016-06-01
+GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13
 ```
 
 操作完成后，它将在响应正文中返回 200 (OK) 和策略内容。

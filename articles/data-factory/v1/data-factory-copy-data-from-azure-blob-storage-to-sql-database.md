@@ -1,5 +1,5 @@
 ---
-title: 将数据从 Blob 存储复制到 SQL 数据库 - Azure | Microsoft Docs
+title: 将数据从 Blob 存储复制到 SQL 数据库-Azure
 description: 本教程演示如何使用 Azure 数据工厂管道中的复制活动将数据从 Blob 存储复制到 SQL 数据库。
 services: data-factory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ad114ce3a40e11048d01c6768811089c43cdf1db
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 5a254979e345ae07bef5c8e79006bd0aaa0bf7df
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839395"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682797"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>教程：使用数据工厂将数据从 Blob 存储复制到 SQL 数据库
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.locfileid: "67839395"
 
 此教程介绍如何创建包含管道的数据工厂，以将数据从 Blob 存储复制到 SQL 数据库。
 
-复制活动在 Azure 数据工厂中执行数据移动。 该活动由全球可用的服务提供支持，能以安全、可靠、可缩放的方式在各种数据存储之间复制数据。 有关复制活动的详细信息，请参阅 [Data Movement Activities](data-factory-data-movement-activities.md) （数据移动活动）。  
+复制活动在 Azure 数据工厂中执行数据移动。 该活动由全球可用的服务提供支持，能以安全、可靠、可缩放的方式在各种数据存储之间复制数据。 有关复制活动的详细信息，请参阅 [数据移动活动](data-factory-data-movement-activities.md) 。  
 
 > [!NOTE]
 > 有关数据工厂服务的详细概述，请参阅 [Azure 数据工厂简介](data-factory-introduction.md)一文。
@@ -55,38 +55,38 @@ ms.locfileid: "67839395"
 要完成本教程，需使用 Azure 存储帐户的帐户名和帐户密钥。 记下 Azure 存储帐户的**帐户名**和**帐户密钥**。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 单击左侧菜单上的“所有服务”  ，并选择“存储帐户”  。
+2. 单击左侧菜单上的“所有服务”，并选择“存储帐户”。
 
     ![浏览存储帐户](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
-3. 在“存储帐户”  边栏选项卡中，选择要在本教程中使用的“Azure 存储帐户”  。
-4. 在“设置”  下，选择“访问密钥”  链接。
-5. 在“存储帐户名”  文本框旁，单击“复制”  （图像）按钮，然后将其保存/粘贴到某个位置（例如：文本文件中）。
+3. 在“存储帐户”边栏选项卡中，选择要在本教程中使用的“Azure 存储帐户”。
+4. 在“设置”下，选择“访问密钥”链接。
+5. 在“存储帐户名”文本框旁，单击“复制”（图像）按钮，然后将其保存/粘贴到某个位置（例如：文本文件中）。
 6. 重复上一步以复制或记下 **key1**。
 
     ![存储访问密钥](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/storage-access-key.png)
-7. 单击“X”  关闭所有边栏选项卡。
+7. 单击“X”关闭所有边栏选项卡。
 
 ## <a name="collect-sql-server-database-user-names"></a>收集 SQL Server、数据库和用户的名称
 要完成本教程，需提供 Azure SQL Server、数据库和用户的名称。 记下用于 Azure SQL 数据库的**服务器**、**数据库**和**用户**的名称。
 
-1. 在 **Azure 门户**中，单击左侧的“所有服务”  ，并选择“SQL 数据库”  。
-2. 在“SQL 数据库”  边栏选项卡中，选择要在本教程中使用的“数据库”  。 记下**数据库名称**。  
-3. 在“SQL 数据库”  边栏选项卡的“设置”  下，单击“属性”  。
+1. 在 **Azure 门户**中，单击左侧的“所有服务”，并选择“SQL 数据库”。
+2. 在“SQL 数据库”边栏选项卡中，选择要在本教程中使用的“数据库”。 记下**数据库名称**。  
+3. 在“SQL 数据库”边栏选项卡的“设置”下，单击“属性”。
 4. 记下**服务器名称**和**服务器管理员登录名**的值。
-5. 单击“X”  关闭所有边栏选项卡。
+5. 单击“X”关闭所有边栏选项卡。
 
 ## <a name="allow-azure-services-to-access-sql-server"></a>允许 Azure 服务访问 SQL Server
-确保 Azure SQL Server 的“允许访问 Azure 服务”  设置处于“打开”  状态，以便数据工厂服务可以访问 Azure SQL Server。 若要验证并启用此设置，请执行以下步骤：
+确保 Azure SQL Server 的“允许访问 Azure 服务”设置处于“打开”状态，以便数据工厂服务可以访问 Azure SQL Server。 若要验证并启用此设置，请执行以下步骤：
 
-1. 单击左侧的“所有服务”  中心，然后单击“SQL Server”  。
-2. 选择服务器，并单击“设置”  下的“防火墙”  。
-3. 在“防火墙设置”边栏选项卡中，单击“允许访问 Azure 服务”旁边的“打开”。   
-4. 单击“X”  关闭所有边栏选项卡。
+1. 单击左侧的“所有服务”中心，然后单击“SQL Server”。
+2. 选择服务器，并单击“设置”下的“防火墙”。
+3. 在“防火墙设置”边栏选项卡中，单击“允许访问 Azure 服务”旁边的“打开”。
+4. 单击“X”关闭所有边栏选项卡。
 
 ## <a name="prepare-blob-storage-and-sql-database"></a>准备 Blob 存储和 SQL 数据库
 现在，执行以下步骤来准备本教程所需的 Azure Blob 存储和 Azure SQL 数据库：  
 
-1. 启动记事本。 复制以下文本，将文件命名为 **emp.txt**，然后将其保存到硬盘上的 **C:\ADFGetStarted** 文件夹。
+1. 启动记事本。 复制以下文本，将文件命名为 **emp.txt**，并将其保存到硬盘上的 **C:\ADFGetStarted** 文件夹。
 
     ```
     John, Doe
@@ -123,6 +123,6 @@ ms.locfileid: "67839395"
 * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 该管道并不通过转换输入数据来生成输出数据。 有关如何使用 Azure 数据工厂转换数据的教程，请参阅[教程：使用 Hadoop 群集生成第一个转换数据的管道](data-factory-build-your-first-pipeline.md)。
+> 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 该管道并不通过转换输入数据来生成输出数据。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成第一个使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
 > 
 > 通过将一个活动的输出数据集设置为另一个活动的输入数据集，可链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[数据工厂中的计划和执行情况](data-factory-scheduling-and-execution.md)。 

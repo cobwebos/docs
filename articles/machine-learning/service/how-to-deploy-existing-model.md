@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 10/25/2019
-ms.openlocfilehash: 60596a8e157ebe1d6423c89e69f1c01b2f130310
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/06/2019
+ms.openlocfilehash: 4e82d52428195797fb5cdc7a54e900fff7d37655
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496909"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671444"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>将现有模型用于 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "73496909"
 >
 > 有关部署过程的一般信息，请参阅[部署具有 Azure 机器学习的模型](how-to-deploy-and-where.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)。
 

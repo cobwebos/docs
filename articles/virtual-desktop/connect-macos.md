@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: helohr
-ms.openlocfilehash: fa61d69ae7aa650b6011696fd45d05ba20d2ac8b
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: dc980d60c1db684a47c38b3b8efceb08dd618838
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338706"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605810"
 ---
-# <a name="connect-with-the-macos-client"></a>使用 macOS 客户端进行连接
+# <a name="connect-with-the-macos-client"></a>连接 macOS 客户端
 
 > 适用于： macOS 10.12 或更高版本
 
@@ -25,7 +25,7 @@ ms.locfileid: "71338706"
 
 ## <a name="install-the-client"></a>安装客户端
 
-若要开始，请在 macOS 设备上[下载](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) 并安装客户端。
+若要开始，请[下载](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) 并在 macOS 设备上安装客户端。
 
 ## <a name="subscribe-to-a-feed"></a>订阅源
 
@@ -35,7 +35,7 @@ ms.locfileid: "71338706"
 
 1. 在主页上选择 "**添加源**" 以连接到服务并检索资源。
 2. 输入源 URL。 这可以是 URL 或电子邮件地址：
-   - 如果使用 URL，请使用管理员提供的 URL。 通常，该 URL 是<https://rdweb.wvd.microsoft.com>。
+   - 如果使用 URL，请使用管理员提供的 URL。 通常，该 URL <https://rdweb.wvd.microsoft.com>。
    - 若要使用电子邮件，请输入你的电子邮件地址。 如果管理员已将服务器配置为，则此方法将通知客户端搜索与你的电子邮件地址关联的 URL。
 3. 选择 "**订阅**"。
 4. 出现提示时，请用用户帐户登录。

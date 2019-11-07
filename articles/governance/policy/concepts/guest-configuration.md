@@ -3,15 +3,15 @@ title: 了解如何审核虚拟机的内容
 description: 了解 Azure Policy 如何使用 Guest Configuration 审核 Azure 计算机内部的设置。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/20/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: efe929a6ea38a8df7ad9fe37a92c181e3d409b25
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 0e5592f629646db3132ffd65fd56b1a0d5d5be39
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464063"
+ms.locfileid: "73581430"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -75,7 +75,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 下表显示了 Azure 映像上支持的操作系统列表：
 
-|发布者|名称|版本|
+|发布者|Name|版本|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04、16.04、18.04|
 |Credativ|Debian|8、9|
@@ -121,30 +121,27 @@ Azure Policy 使用来宾配置资源提供程序 complianceStatus 属性在“�
 > [!NOTE]
 > 需有 **DeployIfNotExists** 策略，才能让 **AuditIfNotExists**  策略返回结果。 如果没有 **DeployIfNotExists**，**AuditIfNotExists** 策略会将状态显示为“第 0 个，共 0 个”资源。
 
-来宾配置的所有内置策略包含在一个计划内，以对分配中使用的定义分组。 名为 *[预览] 的内置计划： Linux 和 Windows 计算机内的审核密码安全设置*包含18个策略。 对于 Windows 有六个 DeployIfNotExists 和 AuditIfNotExists 对，对于 Linux 有三个对。 [策略定义](definition-structure.md#policy-rule)逻辑将验证是否只评估目标操作系统。
+来宾配置的所有内置策略包含在一个计划内，以对分配中使用的定义分组。 内置计划 _\[预览版\]： Linux 和 Windows 计算机内部的审核密码安全设置_包含18个策略。 对于 Windows 有六个 DeployIfNotExists 和 AuditIfNotExists 对，对于 Linux 有三个对。 [策略定义](definition-structure.md#policy-rule)逻辑将验证是否只评估目标操作系统。
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>遵循行业基线审核操作系统设置
 
-Azure 策略中提供的一项计划提供了从 Microsoft 的 "基准" 下审核虚拟机中的操作系统设置的功能。  定义 " *[预览]：不匹配 Azure 安全基线的审核 Windows vm" 设置*包括基于 Active Directory 组策略中的设置的一组完整的审核规则。
+Azure 策略中提供的一项计划提供了从 Microsoft 的 "基准" 下审核虚拟机中的操作系统设置的功能。 "定义" _\[预览\]：不匹配 Azure 安全基线设置的审核 Windows vm_包含一组完整的基于 Active Directory 组策略中的设置的审核规则。
 
-大多数设置都可用作参数。  此功能可让你自定义要审核的内容，以便将策略与你的组织要求进行对齐，或将策略映射到第三方信息，如行业法规标准。
+大多数设置都可用作参数。 此功能使你可以自定义要审核的内容以使策略与组织要求相匹配，或将策略映射到第三方信息，如行业法规标准。
 
-某些参数支持整数值范围。  例如，可以使用范围运算符设置最长密码期限参数，以便为计算机所有者提供灵活性。  可以审核，要求用户更改其密码的有效组策略设置不应超过70天，但不应小于1天。  如参数信息-冒泡中所述，若要使其成为有效审核值，请将值设置为 "1，70"。
+某些参数支持整数值范围。 例如，可以使用范围运算符设置最长密码期限参数，以便为计算机所有者提供灵活性。 可以审核，要求用户更改其密码的有效组策略设置不应超过70天，但不应小于一天。 如参数信息-冒泡中所述，若要使此业务策略成为有效审核值，请将值设置为 "1，70"。
 
-如果使用 Azure 资源管理器 dployment 模板分配策略，则可以使用参数文件来管理源代码管理中的这些设置。
-使用 Git 之类的工具管理每次签入时包含注释的审核策略的更改时，会将证据记录为对预期值的赋值应例外的原因。
+如果使用 Azure 资源管理器部署模板分配策略，则可以使用参数文件来管理源代码管理中的这些设置。 使用 Git 之类的工具管理每个签入文档中带有注释的审核策略的更改，这就是为什么赋值应该是预期值的例外。
 
 #### <a name="applying-configurations-using-guest-configuration"></a>使用来宾配置应用配置
 
-Azure 策略的最新功能配置计算机内部的设置。
-定义在*Windows 计算机上配置*时区会通过配置时区来对计算机进行更改。
+Azure 策略的最新功能配置计算机内部的设置。 定义在_Windows 计算机上配置_时区会通过配置时区来更改计算机。
 
-分配以*Configure*开头的定义时，还必须分配定义*部署必备组件，才能在 Windows Vm 上启用来宾配置策略。*
-如果选择，可以将这些定义组合到计划中。
+分配以_Configure_开头的定义时，还必须分配定义_部署必备组件，才能在 Windows Vm 上启用来宾配置策略_。 如果选择，可以将这些定义组合到计划中。
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>将策略分配给 Azure 之外的计算机
 
-适用于来宾配置的审核策略包括**HybridCompute/计算机**资源类型。  将自动包括在分配范围内载入到 Azure Arc 的任何计算机。
+适用于来宾配置的审核策略包括**HybridCompute/计算机**资源类型。 将自动包括在策略分配范围内载入到[Azure Arc 的](../../../azure-arc/servers/overview.md)任何计算机。
 
 ### <a name="multiple-assignments"></a>多个分配
 
@@ -152,8 +149,7 @@ Guest Configuration 策略目前仅支持为每台计算机分配相同的来宾
 
 ## <a name="built-in-resource-modules"></a>内置资源模块
 
-安装 Guest Configuration 扩展时，“GuestConfiguration”PowerShell 模块将包含在最新版本的 DSC 资源模块中。 可以使用模块页[GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/)中的 "手动下载" 链接从 PowerShell 库下载此模块。
-可将“.nupkg”文件格式重命名为“.zip”，以便于解压缩和查看。
+安装 Guest Configuration 扩展时，“GuestConfiguration”PowerShell 模块将包含在最新版本的 DSC 资源模块中。 可以使用模块页[GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/)中的 "手动下载" 链接从 PowerShell 库下载此模块。 可将“.nupkg”文件格式重命名为“.zip”，以便于解压缩和查看。
 
 ## <a name="client-log-files"></a>客户端日志文件
 

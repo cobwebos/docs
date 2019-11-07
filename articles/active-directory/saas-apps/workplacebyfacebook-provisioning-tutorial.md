@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f040ff4c8e59f764676aa6fdd9460ec94641684a
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 7ee091d1c8f0f477354f6bb422d041278ec5668e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881799"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73574263"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教程：为 Workplace by Facebook 配置自动用户预配
 
@@ -30,11 +30,11 @@ ms.locfileid: "70881799"
 
 若要配置 Azure AD 与 Workplace by Facebook 的集成，需要以下项：
 
-- Azure AD 订阅
+- 一个 Azure AD 订阅
 - 已启用 Workplace by Facebook 单一登录的订阅
 
 > [!NOTE]
-> 为了测试本教程中的步骤，我们不建议使用生产环境。
+> 不建议使用生产环境测试本教程中的步骤。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -68,7 +68,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 Azure AD 支持将已分配的用户的帐户详细信息自动同步到 Workplace by Facebook。 此自动同步使 Workplace by Facebook 能够在用户首次尝试登录之前获取对用户进行访问授权所需的数据。 在 Azure AD 中撤销访问权限后，它还可以从 Workplace by Facebook 取消预配用户。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory” > “企业应用” > “所有应用程序”部分。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory” **“企业应用”** “所有应用程序”部分 >  > 。
 
 2. 如果已为 Workplace by Facebook 配置单一登录，请使用搜索字段搜索 Workplace by Facebook 实例。 否则，请选择“添加”并在应用程序库中搜索“Workplace by Facebook”。 从搜索结果中选择 Workplace by Facebook，并将其添加到应用程序列表。
 
@@ -99,7 +99,7 @@ Azure AD 支持将已分配的用户的帐户详细信息自动同步到 Workpla
 现可创建测试帐户。 等待最多 20 分钟即可验证该帐户是否已同步到 Workplace by Facebook。
 
 > [!NOTE]
-> 我们正在与 Workplace by Facebook 团队紧密合作，以确保 Azure AD 的应用程序获得批准并满足其新指导原则。   
+> 我们正在与 Workplace by Facebook 团队紧密合作，以确保 Azure AD 的应用程序获得批准并满足其新指导原则。 Workplace by Facebook 截止时间为12月16日，我们希望满足这一要求。 当时，客户不需要任何工作。 X 年2月28日-2020，客户将需要过渡到新的集成。 迁移路径可用时，我们将立即发布。    
 
 ## <a name="additional-resources"></a>其他资源
 

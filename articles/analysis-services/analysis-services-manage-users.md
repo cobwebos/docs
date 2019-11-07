@@ -1,18 +1,18 @@
 ---
-title: Azure Analysis Services 中的身份验证和用户权限 | Microsoft Docs
-description: 了解 Azure Analysis Services 中的身份验证和用户权限。
+title: Azure Analysis Services 身份验证和用户权限 |Microsoft Docs
+description: 本文介绍 Azure Analysis Services 如何使用 Azure Active Directory （Azure AD）来进行身份管理和用户身份验证。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a48292b7600d8b9e400bf1e2d61aec313ce29f4b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4a054c3c042e18f1679acd75e5ba5ad74f66edff
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146876"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572765"
 ---
 # <a name="authentication-and-user-permissions"></a>身份验证和用户权限
 
@@ -22,7 +22,7 @@ Azure Analysis Services 支持 [Azure AD B2B 协作](../active-directory/active-
 
 ![Azure Analysis Services 身份验证体系结构](./media/analysis-services-manage-users/aas-manage-users-arch.png)
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 所有客户端应用程序和工具都使用一个或多个 Analysis Services [客户端库](analysis-services-data-providers.md)（AMO、MSOLAP、ADOMD）连接到服务器。 
 

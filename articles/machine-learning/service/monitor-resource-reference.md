@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/04/2019
-ms.openlocfilehash: 1fb16f6ef58efc5c63e743e557558dc60cf52f86
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/06/2019
+ms.openlocfilehash: 178c60d82c8337987e9858a409fcdef7063c9559
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514233"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684910"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Azure 机器学习监视数据引用
 
@@ -31,7 +31,7 @@ ms.locfileid: "73514233"
 |:--- |:---|
 | TimeGenerated | 生成日志条目的时间 |
 | OperationName | 与日志事件关联的操作的名称 |
-| 类别 | 日志事件的名称，AmlComputeClusterNodeEvent |
+| Category | 日志事件的名称，AmlComputeClusterNodeEvent |
 | JobId | 已提交作业的 ID |
 | ExperimentId | 试验的 ID |
 | experimentName | 试验的名称 |
@@ -54,13 +54,13 @@ ms.locfileid: "73514233"
 | JobErrorMessage | 作业错误详细消息 |
 | NodeId | 作业运行所在的节点的 ID |
 
-### <a name="amlcomputerclusterevents-table"></a>AmlComputerClusterEvents 表
+### <a name="amlcomputeclusterevents-table"></a>AmlComputeClusterEvents 表
 
 | 属性 | 说明 |
 |:--- |:--- |
 | TimeGenerated | 生成日志条目的时间 |
 | OperationName | 与日志事件关联的操作的名称 |
-| 类别 | 日志事件的名称，AmlComputeClusterNodeEvent |
+| Category | 日志事件的名称，AmlComputeClusterNodeEvent |
 | ProvisioningState | 群集的预配状态 |
 | ClusterName | 群集的名称 |
 | clusterType | 群集的类型 |
@@ -103,7 +103,7 @@ ms.locfileid: "73514233"
 |:--- |:--- |
 | TimeGenerated | 生成日志条目的时间 |
 | OperationName | 与日志事件关联的操作的名称 |
-| 类别 | 日志事件的名称，AmlComputeClusterNodeEvent |
+| Category | 日志事件的名称，AmlComputeClusterNodeEvent |
 | ClusterName | 群集的名称 |
 | NodeId | 创建的群集节点的 ID |
 | vmSize | 节点的 Vm 大小 |

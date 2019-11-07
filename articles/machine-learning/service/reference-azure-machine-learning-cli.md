@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 10/22/2019
+ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: dcbe535bb92f7755980929956093b0f0121ef41b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 20ff7d2cb6c185f574494871a986e1bce63536ba
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476454"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619962"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>使用 CLI 扩展进行 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Azure 机器学习 CLI 是 [Azure CLI](https://docs.microsoft.com/cli/azure/?vie
 
 CLI 不能取代 Azure 机器学习 SDK。 它是一种补充工具，经过优化，可处理高度参数化的任务，这些任务非常适合自动化。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 若要使用 CLI，必须拥有 Azure 订阅。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
@@ -92,6 +92,9 @@ az extension remove -n azure-cli-ml
     ```azurecli-interactive
     az ml workspace create -w myworkspace -g myresourcegroup
     ```
+
+    > [!TIP]
+    > 此命令将创建一个基本版本工作区。 若要创建企业工作区，请将 `--sku enterprise` 开关与 `az ml workspace create` 命令一起使用。 有关 Azure 机器学习版本的详细信息，请参阅[什么是 Azure 机器学习](overview-what-is-azure-ml.md#sku)。
 
     有关详细信息，请参阅[az ml workspace create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create)。
 

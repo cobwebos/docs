@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f8c049cc8d2b09cb37dbd444427b03c1013da65c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 95fe5471789b66c253aa21d73433f5192cd01e6b
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522315"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612014"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -31,7 +31,7 @@ ms.locfileid: "73522315"
 
 **标准托管磁盘是否存在任何事务成本？**
 
-是的。 我们针对每个事务进行收费。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage)。
+可以。 我们针对每个事务进行收费。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage)。
 
 对于标准托管磁盘，是对磁盘上的数据实际大小收费还是对磁盘的预配容量收费？
 
@@ -43,11 +43,11 @@ ms.locfileid: "73522315"
 
 是否可以更改托管磁盘的存储帐户类型（标准或高级）？
 
-是的。 可以使用 Azure 门户、PowerShell 或 Azure CLI 更改托管磁盘的存储帐户类型。
+可以。 可以使用 Azure 门户、PowerShell 或 Azure CLI 更改托管磁盘的存储帐户类型。
 
 是否可以使用 Azure 存储帐户中的 VHD 文件以不同的订阅创建托管磁盘？
 
-是的。
+可以。
 
 是否可以使用 Azure 存储帐户中的 VHD 文件在不同的区域中创建托管磁盘？
 
@@ -67,11 +67,11 @@ ms.locfileid: "73522315"
 
 **托管磁盘是否是 Azure 门户中的默认选项？**
 
-是的。
+可以。
 
 **是否可以创建一个空托管磁盘？**
 
-是的。 可创建空磁盘。 可独立于 VM 创建托管磁盘，例如，不需要将磁盘附加到 VM。
+可以。 可创建空磁盘。 可独立于 VM 创建托管磁盘，例如，不需要将磁盘附加到 VM。
 
 什么是使用托管磁盘的可用性集的支持容错域计数？
 
@@ -107,7 +107,7 @@ ms.locfileid: "73522315"
 
 **如果创建 128 GB 磁盘，然后将该大小增加到 130 GiB，是否会针对下一磁盘大小 (256 GiB) 进行收费？**
 
-是的。
+可以。
 
 是否可以创建本地冗余存储、异地冗余存储和区域冗余存储托管磁盘？
 
@@ -170,15 +170,6 @@ Azure 磁盘保留适用于特定区域和 SKU （如美国东部2中的 P30）�
 你将在过期前30天收到电子邮件通知，并在过期日期再次收到通知。 保留到期后，部署的磁盘将继续运行，并按最新的现用现[付费率](https://azure.microsoft.com/pricing/details/managed-disks/)进行计费。
 
 ## <a name="ultra-disks"></a>超磁盘
-
-**哪些区域当前支持超磁盘？**
-- 美国东部 2
-- 东南亚
-- 北欧
-
-**什么 VM 系列当前支持超磁盘？**
-- ESv3
-- DSv3
 
 **我应该如何将我的 ultra 磁盘吞吐量设置为？**
 如果不确定如何将磁盘吞吐量设置为，则建议首先假定 IO 大小为 16 KiB，并在监视应用程序时调整性能。 公式为：以 MBps 为单位的吞吐量 = IOPS * 16/1000。
@@ -316,11 +307,11 @@ Azure 标准 SSD 盘是什么？
 
 创建托管磁盘时，是否会默认启用 Azure 存储服务加密？
 
-是的。
+可以。
 
 **默认情况下，托管磁盘上的启动卷是否已加密？**
 
-是的。 默认情况下，所有托管磁盘都将加密，包括操作系统磁盘。
+可以。 默认情况下，所有托管磁盘都将加密，包括操作系统磁盘。
 
 加密密钥由谁管理？
 
@@ -347,7 +338,7 @@ Microsoft 管理加密密钥。
 
 是否已加密托管快照和映像？
 
-是的。 2017 年 6 月 9 日之后创建的所有托管快照和映像均会自动加密。 
+可以。 2017 年 6 月 9 日之后创建的所有托管快照和映像均会自动加密。 
 
 **是否可以将 VM 的位于存储帐户且现在或以前已加密的非托管磁盘转换为托管磁盘？**
 
@@ -373,7 +364,7 @@ Azure 美国西部当前支持这些新的磁盘大小。
 
 如果 VM 使用支持高级 SSD 盘的大小系列（比如 DSv2），是否可以同时附加高级和标准数据磁盘？ 
 
-是的。
+可以。
 
 是否可以同时将高级和标准数据磁盘附加到不支持高级 SSD 盘的大小系列，例如 D、Dv2、G 或 F 系列？
 
@@ -438,7 +429,7 @@ Azure 支持的最大页 blob 大小是 8 TiB (8,191 GiB)。 附加到 VM 作为
 
 **是否可以将托管磁盘的大小从小于 4 TiB 调整到最新引入的磁盘大小（最大大小为 32 TiB）？**
 
-是的。
+可以。
 
 **Azure 备份和 Azure Site Recovery 服务支持的最大磁盘大小是多少？**
 

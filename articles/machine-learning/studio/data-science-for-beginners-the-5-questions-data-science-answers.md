@@ -1,6 +1,6 @@
 ---
 title: 适合初学者的数据科学
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: 适合初学者的数据科学以 5 个较短的视频讲授基本概念，从 5 个数据科学可解答的问题开始。 来自 Azure 机器学习。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 1163d2faab48893fae992240feb0c56ef99324fe
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b2a91f3df3bab6a2ba10090719d0e614b9d652a3
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493105"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621761"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>适用于初学者的数据科研视频 1：5 个数据科研问题的解答
 通过顶级数据科学家制作的“适合初学者的数据科学”的五个简短视频，快速了解数据科学。 这些视频介绍基础知识，但无论是对研究数据科学感兴趣还是与数据科学家合作，这些内容都非常有用。
@@ -80,7 +80,7 @@ ms.locfileid: "73493105"
 
 如果有信用卡，那么已从异常检测获益。 信用卡公司分析购买模式，使他们可提醒用户可能的欺诈行为。 “异常”费用可能是在一家通常不会去购物的商店购物时，或购买非常昂贵的物品时所产生的费用。
 
-此问题在很多方面都很有用。 对于实例：
+此问题在很多方面都很有用。 例如：
 
 * 如果汽车上配有压力表，可能会想知道：此压力表读数是否正常？
 * 如果正在监控 Internet，就会想知道：此消息是否是来自 internet 的典型消息？

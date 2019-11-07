@@ -1,19 +1,19 @@
 ---
-title: 关于本地计算机和 Azure Vm 的迁移 Azure Site Recovery
-description: 本文介绍如何使用 Azure Site Recovery 服务将本地和 Azure IaaS VM 迁移到 Azure。
+title: 通过 Azure Site Recovery 将服务器和 Vm 迁移到 Azure
+description: 介绍如何使用 Azure Site Recovery 服务将本地和 Azure IaaS Vm 迁移到 Azure。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: c043950de9565f96d52c848f96efac80385f2321
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8e256aac16bb8c2d2f1eca494981458f71cc2e4d
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814484"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620616"
 ---
 # <a name="about-migration"></a>关于迁移
 
@@ -22,7 +22,7 @@ ms.locfileid: "70814484"
 下面是可以使用 Site Recovery 迁移的内容：
 
 - **从本地迁移到 Azure**：将本地 Hyper-V VM、VMware VM 和物理服务器迁移到 Azure。 迁移之后，在本地计算机上运行的工作负荷将在 Azure VM 上运行。 
-- **在 Azure 内迁移**：在 Azure 区域之间迁移 Azure VM。 
+- **在 Azure 中迁移**：在 Azure 区域之间迁移 Azure VM。 
 - **迁移 AWS**：将 AWS Windows 实例迁移到 Azure IaaS VM。 
 
 > [!NOTE]

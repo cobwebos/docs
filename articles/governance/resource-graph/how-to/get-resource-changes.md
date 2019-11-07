@@ -7,21 +7,21 @@ ms.author: dacoulte
 ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 4858d803b4fccdc6ae4d5a790721bad60d218313
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 44e7bbde40dbd4b79a6ce3735ab5a1ac81421d3b
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274204"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622562"
 ---
 # <a name="get-resource-changes"></a>获取资源更改
 
 在日常使用、重新配置甚至是重新部署的过程中，资源都会发生更改。
 更改可能是个人或者自动化过程做出的。 大部分更改是依设计做出的，但有时并非如此。 Azure Resource Graph 提供过去 14 天的更改历史记录，可让你：
 
-- 查找 Azure 资源管理器属性中检测到更改的时间
+- 查找在 Azure 资源管理器属性中检测到更改的时间
 - 对于每个资源更改，请参阅属性更改详细信息
-- 查看检测到的更改前后的资源的完整比较
+- 查看检测到的更改之前和之后的资源的完整比较
 
 对于以下示例场景，更改检测和详细信息很有作用：
 
@@ -38,15 +38,15 @@ ms.locfileid: "72274204"
 > [!IMPORTANT]
 > Azure Resource Graph 中的更改历史记录目前以公共预览版提供。
 
-## <a name="find-detected-change-events-and-view-change-details"></a>查找检测到的更改事件和查看更改详细信息
+## <a name="find-detected-change-events-and-view-change-details"></a>查找检测到的更改事件并查看更改详细信息
 
-查看资源发生的更改的第一步是查找某个时段内与该资源相关的更改事件。 每个 change 事件还包含有关资源更改的详细信息。 此步骤是通过 **resourceChanges** REST 终结点完成的。
+查看资源发生的更改的第一步是查找某个时段内与该资源相关的更改事件。 每个更改事件还包含有关资源的哪些信息发生更改的详细信息。 此步骤是通过 **resourceChanges** REST 终结点完成的。
 
-**ResourceChanges**终结点接受请求正文中的以下参数：
+**resourceChanges** 终结点接受请求正文中的以下参数：
 
-- **resourceId** \[required @ no__t-2：要查看其更改的 Azure 资源。
-- **interval** \[required @ no__t-2：包含检查更改事件的开始日期和结束日期（采用**祖鲁时区 (Z)** ）的属性。
-- **fetchPropertyChanges** （可选）：布尔值属性，设置响应对象是否包括属性更改。
+- **resourceId** \[必需\]：要在其上查找更改的 Azure 资源。
+- **间隔**\[所需的\]：在使用**祖鲁时区（Z）** 检查更改事件时的_开始_日期和_结束_日期属性。
+- **fetchPropertyChanges** （可选）：一个布尔值属性，设置响应对象是否包括属性更改。
 
 示例请求正文：
 
@@ -144,28 +144,28 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 }
 ```
 
-**ResourceId**的每个检测到的更改事件都具有以下属性：
+**resourceId** 的每个检测到的更改事件都具有以下属性：
 
-- **changeId** -此值对于该资源是唯一的。 **changeId** 字符串有时可能包含其他属性，只能保证它是唯一的。
-- **beforeSnapshot** -包含检测到更改之前拍摄的资源快照的**snapshotId**和**时间戳**。
-- **afterSnapshot** -包含检测到更改后拍摄的资源快照的**snapshotId**和**时间戳**。
-- **changeType** -描述在**beforeSnapshot**和**afterSnapshot**之间为整个更改记录检测到的更改类型。 值包括：_创建_、_更新_和_删除_。 仅当**changeType**为_Update_时才包含**propertyChanges**属性数组。
-- **propertyChanges** -此属性数组详细说明了在**beforeSnapshot**和**afterSnapshot**之间更新的所有资源属性：
-  - **propertyName** -已更改的资源属性的名称。
-  - **changeCategory** -描述进行更改的内容。 值包括：_系统_和_用户_。
-  - **changeType** -描述检测到的单个资源属性的更改类型。
-    值包括：_插入_、_更新_、_删除_。
-  - **beforeValue** - **beforeSnapshot**中资源属性的值。 当**changeType**为_Insert_时不显示。
-  - **afterValue** - **afterSnapshot**中资源属性的值。 _删除_ **changeType**时不显示。
+- **changeId** - 此值对于该资源是唯一的。 **changeId** 字符串有时可能包含其他属性，只能保证它是唯一的。
+- **beforeSnapshot** - 包含检测到更改之前创建的资源快照的 **snapshotId** 和 **timestamp**。
+- **afterSnapshot** - 包含检测到更改之后创建的资源快照的 **snapshotId** 和 **timestamp**。
+- **changeType** - 描述已针对 **beforeSnapshot** 和 **afterSnapshot** 之间的整个更改记录检测到的更改的类型。 值为： _Create_、 _Update_和_Delete_。 仅当 **changeType** 为 **Update** 时，才包括 _propertyChanges_ 属性数组。
+- **propertyChanges** - 此属性数组提供了 **beforeSnapshot** 和 **afterSnapshot** 之间已更新的所有资源属性的详细信息：
+  - **propertyName** - 已更改的资源属性的名称。
+  - **changeCategory** - 描述哪类更改者执行了更改。 值为：_系统_和_用户_。
+  - **changeType** - 描述已为单个资源属性检测到的更改的类型。
+    值为：_插入_、_更新_、_删除_。
+  - **beforeValue** - **beforeSnapshot** 中资源属性的值。 当 **changeType** 为 _Insert_ 时不显示。
+  - **afterValue** - **afterSnapshot** 中的资源属性的值。 当 **changeType** 为 _Remove_ 时不显示。
 
 ## <a name="compare-resource-changes"></a>比较资源更改
 
-使用**resourceChanges**终结点中的**changeId** ，然后使用**resourceChangeDetails** REST 终结点获取已更改资源的快照和快照。
+有了来自 **resourceChanges** 终结点的 **changeId** 后，可以使用 **resourceChangeDetails** REST 终结点获取更改资源之前和之后的资源快照。
 
 **resourceChangeDetails** 终结点要求在请求正文中使用两个参数：
 
-- **resourceId**：要对其进行比较的 Azure 资源。
-- **changeId**：从 **resourceChanges** 中收集的 **resourceId** 的唯一更改事件。
+- **resourceId**：用于比较更改的 Azure 资源。
+- **changeId**：从**ResourceChanges**收集的**resourceId**的唯一更改事件。
 
 示例请求正文：
 
@@ -286,10 +286,10 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 
 **beforeSnapshot** 和 **afterSnapshot** 分别提供快照创建时间以及当时的属性。 更改是在这些快照之间的某个时间点发生的。 在以上示例中我们可以看到，更改的属性是 **supportsHttpsTrafficOnly**。
 
-若要对结果进行比较，请使用**resourceChanges**中的**更改**属性，或在**resourceChangeDetails**中评估每个快照的**内容**部分以确定不同之处。 如果比较快照，则**时间戳**始终显示为差异（尽管需要）。
+若要对结果进行比较，请使用 **resourceChanges** 中的 **changes** 属性，或评估 **resourceChangeDetails** 中每个快照的 **content** 部分，以确定差异。 如果对快照进行比较，**timestamp** 始终会显示为差异，不过这符合预期。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 在[初学者查询](../samples/starter.md)中了解使用的语言。
 - 在[高级查询](../samples/advanced.md)中了解高级用法。
-- 了解如何[浏览资源](../concepts/explore-resources.md)。
+- 了解有关如何[探索资源](../concepts/explore-resources.md)的详细信息。

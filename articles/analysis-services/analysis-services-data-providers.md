@@ -1,18 +1,18 @@
 ---
-title: 连接到 Azure Analysis Services 所需的客户端库 | Microsoft Docs
+title: Azure Analysis Services 客户端库 |Microsoft Docs
 description: 介绍了客户端应用程序和工具连接 Azure Analysis Services 时所需的客户端库
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8ce5083d444aa05b59677fb46e7aa80200835412
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f78ac8686f23c47995cab9686c2ca3f6cf88fa6b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147081"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573053"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>用于连接到 Azure Analysis Services 的客户端库
 
@@ -42,7 +42,7 @@ NuGet 包程序集 AssemblyVersion 遵循语义版本控制：MAJOR.MINOR.PATCH�
 
 Analysis Services 利用三个客户端库（也称为数据提供程序）。 ADOMD.NET 和 Analysis Services 管理对象 (AMO) 都是托管型客户端库。 Analysis Services OLE DB 提供程序 (MSOLAP DLL) 是本机客户端库。 通常，所有三个库会同时安装。 **Azure Analysis Services 要求安装所有三个库的最新版本**。 
 
-Microsoft 客户端应用程序（例如 Power BI Desktop 和 Excel）会安装所有这三个客户端库，有新版本可用时，会更新这些库。 某些客户端库可能不是 Azure Analysis Services 所需要的最新版本，具体取决于更新的版本或频率。 这同样适用于自定义应用程序或其他界面，例如 AsCmd、TOM、ADOMD.NET。 这些应用程序需要手动或以编程方式安装库。 用于手动安装的客户端库作为可分发程序包包含在 SQL Server 功能包中。 但是，这些客户端库与 SQL Server 版本关联，可能不是最新的。  
+Microsoft 客户端应用程序（例如 Power BI Desktop 和 Excel）会安装所有这三个客户端库，有新版本可用时，会更新这些库。 某些客户端库可能不是 Azure Analysis Services 所需要的最新版本，具体取决于更新的版本或频率。 这同样适用于自定义应用程序或其他接口，例如 AsCmd、TOM、ADOMD.NET。 这些应用程序需要手动或以编程方式安装库。 用于手动安装的客户端库作为可分发程序包包含在 SQL Server 功能包中。 但是，这些客户端库与 SQL Server 版本关联，可能不是最新的。  
 
 进行客户端连接的客户端库不同于从 Azure Analysis Services 服务器连接到数据源时需要的数据提供程序。 若要详细了解数据源连接，请参阅[数据源连接](analysis-services-datasource.md)。
 
@@ -74,7 +74,7 @@ Microsoft 客户端应用程序（例如 Power BI Desktop 和 Excel）会安装�
   
 1.  转到  `C:\Program Files\Microsoft Analysis Services\AS OLEDB\` 。 如果有多个文件夹，请选择较大的数字。
   
-2.  右键单击“msolap.dll” > “属性” > “详细信息”。 如果文件名为 msolap140.dll，则它早于最新版本并且应当升级。
+2.  右键单击“msolap.dll” **“属性”** “详细信息”。 >  >  如果文件名为 msolap140.dll，则它早于最新版本并且应当升级。
     
     ![客户端库详细信息](media/analysis-services-data-providers/aas-msolap-details.png)
     
@@ -82,12 +82,12 @@ Microsoft 客户端应用程序（例如 Power BI Desktop 和 Excel）会安装�
 ### <a name="amo"></a>AMO
 
 1. 转到  `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\` 。 如果有多个文件夹，请选择较大的数字。
-2. 右键单击“Microsoft.AnalysisServices” > ，选择“属性” > “详细信息”。  
+2. 右键单击“Microsoft.AnalysisServices” **，选择“属性”** “详细信息”。 >  >   
 
 ### <a name="adomd"></a>ADOMD
 
 1. 转到  `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\` 。 如果有多个文件夹，请选择较大的数字。
-2. 右键单击“Microsoft.AnalysisServices.AdomdClient” > ，选择“属性” > “详细信息”。  
+2. 右键单击“Microsoft.AnalysisServices.AdomdClient” **，选择“属性”** “详细信息”。 >  >   
 
 
 ## <a name="next-steps"></a>后续步骤

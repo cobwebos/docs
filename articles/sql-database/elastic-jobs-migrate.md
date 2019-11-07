@@ -1,5 +1,5 @@
 ---
-title: 迁移到新的弹性数据库作业 | Microsoft Docs
+title: '迁移到新的弹性数据库作业 '
 description: 迁移到新的弹性数据库作业。
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: johnpaulkee
 ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 9fa3444244cbd51c3f14abcfef5212a366cadbd2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2cba7ecb4be500a8f7007c8da009e03e6f33dfde
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68550555"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692263"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>迁移到新的弹性数据库作业
 
 现已提供升级版本的[弹性数据库作业](elastic-jobs-overview.md)。
 
-如果你有现有的客户托管版本的弹性数据库作业, 则将提供迁移 cmdlet 和脚本, 以便轻松地迁移到最新版本。
+如果你有现有的客户托管版本的弹性数据库作业，则将提供迁移 cmdlet 和脚本，以便轻松地迁移到最新版本。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -31,7 +31,7 @@ ms.locfileid: "68550555"
 
 ### <a name="install-the-latest-elastic-jobs-cmdlets"></a>安装最新的弹性作业 cmdlet
 
-如果还没有 Azure 订阅, 请在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果还没有 Azure 订阅，请在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 安装 **Az.Sql** 1.1.1-preview 模块以获得最新弹性作业 cmdlet。 以管理员访问权限在 PowerShell 中运行以下命令。
 
@@ -92,7 +92,7 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 现在旧的和新的弹性作业 cmdlet 都已初始化，可将作业凭据、目标和作业迁移到新的作业数据库。
 
-### <a name="setup"></a>安装
+### <a name="setup"></a>设置
 
 ```powershell
 $ErrorActionPreference = "Stop";

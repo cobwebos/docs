@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2d8bf44f5e5e7a3f8c328a47480599f9dd18b845
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: d8a2c456c725a3170bc940bf17dec6b0c4ad2c3e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489511"
+ms.locfileid: "73584532"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>监视 Azure ML 试验运行和指标
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,6 +26,9 @@ ms.locfileid: "73489511"
 
 > [!NOTE]
 > Azure 机器学习还可以在训练期间记录来自其他源的信息，例如自动机器学习运行或运行训练作业的 Docker 容器。 未记录这些日志。 如果遇到问题，请与 Microsoft 支持部门联系，他们可以在故障排除过程中使用这些日志。
+
+> [!TIP]
+> 本文档中的信息主要面向需要监视模型定型过程的数据科学家和开发人员。 如果你是对监视 Azure 机器学习中的资源使用情况和事件（如配额、已完成的培训运行或已完成的模型部署）感兴趣的管理员，请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
 
 ## <a name="available-metrics-to-track"></a>要跟踪的可用指标
 

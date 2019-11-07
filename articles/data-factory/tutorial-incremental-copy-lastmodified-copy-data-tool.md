@@ -1,5 +1,5 @@
 ---
-title: 使用复制数据工具根据 LastModifiedDate 以增量方式复制新的和已更改的文件 | Microsoft Docs
+title: 使用复制数据工具根据 LastModifiedDate 以增量方式复制新的和已更改的文件
 description: 创建一个 Azure 数据工厂，然后使用复制数据工具根据 LastModifiedDate 以增量方式加载新文件。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 9f6fd57586603d0d987faa674d40a7e4678530a1
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 09a9fa4515913470c86bbafe293add007a3117ea
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933845"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683460"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>使用复制数据工具根据 LastModifiedDate 以增量方式复制新的和已更改的文件
 
@@ -38,8 +38,8 @@ ms.locfileid: "68933845"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
-* **Azure 存储帐户**：将 Blob 存储用作源和接收器数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)中的说明。
+* **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* **Azure 存储帐户**：使用 Blob 存储作为_源_和_接收器_数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)中的说明。
 
 ### <a name="create-two-containers-in-blob-storage"></a>在 Blob 存储中创建两个容器
 
@@ -129,7 +129,7 @@ ms.locfileid: "68933845"
     
     ![选择输入文件或文件夹](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-input-file-folder.png)
     
-    b. 在“文件加载行为”下，选择“增量加载:LastModifiedDate”。
+    b. 在 "**文件加载行为**" 下，选择 "**增量加载： LastModifiedDate**"。
     
     ![选择输入文件或文件夹](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-loading-behavior.png)
     

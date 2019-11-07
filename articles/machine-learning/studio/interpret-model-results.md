@@ -1,6 +1,6 @@
 ---
 title: 解释模型结果
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: 如何为使用并可视化评分模型输出的算法选择最佳的参数集。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 07f446daafea8b866083933bb414b0f5ef04bb4d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cdeded35e1afb9313f2dd2c5842aef511ea0dd61
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492908"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621672"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习 Studio （经典）中解释模型结果
 本主题说明如何在 Azure 机器学习 Studio （经典）中可视化和解释预测结果。 训练模型并根据它进行预测（“为模型评分”）后，需要了解并解释预测结果。

@@ -1,17 +1,17 @@
 ---
 title: 刷新 Azure Analysis Services 模型的逻辑应用 |Microsoft Docs
-description: 了解如何使用 Azure 逻辑应用编写异步刷新的代码。
+description: 本文介绍如何使用 Azure 逻辑应用对 Azure Analysis Services 的异步刷新进行编码。
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: acf31bf3e7e8c3a0835640dee36f8435a1eba625
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a44aa5b355bea675f5d99761d97b8876a9b2a7d7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294614"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572338"
 ---
 # <a name="refresh-with-logic-apps"></a>使用逻辑应用进行刷新
 
@@ -62,20 +62,20 @@ ms.locfileid: "72294614"
 
 按如下所示配置 HTTP 活动：
 
-|属性  |ReplTest1  |
+|属性  |值  |
 |---------|---------|
-|**方法**     |发布         |
+|**方法**     |POST         |
 |**URI**     | https://服务器区域/servers/aas 服务器名称/models/数据库名称/refreshes <br /> <br /> 例如： https： \//westus/servers/asazure/模型/AdventureWorks/刷新|
 |**标头**     |   Content-Type、application/json <br /> <br />  ![标头](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**正文**     |   若要详细了解如何构建请求正文，请参阅[使用 REST API - POST /refreshes 执行异步刷新](analysis-services-async-refresh.md#post-refreshes)。 |
 |**身份验证**     |Active Directory OAuth         |
 |**租户**     |填写你的 Azure Active Directory 租户 ID         |
-|**受众**     |https://*.asazure.windows.net         |
+|**受众**     |https：//*. asazure         |
 |**客户端 ID**     |输入你的服务主体名称客户端 ID         |
-|**凭据类型**     |Secret         |
+|**凭据类型**     |密钥         |
 |**机密**     |输入你的服务主体名称机密         |
 
-例如：
+示例：
 
 ![已完成 HTTP 活动](./media/analysis-services-async-refresh-logic-app/7.png)
 

@@ -9,16 +9,24 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: dddc39a0b7b3c43f283750c95d4feaef2cf15b36
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: d9b7a433dd7392e83719f09815f736dbd85f9c7f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514272"
+ms.locfileid: "73582894"
 ---
 # <a name="monitoring-azure-machine-learning"></a>监视 Azure 机器学习
 
 本文介绍 Azure 机器学习生成的监视数据。 还介绍了如何使用 Azure Monitor 分析数据并定义警报。
+
+> [!TIP]
+> 本文档中的信息主要面向管理员，因为它描述了对 Azure 机器学习服务的监视。 如果你是一名数据科学家或开发人员，并且想要监视特定于模型定型运行的信息，请参阅以下文档：
+>
+> * [启动、监视和取消定型运行](how-to-manage-runs.md)
+> * [用于定型运行的日志指标](how-to-track-experiments.md)
+> * [跟踪 eexperiments 与 MLflow](how-to-use-mlflow.md)
+> * [用 TensorBoard 进行可视化运行](how-to-monitor-tensorboard.md)
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
@@ -77,7 +85,7 @@ Azure 机器学习的所有指标位于命名空间**机器学习服务工作区
 
 你可以配置以下 Azure 机器学习的日志：
 
-| 类别 | 说明 |
+| Category | 说明 |
 |:---|:---|
 | AmlComputeClusterEvent | Azure 机器学习计算群集中的事件。 |
 | AmlComputeClusterNodeEvent | Azure 机器学习计算群集中的节点的事件。 |

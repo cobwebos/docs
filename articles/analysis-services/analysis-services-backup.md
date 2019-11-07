@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services 数据库备份和还原 | Microsoft Docs
-description: 介绍如何备份和还原 Azure Analysis Services 数据库。
+description: 本文介绍了如何备份和还原 Azure Analysis Services 数据库中的模型元数据和数据。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fde545f3764f5910d00da5a8ce7f0e8c1772c7ea
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3f63ecf560a14248fed6dea53c30a27acdf9a938
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295411"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573450"
 ---
 # <a name="backup-and-restore"></a>备份和还原
 
@@ -79,7 +79,7 @@ ms.locfileid: "72295411"
 
 
 > [!NOTE]
-> 如果要从本地服务器还原，必须先从该模型的角色中删除所有域用户，然后再将这些用户作为 Azure Active Directory 用户重新添加到这些角色。
+> 如果要从本地服务器还原，必须先从该模型的角色中删除所有域用户，并再将这些用户作为 Azure Active Directory 用户重新添加到这些角色。
 > 
 > 
 
