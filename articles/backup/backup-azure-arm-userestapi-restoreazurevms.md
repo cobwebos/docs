@@ -1,25 +1,25 @@
 ---
 title: Azure 备份：使用 REST API 还原 Azure VM
-description: 使用 REST API 管理 Azure VM 备份的还原操作
+description: 本文介绍如何使用 REST API 管理 Azure 虚拟机备份的还原操作。
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
-keywords: REST API; Azure VM 备份; Azure VM 还原
+keywords: REST API、Azure VM 备份、Azure VM 还原；
 ms.service: backup
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: dacurwin
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: bdbceec2f1d0a900ffdb392d8a0505ce11419036
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 364b6ab589cc0fa50953a71d55adeccc79462eed
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954892"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747536"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 还原 Azure 虚拟机
 
-使用 Azure 备份完成 Azure 虚拟机的备份后，可以从同一个备份副本还原整个 Azure 虚拟机，或者还原磁盘或文件。 本文介绍如何使用 REST API 还原 Azure VM 或磁盘。
+完成使用 Azure 备份的 Azure 虚拟机的备份后，可以从同一备份副本还原整个 Azure 虚拟机或磁盘。 本文介绍如何使用 REST API 还原 Azure VM 或磁盘。
 
 执行任何还原操作时，首先必须确定相关的恢复点。
 
@@ -35,9 +35,9 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 *GET* URI 包含所有必需的参数。 无需额外提供请求正文
 
-### <a name="responses"></a>Responses
+### <a name="responses"></a>响应
 
-|姓名  |类型  |描述  |
+|名称  |类型  |说明  |
 |---------|---------|---------|
 |200 正常     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       确定  |
 
@@ -123,7 +123,7 @@ X-Powered-By: ASP.NET
 
 ## <a name="restore-disks"></a>还原磁盘
 
-如果需要自定义从备份数据创建 VM 的过程，只需将磁盘还原到所选的存储帐户，然后根据要求从这些磁盘创建 VM 即可。 存储帐户应与恢复服务保管库位于同一区域，并且不应采用区域冗余。 备份的虚拟机 ("vmconfig") 的磁盘和配置将存储在给定的存储帐户中。
+如果需要自定义从备份数据创建 VM 的过程，只需将磁盘还原到所选的存储帐户，然后根据要求从这些磁盘创建 VM 即可。 存储帐户应与恢复服务保管库位于同一区域，并且不应采用区域冗余。 磁盘以及已备份 VM 的配置（“vmconfig.json”）将存储在给定的存储帐户中。
 
 触发磁盘还原是一个 *POST* 请求。 若要详细了解“还原磁盘”操作，请参阅[“触发还原”REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger)。
 
@@ -131,13 +131,13 @@ X-Powered-By: ASP.NET
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2016-12-01
 ```
 
-`{containerName}` 和 `{protectedItemName}` 是按[此处](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)所述构造的。 `{fabricName}` 是“Azure”，`{recoveryPointId}` 是[上述](#example-response)恢复点的 `{name}` 字段。
+`{containerName}` 和 `{protectedItemName}` 是按[此处](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)所述构造的。 `{fabricName}` 是“Azure”，`{recoveryPointId}` 是`{name}`上述[恢复点的 ](#example-response) 字段。
 
 ### <a name="create-request-body"></a>创建请求正文
 
 若要触发从 Azure VM 备份还原磁盘的操作，需在请求正文中包含以下组成部分。
 
-|姓名  |类型  |描述  |
+|名称  |类型  |说明  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -169,9 +169,9 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 触发磁盘还原是一个[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 
-它将返回两个响应：创建另一个操作时为 202（已接受），该操作完成时为 200（正常）。
+它将返回两个响应：创建另一个操作时为 202（已接受），该操作完成时为 200（确定）。
 
-|姓名  |类型  |描述  |
+|名称  |类型  |说明  |
 |---------|---------|---------|
 |202 已接受     |         |     已接受    |
 
@@ -197,7 +197,7 @@ Location: https://management.azure.com/subscriptions//subscriptions/00000000-000
 X-Powered-By: ASP.NET
 ```
 
-然后，可以使用 location 标头或 Azure-AsyncOperation 标头以及简单的 *GET* 命令跟踪生成的操作。
+然后通过简单的 GET 命令并使用 location 标头或 Azure-AsyncOperation 标头跟踪生成的操作。
 
 ```http
 GET https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2016-12-01

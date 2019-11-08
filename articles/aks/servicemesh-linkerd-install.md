@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: ec8250f6cdb44af3c99c1d34d1f14fbd2209aac0
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: f70052a62152a20f808c1e491a663d1406fbd407
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530090"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747710"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中安装 Linkerd
 
@@ -23,7 +23,7 @@ ms.locfileid: "72530090"
 > [!NOTE]
 > 这些说明引用 Linkerd 版本 `stable-2.6.0`。
 >
-> 可针对 Kubernetes 版本 `1.13+` 运行 Linkerd `stable-2.6.x`。 你可以在[GitHub-Linkerd 版本][linkerd-github-releases]中找到其他稳定的 Linkerd 版本。
+> 可针对 Kubernetes 版本 `1.13+`运行 Linkerd `stable-2.6.x`。 你可以在[GitHub-Linkerd 版本][linkerd-github-releases]中找到其他稳定的 Linkerd 版本。
 
 在本文中，学习如何：
 
@@ -36,7 +36,7 @@ ms.locfileid: "72530090"
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文详细介绍了如何创建 AKS 群集（Kubernetes `1.13` 及更高版本，启用 RBAC），并已与群集建立了 `kubectl` 连接。 如果需要有关这些项的帮助，请参阅[AKS 快速入门][aks-quickstart]。
+本文中详述的步骤假设已创建 AKS 群集（已启用 RBAC 的 Kubernetes `1.13` 及更高版本）并已与该群集建立 `kubectl` 连接。 如果需要帮助完成这些项目，请参阅 [AKS 快速入门][aks-quickstart]。
 
 必须将所有 Linkerd pod 计划为在 Linux 节点上运行-此设置是下面详细说明的默认安装方法，不需要其他配置。
 
@@ -248,7 +248,7 @@ Opening Linkerd dashboard in the default browser
 > [!WARNING]
 > 删除正在运行的系统中的 Linkerd 可能会导致服务之间出现与流量相关的问题。 在继续操作之前，请确保您的系统的预配仍可正常运行，而无需 Linkerd。
 
-首先需要删除数据平面代理。 从工作负荷命名空间中删除任何自动代理注入[批注][linkerd-automatic-proxy-injection]并滚动工作负荷部署。 工作负荷将不再具有任何关联的数据平面组件。
+首先需要删除数据平面代理。 从工作负荷命名空间中删除任何自动代理注入[批注][linkerd-automatic-proxy-injection]，并汇总工作负荷部署。 工作负荷将不再具有任何关联的数据平面组件。
 
 最后，按如下所示删除控制平面：
 

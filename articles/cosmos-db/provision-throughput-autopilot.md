@@ -6,19 +6,19 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3e2d9b892ad42563b481a0b1fe6a468daefad672
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: e0c3c88119c3d064326442881854920b411f5ed4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606433"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748381"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>在 autopilot 模式下创建 Azure Cosmos 容器和数据库（预览版）
 
 Azure Cosmos DB 允许在手动或 autopilot 模式下预配容器上的吞吐量。 本文介绍 autopilot 模式的优点和用例。
 
 > [!NOTE]
-> Autopilot 模式当前在公共预览版中可用。
+> Autopilot 模式当前在公共预览版中可用。 若要为 Azure Cosmos 帐户启用 autopilot 功能，请参阅本文的[启用 autopilot](#enable-autopilot)部分。 只能为新数据库和容器启用 autopilot，而不能用于现有容器和数据库。
 
 除了手动预配吞吐量，你现在还可以在 autopilot 模式下配置 Azure cosmos 容器。 在 autopilot 模式下配置的 Azure Cosmos 容器和数据库会根据**应用程序需要自动并立即缩放预配的吞吐量，而不会影响 sla。**
 
@@ -65,10 +65,10 @@ Azure Cosmos DB 允许在手动或 autopilot 模式下预配容器上的吞吐�
 | **预配吞吐量** | 手动预配 | 根据工作负荷使用模式自动并即时缩放。 |
 | **请求/操作的速率限制（429）**  | 如果消耗超出预配的容量，可能会发生这种情况。 | 如果使用的吞吐量在 autopilot 模式下所选的最大吞吐量范围内，则不会发生这种情况。   |
 | **容量规划** |  你必须进行初始容量规划并设置所需的吞吐量。 |    无需担心容量规划。 系统会自动处理容量规划和容量管理。 |
-| **价格** | 每小时手动预配 RU/秒。 | 对于单个写入区域帐户，使用每小时 autopilot RU/秒，按小时使用的吞吐量付费。 <br/><br/>对于具有多个写入区域的帐户，autopilot 不收取额外费用。 使用与每小时相同的多主机 RU/秒的速率为每小时使用的吞吐量付费。 |
+| **定价** | 每小时手动预配 RU/秒。 | 对于单个写入区域帐户，使用每小时 autopilot RU/秒，按小时使用的吞吐量付费。 <br/><br/>对于具有多个写入区域的帐户，autopilot 不收取额外费用。 使用与每小时相同的多主机 RU/秒的速率为每小时使用的吞吐量付费。 |
 | **最适合工作负荷类型** |  可预测和稳定的工作负载|   不可预测和可变工作负荷  |
 
-## <a name="enable-autopilot-from-azure-portal"></a>从 Azure 门户启用 autopilot
+## <a name="a-idenable-autopilot-enable-autopilot-from-azure-portal"></a><a id="enable-autopilot"> 启用 Azure 门户中的 autopilot
 
 可以通过 Azure 门户中的启用来试用 Azure Cosmos 帐户中的 autopilot。 使用以下步骤启用 autopilot 选项：
 

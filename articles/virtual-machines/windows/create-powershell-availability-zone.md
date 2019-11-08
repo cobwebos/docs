@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 8e850de9314ba2de678ebe1aa25b4ffc251bf59f
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: dac283275e66ed114a9886cf3a698a38530397ad
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173835"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749515"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>使用 PowerShell 在可用性区域中创建 Windows 虚拟机
 
@@ -28,11 +28,11 @@ ms.locfileid: "71173835"
 
 若要使用可用性区域，请在[受支持的 Azure 区域](../../availability-zones/az-overview.md#services-support-by-region)中创建虚拟机。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-运行 `Connect-AzAccount` 命令以登录 Azure 订阅，并按照屏幕上的说明操作。
+使用 `Connect-AzAccount` 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
 
 ```powershell
 Connect-AzAccount
@@ -177,4 +177,4 @@ Tags               : {}
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的[可用性](availability.md)。
+在本文中，你已学习了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的[可用性](availability.md)。

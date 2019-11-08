@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 10/18/2019
-ms.openlocfilehash: 49ed6eedf55a8a3c0faa2fa1ff60b9894af78285
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/06/2019
+ms.openlocfilehash: e0354f96036cce968e6b6909a18f97ff48347eda
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580856"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796255"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到本地数据源
 
@@ -57,7 +57,7 @@ Azure 逻辑应用支持通过数据网关进行的读取和写入操作。 但�
 
 * 已在[本地计算机上安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。
 
-* 你的[Azure 帐户和订阅](../logic-apps/logic-apps-gateway-install.md#requirements)与安装该数据网关时使用的相同。
+* 你使用的是在安装此数据网关时使用的[同一 Azure 帐户和订阅](../logic-apps/logic-apps-gateway-install.md#requirements)。 此 Azure 帐户必须属于单个[Azure Active Directory （Azure AD）租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)。
 
 * 你的网关安装尚未注册并由其他 Azure 网关资源声明。
 
@@ -87,7 +87,7 @@ Azure 逻辑应用支持通过数据网关进行的读取和写入操作。 但�
    | **订阅** | 选择用于网关安装的 Azure 帐户的 Azure 订阅。 默认订阅取决于用来登录的 Azure 帐户。 |
    | **资源组** | 要使用的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md) |
    | **位置** | 在[网关安装](../logic-apps/logic-apps-gateway-install.md)过程中为网关云服务选择的同一区域或位置。 否则，网关安装将不会显示在 "**安装名称**" 列表中。 逻辑应用位置可能不同于网关资源位置。 |
-   | **安装名称** | 选择仅当满足以下条件时才会出现在列表中的网关安装： <p><p>-与要创建的网关资源位于同一区域 <br>-未链接到另一个 Azure 网关资源 <br>-链接到用来创建网关资源的同一个 Azure 帐户 <p><p>有关详细信息，请参阅[常见问题解答](#faq)部分。 |
+   | **安装名称** | 选择仅当满足以下条件时才会出现在列表中的网关安装： <p><p>-网关安装使用的区域与你要创建的网关资源的区域相同。 <br>-网关安装未链接到另一个 Azure 网关资源。 <br>-网关安装已链接到用于创建网关资源的同一个 Azure 帐户。 <br>-你的 Azure 帐户属于单个[Azure Active Directory （Azure AD）租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)，并且与用于网关安装的帐户相同。 <p><p>有关详细信息，请参阅[常见问题解答](#faq)部分。 |
    |||
 
    下面是一个示例，显示与网关资源位于同一区域的网关安装，并链接到同一个 Azure 帐户：
@@ -164,7 +164,7 @@ Azure 逻辑应用支持通过数据网关进行的读取和写入操作。 但�
 **问**：为什么我的网关安装在 Azure 中创建网关资源时未显示？ <br/>
 **答**：此问题的可能原因如下：
 
-* 你的 Azure 帐户必须是连接到本地计算机上的网关安装的同一个帐户。 检查你是否已登录到具有与网关安装关联的相同标识的 Azure 门户。
+* 你的 Azure 帐户必须与本地计算机上的网关安装链接的帐户相同。 检查你是否已登录到具有与网关安装关联的相同标识的 Azure 门户。 此外，请确保你的 Azure 帐户属于单个[Azure AD 租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)，并设置为在网关安装过程中使用的同一 Azure AD 租户或目录。
 
 * 网关资源和网关安装必须使用同一区域。 但是，逻辑应用位置可能与网关资源位置不同。
 

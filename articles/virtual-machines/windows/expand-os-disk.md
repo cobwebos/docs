@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 692046070ffc04942a5d8a73825f6cb59e462f8b
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 12fa8cb09a9864b49c9368462ae3d5ca1d88f2c9
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147205"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749413"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>如何扩展虚拟机的 OS 驱动器
 
@@ -37,7 +37,7 @@ ms.locfileid: "71147205"
 > 
 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 
 ## <a name="resize-a-managed-disk"></a>调整托管磁盘的大小
@@ -85,7 +85,7 @@ ms.locfileid: "71147205"
 
 这就是所有的操作！ 现在，请通过 RDP 访问 VM，打开“计算机管理”（或“磁盘管理”），并使用刚刚分配的空间扩展驱动器。
 
-## <a name="resize-an-unmanaged-disk"></a>非托管磁盘的大小
+## <a name="resize-an-unmanaged-disk"></a>调整费托管磁盘的大小
 
 在管理模式下打开 Powershell ISE 或 Powershell 窗口，并遵循以下步骤：
 
@@ -166,7 +166,7 @@ Start-AzVM -ResourceGroupName $rgName -Name $vmName
 
 ## <a name="resizing-data-disks"></a>调整数据磁盘的大小
 
-虽然本文重介绍扩展 VM 的 OS 磁盘，但该脚本也可用于扩展附加到 VM 的数据磁盘。 例如，要扩展附加到 VM 的第一个数据磁盘，请将 `StorageProfile` 的 `OSDisk` 对象替换为 `DataDisks` 数组，并使用数字索引获取对第一个附加的数据磁盘的引用，如下所示：
+虽然本文重介绍扩展 VM 的 OS 磁盘，但该脚本也可用于扩展附加到 VM 的数据磁盘。 例如，要扩展附加到 VM 的第一个数据磁盘，请将 `OSDisk` 的 `StorageProfile` 对象替换为 `DataDisks` 数组，并使用数字索引获取对第一个附加的数据磁盘的引用，如下所示：
 
 **托管磁盘**
 
@@ -207,11 +207,11 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 
 2.  打开命令提示符并键入 diskpart
 
-2.  在 DISKPART 提示符处，键入 `list volume`。 记下要扩展的卷。
+2.  在 DISKPART 提示符处，键入`list volume`。 记下要扩展的卷。
 
-3.  在 DISKPART 提示符处，键入 `select volume <volumenumber>`。 这将选择将扩展到同一磁盘上的连续可用空间的卷 volumenumber。
+3.  在 DISKPART 提示符处，键入`select volume <volumenumber>`。 这将选择将扩展到同一磁盘上的连续可用空间的卷 volumenumber。
 
-4.  在 DISKPART 提示符处，键入 `extend [size=<size>]`。 这将按大小（MB）扩展所选的卷。
+4.  在 DISKPART 提示符处，键入`extend [size=<size>]`。 这将按大小（MB）扩展所选的卷。
 
 
 ## <a name="next-steps"></a>后续步骤

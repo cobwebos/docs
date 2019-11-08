@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2019
 ms.author: memildin
-ms.openlocfilehash: dad8c6173495d11abd6c9f5babb4ef8bc789e4ce
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 140361b7ba3a6a618d4c416447525f8a73690b81
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686413"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748432"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure 安全中心的 Endpoint protection 评估和建议
 
@@ -84,7 +84,7 @@ Azure 安全中心为 Endpoint protection 解决方案[支持](https://docs.micr
 * 当不满足以下任何检查时，安全中心建议你 **"在虚拟机上安装 endpoint protection 解决方案"** ：
     * **HKLM： \ SOFTWARE\TrendMicro\Deep 安全代理**已存在
     * **HKLM： \ SOFTWARE\TrendMicro\Deep Security Agent\InstallationFolder** exists
-    * **Dsq_query**文件位于安装文件夹中
+    * **Dsa_query**文件位于安装文件夹中
     * 运行带**dsa_query 的命令**的结果。**模式：检测到趋势微 Deep Security 代理**
 
 ## <a name="symantec-endpoint-protection"></a>Symantec endpoint protection

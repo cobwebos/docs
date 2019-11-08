@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: eddfddc994482bcb6e60604703e7f306fee9c32b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: 24b1c22d9badc58360b0355bb4ef89017db27f06
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574323"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796734"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>在部署到 Azure Kubernetes Service （AKS）的模型上检测数据偏差（预览）
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -189,6 +189,8 @@ datadrift.disable_schedule()
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关使用数据偏移的完整示例，请参阅[AZURE ML 数据偏移笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/azure-ml-datadrift.ipynb)。 本 Jupyter Notebook 演示如何使用[Azure 开放式数据集](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets)来训练模型预测天气、将其部署到 AKS，并监视数据偏移。 
+* 有关使用数据偏移的完整示例，请参阅[AZURE ML 数据偏移笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/drift-on-aks.ipynb)。 本 Jupyter Notebook 演示如何使用[Azure 开放式数据集](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets)来训练模型预测天气、将其部署到 AKS，并监视数据偏移。 
+
+* 利用数据[集监视器](how-to-monitor-datasets.md)检测数据偏移。
 
 * 随着数据偏移的公开上市，我们将非常感谢你的问题、意见或建议。 使用以下产品反馈按钮！ 

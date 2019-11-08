@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/05/2019
 ms.author: memildin
-ms.openlocfilehash: d705174f46ba38f37ae8cce9839c2d1f63ab6bf8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6b6acb0ae1452795fe02906779b920e4b41f9a55
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664275"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748387"
 ---
 # <a name="threat-detection-for-cloud-native-computing-in-azure-security-center"></a>Azure 安全中心内云本机计算的威胁检测
 
@@ -66,7 +66,7 @@ ms.locfileid: "73664275"
     >[!NOTE]
     > 如果选择不在主机上安装代理，则只会收到威胁检测权益和警报的子集。 你仍将收到与网络分析和恶意服务器通信相关的警报。
 
-* 对于**AKS 群集级别**，会根据 Kubernetes 审核日志分析来监视威胁检测。 若要启用此**无代理**监视，请从 **& 设置**"页的" 定价 "中将" Kubernetes "选项添加到你的订阅（请参阅[定价](security-center-pricing.md)）。 若要在此级别生成警报，安全中心将使用 AKS 检索到的日志来监视 AKS 管理的服务。 此级别的事件示例包括公开的 Kubernetes 仪表板、创建高特权角色，以及创建敏感的装载。 
+* 对于**AKS 群集级别**，会根据 Kubernetes 审核日志分析来监视威胁检测。 若要启用此**无代理**监视，请从 **& 设置**"页的" 定价 "中将" Kubernetes "选项添加到你的订阅（请参阅[定价](security-center-pricing.md)）。 若要在此级别生成警报，安全中心将使用 AKS 检索到的日志来监视 AKS 管理的服务。 此级别的事件示例包括公开的 Kubernetes 仪表板、创建高特权角色，以及创建敏感的装载。
 
     >[!NOTE]
     > 安全中心为在订阅设置上启用 Kubernetes 选项后发生的 Azure Kubernetes 服务操作和部署生成检测警报。 

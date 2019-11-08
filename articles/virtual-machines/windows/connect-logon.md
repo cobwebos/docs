@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 1980ee0bdea1316f6117d9deb7d2adb9df941768
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 6566ce4b9cec9ff09666e734625f15033c85127b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162615"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749566"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>如何连接并登录到运行 Windows 的 Azure 虚拟机
 可以从 Windows 桌面使用 Azure 门户中的“连接”按钮来启动远程桌面 (RDP) 会话。 首先连接到虚拟机，然后登录。
@@ -55,9 +55,9 @@ ms.locfileid: "71162615"
 
 ## <a name="connect-to-the-virtual-machine-using-powershell"></a>使用 PowerShell 连接到虚拟机
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
-如果使用 PowerShell 并安装了 Azure PowerShell 模块，则还可以使用`Get-AzRemoteDesktopFile` cmdlet 进行连接，如下所示。
+如果使用 PowerShell 并安装了 Azure PowerShell 模块，则还可以使用 `Get-AzRemoteDesktopFile` cmdlet 进行连接，如下所示。
 
 此示例将立即启动 RDP 连接，引导完成与上述类似的提示。
 

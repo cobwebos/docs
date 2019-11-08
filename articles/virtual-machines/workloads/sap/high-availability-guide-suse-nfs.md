@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 0e4daaa3417ce349111fbc811be36a4615058c76
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: 771a20ccf1c34958308d58dafb6fb01e36bb408a
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791726"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749022"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性
 
@@ -94,7 +94,7 @@ NFS 服务器为使用此 NFS 服务器的每个 SAP 系统使用专用的虚拟
 * 探测端口
   * NW1 的端口 61000
   * NW2 的端口 61001
-* 负载均衡规则
+* Loadbalancing 规则（如果使用基本负载均衡器）
   * NW1 的 2049 TCP
   * NW1 的 2049 UDP
   * NW2 的 2049 TCP
@@ -120,7 +120,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    4. 管理员用户名和管理员密码  
       创建可用于登录计算机的新用户。
    5. 子网 ID  
-      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 ID&gt;/resourceGroups/&lt;资源组名称&gt;/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称&gt;/subnets/&lt;子网名称&gt;
+      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/**订阅 ID&lt;/resourceGroups/&gt;资源组名称**/providers/Microsoft.Network/virtualNetworks/**虚拟网络名称&lt;/subnets/&gt;子网名称** **&lt;&gt;** **&lt;&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux
 
@@ -136,48 +136,85 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    SLES For SAP Applications 12 SP3 (BYOS)  
    选择前面创建的可用性集  
 1. 向两台虚拟机中为每个 SAP 系统添加一个数据磁盘。
-1. 创建负载均衡器（内部）  
-   1. 创建前端 IP 地址
-      1. NW1 的 IP 地址 10.0.0.4
-         1. 打开负载均衡器，选择前端 IP 池，并单击“添加”
-         1. 输入新前端 IP 池的名称（例如 **nw1-frontend**）
-         1. 将“分配”设置为“静态”并输入 IP 地址（例如 **10.0.0.4**）
-         1. 单击“确定”
-      1. NW2 的 IP 地址 10.0.0.5
-         * 为 NW2 重复上述步骤
-   1. 创建后端池
-      1. 连接到应当作为 NW1 的 NFS 群集的一部分的所有虚拟机的主网络接口
-         1. 打开负载均衡器，单击后端池，并单击“添加”
-         1. 输入新后端池的名称（例如 **nw1-backend**）
-         1. 单击“添加虚拟机”
-         1. 选择前面创建的可用性集
-         1. 选择 NFS 群集的虚拟机
-         1. 单击“确定”
-      1. 连接到应当作为 NW2 的 NFS 群集的一部分的所有虚拟机的主网络接口
-         * 重复上述步骤来为 NW2 创建后端池
-   1. 创建运行状况探测
-      1. NW1 的端口 61000
-         1. 打开负载均衡器，选择运行状况探测，并单击“添加”
-         1. 输入新运行状况探测的名称（例如 **nw1-hp**）
-         1. 选择 TCP 作为协议，选择端口 610**00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
-         1. 单击“确定”
-      1. NW2 的端口 61001
-         * 重复上述步骤来为 NW2 创建运行状况探测
-   1. 负载均衡规则
-      1. NW1 的 2049 TCP
+1. 创建负载均衡器（内部）。 建议[标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。  
+   1. 按照以下说明创建标准负载均衡器：
+      1. 创建前端 IP 地址
+         1. NW1 的 IP 地址 10.0.0.4
+            1. 打开负载均衡器，选择前端 IP 池，并单击“添加”
+            1. 输入新前端 IP 池的名称（例如 **nw1-frontend**）
+            1. 将“分配”设置为“静态”并输入 IP 地址（例如 **10.0.0.4**）
+            1. 单击“确定”
+         1. NW2 的 IP 地址 10.0.0.5
+            * 为 NW2 重复上述步骤
+      1. 创建后端池
+         1. 连接到应当作为 NW1 的 NFS 群集的一部分的所有虚拟机的主网络接口
+            1. 打开负载均衡器，单击后端池，并单击“添加”
+            1. 输入新后端池的名称（例如 **nw1-backend**）
+            1. 选择虚拟网络
+            1. 单击“添加虚拟机”
+            1. 选择 NFS 群集的虚拟机及其 IP 地址。
+            1. 单击“添加”。
+         1. 连接到应当作为 NW2 的 NFS 群集的一部分的所有虚拟机的主网络接口
+            * 重复上述步骤来为 NW2 创建后端池
+      1. 创建运行状况探测
+         1. NW1 的端口 61000
+            1. 打开负载均衡器，选择运行状况探测，并单击“添加”
+            1. 输入新运行状况探测的名称（例如 **nw1-hp**）
+            1. 选择 TCP 作为协议，选择端口 610**00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
+            1. 单击“确定”
+         1. NW2 的端口 61001
+            * 重复上述步骤来为 NW2 创建运行状况探测
+      1. 负载均衡规则
          1. 打开负载均衡器，选择负载均衡规则，并单击“添加”
-         1. 输入新的负载均衡器规则的名称（例如 **nw1-lb-2049**）
-         1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **nw1-frontend**）
-         1. 将协议保留为“TCP”，输入端口 **2049**
+         1. 输入新负载均衡器规则的名称（例如**nw1**）
+         1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如**nw1）** 。 **nw1-后端**和**nw1**）
+         1. 选择 " **HA 端口**"。
          1. 将空闲超时增大到 30 分钟
          1. **确保启用浮动 IP**
          1. 单击“确定”
-      1. NW1 的 2049 UDP
-         * 为 NW1 针对端口 2049 和 UDP 重复上述步骤
-      1. NW2 的 2049 TCP
-         * 为 NW2 针对端口 2049 和 TCP 重复上述步骤
-      1. NW2 的 2049 UDP
-         * 为 NW2 针对端口 2049 和 UDP 重复上述步骤
+         * 重复上述步骤来为 NW2 创建负载均衡规则
+   1. 或者，如果方案需要基本的负载均衡器，请按照以下说明进行操作：
+      1. 创建前端 IP 地址
+         1. NW1 的 IP 地址 10.0.0.4
+            1. 打开负载均衡器，选择前端 IP 池，并单击“添加”
+            1. 输入新前端 IP 池的名称（例如 **nw1-frontend**）
+            1. 将“分配”设置为“静态”并输入 IP 地址（例如 **10.0.0.4**）
+            1. 单击“确定”
+         1. NW2 的 IP 地址 10.0.0.5
+            * 为 NW2 重复上述步骤
+      1. 创建后端池
+         1. 连接到应当作为 NW1 的 NFS 群集的一部分的所有虚拟机的主网络接口
+            1. 打开负载均衡器，单击后端池，并单击“添加”
+            1. 输入新后端池的名称（例如 **nw1-backend**）
+            1. 单击“添加虚拟机”
+            1. 选择前面创建的可用性集
+            1. 选择 NFS 群集的虚拟机
+            1. 单击“确定”
+         1. 连接到应当作为 NW2 的 NFS 群集的一部分的所有虚拟机的主网络接口
+            * 重复上述步骤来为 NW2 创建后端池
+      1. 创建运行状况探测
+         1. NW1 的端口 61000
+            1. 打开负载均衡器，选择运行状况探测，并单击“添加”
+            1. 输入新运行状况探测的名称（例如 **nw1-hp**）
+            1. 选择 TCP 作为协议，选择端口 610**00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
+            1. 单击“确定”
+         1. NW2 的端口 61001
+            * 重复上述步骤来为 NW2 创建运行状况探测
+      1. 负载均衡规则
+         1. NW1 的 2049 TCP
+            1. 打开负载均衡器，选择负载均衡规则，并单击“添加”
+            1. 输入新的负载均衡器规则的名称（例如 **nw1-lb-2049**）
+            1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **nw1-frontend**）
+            1. 将协议保留为“TCP”，输入端口 **2049**
+            1. 将空闲超时增大到 30 分钟
+            1. **确保启用浮动 IP**
+            1. 单击“确定”
+         1. NW1 的 2049 UDP
+            * 为 NW1 针对端口 2049 和 UDP 重复上述步骤
+         1. NW2 的 2049 TCP
+            * 为 NW2 针对端口 2049 和 TCP 重复上述步骤
+         1. NW2 的 2049 UDP
+            * 为 NW2 针对端口 2049 和 UDP 重复上述步骤
 
 > [!IMPORTANT]
 > 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**net.tcp _timestamps**设置为**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。

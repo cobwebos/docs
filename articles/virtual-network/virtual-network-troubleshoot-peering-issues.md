@@ -6,6 +6,7 @@ documentationcenter: na
 author: v-miegge
 manager: dcscontentpm
 editor: ''
+tags: virtual-network
 ms.assetid: 1a3d1e84-f793-41b4-aa04-774a7e8f7719
 ms.service: virtual-network
 ms.devlang: na
@@ -14,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 0898a65323957cbab4c2ab5278e9970cf0c16a90
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 1fddbe908ccebc1384dcccde0810366f1a6d5da7
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219241"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796234"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>排查虚拟网络对等互连问题
 
-此故障排除指南提供帮助你解决大多数[虚拟网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)问题的步骤。
+本故障排除指南提供帮助你解决大多数[虚拟网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)问题的步骤。
 
 ![虚拟网络对等互连示意图](./media/virtual-network-troubleshoot-peering-issues/4489538_en_1.png)
 
-## <a name="configure-virtual-network-peering-between-two-virtual-networks"></a>配置两个虚拟网络之间的虚拟网络对等互连
+## <a name="configure-virtual-network-peering-between-two-virtual-networks"></a>在两个虚拟网络之间配置虚拟网络对等互连
 
 虚拟网络是在同一订阅中还是在不同的订阅中？
 
-### <a name="the-virtual-networks-are-in-the-same-subscription"></a>虚拟网络在同一订阅中
+### <a name="the-virtual-networks-are-in-the-same-subscription"></a>虚拟网络位于同一订阅中
 
 若要为同一订阅中的虚拟网络配置虚拟网络对等互连，请使用以下文章中的方法：
 
@@ -58,7 +59,7 @@ ms.locfileid: "71219241"
 若要为不同订阅或 Active Directory 租户中的虚拟网络配置虚拟网络对等互连，请参阅[Azure CLI 的不同订阅中创建对等互连](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)。
 
 > [!Note]
-> 若要配置网络对等互连，必须在两个订阅中具有**网络参与者**权限。 有关详细信息，请参阅对[等互连权限](virtual-network-manage-peering.md#permissions)。
+> 若要配置网络对等互连，必须在这两个订阅中拥有“网络参与者”权限。 有关详细信息，请参阅[对等互连权限](virtual-network-manage-peering.md#permissions)。
 
 ## <a name="configure-virtual-network-peering-with-hub-spoke-topology-that-uses-on-premises-resources"></a>使用本地资源的中心辐射型拓扑配置虚拟网络对等互连
 
@@ -66,11 +67,11 @@ ms.locfileid: "71219241"
 
 ### <a name="for-a-site-to-site-connection-or-an-expressroute-connection"></a>对于站点到站点连接或 ExpressRoute 连接
 
-按照中的步骤操作：[为虚拟网络对等互连配置 VPN 网关传输](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json)。
+按照：[为虚拟网络对等互连配置 VPN 网关传输](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json)中的步骤。
 
 ### <a name="for-point-to-site-connections"></a>对于点到站点连接
 
-1. 按照中的步骤操作：[为虚拟网络对等互连配置 VPN 网关传输](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json)。
+1. 按照：[为虚拟网络对等互连配置 VPN 网关传输](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json)中的步骤。
 2. 建立或更改虚拟网络对等互连后，下载并重新安装点到站点包，以便点到站点客户端获得到辐射虚拟网络的更新路由。
 
 ## <a name="configure-virtual-network-peering-with-hub-spoke-topology-virtual-network"></a>配置具有中心辐射型拓扑虚拟网络的虚拟网络对等互连
@@ -83,18 +84,18 @@ ms.locfileid: "71219241"
 1. 在中心虚拟网络中，配置网络虚拟设备（NVA）。
 1. 在辐射虚拟网络中，具有应用了下一跃点类型 "网络虚拟设备" 的用户定义路由。
 
-有关详细信息，请参阅[服务链](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)。
+有关详细信息，请参阅[服务链接](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)。
 
 > [!Note]
-> 如果需要有关设置 NVA 的帮助，请[联系 NVA 供应商](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
+> 如果需要帮助设置 NVA，请[联系 NVA 供应商](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
 
-有关 NVA 设备设置和路由故障排除的帮助，请参阅[Azure 中的网络虚拟设备问题](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva)。
+在排查 NVA 设备设置和路由问题时如需帮助，请参阅 [Azure 中的网络虚拟设备问题](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva)。
 
-### <a name="the-virtual-networks-are-in-different-regions"></a>虚拟网络在不同的区域中
+### <a name="the-virtual-networks-are-in-different-regions"></a>虚拟网络位于不同的区域中
 
 现在支持通过全局虚拟网络对等互连传输。 对于以下资源，连接无法在全局虚拟网络对等互连上工作：
 
-* 基本 ILB SKU 后面的 Vm
+* 基本 ILB SKU 后面的 VM
 * Redis 缓存（使用基本 ILB SKU）
 * 应用程序网关（使用基本 ILB SKU）
 * 规模集（使用基本 ILB SKU）
@@ -108,33 +109,33 @@ ms.locfileid: "71219241"
 
 ## <a name="troubleshoot-a-connectivity-issue-between-two-peered-virtual-networks"></a>排查两个对等互连虚拟网络之间的连接问题
 
-使用具有必要[角色和权限](virtual-network-manage-peering.md#permissions)的帐户登录到[Azure 门户](https://portal.azure.com/)。 选择虚拟网络，选择 "对**等互连**"，然后检查 "**状态**" 字段。 什么是状态？
+使用具有必要[角色和权限](virtual-network-manage-peering.md#permissions)的帐户登录到[Azure 门户](https://portal.azure.com/)。 选择虚拟网络，选择 "对**等互连**"，然后检查 "**状态**" 字段。 状态是什么？
 
 ### <a name="the-peering-status-is-connected"></a>对等互连状态为 "已连接"
 
 若要解决此问题：
 
-1. 检查网络流量：
+1. 检查网络流量流：
 
-   使用[连接故障排除](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-overview)和[IP 流验证](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview)从源 vm 到目标 vm，以确定是否存在导致流量流干扰的 NSG 或 UDR。
+   使用从源 VM 到目标 VM 的[连接故障排除](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-overview)和 [IP 流验证](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview)，确定是否某个 NSG 或 UDR 导致流量流受到干扰。
 
    如果使用的是防火墙或 NVA： 
    1. 记录 UDR 参数，以便在完成此步骤后可以还原它们。
-   2. 从源 VM 子网或 NIC 中删除 UDR 作为下一跃点的 NVA。 验证从源 VM 直接连接到绕过 NVA 的目标的连接。 如果此步骤不起作用，请参阅[NVA 疑难解答](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva)。
+   2. 从源 VM 子网或 NIC 中删除指向 NVA（充当下一跃点）的 UDR。 验证从源 VM 直接连接到绕过 NVA 的目标的连接。 如果此步骤不起作用，请参阅[NVA 疑难解答](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva)。
 
-2. 获取网络跟踪： 
-   1. 在目标 VM 上启动网络跟踪。 对于 Windows，你可以使用**Netsh**。 对于 Linux，请使用**TCPDump**。
-   2. 从源 IP 向目标 IP 运行**TcpPing**或**PsPing** 。
+2. 提取网络跟踪： 
+   1. 在目标 VM 上启动网络跟踪。 对于 Windows，可以使用 **Netsh**。 对于 Linux，请使用 **TCPDump**。
+   2. 运行从源到目标 IP 的 **TcpPing** 或 **PsPing**。
 
-      下面是**TcpPing**命令的示例：`tcping64.exe -t <destination VM address> 3389`
+      这是 **TcpPing** 命令的一个示例：`tcping64.exe -t <destination VM address> 3389`
 
-   3. **TcpPing**完成后，停止目标上的网络跟踪。
-   4. 如果数据包从源到达，则没有网络问题。 检查 VM 防火墙和侦听该端口的应用程序以找到配置问题。
+   3. 完成 **TcpPing** 后，停止目标上的网络跟踪。
+   4. 如果从源传入的数据包抵达，则表示没有网络问题。 检查 VM 防火墙以及侦听该端口的应用程序来找出配置问题。
 
    > [!Note]
-   > 不能通过全局虚拟网络对等互连（不同区域中的虚拟网络）连接到以下资源类型：
+   > 无法通过全局虚拟网络对等互连连接到以下资源类型（虚拟网络位于不同的区域中）：
    >
-   > * 基本 ILB SKU 后面的 Vm
+   > * 基本 ILB SKU 后面的 VM
    > * Redis 缓存（使用基本 ILB SKU）
    > * 应用程序网关（使用基本 ILB SKU）
    > * 规模集（使用基本 ILB SKU）
@@ -154,12 +155,12 @@ ms.locfileid: "71219241"
 
 你的网络是使用第三方 NVA 还是使用 VPN 网关？
 
-### <a name="my-network-uses-a-third-party-nva-or-vpn-gateway"></a>我的网络使用第三方 NVA 或 VPN 网关
+### <a name="my-network-uses-a-third-party-nva-or-vpn-gateway"></a>我的网络使用了第三方 NVA 或 VPN 网关
 
-若要解决影响第三方 NVA 或 VPN 网关的连接问题，请参阅以下文章：
+若要排查影响第三方 NVA 或 VPN 网关的连接问题，请参阅以下文章：
 
-* [NVA 疑难解答](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva)
-* [服务链](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)
+* [NVA 故障排除](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva)
+* [服务链接](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)
 
 ### <a name="my-network-does-not-use-a-third-party-nva-or-vpn-gateway"></a>我的网络不使用第三方 NVA 或 VPN 网关
 
@@ -177,7 +178,7 @@ ms.locfileid: "71219241"
 
 * 在包含网关的虚拟网络上，验证是否选中了 "**允许转发的流量**" 复选框。
 * 在没有网关的虚拟网络上，验证是否选中了 "**使用远程网关**" 复选框。
-* 让网络管理员检查你的本地设备，以验证它们都已添加远程虚拟网络地址空间。
+* 让网络管理员检查你的本地设备，验证是否为所有这些设备添加了远程虚拟网络地址空间。
 
 对于点到站点连接：
 
@@ -189,13 +190,13 @@ ms.locfileid: "71219241"
 
 集线器网络必须包含 NVA。 在将 NVA 设置为下一个跃点的轮辐中配置 Udr，并在中心虚拟网络中启用 "**允许转发的流量**"。
 
-有关详细信息，请参阅[服务链](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)，并与所选的[NVA 供应商](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)讨论这些要求。
+有关详细信息，请参阅[服务链接](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)，并与所选的 [NVA 供应商](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)讨论这些要求。
 
 ## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-different-regions"></a>对不同区域中的辐射虚拟网络之间的中心辐射型网络连接问题进行故障排除
 
 现在支持通过全局虚拟网络对等互连传输。 对于以下资源，连接不会在全局虚拟网络对等互连上工作：
 
-* 基本 ILB SKU 后面的 Vm
+* 基本 ILB SKU 后面的 VM
 * Redis 缓存（使用基本 ILB SKU）
 * 应用程序网关（使用基本 ILB SKU）
 * 规模集（使用基本 ILB SKU）
@@ -222,7 +223,7 @@ ms.locfileid: "71219241"
 
 ## <a name="troubleshoot-a-virtual-network-peering-configuration-error-message"></a>排查虚拟网络对等互连配置错误消息 
 
-### <a name="current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>当前租户`<TENANT ID>`无权访问链接的订阅
+### <a name="current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>当前租户 `<TENANT ID>` 无权访问链接的订阅
 
 若要解决此问题，请参阅[创建对等互连-Azure CLI](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)。
 

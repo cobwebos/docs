@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
-ms.openlocfilehash: 3add7e31568831e4c2de6901791d131ff01f43bb
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c7223274417ef4c911c32acbcde1511682d6d9e0
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588104"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796068"
 ---
 # <a name="integrate-azure-data-lake-storage-with-azure-services"></a>将 Azure Data Lake Storage 与 Azure 服务集成
 
@@ -29,14 +29,14 @@ ms.locfileid: "73588104"
 |Azure 事件中心捕获| [通过 Azure Blob 存储或 Azure Data Lake Storage 中的 Azure 事件中心来捕获事件](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|
 |Azure 逻辑应用 | [概述 - 什么是 Azure 逻辑应用？](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)|
 |Azure 机器学习|[访问 Azure 存储服务中的数据](https://docs.microsoft.com/azure/machine-learning/service/how-to-access-data)|
-|Azure 搜索（预览版）| [使用 Azure 搜索来搜索 Azure Blob 存储](https://docs.microsoft.com/azure/search/search-blob-storage-integration)|
+|Azure 认知搜索 | [索引和搜索 Azure Data Lake Storage Gen2 文档（预览）](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|
 |Azure 流分析| [快速入门：使用 Azure 门户创建流分析作业](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [出口到 Azure Data Lake Gen2](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2) |
 |Data Box|  [使用 Azure Data Box 将数据从本地 HDFS 存储迁移到 Azure 存储](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|
 |HDInsight | [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[将 HDFS CLI 与 Data Lake Storage Gen2 配合使用](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[教程：在 Azure HDInsight 上使用 Apache Hive 提取、转换和加载数据](data-lake-storage-tutorial-extract-transform-load-hive.md) |
 |IoT 中心 | [使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|
 |Power BI|  [使用 Power BI 分析 Data Lake Storage Gen2 中的数据](data-lake-storage-use-power-bi.md) |
 |SQL 数据仓库 | [与 Azure SQL 数据仓库配合使用](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase)|
-|SQL Server 集成服务 (SSIS) | [Azure 存储连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|
+|SQL Server Integration Services (SSIS) | [Azure 存储连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|
 
 ## <a name="next-steps"></a>后续步骤
 

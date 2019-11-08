@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 089d54a2aae288511a283dfb28b03efa34c33b53
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
-ms.translationtype: MT
+ms.openlocfilehash: 83c3c72ad189720b8f0aa554b7804b55f3488b83
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715438"
+ms.locfileid: "73747952"
 ---
 # <a name="about-azure-networking-msp-partners"></a>关于 Azure 网络 MSP 合作伙伴
 
@@ -28,7 +28,7 @@ Azure 网络 Msp 是一套专用的托管服务提供商，可解决云和混合
 
 使用此部分中的链接，了解有关 Azure 网络 MSP 合作伙伴提供的托管云网络服务的详细信息。 如果你的云网络服务合作伙伴未在以下部分中列出，请提供提供商联系我们。 他们可以通过向 ManagedVirtualWAN@microsoft.com 发送电子邮件来与我们联系。 
 
-| **MSP** | **云网络转换服务** | **托管 ExpressRoute** | **托管虚拟 WAN** | **托管防火墙** |**托管网络边缘计算** |
+| **MSP** | **云网络转换服务** | **托管 ExpressRoute** | **托管虚拟 WAN** | **托管网络安全服务** |**托管网络边缘计算** |
 | ---| ---| ---| ---| ---| ---|
 |[Amdocs](https://www.amdocs.com/)|||||是|
 |[ANS 组 UK](https://www.ans.co.uk/)|是|是||||

@@ -7,16 +7,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: b0e3e683b2c103bc7f9b6812115e2e7a5d871034
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 5f3de0f877186daa8f6add7fcd1546f91d6ce3d2
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828676"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748919"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure 磁盘加密与 Azure AD （以前的版本）
 
-**新版本的 Azure 磁盘加密无需提供 Azure AD 应用程序参数即可启用 VM 磁盘加密。使用新版本，在执行启用加密步骤时，不再需要提供 Azure AD 凭据。所有新 VM 都必须使用新版本在没有 Azure AD 应用程序参数的情况下进行加密。若要查看使用新版本启用 VM 磁盘加密的说明，请参阅[适用于 Linux vm 的 Azure 磁盘加密](disk-encryption-overview.md)。已使用 Azure AD 应用程序参数加密的 VM 仍受支持，应继续使用 AAD 语法进行维护。**
+**新版本的 Azure 磁盘加密消除了提供 Azure AD 应用程序参数来启用 VM 磁盘加密的要求。在新版本中，你不再需要在启用加密步骤时提供 Azure AD 凭据。在不使用新版本的 Azure AD 应用程序参数的情况下，必须对所有新的 Vm 进行加密。若要查看使用新版本启用 VM 磁盘加密的说明，请参阅[适用于 Linux vm 的 Azure 磁盘加密](disk-encryption-overview.md)。仍支持已通过 Azure AD 应用程序参数加密的 Vm，并应继续通过 AAD 语法进行维护。**
 
 本文提供了对[Linux vm 的 Azure 磁盘加密](disk-encryption-overview.md)补充，还提供了对 Azure AD （以前的版本）的 Azure 磁盘加密的其他要求和先决条件。
 
@@ -26,7 +26,7 @@ ms.locfileid: "71828676"
 - [其他 VM 要求](disk-encryption-overview.md#additional-vm-requirements)
 
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="networking-and-group-policy"></a>网络和组策略
 
@@ -49,7 +49,7 @@ ms.locfileid: "71828676"
 **组策略：**
  - Azure 磁盘加密解决方案对 Windows IaaS VM 使用 BitLocker 外部密钥保护程序。 对于已加入域的 VM，请不要推送会强制执行 TPM 保护程序的任何组策略。 有关“在没有兼容 TPM 的情况下允许 BitLocker”的组策略信息，请参阅 [BitLocker 组策略参考](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)。
 
--  具有自定义组策略的已加入域虚拟机上的 BitLocker 策略必须包含以下设置：[配置 BitLocker 恢复信息的用户存储 -> 允许 256 位恢复密钥](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 如果 BitLocker 的自定义组策略设置不兼容，Azure 磁盘加密将会失败。 在没有正确策略设置的计算机上，应用新策略，强制更新新策略 (gpupdate.exe /force)，然后可能需要重启。  
+-  与自定义组策略在加入域的虚拟机上的 BitLocker 策略必须包括以下设置：[配置 BitLocker 恢复信息的用户存储-> 允许256位恢复密钥](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 如果 BitLocker 的自定义组策略设置不兼容，Azure 磁盘加密将会失败。 在没有正确策略设置的计算机上，可能需要应用新策略，强制更新新策略 (gpupdate.exe /force)，然后重启。  
 
 ## <a name="encryption-key-storage-requirements"></a>加密密钥存储要求  
 

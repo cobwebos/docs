@@ -8,33 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/21/2019
 ms.author: aahi
-ms.openlocfilehash: 6e46d58b3f1ef33902ab44043e954d9718d865af
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3aa4da9a9cf3d1d4b664e81f1fd18f2b225d731d
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73508041"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799702"
 ---
 ## <a name="personal-information-entity-types"></a>个人信息实体类型：
-
-### <a name="person"></a>人员
-文本中识别的名称和其他人员。
-语言：
-* 公共预览版： `English`
-
-| 子类型名称 | 说明             |
-|--------------|-------------------------|
-| 不适用          | 识别的名称，例如 `Bill Gates`、`Marie Curie` |
-
-### <a name="organization"></a>组织  
-
-认识到的组织、公司、机构和其他人组。 例如：公司、政治组、音乐带、运动俱乐部、政府机构和公共组织。 各族和 religions 不包含在此实体类型中。 语言： 
-
-* 公共预览版： `English`
-
-| 子类型名称 | 说明                                                                                      |
-|--------------|--------------------------------------------------------------------------------------------------|
-| 不适用          | 组织（例如 `Microsoft``NASA` `National Oceanic and Atmospheric Administration` |
 
 ### <a name="phone-number"></a>电话号码
 

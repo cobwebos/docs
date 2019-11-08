@@ -1,7 +1,7 @@
 ---
 title: 检测图像中的人脸 - 人脸 API
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用人脸检测功能返回的各种数据。
+description: 本指南演示如何使用人脸检测功能从给定的图像中提取性别、年龄或姿势等特性。
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 07089def3290d6d64919ad2551de7584646cc681
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9b66231d995ffb6980ce36852115c571cd102681
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306637"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744276"
 ---
 # <a name="get-face-detection-data"></a>获取人脸检测数据
 
@@ -27,9 +27,9 @@ ms.locfileid: "70306637"
 - 获取图像中各个人脸特征点（例如瞳孔、鼻子、嘴巴）的位置。
 - 猜测性别、年龄、情绪，以及检测到的人脸的其他特性。
 
-## <a name="setup"></a>安装
+## <a name="setup"></a>设置
 
-本指南假设你已使用人脸订阅密钥和终结点 URL 构造了名为 `faceClient` 的 [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) 对象。 在此处，可以通过调用 [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet)（本指南中使用）或 [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) 来使用人脸检测功能。 有关如何设置此功能的说明，请单击其中一个快速入门。
+本指南假设你已使用人脸订阅密钥和终结点 URL 构造了名为 [ 的 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)FaceClient`faceClient` 对象。 在此处，可以通过调用 [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet)（本指南中使用）或 [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) 来使用人脸检测功能。 有关如何设置此功能的说明，请单击其中一个快速入门。
 
 本指南重点介绍有关检测调用的具体信息，例如，可以传递哪些参数，以及可对返回的数据执行哪些操作。 建议仅查询所需功能。 每项操作都需要额外的时间来完成。
 
@@ -144,8 +144,8 @@ foreach (var face in faces)
 
 本指南介绍了如何使用人脸检测的各项功能。 接下来，请按深度教程的说明操作，将这些功能集成到应用中。
 
-- [教程：创建一个用于显示图像中人脸数据的 WPF 应用](../Tutorials/FaceAPIinCSharpTutorial.md)
-- [教程：创建一个用于检测和定格图像中人脸的 Android 应用](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
+- [教程：创建 WPF 应用以在图像中显示人脸数据](../Tutorials/FaceAPIinCSharpTutorial.md)
+- [教程：创建 Android 应用程序以检测图像中的人脸](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
 
 ## <a name="related-topics"></a>相关主题
 

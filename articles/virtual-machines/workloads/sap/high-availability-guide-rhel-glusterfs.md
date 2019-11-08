@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: fd5014de622c37950c15006c2cc4dcbbb27ef8e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2ae9a1419232cca051f7cab4e9bd8c70f885df73
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101123"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749048"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 上的 GlusterFS
 
@@ -43,7 +43,7 @@ ms.locfileid: "70101123"
 [sap-hana-ha]:sap-hana-high-availability-rhel.md
 
 本文介绍了如何部署虚拟机、配置虚拟机以及安装可用于存储高可用性 SAP 系统的共享数据的 GlusterFS 群集。
-本指南介绍了如何设置供两个 SAP 系统（NW1 和 NW2）使用的 GlusterFS。 示例中的资源名称 (例如虚拟机、虚拟网络) 假设你已将[SAP 文件服务器模板][template-file-server]与资源前缀**glust**一起使用。
+本指南介绍了如何设置供两个 SAP 系统（NW1 和 NW2）使用的 GlusterFS。 示例中的资源名称（例如虚拟机、虚拟网络）假设你已将[SAP 文件服务器模板][template-file-server]与资源前缀**glust**一起使用。
 
 请先阅读以下 SAP 说明和文档
 
@@ -62,7 +62,7 @@ ms.locfileid: "70101123"
 * SAP 说明 [1999351] 包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
-* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署 (本文)][deployment-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署（本文）][deployment-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * [Product Documentation for Red Hat Gluster Storage](https://access.redhat.com/documentation/red_hat_gluster_storage/)（Red Hat Gluster Storage 产品文档）
 * 通用 RHEL 文档
@@ -86,7 +86,7 @@ ms.locfileid: "70101123"
 ### <a name="deploy-linux-via-azure-template"></a>通过 Azure 模板部署 Linux
 
 Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于部署新的虚拟机。
-可以使用 github 上的某个快速启动模板部署全部所需资源。 该模板部署虚拟机、可用性集等。请遵照以下步骤部署模板：
+可以使用 github 上的某个快速启动模板部署全部所需资源。 模板部署虚拟机、可用性集等。按照以下步骤部署模板：
 
 1. 在 Azure 门户中打开[SAP 文件服务器模板][template-file-server]
 1. 输入以下参数
@@ -98,11 +98,11 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
    4. 管理员用户名、管理员密码或 SSH 密钥  
       创建可用于登录计算机的新用户。
    5. 子网 ID  
-      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 ID&gt;/resourceGroups/&lt;资源组名称&gt;/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称&gt;/subnets/&lt;子网名称&gt;
+      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/**订阅 ID&lt;/resourceGroups/&gt;资源组名称**/providers/Microsoft.Network/virtualNetworks/**虚拟网络名称&lt;/subnets/&gt;子网名称** **&lt;&gt;** **&lt;&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux
 
-首先需要为此群集创建虚拟机。 之后，创建一个负载均衡器并使用后端池中的虚拟机。
+首先需要为此群集创建虚拟机。 之后，创建一个负载均衡器并使用后端池中的虚拟机。 建议[标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。  
 
 1. 创建资源组。
 1. 创建虚拟网络
@@ -355,4 +355,4 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
 * [适用于 SAP 的 Azure 虚拟机部署][deployment-guide]
 * [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * 若要了解如何建立高可用性以及针对 Azure 上的 SAP HANA（大型实例）规划灾难恢复，请参阅 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)。
-* 若要了解如何建立高可用性并规划 Azure Vm 上 SAP HANA 的灾难恢复, 请参阅[Azure 虚拟机 (vm) 上的 SAP HANA 的高可用性][sap-hana-ha]
+* 若要了解如何建立高可用性并规划 Azure Vm 上 SAP HANA 的灾难恢复，请参阅[Azure 虚拟机（vm）上的 SAP HANA 的高可用性][sap-hana-ha]

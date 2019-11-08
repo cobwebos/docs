@@ -16,18 +16,18 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2148d6ea869a87571008c1f84c5b1000d4030bbb
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 845ffda22cae9464870786cc5997b9f5521c03e1
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175949"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795629"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理启用对 Power BI 移动版的远程访问
 
 本文介绍如何使用 Azure AD 应用程序代理来启用 Power BI 移动应用程序连接到 Power BI 报表服务器（PBIRS）和 SQL Server Reporting Services （SSRS）2016及更高版本。 通过这种集成，远离企业网络的用户可以从 Power BI 移动应用程序访问其 Power BI 报表，并通过 Azure AD 身份验证进行保护。 此保护包括条件访问和多重身份验证等[安全权益](application-proxy-security.md#security-benefits)。  
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本文假定你已部署了报表服务和[应用程序代理](application-proxy-add-on-premises-application.md)。
 
@@ -82,7 +82,7 @@ SPN 是使用 Kerberos 身份验证的服务的唯一标识符。 需要确保�
 现在，你已准备好配置 Azure AD 应用程序代理。
 
 1. 使用以下设置通过应用程序代理发布报表服务。 有关如何通过应用程序代理发布应用程序的分步说明，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)。
-   - **内部 URL**：输入连接器可在企业网络中访问的报表服务器的 URL。 请确保可从安装了连接器的服务器访问此 URL。 最佳做法是使用顶级域（如 `https://servername/`）来避免未通过应用程序代理发布的子路径（例如 `https://servername/reports/` 和 `https://servername/reportserver/`）的问题。
+   - **内部 URL**：输入连接器可在企业网络中访问的报表服务器的 URL。 请确保可从安装了连接器的服务器访问此 URL。 最佳做法是使用顶级域（如 `https://servername/`）来避免通过应用程序代理发布的子路径出现问题。 例如，使用 `https://servername/`，而不是 `https://servername/reports/` 或 `https://servername/reportserver/`。
      > [!NOTE]
      > 建议使用与报表服务器的安全 HTTPS 连接。 有关详细信息，请参阅[在纯模式下配置 SSL 连接 Report Server](https://docs.microsoft.com/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017) 。
    - **外部 url**：输入 Power BI 移动应用程序将连接到的公共 url。 例如，如果使用自定义域，则它可能类似于 `https://reports.contoso.com`。 若要使用自定义域，请上传域证书，并将 DNS 记录指向应用程序的默认 msappproxy.net 域。 有关详细步骤，请参阅[在 Azure AD 应用程序代理中使用自定义域](application-proxy-configure-custom-domain.md)。
@@ -91,13 +91,13 @@ SPN 是使用 Kerberos 身份验证的服务的唯一标识符。 需要确保�
 
 2. 发布应用后，请执行以下步骤来配置单一登录设置：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在门户中的应用程序页上，选择“单一登录”。
+   a. 在门户中的应用程序页上，选择“单一登录”。
 
    b. 对于**单一登录模式**，请选择 "**集成 Windows 身份验证**"。
 
    c. 将“内部应用程序 SPN”设置为此前设置的值。  
 
-   d.单击“下一步”。 针对你要代表你的用户使用的连接器选择“委派的登录标识”。 有关详细信息，请参阅[使用不同的本地标识和云标识](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)。
+   d. 针对你要代表你的用户使用的连接器选择“委派的登录标识”。 有关详细信息，请参阅[使用不同的本地标识和云标识](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)。
 
    e. 单击“保存”以保存更改。
 

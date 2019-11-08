@@ -10,12 +10,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: e66b3e6563d796cc7b59e82233bd1b22bc906c6e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: MT
+ms.openlocfilehash: cff481c7c2e09da1dc8c8e2f971d9adb164d54da
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691357"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796122"
 ---
 # <a name="accelerated-database-recovery"></a>加速数据库恢复
 
@@ -99,11 +99,11 @@ ADR 的四个关键的组成要素为：
 
 - **逻辑还原**
 
-  逻辑还原是负责执行基于行级版本的撤消的异步过程，该过程为所有版本控制操作提供即时事务回滚和撤消。
+  逻辑还原是负责执行基于行级版本的撤消的异步过程，该过程为所有版本控制操作提供即时事务回滚和撤消。 逻辑还原是通过以下方式实现的：
 
-  - 跟踪所有已中止事务
-  - 使用 PVS 执行所有用户事务的回滚操作
-  - 在事务中止后立即发布所有锁定
+  - 跟踪所有中止的事务，并将它们标记为对其他事务不可见。 
+  - 通过对所有用户事务使用 PVS 来执行回滚，而不是以物理方式扫描事务日志，并逐个撤消更改。
+  - 中止事务中止后立即释放所有锁。 由于中止操作只是在内存中标记更改，因此进程非常有效，因此不需要长时间保留锁。
 
 - **sLog**
 

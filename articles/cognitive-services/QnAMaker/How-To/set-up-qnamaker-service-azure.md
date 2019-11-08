@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a2b467eed010edbb842d536bd8f6e3f4107fcea8
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6d52062561e3f08a214f3e191706583edc844786
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984364"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794213"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 资源
 
@@ -28,7 +28,7 @@ QnA Maker 服务处理两种类型的密钥：**订阅密钥**和**终结点密�
 
 ![密钥管理](../media/qnamaker-how-to-key-management/key-management.png)
 
-|姓名|Location|用途|
+|名称|位置|目的|
 |--|--|--|
 |订阅密钥|[Azure 门户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|这些密钥用来访问 [QnA Maker 管理服务 API](https://go.microsoft.com/fwlink/?linkid=2092179)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥**" 页上的 "**认知服务**" 资源上查找这些密钥。|
 |终结点密钥|[QnA Maker 门户](http://www.qnamaker.ai)|这些密钥用于访问已发布的知识库终结点，以获取用户问题的响应。 通常在聊天机器人中或连接到 QnA Maker 服务的客户端应用程序代码中使用此终结点。 这些密钥是在您发布 QnA Maker 知识库时创建的。<br><br>在 "**服务设置**" 页中查找这些密钥。 在下拉菜单上页面右上角的用户菜单中找到此页。|
@@ -52,8 +52,8 @@ QnA Maker 服务处理两种类型的密钥：**订阅密钥**和**终结点密�
     * 为 QnA Maker 管理服务（门户和管理 Api）选择**定价层**。 查看[有关 SKU 定价的更多详细信息](https://aka.ms/qnamaker-pricing)。
     * 创建新的**资源组**（推荐），或使用现有资源组部署此 QnA Maker 资源。 QnA Maker 创建多个 Azure 资源。 创建用于保存这些资源的资源组时，可以通过资源组名称轻松查找、管理和删除这些资源。
     * 选择**资源组位置**。
-    * 选择 Azure 搜索服务的**搜索定价层**。 如果 "免费层" 选项不可用（显示为灰色），则表示已有一个通过订阅部署的免费 Azure 搜索层。 在这种情况下，你将需要从基本的 Azure 搜索层开始。 请参阅[Azure 搜索定价详细信息](https://azure.microsoft.com/pricing/details/search/)。
-    * 选择要在其中部署 Azure 搜索数据的**搜索位置**。 对客户数据的存储位置的限制有助于确定你选择用于 Azure 搜索的位置。
+    * 选择 "搜索" Azure 认知搜索服务的**定价层**。 如果 "免费层" 选项不可用（显示为灰色），则表示已通过订阅部署了免费服务。 在这种情况下，你将需要从 "基本" 层开始。 请参阅[Azure 认知搜索定价详细信息](https://azure.microsoft.com/pricing/details/search/)。
+    * 选择要在其中部署 Azure 认知搜索索引的**搜索位置**。 对客户数据的存储位置的限制有助于确定为 Azure 认知搜索选择的位置。
     * 在 "**应用名称**" 字段中，输入 Azure App Service 实例的名称。
     * 默认情况下，应用服务默认为标准（S1）层。 可以在创建后更改该计划。 了解有关[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)的详细信息。
     * 选择将在其中部署应用服务的**网站位置**。
@@ -106,13 +106,13 @@ QnA Maker 服务处理两种类型的密钥：**订阅密钥**和**终结点密�
 
 QnA Maker 创建多个 Azure 资源。 若要减少成本共享的管理和权益，请使用下表来了解可以和不能共享的内容：
 
-|服务|共享|Reason|
+|服务|共享|原因|
 |--|--|--|
 |认知服务|X|不能通过设计|
 |应用服务计划|✔|为应用服务计划分配的固定磁盘空间。 如果共享同一应用服务计划的其他应用使用了大量磁盘空间，QnAMaker 应用服务实例将会遇到问题。|
 |应用服务|X|不能通过设计|
 |Application Insights|✔|可以共享|
-|搜索服务|✔|1. `testkb`是 QnAMaker 服务的保留名称; 其他名称不能使用它。<br>2.名称`synonym-map`的同义词映射是为 QnAMaker 服务保留的。<br>3.已发布的知识库数受搜索服务层限制。 如果有可用的可用索引，则其他服务可以使用这些索引。|
+|搜索服务|✔|1. `testkb` 是 QnAMaker 服务的保留名称;其他用户不能使用它。<br>2. `synonym-map` 的名称是为 QnAMaker 服务保留的同义词映射。<br>3. 已发布的知识库数受搜索服务层限制。 如果有可用的可用索引，则其他服务可以使用这些索引。|
 
 了解有关[应用服务](../../../app-service/index.yml)和[搜索服务](../../../search/index.yml)的详细信息。
 
@@ -124,11 +124,11 @@ QnA Maker 创建多个 Azure 资源。 若要减少成本共享的管理和权�
 
 ## <a name="upgrade-qna-maker"></a>升级 QnA Maker
 
-|升级|Reason|
+|升级|原因|
 |--|--|
 |[升级](#upgrade-qna-maker-sku)QnA Maker 管理 SKU|你需要在知识库中获得更多问题和答案。|
 |[升级](#upgrade-app-service)应用服务 SKU|您的知识库需要提供客户端应用程序的更多请求，例如聊天机器人。|
-|[升级](#upgrade-the-azure-search-service)Azure 搜索服务|你计划有多个知识库。|
+|[升级](#upgrade-the-azure-cognitive-search-service)Azure 认知搜索服务|你计划有多个知识库。|
 
 
 ### <a name="upgrade-qna-maker-sku"></a>升级 QnA Maker SKU
@@ -155,9 +155,9 @@ QnA Maker 创建多个 Azure 资源。 若要减少成本共享的管理和权�
 
 ![QnA Maker 应用服务规模](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
-### <a name="upgrade-the-azure-search-service"></a>升级 Azure 搜索服务
+### <a name="upgrade-the-azure-cognitive-search-service"></a>升级 Azure 认知搜索服务
 
-如果计划有很多知识库，请升级 Azure 搜索服务定价层。
+如果计划有很多知识库，请升级 Azure 认知搜索服务定价层。
 
 目前不能执行 Azure 搜索 SKU 的就地升级。 但是，你可以使用所需的 SKU 创建新的 Azure 搜索资源、将数据还原到新资源，然后将其链接到 QnA Maker 堆栈。 为此，请执行以下步骤：
 
@@ -187,7 +187,7 @@ QnA Maker 创建多个 Azure 资源。 若要减少成本共享的管理和权�
 
 QnAMaker 运行时是在 Azure 门户中[创建 QnAMaker 服务](./set-up-qnamaker-service-azure.md)时部署的 Azure App Service 实例的一部分。 对运行时的更新定期进行。 2019年4月版（版本 5 +）之后，QnA Maker 应用服务实例处于自动更新模式。 此更新旨在在升级过程中处理零停机时间。
 
-您可以在 https://www.qnamaker.ai/UserSettings 中检查当前版本。 如果版本低于版本1.x，则必须重启应用服务才能应用最新更新：
+你可以在 https://www.qnamaker.ai/UserSettings上检查当前版本。 如果版本低于版本1.x，则必须重启应用服务才能应用最新更新：
 
 1. 在[Azure 门户](https://portal.azure.com)中转到你的 QnAMaker 服务（资源组）。
 

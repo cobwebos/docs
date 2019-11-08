@@ -6,20 +6,20 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: eb70e65db4a086afc60e91cadf55a8844b102591
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf0f345b0fbf9fea2512f72c1996c9a1597cc0cd
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61402068"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747643"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>复原能力和灾难恢复
 
 复原能力和灾难恢复是联机系统的常见需求。 Azure SignalR 服务可保证 99.9% 的可用性，但它仍是一个区域性的服务。
-您的服务实例始终运行在一个区域中并不会故障转移到另一个区域出现区域级故障时。
+服务实例始终在一个区域中运行，并且在区域范围的服务中断时不会故障转移到另一个区域。
 
 相反，我们的服务 SDK 提供了相应的功能来支持多个 SignalR 服务实例，当其中的某些实例不可用时，它会自动切换到其他实例。
-发生灾难时，可以使用此功能进行恢复，不过，仍然需要自行设置正确的系统拓扑。 本文档将会介绍此操作。
+利用此功能，你将能够在发生灾难时进行恢复，但你将需要自己设置适当的系统拓扑。 本文档将会介绍此操作。
 
 ## <a name="high-available-architecture-for-signalr-service"></a>SignalR 服务的高可用性体系结构
 
@@ -28,8 +28,8 @@ ms.locfileid: "61402068"
 主要角色是接收联机流量的实例，辅助角色是完全正常运行的实例，但它是主要角色的备用实例。
 在 SDK 实现中，协商仅返回主要终结点，因此，在正常情况下，客户端只连接到主要终结点。
 但是，当主要实例出现故障时，协商将返回辅助终结点，因此客户端仍可建立连接。
-主实例和应用服务器已连接通过服务器正常连接，但第二个实例和应用程序服务器连接通过一种特殊类型的名为弱连接的连接。
-弱连接的主要区别是，它不接受客户端连接路由，因为第二个实例位于另一个区域中。 客户端路由到另一个区域不是 （会增加延迟时间） 的最佳选择。
+主实例和应用服务器通过正常服务器连接进行连接，但辅助实例和应用服务器通过一种特殊类型的连接（称为弱连接）进行连接。
+弱连接的主要区别在于它不接受客户端连接路由，因为辅助实例位于另一个区域。 将客户端路由到其他区域不是最佳选择（增加延迟）。
 
 一个服务实例在连接到多个应用服务器时可以有不同的角色。
 跨区域方案的一种典型设置是使用两对（或更多对）SignalR 服务实例和应用服务器。
@@ -51,11 +51,11 @@ ms.locfileid: "61402068"
 
 ### <a name="through-config"></a>通过配置
 
-您应知道如何设置环境变量/应用 settings/web.cofig，通过一个名为的配置项通过 SignalR 服务连接字符串`Azure:SignalR:ConnectionString`。
+你应该已经知道如何在名为 `Azure:SignalR:ConnectionString`的配置条目中通过环境变量/应用设置/cofig 设置 SignalR 服务连接字符串。
 如果有多个终结点，可在多个配置项中设置这些终结点，每个项采用以下格式：
 
 ```
-Azure:SignalR:Connection:<name>:<role>
+Azure:SignalR:ConnectionString:<name>:<role>
 ```
 
 此处的 `<name>` 是终结点的名称，`<role>` 是其角色（主要或辅助）。
@@ -63,7 +63,7 @@ Azure:SignalR:Connection:<name>:<role>
 
 ### <a name="through-code"></a>通过代码
 
-如果你偏向于将连接字符串存储到其他位置，则也可以在代码中读取连接字符串，并在调用 `AddAzureSignalR()`（在 ASP.NET Core 中）或 `MapAzureSignalR()`（在 ASP.NET 中）时将其用作参数。
+如果希望将连接字符串存储在其他位置，也可以在代码中读取这些字符串，并在调用 `AddAzureSignalR()` （在 ASP.NET Core 中）或 `MapAzureSignalR()` （在 ASP.NET 中）时将这些字符串用作参数。
 
 下面是示例代码：
 
@@ -87,6 +87,11 @@ app.MapAzureSignalR(GetType().FullName, hub,  options => options.Endpoints = new
         new ServiceEndpoint("<connection_string2>", EndpointType.Secondary, "region2"),
     };
 ```
+
+可以配置多个主实例或辅助实例。 如果有多个主实例和/或辅助实例，则 negotiate 会按以下顺序返回终结点：
+
+1. 如果至少有一个主实例处于联机状态，则返回一个随机的主联机实例。
+2. 如果所有主实例都已关闭，则返回一个随机的辅助联机实例。
 
 ## <a name="failover-sequence-and-best-practice"></a>故障转移序列和最佳做法
 
@@ -121,7 +126,7 @@ SignalR 服务支持这两种模式，主要差别在于实现应用服务器的
 如果应用服务器采用主动/被动配置，则 SignalR 服务也采用主动/被动配置（因为主要应用服务器仅返回其主要 SignalR 服务实例）。
 如果应用服务器采用主动/主动配置，则 SignalR 服务也采用主动/主动配置（因为所有应用服务器将返回其自己的主要 SignalR 实例，因此它们都可以接收流量）。
 
-注意无论您选择使用哪些模式，您将需要连接到作为主应用程序服务器的每个 SignalR 服务实例。
+请注意，无论选择使用哪种模式，都需要将每个 SignalR 服务实例连接到应用服务器作为主要应用。
 
 另外，由于 SignalR 连接的性质（远距离连接），发生灾难和故障转移时，客户端会遇到连接断开的情况。
 需要在客户端上处理这种情况，使其对最终客户透明。 例如，关闭连接后不要重新连接。
@@ -130,4 +135,4 @@ SignalR 服务支持这两种模式，主要差别在于实现应用服务器的
 
 本文已介绍如何配置应用程序以实现 SignalR 服务的复原能力。 若要更详细地了解 SignalR 服务中的服务器/客户端连接和连接路由，请阅读[此文](signalr-concept-internals.md)，其中介绍了 SignalR 服务的内部情况。
 
-有关缩放方案分片中，例如，同时使用多个实例来处理大量的连接，请阅读[如何缩放多个实例](signalr-howto-scale-multi-instances.md)？
+对于使用多个实例来处理大量连接的缩放方案（如分片），请阅读[如何缩放多个实例](signalr-howto-scale-multi-instances.md)。

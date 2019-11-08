@@ -1,18 +1,18 @@
 ---
 title: 关于 Azure VM 备份
-description: 了解 Azure VM 备份，并记下一些最佳做法。
+description: 本文介绍 Azure 备份服务如何备份 Azure 虚拟机，以及如何遵循最佳做法。
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: db3e4b8a8abea4718f5779790906bf45591d221c
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: e22c4c24e83be0f89b306eed0eb1d80bdd9387e1
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018692"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747202"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>概要了解 Azure VM 备份
 
@@ -34,10 +34,10 @@ ms.locfileid: "71018692"
     - 可以通过并行备份每个 VM 磁盘来优化备份。
     - 对于每个要备份的磁盘，Azure 备份将读取磁盘上的块，识别并只传输自上次备份以来已发生更改的数据块（增量传输）。
     - 快照数据可能不会立即复制到保管库。 在高峰期，可能需要好几个小时才能完成复制。 每日备份策略规定的 VM 备份总时间不会超过 24 小时。
- 1. 在 Windows VM 上启用 Azure 备份后，对 VM 所做的更改包括：
-    -   在 VM 中安装 Microsoft Visual C++ 2013 Redistributable(x64) - 12.0.40660
-    -   将卷影复制服务 (VSS) 的启动类型从手动更改为自动
-    -   添加 IaaSVmProvider Windows 服务
+1. 在 Windows VM 上启用 Azure 备份后，对 VM 所做的更改包括：
+    - 在 VM 中安装 Microsoft Visual C++ 2013 Redistributable(x64) - 12.0.40660
+    - 将卷影复制服务 (VSS) 的启动类型从手动更改为自动
+    - 添加 IaaSVmProvider Windows 服务
 
 1. 数据传输完成后，会删除快照并创建恢复点。
 
@@ -54,7 +54,7 @@ ms.locfileid: "71018692"
 
 对于托管和非托管 Azure VM，备份服务支持仅经过 BEK 加密的或者同时经过 BEK 和 KEK 加密的 VM。
 
-备份的 BEK（机密）和 KEK（密钥）将会加密。 只有在经授权的用户将它们还原到 Key Vault 之后，才能读取和使用它们。 未经授权的用户和 Azure 都无法读取或使用备份的密钥或机密。
+备份的 BEK（机密）和 KEK（密钥）将会加密。 只有在经授权的用户将它们还原到 Key Vault 之后，才能读取和使用它们。 未经授权的用户或 Azure 均无法读取或使用备份的密钥或机密。
 
 同时会备份 BEK。 因此，在 BEK 丢失的情况下，经授权的用户可将 BEK 还原到 Key Vault 并恢复加密的 VM。 只有拥有所需的权限级别的用户才可以备份和还原加密的 VM 或密钥和机密。
 
@@ -62,14 +62,14 @@ ms.locfileid: "71018692"
 
 Azure 备份根据备份计划创建快照。
 
-- **Windows VM：** 对于 Windows VM，备份服务将与 VSS 相配合，来创建 VM 磁盘的应用一致性快照。
+- **Windows vm：** 对于 Windows Vm，备份服务会与 VSS 协调使用 VM 磁盘的应用一致性快照。
 
   - 默认情况下，Azure 备份会获取完整的 VSS 备份。 [了解详细信息](https://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx)。
   - 若要更改设置，使 Azure 备份创建 VSS 副本备份，请在命令提示符下设置以下注册表项：
 
     **REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgent" /v USEVSSCOPYBACKUP /t REG_SZ /d TRUE /f**
 
-- **Linux VM：** 若要创建 Linux VM 的应用一致性快照，请使用 Linux 前脚本和后脚本框架编写自己的自定义脚本，以确保一致性。
+- **Linux vm：** 若要获取 Linux Vm 的应用一致性快照，请使用 Linux 前脚本和后脚本框架编写你自己的自定义脚本，以确保一致性。
 
   - Azure 备份只调用你编写的前脚本/后脚本。
   - 如果前脚本和后脚本成功执行，Azure 备份会将恢复点标记为应用程序一致。 但是，在使用自定义脚本时，你最终需要为应用程序一致性负责。
@@ -81,8 +81,8 @@ Azure 备份根据备份计划创建快照。
 
 **快照** | **详细信息** | **恢复** | **注意事项**
 --- | --- | --- | ---
-**应用程序一致** | 应用一致性备份捕获内存内容和挂起的 I/O 操作。 应用一致性快照使用 VSS 编写器（或适用于 Linux 的前/后脚本）来确保备份之前的应用数据一致性。 | 使用应用一致性快照恢复 VM 时，VM 将会启动。 没有数据损坏或丢失。 应用以一致的状态启动。 | Windows:所有 VSS 编写器均成功<br/><br/> Linux：前/后脚本已配置并成功
-**文件系统一致性** | 文件系统一致性备份通过同时创建所有文件的快照来提供一致性。<br/><br/> | 使用文件系统一致性快照恢复 VM 时，VM 将会启动。 没有数据损坏或丢失。 应用需要实现自己的“修复”机制以确保还原的数据一致。 | Windows:部分 VSS 编写器失败 <br/><br/> Linux：默认值（如果前/后脚本未配置或失败）
+**应用程序一致** | 应用一致性备份捕获内存内容和挂起的 I/O 操作。 应用一致性快照使用 VSS 编写器（或适用于 Linux 的前/后脚本）来确保备份之前的应用数据一致性。 | 使用应用一致性快照恢复 VM 时，VM 将会启动。 没有数据损坏或丢失。 应用以一致的状态启动。 | Windows：所有 VSS 编写器均已成功<br/><br/> Linux：预/后脚本已配置且已成功
+**文件系统一致性** | 文件系统一致性备份通过同时创建所有文件的快照来提供一致性。<br/><br/> | 使用文件系统一致性快照恢复 VM 时，VM 将会启动。 没有数据损坏或丢失。 应用需要实现自己的“修复”机制以确保还原的数据一致。 | Windows：某些 VSS 编写器失败 <br/><br/> Linux：默认（如果预/后脚本未配置或失败）
 **故障一致** | 如果在备份时 Azure VM 关闭，则往往会发生崩溃一致性快照。 仅会捕获和备份备份时磁盘上已存在的数据。<br/><br/> 存在崩溃一致性问题的恢复点不能保证操作系统或应用的数据一致性。 | VM 通常会启动，然后启动磁盘检查来修复损坏错误，但不能保证这一点。 在崩溃之前未传输到磁盘的任何内存中数据或写入操作将会丢失。 应用实现自己的数据验证。 例如，数据库应用可以使用其事务日志进行验证。 如果事务日志中有条目不在数据库中，则数据库软件将回滚事务，直到数据一致。 | VM 处于关闭状态
 
 ## <a name="backup-and-restore-considerations"></a>备份和还原注意事项
@@ -101,10 +101,10 @@ Azure 备份根据备份计划创建快照。
 
 这些常见的场景可能会影响总备份时间：
 
-- **将新磁盘添加到受保护的 Azure VM：** 如果 VM 正在进行增量备份，此时将一个新磁盘添加到其中，则备份时间将会增大。 总备份时间可能会超过 24 小时，因为需要对新磁盘进行初始复制，并且需要对现有磁盘进行增量复制。
-- **磁盘有碎片：** 如果磁盘上的更改是相邻的，则备份操作会更快。 如果更改分散在磁盘的各个位置并出现碎片，则备份会变慢。
-- **磁盘变动率：** 如果正在进行增量备份的受保护磁盘的每日变动率超过 200 GB，则备份可能需要花费很长时间（8 小时以上）才能完成。
-- **备份版本：** 最新版本的备份（称为“即时还原”版本）使用比校验和比较更佳的优化进程来识别更改。 但是，如果使用即时还原并删除了备份快照，则备份将改用校验和比较。 在这种情况下，备份操作将超过 24 小时（或失败）。
+- **将新磁盘添加到受保护的 AZURE VM：** 如果 VM 正在进行增量备份，并且添加了新磁盘，则备份时间将会增加。 总备份时间可能会超过 24 小时，因为需要对新磁盘进行初始复制，并且需要对现有磁盘进行增量复制。
+- **碎片磁盘：** 磁盘更改连续时，备份操作的速度更快。 如果更改分散在磁盘的各个位置并出现碎片，则备份会变慢。
+- **磁盘改动：** 如果正在进行增量备份的受保护磁盘的每日改动超过 200 GB，则备份可能需要很长时间（超过8小时）才能完成。
+- **备份版本：** 最新版本的备份（称为即时还原版本）使用比校验和比较来识别更改的更优化的进程。 但是，如果使用即时还原并删除了备份快照，则备份将改用校验和比较。 在这种情况下，备份操作将超过 24 小时（或失败）。
 
 ## <a name="best-practices"></a>最佳实践
 
@@ -140,13 +140,14 @@ Azure 备份根据备份计划创建快照。
 此示例中，VM 的实际大小为 17 GB + 30 GB + 0 GB = 47 GB。 此受保护实例大小 (47 GB) 成为按月计费的基础。 随着 VM 中数据量的增长，用于计费的受保护实例大小也会相应变化。
 
 <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
-## <a name="public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>公共预览版：备份磁盘大小最大为 30 TB 的 VM
 
-Azure 备份现在支持对大小高达 30 TB 的大型[Azure 托管磁盘](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/)进行公共预览。 该预览版为托管虚拟机提供生产级别的支持。
+## <a name="public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>公共预览版：备份磁盘大小最多为 30 TB 的 VM
 
-虚拟机的备份，每个磁盘的最大大小为30TB，而 VM 中所有磁盘的最大256TB 合并，则不会影响现有备份。 如果虚拟机已配置了 Azure 备份，则无需用户操作即可为大大小磁盘运行备份。
+Azure 备份现在支持大小更大且功能更强大的 [Azure 托管磁盘](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/)（最大为 30 TB）的公共预览版。 该预览版为托管虚拟机提供生产级别的支持。
 
-所有具有配置了备份的大型磁盘的 Azure 虚拟机都应成功备份。
+对于 VM 中的所有磁盘，每个磁盘大小256最多为 30 TB 的虚拟机的备份应无缝地工作，且不会影响现有的备份。 如果虚拟机已配置了 Azure 备份，则无需用户操作即可运行大容量磁盘的备份。
+
+所有具有配置了备份的大磁盘的 Azure 虚拟机都应成功备份。
 
 ## <a name="next-steps"></a>后续步骤
 

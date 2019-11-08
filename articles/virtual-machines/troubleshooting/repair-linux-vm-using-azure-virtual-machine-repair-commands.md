@@ -6,7 +6,7 @@ documentationcenter: ''
 author: v-miegge
 manager: dcscontentpm
 editor: ''
-tags: ''
+tags: virtual-machines
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.workload: infrastructure-services
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 56e420f9641638bfa79ff077be73132b00b934ab
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 49fdfde402938ce8d0ee1b141a47e68c99c502e7
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "71132086"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796206"
 ---
-# <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>使用 Azure 虚拟机修复命令修复 Linux VM
+# <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>使用 Azure 虚拟机 repair 命令修复 Linux VM
 
 如果 Azure 中的 Linux 虚拟机（VM）遇到启动或磁盘错误，则可能需要在磁盘本身上进行缓解。 一个常见示例是应用程序更新失败，使 VM 无法成功启动。 本文详细介绍如何使用 Azure 虚拟机修复命令将磁盘连接到另一个 Linux VM，以修复任何错误，然后重新生成原始 VM。
 
@@ -52,7 +52,7 @@ ms.locfileid: "71132086"
 
    选择 "**复制**" 以复制代码块，然后将代码粘贴到 Cloud Shell 中，然后选择 " **Enter** " 以运行该代码。
 
-   如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI version 2.0.30 或更高版本。 可以运行 ``az --version`` 来查找版本。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+   如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI version 2.0.30 或更高版本。 运行 ``az --version`` 即可查找版本。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 2. 如果这是你第一次使用 `az vm repair` 命令，请添加 vm 修复 CLI 扩展。
 
@@ -82,7 +82,7 @@ ms.locfileid: "71132086"
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>验证和启用启动诊断
 
-以下示例在名为 ``myResourceGroup`` 的资源组中名为 ``myVMDeployed`` 的 VM 上启用诊断扩展：
+以下示例在名为 ``myVMDeployed`` 的资源组中名为 ``myResourceGroup`` 的 VM 上启用诊断扩展：
 
 Azure CLI
 
