@@ -1,5 +1,5 @@
 ---
-title: 创建单一数据库 - Azure SQL 数据库 | Microsoft Docs
+title: 创建单一数据库
 description: 使用 Azure 门户、PowerShell 和 Azure CLI 在 Azure SQL 数据库中创建和查询单一数据库。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
 ms.date: 09/09/2019
-ms.openlocfilehash: 831ebbd3f85ffa9b78ac3e97a6ec68a8c41bceb5
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 482fc3f08fb986908efcab83a82338ced36ee689
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845297"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821011"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>快速入门：使用 Azure 门户、PowerShell 和 Azure CLI 在 Azure SQL 数据库中创建单一数据库
 
@@ -28,7 +28,7 @@ ms.locfileid: "70845297"
 
 ## <a name="create-a-single-database"></a>创建单一数据库
 
-在预配或无服务器（预览版）计算层中可以创建单一数据库。
+在预配或无服务器计算层中可以创建单一数据库。
 
 - 预配计算层中的单一数据库已使用两个[购买模型](sql-database-purchase-models.md)之一预分配固定数量的计算资源，包括 CPU 和内存。
 - 无服务器计算层中的单一数据库具有一系列计算资源，包括可自动扩展且仅在[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)中提供的 CPU 和内存。

@@ -1,6 +1,6 @@
 ---
 title: 快速入门：创建数据科学试验
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) Azure
 description: 本机器学习快速入门逐步讲解如何轻松完成数据科学试验。 使用回归算法预测汽车价格。
 services: machine-learning
 ms.service: machine-learning
@@ -10,16 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: e5c004b69f24b50ed2eb3a10dbd0a7915c0773ce
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 99cc453387ed32c4d7cbba31c1fec2ff24a8255f
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515114"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621895"
 ---
-# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>快速入门：在 Azure 机器学习工作室中创建你的第一个数据科学试验
+# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>快速入门：在 Azure 机器学习工作室（经典版）中创建第一个数据科学试验
 
-在本快速入门中，你将在 [Azure 机器学习工作室](what-is-ml-studio.md)中创建一个机器学习试验，用于根据制造商和技术规格等各种变量来预测汽车的价格。
+[!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
+
+在本快速入门中，你将在 [Azure 机器学习工作室（经典版）](what-is-ml-studio.md)中创建一个机器学习试验，用于根据制造商和技术规格等不同变量来预测汽车的价格。
 
 如果你不熟悉机器学习，请观看视频系列 [Data Science for Beginners](data-science-for-beginners-the-5-questions-data-science-answers.md)（适合初学者的数据科学），其中使用日常语言和概念对机器学习做了精彩的介绍。
 
@@ -40,20 +42,18 @@ ms.locfileid: "68515114"
 [选择并应用算法]: #choose-and-apply-an-algorithm
 [预测新汽车价格]: #predict-new-automobile-prices
 
-如果你没有工作室帐户，请转到[工作室主页](https://studio.azureml.net)，并选择“在此处注册”以创建一个免费帐户。  免费工作区提供本快速入门所需的所有功能。
-
 ## <a name="get-the-data"></a>获取数据
 
 若要进行机器学习，首先需要获取数据。
-可以使用机器学习机器学习工作室随附的多个示例数据集，也可以从多种源导入数据。 本示例将使用工作区中包含的示例数据集“汽车价格数据(原始)”  。
+可以使用经典版机器学习工作室随附的多个示例数据集，也可以从多种数据源导入数据。 本示例将使用工作区中包含的示例数据集“汽车价格数据(原始)”  。
 此数据集包含各辆汽车的条目，包括制造商、车型、技术规格、价格等方面的信息。
 
 > [!TIP]
-> 可在 [Azure AI Gallery](https://gallery.azure.ai)（Azure AI 库）中找到以下试验的工作副本。 请访问 **[第一个数据科学试验 - 汽车价格预测](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** ，并单击“在工作室中打开”  将试验副本下载到机器学习工作室的工作区。
+> 可在 [Azure AI Gallery](https://gallery.azure.ai)（Azure AI 库）中找到以下试验的工作副本。 请转到 [Your first data science experiment - Automobile price prediction](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)（第一个数据科学试验 - 汽车价格预测），并单击“在工作室中打开”将试验副本下载到机器学习工作室（经典版）的工作区  。
 
 下面介绍如何将数据集导入试验中。
 
-1. 单击机器学习工作室窗口底部的“+新建”以创建新试验。  选择“试验” >  “空白试验”。  
+1. 单击机器学习工作室（经典版）窗口底部的“+新建”以创建新试验  。 选择“试验” >  “空白试验”。  
 
 1. 试验有一个默认名称，显示在画布顶部。 选中该名称，将试验重命名为某个有意义的名称，例如“汽车价格预测”。  名称不需唯一。
 
@@ -240,7 +240,7 @@ ms.locfileid: "68515114"
 在本快速入门中，你使用示例数据集创建了一个简单的试验。 若要更深入地了解创建和部署模型的过程，请继续阅读预测解决方案教程。
 
 > [!div class="nextstepaction"]
-> [教程：在工作室中开发预测解决方案](tutorial-part1-credit-risk.md)
+> [教程：在工作室（经典版）中开发预测解决方案](tutorial-part1-credit-risk.md)
 
 <!-- Module References -->
 [evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
