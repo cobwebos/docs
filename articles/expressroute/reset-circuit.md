@@ -1,5 +1,5 @@
 ---
-title: 重置有故障的线路 - ExpressRoute：PowerShell：Azure | Microsoft Docs
+title: 重置失败的线路-ExpressRoute： PowerShell： Azure |Microsoft Docs
 description: 本文帮助你重置处于故障状态的 ExpressRoute 线路。
 services: expressroute
 author: anzaman
@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: anzaman
 ms.custom: seodec18
-ms.openlocfilehash: f6fd8e5f0e5730e55fa5bbe13f74be796dd6a4cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: deeb1c65cae7e3a5b42230dbda1ad8efa717ba0b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115842"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748102"
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>重置有故障的 ExpressRoute 线路
 
 针对 ExpressRoute 线路执行的某个操作未成功完成时，该线路可能进入“故障”状态。 本文帮助你重置有故障的 Azure ExpressRoute 线路。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 ## <a name="reset-a-circuit"></a>重置线路
 
@@ -52,4 +52,4 @@ ms.locfileid: "66115842"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果仍然存在问题，请通过 [Microsoft 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)开具一个支持票证。
+如果仍然存在问题，请通过 [Microsoft 支持部门](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)开具一个支持票证。

@@ -1,6 +1,6 @@
 ---
 title: Azure 备份：使用 REST API 创建备份策略
-description: 使用 REST API 管理备份策略（计划和保留期）
+description: 在本文中，你将了解如何使用 REST API 创建和管理备份策略（计划和保留期）。
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: dacurwin
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 50cc327c69529e420837571fdd60c1b2a1364b10
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7d44f99a9f2a5bfb3d3a04fe5355f7b1dc13c404
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73670139"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747588"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>使用 REST API 创建 Azure 恢复服务备份策略
 
@@ -50,7 +50,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 例如，若要为 Azure VM 备份创建策略，需在请求正文中包含以下组成部分。
 
-|Name  |必选  |类型  |说明  |
+|名称  |必选  |类型  |说明  |
 |---------|---------|---------|---------|
 |properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 属性        |
 |标记     |         | 对象        |  资源标记       |
@@ -158,9 +158,9 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 当创建另一个操作时，它将返回两个响应：202（接受），然后在该操作完成时返回200（确定）。
 
-|Name  |类型  |说明  |
+|名称  |类型  |说明  |
 |---------|---------|---------|
-|200 正常     |    [Protection PolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#protectionpolicyresource)     |  OK       |
+|200 正常     |    [Protection PolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#protectionpolicyresource)     |  确定       |
 |202 已接受     |         |     已接受    |
 
 ### <a name="example-responses"></a>示例响应

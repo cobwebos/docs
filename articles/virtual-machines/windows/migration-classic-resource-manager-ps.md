@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: bf964f23b6c38444fb15b61161cb7ed5a2b15e00
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 01d5670add82291cb91264ab41fcd312a338840c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102657"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749324"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>使用 Azure PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 以下步骤演示了如何使用 Azure PowerShell 命令将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Azure 资源管理器部署模型。
@@ -27,7 +27,7 @@ ms.locfileid: "70102657"
 也可根据需要通过 [Azure 命令行接口 (Azure CLI)](../linux/migration-classic-resource-manager-cli.md) 迁移资源。
 
 * 如需了解受支持的迁移方案的背景信息，请参阅[平台支持的从经典部署模型到 Azure 资源管理器部署模型的 IaaS 资源迁移](migration-classic-resource-manager-overview.md)。
-* 如需详细的指南和迁移演练，请参阅 [Technical deep dive on platform-supported migration from classic to Azure Resource Manager](migration-classic-resource-manager-deep-dive.md)（从技术方面深入探讨如何在支持的平台上完成从经典部署模型到 Azure Resource Manager 部署模型的迁移）。
+* 如需详细的指南和迁移演练，请参阅[从技术方面深入探讨如何在支持的平台上完成从经典部署模型到 Azure 资源管理器部署模型的迁移](migration-classic-resource-manager-deep-dive.md)。
 * [查看最常见的迁移错误](migration-classic-resource-manager-errors.md)
 
 <br>
@@ -35,23 +35,23 @@ ms.locfileid: "70102657"
 
 ![Screenshot that shows the migration steps](media/migration-classic-resource-manager/migration-flow.png)
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
-## <a name="step-1-plan-for-migration"></a>步骤 1：规划迁移
+## <a name="step-1-plan-for-migration"></a>步骤 1：做好迁移规划
 下面是建议在将 IaaS 资源从经典部署模型迁移到 Resource Manager 部署模型时遵循的一些最佳实践：
 
 * 通读[受支持的和不受支持的功能和配置](migration-classic-resource-manager-overview.md)。 如果虚拟机使用不受支持的配置或功能，建议等到我们宣布支持该配置/功能时再进行迁移。 也可根据需要删除该功能或移出该配置，以利迁移进行。
 * 如果通过自动化脚本来部署目前的基础结构和应用程序，则可尝试使用这些脚本进行迁移，以便创建类似的测试性设置。 也可以使用 Azure 门户设置示例环境。
 
 > [!IMPORTANT]
-> 目前不支持通过应用程序网关从经典部署模型迁移到 Resource Manager 部署模型。 要迁移带应用程序网关的经典虚拟网络，请先删除该网关，然后运行准备操作来移动网络。 完成迁移后，在 Azure 资源管理器中重新连接该网关。
+> 目前不支持将应用程序网关从经典部署迁移到 Resource Manager。 要迁移带应用程序网关的经典虚拟网络，请先删除该网关，然后运行准备操作来移动网络。 完成迁移后，在 Azure 资源管理器中重新连接该网关。
 >
 >无法自动迁移其他订阅中连接到 ExpressRoute 线路的 ExpressRoute 网关。 此类情况下，请删除 ExpressRoute 网关、迁移虚拟网络并重新创建网关。 有关详细信息，请参阅[将 ExpressRoute 线路和关联的虚拟网络从经典部署模型迁移到 Resource Manager 部署模型](../../expressroute/expressroute-migration-classic-resource-manager.md)。
 
-## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>步骤 2：安装最新版本的 Azure PowerShell
-有两个主要选项可供安装 Azure PowerShell：[PowerShell 库](https://www.powershellgallery.com/profiles/azure-sdk/)或 [Web 平台安装程序 (WebPI)](https://aka.ms/webpi-azps)。 WebPI 接收每月的更新。 PowerShell 库会持续接收更新。 本文基于 Azure PowerShell 2.1.0 版。
+## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>步骤2：安装最新版本的 Azure PowerShell
+安装 Azure PowerShell 可以通过两个主要的选项：[PowerShell 库](https://www.powershellgallery.com/profiles/azure-sdk/)或 [Web 平台安装程序 (WebPI)](https://aka.ms/webpi-azps)。 WebPI 接收每月的更新。 PowerShell 库会持续接收更新。 本文基于 Azure PowerShell 2.1.0 版。
 
-如需安装说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+如需安装说明，请参阅 [How to install and configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell）。
 
 <br>
 
@@ -79,7 +79,7 @@ ms.locfileid: "70102657"
     Get-AzSubscription | Sort Name | Select Name
 ```
 
-设置当前会话的 Azure 订阅。 此示例将默认订阅名称设置为“我的 Azure 订阅”。 将示例订阅名称替换成自己的名称。
+设置当前会话的 Azure 订阅。 此示例将默认订阅名称设置为 **My Azure Subscription**。 将示例订阅名称替换成自己的名称。
 
 ```powershell
     Select-AzSubscription –SubscriptionName "My Azure Subscription"
@@ -88,7 +88,7 @@ ms.locfileid: "70102657"
 > [!NOTE]
 > 注册是一次性步骤，但必须在尝试迁移之前完成。 如果不注册，则会出现以下错误消息：
 >
-> *BadRequest:Subscription is not registered for migration.* （BadRequest：订阅尚未注册迁移。）
+> *BadRequest : Subscription is not registered for migration.*
 
 使用以下命令向迁移资源提供程序注册：
 
@@ -149,7 +149,7 @@ Get-AzVMUsage -Location "West US"
     Get-AzureService | ft Servicename
 ```
 
-获取云服务的部署名称。 在此示例中，服务名称是“我的服务”。 使用自己的服务名称替换示例名称。
+获取云服务的部署名称。 在此示例中，服务名称是“我的服务”。 将示例服务名称替换成自己的服务名称。
 
 ```powershell
     $serviceName = "My Service"
@@ -201,7 +201,7 @@ Get-AzVMUsage -Location "West US"
         -VirtualNetworkName $vnetName -SubnetName $subnetName
     ```
 
-使用前述任一选项成功完成准备操作以后，即可查询 VM 的迁移状态。 确保 VM 处于“`Prepared`”状态。
+使用前述任一选项成功完成准备操作以后，即可查询 VM 的迁移状态。 确保 VM 处于“ `Prepared` ”状态。
 
 此示例将 VM 名称设置为 **myVM**。 将示例名称替换成自己的 VM 名称。
 
@@ -233,7 +233,7 @@ Get-AzVMUsage -Location "West US"
 > [!NOTE]
 > 虚拟网络名称可能和新门户中显示的名称不同。 新的 Azure 门户显示名称为 `[vnet-name]`，但实际的虚拟网络名称的类型是 `Group [resource-group-name] [vnet-name]`。 迁移之前，使用命令 `Get-AzureVnetSite | Select -Property Name` 查找实际的虚拟网络名称，或者在旧版 Azure 门户中查看它。 
 
-此示例将虚拟网络名称设置为 **myVnet**。 使用自己的虚拟网络名称替换示例名称。
+此示例将虚拟网络名称设置为 **myVnet**。 将示例虚拟网络名称替换成自己的名称。
 
 ```powershell
     $vnetName = "myVnet"
