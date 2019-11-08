@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/11/2019
+ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 79ddfe6b536dcdd7e930960c51854849b94df1bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9635798720667e38a767f26fc2e5f5374e420059
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513349"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795537"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>什么是应用程序网关入口控制器？
 应用程序网关入口控制器（AGIC）是一个 Kubernetes 应用程序，使[Azure Kubernetes 服务（AKS）](https://azure.microsoft.com/services/kubernetes-service/)客户能够利用 azure 的本机[应用程序网关](https://azure.microsoft.com/services/application-gateway/)L7 负载平衡器向Internet。 AGIC 监视它所托管的 Kubernetes 群集并不断更新应用程序网关，以便将所选服务公开到 Internet。

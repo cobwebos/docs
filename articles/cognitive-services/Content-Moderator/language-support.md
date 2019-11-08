@@ -1,7 +1,7 @@
 ---
 title: 语言支持 - 内容审查器 API
 titleSuffix: Azure Cognitive Services
-description: 这是内容审查器 API 支持的自然语言列表。
+description: 这是 Azure 认知服务内容审查器 API 支持的自然语言列表。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,31 +10,31 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: b4e6a5ca2dc19671dab3087c0a182925ac8f9a1b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 9574af31c881589668c462099cae46d9e83b454b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755321"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744364"
 ---
 # <a name="language-support-for-content-moderator-api"></a>内容审查器 API 的语言支持
 
 > [!NOTE]
-> 有关 language 参数，分配 `eng` 或留空以查看计算机辅助的分类响应（预览功能）。 **此功能仅支持英语**。
+> 对于 **language** 参数，请分配 `eng` 或将其留空以查看机器辅助的**分类**响应（预览功能）。 **此功能仅支持英语**。
 >
-> 对于**不敬词**检测，请使用本文所列的支持语言的 [ISO 639-3 代码](http://www-01.sil.org/iso639-3/codes.asp)或将其留空。
+> 对于不雅用语检测，请使用本文所列的支持语言的 [ISO 639-3 代码](http://www-01.sil.org/iso639-3/codes.asp)或留空。
 
 
 | 语言检测 | 不敬词   | OCR    | 自动更正     |
 | -------------------- |-------------|--------|---------------------|
 | 阿拉伯语(采用罗马字母)   | 南非荷兰语   | 阿拉伯语   | 阿拉伯语 |
-| 巴厘语 | 阿尔巴尼亚语 | 简体中文    | 丹麦语 |
-| 孟加拉语 | 阿姆哈拉语 | 繁体中文     | 荷兰语 |
+| 巴厘语 | 阿尔巴尼亚语 | 中文(简体)    | 丹麦语 |
+| 孟加拉语 | 阿姆哈拉语 | 中文(繁体)     | 荷兰语 |
 | 布吉斯语 | 阿拉伯语 | 捷克语                     | 英语 |
 | 布锡语 | 亚美尼亚语 | 丹麦语                     | 芬兰语 |
 | 卡里亚文 | 阿萨姆语 | 荷兰语                     | 法语 |
-| 简体中文 | 阿塞拜疆语 | 英语  | 希腊语(现代) |
-| 繁体中文 | 孟加拉语 - 孟加拉国 | 芬兰语  | 意大利语 |
+| 中文(简体) | 阿塞拜疆语 | 英语  | 希腊语(现代) |
+| 中文(繁体) | 孟加拉语 - 孟加拉国 | 芬兰语  | 意大利语 |
 | 教会斯拉夫语 | 孟加拉语 - 印度 | 法语     | 韩语 |
 | 科普特语 | 巴斯克语 | 德语                      | 挪威语 |
 | 捷克语 |  白俄罗斯语 | 希腊语(现代)         | 波兰语 |
@@ -45,7 +45,7 @@ ms.locfileid: "72755321"
 | 法语 | 加泰罗尼亚语 | 挪威语                        | 西班牙语 |
 | 德语 | 中库尔德语 | 波兰语        | 土耳其语 |
 | 希腊语 | 切罗基语 | 葡萄牙语 | |
-| 海地语 | 简体中文 | 罗马尼亚语 | |
+| 海地语 | 中文(简体) | 罗马尼亚语 | |
 | 希伯来语 | 中文(繁体) - 香港特别行政区 | 俄语 | |
 | 印地语 | 中文(繁体) - 台湾 | 塞尔维亚语(西里尔文) | |
 | 苗语 | 克罗地亚语 | 塞尔维亚语(拉丁语) | |

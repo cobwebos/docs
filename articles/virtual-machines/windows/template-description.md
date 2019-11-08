@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 23519edb61df23c97dfd2162d6cabea6b7fa5d38
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: afbf77014ece981568d4123db7820a2fa0a8f60d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101775"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749111"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure 资源管理器模板中的虚拟机
 
@@ -27,7 +27,7 @@ ms.locfileid: "70101775"
 
 [在库中](https://azure.microsoft.com/documentation/templates/?term=VM)有许多包含 VM 资源的模板。 本文并未介绍可在模板中包含的所有元素。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 本示例演示了模板中用于创建指定数量的 VM 的典型资源节：
 
@@ -342,7 +342,7 @@ ms.locfileid: "70101775"
 
 ### <a name="create-new-virtual-machines-from-a-managed-image"></a>从托管映像创建新虚拟机
 
-要从托管映像创建虚拟机，请更改 imageReference 元素，并定义以下磁盘设置：
+如果要从托管映像创建虚拟机，请更改 imageReference 元素，并定义以下磁盘设置：
 
 ```
 "storageProfile": { 
@@ -374,7 +374,7 @@ ms.locfileid: "70101775"
 ],
 ```
 
-## <a name="extensions"></a>Extensions
+## <a name="extensions"></a>扩展
 
 尽管[扩展](extensions-features.md)是独立的资源，但它们与 VM 密切相关。 可将扩展添加为 VM 的子资源，或添加为独立的资源。 本示例显示要将[诊断扩展](extensions-diagnostics-template.md)添加到 VM：
 

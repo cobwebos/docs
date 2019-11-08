@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 87777d3a6abfeaeac74fd69126cc3e71e11be825
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 73f38760153a6e1db5621801282c71216b3e8560
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597855"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749438"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>加密 Windows VM 上的虚拟磁盘
 为了增强虚拟机 (VM) 的安全性以及符合性，可以加密 Azure 中的虚拟磁盘。 磁盘是使用 Azure Key Vault 中受保护的加密密钥加密的。 可以控制这些加密密钥，以及审核对它们的使用。 本文介绍如何使用 Azure PowerShell 加密 Windows VM 上的虚拟磁盘。 你还可以[对 Linux 虚拟机进行加密](../linux/disk-encryption-overview.md)。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="overview-of-disk-encryption"></a>磁盘加密概述
 Windows VM 上的虚拟磁盘使用 BitLocker 进行静态加密。 加密 Azure 中的虚拟磁盘不会产生费用。 使用软件保护将加密密钥存储在 Azure Key Vault 中，或者，可在已通过 FIPS 140-2 级别 2 标准认证的硬件安全模块 (HSM) 中导入或生成密钥。 加密密钥用于加密和解密附加到 VM 的虚拟磁盘。 可以控制这些加密密钥，以及审核对它们的使用。 

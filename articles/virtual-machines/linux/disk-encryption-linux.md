@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a1515144f340938cddfd5ca9f2ac4803bcb3f77
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 2e7646d2f84696d0b04183d8d06b96405909de87
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174718"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750041"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux Vm 上的 Azure 磁盘加密方案
 
@@ -42,7 +42,7 @@ Azure 磁盘加密使用 Linux 的 DM Dm-crypt 功能为 Azure 虚拟机（Vm）
 
 [Azure CLI 2.0](/cli/azure) 是用于管理 Azure 资源的命令行工具。 CLI 旨在提高数据查询灵活性、支持非阻塞进程形式的长时间操作，以及简化脚本编写。 可以按照[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)中的步骤在本地安装它。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 若要[使用 Azure CLI 登录到 Azure 帐户](/cli/azure/authenticate-azure-cli)，请使用[az login](/cli/azure/reference-index?view=azure-cli-latest#az-login)命令。
 
@@ -193,7 +193,7 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： htt
 
 下表列出了现有的或正在运行的 VM 的资源管理器模板参数：
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
 | vmName | 运行加密操作的 VM 的名称。 |
 | KeyVaultName | 加密密钥应上传到的密钥保管库的名称。 可以使用 cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` 或 Azure CLI 命令（`az keyvault list --resource-group "MyKeyVaultResourceGroupName"`）获取它。|
@@ -372,7 +372,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 >[!IMPORTANT]
 >在 Linux VM 上，仅支持对数据卷禁用 Azure 磁盘加密。 如果 OS 卷已加密，则不支持对数据卷或 OS 卷禁用加密。  
 
-- **使用 Azure PowerShell 禁用磁盘加密：** 若要禁用加密，请使用[AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) cmdlet。 
+- **通过 Azure PowerShell 禁用磁盘加密：** 若要禁用加密，请使用[AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) cmdlet。 
      ```azurepowershell-interactive
      Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM' [-VolumeType {ALL, DATA, OS}]
      ```
@@ -381,7 +381,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
      ```azurecli-interactive
      az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
-- **使用资源管理器模板禁用加密：** 使用[在正在运行的 Linux VM 上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad)模板禁用加密。
+- **使用资源管理器模板禁用加密：** 使用[在正在运行的 Linux VM 上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad)模板来禁用加密。
      1. 单击 **“部署到 Azure”** 。
      2. 选择订阅、资源组、位置、VM、法律条款和协议。
 
@@ -398,7 +398,7 @@ Azure 磁盘加密不适用于以下 Linux 方案、功能和技术：
 - 网络文件系统 (NFS)。
 - 动态卷。
 - 临时 OS 磁盘。
-- 共享/分布式文件系统的加密，例如（但不限于）：DFS、GFS、DRDB 和 CephFS。
+- 共享/分布式文件系统（但不限于）的加密： DFS、GFS、DRDB 和 CephFS。
 
 ## <a name="next-steps"></a>后续步骤
 

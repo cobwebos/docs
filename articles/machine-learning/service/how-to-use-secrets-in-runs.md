@@ -11,23 +11,23 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: c0d696e3fc060a2779eba7d7e895397ea3245383
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e2074cec65ea4c1df803999c6a995f73ea4227ee
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489272"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796673"
 ---
 # <a name="use-secrets-in-training-runs"></a>在定型运行中使用机密
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何安全地运行训练中的机密。 例如，若要连接到外部数据库以查询定型数据，则需要将用户名和密码传递到远程运行上下文。 将此类值编码为以明文形式定型脚本是不安全的，因为它会公开机密。 
+本文介绍如何安全地运行训练中的机密。 例如，若要连接到外部数据库以查询定型数据，则需要将用户名和密码传递到远程运行上下文。 将此类值编码为明文中的定型脚本是不安全的，因为它会公开机密。 
 
-相反，Azure 机器学习工作区已[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)为关联资源。 此 Key Vault 可用于通过 Azure 机器学习 Python SDK 中的一组 Api 安全地将机密传递到远程运行
+相反，Azure 机器学习工作区已[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)为关联资源。 此 Key Vault 可用于通过 Azure 机器学习 Python SDK 中的一组 Api 安全地将机密传递到远程运行。
 
 使用机密的基本流程是：
- 1. 在本地计算机上，登录到 Azure 并连接到你的工作区
- 2. 在本地计算机上的工作区中设置机密 Key Vault
+ 1. 在本地计算机上，登录到 Azure 并连接到你的工作区。
+ 2. 在本地计算机上，在 "工作区 Key Vault 中设置机密。
  3. 提交远程运行。
  4. 在远程运行中，从密钥值获取密钥并使用它。
 
@@ -47,7 +47,7 @@ keyvault.set_secret(name="mysecret", value = my_secret)
 
 不要将机密值放在 Python 代码中，因为它不安全地将其以明文形式存储在文件中。 相反，请从环境变量（例如 Azure DevOps 生成机密或交互式用户输入）获取机密值。
 
-可以使用[list_secrets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secret-name--value-)方法列出机密名称。 如果该名称已存在，则__set_secret__方法会更新该密钥值。
+可以使用[list_secrets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#list-secrets--)方法列出机密名称。 如果该名称已存在，则__set_secret__方法会更新该密钥值。
 
 ## <a name="get-secrets"></a>获取机密
 

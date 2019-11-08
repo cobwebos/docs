@@ -8,20 +8,20 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: bbe236bd4575ffb849b6f4739fc3a27c09aa5e47
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: fa7f72989d47499127714eddfa6b5e98aa80178c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595145"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749229"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>使用 "运行" 命令在 Windows VM 中运行 PowerShell 脚本
 
 运行命令功能使用虚拟机（VM）代理在 Azure Windows VM 中运行 PowerShell 脚本。 您可以使用这些脚本进行一般计算机或应用程序管理。 它们可以帮助你快速诊断和修正 VM 访问和网络问题，并使 VM 恢复到良好状态。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
-## <a name="benefits"></a>优势
+## <a name="benefits"></a>优点
 
 可以通过多种方式访问虚拟机。 运行命令可以使用 VM 代理远程在虚拟机上运行脚本。 通过 Windows Vm 的 Azure 门户、 [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)或[PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand)使用 "运行" 命令。
 
@@ -51,7 +51,7 @@ ms.locfileid: "72595145"
 The entity was not found in this Azure location
 ```
 
-|名称|**说明**|
+|**名称**|**说明**|
 |---|---|
 |**RunPowerShellScript**|运行 PowerShell 脚本。|
 |**EnableRemotePS**|配置计算机以启用远程 PowerShell。|

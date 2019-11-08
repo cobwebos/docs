@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: philmea
-ms.openlocfilehash: 533a199f75baa5a27ed06698f22d4d046be45507
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 173be8207df2f0128dfc9ae3c36aa3c3dc392bee
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607879"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748568"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT 中心高可用性和灾难恢复
 
@@ -62,7 +62,7 @@ IoT 中心服务通过在几乎所有服务层中实现冗余来提供区域内�
 > [!CAUTION]
 > - 故障转移后，IoT 中心内置事件终结点的事件中心兼容名称和终结点会发生变化。 使用事件中心客户端或事件处理程序主机从内置终结点接收遥测消息时，应[使用 IoT 中心连接字符串](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)建立连接。 这可以确保在故障转移后，后端应用程序可继续工作，而无需人工干预。 如果在后端应用程序中直接使用事件中心兼容的名称和终结点，在故障转移后需要通过[提取新的事件中心兼容名称和终结点](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)来重新配置应用程序，这样才能继续操作。
 >
-> - 当路由到存储时，我们建议登记存储容器，然后循环访问它们，以确保在不进行分区假设的情况下读取所有容器。 在 Microsoft 发起的故障转移或手动故障转移期间，分区范围可能发生变化。 若要了解如何枚举 blob 列表，请参阅[路由到 Azure 存储](iot-hub-devguide-messages-d2c.md#azure-storage)。
+> - 路由到存储时，我们建议列出 blob 或文件，然后循环访问它们，以确保读取所有 blob 或文件而不进行分区假设。 在 Microsoft 发起的故障转移或手动故障转移期间，分区范围可能发生变化。 你可以使用[列表 BLOB API](https://docs.microsoft.com/rest/api/storageservices/list-blobs)来枚举 Blob 或[列表 ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list)的列表，以获取文件列表。 
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft 发起的故障转移
 

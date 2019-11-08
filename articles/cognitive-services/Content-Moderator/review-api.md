@@ -1,7 +1,7 @@
 ---
 title: 评审、工作流和作业的概念-内容审查器
 titleSuffix: Azure Cognitive Services
-description: 了解评审、工作流和作业
+description: 在本文中，你将了解查看工具的核心概念;评审、工作流和作业。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 917636c8ae339e06321c169979611f74276ca523
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 1aba86efb9ea76fbf060e80b47f9f2f6cdf8ee71
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044005"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744424"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>内容审核评审、工作流和作业
 
@@ -35,7 +35,7 @@ ms.locfileid: "73044005"
 
 ### <a name="view-workflows"></a>查看工作流
 
-若要查看现有工作流，请单击 "[查看" 工具](https://contentmoderator.cognitive.microsoft.com/)，然后选择 "**设置**"  > **工作流**"。
+若要查看现有工作流，请单击 "[查看" 工具](https://contentmoderator.cognitive.microsoft.com/)，然后选择 "**设置**" > **工作流**"。
 
 ![默认工作流](images/default-workflow-listed.PNG)
 
@@ -66,7 +66,7 @@ ms.locfileid: "73044005"
 
 若要开始创建和使用工作流，请参阅[查看工具指南](./review-tool-user-guide/workflows.md)，或参阅[REST API 指南](./try-review-api-workflow.md)了解如何以编程方式执行此操作。
 
-## <a name="jobs"></a>工作
+## <a name="jobs"></a>作业
 
 裁决作业作为内容审核、工作流和评论功能的一种包装。 作业使用内容审查器图像裁决 API 或文本裁决 API 扫描内容，然后根据指定的工作流对其进行检查。 根据工作流结果，它可能会也可能不会在[查看工具](./review-tool-user-guide/human-in-the-loop.md)中为内容创建评审。 尽管可以使用各自的 Api 创建和配置审阅和工作流，但作业 API 允许获取整个进程的详细报告（可以发送到指定的回调终结点）。
 

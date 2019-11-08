@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: f08d7bb2087ef4f30b325b3796a13e387ccdea22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25e2b488d3b6e7e5cabd1a71d1489efaf01231b3
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725561"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748552"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>排查配置服务器问题
 
@@ -22,7 +22,7 @@ ms.locfileid: "60725561"
 
 安装移动代理时，源计算机将注册到配置服务器。 可遵循以下指导原则调试执行此步骤期间发生的任何失败：
 
-1. 打开 C:\ProgramData\ASR\home\svsystems\var\configurator_register_host_static_info.log 文件。 （ProgramData 文件夹可能已隐藏。 如果未看到 ProgramData 文件夹，请在文件资源管理器的“查看”选项卡上的“显示/隐藏”部分，选中“隐藏的项目”复选框）。    失败可能是多个问题造成的。
+1. 打开 C:\ProgramData\ASR\home\svsystems\var\configurator_register_host_static_info.log 文件。 （ProgramData 文件夹可能已隐藏。 如果看不到 "ProgramData" 文件夹，请在 "文件资源管理器" 中的 "**视图**" 选项卡上的 "**显示/隐藏**" 部分中，选中 "**隐藏项**" 复选框。）失败可能是由多个问题导致的。
 
 2. 搜索字符串 **No Valid IP Address found**。 如果找到了该字符串：
    1. 验证请求的主机 ID 是否与源计算机的主机 ID 相同。
@@ -34,15 +34,15 @@ ms.locfileid: "60725561"
 3. 如果找不到字符串 **No Valid IP Address found**，请搜索字符串 **Reason=>NULL**。 如果源计算机使用空主机注册到配置服务器，则会发生此错误。 如果找到了该字符串：
     - 解决问题后，遵照[将源计算机注册到配置服务器](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)中的指导原则重试手动注册。
 
-4. 如果找不到字符串 **Reason=>NULL**，请在源计算机上打开 C:\ProgramData\ASRSetupLogs\UploadedLogs\ASRUnifiedAgentInstaller.log 文件。 （ProgramData 文件夹可能已隐藏。 如果未看到 ProgramData 文件夹，请在文件资源管理器的“查看”选项卡上的“显示/隐藏”部分，选中“隐藏的项目”复选框）。    失败可能是多个问题造成的。 
+4. 如果找不到字符串 **Reason=>NULL**，请在源计算机上打开 C:\ProgramData\ASRSetupLogs\UploadedLogs\ASRUnifiedAgentInstaller.log 文件。 （ProgramData 文件夹可能已隐藏。 如果看不到 "ProgramData" 文件夹，请在 "文件资源管理器" 中的 "**视图**" 选项卡上的 "**显示/隐藏**" 部分中，选中 "**隐藏项**" 复选框。）失败可能是由多个问题导致的。 
 
-5. 搜索字符串 **post request:(7) - Couldn't connect to server**。 如果找到了该字符串：
+5. 搜索字符串**post 请求：（7）-无法连接到服务器**。 如果找到了该字符串：
     1. 解决源计算机与配置服务器之间的网络问题。 验证是否可以使用 ping、traceroute 或 Web 浏览器等网络工具从源计算机访问配置服务器。 确保源计算机可以通过端口 443 访问配置服务器。
     2. 检查源计算机上是否有任何防火墙规则正在阻止源计算机与配置服务器之间的连接。 咨询网络管理员来消除任何连接问题。
     3. 确保从防病毒软件中排除[要从防病毒程序中排除的 Site Recovery 文件夹](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)中列出的文件夹。
     4. 解决网络问题后，遵照[将源计算机注册到配置服务器](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)中的指导原则重试注册。
 
-6. 如果未找到字符串 **post request:(7) - Couldn't connect to server**，请在同一日志文件中查找字符串 **request:(60) - Peer certificate cannot be authenticated with given CA certificates**。 如果配置服务器证书已过期，或者源计算机不支持 TLS 1.0 或更高版本的 SSL 协议，则可能会发生此错误。 如果防火墙阻止了源计算机与配置服务器之间的 SSL 通信，则也可能会发生此错误。 如果找到了该字符串： 
+6. 如果未找到字符串**post 请求：（7）-无法连接到服务器**，请在同一日志文件中查找字符串**请求：（60）-对等证书无法通过给定的 CA 证书进行身份验证**。 如果配置服务器证书已过期，或者源计算机不支持 TLS 1.0 或更高版本的 SSL 协议，则可能会发生此错误。 如果防火墙阻止了源计算机与配置服务器之间的 SSL 通信，则也可能会发生此错误。 如果找到了该字符串： 
     1. 若要解决此问题，请在源计算机上使用 Web 浏览器连接到配置服务器 IP 地址。 请使用 URI https:\/\/<配置服务器 IP 地址\>:443/。 确保源计算机可以通过端口 443 访问配置服务器。
     2. 检查是否需要在源计算机上添加或删除任何防火墙规则，使源计算机能够与配置服务器通信。 由于使用的防火墙软件多种多样，我们无法列出全部所需的防火墙配置。 咨询网络管理员来消除任何连接问题。
     3. 确保从防病毒软件中排除[要从防病毒程序中排除的 Site Recovery 文件夹](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)中列出的文件夹。  
@@ -65,13 +65,13 @@ ms.locfileid: "60725561"
 - 通过运行以下命令行在系统用户内容中打开 Internet Explorer：psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
 - 在 IE 中添加代理设置并重启 tmanssvc 服务。
 - 若要配置 DRA 代理设置，请运行 cd C:\Program Files\Microsoft Azure Site Recovery Provider
-- 接下来，执行 DRCONFIGURATOR.EXE /configure /AddBypassUrls [添加在[配置服务器部署](vmware-azure-deploy-configuration-server.md#configure-settings)的**配置 vCenter 服务器/vSphere ESXi 服务器**步骤中提供的 vCenter 服务器 IP 地址/FQDN]
+- 接下来，执行 DRCONFIGURATOR.EXE /configure /AddBypassUrls [添加在**配置服务器部署**的[配置 vCenter 服务器/vSphere ESXi 服务器](vmware-azure-deploy-configuration-server.md#configure-settings)步骤中提供的 vCenter 服务器 IP 地址/FQDN]
 
 ## <a name="change-the-ip-address-of-the-configuration-server"></a>更改配置服务器的 IP 地址
 
 我们强烈建议不要更改配置服务器的 IP 地址。 确保分配给配置服务器的所有 IP 是静态 IP 地址。 不要使用 DHCP IP 地址。
 
-## <a name="acs50008-saml-token-is-invalid"></a>ACS50008:SAML 令牌无效
+## <a name="acs50008-saml-token-is-invalid"></a>ACS50008： SAML 令牌无效
 
 若要避免此错误，请确保系统时钟上的时间与本地时间之间的偏差不超过 15 分钟。 重新运行安装程序完成注册。
 
@@ -122,7 +122,7 @@ ms.locfileid: "60725561"
 
 配置服务器必须是单一用途服务器，并且不支持将其用作共享服务器。 
 
-有关详细信息，请参阅[部署配置服务器](vmware-azure-deploy-configuration-server.md#faq)中的配置常见问题解答。 
+有关详细信息，请参阅[部署配置服务器](vmware-azure-deploy-configuration-server.md#faqs)中的配置常见问题解答。 
 
 ## <a name="remove-the-stale-entries-for-protected-items-from-the-configuration-server-database"></a>从配置服务器数据库中删除受保护项的过时条目 
 
@@ -145,7 +145,7 @@ ms.locfileid: "60725561"
    
     `Syntax: Unregister-ASRComponent.pl -IPAddress <IP_ADDRESS_OF_MACHINE_TO_UNREGISTER> -Component <Source/ PS / MT>`
  
-    如果源服务器的条目"OnPrem VM01"的具有 ip 地址为 10.0.0.4 然后使用以下命令。
+    如果源服务器条目为 "OnPrem-VM01"，ip 地址为10.0.0.4，则使用以下命令。
  
     `perl Unregister-ASRComponent.pl -IPAddress 10.0.0.4 -Component Source`
  
@@ -185,13 +185,13 @@ ms.locfileid: "60725561"
 
 ## <a name="azure-active-directory-application-creation-failure"></a>Azure Active Directory 应用程序创建失败
 
-没有在 Azure Active Directory (AAD) 中使用[开放虚拟化应用程序 (OVA)](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template
+没有在 Azure Active Directory (AAD) 中使用[开放虚拟化应用程序 (OVA)](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template
 ) 模板创建应用程序的足够权限。
 
 若要解决问题，请登录 Azure 门户并执行以下操作之一：
 
 - 在 AAD 中请求应用程序开发人员角色。 有关应用程序开发人员角色的详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
-- 验证并确保 AAD 中的“用户可以创建应用程序”标志设置为“true”   。 有关更多信息，请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)。
+- 验证并确保 AAD 中的“用户可以创建应用程序”标志设置为“true”。 有关详细信息，请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)。
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>进程服务器/主目标无法与配置服务器通信 
 

@@ -5,20 +5,20 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/22/2019
+ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: b04c381cbe5ad9199f182f39e7311ae01fe2b8ba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c664141a8c89ccbdf37bd3f9a19cfa659982a47d
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513609"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795569"
 ---
 # <a name="expose-an-aks-service-over-http-or-https-using-application-gateway"></a>使用应用程序网关通过 HTTP 或 HTTPS 公开 AKS 服务 
 
 这些教程有助于说明[Kubernetes 入口资源](https://kubernetes.io/docs/concepts/services-networking/ingress/)的使用情况，以通过 HTTP 或 HTTPS 通过[Azure 应用程序网关](https://azure.microsoft.com/services/application-gateway/)公开示例 Kubernetes 服务。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 已 `ingress-azure` helm 图安装。
   - [**领域部署**](ingress-controller-install-new.md)：若要从头开始，请参阅这些安装说明，其中概述了使用应用程序网关部署 AKS 群集和在 AKS 群集上安装应用程序网关入口控制器的步骤。

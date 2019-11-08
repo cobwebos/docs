@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 026b5d219bee34dd846990d54e691039d1c6e458
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 0d4e76f4d02b0287770243bfddf995a19f90d232
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245066"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749449"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁盘加密故障排除指南
 
@@ -24,7 +24,7 @@ ms.locfileid: "72245066"
 - [组策略要求](disk-encryption-overview.md#group-policy-requirements)
 - [加密密钥存储要求](disk-encryption-overview.md#encryption-key-storage-requirements)
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>防火墙保护下的 Azure 磁盘加密故障排除
 

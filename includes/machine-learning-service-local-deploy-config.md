@@ -2,20 +2,20 @@
 author: larryfr
 ms.service: machine-learning
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 11/04/2019
 ms.author: larryfr
-ms.openlocfilehash: ec0f85ff568bcd89d74ccd727d1c5ecfd8aab398
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: f35245aea0d7ba20561d1504b111e747ccbe5e0d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390651"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73799652"
 ---
-`deploymentconfig.json`文档中的项将映射到 LocalWebservice 的参数[。](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py) 下表描述了 JSON 文档中的实体与方法的参数之间的映射：
+`deploymentconfig.json` 文档中的条目映射到[deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py)的参数。 下表描述了 JSON 文档中的实体与方法的参数之间的映射：
 
-| JSON 实体 | 方法参数 | 描述 |
+| JSON 实体 | 方法参数 | 说明 |
 | ----- | ----- | ----- |
-| `computeType` | 不可用 | 计算目标。 对于本地目标，该值必须为`local`。 |
+| `computeType` | 不可用 | 计算目标。 对于本地目标，该值必须是 `local`。 |
 | `port` | `port` | 要在其上公开服务的 HTTP 终结点的本地端口。 |
 
 此 JSON 是用于 CLI 的示例部署配置：

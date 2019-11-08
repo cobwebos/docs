@@ -7,18 +7,18 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 088ca5c20b0681cdd36da1b8a187873399aa32c6
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b034bad8661e93cbf5797c93739f1db3a64626f0
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828459"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748905"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁盘加密示例脚本 
 
 本文提供了用于准备预加密的 Vhd 和其他任务的示例脚本。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>Azure 磁盘加密的示例 PowerShell 脚本 
 
@@ -42,15 +42,15 @@ ms.locfileid: "71828459"
 下表显示了可在 PowerShell 脚本中使用的参数： 
 
 
-|参数|描述|必需？|
+|参数|说明|必需？|
 |------|------|------|
-|$resourceGroupName| KeyVault 所属的资源组的名称。  如果不存在具有此名称的资源组，则会新建一个资源组。| 真|
-|$keyVaultName|要将加密密钥放到的 KeyVault 的名称。 如果不存在具有此名称的保管库，则会新建一个保管库。| 真|
-|$location|KeyVault 的位置。 请确保 KeyVault 和要加密的 VM 位于同一位置。 使用 `Get-AzLocation` 获取位置列表。|真|
-|$subscriptionId|要使用的 Azure 订阅的标识符。  可以使用 `Get-AzSubscription` 获取订阅 ID。|真|
-|$aadAppName|用于将机密写入 KeyVault 的 Azure AD 应用程序的名称。 如果该应用程序不存在，则会使用此名称创建新的应用程序。 如果此应用已存在，则将 aadClientSecret 参数传递给脚本。|假|
-|$aadClientSecret|之前创建的 Azure AD 应用程序的客户端机密。|假|
-|$keyEncryptionKeyName|KeyVault 中的可选密钥加密密钥的名称。 如果不存在具有此名称的密钥，则会新建一个密钥。|假|
+|$resourceGroupName| KeyVault 所属的资源组的名称。  如果不存在具有此名称的资源组，则会新建一个资源组。| True|
+|$keyVaultName|要将加密密钥放到的 KeyVault 的名称。 如果不存在具有此名称的保管库，则会新建一个保管库。| True|
+|$location|KeyVault 的位置。 请确保 KeyVault 和要加密的 VM 位于同一位置。 使用 `Get-AzLocation` 获取位置列表。|True|
+|$subscriptionId|要使用的 Azure 订阅的标识符。  可以使用 `Get-AzSubscription` 获取订阅 ID。|True|
+|$aadAppName|用于将机密写入 KeyVault 的 Azure AD 应用程序的名称。 如果该应用程序不存在，则会使用此名称创建新的应用程序。 如果此应用已存在，则将 aadClientSecret 参数传递给脚本。|False|
+|$aadClientSecret|之前创建的 Azure AD 应用程序的客户端机密。|False|
+|$keyEncryptionKeyName|KeyVault 中的可选密钥加密密钥的名称。 如果不存在具有此名称的密钥，则会新建一个密钥。|False|
 
 
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>在不使用 Azure AD 应用的情况下加密或解密 VM
@@ -96,7 +96,7 @@ ms.locfileid: "71828459"
 2. 根据需要配置 VM。 如果打算加密所有（OS + 数据）驱动器，则需要指定数据驱动器且可从 /etc/fstab 处装载数据驱动器。
 
    > [!NOTE]
-   > 使用 UUID =... 在 /etc/fstab 中指定数据驱动器（而不是指定 /dev/sdb1 等块设备名称）。 在加密过程中，驱动器的顺序将在 VM 上有所改变。 如果 VM 依赖于特定块设备顺序，加密后将无法装载。
+   > 使用 UUID =... 在 /etc/fstab 中指定数据驱动器（而不是指定 /dev/sdb1 等块设备名称）。 在加密过程中，驱动器的顺序会在 VM 上有所改变。 如果 VM 依赖于特定块设备顺序，加密后将无法装载。
 
 3. 注销 SSH 会话。
 
@@ -131,9 +131,9 @@ ms.locfileid: "71828459"
     ```
   VM 变为“OS 磁盘加密开始”后，在支持高级存储的 VM 上将需要花费大约 40-50 分钟。
 
-  由于 WALinuxAgent 出现[问题 #388](https://github.com/Azure/WALinuxAgent/issues/388)，`OsVolumeEncrypted` 和 `DataVolumesEncrypted` 在某些发行版中显示为 `Unknown`。 在 WALinuxAgent 2.1.5 版及更高版本中，将自动修复此问题。 如果在输出中看到 `Unknown`，可通过使用 Azure 资源浏览器验证磁盘加密状态。
+  由于 WALinuxAgent 出现[问题 #388](https://github.com/Azure/WALinuxAgent/issues/388)，`OsVolumeEncrypted` 和 `DataVolumesEncrypted` 在某些发行版中显示为 `Unknown`。 在 WALinuxAgent 2.1.5 版及更高版本中，会自动修复此问题。 如果在输出中看到 `Unknown`，可通过使用 Azure 资源浏览器验证磁盘加密状态。
 
-  转到 [Azure 资源浏览器](https://resources.azure.com/)，然后在左侧的选择面板中展开此层次结构：
+  转到 [Azure 资源浏览器](https://resources.azure.com/)，并在左侧的选择面板中展开此层次结构：
 
   ~~~~
   |-- subscriptions
@@ -253,7 +253,7 @@ ms.locfileid: "71828459"
 
 ### <a name="opensuse-132"></a>openSUSE 13.2
 若要在分发版安装期间配置加密，请执行以下步骤：
-1. 对磁盘进行分区时，选择“加密卷组”，并输入密码。 这是要上传到 Key Vault 的密码。
+1. 对磁盘进行分区时，选择“加密卷组”，然后输入密码。 这是要上传到 Key Vault 的密码。
 
    ![openSUSE 13.2 安装 - 加密卷组](./media/disk-encryption/opensuse-encrypt-fig1.png)
 

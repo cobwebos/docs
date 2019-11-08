@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: 163fe24c941f779a2160ee5ef50f9d4dfcea1022
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a30fcd0ec7e53c78876596baf787639e81c638db
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486727"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795011"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>配置语言理解 Docker 容器 
 
@@ -26,7 +26,7 @@ ms.locfileid: "73486727"
 
 此容器具有以下配置设置：
 
-|需要|设置|目的|
+|必选|设置|目的|
 |--|--|--|
 |是|[ApiKey](#apikey-setting)|用于跟踪账单信息。|
 |否|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。|
@@ -64,9 +64,9 @@ ms.locfileid: "73486727"
 * Azure 门户：**认知服务**概述，标记 `Endpoint`
 * LUIS portal： **Keys 和 endpoint settings**页面，作为终结点 URI 的一部分。
 
-| 需要 | 名称 | 数据类型 | 说明 |
+| 必选 | 名称 | 数据类型 | 说明 |
 |----------|------|-----------|-------------|
-| 是      | `Billing` | 字符串 | 计费终结点 URI。 |
+| 是      | `Billing` | 字符串 | 计费终结点 URI。 有关获取计费 URI 的详细信息，请参阅[收集所需的参数](luis-container-howto.md#gathering-required-parameters)。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../cognitive-services-custom-subdomains.md)。 |
 
 ## <a name="eula-setting"></a>Eula 设置
 
@@ -94,7 +94,7 @@ LUIS 容器不使用输入或输出装载来存储训练或服务数据。
 
 下表描述了支持的设置。
 
-|需要| 名称 | 数据类型 | 说明 |
+|必选| 名称 | 数据类型 | 说明 |
 |-------|------|-----------|-------------|
 |是| `Input` | String | 输入装入点的目标。 默认值为 `/input`。 这是 LUIS 包文件的位置。 <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
 |否| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括 LUIS 查询日志和容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|

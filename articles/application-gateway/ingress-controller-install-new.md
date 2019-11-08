@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/22/2019
+ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: a11a444ca4e9485273f5dc94209c390289080838
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 30b5f6593d2d2ca17ad600a55f9dc7e2a379f0f0
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513440"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795933"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>如何使用新的应用程序网关安装应用程序网关入口控制器（AGIC）
 
@@ -251,9 +251,9 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 
    值：
      - `verbosityLevel`：设置 AGIC 日志记录基础结构的详细级别。 有关可能的值，请参阅[日志记录级别](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels)。
-     - `appgw.subscriptionId`：应用程序网关所在的 Azure 订阅 ID。 示例： `a123b234-a3b4-557d-b2df-a0bc12de1234`
-     - `appgw.resourceGroup`：在其中创建应用程序网关的 Azure 资源组的名称。 示例： `app-gw-resource-group`
-     - `appgw.name`：应用程序网关的名称。 示例： `applicationgatewayd0f0`
+     - `appgw.subscriptionId`：应用程序网关所在的 Azure 订阅 ID。 示例：`a123b234-a3b4-557d-b2df-a0bc12de1234`
+     - `appgw.resourceGroup`：在其中创建应用程序网关的 Azure 资源组的名称。 示例：`app-gw-resource-group`
+     - `appgw.name`：应用程序网关的名称。 示例：`applicationgatewayd0f0`
      - `appgw.shared`：此布尔标志应默认为 `false`。 如果需要[共享应用程序网关](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)，请设置为 "`true`"。
      - `kubernetes.watchNamespace`：指定 AGIC 应监视的命名空间。 这可以是单个字符串值或以逗号分隔的命名空间列表。
     - `armAuth.type`： `aadPodIdentity` 或 `servicePrincipal`

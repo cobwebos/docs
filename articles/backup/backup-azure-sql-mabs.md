@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 备份服务器为 SQL Server 工作负荷配置 Azure 备份
-description: 使用 Azure 备份服务器备份 SQL Server 数据库简介
+description: 本文介绍使用 Microsoft Azure 备份 Server （MABS）备份 SQL Server 数据库的配置步骤。
 ms.reviewer: kasinh
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: f36560dbaea5b3efe29d38ca750fc732b9281360
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: e1e1c7f30066197c6420956368a09de69e87e466
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969135"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747335"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>使用 Azure 备份服务器将 SQL Server 备份到 Azure
 
@@ -56,7 +56,7 @@ ms.locfileid: "72969135"
    >
    >
 
-8. 点击“下一步”
+8. 单击“下一步”
 
     MABS 会显示可用的总存储空间以及能够使用的磁盘空间。
 
@@ -103,12 +103,12 @@ ms.locfileid: "72969135"
     * 在星期六中午 12:00 进行的备份 会保留 104 周
     * 在最后一个星期六中午 12:00 进行的备份 会保留 60 个月
     * 在 3 月的最后一个星期六中午 12:00 进行的备份 会保留 10 年
-14. 单击“**下一步**”，选择相应的选项将初始备份副本传输到 Azure。 可以选择“**自动通过网络**”或“**脱机备份**”。
+14. 单击“下一步”，选择相应的选项将初始备份副本传输到 Azure。 可以选择“**自动通过网络**”或“**脱机备份**”。
 
     * “**自动通过网络**”会根据为备份选择的计划将备份数据传输到 Azure。
     * “**脱机备份**”的工作原理详见 [Azure 备份中的脱机备份工作流](backup-azure-backup-import-export.md)。
 
-    选择将初始备份副本发送到 Azure 的相关传输机制，然后单击“**下一步**”。
+    选择将初始备份副本发送到 Azure 的相关传输机制，并单击“**下一步**”。
 15. 在“**摘要**”屏幕中查看策略详细信息以后，单击“**创建组**”按钮即可完成工作流的操作。 可以单击“**关闭**”按钮，即可在“监视”工作区中监视作业进度。
 
     ![保护组创建进度](./media/backup-azure-backup-sql/pg-summary.png)
@@ -148,11 +148,11 @@ ms.locfileid: "72969135"
 4. 在“**指定恢复选项**”屏幕上，可以选择恢复选项（例如“网络带宽使用限制”），以便限制恢复操作所使用的带宽。 单击“下一步”。
 5. 在“**摘要**”屏幕上，会看到目前提供的所有恢复配置。 单击“**恢复**”。
 
-    恢复状态显示数据库正在恢复。 可以单击“**关闭**”关闭向导，并在“**监视**”工作区中查看进度。
+    恢复状态显示数据库正在恢复。 可以单击“**关闭**”关闭向导，然后在“**监视**”工作区中查看进度。
 
     ![启动恢复过程](./media/backup-azure-backup-sql/sqlbackup-recoverying.png)
 
-    完成恢复操作后，还原的数据库在应用程序级别将是一致的。
+    完成恢复操作后，还原的数据库在应用程序级别是一致的。
 
 ### <a name="next-steps"></a>后续步骤
 

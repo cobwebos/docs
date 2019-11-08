@@ -7,18 +7,18 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6874372d64fdbb667a23f2ded37a68cd68e32993
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 50addbec1717c7bb76a248053dd889b09441f6f6
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245079"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749461"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁盘加密示例脚本 
 
 本文提供了用于准备预加密的 Vhd 和其他任务的示例脚本。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="list-vms-and-secrets"></a>列出 Vm 和机密
 
@@ -40,7 +40,7 @@ Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('Disk
 
 下表显示了可在 PowerShell 脚本中使用的参数： 
 
-|参数|描述|必需？|
+|参数|说明|必需？|
 |------|------|------|
 |$resourceGroupName| KeyVault 所属的资源组的名称。  如果不存在具有此名称的资源组，则会新建一个资源组。| True|
 |$keyVaultName|要将加密密钥放到的 KeyVault 的名称。 如果不存在具有此名称的保管库，则会新建一个保管库。| True|
@@ -68,7 +68,7 @@ Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('Disk
 以下部分介绍了必要操作，让你在 Azure IaaS 中准备将预加密的 Windows VHD 部署为加密 VHD。 使用该信息在 Azure Site Recovery 或 Azure 上准备和启动全新的 Windows VM (VHD)。 有关如何准备和上传 VHD 的详细信息，请参阅[上传通用化 VHD 并使用它在 Azure 中创建新的 VM](upload-generalized-managed.md)。
 
 ### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>更新组策略以允许使用非 TPM 保护 OS
-在“本地计算机策略” > “计算机设置” > “管理模板” > “Windows 组件”下配置名为“BitLocker 驱动器加密”的 BitLocker 组策略设置。 如下图所示，将此设置更改为“操作系统驱动器” > “启动时需要附加身份验证” > “没有兼容的 TPM 时允许 BitLocker”：
+在“本地计算机策略” **“计算机设置”**  >  **“管理模板”**  >  **“Windows 组件”**  > 下配置名为“BitLocker 驱动器加密”的 BitLocker 组策略设置。 如下图所示，将此设置更改为“操作系统驱动器” > “启动时需要附加身份验证” > “没有兼容的 TPM 时允许 BitLocker”：
 
 ![Azure 中的 Microsoft Antimalware](../media/disk-encryption/disk-encryption-fig8.png)
 
@@ -87,7 +87,7 @@ Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('Disk
     bdehdcfg -target c: shrink -quiet 
 
 ### <a name="protect-the-os-volume-by-using-bitlocker"></a>使用 BitLocker 保护 OS 卷
-使用 [`manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) 命令在使用外部密钥保护程序的引导卷上启用加密。 此外将外部密钥（.bek 文件）放在外部驱动器或卷上。 下次重启后，将会在系统/引导卷上启用加密。
+使用 [`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx) 命令在使用外部密钥保护程序的引导卷上启用加密。 此外将外部密钥（.bek 文件）放在外部驱动器或卷上。 下次重启后，会在系统/引导卷上启用加密。
 
     manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
     reboot

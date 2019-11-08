@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
-ms.date: 04/02/2019
-ms.openlocfilehash: 773ffe264446e6a4d9ef2e88634e4f2c9b8aeb45
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.date: 11/07/2019
+ms.openlocfilehash: 460079248e6cbd939c36b84f94cac41dce4dda2b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273978"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747665"
 ---
 # <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>教程：从 Azure Databricks 笔记本查询虚拟网络中的 SQL Server Linux Docker 容器
 
@@ -42,7 +42,7 @@ ms.locfileid: "72273978"
 
     ![添加新的 Azure 虚拟机](./media/vnet-injection-sql-server/add-virtual-machine.png)
 
-2. 在 "**基本**信息" 选项卡上，选择 "Ubuntu SERVER 16.04 LTS"。 将 VM 大小更改为 B1ms，其中包含一个个 VCPU 和 2 GB RAM。 Linux SQL Server Docker 容器的最低要求是 2 GB。 选择管理员用户名和密码。
+2. 在 "**基本**信息" 选项卡上，选择 "Ubuntu SERVER 18.04 LTS"，并将 VM 大小更改为 "B2s"。 选择管理员用户名和密码。
 
     ![新虚拟机配置的 "基本信息" 选项卡](./media/vnet-injection-sql-server/create-virtual-machine-basics.png)
 
@@ -62,32 +62,31 @@ ms.locfileid: "72273978"
 
 7. 添加规则以打开 SSH 端口22。 使用以下设置：
     
-    |设置|建议的值|描述|
+    |设置|建议的值|说明|
     |-------|---------------|-----------|
-    |Source|IP 地址|IP 地址指定此规则将允许或拒绝来自特定源 IP 地址的传入流量。|
-    |源 IP 地址|< 公共 ip @ no__t-0|输入公共 IP 地址。 可以通过访问[bing.com](https://www.bing.com/)并搜索 **"我的 ip"** 找到公共 IP 地址。|
-    |Source port ranges|*|允许来自任何端口的流量。|
-    |Destination|IP 地址|IP 地址指定此规则将允许或拒绝特定源 IP 地址的传出流量。|
-    |目标 IP 地址|< vm 公共 ip @ no__t-0|输入虚拟机的公共 IP 地址。 可以在虚拟机的 "**概述**" 页上找到此。|
+    |源|IP 地址|IP 地址指定此规则将允许或拒绝来自特定源 IP 地址的传入流量。|
+    |源 IP 地址|< 公共 ip\>|输入公共 IP 地址。 可以通过访问[bing.com](https://www.bing.com/)并搜索 **"我的 ip"** 找到公共 IP 地址。|
+    |源端口范围|*|允许来自任何端口的流量。|
+    |目标|IP 地址|IP 地址指定此规则将允许或拒绝特定源 IP 地址的传出流量。|
+    |目标 IP 地址|< vm 公共 ip\>|输入虚拟机的公共 IP 地址。 可以在虚拟机的 "**概述**" 页上找到此。|
     |目标端口范围|22|为 SSH 打开端口22。|
     |Priority|290|为规则指定优先级。|
-    |名称|ssh-databricks-tutorial-vm|为规则指定名称。|
+    |名称|databricks-vm|为规则指定名称。|
 
 
     ![为端口22添加入站安全规则](./media/vnet-injection-sql-server/open-port.png)
 
 8. 添加一条规则，以便使用以下设置为 SQL 打开端口1433：
 
-    |设置|建议的值|描述|
+    |设置|建议的值|说明|
     |-------|---------------|-----------|
-    |Source|IP 地址|IP 地址指定此规则将允许或拒绝来自特定源 IP 地址的传入流量。|
-    |源 IP 地址|10.179.0.0/16|输入虚拟网络的地址范围。|
-    |Source port ranges|*|允许来自任何端口的流量。|
-    |Destination|IP 地址|IP 地址指定此规则将允许或拒绝特定源 IP 地址的传出流量。|
-    |目标 IP 地址|< vm 公共 ip @ no__t-0|输入虚拟机的公共 IP 地址。 可以在虚拟机的 "**概述**" 页上找到此。|
+    |源|任意|Source 指定此规则将允许或拒绝来自特定源 IP 地址的传入流量。|
+    |源端口范围|*|允许来自任何端口的流量。|
+    |目标|IP 地址|IP 地址指定此规则将允许或拒绝特定源 IP 地址的传出流量。|
+    |目标 IP 地址|< vm 公共 ip\>|输入虚拟机的公共 IP 地址。 可以在虚拟机的 "**概述**" 页上找到此。|
     |目标端口范围|1433|为 SQL Server 打开端口22。|
     |Priority|300|为规则指定优先级。|
-    |名称|sql-databricks-tutorial-vm|为规则指定名称。|
+    |名称|databricks-vm|为规则指定名称。|
 
     ![为端口1433添加入站安全规则](./media/vnet-injection-sql-server/open-port2.png)
 

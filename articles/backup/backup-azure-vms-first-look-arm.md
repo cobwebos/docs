@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure 备份从 VM 设置备份 Azure VM
-description: 了解如何使用 Azure 备份服务备份 Azure VM
+description: 本文介绍如何使用 Azure 备份服务备份单一 Azure VM 或多个 Azure Vm。
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: cfbec94a2922995eed546d526c1f469e2ea54118
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 232c027ef60a031df53f2439586a0ae459ab67d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969051"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747235"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>通过 VM 设置备份 Azure VM
 
@@ -62,13 +62,13 @@ ms.locfileid: "72969051"
 
    ![备份状态](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
 
-10. 启用备份后，将运行初始备份。 可以立即启动初始备份，也可以等待它按备份计划启动。
+10. 启用备份后，会运行初始备份。 可以立即启动初始备份，也可以等待它按备份计划启动。
     - 在初始备份完成之前，“上次备份状态”显示为“警告(初始备份挂起)”。
     - 若要查看下一个计划的备份何时运行，请单击备份策略名称。
 
 > [!NOTE]
-> Azure 备份服务会创建一个单独的资源组（而不是 VM 资源组）来存储快照，其命名格式为**AzureBackupRG_geography_number** （示例： AzureBackupRG_northeurope_1）。 此资源组中的数据将保留在 Azure 虚拟机备份策略的 "保留即时恢复快照" 部分中指定的天数内。 对此资源组应用锁定会导致备份失败。<br>
-还应从任何名称/标记限制中排除此资源组，因为限制策略会阻止在其中创建资源点集合，从而导致备份失败。
+> Azure 备份服务会创建一个单独的资源组（而不是 VM 资源组）来存储快照，其命名格式为**AzureBackupRG_geography_number** （示例： AzureBackupRG_northeurope_1）。 此资源组中的数据将保留在 Azure 虚拟机备份策略的 "保留即时恢复快照" 部分中指定的天数内。 对此资源组应用锁定可能会导致备份失败。<br>
+此资源组还应排除在任何名称/标记限制之外，因为限制策略会阻止在其中再次创建“资源点”集合，从而导致备份失败。
 
 ## <a name="run-a-backup-immediately"></a>立即运行备份
 

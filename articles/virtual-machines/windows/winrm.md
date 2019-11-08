@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: f7f57a43697a9376062bdd3baa2d5f7333bf4a7f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 25091e8e58fbdba908fb00ece3cd2d3d296c5ab1
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100157"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749053"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>为 Azure 资源管理器中的虚拟机设置 WinRM 访问权限
 
@@ -31,7 +31,7 @@ ms.locfileid: "70100157"
 4. 获取密钥保管库中自签名证书的 URL
 5. 创建 VM 时引用自签名的证书 URL
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="step-1-create-a-key-vault"></a>步骤 1：创建密钥保管库
 可使用以下命令来创建密钥保管库
@@ -55,8 +55,8 @@ $password = Read-Host -Prompt "Please enter the certificate password." -AsSecure
 Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $password
 ```
 
-## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>步骤 3：将自签名证书上传到密钥保管库
-将证书上传到在步骤 1 中创建的密钥保管库之前，需将其转换为 Microsoft.Compute 资源提供程序可识别的格式。 以下 PowerShell 脚本将允许执行该操作
+## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>步骤 3：获将自签名证书上传到密钥保管库
+将证书上传到在步骤 1 中创建的密钥保管库之前，需将其转换为 Microsoft.Compute 资源提供程序可识别的格式。 以下 PowerShell 脚本允许你执行该操作
 
 ```
 $fileName = "<Path to the .pfx file>"
@@ -82,7 +82,7 @@ Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValu
 预配 VM 时，Microsoft.Compute 资源提供程序需要指向密钥保管库中密钥的 URL。 这会使 Microsoft.Compute 资源提供程序能够下载密钥，并在 VM 上创建等效证书。
 
 > [!NOTE]
-> 密钥 URL 还需要包含版本。 示例 URL 如下所示: https:\//contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> 密钥 URL 还需要包含版本。 示例 URL 如下所示： http：\//contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 
 #### <a name="templates"></a>模板
 可使用以下代码获取模板中 URL 的链接

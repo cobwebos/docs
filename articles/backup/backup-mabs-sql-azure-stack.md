@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Stack 上备份 SQL Server 工作负荷
-description: 使用 Azure 备份服务器在 Azure Stack 上保护 SQL Server 工作负荷。
+description: 本文介绍如何配置 Microsoft Azure 备份 Server （MABS）以保护 Azure Stack 上的 SQL Server 数据库。
 ms.reviewer: adigan
 author: dcurwin
 manager: carmonm
@@ -8,14 +8,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: ab65a1bf371ff8581f347403b49fafed6697374c
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 28d4ad1a94cea6f21d1fe75483357d8788524b88
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210228"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747223"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>在 Azure Stack 上备份 SQL Server
+
 使用本文配置 Microsoft Azure 备份服务器 (MABS) 以在 Azure Stack 上保护 SQL Server 数据库。
 
 向 Azure 备份以及从 Azure 恢复 SQL Server 数据库的管理工作涉及三个步骤：
@@ -29,6 +30,7 @@ ms.locfileid: "70210228"
 [安装并准备 Azure 备份服务器](backup-mabs-install-azure-stack.md)。
 
 ## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>创建备份策略以保护要备份到 Azure 的 SQL Server 数据库
+
 1. 在 Azure 备份服务器 UI 中，单击“保护”工作区。
 
 2. 单击“**新建**”创建新的保护组。
@@ -68,7 +70,7 @@ ms.locfileid: "70210228"
 
     ![初始复制方法](./media/backup-azure-backup-sql/pg-manual.png)
 
-    初始备份复制要求将整个数据源（SQL Server 数据库）从生产服务器（SQL Server 计算机）传输到 Azure 备份服务器。 此类数据可能会非常大，通过网络传输此类数据可能会超过带宽限制。 因此，可以选择通过以下方式传输初始备份：“手动”（使用可移动媒体），以免网络出现带宽拥塞现象；或“自动通过网络”（于指定时间）。
+    初始备份复制要求将整个数据源（SQL Server 数据库）从生产服务器（SQL Server 计算机）传输到 Azure 备份服务器。 此类数据可能会非常大，通过网络传输此类数据可能会超过带宽限制。 出于这个原因，可以选择通过以下方式传输初始备份：“**手动**”（使用可移动媒体），以免网络出现带宽拥塞现象；或“**自动通过网络**”（于指定时间）。
 
     初始备份完成后，其余的备份都是初始备份副本的增量备份。 增量备份往往比较小，能轻松地通过网络传输。
 
@@ -105,13 +107,14 @@ ms.locfileid: "70210228"
     * 在星期六中午 12:00 进行的备份 会保留 104 周
     * 在最后一个星期六中午 12:00 进行的备份 会保留 60 个月
     * 在 3 月的最后一个星期六中午 12:00 进行的备份 会保留 10 年
-13. 单击“**下一步**”，选择相应的选项将初始备份副本传输到 Azure。 可以选择“自动通过网络”
+13. 单击“下一步”，选择相应的选项将初始备份副本传输到 Azure。 可以选择“自动通过网络”
 
 14. 在“摘要”屏幕中复查策略详细信息后，单击“创建组”以完成工作流。 可以单击“关闭”，然后在“监视”工作区中监视作业进度。
 
     ![保护组创建进度](./media/backup-azure-backup-sql/pg-summary.png)
 
 ## <a name="on-demand-backup-of-a-sql-server-database"></a>SQL Server 数据库的按需备份
+
 虽然前述步骤创建了备份策略，但“恢复点”仅在进行首个备份的时候创建。 如果不想等待计划程序进行计划，则以下步骤可触发手动创建恢复点。
 
 1. 在创建恢复点之前，请等待数据库的保护组状态显示为“**正常**”。
@@ -128,6 +131,7 @@ ms.locfileid: "70210228"
     ![监视控制台](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
 
 ## <a name="recover-a-sql-server-database-from-azure"></a>从 Azure 恢复 SQL Server 数据库
+
 若要从 Azure 中恢复受保护的实体（SQL Server 数据库），必须执行以下步骤。
 
 1. 打开 Azure 备份服务器管理控制台。 导航到“恢复”工作区，可以在其中看到受保护的服务器。 浏览所需的数据库（在本示例中为 ReportServer$MSDPM2012）。 选择指定为**在线**点的一个**恢复开始**时间。
@@ -150,7 +154,7 @@ ms.locfileid: "70210228"
 
     ![启动恢复过程](./media/backup-azure-backup-sql/sqlbackup-recoverying.png)
 
-    完成恢复操作后，还原的数据库在应用程序级别将是一致的。
+    完成恢复操作后，还原的数据库在应用程序级别是一致的。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: f35ed65b25d469b524e7174affecb45ad7c4735c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d26210ab226f8e907aa845d51dca94f59badd6a3
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115788"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748068"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>通过 ExpressRoute Microsoft 对等互连配置站点到站点的 VPN
 
@@ -24,7 +24,7 @@ ms.locfileid: "66115788"
 >
 >
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 ## <a name="architecture"></a>体系结构
 
@@ -53,7 +53,7 @@ ms.locfileid: "66115788"
 6. （可选）在本地 VPN 设备上配置防火墙/筛选器。
 7. 通过 ExpressRoute 线路测试和验证 IPsec 通信。
 
-## <a name="peering"></a>1.配置 Microsoft 对等互连
+## <a name="peering"></a>1. 配置 Microsoft 对等互连
 
 若要通过 ExpressRoute 配置站点到站点的 VPN 连接，必须利用 ExpressRoute Microsoft 对等互连。
 
@@ -61,19 +61,19 @@ ms.locfileid: "66115788"
 
 * 如果已有 ExpressRoute 线路，但未配置 Microsoft 对等互连，请查看[创建和修改 ExpressRoute 线路的对等互连](expressroute-howto-routing-arm.md#msft)一文，配置 Microsoft 对等互连。
 
-配置线路和 Microsoft 对等互连后，即可在 Azure 门户的“概述”页面中轻松查看  。
+配置线路和 Microsoft 对等互连后，即可在 Azure 门户的“概述”页面中轻松查看。
 
 ![线路](./media/site-to-site-vpn-over-microsoft-peering/ExpressRouteCkt.png)
 
-## <a name="routefilter"></a>2.配置路由筛选器
+## <a name="routefilter"></a>2. 配置路由筛选器
 
-使用路由筛选器可标识要通过 ExpressRoute 线路的 Microsoft 对等互连使用的服务。 它实质上是所有 BGP 社区值的允许列表。 
+使用路由筛选器可标识要通过 ExpressRoute 线路的 Microsoft 对等互连使用的服务。 它实质上是所有 BGP 团体值的允许列表。 
 
 ![路由筛选器](./media/site-to-site-vpn-over-microsoft-peering/route-filter.png)
 
-在此示例中，部署仅位于 Azure 美国西部 2 区域  。 添加路由筛选器规则，仅允许 Azure 美国西部 2 区域前缀的播发，其 BGP 社区值为 12076:51026  。 可选择“管理规则”来指定要允许的区域前缀  。
+在此示例中，部署仅位于 Azure 美国西部 2 区域。 添加路由筛选器规则，仅允许 Azure 美国西部 2 区域前缀的播发，其 BGP 社区值为 12076:51026。 可选择“管理规则”来指定要允许的区域前缀。
 
-在路由筛选器中，还需选择路由筛选器适用的 ExpressRoute 线路。 可通过选择“添加线路”来选择 ExpressRoute 线路  。 在上图中，路由筛选器与示例 ExpressRoute 线路相关联。
+在路由筛选器中，还需选择路由筛选器适用的 ExpressRoute 线路。 可通过选择“添加线路”来选择 ExpressRoute 线路。 在上图中，路由筛选器与示例 ExpressRoute 线路相关联。
 
 ### <a name="configfilter"></a>2.1 配置路由筛选器
 
@@ -91,7 +91,7 @@ ms.locfileid: "66115788"
 show ip bgp vpnv4 vrf 10 summary
 ```
 
-以下部分输出显示了 68 个前缀已从邻域收到\*.243.229.34 通过 ASN 12076 (MSEE):
+下面的部分输出显示68前缀已从邻居 \*的243.229.34 与 ASN 12076 （MSEE）一起接收：
 
 ```
 ...
@@ -112,7 +112,7 @@ sh ip bgp vpnv4 vrf 10 neighbors X.243.229.34 received-routes
 Get-AzBgpServiceCommunity
 ```
 
-## <a name="vpngateway"></a>3.配置 VPN 网关和 IPsec 隧道
+## <a name="vpngateway"></a>3. 配置 VPN 网关和 IPsec 隧道
 
 本节将在 Azure VPN 网关和本地 VPN 设备间创建 IPsec VPN 隧道。 这些示例使用 Cisco 云服务路由器 (CSR1000) VPN 设备。
 
@@ -141,9 +141,9 @@ Get-AzBgpServiceCommunity
 
 在此示例中，变量声明对应于示例网络。 声明变量时，请修改此部分以反映你的环境。
 
-* 变量 localAddressPrefix 是本地 IP 地址的数组，用于终止 IPsec 隧道  。
-* gatewaySku 决定 VPN 吞吐量  。 有关 gatewaySku 和 vpnType 的详细信息，请参阅 [VPN 网关配置设置](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku)。 有关定价问题，请参阅 [VPN 网关定价](https://azure.microsoft.com/pricing/details/vpn-gateway)。
-* 将 vpnType 设置为 RouteBased   。
+* 变量 localAddressPrefix 是本地 IP 地址的数组，用于终止 IPsec 隧道。
+* gatewaySku 决定 VPN 吞吐量。 有关 gatewaySku 和 vpnType 的详细信息，请参阅 [VPN 网关配置设置](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku)。 有关定价问题，请参阅 [VPN 网关定价](https://azure.microsoft.com/pricing/details/vpn-gateway)。
+* 将 vpnType 设置为 RouteBased。
 
 ```json
 "variables": {
@@ -239,7 +239,7 @@ Get-AzBgpServiceCommunity
 
 ### <a name="termination"></a>3.4 指定本地 VPN 隧道终端（本地网关）
 
-本地 VPN 设备被称为本地网关  。 以下 json 片段还指定了远程 BGP 对等节点的详细信息：
+本地 VPN 设备被称为本地网关。 以下 json 片段还指定了远程 BGP 对等节点的详细信息：
 
 ```json
 {
@@ -266,8 +266,8 @@ Get-AzBgpServiceCommunity
 
 模板的这一部分使用主动/主动配置所需的设置来配置 VPN 网关。 请注意以下几个要求：
 
-* 使用“RouteBased”VpnType 创建 VPN 网关  。 若要启用 VPN 网关与本地 VPN 间的 BGP 路由，则此设置是必需的。
-* 为了在主动/主动模式下，在 VPN 网关的两个实例和给定在本地设备间建立 VPN 隧道，需将资源管理器模板中的“activeActive”参数设置为 true   。 要详细了解高可用 VPN 网关，请参阅[高可用 VPN 网关连接](../vpn-gateway/vpn-gateway-highlyavailable.md)。
+* 使用“RouteBased”VpnType 创建 VPN 网关。 若要启用 VPN 网关与本地 VPN 间的 BGP 路由，则此设置是必需的。
+* 为了在主动/主动模式下，在 VPN 网关的两个实例和给定在本地设备间建立 VPN 隧道，需将资源管理器模板中的“activeActive”参数设置为 true。 要详细了解高可用 VPN 网关，请参阅[高可用 VPN 网关连接](../vpn-gateway/vpn-gateway-highlyavailable.md)。
 * 要在 VPN 隧道间配置 eBGP 会话，则必须在两端指定两个不同的 ASN。 最好指定专用 ASN 号码。 有关详细信息，请参阅[BGP 和 Azure VPN 网关概述](../vpn-gateway/vpn-gateway-bgp-overview.md)。
 
 ```json
@@ -354,7 +354,7 @@ Get-AzBgpServiceCommunity
   }
 ```
 
-## <a name="device"></a>4.配置本地 VPN 设备
+## <a name="device"></a>4. 配置本地 VPN 设备
 
 Azure VPN 网关与许多来自不同供应商的 VPN 设备兼容。 要了解配置信息和经验证可与 VPN 网关配合使用的设备，请参阅[关于 VPN 设备](../vpn-gateway/vpn-gateway-about-vpn-devices.md)。
 
@@ -363,7 +363,7 @@ Azure VPN 网关与许多来自不同供应商的 VPN 设备兼容。 要了解�
 * 共享密钥。 此共享密钥就是在创建站点到站点 VPN 连接时指定的共享密钥。 该示例使用基本的共享密钥。 建议生成更复杂的可用密钥。
 * VPN 网关的公共 IP 地址。 可以通过 Azure 门户、PowerShell 或 CLI 查看公共 IP 地址。 要使用 Azure 门户查找 VPN 网关的公共 IP 地址，请导航到“虚拟网关”，并单击网关的名称。
 
-通常，eBGP 对等节点会直接连接（通常是通过 WAN 连接）。 但在通过 ExpressRoute Microsoft 对等互连在 IPsec VPN 隧道上配置 eBGP 时，eBGP 对等节点间存在多个路由域。 使用 ebgp-multihop 命令在两个非直接连接的对等节点间建立 eBGP 邻域关系  。 ebgp-multihop 命令后的整数指定 BGP 数据包中的 TTL 值。 maximum-paths eibgp 2 命令在两条 BGP 路径间启用流量负载均衡  。
+通常，eBGP 对等节点会直接连接（通常是通过 WAN 连接）。 但在通过 ExpressRoute Microsoft 对等互连在 IPsec VPN 隧道上配置 eBGP 时，eBGP 对等节点间存在多个路由域。 使用 ebgp-multihop 命令在两个非直接连接的对等节点间建立 eBGP 邻域关系。 ebgp-multihop 命令后的整数指定 BGP 数据包中的 TTL 值。 maximum-paths eibgp 2 命令在两条 BGP 路径间启用流量负载均衡。
 
 ### <a name="cisco1"></a>Cisco CSR1000 示例
 
@@ -475,11 +475,11 @@ ip route 10.2.0.229 255.255.255.255 Tunnel1
 !
 ```
 
-## <a name="firewalls"></a>5.配置 VPN 设备筛选和防火墙（可选）
+## <a name="firewalls"></a>5. 配置 VPN 设备筛选和防火墙（可选）
 
 根据需求配置防火墙和筛选。
 
-## <a name="testipsec"></a>6.测试并验证 IPsec 隧道
+## <a name="testipsec"></a>6. 测试和验证 IPsec 隧道
 
 可使用 Powershell 命令在 Azure VPN 网关上验证 IPsec 隧道的状态：
 

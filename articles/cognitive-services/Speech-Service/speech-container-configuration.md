@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: 15739b735b67e29ed07521d31857f1b176447487
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4e09a476398134d92b4492c68ed4ebebc468f272
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491061"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796180"
 ---
 # <a name="configure-speech-service-containers"></a>配置语音服务容器
 
@@ -50,9 +50,9 @@ ms.locfileid: "73491061"
 
 * Azure 门户：**语音**概述，标记 `Endpoint`
 
-|需要| 名称 | 数据类型 | 说明 |
+|必选| 名称 | 数据类型 | 说明 |
 |--|------|-----------|-------------|
-|是| `Billing` | String | 计费终结点 URI。 有关计费 URI 的详细信息，请参阅[收集所需的参数](speech-container-howto.md#gathering-required-parameters)。 |
+|是| `Billing` | String | 计费终结点 URI。 有关获取计费 URI 的详细信息，请参阅[收集所需的参数](speech-container-howto.md#gathering-required-parameters)。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../cognitive-services-custom-subdomains.md)。 |
 
 ## <a name="eula-setting"></a>Eula 设置
 

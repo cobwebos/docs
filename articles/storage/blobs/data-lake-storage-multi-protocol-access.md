@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f3e852d178a6720f8d567f4ecb042f0b83bcd56c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: f782c5abe611086baae5d2ad71bc38516039a231
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583146"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796060"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Azure Data Lake Storage 上的多协议访问
 
@@ -79,7 +79,7 @@ Data Lake Storage 上的多协议访问使你能够将更多 Blob 存储功能�
 |[Azure 流分析](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal)|正式发布|
 |[IoT 中心](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|正式发布|
 |[逻辑应用](https://azure.microsoft.com/services/logic-apps/)|正式发布|
-|[Azure 搜索](https://docs.microsoft.com/azure/search/search-blob-storage-integration)|预览|
+|[Azure 认知搜索](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|预览|
 
 有关 Data Lake Storage Gen2 的 Azure 生态系统支持的完整列表，请参阅将[Azure Data Lake Storage 与 Azure 服务集成](data-lake-storage-integrate-with-azure-services.md)。
 

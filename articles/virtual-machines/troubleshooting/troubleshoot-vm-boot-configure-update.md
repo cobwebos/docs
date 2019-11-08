@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: 4263afe33caa4d6471848c8e7dbf9bc1eeec4bee
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: da45e24898bc3b5aead250077af69a61bdb33bab
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332534"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749642"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM 启动时停滞，并在 Azure 中显示“正在准备 Windows。 请不要关闭计算机”
 
 本文介绍了在 Microsoft Azure 中启动 Windows 虚拟机（VM）时可能会遇到的 "准备就绪" 和 "获取 Windows 就绪" 屏幕。 本文提供用于收集支持票证数据的步骤。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="symptoms"></a>症状
 
@@ -52,7 +52,7 @@ Windows VM 无法启动。 使用**启动诊断**获取 VM 的屏幕截图时，
 ### <a name="locate-dump-file-and-submit-a-support-ticket"></a>找到转储文件并提交支持票证
 
 1. 在恢复 VM 上，转到附加的 OS 磁盘中的 Windows 文件夹。 如果分配给附加 OS 磁盘的驱动器号为 F，则需转到 F:\Windows。
-2. 找到内存 dmp 文件，然后使用转储文件[提交支持票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 
+2. 找到 memory.dmp 文件，然后使用该转储文件[提交支持票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 
 
 如果找不到转储文件，请转到下一步以启用转储日志和串行控制台。
 
@@ -100,7 +100,7 @@ Windows VM 无法启动。 使用**启动诊断**获取 VM 的屏幕截图时，
 3. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 4. 启动 VM 并访问串行控制台。
 5. 选择 "**发送不可屏蔽中断（NMI）** " 以触发内存转储。
-    @no__t 0the 的映像，以了解在何处发送不可屏蔽中断 @ no__t-1
+    ![映像发送不可屏蔽中断的位置](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)
 6. 再次将 OS 磁盘附加到恢复 VM，收集转储文件。
 
 ## <a name="contact-microsoft-support"></a>请与 Microsoft 支持部门联系

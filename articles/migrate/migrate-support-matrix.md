@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: raynew
-ms.openlocfilehash: 90b1250009e6efdb2f8cb9351fe270c8324cc77a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: e752d52d0f792d39f417031c26d923fce07ccdf8
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715483"
+ms.locfileid: "73747982"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate 支持矩阵
 
@@ -51,7 +51,7 @@ Azure Migrate 服务器迁移 | 不可用 | 迁移[VMware vm](tutorial-migrate-v
 [Corent Technology](https://go.microsoft.com/fwlink/?linkid=2084928) | 评估和迁移 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 |  迁移 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。
 [设备 42](https://go.microsoft.com/fwlink/?linkid=2097158) | 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。| 不可用
 [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | 评估本地 SQL Server 数据库。 | 不可用
-[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | 迁移 SQL Server、Oracle、MySQL、PostgreSQL、MongoDB。 | 不可用
+[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | 不可用 | 迁移 SQL Server、Oracle、MySQL、PostgreSQL、MongoDB。 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | 评估虚拟桌面基础结构（VDI） | 不可用
 [Movere](https://go.microsoft.com/fwlink/?linkid=2109528) | 评估 VMWare Vm、Hyper-v Vm、Xen Vm、物理计算机、工作站（包括 VDI）、公有云工作负荷 | 不可用
 [RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | 不可用 | 迁移 VMWare Vm、Hyper-v Vm、Xen Vm、KVM Vm、物理计算机、公有云工作负荷 

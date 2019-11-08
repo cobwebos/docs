@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 80809afc9f2a8e8da2f6adecfe916141c4cd3e45
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 8a2a704f39aa678be819a7297b30f8926e414e56
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278341"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748446"
 ---
 # <a name="service-bus-faq"></a>服务总线常见问题解答
 
@@ -33,7 +33,7 @@ ms.locfileid: "68278341"
 [服务总线队列](service-bus-queues-topics-subscriptions.md)是用于存储消息的实体。 有多个应用程序，或者有多个需要彼此通信的分布式应用程序部分时，队列特别有用。 队列和发行中心的相似之处在于，两者都会接收多个产品（消息），再从该处送出。
 
 ### <a name="what-are-azure-service-bus-topics-and-subscriptions"></a>什么是 Azure 服务总线主题和订阅？
-主题可被视为队列，使用多个订阅时，它将成为更丰富的消息传送模型；实质上是一种一对多的通信工具。 此发布/订阅模型（或 pub/sub  ）启用了一个应用程序，该应用程序将消息发送到具有多个订阅的主题中，进而使多个应用程序接收到该消息。
+主题可被视为队列，使用多个订阅时，它将成为更丰富的消息传送模型；实质上是一种一对多的通信工具。 此发布/订阅模型（或 pub/sub）启用了一个应用程序，该应用程序将消息发送到具有多个订阅的主题中，进而使多个应用程序接收到该消息。
 
 ### <a name="what-is-a-partitioned-entity"></a>什么是分区实体？
 传统的队列或主题由单个消息中转站进行处理并存储在一个消息存储中。 仅在基本和标准消息传递层中受支持，[分区队列或主题](service-bus-partitioning.md)由多个消息中转站处理，并存储在多个消息传送存储中。 此功能意味着分区的队列或主题的总吞吐量不再受到单个消息中转站或消息存储的性能限制。 此外，消息传送存储的临时中断不会导致分区的队列或主题不可用。
@@ -51,7 +51,7 @@ ms.locfileid: "68278341"
 
 请查看下表，了解需要打开哪些出站端口，以便使用这些协议与 Azure 事件中心通信。 
 
-| Protocol | 端口 | 详细信息 | 
+| 协议 | 端口 | 详细信息 | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 和 5672 | 请参阅 [AMQP 协议指南](service-bus-amqp-protocol-guide.md) | 
 | SBMP | 9350 到 9354 | 请参阅[连接模式](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
@@ -74,7 +74,7 @@ ms.locfileid: "68278341"
     ```
     nslookup <yournamespace>.servicebus.windows.net
     ```
-2. 记下“非权威回答”  部分中的名称，该名称采用下述格式之一： 
+2. 记下“非权威回答”部分中的名称，该名称采用下述格式之一： 
 
     ```
     <name>-s1.servicebus.windows.net
@@ -112,29 +112,36 @@ ms.locfileid: "68278341"
 ### <a name="does-service-bus-charge-for-storage"></a>服务总线是否对存储收费？
 否，服务总线不对存储收费。 但是，对于每个队列/主题的最大可保留数据量，有配额限制。 请参阅下一个常见问题。
 
+### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>我有一个服务总线标准命名空间。 为什么在资源组 "$system" 下看不到收费？
+Azure 服务总线最近升级了计费组件。 出于此原因，如果你有一个 Service Bus 标准命名空间，则可能会在资源组中看到资源 "/subscriptions/< azure_subscription_id >/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system" 的行项系统 '。
+
+这些费用表示预配了服务总线标准命名空间的每个 Azure 订阅的基本费用。 
+
+务必要注意的是，这些不是新费用，也就是说，它们也存在于以前的计费模型中。 唯一的更改是它们现在列在 "$system" 下。 这是由于在 "$system" 资源 id 下，在新的计费系统中对订阅级别收费进行分组，而不是与特定资源相关联的约束。
+
 ## <a name="quotas"></a>配额
 
-有关服务总线限制和配额的列表, 请参阅[服务总线配额概述][Quotas overview]。
+有关服务总线限制和配额的列表，请参阅[服务总线配额概述][Quotas overview]。
 
 ### <a name="does-service-bus-have-any-usage-quotas"></a>服务总线是否有任何使用率配额？
 默认情况下，对于任何云服务，Microsoft 设置聚合的每月使用配额，通过对所有的客户订阅计算得到。 如果你需要更多配额，可以随时联系客户服务，以便了解你的需求并相应地调整这些限制。 对于服务总线，总用量配额是每月 50 亿条消息。
 
 虽然 Microsoft 保留禁用在给定月份超过使用配额的客户帐户的权利，但仍然会在采取任何措施前发送电子邮件通知，并多次尝试与客户联系。 超过这些配额的客户仍需负责超出配额的费用。
 
-至于 Azure 上的其他服务，服务总线会强制使用一组特定配额，以确保资源的公平使用。 你可以在[服务总线配额概述][Quotas overview]中找到有关这些配额的更多详细信息。
+至于 Azure 上的其他服务，服务总线会强制使用一组特定配额，以确保资源的公平使用。 可以在[服务总线配额概述][Quotas overview]中找到有关这些配额的更多详细信息。
 
 ### <a name="how-to-handle-messages-of-size--1-mb"></a>如何处理大小 > 1 MB 的消息？
 服务总线消息服务（队列和主题/订阅）允许应用程序发送大小不超过 256 KB（标准层）或 1 MB（高级层）的消息。 若要处理大小超过 1 MB 的消息，请使用[此博客文章](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)中所述的声明检查模式。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>为什么在从其他订阅中删除命名空间后无法创建该命名空间？ 
 从订阅中删除命名空间时，请等待 4 个小时，然后才能在另一个订阅中使用相同的名称重新创建它。 否则，可能会收到以下错误消息：`Namespace already exists`。 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Azure 服务总线 API 生成了哪些异常？建议采取什么操作？
-有关可能的服务总线异常的列表, 请参阅[异常概述][Exceptions overview]。
+有关可能的服务总线异常的列表，请参阅[异常概述][Exceptions overview]。
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>什么是共享访问签名？哪些语言支持生成签名？
-共享访问签名是基于 SHA-256 安全哈希或 URI 的身份验证机制。 有关如何在 node.js、PHP、Java、Python 和C#中生成自己的签名的信息, 请参阅[共享访问签名][Shared Access Signatures]一文。
+共享访问签名是基于 SHA-256 安全哈希或 URI 的身份验证机制。 有关如何在 node.js、PHP、Java、Python 和C#中生成自己的签名的信息，请参阅[共享访问签名][Shared Access Signatures]一文。
 
 ## <a name="subscription-and-namespace-management"></a>订阅和命名空间管理
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>如何将命名空间迁移到另一个 Azure 订阅中？
