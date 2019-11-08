@@ -1,5 +1,5 @@
 ---
-title: 配置 ExpressRoute 和站点到站点 VPN 连接 - 并存：PowerShell：Azure | Microsoft Docs
+title: 配置 ExpressRoute 和站点到站点 VPN 连接-共存： PowerShell： Azure |Microsoft Docs
 description: 使用 PowerShell 为资源管理器模型配置可共存的 ExpressRoute 连接和站点到站点 VPN 连接。
 services: expressroute
 author: charwen
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: fdd267937db589156aa5eddc7608323b143266de
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 8a89c5121d5010245ce16cade921bb96346fcbf5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508844"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748316"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>使用 PowerShell 配置 ExpressRoute 和站点到站点共存连接
 > [!div class="op_single_selector"]
-> * [PowerShell - 资源管理器](expressroute-howto-coexist-resource-manager.md)
+> * [PowerShell - Resource Manager](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell - 经典](expressroute-howto-coexist-classic.md)
 > 
 > 
@@ -64,11 +64,11 @@ ms.locfileid: "67508844"
 > 
 
 ## <a name="selecting-the-steps-to-use"></a>选择要使用的步骤
-有两组不同的过程可供选择。 选择的配置过程取决于是要连接到现有虚拟网络，还是要创建新的虚拟网络。
+有两组不同的过程可供选择。 选择的配置过程将取决于有要连接到的现有虚拟网络，还是要创建新的虚拟网络。
 
 * 我没有 VNet，需要创建一个。
   
-    如果没有虚拟网络，此过程将指导你使用 Resource Manager 部署模型创建新的虚拟网络，然后创建新的 ExpressRoute 和站点到站点 VPN 连接。 若要配置虚拟网络，请遵循[创建新的虚拟网络和并存连接](#new)中的步骤。
+    如果还没有虚拟网络，此过程指导使用 Resource Manager 部署模型创建新的虚拟网络，然后创建新的 ExpressRoute 和站点到站点 VPN 连接。 若要配置虚拟网络，请遵循[创建新的虚拟网络和并存连接](#new)中的步骤。
 * 我已有一个 Resource Manager 部署模型 VNet。
   
     可能已在具有现有站点到站点 VPN 连接或 ExpressRoute 连接的位置拥有虚拟网络。 在此场景下，如果网关子网掩码为 /28 或更小（/28、/29、等等），则必须删除现有网关。 [为现有的 VNet 配置并存连接](#add) 部分指导删除网关，然后创建新的 ExpressRoute 连接和站点到站点 VPN 连接。
@@ -77,7 +77,7 @@ ms.locfileid: "67508844"
 
 ## <a name="before-you-begin"></a>开始之前
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [working with cloud shell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
@@ -216,7 +216,7 @@ ms.locfileid: "67508844"
    ```azurepowershell-interactive
    $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
-4. 此时，已有不带网关的虚拟网络。 若要创建新的网关，并将连接设置，请使用下面的示例：
+4. 此时，已有不带网关的虚拟网络。 若要创建新网关并设置连接，请使用以下示例：
 
    设置变量。
 

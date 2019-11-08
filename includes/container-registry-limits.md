@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 05/14/2019
+ms.date: 11/05/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: ee8ff3529524a63ca2e54a64327570197f363538
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: bc4ac68cb415a43ac34d36afc2adc30307e6d37c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67173314"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795268"
 ---
 | 资源 | 基本 | 标准 | 高级 |
 |---|---|---|---|
@@ -25,7 +25,13 @@ ms.locfileid: "67173314"
 | 上传带宽 (MBps)<sup>2</sup> | 10 | 20 | 50 |
 | Webhook | 2 | 10 | 100 |
 | 异地复制 | 不适用 | 不适用 | [支持][geo-replication] |
-| 内容信任 | 不可用 | 不适用 | [支持][content-trust] |
+| 内容信任 | 不适用 | 不适用 | [支持][content-trust] |
+| 虚拟网络访问 | 不适用 | 不适用 | [预览][vnet] |
+| 存储库范围内的权限 | 不适用 | 不适用 | [预览][token]|
+| &bull; 标记 | 不适用 | 不适用 | 20,000 |
+| &bull; 作用域映射 | 不适用 | 不适用 | 20,000 |
+| 每个作用域映射的 &bull; 存储库 | 不适用 | 不适用 | 500 |
+
 
 <sup>1</sup> 指定的存储上限是每层包含的存储量。 对于超出这些限制的图像存储，将每日针对每 GiB 进行额外收费。 有关速率信息，请参阅[Azure 容器注册表定价][pricing]。
 
@@ -41,3 +47,5 @@ ms.locfileid: "67173314"
 <!-- LINKS - Internal -->
 [geo-replication]: ../articles/container-registry/container-registry-geo-replication.md
 [content-trust]: ../articles/container-registry/container-registry-content-trust.md
+[vnet]: ../articles/container-registry/container-registry-vnet.md
+[token]: ../articles/container-registry/container-registry-repository-scoped-permissions.md

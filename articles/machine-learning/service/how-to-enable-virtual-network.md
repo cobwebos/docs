@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/25/2019
-ms.openlocfilehash: 2559a3cbd786c737b316a860e9c75434c6c719a4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e5dee838df2a60bf2038f2c7d2b1cc5958354d29
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576576"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796769"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中保护 Azure ML 试验和推理作业
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,7 @@ Azure 机器学习依赖于其他 Azure 服务计算资源。 计算资源（或
     - 在 "__虚拟网络__" 下，选择 "__添加现有虚拟网络__" 链接。 此操作将添加计算所在的虚拟网络（请参阅步骤1）。
 
         > [!IMPORTANT]
-        > 存储帐户必须与用于定型或推理的笔记本 Vm 或群集位于同一虚拟网络中。
+        > 存储帐户必须与用于定型或推理的群集位于同一虚拟网络中。
 
     - 选中 "__允许受信任的 Microsoft 服务访问此存储帐户__" 复选框。
 
@@ -108,7 +108,7 @@ Azure 机器学习使用与工作区关联的密钥保管库实例来存储以�
 
 ## <a name="use-a-machine-learning-compute"></a>使用机器学习计算
 
-若要在虚拟网络中使用 Azure 机器学习笔记本 VM 或计算群集，必须满足以下网络要求：
+若要在虚拟网络中使用 Azure 机器学习计算群集，必须满足以下网络要求：
 
 > [!div class="checklist"]
 > * 虚拟网络必须位于与 Azure 机器学习工作区相同的订阅和区域中。
@@ -246,27 +246,6 @@ except ComputeTargetException:
 
 <a id="vmorhdi"></a>
 
-### <a name="create-a-compute-instance-in-a-virtual-network"></a>在虚拟网络中创建计算实例
-
-在虚拟网络中创建 Azure 机器学习计算实例。 若要创建计算实例，请执行以下操作：
-
-1. 在工作区工作室中，选择左窗格中的 "**计算**"。
-
-1. 在 "计算实例" 选项卡上，选择 "**新建**" 以开始创建新的计算实例。
-
-1. 设置 "计算名称" 和 "虚拟机大小" 字段，并启用/禁用 SSH 访问。
-
-1. 若要将此计算实例配置为使用虚拟网络，请执行以下操作：
-
-    a. 选择 " **高级设置**"。
-
-    b. 在 " **资源组** " 下拉列表中，选择包含虚拟网络的资源组。
-
-    c. 在 " **虚拟网络** " 下拉列表中，选择包含子网的虚拟网络。
-
-    d. 在 " **子网** " 下拉列表中，选择要使用的子网。
-
-1. 选择 "**创建**"，在虚拟网络中设置计算实例。
 
 ## <a name="use-a-virtual-machine-or-hdinsight-cluster"></a>使用虚拟机或 HDInsight 群集
 

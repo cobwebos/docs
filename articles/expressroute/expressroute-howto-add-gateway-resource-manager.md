@@ -1,5 +1,5 @@
 ---
-title: 向 ExpressRoute 的 VNet 添加虚拟网络网关：PowerShell：Azure | Microsoft Docs
+title: 将虚拟网络网关添加到 ExpressRoute 的 VNet：PowerShell：Azure | Microsoft Docs
 description: 本文指导你将 VNet 网关添加到已为 ExpressRoute 创建的资源管理器 VNet 中。
 services: expressroute
 author: charwen
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/21/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 6ab701adcc2122270c607604f222ac5edbceeb37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bbb091addd078a08a075d2754256ed016d8dd086
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730518"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748340"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>使用 PowerShell 配置 ExpressRoute 的虚拟网络网关
 > [!div class="op_single_selector"]
@@ -30,9 +30,9 @@ ms.locfileid: "66730518"
 
 ### <a name="working-with-powershell"></a>使用 PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-[!INCLUDE [working with cloud shell](../../includes/expressroute-cloud-shell-powershell-about.md)]
+[!INCLUDE [working with cloud shell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
 ### <a name="configuration-reference-list"></a>配置参考列表
 

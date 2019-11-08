@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: b7d2e1b08653cb8023ef6a5190ab53ecc3d568a6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: de394a98f78b0bdb7cdf090de5c052cc761aa92d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951505"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748617"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序
 
@@ -25,16 +25,16 @@ ms.locfileid: "72951505"
 - 准备设备并将其连接到 IoT Central 应用程序。
 - 查看 IoT Central 中设备的遥测和属性。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文中的步骤，需要以下资源：
 
-1. [DevKit 设备](https://aka.ms/iot-devkit-purchase)。
-1. 从**预览应用程序**模板创建的 IoT Central 应用程序。 可以按照[创建 IoT 即插即用应用程序](./quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)中的步骤进行操作。
+- [DevKit 设备](https://aka.ms/iot-devkit-purchase)。
+- 从**预览应用程序**模板创建的 IoT Central 应用程序。 可以按照[创建 IoT 即插即用应用程序](./quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)中的步骤进行操作。
 
 ## <a name="get-device-connection-details"></a>获取设备连接详细信息
 
-在 Azure IoT Central 应用程序中，选择 "**管理**" 选项卡，然后选择 "**设备连接**"。 记下 " **ID 范围**" 和 "**主密钥**"。
+在 Azure IoT Central 应用程序中，选择 "**管理**" 选项卡，然后选择 "**设备连接**"。 记下 "**作用域 ID** **" 和 "主密钥"** （在 "**查看密钥**" 链接中）。 确保启用**自动批准**。
 
 ![设备组连接详细信息](media/howto-connect-devkit-pnp/device-group-connection-details.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "72951505"
 
     - WiFi 网络（SSID）的名称。
     - WiFi 网络密码。
-    - 连接详细信息：你可以自行选择的**设备 ID** ，以及你之前记下的**ID 范围**和**组 SAS 主密钥**。
+    - 连接详细信息：你可以自行选择的**设备 id** ，以及你之前记下的**作用域 ID**和**组 SAS 主密钥**。
 
     > [!NOTE]
     > 目前，IoT DevKit 只能连接到 2.4 GHz Wi-fi，因为硬件限制，不支持 5 GHz。
@@ -76,17 +76,17 @@ ms.locfileid: "72951505"
 
 DevKit 首先在 IoT Central 应用程序中注册新设备，然后开始发送数据。
 
-## <a name="view-the-telemetry"></a>查看遥测
+## <a name="view-the-telemetry"></a>查看遥测数据
 
 在此步骤中，你将在 Azure IoT Central 应用程序中查看遥测数据。
 
 在 IoT Central 应用程序中，选择 "**设备**" 选项卡，选择已添加的设备。 在 "**概述**" 选项卡中，可以看到来自 DevKit 设备的遥测数据：
 
-   ![IoT Central 设备概述](media/howto-connect-devkit-pnp/mxchip-overview-page.png)
+![IoT Central 设备概述](media/howto-connect-devkit-pnp/mxchip-overview-page.png)
 
 ## <a name="review-the-code"></a>查看代码
 
-若要查看代码或修改并编译代码，请参阅[代码示例](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/)。
+若要查看代码或修改并编译代码，请参阅[MXChip IoT DevKit 示例代码 GitHub 存储库](https://github.com/MXCHIP/IoTDevKit/tree/master/pnp)。
 
 ## <a name="next-steps"></a>后续步骤
 
