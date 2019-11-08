@@ -3,6 +3,7 @@ title: 在 Azure IoT Central 中导出数据并可视化见解 | Microsoft Docs
 description: 在本教程中，了解如何从 IoT Central 导出数据并在 Power BI 仪表板中可视化见解。
 services: iot-central
 ms.service: iot-central
+ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.custom:
 - iot-storeAnalytics-checkout
@@ -10,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 10/22/2019
-ms.openlocfilehash: 913a87df47121c18fcd4f83aa8d5a24b4041ce19
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cf1c6e926b2406d960762a9d597b28a17f6c316
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495118"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615287"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>教程：从 Azure IoT Central 导出数据，并在 Power BI 中可视化见解
 
@@ -128,7 +129,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
 1. 在工作区页上，选择“创建”>“流数据集”  。
 1. 在“新建流数据集”  页上，选择“API”  ，然后选择“下一步”  "。
 1. 对于“数据集名称”  ，输入“Occupancy sensor”  。
-1. 在下表中输入五个“流中的值”** **：
+1. 在下表中输入五个“流中的值”  ：
 
     | 值名称     | 值类型 |
     | -------------- | ---------- |
@@ -383,7 +384,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
     * 选择“时间戳”  字段，然后从“动态内容”  列表中选择“x-opt-enqueuedtime”  。
     * 选择“湿度”  字段，然后选择“分析遥测”  旁边的“查看更多”  。 然后选择“湿度”  。
     * 选择“温度”  字段，然后选择“分析遥测”  旁边的“查看更多”  。 然后选择“温度”  。
-    * 选择“保存”  以保存更改。 “Zone 1 environment”** **操作如以下屏幕截图所示：![Zone 1 environment](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-1-action.png)
+    * 选择“保存”  以保存更改。 **Zone 1 environment**操作如以下屏幕截图所示：![Zone 1 environment](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-1-action.png)
 1. 选择“Zone 2 environment”  操作，然后选择“添加操作”  。
 1. 在“搜索连接器和操作”  中，输入“Power BI”  ，然后按 Enter  。
 1. 选择“向数据集添加行(预览)”  操作。
@@ -395,7 +396,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
     * 选择“时间戳”  字段，然后从“动态内容”  列表中选择“x-opt-enqueuedtime”  。
     * 选择“湿度”  字段，然后选择“分析遥测”  旁边的“查看更多”  。 然后选择“湿度”  。
     * 选择“温度”  字段，然后选择“分析遥测”  旁边的“查看更多”  。 然后选择“温度”  。
-    选择“保存”  以保存更改。  “Zone 2 environment”** **操作如以下屏幕截图所示：![Zone 2 environment](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-2-action.png)
+    选择“保存”  以保存更改。  **Zone 2 environment**操作如以下屏幕截图所示：![Zone 2 environment](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-2-action.png)
 1. 选择“占用”  操作，然后选择“按接口 ID 切换”  操作。
 1. 选择“停留时间接口”  操作，然后选择“添加操作”  。
 1. 在“搜索连接器和操作”  中，输入“Power BI”  ，然后按 Enter  。
@@ -408,7 +409,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
     * 选择“时间戳”  字段，然后从“动态内容”  列表中选择“x-opt-enqueuedtime”  。
     * 选择“停留时间 1”  字段，然后选择“分析遥测”  旁边的“查看更多”  。 然后选择“DwellTime1”  。
     * 选择“停留时间 2”  字段，然后选择“分析遥测”  旁边的“查看更多”  。 然后选择“DwellTime2”  。
-    * 选择“保存”  以保存更改。 “停留时间接口”** **操作如以下屏幕截图所示：![占用操作](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-1.png)
+    * 选择“保存”  以保存更改。 **停留时间接口**操作如以下屏幕截图所示：![占用操作](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-1.png)
 1. 选择“人数接口”  操作，然后选择“添加操作”  。
 1. 在“搜索连接器和操作”  中，输入“Power BI”  ，然后按 Enter  。
 1. 选择“向数据集添加行(预览)”  操作。
@@ -420,7 +421,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
     * 选择“时间戳”  字段，然后从“动态内容”  列表中选择“x-opt-enqueuedtime”  。
     * 选择“队列长度 1”  字段，然后选择“分析遥测”  旁边的“查看更多”  。 然后，选择“count1”  。
     * 选择“队列长度 2”  字段，然后选择“分析遥测”  旁边的“查看更多”  。 然后，选择“count2”  。
-    * 选择“保存”  以保存更改。 “人数接口”  操作如以下屏幕截图所示：![占用操作](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-2.png)
+    * 选择“保存”  以保存更改。 **人数接口**操作如以下屏幕截图所示：![占用操作](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-2.png)
 
 逻辑应用会自动运行。 若要查看每个运行的状态，请导航到 Azure 门户中逻辑应用的“概述”  页：
 

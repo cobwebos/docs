@@ -1,7 +1,7 @@
 ---
 title: 教程 2：训练信用风险模型
-titleSuffix: Azure Machine Learning Studio
-description: 本详细教程介绍如何创建预测分析解决方案，用于在 Azure 机器学习工作室中进行信用风险评估。 本教程是由三个部分构成的系列教程的第二部分， 其中介绍了如何训练和评估模型。
+titleSuffix: ML Studio (classic) Azure
+description: 本详细教程介绍如何创建预测分析解决方案，用于在经典版 Azure 机器学习工作室中进行信用风险评估。 本教程是由三个部分构成的系列教程的第二部分， 其中介绍了如何训练和评估模型。
 keywords: 信用风险, 预测分析解决方案, 风险评估
 author: sdgilley
 ms.author: sgilley
@@ -10,24 +10,24 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 45407e183c70fe67e6bd59e3fd86a50a31844c47
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 375fdf9b64afcce2d521008d353949e650f9df5e
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453471"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622079"
 ---
-# <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio"></a>教程 2：训练信用风险模型 - Azure 机器学习工作室
+# <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>教程 2：训练信用风险模型 - Azure 机器学习工作室（经典版）
 
-在本教程中，我们将深入探讨开发预测分析解决方案的过程。 我们将在机器学习工作室中开发一个简单模型。  然后将该模型部署为 Azure 机器学习 Web 服务。  部署的模型将使用新数据进行预测。 本教程是**由三个部分构成的系列教程的第二部分**。
+在本教程中，我们将深入探讨开发预测分析解决方案的过程。 将在机器学习工作室（经典版）中开发一个简单模型。  然后将该模型部署为 Azure 机器学习 Web 服务。  部署的模型将使用新数据进行预测。 本教程是**由三个部分构成的系列教程的第二部分**。
 
 假设用户需要根据他们提供的贷款申请相关信息预测个人的信用风险。  
 
-信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 我们将使用它作为示例，展示如何使用 Microsoft Azure 机器学习工作室来创建预测分析解决方案。 对此解决方案，我们将使用 Azure 机器学习工作室和机器学习 Web 服务。  
+信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 我们将使用它作为示例，展示如何使用 Microsoft Azure 机器学习工作室（经典版）来创建预测分析解决方案。 对此解决方案，我们将使用经典版 Azure 机器学习工作室和机器学习 Web 服务。  
 
 在这篇由三个部分构成的教程中，我们将从公开的信用风险数据着手。  然后开发并训练预测模型。  最后将该模型部署为 Web 服务。
 
-在[本教程的第一部分](tutorial-part1-credit-risk.md)中，我们已创建了一个机器学习工作室工作区、上传了数据，并创建了试验。
+在[本教程的第一部分](tutorial-part1-credit-risk.md)中，已创建了一个机器学习工作室（经典版）工作区、上传了数据，并创建了试验。
 
 本教程部分介绍以下操作：
  
@@ -38,27 +38,24 @@ ms.locfileid: "56453471"
 
 在[本教程的第三部分](tutorial-part3-credit-risk-deploy.md)，我们要将此模型部署为 Web 服务。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
-
 ## <a name="prerequisites"></a>先决条件
 
 完成[本教程的第一部分](tutorial-part1-credit-risk.md)。
 
 ## <a name="train"></a>训练多个模型
 
-使用 Azure 机器学习工作室创建机器学习模型的优势之一是，能够在单个实验中一次性尝试多种模型并比较结果。 此类型的实验有助于找到最适合解决问题的解决方案。
+使用经典版 Azure 机器学习工作室创建机器学习模型的优势之一是，能够在单个实验中一次性尝试多种模型并比较结果。 此类型的实验有助于找到最适合解决问题的解决方案。
 
 在本教程开发的试验中，你将创建两个不同类型的模型，然后比较其评分结果，从而确定我们希望用于最终试验的算法。  
 
-可从多种模型中进行选择。 要查看可用的模型，请在模块调色板中展开“机器学习”  节点，并展开“初始化模型”  及其下面的节点。 为实现本试验的目的，我们将选择[两类支持向量机][two-class-support-vector-machine] (SVM) 和[两类提升决策树][two-class-boosted-decision-tree]模块。
+可从多种模型中进行选择。 要查看可用的模型，请在模块调色板中展开“机器学习”  节点，并展开“初始化模型”  及其下面的节点。 为实现本试验的目的，将选择[两类支持向量机][two-class-support-vector-machine] (SVM) 和[两类提升决策树][two-class-boosted-decision-tree]模块。
 
 > [!TIP]
-> 要获取有关确定哪种机器学习算法最适合你正尝试解决的特定问题的帮助，请参阅[如何选择 Microsoft Azure 机器学习工作室的算法](algorithm-choice.md)。
+> 要获取有关确定哪种机器学习算法最适合你正尝试解决的特定问题的帮助，请参阅[如何选择 Microsoft Azure 机器学习工作室（经典版）的算法](algorithm-choice.md)。
 > 
 > 
 
-在此试验中，我们将同时添加[两类提升决策树][two-class-boosted-decision-tree]模块和[两类支持向量机][two-class-support-vector-machine]模块。
+在此试验中，将同时添加[两类提升决策树][two-class-boosted-decision-tree]模块和[两类支持向量机][two-class-support-vector-machine]模块。
 
 ### <a name="two-class-boosted-decision-tree"></a>两类提升决策树
 
@@ -66,14 +63,14 @@ ms.locfileid: "56453471"
 
 1. 在模块面板中找到[两类提升决策树][two-class-boosted-decision-tree]模块，并将其拖动到画布上。
 
-1. 找到[训练模型][train-model]模块、将其拖动到画布上，然后将[两类提升决策树][two-class-boosted-decision-tree]的输出连接到[训练模型][train-model]模块的左侧输入端口。
+1. 找到[训练模型][train-model]模块、将其拖动到画布上，然后将[两类提升决策树][two-class-boosted-decision-tree]模块的输出连接到[训练模型][train-model]模块的左侧输入端口。
    
    [两类提升决策树][two-class-boosted-decision-tree]模块初始化泛型模型，[训练模型][train-model]使用训练数据来训练模型。 
 
-1. 将左侧[执行 R 脚本][execute-r-script]模块的左侧输出连接到[训练模型][train-model]模块的右侧输入端口（在本教程中，我们[使用了“拆分数据”模块左侧传出的数据](#train)进行训练）。
+1. 将左侧[执行 R 脚本][execute-r-script]模块的左侧输出连接到[训练模型][train-model]模块的右侧输入端口（在本教程中，使用了“拆分数据”模块[左侧传出的数据](#train)进行训练）。
    
    > [!TIP]
-   > 此试验不需要[执行 R 脚本][execute-r-script]模块的两个输入和一个输出，因此我们将其保留为未附加状态。 
+   > 此试验不需要[执行 R 脚本][execute-r-script]模块的两个输入和一个输出，因此可以将其保留为未附加状态。 
    > 
    > 
 
@@ -81,27 +78,27 @@ ms.locfileid: "56453471"
 
 ![训练模型](./media/tutorial-part2-credit-risk-train/experiment-with-train-model.png)
 
-现在，我们需要告诉[训练模型][train-model]我们希望它预测信用风险值。
+现在，需要告诉[训练模型][train-model]模块我们希望它预测信用风险值。
 
-1. 选择[训练模型][train-model]模块。 在“属性”窗格中，单击“启动列选择器”。  
+1. 选择[训练模型][train-model]模块。 在**属性**窗格中，单击**启动列选择器**。
 
-1. 在“选择单个列”  对话框中，在“可用列”  下的搜索字段中键入“信用风险”，在下方选择“信用风险”，并单击向右箭头按钮 ( **>** ) 将“信用风险”移动到“选定列”  。 
+1. 在**选择单个列**对话框中，在**可用列**下的搜索字段中键入“信用风险”，在下方选择“信用风险”，并单击向右箭头按钮 ( **>** ) 将“信用风险”移动到**选定列**。 
 
     ![选择“训练模型”模块的“信用风险”列](./media/tutorial-part2-credit-risk-train/train-model-select-column.png)
 
-1. 单击“确定”复选标记。 
+1. 单击**确定**复选标记。
 
 ### <a name="two-class-support-vector-machine"></a>两类支持向量机
 
 接下来设置 SVM 模型。  
 
-首先，简要介绍 SVM。 提升决策树非常适用于所有类型的功能。 但是，因为 SVM 模块生成一个线性分类器，因此它生成的模型在所有数值功能具有相同范围时存在最佳测试错误。 若要使所有数值功能转换为同一范围，请使用“Tanh”转换（具有[规范化数据][normalize-data]模块）。 这会将我们的数字转换为 [0,1] 范围。 SVM 模块将字符串功能依次转换为分类功能和二进制 0/1 功能，因此无需手动转换字符串功能。 此外，也不需要转换“信用风险”列（列 21）- 它是数值，但也是我们在训练模型时要预测的值，因此需要使其保持不变。  
+首先，简要介绍 SVM。 提升决策树非常适用于所有类型的功能。 但是，因为 SVM 模块生成一个线性分类器，因此它生成的模型在所有数值功能具有相同范围时存在最佳测试错误。 若要使所有数值功能转换为同一范围，请使用“Tanh”转换（通过[规范化数据][normalize-data]模块）。 这会将我们的数字转换为 [0,1] 范围。 SVM 模块将字符串功能依次转换为分类功能和二进制 0/1 功能，因此无需手动转换字符串功能。 此外，也不需要转换“信用风险”列（列 21）- 它是数值，但也是我们在训练模型时要预测的值，因此需要使其保持不变。  
 
 若要设置 SVM 模型，请执行以下操作：
 
 1. 在模块面板中找到[两类支持向量机][two-class-support-vector-machine]模块，并将其拖动到画布上。
 
-1. 右键单击[训练模型][train-model]模块，选择“复制”  ，并右键单击画布并选择“粘贴”  。 [训练模型][train-model]模块的副本具有与原始模块相同的列选择。
+1. 右键单击[训练模型][train-model]模块，选择“复制”，然后右键单击画布并选择“粘贴”   。 [训练模型][train-model]模块的副本具有与原始模块相同的列选择。
 
 1. 将[两类支持向量机][two-class-support-vector-machine]模块的输出连接到第二个[训练模型][train-model]模块的左侧输入端口。
 
@@ -117,13 +114,13 @@ ms.locfileid: "56453471"
 
 现在，配置[规范化数据][normalize-data]模块：
 
-1. 单击以选择[规范化数据][normalize-data]模块。 在“属性”窗格中，选择“Tanh”作为“转换方法”参数。   
+1. 单击选择[规范化数据][normalize-data]模块。 在“属性”窗格中，选择“Tanh”作为“转换方法”参数。   
 
 1. 单击“启动列选择器”  、为“开始”  选择“没有列”、在第一个下拉列表中选择“包括”  、在第二个下拉列表中选择“列类型”  ，并在第三个下拉列表中选择“数值”  。 这会指定所有数值列（和唯一数值）均已转换。
 
 1. 单击此行右侧的加号 (+)，这会创建一行下拉列表。 在第一个下拉列表中选择“排除”  ，在第二个下拉列表中选择“列名称”  ，并在文本字段中输入“信用风险”。 这会指定应忽略“信用风险”列（我们需要执行此操作，因为此列是数值，因此，如果不排除，也将转换）。
 
-1. 单击“确定”  复选标记。  
+1. 单击**确定**复选标记。  
 
     ![选择用于“规范化数据”模块的列](./media/tutorial-part2-credit-risk-train/normalize-data-select-column.png)
 
@@ -140,7 +137,7 @@ ms.locfileid: "56453471"
 
 1. 将已连接到[两类提升决策树][two-class-boosted-decision-tree]模块的[训练模型][train-model]模块连接到[评分模型][score-model]模块的左侧输入端口。
 
-1. 将右侧[执行 R 脚本][execute-r-script]模块（我们的测试数据）连接到[评分模型][score-model]模块的右侧输入端口。
+1. 将右侧[执行 R 脚本][execute-r-script]模块（测试数据）连接到[评分模型][score-model]模块的右侧输入端口。
 
     ![已连接的“评分模型”模块](./media/tutorial-part2-credit-risk-train/score-model-connected.png)
 
@@ -191,9 +188,9 @@ ms.locfileid: "56453471"
 通过检查这些值，可以确定哪个模型提供的结果与你所需的结果最接近。 可以返回到之前的步骤，通过更改不同模型中的参数值来迭代进行实验。 
 
 对这些结果进行解释以及对模型性能进行优化的科学与艺术不在本教程的范围内。 若要获得更多帮助，可以阅读以下文章：
-- [如何在 Azure 机器学习工作室中评估模型性能](evaluate-model-performance.md)
-- [选择参数优化 Azure 机器学习工作室中的算法](algorithm-parameters-optimize.md)
-- [在 Azure 机器学习工作室中解释模型结果](interpret-model-results.md)
+- [如何在 Azure 机器学习工作室（经典版）中评估模型性能](evaluate-model-performance.md)
+- [选择参数优化 Azure 机器学习工作室（经典版）中的算法](algorithm-parameters-optimize.md)
+- [在 Azure 机器学习工作室（经典版）中解释模型结果](interpret-model-results.md)
 
 > [!TIP]
 > 每次运行实验时，该迭代的记录都会保留在运行历史记录中。 可以通过单击画布下面的“查看运行历史记录”  查看这些迭代，并返回到任何一个迭代。 也可以单击“属性”  窗格中的“之前运行”  ，返回到已打开迭代的前一个迭代。
@@ -201,7 +198,7 @@ ms.locfileid: "56453471"
 > 可通过单击画布下面的“另存为”  ，复制实验的任何迭代。 
 > 使用试验的“摘要”  和“说明”  属性，保留在试验迭代中所尝试操作的记录。
 > 
-> 有关详细信息，请参阅 [在 Azure 机器学习工作室中管理试验迭代](manage-experiment-iterations.md)。  
+> 有关详细信息，请参阅[在 Azure 机器学习工作室（经典版）中管理试验迭代](manage-experiment-iterations.md)。  
 > 
 > 
 
