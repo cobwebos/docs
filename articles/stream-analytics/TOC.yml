@@ -107,6 +107,8 @@
           href: sql-reference-data.md
         - name: 使用托管标识进行身份验证 - Blob 输出
           href: blob-output-managed-identity.md
+        - name: 使用托管标识进行身份验证 - Power BI
+          href: powerbi-output-managed-identity.md
     - name: 构建解决方案
       items:
         - name: Twitter 情绪分析

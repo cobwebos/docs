@@ -247,6 +247,8 @@
                   href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 事件处理
           href: storage-blob-event-overview.md
+        - name: 更改源
+          href: storage-blob-change-feed.md
         - name: 页 Blob 功能
           href: storage-blob-pageblob-overview.md
         - name: 静态网站
@@ -374,6 +376,8 @@
           href: storage-custom-domain-name.md
         - name: 将事件路由到自定义终结点
           href: storage-blob-event-quickstart.md
+        - name: 处理更改源日志
+          href: storage-blob-change-feed-how-to.md
         - name: 使用 Azure 搜索来搜索 Blob 存储
           href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 传输数据
@@ -432,24 +436,24 @@
           href: /cli/azure/storage
         - name: .NET
           items:
-            - name: Blob、队列和文件
-              href: /dotnet/api/overview/azure/storage/client
+            - name: Blob（版本 12.x）
+              href: /dotnet/api/azure.storage.blobs
             - name: 数据移动
               href: /dotnet/api/microsoft.azure.storage.datamovement
             - name: 存储资源提供程序
               href: /dotnet/api/overview/azure/storage/management
         - name: Java
           items:
-            - name: Blob、队列和文件（版本 12.x - 预览版）
-              href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
-            - name: Blob、队列和文件（版本 8）
-              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+            - name: Blob（版本 12.x）
+              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html'
+            - name: Blob（版本 8.x）
+              href: /java/api/com.microsoft.azure.storage.blob
             - name: 存储资源提供程序
               href: /java/api/overview/azure/storage/management
-        - name: Node.js
-          href: /javascript/api/overview/azure/storage
-        - name: Python
-          href: /python/api/overview/azure/storage
+        - name: JavaScript（版本 12.x）
+          href: /javascript/api/@azure/storage-blob/?view=azure-node-preview
+        - name: Python（版本 12.x）
+          href: /python/api/azure-storage-blob/
         - name: REST
           items:
             - name: Blob、队列、表和文件
@@ -737,20 +741,24 @@
           href: /cli/azure/storage
         - name: .NET
           items:
-            - name: Blob、队列、表和文件
-              href: /dotnet/api/overview/azure/storage/client
+            - name: Blob（版本 12.x）
+              href: /dotnet/api/azure.storage.blobs
             - name: 数据移动
               href: /dotnet/api/microsoft.azure.storage.datamovement
-            - name: 资源管理器
+            - name: 存储资源提供程序
               href: /dotnet/api/overview/azure/storage/management
         - name: Java
           items:
-            - name: Blob、队列和文件（版本 12.x - 预览版）
-              href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
-            - name: Blob、队列和文件（版本 8）
-              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+            - name: Blob（版本 12.x）
+              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html'
+            - name: Blob（版本 8.x）
+              href: /java/api/com.microsoft.azure.storage.blob
             - name: 存储资源提供程序
               href: /java/api/overview/azure/storage/management
+        - name: JavaScript（版本 12.x）
+          href: /javascript/api/@azure/storage-blob/?view=azure-node-preview
+        - name: Python（版本 12.x）
+          href: /python/api/azure-storage-blob/
         - name: REST
           items:
             - name: Blob、队列、表和文件
