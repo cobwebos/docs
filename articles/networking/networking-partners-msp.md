@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 83c3c72ad189720b8f0aa554b7804b55f3488b83
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
-ms.translationtype: HT
+ms.openlocfilehash: 3151d72c0e74e7eb694ef2bdd5737f65992fe905
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747952"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824369"
 ---
 # <a name="about-azure-networking-msp-partners"></a>关于 Azure 网络 MSP 合作伙伴
 
@@ -50,7 +50,7 @@ Azure 网络 Msp 是一套专用的托管服务提供商，可解决云和混合
 |[Oncore 云服务]( https://www.oncore.cloud/services/ue-for-expressroute/)|是|是||||
 |[Orixcom]( https://www.orixcom.com/cloud-solutions/)|是|是||||
 |[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)|是|是||||
-|[Tata 通信](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)|是|是||||
+|[Tata 通信](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)|是|是|是|是||
 |[TCTS](https://www.tatacommunications-ts.com/index.php)|是|是|是|||
 |[技术 Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)|是||||是|
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)|是|是|是|||

@@ -1,5 +1,5 @@
 ---
-title: 配置公共终结点-Azure SQL 数据库托管实例
+title: 配置公共终结点托管实例
 description: 了解如何配置托管实例的公共终结点
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: 6f953e4c549619a30564bdb061e98761474174c3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a35176770a3100a288ad3da52cd89870e0110f63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687961"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828033"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>在 Azure SQL 数据库托管实例中配置公共终结点
 
@@ -100,7 +100,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |**目标端口范围**     |3342         |将目标端口的范围限定为 3342，这是托管实例的公共 TDS 终结点 |
     |**协议**     |TCP         |托管实例对 TDS 使用 TCP 协议 |
     |**操作**     |ALLOW         |允许入站流量通过公共终结点传送到托管实例 |
-    |**优先级**     |1300         |请确保此规则的优先级高于 **deny_all_inbound** 规则 |
+    |**Priority**     |1300         |请确保此规则的优先级高于 **deny_all_inbound** 规则 |
 
     ![mi-nsg-rules.png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)
 
@@ -110,7 +110,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>获取托管实例公共终结点的连接字符串
 
 1. 导航到为公共终结点启用的 SQL 托管实例配置页。 选择“设置”配置下的“连接字符串”选项卡。
-1. 请注意，公用终结点主机名的格式 < mi_name >。< > dns_zone，则为连接使用的端口为3342，**则为。**
+1. 请注意，公用终结点主机名的格式 < mi_name >。**public**. < dns_zone >，并且用于连接的端口为3342。
 
     ![mi-public-endpoint-conn-string.png](media/sql-database-managed-instance-public-endpoint-configure/mi-public-endpoint-conn-string.png)
 

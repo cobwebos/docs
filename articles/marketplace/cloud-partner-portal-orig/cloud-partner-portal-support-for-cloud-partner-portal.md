@@ -1,33 +1,34 @@
 ---
-title: 对云合作伙伴门户的支持 |Azure Marketplace
+title: 支持云合作伙伴门户 |Azure Marketplace
 description: 在云合作伙伴门户中获取支持。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pabutler
-ms.openlocfilehash: 35a5a4c4cfdbfa26ea00f0f4d76f91f9f76a1ca5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30fc0ea4a8baba4f0677c9cceb12a7887d205f21
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935373"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827674"
 ---
 # <a name="get-support-for-cloud-partner-portal"></a>获取对云合作伙伴门户的支持
 
 Microsoft 支持各种产品和服务。
 请确保查询找到正确的支持团队，这对确保收到适当即时的回复而言很重要。 请考虑使用以下有助于将查询路由到相应团队的方案：
 
--   如果您是发布服务器，并有来自客户的问题，询问您的客户可以请求支持使用上的支持链接 [Azure 门户](https://portal.azure.com/)
+-   如果你是发布者，并有来自客户的问题，请让你的客户通过 [Azure 门户](https://portal.azure.com/)中的支持链接请求支持
 
 -   如果你是发布者并且对你的应用或服务有疑问，请查看以下步骤以开具支持票证。
 
 ## <a name="to-open-a-support-ticket"></a>开具支持票证
 
-1. 转到 [云合作伙伴门户](https://cloudpartner.azure.com/)和使用工作或学校帐户登录。
+1. 请参阅 [云合作伙伴门户](https://cloudpartner.azure.com/)，并使用工作或学校帐户登录。
 
-2. 在页面右侧的上方菜单中，选择“帮助”  图标，然后选择“支持”  。
+2. 在页面右侧的上方菜单中，选择“帮助”图标，然后选择“支持”。
 
 ![support1](./media/cloud-partner-portal-support-for-cloud-partner-portal/support1.png)
 
@@ -38,13 +39,13 @@ Microsoft 支持各种产品和服务。
 ![support2](./media/cloud-partner-portal-support-for-cloud-partner-portal/support2.png)
 
 
-1. 选择“开始请求”  。
+1. 选择“开始请求”。
 
 1. 提供联系人信息并描述问题。 尽可能完整地描述问题。 提供可能有助于解决问题的任何文件（例如，屏幕截图、错误说明或网络跟踪）。
 
 ![support3](./media/cloud-partner-portal-support-for-cloud-partner-portal/support3.png)
 
-1. 选择“提交”  以创建票证。
+1. 选择“提交”以创建票证。
 
 ### <a name="support-followup"></a>支持跟进
 

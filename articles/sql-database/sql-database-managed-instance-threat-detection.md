@@ -1,5 +1,5 @@
 ---
-title: 配置高级威胁防护-Azure SQL 数据库托管实例
+title: 配置高级威胁防护-托管实例
 description: 高级威胁防护会检测异常的数据库活动，这些活动指示托管实例中存在对数据库的潜在安全威胁。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 8e419031c34a693bac7ab9f9825c24576e80ba14
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 69292a934af8b8777f11ab58ed3fe306abf8b408
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687881"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822549"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-database-managed-instance"></a>在 Azure SQL 数据库托管实例中配置高级威胁防护
 

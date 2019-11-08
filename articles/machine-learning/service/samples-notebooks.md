@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 145ab994bbd2ac2445947968ccdeadbb730eb76a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 16066ceeb7196bb181d144cc9529d6db627ed828
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476104"
+ms.locfileid: "73582521"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>使用 Jupyter Notebook 探索 Azure 机器学习
 
@@ -24,7 +24,7 @@ ms.locfileid: "73476104"
 
 本文介绍如何从以下环境访问该存储库：
 
-- [Azure 机器学习计算实例](#notebookvm)
+- [Azure 机器学习笔记本 VM](#notebookvm)
 - [自带笔记本服务器](#byo)
 - [数据科学虚拟机](#dsvm)
 
@@ -32,7 +32,7 @@ ms.locfileid: "73476104"
 > 克隆此存储库以后，即可在 **tutorials** 文件夹中找到教程笔记本，在 **how-to-use-azureml** 文件夹中找到特定于功能的笔记本。
 
 <a name="notebookvm"></a>
-## <a name="get-samples-on-azure-machine-learning-compute-instance"></a>获取 Azure 机器学习计算实例的示例
+## <a name="get-samples-on-azure-machine-learning-notebook-vm"></a>获取 Azure 机器学习笔记本 VM 上的示例
 
 若要开始使用示例，最简单的方法是完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。 完成后，你就有了一个预先装载了 SDK 和示例存储库的专用笔记本服务器。 不需下载，也不需安装。
 

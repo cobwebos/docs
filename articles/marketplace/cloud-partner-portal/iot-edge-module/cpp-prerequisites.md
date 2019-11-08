@@ -1,22 +1,23 @@
 ---
-title: Azure IoT Edge 模块先决条件 |Azure Marketplace
+title: Azure IoT Edge 模块必备组件 |Azure Marketplace
 description: 发布 IoT Edge 模块的先决条件。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: a5d1d6fdaf07f8b27820021d4d2ac45ec67c9915
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 610f9bc8d87ac75e2868e247fe1332574480b498
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942114"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813863"
 ---
 # <a name="iot-edge-module-publishing-prerequisites"></a>IoT Edge 模块发布先决条件
 
-本文介绍了发布新 IoT Edge 模块产品/服务的先决条件。  如果尚未这样做，请查看[IoT Edge 模块发布指南](../..//iot-edge-module.md)。
+本文介绍了发布新 IoT Edge 模块产品/服务的先决条件。  如果尚未执行此操作，请查看[IoT Edge 模块发布指南](../..//iot-edge-module.md)。
 
 
 ## <a name="publishing-prerequisites"></a>发布先决条件
@@ -39,4 +40,4 @@ ms.locfileid: "64942114"
 
 ## <a name="next-steps"></a>后续步骤
 
-一旦您有[准备好在 IoT Edge 模块技术资产](./cpp-create-technical-assets.md)，将已准备好[创建 IoT Edge 模块产品/服务](./cpp-create-offer.md)。 
+[准备好 IoT Edge 模块技术资产](./cpp-create-technical-assets.md)后，便可以[创建 IoT Edge 模块产品](./cpp-create-offer.md)。 

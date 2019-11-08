@@ -1,5 +1,5 @@
 ---
-title: 发现 Azure SQL 数据库托管实例内置防火墙
+title: 发现托管实例内置防火墙
 description: 了解如何验证 Azure SQL 数据库托管实例中的内置防火墙保护。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: 912eeb95895597b9172d50463f380dd511fe196c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 555ef56aafa37a1e1d384f945b04f9237adc5f7d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73688025"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821799"
 ---
 # <a name="verifying-the-managed-instance-built-in-firewall"></a>验证托管实例内置防火墙
 

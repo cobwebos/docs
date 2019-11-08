@@ -1,22 +1,22 @@
 ---
-title: 在使用 Azure SQL 数据库的多租户应用中预配新租户
+title: 在多租户应用中预配新租户
 description: 了解如何在 Azure SQL 数据库多租户 SaaS 应用中预配和编录新租户
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: f0f1ebd8b2ef719a9556b6b20f6685d1da493263
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cd5b45093be6d7cc8745013f18c897251f89f454
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692110"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822193"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>了解如何预配新租户并将其注册到目录中
 

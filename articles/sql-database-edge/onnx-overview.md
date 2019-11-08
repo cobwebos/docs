@@ -9,56 +9,52 @@ ms.topic: conceptual
 author: ronychatterjee
 ms.author: achatter
 ms.reviewer: davidph
-ms.date: 11/04/2019
-ms.openlocfilehash: 4771db21a0ea5e841dbe12c8ce915b3833a8a30d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 11/07/2019
+ms.openlocfilehash: 976c849f9cb48e1c197f70d10e911216a6a7425c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692325"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822850"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-database-edge-preview"></a>在 SQL 数据库边缘预览中通过 ONNX 进行机器学习和 AI
 
 Azure SQL 数据库边缘预览版中的机器学习支持[开放式神经网络交换（ONNX）](https://onnx.ai/)格式的模型。 ONNX 是一种开放格式，可用于在各种[机器学习框架和工具](https://onnx.ai/supported-tools)之间交换模型。
 
-## <a name="supported-tool-kits"></a>支持的工具包
+## <a name="overview"></a>概述
 
-ONNXMLTools 使你能够将不同机器学习工具工具包中的模型转换为 ONNX 模型。 目前，对于数值数据类型和单列输入，支持以下工具包：
-
-* [scikit-learn](https://github.com/onnx/sklearn-onnx)
-* [Tensorflow](https://github.com/onnx/tensorflow-onnx)
-* [Keras](https://github.com/onnx/keras-onnx)
-* [CoreML](https://github.com/onnx/onnxmltools)
-* [Spark ML （实验）](https://github.com/onnx/onnxmltools/tree/master/onnxmltools/convert/sparkml)
-* [LightGBM](https://github.com/onnx/onnxmltools)
-* [libsvm](https://github.com/onnx/onnxmltools)
-* [XGBoost](https://github.com/onnx/onnxmltools)
+若要在 Azure SQL 数据库边缘推断机器学习模型，首先需要获取模型。 这可以是预先训练的模型，也可以是使用你选择的框架训练的自定义模型。 Azure SQL 数据库边缘支持 ONNX 格式，需要将模型转换为此格式。 应该不会对模型准确性产生任何影响，一旦您具有 ONNX 模型，就可以在 Azure SQL 数据库边缘中部署该模型，并对[预测 t-sql 函数使用本机计分](/sql/advanced-analytics/sql-native-scoring/)。
 
 ## <a name="get-onnx-models"></a>获取 ONNX 模型
 
 可以通过多种方式获取 ONNX 格式的模型：
 
-- [ONNX 模型 Zoo](https://github.com/onnx/models)：包含用于不同类型任务的多个预先训练的 ONNX 模型。 您可以下载和使用 Windows 机器学习支持的版本。
+- [ONNX 模型 Zoo](https://github.com/onnx/models)：包含多个预先训练的 ONNX 模型，适用于可下载并可供使用的不同类型的任务。
 
-- [机器学习定型框架的本机导出](https://onnx.ai/supported-tools)：多个定型框架支持对 ONNX 的本机导出功能，这允许您将定型模型保存到 ONNX 格式的特定版本。 例如，Chainer、Caffee2 和 PyTorch。 此外， [Azure 机器学习服务](https://azure.microsoft.com/services/machine-learning-service/)和[Azure 自定义视觉](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)等服务还提供本机 ONNX 导出。
+- [ML 培训框架的本机导出](https://onnx.ai/supported-tools)：多个定型框架支持 ONNX 的本机导出功能，这使你可以将定型模型保存到 ONNX 格式的特定版本，包括[PyTorch](https://pytorch.org/docs/stable/onnx.html)、Chainer 和 Caffe2。 此外，模型生成服务（例如 Azure 机器学习和[Azure 自定义影像服务](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)[中的自动机器学习功能](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)）提供 ONNX 导出。
 
-  - 若要了解如何使用自定义视觉在云中训练和导出 ONNX 模型，请参阅[教程：通过 WINDOWS ML 使用自定义视觉使用 ONNX 模型（预览版）](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/custom-vision-onnx-windows-ml)。
+- [转换现有模型](https://github.com/onnx/tutorials#converting-to-onnx-format)：对于不支持本机导出的框架，有将模型转换为 ONNX 格式的单独包。 有关示例和教程，请参阅[转换为 ONNX 格式](https://github.com/onnx/tutorials#converting-to-onnx-format)。 
 
-- [使用 WinMLTools 转换现有模型](https://docs.microsoft.com/windows/ai/windows-ml/convert-model-winmltools)：此 Python 包允许将模型从几个定型框架格式转换为 ONNX。 可以指定要将模型转换为哪个版本的 ONNX，具体取决于应用程序面向的 Windows 版本。 如果你不熟悉 Python，则可以使用[基于 Windows 机器学习 UI 的仪表板](https://github.com/Microsoft/Windows-Machine-Learning/tree/master/Tools/WinMLDashboard)来转换模型。
+### <a name="supported-frameworks"></a>支持的框架
 
-> [!IMPORTANT]
-> 并非所有 ONNX 版本都受 Azure SQL 数据库边缘支持。 目前仅支持通过 ONNX 模型预测数值数据类型。
+ONNX 转换器使你能够将来自不同机器学习框架的定型模型转换为 ONNX 格式。 常用转换器包括： 
 
-有了 ONNX 模型之后，可以在 Azure SQL 数据库边缘部署该模型。 然后，可以将[本机计分与预测 t-sql 函数结合](/sql/advanced-analytics/sql-native-scoring/)使用。
+* [PyTorch](http://pytorch.org/docs/master/onnx.html)
+* [Tensorflow](https://github.com/onnx/tensorflow-onnx)
+* [Keras](https://github.com/onnx/keras-onnx)
+* [Scikit-learn](https://github.com/onnx/sklearn-onnx)
+* [CoreML](https://github.com/onnx/onnxmltools)
+
+有关受支持框架的完整列表，请参阅[转换为 ONNX 格式](https://github.com/onnx/tutorials#converting-to-onnx-format)。
 
 ## <a name="limitations"></a>限制
 
-目前，此支持仅限于具有**数值数据类型**的模型：
+目前，Azure SQL 数据库边缘并不支持所有 ONNX 模型。 此支持仅限于具有**数值数据类型**的模型：
 
 - [int 和 bigint](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql5)
 - [real 和 float](https://docs.microsoft.com/sql/t-sql/data-types/float-and-real-transact-sql)。
   
-其他数值类型可以通过使用 CAST 和 CONVERT [cast 和 convert](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)转换为支持的类型。
+可以使用[CAST 和 CONVERT](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)将其他数值类型转换为支持的类型。
 
 应将模型输入结构化，以便模型的每个输入对应于表中的单个列。 例如，如果您使用 pandas 数据帧来定型模型，则每个输入应为该模型的一个单独的列。
 

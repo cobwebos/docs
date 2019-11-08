@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 57eeb9b6ac6eb826e2b371e6ff4dfd71f8cef49c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 371f36e13c244439a583cbeb7ff06c6a1283d272
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258979"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825939"
 ---
 # <a name="guidelines"></a>指南  
 
@@ -29,7 +30,7 @@ ms.locfileid: "66258979"
 
 >[!IMPORTANT]
 >若要授权多个用户访问你的 Microsoft 开发人员中心（简称“开发人员中心”）帐户，Microsoft 建议使用 Azure Active Directory (Azure AD) 向各个用户分配角色。 每个用户必须通过使用其个人 Azure AD 凭据登录来访问该帐户。 使用已注册到公司的域中的电子邮件地址创建 Microsoft ID。Microsoft 建议不要将电子邮件分配给个人。 例如 `windowsapps@fabrikam.com`。  
->*   有关详细信息，请访问[问题：Azure AD 中的 Microsoft ID 联合域](#issue-microsoft-id-in-an-azure-ad-federated-domain)部分。  
+>*   有关详细信息，请访问[问题：Azure AD 联合域中的 Microsoft ID](#issue-microsoft-id-in-an-azure-ad-federated-domain) 部分。  
 
 *   限制只有尽可能最少数量的开发人员可以访问 Microsoft ID。 
 *   设置企业电子邮件通讯组列表 (DL)，并在其中包含必须访问开发人员中心帐户的每个人。 将 DL 电子邮件地址添加到安全信息。 DL 可让列表中的所有员工根据请求接收安全代码，以及管理 Microsoft ID 的安全信息。 如果设置通讯组列表不可行，则个人电子邮件帐户的所有者必须能够根据提示访问和共享安全代码。  
@@ -45,7 +46,7 @@ ms.locfileid: "66258979"
 
 ---
 
-#### <a name="issue-microsoft-id-in-an-azure-ad-federated-domain"></a>问题：在 Azure AD 联合域中 Microsoft ID  
+#### <a name="issue-microsoft-id-in-an-azure-ad-federated-domain"></a>问题：Azure AD 联合域中的 Microsoft ID  
 可以通过 Azure Active Directory (Azure AD) 来联合企业帐户。 如果尝试使用与 Azure AD 联合的企业电子邮件地址创建 Microsoft ID，则收到错误。 如果收到错误，应咨询 IT 团队，确认帐户是否是通过 Azure AD 联合的。 Azure AD 联合电子邮件存在已知的问题，Microsoft 正在努力解决此问题。  
 *   有关 Azure AD 的详细信息，请访问 Azure Active Directory 文档页：[docs.microsoft.com/azure/active-directory](https://docs.microsoft.com/azure/active-directory)。
 
@@ -68,6 +69,6 @@ Microsoft 推荐了一种解决方法。 请遵循这些步骤在 `outlook.com` 
 
 ## <a name="next-steps"></a>后续步骤
 
-*   访问 [Azure 市场和 AppSource 发布者指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)页。 
+*   访问 [Azure 市场和 AppSource 发布者指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)页面。 
  
 ---

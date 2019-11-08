@@ -1,5 +1,5 @@
 ---
-title: 使用 Visual Studio Code 进行机器学习
+title: Visual Studio Code 中的 Azure 机器学习
 titleSuffix: Azure Machine Learning
 description: 了解如何为 Visual Studio Code 安装 Azure 机器学习并在 Azure 机器学习中创建试验。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: jimgries
 author: greazer
 ms.date: 09/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: df23c41629dfe86058f0f2fb6602e85fd5a6d494
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dd85f3a495b90b3a1dc9d3f021d3600496792759
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489297"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824357"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Azure Machine Learning for Visual Studio Code 入门
 
@@ -25,7 +25,7 @@ ms.locfileid: "73489297"
 + 对于培训，它为在本地或远程运行试验提供支持。 对于每个试验，可以记录多个运行的自定义指标来微调超参数
 + 你还可以使用 Azure 机器学习轻松部署机器学习模型，以满足测试和生产需求。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 + 如果还没有 Azure 订阅，请在开始前创建免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 

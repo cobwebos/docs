@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库指标和诊断日志记录
+title: 指标和诊断日志记录
 description: 了解如何在 Azure SQL 数据库中启用诊断以存储有关资源利用率和查询执行统计数据的信息。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: 6c2040a223b7ec33b05ee3c8b3c65bad031aa3c2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d51acaff89c2a8589b6b524c112c11f9c4f18220
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687793"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821775"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录
 
@@ -419,13 +419,13 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="basic-metrics-for-elastic-pools"></a>弹性池的基本指标
 
-|**资源**|**度量值**|
+|**资源**|**指标**|
 |---|---|
 |弹性池|eDTU 百分比、已用 eDTU、eDTU 限制、CPU 百分比、物理数据读取百分比、日志写入百分比、会话百分比、辅助角色百分比、存储、存储百分比、存储限制、XTP存储百分比 |
 
 ### <a name="basic-metrics-for-azure-sql-databases"></a>适用于 Azure SQL 数据库的基本指标
 
-|**资源**|**度量值**|
+|**资源**|**指标**|
 |---|---|
 |Azure SQL 数据库|DTU 百分比、已用 DTU、DTU 限制、CPU 百分比、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比、XTP 存储百分比和死锁 |
 
@@ -442,7 +442,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终是：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL |
-|Category|类别的名称。 始终是：ResourceUsageStats |
+|类别|类别的名称。 始终是：ResourceUsageStats |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终是：MANAGEDINSTANCES |
 |SubscriptionId|数据库的订阅 GUID |
@@ -467,7 +467,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终是：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL |
-|Category|类别的名称。 始终是：QueryStoreRuntimeStatistics |
+|类别|类别的名称。 始终是：QueryStoreRuntimeStatistics |
 |OperationName|操作的名称。 始终是：QueryStoreRuntimeStatisticsEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES |
@@ -518,7 +518,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终是：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL |
-|Category|类别的名称。 始终是：QueryStoreWaitStatistics |
+|类别|类别的名称。 始终是：QueryStoreWaitStatistics |
 |OperationName|操作的名称。 始终是：QueryStoreWaitStatisticsEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES |
@@ -556,7 +556,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终是：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL |
-|Category|类别的名称。 始终是：Errors |
+|类别|类别的名称。 始终是：Errors |
 |OperationName|操作的名称。 始终是：ErrorEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES |
@@ -585,7 +585,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终是：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL |
-|Category|类别的名称。 始终是：DatabaseWaitStatistics |
+|类别|类别的名称。 始终是：DatabaseWaitStatistics |
 |OperationName|操作的名称。 始终是：DatabaseWaitStatisticsEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES |
@@ -614,7 +614,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终是：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL |
-|Category|类别的名称。 始终是：Timeouts |
+|类别|类别的名称。 始终是：Timeouts |
 |OperationName|操作的名称。 始终是：TimeoutEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES |
@@ -637,7 +637,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终是：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL |
-|Category|类别的名称。 始终是：Blocks |
+|类别|类别的名称。 始终是：Blocks |
 |OperationName|操作的名称。 始终是：BlockEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES |
@@ -661,7 +661,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC] |记录日志时的时间戳 |
 |类型|始终是：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL |
-|Category|类别的名称。 始终是：Deadlocks |
+|类别|类别的名称。 始终是：Deadlocks |
 |OperationName|操作的名称。 始终是：DeadlockEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES |
@@ -682,7 +682,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终是：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL |
-|Category|类别的名称。 始终是：AutomaticTuning |
+|类别|类别的名称。 始终是：AutomaticTuning |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES |
 |SubscriptionId|数据库的订阅 GUID |

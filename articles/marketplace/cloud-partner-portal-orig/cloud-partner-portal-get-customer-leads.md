@@ -1,18 +1,19 @@
 ---
-title: 配置潜在客户 |Azure Marketplace
+title: 配置客户主管 |Azure Marketplace
 description: 在云合作伙伴门户中配置潜在顾客。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: c3e483a33d986eff767b3529e30208319ad90b23
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 312e172321c25248f1b0801bdbccf71762319989
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64934989"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818814"
 ---
 <a name="get-customer-leads"></a>获取潜在客户
 ==================
@@ -65,7 +66,7 @@ ms.locfileid: "64934989"
 
 潜在顾客源的格式为**源**-**操作** |  **套餐**
 
-**来源**："AzureMarketplace"、"AzurePortal"、"TestDrive"和"AppSource (SPZA)"
+**源**："AzureMarketplace"、"AzurePortal"、"TestDrive" 和 "AppSource (SPZA)"
 
 **操作**：
 - "INS" -- 安装。 当客户购买你的产品时，将在 Azure 市场或 AppSource 中执行此操作。
@@ -76,19 +77,19 @@ ms.locfileid: "64934989"
 
 **套餐**
 
-下面的示例显示分配给发布服务器和特定的产品/服务的唯一标识符： checkpoint.check-点-r77-10sg-byol、 bitnami.openedxcypress 和 docusign.3701c77e-1cfa-4 核 56 91e6 3ed0b622145a。
+下面的示例显示了分配给发布服务器和特定产品/服务的唯一标识符： r77-10sg-byol、bitnami 和 openedxcypress。
 
 
 ### <a name="customer-info"></a>客户信息
 
 以下示例中的字段显示某个潜在顾客包含的客户信息。
-- FirstName:John
-- LastName:Smith
+- 名字：John
+- 姓氏：Smith
 - 电子邮件：jsmith\@microsoft.com
 - 电话：1234567890
-- 国家/地区:美国
+- 国家/地区：美国
 - 公司：Microsoft
-- 标题：CTO
+- 职称：CTO
 
 >[!Note]
 >并非以上示例中的所有数据都始终适用于每个潜在顾客。

@@ -1,5 +1,5 @@
 ---
-title: 配置高级威胁防护-Azure SQL 数据库
+title: 配置高级威胁防护
 description: 高级威胁防护会检测异常的数据库活动，这些活动指示单一数据库或弹性池中存在对数据库的潜在安全威胁。
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 08/05/2019
-ms.openlocfilehash: 8a6d40f37dec3488009a702d52d6437cd345717b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8eb8e4fccc17fe31def671cf6e8edb19d867b244
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686942"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822509"
 ---
 # <a name="azure-sql-database-advanced-threat-protection-for-single-or-pooled-databases"></a>针对单一数据库或共用数据库的 Azure SQL 数据库高级威胁防护
 

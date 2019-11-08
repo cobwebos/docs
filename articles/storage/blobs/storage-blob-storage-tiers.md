@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 5ba2255cfe0d5c4220ec2215ac837649af1ba896
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4593ee875f98e2c9f2f9406f8b9d4146e06a573d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521176"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825449"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob 存储：热、冷、存档访问层
 
@@ -59,7 +59,7 @@ Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性。 使用�
 
 ## <a name="archive-access-tier"></a>存档访问层
 
-存档访问层的存储成本最低。 但与热层和冷层相比，数据检索成本更高。 检索存档层中的数据可能需要花费几个小时。 存档层中的数据必须至少保留 180 天，否则需要支付提前删除费。
+存档访问层的存储成本最低。 但与热层和冷层相比，数据检索成本更高。 检索存档层中的数据可能需要花费几个小时。 数据必须至少在180天内保留在存档层中，否则会提前删除费用。
 
 如果 Blob 位于存档存储中，则 Blob 数据处于脱机状态，不能读取、复制、覆盖或修改。 不能创建存档存储中 Blob 的快照。 但是，Blob 元数据会保持联机和可用状态，因而可列出 Blob 及其属性。 对于存档中的 Blob，仅以下操作有效：GetBlobProperties、GetBlobMetadata、ListBlobs、SetBlobTier 和 DeleteBlob。
 

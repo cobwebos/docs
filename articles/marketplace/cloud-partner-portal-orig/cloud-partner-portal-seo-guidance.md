@@ -4,30 +4,31 @@ description: 提供了有关最大程度地提升搜索引擎优化 (SEO) 的指
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: pabutler
-ms.openlocfilehash: f5b956ed1197e3898c9536bda3a93a41e8ee35c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7115798faadc3209413d22a384433417ec0ddff0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935128"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819587"
 ---
 # <a name="azure-marketplace-seo-guidance"></a>Azure Marketplace SEO 指南
 
-此文章介绍了如何充分利用通过中的搜索功能的产品/服务的可发现性[Azure Marketplace](https://azuremarketplace.microsoft.com)并[AppSource](https://appsource.microsoft.com)。 
+本文介绍如何通过[Azure Marketplace](https://azuremarketplace.microsoft.com)和[AppSource](https://appsource.microsoft.com)中的搜索功能，最大程度地提高产品/服务的可发现性。 
 
 
 ## <a name="general-explanation-of-algorithm"></a>算法的一般说明
 
-Microsoft 商城利用 Azure 搜索进行增强站点的搜索功能。 算法基于词频–逆向文档频率 ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf))。 将使用标准 [Lucene 分析器](https://lucene.apache.org/core/)。
+Microsoft 市场使用 Azure 认知搜索为网站的搜索功能提供支持。 算法基于词频–逆向文档频率 ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf))。 将使用标准 [Lucene 分析器](https://lucene.apache.org/core/)。
 
 通常情况下，所有文本字段、类别和行业都将包括在相关性权重中。 其他应用不常用但你的应用中常用的专业术语在搜索时将产生较高的匹配分数。 因此，使用“VM”这样的术语不会带来多大好处，而使用“Azure搜索”将更加专业。
 下面是要考虑的最相关的字段。
 
  
-|  字段                   | Importance | 指南                                                                                            |
+|  字段                   | 重要性 | 指南                                                                                            |
 |  --------------------    | ----------                   | ---------------                                                                   |
 | 产品名称               |  高      | 与搜索查询完全匹配或接近完全匹配的项将产生较高的排名。                       |
 | 发布者名称           |  高      | 与搜索查询完全匹配或接近完全匹配的项将产生较高的排名。                       |

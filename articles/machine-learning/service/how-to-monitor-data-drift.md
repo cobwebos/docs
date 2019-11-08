@@ -1,7 +1,7 @@
 ---
-title: 在 AKS 部署上检测数据偏移（预览版）
+title: 在 AKS 部署上检测数据偏差
 titleSuffix: Azure Machine Learning
-description: 在 Azure 机器学习中检测 Azure Kubernetes Service 部署的模型的数据偏差。
+description: 在 Azure 机器学习中的 Azure Kubernetes Service 部署模型上检测数据偏移（预览）。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: 24b1c22d9badc58360b0355bb4ef89017db27f06
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
-ms.translationtype: HT
+ms.openlocfilehash: 9ac1c5cb25d6b2ad396c2caed74942988a723a0e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796734"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824254"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>在部署到 Azure Kubernetes Service （AKS）的模型上检测数据偏差（预览）
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -98,7 +98,7 @@ print('Details of Datadrift Object:\n{}'.format(datadrift))
 
 ## <a name="submit-a-datadriftdetector-run"></a>提交 DataDriftDetector 运行
 
-配置 `DataDriftDetector` 对象后，可以在给定日期为模型提交[数据偏移](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-)。 在运行过程中，通过设置 `drift_threshold` 参数启用 DataDriftDetector 警报。 如果[datadrift_coefficient](#metrics)位于给定 `drift_threshold`以上，则发送电子邮件。
+配置 `DataDriftDetector` 对象后，可以在给定日期为模型提交[数据偏移](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-)。 在运行过程中，通过设置 `drift_threshold` 参数启用 DataDriftDetector 警报。 如果[datadrift_coefficient](#metrics)高于给定的 `drift_threshold`，则发送电子邮件。
 
 ```python
 # adhoc run today
@@ -152,7 +152,7 @@ drift_figures = datadrift.show(with_details=True)
 
 ## <a name="schedule-data-drift-scans"></a>计划数据偏移扫描 
 
-启用数据偏移检测时，将按指定的计划频率运行 DataDriftDetector。 如果 datadrift_coefficient 到达给定的 `drift_threshold`，则会随每个计划运行发送一封电子邮件。 
+启用数据偏移检测时，将按指定的计划频率运行 DataDriftDetector。 如果 datadrift_coefficient 达到给定的 `drift_threshold`，则会随每个计划运行发送一封电子邮件。 
 
 ```python
 datadrift.enable_schedule()

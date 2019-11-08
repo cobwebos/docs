@@ -1,5 +1,5 @@
 ---
-title: 弹性数据库工具入门-Azure
+title: 弹性数据库工具入门
 description: 大致介绍 Azure SQL 数据库的弹性数据库工具功能，包括易于使用的示例应用。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 8f5d5bbf6509dd908f94f1500e585913cbb34e41
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b5c323bf3d5ff55c2c30961003e8c456cbe39c82
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690226"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823662"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>弹性数据库工具入门
 
@@ -110,9 +110,9 @@ ms.locfileid: "73690226"
 
 ## <a name="other-elastic-scale-operations"></a>其他弹性缩放操作
 
-* 拆分现有分片：拆分分片的功能由拆分/合并工具提供。 有关详细信息，请参阅[在横向扩展的云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md)。
+* 拆分现有分片：拆分分片的功能由拆分/合并工具提供。 有关详细信息，请参阅[在已扩展的云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md)。
 
-* 合并现有分片：分片合并也是使用拆分/合并工具执行的。 有关详细信息，请参阅[在横向扩展的云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md)。   
+* 合并现有分片：分片合并也是使用拆分/合并工具执行的。 有关详细信息，请参阅[在已扩展的云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md)。   
 
 ## <a name="cost"></a>成本
 

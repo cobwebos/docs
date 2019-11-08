@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库服务器资源限制
+title: 服务器资源限制
 description: 本文概述了使用弹性池的单一数据库和弹性池的 Azure SQL 数据库服务器资源限制。 它还提供了有关在达到或超过这些资源限制时会发生什么情况的信息。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 04/18/2019
-ms.openlocfilehash: b358e69df1df579e91a9098c120c7e6b4e3f2ead
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 907fc89c0d9af01865037f650c407edd97e96645
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687496"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821137"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Azure SQL 数据库服务器的 SQL 数据库资源限制
 

@@ -1,5 +1,5 @@
 ---
-title: 跨多个 Azure SQL 数据库运行报表查询
+title: 跨多个数据库报告查询
 description: 使用分布式查询实现跨租户报告。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewers: billgib,ayolubek
 ms.date: 01/25/2019
-ms.openlocfilehash: f9af2af7893bd908988ee45476ce14a56f9768a9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c863946934df9990c14e49ef1a0a82bbc55b27c6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691889"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822080"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>使用分布式查询实现跨租户报告
 

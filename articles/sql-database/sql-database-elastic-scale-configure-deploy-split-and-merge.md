@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 009fb4be61aad5c700c7520764e9414ed9422721
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e7438674981115599637ac1763a8d24444fd0552
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690313"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823695"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署拆分/合并服务以在分片数据库之间移动数据
 
@@ -42,7 +42,7 @@ ms.locfileid: "73690313"
 ### <a name="split-merge-service-configuration"></a>拆分/合并服务配置
 1. 在下载了拆分/合并程序集的文件夹中，创建 **SplitMergeService.cspkg** 随附的 **ServiceConfiguration.Template.cscfg** 文件的副本，并将其重命名为 **ServiceConfiguration.cscfg**。
 2. 在文本编辑器（如 Visual Studio）中打开 **ServiceConfiguration.cscfg**，它会验证输入内容（例如，证书指纹的格式）。
-3. 新建数据库或选择现有数据库，以将其用作拆分/合并操作的状态数据库并检索该数据库的连接字符串。 
+3. 创建新的数据库或选择现有的数据库，以将其用作拆分/合并操作的状态数据库并检索该数据库的连接字符串。 
    
    > [!IMPORTANT]
    > 目前，状态数据库必须使用拉丁语排序规则 (SQL\_Latin1\_General\_CP1\_CI\_AS)。 有关详细信息，请参阅 [Windows 排序规则名称 (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx)。
@@ -73,7 +73,7 @@ ms.locfileid: "73690313"
     -sv MyCert.pvk MyCert.cer
    ```
 
-将要求提供密码以保护私钥。 输入强密码并进行确认。 之后，系统会提示再次输入该密码。 在完成后单击“是” ，以将证书导入到“受信任的根证书颁发机构”存储中。
+将要求提供密码以保护私钥。 输入强密码并进行确认。 之后，系统会提示再次输入该密码。 在完成后单击“是”，以将证书导入到“受信任的根证书颁发机构”存储中。
 
 ### <a name="create-a-pfx-file"></a>创建 PFX 文件
 从执行 makecert 的相同窗口中执行以下命令；使用用于创建证书的相同密码：
@@ -214,7 +214,7 @@ ms.locfileid: "73690313"
    确保 Azure SQL 服务器已配置为允许从运行这些脚本的计算机的 IP 地址进行访问。 可以在“Azure SQL 服务器”/“配置”/“允许的 IP 地址”下找到此设置。
 3. 执行 SetupSampleSplitMergeEnvironment.ps1 脚本以创建示例环境。
    
-   运行此脚本会擦除分片映射管理器数据库和分片上任何现有的分片映射管理数据结构。 如果要重新初始化分片映射或分片，重新运行脚本可能会很有用。
+   运行此脚本将擦除分片映射管理器数据库和分片上任何现有的分片映射管理数据结构。 如果要重新初始化分片映射或分片，重新运行脚本可能会很有用。
    
    示例命令行：
 
@@ -319,7 +319,7 @@ ms.locfileid: "73690313"
 
 此错误表示 SSL 证书未正确配置。 请按照“与 Web 浏览器连接”部分中的说明进行操作。
 
-如果无法提交请求，可能会看到：
+如果无法提交请求，可能会看到:
 
 ```
 [Exception] System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'dbo.InsertRequest'. 

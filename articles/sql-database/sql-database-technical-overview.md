@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: d22408904ae21bc7512d4ebe8792666227893337
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3932c22ff003a343e4c32aee117a7ddea922fbdb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687020"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820730"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务？
 
@@ -85,7 +85,7 @@ Azure SQL 数据库提供了三个专为不同类型的应用程序设计的服�
 > [!IMPORTANT]
 > 托管实例不支持弹性池。 相反，托管实例是共用托管实例资源的实例数据库的集合。
 
-### <a name="blend-single-databases-with-pooled-databases"></a>将单一数据库与共用数据库混合使用
+### <a name="blend-single-databases-with-pooled-databases"></a>混合使用单一数据库与共用数据库
 
 你可以将单一数据库与弹性池混合，并更改单一数据库和弹性池的服务层以适应你的情况。 你还可以将其他 Azure 服务与 SQL 数据库混合使用，以满足独特的应用程序设计需求，提高成本和资源效率，实现新的业务机会。
 
@@ -217,7 +217,7 @@ SQL 数据库支持在 macOS、Linux 和 Windows 上通过 Python、Java、node.
 
 ### <a name="what-is-the-current-version-of-sql-database"></a>SQL 数据库的当前版本是多少？
 
-SQL 数据库的当前版本是 V12。 版本 V11 已停用。
+SQL 数据库的当前版本是 V12。 V11 版本已停用。
 
 ### <a name="can-i-control-when-patching-downtime-occurs"></a>能否控制修补停机的时间？
 

@@ -4,19 +4,20 @@ description: 弃用的文章，提供了指向电脑文章的链接;"是" 将 Dy
 services: Azure, Marketplace, Cloud Partner Portal
 author: ChJenk
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: pabutler
-ms.openlocfilehash: aad59ab0ebcf545c7b688843bbdb4f8c02040e4a
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 1c4ed269fe4efe55e4218beee8f41cb9cee904e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105098"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819992"
 ---
 # <a name="bring-your-microsoft-dynamics-365-business-central-app-into-microsoft-appsource"></a>将 Microsoft Dynamics 365 Business Central 应用带入 Microsoft AppSource
 
-[云合作伙伴门户](https://cloudpartner.azure.com/)不再支持创建和管理 Dynamics 365 Business Central 产品/服务。 相反, 此功能已移动到 Microsoft[合作伙伴中心门户](https://partner.microsoft.com/)。 有关详细信息，请参阅[创建新的 Dynamics 365 Business Central 产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)。
+[云合作伙伴门户](https://cloudpartner.azure.com/)不再支持创建和管理 Dynamics 365 Business Central 产品/服务。 相反，此功能已移动到 Microsoft[合作伙伴中心门户](https://partner.microsoft.com/)。 有关详细信息，请参阅[创建新的 Dynamics 365 Business Central 产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)。
 
 ## <a name="next-steps"></a>后续步骤
 

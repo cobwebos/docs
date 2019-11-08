@@ -4,24 +4,25 @@ description: Microsoft 商用 marketplace 政策和条款适用于 Microsoft Azu
 services: Azure, Marketplace, AppSource, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/09/2019
 ms.author: v-qiwe
-ms.openlocfilehash: edee3224e32fd853ca2de836f5c4dc0e5e87a100
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 2b63120ae3c9f9a6e7689b68af2f80e94514f6d5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543597"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827912"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>商业应用商店政策和条款
 
 >[!Note]
->"Microsoft 商业应用商店" 表示 Microsoft 拥有或操作的平台, 但命名为, 通过该平台可向客户提供或获取服务。 除非另行指定, 否则商业应用商店包括 Microsoft Azure 市场和 Microsoft AppSource。
+>"Microsoft 商业应用商店" 表示 Microsoft 拥有或操作的平台，但命名为，通过该平台可向客户提供或获取服务。 除非另行指定，否则商业应用商店包括 Microsoft Azure 市场和 Microsoft AppSource。
 
-感谢您对在商业市场上发布产品/服务的兴趣。 我们致力于与你合作来构建丰富的云解决方案源和业务线产品/服务, 这是感到满意的客户, 有助于构建你的业务。
+感谢您对在商业市场上发布产品/服务的兴趣。 我们致力于与你合作来构建丰富的云解决方案源和业务线产品/服务，这是感到满意的客户，有助于构建你的业务。
 
-Marketplace 中的产品/服务必须符合我们的政策和条款。 我们会随时更新这些策略和条款, 以帮助确保良好的客户体验, 并为合作伙伴提供成功的机会。 如果你对我们的政策或条款有反馈, 请在[Azure Marketplace 和 AppSource 论坛](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)中发表意见, 告诉我们。
+Marketplace 中的产品/服务必须符合我们的政策和条款。 我们会随时更新这些策略和条款，以帮助确保良好的客户体验，并为合作伙伴提供成功的机会。 如果你对我们的政策或条款有反馈，请在[Azure Marketplace 和 AppSource 论坛](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)中发表意见，告诉我们。
 
 ## <a name="policies-and-terms"></a>策略和条款
 

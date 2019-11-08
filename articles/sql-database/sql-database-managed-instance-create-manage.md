@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库托管实例的管理 API 参考
+title: 托管实例的管理 API 参考
 description: 了解如何创建和管理 Azure SQL 数据库托管实例。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: bdc17dd11269bafa271f69ec001f8dcad484b7b8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 713217a933c646cc4d04759f5697bbc0312827ce
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73688187"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823405"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Azure SQL 数据库托管实例的托管 API 引用
 

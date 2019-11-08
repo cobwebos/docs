@@ -1,5 +1,5 @@
 ---
-title: 在 Azure SQL 中选择适当的部署选项
+title: 选择正确的部署选项
 description: 了解如何在 Azure SQL 中的 Azure SQL 数据库、SQL 托管实例与 Azure 虚拟机上的 SQL Server 之间选择部署选项。
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/22/2019
-ms.openlocfilehash: 791a4e95048bec8b3c5664bb97760f7c852950e0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e642454807511e8e0bc0b6b6ca7af837e03de2cf
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687690"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821356"
 ---
 # <a name="choose-the-right-deployment-option-in-azure-sql"></a>在 Azure SQL 中选择适当的部署选项
 
@@ -78,7 +78,7 @@ ms.locfileid: "73687690"
 
 ### <a name="cost"></a>成本
 
-无论是现金不足的新公司，或是在预算有限的情况下运作的已成立公司的小组，有限资金经常是决定数据库托管方式的主要考虑因素。 在本部分中，你将了解有关 Azure 中有关以下两个关系数据库选项的计费和许可基础： SQL 数据库和 SQL 虚拟机。 此外，还介绍如何计算应用程序总成本。
+无论是现金不足的新公司，或是在预算有限的情况下运作的已成立公司的小组，有限资金经常是决定数据库托管方式的主要考虑因素。 在本部分中，你将了解有关 Azure 中有关以下两个关系数据库选项的计费和许可基础： SQL 数据库和 SQL 虚拟机。 还将了解如何计算应用程序总成本。
 
 #### <a name="billing-and-licensing-basics"></a>计费和许可基础概念
 

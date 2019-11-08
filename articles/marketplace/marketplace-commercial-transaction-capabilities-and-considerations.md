@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Transact Offer Type
 author: yijenj
 manager: nuno costa
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: f6f409c42c7ffa5639315e71ff565f9c672e227c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 9aa41e63c275737874d57ba016e297a64f3eb124
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279746"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823017"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>商业市场交易功能和注意事项
 
@@ -49,7 +50,7 @@ ms.locfileid: "70279746"
 
 **对于虚拟机和 Azure 应用程序**
 
-对于虚拟机和 Azure 应用程序，将向客户的 Azure 订阅收取 Azure 基础结构使用费。  在客户的发票上，基础结构使用费与软件提供商的许可费分开计价和显示。
+对于虚拟机和 Azure 应用程序，Azure 基础结构使用费用会按客户的 Azure 订阅计费。  基础结构使用费用是定价的，并与该客户的发票上的软件提供商许可费用分开显示。
 
 **对于 SaaS 应用**
 
@@ -57,7 +58,7 @@ ms.locfileid: "70279746"
 
 ## <a name="transact-billing-models"></a>交易计费模式
 
-根据使用的交易选项，发布者的软件许可证费用如下所示：  
+根据所使用的事务选项，发布者的软件许可费用可以按如下方式显示：  
 
 * 免费：不收取软件许可证费用。 
 
@@ -65,7 +66,7 @@ ms.locfileid: "70279746"
 
 * 即用即付：软件许可证费用将根据所用的 Azure 基础结构显示为每小时每个核心 (vCPU) 定价费率。 这仅适用于虚拟机和 Azure 应用程序。
 
-* •订阅定价：软件许可证费用以每月或每年为单位显示，按固定费率或每位客户计费的周期性费用。 这仅适用于 SaaS 应用和 Azure 应用程序 - 托管应用。
+* •订阅定价：软件许可证费用以每月或每年的形式显示，按固定费率或每位客户计费的周期性费用。 这仅适用于 SaaS 应用和 Azure 应用程序托管的应用。
 
 * 免费软件试用版：免费使用软件许可证 30 天或 90 天。
 
@@ -84,7 +85,7 @@ Microsoft 使客户能够订购、许可和使用出版商软件，经受 Micros
 
 对于交易发布方案，发布者可使软件许可证免费提供 30 天或 90 天。 此折扣功能不包括使用合作伙伴解决方案引致的 Azure 基础结构使用费用。
 
-### <a name="private-offers"></a>专属优惠
+### <a name="private-offers"></a>专用产品/服务
 
 除了使用产品/服务类型和计费模型来盈利产品/服务，发布者还可以使用协商、交易特定定价或自定义配置来完成专用产品/服务。 专用产品/服务受全部 3 个交易发布选项的支持。
 
@@ -141,20 +142,20 @@ Microsoft 使客户能够订购、许可和使用出版商软件，经受 Micros
 
 |Microsoft 收费  | 100.00 美元/月  |
 |---------|---------|
-|Microsoft 将许可证费用的 80% 支付给你 <br> \*Microsoft 为任何合格的 SaaS 应用支付 90% 的许可费用   |   80.00 美元/月 <br> \*每月 $90.00    |
-|Microsoft 保留许可证费用的 20% <br> \*Microsoft 为任何合格的 SaaS 应用节省了 10% 的许可费用。  |  20.00 美元/月 <br> \*$10.00     |
+|Microsoft 将许可证费用的 80% 支付给你 <br> \* Microsoft 为任何合格的 SaaS 应用支付90% 的许可费用   |   80.00 美元/月 <br> 每月 \* $90.00    |
+|Microsoft 保留许可证费用的 20% <br> \* Microsoft 将为任何合格的 SaaS 应用保留10% 的许可费用。  |  20.00 美元/月 <br> \* $10.00     |
 
-* **降低 Marketplace 服务费用：** 对于在我们的商业市场上发布的某些 SaaS 产品，Microsoft 将其 Marketplace 服务费用从 20% 降低到 10% （如 Microsoft 发布者协议中所述）。  为了使你的产品符合资格，Microsoft 至少必须将其中一个产品指定为 IP 联销售就绪或 IP 共同销售的优先级。 若要在该月内享受此降低的 Marketplace 服务费用，必须在上一个日历月结束之前至少在5个工作日内满足资格。 降低 Marketplace 服务费用不适用于 Vm、托管应用或通过我们的商业市场提供的任何其他产品。  使用 Microsoft 在5月1日到2019到6月 30 2020 日之间收集的许可费用，此降低了 Marketplace 服务费用。  在此之后，Marketplace 服务费用将恢复为其正常量。
+* **降低 Marketplace 服务费用：** 对于在我们的商业市场上发布的某些 SaaS 产品，Microsoft 将其 Marketplace 服务费用从20% 降低到10% （如 Microsoft 发布者协议中所述）。  为了使你的产品符合资格，Microsoft 至少必须将其中一个产品指定为 IP 联销售就绪或 IP 共同销售的优先级。 若要在该月内享受此降低的 Marketplace 服务费用，必须在上一个日历月结束之前至少在5个工作日内满足资格。 降低 Marketplace 服务费用不适用于 Vm、托管应用或通过我们的商业市场提供的任何其他产品。  使用 Microsoft 在5月1日到2019到6月 30 2020 日之间收集的许可费用，此降低了 Marketplace 服务费用。  在此之后，Marketplace 服务费用将恢复为其正常量。
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>客户开具发票、付款、计费和费用收集
 
 **开具发票与付款**
 
-发布者可以使用客户的首选发票开具方法来递送订阅或 PAYGO 软件许可证费用。
+发布者可以使用客户的首选开票方法交付订阅或 PAYGO 软件许可费。
 
 **企业协议** 
 
-如果客户的首选发票开具方法是 Microsoft 企业协议，将使用此方法以逐项列出费用的形式对软件许可证进行计费，与任何特定于 Azure 的使用费分开。
+如果客户的首选开票方法是 Microsoft 企业协议，则将使用此开票方法对软件许可证费用计费，将其作为一种详细成本，与任何特定于 Azure 的使用成本分开。
 
 **信用卡和每月发票** 
 
@@ -162,13 +163,13 @@ Microsoft 使客户能够订购、许可和使用出版商软件，经受 Micros
 
 例如，如果客户使用信用卡购买：
 
-|描述    |    Date  |
+|说明    |    Date  |
 |----------|----------|
 |订购期   | 2018 年 8 月 15 日 - 2018 年 8 月 30 日 |
 |期限结束（月）   | 2018 年 8 月 30 日 |
 |计费日期 | 2018 年 9 月 1 日 |
 |客户付款日期 | 2018 年 9 月 1 日 |
-|代管期（仅限信用卡，30 天） | 2018 年 9 月 1 日 - 2018 年 9 月 30 日 |
+|代管期（仅限信用卡，30 天） | 9月1日，2018-9 月30日，2018 |
 |费用收集期开始 | 2018 年 9 月 1 日 |
 |费用收集期结束（最大值，30 天） | 2018 年 9 月 30 日 |
 |付款计算日期（每月第 15 天） | 2018 年 10 月 1 日 |
@@ -176,7 +177,7 @@ Microsoft 使客户能够订购、许可和使用出版商软件，经受 Micros
 
 如果客户使用企业协议购买：
 
-| 描述 |    Date  |
+| 说明 |    Date  |
 |----------|----------|
 |订购期 | 2018 年 8 月 15 日 - 2018 年 8 月 30 日 |
 |期限结束（季度） | 2018 年 9 月 30 日 |
@@ -231,7 +232,7 @@ Microsoft 使客户能够订购、许可和使用出版商软件，经受 Micros
 
 **虚拟机** 
 
-从免费、自带许可或即用即付定价模型中选择，并显示为在套餐级别定义的 SKU。 在客户的 Azure 帐单上，Microsoft 将发布者软件许可证费用与隐含的 Azure 基础结构费用分开显示。 Azure 基础结构费用取决于发布者软件使用情况。
+从免费、自带许可或即用即付定价模型中选择，并显示为在套餐级别定义的 SKU。 在客户的 Azure 帐单上，Microsoft 单独从底层 Azure 基础结构费用提供发行者软件许可证费用。 Azure 基础结构费用取决于发布者软件使用情况。
 
 **Azure 应用程序：解决方案模板或托管应用** 
 

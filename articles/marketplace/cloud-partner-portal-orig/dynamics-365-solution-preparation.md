@@ -5,15 +5,16 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricarod.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 919feb39c9cd84f8da0ef89827ad3e83e0eb9bc5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bcb3bb63f305aeb98efda3baf0f6661bd7f67a7c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935256"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824234"
 ---
 # <a name="dynamics-365-solution-preparation"></a>Dynamics 365 解决方案准备
 
@@ -23,7 +24,7 @@ Dynamics 365 解决方案系统是用于打包、安装和卸载提供特定业�
 
 ![CRMScreenShot1](media/CRMScreenShot1.png)
 
-_**注意：** 在下面的包示例中，我们假设解决方案名称为“SampleSolution.zip”_
+注意：在下面的包示例中，我们假设解决方案名称为“SampleSolution.zip”
 
 如果你是新手 ISV，可以在此处获得有关创建解决方案的更多详细信息：[https://msdn.microsoft.com/library/gg334530.aspx](https://msdn.microsoft.com/library/gg334530.aspx)
 

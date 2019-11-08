@@ -1,20 +1,20 @@
 ---
-title: 在 Azure Cosmos DB 中创建笔记本用于分析和可视化数据
-description: 了解如何使用内置的 Jupyter 笔记本将数据导入到 Azure Cosmos DB、分析数据和可视化输出。
+title: 教程：在 Azure Cosmos DB 中创建笔记本用于分析和可视化数据
+description: 教程：了解如何使用内置的 Jupyter 笔记本将数据导入到 Azure Cosmos DB、分析数据和可视化输出。
 author: deborahc
 ms.topic: tutorial
 ms.service: cosmos-db
-ms.date: 09/25/2019
+ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 679887ca6e9ad7713480899d1b40fddf9923c4c0
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 45dd4e8dcfd74cdb5d96b935e239b9f4b5094a7c
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931500"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720927"
 ---
-# <a name="create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>在 Azure Cosmos DB 中创建笔记本用于分析和可视化数据
+# <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>教程：在 Azure Cosmos DB 中创建笔记本用于分析和可视化数据
 
 本文介绍如何使用内置的 Jupyter 笔记本将示例零售数据导入 Azure Cosmos DB。 其中将会讲解如何使用 SQL 和 Azure Cosmos DB magic 命令来运行查询、分析数据和可视化结果。
 

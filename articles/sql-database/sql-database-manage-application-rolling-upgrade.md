@@ -1,5 +1,5 @@
 ---
-title: 滚动应用程序升级-Azure SQL 数据库
+title: 滚动应用程序升级
 description: 了解如何使用 Azure SQL 数据库的异地复制来支持云应用程序的在线升级。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 253a10e75832cf6ee8294405e34fa93b801c1b49
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9c627c3e597fdcd3859ce02ea208fc7a8b5d612b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689498"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822864"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>使用 SQL 数据库活动异地复制管理云应用程序的滚动升级
 
@@ -150,7 +150,7 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关业务连续性概述和应用场景，请参阅 [业务连续性概述](sql-database-business-continuity.md)。
+* 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)。
 * 若要了解 Azure SQL 数据库活动异地复制，请参阅[使用活动异地复制创建可读辅助数据库](sql-database-active-geo-replication.md)。
 * 若要了解 Azure SQL 数据库自动故障转移组，请参阅[使用自动故障转移组实现多个数据库的透明、协调式故障转移](sql-database-auto-failover-group.md)。
 * 若要了解 Azure 应用服务中的过渡环境，请参阅[在 Azure 应用服务中设置过渡环境](../app-service/deploy-staging-slots.md)。

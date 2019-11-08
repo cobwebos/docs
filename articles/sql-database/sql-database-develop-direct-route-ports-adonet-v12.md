@@ -1,5 +1,5 @@
 ---
-title: SQL Database 之外的端口1433
+title: 端口超过1433
 description: 从 ADO.NET 到 Azure SQL 数据库的客户端连接可以绕过代理直接通过 1433 以外的端口与数据库交互。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 04/03/2019
-ms.openlocfilehash: 38ab3b6b0c64ad17311d15fd12e7625e8aa728ce
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c0012b61cf43d01afd5e7f5f52948310b5eb8420
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690685"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828064"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>用于 ADO.NET 4.5 的非 1433 端口
 
@@ -36,7 +36,7 @@ ms.locfileid: "73690685"
 
 ### <a name="inside-client-runs-on-azure"></a>内部：客户端在 Azure 上运行
 
-如果客户端在 Azure 云边界内部运行，则它使用我们所谓的*直接路由*来与 SQL 数据库服务器交互。 建立连接后，客户端与数据库之间的进一步交互不涉及到任何 Azure SQL 数据库网关。
+如果客户端在 Azure 云边界内部运行，则它使用我们所谓的直接路由来与 SQL 数据库服务器交互。 建立连接后，客户端与数据库之间的进一步交互不涉及到任何 Azure SQL 数据库网关。
 
 顺序如下：
 
@@ -72,8 +72,8 @@ ms.locfileid: "73690685"
 
 ## <a name="related-links"></a>相关链接
 
-* ADO.NET 4.6 已于 2015 年 7 月 20 日发布。 可以在 [此处](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-net-framework-4-6.aspx)访问 .NET 团队的博客通告。
-* ADO.NET 4.5 已于 2012 年 8 月 15 日发布。 可以在 [此处](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx)访问 .NET 团队的博客通告。
+* ADO.NET 4.6 已于 2015 年 7 月 20 日发布。 可以在[这里](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-net-framework-4-6.aspx)访问 .NET 团队的博客通告。
+* ADO.NET 4.5 已于 2012 年 8 月 15 日发布。 可以在[这里](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx)访问 .NET 团队的博客通告。
   * 可以在[这里](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-net-framework-4-5-1-preview.aspx)访问有关 ADO.NET 4.5.1 的博客文章。
 
 * Microsoft® ODBC Driver 17 for SQL Server® - Windows、Linux 和 macOS https://www.microsoft.com/download/details.aspx?id=56567
@@ -82,7 +82,7 @@ ms.locfileid: "73690685"
 
 * [TDS 协议版本列表](https://www.freetds.org/userguide/tdshistory.htm)
 * [SQL 数据库开发概述](sql-database-develop-overview.md)
-* [Azure SQL 数据库防火墙](sql-database-firewall-configure.md)
+* [Azure SQL Database firewall](sql-database-firewall-configure.md)（Azure SQL 数据库防火墙）
 * [如何：在 SQL 数据库上配置防火墙设置](sql-database-configure-firewall-settings.md)
 
 

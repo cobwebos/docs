@@ -1,6 +1,6 @@
 ---
 title: 连接的工厂解决方案功能 - Azure | Microsoft Docs
-description: 连接的工厂预配置解决方案的功能概述。
+description: 本文介绍了连接工厂预配置解决方案的功能，如云仪表板、规则和警报。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: 2a11640959a8c7fdd0d238aba92698eb47934969
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c868aa0f1c2449ccf163523c9ded25a31d1d84c4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080451"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820109"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>什么是连接的工厂 IoT 解决方案加速器？
 
@@ -33,7 +33,7 @@ ms.locfileid: "67080451"
 
 ## <a name="remote-management"></a>远程管理
 
-- 从云仪表板配置 OPC UA 资产（调用方法、读写数据）。
+- 从云仪表板配置 OPC UA 资产（调用方法，读取以及写入数据）。
 - 从云仪表板发布和取消发布来自 OPC UA 资产的遥测数据。
 
 ## <a name="cloud-dashboard"></a>云仪表板
@@ -65,4 +65,4 @@ ms.locfileid: "67080451"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关连接工厂解决方案加速器的详细信息，请参阅快速入门[尝试基于云的解决方案来管理我的工业 IoT 设备](quickstart-connected-factory-deploy.md)。
+若要了解有关已连接工厂解决方案加速器的详细信息，请参阅快速入门[尝试使用基于云的解决方案来管理我的工业 IoT 设备](quickstart-connected-factory-deploy.md)。

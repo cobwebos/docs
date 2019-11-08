@@ -4,15 +4,16 @@ description: 说明指定虚拟机套餐定价的三种方法。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: e398b43e679fb6420c2256e77d34359ae537ac1c
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: c7ea5afeb46c30837c2ae53e871bb64f5d8cf292
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868749"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827337"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>虚拟机套餐的定价
 ==================================
@@ -103,10 +104,10 @@ ms.locfileid: "67868749"
 <a name="new-core-sizes-added-on-722019"></a>7/2/2019 上增加了新的核心大小
 ---------------------------
 
-VM 发布者已在2019年7月2日向新的 Azure 虚拟机大小增加了新价格 (基于内核数) 通知。  新价格适用于核心大小10、44、48、60、120、208和416。  对于现有 VM, 将根据当前价格自动计算这些核心大小的新价格。  发布者截至2019年8月1日, 以查看其他价格并进行任何所需的更改。  在此日期之后, 如果发布者尚未重新发布, 则这些新的核心大小的自动计算价格将生效。
+VM 发布者已在2019年7月2日向新的 Azure 虚拟机大小增加了新价格（基于内核数）通知。  新价格适用于核心大小10、44、48、60、120、208和416。  对于现有 VM，将根据当前价格自动计算这些核心大小的新价格。  发布者截至2019年8月1日，以查看其他价格并进行任何所需的更改。  在此日期之后，如果发布者尚未重新发布，则这些新的核心大小的自动计算价格将生效。
 
 
-<a name="regions"></a>Regions
+<a name="regions"></a>区域
 -------
 
 下表显示了可以为自定义核心定价指定的不同区域及其对应的货币代码。
@@ -140,11 +141,11 @@ VM 发布者已在2019年7月2日向新的 Azure 虚拟机大小增加了新价�
 | DE         | 德国              | EUR               |
 | GR         | 希腊               | EUR               |
 | GT         | 危地马拉            | GTQ               |
-| HK         | 香港特别行政区        | HKD               |
+| HK         | 中国香港特别行政区        | HKD               |
 | HU         | 匈牙利              | HUF               |
 | IS         | 冰岛              | ISK               |
 | IN         | 印度                | INR               |
-| id         | 印度尼西亚            | IDR               |
+| ID         | 印度尼西亚            | IDR               |
 | IE         | 爱尔兰              | EUR               |
 | IL         | 以色列               | ILS               |
 | IT         | 意大利                | EUR               |
@@ -190,7 +191,7 @@ VM 发布者已在2019年7月2日向新的 Azure 虚拟机大小增加了新价�
 | LK         | 斯里兰卡            | USD               |
 | SE         | 瑞典               | SEK               |
 | CH         | 瑞士          | CHF               |
-| TW         | 中国台湾               | TWD               |
+| TW         | 台湾               | TWD               |
 | TH         | 泰国             | THB               |
 | TT         | 特立尼达和多巴哥  | TTD               |
 | TN         | 突尼斯              | TND               |

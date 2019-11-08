@@ -1,22 +1,22 @@
 ---
-title: 快速入门：用于 Java SDK v8 的 Azure Blob 存储客户端库
-description: 在对象 (Blob) 存储中创建存储帐户和容器。 随后，使用适用于 Java SDK v8 的 Azure 存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
+title: 快速入门： Azure Blob 存储客户端库 v8 for Java
+description: 在对象 (Blob) 存储中创建存储帐户和容器。 然后，使用 Azure 存储客户端库 v8 for Java 将 blob 上传到 Azure 存储，下载一个 blob，然后列出容器中的 blob。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 10/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 404599ade960d43ef2cb86777fb41701ce96e11b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a6c4380e44d705e551bc96746a809c57aa02ac5b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609120"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825372"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-for-java-sdk-v8"></a>快速入门：用于 Java SDK v8 的 Azure Blob 存储客户端库
+# <a name="quickstart-azure-blob-storage-client-library-v8-for-java"></a>快速入门： Azure Blob 存储客户端库 v8 for Java
 
-适用于 Java 的 Azure Blob 存储客户端库入门。 Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 请按照步骤操作，安装程序包并试用基本任务的示例代码。 Blob 存储最适合存储巨量的非结构化数据。
+适用于 Java 的 Azure Blob 存储客户端库 v8 入门。 Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 请按照步骤操作，安装程序包并试用基本任务的示例代码。 Blob 存储最适合存储巨量的非结构化数据。
 
 使用适用于 Java 的 Azure Blob 存储客户端库完成以下操作：
 

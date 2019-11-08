@@ -1,73 +1,74 @@
 ---
-title: 如何购买在 AppSource 上的软件 |Azure Marketplace
-description: 一个用于购买在 AppSource 上的软件的步骤 |Azure 应用商店。
+title: 如何在 AppSource 上购买软件 |Azure Marketplace
+description: 在 AppSource 上购买软件的步骤Azure Marketplace。
 author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/05/2019
-ms.openlocfilehash: dd68ac502a92b044e958969cc6a2863b5d197416
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3ca07f060aebcea82895f0463cac693c66f0c629
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621667"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827735"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>如何购买 Microsoft AppSource 上的软件
 
-Microsoft [AppSource](https://appsource.microsoft.com/)现在使客户能够订阅由 Microsoft 合作伙伴提供的 SaaS 应用程序。 客户可找到存储区上的已认证的 web 应用程序和可管理费用、 升级、 降级和在一个位置使用 Microsoft 的管理中心取消。 本文介绍如何购买从应用商店应用。
+Microsoft [AppSource](https://appsource.microsoft.com/)现在允许客户订阅由 Microsoft 合作伙伴提供的 SaaS 应用程序。 客户可以在应用商店找到经过认证的 web 应用程序，并且可以使用 Microsoft 管理中心来管理单个位置的费用、升级、降级和取消。 本文介绍如何从应用商店购买应用。
 
 ## <a name="requirements"></a>要求
 
-若要购买 SaaS 产品/服务，需要：
+若要购买 SaaS 产品/服务，你需要：
 
 - 工作或学校帐户。
 
     > [!Note]
-    > 如果没有工作或学校帐户，你需要创建可向其中添加工作或学校帐户的 Azure Active Directory 租户。 要了解详细信息，请参阅[快速入门：在 Azure Active Directory 中创建新租户](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)。
+    > 如果没有工作或学校帐户，则需要创建一个可向其中添加工作或学校帐户的 Azure Active Directory 租户。 若要了解详细信息，请参阅[快速入门：在 Azure Active Directory 中创建新租户](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)。
 
 - 有效的信用卡。
 
     > [!Note]
-    > 信用卡卡需要属于客户在其中购买产品/服务的国家/地区。 若要选择不同的国家/地区，请选择页面底部的"更改帐单邮寄国家/地区"。
+    > 信用卡需要属于客户购买产品/服务的国家/地区。 若要选择其他国家/地区，请选择页面底部的 "更改计费国家/地区"。
 
-## <a name="steps-for-making-purchases-on-appsource"></a>在 AppSource 上购买商品的步骤
+## <a name="steps-for-making-purchases-on-appsource"></a>在 AppSource 上进行购买的步骤
 
-1. 在选择你的计费国家/地区[AppSource](https://appsource.microsoft.com/)。
-1. 查找你想要购买的应用程序。
+1. 选择[AppSource](https://appsource.microsoft.com/)上的帐单/国家/地区。
+1. 查找要购买的应用程序。
 
     > [!Note]
-    > AppSource 提供你的应用程序可供选择，包括免费试用版和付费订阅。 本文介绍如何付费的订阅可通过 AppSource 购买。
+    > AppSource 提供了选择的应用，包括免费、试用和付费订阅。 本文介绍如何通过 AppSource 购买付费订阅。
 
-1. 选择**立即获取**。
-1. 选择的计划：
+1. 选择 "**立即获取**"。
+1. 选择计划：
 
-    1. 设置的座位数
-    1. 设置计费的术语。
+    1. 设置座位数量
+    1. 设置计费术语。
     
 1. 输入你的帐单地址。
-1. 输入你的付款方式：
-    * 支持信用卡的信息：Visa，Master 卡美国运通发现。
+1. 输入付款方式：
+    * 支持信用卡：签证、主卡、美国运通、发现。
     
-1. 选择**订购**。
+1. 选择 "**下订单**"。
 
-## <a name="how-to-configure-software-post-purchase"></a>如何配置软件后购买
+## <a name="how-to-configure-software-post-purchase"></a>如何配置购买后的软件
 
-收到你的订单后，可能需要几秒钟才能得到确认。 你将收到一个链接以配置你的 SaaS 订阅页上，以及确认购买以及用于完成配置的链接的电子邮件。
+收到订单后，可能需要几秒钟时间才能获得确认。 你将收到一个链接，用于在页面上配置 SaaS 订阅，还会收到一封确认购买的电子邮件以及用于完成配置的链接。
 
-1. 上**订单确认**页上，选择**配置**。 或者，可以使用的确认电子邮件发送给你的配置链接。
+1. 在 "**订单确认**" 页上，选择 "**配置**"。 或者，你可以在确认电子邮件中使用发送给你的配置链接。
 1. 完成预配并设置软件提供商的网站。
 
     > [!Note]
-    > 此步骤是必需的可以在任何时间完成。
+    > 此步骤是必需的，可随时完成。
 
 ## <a name="contact-support"></a>联系支持人员
 
-一个可以[提交支持票证](https://admin.microsoft.com/Adminportal/Home?source=applauncher#/homepage)通过 Microsoft 365 管理中心。
+可以通过 Microsoft 365 管理中心[提交支持票证](https://admin.microsoft.com/Adminportal/Home?source=applauncher#/homepage)。
 
-有关业务产品[联系帮助此处](https://docs.microsoft.com/office365/admin/contact-support-for-business-products?view=o365-worldwide&tabs=phone)。
+对于业务产品，请[在此处联系帮助](https://docs.microsoft.com/office365/admin/contact-support-for-business-products?view=o365-worldwide&tabs=phone)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅[商业 Marketplace 文档](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview)有关详细信息。
+- 有关详细信息，请参阅[商业应用商店文档](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview)。
