@@ -58,11 +58,13 @@
       href: tutorial-train-deploy-model-cli.md
 - name: 示例
   items:
-    - name: Notebooks
+    - name: Jupyter 笔记本
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
     - name: Azure 开放数据集
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
+    - name: 端到端 MLOps 示例
+      href: 'https://github.com/microsoft/MLOps'
 - name: 概念
   items:
     - name: 工作区
@@ -109,14 +111,11 @@
               href: how-to-change-storage-access-key.md
         - name: 监视 Azure 机器学习
           href: monitor-azure-machine-learning.md
+        - name: 事件网格集成
+          href: concept-event-grid-integration.md
     - name: 深度学习
       displayName: 'deep learning vs machine learning, deep learning, vs, versus'
       href: concept-deep-learning-vs-machine-learning.md
-    - name: 事件网格集成
-      href: concept-event-grid-integration.md
-    - name: Git 集成
-      displayName: git github gitlab
-      href: concept-train-model-git-integration.md
 - name: 操作指南
   items:
     - name: 创建并管理工作区
@@ -145,6 +144,9 @@
         - name: 使用 VS Code 扩展
           displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
           href: how-to-vscode-tools.md
+        - name: Git 集成
+          displayName: github gitlab
+          href: concept-train-model-git-integration.md
     - name: 处理数据
       items:
         - name: 从数据存储中获取数据
@@ -330,21 +332,17 @@
       href: how-to-use-event-grid.md
 - name: 引用
   items:
-    - name: ML SDK (Python)
+    - name: Python SDK
       displayName: 'api, core, package, python, class'
       href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
-    - name: ML SDK (R)
+    - name: R SDK
       displayName: 'api, core, package, R, class'
       href: 'https://azure.github.io/azureml-sdk-for-r/reference/index.html'
-    - name: 机器学习 CLI
+    - name: CLI
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/azureml/'
-    - name: 监视数据参考
-      href: monitor-resource-reference.md
-    - name: 机器学习管道 YAML 参考
-      href: reference-pipeline-yaml.md
     - name: 设计器模块
       displayName: 'module, reference, algorithm, studio'
       items:
@@ -478,6 +476,12 @@
               href: ../algorithm-module-reference/summarize-data.md
         - name: 错误消息和代码
           href: ../algorithm-module-reference/machine-learning-module-error-codes.md
+    - name: 大规模 ML
+      href: /azure/architecture/data-guide/big-data/machine-learning-at-scale
+    - name: 监视数据参考
+      href: monitor-resource-reference.md
+    - name: 机器学习管道 YAML 参考
+      href: reference-pipeline-yaml.md
 - name: 资源
   items:
     - name: 发行说明

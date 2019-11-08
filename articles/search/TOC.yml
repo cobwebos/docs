@@ -119,7 +119,7 @@
           href: search-security-trimming-for-azure-search.md
         - name: AAD 标识筛选器
           href: search-security-trimming-for-azure-search-with-aad.md
-        - name: 管理加密密钥（预览版）
+        - name: 管理加密密钥
           href: search-security-manage-encryption-keys.md
     - name: 开发
       items:
@@ -253,7 +253,7 @@
           href: cognitive-search-concept-troubleshooting.md
         - name: 文档链接
           href: cognitive-search-resources-documentation.md
-        - name: 知识存储（预览版）
+        - name: 知识存储
           items:
             - name: 使用 REST 和 Postman 创建
               href: knowledge-store-create-rest.md
@@ -277,7 +277,7 @@
           href: query-simple-syntax.md
         - name: 完整 Lucene 查询语法
           href: query-lucene-syntax.md
-        - name: moreLikeThis（预览版）
+        - name: moreLikeThis 查询参数
           href: search-more-like-this.md
     - name: 应用筛选器
       items:
