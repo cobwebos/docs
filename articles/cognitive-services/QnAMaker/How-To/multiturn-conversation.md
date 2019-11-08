@@ -11,20 +11,20 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: dc99626e2341e180ba0ab191003cf3a6ba9b72e9
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 06b16af941004f6506b43fb36b4d79297b403595
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695146"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486928"
 ---
-# <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>使用跟进提示创建多个轮次的对话
+# <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>使用跟进提示创建会话的多个
 
 使用 "后续提示" 和 "上下文" 来管理_机器人，使_机器人从一个问题到另一个问题。
 
 若要查看多轮工作原理，请查看以下演示视频：
 
-[![Multi-在 QnA Maker 中打开会话](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
+[QnA Maker 中的 ![多轮会话](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
 
 ## <a name="what-is-a-multi-turn-conversation"></a>什么是多轮对话？
 
@@ -42,12 +42,10 @@ ms.locfileid: "71695146"
 
 当用户选择某个选项（#3）时，将显示下一组优化选项（#4）。 此顺序将继续（#5），直到用户确定正确的最后答案（#6）。
 
-> [!NOTE]
-> 在上图中，已选择 "**启用多轮**" 复选框，以确保显示提示。 
 
 ### <a name="use-multi-turn-in-a-bot"></a>在机器人中使用多个
 
-若要管理上下文对话，请通过[将代码添加到机器人](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-prompting)来更改客户端应用程序。 添加代码后，用户可以查看提示。  
+发布知识库后，可以选择 "**创建 Bot** " 按钮，将 QnA Maker 机器人部署到 Azure bot 服务。 系统将在你为机器人启用的聊天客户端中显示提示。
 
 ## <a name="create-a-multi-turn-conversation-from-a-documents-structure"></a>从文档的结构创建多轮对话
 
@@ -55,25 +53,25 @@ ms.locfileid: "71695146"
 
 ![启用多轮提取的复选框](../media/conversational-context/enable-multi-turn.png)
 
-当你选择此选项时，可以从文档结构中隐含多轮对话。 如果该结构存在，QnA Maker 将创建将问题和答案对作为导入过程的一部分进行配对的后续提示。 
+如果选择此选项，QnA Maker 将提取文档结构中存在的层次结构。 在中转换层次结构以跟踪提示，并将层次结构的根用作父 QnA。 在某些文档中，层次结构的根不具有可用作答案的内容，你可以提供 "默认答案文本" 作为替代文本来提取此类层次结构。   
 
-只能从 Url、PDF 文件或 .DOCX 文件推断出多个结构。 有关结构的示例，请查看[Microsoft Surface user 手动 PDF 文件](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)的图像。 由于此 PDF 文件的大小，QnA Maker 资源需要**B** （15个索引）或更大的**搜索定价层**。 
+只能从 Url、PDF 文件或 .DOCX 文件推断出多个结构。 有关结构的示例，请查看[Microsoft Surface user 手动 PDF 文件](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)的图像。 
 
 ![![用户手册中的结构示例](../media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
-### <a name="determine-multi-turn-structure-from-format"></a>从格式确定多转换结构
+### <a name="building-your-own-multi-turn-document"></a>构建自己的多文档
 
-QnA Maker 确定以下内容中的多个结构：
+若要创建多个文档，请记住以下准则：
 
-* 标题字体大小-如果使用样式、颜色或其他某些机制来表示文档中的结构，QnA Maker 将不会提取多个提示。 
-
-标题规则包括：
+* 使用标题和子标题来表示层次结构。 例如，可以通过 h1 表示父 QnA 和 h2，以表示应作为 prompt 出现的 QnA。 使用较小的标题尺寸来表示后续层次结构。 不要使用样式、颜色或其他某些机制来表示文档中的结构，QnA Maker 将不会提取多个提示。 
 
 * 不要以问号结束标题，`?`。 
 
-### <a name="add-file-with-multi-turn-prompts"></a>添加具有多个提示的文件
+* 您可以使用[示例文档](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)作为示例来创建自己的多文档。
 
-添加多文档时，QnA Maker 会确定结构中的后续提示以创建对话流。 
+### <a name="adding-files-to-a-multi-turn-kb"></a>将文件添加到多个 KB
+
+添加分层文档时，QnA Maker 会确定结构中的后续提示，以创建对话流。 
 
 1. 在 QnA Maker 中，选择使用 "**从 url、pdf 或 .docx 文件中启用多个提取"** 创建的现有知识库。 能够. 
 1. 请在 "**设置**" 页上，选择要添加的文件或 URL。 
@@ -85,13 +83,13 @@ QnA Maker 确定以下内容中的多个结构：
 
 ## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>通过创建 API 创建包含多个提示的知识库
 
-您可以使用[QnA Maker 创建 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)创建包含多个提示的知识案例。 提示添加到 `context` 属性的 @no__t 的数组中。 
+您可以使用[QnA Maker 创建 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)创建包含多个提示的知识案例。 在 `context` 属性的 `prompts` 数组中添加提示。 
 
 ## <a name="show-questions-and-answers-with-context"></a>用上下文显示问题和答案
 
 将显示的问题和答案对减少到仅具有上下文对话的问题。 
 
-选择 "**查看选项**"，然后选择 "**显示上下文（预览）** "。 列表将显示包含后续提示的问题和答案对。 
+选择 "**查看选项**"，然后选择 "**显示上下文**"。 列表将显示包含后续提示的问题和答案对。 
 
 ![按上下文对话筛选问题和答案对](../media/conversational-context/filter-question-and-answers-by-context.png)
 
@@ -111,9 +109,9 @@ QnA Maker 确定以下内容中的多个结构：
 
 1. 若要将现有的问题和答案对链接为后续提示，请选择问题和答案对对应的行。 对于表面手册，搜索 "**注销**" 以减少列表。
 1. 在**Signout**的行中的 "**答案**" 列中，选择 "**添加后续提示**"。
-1. 在 "**跟进提示（预览）** " 弹出窗口中的字段中，输入以下值：
+1. 在 "**跟进提示符**" 弹出窗口的 "字段" 中，输入以下值：
 
-    |字段|ReplTest1|
+    |字段|值|
     |--|--|
     |显示文本|输入 **"关闭设备"** 。 这是要在后续提示中显示的自定义文本。|
     |仅限上下文| 选中此复选框。 仅当问题指定上下文时，才返回答案。|
@@ -150,7 +148,7 @@ QnA Maker 确定以下内容中的多个结构：
 1. 在此问题的 "**答案**" 列中，选择 "**添加后续提示**"。 
 1. 在 "**后续提示（预览）** " 下，输入以下值创建新的后续提示： 
 
-    |字段|ReplTest1|
+    |字段|值|
     |--|--|
     |显示文本|*创建 Windows 帐户*。 要在跟进提示中显示的自定义文本。|
     |仅限上下文|选中此复选框。 仅当问题指定了上下文时，才返回此答案。|
@@ -186,7 +184,7 @@ QnA Maker 确定以下内容中的多个结构：
 
 ## <a name="a-json-request-to-return-an-initial-answer-and-follow-up-prompts"></a>返回初始答案和跟进提示的 JSON 请求
 
-使用空的 @no__t 0 对象可请求用户的问题的答案，并包括跟进提示。 
+使用空的 `context` 对象可以请求用户的问题的答案，并包括跟进提示。 
 
 ```JSON
 {
@@ -265,7 +263,7 @@ QnA Maker 确定以下内容中的多个结构：
 }
 ```
 
-@No__t-0 数组提供 `displayText` 属性和 `qnaId` 值中的文本。 你可以将这些答案显示为会话流中的下一个显示选项，然后将所选 `qnaId` 发送回以下请求中的 QnA Maker。 
+`prompts` 数组在 `displayText` 属性和 `qnaId` 值中提供文本。 您可以将这些答案显示为会话流中的下一个显示选项，然后将所选 `qnaId` 发送回 QnA Maker 在以下请求中。 
 
 <!--
 
@@ -295,7 +293,7 @@ The `promptsToDelete` array provides the ...
 
 ##  <a name="a-json-response-to-return-a-non-initial-answer-and-follow-up-prompts"></a>返回非初始应答和跟进提示的 JSON 响应
 
-QnA Maker _GenerateAnswer_ JSON 响应包括 `answers` 对象中第一项的 @no__t 属性中的后续提示：
+QnA Maker _GenerateAnswer_ JSON 响应包括 `answers` 对象中第一项的 `context` 属性中的后续提示：
 
 ```JSON
 {
@@ -355,11 +353,8 @@ QnA Maker _GenerateAnswer_ JSON 响应包括 `answers` 对象中第一项的 @no
 
 ## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>查询具有 QnA Maker ID 的知识库
 
-在初始问题的响应中，会返回任何后续提示及其关联 `qnaId`。 使用 ID 后，可以在后续提示的请求正文中传递此 ID。 如果请求正文包含 `qnaId`，并且上下文对象（包含先前的 QnA Maker 属性），则 GenerateAnswer 将按 ID 返回准确的问题，而不是使用排名算法来查找问题文本的答案。 
+如果要使用多项功能构建自定义应用程序。 在初始问题的响应中，会返回任何后续提示及其关联 `qnaId`。 使用 ID 后，可以在后续提示的请求正文中传递此 ID。 如果请求正文包含 `qnaId`和上下文对象（其中包含之前的 QnA Maker 属性），则 GenerateAnswer 将按 ID 返回准确的问题，而不是使用排名算法来通过问题文本查找答案。 
 
-## <a name="display-prompts-and-send-context-in-the-client-application"></a>在客户端应用程序中显示提示并发送上下文 
-
-已在知识库中添加了提示，并在测试窗格中测试了流。 现在，需要在客户端应用程序中使用这些提示。 对于机器人框架，这些提示不会自动显示在客户端应用程序中。 通过在代码中包含此[Bot 框架示例](https://aka.ms/qnamakermultiturnsample)，可以在客户端应用程序中将提示作为建议的操作或按钮显示为对用户查询答案的一部分。 客户端应用程序应存储当前 QnA Maker ID 和用户查询，并将其传递给下一个用户查询的[GENERATEANSWER API 的上下文对象](#a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts)。 
 
 ## <a name="display-order-is-supported-in-the-update-api"></a>更新 API 支持显示顺序
 
@@ -367,7 +362,7 @@ QnA Maker _GenerateAnswer_ JSON 响应包括 `answers` 对象中第一项的 @no
 
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>添加或删除带有更新 API 的多个提示
 
-你可以使用[QnA Maker 更新 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)添加或删除多个提示。  在 `context` 属性的 @no__t 数组和 @no__t 2 数组中添加提示。 
+你可以使用[QnA Maker 更新 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)添加或删除多个提示。  在 `context` 属性的 `promptsToAdd` 数组和 `promptsToDelete` 数组中添加提示。 
 
 ## <a name="export-knowledge-base-for-version-control"></a>用于版本控制的导出知识库
 
