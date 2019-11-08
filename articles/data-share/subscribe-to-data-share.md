@@ -1,25 +1,25 @@
 ---
-title: 教程：接受和接收数据 - Azure Data Share 预览版
-description: 教程 - 使用 Azure Data Share 预览版接受和接收数据
+title: 教程：接受和接收数据 - Azure Data Share
+description: 教程 - 使用 Azure Data Share 接受和接收数据
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 235ef25b2d655c4388dee5bdcf88d179f3373697
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 9c24f54fe846459187488b0a65b2582914e25e2a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327403"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499348"
 ---
-# <a name="tutorial-accept-and-receive-data-using-azure-data-share-preview"></a>教程：使用 Azure Data Share 预览版接受和接收数据
+# <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>教程：使用 Azure Data Share 接受和接收数据  
 
-本教程介绍如何使用 Azure Data Share 预览版接受数据共享邀请。 另外还介绍如何接收共享给你的数据，以及如何启用定期刷新时间间隔，确保共享给你的数据快照始终是最新的。 
+本教程介绍如何使用 Azure Data Share 接受数据共享邀请。 另外还介绍如何接收共享给你的数据，以及如何启用定期刷新时间间隔，确保共享给你的数据快照始终是最新的。 
 
 > [!div class="checklist"]
-> * 如何接受 Azure Data Share 预览版邀请
-> * 创建 Azure Data Share 预览版帐户
+> * 如何接受 Azure Data Share 邀请
+> * 创建 Azure Data Share 帐户
 > * 指定数据目标
 > * 创建按计划刷新的数据共享的订阅
 
@@ -29,13 +29,33 @@ ms.locfileid: "71327403"
 确保在接受数据共享邀请之前已满足所有先决条件。 
 
 * Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
-* 一个 Azure 存储帐户：如果没有，可以创建一个 [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)。 
 * Data Share 邀请：Microsoft Azure 发出的邀请，主题名为“来自 **<yourdataprovider@domain.com>** 的 Azure Data Share 邀请”。
+
+### <a name="receive-data-into-a-storage-account"></a>将数据接收到存储帐户 
+
+* 一个 Azure 存储帐户：如果没有，可以创建一个 [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)。 
 * 向存储帐户添加角色分配的权限，该权限存在于 *Microsoft.Authorization/role assignments/write* 权限中。 所有者角色中存在此权限。 
 * Microsoft.DataShare 的资源提供程序注册。 有关如何执行此操作的信息，请参阅 [Azure 资源提供程序](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)文档。 
 
 > [!IMPORTANT]
-> 若要接受和接收 Azure Data Share，你必须先注册 Microsoft.DataShare 资源提供程序，而且你必须是在其中接受数据的存储帐户的所有者。 按[排查 Azure Data Share 预览版问题](data-share-troubleshoot.md)中记录的说明注册数据共享资源提供程序，并将你自己添加为存储帐户的所有者。 
+> 若要接受和接收 Azure Data Share，你必须先注册 Microsoft.DataShare 资源提供程序，而且你必须是在其中接受数据的存储帐户的所有者。 按[排查 Azure Data Share 问题](data-share-troubleshoot.md)中记录的说明注册数据共享资源提供程序，并将你自己添加为存储帐户的所有者。 
+
+### <a name="receive-data-into-a-sql-based-source"></a>将数据接收到基于 SQL 的源中：
+
+* 数据共享 MSI 用于访问 Azure SQL 数据库或 Azure SQL 数据仓库的权限。 可以通过以下步骤完成此操作： 
+    1. 将自己设置为服务器的 Azure Active Directory 管理员。
+    1. 使用 Azure Active Directory 连接到 Azure SQL 数据库/数据仓库。
+    1. 使用查询编辑器（预览版）执行以下脚本，以将数据共享 MSI 添加为 db_owner。 必须使用 Active Directory 而非 SQL Server 身份验证进行连接。 
+
+```sql
+    create user <share_acct_name> from external provider;     
+    exec sp_addrolemember db_owner, <share_acct_name>; 
+```      
+请注意，<share_acc_name> 是 Data Share 帐户的名称  。 如果尚未创建 Data Share 帐户，则可以稍后返回到该先决条件。         
+
+* 客户端 IP SQL Server 防火墙访问：可以通过以下步骤完成此操作：1. 导航到防火墙和虚拟网络 1  。 单击“打开”切换按钮以允许访问 Azure 服务  。 
+
+完成这些先决条件后，便可以将数据接收到 SQL Server 中。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -82,6 +102,9 @@ ms.locfileid: "71327403"
 ![快照设置](./media/snapshot-settings.png "快照设置") 
 
 选择“保存”。  
+
+> [!IMPORTANT]
+> 如果你正在接收基于 SQL 的数据，并想要将该数据接收到基于 SQL 的源中，请访问[配置数据集映射](how-to-configure-mapping.md)操作指南，以了解如何将 SQL Server 配置为数据集的目标。 
 
 ## <a name="trigger-a-snapshot"></a>触发快照
 

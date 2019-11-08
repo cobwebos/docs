@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9e51249bdcfa3cf506700cd3032b1ca39b773d82
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7c31c04137a8d36adfe41a18cbc276a45483b05b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73102372"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467177"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>使用访问控制策略提供 Key Vault 身份验证
 
@@ -162,7 +162,7 @@ Set-AzKeyVaultAccessPolicy –VaultName <your-key-vault-name> -PermissionsToKeys
 
 可以创建一个 Azure AD 组，将应用程序和用户添加到该组，然后为该组授予对 Key Vault 的访问权限。  这样，就可以将多个应用程序作为单个访问策略条目添加到 Key Vault，而无需为用户授予对 Key Vault 的直接访问权限（我们不建议这样做）。 有关更多详细信息，请参阅[使用 Azure Active Directory 组管理应用和资源访问](../active-directory/fundamentals/active-directory-manage-groups.md)。
 
-### <a name="addition-prerequisites"></a>其他先决条件
+### <a name="additional-prerequisites"></a>其他先决条件
 
 除了[上述先决条件](#prerequisites)以外，还需要拥有在 Azure Active Directory 租户中创建/编辑组的权限。 如果没有权限，则可能需要与 Azure Active Directory 管理员联系。
 

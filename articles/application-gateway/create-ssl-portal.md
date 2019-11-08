@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: victorh
-ms.openlocfilehash: 53a4fca0c05cd54bae6d01d07e72e1033a247a05
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: afdb5d256c33042655c122e9c84a4ab07c94f14c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327368"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470035"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>教程：通过 Azure 门户使用 SSL 终端配置应用程序网关
 
@@ -62,7 +62,7 @@ E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 > 请勿在 .pfx 文件密码中使用任何特殊字符。 仅支持字母数字字符。
 
 ```powershell
-$pwd = ConvertTo-SecureString -String "Azure123456!" -Force -AsPlainText
+$pwd = ConvertTo-SecureString -String "Azure123456" -Force -AsPlainText
 Export-PfxCertificate `
   -cert cert:\localMachine\my\E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630 `
   -FilePath c:\appgwcert.pfx `
@@ -150,7 +150,7 @@ Export-PfxCertificate `
 
    - **PFX 证书文件** - 浏览到并选择前面创建的 c:\appgwcert.pfx 文件。
    - **证书名称** - 键入“mycert1”  作为证书的名称。
-   - **密码** - 输入“Azure123456!”  密码。
+   - **密码** - 输入“Azure123456”作为“密码”  。
   
         接受“侦听器”选项卡上其他设置的默认值，然后选择“后端目标”选项卡以配置剩余的传递规则   。
 
@@ -194,7 +194,7 @@ Export-PfxCertificate `
     - **资源组**：选择 **myResourceGroupAG** 作为资源组名称。
     - **虚拟机名称**：输入 *myVM* 作为虚拟机的名称。
     - **用户名**：输入 *azureuser* 作为管理员用户名。
-    - **密码**：输入 *Azure123456!* 作为管理员密码。
+    - **密码**：输入“Azure123456”作为管理员密码  。
 4. 接受其他默认值，然后选择“下一步:**磁盘”** 。  
 5. 接受“磁盘”**选项卡的默认值**，然后选择“下一步:**网络”** 。
 6. 在“网络”  选项卡上，验证是否已选择 **myVNet** 作为**虚拟网络**，以及是否已将“子网”  设置为 **myBackendSubnet**。 接受其他默认值，然后选择“下一步:**管理”** 。

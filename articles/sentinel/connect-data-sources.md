@@ -13,20 +13,16 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: d4605ad448916d788fd0a7089835a9ad3828697e
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 4b21d6aa95a38df402cf7a2640467c7a060a7f49
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980426"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496383"
 ---
 # <a name="connect-data-sources"></a>连接数据源
-
-
-
-
 
 若要载入 Azure Sentinel，首先需要连接到数据源。 Azure Sentinel 随附许多适用于 Microsoft 解决方案的现成可用的连接器，提供实时集成（包括 Microsoft 威胁防护解决方案）和 Microsoft 365 源（包括 Office 365、Azure AD、Azure ATP 和 Microsoft Cloud App Security，等等）。 此外，内置的连接器可以拓宽非 Microsoft 解决方案的安全生态系统。 也可以使用常用事件格式 Syslog 或 REST-API 将数据源与 Azure Sentinel 相连接。  
 
@@ -62,7 +58,9 @@ Azure Sentinel 支持以下数据连接方法：
 - **通过 API 连接外部解决方案**：可以使用联网数据源提供的 API 连接某些数据源。 一般情况下，大多数安全技术都会提供一组 API，通过这些 API 可以检索事件日志。这些 API 连接到 Azure Sentinel，收集特定的数据类型并将其发送到 Azure Log Analytics。 通过 API 连接的设备包括：
     - [Barracuda](connect-barracuda.md)
     - [Symantec](connect-symantec.md)
-- **通过代理连接外部解决方案**：可以通过代理使用 Syslog 协议将 Azure Sentinel 连接到可执行实时日志流式处理的其他所有数据源。 <br>大部分设备使用 Syslog 协议发送包含日志本身以及日志相关数据的事件消息。 日志格式各不相同，但大部分设备支持通用事件格式 (CEF) 标准。 <br>基于 Log Analytics 代理的 Azure Sentinel 代理会将 CEF 格式的日志转换为可供 Log Analytics 引入的格式。 根据设备类型，可以直接在设备上安装代理，或者在专用的 Linux 服务器上安装代理。 适用于 Linux 的代理通过 UDP 从 Syslog 守护程序接收事件，但如果预期 Linux 计算机需要收集大量的 Syslog 事件，则会通过 TCP 将这些事件从 Syslog 守护程序发送到代理，然后从代理发送到 Log Analytics。
+    - [Citrix Analytics（安全）](connect-citrix-analytics.md)
+
+- **通过代理连接外部解决方案**：可以通过代理使用 Syslog 协议将 Azure Sentinel 连接到可执行实时日志流式处理的其他所有数据源。 <br>大部分设备使用 Syslog 协议发送包含日志本身以及日志相关数据的事件消息。 日志格式各不相同，但大部分设备都支持基于通用事件格式 (CEF) 的日志数据格式。 <br>基于 Log Analytics 代理的 Azure Sentinel 代理会将 CEF 格式的日志转换为可供 Log Analytics 引入的格式。 根据设备类型，可以直接在设备上安装代理，或者在专用的 Linux 服务器上安装代理。 适用于 Linux 的代理通过 UDP 从 Syslog 守护程序接收事件，但如果预期 Linux 计算机需要收集大量的 Syslog 事件，则会通过 TCP 将这些事件从 Syslog 守护程序发送到代理，然后从代理发送到 Log Analytics。
     - 防火墙、代理和终结点：
         - [F5](connect-f5.md)
         - [Check Point](connect-checkpoint.md)
@@ -71,6 +69,10 @@ Azure Sentinel 支持以下数据连接方法：
         - [Palo Alto](connect-paloalto.md)
         - [其他 CEF 设备](connect-common-event-format.md)
         - [其他 Syslog 设备](connect-syslog.md)
+        - [Barracuda CloudGen 防火墙](connect-barracuda-cloudgen-firewall.md)
+        - [ExtraHop Reveal(x)](connect-extrahop.md)
+        - [One Identity Safeguard](connect-one-identity.md)
+        - [Trend Micro Deep Security](connect-trend-micro.md)
     - DLP 解决方案
     - [威胁智能提供程序](connect-threat-intelligence.md)
     - [DNS 计算机](connect-dns.md) - 直接安装在 DNS 计算机上的代理

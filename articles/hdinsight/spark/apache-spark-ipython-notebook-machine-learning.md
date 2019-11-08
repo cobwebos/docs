@@ -1,5 +1,5 @@
 ---
-title: 教程：在 Azure HDInsight 中生成 Spark 机器学习应用程序
+title: 教程：生成 Spark 机器学习应用 - Azure HDInsight
 description: 教程 - 有关如何使用 Jupyter Notebook 在 HDInsight Spark 群集中生成 Apache Spark 机器学习应用程序的分步说明。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.openlocfilehash: e77414da964d548b64250bbf98f86bee1529f2ab
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 6e46d7403e251bccd69467cfcdaa1d5073b4e454
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327018"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494556"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中生成 Apache Spark 机器学习应用程序
 
@@ -35,7 +35,7 @@ ms.locfileid: "71327018"
 
 应用程序使用所有群集默认提供的示例 **HVAC.csv** 数据。 该文件位于 `\HdiSamples\HdiSamples\SensorSampleData\hvac`。 数据显示了安装有 HVAC 系统的一些建筑物的目标温度和实际温度。 **System** 列代表系统 ID，**SystemAge** 列代表建筑物安装 HVAC 系统的年数。 在指定系统 ID 和系统年数的情况下，可使用这些数据来预测建筑物的温度比目标温度高还是低。
 
-![用于 Spark 机器学习示例的数据的快照](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "用于 Spark 机器学习示例的数据的快照")
+![Spark 机器学习示例所使用数据的快照](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Spark 机器学习示例所使用数据的快照")
 
 ## <a name="develop-a-spark-machine-learning-application-using-spark-mllib"></a>使用 Spark MLlib 开发 Spark 机器学习应用程序
 
@@ -202,7 +202,7 @@ HDInsight 中的 Apache Spark 群集包含 Anaconda 库。 它还包括适用于
 
 1. 选择“删除”。  请选择“是”。 
 
-![Azure 门户删除 HDInsight 群集](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "删除 HDInsight 群集")
+![在 Azure 门户中删除 HDInsight 群集](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "删除 HDInsight 群集")
 
 ## <a name="next-steps"></a>后续步骤
 

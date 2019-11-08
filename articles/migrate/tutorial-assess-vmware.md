@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 10/11/2019
 ms.author: hamusa
-ms.openlocfilehash: 04162f074dba05ac6492c16acb446912296cd673
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 46bf756a729441bd3bc4b2b00aaa2c79fa06c0b8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952101"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521232"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>使用“Azure Migrate:服务器评估”评估 VMware VM
 
@@ -104,7 +104,7 @@ ms.locfileid: "68952101"
 2. 运行以下命令以生成 OVA 的哈希：
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. 对于版本 2.19.07.30，生成的哈希应与这些值匹配。 
+3. 对于版本 2.19.07.30，生成的哈希应与这些值匹配。
 
   **算法** | **哈希值**
   --- | ---
@@ -166,17 +166,30 @@ ms.locfileid: "68952101"
 3. 指定设备的名称。 该名称应是字母数字，长度为 14 个或更少的字符。
 4. 单击“注册”  。
 
-
 ## <a name="start-continuous-discovery"></a>启动持续发现
 
-现在，请从设备连接到 vCenter Server，然后启动 VM 发现。
+设备需连接 vCenter Server，以发现 VM 的配置和性能数据。
 
+### <a name="specify-vcenter-server-details"></a>指定 vCenter Server 详细信息
 1. 在“指定 vCenter Server 详细信息”中，指定 vCenter Server 的名称 (FQDN) 或 IP 地址。  可以保留默认端口，或指定 vCenter Server 侦听的自定义端口。
 2. 在“用户名”和“密码”中，指定设备用来发现 vCenter Server 上的 VM 的只读帐户凭据。   请确保该帐户拥有[所需的发现权限](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)。 可以通过相应地限制对 vCenter 帐户的访问，来限定发现范围；在[此处](tutorial-assess-vmware.md#scoping-discovery)详细了解如何限定发现范围。
 3. 单击“验证连接”，确保设备可以连接到 vCenter Server。 
-4. 建立连接后，单击“保存并启动发现”。 
 
-随即会启动发现。 大约 15 分钟后，已发现的 VM 的元数据将显示在门户中。
+### <a name="specify-vm-credentials"></a>指定 VM 凭据
+为发现应用程序、角色和功能并可视化 VM 的依赖关系，可以提供可访问 VMware VM 的 VM 凭据。 可以分别为 Windows VM 和 Linux VM 添加一个凭据。 [详细了解](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions)所需的访问特权。
+
+> [!NOTE]
+> 此输入是可选的，但需要此输入才能发现应用程序和可视化无代理依赖关系。
+
+1. 在“发现应用程序和 VM 依赖关系”上，单击“添加凭据”   。
+2. 选择“操作系统”  。
+3. 提供凭据的易记名称。
+4. 在“用户名”和“密码”中，指定在 VM 上至少具有来宾访问权限的帐户   。
+5. 单击“添加”  。
+
+指定 vCenter Server 和 VM 凭据（可选）后，单击“保存并开始发现”，开始发现本地环境  。
+
+大约 15 分钟后，已发现的 VM 的元数据将显示在门户中。 发现已安装的应用程序、角色和功能需要一些时间，具体时间取决于待发现的 VM 数量。 如果是 500 个 VM，Azure Migrate 门户大约需要 1 小时才会显示应用程序清单。
 
 ### <a name="scoping-discovery"></a>限定发现范围
 
@@ -205,18 +218,18 @@ ms.locfileid: "68952101"
 **分配对 vCenter 对象的权限**
 
 可通过两种方法为分配了角色的 vCenter 用户帐户分配对 vCenter 中 inventory 对象的权限。
-- 对于“服务器评估”，必须为 vCenter 用户帐户应用对要发现的 VM 所在的所有父对象的“只读”角色。  需要包括层次结构中的所有父对象（主机、主机文件夹、群集、群集文件夹）直到数据中心。 这些权限将传播到层次结构中的子对象。 
+- 对于“服务器评估”，必须为 vCenter 用户帐户应用对要发现的 VM 所在的所有父对象的“只读”角色。  需要包括层次结构中的所有父对象（主机、主机文件夹、群集、群集文件夹）直到数据中心。 这些权限将传播到层次结构中的子对象。
 
     同样，对于“服务器迁移”，必须为 vCenter 用户帐户应用对要迁移的 VM 所在的所有父对象的用户定义的、分配了这些[特权](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions)的角色（可命名为 <em>Azure_Migrate</em>）。
 
 ![分配权限](./media/tutorial-assess-vmware/assign-perms.png)
 
 - 替代方法是在数据中心级别分配用户帐户和角色，再将其传播到子对象。 然后，对于不想要发现/迁移的每个对象（例如 VM），为帐户提供“无访问权限”角色。  此配置很繁琐。 它会意外公开访问控制，因为系统会自动为每个新建的子对象授予从父对象继承的访问权限。 因此，建议使用第一种方法。
- 
+
 > [!NOTE]
 > 目前，如果在 vCenter VM 文件夹级别授予 vCenter 帐户的访问权限，则服务器评估无法发现 VM。 若要按 VM 文件夹限定发现范围，确保在 VM 级别为 vCenter 帐户分配只读访问权限即可实现此目的。  下面提供了有关如何执行此操作的说明：
 >
-> 1. 针对 VM 文件夹中你要将发现范围限定到的所有 VM 分配只读权限。 
+> 1. 针对 VM 文件夹中你要将发现范围限定到的所有 VM 分配只读权限。
 > 2. 对托管 VM 的所有父对象授予只读访问权限。 需要包括层次结构中的所有父对象（主机、主机文件夹、群集、群集文件夹）直到数据中心。 不需要将权限传播到所有子对象。
 > 3. 选择数据中心作为收集范围可以使用凭据进行发现。  RBAC 设置确保相应的 vCenter 用户仅有权访问特定于租户的 VM。
 >

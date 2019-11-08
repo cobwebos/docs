@@ -5,15 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 07/23/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
-ms.custom: mvc
-ms.openlocfilehash: d1c90e61890ee98dc5371faed872d03409aaf31f
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: bfec1493492fb1e8e9bd7394aae3db8983f4cff9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489550"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495649"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>教程：使用 PowerShell 创建和管理 VPN 网关
 
@@ -128,7 +127,7 @@ New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 关键参数值：
 * GatewayType：对于站点到站点和 VNet 到 VNet 连接，请使用 **Vpn**
 * VpnType：使用 **RouteBased** 与更广范围的 VPN 设备和更多路由功能进行交互
-* GatewaySku：默认值为 **VpnGw1**；如果需要更高的吞吐量或更多连接，请将其更改为 VpnGw2 或 VpnGw3。 有关详细信息，请参阅[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
+* GatewaySku：默认值为“VpnGw1”；如果需要更高的吞吐量或更多连接，请将其更改为另一个 VpnGw SKU  。 有关详细信息，请参阅[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 
 如果使用的是 TryIt，你的会话可能会超时。没关系。 仍会创建网关。
 

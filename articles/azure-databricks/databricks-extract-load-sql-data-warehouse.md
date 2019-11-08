@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: c2d7d7d97dce974ad8d72cc98f9ec6d3d554fb6d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8ceb9e940584ae4c41484fe31ce5cb1832bb3400
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72783983"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605700"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>教程：使用 Azure Databricks 提取、转换和加载数据
 
@@ -89,9 +89,15 @@ ms.locfileid: "72783983"
 
 在本部分中，你将使用 Azure 门户创建 Azure Databricks 服务。
 
-1. 在 Azure 门户中，选择“创建资源”   >   “分析” >   “Azure Databricks”。
+1. 在 Azure 门户菜单中，选择“创建资源”  。
 
-    ![Azure 门户上的 Databricks](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Azure 门户上的 Databricks")
+    ![在 Azure 门户中创建资源](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png)
+
+    然后，选择“分析” > “Azure Databricks”   。
+
+    ![在 Azure 门户上创建 Azure Databricks](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-resource-create.png)
+
+
 
 2. 在“Azure Databricks 服务”  下，提供以下值来创建 Databricks 服务：
 
@@ -150,7 +156,6 @@ ms.locfileid: "72783983"
    ```scala
    val appID = "<appID>"
    val password = "<password>"
-   val fileSystemName = "<file-system-name>"
    val tenantID = "<tenant-id>"
 
    spark.conf.set("fs.azure.account.auth.type", "OAuth")
@@ -159,8 +164,6 @@ ms.locfileid: "72783983"
    spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
-   dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
-   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
    **帐户配置**

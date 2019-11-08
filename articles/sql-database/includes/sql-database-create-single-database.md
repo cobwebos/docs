@@ -3,14 +3,14 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 07/31/2019
+ms.date: 11/04/2019
 ms.author: mathoma
-ms.openlocfilehash: ff5505c2cb35d088565773e8d0ba01e8abb4b8c3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0fad326107fa101cbba869311724710bd3f5307b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933231"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496145"
 ---
 在此步骤中，将创建 Azure SQL 数据库单一数据库。 
 
@@ -55,12 +55,12 @@ ms.locfileid: "72933231"
 
      ![SQL 数据库详细信息](../media/sql-database-get-started-portal/sql-db-basic-db-details.png)
 
-   - 选择“已预配”  和 **Gen5**。
+   - 选择“已预配”  。
 
      ![已预配 Gen4](../media/sql-database-get-started-portal/create-database-provisioned.png)
 
-   - 查看“最大 vCore 数”、“最小 vCore 数”、“自动暂停延迟”和“数据最大大小”的设置     。 根据需要进行更改。
-   - 接受预览版条款，然后单击“确定”  。
+   - 查看“Vcore”和“数据最大大小”设置   。 根据需要进行更改。 
+     - 还可以选择“更改配置”来更改硬件生成  。
    - 选择“应用”。 
 
 5. 选择“其他设置”选项卡。  

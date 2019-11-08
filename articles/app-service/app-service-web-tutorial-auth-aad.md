@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ad0c510244c78fa3bdba41690c2284d0650c4b55
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: c82cad30fcc2aa80eea52ab13f60fc0c4da33cd1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019347"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471325"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>教程：在 Azure 应用服务中对用户进行端到端身份验证和授权
 
@@ -218,29 +218,31 @@ git push frontend master
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>启用针对后端应用的身份验证和授权
 
-在 [Azure 门户](https://portal.azure.com)中打开后端应用的管理页，方法是在左侧菜单中单击“资源组”   > “myAuthResourceGroup”   > “\<back-end-app-name>”   。
+1. 在 [Azure 门户](https://portal.azure.com)菜单上，选择“资源组”，或在任意页面中搜索并选择“资源组”   。
 
-![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/portal-navigate-back-end.png)
+1. 在“资源组”中，查找并选择资源组  。 在“概述”中，选择后端应用的管理页  。
 
-在后端应用的左侧菜单中单击“身份验证/授权”  ，然后单击“启用”以启用应用服务身份验证。 
+   ![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/portal-navigate-back-end.png)
 
-在“请求未经身份验证时需执行的操作”中，选择“使用 Azure Active Directory 登录”。  
+1. 在后端应用的左侧菜单中，选择“身份验证/授权”，然后选择“启用”以启用应用服务身份验证   。
 
-在“身份验证提供程序”  下，单击“Azure Active Directory”  
+1. 在“请求未经身份验证时需执行的操作”中，选择“使用 Azure Active Directory 登录”。  
 
-![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/configure-auth-back-end.png)
+1. 在“身份验证提供程序”下，选择“Azure Active Directory”   
 
-单击“快速”，接受创建新 AD 应用所需的默认设置，然后单击“确定”。  
+   ![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/configure-auth-back-end.png)
 
-在“身份验证/授权”  页中，单击“保存”  。 
+1. 选择“快速”，接受创建新 AD 应用所需的默认设置，然后选择“确定”   。
 
-看到包含消息`Successfully saved the Auth Settings for <back-end-app-name> App`的通知后，刷新页面。
+1. 在“身份验证/授权”页中，选择“保存”   。
 
-再次单击“Azure Active Directory”，然后单击“Azure AD 应用”。  
+   看到包含消息`Successfully saved the Auth Settings for <back-end-app-name> App`的通知后，刷新页面。
 
-将 Azure AD 应用程序的**客户端 ID** 复制到记事本。 稍后需要用到此值。
+1. 再次选择“Azure Active Directory”，然后选择“Azure AD 应用”   。
 
-![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/get-application-id-back-end.png)
+1. 将 Azure AD 应用程序的**客户端 ID** 复制到记事本。 稍后需要用到此值。
+
+   ![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/get-application-id-back-end.png)
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>启用针对前端应用的身份验证和授权
 
@@ -259,15 +261,17 @@ git push frontend master
 
 启用对两种应用的身份验证和授权以后，即可通过 AD 应用程序对每种应用提供支持。 在此步骤中，请为前端应用授予代表用户访问后端的权限。 （严格说来就是，请为前端的  AD 应用程序授予代表用户访问后端的  AD 应用程序的权限。）
 
-从门户的左侧菜单中，选择“Azure Active Directory”   > “应用注册”   > “拥有的应用程序”   > “\<front-end-app-name>”   > “API 权限”  。
+1. 在 [Azure 门户](https://portal.azure.com)菜单中，选择“Azure Active Directory”，或在任意页面中搜索并选择“Azure Active Directory”   。
 
-![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/add-api-access-front-end.png)
+1. 选择“应用注册” > “拥有的应用程序”   。 选择前端应用名称，然后选择“API 权限”  。
 
-选择“添加权限”  ，然后选择“我的 API”   > “\<back-end-app-name>”  。
+   ![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/add-api-access-front-end.png)
 
-在后端应用的“请求 API 权限”  页中，选择“委托的权限”  和“user_impersonation”  ，然后选择“添加权限”  。
+1. 选择“添加权限”  ，然后选择“我的 API”   > “\<back-end-app-name>”  。
 
-![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/select-permission-front-end.png)
+1. 在后端应用的“请求 API 权限”  页中，选择“委托的权限”  和“user_impersonation”  ，然后选择“添加权限”  。
+
+   ![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/select-permission-front-end.png)
 
 ### <a name="configure-app-service-to-return-a-usable-access-token"></a>对应用服务进行配置，使之返回可用的访问令牌
 
@@ -425,7 +429,7 @@ git push frontend master
 az group delete --name myAuthResourceGroup
 ```
 
-此命令可能需要花费一分钟时间运行。
+此命令可能需要花费一点时间运行。
 
 <a name="next"></a>
 ## <a name="next-steps"></a>后续步骤

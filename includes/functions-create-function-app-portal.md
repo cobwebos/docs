@@ -8,22 +8,18 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 3204387a8e0920d2a7196edbad229bf811a9ba0a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: cd118def8b9caf97f26aaa5ad5dc1f6fb015316d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958473"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469217"
 ---
-1. 从 [https://portal.azure.com](https://portal.azure.com) 打开 Azure 门户
+1. 在 Azure 门户菜单中，选择“创建资源”  。
 
-1. 选择“创建资源”  按钮
+    ![使用“Azure 门户”菜单添加资源](./media/functions-create-function-app-portal/create-function-app-resource.png)
 
-    ![创建资源](./media/functions-create-function-app-portal/function-app-create-resource.png)
-
-1. 选择“计算”   >   “函数应用”。
-
-    ![在 Azure 门户中创建函数应用](./media/functions-create-function-app-portal/function-app-create-start.png)
+1. 在“新建”页面，选择“计算” > “函数应用”    。
 
 1. 使用图像下面的表格中指定的函数应用设置。
 

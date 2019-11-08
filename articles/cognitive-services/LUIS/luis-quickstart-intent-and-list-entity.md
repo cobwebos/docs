@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 25882f2aaa5d32dfb594d5f8fdb9cdc46f2ad958
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9531e86e63fa8d944aa216fddd0c8215b73038a9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307617"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492704"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>教程：从话语中获取文本完全匹配的数据
 
 本教程介绍如何获取与项的预定义列表匹配的实体数据。 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **本教程介绍如何执行下列操作：**
 
@@ -78,7 +80,7 @@ ms.locfileid: "70307617"
     |将 Steve Standish 转到 1234 部门|
     |将 Tanner Thompson 转到 3456 部门|
 
-    [![带有示例话语的意图屏幕截图](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png "Screenshot of intent with example utterances")](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png#lightbox)
+    [![带有示例言语的意向的屏幕截图](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png "带有示例言语的意向的屏幕截图")](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
@@ -104,7 +106,7 @@ ms.locfileid: "70307617"
 
 1. 在实体弹出对话框中，输入 `Department` 作为实体名称，输入“列表”作为实体类型。  选择“完成”  。  
 
-    [![创建新实体弹出项对话框的屏幕截图](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "Screenshot of creating new entity pop-up dialog")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
+    [![“新建实体”弹出对话框的屏幕截图](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "“新建实体”弹出对话框的屏幕截图")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
 
 1. 在“部门”实体页上，输入 `Accounting` 作为新值。
 

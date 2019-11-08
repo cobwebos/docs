@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5fa13f209d6f4df0ebd531f803e75cdb657abf5c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 731abdde2160c16123ed648b5e552e9e62378438
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163127"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493997"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>教程：创建并部署自定义 IoT Edge 模块
 
@@ -172,7 +172,7 @@ IoT Edge 中心促进模块间通信。 通过将 IoT Edge 中心用作消息中
 4. 当系统提示提供 Docker 映像存储库时，请使用来自机器学习工作区的注册表（可在 deployment.template.json 文件的 registryCredentials 节点中找到此注册表）  。 该值是指向注册表的完全限定的地址，例如 \<你的注册表\>.azurecr.io/turbofanrouter  。
 
     > [!NOTE]
-    > 在本文中，我们使用由 Azure 机器学习服务工作区创建的 Azure 容器注册表，我们之前用它来训练和部署分类器。 使用它仅为方便起见。 我们本来可创建一个新的容器注册表并在此处发布模块。
+    > 在本文中，将使用由 Azure 机器学习工作区创建的 Azure 容器注册表，我们之前用它来训练和部署分类器。 使用它仅为方便起见。 我们本来可创建一个新的容器注册表并在此处发布模块。
 
 5. 在 Visual Studio Code 中通过“视图” > “终端”打开新的终端窗口，然后复制模块目录中的文件   。
 

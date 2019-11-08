@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: 2d0519abdf25a6fc8373f9d1a3a7232a9783d316
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: a700cc83c6bd34f5f726b9cc1c97bd7e1476963b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984906"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73519266"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>教程：使用 Azure 门户通过网络安全组筛选网络流量
 
@@ -41,7 +41,7 @@ ms.locfileid: "70984906"
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-1. 选择 Azure 门户左上角的“+ 创建资源”  。
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。 
 2. 选择“网络”，然后选择“虚拟网络”   。
 3. 输入或选择以下信息，接受剩下的默认设置，然后选择“创建”  ：
 
@@ -59,7 +59,7 @@ ms.locfileid: "70984906"
 
 使用应用程序安全组可以将功能类似的服务器（例如 Web 服务器）组合在一起。
 
-1. 选择 Azure 门户左上角的“+ 创建资源”  。
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。 
 2. 在“在市场中搜索”框中输入“应用程序安全组”   。 当“应用程序安全组”显示在搜索结果中时，将其选中，再次在“所有项”下选择“应用程序安全组”，然后选择“创建”     。
 3. 输入或选择以下信息，然后选择“创建”  ：
 
@@ -81,7 +81,7 @@ ms.locfileid: "70984906"
 
 ## <a name="create-a-network-security-group"></a>创建网络安全组
 
-1. 选择 Azure 门户左上角的“+ 创建资源”  。
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。 
 2. 依次选择“网络”、“网络安全组”   。
 3. 输入或选择以下信息，然后选择“创建”  ：
 
@@ -138,7 +138,7 @@ ms.locfileid: "70984906"
 
 ### <a name="create-the-first-vm"></a>创建第一个 VM
 
-1. 选择 Azure 门户左上角的“+ 创建资源”  。
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。 
 2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”。  
 3. 输入或选择以下信息，并接受剩下的默认设置：
 

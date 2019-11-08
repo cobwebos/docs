@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 10/09/2019
-ms.openlocfilehash: 3f969fb346ce341e694458dcc38bf193f012226b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f7cdfb8b9edbce5ef2b094cf6a603904d39a7404
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792660"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493585"
 ---
 管道在计算目标上运行，该目标是附加到工作区的计算资源。 一旦创建了计算目标，就可以在以后的运行中重用它。
 
@@ -25,7 +25,7 @@ ms.locfileid: "72792660"
     如果已有可用的计算目标，则可以选择它来运行此管道。
 
     > [!NOTE]
-    > 可视界面只能对机器学习计算目标运行试验。 不会显示其他计算目标。
+    > 设计器只能对机器学习计算目标运行试验。 不会显示其他计算目标。
 
 1. 为计算资源提供名称。
 

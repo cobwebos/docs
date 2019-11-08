@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 09/17/2019
+ms.date: 11/02/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 50f1d0bca958ef4504394cad1d771459cc8be27d
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 4a4fd2f89bc662f394b59aa6295c3a909cb8552b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018976"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468462"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>教程：使用 Azure 门户在混合网络中部署和配置 Azure 防火墙
 
@@ -107,14 +107,6 @@ ms.locfileid: "71018976"
 9. 在“子网”下，为“名称”键入 **SN-Workload**。  
 10. 对于“地址范围”，请键入 **10.6.0.0/24**。 
 11. 接受其他默认设置，然后选择“创建”。 
-
-现在，为网关创建第二个子网。
-
-1. 在“VNet-Spoke”页上，选择“子网”。  
-2. 选择“+子网”。 
-3. 对于“名称”，请键入 **GatewaySubnet**。 
-4. 对于“地址范围(CIDR 块)”，请键入 **10.6.1.0/24**。 
-5. 选择“确定”  。
 
 ## <a name="create-the-on-premises-virtual-network"></a>创建本地虚拟网络
 
@@ -341,7 +333,7 @@ ms.locfileid: "71018976"
 2. 创建路由表后，请选择它以打开路由表页。
 3. 在左栏中选择“路由”。 
 4. 选择 **添加** 。
-5. 键入 **ToSpoke** 作为路由名称。
+5. 键入“ToHub”作为路由名称  。
 6. 键入 **0.0.0.0/0** 作为地址前缀。
 7. 选择“虚拟设备”作为下一跃点类型。 
 8. 键入前面记下的防火墙专用 IP 地址作为下一跃点地址。
@@ -384,7 +376,7 @@ ms.locfileid: "71018976"
 ### <a name="install-iis"></a>安装 IIS
 
 1. 在 Azure 门户中打开 Cloud Shell，确保它设置为“PowerShell”。 
-2. 运行以下命令以在虚拟机上安装 IIS：
+2. 运行以下命令以在虚拟机上安装 IIS 并根据需要更改位置：
 
    ```azurepowershell-interactive
    Set-AzVMExtension `
@@ -420,7 +412,7 @@ ms.locfileid: "71018976"
 
 ## <a name="test-the-firewall"></a>测试防火墙
 
-1. 首先，获取并记下 **VM-spoke-01** 虚拟机的专用 IP 地址。
+1. 首先，记下“VM-spoke-01”虚拟机的专用 IP 地址  。
 
 2. 在 Azure 门户中，连接到 **VM-Onprem** 虚拟机。
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.

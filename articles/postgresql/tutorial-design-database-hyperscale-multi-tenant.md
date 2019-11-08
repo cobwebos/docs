@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Database for PostgreSQL 设计多租户数据库 – 超大规模 (Citus)（预览）教程
-description: 本教程演示如何创建、填充和查询 Azure Database for PostgreSQL 超大规模 (Citus)（预览版）上的分布式表。
+title: 使用 Azure Database for PostgreSQL 设计多租户数据库 - 超大规模 (Citus) 教程
+description: 本教程介绍如何在 Azure Database for PostgreSQL 超大规模 (Citus) 中创建、填充和查询分布式表。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,16 +9,16 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: ba20a048faecc9e37a2bfbe750de0fbeba88d538
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 130c3e9f5abb24ffcc4e0c4ad6b96af5fca62090
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70163988"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496542"
 ---
-# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>教程：通过使用 Azure Database for PostgreSQL - 超大规模 (Citus)（预览版）设计多租户数据库
+# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>教程：通过使用 Azure Database for PostgreSQL - 超大规模 (Citus)设计多租户数据库
 
-在本教程中，你使用 Azure Database for PostgreSQL - 超大规模 (Citus)（预览版）了解如何：
+在本教程中，你将了解如何使用 Azure Database for PostgreSQL - 超大规模 (Citus) 来执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Hyperscale (Citus) 服务器组
@@ -35,7 +35,7 @@ ms.locfileid: "70163988"
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>使用 psql 实用工具创建架构
 
-使用 psql 连接到 Azure Database for PostgreSQL - 超大规模 (Citus)（预览版）后，可以完成一些基本任务。 本教程将指导你创建 Web 应用，该应用允许广告厂商跟踪他们的广告系列。
+使用 psql 连接到 Azure Database for PostgreSQL - 超大规模 (Citus)后，可以完成一些基本任务。 本教程将指导你创建 Web 应用，该应用允许广告厂商跟踪他们的广告系列。
 
 多家公司可以使用该应用，让我们创建一个表来记录这些公司，创建另一个表来记录他们的广告系列。 在 psql 控制台中，运行这些命令：
 

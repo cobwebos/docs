@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
-ms.date: 10/04/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 7c0dc40ee2d748b1f48c3254a3e3a6e197069c08
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6bc306551d158d4b996002de0bb5ab991a0bcbd9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515168"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467243"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>教程：在 Azure Notebook 中使用个性化体验创建服务
 
@@ -81,7 +81,7 @@ ms.locfileid: "72515168"
 
 ## <a name="configure-personalizer-resource"></a>配置个性化体验创建服务资源
 
-在 Azure 门户中配置[个性化体验创建服务资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)：将“更新模型频率”设置为 15 秒，将“奖励等待时间”设置为 15 秒。   可在“ **[设置”](how-to-settings.md#configure-service-settings-in-the-azure-portal)** 页上找到这些设置。 
+在 Azure 门户中配置[个性化体验创建服务资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)：将“更新模型频率”设置为 15 秒，将“奖励等待时间”设置为 15 秒。   这些值可在“[配置](how-to-settings.md#configure-service-settings-in-the-azure-portal)”页面上找到  。 
 
 |设置|值|
 |--|--|
@@ -170,7 +170,7 @@ def get_last_updated(currentModifiedDate):
 
 使用这两个 REST 调用来验证服务的状态。
 
-这些单元不提供输出。 调用该函数时，它会输出服务设置。
+这些单元不提供输出。 调用该函数时，它会输出服务值。
 
 ```python
 def get_service_settings():
@@ -574,11 +574,11 @@ createChart(count,rewards)
 ![此图显示当前学习策略在测试持续时间内的成功率。](./media/tutorial-azure-notebook/azure-notebook-chart-results.png)
 
 
-测试结束时，循环的理想目标是平均成功率接近 100% 减去探索率。 默认的探索率设置为 20%。 
+测试结束时，循环的理想目标是平均成功率接近 100% 减去探索率。 探索率的默认值为 20%。 
 
 `100-20=80`
 
-在 Azure 门户中个性化体验创建服务资源的“设置”页上可以找到此探索率设置。  
+在 Azure 门户中个性化体验创建服务资源的“配置”页上可以找到此探索率值  。 
 
 若要根据提供给排名 API 的数据找出更好的学习策略，请在门户中针对个性化体验创建服务循环运行[脱机评估](how-to-offline-evaluation.md)。
 
@@ -598,7 +598,7 @@ createChart(count,rewards)
 
 ## <a name="change-update-model-frequency-to-5-minutes"></a>将更新模型频率更改为 5 分钟
 
-1. 仍在 Azure 门户中的个性化体验创建服务资源上，选择“设置”页。  
+1. 仍在 Azure 门户中的个性化体验创建服务资源上，选择“配置”页  。 
 1. 将“模型更新频率”和“奖励等待时间”更改为 5 分钟，然后选择“保存”。   
 
 详细了解[奖励等待时间](concept-rewards.md#reward-wait-time)和[模型更新频率](how-to-settings.md#model-update-frequency)。

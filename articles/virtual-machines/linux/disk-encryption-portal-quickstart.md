@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 83446d30de17973352e836d6107ad545b2da63e3
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: a480e459fdbbf135b00ee46d1513eddb0f36e09e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550317"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479615"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>快速入门：使用 Azure 门户创建并加密虚拟机
 
@@ -55,8 +55,8 @@ ms.locfileid: "72550317"
 
 1. 在“新建”页的“常用”下，选择“Ubuntu Server 18.04 LTS”。 
 1. 在“基本信息”  选项卡中的“项目详细信息”  下，确保选择了正确的订阅。
-1. 对于“资源组”，  请选择你在构建上面的密钥保管库时创建的资源组（例如 **myResourceGroup**）
-1. 对于“虚拟机名称”，请输入  *MyVM*。 
+1. 对于“资源组”，请选择在前面创建密钥保管库时创建的资源组（例如“myResourceGroup”）   。
+1. 对于“虚拟机名称”，请输入“MyVM”   。
 1. 对于“区域”，请选择在构建密钥保管库时使用的区域（例如“美国东部”）。  
 1. 确定“大小”为“标准 D2s v3”。  
 1. 在“管理员帐户”下，选择“密码”。   输入用户名和密码。

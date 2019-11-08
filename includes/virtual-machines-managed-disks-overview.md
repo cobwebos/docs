@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: fc5a974273cbc0398e9fee7b60b424a46ef5dd30
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: f041381534dfe59036ce1b9d91792f9e78d0dace
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949717"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73522316"
 ---
 ## <a name="benefits-of-managed-disks"></a>托管磁盘的好处
 
@@ -51,11 +51,11 @@ ms.locfileid: "71949717"
 
 ## <a name="encryption"></a>加密
 
-托管磁盘提供两种不同的加密。 第一种是存储服务加密 (SSE)，由存储服务执行。 第二种是 Azure 磁盘加密 (ADE)，可以在 VM 的 OS 和数据磁盘上启用。
+托管磁盘提供两种不同的加密。 第一种是服务器端加密 (SSE)，由存储服务执行。 第二种是 Azure 磁盘加密 (ADE)，可以在 VM 的 OS 和数据磁盘上启用。
 
-### <a name="storage-service-encryption-sse"></a>存储服务加密 (SSE)
+### <a name="server-side-encryption"></a>服务器端加密
 
-[Azure 存储服务加密](../articles/storage/common/storage-service-encryption.md)可提供静态加密并保护你的数据，使你的组织能够信守在安全性与符合性方面所做的承诺。 默认情况下，在所有可用托管磁盘的区域中，所有托管磁盘、快照和映像都启用了 SSE。 有关详细信息请访问[托管磁盘常见问题解答页](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)。
+[Azure 服务器端加密](../articles/storage/common/storage-service-encryption.md)可提供静态加密并保护数据，让你的组织能够信守安全性与合规性方面所做的承诺。 默认情况下，在所有可用托管磁盘的区域中，所有托管磁盘、快照和映像都启用了服务器端加密。 有关详细信息请访问[托管磁盘常见问题解答页](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)。
 
 ### <a name="azure-disk-encryption"></a>Azure 磁盘加密
 
@@ -85,12 +85,12 @@ Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘�
 
 托管磁盘快照是托管磁盘的只读崩溃一致性完整副本，默认情况下它作为标准托管磁盘进行存储。 使用快照，可以在任意时间点备份托管磁盘。 这些快照独立于源磁盘而存在，并可用来创建新的托管磁盘。 
 
-基于已使用大小对快照计费。 例如，如果创建预配容量为 64 GiB 且实际使用数据大小为 10 GiB 的托管磁盘的快照，则仅针对已用数据大小 10 GiB 对该快照计费。 可以通过查看 [Azure 使用情况报告](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-bill)来了解快照的已使用大小。 例如，如果快照的已用数据大小为 10 GiB，则使用情况报告将显示 10 GiB/(31 天 x 24 小时) = 0.013441 GiB 作为已使用数量。
+基于已使用大小对快照计费。 例如，如果创建预配容量为 64 GiB 且实际使用数据大小为 10 GiB 的托管磁盘的快照，则仅针对已用数据大小 10 GiB 对该快照计费。 可以通过查看 [Azure 使用情况报告](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-bill)来了解快照的已使用大小。 例如，如果快照的已用数据大小为 10 GiB，则每日使用情况报告将显示 10 GiB/(31 天) = 0.3226 作为已使用数量  。
 
-若要了解有关如何使用托管磁盘创建快照的详细信息，请查看下列资源：
+若要了解有关如何为托管磁盘创建快照的详细信息，请查看下列资源：
 
-* [在 Windows 中使用快照创建存储为托管磁盘的 VHD 的副本](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [在 Linux 中使用快照创建存储为托管磁盘的 VHD 的副本](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+* [在 Windows 中创建托管磁盘的快照](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
+* [在 Linux 中创建托管磁盘的快照](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 ### <a name="images"></a>映像
 

@@ -5,83 +5,90 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 06/10/2019
+ms.date: 10/24/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: edf5e04b7cf9b5c79666c54fbeca49858cf21079
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ad86280eab3041667bf9d1713ae2b4bc82a4c9e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077516"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491441"
 ---
-# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>教程：使用 Azure 虚拟 WAN（预览版）创建 ExpressRoute 关联
+# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建 ExpressRoute 关联
 
-本教程介绍如何使用 ExpressRoute 线路和关联通过虚拟 WAN 连接到 Azure 中的资源。 有关虚拟 WAN 的详细信息，请参阅[虚拟 WAN 概述](virtual-wan-about.md)
+本教程演示如何使用虚拟 WAN 通过 ExpressRoute 线路来连接到 Azure 中的资源。 有关虚拟 WAN 和 虚拟 WAN 资源的详细信息，请参阅[虚拟 WAN 概述](virtual-wan-about.md)。
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 创建 vWAN
-> * 创建中心
-> * 查找线路并将其关联到中心
-> * 将线路关联到中心
+> * 创建虚拟 WAN
+> * 创建中心和网关
 > * 将 VNet 连接到中心
-> * 查看虚拟 WAN
-> * 查看资源运行状况
-> * 监视连接
-
-> [!IMPORTANT]
-> 此公共预览版在提供时没有附带服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
+> * 将线路连接到中心网关
+> * 测试连接
+> * 更改网关大小
+> * 播发默认路由
 
 ## <a name="before-you-begin"></a>开始之前
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+在开始配置之前，请验证你是否符合以下条件：
 
-[!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
+* 你拥有一个要连接到的虚拟网络。 确认本地网络的任何子网都不会与要连接到的虚拟网络重叠。 要在 Azure 门户中创建虚拟网络，请参阅[快速入门](../virtual-network/quick-create-portal.md)。
 
-## <a name="register"></a>注册此功能
+* 虚拟网络不包含任何虚拟网络网关。 如果虚拟网络包含网关（VPN 或 ExpressRoute），则必须删除所有网关。 此配置要求将虚拟网络改为连接到虚拟 WAN 中心网关。
 
-在配置虚拟 WAN 之前，必须先在预览版中注册订阅。 否则无法在门户中使用虚拟 WAN。 若要注册，请使用订阅 ID 向 **azurevirtualwan\@microsoft.com** 发送电子邮件。 注册订阅后，你会收到电子邮件。
+* 获取中心区域的 IP 地址范围。 该中心是虚拟 WAN 创建和使用的虚拟网络。 为中心指定的地址范围不能与要连接到的任何现有虚拟网络重叠。 此外，它也不能与本地连接到的地址范围重叠。 如果不熟悉本地网络配置中的 IP 地址范围，则咨询能够提供此类详细信息的人员。
 
-**预览注意事项：**
+* 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-  * 必须在支持 [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported) 的国家/地区启用 ExpressRoute 线路。
-  * ExpressRoute 线路必须是高级线路，才能连接到虚拟 WAN 中心。 
+## <a name="openvwan"></a>创建虚拟 WAN
 
-## <a name="vnet"></a>1.创建虚拟网络
+从浏览器导航到 [Azure 门户](https://portal.azure.com)并使用 Azure 帐户登录。
 
-[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
+1. 导航到“虚拟 WAN”页。 在门户中，单击“+创建资源”  。 在搜索框中键入“虚拟 WAN”  ，然后选择 Enter。
+2. 从结果中选择“虚拟 WAN”  。 在“虚拟 WAN”页上，单击“创建”以打开“创建 WAN”页  。
+3. 在“创建 WAN”页的“基本信息”选项卡上，填写以下字段   ：
 
-## <a name="openvwan"></a>2.创建虚拟 WAN
+   ![创建 WAN](./media/virtual-wan-expressroute-portal/createwan.png)
 
-从浏览器导航到 [Azure 门户（预览版）](https://aka.ms/azurevirtualwanpreviewfeatures)并使用 Azure 帐户登录。
+   * **订阅** - 选择要使用的订阅。
+   * **资源组** - 新建资源组或使用现有的资源组。
+   * **资源组位置** - 从下拉列表中选择资源位置。 WAN 是一个全局资源，不会驻留在某个特定区域。 但是，必须选择一个区域才能更轻松地管理和查找所创建的 WAN 资源。
+   * **名称** - 键入要用于称呼 WAN 的名称。
+   * **类型** - 选择“标准”  。 不能使用基本 SKU 创建 ExpressRoute 网关。
+4. 填写完字段后，单击“审阅 + 创建”  。
+5. 验证通过后，选择“创建”以创建虚拟 WAN  。
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
+## <a name="hub"></a>创建虚拟中心和网关
 
-### <a name="getting-started-page"></a>“入门”页
+虚拟中心是虚拟 WAN 创建和使用的虚拟网络。 它可以包含各种网关，如 VPN 和 ExpressRoute。 在本部分中，将为虚拟中心创建 ExpressRoute 网关。 你可以在[创建新虚拟中心](#newhub)时创建网关，或者可以通过编辑[现有中心](#existinghub)，在现有中心创建网关。 
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-gettingstarted-include.md)]
+ExpressRoute 网关以 2 Gbps 为单位进行预配。 1 个缩放单元= 2 Gbps，最多支持 10 个缩放单元 = 20 Gbps。 完全创建虚拟中心和网关大约需要 30 分钟。
 
-## <a name="hub"></a>3.创建中心
+### <a name="newhub"></a>创建新的虚拟中心和网关
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-hub-include.md)]
+创建新的虚拟中心。 创建中心后，即使你没有附加任何站点，也会对该中心收取费用。
 
-## <a name="hub"></a>4.查找线路并将其关联到中心
+[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-er-hub-include.md)]
 
-1. 选择 vWAN，在“虚拟 WAN 体系结构”  下，选择“ExpressRoute 线路”  。
-1. 如果 ExpressRoute 线路与 vWAN 在同一订阅中，请在订阅中单击“选择 ExpressRoute 线路”  。 
-1. 使用下拉菜单，选择要关联到中心的 ExpressRoute。
-1. 如果 ExpressRoute 线路不在同一订阅中，或者你已获得[授权密钥和对等 ID](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)，请选择“查找兑换授权密钥的线路” 
-1. 输入以下详细信息：
-1. **授权密钥** - 如上所述，由线路所有者生成
-1. **对等线路 URI** - 线路所有者提供的线路 URI，是线路的唯一标识符
-1. **路由权重** - [路由权重](../expressroute/expressroute-optimize-routing.md) - 当来自不同对等互连位置的多个线路连接到同一个中心时，允许你选择某些路径
-1. 单击“查找线路”  并选择线路（如果找到）。
-1. 从下拉列表中选择一个或多个中心，然后单击“保存”  。
+### <a name="existinghub"></a>在现有中心中创建网关
 
-## <a name="vnet"></a>5.将 VNet 连接到中心
+还可以通过编辑现有中心，在现有中心创建网关。
+
+1. 导航到要编辑的虚拟中心，然后选择它。
+2. 在“编辑虚拟中心”页上，选中“包括 ExpressRoute 网关”复选框   。
+3. 选择“确认”以确认所做的更改  。 完全创建中心和中心资源大约需要 30 分钟。
+
+   ![现有中心](./media/virtual-wan-expressroute-portal/edithub.png "编辑中心")
+
+### <a name="to-view-a-gateway"></a>查看网关
+
+创建 ExpressRoute 网关后，可以查看网关详细信息。 导航到中心，选择“ExpressRoute”，然后查看网关  。
+
+![查看网关](./media/virtual-wan-expressroute-portal/viewgw.png "查看网关")
+
+## <a name="connectvnet"></a>将 VNet 连接到中心
 
 此步骤在中心与 VNet 之间创建对等互连。 针对要连接的每个 VNet 重复这些步骤。
 
@@ -92,44 +99,58 @@ ms.locfileid: "67077516"
     * **连接名称** - 为连接命名。
     * **中心** - 选择要与此连接关联的中心。
     * **订阅** - 验证订阅。
-    * **虚拟网络** - 选择要连接到此中心的虚拟网络。 此虚拟网络不能包含现有的虚拟网络网关。
+    * **虚拟网络** - 选择要连接到此中心的虚拟网络。 此虚拟网络不能包含现有的虚拟网络网关（既不能是 VPN 也不能是 ExpressRoute）。
 
+## <a name="connectcircuit"></a>将线路连接到中心网关
 
-## <a name="viewwan"></a>6.查看虚拟 WAN
+创建网关后，就可以将 [ExpressRoute 线路](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)连接到该网关。 请注意，ExpressRoute Global Reach 支持的位置中的 ExpressRoute 高级版线路可以连接到虚拟 WAN ExpressRoute 网关。
 
-1. 导航到虚拟 WAN。
-2. 在“概述”页上，地图中的每个点表示一个中心。 将鼠标悬停在任一点上可以查看中心运行状况的摘要。
-3. 在“中心和连接”部分，可以查看中心状态、站点、区域、VPN 连接状态和传入与传出字节数。
+### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>将线路连接到中心网关
 
-## <a name="viewhealth"></a>7.查看资源运行状况
+在门户中，转到“虚拟中心”->“连接性”->“ExpressRoute”页面  。 如果可以在订阅访问 ExpressRoute 线路，将在线路列表中看到要使用的线路。 如果没有看到任何线路，但已获得授权密钥和对等线路 URI，则可以兑换并连接线路。 请参阅[通过兑换授权密钥进行连接](#authkey)。
 
-1. 导航到 WAN。
-2. 在“WAN”页上的“支持 + 故障排除”部分，单击“运行状况”并查看资源。  
+1. 选择线路。
+2. 选择“连接线路”  。
 
-## <a name="connectmon"></a>8.监视连接
+   ![连接线路](./media/virtual-wan-expressroute-portal/cktconnect.png "连接线路")
 
-创建一个连接，用于监视 Azure VM 与远程站点之间的通信。 有关如何设置连接监视器的信息，请参阅[监视网络通信](~/articles/network-watcher/connection-monitor.md)。 源字段是 Azure 中的 VM IP，目标 IP 是站点 IP。
+### <a name="authkey"></a>通过兑换授权密钥进行连接
 
-## <a name="cleanup"></a>9.清理资源
+使用提供的授权密钥和线路 URI 进行连接。
 
-不再需要这些资源时，可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 删除资源组及其包含的所有资源。 将“myResourceGroup”替换为资源组的名称，并运行以下 PowerShell 命令：
+1. 在 ExpressRoute 页面上，单击“+ 兑换授权密钥” 
 
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
-```
+   ![兑换](./media/virtual-wan-expressroute-portal/redeem.png "兑换")
+2. 在“兑换授权密钥”页上，填写值。
+
+   ![兑换密钥值](./media/virtual-wan-expressroute-portal/redeemkey2.png "兑换密钥值")
+3. 选择“添加”以添加密钥  。
+4. 查看线路。 兑换线路只显示名称（不显示类型、提供程序和其他信息），因为它与用户的订阅不同。
+
+## <a name="to-test-connectivity"></a>测试连接
+
+建立线路连接后，中心连接状态将指示“此中心”，这意味着已建立通向中心 ExpressRoute 网关的连接。 等待大约 5 分钟，然后再测试 ExpressRoute 线路后面的客户端（例如，先前创建的 VNet 中的 VM）的连接性。
+
+如果你的站点连接到与 ExpressRoute 网关位于同一中心的虚拟 WAN VPN 网关，则可以在 VPN 和 ExpressRoute 终结点之间进行双向连接。 支持动态路由 (BGP)。 中心网关的 ASN 是固定的，此时无法编辑。
+
+## <a name="to-change-the-size-of-a-gateway"></a>更改网关的大小
+
+如果要更改 ExpressRoute 网关的大小，请在中心内找到 ExpressRoute 网关，然后从下拉列表中选择缩放单元。 保存所做更改。 更新中心网关需要大约 30 分钟。
+
+![更改网关大小](./media/virtual-wan-expressroute-portal/changescale.png "更改网关大小")
+
+## <a name="to-advertise-default-route-00000-to-endpoints"></a>向终结点播发默认路由 0.0.0.0/0
+
+如果想要 Azure 虚拟中心将默认路由 0.0.0.0/0 播发到 ExpressRoute 终结点，则需要启用“传播默认路由”。
+
+1. 选择“线路”->“…”->“编辑连接”  。
+
+   ![编辑连接](./media/virtual-wan-expressroute-portal/defaultroute1.png "编辑连接")
+
+2. 选择“启用”来传播默认路由  。
+
+   ![传播默认路由](./media/virtual-wan-expressroute-portal/defaultroute2.png "传播默认路由")
 
 ## <a name="next-steps"></a>后续步骤
-
-本教程介绍了如何：
-
-> [!div class="checklist"]
-> * 创建 vWAN
-> * 创建中心
-> * 查找线路并将其关联到中心
-> * 将线路关联到中心
-> * 将 VNet 连接到中心
-> * 查看虚拟 WAN
-> * 查看资源运行状况
-> * 监视连接
 
 若要详细了解虚拟 WAN，请参阅[虚拟 WAN 概述](virtual-wan-about.md)页。

@@ -9,20 +9,22 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 87e4fe3671f419383cb342fdb7dca55a8d2eb45d
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a917176cb06e833745996326520341c1f819c5bf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376269"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465402"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>教程：通过简单实体和短语列表提取名称
 
 在本教程中，请使用**简单**实体从话语中提取雇佣工作名称的机器学习数据。 若要提高提取的准确性，请添加一个短语列表，其中包含特定于简单实体的术语。
 
 简单实体检测在单词或短语中包含的单个数据概念。
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **本教程介绍如何执行下列操作：**
 
@@ -93,7 +95,7 @@ ms.locfileid: "70376269"
 
 1. 在陈述`I want to apply for the new accounting job`中选择`accounting`，在弹出菜单的顶部字段中输入`Job`，然后在弹出菜单中选择“创建新实体”。  
 
-    [![带有“ApplyForJob”意向的 LUIS 的屏幕截图，其中突出显示了创建实体的步骤](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "Screenshot of LUIS with 'ApplyForJob' intent with create entity steps highlighted")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
+    [![LUIS 的屏幕截图，其中突出显示包含创建实体步骤的“ApplyForJob”意向](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "LUIS 的屏幕截图，其中突出显示包含创建实体步骤的“ApplyForJob”意向")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
 1. 在弹出窗口中验证实体名称和类型，然后选择“完成”。 
 
@@ -101,7 +103,7 @@ ms.locfileid: "70376269"
 
 1. 在剩余的话语中，选择词汇或短语，然后从弹出菜单中选择“工作”，将与工作有关的词汇标记为“工作”实体   。 
 
-    [![LUIS 标签的屏幕截图，突出显示了工作实体](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Screenshot of LUIS labeling job entity highlighted")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
+    [![LUIS 的屏幕截图，其中突出显示标记工作实体](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "LUIS 的屏幕截图，其中突出显示标记工作实体")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
 
 ## <a name="add-more-example-utterances-and-mark-entity"></a>添加更多的示例话语并标记实体
@@ -231,7 +233,7 @@ LUIS 应用通过高置信度来查找正确的意向，然后提取工作名称
 
 1. 将新的短语列表命名为`JobNames`，然后将列表从 jobs-phrase-list.csv 复制到“值”文本框中。 
 
-    [![“新建短语列表”弹出对话框的屏幕截图](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Screenshot of create new phrase list dialog pop-up")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
+    [![“新建短语列表”弹出对话框的屏幕截图](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "“新建短语列表”弹出对话框的屏幕截图")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
     如果需要将更多词汇添加到短语列表中，请选择“建议”  ，查看新的“相关值”  ，然后添加任何相关值。 
 
@@ -239,7 +241,7 @@ LUIS 应用通过高置信度来查找正确的意向，然后提取工作名称
 
 1. 选择“完成”，以激活短语列表。 
 
-    [![“新建短语列表”弹出对话框以及短语列表值框中字词的屏幕截图](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Screenshot of create new phrase list dialog pop-up with words in phrase list values box")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
+    [![“新建短语列表”弹出对话框的屏幕截图，在短语列表值框中已填充了词汇](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "“新建短语列表”弹出对话框的屏幕截图，在短语列表值框中已填充了词汇")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
 1. 再次训练并发布应用，以便使用短语列表。
 

@@ -1,26 +1,21 @@
 ---
-title: 使用 Azure Functions 创建第一个 PowerShell 函数
+title: 在 Azure 中创建首个 PowerShell 函数
 description: 了解如何使用 Visual Studio Code 在 Azure 中创建第一个 PowerShell 函数
-services: functions
-keywords: ''
 author: joeyaiello
-manager: jeconnoc
+manager: gwallace
 ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
 ms.service: azure-functions
-ms.devlang: powershell
-ms.openlocfilehash: c9de4cec417625bb8451457652dacb61550c31b0
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 1d6d641e141862b12fed40b800589aad70af2789
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248335"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469409"
 ---
-# <a name="create-your-first-powershell-function-in-azure-preview"></a>在 Azure 中创建第一个 PowerShell 函数（预览）
-
-[!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
+# <a name="create-your-first-powershell-function-in-azure"></a>在 Azure 中创建首个 PowerShell 函数
 
 本快速入门文章逐步说明如何使用 Visual Studio Code 创建第一个[无服务器](https://azure.com/serverless) PowerShell 函数。
 
@@ -66,7 +61,7 @@ ms.locfileid: "72248335"
     > [!NOTE]
     > 本文已设计为在工作区之外完成。 在这种情况下，请不要选择属于工作区内的项目文件夹。
 
-1. 选择“Powershell (预览版)”作为函数应用项目的语言，然后然后选择“Azure Functions v2”。  
+1. 选择“Powershell”作为函数应用项目的语言，然后选择“Azure Functions v2”   。
 
 1. 选择“HTTP 触发器”作为第一个函数的模板，使用 `HTTPTrigger` 作为函数名称，然后选择授权级别“函数”。  
 
@@ -104,9 +99,9 @@ Azure Functions Core Tools 与 Visual Studio Code 相集成，可让在本地运
 
 > [!NOTE]
 > 将函数发布到 Azure 之前，请记得删除对 `Wait-Debugger` 的所有调用。 
-
-> [!NOTE]
-> 在 Azure 中创建函数应用时，系统只会提示输入函数应用名称。 将 azureFunctions.advancedCreation 设置为 true 可让系统提示输入其他所有值。
+>
+> 在 Azure 中创建函数应用时，系统只会提示输入函数应用名称。 其他值已定义好。
+> 要提示输入所有其他值，请将 `azureFunctions.advancedCreation` 设置为 `true`。
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 

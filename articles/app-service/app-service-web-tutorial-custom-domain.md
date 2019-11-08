@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bbb064c358eba2dd64ba9ae86540a30cb56adb66
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 52394eb150a4206b7fb31cdf4b801762511e1a8c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595026"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471365"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -60,9 +60,13 @@ ms.locfileid: "67595026"
 
 打开 [Azure 门户](https://portal.azure.com)，然后使用 Azure 帐户登录。
 
-### <a name="navigate-to-the-app-in-the-azure-portal"></a>导航到 Azure 门户中的应用
+### <a name="select-the-app-in-the-azure-portal"></a>在 Azure 门户中选择应用
 
-从左侧菜单中选择“应用服务”  ，然后选择应用名称。
+搜索并选择“应用服务”  。
+
+![选择应用服务](./media/app-service-web-tutorial-custom-domain/app-services.png)
+
+在“应用服务”页上，选择 Azure 应用的名称  。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/select-app.png)
 
@@ -156,7 +160,7 @@ ms.locfileid: "67595026"
 ![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> 自定义域的“不安全”  标签意味着该域还没有绑定到 SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 SSL 绑定，请参阅[将现有的自定义 SSL 证书绑定到 Azure 应用服务](app-service-web-tutorial-custom-ssl.md)。
+> 自定义域的“不安全”  标签意味着该域还没有绑定到 SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 SSL 绑定，请参阅[在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
 
 如果之前错过了某个步骤或者在某个位置的输入不正确，则会在页面的底部看到验证错误。
 
@@ -240,7 +244,7 @@ ms.locfileid: "67595026"
 ![已添加 A 记录](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> 自定义域的“不安全”  标签意味着该域还没有绑定到 SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 SSL 绑定，请参阅[将现有的自定义 SSL 证书绑定到 Azure 应用服务](app-service-web-tutorial-custom-ssl.md)。
+> 自定义域的“不安全”  标签意味着该域还没有绑定到 SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 SSL 绑定，请参阅[在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
 
 如果之前错过了某个步骤或者在某个位置的输入不正确，则会在页面的底部看到验证错误。
 
@@ -295,7 +299,7 @@ ms.locfileid: "67595026"
 ![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 > [!NOTE]
-> 自定义域的 **Note Secure** 标签意味着该域还没有绑定到 SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 SSL 绑定，请参阅[将现有的自定义 SSL 证书绑定到 Azure 应用服务](app-service-web-tutorial-custom-ssl.md)。
+> 自定义域的 **Note Secure** 标签意味着该域还没有绑定到 SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 SSL 绑定，请参阅[在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
 
 ## <a name="test-in-browser"></a>在浏览器中测试
 
@@ -374,4 +378,4 @@ Set-AzWebApp `
 转到下一教程，了解如何将自定义 SSL 证书绑定到 Web 应用。
 
 > [!div class="nextstepaction"]
-> [将现有的自定义 SSL 证书绑定到 Azure 应用服务](app-service-web-tutorial-custom-ssl.md)
+> [在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)

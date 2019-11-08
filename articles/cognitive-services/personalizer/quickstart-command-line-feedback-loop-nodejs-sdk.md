@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/26/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: ee647668e8b5826706e8d9bb8a82acaf53fd3d8c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: f7667ce99ceaa713332ad9419ffab9d57aa0f075
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515204"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494468"
 ---
 # <a name="quickstart-personalizer-client-library-for-nodejs"></a>快速入门：适用于 Node.js 的个性化体验创建服务客户端库
 
@@ -39,7 +39,7 @@ ms.locfileid: "72515204"
 使用此快速入门有几个步骤：
 
 * 在 Azure 门户中，创建一个个性化体验创建服务资源
-* 在 Azure 门户中，对于个性化体验创建服务资源，在“设置”  页上，更改模型更新频率
+* 在 Azure 门户中，对于个性化体验创建服务资源，在“配置”页上，更改模型更新频率 
 * 在代码编辑器中，创建一个代码文件并编辑该代码文件
 * 在命令行或终端中，从命令行安装 SDK
 * 在命令行或终端中，运行代码文件
@@ -90,7 +90,7 @@ npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 
 ## <a name="change-the-model-update-frequency"></a>更改模型更新频率
 
-在 Azure 门户的“设置”  页上的个性化体验创建服务资源中，将“模型更新频率”  更改为 10 秒。 这将快速训练服务，使你可以看到顶部操作如何针对每次迭代而变化。
+在 Azure 门户的“配置”页上的个性化体验创建服务资源中，将“模型更新频率”更改为 10 秒   。 这将快速训练服务，使你可以看到顶部操作如何针对每次迭代而变化。
 
 ![更改模型更新频率](./media/settings/configure-model-update-frequency-settings.png)
 

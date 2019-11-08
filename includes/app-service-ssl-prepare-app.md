@@ -8,26 +8,30 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: ecdd419331c88e712644851f9213861f882cf0f6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3a44dc35c27cd084e6589482f180b13b258f0b24
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173110"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470996"
 ---
 ## <a name="prepare-your-web-app"></a>准备 Web 应用
 
 若要将自定义 SSL 证书（第三方证书或应用服务证书）绑定到 Web 应用，[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/)必须位于“基本”、“标准”、“高级”或“独立”层。     在此步骤中，请确保 Web 应用位于受支持的定价层。
 
-### <a name="log-in-to-azure"></a>登录 Azure
+### <a name="sign-in-to-azure"></a>登录 Azure
 
 打开 [Azure 门户](https://portal.azure.com)。
 
 ### <a name="navigate-to-your-web-app"></a>导航到 Web 应用
 
-在左侧菜单中单击“应用服务”  ，然后单击 Web 应用的名称。
+搜索并选择“应用服务”  。
 
-![选择 Web 应用](./media/app-service-ssl-prepare-app/select-app.png)
+![选择应用服务](./media/app-service-ssl-prepare-app/app-services.png)
+
+在“应用服务”页上，选择 Azure 应用的名称  。
+
+![在门户中导航到 Azure 应用](./media/app-service-ssl-prepare-app/select-app.png)
 
 登录到 Web 应用的管理页。  
 

@@ -5,24 +5,20 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
-ms.date: 06/17/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: d153c876366c8c747e06bf50a0ea26bcdcea10eb
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 4cee16a4b6d4f87c8f09ad742d9a504cfc5fc394
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303594"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498322"
 ---
-# <a name="what-is-azure-bastion-preview"></a>什么是 Azure Bastion？ （预览版）
+# <a name="what-is-azure-bastion"></a>什么是 Azure Bastion？
 
 Azure Bastion 服务是的一种新型的完全托管平台 PaaS 服务，可在虚拟网络中进行预配。 可通过 SSL 直接在 Azure 门户中实现与虚拟机之间的安全、无缝 RDP/SSH 连接。 在你通过 Azure Bastion 连接时，你的虚拟机无需公共 IP 地址。
 
  Bastion 为预配它的虚拟网络中所有的 VM 提供安全的 RDP 和 SSH 连接。 使用 Azure Bastion 可防止虚拟机向外部公开 RDP/SSH 端口，同时仍然使用 RDP/SSH 提供安全访问。 使用 Azure Bastion，可直接从 Azure 门户连接到虚拟机。 无需额外的客户端、代理或软件。
-
-> [!IMPORTANT]
-> 此公共预览版在提供时没有附带服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
 
 ## <a name="architecture"></a>体系结构
 
@@ -42,7 +38,7 @@ RDP 和 SSH 是连接 Azure 中运行的工作负载的基本方法。 不要通
 
 ## <a name="key-features"></a>主要功能
 
-在公共预览期间可尝试以下功能：
+提供以下功能：
 
 * 在 Azure 门户中直接使用 RDP 和 SSH 连接  ：可以通过单击无缝体验直接在 Azure 门户中进行 RDP 和 SSH 会话。
 * 通过 SSL 和防火墙遍历进行 RDP/SSH 远程会话  ：Azure Bastion 使用基于 HTML5 的 Web 客户端，该客户端自动流式传输到本地设备，使你通过端口 443 上的 SSL 进行 RDP/SSH 会话，支持安全遍历公司防火墙。

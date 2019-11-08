@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 268def74a354b19427849738549fbc0c6b197746
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: e07b1d7e01d743bb46c8d5a21664bf68184c97dd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813405"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488461"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>针对本地 VMware VM 设置到 Azure 的灾难恢复
 
@@ -158,7 +158,7 @@ ms.locfileid: "70813405"
 
 ## <a name="create-a-replication-policy"></a>创建复制策略
 
-1. 打开 [Azure 门户](https://portal.azure.com)，选择“所有资源”  。
+1. 打开 [Azure 门户](https://portal.azure.com)。 搜索并选择“恢复服务保管库”  。
 2. 选择恢复服务保管库（在本教程中为 **ContosoVMVault**）。
 3. 若要创建复制策略，请选择“Site Recovery 基础结构”   > “复制策略”   > “+复制策略”  。
 4. 在“创建复制策略”  中，输入策略名称。 我们使用 **VMwareRepPolicy**。

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: c0c5c5fe899c9b9b898973a88c7dac4256959ee4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 99a3ca0115611f45ed080c39767d13e087b8efb8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779770"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464217"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>教程：在 Azure DNS 中托管域
 
@@ -40,12 +40,12 @@ ms.locfileid: "57779770"
 
 ## <a name="create-a-dns-zone"></a>创建 DNS 区域
 
-1. 登录到 Azure 门户。
-1. 在左上方，选择“创建资源” > “网络” > “DNS 区域”以打开“创建 DNS 区域”页面。
+1. 转到 [Azure 门户网站](https://portal.azure.com/)以创建 DNS 区域。 搜索并选择“DNS 区域”  。
 
    ![DNS 区域](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
-1. 在“创建 DNS 区域”页上输入以下值，然后选择“创建”：
+1. 选择“创建 DNS 区域”  。
+1. 在“创建 DNS 区域”页上输入以下值，然后选择“创建”：  
 
    | **设置** | **值** | **详细信息** |
    |---|---|---|
@@ -58,7 +58,7 @@ ms.locfileid: "57779770"
 
 在将 DNS 区域委托给 Azure DNS 之前，需要知道区域的名称服务器。 每次创建区域时，Azure DNS 都会分配某个池中的名称服务器。
 
-1. 创建 DNS 区域以后，在 Azure 门户的“收藏夹”窗格中选择“所有资源”。 在“所有资源”页中，选择你的 DNS 区域。 如果所选订阅中已包含多个资源，则可在“按名称筛选”框中输入你的域名，轻松访问应用程序网关。 
+1. 创建 DNS 区域以后，在 Azure 门户的“收藏夹”窗格中选择“所有资源”。   在“所有资源”页中，选择你的 DNS 区域。  如果所选订阅中已包含多个资源，则可在“按名称筛选”框中输入你的域名，轻松访问应用程序网关  。 
 
 1. 从“DNS 区域”页中检索名称服务器。 在本示例中，为区域 contoso.net 分配了名称服务器 *ns1-01.azure-dns.com*、*ns2-01.azure-dns.net*、*ns3-01.azure-dns.org* 和 *ns4-01.azure-dns.info*：
 
@@ -77,11 +77,11 @@ Azure DNS 自动在你的区域中为所分配的名称服务器创建权威 NS 
 > [!NOTE]
 > 复制每个名称服务器地址时，请确保复制地址末尾的尾随句点。 尾随句点表示完全限定域名的结束。 如果 NS 名称末尾没有句点，一些注册机构会追加句点。 若要符合 DNS RFC，请包括尾随句点。
 
-Azure DNS 目前不支持使用你自己区域中的名称服务器的委托（有时称为“虚构名称服务器”）。
+Azure DNS 目前不支持使用你自己区域中的名称服务器的委托（有时称为“虚构名称服务器”）  。
 
 ## <a name="verify-the-delegation"></a>验证委托
 
-完成委托后，可以使用 nslookup 等工具来查询区域的授权起始点 (SOA) 记录，验证名称解析是否正常工作。 SOA 记录是在创建区域时自动创建的。 在完成委托后，你可能需要等待 10 分钟或更长时间，然后才能成功验证它是否正常工作。 更改可能需要花费一段时间才能通过 DNS 系统进行传播。
+完成委托后，可以使用 nslookup 等工具来查询区域的授权起始点 (SOA) 记录，验证名称解析是否正常工作  。 SOA 记录是在创建区域时自动创建的。 在完成委托后，你可能需要等待 10 分钟或更长时间，然后才能成功验证它是否正常工作。 更改可能需要花费一段时间才能通过 DNS 系统进行传播。
 
 无需指定 Azure DNS 名称服务器。 如果正确设置了委托，正常的 DNS 解析过程会自动找到名称服务器。
 
@@ -111,7 +111,7 @@ Azure DNS 目前不支持使用你自己区域中的名称服务器的委托（�
 
 如果打算继续执行下一教程，可以保留 **contosoRG** 资源组。 否则，请删除 **contosoRG** 资源组以删除在本教程中创建的资源。
 
-- 选择“contosoRG”资源组，然后选择“删除资源组”。 
+- 选择“contosoRG”资源组，然后选择“删除资源组”   。 
 
 ## <a name="next-steps"></a>后续步骤
 

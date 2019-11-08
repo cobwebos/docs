@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9ac95896e67338437325e8290a96b8e42b2fa3a7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 30e7059605ef86e6afd86251db0e416c9143a9ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374248"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475107"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>教程：从单页应用程序使用 Azure Active Directory B2C 授予对 ASP.NET Core Web API 的访问权限
 
@@ -46,7 +46,7 @@ ms.locfileid: "72374248"
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-记下 `demo.read` 范围的“完整范围值”，以便在稍后的步骤中配置单页应用程序时使用。  完整范围值类似于 `https://yourtenant.onmicrosoft.com/api/demo.read`。
+在“范围”下记录 `demo.read` 范围的值，以便在稍后配置单页应用程序的步骤中使用  。 完整范围值类似于 `https://contosob2c.onmicrosoft.com/api/demo.read`。
 
 ## <a name="grant-permissions"></a>授予权限
 
@@ -133,8 +133,8 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 
 1. 打开在上一篇教程中下载或克隆的 [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa] 项目中的 *index.html* 文件。
 1. 使用前面创建的 *demo.read* 范围的 URI 以及 Web API 的 URL 配置示例。
-    1. 在 `appConfig` 定义中，将 `b2cScopes` 值替换为范围的完整 URI（前面记下的“完整范围值”）。 
-    1. 将 `webApi` 值更改为在上一部分指定的 `applicationURL` 值。
+    1. 在 `appConfig` 定义中，将 `b2cScopes` 值替换为范围（之前记录的“范围”值）的完整 URI  。
+    1. 将 `webApi` 值更改为在前面的步骤中注册 Web API 应用程序时所添加的重定向 URI。
 
     `appConfig` 定义应类似于以下代码块（请用你的租户名称替代 `<your-tenant-name>`）：
 

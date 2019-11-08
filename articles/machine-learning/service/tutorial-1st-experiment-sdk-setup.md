@@ -1,7 +1,7 @@
 ---
 title: 教程：创建第一个 ML 试验：设置
 titleSuffix: Azure Machine Learning
-description: 在本系列教程中，你将完成端到端的步骤，以开始在 Jupyter Notebook 中运行 Azure 机器学习 Python SDK。  第一部分介绍如何创建一个云笔记本服务器环境，以及如何创建一个工作区来管理试验和机器学习模型。
+description: 在本教程中，你将开始使用 Jupyter Notebook 中运行的 Azure 机器学习 Python SDK。  在第 1 部分中，你将创建一个用于管理试验和 ML 模型的工作区。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,23 +10,25 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 3bbda22689bb330acc836173162a64b840f1bbd8
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 891615ea301348b83124823b10403964d394c224
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828039"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476064"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>教程：开始使用 Python SDK 创建第一个 ML 试验
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本教程中，你将完成端到端的步骤，以开始使用 Jupyter Notebook 中运行的 Azure 机器学习 Python SDK。 本教程是**由两个部分组成的系列教程的第一部分**，介绍如何设置和配置 Python 环境，以及如何创建工作区来管理试验模型和机器学习模型。 [**第二部分**](tutorial-1st-experiment-sdk-train.md)是在本文的基础上编写的，介绍如何训练多个机器学习模型，以及如何使用 Azure 门户和 SDK 来管理模型。
+在本教程中，你将完成端到端的步骤，以开始使用 Jupyter Notebook 中运行的 Azure 机器学习 Python SDK。 本教程是**由两个部分组成的系列教程的第一部分**，介绍如何设置和配置 Python 环境，以及如何创建工作区来管理试验模型和机器学习模型。 [第二部分](tutorial-1st-experiment-sdk-train.md)是在本文的基础上编写的，介绍如何训练多个机器学习模型，以及如何使用 Azure 机器学习工作室和 SDK 来管理模型  。
 
 本教程介绍以下操作：
 
 > [!div class="checklist"]
 > * 创建要在下一篇教程中使用的 [Azure 机器学习工作区](concept-workspace.md)。
 > * 将教程笔记本克隆到工作区中的文件夹。
-> * 创建一个基于云的 Jupyter 笔记本 VM，其中已安装并预配置了 Azure 机器学习 Python SDK。
+> * 创建一个基于云的计算实例，其中已安装并预配置了 Azure 机器学习 Python SDK。
+
 
 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
@@ -46,23 +48,27 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 本示例使用工作区中的云笔记本服务器来实现免安装的预配置体验。 如果你希望控制环境、包和依赖项，请使用[自己的环境](how-to-configure-environment.md#local)。
 
-在工作区登陆页（预览）中完成以下试验设置和运行步骤，该页面是包含用于为所有技能级别的数据科学实践者执行数据科学方案的机器学习工具的合并界面。
+在 Azure 机器学习工作室中完成以下试验设置和运行步骤，该工作室是包含用于为所有技能级别的数据科学实践者执行数据科学方案的机器学习工具的合并界面。
 
-1. 登录到[工作区登陆页面](https://ml.azure.com/)。
+1. 登录到 [Azure 机器学习工作室](https://ml.azure.com/)。
 
 1. 选择创建的订阅和工作区。
 
-1. 选择左侧的“笔记本和文件”。 
+1. 选择左侧的“笔记本”  。
 
-1. 打开 **samples** 文件夹。
+1. 打开“示例”文件夹  。
+
+1. 打开 Python 文件夹  。
+
+1. 打开包含版本号的文件夹。  此数字表示 Python SDK 的当前版本。
 
 1. 选择 **tutorials** 文件夹右侧的“...”，然后选择“克隆”。  
 
     ![克隆文件夹](media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png)
 
-1. 对于访问工作区的每个用户，都会显示一个文件夹。  选择要将 **tutorial** 文件夹克隆到的文件夹。
+1. 将显示文件夹列表，其中显示了访问工作区的每个用户。  选择要将“教程”文件夹克隆到其中的文件夹  。
 
-## <a name="a-nameopenselect-a-vm-to-run-the-notebook"></a><a name="open">选择要运行笔记本的 VM
+## <a name="a-nameopenopen-the-cloned-notebook"></a><a name="open">打开克隆的笔记本
 
 1. 在“用户文件”下打开你的文件夹，然后打开克隆的 **tutorials** 文件夹。 
 
@@ -73,11 +79,9 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
     
 1. 选择 **tutorials** 文件夹中的 **tutorial-1st-experiment-sdk-train.ipynb** 文件。
 
-1. 在顶部栏上，选择用来运行笔记本的笔记本 VM。 这些 VM 中已预先配置了运行 Azure 机器学习所需的一切设置。 可以选择任何工作区用户创建的 VM。 
+1. 在顶部栏上，选择用来运行笔记本的计算实例。 这些 VM 中已预先配置了[运行 Azure 机器学习所需的一切设置](concept-compute-instance.md#contents)。 可以选择任何工作区用户创建的 VM。 
 
-1. 如果未找到任何 VM，请选择“+ 新建 VM”来创建 VM。 
-
-    ![创建 VM](media/tutorial-1st-experiment-sdk-setup/no-vm.png)
+1. 如果未找到任何 VM，请选择“+ 添加计算”来创建 VM  。
 
     1. 创建 VM 时请提供其名称。  该名称必须包含 2 到 16 个字符。 有效字符为字母、数字和 - 字符。该名称必须在整个 Azure 订阅中唯一。
 
@@ -85,6 +89,9 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. VM 可用后，它将显示在顶部工具栏中。  现在，可以使用工具栏中的“全部运行”，或者在笔记本的代码单元中按 **Shift+Enter**，来运行笔记本。 
 
+> [!NOTE]
+> 计算实例仅适用于区域为“美国中北部”或“英国南部”的工作区   。
+>如果你的工作区在任何其他区域，则可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm)。  可以使用笔记本 VM 或计算实例来运行笔记本。
 
 ## <a name="next-steps"></a>后续步骤
 

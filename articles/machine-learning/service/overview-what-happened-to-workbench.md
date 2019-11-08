@@ -11,18 +11,18 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 724e120a8ed92f71ff2e7f2bdda7d1884d80bc10
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 3c98da50d0c50a7fdb94f579444f3c09c1096d18
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997150"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476413"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 有何遭遇？
 
-为了给改进后的[体系结构](concept-azure-machine-learning-architecture.md)让路，2018 年 9 月版本弃用并替换了 Azure Machine Learning Workbench 应用程序和其他一些早期功能。
+为了给改进后的[体系结构](concept-azure-machine-learning-architecture.md)让路，“2018 年 9 月”版本弃用并替换了 Azure Machine Learning Workbench 应用程序和其他一些早期功能  。
 
-为改善用户体验，此版本包含许多重大更新，这些更新由客户反馈促成。 从实验运行到模型部署的核心功能没有变化。 但现在，可以使用可靠的 <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a> 和 [Azure CLI](reference-azure-machine-learning-cli.md) 来完成机器学习任务和管道。
+为改善用户体验，此版本包含许多重大更新，这些更新由客户反馈促成。 从实验运行到模型部署的核心功能没有变化。 但现在，可以使用可靠的 <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a>、R SDK 和 [Azure CLI](reference-azure-machine-learning-cli.md) 来完成机器学习任务和管道。
 
 在旧版 Azure 机器学习中创建的大多数项目，都存储在自己的本地存储或云存储中。 这些项目永远不会消失。
 
@@ -42,7 +42,7 @@ ms.locfileid: "70997150"
 
 重新设计的[架构](concept-azure-machine-learning-architecture.md)，易于使用。 无需使用多个 Azure 资源和帐户，只需使用 [Azure 机器学习工作区](concept-workspace.md)即可。 可以在 [Azure 门户](how-to-manage-workspace.md)中快速创建工作区。 通过使用工作区，多个用户可以存储定型和部署计算目标、模型试验、Docker 映像、已部署模型等。
 
-虽然当前版本中有新的已改进的 CLI 和 SDK 客户端，但桌面工作台应用程序本身已经停用。 可以在 [Azure 门户的工作区仪表板](how-to-track-experiments.md#view-the-experiment-in-the-web-portal)中管理试验。 借助仪表板，可以获取试验历史记录、管理附加到工作区的计算目标、管理模型和 Docker 映像，甚至还能部署 Web 服务。
+虽然当前版本中有新的已改进的 CLI 和 SDK 客户端，但桌面工作台应用程序本身已经停用。 可以在 [Azure 机器学习工作室的工作区仪表板](how-to-track-experiments.md#view-the-experiment-in-the-web-portal)中管理试验。 借助仪表板，可以获取试验历史记录、管理附加到工作区的计算目标、管理模型和 Docker 映像，甚至还能部署 Web 服务。
 
 <a name="timeline"></a>
 
@@ -56,7 +56,7 @@ ms.locfileid: "70997150"
 
 旧的运行历史记录不再可访问，你仍然可以在最新版本中查看运行情况。
 
-运行历史记录现在称为“试验”  。 可使用 SDK、CLI 或 Azure 门户收集并探索模型的试验。
+运行历史记录现在称为“试验”  。 可使用 SDK、CLI 或 Azure 机器学习工作室收集并探索模型的试验。
 
 门户的工作区仪表板仅在 Microsoft Edge、Chrome 和 Firefox 浏览器上受支持：
 
@@ -112,7 +112,7 @@ run = exp.submit(source_directory=script_folder,
 
 ## <a name="what-about-domain-packages"></a>域包又如何？
 
-计算机视觉、文本分析和预测的域包无法与最新版 Azure 机器学习结合使用。 不过，仍可以使用最新版 Azure 机器学习 Python <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>，生成并定型计算机视觉、文本分析和预测模型。 若要了解如何迁移使用计算机视觉、文本分析和预测包构建的已有模型，请联系 [AML-Packages@microsoft.com](mailto:AML-Packages@microsoft.com)。
+计算机视觉、文本分析和预测的域包无法与最新版 Azure 机器学习结合使用。 不过，仍可以使用最新版 Azure 机器学习 Python <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>，生成并定型计算机视觉、文本分析和预测模型。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -120,6 +120,9 @@ run = exp.submit(source_directory=script_folder,
 
 有关该服务的概述，请阅读[什么是 Azure 机器学习？](overview-what-is-azure-ml.md)。
 
-使用由两部分（[设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)和[训练第一个模型](tutorial-1st-experiment-sdk-train.md)）组成的教程创建第一个试验
-
-有关此工作流的更深入体验，请参阅[完整教程](tutorial-train-models-with-aml.md)，其中包含使用 Azure 机器学习训练和部署模型的详细步骤。
+通过首选方法创建首个试验：
+  + [使用 Python 笔记本训练和部署 ML 模型](tutorial-1st-experiment-sdk-setup.md)
+  + [使用 R Markdown 训练和部署 ML 模型]( tutorial-1st-r-experiment.md) 
+  + [通过自动化机器学习训练和部署 ML 模型](ui-tutorial-automobile-price-train-score.md) 
+  + [使用设计器的拖放功能进行训练和部署](tutorial-first-experiment-automated-ml.md) 
+  + [使用机器学习 CLI 训练和部署模型](tutorial-train-deploy-model-cli.md)

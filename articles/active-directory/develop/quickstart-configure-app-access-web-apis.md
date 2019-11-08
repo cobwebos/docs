@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5100af99046a03345230ed0468071766aae1c77b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 30b0649f23403363ca4ab4101a2d5cf7a42d505b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389607"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473700"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>快速入门：配置客户端应用程序以访问 Web API
 
@@ -57,7 +57,8 @@ ms.locfileid: "72389607"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务  ，然后选择“应用注册”。 
+1. 搜索并选择“Azure Active Directory”  。 
+1. 在左侧窗格中，选择“应用注册”  。
 1. 找到并选择要配置的应用程序。 选择应用以后，会看到应用程序的“概览”页或主注册页。 
 1. 按步骤将应用程序配置为访问 Web API：
     * [将重定向 URL 添加到应用程序](#add-redirect-uris-to-your-application)

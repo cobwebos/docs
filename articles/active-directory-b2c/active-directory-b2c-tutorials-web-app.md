@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 09/19/2019
+ms.date: 10/14/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b42634aa86f210382adb1ae224c847a92d89109b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 587848c6718a003bf781f81d0298c73ef1549bb3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103309"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474876"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 在 Web 应用程序中启用身份验证
 
@@ -35,9 +35,15 @@ ms.locfileid: "71103309"
 * [创建用户流](tutorial-create-user-flows.md)，以便在应用程序中启用用户体验。
 * 安装带有 ASP.NET 和 Web 开发  工作负荷的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 
-## <a name="update-the-application"></a>更新应用程序
+## <a name="update-the-application-registration"></a>更新应用程序注册
 
-在按照先决条件完成的教程中，已在 Azure AD B2C 中添加了 Web 应用程序。 若要与教程中的示例通信，需添加一个指向 Azure AD B2C 中的应用程序的重定向 URI。
+在按照先决条件完成的教程中，你已在 Azure AD B2C 中注册了 Web 应用程序。 若要与教程中的示例通信，需添加重定向 URI 并为注册的应用程序创建客户端机密（密钥）。
+
+### <a name="add-a-redirect-uri-reply-url"></a>添加重定向 URI（回复 URL）
+
+你可以使用当前的“应用程序”体验，或者使用我们新推出的统一“应用注册(预览版)”体验来更新应用程序   。 [详细了解预览版体验](http://aka.ms/b2cappregintro)。
+
+#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
@@ -45,8 +51,26 @@ ms.locfileid: "71103309"
 1. 选择“应用程序”，然后选择“webapp1”应用程序。  
 1. 在“回复 URL”下添加 `https://localhost:44316`。 
 1. 选择“保存”。 
-1. 在属性页上，记录你在配置 Web 应用程序时要使用的应用程序 ID。
-1. 依次选择“密钥”、“生成密钥”、“保存”。    记录你在配置 Web 应用程序时要使用的密钥。
+1. 在属性页上，记录应用程序 ID，以便在稍后配置 Web 应用程序时使用。
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 在顶部菜单中选择“目录 + 订阅”  筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 在左侧菜单中，选择“Azure AD B2C”  。 或者，选择“所有服务”  并搜索并选择“Azure AD B2C”  。
+1. 依次选择“应用注册(预览版)”、“拥有的应用程序”选项卡，然后选择“webapp1”应用程序    。
+1. 选择“身份验证”，然后选择“尝试新体验”（如果显示）   。
+1. 在“Web”下，选择“添加 URI”链接，输入 `https://localhost:44316`，然后选择“保存”    。
+1. 选择“概述”。 
+1. 记录“应用程序（客户端）ID”，以便在稍后配置 Web 应用程序时使用  。
+
+* * *
+
+### <a name="create-a-client-secret"></a>创建客户端机密
+
+接下来，为注册的 Web 应用程序创建客户端机密。 Web 应用程序代码示例在请求令牌时使用此代码来证明其身份。
+
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 ## <a name="configure-the-sample"></a>配置示例
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 07/17/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 6d12b006583c004d12c50bda171c82397ff7949f
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 565620f477382ff81f854336dbee7bdb1ad06f01
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276607"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469701"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure 门户
 
@@ -30,7 +30,7 @@ ms.locfileid: "68276607"
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
-1. 选择 Azure 门户左侧菜单上的“创建资源”  。 此时会显示“新建”窗口。 
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。 此时会显示“新建”窗口。 
 
 2. 选择“网络”  ，然后在“特色”列表中选择“应用程序网关”   。
 
@@ -43,7 +43,7 @@ ms.locfileid: "68276607"
 
      ![新建应用程序网关：基础](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
-2.  Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创建新的虚拟网络，也可以使用现有的虚拟网络。 在此示例中，将在创建应用程序网关的同时创建新的虚拟网络。 在不同的子网中创建应用程序网关实例。 在本示例中创建两个子网：一个用于应用程序网关，另一个用于后端服务器。
+2. Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创建新的虚拟网络，也可以使用现有的虚拟网络。 在此示例中，将在创建应用程序网关的同时创建新的虚拟网络。 在不同的子网中创建应用程序网关实例。 在本示例中创建两个子网：一个用于应用程序网关，另一个用于后端服务器。
 
     在“配置虚拟网络”下，通过选择“新建”创建新的虚拟网络   。 在打开的“创建虚拟网络”窗口中，输入以下值以创建虚拟网络和两个子网  ：
 
@@ -135,7 +135,7 @@ ms.locfileid: "68276607"
 
 ### <a name="create-a-virtual-machine"></a>创建虚拟机
 
-1. 在 Azure 门户中，选择“创建资源”。  此时会显示“新建”窗口。 
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。 此时会显示“新建”窗口。 
 2. 选择“计算”，然后在“常用”列表中选择“Windows Server 2016 Datacenter”    。 此时会显示“创建虚拟机”页。 <br>应用程序网关可以将流量路由到其后端池中使用的任何类型的虚拟机。 在此示例中，可以使用 Windows Server 2016 Datacenter。
 3. 对于以下虚拟机设置，请在“基本信息”选项卡中输入相应值： 
 
@@ -176,7 +176,7 @@ ms.locfileid: "68276607"
 
 ### <a name="add-backend-servers-to-backend-pool"></a>将后端服务器添加到后端池
 
-1. 选择“所有资源”，然后选择“myAppGateway”。  
+1. 在 Azure 门户菜单上，选择“所有资源”，或搜索并选择“所有资源”   。 然后选择“myAppGateway”  。
 
 2. 从左侧菜单中选择“后端池”。 
 
@@ -205,7 +205,8 @@ ms.locfileid: "68276607"
 如果不再需要通过应用程序网关创建的资源，请删除资源组。 删除资源组时，也会删除应用程序网关和及其所有的相关资源。 
 
 若要删除资源组，请执行以下操作：
-1. 在 Azure 门户的左侧菜单上选择“资源组”  。
+
+1. 在 Azure 门户菜单上，选择“资源组”，或搜索并选择“资源组”   。
 2. 在“资源组”页的列表中搜索“myResourceGroupAG”，然后将其选中。  
 3. 在“资源组”页上，选择“删除资源组”   。
 4. 在“键入资源组名称”字段中输入“myResourceGroupAG”，然后选择“删除”   

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: erhopf
-ms.openlocfilehash: ad90a6443cc1c94bcdb730e783b82dfdd4798676
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b1f23ffac26cb48493f013290654189162861a27
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553077"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468737"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>快速入门：在 Windows 上运行语音设备 SDK 示例应用
 
@@ -89,14 +89,14 @@ ms.locfileid: "68553077"
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
     ```
 
-1. 默认唤醒字（关键字）为“Computer”。 还可以尝试提供的其他唤醒字，例如“Machine”或“Assistant”。 这些替换唤醒字的资源文件位于语音设备 SDK 的 keyword 文件夹中。 例如，`C:\SDSDK\JRE-Sample-Release\keyword\Computer` 包含用于唤醒词“Computer”的文件。
+1. 默认关键字为“Computer”。 还可以尝试所提供的其他关键字之一，例如“Machine”或“Assistant”。 这些备用关键字的资源文件位于语音设备 SDK 的 keyword 文件夹中。 例如，`C:\SDSDK\JRE-Sample-Release\keyword\Computer` 包含用于关键字“Computer”的文件。
 
    > [!TIP]
-   > 还可以[创建自定义唤醒字](speech-devices-sdk-create-kws.md)。
+   > 还可以[创建自定义关键字](speech-devices-sdk-create-kws.md)。
 
-    若要使用新的唤醒词，请更新 `FunctionsList.java` 中的下面两行，并将唤醒词包复制到应用。 例如，若要使用唤醒词包 `kws-machine.zip` 中的唤醒词“Machine”，请执行以下操作：
+    要使用新的关键字，请更新 `FunctionsList.java` 中的下面两行，并将关键字包复制到应用。 例如，要使用关键字包 `kws-machine.zip` 中的关键字“Machine”，请执行以下操作：
 
-   * 将该唤醒词包复制到项目文件夹 **target/classes** 中。
+   * 将该关键字包复制到项目文件夹“target/classes”中  。
 
    * 使用关键字和包名称更新 `FunctionsList.java`：
 

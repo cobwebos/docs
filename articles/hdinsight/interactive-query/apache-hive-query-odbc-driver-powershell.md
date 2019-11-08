@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
-ms.openlocfilehash: 04771ddc633c210ce8c7b3c42a9e46cb2f1ed349
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: f6139bb98fa0272e43c8e180d4ec029f7a7538bb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122175"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494322"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>教程：使用 ODBC 和 PowerShell 查询 Apache Hive
 
@@ -36,7 +36,7 @@ ms.locfileid: "71122175"
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>安装 Microsoft Hive ODBC 驱动程序
 
-下载并安装 [Microsoft Hive ODBC 驱动程序](https://go.microsoft.com/fwlink/?LinkID=286698)。
+下载并安装 [Microsoft Hive ODBC 驱动程序](https://www.microsoft.com/download/details.aspx?id=40886)。
 
 ## <a name="create-apache-hive-odbc-data-source"></a>创建 Apache Hive ODBC 数据源
 
@@ -44,7 +44,7 @@ ms.locfileid: "71122175"
 
 1. 从 Windows 中导航到“开始”   > “Windows 管理工具”   > “ODBC 数据源(32 位)/(64 位)  。  此时将打开“ODBC 数据源管理员”  窗口。
 
-    ![ODBC 数据源管理器](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "使用ODBC 数据源管理器配置 DSN")
+    ![OBDC 数据源管理器](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "使用 ODBC 数据源管理器配置 DSN")
 
 1. 在”用户 DSN”选项卡中，选择“添加”，打开“创建新数据源”窗口    。
 
