@@ -147,6 +147,8 @@
           href: ingress-controller-letsencrypt-certificate-application-gateway.md
         - name: 向应用程序网关公开 WebSocket
           href: ingress-controller-expose-websocket-server.md
+        - name: 根据应用程序网关指标自动缩放 AKS Pod
+          href: ingress-controller-autoscale-pods.md
     - name: 按 URL 路由
       items:
         - name: Azure PowerShell

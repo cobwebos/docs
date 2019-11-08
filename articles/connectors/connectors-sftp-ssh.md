@@ -10,16 +10,16 @@ ms.reviewer: divswa, klam, LADocs
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: 33c6007ebc429bb0d95d702ae9b90f9ac411a88c
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: a48ba0d2d691314a1ca7c91ac7ae27b62fbb379b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695191"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825242"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
-若要使用[安全外壳 (SSH)](https://www.ssh.com/ssh/protocol/) 协议自动完成用于在[安全文件传输协议 (SFTP)](https://www.ssh.com/ssh/sftp/) 服务器上监视、创建、发送和接收文件的任务，可以使用 Azure 逻辑应用和 SFTP-SSH 连接器来生成并自动完成集成工作流。 SFTP 是通过任何可靠数据流提供文件访问、文件传输和文件管理的网络协议。 下面是可以自动完成的一些示例任务：
+若要使用[安全外壳 (SSH)](https://www.ssh.com/ssh/sftp/) 协议自动完成用于在[安全文件传输协议 (SFTP)](https://www.ssh.com/ssh/protocol/) 服务器上监视、创建、发送和接收文件的任务，可以使用 Azure 逻辑应用和 SFTP-SSH 连接器来生成并自动完成集成工作流。 SFTP 是通过任何可靠数据流提供文件访问、文件传输和文件管理的网络协议。 下面是可以自动完成的一些示例任务：
 
 * 添加或更改文件时进行监视。
 * 获取、创建、复制、重命名、更新、列出和删除文件。
@@ -27,7 +27,7 @@ ms.locfileid: "71695191"
 * 获取文件内容和元数据。
 * 将存档提取到文件夹。
 
-可以使用触发器来监视 SFTP 服务器上的事件，并使输出可用于其他操作。 可以使用操作针对 SFTP 服务器执行各种任务。 还可以让逻辑应用中的其他操作使用 SFTP 操作的输出。 例如，如果你定期从 SFTP 服务器检索文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件警报。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+可以使用触发器来监视 SFTP 服务器上的事件，并使输出可用于其他操作。 可以使用操作针对 SFTP 服务器执行各种任务。 还可以让逻辑应用中的其他操作使用 SFTP 操作的输出。 例如，如果你定期从 SFTP 服务器检索文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件警报。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 有关 SFTP SSH 连接器与 SFTP 连接器之间的差异，请参阅本主题后面的[比较 sftp-SSH 与 sftp](#comparison)部分。
 
@@ -49,7 +49,7 @@ ms.locfileid: "71695191"
 
 * 使用 [SSH.NET 库](https://github.com/sshnet/SSH.NET)，该库是支持 .NET 的开源安全外壳 (SSH) 库。
 
-* 默认情况下，SFTP SSH 操作可以读取或写入*大小为 1 GB 或更小*，但每次只显示*15 MB*的文件。 若要处理大于 15 MB 的文件，SFTP SSH 操作可以使用[消息块](../logic-apps/logic-apps-handle-large-messages.md)。 但是，复制文件操作仅支持 15 MB 的文件，因为该操作不支持消息块。 SFTP SSH 触发器不支持分块。
+* 默认情况下，SFTP SSH 操作可以读取或写入*大小为 1 GB 或更小*，但每次只显示*15 MB*的文件。 若要处理大于 15 MB 的文件，SFTP SSH 操作可以使用[消息块](../logic-apps/logic-apps-handle-large-messages.md)。 若要上传大型文件，还需要读取和写入权限。 但是，复制文件操作仅支持 15 MB 的文件，因为该操作不支持消息块。 SFTP SSH 触发器不支持分块。
 
 * 提供“创建文件夹”操作，用于在 SFTP 服务器上的指定路径中创建文件夹。
 
@@ -61,13 +61,13 @@ ms.locfileid: "71695191"
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* SFTP 服务器地址和帐户凭据，可让逻辑应用访问 SFTP 帐户。 还需要有权访问 SSH 私钥和 SSH 私钥密码。
+* SFTP 服务器地址和帐户凭据，可让逻辑应用访问 SFTP 帐户。 还需要有权访问 SSH 私钥和 SSH 私钥密码。 若要在上传大文件时使用分块，需要读写权限。
 
   > [!IMPORTANT]
   >
   > SFTP-SSH 连接器仅支持以下私钥、格式、算法和指纹：
   >
-  > * **私钥格式**：RSA （Rivest Rivest-shamir-adleman Rivest-shamir-adleman）和 DSA （数字签名算法）密钥，采用 OpenSSH 和 ssh.com 格式。 如果你的私钥采用 PuTTY （. .ppk）文件格式，请先[将该密钥转换为 OpenSSH （pem）文件格式](#convert-to-openssh)。
+  > * **私钥格式**： RSA （Rivest rivest-shamir-adleman rivest-shamir-adleman）和 DSA （数字签名算法）密钥，采用 OpenSSH 和 ssh.com 格式。 如果你的私钥采用 PuTTY （. .ppk）文件格式，请先[将该密钥转换为 OpenSSH （pem）文件格式](#convert-to-openssh)。
   >
   > * **加密算法**：DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC 和 AES-256-CBC
   >
@@ -86,8 +86,8 @@ SFTP SSH 触发器的工作方式是轮询 SFTP 文件系统，并查找自上�
 
 | SFTP 客户端 | 操作 |
 |-------------|--------|
-| Winscp | 转到“选项” > “首选项” > “传输” > “编辑” > “保留时间戳” > “禁用” |
-| FileZilla | 转到“传输” > “保留已传输文件的时间戳” > “禁用” |
+| Winscp | 转到“选项” **“首选项”** “传输” > “编辑” **“保留时间戳”** “禁用” >  >  >  >  |
+| FileZilla | 转到“传输” **“保留已传输文件的时间戳”** “禁用” >  >  |
 |||
 
 当触发器找到新文件时，会检查该新文件是否完整，以及是否未部分写入。 例如，当触发器检查文件服务器时，可能正在更改某个文件。 为了避免返回部分写入的文件，该触发器会记录具有最近更改的文件的时间戳，但不会立即返回该文件。 仅当再次轮询服务器时，触发器才会返回该文件。 有时，此行为可能会导致延迟，长达触发器轮询间隔的两倍。
@@ -134,7 +134,7 @@ SFTP SSH 触发器的工作方式是轮询 SFTP 文件系统，并查找自上�
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
+1. 登录 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
 1. 对于空白逻辑应用，请在搜索框中输入“sftp ssh”作为筛选器。 在触发器列表下，选择所需的触发器。
 
@@ -154,7 +154,7 @@ SFTP SSH 触发器的工作方式是轮询 SFTP 文件系统，并查找自上�
 
    1. 在文本编辑器中打开 SSH 私钥文件。 这些步骤以记事本为例。
 
-   1. 在记事本的 "**编辑**" 菜单上，选择 "全**选**"。
+   1. 在记事本的“编辑”菜单中，选择“全选”。
 
    1. 选择“编辑” > “复制”。
 
@@ -168,7 +168,7 @@ SFTP SSH 触发器的工作方式是轮询 SFTP 文件系统，并查找自上�
 
 <a name="file-added-modified"></a>
 
-### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP - SSH 触发器：添加或修改文件时
+### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP-SSH 触发器：添加或修改文件时
 
 在 SFTP 服务器上添加或更改文件时，此触发器将启动逻辑应用工作流。 例如，可以添加一个条件，用于检查文件内容，并根据该内容是否符合指定的条件来获取内容。 然后可以添加一个操作，用于获取文件内容并将其放在 SFTP 服务器上的某个文件夹中。
 
@@ -176,7 +176,7 @@ SFTP SSH 触发器的工作方式是轮询 SFTP 文件系统，并查找自上�
 
 <a name="get-content"></a>
 
-### <a name="sftp---ssh-action-get-content-using-path"></a>SFTP - SSH 操作：使用路径获取内容
+### <a name="sftp---ssh-action-get-content-using-path"></a>SFTP-SSH 操作：使用路径获取内容
 
 此操作从 SFTP 服务器上的文件中获取内容。 例如，可以在前面的示例中添加触发器，并添加文件内容必须符合的条件。 如果条件为 true，则可以运行获取内容的操作。
 

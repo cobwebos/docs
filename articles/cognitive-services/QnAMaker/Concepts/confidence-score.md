@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 4e6d86cb3fa304c8e85e7d0ff4a2810be1dc75af
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
-ms.translationtype: HT
+ms.openlocfilehash: a80c61efbcbff569f5fed53734def3979ed70616
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794947"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820747"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>QnA Maker 知识库的置信度分数
 如果用户查询的匹配依据为知识库，QnA Maker 会返回相关答案和置信度分数。 此分数指明了答案是给定用户查询的正确匹配答案的置信度。 

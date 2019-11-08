@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 10/15/2019
 ms.author: aahi
-ms.openlocfilehash: 04d788160f1bdfd772f48b40b35f6db54cbf87b7
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 67d6bb0bf880de0b4bf6878128e2ed27e130b18d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554787"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719005"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-net"></a>快速入门：适用于 .NET 的异常检测器客户端库
 
@@ -143,12 +143,6 @@ dotnet run
 
 * [门户](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
-
-也可运行以下 Cloud Shell 命令以删除资源组及其相关资源。 完成此命令可能需要几分钟。 
-
-```azurecli-interactive
-az group delete --name example-anomaly-detector-resource-group
-```
 
 ## <a name="next-steps"></a>后续步骤
 

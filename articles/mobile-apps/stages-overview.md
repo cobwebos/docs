@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 8ce032a6ad10b22bed5d266bb23fe81846e8a072
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 6349f90eeacaedb03db4d6e91902fea69a8d0dae
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795843"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818021"
 ---
 # <a name="different-stages-in-mobile-application-development"></a>移动应用程序开发中的不同阶段
 构建移动应用程序涉及多个阶段，开发人员可以轻松利用 Microsoft 服务、工具和技术来构建高品质的移动应用程序。
@@ -35,6 +35,6 @@ ms.locfileid: "72795843"
 
 ## <a name="additional-services"></a>其他服务
 根据所生成应用程序的类型和性质，可以使用许多 Azure 服务。
-  - Azure 搜索，用于搜索各种类型的内部数据，并进行快速查询。
+  - Azure 认知搜索搜索各种类型的内部数据，并进行快速查询。
   - Azure 认知服务，可在应用程序中使用人工智能。
   - Azure SignalR 在应用程序中启用实时通信。

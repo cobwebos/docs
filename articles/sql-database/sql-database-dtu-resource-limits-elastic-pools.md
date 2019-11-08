@@ -1,22 +1,22 @@
 ---
-title: Azure SQL 数据库 DTU 资源限制弹性池 |Microsoft Docs
+title: DTU 资源限制弹性池
 description: 本页介绍 Azure SQL 数据库中的弹性池的一些常见 DTU 资源限制。
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
-ms.openlocfilehash: 08e6c27b359e8fcf48caed6faf21c0aed8fad224
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8b5d87d62f1db5e7d472af4cc2153d8841be6241
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521024"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826545"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>使用 DTU 购买模型的弹性池的资源限制
 
@@ -111,7 +111,7 @@ ms.locfileid: "73521024"
 > [!IMPORTANT]
 > 高级层中的存储空间超过 1 TB 目前在除：中国东部、中国北部、德国中部、德国北部、美国中部、US DoD 地区和美国政府中心以外的所有地区都可用。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。
 
-如果使用了弹性池的所有 DTU，那么池中的每个数据库会接收相同数量的资源来处理查询。 SQL 数据库服务通过确保相等的计算时间片，在数据库之间提供资源共享的公平性。 弹性池资源共享公平性是在将每个数据库的 DTU 最小值设为非零值时，对另外为每个数据库保证的任意资源量的补充。
+如果使用了弹性池的所有 DTU，那么池中的每个数据库将接收相同数量的资源来处理查询。 SQL 数据库服务通过确保相等的计算时间片，在数据库之间提供资源共享的公平性。 弹性池资源共享公平性是在将每个数据库的 DTU 最小值设为非零值时，对另外为每个数据库保证的任意资源量的补充。
 
 > [!NOTE]
 > 有关 `tempdb` 限制，请参阅 [tempdb 限制](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)。

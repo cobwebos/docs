@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: 1b3f987ff54a4b5eeeb1034d1e99302d0d6d43d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf7d15ba375faf7dfb38bf5f691799875f2dd6e1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935614"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819812"
 ---
 # <a name="build-your-landing-page"></a>生成登陆页
 
@@ -24,7 +25,7 @@ ms.locfileid: "64935614"
 *   立即获取解决方案
 
 可以通过多种市场营销策略引用登陆页。 可以使用以下市场营销策略： 
-*   Events
+*   事件
 *   网络广播
 *   社交媒体
 *   白皮书
@@ -44,7 +45,7 @@ ms.locfileid: "64935614"
 | **添加相关的视觉内容，例如客户口碑宣传和代言视频或解决方案体系结构** | 使用太多文本会导致客户忽略内容并停止浏览。|
 | **创建明晰的行动号召，将访问者吸引到市场目录页** | 页面上有过多链接和操作。 |
 | **将行动号召设置在顶部或非常显眼的位置** | 将链接嵌入至市场商品信息中的一段文本中。 |
-| **研究最佳关键字并对页面进行搜索优化** | 想当然地认为产品名称可以获得更高的搜索排名。 |
+| **研究最佳关键字并针对搜索优化页面** | 想当然地认为产品名称可以获得更高的搜索排名。 |
 | **使用广告推广活动中的关键字** | 在 Web 属性中使用许多不同的关键字会削弱广告投资的效果。 |
 | **将相关的产品名称和关键字放在显眼位置** | 使用户需要滚动才能看到所展示的产品或解决方案。 |
 | **使用品牌图像来验证解决方案，同时遵循 Microsoft 品牌准则，例如 Azure 认证** | 使用未获批准的 Microsoft 品牌图像。 |

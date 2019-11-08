@@ -2,18 +2,18 @@
 title: 使用 Azure 门户创建搜索索引
 titleSuffix: Azure Cognitive Search
 description: 使用“导入数据”向导在 Azure 认知搜索中创建、加载和查询第一个搜索索引。
-author: lobrien
+author: HeidiSteen
 manager: nitinme
-ms.author: laobri
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 502177519c0e66baa7ae9c1de18a7b41bceb054a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 366986f989fdd8d76b1707451c2a7cca2aa554cf
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791237"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719976"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]

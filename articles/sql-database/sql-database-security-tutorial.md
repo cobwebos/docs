@@ -1,5 +1,5 @@
 ---
-title: 在 Azure SQL 数据库中确保单一数据库或共用数据库的安全 | Microsoft Docs
+title: 保护单一数据库或共用数据库
 description: 一个教程，介绍在 Azure SQL 数据库中保护单一数据库或入池数据库的技术和功能。
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ba648a2bf563b775c39f11ab8d5c4069c4bf740f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 05ea21f7b3221425e5b052797d79e629fdfe3ba5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231186"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818036"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>教程：保护单一数据库或共用数据库
 

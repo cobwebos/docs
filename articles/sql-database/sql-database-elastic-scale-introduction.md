@@ -1,5 +1,5 @@
 ---
-title: 扩大 Azure SQL 数据库
+title: 扩大
 description: 软件即服务 (SaaS) 开发人员可以使用这些工具轻松地在云中创建可缩放的弹性数据库
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 56556576dffd4e022f919af89459d92e48c6c895
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3e30e54eb18eb5d487da6821d285109b1a22297f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690240"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823606"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>扩大 Azure SQL 数据库
 可以使用**弹性数据库**工具轻松扩大 Azure SQL 数据库。 借助这些工具和功能，可以使用 Azure SQL 数据库中的数据库资源来为事务工作负荷，尤其是服务型软件 (SaaS) 应用程序创建解决方案。 弹性数据库包括：
@@ -32,7 +32,7 @@ ms.locfileid: "73690240"
 在此图中，数据库颜色表示架构。 颜色相同的数据库具有相同的架构。
 
 1. 一组使用分片体系结构的 **Azure SQL 数据库**托管在 Azure 上。
-2. **弹性数据库客户端库** 用于管理分片集。
+2. **弹性数据库客户端库**用于管理分片集。
 3. 一个数据库子集已放入**弹性池**。 （请参阅[什么是池？](sql-database-elastic-pool.md)）。
 4. 弹性数据库针对所有数据库运行计划的或即席的 T-SQL 脚本。
 5. **拆分/合并工具**用于将数据从一个分片移到另一个分片。

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 的自动 ML 接口训练 & 部署模型
+title: 生成 & 部署自动 ML 模型
 titleSuffix: Azure Machine Learning
 description: 在 Azure 机器学习 studio 中创建、管理和部署自动化机器学习试验。
 services: machine-learning
@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: e1bb84c142fb24086cf6c11a7b1070bdd29ae3f2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 25e775cf7bfd415768144b28ab2ca6989f360edd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581286"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818492"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>通过 Azure 机器学习 studio 创建、探索和部署自动化机器学习试验
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -135,7 +135,7 @@ ms.locfileid: "73581286"
 
 信息|说明
 ------|------
-功能| 正在汇总的列的名称。
+Feature| 正在汇总的列的名称。
 配置文件| 基于推断类型的行内可视化。 例如，字符串、布尔值和日期具有值计数，而小数（数字）则具有近似的直方图。 这使你可以快速了解数据的分布情况。
 类型分发| 列中类型的行内值计数。 Null 是其自己的类型，因此此可视化效果可用于检测奇值或缺失值。
 类型|推断列的类型。 可能的值包括：字符串、布尔值、日期和小数。
@@ -205,17 +205,17 @@ Variance| 此列的数据超出其平均值的度量值。
 
     字段| 值
     ----|----
-    Name| 输入部署的唯一名称。
+    名称| 输入部署的唯一名称。
     说明| 输入说明以更好地识别此部署的用途。
     计算类型| 选择要部署的终结点类型： *Azure Kubernetes Service （AKS）* 或*azure 容器实例（ACI）* 。
-    Name| *仅适用于 AKS：* 选择要部署到的 AKS 群集的名称。
+    名称| *仅适用于 AKS：* 选择要部署到的 AKS 群集的名称。
     启用身份验证 | 选择此项可允许基于令牌或基于密钥的身份验证。
     使用自定义部署资产| 如果要上传自己的评分脚本和环境文件，请启用此功能。 [了解有关评分脚本的详细信息](how-to-deploy-and-where.md#script)。
 
     >[!Important]
     > 文件名的长度必须为32个字符，并且必须以字母数字开头和结尾。 可能包括短划线、下划线、点和之间的字母数字。 不允许使用空格。
 
-    "*高级*" 菜单提供默认部署功能，如 "数据收集" 和 "资源使用情况" 设置。 如果希望覆盖这些默认设置，请在此菜单中执行此操作。
+    "*高级*" 菜单提供默认部署功能，如 "[数据收集](how-to-enable-app-insights.md)" 和 "资源使用情况" 设置。 如果希望覆盖这些默认设置，请在此菜单中执行此操作。
 
 1. 选择“部署”。 部署可能需要大约20分钟才能完成。
 

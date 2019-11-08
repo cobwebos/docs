@@ -1,19 +1,20 @@
 ---
-title: 管理云合作伙伴门户上的用户 |Azure Marketplace
+title: 在云合作伙伴门户中管理用户 |Azure Marketplace
 description: 管理云合作伙伴门户上的用户
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 manager: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 5a3724729f85b7917b1559ce2ac3d859881e0de8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b14d40e9b3a2aa1ca71335b60e97f15b3782698f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935136"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823267"
 ---
 <a name="managing-users-on-cloud-partner-portal"></a>管理云合作伙伴门户上的用户
 ======================================
@@ -50,11 +51,11 @@ o 确保监视云合作伙伴门户上提供的电子邮件 ID，以获取任何
 
 目前，只有所有者才能访问“见解”中的“Azure 付款”和“Azure 客户”选项卡。
 
-<a name="step-4-select-the-publisher-name-you-want-to-add-to-the-new-user-then-click-add-to-complete-user-addition"></a>步骤 4. 选择要添加到新用户的发布者名称，然后单击“添加”以完成用户添加。
+<a name="step-4-select-the-publisher-name-you-want-to-add-to-the-new-user-then-click-add-to-complete-user-addition"></a>步骤 4。 选择要添加到新用户的发布者名称，然后单击“添加”以完成用户添加。
 ----------------------------------------------------------------------------------------------------------------------------
 
 > [!NOTE]
-> 对其将你的电子邮件添加为所有者或参与者的“发布者名称”会显示在“发布者”下拉列表中以供选择。
+> 电子邮件作为所有者或参与者添加的 "发布者名称" 将显示在 "发布者" 下拉列表中选择的下拉列表中。
 
 ![分配角色 - 选择发布者](./media/cloud-partner-portal-how-to-manage-users/assignselectpublisher.png)
 

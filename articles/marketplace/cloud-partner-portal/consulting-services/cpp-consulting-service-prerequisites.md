@@ -4,15 +4,16 @@ description: 云合作伙伴门户中的 Azure 或 Dynamics 365 咨询服务的�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: 59ca917f31a3e20b6ad02363a5015f16340924e2
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 371e7be0795ec93bfdb7b43deb38613cec6a664b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147146"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818124"
 ---
 # <a name="consulting-service-prerequisites"></a>咨询服务先决条件
 

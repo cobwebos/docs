@@ -1,7 +1,7 @@
 ---
-title: 创建数据集以访问包含 azureml 数据集的数据
+title: 创建 Azure 机器学习数据集以访问数据
 titleSuffix: Azure Machine Learning
-description: 了解如何从各种源创建数据集，以及如何将数据集注册到工作区。
+description: 了解如何创建 Azure 机器学习数据集来访问用于机器学习试验的数据。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,18 +11,18 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 1379085e410ddf119ae4ed1fe45389f00eb1b2a5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 51102962879b43d4ef3ae8662d7c3136bc7441d9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716587"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818443"
 ---
-# <a name="create-and-access-datasets-in-azure-machine-learning"></a>在 Azure 机器学习中创建和访问数据集
+# <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何创建 Azure 机器学习数据集（预览版），以及如何从本地或远程试验访问数据。
+本文介绍如何创建 Azure 机器学习的数据集，以便为本地或远程试验访问数据。
 
 利用 Azure 机器学习数据集，您可以：
 
@@ -32,7 +32,7 @@ ms.locfileid: "73716587"
 
 * 与其他用户共享数据和进行协作。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要创建和使用数据集，需要：
 
@@ -43,7 +43,7 @@ ms.locfileid: "73716587"
 * [安装的适用于 Python 的 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)，其中包含 azureml 数据集包。
 
 > [!NOTE]
-> 某些数据集类（预览版）与[dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)包之间存在依赖关系。 对于 Linux 用户，仅以下分发版支持这些类： Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
+> 某些数据集类依赖于[dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)包。 对于 Linux 用户，仅以下分发版支持这些类： Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
 
 ## <a name="dataset-types"></a>数据集类型
 
@@ -114,9 +114,9 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 | |PassengerId|因|Pclass|名称|性别|Age|SibSp|Parch|入场券|费用|客舱|着手
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|1|错误|3|Braund，Owen Harris|男|22.0|1|0|A/5 21171|7.2500||S
-1|2|正确|1|Cumings，Mrs Bradley （Florence Briggs 。|女|38.0|1|0|电脑17599|71.2833|C85|C
-2|3|正确|3|Heikkinen，未命中。 Laina|女|26.0|0|0|STON/O2。 3101282|7.9250||S
+0|1|False|3|Braund，Owen Harris|男|22.0|1|0|A/5 21171|7.2500||S
+1|2|True|1|Cumings，Mrs Bradley （Florence Briggs 。|女|38.0|1|0|电脑17599|71.2833|C85|C
+2|3|True|3|Heikkinen，未命中。 Laina|女|26.0|0|0|STON/O2。 3101282|7.9250||S
 
 使用 `TabularDatasetFactory` 类的[`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-)方法从 Azure SQL 数据库读取：
 

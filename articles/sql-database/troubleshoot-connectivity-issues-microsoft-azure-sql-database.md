@@ -1,19 +1,20 @@
 ---
-title: 排查 Microsoft Azure SQL 数据库的连接问题 |Microsoft Docs
+title: 解决连接问题
 description: 介绍如何对 Azure SQL 数据库中的连接问题进行故障排除。
 services: sql-database
 ms.service: sql-database
 ms.topic: troubleshooting
+ms.custom: seo-lt-2019
 author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: 9de6d85e1fc54d60f999cfa18665067b3998a432
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 20988296b5eac7152c53abd6d238043288feacc8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390664"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807276"
 ---
 # <a name="troubleshooting-connectivity-issues-with-microsoft-azure-sql-database"></a>解决与 Microsoft Azure SQL 数据库的连接问题
 
@@ -28,9 +29,9 @@ ms.locfileid: "72390664"
 若要解决此问题，请执行以下操作：
 
 1. 检查[Microsoft Azure 服务仪表板](https://status.azure.com/status)以了解是否存在任何已知的中断。 
-2. 如果没有已知的中断，请前往[Microsoft Azure 支持网站](http://azure.microsoft.com/support/options)以打开支持案例。
+2. 如果没有已知的中断，请前往[Microsoft Azure 支持网站](https://azure.microsoft.com/support/options)以打开支持案例。
 
-有关详细信息，请参阅[排查 "服务器上的数据库当前不可用" 错误](https://docs.microsoft.com/azure/sql-database/sql-database-troubleshoot-common-connection-issues#troubleshoot-transient-errors)。
+有关详细信息，请参阅[排查 "服务器上的数据库当前不可用" 错误](sql-database-troubleshoot-common-connection-issues.md#troubleshoot-transient-errors)。
 
 ## <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server"></a>建立与 SQL Server 的连接时出现与网络相关的错误或特定于实例的错误
 
@@ -165,7 +166,7 @@ ms.locfileid: "72390664"
 
 ## <a name="transient-errors-errors-40197-40545"></a>暂时性错误（错误40197、40545）
 
-### <a name="error-40197-the-service-has-encountered-an-error-processing-your-request-please-try-again-error-code--code-"></a>错误40197：该服务在处理你的请求时遇到错误。 请稍后重试。 错误代码 < 代码 >
+### <a name="error-40197-the-service-has-encountered-an-error-processing-your-request-please-try-again-error-code--code-"></a>错误40197：该服务在处理你的请求时遇到错误。 请重试。 错误代码 < 代码 >
 
 发生此问题的原因是后端在重新配置或故障转移过程中出现暂时性错误。
 
@@ -188,7 +189,7 @@ ms.locfileid: "72390664"
   > [!NOTE]
   > 这是一种最简单的方法，可能无法解决此问题。
 
-  1. 运行以下 SQL 查询，查看[sys.databases _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)视图以查看任何阻塞请求：
+  1. 运行以下 SQL 查询，检查[sys.databases dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)视图以查看任何阻塞请求：
 
              ```
              SELECT * FROM dm_exec_requests
@@ -197,7 +198,7 @@ ms.locfileid: "72390664"
   2. 确定头阻塞程序的**输入缓冲区**。
   3. 优化头阻塞查询。
 
-    有关详细的故障排除过程，请参阅[云中的查询是否正常运行？](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)。
+    有关详细的故障排除过程，请参阅[云中的查询是否正常运行？](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)。
 
 * 如果数据库始终达到其限制（尽管要解决阻塞和长时间运行的查询），请考虑升级到新的预览版本（如[标准版或高级版](https://azure.microsoft.com/pricing/details/sql-database/)）。
 
@@ -255,7 +256,7 @@ ms.locfileid: "72390664"
    - 执行普通的数据库清理活动。 例如，使用截断/删除清除不需要的数据，或使用 SQL Server Integration Services （SSIS）或大容量复制程序（bcp）实用工具将数据移出。
    - 请将数据分区或删除、删除索引或查阅文档以找到可能的解决方案。
 
-   - 对于数据库缩放，请参阅[缩放单一数据库资源](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-scale)和[缩放弹性池资源](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool-scale)。
+   - 有关数据库缩放的信息，请参阅[缩放单一数据库资源](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-scale)和[缩放弹性池资源](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool-scale)。
 
 ### <a name="error-40549-session-is-terminated-because-you-have-a-long-running-transaction"></a>错误40549：会话已终止，因为你有长时间运行的事务
 
@@ -265,7 +266,7 @@ ms.locfileid: "72390664"
 
 如果重复遇到此错误，请尝试通过执行以下步骤来解决问题： 
 
-1. 检查 sys.databases _exec_requests 视图，查看 total_elapsed_time 列中具有较高值的任何已打开的会话。 通过运行以下 SQL 脚本执行此检查：
+1. 检查 "sys. dm_exec_requests" 视图，以查看 total_elapsed_time 列中具有较高值的任何已打开的会话。 通过运行以下 SQL 脚本执行此检查：
 
    ```
    SELECT * FROM dm_exec_requests
@@ -275,7 +276,7 @@ ms.locfileid: "72390664"
 
 还应考虑批处理查询。 有关批处理的信息，请参阅[如何使用批处理来改善 SQL 数据库应用程序的性能](https://docs.microsoft.com/azure/sql-database/sql-database-use-batching-to-improve-performance)。
 
-有关详细的故障排除过程，请参阅[云中的查询是否正常运行？](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)。
+有关详细的故障排除过程，请参阅[云中的查询是否正常运行？](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)。
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>错误40551：由于过度使用 TEMPDB，已终止该会话
 
@@ -311,7 +312,7 @@ ms.locfileid: "72390664"
 
 若要解决此问题，请尝试优化查询。
 
-有关详细的故障排除过程，请参阅[云中的查询是否正常运行？](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)。
+有关详细的故障排除过程，请参阅[云中的查询是否正常运行？](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)。
 
 
 ### <a name="cannot-open-database-master-requested-by-the-login-the-login-failed"></a>无法打开登录所请求的数据库 "master"。 登录失败。
@@ -336,7 +337,7 @@ System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
 ClientConnectionId:<Client connection ID>
 ```
 
-如果查询问题触发了异常，则会看到类似于下面的调用堆栈（请注意对**SqlCommand**类的引用）。 在这种情况下，请[调整查询](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)。
+如果查询问题触发了异常，则会看到类似于下面的调用堆栈（请注意对**SqlCommand**类的引用）。 在这种情况下，请[调整查询](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)。
 
 ```
   at System.Data.SqlClient.SqlCommand.ExecuteReader()
@@ -364,7 +365,7 @@ ClientConnectionId:<Client connection ID>
 
 5. 最佳做法是确保重试逻辑已就位。 有关重试逻辑的详细信息，请参阅对[SQL 数据库的暂时性故障和连接错误进行故障排除](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues)。
 
-如果这些步骤不能解决你的问题，请尝试收集更多数据，然后与支持人员联系。 如果你的应用程序是云服务，则启用日志记录。 此步骤返回失败的 UTC 时间戳。 此外，SQL Azure 返回跟踪 ID。 [Microsoft 客户支持服务](http://azure.microsoft.com/support/options/)可使用此信息。 
+如果这些步骤不能解决你的问题，请尝试收集更多数据，然后与支持人员联系。 如果你的应用程序是云服务，则启用日志记录。 此步骤返回失败的 UTC 时间戳。 此外，SQL Azure 返回跟踪 ID。 [Microsoft 客户支持服务](https://azure.microsoft.com/support/options/)可使用此信息。 
 
 有关如何启用日志记录的详细信息，请参阅[在 Azure App Service 中为应用启用诊断日志记录](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/)。
 

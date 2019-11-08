@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: tisande
-ms.openlocfilehash: d92e24836a0eb5757de9bbdb516be290456deb7f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e41e81457421bfe27e3c0313fc06e39e6df4cdce
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333256"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819109"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 GROUP BY 子句
 
-GROUP BY 子句根据一个或多个指定属性的值来划分查询的结果。
+GROUP BY 子句按照一个或多个指定属性的值来拆分查询的结果。
 
 > [!NOTE]
-> Azure Cosmos DB 当前在[.NET SDK 3.3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.3.0)或更高版本中支持 GROUP BY。
-> 对其他语言 SDK 和 Azure 门户的支持目前不可用，但已计划。
+> Azure Cosmos DB 当前在 .NET SDK 3.3 及更高版本以及 JavaScript SDK 3.4 及更高版本中支持 GROUP BY。
+> 对其他语言 SDK 的支持目前不可用，但已计划。
 
 ## <a name="syntax"></a>语法
 
@@ -35,29 +35,29 @@ GROUP BY 子句根据一个或多个指定属性的值来划分查询的结果�
 
 - `<scalar_expression_list>`
 
-   指定将用于划分查询结果的表达式。
+   指定将要用来拆分查询结果的表达式。
 
 - `<scalar_expression>`
   
-   除标量子查询和标量聚合外，允许使用任何标量表达式。 每个标量表达式必须至少包含一个属性引用。 单个表达式的数目或每个表达式的基数没有限制。
+   任何标量表达式都是允许的，但标量子查询和标量聚合除外。 每个标量表达式必须包含至少一个属性引用。 单个表达式的数目或每个表达式的多重性没有限制。
 
 ## <a name="remarks"></a>备注
   
-  当查询使用 GROUP BY 子句时，SELECT 子句只能包含 GROUP BY 子句中包含的属性和系统函数的子集。 [聚合系统函数](sql-query-aggregates.md)是一个例外，它可以出现在 SELECT 子句中，而不包括在 group by 子句中。 您还可以在 SELECT 子句中始终包含文字值。
+  当查询使用 GROUP BY 子句时，SELECT 子句只能包含包括在 GROUP BY 子句中的属性和系统函数的一部分。 一个例外是[聚合系统函数](sql-query-aggregates.md)，此类函数可以出现在 SELECT 子句中，但不需包含在 GROUP BY 子句中。 也可始终在 SELECT 子句中包含文本值。
 
-  GROUP BY 子句必须位于 SELECT、FROM 和 WHERE 子句之后以及 OFFSET LIMIT 子句之前。 当前无法将 GROUP BY 与 ORDER BY 子句一起使用，但这是计划的。
+  GROUP BY 子句必须位于 SELECT、FROM 和 WHERE 子句后面，OFFSET LIMIT 子句前面。 目前不能将 GROUP BY 和 ORDER BY 子句配合使用，但这已在计划内。
 
-  GROUP BY 子句不允许下列任何内容：
+  GROUP BY 子句不允许下述任何项：
   
-- 对属性或别名系统函数进行别名（SELECT 子句中仍允许使用别名）
-- 个子
-- 聚合系统函数（仅在 SELECT 子句中允许）
+- 别名属性或别名系统函数（在 SELECT 子句中，别名仍然是允许的）
+- 子查询
+- 聚合系统函数（在 SELECT 子句中，仍然允许这些函数）
 
 ## <a name="examples"></a>示例
 
-这些示例使用营养数据集，通过[Azure Cosmos DB 查询操场](https://www.documentdb.com/sql/demo)提供。
+这些示例使用可以通过 [Azure Cosmos DB 查询操场](https://www.documentdb.com/sql/demo)获取的营养数据集。
 
-例如，下面的查询返回每个 foodGroup 中的总项数：
+例如，下面这个查询返回每个 foodGroup 中项的总计数：
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, f.foodGroup
@@ -65,7 +65,7 @@ FROM Food f
 GROUP BY f.foodGroup
 ```
 
-某些结果为（TOP 关键字用于限制结果）：
+部分结果如下（使用了 TOP 关键字来限制结果）：
 
 ```json
 [{
@@ -86,7 +86,7 @@ GROUP BY f.foodGroup
 }]
 ```
 
-此查询有两个用于划分结果的表达式：
+此查询有两个表达式，用于拆分结果：
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, f.foodGroup, f.version
@@ -94,7 +94,7 @@ FROM Food f
 GROUP BY f.foodGroup, f.version
 ```
 
-结果如下：
+部分结果如下：
 
 ```json
 [{
@@ -119,7 +119,7 @@ GROUP BY f.foodGroup, f.version
 }]
 ```
 
-此查询在 GROUP BY 子句中具有系统函数：
+此查询在 GROUP BY 子句中有一个系统函数：
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, UPPER(f.foodGroup) AS upperFoodGroup
@@ -127,7 +127,7 @@ FROM Food f
 GROUP BY UPPER(f.foodGroup)
 ```
 
-结果如下：
+部分结果如下：
 
 ```json
 [{
@@ -148,7 +148,7 @@ GROUP BY UPPER(f.foodGroup)
 }]
 ```
 
-此查询在 item 属性表达式中使用关键字和系统函数：
+此查询在项属性表达式中使用关键字和系统函数：
 
 ```sql
 SELECT COUNT(1) AS foodGroupCount, ARRAY_CONTAINS(f.tags, {name: 'orange'}) AS containsOrangeTag,  f.version BETWEEN 0 AND 2 AS correctVersion

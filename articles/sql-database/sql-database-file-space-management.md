@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库单一/共用数据库文件空间管理 | Microsoft Docs
+title: 单个/共用数据库文件空间管理
 description: 本页介绍了如何管理 Azure SQL 数据库中的单一数据库和共用数据库的文件空间，并提供了代码示例来演示如何确定是否需要收缩单一数据库或共用数据库，以及如何执行数据库收缩操作。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: c92ffb6aa6db9c77a859661115d54ff63ea02401
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a8fe58313bce6e9a21b07aa095672ec35ce572d2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568206"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803054"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>管理 Azure SQL 数据库中的单一数据库和共用数据库的文件空间
 

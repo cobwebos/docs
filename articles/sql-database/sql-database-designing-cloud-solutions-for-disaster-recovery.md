@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure SQL 数据库设计全局可用服务
+title: 设计全局可用服务
 description: 了解使用 Azure SQL 数据库对应用程序设计高可用性服务。
 keywords: 云灾难恢复, 灾难恢复解决方案, 应用数据备份, 异地复制, 业务连续性规划
 services: sql-database
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: 034d696fd8c9aae826d0bbc7e4d028cefad09840
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8eb115497427338599db08e8c7bbdd55c5a158fc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690722"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807953"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>使用 Azure SQL 数据库设计全球可用的服务
 
@@ -54,7 +54,7 @@ ms.locfileid: "73690722"
 如果区域 B 中发生中断，那么主数据库和辅助数据库之间的复制进程会挂起，但是两者之间的链接不会受影响 (1)。 管理的通信流检测出到区域 B 的连接中断，于是将终结点 Web 应用 2 标记为“降级”(2)。 在这种情况下应用程序性能不会受影响，但数据库已暴露，所以如果区域 A 跟着失败时会产生更高的数据丢失风险。
 
 > [!NOTE]
-> 对于灾难恢复，建议将应用程序部署配置限于两个区域。 这是因为大多数 Azure 地理位置仅有两个区域。 如果两个区域同时发生灾难性故障，此配置不会为你的应用程序提供保护。 在此类失败的不可能事件中，可以使用[异地还原操作](sql-database-disaster-recovery.md#recover-using-geo-restore)在第三个区域中恢复数据库。
+> 对于灾难恢复，建议将应用程序部署配置限于两个区域。 这是因为大多数 Azure 地理位置仅有两个区域。 如果两个区域同时发生灾难性故障，此配置不会为你的应用程序提供保护。 在此类失败的不可能事件中，可以使用[异地恢复操作](sql-database-disaster-recovery.md#recover-using-geo-restore)在第三个区域中恢复数据库。
 >
 
  中断问题缓解后，辅助数据库会立即自动重新与主数据库同步。 同步期间，主数据库的性能可能受影响。 具体影响取决于新主数据库自故障转移开始后获取的数据量。 下图说明了次要区域中的服务中断：
@@ -162,7 +162,7 @@ ms.locfileid: "73690722"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关业务连续性概述和应用场景，请参阅 [业务连续性概述](sql-database-business-continuity.md)
+* 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)
 * 若要了解活动异地复制，请参阅[活动异地复制](sql-database-active-geo-replication.md)。
 * 若要了解自动故障转移组，请参阅[自动故障转移组](sql-database-auto-failover-group.md)。
 * 有关弹性池的活动异地复制的信息，请参阅[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。

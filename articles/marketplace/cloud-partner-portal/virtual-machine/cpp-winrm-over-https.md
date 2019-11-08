@@ -1,28 +1,29 @@
 ---
-title: Windows 通过 HTTPS 适用于 Azure 的远程管理 |Azure Marketplace
-description: 介绍如何配置 Azure 托管的、 基于 Windows 的 VM，以便可以使用 PowerShell 远程管理。
+title: 针对 Azure 通过 HTTPS Windows 远程管理 |Azure Marketplace
+description: 介绍如何配置 Azure 托管的基于 Windows 的 VM，以便可以使用 PowerShell 进行远程管理。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: pabutler
-ms.openlocfilehash: fb661a2705d437d1f40ceebcad7e759c2a78540f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e159bd9b57b26c99afd590d6a9f2153dba2a205
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938231"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808427"
 ---
 # <a name="windows-remote-management-over-https"></a>基于 HTTPS 的 Windows 远程管理
 
 本节介绍如何配置 Azure 托管的基于 Windows 的 VM，以便可以使用 PowerShell 对其进行远程管理和部署。  要启用 PowerShell 远程处理，目标 VM 必须公开 Windows 远程管理 (WinRM) HTTPS 终结点。  有关 PowerShell 远程处理的详细信息，请参阅[运行远程命令](https://docs.microsoft.com/powershell/scripting/core-powershell/running-remote-commands?view=powershell-6)。  有关 WinRM 的详细信息，请参阅 [Windows 远程管理](https://docs.microsoft.com/windows/desktop/WinRM/portal)。
 
-如果使用“经典”Azure 方法之一 - Azure 服务管理器门户或弃用的 [Azure 服务管理 API](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100)) - 来创建 VM，会自动为其配置 WinRM 终结点。  但是，如果使用以下任何“新式”Azure 方法创建 VM，则 VM 不会配置为通过 HTTPS 实现 WinRM  。  
+如果使用“经典”Azure 方法之一 - Azure 服务管理器门户或弃用的 [Azure 服务管理 API](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100)) - 来创建 VM，会自动为其配置 WinRM 终结点。  但是，如果使用以下任何“新式”Azure 方法创建 VM，则 VM 不会配置为通过 HTTPS 实现 WinRM。  
 
 - 使用 [Azure 门户](https://portal.azure.com/)，通常需要通过批准的基础映像来实现，如[创建与 Azure 兼容的 VHD](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd)部分所述
 - [使用 Azure 资源管理器模板](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
-- 使用 Azure PowerShell 或 Azure CLI 命令外壳。  有关示例，请参阅[快速入门：使用 PowerShell 在 Azure 中创建 Windows 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)及[快速入门：使用 Azure CLI 创建 Linux 虚拟机](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli)。
+- 使用 Azure PowerShell 或 Azure CLI 命令外壳。  有关示例，请参阅[快速入门：使用 PowerShell 在 Azure 中创建 Windows 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)和[快速入门：使用 Azure CLI 创建 Linux 虚拟机](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli)。
 
 为载入 VM 而运行认证工具包时也需要此 WinRM 终结点，如[认证 VM 映像](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-certify-vm)所述。
 

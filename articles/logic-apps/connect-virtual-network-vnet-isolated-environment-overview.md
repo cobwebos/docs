@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: adb89c04a83bbfbd5bddd5c23b0fa88019a88991
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 11/08/2019
+ms.openlocfilehash: da68cfe504332ed6641c52322f0df0d2efd95997
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721381"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820670"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络资源
 
@@ -108,8 +108,8 @@ ISE 还为运行持续时间、存储保留、吞吐量、HTTP 请求和响应�
 
 * 用于该系统的 ISE 标记的连接器
 
-  > [!IMPORTANT]
-  > 若要将 Windows 身份验证与 SQL Server 连接器一起使用，必须使用[本地数据网关](../logic-apps/logic-apps-gateway-install.md)。 SQL Server 连接器不支持 ISE 中逻辑应用的 Windows 身份验证。
+  > [!NOTE]
+  > 若要对[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的 SQL Server 连接器使用 Windows 身份验证，请将连接器的非 ISE 版本用于[本地数据网关](../logic-apps/logic-apps-gateway-install.md)。 ISE 标记版本不支持 Windows 身份验证。
 
 * 自定义连接器
 

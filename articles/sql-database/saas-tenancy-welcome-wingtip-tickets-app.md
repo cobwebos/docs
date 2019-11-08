@@ -1,5 +1,5 @@
 ---
-title: '欢迎使用 Wingtips 应用-Azure SQL 数据库 '
+title: 欢迎使用 Wingtips 应用
 description: 了解有关云环境中的 Azure SQL 数据库的数据库租户模型和示例 Wingtips SaaS 应用程序的内容。
 keywords: sql 数据库教程
 services: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
-ms.openlocfilehash: 6b8cb9bed2f5fdd0b246e73c84731081d0f2e41e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4e0b3afe51ac7c7a6b9213fcee79af57cbbd8197
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691823"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818314"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>Wingtip Tickets SaaS 应用程序
 

@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d8caafe312c123a9d572e9a5f4c5cf64a05f7ea
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ac1b75536e092203490a390860a1cead7ac333b7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721039"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817974"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
@@ -100,7 +100,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 若要启用 EnforceCloudPasswordPolicyForPasswordSyncedUsers 功能，请使用 MSOnline PowerShell 模块运行以下命令：
 
-`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers  $true`
+`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers -Enable $true`
 
 启用后，Azure AD 不会进入每个同步用户，从 PasswordPolicies 属性中删除 `DisablePasswordExpiration` 值。 相反，当用户下次在本地 AD 中更改密码时，此值将设置为每个用户下次密码同步期间 `None`。  
 

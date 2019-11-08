@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 998513c942cf1b6ceae861160abfe3dc6dac7792
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d5983d25685242a696300f293231bbf987e8442d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690328"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823735"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>在具有不同架构的云数据库中进行查询。（预览）
 

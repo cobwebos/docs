@@ -1,6 +1,6 @@
 ---
 title: 教程 3：部署信用风险模型
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: 本详细教程介绍如何创建预测分析解决方案，用于在经典版本的 Azure 机器学习工作室中进行信用风险评估。 本教程是由三个部分构成的系列教程的第三部分。 其中介绍了如何将模型部署为 Web 服务。
 keywords: 信用风险, 预测分析解决方案, 风险评估, 部署, web 服务
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 34b0e783b3655aba52cc3d40957b63dd3b0e03b9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0f4ee6cfebcb5edb38b1cc7a11b070dab5d2098c
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492520"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619017"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>教程 3：部署信用风险模型 - Azure 机器学习工作室（经典版）
 

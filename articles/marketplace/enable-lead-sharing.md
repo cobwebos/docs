@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 9aecef81547131e6f843fdd55db259d2c4299c9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4475f6aecb0fe80cd20138eb885b79b6e7e82208
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938669"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818687"
 ---
 # <a name="enable-lead-sharing"></a>启用潜在顾客共享
 确保在 [Azure 市场](https://azuremarketplace.microsoft.com)或 [Microsoft AppSource](https://appsource.microsoft.com) 中为你的列表启用了潜在顾客管理，可以帮助你获取以下受众的联系信息：

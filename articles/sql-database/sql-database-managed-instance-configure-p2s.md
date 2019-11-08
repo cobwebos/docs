@@ -1,5 +1,5 @@
 ---
-title: '配置 P2S-Azure SQL 数据库托管实例 '
+title: 配置 P2S-托管实例
 description: 使用本地客户端计算机的点到站点连接，通过 SQL Server Management Studio 连接到 Azure SQL 数据库托管实例。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 3b3a0ce28c4a936e185ac5f07ba3810c93f4c866
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 30b2ba92174996ea2bae34e7553a3258d8ebee27
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689409"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818916"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>快速入门：配置从本地到 Azure SQL 数据库托管实例的点到站点连接
 
@@ -100,7 +100,7 @@ ms.locfileid: "73689409"
 
     ![ssms 连接](./media/sql-database-managed-instance-configure-vm/ssms-connect.png)  
 
-连接后，可以在“数据库”节点中查看系统和用户数据库。 还可在安全性、服务器对象、复制、管理、SQL Server 代理和 XEvent Profiler 节点中查看各种对象。
+连接后，可在数据库节点中查看系统和用户数据库。 还可在安全性、服务器对象、复制、管理、SQL Server 代理和 XEvent Profiler 节点中查看各种对象。
 
 ## <a name="next-steps"></a>后续步骤
 

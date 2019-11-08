@@ -4,15 +4,16 @@ description: 为 Customer Engagement 配置 Dynamics 365 的潜在客户管理�
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: evansma
-ms.openlocfilehash: 181a3f3a8d3cabb2fdf6caf79cef16201fab0c68
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 37cf613b6e0bd2ec9910dd3e7431c0feaa02431c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177809"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812309"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>为 Customer Engagement 配置 Dynamics 365 的潜在客户管理
 
@@ -77,7 +78,7 @@ ms.locfileid: "72177809"
 3. 从 Azure Active Directory 左侧导航栏中选择 "**应用注册**"，然后在该页上选择 "**新注册**"。
 4. 输入应用程序名称的名称。 提供有意义的应用程序名称。
 5. 在 "支持的帐户类型" 下，选择**任何组织目录中的帐户**。
-6. 在 "重定向 URI" 下，选择 " **Web** " 并提供 URI （例如 `https://contosoapp1/auth`）。 
+6. 在 "重定向 URI" 下，选择 " **Web** " 并提供 URI （如 `https://contosoapp1/auth`）。 
 7. 选择“注册”。
 
     ![注册应用程序](./media/commercial-marketplace-lead-management-instructions-dynamics/register-an-application.png)
@@ -93,7 +94,7 @@ ms.locfileid: "72177809"
 10. 成功创建客户端密码后，请立即**复制客户端密钥值**。 离开页面后，将无法检索该值。 保存此值，因为它是*客户端密钥*值，需要在发布门户中提供才能接收 marketplace 产品的潜在顾客。 
 11. 从 "应用" 左侧导航栏中选择 " **API 权限**"，然后选择 "**添加权限**"。
 12. 选择 "Microsoft Api"，并选择 " **DYNAMICS CRM** " 作为 API。
-13. 在*应用程序所需的权限类型*下，确保已选择 "**委派权限**"。 以组织用户的身份检查**user_impersonation** *Access Common Data Service*的权限。 选择“添加权限”。
+13. 在*应用程序所需的权限类型*下，确保已选择 "**委派权限**"。 检查 *作为组织用户的 user_impersonation 访问 Common Data Service*的权限。 选择“添加权限”。
 
     ![添加权限](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
 
@@ -105,7 +106,7 @@ ms.locfileid: "72177809"
 
     ![创建新用户](./media/commercial-marketplace-lead-management-instructions-dynamics/application-users.png)
 
-19. 在 "**新用户**" 中，确保用户：选择 "应用程序用户"。 提供要与此连接一起使用的用户的用户名、全名和电子邮件地址。 同时，粘贴到步骤8的 Azure 门户中创建的应用的**应用程序 ID** 。 选择 "**保存并关闭**" 以完成添加用户的工作。
+19. 在 "**新用户**" 中，确保选择了 "用户：应用程序用户"。 提供要与此连接一起使用的用户的用户名、全名和电子邮件地址。 同时，粘贴到步骤8的 Azure 门户中创建的应用的**应用程序 ID** 。 选择 "**保存并关闭**" 以完成添加用户的工作。
 
     ![新建用户](./media/commercial-marketplace-lead-management-instructions-dynamics/new-user-info.png)
 
@@ -160,7 +161,7 @@ ms.locfileid: "72177809"
 
     ![Microsoft 市场 Lead 编写人员核心记录](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
 
-8. 现在导航到 "**自定义**" 选项卡。搜索 tor "系统作业" 实体，通过在每个相应的圆圈中单击四次，为该实体启用 "读取"、"写入" 和 "AppendTo" 权限（以绿色为绿色）。
+8. 现在，导航到 "**自定义**" 选项卡。搜索 Tor "系统作业" 实体，通过在每个相应的圆圈中单击四次，为该实体启用 "读取"、"写入" 和 "AppendTo" 权限（以绿色为绿色）。
 
     ![Microsoft 市场主管编写人员-自定义](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer-customization.png)
 
@@ -179,9 +180,9 @@ ms.locfileid: "72177809"
 
     ![连接详细信息-潜在客户目标](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
 
-4. 提供**Dynamics 365 实例 URL** ，如 @no__t。
+4. 提供**Dynamics 365 实例 URL** ，如 `https://contoso.crm4.dynamics.com`。
 5. 选择**身份验证**、Azure Active Directory 或 Office 365 的方法。 
-6. 如果选择了 "Azure Active Directory"，请提供**应用程序（客户端） ID** （例如： `23456052-aaaa-bbbb-8662-1234df56788f`）、**目录 ID** （例如： @no__t）和**客户端密码**（例如： `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`）。
+6. 如果选择了 "Azure Active Directory"，请提供**应用程序（客户端） ID** （例如： `23456052-aaaa-bbbb-8662-1234df56788f`）、**目录 ID** （示例： `12345678-8af1-4asf-1234-12234d01db47`）和**客户端密码**（例如： `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`）。
 
     ![连接详细信息-Azure Active Directory](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-application-id.png)
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: e42fa7f48b5e6475604570a95f2ffc034b43b8f7
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 8f237e4c676a53f6df15940a196a998bee529f6b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604620"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817970"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>为应用服务和 Azure Functions 使用 Key Vault 引用
 
@@ -56,12 +56,6 @@ Key Vault 引用采用 `@Microsoft.KeyVault({referenceString})` 格式，其中 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
 ```
-不含版本的完整引用如下所示：
-
-```
-@Microsoft.KeyVault(SecretUri=https://<MYKEYVAULT>.vault.azure.net/secrets/eShopStorageAccountCS/)
-```
-
 也可使用以下命令：
 
 ```

@@ -1,5 +1,5 @@
 ---
-title: 智能见解 Azure SQL 数据库监视数据库性能
+title: 智能见解监视数据库性能
 description: Azure SQL 数据库 Intelligent Insights 使用内置智能，以通过人工智能持续监视数据库使用情况，并检测导致性能不佳的干扰性事件。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: c073b535271ba8f9f11e17ba5203b13e257e211b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bd42117b384b9e384d59f9f4298c937135cafd34
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689679"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810181"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>智能见解：使用 AI 监视数据库性能并对其进行故障排除
 

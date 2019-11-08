@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ba9b06c9a3e6025d7227493713fe9187fba233
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 9603cdf11373891aaa3541330cb7f65c09352496
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514906"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818892"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>从联合身份验证迁移到 Azure Active Directory 的密码哈希同步
 
@@ -161,7 +161,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 将设备加入到 Azure AD 时，可以创建条件性访问规则，强制设备满足安全和合规性的访问标准。 此外，用户可以使用组织的工作或学校帐户（而不是个人帐户）登录到设备。 使用已加入混合 Azure AD 的设备可将已加入 Active Directory 域的设备加入到 Azure AD。 你的联合环境可能已设置为使用此功能。
 
-为了确保在将域转换为密码哈希同步（对于 Windows 10 客户端）后，混合联接仍适用于加入域的任何设备，你必须使用 Azure AD Connect 设备选项来填充 SCP，然后同步 Active要 Azure AD 的目录计算机帐户。 
+为了确保在将域转换为密码哈希同步（对于 Windows 10 客户端）后，混合联接仍适用于加入域的任何设备，你必须使用 Azure AD Connect 设备选项来同步 Active Directory 计算机要 Azure AD 的帐户。 
 
 对于 Windows 8 和 Windows 7 计算机帐户，混合加入将使用无缝 SSO 在 Azure AD 中注册计算机。 无需像在 Windows 10 设备上一样同步 Windows 8 和 Windows 7 计算机帐户。 但是，必须（通过一个 .msi 文件）将更新的 workplacejoin.exe 文件部署到 Windows 8 和 Windows 7 客户端，使它们能够使用无缝 SSO 自我注册。 [下载 .msi 文件](https://www.microsoft.com/download/details.aspx?id=53554)。
 
@@ -313,7 +313,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
    > [!IMPORTANT]
    > 此时，所有联合域将更改为托管身份验证。 密码哈希同步是新的身份验证方法。
 
-7. 在 Azure AD 门户中，选择“Azure Active Directory” > “Azure AD Connect”。
+7. 在 Azure AD 门户中，选择“Azure Active Directory” **“Azure AD Connect”。**  > 
 8. 验证以下设置：
    * “联合身份验证”设置为“已禁用”。
    * “无缝单一登录”设置为“已启用”。
@@ -335,9 +335,9 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 3. 在“连接到 Azure AD”页上，输入全局管理员帐户的用户名和密码。
 4. 在“用户登录”页上，选择“密码哈希同步”按钮。 依次选择“启用单一登录”、“下一步”。
 
-   启用密码哈希同步之前： ![Screenshot 显示用户登录页上的 "不配置" 选项 ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
+   启用密码哈希同步之前： ![屏幕截图，显示用户登录页上的 "不配置" 选项](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
 
-   启用密码哈希同步后： ![Screenshot 显示用户登录页上的新选项 ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
+   启用密码哈希同步后： ![屏幕截图，显示用户登录页上的新选项](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
    
    > [!NOTE]
    > 从 Azure AD Connect 版本 1.1.880.0 开始，默认会选中“无缝单一登录”复选框。
@@ -382,7 +382,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domain name>
    ```
 
-3. 在 Azure AD 门户中，选择“Azure Active Directory” > “Azure AD Connect”。
+3. 在 Azure AD 门户中，选择“Azure Active Directory” **“Azure AD Connect”。**  > 
 4. 运行以下命令，验证是否已将该域转换为托管域：
 
    ``` PowerShell

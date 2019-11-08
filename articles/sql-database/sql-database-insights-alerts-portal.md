@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 门户设置警报和通知
+title: 设置警报和通知（Azure 门户）
 description: 使用 Azure 门户创建 SQL 数据库警报，可在满足指定条件时触发通知或自动化。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/02/2018
-ms.openlocfilehash: d68055bc64ea36bd3ad024123a8d5b7b239858dc
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ec625f203e9282d070e6c1b3b3d712be7ab789cf
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689750"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810386"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>使用 Azure 门户为 Azure SQL 数据库和数据仓库创建警报
 
@@ -119,4 +119,4 @@ ms.locfileid: "73689750"
 * [获取 Azure 监视概述](../monitoring-and-diagnostics/monitoring-overview.md)，包括可收集和监视的信息的类型。
 * 了解[在警报中配置 Webhook](../azure-monitor/platform/alerts-webhooks.md)的详细信息。
 * 获取[诊断日志概述](../azure-monitor/platform/resource-logs-overview.md)收集有关服务的详细高频率指标。
-* [大致了解指标收集](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。
+* 获取[指标集合概述](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。

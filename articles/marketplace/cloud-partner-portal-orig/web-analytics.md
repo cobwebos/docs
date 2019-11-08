@@ -1,19 +1,20 @@
 ---
 title: Web Analytics
-description: .
+description: 。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: a6b2a7981452b47a3992b6c0efee286878e143fb
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: d47a67be157f71a30a6ae155790ed78a78fd6743
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962886"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814644"
 ---
 <a name="web-analytics"></a>Web Analytics
 =============
@@ -43,7 +44,7 @@ ms.locfileid: "70962886"
 
 例如，可以使用：<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
 
-1. （高级）：在 URL 中使用我们支持的通用市场活动 Id 之一。 我们希望能够顺应你需要使用的其他推荐标记，因此我们支持自动识别这些附加标记的约定：
+1. （高级）：在 URL 中使用支持的通用营销活动 ID 之一。 我们希望能够顺应你需要使用的其他推荐标记，因此我们支持自动识别这些附加标记的约定：
     
     1. **utm\_campaign**
     2. **utm\_source**
@@ -65,13 +66,13 @@ ms.locfileid: "70962886"
 
 下面是一个示例：
 
-1. 营销员工从 Google 购买广告，以将流量驱动到公司的登陆页面 <https://contoso.com>。 此登陆页面包含一个指向 <https://appsource.com> 的\"试用我的产品\"链接。
+1. 营销员工从 Google 购买广告，以将流量驱动到公司的登陆页面 \'。 此登陆页面包含一个指向 \" 的\"试用我的产品<https://appsource.com>链接。
 2. 用户单击广告，然后登陆到其公司的登陆页面。
     1.  推荐 URL = google.com
     2.  登陆页面 URL = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
 3. 用户单击\"试用我的产品\"链接，然后进入 AppSource。
     1. 推荐 URL = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. 登陆页面 URL（**请确保在此 URL 中添加 utm\_campaign 和 utm\_source**）= [https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**utm\_ campaign=MyCampaignAdName&utm\_ source=MySourceAdName**](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+    2. 登陆页面 URL（**请确保在此 URL 中添加 utm\_campaign 和 utm\_source**）= [https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**utm\_campaign=MyCampaignAdName&utm\_source=MySourceAdName**](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
 
 <a name="how-to-evaluate-the-success-of-a-campaign"></a>如何评估营销活动的成功度
 -----------------------------------------
@@ -94,7 +95,7 @@ ms.locfileid: "70962886"
 
 类似于我们查看客户所在领域的方式，在此图表中，可以查看用户进入市场时所在的每个营销活动的数据分布。 \_NoCampaign 表示客户导航到市场时，其 URL 中不包含营销活动 ID。
 
-<a name="next-steps"></a>**后续步骤**
+<a name="next-steps"></a>**Next Steps**
 --------------
 
 在能够跟踪套餐的成功度之后，我们建议你创建自己的营销活动。

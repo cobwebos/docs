@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 97b954ee5e00c13211a3b2a2254b6d34bccb780c
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: e0e649045e3efe488804fd37c030fe01991ad232
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674941"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803612"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -28,9 +28,9 @@ ms.locfileid: "72674941"
 
 ## <a name="programming-model"></a>编程模型
 
-Azure Functions 要求函数在 Python 脚本中作为无状态方法来处理输入并生成输出。 默认情况下，运行时需要将方法实现为 `__init__.py` 文件中 `main()` 名为的全局方法。 还可以[指定备用入口点](#alternate-entry-point)。
+Azure Functions 要求函数在 Python 脚本中作为无状态方法来处理输入并生成输出。 默认情况下，运行时期望此方法在 `main()` 文件中作为名为 `__init__.py` 的全局方法实现。 还可以[指定备用入口点](#alternate-entry-point)。
 
-通过使用*函数 json*文件中定义的 `name` 属性，可通过方法属性将触发器和绑定中的数据绑定到函数。 例如，下面的_函数。 json_描述了一个简单的函数，该函数由名为 `req` 的 HTTP 请求触发：
+来自触发器和绑定的数据使用在 `name`function.json*配置文件中定义的* 属性，通过方法特性绑定到函数。 例如，下面的 _function.json_ 描述一个由名为 `req` 的 HTTP 请求触发的简单函数：
 
 ```json
 {
@@ -73,7 +73,7 @@ def main(req: azure.functions.HttpRequest) -> str:
 
 ## <a name="alternate-entry-point"></a>备用入口点
 
-您可以根据需要指定函数的默认行为，方法是在*函数 json*文件中指定 `scriptFile` 和 `entryPoint` 属性。 例如，下面的_函数_会通知运行时在_main.py_文件中使用 `customentry()` 方法，作为 Azure 函数的入口点。
+您可以根据需要指定函数的默认行为，方法是在*函数 json*文件中指定 `scriptFile` 和 `entryPoint` 属性。 例如，下面的 _function.json_ 指示运行时使用 `customentry()`main.py_文件中的_ 方法作为 Azure 函数的入口点。
 
 ```json
 {
@@ -119,13 +119,13 @@ from __app__.SharedCode import myFirstHelperFunction
 from . import example
 ```
 
-将函数项目部署到 Azure 中的函数应用时， *FunctionApp*文件夹的整个内容应包含在包中，而不是文件夹本身。
+在 Azure 中将 Functions 项目部署到函数应用时，*FunctionApp* 文件夹的整个内容应包含在包中，但不包含该文件夹本身。
 
 ## <a name="triggers-and-inputs"></a>触发器和输入
 
-在 Azure Functions 中，输入分为两种类别：触发器输入和附加输入。 尽管它们在 `function.json` 文件中有所不同，但在 Python 代码中的用法是相同的。  当在 Azure 中运行时，触发器和输入源的连接字符串或机密会映射到 `local.settings.json` 文件中的值。 
+在 Azure Functions 中，输入分为两种类别：触发器输入和附加输入。 虽然它们在 `function.json` 文件中并不相同，但它们在 Python 代码中的使用方法却是相同的。  在本地运行时，触发器和输入源的连接字符串或机密应映射到 `local.settings.json` 文件中的值，以及在 Azure 中运行时的应用程序设置。 
 
-例如，下面的代码演示了这两种情况之间的差异：
+例如，以下代码演示了这两个类别之间的差异：
 
 ```json
 // function.json
@@ -173,16 +173,16 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-调用函数时，HTTP 请求作为 `req` 传递给函数。 将根据路由 URL 中的_ID_从 Azure Blob 存储中检索一个条目，并在函数体中将其作为 `obj` 提供。  此处指定的存储帐户是在中找到的连接字符串，它是函数应用使用的相同存储帐户。
+调用函数时，HTTP 请求作为 `req` 传递给函数。 将基于路由 URL 中的 _ID_ 从 Azure Blob 存储检索一个条目，并在函数体中将其用作 `obj`。  此处指定的存储帐户是在中找到的连接字符串，它是函数应用使用的相同存储帐户。
 
 
 ## <a name="outputs"></a>Outputs
 
 输出可以在返回值和输出参数中进行表示。 如果只有一个输出，则建议使用返回值。 对于多个输出，必须使用输出参数。
 
-若要使用函数的返回值作为输出绑定的值，则绑定的 `name` 属性应在 `function.json` 中设置为 `$return`。
+若要使用函数的返回值作为输出绑定的值，则绑定的 `name` 属性应在 `$return` 中设置为 `function.json`。
 
-若要生成多个输出，请使用[`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python)接口提供的 `set()` 方法为绑定分配值。 例如，以下函数可以将消息推送到队列，还可返回 HTTP 响应。
+若要生成多个输出，请使用 `set()`[`azure.functions.Out` 接口提供的 ](/python/api/azure-functions/azure.functions.out?view=azure-python) 方法将值分配给绑定。 例如，以下函数可以将消息推送到队列，还可返回 HTTP 响应。
 
 ```json
 {
@@ -238,7 +238,7 @@ def main(req):
 
 有其他日志记录方法可用于在不同跟踪级别向控制台进行写入：
 
-| 方法                 | 描述                                |
+| 方法                 | 说明                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | 在根记录器中写入具有 CRITICAL 级别的消息。  |
 | **`error(_message_)`**   | 在根记录器中写入具有 ERROR 级别的消息。    |
@@ -318,7 +318,7 @@ def main():
 
 ## <a name="context"></a>上下文
 
-若要在执行过程中获取函数的调用上下文，请在其签名中包含[`context`](/python/api/azure-functions/azure.functions.context?view=azure-python)参数。 
+若要在执行过程中获取函数的调用上下文，请在其签名中包含 [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) 参数。 
 
 例如：
 
@@ -344,7 +344,7 @@ def main(req: azure.functions.HttpRequest,
 
 ## <a name="global-variables"></a>全局变量
 
-不保证应用的状态将保留以供将来执行。 不过，Azure Functions 运行时通常会对同一应用的多个执行重复运行相同的过程。 为了缓存昂贵计算的结果，请将其声明为全局变量。 
+不保证应用的状态可保留到将来的执行。 不过，Azure Functions 运行时通常会重复使用同一个进程来多次执行同一个应用。 为了缓存高开销计算的结果，请将其声明为全局变量。 
 
 ```python
 CACHED_DATA = None
@@ -362,7 +362,7 @@ def main(req):
 
 在函数中，[应用程序设置](functions-app-settings.md)（如服务连接字符串）在执行过程中公开为环境变量。 可以通过声明 `import os` 然后使用 `setting = os.environ["setting-name"]` 来访问这些设置。
 
-下面的示例获取[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings)，其密钥名为 `myAppSetting`：
+以下示例获取[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings)，其键名为 `myAppSetting`：
 
 ```python
 import logging
@@ -396,7 +396,7 @@ pip install -r requirements.txt
 
 ## <a name="publishing-to-azure"></a>发布到 Azure
 
-准备好发布时，请确保所有依赖项都列在 "*要求" .txt*文件中，该文件位于项目目录的根目录下。 Azure Functions 可以[远程生成](functions-deployment-technologies.md#remote-build)这些依赖项。
+准备好进行发布时，请确保所有依赖项都已在 *requirements.txt* 文件（位于项目目录的根目录）中列出。 Azure Functions 可以[远程生成](functions-deployment-technologies.md#remote-build)这些依赖项。
 
 从发布中排除的项目文件和文件夹（包括虚拟环境文件夹）将在 funcignore 文件中列出。 
 
@@ -418,9 +418,9 @@ func azure functionapp publish <app name> --build-native-deps
 
 ## <a name="unit-testing"></a>单元测试
 
-使用标准测试框架，可以像使用其他 Python 代码那样测试使用 Python 编写的函数。 对于大多数绑定，可以通过从 `azure.functions` 包创建适当类的实例来创建 mock 输入对象。 由于[`azure.functions`](https://pypi.org/project/azure-functions/)包不会立即可用，因此请务必通过你的 `requirements.txt` 文件进行安装，如上面的 " [Python 版本和包管理](#python-version-and-package-management)" 一节中所述。
+可以使用标准测试框架，像测试其他 Python 代码一样测试以 Python 编写的函数。 对于大多数绑定，可以通过创建 `azure.functions` 包中相应类的实例来创建模拟输入对象。 由于不能直接使用 [`azure.functions`](https://pypi.org/project/azure-functions/) 包，请务必根据前面的 `requirements.txt`Python 版本和包管理[部分中所述，通过 ](#python-version-and-package-management) 文件安装该包。
 
-例如，下面是 HTTP 触发函数的模拟测试：
+例如，下面是 HTTP 触发的函数的模拟测试：
 
 ```json
 {
@@ -499,7 +499,7 @@ class TestFunction(unittest.TestCase):
         )
 ```
 
-下面是另一个示例，其中包含队列触发的函数：
+下面是使用队列触发的函数的另一个示例：
 
 ```python
 # myapp/__init__.py
@@ -533,6 +533,27 @@ class TestFunction(unittest.TestCase):
             'msg body: test',
         )
 ```
+## <a name="temporary-files"></a>临时文件
+
+`tempfile.gettempdir()` 方法返回一个临时文件夹，在 Linux 上 `/tmp`该文件夹。 应用程序可以使用此目录来存储在执行期间由函数生成和使用的临时文件。 
+
+> [!IMPORTANT]
+> 写入临时目录的文件不能保证在调用中保持不变。 在 scale out 过程中，临时文件不会在实例之间共享。 
+
+下面的示例在临时目录（`/tmp`）中创建命名的临时文件：
+
+```python
+import logging
+import azure.functions as func
+import tempfile
+from os import listdir
+
+#---
+   tempFilePath = tempfile.gettempdir()   
+   fp = tempfile.NamedTemporaryFile()     
+   fp.write(b'Hello world!')              
+   filesDirListInTemp = listdir(tempFilePath)     
+```   
 
 ## <a name="known-issues-and-faq"></a>已知问题和常见问题解答
 

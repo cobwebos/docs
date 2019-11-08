@@ -10,12 +10,12 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: f6a417e33ac9c60c978d8638539a1e5a0772a034
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f9e4f25c5750ae5c48130140f49f986e20adc745
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475062"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641779"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>教程：使用 Azure Active Directory B2C (Azure AD B2C) 在单页应用程序中启用身份验证
 
@@ -48,7 +48,7 @@ ms.locfileid: "73475062"
 
 在按照先决条件完成的第二个教程中，你已在 Azure AD B2C 中注册了 Web 应用程序。 若要与教程中的示例通信，需添加一个指向 Azure AD B2C 中的应用程序的重定向 URI。
 
-你可以使用当前的“应用程序”体验，或者使用我们新推出的统一“应用注册(预览版)”体验来更新应用程序   。 [详细了解预览版体验](http://aka.ms/b2cappregintro)。
+你可以使用当前的“应用程序”体验，或者使用我们新推出的统一“应用注册(预览版)”体验来更新应用程序   。 [详细了解此新体验](https://aka.ms/b2cappregintro)。
 
 #### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
 

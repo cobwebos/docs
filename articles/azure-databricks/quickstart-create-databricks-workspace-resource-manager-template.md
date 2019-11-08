@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2019
-ms.openlocfilehash: c55de6b437755f46df8d95a8ee461c0671a52cff
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3af9c5e728bd119ce6c5546c8dc6556967cd1eda
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791526"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606112"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板在 Azure Databricks 上运行 Spark 作业
 
@@ -81,7 +81,7 @@ ms.locfileid: "72791526"
 
    选择“创建群集”。  群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
-有关创建群集的详细信息，请参阅[在 Azure Databricks 中创建 Spark 群集](https://docs.azuredatabricks.net/user-guide/clusters/create.html)。
+有关创建群集的详细信息，请参阅[在 Azure Databricks 中创建 Spark 群集](/azure/databricks/user-guide/clusters/create)。
 
 ## <a name="run-a-spark-sql-job"></a>运行 Spark SQL 作业
 
@@ -126,7 +126,7 @@ ms.locfileid: "72791526"
      有关如何检索存储帐户密钥的说明，请参阅[管理存储访问密钥](../storage/common/storage-account-manage.md#access-keys)。
 
    > [!NOTE]
-   > 还可以对 Azure Databricks 中的 Spark 群集使用 Azure Data Lake Store。 有关说明，请参阅[对 Azure Databricks 使用 Data Lake Store](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)。
+   > 还可以对 Azure Databricks 中的 Spark 群集使用 Azure Data Lake Store。 有关说明，请参阅[对 Azure Databricks 使用 Data Lake Store](/azure/databricks/data/data-sources/azure/azure-datalake-gen2.html)。
 
 4. 运行一条 SQL 语句，以使用示例 JSON 数据文件 **small_radio_json.json** 中的数据创建一个临时表。 在以下代码片段中，请将占位符值替换为容器名称和存储帐户名称。 在笔记本上的某个空白单元中粘贴该代码片段，并按 SHIFT + ENTER。 在该代码片段中，`path` 表示已上传到 Azure 存储帐户的示例 JSON 文件所在的位置。
 
@@ -142,7 +142,7 @@ ms.locfileid: "72791526"
 
    成功完成命令后，Databricks 群集中将以表的形式列出 JSON 文件中的所有数据。
 
-   使用 `%sql` 语言魔法 (magic) 命令可从笔记本运行 SQL 代码，即使该笔记本采用另一种类型。 有关详细信息，请参阅[在笔记本中混合使用语言](https://docs.azuredatabricks.net/user-guide/notebooks/index.html#mixing-languages-in-a-notebook)。
+   使用 `%sql` 语言魔法 (magic) 命令可从笔记本运行 SQL 代码，即使该笔记本采用另一种类型。 有关详细信息，请参阅[在笔记本中混合使用语言](/azure/databricks/notebooks/index)。
 
 5. 让我们看看示例 JSON 数据的快照，以便更好地了解运行的查询。 将以下代码片段粘贴到代码单元中，并按 **SHIFT + ENTER**。
 
@@ -186,7 +186,7 @@ ms.locfileid: "72791526"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，我们已在 Azure Databricks 中创建一个 Spark 群集，并使用 Azure 存储中的数据运行了一个 Spark 作业。 我们还可以查看 [Spark 数据源](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)，了解如何将其他数据源中的数据导入 Azure Databricks。 此外，可以了解如何使用资源管理器模板[创建采用自定义 VNET 地址的 Azure Databricks 工作区](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address)。 有关要在模板中使用的 JSON 语法和属性，请参阅 [Microsoft.Databricks/workspaces](/azure/templates/microsoft.databricks/workspaces) 模板参考。
+在本文中，我们已在 Azure Databricks 中创建一个 Spark 群集，并使用 Azure 存储中的数据运行了一个 Spark 作业。 我们还可以查看 [Spark 数据源](/azure/databricks/data/data-sources/index.html)，了解如何将其他数据源中的数据导入 Azure Databricks。 此外，可以了解如何使用资源管理器模板[创建采用自定义 VNET 地址的 Azure Databricks 工作区](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address)。 有关要在模板中使用的 JSON 语法和属性，请参阅 [Microsoft.Databricks/workspaces](/azure/templates/microsoft.databricks/workspaces) 模板参考。
 
 请继续学习下一篇文章，了解如何使用 Azure Databricks 执行 ETL（提取、转换和加载数据）操作。
 

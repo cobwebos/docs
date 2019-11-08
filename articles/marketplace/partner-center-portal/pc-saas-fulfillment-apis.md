@@ -1,37 +1,38 @@
 ---
-title: SaaS 履行 Api |Azure Marketplace
-description: 引入了 Api，使您可以将你的 SaaS 集成提供了在 Azure marketplace 中销售的履行的版本。
+title: SaaS 履单 Api |Azure Marketplace
+description: 介绍了实现 Api 的版本，使你能够将 SaaS 产品和 Azure Marketplace 相集成。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: 7896ed77d9dbb3358ddb1c809ca342828280f66a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ebfc278d09c244970df5807df1505295fe7016c4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258919"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819126"
 ---
 # <a name="saas-fulfillment-apis"></a>SaaS 履行 API
 
-SaaS 履行 Api 使独立软件供应商 (Isv) 可以将其 SaaS 应用程序集成在 Azure marketplace 中销售。 这些 Api 使 ISV 应用程序能够参与所有启用的商务通道： 直接、 合作伙伴主导式 （经销商） 和字段导致。  它们是用于列出在 Azure Marketplace 上的事务 SaaS 产品/服务的要求。
+SaaS 履单 Api 使独立软件供应商（Isv）能够将其 SaaS 应用程序与 Azure Marketplace 集成。 这些 Api 使 ISV 应用程序能够参与所有启用了商业功能的频道：直接、伙伴 led （经销商）和现场 led。  它们是在 Azure Marketplace 上列出事务 SaaS 产品/服务的要求。
 
 > [!WARNING]
-> 此 API 的当前版本为版本 2 中，应使用的所有新 SaaS 产品/服务。  第 1 版 API 已过时，维护以支持现有产品/服务。
+> 此 API 的当前版本是版本2，适用于所有新的 SaaS 产品/服务。  API 的版本1已弃用，并将进行维护以支持现有的产品/服务。
 
 
 ## <a name="business-model-support"></a>业务模型支持
 
 此 API 支持以下业务模型功能;您可以：
 
-* 指定产品/服务的多个的计划。 这些计划具有不同的功能，并可能价格不一样。
-* 提供有关产品/服务每个站点或每个用户计费模型的基础。
-* 提供每月和年 （提前付费） 计费选项。
-* 提供专用于基于协商的业务协议客户定价。
+* 为产品/服务指定多个计划。 这些计划具有不同的功能，并且价格可能不同。
+* 针对每个站点或按用户计费模型提供产品/服务。
+* 提供每月和每年（付费）计费选项。
+* 根据协商的业务协议为客户提供专用定价。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-如果尚未这样做，在将 SaaS 应用程序注册[Azure 门户](https://ms.portal.azure.com)中所述[注册一个 Azure AD 应用程序](./pc-saas-registration.md)。  然后，使用此接口的最新版本进行开发：[SaaS 履行 API 版本 2](./pc-saas-fulfillment-api-v2.md)。
+如果尚未这样做，请在[Azure 门户](https://ms.portal.azure.com)中注册 SaaS 应用程序，如[注册 Azure AD 应用程序](./pc-saas-registration.md)中所述。  之后，使用此接口的最新版本进行开发： [SaaS 履单 API 版本 2](./pc-saas-fulfillment-api-v2.md)。

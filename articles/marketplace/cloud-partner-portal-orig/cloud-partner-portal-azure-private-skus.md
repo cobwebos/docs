@@ -4,15 +4,16 @@ description: 如何使用专用 SKU 来管理套餐可用性。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: pabutler
-ms.openlocfilehash: 940b50cf4a04abacd4d7be2104dd97fb8b3db736
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: eb6eac5eafaeea239bfaf9cf2aface3db659dd57
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883120"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818839"
 ---
 <a name="private-skus-and-plans"></a>专用 SKU 和计划
 ============
@@ -53,7 +54,7 @@ ms.locfileid: "70883120"
 
 在确认 SKU 重用图像后，为映像选择源或*基本*SKU：
 
-![选择镜像](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
+![选择映像](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
 
 发布套餐时，选定 SKU 中的映像将在包含自定义费率/条款的专用 SKU ID 下提供。 只有目标受众可以看到专用 SKU。
 
@@ -98,7 +99,7 @@ ms.locfileid: "70883120"
 
 ###  <a name="managing-subscriptions-with-the-api"></a>利用 API 管理订阅
 
-你可以使用 API 上传 CSV 或直接管理你的受众（无需使用 CSV）。 一般情况下，只需检索产品/服务，更新`restrictedAudience`对象，然后将这些更改提交回产品/服务，以便添加或删除访问群体成员。
+你可以使用 API 上传 CSV 或直接管理你的受众（无需使用 CSV）。 通常，你只需检索你的产品/服务，更新 `restrictedAudience` 对象，然后将这些更改提交回你的产品/服务，以便添加或删除访问群体成员。
 
 下面介绍如何以编程方式更新访问群体列表：
 
@@ -126,7 +127,7 @@ ms.locfileid: "70883120"
 
     对于每个受限受众对象：
 
-    a. 下载的内容`restrictedAudience.uploadedCsvUri`。 内容只是带有标头的 CSV 文件。 例如：
+    a. 下载 `restrictedAudience.uploadedCsvUri`的内容。 内容只是带有标头的 CSV 文件。 例如：
 
         type,id,description
         subscriptionId,541a269f-3df2-486e-8fe3-c8f9dcf28205,sub1
@@ -136,7 +137,7 @@ ms.locfileid: "70883120"
 
     c. 将更新后的 CSV 文件上传到[Azure Blob 存储](../../storage/blobs/storage-blobs-overview.md)或[OneDrive](https://onedrive.live.com)等位置，并创建文件的只读链接。 这将是你的新*SasUrl*。
 
-    d. 用新*SasUrl*更新密钥。`restrictedAudience.uploadedCsvUri`
+    d. 用新*SasUrl*更新 `restrictedAudience.uploadedCsvUri` 项。
 
     **如果从云合作伙伴门户手动输入专用产品/服务的原始订阅列表：**
 
@@ -156,7 +157,7 @@ ms.locfileid: "70883120"
         ]}
     ```
 
-    a. 对于每个受限受众对象，根据需要在`restrictedAudience.manualEntries`列表中添加或删除条目。
+    a. 对于每个受限受众对象，根据需要在 `restrictedAudience.manualEntries` 列表中添加或删除条目。
 
 4. 完成更新专用产品/服务的每个 SKU 的所有*restrictedAudience*对象后，请[更新产品/服务](cloud-partner-portal-api-creating-offer.md)：
 

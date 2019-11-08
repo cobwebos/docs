@@ -1,5 +1,5 @@
 ---
-title: 用 scikit-learn 训练机器学习模型-了解
+title: 训练 scikit-learn-了解机器学习模型
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习的 Spark-sklearn 估计器类在企业级上了解培训脚本的运行情况。 示例脚本对 iris 花卉图像进行分类，以便基于 scikit-learn 的 iris 数据集构建机器学习模型。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed93eff6c137e125c2bc1707de441dc9971d6f3f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ea466486509c4b5dadc48ef830c9f05ec42ab5b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584457"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814861"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>构建 scikit-learn-通过 Azure 机器学习的规模了解模型
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -89,11 +89,11 @@ exp = Experiment(workspace=ws, name='sklearn-iris')
 
 在本教程中，已为你提供训练脚本**train_iris。** 在实践中，您应该能够按原样获取任何自定义训练脚本，并使用 Azure ML 运行它，而无需修改您的代码。
 
-若要使用 Azure ML 的跟踪和指标功能，请在训练脚本中添加少量的 Azure ML 代码。  训练脚本**train_iris。 py**演示如何使用脚本中的 `Run` 对象将一些指标记录到 Azure ML 运行中。
+若要使用 Azure ML 的跟踪和指标功能，请在训练脚本中添加少量的 Azure ML 代码。  训练脚本**train_iris。 py**演示了如何使用脚本中的 `Run` 对象将一些指标记录到 Azure ML 运行中。
 
 提供的训练脚本使用 `iris = datasets.load_iris()` 函数中的示例数据。  对于您自己的数据，您可能需要使用 "[上传数据集" 和 "脚本](how-to-train-keras.md#data-upload)" 等步骤，使数据在训练过程中可用。
 
-将训练脚本**train_iris**复制到项目目录中。
+将训练脚本**train_iris py**复制到项目目录中。
 
 ```
 import shutil
@@ -169,7 +169,7 @@ run.wait_for_completion(show_output=True)
 
 对模型进行定型后，可以将其保存并注册到工作区。 利用模型注册，可以在工作区中存储模型并对模型进行版本管理，从而简化[模型管理和部署](concept-model-management-and-deployment.md)。
 
-将以下代码添加到训练脚本 py，以保存模型。 train_iris 
+将以下代码添加到训练脚本（train_iris py）以保存模型。 
 
 ``` Python
 import joblib

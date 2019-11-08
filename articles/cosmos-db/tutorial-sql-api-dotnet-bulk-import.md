@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3e8f9f6f839f4effa039335e6326c163b18d3dcc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d80d762338744c0ca783d1768bacb8443dbc5020
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519347"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606203"
 ---
 # <a name="optimize-throughput-when-bulk-importing-data-to-azure-cosmos-db-sql-api-account"></a>将数据批量导入到 Azure Cosmos DB SQL API 帐户时优化吞吐量
 
@@ -95,6 +95,14 @@ ms.locfileid: "73519347"
 
 
    ```csharp
+   using System;
+   using System.Collections.Generic;
+   using System.Diagnostics;
+   using System.IO;
+   using System.Text.Json;
+   using System.Threading.Tasks;
+   using Microsoft.Azure.Cosmos;
+
    public class Program
    {
         private const string EndpointUrl = "https://<your-account>.documents.azure.com:443/";

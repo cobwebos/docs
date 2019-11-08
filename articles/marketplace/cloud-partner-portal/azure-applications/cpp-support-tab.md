@@ -1,18 +1,19 @@
 ---
-title: 配置 Azure 应用程序的支持 |Azure Marketplace
+title: 配置 Azure 应用程序支持 |Azure Marketplace
 description: 为 Azure 市场中的服务/产品配置 Azure 应用程序支持。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 37c6a36afaad1e10d5075a207b35920531d6ace2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6616f4caed3483af9e23c7d5d1326478213f6f0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943264"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818185"
 ---
 # <a name="azure-application-support-tab"></a>Azure 应用程序“支持”选项卡
 
@@ -24,20 +25,20 @@ ms.locfileid: "64943264"
 
   ![产品/服务的支持窗体](./media/azureapp-support-tab.png)
 
-1. 在“工程联系人”  下，提供以下字段的信息：
+1. 在“工程联系人”下，提供以下字段的信息：
 
-   - **名称\*** -输入应用的工程联系人名称。 此联系人将收到来自 Microsoft 的技术邮件。
+   - **名称\*** -输入应用的工程联系人的名称。 此联系人将收到来自 Microsoft 的技术邮件。
    - **电子邮件\*** -输入工程联系人的电子邮件地址。
    - **电话\*** -输入工程联系人的电话号码。
   
-2. 在“支持联系人”  下，提供以下字段的信息：
+2. 在“支持联系人”下，提供以下字段的信息：
 
-   - **名称\*** -输入你的应用支持联系人的名称。 此联系人将收到来自 Microsoft 的支持相关邮件。
-   - **电子邮件\*** -输入你的应用的支持联系人的电子邮件地址。
+   - **名称\*** -输入应用的支持联系人的名称。 此联系人将收到来自 Microsoft 的支持相关邮件。
+   - **电子邮件\*** -输入应用支持联系人的电子邮件地址。
    - **电话\*** -输入支持联系人的电话号码。
  
-3. 在“支持 Url”  下，提供 Microsoft 在客户打开支持票证时会使用的相应支持 URL。 这些 Url 会用于公共 Azure 或 Azure 政府云。
-4. 完成后，选择“保存”  。
+3. 在“支持 Url”下，提供 Microsoft 在客户打开支持票证时会使用的相应支持 URL。 这些 Url 会用于公共 Azure 或 Azure 政府云。
+4. 完成后，选择 "**保存**"。
 
 ## <a name="next-steps"></a>后续步骤
 

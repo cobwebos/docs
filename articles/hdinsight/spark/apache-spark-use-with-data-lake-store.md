@@ -8,20 +8,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7c60fdfd4d8e579c24da3c43501e4437806becc6
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: f7a6ab954aff1bcc2e3dae3fc035db4b136ccbbe
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241716"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818168"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>使用 HDInsight Spark 群集分析 Data Lake Storage Gen1 中的数据
 
 本文介绍如何使用 HDInsight Spark 群集可用[Jupyter Notebook](https://jupyter.org/)来运行从 Data Lake Storage 帐户读取数据的作业。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* Azure Data Lake Storage Gen1 帐户。 遵照[通过 Azure 门户使用 Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-get-started-portal.md) 中的说明。
+* Azure Data Lake Storage Gen1 帐户。 请遵循[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-get-started-portal.md) 中的说明进行操作。
 
 * 包含 Data Lake Storage Gen1 作为存储的 Azure HDInsight Spark 群集。 按照[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)中的说明进行操作。
 
@@ -30,7 +30,7 @@ ms.locfileid: "73241716"
 > [!NOTE]  
 > 如果已创建将 Data Lake Storage 作为默认存储的 HDInsight 群集，则无需执行此步骤。 群集创建过程在创建群集时指定的 Data Lake Storage 帐户中添加一些示例数据。 跳转到“配合使用 HDInsight Spark 群集与 Data Lake Storage”一节。
 
-如果创建了将 Data Lake Storage 作为附加存储并将 Azure 存储 Blob 作为默认存储的 HDInsight 群集，则应先将一些示例数据复制到 Data Lake Store 帐户。 可以使用与 HDInsight 群集关联的 Azure 存储 Blob 中的示例数据。 为此，可使用 [ADLCopy 工具](https://aka.ms/downloadadlcopy)。 从此链接下载并安装该工具。
+如果创建了将 Data Lake Storage 作为附加存储并将 Azure 存储 Blob 作为默认存储的 HDInsight 群集，则应先将一些示例数据复制到 Data Lake Store 帐户。 可以使用与 HDInsight 群集关联的 Azure 存储 Blob 中的示例数据。 为此，可使用 [ADLCopy 工具](https://www.microsoft.com/download/details.aspx?id=50358)。 从此链接下载并安装该工具。
 
 1. 打开命令提示符，并导航到 AdlCopy 的安装目录（通常是 `%HOMEPATH%\Documents\adlcopy`）。
 
@@ -108,7 +108,7 @@ ms.locfileid: "73241716"
            # Register the data fram as a table to run queries against
            hvacdf.registerTempTable("hvac")
 
-6. 由于使用的是 PySpark 内核，因此现在可直接在刚才使用 `%%sql` magic 创建的临时表 **hvac** 上运行 SQL 查询。 有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅 [Kernels available on Jupyter notebooks with Apache Spark HDInsight clusters](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)（包含 Apache Spark HDInsight 群集的 Jupyter notebook 上可用的内核）。
+6. 由于使用的是 PySpark 内核，因此现在可直接在刚才使用 **magic 创建的临时表**hvac`%%sql` 上运行 SQL 查询。 有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅 [Kernels available on Jupyter notebooks with Apache Spark HDInsight clusters](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)（包含 Apache Spark HDInsight 群集的 Jupyter notebook 上可用的内核）。
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"

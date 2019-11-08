@@ -1,5 +1,5 @@
 ---
-title: 设计灾难恢复解决方案-Azure SQL 数据库
+title: 设计灾难恢复解决方案
 description: 了解如何通过选择合适的故障转移模式来设计可实现灾难恢复的云解决方案。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 535397dcf32a617038ab4bef4ec7aa227f4563b1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4eeaa187142a6d0d97b12f685ebc455f3844606f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690647"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825877"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>使用 SQL 数据库弹性池的应用程序的灾难恢复策略
 
@@ -90,7 +90,7 @@ ms.locfileid: "73690647"
 
 此时，应用程序便已在 DR 区域中恢复为在线状态。 所有付费客户均可访问其数据，而试用客户则会在访问数据时遇到延迟。
 
-在 DR 区域中还原了应用程序 *之后* ，如果 Azure 恢复了主要区域，则可以决定在该区域继续运行应用程序或故障回复到主要区域。 如果在故障转移过程完成*之前*恢复了主要区域，请考虑立即进行故障回复。 此故障回复采用下图所示的步骤：
+在 DR 区域中还原了应用程序*之后*，如果 Azure 恢复了主要区域，则可以决定在该区域继续运行应用程序或故障回复到主要区域。 如果在故障转移过程完成*之前*恢复了主要区域，请考虑立即进行故障回复。 此故障回复采用下图所示的步骤：
 
 ![图 6](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
 
@@ -169,7 +169,7 @@ ms.locfileid: "73690647"
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解 Azure SQL 数据库的自动备份，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)。
-* 有关业务连续性概述和应用场景，请参阅 [业务连续性概述](sql-database-business-continuity.md)。
-* 若要了解如何使用自动备份进行恢复，请参阅 [从服务启动的备份中还原数据库](sql-database-recovery-using-backups.md)。
+* 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)。
+* 若要了解如何使用自动备份进行恢复，请参阅[从服务启动的备份中还原数据库](sql-database-recovery-using-backups.md)。
 * 要了解更快的恢复选项，请参阅[活动异地复制](sql-database-active-geo-replication.md)和[自动故障转移组](sql-database-auto-failover-group.md)。
 * 若要了解如何使用自动备份进行存档，请参阅[数据库复制](sql-database-copy.md)。

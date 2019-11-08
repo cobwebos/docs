@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: f0f9a2e59e0e231c956e9f1c36bb6a54bcbaca24
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9399353cb676ef4525e81229cf3920fd9d7e3aaf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476318"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684924"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
@@ -73,7 +73,7 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 
   有关详细信息，请参阅 [Azure 机器学习设计器概述文章](concept-designer.md)。 
 
-  ![Azure 机器学习设计器示例](/media/concept-ml-pipelines/visual-design-surface.gif)
+  ![Azure 机器学习设计器示例](media/concept-ml-pipelines/designer-drag-and-drop.gif)
 
 + **自动化机器学习 UI**
 

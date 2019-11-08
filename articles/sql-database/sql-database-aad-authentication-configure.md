@@ -1,5 +1,5 @@
 ---
-title: 配置 Azure Active Directory authentication-SQL
+title: 配置 Azure Active Directory 身份验证
 description: 了解如何使用 Azure Active Directory Authentication 连接到 SQL 数据库、托管实例和 SQL 数据仓库-配置 Azure AD 后。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 11/06/2019
-ms.openlocfilehash: d23fcb781f5eddd71d5ddce9344d988d2e323611
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 48334d8ce266ddcc92e4d2b27634db3d8c9f1bc9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691385"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816799"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>使用 SQL 配置和管理 Azure Active Directory 身份验证
 
@@ -42,11 +42,11 @@ ms.locfileid: "73691385"
 1. 通过将目录设为托管数据库的 Azure 订阅的一个受信任目录，将 Azure 订阅关联到 Azure Active Directory。 有关详细信息，请参阅 [Azure 订阅与 Azure AD 的关联方式](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 2. 在 Azure 门户中使用目录切换器切换到与域关联的订阅。
 
-   **其他信息：** 每个 Azure 订阅都与某个 Azure AD 实例存在信任关系。 这意味着，此订阅信任该目录对用户、服务和设备执行身份验证。 多个订阅可以信任同一个目录，但一个订阅只能信任一个目录。 订阅与目录之间的这种信任关系不同于订阅与 Azure 中所有其他资源（网站、数据库等）之间的关系，在后一种关系中，这些资源更像是订阅的子资源。 如果某个订阅过期，则对该订阅关联的其他那些资源的访问权限也将终止。 但是，目录将保留在 Azure 中，并且可以将另一个订阅与该目录相关联，并继续管理目录用户。 有关资源的详细信息，请参阅[了解 Azure 中的资源访问](../active-directory/active-directory-b2b-admin-add-users.md)。 若要详细了解此受信任关系，请参阅[如何将 Azure 订阅关联或添加到 Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
+   **其他信息：** 每个 Azure 订阅都与某个 Azure AD 实例存在信任关系。 这意味着，此订阅信任该目录对用户、服务和设备执行身份验证。 多个订阅可以信任同一个目录，但一个订阅只能信任一个目录。 订阅与目录之间的这种信任关系不同于订阅与 Azure 中所有其他资源（网站、数据库等）之间的信任关系，在后一种关系中，这些资源更像是订阅的子资源。 如果某个订阅过期，则对该订阅关联的其他那些资源的访问权限也将终止。 但是，目录将保留在 Azure 中，并且可以将另一个订阅与该目录相关联，并继续管理目录用户。 有关资源的详细信息，请参阅[了解 Azure 中的资源访问](../active-directory/active-directory-b2b-admin-add-users.md)。 若要详细了解此受信任关系，请参阅[如何将 Azure 订阅关联或添加到 Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 
 ## <a name="create-an-azure-ad-administrator-for-azure-sql-server"></a>为 Azure SQL Server 创建 Azure AD 管理员
 
-每个 Azure SQL Server（托管 SQL 数据库或 SQL 数据仓库）开始时只使用单个服务器管理员帐户，即整个 Azure SQL Server 的管理员。 必须创建第二个 SQL Server 管理员，这是一个 Azure AD 帐户。 此主体在 master 数据库中作为包含的数据库用户创建。 作为管理员，服务器管理员帐户是每个用户数据库中 **db_owner** 角色的成员，并且以 **dbo** 用户身份输入每个用户数据库。 有关服务器管理员帐户的详细信息，请参阅[在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)。
+每个托管 SQL 数据库或 SQL 数据仓库的 Azure SQL Server 开始时只使用单个服务器管理员帐户，即整个 Azure SQL Server 的管理员。 必须创建第二个 SQL Server 管理员，这是一个 Azure AD 帐户。 此主体在 master 数据库中作为包含的数据库用户创建。 作为管理员，服务器管理员帐户是每个用户数据库中 **db_owner** 角色的成员，并且以 **dbo** 用户身份输入每个用户数据库。 有关服务器管理员帐户的详细信息，请参阅[在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)。
 
 将 Azure Active Directory 与异地复制结合使用时，必须为主服务器和辅助服务器配置 Azure Active Directory 管理员。 如果服务器没有 Azure Active Directory 管理员，则 Azure Active Directory 登录名和用户会收到“无法连接到服务器”错误。
 
@@ -161,7 +161,7 @@ ms.locfileid: "73691385"
 | 在公共预览版期间为英里 Azure AD 登录管理员 | 适用于 MI Azure AD 管理员的 GA 功能 |
 | --- | ---|
 | 的行为方式类似于 SQL 数据库 Azure AD 管理员，这会启用 Azure AD 身份验证，但 Azure AD 管理员无法在 master db 中为 MI 创建 Azure AD 或 SQL 登录名。 | Azure AD 管理员具有 sysadmin 权限，并且可以在 master db 中为 MI 创建 AAD 和 SQL 登录名。 |
-| Server_principals 视图中不存在 | 在 server_principals 视图中存在 |
+| Sys. server_principals 视图中不存在 | 存在于 sys. server_principals 视图中 |
 | 允许将单个 Azure AD 来宾用户设置为 MI Azure AD 管理员。 有关详细信息，请参阅[在 Azure 门户中添加 AZURE ACTIVE DIRECTORY B2B 协作用户](../active-directory/b2b/add-users-administrator.md)。 | 需要创建包含来宾用户作为成员的 Azure AD 组，以将此组设置为对 MI Azure AD 管理员。 有关详细信息，请参阅[Azure AD 业务到业务支持](sql-database-ssms-mfa-authentication.md#azure-ad-business-to-business-support)。 |
 
 作为现有 Azure AD 管理员在 GA 之前创建的 MI 的最佳实践，并且仍在公开发布后，请使用同一 Azure AD 用户或组的 Azure 门户 "删除管理员" 和 "设置管理员" 选项重置 Azure AD 管理员。
@@ -386,7 +386,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 > 此命令要求代表登录用户 Azure AD （"外部提供程序"）。 有时会出现这样的情况，导致 Azure AD 将异常返回给 SQL。 在这些情况下，用户将看到 SQL 错误33134，该错误消息应包含 AAD 特定的错误消息。 大多数情况下，此错误会指出访问被拒绝，或者用户必须注册 MFA 才能访问资源，或者必须通过 preauthorization 处理第一方应用程序之间的访问。 在前两种情况下，该问题通常是由用户的 AAD 租户中设置的条件性访问策略引起的：阻止用户访问外部提供商。 更新 CA 策略以允许访问应用程序 "00000002-0000-0000-c000-000000000000" （AAD 图形 API 的应用程序 ID）应可以解决此问题。 如果错误显示必须通过 preauthorization 处理第一方应用程序之间的访问权限，则问题是因为用户是作为服务主体登录的。 如果此命令是由用户执行的，则该命令应成功。
 
 > [!TIP]
-> 无法从与 Azure 订阅关联的 Azure Active Directory 之外的 Azure Active Directory 直接创建用户。 但是，可将关联的 Active Directory 中导入的用户（称为外部用户）的其他 Active Directory 成员添加到租户 Active Directory 中的 Active Directory 组。 通过为该 AD 组创建包含的数据库用户，外部 Active Directory 中的用户可以获取对 SQL 数据库的访问权限。
+> 无法从与 Azure 订阅关联的 Azure Active Directory 之外的 Azure Active Directory 直接创建用户。 但是，可以将关联 Active Directory 中从其他 Active Directory 导入的用户成员（称为外部用户）添加到租户 Active Directory 中的 Active Directory 组。 通过为该 AD 组创建包含的数据库用户，外部 Active Directory 中的用户可以获取对 SQL 数据库的访问权限。
 
 有关基于 Azure Active Directory 标识创建包含的数据库用户的详细信息，请参阅 [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx)。
 
@@ -395,7 +395,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 > [!NOTE]
 > 如果收到 **Connection Timeout Expired** 消息，则可能需要将连接字符串的 `TransparentNetworkIPResolution` 参数设置为 false。 有关详细信息，请参阅 [.NET Framework 4.6.1 的连接超时问题 - TransparentNetworkIPResolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/20../../connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/)。
 
-创建数据库用户时，该用户会收到 **CONNECT** 权限，并能够以 **PUBLIC** 角色的成员身份连接到该数据库。 最初，仅供用户使用的权限是授予 PUBLIC 角色的任何权限，或者授予其所属任何 Azure AD 组的任何权限。 预配基于 Azure AD 的包含的数据库用户后，可以授予用户其他权限，方法与向任何其他类型的用户授予权限相同。 通常，将权限授予数据库角色，并将用户添加到角色。 有关详细信息，请参阅[数据库引擎权限基础知识](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx)。 有关特殊 SQL 数据库角色的详细信息，请参阅 [在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)。
+创建数据库用户时，该用户会收到 **CONNECT** 权限，并能够以 **PUBLIC** 角色的成员身份连接到该数据库。 最初，仅供用户使用的权限是授予 PUBLIC 角色的任何权限，或者授予其所属任何 Azure AD 组的任何权限。 预配基于 Azure AD 的包含的数据库用户后，可以授予用户其他权限，方法与向任何其他类型的用户授予权限相同。 通常，将权限授予数据库角色，并将用户添加到角色。 有关详细信息，请参阅[数据库引擎权限基础知识](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx)。 有关特殊 SQL 数据库角色的详细信息，请参阅[在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)。
 如果将联合域用户帐户作为外部用户导入到托管域，则此用户必须使用托管域标识。
 
 > [!NOTE]
@@ -506,7 +506,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 
 - 有关 SQL 数据库中的访问和控制的概述，请参阅 [SQL 数据库访问和控制](sql-database-control-access.md)。
 - 有关 SQL 数据库中的登录名、用户和数据库角色的概述，请参阅[登录名、用户和数据库角色](sql-database-manage-logins.md)。
-- 有关数据库主体的详细信息，请参阅 [主体](https://msdn.microsoft.com/library/ms181127.aspx)。
+- 有关数据库主体的详细信息，请参阅[主体](https://msdn.microsoft.com/library/ms181127.aspx)。
 - 有关数据库角色的详细信息，请参阅[数据库角色](https://msdn.microsoft.com/library/ms189121.aspx)。
 - 有关 SQL 数据库中的防火墙规则的详细信息，请参阅 [SQL 数据库防火墙规则](sql-database-firewall-configure.md)。
 

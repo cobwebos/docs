@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: 149b83b9aacf23cde06a2b35aed06c164afe9647
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 1e86658422e444cb7104c3e3428a74d31d453a72
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243327"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605977"
 ---
 # <a name="what-is-azure-databricks"></a>什么是 Azure Databricks？
 
@@ -96,9 +96,9 @@ Azure Databricks 与以下 Azure 数据库和存储深度集成：SQL 数据仓�
 ## <a name="next-steps"></a>后续步骤
 
 * [快速入门：在 Azure Databricks 上运行 Spark 作业](quickstart-create-databricks-workspace-portal.md)
-* [使用 Spark 群集](https://docs.azuredatabricks.net/user-guide/clusters/index.html)
-* [使用笔记本](https://docs.azuredatabricks.net/user-guide/notebooks/index.html)
-* [创建 Spark 作业](https://docs.azuredatabricks.net/user-guide/jobs.html)
+* [使用 Spark 群集](/azure/databricks/clusters/index)
+* [使用笔记本](/azure/databricks/notebooks/index)
+* [创建 Spark 作业](/azure/databricks/jobs)
 
  
 

@@ -1,18 +1,19 @@
 ---
-title: 部署 Azure VM 从用户 VHD |Azure Marketplace
+title: 从用户 VHD 部署 Azure VM |Azure Marketplace
 description: 介绍如何部署用户 VHD 映像以创建 Azure VM 实例。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pabutler
-ms.openlocfilehash: e4da523fa54a513fe77fda037aea0a5fd530250b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8421e9b7b7e2b7d13054e977da83be044b4e6af7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938238"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816644"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>从用户 VHD 中部署 Azure VM
 
@@ -31,7 +32,7 @@ ms.locfileid: "64938238"
 | userStorageAccountName     | 存储帐户的名称                                                    |
 | sNameForPublicIP           | 公共 IP 的 DNS 名称。 必须为小写                                  |
 | subscriptionId             | Azure 订阅标识符                                                  |
-| Location                   | 资源组的标准 Azure 地理位置                       |
+| 位置                   | 资源组的标准 Azure 地理位置                       |
 | vmName                     | 虚拟机名称                                                    |
 | vaultName                  | 密钥保管库的名称                                                          |
 | vaultResourceGroup         | 密钥保管库的资源组

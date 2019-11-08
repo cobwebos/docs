@@ -1,5 +1,5 @@
 ---
-title: 'Azure SQL 数据库服务层-基于 DTU 的购买模型 '
+title: 服务层-基于 DTU 的购买模型
 description: 了解单一数据库和共用数据库的基于 DTU 的购买模型中的服务层级，以提供计算大小和存储大小。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 43f4f9e0d1e5f33dde32e5274dddf9d17776db21
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6d4c9dd08f2d00bc12f041748cc78363c9abecbd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687299"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822524"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 

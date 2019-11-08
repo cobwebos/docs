@@ -1,21 +1,21 @@
 ---
-title: 生成一个用于在 Azure Cosmos DB SQL API 帐户中管理数据的 .NET 控制台应用
-description: 了解如何使用 C# 控制台应用程序创建 Azure Cosmos DB SQL API 资源。
+title: 教程：生成一个用于在 Azure Cosmos DB SQL API 帐户中管理数据的 .NET 控制台应用
+description: 教程：了解如何使用 C# 控制台应用程序创建 Azure Cosmos DB SQL API 资源。
 author: kirankumarkolli
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 09/24/2019
+ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: 35e92ff1591bc5f0427dabbf68e697d9c3c32b48
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 25846bb7a19d29a3a72146d4046b5205183a247e
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299291"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720859"
 ---
-# <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>生成一个用于在 Azure Cosmos DB SQL API 帐户中管理数据的 .NET 控制台应用
+# <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>教程：生成一个用于在 Azure Cosmos DB SQL API 帐户中管理数据的 .NET 控制台应用
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -482,7 +482,7 @@ End of demo, press any key to exit.
 
 ## <a name="next-steps"></a>后续步骤
 
-* 需要更复杂的 ASP.NET MVC 教程？ 请参阅[教程：通过 .NET SDK 开发使用 Azure Cosmos DB 的 ASP.NET Core MVC Web 应用程序](sql-api-dotnet-application.md)。
+* 需要更复杂的 ASP.NET MVC 教程？ 有关分步说明，请参阅[教程：通过 .NET SDK 开发使用 Azure Cosmos DB 的 ASP.NET Core MVC Web 应用程序](sql-api-dotnet-application.md)。
 * 需要执行 Azure Cosmos DB 缩放和性能测试？ 请参阅 [Azure Cosmos DB 的性能和缩放测试](performance-testing.md)。
 * 若要了解如何监视 Azure Cosmos DB 请求、使用情况和存储，请参阅[监视 Azure Cosmos DB 中的性能和存储指标](monitor-accounts.md)。
 * 若要对示例数据集运行查询，请参阅[查询操场](https://www.documentdb.com/sql/demo)。

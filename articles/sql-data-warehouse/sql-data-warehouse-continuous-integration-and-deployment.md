@@ -1,5 +1,5 @@
 ---
-title: 持续集成和部署 | Microsoft Docs
+title: 持续集成和部署
 description: 适用于 SQL 数据仓库的企业级数据库 DevOps 体验，原生支持使用 Azure Pipelines 进行持续集成和部署。
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 7afb616fffaf01b1efa4f5d5a4af9dddd9683781
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: fd03072f4e69fac43874e822ebb06063436ef72c
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70143843"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646138"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>适用于 Azure SQL 数据仓库的持续集成和部署
 

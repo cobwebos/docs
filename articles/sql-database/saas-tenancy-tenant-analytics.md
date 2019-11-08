@@ -1,5 +1,5 @@
 ---
-title: 使用提取的数据运行跨租户分析 | Microsoft Docs
+title: 使用提取的数据运行跨租户分析
 description: 在单租户应用中使用从多个“Azure SQL 数据库”数据库提取的数据运行跨租户分析查询。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 12/18/2018
-ms.openlocfilehash: 2c24a87377eb4b893cbcae1b9a36522e586a6d56
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c589d9619da8b5150d0fb4752625571c48393552
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570152"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826384"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>使用提取的数据运行跨租户分析 - 单租户应用
  
@@ -62,7 +62,7 @@ ms.locfileid: "68570152"
 
 了解每位租户使用服务的方式，进而探索如何从服务中获利以及如何改进服务来让租户更加成功。 本教程提供一些基本示例，介绍可从租户数据中收集的见解类型。
 
-## <a name="setup"></a>安装
+## <a name="setup"></a>设置
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -90,9 +90,9 @@ ms.locfileid: "68570152"
 2. 设置脚本中的 $DemoScenario 变量，使其与所选的分析存储匹配：
     - 若要使用不包含列存储的 SQL 数据库，请设置 **$DemoScenario** = **2**
     - 若要使用包含列存储的 SQL 数据库，请设置 **$DemoScenario** = **3**  
-3. 按**F5**运行演示脚本 (调用*TenantAnalytics\<XX > ps1*脚本), 该脚本会创建租户分析存储。 
+3. 按**F5**运行演示脚本（用于调用*TenantAnalytics\<XX > ps1*脚本），该脚本会创建租户分析存储。 
 
-现在, 你已部署了应用程序, 并使用了兴趣的租户数据对其进行了填充, 请使用[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)连接**tenants1-&lt;user&gt;** 和**user-&lt;user&gt;** 使用 Login = *developer*, Password = *P\@ssword1*的服务器。 有关更多指导，请参阅[简介教程](saas-dbpertenant-wingtip-app-overview.md)。
+现在，你已部署了应用程序，并使用了兴趣的租户数据对其进行了填充，请使用[SQL Server Management Studio （SSMS）](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)连接**Tenants1&lt;user 用户&gt;** 和**user&lt;用户&gt;** 服务器使用登录名 = *developer*，Password = *P\@ssword1*。 有关更多指导，请参阅[简介教程](saas-dbpertenant-wingtip-app-overview.md)。
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "68570152"
 
 在继续下一步之前，请确保已部署作业帐户和作业帐户数据库。 在接下来的一系列步骤中，将使用弹性作业从每个租户数据库提取数据，并将数据存储在分析存储中。 然后，第二个作业将数据分片，并将其存储到星型架构的表中。 这两个作业针对两个不同的目标组（即 **TenantGroup** 和 **AnalyticsGroup**）运行。 提取作业针对包含所有租户数据库的 TenantGroup 运行。 分片作业针对只包含分析存储的 AnalyticsGroup 运行。 使用以下步骤创建目标组：
 
-1. 在 SSMS 中，连接到 catalog-dpt-&lt;User&gt; 中的 **jobaccount** 数据库。
+1. 在 SSMS 中，连接到 catalog-dpt-**User** 中的 &lt;jobaccount&gt; 数据库。
 2. 在 SSMS 中，打开 *…\Learning Modules\Operational Analytics\Tenant Analytics\ TargetGroups.sql* 
 3. 修改脚本顶部的 @User 变量，将 `<User>` 替换为部署 Wingtip SaaS 应用时使用的用户值。
 4. 按 **F5** 运行脚本，以创建两个目标组。
@@ -131,7 +131,7 @@ ms.locfileid: "68570152"
 
 每个作业提取自身的目标数据，并将其发布到分析存储。 有一个单独的作业会将提取的数据分片到分析星型架构。
 
-1. 在 SSMS 中，连接到 catalog-dpt-&lt;User&gt; 服务器中的 **jobaccount** 数据库。
+1. 在 SSMS 中，连接到 catalog-dpt-**User** 服务器中的 &lt;jobaccount&gt; 数据库。
 2. 在 SSMS 中，打开 *...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql*。
 3. 修改脚本顶部的 @User，将 `<User>` 替换为部署 Wingtip SaaS 应用时使用的用户名 
 4. 按 F5 运行脚本，以创建并运行从每个租户数据库提取门票和客户数据的作业。 该作业会将数据保存到分析存储中。
@@ -151,7 +151,7 @@ ms.locfileid: "68570152"
 
 在本教程部分，定义并运行一个用于将提取的原始数据与星型架构表中的数据合并的作业。 合并作业完成后，将删除原始数据，以便下一个租户数据提取作业可以填充表。
 
-1. 在 SSMS 中，连接到 catalog-dpt-&lt;User&gt; 中的 **jobaccount** 数据库。
+1. 在 SSMS 中，连接到 catalog-dpt-**User** 中的 &lt;jobaccount&gt; 数据库。
 2. 在 SSMS 中，打开 *…\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql*。
 3. 按 **F5** 运行脚本，以定义一个调用分析存储中 sp_ShredRawExtractedData 存储过程的作业。
 4. 请耐心等待，让作业成功运行。
@@ -174,7 +174,7 @@ ms.locfileid: "68570152"
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. 选择左窗格中的 "**数据库**", 然后输入 "用户名 =*开发人员*", 并输入 password = *P\@ssword1*。 单击“连接”。  
+5. 选择左窗格中的 "**数据库**"，然后输入 "用户名 =*开发人员*"，并输入 password = *P\@ssword1*"。 单击“连接”。  
 
     ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
@@ -226,7 +226,7 @@ AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CA
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+本教程介绍了如何：
 
 > [!div class="checklist"]
 > - 部署包含预定义星型架构表的租户分析数据库

@@ -1,5 +1,5 @@
 ---
-title: 设置安全信息以使用验证器应用（预览）- Azure Active Directory | Microsoft Docs
+title: 设置身份验证应用的安全信息（预览版）-Azure AD
 description: 如何设置安全信息以使用 Microsoft Authenticator 应用验证身份。
 services: active-directory
 author: eross-msft
@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 101d478d37055a08a5ced9113e070bf826613bd3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 19f44f4df9e3c17c376830c6a404a21e8a5d67b2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160773"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805085"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>设置安全信息以使用验证器应用（预览）
 
 可遵循以下步骤添加双重验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页面以添加、更新或删除安全信息。
 
-如果在登录工作或学校帐户后系统提示立即进行此项设置，请参阅[根据登录页提示设置安全信息](security-info-setup-signin.md)一文中的详细步骤。
+如果在登录工作或学校帐户后系统提示立即进行设置，请参阅[根据登录页提示设置安全信息](security-info-setup-signin.md)一文中的详细步骤。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
@@ -36,13 +36,13 @@ ms.locfileid: "73160773"
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>设置 Microsoft Authenticator 应用
 
-1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页面。
+1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
 
     ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 
 2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-    ![“安全信息”页面，突出显示“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. 在“添加方法”页上，从下拉列表中选择“验证器应用”，然后选择“添加”。
 
@@ -121,7 +121,7 @@ ms.locfileid: "73160773"
 
 2. 从可用方法下拉列表中选择“Microsoft Authenticator - 通知”。 如果不使用 Microsoft Authenticator 应用，请选择“验证器应用或硬件令牌”选项。
 
-    ![选择默认登录的方法](media/security-info/securityinfo-myprofile-defaultauthapp.png)
+    ![选择默认登录方法](media/security-info/securityinfo-myprofile-defaultauthapp.png)
 
 3. 选择“确认”。
 

@@ -1,5 +1,5 @@
 ---
-title: 设置 Azure SQL 数据同步
+title: 设置数据同步
 description: 本教程介绍了如何设置 Azure SQL 数据同步
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 082721ef1436d0b6668016aca29870016038af86
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 315d65b635f34847d0310e6b6adf03e20f2afd45
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689993"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807525"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>教程：在 Azure SQL 数据库和本地 SQL Server 之间设置 SQL 数据同步
 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
-ms.openlocfilehash: 5c583270428a459f500ae0e220592805fd1bf454
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 0a2b48a6c046150f6e685ecda0c0d765342e0194
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718905"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818949"
 ---
 # <a name="how-to-move-your-limited-trial-project-to-azure"></a>如何将有限试用项目迁移到 Azure
 
@@ -27,7 +27,7 @@ ms.locfileid: "73718905"
 
 [迁移脚本](https://github.com/Azure-Samples/custom-vision-move-project)允许您通过下载并上传当前迭代中的所有标记、区域和图像来重新创建项目。 这样，你就可以在新的订阅中保留新的项目，然后你可以进行训练。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 需要一个有效的 Azure 订阅，该订阅与要用于登录[自定义视觉网站](https://customvision.ai)的 Microsoft 帐户或 AZURE ACTIVE DIRECTORY （AAD）帐户相关联。 
     - 如果没有 Azure 帐户，请免费[创建帐户](https://azure.microsoft.com/free/)。
@@ -46,7 +46,7 @@ ms.locfileid: "73718905"
 
 ## <a name="find-your-limited-trial-project-information"></a>查找有限试用版项目信息
 
-若要移动项目，你将需要尝试迁移的项目的 "_项目 ID_ " 和 "_培训密钥_"。 如果没有此信息，请访问[https://limitedtrial.customvision.ai/projects](https://limitedtrial.customvision.ai/projects)获取每个项目的 ID 和密钥。 
+若要移动项目，你将需要尝试迁移的项目的 "_项目 ID_ " 和 "_培训密钥_"。 如果没有此信息，请访问[https://www.customvision.ai/projects](https://www.customvision.ai/projects)获取每个项目的 ID 和密钥。 
 
 ## <a name="use-the-python-sample-code-to-copy-your-project-to-azure"></a>使用 Python 示例代码将项目复制到 Azure
 
