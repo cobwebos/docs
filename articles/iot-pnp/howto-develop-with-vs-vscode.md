@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 7bb4e507df24f50238197b738fd54e6b5c1d05ee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 6ce5a93cdd44af7f199d59d459daa46b4adb0719
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571183"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748035"
 ---
-# <a name="use-azure-iot-tools-for-visual-studio-code"></a>使用 Azure IoT 工具进行 Visual Studio Code
+# <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>使用 Visual Studio 和 Visual Studio Code 来构建 IoT 即插即用设备
 
 适用于 Visual Studio Code 的 Azure IoT 工具提供了一个集成环境，用于创作设备功能模型（DCM）和接口、发布到模型存储库，以及生成用于实现设备应用程序的框架 C 代码。
 

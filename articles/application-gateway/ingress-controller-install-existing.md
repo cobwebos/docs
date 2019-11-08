@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/22/2019
+ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 045fb54956e78e826b06dc1c56c29e1c7bd430bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dec43a4d7eb5a9546fcd77cce972b93542ea3b10
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513414"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795954"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>使用现有应用程序网关安装应用程序网关入口控制器（AGIC）
 
@@ -27,7 +27,7 @@ AGIC 监视 Kubernetes[入口](https://kubernetes.io/docs/concepts/services-netw
 - [使用 Helm 安装入口控制器](#install-ingress-controller-as-a-helm-chart)
 - [多群集/共享应用程序网关](#multi-cluster--shared-application-gateway)：在环境中安装 AGIC，在该环境中，应用程序网关在一个或多个 AKS 群集和/或其他 Azure 组件之间共享。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 本文档假设你已安装以下工具和基础结构：
 - 启用了[高级网络](https://docs.microsoft.com/azure/aks/configure-azure-cni)的[AKS](https://azure.microsoft.com/services/kubernetes-service/)
 - 与 AKS 位于同一虚拟网络中的[应用程序网关 v2](https://docs.microsoft.com/azure/application-gateway/create-zone-redundant)
@@ -91,7 +91,7 @@ AGIC 与 Kubernetes API 服务器和 Azure 资源管理器通信。 它需要一
     az identity show -g <resourcegroup> -n <identity-name>
     ```
 
-1. 向身份 `Contributor` 授予对应用程序网关的访问权限。 为此，需要应用程序网关的 ID，如下所示： `/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
+1. 为标识 `Contributor` 访问应用程序网关。 为此，需要应用程序网关的 ID，如下所示： `/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
 
     在订阅中获取应用程序网关 Id 列表： `az network application-gateway list --query '[].id'`
 
@@ -244,7 +244,7 @@ armAuth:
 下载的 zip 文件将具有可用于还原应用程序网关的 JSON 模板、bash 和 PowerShell 脚本
 
 ### <a name="example-scenario"></a>示例方案
-让我们看看虚构的应用程序网关，该网关管理2个网站的流量：
+让我们看看虚构的应用程序网关，它管理两个网站的流量：
   - `dev.contoso.com` 在新的 AKS 上托管，使用应用程序网关和 AGIC
   - 在[Azure 虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)上托管 `prod.contoso.com`
 

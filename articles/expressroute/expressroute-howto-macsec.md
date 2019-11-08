@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 36cd1bfebe4e5379a1c8cfc551c8e003459ebf5c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 081c448ff09148668dbe5e244e80421a47d77152
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162444"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748271"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>在 ExpressRoute 直接端口上配置 MACsec
 
@@ -28,7 +28,7 @@ ms.locfileid: "73162444"
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
@@ -47,7 +47,7 @@ ms.locfileid: "73162444"
     $keyVault = New-AzKeyVault -Name "your_key_vault_name" -ResourceGroupName "your_resource_group" -Location "resource_location" -EnableSoftDelete 
     ```
 
-    如果已有密钥保管库或资源组，可以重复使用。 但是，在现有的密钥保管库上启用[**软删除**功能](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-ovw-soft-delete)非常重要。 如果未启用软删除，你可以使用以下命令来启用它：
+    如果已有密钥保管库或资源组，可以重复使用。 但是，在现有的密钥保管库上启用[**软删除**功能](../key-vault/key-vault-ovw-soft-delete.md)非常重要。 如果未启用软删除，你可以使用以下命令来启用它：
 
     ```azurepowershell-interactive
     ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "your_existing_keyvault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"

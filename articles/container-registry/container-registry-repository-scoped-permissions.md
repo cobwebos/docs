@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: danlep
-ms.openlocfilehash: dbfadea9bc05614108333ef5a046e11b5280cc68
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 7b9d220ac7e507513458eab6b55276b3aa434739
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588429"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742743"
 ---
 # <a name="repository-scoped-permissions-in-azure-container-registry"></a>Azure 容器注册表中的存储库范围内的权限 
 
@@ -28,9 +28,8 @@ Azure 容器注册表支持多种[身份验证选项](container-registry-authent
 
 ## <a name="preview-limitations"></a>预览版限制
 
-* 此功能仅在**高级**容器注册表中提供。 有关注册表服务层的信息，请参阅[Azure 容器注册表 sku](container-registry-skus.md)。
+* 此功能仅在**高级**容器注册表中提供。 有关注册表服务层和限制的信息，请参阅[Azure 容器注册表 sku](container-registry-skus.md)。
 * 当前无法将存储库范围内的权限分配给某个 Azure Active Directory 对象（例如服务主体或托管标识）。
-* 注册表最多允许20000个作用域映射和20000标记。
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 14339a61e48866d51089db9a0008a3de982b1710
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
-ms.translationtype: MT
+ms.openlocfilehash: 4e6d86cb3fa304c8e85e7d0ff4a2810be1dc75af
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277106"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794947"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>QnA Maker 知识库的置信度分数
 如果用户查询的匹配依据为知识库，QnA Maker 会返回相关答案和置信度分数。 此分数指明了答案是给定用户查询的正确匹配答案的置信度。 
@@ -72,9 +72,9 @@ ms.locfileid: "70277106"
 
 
 ## <a name="confidence-score-differences"></a>置信度分数差异
-即使内容相同，答案的置信度分数在知识库的测试版和发布版之间也可能有微不足道的差异。 这是因为测试知识库和已发布知识库的内容位于不同的 Azure 搜索索引中。 发布知识库时，知识库的问答内容将从测试索引转移到 Azure 搜索中的生产索引。 请参阅[发布](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)操作的工作原理。
+即使内容相同，答案的置信度分数在知识库的测试版和发布版之间也可能有微不足道的差异。 这是因为测试内容和已发布的知识库位于不同的 Azure 认知搜索索引中。 发布知识库时，知识库的问答内容将从测试索引转移到 Azure 搜索中的生产索引。 请参阅[发布](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)操作的工作原理。
 
-如果不同区域都有知识库，则每个区域都使用自己的 Azure 搜索索引。 因为使用的索引不同，所以得分并不完全相同。 
+如果在不同区域中有一个知识库，则每个区域都使用其自己的 Azure 认知搜索索引。 因为使用的索引不同，所以得分并不完全相同。 
 
 
 ## <a name="no-match-found"></a>找不到匹配项
