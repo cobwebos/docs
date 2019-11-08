@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 .NET API 创建包含复制活动的管道 | Microsoft Docs
+title: '教程：使用 .NET API 创建包含复制活动的管道 '
 description: 本教程使用 .NET API 创建包含复制活动的 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6291540363b2fbafa8f4747dc9f58a39164f3cbe
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 27bfebf35e2ba2f732068913682e1d16063a1da5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140292"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682891"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>教程：使用 .NET API 创建包含复制活动的管道
 > [!div class="op_single_selector"]

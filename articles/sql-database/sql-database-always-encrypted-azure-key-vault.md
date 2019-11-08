@@ -1,5 +1,5 @@
 ---
-title: 'Always Encrypted： SQL 数据库-Azure Key Vault '
+title: Always Encrypted-Azure Key Vault
 description: 本文演示如何使用 SQL Server Management Studio 中的始终加密向导，通过数据加密来保护 SQL 数据库中的敏感数据。
 keywords: 数据加密, 加密密钥, 云加密
 services: sql-database
@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 7ba19f3f3e03c414d651082898976c5bd17e89c9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4fa4c461a3bcf5921be74eab9259fd07cc6b5f61
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691269"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826455"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted：保护敏感数据并将加密密钥存储在 Azure 密钥保管库中
 
@@ -104,7 +104,7 @@ ms.locfileid: "73691269"
    
     ![复制连接字符串](./media/sql-database-always-encrypted-azure-key-vault/ssms-connect.png)
 
-如果“新建防火墙规则” 窗口打开，请登录到 Azure，让 SSMS 创建新的防火墙规则。
+如果“新建防火墙规则”窗口打开，请登录到 Azure，让 SSMS 创建新的防火墙规则。
 
 ## <a name="create-a-table"></a>创建表
 在本部分中，将创建一个表以保存患者数据。 它最初尚未加密 - 可在下一部分配置加密。
@@ -199,7 +199,7 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 ## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>修改连接字符串以启用始终加密
 本节介绍如何在数据库连接字符串中启用始终加密。
 
-要启用“始终加密”，你需要将“列加密设置”关键字添加到连接字符串中，并将其设置为“启用”。
+要启用“始终加密”，需要将“列加密设置”关键字添加到连接字符串中，并将其设置为“启用”。
 
 可以在连接字符串中直接进行该设置，也可以使用 [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx) 进行设置。 下一节中的示例应用程序演示如何使用 **SqlConnectionStringBuilder**。
 

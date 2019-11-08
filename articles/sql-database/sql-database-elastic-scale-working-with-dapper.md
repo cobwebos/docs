@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 3b1fa6ab046845e2fd95e8d4b5611ca2f5d12562
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 83d24d45d7628a2e02068c8757fa6568d6d3fc37
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690097"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823474"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>将弹性数据库客户端库与 Dapper 配合使用
 本文档面向依赖于使用 Dapper 生成应用程序，但同时想要运用[弹性数据库工具](sql-database-elastic-scale-introduction.md)创建应用程序来实现分片，以横向扩展其数据层的开发人员。  本文档演示了与弹性数据库工具集成所需的基于 Dapper 的应用程序发生的更改。 我们将重点介绍如何使用 Dapper 构建弹性数据库分片管理和数据依赖型路由。 
@@ -108,7 +108,7 @@ Dapper 和 DapperExtensions 的另一个优点在于，应用程序可以控制�
 ## <a name="data-dependent-routing-with-dapper-and-dapperextensions"></a>数据依赖型路由与 Dapper 和 DapperExtensions
 Dapper 随附了可以在开发数据库应用程序时提供更大方便性和从数据库抽象其他扩展的生态系统。 DapperExtensions 就是一个示例。 
 
-在应用程序中使用 DapperExtensions 不会更改创建和管理数据库连接的方式。 应用程序仍要负责打开连接，并且扩展方法要求使用常规 SQL 客户端连接对象。 我们可以依赖于上述 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) 。 如以下代码示例所示，唯一的变化是不再需要编写 T-SQL 语句：
+在应用程序中使用 DapperExtensions 不会更改创建和管理数据库连接的方式。 应用程序仍要负责打开连接，并且扩展方法要求使用常规 SQL 客户端连接对象。 我们可以依赖于上述 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx)。 如以下代码示例所示，唯一的变化是不再需要编写 T-SQL 语句：
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2,

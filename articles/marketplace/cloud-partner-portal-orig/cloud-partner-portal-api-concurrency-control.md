@@ -4,15 +4,16 @@ description: 云合作伙伴门户发布 API 的并发控制策略。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 8cdcfd84a2f3bd4f920b97392255237db173cbf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e2f8922d42e40d14338f06be983d3913b20859d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935603"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819750"
 ---
 # <a name="concurrency-control"></a>并发控制
 

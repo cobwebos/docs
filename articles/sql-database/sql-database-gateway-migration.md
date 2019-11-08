@@ -1,5 +1,5 @@
 ---
-title: 适用于 Azure SQL 数据库的网关流量迁移通知
+title: 网关流量迁移通知
 description: 本文向用户提供有关迁移 Azure SQL 数据库网关 IP 地址的通知
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 37c6c8e0f26d0281c3f6e76cb891fe14eb2ef04e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fe35dc4c22f3852934cde0d6f33084b56266d514
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690005"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807693"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>将 Azure SQL 数据库流量迁移到更新的网关
 
@@ -33,7 +33,7 @@ Azure 基础结构改进后，Microsoft 会定期刷新硬件，以确保提供�
 - 美国中部
 - 东南亚
 - 美国中南部
-- 北欧
+- 欧洲北部
 - 美国中北部
 - 日本西部
 - 日本东部

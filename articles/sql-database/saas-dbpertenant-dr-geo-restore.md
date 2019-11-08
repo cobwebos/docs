@@ -1,22 +1,22 @@
 ---
-title: 'SaaS 应用：用于灾难恢复的 Azure SQL 数据库异地冗余备份 '
+title: SaaS 应用：用于灾难恢复的异地冗余备份
 description: 了解发生中断时，应如何使用 Azure SQL 数据库异地冗余备份来恢复多租户 SaaS 应用
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/14/2019
-ms.openlocfilehash: 2f058a5cd20fff845a1feafe42b66beb1afef766
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 270fc157fa14efa19ed30d35b614fb769804b72e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692193"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826457"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用异地还原通过数据库备份恢复多租户 SaaS 应用程序
 
@@ -29,7 +29,7 @@ ms.locfileid: "73692193"
 > [!NOTE]
 > 若要在恢复应用程序时尽可能将 RPO 和 RTO 降到最低，请使用异地复制，而不是异地还原。
 
-本教程将探讨还原和遣返工作流。 你将学习如何执行以下操作：
+本教程将探讨还原和遣返工作流。 学习如何：
 > [!div class="checklist"]
 > 
 > * 将数据库和弹性池配置信息同步到租户目录中。
@@ -364,7 +364,7 @@ ms.locfileid: "73692193"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何执行以下操作：
+本教程介绍了如何：
 > [!div class="checklist"]
 > 
 > * 使用租户目录保存定期更新的配置信息，以允许在其他区域中创建镜像恢复环境。

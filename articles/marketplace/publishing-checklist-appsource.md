@@ -1,19 +1,20 @@
 ---
-title: Appsource 发布清单 |Azure Marketplace
+title: AppSource 的发布清单 |Azure Marketplace
 description: AppSource 发布清单。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 7df88c941c1d42bc4a49e391fa3d64273237bd08
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a40816604df510eb66d6ea7bccbe86f8c327406
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937579"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822644"
 ---
 # <a name="publishing-checklist-for-appsource"></a>AppSource 发布清单  
 
@@ -28,6 +29,6 @@ ms.locfileid: "64937579"
 | 列出 | 咨询服务 | <table> <tr><th>店面详细信息</th></tr> <tr><td>产品/服务名称（200 个字符）</td></tr> <tr><td>说明（2,000 个字符）</td></tr> <tr><td>MPN ID</td></tr> <tr><td>国家/区域可用性</td></tr> <tr><td>适用的行业、类别和搜索关键字</td></tr> <tr><td>屏幕截图（1280x720；最多 5 个）</td></tr> <tr><td>市场营销文档（最多 3 个）</td></tr> <tr><td>潜在客户目标</td></tr> <tr><td>公司徽标（48x48，216x216）</td></tr> <tr><td>资质</td></tr> <tr><td>产品概述视频（可选）</td></tr> </table> |  
 
 ## <a name="next-steps"></a>后续步骤
-*   访问 [Azure 市场和 AppSource 发布者指南](./marketplace-publishers-guide.md)页。  
+*   访问 [Azure 市场和 AppSource 发布者指南](./marketplace-publishers-guide.md)页面。  
 
 ---

@@ -11,12 +11,12 @@ ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bb9aa1cf547c37670732665a8d207f8c9f01eee0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 967263bde459739482100524e5f85bed96cee6f9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692909"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824284"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL 数据仓库发行说明
 
@@ -41,7 +41,7 @@ ms.locfileid: "73692909"
 |**Azure Advisor 一键式集成**|SQL 数据仓库现在直接与概述边栏选项卡中的 Azure 顾问建议结合，提供一次单击体验。 你现在可以在 "概述" 边栏选项卡中发现建议，而不是导航到 "Azure 顾问" 边栏选项卡。 [在此处](sql-data-warehouse-concept-recommendations.md)了解有关建议的详细信息。|
 |**已提交读快照隔离（预览版）**|您可以使用 ALTER database 来启用或禁用用户数据库的快照隔离。  若要避免对当前工作负荷产生影响，可能需要在数据库维护时段设置此选项，或等待，直到没有其他活动连接到数据库。 有关详细信息，请参阅[Alter database set 选项](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)。|
 |**EXECUTE AS （Transact-sql）**| [EXECUTE AS](/sql/t-sql/statements/execute-as-transact-sql?view=azure-sqldw-latest)T-sql 支持现在可在 SQL 数据仓库中使用，从而使客户能够将会话的执行上下文设置为指定的用户。|
-|**更多 T-SQL 支持**|SQL 数据仓库的 T-SQL 语言外围应用已扩展，现在支持： </br> - [格式（transact-sql）](/sql/t-sql/functions/format-transact-sql?view=azure-sqldw-latest)</br> - [TRY_PARSE （transact-sql）](/sql/t-sql/functions/try-parse-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CAST （transact-sql）](/sql/t-sql/functions/try-cast-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CONVERT （transact-sql）](/sql/t-sql/functions/try-convert-transact-sql?view=azure-sqldw-latest)</br> - [user_token （transact-sql）](/sql//relational-databases/system-catalog-views/sys-user-token-transact-sql?view=azure-sqldw-latest)|
+|**更多 T-SQL 支持**|SQL 数据仓库的 T-SQL 语言外围应用已扩展，现在支持： </br> - [格式（transact-sql）](/sql/t-sql/functions/format-transact-sql?view=azure-sqldw-latest)</br> - [TRY_PARSE （transact-sql）](/sql/t-sql/functions/try-parse-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CAST （transact-sql）](/sql/t-sql/functions/try-cast-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CONVERT （transact-sql）](/sql/t-sql/functions/try-convert-transact-sql?view=azure-sqldw-latest)</br> - [sys.databases user_token （transact-sql）](/sql//relational-databases/system-catalog-views/sys-user-token-transact-sql?view=azure-sqldw-latest)|
 
 ## <a name="july-2019"></a>2019 年 7 月
 

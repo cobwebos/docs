@@ -1,22 +1,22 @@
 ---
-title: PowerShell - 删除 TDE 保护器 - Azure SQL 数据库 | Microsoft Docs
+title: 删除 TDE 保护程序-PowerShell
 description: 有关使用支持“创建自己的密钥”(BYOK) 的 TDE，响应 Azure SQL 数据库或数据仓库可能已泄露的 TDE 保护器的操作方法指南。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: dc117dd844a3a47cafa1b37170c95fe852bb82ef
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: df1bf5a53cd5c49465acbe363c71a4a316cd2cc9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566050"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820795"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>使用 PowerShell 删除透明数据加密 (TDE) 保护器
 
@@ -28,7 +28,7 @@ ms.locfileid: "68566050"
 
 - 必须有一个 Azure 订阅，并且是该订阅的管理员
 - 必须安装并运行 Azure PowerShell。 
-- 本操作方法指南假设已使用 Azure Key Vault 中的密钥作为 Azure SQL 数据库或数据仓库的 TDE 保护器。 有关详细信息，请参阅[支持 BYOK 的透明数据加密](transparent-data-encryption-byok-azure-sql.md)。
+- 本操作方法指南假设你已使用 Azure Key Vault 中的密钥作为 Azure SQL 数据库或数据仓库的 TDE 保护器。 有关详细信息，请参阅[支持 BYOK 的透明数据加密](transparent-data-encryption-byok-azure-sql.md)。
 
 ## <a name="overview"></a>概述
 
@@ -40,9 +40,9 @@ ms.locfileid: "68566050"
 
 请记住，在 Key Vault 中删除 TDE 保护器后，**将会阻止到该服务器中的加密数据库的所有连接，这些数据库会在 24 小时内脱机并被删除**。 使用已泄露的密钥加密的旧备份将不再可访问。
 
-以下步骤概述了如何检查给定数据库的虚拟日志文件 (VLF) 仍在使用的 TDE 保护程序指纹。 可以通过运行以下命令来查找数据库的当前 TDE 保护程序的指纹：SELECT [database_id],        [encryption_state], [encryptor_type], /*asymmetric key means AKV, certificate means service-managed keys*/ [encryptor_thumbprint], FROM [sys].[dm_database_encryption_keys] 
+以下步骤概述了如何检查给定数据库的虚拟日志文件 (VLF) 仍在使用的 TDE 保护程序指纹。 数据库的当前 TDE 保护程序的指纹，可以通过运行以下内容找到数据库 ID： SELECT [database_id]，      [encryption_state]，[encryptor_type]，/*非对称密钥表示 AKV，证书表示服务托管的密钥*/[encryptor_thumbprint]。[dm_database_encryption_keys] 
  
-下面的查询返回 VLF 和加密程序各自使用的指纹。 每个不同的指纹引用 Azure Key Vault (AKV) 中的不同密钥：SELECT * FROM sys.dm_db_log_info (database_id) 
+下面的查询返回 VLF 和加密程序各自使用的指纹。 每个不同的指纹是指 Azure Key Vault （AKV）中的不同密钥： SELECT * FROM sys.databases. dm_db_log_info （database_id） 
 
 PowerShell 命令 Get-AzureRmSqlServerKeyVaultKey 提供查询中使用的 TDE 保护程序的指纹，因此你可以查看要在 AKV 中保留哪些密钥以及删除哪些密钥。 只能放心地从 Azure Key Vault 中删除数据库不再使用的密钥。
 
@@ -118,4 +118,4 @@ PowerShell 命令 Get-AzureRmSqlServerKeyVaultKey 提供查询中使用的 TDE �
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何轮换服务器的 TDE 保护器以符合安全要求：[使用 PowerShell 轮换透明数据加密保护器](transparent-data-encryption-byok-azure-sql-key-rotation.md)
-- 开始使用 TDE 的自带密钥支持：[通过 PowerShell 并使用 Key Vault 中自己的密钥来启用 TDE](transparent-data-encryption-byok-azure-sql-configure.md)
+- TDE 的“创建自己的密钥”支持入门：[通过 PowerShell 使用 Key Vault 中的自有密钥启用 TDE](transparent-data-encryption-byok-azure-sql-configure.md)

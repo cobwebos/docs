@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 02/06/2019
 ms.author: shvija
-ms.openlocfilehash: 804ef04f0066a8b8dd9df82aef03fcfc32d7cb43
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5d980cefa5aa953a3fb9683adb589bf202e73250
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60343712"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826295"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用模板通过事件中心创建一个命名空间并启用捕获
 
@@ -29,12 +29,12 @@ ms.locfileid: "60343712"
 
 有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板][Authoring Azure Resource Manager templates]。 有关要在模板中使用的 JSON 语法和属性，请参阅 [Microsoft.EventHub 资源类型](/azure/templates/microsoft.eventhub/allversions)。
 
-有关 Azure 资源命名约定的模式和实践的详细信息，请参阅 [Azure 资源命名约定][Azure Resources naming conventions]。
+有关 Azure 资源命名约定的模式和实践的详细信息，请参阅[Azure 资源命名约定][Azure Resources naming conventions]。
 
 如需完整的模板，请单击以下 GitHub 链接：
 
-- [事件中心和允许捕获到存储的模板][Event Hub and enable Capture to Storage template] 
-- [事件中心和允许捕获到 Azure Data Lake Store 的模板][Event Hub and enable Capture to Azure Data Lake Store template]
+- [事件中心并启用 "捕获到存储" 模板][Event Hub and enable Capture to Storage template] 
+- [事件中心并启用 "捕获到 Azure Data Lake Store" 模板][Event Hub and enable Capture to Azure Data Lake Store template]
 
 > [!NOTE]
 > 若要查看最新模板，请访问 [Azure 快速入门模板][Azure Quickstart Templates]库并搜索事件中心。
@@ -53,7 +53,7 @@ ms.locfileid: "60343712"
 
 ## <a name="parameters"></a>parameters
 
-使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 模板包含名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
+使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 模板包含名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
 模板定义以下参数。
 
@@ -101,7 +101,7 @@ ms.locfileid: "60343712"
 
 ### <a name="partitioncount"></a>partitionCount
 
-事件中心内创建的分区数。
+要在事件中心内创建的分区数。
 
 ```json
 "partitionCount":{
@@ -278,7 +278,7 @@ ms.locfileid: "60343712"
 
 ## <a name="resources-to-deploy-for-azure-storage-as-destination-to-captured-events"></a>要针对 Azure 存储（作为已捕获事件的目标）进行部署的资源
 
-创建包含一个事件中心的  EventHub 类型的命名空间，并启用“捕获到 Azure Blob 存储”。
+创建包含一个事件中心的EventHub 类型的命名空间，并启用“捕获到 Azure Blob 存储”。
 
 ```json
 "resources":[  
@@ -340,7 +340,7 @@ ms.locfileid: "60343712"
 
 ## <a name="resources-to-deploy-for-azure-data-lake-store-as-destination"></a>要针对 Azure Data Lake Store（作为目标）进行部署的资源
 
-创建包含一个事件中心的  EventHub 类型的命名空间，并启用“捕获到 Azure Data Lake Store”。
+创建包含一个事件中心的EventHub 类型的命名空间，并启用“捕获到 Azure Data Lake Store”。
 
 ```json
  "resources": [
@@ -439,6 +439,6 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
-[Azure Resources naming conventions]: https://azure.microsoft.com/documentation/articles/guidance-naming-conventions/
+[Azure Resources naming conventions]: /azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging
 [Event hub and enable Capture to Storage template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-capture
 [Event hub and enable Capture to Azure Data Lake Store template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-capture-for-adls

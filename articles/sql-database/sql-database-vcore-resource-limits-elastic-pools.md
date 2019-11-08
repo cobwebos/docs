@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database vCore 资源限制-弹性池 |Microsoft Docs
+title: vCore 资源限制-弹性池
 description: 本页介绍 Azure SQL 数据库中的弹性池的一些常见 vCore 资源限制。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 65c2bfe4d79f5b7d468999143524b96b60f0efaf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f356b9d248ac9c5f0bcfaaeeb37b43d958eaa528
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495999"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822363"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>使用 vCore 购买模型的弹性池的资源限制
 

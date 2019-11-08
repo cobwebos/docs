@@ -1,7 +1,7 @@
 ---
 title: 示例：标识图像中的人脸 - 人脸 API
 titleSuffix: Azure Cognitive Services
-description: 使用人脸 API 标识图像中的人脸。
+description: 本指南演示如何使用事先根据已知人员创建的 PersonGroup 对象来识别未知的人脸。
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: c21647e3fbbc38e905a6d6ec116551004da20d5c
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 10ab11669569b16293ccf9b8777190cf271e5795
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300535"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744321"
 ---
 # <a name="example-identify-faces-in-images"></a>示例：在图像中识别人脸
 

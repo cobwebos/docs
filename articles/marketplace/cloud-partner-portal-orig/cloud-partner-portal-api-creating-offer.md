@@ -4,15 +4,16 @@ description: 用于创建新的产品/服务或更新现有产品/服务的 API�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 55f6aa60c836d55333e1c5b02a44114b91df822d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bfb9cfbe2c63caafef8487015f42a05b98afa29c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935526"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819719"
 ---
 <a name="create-or-modify-an-offer"></a>创建或修改产品/服务
 =========================
@@ -32,10 +33,10 @@ ms.locfileid: "64935526"
 | api-version       |  API 最新版本            |   Date           |
 |  |  |  |
 
-<a name="header"></a>Header
+<a name="header"></a>标头
 ------
 
-|  **名称**        |  **ReplTest1**               |
+|  **名称**        |  **值**               |
 |  ---------       |  ----------              | 
 | Content-Type     | `application/json`       |
 | 授权    | `Bearer YOUR_TOKEN`      |

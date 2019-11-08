@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 资源运行状况来监视 SQL 数据库运行状况
+title: 使用 Azure 资源运行状况监视数据库运行状况
 description: 使用 Azure 资源运行状况可以监视 SQL 数据库的运行状况，以及在 Azure 问题影响到 SQL 资源时帮助进行诊断和获取支持。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 02/26/2019
-ms.openlocfilehash: 10ce2da8ae8bcd8a12f0972d437a84a37a8390b9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1cf14c9e133b7e6e3e0b5219eb9e16bd3a0178dc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687503"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821159"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>使用资源运行状况排查 Azure SQL 数据库的连接问题
 

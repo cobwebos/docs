@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 863d38f6ea0f071a1c1a6678d025ec5b37a306dc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 127354e55a81e379825b41759f2b6150ba554a12
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466428"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818540"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>为生成多个搜索文档的 blob 编制索引
 默认情况下，Blob 索引器将一个 Blob 的内容视为单个搜索文档。 某些 **parsingMode** 值支持单个 Blob 导致多个搜索文档的方案。 允许索引器从一个 Blob 提取多个搜索文档的不同类型的 **parsingMode** 包括：
@@ -99,7 +99,7 @@ _Blob2.json_
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你尚不熟悉 blob 索引的基本结构和工作流，则应首先查看[为 Azure Blob 存储编制索引](search-howto-index-json-blobs.md)。 有关不同 blob 内容类型的分析模式的详细信息，请参阅以下文章。
+如果你尚不熟悉 blob 索引的基本结构和工作流，则应首先查看[为 Azure Blob 存储编制索引认知搜索](search-howto-index-json-blobs.md)。 有关不同 blob 内容类型的分析模式的详细信息，请参阅以下文章。
 
 > [!div class="nextstepaction"]
 > 为[JSON](search-howto-index-json-blobs.md) blob 编制索引

@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: a092647f9772aafdf610ee9a5ba85ded17d50def
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3dc439c352bb3e6e56fae4b83d783da94720bfe1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577704"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818402"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure 机器学习 SDK 中创建和运行机器学习管道
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -166,7 +166,7 @@ Azure Databricks 是 Azure 云中基于 Apache Spark 的环境。 它可以用�
 
 * __Databricks 计算名称__：要分配给此计算资源的名称。
 * __Databricks 工作区名称__： Azure Databricks 工作区的名称。
-* __Databricks 访问令牌__：用于对 Azure Databricks 进行身份验证的访问令牌。 若要生成访问令牌，请参阅[身份验证](https://docs.azuredatabricks.net/api/latest/authentication.html)文档。
+* __Databricks 访问令牌__：用于对 Azure Databricks 进行身份验证的访问令牌。 若要生成访问令牌，请参阅[身份验证](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html)文档。
 
 以下代码演示如何使用 Azure 机器学习 SDK 将 Azure Databricks 附加为计算目标：
 
@@ -437,7 +437,7 @@ p.disable()
 
 为了优化和自定义管道的行为，您可以围绕缓存和重新使用来执行一些操作。 例如，您可以选择：
 + 通过在[步骤定义](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)期间设置 `allow_reuse=False` 来**关闭步骤运行输出的默认重用**。 在协作环境中使用管道时，重复使用是关键的，因为消除不必要的运行可提供灵活性。 但是，您可以选择不使用。
-+ 将**哈希扩展到脚本以外**，还可以使用 `hash_paths=['<file or directory']` 将绝对路径或相对路径添加到其他文件和目录。 
++ 将**哈希扩展到脚本以外**，还可以使用 `hash_paths=['<file or directory']` 为其他文件和目录包含绝对路径或相对路径 source_directory 
 + **为运行中的所有步骤强制执行输出**`pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
 默认情况下，将启用 `allow_reuse` 的步骤，并且仅对主脚本文件进行哈希处理。 因此，如果给定步骤的脚本保持不变（`script_name`、输入和参数），则会重复使用上一步运行的输出，该作业不会提交到计算，而以前运行的结果立即可用于下一步骤。  

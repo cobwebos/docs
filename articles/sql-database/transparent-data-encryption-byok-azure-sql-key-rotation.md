@@ -1,22 +1,22 @@
 ---
-title: PowerShell - 轮换 TDE 保护器 - Azure SQL 数据库 | Microsoft Docs
+title: 旋转 TDE 保护程序-PowerShell
 description: 了解如何轮换 Azure SQL Server 的透明数据加密 (TDE) 保护器。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 464ea73d9b3d7116205377600ffccee13a9e2dcb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5bfcacb9348940e0b36947f6e4e0d27839de35bb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566039"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824683"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>使用 PowerShell 轮换透明数据加密 (TDE) 保护器
 
@@ -38,7 +38,7 @@ ms.locfileid: "68566039"
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
-- 本操作方法指南假设已使用 Azure Key Vault 中的密钥作为 Azure SQL 数据库或数据仓库的 TDE 保护器。 请参阅[提供 BYOK 支持的透明数据加密](transparent-data-encryption-byok-azure-sql.md)。
+- 本操作方法指南假设你已使用 Azure Key Vault 中的密钥作为 Azure SQL 数据库或数据仓库的 TDE 保护器。 请参阅[提供 BYOK 支持的透明数据加密](transparent-data-encryption-byok-azure-sql.md)。
 - 必须安装并运行 Azure PowerShell。
 - [推荐但仅为可选] 先在硬件安全模块 (HSM) 或本地密钥存储中创建 TDE 保护器的密钥材料，然后将密钥材料导入到 Azure Key Vault。 按[硬件安全模块 (HSM) 和 Key Vault 的使用说明](https://docs.microsoft.com/azure/key-vault/key-vault-get-started)操作，以便了解详细信息。
 
@@ -47,7 +47,7 @@ ms.locfileid: "68566039"
 手动密钥轮换使用 [Add-AzKeyVaultKey](/powershell/module/az.keyvault/Add-AzKeyVaultKey)、[Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) 和 [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) cmdlet 来添加全新的密钥，该密钥可能使用新的密钥名称，甚至使用另一密钥保管库。 使用此方法时支持将同一密钥添加到不同的密钥保管库来支持高可用性和异地灾难恢复方案。
 
 >[!NOTE]
->Key Vault 名称和密钥名称的总长度不能超过 94 个字符。
+>密钥保管库名称和密钥名称的总长度不能超出 94 个字符。
 
    ```powershell
    # Add a new key to Key Vault
@@ -96,4 +96,4 @@ ms.locfileid: "68566039"
 
 - 了解如何在出现安全风险的情况下，删除可能已泄漏的 TDE 保护器：[删除可能已泄漏的密钥](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md) 
 
-- 开始使用 TDE 的 Azure Key Vault 集成和自带密钥支持：[通过 PowerShell 并使用 Key Vault 中自己的密钥来启用 TDE](transparent-data-encryption-byok-azure-sql-configure.md)
+- Azure Key Vault 集成入门和创建自己的密钥支持 TDE：使用[PowerShell 从 Key Vault 打开 TDE](transparent-data-encryption-byok-azure-sql-configure.md)

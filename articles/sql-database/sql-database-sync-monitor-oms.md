@@ -1,5 +1,5 @@
 ---
-title: '利用 Azure Monitor 日志监视 Azure SQL 数据同步 '
+title: 利用 Azure Monitor 日志监视 SQL 数据同步
 description: 了解如何使用 Azure Monitor 日志监视 Azure SQL 数据同步
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 9e89ad8e6ac556df87a674efdf2d3bbc2041c38b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 031482fc0b87e095fcb19046564e15642050f261
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687030"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820797"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>利用 Azure Monitor 日志监视 SQL 数据同步 
 

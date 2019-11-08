@@ -1,19 +1,19 @@
 ---
-title: 适用于 Azure Cosmos DB 的数据库迁移工具
-description: 了解如何使用开源 Azure Cosmos DB 数据迁移工具从各种源将数据导入 Azure Cosmos DB 中，这些源包括 MongoDB、SQL Server、表存储、Amazon DynamoDB、CSV 和 JSON 文件。 将 CSV 转换为 JSON。
+title: 教程：适用于 Azure Cosmos DB 的数据库迁移工具
+description: 教程：了解如何使用开源 Azure Cosmos DB 数据迁移工具从各种源将数据导入 Azure Cosmos DB 中，这些源包括 MongoDB、SQL Server、表存储、Amazon DynamoDB、CSV 和 JSON 文件。 将 CSV 转换为 JSON。
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 11/05/2019
 ms.author: dech
-ms.openlocfilehash: 0981a0810ee64f78443512d794d172a69fb54494
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1d25a2c9a3fda48c2f7de01563e01dd0c7de7762
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617011"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721138"
 ---
-# <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>使用数据迁移工具将数据迁移到 Azure Cosmos DB
+# <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>教程：使用数据迁移工具将数据迁移到 Azure Cosmos DB
 
 本教程说明如何使用可将数据从各种源导入 Azure Cosmos 容器和表的 Azure Cosmos DB 数据迁移工具。 可从 JSON 文件、CSV 文件、SQL、MongoDB、Azure 表存储、Amazon DynamoDB 导入，甚至还可以从 Azure Cosmos DB SQL API 集合导入。 可将该数据迁移到集合和表中，以便在 Azure Cosmos DB 中使用。 还可在从单个分区集合迁移到 SQL API 的多分区集合时使用数据迁移工具。
 

@@ -1,5 +1,5 @@
 ---
-title: 将数据库迁移到 Azure SQL 数据库中的单/缓冲数据库 SQL Server
+title: 将数据库迁移到单个/共用数据库 SQL Server
 description: 了解如何将 SQL Server 数据库迁移到 Azure SQL 数据库中的单一数据库或弹性池。
 keywords: 数据库迁移, SQL Server 数据库迁移, 数据库迁移工具, 迁移数据库, 迁移 SQL 数据库
 services: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 67030d14670ccc51c89a04863f8b39ab6a9bb183
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: df1ef21da43bc74809bd9fd71b5dde3906cdb343
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687180"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820978"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>将 SQL Server 数据库迁移到 Azure SQL 数据库
 
@@ -25,7 +25,7 @@ ms.locfileid: "73687180"
 
 ## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>迁移到单一数据库或共用数据库
 
-将 SQL Server 2005 或更高版本的数据库迁移到 Azure SQL 数据库中的单一数据库或共用数据库有两种主要方法。 第一种方法相对简单，但迁移过程中需要一段时间（可能较长）的停机。 第二种方法更复杂些，但在迁移过程中的停机时间大大缩短。
+将 SQL Server 2005 或更高版本的数据库迁移到 Azure SQL 数据库中的单一数据库或共用数据库有两种主要方法。 第一种方法相对简单，但需要在迁移过程中进行一定时间（可能较长）的停机。 第二种方法更复杂些，但在迁移过程中的停机时间大大缩短。
 
 两种方法均需使用 [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) 确保源数据库与 Azure SQL 数据库兼容。 SQL 数据库 V12 除了要解决服务器级操作和跨数据库操作的相关问题之外，还要解决与 SQL Server 的[功能对等性](sql-database-features.md)问题。 依赖[部分支持或不受支持的函数](sql-database-transact-sql-information.md)的数据库和应用程序需要进行某种程度的[重新设计来修复这些不兼容性](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues)，才能迁移 SQL Server 数据库。
 
@@ -77,7 +77,7 @@ ms.locfileid: "73687180"
 > [!TIP]
 > 还可以使用事务复制来迁移源数据库的子集。 复制到 Azure SQL 数据库的发布可以限制为复制的数据库中表的子集。 对于所复制的每一个表，可以将数据限制为行的子集和/或列的子集。
 
-## <a name="migration-to-sql-database-using-transaction-replication-workflow"></a>使用事务复制工作流迁移到 SQL 数据库
+## <a name="migration-to-sql-database-using-transaction-replication-workflow"></a>使用事务复制迁移到 SQL 数据库的工作流
 
 > [!IMPORTANT]
 > 使用最新版本的 SQL Server Management Studio 以保持与 Microsoft Azure 和 SQL 数据库的更新同步。 较旧版本的 SQL Server Management Studio 不能将 SQL 数据库设置为订阅服务器。 [更新 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)。
@@ -99,7 +99,7 @@ ms.locfileid: "73687180"
   - 这会对服务器产生性能影响。
   - 如果性能影响无法接受，可使用其他服务器，但会增加管理的复杂性。
 - 选择快照文件夹时，请确保所选文件夹足以保留想要复制的每张表的 BCP。
-- 快照创建操作在完成之前会锁定关联的表，因此，请适当地计划好快照。
+- 在完成之前，创建快照会锁定相关联的表，因此请适当进行快照计划。
 - Azure SQL 数据库中仅支持推送订阅。 只能从源数据库添加订阅服务器。
 
 ## <a name="resolving-database-migration-compatibility-issues"></a>解决数据库迁移的兼容性问题

@@ -1,5 +1,5 @@
 ---
-title: SQL 数据库灾难恢复
+title: 灾难恢复
 description: 了解在发生区域性的数据中心服务中断或故障后，如何使用 Azure SQL 数据库活动异地复制和异地还原功能来恢复数据库。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/21/2019
-ms.openlocfilehash: bc4968541c29e3bf18eb4caca2abe648d17342a4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d28edd28dcbe31bfe63c2d0a9c3e975967efef04
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690600"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826583"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>还原 Azure SQL 数据库或故障转移到辅助数据库
 
@@ -49,7 +49,7 @@ Azure SQL 数据库提供以下功能，以便在服务中断后进行恢复：
 - 标识（并选择性创建）新主服务器的 master 数据库中必须存在的登录信息，并确保这些登录信息在 master 数据库中具有相应权限（若有）。 相关详细信息，请参阅[灾难恢复后的 SQL 数据库安全性](sql-database-geo-replication-security-config.md)
 - 需要更新标识才可映射到新的主数据库的警报规则。
 - 记录当前主数据库上的审核配置
-- 执行[灾难恢复演练](sql-database-disaster-recovery-drills.md)。 若要模拟中断情况进行异地还原，可删除或重命名源数据库以引发应用程序连接失败。 若要使用故障转移组来模拟服务中断，可禁用连接到数据库的 Web 应用程序或虚拟机，或者故障转移数据库以引发应用程序连接失败。
+- 执行[灾难恢复演练](sql-database-disaster-recovery-drills.md)。 若要模拟中断情况进行异地还原，可删除或重命名源数据库以引发应用程序连接失败。 若要使用故障转移组模拟中断，可禁用连接到数据库的 Web 应用程序或虚拟机，或者故障转移数据库以引发应用程序连接失败。
 
 ## <a name="when-to-initiate-recovery"></a>何时启动恢复
 

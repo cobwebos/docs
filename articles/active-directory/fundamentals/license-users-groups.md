@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 09/06/2018
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 869713967a6a89611ab2ea9ca7b7516f090a5f92
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 9f690d23ac4d8c452d731c2f6fd4ae67dc281639
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034270"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805525"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>在 Azure Active Directory 门户中分配或删除许可证
 
@@ -37,7 +37,7 @@ Azure AD 服务有若干可用的许可计划，包括：
 
 有关每个许可证计划和关联的许可详细信息的具体信息，请参阅["需要哪些许可证？"](https://azure.microsoft.com/pricing/details/active-directory/)。
 
-并非所有 Microsoft 服务都可在所有位置使用。 必须先为所有成员指定“使用位置”，然后才能将许可证分配给组。 可以在 Azure AD 的“Azure Active Directory”&gt;“用户”&gt;“配置文件”&gt;“设置”区域中设置此值。 未指定其使用位置的任何用户都将继承 Azure AD 组织的位置。
+并非所有 Microsoft 服务都可在所有位置使用。 必须先为所有成员指定“使用位置”，然后才能将许可证分配给组。 可以在 Azure AD 的“Azure Active Directory” **“用户”&gt;“配置文件”&gt;“设置”&gt;** 区域中设置此值。 未指定其使用位置的任何用户都将继承 Azure AD 组织的位置。
 
 ## <a name="view-license-plans-and-plan-details"></a>查看许可证计划和计划详细信息
 
@@ -82,11 +82,13 @@ Azure AD 服务有若干可用的许可计划，包括：
     “分配许可证”页会进行更新，以显示选择了用户并且配置了分配。
 
     > [!NOTE]
-    > 并非所有 Microsoft 服务都可在所有位置使用。 必须先指定“使用位置”，然后才能将许可证分配给用户。 可以在 Azure AD 的“Azure Active Directory”&gt;“用户”&gt;“配置文件”&gt;“设置”区域中设置此值。 未指定其使用位置的任何用户都将继承 Azure AD 组织的位置。
+    > 并非所有 Microsoft 服务都可在所有位置使用。 必须先指定“使用位置”，然后才能将许可证分配给用户。 可以在 Azure AD 的“Azure Active Directory” **“用户”&gt;“配置文件”&gt;“设置”&gt;** 区域中设置此值。 未指定其使用位置的任何用户都将继承 Azure AD 组织的位置。
 
 1. 选择“分配”。
 
     用户会添加到已许可用户列表，并有权访问所包含的 Azure AD 服务。
+    > [!NOTE]
+    > 还可以从用户的 "**许可证**" 页直接将许可证分配给用户。 如果用户已通过组成员身份分配了许可证，并且你希望直接向用户分配相同的许可证，则只能从步骤1所述的 "**产品**" 页中执行该操作。
 
 ### <a name="to-assign-a-license-to-a-group"></a>将许可证分配到组
 

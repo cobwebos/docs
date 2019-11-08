@@ -1,5 +1,5 @@
 ---
-title: 用于 SQL 数据库的 XEvent 环形缓冲区代码
+title: XEvent 环形缓冲区代码
 description: 提供一个 Transact-SQL 代码示例，以帮助你快速轻松地在 Azure SQL 数据库中使用环形缓冲区目标。
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 8fd04cac394f05a9db18e84117a8647c1a17ba30
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7adffac045ddb2ba369993b1b805e3ce2304fb38
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686808"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822315"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的环形缓冲区目标代码
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-需要完整的代码示例以最简单快速的方式在测试期间捕获和报告扩展事件的信息。 扩展事件数据最简单的目标是 [环形缓冲区目标](https://msdn.microsoft.com/library/ff878182.aspx)。
+需要完整的代码示例以最简单快速的方式在测试期间捕获和报告扩展事件的信息。 扩展事件数据最简单的目标是[环形缓冲区目标](https://msdn.microsoft.com/library/ff878182.aspx)。
 
 本主题演示一个 Transact-SQL 代码示例：
 

@@ -1,22 +1,23 @@
 ---
-title: 发布 Azure IoT Edge 模块产品/服务 |Azure Marketplace
+title: 发布 Azure IoT Edge 模块产品 |Azure Marketplace
 description: 如何发布 IoT Edge 模块套餐。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pabutler
-ms.openlocfilehash: c853bd3bad9f02f6824c26fb5d18e9e59d921fe8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2310d7a7cad16009bbb58469190a77eedb0619f8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942046"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813840"
 ---
 # <a name="publish-iot-edge-module-offer"></a>发布 IoT Edge 模块套餐
 
- 通过在“新建套餐”页上提供信息创建新的套餐后，可以发布该套餐。  选择“发布”启动发布过程。 
+ 通过在“新建套餐”页上提供信息创建新的套餐后，可以发布该套餐。 选择“发布”启动发布过程。
 
 下图显示了发布套餐以使其“上线”的过程的主要步骤。
 
@@ -30,10 +31,10 @@ ms.locfileid: "64942046"
 
 |  **发布步骤**           | **时间**    | **说明**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
-| 验证先决条件         | 15 分钟   | 验证套餐信息和套餐设置。                        |
-| 认证                  | 2 周 | Azure 认证团队对套餐进行分析。 此步骤将针对病毒、恶意软件、安全合规性和安全问题执行扫描。 此外，还验证此 IoT Edge 模块套餐是否符合所有资格条件（请参阅[先决条件](./cpp-prerequisites.md)和[准备技术资产](./cpp-create-technical-assets.md)）。 如果发现了问题，则提供反馈。 |
-| 打包 | 1 小时  | 打包套餐的技术资产供客户使用，配置并安装潜在顾客系统。 |
-|  发布者签署             |  -        | 最终发布者在套餐上线之前进行复查和确认。 可以在所选订阅（在套餐信息步骤中）中部署套餐，以验证它是否符合所有要求。  选择“上线”，使套餐可以转移到下一步骤。  |
+| 验证先决条件         | 15 分钟   | 验证产品/服务信息和产品/服务设置。                        |
+| 认证                  | 2 周 | Azure 认证团队对套餐进行分析。 此步骤将针对病毒、恶意软件、安全合规性和安全问题进行扫描。 此外，还验证此 IoT Edge 模块套餐是否符合所有资格条件（请参阅[先决条件](./cpp-prerequisites.md)和[准备技术资产](./cpp-create-technical-assets.md)）。 如果发现了问题，则会提供反馈。 |
+| 打包 | 1 小时  | 产品/服务的技术资产已打包供客户使用，并已配置并设置了线索系统。 |
+|  发布者签署             |  -        | 最终发布者在套餐上线之前进行复查和确认。 可以在所选订阅（在套餐信息步骤中）中部署套餐，以验证它是否符合所有要求。  选择“上线”，使套餐可以转移到下一步骤。 |
 | 打包                 | 1 小时 | 在市场生产系统和区域中复制最终的套餐。 | 
 | 实时                           | 4 天 |发布套餐，将其复制到所需的区域，并使其可供公众使用。 |
 

@@ -1,5 +1,5 @@
 ---
-title: 排查常见的双因素验证问题-Azure Active Directory |Microsoft Docs
+title: 排查常见的双因素验证问题-Azure AD
 description: 了解针对一些更常见的双因素验证问题的可能解决方案。
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.date: 10/28/2019
 ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb510755e7cc163af8ff0cb2c8699e1d2dd04d7f
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: f8d226d61f4b67541a6991fef3a435b4cfff500f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043224"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805301"
 ---
 # <a name="troubleshoot-common-two-factor-verification-problems"></a>排查常见的双因素验证问题
 

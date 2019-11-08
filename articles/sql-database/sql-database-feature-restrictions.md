@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库功能限制
+title: 功能限制
 description: Azure SQL 数据库功能限制改善了数据库的安全性，因为它可以限制攻击者利用数据库中的功能来获取对数据库中信息的访问权限。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 03/22/2019
-ms.openlocfilehash: e9518065b2240d72698ed75f2fa8a7aed343b7bf
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ce10daca23299f838e4086426fa89d9cade314ea
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690062"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823431"
 ---
 # <a name="azure-sql-database-feature-restrictions"></a>Azure SQL 数据库功能限制
 
@@ -32,7 +32,7 @@ EXEC sp_add_feature_restriction <feature>, <object_class>, <object_name>
 
 可限制以下功能：
 
-| 功能          | 说明 |
+| Feature          | 说明 |
 |------------------|-------------|
 | N'ErrorMessages' | 启用限制时，会将错误消息中的任何用户数据掩码。 请参阅[错误消息功能限制](#error-messages-feature-restriction) |
 | N'Waitfor'       | 启用限制时，该命令将立即返回，而不会延迟。 请参阅 [WAITFOR 功能限制](#waitfor-feature-restriction) |

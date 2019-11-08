@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database 超大规模概述
+title: 超大规模概述
 description: 本文介绍 Azure SQL 数据库中基于 vCore 的购买模型中的“超大规模”服务层级，并说明它与“常规用途”服务层级和“业务关键”服务层级的不同之处。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 38402d6ccf5c5582fff878ad60bf1c9fd4a07118
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3a448147390ff2dd6a8049e8338a4cbf2bd94ce3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687322"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821104"
 ---
 # <a name="hyperscale-service-tier"></a>“超大规模”服务层级
 
@@ -182,7 +182,7 @@ Azure SQL 数据库“超大规模”层级目前已在以下区域提供：
 - 韩国中部
 - 韩国南部
 - 美国中北部
-- 北欧
+- 欧洲北部
 - 南非北部
 - 美国中南部
 - 东南亚

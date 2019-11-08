@@ -1,5 +1,5 @@
 ---
-title: 将 Excel 连接到 Azure SQL 数据库中的单个数据库
+title: 将 Excel 连接到单一数据库
 description: 了解如何将 Microsoft Excel 连接到 Azure SQL 数据库中的单一数据库。 将数据导入 Excel 以进行报告和数据探索。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: joseidz
 ms.author: craigg
 ms.reviewer: ''
 ms.date: 02/12/2019
-ms.openlocfilehash: 603aa52aefc4c4d1200d433f7f73f6070849c8f7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: de5f23bf1e8acd8a5fcd0cf8e1526f88667800c1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691034"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827132"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>将 Excel 连接到 Azure SQL 数据库中的单一数据库并创建报表
 

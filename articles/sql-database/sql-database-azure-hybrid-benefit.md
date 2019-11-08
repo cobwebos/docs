@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库-Azure 混合权益
+title: Azure 混合权益
 description: 将现有 SQL Server 许可证用于 SQL 数据库折扣。
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 10/08/2019
-ms.openlocfilehash: 9a09f7aec4966c02ccfa2101f4359c510ae8b111
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 17252f6544ee56647315dc44ace4db3e3abe9726
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691099"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821876"
 ---
 # <a name="azure-hybrid-benefit"></a>Azure 混合权益
 

@@ -4,15 +4,16 @@ description: 介绍如何获取 VM 映像的共享访问签名 (SAS) URI。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: c242fbcd19187abb608ca80a49d04dae195bd7c6
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: dda074d81857247a922eb7a179b33aa2593e5bf8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374370"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824469"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>获取 VM 映像的共享访问签名 URI
 
@@ -21,7 +22,7 @@ ms.locfileid: "72374370"
 生成 VHD 的 SAS URI 时，请遵循以下要求：
 
 - 仅支持非托管的 VHD。
-- `List` 和 `Read` 权限足够。 不要提供 `Write` 或 `Delete` 访问权限。
+- `List` 和 `Read` 权限足够。 不要提供 *或* 访问权限。`Write``Delete`
 - 访问权限持续时间（过期日期）应至少是从 SAS URI 创建时间开始算起的 3 周。
 - 为了防范出现 UTC 时间偏差，请将开始日期设置为当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
 

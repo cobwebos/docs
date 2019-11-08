@@ -1,5 +1,5 @@
 ---
-title: 云业务连续性-数据库恢复-SQL 数据库
+title: 云业务连续性-数据库恢复
 description: 了解 Azure SQL 数据库如何支持云业务连续性和数据库恢复以及如何帮助保持运行任务关键型云应用程序。
 keywords: 业务连续性, 云业务连续性, 数据库灾难恢复, 数据库恢复
 services: sql-database
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: c4e82b0311e010eb8a4b8f37f3ff817d9a5400ad
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5a6a96f478c4402a830cc522657f56cfd11fa56f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691046"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821825"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL 数据库确保业务连续性的相关概述
 
@@ -27,7 +27,7 @@ Azure SQL 数据库中的**业务连续性**是指在遇到中断（尤其是计
 - 恶意攻击者成功删除了数据或数据库。
 - 地震导致断电和暂时性的数据中心停运。
 
-本概述介绍 Azure SQL 数据库针对业务连续性和灾难恢复所提供的功能。 了解用于从干扰性事件恢复的选项、建议和教程，这些事件可能导致数据丢失或者数据库和应用程序无法使用。 了解对一些情况的处理方式，包括用户或应用程序错误影响数据完整性、Azure 区域发生服务中断，或者应用程序需要维护。
+本概述介绍 Azure SQL 数据库针对业务连续性和灾难恢复所提供的功能。 了解用于从干扰性事件恢复的选项、建议和教程，这些事件可能导致数据丢失或者数据库和应用程序无法使用。 了解对一些情况的处理方式，包括用户或应用程序错误影响数据完整性、Azure 区域服务中断，或者应用程序需要维护。
 
 ## <a name="sql-database-features-that-you-can-use-to-provide-business-continuity"></a>有利于业务连续性的 SQL 数据库功能
 

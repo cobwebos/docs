@@ -1,5 +1,5 @@
 ---
-title: 从备份还原 Azure SQL 数据库
+title: 从备份还原数据库
 description: 了解时间点还原，使你能够将 Azure SQL 数据库回滚到最多35天。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 799926eeb6a508ea04b879231625cf321e95d043
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ba961547bc46b0746997ea95ddd14f1a6d1d8a23
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687540"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821208"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>使用自动数据库备份恢复 Azure SQL 数据库
 

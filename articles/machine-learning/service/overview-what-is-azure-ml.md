@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: 9399353cb676ef4525e81229cf3920fd9d7e3aaf
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7e07419115a6e9709879c71dfac1234408bda0ee
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684924"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824064"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
@@ -44,7 +44,7 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 
 + Jupyter 笔记本：使用我们的[示例笔记本](https://aka.ms/aml-notebooks)或创建自己的笔记本，以利用<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">适用于 Python 的 SDK</a> 示例进行机器学习。 
 
-+ R 脚本或笔记本，其中你使用<a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html on" target="_blank">适用于 R 的 SDK</a> 编写自己的代码，或使用设计器中的 R 模块。
++ R 脚本或笔记本，其中你使用<a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">适用于 R 的 SDK</a> 编写自己的代码，或使用设计器中的 R 模块。
 
 + [Visual Studio Code 扩展](how-to-vscode-tools.md)
 

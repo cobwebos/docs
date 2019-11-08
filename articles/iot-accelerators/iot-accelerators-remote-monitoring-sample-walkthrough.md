@@ -1,6 +1,6 @@
 ---
 title: 远程监视解决方案加速器概述 - Azure | Microsoft Docs
-description: 远程监视解决方案加速器概述。
+description: 本文概述了远程监视解决方案的一些关键要素，以帮助你了解其工作原理。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: af09ea39f373d518d5600e3fa46adc378fd9236d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33005bc286f7dc2c0ebed74bd9df0309e71346f5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61442524"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824836"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>远程监视解决方案加速器概述
 
@@ -23,7 +23,7 @@ ms.locfileid: "61442524"
 
 * 排查解决方案中的问题。
 * 规划如何根据具体要求自定义该解决方案。
-* 设计使用 Azure 服务的 IoT 解决方案。
+* 自行设计使用 Azure 服务的 IoT 解决方案。
 
 GitHub 上提供了远程监视解决方案加速器代码：
 
@@ -41,7 +41,7 @@ GitHub 上提供了远程监视解决方案加速器代码：
 自 Microsoft 发布第一款解决方案加速器以来，云体系结构已有所演变。 [微服务](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)应运而生，经证实能够在不降低开发速度的情况下实现可伸缩性和灵活性。 有多种 Microsoft 服务在内部使用此体系结构模式，且获得了出色的可靠性和可伸缩性。 更新的解决方案加速器将这些知识付诸实践，使我们也能从中受益。
 
 > [!TIP]
-> 若要详细了解微服务体系结构，请参阅 [.NET 应用程序体系结构](https://www.microsoft.com/net/learn/architecture)和[微服务：由云驱动的应用程序革命](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)。
+> 若要详细了解微服务体系结构，请参阅 [.NET Application Architecture](https://www.microsoft.com/net/learn/architecture)（.NET 应用程序体系结构）和 [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)（微服务：由云推动的应用程序革命）。
 
 ## <a name="device-connectivity"></a>设备连接
 

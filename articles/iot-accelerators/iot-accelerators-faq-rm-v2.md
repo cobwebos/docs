@@ -1,6 +1,6 @@
 ---
 title: 远程监视解决方案加速器常见问题解答 - Azure| Microsoft Docs
-description: 远程监视解决方案加速器的常见问题解答
+description: 本文解答了远程监视解决方案加速器的常见问题。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 746d21c7ff4d5b939eea7690193ac07425b4001c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c410ac7f41adb623a7198320a1edced097778569
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447897"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826237"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>远程监视解决方案加速器的常见问题解答
 
@@ -23,8 +23,8 @@ ms.locfileid: "61447897"
 
 新的解决方案加速器提供两个部署选项：
 
-* 基本选项适用于寻求更低开发成本的开发人员，或想要生成演示或概念证明的客户。 
-* 标准选项适用于想要部署生产就绪基础结构的企业。 
+* 基本选项适用于寻求更低开发成本的开发人员，或想要生成演示或概念证明的客户。
+* 标准选项适用于想要部署生产就绪基础结构的企业。
 
 ### <a name="how-can-i-ensure-i-keep-my-costs-down-while-i-develop-my-solution"></a>如何确保在开发解决方案的同时不断降低成本？
 

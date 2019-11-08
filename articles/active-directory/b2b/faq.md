@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 04/10/2019
+ms.date: 11/07/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 523f1adc94870f79d198366059f33ad52f5dad68
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 2fd72aea9087b03dcd5c6072676e8f98e7cfc1ee
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293071"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816451"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B 协作常见问题解答
 
@@ -42,30 +42,36 @@ ms.locfileid: "67293071"
 邀请方组织执行多重身份验证。 邀请方组织必须确保为其使用多重身份验证的 B2B 用户提供足够的许可证。
 
 ### <a name="what-if-a-partner-organization-already-has-multi-factor-authentication-set-up-can-we-trust-their-multi-factor-authentication-and-not-use-our-own-multi-factor-authentication"></a>如果合作伙伴组织已设置多重身份验证会怎样？ 我们是否可以信任他们的多重身份验证，而不使用我们自己的多重身份验证？
-当前不支持此功能。 如果你的组织资源的访问权限需要多重身份验证，合作伙伴组织将需要多重身份验证中注册你 （邀请） 组织。
+当前不支持此功能。 如果访问组织的资源需要多重身份验证，则合作伙伴组织将需要在（邀请）组织中注册多重身份验证。
 
 ### <a name="how-can-i-use-delayed-invitations"></a>如何使用延迟的邀请？
-某家组织想要添加 B2B 协作用户，根据需要将这些用户预配到应用程序中，然后发送邀请。 可以使用 B2B 协作邀请 API 自定义载入工作流。
+某家组织想要添加 B2B 协作用户，根据需要将这些用户预配到应用程序中，并发送邀请。 可以使用 B2B 协作邀请 API 自定义载入工作流。
 
 ### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>能否在 Exchange 全局地址列表中显示来宾用户？
-是的。 默认情况下，贵组织的全局地址列表 (GAL) 中看不到来宾对象，但可以使用 Azure Active Directory PowerShell 以使其可见。 请参阅[使来宾对象可见全局地址列表中？](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#can-i-make-guest-objects-visible-in-the-global-address-list)
+是的。 默认情况下，来宾对象在组织的全局地址列表（GAL）中不可见，但你可以使用 Azure Active Directory PowerShell 使其可见。 请参阅可否[使来宾对象在全局地址列表中可见？](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#can-i-make-guest-objects-visible-in-the-global-address-list)
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>是否可将来宾用户指定为受限制的管理员？
 绝对是。 有关详细信息，请参阅[将来宾用户添加到角色](add-guest-to-role.md)。
 
 ### <a name="does-azure-ad-b2b-collaboration-allow-b2b-users-to-access-the-azure-portal"></a>Azure AD B2B 协作是否允许 B2B 用户访问 Azure 门户？
-用户被分配的受限制的管理员角色，除非 B2B 协作用户不需要对 Azure 门户的访问。 但是，分配有受限制的管理员角色的 B2B 协作用户可以访问门户。 另外，如果未被分配这些管理员角色之一的来宾用户访问门户，该用户可以访问某些部分的体验。 来宾用户角色具有目录中的某些权限。
+除非为用户分配了受限管理员角色，否则 B2B 协作用户不需要访问 Azure 门户。 不过，分配有有限管理员角色的 B2B 协作用户可以访问门户。 另外，如果未被分配这些管理员角色之一的来宾用户访问门户，该用户可以访问某些部分的体验。 来宾用户角色具有目录中的某些权限。
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>我能否阻止来宾用户访问 Azure 门户？
-能！ 配置此策略时请小心，避免意外阻止成员和管理员的访问。
-若要阻止来宾用户的访问[Azure 门户](https://portal.azure.com)，在 Windows Azure 经典部署模型 API 中使用条件性访问策略：
-1. 修改“所有用户”组，使其仅包含成员。 
-   ![显示所有用户组 UserType 不等于来宾的屏幕截图](media/faq/modify-all-users-group.png)
-2. 创建包含来宾用户的动态组。
-   ![显示新的所有来宾用户组的屏幕截图](media/faq/group-with-guest-users.png)
-3. 设置条件性访问策略以阻止来宾用户访问门户，如以下视频中所示：
-  
-   > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 
+
+能！ 你可以创建一个条件性访问策略，阻止所有来宾和外部用户访问 Azure 门户。 配置此策略时请小心，避免意外阻止成员和管理员的访问。
+
+1. 以安全管理员或条件访问管理员的身份登录到 [Azure 门户](https://portal.azure.com/)。
+2. 在 Azure 门户中，选择“Azure Active Directory”。 
+3. 在 "**管理**" 下，选择 "**安全性**"。
+4. 在 "**保护**" 下，选择 "**条件访问**"。 选择“新策略”。
+5. 在 "**新建**" 页上的 "**名称**" 文本框中，输入策略的名称（例如 "阻止来宾访问门户"）。
+6. 在“分配”下，选择“用户和组”。
+7. 在 "**包括**" 选项卡上，选择 "**选择用户和组**"，然后选择 "**所有来宾和外部用户（预览版）** "。
+9. 选择“完成”。
+10. 在 "**新建**" 页上的 "**分配**" 部分中，选择 "**云应用或操作**"。
+11. 在 "**云应用或操作**" 页上，选择 "**选择应用**"，然后选择 "**选择**"。
+12. 在“选择”页面上，选择“Microsoft Azure 管理”，然后勾选“选择”。
+13. 在 "**云应用或操作**" 页上，选择 "**完成**"。
 
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Azure AD B2B 协作是否支持多重身份验证和使用者电子邮件帐户？
 是的。 Azure AD B2B 协作同时支持多重身份验证和使用者电子邮件帐户。
@@ -108,7 +114,7 @@ Azure AD 具有固定的字符集、密码强度和帐户锁定要求，同样�
 我们将去除 B2B 和企业对消费者 (B2C) 的协作在所支持的标识这方面的差异。 根据所使用的标识决定使用 B2B 还是 B2C 并不是一个合理的原因。 有关选择协作选项的信息，请参阅[在 Azure Active Directory 中比较 B2B 协作和 B2C](compare-with-b2c.md)。
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>哪些应用程序和服务支持 Azure B2B 来宾用户？
-所有 Azure AD 集成应用程序可以支持 Azure B2B 来宾用户，但它们必须使用终结点将设置为租户来宾用户进行身份验证。 可能还需要在来宾用户对应用进行身份验证时颁发的 SAML 令牌中[自定义声明](claims-mapping.md)。 
+所有 Azure AD 集成的应用程序都可以支持 Azure B2B 来宾用户，但他们必须使用设置为租户的终结点来对来宾用户进行身份验证。 可能还需要在来宾用户对应用进行身份验证时颁发的 SAML 令牌中[自定义声明](claims-mapping.md)。 
 
 ### <a name="can-we-force-multi-factor-authentication-for-b2b-guest-users-if-our-partners-dont-have-multi-factor-authentication"></a>如果合作伙伴未启用多重身份验证，我们是否可以强制 B2B 来宾用户使用多重身份验证？
 是的。 有关详细信息，请参阅[B2B 协作用户的条件性访问](conditional-access.md)。

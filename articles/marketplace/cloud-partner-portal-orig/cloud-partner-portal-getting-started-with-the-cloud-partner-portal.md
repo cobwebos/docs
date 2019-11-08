@@ -4,15 +4,16 @@ description: 云合作伙伴门户入门。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 9d2c64479f65995c0eca756b86bd0a96a752867d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6065f0485b03a53fa55ae700831869998d9453cc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935742"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818375"
 ---
 # <a name="getting-started-with-the-cloud-partner-portal"></a>云合作伙伴门户入门
 
@@ -44,7 +45,7 @@ ms.locfileid: "64935742"
 ![产品页面](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/offer-page.png)
 
 在“产品/服务”页上，可以执行以下操作：
-- 添加内容或检查通过两种最高级别模式之间切换产品/服务的状态：**编辑器**并**状态**。
+- 通过在两种顶级模式：**编辑器**和**状态**之间来回切换，来添加内容或检查产品/服务的状态。
 - 使用**操作栏**通过保存和放弃输入来显式管理产品/服务的更改。
 - 在更改产品/服务设置时，可以在每个产品/服务所需要的**格式**之间导航。
 

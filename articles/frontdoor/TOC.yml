@@ -48,16 +48,6 @@
       href: front-door-url-rewrite.md
     - name: URL 重定向
       href: front-door-url-redirect.md
-    - name: WAF
-      items:
-        - name: 概述
-          href: waf-overview.md
-        - name: 自定义规则
-          href: waf-front-door-custom-rules.md
-        - name: 策略设置
-          href: waf-front-door-policy-settings.md
-        - name: 监视和日志记录
-          href: waf-front-door-monitor.md
 - name: 操作指南
   items:
     - name: 重定向流量
@@ -74,26 +64,10 @@
           href: front-door-troubleshoot-routing.md
         - name: 允许的证书颁发机构
           href: front-door-troubleshoot-allowed-ca.md
-    - name: 配置 WAF
-      items:
-        - name: 配置 WAF 策略 - 门户
-          href: waf-front-door-create-portal.md
-        - name: 配置 WAF 策略 - Azure PowerShell
-          href: waf-front-door-custom-rules-powershell.md
-        - name: 配置机器人防护
-          href: waf-front-door-policy-configure-bot-protection.md
-        - name: 配置自定义响应代码
-          href: waf-front-door-configure-custom-response-code.md
-        - name: 配置 IP 限制
-          href: waf-front-door-configure-ip-restriction.md
-        - name: 配置速率限制 - Azure PowerShell
-          href: waf-front-door-rate-limit-powershell.md
 - name: 常见问题解答
   items:
     - name: Front Door 常见问题解答
       href: front-door-faq.md
-    - name: WAF 常见问题解答
-      href: waf-faq.md
 - name: 引用
   items:
     - name: Azure CLI

@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 manager: nunoc
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 41a09be36262ff09c383b8ccb64a94230a11d3f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ffdc6b22209c1d334ac7b75c7079e755a7405154
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937912"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822997"
 ---
 # <a name="containers-offer-publishing-guide"></a>“容器”产品/服务发布指南
 
@@ -34,8 +35,8 @@ Microsoft 目前支持免费和自带许可 (BYOL) 许可模型。
 |:--- |:--- |  
 | 计费和计量 | 支持免费或 BYOL 计费模型。 |  
 | 从 Dockerfile 生成的映像 | 容器映像必须基于 Docker 映像规范，并且必须从 Dockerfile 生成。<ul> <li>有关构建 docker 镜像的详细信息，请访问位于 [docs.docker.com/engine/reference/builder/#usage](https://docs.docker.com/engine/reference/builder/#usage) 内的“使用情况”部分。</li> </ul> |  
-| 在 ACR 中托管 | 容器映像必须在 Azure 容器注册表 (ACR) 存储库中托管。<ul> <li>有关如何使用 ACR 的详细信息，请访问位于 [docs.microsoft.com/azure/container-registry/container-registry-get-started-portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal) 内的快速入门：使用 Azure 门户页创建容器注册表。</li> </ul> |  
-| 映像标记 | 容器映像必须至少包含 1 个标记（最多标记数：16）。<ul> <li>有关标记图像的详细信息，请访问位于 [docs.docker.com/engine/reference/commandline/tag](https://docs.docker.com/engine/reference/commandline/tag) 内的 docker 标记页。</li> </ul> |  
+| 在 ACR 中托管 | 容器映像必须在 Azure 容器注册表 (ACR) 存储库中托管。<ul> <li>有关使用 ACR 的详细信息，请访问位于 [docs.microsoft.com/azure/container-registry/container-registry-get-started-portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal) 内的快速入门：使用 Azure 门户页面创建容器注册表。</li> </ul> |  
+| 映像标记 | 容器映像必须包含至少 1 个标记（最多标记数：16）。<ul> <li>有关标记图像的详细信息，请访问位于 [docs.docker.com/engine/reference/commandline/tag](https://docs.docker.com/engine/reference/commandline/tag) 内的 docker 标记页。</li> </ul> |  
 
 ## <a name="next-steps"></a>后续步骤
 

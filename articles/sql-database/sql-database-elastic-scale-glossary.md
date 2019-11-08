@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 3a06bb65c4f836d2c0fb049946ab62c395ec81e1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ab972db78cd213497fb96486b3e16b01f2c4c6eb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690292"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823630"
 ---
 # <a name="elastic-database-tools-glossary"></a>弹性数据库工具词汇表
 
@@ -30,7 +30,7 @@ Azure SQL 数据库中的[弹性数据库工具](sql-database-elastic-scale-intr
 
 **依赖于数据的路由**：使应用程序能够连接到给定了特定分片键的分片的功能。 请参阅[依赖于数据的路由](sql-database-elastic-scale-data-dependent-routing.md)。 与 **[多分片查询](sql-database-elastic-scale-multishard-querying.md)** 进行比较。
 
-**全局分片映射**：**分片集**内分片键及其各自分片之间的映射。 全局分片映射存储在**分片映射管理器**中。 与 **局部分片映射**进行比较。
+**全局分片映射**：**分片集**内分片键及其各自分片之间的映射。 全局分片映射存储在**分片映射管理器**中。 与**局部分片映射**进行比较。
 
 **列表分片映射**：在其中单独映射分片键的分片映射。 与**范围分片映射**进行比较。   
 
@@ -79,7 +79,7 @@ Azure SQL 数据库中的[弹性数据库工具](sql-database-elastic-scale-intr
 
 **分片**：基于分片键对多个数据库上的结构相同的数据进行水平分区的行为。
 
-拆分：将几个 shardlet 从一个分片移动到另一个（通常是新的）分片的行为。 由用户提供的作为拆分点的分片键。
+**拆分**：将几个 shardlet 从一个分片移动到另一个（通常是新的）分片的行为。 由用户提供的作为拆分点的分片键。
 
 **纵向缩放**：向上（或向下）缩放单个分片的计算大小的行为。 例如，将分片从标准版更改为高级版（这会导致需要更多的计算资源）。 
 

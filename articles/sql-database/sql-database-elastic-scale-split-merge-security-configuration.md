@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 98d645fc76010d96bc016a63b4882979f3489698
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a916645f153f73a98e7fc5d4046bdf557e8acf2b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690143"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823528"
 ---
 # <a name="split-merge-security-configuration"></a>拆分/合并安全配置
 
@@ -280,7 +280,7 @@ ms.locfileid: "73690143"
 * 在“证书”对话框中选择“证书路径”选项卡。
 * 双击路径中的 CA 条目。
 * 记下证书属性。
-* 关闭“证书” 对话框。
+* 关闭“证书”对话框。
 * 查找证书
   * 搜索前面记下的 CA。
 * 依次单击“操作”->“所有任务”->“导出...”
@@ -433,7 +433,7 @@ ms.locfileid: "73690143"
 在**证书导出向导**中：
 
 1. 单击“下一步”。
-2. 选择“是”，然后选择“导出私钥”。
+2. 选择“是”，并选择“导出私钥”。
 3. 单击“下一步”。
 4. 选择所需的输出文件格式。
 5. 选中所需的选项。
@@ -470,14 +470,14 @@ ms.locfileid: "73690143"
 
 1. 选择“云服务”。
 2. 选择云服务。
-3. 在顶部菜单上，单击“证书”。
+3. 单击顶部菜单上的“证书”。
 4. 在底部栏上，单击“上传”。
 5. 选择证书文件。
 6. 如果是 .PFX 文件，则输入私钥密码。
 7. 完成操作后，从列表中的新条目复制证书指纹。
 
 ## <a name="other-security-considerations"></a>其他安全注意事项
-使用 HTTPS 终结点时，本文档中介绍的 SSL 设置对服务及其客户端之间的通信进行加密。 这一点很重要，因为该通信中包含了数据库访问凭据以及其他可能的敏感信息。 但是，请注意，该服务会将内部状态（包括凭据）保存在其内部表中，该表位于在 Microsoft Azure 订阅中为元数据存储提供的 Microsoft Azure SQL 数据库中。 在服务配置文件（.CSCFG 文件）中，该数据库已定义为以下设置的一部分： 
+使用 HTTPS 终结点时，本文档中介绍的 SSL 设置将对服务及其客户端之间的通信进行加密。 这一点很重要，因为该通信中包含了数据库访问凭据以及其他可能的敏感信息。 但是，请注意，该服务会将内部状态（包括凭据）保存在其内部表中，该表位于在 Microsoft Azure 订阅中为元数据存储提供的 Microsoft Azure SQL 数据库中。 在服务配置文件（.CSCFG 文件）中，该数据库已定义为以下设置的一部分： 
 
 ```xml
 <Setting name="ElasticScaleMetadata" value="Server=…" />

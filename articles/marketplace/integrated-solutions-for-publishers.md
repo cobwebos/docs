@@ -4,15 +4,16 @@ description: Azure Marketplace 和 Microsoft AppSource 中的集成解决方案
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 8bffb2c71f5e07499338ea32e0c064392af81684
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: eaba5612221e712ad5b14f10876e083729970fde
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71706307"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818566"
 ---
 # <a name="publish-an-integrated-solution"></a>发布集成解决方案
 
@@ -56,7 +57,7 @@ ms.locfileid: "71706307"
 
 ## <a name="develop-an-integrated-solution"></a>开发集成解决方案 
 
-批准你的提名后，请使用链接的程序资源开发你的集成解决方案。 请执行以下步骤： 
+批准你的提名后，请使用链接的程序资源开发你的集成解决方案。 执行以下步骤: 
 
 1. 以研讨会格式完成重要的业务和技术讨论，以定义解决方案和集成方法。 
 
@@ -65,12 +66,12 @@ ms.locfileid: "71706307"
     * 面向客户
     * 价值主张
     * 定价
-    * 授权
+    * 许可
     * 条款和条件
     * 支持方法
     * 市场营销活动
     * 销售进程
-    * activities
+    * 活动
 
     您对集成方法的讨论应涉及以下几点： 
     * 集成点
@@ -86,7 +87,7 @@ ms.locfileid: "71706307"
 
     * [业务决策研讨会讨论指南](https://aka.ms/AA5qicx)
     * [技术决策研讨会讨论指南](https://aka.ms/AA5qid1)
-    * @no__t 0Quickstart 视频：业务和技术研讨会 @ no__t-0
+    * [快速入门视频：业务和技术研讨会](https://aka.ms/AA5qos9)
 
 1. 确定跨合作伙伴项目经理，推动你在业务和技术讨论会中开发的项目计划和时间线。
 

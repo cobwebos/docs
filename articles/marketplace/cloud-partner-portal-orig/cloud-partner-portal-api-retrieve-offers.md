@@ -4,15 +4,16 @@ description: API 检索发布者命名空间下的产品/服务汇总列表。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 67109c3605ea96123ff41cb88d5ac328a09991e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c94c03a63936be2b086085a1e52064dedf214b0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935333"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819618"
 ---
 <a name="retrieve-offers"></a>检索产品/服务
 ===============
@@ -32,10 +33,10 @@ ms.locfileid: "64935333"
 |  |  |
 
 
-<a name="header"></a>Header
+<a name="header"></a>标头
 ------
 
-|  **名称**        |         **ReplTest1**       |
+|  **名称**        |         **值**       |
 |  --------------- |       ----------------  |
 |  Content-Type    | `application/json`      |
 |  授权   | `Bearer YOUR_TOKEN`     |

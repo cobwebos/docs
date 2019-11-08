@@ -1,5 +1,5 @@
 ---
-title: 监视和性能优化-Azure SQL 数据库
+title: 监视和性能优化
 description: 有关通过评估和改进来调整 Azure SQL 数据库性能的提示。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: c11112963ec82a0e53df156048495e7b5141bcb7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e77af00dc3352af3265da90685e58b34c96bee81
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687762"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825162"
 ---
 # <a name="monitoring-and-performance-tuning"></a>监视和性能优化
 
@@ -34,7 +34,7 @@ Azure SQL 数据库提供所需的工具和方法，用于轻松监视使用情�
 
 若要监视 Azure 中的 SQL 数据库的性能，首先需要监视相对于所选数据库性能级别使用的资源。 监视以下资源：
  - **Cpu 使用率**：检查数据库是否长时间达到100% 的 CPU 使用率。 CPU 使用率较高可能意味着需要识别并优化使用大部分算力的查询。 CPU 使用率较高还可能意味着需要将数据库或实例升级到更高的服务层级。 
- - **等待统计信息**：使用[Sys.databases _os_wait_stats （transact-sql）](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)确定查询等待多长时间。 查询可能正在等待资源，发生了队列等待或外部等待。 
+ - **等待统计信息**：使用[sys. dm_os_wait_stats （transact-sql）](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)确定查询等待多长时间。 查询可能正在等待资源，发生了队列等待或外部等待。 
  - **IO 使用率**：检查数据库是否达到基础存储的 IO 限制。
  - **内存使用率**：数据库或实例的可用内存量与 vcore 数成正比。 确保内存对于工作负荷而言足够。 页生存期是可以指示是否很快从内存中删除页面的参数之一。
 
@@ -245,7 +245,7 @@ ORDER BY count (distinct p.query_id) DESC
 
 如果没有任何可行的措施能够改进数据库性能，你可以更改 Azure SQL 数据库中可用的资源量。 通过更改单一数据库的 [DTU 服务层级](sql-database-service-tiers-dtu.md)来分配更多资源。 或者随时增加弹性池的 eDTU。 或者，如果使用[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)，则可更改服务层级或增加分配给数据库的资源。
 
-对于单一数据库，可以根据需要[更改服务层级或计算资源](sql-database-single-database-scale.md)来提高数据库性能。 对于多个数据库，请考虑使用 [弹性池](sql-database-elastic-pool-guidance.md) 自动调整资源规模。
+对于单一数据库，可以根据需要[更改服务层级或计算资源](sql-database-single-database-scale.md)来提高数据库性能。 对于多个数据库，请考虑使用[弹性池](sql-database-elastic-pool-guidance.md)自动缩放资源。
 
 ## <a name="tune-and-refactor-application-or-database-code"></a>优化和重构应用程序或数据库代码
 

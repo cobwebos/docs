@@ -1,19 +1,20 @@
 ---
-title: 管理 Azure Marketplace 和 AppSource 发布者个人资料
-description: 管理 Azure Marketplace 和 AppSource 发布者个人资料
+title: 管理 Azure Marketplace 和 AppSource 发布者配置文件
+description: 管理 Azure Marketplace 和 AppSource 发布者配置文件
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 manager: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: pabutler
-ms.openlocfilehash: a72259e1deb97ca0256de5bfd3b2f6c78d92e3c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c9e8e73d18ec0c2a7334fbb5521e89ead4334cc7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935344"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826367"
 ---
 # <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>管理“Azure 市场”和“AppSource”发布者个人资料
 
@@ -33,7 +34,7 @@ ms.locfileid: "64935344"
 > [!NOTE]
 > 通过云合作伙伴门户“用户”部分中左侧导航窗格上的“用户”部分，可将用户（参与者和所有者）添加到发布个人资料
 
-**若要查看和管理发布者个人资料**，请在右上方的菜单栏中单击“发布者个人资料”  选项卡。
+**若要查看和管理发布者个人资料**，请在右上方的菜单栏中单击“发布者个人资料”选项卡。
 
 ![“发布者个人资料”选项卡 - 发布者个人资料](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofilenew.png)
 
@@ -45,6 +46,6 @@ ms.locfileid: "64935344"
 >[!NOTE]
 >开发人员中心帐户注册是发布市场付费 SKU 所需的必要操作。
 
-如果没有[开发人员中心帐户](./cloud-partner-portal-dev-center-accounts-registration.md)，可以创建一个。 然后在云合作伙伴门户上将注册的电子邮件地址添加为产品/服务的所有者。 所有者仅可从“用户”  部分将已注册的电子邮件地址添加到发布个人资料。 然后，使用相同的电子邮件地址登录到门户，并链接开发人员中心帐户。
+如果没有[开发人员中心帐户](./cloud-partner-portal-dev-center-accounts-registration.md)，可以创建一个。 然后在云合作伙伴门户上将注册的电子邮件地址添加为产品/服务的所有者。 所有者仅可从“用户”部分将已注册的电子邮件地址添加到发布个人资料。 然后，使用相同的电子邮件地址登录到门户，并链接开发人员中心帐户。
 
 ![发布者个人资料详细信息 - 发布者个人资料说明](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledescription.png)

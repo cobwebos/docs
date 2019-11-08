@@ -378,8 +378,6 @@
           href: storage-blob-event-quickstart.md
         - name: 处理更改源日志
           href: storage-blob-change-feed-how-to.md
-        - name: 使用 Azure 搜索来搜索 Blob 存储
-          href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 传输数据
           items:
             - name: AzCopy
@@ -706,7 +704,6 @@
             - name: 设置文件和目录级别权限
               href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
         - name: 优化性能
-          href: ../blobs/data-lake-storage-use-power-bi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           items:
             - name: 概述
               href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -733,6 +730,7 @@
         - name: 与 Hadoop 文件系统 CLI 配合使用
           href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 与 Power BI 配合使用
+          href: ../blobs/data-lake-storage-use-power-bi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 引用
       items:
         - name: PowerShell

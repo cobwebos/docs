@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 存储中为 Node.js 创建 Blob
+title: 快速入门：适用于 JavaScript 的 Azure Blob 存储客户端库 v2
 description: 在对象 (Blob) 存储中创建存储帐户和容器。 随后，使用适用于 Node.js v2 的 Azure 存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 8d0afc5a224e752bdd745ab4df0473a134b4180b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 12078300b36412a1507991507a39654acdeb7c69
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609094"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825350"
 ---
-# <a name="upload-download-and-list-blobs-using-the-client-library-for-nodejs"></a>使用适用于 Node.js 的客户端库上传、下载和列出 Blob
+# <a name="quickstart-azure-blob-storage-client-library-v2-for-javascript"></a>快速入门：适用于 JavaScript 的 Azure Blob 存储客户端库 v2
 
 本操作指南介绍如何使用适用于 Node.js v2 的客户端库通过 Azure Blob 存储来上传、下载和列出 Blob。
 
@@ -24,7 +24,7 @@ ms.locfileid: "73609094"
 
 ## <a name="prerequisites"></a>先决条件
 
-如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 在 [Azure 门户](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM)中创建 Azure 存储帐户。 有关如何创建帐户的帮助，请参阅[创建存储帐户](../common/storage-quickstart-create-account.md)。
 
@@ -79,7 +79,7 @@ Done
 
 如果为此示例使用新的存储帐户，则可能无法看到“*Containers*”标签下列出的任何容器名称。
 
-## <a name="understanding-the-code"></a>了解代码
+## <a name="understanding-the-code"></a>了解数据
 第一个表达式用于将值加载到环境变量中。
 
 ```javascript

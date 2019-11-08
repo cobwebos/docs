@@ -4,15 +4,16 @@ description: 介绍如何从 Azure 部署的 VHD 注册 VM。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pabutler
-ms.openlocfilehash: c27605d2f9b87a9d4ba3d2326c0ce7ad437d3441
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 4adc6f716050e2d792e0a5c022972e4340d2846a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240984"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823111"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>创建 Azure Key Vault 证书
 
@@ -76,7 +77,7 @@ ms.locfileid: "70240984"
 
 ## <a name="create-the-key-vault"></a>创建 Key Vault
 
-将 [Key Vault 部署模板](./cpp-key-vault-deploy-template.md)的内容复制到本地计算机上的文件中。 （在下面的示例脚本中，此资源为 `C:\certLocation\keyvault.json`。）编辑并运行以下 Azure Powershell 脚本以创建 Azure Key Vault 实例和关联的资源组。  需要替换以下参数的值：
+将 [Key Vault 部署模板](./cpp-key-vault-deploy-template.md)的内容复制到本地计算机上的文件中。 （在下面的示例脚本中，此资源 `C:\certLocation\keyvault.json`。） 编辑并运行以下 Azure Powershell 脚本以创建 Azure Key Vault 实例和关联的资源组。  需要替换以下参数的值：
 
 |  **Parameter**        |   **说明**                                                               |
 |  -------------        |   ---------------                                                               |
@@ -205,7 +206,7 @@ ms.locfileid: "70240984"
             echo $certpassword
             $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
             $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
-            $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
+            $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText -Force
             $objAzureKeyVaultSecret=Set-AzureKeyVaultSecret -VaultName $kvname -Name "ISVSecret$postfix" -SecretValue $secret
             echo $objAzureKeyVaultSecret.Id 
     

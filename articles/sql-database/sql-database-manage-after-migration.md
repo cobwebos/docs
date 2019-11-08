@@ -1,5 +1,5 @@
 ---
-title: 迁移后管理单个和共用数据库-Azure SQL 数据库
+title: 迁移后管理单个和共用数据库
 description: 了解如何在迁移到 Azure SQL 数据库后管理数据库。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: d92b4b99e6ae6a7a07174e59d7cf3c9766c0eabf
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 16855bb218ba3ae4d221cb1329410c7848aab2c5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689537"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818963"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>云中的新 DBA - 管理 Azure SQL 数据库中的单一数据库和共用数据库
 
@@ -71,7 +71,7 @@ ms.locfileid: "73689537"
 |高级|35|
 |||
 
-此外，使用[长期保留 (LTR)](sql-database-long-term-retention.md) 功能，还可将备份文件特意保留更长时间（最长达 10 年），且可在该期间任意时间点通过备份还原数据。 此外，数据库备份保存在异地复制存储中，可确保从区域性灾难中复原。 还可以在保留期内的任意时间点恢复 Azure 区域中的任何备份。 请参阅[业务连续性概述](sql-database-business-continuity.md)。
+此外，使用[长期保留 (LTR)](sql-database-long-term-retention.md) 功能，还可将备份文件特意保留更长时间（最长达 10 年），且可在该期间任意时间点通过备份还原数据。 此外，数据库备份保存在异地复制存储上，可确保从区域性灾难中复原。 还可以在保留期内的任意时间点恢复 Azure 区域中的任何备份。 请参阅[业务连续性概述](sql-database-business-continuity.md)。
 
 ### <a name="how-do-i-ensure-business-continuity-in-the-event-of-a-datacenter-level-disaster-or-regional-catastrophe"></a>如果发生数据中心级灾难或地区灾难，我如何确保业务连续性
 
@@ -79,7 +79,7 @@ ms.locfileid: "73689537"
 
 对于任务关键型数据库，Azure SQL DB 提供了活动的异地复制。 实质上，此方案的工作原理是在另一个区域创建原始数据库的异地复制辅助副本。 例如，如果数据库最初托管在 Azure 美国西部区域，而你想使用区域性灾难复原能力。 你就要创建美国西部数据库的活动异地副本，比如说美国东部。 如果美国西部发生灾难，你就可以故障转移到美国东部区域。 最好将它们配置到自动故障转移组中，因为这样可以确保在发生灾难时数据库自动故障转移到美国东部的辅助数据库。 此过程的 RPO 不到 5 秒，ERT 不到 30 秒。
 
-如果没有配置自动故障转移组，那么你的应用程序需要主动监视灾难，并启动向辅助数据库的故障转移。 你可以在不同 Azure 区域创建最多 4 个此类活动异地副本。 这样更好。 你还可以对这些辅助活动异地副本进行只读访问。 这样可以非常方便地减少异地分布式应用程序方案的延迟。
+如果没有配置自动故障转移组，那么你的应用程序需要主动监视灾难，并启动向辅助数据库的故障转移。 你可以在不同 Azure 区域创建最多 4 个此类活动异地副本。 这样更好。 你还可以对这些辅助活动异地副本进行只读访问。 这样可轻松降低异地分布应用程序方案的延迟。
 
 ### <a name="how-does-my-disaster-recovery-plan-change-from-on-premises-to-sql-database"></a>我的灾难恢复计划如何从本地更改为 SQL 数据库
 
@@ -89,7 +89,7 @@ ms.locfileid: "73689537"
 
 ## <a name="security-and-compliance"></a>安全和符合性
 
-SQL 数据库十分重视安全性和隐私性。 SQL 数据库中的安全性分为数据库级别和平台级别，将安全性分为几层后，就很好理解了。 在每一层，都需要为应用程序控制和提供最佳安全性。 这些层包括：
+SQL 数据库十分重视安全性和隐私性。 SQL 数据库中的安全性分为数据库级别和平台级别，将安全性分为几层后，就很好理解了。 在每一层，都需要为应用程序控制和提供最佳安全性。 这些层分为：
 
 - 标识和身份验证（[Windows/SQL 身份验证和 Azure Active Directory [AAD] 身份验证](sql-database-control-access.md)）。
 - 监视活动（[审核](sql-database-auditing.md)和[检测威胁](sql-database-threat-detection.md)）。
@@ -152,20 +152,20 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 
 #### <a name="sql-database-auditing"></a>SQL 数据库审核
 
-使用 SQL 数据库时，可以启用“审核”以跟踪数据库事件。 [SQL 数据库审核](sql-database-auditing.md)可记录数据库事件，并将事件写入 Azure 存储帐户中的审核日志文件。 如果你想要深入了解潜在的安全性和策略违规情况，请维持法规遵从性等。它允许你定义和配置你认为需要审核的某些类别的事件，并根据你可以获得预配置的报告和仪表板来获取数据库上发生的事件的概述。 可在数据库级或服务器级应用这些审核策略。 有关如何启用服务器/数据库审核的指南，请参阅：[启用 SQL 数据库审核](sql-database-security-tutorial.md#enable-security-features)。
+使用 SQL 数据库，可打开“审核”来跟踪数据库事件。 [SQL 数据库审核](sql-database-auditing.md)可记录数据库事件，并将事件写入 Azure 存储帐户中的审核日志文件。 如果你想要深入了解潜在的安全性和策略违规情况，请维持法规遵从性等。它允许你定义和配置你认为需要审核的某些类别的事件，并根据你可以获得预配置的报告和仪表板来获取数据库上发生的事件的概述。 可在数据库级或服务器级应用这些审核策略。 有关如何启用服务器/数据库审核的指南，请参阅：[启用 SQL 数据库审核](sql-database-security-tutorial.md#enable-security-features)。
 
 #### <a name="threat-detection"></a>威胁检测
 
 通过[威胁检测](sql-database-threat-detection.md)，可轻松应对“审核”发现的违反安全规定和政策的行为。 即使不是安全专家，也能解决系统中潜在的威胁或违规问题。 威胁检测还具有一些内置功能，如 SQL 注入检测。 SQL 注入是指尝试改动或破坏数据，这是攻击数据库应用程序的一种常见手段。 威胁检测运行多组算法，这些算法可以检测潜在漏洞和 SQL 注入攻击，以及异常的数据库访问模式（如来自异常位置或不熟悉主体的访问）。 如果在数据库中检测到威胁，安全管理人员或其他指定管理员将收到电子邮件通知。 每个通知都会提供可疑活动的详细信息，以及如何进一步调查和缓解威胁的建议。 若要了解如何启用威胁检测，请参阅：[启用威胁检测](sql-database-security-tutorial.md#enable-security-features)。
 
-### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>如何在 SQL 数据库中对数据采取常规保护
+### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>一般情况下如何保护 SQL 数据库中的数据
 
-加密是防范入侵者盗取敏感数据的强大机制。 没有解密密钥，入侵者就无法使用加密数据。 它在 SQL 数据库中构建的现有安全层之上增加了一层额外保护。 保护 SQL 数据库中的数据包含两个方面：
+加密为保护敏感数据免受入侵提供了一种强大的机制。 没有解密密钥，入侵者就无法使用加密数据。 它在 SQL 数据库中构建的现有安全层之上增加了一层额外保护。 保护 SQL 数据库中的数据包含两个方面：
 
 - 数据和日志文件中的静态数据
 - 传送中的数据
 
-在 SQL 数据库中，存储子系统上数据和日志文件中的静态数据在默认情况下始终全部通过[透明数据加密 [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) 进行加密。 备份也进行了加密。 使用 TDE 时，不需要在访问此数据的应用程序端进行更改。 加密和解密均以透明方式进行；因而得名“透明数据加密”。
+在 SQL 数据库中，存储子系统上数据和日志文件中的静态数据在默认情况下始终全部通过[透明数据加密 [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) 进行加密。 备份也进行了加密。 使用 TDE 时，访问这些数据的应用程序不需要进行任何更改。 加密和解密均以透明方式进行；因而得名“透明数据加密”。
 为了保护传输中的和静态的敏感数据，SQL 数据库提供了一个名为 [Always Encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 的功能。 AE 是客户端加密的一种形式，它对数据库中的敏感列进行加密（因此，它们位于数据库管理员和未授权用户的已加密文本中）。 服务器会首先收到加密数据。 Always Encrypted 的密钥也存储在客户端，因此只有授权的客户端可以解密敏感列。 服务器和数据管理员无法看到敏感数据，因为加密密钥存储在客户端上。 AE 对表中的敏感列进行端到端加密，以防未经授权的客户端和物理磁盘对其进行访问。 AE 目前支持等式比较，因此数据库管理员可以继续查询加密列，这是其 SQL 命令的一部分。 Always Encrypted 可以与各种密钥存储选项结合使用，如 [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md)、Windows 证书存储和本地硬件安全模块。
 
 |**特征**|**Always Encrypted**|**透明数据加密**|
@@ -173,7 +173,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 |**加密范围**|端到端|静态数据|
 |**数据库服务器可访问敏感数据**|否|是，因为加密针对的是静态数据|
 |**允许的 T-SQL 操作**|相等性比较|所有 T-SQL 的外围应用都可用|
-|**使用该功能所需的应用更改**|最少|很少|
+|**使用该功能所需的应用更改**|轻微|很少|
 |**加密粒度**|列级|数据库级|
 ||||
 
@@ -181,7 +181,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 
 每个应用程序在数据库中都有一定的敏感数据，需要防止这些数据被所有人查看。 组织内的某些人员需要查看此数据，但其他人员应无法查看此数据。 比如，员工工资。 经理需要访问其直接下属的工资信息，但各团队成员不应有权访问其对等方的工资信息。 另一种情况是，数据开发人员在开发阶段或测试期间可能需要使用敏感数据，例如客户的 SSN。 而此信息后来不再需要向开发人员公开。 在这种情况下，敏感数据要么需要屏蔽，要么完全不公开。 SQL 数据库提供了两种方法来防止未经授权的用户查看敏感数据：
 
-[动态数据掩码](sql-database-dynamic-data-masking-get-started.md)是一种数据屏蔽功能，它通过屏蔽应用程序层上的非特权用户来限制敏感数据的公开。 可以定义掩码规则来创建掩码模式（例如，只显示国家身份证社会安全号码的最后 4 位数：XXX-XX-0000，并将其余数字标记为 X），并确定哪些用户可以被排除在掩码规则之外。 随时都可能出现屏蔽，有各种屏蔽功能可用于各种数据类别。 通过动态数据屏蔽可以自动检测数据库中的敏感数据，并对其应用屏蔽。
+[动态数据掩码](sql-database-dynamic-data-masking-get-started.md)是一种数据屏蔽功能，它通过屏蔽应用程序层上的非特权用户来限制敏感数据的公开。 你可以定义屏蔽规则来创建屏蔽模式（例如，只显示国家 ID 号的最后 4 位数，如 XXX-XX-0000，并将大部分编号标记为 X），并确定哪些用户被排除在屏蔽规则之外。 随时都可能出现屏蔽，有各种屏蔽功能可用于各种数据类别。 通过动态数据屏蔽可以自动检测数据库中的敏感数据，并对其应用屏蔽。
 
 通过[行级安全性](/sql/relational-databases/security/row-level-security)可以控制行级的访问权限。 也就是说，根据执行查询的用户（组成员或执行上下文）来隐藏数据库表中的某些行。 访问限制是在数据库层上完成的，而不是在应用层，以此简化你的应用逻辑。 首先创建一个筛选器谓词，筛选掉不公开的行，接下来，安全策略定义谁可以访问这些行。 最后，最终用户运行查询，根据用户特权，他们要么能查看受限行，要么根本无法看到这些行。
 
@@ -194,9 +194,9 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 TDE 中有一个双密钥层次结构 – 每个用户数据库中的数据都通过对称 AES-256 数据库唯一的数据库加密密钥 (DEK) 进行加密，该密钥反过来又由服务器唯一的不对称 RSA 2048 主密钥进行加密。 主密钥的管理方式可以是：
 
 - 由平台（SQL 数据库）自动管理。
-- 由你使用 [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md)（用作密钥存储）进行管理。
+- 或由你使用 [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md) 作为密钥存储。
 
-为方便起见，透明数据加密的主密钥默认由 SQL 数据库服务托管。 如果组织想要控制主密钥，可以使用 Azure Key Vault (sql-database-always-encrypted-azure-key-vault.md) 作为密钥存储。 通过使用 Azure Key Vault，组织假定控制密钥预配、轮换使用和权限控制。 [轮换或切换 TDE 主密钥类型](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql-key-rotation)非常快，因为它仅重新加密 DEK。 对于安全性与数据管理角色分开的组织来说，安全管理员可以为 Azure Key Vault 中的 TDE 主密钥预配密钥材料，并为数据库管理员提供 Azure Key Vault 密钥标识符，用于在服务器上进行静态加密。 Key Vault 设计用于确保 Microsoft 不会看到或提取任何加密密钥。 你还可集中管理组织的密钥。
+为方便起见，透明数据加密的主密钥默认由 SQL 数据库服务托管。 如果组织想要控制主密钥，则可以使用 Azure Key Vault (sql-database-always-encrypted-azure-key-vault.md) 作为密钥存储。 通过使用 Azure Key Vault，组织假定控制密钥预配、轮换使用和权限控制。 [轮换或切换 TDE 主密钥类型](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql-key-rotation)非常快，因为它仅重新加密 DEK。 对于安全性与数据管理角色分开的组织来说，安全管理员可以为 Azure Key Vault 中的 TDE 主密钥预配密钥材料，并为数据库管理员提供 Azure Key Vault 密钥标识符，用于在服务器上进行静态加密。 Key Vault 设计用于确保 Microsoft 不会看到或提取任何加密密钥。 你还可集中管理组织的密钥。
 
 #### <a name="always-encrypted"></a>始终加密
 
@@ -212,7 +212,7 @@ Always Encrypted 中还有[两个密钥层次结构](/sql/relational-databases/s
 
 ### <a name="how-can-i-optimize-and-secure-the-traffic-between-my-organization-and-sql-database"></a>如何优化和确保组织和 SQL 数据库间的流量安全
 
-组织和 SQL 数据库间的网络流量通常会通过公共网络进行路由。 但若要选择优化此路径并使其更安全，则可查看 Express Route。 Express Route 实质上是通过专用连接将公司网络扩展到 Azure 平台。 这样，就不需要经由公共 Internet。 而且还可以提高安全性、可靠性并优化路由，相比浏览公共 Internet，降低了网络延迟并提高了速度。 如果计划在组织和 Azure 间传输大量数据，使用 Express Route 可提高成本效益。 从组织连接到 Azure 时，有三种不同连接模型可供选择：
+组织和 SQL 数据库间的网络流量通常会通过公共网络进行路由。 但若要选择优化此路径并使其更安全，则可查看 Express Route。 Express Route 实质上是通过专用连接将公司网络扩展到 Azure 平台。 这样就不会浏览公共 Internet。 而且还可以提高安全性、可靠性并优化路由，相比浏览公共 Internet，降低了网络延迟并提高了速度。 如果计划在组织和 Azure 间传输大量数据，使用 Express Route 可提高成本效益。 从组织连接到 Azure 时，有三种不同连接模型可供选择：
 
 - [云交换共置](../expressroute/expressroute-connectivity-models.md#CloudExchange)
 - [任意位置到任意位置](../expressroute/expressroute-connectivity-models.md#IPVPN)
@@ -248,11 +248,11 @@ SQL 数据库提供可行的安全建议，帮助保护数据，威胁检测可�
 
 ### <a name="cost-optimization"></a>成本优化
 
-Azure SQL 平台会分析服务器中数据库的利用率历史记录，作出评估并给出成本优化建议。 这种分析通常需要两周时间来分析和生成可行的建议。 弹性池就这样一个建议。 建议以横幅形式显示在门户上：
+Azure SQL 平台会分析服务器中数据库的利用率历史记录，作出评估并给出成本优化建议。 这种分析通常需要两周时间来分析和生成可行的建议。 弹性池就这样一个建议。 建议以横幅形式出现在门户上：
 
 ![弹性池建议](./media/sql-database-manage-after-migration/elastic-pool-recommendations.png)
 
-也可以在“顾问”部分下面查看此分析：
+你还可在“顾问”部分下查看此分析：
 
 ![弹性池建议 - 顾问](./media/sql-database-manage-after-migration/advisor-section.png)
 
@@ -288,9 +288,9 @@ Azure 门户通过选择数据库并单击“概述”窗格中的图表来显�
 
 用于诊断查询和数据库性能问题的疑难解答技术的主要部分还是一样的。 毕竟云由同一个 SQL Server 引擎驱动。 但是 Azure SQL DB 平台却内置了“智能”功能。 它可帮助你更轻松地诊断和解决性能问题。 还可代表你执行某些纠正操作，在某些情况下，可自动执行主动修复措施。
 
-使用智能功能（如[查询性能见解 (QPI)](sql-database-query-performance.md) 加上[数据库顾问](sql-database-advisor.md)）非常有利于解决性能问题的方法，方法上的差异在这方面会有所不同，因为你不再需要手动找出可能有助于你排除手头问题的重要细节。 平台能够自动解决棘手的工作。 QPI 就是一个例子。 借助 QPI，可以一直深入钻取到查询级别，查看历史趋势，并确定查询回归的准确时间。 数据库顾问可为你提供一些建议，帮助你改善整体性能，比如缺少索引、删除索引、参数化查询等。
+使用智能功能（如[查询性能见解 (QPI)](sql-database-query-performance.md) 加上[数据库顾问](sql-database-advisor.md)）非常有利于解决性能问题的方法，方法上的差异在这方面会有所不同，因为你不再需要手动找出可能有助于你排除手头问题的重要细节。 该平台帮你完成了这困难的一步。 QPI 就是一个例子。 借助 QPI，可以一直深入钻取到查询级别，查看历史趋势，并确定查询回归的准确时间。 数据库顾问可为你提供一些建议，帮助你改善整体性能，比如缺少索引、删除索引、参数化查询等。
 
-使用性能故障排除时，必须确定是应用程序还是依赖于应用程序的数据库影响了应用程序的性能。 通常，性能问题出现在应用程序层。 问题可能出现在体系结构或是数据访问模式上。 例如，假设你有一个对网络延迟敏感的聊天应用程序。 在这种情况下，应用程序会受到影响，因为在应用程序和服务器间往返出现了许多短请求（“聊天”），在网络拥塞时，这些往返请求会快速增加。 要在这种情况下提高性能，可使用[批量查询](sql-database-performance-guidance.md#batch-queries)。 批量查询会为你带来极大的帮助，因为此时会对请求进行批处理，帮助你减少往返请求的延迟，提高应用程序的性能。
+进行性能故障排除时，请务必确定是应用程序，还是支持它的数据库影响了应用程序的性能。 性能问题往往存在于应用程序层。 问题可能出现在体系结构或是数据访问模式上。 例如，假设你有一个对网络延迟敏感的聊天应用程序。 在这种情况下，应用程序会受到影响，因为在应用程序和服务器间往返出现了许多短请求（“聊天”），在网络拥塞时，这些往返请求会快速增加。 要在这种情况下提高性能，可使用[批量查询](sql-database-performance-guidance.md#batch-queries)。 批量查询会为你带来极大的帮助，因为此时会对请求进行批处理，帮助你减少往返请求的延迟，提高应用程序的性能。
 
 此外，如果注意到数据库总体性能下降，则可以监视 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 和 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 动态管理视图，了解 CPU、IO 和内存消耗情况。 应用性能可能会受到影响，因为数据库缺乏资源。 你可能会需要根据工作负荷需求的增加和减少来更改计算大小和/或服务层级。
 
@@ -313,7 +313,7 @@ SQL 数据库提供了各种服务层级：“基本”、“标准”和“高�
 
 ### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>需要多久运行一次数据库完整性检查
 
-SQL 数据库使用的某些智能技术可以实现自动处理某些类别的数据损坏，不会出现数据丢失。 这些技术内置于服务中，有需要时，服务会利用这些技术。 SQL 数据库会定期通过还原整个服务中的数据库备份并对其运行 DBCC CHECKDB，以对其进行测试。 如果存在问题，SQL 数据库会主动解决问题。 [自动页修复](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring)用于修复损坏或具有数据完整性问题的页面。 数据库页面始终由验证页面完整性的默认 CHECKSUM 设置进行验证。 SQL 数据库会主动监视和检查数据库的数据完整性，如果存在问题，则以最高优先级解决问题。 除此之外，还可自己选择随时运行完整性检查。  有关详细信息，请参阅 [SQL 数据库中的数据完整性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)
+SQL 数据库使用的某些智能技术可以实现自动处理某些类别的数据损坏，不会出现数据丢失。 这些技术内置于服务中，有需要时，服务会利用这些技术。 通过定期还原数据库备份并对其运行 DBCC CHECKDB，测试整个服务的数据库备份。 如果存在问题，SQL 数据库会主动解决问题。 [自动页修复](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring)用于修复损坏或具有数据完整性问题的页面。 数据库页面始终由验证页面完整性的默认 CHECKSUM 设置进行验证。 SQL 数据库会主动监视和检查数据库的数据完整性，如果存在问题，则以最高优先级解决问题。 除此之外，还可自己选择随时运行完整性检查。  有关详细信息，请参阅 [SQL 数据库中的数据完整性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)
 
 ## <a name="data-movement-after-migration"></a>迁移后的数据移动
 
@@ -329,10 +329,10 @@ SQL 数据库使用的某些智能技术可以实现自动处理某些类别的�
 
 ### <a name="how-do-i-synchronize-data-between-sql-database-and-sql-server"></a>如何同步 SQL 数据库 SQL Server 间的数据
 
-可通过多种方法实现此目的：
+可使用多种方法实现此目的：
 
 - **[数据同步](sql-database-sync-data.md)** - 此功能可帮助你在多个本地 SQL Server 数据库和 SQL 数据库之间双向同步数据。 若要与本地 SQL Server 数据库同步，需要在本地计算机上安装并配置同步代理，并打开出站 TCP 端口 1433。
-- **[事务复制](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** - 使用事务复制功能，可将数据从本地同步到 Azure SQL DB，本地服务器作为发布服务器，而 Azure SQL DB 作为订阅服务器。 目前仅支持此设置。 有关如何以最少停机时间将数据从本地迁移到 Azure SQL 的详细信息，请参阅：[使用事务复制](sql-database-single-database-migrate.md#method-2-use-transactional-replication)
+- **[事务复制](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** - 使用事务复制功能，可将数据从本地同步到 Azure SQL DB，本地服务器作为发布服务器，而 Azure SQL DB 作为订阅服务器。 目前仅支持此安装程序。 有关如何以最少停机时间将数据从本地迁移到 Azure SQL 的详细信息，请参阅：[使用事务复制](sql-database-single-database-migrate.md#method-2-use-transactional-replication)
 
 ## <a name="next-steps"></a>后续步骤
 

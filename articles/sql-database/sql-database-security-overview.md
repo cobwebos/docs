@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库安全概述
+title: 安全概述
 description: 了解 Azure SQL 数据库和 SQL Server 的安全性，包括云与本地 SQL Server 之间的差异。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 2365f9cedef73c61870f6e83fa491de5e950c801
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d952229ab327440771db6cc5ac64db2256491179
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687456"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823260"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL 数据库安全功能概述
 
@@ -24,7 +24,7 @@ ms.locfileid: "73687456"
 
 ![sql-security-layer.png](media/sql-database-security-overview/sql-security-layer.png)
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 Microsoft Azure SQL 数据库为云和企业应用程序提供关系数据库服务。 为了帮助保护客户数据，防火墙会阻止对数据库服务器的网络访问，直到根据 IP 地址或 Azure 虚拟网络流量源显式授予访问权限。
 

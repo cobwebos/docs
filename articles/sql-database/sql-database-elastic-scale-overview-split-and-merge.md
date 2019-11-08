@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 9b2203b7fb9e168b251eda16a9505ae2004b0460
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 00f579017ce4dd79e913565ee27698398b5feb38
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690190"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823587"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>在扩展云数据库之间移动数据
 
@@ -33,8 +33,8 @@ ms.locfileid: "73690190"
 ## <a name="documentation"></a>文档
 
 1. [弹性数据库拆分 / 合并工具教程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
-2. [拆分/合并安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)
-3. [拆分/合并安全注意事项](sql-database-elastic-scale-split-merge-security-configuration.md)
+2. [拆分 / 合并安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)
+3. [拆分 / 合并安全注意事项](sql-database-elastic-scale-split-merge-security-configuration.md)
 4. [分片映射管理](sql-database-elastic-scale-shard-map-management.md)
 5. [迁移要扩大的现有数据库](sql-database-elastic-convert-to-use-elastic-tools.md)
 6. [弹性数据库工具](sql-database-elastic-scale-introduction.md)
@@ -44,7 +44,7 @@ ms.locfileid: "73690190"
 
 - **灵活性**
 
-  应用程序需要灵活伸展到超出单个 Azure SQL DB 数据库的限制。 根据需要使用该工具将数据移到新的数据库，同时保留完整性。
+  应用程序需要灵活伸展到超出单个 Azure SQL DB 的限制。 根据需要使用该工具将数据移到新的数据库，同时保留完整性。
 
 - **拆分以实现增长**
 
@@ -72,7 +72,7 @@ ms.locfileid: "73690190"
 
 - **一致的 shardlet 连接**
 
-  为了避免不一致，当一批新的 shardlet 开始进行数据移动时，将断开到存储 shardlet 的分片的所有分片映射提供的数据依赖型路由连接；当数据移动正在进行时，将阻止从分片映射 API 到这些 shardlet 的后续连接。 到同一分片上其他 shardlet 的连接也会断开，但是重试时会立即再次成功连接。 移动此批后，目标分片的 shardlet 会再次标记为联机，并且源数据将从源分片中删除。 该服务针对每一批执行以上步骤，直到所有 shardlet 都已移动。 在完成拆分/合并/移动操作过程中，这会导致几个连接中断操作。  
+  为了避免不一致，当一批新的 shardlet 开始进行数据移动时，将断开到存储 shardlet 的分片的所有分片映射提供的数据依赖型路由连接；当数据移动正在进行时，将阻止从分片映射 API 到这些 shardlet 的后续连接。 到同一分片上其他 shardlet 的连接也会断开，但是重试时会立即再次成功连接。 移动此批后，目标分片的 shardlet 将再次被标记为联机状态，并且源数据将从源分片中删除。 该服务将针对每一批执行以上步骤，直到所有 shardlet 都已移动。 在完成拆分/合并/移动操作过程中，这会导致几个连接中断操作。  
 
 - **管理 shardlet 可用性**
 
@@ -127,7 +127,7 @@ ms.locfileid: "73690190"
 
 ## <a name="the-split-merge-user-interface"></a>拆分/合并用户界面
 
-拆分/合并 Service Pack 包含辅助角色和 Web 角色。 Web 角色用于以交互方式提交拆分/合并请求。 用户界面的主要组件如下：
+拆分/合并 Service Pack 包含辅助角色和 web 角色。 Web 角色用于以交互方式提交拆分/合并请求。 用户界面的主要组件如下：
 
 - **操作类型**
 
@@ -183,7 +183,7 @@ ms.locfileid: "73690190"
 
 ### <a name="status-tables"></a>状态表
 
-拆分/合并服务在元数据存储数据库中提供用于监视已完成和正在进行的请求的 **RequestStatus** 表。 该表将为已提交到拆分/合并服务的此实例的每个拆分/合并请求列出一行。 它将为每个请求提供以下信息：
+拆分 / 合并服务在元数据存储数据库中为已完成和正在进行的请求提供 **RequestStatus** 表。 该表将为已提交到拆分/合并服务的此实例的每个拆分/合并请求列出一行。 它将为每个请求提供以下信息：
 
 - **Timestamp**
 
@@ -193,7 +193,7 @@ ms.locfileid: "73690190"
 
   唯一标识请求的 GUID。 此请求也可用于取消仍在进行的操作。
 
-- **状态**
+- **Status**
 
   该请求的当前状态。 对于正在进行的请求，它还会列出请求所在的当前阶段。
 
@@ -258,7 +258,7 @@ ms.locfileid: "73690190"
 1. 请按照[部署拆分 / 合并服务](sql-database-elastic-scale-configure-deploy-split-and-merge.md)中的步骤进行操作。
 2. 更改拆分/合并部署的云服务配置文件，以反映新的配置参数。 新的必需参数是用于加密的证书的相关信息。 执行此操作的简单方法是将下载的新配置模板文件与现有配置进行比较。 请确保添加 Web 和辅助角色的“DataEncryptionPrimaryCertificateThumbprint”与“DataEncryptionPrimary”设置。
 3. 将更新部署到 Azure 之前，请确保当前运行的所有拆分/合并操作都已完成。 做法很简单，可以针对进行中的请求，查询拆分/合并元数据数据库中的 RequestStatus 和 PendingWorkflows 表。
-4. 使用新程序包和更新的服务配置文件，在 Azure 订阅中更新拆分/合并的现有云服务部署。
+4. 使用新包和更新后服务配置文件为 Azure 订阅中的拆分 / 合并更新现有云服务部署。
 
 无需设置新的元数据数据库，即可升级拆分/合并。 新版本会自动将现有的元数据数据库升级到新版本。
 

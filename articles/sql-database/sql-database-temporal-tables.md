@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库中的临时表入门
+title: 与时态表入门
 description: 了解如何开始使用 Azure SQL 数据库中的临时表。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: 44a5589357301f979bb094579626e1c02e582846
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 98fd2658f3fbcb0e7e29114d29f8dc6ed39eedf2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686978"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820725"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Azure SQL 数据库中的临时表入门
 
@@ -64,9 +64,9 @@ CREATE TABLE WebsiteUserInfo
  WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.WebsiteUserInfoHistory));
 ```
 
-创建版本由系统控制的时态表时，会自动创建随附默认配置的历史记录表。 默认历史记录表包含期限列（结束、开始）上启用页压缩的聚集 B 树索引。 此配置非常适合使用临时表的大部分方案，特别是用于 [数据审核](https://msdn.microsoft.com/library/mt631669.aspx#Anchor_0)。 
+创建版本由系统控制的时态表时，会自动创建随附默认配置的历史记录表。 默认历史记录表包含期限列（结束、开始）上启用页压缩的聚集 B 树目录索引。 此配置非常适合使用时态表的大部分方案，特别是用于[数据审核](https://msdn.microsoft.com/library/mt631669.aspx#Anchor_0)。 
 
-在此特定案例中，我们的目标是针对一段较长的数据历史记录以及较大的数据集，执行基于时间的趋势分析，因此历史记录表的存储选择为聚集列存储索引。 聚集列存储为分析查询提供极佳的压缩和性能。 临时表允许灵活且完全独立地在当前表和临时表中配置索引。 
+在此特定案例中，我们的目标是针对一段较长的数据历史记录以及较大的数据集，执行基于时间的趋势分析，因此历史记录表的存储选择为聚集列存储索引。 聚集列存储为分析查询提供极佳的压缩和性能。 时态表允许灵活且完全独立地在当前表和时态表中配置索引。 
 
 > [!NOTE]
 > 高级层、标准层、S3 及更高版本中提供列存储索引。
@@ -106,7 +106,7 @@ WITH (DROP_EXISTING = ON);
 ```
 
 ## <a name="step-2-run-your-workload-regularly"></a>步骤 2：定期运行工作负荷
-临时表的主要优点是，不需要以任何方式更改或调整网站就可以执行更改跟踪。 创建临时表后，每对数据进行修改时，会自动保存以前的行版本。 
+临时表的主要优点是不需要以任何方式更改或调整网站就可以执行更改跟踪。 创建临时表后，每对数据进行修改时，会自动保存以前的行版本。 
 
 若要对此特定方案使用自动更改跟踪，只需在每次用户结束网站上的会话时更新列**PagesVisited** ：
 
@@ -177,7 +177,7 @@ ALTER TABLE dbo.WebsiteUserInfo
     ALTER COLUMN  UserName nvarchar(256) NOT NULL;
 ```
 
-最后，可删除不再需要的列。
+最后，可以删除不再需要的列。
 
 ```
 /*Drop unnecessary column */

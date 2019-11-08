@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: f7f8c94504eef1023939ed41aa6124baef354e39
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 16de2054864a42d978d149353a89d65e8de7d155
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "72791590"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605691"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
@@ -85,7 +85,7 @@ ms.locfileid: "72791590"
     
      选择“创建群集”。  群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
-有关创建群集的详细信息，请参阅[在 Azure Databricks 中创建 Spark 群集](https://docs.azuredatabricks.net/user-guide/clusters/create.html)。
+有关创建群集的详细信息，请参阅[在 Azure Databricks 中创建 Spark 群集](/azure/databricks/clusters/create)。
 
 ## <a name="run-a-spark-sql-job"></a>运行 Spark SQL 作业
 
@@ -164,7 +164,7 @@ ms.locfileid: "72791590"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，我们已在 Azure Databricks 中创建一个 Spark 群集，并使用 Azure 开放数据集中的数据运行了一个 Spark 作业。 我们还可以查看 [Spark 数据源](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)，了解如何将其他数据源中的数据导入 Azure Databricks。 请继续学习下一篇文章，了解如何使用 Azure Databricks 执行 ETL（提取、转换和加载数据）操作。
+在本文中，我们已在 Azure Databricks 中创建一个 Spark 群集，并使用 Azure 开放数据集中的数据运行了一个 Spark 作业。 我们还可以查看 [Spark 数据源](/azure/databricks/data/data-sources/index.html)，了解如何将其他数据源中的数据导入 Azure Databricks。 请继续学习下一篇文章，了解如何使用 Azure Databricks 执行 ETL（提取、转换和加载数据）操作。
 
 > [!div class="nextstepaction"]
 >[使用 Azure Databricks 提取、转换和加载数据](databricks-extract-load-sql-data-warehouse.md)

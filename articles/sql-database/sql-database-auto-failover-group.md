@@ -1,5 +1,5 @@
 ---
-title: 故障转移组-Azure SQL 数据库
+title: 故障转移组
 description: 自动故障转移组是一项 SQL 数据库功能，可便于管理 SQL 数据库服务器中一组数据库或托管实例中所有数据库的复制和自动/协调式故障转移。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 10/23/2019
-ms.openlocfilehash: 70c8bb618cd25c21d6cc59dde305fff113ffe22f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 88bcee1cbb23bf298c5ad3920a7744d8da6ce3fb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691161"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821956"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 
@@ -237,7 +237,7 @@ ms.locfileid: "73691161"
 
 - **可应对数据丢失的问题**
 
-  如果检测到服务中断，则 SQL 将自动触发读写故障转移是否我们的知识的最佳零数据丢失。 否则，它会等待 `GracePeriodWithDataLossHours` 指定的期限。 如果指定了 `GracePeriodWithDataLossHours`，则可能会丢失数据。 一般情况下，在中断期间 Azure 倾向于可用性。 如果不能承受丢失数据，请务必将 GracePeriodWithDataLossHours 设置为一个足够大的数字，例如 24 小时。
+  如果检测到服务中断，则 SQL 会自动触发读写故障转移是否我们的知识的最佳零数据丢失。 否则，它会等待 `GracePeriodWithDataLossHours` 指定的期限。 如果指定了 `GracePeriodWithDataLossHours`，则可能会丢失数据。 一般情况下，在中断期间 Azure 倾向于可用性。 如果不能承受丢失数据，请务必将 GracePeriodWithDataLossHours 设置为一个足够大的数字，例如 24 小时。
 
   启动故障转移后，读写侦听器的 DNS 更新会立即发生。 此操作不会导致数据丢失。 但是，在正常情况下，切换数据库角色的过程可能需要 5 分钟时间。 在完成之前，新主要实例中的某些数据库仍是只读的。 如果使用 PowerShell 启动故障转移，则整个操作是同步的。 如果使用 Azure 门户启动故障转移，UI 将指示完成状态。 如果使用 REST API 启动故障转移，可以使用标准 Azure 资源管理器的轮询机制来监视完成状态。
 
@@ -382,11 +382,11 @@ ms.locfileid: "73691161"
     - [将单一数据库添加到故障转移组](sql-database-single-database-failover-group-tutorial.md)
     - [将弹性池添加到故障转移组](sql-database-elastic-pool-failover-group-tutorial.md)
     - [将托管实例添加到故障转移组](sql-database-managed-instance-failover-group-tutorial.md)
-- 有关示例脚本，请参阅：
+- 示例脚本请参阅：
   - [使用 PowerShell 为 Azure SQL 数据库中的单一数据库配置活动异地复制](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
   - [使用 PowerShell 为 Azure SQL 数据库中的共用数据库配置活动异地复制](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
   - [使用 PowerShell 将 Azure SQL 数据库单一数据库添加到故障转移组](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
-- 有关业务连续性概述和应用场景，请参阅 [业务连续性概述](sql-database-business-continuity.md)
+- 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)
 - 若要了解 Azure SQL 数据库的自动备份，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)。
 - 若要了解如何使用自动备份进行恢复，请参阅[从服务启动的备份中还原数据库](sql-database-recovery-using-backups.md)。
-- 若要了解新主服务器和数据库的身份验证要求，请参阅 [灾难恢复后的 SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
+- 若要了解新主服务器和数据库的身份验证要求，请参阅[灾难恢复后的 SQL 数据库安全性](sql-database-geo-replication-security-config.md)。

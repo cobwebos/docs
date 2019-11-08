@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: e7516fffb4aa8806062655e39c591e4691e779b1
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 9a5e060d6248d3144720930fe960e0a371a73d6e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959115"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822268"
 ---
 # <a name="egress-and-endpoints"></a>出口和终结点
 
@@ -23,7 +23,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 
 若要详细了解事件、路由和事件类型，请参阅[在 Azure 数字孪生中路由事件和消息](./concepts-events-routing.md)。
 
-## <a name="events"></a>Events
+## <a name="events"></a>事件
 
 事件由 IoT 对象（例如设备和传感器）发送，由 Azure 消息和事件代理进行处理。 事件是通过以下 [Azure 事件网格事件架构参考](../event-grid/event-schema.md)定义的。
 
@@ -47,21 +47,21 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| 特性 | 类型 | 描述 |
+| 属性 | 类型 | 说明 |
 | --- | --- | --- |
-| ID | string | 事件的唯一标识符。 |
-| subject | string | 事件主题的发布者定义路径。 |
-| data | object | 特定于资源提供程序的事件数据。 |
-| eventType | string | 此事件源的一个注册事件类型。 |
-| eventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
-| topic | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| id | 字符串 | 事件的唯一标识符。 |
+| subject | 字符串 | 事件主题的发布者定义路径。 |
+| 数据 | 对象 | 特定于资源提供程序的事件数据。 |
+| eventType | 字符串 | 此事件源的一个注册事件类型。 |
+| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
+| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 
 有关事件网格事件架构的详细信息：
 
 - 请查看 [Azure 事件网格事件架构参考](../event-grid/event-schema.md)。
-- 请阅读 [Azure 事件网格 Node.js SDK EventGridEvent 参考](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest)。
+- 请阅读 [Azure 事件网格 Node.js SDK EventGridEvent 参考](https://docs.microsoft.com/javascript/api/@azure/eventgrid/eventgridevent?view=azure-node-latest)。
 
 ## <a name="event-types"></a>事件类型
 
@@ -96,7 +96,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 - SpaceResource
 - SpaceRoleAssignment
 - 系统
-- “用户”
+- 用户
 - UserBlobMetadata
 - UserExtendedProperty
 
@@ -122,7 +122,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| ReplTest1 | 替换为 |
+| 值 | 替换为 |
 | --- | --- |
 | YOUR_TOPIC_NAME | 自定义主题的名称 |
 
@@ -153,7 +153,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| ReplTest1 | 替换为 |
+| 值 | 替换为 |
 | --- | --- |
 | YOUR_TOPIC_NAME | 自定义主题的名称 |
 
@@ -188,7 +188,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| ReplTest1 | 替换为 |
+| 值 | 替换为 |
 | --- | --- |
 | YOUR_TOPIC_NAME | 自定义主题的名称 |
 
@@ -223,7 +223,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| ReplTest1 | 替换为 |
+| 值 | 替换为 |
 | --- | --- |
 | YOUR_TOPIC_NAME | 自定义主题的名称 |
 
@@ -268,7 +268,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | ReplTest1 | 替换为 |
+    | 值 | 替换为 |
     | --- | --- |
     | YOUR_NAMESPACE | 终结点的命名空间 |
     | YOUR_PRIMARY_KEY | 用于进行身份验证的主要连接字符串 |
@@ -291,7 +291,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | ReplTest1 | 替换为 |
+    | 值 | 替换为 |
     | --- | --- |
     | YOUR_PRIMARY_KEY | 用于进行身份验证的主要连接字符串|
     | YOUR_SECONDARY_KEY | 用于进行身份验证的次要连接字符串 |
@@ -313,14 +313,14 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | ReplTest1 | 替换为 |
+    | 值 | 替换为 |
     | --- | --- |
     | YOUR_NAMESPACE | 终结点的命名空间 |
     | YOUR_PRIMARY_KEY | 用于进行身份验证的主要连接字符串 |
     | YOUR_SECONDARY_KEY | 用于进行身份验证的次要连接字符串 |
     | YOUR_EVENT_HUB_NAME | 事件中心的名称 |
 
-- 路由到事件中心事件类型 **DeviceMessage**。 必须在 **connectionString** 中包含 `EntityPath`：
+- 路由到事件中心事件类型 **DeviceMessage**。 必须在 `EntityPath`connectionString**中包含**：
 
   ```JSON
   {
@@ -334,7 +334,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | ReplTest1 | 替换为 |
+    | 值 | 替换为 |
     | --- | --- |
     | YOUR_NAMESPACE | 终结点的命名空间 |
     | YOUR_PRIMARY_KEY | 用于进行身份验证的主要连接字符串 |

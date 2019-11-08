@@ -1,26 +1,27 @@
 ---
-title: SaaS 履行 Api v1 |Azure Marketplace
-description: 介绍如何创建和管理使用关联的履行 v1 Api 在 Azure Marketplace 上的 SaaS 产品/服务。
+title: SaaS 履单 Api v1 |Azure Marketplace
+description: 介绍如何使用关联的履行 v1 Api 在 Azure Marketplace 上创建和管理 SaaS 产品/服务。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
 ROBOTS: NOINDEX
-ms.openlocfilehash: 78162983601e9126bd34cb737e74783df982bacb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 99dd6db7003e0358ddde2438f6897cd767932227
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258934"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816565"
 ---
-# <a name="saas-fulfillment-apis-version-1-deprecated"></a>SaaS 履行 Api 版本 1 （已弃用）
+# <a name="saas-fulfillment-apis-version-1-deprecated"></a>SaaS 履单 Api 版本1（不推荐使用）
 
-本文介绍如何使用 API 创建 SaaS 套餐。 不需要允许对 SaaS 产品/服务的订阅，如果你已通过所选的 Azure 销售的产品的 Api，REST 方法和终结点，组成。  
+本文介绍如何使用 API 创建 SaaS 套餐。 如果已选择 "通过 Azure 进行销售"，则需要使用由 REST 方法和终结点组成的 Api 来允许订阅 SaaS 产品。  
 
 > [!WARNING]
-> 此初始版本的 SaaS 履行 API 已弃用;请改用[SaaS 履行 API V2](./pc-saas-fulfillment-api-v2.md)。  当前正在维护此初始版本的 API 仅用于现有发布服务器。 
+> 此初始版本的 SaaS 履单 API 已弃用;请改用[SaaS 履单 API V2](./pc-saas-fulfillment-api-v2.md)。  此 API 的初始版本当前仅为提供给现有发布者提供服务。 
 
 以下 API 可帮助你将 SaaS 服务与 Azure 相集成：
 
@@ -46,7 +47,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 用户针对解析终结点执行 POST 操作可将市场令牌解析为永久性资源 ID。  资源 ID 是 SAAS 订阅的唯一标识符。 
 
-当用户重定向到 ISV 的网站时，URL 将在查询参数中包含一个令牌。 ISV 应当使用此令牌，并发出请求来解析它。 响应包含资源的唯一 SAAS 订阅 ID、名称、产品/服务 ID 和计划。 此令牌的有效期仅为一小时。
+将用户重定向到 ISV 的网站时，URL 在查询参数中包含一个令牌。 ISV 应当使用此令牌，并发出请求来解析它。 响应包含资源的唯一 SAAS 订阅 ID、名称、产品/服务 ID 和计划。 此令牌的有效期仅为一小时。
 
 *请求*
 
@@ -65,14 +66,14 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | **标头密钥**     | **必需** | **说明**                                                                                                                                                                                                                  |
 |--------------------|--------------|-----------------------------------------------------------|
 | x-ms-requestid     | 否           | 唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
-| x-ms-correlationid | 否           | 在客户端上执行的操作的唯一字符串值。 此字段将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
+| x-ms-correlationid | 否           | 在客户端上执行的操作的唯一字符串值。 此字段将客户端操作的所有事件与服务器端上的事件关联起来。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 | Content-type       | 是          | `application/json`                                        |
 | authorization      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
-| x-ms-marketplace-token| 是| 将用户从 Azure 重定向到 SaaS ISV 网站时 URL 中的令牌查询参数。 **注意：** 此令牌仅在 1 小时内有效。 此外，URL 会对来自浏览器的令牌值进行解码，然后再使用它。|
+| x-ms-marketplace-token| 是| 当用户从 Azure 重定向到 SaaS ISV 的网站时，URL 中的令牌查询参数。 **注意：** 此令牌的有效时间仅为1小时。 此外，URL 会对来自浏览器的令牌值进行解码，然后再使用它。|
 |  |  |  |
   
 
-响应正文 
+响应正文
 
 ``` json
 {
@@ -92,7 +93,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 |  |  |  |
 
 
-响应代码 
+响应代码
 
 | **HTTP 状态代码** | **错误代码**     | **说明**                                                                         |
 |----------------------|--------------------| --------------------------------------------------------------------------------------- |
@@ -104,13 +105,13 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 |  |  |  |
 
 
-响应标头 
+响应标头
 
 | **标头密钥**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | 是          | 从客户端收到的请求 ID。                                                                   |
 | x-ms-correlationid | 是          | 如果由客户端传递，则为关联 ID，否则此值为服务器关联 ID。                   |
-| x-ms-activityid    | 是          | 唯一的字符串值，用于跟踪来自服务的请求。 此 ID 用于任何对帐单。 |
+| x-ms-activityid    | 是          | 唯一的字符串值，用于跟踪来自服务的请求。 此 ID 用于任何对帐。 |
 | Retry-After        | 否           | 仅为 429 响应设置此值。                                                                   |
 |  |  |  |
 
@@ -125,7 +126,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 | **参数名称**  | **说明**                                       |
 |---------------------|-------------------------------------------------------|
-| subscriptionId      | 解决通过解决 API 令牌后获取的唯一 ID 的 SaaS 订阅。                              |
+| subscriptionId      | 在通过解析 API 解析令牌后获取的 SaaS 订阅的唯一 ID。                              |
 | api-version         | 用于此请求的操作的版本。 |
 |  |  |
 
@@ -138,7 +139,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | If-Match/If-None-Match |   否         |   强验证程序 ETag 值。                                                          |
 | content-type           |   是        |    `application/json`                                                                   |
 |  authorization         |   是        |    JSON Web 令牌 (JWT) 持有者令牌。                                               |
-| x-ms-marketplace-session-mode| 否 | 订阅 SaaS 套餐时用于启用试运行模式的标志。 如果已设置，则订阅是免费的。 此值可用于 ISV 测试方案。 请将其设置为 **‘dryrun’**|
+| x-ms-marketplace-session-mode| 否 | 订阅 SaaS 套餐时用于启用试运行模式的标志。 如果已设置，则订阅是免费的。 此值可用于 ISV 测试方案。 请将其设置为 **"dryrun"**|
 |  |  |  |
 
 *正文*
@@ -151,10 +152,10 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 | **元素名称** | **数据类型** | **说明**                      |
 |------------------|---------------|--------------------------------------|
-| planId           | （必需）字符串        | 订阅 SaaS 服务用户的计划 ID。  |
+| planId           | （必需）字符串        | SaaS 服务用户正在订阅的计划 ID。  |
 |  |  |  |
 
-响应代码 
+响应代码
 
 | **HTTP 状态代码** | **错误代码**     | **说明**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
@@ -167,9 +168,9 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | 503                  | `ServiceUnavailable` | 服务暂时关闭，请稍后重试。                          |
 |  |  |  |
 
-对于 202 响应，请跟踪“Operation-location”标头中的请求操作状态。 身份验证与其他市场 API 相同。
+对于202响应，请在 "操作位置" 标头上跟进请求操作的状态。 身份验证与其他市场 API 相同。
 
-响应标头 
+响应标头
 
 | **标头密钥**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
@@ -215,10 +216,10 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 |  **元素名称** |  **数据类型**  | **说明**                              |
 |  ---------------- | -------------   | --------------------------------------       |
-|  planId           |  （必需）字符串         | 订阅 SaaS 服务用户的计划 ID。          |
+|  planId           |  （必需）字符串         | SaaS 服务用户正在订阅的计划 ID。          |
 |  |  |  |
 
-响应代码 
+响应代码
 
 | **HTTP 状态代码** | **错误代码**     | **说明**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
@@ -231,7 +232,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | 503                  | `ServiceUnavailable` | 服务暂时关闭，请稍后重试。                          |
 |  |  |  |
 
-响应标头 
+响应标头
 
 | **标头密钥**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
@@ -267,7 +268,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | authorization      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
 |  |  |  |
 
-响应代码 
+响应代码
 
 | **HTTP 状态代码** | **错误代码**     | **说明**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
@@ -279,9 +280,9 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | 503                  | `ServiceUnavailable` | 服务暂时关闭。 请稍后重试。                          |
 |  |  |  |
 
-对于 202 响应，请跟踪“Operation-location”标头中的请求操作状态。 身份验证与其他市场 API 相同。
+对于202响应，请在 "操作位置" 标头上跟进请求操作的状态。 身份验证与其他市场 API 相同。
 
-响应标头 
+响应标头
 
 | **标头密钥**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
@@ -317,7 +318,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | authorization      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
 |  |  |  | 
 
-响应正文 
+响应正文
 
 ```json
 {
@@ -332,25 +333,25 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | **参数名称** | **数据类型** | **说明**                                                                                                                                               |
 |--------------------|---------------|-------------------------------------------------------------------------------------------|
 | id                 | String        | 操作的 ID。                                                                      |
-| status             | Enum          | 操作状态，值为下列其中一项：`In Progress`、`Succeeded` 或 `Failed`。          |
+| status             | 枚举          | 操作状态，值为下列其中一项：`In Progress`、`Succeeded` 或 `Failed`。          |
 | resourceLocation   | String        | 链接到已创建或修改的订阅。 这可以帮助客户端获取更新的状态发布操作。 不会对 `Unsubscribe` 操作设置此值。 |
 | created            | DateTime      | 操作创建时间 (UTC)。                                                           |
 | lastModified       | DateTime      | 上次更新操作的时间 (UTC)。                                                      |
 |  |  |  |
 
-响应代码 
+响应代码
 
 | **HTTP 状态代码** | **错误代码**     | **说明**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
 | 200                  | `OK`                 | 已成功解析 Get 请求，且正文包含响应。    |
 | 400                  | `BadRequest`         | 缺少必需的标头，或指定了无效的 api-version。 |
 | 403                  | `Forbidden`          | 调用方无权执行此操作。                      |
-| 404                  | `NotFound`           | 使用给定的 id。 找不到订阅                                     |
+| 404                  | `NotFound`           | 找不到具有给定 ID 的订阅。                                     |
 | 429                  | `RequestThrottleId`  | 服务正忙于处理请求，请稍后重试。                     |
 | 503                  | `ServiceUnavailable` | 服务暂时关闭，请稍后重试。                             |
 |  |  |  |
 
-响应标头 
+响应标头
 
 | **标头密钥**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
@@ -385,7 +386,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | authorization      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                                                                    |
 |  |  |  |
 
-响应正文 
+响应正文
 
 ```json
 {
@@ -405,12 +406,12 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | offerId                | String        | 用户订阅的套餐 ID。         |
 | planId                 | String        | 用户订阅的计划 ID。          |
 | saasSubscriptionName   | String        | SaaS 订阅的名称。                |
-| saasSubscriptionStatus | Enum          | 操作状态。  下列类型作之一：  <br/> - `Subscribed`：订阅处于活动状态。  <br/> - `Pending`：用户创建了资源，但 ISV 尚未激活该资源。   <br/> - `Unsubscribed`：用户已取消订阅。   <br/> - `Suspended`：用户已暂停订阅。   <br/> - `Deactivated`：Azure 订阅已暂停。  |
+| saasSubscriptionStatus | 枚举          | 操作状态。  下列类型作之一：  <br/> - `Subscribed`：订阅处于活动状态。  <br/> - `Pending`：用户创建了资源，但 ISV 尚未激活该资源。   <br/> - `Unsubscribed`：用户已取消订阅。   <br/> - `Suspended`：用户已暂停订阅。   <br/> - `Deactivated`：Azure 订阅已暂停。  |
 | created                | DateTime      | 订阅创建时间戳值 (UTC)。 |
 | lastModified           | DateTime      | 订阅修改时间戳值 (UTC)。 |
 |  |  |  |
 
-响应代码 
+响应代码
 
 | **HTTP 状态代码** | **错误代码**     | **说明**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
@@ -422,7 +423,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | 503                  | `ServiceUnavailable` | 服务暂时关闭，请稍后重试。                             |
 |  |  |  |
 
-响应标头 
+响应标头
 
 | **标头密钥**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
@@ -457,7 +458,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | authorization      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
 |  |  |  |
 
-响应正文 
+响应正文
 
 ```json
 {
@@ -473,16 +474,16 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 | **参数名称**     | **数据类型** | **说明**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | String        | 在 Azure 中的 ID 的 SaaS 订阅资源    |
-| offerId                | String        | 用户订阅产品/服务 ID         |
+| id                     | String        | Azure 中的 SaaS 订阅资源的 ID    |
+| offerId                | String        | 用户订阅的产品 ID         |
 | planId                 | String        | 用户订阅的计划 ID          |
 | saasSubscriptionName   | String        | SaaS 订阅的名称                |
-| saasSubscriptionStatus | Enum          | 操作状态。  下列类型作之一：  <br/> - `Subscribed`：订阅处于活动状态。  <br/> - `Pending`：用户创建了资源，但 ISV 尚未激活该资源。   <br/> - `Unsubscribed`：用户已取消订阅。   <br/> - `Suspended`：用户已暂停订阅。   <br/> - `Deactivated`：Azure 订阅已暂停。  |
-| created                | DateTime      | Utc 格式的订阅创建时间戳值 |
-| lastModified           | DateTime      | 订阅修改以 UTC 时间戳值 |
+| saasSubscriptionStatus | 枚举          | 操作状态。  下列类型作之一：  <br/> - `Subscribed`：订阅处于活动状态。  <br/> - `Pending`：用户创建了资源，但 ISV 尚未激活该资源。   <br/> - `Unsubscribed`：用户已取消订阅。   <br/> - `Suspended`：用户已暂停订阅。   <br/> - `Deactivated`：Azure 订阅已暂停。  |
+| created                | DateTime      | UTC 格式的订阅创建时间戳值 |
+| lastModified           | DateTime      | 订阅修改了 UTC 格式的时间戳值 |
 |  |  |  |
 
-响应代码 
+响应代码
 
 | **HTTP 状态代码** | **错误代码**     | **说明**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
@@ -494,7 +495,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | 503                  | `ServiceUnavailable` | 服务暂时关闭。 请稍后重试。                             |
 |  |  |  |
 
-响应标头 
+响应标头
 
 | **标头密钥**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
@@ -528,7 +529,7 @@ SaaS webhook 用于主动将更改通知给 SaaS 服务。 此 POST API 应当�
 | subscriptionId                     | String        | Azure 中 SaaS 订阅资源的 ID。    |
 | offerId                | String        | 用户订阅的套餐 ID。 仅随“更新”操作提供。        |
 | publisherId                | String        | SaaS 产品/服务的发布者 ID         |
-| planId                 | String        | 用户订阅的计划 ID。 仅随“Update”操作提供。          |
+| planId                 | String        | 用户订阅的计划 ID。 仅随“更新”操作提供。          |
 | action                 | String        | 触发此通知的操作。 可能的值 - Activate、Delete、Suspend、Reinstate、Update          |
 | timeStamp                 | String        | 此通知的触发时间的时间戳值（采用 UTC 格式）。          |
 |  |  |  |
@@ -536,4 +537,4 @@ SaaS webhook 用于主动将更改通知给 SaaS 服务。 此 POST API 应当�
 
 ## <a name="next-steps"></a>后续步骤
 
-开发人员可以以编程方式检索和操作工作负荷，产品/服务，并且发布者配置文件使用[云合作伙伴门户 REST Api](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)。
+开发人员还可以使用[云合作伙伴门户 REST api](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)以编程方式检索和操作工作负荷、产品/服务和发布者配置文件。

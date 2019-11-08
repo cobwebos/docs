@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: e45346ce8bd23ea8431faf8a123d57ecdee71606
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9a2e8b37f746eb86b2e0fe6a7304cd888a293e1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937875"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823036"
 ---
 # <a name="requirements-by-listing-type"></a>按商品信息类型列出的要求  
 技术和营销内容要求因店面、产品/服务类型和商品信息类型而异。 请查看以下规范，以确认是否合规。  
@@ -33,7 +34,7 @@ ms.locfileid: "64937875"
 | ***受众*** | 应用必须适用于业务线用户和业务所有者。 | 必选 | 
 | ***适合企业的软件即服务 (SaaS) 应用*** | 应用必须满足以下要求。<ul> <li>是业务线 SaaS 应用</li> <li>专注于业务流程</li> <li>以企业客户为目标</li> <li>允许用户使用其工作凭据（用户名和密码）登录</li> </ul> | 必选 |  
 | ***免费试用期和试用体验*** | 应用必须包含以下选项之一，使客户能够在有限的时间内免费使用你的应用。<ul> <li>提供 `try` 选项，使客户能够在 AppSource 中开始试用应用</li> <li>在 AppSource 中提供 `request trial` 选项，使客户能够请求应用的试用版</li> </ul>提供的免费试用版必须为客户提供一段预先规定的时间让他们试用应用，且不收取额外的费用。 | 必选 |  
-| ***可轻松配置、随时可用的解决方案*** | 应用的配置和设置必须便捷，不需要自定义。 | 需要 |  
+| ***可轻松配置、随时可用的解决方案*** | 应用的配置和设置必须便捷，不需要自定义。 | 必选 |  
 | ***潜在客户管理*** | 在从店面收获商机之前，请启用 CRM 来接收潜在顾客数据。<ul> <li>CRM 的例子包括 Marketo、Microsoft Dynamics 或 Salesforce</li> </ul> | 必选 |  
 | ***隐私策略和使用条款*** | 应用必须使用公共 URL 提供隐私政策页面的链接。 发布期间必须以文本形式提供使用条款。 | 必选 |  
 | ***支持*** | 应用必须使用公共 URL 提供客户支持页面的链接。 如果应用是试用版，则必须在试用期间提供支持，且不收取额外的费用。 | 必选 |  
@@ -58,10 +59,10 @@ ms.locfileid: "64937875"
 
 | 产品/服务类型 | 店面 | 详细信息 |  
 |:---        |:---        |:---     |  
-| 咨询服务 | AppSource | 要求：AppSource：列表：咨询服务 |  
-| 咨询服务 | Azure 市场 | 要求：Azure 市场：列表：咨询服务 |  
+| 咨询服务 | AppSource | 要求： AppSource： List：咨询服务 |  
+| 咨询服务 | Azure 市场 | 要求： Azure Marketplace： List：咨询服务 |  
 | 与我联系 | AppSource | [](#) |  
-| 与我联系 | Azure 市场 | 要求：AppSource：列表：与我联系 |  
+| 与我联系 | Azure 市场 | 要求： AppSource： List：联系我们 |  
 
 #### <a name="requirements-appsource-list-consulting-service"></a>要求：AppSource：列表：咨询服务  
 
@@ -85,18 +86,18 @@ ms.locfileid: "64937875"
 
 | 产品/服务类型 | 店面 | 详细信息 |  
 |:---        |:---        |:---     |  
-| 免费/SaaS 试用 | AppSource | 商品类型要求：试用 |  
+| 免费/SaaS 试用 | AppSource | 列出类型要求：试用 |  
 | 免费/SaaS 试用 | Azure 市场 | 要求：Azure 市场：试用：免费试用/SaaS 试用 |  
-| 互动演示 | AppSource | 商品类型要求：试用 |  
+| 互动演示 | AppSource | 列出类型要求：试用 |  
 | 互动演示 | Azure 市场 | [要求：Azure 市场：试用：互动演示](#requirements-azure-marketplace-trial-interactive-demo) |  
-| 体验版 | AppSource | 商品类型要求：试用 |  
+| 体验版 | AppSource | 列出类型要求：试用 |  
 | 体验版 | Azure 市场 | [要求：Azure 市场：试用：体验版](#requirements-azure-marketplace-trial-test-drive) |  
 
 #### <a name="requirements-azure-marketplace-trial"></a>要求：Azure 市场：试用  
 
 | 要求 | 详细信息 |  
 |:--- |:--- |  
-| 免费试用期和试用体验 | 客户可以在有限时间内免费使用你的应用。<br /><br />客户不需要支付产品/服务或应用的任何许可证或订阅费用。 客户不需要支付基础 Microsoft 第一方产品或服务的费用。 所有试用选项部署到 Azure 订阅。 你可以独自控制成本优化和管理功能的试用版。<br /><br />可以选择免费试用、互动演示或体验版。 不管选择哪种，都必须向客户提供规定时间的免费应用试用。<ul> <li>若要开始创建体验版，请向 [amp-testdrive@microsoft.com](mailto:amp-testdrive@microsoft.com) 发送电子邮件。</li> </ul>请注意:Azure 市场 SaaS 试用体验必须允许用户使用工作凭据登录。<ul> <li>有关详细信息，请访问 [docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences) 上的 AppSource 试用体验部分。</li> </ul> |  
+| 免费试用期和试用体验 | 客户可以在有限时间内免费使用你的应用。<br /><br />客户不需要支付产品/服务或应用的任何许可证或订阅费用。 客户不需要支付基础 Microsoft 第一方产品或服务的费用。 所有试用选项部署到 Azure 订阅。 你可以独自控制成本优化和管理功能的试用版。<br /><br />可以选择免费试用、互动演示或体验版。 不管选择哪种，都必须向客户提供规定时间的免费应用试用。<ul> <li>若要开始创建体验版，请向 [amp-testdrive@microsoft.com](mailto:amp-testdrive@microsoft.com) 发送电子邮件。</li> </ul>请注意：Azure 市场 SaaS 试用体验必须允许用户使用工作凭据登录。<ul> <li>有关详细信息，请访问 [docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences) 上的 AppSource 试用体验部分。</li> </ul> |  
 | 可轻松配置、随时可用的解决方案 | 应用的配置和设置须便捷。 |  
 | 可用性/运行时间 | SaaS 应用或平台的运行时间须不低于 99.9%。 |  
 | Azure Active Directory | 在已启用许可的情况下，产品/服务须允许使用 Azure Active Directory (Azure AD) 联合单一登录 (SSO)（Azure AD 联合 SSO）。 |  
@@ -148,7 +149,7 @@ ms.locfileid: "64937875"
 
 | 要求 | 详细信息 |  
 |:--- |:--- |  
-| 计费和计量 | 产品/服务按固定月费定价。 目前不支持基于用量的定价和基于用量的“校准”选项。  |  
+| 计费和计量 | 产品/服务按固定月费定价。 目前不支持基于用量的定价和基于用量的“校准”选项。 |  
 | 取消 | 客户可以随时取消你的产品/服务。 |  
 | 事务登陆页 | 托管 Azure 联合品牌的事务登陆页。 登陆页可让客户创建和管理 SaaS 服务帐户。 |  
 | SaaS 订阅 API | 提供一个服务用来与 SaaS 订阅交互，以创建、更新和删除用户帐户和服务计划。 必须在 24 小时内支持所有关键 API 更改。 所有非关键 API 更改将定期更新。 |  
@@ -161,5 +162,5 @@ ms.locfileid: "64937875"
 | 与 Azure 兼容的虚拟硬盘 (VHD) | 必须基于 Windows 或 Linux 构建 VM。<ul> <li>有关创建 Linux VHD 的详细信息，请参阅 [Azure 认可的 Linux 发行版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。</li> <li>有关创建 Windows VHD 的详细信息，请参阅[创建与 Azure 兼容的 VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)。</li> </ul> |  
 
 ## <a name="next-steps"></a>后续步骤
-*   访问 [Azure 市场和 AppSource 发布者指南](./marketplace-publishers-guide.md)页。  
+*   访问 [Azure 市场和 AppSource 发布者指南](./marketplace-publishers-guide.md)页面。  
 

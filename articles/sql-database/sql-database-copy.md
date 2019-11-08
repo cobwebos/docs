@@ -1,5 +1,5 @@
 ---
-title: 复制 Azure SQL 数据库
+title: 复制数据库
 description: 在相同或不同的服务器上创建现有 Azure SQL 数据库的事务一致性副本。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 09/04/2019
-ms.openlocfilehash: d49896d8088ae1352cb2785d061cde6c8647cb89
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ebf63d14a8fb883158d1ac3e0a8f3d6658920aa7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690802"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826656"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>复制 Azure SQL 数据库的事务一致性副本
 
@@ -24,7 +24,7 @@ ms.locfileid: "73690802"
 
 ## <a name="overview"></a>概述
 
-数据库副本是源数据库截至复制请求发出时的快照。 你可以选择同一服务器或不同的服务器。 另外，你还可以选择保留其服务层级和计算大小，或在同一服务层级中使用不同的计算大小（版本）。 在完成该复制后，副本将成为能够完全行使功能的独立数据库。 此时，可以将其升级或降级为任何版本。 登录名、用户和权限可单独进行管理。 副本是使用异地复制技术创建的，一旦种子设定完成，异地复制链接就会自动终止。 使用异地复制的所有要求都适用于数据库复制操作。 有关详细信息，请参阅[活动异地复制概述](sql-database-active-geo-replication.md)。
+数据库副本是源数据库截至复制请求发出时的快照。 你可以选择同一服务器或不同的服务器。 另外，你还可以选择保留其服务层级和计算大小，或在同一服务层级中使用不同的计算大小（版本）。 在完成该复制后，副本将成为能够完全行使功能的独立数据库。 此时，可以升级或降级到任意版本。 登录名、用户和权限可单独进行管理。 副本是使用异地复制技术创建的，一旦种子设定完成，异地复制链接就会自动终止。 使用异地复制的所有要求都适用于数据库复制操作。 有关详细信息，请参阅[活动异地复制概述](sql-database-active-geo-replication.md)。
 
 > [!NOTE]
 > 在创建数据库副本时，将用到[自动数据库备份](sql-database-automated-backups.md)。
@@ -151,7 +151,7 @@ New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
 
 ## <a name="resolve-logins"></a>解析登录名
 
-当新数据库在目标服务器上联机后，使用 [ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx) 语句将新数据库中的用户重新映射到目标服务器上的登录名。 若要解析孤立用户，请参阅[孤立用户疑难解答](https://msdn.microsoft.com/library/ms175475.aspx)。 另请参阅 [灾难恢复后如何管理 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
+当新数据库在目标服务器上联机后，使用 [ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx) 语句将新数据库中的用户重新映射到目标服务器上的登录名。 若要解析孤立用户，请参阅[孤立用户疑难解答](https://msdn.microsoft.com/library/ms175475.aspx)。 另请参阅[灾难恢复后如何管理 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
 
 新数据库中的所有用户都保持他们在源数据库中已有的权限。 启动数据库复制过程的用户将成为新数据库的数据库所有者，并且会为该用户分配一个新的安全标识符 (SID)。 复制成功之后，重新映射其他用户之前，只有启动复制的登录名，即数据库所有者，才能登录到新数据库。
 

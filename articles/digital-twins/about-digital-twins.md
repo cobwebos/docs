@@ -4,17 +4,17 @@ description: 详细了解 Azure 数字孪生，一种适用于空间智能的 Az
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
-ms.date: 09/17/2019
+ms.date: 11/05/2019
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 ms.custom: mvc
-ms.openlocfilehash: 2194afe4784d1b59dc5fd5628e3a9223d13f92be
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 93adf946ac630d2839f761b01a02d02f6ca92b64
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949287"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718237"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Azure 数字孪生概述
 

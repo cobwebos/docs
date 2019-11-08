@@ -4,15 +4,16 @@ description: 如何为 Azure 市场创建用来预验证虚拟机映像的自测
 services: Azure, Marketplace, Cloud Partner Portal, Virtual Machine
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pabutler
-ms.openlocfilehash: 46923ecd33a054a36aa6900a415d0b563e5afff0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: fc62875873f38630e592c79aebd6a138665ed6e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163254"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809214"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>创建用来预验证 Azure 虚拟机映像的自测试客户端
 
@@ -20,7 +21,7 @@ ms.locfileid: "73163254"
 
 ## <a name="development-and-testing-overview"></a>开发和测试概述
 
-作为自测试过程的一部分，将创建连接到 Azure 市场的本地客户端，以验证在 Azure 订阅中运行的 VM。 VM 可以运行 Windows 或 Linux 操作系统。
+作为自检过程的一部分，你将创建一个连接到 Azure Marketplace 的本地客户端来验证 Azure 订阅中运行的 VM。 VM 可以运行 Windows 或 Linux 操作系统。
 
 本地客户端运行使用自测试 API 进行身份验证、发送连接信息以及接收测试结果的脚本。
 
@@ -62,13 +63,13 @@ Request body:    The Request body parameters should use the following JSON forma
 下表描述了 API 各字段。
 
 
-|      字段         |    描述    |
+|      字段         |    说明    |
 |  ---------------   |  ---------------  |
-|  授权     |  “持有者 xxxx-xxxx-xxxx-xxxxx”字符串包含可通过使用 PowerShell 创建的 Azure Active Directory (AD) 客户端令牌。          |
+|  授权     |  "持有者 xxxx-xxxxx" 字符串包含可使用 PowerShell 创建的 Azure Active Directory （AD）客户端令牌。          |
 |  DNSName           |  要测试的 VM 的 DNS 名称    |
 |  用户              |  用于登录到 VM 的用户名         |
 |  密码          |  用于登录到 VM 的密码          |
-|  OS                |  VM 的操作系统：`Linux` 或 `Windows`          |
+|  操作系统                |  VM 的操作系统：`Linux` 或 `Windows`          |
 |  PortNo            |  用于连接到 VM 的开放端口号。 通常，对于 Linux，端口号为 `22`，对于 Windows，端口号为 `5986`。          |
 |  |  |
 
@@ -99,7 +100,7 @@ $Body = @{
     "CompanyName" = "ABCD"
 
 } | ConvertTo-Json
-$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" -Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
 以下屏幕截图显示了在 PowerShell 中调用 API 的示例。
@@ -109,7 +110,7 @@ $Content = $res | ConvertFrom-Json
 使用前面的示例，可以检索 JSON 并解析它以获取以下详细信息：
 
 ```powershell
-$testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $res)
+$testresult = ConvertFrom-Json -InputObject (ConvertFrom-Json -InputObject $res)
 
   Write-Host "OSName: $($testresult.OSName)"
   Write-Host "OSVersion: $($testresult.OSVersion)"
@@ -144,7 +145,7 @@ For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 以下代码示例显示了对 API 的 PowerShell 调用。
 
 ```powershell
-$accesstoken = “Get token for your Client AAD App”
+$accesstoken = "Get token for your Client AAD App"
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Bearer $accesstoken")
 $Body = @{
@@ -156,7 +157,7 @@ $Body = @{
     "CompanyName" = "ABCD"
 
 } | ConvertTo-Json
-$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" -Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
 
@@ -167,7 +168,7 @@ $Content = $res | ConvertFrom-Json
 使用前面的示例，可以检索 JSON 并解析它以获取以下详细信息：
 
 ```powershell
-$testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $res)
+$testresult = ConvertFrom-Json -InputObject (ConvertFrom-Json -InputObject $res)
 
   Write-Host "OSName: $($testresult.OSName)"
   Write-Host "OSVersion: $($testresult.OSVersion)"
@@ -230,7 +231,7 @@ https://isvapp.azurewebsites.net/selftest-vm
 
    **获取租户信息：**
 
-   在“Azure Active Directory”概述中，搜索“属性”，然后选择“属性”。 使用以下屏幕截图为例：
+   在**Azure Active Directory 概述**中，搜索 "属性"，然后选择 "**属性**"。 使用以下屏幕截图为例：
 
    - **名称** - 租户名称或目录名称
    - **目录 ID** - 租户 ID 或目录 ID，或使用滚动条查找“属性”。
@@ -245,11 +246,11 @@ https://isvapp.azurewebsites.net/selftest-vm
 2. 在“应用注册”下，选择“+ 新建应用程序注册”。
 3. 在“创建”下，提供以下字段所需的信息：
 
-   - **名称** - 输入应用的友好名称。 例如，“SelfTestClient”。
-   - **应用程序类型** - 选择“Web 应用/API”
-   - "**登录 URL** "-键入 "https：\//isvapp.azurewebsites.net/selftest-vm"
+   - **名称**-输入应用的友好名称。 例如 "SelfTestClient"。
+   - **应用程序类型**-选择**WEB 应用/API**
+   - **登录 URL** -类型 "https：\//isvapp.azurewebsites.net/selftest-vm"
 
-4. 选择**创建**。
+4. 选择“创建”。
 5. 在“应用注册”或“已注册的应用”下，复制“应用程序 ID”。
 
    ![获取应用程序 ID](./media/stclient-app-id.png)
@@ -258,13 +259,13 @@ https://isvapp.azurewebsites.net/selftest-vm
 7. 选择“所需权限”以为应用程序配置权限。
 8. 在“所需权限”下，选择“+ 添加”。
 9. 在“添加 API 访问权限”下，选取“选择 API”。
-10. 在“选择 API”下，键入“Microsoft Azure 经典部署模型”以搜索 API。
+10. 在 "**选择 api**" 下，键入 "Windows Azure 经典部署模型" 以搜索 API。
 11. 在搜索结果中，选取“Microsoft Azure 经典部署模型”，然后单击“选择”。
 
     ![为应用配置多租户](./media/stclient-select-api.png)
 
 12. 在“添加 API 访问权限”下，选取“选择权限”。
-13. 选择“访问 Microsoft Azure 服务管理 API”。
+13. 选择 **"Microsoft Azure 服务管理 API"** 。
 
     ![为应用启用 API 访问权限](./media/stclient-enable-api-access.png)
 
@@ -279,13 +280,13 @@ https://isvapp.azurewebsites.net/selftest-vm
 19. 在“设置”下，选择“密钥”。
 20. 选择密钥“说明”文本框，创建密钥。 配置以下字段：
 
-    - 键入密钥名称。 例如，“selftestclient”
-    - 在“到期时间”下拉列表中选择“1 年”。
+    - 键入密钥名称。 例如，"selftestclient"
+    - 在 "**过期**" 下拉列表中，选择 "1 年"。
     - 选择“保存”以生成密钥。
     - 在“值”下，复制该密钥。
 
       >[!Important]
-      >退出“密钥”表单后，将无法看到密钥值。
+      >退出 "**密钥**" 窗体后，将无法看到键值。
 
     ![密钥值表单](./media/stclient-create-key.png)
 
@@ -377,7 +378,7 @@ var token = JObject.Parse(content)["access_token"];
 
 ```powershell
 $clientId = "Application Id of AD Client APP";
-$clientSecret = "Secret Key of AD Client APP “
+$clientSecret = "Secret Key of AD Client APP "
 $audience = "https://management.core.windows.net";
 $authority = "https://login.microsoftonline.com/common/oauth2/token"
 $grantType = "client_credentials";
@@ -397,8 +398,8 @@ $token.AccessToken
 使用授权标头中的以下代码将令牌传递给自测试 API：
 
 ```powershell
-$redirectUri = ‘https://isvapp.azurewebsites.net/selftest-vm’
-$accesstoken = ‘place your token here’
+$redirectUri = 'https://isvapp.azurewebsites.net/selftest-vm'
+$accesstoken = 'place your token here'
 
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Bearer $accesstoken")

@@ -1,5 +1,5 @@
 ---
-title: 配置用于灾难恢复的 Azure SQL 数据库安全性
+title: 配置灾难恢复的安全性
 description: 了解在数据库还原或故障转移到辅助服务器后配置和管理安全性的安全注意事项。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 3c08ba1a37d7b0d16042d6496c27e0de8d070b75
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9d628583168883276e67d9e2f2fcafdce292769e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689969"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807499"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>针对异地还原或故障转移配置和管理 Azure SQL 数据库的安全性
 
@@ -24,7 +24,7 @@ ms.locfileid: "73689969"
 
 ## <a name="disaster-recovery-with-contained-users"></a>使用包含的用户进行灾难恢复
 
-不同于必须映射到 master 数据库中登录名的传统用户，包含的用户完全由数据库自身管理。 这带来了两个好处。 在灾难恢复方案中，用户可以继续连接到新的主数据库或使用异地还原恢复的数据库，不需进行任何额外的配置，因为数据库会管理用户。 从登录的立场来看，此配置还有潜在的缩放性和性能优势。 有关详细信息，请参阅[包含的数据库用户 - 使数据库可移植](https://msdn.microsoft.com/library/ff929188.aspx)。
+不同于必须映射到 master 数据库中登录名的传统用户，包含的用户完全由数据库自身管理。 这带来了两个好处。 在灾难恢复方案中，用户可以继续连接到新的主数据库或使用异地还原恢复的数据库，不需进行任何额外的配置，因为数据库会管理用户。 从登录的立场来看，此配置还有潜在的缩放性和性能优势。 有关详细信息，请参阅[包含数据库用户 - 使数据库可移植](https://msdn.microsoft.com/library/ff929188.aspx)。
 
 主要的不足是，在规模较大的情况下，管理灾难恢复过程更具挑战性。 当有多个使用同一登录名的数据库时，在多个数据库中使用包含用户来维护凭据可能会抵消包含用户的好处。 例如，密码轮换策略要求在多个数据库中进行一致性的更改，而不是在 master 数据库中更改登录名的密码一次。 因此，如果多个数据库使用同一用户名和密码，则不建议使用包含用户。
 

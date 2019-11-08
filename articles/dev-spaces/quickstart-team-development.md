@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: 在 Azure 中使用容器和微服务进行 Kubernetes 团队开发
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 15833294e1dd5b75251ad54fa1f33bc4ed5e2c20
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 9bdd52f2c120d338859259b046f7f4b97bbc4eed
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035156"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585197"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>快速入门：使用 Azure Dev Spaces 在 Kubernetes 上进行团队开发
 
@@ -31,7 +31,7 @@ ms.locfileid: "72035156"
 
 - Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
 - [已安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
-- [已安装 Helm 2.13 或更高版本](https://github.com/helm/helm/blob/master/docs/install.md)。
+- [已安装 Helm 2.13 或更高版本][helm-installed]。
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>创建 Azure Kubernetes 服务群集
 
@@ -239,5 +239,5 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [!div class="nextstepaction"]
 > [使用多个容器和团队开发](multi-service-nodejs.md)
 
-
+[helm-installed]: https://helm.sh/docs/using_helm/#installing-helm
 [supported-regions]: about.md#supported-regions-and-configurations

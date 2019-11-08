@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 5a65ee27d5175887b7bf0d9146afa025e665657c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0654916b344cf47cf9942b883d62d392c0552979
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488416"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818937"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUIS 模型和密钥的边界
 LUIS 具有多个边界区域。 第一个是[模型边界](#model-boundaries)，它可控制 LUIS 中的意向、实体和功能。 第二个是基于密钥类型的[配额限制](#key-limits)。 边界的第三个区域是用于控制 LUIS 网站的[键盘组合](#keyboard-controls)。 第四个是 LUIS 创作网站和 LUIS [终结点](luis-reference-regions.md) API 之间的[世界区域映射](luis-glossary.md#endpoint)。 
@@ -35,7 +35,7 @@ LUIS 具有多个边界区域。 第一个是[模型边界](#model-boundaries)�
 | 外部实体 | 无限制 |
 | [意向][intents]|每个应用程序500：499个自定义意向和必需的_无_意向。<br>[基于调度](https://aka.ms/dispatch-tool)的应用程序具有相应的 500 个调度源。|
 | [列表实体](./luis-concept-entity-types.md) | 父级：50 项，子级：20,000 项。 规范名称是 *默认最大字符长度。同义词值没有长度限制。 |
-| [机器学习实体 + 角色](./luis-concept-entity-types.md)：<br> 复合、<br>简单、<br>实体角色|限制为 100 个父实体或 330 个实体，以用户先达到的限制为准。 就此边界来说，一个角色计为一个实体。 一个示例是一个简单的实体，其中包含2个角色：1个复合 + 1 个简单 + 2 个角色 = 4 个330实体。|
+| [机器学习实体 + 角色](./luis-concept-entity-types.md)：<br> 复合、<br>简单、<br>实体角色|限制为 100 个父实体或 330 个实体，以用户先达到的限制为准。 就此边界来说，一个角色计为一个实体。 一个示例是一个简单的实体，其中包含2个角色：1个复合 + 1 个简单 + 2 个角色 = 4 个330实体。<br>子组件最多可以嵌套5个级别。|
 |作为功能的模型| 可用作特定模型的描述符（功能）的最大模型数为10个模型。 用作特定模型的描述符（功能）的短语列表的最大数目为10个短语列表。|
 | [预览 - 动态列表实体](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 个列表，其中的每个查询预测终结点请求约 1k 个实体|
 | [模式](luis-concept-patterns.md)|每个应用程序 500 个模式。<br>模式的最大长度为 400 个字符。<br>每个模式 3 个 Pattern.any 实体<br>模式中最多 2 个嵌套可选文本|
@@ -74,7 +74,7 @@ LUIS 具有多个边界区域。 第一个是[模型边界](#model-boundaries)�
 
 |对象|排除字符|
 |--|--|
-|意向、实体和角色名称|`:`<br>`$`|
+|意向、实体和角色名称|`:`<br>`$` <br> `&`|
 |版本名称|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
 
 ## <a name="key-usage"></a>密钥使用情况

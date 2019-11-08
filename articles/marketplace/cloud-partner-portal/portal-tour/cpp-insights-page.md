@@ -1,18 +1,19 @@
 ---
-title: Azure Marketplace 的见解页面
-description: 适用于 Azure Marketplace 的云合作伙伴门户中的见解页的概述。
+title: Azure Marketplace 的 Insights 页
+description: Azure Marketplace 云合作伙伴门户中的 Insights 页面概述。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 2cbe3b790197c3f71305e4cb21d0f37fe0404511
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1b8d716beec17b7da82968ede8d24ced348e04a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943489"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821525"
 ---
 # <a name="insights-page"></a>“见解”页
 

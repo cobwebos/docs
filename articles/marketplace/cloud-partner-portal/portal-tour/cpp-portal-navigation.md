@@ -1,18 +1,19 @@
 ---
-title: 云合作伙伴门户为 Azure Marketplace 的导航栏
-description: Azure Marketplace 的云合作伙伴门户中导航的说明。
+title: Azure Marketplace 云合作伙伴门户导航
+description: Azure Marketplace 云合作伙伴门户中的导航说明。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: pabutler
-ms.openlocfilehash: ef329bfef9dc4f98dfd975a33c190f0b1825df4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57ccc7fb738dc23956e56e70c68405cc995a9a99
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942086"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821478"
 ---
 # <a name="cloud-partner-portal-navigation"></a>云合作伙伴门户导航
 
@@ -29,14 +30,14 @@ ms.locfileid: "64942086"
 
 1. 标题区域 - 导航到门户主页。
 2. **帮助**按钮 - 显示帮助菜单，此菜单提供用于帮助用户的资源。
-3. **反馈**按钮 - 显示“向我们发送反馈”窗体  。
+3. **反馈**按钮 - 显示“向我们发送反馈”窗体。
 4. **发布者**按钮 - 显示使用户能够管理其个人资料的菜单。
 
 接下来将介绍这些菜单和窗体。
 
 ### <a name="help-menu"></a>帮助菜单
 
-“帮助”菜单提供帮助用户使用云合作伙伴门户的资源  。
+“帮助”菜单提供帮助用户使用云合作伙伴门户的资源。
 
 ![顶部菜单栏](./media/top-menubar2.png)
 
@@ -49,12 +50,12 @@ ms.locfileid: "64942086"
 
 ### <a name="send-us-feedback-form"></a>“向我们发送反馈”窗体
 
-“向我们发送反馈”窗体为你提供了向市场发布者载入团队提供反馈的一个直接方法  。  只有当你选中了“可以就你反馈的内容与你联系”复选框时，我们才会与你联系以了解其他信息  。
+“向我们发送反馈”窗体为你提供了向市场发布者载入团队提供反馈的一个直接方法。  只有当你选中了“可以就你反馈的内容与你联系”复选框时，我们才会与你联系以了解其他信息。
 
 ![反馈表单](./media/feedback-form.png)
 
 > [!TIP]
-> 如果你的反馈是关于云合作伙伴门户上的某一特定页面，请在单击“反馈”按钮之前导航到该页面  。  在提交反馈之前确保已选中“包括屏幕截图”复选框，以便捕获会话的 UI 状态  。 
+> 如果你的反馈是关于云合作伙伴门户上的某一特定页面，请在单击“反馈”按钮之前导航到该页面。  在提交反馈之前确保已选中“包括屏幕截图”复选框，以便捕获会话的 UI 状态。 
 
 
 ### <a name="publisher-menu"></a>“发布者”菜单
@@ -77,9 +78,9 @@ ms.locfileid: "64942086"
 | ![所有发布者项](./media/left-navbar4.png) | [所有发布者](./cpp-all-publishers-page.md)页，列出了所有当前注册的云合作伙伴发布者。 |
 | ![用户项](./media/left-navbar5.png) | [用户](./cpp-users-page.md)页，列出了与注册的云合作伙伴相关联的所有当前用户帐户。 |
 | ![历史记录项](./media/left-navbar6.png) | [历史记录](./cpp-history-page.md)页，列出了所有发布者的产品/服务发布和修改事件。 |
-| ![见解项](./media/left-navbar7.png) | [见解](./cpp-insights-page.md)页，包含构成此门户的“卖家见解”功能的各种仪表板  。 |
-| ![文档项](./media/left-navbar8.png) | 启用一个新的选项卡以转到云合作伙伴门户的文档主页（复制“帮助”菜单中的条目）  。 |
-| ![论坛项](./media/left-navbar9.png)  | 启用一个新的选项卡以转到 AppSource 和 Azure 市场的合作伙伴社区的文档主页（复制“帮助”菜单中的条目）  。 |
+| ![见解项](./media/left-navbar7.png) | [见解](./cpp-insights-page.md)页，包含构成此门户的“卖家见解”功能的各种仪表板。 |
+| ![文档项](./media/left-navbar8.png) | 启用一个新的选项卡以转到云合作伙伴门户的文档主页（复制“帮助”菜单中的条目）。 |
+| ![论坛项](./media/left-navbar9.png)  | 启用一个新的选项卡以转到 AppSource 和 Azure 市场的合作伙伴社区的文档主页（复制“帮助”菜单中的条目）。 |
 |  |  |
 
 > [!NOTE]
@@ -88,4 +89,4 @@ ms.locfileid: "64942086"
 
 ## <a name="next-steps"></a>后续步骤
 
-下一篇文章[新产品/服务菜单](./cpp-new-offer-menu.md)列出了可以使用“新产品/服务”菜单创建的产品/服务类型  。
+下一篇文章[新产品/服务菜单](./cpp-new-offer-menu.md)列出了可以使用“新产品/服务”菜单创建的产品/服务类型。

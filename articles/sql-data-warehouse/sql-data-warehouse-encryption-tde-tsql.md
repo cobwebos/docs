@@ -1,6 +1,6 @@
 ---
 title: 透明数据加密（T-sql）
-description: SQL 数据仓库 (T-SQL) 中的透明数据加密 (TDE)
+description: SQL 数据仓库中的透明数据加密（TDE）（T-sql）
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 98695aa7578e90be9ada2f86640e68b05a9812ed
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4e7f4f31cd8b899e3fcf79568ea62830313936b9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692744"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822605"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>透明数据加密 (TDE) 入门
 > [!div class="op_single_selector"]

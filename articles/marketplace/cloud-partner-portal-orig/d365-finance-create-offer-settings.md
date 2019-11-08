@@ -4,19 +4,20 @@ description: 包含 PC 文章链接的弃用文章;was "说明了需要为新的
 services: Azure, Marketplace, Cloud Partner Portal
 author: ChJenk
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: pabutler
-ms.openlocfilehash: 84932d693c9c74c74095eb78e750f8d3b1452068
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: e52be51fd9c945f67044e8d807ce0a97beaf4487
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105548"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820058"
 ---
 # <a name="how-to-fill-out-the-offer-settings-form"></a>如何填写产品/服务设置表单
 
-[云合作伙伴门户](https://cloudpartner.azure.com/)不再支持创建和管理 Dynamics 365 Business Central 产品/服务。 相反, 此功能已移动到 Microsoft[合作伙伴中心门户](https://partner.microsoft.com/)。 有关详细信息，请参阅[创建新的 Dynamics 365 Business Central 产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)。
+[云合作伙伴门户](https://cloudpartner.azure.com/)不再支持创建和管理 Dynamics 365 Business Central 产品/服务。 相反，此功能已移动到 Microsoft[合作伙伴中心门户](https://partner.microsoft.com/)。 有关详细信息，请参阅[创建新的 Dynamics 365 Business Central 产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)。
 
 ## <a name="next-steps"></a>后续步骤
 

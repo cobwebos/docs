@@ -5,15 +5,16 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 6da80bd3b5fe487a44400f4f3c21e8fa49da75d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bf89f94d91e0d809428cf8098db0fb37afdb47a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943564"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814682"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>在发布门户中设置应用程序
 
@@ -30,7 +31,7 @@ ms.locfileid: "64943564"
 
 ![“新建套餐”屏幕](./media/CRMScreenShot15.png)
 
-1. 需要填写的“窗体”显示在“编辑器”视图中的左侧。 每个“窗体”都包含一组要填写的字段。必填字段标有红色的星号 (\*)。
+1. 需要填写的“窗体”显示在“编辑器”视图中的左侧。 每个 "窗体" 包含一组要填写的字段。必填字段标有红色星号（\*）。
 
 有四个主窗体用于创作 Dynamics 365 for Customer Engagement 套餐
 
@@ -43,17 +44,17 @@ ms.locfileid: "64943564"
 
 产品/服务设置表单是用于指定产品/服务设置的基本表单。 不同的字段如下所述。
 
-### <a name="offer-id"></a>套餐 ID
+### <a name="offer-id"></a>产品/服务 ID
 
 这是发布者个人资料内产品/服务的唯一标识符。 此 ID 将显示在产品 URL 中。 它只能由小写字母数字字符或短划线 (-) 组成。 ID 不能以短划线结束，并且不能超过 50 个字符。 此字段在套餐推出后处于锁定状态。
 
-例如，如果发布服务器 **"contoso"** 发布服务器创建产品/服务产品/服务 ID **"示例 web 应用"** ，它将显示在 AppSource 为"https:\//appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"
+例如，如果发布者 **"contoso"** 发布者创建了产品/服务 ID 为 **"WebApp"** 的产品/服务，则它将在 AppSource 中显示为 "https：\//appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"
 
 ### <a name="publisher-id"></a>发布者 ID
 
 通过此下拉列表，可以选择要在其下发布此产品/服务的发布者个人资料。 此字段在套餐推出后处于锁定状态。
 
-### <a name="name"></a>Name
+### <a name="name"></a>名称
 
 这是产品/服务的显示名称。 这是显示在 [AppSource](https://appsource.microsoft.com/) 中的名称。 该名称不能超过 50 个字符。
 
@@ -78,19 +79,19 @@ ms.locfileid: "64943564"
 
 * 包的文件名：在上述步骤中创建 CRM AppSource 包的 zip 文件时创建的文件名。 在上述示例中，文件名为“Microsoft\_SamplePackage.zip”。
 * 包位置的 URL：这是包含上面指定的包文件名的 Azure 存储帐户的 URL。 它是在上述部分的“步骤 9”中创建的 URL。
-* 包文件中是否有多个 crm 包：仅当支持多个版本的、包含不同包的 CRM 时，才选择“是”。  大多数合作伙伴会选择“否”。 如果选择“是”，则需要为每个版本的解决方案创建 AppSource 包。 _注意：这并非询问是否存在多个 **zip** 文件。如果有多个 solution.zip 文件，但只有一个版本，则仍应选择“否”。打包工具会自动将这些文件合并到一起。_
+* 包文件中是否包含多个 CRM 包：**仅当**支持多个版本的、包含不同包的 CRM 时，才选择“是”。 大多数合作伙伴会选择“否”。 如果选择“是”，则需要为每个版本的解决方案创建 AppSource 包。 _注意：这不会询问你是否有多个**zip**文件。如果有多个解决方案 .zip 文件，但只有一个版本，则仍应选择 "否"。打包工具会自动将这些组合在一起。_
 
 ### <a name="crm-package-availability"></a>CRM 包可用性
 
-在此部分，选择可以使用该包的 CRM 区域。 有关信息的 CRM 区域提供服务的国家/地区，请参阅链接： [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
+在此部分，选择可以使用该包的 CRM 区域。 有关哪些 CRM 区域提供哪些国家/地区的信息，请参阅以下链接： [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
-请注意:部署到德国主权云和 US Gov 主权云需要特殊权限，且在认证期间需要验证
+注意：部署到德国主权云和 US Gov 主权云需要特殊权限，且在认证期间需要验证
 
 ## <a name="storefront-details"></a>店面详细信息
 
 ### <a name="offer-summary"></a>产品/服务摘要
 
-这是套餐的价值主张摘要。 它将显示在套餐的搜索页上。 此内容不应超过 100 个字符。
+这是套餐的价值主张摘要。 它将显示在产品/服务的搜索页上。 此内容不应超过 100 个字符。
 
 ### <a name="offer-description"></a>产品/服务描述
 
@@ -100,7 +101,7 @@ ms.locfileid: "64943564"
 
 选择应用最适合的行业。 如果应用与多个行业相关，可将此字段留空。
 
-### <a name="categories"></a>Categories
+### <a name="categories"></a>类别
 
 选择与应用相关的类别。 最多选择 3 个类别。
 
@@ -164,7 +165,7 @@ AppSource 允许客户基于关键字执行搜索。 可以输入关键字集，
 
 这些屏幕截图将显示在应用的 AppSource 详细信息页上。
 
-### <a name="privacy-policy"></a>隐私政策
+### <a name="privacy-policy"></a>隐私策略
 
 输入应用隐私政策的 URL
 
@@ -178,7 +179,7 @@ AppSource 允许客户基于关键字执行搜索。 可以输入关键字集，
 
 ### <a name="lead-destination"></a>潜在顾客目标
 
-选择用于存储潜在顾客的 CRM 系统。 如果有以下 CRM 系统之一，在此处请选择“Azure 表”：Salesforce、Marketo、Microsoft Dynamics CRM。 在 AppSource 中试用应用的最终用户（潜在顾客）的详细信息将写入到此处所选的 CRM 系统。 根据选择的 CRM 系统，单击以下相应 URL，以获取有关如何完成下一组字段的信息
+选择用于存储潜在顾客的 CRM 系统。 如果有以下 CRM 系统之一，请在此处选择“Azure 表”：Salesforce、Marketo、Microsoft Dynamics CRM。 在 AppSource 中试用应用的最终用户（潜在顾客）的详细信息将写入到此处所选的 CRM 系统。 根据选择的 CRM 系统，单击以下相应 URL，以获取有关如何完成下一组字段的信息
 
 * [Azure 表](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 * [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md)
@@ -187,4 +188,4 @@ AppSource 允许客户基于关键字执行搜索。 可以输入关键字集，
 
 ## <a name="storefront-details"></a>店面详细信息
 
-联系人详细信息仅用于合作伙伴与 Microsoft 之间的内部通信。 请注意:必须在这些字段中使用受监视的电子邮件地址。 我们将使用此电子邮件来告知 AppSource 发布进度。 客户只会看到支持 URL。
+联系人详细信息仅用于合作伙伴与 Microsoft 之间的内部通信。 注意：必须在这些字段中使用受监视的电子邮件地址。 我们将使用此电子邮件来告知 AppSource 发布进度。 客户只会看到支持 URL。

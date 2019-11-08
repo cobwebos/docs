@@ -1,19 +1,20 @@
 ---
-title: 发布应用程序请求
-description: .
+title: 请求发布应用程序
+description: 。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: e272d051af6070007bcebc0f697d2854cd721497
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9558e7684fa8ab742319890940800da85daa1706
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943583"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814753"
 ---
 # <a name="request-to-publish-the-app"></a>请求发布应用
 

@@ -1,5 +1,5 @@
 ---
-title: 跨横向扩展的云数据库进行报告（水平分区）
+title: 跨已扩展的云数据库进行报告
 description: 使用跨数据库数据库查询跨多个数据库进行报告。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
-ms.openlocfilehash: 1adc7757edc6d5abc50ed31ea2227711db60fcfe
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bad52b364dc83994e7985fc80b1b9f9e7f50481e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690411"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823771"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>跨扩展云数据库进行报告（预览）
 
@@ -36,7 +36,7 @@ ms.locfileid: "73690411"
 1. 按照[下载并运行示例应用](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app-1)一文中的步骤，生成并运行**弹性数据库工具**入门示例应用程序。 完成所有步骤后，会看到以下命令提示符：
 
     ![命令提示符][1]
-2. 在命令窗口中键入“1”，并按 **Enter**。 这会创建分片映射管理器，并将两个分片添加到服务器。 “然”后“键”入“3”并按“Enter”；重复该操作四次。 这会在分片中插入示例数据行。
+2. 在命令窗口中键入“1”，并按“Enter”。 这会创建分片映射管理器，并将两个分片添加到服务器。 “然”后“键”入“3”并按“Enter”；重复该操作四次。 这会在分片中插入示例数据行。
 3. [Azure 门户](https://portal.azure.com)应显示服务器中的 3 个新数据库：
 
    ![Visual Studio 确认][2]
@@ -115,7 +115,7 @@ ms.locfileid: "73690411"
 
    ![从其他源导入 Excel][5]
 4. 在**数据连接向导**中，键入服务器名称和登录凭据。 然后单击“下一步”。
-5. 在“选择包含所需数据的数据库”对话框中，选择 ElasticDBQuery 数据库。
+5. 在对话框**选择包含所需数据的数据库**中，选择 **ElasticDBQuery** 数据库。
 6. 在列表视图中选择“客户”表并单击“下一步”。 然后单击“完成”。
 7. 在“导入数据”窗体中的“请选择该数据在工作簿中的显示方式”下，选择“表”，并单击“确定”。
 

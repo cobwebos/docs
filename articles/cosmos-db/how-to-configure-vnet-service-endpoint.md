@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1c81045408a948820c8b9fef56e2c7d69cd39e08
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: c399bed803145659bae1863e9e0b919f33254627
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811920"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820202"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>配置从虚拟网络 (VNet) 访问
 
@@ -68,7 +68,7 @@ ms.locfileid: "71811920"
 
    ![为新虚拟网络选择虚拟网络和子网](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
 
-如果 Azure Cosmos DB 帐户被其他 Azure 服务（如 Azure 搜索）或从流分析或 Power BI 中访问，则可以通过**从全球 Azure 数据中心内选择 "接受连接**" 来允许访问。
+如果你的 Azure Cosmos DB 帐户被其他 Azure 服务（如 Azure 认知搜索）使用，或者从流分析或 Power BI 访问，你可以通过**从全球 Azure 数据中心内选择 "接受连接**" 来允许访问。
 
 为确保能够从门户访问 Azure Cosmos DB 指标，需要启用“允许从 Azure 门户访问”选项。 有关这些选项的详细信息，请参阅[配置 IP 防火墙](how-to-configure-firewall.md)一文。 启用访问后，选择“保存”以保存设置。
 
@@ -185,11 +185,11 @@ ms.locfileid: "71811920"
 
 ## <a id="configure-using-cli"></a>使用 Azure CLI 配置服务终结点
 
-如果已为 Azure Cosmos 帐户配置了子网，则可以在以后创建或更新这些服务终结点。 还可以在尚未为子网配置子网的 Cosmos 帐户上启用服务终结点，然后在以后配置子网时开始工作。 这种灵活性允许无需访问 Cosmos 帐户和虚拟网络资源的管理员相互独立地进行配置。
+Azure Cosmos 帐户可以在以后创建或更新服务终结点时针对服务终结点进行配置（如果已经为其配置了子网）。 还可以在尚未为其配置子网的 Cosmos 帐户上启用服务终结点，然后这些服务终结点在以后配置子网时开始工作。 这种灵活性允许无法同时访问 Cosmos 帐户和虚拟网络资源的管理员将其配置设为彼此独立。
 
 ### <a name="create-a-new-cosmos-account-and-connect-it-to-a-back-end-subnet-for-a-new-virtual-network"></a>创建新的 Cosmos 帐户并将其连接到新虚拟网络的后端子网
 
-在此示例中，将创建虚拟网络和子网，同时为其创建服务终结点。
+在此示例中，创建虚拟网络和子网时会同时为它们启用服务终结点。
 
 ```azurecli-interactive
 # Create an Azure Cosmos Account with a service endpoint connected to a backend subnet
@@ -233,9 +233,9 @@ az cosmosdb create \
    --virtual-network-rules $svcEndpoint
 ```
 
-### <a name="connect-and-configure-a-cosmos-account-to-a-back-end-subnet-independently"></a>独立连接并配置 Cosmos 帐户到后端子网
+### <a name="connect-and-configure-a-cosmos-account-to-a-back-end-subnet-independently"></a>将 Cosmos 帐户独立连接并配置到后端子网
 
-本示例旨在演示如何将 Azure Cosmos 帐户连接到现有新虚拟网络，该虚拟网络尚未针对服务终结点配置子网。 这是通过使用 `--ignore-missing-vnet-service-endpoint` 参数来完成的。 这允许 Cosmos 帐户的配置在完成虚拟网络子网配置之前不会发生任何错误。 子网配置完成后，便可通过配置的子网访问 Cosmos 帐户。
+此示例旨在说明如何将 Azure Cosmos 帐户连接到尚未为服务终结点配置子网的现有新虚拟网络。 这是通过使用 `--ignore-missing-vnet-service-endpoint` 参数完成的。 这样就可以在完成对虚拟网络的子网的配置之前，完成 Cosmos 帐户的配置而不会出现错误。 子网配置完成后，便可通过配置的子网访问 Cosmos 帐户。
 
 ```azurecli-interactive
 # Create an Azure Cosmos Account with a service endpoint connected to a backend subnet

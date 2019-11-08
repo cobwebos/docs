@@ -1,5 +1,5 @@
 ---
-title: 监视和提高性能-Azure SQL 数据库
+title: 监视和提高性能
 description: Azure SQL 数据库提供的性能工具有助于发现可以提高当前查询性能的方面。
 ms.service: sql-database
 ms.subservice: performance
@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 483cd9f185cfa626d21fe0a5b86ba782ebb2f612
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f7e5f698a822cd68d8319102e1b8bddbbfa8ad70
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687665"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821326"
 ---
 # <a name="monitor-and-improve-performance"></a>监视和提高性能
 
@@ -29,7 +29,7 @@ Azure SQL 数据库确定数据库中的潜在问题，并通过提供智能优�
 
 
 1. [性能概述](#performance-overview)，用于监视数据库的性能。 
-2. [性能建议](#performance-recommendations)：查找可提高工作负荷性能的性能建议。
+2. [性能建议](#performance-recommendations)，用于查找可以改进工作负荷性能的性能建议。
 3. [查询性能见解](#query-performance-insight)，用于查找资源消耗排名靠前的查询。
 4. [自动优化](#automatic-tuning)，可让 Azure SQL 数据库自动优化数据库。
 
@@ -60,7 +60,7 @@ Azure SQL 数据库确定数据库中的潜在问题，并通过提供智能优�
 
 ## <a name="automatic-tuning"></a>自动优化
 
-Azure SQL 数据库可以通过应用[性能建议](sql-database-advisor.md)自动优化数据库性能。 若要了解详细信息，请阅读[自动优化文章](sql-database-automatic-tuning.md)。 若要启用此功能，请阅读[如何启用自动优化](sql-database-automatic-tuning-enable.md)。
+Azure SQL 数据库可以通过应用[性能建议](sql-database-advisor.md)自动优化数据库性能。 若要了解详细信息，请阅读[自动优化文章](sql-database-automatic-tuning.md)。 若要启用它，请阅读[如何启用自动优化](sql-database-automatic-tuning-enable.md)。
 
 ## <a name="query-performance-insight"></a>Query Performance Insight
 

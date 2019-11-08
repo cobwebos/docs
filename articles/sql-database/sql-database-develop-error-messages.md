@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/02/2019
-ms.openlocfilehash: 56df04b6e6274a968d81017f712235ad50b385f3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3aec1fd7a5a5cef7e3c5265977fe9ad44f4209c2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690675"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828052"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL 数据库客户端应用程序的 SQL 错误代码：数据库连接错误和其他问题
 
@@ -79,7 +79,7 @@ The service has encountered an error processing your request. Please try again. 
 | 40166 |16 |正在进行 CloudDB 重新配置，并中止所有新用户事务。|
 | 40540 |16 |事务已中止，因为数据库已移动到只读模式。 这是一种暂时性的情况，请重试该操作。|
 
-有关其他嵌入错误的详细信息，请参阅 `sys.messages`：
+有关其他嵌入错误的详细信息，请参阅查询 `sys.messages`：
 
 ```sql
 SELECT * FROM sys.[messages] WHERE [message_id] = <error_code>

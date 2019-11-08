@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 77659fdf93947cfbaa0daa322dccf4e9cb1a41fa
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 3911d4e780e993fdd1c2945b34cd683d47fb884a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844711"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827277"
 ---
 # <a name="use-the-azure-maps-services-module"></a>使用 Azure Maps 服务模块
 
@@ -23,7 +23,7 @@ Azure Maps Web SDK 提供*服务模块*。 此模块是一个帮助程序库，�
 
 1. 创建新的 HTML 文件。
 1. 加载 "Azure Maps 服务" 模块。 可以通过以下两种方式之一加载它：
-    - 使用 Azure Maps services 模块的全球托管的 Azure 内容分发网络版本。 将脚本引用添加到文件`<head>`的元素中：
+    - 使用 Azure Maps services 模块的全球托管的 Azure 内容分发网络版本。 将脚本引用添加到文件的 `<head>` 元素：
 
         ```html
         <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
@@ -33,7 +33,7 @@ Azure Maps Web SDK 提供*服务模块*。 此模块是一个帮助程序库，�
     
         > **npm 安装 azure-地图-rest**
     
-        然后，将脚本引用添加到该`<head>`文件的元素中：
+        然后，将脚本引用添加到该文件的 `<head>` 元素：
 
          ```html
         <script src="node_modules/azure-maps-rest/dist/js/atlas-service.min.js"></script>
@@ -124,7 +124,7 @@ Azure Maps Web SDK 提供*服务模块*。 此模块是一个帮助程序库，�
 
     有关详细信息，请参阅[Azure Maps 的身份验证](azure-maps-authentication.md)。
 
-1. 以下代码使用新创建的 Azure 搜索服务 URL 客户端来地理编码地址："1 Microsoft 方式，Redmond，WA"。 此代码使用`searchAddress`函数，并将结果以表的形式显示在页面的正文中。
+1. 以下代码使用新创建的 Azure Maps 搜索服务 URL 客户端地理编码地址： "1 Microsoft 方法，Redmond，WA"。 代码使用 `searchAddress` 函数，并将结果以表的形式显示在页面的正文中。
 
     ```javascript
     // Search for "1 microsoft way, redmond, wa".

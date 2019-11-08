@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: bade2e7ac53277b2e23e8cf6847cc30940cd4819
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b72be7026b0b8077cf5bf9f775d10fd03edd9118
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666813"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815642"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>数据工厂 - JSON 脚本参考
 > [!NOTE]
@@ -48,7 +48,7 @@ ms.locfileid: "73666813"
 | 属性 | 说明 | 必选
 -------- | ----------- | --------
 | name | 管道的名称。 指定一个名称，表示配置为活动或管道要执行的操作<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
-| 说明 |描述活动或管道用途的文本 | 否 |
+| description |描述活动或管道用途的文本 | 否 |
 | 活动 | 包含活动列表。 | 是 |
 | start |管道的开始日期-时间。 必须为 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41。 <br/><br/>可指定本地时间，如 EST 时间。 下面是一个示例：`2016-02-27T06:00:00**-05:00`（美国东部标准时间上午 6 点）。<br/><br/>start 和 end 属性共同指定管道的活动期限。 仅在此活动期限内生成输出切片。 |否<br/><br/>如果要指定 end 属性值，必须指定 start 属性值。<br/><br/>创建管道时，开始和结束时间均可为空。 必须指定这两个值，才能设置管道运行的活动期限。 如果在创建管道时未指定开始和结束时间，则可以在以后使用 AzDataFactoryPipelineActivePeriod cmdlet 设置它们。 |
 | end |管道的结束日期-时间。 指定时必须采用 ISO 格式。 例如：2014-10-14T17:32:41 <br/><br/>可指定本地时间，如 EST 时间。 下面是一个示例：`2016-02-27T06:00:00**-05:00`（美国东部标准时间上午 6 点）。<br/><br/>若要无限期运行管道，请指定 9999-09-09 作为 end 属性的值。 |否 <br/><br/>如果指定 start 属性的值，必须指定 end 属性的值。<br/><br/>请参阅 **start** 属性的说明。 |
@@ -86,7 +86,7 @@ ms.locfileid: "73666813"
 | 标记 | 说明 | 必选 |
 | --- | --- | --- |
 | name |活动的名称。 指定一个名称，表示活动配置要执行的操作<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
-| 说明 |描述活动用途的文本。 |否 |
+| description |描述活动用途的文本。 |否 |
 | type |指定活动的类型。 请参阅[数据存储](#data-stores)和[数据转换活动](#data-transformation-activities)部分，了解不同的活动类型。 |是 |
 | inputs |活动使用的输入表<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |对于 HDInsightStreaming 和 SqlServerStoredProcedure 活动，为“否” <br/> <br/> 对于其他所有活动，为“是” |
 | outputs |活动使用的输出表。<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": “outputtable1” } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": “outputtable1” }, { "name": “outputtable2” }  ],` |是 |
@@ -159,7 +159,7 @@ ms.locfileid: "73666813"
 }
 ```
 
-请注意以下几点：
+注意以下几点：
 
 * 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。
 * 活动的输入设置为 **InputDataset**，活动的输出设置为 **OutputDataset**。
@@ -217,7 +217,7 @@ ms.locfileid: "73666813"
 }
 ```
 
-请注意以下几点：
+注意以下几点：
 
 * 在 activities 节中，只有一个活动的 **type** 设置为 **HDInsightHive**。
 * Hive 脚本文件 **partitionweblogs.hql** 存储在 Azure 存储帐户（由 scriptLinkedService 指定，名为 **AzureStorageLinkedService**）中，以及 **adfgetstarted** 容器的 **script** 文件夹中。
@@ -354,7 +354,7 @@ structure:
 
 除非 Azure 数据工厂生成数据集，否则应将其标记为**外部**。 此设置通常适用于管道中第一个活动的输入，除非正在使用活动或管道链接。
 
-| Name | 说明 | 必选 | 默认值 |
+| 名称 | 说明 | 必选 | 默认值 |
 | --- | --- | --- | --- |
 | dataDelay |延迟检查给定切片外部数据的可用性的时间。 例如，如果数据应为每小时可用，可使用 dataDelay 推迟检查外部数据是否可用以及相应切片是否就绪。<br/><br/>仅适用于当前时间。  例如，如果现在是下午 1:00 且此值为 10 分钟，则从下午 1:10 开始验证。<br/><br/>此设置不会影响过去的切片 (End Time + dataDelay < Now)，过去的切片不会有任何延迟。<br/><br/>大于 23:59 小时的时间需要使用 `day.hours:minutes:seconds` 格式进行指定。 例如，若要指定 24 小时，请不要使用 24:00:00；请改用 1.00:00:00。 如果使用 24:00:00，则将它视为 24 天 (24.00:00:00)。 对于 1 天又 4 小时，请指定 1:04:00:00。 |否 |0 |
 | retryInterval |失败与下一次重试之间的等待时间。 如果尝试失败，下一次尝试会在 retryInterval 以后。 <br/><br/>如果现在是下午 1:00，我们将开始第一次尝试。 如果完成第一次验证检查的持续时间为 1 分钟，并且操作失败，则下一次重试为 1:00 + 1 分钟（持续时间）+ 1 分钟（重试间隔）= 下午 1:02。 <br/><br/>对于过去的切片，没有任何延迟。 重试会立即发生。 |否 |00:01:00（1 分钟） |
@@ -371,14 +371,14 @@ structure:
 
 单击所需存储的链接可查看复制活动的链接服务、数据集和源/接收器的 JSON 架构。
 
-| Category | 数据存储
+| 类别 | 数据存储
 |:--- |:--- |
 | **Azure** |[Azure Blob 存储](#azure-blob-storage) |
 | &nbsp; |Azure Data Lake Store |
 | &nbsp; |[Azure Cosmos DB](#azure-cosmos-db) |
 | &nbsp; |[Azure SQL 数据库](#azure-sql-database) |
 | &nbsp; |[Azure SQL 数据仓库](#azure-sql-data-warehouse) |
-| &nbsp; |[Azure 搜索](#azure-search) |
+| &nbsp; |[Azure 认知搜索](#azure-cognitive-search) |
 | &nbsp; |[Azure 表存储](#azure-table-storage) |
 | **数据库** |[Amazon Redshift](#amazon-redshift) |
 | &nbsp; |[IBM DB2](#ibm-db2) |
@@ -837,7 +837,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 | **属性** | **说明** | **允许的值** | **必需** |
 | --- | --- | --- | --- |
-| 查询 |指定要读取数据的查询。 |Azure Cosmos DB 支持的查询字符串。 <br/><br/>示例： `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |否 <br/><br/>如果未指定，则执行的 SQL 语句为：`select <columns defined in structure> from mycollection` |
+| 查询 |指定要读取数据的查询。 |Azure Cosmos DB 支持的查询字符串。 <br/><br/>示例：`SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |否 <br/><br/>如果未指定，则执行的 SQL 语句为：`select <columns defined in structure> from mycollection` |
 | nestingSeparator |指示嵌套文档的特殊字符 |任意字符。 <br/><br/>Azure Cosmos DB 是 JSON 文档的 NoSQL 存储，其中允许存在嵌套结构。 Azure 数据工厂允许用户通过 nestingSeparator 来表示层次结构，即 上述示例中的“.”。 通过该分隔符，复制活动会根据表定义中的“Name.First”、“Name.Middle”和“Name.Last”生成包含三个子元素（First、Middle 和 Last）的“Name”对象。 |否 |
 
 #### <a name="example"></a>示例
@@ -1279,15 +1279,15 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 有关详细信息，请参阅 [Azure SQL 数据仓库连接器](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)一文。
 
-## <a name="azure-search"></a>Azure 搜索
+## <a name="azure-cognitive-search"></a>Azure 认知搜索
 
 ### <a name="linked-service"></a>链接服务
-要定义 Azure 搜索链接服务，请将链接服务的**类型**设置为 **AzureSearch**，并在 **typeProperties** 节中指定以下属性：
+要定义 Azure 认知搜索链接服务，请将链接服务的**类型**设置为**AzureSearch**，并在**typeProperties**节中指定以下属性：
 
 | 属性 | 说明 | 必选 |
 | -------- | ----------- | -------- |
-| url | Azure 搜索服务的 URL。 | 是 |
-| key | Azure 搜索服务的管理密钥。 | 是 |
+| url | 搜索服务的 URL。 | 是 |
+| key | 搜索服务的管理密钥。 | 是 |
 
 #### <a name="example"></a>示例
 
@@ -1304,15 +1304,15 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 }
 ```
 
-有关详细信息，请参阅 [Azure 搜索连接器](data-factory-azure-search-connector.md#linked-service-properties)一文。
+有关详细信息，请参阅[Azure 认知搜索连接器](data-factory-azure-search-connector.md#linked-service-properties)一文。
 
 ### <a name="dataset"></a>数据集
-要定义 Azure 搜索数据集，请将数据集的**类型**设置为 **AzureSearchIndex**，并在 **typeProperties** 节中指定以下属性：
+要定义 Azure 认知搜索数据集，请将数据集的**类型**设置为**AzureSearchIndex**，并在**typeProperties**节中指定以下属性：
 
 | 属性 | 说明 | 必选 |
 | -------- | ----------- | -------- |
 | type | type 属性必须设置为 **AzureSearchIndex**。| 是 |
-| indexName | Azure 搜索索引的名称。 数据工厂不创建索引。 索引必须存在于 Azure 搜索中。 | 是 |
+| indexName | 搜索索引的名称。 数据工厂不创建索引。 索引必须存在于 Azure 认知搜索中。 | 是 |
 
 #### <a name="example"></a>示例
 
@@ -1333,15 +1333,15 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 }
 ```
 
-有关详细信息，请参阅 [Azure 搜索连接器](data-factory-azure-search-connector.md#dataset-properties)一文。
+有关详细信息，请参阅[Azure 认知搜索连接器](data-factory-azure-search-connector.md#dataset-properties)一文。
 
-### <a name="azure-search-index-sink-in-copy-activity"></a>复制活动中的 Azure 搜索索引接收器
-如果要将数据复制到 Azure 搜索索引，请将复制活动的**接收器类型**设置为 **AzureSearchIndexSink**，并在 **sink** 节中指定以下属性：
+### <a name="azure-cognitive-search-index-sink-in-copy-activity"></a>复制活动中的 Azure 认知搜索索引接收器
+如果要将数据复制到搜索索引，请将复制活动的**接收器类型**设置为**AzureSearchIndexSink**，并在**sink**节中指定以下属性：
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | -------- | ----------- | -------------- | -------- |
 | WriteBehavior | 指定索引中已存在文档时要合并还是替换该文档。 | 合并（默认值）<br/>上传| 否 |
-| WriteBatchSize | 缓冲区大小达到 writeBatchSize 时会数据上传到 Azure 搜索索引。 | 1 到 1,000。 默认值为 1000。 | 否 |
+| WriteBatchSize | 当缓冲区大小达到 writeBatchSize 时，将数据上传到搜索索引。 | 1 到 1,000。 默认值为 1000。 | 否 |
 
 #### <a name="example"></a>示例
 
@@ -1386,7 +1386,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 }
 ```
 
-有关详细信息，请参阅 [Azure 搜索连接器](data-factory-azure-search-connector.md#copy-activity-properties)一文。
+有关详细信息，请参阅[Azure 认知搜索连接器](data-factory-azure-search-connector.md#copy-activity-properties)一文。
 
 ## <a name="azure-table-storage"></a>Azure 表存储
 
@@ -1444,7 +1444,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| tableName |链接服务指代的 Azure 表数据库实例中表的名称。 |可以。 指定了 tableName 但未指定 azureTableSourceQuery 时，表中的所有记录都将复制到目标中。 如果还指定了 azureTableSourceQuery，则会将满足查询的表中的记录复制到目标中。 |
+| tableName |链接服务指代的 Azure 表数据库实例中表的名称。 |是的。 指定了 tableName 但未指定 azureTableSourceQuery 时，表中的所有记录都将复制到目标中。 如果还指定了 azureTableSourceQuery，则会将满足查询的表中的记录复制到目标中。 |
 
 #### <a name="example"></a>示例
 
@@ -3557,8 +3557,8 @@ auto-
 | encryptedCredential |访问 FTP 服务器的加密凭据 |否 |&nbsp; |
 | gatewayName |用于连接本地 FTP 服务器的数据管理网关的名称 |否 |&nbsp; |
 | port |FTP 服务器侦听的端口 |否 |21 |
-| enableSsl |指定是否使用 FTP over SSL/TLS 通道 |否 |true |
-| enableServerCertificateValidation |指定使用 FTP over SSL/TLS 通道时，是否启用服务器 SSL 证书验证 |否 |true |
+| enableSsl |指定是否使用 FTP over SSL/TLS 通道 |否 |是 |
+| enableServerCertificateValidation |指定使用 FTP over SSL/TLS 通道时，是否启用服务器 SSL 证书验证 |否 |是 |
 
 #### <a name="example-using-anonymous-authentication"></a>示例：使用匿名身份验证
 
@@ -3778,7 +3778,7 @@ auto-
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| folderPath |文件夹路径。 示例： `myfolder`<br/><br/>请对字符串中的特殊字符使用转义符“\”。 例如：对于 folder\subfolder，请指定 folder\\\\subfolder；对于 d:\samplefolder，请指定 d:\\\\samplefolder。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
+| folderPath |文件夹路径。 示例：`myfolder`<br/><br/>请对字符串中的特殊字符使用转义符“\”。 例如：对于 folder\subfolder，请指定 folder\\\\subfolder；对于 d:\samplefolder，请指定 d:\\\\samplefolder。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
 | fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt` （例如：0a405f8a-93ff-4c6f-b3be-f69616f1df7a） |否 |
 | partitionedBy |partitionedBy 可用于指定时序数据的动态 folderPath 和 filename。 示例：folderPath 可针对每小时的数据参数化。 |否 |
 | 格式 | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
@@ -4440,7 +4440,7 @@ auto-
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | connectionString |连接字符串的非访问凭据部分和可选的加密凭据。 请参阅以下部分中的示例。 |是 |
-| credential |连接字符串的访问凭据部分，采用特定于驱动程序的属性值格式指定。 示例： `“Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”.` |否 |
+| credential |连接字符串的访问凭据部分，采用特定于驱动程序的属性值格式指定。 示例：`“Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”.` |否 |
 | authenticationType |用于连接 ODBC 数据存储的身份验证类型。 可能值为：匿名和基本。 |是 |
 | username |如果使用基本身份验证，请指定用户名。 |否 |
 | password |指定为用户名指定的用户帐户的密码。 |否 |
@@ -5333,7 +5333,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
     }
 }
 ```
-请注意以下几点：
+注意以下几点：
 
 - **type** 属性设置为 **HDInsightSpark**。
 - **rootPath** 设置为 **adfspark\\pyFiles**，其中，adfspark 是 Azure Blob 容器，pyFiles 是该容器中的文件夹。 在此示例中，Azure Blob 存储是与 Spark 群集关联的存储。 可将文件上传到不同的 Azure 存储。 如果这样做，请创建 Azure 存储链接服务，将该存储帐户链接到数据工厂。 然后，将该链接的服务的名称指定为 **sparkJobLinkedService** 属性的值。 请参阅“Spark 活动属性”，了解有关 Spark 活动支持的此属性及其他属性的详细信息。

@@ -1,5 +1,5 @@
 ---
-title: 自动优化电子邮件通知操作指南-Azure SQL 数据库
+title: 自动优化电子邮件通知操作指南
 description: 为 Azure SQL 数据库自动查询优化启用电子邮件通知。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: e1478ab6abc9705a67f2d47bc076d3c2fe54ccd4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b48c37a6e607d121416ebae4d74e58f39670b79a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691143"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821927"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自动优化的电子邮件通知
 

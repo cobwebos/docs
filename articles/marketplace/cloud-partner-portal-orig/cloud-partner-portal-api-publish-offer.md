@@ -4,15 +4,16 @@ description: 用于发布指定产品/服务的 API。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 117a4e5e238e754524ff813ce25ebc1105e2153c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7ad8086c417cf1f14d9116fa4abcb0a88030922
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64934980"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819643"
 ---
 <a name="publish-an-offer"></a>发布产品/服务
 ================
@@ -32,10 +33,10 @@ ms.locfileid: "64934980"
 |  |  |
 
 
-<a name="header"></a>Header
+<a name="header"></a>标头
 ------
 
-|  **名称**        |    **ReplTest1**          |
+|  **名称**        |    **值**          |
 |  --------        |    ---------          |
 |  Content-Type    | `application/json`    |
 |  授权   |  `Bearer YOUR_TOKEN`  |
@@ -71,7 +72,7 @@ ms.locfileid: "64934980"
 
 ### <a name="response-header"></a>响应标头
 
-|  **名称**             |    **ReplTest1**                                                                 |
+|  **名称**             |    **值**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
 | Operation-Location    | URL，可以查询它以确定操作的当前状态。    |
 |  |  |

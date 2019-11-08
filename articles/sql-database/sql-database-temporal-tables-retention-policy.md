@@ -1,5 +1,5 @@
 ---
-title: 使用保留策略管理临时表中的历史数据
+title: 管理临时表中的历史数据
 description: 了解如何使用临时保留策略来控制历史数据。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: 2568f3be96604856d5353f7f5f94926162880bfd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3c2460c6f5e0905f45106148ecc3e8a949cf221f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686998"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820689"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>使用保留策略管理临时表中的历史数据
 
@@ -116,11 +116,11 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 
 针对具有行存储聚集索引的表的清理任务要求索引的开头为对应于 SYSTEM_TIME 期限结束时间的列。 若没有此类索引，则无法配置有限保留期：
 
-*消息13765、级别16、状态 1 <br></br> 在经系统版本控制的时态表 "temporalstagetestdb.dbo.websiteuserinfohistory" 上设置有限保留期失败，因为历史记录表 "temporalstagetestdb.dbo.websiteuserinfohistory WebsiteUserInfoHistory" 不包含所需的聚集索引。请考虑在历史记录表中创建聚集列存储或 B 树索引，并以与 SYSTEM_TIME 时间段的结束时间匹配的列开始。*
+*消息13765、级别16、状态 1 <br></br> 在经系统版本控制的时态表 "temporalstagetestdb.dbo.websiteuserinfohistory" 上设置有限保留期失败，因为历史记录表 "temporalstagetestdb.dbo.websiteuserinfohistory WebsiteUserInfoHistory" 不包含所需的聚集索引。请考虑在历史记录表中创建聚集列存储或 B 树索引，并以与 SYSTEM_TIME 时期的结束时间匹配的列开始。*
 
 请务必注意，Azure SQL 数据库创建的默认历史记录表已有聚集索引，这符合保留策略。 如果尝试在具有有限保留期的表中删除该索引，该操作会失败并出现以下错误：
 
-*消息13766、级别16、状态 1 <br></br> 无法删除聚集索引 ' IX_WebsiteUserInfoHistory '，因为它正用于自动清理过时数据。如果需要删除此索引，请考虑在相应的系统版本控制临时表中将 HISTORY_RETENTION_PERIOD 设置为 "无限"。*
+*消息13766、级别16、状态 1 <br></br> 无法删除聚集索引 "WebsiteUserInfoHistory. IX_WebsiteUserInfoHistory"，因为它正用于自动清理过时数据。如果需要删除此索引，请考虑在相应的系统版本控制临时表中将 HISTORY_RETENTION_PERIOD 设置为 "无限"。*
 
 如果按升序插入历史行（按期限结束时间列排序），则清理聚集列存储索引的过程最为顺利。当历史记录表是由 SYSTEM_VERSIONIOING 机制以独占方式填充时，情况往往如此。 如果历史记录表中的行未按期限结束时间列排序（如果迁移了现有历史数据，可能会存在这种情况），则应在正确排序的 B 树行存储索引顶层重新创建聚集列存储索引，以获得最佳性能。
 

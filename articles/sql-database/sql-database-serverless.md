@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库无服务器
+title: 无服务器
 description: 本文介绍新的无服务器计算层，并将它与现有的预配计算层进行比较
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 11/04/2019
-ms.openlocfilehash: fcd79182e046d94f9e67acecebd5cf6a45f2706f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fecc394080f54f023529ed2da8c9690c38c1da08
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687383"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818276"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 
@@ -124,7 +124,7 @@ Azure SQL 数据库无服务器是单一数据库的计算层，可根据工作�
 
 如果在任何时候，下面的任意条件成立，均会触发自动恢复：
 
-|功能|自动恢复触发器|
+|Feature|自动恢复触发器|
 |---|---|
 |身份验证和授权|登录|
 |威胁检测|启用/禁用数据库或服务器级别的威胁检测设置。<br>修改数据库或服务器级别的威胁检测设置。|

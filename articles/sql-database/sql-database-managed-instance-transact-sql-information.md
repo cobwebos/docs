@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库托管实例 T-sql 差异
+title: 托管实例 T-sql 差异
 description: 本文介绍了 Azure SQL 数据库托管实例与 SQL Server 的 T-SQL 差异
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 5efa52da0005d0b98820c648dfe7c8489bc39076
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3518404b76625e2557aaefdc6ab5ad7353683984
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687863"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823321"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>托管实例的 T-SQL 差异、限制和已知问题
 
@@ -78,7 +78,7 @@ ms.locfileid: "73687863"
 
 有关使用 T-SQL 进行备份的信息，请参阅 [BACKUP](/sql/t-sql/statements/backup-transact-sql)。
 
-## <a name="security"></a>安全性
+## <a name="security"></a>“安全”
 
 ### <a name="auditing"></a>审核
 
@@ -161,7 +161,7 @@ WITH PRIVATE KEY (<private_key_options>)
     - 从托管实例中导出数据库，并将其导入到同一个 Azure AD 域中的 SQL 数据库。 
     - 从 SQL 数据库中导出数据库，并将其导入到同一个 Azure AD 域中的托管实例。
     - 从托管实例中导出数据库，并将其导入 SQL Server （2012版或更高版本）。
-      - 在此配置中，所有 Azure AD 用户都作为不带登录名的 SQL 数据库主体（用户）创建。 用户的类型列为 SQL （在 database_principals 中显示为 SQL_USER）。 它们的权限和角色保留在 SQL Server 数据库元数据中，并且可用于模拟。 但是，它们不能用于访问 SQL Server 使用其凭据进行登录。
+      - 在此配置中，所有 Azure AD 用户都作为不带登录名的 SQL 数据库主体（用户）创建。 用户的类型列为 SQL （在 sys. database_principals 中显示为 "SQL_USER"）。 它们的权限和角色保留在 SQL Server 数据库元数据中，并且可用于模拟。 但是，它们不能用于访问 SQL Server 使用其凭据进行登录。
 
 - 只有服务器级主体登录名（由托管实例预配进程创建）、服务器角色的成员（例如 `securityadmin` 或 `sysadmin`）或者在服务器级别拥有 ALTER ANY LOGIN 权限的其他登录名可以在托管实例的 master 数据库中创建 Azure AD 服务器主体（登录名）。
 - 如果登录名是 SQL 主体，则只有属于 `sysadmin` 角色的登录名才能使用 create 命令来为 Azure AD 帐户创建登录名。
@@ -537,7 +537,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="error-logs"></a>错误日志
 
-托管实例将详细信息放在错误日志中。 有很多内部系统事件记录在错误日志中。 使用自定义过程读取已筛选出某些不相关条目的错误日志。 有关详细信息，请参阅[托管实例– sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/)或 Azure Data Studio 的[托管实例扩展（预览版）](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) 。
+托管实例将详细信息放在错误日志中。 有很多内部系统事件记录在错误日志中。 使用自定义过程读取已筛选出某些不相关条目的错误日志。 有关详细信息，请参阅[托管实例–](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) Azure Data Studio 的 sp_readmierrorlog 或[托管实例扩展（预览版）](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) 。
 
 ## <a name="Issues"></a> 已知问题
 
@@ -553,7 +553,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 **日期：** Oct 2019
 
-SQL Server/托管实例[不允许用户删除不为空的文件](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites)。 如果尝试使用 `ALTER DATABASE REMOVE FILE` 语句删除非空的数据文件，则不会立即返回错误 `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty`。 托管实例将继续尝试删除文件，并且在30分钟后，操作将失败，并 `Internal server error`。
+SQL Server/托管实例[不允许用户删除不为空的文件](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites)。 如果尝试使用 `ALTER DATABASE REMOVE FILE` 语句删除非空的数据文件，则不会立即返回 `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` 错误。 托管实例将继续尝试删除该文件，并在与 `Internal server error`30 分钟后，操作将失败。
 
 **解决方法**：使用 `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` 命令删除文件内容。 如果这是文件组中的唯一文件，则需要在收缩文件之前删除与此文件组关联的表或分区中的数据，并选择性地将这些数据加载到另一个表/分区。
 

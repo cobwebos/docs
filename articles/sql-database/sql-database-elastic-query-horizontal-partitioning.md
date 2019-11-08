@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: 37b19cd86cd13dd2bdc8b3a38abf61898b81d01b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 79abaade22fc107fa4c848607ff48232eeeb58ad
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690383"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823759"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>跨扩展云数据库进行报告（预览）
 

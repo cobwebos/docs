@@ -5,18 +5,19 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: da6fee7158344d331c6c2a68f0fab1b13cc3a291
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9eb283f538759f9591add4b04462de151f2cb014
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934096"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825547"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 产品/服务
 
-若要开始创建 "软件即服务" （SaaS）产品/服务，请确保先[创建合作伙伴中心帐户](./create-account.md)，并打开 "概述" 选项[卡，并](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)选择 "**概述**" 选项卡。
+若要开始创建 "软件即服务" (SaaS) 产品/服务, 请确保先[创建合作伙伴中心帐户](./create-account.md), 并打开 [Commercial Marketplace 仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/offers), "概述" 选项卡, 并选择 "**概述**" 选项卡。
 
 ![合作伙伴中心的商业应用商店仪表板](./media/new-offer-overview.png)
 
@@ -44,7 +45,7 @@ ms.locfileid: "72934096"
 
 <br>示例：测试产品1&#8482;
 
-选择**创建**。  为此产品/服务创建了 "**产品/服务概述**" 页。  
+选择“创建”。  为此产品/服务创建了 "**产品/服务概述**" 页。  
 
 <!---
 ![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
@@ -57,10 +58,10 @@ ms.locfileid: "72934096"
 - **发布状态**显示了发布此产品/服务所需步骤的直观表示形式，以及每个步骤要完成的时间。 不完整的发布步骤图标将灰显。 
 
 - "**产品概述**" 菜单包含用于对此产品/服务执行操作的链接的列表。 此操作列表将根据你为产品/服务所做的选择而更改。  
-    - 如果产品/服务是草稿–删除草稿 
-    - 如果产品/服务是现场的-停止销售优惠 
-    - 如果产品/服务处于预览阶段-上线 
-    - 如果尚未完成发布服务器注销–请取消发布
+    - 如果产品/服务是草稿版-删除草稿 
+    - 如果产品/服务是 live-停止销售优惠 
+    - 如果产品/服务为预览版-上线 
+    - 如果尚未完成发布服务器注销-请取消发布
 
 ## <a name="offer-setup"></a>产品/服务设置
 
@@ -192,7 +193,7 @@ SaaS 使用按流量计费服务，根据固定费用、每用户或消耗费用
 
 Azure Marketplace 发布者可以选择在标准合同下提供其软件，而客户只需要来审查和接受一次，而不是手工编写自定义条款和条件。 
 
-可在此处找到标准协定： https://go.microsoft.com/fwlink/?linkid=2041178 。
+可在此处找到标准协定： https://go.microsoft.com/fwlink/?linkid=2041178。
 
 #### <a name="terms-of-use"></a>使用条款
 
@@ -222,7 +223,7 @@ Azure Marketplace 发布者可以选择在标准合同下提供其软件，而�
 
 #### <a name="description"></a>**说明**
 
-这是必填字段。 要包括在说明中的项： 
+此为必填字段。 要包括在说明中的项： 
 
 * 在前几句描述中清晰描述产品/服务的价值主张。  
 * 请牢记，前几句话可能在搜索引擎结果中显示。  
@@ -276,7 +277,7 @@ Azure Marketplace 发布者可以选择在标准合同下提供其软件，而�
 
     **免费试用版**
 
-1. 若要在内容之间添加**换行符**，请在要在新行上开始的内容前添加 `<br>`。 如果要保留一个空格并确保内容从新行开始，请在内容前添加 `<br><br>`。 
+1. 若要在内容之间添加**换行符**，请将 `<br>` 添加到要在新行上开始的内容之前。 如果要保留一个空格并确保内容从新行开始，请在内容前添加 `<br><br>`。 
 
     **示例**：
 
@@ -307,7 +308,7 @@ Azure Marketplace 发布者可以选择在标准合同下提供其软件，而�
 - **CSP 计划营销材料**（可选）：如果你选择将你的产品/服务扩展到[云解决方案提供商（CSP）](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)计划，则必须提供营销材料的链接。 CSP 通过使 CSP 合作伙伴捆绑、营销和转售你的产品/服务，将你的产品/服务扩展到更广泛的合格客户。 这些分销商需要访问产品/服务的营销材料。 有关详细信息，请参阅[市场推广服务](https://partner.microsoft.com/reach-customers/gtm)。
 - **有用的链接**（可选）：通过提供**标题**和**URL**来列出你的应用或相关服务的可选补充联机文档。 单击 " **+ 添加 URL**"，添加其他有用的链接。
 
-#### <a name="contact-information"></a>联系人信息
+#### <a name="contact-information"></a>联系信息
 
 - **联系人**：对于每个客户联系人，请提供员工**姓名**、**电话号码**和**电子邮件**地址。  （这些*将不*会公开显示）。 **支持联系人**组也需要**支持 URL** 。  （*将*公开显示此信息）。
 
@@ -351,7 +352,7 @@ Azure Marketplace 发布者可以选择在标准合同下提供其软件，而�
 
 - **登陆页面 URL** （必需）：定义客户在从 marketplace 获取产品/服务后将居住在的站点 url。 此 URL 将是在客户路由到页面时接收令牌的终结点。 使用履单完成 Api 中的 resolve，可以交换该令牌以获取预配详细信息。 您收集的这些详细信息以及您收集的任何其他人都可以在您的体验中使用，以完成注册并激活他们的购买体验。
 
-- **连接 webhook** （必需）：对于 Microsoft 需要代表客户发送给你的所有异步事件（例如： SaaS 订阅无效），我们要求你提供连接 webhook。 如果尚未准备好 webhook 系统，最简单的配置是使用 HTTP 终结点逻辑应用，该应用将侦听任何发送给它的事件，并相应地处理这些事件（例如，https： westus： 443/work). 有关详细信息，请参阅[在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint)。
+- **连接 webhook** （必需）：对于 Microsoft 需要代表客户发送给你的所有异步事件（例如： SaaS 订阅无效），我们要求你提供连接 webhook。 如果尚未准备好 webhook 系统，最简单的配置是使用 HTTP 终结点逻辑应用，该应用将侦听任何发送给它的事件，并相应地处理这些事件（例如，https： westus： 443/work).\/ 有关详细信息，请参阅[在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint)。
 
 - **Azure AD 租户 ID** （必需）：在 Azure 门户内部，我们要求你[创建 Azure Active Directory （AD）应用](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)，以便我们可以验证两个服务之间的连接是否在经过身份验证的通信之后。 若要查找[租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)，请跳到 Azure Active Directory，选择 "**属性**"，然后查找列出的**目录 ID**号（例如50c464d3-4930-494c-963c-1e951d15360e）。
 
@@ -367,8 +368,8 @@ Azure Marketplace 发布者可以选择在标准合同下提供其软件，而�
 
 **计划概述**中的可用**操作**取决于计划的当前状态，并且可能包括：
 
-- 如果计划状态为**草稿**–删除草稿
-- 如果计划状态为 "**实时**" –停止销售计划或同步专用受众
+- 如果计划状态为**草稿**-删除草稿
+- 如果计划状态为**Live** -停止销售计划或同步专用受众
 
 **创建新计划**（对于选择通过 Microsoft 进行销售的用户，至少需要一个计划）
 
@@ -420,7 +421,7 @@ Azure Marketplace 发布者可以选择在标准合同下提供其软件，而�
 
 如果已将计划的价格设置为美国美元（USD）并添加另一个市场位置，则将根据当前汇率计算新市场的价格。 在发布前，应始终查看每个市场的价格。 保存更改后，可以通过使用 "导出价格（.xlsx）" 链接来查看定价。
 
-#### <a name="pricing"></a>价格
+#### <a name="pricing"></a>定价
 
 - **定价模型**：平面速率或基于座位
 
@@ -437,7 +438,7 @@ Azure Marketplace 发布者可以选择在标准合同下提供其软件，而�
 - **价格**：每月 usd 或每年美元
 
 使用在安装过程中可用的当前汇率，使用当地货币（USD = 美国美元）将价格设置为所有所选市场的本地货币。 在发布之前通过导出定价电子表格并查看每个市场中的价格来验证这些价格。 如果要在单个市场中设置自定义价格，请修改并导入定价电子表格。 你负责验证此定价并拥有这些设置。
-*\*You 必须先保存定价更改，才能导出定价数据。*
+*\*必须先保存定价更改, 才能导出定价数据。*
 
 发布之前请仔细查看你的价格，因为发布计划后，有一些限制会发生变化：
 
@@ -483,9 +484,9 @@ Azure Marketplace 发布者可以选择在标准合同下提供其软件，而�
 如果这是你首次发布此产品/服务，则可以：
 
 - 请参阅产品/服务的每个部分的完成状态。
-    - *未启动*–表示该部分尚未接触，需要完成。
-    - *不完整*–表示部分包含需要修复的错误或需要提供详细信息。 请返回到部分并对其进行更新。
-    - *Complete* –表示部分已完成，所有必需的数据都已提供并且没有错误。 产品/服务的所有部分必须处于完整状态，然后才能提交产品/服务。
+    - *未开始*-表示该部分尚未接触，需要完成。
+    - *不完整*-表示部分包含需要修复的错误或需要提供更多信息。 请返回到部分并对其进行更新。
+    - *Complete* -表示该部分已完成，所有必需的数据都已提供并且没有错误。 产品/服务的所有部分必须处于完整状态，然后才能提交产品/服务。
 - 向认证团队提供测试说明，以确保正确测试您的应用程序，以及任何有助于了解应用程序的补充说明。
 - 通过选择 "**提交**" 提交产品/服务进行发布。 我们将向你发送一封电子邮件，告知你该产品/服务的预览版本何时可供你查看和批准。 你必须返回到合作伙伴中心，并选择 "产品 **/** 服务"，以便将你的产品/服务发布到公共（或专用用户）。
 

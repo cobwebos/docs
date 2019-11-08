@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 manager: evansma
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/14/2018
 ms.author: v-qiwe
-ms.openlocfilehash: 29546b0969751a43959a55860fc22e9f3c3e225b
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: bdb2a54748c734d7b44dfa0b1f106d37e817f80e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154952"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822934"
 ---
 # <a name="azure-applications-managed-application-offer-publishing-guide"></a>Azure 应用程序：“托管应用程序”产品/服务发布指南
 
@@ -32,15 +33,15 @@ ms.locfileid: "67154952"
 
 |要求 |详细信息  |
 |---------|---------|
-|部署到客户的 Azure 订阅 | 托管的应用必须部署在客户的订阅，并可以由第三方。 | 
-|计费和计量    |  资源将在客户的 Azure 订阅中预配。 即用即付 (PAYGO) 虚拟机将通过 Microsoft 与客户进行交易，通过客户的 Azure 订阅 (PAYGO) 进行计费。 <br> 对于自带的自己的许可证，而 Microsoft 将向在客户订阅中，所产生的基础结构成本将 transact 您直接许可给客户的费用的软件。        |
+|部署到客户的 Azure 订阅 | 托管应用必须部署在客户的订阅中，并且可以由第三方进行管理。 | 
+|计费和计量    |  将在客户的 Azure 订阅中预配资源。 即用即付（PAYGO）虚拟机将通过 Microsoft 与客户进行交易，并通过客户的 Azure 订阅（PAYGO）进行计费。 <br> 对于自带许可证，Microsoft 将在客户订阅中对基础结构成本计费，并直接向客户收取软件许可费用。        |
 |与 Azure 兼容的虚拟硬盘 (VHD)    |   必须基于 Windows 或 Linux 构建 VM。<ul> <ul> <li>有关创建 Linux VHD 的详细信息，请参阅 [Azure 认可的 Linux 发行版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。</li> <li>有关创建 Windows VHD 的详细信息，请参阅[创建与 Azure 兼容的 VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)。</li> </ul> |
 
 >[!NOTE]
 > 托管应用必须可通过市场部署。 如果客户沟通是个问题，应该在启用商机分享后与感兴趣的客户交流。  
 
 >[!Note]
->云解决方案提供商 (CSP) 合作伙伴通道参加现已推出。  请参阅[云解决方案提供商](./cloud-solution-providers.md)营销通过 Microsoft CSP 产品/服务的详细信息的合作伙伴渠道。
+>现在提供了云解决方案提供商（CSP）合作伙伴渠道选择。  请参阅[云解决方案提供商](./cloud-solution-providers.md)，了解有关通过 Microsoft CSP 合作伙伴渠道营销产品/服务的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 如果尚未注册， 
@@ -49,4 +50,4 @@ ms.locfileid: "67154952"
 
 如果已注册并正在创建新套餐或正在使用现有套餐，
 
-- [登录到云合作伙伴门户](https://cloudpartner.azure.com)若要创建或完成产品/服务。
+- [登录到云合作伙伴门户](https://cloudpartner.azure.com)以创建或完成产品/服务。

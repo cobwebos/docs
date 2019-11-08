@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库资源限制-托管实例
+title: 资源限制-托管实例
 description: 本文概述托管实例的 Azure SQL 数据库资源限制。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 10/02/2019
-ms.openlocfilehash: 723704b6b81aacf086ff42b02c32259d0e2f1c6d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 08e378c4b5f6d8e17ac67a80401edf69611c0a13
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687913"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823336"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL 数据库托管实例资源限制概述
 

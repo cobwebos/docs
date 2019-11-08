@@ -1,5 +1,5 @@
 ---
-title: 将工作或学校帐户添加到 Microsoft Authenticator 应用 - Azure Active Directory | Microsoft Docs
+title: 向验证器应用添加工作或学校帐户-Azure AD
 description: 如何将工作或学校帐户添加到 Microsoft Authenticator 应用以进行双重验证。
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3be2ee662a061cdcb6acc58e47eda5feda3b9eee
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: c7c9fa41a1278f0e1e54a06c3930e3bbc3d3d3ae
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880798"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803738"
 ---
 # <a name="add-your-work-or-school-account"></a>添加工作或学校帐户
 
@@ -31,7 +31,7 @@ ms.locfileid: "68880798"
 1. 在计算机上，转到[其他安全性验证](https://aka.ms/mfasetup)页。
 
     >[!Note]
-    >如果看不到“其他安全性验证”页，可能是管理员启用了安全信息（预览）体验。 如果是这种情况，应按照[设置安全信息以使用 Authenticator 应用](security-info-setup-auth-app.md)部分中的说明操作。 否则，请联系组织的技术支持来获得帮助。 有关安全信息的详细信息, 请参阅[安全信息 (预览版) 概述](user-help-security-info-overview.md)。
+    >如果看不到“其他安全性验证”页，可能是管理员启用了安全信息（预览）体验。 如果是这种情况，应按照[设置安全信息以使用 Authenticator 应用](security-info-setup-auth-app.md)部分中的说明操作。 否则，请联系组织的技术支持来获得帮助。 有关安全信息的详细信息，请参阅[安全信息（预览版）概述](user-help-security-info-overview.md)。
 
 2. 选中“Authenticator 应用”旁边的复选框，然后选择“配置”。
 
@@ -42,14 +42,14 @@ ms.locfileid: "68880798"
 3. 打开 Microsoft Authenticator 应用，从右上方的“自定义和控制”图标中选择“添加帐户”，然后选择“工作或学校帐户”。
 
     >[!Note]
-    >如果这是你第一次设置 Microsoft Authenticator 应用程序, 你可能会收到询问是允许应用程序访问你的相机 (iOS) 还是允许应用拍摄图片并录制视频 (Android) 的提示。 你必须选择 "**允许**", 以便验证器应用可以访问你的相机, 以便在下一步中对 QR 代码进行图片。 如果不允许相机, 仍可以设置验证器应用, 但需要手动添加代码信息。 有关如何手动添加代码的信息, 请参阅请参阅[手动将帐户添加到应用](user-help-auth-app-add-account-manual.md)。
+    >如果这是你首次设置 Microsoft Authenticator 应用，则可能会收到一个提示，询问你是允许该应用访问你的相机 (iOS)，还是允许该应用拍摄照片和录制视频 (Android)。 你必须选择“允许”，以便验证器应用可以访问你的相机，在下一步中拍摄 QR 码的照片。 如果你不允许使用相机，仍然可以设置验证器应用，但需要手动添加代码信息。 有关如何手动添加代码的信息，请参阅[手动将帐户添加到应用](user-help-auth-app-add-account-manual.md)。
 
 4. 在计算机上使用设备的摄像头扫描“配置移动应用”屏幕中的 QR 码，然后选择“完成”。
 
     >[!Note]
-    >如果摄像头无法捕获 QR 码，可以手动将帐户信息添加到 Microsoft Authenticator 应用中，以进行双重验证。 有关详细信息以及操作方法，请参阅[手动添加帐户](user-help-auth-app-add-account-manual.md)。
+    >如果摄像头无法捕获 QR 码，可以手动将帐户信息添加到 Microsoft Authenticator 应用中，以进行双因素验证。 有关详细信息以及操作方法，请参阅[手动添加帐户](user-help-auth-app-add-account-manual.md)。
 
-5. 检查设备上应用的“帐户”屏幕，以确保帐户正确，并有关联的六位数验证码。 为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个代码。
+5. 检查设备上应用的“帐户”屏幕，以确保帐户正确，并有关联的六位数验证码。 为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个验证码。
 
     ![帐户屏幕](./media/user-help-auth-app-download-install/auth-app-accounts.png)
 

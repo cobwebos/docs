@@ -1,5 +1,5 @@
 ---
-title: 通过 "我的帐户" 门户管理你的组织-Azure Active Directory |Microsoft Docs
+title: 在我的帐户门户中管理你的组织-Azure AD
 description: 如何从 "我的帐户" 门户的 "组织" 页查看和离开你的组织。
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a0e5b5042c330ce85952085de71fd7b8ff7dce9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9b81ec4996ae91714b442dd2e62a0bc45c6bfd39
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73587779"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820419"
 ---
 # <a name="manage-your-organizations-from-the-my-account-portal"></a>通过 "我的帐户" 门户管理你的组织
 

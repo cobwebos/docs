@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库内存中技术
+title: 内存中技术
 description: Azure SQL 数据库内存中技术大幅提升了事务和分析工作负荷的性能。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: 7ee643c10c61368ee91692cbddf326ba488f81e6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: de60712451d4c2e8a7d931f7a09352f55be05694
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689791"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810265"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>在 SQL 数据库中使用内存中技术优化性能
 
@@ -93,7 +93,7 @@ Azure SQL 数据库采用以下内存中技术：
 深入介绍这些技术的视频：
 
 - [Azure SQL 数据库中的内存中 OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB)（包含性能优势的演示和自行重现这些结果的步骤）
-- [In-Memory OLTP Videos: What it is and When/How to use it（内存中 OLTP 相关视频：定义及其适用时间和使用方法）](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
+- [In-Memory OLTP Videos: What it is and When/How to use it](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)（内存中 OLTP 相关视频：定义及其适用时间和使用方法）
 
 可通过编程方式了解给定的数据库是否支持内存中 OLTP。 可执行以下 Transact-SQL 查询：
 ```

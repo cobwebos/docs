@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: bf4eb817bb1705c6af6d4e7e9e28e5789f49a906
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 8ca24e8556ee53e9d12eaea8fd9eddb07ebed490
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873035"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826397"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>教程：在 ASP.NET 中创建缓存端排行榜
 
@@ -671,7 +671,7 @@ ms.locfileid: "65873035"
 
    | 设置       | 建议的值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **服务器名称** | 任何全局唯一名称 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 |
+   | **服务器名称** | 任何全局唯一名称 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)（命名规则和限制）。 |
    | 服务器管理员登录名  | 任何有效的名称 | 如需有效的登录名，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 |
    | **密码** | 任何有效的密码 | 密码必须至少有 8 个字符，且必须包含以下类别中的三个类别的字符：大写字符、小写字符、数字以及非字母数字字符。 |
    | **位置** | *美国东部* | 选择创建缓存和应用服务的同一区域。 |

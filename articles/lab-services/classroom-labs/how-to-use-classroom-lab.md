@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 10813600621293e9f559129230193f81ea0c505a
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 2ac9e8b8d0635eceb7d4f85ad867b102f7d064f5
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161519"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585147"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>如何访问 Azure 实验室服务中的课堂实验室
 本文介绍如何注册到课堂实验室、查看可以访问的所有实验室、在实验室中启动/停止 VM 以及连接到 VM。 
@@ -107,7 +107,7 @@ ms.locfileid: "71161519"
 2. 使用注册到实验室时使用过的用户帐户登录到服务。 
 3. 确认看到可以访问的所有实验室。 
 
-    ![查看所有实验室](../media/how-to-use-classroom-lab/all-labs.png)
+    ![查看所有实验室](../media/how-to-manage-classroom-labs/all-labs.png)
 
 
 ## <a name="next-steps"></a>后续步骤

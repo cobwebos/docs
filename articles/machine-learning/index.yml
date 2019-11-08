@@ -2,7 +2,7 @@
 title: Azure 机器学习文档
 summary: Azure 机器学习提供了 Web 界面和 SDK，以便你可以大规模快速训练并部署机器学习模型和管道。 请将这些功能与开放源代码 Python 框架（如 PyTorch、TensorFlow 和 scikit-learn）配合使用。
 metadata:
-  title: 机器学习文档 | Azure
+  title: Azure 机器学习文档
   description: Azure 机器学习提供了 Web 界面和 SDK，以便你大规模快速训练并部署机器学习模型和管道。 请将这些功能与开放源代码 Python 框架（如 PyTorch、TensorFlow 和 scikit-learn）配合使用。
   services: machine-learning
   ms.service: machine-learning
@@ -12,12 +12,12 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 10/29/2019
-  ms.openlocfilehash: 0b5e264cc7fd2e220e2d6b5b7c4e886f4c8a8d32
-  ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+  ms.openlocfilehash: c6b0b67f206ec335a5e30098dd75b7e71db5770f
+  ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/07/2019
-  ms.locfileid: "73748016"
+  ms.lasthandoff: 11/08/2019
+  ms.locfileid: "73828116"
 landingContent:
 - title: Azure ML 入门
   linkLists:

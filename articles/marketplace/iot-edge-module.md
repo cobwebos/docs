@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, IoT Edge
 author: qianw211
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: pabutler
-ms.openlocfilehash: 54369e0f2c943c146d186605833198253b960022
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: db501c34a4418bc7b08b19105a9b28585288f877
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949526"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823065"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模块
 
@@ -76,11 +77,11 @@ Microsoft Azure 市场协议和策略的所有条款都适用于 IoT Edge 模块
 
 ## <a name="documentation-and-resources"></a>文档和资源
 
-[创建 IoT Edge 模块套餐](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) -– 在云发布门户中发布新 IoT Edge 模块套餐的步骤。
+[创建 IoT Edge 模块产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer)-使用云发布门户发布新的 IoT Edge 模块产品/服务的步骤。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果尚未执行此操作，
+如果尚未注册，
 
 - 请在市场中[注册](https://azuremarketplace.microsoft.com/sell)。
 

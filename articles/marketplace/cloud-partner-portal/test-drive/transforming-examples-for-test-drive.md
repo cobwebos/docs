@@ -1,19 +1,20 @@
 ---
-title: 测试驱动器转换示例 |Azure Marketplace
+title: 正在转换测试驱动器的示例 |Azure Marketplace
 description: 列出了展示如何实现体验版的示例。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 727028611c52a8d03026e5d3fa67b2e0ee7e2053
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2680ef04a2136c36e307dc5b119df3e8053c2597
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938479"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824527"
 ---
 <a name="transforming-examples-for-test-drive"></a>体验版转换示例
 ====================================

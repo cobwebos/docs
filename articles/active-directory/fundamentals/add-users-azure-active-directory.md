@@ -13,15 +13,15 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8b436fbdb0d70318e6820d3f59f1e198c639e5a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e98b09d8b07c625613e3be149e64ac8f06adc089
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561687"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805547"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>使用 Azure Active Directory 添加或删除用户
-在 Azure Active Directory (Azure AD) 组织中添加新用户或删除现有用户。
+在 Azure Active Directory (Azure AD) 组织中添加新用户或删除现有用户。 若要添加或删除用户，您必须是用户管理员或全局管理员。 
 
 ## <a name="add-a-new-user"></a>添加新用户
 可使用 Azure Active Directory 门户创建新用户。
@@ -31,7 +31,7 @@ ms.locfileid: "68561687"
 
 2. 依次选择“Azure Active Directory”、“用户”、“新建用户”。
 
-    ![用户 - 突出显示新用户的所有用户页面](media/add-users-azure-active-directory/new-user-all-users-blade.png)
+    ![“用户 - 所有用户”页，其中突出显示了“新建用户”](media/add-users-azure-active-directory/new-user-all-users-blade.png)
 
 3. 在“用户”页中，填写必填信息。
 
@@ -45,7 +45,7 @@ ms.locfileid: "68561687"
 
    - **配置文件。** （可选）可添加有关用户的详细信息。 也可稍后添加用户信息。 有关添加用户信息的详细信息，请参阅[如何添加或更改用户配置文件信息](active-directory-users-profile-azure-portal.md)。
 
-   - **组。** （可选）可将用户添加到一个或多个现有组。 也可稍后将用户添加到组。 有关将用户添加到组的详细信息，请参阅[如何创建基本组并添加成员](active-directory-groups-create-azure-portal.md)。
+   - **组。** （可选）可将用户添加到一个或多个现有组。 也可稍后将用户添加到组。 有关将用户添加到组中的详细信息，请参阅[如何创建基本组并添加成员](active-directory-groups-create-azure-portal.md)。
 
    - **目录角色。** （可选）你可以将用户添加到 Azure AD 管理员角色。 可以将用户分配为全局管理员，或者分配为 Azure AD 中有限的管理员角色中的一个或多个。 有关分配角色的详细信息，请参阅[如何为用户分配角色](active-directory-users-assign-role-azure-portal.md)。
 
@@ -56,7 +56,7 @@ ms.locfileid: "68561687"
     用户已创建并添加到 Azure AD 租户。
 
 ## <a name="add-a-new-user-within-a-hybrid-environment"></a>在混合环境中添加新用户
-若环境同时具有 Azure Active Directory（云）和 Windows Server Active Directory（内部部署），则可以通过同步现有用户帐户数据来添加新用户。 有关混合环境和用户的详细信息，请参阅[将本地目录与 Azure Active Directory 进行集成](../hybrid/whatis-hybrid-identity.md)。
+如果你的环境中同时包含 Azure Active Directory（云）和 Windows Server Active Directory（本地），则可以通过同步现有用户帐户数据来添加新用户。 有关混合环境和用户的详细信息，请参阅[将本地目录与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md)。
 
 ## <a name="delete-a-user"></a>删除用户
 可使用 Azure Active Directory 门户删除现有用户。
@@ -64,7 +64,7 @@ ms.locfileid: "68561687"
 ### <a name="to-delete-a-user"></a>删除用户
 1. 使用组织的用户管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择“Azure Active Directory”并选择“用户”然后搜索并选择想要从 Azure AD 租户中删除的用户。 例如，Mary Parker。
+2. 选择“Azure Active Directory”并选择“用户”然后搜索并选择想要从 Azure AD 租户中删除的用户。 例如，_Mary Parker_。
 
 3. 选择“删除用户”。
 

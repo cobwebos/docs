@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库自动，异地冗余备份
+title: 自动异地冗余备份
 description: SQL 数据库每隔几分钟会自动创建一个本地数据库备份，使用 Azure 读取访问异地冗余存储来提供异地冗余。
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: 5dd2cb8d266fcb2a17c50a2213509b968894737e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 114a5bbfd71fc0847c2b1bc65a8ba0bfa0df1add
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691176"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821947"
 ---
 # <a name="automated-backups"></a>自动备份
 
@@ -40,7 +40,7 @@ SQL 数据库使用 SQL Server 技术，每周创建[完整备份](https://docs.
 - 若要执行还原，请参阅[从备份还原数据库](sql-database-recovery-using-backups.md)。
 
 > [!NOTE]
-> 在 Azure 存储中，术语“复制”指将文件从一个位置复制到另一个位置。 SQL 的“数据库复制”是指让多个辅助数据库与主数据库保持同步。
+> 在 Azure 存储中，术语*复制*是指将文件从一个位置复制到另一个位置。 SQL 的“数据库复制”是指让多个辅助数据库与主数据库保持同步。
 
 可以使用以下示例尝试这其中的部分操作：
 
@@ -69,7 +69,7 @@ SQL 数据库使用 SQL Server 技术，每周创建[完整备份](https://docs.
 
 SQL 数据库通过自动创建完整备份、差异备份和事务日志备份支持时间点还原 (PITR) 的自助服务。 每周创建一次完整数据库备份，一般每隔 12 小时创建一次差异数据库备份，一般每隔 5 - 10 分钟创建一次事务日志备份，具体频率取决于计算大小和数据库活动量。 会在数据库创建后立即计划第一次完整备份。 完整备份通常可在 30 分钟内完成，但如果数据库很大，花费的时间可能更长。 例如，对已还原的数据库或数据库副本执行初始备份可能需要更长时间。 在完成首次完整备份后，会在后台以静默方式自动计划和管理所有后续备份。 在平衡整体系统工作负荷时，SQL 数据库服务会确定所有数据库备份的确切时间。 不能更改或禁用备份作业。 
 
-PITR 备份是异地冗余的，受 [Azure 存储跨区域复制](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)的保护
+PITR 备份异地冗余且受 [Azure 存储跨区域复制](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)保护
 
 有关详细信息，请参阅[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)
 

@@ -1,0 +1,40 @@
+- name: 概述
+  items:
+    - name: 什么是 FarmBeats？
+      href: overview.md
+- name: 教程
+  expanded: true
+  items:
+    - name: 生成土壤湿度地图
+      href: generate-soil-moisture-map.md
+    - name: 引入历史遥测数据
+      href: ingest-historical-telemetry-data.md
+- name: 概念
+  items:
+    - name: 集成模式
+      href: integration-patterns.md
+    - name: 传感器合作伙伴集成
+      href: sensor-partner-integration.md
+    - name: 图像合作伙伴集成
+      href: imagery-partner-integration.md
+- name: 操作方法指南
+  items:
+    - name: 部署 FarmBeats
+      href: prepare-for-deployment.md
+    - name: 管理场
+      href: manage-farms.md
+    - name: 获取传感器数据
+      href: get-sensor-data-from-sensor-partner.md
+    - name: 生成地图
+      href: generate-maps.md
+    - name: 配置规则并管理警报
+      href: configure-rules-alerts.md
+    - name: 获取无人机图像
+      href: get-drone-imagery.md
+- name: 故障排除
+  items:
+    - name: 排查 FarmBeats 问题
+      href: troubleshoot-project-farmbeats.md
+- name: 引用
+  items: null
+  href: references-for-farmbeats.md

@@ -1,18 +1,19 @@
 ---
-title: Azure 密钥保管库部署模板 |Azure Marketplace
+title: Azure Key Vault 部署模板 |Azure Marketplace
 description: 列出部署新的 Azure Key Vault 实例所需的 Azure 资源管理器模板。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 053a9f8ddfcc523532597d9e73aa095bf9110d72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: befed70b6858ebc8aaab7ebe200bb8082a430bab
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938622"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824052"
 ---
 # <a name="key-vault-deployment-template"></a>Key Vault 部署模板
 

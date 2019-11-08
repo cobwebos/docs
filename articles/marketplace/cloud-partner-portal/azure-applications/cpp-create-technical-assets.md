@@ -4,15 +4,16 @@ description: 为 Azure 应用程序产品/服务创建技术资产。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: pabutler
-ms.openlocfilehash: cbe1b8c8f1159d90fbf97eeae272c1c50ec9b9bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c9abaab4597e9fea43a2f0dcabc0e4a527ed5a6a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942985"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827603"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>准备 Azure 应用程序技术资产
 

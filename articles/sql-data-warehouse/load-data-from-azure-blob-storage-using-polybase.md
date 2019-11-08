@@ -11,12 +11,12 @@ ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5bf1a600bf57ecb598aac485e11f3618dda7244e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e7d1570deff9492dd13e74e25c1981b90565052d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686078"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822890"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>教程：将纽约出租车数据加载到 Azure SQL 数据仓库
 
@@ -24,7 +24,7 @@ ms.locfileid: "73686078"
 
 > [!div class="checklist"]
 > * 在 Azure 门户中创建数据仓库
-> * 在 Azure 门户中设置服务器级防火墙规则
+> * 在 Azure 门户中设置服务器级别的防火墙规则
 > * 使用 SSMS 连接到数据仓库
 > * 创建专用于加载数据的用户
 > * 在 Azure Blob 存储中为数据创建外部表
@@ -32,7 +32,7 @@ ms.locfileid: "73686078"
 > * 查看正在加载的数据的进度
 > * 创建新加载的数据的统计信息
 
-如果没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -61,7 +61,7 @@ Azure SQL 数据仓库是使用一组定义的 [计算资源] limits.md）创建
    | ------- | --------------- | ----------- | 
    | **数据库名称** | mySampleDataWarehouse | 如需有效的数据库名称，请参阅 [Database Identifiers](/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 | 
    | **订阅** | 订阅  | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
-   | **资源组** | myResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 |
+   | **资源组** | myResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)（命名规则和限制）。 |
    | **选择源** | 空白数据库 | 指定创建空白数据库。 请注意，数据仓库是一种数据库。|
 
     ![创建数据仓库](media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
@@ -70,7 +70,7 @@ Azure SQL 数据仓库是使用一组定义的 [计算资源] limits.md）创建
 
     | 设置 | 建议的值 | 说明 | 
     | ------- | --------------- | ----------- |
-    | **服务器名称** | 任何全局唯一名称 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 | 
+    | **服务器名称** | 任何全局唯一名称 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)（命名规则和限制）。 | 
     | 服务器管理员登录名 | 任何有效的名称 | 如需有效的登录名，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。|
     | **密码** | 任何有效的密码 | 密码必须至少有八个字符，且必须包含以下类别中的三个类别的字符：大写字符、小写字符、数字以及非字母数字字符。 |
     | **位置** | 任何有效的位置 | 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。 |
@@ -633,7 +633,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 完成了以下操作：
 > [!div class="checklist"]
 > * 在 Azure 门户中创建数据仓库
-> * 在 Azure 门户中设置服务器级防火墙规则
+> * 在 Azure 门户中设置服务器级别的防火墙规则
 > * 使用 SSMS 连接到数据仓库
 > * 创建了专用于加载数据的用户
 > * 在 Azure 存储 Blob 中为数据创建了外部表

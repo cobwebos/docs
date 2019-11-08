@@ -1,22 +1,23 @@
 ---
-title: 适用于 Microsoft Azure 虚拟机先决条件 |Azure Marketplace
+title: Microsoft Azure 的虚拟机先决条件 |Azure Marketplace
 description: 列出了将 VM 产品/服务发布到 Azure 市场需要满足的先决条件。
 services: Azure, Marketplace, Cloud Partner Portal
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: 258d21eae5af50b5dc0bed6887618e2999cae45a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a657ceaacf3680de54dc0d639a3f1a0aff6a6a03
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257386"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824420"
 ---
 # <a name="virtual-machine-prerequisites"></a>虚拟机先决条件
 
-本文列出了这两种技术和之前必须满足的业务要求可以发布到的 VM 产品/服务[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/)。  如果尚未这样做，请查看[虚拟机产品/服务发布指南](../../marketplace-virtual-machines.md)。
+本文列出了在将 VM 产品/服务发布到[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/)之前必须满足的技术和业务要求。  如果尚未执行此操作，请查看[虚拟机产品/服务发布指南](../../marketplace-virtual-machines.md)。
 
 
 ## <a name="technical-requirements"></a>技术要求
@@ -42,15 +43,15 @@ ms.locfileid: "66257386"
     > 应当使用相同的 Microsoft Developer Center 注册帐户登录到[云合作伙伴门户](https://cloudpartner.azure.com)。
     > 对于 Azure 市场产品/服务，只应具有一个 Microsoft 帐户。 它不应该特定于个体服务或产品。
     
-- 你的公司 （或其子公司） 必须位于某个销售-从-国家/地区 Azure Marketplace 支持。  这些国家/地区的当前列表，请参阅[Microsoft Azure Marketplace 参与政策](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)。
+- 你的公司（或其子公司）必须位于 Azure Marketplace 支持的销售国家/地区/地区。  有关这些国家/地区的当前列表，请参阅[Microsoft Azure 市场参与政策](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)。
 - 产品必须以兼容 Azure 市场支持的计费模式的方式获得许可。  有关详细信息，请参阅 [Azure 市场中的计费选项](https://docs.microsoft.com/azure/marketplace/billing-options-azure-marketplace)。 
 - 你需要负责以商业上合理的方式向客户提供技术支持。 支持可以采用免费、付费或社区支持等多种方式。
 - 负责获得自己的软件和任何第三方软件依赖项的许可。
 - 提供的内容必须满足在 Azure 市场上和 Azure 门户中列入名单的产品/服务的标准。 <!-- TD: Meaning/links? -->
 - 必须同意 [Microsoft Azure 市场参与政策](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)与发布者协议的条款。
-- 你必须遵守[Microsoft Azure 网站使用条款](https://azure.microsoft.com/support/legal/website-terms-of-use/)， [Microsoft 隐私声明](https://privacy.microsoft.com/privacystatement)，并[Microsoft Azure Certified 计划协议](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)。
+- 您必须遵守[Microsoft Azure 网站使用条款](https://azure.microsoft.com/support/legal/website-terms-of-use/)、 [Microsoft 隐私声明](https://privacy.microsoft.com/privacystatement)和[Microsoft Azure 认证计划协议](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-已满足这些先决条件之后，你可以[创建 VM 产品/服务](./cpp-create-offer.md)。
+在满足这些先决条件后，可以[创建 VM 产品/服务](./cpp-create-offer.md)。

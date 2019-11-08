@@ -1,6 +1,6 @@
 ---
 title: 从 Azure PowerShell 管理 IoT Central | Microsoft Docs
-description: 从 Azure PowerShell 管理 IoT Central。
+description: 本文介绍如何从 Azure PowerShell 创建和管理 IoT Central 应用程序。
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 269b8a6c2a90884b060b4fb916b77af919a63a63
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eadc021335488bed1f236d3728acca245be7d71e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953338"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806648"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>从 Azure PowerShell 管理 IoT Central
 
@@ -21,9 +21,9 @@ ms.locfileid: "72953338"
 
 你可以使用[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)来管理你的应用程序，而不是在[Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上创建和管理 IoT Central 应用程序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -63,19 +63,19 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 
 该脚本首先在美国东部区域为应用程序创建一个资源组。 下表描述了与 **New-AzIotCentralApp** 命令配合使用的参数：
 
-|参数         |描述 |
+|参数         |说明 |
 |------------------|------------|
 |ResourceGroupName |包含该应用程序的资源组。 此资源组必须已存在于订阅中。 |
-|Location |此 cmdlet 默认使用资源组中的位置。 目前，你可以在**美国东部**、**美国西部**、**北欧**或**西欧**地区或在**澳大利亚**或**亚太**地区创建 IoT Central 应用程序。  |
+|位置 |此 cmdlet 默认使用资源组中的位置。 目前，你可以在**美国东部**、**美国西部**、**北欧**或**西欧**地区或在**澳大利亚**或**亚太**地区创建 IoT Central 应用程序。  |
 |名称              |应用程序在 Azure 门户中的名称。 |
-|子域         |应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 https://mysubdomain.azureiotcentral.com 。 |
-|Sku               |目前，唯一的值是 **S1**（标准层）。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |
+|子域         |应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 https://mysubdomain.azureiotcentral.com。 |
+|SKU               |目前，唯一的值是 **S1**（标准层）。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |
 |模板          | 要使用的应用程序模板。 有关详细信息，请参阅下表： |
 |DisplayName       |UI 中显示的应用程序名称。 |
 
 **应用程序模板**
 
-|模板名  |描述 |
+|模板名称  |说明 |
 |---------------|------------|
 |iotc-default@1.0.0 |创建一个空的应用程序，以便在其中填充你自己的设备模板和设备。 |
 |iotc-demo@1.0.0    |创建一个应用程序，其中包含已为冷藏食品贩卖机创建的设备模板。 通过此模板来完成 Azure IoT Central 的入门。 |

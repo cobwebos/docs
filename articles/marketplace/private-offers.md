@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute
 author: qianw211
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: pabutler
-ms.openlocfilehash: cd61a30ccc9de08c3f0950d811d0d10ec5cd842a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 16903d4f9b1bad8a588b1a234ac84bc9c0150c4a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598380"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827842"
 ---
 # <a name="private-offers"></a>专用产品/服务
 
@@ -33,7 +34,7 @@ ms.locfileid: "72598380"
 
 ## <a name="creating-private-offers-using-skus-and-plans"></a>使用 SKU 和计划创建专用套餐
 
-对于包含公共 SKU 或计划的新套餐或现有套餐，发布者可以通过创建新的 SKU 或计划轻松创建新的专用变体，并将其标记为专用。  [专用 SKU](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) 和计划是套餐的组成部分，只能由目标客户看到和购买。 专用 SKU 和计划可以重复使用已为公共 SKU 或计划发布的基本映像和/或套餐元数据。 此选项可让发布者创建公共套餐的多个专用变体，而无需发布相同基本映像和套餐元数据的多个版本。 （仅适用于虚拟机和 Azure 应用程序套餐）当某个专用 SKU 与公共 SKU 共享基本映像时，对套餐基本映像所做的任何更改将使用该基本映像在所有公共和专用 SKU 之间传播。
+对于包含公共 SKU 或计划的新套餐或现有套餐，发布者可以通过创建新的 SKU 或计划轻松创建新的专用变体，并将其标记为专用。  [专用 SKU](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) 和计划是套餐的组成部分，只能由目标客户看到和购买。 专用 SKU 和计划可以重复使用已为公共 SKU 或计划发布的基本映像和/或套餐元数据。 此选项可让发布者创建公共套餐的多个专用变体，而无需发布相同基本映像和套餐元数据的多个版本。 仅适用于虚拟机和 Azure 应用程序，当私有 SKU 与公共 SKU 共享基本映像时，对产品/服务基本映像所做的任何更改都将使用该基本映像传播到所有公共和私有 Sku。
 
 对于仅包含专用 SKU 或计划的新套餐，发布者可与往常一样创建套餐，然后将 SKU 或计划标记为专用。 与套餐不关联的客户无法通过 [Azure 市场](https://azuremarketplace.microsoft.com)或 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)发现或访问仅包含专用 SKU 或计划的套餐。
 
@@ -48,7 +49,7 @@ ms.locfileid: "72598380"
 
 ![[专用套餐]](./media/marketplace-publishers-guide/private-offer.png)
 
-专用套餐也会显示在搜索结果中。 只需查看“专用”徽章即可。
+专用套餐也会显示在搜索结果中。 只需查看 "专用" 徽章即可。
 
 >[!Note]
 >通过云解决方案提供商计划（CSP）的分销商建立的订阅不支持专用产品/服务。

@@ -1,22 +1,22 @@
 ---
-title: 'SQL 数据库多租户应用指南示例-Wingtip SaaS '
+title: 多租户应用示例-Wingtip SaaS
 description: 提供有关安装和运行使用 Azure SQL 数据库（Wingtip Tickets SaaS 示例）的示例多租户应用程序的步骤和指南。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 9258e1e8219300c47e77ea8164e54edd5855bb39
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3589310ff93aca3cec735d6b2f1609ee3d1d2e68
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691807"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825781"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>使用 Wingtip Tickets 示例 SaaS 应用的一般指南
 

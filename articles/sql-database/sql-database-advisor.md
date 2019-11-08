@@ -1,5 +1,5 @@
 ---
-title: 性能建议-Azure SQL 数据库
+title: 性能建议
 description: Azure SQL 数据库提供有关 SQL 数据库的建议，以提升当前查询性能。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: de6ddd8886f8cadafa57724a5d5e33a3ba4e3c74
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fb7ba90724a98a34adf4aa279eefc8e3d7a63bf3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691247"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811384"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>SQL 数据库性能建议
 
@@ -26,7 +26,7 @@ Azure SQL 数据库与应用程序一起自行学习和进行适应性调整。 
 > [自动调整](sql-database-automatic-tuning.md)是自动调整一些最常见的数据库性能问题的推荐方法。 [查询性能见解](sql-database-query-performance.md)是基本 Azure SQL 数据库性能监控需求的推荐方法。 [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) 是针对大规模高级数据库性能监控的推荐方法，具有内置智能功能，可自动执行性能故障排除。
 >
 
-## <a name="create-index-recommendations"></a>创建索引建议
+## <a name="create-index-recommendations"></a>“创建索引”建议
 SQL 数据库持续监视正在运行的查询，并发现可以提升性能的索引。 确信缺少特定索引后，便会新建“创建索引”建议。
 
  Azure SQL 数据库通过估计索引在一段时间内带来的性能提升，确信是否有必要创建索引。 根据估计的性能提升高低，将性能建议分为高、中或低三类。 
@@ -43,7 +43,7 @@ SQL 数据库持续监视正在运行的查询，并发现可以提升性能的�
 
 此过程不断重复，直到没有足够的可用存储来创建索引或不再认为索引有益。
 
-## <a name="drop-index-recommendations"></a>删除索引建议
+## <a name="drop-index-recommendations"></a>“删除索引”建议
 除了检测缺少的索引外，SQL 数据库还会持续分析现有索引的性能。 Azure SQL 数据库会建议删除未使用的索引。 在两种情况下会建议删除索引：
 * 索引是另一索引的副本（已编入索引且包含的列、分区架构和筛选器都相同）。
 * 长时间（93 天）未使用索引。

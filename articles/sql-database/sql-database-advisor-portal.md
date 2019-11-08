@@ -1,5 +1,5 @@
 ---
-title: 应用性能建议-Azure SQL 数据库
+title: 应用性能建议
 description: 可以使用 Azure 门户查找可优化 Azure SQL 数据库性能的性能建议。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 24a590a80e768bba2e9b102bdf200e0cd96858f8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5462a03accb3420b3f0fcec4624734c8f6d68859
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691287"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811594"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>查找并应用性能建议
 
@@ -26,7 +26,7 @@ ms.locfileid: "73691287"
 
 若要查看和应用性能建议，需要 Azure 中相应的[基于角色的访问控制](../role-based-access-control/overview.md)权限。 查看建议需要“读者”、“SQL DB 参与者”权限，执行任何操作（如创建或删除索引、取消创建索引）需要“所有者”、“SQL DB 参与者”权限。
 
-在 Azure 门户中使用以下步骤查找性能建议：
+使用以下步骤在 Azure 门户上查找性能建议：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 转到“所有服务” > “SQL 数据库”，然后选择数据库。
@@ -36,7 +36,7 @@ ms.locfileid: "73691287"
 
 ![建议](./media/sql-database-advisor-portal/recommendations.png)
 
-按其对性能的潜在影响将建议分为以下类别：
+按其对性能的潜在影响将建议分为以下几个类别：
 
 | 影响 | 说明 |
 |:--- |:--- |
@@ -62,7 +62,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
 * 启用自动优化以自动应用建议。
 * 若要手动实施建议，请针对数据库运行建议的 T-SQL 脚本。
 
-选择要查看其详细信息的建议，然后单击“查看脚本”查看具体详细信息，了解如何创建建议。
+选择要查看其详细信息的建议，并单击“查看脚本”查看具体详细信息，了解如何创建建议。
 
 在应用建议时数据库将保持联机状态，使用性能建议或者自动优化不会使数据库脱机。
 
@@ -112,7 +112,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
 
 ### <a name="manually-apply-recommendations-through-t-sql"></a>通过 T-SQL 手动应用建议
 
-选择任意建议，然后单击“查看脚本”。 针对数据库运行此脚本以手动应用建议。
+选择任意建议，并单击“查看脚本”。 针对数据库运行此脚本以手动应用建议。
 
 不通过该服务监视和验证手动执行的索引的性能影响，因此建议在创建后监视这些索引以验证它们是否提供性能提升，并在必要时调整或删除它们。 有关创建索引的详细信息，请参阅[创建索引 (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx)。 此外，手动应用的建议在系统自动撤消它们之前， 将在 24-48 小时内保持活动状态并显示在建议列表中。 如果你想要更快地删除建议，可以手动放弃它。
 
@@ -127,7 +127,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
 
 可能不会立刻应用建议。 该门户提供了有关建议状态的详细信息。 以下是索引可能处于的状态：
 
-| Status | 说明 |
+| 状态 | 说明 |
 |:--- |:--- |
 | 挂起 |已经接收应用建议命令并计划执行。 |
 | 执行 |正在应用建议。 |

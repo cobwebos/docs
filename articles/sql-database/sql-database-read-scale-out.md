@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库 - 读取副本中的查询 | Microsoft Docs
+title: 读取对副本的查询
 description: Azure SQL 数据库允许使用只读副本的容量（称为“读取横向扩展”）对只读的工作负荷进行负载均衡。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: 73c31a60fb14df00f50fefb35ca123298241c61d
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 1f47b01c4a9227d0e2ee45b17645b2ae97e4ba3d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812373"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821225"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>使用只读副本对只读的查询工作负荷进行负载均衡
 
@@ -32,7 +32,7 @@ ms.locfileid: "71812373"
 
 新的“高级”、“业务关键”和“超大规模”数据库中默认已启用读取扩展功能。 对于超大规模，默认情况下，为新数据库创建一个辅助副本。 如果在 SQL 连接字符串中配置了 `ApplicationIntent=ReadOnly`，则网关会将应用程序重定向到该数据库的只读副本。 有关如何使用 `ApplicationIntent` 属性的信息，请参阅[指定应用程序意向](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)。
 
-如果你希望确保应用程序始终连接到主要副本，而不管 SQL 连接字符串中的 `ApplicationIntent` 设置如何，则必须在创建数据库或更改其配置时显式禁用读取扩展。 例如，如果将数据库从“标准”或“常规用途”层级升级到“高级”、“业务关键”或“超大规模”层级，并想要确保所有连接继续定向到主要副本，请禁用读取扩展。有关如何禁用读取扩展的详细信息，请参阅[启用和禁用读取扩展](#enable-and-disable-read-scale-out)。
+如果你希望确保应用程序始终连接到主要副本，而不管 SQL 连接字符串中的 `ApplicationIntent` 设置如何，则必须在创建数据库或更改其配置时显式禁用读取扩展。 例如，如果你将数据库从标准层或常规用途层升级到 Premium、业务关键或超大规模层，并且想要确保所有连接继续转到主副本，请禁用读取横向扩展。有关如何禁用它的详细信息，请参阅[启用和禁用读取横向扩展](#enable-and-disable-read-scale-out)。
 
 > [!NOTE]
 > 只读副本不支持查询数据存储、扩展事件、SQL Profiler 和审核功能。 
@@ -98,7 +98,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 
 在 Azure PowerShell 中管理读取横向扩展需要安装 Azure PowerShell 2016 年 12 月版或更高版本。 有关最新的 PowerShell 版本，请参阅 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
-可以通过调用[AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) cmdlet 并传入所需的值 (或`Enabled` `Disabled` --对于`-ReadScale`参数) 来禁用或重新启用 Azure PowerShell 中的读取横向扩展。 
+您可以通过调用[AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) cmdlet 并传入所需的值（`Enabled` 或 `Disabled`--对于 `-ReadScale` 参数）来禁用或重新启用读取横向 Azure PowerShell 扩展。 
 
 若要对现有数据库禁用读取扩展（请将尖括号中的项替换为环境的正确值，并删除尖括号）：
 

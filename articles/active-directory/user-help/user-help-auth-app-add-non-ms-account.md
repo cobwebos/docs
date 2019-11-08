@@ -1,5 +1,5 @@
 ---
-title: 将非 Microsoft 帐户添加到 Microsoft Authenticator 应用 - Azure Active Directory | Microsoft Docs
+title: 向验证器应用添加非 Microsoft 帐户-Azure AD
 description: 如何将非 Microsoft 帐户（例如 Google 帐户、Facebook 帐户或 GitHub 帐户）添加到 Microsoft Authenticator 应用，以进行双因素验证。
 services: active-directory
 author: eross-msft
@@ -12,16 +12,16 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1521d2b3d47667466636a1ac15f107826e40942
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 62d866e9bf543577887ee99173a52202fcfec632
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942934"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803665"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>添加非 Microsoft 帐户
 
-将非 Microsoft 帐户（例如 Google 帐户、Facebook 帐户或 GitHub 帐户）添加到 Microsoft Authenticator 应用，以进行双因素验证。 Microsoft Authenticator 应用可与使用双因素验证的任何应用以及支持基于时间的一次性密码 (TOTP) 标准的任何帐户配合使用。
+将非 Microsoft 帐户（例如 Google 帐户、Facebook 帐户或 GitHub 帐户）添加到 Microsoft Authenticator 应用，以进行双因素验证。 Microsoft Authenticator 应用可用于使用双重验证的任何应用以及支持基于时间的一次性密码 (TOTP) 标准的任何帐户。
 
 >[!Important]
 >必须先下载并安装 Microsoft Authenticator 应用，然后才能添加帐户。 如果尚未这样做，请按照[下载并安装应用](user-help-auth-app-download-install.md)一文中的步骤操作。
@@ -35,7 +35,7 @@ ms.locfileid: "68942934"
 2. 将帐户添加到 Microsoft Authenticator 应用。 在此过程中，系统可能会要求扫描 QR 码。
 
     >[!Note]
-    >如果这是你第一次设置 Microsoft Authenticator 应用程序, 你可能会收到询问是允许应用程序访问你的相机 (iOS) 还是允许应用拍摄图片并录制视频 (Android) 的提示。 你必须选择 "**允许**", 以便验证器应用可以访问你的相机, 以便在下一步中对 QR 代码进行图片。 如果不允许相机, 仍可以设置验证器应用, 但需要手动添加代码信息。 有关如何手动添加代码的信息, 请参阅请参阅[手动将帐户添加到应用](user-help-auth-app-add-account-manual.md)。
+    >如果这是你首次设置 Microsoft Authenticator 应用，则可能会收到一个提示，询问你是允许该应用访问你的相机 (iOS)，还是允许该应用拍摄照片和录制视频 (Android)。 你必须选择“允许”，以便验证器应用可以访问你的相机，在下一步中拍摄 QR 码的照片。 如果你不允许使用相机，仍然可以设置验证器应用，但需要手动添加代码信息。 有关如何手动添加代码的信息，请参阅[手动将帐户添加到应用](user-help-auth-app-add-account-manual.md)。
 
 本文介绍的是 Facebook 帐户、Google 帐户、GitHub 帐户和 Amazon 帐户的添加过程，但对于其他任何应用（如 Instagram、Netflix 或 Adobe），此过程都是一样的。
 
@@ -45,7 +45,7 @@ ms.locfileid: "68942934"
 
 ### <a name="turn-on-two-factor-verification"></a>启用双因素验证
 
-1. 在计算机上，转到 https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome ，选择“开始使用”，然后验证身份。
+1. 在计算机上，转到 https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome，选择“开始使用”，然后验证身份。
 
 2. 按照页面上的步骤操作，以为个人 Google 帐户启用双因素验证。
 
@@ -66,7 +66,7 @@ ms.locfileid: "68942934"
 
 5. 检查设备上 Microsoft Authenticator 应用的“帐户”页，以确保帐户信息正确，并有关联的六位数验证码。
 
-    为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个代码。
+    为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个验证码。
 
 6. 在电脑上，选择“设置验证器”页中的“下一步”，键入应用中为 Google 帐户提供的六位数验证码，再选择“验证”。
 
@@ -81,7 +81,7 @@ ms.locfileid: "68942934"
 
 ### <a name="turn-on-two-factor-verification"></a>启用双因素验证
 
-1. 在电脑上，打开 Facebook，选择右上角的下拉菜单，再依次转到“设置” > “安全和登录”。
+1. 在电脑上，打开 Facebook，选择右上角的下拉菜单，再依次转到“设置” **“安全和登录”**  > 。
 
     此时，“安全和登录”页显示。
 
@@ -106,7 +106,7 @@ ms.locfileid: "68942934"
 
 4. 检查设备上 Microsoft Authenticator 应用的“帐户”页，以确保帐户信息正确，并有关联的六位数验证码。
 
-    为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个代码。
+    为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个验证码。
 
 5. 在电脑上，选择“双因素身份验证”页中的“下一步”，再键入应用中为 Facebook 帐户提供的六位数验证码。
 
@@ -179,7 +179,7 @@ ms.locfileid: "68942934"
 
 7. 检查设备上 Microsoft Authenticator 应用的“帐户”页，以确保帐户信息正确，并有关联的六位数验证码。
 
-    为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个代码。
+    为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个验证码。
 
 8. 在电脑的“选择如何接收验证码”页上，键入应用中为 Amazon 帐户提供的六位数验证码，再选择“验证验证码并继续”。
 
@@ -187,7 +187,7 @@ ms.locfileid: "68942934"
 
 10. 在计算机的“添加备份验证方法”页上，键入备份验证方法为 Amazon 帐户提供的六位数验证码，然后选择“验证验证码并继续”。
 
-11. 在 "**几乎完成**" 页上, 决定是否将计算机设置为受信任的设备, **然后选择 "获取"。** 启用双因素验证”。
+11. 在 "**几乎完成**" 页上，决定是否将计算机设置为受信任的设备，然后选择 "**获取"。启用双重验证**。
 
     此时，“高级安全设置”页显示，其中包含更新后的双因素验证详细信息。
 

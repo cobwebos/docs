@@ -4,15 +4,16 @@ description: 本文介绍如何使用关联的履单 v2 Api 在 AppSource 和 Az
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: evansma
-ms.openlocfilehash: b1ec40485e775b7e50b5f7d82014aef77f14fb3e
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 4c73a59352422626ec3c6012607009995479d0cc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025276"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816608"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS 履单 Api，版本2 
 
@@ -29,7 +30,7 @@ Azure SaaS 管理 SaaS 订阅购买的整个生命周期。 它使用履单 Api 
 
 下表列出了 SaaS 订阅的预配状态，包括每个订阅的说明和序列图（如果适用）。 
 
-#### <a name="provisioning"></a>提供
+#### <a name="provisioning"></a>设置
 
 当客户启动购买时，合作伙伴会在使用 URL 参数的客户交互式网页上的授权代码中收到此信息。 例如 `https://contoso.com/signup?token=..`，而合作伙伴中心的登陆页 URL 则 `https://contoso.com/signup`。 可以通过调用解析 API 来验证和交换授权代码，以获取预配服务的详细信息。  当 SaaS 服务完成预配后，它将发送一个激活呼叫，通知完成完成并且客户可计费。 
 
@@ -57,7 +58,7 @@ Azure SaaS 管理 SaaS 订阅购买的整个生命周期。 它使用履单 Api 
 
 ![从 SaaS 服务启动更新时的 API 调用](./media/saas-update-api-v2-calls-from-saas-service-a.png) 
 
-#### <a name="suspended"></a>Suspended
+#### <a name="suspended"></a>已挂起
 
 此状态表示尚未收到客户的付款。 按照策略，我们将在取消订阅之前向客户提供宽限期。 当订阅处于此状态时： 
 
@@ -212,7 +213,7 @@ Azure SaaS 管理 SaaS 订阅购买的整个生命周期。 它使用履单 Api 
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
-          "isFreeTrial": "true", // true – the customer subscription is currently in free trial, false – the customer subscription is not currently in free trial.
+          "isFreeTrial": "true", // true - the customer subscription is currently in free trial, false - the customer subscription is not currently in free trial.
           "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation: [NotStarted, PendingFulfillmentStart, Subscribed, Suspended, Unsubscribed]
       }
   ],
@@ -250,7 +251,7 @@ Azure SaaS 管理 SaaS 订阅购买的整个生命周期。 它使用履单 Api 
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
-          "isFreeTrial": true, // true – the customer subscription is currently in free trial, false – the customer subscription is not currently in free trial.(optional field – default false)
+          "isFreeTrial": true, // true - the customer subscription is currently in free trial, false - the customer subscription is not currently in free trial.(optional field - default false)
           "isTest": false, //indicating whether the current subscription is a test asset
           "sandboxType": "None", // Possible Values: None, Csp (Csp sandbox purchase)
           "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation: [NotStarted, PendingFulfillmentStart, Subscribed, Suspended, Unsubscribed]
@@ -320,7 +321,7 @@ Response Body:
           },
         "allowedCustomerOperations": ["Read"], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
         "sessionMode": "None", // Dry Run indicates all transactions run as Test-Mode in the commerce stack
-        "isFreeTrial": "true", // true – customer subscription is currently in free trial, false – customer subscription is not currently in free trial.
+        "isFreeTrial": "true", // true - customer subscription is currently in free trial, false - customer subscription is not currently in free trial.
         "status": "Subscribed", // Indicates the status of the operation.
           "term": { //This gives the free trial term start and end date
             "startDate": "2019-05-31",
@@ -519,7 +520,7 @@ Request Body:
 ```
 
 >[!Note]
->一次只能修补一个计划或数量，而不是同时进行修补。 使用**更新**的订阅上的编辑内容不在 `allowedCustomerOperations` 中。
+>一次只能修补一个计划或数量，而不是同时进行修补。 使用**更新**的订阅上的编辑内容不在 `allowedCustomerOperations`中。
 
 #### <a name="change-the-quantity-on-the-subscription"></a>更改订阅的数量
 
@@ -586,7 +587,7 @@ Request Body:
 ```
 
 >[!Note]
->一次只能修补一个计划或数量，而不是同时进行修补。 使用**更新**的订阅上的编辑内容不在 `allowedCustomerOperations` 中。
+>一次只能修补一个计划或数量，而不是同时进行修补。 使用**更新**的订阅上的编辑内容不在 `allowedCustomerOperations`中。
 
 #### <a name="delete-a-subscription"></a>删除订阅
 
@@ -616,7 +617,7 @@ Request Body:
 合作伙伴发起了对 SaaS 订阅的取消订阅调用。<br>
 
 代码：400<br>
-删除不在 `allowedCustomerOperations` 中的 **"删除"** 订阅。
+删除不在 `allowedCustomerOperations`中的 **"删除"** 订阅。
 
 代码：403<br>
 未授权。 身份验证令牌未提供或无效，或者请求尝试访问不属于当前发布服务器的获取。
@@ -839,7 +840,7 @@ Response body:
   "id": "<this is a GUID operation id, you can call operations API with this to get status>",
   "activityId": "<this is a Guid correlation id>",
   "subscriptionId": "<Guid to uniquely identify this resource>",
-  "publisherId": "<this is the publisher’s name>",
+  "publisherId": "<this is the publisher's name>",
   "offerId": "<this is the offer name>",
   "planId": "<this is the plan id>",
   "quantity": "<the number of seats, will be null if not per-seat saas offer>",

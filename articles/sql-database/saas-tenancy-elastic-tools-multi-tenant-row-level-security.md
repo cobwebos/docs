@@ -1,5 +1,5 @@
 ---
-title: '具有 RLS 和弹性数据库工具的多租户应用 '
+title: 具有 RLS 和弹性数据库工具的多租户应用
 description: 使用弹性数据库工具以及行级安全性构建具有高可伸缩性数据层的应用程序。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 4d3f25a6e234c3d3dfd878aaae68cf58684f2fac
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a5fe5d6d4076c5d82d33737d05bb95ede0a89c00
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691863"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822031"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>具有弹性数据库工具和行级安全性的多租户应用程序
 

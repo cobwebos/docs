@@ -4,15 +4,16 @@ description: 适用于应用和服务发布者的 Azure 市场和 Microsoft AppS
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: cd6b09a1130e50fae7bd83579a0f176af0b5b9cd
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: fba9c481ad9b3da1eb0dd5d8a4ff2499240a8cfa
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962623"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826481"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure 市场和 AppSource 发布指南
 
@@ -30,7 +31,7 @@ ms.locfileid: "70962623"
 
 本指南包含在列出你的应用程序和服务之前，需要执行的步骤的相关技术和业务信息。 使用目录转到指南的不同部分并直接转到关键主题。
 
-有关 Azure 市场和 AppSource 的问题，请在“问题类型” > “市场加入”下向我们发送消息。  我们的市场发布者载入团队将乐于为你提供帮助！ 
+有关 Azure 市场和 AppSource 的问题，请在“问题类型” **“市场加入”**  > 下向我们发送消息。  我们的 Marketplace 发布者加入团队非常乐意帮助！ 
 
 ## <a name="benefits-of-participating-in-the-marketplace"></a>加入市场的好处 
 

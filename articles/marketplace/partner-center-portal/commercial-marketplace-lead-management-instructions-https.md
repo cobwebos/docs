@@ -4,15 +4,16 @@ description: 为 HTTPS 终结点配置潜在顾客管理。
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: evansma
-ms.openlocfilehash: 6a34bdcab5a13af682515bbae96e9a1800ccc37f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 83efb9cfd1ee7464a334ebc4064dbfaa20ab30de
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902190"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812288"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>使用 HTTPS 终结点配置潜在顾客管理
 
@@ -24,7 +25,7 @@ ms.locfileid: "69902190"
 
 2. 登录并在菜单栏上选择“我的流”。
 
-3. 选择 " **+ 自动–从空白**"。
+3. 选择 " **+ 自动-从空白**"。
 
     ![我的流 + 自动-从空白](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
@@ -108,7 +109,7 @@ ms.locfileid: "69902190"
 1. 选择“+新建步骤”。
 2. 通过在显示 "*搜索连接器和操作*" 的位置进行搜索来选择所选的 CRM 系统，然后在 "*操作*" 部分下选择它，并在 "操作" 部分下选择该系统以创建新记录。 以下屏幕截图显示**Dynamics 365-创建**新记录作为示例。
 
-    ![创建新记录](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
+    ![新建记录](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
 
 3. 提供与 CRM 系统关联的**组织名称**。 从“实体名称”下拉列表中选择“潜在顾客”。
 
@@ -118,7 +119,7 @@ ms.locfileid: "69902190"
 
     ![添加动态内容](./media/commercial-marketplace-lead-management-instructions-https/add-dynamic-content.png)
 
-5. 映射所需的字段，然后选择“保存”以保存你的流。 将创建一个 HTTP POST URL，在*收到 http 请求时*可在中访问。 使用位于 HTTP POST URL 右侧的复制控件复制此 URL-这一点非常重要，这样您就不会误错过整个 URL 的任何部分。 保存此 URL，因为在发布门户中配置 "潜在客户管理" 时将需要它。
+5. 映射所需的字段，然后选择“保存”以保存你的流。 将创建一个 HTTP POST URL，在*收到 http 请求时*可在中访问。 使用位于 HTTP POST URL 右侧的复制控件复制此 URL-这一点非常重要，这样就不会错误地忽略整个 URL 的任何部分。 保存此 URL，因为在发布门户中配置 "潜在客户管理" 时将需要它。
 
     ![收到 HTTP 请求时。](./media/commercial-marketplace-lead-management-instructions-https/when-http-request-received.png)
 
@@ -126,7 +127,7 @@ ms.locfileid: "69902190"
 
 1. 完成 JSON 架构后，选择 " **+ 新建步骤**"。
 2. 在“选择操作”下，选择“操作”。
-3. 在 "**操作**" 下，选择 "**发送电子邮件（Office 365 Outlook）**"。
+3. 在 "**操作**" 下，选择 "**发送电子邮件（Office 365 Outlook）** "。
 
     >[!Note]
     >如果要使用不同的电子邮件提供程序搜索，并选择 "*发送电子邮件通知（邮件）* " 作为操作。
@@ -148,15 +149,15 @@ ms.locfileid: "69902190"
 
        ![添加电子邮件操作](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
 
-5. 选择“保存”以完成 Flow 设置。 在*收到 http 请求时*，会创建一个 HTTP POST URL，可在中访问该 URL。 使用位于 HTTP POST URL 右侧的复制控件复制此 URL-这一点非常重要，这样您就不会误错过整个 URL 的任何部分。 保存此 URL，因为在发布门户中配置 "潜在客户管理" 时将需要它。
+5. 选择“保存”以完成 Flow 设置。 在*收到 http 请求时*，会创建一个 HTTP POST URL，可在中访问该 URL。 使用位于 HTTP POST URL 右侧的复制控件复制此 URL-这一点非常重要，这样就不会错误地忽略整个 URL 的任何部分。 保存此 URL，因为在发布门户中配置 "潜在客户管理" 时将需要它。
 
    ![HTTP POST URL ](./media/commercial-marketplace-lead-management-instructions-https/http-post-url.png)
 
-### <a name="testing"></a>正在测试
+### <a name="testing"></a>测试
 
 你可以使用以下步骤来测试一切是否按预期方式工作：使用名为[Postman](https://app.getpostman.com/app/download/win64)的工具，该工具可以在线下载。 这适用于 Windows。 
 
-1. 启动 Postman 并选择 "**新** > **请求**" 以设置测试工具。 
+1. 启动 Postman 并选择 "**新建** > " "**请求**" 以设置测试工具。 
 
    ![设置测试工具的请求](./media/commercial-marketplace-lead-management-instructions-https/postman-request.png)
 
@@ -202,7 +203,7 @@ ms.locfileid: "69902190"
 1. 导航到产品/服务的 "**产品/服务设置**" 页。
 2. 选择 "潜在顾客管理" 部分下的 "**连接**"。
 3. 在 "连接详细信息" 弹出窗口中，选择 "客户端**目标**的**HTTPS 终结点**"，并将通过以下步骤创建的流中的 HTTP POST Url 粘贴到 " **HTTPS 终结点 URL** " 字段。
-4. 选择**保存**。 
+4. 选择“保存”。 
 
 >[!Note] 
 >您必须先完成该产品/服务的其余部分的配置，然后发布该产品/服务，才能接收该产品/服务的潜在客户。

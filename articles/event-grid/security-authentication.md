@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
-ms.openlocfilehash: b9e471928940094b29bdffeb73ea42fe852492cb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8fe85685a41e05b5132157453a6dcbc81c2399af
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665578"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825772"
 ---
 # <a name="event-grid-security-and-authentication"></a>事件网格安全和身份验证 
 
@@ -204,7 +204,7 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 你可以[将这些角色分配给用户或组](../role-based-access-control/quickstart-assign-role-user-portal.md)。
 
-**EventGrid EventSubscription 参与者（预览）** ：管理事件网格订阅操作
+**EventGrid EventSubscription 参与者**：管理事件网格订阅操作
 
 ```json
 [
@@ -212,7 +212,7 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
     "Description": "Lets you manage EventGrid event subscription operations.",
     "IsBuiltIn": true,
     "Id": "428e0ff05e574d9ca2212c70d0e0a443",
-    "Name": "EventGrid EventSubscription Contributor (Preview)",
+    "Name": "EventGrid EventSubscription Contributor",
     "IsServiceRole": false,
     "Permissions": [
       {
@@ -240,7 +240,7 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 ]
 ```
 
-**EventGrid EventSubscription 读者（预览）** ：读取事件网格订阅
+**EventGrid EventSubscription Reader**：读取事件网格订阅
 
 ```json
 [
@@ -248,7 +248,7 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
     "Description": "Lets you read EventGrid event subscriptions.",
     "IsBuiltIn": true,
     "Id": "2414bbcf64974faf8c65045460748405",
-    "Name": "EventGrid EventSubscription Reader (Preview)",
+    "Name": "EventGrid EventSubscription Reader",
     "IsServiceRole": false,
     "Permissions": [
       {

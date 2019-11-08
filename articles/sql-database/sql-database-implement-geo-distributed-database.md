@@ -1,5 +1,5 @@
 ---
-title: 实现地理分散的 Azure SQL 数据库解决方案 | Microsoft Docs
+title: 实现地理分散的解决方案
 description: 了解如何配置 Azure SQL 数据库和应用程序以便故障转移到复制的数据库，以及如何测试故障转移。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 4a21fe3ed15d1dc2550f6863611b27d2b36c5c51
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 51380d312c778380602c64cac766b050511cf994
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568104"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810928"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>教程：实现地理分散的数据库
 
@@ -101,7 +101,7 @@ ms.locfileid: "68568104"
        -FailoverGroupName $myfailovergroupname
    ```
 
-还可以通过选择数据库，然后选择“设置” > “异地复制”，在 Azure 门户中更改异地复制设置。
+还可以通过选择数据库，然后选择“设置” **“异地复制”，在 Azure 门户中更改异地复制设置** > 。
 
 ![异地复制设置](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
 
@@ -133,7 +133,7 @@ ms.locfileid: "68568104"
    </dependency>
    ```
 
-1. 通过在 `dependencies` 部分后添加 `properties` 部分来指定 Java 版本：
+1. 通过在 `properties` 部分后添加 `dependencies` 部分来指定 Java 版本：
 
    ```xml
    <properties>
@@ -142,7 +142,7 @@ ms.locfileid: "68568104"
    </properties>
    ```
 
-1. 通过在 `properties` 部分后添加 `build` 部分来支持清单文件：
+1. 通过在 `build` 部分后添加 `properties` 部分来支持清单文件：
 
    ```xml
    <build>
@@ -271,7 +271,7 @@ ms.locfileid: "68568104"
    }
    ```
 
-1. 保存并关闭 App.java 文件。
+1. 保存并关闭 *App.java* 文件。
 
 1. 在命令控制台中运行以下命令：
 

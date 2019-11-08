@@ -1,5 +1,5 @@
 ---
-title: Azure 资源管理器：创建单一数据库 - Azure SQL 数据库 | Microsoft Docs
+title: Azure 资源管理器：创建单一数据库
 description: 使用 Azure 资源管理器模板在 Azure SQL 数据库中创建单一数据库。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/28/2019
-ms.openlocfilehash: f3e9bb0e9a2c4c58a205798441ddc2208019e7d2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b7888215a2d463c8007168e215179ace898ca1cc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566570"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821026"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板在 Azure SQL 数据库中创建单一数据库
 

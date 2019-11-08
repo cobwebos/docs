@@ -7,6 +7,7 @@ author: qianw211
 manager: evansma
 editor: ''
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
@@ -14,12 +15,12 @@ ms.workload: identity
 ms.date: 09/20/2019
 ms.author: v-qiwe
 ms.custom: include file
-ms.openlocfilehash: 87fb0535bb4597ff1f0fd2bf73783b661ae9a23d
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 144540b3d50c217f74608cedb546b80ab7ba222b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72816962"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825566"
 ---
 你可以选择在每个行业中最多选择两个行业和两个纵向。 当在搜索筛选器中使用行业和纵向时，以及在店面中应用时，这些类别用于显示您的产品/服务。  如果产品/服务面向特定行业和/或垂直，请确保在产品/服务描述中介绍产品/服务如何支持所选行业或纵向。  否则，如果您的产品/服务不是行业特定的，请不要进行选择并将本部分留空。
 
@@ -30,10 +31,10 @@ ms.locfileid: "72816962"
 | :------------------- | :-------------------|
 | \* 汽车     | \* 汽车 |
 | 农业     | \* 其他-Unsegmented |
-| 分配    | \* 批发 <br> \* 包裹 & 包裹寄送 |
+| 分发    | \* 批发 <br> \* 包裹 & 包裹寄送 |
 | 教育     | \* 高等教育 <br> \* 主要 & 辅助教育/K-12 <br> \* 库 & 博物馆 |
 | 金融服务     | \* 银行 & 资本市场 <br> \* 保险 |
-| 政府    | \* 防御 & 情报（称为国家和公共安全） <br> \* 公共安全 & 司法 <br> \* 民用政府 |
+| Government    | \* 防御 & 情报（称为国家和公共安全） <br> \* 公共安全 & 司法 <br> \* 民用政府 |
 | 医疗保健（用于称为运行状况）   | \* Health Payor <br> \* 运行状况提供程序 <br> \* 药物 |
 | 制造 & 资源（用于称为制造）   | \* 化学 & Agrochemical <br> \* 离散制造 <br> \* 能量 |
 | 零售 & 消费品（用于称为零售）  | \* 消费品 <br> \* 零售商 |

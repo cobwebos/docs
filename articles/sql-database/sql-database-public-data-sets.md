@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: dc8b2a00882abc2e88b357d5778eaf96ec71b1bd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 763a45446771f7b13178e22b0f7a35bd68bfc8bd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687570"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821286"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>用于测试和原型设计的公共数据集
 
@@ -40,9 +40,9 @@ ms.locfileid: "73687570"
 | 数据源 | 关于数据 | 关于文件 |
 |---|---|---|
 | [纽约出租车数据](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | “出租车行程记录包括捕获以下信息的字段：上车和下车日期/时间、上车和下车位置、行程距离、逐条列记的车费、费率类型、付款类型和司机报告的乘客数。” | 数据集文件以 CSV 格式按月提供。 |
-| [Microsoft Research 数据集 -“研究型数据科学”](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | 多个数据集，涵盖了人机交互、音频/视频、数据挖掘/信息检索、地理空间/位置、自然语言处理和机器人/计算机视觉。 | 数据集有各种格式，可压缩后下载。 |
+| [Microsoft Research 数据集 -“数据科学研究”](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | 多个数据集，涵盖了人机交互、音频/视频、数据挖掘/信息检索、地理空间/位置、自然语言处理和机器人/计算机视觉。 | 数据集有各种格式，可压缩后下载。 |
 | [公共基因组数据](https://www.completegenomics.com/public-data/) | "整个人类基因组的一组不同的数据集可供公开使用，以增强任何基因组研究 ..."提供商 Complete 基因组学是一家私营企业。 | 经提取的数据集为 UNIX 文本格式。 还可使用分析工具。 |
-| [Open Science Data Cloud 数据](https://www.opensciencedatacloud.org/) | “Open Science Data Cloud 为科学界提供了可存储、共享和分析的 TB 级和 PB 级科学数据集的资源。”| 各种格式的数据集。 |
+| [Open Science Data Cloud 数据](https://www.opensciencedatacloud.org/projects/) | “Open Science Data Cloud 为科学界提供了可存储、共享和分析的 TB 级和 PB 级科学数据集的资源。”| 各种格式的数据集。 |
 | [全球气候数据 - WorldClim](https://worldclim.org/) | “WorldClim 是一组全球气候层（格网气候数据），空间分辨率约为 1 平方千米。 这些数据可用于映射和空间建模。” | 这些文件包含地理空间数据。 有关详细信息，请参阅[数据格式](https://worldclim.org/formats1)。 |
 | [关于人类社会的数据 - GDELT 项目](https://www.gdeltproject.org/data.html) | “GDELT 项目是创建的有关人类社会的最大、最全面、分辨率最高的开放数据库。” | 原始数据文件为 CSV 格式。 |
 | [来自 Criteo 的机器学习广告点击预测数据](https://labs.criteo.com/2013/12/download-terabyte-click-logs/) | “公开发布的最大的 ML 数据集。” 有关详细信息，请参阅 [Criteo's 1 TB Click Prediction Dataset](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/)（Criteo 的 1 TB 点击预测数据集）。 | |

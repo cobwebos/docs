@@ -6,18 +6,17 @@ metadata:
   description: 利用我们的快速入门和教程开始使用安全中心，了解如何保护工作负荷、限制风险以及检测和响应攻击。
   services: security-center
   ms.service: security-center
-  ms.subservice: subservice
   ms.topic: landing-page
   ms.collection: collection
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: 8174498a5cc94eca0883102c95b543630cd37fdf
-  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+  ms.openlocfilehash: 33c2d287219f8005063af746f0b6d6448b1a4ef7
+  ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/05/2019
-  ms.locfileid: "73607503"
+  ms.lasthandoff: 11/08/2019
+  ms.locfileid: "73824802"
 landingContent:
 - title: 关于安全中心
   linkLists:

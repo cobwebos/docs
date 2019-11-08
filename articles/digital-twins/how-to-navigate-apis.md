@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/27/2019
-ms.openlocfilehash: 5df8bb0ba0323692bddf94ae2888e8fcf1ad24a9
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: b0c3d72085e008524811f479ccbdeec013e26c4c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063268"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822249"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>如何使用 Azure 数字孪生管理 API
 
@@ -116,4 +116,4 @@ Azure 数字孪生管理 API 为 IoT 应用提供强大的功能。 本文介绍
 
 若要了解有关 API 终结点的详细信息，请参阅[如何使用数字孪生 Swagger](./how-to-use-swagger.md)。
 
-若要查看 OData 语法和可用的比较运算符，请阅读[Azure 搜索中的 odata 比较运算符](../search/search-query-odata-comparison-operators.md)。
+若要查看 OData 语法和可用的比较运算符，请阅读[Azure 认知搜索中的 odata 比较运算符](../search/search-query-odata-comparison-operators.md)。

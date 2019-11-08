@@ -1,5 +1,5 @@
 ---
-title: 使用暂时性错误-Azure SQL 数据库
+title: 使用暂时性错误
 description: 了解如何排查、诊断和防止 Azure SQL 数据库中的 SQL 连接错误或暂时性错误。
 keywords: SQL 连接, 连接字符串, 连接问题, 暂时性错误, 连接错误
 services: sql-database
@@ -13,12 +13,12 @@ manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 06/14/2019
-ms.openlocfilehash: 0191506cab9a54ad3978bfa7387c9ba1112ae815
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a943ade4bfc46083fe84274640d979928357a492
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690825"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826802"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>处理 SQL 数据库连接问题和暂时性错误
 

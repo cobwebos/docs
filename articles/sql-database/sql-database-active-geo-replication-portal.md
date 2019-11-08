@@ -1,5 +1,5 @@
 ---
-title: 'Azure 门户： SQL 数据库异地复制 '
+title: Azure 门户：地域复制
 description: 使用 Azure 门户为 Azure SQL 数据库中的单个或共用数据库配置异地复制，并启动故障转移
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 2a9d627cb2b51d0d7d0b07052f18a8dbe1dc2f19
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7ddaefb0f65db1cfc828e4baa844f6d8e01f9d2e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691335"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808125"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>在 Azure 门户中为 Azure SQL 数据库配置活动异地复制，并启动故障转移
 
@@ -74,7 +74,7 @@ ms.locfileid: "73691335"
 
 该命令会立即将辅助数据库切换为主数据库角色。 此过程通常会在 30 秒或更短的时间内完成。
 
-切换角色时，有一小段时间无法使用这两个数据库（大约为 0 到 25 秒）。 如果主数据库具有多个辅助数据库，则该命令自动重新配置其他辅助数据库以连接到新的主数据库。 在正常情况下，完成整个操作所需的时间应该少于一分钟。
+切换角色时，有一小段时间无法使用这两个数据库（大约为 0 到 25 秒）。 如果主数据库具有多个辅助数据库，则该命令会自动重新配置其他辅助数据库以连接到新的主数据库。 在正常情况下，完成整个操作所需的时间应该少于一分钟。
 
 > [!NOTE]
 > 此命令旨在快速恢复已中断的数据库。 它将触发故障转移但不进行数据同步（强制故障转移）。  如果发出命令时主数据库处于在线状态且正在提交事务，则可能会丢失某些数据。
@@ -95,4 +95,4 @@ ms.locfileid: "73691335"
 
 * 若要深入了解活动异地复制，请参阅[活动异地复制](sql-database-active-geo-replication.md)。
 * 若要了解自动故障转移组，请参阅[自动故障转移组](sql-database-auto-failover-group.md)
-* 有关业务连续性概述和应用场景，请参阅 [业务连续性概述](sql-database-business-continuity.md)。
+* 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)。

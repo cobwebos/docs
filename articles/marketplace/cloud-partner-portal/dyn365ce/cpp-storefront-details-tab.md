@@ -4,15 +4,16 @@ description: 不推荐使用此 CPP 文章链接到电脑文章。 Was "使用�
 services: Dynamics 365 for Customer Engagement, Azure, Marketplace, Cloud Partner Portal, AppSource
 author: ChJenk
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: v-chjen
-ms.openlocfilehash: 1854f0d9098fdda03e5f17a61125a3e1f67e33ed
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 1121a021b580d23006e3aaff5da4c6a2a58dca73
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034197"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824701"
 ---
 # <a name="dynamics-365-for-customer-engagement-storefront-details-tab"></a>Dynamics 365 Customer Engagement “店面详细信息”选项卡
 

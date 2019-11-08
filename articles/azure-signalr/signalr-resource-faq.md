@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: e9e41ffa335aa95b139a5d5658424c1c5915b569
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 771124d0b8ca15bf72501fdeff8c31d0a43050b8
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64914959"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73578684"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR 服务常见问题解答
 
@@ -22,14 +22,14 @@ ms.locfileid: "64914959"
 
 完全支持 [ASP.NET Core SignalR](https://docs.microsoft.com/aspnet/core/signalr/introduction)。
 
-对 ASP.NET SignalR 的支持目前仍以公共预览版提供。 此处提供了[代码示例](https://github.com/aspnet/AzureSignalR-samples/tree/master/aspnet-samples/ChatRoom)。
+对 ASP.NET SignalR 的支持目前仍以公共预览版提供。  此处提供了[代码示例](https://github.com/aspnet/AzureSignalR-samples/tree/master/aspnet-samples/ChatRoom)。
 
 ## <a name="the-client-connection-closes-with-the-error-message-no-server-available-what-does-it-mean"></a>客户端连接关闭并显示错误消息“没有可用的服务器”。 它意味着什么？
 
 仅当客户端正在向 SignalR 服务发送消息时，才会发生此错误。
 
 如果你没有任何应用程序服务器并且只使用 SignalR 服务 REST API，则此行为是**设计使然**。
-在无服务器体系结构中，客户端连接处于“侦听”模式，不会向 SignalR 服务发送任何消息。
+在无服务器体系结构中，客户端连接处于“侦听”模式，不会向 SignalR 服务发送任何消息。 
 详细了解 [REST API](./signalr-quickstart-rest-api.md)。
 
 如果你有应用程序服务器，则此错误消息意味着没有任何应用程序服务器连接到 SignalR 服务实例。
@@ -59,7 +59,7 @@ SignalR 服务将监视应用程序服务器的检测信号。
 在 Azure SignalR 服务 SDK 中，`HubConnectionContext context` 是逻辑客户端连接的上下文。 物理客户端连接将连接到 SignalR 服务实例，因此，只提供有限数量的属性。
 
 目前只能访问 `HubConnectionContext.GetHttpContext()` 和 `HubConnectionContext.User`。
-可在[此处](https://github.com/Azure/azure-signalr/blob/kevinzha/faq/src/Microsoft.Azure.SignalR/ServiceHubConnectionContext.cs)查看源代码。
+可在[此处](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR/HubHost/ServiceHubConnectionContext.cs)查看源代码。
 
 ## <a name="can-i-configure-the-transports-available-in-signalr-service-as-configuring-it-on-server-side-with-aspnet-core-signalr-for-example-disable-websocket-transport"></a>是否可以像在服务器端使用 ASP.NET Core SignalR 配置传输一样，在 SignalR 服务中配置传输？ 例如，禁用 WebSocket 传输？
 

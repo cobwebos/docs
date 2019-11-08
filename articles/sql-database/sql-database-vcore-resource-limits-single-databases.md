@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database vCore 资源限制-单一数据库
+title: vCore 资源限制-单个数据库
 description: 本页介绍 Azure SQL 数据库中单一数据库的一些常见 vCore 资源限制。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/04/2019
-ms.openlocfilehash: b3b55b3542eb0dd8c3c61d7a82c8ce2e9d271113
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 11d9115893f8d0632110d86a671a6590ca48e220
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686865"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822337"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>使用 vCore 购买模型的单一数据库的资源限制
 

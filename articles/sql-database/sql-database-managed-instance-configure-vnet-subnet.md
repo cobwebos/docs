@@ -1,5 +1,5 @@
 ---
-title: 为 Azure SQL 数据库托管实例配置现有虚拟网络
+title: 为托管实例配置现有虚拟网络
 description: 本文介绍如何配置可在其中部署 Azure SQL 数据库托管实例的现有虚拟网络和子网。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 01/15/2019
-ms.openlocfilehash: 0f6ababa9d25798f4b150c322d48d4c7af04a511
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6dfc0a59ab4150173196fae82d90eca4880d5364
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689376"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818880"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例配置现有虚拟网络
 

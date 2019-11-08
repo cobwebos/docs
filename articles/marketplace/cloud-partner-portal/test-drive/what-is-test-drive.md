@@ -5,15 +5,16 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 5b23a5e93dcbb9c13243240bda760a16d108d731
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a6826657a4af74276e363acd585e80d101cc1459
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938463"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828140"
 ---
 <a name="what-is-test-drive"></a>什么是体验版？
 ===================
@@ -27,7 +28,7 @@ ms.locfileid: "64938463"
 <a name="how-does-a-test-drive-work"></a>体验版是如何工作的？
 ---------------------------
 
-潜在客户在市场中发现你的应用程序，登录并同意使用条款。 此时，客户将收到你的预配置环境来试用固定的小时数，同时你可以开发后续要跟踪的优质潜在顾客。
+潜在客户在市场中发现你的应用程序，登录并同意使用条款。 此时，客户将收到你的预配置环境来进行固定小时数的试用，而你则获得优质潜在顾客，并可在此基础上进行跟进。
 
 ![第一步。 显示的市场产品/服务](./media/what-is-test-drive/step1.png)
 
@@ -47,9 +48,9 @@ ms.locfileid: "64938463"
 
 无论你的应用程序有多复杂，Microsoft 体验版都可以帮助你向客户推广你的产品。 目前，我们根据产品类型、方案和你所在的市场提供了三种类型的体验版。
 
-- **[Azure 资源管理器](./azure-resource-manager-test-drive.md)** :Azure 资源管理器体验版是一个部署模板，其中包含了组成由发布者构建的解决方案的所有 Azure 资源。 适合此方案的产品是仅使用 Azure 资源的产品。
-- **[逻辑应用](./logic-app-test-drive.md)** :逻辑应用体验版是旨在包含所有复杂的解决方案体系结构的部署模板。 所有 Dynamics 应用程序或自定义产品都应当使用此类型的体验版。
-- **Power BI**：Power BI 体验版是只需对自定义构建的仪表板嵌入的链接。 仅希望演示交互式 Power BI 视觉对象的任何产品都应当使用此类型的体验版。
+- **[Azure 资源管理器](./azure-resource-manager-test-drive.md)** ：Azure 资源管理器体验版是一个部署模板，其中包含了组成由发布者构建的解决方案的所有 Azure 资源。 适合此方案的产品是仅使用 Azure 资源的产品。
+- **[逻辑应用](./logic-app-test-drive.md)** ：逻辑应用体验版是一个部署模板，用来包含所有复杂的解决方案体系结构。 所有 Dynamics 应用程序或自定义产品都应当使用此类型的体验版。
+- **Power BI**：Power BI 体验版只是一个嵌入式链接，指向某个定制的仪表板。 仅希望演示交互式 Power BI 视觉对象的任何产品都应当使用此类型的体验版。
     此处只需要上传你的嵌入式 Power BI URL。
 
 <a name="what-goes-on-in-the-background"></a>哪些工作在后台进行？

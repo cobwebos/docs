@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 8f06d3f033a2bf5907dc2ee324359bef0eb247d0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 41689b7596c9da350a9e0fec619e49d332a36d5b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170728"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826200"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>通过 IoT 中心设备预配服务配置云资源以进行设备预配
 
@@ -36,28 +36,28 @@ ms.locfileid: "58170728"
 
 按照下列步骤创建新的设备预配服务实例。
 
-1. 在 Azure 门户的左上角单击“创建资源”。
+1. 在 Azure 门户的左上角单击“创建资源”。 
 
-2. 在搜索框中键入“设备预配”。 
+2. 在搜索框中键入“设备预配”  。 
 
-3. 单击“IoT 中心设备预配服务”。
+3. 单击“IoT 中心设备预配服务”  。
 
-4. 用以下信息填写“IoT 中心设备预配服务”表：
+4. 用以下信息填写“IoT 中心设备预配服务”表  ：
     
    | 设置       | 建议的值 | 说明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **名称** | 任何唯一名称 | -- | 
    | **订阅** | 你的订阅  | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
-   | **资源组** | myResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 |
+   | **资源组** | myResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)（命名规则和限制）。 |
    | **位置** | 任何有效的位置 | 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。 |   
 
    ![在门户中输入有关设备预配服务的基本信息](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. 单击“创建”。 片刻之后，将创建设备预配服务实例并显示“概述”页面。
+5. 单击“创建”。  片刻之后，将创建设备预配服务实例并显示“概述”页面。 
 
-6. 在新服务实例的“概述”页面上，复制“ID 范围”的值供稍后使用。 该值用于标识注册 ID，并保证注册 ID 的唯一性。
+6. 在新服务实例的“概述”  页面上，复制“ID 范围”的值供稍后使用。  该值用于标识注册 ID，并保证注册 ID 的唯一性。
 
-7. 另外，复制“服务终结点”值供稍后使用。 
+7. 另外，复制“服务终结点”  值供稍后使用。 
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -73,19 +73,19 @@ ms.locfileid: "58170728"
 
 下一步，将设备预配服务链接到 IoT 中心，以便 IoT 中心设备预配服务能向该中心注册设备。 该服务只能将设备预配到已链接至设备预配服务的 IoT 中心。 执行以下步骤。
 
-1. 在“所有资源”页上，单击之前创建的设备预配服务实例。
+1. 在“所有资源”页上，单击之前创建的设备预配服务实例  。
 
-2. 在“设备预配服务”页上，单击“链接 IoT 中心”。
+2. 在“设备预配服务”页上，单击“链接 IoT 中心”  。
 
-3. 单击“添加”。
+3. 单击“添加”  。
 
-4. 在“添加 IoT 中心的链接”页面上，提供以下信息，并单击“保存”：
+4. 在“添加 IoT 中心的链接”  页面上，提供以下信息，并单击“保存”  ：
 
     * **订阅：** 确保选择包含 IoT 中心的订阅。 可以链接到位于其他订阅中的 IoT 中心。
 
     * **IoT 中心：** 选择要与此设备预配服务实例进行链接的 IoT 中心的名称。
 
-    * **访问策略：** 选择 iothubowner 作为用于与 IoT 中心建立链接的凭据。
+    * **访问策略：** 选择 iothubowner 作为用于与 IoT 中心建立链接的凭据  。
 
    ![链接中心名称，以便链接到门户中的设备预配服务](./media/tutorial-set-up-cloud/link-iot-hub-to-dps-portal.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "58170728"
 
 3. **通过注册列表进行静态注册**：注册列表中所需 IoT 中心的规范优先于设备预配服务级别的分配策略。
 
-若要设置分配策略，请单击“设备预配服务”页上的“管理分配策略”。 确保将分配策略设置为“均匀加权分发”（默认）。 如果进行了任何更改，请在完成后单击“保存”。
+若要设置分配策略，请单击“设备预配服务”页上的“管理分配策略”  。 确保将分配策略设置为“均匀加权分发”（默认）  。 如果进行了任何更改，请在完成后单击“保存”  。
 
 ![管理分配策略](./media/tutorial-set-up-cloud/iot-dps-manage-allocation.png)
 
@@ -107,9 +107,9 @@ ms.locfileid: "58170728"
 
 本教程系列中的其他教程是在本教程的基础上制作的。 如果计划继续使用后续的快速入门或相关教程，请勿清除在本教程中创建的资源。 如果不打算继续，请在 Azure 门户中执行以下步骤来删除此教程创建的所有资源。
 
-1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择 IoT 中心设备预配服务实例。 在“所有资源”页的顶部单击“删除”。  
+1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择 IoT 中心设备预配服务实例  。 在“所有资源”页的顶部单击“删除”   。  
 
-2. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择 IoT 中心。 在“所有资源”页的顶部单击“删除”。
+2. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择 IoT 中心  。 在“所有资源”页的顶部单击“删除”   。
  
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
 title: 在 IoT Central 上管理你的个人首选项 |Microsoft Docs
-description: 如何在 IoT Central 上管理你的个人应用程序首选项
+description: 如何管理你的个人应用程序首选项，例如更改 IoT Central 应用程序中的语言和主题。
 author: lmasieri
 ms.author: lmasieri
 ms.date: 07/10/2019
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 154ac608d9d6174ca981f3c358bff1e8272182f8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6bfc70ada906f5c444ace5cd7bb96555700586db
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950075"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806159"
 ---
 # <a name="manage-your-personal-application-preferences"></a>管理你的个人应用程序首选项
 
-*本文适用于操作员、构建者和管理员。*
+本文适用于操作员、构建者和管理员。
 
 使用 IoT Central 可以灵活地自定义应用程序来满足需求。 我们还允许每个用户灵活定义其自己的视图。 本文介绍了用户可以应用于其配置文件的各种自定义选项。
 

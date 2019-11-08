@@ -1,22 +1,22 @@
 ---
-title: Azure SQL 数据库 DTU 资源限制单个数据库 |Microsoft Docs
+title: DTU 资源限制单个数据库
 description: 本页介绍 Azure SQL 数据库中单一数据库的一些常见 DTU 资源限制。
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 37cda6dec3f98a195e704808244656f3182b4c2a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3fb021c06369d1f37dad83b3f9b27e039ddf8b5e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520992"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811284"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model"></a>使用 DTU 购买模型的单一数据库的资源限制
 
@@ -35,7 +35,7 @@ ms.locfileid: "73520992"
 
 | **计算大小** | **基本** |
 | :--- | --: |
-| 最大 DTU | 5 |
+| 最大 DTU 数 | 5 |
 | 包含的存储 (GB) | 2 |
 | 最大存储选择 (GB) | 2 |
 | 最大内存中 OLTP 存储 (GB) |不适用 |
@@ -47,7 +47,7 @@ ms.locfileid: "73520992"
 
 | **计算大小** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|
-| 最大 DTU | 10 | 20 | 50 | 100 |
+| 最大 DTU 数 | 10 | 20 | 50 | 100 |
 | 包含的存储 (GB) | 250 | 250 | 250 | 250 |
 | 最大存储选择 (GB) | 250 | 250 | 250 | 250, 500, 750, 1024 |
 | 最大内存中 OLTP 存储 (GB) | 不适用 | 不适用 | 不适用 | 不适用 |
@@ -59,7 +59,7 @@ ms.locfileid: "73520992"
 
 | **计算大小** | **S4** | **S6** | S7 | S9 | S12 |
 | :--- |---:| ---:|---:|---:|---:|
-| 最大 DTU | 200 | 400 | 800 | 1600 | 3000 |
+| 最大 DTU 数 | 200 | 400 | 800 | 1600 | 3000 |
 | 包含的存储 (GB) | 250 | 250 | 250 | 250 | 250 |
 | 最大存储选择 (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
 | 最大内存中 OLTP 存储 (GB) | 不适用 | 不适用 | 不适用 | 不适用 |不适用 |
@@ -71,7 +71,7 @@ ms.locfileid: "73520992"
 
 | **计算大小** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
-| 最大 DTU | 125 | 250 | 500 | 1000 | 1750 | 4000 |
+| 最大 DTU 数 | 125 | 250 | 500 | 1000 | 1750 | 4000 |
 | 包含的存储 (GB) | 500 | 500 | 500 | 500 | 4096* | 4096* |
 | 最大存储选择 (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096* | 4096* |
 | 最大内存中 OLTP 存储 (GB) | 1 | 2 | 4 | 8 | 14 | 32 |

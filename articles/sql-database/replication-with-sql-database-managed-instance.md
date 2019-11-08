@@ -1,5 +1,5 @@
 ---
-title: '在 Azure SQL 数据库托管实例数据库中配置复制 '
+title: 在托管实例数据库中配置复制
 description: 了解如何在 Azure SQL 数据库托管实例数据库中配置事务复制
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: 21275ce7716ffc394c1e7445c3f6836f09b44c87
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f303a363fd4d42889e7817273be5d5e5440a2293
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692162"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822589"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>在 Azure SQL 数据库托管实例数据库中配置复制
 

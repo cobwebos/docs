@@ -1,0 +1,273 @@
+---
+title: 使用 "数据的数据库" 功能在 Azure 中附加数据库数据资源管理器
+description: 了解如何使用 "并行数据库" 功能在 Azure 数据资源管理器中附加数据库。
+author: orspod
+ms.author: orspodek
+ms.reviewer: gabilehner
+ms.service: data-explorer
+ms.topic: conceptual
+ms.date: 11/07/2019
+ms.openlocfilehash: a46cf78d902ec8391d7dc3667a6d66daa78927ab
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828560"
+---
+# <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>使用从动数据库在 Azure 中附加数据库数据资源管理器
+
+使用 "**数据库" 数据库**功能，可以将位于不同群集中的数据库附加到 Azure 数据资源管理器群集。 并行**数据库**以*只读*模式附加，使查看数据和对引入**数据库**中的数据运行查询成为可能。 该并行数据库同步领导数据库中的更改。 由于同步，数据的数据可用性中有几秒钟到几分钟的数据延迟。 时间延迟的长度取决于负责人数据库元数据的总体大小。 领导数据库和使用者数据库使用相同的存储帐户来提取数据。 存储由领导者数据库拥有。 "数据访问数据库" 查看数据，无需引入。 由于附加的数据库是只读数据库，因此不能修改数据库中的数据、表和策略，除非[缓存策略](#configure-caching-policy)、[主体](#manage-principals)和[权限](#manage-permissions)。 无法删除附加的数据库。 它们必须由前导者或使用者分离，然后才能将其删除。 
+
+使用 "使用情况" 功能将数据库附加到不同的群集，用作在组织和团队之间共享数据的基础结构。 此功能可用于隔离计算资源，以保护生产环境免受非生产用例的作用。 还可用于将 Azure 数据资源管理器群集的成本关联到对数据运行查询的参与方。
+
+## <a name="which-databases-are-followed"></a>遵循哪些数据库？
+
+* 一个群集可以跟一个数据库、多个数据库或领导者群集的所有数据库。 
+* 单个群集可以遵循多个负责人群集中的数据库。 
+* 一个群集可以同时包含一个使用者数据库和领导者数据库
+
+## <a name="prerequisites"></a>先决条件
+
+1. 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+1. 为领导和执行程序[创建群集和 DB](/azure/data-explorer/create-cluster-database-portal) 。
+1. 使用[引入概述](/azure/data-explorer/ingest-data-overview)中讨论的各种方法之一将[数据](/azure/data-explorer/ingest-sample-data)引入到领导者数据库。
+
+## <a name="attach-a-database"></a>附加数据库
+
+可以使用多种方法附加数据库。 本文介绍如何使用C#或 Azure 资源管理器模板附加数据库。 若要附加数据库，必须对领导群集和从动机构群集具有权限。 有关权限的详细信息，请参阅[管理权限](#manage-permissions)。
+
+### <a name="attach-a-database-using-c"></a>使用附加数据库C#
+
+**需要 Nuget**
+
+* 请安装[kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)。
+* 安装[ClientRuntime 进行身份验证](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)。
+
+
+```Csharp
+var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
+var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+var clientSecret = "xxxxxxxxxxxxxx";//Client secret
+var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+
+var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
+var resourceManagementClient = new ResourceManagementClient(serviceCreds);
+
+var leaderResourceGroupName = "testrg";
+var followerResourceGroupName = "followerResouceGroup";
+var leaderClusterName = "leader";
+var followerClusterName = "follower";
+var attachedDatabaseConfigurationName = "adc";
+var databaseName = "db" // Can be specific database name or * for all databases
+var defaultPrincipalsModificationKind = "Union"; 
+var location = "North Central US";
+
+AttachedDatabaseConfiguration attachedDatabaseConfigurationProperties = new AttachedDatabaseConfiguration()
+{
+    ClusterResourceId = $"/subscriptions/{subscriptionId}/resourceGroups/{followerResourceGroupName}/providers/Microsoft.Kusto/Clusters/{followerClusterName}",
+    DatabaseName = databaseName,
+    DefaultPrincipalsModificationKind = defaultPrincipalsModificationKind,
+    Location = location
+};
+
+var attachedDatabaseConfigurations = resourceManagementClient.AttachedDatabaseConfigurations.CreateOrUpdate(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationName, attachedDatabaseConfigurationProperties);
+```
+
+### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板附加数据库
+
+本部分介绍如何使用[Azure 资源管理器模板](../azure-resource-manager/resource-group-overview.md)附加数据库。 
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "followerClusterName": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Name of the follower cluster."
+            }
+        },
+        "attachedDatabaseConfigurationsName": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Name of the attached database configurations to create."
+            }
+        },
+        "databaseName": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The name of the database to follow. You can follow all databases by using '*'."
+            }
+        },
+        "leaderClusterResourceId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Name of the leader cluster to create."
+            }
+        },
+        "defaultPrincipalsModificationKind": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The default principal modification kind."
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Location for all resources."
+            }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "name": "[parameters('followerClusterName')]",
+            "type": "Microsoft.Kusto/clusters",
+            "sku": {
+                "name": "Standard_D13_v2",
+                "tier": "Standard",
+                "capacity": 2
+            },
+            "apiVersion": "2019-09-07",
+            "location": "[parameters('location')]"
+        },
+        {
+            "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
+            "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
+            "apiVersion": "2019-09-07",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Kusto/clusters', parameters('followerClusterName'))]"
+            ],
+            "properties": {
+                "databaseName": "[parameters('databaseName')]",
+                "clusterResourceId": "[parameters('leaderClusterResourceId')]",
+                "defaultPrincipalsModificationKind": "[parameters('defaultPrincipalsModificationKind')]"
+            }
+        }
+    ]
+}
+```
+
+### <a name="deploy-the-template"></a>部署模板 
+
+可以通过[使用 Azure 门户](https://portal.azure.com)或使用 powershell 来部署 Azure 资源管理器模板。
+
+   ![模板部署](media/follower/template-deployment.png)
+
+
+|**设置**  |**说明**  |
+|---------|---------|
+|从动群集名称     |  从动群集的名称       |
+|附加的数据库配置名称    |    附加的数据库配置对象的名称。 该名称在群集级别必须是唯一的。     |
+|数据库名称     |      要遵循的数据库的名称。 如果要跟踪领导的所有数据库，请使用 "*"。   |
+|领导群集资源 ID    |   领导者群集的资源 ID。      |
+|默认主体修改种类    |   默认主体修改类型。 可以是 `Union`、`Replace` 或 `None`。 有关默认主体修改类型的详细信息，请参阅[principal 修改 kind control 命令](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind)。      |
+|位置   |   所有资源的位置。 领导者和从动者必须位于同一位置。       |
+ 
+### <a name="verify-that-the-database-was-successfully-attached"></a>验证数据库是否已成功附加
+
+若要验证是否已成功附加数据库，请在[Azure 门户](https://portal.azure.com)中查找附加的数据库。 
+
+1. 导航到 "从动群集" 并选择 "**数据库**"
+1. 在数据库列表中搜索新的只读数据库。
+
+    ![只读数据库](media/follower/read-only-follower-database.png)
+
+也可使用以下命令：
+
+1. 导航到主持人群集并选择 "**数据库**"
+2. 检查相关数据库是否被标记为**与他人共享** > **是**
+
+    ![读取和写入附加的数据库](media/follower/read-write-databases-shared.png)
+
+## <a name="detach-the-follower-database-using-c"></a>使用分离该数据库C# 
+
+### <a name="detach-the-attached-follower-database-from-the-follower-cluster"></a>从从动群集分离连接的从动数据库
+
+可按如下所示将所附加的任何数据库分离：
+
+```csharp
+var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
+var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+var clientSecret = "xxxxxxxxxxxxxx";//Client secret
+var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+
+var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
+var resourceManagementClient = new ResourceManagementClient(serviceCreds);
+
+var followerResourceGroupName = "testrg";
+//The cluster and database that are created as part of the prerequisites
+var followerClusterName = "follower";
+var attachedDatabaseConfigurationsName = "adc";
+
+resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationsName);
+```
+
+### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>从领导者群集中分离附加的数据库
+
+领导者群集可以分离任何附加的数据库，如下所示：
+
+```csharp
+var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
+var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+var clientSecret = "xxxxxxxxxxxxxx";//Client secret
+var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+
+var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
+var resourceManagementClient = new ResourceManagementClient(serviceCreds);
+
+var leaderResourceGroupName = "testrg";
+var followerResourceGroupName = "followerResouceGroup";
+var leaderClusterName = "leader";
+var followerClusterName = "follower";
+//The cluster and database that are created as part of the Prerequisites
+var followerDatabaseDefinition = new FollowerDatabaseDefinition()
+    {
+        AttachedDatabaseConfigurationName = "adc",
+        ClusterResourceId = $"/subscriptions/{subscriptionId}/resourceGroups/{followerResourceGroupName}/providers/Microsoft.Kusto/Clusters/{followerClusterName}"
+    };
+
+resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupName, leaderClusterName, followerDatabaseDefinition);
+```
+
+## <a name="manage-principals-permissions-and-caching-policy"></a>管理主体、权限和缓存策略
+
+### <a name="manage-principals"></a>管理主体
+
+附加数据库时，请指定**默认的主体修改类型**。 默认情况下，保留[授权主体](/azure/kusto/management/access-control/index.md#authorization)的领导数据库集合
+
+|**种类** |**说明**  |
+|---------|---------|
+|**交集**     |   附加的数据库主体将始终包含原始数据库主体以及添加到该数据源数据库的额外新主体。      |
+|**Replace**   |    不会从原始数据库继承主体。 必须为附加的数据库创建新的主体。 至少需要将一个主体添加到阻止主体继承。     |
+|**无**   |   附加的数据库主体只包含原始数据库的主体，而没有其他主体。      |
+
+有关使用控制命令配置授权主体的详细信息，请参阅[用于管理使用者群集的控制命令](/azure/kusto/management/cluster-follower.md)。
+
+### <a name="manage-permissions"></a>管理权限
+
+对于所有数据库类型，管理只读数据库权限都是相同的。 请参阅[Azure 门户中的管理权限](/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal)。
+
+### <a name="configure-caching-policy"></a>配置缓存策略
+
+数据库管理员可以在宿主群集上修改附加数据库或其任何表的[缓存策略](/azure/kusto/management/cache-policy)。 默认情况下，保留数据库和表级缓存策略的领导者数据库集合。 例如，你可以在领导者数据库上有一个30天的缓存策略用于运行每月报表，并在一天的数据库中使用三天缓存策略来仅查询最新的数据进行故障排除。 若要详细了解如何使用控制命令来配置对数据库或表的缓存策略，请参阅[控制用于管理从动群集的命令](/azure/kusto/management/cluster-follower.md)。
+
+## <a name="limitations"></a>限制
+
+* 必须在同一区域中进行并行和领导群集。
+* 不能在要遵循的数据库上使用[流式引入](/azure/data-explorer/ingest-data-streaming)。
+* 分离数据库之前，无法删除附加到其他群集的数据库。
+* 分离群集之前，无法删除已附加到其他群集的群集。
+* 不能停止已连接的使用者或领导者数据库的群集。 
+
+## <a name="next-steps"></a>后续步骤
+
+* 有关使用情况群集配置的详细信息，请参阅[用于管理使用情况群集的控制命令](/azure/kusto/management/cluster-follower.md)。

@@ -4,22 +4,23 @@ description: 介绍如何为 Azure 市场中的虚拟机套餐创建技术资产
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: pabutler
-ms.openlocfilehash: c1ef00f846dfad76629b0603ab79fba17249417c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 45d0ff5b7b3fea1566b13b61bd01cc17da61e4b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224530"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824512"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>为虚拟机套餐创建技术资产
 
 本部分引导你为 Azure 市场虚拟机 (VM) 套餐创建并配置技术资产。  VM 包含两个组件：解决方案虚拟硬盘 (VHD)，以及可选的关联数据磁盘。  
 
 - 虚拟硬盘 (VHD) 包含要在 Azure 市场套餐中部署的操作系统和解决方案。 准备 VHD 的过程根据 VM 是基于 Linux、基于 Windows 还是自定义 VM 而有所不同。
-- 数据磁盘代表虚拟机的专用持久性存储。 请不要使用解决方案 VHD（例如 `C:` 驱动器）来存储持久性信息。
+- 数据磁盘代表虚拟机的专用持久性存储。 请不要使用解决方案 VHD（例如  *驱动器）来存储持久性信息。* `C:`
 
 一个 VM 映像包含一个操作系统磁盘以及零个或更多数据磁盘。 每个磁盘都需要一个 VHD。 即使空白数据磁盘也需要创建 VHD。
 必须配置 VM OS、VM 大小、要打开的端口，以及最多 15 个附加的数据磁盘。

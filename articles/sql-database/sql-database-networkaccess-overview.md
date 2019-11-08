@@ -1,9 +1,10 @@
 ---
-title: Azure SQL 数据库和数据仓库网络访问控制
+title: 网络访问控件
 description: 用于管理访问及配置单一数据库或共用数据库的 Azure SQL 数据库和数据仓库网络访问控制的概述。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: deee668c3597047a5d5f0fd153626916c3fd8517
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 16de1d9fcf86459b6bcadd9d8c372e436aad0915
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687711"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802936"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL 数据库和数据仓库网络访问控制
 

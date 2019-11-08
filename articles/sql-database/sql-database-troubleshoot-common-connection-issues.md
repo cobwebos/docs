@@ -1,5 +1,5 @@
 ---
-title: 排查 Azure SQL 数据库的常见连接问题
+title: 排查常见的连接问题
 description: 识别和解决 Azure SQL 数据库常见连接错误的步骤。
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ manager: dcscontentpm
 ms.author: daleche
 ms.reviewer: jrasnik
 ms.date: 01/25/2019
-ms.openlocfilehash: cd0ab6d89d88c594d283dc0718c0f58ebb98bf43
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: dc58e495256bff9521eb6567736700f5ffcd6e4f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090799"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822477"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>排查 Azure SQL 数据库的连接问题
 
@@ -48,7 +48,7 @@ ms.locfileid: "71090799"
 
 ## <a name="troubleshoot-transient-errors"></a>对暂时性错误进行故障排除
 
-当应用程序连接到 Azure SQL 数据库时，你会收到以下错误消息：
+当应用程序连接到 Azure SQL 数据库时，将收到以下错误消息：
 
 ```
 Error code 40613: "Database <x> on server <y> is not currently available. Please retry the connection later. If the problem persists, contact customer support, and provide them the session tracing ID of <z>"
@@ -66,7 +66,7 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 1. 查看 [Microsoft Azure 服务仪表板](https://azure.microsoft.com/status)以了解应用程序报告错误时出现的任何已知中断。
 2. 连接到云服务的应用程序（如 Azure SQL 数据库）应期望定期重新配置事件并实施重试逻辑来处理这些错误，而不是将它们作为应用程序错误展现给用户。 查看[暂时性错误](sql-database-connectivity-issues.md)部分和 [SQL 数据库开发概述](sql-database-develop-overview.md)中的最佳实践和设计准则以了解更多信息和常规重试策略。 有关详细信息，请参阅[用于 SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)中的代码示例。
 3. 由于数据库即将达到其资源限制，因此错误看起来像是暂时性连接问题。 请参阅[资源限制](sql-database-resource-limits-database-server.md#what-happens-when-database-resource-limits-are-reached)。
-4. 如果连接问题继续存在，或者应用程序发生错误的持续时间超过 60 秒或在特定的一天中看到错误多次发生，请通过在 [Azure 支持](https://azure.microsoft.com/support/options)网站上选择“**获取支持**”提出 Azure 支持请求。
+4. 如果连接问题继续存在，或者应用程序发生错误的持续时间超过 60 秒或在特定的一天中看到错误多次发生，请通过在 **Azure 支持**网站上选择“[获取支持](https://azure.microsoft.com/support/options)”提出 Azure 支持请求。
 
 ## <a name="troubleshoot-persistent-errors"></a>排查一再出现的错误
 如果应用程序一直无法连接到 Azure SQL 数据库，通常表示下列其中一项出现了问题：
@@ -88,5 +88,5 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 ## <a name="additional-resources"></a>其他资源
 * [SQL 数据库开发概述](sql-database-develop-overview.md)
 * [暂时性错误处理的一般指南](../best-practices-retry-general.md)
-* [SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)
+* [用于 SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)
 

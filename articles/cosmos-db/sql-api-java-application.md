@@ -1,21 +1,21 @@
 ---
-title: 使用 Azure Cosmos DB 的 Java 应用程序开发教程
-description: 此 Java Web 应用程序教程展示如何使用 Azure Cosmos DB 和 SQL API 从 Azure 网站上托管的 Java 应用程序存储和访问数据。
+title: 教程：使用 Azure Cosmos DB 的 Java 应用程序开发教程
+description: 教程：此 Java Web 应用程序教程展示如何使用 Azure Cosmos DB 和 SQL API 从 Azure 网站上托管的 Java 应用程序存储和访问数据。
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
-ms.date: 12/22/2018
+ms.date: 11/05/2019
 ms.author: ramkris
-ms.openlocfilehash: bd2894c23e206ed5f49fec8aa169d6ed852df4c6
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4a7c307e8a4d4088fe4d2f7800398fda4704219c
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616661"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720832"
 ---
-# <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>使用 Azure Cosmos DB 和 SQL API 构建 Java Web 应用程序
+# <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>教程：使用 Azure Cosmos DB 和 SQL API 构建 Java Web 应用程序
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)

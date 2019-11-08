@@ -1,18 +1,19 @@
 ---
-title: 云合作伙伴门户的 API 参考 |Azure Marketplace
+title: 云合作伙伴门户 API 参考 |Azure Marketplace
 description: 市场 API 操作的说明、要使用的先决条件和列表。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 9626fdb5dbdf720a65217421565fc559a0cee684
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6591e1780d03cbfaff70fbd19ec3dfd274fae79
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935478"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819637"
 ---
 <a name="cloud-partner-portal-api-reference"></a>云合作伙伴门户 API 参考
 ==================================
@@ -57,7 +58,7 @@ ms.locfileid: "64935478"
 
 ### <a name="other-tasks"></a>其他任务
 
--   [设置虚拟机产品/服务的定价](./cloud-partner-portal-api-setting-price.md)
+-   [设置虚拟机套餐的定价](./cloud-partner-portal-api-setting-price.md)
 
 ### <a name="troubleshooting"></a>故障排除
 

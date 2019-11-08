@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库内存中示例
+title: 内存中示例
 description: 使用 OLTP 和列存储示例尝试 Azure SQL 数据库内存中技术。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 8526236afdb0a312879cb3c1635a7fd85985278f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e7e7fc44d5f8b46a66c698d3a33ceeab5b8625c4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689818"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810326"
 ---
 # <a name="in-memory-sample"></a>内存中示例
 
@@ -73,7 +73,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 ```
 
 
-结果“0”表示不支持内存中，结果“1”表示支持。 若要诊断问题，请确保数据库位于“高级”服务层级。
+结果 **0** 表示不支持内存中，结果 **1** 表示支持。 若要诊断问题，请确保数据库位于“高级”服务层级。
 
 
 #### <a name="about-the-created-memory-optimized-items"></a>关于创建的内存优化项
@@ -198,7 +198,7 @@ whereas for SQL 2016+
 
 
 
-### <a name="run-the-_inmem-stress-workload-first"></a>首先运行 _inmem 压力工作负荷
+### <a name="run-the-_inmem-stress-workload-first"></a>首先运行 *_inmem* 压力工作负荷
 
 
 可以使用 *RML 命令提示符*窗口来运行 ostress.exe 命令行。 命令行参数将 `ostress` 定向到：
@@ -239,7 +239,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 #### <a name="reset-edit-for-_ondisk-then-rerun"></a>重置，编辑 *_ondisk*，并重新运行
 
 
-在获得 _inmem 运行结果之后，请针对 _ondisk 运行执行以下步骤：
+在获得 *_inmem* 运行结果之后，请针对 *_ondisk* 运行执行以下步骤：
 
 
 1. 在 SSMS 中运行以下命令重置数据库，删除前面运行的命令所插入的所有数据：
@@ -247,7 +247,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. 编辑 ostress.exe 命令行，将所有的 _inmem 替换为 _ondisk。
+2. 编辑 ostress.exe 命令行，将所有的 *_inmem* 替换为 *_ondisk*。
 
 3. 再次重新运行 ostress.exe，并捕获持续时间结果。
 

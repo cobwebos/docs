@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 7078a1a5edc310c799690f0f7236dd0947e3290b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9aeffa8b756340851ca4c82ebaed2453d4ac03bc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059199"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819522"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric 中的定期备份和还原 
 > [!div class="op_single_selector"]
@@ -49,23 +49,23 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
     - Azure 存储
     - 文件共享（本地）
 - 枚举备份
-- 触发即席备份的分区
+- 触发分区的临时备份
 - 使用之前的备份还原分区
 - 暂时暂停备份
 - 备份的保留期管理（即将推出）
 
-## <a name="prerequisites"></a>必备组件
-* Fabric 版 6.4 或更高版本的 Service Fabric 群集。 有关使用 Azure 资源模板创建 Service Fabric 群集的步骤，请参阅此[文章](service-fabric-cluster-creation-via-arm.md)。
+## <a name="prerequisites"></a>先决条件
+* 具有 Fabric 6.4 或更高版本的 Service Fabric 群集。 有关使用 Azure 资源模板创建 Service Fabric 群集的步骤，请参阅此[文章](service-fabric-cluster-creation-via-arm.md)。
 * 用于加密机密的 X.509 证书，连接到存储以存储备份时需要此机密。 请参阅[文章](service-fabric-cluster-creation-via-arm.md)，了解如何获取或创建 X.509 证书。
-* 使用 Service Fabric SDK 3.0 或更高版本生成的 Service Fabric 可靠有状态应用程序。 对于面向.NET Core 2.0 的应用程序，应用程序应使用生成 Service Fabric SDK 版本 3.1 或更高版本。
+* 使用 Service Fabric SDK 3.0 或更高版本生成的 Service Fabric 可靠有状态应用程序。 对于面向 .NET Core 2.0 的应用程序，应使用 Service Fabric SDK 3.1 或更高版本生成应用程序。
 * 创建 Azure 存储帐户，用于存储应用程序备份。
-* 安装适用于配置调用 Microsoft.ServiceFabric.Powershell.Http 模块 [中预览]。
+* 安装 Microsoft.ServiceFabric.Powershell.Http模块 [在预览中] 进行配置调用。
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-* 请确保群集已连接使用`Connect-SFCluster`命令之前发出任何使用 Microsoft.ServiceFabric.Powershell.Http 模块的配置请求。
+* 请确保在使用 Microsoft.ServiceFabric.Powershell.Http 模块发出任何配置请求之前，先使用 `Connect-SFCluster` 命令连接群集。
 
 ```powershell
 
@@ -77,15 +77,15 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 
 ### <a name="using-azure-portal"></a>使用 Azure 门户
 
-启用`Include backup restore service`下的复选框`+ Show optional settings`中`Cluster Configuration`选项卡。
+启用 `Include backup restore service` 选项卡中 `+ Show optional settings` 下的 `Cluster Configuration` 复选框。
 
-![启用通过门户的备份还原服务][1]
+![使用门户启用备份还原服务][1]
 
 
 ### <a name="using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
-首先，需要在群集中启用备份和还原服务  。 获取要部署的群集的模板。 可使用[示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)或创建资源管理器模板。 通过以下步骤启用备份和还原服务  ：
+首先，需要在群集中启用备份和还原服务。 获取要部署的群集的模板。 可使用[示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)或创建资源管理器模板。 通过以下步骤启用备份和还原服务：
 
-1. 检查 `apiversion` 是否针对 `Microsoft.ServiceFabric/clusters` 资源设置为 `2018-02-01`，如果没有，请按以下代码片段所示进行更新  ：
+1. 检查 `apiversion` 是否针对  **资源设置为 `2018-02-01`，如果没有，请按以下代码片段所示进行更新**`Microsoft.ServiceFabric/clusters`：
 
     ```json
     {
@@ -97,7 +97,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
     }
     ```
 
-2. 现在，通过在 `properties` 部分下添加以下 `addonFeatures` 部分来启用备份和还原服务，如以下代码片段所示  ： 
+2. 现在，通过在 _部分下添加以下_ 部分来启用备份和还原服务，如以下代码片段所示`addonFeatures``properties`： 
 
     ```json
         "properties": {
@@ -108,7 +108,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
         }
 
     ```
-3. 配置 X.509 证书以用于加密凭据。 此步骤非常重要，可确保在保留之前对提供用于连接存储的凭据进行加密。 通过在 `fabricSettings` 部分下添加以下 `BackupRestoreService` 部分来配置加密证书，如以下代码片段所示： 
+3. 配置 X.509 证书以用于加密凭据。 此步骤非常重要，可确保在保留之前对提供用于连接存储的凭据进行加密。 通过在 `BackupRestoreService` 部分下添加以下 `fabricSettings` 部分来配置加密证书，如以下代码片段所示： 
 
     ```json
     "properties": {
@@ -125,13 +125,28 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
     }
     ```
 
-4. 通过前述更改更新群集模板后，应用更改并等待部署/升级完成。 完成后，备份和还原服务开始在群集中运行  。 此服务的 URI 为 `fabric:/System/BackupRestoreService`，并且此服务可位于 Service Fabric Explorer 中系统服务部分下。 
+4. 通过前述更改更新群集模板后，应用更改并等待部署/升级完成。 完成后，备份和还原服务开始在群集中运行。 此服务的 URI 为 `fabric:/System/BackupRestoreService`，并且此服务可位于 Service Fabric Explorer 中系统服务部分下。 
+
+### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
+
+1. 请确保已启用 "高级" 模式。
+
+    ![启用高级模式][2]
+
+2. 选择应用程序并执行 "操作"。 单击 "启用/更新应用程序备份"。
+
+    ![启用应用程序备份][3] 
+
+3. 最后，选择所需的策略，然后单击 "启用备份"。
+
+    ![选择策略][4]
+
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>启用可靠有状态服务和 Reliable Actors 的定期备份
 让我们通过一些步骤来启用可靠有状态服务和 Reliable Actors 的定期备份。 这些步骤假定
-- 通过备份和还原服务，使用 X.509 安全性安装群集  。
+- 通过备份和还原服务，使用 X.509 安全性安装群集。
 - 在群集上部署了可靠有状态服务。 在本快速入门指南中，应用程序 URI 为 `fabric:/SampleApp`，属于此应用程序的可靠有状态服务的 URI 为 `fabric:/SampleApp/MyStatefulService`。 使用单个分区部署此服务，分区 ID 为 `974bd92a-b395-4631-8a7f-53bd4ae9cf22`。
-- 具有管理员角色的客户端证书安装计算机上 CurrentUser 证书存储位置的“我的”（个人）存储名称中，可从其中调用以下脚本    。 本示例使用 `1b7ebe2174649c45474a4819dafae956712c31d3` 作为此证书的指纹。 有关访问客户端证书的详细信息，请参阅[适用于 Service Fabric 客户端的基于角色的访问控制](service-fabric-cluster-security-roles.md)。
+- 具有管理员角色的客户端证书安装计算机上 CurrentUser 证书存储位置的“我的”（个人）存储名称中，可从其中调用以下脚本。 本示例使用 `1b7ebe2174649c45474a4819dafae956712c31d3` 作为此证书的指纹。 有关访问客户端证书的详细信息，请参阅[适用于 Service Fabric 客户端的基于角色的访问控制](service-fabric-cluster-security-roles.md)。
 
 ### <a name="create-backup-policy"></a>创建备份策略
 
@@ -139,9 +154,9 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 
 有关备份存储，请使用上面创建的 Azure 存储帐户。 容器 `backup-container` 配置为存储备份。 在备份上传期间，将创建具有该名称的容器（如果该容器尚未存在）。 使用 Azure 存储帐户的有效连接字符串填充 `ConnectionString`，并将 `account-name` 替换为你的存储帐户名，将 `account-key` 替换为你的存储帐户密钥。
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell 中使用 Microsoft.ServiceFabric.Powershell.Http 模块
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
 
-执行以下 PowerShell cmdlet 用于创建新的备份策略。 请将 `account-name` 替换为你的存储帐户名，将 `account-key` 替换为你的存储帐户密钥。
+执行以下 PowerShell cmdlet 以创建新的备份策略。 请将 `account-name` 替换为你的存储帐户名，将 `account-key` 替换为你的存储帐户密钥。
 
 ```powershell
 
@@ -149,7 +164,7 @@ New-SFBackupPolicy -Name 'BackupPolicy1' -AutoRestoreOnDataLoss $true -MaxIncrem
 
 ```
 
-#### <a name="rest-call-using-powershell"></a>使用 PowerShell 的 rest 调用
+#### <a name="rest-call-using-powershell"></a>使用 PowerShell 进行 Rest 调用
 
 执行以下 PowerShell 脚本，调用所需的 REST API 来创建新策略。 请将 `account-name` 替换为你的存储帐户名，将 `account-key` 替换为你的存储帐户密钥。
 
@@ -188,14 +203,14 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 ### <a name="enable-periodic-backup"></a>启用定期备份
 在定义备份策略以满足应用程序的数据保护要求后，备份策略应与应用程序相关联。 根据需要，备份策略可与应用程序、服务或分区相关联。
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell 中使用 Microsoft.ServiceFabric.Powershell.Http 模块
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
 
 ```powershell
 
 Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupPolicy1'
 
 ```
-#### <a name="rest-call-using-powershell"></a>使用 PowerShell 的 rest 调用
+#### <a name="rest-call-using-powershell"></a>使用 PowerShell 进行 Rest 调用
 
 执行以下 PowerShell 脚本，调用所需的 REST API，将上面步骤中创建的名为 `BackupPolicy1` 的备份策略与应用程序 `SampleApp` 相关联。
 
@@ -218,16 +233,16 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 ### <a name="list-backups"></a>列出备份
 
-可使用 GetBackups API 来枚举属于应用程序的可靠有状态服务和 Reliable Actors 的所有分区的关联备份  。 可为应用程序、服务或分区枚举备份。
+可使用 GetBackups API 来枚举属于应用程序的可靠有状态服务和 Reliable Actors 的所有分区的关联备份。 可为应用程序、服务或分区枚举备份。
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell 中使用 Microsoft.ServiceFabric.Powershell.Http 模块
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
 
 ```powershell
     
 Get-SFApplicationBackupList -ApplicationId WordCount
 ```
 
-#### <a name="rest-call-using-powershell"></a>使用 PowerShell 的 rest 调用
+#### <a name="rest-call-using-powershell"></a>使用 PowerShell 进行 Rest 调用
 
 执行以下 PowerShell 脚本，调用 HTTP API 来枚举为 `SampleApp` 应用程序内所有分区创建的备份。
 
@@ -280,14 +295,23 @@ CreationTimeUtc         : 2018-04-06T21:25:36Z
 FailureError            : 
 ```
 
+#### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
+
+若要查看 Service Fabric Explorer 中的备份，请导航到分区，然后选择 "备份" 选项卡。
+
+![枚举备份][5]
+
 ## <a name="limitation-caveats"></a>限制/注意事项
-- Service Fabric PowerShell cmdlet 是在预览模式下。
+- Service Fabric PowerShell cmdlet 处于预览模式。
 - Linux 上不支持 Service Fabric 群集。
 
 ## <a name="next-steps"></a>后续步骤
 - [了解定期备份配置](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [备份还原 REST API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
-[0]: ./media/service-fabric-backuprestoreservice/PartitionBackedUpHealthEvent_Azure.png
+[0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event-azure.png
 [1]: ./media/service-fabric-backuprestoreservice/enable-backup-restore-service-with-portal.png
-
+[2]: ./media/service-fabric-backuprestoreservice/advanced-mode.png
+[3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png
+[4]: ./media/service-fabric-backuprestoreservice/enable-application-backup.png
+[5]: ./media/service-fabric-backuprestoreservice/backup-enumeration.png

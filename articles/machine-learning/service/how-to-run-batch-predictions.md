@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracych
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 4390fab3d59706bf692de46d17923dad4f9a8f21
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 615536fbba38279a23516352c69461c19f9972ed
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489614"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796717"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure 机器学习对大量数据运行批处理推理
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -184,7 +184,7 @@ model = Model.register(model_path="models/",
 ## <a name="write-your-inference-script"></a>编写推理脚本
 
 >[!Warning]
->下面的代码只是[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/notebooks/contrib/batch_inferencing/file-dataset-image-inference-mnist.ipynb)使用的示例。 你需要根据具体情况创建自己的脚本。
+>下面的代码只是[示例笔记本](https://aka.ms/batch-inference-notebooks)使用的示例。 你需要根据具体情况创建自己的脚本。
 
 脚本必须包含  两个函数：
 - `init()`：此函数适用于后续推理的任何成本高昂或常见的准备工作。 例如，使用它将模型加载到全局对象。
@@ -347,7 +347,7 @@ pipeline_run.wait_for_completion(show_output=True)
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解此过程的端到端运行机制，请尝试[批处理推理笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/)。 
+若要了解此过程的端到端运行机制，请尝试[批处理推理笔记本](https://aka.ms/batch-inference-notebooks)。 
 
 有关管道的调试和故障排除指南，请参阅[操作指南](how-to-debug-pipelines.md)。
 

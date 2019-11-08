@@ -17,21 +17,16 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 8c3bc90b282092ede0e924d32b50b67e5c4e22b8
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 09ecc258001dd735b920c3a7cb51d8ce7443ceb4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244507"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686543"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>与应用服务移动应用集成
 
 为了在 Azure 服务之间促成完美且统一的体验， [应用服务移动应用](../app-service-mobile/app-service-mobile-value-prop.md) 原生支持使用通知中心推送通知。 [应用服务 Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) 提供面向企业开发人员和系统集成商的高度可缩放、全局可用的移动应用程序平台，该平台向移动开发人员提供一组丰富的功能。
-
-Visual Studio App Center 为当今的开发人员提供了更新式的移动解决方案。 它支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用“分析”  和“诊断”  服务监视其应用的状态和使用情况，并使用“推送”  服务吸引用户。 开发人员还可以利用“身份验证”  对其用户进行身份验证，并使用“数据”  服务在云中保留和同步应用数据。
-
-> [!NOTE]
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/signup?utm_source=NotificationHubs&utm_medium=Azure&utm_campaign=docs) 中。
 
 移动应用开发人员可以借助以下工作流来利用通知中心：
 

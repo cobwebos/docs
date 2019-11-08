@@ -1,18 +1,19 @@
 ---
 title: Azure 云合作伙伴门户教程 |Azure Marketplace
-description: Azure Marketplace 的云合作伙伴门户的用户体验的概述。
+description: Azure Marketplace 云合作伙伴门户的用户体验概述。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: pabutler
-ms.openlocfilehash: b0bf7af9b81025202c2fffa2a264982c9986e10b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85ddf2e2141ad77321710ad03e4d7f67572f3688
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943396"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821470"
 ---
 # <a name="cloud-partner-portal-tour"></a>云合作伙伴门户教程
 
@@ -28,9 +29,9 @@ ms.locfileid: "64943396"
 - [新产品/服务](./cpp-new-offer-menu.md)菜单让用户能够创建指定类型的新产品/服务。
 - [所有产品/服务](./cpp-all-offers-page.md)页让合作伙伴能够查看所有提交的产品/服务及一些主要特征。 
 - [审批](./cpp-approvals-page.md)页让合作伙伴能够查看其目前已批准的所有产品/服务。
-- [所有发布者](./cpp-all-publishers-page.md)页列出了当前已注册的所有云合作伙伴发布者。
-- [用户](./cpp-users-page.md)页列出了与已注册的云合作伙伴关联的所有当前用户帐户。
-- [历史记录](./cpp-history-page.md)页列出了所有发布者的产品/服务发布和修改事件。 
+- [所有发布者](./cpp-all-publishers-page.md)页，列出了所有当前注册的云合作伙伴发布者。
+- [用户](./cpp-users-page.md)页，列出了与注册的云合作伙伴相关联的所有当前用户帐户。
+- [历史记录](./cpp-history-page.md)页，列出了所有发布者的产品/服务发布和修改事件。 
 - [见解](./cpp-insights-page.md)页包含构成此门户*卖家见解*功能的各种仪表板。
 
 

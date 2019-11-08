@@ -1,20 +1,21 @@
 ---
-title: 创建咨询产品/服务 |Azure Marketplace
-description: 在云合作伙伴门户中创建 Azure 或 Dynamics 365 的顾问服务产品，为 Azure Marketplace。
+title: 创建咨询服务 |Azure Marketplace
+description: 在 Azure Marketplace 的云合作伙伴门户中创建 Azure 或 Dynamics 365 咨询服务产品/服务。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pabutler
-ms.openlocfilehash: 09b9dce8e30ed3ba5ad0bac58929cd2c6d71793c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0cea0810300db1448540f58aa25b5f3197080d0e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942835"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818156"
 ---
-# <a name="create-a-consulting-offer"></a>创建咨询产品/服务
+# <a name="create-a-consulting-offer"></a>创建咨询服务
 
 本文介绍如何创建和发布咨询服务套餐。
 
@@ -25,14 +26,14 @@ ms.locfileid: "64942835"
 ## <a name="create-a-new-offer"></a>创建新套餐
 
 若要创建新套餐，请执行以下步骤。
-1. 在云合作伙伴门户的主菜单中，选择“新建套餐”。 
-1. 在“新建套餐”菜单中，选择“咨询服务”   。
+1. 在云合作伙伴门户的主菜单中，选择“新建套餐”。
+1. 在“新建套餐”菜单中，选择“咨询服务”。
 
     ![创建新的咨询服务套餐](media/cppselectnewconsultingoffer.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-咨询服务套餐类型的“新建套餐”页提供一组选项卡和表单字段用于创建新的套餐  。 以下文章介绍了如何使用选项卡来为新套餐定义套餐设置和店面详细信息：
+咨询服务套餐类型的“新建套餐”页提供一组选项卡和表单字段用于创建新的套餐。 以下文章介绍了如何使用选项卡来为新套餐定义套餐设置和店面详细信息：
 
 -   [定义产品/服务设置](./cpp-consulting-service-define-offer-settings.md)
 -   [输入店面详细信息，以及是要在 Azure 市场还是 AppSource 中发布](./cpp-consulting-service-storefront-details.md)

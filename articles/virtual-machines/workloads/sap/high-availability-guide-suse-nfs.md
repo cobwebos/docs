@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 771a20ccf1c34958308d58dafb6fb01e36bb408a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
-ms.translationtype: HT
+ms.openlocfilehash: c20fc2142718d3cc49d4b80c6a5e22e26a350335
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749022"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824859"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性
 
@@ -56,7 +56,7 @@ ms.locfileid: "73749022"
 请先阅读以下 SAP 说明和文档
 
 * SAP 说明 [1928533]，其中包含：
-  * SAP 软件部署支持的 Azure VM 大小的列表
+  * SAP 软件部署支持的 Azure VM 大小列表
   * Azure VM 大小的重要容量信息
   * 支持的 SAP 软件、操作系统 (OS) 和数据库组合
   * Microsoft Azure 上 Windows 和 Linux 所需的 SAP 内核版本
@@ -94,7 +94,7 @@ NFS 服务器为使用此 NFS 服务器的每个 SAP 系统使用专用的虚拟
 * 探测端口
   * NW1 的端口 61000
   * NW2 的端口 61001
-* Loadbalancing 规则（如果使用基本负载均衡器）
+* 负载均衡规则（如果使用基本负载均衡器）
   * NW1 的 2049 TCP
   * NW1 的 2049 UDP
   * NW2 的 2049 TCP
@@ -114,7 +114,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    1. 资源前缀  
       输入想要使用的前缀。 此值将用作所要部署的资源的前缀。
    2. SAP 系统计数  
-      输入将使用此文件服务器的 SAP 系统的数目。 这将部署所需数量的前端配置、负载均衡规则、探测端口、磁盘，等等。
+      输入将使用此文件服务器的 SAP 系统的数目。 这将部署所需数量的前端配置、负载均衡规则、探测端口、磁盘等。
    3. OS 类型  
       选择一个 Linux 发行版。 对于本示例，请选择“SLES 12”
    4. 管理员用户名和管理员密码  
@@ -165,7 +165,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
          1. NW2 的端口 61001
             * 重复上述步骤来为 NW2 创建运行状况探测
       1. 负载均衡规则
-         1. 打开负载均衡器，选择负载均衡规则，并单击“添加”
+         1. 打开负载均衡器，选择 "负载均衡规则"，并单击 "添加"
          1. 输入新负载均衡器规则的名称（例如**nw1**）
          1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如**nw1）** 。 **nw1-后端**和**nw1**）
          1. 选择 " **HA 端口**"。
@@ -216,8 +216,11 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
          1. NW2 的 2049 UDP
             * 为 NW2 针对端口 2049 和 UDP 重复上述步骤
 
+> [!Note]
+> 如果没有公共 IP 地址的 Vm 放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，则不会有出站 internet 连接，除非执行其他配置以允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅[使用 Azure 标准负载均衡器在 SAP 高可用性方案中的虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
+
 > [!IMPORTANT]
-> 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**net.tcp _timestamps**设置为**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**tcp_timestamps**设置为**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
 
 ### <a name="create-pacemaker-cluster"></a>创建 Pacemaker 群集
 

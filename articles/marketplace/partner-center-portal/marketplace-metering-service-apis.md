@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 35e6c61a8e8537035d70323c85dfc7a76f87cbcd
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 36ca95191e0e6422bd93360b98243393acad8147
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869555"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825478"
 ---
 # <a name="marketplace-metering-service-apis"></a>Azure 市场计量服务 API
 
@@ -20,21 +21,21 @@ ms.locfileid: "67869555"
 
 ## <a name="usage-event"></a>使用情况事件
 
-**POST**:`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**POST**： `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
-*查询参数:*
+*查询参数：*
 
 |            |          |
 | ---------- | ---------------------- |
 | `ApiVersion` | 用于此请求的操作的版本。 最新 API 版本为2018-08-31。 |
 
-*请求标头:*
+*请求标头：*
 
 | Content-type       | `application/json`    |
 | ------------------ | ---------------------------- |
-| `x-ms-requestid`     | 用于跟踪来自客户端的请求的唯一字符串值, 最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
-| `x-ms-correlationid` | 客户端上的操作的唯一字符串值。 此参数将客户端操作的所有事件与服务器端上的事件关联起来。 如果未提供此值, 将在响应标头中生成并提供一个值。 |
-| `authorization`   | [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) 注意:发出 HTTP 请求时, 将从`Bearer`引用的链接中获取令牌的前缀。 |
+| `x-ms-requestid`     | 用于跟踪来自客户端的请求的唯一字符串值，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
+| `x-ms-correlationid` | 客户端上的操作的唯一字符串值。 此参数将客户端操作的所有事件与服务器端上的事件关联起来。 如果未提供此值，将在响应标头中生成并提供一个值。 |
+| `authorization`   | [获取 JSON web 令牌（JWT）持有者令牌。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) 注意：发出 HTTP 请求时，前缀 `Bearer` 从引用的链接获取的令牌。 |
 
 *请求：*
 
@@ -48,10 +49,10 @@ ms.locfileid: "67869555"
 }
 ```
 
-### <a name="responses"></a>Responses
+### <a name="responses"></a>响应
 
 代码：200<br>
-OK 
+确定 
 
 ```json
 {
@@ -95,7 +96,7 @@ OK
 ```
 
 代码：409<br>
-冲突, 当我们接收到使用情况资源 ID 的使用情况, 并且有效使用已存在的情况下。 响应将包含`additionalInfo`包含有关已接受消息的信息的字段。
+冲突，当我们接收到使用情况资源 ID 的使用情况，并且有效使用已存在的情况下。 响应将包含 `additionalInfo` 字段，其中包含有关已接受的消息的信息。
 
 ```json
 {
@@ -115,26 +116,26 @@ OK
 
 ## <a name="batch-usage-event"></a>批次使用事件
 
-使用 batch 用量事件 API, 可以一次为多个已购买的实体发出使用事件。 批次使用情况事件请求引用发布产品时发布者定义的计数服务维度。
+使用 batch 用量事件 API，可以一次为多个已购买的实体发出使用事件。 批次使用情况事件请求引用发布产品时发布者定义的计数服务维度。
 
 >[!Note]
->你可以在 Microsoft 的商业应用商店中注册多个 SaaS 产品/服务。 每个注册的 SaaS 产品都有一个唯一的 Azure AD 应用程序, 该应用程序注册用于身份验证和授权。 在批次中发出的事件应该属于具有相同 Azure AD 应用程序的产品/服务。
+>你可以在 Microsoft 的商业应用商店中注册多个 SaaS 产品/服务。 每个注册的 SaaS 产品都有一个唯一的 Azure AD 应用程序，该应用程序注册用于身份验证和授权。 在批次中发出的事件应该属于具有相同 Azure AD 应用程序的产品/服务。
 
-**POST:** `https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
+**POST：** `https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
 
-*查询参数:*
+*查询参数：*
 
 |            |     |
 | ---------- | -------------------- |
 | `ApiVersion` | 用于此请求的操作的版本。 最新 API 版本为2018-08-31。 |
 
-*请求标头:*
+*请求标头：*
 
 | Content-type       | `application/json`       |
 | ------------------ | ------ |
-| `x-ms-requestid`     | 用于跟踪来自客户端的请求的唯一字符串值, 最好是 GUID。 如果未提供此值, 则会生成一个值, 并在响应标头中提供该值。 |
-| `x-ms-correlationid` | 客户端上的操作的唯一字符串值。 此参数将客户端操作的所有事件与服务器端上的事件关联起来。 如果未提供此值, 则将生成一个, 并在响应标头中提供。 |
-| `authorization`      | [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) 注意:发出 HTTP 请求时, 将从`Bearer`引用的链接中获取令牌的前缀。  |
+| `x-ms-requestid`     | 用于跟踪来自客户端的请求的唯一字符串值，最好是 GUID。 如果未提供此值，则会生成一个值，并在响应标头中提供该值。 |
+| `x-ms-correlationid` | 客户端上的操作的唯一字符串值。 此参数将客户端操作的所有事件与服务器端上的事件关联起来。 如果未提供此值，则将生成一个，并在响应标头中提供。 |
+| `authorization`      | [获取 JSON web 令牌（JWT）持有者令牌。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) 注意：发出 HTTP 请求时，前缀 `Bearer` 从引用的链接获取的令牌。  |
 
 *请求：*
 ```json
@@ -157,10 +158,10 @@ OK
   ]
 }
 ```
-### <a name="responses"></a>Responses
+### <a name="responses"></a>响应
 
 代码：200<br>
-OK
+确定
 
 ```json
 {
@@ -192,9 +193,9 @@ OK
 }
 ```
 
-API 响应中`BatchUsageEvent`引用的状态代码的说明:
+`BatchUsageEvent` API 响应中引用的状态代码的说明：
 
-| 状态代码  | 描述 |
+| 状态代码  | 说明 |
 | ---------- | -------------------- |
 | `Accepted` | 接受的代码。 |
 | `Expired` | 使用已过期。 |
@@ -202,7 +203,7 @@ API 响应中`BatchUsageEvent`引用的状态代码的说明:
 | `Error` | 错误代码。 |
 | `ResourceNotFound` | 提供的使用资源无效。 |
 | `ResourceNotAuthorized` | 你无权提供此资源的使用情况。 |
-| `InvalidDimension` | 对于此产品/计划, 使用的维度无效。 |
+| `InvalidDimension` | 对于此产品/计划，使用的维度无效。 |
 | `InvalidQuantity` | 传递的数量为 < 0。 |
 | `BadArgument` | 输入缺少或格式不正确。 |
 
@@ -224,7 +225,7 @@ API 响应中`BatchUsageEvent`引用的状态代码的说明:
 }
 ```
 代码：403<br>
-用户未经授权, 无法进行此调用
+用户未经授权，无法进行此调用
 
 ```json
 {
@@ -235,4 +236,4 @@ API 响应中`BatchUsageEvent`引用的状态代码的说明:
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息, 请参阅[SaaS](./saas-metered-billing.md)计费。
+有关详细信息，请参阅[SaaS](./saas-metered-billing.md)计费。

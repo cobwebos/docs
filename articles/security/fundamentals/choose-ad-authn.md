@@ -2,19 +2,19 @@
 title: 为 Azure AD 混合标识解决方案选择正确的身份验证方法 | Microsoft Docs
 description: 本指南为中型到大型组织中负责为 Azure AD 混合标识解决方案选择身份验证方法的 CEO、CIO、CISO、首席标识架构师、企业架构师以及安全和 IT 决策制定者提供帮助。
 keywords: ''
-author: TerryLanfear
-ms.author: terrylan
+author: martincoetzer
+ms.author: martinco
 ms.date: 10/30/2019
 ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 564175141a8076d2ac4324b0dccf02cc250a613c
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 71b4a8abc641a3ab11d6b17bbc8de3b42b61c34c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621178"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820544"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法
 

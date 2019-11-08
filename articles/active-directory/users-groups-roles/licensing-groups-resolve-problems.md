@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dfe5b886ff389cf2d0f01d402990929c0ef5628
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 247dee2cfbb00b185e941fde05c2198459a05e20
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72033974"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815735"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>识别和解决 Azure Active Directory 中组的许可证分配问题
 
@@ -29,6 +29,11 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 如果直接将许可证分配给单个用户而不使用基于组的许可，分配操作可能会失败。 例如，对用户系统执行 PowerShell cmdlet `Set-MsolUserLicense` 时，由于与业务逻辑相关的多个原因，该 cmdlet 可能会失败。 例如，可能许可证数量不足，或者两个服务计划之间存在冲突，不能同时分配。 将立即向你返回该问题的报告。
 
 使用基于组的许可时，可能会发生相同的错误，但是在 Azure AD 服务分配许可证时在后台发生这些错误。 由于此原因，这些错误无法立即传达给你。 但是，这些错误会记录在用户对象中，并通过管理门户进行报告。 为用户提供许可证的原始意图永远不会丢失，但以错误状态记录，供以后调查和解决。
+
+## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>审核日志中的 LicenseAssignmentAttributeConcurrencyException
+
+**问题：** 用户在审核日志中具有许可证分配的 LicenseAssignmentAttributeConcurrencyException。
+当基于组的许可尝试对用户处理相同许可证的并发许可证分配时，将在用户上记录此异常。 如果用户是具有相同分配的许可证的多个组的成员，则通常会发生这种情况。 AZure AD 将重试处理用户许可证，并解决此问题。 客户无需执行任何操作即可解决此问题。
 
 ## <a name="find-license-assignment-errors"></a>查找许可证分配错误
 
@@ -77,7 +82,7 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
 **PowerShell：** PowerShell cmdlet 将此错误报告为 _MutuallyExclusiveViolation_。
 
-## <a name="other-products-depend-on-this-license"></a>依赖于此许可证的其他产品
+## <a name="other-products-depend-on-this-license"></a>其他产品依赖于此许可证
 
 **问题：** 组中指定的某个产品包含的服务计划必须为另一个产品中的另一个服务计划启用才能正常工作。 当 Azure AD 尝试删除基础服务计划时，将出现此错误。 例如，从组中删除用户时，可能会发生此错误。
 
@@ -113,7 +118,7 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
 ## <a name="azure-ad-mail-and-proxyaddresses-attribute-change"></a>Azure AD 邮件和 ProxyAddresses 属性更改
 
-**问题：** 更新用户或组的许可证分配时，可能会看到某些用户的 Azure AD 邮件和 ProxyAddresses 属性已更改。
+**问题：** 更新用户或组的许可证分配时，可能会看到某些用户的 Azure AD Mail 和 ProxyAddresses 属性已更改。
 
 更新用户的许可证分配会导致触发代理地址计算，这可能会更改用户属性。 若要了解更改的确切原因并解决问题，请参阅这篇关于[如何在 Azure AD 中填充 proxyAddresses 属性](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad)的文章。
 

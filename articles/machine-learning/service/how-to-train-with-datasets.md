@@ -11,14 +11,14 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: 53a190a611af42f0eaca8d4348d1d066d3d4f9e4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: f95798241084efdb91993a5add52f84a8a6dc1ec
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584405"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814802"
 ---
-# <a name="train-with-datasets-preview-in-azure-machine-learning"></a>Azure 机器学习中的数据集（预览）定型
+# <a name="train-with-datasets-in-azure-machine-learning"></a>Azure 机器学习中的数据集定型
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍两种使用远程试验训练运行中的[Azure 机器学习数据集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)的方式，无需担心连接字符串或数据路径。
@@ -40,7 +40,7 @@ Azure 机器学习数据集提供与[ScriptRun](https://docs.microsoft.com/pytho
 * [安装的适用于 Python 的 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)，其中包含 azureml 数据集包。
 
 > [!Note]
-> 某些数据集类（预览版）与[dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)包之间存在依赖关系。 对于 Linux 用户，仅以下分发版支持这些类： Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
+> 某些数据集类依赖于[dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)包。 对于 Linux 用户，仅以下分发版支持这些类： Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
 
 ## <a name="option-1-use-datasets-directly-in-training-scripts"></a>选项1：直接在定型脚本中使用数据集
 
@@ -82,7 +82,7 @@ df = dataset.to_pandas_dataframe()
 此代码创建一个 `est`的泛型估计器对象，该对象指定
 
 * 脚本的脚本目录。 此目录中的所有文件都上传到群集节点以便执行。
-* 训练脚本， *train_titanic. py*。
+* 训练脚本， *train_titanic py*。
 * 用于定型的输入数据集，`titanic`。
 * 试验的计算目标。
 * 试验的环境定义。

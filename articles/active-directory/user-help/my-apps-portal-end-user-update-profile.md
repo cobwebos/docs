@@ -1,5 +1,5 @@
 ---
-title: 从 "我的应用" 门户更新你的配置文件和帐户信息-Azure Active Directory |Microsoft Docs
+title: 在 "我的应用" 门户上更新配置文件和帐户-Azure AD
 description: 了解如何更新配置文件和工作或学校帐户信息，包括更改密码、启用密码重置、更新安全验证方法、查看组织的使用条款声明和注销使用工作或学校帐户登录的任何位置。
 services: active-directory
 author: eross-msft
@@ -13,14 +13,14 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40cf8e16e08db67c36009435758db36797518d96
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4416b35d2e2204cec2a9ffe2f50e92983d6204c0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160768"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820381"
 ---
-# <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>从 "我的应用" 门户更新你的配置文件和帐户信息
+# <a name="update-your-profile-and-account-info-on-the-my-apps-portal"></a>更新 "我的应用" 门户中的配置文件和帐户信息
 
 可以在基于 Web 的“我的应用”门户中使用工作或学校帐户，以便查看并启动组织的许多基于云的应用、更新你的部分配置文件和帐户信息、查看**组**信息，以及为应用和组执行“访问评审”。 如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。
 
@@ -65,7 +65,7 @@ ms.locfileid: "73160768"
 
 - 从所有位置注销。
 
-## <a name="change-your-password"></a>更改密码
+## <a name="change-your-password"></a>请更改密码。
 
 如果要更改工作或学校帐户的密码，可以从 "**配置文件**" 页的 "**管理帐户**" 区域中选择 "**更改密码**"。
 

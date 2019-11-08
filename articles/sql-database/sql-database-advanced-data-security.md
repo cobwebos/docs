@@ -1,5 +1,5 @@
 ---
-title: 高级数据安全性-Azure SQL 数据库
+title: 高级数据安全
 description: 了解有关发现敏感数据并分类、管理数据库漏洞以及检测可能对 Azure SQL 数据库造成威胁的异常活动的功能。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: ce9cfa7e4b08dac878de52ba9765bcc204ed8196
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a4f4306023b37c3b1cba46acd11ec5c0a489d0d6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691298"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822572"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Azure SQL 数据库的高级数据安全
 

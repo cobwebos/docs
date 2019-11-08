@@ -1,5 +1,5 @@
 ---
-title: 设置安全信息（预览版）以使用短信-Azure Active Directory |Microsoft Docs
+title: 设置文本消息的安全信息（预览版）-Azure AD
 description: 如何设置安全信息以使用短信和移动设备验证身份。
 services: active-directory
 author: eross-msft
@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3544094da72c1c0f854f3d02a34f8540ad2f784
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5a4be99a84964b7a55448692385d027262ecfec3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160887"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803836"
 ---
 # <a name="set-up-security-info-preview-to-use-text-messaging"></a>设置安全信息以使用短信（预览版）
 
 可遵循以下步骤添加双重验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页面以添加、更新或删除安全信息。
 
-如果在登录工作或学校帐户后系统提示立即进行此项设置，请参阅[根据登录页提示设置安全信息](security-info-setup-signin.md)一文中的详细步骤。
+如果在登录工作或学校帐户后系统提示立即进行设置，请参阅[根据登录页提示设置安全信息](security-info-setup-signin.md)一文中的详细步骤。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
@@ -39,13 +39,13 @@ ms.locfileid: "73160887"
 
 ### <a name="to-set-up-text-messages"></a>若要设置短信
 
-1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页面。
+1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
 
     ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 
 2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-    ![“安全信息”页面，突出显示“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. 在“添加方法”页上，从下拉列表中选择“电话”，然后选择“添加”。
 
@@ -90,11 +90,11 @@ ms.locfileid: "73160887"
 
     ![更改默认登录方法的链接](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. 从可用方法的下拉列表中选择“电话 - 短信 (_your_phone_number_)”，然后选择“确认”。
+2. 从可用方法的下拉列表中选择“电话 - 短信 (**your_phone_number *)”，然后选择“确认”*** 。
 
-    ![选择默认登录的方法](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
+    ![选择默认登录方法](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
 
-    用于登录的默认方法更改为“电话 - 短信 (_your_phone_number_ )”。
+    用于登录的默认方法更改为“电话 - 短信 (**your_phone_number *)”*** 。
 
 ## <a name="additional-security-info-methods"></a>其他安全信息方法
 

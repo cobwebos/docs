@@ -1,5 +1,5 @@
 ---
-title: 利用弹性池管理多个 SQL 数据库-Azure
+title: 通过弹性池管理多个数据库
 description: 使用弹性池管理和缩放多个 SQL 数据库（成千上万的）。 可以按一个价格将资源分布到需要的任何位置。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 68bb68b47ca240d6c20153af3ed4b0eb42475282
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1b3ee75d1b24cab8211337cf1cdbd053327e16b8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690455"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823836"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>弹性池有助于管理和缩放多个 Azure SQL 数据库
 
@@ -48,7 +48,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 池很适合具有特定使用模式的大量数据库。 对于给定的数据库，此模式的特征是低平均使用量与相对不频繁的使用高峰。
 
-可以加入池的数据库越多，实现的节省就越大。 具体取决于应用程序使用模式，可能会看到与使用两个 S3 数据库相同的成本节约。
+可以加入池的数据库越多，实现的节省就越大。 但根据应用程序使用模式，可能会看到与使用两个 S3 数据库一样少的节约。
 
 以下各部分有助于了解如何评估特定的数据库集合是否会因使用池而受益。 这些示例使用标准池，但同样的原理也适用于基本和高级池。
 
@@ -68,7 +68,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
    ![使用模式适用于池的 20 个数据库](./media/sql-database-elastic-pool/twenty-databases.png)
 
-在上图中，黑线表示跨所有 20 个数据库的聚合 DTU 使用量。 其中表明聚合 DTU 使用量永远不会超过 100 个 DTU，并指出 20 个数据库可以在此时间段内共享 100 个 eDTU。 相比于将每个数据库放入单一数据库的 S3 计算大小，这会导致 DTU 减少 20 倍和价格降低 13 倍。
+在上图中，黑线表示跨所有 20 个数据库的聚合 DTU 使用量。 其中表明聚合 DTU 使用量永远不会超过 100 个 DTU，并指出 20 个数据库可以在这段期间共享 100 个 eDTU。 相比于将每个数据库放入单一数据库的 S3 计算大小，这会导致 DTU 减少 20 倍和价格降低 13 倍。
 
 由于以下原因，此示例很理想：
 
@@ -112,7 +112,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 有关每个资源模型提供的服务层级，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 
-在无法使用工具的情况下，以下分步步骤有助于评估池是否比单一数据库更具成本效益：
+在无法使用工具的情况下，以下分步步骤可以帮助你评估池是否比单一数据库更具成本效益：
 
 1. 通过如下方式来估算池所需的 eDTU 或 vCore：
 

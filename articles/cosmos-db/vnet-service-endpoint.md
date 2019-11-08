@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: dfc3ebc0274c87466d6dc27c93880483df023085
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 791821fbfe5854c27b7e3e6927a56a66ac1f1dc2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242467"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819085"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>从虚拟网络 (VNet) 访问 Azure Cosmos DB
 
@@ -36,7 +36,7 @@ ms.locfileid: "66242467"
 
 添加 IP 防火墙或虚拟网络访问规则后，只有来自受允许源的请求才能获取有效响应。 将拒绝其他请求并返回 403（禁止访问）错误。 必须将 Azure Cosmos 帐户的防火墙与连接级别的防火墙区分开来。 源仍可以连接到服务，连接本身不会遭到拒绝。
 
-### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>在子网中为 Azure Cosmos DB 启用服务终结点后，我的请求开始遭到阻止。 这是怎么回事？
+### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>在子网中为 Azure Cosmos DB 启用服务终结点后，我的请求开始遭到阻止。 发生了什么情况？
 
 在子网中为 Azure Cosmos DB 启用服务终结点后，抵达帐户的流量源将从公共 IP 切换到虚拟网络和子网。 如果 Azure Cosmos 帐户仅包含基于 IP 的防火墙，则已启用服务的子网发出的流量将不再与 IP 防火墙规则相匹配，因此遭到拒绝。 请重温有关从基于 IP 的防火墙无缝迁移到基于虚拟网络的访问控制的步骤。
 
@@ -47,7 +47,7 @@ ms.locfileid: "66242467"
 目前，最多允许 64 个子网访问一个 Azure Cosmos 帐户。
 
 ### <a name="can-i-enable-access-from-vpn-and-express-route"></a>是否可以启用从 VPN 和 Express Route 进行访问？ 
-有关通过 expressroute 从本地访问 Azure Cosmos 帐户，你需要启用 Microsoft 对等互连。 创建 IP 防火墙或虚拟网络访问规则后，可以在 Azure Cosmos 帐户 IP 防火墙中添加用于 Microsoft 对等互连的公共 IP 地址，以允许本地服务访问 Azure Cosmos 帐户。 
+若要从本地快速路由访问 Azure Cosmos 帐户，需要启用 Microsoft 对等互连。 创建 IP 防火墙或虚拟网络访问规则后，可以在 Azure Cosmos 帐户 IP 防火墙中添加用于 Microsoft 对等互连的公共 IP 地址，以允许本地服务访问 Azure Cosmos 帐户。 
 
 ### <a name="do-i-need-to-update-the-network-security-groups-nsg-rules"></a>是否需要更新网络安全组 (NSG) 规则？ 
 NSG 规则用于限制与虚拟网络中子网之间的连接。 将 Azure Cosmos DB 的服务终结点添加到子网时，无需在 NSG 中为 Azure Cosmos 帐户打开出站连接。 
@@ -56,7 +56,7 @@ NSG 规则用于限制与虚拟网络中子网之间的连接。 将 Azure Cosmo
 否，只能为 Azure 资源管理器虚拟网络启用服务终结点。 经典虚拟网络不支持服务终结点。
 
 ### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>为 Azure Cosmos DB 启用了服务终结点访问时，我能否“接受从公用 Azure 数据中心内连接”？  
-仅当你希望自己的 Azure Cosmos DB 帐户可供其他 Azure 第一方服务（例如 Azure 数据工厂和 Azure 搜索）或给定 Azure 区域中部署的任何服务访问时，才需要这样做。
+仅当你希望 Azure Cosmos DB 帐户被其他 Azure 第一方服务（如 Azure 数据工厂、Azure 认知搜索或部署在给定 Azure 区域中的任何服务）访问时，才需要此项。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库中托管实例的连接体系结构
+title: 托管实例的连接体系结构
 description: 了解 Azure SQL 数据库托管实例的通信和连接体系结构，以及如何组件如何将流量定向到托管实例。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 881f116988ae0c9a6a33c8454cd1e4012580bfab
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0c21271eb19a8fd69cb42e30c6a45bd3af9a5600
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73688205"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820477"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 数据库中托管实例的连接体系结构
 
@@ -96,7 +96,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 ### <a name="mandatory-inbound-security-rules"></a>强制性入站安全规则
 
-| Name       |端口                        |协议|源           |目标|操作|
+| 名称       |端口                        |协议|源           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |管理  |9000、9003、1438、1440、1452|TCP     |任意              |MI SUBNET  |ALLOW |
 |mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |ALLOW |
@@ -104,7 +104,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 ### <a name="mandatory-outbound-security-rules"></a>强制性出站安全规则
 
-| Name       |端口          |协议|源           |目标|操作|
+| 名称       |端口          |协议|源           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
 |管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |ALLOW |
 |mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |ALLOW |
@@ -121,7 +121,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 ### <a name="user-defined-routes"></a>用户定义的路由
 
-|Name|地址前缀|下一跃点|
+|名称|地址前缀|下一跃点|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI SUBNET|虚拟网络|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|
@@ -251,7 +251,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>具有服务辅助子网配置的强制入站安全规则 
 
-| Name       |端口                        |协议|源           |目标|操作|
+| 名称       |端口                        |协议|源           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |管理  |9000、9003、1438、1440、1452|TCP     |SqlManagement    |MI SUBNET  |ALLOW |
 |            |9000、9003                  |TCP     |CorpnetSaw       |MI SUBNET  |ALLOW |
@@ -261,14 +261,14 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>具有服务辅助子网配置的强制出站安全规则 
 
-| Name       |端口          |协议|源           |目标|操作|
+| 名称       |端口          |协议|源           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
 |管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |ALLOW |
 |mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |ALLOW |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>具有服务辅助子网配置的用户定义路由 
 
-|Name|地址前缀|下一跃点|
+|名称|地址前缀|下一跃点|
 |----|--------------|-------|
 |vnetlocal 的子网|MI SUBNET|虚拟网络|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库托管实例概述
+title: SQL 托管实例概述
 description: 本文介绍 Azure SQL 数据库托管实例。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 11/04/2019
-ms.openlocfilehash: 6075b07c1ed1e8d53bfe61a424d19e3a2ef6fd08
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6c5b913835b2080f30ff3dd73e6a59c1043ecf5d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687808"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823281"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>什么是 Azure SQL 数据库托管实例？
 
@@ -53,7 +53,7 @@ ms.locfileid: "73687808"
 
 下表显示托管实例的主要功能：
 
-|功能 | 说明|
+|Feature | 说明|
 |---|---|
 | SQL Server 版本/内部版本 | SQL Server 数据库引擎（最新稳定版） |
 | 受管理的自动备份 | 是 |
@@ -128,7 +128,7 @@ Azure SQL 数据库提供管理操作，你可以使用这些操作自动部署�
 
 在已部署的托管实例上执行的后续操作还可能会影响其底层虚拟群集。 这会影响管理操作的持续时间，因为部署更多的虚拟机会附带某种开销，在规划新的部署或者更新现有托管实例时，需要考虑到这种开销。
 
-所有管理操作可分类为：
+所有管理操作可以按如下方式分类：
 
 - 实例部署（新实例的创建）。 
 - 实例更新（更改实例属性，如 Vcore 或保留的存储。
@@ -147,7 +147,7 @@ Azure SQL 数据库提供管理操作，你可以使用这些操作自动部署�
 
 下表汇总了操作及其典型的总持续时间：
 
-|Category  |Operation  |长时间运行的分段  |预计持续时间  |
+|类别  |Operation  |长时间运行的分段  |预计持续时间  |
 |---------|---------|---------|---------|
 |**部署** |空子网中的第一个实例|虚拟群集的创建|90% 的操作可在 4 小时内完成|
 |部署 |非空子网中另一个硬件代系的第一个实例（例如，包含第 4 代实例的子网中的第一个 5 代实例）|虚拟群集的创建*|90% 的操作可在 4 小时内完成|

@@ -1,5 +1,5 @@
 ---
-title: 源代码管理集成 | Microsoft Docs
+title: 源代码管理集成
 description: 使用Azure Repos（Git 和 GitHub）集成了本机源代码管理的 SQL 数据仓库的企业级数据库 DevOps 体验。
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 10a10882efe05ef9e6bb86e54fcfcf8c5d73d225
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 82d366b3f807e21e3531da00da78520fed90bc66
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70098749"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645264"
 ---
 # <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的源代码管理集成
 

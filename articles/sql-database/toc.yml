@@ -361,7 +361,7 @@
               href: /azure/connectors/connectors-create-api-sqlazure?toc=/azure/sql-database/toc.json
             - name: 使用 Spark 连接器
               href: sql-database-spark-connector.md
-            - name: 使用 Azure 搜索编制索引
+            - name: 使用 Azure 认知搜索编制索引
               href: /azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers?toc=/azure/sql-database/toc.json
             - name: 配置时态保留策略
               href: sql-database-temporal-tables-retention-policy.md

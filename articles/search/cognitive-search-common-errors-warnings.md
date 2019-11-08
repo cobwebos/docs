@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6ed04c875140f3ecd14eff31829e931efbe84ea2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: bbaec55666b877e1d9343d8b80ea44a189c0c5b2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606652"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806112"
 ---
 # <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充管道的常见错误和警告
 
@@ -63,6 +63,8 @@ ms.locfileid: "73606652"
 
 | 原因 | 示例 | 操作 |
 | --- | --- | --- |
+| 字段包含的字词太大 | 文档中的术语大于[32 KB 的限制](search-limits-quotas-capacity.md#api-request-limits) | 可以确保字段未配置为可筛选、可查找或可排序，从而避免此限制。
+| 文档太大，无法建立索引 | 文档大于[最大 api 请求大小](search-limits-quotas-capacity.md#api-request-limits) | [如何为大型数据集编制索引](search-howto-large-index.md)
 | 暂时性连接问题 | 发生暂时性错误。 请稍后重试。 | 偶尔会出现意外的连接问题。 稍后再次尝试通过索引器运行文档。 |
 | 潜在的产品 bug | 发生了意外错误。 | 这表示未知的失败类别，并可能表示存在产品错误。 请提交[支持票证](https://ms.portal.azure.com/#create/Microsoft.Support)以获得帮助。 |
 | 技能在执行过程中遇到错误 | （从合并技能）一个或多个偏移值无效，无法对其进行分析。 项已插入到文本的末尾 | 使用错误消息中的信息解决此问题。 这种类型的故障将需要采取措施来解决问题。 |
@@ -114,6 +116,7 @@ ms.locfileid: "73606652"
 | --- | --- | --- |
 | 文档中的术语大于[32 KB 的限制](search-limits-quotas-capacity.md#api-request-limits) | 字段包含的字词太大 | 可以确保字段未配置为可筛选、可查找或可排序，从而避免此限制。
 | 文档大于[最大 api 请求大小](search-limits-quotas-capacity.md#api-request-limits) | 文档太大，无法建立索引 | [如何为大型数据集编制索引](search-howto-large-index.md)
+| 文档包含集合中的对象太多 | 文档中的集合超出了[所有复杂集合限制的最大元素数](search-limits-quotas-capacity.md#index-limits) | 建议将文档中的复杂集合大小减小到低于限制，并避免高存储利用率。
 | 连接到目标索引时出现问题（重试后仍存在），因为该服务处于其他负载下，如查询或索引。 | 未能建立与更新索引的连接。 搜索服务负载过重。 | [向上缩放搜索服务](search-capacity-planning.md)
 | 搜索服务正在为服务更新进行修补，或者正在重新配置拓扑。 | 未能建立与更新索引的连接。 搜索服务当前处于关闭状态，搜索服务正在进行转换。 | 为服务配置至少3个副本，每个[SLA 文档](https://azure.microsoft.com/support/legal/sla/search/v1_0/)99.9% 的可用性
 | 基础计算/网络资源失败（极少） | 未能建立与更新索引的连接。 出现未知错误。 | 将索引器配置为[按计划运行](search-howto-schedule-indexers.md)以从失败状态中选取。

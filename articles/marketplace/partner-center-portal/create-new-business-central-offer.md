@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 16b75a98a5a42c9acf6d9a68330cbf8e005f7179
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b3d66cab8cf43d862bbf17d5783f0469e3e1a5f8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819795"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825655"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>创建新的 Dynamics 365 业务中心产品/服务
 
@@ -138,7 +139,7 @@ ms.locfileid: "72819795"
 
 提供产品/服务的简短说明（最多100个字符），可以在 marketplace 搜索结果中使用。
 
-### <a name="description"></a>描述
+### <a name="description"></a>说明
 
 提供产品/服务的更长说明（最多3000个字符）。 此说明将在 marketplace 列表概述中向客户显示。 包括产品/服务的价值主张、主要优势、类别和/或行业关联、应用内购买机会，以及任何所需的公开。 
 
@@ -298,9 +299,9 @@ Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服�
 
 - **测试驱动器持续时间**（必需）：通过定义小时数来输入测试驱动器保持活动状态的时间长度。 超过此时间后，会话将结束，并且不再使用您的许可证之一。 建议使用2-24 小时的值，具体取决于产品/服务的复杂性。 此持续时间只能设置为整小时数（例如，"2" 小时，"1.5" 无效）。  如果用户运行时间不足，并且想要再次访问测试驱动器，则用户可以请求新的会话。
 
-- **实例 url** （必需）：客户将从其开始测试驱动器的 url。 通常是运行应用并安装示例数据的 Dynamics 365 实例的 URL （例如 https://testdrive.crm.dynamics.com) 。
+- **实例 url** （必需）：客户将从其开始测试驱动器的 url。 通常是运行应用并安装示例数据的 Dynamics 365 实例的 URL （例如 https://testdrive.crm.dynamics.com)。
 
-- **实例 WEB API url** （必需）：通过登录到 Microsoft 365 帐户并导航到 "**设置**" \&gt 来检索 Dynamics 365 实例的 Web API url;**自定义**\&gt;**开发人员资源**\&gt;**实例 WEB API （服务根 url）** ，复制此处找到的 URL （例如 https://testdrive.crm.dynamics.com/api/data/v9.0) 。
+- **实例 WEB API url** （必需）：通过登录到 Microsoft 365 帐户并导航到 "**设置**" \&Gt; 来检索 Dynamics 365 实例的 Web API url**自定义**\&g t;**开发人员资源**\&g t;**实例 WEB API （服务根 url）** ，复制此处找到的 URL （例如 https://testdrive.crm.dynamics.com/api/data/v9.0)。
 
 - **角色名称**（必需）：提供在自定义 Dynamics 365 测试驱动器中定义的安全角色名称，这些名称将在其测试驱动器（例如，测试驱动器角色）期间分配给用户。
 
@@ -369,7 +370,7 @@ Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服�
 
 ### <a name="key-usage-scenario"></a>密钥使用方案
 
-你必须上载一个 `.pdf` 文件，该文件列出文档中列出的产品/服务的关键使用方案（.pdf 格式）。 我们在为 marketplace 批准产品/服务之前，验证团队可能会验证这里列出的所有方案。
+必须上载一个 `.pdf` 文件，其中列出了你的产品/服务中列出的产品/服务的关键使用方案（.pdf 格式）。 我们在为 marketplace 批准产品/服务之前，验证团队可能会验证这里列出的所有方案。
 
 ### <a name="app-tests-automation"></a>应用测试自动化
 
@@ -388,9 +389,9 @@ Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服�
 如果你是首次发布此产品/服务，则可以：
 
 - 请参阅产品/服务的每个部分的完成状态。
-    - *未启动*–表示该部分尚未接触，需要完成。
-    - *不完整*–表示部分包含需要修复的错误或需要提供详细信息。 返回到部分并对其进行更新。
-    - *Complete* –表示部分已完成，所有必需的数据都已提供并且没有错误。 产品/服务的所有部分必须处于完整状态，然后才能提交产品/服务。
+    - *未开始*-表示该部分尚未接触，需要完成。
+    - *不完整*-表示部分包含需要修复的错误或需要提供更多信息。 返回到部分并对其进行更新。
+    - *Complete* -表示该部分已完成，所有必需的数据都已提供并且没有错误。 产品/服务的所有部分必须处于完整状态，然后才能提交产品/服务。
 - 在 "**认证说明**" 部分中，向认证团队提供测试说明，以确保正确测试应用程序，以及任何有助于了解应用程序的补充说明。
 - 通过选择 "**提交**" 提交产品/服务进行发布。 当提供预览版时，我们将向你发送一封电子邮件，供你查看和批准。 返回到 "合作伙伴中心"，并选择 "产品 **/** 服务"，以将你的产品/服务发布到公共（如果是专用受众）。
 

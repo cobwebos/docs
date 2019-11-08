@@ -4,15 +4,16 @@ description: 为 Azure 容器创建技术资产。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pabutler
-ms.openlocfilehash: c639389fdd0d4624152fcdfa4432be09a18a97bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6aae1957a3dcc58339eb4f3c9e250513843ceb18
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65794342"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819051"
 ---
 # <a name="prepare-your-container-technical-assets"></a>准备容器技术资产
 
@@ -55,8 +56,8 @@ ms.locfileid: "65794342"
 
 有关详细信息，请参阅以下主题：
 
-* [教程：创建容器映像部署到 Azure 容器实例](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
-* [教程：生成和部署容器映像在云中使用 Azure 容器注册表任务](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)
+* [教程：创建用于部署到 Azure 容器实例的容器映像](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
+* [教程：通过 Azure 容器注册表任务在云中构建和部署容器映像](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)
 
 ## <a name="next-steps"></a>后续步骤
 

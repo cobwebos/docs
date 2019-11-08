@@ -1,5 +1,5 @@
 ---
-title: 设置安全信息以使用安全密钥（预览）-Azure Active Directory |Microsoft Docs
+title: 设置安全密钥的安全信息（预览版）-Azure AD
 description: 如何设置安全信息以使用快速标识联机（FIDO2）安全密钥验证身份。
 services: active-directory
 author: eross-msft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47ae7de87efd787b7d3cba14a33688c4b29637e6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a9d86d594f0918e6a9ffed49142a81a0f7834e86
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160706"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803786"
 ---
-# <a name="set-up-security-info-to-use-a-security-key-preview"></a>设置安全信息以使用安全密钥（预览）
+# <a name="set-up-security-info-preview-for-a-security-key"></a>设置安全密钥的安全信息（预览版）
 
 你可以使用安全密钥作为你的组织中的无密码登录方法。 安全密钥是一种物理设备，使用唯一的 PIN 登录到工作或学校帐户。 由于安全密钥要求你具有物理设备，并且只有你知道的内容，因此它被视为比用户名和密码更强的身份验证方法。
 

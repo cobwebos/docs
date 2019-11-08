@@ -1,5 +1,5 @@
 ---
-title: '针对 Azure SQL 数据库运行分析查询 '
+title: 运行分析查询
 description: 在多租户应用中使用从多个“Azure SQL 数据库”数据库提取的数据运行跨租户分析查询。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 09/19/2018
-ms.openlocfilehash: 2044e72697526a1c757fa13aeffb85260a9b821e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 067afd09f942b8062825553a3cf90f715e8d3938
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691999"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822146"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>使用提取的数据运行跨租户分析 - 多租户应用
  
@@ -227,7 +227,7 @@ AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[V
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何执行以下操作：
+本教程介绍了如何：
 
 > [!div class="checklist"]
 > - 部署包含预定义星型架构表的租户分析数据库

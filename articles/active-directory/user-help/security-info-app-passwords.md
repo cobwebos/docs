@@ -1,5 +1,5 @@
 ---
-title: 从“安全信息”（预览版）页面设置应用密码 - Azure Active Directory | Microsoft Docs
+title: 在安全信息（预览版）中创建应用密码-Azure AD
 description: 设置自动生成的密码（应用密码）以用于组织中的任何非浏览器应用或不支持双重验证的任何应用。 此应用密码有别于普通密码，可以从“安全信息”页面进行设置。
 services: active-directory
 author: eross-msft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9638893c707757cb520acdf18e8e89a6cdf13f08
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: eb26d90772fc9e3e3e506946363c76cf02e6b2ef
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915981"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820330"
 ---
-# <a name="manage-app-passwords-from-your-security-info-preview-page"></a>从“安全信息”（预览版）页面管理应用密码
+# <a name="create-app-passwords-from-your-security-info-preview-page"></a>从安全信息（预览版）页创建应用密码
 
 某些应用（例如 Outlook 2010）不支持双重验证。 缺少这种支持意味着，如果你在组织中使用双重验证，该应用将不会正常工作。 若要解决此问题，可以创建一个与普通密码不同的自动生成的密码，并在每个非浏览器应用中使用该密码。
 
@@ -46,13 +46,13 @@ ms.locfileid: "70915981"
 
 ### <a name="to-create-a-new-app-password"></a>创建新的应用密码
 
-1. 登录到你的工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页面。
+1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
 
     ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 
 2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-    ![“安全信息”页面，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. 在“添加方法”页面上，从下拉列表中选择“应用密码”，然后选择“添加”。
 
@@ -83,6 +83,6 @@ ms.locfileid: "70915981"
 
 2. 从确认框中选择“是”，以删除“应用密码”。 删除应用密码后，它将从你的安全信息中删除，并从“安全信息”页面中消失。
 
-## <a name="for-more-information"></a>获取详细信息
+## <a name="for-more-information"></a>更多信息
 
 - 有关“安全信息”页面以及如何设置它的详细信息，请参阅[安全信息概述](user-help-security-info-overview.md)

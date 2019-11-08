@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库实例池操作方法指南（预览）
+title: 实例池操作指南（预览）
 description: 本文介绍如何创建和管理 Azure SQL 数据库实例池（预览版）。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 461de4da35905ed860fb2ed9d2c655b55b777683
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 13c58ddf5f51e5b63d2dbe425b3ec795e21dabb8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689732"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810353"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Azure SQL 数据库实例池（预览）操作指南
 

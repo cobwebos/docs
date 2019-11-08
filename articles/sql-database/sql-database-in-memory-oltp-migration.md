@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: 82b24b51a103d31bf20bbb7a9fc304095be523d5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0f10936867c101c07cc8d29d68dc45021bfad1b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689836"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810293"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>使用内存中 OLTP 改善 SQL 数据库中的应用程序性能
 
@@ -30,7 +30,7 @@ ms.locfileid: "73689836"
 
 ## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>步骤 1：确保使用的是高级和业务关键层数据库
 
-只有高级和业务关键层数据库才支持内存中 OLTP。 如果返回的结果为 1（不是 0），则支持内存中 OLTP：
+只有高级和业务关键层数据库才支持内存中 OLTP。 如果返回的结果为 1（不是 0），则支持 In-Memory：
 
 ```
 SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
@@ -41,7 +41,7 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 
 ## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>步骤 2：标识要迁移到 In-Memory OLTP 的对象
-SSMS 包含可以针对具有活动工作负荷的数据库运行的**事务性能分析概述**。 该报告识别要迁移到内存中 OLTP 的候选表和存储过程。
+SSMS 包含可以针对具有活动工作负荷的数据库运行的**事务性能分析概述**。 该报告识别要迁移到 In-Memory OLTP 的候选表和存储过程。
 
 若要在 SSMS 中生成报告，请执行以下操作：
 

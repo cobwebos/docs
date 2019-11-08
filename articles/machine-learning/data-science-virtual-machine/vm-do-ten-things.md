@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 75a685dc90db9133ee9bc5d52d046246270ea32a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dc8a870d692108f3a33b89a1c3826d421dfd1f63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497602"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824386"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows 数据科学虚拟机的十大功能
 
@@ -40,7 +40,7 @@ DSVM 与 Azure 服务密切合作。 它可以读取和处理已存储在 Azure�
 > 
 > 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 需要一个 Azure 订阅。 可以[注册免费试用版](https://azure.microsoft.com/free/)。
 * [创建虚拟机](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016)中提供了有关在 Azure 门户上设置 Data Science Virtual Machine 的说明。
@@ -265,7 +265,7 @@ DSVM 随客户端工具一起加载到命令行和 GUI 上，以访问 GitHub �
 ### <a name="azure-blob-storage"></a>Azure Blob 存储
 Azure Blob 存储是一种可靠、经济的云存储服务，适用于大数据和小数据。 本部分介绍如何将数据移动到 Blob 存储，以及如何访问存储在 Azure blob 中的数据。
 
-#### <a name="prerequisites"></a>必备组件
+#### <a name="prerequisites"></a>先决条件
 
 * 从[Azure 门户](https://portal.azure.com)创建 Azure Blob 存储帐户。
 
@@ -367,7 +367,7 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 ### <a name="azure-data-lake"></a>Azure Data Lake
 Azure Data Lake Storage 是适用于大数据分析工作负荷的超大规模存储库，并且与 Hadoop 分布式文件系统（HDFS）兼容。 它适用于 Hadoop、Spark 和 Azure Data Lake Analytics。 在本部分中，你将了解如何使用 Azure Data Lake Analytics 将数据移动到 Azure Data Lake Storage 并运行分析。
 
-#### <a name="prerequisites"></a>必备组件
+#### <a name="prerequisites"></a>先决条件
 
 * 在[Azure 门户](https://portal.azure.com)中创建 Azure Data Lake Analytics 实例。
 
@@ -452,7 +452,7 @@ Azure Data Lake 中的数据集之后，可以使用引入[语言](../../data-la
 ### <a name="hdinsight-hadoop-clusters"></a>HDInsight Hadoop 群集
 Azure HDInsight 是云中托管的 Apache Hadoop、Spark、HBase 和风暴服务。 可以通过 Data Science Virtual Machine 轻松使用 Azure HDInsight 群集。
 
-#### <a name="prerequisites"></a>必备组件
+#### <a name="prerequisites"></a>先决条件
 
 * 从[Azure 门户](https://portal.azure.com)创建 Azure Blob 存储帐户。 此存储帐户用于存储 HDInsight 群集的数据。
 
@@ -826,7 +826,7 @@ Azure Cosmos DB 是云中的 NoSQL 数据库。 你可以使用它来处理 JSON
 
 1. DSVM 上已安装 Azure Cosmos DB Python SDK。 若要进行更新，请在命令提示符下运行 ```pip install pydocumentdb --upgrade```。
 2. 从[Azure 门户](https://portal.azure.com)创建 Azure Cosmos DB 帐户和数据库。
-3. 从[Microsoft 下载中心](https://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)下载 Azure Cosmos DB 数据迁移工具并提取到所选的目录中。
+3. 从[Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=53595)下载 Azure Cosmos DB 数据迁移工具并提取到所选的目录中。
 4. 使用迁移工具的以下命令参数将存储在[公共 blob](https://cahandson.blob.core.windows.net/samples/volcano.json)中的 JSON 数据（火山数据）导入到 Azure Cosmos DB 中。 （使用安装 Azure Cosmos DB 数据迁移工具的目录中的 dtui.exe。）输入具有以下参数的源和目标位置：
    
     `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`

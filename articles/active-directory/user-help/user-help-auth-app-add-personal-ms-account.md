@@ -1,5 +1,5 @@
 ---
-title: 将 Microsoft 个人帐户添加到 Microsoft Authenticator 应用 - Azure Active Directory | Microsoft Docs
+title: 向验证器应用添加个人 Microsoft 帐户-Azure AD
 description: 如何将 Microsoft 个人帐户（如 Outlook.com 或 Xbox LIVE 帐户）添加到 Microsoft Authenticator 应用，以进行双因素验证。
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cf4629ca97abc5d4ce508f7078f4691467ba249
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 9ca01aad76bfbeba0cf56be8ee74287a79f6346e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616085"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820242"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>添加 Microsoft 个人帐户
 
@@ -25,7 +25,7 @@ ms.locfileid: "69616085"
 
 - **标准双因素验证方法。** 在要登录的设备中，键入用户名和密码，再选择是 Microsoft Authenticator 应用发送通知，还是从 Microsoft Authenticator 应用的“帐户”屏幕复制关联的验证码。
 
-- **无密码登录方法。** 在要登录的设备中，键入 Microsoft 个人帐户的用户名，再在移动设备上使用指纹、人脸或 PIN 验证自己的身份。 对于这种方法，无需输入密码。
+- **无密码登录方法。** 在要登录的设备中，键入 Microsoft 个人帐户的用户名，再在移动设备上使用指纹、人脸或 PIN 验证自己的身份。 使用此方法无需输入密码。
 
 >[!Important]
 >必须先下载并安装 Microsoft Authenticator 应用，然后才能添加帐户。 如果尚未这样做，请按照[下载并安装应用](user-help-auth-app-download-install.md)一文中的步骤操作。
@@ -39,7 +39,7 @@ ms.locfileid: "69616085"
 
 ### <a name="turn-on-two-factor-verification"></a>启用双因素验证
 
-1. 在计算机上，转到[安全基础](https://account.microsoft.com/security)页，并使用 Microsoft 个人帐户登录。 例如， alain@outlook.com 。
+1. 在计算机上，转到[安全基础](https://account.microsoft.com/security)页，并使用 Microsoft 个人帐户登录。 例如，alain@outlook.com。
 
 2. 在“安全基础”页底部，选择“更多安全选项”链接。
 
@@ -70,6 +70,6 @@ ms.locfileid: "69616085"
 
 - 将帐户添加到应用后，可以在设备上使用 Authenticator 应用登录。 有关详细信息，请参阅[使用应用登录](user-help-auth-app-sign-in.md)。
 
-- 如果在获取个人 Microsoft 帐户的验证代码时遇到问题, 请参阅[Microsoft 帐户安全信息 & 验证](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)代码一文中的 "**验证代码问题疑难解答**" 一节。
+- 如果在获取个人 Microsoft 帐户的验证代码时遇到问题，请参阅[Microsoft 帐户安全信息 & 验证](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)代码一文中的 "**验证代码问题疑难解答**" 一节。
 
 - 对于运行 iOS 的设备，还可以将帐户凭据和相关的应用设置（如帐户顺序）备份到云中。 有关详细信息，请参阅 [Microsoft Authenticator 应用备份和恢复](user-help-auth-app-backup-recovery.md)。

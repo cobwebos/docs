@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 437d1e13bfb0831bb3ece26f761cef4f5e2e0c6f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d8f65bef669e21af96ffe86319602ca5d1eea2c1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676988"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822718"
 ---
 # <a name="managed-identity-for-data-factory"></a>数据工厂的托管标识
 
@@ -26,7 +26,7 @@ ms.locfileid: "73676988"
 
 ## <a name="overview"></a>概述
 
-创建数据工厂时，可在创建工厂的同时创建托管标识。 托管标识是注册到 Azure Activity Directory 的托管应用程序，表示此特定数据工厂。
+创建数据工厂时，可在创建工厂的同时创建托管标识。 托管标识是注册到 Azure Active Directory 的托管应用程序，表示此特定数据工厂。
 
 数据工厂的托管标识对以下功能有益：
 
