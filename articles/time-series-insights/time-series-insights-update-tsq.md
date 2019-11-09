@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 97265a83a73d45f45a4bd1183df61521f4ca29bf
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: e660db5db3d1afc14a3c895e6786d1b6a8b82c13
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989693"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832411"
 ---
 # <a name="data-querying"></a>数据查询
 
@@ -39,9 +39,9 @@ Azure 时序见解预览版允许通过公共 Surface API 对存储在环境中�
 
 提供以下环境 API：
 
-* [获取环境 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environments-api)：返回调用方有权访问的环境的列表。
-* [获取环境可用性 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environment-availability-api)：返回事件计数在事件时间戳 `$ts` 上的分布。 此 API 通过返回事件计数（如果存在）来帮助确定时间戳中是否有任何事件。
-* [获取事件架构 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-event-schema-api)：返回给定搜索范围的事件架构元数据。 此 API 可帮助检索给定搜索范围的架构中可用的所有元数据和属性。
+* [获取环境 API](/rest/api/time-series-insights/management/environments/get)：返回调用方有权访问的环境的列表。
+* [获取环境可用性 API](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability)：返回事件计数在事件时间戳 `$ts`上的分布。 此 API 通过返回事件计数（如果存在）来帮助确定时间戳中是否有任何事件。
+* [获取事件架构 API](/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema)：返回给定搜索范围的事件架构元数据。 此 API 可帮助检索给定搜索范围的架构中可用的所有元数据和属性。
 
 ## <a name="time-series-model-query-tsm-q-apis"></a>时序模型-查询 (TSM-Q) API
 
@@ -58,21 +58,21 @@ Azure 时序见解预览版允许通过公共 Surface API 对存储在环境中�
 
 提供以下时序查询 Api。 可在时序见解中的所有支持的多层存储上使用这些 Api。 查询 URL 参数用于指定应在其上执行查询的[存储类型](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters)：
 
-* [获取事件 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-events-api)：在来自源提供程序的时序见解中记录的事件中，启用对时序见解数据的查询和检索。 此 API 允许检索给定时序 ID 和搜索范围内的原始事件。 此 API 支持分页以检索所选输入的完整数据集。 
+* [获取事件 API](/rest/api/time-series-insights/dataaccess(preview)/query/execute#getevents)：在来自源提供程序的时序见解中记录的事件中，启用对时序见解数据的查询和检索。 此 API 允许检索给定时序 ID 和搜索范围内的原始事件。 此 API 支持分页以检索所选输入的完整数据集。 
 
-* [获取系列 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-series-api)：通过使用网络上记录的数据，从捕获的事件中查询和检索时序见解数据。 返回的值基于模型中定义的变量或以内联方式提供的变量。 此 API 支持分页以检索所选输入的完整数据集。 此 API 有助于定义计算属性或列。
+* [获取系列 API](/rest/api/time-series-insights/dataaccess(preview)/query/execute#getseries)：通过使用网络上记录的数据，从捕获的事件中查询和检索时序见解数据。 返回的值基于模型中定义的变量或以内联方式提供的变量。 此 API 支持分页以检索所选输入的完整数据集。 此 API 有助于定义计算属性或列。
 
     >[!NOTE]
     > 即使在模型中指定或以内联方式提供 Aggregation 子句，也会忽略该子句。
 
   获取时序 API 为每个时间间隔的每个变量返回一个时序值。 时序值是时序见解用于从查询输出 JSON 的格式。 返回的值基于所提供的时序 ID 和变量集。
 
-* [聚合序列 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#aggregate-series-api)：通过对记录的数据进行采样和聚合，启用捕获的事件中的时序见解数据的查询和检索。 此 API 通过使用[继续标记支持持续](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#queryresultpage)执行。
+* [聚合序列 API](/rest/api/time-series-insights/dataaccess(preview)/query/execute#aggregatevariable)：通过对记录的数据进行采样和聚合，启用捕获的事件中的时序见解数据的查询和检索。 此 API 通过使用[继续标记支持持续](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#queryresultpage)执行。
 
   聚合时序 API 为每个时间间隔的每个变量返回一个时序值。 这些值基于所提供的时序 ID 和变量集。 聚合时序 API 使用存储在时序模型中或以内联方式提供的变量对数据进行聚合或采样，以实现缩减操作。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解 Azure 时序见解预览版中的[存储和入口](./time-series-insights-update-storage-ingress.md)。
-- 阅读时序见解预览[数据建模](./time-series-insights-update-tsm.md)一文。
+- 阅读 Azure 时序见解预览版[数据建模](./time-series-insights-update-tsm.md)一文。
 - 了解[选择时序 ID 的最佳实践](./time-series-insights-update-how-to-id.md)。

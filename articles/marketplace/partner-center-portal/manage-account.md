@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 2962f6c5032ba317f9eb8f10c2abddb566aad904
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: 2edc644f003af2b33054a5cbdbaee81c9baa38cd
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825507"
+ms.locfileid: "73847456"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>如何在合作伙伴中心管理商业 Marketplace 帐户 
 
@@ -145,6 +145,11 @@ ms.locfileid: "73825507"
 有关详细信息，请参阅[使用 Guid 跟踪 Azure 客户使用情况常见问题解答](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#faq)。
 
 
+## <a name="establish-a-billing-profile"></a>建立计费配置文件
+
+如果要发布[dynamics 365 For Customer Engagement &](./create-new-customer-engagement-offer.md)适用[于运营部门](./create-new-operations-offer.md)的 Power Apps 或 Dynamics 365，需要完成**计费配置文件**。
+
+将从你的 MPN ID 预填充计费地址，稍后你可以更新此地址。 税和 VAT ID 字段是可选的。  不能编辑国家/地区名称和公司名称。
 
 ## <a name="multi-user-account-management"></a>多用户帐户管理
 

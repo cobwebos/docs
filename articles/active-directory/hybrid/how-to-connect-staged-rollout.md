@@ -6,16 +6,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 11/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24efd9d67e5bcc083ce1a02dcf0850a39189afe8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 2596091324acde5c4fdc3f7c467849f90266fec9
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173112"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847229"
 ---
 # <a name="cloud-authentication-staged-rollout-public-preview"></a>云身份验证：分阶段推出（公共预览版）
 
@@ -33,7 +33,7 @@ ms.locfileid: "73173112"
 
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 -   你有一个包含联合域的 Azure AD 租户。
 
@@ -117,18 +117,18 @@ ms.locfileid: "73173112"
 
 2. 导航到% programfiles%\\Microsoft Azure Active Directory Connect 文件夹。
 
-3. 使用以下命令导入无缝 SSO PowerShell 模块： `Import-Module .\\AzureADSSO.psd1`。
+3. 使用以下命令导入无缝 SSO PowerShell 模块： `Import-Module .\AzureADSSO.psd1`。
 
 4. 以管理员身份运行 PowerShell。 在 PowerShell 中，调用 `New-AzureADSSOAuthenticationContext`。 此命令应为你显示一个对话框，你可以在其中输入租户的全局管理员凭据。
 
-5. 调用 `Get-AzureADSSOStatus \| ConvertFrom-Json`。 此命令提供已启用此功能的 AD 林列表（查看 \"域\" 列表）。 默认情况下，它在租户级别设置为 false。
+5. 调用 `Get-AzureADSSOStatus | ConvertFrom-Json`。 此命令提供已启用此功能的 AD 林列表（查看 \"域\" 列表）。 默认情况下，它在租户级别设置为 false。
 
    > **示例：** 
    > Windows PowerShell 输出 ![示例](./media/how-to-connect-staged-rollout/sr3.png)
 
-6. 调用 `\$creds = Get-Credential`。 出现提示时，输入目标 AD 林的域管理员凭据。
+6. 调用 `$creds = Get-Credential`。 出现提示时，输入目标 AD 林的域管理员凭据。
 
-7. 调用 `Enable-AzureADSSOForest -OnPremCredentials \$creds`。 此命令将为无缝 SSO 所需的特定 Active Directory 林的本地域控制器创建 AZUREADSSOACC 计算机帐户。
+7. 调用 `Enable-AzureADSSOForest -OnPremCredentials $creds`。 此命令将为无缝 SSO 所需的特定 Active Directory 林的本地域控制器创建 AZUREADSSOACC 计算机帐户。
 
 8. 无缝 SSO 要求 Url 位于 intranet 区域中。 请参阅[无缝单一登录快速入门](how-to-connect-sso-quick-start.md#step-3-roll-out-the-feature)，使用组策略部署这些 URL。
 
@@ -240,7 +240,7 @@ ms.locfileid: "73173112"
 
 -   **问：我们可以使用 PowerShell 来执行分阶段推出吗？**
 
--   答：是的，请在此处找到使用 PowerShell 执行分阶段推出的文档。
+-   答：是的，请在[此处](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)找到使用 PowerShell 执行分阶段推出的文档。
 
 ## <a name="next-steps"></a>后续步骤
 - [AzureAD 2.0 预览版](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: 81d82ce79130513a2827090a98bfef192c9d7829
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d1b53267daa2d47baf9976727bbaf3fa56172432
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795733"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832095"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Azure Monitor 中的 Insights 概述
 Insights 在 Azure Monitor 中为特定的应用程序和服务提供了自定义的监视体验。 他们将数据存储在 [Azure Monitor 数据平台](../platform/data-platform.md)中，并利用其他 Azure Monitor 功能进行分析和发警报，但可能会收集其他数据，并在 Azure 门户中提供独特的用户体验。 从 Azure 门户中 Azure Monitor 菜单的 **Insights** 部分访问 Insights。
@@ -47,8 +47,8 @@ Application Insights 是多个平台上面向 Web 开发人员的可扩展应用
 
 ![用于 VM 的 Azure Monitor](media/insights-overview/vm-insights.png)
 
-## <a name="azure-monitor-for-network-preview"></a>网络 Azure Monitor （预览）
-网络 Azure Monitor 提供所有网络资源的运行状况和指标的综合视图。 "高级搜索" 功能可帮助你识别资源依赖关系，通过只需搜索你的网站名称来启用标识托管你的网站的资源等方案。
+## <a name="azure-monitor-for-networks-preview"></a>网络 Azure Monitor （预览）
+[网络 Azure Monitor](network-insights-overview.md)提供所有网络资源的运行状况和指标的综合视图。 "高级搜索" 功能可帮助你识别资源依赖关系，通过只需搜索你的网站名称来启用标识托管你的网站的资源等方案。
 
 ![网络 Azure Monitor](media/insights-overview/network-insights.png)
 

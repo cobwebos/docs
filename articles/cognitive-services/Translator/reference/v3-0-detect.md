@@ -1,7 +1,7 @@
 ---
 title: 文本翻译 API 检测方法
 titleSuffix: Azure Cognitive Services
-description: 使用文本翻译 API 检测方法。
+description: 使用 Azure 认知服务文本翻译 API 检测方法标识文本段的语言。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: ba73b75e30639dd3f5cf5523124c926ea3442fa1
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 370f3b14c12fc05f181d6497b7069bbf1cf3c9cc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932022"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837300"
 ---
 # <a name="translator-text-api-30-detect"></a>文本翻译 API 3.0：检测
 
@@ -46,7 +46,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>身份验证标头</td>
     <td>必需的请求标头。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。</td>
@@ -61,13 +61,13 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>可选。<br/>客户端生成的 GUID，用于唯一标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
+    <td>*可选*。<br/>客户端生成的 GUID，用于唯一地标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>请求正文
 
-请求的正文是一个 JSON 数组。 每个数组元素都是一个包含字符串属性名称为 `Text` 的 JSON 对象。 语言检测应用于 `Text` 属性的值。 示例响应正文如下所示：
+请求的正文是一个 JSON 数组。 每个数组元素都是一个 JSON 对象，具有名为 `Text` 的字符串属性。 语言检测应用于 `Text` 属性的值。 示例响应正文如下所示：
 
 ```json
 [
@@ -79,13 +79,13 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 * 数组最多可具有 100 个元素。
 * 数组元素的文本值不能超过 10,000 个字符（包括空格）。
-* 请求中包含的整个文本不能超过 50,000 个字符（包括空格）。
+* 包括空格在内，请求中包含的整个文本不能超过 50,000 个字符。
 
 ## <a name="response-body"></a>响应正文
 
 成功的响应是一个 JSON 数组，其中的每个结果对应于输入数组中的一个字符串。 结果对象包括以下属性：
 
-  * `language`：已检测语言的代码。
+  * `language`：检测到的语言的代码。
 
   * `score`：一个浮点值，表示结果的置信度。 分数介于 0 和 1 之间，较低的分数表示较低的置信度。
 
@@ -93,9 +93,9 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
   * `isTransliterationSupported`：一个布尔值，如果检测到的语言是文本音译支持的语言之一，则为 true。
   
-  * `alternatives`：其他可能语言的阵列。 数组中的每个元素是上述所列相同属性的另一个对象：`language`、`score`、`isTranslationSupported` 和 `isTransliterationSupported`。
+  * `alternatives`：其他可能语言的数组。 数组中的每个元素是上述所列相同属性的另一个对象：`language`、`score`、`isTranslationSupported` 和 `isTransliterationSupported`。
 
-示例 JSON 响应如下：
+JSON 响应示例：
 
 ```json
 [
@@ -122,11 +122,11 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 ]
 ```
 
-## <a name="response-headers"></a>响应头
+## <a name="response-headers"></a>响应标头
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>X-RequestId</td>
     <td>服务生成的用于标识请求的值。 它用于故障排除目的。</td>
@@ -139,7 +139,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 <table width="100%">
   <th width="20%">状态代码</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>200</td>
     <td>成功。</td>
@@ -150,7 +150,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   </tr>
   <tr>
     <td>401</td>
-    <td>无法验证该请求。 请确保凭据已指定且有效。</td>
+    <td>无法对请求进行身份验证。 请确保凭据已指定且有效。</td>
   </tr>
   <tr>
     <td>403</td>
@@ -162,11 +162,11 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   </tr>
   <tr>
     <td>500</td>
-    <td>发生意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
+    <td>发生了意外错误。 如果错误仍然存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>服务器暂不可用。 重试请求。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
+    <td>服务器暂不可用。 重试请求。 如果错误仍然存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
 </table> 
 

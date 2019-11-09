@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 03783424544588a4bc147b232d41b103fb2e5b3e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 610673c548294f875ca70edb8ab26b1fdeb41cb6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827549"
+ms.locfileid: "73838080"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure 资源管理器体验版
 
@@ -208,7 +208,7 @@ Azure 资源管理器（资源管理器）模板是你设计以最好地表示�
 
 例如，大多数的资源名称不能以数字开头，而唯一字符串函数可以返回一个以数字开头的字符串。 因此，若使用原始的唯一字符串输出，部署将失败。 
 
-有关详细信息，可查看[本文](https://docs.microsoft.com/azure/guidance/guidance-naming-conventions)中的资源命名规则和限制。
+有关详细信息，可查看[本文](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)中的资源命名规则和限制。
 
 ### <a name="deployment-location"></a>部署位置
 

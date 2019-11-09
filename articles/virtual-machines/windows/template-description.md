@@ -1,6 +1,6 @@
 ---
 title: Azure 资源管理器模板中的虚拟机 | Microsoft Azure
-description: 详细了解如何在 Azure 资源管理器模板中定义虚拟机资源。
+description: 详细了解如何在 Azure Resource Manager 模板中定义虚拟机资源。
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: afbf77014ece981568d4123db7820a2fa0a8f60d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: e1b513344b6ea16c25d829939e64cd5ca1063c87
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749111"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838894"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure 资源管理器模板中的虚拟机
 
@@ -219,7 +219,7 @@ ms.locfileid: "73749111"
 
 ## <a name="resource-loops"></a>资源循环
 
-如果需要为应用程序创建多个虚拟机，可在模板中使用 copy 元素。 此可选元素会根据以参数形式指定的数目反复创建 VM：
+如果需要为应用程序创建多个虚拟机，可在模板中使用 copy 元素。 此可选元素根据以参数形式指定的数目反复创建 VM：
 
 ```
 "copy": {
@@ -282,7 +282,7 @@ ms.locfileid: "73749111"
 定义虚拟机资源时，需要使用几个 profile 元素。 其中一些元素是必需的，还有一些是可选的。 例如，hardwareProfile、osProfile、storageProfile 和 networkProfile 元素是必需的，而 diagnosticsProfile 是可选的。 这些配置文件定义如下所述的设置：
    
 - [大小](sizes.md)
-- [名称](/azure/architecture/best-practices/naming-conventions)和凭据
+- [名称](/azure/architecture/best-practices/resource-naming)和凭据
 - 磁盘和[操作系统设置](cli-ps-findimage.md)
 - [网络接口](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
 - 启动诊断
@@ -411,7 +411,7 @@ ms.locfileid: "73749111"
 
 此扩展资源使用 storageName 变量和 diagnostic 变量来提供值。 要更改此扩展收集的数据，可将更多的性能计数器添加到 wadperfcounters 变量。 还可以选择将诊断数据放入其他存储帐户，而不是 VM 磁盘所在的存储帐户。
 
-可在 VM 上安装许多扩展，但最有用的扩展也许是[自定义脚本扩展](extensions-customscript.md)。 在本示例中，首次启动每个 VM 时，会在 VM 上运行名为 start.ps1 的 PowerShell 脚本：
+可在 VM 上安装许多扩展，但最有用的扩展也许是 [自定义脚本扩展](extensions-customscript.md)。 在本示例中，首次启动每个 VM 时，会在 VM 上运行名为 start.ps1 的 PowerShell 脚本：
 
 ```
 {

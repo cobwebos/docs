@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3dc439c352bb3e6e56fae4b83d783da94720bfe1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4af18eaa0dc5622dcc52603e6fb4e569f505feeb
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818402"
+ms.locfileid: "73838114"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure 机器学习 SDK 中创建和运行机器学习管道
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -411,14 +411,14 @@ response = requests.post(published_pipeline1.endpoint,
 ### <a name="view-results-of-a-published-pipeline"></a>查看已发布管道的结果
 
 查看所有已发布管道的列表及其运行详细信息：
-1. 登录到[Azure 机器学习 studio](https://ml.azure.com)。
+1. 登录到[Azure 机器学习](https://ml.azure.com)。
 
 1. [查看工作区](how-to-manage-workspace.md#view)以查找管道列表。
  ![机器学习管道列表](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. 选择特定的管道以查看运行结果。
 
-[Azure 机器学习 studio]] （ https://ml.azure.com)中的工作区也提供这些结果。
+这些结果在[Azure 机器学习](https://ml.azure.com)的工作区中也可用。
 
 ### <a name="disable-a-published-pipeline"></a>禁用已发布的管道
 

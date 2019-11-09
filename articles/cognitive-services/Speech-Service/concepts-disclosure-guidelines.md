@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: angle
-ms.openlocfilehash: d3b3f90be7dda28db9a27aa96282acee61e6c8fc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7dffa3d9f6e96adc6146a1059e7360c77926ece3
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507337"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837375"
 ---
 # <a name="disclosure-design-guidelines"></a>披露设计准则
 了解如何通过对你的语音体验的综合性质透明，来构建和维护与客户的信任。
@@ -76,7 +76,7 @@ ms.locfileid: "73507337"
 
 ## <a name="reference-docs"></a>参考文档
 
-* [透明度备注](https://aka.ms/neural-tts-transparency-note)
+* [为语音人才公开](https://aka.ms/disclosure-voice-talent)
 * [综合语音技术的责任部署指南](concepts-guidelines-responsible-deployment-synthetic.md)
 * [概述概述](concepts-gating-overview.md)
 

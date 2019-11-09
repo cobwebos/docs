@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: fe8730b0d97ae3783282cdd401fd5889ed08ad9a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a529ac8b7ce16d3ee4463f1b4bc2e8007e5b79b5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507161"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836767"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>综合语音技术的责任部署指南
 下面是 Microsoft 关于使用综合语音技术的一般设计准则。 这些都是在 Microsoft 使用语音人才、消费者以及使用语音可能的个人进行研究中开发的，以指导综合语音的责任开发。
@@ -39,7 +39,7 @@ ms.locfileid: "73507161"
 使用语音人才（例如语音演员）创建综合声音时，以下准则适用。
 
 ### <a name="obtain-meaningful-consent-from-voice-talent"></a>从语音获得有意义的许可
-语音人才希望能够控制其语音字体（使用方式和位置），并在使用时进行补偿。 因此，系统所有者应该从语音获得明确的书面许可，并清楚地说明用例、使用持续时间、补偿等。 某些语音人才不知道这种技术的潜在恶意使用，应由系统所有者来了解技术的功能。 有关语音人才和许可的详细信息，请阅读我们的[透明度注释](https://aka.ms/neural-tts-transparency-note)。
+语音人才希望能够控制其语音字体（使用方式和位置），并在使用时进行补偿。 因此，系统所有者应该从语音获得明确的书面许可，并清楚地说明用例、使用持续时间、补偿等。 某些语音人才不知道这种技术的潜在恶意使用，应由系统所有者来了解技术的功能。 有关语音人才和许可的详细信息，请阅读我们[的语音信息公开](https://aka.ms/disclosure-voice-talent)。
 
 
 ## <a name="considerations-for-those-with-speech-disorders"></a>带有 speech 可能的注意事项
@@ -57,13 +57,13 @@ ms.locfileid: "73507161"
 
 ## <a name="reference-docs"></a>参考文档
 
-* [透明度备注](https://aka.ms/neural-tts-transparency-note)
+* [为语音人才公开](https://aka.ms/disclosure-voice-talent)
 * [概述概述](concepts-gating-overview.md)
 * [如何公开](concepts-disclosure-guidelines.md)
 * [泄露设计模式](concepts-disclosure-patterns.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [透明度备注](https://aka.ms/neural-tts-transparency-note)
+* [为语音人才公开](https://aka.ms/disclosure-voice-talent)
 * [如何公开](concepts-disclosure-guidelines.md)
 * [泄露设计模式](concepts-disclosure-patterns.md)

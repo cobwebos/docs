@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/23/2016
-ms.openlocfilehash: 1e02e227180bb0082dd87ab8f5d2fe64e19b60f2
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 550ac9ff3b425e682fdda16501613aa41a80d765
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677812"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847248"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 中的筛选和预处理遥测 | Microsoft Azure
 
@@ -25,11 +25,11 @@ ms.locfileid: "72677812"
 
 开始之前：
 
-* 为应用程序安装相应的 SDK： [ASP.NET](asp-net.md)、 [ASP.NET CORE](asp-net-core.md)、[非 HTTP/辅助角色（适用于 .Net/.net Core](worker-service.md)或[Java](../../azure-monitor/app/java-get-started.md)）。
+* 为你的应用程序安装适当的 SDK： [ASP.NET](asp-net.md)、 [ASP.NET CORE](asp-net-core.md)、[非 HTTP/辅助角色（适用于 .Net/.Net Core](worker-service.md)、 [Java](../../azure-monitor/app/java-get-started.md)或[JavaScript](javascript.md) ）
 
 <a name="filtering"></a>
 
-## <a name="filtering-itelemetryprocessor"></a>筛选：ITelemetryProcessor
+## <a name="filtering"></a>筛选
 
 此方法可让你直接控制遥测流中包含或排除的内容。 筛选可用于删除从发送到 Application Insights 的遥测项。 可以将其与采样结合使用，也可以单独使用。
 
@@ -100,7 +100,7 @@ ms.locfileid: "72677812"
 > 注意将 .config 文件中的类型名称和任何属性名称匹配到代码中的类和属性名称。 如果 .config 文件引用不存在的类型或属性，该 SDK 在发送任何遥测时可能静默失败。
 >
 
-**或者，** 可以在代码中初始化筛选器。 在合适的初始化类中（例如 AppStart），在 `Global.asax.cs` 中插入处理器：
+**或者，** 可以在代码中初始化筛选器。 在合适的初始化类中（例如 AppStart）在 `Global.asax.cs`-将处理器插入链：
 
 ```csharp
 var builder = TelemetryConfiguration.Active.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
@@ -117,9 +117,9 @@ builder.Build();
 **ASP.NET Core/辅助角色服务应用**
 
 > [!NOTE]
-> 使用 `ApplicationInsights.config` 或 `TelemetryConfiguration.Active` 添加处理器对 ASP.NET Core 应用程序无效，或者如果使用 WorkerService SDK，则无效。
+> 使用 `ApplicationInsights.config` 或使用 `TelemetryConfiguration.Active` 添加处理器对于 ASP.NET Core 应用程序无效，或者如果使用 WorkerService SDK，则无效。
 
-对于使用[ASP.NET Core](asp-net-core.md#adding-telemetry-processors)或[WorkerService](worker-service.md#adding-telemetry-processors)编写的应用，通过在 `IServiceCollection` 上使用 `AddApplicationInsightsTelemetryProcessor` 扩展方法来添加新 `TelemetryProcessor`，如下所示。 此方法在 `Startup.cs` 类 `ConfigureServices` 方法中调用。
+对于使用[ASP.NET Core](asp-net-core.md#adding-telemetry-processors)或[WorkerService](worker-service.md#adding-telemetry-processors)编写的应用，通过在 `IServiceCollection`上使用 `AddApplicationInsightsTelemetryProcessor` 扩展方法来添加新 `TelemetryProcessor`，如下所示。 此方法在 `Startup.cs` 类 `ConfigureServices` 方法中调用。
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -192,13 +192,36 @@ public void Process(ITelemetry item)
 }
 ```
 
-#### <a name="diagnose-dependency-issues"></a>诊断依赖性问题
+#### <a name="diagnose-dependency-issues"></a>诊断依赖项问题
 
 [本博客](https://azure.microsoft.com/blog/implement-an-application-insights-telemetry-processor/)介绍了通过自动将常规 Ping 发送到依赖项诊断依赖项问题的项目。
 
 <a name="add-properties"></a>
 
-## <a name="add-properties-itelemetryinitializer"></a>添加属性：ITelemetryInitializer
+### <a name="javascript-web-applications"></a>JavaScript Web 应用程序
+
+**使用 ITelemetryInitializer 进行筛选**
+
+1. 创建遥测初始值设定项回调函数。 回调函数采用作为参数的 `ITelemetryItem`，这是正在处理的事件。 从此回调返回 `false` 将导致筛选掉遥测项。  
+
+   ```JS
+   var filteringFunction = (envelope) => {
+     if (envelope.data.someField === 'tobefilteredout') {
+        return false;
+     }
+  
+     return true;
+   };
+   ```
+
+2. 添加遥测初始化表达式回叫：
+
+   ```JS
+   appInsights.addTelemetryInitializer(filteringFunction);
+   ```
+
+## <a name="addmodify-properties-itelemetryinitializer"></a>添加/修改属性： ITelemetryInitializer
+
 
 使用遥测初始值设定项，通过其他信息和/或重写标准遥测模块设置的遥测属性，来充实遥测数据。
 

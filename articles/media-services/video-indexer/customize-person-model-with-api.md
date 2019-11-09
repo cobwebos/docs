@@ -1,6 +1,6 @@
 ---
 title: 使用视频索引器 API 自定义人员模型 - Azure
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: 本文介绍如何使用视频索引器 API 自定义人员模型。
 services: media-services
 author: anikaz
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 6c4980536eddd0226fac422ae17ddb717e34630d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 44f97e3d9af9daac8d62ae42be76bd73dedbd453
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799469"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838268"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>使用视频索引器 API 自定义人员模型
 
@@ -55,9 +55,9 @@ curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cus
 
 ### <a name="request-parameters"></a>请求参数 
 
-|**名称**|类型 |**必需**|**说明**|
+|**名称**|**类型**|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|location|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
 |name|字符串|是|人员模型的名称|
 |accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
@@ -77,7 +77,7 @@ curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cus
 }
 ```
 
-然后，在[上传视频到索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)或[重新索引视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)时，应该使用 **personModelId** 参数的 **id** 值。
+然后，在**上传视频到索引**或**重新索引视频**时，应该使用 [personModelId](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) 参数的 [id](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) 值。
 
 ## <a name="delete-a-person-model"></a>删除人员模型
 
@@ -100,9 +100,9 @@ curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/C
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型 |**必需**|**说明**|
+|**名称**|**类型**|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|location|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
 |id|字符串|是|人员模型 ID（在创建人员模型时生成）|
 |accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
@@ -137,9 +137,9 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型 |**必需**|**说明**|
+|**名称**|**类型**|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|location|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
 |accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
 
@@ -164,7 +164,7 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 ]
 ```
 
-可以在[上传视频到索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)或[重新索引视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)时使用人员模型的 **id** 值作为 **personModelId** 参数，以便选择需要用于视频的具体模型。
+可以在**上传视频到索引**或**重新索引视频**时使用人员模型的 [id](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) 值作为 [personModelId](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) 参数，以便选择需要用于视频的具体模型。
 
 ## <a name="update-a-face"></a>更新人脸
 
@@ -192,9 +192,9 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Vide
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型 |**必需**|**说明**|
+|**名称**|**类型**|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|location|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
 |videoId|字符串|是|要更新的人脸所在视频的 ID。 此项是在上传视频并对其进行索引时创建的。|
 |faceId|integer|是|要更新的人脸的 ID。 可以从视频索引中获取 faceId|

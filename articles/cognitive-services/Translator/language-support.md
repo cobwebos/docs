@@ -1,7 +1,7 @@
 ---
 title: 语言支持 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
-description: 文本翻译 API 支持的自然语言列表。
+description: 对于使用神经机器翻译转换（NMT）的文本到文本转换，文本翻译 API 支持以下语言。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: cb0552612d95500e01edd91aff36406d4c2282bd
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 5e96ced1bd87a0ed8be19bf4e07f7b0d9b319aad
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909980"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837336"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>文本翻译 API 的语言和区域支持
 
@@ -23,17 +23,17 @@ ms.locfileid: "70909980"
 
 [详细了解机器翻译的工作原理](https://www.microsoft.com/translator/mt.aspx)
 
-## <a name="translation"></a>转换
+## <a name="translation"></a>翻译
 
 **V2 Translator API**
 
 > [!NOTE]
 > V2 已于2018年4月30日弃用。 请将你的应用程序迁移到 V3，以便充分利用 V3 中专门提供的新功能。
 
-* 仅统计：没有可用于该语言的神经系统。
-* 神经可用：神经系统可用。 使用参数 `category=generalnn` 可访问神经系统。
-* 神经默认：神经是默认的翻译系统。 使用参数 `category=smt` 可访问适用于 Microsoft Translator Hub 的统计系统。
-* 仅神经：只有神经翻译可用。
+* 仅限统计：没有可用于此语言的神经系统。
+* 可用神经：可用神经系统。 使用参数 `category=generalnn` 可访问神经系统。
+* 神经默认值：神经是默认的翻译系统。 使用参数 `category=smt` 可访问适用于 Microsoft Translator Hub 的统计系统。
+* 仅神经：仅神经翻译可用。
 
 **V3 Translator API** V3 Translator API 在默认情况下为神经，统计系统仅在没有神经系统时才可用。
 
@@ -44,13 +44,13 @@ ms.locfileid: "70909980"
 |:-----|:-----:|:-----|:-----|
 |南非荷兰语| `af`    |仅统计|  神经|
 |阿拉伯语|    `ar`    |神经可用|  神经|
-|孟加拉语|    `bn`    |神经可用|  神经|
-|波斯尼亚语(拉丁语系)|   `bs`    |神经可用|  神经|
+|Bangla|    `bn`    |神经可用|  神经|
+|波斯尼亚语(拉丁语)|   `bs`    |神经可用|  神经|
 |保加利亚语| `bg`    |神经可用|  神经|
 |粤语(繁体)|   `yue`   |仅统计|  统计|
 |加泰罗尼亚语|   `ca`    |仅统计|  统计|
-|简体中文|    `zh-Hans`   |神经默认 |神经|
-|繁体中文|   `zh-Hant`   |神经默认 |神经|
+|中文(简体)|    `zh-Hans`   |神经默认 |神经|
+|中文(繁体)|   `zh-Hant`   |神经默认 |神经|
 |克罗地亚语|  `hr`    |神经可用|  神经|
 |捷克语| `cs`    |神经可用|  神经|
 |丹麦语|    `da`    |神经可用   |神经|
@@ -78,7 +78,7 @@ ms.locfileid: "70909980"
 |韩语 |`ko`   |神经可用|  神经|
 |拉脱维亚语|   `lv`    |神经可用|  神经|
 |立陶宛语|    `lt`    |神经可用|  神经|
-|马拉加斯语|  `mg`    |仅统计|  统计|
+|马达加斯加语|  `mg`    |仅统计|  统计|
 |马来语| `ms`    |仅统计   |统计|
 |马耳他语|   `mt`    |仅统计|  统计|
 |挪威语| `nb`    |神经可用|  神经|
@@ -114,7 +114,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 语言    | 语言代码 | 脚本 | 音译方向 | 脚本|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | 阿拉伯语 | `ar` | 阿拉伯语 `Arab` | <--> | 拉丁语 `Latn` |
-|孟加拉语  | `bn` | 孟加拉语 `Beng` | <--> | 拉丁语 `Latn` |
+|Bangla  | `bn` | 孟加拉语 `Beng` | <--> | 拉丁语 `Latn` |
 | 中文(简体) | `zh-Hans` | 简体中文 `Hans`| <--> | 拉丁语 `Latn` |
 | 中文(简体) | `zh-Hans` | 简体中文 `Hans`| <--> | 繁体中文 `Hant`|
 | 中文(繁体) | `zh-Hant` | 繁体中文 `Hant`| <--> | 拉丁语 `Latn` |
@@ -142,11 +142,11 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 |:----------- |:-------------:|
 | 南非荷兰语      | `af`          |
 | 阿拉伯语       | `ar`          |
-| 孟加拉语      | `bn`          |
-| 波斯尼亚语(拉丁语系)      | `bs`          |
+| Bangla      | `bn`          |
+| 波斯尼亚语(拉丁语)      | `bs`          |
 | 保加利亚语      | `bg`          |
 | 加泰罗尼亚语      | `ca`          |
-| 简体中文      | `zh-Hans`          |
+| 中文(简体)      | `zh-Hans`          |
 | 克罗地亚语      | `hr`          |
 | 捷克语      | `cs`          |
 | 丹麦语      | `da`          |
@@ -191,7 +191,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 越南语      | `vi`          |
 | 威尔士语      | `cy`          |
 
-## <a name="detect"></a>检测
+## <a name="detect"></a>Detect
 
 翻译工具文本 API 检测可用于翻译和音译的所有语言。
 
@@ -209,11 +209,11 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 语言    | 语言代码 |
 |:----------- |:-------------:|
 | 阿拉伯语       | `ar`          |
-| 孟加拉语      | `bn`          |
-| 波斯尼亚语(拉丁语系)      | `bs`          |
+| Bangla      | `bn`          |
+| 波斯尼亚语(拉丁语)      | `bs`          |
 | 保加利亚语      | `bg`          |
-| 简体中文      | `zh-Hans`          |
-|繁体中文|   `zh-Hant`   |
+| 中文(简体)      | `zh-Hans`          |
+|中文(繁体)|   `zh-Hant`   |
 | 克罗地亚语      | `hr`          |
 | 捷克语      | `cs`          |
 | 丹麦语      | `da`          |
@@ -236,7 +236,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 韩语      | `ko`          |
 | 拉脱维亚语      | `lv`          |
 | 立陶宛语      | `lt`          |
-|马拉加斯语|  `mg`    |
+|马达加斯加语|  `mg`    |
 | 挪威语      | `nb`          |
 | 波斯语      | `fa`          |
 | 波兰语      | `pl`          |
@@ -257,6 +257,6 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>访问 Microsoft Translator 网站上的列表
 
-若要快速查看语言，Microsoft Translator 网站上显示了 文本翻译和语音 API 支持的所有语言。 此列表不包括特定于开发者的信息，例如语言代码。
+若要快速查看语言，Microsoft Translator 网站上显示了文本翻译和语音 API 支持的所有语言。 此列表不包括特定于开发者的信息，例如语言代码。
 
 [查看语言列表](https://www.microsoft.com/translator/languages.aspx)

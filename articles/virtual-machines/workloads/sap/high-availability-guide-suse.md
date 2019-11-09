@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/30/2019
+ms.date: 11/07/2019
 ms.author: sedusch
-ms.openlocfilehash: 569ac844a971970c22f5cc0a511545020fe802c5
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d08f17bd22188f3d969261d8626d47a9e0faf08e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791692"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839613"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SUSE Linux Enterprise Server for SAP applications 上的 Azure VM 上 SAP NetWeaver 的高可用性
 
@@ -58,7 +58,7 @@ ms.locfileid: "72791692"
 请先阅读以下 SAP 说明和文档
 
 * SAP 说明 [1928533][1928533]，其中包含：
-  * SAP 软件部署支持的 Azure VM 大小的列表
+  * SAP 软件部署支持的 Azure VM 大小列表
   * Azure VM 大小的重要容量信息
   * 支持的 SAP 软件、操作系统 (OS) 和数据库组合
   * Microsoft Azure 上 Windows 和 Linux 所需的 SAP 内核版本
@@ -84,7 +84,7 @@ ms.locfileid: "72791692"
 
 ![SAP NetWeaver 高可用性概述](./media/high-availability-guide-suse/ha-suse.png)
 
-NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 数据库使用虚拟主机名和虚拟 IP 地址。 在 Azure 上，需要负载均衡器才能使用虚拟 IP 地址。 以下列表显示 (A)SCS 和 ERS 负载均衡器的配置。
+NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 数据库使用虚拟主机名和虚拟 IP 地址。 在 Azure 上，需要负载均衡器才能使用虚拟 IP 地址。 建议使用[标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)。 以下列表显示 (A)SCS 和 ERS 负载均衡器的配置。
 
 > [!IMPORTANT]
 > **不支持**将 SAP ASCS/ERS 的多 SID 群集与 SUSE Linux 作为 Azure vm 中的来宾操作系统。 多 SID 群集介绍在一个 Pacemaker 群集中安装具有不同 Sid 的多个 SAP ASCS/ERS 实例
@@ -96,16 +96,17 @@ NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 S
 * 后端配置
   * 连接到所有虚拟机（这些虚拟机应为 (A)SCS/ERS 群集的一部分）的主网络接口
 * 探测端口
-  * 端口 620&lt;nr&gt;
-* 负载 
-* 平衡规则
-  * 32&lt;nr&gt; TCP
-  * 36&lt;nr&gt; TCP
-  * 39&lt;nr&gt; TCP
-  * 81&lt;nr&gt; TCP
-  * 5&lt;nr&gt;13 TCP
-  * 5&lt;nr&gt;14 TCP
-  * 5&lt;nr&gt;16 TCP
+  * 端口 620<strong>nr&lt;&gt;</strong>
+* 负载均衡规则
+  * 如果使用标准负载均衡器，请选择 " **HA 端口**"
+  * 如果使用基本负载均衡器，则为以下端口创建负载均衡规则
+    * 32<strong>nr&lt; TCP&gt;</strong>
+    * 36<strong>nr&lt; TCP&gt;</strong>
+    * 39<strong>nr&lt; TCP&gt;</strong>
+    * 81<strong>nr&lt; TCP&gt;</strong>
+    * 5<strong>nr&lt;13 TCP&gt;</strong>
+    * 5<strong>nr&lt;14 TCP&gt;</strong>
+    * 5<strong>nr&lt;16 TCP&gt;</strong>
 
 ### <a name="ers"></a>ERS
 
@@ -114,13 +115,15 @@ NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 S
 * 后端配置
   * 连接到所有虚拟机（这些虚拟机应为 (A)SCS/ERS 群集的一部分）的主网络接口
 * 探测端口
-  * 端口 621&lt;nr&gt;
+  * 端口 621<strong>nr&lt;&gt;</strong>
 * 负载均衡规则
-  * 32&lt;nr&gt; TCP
-  * 33&lt;nr&gt; TCP
-  * 5&lt;nr&gt;13 TCP
-  * 5&lt;nr&gt;14 TCP
-  * 5&lt;nr&gt;16 TCP
+  * 如果使用标准负载均衡器，请选择 " **HA 端口**"
+  * 如果使用基本负载均衡器，则为以下端口创建负载均衡规则
+    * 32<strong>nr&lt; TCP&gt;</strong>
+    * 33<strong>nr&lt; TCP&gt;</strong>
+    * 5<strong>nr&lt;13 TCP&gt;</strong>
+    * 5<strong>nr&lt;14 TCP&gt;</strong>
+    * 5<strong>nr&lt;16 TCP&gt;</strong>
 
 ## <a name="setting-up-a-highly-available-nfs-server"></a>设置高度可用的 NFS 服务器
 
@@ -156,7 +159,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    9. 管理员用户名和管理员密码  
       创建可用于登录计算机的新用户。
    10. 子网 ID  
-   如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 ID&gt;/resourceGroups/&lt;资源组名称&gt;/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称&gt;/subnets/&lt;子网名称&gt;
+   如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/**订阅 ID&lt;/resourceGroups/&gt;资源组名称**/providers/Microsoft.Network/virtualNetworks/**虚拟网络名称&lt;/subnets/&gt;子网名称** **&lt;&gt;** **&lt;&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux
 
@@ -176,7 +179,44 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    选择前面创建的可用性集  
 1. 将至少一个数据磁盘添加到这两个虚拟机  
    数据磁盘用于 /usr/sap/`<SAPSID`> 目录
-1. 创建负载均衡器（内部）  
+1. 创建负载平衡器（内部、标准）：  
+   1. 创建前端 IP 地址
+      1. ASCS 的 IP 地址 10.0.0.7
+         1. 打开负载均衡器，选择前端 IP 池，并单击“添加”
+         1. 输入新前端 IP 池的名称（例如 **nw1-ascs-frontend**）
+         1. 将“分配”设置为“静态”并输入 IP 地址（例如 **10.0.0.7**）
+         1. 单击“确定”
+      1. ASCS ERS 的 IP 地址 10.0.0.8
+         * 重复上述步骤，为 ERS 创建 IP 地址（例如 **10.0.0.8** 和 **nw1-aers-backend**）
+   1. 创建后端池
+      1. 为 ASCS 创建后端池
+         1. 打开负载均衡器，单击后端池，并单击“添加”
+         1. 输入新后端池的名称（例如 **nw1-ascs-backend**）
+         1. 单击“添加虚拟机”。
+         1. 选择虚拟机
+         1. 选择（A） SCS 群集的虚拟机及其 IP 地址。
+         1. 单击“添加”
+      1. 为 ASCS ERS 创建后端池
+         * 重复上述步骤，为 ERS 创建后端池（例如 **nw1-aers-backend**）
+   1. 创建运行状况探测
+      1. ASCS 的端口 620**00**
+         1. 打开负载均衡器，选择运行状况探测，并单击“添加”
+         1. 输入新运行状况探测的名称（例如 **nw1-ascs-hp**）
+         1. 选择 TCP 作为协议，选择端口 620**00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
+         1. 单击“确定”
+      1. ASCS ERS 的端口 621**02**
+         * 重复上述步骤，为 ERS 创建运行状况探测（例如 621**02** 和 **nw1-aers-hp**）
+   1. 负载均衡规则
+      1. ASCS 的负载均衡规则
+         1. 打开负载均衡器，选择 "负载均衡规则"，并单击 "添加"
+         1. 输入新负载均衡器规则的名称（例如 nw1- **ascs**）
+         1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如**nw1-ascs**、 **nw1-ascs-后**端和 nw1- **ascs**）
+         1. 选择**HA 端口**
+         1. 将空闲超时增大到 30 分钟
+         1. **确保启用浮动 IP**
+         1. 单击“确定”
+         * 重复上述步骤来为 ERS 创建负载均衡规则（例如 nw1- **ERS**）
+1. 或者，如果方案需要基本负载均衡器（内部），请执行以下步骤：  
    1. 创建前端 IP 地址
       1. ASCS 的 IP 地址 10.0.0.7
          1. 打开负载均衡器，选择前端 IP 池，并单击“添加”
@@ -217,8 +257,11 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       1. ASCS ERS 的其他端口
          * 针对 ASCS ERS 的端口 33**02**、5**02**13、5**02**14、5**02**16 和 TCP 重复上述步骤
 
+> [!Note]
+> 如果没有公共 IP 地址的 Vm 放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，则不会有出站 internet 连接，除非执行其他配置以允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅[使用 Azure 标准负载均衡器在 SAP 高可用性方案中的虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
+
 > [!IMPORTANT]
-> 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**net.tcp _timestamps**设置为**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**tcp_timestamps**设置为**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
 
 ### <a name="create-pacemaker-cluster"></a>创建 Pacemaker 群集
 

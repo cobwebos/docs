@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 555083235aff08476e82f0daa81203b66591f3cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ecec237eab42cf434ab8627ebdf9b1e34f3ab3f1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66167304"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838131"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>通过 Azure 逻辑应用保护对自定义 API 的调用
 
@@ -49,14 +49,14 @@ ms.locfileid: "66167304"
 
 **在 Azure 门户中为逻辑应用创建应用程序标识**
 
-1. 在 [Azure 门户](https://portal.azure.com "https://portal.azure.com")中，选择“Azure Active Directory”。 
+1. 在[Azure 门户](https://portal.azure.com "https://portal.azure.com")中，选择 " **Azure Active Directory**"。 
 
 2. 确认所在目录与 Web 应用或 API 应用相同。
 
    > [!TIP]
-   > 要切换目录，请选择配置文件，然后选择其他目录。 还可以选择“概述” > “切换目录”。
+   > 要切换目录，请选择配置文件，然后选择其他目录。 还可以选择“概述” **“切换目录”**  > 。
 
-3. 在目录菜单的“管理”下，选择“应用注册” > “新建应用程序注册”。
+3. 在目录菜单的“管理”下，选择“应用注册” **“新建应用程序注册”**  > 。
 
    > [!TIP]
    > 默认情况下，应用注册列表显示目录中的所有应用注册。 若要仅查看应用注册，请在搜索框旁选择“我的应用”。 
@@ -100,11 +100,13 @@ ms.locfileid: "66167304"
 
 1. `Add-AzAccount`
 
-2. `$SecurePassword = Read-Host -AsSecureString`（输入密码，然后按 Enter）
+1. `$SecurePassword = Read-Host -AsSecureString`
 
-3. `New-AzADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password $SecurePassword`
+1. 输入密码，然后按 Enter。
 
-4. 请务必复制所使用的“租户 ID”（Azure AD 租户的 GUID）、“应用程序 ID”和密码。
+1. `New-AzADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password $SecurePassword`
+
+1. 请务必复制所使用的“租户 ID”（Azure AD 租户的 GUID）、“应用程序 ID”和密码。
 
 有关详细信息，请了解如何[使用 PowerShell 创建服务主体以访问资源](../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 
@@ -114,7 +116,7 @@ ms.locfileid: "66167304"
 
 **在 Azure 门户中为已部署的应用创建应用程序标识并开启身份验证**
 
-1. 在 [Azure 门户](https://portal.azure.com "https://portal.azure.com")中，找到并选择 Web 应用或 API 应用。 
+1. 在[Azure 门户](https://portal.azure.com "https://portal.azure.com")中，找到并选择 web 应用或 API 应用。 
 
 2. 在“设置”下，选择“身份验证/授权”。 在“应用服务身份验证”下，“开启”身份验证。 在“身份验证提供程序”下，选择“Azure Active Directory”。
 
@@ -124,7 +126,7 @@ ms.locfileid: "66167304"
 
    ![为 Web 应用或 API 应用创建应用程序标识](./media/logic-apps-custom-api-authentication/custom-api-application-identity.png)
 
-4. 在“身份验证/授权”页上，选择“保存”。
+4. 在“身份验证/授权”页面，选择“保存”。
 
 现在必须找到与 Web 应用或 API 应用关联的应用程序标识的客户端 ID 和租户 ID。 第 3 部分需使用这些 ID。 因此，请对 Azure 门户继续执行这些步骤。
 
@@ -151,7 +153,7 @@ ms.locfileid: "66167304"
 
 **使用 Azure 资源管理器模板部署时开启身份验证**
 
-还必须为 Web 应用或 API 应用创建 Azure AD 应用程序标识，该标识不能与逻辑应用的应用标识相同。 若要创建应用程序标识，请在 Azure 门户中按照先前在第 2 部分中的步骤操作。 
+你仍需要为你的 web 应用或 API 应用创建与逻辑应用的应用标识不同的 Azure AD 应用程序标识。 若要创建应用程序标识，请在 Azure 门户中按照先前在第 2 部分中的步骤操作。 
 
 也可以按照第 1 部分的步骤操作，但对于“登录 URL”和“应用 ID URI”，请确保使用 Web 应用或 API 应用的实际 `https://{URL}`。 执行这些步骤时，请务必保存客户端 ID 和租户 ID，以便在应用的部署模板和第 3 部分使用。
 
@@ -161,19 +163,21 @@ ms.locfileid: "66167304"
 获得客户端 ID 和租户 ID 后，将这些 ID 作为 Web 应用或 API 应用的子资源包含在部署模板中：
 
 ``` json
-"resources": [ {
-    "apiVersion": "2015-08-01",
-    "name": "web",
-    "type": "config",
-    "dependsOn": ["[concat('Microsoft.Web/sites/','parameters('webAppName'))]"],
-    "properties": {
-        "siteAuthEnabled": true,
-        "siteAuthSettings": {
-            "clientId": "{client-ID}",
-            "issuer": "https://sts.windows.net/{tenant-ID}/",
-        }
-    }
-} ]
+"resources": [ 
+   {
+      "apiVersion": "2015-08-01",
+      "name": "web",
+      "type": "config",
+      "dependsOn": ["[concat('Microsoft.Web/sites/','parameters('webAppName'))]"],
+      "properties": {
+         "siteAuthEnabled": true,
+         "siteAuthSettings": {
+            "clientId": "<client-ID>",
+            "issuer": "https://sts.windows.net/<tenant-ID>/"
+         }
+      }
+   } 
+]
 ```
 
 若要使用 Azure Active Directory 身份验证自动同时部署空白 Web 应用和逻辑应用，请[在此处查看完整模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-custom-api/azuredeploy.json)或单击此处的“部署到 Azure”：
@@ -184,28 +188,35 @@ ms.locfileid: "66167304"
 
 上面的模板已设置了此授权部分，但如果要直接对逻辑应用进行授权，则必须包括完整的授权部分。
 
-在代码视图中打开逻辑应用定义，转到“HTTP”操作部分，找到“授权”部分，然后将此行包含在其中：
+在代码视图中打开逻辑应用定义，中转到**HTTP**操作定义，找到 "**授权**" 部分，并包括以下属性：
 
-`{"tenant": "{tenant-ID}", "audience": "{client-ID-from-Part-2-web-app-or-API app}", "clientId": "{client-ID-from-Part-1-logic-app}", "secret": "{key-from-Part-1-logic-app}", "type": "ActiveDirectoryOAuth" }`
+```json
+{
+   "tenant": "<tenant-ID>",
+   "audience": "<client-ID-from-Part-2-web-app-or-API app>", 
+   "clientId": "<client-ID-from-Part-1-logic-app>",
+   "secret": "<key-from-Part-1-logic-app>", 
+   "type": "ActiveDirectoryOAuth"
+}
+```
 
-| 元素 | 需要 | 描述 | 
-| ------- | -------- | ----------- | 
-| tenant | “是” | Azure AD 租户的 GUID | 
-| audience | “是” | 想要访问的目标资源的 GUID - Web 应用或 API 应用的应用程序标识中的客户端 ID | 
-| clientId | “是” | 请求访问权限的客户端的 GUID - 逻辑应用的应用程序标识中的客户端 ID | 
-| secret | “是” | 请求访问令牌的客户端的应用程序标识中的密钥或密码 | 
-| type | “是” | 身份验证类型。 对于 ActiveDirectoryOAuth 身份验证，该值为 `ActiveDirectoryOAuth`。 | 
+| 属性 | 必选 | 说明 | 
+| -------- | -------- | ----------- | 
+| tenant | 是 | Azure AD 租户的 GUID | 
+| 受众 | 是 | 想要访问的目标资源的 GUID - Web 应用或 API 应用的应用程序标识中的客户端 ID | 
+| clientId | 是 | 请求访问权限的客户端的 GUID - 逻辑应用的应用程序标识中的客户端 ID | 
+| secret | 是 | 请求访问令牌的客户端的应用程序标识中的密钥或密码 | 
+| type | 是 | 身份验证类型。 对于 ActiveDirectoryOAuth 身份验证，该值为 `ActiveDirectoryOAuth`。 | 
 |||| 
 
-例如:
+例如：
 
 ``` json
 {
    "actions": {
-      "some-action": {
-         "conditions": [],
+      "HTTP": {
          "inputs": {
-            "method": "post",
+            "method": "POST",
             "uri": "https://your-api-azurewebsites.net/api/your-method",
             "authentication": {
                "tenant": "tenant-ID",
@@ -214,7 +225,7 @@ ms.locfileid: "66167304"
                "secret": "key-from-azure-ad-app-for-logic-app",
                "type": "ActiveDirectoryOAuth"
             }
-         },
+         }
       }
    }
 }
@@ -230,32 +241,44 @@ ms.locfileid: "66167304"
 
 若要验证从逻辑应用传入 Web 应用或 API 应用的请求，可以使用客户端证书。 若要设置代码，请了解[如何配置 TLS 相互身份验证](../app-service/app-service-web-configure-tls-mutual-auth.md)。
 
-在“授权”部分中包含此行： 
+在 "**授权**" 部分中，包括以下属性：
 
-`{"type": "clientcertificate", "password": "password", "pfx": "long-pfx-key"}`
+```json
+{
+   "type": "ClientCertificate",
+   "password": "<password>",
+   "pfx": "<long-pfx-key>"
+} 
+```
 
-| 元素 | 需要 | 描述 | 
-| ------- | -------- | ----------- | 
-| type | “是” | 身份验证类型。 对于 SSL 客户端证书，该值必须为 `ClientCertificate`。 | 
-| password | “是” | 用于访问客户端证书（PFX 文件）的密码 | 
-| pfx | “是” | 客户端证书（PFX 文件）的 base64 编码内容 | 
+| 属性 | 必选 | 说明 | 
+| -------- | -------- | ----------- | 
+| type | 是 | 身份验证类型。 对于 SSL 客户端证书，该值必须为 `ClientCertificate`。 | 
+| password | 是 | 用于访问客户端证书（PFX 文件）的密码 | 
+| pfx | 是 | 客户端证书（PFX 文件）的 base64 编码内容 | 
 |||| 
 
 <a name="basic"></a>
 
-#### <a name="basic-authentication"></a>基本验证
+#### <a name="basic-authentication"></a>基本身份验证
 
 若要验证从逻辑应用传入 Web 应用或 API 应用的请求，可以使用基本身份验证，如用户名和密码。 基本身份验证是一种常用模式，在用来生成你的 Web 应用或 API 应用的任何语言中都可以使用此身份验证。
 
-在“授权”部分中包含此行：
+在 "**授权**" 部分中，包括以下属性：
 
-`{"type": "basic", "username": "username", "password": "password"}`。
+```json
+{
+   "type": "Basic",
+   "username": "<username>",
+   "password": "<password>"
+}
+```
 
-| 元素 | 需要 | 描述 | 
-| ------- | -------- | ----------- | 
-| type | “是” | 要使用的身份验证类型。 对于基本身份验证，该值必须是 `Basic`。 | 
-| username | “是” | 要用于身份验证的用户名 | 
-| password | “是” | 要用于身份验证的密码 | 
+| 属性 | 必选 | 说明 | 
+| -------- | -------- | ----------- | 
+| type | 是 | 要使用的身份验证类型。 对于基本身份验证，该值必须是 `Basic`。 | 
+| username | 是 | 要用于身份验证的用户名 | 
+| password | 是 | 要用于身份验证的密码 | 
 |||| 
 
 <a name="azure-ad-code"></a>

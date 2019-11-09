@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: cd7b8c3de46cb88833f27cbebb7d07f944a711e4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 335e3c3ddabbf5bc267458fc1c55fef0e551583e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580838"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833784"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -26,7 +26,7 @@ ms.locfileid: "73580838"
 
 下面是针对单个逻辑应用定义的限制：
 
-| Name | 限制 | 说明 |
+| 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 每个工作流的操作数 | 500 | 要对此限制进行扩展，可根据需要添加嵌套工作流。 |
 | 操作的允许嵌套深度 | 8 | 要对此限制进行扩展，可根据需要添加嵌套工作流。 |
@@ -48,7 +48,7 @@ ms.locfileid: "73580838"
 
 下面是针对单个逻辑应用运行的限制：
 
-| Name | 多租户限制 | 集成服务环境限制 | 说明 |
+| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | 运行持续时间 | 90 天 | 365 天 | 若要更改默认限制，请参阅[更改运行持续时间](#change-duration)。 |
 | 存储保留期 | 90 天（从运行开始时间计算） | 365 天 | 若要更改默认限制，请参阅[更改存储保留期](#change-retention)。 |
@@ -75,13 +75,13 @@ ms.locfileid: "73580838"
 
 下面是针对单个逻辑应用运行的限制：
 
-| Name | 限制 | 说明 |
+| 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
-| 触发器并发 | * 在并发控制关闭时无限制 <p><p>* 在并发控制打开时，25 是默认限制（在打开控制之后无法撤消）。 可以将默认值更改为介于 1 与 50（含）之间的值。 | 此限制描述可以在同一时间或并行运行的逻辑应用实例的最大数。 <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改触发器并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)或[按顺序触发实例](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)。 |
+| 触发器并发 | * 在并发控制关闭时无限制 <p><p>* 在并发控制打开时，25 是默认限制（在打开控制之后无法撤消）。 可以将默认值更改为介于 1 与 50（含）之间的值。 | 此限制描述可以在同一时间或并行运行的逻辑应用实例的最大数。 <p><p>**注意**：当启用并发时，SplitOn 限制为偏离的[解除批处理数组](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)减少到100项。 如果项数超过此限制，则 SplitOn 功能处于禁用状态。 <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改触发器并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)或[按顺序触发实例](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)。 |
 | 最大等待运行数 | 并发控制打开时，最小等待运行数是 10 加上并发运行（触发器并发）数。 可以将最大数更改为多达 100 个（含）。 | 此限制描述当逻辑应用已在运行最大数量并发实例时，可等待运行的最大逻辑应用实例数。 <p><p>若要更改此默认限制，请参阅[更改等待的运行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。 |
 | Foreach 数组项 | 100,000 | 此限制描述“for each”循环可以处理的最大数组项数。 <p><p>可以使用[查询操作](../connectors/connectors-native-query.md)筛选更大数组。 |
 | Foreach 并发 | 20 是并发控制关闭时的默认限制。 可以将默认值更改为介于 1 与 50（含）之间的值。 | 此限制是可同时或并行运行的最大“for each”循环迭代数。 <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改“for each”并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)或[按顺序运行“for each”循环](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)。 |
-| SplitOn 项 | 100,000 | 对于返回数组的触发器，可指定一个表达式，它使用[将数组项拆分或解除批处理到多个工作流实例](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)进行处理的“SplitOn”属性，而不是使用“Foreach”循环。 此表达式引用要用于为每个数组项创建和运行工作流实例的数组。 |
+| SplitOn 项 | * 100000，无需触发器并发 <p><p>* 100 with 触发器并发 | 对于返回数组的触发器，可指定一个表达式，它使用[将数组项拆分或解除批处理到多个工作流实例](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)进行处理的“SplitOn”属性，而不是使用“Foreach”循环。 此表达式引用要用于为每个数组项创建和运行工作流实例的数组。 <p><p>**注意**：并发启用后，SplitOn 限制为 significanly。 如果项数超过此限制，则将禁用 SplitOn。 |
 | Until 迭代 | 5,000 | |
 ||||
 
@@ -93,7 +93,7 @@ ms.locfileid: "73580838"
 
 ### <a name="multi-tenant-logic-apps-service"></a>多租户逻辑应用服务
 
-| Name | 限制 | 说明 |
+| 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 操作：每 5 分钟执行的次数 | 默认限制为 100,000，最大限制为 300,000。 | 若要更改此默认限制，请参阅处于预览阶段的[在“高吞吐量”模式下运行逻辑应用](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)。 或者，你可根据需要在多个逻辑应用之间分配工作负荷。 |
 | 操作：并发传出调用数 | ~2,500 | 你可减少并发请求数，或根据需要减少持续时间。 |
@@ -107,7 +107,7 @@ ms.locfileid: "73580838"
 
 下面是高级 SKU 的吞吐量限制：
 
-| Name | 限制 | 说明 |
+| 名称 | 限制 | 说明 |
 |------|-------|-------|
 | 基本单位执行限制 | 当基础结构容量达到80% 时系统受到限制 | 提供 ~ 4000 每分钟执行的操作，即每月约160000000个操作执行 | |
 | 缩放单位执行限制 | 当基础结构容量达到80% 时系统受到限制 | 每个缩放单位每分钟可提供 ~ 2000 的其他操作执行次数，每月大约80000000个操作执行 | |
@@ -135,7 +135,7 @@ Azure 逻辑应用支持通过网关执行的写入操作，包括插入和更�
 
 某些连接器操作会进行异步调用或侦听 Webhook 请求，因此，这些操作的超时时间可能会长于以下限制。 有关详细信息，请参阅特定连接器的技术详细信息以及[工作流触发器和操作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)。
 
-| Name | 多租户限制 | 集成服务环境限制 | 说明 |
+| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | 传出的请求 | 120 秒 | 240 秒 | 对于运行时间较长的操作，请使用[异步轮询模式](../logic-apps/logic-apps-create-api-app.md#async-pattern)或 [until 循环](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)。 |
 | 同步响应 | 120 秒 | 240 秒 | 要使原始请求能够获得响应，则除非以嵌套工作流的形式调用其他逻辑应用，否则必须在限制内完成响应的所有步骤。 有关详细信息，请参阅[调用、触发器或嵌套逻辑应用](../logic-apps/logic-apps-http-endpoint.md)。 |
@@ -143,7 +143,7 @@ Azure 逻辑应用支持通过网关执行的写入操作，包括插入和更�
 
 #### <a name="message-size"></a>消息大小
 
-| Name | 多租户限制 | 集成服务环境限制 | 说明 |
+| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | 消息大小 | 100 MB | 200 MB | 若要解决此限制问题，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 |
 | 使用分块的消息大小 | 1 GB | 5 GB | 此限制适用于本机支持分块或可以在其运行时配置中启用分块的操作。 <p>对于 integration service 环境，逻辑应用引擎支持此限制，但连接器具有其自己的分块限制，直至引擎限制，例如，请参阅[Azure Blob 存储连接器的 API 参考](https://docs.microsoft.com/connectors/azureblob/)。 有关分块的详细信息，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 |
@@ -152,7 +152,7 @@ Azure 逻辑应用支持通过网关执行的写入操作，包括插入和更�
 
 #### <a name="retry-policy"></a>重试策略
 
-| Name | 限制 | 说明 |
+| 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 重试次数 | 90 | 默认值为 4。 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
 | 重试最大延迟 | 1 天 | 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
@@ -165,7 +165,7 @@ Azure 逻辑应用支持通过网关执行的写入操作，包括插入和更�
 
 下面介绍对可通过 Web API 创建的自定义连接器的限制。
 
-| Name | 多租户限制 | 集成服务环境限制 | 说明 |
+| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | 自定义连接器数 | 每个 Azure 订阅 1,000 | 每个 Azure 订阅 1,000 ||
 | 自定义连接器的每分钟请求数 | 每分钟每个连接 500 个请求 | 每个*自定义连接器*每分钟2000请求 ||
@@ -175,7 +175,7 @@ Azure 逻辑应用支持通过网关执行的写入操作，包括插入和更�
 
 ## <a name="managed-identities"></a>托管标识
 
-| Name | 限制 |
+| 名称 | 限制 |
 | ---- | ----- |
 | 每个区域的 Azure 订阅中具有系统分配的标识的逻辑应用数 | 100 |
 |||
@@ -245,7 +245,7 @@ Azure 逻辑应用支持通过网关执行的写入操作，包括插入和更�
 
 以下消息大小限制适用于 B2B 协议：
 
-| Name | 多租户限制 | 集成服务环境限制 | 说明 |
+| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | AS2 | v2 - 100 MB<br>v1 - 50 MB | v2-200 MB <br>v1 - 50 MB | 适用于解码和编码 |
 | X12 | 50 MB | 50 MB | 适用于解码和编码 |

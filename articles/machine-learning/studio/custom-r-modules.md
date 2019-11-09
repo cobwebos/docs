@@ -1,6 +1,6 @@
 ---
 title: 定义自定义 R 模块
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: 本主题介绍如何创作和部署自定义的 R Studio （经典）。 解释什么是自定义 R 模块以及要使用什么文件来定义此类模块，
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: dba1b092d9a12f189ce7b4a207c362cad2bf8858
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 6c81cd927ac26779cab042d1d4e54f2e8c02918c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619495"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838875"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>为 Azure 机器学习 Studio （经典）定义自定义 R 模块
 
@@ -288,7 +288,7 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
     * 分类
     * String
     * 标签
-    * 功能
+    * Feature
     * 得分
     * All
   * **默认** - 列选取器的有效默认选择包括： 

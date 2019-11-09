@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: b2b32d6ccca69f330cfe15faa1446aa91fdb687a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d59646a87727409d759cc1903046fb3cdeade2e0
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465733"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847375"
 ---
 # <a name="developer-resources-for-language-understanding"></a>语言理解的开发人员资源
 
@@ -41,8 +41,10 @@ ms.locfileid: "73465733"
 
 创作和预测终结点 API 都可从 REST Api 获取：
 
-* 创作[参考文档](https://go.microsoft.com/fwlink/?linkid=2092087)
-* 预测运行时[参考文档](https://go.microsoft.com/fwlink/?linkid=2092356)
+|类型|版本|
+|--|--|
+|创作|[V2](https://go.microsoft.com/fwlink/?linkid=2092087)<br>[预览 V3](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)|
+|预测|[V2](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[V3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
 
 ### <a name="language-based-sdks"></a>基于语言的 Sdk
 

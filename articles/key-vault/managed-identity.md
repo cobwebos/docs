@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6c7a9fdb5ed60023a82984fd5be5b424c634e679
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 75317f73ad724b4ce8ad7a894890b2269bd8c5d0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720254"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837500"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>提供具有托管标识的 Key Vault 身份验证
 
@@ -34,7 +34,7 @@ ms.locfileid: "71720254"
    - [使用 Azure PowerShell 创建密钥保管库](quick-create-powershell.md)
    - [使用 Azure 门户创建密钥保管库](quick-create-portal.md)。
 - 要向其授予密钥保管库访问权限的现有应用服务应用程序。 可以按照[应用服务文档](../app-service/overview.md)中的步骤来快速创建一个。
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)或[Azure PowerShell](/powershell/azure/overview)。 或者，您可以使用[Azure 门户](http://portal.azure.com)。
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)或[Azure PowerShell](/powershell/azure/overview)。 或者，您可以使用[Azure 门户](https://portal.azure.com)。
 
 
 ## <a name="adding-a-system-assigned-identity"></a>添加系统分配的标识 
@@ -55,7 +55,7 @@ ms.locfileid: "71720254"
 
 ### <a name="azure-cli"></a>Azure CLI
 
-本快速入门需要 Azure CLI 版本2.0.4 或更高版本。 运行 `az --version` 即可查找当前版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 
+本快速入门需要 Azure CLI 版本2.0.4 或更高版本。 运行 `az --version` 即可查找当前版本。 如需安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 
 
 若要使用 Azure CLI 登录，请使用[az login](/cli/azure/reference-index?view=azure-cli-latest#az-login)命令：
 
@@ -76,7 +76,7 @@ az webapp identity assign --name myApp --resource-group myResourceGroup
 az functionapp identity assign --name myApp --resource-group myResourceGroup
 ```
 
-记`PrincipalId`下，这将在下一部分中需要。
+记下 `PrincipalId`，这将在下一部分中需要。
 
 ```json
 {
@@ -111,7 +111,7 @@ az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-perm
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Key Vault 安全：标识和访问管理 @ no__t-0
+- [Azure Key Vault 安全性：标识和访问管理](overview-security.md#identity-and-access-management)
 - [提供访问控制策略 Key Vault 身份验证](key-vault-group-permissions-for-apps.md)
 - [关于键、密钥和证书](about-keys-secrets-and-certificates.md)
 - [保护密钥保管库](key-vault-secure-your-key-vault.md)。
