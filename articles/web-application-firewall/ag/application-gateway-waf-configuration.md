@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 10/17/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 91e6f08d1dc3dc829dd7c6a58c651d453121e240
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cfde1355ef5e5a2f9033456ac4089ce3ca3f9d72
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516911"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839969"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web 应用程序防火墙请求大小限制和排除列表
 
@@ -82,7 +82,7 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -SelectorMatchOperator "StartsWith" `
    -Selector "user"
 ```
-因此，如果将 URL **http://www.contoso.com/?user%281%29=fdafdasfda** 传递给 WAF，后者就不会评估字符串 **fdafdasfda**，但仍会评估参数名称 **user%281%29**。 
+因此，如果 URL `http://www.contoso.com/?user%281%29=fdafdasfda` 传递到 WAF，则它不会计算**fdafdasfda**字符串，但仍会计算参数名称**user %281 %29**。 
 
 ## <a name="waf-request-size-limits"></a>WAF 请求大小限制
 

@@ -5,21 +5,22 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e7de815b7254fb071b3094f9ae636b712b38684b
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 7a85ed93d9ee01255d809cce84ebe24e6c3f71d1
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797681"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847392"
 ---
 # <a name="sensor-partner-integration"></a>传感器合作伙伴集成
-本文提供了有关 Azure FarmBeats **Translator**组件的信息。
+
+本文提供了有关 Azure FarmBeats **Translator**组件的信息，该组件启用传感器伙伴集成。
 
 使用此组件，合作伙伴可以通过利用我们的 API，并将客户设备数据和遥测数据发送到 FarmBeats 数据中心，来开发与 FarmBeats 集成的传感器。 使用 FarmBeats 加速器可视化数据。 数据可用于数据合成，并用于构建计算机语言/人工智能模型。
 
 ## <a name="link-farmbeats-account"></a>链接 FarmBeats 帐户
 
-一旦客户购买并部署了设备/传感器，他们就可以访问设备合作伙伴的 SaaS 门户（软件即服务）上的设备数据和遥测数据。 设备合作伙伴需要使客户能够将其帐户链接到其在 Azure 上的 FarmBeats 实例。 客户/SI 填写以下凭据：
+一旦客户购买并部署了设备/传感器，他们就可以访问设备合作伙伴的 SaaS 门户（软件即服务）上的设备数据和遥测数据。 设备合作伙伴需要使客户能够将其帐户链接到其在 Azure 上的 FarmBeats 实例。 客户/系统集成商需要以下凭据：
 
    - 显示名称（用于定义此集成名称的用户的可选字段）
    - API 终结点
@@ -41,14 +42,11 @@ ms.locfileid: "73797681"
 
 ## <a name="edit-farmbeats-integration"></a>编辑 FarmBeats 集成
 
-客户可以编辑 FarmBeats 集成。 编辑的主要方案是客户端机密或连接字符串由于过期而发生更改，在这种情况下，customer 只能编辑以下字段。
+如果客户端机密或连接字符串发生更改，则客户可以编辑 FarmBeats 集成设置。 在这种情况下，客户只能编辑以下字段：
 
    - 显示名称（如果适用）
    - 客户端密码（应显示为 "2x8 * * * * * * * * * * *" 格式，或显示/隐藏功能，而不是明文）
    - 连接字符串（应显示为 "2x8 * * * * * * * * * * *" 格式，或显示/隐藏功能，而不是明文）
-
-   > [!NOTE]
-   > 编辑不应中断元数据对象的创建。
 
 ## <a name="view-last-telemetry-sent"></a>查看最近发送的遥测
 
@@ -116,7 +114,7 @@ access_token = token_response.get('accessToken') 
 --- | ---
 Content-Type | FarmBeats 数据中心 Api 格式的请求格式（Content-type： application/<format>）为 json。 Content-type： application/json
 授权 | 指定进行 API 调用授权所需的访问令牌：持有者 < 访问令牌 >
-Accept | 响应格式。 对于 FarmBeats 数据中心 Api，格式为 json Accept： application/json
+接受 | 响应格式。 对于 FarmBeats 数据中心 Api，格式为 json Accept： application/json
 
 **API 请求**
 
@@ -192,7 +190,7 @@ ParentDeviceId | 此设备连接到的父设备的 ID。 例如， 连接到网�
   description  | 提供有意义的说明
   properties  | 制造商提供的其他属性
 
- 有关每个对象及其属性的信息，请参阅[swagger](httpa://aka.ms/FarmBeatsDatahubSwagger)。
+ 有关每个对象及其属性的信息，请参阅[swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
 
  > [!NOTE]
  > Api 为创建的每个实例返回唯一 Id。 设备管理和元数据同步的转换器需要保留此 ID。

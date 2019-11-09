@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
 ms.author: atsenthi
-ms.openlocfilehash: 3fa40d794d02da08d29b6cac652edf493977f8e1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: fd1787318e8573183293ddd832a11cf8cfe09cf2
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599727"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832607"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>查看 Service Fabric 容器服务的日志
 Azure Service Fabric 是一种容器业务流程协调程序，支持 [Linux 和 Windows 容器](service-fabric-containers-overview.md)。  本文介绍如何查看正在运行的容器服务或无响应容器的容器日志，以便诊断和排查问题。
 
 ## <a name="access-the-logs-of-a-running-container"></a>访问正在运行的容器的日志
-可以通过 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 来访问容器日志。  在 Web 浏览器中导航到 [http://mycluster.region.cloudapp.azure.com:19080/Explorer](http://mycluster.region.cloudapp.azure.com:19080/Explorer)，以便从群集的管理终结点打开 Service Fabric Explorer。  
+可以通过 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 来访问容器日志。  在 web 浏览器中，通过导航到 `http://mycluster.region.cloudapp.azure.com:19080/Explorer`从群集的管理终结点打开 Service Fabric Explorer。  
 
 容器日志位于容器服务实例运行时所在的群集节点。 例如，可以获取 [Linux Voting 示例应用程序](service-fabric-quickstart-containers-linux.md)的 Web 前端容器的日志。 在树状视图中，展开“群集”>“应用程序”>“VotingType”>“fabric:/Voting/azurevotefront”。  然后展开分区（在此示例中为 d1aa737e-f22a-e347-be16-eec90be24bc1），此时会看到容器在群集节点 *_lnxvm_0* 上运行。
 
@@ -37,7 +37,7 @@ Azure Service Fabric 是一种容器业务流程协调程序，支持 [Linux 和
 从 v6.2 开始，还可以使用 [REST API](/rest/api/servicefabric/sfclient-index) 或 [Service Fabric CLI (SFCTL)](service-fabric-cli.md) 命令提取无响应容器或故障容器的日志。
 
 ### <a name="set-container-retention-policy"></a>设置容器保留策略
-为了帮助诊断容器启动故障，Service Fabric（6.1 或更高版本）支持保留终止的或无法启动的容器。 此策略可以在ApplicationManifest.xml 文件中设置，如以下代码片段所示：
+为了帮助诊断容器启动故障，Service Fabric（6.1 或更高版本）支持保留终止的或无法启动的容器。 此策略可以在 **ApplicationManifest.xml** 文件中设置，如以下代码片段所示：
 ```xml
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
  ```
