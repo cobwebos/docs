@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 2a8a19dfd2cdc7a64a5ea90b96808963b19f73bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4b07252aed2205917f6b43e3e09a2877663e5bab
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498649"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838917"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>用于 VMware 评估和迁移的支持矩阵
 
@@ -112,7 +112,7 @@ dc.services.visualstudio.com | 上传用于内部监视的应用日志。
 *.servicebus.windows.net | 设备与 Azure Migrate 服务之间的通信。
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | 连接到 Azure Migrate 服务 Url。
 *.blob.core.windows.net | 将数据上传到存储帐户。
-http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | 用于 Azure Migrate 设备更新。
+https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | 用于 Azure Migrate 设备更新。
 
 ## <a name="assessment-port-requirements"></a>评估-端口要求
 
@@ -215,7 +215,7 @@ dc.services.visualstudio.com | 上传用于内部监视的应用日志。
 *.servicebus.windows.net | 设备与 Azure Migrate 服务之间的通信。
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | 连接到 Azure Migrate 服务 Url。
 *.blob.core.windows.net | 将数据上传到存储帐户。
-http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | 用于 Azure Migrate 设备更新。
+https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | 用于 Azure Migrate 设备更新。
 
 
 ## <a name="agentless-migration-port-requirements"></a>无代理迁移-端口要求
@@ -264,7 +264,7 @@ RAM | 16 GB
 操作系统 | Windows Server 2016 或 Windows Server 2012 R2
 操作系统区域设置 | 英语 (en-us)
 TLS | 应启用 TLS 1.2。
-.NET Framework | 应在计算机上安装 .NET Framework 4.6 或更高版本（启用了强密码。
+.NET framework | 应在计算机上安装 .NET Framework 4.6 或更高版本（启用了强密码。
 MySQL | MySQL 应安装在设备上。<br/> 应安装 MySQL。 可以手动安装，也可以在设备部署期间安装 Site Recovery。
 其他应用 | 请勿在复制设备上运行其他应用。
 Windows Server 角色 | 请勿启用以下角色： <br> - Active Directory 域服务 <br>- Internet Information Services <br> - Hyper-V

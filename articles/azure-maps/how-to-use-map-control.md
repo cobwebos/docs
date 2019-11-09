@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c764460fb65287dab0031b27291d2f332cec3b3d
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ceb3b7315439aced7f781e8de5e62b49fd83818c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756553"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833813"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure Maps map 控件
 
@@ -27,7 +27,7 @@ ms.locfileid: "72756553"
 
 2. 载入 Azure Maps Web SDK。 可以使用以下两个选项之一执行此操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 通过在该文件的 `<head>` 元素中添加样式表和脚本引用的 URL 终结点，使用 Azure Maps Web SDK 的全局承载的 CDN 版本：
+    a. 通过在该文件的 `<head>` 元素中添加样式表和脚本引用的 URL 终结点，使用 Azure Maps Web SDK 的全局承载的 CDN 版本：
 
     ```HTML
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
@@ -51,7 +51,7 @@ ms.locfileid: "72756553"
     > import * as atlas from 'azure-maps-control';
     > ```
 
-3. 若要以填满整个页面正文的方式呈现地图，请向 `<head>` 元素中添加以下 `<style>` 元素。
+3. 若要以填满整个页面正文的方式呈现地图，请向 `<style>` 元素中添加以下 `<head>` 元素。
 
     ```HTML
     <style>
@@ -174,16 +174,16 @@ ms.locfileid: "72756553"
 
 8. 在 Web 浏览器中打开该文件并查看呈现的地图。 它应类似于以下代码：
 
-    <iframe height="700" style="width: 100%;" scrolling="no" title="如何使用地图控件" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">请参阅<a href='https://codepen.io'>CodePen</a>上的 "如何通过 Azure Maps （<a href='https://codepen.io/azuremaps'> @azuremaps</a>）<a href='https://codepen.io/azuremaps/pen/yZpEYL/'>使用地图控件</a>。
+    <iframe height="700" style="width: 100%;" scrolling="no" title="如何使用地图控件" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">请参阅<a href='https://codepen.io'>CodePen</a>上的 "如何通过 Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）<a href='https://codepen.io/azuremaps/pen/yZpEYL/'>使用地图控件</a>。
     </iframe>
 
 ## <a name="localizing-the-map"></a>本地化地图
 
-Azure Maps 提供了两种不同的方法来设置地图的语言和区域视图。 第一种方法是将此信息添加到全局 `atlas` 命名空间，这将导致应用程序中的所有地图控件实例默认设置为这些设置。 下面将语言设置为法语（"fr"），并将区域视图设置为 "auto"：
+Azure Maps 提供了两种不同的方法来设置地图的语言和区域视图。 第一种方法是将此信息添加到全局 `atlas` 命名空间，这将导致应用程序中的所有地图控件实例默认设置为这些设置。 下面将语言设置为法语（"fr"），并将区域视图设置为 "Auto"：
 
 ```javascript
 atlas.setLanguage('fr-FR');
-atlas.setView('auto');
+atlas.setView('Auto');
 ```
 
 第二种方法是在加载映射时将此信息传递到映射选项，如下所示：
@@ -191,7 +191,7 @@ atlas.setView('auto');
 ```javascript
 map = new atlas.Map('myMap', {
     language: 'fr-FR',
-    view: 'auto',
+    view: 'Auto',
 
     authOptions: {
         authType: 'aad',

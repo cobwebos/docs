@@ -1,7 +1,7 @@
 ---
 title: 文本翻译 API 字典查找方法
 titleSuffix: Azure Cognitive Services
-description: 使用文本翻译 API 字典查找方法。
+description: 字典查找方法提供字词和少量惯用短语的替代翻译。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: 0bbdba343888bc91521245d0c9a0e4eaa87c5538
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: bd725d41f75bdfb1048b5bee7e8224679dbece4c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932003"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837259"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>文本翻译 API 3.0：字典查找
 
@@ -42,11 +42,11 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
   </tr>
   <tr>
     <td>from</td>
-    <td>必需参数。<br/>指定输入文本的语言。 源语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。</td>
+    <td>必需参数。<br/>指定输入文本的语言。 源语言必须是 [ 范围中包含的](./v3-0-languages.md)支持的语言`dictionary`之一。</td>
   </tr>
   <tr>
     <td>to</td>
-    <td>必需参数。<br/>指定输出文本的语言。 目标语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。</td>
+    <td>必需参数。<br/>指定输出文本的语言。 目标语言必须是 [ 范围中包含的](./v3-0-languages.md)支持的语言`dictionary`之一。</td>
   </tr>
 </table>
 
@@ -54,7 +54,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>身份验证标头</td>
     <td>必需的请求标头。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。</td>
@@ -69,7 +69,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>可选。<br/>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
+    <td>*可选*。<br/>客户端生成的 GUID，用于唯一地标识请求。 如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
   </tr>
 </table> 
 
@@ -92,17 +92,17 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 成功的响应是一个 JSON 数组，其中的每个结果对应于输入数组中的一个字符串。 结果对象包括以下属性：
 
-  * `normalizedSource`：一个字符串，提供源术语的规范化形式。 例如，如果请求为“JOHN”，则规范化形式为“john”。 此字段的内容将成为[查找示例](./v3-0-dictionary-examples.md)的输入。
+  * `normalizedSource`：一个字符串，提供源字词的规范化形式。 例如，如果请求为“JOHN”，则规范化形式为“john”。 此字段的内容将成为[查找示例](./v3-0-dictionary-examples.md)的输入。
     
-  * `displaySource`：一个字符串，以最适合向最终用户显示的形式提供源术语。 例如，如果输入为“JOHN”，则显示形式将反映该名字的一般拼写方式：“John”。 
+  * `displaySource`：一个字符串，以最适合向最终用户显示的形式提供源字词。 例如，如果输入为“JOHN”，则显示形式将反映该名字的一般拼写方式：“John”。 
 
-  * `translations`：源术语的翻译列表。 每个列表元素都是一个具有以下属性的对象：
+  * `translations`：源字词的翻译列表。 每个列表元素都是一个具有以下属性的对象：
 
-    * `normalizedTarget`：一个字符串，以目标语言提供此术语的规范化形式。 此值应用作[查找示例](./v3-0-dictionary-examples.md)的输入。
+    * `normalizedTarget`：一个字符串，以目标语言提供此字词的规范化形式。 此值应用作[查找示例](./v3-0-dictionary-examples.md)的输入。
 
-    * `displayTarget`：一个字符串，使用目标语言以最适合向最终用户显示的形式提供术语。 一般情况下，此值只是在大小写方面与 `normalizedTarget` 不同。 例如，专有名词“Juan”的拼写方式包括 `normalizedTarget = "juan"` 和 `displayTarget = "Juan"`。
+    * `displayTarget`：一个字符串，使用目标语言以最适合向最终用户显示的形式提供字词。 一般情况下，此值只是在大小写方面与 `normalizedTarget` 不同。 例如，专有名词“Juan”的拼写方式包括 `normalizedTarget = "juan"` 和 `displayTarget = "Juan"`。
 
-    * `posTag`：一个字符串，用于将此术语与词性标记相关联。
+    * `posTag`：一个字符串，用于将此字词与词性标记相关联。
 
         | 标记名称 | 说明  |
         |----------|--------------|
@@ -125,9 +125,9 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
     
     * `backTranslations`：目标的“回译”列表。 例如，目标可以翻译成的源单词。 保证该列表包含请求的源单词（例如，如果查找的源单词是“fly”，则保证“fly”在 `backTranslations` 列表中）。 但是，不能保证该单词位于第一个位置，并且它往往不是在第一个位置。 `backTranslations` 列表的每个元素是以下属性描述的对象：
 
-        * `normalizedText`：一个字符串，提供目标回译成的源术语的规范化形式。 此值应用作[查找示例](./v3-0-dictionary-examples.md)的输入。        
+        * `normalizedText`：一个字符串，提供目标回译成的源单词的规范化形式。 此值应用作[查找示例](./v3-0-dictionary-examples.md)的输入。        
 
-        * `displayText`：一个字符串，以最适合向最终用户显示的形式，提供目标回译成的源术语。
+        * `displayText`：一个字符串，以最适合向最终用户显示的形式，提供目标回译成的源单词。
 
         * `numExamples`：一个整数，表示此翻译对可用的示例数。 必须通过单独调用[查找示例](./v3-0-dictionary-examples.md)来检索实际示例。 提供该数字的主要目的是方便在 UX 中显示。 例如，如果示例数大于零，则用户界面可以添加回译的超链接；如果没有任何示例，则以纯文本形式显示回译。 请注意，调用[查找示例](./v3-0-dictionary-examples.md)后返回的实际示例数可能小于 `numExamples`，因为可能对“fly”应用了其他筛选，以删除“错误的”示例。
         

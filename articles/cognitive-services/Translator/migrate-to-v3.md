@@ -1,7 +1,7 @@
 ---
 title: 迁移到 V3 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
-description: 了解如何将文本翻译 API 从 V2 迁移到 V3。
+description: 本文提供了一些步骤，可帮助你从 V2 迁移到 Azure 认知服务文本翻译 API。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,17 +10,17 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 9ce9dc330ec1b0c32ce045437fadb5d8c191529e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: eb43d549d3e0cd449c865d533fc8701c4c3912fd
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595243"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837313"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>将文本翻译 API V2 迁移到 V3
 
 > [!NOTE]
-> V2 已于2018年4月30日弃用。 请将你的应用程序迁移到 V3, 以便充分利用 V3 中专门提供的新功能。
+> V2 已于2018年4月30日弃用。 请将你的应用程序迁移到 V3，以便充分利用 V3 中专门提供的新功能。
 > 
 > Microsoft Translator 中心将在 2019 5 月17日停用。 [查看重要的迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。  
 
@@ -61,7 +61,7 @@ Microsoft Translator 团队已发布文本翻译 API 版本 3 (V3)。 此版本�
 
 Microsoft Translator 文本翻译 V2 接受 XML 格式的数据，并以此格式返回数据。 在 V3 中，使用 API 发送和接收的所有数据采用 JSON 格式。 在 V3 中，不再接受或返回 XML 数据。
 
-此项更改会影响针对 V2 文本翻译 API 编写的应用程序的多个方面。 示例：语言 API 返回文本翻译、音译和两个字典方法的语言信息。 可以通过一次调用请求所有方法的所有语言信息，或单独请求这些方法的信息。
+此项更改会影响针对 V2 文本翻译 API 编写的应用程序的多个方面。 例如：语言 API 返回文本翻译、音译和两个字典方法的语言信息。 可以通过一次调用请求所有方法的所有语言信息，或单独请求这些方法的信息。
 
 languages 方法不需要身份验证；单击以下链接可以看到 V3 的 JSON 格式的所有语言信息：
 
@@ -82,7 +82,7 @@ Microsoft Translator V3 的定价方式与 V2 相同：按字符（包括空格�
 | `Transliterate`     | 根据提交音译的字符数统计费用。         |
 | `Dictionary lookup & example`     | 根据提交请求字典查找和示例的字符数统计费用。         |
 | `BreakSentence`     | 无费用。       |
-| `Detect`     | 免费。      |
+| `Detect`     | 无费用。      |
 
 ## <a name="v3-end-points"></a>V3 终结点
 

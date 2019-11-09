@@ -1,6 +1,6 @@
 ---
 title: 有关视频索引器的常见问题解答 - Azure
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: 获取有关视频索引器的常见问题的解答。
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: f20d718d0b1d3bbdf117e502a380897c79a7905f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95f2af1b192564290551f9ed31f0fe158b4536f6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799503"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838231"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
@@ -34,7 +34,7 @@ ms.locfileid: "65799503"
 * 识别和提取语音，并识别发言人。
 * 识别和提取视频中屏幕上的文本。
 * 检测视频文件中的对象。
-* 从音轨和视频中屏幕上的文本识别品牌（例如：Microsoft）。
+* 识别视频中音频轨道和屏幕文本的品牌（例如： Microsoft）。
 * 从名人数据库和用户定义的人脸数据库中检测和识别人脸。
 * 提取音频和视频内容中讨论的但不一定提及的主题。
 * 基于音轨创建隐藏式字幕或副标题。
@@ -71,7 +71,7 @@ ms.locfileid: "65799503"
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>是否可以创建自定义工作流来自动化视频索引器的流程？
 
-是的，可将视频索引器集成到逻辑应用、Flow 和 [Azure Functions](https://azure.microsoft.com/services/functions/) 等无服务器技术。 在[此处](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/)可以找到有关适用于视频索引器的[逻辑应用](https://azure.microsoft.com/services/logic-apps/)和 [Flow](https://flow.microsoft.com/en-us/) 连接器的更多详细信息。 
+是的，可将视频索引器集成到逻辑应用、Flow 和 [Azure Functions](https://azure.microsoft.com/services/functions/) 等无服务器技术。 在[此处](https://azure.microsoft.com/services/logic-apps/)可以找到有关适用于视频索引器的[逻辑应用](https://flow.microsoft.com/en-us/)和 [Flow](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) 连接器的更多详细信息。 
 
 ### <a name="in-which-azure-regions-is-video-indexer-available"></a>视频索引器在哪些 Azure 区域是可用的？
 
@@ -159,7 +159,7 @@ Azure 媒体服务的 SLA 涵盖了视频索引器，可在 [SLA](https://azure.
 
 视频索引器使用简单的即用即付定价模型，该模型基于要编制索引的内容输入的持续时间。 可能对编码、流式处理、存储、网络使用情况和编码预留单位收取额外费用。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/)页。
 
-### <a name="when-am-i-billed-for-using-video-indexer"></a>何时将计费使用视频索引器？
+### <a name="when-am-i-billed-for-using-video-indexer"></a>我是在使用视频索引器时计费的？
 
 如果发送要编制索引的视频，用户会将索引定义为视频分析和/或音频分析。 这将决定对哪些 SKU 收费。 如果处理过程中发生严重级别错误，系统将返回错误代码作为响应。 在此情况下，不会计费。  关键错误可能是由代码中的 bug 导致，或者由服务内部依赖项的严重故障导致。 错误标识或见解提取等错误不会被视为关键错误，系统将返回响应。 如果返回有效（非错误代码）响应，系统将会计费。
  

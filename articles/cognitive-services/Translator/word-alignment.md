@@ -1,7 +1,7 @@
 ---
 title: 词对齐 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
-description: 从文本翻译 API 接收词对齐信息。
+description: 若要接收对齐信息，请使用 Translate 方法，并包含可选的 includeAlignment 参数。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 5818d3f4d2ebed7cbcd46aadf538640914d3b7d4
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: dd4ff1e39c062910f4627973c801dc3c51f345e5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594779"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837234"
 ---
 # <a name="how-to-receive-word-alignment-information"></a>如何接收词对齐信息
 
@@ -26,7 +26,7 @@ ms.locfileid: "68594779"
 ## <a name="alignment-information-format"></a>对齐信息格式
 对齐将作为以下格式的字符串值返回给源的每个词。 每个词的信息由一个空格分隔，其中包括非空格分隔的语言（脚本），比如中文：
 
-[[SourceTextStartIndex]:\[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]] *
+[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]] *
 
 对齐字符串示例：“0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21”。
 

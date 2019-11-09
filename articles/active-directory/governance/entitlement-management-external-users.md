@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9107471448a58dc7866fb2cd6052abf168437d2b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e76e5c5d2cfcfd983f2b5cdc279f0c13fa6706e4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174183"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832708"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>为外部用户管理对 Azure AD 权限管理的访问权限
 
@@ -97,7 +97,7 @@ Azure AD 的权利管理利用[Azure AD 企业到企业（B2B）](../b2b/what-is
 
 ### <a name="review-your-sharepoint-online-external-sharing-settings"></a>查看 SharePoint Online 外部共享设置
 
-- 如果要在访问包中为外部用户包括 SharePoint Online 站点，请确保将组织级别的外部共享设置设置为 "**任何人**" （用户不需要登录）或**新的和现有的来宾**（来宾必须签署或提供验证码。 有关详细信息，请参阅[打开或关闭外部共享](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)。
+- 如果要在访问包中为外部用户包括 SharePoint Online 站点，请确保将组织级别的外部共享设置设置为 "**任何人**" （用户不需要登录）或**新的和现有的来宾**（来宾必须登录或提供验证码）。 有关详细信息，请参阅[打开或关闭外部共享](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)。
 
 - 如果要限制权限管理之外的任何外部共享，则可以将外部共享设置设置为**现有来宾**。 然后，只有通过授权管理的新用户才能访问这些站点。 有关详细信息，请参阅[打开或关闭外部共享](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)。
 
@@ -113,7 +113,7 @@ Azure AD 的权利管理利用[Azure AD 企业到企业（B2B）](../b2b/what-is
 
 ### <a name="review-your-teams-sharing-settings"></a>查看团队共享设置
 
-- 如果要将团队添加到外部用户的访问包中，请确保将 "**允许在 Microsoft 团队中进行来宾访问**" 设置为 **"开**" 以允许来宾访问。 有关详细信息，请参阅[Microsoft 团队管理中心中的配置来宾访问权限](https://docs.microsoft.com/microsoftteams/set-up-guests#configure-guest-access-in-the-microsoft-teams-admin-center)。
+- 如果要将团队添加到外部用户的访问包中，请确保将 "**允许在 Microsoft 团队中进行来宾访问**" 设置为 **"开**" 以允许来宾访问。 有关详细信息，请参阅[Microsoft 团队管理中心中的配置来宾访问权限](/microsoftteams/set-up-guests#configure-guest-access-in-the-teams-admin-center)。
 
 ## <a name="manage-the-lifecycle-of-external-users"></a>管理外部用户的生命周期
 
@@ -123,7 +123,7 @@ Azure AD 的权利管理利用[Azure AD 企业到企业（B2B）](../b2b/what-is
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。
 
-1. 在左侧菜单的 "**权利管理**" 部分中，单击 "**设置**"。
+1. 在“权利管理”部分的左侧菜单中，单击“设置”。
 
 1. 单击“编辑”。
 

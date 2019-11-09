@@ -1,6 +1,6 @@
 ---
 title: 使用视频索引器上传视频和编制视频索引
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: 本主题演示如何通过视频索引器使用 API 来上传视频和编制视频索引。
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
-ms.openlocfilehash: d6338f3840b6f8afe21f8115304ba00bba90c6ea
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 255c98965026266348a66bb98a1741eaf04a1d38
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372379"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839143"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -37,7 +37,7 @@ ms.locfileid: "72372379"
 - 请求 URL 长度限制为6144个字符，其中查询字符串 URL 长度限制为4096个字符。
 - 具有字节数组选项的上传大小限制为2GB。
 - 字节数组选项在30分钟后超时。
-- @No__t 参数中提供的 URL 需要进行编码。
+- `videoURL` 参数中提供的 URL 需要进行编码。
 - 为媒体服务资产编制索引与从 URL 进行索引的限制相同。
 - 对于单个文件，视频索引器的最大持续时间限制为4小时。
 
@@ -61,22 +61,22 @@ ms.locfileid: "72372379"
 - 索引状态更改： 
     - 属性：    
     
-        |名称|描述|
+        |名称|说明|
         |---|---|
         |id|视频 ID|
         |state|视频状态|  
-    - 示例： https： \//notifyme？项目名称 = MyProject & id = 1234abcd & 状态 = 已处理
+    - 示例： https：\//test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - 在视频中标识的人：
   - 属性
     
-      |名称|描述|
+      |名称|说明|
       |---|---|
       |id| 视频 ID|
       |faceId|出现在视频索引中的人脸 ID|
       |knownPersonId|在人脸模型中唯一的个人 ID|
       |personName|人名|
         
-    - 示例： https： \//notifyme/？项目名称 = MyProject & id = 1234abcd & faceid = 12 & knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5 & personName = Inigo_Montoya 
+    - 示例： https：\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>说明
 
@@ -285,7 +285,7 @@ public class AccountContractSlim
 
 上传操作可能会返回下表中列出的状态代码。
 
-|状态代码|ErrorType（在响应正文中）|描述|
+|状态代码|ErrorType（在响应正文中）|说明|
 |---|---|---|
 |400|VIDEO_ALREADY_IN_PROGRESS|相同的视频已在给定帐户的处理进度中。|
 |400|VIDEO_ALREADY_FAILED|不到 2 小时前，相同的视频已在给定帐户中处理失败。 API 客户端应至少等待 2 小时才能重新上传视频。|

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 9743f25d89bed4e54b3deed815d1cf29030caff6
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 612b6caf47ec4764aa2bbef162592100198ed0c4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955466"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832214"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory （Azure AD）应用程序代理常见问题
 
@@ -66,7 +66,7 @@ ms.locfileid: "71955466"
 与连接器一起安装了性能监视器计数器。 查看它们：  
 
 1. 选择 "**开始**"，键入 "Perfmon"，然后按 enter。
-2. 选择 "**性能监视器**"，然后单击绿色 **@no__t 2**图标。
+2. 选择 "**性能监视器**"，然后单击绿色 **+** 图标。
 3. 添加要监视的**MICROSOFT AAD 应用程序代理连接器**计数器。
 
 ### <a name="does-the-azure-ad-application-proxy-connector-have-to-be-on-the-same-subnet-as-the-resource"></a>Azure AD 应用程序代理连接器是否必须与资源位于同一子网？
@@ -87,7 +87,7 @@ ms.locfileid: "71955466"
 
 不是，发布的应用程序没有 IIS 要求。 你可以发布在 Windows Server 之外的服务器上运行的 web 应用程序。 但是，你可能无法对非 Windows Server 使用预身份验证，具体取决于 web 服务器是否支持协商（Kerberos 身份验证）。 安装连接器的服务器上不需要 IIS。
 
-## <a name="integrated-windows-authentication"></a>集成 Windows 身份验证
+## <a name="integrated-windows-authentication"></a>Windows 集成身份验证
 
 ### <a name="when-should-i-use-the-principalsallowedtodelegatetoaccount-method-when-setting-up-kerberos-constrained-delegation-kcd"></a>设置 Kerberos 约束委派（KCD）时，应何时使用 PrincipalsAllowedToDelegateToAccount 方法？
 
@@ -95,7 +95,7 @@ ms.locfileid: "71955466"
 如果连接器服务器和 web 应用程序服务帐户位于同一域中，则可以使用 Active Directory 用户和计算机来配置每个连接器计算机帐户上的委派设置，从而允许它们委托给目标 SPN。
 
 如果连接器服务器和 web 应用程序服务帐户在不同的域中，则使用基于资源的委派。 委托权限在目标 web 服务器和 web 应用程序服务帐户上进行配置。 此约束委派方法相对全新。 此方法是在 Windows Server 2012 中引入的，该方法支持跨域委托，这允许资源（web 服务）所有者控制哪些计算机和服务帐户可以委派给它。 没有可帮助此配置的 UI，因此你需要使用 PowerShell。
-有关详细信息，请参阅白皮书[了解具有应用程序代理的 Kerberos 约束委派](http://aka.ms/kcdpaper)。
+有关详细信息，请参阅白皮书[了解具有应用程序代理的 Kerberos 约束委派](https://aka.ms/kcdpaper)。
 
 ## <a name="pass-through-authentication"></a>直通身份验证
 
@@ -139,19 +139,19 @@ ms.locfileid: "71955466"
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>能否使用 Azure AD 应用程序代理作为 AD FS 代理（如 Web 应用程序代理）？
 
-否。 Azure AD 应用程序代理用于处理 Azure AD，并且不满足充当 AD FS 代理的要求。
+不能。 Azure AD 应用程序代理用于处理 Azure AD，并且不满足充当 AD FS 代理的要求。
 
 ## <a name="websocket"></a>WebSocket
 
 ### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>WebSocket 是否支持 QlikSense 以外的应用程序？
 
-目前，WebSocket 协议支持仍以公共预览版提供，可能不适用于其他应用程序。 一些客户使用 WebSocket 协议与其他应用程序的混合成功。 如果测试这种情况，我们很乐意听到您的结果。 请向我们发送你的反馈 aadapfeedback@microsoft.com。
+目前，WebSocket 协议支持仍以公共预览版提供，可能不适用于其他应用程序。 一些客户使用 WebSocket 协议与其他应用程序的混合成功。 如果测试这种情况，我们很乐意听到您的结果。 请在 aadapfeedback@microsoft.com向我们发送反馈。
 
 ## <a name="link-translation"></a>链接转换
 
 ### <a name="does-using-link-translation-affect-performance"></a>使用链接转换是否会影响性能？
 
-是。 链接转换会影响性能。 应用程序代理服务会扫描应用程序以查找硬编码的链接，并将其替换为其相应的已发布外部 Url，然后将其呈现给用户。 
+是的。 链接转换会影响性能。 应用程序代理服务会扫描应用程序以查找硬编码的链接，并将其替换为其相应的已发布外部 Url，然后将其呈现给用户。 
 
 为了获得最佳性能，我们建议通过配置[自定义域](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain)来使用相同的内部和外部 url。 如果无法使用自定义域，则可以使用移动设备上的 "我的应用安全登录扩展" 或 "Microsoft Edge 浏览器" 改进链接转换性能。 [有关 Azure AD 应用程序代理发布的应用，请参阅重定向硬编码的链接](application-proxy-configure-hard-coded-link-translation.md)。
 

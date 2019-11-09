@@ -1,6 +1,6 @@
 ---
 title: 在 Excel 中使用 Web 服务
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: 通过 Azure 机器学习 Studio （经典），无需编写任何代码，就可以轻松地直接从 Excel 调用 web 服务。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: aa1e457cf401e74ffb8a7a02b5eba5f4c4f0c334
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e32e3ddd99efe1d389b65f7a4134633a40b29a9a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621847"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839719"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>使用 Excel 中的 Azure 机器学习 Studio （经典） Web 服务
 

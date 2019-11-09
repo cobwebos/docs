@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 09/26/2019
-ms.openlocfilehash: 072fafac7294757afb26511af569ea75ace0d20a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: df857fb938ade329a971578ac206f16f1357d7e5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811934"
+ms.locfileid: "73838757"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心创建商业 Marketplace 帐户
 
@@ -137,7 +137,7 @@ ms.locfileid: "73811934"
 
 1. 从 "合作伙伴中心"，**选择 "** **设置**" > **开发人员设置**" >  > **计划**"，然后输入你的工作电子邮件地址。
 2. 完成发布者配置文件页上的详细信息。
-3. 阅读[Microsoft 市场发布者协议](http://go.microsoft.com/fwlink/?LinkID=699560)中的条款和条件，然后选择 "**接受并继续**" 完成注册。
+3. 阅读[Microsoft 市场发布者协议](https://go.microsoft.com/fwlink/?LinkID=699560)中的条款和条件，然后选择 "**接受并继续**" 完成注册。
 
     >[!Important]
     >*您必须有权代表您的公司进行操作，才能接受这些条款。*

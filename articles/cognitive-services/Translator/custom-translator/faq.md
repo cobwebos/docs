@@ -1,7 +1,7 @@
 ---
 title: 常见问题解答 - 自定义翻译
 titleSuffix: Azure Cognitive Services
-description: 提供有关自定义翻译的常见问题的解答。
+description: 本文包含有关 Azure 认知服务自定义转换器的常见问题的解答。
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 3dacfc0d8371ad9e8fa66d8bb1c5fafa59271ce0
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 97d399f4a8ec704fd90eb6c49f0835be7e9e4537
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388166"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836597"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>自定义翻译人员常见问题
 

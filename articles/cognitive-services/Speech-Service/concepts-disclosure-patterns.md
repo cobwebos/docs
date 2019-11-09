@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: angle
-ms.openlocfilehash: fde4a73dd4a95028f23563fb6a8ae36c0142fd39
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dfa05ff114ea0976cb8d57f711eaacc016ea53cc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507315"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836999"
 ---
 # <a name="disclosure-design-patterns"></a>泄露设计模式
 现在，你&#39;已经确定了适合你的综合语音体验的正确[级别的披露](concepts-disclosure-guidelines.md#disclosure-assessment)，&#39;接下来可以探索潜在的设计模式。
@@ -247,11 +247,11 @@ Anthropomorphism 可以采用不同的方式，从代理的实际视觉对象表
 
 ## <a name="reference-docs"></a>参考文档
 
-* [透明度备注](https://aka.ms/neural-tts-transparency-note)
+* [为语音人才公开](https://aka.ms/disclosure-voice-talent)
 * [综合语音技术的责任部署指南](concepts-guidelines-responsible-deployment-synthetic.md)
 * [概述概述](concepts-gating-overview.md)
 * [如何公开](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [透明度备注](https://aka.ms/neural-tts-transparency-note)
+* [为语音人才公开](https://aka.ms/disclosure-voice-talent)

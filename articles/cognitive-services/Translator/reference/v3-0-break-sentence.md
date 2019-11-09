@@ -1,7 +1,7 @@
 ---
 title: 文本翻译 API BreakSentence 方法
 titleSuffix: Azure Cognitive Services
-description: 使用文本翻译 API BreakSentence 方法。
+description: 文本翻译 API BreakSentence 方法标识句子边界在文本段中的位置。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 184677589b3aa777ec556215455f8018e0d71f3f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b4eb083b0f98112274a5d00631af8662ff5c063a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934041"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835885"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>文本翻译 API 3.0：BreakSentence
 
@@ -41,11 +41,11 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
     <td>必需的查询参数。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
   </tr>
   <tr>
-    <td>language</td>
+    <td>语言</td>
     <td>可选查询参数。<br/>语言标记，标识输入文本的语言。 如果未指定代码，则将应用自动语言检测。</td>
   </tr>
   <tr>
-    <td>脚本 (script)</td>
+    <td>脚本</td>
     <td>可选查询参数。<br/>脚本标记，标识输入文本使用的脚本。 如果未指定脚本，则将采用语言的默认脚本。</td>
   </tr>
 </table> 
@@ -54,7 +54,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>身份验证标头</td>
     <td>必需的请求标头。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。</td>
@@ -69,7 +69,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>可选。<br/>客户端生成的 GUID，用于唯一标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
+    <td>*可选*。<br/>客户端生成的 GUID，用于唯一地标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
   </tr>
 </table> 
 
@@ -94,17 +94,17 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 成功的响应是一个 JSON 数组，其中的每个结果对应于输入数组中的一个字符串。 结果对象包括以下属性：
 
-  * `sentLen`：一组整数，表示文本元素中各个句子的长度。 数组的长度是句子的数量，而各个值是每个句子的长度。 
+  * `sentLen`：一个整数数组，表示文本元素中的句子的长度。 数组的长度是句子的数量，而各个值是每个句子的长度。 
 
   * `detectedLanguage`：一个对象，它通过以下属性描述检测到的语言：
 
-     * `language`：已检测语言的代码。
+     * `language`：检测到的语言的代码。
 
      * `score`：一个浮点值，表示结果的置信度。 分数介于 0 和 1 之间，较低的分数表示较低的置信度。
      
     请注意，当请求了语言自动检测时，`detectedLanguage` 属性仅存在于结果对象中。
 
-示例 JSON 响应如下：
+JSON 响应示例：
 
 ```json
 [
@@ -118,11 +118,11 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 ]
 ```
 
-## <a name="response-headers"></a>响应头
+## <a name="response-headers"></a>响应标头
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>X-RequestId</td>
     <td>服务生成的用于标识请求的值。 它用于故障排除目的。</td>
@@ -135,7 +135,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 <table width="100%">
   <th width="20%">状态代码</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>200</td>
     <td>成功。</td>
@@ -146,7 +146,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
   </tr>
   <tr>
     <td>401</td>
-    <td>无法验证该请求。 请确保凭据已指定且有效。</td>
+    <td>无法对请求进行身份验证。 请确保凭据已指定且有效。</td>
   </tr>
   <tr>
     <td>403</td>
@@ -158,11 +158,11 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
   </tr>
   <tr>
     <td>500</td>
-    <td>发生意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
+    <td>发生了意外错误。 如果错误仍然存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>服务器暂不可用。 重试请求。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
+    <td>服务器暂不可用。 重试请求。 如果错误仍然存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
 </table> 
 

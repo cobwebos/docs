@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: 34b54459629560ba80e6a38d10edbab32ea44778
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3f987b9e05bcdcda9afe26a1eb1354e5e2450ac5
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820160"
+ms.locfileid: "73846541"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account-preview"></a>为 Azure Cosmos 帐户配置 Azure 专用链接（预览）
 
@@ -86,7 +86,7 @@ ms.locfileid: "73820160"
 
 ### <a name="fetch-the-private-ip-addresses"></a>提取专用 IP 地址
 
-预配专用终结点后，可以查询 IP 地址。 查看 Azure 门户中的 IP 地址。 选择 "**所有资源**"，搜索之前创建的专用终结点（在此示例中为 "dbPrivateEndpoint3"），并选择 "概述" 选项卡以查看 DNS 设置和 IP 地址：
+预配专用终结点后，可以查询 IP 地址。 若要查看 Azure 门户中的 IP 地址，请选择 "**所有资源**"，搜索之前创建的专用终结点（在此示例中为 "dbPrivateEndpoint3"），并选择 "概述" 选项卡以查看 DNS 设置和 IP 地址：
 
 ![Azure 门户中的专用 IP 地址](./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png)
 
@@ -354,7 +354,7 @@ $deploymentOutput
 
 例如，如果在3个区域中部署 Azure Cosmos 帐户： "美国西部"、"美国中部" 和 "西欧"。 当你为帐户创建专用终结点时，子网中保留了4个专用 Ip。 每个区域一个，计算总计3，另一个用于全局/地区无关的终结点。
 
-稍后，如果向 Azure Cosmos 帐户添加新的区域，例如 "美国东部"。 默认情况下，不能从现有的专用终结点访问新区域。 Azure Cosmos 帐户管理员应刷新专用终结点连接，然后才能访问它。 
+稍后，如果向 Azure Cosmos 帐户添加新的区域，例如 "美国东部"。 默认情况下，不能从现有的专用终结点访问新区域。 Azure Cosmos 帐户管理员应在从新区域访问专用终结点连接之前刷新该连接。 
 
 运行 ` Get-AzPrivateEndpoint -Name <your private endpoint name> -ResourceGroupName <your resource group name>` 命令时，该命令的输出将包含设置为 "重新创建" 的 `actionsRequired` 参数。 此值指示应刷新专用终结点。 接下来，Azure Cosmos 帐户管理员运行 `Set-AzPrivateEndpoint` 命令来触发专用终结点刷新。
 

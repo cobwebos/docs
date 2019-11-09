@@ -1,7 +1,7 @@
 ---
 title: 文本分析 API 中的新增功能
-titlesuffix: Text Analytics - Azure Cognitive Services
-description: 了解文本分析服务的新开发
+titleSuffix: Text Analytics - Azure Cognitive Services
+description: 本文提供了有关 Azure 认知服务文本分析的新版本和功能的信息。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 44ef6fb118be4d1110a693faded6c57bc8b4e2fd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7e4eb8f7f9077ce04ee8138580a836637b89cf8c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499958"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835603"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
@@ -44,7 +44,7 @@ ms.locfileid: "73499958"
 * 为文本中的不同情绪自动添加标签。
 * 在文档和句子级别上情绪分析和输出。 
 
-它支持英语（`en`）、日语（`ja`）、简体中文（`zh-Hans`）、繁体中文（`zh-Hant`）、法语（`fr`）、意大利语（`it`）、西班牙语（`es`）、荷兰语（`nl`）、葡萄牙语（`pt`）和德语（`de`）。以下区域提供和： `Australia East`、`Central Canada`、`Central US`、`East Asia`、`East US`、`East US 2`、`North Europe`、`Southeast Asia`、`South Central US`、`UK South`、`West Europe`和 `West US 2`。
+它支持英语（`en`）、日语（`ja`）、简体中文（`zh-Hans`）、繁体中文（`zh-Hant`）、法语（`fr`）、意大利语（`it`）、西班牙语（`es`）、荷兰语（`nl`）、葡萄牙语（`pt`）和德语（`de`），并在以下区域中提供： `Australia East`、`Central Canada`、`Central US`、`East Asia`、`East US`、`East US 2`、`North Europe`、`Southeast Asia`、`South Central US`、`UK South`、`West Europe`和 `West US 2`。
 
 > [!div class="nextstepaction"]
 > [详细了解情绪分析 v3](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)

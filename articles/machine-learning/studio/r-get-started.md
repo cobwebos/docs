@@ -1,6 +1,6 @@
 ---
 title: R 入门
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: 使用此 R 编程教程开始使用 R 语言和 Azure 机器学习 Studio （经典）来创建预测解决方案。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 1a9fd7f6041961ee0f9f33e9e319d321050709f4
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: f55b6e743ff82d4192cbdd91ba54c92efef432bc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619173"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838745"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Azure 机器学习 Studio 中的 R 编程语言入门（经典）
 

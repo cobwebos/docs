@@ -1,6 +1,6 @@
 ---
 title: 在应用程序中嵌入视频索引器小组件
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: 了解如何在应用程序中嵌入视频索引器小组件。
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 74518fb891c5ecb25e818b9642d31e3daaf828de
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 99d6647ab5e7fa8f35cef883dd00ae9fea866370
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162610"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839123"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>在应用程序中嵌入视频索引器小组件
 
@@ -29,7 +29,7 @@ ms.locfileid: "73162610"
 
 认知见解小组件包括从视频索引过程中提取的所有视觉对象。 认知见解小组件支持以下可选 URL 参数。
 
-|名称|定义|描述|
+|名称|定义|说明|
 |---|---|---|
 |`widgets`|用逗号分隔的字符串|允许您控制要呈现的见解。 <br/> 示例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` 仅呈现人员和品牌 UI 见解。<br/>可用选项：people、keywords、annotations、brands、sentiments、transcript、search。<br/>请注意，在版本2中不支持 `widgets` URL 参数。<br/>|
 |`locale`|短语言代码|控制 insights 语言。 默认值为 `en`。 <br/> 示例：`locale=de`。|
@@ -39,7 +39,7 @@ ms.locfileid: "73162610"
 
 可使用播放机小组件通过自适应比特率流式传输视频。 播放机小组件支持以下可选 URL 参数。
 
-|名称|定义|描述|
+|名称|定义|说明|
 |---|---|---|
 |`t`|开始时间（秒）|使播放机从指定的时间点开始播放。<br/> 示例：`t=60`。|
 |`captions`|语言代码|在加载小组件时提取指定语言的标题，在 "**标题**" 菜单中可用。<br/> 示例：`captions=en-US`。|
@@ -52,9 +52,9 @@ ms.locfileid: "73162610"
 
 您可以使用编辑器小组件来创建新项目并管理视频见解。 编辑器小组件支持以下可选 URL 参数。
 
-|名称|定义|描述|
+|名称|定义|说明|
 |---|---|---|
-|`accessToken`<sup>*</sup>|字符串|提供对仅用于嵌入小组件的帐户的视频的访问。<br> 编辑器小组件需要 `accessToken` 参数。|
+|`accessToken`<sup>*</sup>|String|提供对仅用于嵌入小组件的帐户的视频的访问。<br> 编辑器小组件需要 `accessToken` 参数。|
 |`language`|语言代码|控制播放器语言。 默认值为 `en-US`。<br/>示例：`language=de-DE`。|
 |`locale`|短语言代码|控制 insights 语言。 默认值为 `en`。<br/>示例：`language=de`。|
 
@@ -235,7 +235,7 @@ ms.locfileid: "73162610"
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`
 
-iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<YourTitle>` 即可。 （它自定义 HTML \<title > 值）。
+iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<YourTitle>` 即可。 （它对 HTML \<标题 > 值）进行了自定义。
     
 例如，如果需要为 iframe 窗口提供标题“MyInsights”，则 URL 将如下所示：
 
@@ -259,7 +259,7 @@ iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<You
 
 `https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian`
 
-若要禁用标题，可以将 `captions` 参数值作为 `false` 传递。
+若要禁用标题，可以将 `captions` 参数值作为 `false`传递。
 
 #### <a name="autoplay"></a>功能
 默认情况下，播放机将开始播放视频。 你可以选择不通过将 `&autoplay=false` 传递到前面的嵌入 URL。

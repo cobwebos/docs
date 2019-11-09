@@ -1,7 +1,7 @@
 ---
 title: 迁移 Microsoft Translator Hub 工作区和项目 - 自定义翻译
 titleSuffix: Azure Cognitive Services
-description: 将 Hub 工作区和项目迁移到自定义翻译。
+description: 本文介绍如何将中心工作区和项目迁移到 Azure 认知服务自定义转换器。
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 9c97eaef30a08123605ed4c01810745e312d6aa0
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 7ea7b48e1fc36399a0ca173f9068faf8b88849d5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675502"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836576"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>将 Hub 工作区和项目迁移到自定义翻译
 
@@ -80,7 +80,7 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 
 4. 在下一页上，选择以下两个选项之一：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 仅部署的训练：如果选择此选项，则只会已部署的系统和相关文档。
+    a. 仅部署的训练：如果选择此选项，则只会已部署的系统和相关文档。
 
     b. 所有成功的训练：如果选择此选项，则会迁移所有已成功的训练和相关文档。
 
@@ -132,11 +132,11 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 
 |   | Hub | 自定义翻译 |
 |:-----|:----:|:----:|
-|自定义功能状态   | 常规可用性  | 常规可用性 |
+|自定义功能状态   | 正式版  | 正式版 |
 | 文本 API 版本  | V2    | V3  |
-| SMT 自定义 | 是   | No |
-| NMT 自定义 | No    | 是 |
-| 新的统一语音服务自定义 | No    | 是 |
+| SMT 自定义 | 是   | 否 |
+| NMT 自定义 | 否    | 是 |
+| 新的统一语音服务自定义 | 否    | 是 |
 | 无跟踪 | 是 | 是 |
 
 ## <a name="new-languages"></a>新语言

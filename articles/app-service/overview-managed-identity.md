@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: a5176f74964e0809cea39aa160943cc6f3451237
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: a2f6d7f881e404e9e4dbdb8087cabf25f67d561b
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176525"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847321"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -41,7 +41,7 @@ ms.locfileid: "73176525"
 
 2. 如果使用函数应用，请导航到“平台功能”。 对于其他应用类型，请在左侧导航区域向下滚动到“设置”组。
 
-3. 选择“托管标识”。
+3. 选择 "**标识**"。
 
 4. 在“系统分配的”选项卡中，将“状态”切换为“启用”。 单击“保存”。
 
@@ -168,7 +168,7 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 
 3. 如果使用函数应用，请导航到“平台功能”。 对于其他应用类型，请在左侧导航区域向下滚动到“设置”组。
 
-4. 选择“托管标识”。
+4. 选择 "**标识**"。
 
 5. 在 "**用户分配**" 选项卡中，单击 "**添加**"。
 
@@ -180,7 +180,7 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 
 Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详细了解如何部署到应用服务和 Functions，请参阅[在应用服务中自动执行资源部署](../app-service/deploy-complex-application-predictably.md)和[在 Azure Functions 中自动执行资源部署](../azure-functions/functions-infrastructure-as-code.md)。
 
-通过在资源定义中包含以下块，然后将 `<RESOURCEID>` 替换为所需标识的资源 ID，就可以创建带有标识的任何 `Microsoft.Web/sites` 类型的资源：
+通过在资源定义中包含以下块，然后将 `Microsoft.Web/sites` 替换为所需标识的资源 ID，就可以创建带有标识的任何 `<RESOURCEID>` 类型的资源：
 ```json
 "identity": {
     "type": "UserAssigned",
@@ -193,7 +193,7 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 > [!NOTE] 
 > 一个应用程序可以同时具有系统分配的标识和用户分配的标识。 在这种情况下，`type` 属性将为 `SystemAssigned,UserAssigned`
 
-添加用户分配的标识，这将告知 Azure 为应用程序创建和管理标识。
+添加用户分配的类型会告知 Azure 使用为应用程序指定的用户分配的标识。
 
 例如，Web 应用可能如下所示：
 ```json
@@ -256,19 +256,19 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 
 “MSI_ENDPOINT”是一本地 URL，应用可向其请求令牌。 若要获取资源的令牌，请对此终结点发起 HTTP GET 请求，并包括以下参数：
 
-> |参数名称|In|描述|
+> |参数名称|In|说明|
 > |-----|-----|-----|
-> |resource|Query|应获取其令牌的资源的 AAD 资源 URI。 这可以是[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)或任何其他资源 URI 之一。|
-> |api-version|Query|要使用的令牌 API 版本。 目前唯一支持的版本是 "2017-09-01"。|
+> |resource|查询|应获取其令牌的资源的 AAD 资源 URI。 这可以是[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)或任何其他资源 URI 之一。|
+> |api-version|查询|要使用的令牌 API 版本。 目前唯一支持的版本是 "2017-09-01"。|
 > |secret|标头|MSI_SECRET 环境变量的值。 此标头用于帮助缓解服务器端请求伪造 (SSRF) 攻击。|
-> |clientid|Query|（除非用户分配，否则为可选）要使用的用户分配的标识的 ID。 如果省略，则将使用系统分配的标识。|
+> |clientid|查询|（除非用户分配，否则为可选）要使用的用户分配的标识的 ID。 如果省略，则将使用系统分配的标识。|
 
 > [!IMPORTANT]
 > 如果尝试获取用户分配的标识的令牌，则必须包含 `clientid` 属性。 否则，令牌服务将尝试为系统分配的标识获取令牌，这可能存在也可能不存在。
 
 成功的 200 OK 响应包括具有以下属性的 JSON 正文：
 
-> |属性名称|描述|
+> |属性名称|说明|
 > |-------------|----------|
 > |access_token|请求的访问令牌。 调用 Web 服务可以使用此令牌向接收 Web 服务进行身份验证。|
 > |expires_on|访问令牌的过期时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至过期时间的秒数。 此值用于确定缓存令牌的生存期。|
@@ -390,9 +390,9 @@ $accessToken = $tokenResponse.access_token
 
 ### <a name="using-the-azure-sdk-for-java"></a>使用用于 Java 的 Azure SDK
 
-对于 Java 应用程序和函数，使用托管标识的最简单方法是使用[AZURE SDK For Java](https://github.com/Azure/azure-sdk-for-java)。 本部分演示如何开始在代码中使用此库。
+对于 Java 应用程序和函数，使用托管标识的最简单方法是通过[用于 Java 的 Azure SDK](https://github.com/Azure/azure-sdk-for-java)。 本部分演示如何开始在代码中使用此库。
 
-1. 添加对[AZURE SDK 库](https://mvnrepository.com/artifact/com.microsoft.azure/azure)的引用。 对于 Maven 项目，可以将此代码片段添加到项目 POM 文件的 `dependencies` 部分：
+1. 添加对 [Azure SDK 库](https://mvnrepository.com/artifact/com.microsoft.azure/azure)的引用。 对于 Maven 项目，可以将此代码片段添加到项目的 POM 文件的 `dependencies` 节：
 
     ```xml
     <dependency>

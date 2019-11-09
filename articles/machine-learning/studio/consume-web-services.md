@@ -1,6 +1,6 @@
 ---
 title: 使用 Web 服务
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: 从 Azure 机器学习 Studio （经典）部署机器学习服务后，可以将 RESTFul Web 服务作为实时请求响应服务或批处理执行服务使用。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: b955b274f3e96eab7e6075b0e966117c2871bbf8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1a567e8f910ccf539038a19eef0319f21833f336
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671431"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839694"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>如何使用 Azure 机器学习 Studio （经典） web 服务
 

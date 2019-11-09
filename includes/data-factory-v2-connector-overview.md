@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: f26c18095dc745b9f562e3678b2f5f25276aec12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 08e6d0c3516f16b72dc58e5dfe3f1e7da2eca154
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522307"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73850280"
 ---
 | 类别              | 数据存储                                                   | [Copy 活动](../articles/data-factory/copy-activity-overview.md)（源/接收器） | [映射数据流](../articles/data-factory/concepts-data-flow-overview.md) | [Lookup 活动](../articles/data-factory/control-flow-lookup-activity.md) | [Get Metadata 活动](../articles/data-factory/control-flow-get-metadata-activity.md) | [删除活动](../articles/data-factory/delete-activity.md) |
 | :-------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ | :----------------------------------------------------------- |
@@ -26,7 +26,7 @@ ms.locfileid: "73522307"
 | &nbsp;                | [Azure SQL 数据库](../articles/data-factory/connector-azure-sql-database.md) | ✓/✓                                                           | ✓ <br> <small>不支持 MSI 身份验证</small>                                                            | ✓                                                            | ✓                                                            |                                                              |
 | &nbsp;                | [Azure SQL 数据库托管实例](../articles/data-factory/connector-azure-sql-database-managed-instance.md) | ✓/✓                                                          |                                                              | ✓                                                            | ✓                                                            |                                                              |
 | &nbsp;                | [Azure SQL 数据仓库](../articles/data-factory/connector-azure-sql-data-warehouse.md) | ✓/✓                                                          | ✓                                                            | ✓                                                            | ✓                                                            |                                                              |
-| &nbsp;                | [Azure 搜索索引](../articles/data-factory/connector-azure-search.md) | −/✓                                                          |                                                              |                                                              |                                                              |                                                              |
+| &nbsp;                | [Azure 认知搜索索引](../articles/data-factory/connector-azure-search.md) | −/✓                                                          |                                                              |                                                              |                                                              |                                                              |
 | &nbsp;                | [Azure 表存储](../articles/data-factory/connector-azure-table-storage.md) | ✓/✓                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | **数据库**          | [Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [DB2](../articles/data-factory/connector-db2.md)             | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |

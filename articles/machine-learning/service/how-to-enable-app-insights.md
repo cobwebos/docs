@@ -11,30 +11,31 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 10/11/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: c02c502dc2ab85a6ae1c602c53723e9b5a758250
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 545826a66e518366cd993a1e293c4137bde08c22
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576743"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839080"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>监视和收集 ML web 服务终结点中的数据
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何在 Azure Kubernetes Service （AKS）或 Azure 容器实例（ACI）中通过启用 Azure 应用程序 Insights 来收集和监视部署到 web 服务终结点的模型。 除了收集终结点的输入数据和响应外，还可以监视：
-* 请求速率、响应时间和失败率。
-* 依赖项率、响应时间和失败率。
-* 异常。
+
+* 请求速率、响应时间和失败率
+* 依赖项速率、响应时间和失败率
+* 异常
 
 [详细了解 Azure 应用程序 Insights](../../azure-monitor/app/app-insights-overview.md)。 
 
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+* 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)
 
-* 已安装 Azure 机器学习工作区、一个包含脚本的本地目录以及用于 Python 的 Azure 机器学习 SDK。 若要了解如何满足这些先决条件，请参阅[如何配置开发环境](how-to-configure-environment.md)。
-* 要部署到 Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 的经过训练的机器学习模型。 如果没有模型，请参阅[训练图像分类模型](tutorial-train-models-with-aml.md)教程。
+* 已安装 Azure 机器学习工作区、一个包含脚本的本地目录以及用于 Python 的 Azure 机器学习 SDK。 若要了解如何获取这些必备组件，请参阅[如何配置开发环境](how-to-configure-environment.md)
+* 要部署到 Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 的经过训练的机器学习模型。 如果没有，请参阅[训练图像分类模型](tutorial-train-models-with-aml.md)教程
 
 ## <a name="web-service-input-and-response-data"></a>Web 服务输入和响应数据
 
@@ -44,65 +45,68 @@ ms.locfileid: "73576743"
 
 可以在 Azure 门户中启用和禁用 Azure 应用程序见解。 
 
-1. 在 [Azure 门户](https://portal.azure.com)中打开你的工作区。
+1. 在[Azure 门户](https://portal.azure.com)中，打开工作区
 
-1. 在 "**部署**" 选项卡上，选择要在其中启用 Azure 应用程序 Insights 的服务。
+1. 在 "**部署**" 选项卡上，选择要在其中启用 Azure 应用程序 Insights 的服务
 
    [![“部署”选项卡上的服务列表](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
-3. 选择“编辑”。
+3. 选择 "**编辑**"
 
    [![编辑按钮](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
-4. 在“高级设置”中，选中“启用 AppInsights 诊断”复选框。
+4. 在 "**高级设置**" 中，选中 "**启用 AppInsights 诊断**" 复选框
 
    [![已选中启用诊断的复选框](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
-1. 选择屏幕底部的“更新”以应用更改。 
+1. 选择屏幕底部的 "**更新**" 以应用更改
 
 ### <a name="disable"></a>禁用
-1. 在 [Azure 门户](https://portal.azure.com)中打开你的工作区。
-1. 选择 "**部署**"，选择服务，然后选择 "**编辑**"。
+
+1. 在[Azure 门户](https://portal.azure.com)中，打开工作区
+1. 选择 "**部署**"，选择服务，然后选择 "**编辑**"
 
    [![使用编辑按钮](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
-1. 在“高级设置”中，清除“启用 AppInsights 诊断”复选框。 
+1. 在 "**高级设置**" 中，清除 "**启用 AppInsights 诊断**" 复选框
 
    [![已清除启用诊断的复选框](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
 
-1. 选择屏幕底部的“更新”以应用更改。 
+1. 选择屏幕底部的 "**更新**" 以应用更改
  
 ## <a name="use-python-sdk-to-configure"></a>使用 Python SDK 进行配置 
 
 ### <a name="update-a-deployed-service"></a>更新已部署的服务
-1. 在工作区中标识该服务。 `ws` 的值是工作区的名称。
+
+1. 在工作区中标识该服务。 `ws` 的值是你的工作区的名称
 
     ```python
     from azureml.core.webservice import Webservice
     aks_service= Webservice(ws, "my-service-name")
     ```
-2. 更新服务并启用 Azure 应用程序 Insights。 
+2. 更新服务并启用 Azure 应用程序 Insights
 
     ```python
     aks_service.update(enable_app_insights=True)
     ```
 
 ### <a name="log-custom-traces-in-your-service"></a>在服务中记录自定义跟踪
+
 如果要记录自定义跟踪，请遵循[部署方式和部署位置](how-to-deploy-and-where.md)文档中适用于 AKS 或 ACI 的标准部署过程。 然后，使用以下步骤：
 
-1. 通过添加 print 语句更新评分文件。
+1. 通过添加 print 语句更新计分文件
     
     ```python
     print ("model initialized" + time.strftime("%H:%M:%S"))
     ```
 
-2. 更新服务配置。
+2. 更新服务配置
     
     ```python
     config = Webservice.deploy_configuration(enable_app_insights=True)
     ```
 
-3. 生成一个映像并将它部署到 [AKS](how-to-deploy-to-aks.md) 或 [ACI](how-to-deploy-to-aci.md) 上。  
+3. 构建映像并将其部署到[AKS](how-to-deploy-to-aks.md)或[ACI](how-to-deploy-to-aci.md)上
 
 ### <a name="disable-tracking-in-python"></a>在 Python 中禁用跟踪
 
@@ -116,22 +120,23 @@ ms.locfileid: "73576743"
 ## <a name="evaluate-data"></a>评估数据
 你的服务数据存储在与 Azure 机器学习相同的资源组中的 Azure 应用程序 Insights 帐户中。
 查看数据：
-1. 在[Azure 机器学习 studio](https://ml.azure.com)中转到机器学习服务工作区，然后单击 Application Insights 链接。
+
+1. 在[Azure 机器学习 studio](https://ml.azure.com)中转到机器学习服务工作区，然后单击 Application Insights 链接
 
     [![AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 
-1. 选择“概述”选项卡可查看服务的一组基本指标。
+1. 选择 "**概览**" 选项卡以查看服务的一组基本指标
 
    [![概述](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
 1. 若要查看 web 服务输入和响应负载，请选择 "**分析**"
-1. 在 "架构" 部分中，选择 "**跟踪**" 并筛选出消息 `"model_data_collection"`的跟踪。 在自定义维度中，可以看到输入、预测和其他相关详细信息。
+1. 在 "架构" 部分中，选择 "**跟踪**" 并筛选出消息 `"model_data_collection"`的跟踪。 在自定义维度中，可以看到输入、预测和其他相关详细信息
 
    [![模型数据](media/how-to-enable-app-insights/model-data-trace.png)](./media/how-to-enable-app-insights/model-data-trace.png#lightbox)
 
 
-3. 若要深入查看自定义跟踪，请选择“分析”。
-4. 在架构部分，选择“跟踪”。 然后选择“运行”以运行查询。 数据应以表格格式显示，并且应映射到评分文件中的自定义调用。 
+3. 若要查看自定义跟踪，请选择 "**分析**"
+4. 在架构部分，选择“跟踪”。 然后选择“运行”以运行查询。 数据应以表格格式显示，并应映射到计分文件中的自定义调用
 
    [![自定义追踪](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 
@@ -152,5 +157,5 @@ ms.locfileid: "73576743"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[如何将模型部署到 Azure Kubernetes Service 群集](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-kubernetes-service)，或者[如何将模型部署到 azure 容器实例](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-container-instance)，以将模型部署到 web 服务终结点，并启用 Azure 应用程序 Insights 来利用数据收集和终结点监视.
-* 请参阅[MLOps： Azure 机器学习的管理、部署和监视模型](https://docs.microsoft.com/azure/machine-learning/service/concept-model-management-and-deployment)，详细了解如何利用生产中的模型收集的数据。 此类数据可帮助不断改进机器学习过程。 
+* 了解[如何将模型部署到 Azure Kubernetes Service 群集](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-kubernetes-service)，或者[如何将模型部署到 azure 容器实例](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-container-instance)，以将模型部署到 web 服务终结点，并启用 Azure 应用程序 Insights 来利用数据收集和终结点监视
+* 请参阅[MLOps： Azure 机器学习的管理、部署和监视模型](https://docs.microsoft.com/azure/machine-learning/service/concept-model-management-and-deployment)，详细了解如何利用生产中的模型收集的数据。 此类数据可帮助不断改进机器学习过程

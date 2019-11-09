@@ -1,6 +1,6 @@
 ---
 title: 重新训练经典 web 服务
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: 了解如何重新训练模型并更新经典 web 服务，以使用 Azure 机器学习 Studio （经典）中的最新训练模型。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: peterclu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: 17d15de3df73592c3ce410535235559c8c6fb584
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: eac7674ae4a88621a803c70bd55a88e65b2cb7e9
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73670519"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838690"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>重新训练和部署经典 Studio （经典） web 服务
 

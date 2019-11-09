@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8936bc21af951cbabb90188b6a31d610caf80395
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: aaf59de2425e0725958847477f1043a5b7fac68a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241779"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839349"
 ---
 # <a name="onboarding-and-installing"></a>载入和安装
 
@@ -51,7 +51,7 @@ Microsoft 安全代码分析入门的先决条件：
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>安装 Microsoft 安全代码分析扩展
 
-1. 将扩展与 Azure DevOps 组织共享后，请参阅 Azure DevOps 组织页。 此类页的示例 URL 是 http://dev.azure.com/contoso 。
+1. 将扩展与 Azure DevOps 组织共享后，请参阅 Azure DevOps 组织页。 `https://dev.azure.com/contoso`此类页面的示例 URL。
 1. 选择名称旁边的右上角的 "购物袋" 图标，然后选择 "**管理扩展**"。
 1. 选择 Microsoft 安全代码分析扩展，并打开 Azure DevOps UI 向导来开始安装。
 1. 从下拉列表中，选择要在其上安装扩展的 Azure DevOps 组织。
@@ -65,12 +65,12 @@ Microsoft 安全代码分析入门的先决条件：
 ## <a name="adding-specific-build-tasks-to-your-azure-devops-pipeline"></a>将特定生成任务添加到 Azure DevOps 管道
 
 1. 在 Azure DevOps 组织中打开团队项目。
-1. 选择**管道** > **生成**。
+1. 选择 > **生成**的**管道**。
 1. 选择要向其中添加扩展生成任务的管道：
    - 新管道：选择 "**新建**"，然后按照详细介绍的步骤创建新管道。
    - 编辑管道：选择现有管道，然后选择 "**编辑**" 开始编辑管道。
-1. 选择 **+** 并打开 "**添加任务**" 窗格。
-1. 从列表或使用 "搜索" 框中，找到要添加的生成任务。 选择 **添加** 。
+1. 选择 **+** 并中转到 "**添加任务**" 窗格。
+1. 从列表或使用 "搜索" 框中，找到要添加的生成任务。 选择“设置”（应用程序对象和服务主体对象）。
 1. 指定任务所需的参数。
 1. 将新的生成排队。
    >[!NOTE]

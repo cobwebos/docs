@@ -1,5 +1,6 @@
 ---
 title: 执行 Python 脚本
+titleSuffix: ML Studio (classic) - Azure
 description: 了解如何使用 "执行 Python 脚本" 模块在机器学习 Studio （经典）试验和 web 服务中使用 Python 代码。
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: dea8fd7971f0572350306ea11ee1f9d897438d11
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6079f904002f00a39d3ee9d70dedd9d261e2825f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684880"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837642"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习 Studio （经典）中执行 Python 机器学习脚本
 
@@ -132,7 +133,7 @@ block_blob_service = BlockBlobService(account_name='account_name', account_key='
 1. 获取轴，并将所有图形生成到其中。
 1. 将图形保存到 PNG 文件。
 
-使用 Pandas 中的 scatter_matrix 函数创建散点图矩阵的下图演示了此过程。
+下图中对此过程进行了说明，这些图像使用 Pandas 中的 scatter_matrix 函数创建散点图矩阵。
 
 ![用于将 MatplotLib 图形保存到图像的代码](./media/execute-python-scripts/figure-v1-8.png)
 

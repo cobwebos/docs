@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f0d732917a6587307e6d60581e0189687cc7e9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dd50ca8b81b933a61a67ac36db6a656791a8121f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164765"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832853"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Windows 虚拟机
 
@@ -24,7 +24,7 @@ ms.locfileid: "73164765"
 
 |     |
 | --- |
-| Azure Windows Vm Azure AD 登录是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Azure Windows Vm Azure AD 登录是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
 
 使用 Azure AD 身份验证登录到 Azure 中的 Windows Vm 有很多好处，包括：
@@ -117,7 +117,7 @@ az vm create \
     --admin-password yourpassword
 ```
 
-创建 VM 和支持的资源需要几分钟时间。
+创建 VM 和支持资源需要几分钟时间。
 
 最后，安装 Azure AD 登录 VM 扩展，以便为 Windows VM 启用 Azure AD 登录。 VM 扩展是小型应用程序，可在 Azure 虚拟机上提供部署后配置和自动化任务。 使用[az vm extension](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) set，在 myResourceGroup 资源组中名为 MYVM 的 vm 上安装 AADLoginForWindows 扩展：
 
@@ -166,7 +166,7 @@ az vm extension set \
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>使用 Azure Cloud Shell 体验
 
-下面的示例使用[az role 赋值 create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create)为当前 Azure 用户将虚拟机管理员登录角色分配给 VM。 使用[az account show](https://docs.microsoft.com/cli/azure/account#az-account-show)获取活动 Azure 帐户的用户名，并使用[az VM show](https://docs.microsoft.com/cli/azure/vm#az-vm-show)将作用域设置为上一步中创建的 VM。 也可在资源组或订阅级别设置 scope，这种情况下会应用正常的 RBAC 继承权限。 有关详细信息，请参阅[基于角色的访问控制](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control)。
+下面的示例使用[az role 赋值 create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create)为当前 Azure 用户将虚拟机管理员登录角色分配给 VM。 使用[az account show](https://docs.microsoft.com/cli/azure/account#az-account-show)获取活动 Azure 帐户的用户名，并使用[az VM show](https://docs.microsoft.com/cli/azure/vm#az-vm-show)将作用域设置为上一步中创建的 VM。 也可在资源组或订阅级别设置 scope，这种情况下会应用正常的 RBAC 继承权限。 有关详细信息，请参阅[基于角色的访问控制](../../virtual-machines/linux/login-using-aad.md)。
 
 ```AzureCLI
 username=$(az account show --query user.name --output tsv)
@@ -217,23 +217,23 @@ az role assignment create \
    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.ActiveDirectory.AADLoginForWindows\0.3.1.0. 
 
    > [!NOTE]
-   > 如果在第一次失败后重新启动扩展，则具有部署错误的日志将保存为 CommandExecution_YYYYMMDDHHMMSSSSS。 
+   > 如果在第一次失败后重新启动扩展，则包含部署错误的日志将保存为 CommandExecution_YYYYMMDDHHMMSSSSS .log。 
 
 1. 在 VM 上打开命令提示符，并针对 Azure 主机上运行的实例元数据服务（IMDS）终结点验证这些查询：
 
    | 要运行的命令 | 预期输出 |
    | --- | --- |
-   | 卷曲的元数据： true "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | 更正有关 Azure VM 的信息 |
-   | 卷曲的元数据： true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | 与 Azure 订阅关联的有效租户 ID |
-   | 卷曲的元数据： true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | 为分配到此 VM 的托管标识 Azure Active Directory 颁发的有效访问令牌 |
+   | 卷曲的元数据： true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | 更正有关 Azure VM 的信息 |
+   | 卷曲的元数据： true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | 与 Azure 订阅关联的有效租户 ID |
+   | 卷曲的元数据： true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | 为分配到此 VM 的托管标识 Azure Active Directory 颁发的有效访问令牌 |
 
    > [!NOTE]
    > 使用[http://calebb.net/](http://calebb.net/)之类的工具可以对访问令牌进行解码。 验证访问令牌中的 "appid" 是否与分配给 VM 的托管标识匹配。
 
 1. 请确保使用命令行从 VM 访问所需的终结点：
    
-   - 卷 https://login.microsoftonline.com/ -D –
-   - 卷 https://login.microsoftonline.com/`<TenantID>` /-D –
+   - 卷 https://login.microsoftonline.com/-D –
+   - 卷 https://login.microsoftonline.com/`<TenantID>`/-D –
 
    > [!NOTE]
    > 将 `<TenantID>` 替换为与 Azure 订阅关联的 Azure AD 租户 ID。
@@ -267,8 +267,8 @@ az role assignment create \
 
 1. 使用命令行验证是否可以从 VM 访问所需的终结点：
 
-   - 卷 https://login.microsoftonline.com/ -D –
-   - 卷 https://login.microsoftonline.com/`<TenantID>` /-D –
+   - 卷 https://login.microsoftonline.com/-D –
+   - 卷 https://login.microsoftonline.com/`<TenantID>`/-D –
    
    > [!NOTE]
    > 将 `<TenantID>` 替换为与 Azure 订阅关联的 Azure AD 租户 ID。 如果需要查找租户 ID，你可以将鼠标悬停在帐户名称上以获取目录/租户 ID，或在 Azure 门户中选择 Azure Active Directory > 属性 > 目录 ID。
@@ -312,7 +312,7 @@ az role assignment create \
 
 ![你的帐户已配置为阻止你使用此设备。](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
-验证你为 VM[配置了 RBAC 策略](https://docs.microsoft.com/azure/virtual-machines/linux/login-using-aad#configure-rbac-policy-for-the-virtual-machine)，该策略向用户授予 "虚拟机管理员登录名" 或 "虚拟机用户登录" 角色：
+验证你为 VM[配置了 RBAC 策略](../../virtual-machines/linux/login-using-aad.md)，该策略向用户授予 "虚拟机管理员登录名" 或 "虚拟机用户登录" 角色：
  
 #### <a name="unauthorized-client"></a>未经授权的客户端
 

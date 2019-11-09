@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: ccc418cd3af14c0468ab8d669ad2e2e11a0b6d57
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: fdf9b60e38ad37334fe6183bb1a9c60cce9f85e1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772255"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832040"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS 区域和记录概述
 
@@ -30,7 +30,7 @@ ms.locfileid: "70772255"
 
 域名系统是域的层次结构。 该层次结构从名为“ **.** ”的“根”域开始。  根域的下面是顶级域，例如“com”、“net”、“org”、“uk”或“jp”。  再往下是二级域，例如“org.uk”或“co.jp”。 DNS 层次结构中的域遍布全球，由世界各地的 DNS 名称服务器托管。
 
-域名注册机构是一个组织，可以通过该组织购买域名，例如“contoso.com”。  购买域名后，你可以通过该名称控制 DNS 层次结构，例如，允许你将名称 www.contoso.com 定向到公司网站。 注册机构会代表用户在域自身的名称服务器中托管域，或者允许用户指定可选名称服务器。
+域名注册机构是允许您购买域名的组织，如 `contoso.com`。  购买域名后，你可以通过该名称控制 DNS 层次结构，例如，允许你将名称 `www.contoso.com` 定向到你的公司网站。 注册机构会代表用户在域自身的名称服务器中托管域，或者允许用户指定可选名称服务器。
 
 Azure DNS 提供全球分布的高可用性名称服务器基础结构，可将其用于托管域。 通过在 Azure DNS 中托管域，用户可以使用与其他 Azure 服务相同的凭据、API、工具、计费和支持来管理 DNS 记录。
 
@@ -113,13 +113,13 @@ DNS 记录中的多个字符串不应与 TXT 记录集的多个 TXT 记录混淆
 
 ## <a name="tags-and-metadata"></a>标记和元数据
 
-### <a name="tags"></a>Tags
+### <a name="tags"></a>标记
 
 标记是名称/值列表，Azure 资源管理器利用它们来标记资源。  Azure 资源管理器使用标记来启用 Azure 帐单的筛选视图，并支持设置需要标记的策略。 有关标记的详细信息，请参阅 [使用标记来组织 Azure 资源](../azure-resource-manager/resource-group-using-tags.md)。
 
 Azure DNS 支持使用 DNS 区域资源上的 Azure 资源管理器标记。  它不支持 DNS 记录集的标记，不过作为替代方法，在 DNS 记录集上支持“元数据”，如下所述。
 
-### <a name="metadata"></a>元数据
+### <a name="metadata"></a>Metadata
 
 作为记录集标记的替代方法，Azure DNS 支持使用“元数据”批注记录集。  与标记相类似，通过元数据可将名称/值对与每个记录集相关联。  这非常有用，例如可用于记录每个记录集的用途。  与标记不同的是，元数据不能用于提供 Azure 帐单的筛选视图，且不能在 Azure 资源管理器策略中指定。
 
@@ -133,7 +133,7 @@ Azure DNS 使用 Etag 来安全地处理对同一资源的并发更改。 Etag �
 
 Etag 是在 Azure DNS REST API 级别使用 HTTP 标头指定的。  下表给出了它们的行为：
 
-| Header | 行为 |
+| 标头 | 行为 |
 | --- | --- |
 | 无 |PUT 始终成功（没有 Etag 检查） |
 | If-match \<etag> |只有当资源存在并且 Etag 匹配时，PUT 才会成功 |

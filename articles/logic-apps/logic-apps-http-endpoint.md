@@ -9,12 +9,12 @@ ms.author: klam
 ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: 41173e088b000530030b24400640f8003f330db6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 27a3bf036cce27a5f215068ff71928cb7e181452
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581113"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833911"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP 终结点调用、触发或嵌套逻辑应用
 
@@ -143,7 +143,7 @@ ms.locfileid: "73581113"
 
 ## <a name="accept-parameters-in-endpoint-url"></a>接受终结点 URL 中的参数
 
-如果希望终结点 URL 接受参数，请在触发器中指定相对路径。 还必须显式设置 HTTP 请求所需[的方法](#set-method)。
+如果希望终结点 URL 接受参数，请在触发器中指定相对路径。 还需要显式设置 HTTP 请求所需[的方法](#set-method)。
 
 1. 在请求触发器中，打开 "**添加新参数**" 列表，然后选择 "**相对路径**"，将此属性添加到触发器。
 
@@ -178,7 +178,7 @@ ms.locfileid: "73581113"
     现在，HTTP 终结点 URL 包含相对路径，例如：
 
     ```http
-    https://prod-25.westus.logic.azure.com/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke/address/postalCode?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}
+    https://prod-25.westus.logic.azure.com/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke/address/{postalCode}?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}
     ```
 
 1. 要测试 HTTP 终结点，请将更新的 URL 复制并粘贴到另一个浏览器窗口（但要将 `{postalCode}` 替换为 `123456`），并按 Enter。

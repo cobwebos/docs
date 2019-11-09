@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 视频索引器自定义品牌模型
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: 本文介绍如何使用 Azure 视频索引器自定义品牌模型。
 services: media-services
 author: anikaz
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 8d0806bc0262cd45a49e4f97ea629683ac239aa8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4289c592644d7570ff0dd9ce6aed0cd77f51f25e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799640"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838338"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>使用视频索引器 API 自定义品牌模型
 
@@ -35,13 +35,13 @@ ms.locfileid: "65799640"
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
 
-[请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand)。
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型 |**必需**|**说明**|
+|**名称**|**类型**|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|location|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
 |accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
 
@@ -63,7 +63,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 **referenceUrl** 值可以是品牌的任何引用网站，例如其维基百科页的链接。
 
-**tags** 值是品牌的标记的列表。 这会显示在品牌在视频索引器网站的“类别”字段中。  例如，品牌“Azure”可以标记或归类为“云”。
+**tags** 值是品牌的标记的列表。 这会显示在品牌在视频索引器网站的“类别”字段中。 例如，品牌“Azure”可以标记或归类为“云”。
 
 ### <a name="response"></a>响应
 
@@ -97,13 +97,13 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
 ```
 
-[请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?)。
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型 |**必需**|**说明**|
+|**名称**|**类型**|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|location|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
 |id|integer|是|品牌 ID（在创建品牌时生成）|
 |accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
@@ -126,13 +126,13 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
 
-[请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?)。
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型 |**必需**|**说明**|
+|**名称**|**类型**|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|location|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
 |id|integer|是|品牌 ID（在创建品牌时生成）|
 |accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
@@ -176,13 +176,13 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
 ```
 
-[请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?)。
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型 |**必需**|**说明**|
+|**名称**|**类型**|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|location|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
 |id|integer|是|品牌 ID（在创建品牌时生成）|
 |accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
@@ -205,7 +205,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 ```
 
 > [!NOTE]
-> 在此示例中，在“创建品牌”部分的示例请求正文中创建的品牌在此处使用新的标记和新的说明进行更新。  **enabled** 也已更改为 false，目的是将它置于 *Exclude* 列表中。
+> 在此示例中，在“创建品牌”部分的示例请求正文中创建的品牌在此处使用新的标记和新的说明进行更新。 **enabled** 也已更改为 false，目的是将它置于 *Exclude* 列表中。
 
 ### <a name="response"></a>响应
 
@@ -239,13 +239,13 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
 
-[请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?)。
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型 |**必需**|**说明**|
+|**名称**|**类型**|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|location|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
 |accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
 
@@ -299,13 +299,13 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
 
-[请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands)。
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型 |**必需**|**说明**|
+|**名称**|**类型**|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|location|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
 |accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
 
@@ -336,13 +336,13 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/BrandsModelSettings?accessToken={accessToken}
 ```
 
-[请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?)。
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型 |**必需**|**说明**|
+|**名称**|**类型**|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|location|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
 |accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
 

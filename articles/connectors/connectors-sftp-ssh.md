@@ -10,12 +10,12 @@ ms.reviewer: divswa, klam, LADocs
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: a48ba0d2d691314a1ca7c91ac7ae27b62fbb379b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f52fc91d218e1a5448f6e6e7465f6416a04fd67d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825242"
+ms.locfileid: "73837139"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
@@ -49,7 +49,9 @@ ms.locfileid: "73825242"
 
 * 使用 [SSH.NET 库](https://github.com/sshnet/SSH.NET)，该库是支持 .NET 的开源安全外壳 (SSH) 库。
 
-* 默认情况下，SFTP SSH 操作可以读取或写入*大小为 1 GB 或更小*，但每次只显示*15 MB*的文件。 若要处理大于 15 MB 的文件，SFTP SSH 操作可以使用[消息块](../logic-apps/logic-apps-handle-large-messages.md)。 若要上传大型文件，还需要读取和写入权限。 但是，复制文件操作仅支持 15 MB 的文件，因为该操作不支持消息块。 SFTP SSH 触发器不支持分块。
+* 默认情况下，SFTP SSH 操作可以读取或写入*大小为 1 GB 或更小*，但每次只显示*15 MB*的文件。
+
+  若要处理大于 15 MB 的文件，SFTP SSH 操作可以使用[消息块](../logic-apps/logic-apps-handle-large-messages.md)。 但是，复制文件操作仅支持 15 MB 的文件，因为该操作不支持消息块。 SFTP SSH 触发器不支持分块。 若要上传大型文件，需要对 SFTP 服务器上的根文件夹具有读取和写入权限。
 
 * 提供“创建文件夹”操作，用于在 SFTP 服务器上的指定路径中创建文件夹。
 
@@ -61,7 +63,7 @@ ms.locfileid: "73825242"
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* SFTP 服务器地址和帐户凭据，可让逻辑应用访问 SFTP 帐户。 还需要有权访问 SSH 私钥和 SSH 私钥密码。 若要在上传大文件时使用分块，需要读写权限。
+* SFTP 服务器地址和帐户凭据，可让逻辑应用访问 SFTP 帐户。 还需要有权访问 SSH 私钥和 SSH 私钥密码。 若要在上载大型文件时使用分块，你需要对 SFTP 服务器上的根文件夹具有读取和写入权限。 否则，会收到 "401 未授权" 错误。
 
   > [!IMPORTANT]
   >

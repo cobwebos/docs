@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 10/15/2019
-ms.openlocfilehash: 31c3cd944651b9ba4ca4fcaa275e5b0ccedd947c
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 11/06/2019
+ms.openlocfilehash: ded95800c482d43fcaf27993869f1e71eee68f47
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72559432"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73831821"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>通过用于 Python 的 Azure 机器学习 SDK 来计划机器学习管道
 
 本文介绍如何以编程方式安排要在 Azure 上运行的管道。 你可以选择基于运行时间或文件系统更改创建计划。 基于时间的计划可用于处理日常任务，如监视数据偏移。 基于更改的计划可用于对异常或不可预测的更改（例如上传的新数据或正在编辑的旧数据）做出反应。 在了解如何创建计划后，你将了解如何检索和停用它们。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请创建一个[免费帐户](https://aka.ms/AMLFree)。
 
@@ -54,11 +54,11 @@ pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 
 ## <a name="create-a-schedule"></a>创建计划
 
-若要定期运行管道，你将创建一个计划。 @No__t_0 将管道、试验和触发器关联起来。 触发器可以是描述等待的时间间隔的 `ScheduleRecurrence`，或用于指定监视更改的目录的数据存储路径。 在任一情况下，都需要管道标识符和要在其中创建计划的实验的名称。
+若要定期运行管道，你将创建一个计划。 `Schedule` 将管道、试验和触发器关联起来。 触发器可以是描述等待的时间间隔的`ScheduleRecurrence`，或用于指定监视更改的目录的数据存储路径。 在任一情况下，都需要管道标识符和要在其中创建计划的实验的名称。
 
 ### <a name="create-a-time-based-schedule"></a>创建基于时间的计划
 
-@No__t_0 构造函数具有必需的 `frequency` 参数，该参数必须为以下字符串之一： "Minute"、"Hour"、"Day"、"Week" 或 "Month"。 它还需要一个整数 `interval` 参数，该参数指定在计划开始之前应经过的 `frequency` 单位数。 可选参数使你可以更具体地了解开始时间，如[按 SDK 文档](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py)中所述。
+`ScheduleRecurrence` 构造函数具有必需的 `frequency` 参数，该参数必须为以下字符串之一： "Minute"、"Hour"、"Day"、"Week" 或 "Month"。 它还需要一个整数 `interval` 参数，该参数指定在计划开始之前应经过的 `frequency` 单位数。 可选参数使你可以更具体地了解开始时间，如[按 SDK 文档](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py)中所述。
 
 创建一个每15分钟开始一次运行的 `Schedule`：
 
@@ -77,7 +77,7 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 若要创建文件反应性的 `Schedule`，必须在 "[计划](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-)" 的调用中设置 `datastore` 参数。 若要监视文件夹，请设置 `path_on_datastore` 参数。
 
-@No__t_0 参数允许你指定检查数据存储更改的频率（以分钟为单位）。
+`polling_interval` 参数允许你指定检查数据存储更改的频率（以分钟为单位）。
 
 如果管道是使用[数据路径](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py) [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py)构造的，则可以通过设置 `data_path_parameter_name` 参数将该变量设置为更改后的文件的名称。
 
@@ -94,9 +94,9 @@ reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="
 
 ## <a name="view-your-scheduled-pipelines"></a>查看预定管道
 
-在 Web 浏览器中，导航到机器学习服务工作区。 从导航面板的 "**资产**" 部分，选择 "**管道**"。 此链接会将你带到工作区中发布的管道的列表。
+在 Web 浏览器中，导航到 Azure 机器学习。 从导航面板的 "**终结点**" 部分中，选择 "**管道终结点**"。 这会转到工作区中发布的管道的列表。
 
-![工作区的管道页](media/how-to-schedule-a-pipeline/pipelines-list.png)
+![AML 的管道页](media/how-to-schedule-pipelines/scheduled-pipelines.png)
 
 在此页中，可以查看工作区中所有管道的摘要信息：名称、说明、状态等。 单击管道中的 "钻取"。 在生成的页面上，提供有关管道的更多详细信息，并且可以向下钻取到各个运行中。
 

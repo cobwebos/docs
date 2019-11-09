@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/07/2019
 ms.author: diberry
-ms.openlocfilehash: 0788df1c05d70c01d4de7f7a6ba62a476252f75a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2e32d0f4906dea69d6eab27faca4a2e41106ed73
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498919"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836836"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
@@ -31,11 +31,13 @@ ms.locfileid: "73498919"
     * 能够导入和导出应用程序（[LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)）格式。 这铺平了道路了一种有效的 CI/CD 处理方式。 
 * 语言扩展
     * 公共预览版中的[阿拉伯语和印地语](luis-language-support.md)。
-* 称之为 fakes.prebuild 模型
+* 预生成的模型
     * [预](luis-reference-prebuilt-domains.md)生成的域现已正式发布（GA）
     * V3 中不支持日语[预建实体](luis-reference-prebuilt-entities.md#japanese-entity-support)-年龄、货币、数字、百分比。
     * 意大利语[预生成实体](luis-reference-prebuilt-entities.md#italian-entity-support)-age、currency、dimension、number、百分比分辨率已从 V2 更改。
-* 增强[preview.luis.ai 门户](https://preview.luis.ai)中的用户体验-改进标记体验，以启用生成和调试复杂模型。
+* 增强[preview.luis.ai 门户](https://preview.luis.ai)中的用户体验-改进标记体验，以启用生成和调试复杂模型。 尝试预览门户教程：
+    * [仅限意向](tutorial-intents-only.md)
+    * [可以分解机器学习的实体](tutorial-machine-learned-entity.md) 
 * 高级语言理解功能-采用更少的精力[构建复杂的语言模型](luis-concept-entity-types.md)。 
 * 在模型级别定义机器学习功能，并允许将模型用作其他模型的信号，如使用实体作为功能和其他实体。
 * 新的扩展[限制](luis-boundaries.md)-词组列表和短语的最大上限，新模型作为功能限制

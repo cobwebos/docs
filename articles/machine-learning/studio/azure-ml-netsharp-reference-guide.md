@@ -1,6 +1,6 @@
 ---
 title: 'Net # 自定义神经网络'
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Net# 神经网络规范语言的语法指南。 了解如何在 Azure 机器学习 Studio （经典）中创建自定义神经网络模型。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 0c413bbc3c3b0bd4b1a6e6d6ff40dc1061bbc834
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7cef92964a4b62c9ed15ddd19778494d6c3be98a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684835"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839742"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>适用于 Azure 机器学习 Studio 的 Net # 神经网络规范语言指南（经典）
 
@@ -24,7 +24,7 @@ Net# 是由 Microsoft 开发的用于定义复杂神经网络体系结构（例�
 在下列上下文中，可以使用 Net# 体系结构规范：
 
 + Microsoft Azure 机器学习工作室（经典）中的所有神经网络模块：[多类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)、[两类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)和[神经网络回归](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ Microsoft ML Server 中的神经网络函数： [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet)和[rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)用于 R 语言， [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)用于 Python。
++ Microsoft ML Server 中的神经网络函数： [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet)和[RxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)（用于 R 语言）以及用于 Python 的[rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) 。
 
 
 本文介绍了使用 Net# 开发自定义神经网络的基本概念和所需语法：
@@ -56,7 +56,7 @@ Net# 支持各种类型的连接捆绑，可自定义映射到隐藏层和映射
 
 ## <a name="supported-customizations"></a>支持的自定义项
 
-可以使用 Net # 广泛地自定义在经典版本的 Azure 机器学习 Studio 中创建的神经网络模型的体系结构。 可以：
+可以使用 Net # 广泛地自定义在经典版本的 Azure 机器学习 Studio 中创建的神经网络模型的体系结构。 你可以：
 
 + 创建隐藏层并控制每层的节点数。
 + 指定如何相互连接层。

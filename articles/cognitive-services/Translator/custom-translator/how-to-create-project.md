@@ -1,7 +1,7 @@
 ---
-title: 如何创建项目？ - 自定义翻译
+title: 如何创建项目-自定义转换器
 titleSuffix: Azure Cognitive Services
-description: 如何在自定义翻译中创建项目？
+description: 本文介绍如何在 Azure 认知服务自定义转换器中创建和管理项目。
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: a62cc6133fe01bf7478166c526e32b3215ceebf1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 5b3a6f2e903d8178554b7a076ae1277633569353
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595747"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836566"
 ---
 # <a name="create-a-project"></a>创建一个项目
 
@@ -32,19 +32,19 @@ ms.locfileid: "68595747"
 
     a.  项目名称（必需）：为项目提供唯一且有意义的名称。 不需要在标题中提到语言。
 
-    b.  描述:有关项目的简短摘要。 此说明对自定义翻译的行为或生成的自定义系统没有影响，但可以帮助区分不同的项目。
+    b.  说明：有关项目的简短摘要。 此说明对自定义翻译的行为或生成的自定义系统没有影响，但可以帮助区分不同的项目。
 
     c.  语言对（必需）：选择翻译的源语言和目标语言。
 
     d.  类别（必需）：选择最适合项目的类别。 类别描述要翻译的文档的术语和样式。
 
-    e.  类别说明：使用此字段可以更好地描述你工作所在的特定领域或行业。 例如，如果你的类别是“医疗”，则你可以添加特定的文档，例如“外科”或“儿科”。 此说明对自定义翻译的行为或生成的自定义系统没有影响。
+    e.  类别说明：使用此字段可以更好地描述你所在的特定领域或行业。 例如，如果你的类别是“医疗”，则你可以添加特定的文档，例如“外科”或“儿科”。 此说明对自定义翻译的行为或生成的自定义系统没有影响。
 
     f.  项目标签：[项目标签](workspace-and-project.md#project-labels)可以区分具有相同语言对和类别的项目。 最佳做法是，仅当你打算为相同语言对和相同类别生成多个项目，并且想要使用不同的 CategoryID 访问这些项目时，才使用标签。 如果只为一个类别生成系统，请不要使用此字段。 项目标签不是必需的，对区分不同的语言对没有帮助。 可对多个项目使用同一个标签。
 
     ![“创建项目”对话框](media/how-to/how-to-create-project-dialog.png)
 
-3.  单击“法律条款”
+3.  单击创建
 
 ## <a name="view-project-details"></a>查看项目详细信息
 
@@ -54,11 +54,11 @@ ms.locfileid: "68595747"
 
 - CategoryID：CategoryID 是通过连接 WorkspaceID、项目标签和类别代码创建的。 在文本翻译 API 中使用 CategoryID 可以获取自定义译文。
 
-- “训练”按钮：使用此按钮开始[训练模型](how-to-train-model.md)。
+- 训练按钮：使用此按钮可以开始[训练模型](how-to-train-model.md)。
 
-- “添加文档”按钮：使用此按钮[上传文档](how-to-upload-document.md)。
+- 添加文档按钮：使用此按钮可以[上传文档](how-to-upload-document.md)。
 
-- “筛选文档”按钮：使用此按钮筛选和搜索特定文档。
+- 筛选文档按钮：使用此按钮可以筛选和搜索特定的文档。
 
     ![查看项目详细信息](media/how-to/how-to-view-project.png)
 

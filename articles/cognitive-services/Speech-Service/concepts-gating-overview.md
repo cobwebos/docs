@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: shlo
-ms.openlocfilehash: c0a097c17a24c68f7ebe4ec06a01b9ab7d9943b0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 73e6e4e69a245485ca473f048bbeafef21dbbf37
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507139"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836790"
 ---
 # <a name="custom-neural-voice-gating-overview"></a>自定义神经声音概述
 
@@ -28,7 +28,7 @@ ms.locfileid: "73507139"
 ### <a name="guidance-for-deploying-custom-neural-voice"></a>部署自定义的神经语音的指南
 
 - [负责部署的准则](concepts-guidelines-responsible-deployment-synthetic.md)：我们基于我们的研究的热门建议
-- [神经文本到语音透明度备注](https://aka.ms/neural-tts-transparency-note)：你需要了解的有关使用它的技术
+- [对语音人才的披露](https://aka.ms/disclosure-voice-talent)：你需要了解的内容，并通知语音人才如何使用该技术
 - [披露设计](concepts-disclosure-guidelines.md)：如何设计体验，使用户知道何时使用综合语音并信任你的服务
 
 ### <a name="why-custom-neural-voice-is-a-gated-technology"></a>为什么自定义的神经语音是封闭技术
@@ -41,11 +41,11 @@ ms.locfileid: "73507139"
 
 根据我们的资格标准、审核流程和可用性，对自定义的神经语音服务的访问权限受 Microsoft 的唯一决定，以便在此封闭预览版中支持有限数量的客户。
 
-作为应用程序过程的一部分，你将需要承诺在创建语音字体之前从语音获取明确的书面许可，其中包括共享[神经 TTS 透明度注释](https://aka.ms/neural-tts-transparency-note)。 你还必须同意，当你部署语音字体时，你的实现将向用户[公开服务的综合性质](concepts-disclosure-guidelines.md)，为你的服务条款提供 Microsoft 综合语音服务的归属，并支持反馈渠道这允许服务用户报告问题并与 Microsoft 共享详细信息。 [在此处](https://aka.ms/neural-tts-transparency-note)了解有关使用条款的详细信息。
+作为应用程序过程的一部分，你将需要承诺在创建语音字体之前从语音获得明确的书面许可，其中包括共享[语音人才的公开](https://aka.ms/disclosure-voice-talent)内容。 你还必须同意，当你部署语音字体时，你的实现将向用户[公开服务的综合性质](concepts-disclosure-guidelines.md)，为你的服务条款提供 Microsoft 综合语音服务的归属，并支持反馈渠道这允许服务用户报告问题并与 Microsoft 共享详细信息。 [在此处](https://aka.ms/custom-neural-code-of-conduct)了解有关使用条款的详细信息。
 
 ## <a name="reference-docs"></a>参考文档
 
-* [透明度备注](https://aka.ms/neural-tts-transparency-note)
+* [为语音人才公开](https://aka.ms/disclosure-voice-talent)
 * [综合语音技术的责任部署指南](concepts-guidelines-responsible-deployment-synthetic.md)
 * [如何公开](concepts-disclosure-guidelines.md)
 

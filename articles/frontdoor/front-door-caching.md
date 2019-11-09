@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 42ee1dea8c9735592f6d6c9e0542ca094a6be383
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 70ee0af0b39e80aa90d143303b3c522fbb3cc780
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962909"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839217"
 ---
 # <a name="caching-with-azure-front-door-service"></a>使用 Azure Front Door 服务进行缓存
 下列文档详细说明了在具有已启用缓存的路由规则时 Front Door 的行为。
@@ -26,7 +26,7 @@ Azure Front Door 服务可交付大型文件而不限制文件大小。 Front Do
 
 </br>区块到达 Front Door 环境后，会进行缓存并立即提供给用户。 然后，Front Door 会并行预提取下一个区块。 此预提取可确保内容始终先于用户一个区块，从而减少延迟。 此过程将继续，直到整个文件下载完成（如果已请求），所有字节范围都可用（如果已请求），或客户端终止连接。
 
-</br>有关字节范围请求的详细信息，请阅读 [RFC 7233](https://web.archive.org/web/20171009165003/ http://www.rfc-base.org/rfc-7233.html)。
+</br>有关字节范围请求的详细信息，请阅读 [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html)。
 Front Door 会在收到任何区块时将其缓存，因此整个文件无需在 Front Door 缓存中进行缓存。 后续的文件或字节范围请求将从该缓存提供。 如果未缓存部分区块，将通过预提取从后端请求区块。 该项优化取决于后端能否支持字节范围请求；如果后端不支持字节范围请求，则此优化无效。
 
 ## <a name="file-compression"></a>文件压缩
@@ -82,7 +82,7 @@ Front Door 可动态压缩边缘内容，从而更快响应客户端。 所有�
 如果资产请求指定进行压缩，但该请求导致缓存缺失，则 Front Door 将直接在 POP 服务器上压缩资产。 此后，将从缓存提供压缩的文件。 通过 transfer-encoding: chunked 返回所生成的项。
 
 ## <a name="query-string-behavior"></a>查询字符串行为
-借助 Front Door，可控制如何对包含查询字符串的 Web 请求缓存文件。 在包含查询字符串的 Web 请求中，查询字符串是问号 (?) 后出现的请求部分。 查询字符串可以包含一个或多个键值对，其中字段名称和其值由等号 (=) 分隔。 每个键值对由与号 (&) 分隔。 例如， http://www.contoso.com/content.mov?field1=value1&field2=value2 。 如果请求的查询字符串中有多个键值对，其顺序并不重要。
+借助 Front Door，可控制如何对包含查询字符串的 Web 请求缓存文件。 在包含查询字符串的 Web 请求中，查询字符串是问号 (?) 后出现的请求部分。 查询字符串可以包含一个或多个键值对，其中字段名称和其值由等号 (=) 分隔。 每个键值对由与号 (&) 分隔。 例如，`http://www.contoso.com/content.mov?field1=value1&field2=value2`。 如果请求的查询字符串中有多个键值对，其顺序并不重要。
 - **忽略查询字符串**：默认模式。 在此模式下，Front Door 将来自请求者的查询字符串传递到第一个请求上的后端并缓存该资产。 由 Front Door 环境处理的资产的所有后续请求都将忽略查询字符串，直到所缓存的资产过期。
 
 - **缓存每个唯一的 URL**：在此模式下，包含唯一 URL 的每个请求（包括查询字符串）将视为具有其自己的缓存的唯一资产。 例如，后端对 `www.example.ashx?q=test1` 的请求做出的响应将缓存在 Front Door 环境中，并为具有同一查询字符串的后续缓存返回该响应。 `www.example.ashx?q=test2` 的请求将作为具有其自己的生存时间设置的单独资产来缓存。
@@ -100,11 +100,11 @@ Front Door 的缓存清除不区分大小写。 此外，它们不区分查询�
 
 ## <a name="cache-expiration"></a>缓存到期
 按下列标题顺序来确定项目在缓存中的存储时间：</br>
-1. Cache-Control: s-maxage=\<seconds>
-2. Cache-Control: max-age=\<seconds>
-3. 过期： \<http 日期 >
+1. 缓存控制： s-maxage =\<秒 >
+2. 缓存控制：最大期限 =\<秒 >
+3. 过期： \<http-日期 >
 
-优选可指示不缓存响应的 Cache-Control 响应标头，例如 Cache-Control: private，Cache-Control: no-cache 和 Cache-Control: no-store。 但是，如果 POP 中多个正在进行的请求针对的是同一 URL，则它们可共享响应。 如果存在没有缓存控制，则默认行为是时间的 AFD 将缓存的资源量 X X 时间的随机选择介于 1 到 3 天之间。
+优选可指示不缓存响应的 Cache-Control 响应标头，例如 Cache-Control: private，Cache-Control: no-cache 和 Cache-Control: no-store。 但是，如果 POP 中多个正在进行的请求针对的是同一 URL，则它们可共享响应。 如果不存在任何缓存控制，则默认行为是 AFD 将缓存资源的时间为 X，其中 X 随机选取时间为1到3天。
 
 
 ## <a name="request-headers"></a>请求标头
