@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6fc70b55b3e672ecc67eb1145bb751de33d998a1
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: e6bd9b5c09e1af5ec587e1f0e52ab25d21d2293b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847439"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889610"
 ---
 # <a name="ingest-historical-telemetry-data"></a>引入历史遥测数据
 
@@ -50,11 +50,14 @@ FarmBeats 中常见的情况是引入（IoT）用于资源（如设备和传感�
 
     ![项目场节拍](./media/for-tutorials/power-shell-two-1.png)
 
-5. 中转到上载文件的目录（默认情况下，会将文件上传到主目录/home/username/。
+5. 中转到上载文件的目录
+
+   >[!NOTE]
+   > 默认情况下，文件将上传到主目录/home/username/。
 6. 使用命令运行脚本：  
 
     ```azurepowershell-interactive
-    PS> ./generateCredentials.ps1
+    ./generateCredentials.ps1
     ```
 
 7. 按照屏幕上的说明完成该过程。
@@ -127,7 +130,9 @@ FarmBeats 数据中心使用持有者身份验证，此身份验证需要我们�
 
 使用上述凭据，调用方可以请求访问令牌，该令牌需要在标头部分的后续 API 请求中发送，如下所示：
 
-标头 = *{"Authorization"： "持有者" + access_token，...}*
+```
+headers = *{"Authorization": "Bearer " + access_token, …}*
+```
 
 **HTTP 请求标头**：
 
@@ -161,8 +166,10 @@ FarmBeats 数据中心使用持有者身份验证，此身份验证需要我们�
     "additionalProp3": {}
   }
 }
+```
 
-Device
+设备
+
 ```json
 {
   "deviceModelId": "string",
@@ -242,7 +249,7 @@ SensorModel
 ```
 下面的示例请求是创建一个设备（该设备的输入 json 为带有请求正文的有效负载）。  
 
-```
+```azurepowershell-interactive
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
 "accept: application/json" -H  "Content-Type: application/json" -H
 "Authorization: Bearer <Access-Token>" -d "
@@ -266,6 +273,7 @@ curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 
 建立作为 EventHub 客户端的连接后，可以将消息作为 json 发送到 EventHub。  
 将历史传感器数据格式转换为 Azure FarmBeats 了解的规范格式。 规范消息格式如下所示：  
+
 
 
  ```

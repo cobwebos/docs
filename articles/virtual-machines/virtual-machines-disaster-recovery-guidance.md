@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: gwallace
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc9ca5f5a638f0b36a28d58172fe8052b3d1522f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: b59343fca5e14d211864a1354001819c918bd1ca
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875445"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891520"
 ---
 # <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>发生影响 Azure VM 的 Azure 服务中断事件时该怎么办
 Microsoft 的同仁兢兢业业，只为确保在任何时候都能提供需要的服务。 但有时候会因为不可抗力的影响，造成服务意外中断。
@@ -54,7 +54,7 @@ Azure 已在平台中内置多种功能，用于支持高度可用的应用程�
 
 - 若要详细了解如何实现灾难恢复和高可用性策略，请参阅 [Azure 应用程序的灾难恢复和高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)。
 
-- 若要掌握有关云平台功能的详细技术知识，请参阅 [Azure 复原技术指南](../resiliency/resiliency-technical-guidance.md)。
+- 若要掌握有关云平台功能的详细技术知识，请参阅 [Azure 复原技术指南](/azure/data-lake-store/data-lake-store-disaster-recovery-guidance)。
 
 
 - 如果指示不清楚，或者如果希望 Microsoft 自动执行操作，请联系[客户支持](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。

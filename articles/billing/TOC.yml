@@ -5,8 +5,6 @@
   items:
     - name: 了解帐单
       href: billing-understand-your-bill.md
-    - name: 了解 EA 帐单
-      href: billing-understand-your-bill-ea.md
     - name: 了解帐单 - Microsoft 客户协议
       href: billing-mca-understand-your-bill.md
     - name: 了解帐单 - Microsoft 合作伙伴协议
@@ -159,6 +157,8 @@
       items:
         - name: 在 Azure EA 门户中开始
           href: billing-ea-portal-get-started.md
+        - name: 了解 EA 帐单
+          href: billing-understand-your-bill-ea.md
         - name: Azure 中的 EA 角色
           href: billing-understand-ea-roles.md
         - name: Azure EA 门户管理

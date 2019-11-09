@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ec1842d534dcb1e9ddef149d3ae879677b29e715
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c1b7f81c62217d9e113f3293a8f351d908a6a576
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262513"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887269"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>创建诊断设置以在 Azure 中收集平台日志和指标
 Azure 中的[平台日志](resource-logs-overview.md)提供有关 azure 资源及其所依赖的 azure 平台的详细诊断和审核信息。 本文详细介绍了如何创建和配置诊断设置，以便将平台日志收集到不同的目标。
@@ -32,10 +32,10 @@ Azure 中的[平台日志](resource-logs-overview.md)提供有关 azure 资源�
 > [!NOTE]
 > [平台指标](metrics-supported.md)会自动收集到[Azure Monitor 度量值](data-platform-metrics.md)。 可以使用诊断设置将特定 Azure 服务的指标收集到 Azure Monitor 日志中，以便通过[日志查询](../log-query/log-query-overview.md)使用其他监视数据进行分析。
 
-## <a name="destinations"></a>目标 
+## <a name="destinations"></a>Destinations 
 平台日志可发送到下表中的目标。 每个目标的配置是使用与创建此文章中所述诊断设置相同的过程执行的。 按照下表中的每个链接，了解有关将数据发送到该目标的详细信息。
 
-| Destination | 描述 |
+| 目标 | 说明 |
 |:---|:---|
 | [Log Analytics 工作区](resource-logs-collect-workspace.md) | 通过将日志收集到 Log Analytics 工作区中，你可以使用通过功能强大的日志查询 Azure Monitor 收集的其他监视数据对其进行分析，还可以利用其他 Azure Monitor 功能，如警报和可视化效果。 |
 | [事件中心](resource-logs-stream-event-hubs.md) | 向事件中心发送日志使你能够将数据流式传输到外部系统，例如第三方 Siem 和其他 log analytics 解决方案。 |
@@ -66,7 +66,7 @@ Azure 中的[平台日志](resource-logs-overview.md)提供有关 azure 资源�
 3. 为设置指定一个名称（如果没有）。
 4. 选中每个目标的框以发送日志。 单击 "**配置**" 以指定其设置，如下表所述。
 
-    | 设置 | 描述 |
+    | 设置 | 说明 |
     |:---|:---|
     | Log Analytics 工作区 | 工作区的名称。 |
     | 存储帐户 | 存储帐户的名称。 |
@@ -92,7 +92,7 @@ Azure 中的[平台日志](resource-logs-overview.md)提供有关 azure 资源�
 
 
 ## <a name="create-diagnostic-settings-using-powershell"></a>使用 PowerShell 创建诊断设置
-使用[AzDiagnosticSetting](https://docs.microsoft.com/en-us/powershell/module/az.monitor/set-azdiagnosticsetting) cmdlet 创建[Azure PowerShell](powershell-quickstart-samples.md)的诊断设置。 有关参数的说明，请参阅此 cmdlet 的文档。
+使用[AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) cmdlet 创建[Azure PowerShell](powershell-quickstart-samples.md)的诊断设置。 有关参数的说明，请参阅此 cmdlet 的文档。
 
 下面是一个示例 PowerShell cmdlet，用于创建使用所有三个目标的诊断设置。
 

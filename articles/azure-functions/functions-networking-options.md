@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 34759077bd7223d17fea70d32bda63fd1b2595eb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4e55932d47389e09b135d571d0e000b9795e6edc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668123"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884963"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
@@ -116,6 +116,12 @@ Azure Functions 中的虚拟网络集成使用共享基础结构和应用服务 
 创建 function app 时，必须创建或链接支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 目前无法对此帐户使用任何虚拟网络限制。 如果在用于函数应用的存储帐户上配置虚拟网络服务终结点，则会中断你的应用程序。
 
 [了解有关存储帐户要求的详细信息。](./functions-create-function-app-portal.md#storage-account-requirements)
+
+### <a name="using-key-vault-references"></a>使用 Key Vault 引用 
+
+Key Vault 引用允许在 Azure Functions 应用程序中使用 Azure Key Vault 的机密，无需进行任何代码更改。 Azure Key Vault 是一种提供集中式机密管理的服务，可以完全控制访问策略和审核历史记录。
+
+如果你的 Key Vault 通过服务终结点进行保护，则当前[Key Vault 引用](../app-service/app-service-key-vault-references.md)将不起作用。 若要使用虚拟网络集成连接到 Key Vault，需要在应用程序代码中调用密钥保管库。
 
 ## <a name="virtual-network-triggers-non-http"></a>虚拟网络触发器（非 HTTP）
 

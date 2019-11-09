@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: b8ea5c54afd4b1e2c212422417688e528367d44f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/07/2019
+ms.openlocfilehash: 0708b1dd2d272757949d014d768c1da649b50146
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949976"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889687"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>数据处理和用户定义的函数
 
@@ -23,7 +23,7 @@ Azure 数字孪生提供高级计算功能。 开发人员可以针对传入的�
 
 在设备将遥测数据发送到 Azure 数字孪生后，开发人员可以分四个阶段处理数据：*验证*、*匹配*、*计算*和*调度*。
 
-[@no__t 1Azure 数字孪生数据处理流](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
+[![Azure 数字孪生数据处理流](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
 1. 验证阶段将传入的遥测消息转换为容易理解的[数据传输对象](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5)格式。 此阶段还执行设备和传感器验证。
 1. 匹配阶段查找要运行的相应用户定义函数。 预定义的匹配程序根据传入的遥测消息中的设备、传感器和空间信息查找用户定义的函数。
@@ -34,7 +34,7 @@ Azure 数字孪生提供高级计算功能。 开发人员可以针对传入的�
 
 Azure 数字孪生中的数据处理包括定义三个对象：*匹配程序*、*用户定义的函数*和*角色分配*。
 
-[@no__t 1Azure 数字孪生数据处理对象](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
+[![Azure 数字孪生数据处理对象](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
 ### <a name="matchers"></a>匹配程序
 
@@ -42,35 +42,40 @@ Azure 数字孪生中的数据处理包括定义三个对象：*匹配程序*、
 
 - 所有数据类型为 **Temperature** 的传感器，由转义的字符串值 `\"Temperature\"` 表示
 - 其端口中包含 `01`
-- 属于扩展属性键 **Manufacturer** 设置为转义字符串值 `\"GoodCorp\"` 的设备
+- 属于扩展属性键 **Manufacturer** 设置为转义字符串值 `\"Contoso\"` 的设备
 - 属于转义字符串 `\"Venue\"` 指定的类型的空间
 - 是父 **SpaceId** `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD` 的后代
 
 ```JSON
 {
-  "SpaceId": "DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
-  "Name": "My custom matcher",
-  "Description": "All sensors of datatype Temperature with 01 in their port that belong to devices with the extended property key Manufacturer set to the value GoodCorp and that belong to spaces of type Venue that are somewhere below space Id DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
-  "Conditions": [
+  "id": "23535afafd-f39b-46c0-9b0c-0dd3892a1c30",
+  "name": "My custom matcher",
+  "spaceId": "DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
+  "description": "All sensors of datatype Temperature with 01 in their port that belong to devices with the extended property key Manufacturer set to the value Contoso and that belong to spaces of type Venue that are somewhere below space Id DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
+  "conditions": [
     {
+      "id": "43898sg43-e15a-4e9c-abb8-2gw464364",
       "target": "Sensor",
       "path": "$.dataType",
       "value": "\"Temperature\"",
       "comparison": "Equals"
     },
     {
+      "id": "wt3th44-e15a-35sg-seg3-235wf3ga463",
       "target": "Sensor",
       "path": "$.port",
       "value": "01",
       "comparison": "Contains"
     },
     {
+      "id": "735hs33-e15a-37jj-23532-db901d550af5",
       "target": "SensorDevice",
       "path": "$.properties[?(@.name == 'Manufacturer')].value",
-      "value": "\"GoodCorp\"",
+      "value": "\"Contoso\"",
       "comparison": "Equals"
     },
     {
+      "id": "222325-e15a-49fg-5744-463643644",
       "target": "SensorSpace",
       "path": "$.type",
       "value": "\"Venue\"",

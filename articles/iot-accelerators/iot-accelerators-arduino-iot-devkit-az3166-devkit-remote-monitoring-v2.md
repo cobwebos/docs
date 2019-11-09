@@ -1,5 +1,5 @@
 ---
-title: 将 IoT DevKit 连接到远程监视解决方案加速器 - Azure | Microsoft Docs
+title: 将 IoT DevKit 连接到远程监视解决方案-Azure |Microsoft Docs
 description: 本操作方法指南介绍如何将 IoT DevKit AZ3166 设备上的传感器的遥测数据发送到远程监视解决方案加速器，以便进行监视和可视化。
 author: isabelcabezasm
 manager: ''
@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: 542a0780c0525ee7ceddfd36c3a4f7c348d0574f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6e9f9c89cf2e5e40d37a1532e688490aae294181
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72930882"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888863"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>将 IoT DevKit 设备连接到远程监视解决方案加速器
 
@@ -22,7 +22,7 @@ ms.locfileid: "72930882"
 
 本操作说明指南介绍如何在 IoT DevKit 设备上运行示例应用程序。 示例代码将遥测数据从 DevKit 设备上的传感器发送到解决方案加速器。
 
-[MXChip IoT DevKit](https://aka.ms/iot-devkit) 是具有多种外设和传感器的集成 Arduino 兼容板。 可以使用 Visual Studio Code 中的 [Azure IoT Device Workbench](https://aka.ms/iot-workbench) 或 [Azure IoT 工具](https://aka.ms/azure-iot-tools)扩展包进行开发。 [项目目录](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/)包含有助于确定 IoT 解决方案原型的示例应用程序。
+[MXChip IoT DevKit](https://aka.ms/iot-devkit) 是具有多种外设和传感器的集成 Arduino 兼容板。 可以使用 Visual Studio Code 中的 [Azure IoT Device Workbench](https://aka.ms/iot-workbench)（Azure IoT 设备 Workbench）或 [Azure IoT 工具](https://aka.ms/azure-iot-tools)扩展包进行开发。 [项目目录](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/)包含有助于确定 IoT 解决方案原型的示例应用程序。
 
 ## <a name="before-you-begin"></a>开始之前
 

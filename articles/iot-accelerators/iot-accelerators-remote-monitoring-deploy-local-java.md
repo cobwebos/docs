@@ -1,5 +1,5 @@
 ---
-title: 在本地部署远程监视解决方案（通过 IntelliJ IDE）-Azure |Microsoft Docs
+title: 在本地部署远程监视解决方案-IntelliJ IDE-Azure |Microsoft Docs
 description: 本操作方法指南介绍了如何通过使用 IntelliJ 进行测试和开发，将远程监视解决方案加速器部署到您的本地计算机。
 author: v-krghan
 manager: dominicbetts
@@ -8,26 +8,26 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2f3c11763bb2f406caf9d33275fc29b0d140da9a
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 779ee1e057d74b11c5e0ba58dc2fd32b803f1e0e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "70743325"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888815"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>在本地部署远程监视解决方案加速器 - IntelliJ
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-本文展示了如何将远程监视解决方案加速器部署到本地计算机，用于测试和开发。 你将了解如何在 IntelliJ 中运行微服务。 本地微服务部署将使用以下云服务：IoT 中心、Azure Cosmos DB、Azure 流分析和 Azure 时序见解。
+本文展示了如何将远程监视解决方案加速器部署到本地计算机，用于测试和开发。 你将了解如何在 IntelliJ 中运行微服务。 本地微服务部署将使用以下云服务： IoT 中心、Azure Cosmos DB、Azure 流分析和 Azure 时序见解。
 
 若要在本地计算机上的 Docker 中运行远程监视解决方案加速器，请参阅[在本地部署远程监视解决方案加速器 - Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要部署远程监视解决方案加速器使用的 Azure 服务，需要一个有效的 Azure 订阅。
 
-如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ### <a name="machine-setup"></a>计算机设置
 
@@ -98,18 +98,18 @@ Node.js v8 是脚本用来创建 Azure 资源的 PC CLI 的必备组件。 请�
    该脚本还会将一组环境变量添加到您的本地计算机。 每个变量名称都具有前缀**pc**。 这些环境变量提供的详细信息允许远程监视从 Azure Key Vault 资源读取其配置值。
 
    > [!TIP]
-   > 脚本完成后，它会将环境变量保存到名 **\<\>为主文件夹\\的文件中。 pc\\\<解决方案名称\>. env**。 你可以将其用于将来的解决方案加速器部署。 请注意，在运行**docker 撰写**时，在本地计算机上设置的任何环境变量都将覆盖**服务\\\\脚本本地\\env**文件中的值。
+   > 当脚本完成时，它会将环境变量保存到名为 **\<主文件夹\>\\pc\\\<解决方案名称\>env**的文件中。 你可以将其用于将来的解决方案加速器部署。 请注意，在运行**docker 撰写**时，本地计算机上设置的任何环境变量都将覆盖**服务\\脚本\\本地\\env**文件中的值。
 
 1. 关闭命令行环境。
 
 ### <a name="use-existing-azure-resources"></a>使用现有的 Azure 资源
 
 如果已创建所需的 Azure 资源，请在本地计算机上设置相应的环境变量：
-* **PCS_KEYVAULT_NAME**：Key Vault 资源的名称。
-* **PCS_AAD_APPID**：Azure Active Directory （Azure AD）应用程序 ID。
-* **PCS_AAD_APPSECRET**：Azure AD 应用程序机密。
+* **PCS_KEYVAULT_NAME**： Key Vault 资源的名称。
+* **PCS_AAD_APPID**： Azure Active Directory （Azure AD）应用程序 ID。
+* **PCS_AAD_APPSECRET**： Azure AD 应用程序密钥。
 
-将从此 Key Vault 资源读取配置值。 这些环境变量可保存在 **\<主文件夹\>\\中。 pc\\\<\>解决方案名称。** 请注意，运行 **docker-compose** 时，在本地计算机上设置的环境变量将覆盖 **services\\scripts\\local\\.env** 文件中的值。
+将从此 Key Vault 资源读取配置值。 这些环境变量可保存在 **\<主文件夹\>\\pc\\\<** 部署中\>的 env 文件。 请注意，运行 **docker-compose\\ 时，在本地计算机上设置的环境变量将覆盖 \\services\\scripts**local **.env** 文件中的值。
 
 微服务所需的某些配置存储在最初部署时创建的 Key Vault 实例中。 应根据需要修改 key vault 中的相应变量。
 
@@ -160,10 +160,10 @@ Node.js v8 是脚本用来创建 Azure 资源的 PC CLI 的必备组件。 请�
 #### <a name="create-run-configurations"></a>创建运行配置
 
 1. 选择 "**运行** > **编辑配置**"。
-1. 选择 "**添加新配置** > **sbt 任务**"。
+1. 选择 " > **sbt 任务** **添加新配置**"。
 1. 输入**名称**，然后输入 "**运行**" 作为**任务**。
 1. 根据要运行的服务选择**工作目录**。
-1. 选择 "**应用** >  **" "确定"** 以保存你的选择。
+1. 选择 "应用 **" > "确定"** 以保存你的选择。
 1. 为以下 web 服务创建运行配置：
     * WebService (services\config)
     * WebService (services\device-telemetry)
@@ -172,17 +172,17 @@ Node.js v8 是脚本用来创建 Azure 资源的 PC CLI 的必备组件。 请�
 
 例如，下图显示了如何添加服务的配置：
 
-[![IntelliJ IDE "运行/调试配置" 窗口的屏幕截图，显示在左窗格的 "sbt 任务" 列表中突出显示 "storageAdapter" 选项，在右窗格中显示 "名称"、"任务"、"工作目录" 和 "VM 参数" 框中的条目。](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
+[![IntelliJ IDE 运行/调试配置 "窗口的屏幕截图，显示在左窗格的" sbt 任务 "列表中突出显示的 storageAdapter 选项，以及右窗格中" 名称 "、" 任务 "、" 工作目录 "和" VM 参数 "框中的条目。](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
 
 #### <a name="create-a-compound-configuration"></a>创建复合配置
 
-1. 若要将所有服务一起运行，请选择 "**添加新的配置** > **复合**"。
+1. 若要将所有服务一起运行，请选择 "**添加新配置** > **复合**"。
 1. 输入**名称**，然后选择 "**添加 sbt 任务**"。
-1. 选择 "**应用** >  **" "确定"** 以保存你的选择。
+1. 选择 "应用 **" > "确定"** 以保存你的选择。
 
 例如，下图显示了如何将所有 sbt 任务添加到单个配置中：
 
-[![IntelliJ IDE "运行/调试配置" 窗口的屏幕截图，显示在左窗格的复合列表中突出显示的 AllServices 选项，右侧窗格中突出显示 sbt 任务 "" Devicetelemetry "" 选项。](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
+[![IntelliJ IDE 运行/调试配置 "窗口的屏幕截图，显示在左窗格的复合列表中突出显示的 AllServices 选项，并在右窗格中突出显示 sbt 任务" "Devicetelemetry" "选项。](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
 
 选择 "**运行**"，在本地计算机上生成并运行 web 服务。
 
@@ -190,10 +190,10 @@ Node.js v8 是脚本用来创建 Azure 资源的 PC CLI 的必备组件。 请�
 
 若要访问服务的状态，请使用以下 Url：
 
-* IoT 中心管理器：[http://localhost:9002/v1/status](http://localhost:9002/v1/status)
-* 设备遥测：[http://localhost:9004/v1/status](http://localhost:9004/v1/status)
-* config.xml[http://localhost:9005/v1/status](http://localhost:9005/v1/status)
-* 存储适配器：[http://localhost:9022/v1/status](http://localhost:9022/v1/status)
+* IoT 中心管理器： [http://localhost:9002/v1/status](http://localhost:9002/v1/status)
+* 设备遥测： [http://localhost:9004/v1/status](http://localhost:9004/v1/status)
+* config： [http://localhost:9005/v1/status](http://localhost:9005/v1/status)
+* 存储适配器： [http://localhost:9022/v1/status](http://localhost:9022/v1/status)
 
 ### <a name="start-the-stream-analytics-job"></a>启动流分析作业
 
@@ -213,7 +213,7 @@ npm install
 npm start
 ```
 
-**开始**命令完成后，浏览器将在该地址[http://localhost:3000/dashboard](http://localhost:3000/dashboard)显示页面。 此页面上出现的错误在意料之中。 若要查看应用程序但不发生错误，请完成以下步骤。
+**开始**命令完成后，浏览器会在地址[http://localhost:3000/dashboard](http://localhost:3000/dashboard)显示页面。 此页面上出现的错误在意料之中。 若要查看应用程序但不发生错误，请完成以下步骤。
 
 ### <a name="configure-and-run-nginx"></a>配置和运行 Nginx
 
@@ -226,7 +226,7 @@ npm start
 
 ### <a name="connect-to-the-dashboard"></a>连接到仪表板
 
-若要访问远程监视解决方案仪表板，请 http://localhost:9000 在浏览器中访问。
+若要访问远程监视解决方案仪表板，请在浏览器中转到 http://localhost:9000。
 
 ## <a name="clean-up"></a>清理
 

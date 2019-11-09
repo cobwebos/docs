@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9563def1a7b510c403cf299a66066def0b03b59a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d5b84a9d216457720e9bd4e17b002d6ab9490f9d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796787"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888602"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>使用 REST 将文件上传到媒体服务帐户  
 > [!div class="op_single_selector"]
@@ -40,12 +40,12 @@ ms.locfileid: "73796787"
 > * 使用上传 URL 将文件上传到 Blob 存储
 > * 在资产中为上传的媒体文件创建元数据
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [使用 Azure 门户创建 Azure 媒体服务帐户](media-services-portal-create-account.md)
 - 查看[通过 ADD 身份验证访问 Azure 媒体服务 API 概述](media-services-use-aad-auth-to-access-ams-api.md)一文。
-- 有关详细信息，请参阅[使用 Azure AD 身份验证通过 REST 访问媒体服务 API](https://docs.microsoft.com/en-us/azure/media-services/previous/media-services-rest-connect-with-aad)一文。
+- 有关详细信息，请参阅[使用 Azure AD 身份验证通过 REST 访问媒体服务 API](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad)一文。
 - 根据**为媒体服务 REST API 调用配置 Postman** 中所述配置 [Postman](media-rest-apis-with-postman.md)。
 
 ## <a name="considerations"></a>注意事项
@@ -55,7 +55,7 @@ ms.locfileid: "73796787"
 * 访问媒体服务 REST API 访问实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。 <br/>本教程中使用的 Postman 集合负责设置所有必要的标头。
 * 为流式处理内容（例如，http：//{AMSAccount} windowsazure.mediaservices/{GUID}/{IAssetFile}/streamingParameters 生成 Url 时，媒体服务将使用 IAssetFile.Name 属性的值。）出于此原因，不允许使用百分号编码。 **Name** 属性的值不能含有任何以下[百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!* '();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。
 * 名称长度不应超过 260 个字符。
-* 支持在媒体服务中处理的最大文件大小存在限制。 有关文件大小限制的详细信息，请参阅[此文](media-services-quotas-and-limitations.md)。
+* 在媒体服务中进行处理时，系统支持的最大文件大小存在限制。 有关文件大小限制的详细信息，请参阅[此文](media-services-quotas-and-limitations.md)。
 
 ## <a name="set-up-postman"></a>设置 Postman
 
@@ -142,9 +142,9 @@ ms.locfileid: "73796787"
 
 ### <a name="overview"></a>概述
 
-设置 AccessPolicy 和定位符后，即可使用 Azure 存储 REST API 将具体的文件上传到 Azure BLOB 存储容器。 必须以块 blob 形式上传文件。 Azure 媒体服务不支持页 blob。  
+设置 AccessPolicy 和定位符后，即可使用 Azure 存储 REST API 将实际文件上传到 Azure BLOB 存储容器。 必须以块 blob 形式上传文件。 Azure 媒体服务不支持页 blob。  
 
-有关使用 Azure 存储 Blob 的详细信息，请参阅 [Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)。
+有关使用 Azure 存储 blob 的详细信息，请参阅 [Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)。
 
 若要检索实际上传 URL，请创建一个 SAS 定位符（参阅下文）。 定位符为希望访问资产中文件的客户端定义连接终结点的开始时间和类型。 可以为给定 AccessPolicy 和资产对创建多个定位符实体，以处理不同的客户端请求和需求。 这其中的任一定位符都可使用 AccessPolicy 的 StartTime 值和 DurationInMinutes 值来确定可以使用某 URL 的时间长度。 有关详细信息，请参阅[定位符](https://docs.microsoft.com/rest/api/media/operations/locator)。
 
@@ -226,5 +226,5 @@ SAS URL 采用以下格式：
 
 现在可以对上传的资产进行编码。 有关详细信息，请参阅[对资产进行编码](media-services-portal-encode.md)。
 
-还可以使用 Azure Functions，基于传入到所配置容器中的文件触发编码作业。 有关详细信息，请参阅[此示例](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ )。
+也可使用 Azure Functions 根据到达已配置容器的文件触发编码作业。 有关详细信息，请参阅[此示例](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ )。
 

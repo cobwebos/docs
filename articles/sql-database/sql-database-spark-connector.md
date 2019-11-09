@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: d398019b62078da6943cb98cbafc3ac39640513f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 03150ef3a8799cd0f84fb1bc03f2fd712cddd541
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820873"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889796"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>通过适用于 Azure SQL 数据库和 SQL Server 的 Spark 连接器，加速实时大数据分析
 
@@ -130,7 +130,7 @@ val config = Config(Map(
   "queryCustom"  -> query
 ))
 
-sqlContext.SqlDBQuery(config)
+sqlContext.sqlDBQuery(config)
 ```
 
 ## <a name="connect-spark-to-azure-sql-database-using-aad-authentication"></a>使用 AAD 身份验证将 Spark 连接到 Azure SQL 数据库

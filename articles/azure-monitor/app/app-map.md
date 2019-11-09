@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 65a257cc4613fb9e4dece09a2544de2e78779ab4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 305de556cc6e50af21cb38aa1b8073b420efbf43
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577060"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887756"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -234,7 +234,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 另一个方案是，应用在容器化环境中运行，仅仅了解单个服务器可能无法获得足够的信息来找出给定的问题，因此需要替代云角色实例的值。
 
-若要详细了解如何用遥测初始化表达式替代 "云角色名称" 属性，请参阅[添加属性： ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer)。
+若要详细了解如何用遥测初始化表达式替代 "云角色名称" 属性，请参阅[添加属性： ITelemetryInitializer](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)。
 
 ## <a name="troubleshooting"></a>故障排除
 

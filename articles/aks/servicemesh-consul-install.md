@@ -1,44 +1,44 @@
 ---
 title: 在 Azure Kubernetes Service （AKS）中安装 Consul
-description: 了解如何安装并使用 Consul 在 Azure Kubernetes 服务（AKS）群集中创建服务网格
+description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和使用 Consul 来创建服务网格
 author: dstrebel
 ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 1c48e758e9ee69085034f714652632151912f8d4
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: d5d0a575c3fb662df034b66a48135ac33393f95c
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530623"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885407"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务（AKS）中安装并使用 Consul
 
-[Consul][consul-github]是一种开放源代码服务网格，提供跨 Kubernetes 群集中微服务的一组关键功能。 这些功能包括服务发现、运行状况检查、服务分段和可观察性。 有关 Consul 的详细信息，请参阅官方[Is Consul？][consul-docs-concepts]文档。
+[Consul][consul-github] 是跨 Kubernetes 群集中的微服务提供关键功能集的开源服务网格。 这些功能包括服务发现、运行状况检查、服务分段和可观察性。 有关 Consul 的详细信息，请参阅官方文档[什么是 Consul？][consul-docs-concepts]。
 
 本文介绍如何安装 Consul。 Consul 组件安装在 AKS 上的 Kubernetes 群集中。
 
 > [!NOTE]
 > 这些说明引用 Consul 版本 `1.6.0`，并使用至少 Helm 版本 `2.14.2`。
 >
-> 可针对 Kubernetes 版本 `1.13+` 运行 Consul `1.6.x` 版本。 可在[GitHub-Consul 版本][consul-github-releases]中找到其他 Consul 版本，并在[Consul-发行说明][consul-release-notes]中找到有关每个版本的信息。
+> 可针对 Kubernetes 版本 `1.13+`运行 Consul `1.6.x` 版本。 可以在 [GitHub - Consul 版本][consul-github-releases]中找到其他 Consul 版本，并可以在 [Consul - 发行说明][consul-release-notes]中找到有关每个版本的信息。
 
 在本文中，学习如何：
 
 > [!div class="checklist"]
 > * 在 AKS 上安装 Consul 组件
 > * 验证 Consul 安装
-> * 从 AKS 卸载 Consul
+> * 从 AKS 中卸载 Consul
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文详细介绍了如何创建 AKS 群集（Kubernetes `1.13` 及更高版本，启用 RBAC），并已与群集建立了 `kubectl` 连接。 如果需要有关这些项的帮助，请参阅[AKS 快速入门][aks-quickstart]。 确保群集至少有3个节点。
+本文中详述的步骤假设已创建 AKS 群集（已启用 RBAC 的 Kubernetes `1.13` 及更高版本）并已与该群集建立 `kubectl` 连接。 如果需要帮助完成这些项目，请参阅 [AKS 快速入门][aks-quickstart]。 确保群集至少有3个节点。
 
-需要[Helm][helm]来遵循这些说明，并安装 Consul。 建议在群集中正确安装并配置最新的稳定版本。 如果需要有关安装 Helm 的帮助，请参阅[AKS Helm 安装指南][helm-install]。 还必须计划在 Linux 节点上运行所有 Consul。
+需要使用 [Helm][helm] 按照这些说明安装 Consul。 建议在群集中正确安装并配置最新的稳定版本。 安装 Helm 时如需帮助，请参阅 [AKS Helm 安装指南][helm-install]。 所有 Consul Pod 也必须按计划在 Linux 节点上运行。
 
-本文将 Consul 安装指南分为几个不同的步骤。 最终结果在结构上与正式 Consul 安装[指南][consul-install-k8]相同。
+本文将 Consul 安装指南分为多个独立步骤。 最终结果的结构与官方 Consul 安装[指南][consul-install-k8]相同。
 
 ### <a name="install-the-consul-components-on-aks"></a>在 AKS 上安装 Consul 组件
 
@@ -95,9 +95,9 @@ ms.locfileid: "72530623"
 
 ::: zone-end
 
-@No__t_0 Helm 图表会部署多个对象。 你可以从上述 `helm install` 命令的输出中查看列表。 部署 Consul 组件可能需要大约3分钟的时间才能完成，具体取决于群集环境。
+`Consul` Helm 图表将部署许多对象。 上述 `helm install` 命令的输出会显示对象列表。 部署 Consul 组件可能需要大约3分钟的时间才能完成，具体取决于群集环境。
 
-此时，已将 Consul 部署到 AKS 群集。 若要确保已成功部署 Consul，请转到下一节，验证 Consul 安装。
+此时，已将 Consul 部署到 AKS 群集。 为确保成功部署 Consul，让我们转到下一部分来验证 Consul 安装。
 
 ## <a name="validate-the-consul-installation"></a>验证 Consul 安装
 
@@ -129,28 +129,28 @@ consul-consul-sync-catalog-d846b79c-8ssr8                         1/1     Runnin
 consul-consul-tz2t5                                               1/1     Running   0          3m9s   10.240.0.12   aks-linux-92468653-vmss000000   <none>           <none>
 ```
 
-所有 pod 都应显示 `Running` 状态。 如果 Pod 没有这些状态，请在运行之前等待一两分钟。 如果任何 pod 报告了问题，请使用[kubectl 说明 pod][kubectl-describe]命令查看其输出和状态。
+所有 pod 应显示 `Running` 状态。 如果 Pod 没有这些状态，请在运行之前等待一两分钟。 如果任何 Pod 报告问题，请使用 [kubectl describe pod][kubectl-describe] 命令查看其输出和状态。
 
 ## <a name="accessing-the-consul-ui"></a>访问 Consul UI
 
-在上面的设置中安装 Consul UI，并提供基于 UI 的 Consul 配置。 不通过外部 ip 地址公开 Consul 的 UI。 若要访问 Consul 用户界面，请使用[kubectl 端口转发][kubectl-port-forward]命令。 此命令在你的客户端计算机与你的 AKS 群集中的相关 pod 之间创建安全连接。
+在上面的设置中安装 Consul UI，并提供基于 UI 的 Consul 配置。 Consul 的 UI 不会通过外部 IP 地址公开。 若要访问 Consul 用户界面，请使用[kubectl 端口转发][kubectl-port-forward]命令。 此命令在客户端计算机与 AKS 群集中相关 Pod 之间建立安全连接。
 
 ```azurecli
 kubectl port-forward -n consul svc/consul-consul-ui 8080:80
 ```
 
-你现在可以打开浏览器并使其指向 `http://localhost:8080/ui` 打开 Consul UI。 打开 UI 时，应会看到以下内容：
+现在可以打开一个浏览器并指向 `http://localhost:8080/ui`，以打开 Consul UI。 打开 UI 时，应会看到以下内容：
 
 ![Consul UI](./media/servicemesh/consul/consul-ui.png)
 
-## <a name="uninstall-consul-from-aks"></a>从 AKS 卸载 Consul
+## <a name="uninstall-consul-from-aks"></a>从 AKS 中卸载 Consul
 
 > [!WARNING]
-> 删除正在运行的系统中的 Consul 可能会导致服务之间出现与流量相关的问题。 在继续操作之前，请确保您的系统的预配仍可正常运行，而无需 Consul。
+> 从正在运行的系统中删除 Consul 可能会导致服务之间出现流量相关的问题。 在继续之前，请确保对系统进行预配，以便在没有 Consul 的情况下系统仍可正常运行。
 
 ### <a name="remove-consul-components-and-namespace"></a>删除 Consul 组件和命名空间
 
-若要从 AKS 群集中删除 Consul，请使用以下命令。 @No__t_0 命令将删除 `consul` 图表，`kubectl delete namespace` 命令将删除 `consul` 命名空间。
+若要从 AKS 群集中删除 Consul，请使用以下命令。 `helm delete` 命令将删除 `consul` 图表，`kubectl delete namespace` 命令将删除 `consul` 命名空间。
 
 ```azurecli
 helm delete --purge consul
@@ -161,8 +161,8 @@ kubectl delete namespace consul
 
 若要了解 Consul 的更多安装和配置选项，请参阅以下官方 Consul 文章：
 
-- [Consul-Helm 安装指南][consul-install-k8]
-- [Consul-Helm 安装选项][consul-install-helm-options]
+- [Consul - Helm 安装指南][consul-install-k8]
+- [Consul - Helm 安装选项][consul-install-helm-options]
 
 你还可以使用以下方案：
 
@@ -186,7 +186,7 @@ kubectl delete namespace consul
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 [kubectl-port-forward]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward
-[kubernetes-node-selectors]: https://docs.microsoft.com/en-us/azure/aks/concepts-clusters-workloads#node-selectors
+[kubernetes-node-selectors]: https://docs.microsoft.com/azure/aks/concepts-clusters-workloads#node-selectors
 
 <!-- LINKS - internal -->
 [aks-quickstart]: ./kubernetes-walkthrough.md

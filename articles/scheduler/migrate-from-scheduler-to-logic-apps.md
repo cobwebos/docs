@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/23/2019
-ms.openlocfilehash: 73aa641fc4bb01ef3d06820ecd18b61197ab81e7
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 3d748e1625f27be27b7f403fbab3e213b16c4dd6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695501"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890181"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>将 Azure 计划程序作业迁移到 Azure 逻辑应用
 
@@ -33,7 +33,7 @@ ms.locfileid: "71695501"
 
 若要了解详细信息，请参阅[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)或尝试在本快速入门中创建第一个逻辑应用：[创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -51,7 +51,7 @@ ms.locfileid: "71695501"
 
    有关基本步骤，请遵循[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-1. 在搜索框中，输入“收到 http 请求时”作为筛选器。 从触发器列表中选择此触发器：**收到 HTTP 请求时** 
+1. 在搜索框中，输入“收到 http 请求时”作为筛选器。 从触发器列表中选择此触发器：“当收到 HTTP 请求时” 
 
    ![添加“请求”触发器](./media/migrate-from-scheduler-to-logic-apps/request-trigger.png)
 
@@ -71,7 +71,7 @@ ms.locfileid: "71695501"
 
 1. 在触发器下，选择 "**下一步**"。 
 
-1. 在搜索框中，输入“延迟截止时间”作为筛选器。 在操作列表中选择以下操作：**延迟截止时间**
+1. 在搜索框中，输入“延迟截止时间”作为筛选器。 在操作列表下选择此操作：“延迟截止时间”
 
    此操作会暂停逻辑应用工作流，直到指定的日期和时间。
 
@@ -106,9 +106,9 @@ ms.locfileid: "71695501"
 
 例如，使用 Postman 应用时，可以使用类似于此示例的设置创建 POST 请求，然后选择 "**发送**" 发出请求。
 
-| 请求方法 | URL | Body | 标头 |
+| 请求方法 | URL | 正文 | 标头 |
 |----------------|-----|------|---------|
-| **POST** | <endpoint-URL> | **raw** <p>**JSON(application/json)** <p>在 "**源**" 框中，输入要在请求中发送的负载。 <p>**注意**：此设置会自动配置“标头”值。 | **密钥**：Content-Type <br>**值**：application/json |
+| **POST** | <endpoint-URL> | **raw** <p>**JSON(application/json)** <p>在 "**源**" 框中，输入要在请求中发送的负载。 <p>**注意**：此设置会自动配置“标头”值。 | **键**：Content-Type <br>**值**：application/json |
 |||||
 
 ![发送请求以手动触发逻辑应用](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -119,7 +119,7 @@ ms.locfileid: "71695501"
 
 > [!IMPORTANT]
 >
-> 如果要在以后取消该作业，请选择 "**标头**" 选项卡。在响应中查找并复制 **x-ms-workflow-run-id** 标头值。 
+> 如果要在以后取消该作业，请选择 "**标头**" 选项卡。在响应中查找并复制**x-workflow-运行 id**标头值。 
 >
 > ![响应](./media/migrate-from-scheduler-to-logic-apps/postman-response.png)
 
@@ -133,7 +133,7 @@ ms.locfileid: "71695501"
 
    有关基本步骤，请遵循[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-1. 在搜索框中，输入“定期”作为筛选器。 从触发器列表中选择此触发器：**定期** 
+1. 在搜索框中，输入“定期”作为筛选器。 从触发器列表中选择此触发器：“重复” 
 
    ![添加“重复”触发器](./media/migrate-from-scheduler-to-logic-apps/recurrence-trigger.png)
 
@@ -198,13 +198,13 @@ ms.locfileid: "71695501"
 <a name="retire-date"></a>
 
 **问**：Azure 计划程序何时停用？ <br>
-**答**：Azure 计划程序计划为在2019年12月31日完全停用。 若要在此日期和详细时间线之前执行重要步骤，请参阅[将计划程序的停用日期延长到2019年12月 31](https://azure.microsoft.com/en-us/updates/extending-retirement-date-of-scheduler/)日。 有关一般更新，请参阅[Azure 更新-计划程序](https://azure.microsoft.com/updates/?product=scheduler)。
+**答**： Azure 计划程序计划为在2019年12月31日完全停用。 若要在此日期和详细时间线之前执行重要步骤，请参阅[将计划程序的停用日期延长到2019年12月 31](https://azure.microsoft.com/updates/extending-retirement-date-of-scheduler/)日。 有关一般更新，请参阅[Azure 更新-计划程序](https://azure.microsoft.com/updates/?product=scheduler)。
 
-**问**：服务停用后，我的作业集合和作业会发生什么情况？ <br>
+**问**：服务停用后，作业集合和作业会发生什么情况？ <br>
 **答**：所有计划程序作业集合和作业都将停止运行，并从系统中删除。
 
 **问**：在将我的计划程序作业迁移到逻辑应用之前，是否必须备份或执行任何其他任务？ <br>
-**答**：最佳做法是始终备份你的工作。 在删除或禁用计划程序作业之前，请检查你创建的逻辑应用是否按预期运行。 
+**答**：作为最佳做法，请始终备份你的工作。 在删除或禁用计划程序作业之前，请检查你创建的逻辑应用是否按预期运行。 
 
 **问**：是否有可以帮助我将作业从计划程序迁移到逻辑应用的工具？ <br>
 **答**：每个计划程序作业都是唯一的，因此不存在一个通用的工具。 但是，可以根据需要[编辑此脚本，将 Azure 计划程序作业迁移到 Azure 逻辑应用](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration)。
@@ -220,7 +220,7 @@ ms.locfileid: "71695501"
 
 1. 在 "**支持**" 菜单中，选择 "**新建支持请求**"。 为请求提供以下信息：
 
-   | 属性 | ReplTest1 |
+   | 属性 | 值 |
    |---------|-------|
    | **问题类型** | **技术** |
    | **订阅** | <*your-Azure-subscription*> |

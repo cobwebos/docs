@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8cc02831fa00a3974da1b74b07daf581f50dd22
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: eb562caf2dfc83841762748f37d1a7ee325de10b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569612"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882630"
 ---
 # <a name="protected-web-api-code-configuration"></a>受保护的 web API：代码配置
 
@@ -158,6 +158,10 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 | `ValidateTokenReplay` | 确保令牌未重放。 （适用于某些一次性协议的特殊情况。） |
 
 所有验证程序与 `TokenValidationParameters` 类的属性相关联，其本身已从 ASP.NET/ASP.NET Core 配置初始化。 在大多数情况下，无需更改参数。 有一种情况例外，非单租户应用不适用上述过程。 （即，接受来自任何组织或个人 Microsoft 帐户的用户的 web 应用。）在这种情况下，必须验证颁发者。
+
+## <a name="token-validation-in-azure-functions"></a>Azure Functions 中的令牌验证
+
+还可以在 Azure 函数中验证传入的访问令牌。 可以在 Azure 函数的[Dotnet](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)、 [NodeJS](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)和[Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)中找到验证令牌的示例。
 
 ## <a name="next-steps"></a>后续步骤
 

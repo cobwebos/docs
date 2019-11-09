@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: dca653bfaf625ff31e4dd7f43752219b312779d1
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 57303c41d90f6205c284c7de67bb8643aa3cd368
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286763"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888066"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Azure Cosmos DB 的高级威胁防护
 
@@ -32,7 +32,7 @@ ms.locfileid: "72286763"
 
 ### <a name="set-up-atp-using-the-portal"></a>使用门户设置 ATP
 
-1. 启动[@no__t](https://portal.azure.com/)Azure 门户。
+1. 在[https://portal.azure.com](https://portal.azure.com/)启动 Azure 门户。
 
 2. 从 Azure Cosmos DB 帐户的 "**设置**" 菜单中，选择 "**高级安全**"。
 
@@ -61,7 +61,7 @@ ms.locfileid: "72286763"
 ### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
 
 使用 Azure 资源管理器模板来设置启用了高级威胁防护的 Cosmos DB。
-有关详细信息，请参阅[使用高级威胁防护创建 CosmosDB 帐户](https://azure.microsoft.com/en-us/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/)。
+有关详细信息，请参阅[使用高级威胁防护创建 CosmosDB 帐户](https://azure.microsoft.com/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/)。
 
 ### <a name="using-azure-policy"></a>使用 Azure 策略
 

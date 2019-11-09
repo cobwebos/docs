@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 956e31c157c667acd2f830702467249d869648cb
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: d3099498c3abea428e04d94ca0fcd553e6a0fec6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971270"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886402"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>了解更新管理中的 Windows 代理检查结果
 
@@ -63,7 +63,7 @@ ms.locfileid: "69971270"
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-WMF 检查将验证系统是否具有所需的 Windows Management Framework (WMF) 版本- [Windows Management framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)。
+WMF 检查将验证系统是否具有所需的 Windows Management Framework （WMF）版本- [Windows Management framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)。
 
 ### <a name="tls-12"></a>TLS 1.2
 
@@ -107,7 +107,7 @@ Crypto 文件夹访问检查确定本地系统帐户是否有权访问 C:\Progra
 
 ## <a name="troubleshoot-offline"></a>脱机进行故障排除
 
-可以通过在本地运行脚本，在混合 Runbook 辅助角色上脱机使用故障排除。 可在 PowerShell 库中获得 [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) 脚本。 必须安装 WMF 4.0 或更高版本, 才能运行该脚本。 若要下载最新版本的 PowerShell, 请参阅[安装各种版本的 powershell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell)。
+可以通过在本地运行脚本，在混合 Runbook 辅助角色上脱机使用故障排除。 可在 PowerShell 库中获得 [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) 脚本。 必须安装 WMF 4.0 或更高版本，才能运行该脚本。 若要下载最新版本的 PowerShell，请参阅[安装各种版本的 powershell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)。
 
 此脚本的输出如以下示例所示：
 

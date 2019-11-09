@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: df2f22f91cbed17035485d25369965d3284dbaf7
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 0d478b56d7be4ae0c7f2403f9960e5eed59e2b4d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622390"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888644"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>部署模型与 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "73622390"
 
 有关部署工作流中所涉及的概念的详细信息，请参阅[管理、部署和监视具有 Azure 机器学习的模型](concept-model-management-and-deployment.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -88,7 +88,7 @@ ms.locfileid: "73622390"
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    `model_path` 参数引用模型的云位置。 在此示例中，使用单个文件的路径。 若要在模型注册中包含多个文件，请将 `model_path` 设置为包含文件的文件夹的路径。 有关详细信息，请参阅[register_model](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none----kwargs-)文档。
+    `model_path` 参数引用模型的云位置。 在此示例中，使用单个文件的路径。 若要在模型注册中包含多个文件，请将 `model_path` 设置为包含文件的文件夹的路径。 有关详细信息，请参阅[运行 register_model](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none----kwargs-)文档。
 
   + 从 `azureml.train.automl.run.AutoMLRun` 对象注册模型：
 
@@ -101,7 +101,7 @@ ms.locfileid: "73622390"
 
     在此示例中，未指定 `metric` 和 `iteration` 参数，因此将注册具有最佳主要指标的迭代。 使用从运行返回的 `model_id` 值，而不是模型名称。
 
-    有关详细信息，请参阅[AutoMLRun. register_model](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master#register-model-description-none--tags-none--iteration-none--metric-none-)文档。
+    有关详细信息，请参阅[Register_model AutoMLRun](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master#register-model-description-none--tags-none--iteration-none--metric-none-)文档。
 
 + **使用 CLI**
 
@@ -204,7 +204,7 @@ ms.locfileid: "73622390"
 
 ##### <a name="azureml_model_dir"></a>AZUREML_MODEL_DIR
 
-AZUREML_MODEL_DIR 是服务部署期间创建的环境变量。 您可以使用此环境变量来查找部署的模型的位置。
+AZUREML_MODEL_DIR 是在服务部署过程中创建的环境变量。 您可以使用此环境变量来查找部署的模型的位置。
 
 下表描述了 AZUREML_MODEL_DIR 的值，具体取决于部署的模型数：
 
@@ -228,7 +228,7 @@ model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model/1/sklea
 
 ##### <a name="get_model_path"></a>get_model_path
 
-在注册模型时，提供用于在注册表中管理该模型的模型名称。 此名称与模型一起使用[。 get _model_path （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-)方法用于检索模型文件的路径或本地文件系统上的文件。 如果注册文件夹或文件集合，此 API 将返回包含这些文件的目录的路径。
+在注册模型时，提供用于在注册表中管理该模型的模型名称。 将此名称与[model. get_model_path （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-)方法一起使用以检索模型文件的路径或本地文件系统上的文件。 如果注册文件夹或文件集合，此 API 将返回包含这些文件的目录的路径。
 
 注册模型时，请为其指定一个名称。 该名称对应于模型的放置位置，无论是在本地，还是在服务部署过程中。
 
@@ -627,7 +627,7 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 如果已为服务启用令牌身份验证，则需要提供 Azure 机器学习 JWT 令牌作为请求标头中的持有者令牌。
 
 > [!TIP]
-> 部署服务后，可以检索架构 JSON 文档。 使用已部署的 web 服务（例如 `service.swagger_uri`）中的[swagger_uri 属性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)获取本地 Web 服务 swagger 文件的 uri。
+> 部署服务后，可以检索架构 JSON 文档。 使用部署的 web 服务中的[swagger_uri 属性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)（例如，`service.swagger_uri`）获取本地 Web 服务 swagger 文件的 uri。
 
 ### <a name="request-response-consumption"></a>请求-响应消耗
 
@@ -858,6 +858,78 @@ CLI：
 az ml model download --model-id mymodel:1 --target-dir model_folder
 ```
 
+## <a name="preview-no-code-model-deployment"></a>效果无代码模型部署
+
+无代码模型部署目前处于预览阶段，支持以下机器学习框架：
+
+### <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel 格式
+
+```python
+from azureml.core import Model
+
+model = Model.register(workspace=ws,
+                       model_name='flowers',                        # Name of the registered model in your workspace.
+                       model_path='./flowers_model',                # Local Tensorflow SavedModel folder to upload and register as a model.
+                       model_framework=Model.Framework.TENSORFLOW,  # Framework used to create the model.
+                       model_framework_version='1.14.0',            # Version of Tensorflow used to create the model.
+                       description='Flowers model')
+
+service_name = 'tensorflow-flower-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+### <a name="onnx-models"></a>ONNX 模型
+
+任何 ONNX 推理图形都支持 ONNX 模型注册和部署。 当前不支持预处理和 postprocess 步骤。
+
+下面是有关如何注册和部署 MNIST ONNX 模型的示例：
+
+```python
+from azureml.core import Model
+
+model = Model.register(workspace=ws,
+                       model_name='mnist-sample',                  # Name of the registered model in your workspace.
+                       model_path='mnist-model.onnx',              # Local ONNX model to upload and register as a model.
+                       model_framework=Model.Framework.ONNX ,      # Framework used to create the model.
+                       model_framework_version='1.3',              # Version of ONNX used to create the model.
+                       description='Onnx MNIST model')
+
+service_name = 'onnx-mnist-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+### <a name="scikit-learn-models"></a>Scikit-learn-了解模型
+
+并非所有内置 scikit-learn 模型类型都支持代码模型部署。
+
+下面的示例演示如何注册和部署不带额外代码的 spark-sklearn 模型：
+
+```python
+from azureml.core import Model
+from azureml.core.resource_configuration import ResourceConfiguration
+
+model = Model.register(workspace=ws,
+                       model_name='my-sklearn-model',                # Name of the registered model in your workspace.
+                       model_path='./sklearn_regression_model.pkl',  # Local file to upload and register as a model.
+                       model_framework=Model.Framework.SCIKITLEARN,  # Framework used to create the model.
+                       model_framework_version='0.19.1',             # Version of scikit-learn used to create the model.
+                       resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5),
+                       description='Ridge regression model to predict diabetes progression.',
+                       tags={'area': 'diabetes', 'type': 'regression'})
+                       
+service_name = 'my-sklearn-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+注意：这些依赖项包含在预生成的 spark-sklearn 推理容器中：
+
+```yaml
+    - azureml-defaults
+    - inference-schema[numpy-support]
+    - scikit-learn
+    - numpy
+```
+
 ## <a name="package-models"></a>包模型
 
 在某些情况下，你可能想要在不部署模型的情况下创建 Docker 映像（例如，你打算[部署到 Azure App Service](how-to-deploy-app-service.md)）。 或者，你可能想要下载映像并在本地 Docker 安装上运行它。 甚至可能需要下载用于生成映像的文件、对其进行检查、修改，并手动生成映像。
@@ -997,78 +1069,6 @@ docker kill mycontainer
 若要删除已注册的模型，请使用 `model.delete()`。
 
 有关详细信息，请参阅[WebService （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--)和 Model 的文档[（）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)。
-
-## <a name="preview-no-code-model-deployment"></a>效果无代码模型部署
-
-无代码模型部署目前处于预览阶段，支持以下机器学习框架：
-
-### <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel 格式
-
-```python
-from azureml.core import Model
-
-model = Model.register(workspace=ws,
-                       model_name='flowers',                        # Name of the registered model in your workspace.
-                       model_path='./flowers_model',                # Local Tensorflow SavedModel folder to upload and register as a model.
-                       model_framework=Model.Framework.TENSORFLOW,  # Framework used to create the model.
-                       model_framework_version='1.14.0',            # Version of Tensorflow used to create the model.
-                       description='Flowers model')
-
-service_name = 'tensorflow-flower-service'
-service = Model.deploy(ws, service_name, [model])
-```
-
-### <a name="onnx-models"></a>ONNX 模型
-
-任何 ONNX 推理图形都支持 ONNX 模型注册和部署。 当前不支持预处理和 postprocess 步骤。
-
-下面是有关如何注册和部署 MNIST ONNX 模型的示例：
-
-```python
-from azureml.core import Model
-
-model = Model.register(workspace=ws,
-                       model_name='mnist-sample',                  # Name of the registered model in your workspace.
-                       model_path='mnist-model.onnx',              # Local ONNX model to upload and register as a model.
-                       model_framework=Model.Framework.ONNX ,      # Framework used to create the model.
-                       model_framework_version='1.3',              # Version of ONNX used to create the model.
-                       description='Onnx MNIST model')
-
-service_name = 'onnx-mnist-service'
-service = Model.deploy(ws, service_name, [model])
-```
-
-### <a name="scikit-learn-models"></a>Scikit-learn-了解模型
-
-并非所有内置 scikit-learn 模型类型都支持代码模型部署。
-
-下面的示例演示如何注册和部署不带额外代码的 spark-sklearn 模型：
-
-```python
-from azureml.core import Model
-from azureml.core.resource_configuration import ResourceConfiguration
-
-model = Model.register(workspace=ws,
-                       model_name='my-sklearn-model',                # Name of the registered model in your workspace.
-                       model_path='./sklearn_regression_model.pkl',  # Local file to upload and register as a model.
-                       model_framework=Model.Framework.SCIKITLEARN,  # Framework used to create the model.
-                       model_framework_version='0.19.1',             # Version of scikit-learn used to create the model.
-                       resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5),
-                       description='Ridge regression model to predict diabetes progression.',
-                       tags={'area': 'diabetes', 'type': 'regression'})
-                       
-service_name = 'my-sklearn-service'
-service = Model.deploy(ws, service_name, [model])
-```
-
-注意：这些依赖项包含在预生成的 spark-sklearn 推理容器中：
-
-```yaml
-    - azureml-defaults
-    - inference-schema[numpy-support]
-    - scikit-learn
-    - numpy
-```
 
 ## <a name="next-steps"></a>后续步骤
 

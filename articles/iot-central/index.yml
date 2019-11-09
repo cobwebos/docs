@@ -10,72 +10,72 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: cf720d7a526a913cc4c06ee160de3eecbe92e0a1
-  ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+  ms.openlocfilehash: f43c21d483bbb43bb270a7a70c4de6be1fb90f35
+  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/30/2019
-  ms.locfileid: "73176113"
+  ms.lasthandoff: 11/09/2019
+  ms.locfileid: "73890747"
 highlightedContent:
   items:
   - title: 什么是 IoT Central？
     itemType: overview
-    url: ./core/overview-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    url: ./preview/overview-iot-central.md
   - title: 什么是应用程序模板？
     itemType: concept
-    url: ./core/concepts-app-templates.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    url: ./core/concepts-app-templates.md
   - title: Azure IoT Central 体系结构
     itemType: architecture
-    url: ./core/concepts-architecture-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    url: ./preview/concepts-architecture.md
   - title: 创建新应用程序
     itemType: quickstart
-    url: ./core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    url: ./preview/quick-deploy-iot-central.md
   - title: 定义设备类型并添加设备
     itemType: tutorial
-    url: ./core/howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    url: ./preview/howto-set-up-template.md
   - title: 监视设备
     itemType: tutorial
-    url: ./core/tutorial-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    url: ./preview/tutorial-create-telemetry-rules.md
 conceptualContent:
   items:
   - title: 建立连接（预览功能）
     links:
-    - url: ./core/howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - url: ./preview/howto-set-up-template.md
       itemType: how-to-guide
       text: 设置设备模板
-    - url: ./core/tutorial-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - url: ./preview/tutorial-connect-pnp-device.md
       itemType: tutorial
       text: 连接 IoT 即插即用设备
     footerLink:
-      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: ./preview/index.yml
       text: 另请参阅
   - title: 保持连接（预览功能）
     links:
-    - url: ./core/tutorial-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - url: ./preview/tutorial-use-device-groups.md
       itemType: how-to-guide
       text: 使用设备组
-    - url: ./core/howto-manage-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - url: ./preview/howto-manage-devices.md
       itemType: how-to-guide
       text: 管理设备
-    - url: ./core/howto-run-a-job.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - url: ./core/howto-run-a-job.md
       itemType: concept
       text: 如何运行作业
-    - url: ./core/howto-create-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - url: ./preview/howto-create-analytics.md
       itemType: how-to-guide
       text: 分析设备数据
     footerLink:
-      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: ./preview/index.yml
       text: 另请参阅
   - title: 转换（预览功能）
     links:
-    - url: ./core/howto-create-telemetry-rules.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - url: ./preview/tutorial-create-telemetry-rules.md
       itemType: how-to-guide
       text: 创建遥测规则
-    - url: ./core/howto-export-data-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - url: ./preview/howto-export-data.md
       itemType: how-to-guide
       text: 配置连续数据导出
     footerLink:
-      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: ./preview/index.yml
       text: 另请参阅
 productDirectory:
   title: 使用行业应用程序模板开始生成

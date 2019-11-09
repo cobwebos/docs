@@ -16,12 +16,12 @@ ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 704e217cd7ddea988b6a9812627aba8c8468fb73
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: e3ad689fb57c51d0deb698a723b93e6175bdbb5c
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955492"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882878"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>隔离状态的应用程序设置
 
@@ -33,7 +33,7 @@ Azure AD 预配服务监视配置的运行状况，并将不正常的应用置�
 
 有三种方法可以检查应用程序是否处于隔离区：
   
-- 在 Azure 门户中，导航到**Azure Active Directory** >  个**企业应用程序** >  @ no__t-4*应用程序名称*&gt; @ no__t**预配**，并滚动到底部的进度栏。  
+- 在 Azure 门户中，导航到**Azure Active Directory** > **企业应用程序** > &lt;&gt;**预配**的*应用程序名称*，并滚动到底部的进度栏。 >   
 
   ![显示隔离状态的设置状态栏](media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
 
@@ -53,9 +53,9 @@ Azure AD 预配服务监视配置的运行状况，并将不正常的应用置�
 
 - `EncounteredQuarantineException` 指示提供的凭据无效。 预配服务无法在源系统和目标系统之间建立连接。
 
-- `EncounteredEscrowProportionThreshold` 指示预配超出了保管阈值。 如果预配事件超过 60%，则会出现此情况。
+- `EncounteredEscrowProportionThreshold` 指示预配超出了保管阈值。 如果预配事件超过60%，则会出现此情况。
 
-- `QuarantineOnDemand` 表示检测到应用程序存在问题，并已将其手动设置为隔离。
+- `QuarantineOnDemand` 意味着我们检测到应用程序存在问题，并已将其手动设置为隔离。
 
 ## <a name="how-do-i-get-my-application-out-of-quarantine"></a>如何实现将应用程序隔离到隔离区？
 
@@ -63,12 +63,12 @@ Azure AD 预配服务监视配置的运行状况，并将不正常的应用置�
 
 - 请检查应用程序的设置设置，以确保[输入了有效的管理凭据](configure-automatic-user-provisioning-portal.md#configuring-automatic-user-account-provisioning)。 Azure AD 必须能够建立与目标应用程序的信任关系。 请确保输入的凭据有效，并且帐户具有所需的权限。
 
-- 查看[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)，进一步调查导致隔离和解决错误的错误。 转到 "**活动**" 部分中的**Azure Active Directory** @no__t 1 个**企业应用**&gt; "**预配日志（预览版）** ，访问 Azure 门户中的设置日志。
+- 查看[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)，进一步调查导致隔离和解决错误的错误。 转到 "**活动**" 部分中的**Azure Active Directory** &gt;**企业应用**&gt;**预配日志（预览版）** 来访问 Azure 门户中的设置日志。
 
 解决问题后，请重新启动设置作业。 对应用程序的预配设置的某些更改（如属性映射或范围筛选器）将自动重新启动设置。 应用程序的 "**设置**" 页上的进度条指示预配上次启动的时间。 如果需要手动重新启动设置作业，请使用以下方法之一：  
 
 - 使用 Azure 门户重启预配作业。 在应用程序的 "设置 **" 页的**"**设置**" 下，选择 "**清除状态并重新启动同步**"，并将设置**状态**设置为**On**。 此操作完全重启预配服务，这可能需要一些时间。 将再次运行完整的初始周期，这会清除 escrows，从隔离区中删除应用程序，并清除所有水印。
 
-- 使用 Microsoft Graph[重启预配作业](https://docs.microsoft.com/en-us/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)。 你可以完全控制重新启动的内容。 你可以选择清除 escrows （以重新启动向隔离状态累算的保管计数器）、清除隔离（从隔离区删除应用程序）或清除水印。 使用以下请求：
+- 使用 Microsoft Graph[重启预配作业](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)。 你可以完全控制重新启动的内容。 你可以选择清除 escrows （以重新启动向隔离状态累算的保管计数器）、清除隔离（从隔离区删除应用程序）或清除水印。 使用以下请求：
  
        `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`

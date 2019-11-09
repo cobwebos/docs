@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: cf4274931d83b51afb4a8ada7d1c9040ccce3c14
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7003e5b8574d2caa05bfe66e500b93db0c1cdcfa
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606834"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891642"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix 配置文件容器和 Azure 文件
 
@@ -78,7 +78,7 @@ S2D 群集要求在安全状态下对操作系统进行修补、更新和维护�
 
 ## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure 文件与 Azure Active Directory 域服务的集成
 
-FSLogix 配置文件容器的性能和功能将充分利用云。 2019年8月7日，Microsoft Azure[个文件通过 Azure Active Directory 域服务（AD DS）公布了 Azure 文件身份验证](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-overview)的公开上市。 通过解决成本和管理开销，具有 Azure AD DS 身份验证的 Azure 文件是 Windows 虚拟桌面服务中的用户配置文件的高级解决方案。
+FSLogix 配置文件容器的性能和功能将充分利用云。 2019年8月7日，Microsoft Azure[个文件通过 Azure Active Directory 域服务（AD DS）公布了 Azure 文件身份验证](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview)的公开上市。 通过解决成本和管理开销，具有 Azure AD DS 身份验证的 Azure 文件是 Windows 虚拟桌面服务中的用户配置文件的高级解决方案。
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Windows 虚拟桌面的最佳实践
 

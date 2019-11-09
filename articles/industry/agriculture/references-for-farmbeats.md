@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 8e8e4524034f0a296045691309b065f8547bdaa0
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 057037807a75e50eb2305bfab19d1fcff7fe77ce
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797694"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889595"
 ---
 # <a name="references"></a>参考
 
@@ -75,7 +75,7 @@ headers = {"Authorization": "Bearer " + **access_token**}
 --- | ---
 Content-Type  | Azure FarmBeats 数据中心 Api 格式的请求格式（Content-type： application/<format>）为 json。 Content-type： application/json
 授权  | 指定进行 API 调用所需的访问令牌。 **授权：持有者 < 访问令牌 >**
-Accept | 响应格式。 对于 Azure FarmBeats 数据中心 Api，格式为 json **Accept： application/json**
+接受 | 响应格式。 对于 Azure FarmBeats 数据中心 Api，格式为 json **Accept： application/json**
 
 **API 请求**
 
@@ -85,7 +85,7 @@ API 服务的 URL 是你的数据中心 URL https://\<yourdatahub >. appname>.az
 
 下面的示例请求是获取设备的列表：
 
-```
+```azurepowershell-interactive
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
 ```
 
@@ -108,7 +108,6 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept:
 
 Azure FarmBeats 数据中心 API 返回标准 HTTP 错误。 最常见的错误代码如下所示：
 
-
  |错误代码             | 说明 |
  |---                    | --- |
  |200                    | 成功 |
@@ -121,29 +120,29 @@ Azure FarmBeats 数据中心 API 返回标准 HTTP 错误。 最常见的错误�
 
 除了标准 HTTP 错误外，Azure FarmBeats 数据中心 Api 还会返回以下格式的内部错误：
 
-```
-{
-  "message": "<More information on the error>",
-  "status": "<error code>”,
-  "code": "<InternalErrorCode>",
-  "moreInfo": "<Details of the error>"
-}
-```
+    ```
+    {
+      "message": "<More information on the error>",
+      "status": "<error code>”,
+      "code": "<InternalErrorCode>",
+      "moreInfo": "<Details of the error>"
+    }
+    ```
 
 示例：创建场时，输入负载中未指定必填字段 "Name"。 生成的错误消息为：
 
-```
-{
-  "message": "Model validation failed",
-  "status": 400,
-  "code": "ModelValidationFailed",
-  "moreInfo": "[\"The Name field is required.\"]"
-}
-```
+    ```json
+    {
+      "message": "Model validation failed",
+      "status": 400,
+      "code": "ModelValidationFailed",
+      "moreInfo": "[\"The Name field is required.\"]"
+    }
+    ```
 
 ## <a name="adding-users-or-app-registrations-to-azure-active-directory"></a>将用户或应用注册添加到 Azure Active Directory
 
- 可以通过 Azure Active Directory 中的用户或应用注册来访问 Azure FarmBeats Api。 若要在 Azure Active Directory 上创建应用注册，请执行以下步骤：  
+可以通过 Azure Active Directory 中的用户或应用注册来访问 Azure FarmBeats Api。 若要在 Azure Active Directory 上创建应用注册，请执行以下步骤：  
 
 1. 请参阅[Azure 门户](https://portal.azure.com) **Azure Active Directory，应用注册**> "**新注册**"。 或者，您可以使用现有帐户。
 2. 对于新帐户，请确保完成以下操作：

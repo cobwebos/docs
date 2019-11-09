@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6cdebb8f6abea2b50dd8aad58ccc9fb5e680cba9
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 635431fb87e5f164f92ab4b7a1027ee96e9d801a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798474"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891009"
 ---
 # <a name="generate-maps"></a>生成映射
 
@@ -88,7 +88,7 @@ FarmBeats 传感器放置图可帮助放置土料湿度传感器。 地图输出
     ![项目场节拍](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
 3. 从下拉菜单中选择 "**类型**"、"**日期**" 和 "**名称**"，然后选择 "**应用**" 以搜索要查看的地图。
-  创建作业的日期以 type_farmname_YYYY-MM 格式显示。
+  创建作业的日期以格式显示，格式为 type_farmname_YYYY-MM-DD。
 4. 在页面末尾使用导航栏，滚动浏览可用地图的列表。
 5. 选择要查看的地图。 弹出窗口显示所选地图的预览。
 6. 选择 "**下载**"，然后下载传感器坐标的 GeoJSON 文件。
@@ -149,7 +149,7 @@ FarmBeats 使你能够生成 Vegetation 的规范化差异索引（NDVI）、增
     ![项目场节拍](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
 3. 从下拉菜单中选择 "**类型**"、"**日期**" 和 "**名称**"，然后选择 "**应用**" 以搜索要查看的地图。
-  创建作业的日期以 type_farmname_YYYY-MM 格式显示。
+  创建作业的日期以格式显示，格式为 type_farmname_YYYY-MM-DD。
 
 4. 在页面末尾使用导航栏，滚动浏览可用地图的列表。
 5. 对于**场名称**和**日期**的每个组合，可以使用以下三个映射：
@@ -170,7 +170,7 @@ FarmBeats 使你能够生成 Vegetation 的规范化差异索引（NDVI）、增
 在尝试生成土潮湿热度地图之前，请确保以下各项：
 
 - 必须至少部署三个泥土湿度传感器。 Microsoft 建议您在部署传感器并将其与场关联之前，不要尝试创建土里湿气地图。  
-- 在过去的120天内，至少有一个云免费的 Sentinel 场景必须可用于从其请求了土料湿气地图的那一天。
+- 生成土住湿气热度地图受 Sentinel 的路径范围、云覆盖和云阴影影响。 在过去的120天内，至少有一个云免费的 Sentinel 场景必须可用于从其请求了土料湿气地图的那一天。
 - 在服务器场中部署的至少一半传感器必须处于联机状态，并将数据流式传输到数据中心。
 - 应使用来自同一个提供程序的传感器度量值生成热度地图。
 
@@ -216,10 +216,10 @@ FarmBeats 使你能够生成 Vegetation 的规范化差异索引（NDVI）、增
 
     ![项目场节拍](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
-3.  从下拉菜单中选择 "**类型**"、"**日期**" 和 "**名称**"，然后选择 "**应用**" 以搜索要查看的地图。 创建作业的日期以 type_farmname_YYYY-MM 格式显示。
+3.  从下拉菜单中选择 "**类型**"、"**日期**" 和 "**名称**"，然后选择 "**应用**" 以搜索要查看的地图。 创建作业的日期以格式显示，格式为 type_farmname_YYYY-MM-DD。
 4. 选择表标题旁边的**排序**图标，按场、日期、创建时间、作业 ID 和作业类型进行排序。
 5. 使用页面末尾的导航按钮滚动浏览可用地图的列表。
 6. 选择要查看的地图。 弹出窗口显示所选地图的预览。
-7. 选择 "**下载**" 下拉菜单以选择下载格式，并将地图下载并存储在计算机的本地文件夹中。
+7. 选择 "**下载**" 下拉菜单以选择下载格式，并将地图下载并存储在指定的文件夹中。
 
     ![项目场节拍](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)

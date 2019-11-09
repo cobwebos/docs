@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 622b4e53be68025ad9553ce604041d14885bb2b2
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 7a0cce6b72240b95943fbece08cfbf61eaee3524
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330831"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891709"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>准备和自定义主 VHD 映像
 
-本文介绍如何准备要上传到 Azure 的主虚拟硬盘（VHD）映像，包括如何创建虚拟机（Vm）并在其上安装软件。 这些说明适用于可与组织的现有过程配合使用的特定于 Windows 虚拟桌面的配置。
+本文介绍如何准备要上传到 Azure 的主虚拟硬盘（VHD）映像，包括如何创建虚拟机（Vm）并在其上安装软件。 这些说明适用于 Windows 虚拟桌面特定的配置，可与组织的现有流程一起使用。
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -70,7 +70,7 @@ Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.
 
 ### <a name="set-up-user-profile-container-fslogix"></a>设置用户配置文件容器（FSLogix）
 
-若要将 FSLogix 容器包括为映像的一部分，请按照[使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)中的说明进行操作。 可以通过[本快速入门](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial)测试 FSLogix 容器的功能。
+若要将 FSLogix 容器包括为映像的一部分，请按照[使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)中的说明进行操作。 可以通过[本快速入门](https://docs.microsoft.com/fslogix/configure-cloud-cache-tutorial)测试 FSLogix 容器的功能。
 
 ### <a name="configure-windows-defender"></a>配置 Windows Defender
 
@@ -86,7 +86,7 @@ Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.
 
 若要通过本地组策略禁用自动更新：
 
-1. 打开**本地组策略编辑器 @ no__t-1Administrative Templates @ no__t-2Windows Components @ No__t 更新**。
+1. 打开**本地组策略编辑器\\管理模板\\Windows 组件\\Windows 更新**。
 2. 右键单击 "**配置自动更新**"，并将其设置为 "**已禁用**"。
 
 你还可以在命令提示符下运行以下命令，以禁用自动更新。
@@ -109,7 +109,7 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoam
 
 配置远程会话策略：
 
-1. 导航到**管理模板** >  个**Windows 组件** > **远程桌面服务**@no__t 远程桌面会话主机-**7 个** **会话时间限制**。
+1. 导航到**管理模板** > **Windows 组件** > **远程桌面服务** > **远程桌面会话主机** **会话时间限制**。 > 
 2. 在右侧面板中，选择 "**为活动但空闲远程桌面服务会话设置时间限制**" 策略。
 3. 出现模式窗口后，将策略选项从 "**未配置**" 更改为 "**已启用**" 以激活策略。
 4. 在策略选项下面的下拉菜单中，将时间量设置为**3 小时**。
@@ -134,7 +134,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxId
 1. 在 Active Directory 服务器上，打开**组策略管理控制台**。
 2. 展开你的域和组策略对象。
 3. 右键单击为 "组策略" 设置创建的**组策略对象**，然后选择 "**编辑**"。
-4. 在**组策略管理编辑器**中，导航到 "**计算机配置**"  > **策略** > **管理模板**@no__t**Windows 组件** > **远程桌面服务**0**远程桌面会话主机**@no__t**设备和资源重定向**。
+4. 在**组策略管理编辑器**中，导航到 "**计算机配置**" > **策略**" > **管理模板** >  ** > ** 远程桌面服务 ** > ** 远程桌面会话主机**设备和资源重定向**的**Windows 组件**。 > 
 5. 启用 "**允许时区重定向**" 设置。
 
 你还可以在主映像上运行此命令以重定向时区：

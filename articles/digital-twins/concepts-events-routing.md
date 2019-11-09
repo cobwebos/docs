@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: 217a1d94a4a5235fc5886f34986ffcb3aef60873
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/07/2019
+ms.openlocfilehash: f2479d9f3e278d23d62275b667f78d1fd70dd151
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949266"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889694"
 ---
 # <a name="routing-events-and-messages"></a>路由事件和消息
 
@@ -31,7 +31,9 @@ Azure 数字孪生提供了两种连接 IoT 事件与其他 Azure 服务或业�
 
 [![Azure 数字孪生事件路由](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
 
-到事件中心的路由保持遥测消息的发送顺序。 因此，消息将按照最初接收的相同顺序抵达终结点。 事件网格和服务总线不保证终结点按照事件的发生顺序接收事件。 但是，事件架构包含时间戳，可用于确定事件到达终结点后的顺序。
+到事件中心的路由保持遥测消息的发送顺序。 因此，消息将按照最初接收的相同顺序抵达终结点。 
+
+事件网格和服务总线不保证终结点按照事件的发生顺序接收事件。 但是，事件架构包含时间戳，可用于确定事件到达终结点后的顺序。
 
 ## <a name="route-implementation"></a>路由实现
 

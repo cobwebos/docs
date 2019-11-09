@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: f27b910910ca21aa36582506e6c7b2d1d39da88a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ce5d2965d0127eec01620c702d7d83bd0b39416
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472857"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885790"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自动缩放群集以满足 Azure Kubernetes 服务 (AKS) 中的应用程序需求
 
@@ -122,6 +122,35 @@ az aks update \
 ## <a name="re-enable-a-disabled-cluster-autoscaler"></a>重新启用已禁用的群集自动缩放程序
 
 如果你想要在现有群集上重新启用群集自动缩放程序，可以使用[az aks update][az-aks-update]命令重新启用该群集，并指定 *--自动缩放程序*、 *--min-* 和 *--max*参数。
+
+## <a name="retrieve-cluster-autoscaler-logs-and-status"></a>检索群集自动缩放程序日志和状态
+
+若要诊断和调试自动缩放程序事件，可以从自动缩放程序外接程序检索日志和状态。
+
+AKS 代表您管理群集自动缩放程序并在托管控制平面中运行该群集。 必须将主节点日志配置为查看结果。
+
+若要将日志配置为从群集自动缩放程序推送到 Log Analytics 执行以下步骤。
+
+1. 设置诊断日志规则，以便将群集自动缩放程序日志推送 Log Analytics。 [此处详细说明](https://docs.microsoft.com/azure/aks/view-master-logs#enable-diagnostics-logs)，请确保在为 "日志" 选择选项时选中 `cluster-autoscaler` 的复选框。
+1. 通过 Azure 门户单击群集上的 "日志" 部分。
+1. 将以下示例查询输入 Log Analytics：
+
+```
+AzureDiagnostics
+| where Category == "cluster-autoscaler"
+```
+
+只要有要检索的日志，就会看到类似于下面返回的日志。
+
+![Log Analytics 日志](media/autoscaler/autoscaler-logs.png)
+
+群集自动缩放程序还会将运行状况状态写出到名为 `cluster-autoscaler-status`的 configmap 中。 若要检索这些日志，请执行以下 `kubectl` 命令。 将报告配置了群集自动缩放程序的每个节点池的运行状况状态。
+
+```
+kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml
+```
+
+若要详细了解自动缩放程序中记录的内容，请阅读[Kubernetes/自动缩放程序 GitHub 项目](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#ca-doesnt-work-but-it-used-to-work-yesterday-why)的常见问题解答。
 
 ## <a name="use-the-cluster-autoscaler-with-multiple-node-pools-enabled"></a>使用启用了多个节点池的群集自动缩放程序
 

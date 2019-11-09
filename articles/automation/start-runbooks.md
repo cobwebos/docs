@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a42ba0a385b73032e3d4045094bc88613016b849
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8200052e14161d91b7daef6a0acd9c851518d9c2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850345"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886497"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>在 Azure 自动化中启动 Runbook
 
@@ -44,7 +44,7 @@ ms.locfileid: "68850345"
 
 ## <a name="start-a-runbook-with-powershell"></a>使用 PowerShell 启动 Runbook
 
-可以在 Windows PowerShell 中使用 [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) 启动 Runbook。 以下示例代码启动名为 Test-Runbook 的 Runbook。
+可以在 Windows PowerShell 中使用 [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) 启动 Runbook。 以下示例代码将启动名为 Test-Runbook 的 Runbook。
 
 ```azurepowershell-interactive
 Start-AzureRmAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
@@ -186,5 +186,5 @@ jsmith
 ## <a name="next-steps"></a>后续步骤
 
 * 本文中的 Runbook 体系结构提供了在本地和 Azure 中使用混合 Runbook 辅助角色管理资源的 Runbook 的高级概述。 若要了解如何在数据中心执行自动化 Runbook，请参阅[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)。
-* 若要详细了解如何创建模块化 Runbook，以供其他 Runbook 用于特定或常用函数，请参阅[子 Runbook](automation-child-runbooks.md)。
-* 有关 PowerShell 的详细信息, 包括语言参考和学习模块, 请参阅[Powershell 文档](https://docs.microsoft.com/en-us/powershell/scripting/overview)。
+* 若要详细了解如何创建模块化 Runbook，供其他 Runbook 用于特定或常用函数，请参阅[子 Runbook](automation-child-runbooks.md)。
+* 有关 PowerShell 的详细信息（包括语言参考和学习模块），请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/scripting/overview)。

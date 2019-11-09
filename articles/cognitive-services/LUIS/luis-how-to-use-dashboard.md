@@ -1,7 +1,7 @@
 ---
 title: 仪表板 - 语言理解 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 使用分析仪表板（一个可视化报告工具）修复意向。
+description: 通过训练有素的应用的仪表板修复意向和实体。 仪表板显示整体性的应用信息，并突出显示应予以修复的意向。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 22e187bba3782e485685354c203a6273d5bcc618
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: d9ae126753f55349f9bf3eefd20bc4d222866af1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735055"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888201"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>如何使用仪表板来改善应用
 
@@ -78,9 +78,9 @@ ms.locfileid: "70735055"
 
 添加示例言语的操作应由具备以下经验的人员来执行：
 
-* 高度了解了不同意向中的最谈话。
-* 知道最谈话在一个目的中的方式可能与其他意图混淆。
-* 可以决定是否应将两个经常相互混淆的方法折叠为一个意向。 如果是这种情况，则必须与实体一起提取不同的数据。
+* 对于不同意向中的言语具有较高程度的了解。
+* 知道在哪种情况下，一个意向中的言语可能会与另一个意向发生混淆。
+* 能够决定是否应该将两个经常相互混淆的意向折叠为单个意向。 如果是这种情况，则必须使用实体提取不同的数据。
 
 ### <a name="patterns-and-phrase-lists"></a>模式和短语列表
 
@@ -154,7 +154,7 @@ ms.locfileid: "70735055"
 
 使用筛选器可以查找存在特定问题的意向：
 
-|筛选|建议的百分比|用途|
+|筛选器|建议的百分比|目的|
 |--|--|--|
 |问题最严重的意向|-|**从此处着手** - 修复此意向中的言语比其他修复方法更能改善应用。|
 |正确的预测低于|60%|这是选定意向中正确的、但置信度评分低于阈值的言语的百分比。 |

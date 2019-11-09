@@ -6,14 +6,14 @@ author: bandersmsft
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: d211334ad2aa760cd63b98c6827fb2512811a1d3
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b1cc034b4d397f170b57e873cb9a5d74c91f83f4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70806943"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73746463"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>通过按月付款的方式购买预留
 
@@ -24,6 +24,7 @@ ms.locfileid: "70806943"
 每月付款适用于：
 
 - 虚拟机
+- Azure 存储
 - SQL 数据库
 - SQL 数据仓库
 - Cosmos DB
@@ -60,20 +61,6 @@ ms.locfileid: "70806943"
 如果取消按月付费的预留，Microsoft 可能会对已取消的未来承诺付款收取一项取消费。 剩余的承诺付款存在 50,000 美元的退款限制。
 
 有关交换和退款的详细信息，请参阅 [Azure 预留的自助交换和退款](billing-azure-reservations-self-service-exchange-and-refund.md)。
-
-## <a name="faq"></a>常见问题解答
-
-问： Azure 是否提供“预付部分款预留”？<br>
-A. 不是。 由于提前付款预留和按月付款预留的成本相同，Microsoft 不支持预付部分款。
-
-问： 按月付款是否适用于 Microsoft 云解决方案提供商 (CSP) 计划？<br>
-A. 是的，合作伙伴可以在 Azure 门户中为其 CSP 客户购买预留。 合作伙伴中心不提供通过按月计费购买预留的功能。
-
-问： 我是美国 Azure Government 客户，是否可以通过按月付费来购买预留？<br>
-A. 目前不可以。
-
-问： 我何时可以在 Azure 门户中自行进行交换或退款，而不是创建支持票证？<br>
-A. 目前不可以。 请求对按月付款预留执行交换和退款操作时，由 Azure 支持部门处理相关事宜。
 
 ## <a name="next-steps"></a>后续步骤
 

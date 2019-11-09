@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/11/2019
-ms.openlocfilehash: bee3e24739aa560a43960143d1a18c30ec1ce160
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 356c8389ed486246ce55b5006e1e489ac7c3c1e3
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819448"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884786"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>地理位置和 IP 地址处理
 
@@ -124,7 +124,7 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>遥测初始化程序
 
-如果需要更灵活的替代 `DisableIpMasking` 来记录全部或部分 IP 地址，可以使用[遥测初始值设定项](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer)将 ip 全部或部分 ip 复制到自定义字段。 
+如果需要更灵活的替代 `DisableIpMasking` 来记录全部或部分 IP 地址，可以使用[遥测初始值设定项](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer)将 ip 全部或部分 ip 复制到自定义字段。 
 
 ### <a name="aspnet--aspnet-core"></a>ASP.NET/ASP.NET Core
 

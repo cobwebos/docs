@@ -12,12 +12,12 @@ metadata:
   title: 个性化体验创建服务文档
   titleSuffix: Azure Cognitive Services
   description: Azure 个性化体验创建服务是基于云的 API 服务，可让你选择要显示给用户的最佳体验，并从其实时行为中学习信息。
-  ms.openlocfilehash: 19736d881400a311964920f5669a0e9423891f9e
-  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+  ms.openlocfilehash: d71f5f673a3008f13f7bb762fc48a687c0cf0ddb
+  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/05/2019
-  ms.locfileid: "73604197"
+  ms.lasthandoff: 11/09/2019
+  ms.locfileid: "73889248"
 landingContent:
 - title: 关于个性化体验创建服务
   linkLists:
@@ -66,7 +66,7 @@ landingContent:
     - text: NuGet 包
       url: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/0.8.0-preview
     - text: NuGet 参考文档
-      url: https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.personalizer?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet
+      url: https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet
   - linkListType: get-started
     links:
     - text: 利用 Node.js 开发个性化体验创建服务循环

@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 1908ed916d61c7a65b1f0061c0fe8d8a08b5e41c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ed9bd6f5932fdcb2d9124a000115a6f68cf21613
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388096"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889311"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>沉浸式读者 SDK 参考指南
 
 沉浸式读者 SDK 是一个 JavaScript 库，可用于将沉浸式读者集成到 web 应用程序中。
 
-# <a name="functions"></a>Functions
+## <a name="functions"></a>函数
 
 SDK 公开函数：
 
@@ -33,7 +33,7 @@ SDK 公开函数：
 
 ## <a name="launchasync"></a>launchAsync
 
-在 web 应用程序的 @no__t 0 中启动沉浸式读取器。
+在 web 应用程序的 `iframe` 中启动沉浸式读取器。
 
 ```typescript
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
@@ -41,7 +41,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>parameters
 
-| 名称 | Type | 描述 |
+| 名称 | 类型 | 说明 |
 | ---- | ---- |------------ |
 | `token` | 字符串 | Azure AD 身份验证令牌。 请参阅[Azure AD authentication 操作方法](./azure-active-directory-authentication.md)。 |
 | `subdomain` | 字符串 | Azure 中沉浸式读者资源的自定义子域。 请参阅[Azure AD authentication 操作方法](./azure-active-directory-authentication.md)。 |
@@ -50,17 +50,17 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="returns"></a>返回值
 
-返回一个 `Promise<HTMLDivElement>`，它可解析沉浸式读取器的加载时间。 @No__t-0 解析为 @no__t 1 元素，该元素的子元素是包含沉浸式读者页的 @no__t 2 元素。
+返回一个 `Promise<HTMLDivElement>`，该解析加载沉浸式阅读器的时间。 `Promise` 解析为一个 `div` 元素，该元素的子元素是包含沉浸式读者页的 `iframe` 元素。
 
-### <a name="exceptions"></a>例外
+### <a name="exceptions"></a>异常
 
-如果无法加载沉浸式读取器，则将使用[@no__t 2](#error)对象拒绝返回的 @no__t。 有关详细信息，请参阅[错误代码](#error-codes)。
+如果沉浸式读取器加载失败，将使用[`Error`](#error)对象拒绝返回的 `Promise`。 有关详细信息，请参阅[错误代码](#error-codes)。
 
 ## <a name="close"></a>关闭
 
 关闭沉浸式阅读器。
 
-此函数的一个示例用例是通过在[选项](#options)中设置 ```hideExitButton: true``` 来隐藏 "退出" 按钮。 然后，在单击时，另一个按钮（例如，移动标头的后退箭头）可以调用此 ```close``` 函数。
+此函数的一个示例用例是通过在[选项](#options)中设置 ```hideExitButton: true``` 来隐藏 "退出" 按钮。 然后，在单击该按钮时，另一个按钮（例如移动标头的后退箭头）可以调用此 ```close``` 函数。
 
 ```typescript
 close(): void;
@@ -68,7 +68,7 @@ close(): void;
 
 ## <a name="renderbuttons"></a>renderButtons
 
-此函数将样式和更新文档的沉浸式读者按钮元素。 如果提供 ```options.elements```，则此函数将呈现 @no__t 中的按钮。 否则，这些按钮将在具有类 ```immersive-reader-button``` 的文档元素中呈现。
+此函数将样式和更新文档的沉浸式读者按钮元素。 如果提供了 ```options.elements```，则此函数将呈现 ```options.elements```中的按钮。 否则，这些按钮将在具有类 ```immersive-reader-button```的文档元素中呈现。
 
 当窗口加载时，SDK 会自动调用此函数。
 
@@ -80,7 +80,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>parameters
 
-| 名称 | Type | 描述 |
+| 名称 | 类型 | 说明 |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | 用于配置 renderButtons 函数的某些行为的选项。 可选。 |
 
@@ -111,7 +111,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 #### <a name="supported-mime-types"></a>支持的 MIME 类型
 
-| MIME 类型 | 描述 |
+| MIME 类型 | 说明 |
 | --------- | ----------- |
 | text/plain | 纯文本。 |
 | text/html | HTML 内容。 [了解详细信息](#html-support)|
@@ -124,7 +124,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 | 字体样式 | 粗体、斜体、下划线、代码、删除线、上标、下标 |
 | 无序列表 | 光盘、圆形、方形 |
 | 排序列表 | Decimal，大写字母，小写字母，上罗马，小写罗马字 |
-| 中超 | 即将推出 |
+| 中超 | 即将支持 |
 
 不支持的标记将呈现为同等的。 当前不支持映像和表。
 
@@ -168,7 +168,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 #### <a name="error-codes"></a>错误代码
 
-| 代码 | 描述 |
+| 代码 | 说明 |
 | ---- | ----------- |
 | BadArgument | 提供的参数无效，有关详细信息，请参阅 `message`。 |
 | 超时 | 沉浸式读取器无法在指定的超时内加载。 |
@@ -177,7 +177,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ## <a name="launching-the-immersive-reader"></a>启动沉浸式阅读器
 
-SDK 为启动沉浸式阅读器的按钮提供默认样式。 使用 @no__t 类特性来启用此样式设置。
+SDK 为启动沉浸式阅读器的按钮提供默认样式。 使用 `immersive-reader-button` 类特性来启用此样式设置。
 
 ```html
 <div class='immersive-reader-button'></div>
@@ -187,10 +187,10 @@ SDK 为启动沉浸式阅读器的按钮提供默认样式。 使用 @no__t 类�
 
 使用以下属性来配置按钮的外观。
 
-| 属性 | 描述 |
+| 属性 | 说明 |
 | --------- | ----------- |
 | `data-button-style` | 设置按钮的样式。 可以是 `icon`、`text` 或 `iconAndText`。 默认为 `icon`。 |
-| `data-locale` | 设置区域设置。 例如 `en-US` 或 `fr-FR`。 默认值为英语 `en`。 |
+| `data-locale` | 设置区域设置。 例如 `en-US` 或 `fr-FR`。 默认为英语 `en`。 |
 | `data-icon-px-size` | 设置图标的大小（以像素为单位）。 默认值为20px。 |
 
 ## <a name="browser-support"></a>浏览器支持

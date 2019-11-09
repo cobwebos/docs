@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b9d2dda589cc59be24b73ce16dcdcbbe79b31aef
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 7be5e814d8092b523fa69fdd84f0e1476736fda2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259172"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887720"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) 疑难解答
 
@@ -24,7 +24,7 @@ ms.locfileid: "71259172"
 
 如果在 Azure State Configuration 中编译或部署配置时出错，可使用以下步骤来诊断问题。
 
-1. **确保配置在本地计算机上编译成功：** Azure State Configuration 在 PowerShell DSC 基础上构建。 可以在 [PowerShell DSC 文档](https://docs.microsoft.com/en-us/powershell/scripting/overview)中找到 DSC 语言和语法的文档。
+1. **确保你的配置在本地计算机上成功编译：** Azure 状态配置是在 PowerShell DSC 上构建的。 可以在 [PowerShell DSC 文档](https://docs.microsoft.com/powershell/scripting/overview)中找到 DSC 语言和语法的文档。
 
    在本地计算机上编译 DSC 配置即可发现并解决常见错误，例如：
 
@@ -32,11 +32,11 @@ ms.locfileid: "71259172"
    - **语法错误**
    - **逻辑错误**
 
-2. **在节点上查看 DSC 日志：** 如果配置编译成功，但在应用到节点时失败，则可在日志中查找详细信息。 若要了解在何处查找 DSC 日志，请参阅 [DSC 事件日志在哪里](/powershell/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)。
+2. **查看节点上的 DSC 日志：** 如果配置成功编译，但应用于节点时失败，则可以在日志中找到详细信息。 若要了解在何处查找 DSC 日志，请参阅 [DSC 事件日志在哪里](/powershell/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)。
 
    另外，[xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) 可以帮助你分析 DSC 日志中的详细信息。 如果你联系支持部门，他们会要求你提供这些日志，以便对你的问题进行诊断。
 
-   可以根据[安装稳定版本模块](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)中提供的说明在本地计算机上安装 **xDscDiagnostics**。
+   可以根据**安装稳定版本模块**中提供的说明在本地计算机上安装 [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)。
 
    若要在 Azure 计算机上安装 **xDscDiagnostics**，可以使用 [az vm run-command](/cli/azure/vm/run-command) 或 [Invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand)。 也可在门户中使用“运行命令”选项，只需按照[使用“运行命令”在 Windows VM 中运行 PowerShell 脚本](../../virtual-machines/windows/run-command.md)中的步骤操作即可。
 
@@ -45,7 +45,7 @@ ms.locfileid: "71259172"
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>使用所需状态配置 (DSC) 时的常见错误
 
-### <a name="unsupported-characters"></a>场景：无法从门户删除带有特殊字符的配置
+### <a name="unsupported-characters"></a>方案：无法从门户中删除包含特殊字符的配置
 
 #### <a name="issue"></a>问题
 
@@ -65,11 +65,11 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 * 此 cmdlet 的文档尚未更新。  在其更新前，请参考 AzureRM 模块的文档。
   * [Remove-AzureRmAutomationDSCConfiguration](/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration)
 
-### <a name="failed-to-register-agent"></a>场景：未能注册 Dsc 代理
+### <a name="failed-to-register-agent"></a>方案：未能注册 Dsc 代理
 
 #### <a name="issue"></a>问题
 
-尝试运行`Set-DscLocalConfigurationManager`或其他 DSC cmdlet 时，收到错误：
+尝试运行 `Set-DscLocalConfigurationManager` 或其他 DSC cmdlet 时，会收到错误：
 
 ```error
 Registration of the Dsc Agent with the server
@@ -124,7 +124,7 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 #### <a name="cause"></a>原因
 
-如果 DSC 配置中“Node”关键字后面的表达式的计算结果为 `$null`，则不会生成节点配置。
+如果 DSC 配置中“Node”关键字后面的表达式的计算结果为 **，则不会生成节点配置**`$null`。
 
 #### <a name="resolution"></a>分辨率
 
@@ -169,7 +169,7 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 * 确保传入正确的 **ConfigurationData**，以便将配置中涉及的每个节点配置的 **PSDscAllowPlainTextPassword** 设置为 true。 有关详细信息，请参阅 [Azure 自动化 DSC 中的资产](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation)。
 
-### <a name="failure-processing-extension"></a>场景：从 dsc 扩展载入时，出现“处理扩展失败”错误
+### <a name="failure-processing-extension"></a>方案：从 dsc 扩展载入 "失败处理扩展" 错误
 
 #### <a name="issue"></a>问题
 
@@ -188,7 +188,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 * 确保要为节点分配的节点配置名称与服务中的名称完全匹配。
 * 可以选择不包含节点配置名称，这将导致载入节点，而不分配节点配置
 
-### <a name="failure-linux-temp-noexec"></a>场景：在 Linux 中应用配置时出现故障，并显示一般错误
+### <a name="failure-linux-temp-noexec"></a>方案：在 Linux 中应用配置，出现失败，出现常规错误
 
 #### <a name="issue"></a>问题
 
@@ -204,9 +204,9 @@ This event indicates that failure happens when LCM is processing the configurati
 
 #### <a name="resolution"></a>分辨率
 
-* 从 `/tmp` 位置中删除 `noexec` 选项。
+* 从 `noexec` 位置中删除 `/tmp` 选项。
 
-### <a name="compilation-node-name-overlap"></a>场景：节点配置名称重叠可能导致发布错误
+### <a name="compilation-node-name-overlap"></a>情况：重叠的节点配置名称可能导致错误的发布
 
 #### <a name="issue"></a>问题
 
@@ -228,4 +228,4 @@ This event indicates that failure happens when LCM is processing the configurati
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。
+* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。

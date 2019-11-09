@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: fa3cd84978119a5858e63712b4d22c2ea89ea528
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8f6fb9737d3d8dad93a95f31d566f7cc4706ded3
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470900"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886050"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>为 Azure App Service 配置 Linux Java 应用
 
@@ -238,6 +238,24 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 首先，按照有关[为应用授予对 Key Vault 的访问权限](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault)以及[在应用程序设置中添加对机密的 KeyVault 引用](../app-service-key-vault-references.md#reference-syntax)的说明操作。 可以在远程访问应用服务终端时，通过输出环境变量来验证该引用是否解析为机密。
 
 若要在 Spring 或 Tomcat 配置文件中注入这些机密，请使用环境变量注入语法 (`${MY_ENV_VAR}`)。 有关 Spring 配置文件，请参阅这篇有关[外部化配置](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)的文档。
+
+## <a name="using-the-java-key-store"></a>使用 Java 密钥存储
+
+默认情况下，当容器启动时，[上传到 App Service Linux](../configure-ssl-certificate.md)的任何公用或私有证书都将加载到 Java 密钥存储中。 这意味着，在建立出站 TLS 连接时，已上传的证书将在连接上下文中可用。
+
+可以通过打开指向应用服务的[SSH 连接](app-service-linux-ssh-support.md)并运行命令 `keytool`来交互或调试 Java 密钥工具。 有关命令列表，请参阅[密钥工具文档](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html)。 证书以 Java 的默认密钥存储文件位置存储，`$JAVA_HOME/jre/lib/security/cacerts`。
+
+加密 JDBC 连接可能需要其他配置。 请参阅所选 JDBC 驱动程序的文档。
+
+- [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
+- [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
+- [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
+
+### <a name="manually-initialize-and-load-the-key-store"></a>手动初始化并加载密钥存储
+
+可以初始化密钥存储，并手动添加证书。 创建一个应用设置，`SKIP_JAVA_KEYSTORE_LOAD`，其值为 "`1`" 以禁止应用服务自动将证书加载到密钥存储。 通过 Azure 门户上传到应用服务的所有公共证书都存储在 `/var/ssl/certs/`下。 私有证书存储在 `/var/ssl/private/`下。
+
+有关密钥存储 API 的详细信息，请参阅[官方文档](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html)。
 
 ## <a name="configure-apm-platforms"></a>配置 APM 平台
 
@@ -595,7 +613,7 @@ Web 应用实例是无状态的，因此在启动时必须配置每个新实例�
             DATABASE_CONNECTION_URL=jdbc:sqlserver://<database server name>:1433;database=<database name>;user=<admin name>;password=<admin password>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
     ```
 
-    每个数据库服务器的 DATABASE_CONNECTION_URL 值不同，而与 Azure 门户上的值不同。 此处所示的 URL 格式（以及上述代码段中的）需要使用 WildFly：
+    每个数据库服务器的 DATABASE_CONNECTION_URL 值不同，并且与 Azure 门户上的值不同。 此处所示的 URL 格式（以及上述代码段中的）需要使用 WildFly：
 
     * **PostgreSQL：** `jdbc:postgresql://<database server name>:5432/<database name>?ssl=true`
     * **MySQL：** `jdbc:mysql://<database server name>:3306/<database name>?ssl=true\&useLegacyDatetimeCode=false\&serverTimezone=GMT`

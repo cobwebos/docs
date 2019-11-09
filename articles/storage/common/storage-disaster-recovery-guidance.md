@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3717199d2fa342fff5996d97bc5cdaf6da6e9880
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: b265ff8831275a9f4b84f7dac28b82ae75630f8b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595202"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889788"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure 存储中的灾难恢复和存储帐户故障转移（预览版）
 
@@ -47,8 +47,8 @@ Azure 存储支持异地冗余存储帐户故障转移（预览版）。 通过�
 
 请务必从一开始就设计高可用性应用程序。 有关设计应用程序和计划灾难恢复方面的指导，请参阅以下 Azure 资源：
 
-* [设计适用于 azure 的弹性应用程序](https://docs.microsoft.com/azure/architecture/resiliency/)：概述在 azure 中构建高度可用的应用程序的关键概念。
-* [可用性清单](https://docs.microsoft.com/azure/architecture/checklist/availability)：用于验证应用程序是否实现了高可用性最佳设计实践的检查表。
+* [设计适用于 azure 的弹性应用程序](/azure/architecture/checklist/resiliency-per-service)：概述在 azure 中构建高度可用的应用程序的关键概念。
+* [可用性清单](/azure/architecture/checklist/resiliency-per-service)：用于验证应用程序是否实现了高可用性最佳设计实践的检查表。
 * [使用 GRS 设计高度可用的应用程序](storage-designing-ha-apps-with-ragrs.md)：用于构建应用程序以利用 GRS 的设计指南。
 * [教程：使用 Blob 存储构建高度可用的应用程序](../blobs/storage-create-geo-redundant-storage.md)：演示如何构建高度可用的应用程序，该应用程序可在发生故障时自动切换到终结点，并模拟恢复。 
 

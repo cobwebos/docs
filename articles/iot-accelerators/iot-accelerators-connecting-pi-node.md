@@ -1,5 +1,5 @@
 ---
-title: 在 Node.js 中将 Raspberry Pi 预配到远程监视 - Azure | Microsoft Docs
+title: 将 Raspberry Pi 连接到远程监视解决方案-node.js-Azure |Microsoft Docs
 description: 介绍如何使用以 Node.js 编写的应用程序将 Raspberry Pi 设备连接到远程监视解决方案加速器。
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: 20d50ac4ac4a1919077ebe67bb529e2dc5abf187
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 98d947e8aabf20fbfdb192cb80c9bc881007d5da
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61449614"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889275"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>将 Raspberry Pi 设备连接到远程监视解决方案加速器 (Node.js)
 
@@ -21,7 +21,7 @@ ms.locfileid: "61449614"
 
 本教程介绍如何将真实设备连接到远程监视解决方案加速器。 在本教程中，将使用 Node.js，它对于资源约束最少的环境是一个不错的选择。
 
-如果更喜欢模拟某个设备，请参阅[创建和测试新的模拟设备](iot-accelerators-remote-monitoring-create-simulated-device.md)。
+如果更喜欢模拟某个设备，请参见[创建和测试新的模拟设备](iot-accelerators-remote-monitoring-create-simulated-device.md)。
 
 ### <a name="required-hardware"></a>所需硬件
 
@@ -45,7 +45,7 @@ ms.locfileid: "61449614"
 
 如果尚未这样做，请在 Raspberry Pi 上安装 Node.js 4.0.0 或更高版本。 以下步骤演示如何在 Raspberry Pi 上安装 Node.js v6：
 
-1. 使用 `ssh` 连接到 Raspberry Pi。 有关详细信息，请参阅 [Raspberry Pi 网站](https://www.raspberrypi.org/)上的 [SSH（安全外壳）](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md)。
+1. 使用 `ssh` 连接到 Raspberry Pi。 有关详细信息，请参阅 [Raspberry Pi 网站](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md)上的 [SSH（安全外壳）](https://www.raspberrypi.org/)。
 
 1. 使用以下命令更新 Raspberry Pi：
 

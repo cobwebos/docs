@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/04/2019
+ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d444ed21f3eb86975442f2176b8caa8dca6e0c3f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 74c95ed62bcfec8792aaa465d27f539c02188713
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602434"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891437"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -120,6 +120,7 @@ Azure for SAP HANA 的唯一性是将 Azure 分开的一个产品/服务。 为�
 
 
 ## <a name="change-log"></a>更改日志
+- 11/08/2019： [SAP 工作负荷规划和部署核对清单](sap-deployment-checklist.md)中的更改阐明了加密建议  
 - 11/04/2019：在 Azure 中的[SUSE Linux Enterprise Server 上设置 Pacemaker](high-availability-guide-suse-pacemaker.md) ，以直接通过单播配置创建群集  
 - 10/29/2019：[使用 Azure 标准负载均衡器在 SAP 高可用性方案中发布虚拟机的公共终结点连接](high-availability-guide-standard-load-balancer-outbound-connections.md)
 - 10/25/2019： [SAP HANA azure 虚拟机存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)中的更改，并[SAP HANA 在 azure vm 上用备用节点向外扩展，并在 SUSE Linux Enterprise Server 上提供 azure NetApp 文件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)来阐明/hana/shared 卷的 NFS 协议

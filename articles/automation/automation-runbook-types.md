@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e655e286c3aebe28bcb09c8723516c2ff52ad20e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6c29015e2fd327d74183d5fbbd6214152507e517
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850359"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886781"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure 自动化 Runbook 类型
 
 Azure 自动化支持多种类型的 Runbook，下表进行了简要描述。  以下各个部分提供了每种类型的详细信息，包括如何选择在何时使用每种类型。
 
-| type | 描述 |
+| 类型 | 说明 |
 |:--- |:--- |
 | [图形](#graphical-runbooks)|基于 Windows PowerShell，只能在 Azure 门户上的图形编辑器中创建和编辑。 |
 | [图形 PowerShell 工作流](#graphical-runbooks)|基于 Windows PowerShell 工作流，只能在 Azure 门户上的图形编辑器中创建和编辑。 |
@@ -55,7 +55,7 @@ Azure 自动化支持多种类型的 Runbook，下表进行了简要描述。  �
 
 * 通过 PowerShell 代码来实现所有复杂的逻辑，没有 PowerShell 工作流的各种额外的复杂操作。
 * 与 PowerShell 工作流 Runbook 相比，Runbook 的启动速度更快，因为它在运行前不需要经过编译。
-* 可以在 Azure 中运行, 也可以在 Linux 和 Windows 混合 Runbook 辅助角色上运行
+* 可以在 Azure 中运行，也可以在 Linux 和 Windows 混合 Runbook 辅助角色上运行
 
 ### <a name="limitations"></a>限制
 
@@ -69,7 +69,7 @@ Azure 自动化支持多种类型的 Runbook，下表进行了简要描述。  �
 以下是当前 PowerShell Runbook 的已知问题。
 
 * PowerShell Runbook 无法检索未加密且值为 null 的[变量资产](automation-variables.md)。
-* PowerShell Runbook 无法检索名称中包含 ~ 的[变量资产](automation-variables.md)。
+* PowerShell Runbook 无法检索名称中包含 [ 的](automation-variables.md)变量资产 *~* 。
 * 在 PowerShell Runbook 中，处于循环状态的 Get-Process 在经历大约 80 次迭代后可能会崩溃。
 * 如果 PowerShell Runbook 尝试一次性将大量数据写入输出流中，则可能会发生故障。   通常情况下，在处理大型对象时，可以只输出所需信息，从而避免出现这种问题。  例如，不需要输出 *Get-Process* 这样的内容，只需通过 *Get-Process | Select ProcessName, CPU* 输出所需字段即可。
 
@@ -87,7 +87,7 @@ PowerShell 工作流 Runbook 是基于 [Windows PowerShell 工作流](automation
 ### <a name="limitations"></a>限制
 
 * 作者必须熟悉 PowerShell 工作流。
-* Runbook 还必须处理与 PowerShell 工作流相关的其他复杂问题，例如[反序列化的对象](automation-powershell-workflow.md#code-changes)。
+* Runbook 还必须处理与 PowerShell 工作流相关的其他复杂问题，例如 [反序列化的对象](automation-powershell-workflow.md#code-changes)。
 * 与 PowerShell Runbook 相比，Runbook 需要更长时间来启动，因为它在运行前需要进行编译。
 * 只能通过用于创建新作业的 Start-AzureAutomationRunbook cmdlet 以子 Runbook 的形式包括 PowerShell Runbook。
 * 无法在 Linux 混合 Runbook 辅助角色上运行
@@ -99,7 +99,7 @@ PowerShell 工作流 Runbook 是基于 [Windows PowerShell 工作流](automation
 ### <a name="advantages"></a>优点
 
 * 利用强大的 Python 库。
-* 可以在 Azure 中运行, 也可以在 Linux 混合 Runbook 辅助角色上运行。 安装了[python 2.7](https://www.python.org/downloads/release/latest/python2)后, 支持 Windows 混合 Runbook 辅助角色。
+* 可以在 Azure 中运行，也可以在 Linux 混合 Runbook 辅助角色上运行。 在安装了 [python2.7](https://www.python.org/downloads/release/latest/python2) 的情况下，支持 Windows 混合 Runbook 辅助角色。
 
 ### <a name="limitations"></a>限制
 
@@ -116,7 +116,7 @@ PowerShell 工作流 Runbook 是基于 [Windows PowerShell 工作流](automation
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解图形 Runbook 创作，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)
-* 若要了解 Runbook 的 PowerShell 和 PowerShell 工作流之间的差异，请参阅[了解 Windows PowerShell 工作流](automation-powershell-workflow.md)
+* 若要详细了解图形 Runbook 创作，请参阅 [Graphical authoring in Azure Automation](automation-graphical-authoring-intro.md)
+* 若要了解 Runbook 的 PowerShell 和 PowerShell 工作流之间的差异，请参阅 [了解 Windows PowerShell 工作流](automation-powershell-workflow.md)
 * 有关如何创建或导入 Runbook 的详细信息，请参阅[创建或导入 Runbook](manage-runbooks.md)
-* 有关 PowerShell 的详细信息, 包括语言参考和学习模块, 请参阅[Powershell 文档](https://docs.microsoft.com/en-us/powershell/scripting/overview)。
+* 有关 PowerShell 的详细信息（包括语言参考和学习模块），请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/scripting/overview)。

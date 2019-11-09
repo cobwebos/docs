@@ -1,5 +1,5 @@
 ---
-title: 在本地部署远程监视解决方案 - Docker - Azure | Microsoft Docs
+title: 在本地部署远程监视解决方案-Docker-Azure |Microsoft Docs
 description: 本操作指南展示了如何使用 Docker 将远程监视解决方案加速器部署到本地计算机，以用于测试和开发。
 author: avneet723
 manager: hegate
@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: db934725fe91a142c43ba66701919e9d5a70a4b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967542"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888836"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>在本地部署远程监视解决方案加速器 - Docker
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-本文展示了如何将远程监视解决方案加速器部署到本地计算机，用于测试和开发。 了解如何将微服务部署到本地 Docker 容器。 本地微服务部署使用以下云服务：云中的 IoT Hub、Cosmos DB、Azure 流分析和 Azure 时序见解服务。
+本文展示了如何将远程监视解决方案加速器部署到本地计算机，用于测试和开发。 了解如何将微服务部署到本地 Docker 容器。 本地微服务部署使用以下云服务：IoT 中心、Cosmos DB、Azure 流分析，以及云中的 Azure 时序见解服务。
 
 若要在本地计算机上的 IDE 中运行远程监视解决方案加速器，请参阅[在本地部署远程监视解决方案加速器 - Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md)。
 
@@ -27,7 +27,7 @@ ms.locfileid: "65967542"
 
 若要部署远程监视解决方案加速器使用的 Azure 服务，需要一个有效的 Azure 订阅。
 
-如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ### <a name="machine-setup"></a>计算机设置
 
@@ -70,7 +70,7 @@ docker-compose up
 ```
 
 > [!NOTE] 
-> 在运行 `docker-compose up` 之前，请确保与 Docker [共享本地驱动器](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115)。
+> 在运行 [ 之前，请确保与 Docker ](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115)共享本地驱动器`docker-compose up`。
 
 首次运行此命令时，Docker 会从 Docker 中心下载微服务映像以在本地构建容器。 在后续运行中，Docker 会立即运行容器。
 
@@ -91,12 +91,12 @@ docker rmi <list_of_images>
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
 1. 导航到为解决方案创建的**资源组**。 该资源组的名称是在运行 **start.cmd** 脚本时为解决方案选择的名称。
-1. 在资源列表中单击“流分析作业”。 
-1. 在流分析作业的“概述”页上，单击“启动”按钮。   然后单击“启动”以立即启动该作业  。
+1. 在资源列表中单击“流分析作业”。
+1. 在流分析作业的“概述”页上，单击“启动”按钮。 然后单击“启动”以立即启动该作业。
 
 ### <a name="connect-to-the-dashboard"></a>连接到仪表板
 
-若要访问远程监视解决方案仪表板，导航到`http://localhost:8080`在浏览器中。 现在可以使用 Web UI 和本地微服务。
+若要访问远程监视解决方案仪表板，请在浏览器中导航到 `http://localhost:8080`。 现在可以使用 Web UI 和本地微服务。
 
 ## <a name="clean-up"></a>清理
 

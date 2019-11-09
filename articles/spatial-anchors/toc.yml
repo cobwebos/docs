@@ -86,7 +86,7 @@
 - name: 资源
   items:
     - name: Azure 混合现实资源管理 REST API
-      href: 'https://docs.microsoft.com/en-us/rest/api/mixedreality/'
+      href: 'https://docs.microsoft.com/rest/api/mixedreality/'
     - name: 常见问题解答
       href: spatial-anchor-faq.md
     - name: 提供产品反馈

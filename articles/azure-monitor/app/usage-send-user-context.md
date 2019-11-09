@@ -8,12 +8,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: cf639be5db90e3632b8931564ac397c42e1d8403
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b105e8ba79e99be02420ca1821f6a080b0862d6f
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899364"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887413"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>发送用户上下文 ID 以启用 Azure Application Insights 中的使用体验
 
@@ -48,7 +48,7 @@ ID 必须是 GUID 或另一个复杂程度足以唯一地标识每个用户的�
 
 ## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET 应用：在 ITelemetryInitializer 中设置用户上下文
 
-创建遥测初始化程序，详见[此处](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer)。 通过请求遥测传递会话 ID，并设置 Context.User.Id 和 Context.Session.Id。
+创建遥测初始化程序，详见[此处](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer)。 通过请求遥测传递会话 ID，并设置 Context.User.Id 和 Context.Session.Id。
 
 此示例将用户 ID 设置为在会话后过期的标识符。 如果可能，请使用在各会话中保留的用户 ID。
 

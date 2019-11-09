@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 5c2ecd5a53bb77193469ba1135c46d9b5fa65b2c
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8b7e50fdc02ab47c50cecb95073f1b51393db898
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202974"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885632"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>AKS 虚拟主机中的安全性强化 
 
@@ -30,7 +30,7 @@ AKS 群集部署在运行安全优化操作系统的主机虚拟机上。 此主
 
 * 默认情况下，AKS 提供安全优化的主机操作系统。 当前没有选择备用操作系统的选项。 
 
-* Azure 会将每日修补程序（包括安全修补程序）应用于 AKS 虚拟主机。 其中一些修补程序需要重新启动，而其他修补程序则不需要重新启动。 你负责根据需要计划 AKS VM 主机重启。 有关如何自动执行 AKS 修补的指导，请参阅[修补 AKS 节点](https://docs.microsoft.com/en-us/azure/aks/node-updates-kured)。
+* Azure 会将每日修补程序（包括安全修补程序）应用于 AKS 虚拟主机。 其中一些修补程序需要重新启动，而其他修补程序则不需要重新启动。 你负责根据需要计划 AKS VM 主机重启。 有关如何自动执行 AKS 修补的指导，请参阅[修补 AKS 节点](https://docs.microsoft.com/azure/aks/node-updates-kured)。
 
 下面是在 AKS 中实现的图像强化工作的摘要，用于生成安全优化的主机操作系统。 该工作已[在此 GitHub 项目中](https://github.com/Azure/aks-engine/projects/7)实现。  
 

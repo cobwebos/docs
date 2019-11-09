@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: c8647e316cc77e7e1eed5108fafccd6d70d181cf
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 1fec8a10a6699dc1360494cc7ac66e13f5d37ff0
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898187"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885739"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
@@ -27,7 +27,7 @@ Azure 顾问将识别配置了较长 TTL 的流量管理器配置文件，并建
 
 ## <a name="improve-database-performance-with-sql-db-advisor"></a>通过 SQL DB 顾问提高数据库性能
 
-顾问针对所有 Azure 资源提供一个一致且统一的建议视图。 它与 SQL 数据库顾问集成，提供建议以改进 SQL Azure 数据库性能。 SQL 数据库顾问通过分析使用情况历史记录来评估 SQL Azure 数据库的性能。 提供的建议最适合运行数据库典型工作负荷。
+顾问针对所有 Azure 资源提供一个一致且统一的建议视图。 它与 SQL 数据库顾问集成，提供建议以改进 SQL Azure 数据库性能。 SQL 数据库顾问通过分析使用历史记录来评估 SQL Azure 数据库的性能。 提供的建议最适合运行数据库典型工作负荷。
 
 > [!NOTE]
 > 若要获取建议，数据库必须具有一周左右的使用量，且该周内必须有一些一致的活动。 SQL 数据库顾问优化一致的查询模式比优化随机的突发活动更加轻松。
@@ -73,7 +73,7 @@ Azure 顾问会检测 SQL 数据仓库是否具有高缓存使用百分比和低
 将存储帐户部署模型迁移到 Azure 资源管理器（资源管理器）可利用模板部署和更多的安全选项，并可升级到 GPv2 帐户来利用 Azure 存储的最新功能。 顾问将识别使用经典部署模型的任何独立存储帐户，并建议迁移到资源管理器部署模型。
 
 > [!NOTE]
-> Azure Monitor 中的经典警报已于8月2019停用。 建议升级经典存储帐户以使用资源管理器在新平台中保留警报功能。 有关详细信息，请参阅[经典警报停用](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform)。
+> Azure Monitor 中的经典警报已于8月2019停用。 建议升级经典存储帐户以使用资源管理器在新平台中保留警报功能。 有关详细信息，请参阅[经典警报停用](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform)。
 
 ## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>设计存储帐户以避免达到最大订阅限制
 
@@ -88,7 +88,7 @@ Azure 顾问会检测 SQL 数据仓库是否具有高缓存使用百分比和低
 低缓存命中率可能导致查询性能降低并增加 IOPS。 这可能是由不正确的查询计划或运行大量内存的工作负荷导致的。 修复查询计划或增加 Azure Database for PostgreSQL 数据库服务器、Azure MySQL 数据库服务器或 Azure MariaDB 服务器的 [内存](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers)，有助于优化数据库工作负荷的执行。 Azure 顾问会识别受此较高缓冲池改动影响的服务器，并建议修复查询计划，将其移到具有更多内存的更高 SKU，或增加存储大小以获得更多的 IOPS。
 
 ### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>使用 Azure MySQL 或 Azure PostgreSQL 读取副本对读取密集型工作负荷进行横向扩展
-Azure 顾问利用基于工作负荷的试探法，例如，在过去7天内服务器上写入操作的比率，用于识别读取密集型工作负荷。 如果你的 Azure database for PostgreSQL 资源或 Azure database for MySQL 资源的读取/写入比率非常高，则可能导致 CPU 和/或内存争用导致查询性能下降。 添加 [副本](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal)将有助于扩大对副本服务器的读取，从而防止主服务器上的 CPU 和/或内存限制。 Advisor 将识别具有大量读取密集型工作负载的服务器，并建议添加 [读取副本](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) 以卸载某些读取工作负荷。
+Azure 顾问利用基于工作负荷的试探法，例如，在过去7天内服务器上写入操作的比率，用于识别读取密集型工作负荷。 如果你的 Azure database for PostgreSQL 资源或 Azure database for MySQL 资源的读取/写入比率非常高，则可能导致 CPU 和/或内存争用导致查询性能下降。 添加 [副本](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal)将有助于扩大对副本服务器的读取，从而防止主服务器上的 CPU 和/或内存限制。 Advisor 将识别具有大量读取密集型工作负载的服务器，并建议添加 [读取副本](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) 来卸载某些读取工作负荷。
 
 
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>将 Azure MySQL、Azure PostgreSQL 或 Azure MariaDB 服务器缩放到更高的 SKU，以防止连接约束

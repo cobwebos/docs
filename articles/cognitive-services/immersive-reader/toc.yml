@@ -32,8 +32,8 @@
 - name: 资源
   items:
     - name: Azure 路线图
-      href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: 语言支持
       href: 'https://aka.ms/ltlangsupport'
     - name: 区域可用性
-      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=cognitive-services'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

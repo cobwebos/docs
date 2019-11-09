@@ -41,8 +41,8 @@
 - name: 资源
   items:
     - name: 试用认知服务
-      href: 'https://azure.microsoft.com/en-us/try/cognitive-services/?api=bing-web-search-api'
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api'
     - name: 定价信息
-      href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/'
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/'
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

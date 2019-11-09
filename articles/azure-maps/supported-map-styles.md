@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 457154a797a4b6d9853b1effe0d8121053653a99
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: cd16ee87b213c2bfa4c541c4d3c453a4499855d0
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174768"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887729"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps 支持的地图样式
 Azure Maps 支持几种不同的内置地图样式，如下所述。
@@ -31,10 +31,10 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 
 ## <a name="blank-and-blank_accessible"></a>空白和 blank_accessible
 
-**空白**和**blank_accessible**地图样式提供了一个空白画布，可在其上对数据进行可视化处理。 **Blank_accessible**样式将继续提供屏幕阅读器更新以及地图所在位置的位置详细信息，即使未显示基本地图也是如此。
+**空白**和**blank_accessible**地图样式提供了一个空白画布，可在其上对数据进行可视化处理。 **Blank_accessible**样式将继续提供屏幕阅读器更新以及地图所在位置的位置详细信息，即使未显示基本图也是如此。
 
 > [!Note]
-> 在 web SDK 中，可以通过设置地图 DIV 元素的 CSS @no__t 0 样式来更改地图的背景色。
+> 在 web SDK 中，可以通过设置地图 DIV 元素的 CSS `background-color` 样式来更改地图的背景色。
 
 **适用 API：**
 * Web SDK 地图控件
@@ -103,4 +103,4 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 了解如何在 Azure Maps 中设置地图样式：
 
 > [!div class="nextstepaction"]
-> [选择地图样式](https://docs.microsoft.com/en-us/azure/azure-maps/choose-map-style)
+> [选择地图样式](https://docs.microsoft.com/azure/azure-maps/choose-map-style)

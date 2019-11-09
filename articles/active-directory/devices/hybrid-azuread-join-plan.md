@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66e583a75f7103a7cccf560d537e440ba47cae5a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: c016ce349acdfff6145286d9fc07e08db4ed9516
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596342"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882813"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 联接实现
 
@@ -37,7 +37,7 @@ ms.locfileid: "72596342"
 > [!NOTE]
 > Windows 10 混合 Azure AD 联接所需的最少域控制器版本为 Windows Server 2008 R2。
 
-## <a name="plan-your-implementation"></a>计划实施
+## <a name="plan-your-implementation"></a>规划实施
 
 若要规划混合 Azure AD 实现，应做好以下准备：
 
@@ -75,7 +75,7 @@ ms.locfileid: "72596342"
 
 如果你的环境包含将标识数据同步到多个 Azure AD 租户的单个 AD 林，则当前不支持混合 Azure AD 联接。
 
-如果你的环境使用虚拟桌面基础结构（VDI），请参阅[设备标识和桌面虚拟化](https://docs.microsoft.com/en-us/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure)。
+如果你的环境使用虚拟桌面基础结构（VDI），请参阅[设备标识和桌面虚拟化](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure)。
 
 对于符合 FIPS 的 TPM 2.0，支持混合 Azure AD 联接，不适用于 TPM 1.2。 如果设备具有符合 FIPS 标准的 TPM 1.2，则必须先将其禁用，然后才能继续混合 Azure AD 联接。 Microsoft 不提供任何工具用于为 Tpm 禁用 FIPS 模式，因为它依赖于 TPM 制造商。 请联系你的硬件 OEM 以获得支持。 从 WIndows 10 1903 版本开始，Tpm 1.2 不用于混合 Azure AD 联接，具有这些 Tpm 的设备将视为没有 TPM。
 
@@ -107,7 +107,7 @@ ms.locfileid: "72596342"
 
 ### <a name="managed-environment"></a>托管环境
 
-可使用[无缝单一登录](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)通过[密码哈希同步 (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) 或[直通身份验证 (PTA)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) 来部署托管环境。
+可使用[无缝单一登录](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs)通过[密码哈希同步 (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) 或[直通身份验证 (PTA)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) 来部署托管环境。
 
 这些方案不需要配置联合服务器进行身份验证。
 
@@ -124,7 +124,7 @@ ms.locfileid: "72596342"
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **adfs/services/trust/2005/windowstransport** 或 **adfs/services/trust/13/windowstransport** 只能作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust Windows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。
+> **adfs/services/trust/2005/windowstransport** 或 **adfs/services/trust/13/windowstransport** 只能作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust Windows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” **“终结点”查看已启用哪些终结点。**  > 
 
 > [!NOTE]
 > Azure AD 不支持托管域中的智能卡或证书。
@@ -145,7 +145,7 @@ ms.locfileid: "72596342"
 
 下表提供了 Windows 10 混合 Azure AD 加入中对这些本地 AD UPN 的支持情况的详细信息
 
-| 本地 AD UPN 类型 | 域类型 | Windows 10 版本 | 描述 |
+| 本地 AD UPN 类型 | 域类型 | Windows 10 版本 | 说明 |
 | ----- | ----- | ----- | ----- |
 | 可路由的 | 联合 | 从 1703 版本开始 | 正式发布 |
 | 非可路由的 | 联合 | 从 1803 版本开始 | 正式发布 |
@@ -156,7 +156,7 @@ ms.locfileid: "72596342"
 
 > [!div class="nextstepaction"]
 > [为联合环境配置混合 Azure Active Directory 联接](hybrid-azuread-join-federated-domains.md)
-> [为托管环境配置混合 Azure Active Directory 联接](hybrid-azuread-join-managed-domains.md)
+> 为[托管环境配置混合 Azure Active Directory 联接](hybrid-azuread-join-managed-domains.md)
 
 <!--Image references-->
 [1]: ./media/hybrid-azuread-join-plan/12.png

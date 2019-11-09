@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 7a85ed93d9ee01255d809cce84ebe24e6c3f71d1
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: e90284ce2f8ea37eb9249822e38cef04e1356f59
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847392"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889578"
 ---
 # <a name="sensor-partner-integration"></a>传感器合作伙伴集成
 
@@ -79,7 +79,7 @@ FarmBeats 数据中心使用持有者身份验证，需要以下凭据：
 
 使用上述凭据，调用方可以请求访问令牌，该令牌需要在标头部分的后续 API 请求中发送，如下所示：
 
-```
+```json
 headers = {"Authorization": "Bearer " + access_token, …} 
 ```
 
@@ -124,14 +124,14 @@ Content-Type | FarmBeats 数据中心 Api 格式的请求格式（Content-type�
 
 下面的示例请求是获取设备的列表：
 
-```
+```azurepowershell-interactive
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
 ```
 大多数 GET、POST 和 PUT 调用都需要 JSON 请求正文。
 
 下面的示例请求是创建设备（此示例包含具有请求正文的输入 json）。
 
-```
+```azurepowershell-interactive
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
@@ -241,7 +241,7 @@ write_client.stop()
 
 规范消息格式如下所示：
 
-```
+```json
 {
 “deviceid”: “<id of the Device created>”,
  "timestamp": "<timestamp in ISO 8601 format>",
@@ -269,7 +269,7 @@ write_client.stop()
 例如，遥测消息：
 
 
-```
+```json
 {
   "deviceid": "7f9b4b92-ba45-4a1d-a6ae-c6eda3a5bd12",
   "timestamp": "2019-06-22T06:55:02.7279559Z",

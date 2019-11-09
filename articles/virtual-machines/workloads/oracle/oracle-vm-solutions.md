@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: 4480819a08ef9a7a4ad7257f75a94c5d10a3d312
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 23e638b1d678e6ecf19c23220828185eb0e25a00
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858576"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891454"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM 映像及其在 Microsoft Azure 上的部署
 
@@ -79,7 +79,7 @@ Azure NetApp 文件旨在满足在云中运行高性能工作负荷（如数据�
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Azure 上的 Oracle Database & 软件授权
 Microsoft Azure 是一种用于运行 Oracle Database 的授权云环境。 在云中授权 Oracle 数据库时，Oracle Core 系数表不适用。 相反，当使用启用了企业版数据库的超线程技术的 Vm 时，如果启用了超线程（如策略文档中所述），则应将两个个 vcpu 视为等效于一个 Oracle 处理器许可证。 可在[此处](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)找到策略详细信息。
-Oracle 数据库通常需要更高的内存和 IO。 出于此原因，建议对这些工作负荷使用[内存优化 vm](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-memory) 。 为了进一步优化工作负荷，建议使用[受约束的核心个 vcpu](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/constrained-vcpu) ，以便 Oracle DB 需要高内存、存储和 i/o 带宽，但不是高核心计数的工作负载。
+Oracle 数据库通常需要更高的内存和 IO。 出于此原因，建议对这些工作负荷使用[内存优化 vm](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) 。 为了进一步优化工作负荷，建议使用[受约束的核心个 vcpu](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) ，以便 Oracle DB 需要高内存、存储和 i/o 带宽，但不是高核心计数的工作负载。
 
 将 Oracle 软件和工作负荷从本地迁移到 Microsoft Azure 时，Oracle 提供了许可移动性，如[Oracle On AZURE 常见问题](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)中所述
 
@@ -90,7 +90,7 @@ Oracle Real RAC 可用于减少本地多节点群集配置中单一节点的故�
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>高可用性和灾难恢复注意事项
 在 Azure 中使用 Oracle 数据库时，负责实现高可用性和灾难恢复解决方案，以避免任何停机。 
 
-可在 Azure 上使用[数据防护、活动数据防护](https://www.oracle.com/database/technologies/high-availability/dataguard.html)或[Oracle GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate)在 Azure 上实现高可用性和灾难 Oracle Database Enterprise Edition 恢复（不依赖于 oracle RAC），这两个数据库位于两个单独的虚拟上造. 这两个虚拟机应都位于相同的[虚拟网络](https://azure.microsoft.com/documentation/services/virtual-network/)，以确保它们能够通过专用持久性 IP 地址相互访问。  另外，建议将虚拟机放置在同一可用性集中，以便 Azure 将它们置于单独的容错域和升级域中。 如果你想要进行异地冗余，请将两个数据库设置为在两个不同区域之间复制，并使用 VPN 网关连接两个实例。
+可以在 Azure 上使用[数据防护、活动数据防护](https://www.oracle.com/database/technologies/high-availability/dataguard.html)或[Oracle GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate)在 Azure 上实现高可用性和灾难 Oracle Database Enterprise Edition 恢复（不依赖于 oracle RAC），这两个数据库位于两个单独的虚拟机上。 这两个虚拟机应都位于相同的[虚拟网络](https://azure.microsoft.com/documentation/services/virtual-network/)，以确保它们能够通过专用持久性 IP 地址相互访问。  另外，建议将虚拟机放置在同一可用性集中，以便 Azure 将它们置于单独的容错域和升级域中。 如果你想要进行异地冗余，请将两个数据库设置为在两个不同区域之间复制，并使用 VPN 网关连接两个实例。
 
 本教程[在 azure 上实施 Oracle 数据防护](configure-oracle-dataguard.md)，指导你完成 azure 上的基本设置过程。  
 
@@ -102,7 +102,7 @@ Oracle Real RAC 可用于减少本地多节点群集配置中单一节点的故�
 
 
 ## <a name="support-for-jd-edwards"></a>对 JD Edwards 的支持
-根据 Oracle 支持说明[Doc ID 2178595.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4)，JD Edwards EnterpriseOne 版本9.2 及更高版本在满足其特定`Minimum Technical Requirements` （MTR）的**所有公有云产品/服务**上受支持。  创建的自定义映像需要符合 OS 和软件应用程序兼容性的 MTR 规范。 
+根据 Oracle 支持说明[DOC ID 2178595.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4)，JD Edwards EnterpriseOne 版本9.2 及更高版本在满足其特定 `Minimum Technical Requirements` （MTR）的**所有公有云产品/服务**上受支持。  创建的自定义映像需要符合 OS 和软件应用程序兼容性的 MTR 规范。 
 
 
 ## <a name="oracle-weblogic-server-virtual-machine-images"></a>Oracle WebLogic Server 虚拟机映像
@@ -126,7 +126,7 @@ Oracle Real RAC 可用于减少本地多节点群集配置中单一节点的故�
     -Dweblogic.rjvm.enableprotocolswitch=true
     ```
 
-如需相关信息，请参阅位于 <https://support.oracle.com> 的知识库文章 **860340.1**。
+如需相关信息，请参阅位于 **的知识库文章**860340.1<https://support.oracle.com>。
 
 * **动态群集和负载均衡限制。** 假设要在 WebLogic Server 中使用动态群集并通过 Azure 中单个公共负载均衡终结点公开它。 只要对每个托管服务器使用固定的端口号（不是从范围中动态分配的），就可以完成此操作，并且不会启动比管理员正在跟踪的计算机更多的托管服务器。 也就是说，每个虚拟机上不存在多个托管服务器）。 如果你的配置导致启动的服务器比虚拟机多（即，多个 WebLogic 服务器实例共享同一虚拟机的虚拟机）的 WebLogic，则不可能有多个 WebLogic 服务器的实例绑定到给定端口号。 该虚拟机上的其他虚拟机将失败。
 

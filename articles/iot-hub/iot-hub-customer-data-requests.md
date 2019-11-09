@@ -1,19 +1,18 @@
 ---
-title: 客户数据请求功能
-description: 客户数据请求功能摘要
+title: Azure IoT 中心设备的客户数据请求
+description: 大多数 Azure IoT 中心管理的设备并不是个人，但有些设备是。 本文讨论了管理员能够从设备导出或删除个人数据。
 author: robinsh
-manager: philmea
 ms.author: robinsh
 ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 1519637eddf909040131a1efac5738fc7cc8e565
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29b3ed46ffe7f2236fc63d65ed49385b29b1a08a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60845794"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889478"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客户数据请求功能摘要
 
@@ -41,7 +40,7 @@ Azure IoT 中心是一项基于 REST API 的云服务，其目标是企业客户
 
 ## <a name="exporting-customer-data"></a>导出客户数据
 
-在 Azure 门户中，租户管理员可以利用 Azure IoT 中心扩展的 IoT 设备边栏选项卡中的复制和粘贴功能来导出与设备关联的数据。
+租户管理员可以在 Azure 门户的 Azure IoT 中心扩展的 IoT 设备窗格中使用复制和粘贴，以导出与设备关联的数据。
 
 也可使用 REST API 对设备执行导出操作。 有关详细信息，请参阅[服务 - 获取设备](/rest/api/iothub/service/getdevice)。
 

@@ -1,20 +1,20 @@
 ---
 title: Azure IoT 设备 SDK 平台支持 | Microsoft Docs
-description: 概念 - Azure IoT 设备 SDK 支持的平台的列表
+description: 可在适用于 Azure IoT 中心和设备预配服务（DPSC#）的 C、.net （）、Java、Node.js 和 Python 中找到开源设备 sdk。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: ac5817675d3cfc97a8732ee2e10ec7b9246b12a5
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: d39fd95f8704650db16c1dc1553efaba2f727052
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693338"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889428"
 ---
-# <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT 设备 Sdk 平台支持
+# <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT 设备 SDK 平台支持
 
 Microsoft 努力不断扩展支持 Azure IoT 中心的设备。 Microsoft 在 GitHub 上发布开源设备 Sdk，有助于将设备连接到 Azure IoT 中心和设备预配服务。 设备 Sdk 可用于 C、.NET （C#）、Java、Node.js 和 Python。 Microsoft 测试每个 SDK，以确保它在[Microsoft sdk 和设备平台支持](#microsoft-sdks-and-device-platform-support)部分中详细介绍的受支持配置。
 
@@ -44,19 +44,19 @@ Microsoft 在 GitHub 上发布了以下语言的开源 Sdk： C、.NET （C#）�
 
 [Azure IoT 中心 C 设备 SDK](https://github.com/Azure/azure-iot-sdk-c)已通过进行测试，并支持以下配置。
 
-| OS                  | TLS 库                  | 其他要求                                                                     |
+| 操作系统                  | TLS 库                  | 其他要求                                                                     |
 |---------------------|------------------------------|---------------------------------------------------------------------------------------------|
 | Linux               | OpenSSL、WolfSSL 或 BearSSL | Berkeley 套接字</br></br>可移植操作系统接口（POSIX）                       |
 | iOS 12。2            | OpenSSL 或 Native OSX        | XCode 在 OSX 10.13.4 中模拟                                                               |
 | Windows 10 系列   | SChannel                     |                                                                                             |
 | Mbed 操作系统5。4         | Mbed TLS 2                   | [MXChip IoT 开发工具包](https://microsoft.github.io/azure-iot-developer-kit/)                  |
-| Azure Sphere OS     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/en-us/services/azure-sphere/get-started/) |
+| Azure Sphere OS     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/services/azure-sphere/get-started/) |
 
 ### <a name="python-sdk"></a>Python SDK
 
 [Azure IoT 中心 Python 设备 SDK](https://github.com/Azure/azure-iot-sdk-python)已通过进行测试，并支持以下配置。
 
-| OS                  | 编译器                          |
+| 操作系统                  | 编译器                          |
 |---------------------|-----------------------------------|
 | Linux               | Python 2.7 *、3.4*、3.5 *、3.6、3。7 |
 | MacOS High Sierra   | Python 2.7 *、3.4*、3.5 *、3.6、3。7 |
@@ -68,7 +68,7 @@ Microsoft 在 GitHub 上发布了以下语言的开源 Sdk： C、.NET （C#）�
 
 [Azure IoT 中心 .net （C#）设备 SDK](https://github.com/Azure/azure-iot-sdk-csharp)已通过进行测试，并支持以下配置。
 
-| OS                                   | 标准版                                                   |
+| 操作系统                                   | 标准                                                   |
 |--------------------------------------|------------------------------------------------------------|
 | Linux                                | .NET Core 2.1                                              |
 | Windows 10 桌面版和服务器 Sku   | .NET Core 2.1、.NET Framework 4.5.1 或 .NET Framework 4。7 |
@@ -79,16 +79,16 @@ Microsoft 在 GitHub 上发布了以下语言的开源 Sdk： C、.NET （C#）�
 
 [Azure IoT 中心 node.js 设备 SDK](https://github.com/Azure/azure-iot-sdk-node)已通过进行测试，并支持以下配置。
 
-| OS                  | Node 版本    |
+| 操作系统                  | Node 版本    |
 |---------------------|-----------------|
-| Linux               | LTS 和当前 |
-| Windows 10 系列   | LTS 和当前 |
+| Linux               | LTS 和最新版 |
+| Windows 10 系列   | LTS 和最新版 |
 
 ### <a name="java-sdk"></a>Java SDK
 
 [Azure IoT 中心 Java 设备 SDK](https://github.com/Azure/azure-iot-sdk-java)已通过进行测试，并支持以下配置。
 
-| OS                     | Java 版本 |
+| 操作系统                     | Java 版本 |
 |------------------------|--------------|
 | Android API 28         | Java 8       |
 | Linux x64             | Java 8       |
@@ -98,12 +98,12 @@ Microsoft 在 GitHub 上发布了以下语言的开源 Sdk： C、.NET （C#）�
 
 Microsoft 与各种合作伙伴合作，为多个微处理器体系结构提供开发工具包。 这些合作伙伴已将 Azure IoT C SDK 移植到其平台。 合作伙伴创建和维护 SDK 的平台抽象层（PAL）。 Microsoft 与这些合作伙伴合作提供扩展支持。
 
-| Partner             | 设备                            | 链接                     | 支持 |
+| 合作伙伴             | 设备                            | 链接                     | 支持 |
 |---------------------|------------------------------------|--------------------------|---------|
 | Espressif           | ESP32 <br/> ESP8266                              | [Esp-azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
 | Qualcomm            | Qualcomm MDM9206 LTE IoT 调制解调器     | [Qualcomm LTE for IoT SDK](https://developer.qualcomm.com/software/lte-iot-sdk)（用于 IoT SDK 的 Qualcomm LTE） | [论坛](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
 | ST Microelectronics | STM32L4 系列 <br/> STM32F4 系列 <br/>  STM32F7 系列 <br/>  用于 IoT 节点的 STM32L4 发现包    | [X-CUBE-AZURE](https://www.st.com/en/embedded-software/x-cube-azure.html) <br/>  <br/> [P-NUCLEO-AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html) <br/> [FP-CLD-AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            | [支持](https://www.st.com/content/st_com/en/support/support-home.html)
-| Texas Instruments   | CC3220SF 快速启动板 </br> CC3220S 快速启动板 </br> CC3235SF 快速启动板 </br> CC3235S 快速启动板 </br> MSP432E4 快速启动板 | [适用于 SimpleLink 的 Azure IoT 插件](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [TI E2E 论坛](https://e2e.ti.com) <br/> [CC3220 的 TI E2E 论坛](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [MSP432E4 的 TI E2E 论坛](https://e2e.ti.com/support/microcontrollers/msp430/) |
+| Texas Instruments   | CC3220SF LaunchPad </br> CC3220S LaunchPad </br> CC3235SF LaunchPad </br> CC3235S LaunchPad </br> MSP432E4 LaunchPad | [适用于 SimpleLink 的 Azure IoT 插件](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [TI E2E 论坛](https://e2e.ti.com) <br/> [CC3220 的 TI E2E 论坛](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [MSP432E4 的 TI E2E 论坛](https://e2e.ti.com/support/microcontrollers/msp430/) |
 
 ## <a name="porting-the-microsoft-azure-iot-c-sdk"></a>移植 Microsoft Azure IoT C SDK
 
@@ -115,11 +115,11 @@ Microsoft 与许多合作伙伴合作，通过 Azure IoT 测试和认证设备�
 
 * 若要浏览 Azure IoT 认证设备，请参阅[Microsoft Azure IoT 认证设备目录](https://catalog.azureiotsolutions.com/)"。
 
-* 若要详细了解 Microsoft 受信任的合作伙伴，或了解如何成为 Microsoft 可信合作伙伴，请参阅[Microsoft Azure 认证物联网受信任的合作伙伴](https://azure.microsoft.com/en-us/marketplace/certified-iot-partners/)。
+* 若要详细了解 Microsoft 受信任的合作伙伴，或了解如何成为 Microsoft 可信合作伙伴，请参阅[Microsoft Azure 认证物联网受信任的合作伙伴](https://azure.microsoft.com/marketplace/certified-iot-partners/)。
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>无需 SDK 即可连接到 IoT 中心
 
-如果无法使用其中一个 IoT 中心设备 Sdk，则可以使用[Iot 中心 REST api](https://docs.microsoft.com/en-us/rest/api/iothub/)从能够发送和接收 HTTPS 请求和响应的任何应用程序直接连接到 iot 中心。
+如果无法使用其中一个 IoT 中心设备 Sdk，则可以使用[Iot 中心 REST api](https://docs.microsoft.com/rest/api/iothub/)从能够发送和接收 HTTPS 请求和响应的任何应用程序直接连接到 iot 中心。
 
 ## <a name="support-and-other-resources"></a>支持和其他资源
 

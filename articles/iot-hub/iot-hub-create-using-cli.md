@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure CLI 创建 IoT 中心 | Microsoft Docs
-description: 如何使用 Azure CLI 创建 Azure IoT 中心。
+description: 了解如何使用 Azure CLI 命令创建资源组，然后在资源组中创建 IoT 中心。 还了解如何删除中心。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: 78ea9071f220b2a78c6d9260d47145f22284d760
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7253747d95917e34725cc7c6c034b1306f65e50
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66166285"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889517"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>使用 Azure CLI 创建 IoT 中心
 
@@ -22,7 +22,7 @@ ms.locfileid: "66166285"
 
 ## <a name="prerequisites"></a>必备组件
 
-若要完成本操作说明，需要 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+若要完成本操作说明，需要 Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

@@ -9,48 +9,48 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: 8ca994b0b4abb27eef284eedf5a76571fe19699d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: d715252f16a34f2261c108ebd3ff5d1f6f3424d8
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595322"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887917"
 ---
-# <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>使用 Azure 命令行接口（CLI）创建认知服务资源
+# <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>使用 Azure 命令行接口 (CLI) 创建认知服务资源
 
-使用此快速入门，通过[Azure 命令行界面（CLI）](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)开始使用 Azure 认知服务。 认知服务由你在 Azure 订阅中创建的 Azure[资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)表示。 创建资源后，请使用生成的密钥和终结点对应用程序进行身份验证。 
+使用本快速入门可通过 [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 开始使用 Azure 认知服务。 认知服务由你在 Azure 订阅中创建的 Azure [资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)表示。 创建资源后，请使用生成的密钥和终结点对应用程序进行身份验证。 
 
 
-在本快速入门中，你将了解如何使用[Azure 命令行接口（CLI）](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)注册 Azure 认知服务并创建具有单一服务或多服务订阅的帐户。 这些服务由 Azure[资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)表示，使你能够连接到一个或多个 azure 认知服务 API。
+本快速入门介绍如何使用 [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 注册 Azure 认知服务以及创建包含单服务或多服务订阅的帐户。 这些服务由 Azure [资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)表示，可用于连接到一个或多个 Azure 认知服务 API。
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 ## <a name="prerequisites"></a>必备组件
 
 * 有效的 Azure 订阅-免费[创建一个](https://azure.microsoft.com/free/)。
-* [Azure 命令行接口（CLI）](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>安装 Azure CLI 并登录 
 
-安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 若要登录到 CLI 的本地安装，请运行[az login](https://docs.microsoft.com/cli/azure/reference-index#az-login)命令：
+安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 若要登录到本地安装的 CLI，请运行 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) 命令：
 
 ```console
 az login
 ```
 
-你还可以在浏览器中使用绿色的 "**试用**" 按钮来运行这些命令。
+也可以使用绿色的“尝试”按钮在浏览器中运行这些命令。
  
 ## <a name="create-a-new-azure-cognitive-services-resource-group"></a>创建新的 Azure 认知服务资源组
 
-在创建认知服务资源之前，必须具有 Azure 资源组才能包含资源。 创建新资源时，可以选择创建新的资源组或使用现有资源组。 本文介绍如何创建新的资源组。
+在创建认知服务资源之前，必须具有 Azure 资源组才能包含该资源。 在创建新资源时，可以选择新建资源组，或使用现有的资源组。 本文介绍如何创建新资源组。
 
 ### <a name="choose-your-resource-group-location"></a>选择资源组位置
 
-若要创建资源，需要提供订阅的 Azure 位置之一。 您可以使用[az account list-位置](/cli/azure/account#az-account-list-locations)命令检索可用位置的列表。 大多数认知服务都可以从多个位置进行访问。 选择最靠近你的帐户，或查看哪些位置可用于服务。
+若要创建资源，需要为订阅提供一个可用的 Azure 位置。 可以使用 [az account list-locations](/cli/azure/account#az-account-list-locations) 命令检索可用位置的列表。 可以从多个位置访问大部分认知服务。 选择离你最近的位置，或查看哪些位置可供服务使用。
 
 > [!IMPORTANT]
-> * 请记住你的 Azure 位置，因为在调用 Azure 认知服务时需要用到它。
-> * 某些认知服务的可用性可能因区域而异。 有关详细信息，请参阅[Azure 产品（按区域](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)）。  
+> * 请记住选择的 Azure 位置，因为在调用 Azure 认知服务时需要用到。
+> * 某些认知服务的可用性因区域而异。 有关详细信息，请参阅 [Azure 产品在各区域中的推出情况](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)。  
 
 ```azurecli-interactive
 az account list-locations \
@@ -58,9 +58,9 @@ az account list-locations \
     --out table
 ```
 
-获得 azure 位置之后，使用[az group create](/cli/azure/group#az-group-create)命令在 Azure CLI 中创建新的资源组。
+选择 Azure 位置后，在 Azure CLI 中使用 [az group create](/cli/azure/group#az-group-create) 命令创建新的资源组。
 
-在下面的示例中，将 azure location `westus2` 替换为适用于订阅的 Azure 位置之一。
+在以下示例中，请将 Azure 位置 `westus2` 替换为你的订阅可用的某个 Azure 位置。
 
 ```azurecli-interactive
 az group create \
@@ -72,7 +72,7 @@ az group create \
 
 ### <a name="choose-a-cognitive-service-and-pricing-tier"></a>选择认知服务和定价层
 
-创建新资源时，需要知道要使用的服务的 "种类"，以及所需的[定价层](https://azure.microsoft.com/pricing/details/cognitive-services/)（或 sku）。 创建资源时，将使用此信息和其他信息作为参数。
+创建新资源时，需要知道你要使用哪种服务，以及所需的[定价层](https://azure.microsoft.com/pricing/details/cognitive-services/)（或 SKU）。 创建资源时，需要使用此信息和其他信息作为参数。
 
 ### <a name="multi-service"></a>多服务
 
@@ -82,16 +82,16 @@ az group create \
 
 
 > [!NOTE]
-> 下面的许多认知服务都有一个免费层，可用于尝试该服务。 若要使用免费层，请使用 `F0` 作为资源的 sku。
+> 下面的许多认知服务都有一个免费层，可用于尝试该服务。 若要使用免费层，请使用 `F0` 作为资源的 SKU。
 
 ### <a name="vision"></a>影像
 
 | 服务                    | 种类                      |
 |----------------------------|---------------------------|
-| 计算机影像            | `ComputerVision`          |
+| 计算机视觉            | `ComputerVision`          |
 | 自定义视觉-预测 | `CustomVision.Prediction` |
 | 自定义视觉-定型   | `CustomVision.Training`   |
-| 面部 API                   | `Face`                    |
+| 人脸 API                   | `Face`                    |
 | 表单识别器            | `FormRecognizer`          |
 | 墨迹识别器             | `InkRecognizer`           |
 
@@ -99,7 +99,7 @@ az group create \
 
 | 服务            | 种类                  |
 |--------------------|-----------------------|
-| 必应自动推荐   | `Bing.Autosuggest.v7` |
+| 必应自动建议   | `Bing.Autosuggest.v7` |
 | 必应自定义搜索 | `Bing.CustomSearch`   |
 | 必应实体搜索 | `Bing.EntitySearch`   |
 | 必应搜索        | `Bing.Search.v7`      |
@@ -130,7 +130,7 @@ az group create \
 | 内容审查器 | `ContentModerator` |
 | 个性化体验创建服务      | `Personalizer`     |
 
-你可以使用[az cognitiveservices account account list](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-kinds) command 命令查找可用认知服务 "种类" 的列表：
+可以使用 [az cognitiveservices account list-kinds](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-kinds) 命令查找可用认知服务“种类”的列表：
 
 ```azurecli-interactive
 az cognitiveservices account list-kinds
@@ -138,9 +138,9 @@ az cognitiveservices account list-kinds
 
 ### <a name="add-a-new-resource-to-your-resource-group"></a>将新资源添加到资源组
 
-若要创建并订阅新的认知服务资源，请使用[az cognitiveservices account account create](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create)命令。 此命令向之前创建的资源组添加新的可计费资源。 创建新资源时，需要知道要使用的服务的 "类型"，以及其定价层（或 sku）和 Azure 位置：
+若要创建并订阅新的认知服务资源，请使用 [az cognitiveservices account create](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create) 命令。 此命令会将新的可计费资源添加到前面创建的资源组。 创建新资源时，需要知道你要使用哪种服务，及其定价层（或 SKU）和 Azure 位置：
 
-可以使用以下命令，为 `anomaly-detector-resource` 的异常探测器创建一个 F0 （免费）资源。
+可以使用以下命令为异常检测器创建名为 `anomaly-detector-resource` 的 F0（免费）资源。
 
 ```azurecli-interactive
 az cognitiveservices account create \
@@ -154,13 +154,13 @@ az cognitiveservices account create \
 
 ## <a name="get-the-keys-for-your-resource"></a>获取资源的密钥
 
-若要登录到命令行接口（CLI）的本地安装，请使用[az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login)命令。
+若要登录到本地安装的命令行接口 (CLI)，请使用 [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) 命令。
 
 ```console
 az login
 ```
 
-使用[az cognitiveservices account account keys list](https://docs.microsoft.com/cli/azure/cognitiveservices/account/keys?view=azure-cli-latest#az-cognitiveservices-account-keys-list)命令获取认知服务资源的密钥。
+使用 [az cognitiveservices account keys list](https://docs.microsoft.com/cli/azure/cognitiveservices/account/keys?view=azure-cli-latest#az-cognitiveservices-account-keys-list) 命令获取认知服务资源的密钥。
 
 ```azurecli-interactive
     az cognitiveservices account keys list \
@@ -172,14 +172,14 @@ az login
 
 ## <a name="pricing-tiers-and-billing"></a>定价层和计费
 
-定价层（以及您收取的费用）基于使用身份验证信息发送的事务数。 每个定价层指定：
-* 每秒允许的最大事务数（TPS）。
+定价层（以及你收到的账单金额）基于你使用身份验证信息发送的事务数。 每个定价层指定：
+* 每秒允许的最大事务数 (TPS)。
 * 在定价层中启用的服务功能。
-* 预定义事务量的成本。 超出此数量将导致服务的[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)中指定额外的费用。
+* 预定义事务量的成本。 超过此金额将产生[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)中为服务指定的额外费用。
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>获取资源的当前配额使用率
 
-使用[az cognitiveservices account account list 使用条款](https://docs.microsoft.com/en-us/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage)命令获取认知服务资源的使用情况。
+使用[az cognitiveservices account account list 使用条款](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage)命令获取认知服务资源的使用情况。
 
 ```azurecli-interactive
 az cognitiveservices account list-usage \
@@ -190,7 +190,7 @@ az cognitiveservices account list-usage \
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果要清理并删除认知服务资源，则可以将其删除或资源组。 删除资源组也会删除组中包含的任何其他资源。
+如果想要清理并删除认知服务资源，可以删除资源或资源组。 删除资源组也会删除该组中包含的任何其他资源。
 
 若要删除资源组及其关联的资源，请使用 az group delete 命令。
 

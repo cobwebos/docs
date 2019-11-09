@@ -1,29 +1,28 @@
 ---
 title: 使用 PowerShell cmdlet 创建 Azure IoT 中心 | Microsoft Docs
-description: 如何使用 PowerShell cmdlet 创建 IoT 中心。
+description: 了解如何使用 PowerShell cmdlet 创建资源组，然后在资源组中创建 IoT 中心。 还了解如何删除中心。
 author: robinsh
-manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
-ms.openlocfilehash: fd376728a1ebdf769c7f2ae76d61a60703e13711
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9c49f7ac744ee516aefc1571d50264132035ba8a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66146615"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890604"
 ---
 # <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>使用 New-AzIotHub cmdlet 创建 IoT 中心
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 可以使用 Azure PowerShell cmdlet 创建和管理 Azure IoT 中心。 本教程介绍如何使用 PowerShell 创建 IoT 中心。
 
-若要完成本操作说明，需要 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+若要完成本操作说明，需要 Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -80,7 +79,7 @@ Remove-AzIotHub `
     -Name MyTestIoTHub
 ```
 
-或者，可以删除资源组和所有资源，它都包含使用[删除 AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/Remove-azResourceGroup)命令：
+或者，可以使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/Remove-azResourceGroup) 命令删除资源组及其包含的所有资源：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyIoTRG1

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: 24e90ebd2994c5fffc1252167c06783421f2ac33
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: e072923c2c8b1d8e5bb281a5bcff992b25289b4d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035247"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888490"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件
 
@@ -48,8 +48,8 @@ Azure 备份将备份的数据存储在恢复服务保管库中。 保管库是 
 - 可以监视保管库中的已备份项，包括 Azure Vm 和本地计算机。
 - 可以使用 Azure [基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 来管理对保管库的访问。
 - 指定如何复制保管库中的数据以实现冗余：
-  - **本地冗余存储 (LRS)** ：若要防范数据中心发生故障，可以使用 LRS。 LRS 将数据复制到存储缩放单元。 [了解详细信息](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)。
-  - **异地冗余存储 (GRS)** ：若要防范区域范围的服务中断，可以使用 GRS。 GRS 会将数据复制到次要区域。 [了解详细信息](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
+  - **本地冗余存储（LRS）** ：若要防止数据中心出现故障，可以使用 LRS。 LRS 将数据复制到存储缩放单元。 [了解详细信息](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)。
+  - **异地冗余存储（GRS）** ：若要防止发生区域范围的故障，可以使用 GRS。 GRS 会将数据复制到次要区域。 [了解详细信息](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
   - 恢复服务保管库默认使用 GRS。
 
 ## <a name="backup-agents"></a>备份代理
@@ -106,7 +106,7 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 
 ![表键](./media/backup-architecture/table-key.png)
 
-## <a name="architecture-direct-backup-of-azure-vms"></a>体系结构：直接备份 Azure VM
+## <a name="architecture-direct-backup-of-azure-vms"></a>体系结构：直接备份 Azure Vm
 
 1. 为 Azure VM 启用备份时，将会根据指定的计划运行备份。
 1. 首次备份期间，如果 VM 已运行，则会在 VM 上安装备份扩展。
@@ -120,13 +120,13 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
     - 只会复制自上次备份以来发生更改的数据块。
     - 不会加密数据。 Azure 备份可以备份使用 Azure 磁盘加密进行加密的 Azure VM。
     - 快照数据可能不会立即复制到保管库。 在高峰期，可能需要好几个小时才能完成备份。 每日备份策略规定的 VM 备份总时间不会超过 24 小时。
-1. 将数据发送到保管库后，将创建恢复点。 默认情况下，快照会保留两天，然后再删除。 此功能允许从这些快照执行还原操作，从而缩短还原时间。 它减少了从保管库转换数据和复制回数据所需的时间。 请参阅 [Azure 备份即时还原功能](https://docs.microsoft.com/en-us/azure/backup/backup-instant-restore-capability)。
+1. 将数据发送到保管库后，将创建恢复点。 默认情况下，快照会保留两天，然后再删除。 此功能允许从这些快照执行还原操作，从而缩短还原时间。 它减少了从保管库转换数据和复制回数据所需的时间。 请参阅 [Azure 备份即时还原功能](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability)。
 
 Azure VM 需要能够访问 Internet 才能执行控制命令。 如果备份 VM 中的工作负荷（例如 SQL Server 数据库备份），则也需要访问 Internet 来传输后端数据。
 
 ![备份 Azure VM](./media/backup-architecture/architecture-azure-vm.png)
 
-## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>体系结构：直接备份本地 Windows Server 计算机或者 Azure VM 文件或文件夹
+## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>体系结构：直接备份本地 Windows Server 计算机或 Azure VM 文件或文件夹
 
 1. 若要设置方案，请在计算机中下载并安装 MARS 代理。 然后选择要备份的内容、运行备份的时间，以及备份在 Azure 中保留的期限。
 1. 初始备份根据备份设置运行。
@@ -157,15 +157,15 @@ Azure VM 需要能够访问 Internet 才能执行控制命令。 如果备份 VM
 Azure VM 使用磁盘来存储其操作系统、应用和数据。 每个 Azure VM 至少包含两个磁盘：一个磁盘用于操作系统，另一个用作临时磁盘。 Azure VM 还可以使用数据磁盘来存储应用数据。 磁盘以 VHD 的形式进行存储。
 
 - 在 Azure 上的标准或高级存储帐户中，VHD 以页 Blob 的形式进行存储：
-  - **标准存储：** 为运行不关注延迟的工作负荷的 VM 提供可靠、低成本的磁盘支持。 标准存储可以使用标准固态硬盘 (SSD) 或标准机械硬盘 (HDD)。
+  - **标准存储：** 对运行工作负荷不受延迟影响的 Vm 提供可靠、低成本的磁盘支持。 标准存储可以使用标准固态硬盘 (SSD) 或标准机械硬盘 (HDD)。
   - **高级存储：** 高性能磁盘支持。 使用高级·SSD 磁盘。
 - 磁盘具有不同的性能层：
-  - **标准 HDD 磁盘：** 基于 HDD，用作经济高效的存储。
-  - **标准 SSD 磁盘：** 结合了高级 SSD 磁盘和标准 HDD 磁盘的特点。 提供的一致性能和可靠性超过 HDD，而性价比仍然很高。
-  - **高级·SSD 磁盘：** 基于 SSD，为运行 I/O 密集型工作负荷的 VM 提供高性能和低延迟。
+  - **标准 HDD 磁盘：** 由 Hdd 提供支持，并用于经济高效的存储。
+  - **标准 SSD 磁盘：** 组合高级 SSD 磁盘和标准 HDD 磁盘的元素。 提供的一致性能和可靠性超过 HDD，而性价比仍然很高。
+  - **高级 SSD 磁盘：** 由 Ssd 提供支持，并为运行 i/o 密集型工作负荷的 Vm 提供高性能和低延迟。
 - 磁盘可以是托管磁盘或非托管磁盘：
-  - **非托管磁盘：** VM 使用的传统磁盘类型。 对于这些磁盘，可以创建自己的存储帐户，并在创建磁盘时指定该存储帐户。 然后需要确定如何最大限度地利用 VM 的存储资源。
-  - **托管磁盘：** Azure 将为你创建和管理存储帐户。 你只需指定磁盘大小和性能层，Azure 就会自动创建托管磁盘。 当你添加磁盘和缩放 VM 时，Azure 将处理存储帐户。
+  - **非托管磁盘：** Vm 使用的传统类型的磁盘。 对于这些磁盘，可以创建自己的存储帐户，并在创建磁盘时指定该存储帐户。 然后需要确定如何最大限度地利用 VM 的存储资源。
+  - **托管磁盘：** Azure 会为你创建和管理存储帐户。 你只需指定磁盘大小和性能层，Azure 就会自动创建托管磁盘。 当你添加磁盘和缩放 VM 时，Azure 将处理存储帐户。
 
 有关磁盘存储和 VM 可用的磁盘类型的详细信息，请参阅以下文章：
 

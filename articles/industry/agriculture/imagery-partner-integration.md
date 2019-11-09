@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c76fd151bf70bfff6eed3b45a673f94777e59467
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 2b15cc56cb4f804fac0b047819ccf166950e1cf3
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797902"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890975"
 ---
 # <a name="imagery-partner-integration"></a>图像合作伙伴集成
 
@@ -86,7 +86,7 @@ access_token = token_response.get('accessToken') 
 --- | ---
 Content-Type  | FarmBeats 数据中心 API 格式的请求格式（Content-type： application/<format>）为 json。 Content-type： application/json
 授权 | 指定进行 API 调用所需的访问令牌。 授权：持有者 < 访问令牌 >
-Accept  | 响应格式。 对于 FarmBeats 数据中心 Api，格式为 json Accept： application/json
+接受  | 响应格式。 对于 FarmBeats 数据中心 Api，格式为 json Accept： application/json
 
 
 ## <a name="api-requests"></a>API 请求
@@ -97,7 +97,7 @@ Accept  | 响应格式。 对于 FarmBeats 数据中心 Api，格式为 json Acc
 
 下面的示例请求是获取设备的列表：
 
-```
+```azurepowershell-interactive
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 "Content-Type: application/json" -H
 "Authorization: Bearer <Access-Token>”
@@ -108,7 +108,7 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 下面的示例请求是创建一个设备（它具有带有请求正文的输入 JSON）。
 
 
-```json
+```azurepowershell-interactive
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  
 "accept: application/json" -H  
 "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d

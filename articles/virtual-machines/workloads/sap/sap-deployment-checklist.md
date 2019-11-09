@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/15/2019
+ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a77c0e38db06698e714c3d0c3df0d9a5f028787b
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 097429e9c761d447a7164c813a6c84d3f07f0ab6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71672942"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891419"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷：规划和部署清单
 
@@ -102,7 +102,7 @@ ms.locfileid: "71672942"
         - 评估和测试你在规划阶段中所选 VM 类型的最大存储吞吐量和网络吞吐量方面的 Azure Vm 大小。 可在此处找到数据：
            -  [Azure 中 Windows 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)。 请务必考虑用于调整大小的*最大非缓存磁盘吞吐量*。
            -  [Azure 中 Linux 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)。 请务必考虑用于调整大小的*最大非缓存磁盘吞吐量*。
-   2. 存储空间。
+   2. 存储。
         - 至少，将[Azure 标准 SSD 存储](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd)用于代表 SAP 应用程序层的 vm，并用于部署不区分性能的 dbms。
         - 通常，我们不建议使用[Azure 标准 HDD 磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd)。
         - 对远程性能敏感的任何 DBMS Vm 使用[Azure 高级存储](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd)。
@@ -128,7 +128,7 @@ ms.locfileid: "71672942"
             - Oracle Linux 7.5。 如果使用的是 RHCKL 内核，则需要 release 3.10.0-862.13.1. el7。 如果使用的是 Oracle UEK 内核，则需要版本5。
         - 根据 SAP 支持说明[#500235](https://launchpad.support.sap.com/#/notes/500235)和[#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)，测试和评估 Sap 应用程序层 vm 与 DBMS vm 之间的网络延迟。 根据[SAP 支持说明 #1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中的网络延迟指南来评估结果。 网络延迟应为适中或良好的范围。 异常适用于 Vm 与 HANA 大型实例单元之间的流量，如[本文](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)中所述。
         - 请确保将 ILB 部署设置为使用直接服务器返回。 当 Azure Ilb 用于 DBMS 层上的高可用性配置时，此设置将减少延迟。
-        - 如果要将 Azure 负载均衡器与 Linux 来宾操作系统一起使用，请检查 Linux 网络参数**net.tcp _timestamps**是否已设置为**0**。 此建议与较旧版本[SAP 说明 #2382421](https://launchpad.support.sap.com/#/notes/2382421)中的建议冲突。 现已更新 SAP 说明，指出需要将此参数设置为**0**才能使用 Azure 负载均衡器。
+        - 如果要将 Azure 负载均衡器与 Linux 来宾操作系统一起使用，请检查 Linux 网络参数**tcp_timestamps**是否设置为**0**。 此建议与较旧版本[SAP 说明 #2382421](https://launchpad.support.sap.com/#/notes/2382421)中的建议冲突。 现已更新 SAP 说明，指出需要将此参数设置为**0**才能使用 Azure 负载均衡器。
         - 请考虑使用[Azure 邻近性放置组](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)来获得最佳网络延迟。 有关详细信息，请参阅[适用于 SAP 应用程序的最佳网络延迟的 Azure 邻近性放置组](sap-proximity-placement-scenarios.md)。
    4. 高可用性和灾难恢复部署。
         - 如果在不定义特定 Azure 可用性区域的情况下部署 SAP 应用程序层，请确保运行 SAP 对话框实例的所有 Vm 或单个 SAP 系统的中间件实例都部署在[可用性集中](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)。
@@ -160,7 +160,7 @@ ms.locfileid: "71672942"
    1.  验证[网络安全组和 ASC](https://docs.microsoft.com/azure/virtual-network/security-overview)规则按预期方式工作并防护受保护的资源。
    1.  确保所有需要加密的资源都已加密。 定义和实施用于备份证书的进程，存储和访问这些证书，并还原已加密的实体。
    1.  在可能的情况下，使用适用于 OS 磁盘的[Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq)。
-   1.  请确保不使用太多的加密层。 在某些情况下，将 Azure 磁盘加密与 DBMS 透明数据加密方法之一一起使用确实非常有意义。
+   1.  请确保不使用太多的加密层。 在某些情况下，将 Azure 磁盘加密与 DBMS 透明数据加密的一种方法一起使用可以保护同一服务器上的不同磁盘或组件，这一点很有帮助。  例如，在 SAP DBMS 服务器上，可以在操作系统启动磁盘（如果操作系统支持 ADE）上启用 Azure 磁盘加密（ADE）以及 DBMS 数据暂留文件未使用的数据磁盘。  例如，在保存 DBMS TDE 加密密钥的磁盘上使用 ADE。
 1. 性能测试。 在 SAP 中，根据 SAP 跟踪和度量值进行以下比较：
    - 如果适用，请将前10个联机报表与当前实现进行比较。
    - 如果适用，请将前10个批处理作业与当前实现进行比较。

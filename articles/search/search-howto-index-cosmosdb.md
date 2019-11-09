@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 41da5b59c7d9429a068ecd483aa96edb1141b727
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 0657d3d5aec414b867e85b627fcf77174c8ce789
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719950"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889898"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>如何在 Azure 中使用索引器对 Cosmos DB 数据编制索引认知搜索 
 
@@ -78,17 +78,11 @@ Azure 认知搜索中的 Cosmos DB 索引器可对通过不同协议访问[Azure
 
    ![Cosmos DB 数据源定义](media/search-howto-index-cosmosdb/cosmosdb-datasource.png "Cosmos DB 数据源定义")
 
-### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4 - 跳过向导中的“添加认知搜索”页
+### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4-跳过向导中的 "充实内容" 页面
 
-导入文档不需要添加认知技能。 除非有特定需要[将 AI 扩充添加](cognitive-search-concept-intro.md)到索引管道，否则应跳过此步骤。
+添加认知技能（或扩充）不是一种导入需求。 除非有特定需要[将 AI 扩充添加](cognitive-search-concept-intro.md)到索引管道，否则应跳过此步骤。
 
-若要跳过该步骤，请先转到下一页。
-
-   ![添加技能的 "下一页" 按钮](media/search-get-started-portal/next-button-add-cog-search.png)
-
-在该页中，可以直接跳到索引自定义操作。
-
-   ![跳过认知技能步骤](media/search-get-started-portal/skip-cog-skill-step.png)
+若要跳过该步骤，请单击页面底部的蓝色按钮 "下一步" 和 "跳过"。
 
 ### <a name="5---set-index-attributes"></a>5 - 设置索引属性
 
@@ -178,7 +172,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可对通过不同协议访问[Azure
 
 | 字段   | 说明 |
 |---------|-------------|
-| name | 必需。 选择任意名称来表示数据源对象。 |
+| **name** | 必需。 选择任意名称来表示数据源对象。 |
 |type| 必需。 必须是 `cosmosdb`。 |
 |**凭据** | 必需。 必须是 Cosmos DB 连接字符串。<br/>对于 SQL 集合，连接字符串采用以下格式：`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>对于 MongoDB 集合，请将 **ApiKind=MongoDb** 添加到连接字符串：<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/><br/>对于 Gremlin 关系图和 Cassandra 表，注册 "[封闭索引器预览](https://aka.ms/azure-cognitive-search/indexer-preview)" 以获取对预览版的访问权限，以及有关如何设置凭据格式的信息。<br/><br/>避免在终结点 URL 中包含端口号。 如果包含端口号，Azure 认知搜索将无法为你的 Azure Cosmos DB 数据库编制索引。|
 | **容器** | 包含以下元素： <br/>**名称**：必需。 指定要编制索引的数据库集合的 ID。<br/>**查询**：可选。 可以指定查询，将任意 JSON 文档平展成 Azure 认知搜索可以为其编制索引的平面架构。<br/>对于 MongoDB API、Gremlin API 和 Cassandra API，不支持查询。 |

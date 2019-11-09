@@ -1,7 +1,7 @@
 ---
 title: 文本翻译 API V3.0 参考
 titleSuffix: Azure Cognitive Services
-description: 文本翻译 API v3.0 参考文档。
+description: 文本翻译 API v3.0 参考文档。 文本翻译 API 版本 3 提供了基于 JSON 的新型 Web API。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: a441ca83230a1c715aadda79683964aaab6d6213
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: c07673e7b170170de4723a1232d2e7281feaaf99
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72252971"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888083"
 ---
 # <a name="translator-text-api-v30"></a>文本翻译 API v3.0
 
@@ -34,14 +34,14 @@ ms.locfileid: "72252971"
 Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 10 个 [Azure 地理区域](https://azure.microsoft.com/global-infrastructure/regions)：
 
 * **美洲：** 美国东部、美国中南部、美国西部和美国西部2 
-* **亚太区：** 韩国南部、日本东部、东南亚和澳大利亚东部
-* **欧洲：** 欧洲北部和欧洲西部
+* **亚太：** 韩国南部、日本东部、东南亚和澳大利亚东部
+* **欧洲：** 北欧和西欧
 
 在大多数情况下，对 Microsoft 文本翻译 API 的请求由距离请求的来源位置最近的数据中心处理。 如果数据中心出现故障，请求可能会路由到 Azure 地理区域之外。
 
 若要强制由特定 Azure 地理区域处理请求，请将 API 请求中的全球终结点更改为所需的区域终结点：
 
-|描述|Azure 地理|基 URL|
+|说明|Azure 地理|基 URL|
 |:--|:--|:--|
 |Azure|全局（非区域）|   api.cognitive.microsofttranslator.com|
 |Azure|美国|   api-nam.cognitive.microsofttranslator.com|
@@ -57,11 +57,11 @@ Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 
 |标头|说明|
 |:----|:----|
 |Ocp-Apim-Subscription-Key|如果要传递密钥，请与认知服务订阅一起使用。<br/>该值是文本翻译 API 订阅的 Azure 密钥。|
-|授权|如果要传递身份验证令牌，请与认知服务订阅一起使用。<br/>该值是持有者令牌：`Bearer <token>`。|
+|授权|*如果要身份验证令牌，请与认知服务订阅一起使用*。<br/>该值是持有者令牌：`Bearer <token>`。|
 |Ocp-Apim-Subscription-Region|*如果要传递多服务机密密钥，请将用于认知服务多服务订阅。*<br/>值是多服务订阅的区域。 如果不使用多服务订阅，此值是可选的。|
 
 ###  <a name="secret-key"></a>密钥
-第一个选项是使用 `Ocp-Apim-Subscription-Key` 标头进行身份验证。 将 @no__t 的标头添加到请求中。
+第一个选项是使用 `Ocp-Apim-Subscription-Key` 标头进行身份验证。 将 `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` 标头添加到请求中。
 
 ### <a name="authorization-token"></a>授权令牌
 或者，可以交换访问令牌的密钥。 此令牌作为 `Authorization` 标头包含在每个请求中。 若要获取授权令牌，请向以下 URL 发出 `POST` 请求：
@@ -98,7 +98,7 @@ Authorization: Bearer <Base64-access_token>
 
 区域对于多服务文本 API 订阅是必需的。 你选择的区域是在使用多服务订阅密钥时可用于文本翻译的唯一区域，并且必须是通过 Azure 门户注册多服务订阅时所选的同一区域。
 
-可用区域 `australiaeast`，`brazilsouth`，`canadacentral`，`centralindia`，`centralus`，`centraluseuap`，`eastasia`，`eastus`，`eastus2`，`francecentral`，0，1，2，6，7，8，9，0，@no__tt-21 和 2。
+可用区域有 `australiaeast`、`brazilsouth`、`canadacentral`、`centralindia`、`centralus`、`centraluseuap`、`eastasia`、`eastus`、`eastus2`、`francecentral`、`japaneast`、`japanwest`、`koreacentral`、`northcentralus`、`northeurope`、`southcentralus`、`southeastasia`、`uksouth`、`westcentralus`、`westeurope`、`westus`、`westus2`和 `southafricanorth`。
 
 如果使用参数 `Subscription-Key` 传递查询字符串中的密钥，则必须使用查询参数 `Subscription-Region` 指定区域。
 
@@ -124,7 +124,7 @@ Authorization: Bearer <Base64-access_token>
 ```
 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 常见错误代码包括：
 
-| 代码 | 描述 |
+| 代码 | 说明 |
 |:----|:-----|
 | 400000| 某个请求输入无效。|
 | 400001| “scope”参数无效。|

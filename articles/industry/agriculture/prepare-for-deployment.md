@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c609285b727414b4849c9ef6654406a035005bb1
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 10ff3cc940ac3d11154f1dec6c06ff3681328d38
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797720"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890941"
 ---
 # <a name="deploy-farmbeats"></a>部署 FarmBeats
 
@@ -53,12 +53,28 @@ Azure FarmBeats 部署在订阅中创建以下列出的资源：
 
 可从 Azure Marketplace 下载 azure FarmBeats。 可以直接从 Azure 门户访问它。  
 
+## <a name="create-azure-farmbeats-offer-on-marketplace"></a>在 marketplace 上创建 Azure FarmBeats 优惠
+
+使用以下步骤在 marketplace 中创建 Azure FarmBeats 产品/服务：
+
+1. 登录到 Azure 门户并在右上角选择你的帐户，并切换到要在其中部署 Microsoft Azure FarmBeats 的 Azure AD 租户。
+2. Azure Marketplace 提供 azure FarmBeats。 在 marketplace 页面上，选择 "立即获取"。
+3. 选择 "创建"，并输入以下信息：
+  - 订阅名称。
+  - 现有资源组名称（仅限空资源组）或创建新的资源组用于部署 Azure FarmBeats。 请在后续部分中记下此资源组。
+4. 要安装 Azure FarmBeats 的区域。 目前 FarmBeats 下列地区：美国中部、西欧、美国东部2、北欧、美国西部、东南亚、美国东部、澳大利亚东部、美国西部2。
+5. 选择“确定”。
+此时将显示 "使用条款" 页。 查看标准市场条款，或选择超链接以查看使用条款。
+6. 选择 "**关闭**"，然后选择 "我同意" 复选框，然后选择 "**创建**"。
+7. 现已成功在 marketplace 上签署 Azure FarmBeats 的最终用户许可协议（EULA）。  
+7. 若要继续进行部署，请按照本指南中的后续步骤进行操作。
+
 ## <a name="prepare"></a>准备
 
 需要以下权限才能部署 Azure FarmBeats：
 
 - 租户：读取访问权限
-- 订阅：所有者的参与者
+- 订阅：参与者或所有者
 - 资源组：所有者
 
 ## <a name="before-you-begin"></a>开始之前
@@ -74,11 +90,6 @@ Azure FarmBeats 部署在订阅中创建以下列出的资源：
 带有 sentinel 的帐户可帮助你从其官方网站下载指向你的设备的 sentinel 卫星电视。 按照以下步骤创建免费帐户：
 
 1. 转到  https://scihub.copernicus.eu/dhus/#/self-registration 。 在注册页中，提供名字、姓氏、用户名、密码和电子邮件。
-2. 在 "**选择域**" 下拉菜单中，选择 "**土地**" 选项。
-3. 在 "**选择用法**" 下拉菜单中，选择 "**教育**" 选项。
-4. 在 "**选择国家/地区**" 下拉菜单中，选择你所在的国家/地区。
-5. 选择 "**注册**" 以完成注册过程。
-
 验证电子邮件将发送到已注册的电子邮件地址进行确认。 选择该链接并确认。 注册过程已完成。
 
 ## <a name="create-azure-ad-app-registration"></a>创建 Azure AD 应用注册
@@ -88,15 +99,15 @@ Azure FarmBeats 部署在订阅中创建以下列出的资源：
 - 情况1：安装程序可以自动创建（前提是你有必需的租户、订阅和资源组访问权限）。
 - 案例2：可以在部署 Azure FarmBeats 之前创建和配置（需要手动步骤）。
 
-**情况 1**：安装程序假定您有权在所需的订阅中创建 Azure active directory 应用程序注册。 若要注册，请登录到门户，并在 > **新注册** > **应用注册**中转到**Azure active directory** 。
+**案例 1**：：如果有权创建 AAD 应用注册，则可以跳过此步骤，让安装程序创建应用注册。 请继续阅读下一部分：[准备输入 json 文件](#prepare-input-json-file)
 
 如果你已有订阅，则可以直接移到下一个过程。
 
-**案例 2**：如果你没有足够的权限在你的订阅中创建和配置 Azure AD 应用注册，则此方法是首选步骤。 请求管理员使用[自定义脚本](https://aka.ms/FarmBeatsAADScript)，这将帮助 IT 管理员在 Azure 门户上自动生成和配置 Azure AD 应用注册。 作为使用 PowerShell 环境运行此自定义脚本的输出，IT 管理员需要与你共享一个 Azure Active Directory 应用程序客户端 ID 和密码机密。 记下这些值。
+**案例 2**：如果你没有足够的权限在你的订阅中创建和配置 Azure AD 应用注册，则此方法是首选步骤。 请求管理员使用[自定义脚本](https://aka.ms/FarmBeatsMarketplace)，这将帮助 IT 管理员在 Azure 门户上自动生成和配置 Azure AD 应用注册。 作为使用 PowerShell 环境运行此自定义脚本的输出，IT 管理员需要与你共享一个 Azure Active Directory 应用程序客户端 ID 和密码机密。 记下这些值。
 
 使用以下步骤运行 Azure AD 应用程序注册脚本：
 
-1. 获取注册[脚本](https://aka.ms/FarmBeatsAADScript)。
+1. 下载[脚本](https://aka.ms/FarmBeatsAADScript)。
 2. 登录到 Azure 门户并选择你的订阅和 AD 租户。
 3. 从 Azure 门户的顶部导航栏启动 Cloud Shell。
 
@@ -105,31 +116,39 @@ Azure FarmBeats 部署在订阅中创建以下列出的资源：
 
 4. 系统将提示首次用户选择订阅，以创建存储帐户和 Microsoft Azure 文件共享。 选择“创建存储”。
 5. 首次提示用户选择首选 shell 体验-Bash 或 PowerShell。 选择 "PowerShell"。
-6. 在 Cloud Shell 输入以下命令以运行脚本。
+6. 将脚本（从步骤1）上载到 Cloud Shell，并记下上传的文件的位置。
 
-    ```powershell
+    > [!NOTE]
+    > 默认情况下，将其上传到主目录。
+
+    使用以下脚本：
+
+    ```azurepowershell-interactive
     ./create_aad_script.ps1
     ```
 7. 记下 Azure AD 的应用程序 ID 和客户端密码以与部署 Azure FarmBeats 的人员共享。
 
-## <a name="create-azure-farmbeats-offer-on-marketplace"></a>在 marketplace 上创建 Azure FarmBeats 优惠
+### <a name="prepare-input-json-file"></a>准备输入 Json 文件
 
-使用以下步骤在 marketplace 中创建 Azure FarmBeats 产品/服务：
+在安装过程中，请按如下所示创建一个输入 json 文件：
 
-1. 登录到**Azure 门户**并在右上角选择你的帐户，并切换到要在其中部署 Microsoft Azure FarmBeats 的 Azure AD 租户。
-2. 选择 "**搜索/Marketplace** " 或 "**创建资源**"。 键入**FarmBeats**以查看产品/服务详细信息。 在继续执行后续步骤之前，请下载通过 aka.ms 超链接提供的指南。
-3. 选择 "**创建**"，并输入以下信息：
+    ```json
+    {  
+       "sku":"both",
+       "subscriptionId":"da9xxxec-dxxf-4xxc-xxx21-xxx3ee7xxxxx",
+       "datahubResourceGroup":"dummy-test-dh1",
+       "location":"westus2",
+       "datahubWebsiteName":"dummy-test-dh1",
+       "acceleratorResourceGroup":" dummy-test-acc1",
+       "acceleratorWebsiteName":" dummy-test-acc1",
+       "sentinelUsername":"dummy-dev",
+       "notificationEmailAddress":"dummy@yourorg.com",
+       "updateIfExists":true
+    }
+    ```
 
-   - 输入订阅名称。
-   - 输入现有的资源组名称（仅限空资源组），或创建新的资源组用于部署 Azure FarmBeats。 请记下此资源组，以便在后面的输入 json 文件中输入。
-   - 输入要将 Azure FarmBeats 安装到的区域。 FarmBeats 当前可以安装在以下区域：美国中部、西欧、美国东部2、北欧、美国西部、东南亚、美国东部、澳大利亚东部、美国西部2。
-4. 选择 **"确定"** ，这会将您重定向到使用条款页。 查看标准市场条款，或选择超链接以查看使用条款。
-5. 选择 "**关闭**"，然后选择 "我同意" 复选框，然后选择 "**创建**"。
-6. 现已成功在 marketplace 上签署 Azure FarmBeats 的最终用户许可协议（EULA）。 若要继续进行部署，请按照本指南中的后续步骤进行操作。
+此文件是要 Azure Cloud Shell 的输入文件和参数值在安装期间使用的参数。 Json 中的所有参数都需要替换为适当的值或将其删除。如果删除，安装程序将在安装过程中提示你
 
-### <a name="prepare-inputjson-file"></a>准备输入 Json 文件
-
-此文件是要 Azure Cloud Shell 的输入文件，以及在部署期间不提示上载之前在此文件中指定其值的参数，因此请节省一些时间。  
 
 > [!NOTE]
 > 此文件输入要 Azure Cloud Shell 的值。  为了节省时间，在部署过程中，不会提示你输入添加到此文件的参数。 系统将提示你输入缺少的参数。
@@ -138,174 +157,139 @@ Azure FarmBeats 部署在订阅中创建以下列出的资源：
 
 |命令 | 说明|
 |--- | ---|
-|限量  | 提供一个选项，用于下载 Azure FarmBeats 的其中一个组件或两个组件。 指定要下载的组件。 若要仅安装数据中心，请使用 "onlydatabhub"。 若要安装数据中心和加速器，请使用 "both"。|
+|sku  | 提供一个选项，用于下载 Azure FarmBeats 的其中一个组件或两个组件。 指定要下载的组件。 若要仅安装数据中心，请使用 "onlydatabhub"。 若要安装数据中心和加速器，请使用 "both"|
 |订阅  | 指定用于安装 FarmBeats 的订阅|
-|"datahubResourceGroup"  | 数据中心资源的资源组名称。|
-|"datahubLocation" | 要存储数据中心资源的位置。|
-|"acceleratorWebsiteName"  |命名你的数据中心的唯一 URL 前缀
-Swagger 网站。 默认值为数据中心资源组名称。 按 enter 继续默认值。|
-|"acceleratorResourceGroup"  | 数据中心资源的资源组名称。 |
-|"acceleratorLocation"  | 数据中心资源的存储位置
-"acceleratorWebsiteName"  | 用于命名加速器网站的唯一 URL 前缀。 默认值为加速器。 按 enter 继续默认值。|
+|"datahubResourceGroup"  | 数据中心资源的资源组名称|
+|"acceleratorWebsiteName"  |命名你的数据中心的唯一 URL 前缀|
+|"acceleratorResourceGroup"  | 用于命名加速器网站的唯一 URL 前缀。|
+|"datahubWebsiteName"  | UUnique URL 前缀来命名你的数据中心网站。 |
 |''sentinelUsername'' | 用于登录的用户名： https://scihub.copernicus.eu/dhus/#/self-registration。|
-|"sentinelPassword"  | 用于登录的密码： https://scihub.copernicus.eu/dhus/#/self-registration。|
-|"farmbeatsAppId"  | 要由团队 Azure FarmBeats 共享的值。  |
-|"farmbeatsPassword"  | 要由团队 Azure FarmBeats 共享的值。|
 |"notificationEmailAddress"  | 用于接收你在数据中心内配置的任何警报的通知的电子邮件地址。|
-|"更新" aadAppClientId ""  |[**可选**]要包含在输入中的参数。仅当 Azure AD 应用程序已存在时才包含在 Json 中。  -True/False。 如果是首次安装，则为 False; 对于升级方案为 True。|
+|"updateIfExists" "  |可有可无要包含在输入中的参数。仅当你想要升级现有的 FarmBeats 实例时才包含在 Json 中。 若要进行升级，请提供其他详细信息。 资源组名称、位置等必须相同。|
 |"aadAppClientId"  | [**可选**]要包含在输入中的参数。仅当 Azure AD 应用程序已存在时才包含在 Json 中。  |
 |"aadAppClientSecret"   | [**可选**]要包含在输入中的参数。仅当 Azure AD 应用程序已存在时才包含在 Json 中。|
 
-
-示例 JSON 输入：
-
-```json
-{  
-   "sku":"both", 
-   "subscriptionId": "da9xxxec-dxxf-4xxc-xxx21-xxx3ee7xxxxx", 
-   "datahubResourceGroup": "dummy-test-dh1", 
-   "datahubLocation": "westus2", 
-   "datahubWebsiteName": "dummy-test-dh1", 
-   "acceleratorResourceGroup": "dummy-test-acc1", 
-   "acceleratorLocation": "westus2", 
-   "acceleratorWebsiteName": "dummy-test-acc1", 
-   "sentinelUsername": "dummy-dev", 
-   "farmbeatsAppId": "c3cb3xxx-27xx-4xxb-8xx6-3xxx2xxdxxx5c", 
-   "notificationEmailAddress": "dummy@microsoft.com", 
-   "updateIfExists": true
-}
-```
 ## <a name="deploy-within-cloud-shell-browser-based-command-line"></a>在 Cloud Shell 基于浏览器的命令行中部署
 
-作为 marketplace 工作流的一部分，你已经创建了一个资源组并签署了最终用户许可协议，该协议可以在实际部署中再次检查一次。 部署将通过使用 Bash 环境 Azure Cloud Shell （基于浏览器的命令行）来完成。  
+作为上述 marketplace 工作流的一部分，你必须创建一个资源组并签署最终用户许可协议，该协议可以在实际部署过程中再次检查一次。 可以通过 Azure Cloud Shell （基于浏览器的命令行）使用 Bash 环境来完成部署。 请继续阅读下一部分，通过 Cloud Shell 进行部署。
 
 > [!NOTE]
 > 非活动 Cloud Shell 会话在20分钟后过期。 尝试在这段时间内完成部署。
 
-1. 登录到**Azure**门户，并选择所需的订阅和 AD 租户。
-2. 从**Azure**门户的顶部导航开始**Cloud Shell** 。
+1. 登录 Azure 门户，并选择所需的订阅和 AD 租户。
+2. 从 Azure 门户的顶部导航栏启动 Cloud Shell。
+3. 如果你是首次使用 Cloud Shell，系统将提示你选择一个订阅来创建存储帐户和 Microsoft Azure 文件共享。
+4. 选择 "**创建存储**"。  
 
-   ![项目场节拍](./media/prepare-for-deployment/navigation-bar-1.png)
+选择环境作为 Bash （而非 PowerShell）。
 
-3. 选择用于创建存储帐户和 Microsoft Azure 文件共享的订阅。
-4. 选择“创建存储”。
-5. 从 shell 窗口左侧选择环境下拉框（Bash）。
+## <a name="deployment-scenario-1"></a>部署方案1
 
-   ![项目场节拍](./media/prepare-for-deployment/bash-1-1.png)
+安装程序将创建 Azure AD 应用注册（上面的第1种情况）
 
-### <a name="deployment-scenario-1"></a>部署方案1
-
-安装程序将创建 Azure AD （你具有 AD 租户读取权限）。  
-
-1. 下载[输入的 json](https://aka.ms/PPInputJsonTemplate)模板。 将 Azure 应用程序的客户端 ID 和密码包括在输入的 json 文件中，并保存该文件。
-2. 在记事本中打开下载的文件，并通过输入值填充文件。
+1. 复制以下模板并将其命名为输入 json。  
+示例 JSON 输入：
 
     ```json
-    {
-    "sku":"both",
-    "subscriptionId":"daxx9xxx-d18f-4xxc-9c21-5xx3exxxxx45",
-    "datahubResourceGroup":"dummy-test-dh1",  
-    "location":"westus2",  
-    "datahubWebsiteName":"dummy-test-dh1",  
-    "acceleratorResourceGroup":"dummy-test-acc1",  
-    "acceleratorWebsiteName":"dummy-test-acc1",  
-    "sentinelUsername":"dummy-dev",
-    "notificationEmailAddress":"dummyuser@org1.com",
-    "updateIfExists":true
+    {  
+       "sku":"both", 
+       "subscriptionId": "da9xxxec-dxxf-4xxc-xxx21-xxx3ee7xxxxx", 
+       "datahubResourceGroup": "dummy-test-dh1", 
+       "datahubLocation": "westus2", 
+       "datahubWebsiteName": "dummy-test-dh1", 
+       "acceleratorResourceGroup": "dummy-test-acc1", 
+       "acceleratorLocation": "westus2", 
+       "acceleratorWebsiteName": "dummy-test-acc1", 
+       "sentinelUsername": "dummy-dev", 
+       "farmbeatsAppId": "c3cb3xxx-27xx-4xxb-8xx6-3xxx2xxdxxx5c", 
+       "notificationEmailAddress": "dummy@microsoft.com", 
+       "updateIfExists": true
     }
-
     ```
+
+2. 保存该文件，并记下该路径（在本地计算机上）。
+3. 请访问 Azure Cloud Shell 并在身份验证成功后，选择 "上传" （请参阅下图中突出显示的图标），并将输入的 json 文件上传到 Cloud Shell 存储。  
+
+    ![项目场节拍](./media/prepare-for-deployment/bash-2-1.png)
+
+4. 在 cloud shell 中转到你的主目录。 默认情况下，它是/home/<username>
+5. 将以下两个命令键入或粘贴到 Cloud Shell 中。 请确保修改输入的路径。 Json 文件，然后按 enter。
+
+      ```azurepowershell-interactive
+      wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScriptbash farmbeats-installer.sh /home/<username>/input.json
+     ```
+     安装程序会自动下载所有依赖项，并生成部署的。 系统将提示你同意 Azure FarmBeats 最终用户许可协议（EULA）。
+
+     - 如果同意，请输入 "Y"，然后继续下一步。
+     - 如果你不同意这些条款并且部署将终止，请输入 "N"。
+
+6. 然后，系统将提示您输入部署的访问令牌。 复制生成的代码，并以你的 Azure 凭据登录 https://microsoft.com/devicelogin。
 
     > [!NOTE]
-    > 你可以跳过此步骤，并且输入将在运行时提示。
+    > 令牌将在60分钟后过期。 过期后，你可以重新启动，方法是再次键入部署命令。
 
-3. 保存该文件，并记下该路径（在本地计算机上）。  
-4. 请访问 Azure Cloud Shell 并在身份验证成功后，选择 "上传" （请参阅下图中突出显示的图标），并将输入的 json 文件上传到 Cloud Shell 存储。 如果安装程序将为你创建和配置 Azure AD 应用注册，则不需要在 json 中传递 Azure AD 参数。
+7. 出现提示时，请输入你的 Sentinel 帐户密码。
+8. 安装程序现在将验证并开始部署，这可能需要大约20分钟的时间。
+9. 部署成功后，将收到以下输出链接：
 
-   ![项目场节拍](./media/prepare-for-deployment/bash-2-1.png)
+ - **数据中心 URL**： Swagger 链接，用于试用 Azure FarmBeats api。
+ - **快捷键 URL**：用于浏览 Azure FarmBeats 智能场加速器的用户界面。
+ - 部署期间创建的部署**日志**文件日志文件。 如果需要，可以使用它进行故障排除。
 
-5. 将 "部署命令" 键入或粘贴到 Cloud Shell 中。 请确保修改输入的路径。 Json 文件，然后按 enter。  
+## <a name="deployment-scenario-2"></a>部署方案2
 
-    ```
-    wget -N -O farmbeats-installer.sh https://aka.ms/FB_1.2.0 && bash farmbeats-installer.sh> /home/dummyuser/input.json
+现有的 Azure Active Directory 应用注册用于部署（上述情况2）
 
-    ```
-   此脚本会自动下载所有依赖项，并生成部署的。 然后，系统会提示同意 Azure FarmBeats 最终用户许可协议（EULA）。
-
-   - 如果同意，请输入 "Y"，然后继续下一步。
-   - 如果你不同意这些条款并且部署将终止，请输入 "N"。
-
-   然后，系统将提示您输入部署的访问令牌。 复制生成的代码，并以你的 Azure 凭据登录 https://microsoft.com/devicelogin。
-
-   > [!NOTE]
-   > 代码将在60分钟后过期。 过期后，你可以重新启动，方法是再次键入部署命令。
-
-6. 在下一个提示符下，输入 "sentinel 帐户密码"。
-7. 安装程序现在将验证并开始部署，这可能需要大约20分钟的时间。
-8. 部署成功后，将收到以下输出链接：
-    - **数据中心 URL**： Swagger 链接，用于试用 Azure FarmBeats api。
-    - **快捷键 URL**：用于浏览 Azure FarmBeats 智能场加速器的用户界面。
-    - 部署期间创建的部署**日志**文件日志文件。 它可用于故障排除。
-
-    - 如果同意，请输入 "Y"，然后继续下一步。
-    - 如果你不同意这些条款并且部署将终止，请输入 "N"。
-
-   然后，系统将提示您输入部署的访问令牌。 复制生成的代码，并通过 Azure 凭据登录到 https://microsoft.com/devicelogin。
-
-   > [!NOTE]
-    > 请记下这些更改，并保留部署日志文件路径，以便将来使用。
-
-
-### <a name="deployment-scenario-2"></a>部署方案2
-
-现有 Azure Active Directory 应用注册用于部署。
-
-1. 下载[输入 json](https://aka.ms/PPInputJsonTemplate)在输入中包括 Azure 应用程序的客户端 ID 和密码，保存。
+1. 复制以下 JSON 文件，其中包含输入文件中的 Azure 应用程序客户端 ID 和密码，并保存。
 
     ```json
-       {
-       "sku":"both",
-       "subscriptionId":"daxx9xxx-d18f-4xxc-9c21-5xx3exxxxx45",
-       "datahubResourceGroup":"dummy-test-dh1",  
-       "location":"westus2",  
-       "datahubWebsiteName":"dummy-test-dh1",  
-       "acceleratorResourceGroup":"dummy-test-acc1",  
-       "acceleratorWebsiteName":"dummy-test-acc1",  
-       "sentinelUsername":"dummy-dev",
-       "notificationEmailAddress":"dummyuser@org1.com",
-       "updateIfExists": true,
-       "aadAppClientId": "lmtlemlemylmylkmerkywmkm823",
-       "aadAppClientSecret": "Kxxxqxxxxu*kxcxxx3Yxxu5xx/db[xxx"
-       }
-     ```
+   {
 
-     按照以下步骤进行操作：
+   "sku":"both",
+   "subscriptionId":"daxx9xxx-d18f-4xxc-9c21-5xx3exxxxx45",
+   "datahubResourceGroup":"dummy-test-dh1",   
+   "location":"westus2",   
+   "datahubWebsiteName":"dummy-test-dh1",   
+   "acceleratorResourceGroup":"dummy-test-acc1",   
+   "acceleratorWebsiteName":"dummy-test-acc1",   
+   "sentinelUsername":"dummy-dev",
+   "notificationEmailAddress":"dummyuser@org1.com",
+   "updateIfExists": true,
+   "aadAppClientId": "lmtlemlemylmylkmerkywmkm823",
+   "aadAppClientSecret": "Kxxxqxxxxu*kxcxxx3Yxxu5xx/db[xxx"
+
+   }
+   ```
+
+按照以下步骤进行操作：
 
 2. 记下输入 json 文件的路径（在本地计算机上）。
 3. 再次跳到 "Azure Cloud Shell"，并成功进行身份验证，选择 "上传" 按钮（请参阅下图中突出显示的图标），并将输入的 json 文件上传到 Cloud Shell 存储。
 
     ![项目场节拍](./media/prepare-for-deployment/bash-2-1.png)
 
-4. 将*部署命令*键入或粘贴到 Cloud Shell 中。 请确保修改输入的路径。 Json 文件，然后按 enter。
+4. 在 cloud shell 中转到你的主目录。 默认情况下，它是/home/<username>
+5. 将以下两个命令键入或粘贴到 Cloud Shell 中。 请确保修改输入的路径。 Json 文件，然后按 enter。
 
+    ```azurepowershell-interactive
+    wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScriptbash farmbeats-installer.sh /home/<username>/input.json
     ```
-    wget -N -O farmbeats-installer.sh https://aka.ms/FB_1.2.0 && bash farmbeats-installer.sh> /home/dummyuser/input.json
 
-    ```
-   按照以下步骤进行操作：
+按照屏幕上的说明操作。
 
-5. 此脚本会自动下载所有依赖项，并生成部署的。
-6. 系统将提示你阅读并同意 Azure FarmBeats 最终用户许可协议（EULA）。
+6. 脚本会自动下载所有依赖项，并生成部署模板。
+7. 系统将提示你阅读并同意 Azure FarmBeats 最终用户许可协议（EULA）。
 
-   - 如果同意，请输入 "Y"，然后继续下一步。
-   - 如果你不同意这些条款并且部署将终止，请输入 "N"。
+    - 如果同意，请输入 "Y"，然后继续下一步。
+    - 如果你不同意这些条款并且部署将终止，请输入 "N"。
 
-7. 系统将提示你输入部署的访问令牌。 复制生成的代码，并通过 Azure 凭据登录到 https://microsoft.com/devicelogin。
-8. 安装程序现在将验证并开始创建资源，这可能需要大约20分钟的时间。 在此期间将 Cloud Shell 上的会话保持为活动状态。
-9. 成功完成部署后，你会收到以下输出链接：
-   - **数据中心 URL**： Swagger 链接，用于试用 FarmBeats api。
-   - **快捷键 URL**：用于浏览 FarmBeats 智能场加速器的用户界面。
-   - 部署人员**日志文件**：在部署期间保存日志，可用于故障排除。
+8. 系统将提示你输入部署的访问令牌。 复制生成的代码，并通过 Azure 凭据登录到 https://microsoft.com/devicelogin。
+9. 安装程序现在将验证并开始创建资源，这可能需要大约20分钟的时间。 在此期间将 Cloud Shell 上的会话保持为活动状态。
+10. 成功完成部署后，你会收到以下输出链接：
+
+ - **数据中心 URL**： Swagger 链接，用于试用 FarmBeats api。
+ - **快捷键 URL**：用于浏览 FarmBeats 智能场加速器的用户界面。
+ - 部署期间创建的部署**日志**文件：日志文件。 如果需要，可以使用它进行故障排除。
 
 如果遇到任何问题，请查看[故障排除](troubleshoot-project-farmbeats.md)。
 
@@ -345,41 +329,28 @@ Swagger 网站。 默认值为数据中心资源组名称。 按 enter 继续默
 
    ![项目场节拍](./media/prepare-for-deployment/navigation-bar-1.png)
 
-3. 选择用于创建存储帐户和 Azure 文件共享的订阅。
-4. 选择“创建存储”。
-5. 从 shell （Bash）左侧的下拉框中选择环境。
-6. 仅在需要时对输入的 json 文件进行更改并上载到 Azure Cloud Shell。 例如，你可以更新你要接收的通知的电子邮件地址。
-7. 记下输入的 json 文件路径（在本地计算机上）。
-8. 请参阅 Azure Cloud Shell。 成功通过身份验证后，选择 "上传" 按钮（请参阅下图中突出显示的图标），并将输入的 json 文件上传到 Cloud Shell 存储。
+3. 从 shell 的左侧的下拉框中选择环境 "Bash"。
+4. 仅在需要时对输入的 json 文件进行更改并上载到 Azure Cloud Shell。 例如，你可以更新你要接收的通知的电子邮件地址。
+5. 将输入的 json 文件上传到 Azure Cloud Shell。
+6. 将以下两个命令键入或粘贴到 Cloud Shell 中。 请确保修改输入 json 文件的路径，然后按 enter。
 
-   ![项目场节拍](./media/prepare-for-deployment/bash-2-1.png)
-
-9. 将**部署命令**键入或粘贴到 Cloud Shell 中。 请确保修改输入的路径。 Json 文件，然后按 enter。
-
+    ```azurepowershell-interactive
+    wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScriptbash farmbeats-installer.sh /home/<username>/input.json
     ```
-    wget -N -O farmbeats-installer.sh https://aka.ms/FB_1.2.0 && bash farmbeats-installer.sh> /home/dummyuser/input.json
+按照屏幕上的说明操作：
 
-    ```
-    按照以下步骤进行操作：
+7. 安装程序会在运行时自动提示所需的输入：
+8. 输入用于部署的访问令牌。 复制生成的代码，并通过 Azure 凭据登录到 https://microsoft.com/devicelogin。
+9. Sentinel 密码
+10. 安装程序现在将验证并开始创建资源，这可能需要大约20分钟的时间。
+11. 部署成功后，将收到以下输出链接：
+ - **数据中心 URL**： Swagger 链接，用于试用 FarmBeats api。
+ - **快捷键 URL**：用于浏览 FarmBeats 智能场加速器的用户界面。
+ - 部署后的**日志文件**：保存日志。 它可用于故障排除。
 
-10. 安装程序会在运行时自动提示所需的输入：
+> [!NOTE]
+> 记下上述值以便将来使用。
 
-    - 输入用于部署的访问令牌。 复制生成的代码，并通过 Azure 凭据登录到 https://microsoft.com/devicelogin。
-
-     > [!NOTE]
-     > 代码将在60分钟后过期。 过期后，你可以重新启动，方法是再次键入部署命令。
-
-     - Sentinel 密码
-
-11. 安装程序现在将验证并开始创建资源，这可能需要大约20分钟的时间。
-12. 部署成功后，将收到以下输出链接：
-
-    - **数据中心 URL**： Swagger 链接，用于试用 FarmBeats api。
-    - **快捷键 URL**：用于浏览 FarmBeats 智能场加速器的用户界面。
-    - 部署后的**日志文件**：保存日志。 它可用于故障排除。
-
-    > [!NOTE]
-    > 记下上述链接，并保留部署日志文件路径以便将来使用。
 
 ## <a name="uninstall"></a>卸载
 
@@ -394,7 +365,7 @@ Swagger 网站。 默认值为数据中心资源组名称。 按 enter 继续默
    > 数据中心是加速器正常工作所必需的。 不建议卸载数据中心，无需卸载加速器。
 
 3. 选择 "资源组"，然后键入要删除的数据中心或加速器资源组的名称。
-4. 选择资源组名称。 再次键入名称进行双重检查，然后单击 "删除" 以删除资源组及其所有基础资源。
+4. 选择资源组名称。 再次键入名称进行双重检查，然后选择 "删除" 以删除资源组及其所有基础资源。
 5. 或者，您可以手动删除每个资源，这是不推荐的。
 7. 若要删除/卸载数据中心，请直接在 Azure 上切换到资源组，并删除其中的资源组。
 

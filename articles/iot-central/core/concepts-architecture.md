@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 9206bf07a36cc5724b173790eb94037cb86add9c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 25b0ec1b86a59b944cdb895bd536da32a1f8595b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952077"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884481"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central 体系结构
 
@@ -83,7 +83,7 @@ Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备�
 
 ## <a name="data-export"></a>数据导出
 
-在 Azure IoT Central 应用程序中，可以将[数据连续导出](howto-export-data-event-hubs-service-bus.md)到自己的 Azure 事件中心和 Azure 服务总线实例。 还可以定期将数据导出到 Azure Blob 存储帐户。 IoT Central 可以导出度量、设备和设备模板。
+在 Azure IoT Central 应用程序中，可以将[数据连续导出](howto-export-data-event-hubs-service-bus.md)到自己的 Azure 事件中心、Azure 服务总线和 Azure Blob 存储实例。 IoT Central 可以导出度量、设备和设备模板。
 
 ## <a name="batch-device-updates"></a>批处理设备更新
 

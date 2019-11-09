@@ -10,12 +10,12 @@ ms.topic: conceptual
 description: 使用 GitHub 操作和 Azure Dev Spaces 直接在 Azure Kubernetes 服务中查看和测试拉取请求中的更改。
 keywords: Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器，GitHub 操作，Helm，服务网格，service 网格路由，kubectl，k8s
 manager: gwallace
-ms.openlocfilehash: 590d49f4c189ff48f20369d18b17e0f6e4a46fa2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 09dc9440628ac5d808f90d086bd88e4f90765c28
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571590"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889733"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Azure Kubernetes Service （预览版） & GitHub 操作
 
@@ -31,7 +31,7 @@ Azure Dev Spaces 使用 GitHub 操作提供工作流，使你能够在拉取请�
 > [!IMPORTANT]
 > 此功能目前以预览版提供。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版推出之前，此功能的某些方面可能会有所更改。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
 * [已安装 Azure CLI][azure-cli-installed]。
@@ -93,15 +93,15 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 导航到分叉存储库，然后单击 "*设置*"。 单击左侧边栏中的 "*机密*"。 单击 "*添加新机密*" 添加下面的每个新机密：
 
 1. *AZURE_CREDENTIALS*：服务主体创建的整个输出。
-1. *RESOURCE_GROUP*： AKS 群集的资源组，在本例中为*MyResourceGroup*。
+1. *RESOURCE_GROUP*： AKS 群集的资源组，在本示例中为*MyResourceGroup*。
 1. *CLUSTER_NAME*： AKS 群集的名称，此示例中为*MyAKS*。
 1. *CONTAINER_REGISTRY*： ACR 的*loginServer* 。
-1. *Host*：用于开发人员空间的主机，其形式为 *< MASTER_SPACE > < APP_NAME >。 < HOST_SUFFIX >* ，在本例中为*dev.bikesharingweb.fedcab0987.eus.azds.io*。
-1. *HOST_SUFFIX*：开发人员空间的主机后缀，在此示例中为*fedcab0987.eus.azds.io*。
-1. *IMAGE_PULL_SECRET*：要使用的机密的名称，例如，*演示密码*。
+1. *Host*：开发人员空间的主机，其形式 *< MASTER_SPACE > <* APP_NAME > < HOST_SUFFIX >。
+1. *HOST_SUFFIX*：开发人员空间的主机后缀，在本例中为*fedcab0987.eus.azds.io*。
+1. *IMAGE_PULL_SECRET*：要使用的机密的名称，例如*演示密钥*。
 1. *MASTER_SPACE*：父 dev 空间的名称，在本示例中为*dev*。
-1. *REGISTRY_USERNAME*：从服务主体创建的 JSON 输出开始的*clientId* 。
-1. *REGISTRY_PASSWORD*：从服务主体创建的 JSON 输出的*clientSecret* 。
+1. *REGISTRY_USERNAME*：从服务主体创建的 JSON 输出的*clientId* 。
+1. *REGISTRY_PASSWORD*：从服务主体创建的 JSON 输出中的*clientSecret* 。
 
 > [!NOTE]
 > GitHub 操作使用所有这些机密，并在[github/工作流/docker-compose.override.yml][github-action-yaml]中进行配置。
@@ -145,7 +145,7 @@ git commit -m "Removing hard coded imageUrl from /bikes/:id route"
 git push origin bike-images
 ```
 
-推送完成后，在 GitHub 上导航到分叉存储库，使用分叉存储库中的*dev*创建拉取请求，与 "*自行车-映像*" 分支进行比较。
+推送完成后，请导航到 GitHub 上的分叉存储库，以将分叉存储库中的*主*分支作为基准分支与 "*自行车-映像*" 分支进行比较。
 
 在拉取请求打开后，导航到 "*操作*" 选项卡。验证是否已开始新的操作并生成*自行车*服务。
 
@@ -158,7 +158,7 @@ git push origin bike-images
 
 通过从注释打开 URL，导航到*bikesharingweb*服务。 选择 " *Aurelia meets Briggs （客户）* " 作为用户，然后选择要出租的自行车。 验证是否不再显示自行车的占位符图像。
 
-如果将所做的更改合并到*dev*分支中，则将运行另一个操作以在父开发人员空间中重建和运行整个应用程序。 在此示例中，父空间为*dev*。 此操作在[github/工作流/bikesharing.clients.core. docker-compose.override.yml][github-action-bikesharing-yaml]中进行配置。
+如果将所做的更改合并到分支中的*主*分支，则会运行另一个操作来重建和运行父开发人员空间中的整个应用程序。 在此示例中，父空间为*dev*。 此操作在[github/工作流/bikesharing.clients.core. docker-compose.override.yml][github-action-bikesharing-yaml]中进行配置。
 
 ## <a name="clean-up-your-azure-resources"></a>清理 Azure 资源
 

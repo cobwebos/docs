@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d73a2dcd0aab3b972a3e0a9237e53d05d4a9a53
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 8b99e919c396ebc3ef72c046fbe3fef1261050ad
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750034"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891580"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>适用于 Windows 的虚拟机扩展和功能
 
@@ -42,7 +42,7 @@ Azure 虚拟机 (VM) 扩展是小型应用程序，可在 Azure VM 上提供部�
 
 除了进程特定的扩展外，“自定义脚本”扩展也可用于 Windows 和 Linux 虚拟机。 适用于 Windows 的自定义脚本扩展允许在 VM 上运行任何 PowerShell 脚本。 在设计需要本机 Azure 工具无法提供的配置的 Azure 部署时，自定义脚本很有用。 有关详细信息，请参阅 [Windows VM 自定义脚本扩展](custom-script-windows.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要处理 VM 上的扩展，需要安装 Azure Windows 代理。 有些单独的扩展附带先决条件，例如，有权访问资源或依赖项。
 
@@ -54,18 +54,18 @@ Azure VM 代理可管理 Azure VM 与 Azure 结构控制器之间的交互。 VM
 
 #### <a name="supported-agent-versions"></a>支持的代理版本
 
-为了尽量提供最佳体验，我们提供了精简版本的代理。 有关详细信息，请参阅[此文章](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
+为了尽量提供最佳体验，我们提供了精简版本的代理。 有关详细信息，请参阅[此文章](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
 
 #### <a name="supported-oses"></a>支持的 OS
 
-Windows 来宾代理在多个 OS 上运行，但是，扩展框架对扩展的 OS 施加限制。 有关详细信息，请参阅[此文章](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
+Windows 来宾代理在多个 OS 上运行，但是，扩展框架对扩展的 OS 施加限制。 有关详细信息，请参阅[此文章](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems
 )。
 
 某些扩展并非在所有 OS 上均受支持，可能会发出错误代码 51“不受支持的 OS”。 请查看相应的扩展文档来了解支持情况。
 
 #### <a name="network-access"></a>网络访问
 
-从 Azure 存储扩展存储库下载扩展包，将扩展状态上传内容发布到 Azure 存储。 如果使用[受支持](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)的代理版本，则无需允许在 VM 区域中访问 azure 存储，因为可以使用代理将通信重定向到 azure fabric 控制器以进行代理通信（HostGAPlugin 功能通过专用 IP 上的特权通道[168.63.129.16](https://docs.microsoft.com/en-us/azure/virtual-network/what-is-ip-address-168-63-129-16)）。 如果使用不受支持的代理版本，则需要允许从 VM 对该区域中 Azure 存储的出站访问。
+从 Azure 存储扩展存储库下载扩展包，将扩展状态上传内容发布到 Azure 存储。 如果使用[受支持](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)的代理版本，则无需允许在 VM 区域中访问 azure 存储，因为可以使用代理将通信重定向到 azure fabric 控制器以进行代理通信（HostGAPlugin 功能通过专用 IP 上的特权通道[168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)）。 如果使用不受支持的代理版本，则需要允许从 VM 对该区域中 Azure 存储的出站访问。
 
 > [!IMPORTANT]
 > 如果你使用来宾防火墙或代理阻止了对*168.63.129.16*的访问，则扩展会因为上述错误而失败。 需要端口80、443和32526。
@@ -86,7 +86,7 @@ Get-AzVMExtensionImage | Select Type, Version
 
 ## <a name="run-vm-extensions"></a>运行 VM 扩展
 
-Azure VM 扩展在现有 VM 上运行，需要在已部署的 VM 上进行配置更改或恢复连接时，这很有用。 VM 扩展还可以与 Azure 资源管理器模板部署捆绑。 可将扩展与资源管理器模板配合使用来部署并配置 Azure VM，在部署后无需干预。
+Azure VM 扩展在现有 VM 上运行，需要在已部署的 VM 上进行配置更改或恢复连接时，这很有用。 VM 扩展还可以与 Azure Resource Manager 模板部署捆绑。 可将扩展与资源管理器模板配合使用来部署并配置 Azure VM，在部署后无需干预。
 
 可使用以下方法针对现有 VM 运行扩展。
 

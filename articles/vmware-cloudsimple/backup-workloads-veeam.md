@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 880b31702cf1c0a92ab7ee536cd88e8e6957f6f8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 3414cc54e5023bdeebb2d5536c1408f981e68f19
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430849"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891405"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>使用 Veeam B & R 在 CloudSimple 私有云上备份工作负荷 Vm
 
@@ -38,7 +38,7 @@ Veeam 解决方案包括以下组件。
 * 从生产存储中检索 VM 数据
 * 压缩
 * 重复数据删除
-* 加密
+* Encryption
 * 将数据传输到备份存储库
 
 **备份存储库**
@@ -54,7 +54,7 @@ Veeam 解决方案包括以下组件。
 
 * 在私有云中的同一 VM 上安装了 Veeam 备份服务器和代理服务器。
 * Azure 中基于 Linux 的主备份存储库配置为备份作业的目标。
-* `azcopy`，用于将数据从主备份存储库复制到复制到其他区域的 Azure blob 容器。
+* `azcopy` 用于将数据从主备份存储库复制到复制到其他区域的 Azure blob 容器。
 
 ![基本部署方案](media/veeam-basicdeployment.png)
 
@@ -65,7 +65,7 @@ Veeam 解决方案包括以下组件。
 * VSAN 群集中每个节点一个代理服务器，如 Veeam 所建议。
 * 私有云中基于 Windows 的主备份存储库，用于缓存五天的数据进行快速还原。
 * Azure 中的 Linux 备份存储库作为备份复制作业的目标，以实现更长的持续时间保留。 此存储库应配置为扩展备份存储库。
-* `azcopy`，用于将数据从主备份存储库复制到复制到其他区域的 Azure blob 容器。
+* `azcopy` 用于将数据从主备份存储库复制到复制到其他区域的 Azure blob 容器。
 
 ![基本部署方案](media/veeam-advanceddeployment.png)
 
@@ -136,7 +136,7 @@ Veeam 解决方案要求你执行以下操作：
 
 下表提供了端口列表。
 
-| 图标 | 描述 | 图标 | 描述 |
+| 图标 | 说明 | 图标 | 说明 |
 | ------------ | ------------- | ------------ | ------------- |
 | 备份服务器  | vCenter  | HTTPS/TCP  | 443 |
 | 备份服务器 <br> *部署 Veeam 备份 & 复制组件所必需的* | 备份代理  | TCP/UDP  | 135、137到139和445 |
@@ -194,9 +194,9 @@ Veeam 解决方案要求你执行以下操作：
 
 ### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>配置 Azure blob 存储以进行长期数据保留
 
-1. 按照[使用 Azure 存储](https://azure.microsoft.com/en-gb/resources/videos/get-started-with-azure-storage)的 Microsoft 视频入门中所述，创建标准类型和 blob 容器的常规用途存储帐户（GPv2）。
+1. 按照[使用 Azure 存储](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)的 Microsoft 视频入门中所述，创建标准类型和 blob 容器的常规用途存储帐户（GPv2）。
 2. 创建 Azure 存储容器，如[创建容器](https://docs.microsoft.com/rest/api/storageservices/create-container)引用中所述。
-2. 从 Microsoft 下载适用于 Linux 的 `azcopy` 命令行实用程序。 你可以在 CentOS 7.5 的 bash shell 中使用以下命令。
+2. 从 Microsoft 下载适用于 Linux 的 `azcopy` 命令行实用工具。 你可以在 CentOS 7.5 的 bash shell 中使用以下命令。
 
     ```
     wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinux64
@@ -290,7 +290,7 @@ Veeam 解决方案要求你执行以下操作：
 * [将 VNet 连接到不同于线路的订阅](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
 * [在 Azure 门户中创建 Linux 虚拟机](../virtual-machines/linux/quick-create-portal.md)
 * [如何将托管数据磁盘附加到 Azure 门户中的 Windows VM](../virtual-machines/windows/attach-managed-disk-portal.md)
-* [通过 Azure 存储入门-视频](https://azure.microsoft.com/en-gb/resources/videos/get-started-with-azure-storage)
+* [通过 Azure 存储入门-视频](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
 * [创建容器](https://docs.microsoft.com/rest/api/storageservices/create-container)
 * [使用 AzCopy on Linux 传输数据](../storage/common/storage-use-azcopy-linux.md)
 

@@ -9,16 +9,16 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 52fcd0d928ecbce5c617ff6a27175fccb8fd96f6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 44ab9688471a87e6db3712cc61b8abb194d54ac3
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990238"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886530"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure 自动化中的源代码管理集成
 
-源代码管理使你能够在你的 GitHub 或 Azure Repos 源代码管理存储库中, 使你的自动化帐户中的 runbook 保持最新。 使用源代码管理可轻松与团队协作、跟踪更改，以及回退到旧版 Runbook。 例如，通过源代码管理可以将源代码管理中的不同分支同步到开发、测试或生产自动化帐户。 这样可以轻松地将已在开发环境中测试过的代码提升到生产自动化帐户。 源代码管理与自动化的集成支持从源代码管理存储库进行单向同步。
+通过源代码管理，可以使用 GitHub 或 Azure Repos 源代码管理存储库中的脚本使自动化帐户中的 Runbook 保持最新。 使用源代码管理可轻松与团队协作、跟踪更改，以及回退到旧版 Runbook。 例如，通过源代码管理可以将源代码管理中的不同分支同步到开发、测试或生产自动化帐户。 这样可以轻松地将已在开发环境中测试过的代码提升到生产自动化帐户。 源代码管理与自动化的集成支持从源代码管理存储库进行单向同步。
 
 Azure 自动化支持三种类型的源代码管理：
 
@@ -45,16 +45,16 @@ Azure 自动化支持三种类型的源代码管理：
 
 在“源代码管理摘要”页上，填写信息并单击“保存”。 下表显示了可用字段的说明。
 
-|属性  |描述  |
+|属性  |说明  |
 |---------|---------|
 |源代码管理名称     | 源代码管理的易记名称。 *此名称只能包含字母和数字。*        |
 |源代码管理类型     | 源代码管理源的类型。 可用选项包括：</br> GitHub</br>Azure Repos (Git)</br> Azure Repos (TFVC)        |
 |存储库     | 存储库或项目的名称。 将返回前 200 个存储库。 若要搜索存储库，请在字段中键入名称，然后单击“在 GitHub 中搜索”。|
 |分支     | 要从源文件中提取的分支。 分支目标确定不适用于 TFVC 源代码管理类型。          |
-|文件夹路径     | 包含要同步的 runbook 的文件夹。示例：/Runbooks </br>*只会同步指定文件夹中的 Runbook。不支持递归。*        |
+|文件夹路径     | 包含要同步的 runbook 的文件夹。示例：/Runbooks </br>*仅同步指定的文件夹中的 runbook。不支持递归。*        |
 |自动同步<sup>1</sup>     | 在源代码管理存储库中提交时打开或关闭自动同步         |
 |发布 Runbook     | 如果设置为“打开”，在从源代码管理同步 Runbook 后，它们将自动发布。         |
-|描述     | 用于提供其他详细信息的一个文本字段        |
+|说明     | 用于提供其他详细信息的一个文本字段        |
 
 <sup>1</sup> 只有项目管理员才能在配置源代码管理与 Azure 存储库的集成时启用自动同步。
 
@@ -93,7 +93,7 @@ New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<a
 
 有关在 GitHub 中创建个人访问令牌的详细信息，请访问[创建命令行的个人访问令牌](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)。
 
-|范围  |描述  |
+|范围  |说明  |
 |---------|---------|
 |**存储库**     |         |
 |repo:status     | 访问提交状态         |
@@ -118,11 +118,11 @@ New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<a
 
 <sup>1</sup>只有在启用了自动同步时才需要“服务连接”权限。
 
-## <a name="syncing"></a>正在同步
+## <a name="syncing"></a>同步
 
 从“源代码管理”页上的表格中选择源。 单击“开始同步”以开始同步过程。
 
-可以通过单击“同步作业”选项卡来查看当前同步作业或之前的同步作业的状态。在“源代码管理”下拉列表中，选择一个源代码管理。
+可以通过单击 "**同步作业**" 选项卡来查看当前同步作业或以前的同步作业的状态。在 "**源代码管理**" 下拉控件上，选择一个源代码管理。
 
 ![同步状态](./media/source-control-integration/sync-status.png)
 
@@ -175,10 +175,10 @@ Source Control Sync Summary:
 
 ## <a name="updating-the-access-token"></a>更新访问令牌
 
-当前无法从门户更新源代码管理中的访问令牌。 个人访问令牌过期或吊销后, 可以通过以下方式使用新的访问令牌来更新源代码管理:
+目前，无法从门户更新源代码管理中的访问令牌。 在个人访问令牌过期或撤销后，可以通过以下方式使用新的访问令牌更新源代码管理：
 
-* 通过[REST Api](https://docs.microsoft.com/en-us/rest/api/automation/sourcecontrol/update)。
-* 使用[AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) cmdlet。
+* 通过 [REST API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update)。
+* 使用 [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) cmdlet。
 
 ## <a name="next-steps"></a>后续步骤
 

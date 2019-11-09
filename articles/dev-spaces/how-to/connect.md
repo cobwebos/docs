@@ -9,12 +9,12 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 description: 了解如何使用 Azure Dev Spaces 将开发计算机连接到 AKS 群集
 keywords: Azure Dev Spaces，Dev 空间，Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器
-ms.openlocfilehash: 0adaa4266978cf9c9ef42359c0cf4f81c5c5f056
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 15e46fba19d92e08a9c87a63f6f01ec6b0836910
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571705"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888910"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>将开发计算机连接到 AKS 群集（预览版）
 
@@ -39,7 +39,7 @@ Azure Dev Spaces 重定向已连接 AKS 群集与开发计算机之间的流量�
 
 * 此时不支持 UDP。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
 * [已安装 Azure CLI][azure-cli]。
@@ -96,7 +96,7 @@ Azure Dev Spaces 重定向已连接 AKS 群集与开发计算机之间的流量�
 选择应用程序的 TCP 端口后，Azure Dev Spaces 将建立与 AKS 群集的连接。 Azure Dev Spaces 将代理注入 AKS 群集，以便在 AKS 群集与开发计算机之间重定向流量。 建立此连接可能需要几分钟的时间。 Azure Dev Spaces 还将请求管理员访问权限，以便修改开发计算机中的*主机*文件。
 
 > [!IMPORTANT]
-> Azure Dev Spaces 与 AKS 群集建立连接后，AKS 群集中的其他服务可能无法正常工作，除非在开发计算机上启动该服务。 此外，如果你的服务具有在你的开发计算机中不可用的依赖项，则可能需要修改应用程序或提供[其他配置](#additional-configuration)
+> Azure Dev Spaces 与 AKS 群集建立连接后，AKS 群集中的其他服务可能无法正常工作，除非你选择 "*替换*连接模式"。 您可以改为选择*克隆*连接模式来创建重定向的子 dev 空间，并避免对父空间造成任何中断。 此外，如果你的服务具有在你的开发计算机中不可用的依赖项，则可能需要修改应用程序或提供[其他配置](#additional-configuration)
 
 Azure Dev Spaces 在建立与 AKS 群集的连接后，将打开一个名为*AZDS*的终端窗口。 此终端窗口包含从 AKS 群集配置的所有环境变量和 DNS 条目。 在此终端窗口中或使用 Visual Studio Code 调试程序运行的任何代码都将连接到 AKS 群集。
 
@@ -108,7 +108,7 @@ Azure Dev Spaces 在建立与 AKS 群集的连接后，将打开一个名为*AZD
 
 Azure Dev Spaces 还有一个显示连接状态的状态栏项目。
 
-![Status](../media/how-to-connect/connect-status.png)
+![状态](../media/how-to-connect/connect-status.png)
 
 验证状态栏是否显示*Dev Spaces：连接到本地端口3000上的开发/自行车*。
 

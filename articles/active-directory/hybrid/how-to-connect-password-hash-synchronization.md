@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac1b75536e092203490a390860a1cead7ac333b7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0398ff7eb8931acc400b326ff92deaf75f0aa97e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817974"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882837"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
@@ -28,11 +28,11 @@ ms.locfileid: "73817974"
 ## <a name="how-password-hash-synchronization-works"></a>密码哈希同步的工作原理
 Active Directory 域服务以实际用户密码的哈希值表示形式存储密码。 哈希值是单向数学函数（哈希算法）的计算结果。 没有任何方法可将单向函数的结果还原为纯文本版本的密码。 
 
-为了同步密码，Azure AD Connect 同步将从本地 Active Directory 实例提取密码哈希。 同步到 Azure Active Directory 身份验证服务之前，已对密码哈希应用其他安全处理。 密码将基于每个用户按时间顺序同步。
+为了同步密码，Azure AD Connect 同步将从本地 Active Directory 实例提取密码哈希。 同步到 Azure Active Directory 身份验证服务之前，已对密码哈希应用其他安全处理。 密码基于每个用户按时间顺序同步。
 
 密码哈希同步过程的实际数据流类似于用户数据的同步。 但是，密码的同步频率高于其他属性的标准目录同步窗口。 密码哈希同步过程每隔 2 分钟运行一次。 无法修改此过程的运行频率。 同步某个密码时，该密码将覆盖现有的云密码。
 
-首次启用密码哈希同步功能时，它将对范围内的所有用户执行初始密码同步。 无法显式定义一部分要同步的用户密码。 但是，如果有多个连接器，则可以使用[ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) cmdlet 为某些连接器禁用密码哈希同步，但不允许使用其他连接器。
+首次启用密码哈希同步功能时，它将对范围内的所有用户执行初始密码同步。 无法显式定义一部分要同步的用户密码。 但是，如果有多个连接器，则可以使用[ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) cmdlet 为某些连接器禁用密码哈希同步，但不允许使用其他连接器。
 
 更改本地密码时，更新后的密码会同步，此操作基本上在几分钟内就可完成。
 密码哈希同步功能会自动重试失败的同步尝试。 如果尝试同步密码期间出现错误，该错误会被记录在事件查看器中。

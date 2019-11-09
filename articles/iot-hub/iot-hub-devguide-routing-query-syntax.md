@@ -1,19 +1,18 @@
 ---
 title: Azure IoT 中心消息路由查询 | Microsoft 文档
-description: 开发人员指南 - Azure IoT 中心消息路由查询语法。
+description: 了解 IoT 中心消息路由查询语言，该语言可用于向消息应用丰富的查询，以接收重要的数据。
 author: ash2017
-manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 7f6439d79e5d46621b92b1c24ba5caf87889f443
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 859b15954f64f8b481f6b86c04fc28b542599f02
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877065"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890499"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT 中心消息路由查询语法
 
@@ -25,7 +24,7 @@ ms.locfileid: "69877065"
 
 ## <a name="message-routing-query-based-on-message-properties"></a>基于消息属性的消息路由查询 
 
-IoT 中心为所有设备到云的消息传送定义了[格式](iot-hub-devguide-messages-construct.md)，以便实现跨协议互操作性。 IoT 中心消息假设以下 JSON 表示形式的消息。 为所有用户添加系统属性并标识消息的内容。 用户可以有选择地向消息添加应用程序属性。 我们建议使用唯一的属性名称，因为 IoT 中心设备到云消息传递不区分大小写。 例如，如果有多个具有相同名称的属性，IoT 中心将仅发送其中一个属性。  
+IoT 中心为所有“设备到云”消息传递定义[通用格式](iot-hub-devguide-messages-construct.md)，以实现跨协议的互操作性。 IoT 中心消息假设以下 JSON 表示形式的消息。 为所有用户添加系统属性并标识消息的内容。 用户可以有选择地向消息添加应用程序属性。 我们建议使用唯一的属性名称，因为 IoT 中心设备到云消息传递不区分大小写。 例如，如果有多个具有相同名称的属性，IoT 中心将仅发送其中一个属性。  
 
 ```json
 { 
@@ -51,13 +50,13 @@ IoT 中心为所有设备到云的消息传送定义了[格式](iot-hub-devguide
 
 系统属性有助于标识消息的内容和源。 
 
-| 属性 | type | 描述 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| contentType | string | 用户指定消息的内容类型。 若要允许查询消息正文，此值应设置应用程序/JSON。 |
-| contentEncoding | string | 用户指定消息的编码类型。 如果 contentType 设置为应用程序/JSON，则允许的值为 UTF-8、UTF-16 和 UTF-32。 |
-| iothub-connection-device-id | string | 此值由 IoT 中心设置，标识设备的 ID。 若要查询，请使用 `$connectionDeviceId`。 |
-| iothub-enqueuedtime | string | 此值由 IoT 中心设置，表示 UTC 中消息排入队列的实际时间。 若要查询，请使用 `enqueuedTime`。 |
-| iothub-name | string | 此值由用户设置, 表示实现遥测消息的数字克隆接口的名称。 若要查询，请使用 `$interfaceName`。 此功能在[IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)中提供。 |
+| contentType | 字符串 | 用户指定消息的内容类型。 若要允许查询消息正文，此值应设置应用程序/JSON。 |
+| contentEncoding | 字符串 | 用户指定消息的编码类型。 如果 contentType 设置为应用程序/JSON，则允许的值为 UTF-8、UTF-16 和 UTF-32。 |
+| iothub-connection-device-id | 字符串 | 此值由 IoT 中心设置，标识设备的 ID。 若要查询，请使用 `$connectionDeviceId`。 |
+| iothub-enqueuedtime | 字符串 | 此值由 IoT 中心设置，表示 UTC 中消息排入队列的实际时间。 若要查询，请使用 `enqueuedTime`。 |
+| iothub-name | 字符串 | 此值由用户设置，表示实现遥测消息的数字克隆接口的名称。 若要查询，请使用 `$interfaceName`。 此功能在[IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)中提供。 |
 
 如 [IoT 中心消息](iot-hub-devguide-messages-construct.md)中所述，一条消息中还有其他系统属性。 除了 contentType，还可以查询 contentEncoding 和 enqueuedTime、connectionDeviceId 和 connectionModuleId。
 
@@ -87,7 +86,7 @@ processingPath = 'hot'
 $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 ```
 
-"[表达式和条件](iot-hub-devguide-query-language.md#expressions-and-conditions)" 中显示了支持的运算符和函数的完整列表。
+[表达式和条件](iot-hub-devguide-query-language.md#expressions-and-conditions)中显示了支持的运算符和函数的完整列表。
 
 ## <a name="message-routing-query-based-on-message-body"></a>基于消息正文的消息路由查询 
 
@@ -164,7 +163,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ## <a name="message-routing-query-based-on-device-twin"></a>基于设备孪生的消息路由查询 
 
-通过消息路由，可以查询[设备孪生](iot-hub-devguide-device-twins.md)标记和属性，这些是 JSON 对象。 不支持在模块上进行查询。 设备孪生标记和属性的示例如下所示。
+通过消息路由，可以查询[设备孪生](iot-hub-devguide-device-twins.md)标记和属性，这些是 JSON 对象。 不支持对模块孪生进行查询。 设备孪生标记和属性的示例如下所示。
 
 ```JSON
 {

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
-ms.openlocfilehash: d8fed68d9b830df359f8129d55f1b9911f69e8f1
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 71caa6730e3a00f3aa80329d6b87d2531fdd8049
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802253"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891463"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 上的 Oracle 应用程序和解决方案概述
 
@@ -54,9 +54,9 @@ ms.locfileid: "70802253"
 
 ## <a name="backup-oracle-workloads"></a>备份 Oracle 工作负荷
 
-* 使用[Azure 备份](https://docs.microsoft.com/en-us/azure/backup/backup-overview)备份 Oracle vm
+* 使用[Azure 备份](https://docs.microsoft.com/azure/backup/backup-overview)备份 Oracle vm
 
-* 使用 Oracle RMAN 备份 Oracle Database，并选择性地使用[Azure Blob 熔断器](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-how-to-mount-container-linux)装载[高度 Redudant 的 azure blob 存储帐户](https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy)，并向其写入 RMAN 备份以增加复原能力。
+* 使用 Oracle RMAN 备份 Oracle Database，并选择性地使用[Azure Blob 熔断器](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux)装载[高度 Redudant 的 azure blob 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-redundancy)，并向其写入 RMAN 备份以增加复原能力。
 
 ## <a name="integration-of-azure-with-oci-preview"></a>Azure 与 OCI 的集成（预览版）
 
@@ -82,7 +82,7 @@ ms.locfileid: "70802253"
 结合在 Azure 中运行的 Oracle 应用程序，使用 Oracle Database 云服务（自主数据库、RAC、Exadata、DBaaS、单一节点）。 了解有关[OCI 数据库选项](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)的详细信息。 
  
 
-## <a name="licensing"></a>授权
+## <a name="licensing"></a>许可
 
 Azure 中 Oracle 应用程序的部署基于 "自带许可" 模型。 假设您已获得使用 Oracle 软件的适当授权，并且您有与 Oracle 签订的当前支持协议。 Oracle 确保了从本地到 Azure 的许可移动性。 请参阅 Oracle-Azure[常见问题解答](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)。
 

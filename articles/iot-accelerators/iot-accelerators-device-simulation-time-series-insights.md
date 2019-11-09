@@ -1,5 +1,5 @@
 ---
-title: 使用时序见解可视化设备模拟遥测数据 - Azure | Microsoft Docs
+title: 用时序见解可视化模拟遥测-Azure |Microsoft Docs
 description: 了解如何配置时序见解环境以浏览和分析设备模拟解决方案加速器所生成的遥测数据。
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 5d20adc11e0d679e12fd060e719593a50180db8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65834853"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889346"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>使用时序见解可视化从设备模拟解决方案加速器发送的遥测数据
 
@@ -21,7 +21,7 @@ ms.locfileid: "65834853"
 
 ## <a name="prerequisites"></a>必备组件
 
-若要执行本操作指南中的步骤，需要拥有一个有效的 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+若要执行本操作指南中的步骤，需要拥有一个有效的 Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 本操作指南中的步骤假定你已向 Azure 订阅部署了设备模拟解决方案加速器。 如果尚未部署解决方案加速器，请执行[部署并运行基于云的设备模拟解决方案](quickstart-device-simulation-deploy.md)快速入门中的步骤。
 
@@ -68,7 +68,7 @@ ms.locfileid: "65834853"
     | 环境名称 | 以下屏幕截图使用名称 Contoso-TSI。 完成此步骤后，请选择自己的唯一名称。 |
     | 订阅 | 在下拉列表中选择自己的 Azure 订阅。 |
     | 资源组 | contoso-simulation。 使用解决方案加速器的名称。 |
-    | Location | 此示例使用美国东部。 在设备模拟加速器所在的同一区域中创建环境。 |
+    | 位置 | 此示例使用美国东部。 在设备模拟加速器所在的同一区域中创建环境。 |
     | SKU |**S1** |
     | 容量 | **1** |
 
@@ -77,7 +77,7 @@ ms.locfileid: "65834853"
     > [!NOTE]
     > 向解决方案加速器所在的同一资源组中添加时序见解环境意味着删除解决方案加速器时将删除此环境。
 
-1. 单击**创建**。 可能需要花费几分钟时间来创建环境。
+1. 单击“创建”。 可能需要花费几分钟时间来创建环境。
 
 ## <a name="create-event-source"></a>创建事件源
 
@@ -110,7 +110,7 @@ ms.locfileid: "65834853"
 
     ![创建事件源](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-source-create.png)
 
-1. 单击**创建**。
+1. 单击“创建”。
 
 > [!NOTE]
 > 可以[向其他用户授予访问](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access)时序见解资源管理器的权限。
@@ -151,7 +151,7 @@ ms.locfileid: "65834853"
 
     ![时序见解资源管理器中的透视](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explorer-perspective.png)
 
-1. 单击“+”向透视添加新查询：
+1. 单击“ **”向透视添加新查询+** ：
 
     ![时序见解资源管理器中的“添加查询”](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-new-query.png)
 

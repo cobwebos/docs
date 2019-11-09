@@ -1,5 +1,5 @@
 ---
-title: 远程监视解决方案中的模拟设备行为 - Azure | Microsoft Docs
+title: 远程监视解决方案中的模拟设备-Azure |Microsoft Docs
 description: 本文介绍如何使用 JavaScript 来定义远程监视解决方案中模拟设备的行为。
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 04d2ad2f0e86ee977600af86a2ffd1e9d7680375
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c39ca0a018bd22844cf7e5350e6d3586319aac16
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65823423"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890847"
 ---
 # <a name="implement-the-device-model-behavior"></a>实现设备模型的行为
 
@@ -61,7 +61,7 @@ ms.locfileid: "65823423"
 }
 ```
 
-`InitialState` 节中定义的模拟设备状态由模拟服务保存在内存中。 状态信息作为输入传递给 **chiller-01-state.js** 中定义的 `main` 函数。 在此示例中，模拟服务每隔 5 秒运行 **chiller-01-state.js** 文件。 该脚本可修改模拟设备的状态。
+`InitialState` 节中定义的模拟设备状态由模拟服务保存在内存中。 状态信息作为输入传递给 `main`chiller-01-state.js**中定义的** 函数。 在此示例中，模拟服务每隔 5 秒运行 **chiller-01-state.js** 文件。 该脚本可修改模拟设备的状态。
 
 下面概要显示了典型的 `main` 函数：
 
@@ -82,7 +82,7 @@ function main(context, previousState, previousProperties) {
 - `deviceId`，例如 `Simulated.Chiller.123`
 - `deviceModel`，例如 `Chiller`
 
-`state` 参数包含设备模拟服务维护的设备状态。 此值是先前调用 `main` 后返回的 `state` 对象。
+`state` 参数包含设备模拟服务维护的设备状态。 此值是先前调用 `state` 后返回的 `main` 对象。
 
 以下示例演示了用于处理模拟服务维护的设备状态的 `main` 方法的典型实现：
 

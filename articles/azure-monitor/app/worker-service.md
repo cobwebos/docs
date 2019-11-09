@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cijothomas
 ms.author: cithomas
 ms.date: 09/15/2019
-ms.openlocfilehash: ccc7218575638c7ede2c56a99e41dd68cbd475c0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8dd46d8224567e1883fd2a397d5ba2b00a0fd43d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899233"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887282"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>辅助角色服务应用程序的 Application Insights （非 HTTP 应用程序）
 
@@ -22,16 +22,16 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
 
 ## <a name="supported-scenarios"></a>支持的方案
 
-[辅助角色服务的 APPLICATION INSIGHTS SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)最适用于非 HTTP 应用程序，无论它们在何处运行，都是如此。 如果你的应用程序正在运行，并且已通过网络连接到 Azure，则可以收集遥测数据。 支持 .NET Core 的任何地方都支持 Application Insights 监视。 此包可用于新引入的[.Net Core 3.0 辅助服务](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances)、 [Asp.Net Core 2.1/2.2](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2)、控制台应用（.net Core/.NET Framework）等中的后台任务。
+[辅助角色服务的 APPLICATION INSIGHTS SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)最适用于非 HTTP 应用程序，无论它们在何处运行，都是如此。 如果应用程序正在运行并与 Azure 建立了网络连接，则可以收集遥测数据。 只要支持 .NET Core，就能支持 Application Insights 监视。 此包可用于新引入的[.Net Core 3.0 辅助服务](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances)、 [Asp.Net Core 2.1/2.2](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2)、控制台应用（.net Core/.NET Framework）等中的后台任务。
 
 ## <a name="prerequisites"></a>必备组件
 
-有效的 Application Insights 检测密钥。 需要此密钥才能将任何遥测数据发送到 Application Insights。 如果需要创建新的 Application Insights 资源来获取检测密钥，请参阅[创建 Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。
+有效的 Application Insights 检测密钥。 将任何遥测数据发送到 Application Insights 都需要使用此密钥。 如果需要创建新的 Application Insights 资源来获取检测密钥，请参阅[创建 Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。
 
 ## <a name="using-application-insights-sdk-for-worker-services"></a>使用辅助角色服务 Application Insights SDK
 
 1. 将[applicationinsights.config. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)包安装到应用程序。
-   以下代码片段显示了需要添加到项目的 `.csproj` 文件的更改。
+   以下代码片段显示了需要添加到项目 `.csproj` 文件的更改。
 
 ```xml
     <ItemGroup>
@@ -39,7 +39,7 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
     </ItemGroup>
 ```
 
-1. `IServiceCollection`提供检测密钥，对调用 `AddApplicationInsightsTelemetryWorkerService(string instrumentationKey)` 扩展方法。 应在应用程序的开头调用此方法。 具体位置取决于应用程序的类型。
+1. 在 `IServiceCollection` 上调用 `AddApplicationInsightsTelemetryWorkerService(string instrumentationKey)` 扩展方法，同时提供检测密钥。 应在应用程序的开头调用此方法。 具体位置取决于应用程序的类型。
 
 1. 通过调用 `serviceProvider.GetRequiredService<TelemetryClient>();` 或使用构造函数注入，从依赖关系注入（DI）容器中检索 `ILogger` 实例或 `TelemetryClient` 实例。 此步骤将触发 `TelemetryConfiguration` 和自动收集模块的设置。
 
@@ -53,7 +53,7 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
 2. 使用 Visual Studio "新建项目模板" 或命令行创建新的辅助角色服务项目 `dotnet new worker`
 3. 将[applicationinsights.config. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)包安装到应用程序。
 
-4. 将 `services.AddApplicationInsightsTelemetryWorkerService();` 添加到 `Program.cs` 类中的 `CreateHostBuilder()` 方法，如以下示例中所示：
+4. 将 `services.AddApplicationInsightsTelemetryWorkerService();` 添加到 `CreateHostBuilder()` 类中的 `Program.cs` 方法，如以下示例所示：
 
 ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -65,7 +65,7 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
             });
 ```
 
-5. 按照下面的示例修改 `Worker.cs`。
+5. 根据下面的示例修改 `Worker.cs`。
 
 ```csharp
     using Microsoft.ApplicationInsights;
@@ -106,7 +106,7 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
 
 6. 设置检测密钥。
 
-    尽管可以提供检测密钥作为 `AddApplicationInsightsTelemetryWorkerService`参数，但建议在配置中指定检测密钥。 下面的代码示例演示如何在 `appsettings.json` 中指定检测密钥。 请确保在发布过程中将 `appsettings.json` 复制到应用程序根文件夹。
+    尽管可将检测密钥作为参数提供给 `AddApplicationInsightsTelemetryWorkerService`，但我们建议在配置中指定检测密钥。 以下代码示例演示如何在 `appsettings.json` 中指定检测密钥。 在发布期间，请确保将 `appsettings.json` 复制到应用程序根文件夹。
 
 ```json
     {
@@ -133,7 +133,7 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
 通常，`APPINSIGHTS_INSTRUMENTATIONKEY` 指定作为 Web 作业部署到 Web 应用的应用程序的检测密钥。
 
 > [!NOTE]
-> 在代码中指定的检测密钥通过环境变量 `APPINSIGHTS_INSTRUMENTATIONKEY`，后者 wins 超过其他选项。
+> 在代码中指定的检测密钥优先于环境变量 `APPINSIGHTS_INSTRUMENTATIONKEY`，而后者又优先于其他选项。
 
 ## <a name="aspnet-core-background-tasks-with-hosted-services"></a>ASP.NET Core 托管服务的后台任务
 [本](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&tabs=visual-studio)文档介绍如何在 ASP.NET Core 2.1/2.2 应用程序中创建背景任务。
@@ -290,13 +290,13 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
     }
 ```
 
-此控制台应用程序还使用相同的默认 `TelemetryConfiguration`，可以使用与之前部分中的示例相同的方式对其进行自定义。
+此控制台应用程序还使用相同的默认 `TelemetryConfiguration`，可采用与之前部分中的示例相同的方式对其进行自定义。
 
 ## <a name="run-your-application"></a>运行应用程序
 
 运行应用程序。 上述所有上述示例中的示例工作人员均可每秒从 http 调用到 bing.com，并使用 ILogger 发出几个日志。 这些行将包装在 `TelemetryClient`的 `StartOperation` 调用中，用于创建操作（在此示例中，`RequestTelemetry` 名为 "操作"）。 Application Insights 将收集这些 ILogger 日志（默认警告或更高版本）和依赖项，并将它们与具有父子关系的 `RequestTelemetry` 相关联。 相关也能跨进程/网络边界。 例如，如果调用了另一个监视的组件，则它也将与此父组件相关联。
 
-在典型的 Web 应用程序中，可以将 `RequestTelemetry` 的此自定义操作视为等效于传入的 web 请求。 虽然不需要使用操作，但它最适合与[Application Insights 相关数据模型](https://docs.microsoft.com/azure/azure-monitor/app/correlation)（具有作为父操作的 `RequestTelemetry`），并且在工作线程迭代内生成的每个遥测都按逻辑处理属于相同操作。 此方法还可确保生成的所有遥测（自动和手动）都具有相同的 `operation_id`。 由于采样基于 `operation_id`，因此采样算法会保留或删除单个迭代中的所有遥测数据。
+在典型的 Web 应用程序中，可以将 `RequestTelemetry` 的自定义操作视为等效于传入的 web 请求。 虽然不需要使用操作，但它最适合与[Application Insights 相关数据模型](https://docs.microsoft.com/azure/azure-monitor/app/correlation)（具有作为父操作的 `RequestTelemetry`），并且在工作线程迭代中生成的每个遥测将被视为逻辑上属于同一操作。 此方法还可确保生成的所有遥测（自动和手动）都具有相同的 `operation_id`。 由于采样基于 `operation_id`，因此采样算法会保留或删除单个迭代中的所有遥测数据。
 
 下面列出了 Application Insights 自动收集的全部遥测数据。
 
@@ -306,7 +306,7 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
 
 ### <a name="ilogger-logs"></a>ILogger 日志
 
-自动捕获通过严重性 `Warning` `ILogger` 或更高版本发出的日志。 按照[ILogger 文档](ilogger.md#control-logging-level)来自定义 Application Insights 捕获的日志级别。
+自动捕获通过 `ILogger` 严重性 `Warning` 或更高版本发出的日志。 按照[ILogger 文档](ilogger.md#control-logging-level)来自定义 Application Insights 捕获的日志级别。
 
 ### <a name="dependencies"></a>依赖项
 
@@ -331,7 +331,7 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
 
 ### <a name="using-applicationinsightsserviceoptions"></a>使用 ApplicationInsightsServiceOptions
 
-您可以通过将 `ApplicationInsightsServiceOptions` 传递到 `AddApplicationInsightsTelemetryWorkerService`来修改几个常见设置，如以下示例中所示：
+可以通过向 `ApplicationInsightsServiceOptions` 传递 `AddApplicationInsightsTelemetryWorkerService` 来修改一些通用设置，如以下示例所示：
 
 ```csharp
     using Microsoft.ApplicationInsights.WorkerService;
@@ -353,22 +353,22 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
 
 `ApplicationInsightsServiceOptions` 中的常用设置
 
-|设置 | 描述 | 默认
+|设置 | 说明 | 默认
 |---------------|-------|-------
-|EnableQuickPulseMetricStream | 启用/禁用 LiveMetrics 功能 | 是
-|EnableAdaptiveSampling | 启用/禁用自适应采样 | 是
-|EnableHeartbeat | 启用/禁用检测信号功能，该功能定期（15分钟默认值）发送名为 "HeartBeatState" 的自定义指标，其中包含有关运行时（如 .NET 版本、Azure 环境信息，如果适用）等的信息。 | 是
-|AddAutoCollectedMetricExtractor | 启用/禁用 AutoCollectedMetrics 提取程序，它是一种 TelemetryProcessor，它在采样发生之前发送有关请求/依赖项的预聚合度量值。 | 是
+|EnableQuickPulseMetricStream | 启用/禁用 LiveMetrics 功能 | true
+|EnableAdaptiveSampling | 启用/禁用自适应采样 | true
+|EnableHeartbeat | 启用/禁用检测信号功能，该功能定期（15分钟默认值）发送名为 "HeartBeatState" 的自定义指标，其中包含有关运行时（如 .NET 版本、Azure 环境信息，如果适用）等的信息。 | true
+|AddAutoCollectedMetricExtractor | 启用/禁用 AutoCollectedMetrics 提取程序，它是一种 TelemetryProcessor，它在采样发生之前发送有关请求/依赖项的预聚合度量值。 | true
 
-有关最新列表，请参阅[`ApplicationInsightsServiceOptions` 中的可配置设置](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)。
+有关最新列表，请参阅[`ApplicationInsightsServiceOptions`中的可配置设置](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)。
 
 ### <a name="sampling"></a>采样
 
-辅助角色服务的 Application Insights SDK 支持固定速率和自适应采样。 自适应采样默认处于启用状态。 为辅助角色服务配置采样的方式与[ASP.NET Core 应用程序](https://docs.microsoft.com/azure/azure-monitor/app/sampling#configuring-adaptive-sampling-for-aspnet-core-applications)一样。
+辅助角色服务的 Application Insights SDK 支持固定速率和自适应采样。 自适应采样默认已启用。 为辅助角色服务配置采样的方式与[ASP.NET Core 应用程序](https://docs.microsoft.com/azure/azure-monitor/app/sampling#configuring-adaptive-sampling-for-aspnet-core-applications)一样。
 
-### <a name="adding-telemetryinitializers"></a>添加 TelemetryInitializers
+### <a name="adding-telemetryinitializers"></a>添加 TelemetryInitializer
 
-如果要定义与所有遥测一起发送的属性，请使用[遥测初始值设定项](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer)。
+如果要定义与所有遥测一起发送的属性，请使用[遥测初始值设定项](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer)。
 
 向 `DependencyInjection` 容器添加任何新 `TelemetryInitializer`，SDK 会自动将其添加到 `TelemetryConfiguration`中。
 
@@ -382,9 +382,9 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
     }
 ```
 
-### <a name="removing-telemetryinitializers"></a>删除 TelemetryInitializers
+### <a name="removing-telemetryinitializers"></a>删除 TelemetryInitializer
 
-默认情况下，遥测初始值设定项存在。 若要删除所有或特定的遥测初始值设定项，请在调用 `AddApplicationInsightsTelemetryWorkerService()`*后*使用以下示例代码。
+默认已提供遥测初始化表达式。 若要删除所有或特定的遥测初始化表达式，请在调用  *之后使用以下示例代码。* `AddApplicationInsightsTelemetryWorkerService()`
 
 ```csharp
    public void ConfigureServices(IServiceCollection services)
@@ -404,9 +404,9 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
    }
 ```
 
-### <a name="adding-telemetry-processors"></a>添加遥测处理器
+### <a name="adding-telemetry-processors"></a>添加遥测处理程序
 
-可以使用 `IServiceCollection` 上的扩展方法 `AddApplicationInsightsTelemetryProcessor`，将自定义遥测处理器添加到 `TelemetryConfiguration`。 使用[高级筛选方案](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#filtering-itelemetryprocessor)中的遥测处理器，可以更直接地控制发送到 Application Insights 服务的遥测中包含或排除的内容。 使用以下示例。
+可以使用 `TelemetryConfiguration` 中的扩展方法 `AddApplicationInsightsTelemetryProcessor` 将自定义遥测处理程序添加到 `IServiceCollection`。 使用[高级筛选方案](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#filtering-itelemetryprocessor)中的遥测处理程序可以更直接地控制要在发送到 Application Insights 服务的遥测数据中包含或排除哪些内容。 使用以下示例。
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -418,11 +418,11 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
     }
 ```
 
-### <a name="configuring-or-removing-default-telemetrymodules"></a>配置或删除默认 TelemetryModules
+### <a name="configuring-or-removing-default-telemetrymodules"></a>配置或删除默认的 TelemetryModule
 
 Application Insights 使用遥测模块自动收集有关特定工作负载的遥测，无需手动跟踪。
 
-默认情况下，将启用以下自动收集模块。 这些模块负责自动收集遥测数据。 您可以禁用或配置它们以更改其默认行为。
+默认已启用以下自动收集模块。 这些模块负责自动收集遥测数据。 可以禁用或配置这些模块，以改变其默认行为。
 
 * `DependencyTrackingTelemetryModule`
 * `PerformanceCollectorModule`
@@ -430,7 +430,7 @@ Application Insights 使用遥测模块自动收集有关特定工作负载的�
 * `AppServicesHeartbeatTelemetryModule`
 * `AzureInstanceMetadataTelemetryModule`
 
-若要配置任何默认 `TelemetryModule`，请使用 `IServiceCollection` 上的扩展方法 `ConfigureTelemetryModule<T>`，如下面的示例中所示。
+若要配置任何默认的 `TelemetryModule`，请按以下示例中所示使用 `ConfigureTelemetryModule<T>` 中的扩展方法 `IServiceCollection`。
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
@@ -460,7 +460,7 @@ Application Insights 使用遥测模块自动收集有关特定工作负载的�
 
 ### <a name="configuring-telemetry-channel"></a>配置遥测通道
 
-默认通道为 `ServerTelemetryChannel`。 如下面的示例所示，可以重写它。
+默认通道为 `ServerTelemetryChannel`。 可按以下示例所示替代该通道。
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -477,7 +477,7 @@ using Microsoft.ApplicationInsights.Channel;
 
 ### <a name="disable-telemetry-dynamically"></a>动态禁用遥测
 
-如果要有条件地和动态地禁用遥测，可以在代码中 ASP.NET Core 的任何位置解析 `TelemetryConfiguration` 实例，并在代码中设置 `DisableTelemetry` 标志。
+如果要有条件和动态地禁用遥测，可以在代码中的任何位置使用 ASP.NET Core 依赖项注入容器解析 `TelemetryConfiguration` 实例，并在其上设置 `DisableTelemetry` 标志。
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -494,24 +494,24 @@ using Microsoft.ApplicationInsights.Channel;
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>如何跟踪未自动收集的遥测数据？
+### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>如何跟踪不会自动收集的遥测数据？
 
-使用构造函数注入获取 `TelemetryClient` 的实例，并对其调用所需的 `TrackXXX()` 方法。 不建议创建新的 `TelemetryClient` 实例。 已在 `DependencyInjection` 容器中注册 `TelemetryClient` 的单一实例，该实例与其他遥测数据 `TelemetryConfiguration` 共享。 建议仅在需要与其他遥测数据分离的配置时才创建新的 `TelemetryClient` 实例。
+使用构造函数注入获取 `TelemetryClient` 的实例，然后对其调用所需的 `TrackXXX()` 方法。 不建议创建新的 `TelemetryClient` 实例。 `TelemetryClient` 容器中已注册了 `DependencyInjection` 的单一实例，该实例与剩余的遥测功能共享 `TelemetryConfiguration`。 仅当需要与剩余的遥测功能使用不同的配置时，才建议创建新的 `TelemetryClient` 实例。
 
 ### <a name="can-i-use-visual-studio-ide-to-onboard-application-insights-to-a-worker-service-project"></a>是否可以使用 Visual Studio IDE 将 Application Insights 加入辅助角色服务项目？
 
 目前仅支持 ASP.NET/ASP.NET 核心应用程序的 Visual Studio IDE 载入。 当 Visual Studio 为载入辅助角色服务应用程序提供支持时，将更新此文档。
 
-### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>能否使用状态监视器等工具启用 Application Insights 监视？
+### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>是否可以使用状态监视器之类的工具来启用 Application Insights 监视？
 
-不。 [状态监视器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)和[状态监视器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)目前仅支持 ASP.NET 4.x。
+不能。 [状态监视器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)和[状态监视器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) 目前仅支持 ASP.NET 4.x。
 
-### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果我在 Linux 中运行我的应用程序，是否支持所有功能？
+### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果在 Linux 中运行应用程序，是否支持所有功能？
 
-可以。 此 SDK 的功能支持在所有平台中都是相同的，但有以下例外：
+是的。 此 SDK 的功能支持在所有平台中都是相同的，但有以下例外：
 
 * 性能计数器仅在 Windows 中受支持，但在实时指标中显示的进程 CPU/内存除外。
-* 即使默认情况下启用 `ServerTelemetryChannel`，如果应用程序在 Linux 或 MacOS 中运行，则通道不会自动创建本地存储文件夹，以在出现网络问题时暂时保留遥测数据。 由于存在此限制，因此当存在暂时性网络或服务器问题时，遥测将丢失。 若要解决此问题，请配置通道的本地文件夹：
+* 尽管默认已启用 `ServerTelemetryChannel`，但如果应用程序在 Linux 或 MacOS 中运行，出现网络问题时，通道不会自动创建本地存储文件夹来暂时保留遥测数据。 由于这种限制，在出现暂时性的网络或服务器时，遥测数据将会丢失。 若要解决此问题，请为通道配置一个本地文件夹：
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
