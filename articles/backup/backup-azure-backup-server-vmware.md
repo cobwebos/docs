@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure 备份服务器备份 VMware VM
-description: 使用 Azure 备份服务器备份 VMware vCenter/ESXi 服务器上运行的 VMware VM。
+description: 本文介绍如何使用 Azure 备份服务器来备份 VMware vCenter/ESXi 服务器上运行的 VMware Vm。
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3d8983835c587ffeec9dd2bc418f1c01afbeb571
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: df41907ee10b54ab3bfaeb548e085617f7d79084
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264503"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903230"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
 
@@ -62,11 +62,11 @@ ms.locfileid: "72264503"
 
 4. 以 .zip 扩展名将该文件保存在 Azure 备份服务器计算机上。
 
-5. 右键单击“download.zip”并选择“全部解压缩”。 >  .zip 文件的内容将解压缩到 **certs** 文件夹，其中包含：
+5. 右键单击“download.zip”并选择“全部解压缩”。 > ** .zip 文件的内容将解压缩到 **certs** 文件夹，其中包含：
    - 根证书文件的扩展名以类似 .0 和 .1 的编号顺序开头。
    - CRL 文件的扩展名以类似 .r0 或 .r1 的序列开头。 CRL 文件与证书关联。
 
-         ![Downloaded certificates](./media/backup-azure-backup-server-vmware/extracted-files-in-certs-folder.png)
+    ![下载的证书](./media/backup-azure-backup-server-vmware/extracted-files-in-certs-folder.png)
 
 6. 在 **certs** 文件夹中，右键单击根证书文件并选择“重命名”。
 
@@ -82,7 +82,7 @@ ms.locfileid: "72264503"
 
 10. 在“证书存储”页面上，选择“将所有证书放入下列存储”，然后单击“浏览”以选择证书存储。
 
-         ![Certificate storage](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
+    ![证书存储](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
 
 11. 在“选择证书存储”中，选择“受信任的根证书颁发机构”作为证书的目标文件夹，然后单击“确定”。
 
@@ -100,11 +100,9 @@ ms.locfileid: "72264503"
 
 1. 将以下文本复制并粘贴到 .txt 文件中。
 
-      ```text
-      Windows Registry Editor Version 5.00
-      [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
-      "IgnoreCertificateValidation"=dword:00000001
-      ```
+       ```text
+      Windows 注册表编辑器版本 5.00 [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare] "IgnoreCertificateValidation" = dword：00000001
+       ```
 
 2. 使用文件名 **DisableSecureAuthentication.reg** 将该文件保存在 Azure 备份服务器计算机上。
 
@@ -119,18 +117,18 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![管理](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
-3. 在“管理” > “角色”中，单击“添加角色”图标（加号）。
+3. 在“管理” **“角色”中，单击“添加角色”图标（加号）。**  > 
 
     ![添加角色](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
-4. 在“创建角色” > “角色名称”中，输入 *BackupAdminRole*。 角色名称可以是所需的任何内容，但它应该能够帮助识别该角色。
+4. 在“创建角色” **“角色名称”中，输入** BackupAdminRole > 。 角色名称可以是所需的任何内容，但它应该能够帮助识别该角色。
 
 5. 选择下表中汇总的特权，然后单击“确定”。  新角色随即显示在“角色”窗格中的列表内。
    - 单击父标签旁的图标展开父级，并查看子级特权。
    - 若要选择的 VirtualMachine 去权限，需跳转几个级别转到父子层次结构。
    - 不需要选择父特权中的所有子特权。
 
-             ![Parent child privilege hierarchy](./media/backup-azure-backup-server-vmware/cert-add-privilege-expand.png)
+    ![父子权限层次结构](./media/backup-azure-backup-server-vmware/cert-add-privilege-expand.png)
 
 ### <a name="role-permissions"></a>角色权限
 
@@ -165,7 +163,7 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
 2. 在“vCenter 用户和组”面板中，选择“用户”选项卡，然后单击“添加用户”图标（加号）。
 
-         ![vCenter Users and Groups panel](./media/backup-azure-backup-server-vmware/usersandgroups.png)
+    ![vCenter 用户和组面板](./media/backup-azure-backup-server-vmware/usersandgroups.png)
 
 3. 在“新建用户”对话框中，添加用户信息并选择“确定”。 在此过程中，用户名是 BackupAdmin。
 
@@ -179,11 +177,11 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
     ![选择用户或组](./media/backup-azure-backup-server-vmware/vmware-add-new-global-perm.png)
 
-6. 在“选择用户/组”中，选择“BackupAdmin” > “添加”。 在“用户”中，用户帐户采用“域\用户名”格式。 若要使用其他域，请从“域”列表中选择该域。 单击“确定”，将选定的用户添加到“添加权限”对话框中。
+6. 在“选择用户/组”中，选择“BackupAdmin” **“添加”。**  >  在“用户”中，用户帐户采用“域\用户名”格式。 若要使用其他域，请从“域”列表中选择该域。 单击“确定”，将选定的用户添加到“添加权限”对话框中。
 
     ![添加 BackupAdmin 用户](./media/backup-azure-backup-server-vmware/vmware-assign-account-to-role.png)
 
-7. 在“分配的角色”的下拉列表中，选择“BackupAdminRole” > “确定”。
+7. 在“分配的角色”的下拉列表中，选择“BackupAdminRole” **“确定”。**  > 
 
     ![向角色分配用户](./media/backup-azure-backup-server-vmware/vmware-choose-role.png)
 
@@ -195,7 +193,7 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
     ![Azure 备份服务器图标](./media/backup-azure-backup-server-vmware/mabs-icon.png)
 
-2. 在 Azure 备份服务器控制台中，单击“管理” >  “生产服务器” > “管理 VMware”。
+2. 在 Azure 备份服务器控制台中，单击“管理” **“生产服务器”** “管理 VMware”。 >   > 
 
     ![Azure 备份服务器控制台](./media/backup-azure-backup-server-vmware/add-vmware-credentials.png)
 
@@ -215,13 +213,13 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
 将 vCenter 服务器添加到 Azure 备份服务器。
 
-1. 在 Azure 备份服务器控制台中，单击“管理” > “生产服务器” > “添加”。
+1. 在 Azure 备份服务器控制台中，单击“管理” **“生产服务器”** “添加”。 >  > 
 
     ![打开生产服务器添加向导](./media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
 
-2. 在“生产服务器添加向导” > “选择生产服务器类型”页中，选择“VMware 服务器”，然后单击“下一步”。
+2. 在“生产服务器添加向导” **“选择生产服务器类型”页中，选择“VMware 服务器”，然后单击“下一步”。**  > 
 
-         ![Production Server Addition Wizard](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
+    ![生产服务器添加向导](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
 3. 在“选择计算机”>“服务器名称/IP 地址”中，指定 VMware 服务器的 FQDN 或 IP 地址。 如果所有 ESXi 服务器由同一个 vCenter 管理，请指定 vCenter 名称。 否则请添加 ESXi 主机。
 
@@ -266,7 +264,7 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
     - 选择某个文件夹时，也会选择该文件夹中的 VM 或子文件夹进行备份。 可以取消选中不想要备份的文件夹或 VM。
 1. 如果 VM 或文件夹已在备份，则无法选择它。 这可以确保不会为 VM 创建重复的恢复点。
 
-         ![Select group members](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
+    ![选择组成员](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
 1. 在“选择数据保护方法”页中，输入保护组的名称和保护设置。 若要备份到 Azure，请将短期保护设置为“磁盘”，并启用联机保护。 然后单击“下一步”。
 
@@ -286,18 +284,18 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
    - 建议的磁盘分配基于指定的保留期、工作负荷类型，以及受保护数据的大小。 做出所需的任何更改，然后单击“下一步”。
    - **数据大小：** 保护组中数据的大小。
    - **磁盘空间：** 为保护组建议的磁盘空间量。 若要修改此设置，所分配的总空间应比每个数据源预计增长量略大。
-   - **共置数据：** 如果启用共置，受保护的多个数据源可以映射到单个副本和恢复点卷。 并非所有工作负荷都支持归置。
-   - **自动增长：** 如果启用此设置，当受保护组中的数据超过初始分配时，Azure 备份服务器会尝试将磁盘大小增加 25%。
+   - **归置数据：** 如果启用归置，受保护的多个数据源可以映射到单个副本和恢复点卷。 并非所有工作负荷都支持归置。
+   - **自动增长：** 如果启用此设置，则在受保护组中的数据超过初始分配时，Azure 备份服务器会尝试将磁盘大小增加25%。
    - **存储池详细信息：** 显示存储池的状态，包括总磁盘大小和剩余磁盘大小。
 
-         ![Review disk allocation](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
+    ![查看磁盘分配](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
 
 1. 在“选择副本创建方法”页中指定如何创建初始备份，然后单击“下一步”。
    - 默认设置为“自动通过网络”和“立即”。
    - 若使用默认设置，则建议指定非高峰时间。 选择“稍后”并指定日期和时间。
    - 如果数据量很大或者网络状态欠佳，请考虑使用可移动介质脱机复制数据。
 
-         ![Choose replica creation method](./media/backup-azure-backup-server-vmware/replica-creation.png)
+    ![选择副本创建方法](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
 1. 在“一致性检查选项”中，选择如何以及何时自动执行一致性检查。 然后单击“下一步”。
       - 当副本数据变得不一致时，可以运行一致性检查；也可以根据设置的计划运行该检查。
@@ -305,25 +303,25 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
 1. 在“指定联机保护数据”页中，选择要备份的 VM 或 VM 文件夹。 可以选择单个成员，或者单击“全选”选择所有成员。 然后单击“下一步”。
 
-          ![Specify online protection data](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
+    ![指定在线保护数据](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. 在“指定联机备份计划”页中，指定将数据从本地存储备份到 Azure 的频率。
 
     - 将根据计划生成数据的云恢复点。 然后单击“下一步”。
     - 生成恢复点后，该恢复点将传输到 Azure 中的恢复服务保管库。
 
-          ![Specify online backup schedule](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
+    ![指定联机备份计划](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
 1. 在“指定联机保留策略”页中，指明要在 Azure 中将通过每天/每周/每月/每年备份创建的恢复点保留多长时间。 然后单击“下一步”。
 
     - 在 Azure 中保留数据的时间长短没有限制。
     - 唯一的限制是每个受保护实例的恢复点不可超过 9999 个。 在本示例中，受保护的实例是 VMware 服务器。
 
-          ![Specify online retention policy](./media/backup-azure-backup-server-vmware/retention-policy.png)
+    ![指定联机保留策略](./media/backup-azure-backup-server-vmware/retention-policy.png)
 
 1. 在“摘要”页中检查设置，然后单击“创建组”。
 
-         ![Protection group member and setting summary](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
+    ![保护组成员和设置摘要](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
 ## <a name="vmware-vsphere-67"></a>VMWare vSphere 6.7
 
@@ -335,25 +333,26 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
 - 按如下所示设置注册表项：
 
-```text
- Windows Registry Editor Version 5.00
+       ```text
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
-"SystemDefaultTlsVersions"=dword:00000001
-"SchUseStrongCrypto"=dword:00000001
+        Windows Registry Editor Version 5.00
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
-"SystemDefaultTlsVersions"=dword:00000001
-"SchUseStrongCrypto"=dword:00000001
+        [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
+       "SystemDefaultTlsVersions"=dword:00000001
+       "SchUseStrongCrypto"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
-"SystemDefaultTlsVersions"=dword:00000001
-"SchUseStrongCrypto"=dword:00000001
+       [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+       "SystemDefaultTlsVersions"=dword:00000001
+       "SchUseStrongCrypto"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
-"SystemDefaultTlsVersions"=dword:00000001
-"SchUseStrongCrypto"=dword:00000001
-```
+       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
+       "SystemDefaultTlsVersions"=dword:00000001
+       "SchUseStrongCrypto"=dword:00000001
+
+       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+       "SystemDefaultTlsVersions"=dword:00000001
+       "SchUseStrongCrypto"=dword:00000001
+       ```
 
 ## <a name="next-steps"></a>后续步骤
 

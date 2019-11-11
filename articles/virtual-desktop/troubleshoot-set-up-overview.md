@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 04/08/2019
+ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: aa4254673d426579a5e5f0e90e389db7c6cadff0
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7f80fb07bbed3bdb478bce557241a92cd571cc83
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607352"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904902"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>故障排除概述、反馈和支持
 
@@ -44,6 +44,7 @@ ms.locfileid: "73607352"
 | 连接客户端                                                                    | 请参阅[远程桌面客户端连接](troubleshoot-client-connection.md)，如果这不能解决你的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。 |
 | 远程应用程序或桌面的响应能力                                      | 如果问题与特定应用程序或产品相关，请联系负责该产品的团队。 |
 | 授权消息或错误                                                          | 如果问题与特定应用程序或产品相关，请联系负责该产品的团队。 |
+| 使用 GitHub 上的 Windows 虚拟桌面工具时的问题（Azure 资源管理器模板、诊断工具、管理工具） | 若要报告问题，请参阅[ARM 模板远程桌面服务](https://github.com/Azure/RDS-Templates/blob/master/README.md)。 |
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -54,4 +55,4 @@ ms.locfileid: "73607352"
 - 若要了解有关该服务的详细信息，请参阅[Windows 虚拟桌面环境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)。
 - 若要浏览疑难解答教程，请参阅[教程：排查资源管理器模板部署问题](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)。
 - 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)。
-- 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations)。
+- 若要了解有关在部署期间确定错误的操作，请参阅[查看部署操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations)。

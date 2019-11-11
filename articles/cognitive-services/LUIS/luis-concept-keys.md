@@ -1,5 +1,5 @@
 ---
-title: 创作密钥和运行时密钥 - LUIS
+title: 如何在 LUIS 中使用创作和运行时密钥
 titleSuffix: Azure Cognitive Services
 description: LUIS 使用两种密钥，其中的创作密钥用于创建模型，运行时密钥用于通过用户话语查询预测终结点。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 973a8dd56437506d907159f212164ff147ba975c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b58aa97dbb97bade87a38456c58df8f93a29946f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487498"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901703"
 ---
 # <a name="authoring-and-runtime-keys"></a>创作和运行时密钥
 
@@ -125,7 +125,7 @@ LUIS 运行时终结点接受两种样式的查询，这两种查询都使用预
 |修改模型|
 |发布|
 |查看用于[主动学习](luis-how-to-review-endpoint-utterances.md)的终结点陈述|
-|训练|
+|定型|
 
 <a name="prediction-endpoint-runtime-key"></a>
 

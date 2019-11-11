@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 383cade6e8bb5f66aa240564912056ec345a1ee6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 83fd06078500be7b5bd58e9ea92d957f9d77f892
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500182"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904210"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 
@@ -30,12 +30,12 @@ LUIS 在服务中具有多种功能。 并非所有功能都会同等地以各�
 
 LUIS 理解以下语言：
 
-| 语言 |Locale  |  预生成域 | 预构建实体 | 短语列表建议 | **[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>（情绪和<br>关键字）|
+| 语言 |区域设置  |  预生成域 | 预生成实体 | 短语列表建议 | \**[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>（情绪和<br>关键字）|
 |--|--|:--:|:--:|:--:|:--:|
 | 美国英语 |`en-US` | ✔ | ✔  |✔|✔|
 | *[中文](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | 荷兰语 |`nl-NL` |✔|  -   |-|✔|
-| 法语(法国) |`fr-FR` |✔| ✔ |✔ |✔|
+| 法语（法国） |`fr-FR` |✔| ✔ |✔ |✔|
 | 法语(加拿大) |`fr-CA` |-|   -   |-|✔|
 | 德语 |`de-DE` |✔| ✔ |✔ |✔|
 | 印地语 | `hi-IN`|-|-|-|-|
@@ -43,7 +43,7 @@ LUIS 理解以下语言：
 | *[日语](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|仅关键短语|
 | 韩语 |`ko-KR` |✔|   -   |-|仅关键短语|
 | 葡萄牙语(巴西) |`pt-BR` |✔| ✔ |✔ |并非所有亚区域性|
-| 西班牙语(西班牙) |`es-ES` |✔| ✔ |✔|✔|
+| 西班牙语（西班牙） |`es-ES` |✔| ✔ |✔|✔|
 | 西班牙语(墨西哥)|`es-MX` |-|  -   |✔|✔|
 | 土耳其语 | `tr-TR` |✔|-|-|仅情绪|
 
@@ -80,7 +80,7 @@ LUIS 理解以下语言：
 |--|:--:|:--:|:--:|:--:|
 |中文||✔||✔|
 |荷兰语|||✔|✔|
-|英语 (en-us)|✔ ||||
+|美国英语|✔ ||||
 |法语 (fr-FR)|✔||||
 |法语 (fr-CA)|✔||||
 |德语|||✔|✔|
@@ -206,4 +206,4 @@ Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersi
 
 在应用级别进行词汇切分。 不支持版本级别的词汇切分。 
 
-[将文件导入为新应用](luis-how-to-start-new-app.md#import-an-app-from-file)，而不是版本。 此操作意味着新应用具有不同的应用 ID，但使用文件中指定的 tokenizer 版本。 
+[将文件导入为新应用](luis-how-to-start-new-app.md)，而不是版本。 此操作意味着新应用具有不同的应用 ID，但使用文件中指定的 tokenizer 版本。 

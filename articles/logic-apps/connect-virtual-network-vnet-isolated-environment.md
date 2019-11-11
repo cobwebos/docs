@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 9adc8b3f96847c346a59905d1a5ec145fadd2f5b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 883778360bd2315e1424f9f207cbfd994ec1a373
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888705"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901194"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -40,7 +40,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 > [!IMPORTANT]
 > 在 ISE 中运行的逻辑应用、内置触发器、内置操作和连接器使用不同于基于消耗的定价计划的定价计划。 若要了解 ISEs 的定价和计费工作原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率，请参阅[逻辑应用定价](../logic-apps/logic-apps-pricing.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -95,7 +95,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 | 发布诊断日志和指标 | 出站 | 443 | VirtualNetwork  | AzureMonitor | |
 | 来自 Azure 流量管理器的通信 | 入站 | 443 | AzureTrafficManager | VirtualNetwork | |
 | 逻辑应用设计器 - 动态属性 | 入站 | 454 | 请参阅 "说明" 列，了解允许的 IP 地址 | VirtualNetwork | 请求来自该区域的逻辑应用访问终结点[入站](../logic-apps/logic-apps-limits-and-config.md#inbound)IP 地址。 |
-| 网络运行状况检查 | 入站和出站 | 454 | 请参阅 "说明" 列，了解允许的 IP 地址 | VirtualNetwork | 请求来自逻辑应用访问终结点，适用于该区域的[入站](../logic-apps/logic-apps-limits-and-config.md#inbound)和[出站](../logic-apps/logic-apps-limits-and-config.md#outbound)IP 地址。 |
+| 网络运行状况检查 | 入站 | 454 | 请参阅 "说明" 列，了解允许的 IP 地址 | VirtualNetwork | 请求来自逻辑应用访问终结点，适用于该区域的[入站](../logic-apps/logic-apps-limits-and-config.md#inbound)和[出站](../logic-apps/logic-apps-limits-and-config.md#outbound)IP 地址。 |
 | 应用服务管理依赖项 | 入站 | 454、455 | AppServiceManagement | VirtualNetwork | |
 | 连接器部署 | 入站 | 454 | AzureConnectors | VirtualNetwork | 需要用于部署和更新连接器。 关闭或阻止此端口会导致 ISE 部署失败，并阻止连接器更新或修复。 |
 | 连接器策略部署 | 入站 | 3443 | Internet | VirtualNetwork | 需要用于部署和更新连接器。 关闭或阻止此端口会导致 ISE 部署失败，并阻止连接器更新或修复。 |
@@ -133,7 +133,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
    | **Integration service 环境名称** | 是 | <*environment-name*> | ISE 名称，只能包含字母、数字、连字符（`-`）、下划线（`_`）和句点（`.`）。 |
    | **位置** | 是 | <*Azure-datacenter-region*> | 要在其中部署环境的 Azure 数据中心区域 |
    | **SKU** | 是 | **高级**或**开发人员（无 SLA）** | 要创建和使用的 ISE SKU。 有关这些 Sku 之间的差异，请参阅[ISE sku](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。 <p><p>**重要说明**：此选项仅在创建 ISE 时可用，不能在以后更改。 |
-   | **额外容量** | 价格 <br>是 <p><p>开发 <br>不适用 | 价格 <br>0到10 <p><p>开发 <br>不适用 | 要用于此 ISE 资源的其他处理单元的数量。 若要在创建后添加容量，请参阅[添加 ISE 容量](#add-capacity)。 |
+   | **额外容量** | 高级： <br>是 <p><p>开发 <br>不适用 | 高级： <br>0到10 <p><p>开发 <br>不适用 | 要用于此 ISE 资源的其他处理单元的数量。 若要在创建后添加容量，请参阅[添加 ISE 容量](#add-capacity)。 |
    | **访问终结点** | 是 | **内部**或**外部** | 用于 ISE 的访问终结点的类型，用于确定 ISE 中逻辑应用的请求或 webhook 触发器是否可以从虚拟网络外部接收调用。 终结点类型还会影响对逻辑应用运行历史记录中的输入和输出的访问。 有关详细信息，请参阅[终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 <p><p>**重要说明**：此选项仅在创建 ISE 时可用，不能在以后更改。 |
    | **虚拟网络** | 是 | <Azure-virtual-network-name> | 要注入环境以便该环境中的逻辑应用可以访问虚拟网络的 Azure 虚拟网络。 如果没有网络，请[先创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md)。 <p>**重要提示**：只有在创建 ISE 时*才*可以执行此注入。 |
    | **子网** | 是 | <*subnet-resource-list*> | ISE 需要四个*空*子网，以便在您的环境中创建和部署资源。 要创建每个子网，请[按照此表下方的步骤操作](#create-subnet)。 |

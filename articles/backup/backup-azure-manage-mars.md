@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: 88a914a2a4d3d62918b01674d6d21f2f011e2c2e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 049b09f7927da2cc841130a0adeaa90768037db8
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834302"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903215"
 ---
 # <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 备份服务管理 Microsoft Azure 恢复服务代理备份
 
@@ -62,7 +62,7 @@ ms.locfileid: "73834302"
             -在每月最后一周的午夜和 6:00 PM 进行的备份保留12个月。
             - 在 3 月份最后一周的星期六创建的备份将保留 10 年。
 
-           ![Retention example](./media/backup-configure-vault/retention-example.png)
+    ![保留示例](./media/backup-configure-vault/retention-example.png)
 
 11. 在 "**选择初始备份类型**" 中，决定是要通过网络进行初始备份还是使用脱机备份（有关脱机备份的详细信息，请参阅此[文](backup-azure-backup-import-export.md)）。 若要通过网络进行初始备份，请选择 "**自动通过网络**"，然后单击 "**下一步**"。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/07/2019
 ms.author: sedusch
-ms.openlocfilehash: 13f751b472b3443ba50be5d54ab08e015d1a8f5a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a618a2cb976c90174125e54af645123c6b0a9dcd
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824886"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73905037"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Azure 虚拟机在 Red Hat Enterprise Linux 上为 SAP NetWeaver 提供的高可用性
 
@@ -50,7 +50,7 @@ ms.locfileid: "73824886"
 请先阅读以下 SAP 说明和文档
 
 * SAP 说明 [1928533]，其中包含：
-  * SAP 软件部署支持的 Azure VM 大小列表
+  * SAP 软件部署支持的 Azure VM 大小的列表
   * Azure VM 大小的重要容量信息
   * 支持的 SAP 软件、操作系统 (OS) 和数据库组合
   * Microsoft Azure 上 Windows 和 Linux 所需的 SAP 内核版本
@@ -117,7 +117,7 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 数据�
 * 探测端口
   * 端口 621<strong>nr&lt;&gt;</strong>
 * 负载均衡规则
-  * 如果使用标准负载均衡器，请选择 * * HA 端口 * *
+  * 如果使用标准负载均衡器，请选择 " **HA 端口**"
   * 如果使用基本负载均衡器，则为以下端口创建负载均衡规则
     * 32<strong>nr&lt; TCP&gt;</strong>
     * 33<strong>nr&lt; TCP&gt;</strong>
@@ -250,9 +250,8 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
       1. ASCS ERS 的其他端口
          * 针对 ASCS ERS 的端口 33**02**、5**02**13、5**02**14、5**02**16 和 TCP 重复上述步骤
 
-> [!TIP]
-> 如果没有公共 IP 地址的 Vm 放在内部标准负载均衡器的后端池中，则 Vm 将不会有出站 internet 连接，除非执行其他配置。  
-> 如果方案需要到公共终结点的出站连接，请参阅[在 SAP 高可用性方案中使用 Azure 标准负载均衡器虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)，了解有关如何实现出站的提示和注意事项与公共终结点的连接。
+> [!Note]
+> 如果没有公共 IP 地址的 Vm 放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，则不会有出站 internet 连接，除非执行其他配置以允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅[使用 Azure 标准负载均衡器在 SAP 高可用性方案中的虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
 
 > [!IMPORTANT]
 > 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**tcp_timestamps**设置为**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 1fda05ffcac8952ee5a12c23383aad1a04d36b97
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 14745f79955a98727d6f55da4189212f2f18d9c0
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601316"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904404"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
 
@@ -22,11 +22,12 @@ ms.locfileid: "73601316"
 
 如果需要更多支持，请参阅[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)中的可用**帮助和支持**选项。
 
-## <a name="naming-conventions"></a>命名约定
+## <a name="issues-during-container-group-deployment"></a>容器组部署过程中的问题
+### <a name="naming-conventions"></a>命名约定
 
 定义容器规格时，某些参数需要遵循命名限制。 下表包含容器组属性的特定要求。 有关 Azure 命名约定的详细信息，请参阅 Azure 体系结构中心中的[命名约定][azure-name-restrictions]。
 
-| 范围 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
+| 作用域 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
 | --- | --- | --- | --- | --- | --- |
 | 容器组名称 | 1-64 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | 容器名称 | 1-64 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
@@ -35,7 +36,7 @@ ms.locfileid: "73601316"
 | 环境变量 | 1-63 |不区分大小写 |第一个或最后一个字符不能为字母数字和下划线 (_) |`<name>` |`MY_VARIABLE` |
 | 卷名 | 5-63 |不区分大小写 |第一个或最后一个字符不能为小写字母、数字和连字符。 不能包含两个连续的连字符。 |`<name>` |`batch-output-volume` |
 
-## <a name="os-version-of-image-not-supported"></a>不受支持的映像的操作系统版本
+### <a name="os-version-of-image-not-supported"></a>不受支持的映像的操作系统版本
 
 如果指定了 Azure 容器实例不支持的映像，则将返回 `OsVersionNotSupported` 错误。 该错误类似于以下内容，其中 `{0}` 是你尝试部署的映像的名称：
 
@@ -50,7 +51,7 @@ ms.locfileid: "73601316"
 
 部署基于半年频道版本1709或1803的 Windows 映像时，通常会遇到此错误，这是不受支持的。 有关 Azure 容器实例中支持的 Windows 映像，请参阅[常见问题解答](container-instances-faq.md#what-windows-base-os-images-are-supported)。
 
-## <a name="unable-to-pull-image"></a>无法请求映像
+### <a name="unable-to-pull-image"></a>无法请求映像
 
 如果 Azure 容器实例最初无法请求映像，则会重试一段时间。 如果映像请求操作继续失败，ACI 最终会使部署失败，可能会显示 `Failed to pull image` 错误。
 
@@ -86,8 +87,21 @@ ms.locfileid: "73601316"
   }
 ],
 ```
+### <a name="resource-not-available-error"></a>资源不可用错误
 
-## <a name="container-continually-exits-and-restarts-no-long-running-process"></a>容器不断退出并重启（没有长时间运行的进程）
+由于 Azure 中的区域资源负载不同，尝试部署容器实例时可能会收到以下错误：
+
+`The requested resource with 'x' CPU and 'y.z' GB memory is not available in the location 'example region' at this moment. Please retry with a different resource request or in another location.`
+
+此错误指示由于尝试部署的区域中负载较重，无法在此时为容器分配指定的资源。 使用以下一个或多个缓解步骤来帮助解决此问题。
+
+* 验证容器部署设置是否位于 [Azure 容器实例的区域可用性](container-instances-region-availability.md)中定义的参数内
+* 为容器指定较低的 CPU 和内存设置
+* 部署到其他 Azure 区域
+* 稍后部署
+
+## <a name="issues-during-container-group-runtime"></a>容器组运行时中的问题
+### <a name="container-continually-exits-and-restarts-no-long-running-process"></a>容器不断退出并重启（没有长时间运行的进程）
 
 容器组的[重启策略](container-instances-restart-policy.md)默认为 **Always**，因此容器组中的容器在运行完成后始终会重启。 如果打算运行基于任务的容器，则可能需要将此策略更改为 **OnFailure** 或 **Never**。 如果指定了“失败时”，但仍不断重启，则可能容器中执行的应用程序或脚本存在问题。
 
@@ -147,16 +161,17 @@ az container create -g myResourceGroup --name mywindowsapp --os-type Windows --i
 > [!NOTE]
 > Linux 分发的大多数容器映像会设置一个 shell（如 bash）作为默认命令。 由于 Shell 本身不是长时间运行的服务，因此如果这些容器配置了“始终”重启策略，会立即退出并不断重启。
 
-## <a name="container-takes-a-long-time-to-start"></a>容器启动时间过长
+### <a name="container-takes-a-long-time-to-start"></a>容器启动时间过长
 
-影响 Azure 容器实例中的容器启动时间的两个主要因素是：
+在 Azure 容器实例中参与容器启动时间的三个主要因素是：
 
 * [映像大小](#image-size)
 * [映像位置](#image-location)
+* [缓存的图像](#cached-images)
 
 Windows 映像具有[其他注意事项](#cached-images)。
 
-### <a name="image-size"></a>映像大小
+#### <a name="image-size"></a>映像大小
 
 如果容器启动时间过长，但最终成功启动，请先查看容器映像大小。 由于 Azure 容器实例按需请求容器映像，因此显示的启动时间与映像大小直接相关。
 
@@ -170,43 +185,30 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 保持容器较小的关键是，确保最终映像不包含任何运行时不需要的内容。 执行此操作的一种方法是使用[多阶段生成][docker-multi-stage-builds]。 多阶段生成可轻松确保最终映像仅包含应用程序所需的项目，而不包含任何生成时需要的额外内容。
 
-### <a name="image-location"></a>映像位置
+#### <a name="image-location"></a>映像位置
 
 若要减小映像请求对容器启动时间的影响，另一种方法是在希望部署容器实例的同一区域的 [Azure 容器注册表](/azure/container-registry/)中托管容器映像。 这会缩短容器映像需要经过的网络路径，显著缩短下载时间。
 
-### <a name="cached-images"></a>缓存的图像
+#### <a name="cached-images"></a>缓存的图像
 
-Azure 容器实例使用缓存机制来帮助加快基于常见[Windows 基准映像](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括 `nanoserver:1809`、`servercore:ltsc2019`和 `servercore:1809`）生成的映像的容器启动时间。 通常使用的 Linux 映像（例如 `ubuntu:1604` 和 `alpine:3.6`）也被缓存。 有关缓存的图像和标记的最新列表，请使用[列出缓存的映像][list-cached-images]API。
+Azure 容器实例使用缓存机制来帮助加快基于常见[Windows 基准映像](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括 `nanoserver:1809`、`servercore:ltsc2019`和 `servercore:1809`）生成的映像的容器启动时间。 通常使用的 Linux 映像（如 `ubuntu:1604` 和 `alpine:3.6`）也被缓存。 有关缓存的图像和标记的最新列表，请使用[列出缓存的映像][list-cached-images]API。
 
 > [!NOTE]
 > 在 Azure 容器实例中使用基于 Windows Server 2019 的映像处于预览状态。
 
-### <a name="windows-containers-slow-network-readiness"></a>Windows 容器慢速网络准备情况
+#### <a name="windows-containers-slow-network-readiness"></a>Windows 容器慢速网络准备情况
 
 在初始创建时，Windows 容器在最多 30 秒内（在极少数情况下，会更长时间）可能没有入站或出站连接。 如果容器应用程序需要 Internet 连接，请添加延迟和重试逻辑以允许 30 秒建立 Internet 连接。 初始设置后，容器网络应适当恢复。
 
-## <a name="resource-not-available-error"></a>资源不可用错误
-
-由于 Azure 中的区域资源负载不同，尝试部署容器实例时可能会收到以下错误：
-
-`The requested resource with 'x' CPU and 'y.z' GB memory is not available in the location 'example region' at this moment. Please retry with a different resource request or in another location.`
-
-此错误指示由于尝试部署的区域中负载较重，无法在此时为容器分配指定的资源。 使用以下一个或多个缓解步骤来帮助解决此问题。
-
-* 验证容器部署设置是否位于 [Azure 容器实例的区域可用性](container-instances-region-availability.md)中定义的参数内
-* 为容器指定较低的 CPU 和内存设置
-* 部署到其他 Azure 区域
-* 稍后部署
-
-## <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>无法连接到基础 Docker API 或运行特权容器
+### <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>无法连接到基础 Docker API 或运行特权容器
 
 Azure 容器实例不公开对托管容器组的底层基础结构的直接访问。 这包括访问运行在容器主机上的 Docker API 和运行特权容器。 如果需要 Docker 交互，请查看 [REST 参考文档](https://aka.ms/aci/rest)以了解 ACI API 支持的内容。 如果缺少某些内容，请在 [ACI 反馈论坛](https://aka.ms/aci/feedback)上提交请求。
 
-## <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>由于端口不匹配，可能无法访问容器组 IP 地址
+### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>由于端口不匹配，可能无法访问容器组 IP 地址
 
 Azure 容器实例尚不支持类似于常规 docker 配置的端口映射。 如果找不到可访问的容器组的 IP 地址，请确保已将容器映像配置为使用 `ports` 属性侦听容器组中公开的相同端口。
 
-如果要确认 Azure 容器实例可以侦听容器映像中配置的端口，请测试公开此端口 `aci-helloworld` 映像的部署。 同时运行 `aci-helloworld` 应用程序，使其侦听该端口。 `aci-helloworld` 接受可选的环境变量，`PORT` 重写它侦听的默认端口80。 例如，若要测试端口9000，请在创建容器组时设置[环境变量](container-instances-environment-variables.md)：
+如果要确认 Azure 容器实例可以侦听容器映像中配置的端口，请测试公开此端口 `aci-helloworld` 映像的部署。 同时运行 `aci-helloworld` 应用程序，使其侦听该端口。 `aci-helloworld` 接受一个可选的环境变量 `PORT` 以替代它侦听的默认端口80。 例如，若要测试端口9000，请在创建容器组时设置[环境变量](container-instances-environment-variables.md)：
 
 1. 设置容器组以公开端口9000，并将端口号作为环境变量的值进行传递。 该示例的格式适用于 Bash shell。 如果希望使用其他 shell，如 PowerShell 或命令提示符，则需要相应地调整变量赋值。
     ```azurecli
@@ -215,7 +217,7 @@ Azure 容器实例尚不支持类似于常规 docker 配置的端口映射。 �
     --ip-address Public --ports 9000 \
     --environment-variables 'PORT'='9000'
     ```
-1. 在 `az container create` 的命令输出中找到该容器组的 IP 地址。 查找 " **ip**" 的值。 
+1. 在 `az container create`的命令输出中找到该容器组的 IP 地址。 查找 " **ip**" 的值。 
 1. 成功设置容器后，在浏览器中浏览到容器应用的 IP 地址和端口，例如： `192.0.2.0:9000`。 
 
     应会看到 "欢迎使用 Azure 容器实例！" web 应用显示的消息。

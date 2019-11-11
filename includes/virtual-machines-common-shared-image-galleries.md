@@ -6,20 +6,20 @@ author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 05/06/2019
-ms.author: akjosh; cynthn
+ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 9a564bf7f633903c58a5719327216baee2df6550
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 18c85995c545e1b603333fd6788b70cd863865ce
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026160"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73905010"
 ---
 共享映像库是一种可以帮助你围绕托管映像构建结构和组织的服务。 共享映像库提供以下功能：
 
 - 对映像进行托管式全局复制。
 - 对映像进行版本控制和分组，以便于管理。
-- 具有区域冗余存储（ZRS）帐户的高度可用映像，位于支持可用性区域的区域中。 ZRS 可以更好地恢复映像，防止区域性故障。
+- 具有区域冗余存储（ZRS）帐户的高度可用映像，位于支持可用性区域的区域中。 ZRS 提供更好的复原能力来应对区域性的故障。
 - 使用 RBAC 跨订阅以及甚至在 Active Directory (AD) 租户之间共享。
 - 使用每个区域中的映像副本缩放部署。
 
@@ -31,11 +31,12 @@ ms.locfileid: "72026160"
 
 共享映像库功能具有多种资源类型：
 
-| Resource | 描述|
+| 资源 | 说明|
 |----------|------------|
-| **托管映像** | 一个基本映像，可以单独使用，也可用于在映像库中创建**映像版本**。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
+| **托管映像** | 一个基本映像，可以单独使用，也可用于在映像库中创建**映像版本**。 托管映像是从[通用化](#generalized-and-specialized-images)vm 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
+| **快照** | 可用于生成**映像版本**的 VHD 副本。 快照可以从[专用](#generalized-and-specialized-images)VM （一个尚未通用化的虚拟机）中获取，然后单独使用或与数据磁盘的快照一起使用，以创建专用的映像版本。
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
-| **映像定义** | 映像在库中定义，携带有关该映像及其在组织内部使用的要求的信息。 可以包含映像是 Windows 还是 Linux、最小和最大内存要求以及发行说明等信息。 它是某种映像类型的定义。 |
+| **映像定义** | 映像在库中定义，携带有关该映像及其在组织内部使用的要求的信息。 您可以包括诸如映像是通用化还是专用的信息、操作系统、最小和最大内存要求以及发行说明。 它是某种映像类型的定义。 |
 | **映像版本** | 使用库时，将使用**映像版本**来创建 VM。 可根据环境的需要创建多个映像版本。 与托管映像一样，在使用**映像版本**创建 VM 时，将使用映像版本来创建 VM 的新磁盘。 可以多次使用映像版本。 |
 
 <br>
@@ -48,17 +49,17 @@ ms.locfileid: "72026160"
 
 对于每个映像定义，将组合使用“发布者”、“套餐”和“SKU”这三个参数。 这些参数用于查找特定的映像定义。 可以拥有共享一个或两个但不是全部三个值的映像版本。  例如，以下是三个映像定义及其值：
 
-|映像定义|发布者|产品/服务|Sku|
+|映像定义|发布者|产品/服务|SKU|
 |---|---|---|---|
 |myImage1|Contoso|财务|后端|
 |myImage2|Contoso|财务|前端|
-|myImage3|正在测试|财务|前端|
+|myImage3|测试|财务|前端|
 
 所有这三个映像都有唯一的一组值。 格式类似于当前在 Azure PowerShell 中为 [Azure 市场映像](../articles/virtual-machines/windows/cli-ps-findimage.md)指定发布者、套餐和 SKU，以获取最新市场映像版本的方式。 每个映像定义需要包含一组唯一的这些值。
 
 下面是可以在映像定义中设置的其他参数，它们可让你更轻松地跟踪自己的资源：
 
-* 操作系统状态 - 可将 OS 状态设置为通用化或专用化，但目前仅支持通用化。 必须从已使用适用于 Windows 的 Sysprep 或适用于 Linux 的 `waagent -deprovision` 通用化的 VM 创建映像。
+* 操作系统状态-可以将 OS 状态设置为 "[通用" 或 "专用](#generalized-and-specialized-images)"。
 * 操作系统 - 可以是 Windows 或 Linux。
 * 说明 - 使用说明可以更详细地解释该映像定义为何存在。 例如，可为预装了应用程序的前端服务器创建一个映像定义。
 * Eula - 可用于指向特定于映像定义的最终用户许可协议。
@@ -68,21 +69,43 @@ ms.locfileid: "72026160"
 * 最小和最大 vCPU 与内存建议量 - 如果映像附带 vCPU 和内存建议量，则你可以将该信息附加到映像定义。
 * 不允许的磁盘类型 - 可以提供有关 VM 所需存储的信息。 例如，如果映像不适合用于标准 HDD 磁盘，请将此类磁盘添加到禁止列表。
 
+## <a name="generalized-and-specialized-images"></a>通用化和专用映像
+
+共享映像库支持两种操作系统状态。 通常情况下，图像要求用于创建映像的 VM 在拍摄映像之前已通用化。 通用化是从 VM 中删除计算机和用户特定信息的进程。 对于 Windows，使用 Sysprep 也是如此。 对于 Linux，可以使用[waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` 或 `-deprovision+user` 参数。
+
+专用 Vm 尚未通过进程删除计算机特定的信息和帐户。 此外，从专用映像创建的 Vm 不具有与其关联的 `osProfile`。 这意味着，专用映像将有一些限制。
+
+- 还可以在使用从该 VM 创建的专用映像创建的任何 VM 上使用用于登录到 VM 的帐户。
+- Vm 将具有从中获取映像的 VM 的**计算机名称**。 应更改计算机名以避免冲突。
+- `osProfile` 是使用 `secrets`将一些敏感信息传递给 VM 的方式。 这可能会导致使用 KeyVault、WinRM 和其他使用 `osProfile`中 `secrets` 的功能时出现问题。 在某些情况下，可以使用托管服务标识（MSI）解决这些限制。
+
+> [!IMPORTANT]
+> 专用图像目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>
+> **已知预览版限制**只能使用门户或 API 从专用映像创建 Vm。 对于预览，无 CLI 或 PowerShell 支持。
+
+
 ## <a name="regional-support"></a>区域支持
 
-下表列出了源区域。 所有公共区域都可以是目标区域，但是若要复制到澳大利亚中部和澳大利亚中部2，需要订阅允许列表。 要请求允许列表，请转到： https://azure.microsoft.com/global-infrastructure/australia/contact/
+下表列出了源区域。 所有公共区域都可以是目标区域，但是若要复制到澳大利亚中部和澳大利亚中部2，需要订阅白名单。 要请求允许列表，请转到： https://azure.microsoft.com/global-infrastructure/australia/contact/
 
-| 源区域 |
-|---------------------|-----------------|------------------|-----------------|
-| 澳大利亚中部   | 美国中部 EUAP | 韩国中部    | 美国中西部 |
-| 澳大利亚中部 2 | 东亚       | 韩国      | 西欧     |
-| 澳大利亚东部      | East US         | 美国中北部 | 印度西部      |
-| 澳大利亚东南部 | 美国东部 2       | 北欧     | 美国西部         |
-| 巴西南部        | 美国东部 2 EUAP  | 美国中南部 | 美国西部 2       |
-| 加拿大中部      | 法国中部  | 印度南部      | 中国东部      |
-| 加拿大东部         | 法国南部    | 东南亚   | 中国东部 2    |
-| 印度中部       | 日本东部      | 英国南部         | 中国北部     |
-| 美国中部          | 日本西部      | 英国西部          | 中国北部 2   |
+
+| 源区域        |                   |                    |                    |
+| --------------------- | ----------------- | ------------------ | ------------------ |
+| 澳大利亚中部     | 中国东部        | 印度南部        | 西欧        |
+| 澳大利亚中部 2   | 中国东部 2      | 东南亚     | 英国南部           |
+| 澳大利亚东部        | 中国北部       | 日本东部         | 英国西部            |
+| 澳大利亚东南部   | 中国北部 2     | 日本西部         | 美国 DoD 中部     |
+| 巴西南部          | 东亚         | 韩国中部      | 美国 DoD 东部        |
+| 加拿大中部        | 美国东部           | 韩国南部        | 美国亚利桑那州政府     |
+| 加拿大东部           | 美国东部 2         | 美国中北部   | 美国德克萨斯州政府       |
+| 印度中部         | 美国东部 2 EUAP    | 北欧       | 美国政府弗吉尼亚州    |
+| 美国中部            | 法国中部    | 美国中南部   | 印度西部         |
+| 美国中部 EUAP       | 法国南部      | 美国中西部    | 美国西部            |
+|                       |                   |                    | 美国西部 2          |
+
+
 
 ## <a name="limits"></a>限制 
 
@@ -93,10 +116,10 @@ ms.locfileid: "72026160"
 
 有关详细信息，请参阅[根据限制检查资源用量](https://docs.microsoft.com/azure/networking/check-usage-against-limits)，其中提供了有关如何检查当前用量的示例。
  
-## <a name="scaling"></a>缩放
+## <a name="scaling"></a>扩展
 使用共享映像库可以指定要让 Azure 保留的映像副本数。 这有助于实现多 VM 部署方案，因为可将 VM 部署分散到不同的副本，减少单个副本过载导致实例创建过程受到限制的可能性。
 
-现在，使用共享映像库，最多可在虚拟机规模集中部署 1,000 个 VM 实例（相比使用托管映像部署 600 个有所增加）。 映像副本可用于提高部署性能、可靠性和一致性。  可以在每个目标区域中设置不同的副本计数，具体视该区域的缩放需求而定。 由于每个副本是映像的深层复制，因此，这有助于使用每个额外的副本线性地缩放部署。 虽然我们不了解两个映像或区域是相同的，但以下是有关如何在区域中使用副本的一般指导：
+现在，使用共享映像库，最多可在虚拟机规模集中部署 1,000 个 VM 实例（相比使用托管映像部署 600 个有所增加）。 映像副本可用于提高部署性能、可靠性和一致性。  您可以根据区域的规模需求，在每个目标区域中设置不同的副本计数。 由于每个副本是映像的深层复制，因此，这有助于使用每个额外的副本线性地缩放部署。 虽然我们不了解两个映像或区域是相同的，但以下是有关如何在区域中使用副本的一般指导：
 
 - 对于非虚拟机规模集（VMSS）部署-对于同时创建的每20个 Vm，我们建议你保留一个副本。 例如，如果要在区域中使用相同映像并行创建 120 个 VM，我们建议至少保留映像的 6 个副本。 
 - 对于虚拟机规模集（VMSS）部署-对于每个规模集部署最多包含600个实例，建议至少保留一个副本。 例如，如果要创建 5 个规模集，而每个规模集都包含在单个区域中使用相同映像创建的 600 个 VM 实例，我们建议至少保留映像的 5 个副本。 
@@ -109,7 +132,7 @@ ms.locfileid: "72026160"
 
 [Azure 区域冗余存储（ZRS）](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/)可针对区域中的可用性区域故障提供复原能力。 利用共享映像库的公开上市，你可以选择将映像存储在可用性区域区域中的 ZRS 帐户中。 
 
-你还可以为每个目标区域选择 "帐户类型"。 默认存储帐户类型为 Standard_LRS，但你可以为包含可用性区域的区域选择 Standard_ZRS。 在[此处](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)查看 ZRS 的区域可用性。
+你还可以为每个目标区域选择 "帐户类型"。 默认存储帐户类型为 Standard_LRS，但你可以为具有可用性区域的区域选择 Standard_ZRS。 在[此处](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)查看 ZRS 的区域可用性。
 
 ![显示 ZRS 的图形](./media/shared-image-galleries/zrs.png)
 
@@ -143,12 +166,12 @@ ms.locfileid: "72026160"
 创建后，可对映像库资源进行一些更改。 限制如下：
  
 共享映像库：
-- 描述
+- 说明
 
 映像定义：
 - 建议的 vCPU 数
 - 建议的内存
-- 描述
+- 说明
 - 生命周期终结日期
 
 映像版本：
@@ -213,19 +236,20 @@ ms.locfileid: "72026160"
 
 ### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>是否可将现有的映像移到共享映像库？
  
-是。 根据映像的类型，可能存在 3 种场景。
+可以。 根据映像的类型，可能存在 3 种场景。
 
- 方案 1：如果你有托管映像，则可以从该映像创建映像定义和映像版本。
+ 场景 1：如果你有托管映像，则可以从该映像创建映像定义和映像版本。
 
- 方案 2：如果你有非托管的通用化映像，可以从该映像创建托管映像，然后从该托管映像创建映像定义和映像版本。 
+ 方案2：如果有非托管映像，可以从其创建一个托管映像，然后从该映像创建映像定义和映像版本。 
 
- 方案 3：如果本地文件系统中包含 VHD，则需要上传 VHD、创建托管映像，然后可以从该映像创建映像定义和映像版本。
-- 如果 VHD 适用于 Windows VM，请参阅[上传通用化 VHD](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)。
+ 方案3：如果本地文件系统中有 VHD，则需要将 VHD 上传到托管映像，然后可以从其创建映像定义和映像版本。
+
+- 如果 VHD 是 Windows VM，请参阅[上传 vhd](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)。
 - 如果 VHD 适用于 Linux VM，请参阅[上传 VHD](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>是否可以从专用化磁盘创建映像版本？
 
-不可以，目前不支持将专用化磁盘用作映像。 如果你有专用化磁盘，需要通过将专用化磁盘附加到新 VM，[从 VHD 创建 VM](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk)。 运行 VM 后，需要遵照有关从 [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) 或 [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images) 创建托管映像的说明操作。 创建通用化托管映像后，可以启动创建共享映像说明和映像版本的过程。
+是的，支持将专用磁盘作为映像提供预览版。 只能使用门户（[Windows](../articles/virtual-machines/linux/shared-images-portal.md)或[LINUX](../articles/virtual-machines/linux/shared-images-portal.md)）和 API 从专用映像创建 VM。 预览不支持 PowerShell。
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>创建共享映像库资源后，是否可以将其移动到其他订阅中？
 
@@ -235,7 +259,7 @@ ms.locfileid: "72026160"
 
 无法跨云复制映像版本。
 
-### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>是否可以跨订阅复制映像版本？ 
+### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>是否可以跨订阅复制映像版本？
 
 不可以。但可以跨订阅中的区域复制映像版本，并通过 RBAC 在其他订阅中使用该版本。
 
@@ -262,11 +286,11 @@ ms.locfileid: "72026160"
 1. 区域副本计数：指定要在每个区域创建的副本数。 
 2. 通用副本计数：未指定区域副本计数时每个区域的默认计数。 
 
-若要指定区域副本计数，请传递位置以及要在该区域中创建的副本数：“美国中南部=2”。 
+若要指定区域副本计数，请在该区域中传递该位置以及要创建的副本数： "美国中南部 = 2"。 
 
 如果未为每个位置指定区域副本计数，则默认副本数将是指定的通用副本计数。 
 
-若要在 CLI 中指定通用副本计数，请在 `az sig image-version create` 命令中使用 **--replica-count** 参数。
+若要在 CLI 中指定通用副本计数，请在 **命令中使用**--replica-count`az sig image-version create` 参数。
 
 ### <a name="can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version"></a>能否在映像定义和映像版本不同的位置创建共享映像库？
 

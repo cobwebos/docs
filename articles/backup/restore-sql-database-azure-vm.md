@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 648c5ca1eb1cb1c0f1832654fc66d436b9318af3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 878658135bdb8844c5c86bc207db580ccd7ff63f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161911"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903602"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>还原 Azure VM 上的 SQL Server 数据库
 
@@ -27,7 +27,7 @@ Azure 备份可以还原在 Azure Vm 上运行 SQL Server 数据库，如下所�
 - 使用事务日志备份还原到特定的日期或时间（到第二个）。 Azure 备份会自动根据所选时间确定所需的完整差异备份和日志备份链。
 - 还原特定的完整备份或差异备份以还原到特定恢复点。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在还原数据库之前，请注意以下事项：
 
@@ -76,9 +76,9 @@ Azure 备份可以还原在 Azure Vm 上运行 SQL Server 数据库，如下所�
    - **备用位置**：将数据库还原到备用位置，并保留原始源数据库。
    - **覆盖数据库**：将数据还原到原始源所在的同一 SQL Server 实例。 此选项将覆盖原始数据库。
 
-           > [!IMPORTANT]
-           > If the selected database belongs to an Always On availability group, SQL Server doesn't allow the database to be overwritten. Only **Alternate Location** is available.
-           >
+    > [!IMPORTANT]
+    > 如果选定的数据库属于 Always On 可用性组，则 SQL Server 不允许覆盖数据库。 仅“备用位置”可用。
+    >
    - **还原为文件**：将可以还原的备份文件还原为数据库，而不是还原为数据库，稍后可以使用 SQL Server Management Studio 将可以恢复为数据库的备份文件还原为数据库。
      ![还原配置菜单](./media/backup-azure-sql-database/restore-configuration.png)
 

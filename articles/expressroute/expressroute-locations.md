@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 11/04/2019
+ms.date: 11/08/2019
 ms.author: cherylmc
-ms.openlocfilehash: fa152bb4cfb7ab59daababf267d3da26170119c0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0a918c4276ced878bb3cbfc4362817cd975b99d7
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838145"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901633"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -43,12 +43,12 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **地缘政治区域** | **Azure 区域** | **ExpressRoute 位置** |
 | --- | --- | --- |
 | **澳大利亚政府** |澳大利亚中部、澳大利亚中部 2 |堪培拉、堪培拉 2 |
-| **欧洲** | 法国中部、法国南部、北欧、西欧、英国西部、英国南部 |阿姆斯特丹，Amsterdam2，哥本哈根，都柏林，法兰克福，Geneva，伦敦，London2，马赛，Milan，慕尼黑，纽波特（威尔士），巴黎，Stavanger，斯德哥尔摩，苏黎世 |
+| **欧洲** | 法国中部、法国南部、北欧、西欧、英国西部、英国南部 |阿姆斯特丹，Amsterdam2，哥本哈根，都柏林，法兰克福，Geneva，伦敦，London2，马赛，Milan，慕尼黑，纽波特（威尔士），Oslo，巴黎，Stavanger，斯德哥尔摩，苏黎世 |
 | **北美** |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、丹佛、拉斯维加斯、洛杉矶、迈阿密、纽约、San Antonio、西雅图、硅谷、硅 Valley2、华盛顿特区、华盛顿 DC2、蒙特利尔、魁北克市、多伦多 |
 | **亚洲** | 东亚、东南亚 |香港特别行政区，雅加达，吉隆坡，新加坡，新加坡2，台北 |
 | **印度** | 印度西部、印度中部、印度南部 |金奈、金奈 2、孟买、孟买 2 |
 | **日本** | 日本西部、日本东部 |大坂、东京 |
-| **大洋洲** | 澳大利亚东南部、澳大利亚东部 |奥克兰，墨尔本， |
+| **大洋洲** | 澳大利亚东南部、澳大利亚东部 |奥克兰，墨尔本，Sydney2，悉尼， |
 | **韩国** | 韩国中部、韩国南部 |釜山、首尔|
 | **阿拉伯联合酋长国** | 阿拉伯联合酋长国中部，阿拉伯联合酋长国北部 | Dubai、Dubai2 |
 | **南非** | 南非西部、南非北部 |开普敦、约翰内斯堡 |
@@ -74,7 +74,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 
 ### <a name="global-commercial-azure"></a>全球商业 Azure
 
-| **服务提供商** | **Microsoft Azure** | **Office 365**  | **位置** |
+| **服务提供商** | **免费试用版** | **Office 365**  | **位置** |
 | --- | --- | --- | --- |
 | **[AARNet](https://www.aarnet.edu.au/network-and-services/connectivity-services/azure-expressroute)** |支持 |支持 |墨尔本、悉尼 |
 | **[Airtel](https://www.airtel.in/business/#/)** | 支持 | 支持 | 金奈 2、孟买 2 |
@@ -121,7 +121,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **[MTN](https://www.mtnbusiness.com/en/enterprise/Pages/microsoft-express-route.aspx)** |支持 |支持 |伦敦 |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |支持 |支持 |达拉斯，洛杉矶，迈阿密，圣保罗，华盛顿特区 |
 | **[Next Generation Data](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |支持 |支持 |Newport(Wales) |
-| **[NEXTDC](https://www.nextdc.com/services/axon-ethernet/microsoft-expressroute)** |支持 |支持 |墨尔本、珀斯、悉尼 |
+| **[NEXTDC](https://www.nextdc.com/services/axon-ethernet/microsoft-expressroute)** |支持 |支持 |墨尔本，Sydney2，悉尼， |
 | **[NTT Communications](https://www.ntt.com/en/services/network/virtual-private-network.html)** |支持 |支持 |阿姆斯特丹、香港特别行政区、伦敦、洛杉矶、大阪、新加坡、悉尼、东京、华盛顿特区 |
 | **[NTT EAST](https://flets.com/cloudgateway/crossconnect/)** |支持 |支持 |东京 |
 | **[NTT SmartConnect](https://cloud.nttsmc.com/cxc/azure.html)** |支持 |支持 |大阪 |
@@ -165,7 +165,7 @@ Azure 国内云彼此独立，并来自全局商业 Azure。 一个 Azure 云的
 
 ### <a name="us-government-cloud"></a>美国政府云
 
-| **服务提供商** | **Microsoft Azure** | **Office 365** | **位置** |
+| **服务提供商** | **免费试用版** | **Office 365** | **位置** |
 | --- | --- | --- | --- |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |支持 |支持 |芝加哥、Phoenix、华盛顿特区 |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |支持 |支持 |纽约、Phoenix、San Antonio、华盛顿特区 |
@@ -176,7 +176,7 @@ Azure 国内云彼此独立，并来自全局商业 Azure。 一个 Azure 云的
 
 ### <a name="china"></a>中国
 
-| **服务提供商** | **Microsoft Azure** | **Office 365** | **位置** |
+| **服务提供商** | **免费试用版** | **Office 365** | **位置** |
 | --- | --- | --- | --- |
 | **中国电信** |支持 |不支持 |北京、Beijing2、上海、Shanghai2 |
 | **[GDS](http://en.gds-services.com/news_detail/newsId=21.html)** |支持 |不支持 |北京 2、上海 2 |
@@ -185,7 +185,7 @@ Azure 国内云彼此独立，并来自全局商业 Azure。 一个 Azure 云的
 
 ### <a name="germany"></a>德国
 
-| **服务提供商** | **Microsoft Azure** | **Office 365** | **位置** |
+| **服务提供商** | **免费试用版** | **Office 365** | **位置** |
 | --- | --- | --- | --- |
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |支持 |不支持 |法兰克福 |
 | **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |支持 |不支持 |法兰克福 |
@@ -316,7 +316,7 @@ Azure 国内云彼此独立，并来自全局商业 Azure。 一个 Azure 云的
 * 如果连接提供商未在此处列出，请查看其是否连接到上面列出的任何 ExpressRoute Exchange 合作伙伴。
 
 ## <a name="expressroute-system-integrators"></a>ExpressRoute 系统集成商
-根据网络的规模，有时，很难启用专用连接来满足需要。 可以与下表中列出的任一系统集成商合作，以帮助你将加入 ExpressRoute。
+根据网络的规模，有时，很难启用专用连接来满足需要。 可以与下表中列出的任一系统集成商合作，以帮助将你加入 ExpressRoute。
 
 | **系统集成商** | **所在洲** |
 | --- | --- |

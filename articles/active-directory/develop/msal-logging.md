@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/05/2019
+ms.date: 10/31/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e12badd84bd929bdeb7b60ad6e99d6b3169e5022
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: e9045fd6c1f5dcc4587b6ff85d567584f02421ba
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150445"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73902904"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL 应用程序中的日志记录
 
@@ -88,7 +88,7 @@ class Program
 - `tag` 是由库传递到回调的字符串。 它与日志条目相关联，并且可用于对日志记录消息进行排序。
 - `logLevel` 使你可以确定所需的日志记录级别。 支持的日志级别为： `Error`、`Warning`、`Info`和 `Verbose`。
 - `message` 是日志条目的内容。
-- `containsPII` 指定是否记录包含个人数据或组织数据的消息。 默认情况下，此设置为 "false"，以便您的应用程序不记录个人数据。 如果 `true``containsPII`，则此方法将接收两次消息：一次：将 `containsPII` 参数设置为 `false` 并将 `message` 参数设置为 `containsPii`，第二次将 `true` 参数设置为，消息可能包含个人数据。 在某些情况下（消息不含个人数据），消息是相同的。
+- `containsPII` 指定是否记录包含个人数据或组织数据的消息。 默认情况下，此设置为 "false"，以便您的应用程序不记录个人数据。 如果 `true``containsPII`，则此方法将接收两次消息：一次：将 `containsPII` 参数设置为 `false`，并将 `message` 参数设置为 `containsPii`，第二次将 `true` 参数设置为，消息可能包含个人数据。 在某些情况下（消息不含个人数据），消息是相同的。
 
 ```java
 private StringBuilder mLogs;
@@ -117,14 +117,15 @@ Logger.getInstance().setEnablePII(true);
 Logger.getInstance().setEnablePII(false);
 ```
 
-默认情况下，将禁用日志记录到 logcat。 若要启用： 
+默认情况下，将禁用日志记录到 logcat。 若要启用：
+
 ```java
 Logger.getInstance().setEnableLogcatLog(true);
 ```
 
 ## <a name="logging-in-msaljs"></a>MSAL.js 中的日志记录
 
- 通过在用于创建 `UserAgentApplication` 实例的配置期间传递记录器对象来启用 MSAL 中的日志记录。 此记录器对象具有以下属性：
+ 通过在用于创建 `UserAgentApplication` 实例的配置期间传递记录器对象，在 MSAL （Javascript）中启用日志记录。 此记录器对象具有以下属性：
 
 - `localCallback`：开发人员可提供的回调实例，用于以自定义方式使用和发布日志。 根据所需要的重定向日志的方式，实现 localCallback 方法。
 - `level` （可选）：可配置的日志级别。 支持的日志级别为： `Error`、`Warning`、`Info`和 `Verbose`。 默认为 `Info`。
@@ -202,9 +203,9 @@ MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
 }
 ```
 
-### <a name="personal-identifiable-information-pii"></a>个人身份信息（PII）
+### <a name="personal-data"></a>个人数据
 
-默认情况下，MSAL 不会捕获或记录任何 PII。 库允许应用程序开发人员通过 MSALLogger 类中的属性来启用此功能。 启用 PII 后，应用会负责安全地处理高度敏感的数据，并遵循法规要求。
+默认情况下，MSAL 不会捕获或记录任何个人数据（PII）。 库允许应用程序开发人员通过 MSALLogger 类中的属性来启用此功能。 通过打开 `pii.Enabled`，应用程序负责安全地处理高度敏感的数据和遵守法规要求。
 
 Objective-C
 ```objc
@@ -232,13 +233,13 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 若要在使用 MSAL for iOS 和 macOS 进行记录时设置日志记录级别，请使用以下值之一：
 
-|级别  |描述 |
+|级别  |说明 |
 |---------|---------|
 | `MSALLogLevelNothing`| 禁用所有日志记录 |
 | `MSALLogLevelError` | 默认级别，仅在发生错误时输出信息 |
 | `MSALLogLevelWarning` | 列出 |
 | `MSALLogLevelInfo` |  库入口点，其中包含参数和各种密钥链操作 |
-|`MSALLogLevelVerbose`     |  API 跟踪       |
+|`MSALLogLevelVerbose`     |  API 跟踪 |
 
 例如：
 
@@ -261,3 +262,51 @@ MSAL 日志消息的消息部分的格式为 `TID = <thread_id> MSAL <sdk_ver> <
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
 提供相关 Id 和时间戳有助于跟踪问题。 时间戳和相关 ID 信息在日志消息中可用。 唯一要检索它们的位置是从 MSAL 记录消息。
+
+## <a name="logging-in-msal-for-java"></a>MSAL for Java 中的日志记录
+
+MSAL for Java （MSAL4J）允许你使用已在应用中使用的日志记录库，前提是它与 SLF4J 兼容。 MSAL4j 使用 Java （SLF4J）的[简单日志记录外观](http://www.slf4j.org/)作为各种日志记录框架（如[util](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html)、 [Logback](http://logback.qos.ch/)和[Log4j](https://logging.apache.org/log4j/2.x/)）的简单的外观或抽象。 SLF4J 允许最终用户在部署时插入所需的日志记录框架。
+
+例如，若要使用 Logback 作为应用程序中的日志记录框架，请将 Logback 依赖项添加到应用程序的 Maven pom 文件中：
+
+```xml
+<dependency>
+    <groupId>ch.qos.logback</groupId>
+    <artifactId>logback-classic</artifactId>
+    <version>1.2.3</version>
+</dependency>
+```
+
+然后添加 Logback 配置文件：
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+
+</configuration>
+```
+
+在部署时，SLF4J 会自动绑定到 Logback。 MSAL 日志将写入控制台。
+
+有关如何绑定到其他日志记录框架的说明，请参阅[SLF4J 手册](http://www.slf4j.org/manual.html)。
+
+### <a name="personal-and-organization-information"></a>个人和组织信息
+
+默认情况下，MSAL 日志记录不捕获或记录任何个人或组织数据。 在以下示例中，默认情况下，记录个人或组织数据已关闭：
+
+```java
+    PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
+            .authority(AUTHORITY)
+            .build();
+```
+
+通过在客户端应用程序生成器上设置 `logPii()` 来打开个人和组织数据日志记录。 如果你打开个人或组织数据日志记录，你的应用程序必须负责安全地处理高度敏感的数据，并遵守任何法规要求。
+
+在以下示例中，启用了日志记录个人或组织数据：
+
+```java
+PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
+        .authority(AUTHORITY)
+        .logPii(true)
+        .build();
+```

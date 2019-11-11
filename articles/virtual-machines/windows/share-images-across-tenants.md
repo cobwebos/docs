@@ -10,23 +10,24 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: cynthn
-ms.openlocfilehash: b921aabd8d71654d089c5f16aba27c286a1e91ec
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 6bf627b5456cbd878580d7b346536c98a513ca6a
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305043"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903697"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>跨 Azure 租户共享库 VM 映像
+
+共享映像库可让你使用 RBAC 共享映像。 可以使用 RBAC 在租户中共享映像，甚至可以与租户外部的个人共享映像。 有关此简单共享选项的详细信息，请参阅[共享库](/azure/virtual-machines/windows/shared-images-portal#share-the-gallery)。
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
 
 > [!IMPORTANT]
-> 不能使用门户从其他 azure 租户中的映像部署 VM。 若要从租户之间共享的映像创建 VM, 必须使用[Azure CLI](../linux/share-images-across-tenants.md)或 Powershell。
+> 不能使用门户从另一个 Azure 租户中的映像部署 VM。 若要从租户之间共享的映像创建 VM，必须使用 [Azure CLI](../linux/share-images-across-tenants.md) 或 Powershell。
 
 ## <a name="create-a-vm-using-powershell"></a>使用 PowerShell 创建 VM
-
 
 使用应用程序 ID、机密和租户 ID 登录到两个租户中。 
 

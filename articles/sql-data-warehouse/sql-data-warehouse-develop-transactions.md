@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 09fc0f7cee38f799322a1914848a5176e9a223a1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 376b7b8a734e5064713237e9250542a4c5cc18f1
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692777"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903071"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>使用 SQL 数据仓库中的事务
 有关在开发解决方案时实现 Azure SQL 数据仓库中的事务的技巧。
@@ -35,7 +35,7 @@ SQL 数据仓库实现 ACID 事务。 但是，事务支持的隔离级别受限
 * 出现平均数据分布 
 * 平均行长度为 250 个字节
 
-## <a name="gen2"></a>第 2 代
+## <a name="gen2"></a>Gen2
 
 | [DWU](sql-data-warehouse-overview-what-is.md) | 每个分布的上限 (GB) | 分布的数量 | 最大事务大小 (GB) | 每分发的行数 | 每个事务的最大行数 |
 | --- | --- | --- | --- | --- | --- |
@@ -56,7 +56,7 @@ SQL 数据仓库实现 ACID 事务。 但是，事务支持的隔离级别受限
 | DW15000c |112.5 |60 |6,750 |450,000,000 |27,000,000,000 |
 | DW30000c |225 |60 |13,500 |900,000,000 |54,000,000,000 |
 
-## <a name="gen1"></a>第 1 代
+## <a name="gen1"></a>Gen1
 
 | [DWU](sql-data-warehouse-overview-what-is.md) | 每个分布的上限 (GB) | 分布的数量 | 最大事务大小 (GB) | 每分发的行数 | 每个事务的最大行数 |
 | --- | --- | --- | --- | --- | --- |
@@ -151,8 +151,8 @@ BEGIN TRAN
 
         IF @@TRANCOUNT > 0
         BEGIN
-            PRINT 'ROLLBACK';
             ROLLBACK TRAN;
+            PRINT 'ROLLBACK';
         END
 
         SELECT  ERROR_NUMBER()    AS ErrNumber

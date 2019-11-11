@@ -8,25 +8,27 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
-ms.openlocfilehash: 28205d6db85d7a5051f283445d95dd2375e174c8
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 7f9696e9803e9ab168c59b6c5e7413a4f754a6ae
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325873"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904428"
 ---
 # <a name="configure-liveness-probes"></a>配置运行情况探测
 
-容器化应用程序可能会运行较长时间，从而导致形成可能需要通过重启容器来修复的损坏状态。 Azure 容器实例支持运行情况探测包括各种配置，以便容器能够在关键功能未正常工作时重启。
+容器化应用程序可能会长时间运行，从而导致损坏的状态，这些状态可能需要通过重新启动容器进行修复。 Azure 容器实例支持活动探测，以便在关键功能不工作时，将容器组内的容器配置为重新启动。 活动探测的行为类似于[Kubernetes 活动探测](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)。
 
 本文介绍了如何部署包括运行情况探测的容器组，演示了模拟的不正常容器的自动重启。
 
+Azure 容器实例还支持[准备情况探测](container-instances-readiness-probe.md)，你可以将其配置为确保流量仅在准备就绪时才到达容器。
+
 ## <a name="yaml-deployment"></a>YAML 部署
 
-创建包含下面的代码片段的 `liveness-probe.yaml` 文件。 此文件定义了包含最终变得不正常的 NGNIX 容器的容器组。
+运行下面的代码片段，创建 `liveness-probe.yaml` 文件。 此文件定义了包含最终变得不正常的 NGNIX 容器的容器组。
 
 ```yaml
-apiVersion: 2018-06-01
+apiVersion: 2018-10-01
 location: eastus
 name: livenesstest
 properties:
@@ -63,17 +65,17 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ### <a name="start-command"></a>启动命令
 
-该部署定义了一个当容器首先开始运行时要运行的启动命令，它由接受字符串数组的 `command` 属性定义。 在此示例中，它将通过传递以下命令启动 bash 会话并在 `/tmp` 目录中创建名为 `healthy` 的文件：
+部署定义一个启动命令，该命令将在容器第一次开始运行时运行，由 `command` 属性定义，该属性接受字符串数组。 在此示例中，它将通过传递以下命令启动 bash 会话并在 `healthy` 目录中创建名为 `/tmp` 的文件：
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"
 ```
 
- 然后，它休眠 30 秒，之后删除该文件，之后进入 10 分钟的休眠。
+ 然后，它将休眠30秒，然后再删除该文件，然后进入10分钟睡眠状态。
 
 ### <a name="liveness-command"></a>运行情况命令
 
-此部署定义了一个 `livenessProbe`，它支持充当运行情况检查的 `exec` 运行情况命令。 如果此命令以非零值退出，则容器将被终止并重启，指明找不到 `healthy` 文件。 如果此命令以退出代码 0 成功退出，则不会采取任何操作。
+此部署定义一个 `livenessProbe`，该支持作为活动检查的 `exec` 活动命令。 如果此命令以非零值退出，则容器将被终止并重启，指明找不到 `healthy` 文件。 如果此命令以退出代码 0 成功退出，则不会采取任何操作。
 
 `periodSeconds` 属性指定运行情况命令应当每 5 秒执行一次。
 
@@ -87,7 +89,7 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ![门户不正常事件][portal-unhealthy]
 
-通过在 Azure 门户中查看事件，在运行情况命令失败时将触发 `Unhealthy` 类型的事件。 后续事件将是 `Killing` 类型的，表示容器已删除，因此可以开始重启。 容器的重启计数在每次发生这种情况时将递增。
+通过在 Azure 门户中查看事件，在运行情况命令失败时将触发 `Unhealthy` 类型的事件。 后续事件将是 `Killing` 类型的，表示容器已删除，因此可以开始重启。 每次发生此事件时，容器的重启计数都会增加。
 
 重启是就地完成的，因此，诸如公用 IP 地址和节点特定的内容都将保留。
 
@@ -97,7 +99,7 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ## <a name="liveness-probes-and-restart-policies"></a>运行情况探测和重启策略
 
-重启策略会取代由运行情况探测触发的重启行为。 例如，如果设置了 `restartPolicy = Never` *和* 一个运行情况探测，则容器组在发生失败的运行情况检查时不会重启。 容器组将改为遵守容器组的重启策略 `Never`。
+重启策略会取代由运行情况探测触发的重启行为。 例如，如果您设置了一个 `restartPolicy = Never`*和*一个活动探测，则由于活动检查失败，容器组将不会重新启动。 容器组将改为遵守容器组的重启策略 `Never`。
 
 ## <a name="next-steps"></a>后续步骤
 
