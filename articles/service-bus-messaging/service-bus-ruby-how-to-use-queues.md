@@ -1,6 +1,6 @@
 ---
-title: 如何通过 Ruby 使用 Azure 服务总线队列 | Microsoft Docs
-description: 了解如何在 Azure 中使用服务总线队列。 用 Ruby 编写的代码示例。
+title: 快速入门：如何通过 Ruby 使用 Azure 服务总线队列
+description: 快速入门：了解如何在 Azure 中使用服务总线队列。 用 Ruby 编写的代码示例。
 services: service-bus-messaging
 documentationcenter: ruby
 author: axisc
@@ -11,31 +11,31 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 48f60b7c07cc16b4d9994d5644069fdcb4881e0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 09fdc58254d260b6ffeff958b6bbda50332adfac
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991883"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718770"
 ---
-# <a name="how-to-use-service-bus-queues-with-ruby"></a>如何通过 Ruby 使用服务总线队列
+# <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>快速入门：如何通过 Ruby 使用服务总线队列
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-本教程介绍如何创建 Ruby 应用程序，以便向服务总线队列发送消息以及从中接收消息。 相关示例通过 Ruby 编写并使用 Azure gem。
+本教程介绍如何创建 Ruby 应用程序，用于向/从服务总线队列发送/接收消息。 相关示例通过 Ruby 编写并使用 Azure gem。
 
-## <a name="prerequisites"></a>必备组件
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活 [MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 按照[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文中的步骤操作。
+## <a name="prerequisites"></a>先决条件
+1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或[注册免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文中的步骤。
     1. 阅读服务总线**队列**的快速**概述**。 
-    2. 创建一个服务总线**命名空间**。 
+    2. 创建服务总线**命名空间**。 
     3. 获取**连接字符串**。 
 
         > [!NOTE]
-        > 在本教程中，需使用 Ruby 在服务总线命名空间中创建一个**队列**。 
+        > 在本教程中，你将使用 Ruby 在服务总线命名空间中创建一个**队列**。 
 
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
@@ -79,7 +79,7 @@ azure_service_bus_service.send_queue_message("test-queue", message)
 
 默认行为使读取和删除变成一个两阶段操作，从而也有可能支持不允许遗漏消息的应用程序。 当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，然后将该消息返回到应用程序。 应用程序处理完该消息（或将它可靠地存储起来留待将来处理）后，通过调用 `delete_queue_message()` 方法并提供要删除的消息作为参数，完成接收过程的第二阶段。 `delete_queue_message()` 方法会将消息标记为已使用，并从队列中将其删除。
 
-如果`:peek_lock`参数设置为**false**、 读取和删除消息将是最简单的模式，并且最适合于在其中应用程序可以容忍不处理消息的出现故障时的方案。 为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线已将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
+如果 `:peek_lock` 参数设置为 **false**，读取并删除消息将是最简单的模式，并且最适合在发生故障时应用程序允许不处理消息的情况。 为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线已将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
 
 以下示例演示如何使用 `receive_queue_message()` 接收和处理消息。 该示例先通过将 `:peek_lock` 设置为“false”接收并删除一条消息，然后再接收另一条消息，最后使用 `delete_queue_message()` 删除该消息  ：
 

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 资源管理器模板创建 Azure 服务总线命名空间主题订阅 | Microsoft Docs
-description: 使用 Azure 资源管理器模板创建包含主题和订阅的服务总线命名空间
+title: 快速入门：使用 Azure 资源管理器模板创建 Azure 服务总线命名空间主题订阅
+description: 快速入门：使用 Azure 资源管理器模板创建包含主题和订阅的服务总线命名空间
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: d3d55200-5c60-4b5f-822d-59974cafff0e
 ms.service: service-bus-messaging
 ms.devlang: tbd
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: a63ad846f569f434e1cae33746f61e3a033de66c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: a43b945ce11736b16e8e11edbe988a3c48f62d51
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755034"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718780"
 ---
-# <a name="create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含主题和订阅的服务总线命名空间
+# <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建包含主题和订阅的服务总线命名空间
 
 本文介绍如何使用 Azure 资源管理器模板创建服务总线命名空间，并且该命名空间内包含主题和订阅。 本文介绍如何指定要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求
 
@@ -30,7 +30,7 @@ ms.locfileid: "66755034"
 有关完整模板，请参阅[包含主题和订阅的服务总线命名空间][Service Bus namespace with topic and subscription]模板。
 
 > [!NOTE]
-> 以下 Azure Resource Manager 模板可供下载和部署。
+> 以下 Azure 资源管理器模板可供下载和部署。
 > 
 > * [创建服务总线命名空间](service-bus-resource-manager-namespace.md)
 > * [创建包含队列的服务总线命名空间](service-bus-resource-manager-namespace-queue.md)

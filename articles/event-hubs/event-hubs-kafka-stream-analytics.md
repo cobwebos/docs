@@ -1,26 +1,26 @@
 ---
-title: 使用流分析处理 Apache Kafka 事件 - Azure 事件中心 | Microsoft Docs
-description: 本文介绍如何使用 Azure 流分析处理通过事件中心引入的 Kafka 事件
+title: 教程：使用流分析处理 Apache Kafka 事件 - Azure 事件中心
+description: 教程：本文介绍如何使用 Azure 流分析处理通过事件中心引入的 Kafka 事件
 services: event-hubs
 documentationcenter: ''
 author: spelluru
 manager: ''
 ms.service: event-hubs
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 0c4beede2508104fc9af934d3f9a2bbcce791292
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
-ms.translationtype: MT
+ms.openlocfilehash: 7801b3252ab13df1f92e7aa5e0eba071195cb76c
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626190"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720615"
 ---
-# <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件 
+# <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>教程：使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件 
 本文介绍如何将数据流式传输到启用了 Kafka 的事件中心，并使用 Azure 流分析对其进行处理。 其中包括以下步骤： 
 
 1. 创建启用了 Kafka 的事件中心命名空间。
@@ -133,7 +133,7 @@ ms.locfileid: "67626190"
 
 ### <a name="configure-job-input"></a>配置作业输入
 
-1. 在通知消息中，选择**转到资源**若要查看**Stream Analytics 作业**页。 
+1. 在通知消息中，选择“转到资源”以查看“流分析作业”页。   
 2. 选择左侧菜单上作业拓扑  部分中的“输入”  。
 3. 选择“添加流输入”  并选择“事件中心”  。 
 
@@ -144,7 +144,7 @@ ms.locfileid: "67626190"
     2. 选择 **Azure 订阅**。
     3. 选择之前创建的事件中心命名空间  。 
     4. 选择事件中心  的测试  。 
-    5. 选择**保存**。 
+    5. 选择“保存”。  
 
         ![事件中心输入配置](./media/event-hubs-kafka-stream-analytics/event-hub-input-configuration.png)
 
@@ -157,7 +157,7 @@ ms.locfileid: "67626190"
     2. 选择 **Azure 订阅**。 
     3. 选择 Azure 存储帐户  。 
     4. 输入存储流分析查询的输出数据的容器的名称  。
-    5. 选择**保存**。
+    5. 选择“保存”。 
 
         ![Blob 存储输出配置](./media/event-hubs-kafka-stream-analytics/output-blob-settings.png)
  
@@ -170,7 +170,7 @@ ms.locfileid: "67626190"
 3. 将 `[YourInputAlias]` 替换为之前创建的输入别名。 
 4. 在工具栏上选择“保存”。  
 
-    ![Query](./media/event-hubs-kafka-stream-analytics/query.png)
+    ![查询](./media/event-hubs-kafka-stream-analytics/query.png)
 
 
 ### <a name="run-the-stream-analytics-job"></a>运行流分析作业

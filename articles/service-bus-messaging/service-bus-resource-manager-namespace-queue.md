@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 资源管理器模板创建 Azure 服务总线命名空间和队列 | Microsoft Docs
-description: 使用 Azure Resource Manager 模板创建服务总线命名空间和队列
+title: 快速入门：使用 Azure 资源管理器模板创建 Azure 服务总线命名空间和队列
+description: 快速入门：使用 Azure 资源管理器模板创建服务总线命名空间和队列
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -9,35 +9,35 @@ editor: ''
 ms.assetid: a6bfb5fd-7b98-4588-8aa1-9d5f91b599b6
 ms.service: service-bus-messaging
 ms.devlang: tbd
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 1c6a4202b944b2eb95008964eb1040f176645334
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: MT
+ms.openlocfilehash: 40aeff225cfa6d499ebdfae6736e0684b2a27244
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482377"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718797"
 ---
-# <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建服务总线命名空间和队列
+# <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建服务总线命名空间和队列
 
-本文介绍如何使用创建服务总线命名空间和命名空间中队列的 Azure Resource Manager 模板。 本文介绍如何指定要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
+本文介绍如何使用创建服务总线命名空间和命名空间中队列的 Azure 资源管理器模板。 本文介绍如何指定要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
 
-有关创建模板的详细信息，请参阅 [创作 Azure Resource Manager 模板][Authoring Azure Resource Manager templates]。
+有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板][Authoring Azure Resource Manager templates]。
 
 有关完整的模板，请参阅 GitHub 上的[服务总线命名空间和队列模板][Service Bus namespace and queue template]。
 
 > [!NOTE]
-> 以下 Azure Resource Manager 模板可供下载和部署。
+> 以下 Azure 资源管理器模板可供下载和部署。
 > 
 > * [创建包含队列和授权规则的服务总线命名空间](service-bus-resource-manager-namespace-auth-rule.md)
 > * [创建包含主题和订阅的服务总线命名空间](service-bus-resource-manager-namespace-topic.md)
 > * [创建服务总线命名空间](service-bus-resource-manager-namespace.md)
 > * [创建包含主题、订阅和规则的服务总线命名空间](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> 若要检查最新模板，请访问 [Azure 快速启动模板][Azure Quickstart Templates]库并搜索“服务总线”。
+> 若要查找最新模板，请访问 [Azure 快速入门模板][Azure Quickstart Templates]库并搜索“服务总线”  。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -91,7 +91,7 @@ ms.locfileid: "73482377"
 ```
 
 ## <a name="resources-to-deploy"></a>要部署的资源
-创建“Messaging”类型的标准服务总线命名空间和队列。
+创建“Messaging”  类型的标准服务总线命名空间和队列。
 
 ```json
 {
@@ -139,9 +139,9 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下主题，其中显示了如何创建命名空间/队列的授权规则：[使用 Azure 资源管理器模板为命名空间和队列创建服务总线授权规则](service-bus-resource-manager-namespace-auth-rule.md)
+请参阅以下主题，其中介绍了如何创建命名空间/队列的授权规则：[使用 Azure 资源管理器模板为命名空间和队列创建服务总线授权规则](service-bus-resource-manager-namespace-auth-rule.md)
 
-通过查看以下文章了解如何管理这些资源：
+查看以下文章了解如何管理这些资源：
 
 * [使用 PowerShell 管理服务总线](service-bus-manage-with-ps.md)
 * [使用服务总线 Explorer 管理服务总线资源](https://github.com/paolosalvatori/ServiceBusExplorer/releases)

@@ -1,6 +1,6 @@
 ---
-title: 发送和使用.NET Framework 的 Azure 事件中心接收事件 |Microsoft Docs
-description: 本文提供了一个演练，说明如何创建将事件发送到 Azure 事件中心的 .NET Framework 应用程序。
+title: 快速入门：使用 .NET Framework 发送和接收事件 - Azure 事件中心
+description: 快速入门：本文演练如何创建可将事件发送到 Azure 事件中心的 .NET Framework 应用程序。
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,30 +11,30 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 04/15/2019
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: 96ce71a7b3076adec169f103060a167b61c42d5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 89419e9a3ef364d4095800a617a84ff2f63c09a0
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65603507"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720645"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>使用 .NET Framework 将事件发送到 Azure 事件中心或从其接收事件
+# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>快速入门：使用 .NET Framework 向/从 Azure 事件中心发送/接收事件
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
 
-本教程展示了如何在 C# 中创建 NET Framework 控制台应用程序，以便将事件发送到事件中心或从其接收事件。 
+本教程介绍如何在 C# 中创建 .NET Framework 控制台应用程序，用于向/从事件中心发送/接收事件。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要完成本教程，需要具备以下先决条件：
 
 - [Microsoft Visual Studio 2019](https://visualstudio.com)。
 - **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照以下文章中的说明获取**事件中心命名空间的连接字符串**：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 本教程后面的步骤将使用此连接字符串。
 
 ## <a name="send-events"></a>发送事件 
-本部分展示了如何创建 .NET Core 控制台应用程序来将事件发送到事件中心。 
+本部分介绍如何创建一个向事件中心发送事件的 .NET Framework 控制台应用程序。 
 
 ### <a name="create-a-console-application"></a>创建控制台应用程序
 
@@ -103,7 +103,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 5. 运行程序，并确保没有任何错误。
   
 ## <a name="receive-events"></a>接收事件
-在本部分中，你将编写一个 .NET Framework 控制台应用程序，以使用[事件处理程序主机](event-hubs-event-processor-host.md)从事件中心接收消息。 [事件处理程序主机](event-hubs-event-processor-host.md)是一个 .NET 类，它通过从事件中心管理持久检查点和并行接收来简化从那些事件中心接收事件的过程。 使用事件处理程序主机，可跨多个接收方拆分事件，即使在不同节点中托管时也是如此。 
+在本部分，你将编写一个使用[事件处理器主机](event-hubs-event-processor-host.md)从事件中心接收消息的 .NET Framework 控制台应用程序。 [事件处理程序主机](event-hubs-event-processor-host.md)是一个 .NET 类，它通过从事件中心管理持久检查点和并行接收来简化从那些事件中心接收事件的过程。 使用事件处理程序主机，可跨多个接收方拆分事件，即使在不同节点中托管时也是如此。 
 
 [!INCLUDE [event-hubs-create-storage](../../includes/event-hubs-create-storage.md)]
 
@@ -218,7 +218,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 请阅读以下文章： 
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
-- [Azure 事件中心的功能和术语](event-hubs-features.md)。
+- [Azure 事件中心的功能和术语](event-hubs-features.md)
 - [事件中心常见问题解答](event-hubs-faq.md)
 
 

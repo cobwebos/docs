@@ -1,6 +1,6 @@
 ---
-title: 使用 C 发送事件 - Azure 事件中心 | Microsoft Docs
-description: 本文提供了创建 C 应用程序的演练，该应用程序用于将事件发送到 Azure 事件中心。
+title: 快速入门：使用 C 发送事件 - Azure 事件中心
+description: 快速入门：本文提供了创建 C 应用程序的演练，该应用程序用于将事件发送到 Azure 事件中心。
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,25 +11,25 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: c
 ms.devlang: csharp
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: a8f647018ba6ed3c9e951db2054036b60c7d4ab5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 5bd4bb66b7e3c3ec37724f8684105befbc9132ff
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822465"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720675"
 ---
-# <a name="send-events-to-azure-event-hubs-using-c"></a>使用 C 将事件发送到 Azure 事件中心
+# <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>快速入门：使用 C 将事件发送到 Azure 事件中心
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
 
 本教程介绍如何使用用 C 编写的控制台应用程序将事件发送到事件中心。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 要完成本教程，需要以下各项：
 
 * C 语言开发环境。 本教程假定 gcc 堆栈在使用 Ubuntu 14.04 的 Azure Linux VM 上。
@@ -158,7 +158,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 请阅读以下文章：
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
-- [Azure 事件中心的功能和术语](event-hubs-features.md)。
+- [Azure 事件中心的功能和术语](event-hubs-features.md)
 
 
 <!-- Images. -->

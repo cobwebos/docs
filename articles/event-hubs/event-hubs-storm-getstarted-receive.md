@@ -1,6 +1,6 @@
 ---
-title: 使用 Apache Storm 接收事件 - Azure 事件中心 | Microsoft 文档
-description: 本文提供有关如何使用 Apache Storm 从 Azure 事件中心接收事件的信息。
+title: 快速入门：使用 Apache Storm 接收事件 - Azure 事件中心
+description: 快速入门：本文提供有关如何使用 Apache Storm 从 Azure 事件中心接收事件的信息。
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,29 +11,29 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: java
 ms.devlang: multiple
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: eaa461dd0c4ef6bd9ed0ae4379a710ee100929d2
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
-ms.translationtype: MT
+ms.openlocfilehash: 90293da07d3a7ef1c32e5f82d35198d4ffa536b1
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800200"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717606"
 ---
-# <a name="receive-events-from-event-hubs-using-apache-storm"></a>使用 Apache Storm 从事件中心接收事件
+# <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>快速入门：使用 Apache Storm 从事件中心接收事件
 
 [Apache Storm](https://storm.incubator.apache.org) 是一个分布式实时计算系统，它简化了对未绑定的数据流进行可靠处理的过程。 本节演示如何使用 Azure 事件中心 Storm Spout 从事件中心接收事件。 使用 Apache Storm，可以在承载于不同节点的多个进程间拆分事件。 事件中心与 Storm 集成后，通过使用风暴的 Zookeeper 安装以透明方式对事件使用进度执行检查点操作、管理持久检查点以及从事件中心并行接收，简化了事件使用。
 
 有关事件中心接收模式的详细信息，请参阅[事件中心概述][Event Hubs overview]。
 
-## <a name="prerequisites"></a>必备组件
-开始使用快速入门之前，请**创建事件中心命名空间和事件中心**。 使用[Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 
+## <a name="prerequisites"></a>先决条件
+在开始学习本快速入门之前，请**创建事件中心命名空间和事件中心**。 使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 
 
 ## <a name="create-project-and-add-code"></a>创建项目并添加代码
 
-本教程使用[HDInsight 风暴][HDInsight Storm]安装，其中包含已提供的事件中心 spout。
+本教程使用安装的 [HDInsight Storm][HDInsight Storm]，其中随附了现成可用的事件中心 Spout。
 
 1. 请按照 [HDInsight Storm - 入门](../hdinsight/storm/apache-storm-overview.md)过程创建新 HDInsight 群集，并通过远程桌面连接该群集。
 2. 将 `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` 文件复制到本地开发环境。 其中包含 events-storm-spout。
@@ -42,12 +42,12 @@ ms.locfileid: "72800200"
     ```shell
     mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
     ```
-4. 在 Eclipse 中创建一个新的 Maven 项目（依次单击“文件”、“新建”、“项目”）。
+4. 在 Eclipse 中创建一个新的 Maven 项目（依次单击“文件”、“新建”、“项目”）    。
    
     ![“文件”>“新建”>“项目”][12]
-5. 选择“使用默认工作区位置”，并单击“下一步”
-6. 选择“maven-archetype-quickstart”原型，并单击“下一步”
-7. 插入 **GroupId** 和 **ArtifactId**，并单击“完成”
+5. 选择“使用默认工作区位置”，并单击“下一步”  
+6. 选择“maven-archetype-quickstart”原型，并单击“下一步”  
+7. 插入 **GroupId** 和 **ArtifactId**，并单击“完成” 
 8. 在 **pom.xml** 中的 `<dependency>` 节点内添加以下依赖项。
 
     ```xml  
@@ -80,7 +80,7 @@ ms.locfileid: "72800200"
     </dependency>
     ```
 
-9. 在 src 文件夹中，创建一个名为 Config.properties 的文件，并复制以下内容，替换值 `receive rule key` 和 `event hub name`：
+9. 在 src  文件夹中，创建一个名为 Config.properties  的文件，并复制以下内容，替换值 `receive rule key` 和 `event hub name`：
 
     ```java
     eventhubspout.username = ReceiveRule
