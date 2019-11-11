@@ -93,7 +93,7 @@ ms.locfileid: "72377229"
 
     ![证书下载链接](common/certificatebase64.png)
 
-1. 若要根据要求修改“ **签名**”选项， 请单击“ **编辑**”按钮，打开“ ** SAML 签名证书**” 对话框。 
+1. 若要根据要求修改“ **签名**”选项， 请单击“ **编辑**”按钮，打开“  **SAML 签名证书** ” 对话框。 
 
      ![image](common/edit-certificate.png)
 

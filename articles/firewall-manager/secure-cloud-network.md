@@ -89,7 +89,7 @@ Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace M
 2. 在“连接”  下，选择“虚拟网络连接”  。
 3. 选择“添加连接”  。
 4. 对于“连接名称”  ，键入“hub-spoke”  。
-5. 对于“中心”  ，选择“Hub-01”** **。
+5. 对于“中心”  ，选择“Hub-01”  。
 6. 对于“虚拟网络”  ，选择“Spoke-01”  。
 7. 选择“确定”  。
 

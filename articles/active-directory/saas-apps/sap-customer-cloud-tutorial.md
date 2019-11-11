@@ -172,7 +172,7 @@ ms.locfileid: "72264063"
 
 1. 以安全管理员身份登录 SAP Cloud for Customer。
 
-2. 从菜单的左侧，单击“ **用户和授权**” > **** “用户管理” > “**添加用户**”。
+2. 从菜单的左侧，单击“ **用户和授权** > **“用户管理”**  > **添加用户**”。
 
     ![SAP 配置](./media/sap-customer-cloud-tutorial/configure03.png)
 
