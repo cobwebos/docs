@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: db10b91f0e407be048cc2a646c2eef905ac81c54
-  ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+  ms.openlocfilehash: 2b83d09932aaa39e31d04f30bc660541efcbb50b
+  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/31/2019
-  ms.locfileid: "73199745"
+  ms.lasthandoff: 11/09/2019
+  ms.locfileid: "73882804"
 landingContent:
 - title: 关于应用程序管理
   linkLists:
@@ -95,3 +95,15 @@ landingContent:
       url: application-proxy-integrate-with-remote-desktop-services.md
     - text: 通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问
       url: application-proxy-integrate-with-sharepoint-server.md
+- title: 通过应用交付控制器和网络保护旧版应用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 保护对旧版应用的混合访问（云和本地）
+      url: secure-hybrid-access.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 F5 Big-IP APM 保护应用
+      url: https://aka.ms/f5-hybridaccessguide
+    - text: 使用 Zscaler ZPA 保护应用
+      url: https://aka.ms/zscaler-hybridaccessguide

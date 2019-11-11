@@ -353,6 +353,10 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: 应用程序代理中的 CORS 问题
               href: application-proxy-understand-cors-issues.md
+    - name: 保护混合访问（云和本地）
+      items:
+        - name: 通过应用交付控制器和网络保护旧版应用
+          href: secure-hybrid-access.md
 - name: 引用
   items:
     - name: 应用程序预配 (SCIM)

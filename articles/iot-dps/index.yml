@@ -3,9 +3,8 @@ documentType: LandingData
 title: Azure IoT 中心设备预配服务文档
 metadata:
   title: Azure IoT 中心设备预配服务文档 - 教程和 API 参考
-  description: Azure IoT 中心设备预配服务概述
+  description: Azure IoT 中心设备预配服务 - 教程、快速入门、操作指南和 API 参考
   author: nberdy
-  manager: briz
   ms.service: iot-dps
   services: iot-dps
   ms.topic: landing-page
