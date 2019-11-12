@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 4ac6ac52d6d950d814a37e94ea2801c2ba8e4170
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 45a27be400753b56c42310a340334feba8a420c5
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521211"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906855"
 ---
 # <a name="working-with-security-policies"></a>使用安全策略
 
@@ -104,6 +104,10 @@ Azure 安全中心根据所选的策略，进行安全建议。 安全中心策�
 
    > [!NOTE]
    > 请记住，管理组将其策略应用于其订阅。 因此，如果禁用订阅的策略，并且订阅属于仍使用相同策略的管理组，则你将继续收到策略建议。 仍将从管理级别应用该策略，且仍将生成建议。
+
+1. 单击 "**查看有效策略**"。
+
+   ![禁用策略](./media/tutorial-security-policy/view-effective-policy.png)
 
 1. 单击分配的策略。
 

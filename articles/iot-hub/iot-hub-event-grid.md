@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 7d5a232d92c37a94ff427a3bf203f6f20764060e
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a2bb961989d5bb1cc879b197e45d25b566c56e83
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748578"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906778"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>通过使用事件网格触发操作来响应 IoT 中心事件
 
@@ -25,7 +25,7 @@ ms.locfileid: "73748578"
 
 ## <a name="regional-availability"></a>区域可用性
 
-事件网格集成适用于支持事件网格的区域中的 IoT 中心。 除设备遥测事件外的所有设备事件均已公开发布。 设备遥测事件处于公共预览阶段，在美国东部、美国西部、西欧、 [Azure 政府](/azure/azure-government/documentation-government-welcome)版、 [Azure 中国世纪互联](/azure/china)和[azure 德国](https://azure.microsoft.com/global-infrastructure/germany/)以外的所有区域提供。 有关区域的最新列表，请参阅 [Azure 事件网格简介](../event-grid/overview.md)。
+事件网格集成适用于支持事件网格的区域中的 IoT 中心。 有关区域的最新列表，请参阅 [Azure 事件网格简介](../event-grid/overview.md)。
 
 ## <a name="event-types"></a>事件类型
 

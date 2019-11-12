@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/11/2019
 ms.author: memildin
-ms.openlocfilehash: 93e52b393db288f5b19afde4a31e08d0bb91b471
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 068fb9f61b7dcb3948e4f03c284ddfa680522c85
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571561"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907044"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Azure 虚拟机上 SQL server 的高级数据安全性（预览版）
 Azure 虚拟机上的 SQL Server 高级数据安全是适用于高级 SQL 安全功能的统一包。 此预览功能包含用于识别和缓解潜在的数据库漏洞并检测可能指示数据库威胁的异常活动的功能。 
@@ -54,7 +54,7 @@ Azure 虚拟机上的 SQL Server 高级数据安全是适用于高级 SQL 安全
     将在连接到所选工作区的所有 SQL Server 或所选订阅的默认工作区中启用 SQL Server 高级数据安全。
 
     >[!NOTE]
-    > 该解决方案将在首次重新启动 SQL Server 之后处于活动状态。 
+    > 在首次重新启动 SQL Server 后，解决方案将处于完全活动状态。 
 
 若要创建新的工作区，请按照[创建 Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)中的说明进行操作。
 
@@ -72,7 +72,7 @@ Azure 虚拟机上的 SQL Server 高级数据安全是适用于高级 SQL 安全
 1. 从 "设置" 菜单中单击 "**电子邮件通知**"。 
 1. 在 "**电子邮件地址**" 文本框中，输入接收通知的电子邮件地址。 您可以输入多个电子邮件地址，方法是使用逗号（，）分隔电子邮件地址。  例如 admin1@mycompany.comadmin2@mycompany.com，admin3@mycompany.com
 
-      ![电子邮件设置](./media/security-center-advanced-iaas-data/email-settings.png)
+    ![电子邮件设置](./media/security-center-advanced-iaas-data/email-settings.png)
 
 1. 在**电子邮件通知**设置中，设置以下选项：
   
@@ -88,29 +88,27 @@ Azure 虚拟机上的 SQL Server 高级数据安全是适用于高级 SQL 安全
 
 漏洞评估仪表板概述了你的所有数据库中的评估结果。 您可以根据 SQL Server 版本来查看数据库的分布情况，还可以查看失败与传递数据库的摘要，以及根据风险分布的失败检查的总体摘要。
 
-你可以直接从 Log Analytics 查看漏洞评估结果和报告。
+你可以直接从安全中心查看漏洞评估结果。
 
-1. 通过高级数据安全解决方案导航到 Log Analytics 工作区。
-1. 导航到 "**解决方案**"，然后选择 " **SQL 漏洞评估**解决方案"。
-1. 在**摘要**窗格中，单击 "**查看摘要**"，然后选择你的**SQL 漏洞评估报告**。
+1. 在安全中心边栏下的 "资源安全" 下，选择 "**数据 & 存储**"。
 
-    ![SQL 评估报表](./media/security-center-advanced-iaas-data/ads-sql-server-1.png)
+1. 选择**应修正 vm 中的 SQL 数据库的建议漏洞（预览）** 。 有关详细信息，请参阅[安全中心建议](security-center-recommendations.md)。 
 
-    报表仪表板将加载。 请确保时间范围至少设置为**最后7天**，因为漏洞评估扫描按固定计划每7天运行一次。
+    [应修正 Vm 中 SQL 数据库的 ![* * 漏洞（预览版） * * 建议](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
 
-    ![设置过去7天](./media/security-center-advanced-iaas-data/ads-sql-server-2.png)
+    此建议的详细视图随即出现。
 
-1. 若要深入了解更多详细信息，请单击任何仪表板元素。 例如：
+    [应修正 Vm 中 SQL 数据库的 * * 漏洞 ![详细视图（预览版） * * 建议](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
 
-   1. 单击 "**失败的检查摘要**" 部分中的漏洞检查，查看 Log Analytics 表，其中包含跨所有数据库进行此检查的结果。 首先列出具有结果的。
+1. 若要深入了解更多详细信息：
 
-   1. 然后，单击以查看每个漏洞的详细信息，包括漏洞说明和影响、状态、相关的风险，以及此数据库的实际结果。 你还可以查看用于执行此检查的实际查询，以及用于解决此漏洞的补救信息。
+    * 有关扫描的资源（数据库）和已测试的安全检查列表的概述，请单击相关服务器。
+    [![按 SQL server 分组的漏洞](media/security-center-advanced-iaas-data/single-server-view.png)](media/security-center-advanced-iaas-data/single-server-view.png#lightbox)
 
-    ![选择工作区](./media/security-center-advanced-iaas-data/ads-sql-server-3.png)
+    * 有关按特定 SQL 数据库分组的漏洞的概述，请单击相关数据库。
+    [![按 SQL server 分组的漏洞](media/security-center-advanced-iaas-data/single-database-view.png)](media/security-center-advanced-iaas-data/single-database-view.png#lightbox)
 
-    ![选择工作区](./media/security-center-advanced-iaas-data/ads-sql-server-4.png)
-
-1. 你可以对漏洞评估结果数据运行任何 Log Analytics 查询，以根据你的需要对数据进行切片和切切。
+    在每个视图中，安全检查按**严重性**排序。 单击特定安全检查可查看详细信息窗格，其中包含**说明**、**纠正**方法和其他相关信息（如**影响**或**基准**）。
 
 ## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>针对 Azure Vm 上的 SQL server 的高级威胁防护警报
 警报由异常和可能有害的访问或利用 SQL Server 的尝试生成。 这些事件可以触发以下警报：

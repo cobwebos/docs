@@ -1,6 +1,6 @@
 ---
 title: Azure 安全中心中的数据服务威胁检测 |Microsoft Docs
-description: 本主题介绍 Azure 安全中心提供的数据服务警报。
+description: 本文介绍 Azure 安全中心提供的数据服务警报。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -10,16 +10,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: memildin
-ms.openlocfilehash: c69352b8ff11edfce8bd800a0d3aad4584557572
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: d23d9d2712923f37b3ab9da5ae5369342cd82f5d
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621340"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906990"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Azure 安全中心中的数据服务威胁检测
 
- Azure 安全中心将分析数据存储服务的日志，并在检测到对数据资源的威胁时触发警报。 本主题列出了安全中心为以下服务生成的警报：
+ Azure 安全中心将分析数据存储服务的日志，并在检测到对数据资源的威胁时触发警报。 本文列出了安全中心为以下服务生成的警报：
 
 * [Azure SQL 数据库和 Azure SQL 数据仓库](#data-sql)
 * [Azure 存储](#azure-storage)
@@ -53,7 +53,7 @@ SQL 威胁检测可标识异常活动，指示对访问或利用数据库的异�
 
 |警报|说明|
 |---|---|
-|**异常位置访问异常**|采样的网络流量分析检测到异常传出远程桌面协议（RDP）通信，源自部署中的资源。 此环境的此活动被视为不正常。 这可能表示资源已遭到破坏，现在可用于对外部 RDP 终结点进行暴力攻击。 这种类型的活动可能会导致你的 IP 被外部实体标记为恶意。|
+|**从异常位置访问**|指示访问模式对 Azure 存储帐户进行了更改。 与最近的活动进行比较时，有人从一个 IP 地址访问此帐户，该地址被视为不熟悉。 攻击者已获得帐户的访问权限，或者合法用户已从新的或异常的地理位置进行连接。 后者的一个示例是从新的应用程序或开发人员进行远程维护。|
 |**应用程序访问异常**|指示异常应用程序已访问此存储帐户。 可能的原因是攻击者通过使用新的应用程序访问了你的存储帐户。|
 |**匿名访问异常**|指示存储帐户的访问模式发生更改。 例如，帐户已被匿名访问（无需任何身份验证），这与此帐户上的最新访问模式有意外的对比。 可能的原因是攻击者利用了对保存 blob 存储的容器的公共读取访问权限。|
 |**Tor 异常**|指示已从称为 Tor 的活动退出节点的 IP 地址（匿名代理）成功访问此帐户。 此警报的严重性考虑使用的身份验证类型（如果有），以及这是否是此类访问的第一种情况。 可能的原因可能是已使用 Tor 访问了你的存储帐户的攻击者，或者是通过使用 Tor 访问了你的存储帐户的合法用户。|

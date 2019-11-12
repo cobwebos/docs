@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: vinigam
-ms.openlocfilehash: 831e75ba2d3f6af62496d437da3d1413dc612594
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 91fb4551f4651f44a1f7358951c5d4cc0ff70644
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686556"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907155"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -71,7 +71,7 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
 * 美国西部
 * 美国西部 2
 * 法国中部
-* 欧洲西部
+* 西欧
 * 北欧
 * 巴西南部
 * 英国西部
@@ -95,13 +95,17 @@ Log Analytics 工作区必须存在于以下区域中：
 * 美国中西部
 * 美国东部
 * 美国东部 2
+* 美国中北部
 * 美国中南部
+* 美国中部
 * 美国西部
 * 美国西部 2
 * 美国中部
 * 法国中部
+* 西欧
 * 北欧
-* 欧洲西部
+* 巴西南部
+* 英国西部
 * 英国南部
 * 澳大利亚东部
 * 澳大利亚东南部
@@ -198,7 +202,7 @@ New-AzStorageAccount `
 
 针对想要为其启用流量分析的其他任何 NSG 重复前面的步骤。 流日志中的数据将发送到工作区，因此，请确保所在国家/地区的当地法律和法规允许将数据存储在工作区所在的区域。 如果为不同的 NSG 设置了不同的处理时间间隔，则将以不同的时间间隔收集数据。 例如：对于关键 Vnet，可以选择启用10分钟的处理间隔，为非关键 Vnet 启用1小时。
 
-还可以使用 Azure PowerShell 中的 [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 配置流量分析。 运行 `Get-Module -ListAvailable Az` 来查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
+还可以使用 Azure PowerShell 中的 [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 配置流量分析。 运行 `Get-Module -ListAvailable Az` 来查找已安装的版本。 如果需要进行升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
 
 ## <a name="view-traffic-analytics"></a>查看流量分析
 

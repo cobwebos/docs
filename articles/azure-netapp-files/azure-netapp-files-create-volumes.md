@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2019
+ms.date: 11/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 1a479b4928631f27d5453d462a59fe7fed09a88c
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 1f312e8a5034d238e4802e9323bc1b5ac5cdae21
+ms.sourcegitcommit: f226cdd6406372b5693d46b6d04900f2f0cda4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302759"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906234"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 NFS 卷
 
@@ -34,16 +34,16 @@ Azure NetApp 文件支持 NFS （NFSv3 和 NFSv 4.1）和 SMBv3 卷。 卷的容
 ## <a name="considerations"></a>注意事项 
 
 > [!IMPORTANT] 
-> 对 NFSv 4.1 功能的访问需要允许列表。  若要请求允许列表，请将请求提交到 <anffeedback@microsoft.com>。 
+> 访问 NFSv4.1 功能需要加入允许列表。  若要请求加入允许列表，请将请求提交到 <anffeedback@microsoft.com>。 
 
 * 确定要使用的 NFS 版本  
   NFSv3 可以处理各种用例，通常部署在大多数企业应用程序中。 你应验证应用程序所需的版本（NFSv3 或 NFSv 4.1），并使用适当的版本创建你的卷。 例如，如果使用[Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave)，则建议通过 NFSv3 使用 nfsv 4.1 进行文件锁定。 
 
-* 安全性  
+* “安全”  
   支持 UNIX 模式位（读取、写入和执行），适用于 NFSv3 和 NFSv 4.1。 NFS 客户端上需要根级别的访问权限才能装载 NFS 卷。
 
 * NFSv 4.1 的本地用户/组和 LDAP 支持  
-  目前，NFSv 4.1 仅支持对卷进行根访问。 
+  目前，NFSv 4.1 仅支持对卷进行根访问。 请参阅[为 Azure NetApp 文件配置 nfsv 4.1 默认域](azure-netapp-files-configure-nfsv41-domain.md)。 
 
 ## <a name="best-practice"></a>最佳做法
 
@@ -93,15 +93,15 @@ Azure NetApp 文件支持 NFS （NFSv3 和 NFSv 4.1）和 SMBv3 卷。 卷的容
     
         ![创建子网](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-4. 单击 "**协议**"，然后完成以下操作：  
-    * 选择 " **NFS** " 作为卷的协议类型。   
+4. 单击“协议”，然后完成以下操作：  
+    * 选择“NFS”作为卷的协议类型。   
     * 指定将用于创建新卷的导出路径的**文件路径**。 导出路径用来装载并访问卷。
 
         文件路径名只能包含字母、数字和连字符 ("-")。 它的长度必须介于 16 到 40 个字符之间。 
 
         文件路径在每个订阅和每个区域中必须是唯一的。 
 
-    * 选择该卷的 NFS 版本（**NFSv3**或**nfsv 4.1**）。  
+    * 选择卷的 NFS 版本（**NFSv3** 或 **NFSv4.1**）。  
     * （可选）[配置 NFS 卷的导出策略](azure-netapp-files-configure-export-policy.md)。
 
     ![指定 NFS 协议](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)
@@ -115,6 +115,7 @@ Azure NetApp 文件支持 NFS （NFSv3 和 NFSv 4.1）和 SMBv3 卷。 卷的容
 
 ## <a name="next-steps"></a>后续步骤  
 
+* [为 Azure NetApp 文件配置 NFSv 4.1 默认域](azure-netapp-files-configure-nfsv41-domain.md)
 * [为 Windows 或 Linux 虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [为 NFS 卷配置导出策略](azure-netapp-files-configure-export-policy.md)
 * [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md)

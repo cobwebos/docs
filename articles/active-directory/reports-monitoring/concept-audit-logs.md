@@ -17,23 +17,23 @@ ms.date: 07/17/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2b30b6463ed3d58ec1565f3c49f98388ad09ed4
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: a43c5849dcd037915a46de182064b3e630a663ec
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186291"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907185"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“审核活动”报告 
 
-通过 Azure Active Directory (Azure AD) 报表, 您可以获取确定环境的工作方式所需的信息。
+通过 Azure Active Directory (Azure AD) 报告，可以获取确定环境运行状况所需的信息。
 
 报告体系结构包括以下组件：
 
 - **活动** 
     - **登录** - [登录报告](concept-sign-ins.md)提供有关托管应用程序的使用情况和用户登录活动的信息。
     - **审核日志** - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中的任何资源（例如添加或删除用户、应用、组、角色和策略）所做的更改。
-- **安全性** 
+- 安全性 
     - **风险登录** - [风险登录](concept-risky-sign-ins.md)是指可能由非用户帐户合法拥有者进行的登录尝试。 
     - **已标记为存在风险的用户** - [风险用户](concept-user-at-risk.md)是指可能已泄露的用户帐户。
 
@@ -41,8 +41,8 @@ ms.locfileid: "70186291"
  
 ## <a name="who-can-access-the-data"></a>谁可以访问该数据？
 
-* **安全管理员**、**安全读者**、**报表读者**或**全局管理员**角色中的用户
-* 此外，所有用户（非管理员）都可以都查看其自己的审核活动
+* 具有**安全管理员**、**安全读取者**、**报表读取者**或**全局管理员**角色的用户
+* 此外，所有用户（非管理员）都可以查看他们自己的登录活动
 
 ## <a name="audit-logs"></a>审核日志
 
@@ -80,7 +80,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 - 服务
 - 类别
-- activities
+- 活动
 - 状态
 - 目标
 - 发起者（参与者/执行组件）
@@ -88,9 +88,9 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 ![审核日志](./media/concept-audit-logs/filter.png "审核日志")
 
-使用**服务**筛选器可以从以下服务的下拉列表中进行选择:
+使用“服务”筛选器可以从以下服务的下拉列表中进行选择：
 
-- 全部
+- All
 - 访问评审
 - 帐户预配 
 - 应用程序 SSO
@@ -99,7 +99,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 - 条件访问
 - 核心目录
 - 权利管理
-- Identity Protection
+- 标识保护
 - 受邀用户
 - PIM
 - 自助服务组管理
@@ -108,11 +108,11 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 “类别”筛选器用于选择下述筛选器之一：
 
-- 全部
+- All
 - AdministrativeUnit
 - ApplicationManagement
 - 身份验证
-- Authorization
+- 授权
 - 联系人
 - 设备
 - DeviceConfiguration
@@ -127,12 +127,12 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 “活动”筛选器基于类别以及所做的活动资源类型选择。 可以选择要查看的特定活动，也可以全选。 
 
-您可以使用图形 API 获取所有审核活动的列表:`https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
+可以使用图形 API 获取所有审核活动的列表：`https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
 
 可以使用“状态”筛选器根据审核操作的状态进行筛选。 状态可以是下列其中一项：
 
-- 全部
-- Success
+- All
+- 成功
 - 失败
 
 可以通过“目标”筛选器按名称或用户主体名称 (UPN) 搜索特定目标。 目标名称和 UPN 区分大小写。 
@@ -145,11 +145,11 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 - 1 个月
 - 7 天
 - 24 小时
-- 自定义
+- “自定义”
 
 选择自定义时间范围时，可以配置开始时间和结束时间。
 
-通过选择 "**下载**" 按钮, 还可以选择下载筛选的数据, 最多250000条记录。 可以采用 CSV 或 JSON 格式下载日志。 可以下载的记录数受 [Azure Active Directory 报告保留策略](reference-reports-data-retention.md)的限制。
+也可选择下载筛选的数据（多达 250,000 条记录），只需选择“下载”按钮即可。 可以下载 CSV 或 JSON 格式的日志。 可以下载的记录数受 [Azure Active Directory 报告保留策略](reference-reports-data-retention.md)的限制。
 
 ![审核日志](./media/concept-audit-logs/download.png "审核日志")
 
@@ -180,11 +180,11 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 - 向组或用户分配了哪些许可证？
 
-如果只想查看与用户相关的审核数据, 则可以在 "**用户**" 选项卡的 "**活动**" 部分中的 "**审核日志**" 下找到筛选视图。此入口点已将 **UserManagement** 作为预先选择的类别。
+如果只想查看与用户相关的审核数据，则可以在 "**用户**" 选项卡的 "**活动**" 部分中的 "**审核日志**" 下找到筛选视图。此入口点已将**UserManagement**作为预先选择的类别。
 
 ![审核日志](./media/concept-audit-logs/users.png "审核日志")
 
-如果只想查看与组相关的审核数据, 则可以在 "**组**" 选项卡的 "**活动**" 部分中的 "**审核日志**" 下找到筛选视图。此入口点已将 **GroupManagement** 作为预先选择的类别。
+如果只想查看与组相关的审核数据，则可以在 "**组**" 选项卡的 "**活动**" 部分中的 "**审核日志**" 下找到筛选视图。此入口点已将**GroupManagement**作为预先选择的类别。
 
 ![审核日志](./media/concept-audit-logs/groups.png "审核日志")
 
@@ -206,7 +206,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 可以从 [Microsoft 365 管理中心](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)查看 Office 365 活动日志。 尽管 Office 365 活动和 Azure AD 活动日志共享大量的目录资源，但只有 Microsoft 365 管理中心提供 Office 365 活动日志的完整视图。 
 
-你还可以使用[office 365 管理 api](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)以编程方式访问 office 365 活动日志。
+还可以使用 [Office 365 管理 API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) 以编程方式访问 Office 365 活动日志。
 
 ## <a name="next-steps"></a>后续步骤
 
