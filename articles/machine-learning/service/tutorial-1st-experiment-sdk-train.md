@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: b5b3ca127aba62b39bd7236412d4c6a542347db3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 11eaafec750b2ca35933b431866def51c25e8961
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476171"
+ms.locfileid: "73582479"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>教程：训练第一个 ML 模型
 
@@ -197,7 +197,7 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 如果打算运行其他 Azure 机器学习教程，请不要完成本部分。
 
-### <a name="stop-the-compute-instance"></a>停止计算实例
+### <a name="stop-the-notebook-vm"></a>停止笔记本 VM
 
 [!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 

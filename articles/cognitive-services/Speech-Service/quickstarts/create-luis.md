@@ -1,21 +1,21 @@
 ---
 title: 快速入门：创建 LUIS 密钥
 titleSuffix: Azure Cognitive Services
-description: 本教程介绍如何快速创建 LUIS 应用程序。
+description: 本快速入门介绍如何创建 LUIS 应用程序和获取密钥。
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 11/04/2019
 ms.author: wolfma
-ms.openlocfilehash: 95becb2574a45536610aef87f8045b3dad5a5003
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ee2b25958feac2387779d9e60734a6600b60a2e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506217"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682072"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>快速入门：获取 LUIS 终结点密钥
 
@@ -54,7 +54,7 @@ LUIS 使用三种密钥：
    * 在“订阅名称”下，选择包含所要使用的 LUIS 资源的 Azure 订阅。 
    * 在“密钥”下，选择要在应用中使用的 LUIS 资源。 
 
-   片刻之后，新订阅将显示在页面底部的表格中。 
+   片刻之后，新订阅将显示在页面底部的表格中。
 
 1. 选择密钥旁边的图标将其复制到剪贴板。 （可以使用其中的任一密钥。）
 

@@ -4,15 +4,15 @@ description: 本文概述了应用程序网关上的 Web 应用程序防火墙 (
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/16/2019
+ms.date: 11/05/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 3cc0af122143d2ee702f1f16ee26c010befa1155
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6d073648dc908cbbe40962f7ba079abcfe85ce45
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495587"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607320"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure 应用程序网关上的 Azure Web 应用程序防火墙
 
@@ -20,10 +20,10 @@ Azure 应用程序网关提供的 Azure Web 应用程序防火墙 (WAF) 可以�
 
 应用程序网关上的 WAF 基于开放 Web 应用程序安全项目 (OWASP) 中的[核心规则集 (CRS)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.1、3.0 或 2.2.9。 WAF 会自动更新以包含针对新漏洞的保护，而无需其他配置。 
 
-下面列出了 WAF 策略中存在的所有 WAF 功能。 你可以根据需要创建任意多个策略，并可以将它们与应用程序网关或应用程序网关上的单个侦听器或基于路径的路由规则相关联。 这样，如果需要，你可以为应用程序网关后面的每个站点提供单独的策略。 有关 WAF 策略的详细信息，请参阅[创建 WAF 策略](create-waf-policy-ag.md)。
+下面列出了 WAF 策略中存在的所有 WAF 功能。 可以创建多个策略，并可将它们与应用程序网关或应用程序网关上的单个侦听器或基于路径的路由规则相关联。 这样，如果需要，你可以为应用程序网关后面的每个站点提供单独的策略。 有关 WAF 策略的详细信息，请参阅[创建 WAF 策略](create-waf-policy-ag.md)。
 
    > [!NOTE]
-   > 每个站点和每个 URI 的 WAF 策略均为公共预览版。 这意味着此功能受 Microsoft 补充使用条款的约束。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/)。
+   > 每个站点和每个 URI 的 WAF 策略均为公共预览版。 这意味着此功能受 Microsoft 补充使用条款的约束。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ![应用程序网关 WAF 关系图](../media/ag-overview/waf1.png)
 
@@ -39,9 +39,11 @@ Azure 应用程序网关提供的 Azure Web 应用程序防火墙 (WAF) 可以�
 
 * 无需修改后端代码即可保护 Web 应用程序免受 Web 漏洞和攻击的威胁。
 
-* 同时保护多个 Web 应用程序。 应用程序网关的实例最多可以托管 100 个受 Web 应用程序防火墙保护的网站。
+* 同时保护多个 Web 应用程序。 应用程序网关的实例最多可以托管 40 个受 Web 应用程序防火墙保护的网站。
 
-* 利用 IP 信誉规则集保护 Web 应用程序免受恶意机器人的攻击
+* 为同一 WAF 后面的不同站点创建自定义 WAF 策略 
+
+* 利用 IP 信誉规则集保护 Web 应用程序免受恶意机器人的攻击（预览版）
 
 ### <a name="monitoring"></a>监视
 
@@ -51,9 +53,11 @@ Azure 应用程序网关提供的 Azure Web 应用程序防火墙 (WAF) 可以�
 
 ### <a name="customization"></a>自定义
 
-* 可根据应用程序的要求自定义 WAF 规则和规则组，并消除误报。
+* 根据应用程序的要求自定义 WAF 规则和规则组，并消除误报。
 
-* 你可以为 WAF 后面的每个站点关联 WAF 策略，以允许进行特定于站点的配置
+* 为 WAF 后面的每个站点关联 WAF 策略，以允许进行特定于站点的配置
+
+* 根据应用程序的需求创建自定义规则
 
 ## <a name="features"></a>功能
 
@@ -62,10 +66,13 @@ Azure 应用程序网关提供的 Azure Web 应用程序防火墙 (WAF) 可以�
 - 其他常见 Web 攻击防护，例如命令注入、HTTP 请求走私、HTTP 响应拆分和远程文件包含。
 - 防止 HTTP 协议违反行为。
 - 防止 HTTP 协议异常行为（例如缺少主机用户代理和接受标头）。
-- 防止机器人、爬网程序和扫描程序。
+- 防范爬网程序和扫描程序。
 - 检测常见应用程序错误配置（例如 Apache 和 IIS 等）。
 - 具有下限和上限的可配置请求大小限制。
 - 排除列表允许你忽略 WAF 评估中的某些请求属性。 常见示例是 Active Directory 插入的令牌，这些令牌用于身份验证或密码字段。
+- 根据应用程序的具体需求创建自定义规则。
+- 按地理位置筛选流量，以允许或阻止从特定的国家/地区访问你的应用程序。 （预览版）
+- 使用机器人缓解规则集防范应用程序遭到机器人攻击。 （预览版）
 
 ## <a name="waf-policy"></a>WAF 策略
 
@@ -138,6 +145,15 @@ OWASP 有两种模式，用于决定是否阻止流量：传统模式和异常�
 
 ![安全中心概述窗口](../media/ag-overview/figure1.png)
 
+#### <a name="azure-sentinel"></a>Azure Sentinel
+
+Microsoft Azure Sentinel 是可缩放的云原生安全信息事件管理 (SIEM) 和安全业务流程自动响应 (SOAR) 解决方案。 Azure Sentinel 在整个企业范围内提供智能安全分析和威胁智能，为警报检测、威胁可见性、主动搜寻和威胁响应提供单一解决方案。
+
+使用内置的 Azure WAF 防火墙事件工作簿可以大致了解 WAF 中的安全事件。 这包括事件、匹配和阻止的规则，以及在防火墙日志中记录的其他所有内容。 参阅下面有关日志记录的详细信息。 
+
+
+![Sentinel](../media/ag-overview/sentinel.png)
+
 #### <a name="logging"></a>日志记录
 
 应用程序网关 WAF 提供有关检测到的每个威胁的详细报告。 日志记录已与 Azure 诊断日志集成。 警报以 json 格式记录。 这些日志可与 [Azure Monitor 日志](../../azure-monitor/insights/azure-networking-analytics.md)集成。
@@ -186,4 +202,8 @@ WAF_v1 和 WAF_v2 SKU 的定价模型不同。 有关详细信息，请参阅[�
 
 ## <a name="next-steps"></a>后续步骤
 
+- 从[创建 WAF 策略](create-waf-policy-ag.md)开始
+- 详细了解 [WAF 托管规则](application-gateway-crs-rulegroups-rules.md)
+- 详细了解[自定义规则](custom-waf-rules-overview.md)
 - 了解 [Azure Front Door 上的 Web 应用程序防火墙](../afds/afds-overview.md)
+

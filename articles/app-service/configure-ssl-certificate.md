@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 683ea55bdc9eb878f7bcbe832d5364d50a6b23e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 12b8d6dff571c074d1f1422f75e33a8b12761bd9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73509001"
+ms.locfileid: "73572155"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 SSL 证书
 
@@ -65,6 +65,7 @@ ms.locfileid: "73509001"
 
 免费应用服务托管证书是用于保护应用服务中的自定义 DNS 名称的统包解决方案。 它是一个功能完备的 SSL 证书，由应用服务管理并自动续订。 免费证书具有以下限制：
 
+- 不支持通配符证书。
 - 不支持裸域。
 - 不可导出。
 
@@ -281,7 +282,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 ![将公用证书上传到应用服务中](./media/configure-ssl-certificate/upload-public-cert.png)
 
-上传证书后，复制证书指纹并检查是否[使证书可访问](configure-ssl-certificate-in-code.md#load-the-certificate)。
+上传证书后，复制证书指纹并检查是否[使证书可访问](configure-ssl-certificate-in-code.md#make-the-certificate-accessible)。
 
 ## <a name="manage-app-service-certificates"></a>管理应用服务证书
 

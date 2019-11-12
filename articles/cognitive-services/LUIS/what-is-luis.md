@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 10/23/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: c24b62ac729a0c52efb78f612c53c8844cf23b12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ee22a2a8a12eb85439e191bc21e6cf391bea3f8
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500017"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612850"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 
@@ -114,7 +114,7 @@ LUIS 的顶级客户端应用程序是：
 * [LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen)：LUISGen 是一个用于从导出的 LUIS 模型生成强类型 C# 和 typescript 源代码的工具。
 * 启用[调度](https://aka.ms/dispatch-tool)时，可以使用调度程序模型通过父应用使用多个 LUIS 和 QnA Maker 应用。
 * [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown)：LUDown 是一个命令行工具，可帮助你管理机器人的语言模型。
-* [机器人框架 - 编辑器](https://github.com/microsoft/BotFramework-Composer)
+* [Bot Framework - Composer](https://github.com/microsoft/BotFramework-Composer) - 一个集成开发工具，供开发人员和多学科团队通过 Microsoft Bot Framework 构建机器人和聊天体验
 
 与 LUIS 配合使用的其他认知服务：
 * [QnA Maker][qnamaker] 可将多种类型的文本组合到一个问题答案知识库中。

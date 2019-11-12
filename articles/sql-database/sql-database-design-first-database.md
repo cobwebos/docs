@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 SSMS 在 Azure SQL 数据库中设计第一个关系数据库 | Microsoft Docs
+title: 教程：使用 SSMS 设计第一个关系数据库
 description: 了解如何使用 SQL Server Management Studio 在 Azure SQL 数据库的单一数据库中设计第一个关系数据库。
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: 18e7e75b259475b9e360dc3441ed83ccb577e557
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 97e603e6daa64bb70edefe06b52a7c45f90787f3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492036"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818304"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>教程：使用 SSMS 在 Azure SQL 数据库的单一数据库中设计关系数据库
 

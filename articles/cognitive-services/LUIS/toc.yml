@@ -39,12 +39,15 @@
           href: get-started-get-model-rest-apis.md
 - name: 教程
   items:
+    - name: 生成可分解的应用
+      items:
+        - name: 1. 确定用户意图
+          href: tutorial-intents-only.md
+        - name: 2. 提取用户数据
+          href: tutorial-machine-learned-entity.md
+          displayName: 'n-depth, constraint, descriptor, phrase list, entity'
     - name: 构建应用
       items:
-        - name: 确定用户意图
-          href: tutorial-intents-only.md
-        - name: 使用预生成的模型标识常见用户数据
-          href: luis-tutorial-prebuilt-intents-entities.md
         - name: 从用户话语获取情绪
           href: luis-quickstart-intent-and-sentiment-analysis.md
         - name: 通过正则表达式获取具有严格格式的数据

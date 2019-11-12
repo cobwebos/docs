@@ -9,52 +9,50 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 69fba508eac4b778dcd72371fd1471625ecb8c1a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b5fa1557999ae851bccafbf8ee7c41f0b3614614
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73509591"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715914"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>教程：使用设计器部署机器学习模型（预览版）
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-为使其他人可以使用[教程的第一部分](tutorial-designer-automobile-price-train-score.md)开发的预测模型，可将它部署为实时终结点。 在第 1 部分，我们训练了模型。 现在，让我们基于用户输入生成新的预测。 本教程部分介绍以下操作：
+可以部署在[本教程第一部分](tutorial-designer-automobile-price-train-score.md)开发的预测模型供其他人使用。 在第 1 部分，我们训练了模型。 现在，让我们基于用户输入生成新的预测。 本教程的此部分介绍如何：
 
 > [!div class="checklist"]
-> * 部署实时终结点
+> * 创建实时推理管道
 > * 创建推理群集
+> * 部署实时终结点
 > * 测试实时终结点
 
 ## <a name="prerequisites"></a>先决条件
 
 完成[教程的第一部分](tutorial-designer-automobile-price-train-score.md)，了解如何在设计器中训练机器学习模型并为其评分。
 
-## <a name="deploy-a-real-time-endpoint"></a>部署实时终结点
+## <a name="create-a-real-time-inference-pipeline"></a>创建实时推理管道
 
-若要部署管道，必须执行以下操作：
-
-1. 将训练管道转换成实时推理管道，以便删除训练模块并添加推理请求的输入和输出。
-1. 部署推理管道。
+若要部署管道，必须先将训练管道转换为实时推理管道。 此过程会删除训练模块，并为推理请求添加输入和输出。
 
 ### <a name="create-a-real-time-inference-pipeline"></a>创建实时推理管道
 
-1. 在管道画布顶部，选择“创建推理管道”   >   “实时推理管道”
-
-    选择“创建推理管道”时，会发生一些事情： 
-    
-    * 训练的模型在模块调色板中存储为“数据集”模块。  可以在“我的数据集”下找到它。 
-    * 用于训练的模块（例如“训练模型”和“拆分数据”）被删除。  
-    * 保存的训练模型已添加回管道中。
-    * 已添加“Web 服务输入”  和  “Web 服务输出”模块。 这些模块标识用户数据进入模型的位置，以及返回数据的位置。
-
-    > [!Note]
-    > **训练管道**保存在管道画布顶部的新选项卡下。 它也可作为已发布管道显示在设计器中。
-    >
+1. 在管道画布上方，选择“创建推理管道”   >   “实时推理管道”
 
     管道现在应如下所示：  
 
    ![显示做好部署准备后管道的预期配置的屏幕截图](./media/ui-tutorial-automobile-price-deploy/real-time-inference-pipeline.png)
+
+    选择“创建推理管道”时，会发生一些事情： 
+    
+    * 训练的模型在模块调色板中存储为“数据集”模块。  可以在“我的数据集”下找到它。 
+    * 将删除“训练模型”和“拆分数据”等训练模块。  
+    * 保存的训练模型已添加回管道中。
+    * 已添加“Web 服务输入”  和  “Web 服务输出”模块。 这些模块显示用户数据进入模型的位置，以及返回数据的位置。
+
+    > [!Note]
+    > **训练管道**保存在管道画布顶部的新选项卡下。 它也可作为已发布管道显示在设计器中。
+    >
 
 1. 选择“运行”，  使用在第 1 部分使用过的计算目标和试验。
 
@@ -64,11 +62,11 @@ ms.locfileid: "73509591"
 
 1. 选择“部署”。 
 
-### <a name="create-an-inferencing-cluster"></a>创建推理群集
+## <a name="create-an-inferencing-cluster"></a>创建推理群集
 
-在显示的对话框中，可以从工作区的现有 Azure Kubernetes 服务 (AKS) 群集中进行选择，以便部署模型。 如果没有 AKS 群集，可通过以下步骤创建一个。
+在显示的对话框中，可以选择要将模型部署到的任何现有 Azure Kubernetes 服务 (AKS) 群集。 如果没有 AKS 群集，可通过以下步骤创建一个。
 
-1. 在对话框中选择“计算”，导航到“计算”页。  
+1. 在显示的对话框中选择“计算”，导航到“计算”页。  
 
 1. 在导航功能区中，选择“推理群集” > “+ 新建”。  
 
@@ -86,7 +84,7 @@ ms.locfileid: "73509591"
     > 创建新的 AKS 服务大约需要 15 分钟。 可以在“推理群集”页上查看预配状态 
     >
 
-### <a name="deploy-the-real-time-endpoint"></a>部署实时终结点
+## <a name="deploy-the-real-time-endpoint"></a>部署实时终结点
 
 在 AKS 服务完成预配以后，请返回到实时推理管道，以便完成部署。
 
@@ -104,7 +102,7 @@ ms.locfileid: "73509591"
 
 ## <a name="test-the-real-time-endpoint"></a>测试实时终结点
 
-可以导航到左侧工作区导航窗格中的“终结点”页，对实时终结点进行测试。 
+部署完成后，可以通过导航到“终结点”页来测试实时终结点。 
 
 1. 在“终结点”页上，选择已部署的终结点。 
 
@@ -112,9 +110,9 @@ ms.locfileid: "73509591"
 
 1. 选择“测试”。 
 
-1. 输入测试数据或使用自动填充的示例数据，然后选择“测试”。 
+1. 可以手动输入测试数据或使用自动填充的示例数据，然后选择“测试”。 
 
-    测试请求将提交到终结点，结果将显示在页面上。 尽管为输入数据生成了价格值，但它不用于生成预测值。
+    门户会将测试请求提交到终结点并显示结果。 尽管为输入数据生成了价格值，但它不用于生成预测值。
 
     ![显示如何测试实时终结点的屏幕截图，其中突出显示了价格的评分标签](./media/ui-tutorial-automobile-price-deploy/test-endpoint.png)
 

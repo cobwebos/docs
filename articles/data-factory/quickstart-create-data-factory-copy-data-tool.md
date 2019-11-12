@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 复制数据工具复制数据 | Microsoft Docs
+title: 使用 Azure 复制数据工具复制数据
 description: 创建一个 Azure 数据工厂，然后使用“复制数据”工具将数据从 Azure Blob 存储中的一个位置复制到另一个位置。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: yexu
-ms.openlocfilehash: b330c6010ddb5401dbf9753c2ea91bfeedf35c3b
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 64f2c989d6ccb4b3ade96065836e1b1f2439e6f5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020071"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684550"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>快速入门：使用“复制数据”工具复制数据
 
@@ -35,9 +35,14 @@ ms.locfileid: "70020071"
 
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
 1. 转到 [Azure 门户](https://portal.azure.com)。 
-1. 在左侧菜单中选择“创建资源”，然后依次选择“分析”、“数据工厂”。    
-   
-   ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
+1. 在 Azure 门户菜单中，选择“创建资源”  。
+
+    ![在 Azure 门户菜单中，创建资源](./media/quickstart-create-data-factory-copy-data-tool/create-data-factory-resource.png)
+
+1. 选择“分析”，然后选择“数据工厂”   。
+
+   ![在“新建”窗格中选择“数据工厂”](./media/quickstart-create-data-factory-copy-data-tool/new-azure-data-factory-menu.png)
+
 1. 在“新建数据工厂”  页中，输入 **ADFTutorialDataFactory** 作为**名称**。 
  
    Azure 数据工厂的名称必须 *全局唯一*。 如果出现以下错误，请更改数据工厂的名称（例如改为 **&lt;yourname&gt;ADFTutorialDataFactory**），并重新尝试创建。 有关数据工厂项目的命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。

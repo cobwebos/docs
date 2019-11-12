@@ -8,14 +8,14 @@ ms.custom: include file
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
-ms.date: 10/23/2019
+ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: f833ded4467da1f129b1ea7f858ae8bdd9c2048e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b65bf177d98d5b0bcbaf9e9eaf06707b43ed7032
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495334"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647458"
 ---
 若要在聊天机器人或其他客户端应用程序中接收 LUIS 预测，需要将应用发布到终结点。 
 
@@ -31,4 +31,4 @@ ms.locfileid: "73495334"
 
     ![LUIS 发布到终结点](../media/howto-publish/publish-endpoint-success.png)
 
-4. 选择绿色状态栏中的“终结点”  链接，转到“密钥和终结点”  页。 终结点 URL 列在底部。
+4. 在通知中选择“访问终结点 URL”链接，转到“Azure 资源”页。   终结点 URL 作为“示例查询”列出。 

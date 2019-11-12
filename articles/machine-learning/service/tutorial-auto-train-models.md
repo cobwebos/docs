@@ -9,15 +9,16 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 08/21/2019
-ms.openlocfilehash: f08f2f07137e518925ee4dbe9b128e100be870c9
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.date: 11/04/2019
+ms.openlocfilehash: 23441fb64293647698921c17c06731ab413b7699
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003979"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582460"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>教程：使用自动化机器学习预测出租车费
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在本教程中，你将使用 Azure 机器学习中的自动机器学习来创建一个用于预测纽约市出租车收费价格的回归模型。 此过程接受定型数据和配置设置，并自动循环访问不同特征规范化/标准化方法、模型和超参数设置的组合，以实现最佳模型。
 
@@ -891,14 +892,15 @@ x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 
 ### <a name="define-training-settings"></a>定义训练设置
 
-定义用于训练的试验参数和模型设置。 查看[设置](how-to-configure-auto-train.md)的完整列表。 提交带这些默认设置的试验大约需要 5-10 分钟，但如果需要缩短运行时间，可减小 `iterations` 参数。
+定义用于训练的试验参数和模型设置。 查看[设置](how-to-configure-auto-train.md)的完整列表。 提交带这些默认设置的试验大约需要 5-20 分钟，但如果需要缩短运行时间，可减小 `experiment_timeout_minutes` 参数。
 
 |属性| 本教程中的值 |Description|
 |----|----|---|
 |**iteration_timeout_minutes**|2|每个迭代的时间限制（分钟）。 减小此值可缩短总运行时。|
-|**迭代**|20|迭代次数。 每次迭代时，都会使用数据对新的机器学习模型进行训练。 这是影响总运行时间的主要值。|
+|**experiment_timeout_minutes**|20|在试验结束之前，所有合并的迭代所花费的最大时间量（以分钟为单位）。|
+|**enable_early_stopping**|True|如果分数在短期内没有提高，则进行标记，以提前终止。|
 |**primary_metric**| spearman_correlation | 要优化的指标。 将根据此指标选择最佳拟合模型。|
-|**preprocess**| True | 如果使用 **True**，则试验可以预处理输入数据（处理缺失的数据、将文本转换为数字，等等）。|
+|**featurization**| auto | 如果使用“auto”，则试验可以预处理输入数据（处理缺失的数据、将文本转换为数字，等等） |
 |**verbosity**| logging.INFO | 控制日志记录的级别。|
 |**n_cross_validations**|5|在验证数据未指定的情况下，需执行的交叉验证拆分的数目。|
 
@@ -907,9 +909,10 @@ import logging
 
 automl_settings = {
     "iteration_timeout_minutes": 2,
-    "iterations": 20,
+    "experiment_timeout_minutes": 20,
+    "enable_early_stopping": True,
     "primary_metric": 'spearman_correlation',
-    "preprocess": True,
+    "featurization": 'auto',
     "verbosity": logging.INFO,
     "n_cross_validations": 5
 }
@@ -1061,12 +1064,7 @@ print(1 - mean_abs_percent_error)
 
 ### <a name="stop-the-notebook-vm"></a>停止笔记本 VM
 
-如果你使用了云笔记本服务器，请停止未使用的 VM，以降低成本。
-
-1. 在工作区中，选择“笔记本 VM”。 
-1. 从列表中选择 VM。
-1. 选择“停止”  。
-1. 准备好再次使用服务器时，选择“启动”  。
+[!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 
 ### <a name="delete-everything"></a>删除所有内容
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂以增量方式复制数据 | Microsoft Docs
+title: '使用 Azure 数据工厂以增量方式复制数据 '
 description: 这些教程介绍如何以增量方式将数据从源数据存储复制到目标数存储。 第一个从一个表复制数据。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 15ff84bf8a194c6172864601e3aefe78f9cc13a3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9cbe9dfea116df30f49b89e2e59886f2f112487c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140588"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683357"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>以增量方式将数据从源数据存储加载到目标数据存储
 

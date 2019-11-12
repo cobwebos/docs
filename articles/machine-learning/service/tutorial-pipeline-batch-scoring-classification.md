@@ -9,15 +9,17 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 09/05/2019
-ms.openlocfilehash: 3fe25f0f8297a7b743ed5f522e8a35deb165a039
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.date: 11/04/2019
+ms.openlocfilehash: ccd29952693ecbc1db5927d5deabae874b6e9933
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695619"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796697"
 ---
 # <a name="build--use-an-azure-machine-learning-pipeline-for-batch-scoring"></a>生成和使用用于批量评分的 Azure 机器学习管道
+
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在本教程中，你将使用 Azure 机器学习中的某个管道运行批量评分作业。 本示例使用预先训练的 [Inception-V3](https://arxiv.org/abs/1512.00567) 卷积神经网络 Tensorflow 模型来对不带标签的图像进行分类。 生成并发布管道后，你将配置一个 REST 终结点，用于从任何平台上的任何 HTTP 库触发该管道。
 
@@ -463,7 +465,7 @@ df.head(10)
 
 ## <a name="publish-and-run-from-a-rest-endpoint"></a>从 REST 终结点发布和运行
 
-运行以下代码，将管道发布到工作区。 在 Azure 门户上的工作区中，可以看到管道的元数据，包括运行历史记录和持续时间。 还可以从门户手动运行管道。
+运行以下代码，将管道发布到工作区。 在 Azure 机器学习工作室的工作区中，可以看到管道的元数据，包括运行历史记录和持续时间。 还可以从工作室手动运行管道。
 
 发布管道会启用一个 REST 终结点，用于从任何平台上的任何 HTTP 库重新运行该管道。
 
@@ -478,7 +480,7 @@ published_pipeline
 
 服务主体身份验证涉及到在 *Azure Active Directory* 中创建应用注册。  首先生成客户端机密，然后为服务主体授予对机器学习工作区的角色访问权限。  使用 [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) 类来管理身份验证流。 
 
-`InteractiveLoginAuthentication` 和 `ServicePrincipalAuthentication` 均继承自 `AbstractAuthentication`。 在这两种情况下，请以相同的方式使用 `get_authentication_header()` 函数来提取标头：
+[`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) 和 `ServicePrincipalAuthentication` 均继承自 `AbstractAuthentication`。 在这两种情况下，请以相同的方式使用 [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) 函数来提取标头：
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication
@@ -487,7 +489,7 @@ interactive_auth = InteractiveLoginAuthentication()
 auth_header = interactive_auth.get_authentication_header()
 ```
 
-从已发布的管道对象的 `endpoint` 属性获取 REST URL。 也可以在 Azure 门户上的工作区中找到该 REST URL。 
+从已发布的管道对象的 `endpoint` 属性获取 REST URL。 也可以在 Azure 机器学习工作室的工作区中找到该 REST URL。 
 
 对终结点生成 HTTP POST 请求。 在请求中指定身份验证标头。 添加包含试验名称和批大小参数的 JSON 有效负载对象。 如本教程前面所述，`param_batch_size` 将传递到 `batch_scoring.py` 脚本，因为已在步骤配置中将其定义为 `PipelineParameter` 对象。
 
@@ -522,12 +524,7 @@ RunDetails(published_pipeline_run).show()
 
 ### <a name="stop-the-notebook-vm"></a>停止笔记本 VM
 
-如果你使用了云笔记本服务器，请停止未使用的 VM，以降低成本：
-
-1. 在工作区中，选择“笔记本 VM”。 
-1. 在 VM 列表中选择要停止的 VM。
-1. 选择“停止”  。
-1. 准备好再次使用服务器时，选择“启动”  。
+[!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 
 ### <a name="delete-everything"></a>删除所有内容
 

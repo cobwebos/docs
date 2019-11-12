@@ -39,6 +39,10 @@
           href: how-to-automatic-language-detection.md
         - name: 使用压缩的音频输入格式
           href: how-to-use-codec-compressed-audio-input-streams.md
+        - name: 使用压缩的音频输入格式 (iOS)
+          href: how-to-use-codec-compressed-audio-input-streams-ios.md
+        - name: 使用压缩的音频输入格式 (Android)
+          href: how-to-use-codec-compressed-audio-input-streams-android.md
         - name: 将语音识别与 Docker 容器配合使用
           href: speech-container-howto.md?tabs=stt
     - name: 引用
@@ -200,11 +204,11 @@
     - name: 概述
       items:
         - name: 什么是对话听录？
-          href: conversation-transcription-service.md
+          href: conversation-transcription.md
     - name: 操作指南
       items:
         - name: 实时对话听录
-          href: how-to-use-conversation-transcription-service.md
+          href: how-to-use-conversation-transcription.md
         - name: 异步对话听录
           href: how-to-async-conversation-transcription.md
     - name: 引用
@@ -330,6 +334,11 @@
 - name: 语音服务
   expanded: false
   items:
+    - name: 方案
+      items:
+        - name: 呼叫中心
+          href: get-started.md
+          displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
     - name: 操作指南
       items:
         - name: 免费试用语音服务

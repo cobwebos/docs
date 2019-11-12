@@ -1,5 +1,5 @@
 ---
-title: 将数据从 Azure Blob 存储复制到 SQL 数据库 | Microsoft Docs
+title: '将数据从 Azure Blob 存储复制到 SQL 数据库 '
 description: 本教程提供有关将数据从 Azure Blob 存储复制到 Azure SQL 数据库的分步说明。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 49b5b03356790bd45b2ad29897a57b746af1abe1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 96b1e5a9633ee141fd4aa369468a8866d87f27f2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140689"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683651"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Blob 复制到 Azure SQL 数据库
 

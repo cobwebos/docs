@@ -1,5 +1,5 @@
 ---
-title: Azure 门户：使用查询编辑器查询 Azure SQL 数据库 | Microsoft Docs
+title: Azure 门户：使用查询编辑器进行查询
 description: 了解如何在 Azure 门户中使用 SQL 查询编辑器连接到 SQL 数据库。 然后，通过运行 Transact-SQL (T-SQL) 语句来查询和编辑数据。
 keywords: 连接到 sql 数据库,azure 门户, 门户, 查询编辑器
 services: sql-database
@@ -11,13 +11,13 @@ ms.topic: quickstart
 author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
-ms.date: 06/28/2019
-ms.openlocfilehash: 3702c88d0a5cdc7aa1f854f71e3aee8a42d9c22c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 10/24/2019
+ms.openlocfilehash: 3990d7ec63c312d38168fe76269e1a920f1a6817
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569163"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827116"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>快速入门：使用 Azure 门户的 SQL 查询编辑器进行连接并查询数据
 
@@ -27,7 +27,7 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
 
 要完成本教程，需要：
 
-- Azure SQL 数据库。 可以根据下述快速入门中的一个的说明在 Azure SQL 数据库中创建数据库，然后对其进行配置：
+- Azure SQL 数据库。 可以根据下述快速入门之一，在 Azure SQL 数据库中创建数据库，然后对其进行配置：
 
   || 单一数据库 |
   |:--- |:--- |
@@ -46,41 +46,47 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
 
 ## <a name="connect-using-sql-authentication"></a>使用 SQL 身份验证进行连接
 
-1. 从左侧菜单中选择“SQL 数据库”，然后选择“mySampleDatabase”   。
+1. 转到 Azure 门户以连接到 SQL 数据库。 搜索并选择“SQL 数据库”  。
 
-2. 在左侧菜单中，找到并选择“查询编辑器(预览)”  。 “登录”页随即显示  。
+    ![导航到 SQL 数据库列表，Azure 门户](./media/sql-database-connect-query-portal/search-for-sql-databases.png)
+
+2. 选择 SQL 数据库。
+
+    ![选择 SQL 数据库，Azure 门户](./media/sql-database-connect-query-portal/select-a-sql-database.png)
+
+3. 在“SQL 数据库”菜单中，选择“查询编辑器(预览)”   。
 
     ![查找查询编辑器](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
-3. 从“授权类型”下拉菜单中，选择“SQL Server 身份验证”，然后输入用于创建数据库的服务器管理员帐户的用户 ID 和密码   。
+4. 在“登录”页面的“SQL Server 身份验证”标签下，输入用于创建数据库的服务器管理员帐户的登录 ID 和密码     。 然后选择“确定”。 
 
     ![登录](./media/sql-database-connect-query-portal/login-menu.png)
 
-4. 选择“确定”  。
-
-
 ## <a name="connect-using-azure-active-directory"></a>使用 Azure Active Directory 进行连接
 
-配置一个 Active Directory (AD) 管理员即可使用单个标识登录到 Azure 门户和 SQL 数据库。 请按照以下步骤配置 SQL Server 的 AD 管理员。
+配置一个 Azure Active Directory (Azure AD) 管理员即可使用单个标识登录到 Azure 门户和 SQL 数据库。 请按照以下步骤配置 SQL Server 的 Azure AD 管理员。
 
 > [!NOTE]
-> * AD 管理员尚不支持电子邮件帐户（例如，outlook.com、gmail.com、yahoo.com 等）。 请确保选择在 Azure AD 中本机创建或联合到 Azure AD 中的用户。
+> * Azure AD 管理员尚不支持电子邮件帐户（例如，outlook.com、gmail.com、yahoo.com 等）。 请确保选择在 Azure AD 中本机创建或联合到 Azure AD 中的用户。
 > * Azure AD 管理员登录不适用于已启用双因素身份验证的帐户。
 
-1. 从左侧菜单中选择“所有资源”，然后选择 SQL Server  。
+1. 在 Azure 门户菜单或“主页”页上，选择“所有资源”   。
 
-2. 从 SQL Server 的“设置”菜单中，选择“Active Directory 管理员”   。
+2. 选择 SQL Server。
 
-3. 从 AD 管理员页工具栏中，选择“设置管理员”，然后选择用户或组作为 AD 管理员  。
+3. 从“SQL Server”菜单的“设置”中，选择“Active Directory 管理员”    。
+
+4. 在 SQL Server“Active Directory 管理员”页工具栏中，选择“设置管理员”，然后选择用户或组作为 Azure AD 管理员   。
 
     ![选择 active directory](./media/sql-database-connect-query-portal/select-active-directory.png)
 
-4. 从 AD 管理员页工具栏中，选择“保存”  。
+5. 在“添加管理员”页面的搜索框中，输入要查找的用户或组，选择其作为管理员，然后选择“选择”按钮   。
 
-5. 导航到“mySampleDatabase”数据库，并从左侧菜单中，选择“查询编辑器(预览)”   。 “登录”页随即显示  。 如果你是 AD 管理员，则在右侧的“Active Directory 单一登录”下会显示一条消息，指出你已登录  。
+6. 返回 SQL Server“Active Directory 管理员”页工具栏中，选择“保存”   。
 
-6. 选择“确定”  。
+7. 在“SQL Server”菜单中，选择“SQL 数据库”，然后选择 SQL数据库   。
 
+8. 在“SQL 数据库”菜单中，选择“查询编辑器(预览)”   。 在“登录”页面中的“Active Directory 身份验证”标签下，将显示一条消息，说明你已登录（如果你是 Azure AD 管理员）   。然后选择“按 \<用户或组 ID> 身份继续”按钮   。
 
 ## <a name="view-data"></a>查看数据
 
@@ -95,7 +101,7 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
 
 2. 在工具栏上，选择“运行”，然后查看“结果”窗格中的输出   。
 
-![查询编辑器结果](./media/sql-database-connect-query-portal/query-editor-results.png)
+   ![查询编辑器结果](./media/sql-database-connect-query-portal/query-editor-results.png)
 
 ## <a name="insert-data"></a>插入数据
 
@@ -103,8 +109,8 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
 
 1. 将之前的查询替换为此查询。
 
-   ```sql
-   INSERT INTO [SalesLT].[Product]
+    ```sql
+    INSERT INTO [SalesLT].[Product]
            ( [Name]
            , [ProductNumber]
            , [Color]
@@ -113,7 +119,7 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
            , [ListPrice]
            , [SellStartDate]
            )
-     VALUES
+    VALUES
            ('myNewProduct'
            ,123456789
            ,'NewColor'

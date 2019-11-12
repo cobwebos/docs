@@ -150,6 +150,8 @@
               href: check-cluster-health.md
         - name: 数据库
           items:
+            - name: 后继数据库
+              href: follower.md
             - name: 管理数据库权限
               href: manage-database-permissions.md
             - name: 策略

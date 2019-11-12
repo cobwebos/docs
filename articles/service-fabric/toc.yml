@@ -487,6 +487,8 @@
                   href: service-fabric-application-secret-management-windows.md
                 - name: 在 Linux 上设置加密证书并加密机密
                   href: service-fabric-application-secret-management-linux.md
+                - name: 通过 KeyVaultReference 安全地存储机密（预览版）
+                  href: service-fabric-keyvault-references.md
             - name: 配置反向代理以进行安全通信
               href: service-fabric-reverseproxy-configure-secure-communication.md
             - name: 以本地用户或系统帐户身份运行服务启动脚本
@@ -874,6 +876,8 @@
       href: service-fabric-common-questions.md
     - name: MSDN 论坛
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
+    - name: Azure 资源管理器部署准则
+      href: service-fabric-azure-resource-manager-guardrails.md
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: 定价计算器

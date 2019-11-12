@@ -10,12 +10,12 @@ keywords: azure 自动化, DSC, powershell, desired state configuration, 更新�
 ms.date: 08/25/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: b014f6015b3e13a603cf3893062bd0463eb110ee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ae7c8545286baebc83077276e356cd2e41f0dc3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488193"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668679"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---portal"></a>快速入门：使用用于服务器的 Azure Arc 将计算机连接到 Azure - 门户
 
@@ -27,7 +27,7 @@ ms.locfileid: "73488193"
 
 ## <a name="generate-the-agent-install-script-using-the-azure-portal"></a>使用 Azure 门户生成代理安装脚本
 
-1. 启动 [https://aka.ms/hybridmachineportal ][aka_hybridmachineportal]
+1. 启动 [https://aka.ms/hybridmachineportal](https://aka.ms/hybridmachineportal)
 1. 单击“+添加” 
 1. 按照向导完成操作
 1. 最后一页包含一个生成的脚本，可以复制（或下载）该脚本。
@@ -64,6 +64,29 @@ ms.locfileid: "73488193"
 
 1. 在[门户](https://aka.ms/hybridmachineportal)中选择该计算机，单击省略号 (`...`)，然后选择“删除”  。
 1. 从计算机中卸载代理。
+
+   在 Windows 上，可以使用“应用和功能”控制面板来卸载代理。
+  
+  ![应用和功能](./media/quickstart-onboard/apps-and-features.png)
+
+   若要编写卸载脚本，可以参考以下示例，该示例将检索 **PackageId** 并使用 `msiexec /X` 卸载代理。
+
+   查看注册表项 `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` 并找到 **PackageId**。 然后，可以使用 `msiexec` 卸载代理。
+
+   以下示例演示如何卸载代理。
+
+   ```powershell
+   Get-ChildItem -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall | `
+   Get-ItemProperty | `
+   Where-Object {$_.DisplayName -eq "Azure Connected Machine Agent"} | `
+   ForEach-Object {MsiExec.exe /Quiet /X "$($_.PsChildName)"}
+   ```
+
+   在 Linux 上，请执行以下命令来卸载代理。
+
+   ```bash
+   sudo apt purge hybridagent
+   ```
 
 ## <a name="next-steps"></a>后续步骤
 

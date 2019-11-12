@@ -7,14 +7,17 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 86d61dbd75363f68ee4651bfb36f940810909c00
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 856f7f7735435579ac14918ee8026f27b222773e
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73509941"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715511"
 ---
 # <a name="assess-servers-using-imported-data"></a>使用导入的数据评估服务器
+
+> [!NOTE]
+> 如果在 Azure Migrate 门户中看不到此功能，请等待一段时间。 大约在一周后，它就会出现。
 
 本文介绍如何通过使用 CSV 导入服务器元数据，利用 [Azure Migrate：服务器评估](migrate-services-overview.md#azure-migrate-server-assessment-tool)来评估本地服务器。 使用此评估方法，无需设置 Azure Migrate 设备即可创建评估。 这在下列情况下非常有用： 
 

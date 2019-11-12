@@ -9,16 +9,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/23/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 4acf6e4df978ffee6e0f8320bafbb64994aa0639
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 22a37dbd0b76710a14183aec1795639614207d16
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495443"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73613705"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>快速入门：使用预构建的家庭自动化应用
+
+[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 在本快速入门中，请使用预生成的域 `HomeAutomation` 来创建 LUIS 应用，以便打开和关闭灯和设备。 此预生成的域为你提供意向、实体和示例话语。 完成本教程后，你会有一个在云中运行的 LUIS 终结点。
 
@@ -28,6 +30,8 @@ ms.locfileid: "73495443"
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
+[!INCLUDE [Select authoring resource](./includes/select-authoring-resource.md)]
+
 ## <a name="create-a-new-app"></a>创建新应用
 可在“我的应用”中创建和管理应用程序  。 
 
@@ -35,7 +39,7 @@ ms.locfileid: "73495443"
 
     ![在 LUIS 门户的“我的应用”列表中，选择“+ 创建”。](./media/create-app-in-portal.png)
 
-1. 在对话框中，将应用程序命名为 `Home Automation`，然后选择“完成”  。 LUIS 创建应用程序。
+1. 在对话框中，将应用程序命名为 `Home Automation`，然后选择“完成”  。 LUIS 创建应用程序。 说明是可选的，不会用于创作或预测。 创建 LUIS 应用时，预测资源也是可选的。 将应用发布到生产环境时，应该分配一个预测资源，使应用能够处理多个请求。  
 
     ![在对话框中，将应用程序命名为“家庭自动化”](./media/create-new-app-details.png)
 
@@ -65,7 +69,7 @@ ms.locfileid: "73495443"
 
 ## <a name="train-the-luis-app"></a>训练 LUIS 应用
 
-[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="test-your-app"></a>测试应用
 训练完应用以后，即可测试它。 选择“测试”。  在“交互式测试”窗格中键入 `Turn off the lights` 之类的测试言语，然后按 Enter。 
@@ -114,7 +118,25 @@ Turn off the lights
             "topIntent": "HomeAutomation.TurnOff",
             "intents": {
                 "HomeAutomation.TurnOff": {
-                    "score": 0.967174649
+                    "score": 0.984315455
+                },
+                "HomeAutomation.QueryState": {
+                    "score": 0.009912962
+                },
+                "HomeAutomation.TurnDown": {
+                    "score": 0.00626645749
+                },
+                "HomeAutomation.TurnUp": {
+                    "score": 0.00572059769
+                },
+                "HomeAutomation.SetDevice": {
+                    "score": 0.00379381469
+                },
+                "HomeAutomation.TurnOn": {
+                    "score": 0.00366983772
+                },
+                "None": {
+                    "score": 0.000623856
                 }
             },
             "entities": {
@@ -138,7 +160,7 @@ Turn off the lights
                             "text": "living room",
                             "startIndex": 13,
                             "length": 11,
-                            "score": 0.9494325,
+                            "score": 0.907323956,
                             "modelTypeId": 1,
                             "modelType": "Entity Extractor",
                             "recognitionSources": [

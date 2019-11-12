@@ -1,26 +1,26 @@
 ---
 title: 快速入门：创建一个项目
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: 在本快速入门中，你将使用首选的编程语言创建一个空项目，用于完成某篇快速入门或创建某个应用程序。
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 11/04/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-three
-ms.openlocfilehash: 25d6e8f7642db05663082414f013b2b11bff46da
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 276dbcdfe3f40122b6a7a14e78aeee4d6ab2fbe9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506177"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721012"
 ---
-# <a name="quickstart-create-an-empty-project"></a>快速入门：创建一个空的项目。
+# <a name="quickstart-create-a-project"></a>快速入门：创建一个项目
 
-本指南介绍如何创建空的可在其他快速入门中使用的项目。
+在本快速入门中，你将使用首选的编程语言创建一个空项目，用于完成某篇快速入门或创建某个应用程序。
 
 ::: zone pivot="programming-language-csharp"
 **选择目标环境**
@@ -54,6 +54,9 @@ ms.locfileid: "73506177"
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
+
+对于基于 Python 的快速入门，需要使用偏好的文本编辑器或 IDE 创建名为 `helloworld.py` 的文件。
+
 ::: zone-end
 
 ## <a name="next-steps"></a>后续步骤
@@ -63,4 +66,3 @@ ms.locfileid: "73506177"
 - [快速入门：将语音转换为文本](translate-speech-to-text.md)
 - [快速入门：将语音合成为文本](text-to-speech.md)
 - [快速入门：识别意向](intent-recognition.md)
-

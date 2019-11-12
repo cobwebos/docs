@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 35d850dc6439173c83730375c576855f6920b450
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cf9a0a13a1c16f5be6d82528849e6e2cc3d466d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475246"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641854"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>教程：从桌面应用使用 Azure Active Directory B2C 授予对 Node.js Web API 的访问权限
 
@@ -66,12 +66,12 @@ ms.locfileid: "73475246"
 1. 在“已配置权限”  下，选择“添加权限”  。
 1. 选择“我的 API”  选项卡。
 1. 选择应授予本机客户端应用程序访问权限的 API。 例如，“webapi1”  。
-1. 在“权限”  下，展开“演示”  ，然后选择先前定义的范围。 例如，*demo.read* 和 *demo.write*。
-1. 选择“添加权限”  。 按照指示，请等待几分钟，然后再继续下一步。
-1. 选择“向(你的租户姓名)授予管理员同意”  。
+1. 在“权限”下展开“演示”，然后选择前面定义的范围。   例如，*demo.read* 和 *demo.write*。
+1. 选择“添加权限”  。 按照指示等待几分钟，然后继续下一步。
+1. 选择“向(租户名称)授予管理员许可”  。
 1. 选择当前登录的管理员帐户，或者使用至少分配了“云应用程序管理员”  角色的 Azure AD B2C 租户中的帐户登录。
 1. 选择“接受”  。
-1. 选择“刷新”  ，然后验证两个范围的“状态”  下是否均显示“授权给...”。 传播权限可能需要几分钟时间。
+1. 选择“刷新”，然后确认两个范围的“状态”下是否均显示“已授予...”。   传播权限可能需要几分钟时间。
 
 * * *
 

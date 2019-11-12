@@ -1,21 +1,24 @@
 ---
-title: 使用 REST 创建知识存储
+title: 使用 REST 创建知识存储（预览版）
 titleSuffix: Azure Cognitive Search
-description: 使用 REST API 和 Postman 创建 Azure 认知搜索知识存储，用于保存 AI 扩充管道的扩充内容。
-author: lobrien
+description: 使用 REST API 和 Postman 创建 Azure 认知搜索知识存储，用于保存 AI 扩充管道的扩充内容。 此功能目前处于公开预览状态。
+author: HeidiSteen
 manager: nitinme
-ms.author: laobri
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 24b97374b032640afafde775e90f6db735d63c46
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 107dcfa9ea312774e679c301ea934255c7b836c0
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790017"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720081"
 ---
 # <a name="create-an-azure-cognitive-search-knowledge-store-by-using-rest"></a>使用 REST 创建 Azure 认知搜索知识存储
+
+> [!IMPORTANT] 
+> 知识存储目前以公开预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前提供有限的门户支持，不提供 .NET SDK 支持。
 
 Azure 认知搜索中的知识存储功能可以保留 AI 扩充管道的输出供后续分析或进行其他下游处理。 AI 扩充的管道接受图像文件或非结构化文本文件，使用 Azure 认知搜索为其编制索引，应用 Azure 认知服务中的 AI 扩充（例如图像分析和自然语言处理），并将结果保存到 Azure 存储中的知识存储。 可以在 Azure 门户中使用 Power BI 或存储资源管理器等工具来浏览知识存储。
 

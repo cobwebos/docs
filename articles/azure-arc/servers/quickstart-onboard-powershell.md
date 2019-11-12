@@ -10,12 +10,12 @@ keywords: azure 自动化、DSC、powershell、所需状态配置、更新管理
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: 91d8ddf7d8051baeb42ceb58673c93555908f03a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ddade9472517d080d01b04c853db9dd1848fe0f3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488173"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668467"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>快速入门：使用用于服务器的 Azure Arc 将计算机连接到 Azure - PowerShell
 
@@ -194,12 +194,35 @@ Restart-Service -Name himds
 
 ## <a name="clean-up"></a>清理
 
-要将计算机与用于服务器的 Azure Arc 断开连接，需要执行两个步骤。
+若要从用于服务器的 Azure Arc 断开连接计算机，需要执行两个步骤。
 
-1. 在[门户](https://aka.ms/hybridmachineportal)中选择计算机，单击省略号 (`...`)，然后选择“删除”  。
-1. 从计算机上卸载代理。
+1. 在[门户](https://aka.ms/hybridmachineportal)中选择该计算机，单击省略号 (`...`)，然后选择“删除”  。
+1. 从计算机中卸载代理。
+
+   在 Windows 上，可以使用“应用和功能”控制面板来卸载代理。
+  
+  ![应用和功能](./media/quickstart-onboard/apps-and-features.png)
+
+   若要编写卸载脚本，可以参考以下示例，该示例将检索 **PackageId** 并使用 `msiexec /X` 卸载代理。
+
+   查看注册表项 `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` 并找到 **PackageId**。 然后，可以使用 `msiexec` 卸载代理。
+
+   以下示例演示如何卸载代理。
+
+   ```powershell
+   Get-ChildItem -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall | `
+   Get-ItemProperty | `
+   Where-Object {$_.DisplayName -eq "Azure Connected Machine Agent"} | `
+   ForEach-Object {MsiExec.exe /Quiet /X "$($_.PsChildName)"}
+   ```
+
+   在 Linux 上，请执行以下命令来卸载代理。
+
+   ```bash
+   sudo apt purge hybridagent
+   ```
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [为连接的计算机分配策略](../../governance/policy/assign-policy-portal.md)
+> [将策略分配到连接的计算机](../../governance/policy/assign-policy-portal.md)

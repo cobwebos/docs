@@ -134,18 +134,18 @@
               href: point-to-site-vpn-client-configuration-radius.md
             - name: 将 P2S VPN RADIUS 身份验证与 NPS 服务器集成
               href: vpn-gateway-radiuis-mfa-nsp.md
+        - name: Azure AD 身份验证
+          items:
+            - name: 配置租户
+              href: openvpn-azure-ad-tenant.md
+            - name: 配置 VPN 客户端
+              href: openvpn-azure-ad-client.md
         - name: OpenVPN
           items:
             - name: 为点到站点连接配置 OpenVPN
               href: vpn-gateway-howto-openvpn.md
             - name: 配置 OpenVPN 客户端
               href: vpn-gateway-howto-openvpn-clients.md
-            - name: Open VPN - Azure Active Directory 身份验证
-              items:
-                - name: 配置 Azure AD 租户
-                  href: openvpn-azure-ad-tenant.md
-                - name: 配置 VPN 客户端 - Azure AD
-                  href: openvpn-azure-ad-client.md
         - name: 为 P2S 转换到公共 CA 网关证书
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: 配置 Always On VPN 设备隧道

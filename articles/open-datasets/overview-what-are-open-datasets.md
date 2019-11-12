@@ -7,12 +7,12 @@ ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 11/04/2019
-ms.openlocfilehash: b8633bd91abc1f336870158f54d75829ed5cf6a0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fd5697f9c325dc4ad866c333ce1b20e008ebfa24
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496605"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606157"
 ---
 # <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>什么是 Azure 开放数据集？如何使用它们？
 
@@ -25,7 +25,7 @@ ms.locfileid: "73496605"
 ## <a name="curated-prepared-datasets"></a>准备的精选数据集
 Azure 开放数据集中的精选开放公共数据集更适合用于机器学习工作流。 
 
-数据科学家通常将大部分时间花在清理和准备数据上，以执行高级分析。 为了节省你的时间，开放数据集复制到 Azure 云中，并经过预处理。 数据定期从源中进行拉取（例如，通过与美国国家海洋和大气管理局 (NOAA) 的 FTP 连接），分析为结构化格式，然后根据需要使用特征（例如，最近气象站的邮政编码或位置）进行扩充。
+数据科学家通常将大部分时间花在清理和准备数据上，以执行高级分析。 为了节省你的时间，开放数据集复制到 Azure 云中，并经过预处理。 系统将按固定的间隔从源提取数据，例如，通过与美国海洋与大气管理局 (NOAA) 建立 FTP 连接来提取数据。 接下来，将数据分析成结构化格式，然后使用各种特征（例如最靠近的气象站的邮政编码或位置）相应地扩充这些数据。
 
 数据集通过 Azure 中的云计算共同托管，简化了访问和操作。  
 
@@ -57,5 +57,5 @@ Azure 开放数据集中的精选开放公共数据集更适合用于机器学�
 
 ## <a name="next-steps"></a>后续步骤
 * [示例笔记本](samples.md)
-* [教程：使用纽约出租车数据的回归建模](tutorial-opendatasets-automl.md)
+* [教程：使用纽约出租车数据的回归建模](/azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [用于开放数据集的 Python SDK](/python/api/azureml-opendatasets/?view=azure-ml-py)

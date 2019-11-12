@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 预配 Azure-SSIS 集成运行时 | Microsoft Docs
+title: 使用 PowerShell 预配 Azure-SSIS 集成运行时
 description: 了解如何在 Azure 数据工厂中使用 PowerShell 预配 Azure-SSIS 集成运行时，以便能够在 Azure 中部署和运行 SSIS 包。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 7a4ae2198653ea8adab136caef0f812019efd998
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 594cdd848a3712d2164616e38f7b75a01a21b7f6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326106"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683584"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory-with-powershell"></a>在 Azure 数据工厂中使用 PowerShell 预配 Azure-SSIS 集成运行时
 

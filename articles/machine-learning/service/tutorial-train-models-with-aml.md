@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd215e754b7e72c9ac424a53015955332068558e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4d16c07bf42c99b905868cb956d82e8723da61d6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493555"
+ms.locfileid: "73581541"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>教程：使用 Azure 机器学习通过 MNIST 数据和 scikit-learn 训练映像分类模型
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "73493555"
 * 在开始本教程之前完成[教程：开始创建第一个 ML 试验](tutorial-1st-experiment-sdk-setup.md)，以执行以下操作：
     * 创建工作区
     * 将教程笔记本克隆到工作区中的文件夹。
-    * 创建基于云的计算实例。
+    * 创建基于云的笔记本 VM。
 
 * 在克隆的教程文件夹中打开 img-classification-part1-training.ipynb 笔记本   。 
 

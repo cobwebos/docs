@@ -1,6 +1,6 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure SQL 数据库 - 功能
+title: 功能
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
   title: Azure SQL 数据库 - 功能
@@ -17,7 +17,7 @@ metadata:
 sections:
   - items:
       - type: paragraph
-        text: Azure SQL 数据库不仅仅是一个可以用来通过 SQL 语言进行数据查询的经典关系数据库引擎。 若要执行功能更强大的操作和实现高级方案，可以使用 Azure SQL 数据库中的数据库功能。
+        text: Azure SQL 数据库不仅仅是充当一个经典关系数据库引擎，而且还可让你使用 SQL 语言查询数据。 借助 Azure SQL 数据库中的数据库功能，可以执行更有效的操作并实现高级方案。
       - type: list
         style: cards
         className: cardsM
@@ -28,10 +28,10 @@ sections:
             html: <p>使用内存中技术实现高性能应用程序。</p>
           - title: 多模型功能
             href: /azure/sql-database/sql-database-multi-model-features
-            html: <p>了解 Azure SQL 数据库中的 Graph、JSON、XML、空间功能。</p>
+            html: <p>了解 Azure SQL 数据库中的 Graph、JSON、XML 和空间功能。</p>
           - title: 事务复制
             href: /azure/sql-database/sql-database-managed-instance-transactional-replication
-            html: <p>Azure SQL 数据库和 SQL Server 表之间复制数据。</p>
+            html: <p>在 Azure SQL 数据库与 SQL Server 表之间复制数据。</p>
           - title: 数据同步
             href: /azure/sql-database/sql-database-sync-data
             html: <p>跨多个 SQL 数据库和 SQL Server 实例同步数据。</p>
@@ -40,11 +40,11 @@ sections:
             html: <p>使用 SQL 代理和弹性作业计划重复任务。</p>
           - title: 临时表
             href: /azure/sql-database/sql-database-temporal-tables
-            html: <p>跟踪和分析数据更改的完整历史记录。</p>
+            html: <p>跟踪和分析完整的数据更改历史记录。</p>
   - title: 更多资源
     items:
       - type: list
         style: ordered
         items:
-          - html: 了解 <a href="/azure/sql-database/sql-database-features">SQL Server 功能和 Azure SQL 数据库功能之间的差异</a>。
-          - html: 在<a href="/azure/sql-database/sql-database-howto">操作方法指南</a>中了解如何使用这些功能。
+          - html: 了解 <a href="/azure/sql-database/sql-database-features">SQL Server 与 Azure SQL 数据库的功能差异</a>。
+          - html: 在<a href="/azure/sql-database/sql-database-howto">操作指南</a>中了解如何使用这些功能。

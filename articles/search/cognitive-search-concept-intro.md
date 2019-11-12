@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 97622df578b6c1357601b32a22c806e9eef77c96
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5dc33de19ef71a0714052a6457bef9f32fc159c3
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466877"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720163"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 简介
 
@@ -25,7 +25,7 @@ AI 扩充是 Azure 认知搜索索引的一项功能，用于从图像、Blob �
 
 ![扩充管道关系图](./media/cognitive-search-intro/cogsearch-architecture.png "扩充管道概述")
 
-Azure 认知搜索中的认知技能基于认知服务 API 中的机器学习模型：[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/)和[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)。 
+Azure 认知搜索中的认知技能基于认知服务 API 中预先训练的机器学习模型：[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/)和[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)。 
 
 数据引入阶段应用了自然语言和图形处理，其结果会成为 Azure 认知搜索的可搜索索引中文档撰写内容的一部分。 数据作为 Azure 数据集的来源，然后使用任意所需的[内置技能](cognitive-search-predefined-skills.md)通过索引管道进行推送。 体系结构可扩展，因此如果内置技能不足，可以创建并附加[自定义技能](cognitive-search-create-custom-skill-example.md)，以集成自定义处理。 示例包括面向特定领域（例如金融、科技出版或医疗）的自定义实体模块或文档分类器。
 
@@ -79,7 +79,7 @@ Azure 认知搜索中的认知技能基于认知服务 API 中的机器学习模
 
 ![扩充阶段](./media/cognitive-search-intro/enrichment-phase-blowup.png "扩充阶段")
 
-技能集基于你提供的、与该技能集连接的[预定义认知技能](cognitive-search-predefined-skills.md)或[自定义技能](cognitive-search-create-custom-skill-example.md)。 技能集既可以很精简，也可以很复杂，它不仅确定处理的类型，而且还确定运算的顺序。 技能集以及定义为索引器一部分的字段映射全面指定扩充管道。 有关将所有组成部分一起提取的详细信息，请参阅[定义技能集](cognitive-search-defining-skillset.md)。
+技能集基于你提供的、与该技能集连接的[内置认知技能](cognitive-search-predefined-skills.md)或[自定义技能](cognitive-search-create-custom-skill-example.md)。 技能集既可以很精简，也可以很复杂，它不仅确定处理的类型，而且还确定运算的顺序。 技能集以及定义为索引器一部分的字段映射全面指定扩充管道。 有关将所有组成部分一起提取的详细信息，请参阅[定义技能集](cognitive-search-defining-skillset.md)。
 
 在内部，管道生成扩充文档的集合。 可以确定要将扩充文档的哪些部分映射到搜索索引中可编制索引的字段。 例如，如果应用了关键短语提取和实体识别技能，则这些新字段将成为扩充文档的部分，并可以映射到索引中的字段。 请参阅[注释](cognitive-search-concept-annotations-syntax.md)详细了解输入/输出的形成。
 
@@ -107,13 +107,13 @@ Azure 认知搜索中的认知技能基于认知服务 API 中的机器学习模
 |---------|------------|-------|
 | 技能集 | 包含技能集合的顶级命名资源。 技能集是扩充管道。 在索引编制期间索引器会调用它。 | 请参阅[定义技能组](cognitive-search-defining-skillset.md) |
 | 认知技能 | 扩充管道中的原子转换。 通常，它是提取或推断结构的组件，因此增强了我们对输入数据的理解。 输出几乎总是基于文本，处理是自然语言处理，或者从图像输入提取或生成文本的图像处理。 技能的输出可映射到索引中的字段，或用作下游扩充组件的输入。 技能是预定义的、由 Microsoft 提供的或自定义的（由你创建并部署）。 | [内置认知技能](cognitive-search-predefined-skills.md) |
-| 数据提取 | 涵盖大量处理，但与 AI 扩充相关，实体识别技能最常用于从不以本机方式提供相关信息的源中提取数据（即实体）。 | 请参阅[实体识别技能](cognitive-search-skill-entity-recognition.md)| 
+| 数据提取 | 涵盖大量处理，但与 AI 扩充相关，实体识别技能最常用于从不以本机方式提供相关信息的源中提取数据（即实体）。 | 请参阅[实体识别技能](cognitive-search-skill-entity-recognition.md)和[文档提取技能（预览版）](cognitive-search-skill-document-extraction.md)| 
 | 图像处理 | 从图像推断文本，例如识别某个地标，或者从图像提取文本。 常见示例包括从扫描的文档 (JPEG) 文件中提取字符的 OCR，或者在包含街道标志的照片中识别街道名称。 | 请参阅[图像分析技能](cognitive-search-skill-image-analysis.md)或 [OCR 技能](cognitive-search-skill-ocr.md)
-| 自然语言处理 | 进行文本处理以提供见解，并提供有关文本输入的信息。 语言检测、情绪分析和关键短语提取是属于自然语言处理的技能。  | 请参阅[关键短语提取技能](cognitive-search-skill-keyphrases.md)、[语言检测技能](cognitive-search-skill-language-detection.md)、[情绪分析技能](cognitive-search-skill-sentiment.md) |
+| 自然语言处理 | 进行文本处理以提供见解，并提供有关文本输入的信息。 语言检测、情绪分析和关键短语提取是属于自然语言处理的技能。  | 请参阅[关键短语提取技能](cognitive-search-skill-keyphrases.md)、[语言检测技能](cognitive-search-skill-language-detection.md)、[文本翻译技能（预览版）](cognitive-search-skill-text-translation.md)和[情绪分析技能](cognitive-search-skill-sentiment.md) |
 | 文档破解 | 在索引编制期间从非文本源提取或创建文本内容的过程。 光学字符识别 (OCR) 就是一个例子，但它通常是指索引器从应用程序文件中提取内容时使用的核心索引器功能。 提供源文件位置的数据源，以及提供字段映射的索引器定义都是文档破解中的两个关键因素。 | 请参阅[索引器概述](search-indexer-overview.md) |
 | 造型 | 将文本片段整合到较大的结构，或反之，将较大的文本区块分解成易于管理的大小，以进一步执行下游处理。 | 请参阅[整型程序技能](cognitive-search-skill-shaper.md)、[文本合并技能](cognitive-search-skill-textmerger.md)、[文本拆分技能](cognitive-search-skill-textsplit.md) |
 | 扩充文档 | 在处理过程中生成的临时内部结构，其最终输出反映在搜索索引中。 技能集决定执行哪些扩充。 字段映射确定要将哪些数据元素添加到索引。 （可选）可以使用存储资源管理器、Power BI 等工具或连接到 Azure Blob 存储的任何其他工具创建知识存储，以保留和浏览丰富的文档。 | 请参阅[知识存储（预览版）](knowledge-store-concept-intro.md) |
-| 索引器 |  一种爬网程序，它从外部数据源提取可搜索的数据和元数据，并根据索引与数据源之间字段到字段的映射填充索引，以进行文档破解。 针对 AI 扩充，索引器会调用技能组，并包含字段映射，以便将扩充输出关联到索引中的目标字段。 索引器定义包含管道操作的所有说明和引用，运行索引器时会调用管道。 | [索引器](search-indexer-overview.md) |
+| 索引器 |  一种爬网程序，它从外部数据源提取可搜索的数据和元数据，并根据索引与数据源之间字段到字段的映射填充索引，以进行文档破解。 针对 AI 扩充，索引器会调用技能组，并包含字段映射，以便将扩充输出关联到索引中的目标字段。 索引器定义包含管道操作的所有说明和引用，运行索引器时会调用管道。 通过附加的配置，可以重复使用现有的处理，并仅执行已更改的步骤和技能。 | 请参阅[索引器](search-indexer-overview.md)和[增量索引（预览版）](cognitive-search-incremental-indexing-conceptual.md)。 |
 | 数据源  | 由索引器用来连接 Azure 中受支持类型的外部数据源的对象。 | 请参阅[索引器概述](search-indexer-overview.md) |
 | 索引 | Azure 认知搜索中的持久化搜索索引，通过一个定义字段结构和用法的索引架构生成。 | 请参阅[创建基本索引](search-what-is-an-index.md) | 
 

@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: 44fe7d4e51e50cdb3d1f1ed598f760113fb623bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 721f730aa78be39b91f7d8368655dbbd5878903b
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490158"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716689"
 ---
 # <a name="how-azure-machine-learning-differs-from-ml-studio-classic"></a>Azure 机器学习与机器学习工作室（经典版）的不同之处
 
@@ -37,10 +37,10 @@ Azure 机器学习设计器提供与工作室（经典版）类似的拖放体�
 
 ||  Azure 机器学习设计器|工作室（经典版） |
 |---| --- | --- |
-||设计器处于预览版阶段，Azure 机器学习已正式发布|正式发布 (GA) | 
+||设计器目前为预览版，Azure 机器学习已推出正式版|正式发布 (GA) | 
 |拖放界面| 是 | 是|
 |试验| 使用计算目标进行缩放|规模（10GB 训练数据限制） | 
-|界面的模块|  多个常用模块|很多 |
+|界面的模块| [许多流行模块](algorithm-module-reference/module-reference.md) | 很多 |
 |训练计算目标| AML 计算 (GPU/CPU)|专用计算目标，仅 CPU|
 |推断计算目标| 用于实时推理的 Azure Kubernetes 服务 <br/>用于批处理推理的 AML 计算|专用 Web 服务格式，不可自定义 | 
 |ML 管道| 管道创作 <br/> 已发布管道 <br/> 管道终结点 <br/> [详细了解 ML 管道](service/concept-ml-pipelines.md)|不支持 | 
@@ -48,7 +48,7 @@ Azure 机器学习设计器提供与工作室（经典版）类似的拖放体�
 |模型| 标准格式，因训练作业而异|专有的非可移植格式。| 
 |自动化模型训练|尚不在设计器中，但可以通过接口和 Sdk 使用。| 否 | 
 
-## <a name="get-started-with-azure-machine-learning-designer"></a>Azure 机器学习设计器入门
+## <a name="get-started-with-azure-machine-learning"></a>开始使用 Azure 机器学习
 
 以下资源可帮助你开始 Azure 机器学习
 
@@ -56,8 +56,7 @@ Azure 机器学习设计器提供与工作室（经典版）类似的拖放体�
 
 - [创建第一个设计器管道](service/tutorial-designer-automobile-price-train-score.md)以预测汽车价格。
 
-
-![Azure 机器学习设计器示例](service/media/concept-ml-pipelines/visual-design-surface.gif)
+![Azure 机器学习设计器示例](service/media/concept-ml-pipelines/designer-drag-and-drop.gif)
 
 ## <a name="next-steps"></a>后续步骤
 

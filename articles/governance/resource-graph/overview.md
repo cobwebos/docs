@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: overview
 ms.service: resource-graph
-ms.openlocfilehash: c113719d304aa4ed9c13df1fe0264d22aacb5002
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 41663ec04e194bcc4380f46f1e5cc5a6867e53fc
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499143"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622537"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Azure Resource Graph 服务概述
 
@@ -92,7 +92,7 @@ Resource Graph 支持 Azure CLI、Azure PowerShell、用于 .NET 的 Azure SDK �
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在 [Azure 门户](first-query-portal.md)中运行自己的第一个查询。
+- 使用 [Azure 门户](first-query-portal.md)运行第一个查询。
 - 使用 [Azure CLI](first-query-azurecli.md) 运行第一个查询。
 - 使用 [Azure PowerShell](first-query-powershell.md) 运行第一个查询。
 - 获取有关[查询语言](./concepts/query-language.md)的详细信息。

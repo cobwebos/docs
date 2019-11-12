@@ -1,7 +1,7 @@
 ---
 title: 创建租户模型（预览版）- 语音服务
 titleSuffix: Azure Cognitive Services
-description: 自动生成一种自定义语音模型，该模型利用 Office365 数据，可带来针对组织特定术语的最佳语音识别体验，并且安全合规。
+description: 自动生成一个租户模型（包含 Office 365 数据的自定义语音），该模型利用 Office 365 数据，可带来针对组织特定术语的最佳语音识别体验，并且安全合规。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: 85b9291ee24c024ebc8ce81ddba46d04f7744081
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c8a2855ce9cd320be3aea8b3b4a05f3b3eb39976
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504593"
+ms.locfileid: "73578221"
 ---
 # <a name="create-a-tenant-model-preview"></a>创建租户模型（预览版）
 
-租户模型是 Office365 企业客户可选择加入的一种服务，它根据组织的 Office365 数据自动生成自定义语音识别模型。 创建的模型针对技术术语、行话和人名进行了优化，所有这些都以安全且合规的方式进行。
+租户模型（包含 Office 365 数据的自定义语音）是 Office 365 企业客户可选择加入的一种服务，它根据组织的 Office 365 数据自动生成自定义语音识别模型。 创建的模型针对技术术语、行话和人名进行了优化，所有这些都以安全且合规的方式进行。
 
 > [!IMPORTANT]
-> 如果组织注册了租户模型，语音服务可能会访问组织的语言模型，该模型由 Office 365 资源生成，如电子邮件和文档。 组织的 Office 365 管理员可以使用 Office 365 管理门户在组织范围内启用/禁用语言模型。
+> 如果组织注册了租户模型，语音服务可能会访问组织的语言模型，该模型是通过组织中任何人都可查看的 Office 365 公共组电子邮件和文档生成的。 组织的 Office 365 管理员可以使用 Office 365 管理门户在组织范围内启用/禁用语言模型。
 
 本教程介绍以下操作：
 
@@ -33,8 +33,6 @@ ms.locfileid: "73504593"
 > * 部署租户模型
 > * 配合使用租户模型和语音 SDK
 
-![租户模型关系图](media/tenant-language-model/tenant-language-model-diagram.png)
-
 ## <a name="enroll-using-the-microsoft-365-admin-center"></a>使用 Microsoft 365 管理中心注册
 
 部署租户模型之前，首先需要使用 Microsoft 365 管理中心进行注册。 此任务只能由 Microsoft 365 管理员完成。
@@ -42,11 +40,11 @@ ms.locfileid: "73504593"
 1. 登录 [Microsoft 365 管理中心](https://admin.microsoft.com )。
 2. 在左侧面板中，选择“设置”，然后选择“应用”   。
 
-   ![租户模型关系图](media/tenant-language-model/tenant-language-model-enrollment.png)
+   ![租户模型注册](media/tenant-language-model/tenant-language-model-enrollment.png)
 
 3. 找到并选择“Azure 语音服务”  。
 
-   ![租户模型关系图](media/tenant-language-model/tenant-language-model-enrollment-2.png)
+   ![租户模型注册 2](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
 4. 单击复选框并保存。
 
@@ -77,9 +75,10 @@ ms.locfileid: "73504593"
 
 3. 此时，会看到一条消息，告知是否有资格创建租户模型。
    > [!NOTE]
-   > 北美的 Office 365 企业客户有资格创建租户模型（英语）。 对于客户密码箱 (CLB) 或客户密钥 (CK) 客户，此功能不可用。 要确定是客户密码箱还是客户密钥客户，请参照以下说明操作：
+   > 北美的 Office 365 企业客户有资格创建租户模型（英语）。 对于客户密码箱 (CLB)、客户密钥 (CK) 或 Office 365 政府版客户，此功能不可用。 要确定是客户密码箱还是客户密钥客户，请参照以下说明操作：
    > * [客户密码箱](https://docs.microsoft.com/office365/securitycompliance/controlling-your-data-using-customer-key#FastTrack)
    > * [客户密钥](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
+   > * [Office 365 政府版](https://www.microsoft.com/microsoft-365/government)
 
 4. 接下来，选择“选择加入”  。 当租户模型准备就绪时，将收到一封包含说明的电子邮件。
 

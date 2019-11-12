@@ -1,37 +1,42 @@
 ---
-title: 使用 Power BI 连接知识存储
+title: 使用 Power BI 连接知识存储（预览版）
 titleSuffix: Azure Cognitive Search
-description: 使用 Power BI 连接 Azure 认知搜索知识存储以进行分析和浏览。
+description: 使用 Power BI 连接 Azure 认知搜索知识存储（预览版）以进行分析和探索。
 author: lisaleib
 manager: nitinme
 ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 03f28cb40708b7ec77a0a342b5ec1b6faeaa8e3b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7b12f0f14003389d36e2df5bcffe7828c135cf2b
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485151"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715487"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>使用 Power BI 连接知识存储
 
-> [!Note]
-> 知识存储目前以预览版提供，不应在生产环境中使用。 门户和[搜索 REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供此功能。 目前不支持 .NET SDK。
->
+> [!IMPORTANT] 
+> 知识存储目前以公开预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前提供有限的门户支持，不提供 .NET SDK 支持。
 
 本文介绍如何使用 Power BI Desktop 应用中的 Power Query 来连接和浏览知识存储。 使用模板可以更快地开始操作，也可以从头开始构建自定义仪表板。
 
-## <a name="prerequisites"></a>先决条件
++ 按照[在 Azure 门户中创建知识存储](knowledge-store-create-portal.md)或[使用 REST 创建 Azure 认知搜索知识存储](knowledge-store-create-rest.md)中的步骤创建本演练中使用的示例知识存储。 还需要用于创建知识存储的 Azure 存储帐户的名称，以及从 Azure 门户获得的其访问密钥。
 
 + [安装 Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 
-+ 你将需要一个包含在 Azure 表存储中的知识存储。 还需要用于创建知识存储的 Azure 存储帐户的名称，以及从 Azure 门户获得的其访问密钥。
+## <a name="sample-power-bi-template---azure-portal-only"></a>示例 Power BI 模板 - 仅限 Azure 门户
 
-如果要使用示例知识库，请按照说明[创建知识库存储](knowledge-store-create-portal.md)。
+如果[使用 Azure 门户创建了知识存储](knowledge-store-create-portal.md)，则可以使用 [Azure 认知搜索 Power BI 模板示例](https://github.com/Azure-Samples/cognitive-search-templates)来查看和体验 Power BI 可视化效果。 也可以执行“导入数据”向导中的步骤时下载此模板。 
 
-## <a name="create-a-custom-report"></a>创建自定义报表
+示例模板会自动执行本文余下部分所述的设置步骤。 但是，如果知识存储是使用 REST API 创建的，请跳过该模板，并参考本文的余下部分将知识存储连接到 Power BI。 从[使用 Power BI 进行连接](#connect-with-power-bi)开始。
+
+示例模板包含多个可视化效果，例如 WordCloud 和 Network Navigator。 模板中的某些可视化效果（例如“位置”地图和实体图形查看器）不会显示[在 Azure 门户中创建知识存储](knowledge-store-create-portal.md)中创建的示例知识存储的数据。 这是因为，这些可视化效果只使用了“导入数据”向导中提供的一部分 AI 扩充内容。 
+
+![示例 Azure 认知搜索 Power BI 模板](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "示例 Power BI 模板")
+
+## <a name="connect-with-power-bi"></a>使用 Power BI 进行连接
 
 1. 启动 Power BI Desktop 并单击“获取数据”。 
 

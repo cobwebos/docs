@@ -16,7 +16,7 @@ metadata:
   ms.date: 03/11/2019
   ms.author: juliako
 abstract:
-  description: Azure 媒体服务视频索引器是基于 Azure 媒体分析、Azure 搜索、认知服务（例如人脸 API、Microsoft Translator、计算机视觉 API 和自定义语音服务）生成的云应用程序。 有了视频索引器，就可以使用视频索引器视频和音频模型从视频中提取见解。<br/>如需了解何时要使用视频索引器与媒体服务分析器预设，请查看<a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">比较文档</a>。
+  description: Azure 媒体服务视频索引器是基于 Azure 媒体分析、Azure 认知搜索、认知服务（例如人脸 API、Microsoft Translator、计算机视觉 API 和自定义语音服务）生成的云应用程序。 有了视频索引器，就可以使用视频索引器视频和音频模型从视频中提取见解。<br/>如需了解何时要使用视频索引器与媒体服务分析器预设，请查看<a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">比较文档</a>。
 sections:
   - items:
       - type: list

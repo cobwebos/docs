@@ -4,15 +4,15 @@ description: 概述 Azure Migrate 服务。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 10/22/2019
+ms.date: 11/06/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 1ecd15b36b677e65eadbe4e979925723c9eedd51
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: af9305aafc3a77df9d7c4cffa65f6c61c53ad8a4
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498424"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715395"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate 中的新增功能
 
@@ -22,7 +22,12 @@ ms.locfileid: "73498424"
 
 ## <a name="update-november-2019"></a>更新（2019 年 11 月）
 
+
+
 Azure Migrate 增加了许多新功能：
+
+> [!NOTE]
+> 如果在 Azure Migrate 门户中看不到其中的某些功能，请等待一段时间。 大约在一周后，它们就会出现。
 
 - **物理服务器评估**。 除了已支持的物理服务器迁移外，现在还支持对本地物理服务器进行评估。
 - **基于导入的评估**。 现在支持使用 CSV 文件中提供的元数据和性能数据评估计算机。
@@ -30,6 +35,13 @@ Azure Migrate 增加了许多新功能：
 - **无代理依赖项可视化效果**：不再需要为依赖项可视化效果显式安装代理。 现在同时支持无代理和基于代理。
 - **虚拟桌面**：使用 ISV 工具来评估本地虚拟桌面基础结构 (VDI) 并将其迁移到 Azure 中的 Windows 虚拟桌面。
 - **Web 应用**：用于评估和迁移 Web 应用的 Azure 应用服务迁移助手现已集成到 Azure Migrate 中。
+
+Azure Migrate 中提供了新的评估和迁移工具：
+
+- **Rackware**：提供云迁移功能。
+- **Movere**：提供评估功能。
+
+[详细了解](migrate-services-overview.md)如何使用 Azure Migrate 中用于评估与迁移的工具和 ISV 产品/服务。
 
 ## <a name="release-version-july-2019"></a>发行版（2019 年 7 月）
 

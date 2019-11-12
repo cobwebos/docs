@@ -138,6 +138,8 @@
           href: resource-group-create-multiple.md
         - name: 订阅级资源
           href: deploy-to-subscription.md
+        - name: 管理组级资源
+          href: deploy-to-management-group.md
     - name: 部署模板
       items:
         - name: 部署 - 门户

@@ -175,12 +175,93 @@
               href: app/ilogger.md
             - name: Java
               items:
-                - name: 基于日志的和预聚合的指标
-                  href: app/pre-aggregated-metrics-log-metrics.md
-                - name: 基于日志的指标定义
-                  href: platform/app-insights-metrics.md
-                - name: 经典指标资源管理器
-                  href: app/metrics-explorer.md
+                - name: Web 应用
+                  displayname: java
+                  href: app/java-get-started.md
+                - name: Docker 应用
+                  href: app/docker.md
+                - name: 日志跟踪
+                  href: app/java-trace-logs.md
+                - name: Unix 指标
+                  href: app/java-collectd.md
+                - name: 依赖项
+                  href: app/java-agent.md
+                - name: 筛选遥测数据
+                  href: app/java-filter-telemetry.md
+                - name: Micrometer 指标
+                  displayname: java
+                  href: app/micrometer-java.md
+                - name: Spring Boot 应用
+                  displayname: java
+                  href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
+                - name: 故障排除
+                  href: app/java-troubleshoot.md
+            - name: Node.js
+              href: app/nodejs.md
+            - name: Python
+              items:
+                - name: 概述
+                  displayname: 'python, Python, OpenCenus, OpenTelemetry, py'
+                  href: app/opencensus-python.md
+                - name: 依赖项
+                  href: app/opencensus-python-dependency.md
+                - name: Requests
+                  href: app/opencensus-python-request.md
+            - name: 网页
+              items:
+                - name: 客户端 JavaScript
+                  href: app/javascript.md
+            - name: Application Insights API 摘要
+              displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
+              href: app/api-custom-events-metrics.md
+            - name: 排查 ASP.NET 问题
+              href: app/asp-net-troubleshoot-no-data.md
+        - name: 无代码监视
+          items:
+            - name: Azure VM 和规模集
+              href: app/azure-vm-vmss-apps.md
+            - name: Azure 应用服务
+              displayname: 'App Service, web app, PaaS, Azure web app'
+              href: app/azure-web-apps.md
+            - name: Azure 云服务
+              displayname: 'cloud, cloud services, PaaS'
+              href: app/cloudservices.md
+            - name: Azure Functions
+              displayname: 'functions, monitor functions, automation'
+              href: ../azure-functions/functions-monitoring.md
+            - name: Kubernetes 应用程序
+              displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
+              href: app/kubernetes.md
+            - name: 状态监视器（旧版）
+              displayname: 'IIS monitoring, on premises monitoring, on prem,'
+              href: app/monitor-performance-live-website-now.md
+            - name: 本地服务器
+              items:
+                - name: 概述
+                  displayname: 'IIS monitoring, on premises monitoring, on prem,'
+                  href: app/status-monitor-v2-overview.md
+                - name: 入门
+                  href: app/status-monitor-v2-get-started.md
+                - name: 详细说明
+                  href: app/status-monitor-v2-detailed-instructions.md
+                - name: 故障排除和已知问题
+                  href: app/status-monitor-v2-troubleshoot.md
+                - name: API Disable-InstrumentationEngine
+                  href: app/status-monitor-v2-api-disable-instrumentation-engine.md
+                - name: API Disable-ApplicationInsightsMonitoring
+                  href: app/status-monitor-v2-api-disable-monitoring.md
+                - name: API Enable-InstrumentationEngine
+                  href: app/status-monitor-v2-api-enable-instrumentation-engine.md
+                - name: API Enable-ApplicationInsightsMonitoring
+                  href: app/status-monitor-v2-api-enable-monitoring.md
+                - name: API Get-ApplicationInsightsMonitoringConfig
+                  href: app/status-monitor-v2-api-get-config.md
+                - name: API Get-ApplicationInsightsMonitoringStatus
+                  href: app/status-monitor-v2-api-get-status.md
+                - name: API Set-ApplicationInsightsMonitoringConfig
+                  href: app/status-monitor-v2-api-set-config.md
+                - name: API Start-ApplicationInsightsMonitoringTrace
+                  href: app/status-monitor-v2-api-start-trace.md
             - name: 搜索
               href: app/diagnostic-search.md
             - name: 探查器
@@ -297,84 +378,6 @@
                 - name: 日志跟踪
                   href: app/asp-net-trace-logs.md
                 - name: Unix 指标
-                  href: app/java-collectd.md
-                - name: 依赖项
-                  href: app/java-agent.md
-                - name: 筛选遥测数据
-                  href: app/java-filter-telemetry.md
-                - name: Micrometer 指标
-                  displayname: java
-                  href: app/micrometer-java.md
-                - name: Spring Boot 应用
-                  displayname: java
-                  href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
-                - name: 故障排除
-                  href: app/java-troubleshoot.md
-            - name: Node.js
-              href: app/nodejs.md
-            - name: Python
-              items:
-                - name: 概述
-                  href: app/opencensus-python.md
-                - name: 依赖项
-                  href: app/opencensus-python-dependency.md
-                - name: Requests
-                  href: app/opencensus-python-request.md
-            - name: 网页
-              items:
-                - name: 客户端 JavaScript
-                  href: app/javascript.md
-            - name: Application Insights API 摘要
-              displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
-              href: app/api-custom-events-metrics.md
-            - name: 排查 ASP.NET 问题
-              href: app/asp-net-troubleshoot-no-data.md
-        - name: 无代码监视
-          items:
-            - name: Azure VM 和规模集
-              href: app/azure-vm-vmss-apps.md
-            - name: Azure 应用服务
-              displayname: 'App Service, web app, PaaS, Azure web app'
-              href: app/azure-web-apps.md
-            - name: Azure 云服务
-              displayname: 'cloud, cloud services, PaaS'
-              href: app/cloudservices.md
-            - name: Azure Functions
-              displayname: 'functions, monitor functions, automation'
-              href: ../azure-functions/functions-monitoring.md
-            - name: Kubernetes 应用程序
-              displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
-              href: app/kubernetes.md
-            - name: 状态监视器（旧版）
-              displayname: 'IIS monitoring, on premises monitoring, on prem,'
-              href: app/monitor-performance-live-website-now.md
-            - name: 本地服务器
-              items:
-                - name: 概述
-                  displayname: 'IIS monitoring, on premises monitoring, on prem,'
-                  href: app/status-monitor-v2-overview.md
-                - name: 入门
-                  href: app/status-monitor-v2-get-started.md
-                - name: 详细说明
-                  href: app/status-monitor-v2-detailed-instructions.md
-                - name: 故障排除和已知问题
-                  href: app/status-monitor-v2-troubleshoot.md
-                - name: API Disable-InstrumentationEngine
-                  href: app/status-monitor-v2-api-disable-instrumentation-engine.md
-                - name: API Disable-ApplicationInsightsMonitoring
-                  href: app/status-monitor-v2-api-disable-monitoring.md
-                - name: API Enable-InstrumentationEngine
-                  href: app/status-monitor-v2-api-enable-instrumentation-engine.md
-                - name: API Enable-ApplicationInsightsMonitoring
-                  href: app/status-monitor-v2-api-enable-monitoring.md
-                - name: API Get-ApplicationInsightsMonitoringConfig
-                  href: app/status-monitor-v2-api-get-config.md
-                - name: API Get-ApplicationInsightsMonitoringStatus
-                  href: app/status-monitor-v2-api-get-status.md
-                - name: API Set-ApplicationInsightsMonitoringConfig
-                  href: app/status-monitor-v2-api-set-config.md
-                - name: API Start-ApplicationInsightsMonitoringTrace
-                  href: app/status-monitor-v2-api-start-trace.md
         - name: 创建资源
           href: app/create-new-resource.md
         - name: 应用程序仪表板
@@ -848,6 +851,8 @@
               href: insights/cosmosdb-insights-overview.md
         - name: 网络
           items:
+            - name: 用于网络的 Azure Monitor
+              href: insights/network-insights-overview.md
             - name: 网络分析
               href: insights/azure-networking-analytics.md
             - name: DNS

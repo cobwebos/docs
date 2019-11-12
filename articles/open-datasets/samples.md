@@ -1,5 +1,5 @@
 ---
-title: 使用 NOAA 开放数据集的示例 Jupyter 笔记本
+title: 使用 NOAA 数据集的示例 Jupyter 笔记本
 titleSuffix: Azure Open Datasets
 description: 通过使用 Azure 开放数据集的示例 Jupyter 笔记本，了解如何加载开放数据集，并使用它们来扩充演示数据。 所涉及的技术包括使用 Spark 和 Pandas 来处理数据。
 ms.service: open-datasets
@@ -7,12 +7,12 @@ ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 11/04/2019
-ms.openlocfilehash: 2ccdb7adcae40d22a36fbfb47fba6e4c87b3349a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8b96a35db91a282be1fb5e4c6143e6bd0a0203f2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496573"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606145"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>展示如何使用开放数据集来扩充数据的示例 Jupyter 笔记本 
 使用 Azure 开放数据集的示例 Jupyter 笔记本展示了如何加载开放数据集，并使用它们来扩充演示数据。 所涉及的技术包括使用 Apache Spark 和 Pandas 来处理数据。
@@ -40,6 +40,6 @@ ms.locfileid: "73496573"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [教程：使用自动化机器学习和开放数据集的回归建模](tutorial-opendatasets-automl.md)
+* [教程：使用自动化机器学习和开放数据集的回归建模](/azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [用于开放数据集的 Python SDK](/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)
 * [Azure 开放数据集目录](https://azure.microsoft.com/services/open-datasets/catalog/)
