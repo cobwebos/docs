@@ -1,6 +1,6 @@
 ---
 title: 快速入门：通过 Python 使用 Azure 服务总线队列
-description: 快速入门：了解如何使用 Python 中的 Azure 服务总线队列
+description: 了解如何通过 Python 使用 Azure 服务总线队列。
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
@@ -15,88 +15,83 @@ ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 4319299eabb57451e3a25a69196a63094f66ab9b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d0f579fcd82860380f1aaa651a61c0259d075a0d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721638"
+ms.locfileid: "73748527"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>快速入门：通过 Python 使用 Azure 服务总线队列
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-本教程介绍如何创建 Python 应用程序，用于向/从服务总线队列发送/接收消息。 
+本文介绍如何使用 Python 创建 Azure 服务总线队列，并向其发送消息和从中接收消息。 
+
+有关 Python Azure 服务总线库的详细信息，请参阅[适用于 Python 的服务总线库](/python/api/overview/azure/servicebus?view=azure-python)。
 
 ## <a name="prerequisites"></a>先决条件
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或[注册免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文中的步骤。
-    1. 阅读服务总线**队列**的快速**概述**。 
-    2. 创建服务总线**命名空间**。 
-    3. 获取**连接字符串**。 
-
-        > [!NOTE]
-        > 在本教程中，你将使用 Python 在服务总线命名空间中创建一个**队列**。 
-1. 参阅 [Python 安装指南](/azure/python/python-sdk-azure-install)安装 Python 或 [Python Azure 服务总线包][Python Azure Service Bus package]。 参阅[此处](/python/api/overview/azure/servicebus?view=azure-python)的服务总线 Python SDK 完整文档。
+- Azure 订阅。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+- 遵循以下文章中的步骤创建的服务总线命名空间：[快速入门：使用 Azure 门户创建服务总线主题和订阅](service-bus-quickstart-topics-subscriptions-portal.md)。 复制“共享访问策略”屏幕中的主连接字符串，以便稍后在本文中使用。  
+- 装有 [Python Azure 服务总线][Python Azure Service Bus package]包的 Python 3.4x 或更高版本。 有关详细信息，请参阅 [Python 安装指南](/azure/python/python-sdk-azure-install)。 
 
 ## <a name="create-a-queue"></a>创建队列
-可以通过 **ServiceBusClient** 对象处理队列。 将以下代码添加到任何 Python 文件的顶部附近，你希望在其中以编程方式访问服务总线：
+
+可通过某个 **ServiceBusService** 对象来使用队列。 若要以编程方式访问服务总线，请将以下行添加到 Python 文件的顶部附近：
 
 ```python
 from azure.servicebus import ServiceBusClient
 ```
 
-以下代码创建一个 **ServiceBusClient** 对象。 请将 `<CONNECTION STRING>` 替换为你的服务总线连接字符串。
+添加以下代码以创建 **ServiceBusClient** 对象。 请将 `<connectionstring>` 替换为服务总线的主连接字符串值。 可以在 [Azure 门户][Azure portal]上服务总线命名空间中的“共享访问策略”下找到此值。 
 
 ```python
-sb_client = ServiceBusClient.from_connection_string('<CONNECTION STRING>')
+sb_client = ServiceBusClient.from_connection_string('<connectionstring>')
 ```
 
-SAS 密钥名称和值可以在 [Azure 门户][Azure portal]连接信息中找到，也可以在服务器资源管理器中选择服务总线命名空间后，在 Visual Studio“属性”窗格中找到（如前一部分中所示）。 
+以下代码使用 **ServiceBusClient** 的 `create_queue` 方法创建名为 `taskqueue` 且采用默认设置的队列：
 
 ```python
 sb_client.create_queue("taskqueue")
 ```
 
-`create_queue` 方法还支持其他选项，通过这些选项可以重写默认队列设置，例如消息生存时间 (TTL) 或最大队列大小。 以下示例将最大队列大小设置为 5GB，将 TTL 值设置为 1 分钟：
+可以使用相应的选项来重写默认队列设置，例如消息生存时间 (TTL) 或最大主题大小。 以下代码创建名为 `taskqueue` 的队列，其最大队列大小为 5 GB，TTL 值为 1 分钟：
 
 ```python
 sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
                        default_message_time_to_live=datetime.timedelta(minutes=1))
 ```
 
-有关详细信息，请参阅 [Azure 服务总线 Python 文档](/python/api/overview/azure/servicebus?view=azure-python)。
-
 ## <a name="send-messages-to-a-queue"></a>向队列发送消息
-若要将消息发送到服务总线队列，应用程序需对 `ServiceBusClient` 对象调用 `send` 方法。
 
-以下示例演示如何使用 `send_queue_message` 向名为 `taskqueue` 的队列发送一条测试消息：
+若要向服务总线队列发送消息，应用程序需对 **ServiceBusService** 对象调用 `send` 方法。 以下代码示例创建一个队列客户端，并将测试消息发送到 `taskqueue` 队列。 请将 `<connectionstring>` 替换为服务总线的主连接字符串值。 
 
 ```python
 from azure.servicebus import QueueClient, Message
 
 # Create the QueueClient
-queue_client = QueueClient.from_connection_string(
-    "<CONNECTION STRING>", "<QUEUE NAME>")
+queue_client = QueueClient.from_connection_string("<connectionstring>", "taskqueue")
 
 # Send a test message to the queue
 msg = Message(b'Test Message')
 queue_client.send(msg)
 ```
 
-服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个队列可包含的消息数不受限制，但消息的总大小受限。 此队列大小是在创建时定义的，上限为 5 GB。 有关配额的详细信息，请参阅[服务总线配额][Service Bus quotas]。
+### <a name="message-size-limits-and-quotas"></a>消息大小限制和配额
 
-有关详细信息，请参阅 [Azure 服务总线 Python 文档](/python/api/overview/azure/servicebus?view=azure-python)。
+服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 队列中可以包含的消息数量不受限制，但队列包含的消息总大小有上限。 可以在创建时定义队列大小，上限为 5 GB。 
+
+有关配额的详细信息，请参阅[服务总线配额][Service Bus quotas]。
 
 ## <a name="receive-messages-from-a-queue"></a>从队列接收消息
-对 `ServiceBusService` 对象使用 `get_receiver` 方法可从队列接收消息：
+
+队列客户端通过对 **ServiceBusClient** 对象使用 `get_receiver` 方法来从队列接收消息。 以下代码示例创建一个队列客户端，并从 `taskqueue` 队列接收消息。 请将 `<connectionstring>` 替换为服务总线的主连接字符串值。 
 
 ```python
 from azure.servicebus import QueueClient, Message
 
 # Create the QueueClient
-queue_client = QueueClient.from_connection_string(
-    "<CONNECTION STRING>", "<QUEUE NAME>")
+queue_client = QueueClient.from_connection_string("<connectionstring>", "taskqueue")
 
 # Receive the message from the queue
 with queue_client.get_receiver() as queue_receiver:
@@ -106,36 +101,30 @@ with queue_client.get_receiver() as queue_receiver:
         message.complete()
 ```
 
-有关详细信息，请参阅 [Azure 服务总线 Python 文档](/python/api/overview/azure/servicebus?view=azure-python)。
+### <a name="use-the-peek_lock-parameter"></a>使用 peek_lock 参数
 
+`get_receiver` 的 `peek_lock` 可选参数确定服务总线在从队列读取消息后是否删除消息。 默认的消息接收模式是 *PeekLock* 或设置为 **True** 的 `peek_lock`，后者在读取（扫视）后锁定消息，而不会从队列中删除消息。 然后，必须显式完成每个消息以将其从队列中删除。
 
-`peek_lock` 参数设置为“False”时，会在读取消息后将其从队列中删除  。 通过将参数 `peek_lock` 设置为“True”，可读取（速览）并锁定消息而不会将其从队列中删除  。
+若要在读取消息后将其从队列中删除，可将 `get_receiver` 的 `peek_lock` 参数设置为 **False**。 在执行接收操作过程中删除消息是最简单的模型，但仅当应用程序在发生失败的情况下能够容许消息缺失时，该模型才能正常工作。 为了理解此行为，可以设想这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 如果在接收消息时它已被删除，当应用程序重启并重新开始使用消息时，它便缺少了在发生崩溃之前收到的消息。
 
-在接收过程中读取并删除消息的行为是最简单的模式，并且最适合在发生故障时应用程序可以容忍不处理消息的情况。 为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将消息标记为“将使用”，因此当应用程序重启并重新开始使用消息时，它会丢失在发生崩溃前使用的消息。
+如果应用程序不能容许消息缺失，则接收过程是由两个阶段组成的操作。 PeekLock 查找要使用的下一个消息，将其锁定以防其他使用方接收它，然后将该消息返回给应用程序。 处理或存储消息后，应用程序通过对 **Message** 对象调用 `complete` 方法完成接收过程的第二个阶段。  `complete` 方法会将消息标记为已使用，并将其从队列中删除。
 
-如果将 `peek_lock` 参数设置为“True”，则接收会变成一个两阶段操作，从而可支持无法容忍遗漏消息的应用程序  。 当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，然后将该消息返回到应用程序。 应用程序处理完消息（或安全存储该消息以供将来处理）后，会通过对 **Message** 对象调用 **delete** 方法来完成接收过程的第二个阶段。 **delete** 方法会将消息标记为已使用，并从队列中将其删除。
+## <a name="handle-application-crashes-and-unreadable-messages"></a>处理应用程序崩溃和不可读消息
 
-```python
-msg.delete()
-```
+服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则可对 **Message** 对象调用 `unlock` 方法。 服务总线解锁队列中的消息，并使其能够重新被同一个或另一个使用方应用程序接收。
 
-## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>如何处理应用程序崩溃和不可读消息
-服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则可对 **Message** 对象调用 **unlock** 方法。 这会导致 Service Bus 解锁队列中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
+队列中锁定的消息还存在超时。 如果应用程序无法在锁定超时期满前处理消息（例如，如果应用程序崩溃），服务总线会自动解锁消息，让它再次可供接收。
 
-还存在与队列中已锁定消息关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），服务总线会自动解锁该消息并使它可再次被接收。
+如果应用程序在处理消息之后，但在调用 `complete` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此行为通常称为“至少处理一次”。  每条消息将至少处理一次，但在某些情况下，可能会重新传送同一消息。 如果方案无法容许重复处理，可以使用消息的 **MessageId** 属性（多次尝试传送时，该属性保持不变）来处理重复消息传送。 
 
-如果应用程序在处理消息之后，但在调用 **delete** 方法之前崩溃，则在应用程序重新启动时会将该消息重新传送给它。 此方法通常称作“至少处理一次”，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。  如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 这通常可以通过使用消息的 **MessageId** 属性来实现，该属性在多次传送尝试中保持不变。
-
-> [!NOTE]
-> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
+> [!TIP]
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 可以使用服务总线资源管理器连接到服务总线命名空间并轻松管理消息传送实体。 该工具提供高级功能，例如导入/导出功能，以及用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。
 
 ## <a name="next-steps"></a>后续步骤
-现在，已了解有关服务总线队列的基础知识，请参阅下面的文章了解更多信息。
 
-* [队列、主题和订阅][Queues, topics, and subscriptions]
+了解服务总线队列的基本信息后，请参阅[队列、主题和订阅][Queues, topics, and subscriptions]以获取更多信息。
 
 [Azure portal]: https://portal.azure.com
 [Python Azure Service Bus package]: https://pypi.python.org/pypi/azure-servicebus  
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [Service Bus quotas]: service-bus-quotas.md
-
