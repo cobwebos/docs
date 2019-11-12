@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Database for PostgreSQL 文档
-summary: 用于 PostgreSQL 的 Azure 数据库是基于开源 Postgres 数据库引擎的关系型数据库服务。 它是完全托管的数据库即服务产品，能够处理任务关键型工作负荷，具有可预测的性能、安全性、高可用性和动态可伸缩性。 它有两种部署方式，一种是作为单一服务器部署，一种是作为超大规模 (Citus) 群集（预览版）部署。 “超大规模(Citus)”选项可以使用分片跨多个计算机来水平缩放查询，为需要较大的规模和较高的性能的应用程序提供服务。 参考我们的快速入门、教程和示例了解如何使用用于 PostgreSQL 的 Azure 数据库。
+summary: 用于 PostgreSQL 的 Azure 数据库是基于开源 Postgres 数据库引擎的关系型数据库服务。 它是完全托管的数据库即服务产品，能够处理任务关键型工作负荷，具有可预测的性能、安全性、高可用性和动态可伸缩性。 它有两种部署方式，一种是作为单一服务器部署，一种是作为超大规模 (Citus) 群集部署。 “超大规模(Citus)”选项可以使用分片跨多个计算机来水平缩放查询，为需要较大的规模和较高的性能的应用程序提供服务。 参考我们的快速入门、教程和示例了解如何使用用于 PostgreSQL 的 Azure 数据库。
 metadata:
   description: Azure Database for PostgreSQL 是 Microsoft 云中的关系型数据库服务，它基于开源 PostgreSQL 数据库引擎，专为开发人员而构建。
   author: rachel-msft
@@ -8,12 +8,12 @@ metadata:
   ms.date: 08/30/2019
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 70888f27f346c930d37652a3ddd02a0c4d5f65c1
-  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.openlocfilehash: 4deeec3686d2e3b0a150b74a222f7f1eab0a93fd
+  ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73499900"
+  ms.lasthandoff: 11/12/2019
+  ms.locfileid: "73932227"
 landingContent:
 - title: 关于 Azure Database for PostgreSQL
   linkLists:
@@ -57,11 +57,11 @@ landingContent:
       url: /azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json
     - text: 监视和优化服务
       url: tutorial-monitor-and-tune.md
-- title: 创建超大规模 (Citus) 群集（预览版）
+- title: 创建超大规模 (Citus) 群集
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 在 Azure 门户中创建超大规模 (Citus) 群集（预览版）
+    - text: 在 Azure 门户中创建超大规模 (Citus) 群集
       url: quickstart-create-hyperscale-portal.md
   - linkListType: tutorial
     links:

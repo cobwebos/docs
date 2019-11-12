@@ -4,16 +4,16 @@ ms.service: azure
 ms.topic: include
 ms.date: 06/13/2019
 ms.author: sttramer
-ms.openlocfilehash: fdb4ddc43c1fcde55da8186bd2c09b709eb41374
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 47873016a8e355127df36928f2c26439cf3f28c4
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "71055239"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901451"
 ---
 ## <a name="use-azure-cloud-shell"></a>使用 Azure Cloud Shell
 
-Azure 托管 Azure Cloud Shell（一个可通过浏览器使用的交互式 shell 环境）。 通过 Cloud Shell 可以将 `bash` 或 `PowerShell` 与 Azure 服务配合使用。 可以使用 Azure Cloud Shell 预安装的命令来运行本文中的代码，而不必在本地环境中安装任何内容。
+Azure 托管 Azure Cloud Shell（一个可通过浏览器使用的交互式 shell 环境）。 可以将 bash 或 PowerShell 与 Cloud Shell 配合使用来使用 Azure 服务。 可以使用 Azure Cloud Shell 预安装的命令来运行本文中的代码，而不必在本地环境中安装任何内容。
 
 若要启动 Azure Cloud Shell，请执行以下操作：
 
@@ -29,6 +29,6 @@ Azure 托管 Azure Cloud Shell（一个可通过浏览器使用的交互式 shel
 
 1. 选择代码块上的“复制”按钮  以复制代码。
 
-1. 在 Windows 和 Linux 上使用 **Ctrl**+**Shift**+**V** 将代码粘贴到 Cloud Shell 会话中，或在 macOS 上使用 **Cmd**+**Shift**+**V** 将代码粘贴到 Cloud Shell 会话中。
+1. 在 Windows 和 Linux 上选择 **Ctrl**+**Shift**+**V** 将代码粘贴到 Cloud Shell 会话中，或在 macOS 上选择 **Cmd**+**Shift**+**V** 将代码粘贴到 Cloud Shell 会话中。
 
-1. 按 **Enter** 运行此代码。
+1. 选择 **Enter** 运行此代码。

@@ -85,3 +85,7 @@ sections:
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">通过 Azure Cosmos DB 进行永久共享。</a>
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-unity-hololens-app">启动新的 Unity HoloLens 应用。</a>
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-android-app">启动新的 Android 应用。</a>
+  - title: 发行说明
+    items:
+      - type: paragraph
+        text: '<a href="https://github.com/Azure/azure-spatial-anchors-samples/releases">在 GitHub 上查看发行说明。</a>'
