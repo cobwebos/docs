@@ -1,5 +1,5 @@
 ---
-title: 使用自定义 Docker 基本映像部署模型
+title: 部署具有自定义 Docker 映像的模型
 titleSuffix: Azure Machine Learning
 description: 了解如何在部署 Azure 机器学习模型时使用自定义 Docker 基本映像。 虽然 Azure 机器学习提供了一个默认的基本映像，但你也可以使用自己的基本映像。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 3f822e0089772f06245d80c1323cf1f5dfe10361
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b34ef305a6f1cf41c7b7bdcf415e1a91653ad878
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496934"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932103"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基本映像部署模型
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,7 +41,7 @@ Azure 机器学习提供了一个默认 Docker 基本映像，因此你无需担
 * 创建自定义基本映像：向管理员和 DevOps 提供相关信息，了解如何创建自定义映像并使用 Azure CLI 和机器学习 CLI 配置 Azure 容器注册表的身份验证。
 * 使用自定义基本映像部署模型：在从 Python SDK 或 ML CLI 部署训练的模型时，向数据科学家和 DevOps/ML 工程师提供有关使用自定义映像的信息。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 机器学习工作组。 有关详细信息，请参阅[创建工作区一](how-to-manage-workspace.md)文。
 * [AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。 

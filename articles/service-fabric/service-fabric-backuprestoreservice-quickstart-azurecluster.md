@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 9aeffa8b756340851ca4c82ebaed2453d4ac03bc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d5d87f153b5835d5d2b38f380e5c77c03a68e1b5
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819522"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928235"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric 中的定期备份和还原 
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Service Fabric 中的备份和还原服务可以轻松自动备份存储在有�
 Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关的以下功能：
 
 - 通过支持将备份上传到（外部）存储位置，计划可靠有状态服务和 Reliable Actors 的定期备份。 受支持的存储位置
-    - Azure 存储
+    - Azure 存储空间
     - 文件共享（本地）
 - 枚举备份
 - 触发分区的临时备份
@@ -126,21 +126,6 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
     ```
 
 4. 通过前述更改更新群集模板后，应用更改并等待部署/升级完成。 完成后，备份和还原服务开始在群集中运行。 此服务的 URI 为 `fabric:/System/BackupRestoreService`，并且此服务可位于 Service Fabric Explorer 中系统服务部分下。 
-
-### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
-
-1. 请确保已启用 "高级" 模式。
-
-    ![启用高级模式][2]
-
-2. 选择应用程序并执行 "操作"。 单击 "启用/更新应用程序备份"。
-
-    ![启用应用程序备份][3] 
-
-3. 最后，选择所需的策略，然后单击 "启用备份"。
-
-    ![选择策略][4]
-
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>启用可靠有状态服务和 Reliable Actors 的定期备份
 让我们通过一些步骤来启用可靠有状态服务和 Reliable Actors 的定期备份。 这些步骤假定
@@ -224,6 +209,17 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ``` 
+
+#### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
+
+1. 选择应用程序并执行 "操作"。 单击 "启用/更新应用程序备份"。
+
+    ![启用应用程序备份][3]
+
+2. 最后，选择所需的策略，然后单击 "启用备份"。
+
+    ![选择策略][4]
+
 
 ### <a name="verify-that-periodic-backups-are-working"></a>验证定期备份是否正常工作
 
@@ -311,7 +307,6 @@ FailureError            :
 
 [0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event-azure.png
 [1]: ./media/service-fabric-backuprestoreservice/enable-backup-restore-service-with-portal.png
-[2]: ./media/service-fabric-backuprestoreservice/advanced-mode.png
 [3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png
 [4]: ./media/service-fabric-backuprestoreservice/enable-application-backup.png
 [5]: ./media/service-fabric-backuprestoreservice/backup-enumeration.png

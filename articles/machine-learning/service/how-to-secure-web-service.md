@@ -1,5 +1,5 @@
 ---
-title: 使用 SSL 保护
+title: 使用 SSL 保护 web 服务
 titleSuffix: Azure Machine Learning
 description: 了解如何启用 HTTPS，以使通过 Azure 机器学习部署的 web 服务的安全。
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1455ec17898e82ed0f39fea66c44d2e9b4f57280
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f1021ad1983f78252d924a5d3cb674419732d66e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489545"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932061"
 ---
 # <a name="use-ssl-to-secure-a--through-azure-machine-learning"></a>使用 SSL 通过 Azure 机器学习保护
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -71,7 +71,7 @@ TLS 和 SSL 均依赖于*数字证书*，这有助于加密和身份验证。 �
 
 ## <a id="enable"></a>启用 SSL 并部署
 
-若要部署（或重新部署）启用了 SSL 的服务，请将*ssl_enabled*参数设置为 "True" （无论适用）。 将*ssl_certificate*参数设置为*证书*文件的值。 将*ssl_key*设置为*密钥*文件的值。
+若要在启用 SSL 的情况下部署（或重新部署）服务，请将*ssl_enabled*参数设置为 "True"，任何位置适用。 将*ssl_certificate*参数设置为*证书*文件的值。 将*ssl_key*设置为*密钥*文件的值。
 
 ### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>在 AKS 和现场可编程入口阵列（FPGA）上部署
 
@@ -80,14 +80,14 @@ TLS 和 SSL 均依赖于*数字证书*，这有助于加密和身份验证。 �
 
 部署到 AKS 时，可以创建新的 AKS 群集或附加现有群集。 有关创建或附加群集的详细信息，请参阅[将模型部署到 Azure Kubernetes 服务群集](how-to-deploy-azure-kubernetes-service.md)。
   
--  如果创建新群集，请使用 **[provisionining_configuration （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none-)** 。
-- 如果附加现有群集，则可以使用 **[AksCompute. attach_configuration （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** 。 两者都返回具有**enable_ssl**方法的配置对象。
+-  如果创建新群集，请使用 **[Provisionining_configuration AksCompute （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none-)** 。
+- 如果附加现有群集，请使用 **[Attach_configuration AksCompute （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** 。 两者都返回具有**enable_ssl**方法的配置对象。
 
-**Enable_ssl**方法可使用 Microsoft 提供的证书或你购买的证书。
+**Enable_ssl**方法可以使用 Microsoft 提供的证书，也可以使用您购买的证书。
 
-  * 使用 Microsoft 的证书时，必须使用*leaf_domain_label*参数。 此参数生成服务的 DNS 名称。 例如，"myservice" 的值将创建 "myservice\<六个随机字符 > 的域名。\<azureregion >，其中 \<azureregion > 是包含该服务的区域。 或者，可以使用*overwrite_existing_domain*参数覆盖现有的*leaf_domain_label*。
+  * 使用 Microsoft 的证书时，必须使用*leaf_domain_label*参数。 此参数生成服务的 DNS 名称。 例如，"myservice" 的值将创建 "myservice\<六个随机字符 > 的域名。\<azureregion >，其中 \<azureregion > 是包含该服务的区域。 （可选）可以使用*overwrite_existing_domain*参数覆盖现有*leaf_domain_label*。
 
-    若要部署（或重新部署）启用了 SSL 的服务，请将*ssl_enabled*参数设置为 "True" （无论适用）。 将*ssl_certificate*参数设置为*证书*文件的值。 将*ssl_key*设置为*密钥*文件的值。
+    若要在启用 SSL 的情况下部署（或重新部署）服务，请将*ssl_enabled*参数设置为 "True"，任何位置适用。 将*ssl_certificate*参数设置为*证书*文件的值。 将*ssl_key*设置为*密钥*文件的值。
 
     > [!IMPORTANT]
     > 使用 Microsoft 的证书时，无需购买自己的证书或域名。
@@ -105,7 +105,7 @@ TLS 和 SSL 均依赖于*数字证书*，这有助于加密和身份验证。 �
     attach_config.enable_ssl(leaf_domain_label = "myservice")
     ```
 
-  * 使用购买的*证书*时，请使用*ssl_cert_pem_file*、 *ssl_key_pem_file*和*ssl_cname*参数。 下面的示例演示如何使用*pem*文件创建使用你购买的 SSL 证书的配置：
+  * 使用*所购买的证书*时，可以使用*ssl_cert_pem_file*、 *ssl_key_pem_file*和*ssl_cname*参数。 下面的示例演示如何使用*pem*文件创建使用你购买的 SSL 证书的配置：
 
     ```python
     from azureml.core.compute import AksCompute
@@ -120,7 +120,7 @@ TLS 和 SSL 均依赖于*数字证书*，这有助于加密和身份验证。 �
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
-有关*enable_ssl*的详细信息，请参阅[enable_ssl （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-)和[AksAttachConfiguration （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-)。
+有关*enable_ssl*的详细信息，请参阅[enable_ssl AksProvisioningConfiguration （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-)和[enable_ssl AksAttachConfiguration （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-)。
 
 ### <a name="deploy-on-azure-container-instances"></a>在 Azure 容器实例上部署
 
@@ -133,7 +133,7 @@ aci_config = AciWebservice.deploy_configuration(
     ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
 ```
 
-有关详细信息，请参阅[AciWebservice. deploy_configuration （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-)。
+有关详细信息，请参阅[Deploy_configuration AciWebservice （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-)。
 
 ## <a name="update-your-dns"></a>更新 DNS
 
@@ -148,7 +148,7 @@ aci_config = AciWebservice.deploy_configuration(
 + **对于 AKS：**
 
   > [!WARNING]
-  > 如果使用了*leaf_domain_label*通过 Microsoft 的证书创建服务，请不要手动更新群集的 DNS 值。 应自动设置该值。
+  > 如果使用了通过 Microsoft 的证书创建服务*leaf_domain_label* ，请不要手动更新该群集的 DNS 值。 应自动设置该值。
 
   在左侧窗格中的 "**设置**" 下的 "**配置**" 选项卡上，更新 AKS 群集的公共 IP 地址的 DNS。 （请参阅下图。）公共 IP 地址是一种资源类型，它是在包含 AKS 代理节点和其他网络资源的资源组下创建的。
 

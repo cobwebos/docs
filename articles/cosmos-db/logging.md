@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 1e9f852d01d60ead9979b6b1190e285b35d5c312
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: bdbc50983708327cf5d3857282c92fcab1c28b09
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294045"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930548"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Azure Cosmos DB 中的诊断日志记录 
 
@@ -90,25 +90,25 @@ Azure 诊断日志由资源发出，提供与该资源的操作相关的各种�
 
    * 可以记录以下数据：
 
-      * **DataPlaneRequests**：选择此选项可在 Azure Cosmos DB 中将后端请求记录到所有 API，其中包括 SQL、图形、MongoDB、Cassandra 和表 API 帐户。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日志。 以下 JSON 数据是使用 DataPlaneRequests 记录的详细信息的示例输出。 要记录的关键属性：Requestcharge、statusCode、clientIPaddress 和 partitionID：
+      * **DataPlaneRequests**：选择此选项可将后端请求记录到包含 Azure Cosmos DB 中的 SQL、Graph、MongoDB、Cassandra 和表 API 帐户的所有 api。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日志。 以下 JSON 数据是使用 DataPlaneRequests 记录的详细信息的示例输出。 要注意的关键属性包括： Requestcharge、statusCode、clientIPaddress 和 partitionID：
 
        ```
        { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372","resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
        ```
 
-      * **MongoRequests**：选择此选项可记录用户从前端发起的请求，这些请求的内容是要求处理发送给 Azure Cosmos DB 的 MongoDB API 的请求。 MongoDB 请求会显示在 MongoRequests 和 DataPlaneRequests 中。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日志。 以下 JSON 数据是使用 MongoRequests 记录的详细信息的示例输出。 要记录的关键属性：Requestcharge、opCode：
+      * **MongoRequests**：选择此选项以记录前端的用户启动的请求，以便为 MongoDB 提供 Azure Cosmos DB API 的请求。 MongoDB 请求会显示在 MongoRequests 和 DataPlaneRequests 中。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日志。 以下 JSON 数据是使用 MongoRequests 记录的详细信息的示例输出。 要注意的关键属性包括： Requestcharge、opCode：
 
        ```
        { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
        ```
 
-      * **QueryRuntimeStatistics**：选择此选项以记录已执行的查询文本。  以下 JSON 数据是使用 QueryRuntimeStatistics 记录的详细信息的示例输出：
+      * **QueryRuntimeStatistics**：选择此选项可记录已执行的查询文本。  以下 JSON 数据是使用 QueryRuntimeStatistics 记录的详细信息的示例输出：
 
        ```
        { "time": "2019-04-14T19:08:11.6353239Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "QueryRuntimeStatistics", "properties": {"activityId": "278b0661-7452-4df3-b992-8aa0864142cf","databasename": "Tasks","collectionname": "Items","partitionkeyrangeid": "0","querytext": "{"query":"SELECT *\nFROM c\nWHERE (c.p1__10 != true)","parameters":[]}"}}
        ```
 
-      * **PartitionKeyStatistics**：此日志报告分区键的统计信息。 目前，统计信息用分区键的存储大小（KB）表示。 日志针对占用大多数数据存储空间的前三个分区键发出。
+      * **PartitionKeyStatistics**：此日志报告分区键的统计信息。 目前，统计信息用分区键的存储大小 (KB) 来表示。 日志针对占用大部分数据存储空间的前三个分区键发出。
 
        ```
        { "time": "2019-10-11T02:33:24.2018744Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "PartitionKeyStatistics", "properties": {"subscriptionId": "<your_subscription_ID>","regionName": "West US 2","databaseName": "KustoQueryResults","collectionname": "CapacityMetrics","partitionkey": "["CapacityMetricsPartition.136"]","sizeKb": "2048270"}}
@@ -313,7 +313,7 @@ $blobs | Get-AzStorageBlobContent `
  -Destination 'C:\Users\username\ContosoCosmosDBLogs'
 ```
 
-运行第二个命令时，blob 名称中的 / 分隔符会在目标文件夹下创建完整的文件夹结构。 此文件夹结构用于下载 blob 并将其存储为文件。
+运行第二个命令时，blob 名称中的  **分隔符会在目标文件夹下创建完整的文件夹结构/** 。 此文件夹结构用于下载 blob 并将其存储为文件。
 
 若要选择性地下载 Blob，请使用通配符。 例如：
 
@@ -401,61 +401,105 @@ $blobs | Get-AzStorageBlobContent `
 ![搜索最近 10 条日志的示例](./media/logging/log-analytics-query.png)
 
 <a id="#queries"></a>
-### <a name="queries"></a>查询
+### <a name="cosmosdb-log-analytics-queries-in-azure-monitor"></a>Azure Monitor 中的 CosmosDB Log Analytics 查询
 
-可在“日志搜索”框中输入下面这些附加的查询，以帮助监视 Azure Cosmos 容器。 这些查询使用[新语言](../log-analytics/log-analytics-log-search-upgrade.md)。 
+可在“日志搜索”框中输入下面这些附加的查询，以帮助监视 Azure Cosmos 容器。 这些查询使用[新语言](../log-analytics/log-analytics-log-search-upgrade.md)。  
 
 若要了解每个日志搜索返回的数据的含义，请参阅[解释 Azure Cosmos DB 日志](#interpret)。
 
 * 若要查询指定时间段内来自 Azure Cosmos DB 的所有诊断日志，请执行以下操作：
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests"
+    AzureDiagnostics 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests"
     ```
 
 * 查询最近记录的 10 个事件：
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | take 10
+    AzureDiagnostics 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | limit 10
     ```
 
 * 查询已按操作类型分组的所有操作：
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by OperationName
+    AzureDiagnostics 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | summarize count() by OperationName
     ```
 
 * 查询已按**资源**分组的所有操作：
 
     ```
-    AzureActivity | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by Resource
+    AzureActivity 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | summarize count() by Resource
     ```
 
 * 查询已按资源分组的所有用户活动：
 
     ```
-    AzureActivity | where Caller == "test@company.com" and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by Resource
+    AzureActivity 
+    | where Caller == "test@company.com" and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | summarize count() by Resource
     ```
     > [!NOTE]
     > 此命令适用于活动日志，而不适用于诊断日志。
 
+* 如果为，则从 DataPlaneRequests 和 QueryRunTimeStatistics 中的数据联接大于 100 ru 的所有查询
+
+    ```
+    AzureDiagnostics
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" and todouble(requestCharge_s) > 100.0
+    | project activityId_g, requestCharge_s
+    | join kind= inner (
+           AzureDiagnostics
+           | where ResourceProvider =="MICROSOFT.DOCUMENTDB" and Category == "QueryRuntimeStatistics"
+           | project activityId_g, querytext_s
+    ) on $left.activityId_g == $right.activityId_g
+    | order by requestCharge_s desc
+    | limit 100
+    ```
+    
+      
+
 * 查询哪些操作花费的时间超过 3 毫秒：
 
     ```
-    AzureDiagnostics | where toint(duration_s) > 3 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
+    AzureDiagnostics 
+    | where toint(duration_s) > 3 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | summarize count() by clientIpAddress_s, TimeGenerated
     ```
 
 * 查询哪些代理正在运行操作：
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by OperationName, userAgent_s
+    AzureDiagnostics 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | summarize count() by OperationName, userAgent_s
     ```
 
 * 查询何时执行了长时间运行的操作：
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | project TimeGenerated , duration_s | render timechart
+    AzureDiagnostics 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | project TimeGenerated , duration_s 
+    | render timechart
     ```
+    
+* 获取分区键统计信息，以便评估数据库帐户的前3个分区之间的偏差：
+
+    ```
+    AzureDiagnostics 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
+    | project SubscriptionId, regionName_s, databaseName_s, collectionname_s, partitionkey_s, sizeKb_s, ResourceId 
+    
+   
+    ```
+    
 
 有关如何使用新的日志搜索语言的详细信息，请参阅[了解 Azure Monitor 日志中的日志搜索](../log-analytics/log-analytics-log-search-new.md)。 
 
@@ -465,7 +509,7 @@ $blobs | Get-AzStorageBlobContent `
 
 下表描述了每个日志条目的内容。
 
-| Azure 存储字段或属性 | Azure Monitor 日志属性 | 描述 |
+| Azure 存储字段或属性 | Azure Monitor 日志属性 | 说明 |
 | --- | --- | --- |
 | **time** | **TimeGenerated** | 操作发生时的日期和时间 (UTC)。 |
 | **resourceId** | **资源** | 为其启用日志的 Azure Cosmos DB 帐户。|

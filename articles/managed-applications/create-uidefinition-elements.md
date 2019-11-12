@@ -1,24 +1,20 @@
 ---
 title: Azure 创建 UI 定义元素 | Microsoft Docs
 description: 介绍了为 Azure 门户构造 UI 定义时要使用的元素。
-services: managed-applications
-documentationcenter: na
 author: tfitzmac
 ms.service: managed-applications
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/19/2018
+ms.date: 11/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 41a583a77f85bb1524112fa20d9098e18bc4f431
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9f952b8301f1d85d81fcc63e5d46dc57b1fb1106
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60587932"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932011"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition 元素
+
 本文介绍了 CreateUiDefinition 的所有受支持元素的架构和属性。 
 
 ## <a name="schema"></a>架构
@@ -38,7 +34,7 @@ ms.locfileid: "60587932"
 }
 ```
 
-| 属性 | 需要 | 描述 |
+| 属性 | 必选 | 说明 |
 | -------- | -------- | ----------- |
 | name | 是 | 一个内部标识符，用于引用元素的特定实例。 元素名称最常用于 `outputs` 中，其中指定元素的输出值映射到模板的参数。 还可以使用它将元素的输出值绑定到其他元素的 `defaultValue`。 |
 | type | 是 | 要为元素呈现的 UI 控件。 有关支持的类型的列表，请参阅[元素](#elements)。 |
@@ -59,6 +55,7 @@ ms.locfileid: "60587932"
 - [Microsoft.Common.OptionsGroup](microsoft-common-optionsgroup.md)
 - [Microsoft.Common.PasswordBox](microsoft-common-passwordbox.md)
 - [Microsoft.Common.Section](microsoft-common-section.md)
+- [TagsByResource](microsoft-common-tagsbyresource.md)
 - [Microsoft.Common.TextBlock](microsoft-common-textblock.md)
 - [Microsoft.Common.TextBox](microsoft-common-textbox.md)
 - [Microsoft.Compute.CredentialsCombo](microsoft-compute-credentialscombo.md)
@@ -70,4 +67,5 @@ ms.locfileid: "60587932"
 - [Microsoft.Storage.StorageAccountSelector](microsoft-storage-storageaccountselector.md)
 
 ## <a name="next-steps"></a>后续步骤
+
 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。

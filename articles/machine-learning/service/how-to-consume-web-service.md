@@ -1,5 +1,5 @@
 ---
-title: 创建客户端以使用部署的 Web 服务
+title: 为部署为 web 服务的模型创建客户端
 titleSuffix: Azure Machine Learning
 description: 了解如何使用在通过 Azure 机器学习模型部署模型时生成的 Web 服务。 该 Web 服务公开一个 REST API。 使用所选的编程语言为此 API 创建客户端。
 services: machine-learning
@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 387ba970aed68a5f4e682f932a362d3b04b35b8d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 608f343166b528cacf3b1479d993466f6df7cb7e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671455"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932162"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

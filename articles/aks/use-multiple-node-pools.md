@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 3495d62c7447ba50d9ffe48e68b15dbe36867ac9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9c8bae879c5e28914981eec34afb0759dd963004
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73662593"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928979"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中创建和管理群集的多个节点池
 
@@ -25,7 +25,7 @@ ms.locfileid: "73662593"
 
 ## <a name="before-you-begin"></a>开始之前
 
-需要安装并配置 Azure CLI 版本2.0.76 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
+需要安装并配置 Azure CLI 版本2.0.76 或更高版本。 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
 ## <a name="limitations"></a>限制
 
@@ -36,7 +36,7 @@ ms.locfileid: "73662593"
 * AKS 群集必须使用标准 SKU 负载均衡器来使用多个节点池，但基本 SKU 负载均衡器不支持此功能。
 * AKS 群集必须使用节点的虚拟机规模集。
 * 不能使用与大多数操作一样的现有资源管理器模板来添加或删除节点池。 请改用[单独的资源管理器模板](#manage-node-pools-using-a-resource-manager-template)来更改 AKS 群集中的节点池。
-* 节点池的名称必须以小写字母开头，且只能包含字母数字字符。 对于 Linux 节点池，长度必须在1到12个字符之间，对于 Windows 节点池，长度必须介于1到6个字符之间。
+* 节点池的名称只能包含小写字母数字字符，且必须以小写字母开头。 对于 Linux 节点池，长度必须在1到12个字符之间，对于 Windows 节点池，长度必须介于1到6个字符之间。
 * AKS 群集最多可以有8个节点池。
 * AKS 群集在这八个节点池中最多可以有400个节点。
 * 所有节点池必须位于同一子网中。
@@ -46,7 +46,7 @@ ms.locfileid: "73662593"
 若要开始，请创建具有单个节点池的 AKS 群集。 以下示例使用[az group create][az-group-create]命令在*eastus*区域中创建名为*myResourceGroup*的资源组。 然后，使用[az AKS create][az-aks-create]命令创建名为*myAKSCluster*的 AKS 群集。 *1.13.10*的*kubernetes 版本*用于说明如何在以下步骤中更新节点池。 可以指定任何[受支持的 Kubernetes 版本][supported-versions]。
 
 > [!NOTE]
-> 使用多节点池时，不支持*基本*负载 balanacer SKU。 默认情况下，使用*标准*负载均衡器 SKU Azure CLI 和 AZURE 门户创建 AKS 群集。
+> 使用多节点池时，**不支持***基本*负载平衡器 SKU。 默认情况下，使用*标准*负载均衡器 SKU Azure CLI 和 AZURE 门户创建 AKS 群集。
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -126,7 +126,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 ```
 
 > [!TIP]
-> 如果在添加节点池时未指定*OrchestratorVersion*或*VmSize* ，则将基于 AKS 群集的默认值创建节点。 在此示例中，为 Kubernetes 版本*1.13.10*和*Standard_DS2_v2*的节点大小。
+> 如果在添加节点池时未指定*OrchestratorVersion*或*VmSize* ，则将基于 AKS 群集的默认值创建节点。 在此示例中，这是 Kubernetes 的版本*1.13.10*和节点大小*Standard_DS2_v2*。
 
 ## <a name="upgrade-a-node-pool"></a>升级节点池
  
@@ -191,28 +191,34 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>升级具有多个节点池的群集控制平面
 
 > [!NOTE]
-> Kubernetes 使用标准的[语义化版本控制](https://semver.org/)方案。 版本号表示为*x.x*，其中*x*是主要版本， *y*是次版本， *z*是修补程序版本。 例如，在版本*1.12.6*中，1表示主版本，12表示次版本，6表示修补程序版本。 在群集创建过程中，会设置控制平面和初始节点池的 Kubernetes 版本。 将所有其他节点池添加到群集时，将设置其 Kubernetes 版本。 Kubernetes 版本可能在节点池之间以及节点池和控制平面之间有所不同，但以下限制适用：
-> 
-> * 节点池版本必须与控制平面具有相同的主版本。
-> * 节点池版本可能比控制平面版本少1个次要版本。
-> * 只要遵循其他两个约束，节点池版本就可以是任何修补程序版本。
+> Kubernetes 使用标准的[语义化版本控制](https://semver.org/)方案。 版本号表示为*x.x*，其中*x*是主要版本， *y*是次版本， *z*是修补程序版本。 例如，在版本*1.12.6*中，1表示主版本，12表示次版本，6表示修补程序版本。 在群集创建过程中，会设置控制平面和初始节点池的 Kubernetes 版本。 将所有其他节点池添加到群集时，将设置其 Kubernetes 版本。 Kubernetes 版本可能在节点池之间以及节点池和控制平面之间有所不同。
 
-AKS 群集具有两个与 Kubernetes 版本关联的群集资源对象。 第一种是控制平面 Kubernetes 版本。 第二个是具有 Kubernetes 版本的代理池。 控件平面映射到一个或多个节点池。 升级操作的行为取决于所使用的 Azure CLI 命令。
+AKS 群集具有两个与 Kubernetes 版本关联的群集资源对象。
 
-* 升级控制平面需要使用 `az aks upgrade`
-   * 这会升级群集中的控制平面版本和所有节点池
-   * 通过将 `az aks upgrade` 传递到 `--control-plane-only` 标志，只会升级群集控制平面，而不会更改任何关联的节点池。
-* 升级各个节点池需要使用 `az aks nodepool upgrade`
-   * 这仅升级具有指定 Kubernetes 版本的目标节点池
+1. 群集控制平面 Kubernetes 版本。
+2. 具有 Kubernetes 版本的节点池。
 
-节点池持有的 Kubernetes 版本之间的关系也必须遵循一组规则。
+控件平面映射到一个或多个节点池。 升级操作的行为取决于所使用的 Azure CLI 命令。
 
-* 不能降级控制平面和节点池 Kubernetes 版本。
-* 如果未指定节点池 Kubernetes 版本，则行为取决于所使用的客户端。 对于资源管理器模板中的声明，使用为节点池定义的现有版本。如果未设置，则使用控制平面版本。
-* 您可以在给定时间升级或缩放控制平面或节点池，而不能同时提交这两项操作。
-* 节点池 Kubernetes 版本必须与控制平面具有相同的主版本。
-* 节点池 Kubernetes 版本最多可为两（2）次次要版本，不能小于控制面。
-* 节点池可以是任何 Kubernetes 修补程序版本，不能小于或等于控制平面。
+升级 AKS 控制平面需要使用 `az aks upgrade`。 这会升级群集中的控制平面版本和所有节点池。 
+
+发出带 `--control-plane-only` 标志的 `az aks upgrade` 命令仅升级群集控制平面。 不会更改群集中的任何关联节点池。
+
+升级各个节点池需要使用 `az aks nodepool upgrade`。 这仅升级具有指定 Kubernetes 版本的目标节点池
+
+### <a name="validation-rules-for-upgrades"></a>升级的验证规则
+
+群集的控制平面或节点池持有的 Kubernetes 版本的有效升级由以下规则集验证。
+
+* 要升级到的有效版本的规则：
+   * 节点池版本必须与控制平面具有相同的*主*版本。
+   * 节点池版本可能比控制平面版本少两个*次要*版本。
+   * 节点池版本可能比控制平面*版本少两个*。
+
+* 提交升级操作的规则：
+   * 不能降级控制平面或节点池 Kubernetes 版本。
+   * 如果未指定节点池 Kubernetes 版本，则行为取决于所使用的客户端。 资源管理器模板中的声明将回退到为节点池定义的现有版本（如果使用），如果未设置，则使用控制平面版本回退。
+   * 您可以在给定时间升级或缩放控制面或节点池，而不能同时在单个控制平面或节点池资源上提交多个操作。
 
 ## <a name="scale-a-node-pool-manually"></a>手动缩放节点池
 
@@ -320,7 +326,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 在上述示例中，若要创建节点池，请使用群集中创建的节点的默认 VM 大小。 更常见的情况是创建具有不同 VM 大小和功能的节点池。 例如，你可以创建一个节点池，其中包含具有大量 CPU 或内存的节点或提供 GPU 支持的节点池。 在下一步中，你[将使用 taints 和 tolerations](#schedule-pods-using-taints-and-tolerations)来告知 Kubernetes 计划程序如何将访问权限限制为可在这些节点上运行的 pod。
 
-在以下示例中，创建一个使用*Standard_NC6* VM 大小的基于 GPU 的节点池。 这些 Vm 由 NVIDIA Tesla K80 卡提供支持。 有关可用 VM 大小的信息，请参阅[Azure 中 Linux 虚拟机的大小][vm-sizes]。
+在以下示例中，创建使用*Standard_NC6* VM 大小的基于 GPU 的节点池。 这些 Vm 由 NVIDIA Tesla K80 卡提供支持。 有关可用 VM 大小的信息，请参阅[Azure 中 Linux 虚拟机的大小][vm-sizes]。
 
 再次使用[az aks node pool add][az-aks-nodepool-add]命令创建节点池。 这一次，请指定名称*gpunodepool*，并使用 `--node-vm-size` 参数指定*Standard_NC6*大小：
 
@@ -450,11 +456,11 @@ Events:
 
 ## <a name="manage-node-pools-using-a-resource-manager-template"></a>使用资源管理器模板管理节点池
 
-使用 Azure 资源管理器模板来创建和管理资源时，通常可以更新模板中的设置，并重新部署以更新资源。 对于 AKS 中的节点池，在创建 AKS 群集后，初始节点池配置文件将无法更新。 此行为意味着你不能更新现有资源管理器模板，更改节点池，并重新部署。 相反，您必须创建单独的资源管理器模板，该模板仅更新现有 AKS 群集的代理池。
+使用 Azure 资源管理器模板来创建和管理资源时，通常可以更新模板中的设置，并重新部署以更新资源。 对于 AKS 中的节点池，在创建 AKS 群集后，初始节点池配置文件将无法更新。 此行为意味着你不能更新现有资源管理器模板，更改节点池，并重新部署。 相反，您必须创建单独的资源管理器模板，该模板仅更新现有 AKS 群集的节点池。
 
 创建一个模板（如 `aks-agentpools.json`），并粘贴下面的示例清单。 此示例模板配置以下设置：
 
-* 将名为*myagentpool*的*Linux*代理池更新为运行三个节点。
+* 将名为*myagentpool*的*Linux*节点池更新为运行三个节点。
 * 将节点池中的节点设置为运行 Kubernetes 版本*1.13.10*。
 * 将节点大小定义为*Standard_DS2_v2*。
 

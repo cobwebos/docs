@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: sanpil
 author: sanpil
-ms.date: 10/15/2019
-ms.openlocfilehash: a98a0e75c7a03baa663ccb4215e918a87bcc5df7
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.date: 11/11/2019
+ms.openlocfilehash: 474a184b24ca3318a33adb89b25640939a814474
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821770"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929512"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>在 YAML 中定义机器学习管道
 
@@ -30,17 +30,17 @@ ms.locfileid: "72821770"
 | AzureBatchStep | 是 |
 | DatabricksStep | 是 |
 | DataTransferStep | 是 |
-| AutoMLStep | No |
-| HyperDriveStep | No |
-| ModuleStep | No |
-| MPIStep | No |
-| EstimatorStep | No |
+| AutoMLStep | 否 |
+| HyperDriveStep | 否 |
+| ModuleStep | 否 |
+| MPIStep | 否 |
+| EstimatorStep | 否 |
 
 ## <a name="pipeline-definition"></a>管道定义
 
 管道定义使用以下键，它们对应于[管道](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py)类：
 
-| YAML 键 | 描述 |
+| YAML 键 | 说明 |
 | ----- | ----- |
 | `name` | 管道的说明。 |
 | `parameters` | 管道的参数。 |
@@ -48,13 +48,11 @@ ms.locfileid: "72821770"
 | `default_compute` | 管道中的所有步骤运行时的默认计算目标。 |
 | `steps` | 管道中使用的步骤。 |
 
-以下 YAML 是一个示例管道定义：
-
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>Parameters
 
 `parameters` 部分使用以下键，它们对应于[PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py)类：
 
-| YAML 键 | 描述 |
+| YAML 键 | 说明 |
 | ---- | ---- |
 | `type` | 参数的值类型。 有效的类型为 `string`、`int`、`float`、`bool`或 `datapath`。 |
 | `default` | 默认值。 |
@@ -82,7 +80,7 @@ pipeline:
 
 `data_references` 部分使用与[DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)相对应的以下项：
 
-| YAML 键 | 描述 |
+| YAML 键 | 说明 |
 | ----- | ----- |
 | `datastore` | 要引用的数据存储区。 |
 | `path_on_datastore` | 数据引用的备份存储中的相对路径。 |
@@ -102,21 +100,21 @@ pipeline:
             path_on_datastore: "adla_sample/sample_input.csv"
 ```
 
-## <a name="steps"></a>Steps
+## <a name="steps"></a>步骤
 
-步骤定义计算环境，以及要在环境中运行的文件。 YAML 定义表示以下步骤：
+步骤定义计算环境，以及要在环境中运行的文件。 若要定义步骤的类型，请使用 `type` 项：
 
-| YAML 键 | 描述 |
+| 步骤类型 | 说明 |
 | ----- | ----- |
-| `adla_step` | 使用 Azure Data Lake Analytics 运行 U SQL 脚本。 对应于[AdlaStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?view=azure-ml-py)类。 |
-| `azurebatch_step` | 使用 Azure Batch 运行作业。 对应于[AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?view=azure-ml-py)类。 |
-| `databricks_step` | 添加 Databricks 笔记本、Python 脚本或 JAR。 对应于[DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py)类。 |
-| `data_transfer_step` | 在存储选项之间传输数据。 对应于[DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)类。 |
-| `python_script_step` | 运行 Python 脚本。 对应于[PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py)类。 |
+| `AdlaStep` | 使用 Azure Data Lake Analytics 运行 U SQL 脚本。 对应于[AdlaStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?view=azure-ml-py)类。 |
+| `AzureBatchStep` | 使用 Azure Batch 运行作业。 对应于[AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?view=azure-ml-py)类。 |
+| `DatabricsStep` | 添加 Databricks 笔记本、Python 脚本或 JAR。 对应于[DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py)类。 |
+| `DataTransferStep` | 在存储选项之间传输数据。 对应于[DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)类。 |
+| `PythonScriptStep` | 运行 Python 脚本。 对应于[PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py)类。 |
 
 ### <a name="adla-step"></a>ADLA 步骤
 
-| YAML 键 | 描述 |
+| YAML 键 | 说明 |
 | ----- | ----- |
 | `script_name` | 与 `source_directory`相对应的 U SQL 脚本的名称。 |
 | `compute_target` | 要用于此步骤的 Azure Data Lake 计算目标。 |
@@ -146,15 +144,15 @@ pipeline:
     default_compute: adlacomp
     steps:
         Step1:
-            runconfig: "yaml/default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            adla_step:
-                name: "AdlaStep"
-                script_name: "sample_script.usql"
-                source_directory: "helloworld"
+            type: "AdlaStep"
+            name: "MyAdlaStep"
+            script_name: "sample_script.usql"
+            source_directory: "D:\\scripts\\Adla"
             inputs:
                 employee_data:
                     source: employee_data
@@ -167,7 +165,7 @@ pipeline:
 
 ### <a name="azure-batch-step"></a>Azure Batch 步骤
 
-| YAML 键 | 描述 |
+| YAML 键 | 说明 |
 | ----- | ----- |
 | `compute_target` | 要用于此步骤的 Azure Batch 计算目标。 |
 | `inputs` | 输入可以是[InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py)、 [DataReference](#data-reference)、 [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py)、 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)、 [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)、 [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)或[PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)。 |
@@ -198,18 +196,18 @@ pipeline:
     default_compute: testbatch
     steps:
         Step1:
-            runconfig: "D:\\AzureMlCli\\cli_testing\\default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            azurebatch_step:
-                name: "AzureBatchStep"
-                pool_id: "MyPoolName"
-                create_pool: true
-                executable: "azurebatch.cmd"
-                source_directory: "D:\\AzureMlCli\\cli_testing"
-                allow_reuse: false
+            type: "AzureBatchStep"
+            name: "MyAzureBatchStep"
+            pool_id: "MyPoolName"
+            create_pool: true
+            executable: "azurebatch.cmd"
+            source_directory: "D:\\scripts\\AureBatch"
+            allow_reuse: false
             inputs:
                 input:
                     source: input
@@ -221,7 +219,7 @@ pipeline:
 
 ### <a name="databricks-step"></a>Databricks 步骤
 
-| YAML 键 | 描述 |
+| YAML 键 | 说明 |
 | ----- | ----- |
 | `compute_target` | 要用于此步骤的 Azure Databricks 计算目标。 |
 | `inputs` | 输入可以是[InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py)、 [DataReference](#data-reference)、 [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py)、 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)、 [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)、 [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)或[PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)。 |
@@ -251,18 +249,18 @@ pipeline:
     default_compute: mydatabricks
     steps:
         Step1:
-            runconfig: "D:\\AzureMlCli\\cli_testing\\default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            databricks_step:
-                name: "Databrickstep"
-                run_name: "DatabrickRun"
-                python_script_name: "train-db-local.py"
-                source_directory: "D:\\AzureMlCli\\cli_testing\\databricks_train"
-                num_workers: 1
-                allow_reuse: true
+            type: "DatabricksStep"
+            name: "MyDatabrickStep"
+            run_name: "DatabricksRun"
+            python_script_name: "train-db-local.py"
+            source_directory: "D:\\scripts\\Databricks"
+            num_workers: 1
+            allow_reuse: true
             inputs:
                 blob_test_data:
                     source: blob_test_data
@@ -275,7 +273,7 @@ pipeline:
 
 ### <a name="data-transfer-step"></a>数据传输步骤
 
-| YAML 键 | 描述 |
+| YAML 键 | 说明 |
 | ----- | ----- |
 | `compute_target` | 要用于此步骤的 Azure 数据工厂计算目标。 |
 | `source_data_reference` | 输入连接，用作数据传输操作的源。 支持的值为[InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py)、 [DataReference](#data-reference)、 [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py)、 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)、 [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)、 [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)或[PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)。 |
@@ -301,14 +299,14 @@ pipeline:
     default_compute: adftest
     steps:
         Step1:
-            runconfig: "yaml/default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            data_transfer_step:
-                name: "DataTransferStep"
-                adla_compute_name: adftest
+            type: "DataTransferStep"
+            name: "MyDataTransferStep"
+            adla_compute_name: adftest
             source_data_reference:
                 adls_test_data:
                     source: adls_test_data
@@ -319,7 +317,7 @@ pipeline:
 
 ### <a name="python-script-step"></a>Python 脚本步骤
 
-| YAML 键 | 描述 |
+| YAML 键 | 说明 |
 | ----- | ----- |
 | `compute_target` | 要用于此步骤的计算目标。 计算目标可以是 Azure 机器学习计算、虚拟机（如 Data Science VM）或 HDInsight。 |
 | `inputs` | 输入可以是[InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py)、 [DataReference](#data-reference)、 [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py)、 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)、 [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)、 [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)或[PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)。 |
@@ -345,16 +343,16 @@ pipeline:
     default_compute: cpu-cluster
     steps:
         Step1:
-            runconfig: "yaml/default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            python_script_step:
-                name: "PythonScriptStep"
-                script_name: "train.py"
-                allow_reuse: True
-                source_directory: "helloworld"
+            type: "PythonScriptStep"
+            name: "MyPythonScriptStep"
+            script_name: "train.py"
+            allow_reuse: True
+            source_directory: "D:\\scripts\\PythonScript"
             inputs:
                 InputData:
                     source: DataReference1
@@ -369,7 +367,7 @@ pipeline:
 
 为管道定义计划时，可以根据时间间隔，对其进行数据存储-触发或重复。 下面是用于定义计划的密钥：
 
-| YAML 键 | 描述 |
+| YAML 键 | 说明 |
 | ----- | ----- |
 | `description` | 计划的说明。 |
 | `recurrence` | 包含重复设置（如果计划定期发生）。 |
@@ -400,7 +398,7 @@ Schedule:
 
 定义**定期计划**时，请在 `recurrence`下使用以下项：
 
-| YAML 键 | 描述 |
+| YAML 键 | 说明 |
 | ----- | ----- |
 | `frequency` | 计划重复的频率。 有效值为 `"Minute"`、`"Hour"`、`"Day"`、`"Week"`或 `"Month"`。 |
 | `interval` | 计划触发的频率。 整数值是在重新触发计划之前要等待的时间单位数。 |
@@ -408,7 +406,7 @@ Schedule:
 | `time_zone` | 开始时间所在的时区。 如果未提供时区，则使用 UTC。 |
 | `hours` | 如果 `frequency` `"Day"` 或 `"Week"`，则可以指定从0到23之间的一个或多个整数（用逗号分隔），作为管道应运行的时间。 只能使用 `time_of_day` 或 `hours` 和 `minutes`。 |
 | `minutes` | 如果 `frequency` `"Day"` 或 `"Week"`，则可以指定一个或多个介于0到59之间的整数（以逗号分隔），作为管道应运行的小时数。 只能使用 `time_of_day` 或 `hours` 和 `minutes`。 |
-| `time_of_day` | 如果 `frequency` `"Day"` 或 `"Week"`，则可以指定运行计划的时间。 值的字符串格式是 `hh:mm`。 只能使用 `time_of_day` 或 `hours` 和 `minutes`。 |zzs
+| `time_of_day` | 如果 `frequency` `"Day"` 或 `"Week"`，则可以指定运行计划的时间。 值的字符串格式是 `hh:mm`。 只能使用 `time_of_day` 或 `hours` 和 `minutes`。 |
 | `week_days` | 如果 `"Week"``frequency`，则可以指定一天或多天（用逗号分隔），以供计划运行。 有效值为 `"Monday"`、`"Tuesday"`、`"Wednesday"`、`"Thursday"`、`"Friday"`、`"Saturday"`和 `"Sunday"`。 |
 
 以下示例包含定期计划的定义：

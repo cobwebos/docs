@@ -1,6 +1,5 @@
 ---
 title: 在 Azure 机器学习中启用日志记录
-titleSuffix: Azure Machine Learning
 description: 了解如何使用默认的 Python 日志记录包和使用 SDK 特定功能在 Azure 机器学习中启用日志记录。
 ms.author: trbye
 author: trevorbye
@@ -10,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: a47ce44a325720fb1b6df919a0a324a4d3319d86
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91e00b8e1d13f69ae3ba446bcbc09f06f387c439
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489893"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931117"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>在 Azure 机器学习中启用日志记录
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

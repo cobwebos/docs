@@ -1,6 +1,6 @@
 ---
 title: 异地复制的 Azure 容器注册表
-description: 开始创建和管理异地复制的 Azure 容器注册表。
+description: 开始创建和管理异地复制的 Azure 容器注册表，使注册表能够为多个具有多主机区域副本的区域提供服务。
 services: container-registry
 author: stevelas
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: f6d1987012cb401d7167896d9352ba7eae821a04
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: cddd55d3dfc2609b7a32a276e106e152f0868b32
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887985"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931658"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
 
@@ -86,7 +86,7 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 
 若要配置副本，请选择一个绿色六边形，然后选择“创建”：
 
- ![Azure 门户中的“创建副本”UI](media/container-registry-geo-replication/create-replication.png)
+ ![Azure 门户中的“创建复制项”UI](media/container-registry-geo-replication/create-replication.png)
 
 若要创建其他副本，请选择表示其他区域的绿色六边形，然后单击“创建”。
 
@@ -121,7 +121,7 @@ ACR 将开始在配置的副本间同步映像。 完成后，门户将显示“
  
 将映像推送到异地复制注册表的 Docker 客户端可能不会将所有映像层及其清单推送到单个复制区域。 出现这种情况的原因可能是因为 Azure 流量管理器将注册表请求路由到离网络最近的复制注册表。 如果注册表有两个*附近*的复制区域，则可以将映像层和清单分发到两个站点，并且在验证清单时推送操作将失败。 之所以出现此问题是因为在某些 Linux 主机上解析注册表的 DNS 名称的方式。 这个问题不会发生在 Windows 上，因为 Windows 提供了一个客户端 DNS 缓存。
  
-如果出现此问题，一种解决方案是在 Linux 主机上应用客户端 DNS 缓存，比如 `dnsmasq`。 这有助于确保一致地解析注册表的名称。 如果你使用 Azure 中的 Linux VM 推送到注册表，请参阅 [Azure 中 Linux 虚拟机的 DNS 名称解析选项](https://docs.microsoft.com/azure/virtual-machines/linux/azure-dns)中的选项。
+如果出现此问题，一种解决方案是在 Linux 主机上应用客户端 DNS 缓存，比如 `dnsmasq`。 这有助于确保一致地解析注册表的名称。 如果你使用 Azure 中的 Linux VM 推送到注册表，请参阅 [Azure 中 Linux 虚拟机的 DNS 名称解析选项](../virtual-machines/linux/azure-dns.md)中的选项。
 
 若要在推送映像时将 DNS 解析优化到最近的副本，请在推送操作源所在的 Azure 区域中配置异地复制注册表，或者在 Azure 外部工作时配置最近的区域。
 

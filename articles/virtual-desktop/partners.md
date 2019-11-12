@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: helohr
-ms.openlocfilehash: cf344d6c551ecd3d301d79c29efe9e7adb7f8d83
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: dc93480807f34a79ee02f628f7b6f090c7efa428
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646891"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931709"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虚拟桌面合作伙伴集成
 
@@ -59,7 +59,7 @@ ControlUp 是一个 Windows 虚拟桌面增值服务提供程序，它使 IT 团
 
 与 Windows 虚拟桌面一起使用时，ControlUp 提供了其他功能来优化 Windows 虚拟桌面环境和最终用户体验。 在 ControlUp 控制台中，它将获取最终用户环境可见性，以有效监视和解决性能问题。 直观的仪表板提供了虚拟桌面部署的见解和分析，以及通过社区基准功能丰富的自动报告选项。 ControlUp 可以管理多个数据源和类型，将它们组织到跨计算、存储和 Windows 虚拟桌面基础结构聚合的高性能数据集中，允许从单个窗格获得精细的可见性。
 
-- [请参阅联接解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit)。
+- [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit)。
 - [请参阅合作伙伴网站](https://www.controlup.com/solutions/ms_wvd/)。
 
 ## <a name="devicetrust"></a>deviceTRUST

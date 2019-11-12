@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: c6a6af6d32e0664e66696523f53ac81cd921609e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a61b7e058e485121d87c5d3bb1050b4289e4ceed
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814873"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931074"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>使用 Azure 机器学习培训和注册 Keras 分类模型
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -50,7 +50,7 @@ Keras 是一种高级神经网络 API，能够运行其他流行的 DNN 框架�
 
 本部分通过加载所需的 python 包、初始化工作区、创建试验以及上传定型数据和训练脚本来设置训练实验。
 
-### <a name="import-packages"></a>导入程序包
+### <a name="import-packages"></a>导入包
 
 首先，导入必需的 Python 库。
 
@@ -84,7 +84,7 @@ exp = Experiment(workspace=ws, name='keras-mnist')
 <a name="data-upload"></a>
 ### <a name="create-a-file-dataset"></a>创建文件数据集
 
-`FileDataset` 对象引用工作区数据存储或公共 url 中的一个或多个文件。 文件可以是任何格式，类可让你将文件下载或装载到你的计算中。 通过创建 `FileDataset`，可以创建对数据源位置的引用。 如果将任何转换应用于数据集，则它们也会存储在数据集中。 数据会保留在其现有位置，因此不会产生额外的存储成本。 有关详细信息，请参阅 `Dataset` 包上的操作[方法](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets)指南。
+`FileDataset` 对象引用工作区数据存储或公共 URL 中的一个或多个文件。 文件可以是任何格式，该类提供将文件下载或装载到计算机的功能。 通过创建 `FileDataset`，可以创建对数据源位置的引用。 如果将任何转换应用于数据集，则它们也会存储在数据集中。 数据会保留在其现有位置，因此不会产生额外的存储成本。 有关详细信息，请参阅 [ 包中的](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets)操作`Dataset`指南。
 
 ```python
 from azureml.core.dataset import Dataset
@@ -189,6 +189,9 @@ run.wait_for_completion(show_output=True)
 ```Python
 model = run.register_model(model_name='keras-dnn-mnist', model_path='outputs/model')
 ```
+
+> [!TIP]
+> 刚注册的模型的部署方式与 Azure 机器学习中任何其他已注册的模型完全相同，无论你使用哪种估计器进行定型。 部署操作方法包含有关注册模型的部分，但你可以直接跳到创建用于部署的[计算目标](how-to-deploy-and-where.md#choose-a-compute-target)，因为你已有一个已注册的模型。
 
 您还可以下载模型的本地副本。 这对于在本地执行其他模型验证工作非常有用。 在训练脚本中 `mnist-keras.py`，TensorFlow 的保护程序对象将模型保留到本地文件夹（计算目标的本地）。 可以使用 "运行" 对象从数据存储下载副本。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 95e38cee8f6995e09dbbb2194cd5a9d0ebc301c1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 32e7e79465b68caca9a636019f65b9f08284fc72
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498672"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928211"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>连接 Microsoft Cloud App Security 的数据 
 
@@ -27,10 +27,10 @@ ms.locfileid: "73498672"
 
 只需要单击一次，即可将日志从[Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)流式传输到 Azure Sentinel。 通过此连接，你可以将警报从 Cloud App Security 流式传输到 Azure Sentinel。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 具有全局管理员或安全管理员权限的用户
-- 若要将 Cloud Discovery 日志流式传输到 Azure Sentinel，请[在 Microsoft Cloud App Security 中启用 Azure sentinel 作为你的 SIEM](aka.ms. https://aka.ms/AzureSentinelMCAS)。
+- 若要将 Cloud Discovery 日志流式传输到 Azure Sentinel，请[在 Microsoft Cloud App Security 中启用 Azure sentinel 作为你的 SIEM](https://aka.ms/AzureSentinelMCAS)。
 
 > [!IMPORTANT]
 > 引入 Cloud Discovery 日志当前为公共预览版。

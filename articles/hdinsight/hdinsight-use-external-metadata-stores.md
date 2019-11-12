@@ -1,6 +1,6 @@
 ---
 title: 使用外部元数据存储 - Azure HDInsight
-description: 在 Azure HDInsight 群集中使用外部元数据存储，并使用最佳做法。
+description: 将外部元数据存储与 Azure HDInsight 群集一起使用以及最佳做法。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/29/2019
-ms.openlocfilehash: 33302f3760cc750bfc41386aaf17368abc15ba5d
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 18e03b6828922b3444d9461bef394b5c6682c238
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063291"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930323"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>使用外部元数据存储 - Azure HDInsight
 
@@ -57,9 +57,21 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 
 ![HDInsight Hive 元数据存储使用案例](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
 
+### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>为自定义元存储创建和配置 Azure SQL 数据库
+
+为 HDInsight 群集设置自定义 Hive 元存储之前，需要创建或拥有现有的 Azure SQL 数据库。  有关详细信息，请参阅[快速入门：在 AZURE SQL 数据库中创建单个数据库](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)。
+
+若要确保 HDInsight 群集可以访问已连接的 Azure SQL 数据库，请配置 Azure SQL 数据库防火墙规则，以允许 Azure 服务和资源访问服务器。
+
+可以在 Azure 门户中启用此选项，方法是单击 "**设置服务器防火墙**"，然后单击下面的 **"** **允许 Azure 服务和资源访问**azure SQL 数据库服务器或数据库的此服务器"。 有关详细信息，请参阅[创建和管理 IP 防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
+
+!["设置服务器防火墙" 按钮](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
+
+![允许 azure 服务访问](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png)
+
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>在群集创建期间选择自定义元存储
 
-可在群集创建期间将群集指向之前所创建的 Azure SQL 数据库，还可在创建群集之后配置 SQL 数据库。 在从 Azure 门户创建新的 Hadoop、Spark 或交互式 Hive 群集时，此选项与**存储 > 元存储设置**一起指定。
+可在群集创建期间将群集指向之前所创建的 Azure SQL 数据库，还可在创建群集之后配置 SQL 数据库。 通过 Azure 门户创建新的 Hadoop、Spark 或交互式 Hive 群集时，依次访问“存储”和“元存储”设置来指定此选项。
 
 ![HDInsight Hive 元数据存储 Azure 门户](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
 
@@ -87,7 +99,7 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 
 * 如果在多个群集之间共享元存储，请确保所有群集都采用相同的 HDInsight 版本。 不同的 Hive 版本使用不同的元存储数据库架构。 例如，不能跨 Hive 2.1 和 Hive 3.1 版本控制群集共享元存储。
 
-* 在 HDInsight 4.0 中，Spark 和 Hive 使用独立目录来访问 SparkSQL 或 Hive 表。 Spark 创建的表驻留在 Spark 目录中。 Hive 创建的表驻留在 Hive 目录中。 这不同于 HDInsight 3.6，其中 Hive 和 Spark 共享公共目录。 HDInsight 4.0 中的 hive 和 Spark 集成依赖于 Hive 仓库连接器（HWC）。 HWC 在 Spark 和 Hive 之间起到桥梁作用。 [了解 Hive 仓库连接器](../hdinsight/interactive-query/apache-hive-warehouse-connector.md)。
+* 在 HDInsight 4.0 中，Spark 和 Hive 使用独立目录来访问 SparkSQL 或 Hive 表。 Spark 创建的表位于 Spark 目录中。 Hive 创建的表位于 Hive 目录中。 这与 HDInsight 3.6 不同，在 HDInsight 3.6 中，Hive 和 Spark 共享公共目录。 HDInsight 4.0 中的 Hive 和 Spark 集成依赖于 Hive 仓库连接器 (HWC)。 HWC 在 Spark 和 Hive 之间起到桥梁作用。 [了解 Hive 仓库连接器](../hdinsight/interactive-query/apache-hive-warehouse-connector.md)。
 
 ## <a name="apache-oozie-metastore"></a>Apache Oozie 元存储
 

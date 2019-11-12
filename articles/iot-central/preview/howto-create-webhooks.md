@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 85dbf773a27600fddf8fe7e5570ff332241f0ebc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d1f99be5f21cbf8f1dcfe4a32595a639d3760494
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894950"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929938"
 ---
-# <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>在 Azure IoT Central 中基于规则创建 Webhook 操作
+# <a name="create-webhook-actions-on-rules-in-azure-iot-central-preview-features"></a>针对 Azure IoT Central 中的规则创建 webhook 操作（预览功能）
 
 本主题适用于构建者和管理员。
 

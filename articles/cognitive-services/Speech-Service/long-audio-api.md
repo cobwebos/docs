@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: 391cddbbd1b69fb7cb5422adbaea2f3378e273bf
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: f03e32eb17c7c02d8969ea6f79663a5c99196d7b
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580160"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931936"
 ---
 # <a name="long-audio-api-preview"></a>长音频 API （预览）
 
@@ -25,6 +25,9 @@ ms.locfileid: "73580160"
 
 * 服务返回的合成语音使用神经声音，这可确保高保真音频输出。
 * 由于实时响应不受支持，因此无需部署语音终结点。
+
+> [!NOTE]
+> 长音频 API 现在仅支持[自定义的神经声音](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices)。
 
 ## <a name="workflow"></a>工作流
 

@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 59f2db8ec4dd8affe1c87ca2bb85a7ff7b8a4d7c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b073c4244d2a7abc7c2c066c3fad036f0caa5faa
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485395"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929546"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>使用 Azure 中的 Linux Data Science Virtual Machine 进行数据科学
 
@@ -24,7 +24,7 @@ ms.locfileid: "73485395"
 
 在本演练中，我们将分析[spambase](https://archive.ics.uci.edu/ml/datasets/spambase)数据集。 Spambase 是一组标记为垃圾邮件或 ham （而不是垃圾邮件）的电子邮件。 Spambase 还包含有关电子邮件内容的一些统计信息。 我们稍后将在本演练中讨论统计信息。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 使用 Linux DSVM 之前，必须具备以下先决条件：
 
@@ -58,9 +58,9 @@ ms.locfileid: "73485395"
 
 数据集为每封电子邮件提供多种类型的统计信息：
 
-* 诸如**word\_频率\_的列 * word*** 指示电子邮件中与*单词*匹配的单词的百分比。 例如，如果**word\_频率\_使**为**1**，则电子邮件中所有单词的 1 *% 都为1。*
-* **Char\_频率列（如 char\_* char***）指示电子邮件中作为*char*的所有字符的百分比。
-* **capital\_run\_length\_longest** 是连串大写字母的最大长度。
+* Word **\_\_频率** 等列指示电子邮件中与*单词*匹配的单词百分比。 例如，如果**word\_频率\_使**为**1**，则电子邮件中所有单词的 1 *% 都为1。*
+* Char **\_\_频率等列** 会指示电子邮件中作为*char*的所有字符的百分比。
+* **capital\_run\_length\_longest** 是一连串大写字母的最大长度。
 * **capital\_run\_length\_average** 是所有连串大写字母的平均长度。
 * **capital\_run\_length\_total** 是所有连串大写字母的合计长度。
 * **spam** 指示是否将电子邮件视为垃圾邮件（1 = 垃圾邮件，0 = 不是垃圾邮件）。
@@ -381,7 +381,7 @@ Rattle 使用一个基于选项卡的接口。 大部分选项卡与[团队数�
 你还可以使用 "**浏览**" 选项卡生成具有深刻的绘图。 若要绘制数据直方图：
 
 1. 选择”**分布**“。
-1. 对于**word_freq_remove**和**word_freq_you**，选择 "**直方图**"。
+1. 对于**word_freq_remove**和**word_freq_you**，请选择 "**直方图**"。
 1. 选择”**执行**“。 你应在单个图形窗口中看到两个密度图，在这种情况下，_在电子_邮件中显示的词比_删除_更频繁。
 
 **相关**图形也很有趣。 创建绘图：
@@ -415,7 +415,7 @@ Rattle 还可以运行群集分析。 让我们来排除某些功能，以使输
 
 1. 选择”**模型**“选项卡，
 1. 对于 "**类型**"，选择 "**树**"。
-1. 选择“执行”，可在输出窗口中以文本形式显示树。
+1. 选择“执行”在输出窗口中以文本形式显示树。
 1. 选择”**绘制**“按钮，以查看图形版本。 决策树类似于我们之前通过使用 rpart 获取的树。
 
 Rattle 的一项有用功能是它能够运行多个机器学习方法并快速对它们进行评估。 步骤如下：

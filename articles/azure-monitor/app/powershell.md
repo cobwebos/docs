@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 5ae043c356559b2e675f05af3eb7eb61973eb170
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 2f59b66bacbd0105e5a543b019a5c6646e010c48
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621933"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928524"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 资源
 
@@ -595,7 +595,7 @@ Azure 应严格按顺序设置资源。 若要确保某一设置在下一设置�
 ## <a name="next-steps"></a>后续步骤
 其他自动化文章：
 
-* [创建 Application Insights 资源](powershell-script-create-resource.md) - 不使用模板的快速方法。
+* [创建 Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) - 不使用模板的快速方法。
 * [设置警报](powershell-alerts.md)
 * [创建 Web 测试](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [将 Azure 诊断发送到 Application Insights](powershell-azure-diagnostics.md)

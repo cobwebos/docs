@@ -1,5 +1,5 @@
 ---
-title: 将泛型 Node.js 客户端应用程序连接到 Azure IoT Central | Microsoft Docs
+title: 将通用 node.js 客户端应用连接到 Azure IoT Central |Microsoft Docs
 description: 作为设备开发人员，如何将通用 node.js 设备连接到 Azure IoT Central 应用程序。
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 76ab6a229de14af1e3808326c62a7bdbbd188e81
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 87dbd7ab4d75150d09a8c26db50ce2e3b1a085db
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951362"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930239"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>将泛型客户端应用程序连接到 Azure IoT Central 应用程序 (Node.js)
 
@@ -26,7 +26,7 @@ ms.locfileid: "72951362"
 若要完成本文中的步骤，需要以下各项：
 
 - Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
-- 安装了 [Node.js](https://nodejs.org/) 4.0.0 或更高版本的开发计算机。 若要检查版本，可以在命令行中运行 `node --version`。 Node.js 适用于各种操作系统。
+- 安装了 [Node.js](https://nodejs.org/) 4.0.0 或更高版本的开发计算机。 若要检查版本，可以在命令行中运行 `node --version`。 Node.js 适用于各种不同的操作系统。
 
 ## <a name="create-a-device-template"></a>创建设备模板
 
@@ -36,11 +36,11 @@ ms.locfileid: "72951362"
 
 在 "**度量值**" 页上添加以下遥测数据：
 
-| 显示名称 | 字段名称  | 单位 | Min | 最多 | 小数位数 |
+| 显示名称 | 字段名称  | 单位 | Min | Max | 小数位数 |
 | ------------ | ----------- | ----- | --- | --- | -------------- |
 | 温度  | 温度 | F     | 60  | 110 | 0              |
 | 湿度     | 湿度    | %     | 0   | 100 | 0              |
-| 压力     | 压力    | kPa   | 80  | 110 | 0              |
+| 压力     | 压强    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
 > 遥测度量的数据类型是一个浮点数。
@@ -53,7 +53,7 @@ ms.locfileid: "72951362"
 
 | 显示名称 | 字段名称  | 值 1 | 显示名称 | 值 2 | 显示名称 |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
-| 风扇模式     | fanmode     | 第       | 正在运行      | 0       | 已停止      |
+| 风扇模式     | fanmode     | 1       | 正在运行      | 0       | 已停止      |
 
 > [!NOTE]
 > 状态度量的数据类型为字符串。
@@ -64,7 +64,7 @@ ms.locfileid: "72951362"
 
 在 "**度量值**" 页上添加以下事件：
 
-| 显示名称 | 字段名称  | Severity |
+| 显示名称 | 字段名称  | 严重性 |
 | ------------ | ----------- | -------- |
 | 过热  | 过热    | 错误    |
 
@@ -77,7 +77,7 @@ ms.locfileid: "72951362"
 
 | 显示名称 | 字段名称  |
 | ------------ | ----------- |
-| Location     | 位置    |
+| 位置     | location    |
 
 位置度量数据类型由经度和纬度的两个浮点数组成，并具有一个高度的可选浮点数。
 
@@ -98,7 +98,7 @@ ms.locfileid: "72951362"
 
 在 "**设置**" 页上添加以下**数字**设置：
 
-| 显示名称    | 字段名称     | 单位 | 小数 | Min | 最多  | 初始 |
+| 显示名称    | 字段名称     | 单位 | 小数 | Min | Max  | Initial |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
 | 风扇速度       | fanSpeed       | rpm   | 0        | 0   | 3000 | 0       |
 | 设置温度 | setTemperature | F     | 0        | 20  | 200  | 80      |
@@ -115,7 +115,7 @@ ms.locfileid: "72951362"
 
 将以下输入字段添加到倒计时命令：
 
-| 显示名称    | 字段名称     | 数据类型 | Value |
+| 显示名称    | 字段名称     | 数据类型 | 值 |
 | --------------- | -------------- | --------- | ----- |
 | 计数起始      | countFrom      | 数字    | 10    |
 
@@ -142,9 +142,9 @@ ms.locfileid: "72951362"
     npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
-1. 在 `connected-air-conditioner-adv` 文件夹中创建名为 **connectedAirConditionerAdv.js** 的文件。
+1. 在 **文件夹中创建名为**connectedAirConditionerAdv.js`connected-air-conditioner-adv` 的文件。
 
-1. 在 **connectedAirConditionerAdv.js** 文件的开头添加以下 `require` 语句：
+1. 在 `require`connectedAirConditionerAdv.js**文件的开头添加以下** 语句：
 
     ```javascript
     "use strict";
@@ -158,7 +158,7 @@ ms.locfileid: "72951362"
     var ProvisioningDeviceClient = require('azure-iot-provisioning-device').ProvisioningDeviceClient;
     ```
 
-1. 将以下变量声明添加到该文件：
+1. 向文件添加以下变量声明：
 
     ```javascript
     var provisioningHost = 'global.azure-devices-provisioning.net';

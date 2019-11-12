@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Azure Maps 搜索服务搜索地址 | Microsoft Docs
+title: 使用 Azure Maps 搜索服务查找地址 |Microsoft Docs
 description: 了解如何使用 Azure Maps 搜索服务搜索地址
 author: walsehgal
 ms.author: v-musehg
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a41a811e9313f79c9c3165e02cb5eaa4353b65ab
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 9ce6459dd65c75c6fcff5591d4e4667e4b0c75fa
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914469"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928492"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>使用 Azure Maps 搜索服务查找地址
 
@@ -50,19 +50,19 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
     |---------------|------------------------------------------------|
     | HTTP 方法 | GET |
     | 请求 URL | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
-    | Authorization | 无身份验证 |
+    | 授权 | 无身份验证 |
 
-    URL 路径中的 **json** 属性确定响应格式。 为方便使用和阅读，整篇文章都会使用 json。 可以在 [Maps 功能 API 参考](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)的 **Get 模糊搜索**定义中找到可用的响应格式。
+    URL 路径中的 **json** 属性确定响应格式。 为方便使用和阅读，整篇文章都会使用 json。 可以在 **Maps 功能 API 参考**的 [Get 模糊搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)定义中找到可用的响应格式。
 
 3. 单击“参数”，输入以下键值对用作请求 URL 中的查询或路径参数：
 
     ![模糊搜索](./media/how-to-search-for-address/fuzzy_search_params.png)
 
-    | Key | ReplTest1 |
+    | 键 | 值 |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<你的 Azure Maps 密钥\> |
-    | query | pizza |
+    | 查询 | pizza |
 
 4. 单击“发送”并查看响应正文。
 
@@ -72,7 +72,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
 5. 将以下键/值对添加至 Params 部分，并单击“发送”：
 
-    | Key | ReplTest1 |
+    | 键 | 值 |
     |------------------|-------------------------|
     | countrySet | 美国 |
   
@@ -84,7 +84,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
     ![模糊搜索](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
-    | Key | ReplTest1 |
+    | 键 | 值 |
     |-----|------------|
     | lat | 47.620525 |
     | lon | -122.349274 |
@@ -93,7 +93,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
 可将整个或部分街道地址传递给搜索地址 API，并接收包含详细地址属性（例如市政当局或分部，以及以纬度和经度表示的位置值）的响应。
 
-1. 在 Postman 中，单击“新建请求” | “GET 请求”，并将请求命名为“地址搜索”。
+1. 在 Postman 中，单击“新建请求” **“GET 请求”，并将请求命名为“地址搜索”。**  | 
 2. 在“生成器”选项卡上，选择“GET”HTTP 方法，输入 API 终结点的请求 URL，并选择授权协议（如果有）。
 
     ![地址搜索](./media/how-to-search-for-address/address_search_url.png)
@@ -102,17 +102,17 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
     |---------------|------------------------------------------------|
     | HTTP 方法 | GET |
     | 请求 URL | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) |
-    | Authorization | 无身份验证 |
+    | 授权 | 无身份验证 |
 
 3. 单击“参数”，输入以下键值对用作请求 URL 中的查询或路径参数：
   
     ![地址搜索](./media/how-to-search-for-address/address_search_params.png)
   
-    | Key | ReplTest1 |
+    | 键 | 值 |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<你的 Azure Maps 密钥\> |
-    | query | 400 Broad St, Seattle, WA 98109 |
+    | 查询 | 400 Broad St, Seattle, WA 98109 |
   
 4. 单击“发送”并查看响应正文。
   
@@ -125,15 +125,15 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
 6. 将以下键/值对添加至 Params 部分，并单击“发送”：
 
-    | Key | ReplTest1 |
+    | 键 | 值 |
     |-----|------------|
-    | typeahead | 真 |
+    | typeahead | 是 |
 
     **typeahead** 标志告知地址搜索 API 要将查询视为部分输入，并返回预测值的数组。
 
 ## <a name="search-for-a-street-address-using-reverse-address-search"></a>使用反向地址搜索搜索街道地址
 
-1. 在 Postman 中，单击“新建请求” | “GET 请求”，并将请求命名为“反向地址搜索”。
+1. 在 Postman 中，单击“新建请求” **“GET 请求”，并将请求命名为“反向地址搜索”。**  | 
 
 2. 在“生成器”选项卡上，选择“GET”HTTP 方法，输入 API 终结点的请求 URL。
   
@@ -143,17 +143,17 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
     |---------------|------------------------------------------------|
     | HTTP 方法 | GET |
     | 请求 URL | [https://atlas.microsoft.com/search/address/reverse/json?](https://atlas.microsoft.com/search/address/reverse/json?) |
-    | Authorization | 无身份验证 |
+    | 授权 | 无身份验证 |
   
 3. 单击“参数”，输入以下键值对用作请求 URL 中的查询或路径参数：
   
     ![反向地址搜索参数](./media/how-to-search-for-address/reverse_address_search_params.png)
   
-    | Key | ReplTest1 |
+    | 键 | 值 |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<你的 Azure Maps 密钥\> |
-    | query | 47.591180,-122.332700 |
+    | 查询 | 47.591180,-122.332700 |
   
 4. 单击“发送”并查看响应正文。
 
@@ -161,39 +161,39 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
   
 5. 将以下键/值对添加至 Params 部分，并单击“发送”：
 
-    | Key | ReplTest1 |
+    | 键 | 值 |
     |-----|------------|
-    | number | 真 |
+    | 数字 | 是 |
 
     如果连同请求一起发送了 [number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 查询参数，则响应可能包含街道的边侧（左/右），以及该编号的偏移位置。
   
 6. 将以下键/值对添加至 Params 部分，并单击“发送”：
 
-    | Key | ReplTest1 |
+    | 键 | 值 |
     |-----|------------|
-    | returnSpeedLimit | 真 |
+    | returnSpeedLimit | 是 |
   
     如果设置了 [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 查询参数，响应将返回发布的速度限制。
 
 7. 将以下键/值对添加至 Params 部分，并单击“发送”：
 
-    | Key | ReplTest1 |
+    | 键 | 值 |
     |-----|------------|
-    | returnRoadUse | 真 |
+    | returnRoadUse | 是 |
 
     如果设置了 [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 查询参数，响应将返回街道级别的反向地理编码的道路用途数组。
 
 8. 将以下键/值对添加至 Params 部分，并单击“发送”：
 
-    | Key | ReplTest1 |
+    | 键 | 值 |
     |-----|------------|
-    | roadUse | 真 |
+    | roadUse | 是 |
 
     可以使用 [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 查询参数，将反向地理编码查询限制为特定类型的道路用途。
   
 ## <a name="search-for-the-cross-street-using-reverse-address-cross-street-search"></a>使用反向地址十字路口搜索搜索十字路口
 
-1. 在 Postman 中，单击“新建请求” | “GET 请求”，并将请求命名为“反向地址十字路口搜索”。
+1. 在 Postman 中，单击“新建请求” **“GET 请求”，并将请求命名为“反向地址十字路口搜索”。**  | 
 
 2. 在“生成器”选项卡上，选择“GET”HTTP 方法，输入 API 终结点的请求 URL。
   
@@ -203,15 +203,15 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
     |---------------|------------------------------------------------|
     | HTTP 方法 | GET |
     | 请求 URL | [https://atlas.microsoft.com/search/address/reverse/crossstreet/json?](https://atlas.microsoft.com/search/address/reverse/crossstreet/json?) |
-    | Authorization | 无身份验证 |
+    | 授权 | 无身份验证 |
   
 3. 单击“参数”，输入以下键值对用作请求 URL 中的查询或路径参数：
   
-    | Key | ReplTest1 |
+    | 键 | 值 |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<你的 Azure Maps 密钥\> |
-    | query | 47.591180,-122.332700 |
+    | 查询 | 47.591180,-122.332700 |
   
 4. 单击“发送”并查看响应正文。
 

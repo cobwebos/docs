@@ -1,5 +1,5 @@
 ---
-title: 在 Microsoft Flow 中使用 Azure IoT Central 连接器生成工作流 | Microsoft Docs
+title: 在 Microsoft Flow 中使用 Azure IoT Central 连接器 |Microsoft Docs
 description: 使用 Microsoft Flow 中的 IoT Central 连接器来触发工作流，并创建、获取、更新、删除设备，并在工作流中运行命令。
 services: iot-central
 author: viv-liu
@@ -8,12 +8,12 @@ ms.date: 08/26/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: 258020c8ccd690c524460873387293e73fc89125
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f1912b90df75f3d85f6ba5d730c723cf42803237
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951726"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930379"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>在 Microsoft Flow 中使用 IoT Central 连接器生成工作流
 
@@ -30,7 +30,7 @@ ms.locfileid: "72951726"
 
 请检查[这些 Microsoft Flow 模板](https://aka.ms/iotcentralflowtemplates)，此类模板可以将 IoT Central 连接到其他服务，例如移动通知和 Microsoft Teams。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 即用即付应用程序
 - 要使用 Microsoft Flow 的 Microsoft 个人或工作或学校帐户（[详细了解 Microsoft Flow 计划](https://aka.ms/microsoftflowplans)）

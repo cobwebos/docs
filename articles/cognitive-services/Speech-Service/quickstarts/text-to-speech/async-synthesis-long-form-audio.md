@@ -10,16 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 2c1e6ef84a472ccec5116b12e18ad80c92b68960
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d308623a323fecd39efa90639da71fb981936fe5
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681881"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930581"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>快速入门： Python 中长格式音频的异步合成（预览版）
 
 在本快速入门中，你将使用长音频 API 将文本异步转换为语音，并从服务提供的 URI 检索音频输出。 此 REST API 非常适合于需要将超过10000个字符或50段的文本文件转换为合成语音的内容提供商。 有关详细信息，请参阅[长音频 API](../../long-audio-api.md)。
+
+> [!NOTE]
+> 用于长格式音频的异步合成只能与[自定义神经语音](../../how-to-custom-voice.md#custom-neural-voices)一起使用。
 
 ## <a name="prerequisites"></a>先决条件
 

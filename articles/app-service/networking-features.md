@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 102f3e131b20534dc2f192b6485a3fdc95070315
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 801692c53ef268f15edc60d31743aefa6a247a78
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470257"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928510"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 
@@ -43,7 +43,7 @@ Azure App Service 是一种分布式系统。 处理传入 HTTP/HTTPS 请求的�
 
 对于任何给定用例，可以通过几种方法解决此问题。  使用正确的功能有时是由于仅用例本身之外的原因。 下面的入站用例建议如何使用应用服务网络功能来解决有关控制传入应用的流量的问题。 
  
-| 入站用例 | Feature |
+| 入站用例 | 功能 |
 |---------------------|-------------------|
 | 支持应用的基于 IP 的 SSL 需求 | 应用分配的地址 |
 | 不共享、应用的专用入站地址 | 应用分配的地址 |
@@ -57,7 +57,7 @@ Azure App Service 是一种分布式系统。 处理传入 HTTP/HTTPS 请求的�
 
 以下出站用例建议如何使用应用服务网络功能来解决应用的出站访问需求。 
 
-| 出站用例 | Feature |
+| 出站用例 | 功能 |
 |---------------------|-------------------|
 | 在同一区域中访问 Azure 虚拟网络流入量中的资源 | VNet 集成 </br> ASE |
 | 网络流入量不同的区域访问 Azure 虚拟中的资源 | 需要网关的 VNet 集成 </br> ASE 和 VNet 对等互连 |
@@ -91,7 +91,7 @@ Azure App Service 扩展单元支持每个部署中的多个客户。 免费和�
 
 ### <a name="access-restrictions"></a>访问限制 
 
-访问限制功能使你可以基于源 IP 地址筛选**入站**请求。 筛选操作在运行应用程序的工作进程中上游的前端角色上发生。 由于前端角色与工作人员上游，因此可将访问限制功能视为适用于你的应用的网络级别保护。 此功能允许你构建按优先级顺序计算的允许和拒绝地址块的列表。 它类似于 Azure 网络中存在的网络安全组（NSG）功能。  可以在 ASE 或多租户服务中使用此功能。 与 ILB ASE 一起使用时，你可以限制从专用地址块进行访问。
+访问限制功能使你可以基于源 IP 地址筛选**入站**请求。 筛选操作发生在与运行应用的辅助角色的上游上游的前端角色上。 由于前端角色与工作人员上游，因此可将访问限制功能视为适用于你的应用的网络级别保护。 此功能允许你构建按优先级顺序计算的允许和拒绝地址块的列表。 它类似于 Azure 网络中存在的网络安全组（NSG）功能。  可以在 ASE 或多租户服务中使用此功能。 与 ILB ASE 一起使用时，你可以限制从专用地址块进行访问。
 
 ![访问限制](media/networking-features/access-restrictions.png)
 

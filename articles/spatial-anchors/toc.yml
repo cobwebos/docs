@@ -85,6 +85,8 @@
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
 - name: 资源
   items:
+    - name: 发行说明
+      href: 'https://github.com/Azure/azure-spatial-anchors-samples/releases'
     - name: Azure 混合现实资源管理 REST API
       href: 'https://docs.microsoft.com/rest/api/mixedreality/'
     - name: 常见问题解答

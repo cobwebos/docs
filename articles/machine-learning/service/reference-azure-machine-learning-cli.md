@@ -1,7 +1,7 @@
 ---
-title: 机器学习 CLI 扩展
+title: CLI 扩展
 titleSuffix: Azure Machine Learning
-description: 了解适用于 Azure CLI 的 Azure 机器学习的机器学习 CLI 扩展。 Azure CLI 是一个跨平台命令行实用工具，可让你使用 Azure 云中的资源。 机器学习扩展使你能够使用 Azure 机器学习。
+description: 了解适用于 Azure CLI 的 Azure 机器学习的机器学习 CLI 扩展。 Azure CLI 是一个跨平台命令行实用工具，可让你使用 Azure 云中的资源。 机器学习扩展使你能够使用 Azure 机器学习。 ML CLI 创建和管理资源，如工作区、数据存储、数据集、管道、模型和部署。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 20ff7d2cb6c185f574494871a986e1bce63536ba
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e775689da93b5197d1c2f7d130466c2afc8391e4
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619962"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932075"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>使用 CLI 扩展进行 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +33,7 @@ CLI 不能取代 Azure 机器学习 SDK。 它是一种补充工具，经过优�
 
 ## <a name="prerequisites"></a>先决条件
 
-* 若要使用 CLI，必须拥有 Azure 订阅。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+* 若要使用 CLI，必须拥有 Azure 订阅。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
 

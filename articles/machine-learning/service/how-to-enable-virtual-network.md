@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/25/2019
-ms.openlocfilehash: e5dee838df2a60bf2038f2c7d2b1cc5958354d29
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 5ac741579562b41678c4aeb59bb5ebb425d8405c
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796769"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932088"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中保护 Azure ML 试验和推理作业
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -156,8 +156,8 @@ Azure 机器学习使用与工作区关联的密钥保管库实例来存储以�
 - 使用 NSG 规则拒绝出站 internet 连接。
 
 - 限制出站流量：
-   - Azure 存储，使用__Region_Name__的__服务标记__（例如 EastUS）
-   - Azure 容器注册表，使用__AzureContainerRegistry. Region_Name__的__服务标记__（例如 AzureContainerRegistry EastUS）
+   - Azure 存储，使用存储的__服务标记__ __Region_Name__ （例如 EastUS）
+   - Azure 容器注册表（通过使用__Region_Name AzureContainerRegistry__的__服务标记__）（例如，AzureContainerRegistry. EastUS）
    - Azure 机器学习，使用__AzureMachineLearning__的__服务标记__
 
 下图显示了 Azure 门户中的 NSG 规则配置：
@@ -196,7 +196,7 @@ Azure 机器学习使用与工作区关联的密钥保管库实例来存储以�
 
 1. 若要将此计算资源配置为使用虚拟网络，请执行以下操作：
 
-    a. 对于 "__网络配置__"，选择 "__高级__"。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于 "__网络配置__"，选择 "__高级__"。
 
     b. 在 "__资源组__" 下拉列表中，选择包含虚拟网络的资源组。
 

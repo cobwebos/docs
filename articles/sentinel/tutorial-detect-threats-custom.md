@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5d4c549eaded78c69d3e7fa7173b5ad9b1d82f2f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9c4ba09c7e3eca4482ed56b0b337124aeec5b838
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333147"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928256"
 ---
 # <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>教程：创建自定义分析规则以检测可疑威胁
 
-在将 [数据源连接到](quickstart-onboard.md)@no__t 1To Azure Sentinel 后，你可以创建自定义规则，这些规则可以在你的环境中搜索特定的条件，并在符合条件时生成事件，以便你能够调查它们。 本教程将帮助你创建自定义规则，以检测 Azure Sentinel 的威胁。
+将 [数据 源连接](quickstart-onboard.md)到 Azure Sentinel 后，你可以创建自定义规则，这些规则可以在你的环境中搜索特定的条件，并在符合条件时生成事件，以便你可以对其进行调查。 本教程将帮助你创建自定义规则，以检测 Azure Sentinel 的威胁。
 
 本教程可帮助你检测 Azure Sentinel 的威胁。
 > [!div class="checklist"]
@@ -56,7 +56,7 @@ ms.locfileid: "72333147"
     \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
 
    > [!NOTE]
-   > 查询长度应介于1到1000个字符之间，并且不能包含 "search \*" 或 "union \*"。
+   > 查询长度应介于1到10000个字符之间，并且不能包含 "search \*" 或 "union \*"。
 
     1. 在 "**查询计划**" 下，设置以下参数：
 

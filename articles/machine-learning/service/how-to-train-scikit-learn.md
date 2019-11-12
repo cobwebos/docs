@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: ea466486509c4b5dadc48ef830c9f05ec42ab5b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6d71ea59b7094134cc70b9eeea6da89feacb3a14
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814861"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931059"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>构建 scikit-learn-通过 Azure 机器学习的规模了解模型
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,7 +47,7 @@ ms.locfileid: "73814861"
 
 本部分通过加载所需的 python 包、初始化工作区、创建试验以及上传定型数据和训练脚本来设置训练实验。
 
-### <a name="import-packages"></a>导入程序包
+### <a name="import-packages"></a>导入包
 
 首先，导入必需的 Python 库。
 
@@ -177,20 +177,47 @@ import joblib
 joblib.dump(svm_model_linear, 'model.joblib')
 ```
 
-用以下代码将模型注册到工作区。
+用以下代码将模型注册到工作区。 通过指定参数 `model_framework`、`model_framework_version`和 `resource_configuration`，无代码模型部署将变为可用。 这使你可以从已注册的模型直接将你的模型部署为 web 服务，`ResourceConfiguration` 对象定义 web 服务的计算资源。
 
 ```Python
-model = run.register_model(model_name='sklearn-iris', model_path='model.joblib')
+from azureml.core import Model
+from azureml.core.resource_configuration import ResourceConfiguration
+
+model = run.register_model(model_name='sklearn-iris', 
+                           model_path='model.joblib',
+                           model_framework=Model.Framework.SCIKITLEARN,
+                           model_framework_version='0.19.1',
+                           resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
 ```
+
+## <a name="deployment"></a>部署
+
+你刚注册的模型可以采用与 Azure 机器学习中任何其他已注册模型完全相同的方式进行部署，无论你使用哪种估计器进行定型。 部署操作方法包含有关注册模型的部分，但你可以直接跳到创建用于部署的[计算目标](how-to-deploy-and-where.md#choose-a-compute-target)，因为你已有一个已注册的模型。
+
+### <a name="preview-no-code-model-deployment"></a>效果无代码模型部署
+
+除了传统的部署路由，还可以使用无代码部署功能（预览版）进行 scikit-learn。 所有内置 scikit-learn 模型类型都支持非代码模型部署。 通过向上面所示的 `model_framework`、`model_framework_version`和 `resource_configuration` 参数注册模型，只需使用 `deploy()` 静态函数部署模型即可。
+
+```python
+web_service = Model.deploy(ws, "scikit-learn-service", [model])
+```
+
+注意：这些依赖项包含在预生成的 scikit-learn 推理容器中。
+
+```yaml
+    - azureml-defaults
+    - inference-schema[numpy-support]
+    - scikit-learn
+    - numpy
+```
+
+完整的操作[方法](how-to-deploy-and-where.md)涵盖 Azure 机器学习中更深入的部署。
+
 
 ## <a name="next-steps"></a>后续步骤
 
+本文介绍了如何培训和注册了 scikit-learn 模型，并了解了部署选项。 请参阅以下文章，详细了解 Azure 机器学习。
 
-本文介绍了如何在 Azure 机器学习上定型并注册 Keras 模型。 若要了解如何部署模型，请继续学习我们的模型部署一文。
-
-> [!div class="nextstepaction"]
-> [部署模型的方式和位置](how-to-deploy-and-where.md)
 * [在训练期间跟踪运行指标](how-to-track-experiments.md)
 * [优化超参数](how-to-tune-hyperparameters.md)
-* [部署定型的模型](how-to-deploy-and-where.md)
 * [Azure 中的分布式深层学习培训参考体系结构](/azure/architecture/reference-architectures/ai/training-deep-learning)

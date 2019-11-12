@@ -1,96 +1,154 @@
 ---
-title: 从 Azure 容器服务 (ACS) 迁移到 Azure Kubernetes 服务 (AKS)
-description: 从 Azure 容器服务 (ACS) 迁移到 Azure Kubernetes 服务 (AKS)。
+title: 迁移到 Azure Kubernetes 服务（AKS）
+description: 迁移到 Azure Kubernetes 服务（AKS）。
 services: container-service
-author: noelbundick
-manager: jeconnoc
+author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 06/13/2018
-ms.author: nobun
+ms.date: 11/07/2018
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 84e0af89e2b3247bc922ab84286a79a0934323a8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0c243d216e00adf49a6425e5b7be0d38caeef043
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472999"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929050"
 ---
-# <a name="migrate-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>从 Azure 容器服务 (ACS) 迁移到 Azure Kubernetes 服务 (AKS)
+# <a name="migrate-to-azure-kubernetes-service-aks"></a>迁移到 Azure Kubernetes 服务（AKS）
 
-本文帮助你规划并成功执行 Azure 容器服务 (ACS) 与 Kubernetes 和 Azure Kubernetes 服务 (AKS) 之间的迁移。 为帮助你做出关键决策，本指南详细描述了 ACS 与 AKS 之间的差异并概述了迁移过程。
+本文可帮助你规划和执行成功迁移到 Azure Kubernetes Service （AKS）的功能。 为帮助您做出关键决策，本指南提供了 AKS 的当前推荐配置的详细信息。 本文不介绍每种情况，在适当的情况下，本文包含了有关规划成功迁移的更详细信息的链接。
 
-## <a name="differences-between-acs-and-aks"></a>ACS 与 AKS 之间的差异
+本文档可用于帮助支持以下方案：
 
-ACS 与 AKS 之间存在一些会影响迁移的重要差异。 在执行任何迁移之前，应查看以下差异并做出相应的规划：
+* 将[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)支持的 AKS 群集迁移到[虚拟机规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)
+* 迁移 AKS 群集以使用[标准 SKU 负载均衡器](https://docs.microsoft.com/azure/aks/load-balancer-standard)
+* 从[Azure 容器服务（ACS）迁移-从2020年1月31日停](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)用到 AKS
+* 从[AKS 引擎](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)迁移到 AKS
+* 从非 Azure 基于 Azure 的 Kubernetes 群集迁移到 AKS
 
-* AKS 节点使用[托管磁盘](../virtual-machines/windows/managed-disks-overview.md)。
-    * 非托管磁盘必须在转换之后才可附加到 AKS 节点。
-    * Azure 磁盘的自定义 `StorageClass` 对象必须从 `unmanaged` 更改为 `managed`。
-    * 任何 `PersistentVolumes` 应使用 `kind: Managed`。
-* AKS 支持[多个节点池](https://docs.microsoft.com/azure/aks/use-multiple-node-pools)。
-* 基于 Windows Server 的节点当前在 AKS 中为[预览版](https://azure.microsoft.com/blog/kubernetes-on-azure/)。
-* AKS 支持有限的一组[区域](https://docs.microsoft.com/azure/aks/quotas-skus-regions)。
-* AKS 是带有托管 Kubernetes 控制平面的托管服务。 如果以前修改了 ACS 主节点的配置，则现在可能需要修改应用程序。
+迁移时，请确保目标 Kubernetes 版本位于 AKS 支持的窗口中。 如果使用较旧的版本，它可能不在支持的范围内，并且需要升级 AKS 支持的版本。 有关详细信息，请参阅[AKS 支持的 Kubernetes 版本](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions)。
 
-## <a name="differences-between-kubernetes-versions"></a>Kubernetes 版本之间的差异
+如果要迁移到较新版本的 Kubernetes，请查看[Kubernetes 版本和版本偏差支持策略](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-versions)。
 
-如果要迁移到较新版本的 Kubernetes，请查看以下资源以了解 Kubernetes 版本控制策略：
+根据你的方案，多个开源工具可帮助你进行迁移：
 
-* [Kubernetes 版本和版本歪斜支持策略](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-versions)
+* [Velero](https://velero.io/) （需要 Kubernetes 1.7 +）
+* [Azure Kube CLI 扩展](https://github.com/yaron2/azure-kube-cli)
+* [ReShifter](https://github.com/mhausenblas/reshifter)
 
-## <a name="migration-considerations"></a>迁移注意事项
+在本文中，我们将概括说明的迁移详细信息：
 
-### <a name="agent-pools"></a>代理池
+> [!div class="checklist"]
+> * 具有标准负载均衡器和虚拟机规模集的 AKS
+> * 现有附加的 Azure 服务
+> * 确保有效配额
+> * 高可用性和业务连续性
+> * 无状态应用程序的注意事项
+> * 有状态 "应用程序的注意事项
+> * 部署群集配置
 
-尽管 AKS 会管理 Kubernetes 控制平面，但你仍需定义要包含在新群集中的节点的大小和数目。 假设你要在 ACS 与 AKS 之间设置 1 对 1 的映射，则需要捕获现有的 ACS 节点信息。 新建 AKS 群集时将要使用此数据。
+## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>具有标准负载均衡器和虚拟机规模集的 AKS
 
-示例：
+AKS 是一种托管服务，提供了具有较低管理开销的独特功能。 作为托管服务的结果，你必须从 AKS 支持的一组[区域](https://docs.microsoft.com/azure/aks/quotas-skus-regions)中进行选择。 从现有群集到 AKS 的转换可能需要修改现有应用程序，使其在 AKS 托管控制平面上保持正常运行。
 
-| 名称 | 计数 | VM 大小 | 操作系统 |
-| --- | --- | --- | --- |
-| agentpool0 | 3 | Standard_D8_v2 | Linux |
-| agentpool1 | 1 | Standard_D2_v2 | Windows |
+建议使用[虚拟机规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets)和[Azure 标准负载均衡器](https://docs.microsoft.com/azure/aks/load-balancer-standard)支持的 AKS 群集，以确保获得多种功能，例如[多个节点池](https://docs.microsoft.com/azure/aks/use-multiple-node-pools)、[可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)、[授权 IP 范围](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)、[群集自动缩放程序](https://docs.microsoft.com/azure/aks/cluster-autoscaler)、[用于 AKS 的 Azure 策略](https://docs.microsoft.com/azure/governance/policy/concepts/rego-for-aks)和发布时的其他新功能。   
 
-由于在迁移期间要将其他虚拟机部署到订阅中，因此，应该检查配额和限制是否足以应对这些资源。 
+[虚拟机可用性集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/availability#availability-sets)支持的 AKS 群集对其中许多功能缺乏支持。
+
+以下示例创建一个具有虚拟机规模集支持的单节点池的 AKS 群集。 它使用标准负载均衡器。 它还会在群集的节点池中启用群集自动缩放程序，并将最小值设置为*1* ，最大值为*3*个节点：
+
+```azurecli-interactive
+# First create a resource group
+az group create --name myResourceGroup --location eastus
+
+# Now create the AKS cluster and enable the cluster autoscaler
+az aks create \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --node-count 1 \
+  --vm-set-type VirtualMachineScaleSets \
+  --load-balancer-sku standard \
+  --enable-cluster-autoscaler \
+  --min-count 1 \
+  --max-count 3
+```
+
+## <a name="existing-attached-azure-services"></a>现有附加的 Azure 服务
+
+迁移群集时，你可能已附加外部 Azure 服务。 这些操作不需要重新执行资源，但需要更新从以前到新群集的连接以维护功能。
+
+* Azure 容器注册表
+* Log Analytics
+* Application Insights
+* 流量管理器
+* 存储帐户
+* 外部数据库
+
+## <a name="ensure-valid-quotas"></a>确保有效配额
+
+由于在迁移期间要将其他虚拟机部署到订阅中，因此，应该检查配额和限制是否足以应对这些资源。 可能需要请求增加[vCPU 配额](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests)。
+
+可能需要请求增加[网络配额](https://docs.microsoft.com/azure/azure-supportability/networking-quota-requests)，以确保不会耗尽 ip。 有关其他信息，请参阅[AKS 的网络和 IP 范围](https://docs.microsoft.com/azure/aks/configure-kubenet)。
 
 有关详细信息，请参阅 [Azure 订阅和服务限制](https://docs.microsoft.com/azure/azure-subscription-service-limits)。 若要查看当前配额，请在 Azure 门户中转到[订阅边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，选择自己的订阅，然后选择“用量 + 配额”。
 
-### <a name="networking"></a>网络
+## <a name="high-availability-and-business-continuity"></a>高可用性和业务连续性
+
+如果你的应用程序无法处理停机时间，你将需要遵循高可用性迁移方案的最佳实践。  对于复杂的业务连续性规划、灾难恢复和最大化运行时间，最佳做法超出了本文档的讨论范围。  有关详细信息，请参阅[Azure Kubernetes Service （AKS）中有关业务连续性和灾难恢复的最佳实践](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region)。
 
 对于复杂的应用程序，我们通常会分阶段迁移，而不是一次性整个迁移。 这意味着，新旧环境可能需要通过网络进行通信。 以前能够使用 `ClusterIP` 服务进行通信的应用程序可能需要公开为 `LoadBalancer` 类型，并得到相应的保护。
 
 若要完成迁移，需将客户端指向 AKS 上运行的新服务。 建议通过将 DNS 更新为指向 AKS 群集前面的负载均衡器，来重定向流量。
 
-### <a name="stateless-applications"></a>无状态应用程序
+[Azure 流量管理器](https://docs.microsoft.com/azure/traffic-manager/)可以将客户定向到所需的 Kubernetes 群集和应用程序实例。  流量管理器是一种基于 DNS 的流量负载均衡器，可以在区域之间分配网络流量。  为获得最佳性能和冗余，在进入 AKS 群集之前，通过流量管理器来定向所有应用程序流量。  在多群集部署中，客户应连接到指向每个 AKS 群集上的服务的流量管理器 DNS 名称。 使用流量管理器终结点定义这些服务。 每个终结点都是服务负载均衡器 IP。 使用此配置可将网络流量从一个区域的流量管理器终结点定向到另一个区域的终结点。
 
-无状态应用程序的迁移最直截了当。 将 YAML 定义应用到新群集，确保一切按预期进行，然后重定向流量以激活新群集。
+![将 AKS 与流量管理器配合使用](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
 
-### <a name="stateful-applications"></a>有状态应用程序
+[Azure 前门服务](https://docs.microsoft.com/azure/frontdoor/front-door-overview)是路由 AKS 群集流量的另一种选择。  在 Azure Front Door 服务中可以进行优化以实现最佳性能以及进行即时全球故障转移以实现高可用性，并以此定义、管理和监视 Web 流量的全局路由。 
+
+### <a name="considerations-for-stateless-applications"></a>无状态应用程序的注意事项 
+
+无状态应用程序的迁移最直截了当。 将资源定义（YAML 或 Helm）应用到新群集，确保一切按预期运行，然后重定向流量以激活新群集。
+
+### <a name="considers-for-stateful-applications"></a>考虑有状态的应用程序
 
 精心规划有状态应用程序的迁移，以避免数据丢失或意外停机。
 
-#### <a name="highly-available-applications"></a>高可用性应用程序
+如果使用 Azure 文件，可以将文件共享作为卷装载到新群集中：
+* [装载静态 Azure 文件作为卷](https://docs.microsoft.com/azure/aks/azure-files-volume#mount-the-file-share-as-a-volume)
 
-可在高可用性配置中部署某些有状态应用程序。 这些应用程序可跨副本复制数据。 如果你当前使用此类部署，可以在新 AKS 群集上创建新成员，然后在尽量减小对下游调用方造成影响的情况下执行迁移。 此方案的迁移步骤通常包括：
+如果使用 Azure 托管磁盘，则只有在附加到任何 VM 时才能装载磁盘：
+* [装载静态 Azure 磁盘作为卷](https://docs.microsoft.com/azure/aks/azure-disk-volume#mount-disk-as-volume)
 
-1. 在 AKS 上创建新的次要副本。
-2. 等待数据复制完成。
-3. 故障转移，使次要副本成为主要副本。
-4. 将流量指向 AKS 群集。
+如果这两种方法都不起作用，则可以使用备份和还原选项：
+* [Azure 上的 Velero](https://github.com/heptio/velero/blob/master/site/docs/master/azure-config.md)
+
+#### <a name="azure-files"></a>Azure 文件
+
+与磁盘不同，Azure 文件可同时装载到多个主机。 在 AKS 群集中，Azure 和 Kubernetes 都不会阻止你创建 ACS 群集仍在使用的 Pod。 若要防止数据丢失和意外行为，请确保这两个群集不会同时向相同的文件写入数据。
+
+如果应用程序可以托管指向同一文件共享的多个副本，请遵循无状态迁移步骤，将 YAML 定义部署到新群集。 否则，可以采用包括以下步骤的可行迁移方法：
+
+* 验证应用程序是否正常工作。
+* 将实时流量指向新的 AKS 群集。
+* 断开旧群集的连接。
+
+若要从空共享开始，然后创建源数据的副本，可以使用 [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) 命令迁移数据。
+
 
 #### <a name="migrating-persistent-volumes"></a>迁移永久性卷。
 
 将现有的永久性卷迁移到 AKS 时，通常需要遵循以下步骤：
 
-1. 暂停写入到应用程序。 （此步骤是可选的，需要停机。）
-2. 创建磁盘的快照。
-3. 从快照创建新的托管磁盘。
-4. 在 AKS 中创建永久性卷。
-5. 将 Pod 规范更新为[使用现有卷](https://docs.microsoft.com/azure/aks/azure-disk-volume)而不是 PersistentVolumeClaims（静态预配）。
-6. 将应用程序部署到 AKS。
-7. 验证。
-8. 将流量指向 AKS 群集。
+* 暂停写入到应用程序。 （此步骤是可选的，需要停机。）
+* 创建磁盘的快照。
+* 从快照创建新的托管磁盘。
+* 在 AKS 中创建永久性卷。
+* 将 Pod 规范更新为[使用现有卷](https://docs.microsoft.com/azure/aks/azure-disk-volume)而不是 PersistentVolumeClaims（静态预配）。
+* 将应用程序部署到 AKS。
+* 验证应用程序是否正常工作。
+* 将实时流量指向新的 AKS 群集。
 
 > [!IMPORTANT]
 > 如果不暂停写入，则需要将数据复制到新部署。 否则在创建磁盘快照后，写入的数据将会丢失。
@@ -100,51 +158,24 @@ ACS 与 AKS 之间存在一些会影响迁移的重要差异。 在执行任何�
 * [Azure CLI 磁盘复制扩展](https://github.com/noelbundick/azure-cli-disk-copy-extension)可跨资源组和 Azure 区域复制并转换磁盘。
 * [Azure Kube CLI 扩展](https://github.com/yaron2/azure-kube-cli)可枚举 ACS Kubernetes 卷并将其迁移到 AKS 群集。
 
-#### <a name="azure-files"></a>Azure 文件
 
-与磁盘不同，Azure 文件可同时装载到多个主机。 在 AKS 群集中，Azure 和 Kubernetes 都不会阻止你创建 ACS 群集仍在使用的 Pod。 若要防止数据丢失和意外行为，请确保这两个群集不会同时向相同的文件写入数据。
+### <a name="deployment-of-your-cluster-configuration"></a>部署群集配置
 
-如果应用程序可以托管指向同一文件共享的多个副本，请遵循无状态迁移步骤，将 YAML 定义部署到新群集。 否则，可以采用包括以下步骤的可行迁移方法：
+建议使用现有的持续集成（CI）和持续交付（CD）管道将已知良好的配置部署到 AKS。 你可以使用 Azure Pipelines 来[构建和部署应用程序，AKS](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)克隆现有的部署任务，并确保 `kubeconfig` 指向新的 AKS 群集。
 
-1. 将应用程序部署到副本计数为 0 的 AKS。
-2. 将 ACS 上的应用程序数缩减为 0。 （此步骤需要停机。）
-3. 将 AKS 上的应用程序数最大扩展为 1。
-4. 验证。
-5. 将流量指向 AKS 群集。
-
-若要从空共享开始，然后创建源数据的副本，可以使用 [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) 命令迁移数据。
-
-### <a name="deployment-strategy"></a>部署策略
-
-建议使用现有 CI/CD 管道将已知正常的配置部署到 AKS。 克隆现有的部署任务，并确保 `kubeconfig` 指向新的 AKS 群集。
-
-如果这种做法不可行，请从 ACS 导出资源定义，然后将其应用到 AKS。 可以使用 `kubectl` 导出对象。
+如果无法做到这一点，请从现有 Kubernetes 群集导出资源定义，并将其应用于 AKS。 可以使用 `kubectl` 导出对象。
 
 ```console
 kubectl get deployment -o=yaml --export > deployments.yaml
 ```
 
-可根据部署需要借助多种开源工具：
+本文总结了的迁移详细信息：
 
-* [Velero](https://github.com/heptio/ark)（此工具需要 Kubernetes 1.7）。
-* [Azure Kube CLI 扩展](https://github.com/yaron2/azure-kube-cli)
-* [ReShifter](https://github.com/mhausenblas/reshifter)
-
-## <a name="migration-steps"></a>迁移步骤
-
-1. 通过 Azure 门户、Azure CLI 或 Azure 资源管理器模板[创建 AKS 群集](https://docs.microsoft.com/azure/aks/create-cluster)。
-
-   > [!NOTE]
-   > 在 GitHub 上的 [Azure/AKS](https://github.com/Azure/AKS/tree/master/examples/vnet) 存储库中找到 AKS 的示例 Azure 资源管理器模板。
-
-2. 对 YAML 定义进行任何必要的更改。 例如，将 `apps/v1beta1` 替换为 `apps/v1` 的 `Deployments`。
-
-3. 将卷从 ACS 群集[迁移](#migrating-persistent-volumes)到 AKS 群集（可选步骤）。
-
-4. 使用 CI/CD 系统将应用程序部署到 AKS。 或使用 kubectl 来应用 YAML 定义。
-
-5. 验证。 确保应用程序按预期运行，并且已复制所有已迁移的数据。
-
-6. 重定向流量。 更新 DNS，使客户端指向 AKS 部署。
-
-7. 完成迁移后的任务。 如果迁移了卷但未暂停写入，请将这些数据复制到新群集。
+> [!div class="checklist"]
+> * 具有标准负载均衡器和虚拟机规模集的 AKS
+> * 现有附加的 Azure 服务
+> * 确保有效配额
+> * 高可用性和业务连续性
+> * 无状态应用程序的注意事项
+> * 有状态 "应用程序的注意事项
+> * 部署群集配置

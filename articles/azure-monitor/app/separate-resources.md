@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/15/2017
-ms.openlocfilehash: bcf741e82e247a5b79a478ef1015a70cccb4d274
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c4d029de782ae408b83c265322a865db7b166c1e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899916"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928305"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>分隔开发、测试和生产阶段的遥测
 
@@ -50,8 +50,8 @@ ms.locfileid: "72899916"
 
 在此示例中，不同资源的 ikey 放置在 Web 配置文件的不同版本中。 通过交换 Web 配置文件（可作为发布脚本的一部分执行），将交换目标资源。
 
-### <a name="web-pages"></a>Web 页面
-通过[从快速启动边栏选项卡获取的脚本](../../azure-monitor/app/javascript.md)，iKey 也在应用的网页中使用。 从服务器状态生成它，而不是逐字将其编码到脚本中。 例如，在 ASP.NET 应用中：
+### <a name="web-pages"></a>网页
+在应用程序的网页中，还[可以从 "快速入门" 边栏选项卡中获取的脚本](../../azure-monitor/app/javascript.md)中使用 iKey。 从服务器状态生成它，而不是逐字将其编码到脚本中。 例如，在 ASP.NET 应用中：
 
 *使用 Razor 的 JavaScript*
 
@@ -81,7 +81,7 @@ ms.locfileid: "72899916"
 
 创建资源需要几秒钟。 完成后，会看到警报。
 
-（可编写 [PowerShell 脚本](../../azure-monitor/app/powershell-script-create-resource.md)，自动创建资源。）
+（可编写 [PowerShell 脚本](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)，自动创建资源。）
 
 ### <a name="getting-the-instrumentation-key"></a>获取检测密钥
 检测密钥标识所创建的资源。 
@@ -134,7 +134,7 @@ ms.locfileid: "72899916"
     若要允许 MSBuild 生成版本号，请在 AssemblyReference.cs 中设置类似于 `1.0.*` 的版本
 
 ## <a name="version-and-release-tracking"></a>版本和发行版本跟踪
-若要跟踪应用程序版本，请确保 Microsoft 生成引擎进程生成了 `buildinfo.config`。 在 .csproj 文件中，添加：  
+若要跟踪应用程序版本，请确保 Microsoft 生成引擎进程生成了 `buildinfo.config`。 在 `.csproj` 文件中，添加：  
 
 ```XML
 
@@ -145,7 +145,7 @@ ms.locfileid: "72899916"
 
 当它具有内部信息时，Application Insights Web 模块自动将**应用程序版本**作为属性添加到每个遥测项。 这样，便可以在执行[诊断搜索](../../azure-monitor/app/diagnostic-search.md)或[浏览指标](../../azure-monitor/app/metrics-explorer.md)时按版本进行筛选。
 
-但请注意，内部版本号只能由 Microsoft 生成引擎生成，而不能由 Visual Studio 中的开发人员生成引擎生成。
+但请注意，内部版本号仅由 Microsoft 生成引擎生成，而不是由 Visual Studio 生成的开发人员生成。
 
 ### <a name="release-annotations"></a>版本注释
 如果使用 Azure DevOps，则可以在每次发布新版本时将[批注标记](../../azure-monitor/app/annotations.md)添加到图表中。 下图显示了此标记的形式。

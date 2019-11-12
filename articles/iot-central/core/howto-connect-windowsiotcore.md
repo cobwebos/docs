@@ -1,5 +1,5 @@
 ---
-title: 将 Windows IoT Core 设备连接到 Azure IoT Central 应用程序 | Microsoft Docs
+title: 将 Windows IoT Core 连接到 Azure IoT Central 应用程序 |Microsoft Docs
 description: 了解如何以设备开发人员的身份将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序。
 author: miriambrus
 ms.author: miriamb
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d880130e114b2bd3e4f978c2ae3fc7bacf0648c4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 43e99c54249738436f24369ed3525e78ff971a12
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953897"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930206"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>将 Windows IoT Core 设备连接到 Azure IoT Central 应用程序
 
@@ -29,7 +29,7 @@ ms.locfileid: "72953897"
 
 - 运行 Windows 10 IoT Core 操作系统的设备。 有关详细信息，请参阅[设置 Windows 10 IoT Core 设备](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)。
 
-- 安装[了 node.js 8.0.0 版或](https://nodejs.org/)更高版本的开发计算机。 若要检查版本，可以在命令行中运行 `node --version`。 Node.js 适用于各种操作系统。
+- 安装[了 node.js 8.0.0 版或](https://nodejs.org/)更高版本的开发计算机。 若要检查版本，可以在命令行中运行 `node --version`。 Node.js 适用于各种不同的操作系统。
 
 ## <a name="the-sample-devkits-application"></a>示例 Devkits 应用程序
 
@@ -104,26 +104,26 @@ ms.locfileid: "72953897"
 
 ### <a name="telemetry-measurements"></a>遥测数据度量
 
-| 字段名     | 单位  | 最小值 | 最大值 | 小数位数 |
+| 字段名称     | 单位  | 最小值 | 最大值 | 小数位数 |
 | -------------- | ------ | ------- | ------- | -------------- |
 | 湿度       | %      | 0       | 100     | 0              |
 | temp           | °C     | -40     | 120     | 0              |
-| 压力       | hPa    | 260     | 1260    | 0              |
+| 压强       | hPa    | 260     | 1260    | 0              |
 
 ### <a name="settings"></a>设置
 
 数字设置
 
-| 显示名称 | 字段名 | 单位 | 小数位数 | 最小值 | 最大值 | 初始 |
+| 显示名称 | 字段名称 | 单位 | 小数位数 | 最小值 | 最大值 | Initial |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | 风扇速度    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 ### <a name="properties"></a>属性
 
-| Type            | 显示名称 | 字段名 | 数据类型 |
+| 类型            | 显示名称 | 字段名称 | 数据类型 |
 | --------------- | ------------ | ---------- | --------- |
 | 设备属性 | 模具号   | dieNumber  | 数字    |
-| 文本            | Location     | 位置   | N/A       |
+| 文本            | 位置     | location   | 不适用       |
 
 ## <a name="next-steps"></a>后续步骤
 

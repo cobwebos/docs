@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 057037807a75e50eb2305bfab19d1fcff7fe77ce
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: efd294910531509d736dbda274406bd7c801c124
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889595"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931202"
 ---
 # <a name="references"></a>参考
 
@@ -75,7 +75,7 @@ headers = {"Authorization": "Bearer " + **access_token**}
 --- | ---
 Content-Type  | Azure FarmBeats 数据中心 Api 格式的请求格式（Content-type： application/<format>）为 json。 Content-type： application/json
 授权  | 指定进行 API 调用所需的访问令牌。 **授权：持有者 < 访问令牌 >**
-接受 | 响应格式。 对于 Azure FarmBeats 数据中心 Api，格式为 json **Accept： application/json**
+Accept | 响应格式。 对于 Azure FarmBeats 数据中心 Api，格式为 json **Accept： application/json**
 
 **API 请求**
 
@@ -85,7 +85,7 @@ API 服务的 URL 是你的数据中心 URL https://\<yourdatahub >. appname>.az
 
 下面的示例请求是获取设备的列表：
 
-```azurepowershell-interactive
+```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
 ```
 
@@ -93,7 +93,7 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-T
 
 下面的示例请求是创建一个设备（它具有带有请求正文的输入 json）。
 
-```json
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
@@ -120,25 +120,25 @@ Azure FarmBeats 数据中心 API 返回标准 HTTP 错误。 最常见的错误�
 
 除了标准 HTTP 错误外，Azure FarmBeats 数据中心 Api 还会返回以下格式的内部错误：
 
-    ```
+```json
     {
       "message": "<More information on the error>",
       "status": "<error code>”,
       "code": "<InternalErrorCode>",
       "moreInfo": "<Details of the error>"
     }
-    ```
+```
 
 示例：创建场时，输入负载中未指定必填字段 "Name"。 生成的错误消息为：
 
-    ```json
+ ```json    
     {
       "message": "Model validation failed",
       "status": 400,
       "code": "ModelValidationFailed",
       "moreInfo": "[\"The Name field is required.\"]"
     }
-    ```
+  ```
 
 ## <a name="adding-users-or-app-registrations-to-azure-active-directory"></a>将用户或应用注册添加到 Azure Active Directory
 

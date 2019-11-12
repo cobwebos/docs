@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: 7d8ed5ebde946134bc7e4779ec79c9ea853a6ef4
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 178f518ed7ab24fc0d3678f77ae75933a7163b58
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895184"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930131"
 ---
-# <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序
+# <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application-preview-features"></a>将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序（预览功能）
 
 本文介绍了如何将 MXChip IoT DevKit （DevKit）设备连接到 Azure IoT Central 应用程序。 设备使用 DevKit 设备的认证 IoT 即插即用模型来配置其到 IoT Central 的连接。
 
@@ -25,7 +25,7 @@ ms.locfileid: "73895184"
 - 准备设备并将其连接到 IoT Central 应用程序。
 - 查看 IoT Central 中设备的遥测和属性。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文中的步骤，需要以下资源：
 
@@ -76,7 +76,7 @@ ms.locfileid: "73895184"
 
 DevKit 首先在 IoT Central 应用程序中注册新设备，然后开始发送数据。
 
-## <a name="view-the-telemetry"></a>查看遥测数据
+## <a name="view-the-telemetry"></a>查看遥测
 
 在此步骤中，你将在 Azure IoT Central 应用程序中查看遥测数据。
 

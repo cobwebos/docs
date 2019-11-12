@@ -7,14 +7,14 @@ ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: fe733b686f2b56beee26a6c33c4d6264d621e627
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bcea9a8674e4b1979698b7d28eb4192172b0dc11
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516339"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931305"
 ---
-# <a name="deploy-a-trusted-security-partner-preview"></a>部署受信任的安全合作伙伴（预览版）
+# <a name="deploy-a-trusted-security-partner-preview"></a>部署信任的安全合作伙伴（预览版）
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
@@ -24,10 +24,10 @@ Azure 防火墙管理器中的*受信任安全合作伙伴*允许使用熟悉的
 
 此预览版支持的安全合作伙伴是**ZScaler**和**iboss** 。 支持的区域包括： WestCentralUS、NorthCentralUS、WestUS、WestUS2 和 EastUS。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 > [!IMPORTANT]
-> 必须使用 `Register-AzProviderFeature` PowerShell 命令显式启用 Azure 防火墙管理器预览。
+> 必须使用 `Register-AzProviderFeature` PowerShell 命令显式启用 Azure 防火墙管理器预览版。
 
 在 PowerShell 命令提示符下，运行以下命令：
 
@@ -35,7 +35,7 @@ Azure 防火墙管理器中的*受信任安全合作伙伴*允许使用熟悉的
 connect-azaccount
 Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
 ```
-完成功能注册需要长达30分钟的时间。 运行以下命令检查注册状态：
+功能注册最多需要 30 分钟即可完成。 运行以下命令来检查注册状态：
 
 `Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
 
@@ -53,7 +53,7 @@ Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace M
 8. 如果只想在中心部署第三方安全提供程序，请选择 " **Azure 防火墙：启用/禁用**"，将其设置为 "**已禁用**"。 
 9. 选择**下一步：受信任的安全合作伙伴**。
 10. 选择 "**受信任的安全合作伙伴**"，将其设置为 "**启用**"。 选择合作伙伴。 
-11. 选择“**下一步**”。 
+11. 选择“下一步”。 
 12. 查看内容，然后选择 "**创建**"。
 
 VPN 网关部署可能需要30多分钟。
@@ -83,12 +83,11 @@ VPN 网关部署可能需要30多分钟。
 
    > [!NOTE]
    > 可以限制对资源组的访问，以便进行更精细的控制。
-3. 按照以下链接中的说明进行操作。
+3. 按照[ZScaler：配置 Microsoft Azure 虚拟 WAN 集成](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration)说明：
 
-   - 若要登录到合作伙伴门户并添加凭据，以使受信任的合作伙伴能够访问受保护的中心。
-   - 验证 Azure AD 身份验证凭据后，请按照以下说明在合作伙伴门户中同步虚拟中心，并设置虚拟中心的隧道。
-
-   [ZScaler：配置 Microsoft Azure 虚拟 WAN 集成](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration)
+   - 登录到合作伙伴门户并添加凭据，以授予受信任的合作伙伴访问受保护的中心的权限。
+   - 在合作伙伴门户中同步虚拟中心，并设置虚拟中心的隧道。 验证 Azure AD 身份验证凭据后，可以执行此操作。
+   
 4. 可以在 azure 中的 Azure 虚拟 WAN 门户上查看隧道创建状态。 隧道显示**连接**到 Azure 和合作伙伴门户后，继续执行后续步骤，设置路由，以选择哪些分支和 vnet 应将 Internet 流量发送到合作伙伴。
 
 ## <a name="configure-route-settings"></a>配置路由设置

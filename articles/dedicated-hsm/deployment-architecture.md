@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 93755ded8f9db27cf8e78079f32e90cccfac2831
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: ff86c25de006495e3536f2ff907e1cf40a216f8e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883829"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927866"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure 专用 HSM 部署体系结构
 
@@ -29,9 +29,10 @@ Azure 专用 HSM 提供 Azure 中的加密密钥存储。 它符合严格的安�
 
 HSM 分布于 Microsoft 数据中心，并可以作为高度可用解决方案的基础轻松地预配为设备对。 它们还可以跨区域部署，用于灾难恢复解决方案。 专用 HSM 可用的区域目前为：
 
-* East US
+* 美国东部
 * 美国东部 2
 * 美国西部
+* 美国西部 2
 * 美国中南部
 * 东南亚
 * 东亚

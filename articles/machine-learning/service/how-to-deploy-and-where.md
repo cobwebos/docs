@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 0d478b56d7be4ae0c7f2403f9960e5eed59e2b4d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 4a0736267ca00b67f35abc7cf263e7cf19543d81
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888644"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932127"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>部署模型与 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "73888644"
 
 有关部署工作流中所涉及的概念的详细信息，请参阅[管理、部署和监视具有 Azure 机器学习的模型](concept-model-management-and-deployment.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -1061,6 +1061,78 @@ print(resp.text)
 
 ```bash
 docker kill mycontainer
+```
+
+## <a name="preview-no-code-model-deployment"></a>效果无代码模型部署
+
+无代码模型部署目前处于预览阶段，支持以下机器学习框架：
+
+### <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel 格式
+
+```python
+from azureml.core import Model
+
+model = Model.register(workspace=ws,
+                       model_name='flowers',                        # Name of the registered model in your workspace.
+                       model_path='./flowers_model',                # Local Tensorflow SavedModel folder to upload and register as a model.
+                       model_framework=Model.Framework.TENSORFLOW,  # Framework used to create the model.
+                       model_framework_version='1.14.0',            # Version of Tensorflow used to create the model.
+                       description='Flowers model')
+
+service_name = 'tensorflow-flower-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+### <a name="onnx-models"></a>ONNX 模型
+
+任何 ONNX 推理图形都支持 ONNX 模型注册和部署。 当前不支持预处理和 postprocess 步骤。
+
+下面是有关如何注册和部署 MNIST ONNX 模型的示例：
+
+```python
+from azureml.core import Model
+
+model = Model.register(workspace=ws,
+                       model_name='mnist-sample',                  # Name of the registered model in your workspace.
+                       model_path='mnist-model.onnx',              # Local ONNX model to upload and register as a model.
+                       model_framework=Model.Framework.ONNX ,      # Framework used to create the model.
+                       model_framework_version='1.3',              # Version of ONNX used to create the model.
+                       description='Onnx MNIST model')
+
+service_name = 'onnx-mnist-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+### <a name="scikit-learn-models"></a>Scikit-learn-了解模型
+
+并非所有内置 scikit-learn 模型类型都支持代码模型部署。
+
+下面的示例演示如何注册和部署不带额外代码的 spark-sklearn 模型：
+
+```python
+from azureml.core import Model
+from azureml.core.resource_configuration import ResourceConfiguration
+
+model = Model.register(workspace=ws,
+                       model_name='my-sklearn-model',                # Name of the registered model in your workspace.
+                       model_path='./sklearn_regression_model.pkl',  # Local file to upload and register as a model.
+                       model_framework=Model.Framework.SCIKITLEARN,  # Framework used to create the model.
+                       model_framework_version='0.19.1',             # Version of scikit-learn used to create the model.
+                       resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5),
+                       description='Ridge regression model to predict diabetes progression.',
+                       tags={'area': 'diabetes', 'type': 'regression'})
+                       
+service_name = 'my-sklearn-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+注意：这些依赖项包含在预生成的 spark-sklearn 推理容器中：
+
+```yaml
+    - azureml-defaults
+    - inference-schema[numpy-support]
+    - scikit-learn
+    - numpy
 ```
 
 ## <a name="clean-up-resources"></a>清理资源

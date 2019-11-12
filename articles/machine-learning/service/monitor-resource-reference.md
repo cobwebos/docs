@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/06/2019
-ms.openlocfilehash: 178c60d82c8337987e9858a409fcdef7063c9559
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 743007d3636516a39dd36caf3d44d3edb650c030
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684910"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929521"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Azure 机器学习监视数据引用
 
@@ -31,7 +31,7 @@ ms.locfileid: "73684910"
 |:--- |:---|
 | TimeGenerated | 生成日志条目的时间 |
 | OperationName | 与日志事件关联的操作的名称 |
-| Category | 日志事件的名称，AmlComputeClusterNodeEvent |
+| 类别 | 日志事件的名称，AmlComputeClusterNodeEvent |
 | JobId | 已提交作业的 ID |
 | ExperimentId | 试验的 ID |
 | experimentName | 试验的名称 |
@@ -60,13 +60,13 @@ ms.locfileid: "73684910"
 |:--- |:--- |
 | TimeGenerated | 生成日志条目的时间 |
 | OperationName | 与日志事件关联的操作的名称 |
-| Category | 日志事件的名称，AmlComputeClusterNodeEvent |
+| 类别 | 日志事件的名称，AmlComputeClusterNodeEvent |
 | ProvisioningState | 群集的预配状态 |
 | ClusterName | 群集的名称 |
-| clusterType | 群集的类型 |
+| ClusterType | 群集的类型 |
 | System.createdby | 创建群集的用户 |
 | CoreCount | 群集中的内核计数 |
-| vmSize | 群集的 Vm 大小 |
+| VmSize | 群集的 Vm 大小 |
 | VmPriority | 在群集专用/LowPriority 内创建的节点的优先级 |
 | ScalingType | 群集缩放手动/自动 |
 | InitialNodeCount | 群集的初始节点计数 |
@@ -103,10 +103,10 @@ ms.locfileid: "73684910"
 |:--- |:--- |
 | TimeGenerated | 生成日志条目的时间 |
 | OperationName | 与日志事件关联的操作的名称 |
-| Category | 日志事件的名称，AmlComputeClusterNodeEvent |
+| 类别 | 日志事件的名称，AmlComputeClusterNodeEvent |
 | ClusterName | 群集的名称 |
 | NodeId | 创建的群集节点的 ID |
-| vmSize | 节点的 Vm 大小 |
+| VmSize | 节点的 Vm 大小 |
 | VmFamilyName | 节点所属的 Vm 系列 |
 | VmPriority | 已创建专用/LowPriority 节点的优先级 |
 | 发布者 | Vm 映像的发布者，例如 microsoft-dsvm |
@@ -128,33 +128,33 @@ ms.locfileid: "73684910"
 
 **Model**
 
-| 模型 | 计价单位 | 说明 |
+| 度量值 | 计价单位 | 说明 |
 | ----- | ----- | ----- |
-| 模型部署失败 | 计数 | 失败的模型部署数。 |
-| 模型部署已启动 | 计数 | 开始部署的模型数。 |
-| 模型部署成功 | 计数 | 成功的模型部署数。 |
-| 模型注册失败 | 计数 | 失败的模型注册数。 |
-| 模型注册成功 | 计数 | 成功的模型注册数。 |
+| 模型部署失败 | Count | 失败的模型部署数。 |
+| 模型部署已启动 | Count | 开始部署的模型数。 |
+| 模型部署成功 | Count | 成功的模型部署数。 |
+| 模型注册失败 | Count | 失败的模型注册数。 |
+| 模型注册成功 | Count | 成功的模型注册数。 |
 
 **配额**
 
 配额信息仅用于 Azure 机器学习计算。
 
-| 指标 | 计价单位 | 说明 |
+| 度量值 | 计价单位 | 说明 |
 | ----- | ----- | ----- |
-| 活动核心 | 计数 | 活动计算核心数。 |
-| 活动节点 | 计数 | 活动节点数。 |
-| 空闲内核数 | 计数 | 空闲计算核心数。 |
-| 空闲节点 | 计数 | 空闲计算节点数。 |
-| 正在离开内核 | 计数 | 离开内核的数量。 |
-| 退出节点 | 计数 | 正在离开的节点数。 |
-| 抢先核心 | 计数 | 被占用的内核数。 |
-| 已占用节点 | 计数 | 被抢占的节点数。 |
+| 活动核心 | Count | 活动计算核心数。 |
+| 活动节点 | Count | 活动节点数。 |
+| 空闲内核数 | Count | 空闲计算核心数。 |
+| 空闲节点 | Count | 空闲计算节点数。 |
+| 正在离开内核 | Count | 离开内核的数量。 |
+| 退出节点 | Count | 正在离开的节点数。 |
+| 抢先核心 | Count | 被占用的内核数。 |
+| 已占用节点 | Count | 被抢占的节点数。 |
 | 配额使用率百分比 | 百分比 | 使用的配额的百分比。 |
-| 总核心数 | 计数 | 内核总数。 |
-| 节点总数 | 计数 | 节点总数。 |
-| 不可用内核 | 计数 | 无法使用的内核数。 |
-| 不可用节点 | 计数 | 无法使用的节点数。 |
+| 总核心数 | Count | 内核总数。 |
+| 节点总数 | Count | 节点总数。 |
+| 不可用内核 | Count | 无法使用的内核数。 |
+| 不可用节点 | Count | 无法使用的节点数。 |
 
 下面是可用于筛选配额指标的维度：
 
@@ -168,11 +168,11 @@ ms.locfileid: "73684910"
 
 有关定型运行的信息。
 
-| 指标 | 计价单位 | 说明 |
+| 度量值 | 计价单位 | 说明 |
 | ----- | ----- | ----- |
-| 已完成运行 | 计数 | 已完成的运行数。 |
-| 失败的运行 | 计数 | 失败的运行数。 |
-| 已开始运行 | 计数 | 已启动的运行数。 |
+| 已完成运行 | Count | 已完成的运行数。 |
+| 失败的运行 | Count | 失败的运行数。 |
+| 已开始运行 | Count | 已启动的运行数。 |
 
 下面是可用于筛选运行度量值的维度：
 

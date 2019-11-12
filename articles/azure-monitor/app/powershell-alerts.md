@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/31/2016
-ms.openlocfilehash: 0771079eb338c2f22cb0b1f31c48b0b9f80a3ff5
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: cf03fa0055710dde86a0f74cd58344575494faf1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819091"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928565"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>使用 PowerShell 在 Application Insights 中设置警报
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-可以在 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中自动配置[警报](../../azure-monitor/app/alerts.md)。
+可以在 [Application Insights](../../azure-monitor/app/alerts.md) 中自动配置[警报](../../azure-monitor/app/app-insights-overview.md)。
 
 此外，可以[将 webhook 设置为自动执行对警报的响应](../../azure-monitor/platform/alerts-webhooks.md)。
 
@@ -93,7 +93,7 @@ GUID 是订阅 ID（不是应用程序的检测密钥）。
 同一规则可用于通过使用另一跟踪调用（如 TrackEvent 或 trackPageView）的[测量参数](../../azure-monitor/app/api-custom-events-metrics.md#properties)报告的指标。
 
 ## <a name="metric-names"></a>指标名称
-| 指标名称 | 屏幕名称 | 描述 |
+| 指标名称 | 屏幕名称 | 说明 |
 | --- | --- | --- |
 | `basicExceptionBrowser.count` |浏览器异常 |浏览器中所引发未捕获异常的计数。 |
 | `basicExceptionServer.count` |服务器异常 |应用所引发未经处理的异常的计数 |
@@ -122,7 +122,7 @@ GUID 是订阅 ID（不是应用程序的检测密钥）。
 
 | 指标组 | 收集器模块 |
 | --- | --- |
-| basicExceptionBrowser、<br/>clientPerformance、<br/>视图 |[浏览器 JavaScript](../../azure-monitor/app/javascript.md) |
+| basicExceptionBrowser、<br/>clientPerformance、<br/>view |[浏览器 JavaScript](../../azure-monitor/app/javascript.md) |
 | performanceCounter |[性能](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | remoteDependencyFailed |[依赖项](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | request、<br/>requestFailed |[服务器请求](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
@@ -131,7 +131,7 @@ GUID 是订阅 ID（不是应用程序的检测密钥）。
 可[自动执行对警报的响应](../../azure-monitor/platform/alerts-webhooks.md)。 引发警报时，Azure 将调用所选的 Web 地址。
 
 ## <a name="see-also"></a>另请参阅
-* [用于配置 Application Insights 的脚本](powershell-script-create-resource.md)
+* [用于配置 Application Insights 的脚本](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [从模板创建 Application Insights 和 Web 测试资源](powershell.md)
 * [自动执行 Microsoft Azure 诊断到 Application Insights 的耦合](powershell-azure-diagnostics.md)
 * [自动执行对警报的响应](../../azure-monitor/platform/alerts-webhooks.md)

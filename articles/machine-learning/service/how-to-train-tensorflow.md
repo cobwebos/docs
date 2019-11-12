@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3d5a61b93175559bce92a17e27602a4f79d88ad
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 4a055e039e8d7629f3ff1c20c6ce9e4f1533b6b9
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603964"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931035"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模构建 TensorFlow 深度学习模型
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,7 +47,7 @@ ms.locfileid: "73603964"
 
 本部分通过加载所需的 Python 包、初始化工作区、创建试验以及上传定型数据和训练脚本来设置训练实验。
 
-### <a name="import-packages"></a>导入程序包
+### <a name="import-packages"></a>导入包
 
 首先，导入必需的 Python 库。
 
@@ -87,7 +87,7 @@ exp = Experiment(workspace=ws, name='tf-mnist')
 
 ### <a name="create-a-file-dataset"></a>创建文件数据集
 
-`FileDataset` 对象引用工作区数据存储或公共 url 中的一个或多个文件。 文件可以是任何格式，类可让你将文件下载或装载到你的计算中。 通过创建 `FileDataset`，可以创建对数据源位置的引用。 如果将任何转换应用于数据集，则它们也会存储在数据集中。 数据会保留在其现有位置，因此不会产生额外的存储成本。 有关详细信息，请参阅 `Dataset` 包上的操作[方法](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets)指南。
+`FileDataset` 对象引用工作区数据存储或公共 URL 中的一个或多个文件。 文件可以是任何格式，该类提供将文件下载或装载到计算机的功能。 通过创建 `FileDataset`，可以创建对数据源位置的引用。 如果将任何转换应用于数据集，则它们也会存储在数据集中。 数据会保留在其现有位置，因此不会产生额外的存储成本。 有关详细信息，请参阅 [ 包中的](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets)操作`Dataset`指南。
 
 ```python
 from azureml.core.dataset import Dataset
@@ -183,10 +183,17 @@ run.wait_for_completion(show_output=True)
 
 ## <a name="register-or-download-a-model"></a>注册或下载模型
 
-训练模型后，可以将其注册到工作区。 利用模型注册，可以在工作区中存储模型并对模型进行版本管理，从而简化[模型管理和部署](concept-model-management-and-deployment.md)。
+训练模型后，可以将其注册到工作区。 利用模型注册，可以在工作区中存储模型并对模型进行版本管理，从而简化[模型管理和部署](concept-model-management-and-deployment.md)。 通过指定参数 `model_framework`、`model_framework_version`和 `resource_configuration`，无代码模型部署将变为可用。 这使你可以从已注册的模型直接将你的模型部署为 web 服务，`ResourceConfiguration` 对象定义 web 服务的计算资源。
 
 ```Python
-model = run.register_model(model_name='tf-dnn-mnist', model_path='outputs/model')
+from azureml.core import Model
+from azureml.core.resource_configuration import ResourceConfiguration
+
+model = run.register_model(model_name='tf-dnn-mnist', 
+                           model_path='outputs/model',
+                           model_framework=Model.Framework.TENSORFLOW,
+                           model_framework_version='1.13.0',
+                           resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
 ```
 
 您还可以使用 Run 对象下载模型的本地副本。 在训练脚本 `mnist-tf.py`中，TensorFlow 的保护程序对象将模型保留到本地文件夹（计算目标的本地）。 您可以使用 "运行" 对象下载副本。
@@ -259,7 +266,7 @@ estimator= TensorFlow(source_directory=project_folder,
 run = exp.submit(tf_est)
 ```
 
-#### <a name="define-cluster-specifications-in-tf_config"></a>定义 "TF_CONFIG" 中的群集规范
+#### <a name="define-cluster-specifications-in-tf_config"></a>在 "TF_CONFIG" 中定义群集规范
 
 还需要[`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec)群集的网络地址和端口，因此 Azure 机器学习为你设置 `TF_CONFIG` 环境变量。
 
@@ -292,13 +299,24 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ```
 
+## <a name="deployment"></a>部署
+
+你刚注册的模型可以采用与 Azure 机器学习中任何其他已注册模型完全相同的方式进行部署，无论你使用哪种估计器进行定型。 部署操作方法包含有关注册模型的部分，但你可以直接跳到创建用于部署的[计算目标](how-to-deploy-and-where.md#choose-a-compute-target)，因为你已有一个已注册的模型。
+
+### <a name="preview-no-code-model-deployment"></a>效果无代码模型部署
+
+除了传统的部署路由，还可以使用 Tensorflow 的非代码部署功能（预览版）。 通过向上面所示的 `model_framework`、`model_framework_version`和 `resource_configuration` 参数注册模型，只需使用 `deploy()` 静态函数部署模型即可。
+
+```python
+service = Model.deploy(ws, "tensorflow-web-service", [model])
+```
+
+完整的操作[方法](how-to-deploy-and-where.md)涵盖 Azure 机器学习中更深入的部署。
+
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何培训和注册 TensorFlow 模型。 若要了解如何将模型部署到启用了 GPU 的群集，请继续学习 GPU 模型部署一文。
+在本文中，你训练并注册了一个 TensorFlow 模型，并了解了用于部署的选项。 请参阅以下文章，详细了解 Azure 机器学习。
 
-> [!div class="nextstepaction"]
-> [部署模型的方式和位置](how-to-deploy-and-where.md)
 * [在训练期间跟踪运行指标](how-to-track-experiments.md)
 * [优化超参数](how-to-tune-hyperparameters.md)
-* [部署定型的模型](how-to-deploy-and-where.md)
 * [Azure 中的分布式深层学习培训参考体系结构](/azure/architecture/reference-architectures/ai/training-deep-learning)

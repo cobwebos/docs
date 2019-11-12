@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2c704e36f4353b34733ccc29b785c752b2a5c559
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a18949799b948b962a5b24ffdc7c735fc1380808
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822714"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931090"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>大规模定型 Pytorch 深度学习模型，Azure 机器学习
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -50,7 +50,7 @@ ms.locfileid: "73822714"
 
 本部分通过加载所需的 python 包、初始化工作区、创建试验以及上传定型数据和训练脚本来设置训练实验。
 
-### <a name="import-packages"></a>导入程序包
+### <a name="import-packages"></a>导入包
 
 首先，导入必需的 Python 库。
 
@@ -174,6 +174,9 @@ run.wait_for_completion(show_output=True)
 ```Python
 model = run.register_model(model_name='pt-dnn', model_path='outputs/')
 ```
+
+> [!TIP]
+> 刚注册的模型的部署方式与 Azure 机器学习中任何其他已注册的模型完全相同，无论你使用哪种估计器进行定型。 部署操作方法包含有关注册模型的部分，但你可以直接跳到创建用于部署的[计算目标](how-to-deploy-and-where.md#choose-a-compute-target)，因为你已有一个已注册的模型。
 
 您还可以使用 Run 对象下载模型的本地副本。 在训练脚本 `pytorch_train.py`中，PyTorch save 对象将模型保留到本地文件夹（计算目标的本地）。 您可以使用 "运行" 对象下载副本。
 

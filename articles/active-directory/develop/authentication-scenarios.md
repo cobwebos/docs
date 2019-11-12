@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ab2180c54f07ff5009e2c57d8522f2eb0b81aad
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c0a73f5257bf763633052aab89f92ea0e5d5c000
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718369"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927116"
 ---
 # <a name="authentication-basics"></a>身份验证基础知识
 
@@ -74,7 +74,7 @@ Azure AD 还提供 Azure Active Directory B2C 以便组织可以使用诸如 Goo
 
 令牌仅在有限的时间内有效。 通常，STS 提供一对令牌：用于访问应用程序或受保护资源的访问令牌，以及在访问令牌接近过期时用于刷新访问令牌的刷新令牌。 
 
-访问令牌作为 `Authenticate` 标头中的持有者令牌传递到 Web API。 应用可向 STS 提供刷新令牌，如果未吊销用户对应用的访问权限，它将返回一个新的访问令牌和一个新的刷新令牌。 这就是如何处理离开企业的用户的方案。 当 STS 收到刷新令牌时，如果用户不再获得授权，则不会发出其他有效的访问令牌。
+访问令牌作为 `Authorization` 标头中的持有者令牌传递到 Web API。 应用可向 STS 提供刷新令牌，如果未吊销用户对应用的访问权限，它将返回一个新的访问令牌和一个新的刷新令牌。 这就是如何处理离开企业的用户的方案。 当 STS 收到刷新令牌时，如果用户不再获得授权，则不会发出其他有效的访问令牌。
 
 ## <a name="application-model"></a>应用程序模型
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: alzam
-ms.openlocfilehash: da863144da5ec4361673c913392495d3d622f5a9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 714cabc204c9ec9a0c3bbc93be287957c91d1936
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837969"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932336"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication-preview"></a>为 P2S OpenVPN 协议连接配置 VPN 客户端： Azure AD 身份验证（预览版）
 
@@ -24,7 +24,11 @@ ms.locfileid: "73837969"
 
 ## <a name="profile"></a>使用客户端配置文件
 
-若要连接，需要[下载](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)Azure Vpn 客户端，并在要连接到 VNet 的每台计算机上配置 VPN 客户端配置文件。 你可以在计算机上创建客户端配置文件，将其导出，然后将其导入到其他计算机。
+若要连接，需要下载 Azure VPN 客户端（预览版），并在要连接到 VNet 的每台计算机上配置 VPN 客户端配置文件。 你可以在计算机上创建客户端配置文件，将其导出，然后将其导入到其他计算机。
+
+### <a name="to-download-the-azure-vpn-client"></a>下载 Azure VPN 客户端
+
+使用此[链接](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)下载 Azure VPN 客户端（预览版）。
 
 ### <a name="cert"></a>创建基于证书的客户端配置文件
 

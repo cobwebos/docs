@@ -8,18 +8,18 @@ ms.service: site-recovery
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: a6d38a9196d640ebc823b4f25e089cc04193212b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f9e5b5a70f7398483d5359a0489d5a6e6b241c6d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845754"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928193"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>常见问题 - Hyper-V 到 Azure 的灾难恢复
 
 本文提供将本地 Hyper-V VM 复制到 Azure 时可能遇到的常见问题的解答。 
 
-## <a name="general"></a>常规
+## <a name="general"></a>一般信息
 
 ### <a name="how-is-site-recovery-priced"></a>Site Recovery 如何计费？
 请查看 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)。
@@ -27,21 +27,21 @@ ms.locfileid: "68845754"
 ### <a name="how-do-i-pay-for-azure-vms"></a>Azure VM 如何计费？
 在复制期间，数据将复制到 Azure 存储，因此，VM 不会产生任何费用。 故障转移到 Azure 时，Site Recovery 会自动创建 Azure IaaS 虚拟机。 然后，在 Azure 中使用的计算资源会产生费用。
 
-### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>复制到常规用途 v2 存储帐户时, 开销是否有任何变化？
+### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>复制到常规用途 v2 存储帐户时，开销是否有什么不同？
 
-你通常会发现, GPv2 存储帐户产生的事务成本会增加, 因为 Azure Site Recovery 的事务量很高。 [阅读更多](../storage/common/storage-account-upgrade.md#pricing-and-billing)以估算更改。
+你通常会发现 GPv2 存储帐户产生的事务成本增加，因为 Azure Site Recovery 的事务量很大。 [阅读更多信息](../storage/common/storage-account-upgrade.md#pricing-and-billing)以估计更改。
 
 ## <a name="azure"></a>Azure
 
 ### <a name="what-do-i-need-in-hyper-v-to-orchestrate-replication-with-site-recovery"></a>为什么需要在 Hyper-V 中使用站点恢复协调复制？
 
-对于 Hyper-V 主机服务器，用户的所需取决于部署方案。 在以下内容中查看 Hyper-V 先决条件：
+对于 Hyper-V 主机服务器，所需取决于部署方案。 在以下内容中查看 Hyper-V 先决条件：
 
 * [将 Hyper-V VM 复制（不使用 VMM）到 Azure](site-recovery-hyper-v-site-to-azure.md)
 * [将 Hyper-V VM 复制（使用 VMM）到 Azure](site-recovery-vmm-to-azure.md)
 * [将 Hyper-V VM 复制到辅助数据中心](site-recovery-vmm-to-vmm.md)
 * 如果要复制到辅助数据中心，请阅读 [Hyper-V 虚拟机的受支持的来宾操作系统](https://technet.microsoft.com/library/mt126277.aspx)。
-* 若要复制到 Azure，Site Recovery 支持 [Azure 支持的](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)所有来宾操作系统。
+* 如果要复制到 Azure，站点恢复支持 [Azure 支持的](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)所有来宾操作系统。
 
 ### <a name="can-i-protect-vms-when-hyper-v-is-running-on-a-client-operating-system"></a>当 Hyper-V 在客户端操作系统上运行时，我可以保护 VM 吗？
 不可以。VM 必须位于在受支持的 Windows 服务器计算机上运行的 Hyper-V 主机服务器上。 如果需要保护客户端计算机，可以将其作为物理计算机复制到 [Azure](site-recovery-vmware-to-azure.md) 或[辅助数据中心](site-recovery-vmware-to-vmware.md)。
@@ -51,12 +51,12 @@ ms.locfileid: "68845754"
 
 
 ### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>我可以将 Hyper-V 第 2 代虚拟机复制到 Azure 吗？
-是的。 站点恢复在故障转移过程中将从第 2 代转换成第 1 代。 在故障回复时，计算机将转换回到第 2 代。 [了解详细信息](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)。
+可以。 站点恢复在故障转移过程中将从第 2 代转换成第 1 代。 在故障回复时，计算机将转换回到第 2 代。 [了解详细信息](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)。
 
 
 ### <a name="can-i-deploy-site-recovery-with-vmm-if-i-only-have-one-vmm-server"></a>如果我只有一个 VMM 服务器，可以部署站点恢复来配合 VMM 吗？
 
-是的。 可以将 VMM 云中 Hyper-V 服务器上的 VM 复制到 Azure，或者在同一台服务器上的 VMM 云之间进行复制。 对于本地到本地复制，我们建议在主站点与辅助站点中都部署一个 VMM 服务器。 
+可以。 可以将 VMM 云中 Hyper-V 服务器上的 VM 复制到 Azure，或者在同一台服务器上的 VMM 云之间进行复制。 对于本地到本地复制，我们建议在主站点与辅助站点中都部署一个 VMM 服务器。 
 
 ### <a name="what-do-i-need-in-azure"></a>需要在 Azure 中做好哪些准备？
 需要一个 Azure 订阅、一个恢复服务保管库、一个存储帐户和一个虚拟网络。 保管库、存储帐户和网络必须位于同一区域。
@@ -73,7 +73,7 @@ ms.locfileid: "68845754"
 站点恢复已通过 ISO 27001:2013、27018、HIPAA、DPA 认证，目前正在接受 SOC2 和 FedRAMP JAB 评估。
 
 ### <a name="can-we-keep-on-premises-metadata-within-a-geographic-region"></a>是否可将本地元数据保留在某个地理区域中？
-是的。 当你在某个区域中创建保管库时，我们会确保 Site Recovery 使用的所有元数据保留在该区域的地理边界内。
+可以。 当你在某个区域中创建保管库时，我们会确保 Site Recovery 使用的所有元数据保留在该区域的地理边界内。
 
 ### <a name="does-site-recovery-encrypt-replication"></a>站点恢复是否将复制数据加密？
 是的，传输中加密和 [Azure 中加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)均受支持。
@@ -113,10 +113,10 @@ ms.locfileid: "68845754"
 不可以。VM 必须位于在受支持的 Windows 服务器计算机上运行的 Hyper-V 主机服务器上。 如果需要保护客户端计算机，可以[将其作为物理计算机复制](physical-azure-disaster-recovery.md)到 Azure。
 
 ### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>我可以将 Hyper-V 第 2 代虚拟机复制到 Azure 吗？
-是的。 站点恢复在故障转移过程中将从第 2 代转换成第 1 代。 在故障回复时，计算机将转换回到第 2 代。
+可以。 站点恢复在故障转移过程中将从第 2 代转换成第 1 代。 在故障回复时，计算机将转换回到第 2 代。
 
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>是否可以使用 SDK 自动化 Site Recovery 方案？
-是的。 可以使用 Rest API、PowerShell 或 Azure SDK 将站点恢复工作流自动化。 以下为通过 PowerShell 将 Hyper-V 复制到 Azure 的当前支持方案：
+可以。 可以使用 Rest API、PowerShell 或 Azure SDK 将站点恢复工作流自动化。 以下为通过 PowerShell 将 Hyper-V 复制到 Azure 的当前支持方案：
 
 - [使用 PowerShell 在无 VMM 的情况下复制 Hyper-V](hyper-v-azure-powershell-resource-manager.md)
 - [使用 PowerShell 在有 VMM 的情况下复制 Hyper-V](hyper-v-vmm-powershell-resource-manager.md)
@@ -147,16 +147,16 @@ ms.locfileid: "68845754"
 
 ### <a name="can-i-replicate-to-azure-with-a-site-to-site-vpn"></a>是否可以使用站点到站点 VPN 复制到 Azure？
 
-Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将数据从本地复制到 Azure 存储。 不支持通过站点到站点 VPN 网络进行的复制。
+Site Recovery 通过公共终结点或使用 ExpressRoute Microsoft 对等互连将数据从本地复制到 Azure 存储。 不支持通过站点到站点 VPN 网络进行的复制。
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>是否可以使用 ExpressRoute 复制到 Azure？
 
-可以使用 ExpressRoute 将 VM 复制到 Azure。 Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户。需要设置[公共对等互连](../expressroute/expressroute-circuit-peerings.md#publicpeering)才能进行 Site Recovery 复制。 将 VM 故障转移到 Azure 虚拟网络后，可以使用[专用对等互连](../expressroute/expressroute-circuit-peerings.md#privatepeering)访问这些 VM。
+可以使用 ExpressRoute 将 VM 复制到 Azure。 Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户，并且需要为 Site Recovery 复制设置[Microsoft 对等互连](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)。 将 VM 故障转移到 Azure 虚拟网络后，可以使用[专用对等互连](../expressroute/expressroute-circuit-peerings.md#privatepeering)访问这些 VM。
 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>为何不能通过 VPN 复制？
 
-复制到 Azure 时，复制流量将到达 Azure 存储帐户的公共终结点。 因此，只能使用 ExpressRoute（公共对等互连）通过公共 Internet 进行复制，VPN 不起作用。 
+复制到 Azure 时，复制流量将到达 Azure 存储帐户的公共终结点。 因此，你只能通过 ExpressRoute （Microsoft 对等互连）通过公共 internet 进行复制，并且 VPN 不起作用。 
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>复制的 VM 要满足哪些要求？
 
@@ -180,7 +180,7 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 
 
 
-## <a name="security"></a>安全性
+## <a name="security"></a>“安全”
 
 ### <a name="what-access-does-site-recovery-need-to-hyper-v-hosts"></a>Site Recovery 需要对 Hyper-V 主机拥有哪些访问权限？
 

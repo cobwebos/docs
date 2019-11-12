@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 55b59802116eb10d2e7eeb3b13ecb3da2d475c6d
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: acc64486ac8bd15a9abab1f2010ea56b752a1e86
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906973"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927670"
 ---
 # <a name="deploy-farmbeats"></a>部署 FarmBeats
 
@@ -60,8 +60,8 @@ Azure FarmBeats 部署在订阅中创建以下列出的资源：
 1. 登录到 Azure 门户并在右上角选择你的帐户，并切换到要在其中部署 Microsoft Azure FarmBeats 的 Azure AD 租户。
 2. Azure Marketplace 提供 azure FarmBeats。 在 marketplace 页面上，选择 "立即获取"。
 3. 选择 "创建"，并输入以下信息：
-  - 订阅名称。
-  - 现有资源组名称（仅限空资源组）或创建新的资源组用于部署 Azure FarmBeats。 请在后续部分中记下此资源组。
+    - 订阅名称。
+    - 现有资源组名称（仅限空资源组）或创建新的资源组用于部署 Azure FarmBeats。 请在后续部分中记下此资源组。
 4. 要安装 Azure FarmBeats 的区域。 目前 FarmBeats 下列地区：美国中部、西欧、美国东部2、北欧、美国西部、东南亚、美国东部、澳大利亚东部、美国西部2。
 5. 选择“确定”。
 此时将显示 "使用条款" 页。 查看标准市场条款，或选择超链接以查看使用条款。
@@ -131,7 +131,7 @@ Azure FarmBeats 部署在订阅中创建以下列出的资源：
 
 在安装过程中，请按如下所示创建一个输入 json 文件：
 
-    ```
+```json
     {  
        "sku":"both",
        "subscriptionId":"da9xxxec-dxxf-4xxc-xxx21-xxx3ee7xxxxx",
@@ -144,7 +144,7 @@ Azure FarmBeats 部署在订阅中创建以下列出的资源：
        "notificationEmailAddress":"dummy@yourorg.com",
        "updateIfExists":true
     }
-    ```
+```
 
 此文件是要 Azure Cloud Shell 的输入文件和参数值在安装期间使用的参数。 Json 中的所有参数都需要替换为适当的值或将其删除。如果删除，安装程序将在安装过程中提示你
 
@@ -210,9 +210,9 @@ Azure FarmBeats 部署在订阅中创建以下列出的资源：
 4. 在 cloud shell 中转到你的主目录。 默认情况下，它是/home/<username>
 5. 将以下命令键入或粘贴到 Cloud Shell 中。 请确保修改输入的路径。 Json 文件，然后按 enter。
 
-      ```azurepowershell-interactive
+   ```bash
       wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
-     ```
+    ```
      安装程序会自动下载所有依赖项，并生成部署的。 系统将提示你同意 Azure FarmBeats 最终用户许可协议（EULA）。
 
      - 如果同意，请输入 "Y"，然后继续下一步。
@@ -266,7 +266,7 @@ Azure FarmBeats 部署在订阅中创建以下列出的资源：
 4. 在 cloud shell 中转到你的主目录。 默认情况下，它是/home/<username>
 5. 将以下命令键入或粘贴到 Cloud Shell 中。 请确保修改输入的路径。 Json 文件，然后按 enter。
 
-    ```azurepowershell-interactive
+    ```bash
     wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
 
@@ -324,7 +324,7 @@ Azure FarmBeats 部署在订阅中创建以下列出的资源：
 5. 将输入的 json 文件上传到 Azure Cloud Shell。
 6. 将以下两个命令键入或粘贴到 Cloud Shell 中。 请确保修改输入 json 文件的路径，然后按 enter。
 
-    ```azurepowershell-interactive
+    ```bash
     wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
 按照屏幕上的说明操作：

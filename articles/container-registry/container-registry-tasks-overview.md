@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 容器注册表任务（ACR 任务）自动构建和修补容器映像
+title: Azure 容器注册表任务-概述
 description: 介绍 ACR 任务。ACR 任务是 Azure 容器注册表中的功能套件，它在云中提供安全、自动化的容器映像的生成、管理和修补。
 services: container-registry
 author: dlepow
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: danlep
-ms.openlocfilehash: e2686dcd5615c42abf78cbf4575bab6008024718
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 45fdd68273ed2cd5cfccf37765935ce9f7bfdc13
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001397"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931477"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>使用 ACR 任务自动执行容器映像的生成和维护
 
@@ -44,11 +44,11 @@ ACR 任务支持使用多种方案来生成和维护容器映像与其他项目�
 
 在你提交第一行代码之前，ACR 任务的[快速任务](container-registry-tutorial-quick-task.md)功能可以通过将容器映像生成卸载到 Azure，来提供集成式开发体验。 使用快速生成可以在提交代码之前验证自动化生成定义和捕获潜在的问题。
 
-Azure CLI 中的 [az acr build][az-acr-build] 命令使用我们熟悉的 `docker build` 格式提取[上下文](#context-locations)（要生成的文件集），将其发送到 ACR 任务，并在完成后，默认将生成的映像推送到其注册表。
+Azure CLI 中的 `docker build`az acr build[ 命令使用我们熟悉的 ][az-acr-build] 格式提取[上下文](#context-locations)（要生成的文件集），将其发送到 ACR 任务，并在完成后，默认将生成的映像推送到其注册表。
 
 如需简介，请参阅在 Azure 容器注册表中[生成和运行容器映像](container-registry-quickstart-task-cli.md)的快速入门。  
 
-ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成到 CI/CD 解决方案。 然后，CI/CD 解决方案可以结合[服务主体][az-login-service-principal]执行 [az login][az-login]，发出 [az acr build][az-acr-build] 命令来启动映像生成。
+ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成到 CI/CD 解决方案。 然后，CI/CD 解决方案可以结合[服务主体][az-login]执行 [az login][az-login-service-principal]，发出 [az acr build][az-acr-build] 命令来启动映像生成。
 
 第一篇 ACR 任务教程[使用 Azure 容器注册表任务在云中生成容器映像](container-registry-tutorial-quick-task.md)中介绍了快速任务的用法。
 
@@ -74,7 +74,7 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 
 真正增强容器生成工作流的 ACR 任务的强大之处在于，它能够检测基础映像的更新。 将更新的基础映像将推送到注册表时，或者在公共存储库（例如 Docker Hub）中更新基础映像时，ACR 任务可以基于该映像自动生成任何应用程序映像。
 
-在广义上，可将容器映像分类为基本映像和应用程序映像。 基本映像通常包括应用程序所基于的操作系统和应用程序框架，以及其他自定义项。 这些基础映像本身通常基于公共上游映像，例如：[Alpine Linux][base-alpine]、[Windows][base-windows]、[.NET][base-dotnet] 或 [Node.js][base-node]。 多个应用程序映像可以共享一个通用基本映像。
+在广义上，可将容器映像分类为基本映像和应用程序映像。 基本映像通常包括应用程序所基于的操作系统和应用程序框架，以及其他自定义项。 这些基本映像通常基于公共上游映像，例如： [Alpine Linux][base-alpine]、 [Windows][base-windows]、 [.net][base-dotnet]或[node.js][base-node]。 多个应用程序映像可以共享一个通用基本映像。
 
 当上游维护者更新 OS 或应用程序框架映像时（例如，使用关键 OS 安全修补），也必须更新基本映像以包含关键修复。 然后，还必须重新生成每个应用程序映像，以包含目前已包含在基础映像中的这些上游修复。
 
@@ -118,7 +118,7 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 
 下表显示了 ACR 任务支持的上下文位置的几个示例：
 
-| 上下文位置 | 描述 | 示例 |
+| 上下文位置 | 说明 | 示例 |
 | ---------------- | ----------- | ------- |
 | 本地文件系统 | 本地文件系统上某个目录中的文件。 | `/home/user/projects/myapp` |
 | GitHub 主分支 | GitHub 存储库主分支（或其他默认分支）中的文件。  | `https://github.com/gituser/myapp-repo.git` |
@@ -131,7 +131,7 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 
 默认情况下，ACR 任务为 Linux OS 和 amd64 体系结构生成映像。 指定 `--platform` 标记可为其他体系结构生成 Windows 映像或 Linux 映像。 请以“OS/体系结构”格式（例如 `--platform Linux/arm`）指定 OS 和（可选）支持的体系结构。 对于 ARM 体系结构，可以选择性地以“OS/体系结构/变体”格式（例如 `--platform Linux/arm64/v8`）指定变体：
 
-| OS | 体系结构|
+| 操作系统 | 体系结构|
 | --- | ------- | 
 | Linux | amd64<br/>arm<br/>arm64<br/>386 |
 | Windows | amd64 |

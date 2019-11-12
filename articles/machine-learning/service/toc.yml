@@ -295,10 +295,10 @@
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
         - name: 运行批量预测
-          displayName: score scoring asynchronous consume pipeline
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference
           href: how-to-run-batch-predictions.md
         - name: 将设计器用于批量预测
-          displayName: score scoring asynchronous consume pipeline
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference
           href: how-to-run-batch-predictions-ui.md
     - name: 监视模型
       items:

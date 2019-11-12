@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: f20c7955856e2e848d331d857d2564649c837bb0
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 8bcfb80d42e7cd1fad6ff4c04415bd8627a3293e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847462"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932145"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -23,11 +23,11 @@ ms.locfileid: "73847462"
 
 本文介绍几种使用 Azure 资源管理器模板创建 Azure 机器学习工作区的方法。 使用资源管理器模板可以轻松地通过单个协调操作创建资源。 模板是一个 JSON 文档，定义部署所需的资源。 它还可以指定部署参数。 使用模板时，参数用于提供输入值。
 
-有关详细信息，请参阅[使用 Azure Resource Manager 模板部署应用程序](../../azure-resource-manager/resource-group-template-deploy.md)。
+有关详细信息，请参阅[使用 Azure 资源管理器模板部署应用程序](../../azure-resource-manager/resource-group-template-deploy.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅帐户**。 如果没有，请尝试[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
+* 一个 **Azure 订阅**。 如果没有，请尝试[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 
 * 若要在 CLI 中使用模板，需要安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 

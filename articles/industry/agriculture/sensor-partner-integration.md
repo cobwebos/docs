@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e90284ce2f8ea37eb9249822e38cef04e1356f59
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1e819c94732e1cbc2de39e6400f8305b7df5aca1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889578"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927658"
 ---
 # <a name="sensor-partner-integration"></a>传感器合作伙伴集成
 
@@ -79,7 +79,7 @@ FarmBeats 数据中心使用持有者身份验证，需要以下凭据：
 
 使用上述凭据，调用方可以请求访问令牌，该令牌需要在标头部分的后续 API 请求中发送，如下所示：
 
-```json
+```
 headers = {"Authorization": "Bearer " + access_token, …} 
 ```
 
@@ -114,7 +114,7 @@ access_token = token_response.get('accessToken') 
 --- | ---
 Content-Type | FarmBeats 数据中心 Api 格式的请求格式（Content-type： application/<format>）为 json。 Content-type： application/json
 授权 | 指定进行 API 调用授权所需的访问令牌：持有者 < 访问令牌 >
-接受 | 响应格式。 对于 FarmBeats 数据中心 Api，格式为 json Accept： application/json
+Accept | 响应格式。 对于 FarmBeats 数据中心 Api，格式为 json Accept： application/json
 
 **API 请求**
 
@@ -124,14 +124,14 @@ Content-Type | FarmBeats 数据中心 Api 格式的请求格式（Content-type�
 
 下面的示例请求是获取设备的列表：
 
-```azurepowershell-interactive
-curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
+```bash
+curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>"
 ```
 大多数 GET、POST 和 PUT 调用都需要 JSON 请求正文。
 
 下面的示例请求是创建设备（此示例包含具有请求正文的输入 json）。
 
-```azurepowershell-interactive
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
@@ -178,7 +178,7 @@ ParentDeviceId | 此设备连接到的父设备的 ID。 例如， 连接到网�
   SensorMeasures > 深度  | 传感器的深度（以厘米为单位）（例如，地面上的湿气10厘米度量值）
   sensorMeasures > 说明  | 提供度量值的有意义说明
   name  | 标识资源的名称。 例如，模型名称/产品名称
-  description  | 提供模型的有意义说明
+  说明  | 提供模型的有意义说明
   properties  | 制造商提供的其他属性
   **器**  |
   hardwareId  | 制造商设置的传感器的唯一 ID
@@ -187,7 +187,7 @@ ParentDeviceId | 此设备连接到的父设备的 ID。 例如， 连接到网�
   端口 > 名称  |设备上传感器连接到的端口的名称和类型。 此名称需要与设备模型中定义的名称相同
   deviceId  | 传感器连接到的设备的 ID
   name  | 标识资源的名称。 例如，"传感器名称/产品名称" 和 "型号/产品代码"。
-  description  | 提供有意义的说明
+  说明  | 提供有意义的说明
   properties  | 制造商提供的其他属性
 
  有关每个对象及其属性的信息，请参阅[swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
@@ -243,27 +243,26 @@ write_client.stop()
 
 ```json
 {
-“deviceid”: “<id of the Device created>”,
- "timestamp": "<timestamp in ISO 8601 format>",
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
 "version" : "1",
 "sensors": [
     {
-      "id": "<id of the sensor created>”
+      "id": "<id of the sensor created>",
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": value
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": value
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
+ ]
 }
-
 ```
-
 遥测 json 中的所有密钥名称应采用小写形式，例如 deviceid、sensordata 等。
 
 例如，遥测消息：

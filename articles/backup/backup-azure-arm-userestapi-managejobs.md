@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: c0ce79c68b9d9cf11ea20c2d6469f4240fb38a95
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 5fe0255a8f304061dc970907c651261832fee614
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747541"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929104"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>使用 REST API 跟踪备份和还原作业
 
@@ -44,7 +44,7 @@ Azure VM 备份作业由“jobId”字段予以标识，并且可以如[此处](
 ## <a name="tracking-the-job"></a>跟踪作业
 
 ```http
-GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2017-07-01
+GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2019-05-13
 ```
 
 `{jobName}` 是上面提到的“jobId”。 响应始终为 200 OK，并且始终包含指示作业的当前状态的“status”字段。 当状态为“Completed”或“CompletedWithWarnings”之后，“extendedInfo”部分将显示关于作业的更多详细信息。
@@ -53,7 +53,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 |名称  |类型  |说明  |
 |---------|---------|---------|
-|200 正常     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | 确定        |
+|200 正常     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 
 #### <a name="example-response"></a>示例响应
 

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 2b15cc56cb4f804fac0b047819ccf166950e1cf3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 232ade55350ad1ac85612cf8c69117c19cb20d0c
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890975"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927797"
 ---
 # <a name="imagery-partner-integration"></a>图像合作伙伴集成
 
@@ -86,7 +86,7 @@ access_token = token_response.get('accessToken') 
 --- | ---
 Content-Type  | FarmBeats 数据中心 API 格式的请求格式（Content-type： application/<format>）为 json。 Content-type： application/json
 授权 | 指定进行 API 调用所需的访问令牌。 授权：持有者 < 访问令牌 >
-接受  | 响应格式。 对于 FarmBeats 数据中心 Api，格式为 json Accept： application/json
+Accept  | 响应格式。 对于 FarmBeats 数据中心 Api，格式为 json Accept： application/json
 
 
 ## <a name="api-requests"></a>API 请求
@@ -97,7 +97,7 @@ Content-Type  | FarmBeats 数据中心 API 格式的请求格式（Content-type�
 
 下面的示例请求是获取设备的列表：
 
-```azurepowershell-interactive
+```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 "Content-Type: application/json" -H
 "Authorization: Bearer <Access-Token>”
@@ -108,7 +108,7 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 下面的示例请求是创建一个设备（它具有带有请求正文的输入 JSON）。
 
 
-```azurepowershell-interactive
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  
 "accept: application/json" -H  
 "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d
@@ -326,6 +326,7 @@ JSON （JavaScript 对象表示法）是一种与语言无关的公共数据格�
   ]
 }
 ```
+
 这将是一次性设置，此新 scenetype 的范围限制为在其中部署 FarmBeats 项目的订阅。
 
 示例：若要添加 SceneSource： "SlantRange"，请将/ExtendedType 的 ID 放在输入负载为 "SceneSource" 的上：

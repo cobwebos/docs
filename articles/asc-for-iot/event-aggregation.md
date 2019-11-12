@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: b1a14cf4c8aec2f3dbfa7bc4fd0800d9fd1fb0aa
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: ca1d1a5761e62b2838a474dcb83f450987972998
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327317"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928959"
 ---
 # <a name="azure-security-center-for-iot-event-aggregation"></a>用于 IoT 事件聚合的 Azure 安全中心
 
@@ -44,7 +44,7 @@ ms.locfileid: "71327317"
 
 仅当满足以下条件时，事件才被视为完全相同： 
 
-* ProcessCreate 事件-**命令行**、**可执行文件**、* * 用户名和**用户 id**相同
+* ProcessCreate 事件-**命令行**、**可执行文件**、**用户名**和**用户 id**相同
 * ConnectionCreate 事件-**命令行**、 **userId**、 **direction**、 **local address**、 **remote address**、* * 协议和**目标端口**相同
 * ProcessTerminate 事件-当**可执行文件**和**退出状态**相同时
 
@@ -66,11 +66,11 @@ ms.locfileid: "71327317"
 
 | 配置名称 | 可能的值 | 详细信息 | 备注 |
 |:-----------|:---------------|:--------|:--------|
-| aggregationEnabledProcessCreate | boolean | 启用/禁用进程创建事件的事件聚合 |
+| aggregationEnabledProcessCreate | 布尔值 | 启用/禁用进程创建事件的事件聚合 |
 | aggregationIntervalProcessCreate | ISO8601 Timespan 字符串 | 进程创建事件的聚合间隔 |
-| aggregationEnabledConnectionCreate | boolean| 启用/禁用连接创建事件的事件聚合 |
+| aggregationEnabledConnectionCreate | 布尔值| 启用/禁用连接创建事件的事件聚合 |
 | aggregationIntervalConnectionCreate | ISO8601 Timespan 字符串 | 连接创建事件的聚合间隔 |
-| aggregationEnabledProcessTerminate | boolean | 启用/禁用进程终止事件的事件聚合 | 仅限 Windows|
+| aggregationEnabledProcessTerminate | 布尔值 | 启用/禁用进程终止事件的事件聚合 | 仅限 Windows|
 | aggregationIntervalProcessTerminate | ISO8601 Timespan 字符串 | 进程终止事件的聚合间隔 | 仅限 Windows|
 |
 
@@ -78,11 +78,11 @@ ms.locfileid: "71327317"
 
 | 配置名称 | 默认值 |
 |:-----------|:---------------|
-| aggregationEnabledProcessCreate | 真 |
+| aggregationEnabledProcessCreate | 是 |
 | aggregationIntervalProcessCreate | PT1H.JSON|
-| aggregationEnabledConnectionCreate | 真 |
+| aggregationEnabledConnectionCreate | 是 |
 | aggregationIntervalConnectionCreate | PT1H.JSON|
-| aggregationEnabledProcessTerminate | 真 |
+| aggregationEnabledProcessTerminate | 是 |
 | aggregationIntervalProcessTerminate | PT1H.JSON|
 |
 

@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: dd58ec08c6ec372cf53a79b75162748cfe336b23
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/11/2019
+ms.openlocfilehash: f2a33f96f77678e02c5b72c36563781e7d7ac334
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73477136"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928282"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>如何为容器启用 Azure Monitor
 
@@ -25,7 +25,7 @@ ms.locfileid: "73477136"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保做好以下准备：
 
@@ -43,6 +43,13 @@ ms.locfileid: "73477136"
 
 * 默认情况下不收集 Prometheus 指标。 在[配置代理](container-insights-prometheus-integration.md)收集 Prometheus 指标之前，请务必查看 Prometheus [文档](https://prometheus.io/)以了解可以定义的内容。
 
+## <a name="supported-configurations"></a>支持的配置
+
+以下是容器 Azure Monitor 的正式支持。
+
+- 环境： Azure 上的 Kubernetes 本地、AKS 引擎和 Azure Stack。 有关详细信息，请参阅[Azure Stack 上的 AKS Engine](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)。
+- 版本的 Kubernetes 和支持策略与[受支持的 AKS](../../aks/supported-kubernetes-versions.md)版本相同。 
+
 ## <a name="network-firewall-requirements"></a>网络防火墙要求
 
 下表中的信息列出容器化代理与容器 Azure Monitor 进行通信所需的代理和防火墙配置信息。 来自代理的所有网络流量都是出站的，以便 Azure Monitor。
@@ -51,7 +58,7 @@ ms.locfileid: "73477136"
 |--------------|------|
 | *.ods.opinsights.azure.com | 443 |  
 | *.oms.opinsights.azure.com | 443 | 
-| *.blob.core.windows.net | 443 |
+| \* .blob.core.windows.net | 443 |
 | dc.services.visualstudio.com | 443 |
 | *.microsoftonline.com | 443 |
 | *. monitoring.azure.com | 443 |
@@ -63,7 +70,7 @@ ms.locfileid: "73477136"
 |--------------|------|-------------|
 | *.ods.opinsights.azure.cn | 443 | 数据引入 |
 | *.oms.opinsights.azure.cn | 443 | OMS 载入 |
-| *.blob.core.windows.net | 443 | 用于监视出站连接。 |
+| \* .blob.core.windows.net | 443 | 用于监视出站连接。 |
 | microsoft.com | 80 | 用于网络连接。 仅当代理映像版本为 ciprod09262019 或更早版本时，才需要执行此步骤。 |
 | dc.services.visualstudio.com | 443 | 对于使用 Azure 公有云的代理遥测 Application Insights。 |
 
@@ -73,7 +80,7 @@ ms.locfileid: "73477136"
 |--------------|------|-------------|
 | *.ods.opinsights.azure.us | 443 | 数据引入 |
 | *.oms.opinsights.azure.us | 443 | OMS 载入 |
-| *.blob.core.windows.net | 443 | 用于监视出站连接。 |
+| \* .blob.core.windows.net | 443 | 用于监视出站连接。 |
 | microsoft.com | 80 | 用于网络连接。 仅当代理映像版本为 ciprod09262019 或更早版本时，才需要执行此步骤。 |
 | dc.services.visualstudio.com | 443 | 对于使用 Azure 公有云 Application Insights 的代理遥测。 |
 
@@ -106,4 +113,4 @@ ms.locfileid: "73477136"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 启用监视来捕获 AKS 群集节点和 Pod 的运行状况指标后，可在 Azure 门户中找到这些运行状况指标。 要了解如何将 Azure Monitor 用于容器，请参阅[查看 Azure Kubernetes 服务运行状况](container-insights-analyze.md)。
+* 通过启用监视来捕获 AKS 群集节点和 Pod 的运行状况指标，这些运行状况指标可在 Azure 门户中找到。 要了解如何将 Azure Monitor 用于容器，请参阅[查看 Azure Kubernetes 服务运行状况](container-insights-analyze.md)。

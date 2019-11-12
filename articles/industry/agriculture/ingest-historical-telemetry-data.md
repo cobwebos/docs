@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e6bd9b5c09e1af5ec587e1f0e52ab25d21d2293b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e721a7818c5f2fcea23263b296912edf164036b2
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889610"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927801"
 ---
 # <a name="ingest-historical-telemetry-data"></a>引入历史遥测数据
 
@@ -245,17 +245,15 @@ SensorModel
     "additionalProp3": {}
   }
 }
-
 ```
 下面的示例请求是创建一个设备（该设备的输入 json 为带有请求正文的有效负载）。  
 
-```azurepowershell-interactive
+```bash
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
 "accept: application/json" -H  "Content-Type: application/json" -H
-"Authorization: Bearer <Access-Token>" -d "
-{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
+"Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
 \"reportingInterval\": 900,  \"name\": \"Device123\",  
-\"description\": \"Test Device 123\",}"*
+\"description\": \"Test Device 123\"}" *
 ```
 
 > [!NOTE]
@@ -274,31 +272,28 @@ curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 建立作为 EventHub 客户端的连接后，可以将消息作为 json 发送到 EventHub。  
 将历史传感器数据格式转换为 Azure FarmBeats 了解的规范格式。 规范消息格式如下所示：  
 
-
-
- ```
-  {   
-      “deviceid”: “<id of the Device created>”,   
-      "timestamp": "<timestamp in ISO 8601 format>",     
-      "version" : "1",   
-      "sensors":
-      [     
-      {        
-          "id": "<id of the sensor created>”       
-          "sensordata": [         
-          {            
-              "timestamp": "< timestamp in ISO 8601 format >",           
-              "<sensor measure name (as defined in the Sensor Model)>": value          
-    },          
-    {            
-    "timestamp": "<timestamp in ISO 8601 format>",           
-     "<sensor measure name (as defined in the Sensor Model)>": value          
-    }        
-    ]      
-    }  
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+        }
+      ]
     }
+ ]
+}
 ```
-
 
 添加相应的设备和传感器之后，请按照上一部分中所述，在遥测消息中获取 deviceid 和 sensorid。
 

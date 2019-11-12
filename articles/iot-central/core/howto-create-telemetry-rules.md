@@ -1,5 +1,5 @@
 ---
-title: 在 Azure IoT Central 应用程序中创建和管理遥测规则 | Microsoft Docs
+title: 使用 Azure IoT Central 应用程序中的遥测规则 |Microsoft Docs
 description: 可以通过 Azure IoT Central 遥测规则近乎实时地监视设备并自动调用操作（例如在触发规则时发送电子邮件）。
 author: ankitgupta
 ms.author: ankitgup
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d586f899a46a1404af6e798eda4d783a5a7ead85
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3b2fff84b70c5c5e37d14faa87143e5dacc82bce
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953780"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930185"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中创建遥测规则并设置通知
 
-*本文适用于操作员、构建者和管理员。*
+本文适用于操作员、构建者和管理员。
 
 [!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
@@ -70,7 +70,7 @@ ms.locfileid: "72953780"
 
 本部分演示如何设置在规则触发时要执行的操作。 此规则中指定的所有条件评估结果均为 true 时会调用操作。
 
-1. 选择“操作”旁边的“+”。 在此处可以看到可用操作的列表。  
+1. 选择“操作”旁边的“ **”。+** 在此处可以看到可用操作的列表。  
 
     ![添加操作](media/howto-create-telemetry-rules/add_action1.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "72953780"
 
 1. 若要保存规则，请选择“保存”。 此规则在数分钟内即可生效，然后开始监视发送到应用程序的遥测数据。 满足规则中指定的条件时，规则会触发配置的电子邮件操作。
 
-可将其他操作添加到规则，例如 Microsoft Flow 和 Webhook。 每个规则最多可添加 5 个操作。
+可将其他操作添加到规则，例如 Microsoft Flow 和 Webhook。 最多可为每个规则添加 5 个操作。
 
 - [Microsoft Flow 操作](howto-add-microsoft-flow.md)，在触发规则时启动 Microsoft Flow 中的工作流 
 - [Webhook 操作](howto-create-webhooks.md)，在触发规则时通知其他服务
@@ -110,7 +110,7 @@ ms.locfileid: "72953780"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何在 Azure IoT Central 应用程序中创建规则后，可了解如下后续步骤：
+了解如何在 Azure IoT Central 应用程序中创建规则后，接下来请学习以下知识：
 
 - [在规则中添加 Microsoft Flow 操作](howto-add-microsoft-flow.md)
 - [在规则中添加 Webhook 操作](howto-create-webhooks.md)

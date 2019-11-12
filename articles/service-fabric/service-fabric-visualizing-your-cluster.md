@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 75568cf3c88c02968b3e3e95971f81cf1b9285d3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9b873b5a68979b8225c44c32e0b9494408e35ac1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496354"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927184"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric Explorer 可视化群集
 
@@ -64,7 +64,7 @@ Service Fabric Explorer 同时在 Service Fabric 群集的 HTTP 管理终结点�
 如果尝试连接到安全群集，则将需提供客户端证书或使用 AAD 登录，具体取决于群集的配置。
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>了解 SService Fabric Explorer 的布局
-可以使用左侧的树导航 Service Fabric Explorer。 在树根中，群集仪表板提供了群集的概述，包括应用程序和节点运行状况的摘要。
+可以使用左侧的树来导航 Service Fabric Explorer。 在树根中，群集仪表板提供了群集的概述，包括应用程序和节点运行状况的摘要。
 
 ![Service Fabric Explorer 群集仪表板][sfx-cluster-dashboard]
 
@@ -92,7 +92,7 @@ Service Fabric 群集中的节点横跨容错域和升级域的二维网格放�
 ## <a name="actions"></a>操作
 Service Fabric Explorer 提供用于对群集中的节点、应用程序和服务快速调用操作的方式。
 
-例如，若要删除某应用程序实例，只需从左侧树中选择该应用程序，然后选择“操作” **“删除应用程序”**  > 。
+例如，要删除某应用程序实例，只需从左侧树中选择该应用程序，并选择“操作” > “删除应用程序”。
 
 ![Service Fabric Explorer 中删除应用程序][sfx-delete-application]
 
@@ -129,7 +129,11 @@ EventStore 是该平台提供的一项功能，它通过 REST API 提供可在 S
 ![Service Fabric Explorer 群集图][sfx-imagestore]
 
 ## <a name="backup-and-restore"></a>备份和还原
-Service Fabric Explorer 提供与[备份和还原](./service-fabric-reliable-services-backup-restore.md)接口的功能。 可以执行以下操作：
+Service Fabric Explorer 提供与[备份和还原](./service-fabric-reliable-services-backup-restore.md)接口的功能。 若要查看 SFX 中的备份和还原功能，必须启用高级模式。
+
+![启用高级模式][0]
+ 
+可以执行以下操作：
 
 * 创建、编辑和删除备份策略。
 * 为应用程序、服务或分区启用和禁用备份。
@@ -151,3 +155,4 @@ Service Fabric Explorer 提供与[备份和还原](./service-fabric-reliable-ser
 [sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/sfx-create-app-instance.png
 [sfx-eventstore]: ./media/service-fabric-diagnostics-eventstore/eventstore.png
 [sfx-imagestore]: ./media/service-fabric-visualizing-your-cluster/sfx-image-store.png
+[0]: ./media/service-fabric-backuprestoreservice/advanced-mode.png
