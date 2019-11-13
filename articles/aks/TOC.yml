@@ -128,8 +128,6 @@
               href: virtual-nodes-cli.md
             - name: 使用 Azure 门户
               href: virtual-nodes-portal.md
-        - name: 使用虚拟 Kubelet
-          href: virtual-kubelet.md
         - name: 使用群集自动缩放程序
           href: cluster-autoscaler.md
         - name: 使用可用性区域
@@ -147,9 +145,9 @@
           href: azure-disks-dynamic-pv.md
         - name: Azure 磁盘 - 静态
           href: azure-disk-volume.md
-        - name: Azure 文件存储 - 动态
+        - name: Azure 文件 - 动态
           href: azure-files-dynamic-pv.md
-        - name: Azure 文件存储 - 静态
+        - name: Azure 文件 - 静态
           href: azure-files-volume.md
         - name: NFS 服务器 - 静态
           href: azure-nfs-volume.md

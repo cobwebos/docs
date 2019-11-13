@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/12/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: 5bf8aea05855d81e88face1dd507f0006cc19cab
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a5f8c8c00a9f63558043167c5cf8269f9e139d54
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73483892"
+ms.locfileid: "73584951"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教程：设置教室实验室 
 在本教程中，请设置带虚拟机的课堂实验室，供学生在课堂上使用。  
@@ -92,6 +92,11 @@ ms.locfileid: "73483892"
     2. 若要一次启动所有 VM，请在工具栏上选择“全部启动”。  
     3. 若要启动特定 VM，请在“状态”  中选择下拉箭头  ，然后选择“启动”。 也可先在第一列中选择一个 VM，然后在工具栏上选择“启动”，以这种方式启动 VM。 
 
+    有关创建和管理模板，以及设置和管理学生虚拟机的详细信息，请参阅以下文章： 
+    
+    - [创建和管理课堂实验室模板](how-to-create-manage-template.md)
+    - [设置和管理虚拟机池](how-to-set-virtual-machine-passwords.md)
+
 ## <a name="add-users-to-the-lab"></a>将用户添加到实验室
 
 1. 选择左侧菜单上的“用户”  。 默认情况下，“限制访问”选项处于启用状态。  当此设置处于启用状态时，用户即使有注册链接也不能注册到实验室，除非该用户在用户列表中。 只有列表中的用户可以使用你发送的注册链接注册到实验室。 在此过程中，请将用户添加到列表。 也可关闭“限制访问”，这样一来，用户只要有注册链接就可以注册到实验室。  
@@ -105,29 +110,40 @@ ms.locfileid: "73483892"
 
     ![用户列表](../media/how-to-configure-student-usage/users-list-new.png)
 
+    将用户注册到实验室后，列表中会显示其姓名。 
+    
 ## <a name="set-a-schedule-for-the-lab"></a>为实验室设置计划
 为实验室创建计划事件，这样实验室中的 VM 就会在特定时间自动启动/停止。 此前指定的用户配额是在此计划时间之外为每个用户分配的额外时间。 
 
 1. 切换到“日程安排”  页，再选择工具栏上的“添加计划事件”  。 
 
     ![“日程安排”页上的“添加日程安排”按钮](../media/how-to-create-schedules/add-schedule-button.png)
-2. 确认已选择“标准”作为“事件类型”。   选择“仅启动”，这样就可以只指定 VM 的启动时间。  选择“仅停止”，这样就可以只指定 VM 的停止时间。  
-3. 在“重复”部分，选择当前计划。  
-
-    ![“日程安排”页上的“添加日程安排”按钮](../media/how-to-create-schedules/select-current-schedule.png)
-4. 选择该计划将打开“重复”  对话框。 在此对话框中，执行以下步骤：
-    1. 对于“重复”字段，请确认已设置“每周”   。 
-    3. 指定“启动日期”。 
+2. 在“添加计划事件”页上执行以下步骤： 
+    1. 确认已选择“标准”作为“事件类型”。    
+    2. 指定课堂**开始日期**。 
     4. 指定“启动时间”  ，这是你希望 VM 启动的时间。
     5. 指定“停止时间”  ，这是 VM 将要关闭的时间。 
     6. 指定“时区”  ，该时区适用于已指定的启动时间和停止时间。 
-    2. 选择希望计划生效的日期。 在下面的示例中，选中的是“星期一到星期四”。 
+3. 在同一“添加计划事件”页上的“重复”部分，选择当前计划。    
+
+    ![“日程安排”页上的“添加日程安排”按钮](../media/how-to-create-schedules/select-current-schedule.png)
+5. 在“重复”  对话框中，执行以下步骤：
+    1. 对于“重复”字段，请确认已设置“每周”   。 
+    2. 选择希望计划生效的日期。 在下面的示例中，选中的是“星期一”至“星期五”。 
+    3. 选择计划的**结束日期**。
     8. 选择“保存”。  
 
-5. 现在，请在“添加计划事件”页上  输入该计划的任何说明或备注作为“备注(可选)”。  
-6. 在“添加计划事件”  页上，选择“保存”  。 
+        ![设置重复计划](../media/how-to-create-schedules/set-repeat-schedule.png)
+
+3. 现在，请在“添加计划事件”页上  输入该计划的任何说明或备注作为“备注(可选)”。  
+4. 在“添加计划事件”  页上，选择“保存”  。 
 
     ![每周日程安排](../media/how-to-create-schedules/add-schedule-page-weekly.png)
+5. 在日历中导航到开始日期，确认是否已设置该计划。
+    
+    ![日历中的计划](../media/how-to-create-schedules/schedule-calendar.png)
+
+    有关创建和管理课堂计划的详细信息，请参阅[创建和管理课堂实验室的计划](how-to-create-schedules.md)。
 
 ## <a name="send-invitation-emails-to-students"></a>向学生发送邀请电子邮件
 
@@ -139,6 +155,8 @@ ms.locfileid: "73483892"
 
     ![通过电子邮件发送注册链接](../media/tutorial-setup-classroom-lab/send-email.png)
 4. 可以在“用户”列表中查看**邀请**状态。  状态应更改为“正在发送”，然后更改为“已在 &lt;日期&gt; 发送”。   
+
+    若要详细了解如何将学生添加到课堂并管理其对实验室的使用，请参阅[如何配置学生对实验室的使用](how-to-configure-student-usage.md)。
 
 ## <a name="next-steps"></a>后续步骤
 在本教程中，创建并配置了课堂实验室。 若要了解学生如何使用注册链接访问实验室中的 VM，请转到下一教程：

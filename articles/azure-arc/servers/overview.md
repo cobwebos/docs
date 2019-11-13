@@ -10,12 +10,12 @@ keywords: azure automation, DSC, powershell, desired state configuration, update
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 0178f27c39c065399208e7fc5afe7352ba4f8e30
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 57dbfa0c2063c2059955294ccc1337bb76b72614
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488213"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606088"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>什么是用于服务器的 Azure Arc
 
@@ -34,7 +34,7 @@ ms.locfileid: "73488213"
 
 在公开预览版中，支持以下操作系统：
 
-- Windows Server 2012 R2 及更高版本
+- Windows Server 2012 R2 和更高版本
 - Ubuntu 16.04 和 18.04
 
 公共预览版旨在进行评估，不应用来管理关键的生产资源。
@@ -83,7 +83,7 @@ Linux：
 
 ## <a name="register-the-required-resource-providers"></a>注册所需的资源提供程序
 
-“功能标志”注册得到批准后，必须注册所需的资源提供程序。
+若要使用适用于服务器的 Azure Arc，必须注册所需的资源提供程序。
 
 *  Microsoft.HybridCompute
 *  Microsoft.GuestConfiguration
@@ -132,7 +132,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 - 已安装 MMA 代理的计算机，将通过更新的管理包启用 Azure Arc 功能  。
 - 用于服务器的 Azure Arc 的集成需要 [MMA 代理10.20.18011 或更高版本](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows#agent-and-vm-extension-version)。
-- 在 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview#log-queries)中查询日志数据时，返回的数据架构将包含混合的 **ResourceId **，形式如下：`/subscriptions/<SubscriptionId/resourceGroups/<ResourceGroup>/providers/Microsoft.HybridCompute/machines/<MachineName>`。
+- 在 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview#log-queries)中查询日志数据时，返回的数据架构将包含混合的 **ResourceId**，形式如下：`/subscriptions/<SubscriptionId/resourceGroups/<ResourceGroup>/providers/Microsoft.HybridCompute/machines/<MachineName>`。
 
 有关详细信息，请参阅 [Azure Monitor 中的 Log Analytics 入门](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)。
 
