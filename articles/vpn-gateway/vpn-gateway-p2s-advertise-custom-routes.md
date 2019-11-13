@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 11/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: 38250d1cd9853013ba9721ece0201a8df6dd1b4a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 6678efd04125e6ae0e0b66e8bcc011c0f319c0fb
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336296"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954311"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>播发 P2S VPN 客户端的自定义路由
 
@@ -22,7 +22,7 @@ ms.locfileid: "71336296"
 
 ## <a name="to-advertise-custom-routes"></a>公布自定义路由
 
-若要播发自定义路由， `Set-AzVirtualNetworkGateway cmdlet`请使用。 下面的示例演示如何为[Contoso 存储帐户表](https://contoso.table.core.windows.net)公布 IP。
+若要播发自定义路由，请使用 `Set-AzVirtualNetworkGateway cmdlet`。 下面的示例演示如何为[Contoso 存储帐户表](https://contoso.table.core.windows.net)公布 IP。
 
 1. Ping *contoso.table.core.windows.net*并记录 IP 地址。 例如：
 
@@ -51,7 +51,14 @@ ms.locfileid: "71336296"
   $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
   $gw.CustomRoutes | Format-List
   ```
+## <a name="to-delete-custom-routes"></a>删除自定义路由
 
+使用以下示例删除自定义路由：
+
+  ```azurepowershell-interactive
+  $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
+  Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute @0
+  ```
 ## <a name="next-steps"></a>后续步骤
 
 有关其他 P2S 路由信息，请参阅[关于点到站点路由](vpn-gateway-about-point-to-site-routing.md)。

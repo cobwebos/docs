@@ -4,17 +4,17 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
-keywords: 项目级恢复; 从 Azure VM 备份恢复文件; 从 Azure VM 还原文件
+keywords: 项级恢复; 从 Azure VM 备份恢复文件; 从 Azure VM 还原文件
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: c6b49e794011d915f8cd7b29e6317e80391f2675
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 13481788bce22876fa13080d0be34db29e2a72cb
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747370"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961583"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -94,7 +94,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 #### <a name="for-linux"></a>对于 Linux
 
-在 Linux 中，恢复点的卷将装载到运行脚本的文件夹。 将相应地显示附加的磁盘、卷和对应装载路径。 这些装载路径对于具有根级别访问权限的用户可见。 浏览脚本输出中涉及的卷。
+在 Linux 中，恢复点的卷会装载到运行脚本的文件夹。 将相应地显示附加的磁盘、卷和对应装载路径。 这些装载路径对于具有根级别访问权限的用户可见。 浏览脚本输出中涉及的卷。
 
   ![Linux 文件恢复菜单](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
 
@@ -186,6 +186,7 @@ $ mount [RAID Disk Path] [/mountpath]
 
 |服务器 OS | 兼容的客户端 OS  |
 | --------------- | ---- |
+| Windows Server 2019    | Windows 10 |
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
@@ -242,7 +243,7 @@ $ mount [RAID Disk Path] [/mountpath]
 
 - 如果还原服务器是 Linux VM
   - 在文件/etc/iscsi/iscsid.conf 中，将设置从
-    - node.js [0]. timeo. noop_out_timeout = 5 到 node.js [0]. timeo. noop_out_timeout = 30
+    - node.js [0]. noop_out_timeout timeo = 5 到 node.js [0]. noop_out_timeout timeo = 30
 - 执行以下各项后，请重新运行该脚本。 进行这些更改后，文件恢复的可能性很高。
 - 用户每次下载脚本时，Azure 备份将启动准备下载恢复点的过程。 使用大磁盘时，这会花费相当长的时间。 如果存在连续突发的请求，目标准备将进入下载螺旋。 因此，建议从门户/Powershell/CLI 下载脚本，等待20-30 分钟（启发式），然后运行该脚本。 此时，目标应准备就绪，可以从脚本进行连接。
 - 在文件恢复后，请确保返回到门户，以便为无法装入卷的恢复点单击 "卸载磁盘"。 实质上，此步骤将清除任何现有进程/会话并增加恢复的可能性。
@@ -257,7 +258,7 @@ $ mount [RAID Disk Path] [/mountpath]
 | 可执行文件输出：已经通过 iSCSI 会话登录目标。 | 脚本已在同一台计算机上执行，并且已附加驱动器 | 已附加恢复点所在的卷。 不能使用与原始 VM 相同的驱动器号装载这些卷。 在文件的文件资源管理器中浏览所有可用卷 |
 | Exe 输出：*此脚本无效，因为磁盘已通过门户卸载/已超过12小时限制。从门户下载新脚本。* |    磁盘已从门户卸除或超过了 12 小时限制 | 此特定可执行文件现已失效，无法运行。 若要访问该恢复时间点的文件，请在门户中访问新的可执行文件|
 | 在运行可执行文件的计算机上：单击卸载按钮后，新卷不会卸载 | 计算机上的 iSCSI 发起程序无响应/不刷新它与目标之间的连接，并且不保留缓存。 |  单击“卸除”后，请等待几分钟。 如果无法卸载新卷，请浏览所有卷。 浏览所有卷会强制发起程序刷新连接并卸载卷，但会出现错误消息，指出磁盘不可用。|
-| 可执行文件输出：脚本已成功运行，但脚本输出中不显示“已附加新卷” |    这是暂时性的错误    | 卷其实已附加。 打开资源管理器即可浏览它们。 如果每次都使用同一台计算机来运行脚本，请考虑重新启动计算机，这样，以后运行可执行文件时应会显示列表。 |
+| 可执行文件输出：脚本已成功运行，但脚本输出中不显示“已附加新卷” |    这是暂时性的错误    | 卷其实已附加。 打开资源管理器即可浏览它们。 如果每次都使用同一台计算机来运行脚本，请考虑重启计算机，这样，以后运行可执行文件时应会显示列表。 |
 | Linux 特定：无法查看所需的卷 | 运行脚本的计算机的 OS 可能无法识别受保护 VM 的基础文件系统 | 检查恢复点是崩溃一致还是文件一致。 如果文件一致，请在 OS 可识别受保护 VM 的文件系统的另一台计算机上运行该脚本 |
 | Windows 特定：无法查看所需的卷 | 磁盘可能已附加，但未配置卷 | 从磁盘管理屏幕中，识别与恢复点相关的其他磁盘。 如果这些磁盘中有任何一个处于脱机状态，请尝试通过右键单击该磁盘并单击 "联机" 来使其联机|
 

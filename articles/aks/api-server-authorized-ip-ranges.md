@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: mlearned
-ms.openlocfilehash: aa0cf1ef3f758d7aba4639d779bde90249d039cb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6fc1af356d035c4db73f761ce679f7ad16126d4f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815669"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013011"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service （AKS）中的授权 IP 地址范围保护对 API 服务器的访问
 
@@ -21,7 +21,7 @@ ms.locfileid: "73815669"
 本文介绍如何使用 API 服务器授权的 IP 地址范围来限制哪些 IP 地址和 CIDRs 可以访问控制平面。
 
 > [!IMPORTANT]
-> 在新群集上，仅在*标准*SKU 负载平衡器上支持 API 服务器授权的 IP 地址范围。 配置了*基本*SKU 负载平衡器和 API 服务器授权 IP 地址范围的现有群集将继续按原样工作。 这些现有的群集也可以升级，它们将继续工作。
+> 在新群集上，仅在*标准*SKU 负载平衡器上支持 API 服务器授权的 IP 地址范围。 配置了*基本*SKU 负载平衡器和 API 服务器授权 IP 地址范围的现有群集将继续按原样工作。 这些现有群集也可以升级，它们将继续工作。
 
 ## <a name="before-you-begin"></a>开始之前
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 11/12/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21117e551642571d5b974e66d0769ed9906b9d50
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 85905e31b9375bac7f813782cbc224a6e770b7ce
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018196"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013127"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>在 Azure 门户中添加 Azure Active Directory B2B 协作用户
 
@@ -25,7 +25,7 @@ ms.locfileid: "71018196"
 将来宾用户添加到目录后，你可以向来宾用户发送指向共享应用程序的直接链接，或者来宾用户可以单击邀请电子邮件中的兑换 URL。 有关兑换过程的详细信息，请参阅 [B2B 协作邀请兑换](redemption-experience.md)。
 
 > [!IMPORTANT]
-> 应按照[如何：在 Azure Active Directory 中添加组织的隐私信息](https://aka.ms/adprivacystatement)中的步骤添加组织的隐私声明的 URL。 作为首次邀请兑换进程的一部分，受邀的用户必须同意你的隐私条款才能继续操作。 
+> 应按照[操作指南：在 Azure Active Directory 中添加组织的隐私信息](https://aka.ms/adprivacystatement)中的步骤添加组织的隐私声明的 URL。 作为首次邀请兑换进程的一部分，受邀的用户必须同意你的隐私条款才能继续操作。 
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -45,14 +45,18 @@ ms.locfileid: "71018196"
    > [!NOTE]
    > “组织关系”页上也提供了“新来宾用户”选项。 在 Azure Active Directory 中的“管理”下，选择“组织关系”。
 
-5. 在“用户名”下，输入外部用户的电子邮件地址。 （可选）包含一条欢迎消息。 例如：
-
-   ![显示“新来宾用户”在 UI 中的位置](./media/add-users-administrator/InviteGuest.png) 
+5. 在 "**新建用户**" 页上，选择 "**邀请用户**"，然后添加来宾用户的信息。 
 
     > [!NOTE]
     > 不支持组电子邮件地址；输入个人的电子邮件地址。 另外，某些电子邮件提供程序允许用户向其电子邮件地址中添加加号 (+) 和附加文本来帮助执行收件箱筛选之类的操作。 但是，Azure AD 当前不支持在电子邮件地址中使用加号。 为避免在传送时出现问题，请省略加号及其之后的任何字符，直至 @ 符号。
 
-6. 选择“邀请”，以自动向来宾用户发送邀请。 
+   - **名称。** 来宾用户的名字和姓氏。
+   - **电子邮件地址（必填）** 。 来宾用户的电子邮件地址。
+   - **个人消息（可选）** 向来宾用户提供个人欢迎消息。
+   - **组**：可以将来宾用户添加到一个或多个现有组，也可以稍后执行此操作。
+   - **目录角色**：如果需要用户 Azure AD 管理权限，则可以将其添加到 Azure AD 角色。 
+
+7. 选择“邀请”，以自动向来宾用户发送邀请。 
  
 发送邀请后，该用户帐户将以来宾的形式自动添加到目录。
 
@@ -81,13 +85,13 @@ ms.locfileid: "71018196"
 
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 在导航窗格中选择“Azure Active Directory”。
-3. 在“管理”下，选择“企业应用程序” > “所有应用程序”。
+3. 在“管理”下，选择“企业应用程序” **“所有应用程序”**  > 。
 4. 选择要将来宾用户添加到的应用程序。
 5. 在应用程序的仪表板上，选择“用户总数”以打开“用户和组”窗格。
 
     ![用于打开“用户和组”窗格的“用户总数”按钮](./media/add-users-administrator/AppUsersAndGroups.png)
 
-6. 选择**添加用户**。
+6. 选择“添加用户”。
 7. 在“添加分配”下，选择“用户和组”。
 8. 执行下列操作之一：
    - 如果目录中已存在该来宾用户，请搜索 B2B 用户。 选择用户，单击“选择”，然后单击“分配”将该用户添加到应用。

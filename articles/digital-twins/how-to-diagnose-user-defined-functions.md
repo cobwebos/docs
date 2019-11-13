@@ -1,6 +1,6 @@
 ---
-title: 如何在 Azure 数字孪生中调试 UDF | Microsoft Docs
-description: 有关如何在 Azure 数字孪生中调试 UDF 的指南。
+title: 如何调试 Udf-Azure 数字孪生 |Microsoft Docs
+description: 了解调试 Azure 数字孪生中的用户定义函数的建议方法。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b122df279ecde8ed9ed49b5a89251073f3feda7
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 130250156f0fae3e6c40742278479b5d4612657b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949889"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005938"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中调试用户定义的函数
 
@@ -35,7 +35,7 @@ Azure 数字孪生支持可靠的日志记录、监视和分析。 解决方案�
 
 * 有关特定于 Azure 数字孪生的日志记录配置，请参阅[如何配置监视和日志记录](./how-to-configure-monitoring.md)。
 * 请参阅[Azure Monitor](../azure-monitor/overview.md)概述，了解通过 Azure Monitor 启用了强大的日志设置。
-* 查看文章[从 azure 资源收集和使用日志数据](../azure-monitor/platform/resource-logs-overview.md)，以便通过 azure 门户、Azure CLI 或 PowerShell 配置 Azure 数字孪生中的诊断日志设置。
+* 查看文章[从 azure 资源收集和使用日志数据](../azure-monitor/platform/resource-logs-overview.md)，以便通过 Azure 门户、Azure CLI 或 PowerShell 配置 Azure 数字孪生中的诊断日志设置。
 
 配置后，你将能够选择所有日志类别和指标，并使用强大的 Azure Monitor log analytics 工作区来支持调试工作。
 
@@ -63,7 +63,7 @@ AzureDiagnostics
 | order by CorrelationId desc
 ```
 
-如果为用户定义函数启用日志记录，则这些日志将显示在 log analytics 实例中，其类别 @no__t 为-0。 若要检索它们，请在 log analytics 中输入以下查询条件：
+如果为用户定义函数启用日志记录，则这些日志将显示在 log analytics 实例中，其类别 `UserDefinedFunction`。 若要检索它们，请在 log analytics 中输入以下查询条件：
 
 ```Kusto
 AzureDiagnostics
@@ -187,7 +187,7 @@ sendNotification(telemetry.SensorId, "Sensor", JSON.stringify(customNotification
 
 避免遇到此问题的最简单方法是在元数据对象上使用 `Notify` 方法。
 
-例如：
+示例：
 
 ```JavaScript
 function process(telemetry, executionContext) {

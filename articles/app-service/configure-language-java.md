@@ -14,12 +14,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 75632d4fcdbf27f70b1b84f08f7295212dbac6a8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ad9ee8a21390126f20da4037a438a2655b8b5d47
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471090"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012254"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Windows Java 应用
 
@@ -40,10 +40,6 @@ Azure 应用服务可让 Java 开发人员在完全托管的基于 Windows 的�
 ## <a name="logging-and-debugging-apps"></a>日志记录和调试应用
 
 可以通过 Azure 门户对每个应用使用性能报告、流量可视化和运行状况检查。 有关详细信息，请参阅[Azure App Service 诊断概述](overview-diagnostics.md)。
-
-### <a name="ssh-console-access"></a>SSH 控制台访问
-
-[!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
 ### <a name="stream-diagnostic-logs"></a>流式传输诊断日志
 

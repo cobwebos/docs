@@ -8,14 +8,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: ba10a6105972eddc8474841b234d2eeddc994f5d
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 9f3f98863f9a7cd0e6328ddc75b1154ee933fe0b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948920"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009251"
 ---
-# <a name="security-best-practices"></a>安全最佳实践
+# <a name="azure-digital-twins-security-best-practices"></a>Azure 数字孪生安全最佳做法
 
 Azure 数字孪生安全性支持对 IoT 图中特定资源和操作的精确访问。 它通过精细的角色和权限管理（称为[基于角色的访问控制](./security-role-based-access-control.md)）实现这一点。
 

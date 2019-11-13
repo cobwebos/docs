@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 中心模块标识和模块孪生 (Node.js) 入门 | Microsoft Docs
+title: 开始 Azure IoT 中心模块身份 & 模块（node.js）
 description: 了解如何使用用于 Node.js 的 IoT SDK 创建模块标识和更新模块孪生。
 author: wesmc7777
 manager: philmea
@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 0fc676fd32c585324bac0024655765ebd628385a
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: bf80925a2dc5c6d06ba14fe1c0d72a2fc1f88d51
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72165895"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953870"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>IoT 中心模块标识和模块孪生 (Node.js) 入门
 
@@ -56,7 +56,7 @@ ms.locfileid: "72165895"
 
 2. 在该目录中，首先运行 npm init -y 使用默认值创建一个空的 package.json。 这是代码的项目文件。
 
-3. 运行**npm 安装-S azure-iothub @ no__t-1modules-preview** ，将服务 SDK 安装在**node_modules**子目录内。
+3. 运行**npm 安装-S azure-iothub\@模块-预览版**，将服务 SDK 安装在**node_modules**子目录内。
 
     > [!NOTE]
     > 子目录名称 node_modules 使用字模块来表示“节点库”。 此处的术语与 IoT 中心模块无关。
@@ -118,7 +118,7 @@ ms.locfileid: "72165895"
 
     ```
 
-此应用在设备“myFirstDevice”下创建 ID 为“myFirstDevice”的设备标识，以及 ID 为“myFirstModule”的模块标识。 （如果该模块 ID 已在标识注册表中，代码就只检索现有的模块信息。）然后，应用程序会显示该标识的主密钥。 在模拟模块应用中使用此密钥连接到 IoT 中心。
+此应用在设备“myFirstDevice”下创建 ID 为“myFirstDevice”的设备标识，以及 ID 为“myFirstModule”的模块标识。 （如果该模块 ID 已在标识注册表中存在，则代码只检索现有的模块信息。）然后，应用程序会显示该标识的主密钥。 在模拟模块应用中使用此密钥连接到 IoT 中心。
 
 使用节点 add.js 运行它。 它将为设备标识提供一个连接字符串，并为模块标识提供另一个连接字符串。
 

@@ -1,17 +1,14 @@
 ---
 title: 了解效果的工作原理
 description: Azure 策略定义具有各种影响，决定了如何管理和报告合规性。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: c448ab889ad263f4f8b6c9a59048551ca761d69a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c345f96ef5176c4afb3d46aaca2e9903c7911fb1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464052"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959905"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -575,5 +572,5 @@ EnforceRegoPolicy 效果的**详细信息**属性具有描述 "看门程序 v2" 
 - 查看 [Azure Policy 定义结构](definition-structure.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
 - 了解如何[获取合规性数据](../how-to/getting-compliance-data.md)。
-- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
+- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

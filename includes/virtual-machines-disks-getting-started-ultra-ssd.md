@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 838037804baad9105b4636934de957c2e5f3e810
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3525edb2a73811254b2a4dce70ce3edb58988492
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612004"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012444"
 ---
-# <a name="using-azure-ultra-disks"></a>使用 Azure 超磁盘
-
 Azure ultra 磁盘为 Azure IaaS 虚拟机（Vm）提供高吞吐量、高 IOPS 和一致的低延迟磁盘存储。 此新产品提供出类拔萃的性能，其可用性级别与我们的现有磁盘产品相同。 超磁盘的一个主要优点是能够在不重新启动 Vm 的情况下动态更改 SSD 的性能和工作负荷。 超磁盘适用于数据密集型工作负荷，例如 SAP HANA、顶级数据库和事务密集型工作负荷。
 
 ## <a name="ga-scope-and-limitations"></a>GA 范围和限制
@@ -49,7 +47,7 @@ $vmSize = "Standard_E64s_v3"
 
 保留 "**区域**" 值，它表示可用性区域，你需要它来部署超磁盘。
 
-|ResourceType  |Name  |位置  |区域  |限制  |功能  |值  |
+|ResourceType  |名称  |位置  |区域  |限制  |功能  |值  |
 |---------|---------|---------|---------|---------|---------|---------|
 |disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
@@ -66,7 +64,7 @@ $vmSize = "Standard_E64s_v3"
 
 如果要使用自己的模板，请确保 `Microsoft.Compute/virtualMachines` 和 `Microsoft.Compute/Disks` 的**apiVersion**设置为 `2018-06-01` （或更高版本）。
 
-将磁盘 sku 设置为**UltraSSD_LRS**，然后设置磁盘容量、IOPS、可用性区域和吞吐量（以 MBps 为单位）以创建超磁盘。
+将磁盘 sku 设置为**UltraSSD_LRS**，然后设置磁盘容量、IOPS、可用性区域和吞吐量（以 MBps 为单位），以创建一个超小型磁盘
 
 在预配 VM 后，可以对数据磁盘进行分区和格式设置并为工作负荷配置这些磁盘。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 中心模块标识和模块孪生 (Python) 入门 | Microsoft Docs
+title: Azure IoT 中心模块标识和模块克隆（Python）
 description: 了解如何使用用于 Python 的 IoT SDK 创建模块标识和更新模块孪生。
 author: chrissie926
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: menchi
-ms.openlocfilehash: d9aeb5130f565c5fc24e2d0ced9c7ce16d2927ef
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: e18d448d9aee0137f1167d23a2bbf53486d0c764
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001149"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953846"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>IoT 中心模块标识和模块孪生 (Python) 入门
 
@@ -85,7 +85,7 @@ except KeyboardInterrupt:
     print("IoTHubRegistryManager sample stopped")
 ```
 
-此应用在设备“myFirstDevice”下创建 ID 为“myFirstDevice”的设备标识，以及 ID 为“myFirstModule”的模块标识。 （如果该模块 ID 已在标识注册表中，代码就只检索现有的模块信息。）然后，应用程序会显示该标识的主密钥。 在模拟模块应用中使用此密钥连接到 IoT 中心。
+此应用在设备“myFirstDevice”下创建 ID 为“myFirstDevice”的设备标识，以及 ID 为“myFirstModule”的模块标识。 （如果该模块 ID 已在标识注册表中存在，则代码只检索现有的模块信息。）然后，应用程序会显示该标识的主密钥。 在模拟模块应用中使用此密钥连接到 IoT 中心。
 
 > [!NOTE]
 > IoT 中心标识注册表只存储设备和模块标识，以启用对 IoT 中心的安全访问。 标识注册表存储用作安全凭据的设备 ID 和密钥。 标识注册表还为每个设备存储启用/禁用标志，该标志可以用于禁用对该设备的访问。 如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。 没有针对模块标识的“已启用/已禁用”标记。 有关详细信息，请参阅 [IoT 中心开发人员指南](iot-hub-devguide-identity-registry.md)。
@@ -101,7 +101,7 @@ except KeyboardInterrupt:
 
 2. **创建 UpdateModuleTwinReportedProperties 应用**
 
-   在 Program.cs 文件顶部添加以下 `using` 语句：
+   在 `using`Program.cs**文件顶部添加以下** 语句：
 
     ```python
     import sys

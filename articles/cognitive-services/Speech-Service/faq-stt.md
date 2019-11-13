@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: 3b957181015cba06eb361272ca1004ba3e7a7008
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2d0a05c763b21b0cf22a724f9a5faa9d70b5b557
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579679"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010650"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -33,7 +33,7 @@ ms.locfileid: "73579679"
 
 问：是否始终需要生成自定义语音模型？
 
-**答**：不需要。 如果应用程序使用通用的日常语言，则无需自定义模型。 如果应用程序用于背景噪音很小或无背景噪音的环境，则无需自定义模型。
+**答**：否。 如果应用程序使用通用的日常语言，则无需自定义模型。 如果应用程序用于背景噪音很小或无背景噪音的环境，则无需自定义模型。
 
 你可以在门户中部署基线模型和自定义模型，并针对这些模型运行准确度测试。 可以使用此功能衡量基线模型与自定义模型的准确度。
 
@@ -59,11 +59,11 @@ ms.locfileid: "73579679"
 
 旧数据集和新数据集必须合并为单个 .zip 文件（用于声学数据）或 .txt 文件（用于语言数据）。 适应完成后，需要重新部署新的更新后模型以获取新的终结点
 
-问：当新版本的基线可用时，是否会自动更新我的部署？
+**问：当基线的新版本可用时，我的部署是否自动更新？**
 
 答：部署不会自动更新。
 
-如果已调整并部署了具有基线 V1.0 的模型，该部署将保持原样。 客户可以解除已部署的模型，使用较新版本的基线重新调整并重新部署。
+如果已调整并部署了具有基线 V1.0 的模型，该部署将保持原样。 客户可使用基线的较新版本和重新部署，来 readapt 部署的模型。
 
 问：如果我的已部署模型需要比门户提供的并发性更高的并发性，该怎么办？
 
@@ -71,26 +71,31 @@ ms.locfileid: "73579679"
 
 如果需要更高的规模，请联系[语音支持](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text)。
 
-若要增加自定义模型的并发性，需要提供以下信息：
+若要增加***自定义模型***的并发性，需要提供以下信息：
 
-- 部署模型的区域。
-- 已部署模型的终结点 ID。
+- 部署模型的区域，
+- 已部署模型的终结点 ID：
+  - 进入[自定义语音门户](https://aka.ms/customspeech)，
+  - 登录（如有必要）
+  - 选择项目和部署，
+  - 选择需要提高并发性的终结点，
+  - 复制 `Endpoint ID`。
 
-若要增加基础模型的并发性，需要提供以下信息：
+若要增加***基础模型***的并发性，需要提供以下信息：
 
 - 你的服务的区域，
 
 和
 
-- subrscription 的访问令牌（请参阅[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)），
+- 订阅的访问令牌（请参阅[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)），
 
 或
 
 - 订阅的资源 ID：
-  - 请参阅 https://portal.azure.com。
+  - 请参阅[Azure 门户](https://portal.azure.com)。
   - 在搜索框中选择 "`Cognitive Services`"，
   - 从显示的服务中，选择要为其增加并发的语音服务，
-  - 显示此服务的属性，
+  - 显示此服务的 `Properties`，
   - 复制完整的 `Resource ID`。
 
 问：是否可以下载模型并在本地运行？
@@ -107,7 +112,7 @@ ms.locfileid: "73579679"
 
 **问：如何对双通道音频收费？**
 
-**答**：如果单独提交每个通道（每个通道位于其自己的文件中），则会按每个文件的持续时间向你收费。 如果你提交单个文件，其中每个声道都一起多路复用，则按单个文件的持续时间对你收费。
+**答**：如果单独提交每个通道（每个通道位于其自己的文件中），将按文件的持续时间向你收费。 如果你提交单个文件，其中每个声道都一起多路复用，则按单个文件的持续时间对你收费。
 
 > [!IMPORTANT]
 > 如果有禁止使用自定义语音服务的其他隐私问题，请联系其中一个支持渠道。
@@ -120,7 +125,7 @@ ms.locfileid: "73579679"
 
 问：是否可以压缩文本文件，以便上传更大的文本文件？ 
 
-**答**：不需要。 目前，仅允许未压缩的文本文件。
+**答**：否。 目前，仅允许未压缩的文本文件。
 
 **问：数据报告显示最谈话失败。问题是什么？**
 
@@ -184,8 +189,8 @@ ms.locfileid: "73579679"
  
 **问：租户模型改进了哪些语音体验？**
 
-**答：** 启用并发布租户模型后，它将用于改进使用语音服务生成的任何企业应用程序的识别;这也会传递指示企业成员身份的用户 AAD 标记。 
- 
+**答：** 当启用、创建并发布租户模型时，它将用于改进使用语音服务生成的任何企业应用程序的识别;这也会传递指示企业成员身份的用户 AAD 标记。
+
 当你为语音服务应用程序创建租户模型时，Office 365 中内置的语音体验（如听写和 PowerPoint 字幕）不会更改。
 
 ## <a name="next-steps"></a>后续步骤

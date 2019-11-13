@@ -1,17 +1,14 @@
 ---
 title: 获取策略符合性数据
 description: Azure Policy 的评估和效果确定了符合性。 了解如何获取符合性详细信息。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 02/01/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: bd65fcf6ebff931fbb408ca8337a37d355221dfe
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b460a3e70b5462be3fdc7f34dd7261d491a495b3
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480237"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959573"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
 
@@ -89,10 +86,10 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 | 资源状态 | 效果 | 策略评估 | 符合性状态 |
 | --- | --- | --- | --- |
-| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | 正确 | 不符合 |
-| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | 错误 | 符合 |
-| 新建 | Audit、AuditIfNotExist\* | 正确 | 不符合 |
-| 新建 | Audit、AuditIfNotExist\* | 错误 | 符合 |
+| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | True | 不符合 |
+| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | False | 符合 |
+| 新建 | Audit、AuditIfNotExist\* | True | 不符合 |
+| 新建 | Audit、AuditIfNotExist\* | False | 符合 |
 
 \* Append、DeployIfNotExist 和 AuditIfNotExist 效果要求 IF 语句为 TRUE。
 这些效果还要求存在条件为 FALSE 才能将资源判定为不合规。 如果为 TRUE，则 IF 条件会触发相关资源存在条件的计算。
@@ -408,5 +405,5 @@ Trent Baker
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
 - 查看[了解策略效果](../concepts/effects.md)。
 - 了解如何[以编程方式创建策略](programmatically-create.md)。
-- 了解如何[修正不符合的资源](remediate-resources.md)。
+- 了解如何[修正不合规的资源](remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

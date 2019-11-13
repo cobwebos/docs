@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric 容器应用程序清单示例 | Microsoft Docs
+title: Azure Service Fabric 应用程序清单示例
 description: 了解如何为 Service Fabric 应用程序配置应用程序和服务清单设置。
 services: service-fabric
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: dc3384821ddfba0a137a74297bc44903b6ed5d1d
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 969f15ecb45164e3b3f26c22f756a022e55782ed
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650575"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013174"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Service Fabric 应用程序和服务清单示例
 本部分包含应用程序和服务清单的示例。 这些示例并非用来展示重要方案，而是用来展示可用的各种设置以及如何使用它们。 
