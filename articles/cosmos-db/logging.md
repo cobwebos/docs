@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: bdbc50983708327cf5d3857282c92fcab1c28b09
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: d9c294d4ddadd1f6be7f66cd7fdd0f0dc723e18f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930548"
+ms.locfileid: "73950578"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Azure Cosmos DB 中的诊断日志记录 
 
@@ -118,7 +118,7 @@ Azure 诊断日志由资源发出，提供与该资源的操作相关的各种�
 
 3. 选择“保存”。
 
-    如果收到错误，指出“无法更新诊断 \<工作区名称> 的诊断。 订阅 \<订阅 ID> 未注册为使用 microsoft.insights”，请遵照[排查 Azure 诊断问题](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)中的说明注册帐户，然后重试此过程。
+    如果收到一个错误，指出“无法更新 \<工作区名称> 的诊断。 订阅 \<订阅 ID> 未注册为使用 microsoft.insights”，请遵照[排查 Azure 诊断问题](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)中的说明注册帐户，然后重试此过程。
 
     若要更改在将来的任意时间点保存诊断日志的方式，可以返回到此页，修改帐户的诊断日志设置。
 
@@ -159,7 +159,7 @@ Azure 诊断日志由资源发出，提供与该资源的操作相关的各种�
 如果已安装 Azure PowerShell，但不知道版本，请在 PowerShell 控制台中键入 `(Get-Module azure -ListAvailable).Version`。  
 
 ### <a id="connect"></a>连接到订阅
-启动 Azure PowerShell 会话，并使用以下命令登录 Azure 帐户：  
+启动 Azure PowerShell 会话，然后使用以下命令登录 Azure 帐户：  
 
 ```powershell
 Connect-AzAccount
@@ -365,7 +365,7 @@ $blobs | Get-AzStorageBlobContent `
 }
 ```
 
-若要了解每个 JSON Blob 中的数据，请参阅[解释 Azure Cosmos DB 日志](#interpret)。
+若要了解每个 JSON blob 中的数据，请参阅[解释 Azure Cosmos DB 日志](#interpret)。
 
 ## <a name="manage-your-logs"></a>管理日志
 
@@ -379,7 +379,7 @@ $blobs | Get-AzStorageBlobContent `
 <a id="#view-in-loganalytics"></a>
 ## <a name="view-logs-in-azure-monitor-logs"></a>查看 Azure Monitor 日志中的日志
 
-如果在启用诊断日志记录时选择了“发送到 Log Analytics”选项，则容器中的诊断数据会在两个小时内转发到 Azure Monitor 日志。 如果在启用日志记录之后立即查看 Azure Monitor 日志，将看不到任何数据。 请等待两个小时并重试。 
+如果在启用诊断日志记录时选择了“发送到 Log Analytics”选项，则容器中的诊断数据会在两个小时内转发到 Azure Monitor 日志。 如果在启用日志记录之后立即查看 Azure Monitor 日志，将看不到任何数据。 请等待两小时，然后重试。 
 
 在查看日志之前，请检查并确定 Log Analytics 工作区是否已升级为使用新的 Kusto 查询语言。 若要检查，请打开 [Azure 门户](https://portal.azure.com)，在最左侧选择“Log Analytics 工作区”，然后选择工作区名称，如下图所示。 此时会显示“Log Analytics 工作区”页：
 
@@ -401,7 +401,7 @@ $blobs | Get-AzStorageBlobContent `
 ![搜索最近 10 条日志的示例](./media/logging/log-analytics-query.png)
 
 <a id="#queries"></a>
-### <a name="cosmosdb-log-analytics-queries-in-azure-monitor"></a>Azure Monitor 中的 CosmosDB Log Analytics 查询
+### <a name="azure-cosmos-db-log-analytics-queries-in-azure-monitor"></a>Azure Cosmos DB Azure Monitor 中的 Log Analytics 查询
 
 可在“日志搜索”框中输入下面这些附加的查询，以帮助监视 Azure Cosmos 容器。 这些查询使用[新语言](../log-analytics/log-analytics-log-search-upgrade.md)。  
 
@@ -445,6 +445,7 @@ $blobs | Get-AzStorageBlobContent `
     | where Caller == "test@company.com" and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
     | summarize count() by Resource
     ```
+
     > [!NOTE]
     > 此命令适用于活动日志，而不适用于诊断日志。
 
@@ -462,8 +463,6 @@ $blobs | Get-AzStorageBlobContent `
     | order by requestCharge_s desc
     | limit 100
     ```
-    
-      
 
 * 查询哪些操作花费的时间超过 3 毫秒：
 
@@ -496,18 +495,15 @@ $blobs | Get-AzStorageBlobContent `
     AzureDiagnostics 
     | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
     | project SubscriptionId, regionName_s, databaseName_s, collectionname_s, partitionkey_s, sizeKb_s, ResourceId 
-    
-   
     ```
     
-
 有关如何使用新的日志搜索语言的详细信息，请参阅[了解 Azure Monitor 日志中的日志搜索](../log-analytics/log-analytics-log-search-new.md)。 
 
 ## <a id="interpret"></a>解释日志
 
 存储在 Azure 存储和 Azure Monitor 日志中的诊断数据使用相似的架构。 
 
-下表描述了每个日志条目的内容。
+下表介绍了每个日志项目的内容。
 
 | Azure 存储字段或属性 | Azure Monitor 日志属性 | 说明 |
 | --- | --- | --- |

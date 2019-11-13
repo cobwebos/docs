@@ -3,7 +3,7 @@ title: 使用情况和见解报表 |Microsoft Docs
 description: Azure Active Directory 门户中的使用情况和见解报表简介
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 3fba300d-18fc-4355-9924-d8662f563a1f
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 05/13/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 568eaa358f6788af525a69cd8ecda76a0591879f
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b3db86137207ae726c7befc393f62590fd1456d7
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820938"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008269"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的使用情况和见解报告
 
@@ -31,7 +31,7 @@ ms.locfileid: "72820938"
 *   哪些应用程序的登录失败最多？ 
 *   每个应用程序的最常见登录错误是什么？
 
-## <a name="prerequisites"></a>必备组件 
+## <a name="prerequisites"></a>先决条件 
 
 若要访问使用情况报表和 insights 报表中的数据，需要：
 

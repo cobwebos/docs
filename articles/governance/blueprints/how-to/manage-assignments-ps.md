@@ -1,17 +1,14 @@
 ---
 title: 如何通过 PowerShell 管理分配
 description: 了解如何通过官方 Azure 蓝图 PowerShell 模块 Az. 蓝图管理蓝图分配。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/30/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: ef9674165533ef3e4887bba68507344406ca128c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 98c2173568f65d029b00ca6c8b25d2195094a5e3
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755929"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961620"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>如何通过 PowerShell 管理分配
 
@@ -52,9 +49,9 @@ Azure 蓝图模块需要以下软件：
 ## <a name="get-blueprint-definitions"></a>获取蓝图定义
 
 处理赋值的第一步通常是获取对蓝图定义的引用。
-@No__t_0 cmdlet 获取一个或多个蓝图定义。 Cmdlet 可以从具有 `-ManagementGroupId {mgId}` 的管理组或具有 `-SubscriptionId {subId}` 的订阅获取蓝图定义。 **Name**参数获取蓝图定义，但必须与**ManagementGroupId**或**SubscriptionId**一起使用。 **版本**可与**名称**一起使用，以便更明确地了解返回的蓝图定义。 开关 `-LatestPublished` 获取最近发布的版本，而不是**版本**。
+`Get-AzBlueprint` cmdlet 获取一个或多个蓝图定义。 Cmdlet 可以从具有 `-ManagementGroupId {mgId}` 的管理组或具有 `-SubscriptionId {subId}`的订阅获取蓝图定义。 **Name**参数获取蓝图定义，但必须与**ManagementGroupId**或**SubscriptionId**一起使用。 **版本**可与**名称**一起使用，以便更明确地了解返回的蓝图定义。 开关 `-LatestPublished` 获取最近发布的版本，而不是**版本**。
 
-下面的示例使用 `Get-AzBlueprint` 从表示为 `{subId}` 的特定订阅获取名为 "101-蓝图-定义-订阅" 的所有版本：
+下面的示例使用 `Get-AzBlueprint` 从表示为 `{subId}`的特定订阅获取名为 "101-蓝图-定义-订阅" 的所有版本：
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -100,7 +97,7 @@ allowedlocations_listOfAllowedLocations                Microsoft.Azure.Commands.
 
 如果蓝图分配已存在，则可以使用 `Get-AzBlueprintAssignment` cmdlet 获取对它的引用。 Cmdlet 采用**SubscriptionId**和**Name**作为可选参数。 如果未指定**SubscriptionId** ，则使用当前的订阅上下文。
 
-下面的示例使用 `Get-AzBlueprintAssignment` 从表示为 `{subId}` 的特定订阅获取名为 "分配锁-资源组" 的单一蓝图分配：
+下面的示例使用 `Get-AzBlueprintAssignment` 从表示为 `{subId}`的特定订阅获取名为 "分配锁-资源组" 的单一蓝图分配：
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -171,7 +168,7 @@ ResourceGroups    : ResourceGroup
 
 ### <a name="example-1-provide-parameters"></a>示例1：提供参数
 
-下面的示例创建一个新的 "westus2" 1.1 版本的 "我的蓝图" 蓝图 `Get-AzBlueprint` 定义的分配，将托管标识和分配对象位置设置为 ""，使用_AllResourcesReadOnly_锁定资源，并在特定订阅上设置**参数**和**ResourceGroupParameter**的哈希表，表示为 `{subId}`：
+下面的示例创建一个新的 "westus2" 1.1 版本的 "我的蓝图" 蓝图 `Get-AzBlueprint`定义的分配，将托管标识和分配对象位置设置为 ""，使用_AllResourcesReadOnly_锁定资源，并在表示为 `{subId}`的特定订阅上设置**参数**和**ResourceGroupParameter**的哈希表：
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -252,7 +249,7 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Subsc
 
 ## <a name="update-blueprint-assignments"></a>更新蓝图分配
 
-有时，必须更新已创建的蓝图分配。 @No__t_0 cmdlet 处理此操作。 Cmdlet 采用 `New-AzBlueprintAssignment` cmdlet 执行的大多数相同参数，允许更新在分配上设置的任何内容。 例外情况包括：_名称_、_蓝图_和_SubscriptionId_。 仅更新所提供的值。
+有时，必须更新已创建的蓝图分配。 `Set-AzBlueprintAssignment` cmdlet 处理此操作。 Cmdlet 采用 `New-AzBlueprintAssignment` cmdlet 执行的大多数相同参数，允许更新在分配上设置的任何内容。 例外情况包括：_名称_、_蓝图_和_SubscriptionId_。 仅更新所提供的值。
 
 若要了解更新蓝图分配时所发生的情况，请参阅[更新分配的规则](./update-existing-assignments.md#rules-for-updating-assignments)。
 
@@ -324,7 +321,7 @@ ResourceGroups    : ResourceGroup
 
 当需要删除蓝图分配时，`Remove-AzBlueprintAssignment` cmdlet 将处理此操作。 该 cmdlet 使用**Name**或**InputObject**来指定要删除的蓝图分配。 **SubscriptionId**是_必需_的，并且必须在所有情况下提供。
 
-下面的示例使用 `Get-AzBlueprintAssignment` 获取现有蓝图分配，然后将其从表示为 `{subId}` 的特定订阅中删除：
+下面的示例使用 `Get-AzBlueprintAssignment` 获取现有蓝图分配，然后将其从表示为 `{subId}`的特定订阅中删除：
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -338,7 +335,7 @@ Remove-AzBlueprintAssignment -InputObject $blueprintAssignment -SubscriptionId '
 
 ## <a name="end-to-end-code-example"></a>端到端代码示例
 
-将所有步骤结合起来，下面的示例将获取蓝图定义，然后创建、更新和删除以 `{subId}` 表示的特定订阅中的蓝图分配：
+将所有步骤结合起来，下面的示例将获取蓝图定义，然后创建、更新和删除以 `{subId}`表示的特定订阅中的蓝图分配：
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell

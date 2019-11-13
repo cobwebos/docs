@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 11/04/2019
-ms.openlocfilehash: 2206afc45c7ea35c41f51839b66dca33982939ae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d44fb94978c450808c8a1c0852d4c771a100857e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489808"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961715"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>管理和请求 Azure 资源的配额
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "73489808"
 ### <a name="virtual-machines"></a>虚拟机
 对于每个 Azure 订阅，你可以对服务或独立使用的虚拟机数量有限制。 基于总核心数和每个系列的区域级别也同样有此限制。
 
-虚拟机核心有一个区域总限制和一个每个大小系列（Dv2、F 等）限制，这两者都是单独强制执行的。 例如，某个订阅的美国东部 VM 核心总数限制为 30，A 系列核心数限制为 30，D 系列核心数限制为 30。 该订阅可以部署 30 个 A1 VM，或者 30 个 D1 VM，或者同时部署这二者，但其总数不能超过 30 个核心（例如，10 个 A1 VM 和 20 个 D1 VM）。
+虚拟机核心有一个区域总限制和一个每个大小系列（Dv2、F 等）限制，这两者都是单独强制执行的。 例如，假设某个订阅的美国东部 VM 核心总数限制为 30，A 系列核心数限制为 30，D 系列核心数限制为 30。 该订阅可以部署 30 个 A1 VM、30 个 D1 VM，或者两者的组合，但其总数不能超过 30 个核心（例如，10 个 A1 VM 和 20 个 D1 VM）。
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
@@ -70,7 +70,7 @@ ms.locfileid: "73489808"
 | 每个节点的最大 GPU 辅助角色数 | 1-4 |
 | 最长作业生存期 | 90天<sup>1</sup> |
 | 低优先级节点上的最大作业生存期 | 7 天<sup>2</sup> |
-| 每个节点的最大参数服务器数 | 1 |
+| 每个节点的最大参数服务器数 | 1 个 |
 
 <sup>1</sup> 最长生存期是指运行从开始到结束的时间。 已完成的运行会无限期保存；最长生存期内未完成的运行的数据不可访问。
 如果存在容量限制，则低优先级节点上的<sup>2</sup>个作业可能会被抢占。 建议在作业中实施检查点操作。
@@ -92,7 +92,7 @@ ms.locfileid: "73489808"
 有关配额限制更详细的最新列表，请在[此处](https://docs.microsoft.com/azure/azure-subscription-service-limits#container-instances-limits)查看适用于 Azure 的配额文章。
 
 ### <a name="storage"></a>存储
-给定订阅中每个区域的存储帐户数量也有限制。 默认限制数量为 200，包括标准和高级存储帐户。 如果在某特定区域中需要的存储帐户多于 200 个，请通过 [Azure 支持](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)提出请求。 Azure 存储团队将评审业务案例，对于特定区域最多可以批准 250 个存储帐户。
+给定订阅中每个区域的存储帐户数量也有限制。 默认限制为250，同时包含标准存储帐户和高级存储帐户。 如果在给定区域中需要250个以上的存储帐户，请通过[Azure 支持](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)提出请求。 Azure 存储团队将评审业务案例，对于特定区域最多可以批准 250 个存储帐户。
 
 
 ## <a name="workspace-level-quota"></a>工作区级别配额
@@ -128,7 +128,7 @@ ms.locfileid: "73489808"
 1. 选择订阅以查看配额限制。 请记住筛选到所需的区域。
 
 1. 你现在可以在订阅级别视图和工作区级别视图之间切换：
-    + **订阅视图：** 这样，你就可以查看 VM 系列使用的核心配额，按工作区展开它，并通过实际群集名称进一步扩展它。 此视图最适合用于快速了解特定 VM 系列的核心使用情况的详细信息，以查看工作区的细分，并使每个工作区的基础群集更进一步。 此视图中的常规约定是（使用情况/配额），其中使用情况是当前扩大的内核数，配额是资源可缩放到的逻辑最大核心数。 对于每个**工作区**，配额将是工作区级配额（如上文所述），它表示可针对特定 VM 系列扩展到的最大核心数。 对于**群集**，与群集可缩放到 max_nodes 属性定义的节点的最大数目相比，配额实际上是对应的内核数。
+    + **订阅视图：** 这样，你就可以查看 VM 系列使用的核心配额，按工作区展开它，并通过实际群集名称进一步扩展它。 此视图最适合用于快速了解特定 VM 系列的核心使用情况的详细信息，以查看工作区的细分，并使每个工作区的基础群集更进一步。 此视图中的常规约定是（使用情况/配额），其中使用情况是当前扩大的内核数，配额是资源可缩放到的逻辑最大核心数。 对于每个**工作区**，配额将是工作区级配额（如上文所述），它表示可针对特定 VM 系列扩展到的最大核心数。 对于**群集**，该配额实际上是与群集可缩放到 max_nodes 属性定义的节点的最大数量相对应的内核数。
 
     + **工作区视图：** 这允许你查看按工作区使用的核心配额，并按 VM 系列展开它，并通过实际群集名称进一步扩展它。 此视图非常适合于快速查看特定工作区的核心使用情况的详细信息，以查看 VM 系列的细分，并使每个系列的基础群集更进一步。
 

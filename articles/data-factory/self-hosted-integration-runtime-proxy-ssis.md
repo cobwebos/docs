@@ -7,17 +7,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/12/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 178628db11b95fbd345e94111ebf15809da3fc35
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 55abdab6a427547ee8bd498500deee94b8f67453
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684299"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954724"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>在 ADF 中将自承载 IR 配置为 Azure-SSIS IR 的代理
 本文介绍如何在 Azure 数据工厂（ADF）中使用配置为代理的自承载 IR 在 Azure-SSIS Integration Runtime （IR）上运行 SQL Server Integration Services （SSIS）包。  此功能允许你在本地访问数据而无需将[Azure-SSIS IR 加入虚拟网络](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。  当你的公司网络的配置/限制策略过于复杂时，这会很有用，你可以在其中插入 Azure-SSIS IR。
@@ -87,10 +87,10 @@ Azure-SSIS IR 上运行的第二个过渡任务不会单独计费，但正在运
 
 ## <a name="current-limitations"></a>当前限制
 
-- 目前仅支持 OLEDB/平面文件连接管理器和 OLEDB/平面文件源。 
+- 目前仅支持具有 ODBC/OLEDB/平面文件连接管理器和 ODBC/OLEDB/平面文件源的数据流任务。 
 - 目前仅支持配置有**帐户密钥**/**SAS URI**/**服务主体**身份验证的 Azure Blob 存储链接服务。
 - 当前支持在预配 Azure-SSIS IR 的同一 ADF 下预配自承载 IR。
-- 不支持使用 OLEDB/平面文件源和连接管理器属性中的 SSIS 参数/变量。
+- 当前不支持在 ODBC/OLEDB/平面文件源和连接管理器的属性中使用 SSIS 参数/变量。
 
 ## <a name="next-steps"></a>后续步骤
 将自承载 IR 配置为你的 Azure-SSIS IR 的代理后，你可以部署和运行你的包，以便在 ADF 管道中的 "执行 SSIS 包" 活动中访问本地数据，请参阅[在 adf 管道中将 ssis 包作为 "执行 Ssis 包" 活动运行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).

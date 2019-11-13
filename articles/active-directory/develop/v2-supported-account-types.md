@@ -17,14 +17,14 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad3cd612200dc33fe37036146b00f52073403ecc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 929479f2816ef979edb26ba5aa00cf449c49b70a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852046"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73942174"
 ---
-# <a name="supported-account-types"></a>受支持的帐户类型
+# <a name="supported-account-types"></a>支持的帐户类型
 
 本文介绍了应用程序支持的帐户类型（有时称为受众）
 
@@ -41,7 +41,7 @@ ms.locfileid: "68852046"
   - 使用工作、学校或个人 Microsoft 帐户。
   - 仅使用个人 Microsoft 帐户。
     > [!NOTE]
-    > 目前，Microsoft 标识平台通过为“工作、学校或 Microsoft 个人帐户”注册应用，仅支持个人 Microsoft 帐户，然后，在构建应用程序（例如 `https://login.onmicrosoftonline.com/consumers`）时，通过指定 Azure AD 权限来限制应用程序代码中的登录。
+    > 目前，Microsoft 标识平台通过为“工作、学校或 Microsoft 个人帐户”注册应用，仅支持个人 Microsoft 帐户，然后，在构建应用程序（例如 **）时，通过指定 Azure AD 权限来限制应用程序代码中的登录**`https://login.microsoftonline.com/consumers`。
 
 - 如果你正在为消费者应用程序编写业务，还可以借助 Azure AD B2C 使用其社交身份登录用户。
 

@@ -1,6 +1,6 @@
 ---
-title: Azure 时序见解中的客户数据请求功能 | Microsoft Docs
-description: Azure 时序见解客户数据请求功能摘要。
+title: 客户数据请求功能-Azure 时序见解 |Microsoft Docs
+description: 了解 Azure 时序见解中的客户数据请求功能。
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: ba883ec3ce8f8ca4491b8576e6633ba2837bb5b2
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: d134c7cbe220e6aa6b1471b50aa23e17d09734d5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990092"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007026"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客户数据请求功能摘要
 
@@ -68,8 +68,8 @@ Azure 时序见解将个人数据视为与时序见解的管理员和用户相�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[如何授予对 Azure 时序见解环境的数据访问权限](./time-series-insights-data-access.md)。
+* 阅读有关[授予对 Azure 时序见解环境的数据访问权限](./time-series-insights-data-access.md)的更多信息。
 
-* 查看[Azure 时序见解资源管理器](time-series-insights-explorer.md)。
+* 查看 [Azure 时序见解资源管理器](time-series-insights-explorer.md)。
 
 * 了解如何[在时序见解中配置保留期](time-series-insights-how-to-configure-retention.md)。

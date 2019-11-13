@@ -7,13 +7,14 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 79bd41c08a566b55efb4a29084847848e001629f
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 8314c3147321e7daa0e71be33c57405139294c1d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036049"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005578"
 ---
+# <a name="azure-premium-storage-design-for-high-performance"></a>Azure 高级存储：高性能设计
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]
 
 > [!NOTE]
@@ -30,7 +31,7 @@ ms.locfileid: "70036049"
 
 如果你希望对磁盘进行基准测试，请参阅我们的关于[磁盘基准测试](disks-benchmarks.md)的文章。
 
-了解有关可用磁盘类型的详细信息：[选择磁盘类型](disks-types.md)  
+详细了解可用磁盘类型：[选择磁盘类型](disks-types.md)  
 
 SQL Server 用户请阅读有关 SQL Server 性能最佳实践的文章：
 

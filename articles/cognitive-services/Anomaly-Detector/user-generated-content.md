@@ -10,30 +10,23 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: aahi
-ms.openlocfilehash: 32728b5c1ede303cc4000ef8c10e4456e784df9b
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 81a2cb7ece775bfaffaf1b1932feb12b2da5f08f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882466"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012026"
 ---
 # <a name="featured-user-generated-content-for-the-anomaly-detector-api"></a>异常检测器 API 的用户生成特色内容
 
-使用本文了解其他客户如何看待和使用异常检测器 API。 以下资源由异常检测器用户社区创建。 它们包括技术博客、开放源代码项目和由 Microsoft 和第三方用户创建的发布内容。 以下一些链接托管在 Microsoft 外部的网站上，Microsoft 不对其中的内容负责。 在参考这些资源时，请谨慎使用。
-
-## <a name="demos"></a>演示
-
-* [带有动画的交互式演示](https://aka.ms/adDemo)
-* [Azure 笔记本演示](https://aka.ms/adNotebook)
+使用本文了解其他客户如何看待和使用异常检测器 API。 以下资源由异常检测器用户社区创建。 它们包括开源项目，以及由 Microsoft 和第三方用户创建的其他贡献。 以下一些链接托管在 Microsoft 外部的网站上，Microsoft 不对其中的内容负责。 在参考这些资源时，请谨慎使用。
 
 ## <a name="technical-blogs"></a>技术博客
 
-* [Azure 异常检测器 API 简介](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162)
-* [试用认知服务：异常检测器 API（日文版）](https://azure-recipe.kc-cloud.jp/2019/04/cognitive-service-anomaly-detector-api/)
+* [尝试认知服务：异常检测 API （日语）](https://azure-recipe.kc-cloud.jp/2019/04/cognitive-service-anomaly-detector-api/)
 
 ## <a name="open-source-projects"></a>开放源代码项目
 
-* [异常检测器 API 和 SDK 的正式代码示例](https://github.com/Azure-Samples/AnomalyDetector)
 * [演示异常情况检测和流式传输到 Power BI 的 Jupyter notebook](https://github.com/marvinbuss/MS-AnomalyFinder)
 
 如果想要指定资源，请填写[简短表格](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxSkyhztUNZCtaivu8nmhd1UMENTMEJWTkRORkRGQUtGQzlWQ1dSV1JLTS4u)。

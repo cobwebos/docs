@@ -1,21 +1,21 @@
 ---
 title: 使用 Azure 资源管理器模板创建和管理 Azure Cosmos DB
 description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB for SQL (Core) API
-author: markjbrown
+author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: 5babcadee02da0ba3e112f75e8b4d1aed5f3339f
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 11/12/2019
+ms.author: thvankra
+ms.openlocfilehash: 0cb6e80bafca3bb0bfc339552facae5bd16aced4
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721071"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960550"
 ---
-# <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB SQL (Core) API 资源
+# <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB SQL （内核） API 资源
 
-本文介绍如何使用 Azure 资源管理器模板执行不同的操作来自动管理 Azure Cosmos DB 帐户、数据库和容器。 本文仅提供了有关 SQL API 帐户的示例，若要查找其他 API 类型帐户的示例，请参阅：将资源管理器模板与用于[Cassandra](manage-cassandra-with-resource-manager.md)、 [Gremlin](manage-gremlin-with-resource-manager.md)、 [MongoDB](manage-mongodb-with-resource-manager.md)和[表](manage-table-with-resource-manager.md)项目的 Azure Cosmos DB API 一起使用。
+本文介绍如何使用 Azure 资源管理器模板执行不同的操作来自动管理 Azure Cosmos DB 帐户、数据库和容器。 本文仅提供了有关 SQL API 帐户的示例，若要查找其他 API 类型帐户的示例，请参阅：将 Azure 资源管理器模板与用于[Cassandra](manage-cassandra-with-resource-manager.md)、 [Gremlin](manage-gremlin-with-resource-manager.md)、 [MongoDB](manage-mongodb-with-resource-manager.md)和[表](manage-table-with-resource-manager.md)项目的 Azure Cosmos DB API 配合使用。
 
 如何创建和管理 Cosmos DB 帐户、用于 MongoDB 的数据库和容器、Gremlin、Cassandra 和表 API。
 
@@ -26,7 +26,7 @@ ms.locfileid: "73721071"
 > [!NOTE]
 >
 > - 不能同时在 Azure Cosmos 帐户中添加或删除位置，也不能修改其他属性。 这些操作必须作为单独的操作完成。
-> - 帐户名称必须为小写并且 < 为44个字符。
+> - 帐户名称必须是小写、44或更少字符。
 > - 若要更新 RU/秒，请用更新的吞吐量属性值重新提交模板。
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
@@ -36,7 +36,7 @@ ms.locfileid: "73721071"
 
 ### <a name="deploy-via-powershell"></a>通过 PowerShell 部署
 
-若要使用 PowerShell 部署资源管理器模板，请**复制**脚本并选择“试用”以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+若要使用 PowerShell 部署 Azure 资源管理器模板，请**复制**该脚本，然后选择 "**尝试**" 以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
 
 ```azurepowershell-interactive
 
@@ -70,11 +70,11 @@ New-AzResourceGroupDeployment `
  (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2019-08-01" --ResourceGroupName $resourceGroupName).name
 ```
 
-如果选择使用本地安装的 PowerShell 版本，而不是 Azure Cloud shell，则必须[安装](/powershell/azure/install-az-ps)Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。
+如果选择使用本地安装的 PowerShell 版本，而不是 Azure Cloud Shell，则必须[安装](/powershell/azure/install-az-ps)Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。
 
 ### <a name="deploy-via-azure-cli"></a>通过 Azure CLI 部署
 
-若要使用 Azure CLI 部署资源管理器模板，请选择“试用”打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+若要使用 Azure CLI 部署 Azure 资源管理器模板，请选择 "**尝试**" 以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -115,7 +115,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 ### <a name="deploy-stored-procedure-template-via-powershell"></a>通过 PowerShell 部署存储过程模板
 
-若要使用 PowerShell 部署资源管理器模板，请**复制**脚本并选择“试用”以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+若要使用 PowerShell 部署资源管理器模板，请**复制**该脚本，然后选择 "**尝试**" 以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
 
 ```azurepowershell-interactive
 
@@ -141,11 +141,11 @@ New-AzResourceGroupDeployment `
  (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2019-08-01" --ResourceGroupName $resourceGroupName).name
 ```
 
-如果选择使用本地安装的 PowerShell 版本，而不是 Azure Cloud shell，则必须[安装](/powershell/azure/install-az-ps)Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。
+如果选择使用本地安装的 PowerShell 版本，而不是 Azure Cloud Shell，则必须[安装](/powershell/azure/install-az-ps)Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。
 
 ### <a name="deploy-stored-procedure-template-via-azure-cli"></a>通过 Azure CLI 部署存储过程模板
 
-若要使用 Azure CLI 部署资源管理器模板，请选择“试用”打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+若要使用 Azure CLI 部署 Azure 资源管理器模板，请选择 "**尝试**" 以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -167,7 +167,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 ## <a name="next-steps"></a>后续步骤
 
-下面是一些其他资源：
+下面是其他一些资源：
 
 - [Azure 资源管理器文档](/azure/azure-resource-manager/)
 - [Azure Cosmos DB 资源提供程序架构](/azure/templates/microsoft.documentdb/allversions)

@@ -1,7 +1,7 @@
 ---
 title: 如何执行脱机评估-Personalizer
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用脱机评估分析学习循环
+description: 本文介绍如何使用脱机评估来度量应用的有效性并分析学习循环。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 9d7336fb933ee5e9781d15214fa3e59446aa5b6a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c2aec0db2d1f9865188f2749a0eeb765a14d04ed
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490717"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953002"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>使用脱机评估来分析学习循环
 
@@ -26,7 +26,7 @@ ms.locfileid: "73490717"
 请阅读[脱机评估](concepts-offline-evaluation.md)了解详细信息。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 已配置的 Personalizer 循环
 * Personalizer 循环必须具有包含一定数量的数据，即大概建议在其日志中至少50000个事件，以获得有意义的评估结果。 （可选）还可以事先导出学习策略文件，以便在同一项评估中进行比较和测试。

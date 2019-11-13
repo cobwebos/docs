@@ -1,17 +1,14 @@
 ---
 title: 通过 PowerShell 导入和导出蓝图定义
 description: 了解如何以代码的形式使用蓝图定义。 使用导出和导入命令进行共享、源控制和管理。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/03/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 30e734c99a87364acfba9a58d83fe9a377958607
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: ca756ed093d5d423f6f83e5ca3953a8ecfce7d5a
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978447"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960370"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>通过 PowerShell 导入和导出蓝图定义
 
@@ -24,7 +21,7 @@ ms.locfileid: "71978447"
   - 在测试环境中自动测试蓝图定义
   - 支持持续集成和持续部署（CI/CD）管道
 
-无论出于何种原因，在代码中管理蓝图定义都有好处。 本文介绍如何使用[Az](https://powershellgallery.com/packages/Az.Blueprint/) module 中的 @no__t 0 和 @no__t 命令。
+无论出于何种原因，在代码中管理蓝图定义都有好处。 本文介绍如何使用[Az](https://powershellgallery.com/packages/Az.Blueprint/)模块中的 `Import-AzBlueprintWithArtifact` 和 `Export-AzBlueprintWithArtifact` 命令。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,7 +40,7 @@ ms.locfileid: "71978447"
 > [!IMPORTANT]
 > 如果没有任何值传递到 `Import-AzBlueprintWithArtifact` cmdlet 的**Name**参数，将使用存储蓝图定义的文件夹的名称。
 
-除了蓝图定义（必须命名为 `blueprint.json`），都是蓝图定义所构成的项目。 每个项目都必须位于名为 `artifacts` 的子文件夹中。
+除了蓝图定义外，还必须将其命名为 `blueprint.json`，这是蓝图定义所组成的项目。 每个项目都必须位于名为 `artifacts`的子文件夹中。
 将蓝图定义的结构组合起来，因为文件夹中的 JSON 文件应如下所示：
 
 ```text
@@ -72,7 +69,7 @@ ms.locfileid: "71978447"
 - **版本**（可选）
   - 如果**蓝图**引用对象包含对多个版本的引用，则指定要输出的版本。
 
-1. 获取对蓝图定义的引用以从表示为 `{subId}` 的订阅导出：
+1. 获取对蓝图定义的引用以从表示为 `{subId}`的订阅导出：
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -81,7 +78,7 @@ ms.locfileid: "71978447"
    $bpDefinition = Get-AzBlueprint -SubscriptionId '{subId}' -Name 'MyBlueprint' -Version '1.1'
    ```
 
-1. 使用 @no__t cmdlet 导出指定的蓝图定义：
+1. 使用 `Export-AzBlueprintWithArtifact` cmdlet 导出指定的蓝图定义：
 
    ```azurepowershell-interactive
    Export-AzBlueprintWithArtifact -Blueprint $bpDefinition -OutputPath 'C:\Blueprints'
@@ -105,7 +102,7 @@ ms.locfileid: "71978447"
   - 如果不是当前上下文默认值，则为将蓝图定义保存到的订阅 ID
   - 必须指定**ManagementGroupId**或**SubscriptionId**
 
-1. 使用 @no__t cmdlet 导入指定的蓝图定义：
+1. 使用 `Import-AzBlueprintWithArtifact` cmdlet 导入指定的蓝图定义：
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell

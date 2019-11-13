@@ -1,5 +1,5 @@
 ---
-title: 关于使用 Azure Site Recovery 进行 Azure 到 Azure 灾难恢复的网络 | Microsoft Docs
+title: 关于与 Azure Site Recovery 的 Azure VM 灾难恢复中的网络
 description: 概述了使用 Azure Site Recovery 复制 Azure 虚拟机的网络。
 services: site-recovery
 author: sujayt
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5c2cd96ccfa3a26a9009188ad424eefaaeb7ce48
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 09cd814ade25be438a17b83fb73e74b89c14e22f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906841"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954213"
 ---
-# <a name="about-networking-in-azure-to-azure-replication"></a>关于 Azure 到 Azure 复制的网络
+# <a name="about-networking-in-azure-vm-disaster-recovery"></a>关于 Azure VM 灾难恢复中的网络
 
 
 
@@ -29,11 +29,11 @@ ms.locfileid: "73906841"
 
 下图描绘了 Azure VM 上运行的应用程序的典型 Azure 环境：
 
-![customer-environment](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
+![客户环境](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
 如果使用 Azure ExpressRoute 或从本地网络到 Azure 的 VPN 连接，则环境如下：
 
-![customer-environment](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
+![客户环境](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
 
 通常，网络使用防火墙和网络安全组 (NSG) 进行保护。 防火墙使用基于 URL 或 IP 的允许列表来控制网络连接。 NSG 提供使用 IP 地址范围控制网络连接的规则。
 
@@ -49,7 +49,7 @@ ms.locfileid: "73906841"
 **URL** | **详细信息**  
 --- | ---
 \* .blob.core.windows.net | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果你知道 Vm 的所有缓存存储帐户，则可以允许访问特定的存储帐户 Url （例如： cache1.blob.core.windows.net 和 cache2.blob.core.windows.net），而不是 blob.core.windows.net。
-login.microsoftonline.com | 必需，用于向 Site Recovery 服务 URL 进行授权和身份验证。
+login.microsoftonline.com | 对于 Site Recovery 服务 URL 的授权和身份验证而言是必需的。
 *.hypervrecoverymanager.windowsazure.com | 必需，以便从 VM 进行 Site Recovery 服务通信。 如果防火墙代理支持 IP，则可以使用相应的“Site Recovery IP”。
 *.servicebus.windows.net | 必需，以便从 VM 写入 Site Recovery 监视和诊断数据。 如果防火墙代理支持 IP，则可以使用相应的“Site Recovery 监视 IP”。
 
@@ -111,7 +111,7 @@ Site Recovery IP 地址范围如下：
    美国 DoD 中部 | 52.182.95.237 | 52.182.90.133
    中国北部 | 40.125.202.254 | 42.159.4.151
    中国北部 2 | 40.73.35.193 | 40.73.33.230
-   中国东部 | 42.159.205.45 | 42.159.132.40
+   华东 | 42.159.205.45 | 42.159.132.40
    中国东部 2 | 40.73.118.52| 40.73.100.125
    德国北部| 51.116.208.58| 51.116.58.128
    德国中西部 | 51.116.156.176 | 51.116.154.192

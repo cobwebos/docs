@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 7547db502056304307094541dcfd2474eda999d8
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: c8aa3fb124420c933e17b0e9f7e52b7f114a7f61
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620422"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012910"
 ---
 # <a name="access-and-customize-developer-portal"></a>访问和自定义开发人员门户
 
@@ -38,7 +38,7 @@ ms.locfileid: "73620422"
 
 > [!WARNING]
 > 当前正在向 API 管理服务推出开发人员门户。
-> 如果你的服务是新创建的或开发人员层服务，则你应该已经有最新版本。 否则，你可能会遇到问题（例如，通过发布功能）。 功能推出将于2019年11月11日星期一完成。 
+> 如果你的服务是新创建的或开发人员层服务，则你应该已经有最新版本。 否则，你可能会遇到问题（例如，通过发布功能）。 此功能推出应由2019年11月22日，星期五完成。 
 
 ## <a name="prerequisites"></a>先决条件
 

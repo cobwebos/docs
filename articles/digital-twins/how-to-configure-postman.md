@@ -1,6 +1,6 @@
 ---
-title: 如何为 Azure 数字孪生配置 Postman | Microsoft Docs
-description: 如何为 Azure 数字孪生配置 Postman。
+title: 如何配置 Postman-Azure 数字孪生 |Microsoft Docs
+description: 了解如何配置和使用 Postman 来测试 Azure 数字孪生 Api。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 14e6a52f86586eaae019d9658c2f813a15fc3474
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 5a357a246f2ba6c294b107e447218f386623f5c5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949212"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014181"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>如何为 Azure 数字孪生配置 Postman
 
@@ -46,7 +46,7 @@ ms.locfileid: "71949212"
         [![搜索 Azure 智能空间的 API](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
 
     > [!IMPORTANT]
-    > 将显示的 Azure AD API 名称和 ID 取决于你的租户：
+    > 将显示的 Azure AD API 名称和 ID 取决于租户：
     > * 测试租户和客户帐户应搜索 `Azure Digital Twins`。
     > * 其他 Microsoft 帐户应搜索 `Azure Smart Spaces Service`。
 
@@ -56,14 +56,14 @@ ms.locfileid: "71949212"
 
 1. 根据组织的设置，可能需要执行其他步骤才能授予对此 API 的管理员访问权限。 请联系管理员以了解详细信息。 在该管理员访问权限得到批准后，API 的“API 权限”窗格中的“需要管理员同意”列将如下所示：
 
-    [![添加 API 权限](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
+    [![管理员同意批准](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
 
-1. 选择 "**清单**" 打开应用程序的应用程序清单。 将“oauth2AllowImplicitFlow”设置为 `true`。
+1. 选择 "**清单**" 打开应用程序的应用程序清单。 将“oauth2AllowImplicitFlow”设置为`true`。
 
-    [@no__t Active Directory 隐式流](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
+    [![Azure Active Directory 隐式流](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
 
-1. 将“回复 URL”配置为 `https://www.getpostman.com/oauth2/callback`。
+1. 将“回复 URL”配置为`https://www.getpostman.com/oauth2/callback`。
 
     [![Azure Active Directory 回复 URL](media/how-to-configure-postman/reply-url.png)](media/how-to-configure-postman/reply-url.png#lightbox)
 
@@ -85,25 +85,25 @@ ms.locfileid: "71949212"
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
-    | 姓名  | 替换为 | 示例 |
+    | 名称  | 替换为 | 示例 |
     |---------|---------|---------|
     | YOUR_AZURE_TENANT | 租户或组织的名称 | `microsoft` |
 
 1. 依次选择“授权”选项卡、“OAuth 2.0”、“获取新访问令牌”。
 
-    | 字段  | ReplTest1 |
+    | 字段  | 值 |
     |---------|---------|
     | 授权类型 | `Implicit` |
     | 回调 URL | `https://www.getpostman.com/oauth2/callback` |
     | 身份验证 URL | 使用**步骤 2**中的**授权 URL** |
     | 客户端 ID | 使用在上一节中创建或重新使用的 Azure Active Directory 应用的**应用程序 ID** |
-    | 范围 | 留空 |
+    | 作用域 | 留空 |
     | 状态 | 留空 |
     | 客户端身份验证 | `Send as Basic Auth header` |
 
 1. 此时，客户端应如下所示：
 
-    [@no__t 1Postman 客户端示例](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
+    [![Postman 客户端示例](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
 
 1. 选择“请求令牌”。
 
@@ -117,16 +117,16 @@ ms.locfileid: "71949212"
 
 完成上述步骤后，请将 Postman 配置为发出已经过身份验证的 HTTP 多部分 POST 请求：
 
-1. 在“标头”选项卡下，添加值为 `multipart/mixed` 的 HTTP 请求标头键 Content-Type。
+1. 在“标头”选项卡下，添加值为  **的 HTTP 请求标头键 Content-Type**`multipart/mixed`。
 
-   [@no__t 1Content type 多部分/混合](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
+   [![内容类型多部分/混合](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. 将非文本数据序列化为文件。 JSON 数据将另存为 JSON 文件。
-1. 在 "**正文**" 选项卡下，选择 `form-data` "。 
+1. 在 "**正文**" 选项卡下，选择 `form-data`。 
 1. 通过分配**密钥**名称来添加每个文件，并选择 "`file`"。
 1. 然后，通过“选择文件”按钮选择每个文件。
 
-   [@no__t 1Postman 客户端示例](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
+   [![Postman 客户端示例](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
 
    >[!NOTE]
    > * Postman 客户端不要求多部分区块有手动分配的 **Content-Type** 或 **Content-Disposition**。

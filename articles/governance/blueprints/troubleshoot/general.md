@@ -1,17 +1,14 @@
 ---
 title: 排查常见错误
 description: 了解如何排查创建、分配和删除蓝图时出现的问题。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 12/11/2018
 ms.topic: troubleshooting
-ms.service: blueprints
-ms.openlocfilehash: b99e94bfdcbf12e82a094f14995b6b93aa3354ed
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: b6f1d6c40f7268e90f09457e680a3ef33996c341
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978225"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960295"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>排查使用 Azure 蓝图时出现的错误
 
@@ -46,11 +43,11 @@ ms.locfileid: "71978225"
 - 正在创建的资源受到策略的限制（通常为 SKU 或位置限制）
 - 部署是由策略配置的设置字段（通常带有标记）
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 更改蓝图，使其不与错误详细信息中的策略冲突。 如果无法进行此更改，替代方法是更改策略分配的作用域，以使蓝图不再与策略冲突。
 
-### <a name="escape-function-parameter"></a>场景：蓝图参数是一个函数
+### <a name="escape-function-parameter"></a>方案：蓝图参数是一个函数
 
 #### <a name="issue"></a>问题
 
@@ -60,7 +57,7 @@ ms.locfileid: "71978225"
 
 将使用函数的蓝图参数（例如 `[resourceGroup().tags.myTag]`）传递到项目会导致在项目上设置的函数的处理结果而不是动态函数。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 若要将函数作为参数传递，请使用 `[` 转义整个字符串，使蓝图参数如 `[[resourceGroup().tags.myTag]`。 转义字符会导致蓝图在处理蓝图时将值视为字符串。 然后，蓝图将该函数放置在项目中，使其按预期动态化。 有关详细信息，请参阅[Azure 资源管理器模板中的语法和表达式](../../../azure-resource-manager/template-expressions.md)。
 
@@ -70,4 +67,4 @@ ms.locfileid: "71978225"
 
 - 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
 - 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。
+- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。

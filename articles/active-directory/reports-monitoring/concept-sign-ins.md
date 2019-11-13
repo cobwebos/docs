@@ -3,7 +3,7 @@ title: Azure Active Directory 门户中的“登录活动”报告 | Microsoft D
 description: Azure Active Directory 门户中的“登录活动”报告简介
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 10/28/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 553d882600203d0fa01cd876562d9ced7985d7a8
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 778353621491f912d3237900785e6dee17bf975e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043775"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014494"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -31,13 +31,13 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 - **活动** 
     - **登录** - 有关托管应用程序的使用情况和用户登录活动的信息。
     - **审核日志 - 审核**[日志提供有关](concept-audit-logs.md)用户和组管理、托管应用程序和目录活动的系统活动信息。
-- **安全性** 
+- 安全性 
     - 有**风险的登录**-有[风险的登录](concept-risky-sign-ins.md)是指不是用户帐户合法所有者的登录尝试。
     - **已标记为存在风险的用户** - [风险用户](concept-user-at-risk.md)是指可能已泄露的用户帐户。
 
 本文提供了 "登录" 报告的概述。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="who-can-access-the-data"></a>谁可以访问该数据？
 
@@ -47,7 +47,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>访问登录活动需要什么 Azure AD 许可证？
 
-* 租户必须具有与之关联的 Azure AD Premium 许可证，才能查看包含所有登录活动的报告。 请参阅[Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md)入门，升级 Azure Active Directory 版本。 升级到高级许可证后，在升级到无需数据活动的高级许可证后，数据会显示在报表中。
+* 租户必须具有与之关联的 Azure AD Premium 许可证，才能查看包含所有登录活动的报告。 请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)来升级 Azure Active Directory 版本。 升级到高级许可证后，在升级到无需数据活动的高级许可证后，数据会显示在报表中。
 
 ## <a name="sign-ins-report"></a>登录报告
 
@@ -68,7 +68,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 - 登录日期
 - 相关的用户
-- 用户已登录的应用程序
+- 用户登录到的应用程序
 - 登录状态
 - 风险检测的状态
 - 多重身份验证 (MFA) 要求的状态
@@ -88,7 +88,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 ![登录活动](./media/concept-sign-ins/basic-sign-in.png "登录活动")
 
 > [!NOTE]
-> 现在，客户可以通过所有登录报告对条件访问策略进行故障排除。 通过单击登录记录的 "**条件访问**" 选项卡，客户可以查看条件访问状态，并深入了解应用于登录的策略的详细信息以及每个策略的结果。
+> 客户现在可以通过所有登录报告对条件访问策略进行故障排除。 通过单击登录记录的“条件访问”选项卡，客户可以查看条件访问状态，并深入了解应用于登录的策略的详细信息以及每个策略的结果。
 > 有关详细信息，请参阅[有关所有登录中 CA 信息的常见问题解答](reports-faq.md#conditional-access)。
 
 
@@ -105,15 +105,15 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 “登录状态”筛选器用于选择：
 
-- 所有
-- Success
+- All
+- 成功
 - 失败
 
 使用“条件访问”筛选器可以选择登录的 CA 策略状态：
 
-- 所有
+- All
 - 未应用
-- Success
+- 成功
 - 失败
 
 “日期”筛选器用于定义已返回数据的时间范围。  
@@ -131,20 +131,20 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 - **浏览器**  
     此筛选器显示尝试使用浏览器流尝试登录的所有事件。
-- **Exchange ActiveSync （支持）**  
+- **Exchange ActiveSync（受支持）**  
     此筛选器显示从支持的平台（如 iOS、Android 和 Windows Phone）尝试 Exchange ActiveSync （EAS）协议的所有登录尝试。
 - **Exchange ActiveSync （不支持）**  
-    此筛选器显示从 Linux 发行版等不受支持的平台尝试 EAS 协议的所有登录尝试。
+    此筛选器显示从不受支持的平台（如 Linux 发行版）尝试 EAS 协议的所有登录尝试。
 - **移动应用和桌面客户端**筛选器显示未使用浏览器流的所有登录尝试。 例如，使用任何协议的任何平台上的移动应用，或来自 Windows 或 MacOS 上的 Office 的桌面客户端应用。
   
 - **其他客户端**
     - **IMAP**  
         使用 IMAP 检索电子邮件的旧版邮件客户端。
     - **MAPI**  
-        Office 2013，其中 ADAL 处于启用状态，并且使用 MAPI。
+        启用了 ADAL 并在使用 MAPI 的 Office 2013。
     - **旧 Office 客户端**  
-        Office 2013 在其默认配置中，ADAL 未启用且正在使用 MAPI，或 Office 2016，其中 ADAL 已禁用。
-    - **弹出**  
+        默认配置为 Office 2013（未启用 ADAL，使用 MAPI），或 Office 2016（已禁用 ADAL）。
+    - **POP**  
         使用 POP3 检索电子邮件的旧版邮件客户端。
     - **SMTP**  
         使用 SMTP 发送电子邮件的旧版邮件客户端。
@@ -189,9 +189,9 @@ Azure AD 和 Azure 门户均提供额外的登录数据入口点：
 - 用户
 - 用户名
 - 应用程序 ID
-- Application
-- Client
-- Location
+- 应用程序
+- 客户端
+- 位置
 - IP 地址
 - 日期
 - 需要 MFA
@@ -230,9 +230,9 @@ Azure AD 和 Azure 门户均提供额外的登录数据入口点：
 
 ## <a name="office-365-activity-logs"></a>Office 365 活动日志
 
-可以从[Microsoft 365 管理中心](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)查看 Office 365 活动日志。 请考虑，Office 365 活动和 Azure AD 活动日志共享大量的目录资源。 只有 Microsoft 365 管理中心提供 Office 365 活动日志的完整视图。 
+可以从 [Microsoft 365 管理中心](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)查看 Office 365 活动日志。 请考虑，Office 365 活动和 Azure AD 活动日志共享大量的目录资源。 只有 Microsoft 365 管理中心提供 Office 365 活动日志的完整视图。 
 
-你还可以使用[office 365 管理 api](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)以编程方式访问 office 365 活动日志。
+还可以使用 [Office 365 管理 API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) 以编程方式访问 Office 365 活动日志。
 
 ## <a name="next-steps"></a>后续步骤
 

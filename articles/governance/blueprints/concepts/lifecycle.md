@@ -1,17 +1,14 @@
 ---
 title: 了解蓝图的生命周期
 description: 了解蓝图的整个生命周期及每个阶段的详细信息。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 07/30/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 154e66366d4a687e60d7bddd28278414e3a4ccd7
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: d071a2af985d294bc87a5363d9e7566762e0fd8a
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981033"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960491"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>了解 Azure 蓝图的生命周期
 
@@ -90,7 +87,7 @@ ms.locfileid: "71981033"
 
 ### <a name="updating-assignments"></a>更新分配
 
-分配蓝图时可更新分配。 众多原因导致要更新现有分配，其中包括：
+分配蓝图时可以更新分配。 众多原因导致要更新现有分配，其中包括：
 
 - 添加或删除[资源锁定](resource-locking.md)
 - 更改[动态参数](parameters.md#dynamic-parameters)的值

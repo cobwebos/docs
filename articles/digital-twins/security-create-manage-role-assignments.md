@@ -1,6 +1,6 @@
 ---
 title: 创建和管理角色分配-Azure 数字孪生 |Microsoft Docs
-description: 了解如何创建和管理 Azure 数字孪生中的角色分配。
+description: 了解如何在 Azure 数字孪生内创建和管理角色分配。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 68714a06f72a522df0245d9c044bb6ff6557d52f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 45ce22f208ee31b7202705eb4e42c38bedf09a8b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949826"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014000"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>在 Azure 数字孪生中创建和管理角色分配
 
@@ -36,13 +36,13 @@ Azure 数字孪生使用基于角色的访问控制 ([RBAC](./security-role-base
 
 下表描述了每个属性：
 
-| 特性 | 姓名 | 必填 | 类型 | 描述 |
+| 属性 | 名称 | 必选 | 类型 | 说明 |
 | --- | --- | --- | --- | --- |
-| roleId | 角色定义标识符 | 是 | 字符串 | 所需角色分配的唯一 ID。 通过查询系统 API 或查看下表查找角色定义及其标识符。 |
-| objectId | 对象标识符 | 是 | 字符串 | Azure Active Directory ID、服务主体对象 ID 或域名。 该角色分配要分配到哪个对象。 必须根据其关联类型设置角色分配的格式。 对于 `DomainName` objectIdType，objectId 必须以 `“@”` 字符开头。 |
-| objectIdType | 对象标识符类型 | 是 | 字符串 | 使用的对象标识符类型。 请参阅下面的**支持的 ObjectIdType**。 |
-| path | 空间路径 | 是 | 字符串 | `Space` 对象的完整访问路径。 例如 `/{Guid}/{Guid}`。 如果标识符需要整个图形的角色分配，请指定 `"/"`。 此字符指定根目录，但不建议使用。 请始终遵循最低权限原则。 |
-| tenantId | 租户标识符 | 多种多样 | 字符串 | 在大多数情况下，为 Azure Active Directory 租户 ID。 不能用于 `DeviceId` 和 `TenantId` ObjectIdType。 对于 `UserId` 和 `ServicePrincipalId` ObjectIdType 必需。 对于 DomainName ObjectIdType 可选。 |
+| roleId | 角色定义标识符 | 是 | String | 所需角色分配的唯一 ID。 通过查询系统 API 或查看下表查找角色定义及其标识符。 |
+| objectId | 对象标识符 | 是 | String | Azure Active Directory ID、服务主体对象 ID 或域名。 该角色分配要分配到哪个对象。 必须根据其关联类型设置角色分配的格式。 对于 `DomainName` objectIdType，objectId 必须以 `“@”` 字符开头。 |
+| objectIdType | 对象标识符类型 | 是 | String | 使用的对象标识符类型。 请参阅下面的**支持的 ObjectIdType**。 |
+| path | 空间路径 | 是 | String | `Space` 对象的完整访问路径。 例如 `/{Guid}/{Guid}`。 如果标识符需要整个图形的角色分配，请指定 `"/"`。 此字符指定根目录，但不建议使用。 始终遵循最小特权原则。 |
+| tenantId | 租户标识符 | 多种多样 | String | 在大多数情况下，为 Azure Active Directory 租户 ID。 不能用于 `DeviceId` 和 `TenantId` ObjectIdType。 对于 `UserId` 和 `ServicePrincipalId` ObjectIdType 必需。 对于 DomainName ObjectIdType 可选。 |
 
 ### <a name="supported-role-definition-identifiers"></a>支持的角色定义标识符
 
@@ -60,7 +60,7 @@ Azure 数字孪生使用基于角色的访问控制 ([RBAC](./security-role-base
 
 Azure 数字孪生支持对角色分配执行完整的 *CREATE*、*READ* 和 *DELETE* 操作。 *UPDATE* 操作的处理方式是添加角色分配、删除角色分配，或者修改角色分配授权访问的[空间智能图形](./concepts-objectmodel-spatialgraph.md)节点。
 
-[@no__t 1Role 分配终结点](media/security-roles/roleassignments.png)](media/security-roles/roleassignments.png#lightbox)
+[![角色分配终结点](media/security-roles/role-assignments.png)](media/security-roles/role-assignments.png#lightbox)
 
 提供的 Swagger 参考文档包含了有关所有可用 API 终结点、请求操作和定义的更多信息。
 
@@ -112,7 +112,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments
 
 ### <a name="retrieve-all-roles"></a>检索所有角色
 
-[@no__t 1System 角色](media/security-roles/system.png)](media/security-roles/system.png#lightbox)
+[![系统角色](media/security-roles/system-api.png)](media/security-roles/system-api.png#lightbox)
 
 若要列出所有可用的角色（角色定义），请向以下对象发出经过身份验证的 HTTP GET 请求：
 
@@ -161,12 +161,12 @@ YOUR_MANAGEMENT_API_URL/system/roles
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
-| **参数值** | **必需** |  类型 |  **说明** |
+| **参数值** | **必需** |  **类型** |  **说明** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  真 | 字符串 |   UserId objectIdType 的 objectId。 |
-| YOUR_PATH | 真 | 字符串 |   要检查访问权限的所选路径。 |
-| YOUR_ACCESS_TYPE |  真 | 字符串 |   *读取*、*创建*、*更新*或*删除* |
-| YOUR_RESOURCE_TYPE | 真 | 字符串 |  *设备*、 *DeviceBlobMetadata*、 *DeviceExtendedProperty*、 *ExtendedPropertyKey*、 *ExtendedType*、*终结点*、*密钥*存储、*匹配程序*、 *Ontology*、*报告*、 *RoleDefinition*、*传感器*、 *SensorExtendedProperty*、 *Space*、 *SpaceBlobMetadata*、 *SpaceExtendedProperty*、 *SpaceResource*、 *SpaceRoleAssignment*、 *System*、 *UerDefinedFunction*、 *User*、 *UserBlobMetadata*或*UserExtendedProperty* |
+| YOUR_USER_ID |  True | String |   UserId objectIdType 的 objectId。 |
+| YOUR_PATH | True | String |   要检查访问权限的所选路径。 |
+| YOUR_ACCESS_TYPE |  True | String |   *读取*、*创建*、*更新*或*删除* |
+| YOUR_RESOURCE_TYPE | True | String |  *Device*、 *DeviceBlobMetadata*、 *DeviceExtendedProperty*、 *ExtendedPropertyKey*、 *ExtendedType*、 *Endpoint*、*密钥*存储 *、匹配程序*、 *Ontology*、 *Report*、RoleDefinition *、SensorExtendedProperty、* *SpaceBlobMetadata*、 *Space*、 *SpaceExtendedProperty*、 *SpaceResource*、 *SpaceRoleAssignment*、、 *System*、 *UerDefinedFunction*、 *User*、 *UserBlobMetadata*或*UserExtendedProperty* |
 
 成功的请求将返回布尔值 `true` 或 `false`，指示是否已将该访问类型分配到给定路径和资源的用户。
 
@@ -178,7 +178,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
-| ReplTest1 | 替换为 |
+| 值 | 替换为 |
 | --- | --- |
 | YOUR_PATH | 空间的完整路径 |
 
@@ -240,7 +240,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments
 
 以下示例演示如何在多种常见的角色分配方案中配置 JSON 正文。
 
-* **示例**：用户需要对租户空间的某一层具有管理访问权限。
+* **示例**：用户需要对租户空间底层的管理访问权限。
 
    ```JSON
    {
@@ -252,7 +252,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments
    }
    ```
 
-* **示例**：运行模拟设备和传感器的测试方案的应用程序。
+* **示例**：应用程序运行测试方案模拟设备和传感器。
 
    ```JSON
    {
@@ -264,7 +264,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments
    }
     ```
 
-* **示例**：属于某个域的一部分的所有用户都将收到对空间、传感器和用户的读取访问权限。 此访问权限包括其对应的相关对象。
+* **示例**：作为域成员的所有用户均可接收共享空间、传感器和用户的读取权限。 此访问权限包括其对应的相关对象。
 
    ```JSON
    {

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 7c2866441c7439008fad27ced9b9b1dddea848ec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bb2255a9a68a499ff3e77c1fbd35081a2474cf1d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492825"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961934"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 的预测终结点更改
 
@@ -73,7 +73,7 @@ V3 进行了以下更改，作为搬迁到 GA 的一部分：
 
 ## <a name="v2-api-deprecation"></a>V2 API 弃用 
 
-在 V3 预览后的至少9个月后，不会弃用 V2 预测 API，8rd，2020。 
+在 V3 预览版第8月 2020 8 日之后的至少9个月后，不会弃用 V2 预测 API。 
 
 ## <a name="endpoint-url-changes"></a>终结点 URL 更改 
 
@@ -83,7 +83,7 @@ V3 终结点 HTTP 调用的格式已更改。
 
 如果希望按版本进行查询，首先需要使用 `"directVersionPublish":true`[通过 API 发布](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)。 查询引用版本 ID 而不是槽名称的终结点。
 
-|预测 API 版本|方法|URL|
+|预测 API 版本|方法|代码|
 |--|--|--|
 |V3|GET|https://<b>{REGION}</b>. api.cognitive.microsoft.com/luis/<b>预测</b>/<b>3.0</b>/apps/<b>{应用 ID}</b>/slots/<b>{槽名称}</b>/predict？ query =<b>{query}</b>|
 |V3|POST|https://<b>{REGION}</b>. api.cognitive.microsoft.com/luis/<b>预测</b>/<b>3.0</b>/apps/<b>{APP-ID}</b>/slots/<b>{槽-NAME}</b>/predict|
@@ -103,10 +103,10 @@ V3 API 包含不同的查询字符串参数。
 
 |参数名称|类型|版本|默认|目的|
 |--|--|--|--|--|
-|`log`|布尔值|V2 和 V3|false|将查询存储在日志文件中。 默认值为 false。| 
+|`log`|布尔值|V2 和 V3|假|将查询存储在日志文件中。 默认值为 false。| 
 |`query`|字符串|仅 V3|无默认值 - 在 GET 请求中是必需的|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
-|`show-all-intents`|布尔值|仅 V3|false|在 **prediction.intents** 对象中返回包含相应评分的所有意向。 意向将在父 `intents` 对象中作为对象返回。 这样，便可以通过编程方式进行访问，而无需在数组中查找意向：`prediction.intents.give`。 在 V2 中，这些意向在数组中返回。 |
-|`verbose`|布尔值|V2 和 V3|false|**在 V2 中**，如果设置为 true，则返回所有预测意向。 如果需要所有预测的意向，请使用 V3 参数 `show-all-intents`。<br><br>**在 V3 中**，此参数仅提供实体预测的实体元数据详细信息。  |
+|`show-all-intents`|布尔值|仅 V3|假|在 **prediction.intents** 对象中返回包含相应评分的所有意向。 意向将在父 `intents` 对象中作为对象返回。 这样，便可以通过编程方式进行访问，而无需在数组中查找意向：`prediction.intents.give`。 在 V2 中，这些意向在数组中返回。 |
+|`verbose`|布尔值|V2 和 V3|假|**在 V2 中**，如果设置为 true，则返回所有预测意向。 如果需要所有预测的意向，请使用 V3 参数 `show-all-intents`。<br><br>**在 V3 中**，此参数仅提供实体预测的实体元数据详细信息。  |
 |`timezoneOffset`|字符串|V2|-|应用于 datetimeV2 实体的时区。|
 |`datetimeReference`|字符串|V3|-|应用于 datetimeV2 实体的[时区](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)。 将 `timezoneOffset` 替换为 V2。|
 
@@ -130,7 +130,7 @@ V3 API 包含不同的查询字符串参数。
 |`dynamicLists`|Array|仅 V3|非必需。|使用[动态列表](#dynamic-lists-passed-in-at-prediction-time)可以扩展已在 LUIS 应用中的已训练且已发布的现有列表实体。|
 |`externalEntities`|Array|仅 V3|非必需。|[外部实体](#external-entities-passed-in-at-prediction-time)可让 LUIS 应用在运行时识别和标记实体，这些实体可用作现有实体的特征。 |
 |`options.datetimeReference`|字符串|仅 V3|无默认值|用于确定 [datetimeV2 偏移量](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)。 DatetimeReference 的格式为[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)。|
-|`options.preferExternalEntities`|布尔值|仅 V3|false|指定是使用用户的[外部实体（与现有实体具有相同名称）](#override-existing-model-predictions)，还是使用模型中的现有实体进行预测。 |
+|`options.preferExternalEntities`|布尔值|仅 V3|假|指定是使用用户的[外部实体（与现有实体具有相同名称）](#override-existing-model-predictions)，还是使用模型中的现有实体进行预测。 |
 |`query`|字符串|仅 V3|必需。|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
 
 
@@ -408,7 +408,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 
 
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 可选的  _属性将在预测响应中返回，可让你传入与外部实体关联的元数据，然后在响应中接收该元数据。_ `resolution` 
 

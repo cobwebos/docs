@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric 容器应用程序清单示例 | Microsoft Docs
+title: Azure Service Fabric 容器应用程序清单示例
 description: 了解如何为多容器 Service Fabric 应用程序配置应用程序和服务清单设置。
 services: service-fabric
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: pepogors
-ms.openlocfilehash: ece0b763a2dbe501b0f46d026c59e1294a448c59
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 2d79f7dbf492b9473bcff147891df308674a8cf0
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650613"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013247"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>多容器应用程序和服务清单示例
 下面是多容器 Service Fabric 应用程序的应用程序和服务清单示例。 这些示例的用途是展示有哪些设置可用以及如何使用它们。 这些应用程序和服务清单基于 [Windows Server 2016 容器示例](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows)清单。
@@ -351,7 +351,7 @@ EntryPoint 指定的可执行文件通常是长时间运行的服务主机。 �
  有关详细信息，请参阅 [ContainerHost 元素](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName 元素
-[https://hub.docker.com](https://hub.docker.com ) 或 Azure 容器注册表上的存储库和映像。 有关详细信息，请参阅 [ImageName 元素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+https://hub.docker.com 或 Azure 容器注册表上的存储库和映像。 有关详细信息，请参阅 [ImageName 元素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="environmentvariables-element"></a>EnvironmentVariables 元素
 将环境变量传递给容器或 exe。  有关详细信息，请参阅 [EnvironmentVariables 元素](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
@@ -395,7 +395,7 @@ EntryPoint 指定的可执行文件通常是长时间运行的服务主机。 �
 有关详细信息，请参阅 [ContainerHost 元素](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName 元素
-[https://hub.docker.com](https://hub.docker.com ) 或 Azure 容器注册表上的存储库和映像。 有关详细信息，请参阅 [ImageName 元素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+https://hub.docker.com 或 Azure 容器注册表上的存储库和映像。 有关详细信息，请参阅 [ImageName 元素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="commands-element"></a>Commands 元素
 将以逗号分隔的命令列表传递给容器。 有关详细信息，请参阅 [Commands 元素](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)

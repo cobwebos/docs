@@ -3,7 +3,7 @@ title: Azure Active Directory 报告 API 的先决条件 |Microsoft Docs
 description: 了解访问 Azure AD 报告 API 的先决条件
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 08/30/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af5e198a900241bc7bb0b6aff9a57eed59d1cd86
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 3a9559f85e31a38c50034d6aacc8f65e4d68aec2
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895232"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014441"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>访问 Azure Active Directory 报告 API 的先决条件
 
-[Azure Active Directory (Azure AD) 报告 API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) 通过一组基于 REST 的 API，可让你以编程方式访问数据。 可以从编程语言和工具中调用这些 Api。
+[Azure Active Directory (Azure AD) 报告 API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) 通过一组基于 REST 的 API，让你以编程方式访问数据。 可从编程语言和工具中调用这些 API。
 
 报告 API 使用 [OAuth](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) 授权访问 Web API。
 
@@ -50,9 +50,9 @@ ms.locfileid: "72895232"
 
 ## <a name="register-an-application"></a>注册应用程序
 
-即使使用脚本访问报告 API，也需要注册。 注册为你提供了一个**应用程序 ID**，该 ID 是授权调用所必需的，并使你的代码能够接收令牌。
+即使是在使用脚本来访问报告 API，也需要注册。 注册会提供一个**应用程序 ID**，该 ID 是进行授权调用所必需的，代码也通过该 ID 来接收令牌。
 
-若要配置目录以访问 Azure AD 报告 API，必须使用同为 Azure AD 租户中**全局管理员**目录角色成员的 Azure 管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
+若要配置目录以访问 Azure AD 报告 API，必须使用同为 Azure AD 租户中[全局管理员](https://portal.azure.com)目录角色成员的 Azure 管理员帐户登录到 **Azure 门户**。
 
 > [!IMPORTANT]
 > 在具有管理员权限的凭据下运行的应用程序可能具有非常强大的功能，因此请务必将应用程序的 ID 和机密凭据放置在一个安全的位置。
@@ -68,21 +68,21 @@ ms.locfileid: "72895232"
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
 
-3. 从 "**应用注册**" 页中，选择 "**新建注册**"。
+3. 在“应用注册”页面中，选择“新建注册”。
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/03.png)
 
-4. "**注册应用程序**" 页：
+4. “注册应用程序”页：
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 `Reporting API application`。
 
-    b. 对于 "**支持的帐户类型**"，请选择 "**仅限此组织中的帐户**"。
+    b. 对于“支持的帐户类型”设置，请选择“仅限此组织中的帐户”。
 
-    c. 在 "**重定向 URL** **" 文本框中**，键入 `https://localhost`。
+    c. 在“重定向 URL”中，选择“Web”文本框，然后键入 `https://localhost`。
 
-    d.单击“下一步”。 选择“注册”。 
+    d. 选择“注册”。 
 
 
 ## <a name="grant-permissions"></a>授予权限 
@@ -102,19 +102,19 @@ ms.locfileid: "72895232"
 **若要授予应用程序使用 API 的权限，请执行以下操作：**
 
 
-1. 依次选择 " **API 权限**" 和 "**添加权限**"。 
+1. 选择“API 权限”，然后选择“添加权限”。 
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-2. 在 "**请求 API 权限" 页**上，找到 "**支持旧版 Api** **Azure Active Directory 关系图**。 
+2. 在“请求 API 权限”页上，找到“支持旧版 API”**Azure Active Directory Graph**。 
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
-3. 在 "**所需权限**" 页上，依次选择 "**应用程序权限**"、"**目录** **ReadAll**"。  选择 "**添加权限**"。
+3. 在“所需权限”页上选择“应用程序权限”，展开“目录”复选框 **Directory.ReadAll**。  选择“添加权限”。
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
-4. 在 "**报告 Api 应用程序-API 权限**" 页上，选择 "**授予管理员许可**"。 
+4. 在“报表 API 应用程序 - API 权限”页上，选择“授予管理员许可”。 
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
@@ -163,7 +163,7 @@ ms.locfileid: "72895232"
 
 
 ### <a name="get-your-applications-client-secret"></a>获取应用程序的客户端机密
- 避免尝试使用 API 访问审核日志或登录时出现错误。
+ 避免尝试访问审核日志或使用 API 登录时出现的错误。
 
 **若要获取应用程序的客户端机密，请执行以下操作：**
 
@@ -173,11 +173,11 @@ ms.locfileid: "72895232"
 
 2.  从“应用注册”页面中选择你的应用程序。
 
-3.  在**API 应用程序**页上选择 "**证书和机密**"，在 "**客户端密码**" 部分中，单击 " **+ 新建客户端密钥**"。 
+3.  在“API 应用程序”页上选择“证书和机密”，然后在“客户端机密”部分单击“+ 新建客户端机密”。 
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/12.png)
 
-5. 在 "**添加客户端密钥**" 页面上，添加：
+5. 在“添加客户端机密”页上，添加以下内容：
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“说明”文本框中，键入 `Reporting API`。
 
@@ -185,7 +185,7 @@ ms.locfileid: "72895232"
 
     c. 单击“保存”。
 
-    d.单击“下一步”。 复制密钥值。
+    d. 复制密钥值。
 
 ## <a name="troubleshoot-errors-in-the-reporting-api"></a>排查报告 API 中的错误
 
@@ -214,13 +214,13 @@ ms.locfileid: "72895232"
 
 ### <a name="error-the-allowed-roles-does-not-include-user"></a>错误：允许的角色不包括用户。 
 
- 避免尝试使用 API 访问审核日志或登录时出现错误。 请确保你的帐户是 Azure Active Directory 租户中的**安全读者**或**报表读者**角色的一部分。
+ 避免尝试访问审核日志或使用 API 登录时出现的错误。 确保帐户属于 Azure Active Directory 租户中的“安全读取者”或“报表读取者”角色。
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>错误: 应用程序缺少 AAD“读取目录数据”权限 
 
 ### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>错误: 应用程序缺少 MSGraph API“读取所有审核日志数据”权限
 
-按照先决条件中的步骤[访问 Azure Active Directory 报告 API](howto-configure-prerequisites-for-reporting-api.md) ，以确保你的应用程序使用正确的权限集运行。 
+按照[访问 Azure Active Directory 报告 API 的先决条件](howto-configure-prerequisites-for-reporting-api.md)中的步骤操作，确保应用程序使用正确的权限集运行。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
 title: 设备连接和遥测入口-Azure 数字孪生 |Microsoft Docs
-description: 概述如何将设备载入 Azure 数字孪生
+description: 了解如何在 Azure 数字孪生中连接和载入设备。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 4e7a179980abb164754941f345d2ee9ae7f5c9de
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 529baf6a3eedf1d7490e8138642e90928a209876
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930394"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010128"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>设备连接与遥测数据入口
 
@@ -67,7 +67,7 @@ YOUR_MANAGEMENT_API_URL/devices?HardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=Con
 
  **消息**的有效负载内容可以是最大为 256 KB 的任意数据。 [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) 类型的属性预期需要满足几项要求。 下表显示了系统支持的必需和可选属性。
 
-| 属性名称 | 值 | 必选 | 说明 |
+| 属性名 | 值 | 必选 | 说明 |
 |---|---|---|---|
 | DigitalTwins-Telemetry | 1.0 | 是 | 在系统中标识消息的常量值。 |
 | DigitalTwins-SensorHardwareId | `string(72)` | 是 | 发送**消息**的传感器的唯一标识符。 该值必须与对象的 HardwareId 属性匹配，以便系统可以处理它。 例如，`00FF0643BE88-CO2`。 |

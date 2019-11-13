@@ -1,17 +1,14 @@
 ---
 title: 使用参数创建动态蓝图
 description: 了解有关静态和动态参数以及如何使用它们创建动态蓝图。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/12/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 2bb38e0698d7504ba1bb139ca1bd5e3b14e5cdd4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: da0670bdc880c47c3b715dc8344896a6c695924c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981058"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960518"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>通过参数创建动态蓝图
 
@@ -61,7 +58,7 @@ ms.locfileid: "71981058"
 
 1. 单击现有蓝图，然后单击 "**编辑蓝图**" 或单击 " **+ 创建蓝图**"，并在 "**基本**信息" 选项卡上填写信息。
 
-1. 单击“下一步:项目”或单击“项目”选项卡。
+1. 单击“下一步: 项目”或单击“项目”选项卡。
 
 1. 添加到蓝图中的项目（具有参数选项）会在“参数”列中显示“填充了 X 个参数，共 Y 个参数”。 单击项目行，编辑项目参数。
 
@@ -134,11 +131,11 @@ ms.locfileid: "71981058"
   }
   ```
 
-在此示例中，**principalIds** 属性通过 `[parameters('owners')]` 的值使用 **owners** 蓝图级参数。 使用蓝图级参数在项目中设置参数仍是**静态参数**的示例。 蓝图级参数无法在蓝图分配期间设置，每次分配时都是同一个值。
+在此示例中，**principalIds** 属性通过 **的值使用**owners`[parameters('owners')]` 蓝图级参数。 使用蓝图级参数在项目中设置参数仍是**静态参数**的示例。 蓝图级参数无法在蓝图分配期间设置，每次分配时都是同一个值。
 
 ##### <a name="artifact-level-parameter"></a>项目级别参数
 
-在项目上创建“静态参数”情况相似，但采用直接值而不是使用 `parameters()` 函数。 以下示例创建了两个静态参数：“tagName”和“tagValue”。 每个参数的值直接提供，且不使用函数调用。
+在项目上创建“静态参数”情况相似，但采用直接值而不是使用  **函数**`parameters()`。 以下示例创建了两个静态参数：“tagName”和“tagValue”。 每个参数的值直接提供，且不使用函数调用。
 
 - REST API URI
 

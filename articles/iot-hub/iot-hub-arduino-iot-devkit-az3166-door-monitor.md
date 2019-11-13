@@ -1,22 +1,21 @@
 ---
-title: 使用 SendGrid 服务和 Azure Functions 在门打开时发送电子邮件 | Microsoft Docs
+title: 使用 Azure Functions 打开门时发送电子邮件
 description: 监视磁传感器，检测门何时打开，并使用 Azure Functions 发送电子邮件通知。
 author: liydu
-manager: jeffya
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 6cbf3f906b511d9d76319f57f5508a2c584213cb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 23607b52f866bb7b0be760e49be7d62d1732d43c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73484060"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954752"
 ---
-# <a name="door-monitor"></a>门监视器          
+# <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>门监视器--使用 Azure Functions 和 SendGrid，打开门后发送电子邮件           
 
 MXChip IoT DevKit 包含内置的磁传感器。 在此项目中，请检测附近是否存在强磁场 - 在此示例中，该磁场来自一块小的、永久性磁铁。
 
@@ -31,7 +30,7 @@ MXChip IoT DevKit 包含内置的磁传感器。 在此项目中，请检测附�
 > - 将一块磁铁装载到门的边缘。
 > - 将 DevKit 装载到靠近磁铁的门框上。 打开或关闭此门会触发传感器，然后你就会收到有关此事件的电子邮件通知。
 
-## <a name="what-you-need"></a>所需条件
+## <a name="what-you-need"></a>需要什么
 
 完成[入门指南](iot-hub-arduino-iot-devkit-az3166-get-started.md)来实现以下目的：
 
@@ -194,7 +193,7 @@ DevKit 将重新启动并开始运行代码。
 如果遇到问题，请参阅 [IoT DevKit 常见问题解答](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)或通过以下渠道进行联系：
 
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
-* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [堆栈溢出](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>后续步骤
 

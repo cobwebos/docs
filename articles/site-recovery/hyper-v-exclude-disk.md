@@ -1,19 +1,18 @@
 ---
-title: 使用 Azure Site Recovery 服务设置灾难恢复时，从复制中排除磁盘 | Microsoft Docs
+title: 在灾难恢复中从复制中排除磁盘，Azure Site Recovery
 description: 介绍如何在灾难恢复到 Azure 期间将 VM 磁盘从复制中排除。
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 01/19/2019
+ms.date: 11/12/2019
 ms.author: mayg
-ms.openlocfilehash: f86ded99ef5280a4e6929c39a9fd323d1b61f6f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12304067e1a92559c2313fd7382f271249a8c784
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773869"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961438"
 ---
 # <a name="exclude-disks-from-replication"></a>从复制中排除磁盘
 本文介绍如何从复制中排除磁盘。 这种排除可以优化消耗的复制带宽，或者优化此类磁盘利用的目标端资源。
@@ -24,7 +23,7 @@ ms.locfileid: "60773869"
 --|--|--|--|--
 排除磁盘 | 是 | 是 | 否 | 否
 
-## <a name="why-exclude-disks-from-replication"></a>为何要从复制中排除磁盘？
+## <a name="why-exclude-disks-from-replication"></a>为什么要从复制中排除磁盘？
 从复制中排除磁盘通常因以下原因而有必要：
 
 - 排除的磁盘上改动的数据不重要或不需要复制。
@@ -32,7 +31,7 @@ ms.locfileid: "60773869"
 - 用户需要节省存储和网络资源，因此不复制此改动。
 
 ## <a name="what-are-the-typical-scenarios"></a>有哪些典型方案？
-对于适合进行排除的数据改动，用户可以确定具体的示例。 示例可能包括向页面文件 (pagefile.sys) 写入以及向 Microsoft SQL Server 的 tempdb 文件写入。 页面文件可登记大量改动，具体取决于工作负荷和存储子系统。 但是，从主站点将此数据复制到 Azure 会占用大量资源。 因此，用户可以执行以下步骤，通过单个包含操作系统和页面文件的虚拟磁盘来优化虚拟机的复制：
+对于适合进行排除的数据改动，用户可以确定具体的示例。 示例可能包括向页面文件 (pagefile.sys) 写入以及向 Microsoft SQL Server 的 tempdb 文件写入。 页面文件可登记大量改动，具体取决于工作负荷和存储子系统。 但是，从主站点将此数据复制到 Azure 会占用大量资源。 因此，可以执行以下步骤，通过单个包含操作系统和页面文件的虚拟磁盘来优化虚拟机的复制：
 
 1. 将单个虚拟磁盘拆分成两个虚拟磁盘。 一个虚拟磁盘包含操作系统，另一个包含页面文件。
 2. 从复制中排除页面文件磁盘。
@@ -43,7 +42,7 @@ ms.locfileid: "60773869"
 2. 从复制中排除 tempdb 磁盘。
 
 ## <a name="how-to-exclude-disks"></a>如何排除磁盘
-按照[启用复制](site-recovery-hyper-v-site-to-azure.md)工作流，通过 Azure Site Recovery 门户保护虚拟机。 在工作流的第四步，使用“要复制的磁盘”  列从复制中排除磁盘。 默认情况下，选择所有磁盘进行复制。 清除要从复制中排除的磁盘所对应的复选框，并完成启用复制的步骤。
+按照[启用复制](site-recovery-hyper-v-site-to-azure.md)工作流，通过 Azure Site Recovery 门户保护虚拟机。 在工作流的第四步，使用“要复制的磁盘”列从复制中排除磁盘。 默认情况下，选择所有磁盘进行复制。 清除要从复制中排除的磁盘所对应的复选框，并完成启用复制的步骤。
 
 ![从复制中排除磁盘，并为 Hyper-V 启用到 Azure 故障回复的复制](./media/hyper-v-exclude-disk/enable-replication6-with-exclude-disk.png)
 
@@ -51,7 +50,7 @@ ms.locfileid: "60773869"
 >
 > * 只能从复制中排除基本磁盘。 不能排除操作系统磁盘。 建议不要排除动态磁盘。 Azure Site Recovery 无法确定来宾虚拟机中的虚拟硬盘 (VHD) 是基本磁盘还是动态磁盘。  如果未排除所有依赖性动态卷磁盘，则受保护的动态磁盘就会成为故障转移虚拟机上的故障磁盘，该磁盘上的数据无法访问。
 > * 启用复制后，无法添加或删除要复制的磁盘。 如果想要添加或排除磁盘，需要禁用虚拟机保护，并重新启用保护。
-> * 如果排除的磁盘是某个应用程序正常运行所必需的，则故障转移到 Azure 之后，需要在 Azure 中手动创建该磁盘，以便复制的应用程序可以运行。 或者，可以将 Azure 自动化集成到恢复计划中，以便在故障转移计算机期间创建磁盘。
+> * 如果排除的磁盘是某个应用程序正常运行所必需的，则故障转移到 Azure 之后，需要在 Azure 中手动创建该磁盘，以便复制的应用程序可以运行。 或者，可将 Azure 自动化集成到恢复计划中，以便在故障转移计算机期间创建磁盘。
 > * 在 Azure 中手动创建的磁盘不会执行故障回复。 例如，如果对三个磁盘进行故障转移，并直接在 Azure 虚拟机中创建两个磁盘，则只会对那三个故障转移的磁盘进行从 Azure 到 Hyper-V 的故障回复。 在故障回复中或从 Hyper-V 到 Azure 的反向复制中，不能包括手动创建的磁盘。
 
 ## <a name="end-to-end-scenarios-of-exclude-disks"></a>排除磁盘的端到端方案
@@ -73,7 +72,7 @@ ms.locfileid: "60773869"
 DB-Disk0-OS | DISK0 | C:\ | 操作系统磁盘
 DB-Disk1| Disk1 | D:\ | SQL 系统数据库和用户数据库 1
 DB-Disk2（已从保护中排除该磁盘） | Disk2 | E:\ | 临时文件
-DB-Disk3（已从保护中排除该磁盘） | Disk3 | F:\ | SQL tempdb 数据库（文件夹路径 (F:\MSSQL\Data\)） <br /> <br />记下在故障转移之前的文件夹路径。
+DB-Disk3（已从保护中排除该磁盘） | Disk3 | F:\ | SQL tempdb 数据库（文件夹路径 (F:\MSSQL\Data\)） <br /> <br />在故障转移之前记下该文件夹的路径。
 DB-Disk4 | Disk4 |G:\ |用户数据库 2
 
 在虚拟机的两个磁盘上的数据改动是临时性的，因此在保护 SalesDB 虚拟机时，可以从复制中排除 Disk2 和 Disk3。 Azure Site Recovery 不会复制这些磁盘。 进行故障转移时，这些磁盘不会存在于 Azure 的故障转移虚拟机上。
@@ -83,13 +82,13 @@ DB-Disk4 | Disk4 |G:\ |用户数据库 2
 **来宾操作系统磁盘编号** | **驱动器号** | **磁盘上的数据类型**
 --- | --- | ---
 DISK0 | C:\ | 操作系统磁盘
-Disk1 | E:\ | 临时存储<br /> <br />Azure 将添加此磁盘并分配第一个可用的驱动器号。
+Disk1 | E:\ | 临时存储<br /> <br />Azure 添加此磁盘并分配第一个可用的驱动器号。
 Disk2 | D:\ | SQL 系统数据库和用户数据库 1
 Disk3 | G:\ | 用户数据库 2
 
 由于从 SalesDB 虚拟机中排除了 Disk2 和 Disk3，E: 是可用列表中的第一个驱动器号。 Azure 将 E: 分配给临时存储卷。 对于所有复制的磁盘，驱动器号保持不变。
 
-Disk3 为 SQL tempdb 磁盘\)（tempdb 文件夹路径为 F:\MSSQL\Data），已从复制中排除。 该磁盘在故障转移虚拟机上不可用。 因此，SQL 服务处于停止状态并需要 F:\MSSQL\Data 路径。
+Disk3 为 SQL tempdb 磁盘（tempdb 文件夹路径为 F:\MSSQL\Data\)），已从复制中排除。 该磁盘在故障转移虚拟机上不可用。 因此，SQL 服务处于停止状态并需要 F:\MSSQL\Data 路径。
 
 有两种创建该路径的方法：
 
@@ -134,7 +133,7 @@ Disk3 为 SQL tempdb 磁盘\)（tempdb 文件夹路径为 F:\MSSQL\Data），已
 
 请参阅以下有关临时存储磁盘的 Azure 指南：
 
-* [Using SSDs in Azure VMs to store SQL Server TempDB and Buffer Pool Extensions](https://blogs.technet.microsoft.com/dataplatforminsider/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)（在 Azure VM 中使用 SSD 来存储 SQL Server TempDB 和缓冲池扩展）
+* [在 Azure VM 中使用 SSD 来存储 SQL Server TempDB 和缓冲池扩展](https://blogs.technet.microsoft.com/dataplatforminsider/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)
 * [Azure 虚拟机中 SQL Server 的性能最佳实践](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance)
 
 ## <a name="failback-from-azure-to-an-on-premises-host"></a>故障回复（从 Azure 到本地主机）
@@ -147,7 +146,7 @@ Disk3 为 SQL tempdb 磁盘\)（tempdb 文件夹路径为 F:\MSSQL\Data），已
 **来宾操作系统磁盘编号** | **驱动器号** | **磁盘上的数据类型**
 --- | --- | ---
 DISK0 | C:\ | 操作系统磁盘
-Disk1 | E:\ | 临时存储<br /> <br />Azure 将添加此磁盘并分配第一个可用的驱动器号。
+Disk1 | E:\ | 临时存储<br /> <br />Azure 添加此磁盘并分配第一个可用的驱动器号。
 Disk2 | D:\ | SQL 系统数据库和用户数据库 1
 Disk3 | G:\ | 用户数据库 2
 
@@ -168,7 +167,7 @@ DB-Disk4 | Disk4 | G:\ | 用户数据库 2
 假设有一台虚拟机，其中的页面文件磁盘可以被排除。
 存在两种情况。
 
-### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>案例 1：在 D: 驱动器上配置页面文件
+### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>情况 1：在 D: 驱动器上配置页面文件
 以下为磁盘配置：
 
 **磁盘名称** | **来宾操作系统磁盘编号** | **驱动器号** | **磁盘上的数据类型**
@@ -197,7 +196,7 @@ Disk1 (D:) 已排除，因此 D: 是可用列表中的首个驱动器号。 Azur
 
 ![Azure 虚拟机上的页面文件设置](./media/hyper-v-exclude-disk/pagefile-on-Azure-vm-after-failover.png)
 
-### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>案例 2：在另一驱动器（非 D: 驱动器）上配置页面文件
+### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>情况 2：在另一驱动器（D: 以外的驱动器）上配置页面文件
 
 以下为源虚拟机磁盘配置：
 

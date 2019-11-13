@@ -1,6 +1,6 @@
 ---
-title: Azure 时序见解预览中的时序模型 | Microsoft Docs
-description: 了解 Azure 时序见解时序模型。
+title: 时序模型-Azure 时序见解 |Microsoft Docs
+description: 了解 Azure 时序见解预览版中的时序模型。
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,14 +10,14 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c9bface359df020cea0bfff8f82e25e25efbc47
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a550643640afeefeb4cf79e35265f13557b6ffb0
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585246"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014699"
 ---
-# <a name="time-series-model"></a>时序模型
+# <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的时序模型
 
 本文介绍时序模型、功能，以及如何在 Azure 时序见解预览版环境中开始构建和更新自己的模型。
 
@@ -101,7 +101,7 @@ ms.locfileid: "73585246"
 | timeSeriesId | 与实例关联的时序的 UUID。 |
 | typeId | 实例与之关联的时序模型类型的 UUID。 默认情况下，所有发现的新实例都关联到默认类型。
 | name | **name** 属性可选，并且区分大小写。 如果 "**名称**" 不可用，则默认为 " **timeSeriesId**"。 如果提供了名称， **timeSeriesId** [仍将可用。](time-series-insights-update-explorer.md#preview-well) |
-| 说明 | 实例的文本说明。 |
+| description | 实例的文本说明。 |
 | hierarchyIds | 定义实例所属的层次结构。 |
 | instanceFields | **instanceFields** 是实例的属性，并且是定义实例的任何静态数据。 它们定义层次结构或非层次结构属性的值，同时还支持索引，以便能够执行搜索操作。 |
 
@@ -148,7 +148,7 @@ ms.locfileid: "73585246"
 | ---| ---|
 | id | 层次结构的唯一标识符，例如在定义实例时使用。 |
 | name | 用于提供层次结构的名称的字符串。 |
-| 源 | 指定组织层次结构或路径，它是用户要创建的层次结构的自顶向下父子顺序。 父子属性映射实例字段。 |
+| source | 指定组织层次结构或路径，它是用户要创建的层次结构的自顶向下父子顺序。 父子属性映射实例字段。 |
 
 层次结构以 JSON 表示，如下所示：
 
@@ -232,7 +232,7 @@ ms.locfileid: "73585246"
 > [!TIP]
 > 有关时序见解实例 API 和 CRUD 支持，请参阅[数据查询](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)一文和[类型 API REST 文档](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)。
 
-### <a name="type-properties"></a>Type 属性
+### <a name="type-properties"></a>类型属性
 
 时序模型类型定义方式如下： **id**、**名称**、**说明**和**变量**。
 
@@ -240,7 +240,7 @@ ms.locfileid: "73585246"
 | ---| ---|
 | id | 类型的 UUID。 |
 | name | 用于为类型提供名称的字符串。 |
-| 说明 | 类型的字符串说明。 |
+| description | 类型的字符串说明。 |
 | variables | 指定与类型关联的变量。 |
 
 类型符合以下 JSON 示例：

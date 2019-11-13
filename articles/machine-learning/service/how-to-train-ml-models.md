@@ -9,19 +9,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: sgilley
-ms.date: 04/19/2019
+ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: bb3b9504abcd453977d63a9bfccf77a33da6455a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9bb22a564f52dfcdb3fbec6d842e452ca416059f
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489483"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961703"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>通过估算器使用 Azure 机器学习训练模型
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-凭借 Azure 机器学习，可以使用 [RunConfiguration 对象](how-to-set-up-training-targets.md#compute-targets-for-training)和 [ScriptRunConfig 对象](how-to-set-up-training-targets.md#whats-a-run-configuration)轻松将训练脚本提交给[各种计算目标](how-to-set-up-training-targets.md#submit)。 该模式提供了很强的灵活性和最大程度的控制度。
+使用 Azure 机器学习，可以使用[RunConfiguration 对象](how-to-set-up-training-targets.md#whats-a-run-configuration)和[ScriptRunConfig 对象](how-to-set-up-training-targets.md#submit)轻松将定型脚本提交到[各种计算目标](how-to-set-up-training-targets.md#compute-targets-for-training)。 该模式提供了很强的灵活性和最大程度的控制度。
 
 为了便于深度学习模型训练，Azure 机器学习 Python SDK 提供了另一种可选择的高级抽象（即估算器类），其支持用户轻松构造运行配置。 你可以创建和使用一般的[估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)，以便在所选的任何计算目标上使用你选择的任何学习框架（如 scikit-learn）提交定型脚本，无论该目标是本地计算机、azure 中的单个 VM 还是 azure 中的 GPU 群集。 对于 PyTorch、TensorFlow 和 Chainer 任务，Azure 机器学习还提供相应的[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、 [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)和[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)估算以简化使用这些框架的操作。
 
@@ -44,7 +44,8 @@ ms.locfileid: "73489483"
 from azureml.train.estimator import Estimator
 
 script_params = {
-    '--data-folder': ds.as_mount(),
+    # to mount files referenced by mnist dataset
+    '--data-folder': ds.as_named_input('mnist').as_mount(),
     '--regularization': 0.8
 }
 
@@ -135,7 +136,8 @@ print(run.get_portal_url())
 * [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
 有关使用深度学习框架特定估算的培训模型上的笔记本，请参阅：
-* [how-to-use-azureml/training-with-deep-learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
+
+* [如何使用-azureml/ml-框架](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

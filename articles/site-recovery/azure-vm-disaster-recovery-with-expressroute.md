@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 服务将 Azure ExpressRoute 与 Azure VM 的灾难恢复相集成 | Microsoft Docs
+title: 将 Azure ExpressRoute Azure VM 灾难恢复与 Azure Site Recovery 集成
 description: 介绍如何使用 Azure Site Recovery 和 Azure ExpressRoute 来设置 Azure VM 的灾难恢复
 services: site-recovery
 author: mayurigupta13
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 0974e2ed78e557168357c51b5c77a94de2f56dc5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: bf12a5b7850a56d945e1082be6c522c31738669c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722104"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954088"
 ---
-# <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>将 Azure ExpressRoute 与 Azure VM 的灾难恢复相集成
+# <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>集成 ExpressRoute 和 Azure Vm 的灾难恢复
 
 
 本文介绍在将 Azure VM 的灾难恢复设置为次要 Azure 区域时，如何将 Azure ExpressRoute 与 [Azure Site Recovery](site-recovery-overview.md) 相集成。
@@ -90,7 +90,7 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
     - **源 vNet1**：10.1.0.0/24。
     - **源 vNet2**：10.2.0.0/24。
     - 每个分支虚拟网络都连接到“中心 vNet”。
-- **中心 vNet**。 **中心 vNet“源中心 vNet”：** 10.10.10.0/24。
+- **中心 vNet**。 中心 vNet“源中心 vNet”：10.10.10.0/24。
   - 此中心 vNet 充当网关守卫。
   - 跨子网的所有通信都通过此中心进行。
     - **中心 vNet 子网**。 中心 vNet 具有两个子网：
@@ -104,22 +104,22 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
 
 #### <a name="spoke-to-hub"></a>分支到中心
 
-**Direction** | **设置** | **状态**
+**Direction** | **设置** | **State**
 --- | --- | ---
-分支到中心 | 允许虚拟网络地址 | Enabled
-分支到中心 | 允许转发的通信 | Enabled
+分支到中心 | 允许虚拟网络地址 | 已启用
+分支到中心 | 允许转发流量 | 已启用
 分支到中心 | 允许网关传输 | 已禁用
-分支到中心 | 使用删除网关 | Enabled
+分支到中心 | 使用删除网关 | 已启用
 
  ![分支到中心对等互连配置](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
 
 #### <a name="hub-to-spoke"></a>中心到分支
 
-**Direction** | **设置** | **状态**
+**Direction** | **设置** | **State**
 --- | --- | ---
-中心到分支 | 允许虚拟网络地址 | Enabled
-中心到分支 | 允许转发的通信 | Enabled
-中心到分支 | 允许网关传输 | Enabled
+中心到分支 | 允许虚拟网络地址 | 已启用
+中心到分支 | 允许转发流量 | 已启用
+中心到分支 | 允许网关传输 | 已启用
 中心到分支 | 使用删除网关 | 已禁用
 
  ![中心到分支对等互连配置](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)
@@ -193,7 +193,7 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
 1. 按照设置复制的步骤执行操作。
 2. 在故障转移期间或之后按照这些附加步骤[对 Azure VM 进行故障转移](azure-to-azure-tutorial-failover-failback.md)。
 
-    a. 在目标区域中心 VNet 内创建 Azure ExpressRoute 网关。 这需要将目标中心 vNet 连接到 ExpressRoute 线路。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在目标区域中心 VNet 内创建 Azure ExpressRoute 网关。 这需要将目标中心 vNet 连接到 ExpressRoute 线路。
 
     b. 创建从目标中心 vNet 到目标 ExpressRoute 线路的连接。
 

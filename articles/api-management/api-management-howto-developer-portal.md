@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 1eef7b6505c4800acbe8aa69cf6f17eecc503aed
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 6bf8c8690977ef1036c853d8c1c01a3a366b50df
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796026"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011482"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理开发人员门户概述
 
@@ -27,7 +27,7 @@ ms.locfileid: "73796026"
 
 > [!WARNING]
 > 新的开发人员门户当前正在部署到 API 管理服务。
-> 如果你的服务是新创建的或开发人员层服务，则你应该已经有最新版本。 否则，你可能会遇到问题（例如，通过发布功能）。 功能推出将于2019年11月11日星期一完成。
+> 如果你的服务是新创建的或开发人员层服务，则你应该已经有最新版本。 否则，你可能会遇到问题（例如，通过发布功能）。 此功能推出应由2019年11月22日，星期五完成。
 >
 > [了解如何从预览版迁移到开发人员门户的正式发布版本](#preview-to-ga)。
 

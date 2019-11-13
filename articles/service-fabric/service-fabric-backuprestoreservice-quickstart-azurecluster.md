@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric 中的定期备份和还原 | Microsoft Docs
+title: Azure Service Fabric 中的定期备份和还原
 description: 使用 Service Fabric 的定期备份和还原功能来实现应用程序数据的定期数据备份。
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: d5d87f153b5835d5d2b38f380e5c77c03a68e1b5
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 43adb9f9d9989b39faa3af705a61ae8b0626a43e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928235"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005540"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric 中的定期备份和还原 
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Service Fabric 中的备份和还原服务可以轻松自动备份存储在有�
 Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关的以下功能：
 
 - 通过支持将备份上传到（外部）存储位置，计划可靠有状态服务和 Reliable Actors 的定期备份。 受支持的存储位置
-    - Azure 存储空间
+    - Azure 存储
     - 文件共享（本地）
 - 枚举备份
 - 触发分区的临时备份

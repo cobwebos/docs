@@ -3,7 +3,7 @@ title: Azure Monitor 中的 Azure Active Directory 活动日志 |Microsoft Docs
 description: Azure Active Directory 中的活动日志简介 Azure Monitor
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/22/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f62ad020d2ec3b5ab712f50dca2dddd3b981f098
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 46e29fff3308f35b16dbff2f9cead82abc222a5c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656466"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014507"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD 中的活动日志 Azure Monitor
 
-可以将 Azure Active Directory (Azure AD) 活动日志路由到多个终结点, 以实现长期保留和数据见解。 此功能可让你:
+可以将 Azure Active Directory （Azure AD）活动日志路由到多个终结点，以实现长期保留和数据见解。 此功能可让你：
 
 * 将 Azure AD 活动日志存档到 Azure 存储帐户，以便长期保留数据
 * 使用常用的安全信息和事件管理 (SIEM) 工具（例如 Splunk 和 QRadar）将 Azure AD 活动日志流式传输到 Azure 事件中心进行分析。
@@ -41,8 +41,8 @@ ms.locfileid: "69656466"
 
 可以使用此功能将 Azure AD 活动日志和登录日志路由到 Azure 存储帐户、事件中心、Azure Monitor 日志或自定义解决方案。 
 
-* **审核日志**：可通过[审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
-* **登录日志**：可通过[登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志中报告的任务。
+* **审核日志**: 可以通过[审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
+* **登录日志**: 可以通过[登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志中报告的任务。
 
 > [!NOTE]
 > 目前不支持 B2C 相关的审核和登录活动日志。
@@ -50,7 +50,7 @@ ms.locfileid: "69656466"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使用此功能，需满足以下条件:
+若要使用此功能，需满足以下条件：
 
 * Azure 订阅。 如果没有 Azure 订阅，可以[注册免费试用版](https://azure.microsoft.com/free/)。
 * 在 Azure 门户中访问 Azure AD 审核日志所需的 Azure AD Free、Basic、Premium 1 或 Premium 2 [许可证](https://azure.microsoft.com/pricing/details/active-directory/)。 
@@ -103,14 +103,14 @@ ms.locfileid: "69656466"
 | 日志类别 | 用户数 | 每秒事件数 | 每五分钟时间间隔的事件数 | 每个时间间隔的数据量 | 每个时间间隔的消息数 | 每月消息数 | 每月成本（估算） |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
 | 审核 | 100,000 | 18 | 5,400 | 10.8 MB | 43 | 371,520 | $10.83 |
-| 审核 | 1,000 | 0.1 | 52 | 104 KB | 1 | 8,640 | $10.80 |
+| 审核 | 1,000 | 0.1 | 52 | 104 KB | 1 个 | 8,640 | $10.80 |
 | 登录 | 1,000 | 178 | 53,400 | 106.8&nbsp;MB | 418 | 3,611,520 | $11.06 |  
 
 ### <a name="azure-monitor-logs-cost-considerations"></a>Azure Monitor 日志成本注意事项
 
 
 
-| 日志类别       | 用户数 | 每日事件数 | 每月事件数 (30 天) | 每月成本 (est) |
+| 日志类别       | 用户数 | 每日事件数 | 每月事件数（30天） | 每月成本（est） |
 | :--                | ---             | ---            | ---                        | --:                          |
 | 审核和登录 | 100,000         | 16,500,000     | 495,000,000                |  $1093.00                       |
 | 审核              | 100,000         | 1,500,000      | 45,000,000                 |  $246.66                     |
@@ -133,23 +133,23 @@ ms.locfileid: "69656466"
 
 **问：哪些日志包括在其中？**
 
-**答**：登录活动日志和审核日志均可通过此功能进行路由，但与 B2C 相关的审核事件目前未包括在其中。 若要了解目前支持哪些类型的日志和哪些基于功能的日志，请参阅[审核日志架构](reference-azure-monitor-audit-log-schema.md)和[登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)。 
+**答**：登录活动日志和审核日志均可通过此功能进行路由，虽然与 B2C 相关的审核事件目前未包括在其中。 若要了解目前支持哪些类型的日志和哪些基于功能的日志，请参阅[审核日志架构](reference-azure-monitor-audit-log-schema.md)和[登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)。 
 
 ---
 
-**问：执行某项操作之后，相应的日志多快会在事件中心内显示？**
+**问：执行某项操作之后，相应的日志多快会显示在事件中心内？**
 
-**答**：日志会在执行操作后两到五分钟内在事件中心显示。 有关事件中心的详细信息，请参阅[什么是 Azure 事件中心？](../../event-hubs/event-hubs-about.md)。
-
----
-
-**问：执行某项操作之后，相应的日志多快会在存储帐户中显示？**
-
-**答**：就 Azure 存储帐户而言，执行操作之后，日志的显示会有 5-15 分钟的延迟。
+**答**: 日志会在执行操作后两到五分钟内显示在事件中心。 有关事件中心的详细信息，请参阅[什么是 Azure 事件中心？](../../event-hubs/event-hubs-about.md)。
 
 ---
 
-**问：如果管理员更改了诊断设置的保持期, 会发生什么情况？**
+**问：执行某项操作之后，相应的日志多快会显示在存储帐户中？**
+
+**答**：就 Azure 存储帐户来说，执行操作之后，日志在其中的显示会有一个 5 到 15 分钟的延迟。
+
+---
+
+**问：如果管理员更改了诊断设置的保持期，会发生什么情况？**
 
 **答**：新的保留策略将应用于更改后收集的日志。 策略更改前收集的日志将不会受到影响。
 
@@ -163,13 +163,13 @@ ms.locfileid: "69656466"
 
 **问：将数据流式传输到事件中心的费用是多少？**
 
-**答**：流式传输费用取决于每分钟收到的消息数。 本文介绍了费用计算方法并列出了根据消息数估算的费用。 
+**答**： 流式传输费用取决于你每分钟收到的消息数。 本文介绍了费用计算方法并列出了根据消息数估算的费用。 
 
 ---
 
 **问：如何将 Azure AD 活动日志与 SIEM 系统集成？**
 
-**答**：可通过两种方式实现此目的：
+**答**： 可通过两种方式实现此目的：
 
 - 将 Azure Monitor 与事件中心配合使用，以将日志流式传输到 SIEM 系统。 首先，[将日志流式传输到事件中心](tutorial-azure-monitor-stream-logs-to-event-hub.md)，然后使用配置的事件中心[设置 SIEM 工具](tutorial-azure-monitor-stream-logs-to-event-hub.md#access-data-from-your-event-hub)。 
 
@@ -185,19 +185,19 @@ ms.locfileid: "69656466"
 
 **问：如何将 Azure AD 活动日志与 Splunk 实例集成？**
 
-**答**：首先，[将 Azure AD 活动日志路由到事件中心](quickstart-azure-monitor-stream-logs-to-event-hub.md)，然后按照相关步骤[将活动日志与 Splunk 集成](tutorial-integrate-activity-logs-with-splunk.md)。
+**答**：首先，[将 Azure AD 活动日志路由到事件中心](quickstart-azure-monitor-stream-logs-to-event-hub.md)，然后按照步骤[将活动日志与 Splunk 集成](tutorial-integrate-activity-logs-with-splunk.md)。
 
 ---
 
-**问：如何将 Azure AD 活动日志与 Sumo Logic 集成？** 
+**问: 如何将 Azure AD 活动日志与 Sumo Logic 集成？** 
 
-**答**：首先，[将 Azure AD 活动日志路由到事件中心](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory)，然后按照相关步骤[安装 Azure AD 应用程序并查看 SumoLogic 中的仪表板](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)。
+**答**：首先，[将 Azure AD 活动日志路由到事件中心](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory)，然后按照步骤[安装 Azure AD 应用程序并查看 SumoLogic 中的仪表板](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)。
 
 ---
 
 **问：是否可以在不使用外部 SIEM 工具的情况下，从事件中心访问数据？** 
 
-**答**：是的。 若要通过自定义应用程序来访问日志，可以使用[事件中心 API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。 
+**答**： 可以。 若要通过自定义应用程序来访问日志，可以使用[事件中心 API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。 
 
 ---
 

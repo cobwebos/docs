@@ -1,7 +1,7 @@
 ---
-title: 应用程序设置-LUIS
+title: 应用程序设置 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 了解语言理解应用的应用程序设置。
+description: Azure 认知服务语言理解应用的应用程序设置存储在应用和门户中。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 6d516590b90efd937789fa0847b707d2521f6459
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: bae4f09b539e26ca8c0d4ce97999776dc0911601
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932579"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961790"
 ---
 # <a name="application-settings"></a>应用程序设置
 
@@ -46,7 +46,7 @@ ms.locfileid: "68932579"
 
 ### <a name="language-support-for-diacritics"></a>对音调符号的语言支持
 
-#### <a name="brazilian-portuguese-pt-br-diacritics"></a>葡萄牙语(巴西) `pt-br` 音调符号
+#### <a name="brazilian-portuguese-pt-br-diacritics"></a>巴西葡萄牙语 `pt-br` 音调符号
 
 |音调符号设置为 false|音调符号设置为 true|
 |-|-|
@@ -150,9 +150,9 @@ ms.locfileid: "68932579"
 ] 
 ```
 
-以下话语显示了音调符号如何影响话语：
+以下最谈话显示标点如何影响最谈话：
 
-|音调符号设置为 False 时|音调符号设置为 True 时|
+|标点设置为 False|标点设置为 True|
 |--|--|
 |`Hmm..... I will take the cappuccino`|`Hmm I will take the cappuccino`|
 |||

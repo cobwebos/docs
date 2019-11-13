@@ -1,18 +1,18 @@
 ---
-title: 使用 Azure Site Recovery 将 Hyper-v 灾难恢复到辅助本地站点的体系结构
+title: 体系结构-使用 Azure Site Recovery 的 Hyper-v 灾难恢复到辅助站点
 description: 本文概述使用 Azure Site Recovery 将本地 Hyper-V VM 灾难恢复到辅助 System Center VMM 站点所用的体系结构。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 98cc20ee8a6308350ffc142a13413bd26567a3e1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 716f8e053ad05ba701b3415946cd8d3a56044e62
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933512"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953978"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>体系结构 - 从 Hyper-V 复制到辅助站点
 
@@ -25,7 +25,7 @@ ms.locfileid: "72933512"
 
 下面的表和图提供了用于将 Hyper-V 复制到辅助站点的组件的概要视图。
 
-组件 | 要求 | **详细信息**
+**组件** | **要求** | **详细信息**
 --- | --- | ---
 **Azure** | Azure 订阅 | 在 Azure 订阅中创建恢复服务保管库，以便协调和管理不同 VMM 位置之间的复制。
 **VMM 服务器** | 需要 VMM 主位置和辅助位置。 | 我们建议在主站点和辅助站点中各提供一个 VMM 服务器。
@@ -40,25 +40,25 @@ ms.locfileid: "72933512"
 
 1. 当触发初始复制时，系统会拍摄一个 [Hyper-V VM 快照](https://technet.microsoft.com/library/dd560637.aspx)。
 2. VM 上的虚拟硬盘会逐一复制到辅助位置。
-3. 如果在初始复制期间发生磁盘更改，Hyper-V 副本复制跟踪器将跟踪这些更改，并将其记录在 Hyper-V 复制日志 (.hrl) 中。 这些日志文件位于与磁盘相同的文件夹中。 每个磁盘都有一个关联的 .hrl 文件，该文件将发送到辅助位置。 当初始复制正在进行时，快照和日志将占用磁盘资源。
+3. 如果在初始复制期间发生磁盘更改，Hyper-V 副本复制跟踪器将跟踪这些更改，并将其记录在 Hyper-V 复制日志 (.hrl) 中。 这些日志文件位于与磁盘相同的文件夹中。 每个磁盘都有一个关联的 .hrl 文件，该文件将发送到辅助位置。 当初始复制正在进行时，快照和日志文件将占用磁盘资源。
 4. 当初始复制完成时，将删除 VM 快照，并开始增量复制。
-5. 日志中的增量磁盘更改会进行同步，并合并到父磁盘中。
+5. 日志中的增量磁盘更改会同步且合并到父磁盘中。
 
 
 ## <a name="failover-and-failback-process"></a>故障转移和故障回复过程
 
 - 可以故障转移单个虚拟机，或者创建恢复计划来协调多个虚拟机的故障转移。
-- 可以在本地站点之间运行计划内或计划外故障转移。 如果运行计划的故障转移，源 VM 将关闭以确保不会丢失数据。
+- 可以在本地站点之间运行计划内或计划外故障转移。 如果运行计划内故障转移，则源 VM 关闭以确保不会丢失数据。
     - 如果执行了到辅助站点的计划外故障转移，在故障转移后辅助位置中的虚拟机将不受保护。
-    - 如果执行了计划内故障转移，在故障转移后，辅助位置中的计算机将受保护。
+    - 如果运行了计划内故障转移，在故障转移后，辅助位置中的计算机将受保护。
 - 在初始故障转移运行后，可提交它来开始访问副本 VM 中的工作负载。
 - 当主位置再次可用时，可以进行故障回复。
     - 启动反向复制以开始从辅助站点到主站点的复制。 反向复制会使虚拟机进入受保护状态，但辅助数据中心仍是活动位置。
-    - 要使主站点再次成为活动位置，可以启动从辅助站点到主站点的计划内故障转移，再次启动反向复制。
+    - 如果要使主站点再次成为活动位置，可以启动从辅助站点到主站点的计划内故障转移，并再次启动反向复制。
 
 
 
 ## <a name="next-steps"></a>后续步骤
 
 
-按照[此教程](hyper-v-vmm-disaster-recovery.md)启用 VMM 云之间的 Hyper-V 复制。
+根据[此教程](hyper-v-vmm-disaster-recovery.md)启用 VMM 云之间的 Hyper-V 复制。

@@ -1,17 +1,14 @@
 ---
 title: 策略分配结构的详细信息
 description: 描述 Azure 策略使用的策略分配定义，用于将策略定义和参数关联到资源进行评估。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: a75c64ebb6ba3eeffeccd98cf41365fe96218573
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 500e40b8d3a5943c7f64f5b190223cb1dc7b4c92
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255893"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960043"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy 分配结构
 
@@ -24,7 +21,7 @@ ms.locfileid: "72255893"
 - metadata
 - 强制模式
 - 策略定义
-- parameters
+- 参数
 
 例如，以下 JSON 显示了具有动态参数的_DoNotEnforce_模式下的策略分配：
 
@@ -50,7 +47,7 @@ ms.locfileid: "72255893"
 }
 ```
 
-所有 Azure 策略示例均在[Azure 策略示例](../samples/index.md)中。
+所有 Azure Policy 示例均位于 [Azure Policy 示例](../samples/index.md)中。
 
 ## <a name="display-name-and-description"></a>显示名称和说明
 
@@ -62,17 +59,17 @@ ms.locfileid: "72255893"
 
 此属性具有以下值：
 
-|模式 |JSON 值 |type |手动修正 |活动日志条目 |描述 |
+|Mode |JSON 值 |类型 |手动修正 |活动日志条目 |说明 |
 |-|-|-|-|-|-|
-|Enabled |默认 |string |是 |是 |策略效果在创建或更新资源的过程中强制执行。 |
-|已禁用 |DoNotEnforce |string |是 |否 | 在创建或更新资源的过程中不会强制实施策略。 |
+|已启用 |默认 |字符串 |是 |是 |策略效果在创建或更新资源的过程中强制执行。 |
+|已禁用 |DoNotEnforce |字符串 |是 |否 | 在创建或更新资源的过程中不会强制实施策略。 |
 
 如果策略或计划定义中未指定**enforcementMode** ，则使用值_Default_ 。 即使将**enforcementMode**设置为_DoNotEnforce_，也可以为[deployIfNotExists](./effects.md#deployifnotexists)策略启动[修正任务](../how-to/remediate-resources.md)。
 
 ## <a name="policy-definition-id"></a>策略定义 ID
 
 此字段必须是策略定义或计划定义的完整路径名称。
-@no__t 为字符串而不是数组。 如果经常将多个策略分配到一起，则建议使用[方案](./definition-structure.md#initiatives)。
+`policyDefinitionId` 是字符串而不是数组。 如果经常将多个策略分配到一起，则建议使用[方案](./definition-structure.md#initiatives)。
 
 ## <a name="parameters"></a>Parameters
 
@@ -90,12 +87,12 @@ ms.locfileid: "72255893"
 }
 ```
 
-在此示例中，策略定义中先前定义的参数 `prefix` 并 `suffix`。 此特定策略分配将 `prefix` 设置为**DeptA** ，并 `suffix` 到 **-LC**。 同一策略定义可与不同部门的不同参数集一起使用，从而减少策略定义的重复和复杂性，同时提供灵活性。
+在此示例中，以前在策略定义中定义的参数 `prefix` 和 `suffix`。 此特定策略分配将 `prefix` 设置为**DeptA** ，并将 `suffix` 为 **-LC**。 同一策略定义可与不同部门的不同参数集一起使用，从而减少策略定义的重复和复杂性，同时提供灵活性。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[策略定义结构](./definition-structure.md)。
-- 了解如何以[编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取相容性数据](../how-to/getting-compliance-data.md)。
+- 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
+- 了解如何[获取合规性数据](../how-to/getting-compliance-data.md)。
 - 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

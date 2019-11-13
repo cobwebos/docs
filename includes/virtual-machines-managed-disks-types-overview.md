@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 60d0425a7dbc532e856c7bf3c91065d2548c9b9a
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 45168c23964c735a4bd51ba11c2340d4ff95fed4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601381"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012429"
 ---
-# <a name="what-disk-types-are-available-in-azure"></a>Azure 有哪些可用的磁盘类型？
-
 Azure 托管磁盘当前提供四种磁盘类型，每种类型都面向特定的客户方案。
 
 ## <a name="disk-comparison"></a>磁盘比较

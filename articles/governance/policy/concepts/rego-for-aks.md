@@ -1,17 +1,14 @@
 ---
 title: 了解 azure Kubernetes Service 的 Azure 策略
 description: 了解 Azure 策略如何使用 Rego 并打开策略代理来管理 Azure Kubernetes 服务中的群集。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 248f96b4385e97605986b53bd94fd83236ec8f08
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dbac1ee762066fb59cd57c04839666026a2bd89b
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480907"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959798"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>了解 azure Kubernetes Service 的 Azure 策略
 
@@ -92,11 +89,11 @@ Azure 策略通过扩展了对[守卫](https://github.com/open-policy-agent/gate
 
 ### <a name="installing-the-add-on"></a>安装外接程序
 
-#### <a name="prerequisites"></a>必备组件
+#### <a name="prerequisites"></a>先决条件
 
 在 AKS 群集中安装外接程序之前，必须安装预览扩展。 此步骤通过 Azure CLI 来完成：
 
-1. 需要安装并配置 Azure CLI 版本2.0.62 或更高版本。 运行 `az --version` 即可查找版本。 如需安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+1. 需要安装并配置 Azure CLI 版本2.0.62 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 1. AKS 群集必须是_1.10_版或更高版本。 使用以下脚本验证 AKS 群集版本：
 
@@ -261,5 +258,5 @@ Azure 策略通过扩展了对[守卫](https://github.com/open-policy-agent/gate
 - 查看[了解策略效果](effects.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
 - 了解如何[获取合规性数据](../how-to/getting-compliance-data.md)。
-- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
+- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

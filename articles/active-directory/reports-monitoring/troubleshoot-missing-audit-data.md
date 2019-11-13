@@ -3,7 +3,7 @@ title: 排查活动日志中缺少的数据问题 |Microsoft Docs
 description: 为你提供了一种解决方法，解决在 Azure Active Directory 活动日志中缺少数据的问题。
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 7cbe4337-bb77-4ee0-b254-3e368be06db7
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 01/15/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7aeac1180292ea5200e9eabc30ee01db05b67e75
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 9c335a4d30846f7c1b4dbd6b6aedc4d100a9b43a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820855"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014289"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>故障排除：Azure Active Directory 活动日志中缺少数据 
 
@@ -38,12 +38,12 @@ ms.locfileid: "72820855"
 
 操作不会立即显示在活动日志中。 下表枚举了活动日志的延迟数字。 
 
-| 报告 | &nbsp; | 延迟 (P95) | 延迟 (P99) |
+| 报表 | &nbsp; | 延迟 (P95) | 延迟 (P99) |
 |--------|--------|---------------|---------------|
 | 目录审核 | &nbsp; | 2 分钟 | 5 分钟 |
 | 登录活动 | &nbsp; | 2 分钟 | 5 分钟 | 
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 等待 15 分钟到 2 小时，再看操作是否显示在日志中。 如果 2 小时后仍未看到日志，请[提交支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，我们会进行调查。
 
@@ -59,12 +59,12 @@ ms.locfileid: "72820855"
 
 操作不会立即显示在活动日志中。 下表枚举了活动日志的延迟数字。 
 
-| 报告 | &nbsp; | 延迟 (P95) | 延迟 (P99) |
+| 报表 | &nbsp; | 延迟 (P95) | 延迟 (P99) |
 |--------|--------|---------------|---------------|
 | 目录审核 | &nbsp; | 2 分钟 | 5 分钟 |
 | 登录活动 | &nbsp; | 2 分钟 | 5 分钟 | 
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 等待 15 分钟到 2 小时，再看操作是否显示在日志中。 如果 2 小时后仍未看到日志，请[提交支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，我们会进行调查。
 
@@ -80,14 +80,14 @@ ms.locfileid: "72820855"
 
 根据你持有的许可证，Azure Active Directory 操作会按以下持续时间存储活动报告：
 
-| 报告           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| 报表           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | ---              | ----   |  ---           | ---                 | ---                 |
 | 目录审核  | &nbsp; |   7 天     | 30 天             | 30 天             |
 | 登录活动 | &nbsp; | 不可用。 可以在单个用户配置文件边栏选项卡中访问自己在 7 天内的登录活动 | 30 天 | 30 天             |
 
 有关详细信息，请参阅 [Azure Active Directory 报告保留策略](reference-reports-data-retention.md)。  
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 可以通过两个选项将数据保留 30 天以上。 可以使用 [Azure AD 报告 API](concept-reporting-api.md) 以编程方式检索数据并将其存储在数据库中。 也可将审核日志集成到第三方 SIEM 系统（例如 Splunk 或 SumoLogic）中。
 

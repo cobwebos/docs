@@ -7,14 +7,14 @@ author: zr-msft
 ms.author: zarhoads
 ms.date: 09/25/2019
 ms.topic: conceptual
-description: 使用 Azure 上的容器和微服务进行快速的 Kubernetes 开发
+description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: e145c234c7fc0bc7b9263f40f22d3fd90c1b7250
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 0afdc0ac246e4cacbd4f45cca36c3c57b1c26e02
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064120"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005990"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
@@ -94,6 +94,10 @@ azure-cli                         2.0.60 *
 
 若要解决此问题，请将[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)安装更新到2.0.63 或更高版本。 此更新将解决在 `az aks use-dev-spaces`运行时收到的错误消息。 或者，你可以继续使用当前版本的 Azure CLI 和 Azure Dev Spaces CLI。
 
+### <a name="aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>已启用 API 服务器授权 IP 地址范围的 AKS 群集
+
+如果已为 AKS 群集启用[API 服务器授权的 IP 地址范围](../aks/api-server-authorized-ip-ranges.md)，则还必须[创建](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled)或[更新](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges)群集，以[允许基于你的区域的其他范围](https://github.com/Azure/dev-spaces/tree/master/public-ips)。
+
 ## <a name="common-issues-when-preparing-your-project-for-azure-dev-spaces"></a>为 Azure Dev Spaces 准备项目时遇到的常见问题
 
 ### <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>警告 "由于语言不受支持，无法生成 Dockerfile"
@@ -119,7 +123,7 @@ Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 当使用以这些语�
 
 当你尝试使用 Dev 空间运行配置为在[AKS 虚拟节点](https://docs.microsoft.com/azure/aks/virtual-nodes-portal)上运行的服务时，将发生此超时。 开发人员空间目前不支持在虚拟节点上构建或调试服务。
 
-如果使用 `--verbose` 开关运行 `azds up`，或在 Visual Studio 中启用详细日志记录，便会看到其他详细信息：
+如果使用 `azds up` 开关运行 `--verbose`，或在 Visual Studio 中启用详细日志记录，便会看到其他详细信息：
 
 ```cmd
 $ azds up --verbose
@@ -143,7 +147,7 @@ Container image build failed
 
 若要解决此问题，请重新启动群集中的代理节点。
 
-### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>错误 "release azds-\<标识符\>-\<spacename\>-\<servicename\> 失败：服务"\<servicename\>' 已存在 "或" 对 \<servicename 拒绝请求访问权限 "\>，存储库不存在，或者可能需要 "docker login"
+### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>错误 "release azds-\<标识符\>-\<spacename\>-\<servicename\> 失败：服务"\<servicename\>"已存在" 或 "拒绝请求 \<servicename\>，存储库不存在，或者可能需要" docker login "
 
 如果在同一开发人员空间内混合运行直接 Helm 命令（例如 `helm install`、`helm upgrade`或 `helm delete`）和 Dev Spaces 命令（如 `azds up` 和 `azds down`），则可能会发生这些错误。 之所以发生这种情况，是因为 Dev 空间有自己的 Tiller 实例，这与您在同一 Dev 空间中运行的自己的 Tiller 实例冲突。
 
@@ -285,7 +289,7 @@ Service cannot be started.
 
 运行 Visual Studio Code 调试程序时，可能会看到此错误。 默认情况下，VS Code 扩展使用 `src` 作为项目在容器上的工作目录。 如果你已更新了 `Dockerfile` 来指定一个不同的工作目录，则可能会看到此错误。
 
-若要解决此问题，请更新项目文件夹的 `.vscode` 子目录下的 `launch.json` 文件。 更改 `configurations->cwd` 指令，以指向与在项目的 `Dockerfile` 中定义的 `WORKDIR` 相同的目录。 可能还需要更新 `configurations->program` 指令。
+若要解决此问题，请更新项目文件夹的 `.vscode` 子目录下的 `launch.json` 文件。 更改 `configurations->cwd` 指令，以指向与在项目的 `WORKDIR` 中定义的 `Dockerfile` 相同的目录。 可能还需要更新 `configurations->program` 指令。
 
 ### <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>错误： "管道程序 ' azds ' 意外退出，代码为126。"
 
@@ -295,9 +299,9 @@ Service cannot be started.
 
 ### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>将调试附加到 node.js 应用程序时出现错误 "内部监视失败：监视 ENOSPC"
 
-如果正在使用调试器附加到的 node.js 应用程序的节点已超过*inotify _user_watches*值，则会出现此错误。 在某些情况下， [ *inotify _user_watches*的默认值可能太小，无法直接将调试器附加到 pod](https://github.com/Azure/AKS/issues/772)。
+如果正在使用调试程序尝试附加到的 node.js 应用程序的节点的节点已超过*max_user_watches inotify* ，则会出现此错误。 在某些情况下， [ *max_user_watches inotify*的默认值可能太小，无法直接将调试器附加到 pod](https://github.com/Azure/AKS/issues/772)。
 
-此问题的一种临时解决方法是增加群集中每个节点上的*inotify _user_watches*的值，然后重新启动该节点以使更改生效。
+此问题的一种临时解决方法是增加群集中每个节点上的*max_user_watches inotify*的值，然后重新启动该节点以使更改生效。
 
 ## <a name="other-common-issues"></a>其他常见问题
 

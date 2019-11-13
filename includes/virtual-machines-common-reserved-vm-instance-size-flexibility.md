@@ -4,25 +4,23 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11-20-2018
-ms.openlocfilehash: a98a941477fc83a104b55ed91f457c5a48f90d59
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 9a7de2b41c8016bdb7849cdef428d6f54a8ccf64
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69029746"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005456"
 ---
-# <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>虚拟机预留实例的虚拟机大小灵活性
-
-使用为实例大小灵活性优化的保留虚拟机实例, 你购买的预订可应用于同一实例大小灵活性组中的虚拟机 (Vm) 大小。 例如, 如果你购买了 DSv2 系列中列出的 VM 大小的保留, 如 Standard_DS5_v2, 则预订折扣适用于同一实例大小灵活性组中列出的其他四种大小:
+使用为实例大小灵活性优化的保留虚拟机实例，你购买的预订可应用于同一实例大小灵活性组中的虚拟机（Vm）大小。 例如，如果购买了 DSv2 系列中列出的 VM 大小的保留，如 Standard_DS5_v2，则预订折扣可以应用于同一实例大小灵活性组中列出的其他四种大小：
 
 - Standard_DS1_v2
 - Standard_DS2_v2
 - Standard_DS3_v2
 - Standard_DS4_v2
 
-但预订折扣不适用于不同实例大小灵活性组中列出的 Vm 大小, 如 DSv2 系列中的 Sku 高内存:Standard_DS11_v2、Standard_DS12_v2 等。
+但预订折扣不适用于不同实例大小灵活性组中列出的 Vm 大小，如 DSv2 系列中的 Sku 高内存： Standard_DS11_v2、Standard_DS12_v2 等。
 
-在 "实例大小" 灵活性组内, 预订折扣适用的 Vm 数取决于你在购买预订时选择的 VM 大小。 也取决于运行的 VM 的大小。 比值列比较该实例大小灵活性组中每个 VM 大小的相对占用量。 请使用比率值来计算如何将预留折扣应用到运行的 VM。
+在 "实例大小" 灵活性组内，预订折扣适用的 Vm 数取决于你在购买预订时选择的 VM 大小。 也取决于运行的 VM 的大小。 比值列比较该实例大小灵活性组中每个 VM 大小的相对占用量。 请使用比率值来计算如何将预留折扣应用到运行的 VM。
 
 ## <a name="examples"></a>示例
 
@@ -42,4 +40,4 @@ ms.locfileid: "69029746"
 
 [实例大小灵活性比率](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv)
 
-我们会保持文件 URL 和架构是固定的, 以便可以通过编程方式使用此文件。 此外, 还可以通过 API 获取数据。
+我们会保持文件 URL 和架构是固定的，以便可以通过编程方式使用此文件。 此外，还可以通过 API 获取数据。

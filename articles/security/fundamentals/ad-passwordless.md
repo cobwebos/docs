@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 0fbd8404e326ecc6fabef8c89991009809b1448b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 78f8b7097060f1091bfed30722c9ea456feed384
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820515"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007281"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>没有密码的世界 Azure Active Directory
 
@@ -24,7 +24,7 @@ ms.locfileid: "73820515"
 
 本文旨在帮助你了解和实现 Microsoft 的无密码解决方案，并帮助你在以下一个或多个选项之间进行选择：
 
-* **Windows Hello 企业版**。 在 Windows 10 中，Windows Hello 企业版将密码替换为 Pc 和移动设备上的强双重身份验证。 这种身份验证包括一种与设备绑定的新型用户凭据，并使用生物识别技术或 PIN。
+* **Windows Hello 企业版**。 在 Windows 10 中，Windows Hello 企业版将密码替换为 Pc 和移动设备上的强双重身份验证。 此身份验证包含一种新类型的用户凭据，该凭据绑定到设备并使用生物识别识别或 PIN。
 
 * **无密码登录 Microsoft Authenticator**。 Microsoft Authenticator 应用可用于登录到 Azure AD 帐户，而无需使用密码。 类似于 Windows Hello 企业版，Microsoft Authenticator 使用基于密钥的身份验证来启用绑定到设备并使用生物识别或 PIN 的用户凭据。
 
@@ -293,8 +293,8 @@ FIDO2 安全密钥提供安全的身份验证，而不考虑其外观。 安全�
 
 |增添|方案|环境|无密码技术|
 |:-|:-|:-|:-|
-|**Admin**|安全访问设备以执行管理任务|分配的 Windows 10 设备|Windows Hello 企业版和/或 FIDO2 安全密钥|
-|**Admin**|非 Windows 设备上的管理任务| 移动或非 windows 设备|无密码 Microsoft Authenticator 应用登录|
+|**管理员**|安全访问设备以执行管理任务|分配的 Windows 10 设备|Windows Hello 企业版和/或 FIDO2 安全密钥|
+|**管理员**|非 Windows 设备上的管理任务| 移动或非 windows 设备|无密码 Microsoft Authenticator 应用登录|
 |**信息工作者**|工作效率|分配的 Windows 10 设备|Windows Hello 企业版和/或 FIDO2 安全密钥|
 |**信息工作者**|工作效率| 移动或非 windows 设备|无密码 Microsoft Authenticator 应用登录|
 |**前端工作线程**|工厂、植物、零售或数据输入中的网亭|共享 Windows 10 设备|FIDO2 安全密钥|

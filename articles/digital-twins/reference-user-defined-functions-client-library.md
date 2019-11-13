@@ -1,5 +1,5 @@
 ---
-title: Azure 数字孪生用户定义函数引用 |Microsoft Docs
+title: 用户定义函数客户端库引用-Azure 数字孪生 |Microsoft Docs
 description: Azure 数字孪生用户定义函数客户端库参考。
 ms.author: alinast
 author: alinamstanciu
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: article
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: daab63067087267c12cef75178b5f974043e0fd9
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 0bbf247adbeab89cf8b16ed089eb13e53cf501f5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931246"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009224"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>用户定义函数客户端库参考
 
@@ -221,7 +221,7 @@ ms.locfileid: "73931246"
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | 传感器标识符 |
 | *dataType*  | `string` | 传感器数据类型 |
-| *value*  | `string` | 值 |
+| value  | `string` | 值 |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue(spaceId, dataType, value)
 
@@ -233,7 +233,7 @@ ms.locfileid: "73931246"
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 | *dataType* | `string` | 数据类型 |
-| *value* | `string` | 值 |
+| value | `string` | 值 |
 
 ### <a name="logmessage"></a>log(message)
 

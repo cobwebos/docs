@@ -1,17 +1,14 @@
 ---
 title: 了解部署排序顺序
 description: 了解蓝图定义经历的生命周期，以及有关每个阶段的详细信息。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/22/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: bda7a6caea931a993a6ddd6731688792bf0b3948
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 87eff48f977f0308fea563090a44ff0b301909a9
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981013"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960439"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>了解 Azure 蓝图中的部署排序
 
@@ -55,7 +52,7 @@ JSON 示例中的有些变量需要用自己的值替换：
 
 ### <a name="example---ordered-resource-group"></a>示例-有序资源组
 
-此示例蓝图定义具有一个资源组，该资源组定义了一个自定义的排序顺序，方法是将一个值指定为 `dependsOn` 以及标准资源组。 在这种情况下，名为“assignPolicyTags”的项目将在“ordered-rg”资源组之前进行处理。
+此示例蓝图定义具有一个资源组，该资源组定义了一个自定义的排序顺序，方法是将 `dependsOn`的值与标准资源组一起声明。 在这种情况下，名为“assignPolicyTags”的项目将在“ordered-rg”资源组之前进行处理。
 standard-rg 将按默认排序顺序进行处理。
 
 ```json

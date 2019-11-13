@@ -1,20 +1,19 @@
 ---
-title: 使用 Azure Site Recovery 管理配置服务器，以便进行 VMware 和物理服务器灾难恢复 | Microsoft Docs
-description: 本文介绍如何使用 Azure Site Recovery 管理现有配置服务器，以便将 VMware VM 和物理服务器灾难恢复到 Azure。
+title: 管理配置服务器以进行灾难恢复，Azure Site Recovery
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 42e1e283736d8a1e3d4ece33c861185df2d72da7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 93b10d56ae34ebdfe78dd20705634dea58721274
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791824"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954360"
 ---
-# <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>为 VMware VM 灾难恢复管理配置服务器
+# <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>为 VMware VM/物理服务器灾难恢复管理配置服务器
 
 使用 [Azure Site Recovery](site-recovery-overview.md) 进行 VMware VM 和物理服务器到 Azure 的灾难恢复时，需要设置本地配置服务器。 配置服务器协调本地 VMware 与 Azure 之间的通信并管理数据复制。 本文概述了在部署配置服务器后对其进行管理时要执行的常见任务。
 
@@ -185,23 +184,23 @@ ms.locfileid: "72791824"
   ```
 
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
-|参数名| Type | 描述| 值|
+|参数名称| 类型 | 说明| 值|
 |-|-|-|-|
-| /ServerMode|需要|指定是要同时安装配置服务器和进程服务器，还是只安装进程服务器|CS<br>PS|
-|/InstallLocation|需要|用于安装组件的文件夹| 计算机上的任意文件夹|
-|/MySQLCredsFilePath|需要|MySQL 服务器凭据存储到的文件路径|文件应采用以下指定格式|
-|/VaultCredsFilePath|需要|保管库凭据文件的路径|有效的文件路径|
-|/EnvType|需要|要保护的环境类型 |VMware<br>NonVMware|
-|/PSIP|需要|要用于复制数据传输的 NIC 的 IP 地址| 任何有效的 IP 地址|
-|/CSIP|需要|配置服务器侦听时所在的 NIC 的 IP 地址| 任何有效的 IP 地址|
-|/PassphraseFilePath|需要|通行短语文件位置的完整路径|有效的文件路径|
+| /ServerMode|必选|指定是要同时安装配置服务器和进程服务器，还是只安装进程服务器|CS<br>PS|
+|/InstallLocation|必选|用于安装组件的文件夹| 计算机上的任意文件夹|
+|/MySQLCredsFilePath|必选|MySQL 服务器凭据存储到的文件路径|文件应采用以下指定格式|
+|/VaultCredsFilePath|必选|保管库凭据文件的路径|有效的文件路径|
+|/EnvType|必选|要保护的环境类型 |VMware<br>NonVMware|
+|/PSIP|必选|要用于复制数据传输的 NIC 的 IP 地址| 任何有效的 IP 地址|
+|/CSIP|必选|配置服务器侦听时所在的 NIC 的 IP 地址| 任何有效的 IP 地址|
+|/PassphraseFilePath|必选|通行短语文件位置的完整路径|有效的文件路径|
 |/BypassProxy|可选|指定配置服务器不使用代理连接到 Azure|若要从 Venu 获取此值|
 |/ProxySettingsFilePath|可选|代理设置（默认代理需要身份验证，或自定义代理）|文件应采用以下指定格式|
 |DataTransferSecurePort|可选|PSIP 上用于复制数据的端口号| 有效端口号（默认值为 9433）|
 |/SkipSpaceCheck|可选|跳过缓存磁盘的空间检查| |
-|/AcceptThirdpartyEULA|需要|该标志表示接受第三方 EULA| |
+|/AcceptThirdpartyEULA|必选|该标志表示接受第三方 EULA| |
 |/ShowThirdpartyEULA|可选|显示第三方 EULA。 如果作为输入提供，将忽略所有其他参数| |
 
 
@@ -231,7 +230,7 @@ ProxyPassword="Password"
 1. 对配置服务器下的所有 VM [禁用保护](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)。
 2. 从配置服务器中[取消关联](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)和[删除](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)所有复制策略。
 3. [删除](vmware-azure-manage-vcenter.md#delete-a-vcenter-server)与配置服务器关联的所有 vCenters 服务器/vSphere 主机。
-4. 在保管库中，打开“Site Recovery 基础结构” > “配置服务器”。
+4. 在保管库中，打开“Site Recovery 基础结构” **“配置服务器”。**  > 
 5. 选择要删除的配置服务器。 然后，在“详细信息”页上，选择“删除”。
 
     ![删除配置服务器](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
@@ -262,7 +261,7 @@ ProxyPassword="Password"
     `Remove-AzSiteRecoveryFabric -Fabric $fabric [-Force]`
 
 > [!NOTE]
-> 可以使用 AzSiteRecoveryFabric 中的 **-Force**选项来强制删除配置服务器。
+> 可使用 Remove-AzSiteRecoveryFabric 中的 -Force 选项强制删除配置服务器。
 
 ## <a name="generate-configuration-server-passphrase"></a>生成配置服务器通行短语
 
@@ -285,16 +284,16 @@ ProxyPassword="Password"
 
 ### <a name="renew-the-certificate"></a>续订证书
 
-1. 在保管库中，打开“Site Recovery 基础结构” > “配置服务器”。 选择所需的配置服务器。
+1. 在保管库中，打开“Site Recovery 基础结构” **“配置服务器”。**  >  选择所需的配置服务器。
 2. 到期日期显示在“配置服务器运行状况”下。
 3. 选择“续订证书”。
 
 ## <a name="refresh-configuration-server"></a>刷新配置服务器
 
-1. 在 Azure 门户中，导航至“恢复服务保管库” > “管理” > “站点恢复基础结构” > “对于 VMware 和物理机” > “配置服务器”
+1. 在 Azure 门户中，导航至“恢复服务保管库” **“管理”** “站点恢复基础结构” > “对于 VMware 和物理机” **“配置服务器”**  >  >  > 
 2. 单击要刷新的配置服务器。
-3. 在包含所选配置服务器详细信息的边栏选项卡上，单击“更多” > “刷新服务器”。
-4. 在“恢复服务保管库” > “监控” > “站点恢复作业”下监控作业进度。
+3. 在包含所选配置服务器详细信息的边栏选项卡上，单击“更多” **“刷新服务器”**  > 。
+4. 在“恢复服务保管库” **“监控”** “站点恢复作业”下监控作业进度 >  > 。
 
 ## <a name="failback-requirements"></a>故障回复要求
 

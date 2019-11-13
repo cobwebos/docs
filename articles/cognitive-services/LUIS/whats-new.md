@@ -1,7 +1,7 @@
 ---
 title: 新增功能 - 语言理解 (LUIS)
 titleSuffix: Azure Cognitive Services
-description: 本文包含有关语言理解的新闻。
+description: 本文会定期更新，其中包含有关 Azure 认知服务语言理解 API 的新闻。
 author: diberry
 manager: nitinme
 ms.custom: experiment-luis-0519
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: diberry
-ms.openlocfilehash: 2e32d0f4906dea69d6eab27faca4a2e41106ed73
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 62ce0ac36223098d013cc75b7f62fc2c68e358ed
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73836836"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953392"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
-了解该服务中的新增功能。 这些项包括发行说明、视频、博客文章和其他类型的信息。 将此页添加为书签，以便及时了解该服务。  
+了解服务中的新增功能。 这些项包括发行说明、视频、博客文章和其他类型的信息。 将此页加入书签，以随时了解服务的最新信息。  
 
 ## <a name="release-notes"></a>发行说明 
 
@@ -90,4 +90,4 @@ ms.locfileid: "73836836"
 
 ## <a name="service-updates"></a>服务更新
 
-[有关认知服务的 Azure 更新公告](https://azure.microsoft.com/updates/?product=cognitive-services)
+[认知服务的 Azure 更新公告](https://azure.microsoft.com/updates/?product=cognitive-services)

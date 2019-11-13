@@ -1,18 +1,18 @@
 ---
-title: 设置 IP 寻址以在故障转移后连接到辅助本地站点 Azure Site Recovery
+title: 使用 Azure Site Recovery 在故障转移到辅助站点后设置 IP 寻址
 description: 介绍如何设置 IP 寻址以在使用 Azure Site Recovery 灾难恢复和故障转移后连接到辅助本地站点中的 VM。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: f158c6b71bb53d6b683577401e625e24808eb7eb
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a61f7ff69e648262eb721eb61a98b09dbbee924c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813678"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961429"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>设置 IP 寻址以在故障转移后连接到辅助本地站点
 
@@ -61,18 +61,18 @@ ms.locfileid: "70813678"
 下图说明故障转移前后的子网：
 
 
-故障转移前
+**故障转移之前**
 
 ![在故障转移之前](./media/hyper-v-vmm-networking/network-design2.png)
 
-故障转移后
+**故障转移之后**
 
 ![在故障转移之后](./media/hyper-v-vmm-networking/network-design3.png)
 
 故障转移后，Site Recovery 为 VM 上的每个网络接口分配 IP 地址。 将为每个 VM 实例从相关网络中的静态 IP 地址池中分配地址。
 
 - 如果辅助站点的 IP 地址池与源站点的 IP 地址池相同，Site Recovery 将向副本 VM 分配与源 VM 相同的 IP 地址。 IP 地址保留在 VMM 中，但未设置为 Hyper-V 主机上的故障转移 IP 地址。 Hyper-V 主机上的故障转移 IP 地址会在故障转移之前设置。
-- 如果相同 IP 地址不可用，Site Recovery 将分配该池中的另一可用 IP 地址。
+- 如果相同 IP 地址不可用，Site Recovery 会分配该池中的另一可用 IP 地址。
 - 如果 VM 使用 DHCP，则 Site Recovery 不管理 IP 地址。 需要检查确定辅助站点上的 DHCP 服务器可分配与源站点相同范围的地址。
 
 ### <a name="validate-the-ip-address"></a>验证 IP 地址
@@ -88,7 +88,7 @@ ms.locfileid: "70813678"
 
 ## <a name="use-a-different-ip-address"></a>使用不同 IP 地址
 
-在此方案中，将更改故障转移的 VM 的 IP 地址。 此解决方案的缺点是需要维护。  DNS 和缓存条目可能需要更新。 这可能导致停机时间，可按以下方式进行缓解：
+在此方案中，会更改故障转移的 VM 的 IP 地址。 此解决方案的缺点是需要维护。  DNS 和缓存条目可能需要更新。 这可能导致停机时间，可按以下方式进行缓解：
 
 - 对 Intranet 应用程序使用低 TTL 值。
 - 在 Site Recovery 恢复计划中使用以下脚本及时更新 DNS 服务器。 如果使用动态 DNS 注册，则不需要该脚本。
@@ -112,15 +112,15 @@ ms.locfileid: "70813678"
 - 故障转移之前，应用托管于主站点上的子网 192.168.1.0/24。
 - 故障转移之后，应用在辅助站点的子网 172.16.1.0/24 中配置。
 - 所有三个站点均可以互相访问。
-- 故障转移后，应用将在恢复子网中还原。
+- 故障转移后，应用会在恢复子网中还原。
 - 在此方案中，无需故障转移整个子网，并且无需进行重新配置 VPN 或网络路由的更改。 故障转移和部分 DNS 更新会确保应用程序仍然可供访问。
 - 如果 DNS 配置为允许动态更新，则 VM 会在故障转移后启动时使用新的 IP 地址自行注册。
 
-故障转移前
+**故障转移之前**
 
 ![不同的 IP 地址 - 故障转移前](./media/hyper-v-vmm-networking/network-design10.png)
 
-故障转移后
+**故障转移之后**
 
 ![不同的 IP 地址 - 故障转移后](./media/hyper-v-vmm-networking/network-design11.png)
 

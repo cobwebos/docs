@@ -3,7 +3,7 @@ title: 如何安装和使用 log analytics 视图 |Microsoft Docs
 description: 了解如何安装和使用 log analytics 视图进行 Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 2290de3c-2858-4da0-b4ca-a00107702e26
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00bca8bca19f9a71c4eeb639017845987682661f
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b17026e4cfbe69e36c8e459aa259fe16b1c9d80d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820911"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014417"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>安装和使用用于 Azure Active Directory 的日志分析视图
 
@@ -31,7 +31,7 @@ Azure Active Directory 日志分析视图可以帮助你分析和搜索 Azure AD
 * 审核日志：可以通过[审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
 * 登录日志：可以通过[登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志中报告的任务。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要使用日志分析视图，需要执行以下操作：
 
@@ -59,7 +59,7 @@ Azure Active Directory 日志分析视图可以帮助你分析和搜索 Azure AD
     ![详细信息](./media/howto-install-use-log-analytics-views/details.png)
 
 
-4. 选择“设置警报”，然后选择“警报条件”部分下的“每当自定义日志搜索为逻辑未定义”&lt;&gt;。 由于我们希望在每当发生登录错误时发出警报，因此将默认警报逻辑的阈值设置为 1 并选择“完成”。 
+4. 选择“设置警报”，然后选择“警报条件”部分下的“每当自定义日志搜索为逻辑未定义” **&lt;&gt;** 。 由于我们希望在每当发生登录错误时发出警报，因此将默认警报逻辑的阈值设置为 1 并选择“完成”。 
 
     ![配置信号逻辑](./media/howto-install-use-log-analytics-views/configure-signal-logic.png)
 

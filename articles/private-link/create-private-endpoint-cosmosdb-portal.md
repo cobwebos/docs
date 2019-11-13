@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sngun
-ms.openlocfilehash: 80a0a3440a7fb5d056d1d76fb9d82931721b6e16
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 32595e561736b5f22f109d0caff1f3990300d2bc
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514207"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007334"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>使用 Azure Private Link 将专用连接到 Azure Cosmos 帐户
 
@@ -35,12 +35,12 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 名称 | 输入*MyVirtualNetwork*。 |
+    | 名称 | 输入 *MyVirtualNetwork*。 |
     | 地址空间 | 输入 10.1.0.0/16。 |
     | 订阅 | 选择订阅。|
     | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”。 |
-    | 位置 | 选择**WestCentralUS**。|
-    | 子网 - 名称 | 输入*mySubnet*。 |
+    | 位置 | 选择“WestCentralUS”。|
+    | 子网 - 名称 | 输入 *mySubnet*。 |
     | 子网 - 地址范围 | 输入 10.1.0.0/24。 |
     |||
 
@@ -58,10 +58,10 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
     | 订阅 | 选择订阅。 |
     | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。  |
     | **实例详细信息** |  |
-    | 虚拟机名称 | 输入*myVm*。 |
-    | 区域 | 选择**WestCentralUS**。 |
+    | 虚拟机名称 | 输入 *myVm*。 |
+    | 区域 | 选择“WestCentralUS”。 |
     | 可用性选项 | 保留默认值“不需要基础结构冗余”。 |
-    | 映像 | 选择**Windows Server 2019 Datacenter**。 |
+    | 映像 | 选择“Windows Server 2019 Datacenter”。 |
     | 大小 | 保留默认值“标准 DS1 v2”。 |
     | **管理员帐户** |  |
     | 用户名 | 输入所选的用户名。 |
@@ -81,12 +81,12 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 虚拟网络 | 保留默认**MyVirtualNetwork**。  |
-    | 地址空间 | 保留默认的 " **10.1.0.0/24**"。|
-    | 子网 | 保留默认**mySubnet （10.1.0.0/24）** 。|
+    | 虚拟网络 | 保留默认值“MyVirtualNetwork”。  |
+    | 地址空间 | 保留默认值“10.1.0.0/24”。|
+    | 子网 | 保留默认值“mySubnet (10.1.0.0/24)”。|
     | 公共 IP | 保留默认值“(new) myVm-ip”。 |
     | 公共入站端口 | 选择“允许所选端口”。 |
-    | 选择入站端口 | 选择“HTTP”和“RDP”。|
+    | 选择入站端口 | 选择 HTTP 和 RDP。|
     ||
 
 1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
@@ -99,17 +99,17 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 
 ## <a name="create-a-private-endpoint-for-your-azure-cosmos-account"></a>创建 Azure Cosmos 帐户的专用终结点
 
-创建 Azure Cosmos 帐户的专用链接，如使用链接项目的[Azure 门户部分创建专用链接](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-link-using-the-azure-portal)中所述。
+创建 Azure Cosmos 帐户的专用链接，如使用链接项目的[Azure 门户部分创建专用链接](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-the-azure-portal)中所述。
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
 从 internet 连接到 VM *myVm* ，如下所示：
 
-1. 在门户的搜索栏中，输入 " *myVm*"。
+1. 在门户的搜索栏中，输入 *myVm*。
 
 1. 选择“连接”按钮。 选择“连接”按钮后，“连接到虚拟机”随即打开。
 
-1. 选择“下载 RDP 文件”。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
+1. 选择“下载 RDP 文件”。 Azure 创建远程桌面协议 (.rdp) 文件，并下载到计算机。
 
 1. 打开下载的 *.rdp* 文件。
 
@@ -168,7 +168,7 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 
 使用完专用终结点、Azure Cosmos 帐户和 VM 后，请删除资源组及其包含的所有资源： 
 
-1. 在门户顶部的**搜索**框中输入 " *myResourceGroup* "，然后从搜索结果中选择 " *myResourceGroup* "。
+1. 在门户顶部的“搜索”框中输入“myResourceGroup” **  ，然后从搜索结果中选择“myResourceGroup”。 **  
 
 1. 选择“删除资源组”。
 

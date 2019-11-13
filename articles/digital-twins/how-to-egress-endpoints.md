@@ -1,6 +1,6 @@
 ---
-title: Azure 数字孪生中的出口和终结点 | Microsoft Docs
-description: 有关如何使用 Azure 数字孪生创建终结点的指南。
+title: 出口和终结点-Azure 数字孪生 |Microsoft Docs
+description: 了解如何在 Azure 数字孪生中创建和传出事件终结点。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,14 +8,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 9a5e060d6248d3144720930fe960e0a371a73d6e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 33e8a6a281fbc6620a4608c7b0821b196043423e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822268"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010056"
 ---
-# <a name="egress-and-endpoints"></a>出口和终结点
+# <a name="egress-and-endpoints-in-azure-digital-twins"></a>Azure 数字孪生中的出口和终结点
 
 Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件代理。 可以将事件和消息发送到 Azure 事件中心、Azure 事件网格和 Azure 服务总线主题。
 
@@ -53,7 +53,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 | subject | 字符串 | 事件主题的发布者定义路径。 |
 | 数据 | 对象 | 特定于资源提供程序的事件数据。 |
 | eventType | 字符串 | 此事件源的一个注册事件类型。 |
-| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
+| eventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
 | dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |

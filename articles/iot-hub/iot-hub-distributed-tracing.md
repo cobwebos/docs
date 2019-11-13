@@ -1,5 +1,5 @@
 ---
-title: 使用分布式跟踪（预览版）将关联 ID 添加到 IoT 消息
+title: 将相关 Id 添加到带有分布式跟踪的 IoT 消息（pre）
 description: 了解如何使用分布式跟踪功能在解决方案使用的 Azure 服务中跟踪 IoT 消息。
 author: jlian
 manager: briz
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: a6e7d2dc9b6274c07fda011bff8ec9dc59f74f95
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 835a359d3b5781ad814e423e4a69e8d60379c97b
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889441"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953151"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>使用分布式跟踪（预览版）跟踪 Azure IoT 设备到云的消息
 
@@ -30,7 +30,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 本文将[适用于 C 的 Azure IoT 设备 SDK](iot-hub-device-sdk-c-intro.md) 与分布式跟踪配合使用。 对其他 SDK 的分布式跟踪支持仍在开发中。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 分布式跟踪预览版目前仅支持在以下区域中创建的 IoT 中心：
 
@@ -166,7 +166,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
     Debug/iothub_ll_telemetry_sample.exe
     ```
 
-1. 保持运行该应用。 （可选）通过查看控制台窗口来观察正在发送到 IoT 中心的消息。
+1. 使应用保持运行状态。 （可选）通过查看控制台窗口来观察正在发送到 IoT 中心的消息。
 
 <!-- For a client app that can receive sampling decisions from the cloud, check out [this sample](https://aka.ms/iottracingCsample).  -->
 

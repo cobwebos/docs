@@ -1,17 +1,14 @@
 ---
 title: 策略定义结构的详细信息
 description: 介绍 Azure Policy 如何使用资源策略定义，通过描述何时强制实施策略和要实现的效果为组织中的资源建立约定。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: d415075bda4ff58d4a3a633fe820f22d8a157459
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 50edf2941aeb24d800752eec1e93f69abf4211ea
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464026"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959999"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -22,12 +19,12 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 使用 JSON 创建策略定义。 策略定义包含以下项的元素：
 
-- mode
+- 模式
 - 参数
 - 显示名称
 - description
 - 策略规则
-  - 逻辑求值
+  - 逻辑评估
   - 效果
 
 例如，以下 JSON 说明限制资源部署位置的策略：
@@ -93,7 +90,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 > [!NOTE]
 > 资源提供程序模式仅支持内置策略定义，并在预览时不支持计划。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>Parameters
 
 参数可减少策略定义的数量，有助于简化策略管理。 使用类似窗体中字段的参数 - `name`、`address`、`city`、`state`。 这些参数始终不变，但其值会基于窗体中的各填写内容变化。
 构建策略时，参数同样适用。 如果在策略定义中包括参数，就可以通过使用不同的值重新使用策略以执行不同方案。
@@ -278,7 +275,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
   - 此括号语法通过双撇号进行转义，可支持在其中包含撇号的标记名称。
   - 其中“**tagName\<”是要验证其条件的标记的名称\>** 。
   - 示例： `tags['''My.Apostrophe.Tag''']`，其中 **"My. tag"** 是标记的名称。
-- 属性别名 - 若要查看列表，请参阅[别名](#aliases)。
+- 属性别名 - 有关列表，请参阅[别名](#aliases)。
 
 > [!NOTE]
 > `tags.<tagName>``tags[tagName]` 和 `tags[tag.with.dots]` 仍然是可接受的用于声明标记字段的方式。 但是，首选表达式是上面列出的那些。
@@ -457,7 +454,7 @@ Azure Policy 支持以下类型的效果：
 
 ## <a name="aliases"></a>别名
 
-可以使用属性别名来访问资源类型的特定属性。 通过别名，可限制允许用于资源属性的值和条件。 每个别名会映射到给定资源类型不同 API 版本的路径。 在策略评估期间，策略引擎会获取该 API 版本的属性路径。
+使用属性别名来访问资源类型的特定属性。 通过别名，可限制允许用于资源属性的值和条件。 每个别名会映射到给定资源类型不同 API 版本的路径。 在策略评估期间，策略引擎会获取该 API 版本的属性路径。
 
 别名列表始终不断增长。 若要找出 Azure Policy 当前支持哪些别名，请使用以下方法之一：
 
@@ -608,5 +605,5 @@ Azure Policy 支持以下类型的效果：
 - 查看[了解策略效果](effects.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
 - 了解如何[获取合规性数据](../how-to/getting-compliance-data.md)。
-- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
+- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

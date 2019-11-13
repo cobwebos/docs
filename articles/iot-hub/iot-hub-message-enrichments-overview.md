@@ -1,6 +1,6 @@
 ---
 title: Azure IoT 中心消息扩充概述
-description: Azure IoT 中心消息的消息扩充概述
+description: 本文介绍消息根据，它使 IoT 中心能够在消息发送到指定终结点之前，将消息标记为包含附加信息。
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 40ce5c4f73daac2b88d3a59e46d43dba10db0954
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 83114023eb35221bfa53e3ce4de8a861948c7a3a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177992"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005828"
 ---
-# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>设备到云 IoT 中心消息的消息扩充（预览版）
+# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>用于设备到云的 IoT 中心消息的消息根据
 
 “消息扩充”是 IoT 中心在将消息发送到指定的终结点之前，使用附加的信息为消息添加戳记的功能。 使用消息扩充的原因之一是包含可用于简化下游处理的数据。 例如，使用设备孪生标记扩充设备遥测消息可以减少客户对此信息发出设备孪生 API 调用所造成的负载。
 
@@ -82,10 +82,6 @@ ms.locfileid: "72177992"
 
 使用消息扩充不会产生额外的费用。 目前，将消息发送到 IoT 中心需要付费。 即使消息要发往多个终结点，也只需支付该消息的费用一次。
 
-## <a name="availability"></a>可用性
-
-此功能目前以预览版提供，可在除美国东部、美国西部、西欧、[Azure 政府](/azure/azure-government/documentation-government-welcome)、[Azure 中国世纪互联](/azure/china)和 [Azure 德国](https://azure.microsoft.com/global-infrastructure/germany/)以外的其他所有区域中使用。
-
 ## <a name="next-steps"></a>后续步骤
 
 请查看以下文章来详细了解如何将消息路由到 IoT 中心：
@@ -94,4 +90,4 @@ ms.locfileid: "72177992"
 
 * [使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点](iot-hub-devguide-messages-d2c.md)
 
-* [教程：IoT 中心路由](tutorial-routing.md)
+* [教程： IoT 中心路由](tutorial-routing.md)

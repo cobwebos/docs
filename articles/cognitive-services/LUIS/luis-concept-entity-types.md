@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 9dc26e50e1c0f43e816e422f0fee91a246ea04a9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8e91a475c7fd7f207c8b38d3da8abe7affd668b2
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487601"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013501"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>实体及其在 LUIS 中的用途
 
@@ -35,7 +35,7 @@ ms.locfileid: "73487601"
 
 请考虑以下3最谈话：
 
-|陈述|提取的数据|说明|
+|话语|提取的数据|说明|
 |--|--|--|
 |`Help`|-|没有要提取的内容。|
 |`Send Bob a present`|Bob，提供|Bob 对于完成任务一定很重要。 现可提供足够的信息，或者机器人可能需要使用跟进问题来阐明现有内容。|
@@ -53,7 +53,7 @@ ms.locfileid: "73487601"
 
 实体是要从话语中提取的数据。 可以是姓名、日期、产品名称或任何词组。 
 
-|陈述|实体|数据|
+|话语|实体|数据|
 |--|--|--|
 |购买 3 张到纽约的机票|预生成的数字<br>Location.Destination|3<br>纽约|
 |购买 3 月 5 日从纽约到伦敦的机票|Location.Origin<br>Location.Destination<br>预生成的 datetimeV2|纽约<br>伦敦<br>2018 年 3 月 5 日|
@@ -91,11 +91,11 @@ ms.locfileid: "73487601"
 
 |实体类型|目的|
 |--|--|
-|[**计算机学习**](#composite-entity)|实体的父分组，与实体类型无关。 机器学习实体从话语的上下文学习。 这使得示例话语中的位置差异变得显著。 |
-|[**列表**](#list-entity)|用**精确文本匹配**提取的项及其同义词的列表。|
-|[**Pattern.any**](#patternany-entity)|难以确定末尾部分的实体。 |
-|[**预生成**](#prebuilt-entity)|已经过培训，可以提取特定类型的数据，例如 URL 或电子邮件。 其中一些预生成实体是在开源[识别器 - 文本](https://github.com/Microsoft/Recognizers-Text)项目中定义的。 如果你的特定区域性或实体当前不受支持，请通过为项目做贡献来获得支持。|
-|[**正则表达式**](#regular-expression-entity)|使用正则表达式**精确匹配文本**。|
+|[**计算机学习**](tutorial-machine-learned-entity.md)|实体的父分组，与实体类型无关。 机器学习实体从话语的上下文学习。 这使得示例话语中的位置差异变得显著。 |
+|[**列表**](reference-entity-list.md)|用**精确文本匹配**提取的项及其同义词的列表。|
+|[**Pattern.any**](reference-entity-pattern-any.md)|难以确定末尾部分的实体。 |
+|[**预生成**](luis-reference-prebuilt-entities.md)|已经过培训，可以提取特定类型的数据，例如 URL 或电子邮件。 其中一些预生成实体是在开源[识别器 - 文本](https://github.com/Microsoft/Recognizers-Text)项目中定义的。 如果你的特定区域性或实体当前不受支持，请通过为项目做贡献来获得支持。|
+|[**正则表达式**](reference-entity-regular-expression.md)|使用正则表达式**精确匹配文本**。|
 
 ### <a name="entity-role-defines-context"></a>实体角色定义上下文
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 247dee2cfbb00b185e941fde05c2198459a05e20
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 73dc95260e7beb306834d094957518f36106b0f4
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815735"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73945750"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>识别和解决 Azure Active Directory 中组的许可证分配问题
 
@@ -29,11 +29,6 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 如果直接将许可证分配给单个用户而不使用基于组的许可，分配操作可能会失败。 例如，对用户系统执行 PowerShell cmdlet `Set-MsolUserLicense` 时，由于与业务逻辑相关的多个原因，该 cmdlet 可能会失败。 例如，可能许可证数量不足，或者两个服务计划之间存在冲突，不能同时分配。 将立即向你返回该问题的报告。
 
 使用基于组的许可时，可能会发生相同的错误，但是在 Azure AD 服务分配许可证时在后台发生这些错误。 由于此原因，这些错误无法立即传达给你。 但是，这些错误会记录在用户对象中，并通过管理门户进行报告。 为用户提供许可证的原始意图永远不会丢失，但以错误状态记录，供以后调查和解决。
-
-## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>审核日志中的 LicenseAssignmentAttributeConcurrencyException
-
-**问题：** 用户在审核日志中具有许可证分配的 LicenseAssignmentAttributeConcurrencyException。
-当基于组的许可尝试对用户处理相同许可证的并发许可证分配时，将在用户上记录此异常。 如果用户是具有相同分配的许可证的多个组的成员，则通常会发生这种情况。 AZure AD 将重试处理用户许可证，并解决此问题。 客户无需执行任何操作即可解决此问题。
 
 ## <a name="find-license-assignment-errors"></a>查找许可证分配错误
 
@@ -122,6 +117,11 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
 更新用户的许可证分配会导致触发代理地址计算，这可能会更改用户属性。 若要了解更改的确切原因并解决问题，请参阅这篇关于[如何在 Azure AD 中填充 proxyAddresses 属性](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad)的文章。
 
+## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>审核日志中的 LicenseAssignmentAttributeConcurrencyException
+
+**问题：** 用户在审核日志中具有许可证分配的 LicenseAssignmentAttributeConcurrencyException。
+当基于组的许可尝试对用户处理相同许可证的并发许可证分配时，将在用户上记录此异常。 如果用户是具有相同分配的许可证的多个组的成员，则通常会发生这种情况。 AZure AD 将重试处理用户许可证，并解决此问题。 客户无需执行任何操作即可解决此问题。
+
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>分配给组的多个产品许可证
 
 可将多个产品许可证分配到一个组。 例如，可将 Office 365 企业版 E3 和企业移动性 + 安全性分配到某个组，轻松为用户启用所有包含的服务。
@@ -181,5 +181,5 @@ Microsoft Workplace Analytics 是一个附加产品。 它包含同名单一服�
 * [将许可证分配到 Azure Active Directory 中的组](licensing-groups-assign.md)
 * [如何将单个许可用户迁移到 Azure Active Directory 中基于组的许可](licensing-groups-migrate-users.md)
 * [如何在 Azure Active Directory 中使用基于组的许可在产品许可证之间迁移用户](licensing-groups-change-licenses.md)
-* [Azure Active Directory 基于组的许可的其他方案](licensing-group-advanced.md)
+* [基于 Azure Active Directory 组的许可的其他方案](licensing-group-advanced.md)
 * [Azure Active Directory 中基于组的许可的 PowerShell 示例](licensing-ps-examples.md)

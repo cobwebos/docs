@@ -1,5 +1,5 @@
 ---
-title: 在 VMware VM 和物理服务器的灾难恢复期间，将 VM 从 Azure 重新保护到本地站点 | Microsoft Docs
+title: 使用 Azure Site Recovery 将 VMware Vm/物理服务器重新保护到本地站点
 description: 在 VMware VM 和物理服务器的灾难恢复期间故障转移到 Azure 后，了解如何从 Azure 故障回复到本地站点。
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: mayg
-ms.openlocfilehash: cf1ccdf953781ca9b9bd17152f2cf32677997d12
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f3d5f38d940b99c6a74d784f174c91d4127353dc
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791803"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961347"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>故障转移到 Azure 后，将计算机重新保护并故障回复到本地站点
 
@@ -98,7 +98,7 @@ ms.locfileid: "72791803"
 3. 在“主目标服务器”和“进程服务器”中，选择本地主目标服务器和进程服务器。  
 4. 对于“数据存储”，选择要将本地磁盘恢复到的数据存储。 删除本地虚拟机后，如果需要创建新磁盘，可使用此选项。 如果磁盘已存在，则会忽略此选项。 仍需指定一个值。
 5. 选择保留驱动器。
-6. 将自动选择故障回复策略。
+6. 会自动选择故障回复策略。
 7. 选择“确定”开始重新保护。 一个作业会开始将虚拟机从 Azure 复制到本地站点。 可以在 "**作业**" 选项卡上跟踪进度。重新保护成功后，虚拟机将进入受保护状态。
 
 请注意以下信息：

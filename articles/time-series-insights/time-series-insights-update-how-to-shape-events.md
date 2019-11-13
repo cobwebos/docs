@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 时序见解预览版塑造事件 | Microsoft Docs
+title: 形状事件-Azure 时序见解 |Microsoft Docs
 description: 了解如何在 Azure 时序见解预览版中绘制事件。
 author: deepakpalled
 ms.author: dpalled
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b9dd10a4017d821794af037e502c784b10cd62f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: bd1b59ac2037669be021dfad3bf5032b794bef4a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585277"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006284"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>使用 Azure 时序见解预览版塑造事件
 
@@ -117,7 +117,7 @@ ms.locfileid: "73585277"
 
 时序见解预览版会在查询时联接一个表（平展后）。 此表包含其他列，例如“类型”。 以下示例演示如何才能[塑造](./time-series-insights-send-events.md#supported-json-shapes)遥测数据。
 
-| deviceId  | 类型 | L1 | L2 | timestamp | series_Flow Rate ft3/秒 | series_Engine 石油压力 psi |
+| deviceId  | 类型 | L1 | L2 | timestamp | series_Flow 速率 ft3/秒 | series_Engine 石油压力 psi |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | `FXXX` | Default_Type | SIMULATOR | 电池系统 | 2018-01-17T01:17:00Z |   1.0172575712203979 |    34.7 |
 | `FXXX` | Default_Type | SIMULATOR |   电池系统 |    2018-01-17T01:17:00Z | 2.445906400680542 |  49.2 |
@@ -128,7 +128,7 @@ ms.locfileid: "73585277"
 * 静态属性存储在时序见解预览版中，这样可以优化通过网络发送的数据。
 * 时序见解预览数据在查询时通过实例中定义的时序 ID 联接。
 * 使用两层嵌套。 此数字是时序见解预览版支持的最大数量。 必须避免深层嵌套的数组。
-* 由于度量很少，因此将其作为单独的属性在同一对象中发送。 在此示例中， **Series_Flow rate psi**、 **Series_Engine**和**series_Flow rate ft3/s**是唯一列。
+* 由于度量很少，因此将其作为单独的属性在同一对象中发送。 在此示例中， **Series_Flow rate psi**， **series_Engine 石油压力 Psi**， **series_Flow rate ft3/s**为唯一列。
 
 >[!IMPORTANT]
 > 实例字段不与遥测数据一起存储。 它们随元数据一起存储在时序模型中。

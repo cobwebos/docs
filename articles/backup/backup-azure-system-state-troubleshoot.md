@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 71a2b73ab3570539a566f708ea8b1a41963d4e81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: eb8bf1891f5ce96507c20e196d20ae499f30fe34
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747303"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012130"
 ---
 # <a name="troubleshoot-system-state-backup"></a>系统状态备份故障排除
 
@@ -45,9 +45,9 @@ ms.locfileid: "73747303"
 - Microsoft 不建议使用系统状态恢复来恢复到不同的硬件
 - 系统状态备份当前支持 "本地" Windows 服务器，此功能不适用于 Azure Vm。
 
-## <a name="pre-requisite"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 
-在对 Azure 备份进行系统状态备份故障排除之前，请执行以下先决条件检查。  
+在对 Azure 备份进行系统状态备份之前，请执行以下先决条件检查。  
 
 ### <a name="verify-windows-server-backup-is-installed"></a>验证是否已安装 Windows Server 备份
 
@@ -114,7 +114,7 @@ Microsoft 软件卷影复制提供程序（SWPRV） | 手动
   - 从权限提升的 PowerShell 运行 `Get-WBJob`，确保它不返回以下错误：
 
     > [!WARNING]
-    > WBJob：术语 "WBJob" 未被识别为 cmdlet、函数、脚本文件或可运行程序的名称。 检查名称的拼写，如果包含路径，请验证该路径是否正确，并重试。
+    > WBJob：术语 "WBJob" 未被识别为 cmdlet、函数、脚本文件或可运行程序的名称。 请检查名称的拼写，如果包含路径，请验证该路径是否正确，并重试。
 
     - 如果失败并出现此错误，请在服务器计算机上重新安装 Windows Server 备份功能，如步骤1先决条件中所述。
 

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9af85d8d9b181d619d8895542f142708626649d1
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 594534f64c984f4afb986d3366f388e412bde27c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620838"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961467"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
@@ -45,7 +45,7 @@ Hyper-V（使用 Virtual Machine Manager 运行） | Virtual Machine Manager 201
 
  **组件** | **详细信息**
 --- | ---
-VM 配置 | 复制到 Azure 的 VM 必须满足[Azure 要求](#azure-vm-requirements)。
+VM 配置 | 复制到 Azure 的 VM 必须满足 [Azure 要求](#azure-vm-requirements)。
 来宾操作系统 | [Azure 支持](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases)的任何来宾 OS。<br/><br/> 不支持 Windows Server 2016 Nano Server。
 
 
@@ -96,7 +96,7 @@ Azure 虚拟网络服务终结点<br/> （不带 Azure 存储防火墙） | 是 
 NFS | 不可用 | 不可用
 SMB 3.0 | 是 | 是
 SAN (ISCSI) | 是 | 是
-多路径 (MPIO)。 测试使用对象：<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4<br/><br/> EMC PowerPath DSM for CLARiiON | 是 | 是
+多路径 (MPIO)。 测试使用对象：<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON | 是 | 是
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V VM 来宾存储
 
@@ -105,7 +105,7 @@ SAN (ISCSI) | 是 | 是
 VMDK | 不可用 | 不可用
 VHD/VHDX | 是 | 是
 第 2 代 VM | 是 | 是
-EFI/UEFI| 是 | 是
+EFI/UEFI<br></br>Azure 中迁移的 VM 将自动转换为 BIOS 启动 VM。 VM 应仅运行 Windows Server 2012 和更高版本。 OS 磁盘最多可以有5个分区或更少，操作系统磁盘的大小应小于 300 GB。| 是 | 是
 共享群集磁盘 | 否 | 否
 加密磁盘 | 否 | 否
 NFS | 不可用 | 不可用
@@ -132,9 +132,10 @@ RDM | 不可用 | 不可用
 热存储| 否 | 否
 块 Blob | 否 | 否
 静态加密 (SSE)| 是 | 是
+静态加密（CMK）| 否 | 否
 高级存储 | 是 | 是
 导入/导出服务 | 否 | 否
-启用了防火墙的 Azure 存储帐户 | 可以。 适用于目标存储和缓存。 | 可以。 适用于目标存储和缓存。
+启用了防火墙的 Azure 存储帐户 | 是。 适用于目标存储和缓存。 | 是。 适用于目标存储和缓存。
 修改存储帐户 | 不能。 启用复制后，无法修改目标 Azure 存储帐户。 若要修改，请禁用然后重新启用灾难恢复。 | 否
 
 
@@ -155,7 +156,7 @@ HUB | 是 | 是
 来宾操作系统 | Site Recovery 支持 [Azure 支持的](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)所有操作系统。  | 如果不支持，先决条件检查会失败。
 来宾操作系统体系结构 | 32 位 (Windows Server 2008)/64 位 | 如果不支持，先决条件检查会失败。
 操作系统磁盘大小 | 第 1 代 VM 最大 2,048 GB。<br/><br/> 第 2 代 VM 最大 300 GB。  | 如果不支持，先决条件检查会失败。
-操作系统磁盘计数 | 1 | 如果不支持，先决条件检查会失败。
+操作系统磁盘计数 | 1 个 | 如果不支持，先决条件检查会失败。
 数据磁盘计数 | 16 个或更少  | 如果不支持，先决条件检查会失败。
 数据磁盘 VHD 大小 | 最大 4,095 GB | 如果不支持，先决条件检查会失败。
 网络适配器 | 支持多个适配器 |
@@ -163,12 +164,12 @@ HUB | 是 | 是
 FC 磁盘 | 不支持 | 如果不支持，先决条件检查会失败。
 硬盘格式 | VHD <br/><br/> VHDX | 故障转移到 Azure 时，Site Recovery 自动将 VHDX 转换为 VHD。 故障回复到本地时，虚拟机将继续使用 VHDX 格式。
 BitLocker | 不支持 | 为 VM 启用复制之前，必须先禁用 BitLocker。
-VM 名称 | 介于 1 和 63 个字符之间。 限制为字母、数字和连字符。 VM 名称必须以字母或数字开始或结尾。 | 在 Site Recovery 中更新 VM 属性中的值。
+VM 名称 | 介于 1 和 63 个字符之间。 限制为字母、数字和连字符。 VM 名称必须以字母或数字开头和结尾。 | 在 Site Recovery 中更新 VM 属性中的值。
 VM 类型 | 第 1 代<br/><br/> 第 2 代 - Windows | OS 磁盘类型为“基本”的第 2 代 VM（其中包括一个或两个格式化为 VHDX 的数据卷），并且支持的磁盘空间大小小于 300 GB。<br></br>不支持 Linux 第 2 代 VM。 [了解详细信息](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)。|
 
 ## <a name="recovery-services-vault-actions"></a>恢复服务保管库操作
 
-**操作** |  **Hyper-V（包含 VMM）** | **不包含 VMM 的 Hyper-V**
+**操作** |  **包含 VMM 的 Hyper-V** | **不包含 VMM 的 Hyper-V**
 --- | --- | ---
 跨资源组移动保管库<br/><br/> 订阅内和跨订阅移动 | 否 | 否
 跨资源组移动存储、网络和 Azure VM<br/><br/> 订阅内和跨订阅移动 | 否 | 否
@@ -179,7 +180,7 @@ VM 类型 | 第 1 代<br/><br/> 第 2 代 - Windows | OS 磁盘类型为“基�
 
 ## <a name="provider-and-agent"></a>提供程序和代理
 
-要确保部署与本文的设置兼容，请确保正在运行最新的提供程序和代理版本。
+若要确保部署与本文的设置兼容，请确保运行的是最新的提供程序和代理版本。
 
 **名称** | **说明** | **详细信息**
 --- | --- | --- 

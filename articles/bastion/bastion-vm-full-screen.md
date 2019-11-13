@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 堡垒中将虚拟机会话视图更改为全屏 |Microsoft Docs
+title: Azure 堡垒：查看虚拟机会话：全屏
 description: 本文介绍如何将视图更改为全屏。
 services: bastion
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: a8c9cab825644fe797713c80d3a710c7a2d54850
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 87a6c046d5f20b8f38381acbfefbfef43b09092c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498047"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014225"
 ---
 # <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>更改为 vm 会话的全屏视图： Azure 堡垒
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 91dc87cd6bda93663fb4b4eae3d498ae56ba4b3e
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 5af73e166f3caa4997851ae4b17d8377550bf40a
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169599"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961552"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
 
@@ -36,12 +36,12 @@ ms.locfileid: "72169599"
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>在锁定的网络环境中禁用 Cloud Shell
 
-- **详细信息**：管理员可能希望禁止其用户访问 Cloud Shell。 Cloud Shell 利用 `ux.console.azure.com` 域的访问权限，此域可能被拒绝，可停止对 Cloud Shell s 的任何访问权限，包括 portal.azure.com、shell.azure.com、Visual Studio Code Azure 帐户扩展和 docs.microsoft.com。
-- **解决方法**：通过环境的网络设置限制对 `ux.console.azure.com` 的访问权限。 Cloud Shell 图标仍将存在于 portal.azure.com 中，但无法成功连接到该服务。
+- **详细信息**：管理员可能希望禁止其用户访问 Cloud Shell。 Cloud Shell 利用 `ux.console.azure.com` 域的访问权限，该域可能被拒绝，可阻止对 Cloud Shell 的 s 的任何访问权限，包括 portal.azure.com、shell.azure.com、Visual Studio Code Azure 帐户扩展和 docs.microsoft.com。
+- **解决方案**：通过环境的网络设置限制对 `ux.console.azure.com` 的访问权限。 Cloud Shell 图标仍将存在于 portal.azure.com 中，但无法成功连接到该服务。
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>存储对话框 - 错误：403 RequestDisallowedByPolicy
 
-- **详细信息**：通过 Cloud Shell 创建存储帐户时，由于管理员设置的 Azure Policy 而失败。错误消息将包括：`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **详细信息**：通过 Cloud Shell 创建存储帐户时，由于管理员放置了 Azure 策略，导致失败。错误消息将包括： `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
 - **解决方法**：与 Azure 管理员联系，让其删除或更新拒绝存储创建的 Azure Policy。
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>存储对话框 - 错误：400 DisallowedOperation
@@ -54,7 +54,7 @@ ms.locfileid: "72169599"
 - **解决方法**：检查是否已将网络设置配置为允许向域（*.console.azure.com）发送 https 请求和 websocket 请求。
 
 ### <a name="set-your-cloud-shell-connection-to-support-using-tls-12"></a>将 Cloud Shell 连接设置为支持使用 TLS 1.2
- - **详细信息**：若要定义连接 Cloud Shell 的 TLS 版本，必须设置特定于浏览器的设置。
+ - **详细信息**：若要定义连接 CLOUD SHELL 的 TLS 版本，必须设置特定于浏览器的设置。
  - **解决方法**：导航至浏览器的安全设置，然后选中“使用 TLS 1.2”旁边的复选框。
 
 ## <a name="bash-troubleshooting"></a>Bash 故障排除
@@ -76,7 +76,7 @@ ms.locfileid: "72169599"
 > Azure VM 必须具有面向公众的 IP 地址。
 
 - **详细信息**：由于 WinRM 的默认 Windows 防火墙设置，用户可能会看到以下错误：`Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **解决方法**：运行 `Enable-AzVMPSRemoting` 以启用目标计算机上 PowerShell 远程处理的所有方面。
+- 解决方法：运行 `Enable-AzVMPSRemoting` 以启用目标计算机上 PowerShell 远程处理的所有方面。
 
 ### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` 不会更新 Azure 驱动器中的结果
 
@@ -86,6 +86,12 @@ ms.locfileid: "72169599"
 ## <a name="general-limitations"></a>一般限制
 
 Azure Cloud Shell 有以下已知限制：
+
+### <a name="quota-limitations"></a>配额限制
+
+Azure Cloud Shell 的每个区域每个租户的用户数限制为20个。 如果尝试打开的会话数超过限制，将显示 "租户用户超过配额" 错误。 如果你合理地需要打开多个会话（例如培训会话），请在预期使用提前联系支持人员以请求增加配额。
+
+Cloud Shell 提供为免费服务，设计用于配置你的 Azure 环境，而不是作为一般用途的计算平台。 在违反 Azure 服务条款的情况中，可能会考虑过多的自动使用情况，并可能导致 Cloud Shell 访问被阻止。
 
 ### <a name="system-state-and-persistence"></a>系统状态和持久性
 
@@ -160,7 +166,7 @@ Azure Cloud Shell 非常重视你的个人数据，Azure Cloud Shell 服务捕�
 ### <a name="export"></a>导出
 若要导出 Cloud Shell 为你保存的用户设置（如首选 shell、字号和字体类型），请运行以下命令。
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
+1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
 2. 在 Bash 或 PowerShell 中运行以下命令：
 
 Bash：
@@ -177,13 +183,13 @@ PowerShell：
   ((Invoke-WebRequest -Uri https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}).Content | ConvertFrom-Json).properties | Format-List
 ```
 
-### <a name="delete"></a>DELETE
+### <a name="delete"></a>删除
 若要删除 Cloud Shell 为你保存的用户设置（如首选 shell、字号和字体类型），请运行以下命令。 下次启动 Azure Cloud Shell 时，系统会要求你再次载入文件共享。 
 
 >[!Note]
 > 如果删除用户设置，不会删除实际的 Azure 文件共享。 请转到“Azure 文件”完成该操作。
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
+1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
 2. 在 Bash 或 PowerShell 中运行以下命令：
 
 Bash：

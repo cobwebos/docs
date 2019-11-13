@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4f5344259767aaad9ed58ded1da86ae7ee3c03e7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 21600036302050aeea3e2ea989d86e18b208c087
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470108"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958050"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -26,7 +26,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 本文使用 [Azure 门户](https://portal.azure.com)和 Azure CLI 来处理诊断日志。 有关通过 Visual Studio 使用诊断日志的信息，请参阅[在 Visual Studio 中对 Azure 进行故障排除](troubleshoot-dotnet-visual-studio.md)。
 
 > [!NOTE]
-> 除了本文中的日志记录说明，Azure 监视还提供了新的集成日志记录功能。 可以在["日志" 页和 "诊断设置（预览）" 页](https://aka.ms/appsvcblog-azmon)中找到此功能。 
+> 除了本文中的日志记录说明，Azure 监视还提供了新的集成日志记录功能。 有关此功能的详细信息，请查看将[日志发送到 Azure Monitor （预览版）](#send-logs-to-azure-monitor-preview)部分。 
 >
 >
 
@@ -178,7 +178,28 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 | **Web 服务器日志** | */LogFiles/http/RawLogs/* | 包含使用[W3C 扩展日志文件格式](/windows/desktop/Http/w3c-logging)进行格式化的文本文件。 可以使用文本编辑器或实用程序（如[Log Parser](https://go.microsoft.com/fwlink/?LinkId=246619)）读取此信息。<br/>应用服务不支持 `s-computername`、`s-ip`或 `cs-version` 字段。 |
 | **部署日志** | */LogFiles/Git/* 和 */deployments/* | 包含内部部署过程生成的日志以及 Git 部署的日志。 |
 
+## <a name="send-logs-to-azure-monitor-preview"></a>将日志发送到 Azure Monitor （预览版）
+
+利用新的[Azure Monitor 集成](https://aka.ms/appsvcblog-azmon)，你可以[创建诊断设置（预览版）](https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html#create-a-diagnostic-setting) ，以便将日志发送到存储帐户、事件中心和 Log Analytics。 
+
+> [!div class="mx-imgBorder"]
+> ![诊断设置（预览）](media/troubleshoot-diagnostic-logs/diagnostic-settings-page.png)
+
+### <a name="supported-log-types"></a>支持的日志类型
+
+下表显示了支持的日志类型和说明： 
+
+| 日志类型 | Windows 支持 | Linux 支持 | 说明 |
+|-|-|-|
+| AppServiceConsoleLogs | TBA | 是 | 标准输出和标准错误 |
+| AppServiceHTTPLogs | 是 | 是 | Web 服务器日志 |
+| AppServiceEnvironmentPlatformLogs | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
+| AppServiceAuditLogs | 是 | 是 | 通过 FTP 和 Kudu 的登录活动 |
+| AppServiceFileAuditLogs | TBA | TBA | 通过 FTP 和 Kudu 进行的文件更改 |
+| AppServiceAppLogs | TBA | Java SE & Tomcat | 应用程序日志 |
+
 ## <a name="nextsteps"></a>后续步骤
+* [查询日志与 Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
 * [如何监视 Azure 应用服务](web-sites-monitor.md)
 * [在 Visual Studio 中对 Azure 应用服务进行故障排除](troubleshoot-dotnet-visual-studio.md)
 * [在 HDInsight 中分析应用日志](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 1059dd463529f4c357038225f2f9ef11d0092802
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a0965dc4011b449e617f6dbaeafb68bfa796b620
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679591"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953946"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>配置 Windows 虚拟桌面的图形处理单元（GPU）加速
 
@@ -26,17 +26,14 @@ Azure 提供了大量[GPU 优化的虚拟机大小](/azure/virtual-machines/wind
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>创建主机池、设置虚拟机并配置应用组
 
-使用所选大小的 VM 创建新的主机池。 有关说明，请参阅 [Tutorial：使用 Azure Marketplace @ no__t 创建主机池。
+使用所选大小的 VM 创建新的主机池。 有关说明，请参阅[教程：使用 Azure Marketplace 创建主机池](/azure/virtual-desktop/create-host-pools-azure-marketplace)。
 
 Windows 虚拟桌面支持在以下操作系统中执行 GPU 加速呈现和编码：
 
 * Windows 10 版本1511或更高版本
 * Windows Server 2016 或更高版本
 
-你还必须配置应用组，或使用创建新主机池时自动创建的默认桌面应用组（名为 "桌面应用程序组"）。 有关说明，请参阅 [Tutorial：管理 Windows 虚拟桌面 @ no__t 的应用组。
-
->[!NOTE]
->Windows 虚拟桌面仅支持启用 GPU 的主机池的 "桌面" 应用组类型。 启用 GPU 的主机池不支持类型为 "RemoteApp" 的应用组。
+你还必须配置应用组，或使用创建新主机池时自动创建的默认桌面应用组（名为 "桌面应用程序组"）。 有关说明，请参阅[教程：管理适用于 Windows 虚拟桌面的应用组](/azure/virtual-desktop/manage-app-groups)。
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>在虚拟机中安装支持的图形驱动程序
 
@@ -52,7 +49,7 @@ Windows 虚拟桌面支持在以下操作系统中执行 GPU 加速呈现和编�
 
 1. 使用具有本地管理员特权的帐户连接到 VM 的桌面。
 2. 打开 "开始" 菜单，键入 "gpedit.msc" 以打开组策略编辑器。
-3. 将树导航到 "**计算机配置**"  > **管理模板**@no__t 3 个**Windows 组件** > **远程桌面服务**@no__t**远程桌面会话主机** **会话环境**。
+3. 将树导航到 "**计算机配置**" > **管理模板** > **Windows 组件** > **远程桌面服务** ** > 远程桌面会话主机**"**远程会话环境**"。 > 
 4. 选择 **"策略" 使用所有远程桌面服务会话的硬件默认图形适配器**，并将此策略设置为 "**启用**" 以在远程会话中启用 GPU 呈现。
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>配置 GPU 加速帧编码
@@ -77,7 +74,7 @@ Windows 虚拟桌面支持在以下操作系统中执行 GPU 加速呈现和编�
 
 若要验证应用是否正在使用 GPU 进行呈现，请尝试执行以下任一操作：
 
-* 使用[验证驱动程序安装](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation)中所述的 `nvidia-smi` 实用程序来检查运行应用程序时的 GPU 利用率。
+* 使用在运行应用时[验证驱动程序安装](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation)中所述的 `nvidia-smi` 实用程序来检查 GPU 使用率。
 * 在支持的操作系统版本上，可以使用任务管理器来检查 GPU 利用率。 在 "性能" 选项卡中选择 GPU，查看应用是否正在使用 GPU。
 
 ## <a name="verify-gpu-accelerated-frame-encoding"></a>验证 GPU 加速帧编码
@@ -85,9 +82,9 @@ Windows 虚拟桌面支持在以下操作系统中执行 GPU 加速呈现和编�
 验证远程桌面是否正在使用 GPU 加速编码：
 
 1. 使用 Windows 虚拟桌面客户端连接到 VM 的桌面。
-2. 启动事件查看器并导航到以下节点：**应用程序和服务日志** > **Microsoft** > **Windows** > **RemoteDesktopServices-RdpCoreTS** > **操作**
-3. 若要确定是否使用 GPU 加速编码，请查找事件 ID 170。 如果你看到 "AVC 硬件编码器已启用"：1 "，则使用 GPU 编码。
-4. 若要确定是否使用了 AVC 444 模式，请查找事件 ID 162。 如果你看到 "AVC 可用：1个初始配置文件：2048 "，则使用 AVC 444。
+2. 启动事件查看器并导航到以下节点： **Microsoft** > **Windows** > 的**应用程序和服务日志** > **RemoteDesktopServices** > **操作**
+3. 若要确定是否使用 GPU 加速编码，请查找事件 ID 170。 如果看到 "AVC 硬件编码器已启用： 1"，则使用 GPU 编码。
+4. 若要确定是否使用了 AVC 444 模式，请查找事件 ID 162。 如果出现 "AVC 可用：1初始配置文件： 2048"，则使用 AVC 444。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 3700fb90318da3787830f9b6c202436c0e45e2fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 604cf0564039a542ec117612bcbf74601388c0f7
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61063376"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007622"
 ---
 # <a name="best-practices-for-autoscale"></a>自动缩放最佳实践
 Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。
@@ -35,21 +35,21 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 如果设置的最小值为 2，最大值为 2，并且当前实例计数为 2，则不可能进行缩放操作。 在最大和最小实例计数之间保留足够的余量（包括端值）。 自动缩放始终在这些限制之间进行。
 
 ### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>手动缩放通过自动缩放最小和最大值来重置
-如果手动将实例计数更新为高于或低于最大值的值，则自动缩放引擎会自动缩放回最小值（如果低于）或最大值（如果高于）。 例如，将范围设置在 3 和 6 之间。 如果有一个正在运行的实例，则自动缩放引擎会在下次运行时缩放为三个实例。 同样，如果将缩放规模手动设置为八个实例，则自动缩放会在下次运行时收缩回六个实例。  手动缩放效果只是暂时的，除非也重置了自动缩放规则。
+如果手动将实例计数更新为高于或低于最大值的值，则自动缩放引擎会自动缩放回最小值（如果低于）或最大值（如果高于）。 例如，将范围设置为 3 到 6。 如果有一个正在运行的实例，则自动缩放引擎会在下次运行时缩放为三个实例。 同样，如果将缩放规模手动设置为八个实例，则自动缩放会在下次运行时收缩回六个实例。  手动缩放效果只是暂时的，除非也重置了自动缩放规则。
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>始终使用执行增加和减少的扩大和缩小规则组合
 如果仅使用组合的一个部件，则自动缩放将仅在单个方向采取操作（横向扩展或收缩），直至它达到配置文件中定义的最大或最小实例计数。 这不是最佳的，理想情况下，你希望资源在使用率过高时纵向扩展以确保可用性。 同样，当使用率过低时，你希望资源纵向收缩，以便可以实现成本节省。
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>为诊断指标选择相应统计信息
-对于诊断指标，可以选择“平均值”  、“最小值”  、“最大值”  和“总计”  作为用作缩放依据的指标。 最常见的统计信息是“平均值”  。
+对于诊断指标，可以选择“平均值”、“最小值”、“最大值”和“总计”作为用作缩放依据的指标。 最常见的统计信息是“平均值”。
 
 ### <a name="choose-the-thresholds-carefully-for-all-metric-types"></a>认真为所有指标类型选择阈值
 我们建议基于实际情况为扩大和缩小认真选择不同阈值。
 
 *建议不要*使用类似以下示例的自动缩放设置，其中针对扩大和缩小条件的阈值相同或非常相似：
 
-* 当线程计数 <= 600 时，按 1 计数增加实例
-* 当线程计数 >= 600 时，按 1 计数减少实例
+* 线程计数 > = 600 时，按1计数增加实例
+* 线程计数 < = 600 时，按1计数减少实例
 
 让我们看一下可能会导致看起来令人困惑的行为的示例。 考虑以下序列。
 
@@ -85,7 +85,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 考虑以下序列：
 
 1. 有两个存储队列实例。
-2. 消息不断传入，而检查存储队列时，总计数达到 50。 此时可能会认为自动缩放应启动扩大操作。 但请注意，它仍是 50/2 = 25 个消息/实例。 因此，不会进行扩大。 要进行第一次扩大，存储队列中的总消息计数应是 100。
+2. 消息不断传入，而检查存储队列时，总计数达到 50。 可能认为自动缩放应启动扩大操作。 但请注意，它仍是 50/2 = 25 个消息/实例。 因此，不会进行扩大。 要进行第一次扩大，存储队列中的总消息计数应是 100。
 3. 接下来，假定总消息计数达到 100。
 4. 会由于扩大操作而添加第 3 个存储队列实例。  在队列中的总消息计数达到 150 之前，不会进行下一次扩大操作，因为 150/3 = 50。
 5. 现在队列中的消息数量变小。 在有三个实例的情况下，当所有队列中的总消息数加起来达到 30 时，会进行第一缩小操作，因为 30/3 = 10 个消息/实例（这是缩小阈值）。
@@ -114,8 +114,8 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>有关在配置文件中配置多个规则时进行自动缩放的注意事项
 在某些情况下可能必须在一个配置文件中设置多个规则。 设置了多个规则时，服务会使用以下自动缩放规则集。
 
-进行扩大  时，如果满足任何规则，则自动缩放会运行。
-进行缩小  时，自动缩放需要满足所有规则。
+进行扩大时，如果满足任何规则，则自动缩放会运行。
+进行缩小时，自动缩放需要满足所有规则。
 
 为了进一步说明，假定你具有以下 4 个自动缩放规则：
 
@@ -132,7 +132,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 另一方面，如果 CPU 是 25% 且内存是 51%，则自动缩放**不会**缩小。 要进行缩小，CPU 必须是 29% 且内存是 49%。
 
 ### <a name="always-select-a-safe-default-instance-count"></a>始终选择安全的默认实例计数
-默认实例计数十分重要，当指标不可用时，自动缩放将服务缩放到该计数。 因此，请选择对工作负荷安全的默认实例计数。
+默认实例计数十分重要，自动缩放会在指标不可用时将服务缩放为该计数。 因此，请选择对工作负荷安全的默认实例计数。
 
 ### <a name="configure-autoscale-notifications"></a>配置自动缩放通知
 发生以下任何一种情况时，自动缩放会发布至活动日志：

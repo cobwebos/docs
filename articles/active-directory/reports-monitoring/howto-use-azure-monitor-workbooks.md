@@ -2,7 +2,7 @@
 title: 报表 Azure Monitor 工作簿 |Microsoft Docs
 description: 了解如何使用 Azure Active Directory 报表 Azure Monitor 工作簿。
 services: active-directory
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: 4066725c-c430-42b8-a75b-fe2360699b82
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 10/30/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b88648ce68a7359a842ec975d8633d6200b1a507
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 2e94d9f56a865999f9169650f621a6af892c27ae
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200137"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014362"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>如何将 Azure Monitor 工作簿用于 Azure Active Directory 报表
 
@@ -54,7 +54,7 @@ ms.locfileid: "73200137"
  
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要使用监视器工作簿，需要：
 
@@ -97,7 +97,7 @@ ms.locfileid: "73200137"
 
 - 所有登录
 
-- Success
+- 成功
 
 - 挂起的用户操作
 
@@ -116,7 +116,7 @@ ms.locfileid: "73200137"
 
 对于每个趋势，你会按以下类别获得细目：
 
-- Location
+- 位置
 
     ![按位置登录](./media/howto-use-azure-monitor-workbooks/45.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "73200137"
 
 - 所有登录
 
-- Success
+- 成功
 
 
 可以按以下类别筛选每个趋势：
@@ -206,7 +206,7 @@ ms.locfileid: "73200137"
 - **设备平台**
 - **客户端应用**
 - **登录风险**
-- 位置
+- **位置**
 - **应用程序**
 
 ![条件访问状态](./media/howto-use-azure-monitor-workbooks/device-platform.png)
@@ -267,7 +267,7 @@ ms.locfileid: "73200137"
 
 - 所有登录
 
-- Success
+- 成功
 
 - 挂起的操作
 

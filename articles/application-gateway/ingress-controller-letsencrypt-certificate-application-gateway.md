@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2e91a888d0dc98a4f94b956e15336d75291f733e
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 92e9747865f1a0910c8bae4001cc597ae9ea3da6
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795920"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73957983"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>在应用程序网关上使用带有 LetsEncrypt.org 的证书 AKS 群集
 
@@ -130,8 +130,12 @@ ms.locfileid: "73795920"
     几秒钟后，可以通过应用程序网关 HTTPS url 使用自动颁发的**过渡**`Lets Encrypt` 证书来访问 `guestbook` 服务。
     你的浏览器可能会警告你无效的证书颁发机构。 暂存证书由 `CN=Fake LE Intermediate X1`颁发。 这表明系统按预期方式工作，并且你已准备好使用生产证书。
 
-4. 生产证书成功设置暂存证书后，可以切换到生产 ACME 服务器：
+4. 生产证书
+
+    成功设置暂存证书后，可以切换到生产 ACME 服务器：
     1. 用以下内容替换入口资源上的暂存批注： `certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
     1. 删除你在上一步中创建的现有暂存 `ClusterIssuer`，并通过将上面的 ClusterIssuer YAML 中的 ACME 服务器替换为 `https://acme-v02.api.letsencrypt.org/directory` 来创建一个新的过渡服务器。
 
-5. 证书过期和续订 `Lets Encrypt` 证书过期之前，`cert-manager` 将自动更新 Kubernetes 密钥存储中的证书。 此时，应用程序网关入口控制器将应用它用于配置应用程序网关的入口资源中引用的更新密钥。
+5. 证书过期和续订
+
+    在 `Lets Encrypt` 证书过期之前，`cert-manager` 将自动更新 Kubernetes 密钥存储中的证书。 此时，应用程序网关入口控制器将应用它用于配置应用程序网关的入口资源中引用的更新密钥。

@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 4680804017a9b08248bb41ff999c6ba6371e99c8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: aae502b350f2cf2e98849b2b6e25543516a0c547
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675916"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961841"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>映射数据流中的联接转换
 
@@ -36,7 +36,7 @@ ms.locfileid: "73675916"
 
 ### <a name="full-outer"></a>完全外部
 
-完全外部联接输出的所有列和行都不匹配列的 NULL 值。
+完全外部联接从两端输出所有列和行，并为不匹配的列提供 NULL 值。
 
 ### <a name="cross-join"></a>交叉联接
 
@@ -48,7 +48,7 @@ ms.locfileid: "73675916"
 1. 选择**联接类型**
 1. 选择要在其上匹配的键列作为联接条件。 默认情况下，数据流在每个流中的一列之间查找相等性。 若要通过计算值进行比较，请将鼠标悬停在列下拉列表中，然后选择 "**计算列**"。
 
-![联接转换](media/data-flow/join.png "Join")
+![联接转换](media/data-flow/join.png "联接")
 
 ## <a name="optimizing-join-performance"></a>优化联接性能
 
@@ -83,7 +83,7 @@ ms.locfileid: "73675916"
 
 ### <a name="inner-join-example"></a>内部联接示例
 
-下面的示例是一个名为 `JoinMatchedData` 的联接转换，它采用 `TripData` 和右流 `TripFare`的左流。  联接条件是表达式 `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` 如果每个流中的 `hack_license`、`medallion`、`vendor_id`和 `pickup_datetime` 列匹配，则返回 true。 `joinType` 是 `'inner'`的。 我们只启用左侧流中的广播，因此 `broadcast` 的值 `'left'`。
+下面的示例是一个名为 `JoinMatchedData` 的联接转换，它采用 `TripData` 和右流 `TripFare`的左流。  联接条件是表达式 `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` 如果每个流中的 `hack_license`、`medallion`、`vendor_id`和 `pickup_datetime` 列匹配，则返回 true。 `joinType` 为 `'inner'`。 我们只启用左侧流中的广播，因此 `broadcast` 的值 `'left'`。
 
 在数据工厂 UX 中，此转换如下图所示：
 

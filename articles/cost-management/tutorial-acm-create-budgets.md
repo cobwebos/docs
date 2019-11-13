@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/06/2019
+ms.date: 11/12/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 8c3c0574389fc9808af3cd70c928ede82d375076
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c4de8b0d78d66709d13526c69f9d33b16dbad1dc
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720726"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010222"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建并管理 Azure 预算
 
@@ -36,7 +36,7 @@ ms.locfileid: "73720726"
 > * 在 Azure 门户中创建预算
 > * 编辑预算
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 各种 Azure 帐户类型都支持预算。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 若要查看预算，你至少需要对 Azure 帐户具有读取访问权限。
 
@@ -90,7 +90,9 @@ ms.locfileid: "73720726"
 
 ## <a name="trigger-an-action-group"></a>触发操作组
 
-在为订阅或资源组范围创建或编辑预算时，可以将其配置为调用操作组。 当达到预算阈值时，操作组可以执行各种不同的操作。 有关操作组的详细信息，请参阅[在 Azure 门户中创建和管理操作组](../azure-monitor/platform/action-groups.md)。 有关将基于预算的自动化与操作组结合使用的详细信息，请参阅[使用 Azure 预算管理成本](../billing/billing-cost-management-budget-scenario.md)。
+在为订阅或资源组范围创建或编辑预算时，可以将其配置为调用操作组。 当达到预算阈值时，操作组可以执行各种不同的操作。 当前只有订阅和资源组作用域才支持操作组。 有关操作组的详细信息，请参阅[在 Azure 门户中创建和管理操作组](../azure-monitor/platform/action-groups.md)。 有关将基于预算的自动化与操作组结合使用的详细信息，请参阅[使用 Azure 预算管理成本](../billing/billing-cost-management-budget-scenario.md)。
+
+
 
 若要创建或更新操作组，请在创建或编辑预算时单击 "**管理操作组**"。
 
@@ -116,7 +118,7 @@ ms.locfileid: "73720726"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你已学习了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 门户中创建预算

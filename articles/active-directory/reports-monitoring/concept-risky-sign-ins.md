@@ -2,7 +2,7 @@
 title: 门户中的 "有风险的登录" 报表 |Microsoft Docs
 description: 了解 Azure Active Directory 门户中的“有风险的登录”报告
 services: active-directory
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: 7728fcd7-3dd5-4b99-a0e4-949c69788c0f
 ms.service: active-directory
@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 10/28/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7bb0cd2c98d0133b0eaffce1730fb9f7cb74bf60
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 3f19744e6c860ae315b681f5eb090cba23b153af
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043544"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008339"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“有风险的登录”报告
 
 Azure Active Directory (Azure AD) 可以检测到与用户帐户相关的可疑操作。 对于检测到的每个操作，都会创建一个名为 "**风险检测**" 的记录。 有关更多详细信息，请参阅[Azure AD 风险检测](concept-risk-events.md)。 
 
-可以从 [Azure 门户](https://portal.azure.com)中通过选择“Azure Active Directory”边栏选项卡并导航到“安全性”部分来访问安全报告。 
+你可以从 [Azure 门户](https://portal.azure.com)中通过选择“Azure Active Directory”边栏选项卡并导航到“安全性”部分来访问安全报告。 
 
 根据风险检测来计算两个不同的安全报告：
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 时序见解预览版中的数据存储和入口 | Microsoft Docs
+title: 预览中的数据存储和入口-Azure 时序见解 |Microsoft Docs
 description: 了解 Azure 时序见解预览版中的数据存储和入口。
 author: deepakpalled
 ms.author: dpalled
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: d0cdd78aaa2b58743e16a2e7cfe213a9daed85ff
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 62ee248c06d2b26b935f72b3bb73cf708f949c72
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605883"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014706"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据存储和入口
 

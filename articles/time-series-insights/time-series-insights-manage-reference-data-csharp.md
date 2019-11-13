@@ -1,6 +1,6 @@
 ---
-title: 使用 C# 管理 Azure 时序见解环境中的参考数据 | Microsoft Docs
-description: 本文介绍如何通过创建一个以 C# (c-sharp) .NET 语言编写的自定义应用来管理 Azure 时序见解环境中的参考数据。
+title: 使用C# Azure 时序见解管理 GA 环境中的引用数据 |Microsoft Docs
+description: 了解如何通过创建以C#编写的自定义应用程序来管理你的 GA 环境的引用数据。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,18 +11,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4eb8a22ee56203fe84df6ee1cff779e3f3bdf491
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: a32bf00d21311a1a8041a901f70b9b400a49ab76
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990041"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012568"
 ---
-# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>使用管理 Azure 时序见解环境的 GA 引用数据C#
+# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>使用 C# 管理 Azure 时序见解正式版环境的参考数据
 
 本文介绍可以进行编译以管理 Azure 时序见解环境参考数据的 C# 示例项目。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在编译和运行示例代码之前，请完成以下步骤：
 
@@ -35,7 +35,7 @@ ms.locfileid: "72990041"
 1. 编辑示例代码，以替换在代码开始处的 #DUMMY# 中指定的示例常数。
 
 > [!NOTE]
-> [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)上查看 GA 示例代码。
+> 查看 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) 中的正式版示例代码。
 
 ## <a name="project-dependencies"></a>项目依赖项
 
@@ -246,4 +246,4 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 
 ## <a name="next-steps"></a>后续步骤
 
-- 读取[引用数据 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)。
+- 阅读[参考数据 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)。

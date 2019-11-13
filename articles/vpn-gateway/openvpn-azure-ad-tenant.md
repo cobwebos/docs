@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: alzam
-ms.openlocfilehash: 6730cad4f65648516769476740813c2e3384fe6a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bd8a9413efc4f2130bd71f15f0da2a605b8c03e1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837910"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960686"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>创建用于 P2S OpenVPN 协议连接的 Azure Active Directory 租户
 
@@ -84,7 +84,7 @@ ms.locfileid: "73837910"
 
 6. 出现提示时，选择 "**接受**"。
 
-    ![接受](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![Accept](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 7. 在 Azure AD 的 "**企业应用程序**" 中，会看到 " **Azure VPN** " 已列出。
 
@@ -100,7 +100,7 @@ ms.locfileid: "73837910"
 9. 通过运行以下命令创建并下载配置文件。 更改-ResourcGroupName 和-Name 值，使其与你自己的值匹配。
 
     ```azurepowershell-interactive
-    $profile = New-AzVpnClientConfiguration -ResourceGroupName AADAuth -Name AADauthGW -AuthenticationMethod "EapTls"
+    $profile = New-AzVpnClientConfiguration -Name <name of VPN gateway> -ResourceGroupName <Resource group> -AuthenticationMethod "EapTls"
     $PROFILE.VpnProfileSASUrl
     ```
 

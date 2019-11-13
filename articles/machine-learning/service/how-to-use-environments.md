@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: f733e29fc5fbce764fef9a713747d6793d2ebd43
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 62f298e0efb5c54efdcd15cf470ed4640f720058
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489307"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73957840"
 ---
-# <a name="create-and-manage-reusable-environments-for-training-and-deployment-with-azure-machine-learning"></a>使用 Azure 机器学习创建和管理用于培训和部署的可重复使用的环境。
+# <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>重复使用 Azure 机器学习的培训 & 部署环境。
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在本文中，将了解如何创建和管理 Azure 机器学习[环境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)，以便您可以跟踪和重现项目的软件依赖关系。
@@ -51,7 +51,7 @@ ms.locfileid: "73489307"
 
 当你希望[Conda](https://conda.io/docs/)管理 Python 环境和脚本依赖项时，将使用系统管理的环境。 默认情况下，该服务将采用这种类型的环境，因为它对不是手动配置的远程计算目标有用。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * [安装](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)的适用于 Python 的 Azure 机器学习 SDK。
 * [Azure 机器学习工作区](how-to-manage-workspace.md)。
@@ -121,7 +121,7 @@ myenv = Environment.from_pip_requirements(name = "myenv"
 
 如果本地计算机上有现有的 Conda 环境，则该服务将提供用于创建环境对象的解决方案。 这样，你就可以在远程运行上重用本地交互式环境。
 
-以下代码使用[from_existing_conda_environment （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#from-existing-conda-environment-name--conda-environment-name-)方法 `mycondaenv` 在现有的 Conda 环境中创建环境对象。
+以下代码使用[from_existing_conda_environment （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#from-existing-conda-environment-name--conda-environment-name-)方法 `mycondaenv` 从现有的 Conda 环境中创建环境对象。
 
 ``` python
 myenv = Environment.from_existing_conda_environment(name = "myenv",
@@ -240,7 +240,7 @@ Run.get_environment()
 
 ### <a name="debug-the-image-build"></a>调试映像生成
 
-此示例使用[build （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#build-workspace-)方法以 Docker 映像的形式手动创建环境，并使用[wait_for_completion （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-)监视来自映像生成的输出日志。 然后，生成的映像将显示在 Azure 容器注册表的工作区中，这对于调试很有用。
+此示例使用[build （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#build-workspace-)方法以 Docker 映像的形式手动创建环境，并使用[wait_for_completion （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-)监视映像生成的输出日志。 然后，生成的映像将显示在 Azure 容器注册表的工作区中，这对于调试很有用。
 
 ```python
 from azureml.core import Image
@@ -270,7 +270,7 @@ myenv.docker.base_image_registry="your_registry_location"
 ```
 
 > [!NOTE]
-> 如果你在使用自定义 Docker 映像时指定 `environment.python.user_managed_dependencies=False`，则该服务将在该映像中构建 Conda 环境，并在该环境中执行运行，而不是使用可能已安装在基础映像上的 Python 库。 将参数设置为 `True` 可使用自己的已安装包。
+> 如果你在使用自定义 Docker 映像时指定 `environment.python.user_managed_dependencies=False`，则该服务将在该映像中构建 Conda 环境，并在该环境中执行运行，而不是使用可能已安装在基本映像上的 Python 库。 将参数设置为 `True`，以使用自己安装的包。
 
 ## <a name="using-environments-for-training"></a>使用环境进行培训
 
@@ -359,7 +359,7 @@ service = Model.deploy(
     deployment_config = deployment_config)
 ```
 
-## <a name="example-notebooks"></a>示例笔记本
+## <a name="example-notebooks"></a>示例 Notebook
 
 此[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments)扩展了本文中演示的概念和方法。
 

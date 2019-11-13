@@ -1,29 +1,22 @@
 ---
-title: 搭配使用 Azure 应用程序网关和内部负载均衡器 - PowerShell | Microsoft Docs
+title: 与内部负载均衡器一起使用-Azure 应用程序网关
 description: 本页提供有关使用 Azure 资源管理器创建、配置、启动和删除具有内部负载均衡器 (ILB) 的 Azure 应用程序网关的说明
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
-ms.assetid: 75cfd5a2-e378-4365-99ee-a2b2abda2e0d
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/23/2018
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 70b350e228785e47a41cb83ce0d80b93c8a601c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e0dedb13bf7365e011eb3403fb7ec110a4290ec9
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135224"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012894"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>创建具有内部负载均衡器 (ILB) 的应用程序网关
 
-可以配置使用面向 Internet 的 VIP 或不向 Internet 公开的内部终结点（也称为内部负载均衡器 (ILB) 终结点）的 Azure 应用程序网关。 配置使用 ILB 的网关适用于不向 Internet 公开的内部业务线应用程序。 对于位于不向 Internet 公开的安全边界内的多层应用程序中的服务和层也很有用，但仍需要执行循环负载分散、会话粘性或安全套接字层 (SSL) 终止。
+可向 Azure 应用程序网关配置面向 Internet 的 VIP 或不向 Internet 公开的内部终结点（也称为内部负载均衡器 (ILB) 终结点。 配置使用 ILB 的网关适用于不向 Internet 公开的内部业务线应用程序。 对于位于不向 Internet 公开的安全边界内的多层应用程序中的服务和层也很有用，但仍需要执行循环负载分散、会话粘性或安全套接字层 (SSL) 终止。
 
 本文介绍如何配置具有 ILB 的应用程序网关。
 
@@ -38,26 +31,26 @@ ms.locfileid: "66135224"
 ## <a name="what-is-required-to-create-an-application-gateway"></a>创建应用程序网关需要什么？
 
 * **后端服务器池：** 后端服务器的 IP 地址列表。 列出的 IP 地址应属于虚拟网络子网但位于应用程序网关的不同子网中，或者是公共 IP/VIP。
-* **后端服务器池设置：** 每个池均具有端口、协议和基于 Cookie 的相关性等设置。 这些设置绑定到池，并会应用到池中的所有服务器。
+* **后端服务器池设置：** 每个池都有一些设置，例如端口、协议和基于 Cookie 的关联性。 这些设置绑定到池，并会应用到池中的所有服务器。
 * **前端端口：** 此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，并重定向到后端服务器之一。
-* **侦听器：** 侦听器具有前端端口、协议（Http 或 Https，区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。
-* **规则：** 规则会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到哪个后端服务器池。 目前仅支持 *基本* 规则。 *基本* 规则是一种轮循负载分发模式。
+* 侦听器：侦听器具有前端端口、协议（Http 或 Https，区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。
+* **规则：** 规则会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。 目前仅支持 *基本* 规则。 *基本* 规则是一种轮循负载分发模式。
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
 使用 Azure 经典部署和 Azure 资源管理器部署的差别在于创建应用程序网关的顺序和需要配置的项。
-使用 Resource Manager 时，组成应用程序网关的所有项都将分开配置，并结合在一起来创建应用程序网关资源。
+使用 Resource Manager 时，组成应用程序网关的所有项都将单独配置，并放在一起创建应用程序网关资源。
 
 以下是创建应用程序网关所需执行的步骤：
 
-1. 创建资源管理器的资源组
+1. 创建 Resource Manager 的资源组
 2. 为应用程序网关创建虚拟网络和子网
 3. 创建应用程序网关配置对象
 4. 创建应用程序网关资源
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>创建 Resource Manager 的资源组
 
-确保切换 PowerShell 模式，以便使用 Azure 资源管理器 cmdlet。 [将 Windows PowerShell 与资源管理器配合使用](../powershell-azure-resource-manager.md)中提供了详细信息。
+确保切换 PowerShell 模式，以便使用 Azure Resource Manager cmdlet。 [将 Windows PowerShell 与资源管理器配合使用](../powershell-azure-resource-manager.md)中提供了详细信息。
 
 ### <a name="step-1"></a>步骤 1
 
@@ -91,13 +84,13 @@ Select-AzSubscription -Subscriptionid "GUID of subscription"
 New-AzResourceGroup -Name appgw-rg -location "West US"
 ```
 
-Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
+Azure 资源管理器要求所有资源组指定一个位置。 此位置用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
 
 在上述示例中，我们创建了名为“appgw-rg”的资源组，位置为“美国西部”。
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>为应用程序网关创建虚拟网络和子网
 
-以下示例演示如何使用资源管理器创建虚拟网络：
+以下示例演示如何使用 Resource Manager 创建虚拟网络：
 
 ### <a name="step-1"></a>步骤 1
 
@@ -121,7 +114,7 @@ $vnet = New-AzVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Locati
 $subnet = $vnet.subnets[0]
 ```
 
-此步骤会将子网对象分配到变量 $subnet 以完成后续步骤。
+此步骤会将子网对象分配给变量 $subnet 以完成后续步骤。
 
 ## <a name="create-an-application-gateway-configuration-object"></a>创建应用程序网关配置对象
 
@@ -139,7 +132,7 @@ $gipconfig = New-AzApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $
 $pool = New-AzApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 10.1.1.8,10.1.1.9,10.1.1.10
 ```
 
-此步骤配置名为“pool01”、IP 地址为“10.1.1.8, 10.1.1.9, 10.1.1.10”的后端 IP 地址池。 这些 IP 地址将接收来自前端 IP 终结点的网络流量。 替换上述 IP 地址，添加自己的应用程序 IP 地址终结点。
+此步骤配置名为“pool01”、IP 地址为“10.1.1.8, 10.1.1.9, 10.1.1.10”的后端 IP 地址池。 这些 IP 地址接收来自前端 IP 终结点的网络流量。 替换上述 IP 地址，添加用户自己的应用程序 IP 地址终结点。
 
 ### <a name="step-3"></a>步骤 3
 
@@ -267,7 +260,7 @@ Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 
 如果要配置 SSL 卸载，请参阅 [Configure an application gateway for SSL offload](application-gateway-ssl.md)（配置应用程序网关以进行 SSL 卸载）。
 
-如果要将应用程序网关配置为与 ILB 配合使用，请参阅 [创建具有内部负载均衡器 (ILB) 的应用程序网关](application-gateway-ilb.md)。
+若要将应用程序网关配置为与 ILB 配合使用，请参阅[创建具有内部负载均衡器 (ILB) 的应用程序网关](application-gateway-ilb.md)。
 
 如需负载均衡选项的其他常规信息，请参阅：
 

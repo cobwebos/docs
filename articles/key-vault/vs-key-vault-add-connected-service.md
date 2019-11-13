@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 9331f13bd85d9df0d47f8fa9d0964974764691f7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4cbc4044b5d1270cecd1a271d2a1db02801650dd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815105"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012777"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>使用 Visual Studio 连接服务将 Key Vault 添加到 Web 应用程序
 
@@ -129,11 +129,26 @@ ms.locfileid: "73815105"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组时，可将其删除。 这将删除 Key Vault 及相关资源。 要通过门户删除资源组，请执行以下操作：
+不再需要资源组时，可将其删除。 这会删除 Key Vault 和相关的资源。 若要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，将其选中。
 2. 选择“删除资源组”。
 3. 在 "**键入资源组名称：** " 框中，输入资源组的名称，然后选择 "**删除**"。
+
+## <a name="troubleshooting"></a>故障排除
+
+如果密钥保管库运行的 Microsoft 帐户不同于你在 Visual Studio 中登录的其他（例如，key vault 正在工作帐户上运行，但 Visual Studio 正在使用你的专用帐户），则你会在 Program.cs 文件中收到错误，则 Visual Studio 无法获取对密钥保管库的访问权限。 解决此问题：
+
+1. 中转到[Azure 门户](https://portal.azure.com)并打开 Key Vault。
+
+1. 选择 "**访问策略**"，然后选择 "**添加访问策略**"，然后选择你作为主体登录的帐户。
+
+1. 在 Visual Studio 中，选择 "**文件** > **帐户设置**"。
+从 "**所有帐户**" 部分中选择 "**添加帐户**"。 使用你选择作为访问策略的主体的帐户登录。
+
+1. 选择 "**工具**" > **选项**，并查找 " **Azure 服务身份验证**"。 然后选择刚添加到 Visual Studio 的帐户。
+
+现在，调试应用程序时，Visual Studio 会连接到密钥保管库所在的帐户。
 
 ## <a name="how-your-aspnet-core-project-is-modified"></a>如何修改 ASP.NET Core 项目
 
@@ -143,7 +158,7 @@ ms.locfileid: "73815105"
 
 影响项目文件 .NET 引用和 NuGet 包引用。
 
-| 类型 | 参考 |
+| 类型 | 引用 |
 | --- | --- |
 | NuGet | Microsoft.AspNetCore.AzureKeyVault.HostingStartup |
 
@@ -179,7 +194,7 @@ ms.locfileid: "73815105"
 
 影响项目文件 .NET 引用和 `packages.config`（NuGet 引用）。
 
-| 类型 | 参考 |
+| 类型 | 引用 |
 | --- | --- |
 | .NET; NuGet | Microsoft.Azure.KeyVault |
 | .NET; NuGet | Microsoft.Azure.KeyVault.WebKey |

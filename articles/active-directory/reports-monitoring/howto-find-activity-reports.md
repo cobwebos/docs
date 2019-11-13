@@ -3,7 +3,7 @@ title: 在 Azure 门户中查找用户活动报告 |Microsoft Docs
 description: 了解在 Azure 门户中何处查找 Azure Active Directory 用户活动报告。
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7fdf8c17c8dcbdc8203cb46342c8474b3d9832f
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: d356f8c10ae3770d9f4ade100ab0496ee58d772f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820925"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008212"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>在 Azure 门户中查找活动报告
 
@@ -52,10 +52,10 @@ ms.locfileid: "72820925"
 
 类别包括：
 
-- 所有
+- All
 - AdministrativeUnit
 - ApplicationManagement
-- Authentication
+- 身份验证
 - 授权
 - 联系人
 - 设备
@@ -65,7 +65,7 @@ ms.locfileid: "72820925"
 - GroupManagement
 - 其他
 - 策略
-- Microsoft.resourcemanagement.service.exe.config
+- ResourceManagement
 - RoleManagement
 - UserManagement
 
@@ -73,7 +73,7 @@ ms.locfileid: "72820925"
 
 服务包括：
 
-- 所有
+- All
 - 访问评审
 - 帐户预配 
 - 应用程序 SSO
@@ -108,7 +108,7 @@ ms.locfileid: "72820925"
 
 !["筛选登录事件" 页](./media/howto-find-activity-reports/07.png ""筛选登录事件" 页")
 
-## <a name="security-reports"></a>安全报告
+## <a name="security-reports"></a>安全报表
 
 ### <a name="anomalous-activity-reports"></a>异常活动报告
 
@@ -139,7 +139,7 @@ ms.locfileid: "72820925"
 - [有风险的用户](concept-user-at-risk.md)
 - [有风险的登录](concept-risky-sign-ins.md)
 
-    ![安全报表](./media/howto-find-activity-reports/04.png "安全报告")
+    ![安全报告](./media/howto-find-activity-reports/04.png "安全报表")
 
 ## <a name="troubleshoot-issues-with-activity-reports"></a>排查活动报告问题
 
@@ -155,7 +155,7 @@ ms.locfileid: "72820925"
 
 下载 Azure 门户中的活动日志时，会将扩展限制为250000个记录，并按最新的顺序进行排序。 
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 可以随时通过 [Azure AD 报告 API](concept-reporting-api.md) 获取多达一百万条记录。
 
@@ -171,12 +171,12 @@ ms.locfileid: "72820925"
 
 操作不会立即显示在活动日志中。 下表枚举了活动日志的延迟数字。 
 
-| 报告 | &nbsp; | 延迟 (P95) | 延迟 (P99) |
+| 报表 | &nbsp; | 延迟 (P95) | 延迟 (P99) |
 |--------|--------|---------------|---------------|
 | 目录审核 | &nbsp; | 2 分钟 | 5 分钟 |
 | 登录活动 | &nbsp; | 2 分钟 | 5 分钟 | 
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 等待 15 分钟到 2 小时，再看操作是否显示在日志中。 如果 2 小时后仍未看到日志，请[提交支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，我们会进行调查。
 
@@ -192,12 +192,12 @@ ms.locfileid: "72820925"
 
 操作不会立即显示在活动日志中。 下表枚举了活动日志的延迟数字。 
 
-| 报告 | &nbsp; | 延迟 (P95) | 延迟 (P99) |
+| 报表 | &nbsp; | 延迟 (P95) | 延迟 (P99) |
 |--------|--------|---------------|---------------|
 | 目录审核 | &nbsp; | 2 分钟 | 5 分钟 |
 | 登录活动 | &nbsp; | 2 分钟 | 5 分钟 | 
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 等待 15 分钟到 2 小时，再看操作是否显示在日志中。 如果 2 小时后仍未看到日志，请[提交支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，我们会进行调查。
 
@@ -213,14 +213,14 @@ ms.locfileid: "72820925"
 
 根据你持有的许可证，Azure Active Directory 操作会按以下持续时间存储活动报告：
 
-| 报告           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| 报表           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | ---              | ----   |  ---           | ---                 | ---                 |
 | 目录审核  | &nbsp; |   7 天     | 30 天             | 30 天             |
 | 登录活动 | &nbsp; | 不可用。 可以在单个用户配置文件边栏选项卡中访问自己在 7 天内的登录活动 | 30 天 | 30 天             |
 
 有关详细信息，请参阅 [Azure Active Directory 报告保留策略](reference-reports-data-retention.md)。  
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 可以通过两个选项将数据保留 30 天以上。 可以使用 [Azure AD 报告 API](concept-reporting-api.md) 以编程方式检索数据并将其存储在数据库中。 也可将审核日志集成到第三方 SIEM 系统（例如 Splunk 或 SumoLogic）中。
 

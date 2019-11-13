@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e075091461949639fc36ffb9feab69ac5399ae61
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0196e6fb4b2cd52fd66a26e07e8d4ce71983bc16
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491983"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013195"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>用于构建高度可用的 Azure 存储应用程序的区域冗余存储（ZRS）
 
@@ -24,7 +24,7 @@ ms.locfileid: "73491983"
 
 ZRS 目前支持标准常规用途 v2 和 FileStorage 存储帐户类型。 有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。
 
-ZRS 适用于块 Blob、非磁盘页 Blob、文件、表和队列。
+ZRS 适用于块 blob、非磁盘页 blob、标准文件共享、表和队列。
 
 对于常规用途 v2 帐户，ZRS 已在以下区域公开发布：
 
@@ -39,7 +39,7 @@ ZRS 适用于块 Blob、非磁盘页 Blob、文件、表和队列。
 - 美国东部 2
 - 美国西部 2
 
-对于 FileStorage 帐户，ZRS 在以下区域公开提供：
+对于 FileStorage 帐户（高级文件共享），ZRS 在以下区域公开提供：
 
 - 西欧
 - 美国东部
@@ -73,16 +73,16 @@ Microsoft 将继续在其他 Azure 区域推出 ZRS。 请不时地查看 [Azure
 > [!IMPORTANT]
 > 高级文件共享目前不支持实时迁移。 目前仅支持手动复制或移动数据。
 
-如果需要在特定日期完成迁移，请考虑执行手动迁移。 手动迁移比实时迁移更灵活。 使用手动迁移可以控制时间。
+如果需要在特定日期之前完成迁移，请考虑进行手动迁移。 手动迁移比实时迁移更灵活。 使用手动迁移可以控制时间。
 
 若要执行手动迁移，可使用以下选项：
 - 使用现有的工具（例如 AzCopy）、某个 Azure 存储客户端库或可靠的第三方工具。
 - 如果你熟悉 Hadoop 或 HDInsight，可将源和目标 (ZRS) 帐户附加到群集。 然后使用 DistCp 等工具来并行化数据复制过程。
 - 使用某个 Azure 存储客户端库生成自己的工具。
 
-手动迁移可能导致应用程序关闭。 如果应用程序需要高可用性，则还可以使用 Microsoft 提供的实时迁移选项。 实时迁移是一种就地迁移，无需停机。 
+手动迁移可能导致应用程序关闭。 如果应用程序需要高可用性，则还可以使用 Microsoft 提供的实时迁移选项。 实时迁移属于就地迁移，不停机。 
 
-在实时迁移过程中，在源与目标存储阵列之间迁移数据时，可以使用自己的存储帐户。 在迁移过程中，你可以使用与往常相同的持久性和可用性 SLA。
+在实时迁移过程中，在源与目标存储阵列之间迁移数据时，可以使用自己的存储帐户。 在迁移期间，持久性和可用性 SLA 级别与平时相同。
 
 请注意实时迁移的以下限制：
 
@@ -91,7 +91,7 @@ Microsoft 将继续在其他 Azure 区域推出 ZRS。 请不时地查看 [Azure
 - 帐户必须包含数据。
 - 只能在同一区域中迁移数据。 若要将数据迁移到不包含源帐户的区域中的 ZRS 帐户，则必须执行手动迁移。
 - 只有标准存储帐户类型才支持实时迁移。 高级存储帐户必须手动迁移。
-- 不支持从 ZRS 到 LRS、GRS 或 RA-GRS 的实时迁移。 需要手动将数据移动到新的或现有的存储帐户。
+- 不支持从 ZRS 到 LRS、GRS 或 RA-GRS 的实时迁移。 需手动将数据移到新的或现有的存储帐户。
 - 托管磁盘仅适用于 LRS，无法迁移到 ZRS。 可以将标准 SSD 托管磁盘的快照和映像存储在标准 HDD 存储上，并在[LRS 和 ZRS 选项之间进行选择](https://azure.microsoft.com/pricing/details/managed-disks/)。 有关与可用性集的集成，请参阅[Azure 托管磁盘简介](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)。
 - 包含存档数据的 LRS 或 GRS 帐户无法迁移到 ZRS。
 
@@ -115,11 +115,11 @@ Microsoft 将继续在其他 Azure 区域推出 ZRS。 请不时地查看 [Azure
 
 **是否应该在迁移期间计划停机时间？**
 
-迁移不会造成停机。 在实时迁移期间，你可以继续使用存储帐户，同时在源和目标存储 stamp 之间迁移数据。 在迁移过程中，你可以使用与往常相同的持久性和可用性 SLA。
+迁移不会造成停机。 在实时迁移期间，你可以继续使用存储帐户，同时在源和目标存储 stamp 之间迁移数据。 在迁移期间，持久性和可用性 SLA 级别与平时相同。
 
 **迁移是否有任何数据丢失？**
 
-与迁移关联的数据不会丢失。 在迁移过程中，你可以使用与往常相同的持久性和可用性 SLA。
+与迁移关联的数据不会丢失。 在迁移期间，持久性和可用性 SLA 级别与平时相同。
 
 **迁移完成后，是否需要对应用程序进行任何更新？**
 

@@ -1,7 +1,7 @@
 ---
 title: 使用脱机计算方法-Personalizer
 titleSuffix: Azure Cognitive Services
-description: 在本 C# 快速入门中使用个性化体验创建服务创建反馈循环。
+description: 本文将介绍如何使用脱机评估来度量应用的有效性并分析学习循环。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f382c07dea75cb534632061c986dd8044c4aafa9
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6b7414d67a5c5b068c675ef7b57391b8990a7a16
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515587"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953077"
 ---
 # <a name="offline-evaluation"></a>脱机评估
 
@@ -98,5 +98,5 @@ ms.locfileid: "72515587"
 
 ## <a name="next-steps"></a>后续步骤
 
-[配置 Personalizer](how-to-settings.md) 
+[配置 Personalizer](how-to-settings.md)
 [运行脱机评估](how-to-offline-evaluation.md)了解[Personalizer 的工作方式](how-personalizer-works.md)

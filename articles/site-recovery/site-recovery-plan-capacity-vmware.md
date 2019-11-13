@@ -1,5 +1,5 @@
 ---
-title: 规划容量和缩放以便使用 Azure Site Recovery 将 VMware 灾难恢复到 Azure | Microsoft Docs
+title: 为 VMware 灾难恢复规划容量 Azure Site Recovery
 description: 本文可帮助你在使用 Azure Site Recovery 设置 VMware VM 到 Azure 的灾难恢复时规划容量和缩放。
 author: nsoneji
 manager: garavd
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 0bf1b34295d827124198206e743bc21d5f7eb904
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747897"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961359"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>规划容量和缩放以便将 VMware 灾难恢复到 Azure
 

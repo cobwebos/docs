@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3a79c95d627bbdec3a91a1d048a48ff061b308ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cb0f373000d09cb387fb73eec344997381fe45d1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489354"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961661"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure 机器学习 Azure Kubernetes 服务和 Azure 容器实例部署的故障排除
 
@@ -42,11 +42,21 @@ ms.locfileid: "73489354"
 
 请参阅[模型管理](concept-model-management-and-deployment.md)简介，详细了解此过程。
 
+## <a name="prerequisites"></a>先决条件
+
+* 一个 **Azure 订阅**。 如果没有，请尝试[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
+* [AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
+* 若要在本地调试，您必须在您的本地系统上安装一个工作 Docker。
+
+    若要验证 Docker 安装，请从终端或命令提示符使用命令 `docker run hello-world`。 有关安装 Docker 或排查 Docker 错误的信息，请参阅[Docker 文档](https://docs.docker.com/)。
+
 ## <a name="before-you-begin"></a>开始之前
 
 如果遇到任何问题，首先需要将部署任务（上述）分解为单独的步骤，以查出问题所在。
 
-如果你使用的是[webservice （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) api 或[deploy_from_model （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) api，则将部署分解成任务非常有用，因为这两个函数都作为单个操作执行上述步骤。 通常，这些 Api 是非常方便的，但通过将它们替换为以下 API 调用，有助于在排除故障时分解这些步骤。
+如果你使用的是[webservice （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) Api 或[webservice. deploy_from_model （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) api，则将部署分解成任务非常有用，因为这两个函数都作为单个操作执行上述步骤。 通常，这些 Api 是非常方便的，但通过将它们替换为以下 API 调用，有助于在排除故障时分解这些步骤。
 
 1. 注册模型。 下面是一些示例代码：
 
@@ -90,7 +100,7 @@ ms.locfileid: "73489354"
 
 ## <a name="image-building-fails"></a>映像生成失败
 
-如果无法生成 Docker 映像， [wait_for_creation （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-)或[wait_for_deployment （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-)调用将失败，并会出现一些可能提供某些线索的错误消息。 还可以从图像生成日志中找到错误的更多详细信息。 下面是一些显示如何发现映像生成日志 URI 的代码示例。
+如果无法生成 Docker 映像，则[wait_for_creation （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-)或[wait_for_deployment （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-)调用失败，并出现一些可以提供一些线索的错误消息。 还可以从图像生成日志中找到错误的更多详细信息。 下面是一些显示如何发现映像生成日志 URI 的代码示例。
 
 ```python
 # if you already have the image object handy
@@ -155,9 +165,6 @@ b\'{"code":"InternalServerError","statusCode":500,"message":"An internal server 
 ## <a name="debug-locally"></a>本地调试
 
 如果在将模型部署到 ACI 或 AKS 时遇到问题，请尝试将其部署为本地模式。 使用本地可以更轻松地解决问题。 包含模型的 Docker 映像将下载并在本地系统上启动。
-
-> [!IMPORTANT]
-> 本地部署需要在你的本地系统上进行工作的 Docker 安装。 在部署本地之前，Docker 必须正在运行。 有关安装和使用 Docker 的信息，请参阅[https://www.docker.com/](https://www.docker.com/)。
 
 > [!WARNING]
 > 生产方案不支持本地部署。
@@ -245,7 +252,7 @@ print(ws.webservices['mysvc'].get_logs())
 
 ## <a name="function-fails-get_model_path"></a>函数故障：get_model_path()
 
-通常，在计分脚本的 `init()` 函数中，将调用[_model_path （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-)函数，以在容器中查找模型文件或模型文件的文件夹。 如果找不到模型文件或文件夹，该函数将失败。 调试此错误的最简单方法是在容器 shell 中运行以下 Python 代码：
+通常，在评分脚本的 `init()` 函数中，调用了[get_model_path （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-)函数，以在容器中查找模型文件或模型文件的文件夹。 如果找不到模型文件或文件夹，该函数将失败。 调试此错误的最简单方法是在容器 shell 中运行以下 Python 代码：
 
 ```python
 from azureml.core.model import Model
@@ -325,8 +332,8 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
 
 > [!IMPORTANT]
 > 当使用 `Model.deploy()` 和 `LocalWebservice.deploy_configuration` 在本地部署模型时，此调试方法不起作用。 相反，必须使用[save-containerimage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py)类创建映像。 
->
-> 本地部署需要在你的本地系统上进行工作的 Docker 安装。 在部署本地之前，Docker 必须正在运行。 有关安装和使用 Docker 的信息，请参阅[https://www.docker.com/](https://www.docker.com/)。
+
+本地部署需要在你的本地系统上进行工作的 Docker 安装。 有关使用 Docker 的详细信息，请参阅[Docker 文档](https://docs.docker.com/)。
 
 ### <a name="configure-development-environment"></a>配置开发环境
 

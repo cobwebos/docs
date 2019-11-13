@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 为基于 IIS 的多层 Web 应用程序设置灾难恢复 | Microsoft Docs
+title: 使用 Azure Site Recovery 为 IIS web 应用设置灾难恢复
 description: 了解如何使用 Azure Site Recovery 复制 IIS Web 场虚拟机。
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 66b9342f1a67c4c9d35fda447a297cc64d048c1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 513a0f28fc03cbf24e35112245c9756d5ce00783
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480289"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954669"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>为基于 IIS 的多层 Web 应用程序设置灾难恢复
 
@@ -26,9 +26,9 @@ ms.locfileid: "66480289"
 
 本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 保护基于 Internet Information Services (IIS) 的 Web 应用程序。 内容包括如何将基于 IIS 的三层 Web 应用程序复制到 Azure、如何执行灾难恢复演练，以及如何将应用程序故障转移到 Azure 的最佳做法。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-开始之前，请确保自己知道如何执行以下任务：
+在开始之前，请确保知道如何执行以下任务：
 
 * [将虚拟机复制到 Azure](vmware-azure-tutorial.md)
 * [设计恢复网络](site-recovery-network-design.md)
@@ -58,18 +58,18 @@ ms.locfileid: "66480289"
 
 ### <a name="source-and-target"></a>源和目标
 
-场景 | 到辅助站点 | 到 Azure
+方案 | 到辅助站点 | 到 Azure
 --- | --- | ---
 Hyper-V | 是 | 是
 VMware | 是 | 是
 物理服务器 | 否 | 是
-Azure|NA|是
+Azure|不可用|是
 
 ## <a name="replicate-virtual-machines"></a>复制虚拟机
 
 若要开始将所有 IIS Web 场虚拟机复制到 Azure，请遵照[在 Site Recovery 中执行到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)中的指导。
 
-如果使用的是静态 IP，可以指定希望虚拟机采用的 IP 地址。 若要设置 IP 地址，请转到“计算和网络设置” > “目标 IP”   。
+如果使用的是静态 IP，可以指定希望虚拟机采用的 IP 地址。 若要设置 IP 地址，请转到“计算和网络设置” **“目标 IP”**  > 。
 
 ![演示如何在 Site Recovery 的“计算和网络”窗格中设置目标 IP 的屏幕截图](./media/site-recovery-active-directory/dns-target-ip.png)
 
@@ -95,7 +95,7 @@ Azure|NA|是
 在故障转移后或测试故障转移期间，可能需要在 Azure 虚拟机上执行一些操作才能让 IIS Web 场正常工作。 可将某些故障转移后的操作自动化。 例如，可在恢复计划中添加相应的脚本，来更新 DNS 条目、更改站点绑定或更改连接字符串。 [将 VMM 脚本添加到恢复计划](site-recovery-how-to-add-vmmscript.md)介绍了如何使用脚本来设置自动化任务。
 
 #### <a name="dns-update"></a>DNS 更新
-如果为 DNS 配置了动态 DNS 更新，则虚拟机在启动时，通常会使用新的 IP 地址更新 DNS。 如果想要添加一个明确的步骤来使用虚拟机的新 IP 地址更新 DNS，请添加这个[用于更新 DNS 中的 IP 的脚本](https://aka.ms/asr-dns-update)，作为恢复计划组中的故障转移后操作。  
+如果为动态 DNS 更新配置了 DNS，则虚拟机在启动时，通常会使用新的 IP 地址更新 DNS。 如果想要添加一个明确的步骤来使用虚拟机的新 IP 地址更新 DNS，请添加这个[用于更新 DNS 中的 IP 的脚本](https://aka.ms/asr-dns-update)，作为恢复计划组中的故障转移后操作。  
 
 #### <a name="connection-string-in-an-applications-webconfig"></a>应用程序 web.config 中的连接字符串
 连接字符串指定与网站通信的数据库。 如果连接字符串包含数据库虚拟机的名称，则故障转移后无需进行其他步骤。 应用程序可自动与数据库通信。 此外，如果数据库虚拟机的 IP 地址得到保留，则不需要更新连接字符串。 
@@ -116,7 +116,7 @@ Azure|NA|是
 
 > [!NOTE]
 >
-> 如果将站点绑定设置为“全部取消分配”，则故障转移后不需要更新此绑定。  此外，如果与站点关联的 IP 地址在故障转移后未发生未更改，则不需要更新站点绑定。 （能否保留 IP 地址取决于网络体系结构以及分配给主站点和恢复站点的子网。 因此，在组织中不一定能够使用绑定。）
+> 如果将站点绑定设置为“全部取消分配”，则故障转移后不需要更新此绑定。 此外，如果与站点关联的 IP 地址在故障转移后未发生未更改，则不需要更新站点绑定。 （能否保留 IP 地址取决于网络体系结构以及分配给主站点和恢复站点的子网。 因此，在组织中不一定能够使用绑定。）
 
 ![演示如何设置 SSL 绑定的屏幕截图](./media/site-recovery-iis/sslbinding.png)
 
@@ -142,10 +142,10 @@ Azure|NA|是
 
 1. 在 Azure 门户中，选择恢复服务保管库。
 2. 选择针对 IIS Web 场创建的恢复计划。
-3. 选择“测试故障转移”  。
+3. 选择“测试故障转移”。
 4. 若要启动测试故障转移过程，请选择恢复点和 Azure 虚拟网络。
 5. 当辅助环境启动时，可以执行验证。
-6. 完成验证后，选择“验证完成”可清理测试故障转移环境。 
+6. 完成验证后，选择“验证完成”可清理测试故障转移环境。
 
 有关详细信息，请参阅[在 Site Recovery 中执行到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)。
 
@@ -153,7 +153,7 @@ Azure|NA|是
 
 1. 在 Azure 门户中，选择恢复服务保管库。
 1. 选择针对 IIS Web 场创建的恢复计划。
-1. 选择“故障转移”。 
+1. 选择“故障转移”。
 1. 若要启动故障转移过程，请选择恢复点。
 
 有关详细信息，请参阅 [Site Recovery 中的故障转移](site-recovery-failover.md)。

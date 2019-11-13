@@ -11,15 +11,16 @@ ms.date: 07/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 97077b9f72de8792e6aba1d72ff34b9185b2d998
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0b91d22454d6023094f269b184c845047092b4fb
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683809"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954271"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>在 Azure 数据工厂中转换数据
 > [!div class="op_single_selector"]
+> * [映射数据流](data-flow-create.md)
 > * [Hive](transform-data-using-hadoop-hive.md)  
 > * [Pig](transform-data-using-hadoop-pig.md)  
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
@@ -34,9 +35,9 @@ ms.locfileid: "73683809"
 > * [.NET 自定义](transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="overview"></a>概述
-本文介绍了 Azure 数据工厂中的数据转换活动，可利用这些活动将原始数据转换和处理为预测和见解。 转换活动在计算环境（例如 Azure HDInsight 群集或 Azure Batch）中执行。 其提供了相关文章链接，内附各转换活动的详细信息。
+本文介绍 Azure 数据工厂中的数据转换活动，你可以使用这些活动将原始数据转换和处理为大规模预测和见解。 在计算环境（如 Azure Databricks 或 Azure HDInsight）中执行转换活动。 其提供了相关文章链接，内附各转换活动的详细信息。
 
-数据工厂支持以下数据转换活动，这些活动既可以单独添加到[管道](concepts-pipelines-activities.md)，也可以与其他活动关联在一起添加。
+数据工厂支持以下数据转换活动，这些活动可单独添加到[管道](concepts-pipelines-activities.md)，还可与其他活动关联在一起。
 
 ## <a name="transform-natively-in-azure-data-factory-with-data-flows"></a>将 Azure 数据工厂中的本机转换为数据流
 
@@ -49,6 +50,8 @@ ms.locfileid: "73683809"
 通过 Azure 数据工厂中的整理数据流，可以在云规模上以迭代方式进行无代码的数据准备。 整理数据流与[Power Query Online](https://docs.microsoft.com/power-query/)集成，并通过 spark 执行将 Power Query M 功能提供给云规模的数据整理。 有关详细信息，请参阅[整理 data](wrangling-data-flow-overview.md)flow。
 
 ## <a name="external-transformations"></a>外部转换
+
+或者，您可以自行编写代码转换并管理外部计算环境。
 
 ### <a name="hdinsight-hive-activity"></a>HDInsight Hive 活动
 数据工厂管道中的 HDInsight Hive 活动会在自己的或基于 Windows/Linux 的按需 HDInsight 群集上执行 Hive 查询。 有关此活动的详细信息，请参阅 [Hive 活动](transform-data-using-hadoop-hive.md)一文。 
@@ -80,7 +83,7 @@ Data Lake Analytics U-SQL 活动在 Azure Data Lake Analytics 群集上运行 U-
 
 ### <a name="databricks-notebook-activity"></a>Databricks Notebook 活动
 
-数据工厂管道中的 Azure Databricks Notebook 活动在 Azure Databricks 工作区中运行 Databricks Notebook。Azure Databricks 是一个用于运行 Apache Spark 的托管平台。 请参阅[通过运行 Databricks Notebook 转换数据](transform-data-databricks-notebook.md)。
+数据工厂管道中的 Azure Databricks 笔记本活动在 Azure Databricks 工作区中运行 Databricks 笔记本。 Azure Databricks 是一个用于运行 Apache Spark 的托管平台。 请参阅[通过运行 Databricks Notebook 转换数据](transform-data-databricks-notebook.md)。
 
 ### <a name="databricks-jar-activity"></a>Databricks Jar 活动
 

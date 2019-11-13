@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 16d05203e6c8e845b2354298880d132801e4b952
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 1a9cebe334b266dfcf7f06608fd6a526ded7179b
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882572"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73986504"
 ---
 Azure 存储提供多种类型的存储帐户。 每个类型支持不同的功能，并具有自身的定价模型。 在创建存储帐户之前，请考虑到这些差异，以确定最适合应用程序的帐户类型。 存储帐户的类型包括：
 
@@ -25,13 +25,13 @@ Azure 存储提供多种类型的存储帐户。 每个类型支持不同的功�
 
 下表描述了存储帐户的类型及其功能：
 
-| 存储帐户类型 | 支持的服务                       | 支持的性能层      | 支持的访问层         | 复制选项               | 部署模型<div role="complementary" aria-labelledby="deployment-model"><sup>1</sup></div> | 加密<div role="complementary" aria-labelledby="encryption"><sup>2</sup></div> |
+| 存储帐户类型 | 支持的服务                       | 支持的性能层      | 支持的访问层         | 复制选项               | 部署模型<div role="complementary" aria-labelledby="deployment-model"><sup>1</sup></div> | Encryption<div role="complementary" aria-labelledby="encryption"><sup>2</sup></div> |
 |----------------------|------------------------------------------|-----------------------------|--------------------------------|-----------------------------------|------------------------------|------------------------|
-| 常规用途 V2   | Blob、文件、队列、表和磁盘       | 标准、高级<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | 热、冷、存档<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS，GRS，RA-GRS，ZRS，GZRS （预览版），RA-GZRS （预览版）<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div> | 资源管理器             | 加密              |
-| 常规用途 V1   | Blob、文件、队列、表和磁盘       | 标准、高级<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | N/A                            | LRS、GRS、RA-GRS                  | 资源管理器、经典    | 加密              |
-| BlockBlobStorage   | Blob（仅限块 Blob 和追加 Blob） | 高级                       | N/A                            | LRS                               | 资源管理器             | 加密              |
-| FileStorage   | 仅文件 | 高级                       | N/A                            | LRS                               | 资源管理器             | 加密              |
-| BlobStorage         | Blob（仅限块 Blob 和追加 Blob） | 标准版                      | 热、冷、存档<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS、GRS、RA-GRS                  | 资源管理器             | 加密              |
+| 常规用途 V2   | Blob、文件、队列、表和磁盘       | 标准、高级<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | 热、冷、存档<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS，GRS，RA-GRS，ZRS，GZRS （预览版），RA-GZRS （预览版）<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div> | Resource Manager             | 加密              |
+| 常规用途 V1   | Blob、文件、队列、表和磁盘       | 标准、高级<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | 不适用                            | LRS、GRS、RA-GRS                  | 资源管理器、经典    | 加密              |
+| BlockBlobStorage   | Blob（仅限块 Blob 和追加 Blob） | 高级                       | 不适用                            | LRS、ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | Resource Manager             | 加密              |
+| FileStorage   | 仅文件 | 高级                       | 不适用                            | LRS、ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | Resource Manager             | 加密              |
+| BlobStorage         | Blob（仅限块 Blob 和追加 Blob） | 标准                      | 热、冷、存档<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS、GRS、RA-GRS                  | Resource Manager             | 加密              |
 
 <div id="deployment-model"><sup>1</sup>建议使用 Azure 资源管理器部署模型。 仍将在某些位置创建使用经典部署模型的存储帐户，继续支持现有的经典帐户。 有关详细信息，请参阅 <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model">Azure 资源管理器与经典部署：了解部署模型和资源状态</a>。</div>
 
@@ -39,6 +39,6 @@ Azure 存储提供多种类型的存储帐户。 每个类型支持不同的功�
 
 <div id="archive"><sup>3</sup>存档层仅在单个 Blob 级别可用，在存储帐户级别不可用。 只能存档块 Blob 和追加 Blob。 有关详细信息，请参阅 <a href="https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers">Azure Blob 存储：热存储层、冷存储层和存档存储层</a>。</div>
 
-<div id="zone-redundant-storage"><sup>4</sup>区域冗余存储（ZRS）和异地冗余存储（GZRS）（预览版）仅适用于标准常规用途 v2 存储帐户。 有关 ZRS 的详细信息，请参阅<a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs">区域冗余存储 (ZRS)：具有高可用性的 Azure 存储应用程序</a>。 有关 GZRS 的详细信息，请参阅<a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy-gzrs">区域冗余存储以获得高可用性和最大持续性（预览版）</a>。 有关其他复制选项的详细信息，请参阅 <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy">Azure 存储复制</a>。</div>
+<div id="zone-redundant-storage"><sup>4</sup>区域冗余存储（ZRS）和异地冗余存储（GZRS/RA-GZRS）（预览版）仅适用于某些区域中的标准常规用途 V2、BlockBlobStorage 和 FileStorage 帐户。 有关 ZRS 的详细信息，请参阅<a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs">区域冗余存储 (ZRS)：具有高可用性的 Azure 存储应用程序</a>。 有关 GZRS/GZRS 的详细信息，请参阅<a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy-gzrs">区域冗余存储以获得高可用性和最大持续性（预览版）</a>。 有关其他复制选项的详细信息，请参阅 <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy">Azure 存储复制</a>。</div>
 
 <div id="premium-performance"><sup>5</sup>常规用途 v2 和常规用途 v1 帐户的高级性能仅适用于磁盘和页 blob。</div>

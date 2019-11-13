@@ -1,5 +1,5 @@
 ---
-title: 了解 Azure 数字孪生对象模型和空间智能图 |Microsoft Docs
+title: 了解对象模型和空间智能图-Azure 数字孪生 |Microsoft Docs
 description: 使用 Azure 数字孪生对人员、位置和设备之间的关系进行建模
 ms.author: alinast
 author: alinamstanciu
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/05/2019
-ms.openlocfilehash: da345c0cf039e3cc2f7f8828a0769b6e65048571
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 85fb67248a69a2726fef99ebe4749d61807631e4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930416"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010090"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>了解数字孪生对象模型和空间智能图
 

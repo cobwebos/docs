@@ -10,12 +10,12 @@ author: ronychatterjee
 ms.author: achatter
 ms.reviewer: davidph
 ms.date: 11/07/2019
-ms.openlocfilehash: 976c849f9cb48e1c197f70d10e911216a6a7425c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 744ac9f8526b7d65709d3627a5f90b31d234b2cd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822850"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009078"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-database-edge-preview"></a>在 SQL 数据库边缘预览中通过 ONNX 进行机器学习和 AI
 
@@ -27,25 +27,20 @@ Azure SQL 数据库边缘预览版中的机器学习支持[开放式神经网络
 
 ## <a name="get-onnx-models"></a>获取 ONNX 模型
 
-可以通过多种方式获取 ONNX 格式的模型：
+若要获取 ONNX 格式的模型：
 
-- [ONNX 模型 Zoo](https://github.com/onnx/models)：包含多个预先训练的 ONNX 模型，适用于可下载并可供使用的不同类型的任务。
+- **模型构建服务**： Azure 机器学习和[Azure 自定义影像服务](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)[中自动机器学习功能](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)等服务支持直接以 ONNX 格式导出训练的模型。
 
-- [ML 培训框架的本机导出](https://onnx.ai/supported-tools)：多个定型框架支持 ONNX 的本机导出功能，这使你可以将定型模型保存到 ONNX 格式的特定版本，包括[PyTorch](https://pytorch.org/docs/stable/onnx.html)、Chainer 和 Caffe2。 此外，模型生成服务（例如 Azure 机器学习和[Azure 自定义影像服务](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)[中的自动机器学习功能](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)）提供 ONNX 导出。
+- [**转换和/或导出现有模型**](https://github.com/onnx/tutorials#converting-to-onnx-format)：多个定型框架（例如[PyTorch](https://pytorch.org/docs/stable/onnx.html)、Chainer 和 Caffe2）支持将本机导出功能保存到 ONNX，这允许您将定型模型保存到特定版本的 ONNX 格式。 对于不支持本地导出的框架，可使用独立的 ONNX 转换器可安装包将从不同机器学习框架定型的模型转换为 ONNX 格式。
 
-- [转换现有模型](https://github.com/onnx/tutorials#converting-to-onnx-format)：对于不支持本机导出的框架，有将模型转换为 ONNX 格式的单独包。 有关示例和教程，请参阅[转换为 ONNX 格式](https://github.com/onnx/tutorials#converting-to-onnx-format)。 
-
-### <a name="supported-frameworks"></a>支持的框架
-
-ONNX 转换器使你能够将来自不同机器学习框架的定型模型转换为 ONNX 格式。 常用转换器包括： 
-
-* [PyTorch](http://pytorch.org/docs/master/onnx.html)
-* [Tensorflow](https://github.com/onnx/tensorflow-onnx)
-* [Keras](https://github.com/onnx/keras-onnx)
-* [Scikit-learn](https://github.com/onnx/sklearn-onnx)
-* [CoreML](https://github.com/onnx/onnxmltools)
-
-有关受支持框架的完整列表，请参阅[转换为 ONNX 格式](https://github.com/onnx/tutorials#converting-to-onnx-format)。
+     **支持的框架**
+   * [PyTorch](http://pytorch.org/docs/master/onnx.html)
+   * [Tensorflow](https://github.com/onnx/tensorflow-onnx)
+   * [Keras](https://github.com/onnx/keras-onnx)
+   * [Scikit-learn](https://github.com/onnx/sklearn-onnx)
+   * [CoreML](https://github.com/onnx/onnxmltools)
+    
+    有关支持的框架和示例的完整列表，请参阅[转换为 ONNX 格式](https://github.com/onnx/tutorials#converting-to-onnx-format)。
 
 ## <a name="limitations"></a>限制
 

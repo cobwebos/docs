@@ -1,18 +1,14 @@
 ---
 title: 获取资源更改
 description: 了解如何查找资源更改时间以及获取已更改属性的列表。
-services: resource-graph
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/09/2019
 ms.topic: conceptual
-ms.service: resource-graph
-ms.openlocfilehash: 44e7bbde40dbd4b79a6ce3735ab5a1ac81421d3b
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 25d900276518e51e80021d1fdb1ac80945eb2d5c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622562"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958765"
 ---
 # <a name="get-resource-changes"></a>获取资源更改
 
@@ -48,7 +44,7 @@ ms.locfileid: "73622562"
 - **间隔**\[所需的\]：在使用**祖鲁时区（Z）** 检查更改事件时的_开始_日期和_结束_日期属性。
 - **fetchPropertyChanges** （可选）：一个布尔值属性，设置响应对象是否包括属性更改。
 
-示例请求正文：
+请求正文示例：
 
 ```json
 {
@@ -167,7 +163,7 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 - **resourceId**：用于比较更改的 Azure 资源。
 - **changeId**：从**ResourceChanges**收集的**resourceId**的唯一更改事件。
 
-示例请求正文：
+请求正文示例：
 
 ```json
 {

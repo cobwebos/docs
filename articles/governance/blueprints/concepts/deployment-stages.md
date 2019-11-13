@@ -1,17 +1,14 @@
 ---
 title: 蓝图部署的阶段
 description: 了解 Azure 蓝图服务在部署期间经历的步骤。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 4645edde5163f1c8bca787416f5465e5a8f2d355
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: d0d97ed01c4ae2ef96da151e1ab4ddc13a4b1d3e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978523"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960520"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>蓝图部署的阶段
 
@@ -30,7 +27,7 @@ ms.locfileid: "71978523"
 
 向 Azure 蓝图服务主体授予分配的订阅或订阅的所有者权限。 授予的角色允许蓝图创建并稍后撤消[系统分配的托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)。
 
-如果分配是通过门户完成的，则会自动授予权限。 但是，如果通过 REST API 完成分配，则需要使用单独的 API 调用来授予权限。 Azure 蓝图 AppId `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`，但服务主体因租户而异。 使用[Azure Active Directory 图形 API](../../../active-directory/develop/active-directory-graph-api.md)和 REST 终结点[服务主体](/graph/api/resources/serviceprincipal)以获取服务主体。 然后，通过[门户](../../../role-based-access-control/role-assignments-portal.md)、 [Azure CLI](../../../role-based-access-control/role-assignments-cli.md)、 [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md)、 [REST API](../../../role-based-access-control/role-assignments-rest.md)或[资源管理器模板](../../../role-based-access-control/role-assignments-template.md)授予 Azure 蓝图_所有者_角色。
+如果分配是通过门户完成的，则会自动授予权限。 但是，如果通过 REST API 完成分配，则需要使用单独的 API 调用来授予权限。 Azure 蓝图 AppId 是 `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`的，但服务主体因租户而异。 使用[Azure Active Directory 图形 API](../../../active-directory/develop/active-directory-graph-api.md)和 REST 终结点[服务主体](/graph/api/resources/serviceprincipal)以获取服务主体。 然后，通过[门户](../../../role-based-access-control/role-assignments-portal.md)、 [Azure CLI](../../../role-based-access-control/role-assignments-cli.md)、 [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md)、 [REST API](../../../role-based-access-control/role-assignments-rest.md)或[资源管理器模板](../../../role-based-access-control/role-assignments-template.md)授予 Azure 蓝图_所有者_角色。
 
 蓝图服务不会直接部署资源。
 

@@ -1,6 +1,6 @@
 ---
-title: Azure 时序见解预览版数据查询 | Microsoft Docs
-description: Azure 时序见解预览版数据查询。
+title: 预览中的数据查询-Azure 时序见解 |Microsoft Docs
+description: 了解 Azure 时序见解预览数据查询。
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,14 +10,14 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: e660db5db3d1afc14a3c895e6786d1b6a8b82c13
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f44aa5c0a412dc53f4b1a5f127887257a1b0b550
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832411"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006313"
 ---
-# <a name="data-querying"></a>数据查询
+# <a name="data-querying-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据查询
 
 Azure 时序见解预览版允许通过公共 Surface API 对存储在环境中的事件和元数据进行数据查询。 这些 API 也用于[时序见解预览版资源管理器](./time-series-insights-update-explorer.md)。
 

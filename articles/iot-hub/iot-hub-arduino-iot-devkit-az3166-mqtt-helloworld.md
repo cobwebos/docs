@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure MQTT 客户端库向 MQTT 服务器发送消息 | Microsoft Docs
+title: 使用 Azure MQTT 客户端库向 MQTT 服务器发送消息
 description: 了解如何使用 MQTT 客户端库将消息发送到 MQTT broker。 还将了解如何将 mXChip IoT DevKit 配置为 MQTT 客户端。
 author: liydu
 manager: jeffya
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 4de8b0910a2be48cc626775c5c9bc873c6e780dc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 14feb02fbac800cd37da882a1872beb8269d9938
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889549"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954245"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>向 MQTT 服务器发送消息
 
@@ -28,7 +28,7 @@ ms.locfileid: "73889549"
 - 如何使用 MQTT 客户端库向 MQTT 代理发送消息。
 - 如何将 MXChip Iot DevKit 配置为 MQTT 客户端。
 
-## <a name="what-you-need"></a>所需条件
+## <a name="what-you-need"></a>需要什么
 
 完成[入门指南](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)来实现以下目的：
 
@@ -78,7 +78,7 @@ ms.locfileid: "73889549"
 如果遇到问题，请参阅 [IoT DevKit 常见问题解答](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)或通过以下渠道进行联系：
 
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
-* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [堆栈溢出](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="see-also"></a>另请参阅
 

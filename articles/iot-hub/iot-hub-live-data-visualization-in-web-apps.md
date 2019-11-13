@@ -1,5 +1,5 @@
 ---
-title: 在 Web 应用中可视化 Azure IoT 中心内的实时传感器数据 | Microsoft Docs
+title: Web 应用中 IoT 中心数据的实时数据可视化
 description: 使用 Web 应用程序将从传感器收集的并发送到 Azure IoT 中心的温度和湿度数据可视化。
 author: robinsh
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 22b15a95e529d4f09560e9b7e59d9f78f70651bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 073a766662b2ead4b816276fa7fda6dc5e6caca7
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476005"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954651"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>在 Web 应用程序中可视化 Azure IoT 中心内的实时传感器数据
 
@@ -35,7 +35,7 @@ ms.locfileid: "66476005"
 * 打开一个网页，以查看 IoT 中心内的实时温度和湿度数据
 * （可选）使用 Azure CLI 在 Azure 应用服务中托管 Web 应用
 
-## <a name="what-you-need"></a>所需条件
+## <a name="what-you-need"></a>需要什么
 
 * 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这包括以下要求：
 
@@ -227,7 +227,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
     az webapp show -n <your web app name> -g <your resource group name> --query state
     ```
 
-11. 在浏览器中导航至 `https://<your web app name>.azurewebsites.net` 。 此时会显示一个网页，它类似于在本地运行 Web 应用时所看到的网页。 假设你的设备正在运行且正在发送数据，则应会显示该设备最近发送的 50 个温度和湿度读数的运行图。
+11. 在浏览器中导航至 `https://<your web app name>.azurewebsites.net`。 此时会显示一个网页，它类似于在本地运行 Web 应用时所看到的网页。 假设你的设备正在运行且正在发送数据，则应会显示该设备最近发送的 50 个温度和湿度读数的运行图。
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -251,7 +251,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 * 在 Azure 门户中转到你的 Web 应用。 在左窗格中的“监视”下，选择“应用服务日志”。 启用“应用程序日志记录(文件系统)”，将“级别”设置为“错误”，并选择“保存”。 然后打开“日志流”（在“监视”下）。
 
-* 在 Azure 门户上的 Web 应用中，在“开发工具”下选择“控制台”，然后使用 `node -v` 和 `npm -v` 验证 node 和 npm 版本。
+* 在 Azure 门户上的 Web 应用中，在“开发工具”下选择“控制台”，然后使用 **和** 验证 node 和 npm 版本。`node -v``npm -v`
 
 * 如果看到了有关找不到包的错误，则可能表示步骤的运行顺序不当。 部署站点（使用 `git push`）时，应用服务将会根据当前配置的 node 版本运行 `npm install`。 如果以后在配置中更改此版本，则需要对代码进行无意义的更改，然后再次推送。
 
@@ -259,6 +259,6 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 现已成功使用 Web 应用可视化 IoT 中心的实时传感器数据。
 
-另一种方法可视化 Azure IoT 中心的数据，请参阅[使用 Power BI 可视化 IoT 中心的实时传感器数据](iot-hub-live-data-visualization-in-power-bi.md)。
+若要从 Azure IoT 中心直观显示数据，请参阅[使用 Power BI 直观显示 IoT 中心的实时传感器数据](iot-hub-live-data-visualization-in-power-bi.md)。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

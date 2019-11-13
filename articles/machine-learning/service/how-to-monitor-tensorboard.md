@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
-ms.date: 06/28/2019
-ms.openlocfilehash: 272dbbbc335574456feebfb85e4c5eafd544f8d6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/08/2019
+ms.openlocfilehash: fc8159b3deba373948f513cb11540695362ecaf1
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574295"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954565"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>用 TensorBoard 和 Azure 机器学习可视化试验运行和指标
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,16 +41,18 @@ ms.locfileid: "73574295"
 
         * 完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)，创建随 SDK 和示例存储库预先加载的专用笔记本服务器。
 
-        * 在笔记本服务器上的 "示例" 文件夹中，通过导航到以下目录来查找两个已完成和扩展的笔记本：操作**方法 > 培训-深入了解**。
-        * export-运行历史记录-ipynb
-        * tensorboard. ipynb
+        * 在笔记本服务器上的 "示例" 文件夹中，通过导航到以下目录来查找两个已完成和扩展的笔记本：
+            * **《如何使用-azureml > 培训-深入了解-深入了解 > 导出-tensorboard > 导出-历史记录-tensorboard. ipynb**
+
+            * **使用情况-azureml > 跟踪和监视-tensorboard > ipynb**
 
     * 自己的 Juptyer 笔记本服务器
-          * 安装 `tensorboard` 额外的[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
-          * [创建 Azure 机器学习工作区](how-to-manage-workspace.md)。  
-          * [创建工作区配置文件](how-to-configure-environment.md#workspace)。
+       * 安装 `tensorboard` 额外的[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+        * [创建 Azure 机器学习工作区](how-to-manage-workspace.md)。  
+        * [创建工作区配置文件](how-to-configure-environment.md#workspace)。
   
 <a name="direct"></a>
+
 ## <a name="option-1-directly-view-run-history-in-tensorboard"></a>选项1：直接查看 TensorBoard 中的运行历史记录
 
 此选项适用于本机输出 TensorBoard 所使用的日志文件的试验，如 PyTorch、Chainer 和 TensorFlow 试验。 如果这不是试验的情况，请改用[`export_to_tensorboard()` 方法](#export)。
@@ -85,7 +87,7 @@ tf_code = requests.get("https://raw.githubusercontent.com/tensorflow/tensorflow/
 with open(os.path.join(exp_dir, "mnist_with_summaries.py"), "w") as file:
     file.write(tf_code.text)
 ```
-在 MNIST 代码文件 mnist_with_summaries py 中，可以看到有一些行调用 `tf.summary.scalar()`、`tf.summary.histogram()``tf.summary.FileWriter()` 等。这些方法将试验的方法分组、记录和标记为运行历史记录。 此 `tf.summary.FileWriter()` 尤其重要，因为它将数据从记录的实验指标中序列化，这允许 TensorBoard 生成可视化。
+在 MNIST 代码文件中，mnist_with_summaries py，请注意，有一些行调用了 `tf.summary.scalar()`、`tf.summary.histogram()`、`tf.summary.FileWriter()` 等。这些方法将试验的方法分组、记录和标记为运行历史记录。 此 `tf.summary.FileWriter()` 尤其重要，因为它将数据从记录的实验指标中序列化，这允许 TensorBoard 生成可视化。
 
  ### <a name="configure-experiment"></a>配置试验
 
@@ -243,7 +245,7 @@ for alpha in tqdm(alphas):
 
 ### <a name="export-runs-to-tensorboard"></a>导出运行到 TensorBoard
 
-通过 SDK 的[export_to_tensorboard （）](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.export?view=azure-ml-py)方法，我们可以将 Azure 机器学习实验的运行历史记录导出到 tensorboard 日志中，以便我们可以通过 tensorboard 查看这些日志。  
+利用 SDK 的[export_to_tensorboard （）](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.export?view=azure-ml-py)方法，我们可以将 Azure 机器学习实验的运行历史记录导出到 tensorboard 日志中，以便可以通过 tensorboard 查看它们。  
 
 在下面的代码中，我们会在当前工作目录中创建 `logdir` 文件夹。 在此文件夹中，我们将从 `root_run` 中导出实验运行历史记录和日志，然后将其标记为 "已完成"。 
 

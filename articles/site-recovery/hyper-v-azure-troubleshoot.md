@@ -1,5 +1,5 @@
 ---
-title: 常见问题 - 使用 Azure Site Recovery 对 Hyper-V 到 Azure 的灾难恢复进行故障排除 | Microsoft Docs
+title: 排查 Azure Site Recovery 的 Hyper-v 灾难恢复问题
 description: 介绍如何排查使用 Azure Site Recovery 执行 Hyper-V 到 Azure 的复制时遇到的灾难恢复问题
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
-ms.openlocfilehash: 2cf43f8a235b112cfcf1fc6c9dba626a5a0c9b7e
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 0a3e5c922009353e4ba9ccab12cf70ea2b5992da
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828404"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961480"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>排查 Hyper-V 到 Azure 的复制和故障转移的问题
 
@@ -26,14 +26,14 @@ ms.locfileid: "68828404"
 1. 检查 Hyper-V 主机和 VM 是否符合所有[要求和先决条件](hyper-v-azure-support-matrix.md)。
 2. 如果 Hyper-V 服务器位于 System Center Virtual Machine Manager (VMM) 云中，请验证是否已准备好 [VMM 服务器](hyper-v-prepare-on-premises-tutorial.md#prepare-vmm-optional)。
 3. 检查 Hyper-V 虚拟机管理服务是否在 Hyper-V 主机上运行。
-4. 检查 VM 的 Hyper-V-VMMS\Admin 登录中显示的问题。 此日志位于“应用程序和服务日志” > “Microsoft” > “Windows”中。
+4. 检查 VM 的 Hyper-V-VMMS\Admin 登录中显示的问题。 此日志位于“应用程序和服务日志” **“Microsoft”** “Windows”中。 >  > 
 5. 在来宾 VM 上，验证 WMI 是否已启用并可访问。
    - [了解](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)基本 WMI 测试。
    - [排查](https://aka.ms/WMiTshooting) WMI 问题。
    - [排查](https://technet.microsoft.com/library/ff406382.aspx#H22) WMI 脚本和服务的问题。
 6. 在来宾 VM 上，确保运行最新版本的 Integration Services。
     - [检查](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)是否安装了最新版本。
-    - [始终使用](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)最新的 Integration Services。
+    - [保持](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) Integration Services 的最新状态。
     
 ## <a name="replication-issues"></a>复制问题
 
@@ -42,7 +42,7 @@ ms.locfileid: "68828404"
 1. 确保运行[最新版本](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)的 Site Recovery 服务。
 2. 验证复制是否已暂停：
    - 在 Hyper-V 管理器控制台中检查 VM 运行状况。
-   - 如果状态为严重，请右键单击 VM 并选择“复制” > “查看复制运行状况”。
+   - 如果问题比较严重，请右键单击 VM 并选择“复制” **“查看复制运行状况”。**  > 
    - 如果复制已暂停，请单击“恢复复制”。
 3. 检查所需的服务是否正在运行。 如果未运行，请将其重启。
     - 如果在不使用 VMM 的情况下复制 Hyper-V，请检查以下服务是否在 Hyper-V 主机上运行：
@@ -80,7 +80,7 @@ ms.locfileid: "68828404"
 
 2. 单击“查看复制运行状况”查看详细信息：
 
-    - 如果复制已暂停，请右键单击 VM 并选择“复制” > “恢复复制”。
+    - 如果复制已暂停，请右键单击 VM 并选择“复制” **“恢复复制”。**  > 
     - 如果 Site Recovery 中配置的 Hyper-V 主机上的某个 VM 要迁移到同一群集中的不同 Hyper-V 主机或迁移到独立计算机，则该 VM 的复制不受影响。 只需检查新的 Hyper-V 主机是否符合所有先决条件，并已在 Site Recovery 中进行配置。
 
 ## <a name="app-consistent-snapshot-issues"></a>应用一致的快照问题
@@ -107,7 +107,7 @@ ms.locfileid: "68828404"
     ![动态磁盘](media/hyper-v-azure-troubleshoot/dynamic-disk.png)
     
 4. 检查是否未将 iSCSI 磁盘附加到 VM。 不支持此操作。
-5. 检查是否已启用备份服务。 请在“Hyper-V 设置” > “Integration Services”中验证它是否已启用。
+5. 检查是否已启用备份服务。 请在“Hyper-V 设置” **“Integration Services”中验证它是否已启用。**  > 
 6. 确保创建 VSS 快照的应用未发生冲突。 如果多个应用同时尝试创建 VSS 快照，则可能会发生冲突。 例如，某个备份应用在创建 VSS 快照，同时，Site Recovery 也在根据复制策略的计划创建快照。   
 7. 检查 VM 是否遇到较高的变动率：
     - 可以使用 Hyper-V 主机上的性能计数器，测量来宾 VM 的每日数据更改率。 若要测量数据更改率，请启用以下计数器。 聚合所有 VM 磁盘的此值的 5-15 分钟样本，即可得出 VM 变动率。
@@ -123,30 +123,30 @@ ms.locfileid: "68828404"
 ### <a name="vss-failing-inside-the-hyper-v-host"></a>VSS 在 Hyper-V 主机中失败
 
 1. 在事件日志中查找 VSS 错误和建议：
-    - 在 Hyper-V 主机服务器上，通过“事件查看器” > “应用程序和服务日志” > “Microsoft” > “Windows” > “Hyper-V” > “管理”打开 Hyper-V 管理事件日志。
+    - 在 Hyper-V 主机服务器上，通过“事件查看器” **“应用程序和服务日志”** “Microsoft” > “Windows” **“Hyper-V”** “管理”打开 Hyper-V 管理事件日志。 >  >  >  > 
     - 检查是否有任何事件指示发生应用一致的快照失败。
-    - 典型错误如下：“Hyper-V 无法为虚拟机 “XYZ” 生成 VSS 快照集:编写器遇到了非暂时性错误。 如果服务无响应，重启 VSS 服务可能会解决问题。”
+    - 典型的错误为：“Hyper-V 无法为虚拟机 'XYZ' 生成 VSS 快照集: 编写器遇到非暂时性错误。 如果服务无响应，重启 VSS 服务可能会解决问题。”
 
 2. 若要为 VM 生成 VSS 快照，请检查 VM 上是否已安装 Hyper-V Integration Services，并已启用备份 (VSS) 集成服务。
     - 确保 Integration Services VSS 服务/守护程序在来宾上运行，并处于“正常”状态。
-    - 你可以通过命令**enable-vmintegrationservice-VMName\<VMName >-Name VSS**从 hyper-v 主机上提升的 PowerShell 会话中进行检查, 还可以通过登录到来宾 VM 来获取此信息。 [了解详细信息](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
+    - 可以在 Hyper-V 主机上权限提升的 PowerShell 会话中，使用命令 **Get-VMIntegrationService -VMName\<VMName>-Name VSS** 执行此项检查。也可以登录到来宾 VM 来获取此信息。 [了解详细信息](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
     - 确保 VM 上的备份/VSS Integration Services 正在运行且处于正常状态。 否则，请重启这些服务，并重启 Hyper-V 主机服务器上的 Hyper-V 卷影复制请求程序服务。
 
 ### <a name="common-errors"></a>常见错误
 
-**错误代码** | **消息** | **详细信息**
+错误代码 | **消息** | **详细信息**
 --- | --- | ---
-**0x800700EA** | “Hyper-V 无法为虚拟机生成 VSS 快照集:更多数据可用。 (0x800700EA)。 如果备份操作正在进行，VSS 快照集生成可能失败。<br/><br/> 虚拟机复制操作失败:更多数据可用。” | 检查是否在 VM 上启用了动态磁盘。 不支持此操作。
+**0x800700EA** | “Hyper-V 无法为虚拟机生成 VSS 快照集: 更多数据可用。 (0x800700EA)。 如果备份操作正在进行，VSS 快照集生成可能失败。<br/><br/> 虚拟机复制操作失败: 更多数据可用。” | 检查是否在 VM 上启用了动态磁盘。 不支持此操作。
 **0x80070032** | “由于版本与 Hyper-V 预期的版本不匹配，Hyper-V 卷影复制请求程序无法连接到虚拟机 <./VMname>” | 检查是否安装了最新的 Windows 更新。<br/><br/> [升级](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)到最新版本的 Integration Services。
 
 
 
 ## <a name="collect-replication-logs"></a>收集复制日志
 
-所有 Hyper-V 复制事件都记录在“应用程序和服务日志” > “Microsoft” > “Windows”下的 Hyper-V-VMMS\Admin 日志中。 此外，可按如下所示为 Hyper-V 虚拟机管理服务启用分析日志：
+所有 Hyper-V 复制事件都记录在“应用程序和服务日志” **“Microsoft”** “Windows”下的 Hyper-V-VMMS\Admin 日志中。 >  >  此外，可按如下所示为 Hyper-V 虚拟机管理服务启用分析日志：
 
-1. 在事件查看器中显示分析和调试日志。 若要使日志可用，请在事件查看器中，单击“视图” > “显示分析和调试日志”。 分析日志显示在“Hyper-V-VMMS”下。
-2. 在“**操作**”窗格中，单击“**启用日志**”。 
+1. 在事件查看器中显示分析和调试日志。 若要使日志可用，请在事件查看器中，单击“视图” **“显示分析和调试日志”。**  >  分析日志显示在“Hyper-V-VMMS”下。
+2. 在“操作”窗格中，单击“启用日志”。 
 
     ![启用日志](media/hyper-v-azure-troubleshoot/enable-log.png)
     

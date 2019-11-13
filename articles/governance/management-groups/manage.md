@@ -1,17 +1,14 @@
 ---
 title: 如何使用管理组-Azure 调控
 description: 了解如何查看、维护、更新和删除管理组层次结构。
-author: rthorn17
-ms.service: governance
 ms.date: 05/22/2019
-ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 57695157119b81580777c0581adccb267e7e9faa
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 90f4bacf462ed5f2590f51d15b6b660057c51738
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255929"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960245"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 
@@ -29,7 +26,7 @@ ms.locfileid: "72255929"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“所有服务” > “管理组”。
+1. 选择“所有服务” **“管理组”。**  > 
 
 1. 选择要重命名的管理组。
 
@@ -77,7 +74,7 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“所有服务” > “管理组”。
+1. 选择“所有服务” **“管理组”。**  > 
 
 1. 选择要删除的管理组。
 
@@ -120,7 +117,7 @@ az account management-group delete --name 'Contoso'
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“所有服务” > “管理组”。
+1. 选择“所有服务” **“管理组”。**  > 
 
 1. 此时会加载管理组层次结构页。 可以在该页中浏览你有权访问的所有管理组和订阅。 选择组名会将你带到层次结构中的下一级别。 导航的工作方式与文件资源管理器一样。
 
@@ -219,7 +216,7 @@ az account management-group show --name 'Contoso' -e -r
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“所有服务” > “管理组”。
+1. 选择“所有服务” **“管理组”。**  > 
 
 1. 选择要设为父级的管理组。
 
@@ -235,7 +232,7 @@ az account management-group show --name 'Contoso' -e -r
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“所有服务” > “管理组”。
+1. 选择“所有服务” **“管理组”。**  > 
 
 1. 选择要设为当前父级的管理组。  
 
@@ -287,7 +284,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“所有服务” > “管理组”。
+1. 选择“所有服务” **“管理组”。**  > 
 
 1. 选择要设为父级的管理组。
 

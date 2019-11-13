@@ -1,6 +1,7 @@
 ---
-title: 应用程序注册门户应用注册培训指南-Microsoft 标识平台 |Microsoft
-description: 针对熟悉应用程序注册门户的用户在 Azure 门户中应用注册
+title: 从应用程序注册门户过渡到 Azure 门户中的新应用注册体验
+titleSuffix: Microsoft identity platform
+description: Azure 门户中的新应用注册体验简介
 services: active-directory
 documentationcenter: ''
 author: archieag
@@ -17,14 +18,14 @@ ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1974616c0331203a803e4f13a19297940fb5d42e
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 0e9c09ce2d997c58e2725c411fff0b87a0f5071b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905467"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013031"
 ---
-# <a name="training-guide-using-app-registrations-in-the-azure-portal-instead-of-application-registration-portal"></a>培训指南：在 Azure 门户中使用应用注册，而不是在应用程序注册门户中使用
+# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>从应用程序注册门户过渡到 Azure 门户中的新应用注册体验
 
 Azure 门户的新[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验有很多改进。 如果你更熟悉注册或管理聚合应用程序的应用程序注册门户（apps.dev.microsoft.com）体验（称为旧体验），本培训指南将帮助你开始使用新体验。
 
@@ -83,7 +84,7 @@ Azure 门户中的新体验将这些功能表示为单独的页面。 下面是�
 
 在新体验中，**应用程序密码**已重命名为**证书 & 密码**。 此外，“公钥”现在称为“证书”，“密码”称为“客户端机密”。 出于安全原因，我们选择不引入此功能，因此，你不能再生成新的密钥对。
 
-## <a name="platformsauthentication---reply-urlsredirect-uris"></a>平台/身份验证-回复 Url/重定向 Uri
+## <a name="platformsauthentication-reply-urlsredirect-uris"></a>平台/身份验证：回复 Url/重定向 Uri
 在过去的体验中，应用具有适用于 Web、本机和 Web API 的平台部分，用于配置重定向 Url、注销 URL 和隐式流。
 
 在新体验中，可以在应用\'s 身份验证 "部分中找到" 回复 Url "。 此外，它们也称为重定向 Uri，重定向 Uri 的格式已更改。 它们需要与应用类型（web 或公用客户端-移动和桌面）相关联。 [了解详细信息](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
@@ -111,7 +112,7 @@ Web Api 在公开 API 页中进行配置。
 ## <a name="new-ui"></a>新 UI
 对于以前只能使用清单编辑器或 API 设置的或者不存在的属性，现在提供了新的 UI。
 
--   可以在 "身份验证" 页上找到隐式授权流（oauth2AllowImplicitFlow）。 与旧经验不同，你可以启用访问令牌或 id 令牌，或者同时启用两者。
+-   可以在 "身份验证" 页上找到隐式授权流（oauth2AllowImplicitFlow）。 与旧经验不同，你可以启用访问令牌或 ID 令牌，或者同时启用两者。
 
 -   此 API 定义的作用域（oauth2Permissions）和授权客户端应用程序（preAuthorizedApplications）可以通过公开 API 页进行配置。 有关如何将应用配置为 Web API 和公开权限/范围的详细信息，请参阅[此快速入门](quickstart-configure-app-expose-web-apis.md)。
 

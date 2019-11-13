@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 7a0cce6b72240b95943fbece08cfbf61eaee3524
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 30895af3e973fd5c9ae0de559df440f18cec1563
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891709"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013151"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>准备和自定义主 VHD 映像
 
-本文介绍如何准备要上传到 Azure 的主虚拟硬盘（VHD）映像，包括如何创建虚拟机（Vm）并在其上安装软件。 这些说明适用于 Windows 虚拟桌面特定的配置，可与组织的现有流程一起使用。
+本文介绍如何准备要上传到 Azure 的主虚拟硬盘（VHD）映像，包括如何创建虚拟机（Vm）并在其上安装软件。 这些说明适用于可与组织的现有过程配合使用的特定于 Windows 虚拟桌面的配置。
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -101,28 +101,6 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpd
 
 ```batch
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
-```
-
-### <a name="configure-session-timeout-policies"></a>配置会话超时策略
-
-可以在组策略级别上强制实施远程会话策略，因为主机池中的所有 Vm 都属于同一安全组。
-
-配置远程会话策略：
-
-1. 导航到**管理模板** > **Windows 组件** > **远程桌面服务** > **远程桌面会话主机** **会话时间限制**。 > 
-2. 在右侧面板中，选择 "**为活动但空闲远程桌面服务会话设置时间限制**" 策略。
-3. 出现模式窗口后，将策略选项从 "**未配置**" 更改为 "**已启用**" 以激活策略。
-4. 在策略选项下面的下拉菜单中，将时间量设置为**3 小时**。
-
-还可以通过运行以下命令手动配置远程会话策略：
-
-```batch
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fResetBroken /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxConnectionTime /t REG_DWORD /d 10800000 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxDisconnectionTime /t REG_DWORD /d 5000 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t REG_DWORD /d 10800000 /f
 ```
 
 ### <a name="set-up-time-zone-redirection"></a>设置时区重定向

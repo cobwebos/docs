@@ -1,6 +1,6 @@
 ---
-title: 预配和管理 Azure 时序预览版 | Microsoft Docs
-description: 了解如何预配和管理 Azure 时序见解预览版。
+title: 预配和管理预览环境-Azure 时序 |Microsoft Docs
+description: 了解如何预配和管理 Azure 时序见解预览环境。
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 47c96cb14f2e466d02d57f73fb2e66bc1f44a311
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f66925c20f6767286eb98a7f5fab180845da4c33
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989905"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014797"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>预配和管理 Azure 时序见解预览版
 
@@ -70,11 +70,11 @@ Azure 时序见解预览版环境是即用即付 (PAYG) 环境。
      > [!TIP]
      > 在批处理事件方案或历史数据上传方案中，消息排队时间可能不是要使用的最佳配置设置。 在这种情况下，请确保验证你决定使用还是不使用时间戳属性。
 
-     [![事件源 "选项卡](media/v2-update-manage/manage-two.png)](media/v2-update-manage/manage-two.png#lightbox)
+     [![“事件源”选项卡](media/v2-update-manage/manage-two.png)](media/v2-update-manage/manage-two.png#lightbox)
 
 1. 确认您的环境已设置为所需的设置。
 
-    [![查看 + 创建选项卡](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
+    [![“查看 + 创建”选项卡](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
 ## <a name="manage-the-environment"></a>管理环境
 
@@ -91,7 +91,7 @@ Azure 时序见解预览版环境是即用即付 (PAYG) 环境。
 
 * Azure 时序见解预览版中删除了 Azure 门户的**参考数据**边栏选项卡，因为引用数据不属于现用现付环境。
 
-[Azure 门户中的![时序见解预览环境](media/v2-update-manage/manage-four.png)](media/v2-update-manage/manage-four.png#lightbox)
+[![Azure 门户中的时序见解预览版环境](media/v2-update-manage/manage-four.png)](media/v2-update-manage/manage-four.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 

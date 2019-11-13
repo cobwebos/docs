@@ -1,6 +1,6 @@
 ---
-title: 使用C#代码从 Azure 时序见解预览环境查询数据 |Microsoft Docs
-description: 本文介绍如何通过编码以 C# (C-sharp) .NET 语言编写的自定义应用来查询 Azure 时序见解环境中的数据。
+title: 使用C# Azure 时序见解从预览版环境中查询数据 |Microsoft Docs
+description: 了解如何使用编写的应用从 Azure 时序见解环境中查询数据C#。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,16 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 46ade3ed6e8712a074974c81e51b2dd6c834db26
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 806460e5e4336624c6b0ead59dd5632e730c69e5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989667"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014718"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>使用从 Azure 时序见解预览环境查询数据C#
+# <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>使用 C# 查询 Azure 时序见解预览版环境中的数据
 
-此C#示例演示如何从 Azure 时序见解预览环境查询数据。
+本 C# 示例演示如何查询 Azure 时序见解预览版环境中的数据。
 
 该示例演示了多个基本的查询 API 使用示例：
 
@@ -30,17 +30,17 @@ ms.locfileid: "72989667"
 1. 以 Web 套接字请求为例，可以为感兴趣的环境请求事件聚合数据。 会请求整个可用性时间范围的数据。
 
 > [!NOTE]
-> [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample)中也提供了此示例代码。
+> 此示例代码也可从 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample) 获得。
 
 ## <a name="c-example"></a>C# 示例
 
 [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-preview-sample/DataPlaneClientSampleApp/Program.cs)]
 
 > [!NOTE]
-> 上面的代码示例可以在不更改默认环境值的情况下运行。
+> 上面的代码示例可以在不改变默认环境值的情况下运行。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关查询的详细信息，请参阅[查询 API 参考](https://docs.microsoft.com/rest/api/time-series-insights/preview-query)。
+- 若要详细了解查询，请阅读[查询 API 参考](https://docs.microsoft.com/rest/api/time-series-insights/preview-query)。
 
-- 了解如何[使用客户端 SDK 将 JavaScript 应用程序连接](https://github.com/microsoft/tsiclient)到时序见解。
+- 阅读如何[使用客户端 SDK 将 JavaScript 应用连接到时序见解](https://github.com/microsoft/tsiclient)。

@@ -1,6 +1,6 @@
 ---
-title: 诊断和排查 Azure 时序见解预览版 |Microsoft Docs
-description: 了解如何诊断 Azure 时序见解预览并进行故障排除。
+title: 诊断和排查预览版环境问题-Azure 时序见解 |Microsoft Docs
+description: 了解如何诊断 Azure 时序见解预览环境并对其进行故障排除。
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,14 +10,14 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6b65edbd808abd6ff660ef00a8a680b4d3f0846c
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: df8300e84309a874faa4b1c06891a4c5b549fce6
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989888"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014777"
 ---
-# <a name="diagnose-and-troubleshoot"></a>诊断和故障排除
+# <a name="diagnose-and-troubleshoot-a-preview-environment"></a>诊断和排查预览版环境问题
 
 本文汇总了在使用 Azure 时序见解预览版环境时可能会遇到的多个常见问题。 本文还介绍了每个问题的可能原因和解决方案。
 
@@ -35,7 +35,7 @@ ms.locfileid: "72989888"
 
     验证事件源（即事件中心或 IoT 中心）是否从标记或实例接收数据。 若要进行验证，请转到 Azure 门户中资源的概览页。
 
-    [![仪表板-insights](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png)](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png#lightbox)
+    [![Dashboard-insights](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png)](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png#lightbox)
 
 - 事件源数据不是 JSON 格式。
 

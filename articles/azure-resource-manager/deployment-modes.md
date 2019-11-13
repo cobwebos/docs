@@ -4,18 +4,18 @@ description: 介绍如何使用 Azure 资源管理器指定是使用完整部署
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 11/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 10a9917d8ed763b133fbd33aedd16da399a224b2
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 762b0e74e8da20d1b48703385853765d5cc643af
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881640"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953229"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure 资源管理器部署模式
 
-部署资源时，可以指定部署为增量更新还是完整更新。  这两种模式的主要区别是资源管理器如何处理资源组中不在模板中的现有资源。 默认模式为增量模式。
+部署资源时，可以指定部署为增量更新还是完整更新。  这两种模式的不同之处在于资源管理器如何处理不在模板中的资源组中的现有资源。 默认模式为增量模式。
 
 对于这两种模式，资源管理器都会尝试创建模板中指定的所有资源。 如果资源已存在于资源组中且其设置未更改，则不会对该资源执行任何操作。 如果更改资源的属性值，则使用这些新值更新资源。 如果尝试更新现有资源的位置或类型，则部署会失败并出现错误。 请改用所需的位置或类型部署新资源。
 
@@ -25,29 +25,31 @@ ms.locfileid: "72881640"
 
 如果模板包含的资源未部署，因为[条件](conditional-resource-deployment.md)的计算结果为 false，则结果取决于用于部署模板的 REST API 版本。 如果使用早于2019-05-10 的版本，则不会**删除**该资源。 对于2019-05-10 或更高版本，将**删除**该资源。 最新版本的 Azure PowerShell 和 Azure CLI 删除资源。
 
-使用带有[复制循环](resource-group-create-multiple.md)的完整模式时请小心。 删除了解析复制循环后未在模板中指定的任何资源。
+将完整模式与[复制循环](resource-group-create-multiple.md)一起使用时要小心。 在解析复制循环后会删除模板中未指定的任何资源。
 
-资源类型处理完整模式删除的方式有一些差异。 当父资源不在以完整模式部署的模板中时，将自动删除该资源。 而某些子资源不在模板中时，不会将其自动删除。 但是，如果删除父资源，则会删除这些子资源。 
+如果在[模板中部署到多个资源组](resource-manager-cross-resource-group-deployment.md)，则部署操作中指定的资源组中的资源可以被删除。 辅助资源组中的资源不会被删除。
 
-例如，如果资源组包含 DNS 区域（Microsoft.Network/dnsZones 资源类型）和 CNAME 记录（Microsoft.Network/dnsZones/CNAME 资源类型），则 DNS 区域是 CNAME 记录的父资源。 如果使用完整模式部署并且模板中不包含 DNS 区域，则 DNS 区域和 CNAME 记录都将被删除。 如果在模板中包含 DNS 区域，但不包括 CNAME 记录，则不会删除 CNAME。 
+资源类型处理完整模式删除的方式有所不同。 当父资源不在以完整模式部署的模板中时，将自动删除该资源。 而某些子资源不在模板中时，不会将其自动删除。 但是，如果删除父资源，则会删除这些子资源。 
+
+例如，如果资源组包含 DNS 区域（Microsoft.Network/dnsZones 资源类型）和 CNAME 记录（Microsoft.Network/dnsZones/CNAME 资源类型），则 DNS 区域是 CNAME 记录的父资源。 如果使用完整模式部署并且模板中不包含 DNS 区域，则 DNS 区域和 CNAME 记录都将被删除。 如果在模板中包含 DNS 区域但不包含 CNAME 记录，则不会删除 CNAME。 
 
 有关资源类型如何处理删除的列表，请参阅[针对完全模式部署的 Azure 资源删除](complete-mode-deletion.md)。
 
-如果资源组已[锁定](resource-group-lock-resources.md)，则完成模式不会删除资源。
+如果资源组被[锁定](resource-group-lock-resources.md)，则完整模式不会删除资源。
 
 > [!NOTE]
 > 仅根级别模板支持完整部署模式。 对于[链接模板或嵌套模板](resource-group-linked-templates.md)，必须使用增量模式。 
 >
-> [订阅级别部署](deploy-to-subscription.md)不支持完成模式。
+> [订阅级别部署](deploy-to-subscription.md)不支持完整模式。
 >
-> 当前，门户不支持完成模式。
+> 目前，门户不支持完整模式。
 >
 
 ## <a name="incremental-mode"></a>增量模式
 
 在增量模式下，资源管理器保留资源组中已存在但尚未在模板中指定的未更改资源。
 
-但是，在增量模式下重新部署现有资源时，结果会有所不同。 指定资源的所有属性，而不只是你要更新的属性。 常见的误解是将未指定的属性保持不变。 如果未指定某些属性，资源管理器会将更新解释为覆盖这些值。
+但是，以增量模式重新部署现有资源时，结果会有所不同。 指定资源的所有属性，而不仅仅是要更新的属性。 常见的误解是将未指定的属性保持不变。 如果未指定某些属性，资源管理器会将更新解释为覆盖这些值。
 
 ## <a name="example-result"></a>示例结果
 

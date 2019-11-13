@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric 应用程序部署 | Microsoft Docs
+title: Azure Service Fabric 通过 FabricClient 进行部署
 description: 使用 FabricClient API 部署和删除 Service Fabric 中的应用程序。
 services: service-fabric
 documentationcenter: .net
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: atsenthi
-ms.openlocfilehash: c04306b417c8e68f2e93c0e5e064f5873b00ddd5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cdb5ae4efbd4119422101eb8a05ce71e7b58d51f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599624"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013292"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>使用 FabricClient 部署和删除应用程序
 > [!div class="op_single_selector"]
-> * [资源管理器](service-fabric-application-arm-resource.md)
+> * [Resource Manager](service-fabric-application-arm-resource.md)
 > * [PowerShell](service-fabric-deploy-remove-applications.md)
 > * [Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
 > * [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
@@ -54,7 +54,7 @@ ms.locfileid: "68599624"
 FabricClient fabricClient = new FabricClient();
 ```
 
-## <a name="upload-the-application-package"></a>上载应用程序包
+## <a name="upload-the-application-package"></a>上传应用程序包
 假设在 Visual Studio 中生成并打包名为 *MyApplication* 的应用程序。 默认情况下，ApplicationManifest.xml 中列出的应用程序类型名称为“MyApplicationType”。  应用程序包（其中包含必需的应用程序清单、服务清单以及代码/配置/数据包）位于 *C:\Users\&lt;username&gt;\Documents\Visual Studio 2019\Projects\MyApplication\MyApplication\pkg\Debug* 中。
 
 上传应用程序包会将其放在一个可由内部 Service Fabric 组件访问的位置。 Service Fabric 在注册应用程序包期间会对应用程序包进行验证。 但是，如果要在本地（即，在上传之前）验证应用程序包，请使用 [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) cmdlet。
@@ -100,9 +100,9 @@ FabricClient fabricClient = new FabricClient();
 ## <a name="unregister-an-application-type"></a>取消注册应用程序类型
 当不再需要应用程序类型的某个特定版本时，应使用 [Unregister-ServiceFabricApplicationType](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) API 取消注册该应用程序类型的该特定版本。 取消注册未使用的应用程序类型版本将释放映像存储使用的存储空间。 只要没有针对某个版本的应用程序类型将应用程序实例化，就可以注销该版本的应用程序类型。 另外，只要没有挂起的应用程序升级在引用某个版本的应用程序类型，就可以注销该版本的应用程序类型。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage 请求 ImageStoreConnectionString
-Service Fabric SDK 环境应该已经设置了正确的默认设置。 若有需要，所有命令的 ImageStoreConnectionString 都应匹配 Service Fabric 群集正在使用的值。 可以在使用 [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) 和 Get-ImageStoreConnectionStringFromClusterManifest 命令检索到的群集清单中找到 ImageStoreConnectionString：
+Service Fabric SDK 环境应已默认设置正确。 若有需要，所有命令的 ImageStoreConnectionString 都应匹配 Service Fabric 群集正在使用的值。 可以在使用 [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) 和 Get-ImageStoreConnectionStringFromClusterManifest 命令检索到的群集清单中找到 ImageStoreConnectionString：
 
 ```powershell
 PS C:\> Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)
@@ -132,23 +132,23 @@ ImageStoreConnectionString 可在群集清单中找到：
 有关映像存储和映像存储连接字符串的补充信息，请参阅[了解映像存储连接字符串](service-fabric-image-store-connection-string.md)。
 
 ### <a name="deploy-large-application-package"></a>部署大型应用程序包
-问题:对于大型（GB 级别的）应用程序包，[CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API 方法超时。
+问题：对于大型（GB 级别的）应用程序包，[CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API 方法超时。
 请尝试：
-- 通过 `timeout` 参数为 [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) 方法指定更长的超时时间。 此超时默认为 30 分钟。
+- 通过 [ 参数为 ](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage)CopyApplicationPackage`timeout` 方法指定更长的超时时间。 此超时默认为 30 分钟。
 - 检查源计算机和群集之间的网络连接。 如果连接缓慢，请考虑使用一台网络连接状况更好的计算机。
 如果客户端计算机位于另一个区域，而不在此群集中，请考虑使用此群集的邻近区域或同区域中的客户端计算机。
-- 检查是否已达到外部限制。 例如，将映像存储配置为使用 Azure 存储时，可能会限制上传。
+- 检查是否已达到外部限制。 例如，将映像存储区配置为使用 Azure 存储时，可能会限制上传。
 
-问题:上传包已成功完成，但 [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API 超时。请尝试：
+问题：上传包已成功完成，但[ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API 超时。然后
 - 复制到映像存储之前[对包进行压缩](service-fabric-package-apps.md#compress-a-package)。
 压缩可减小文件大小，减少文件数量，这反过来会减少通信流量和 Service Fabric 必须执行的工作量。 上传操作可能会变慢（尤其是包括压缩时间时），但注册和注销应用程序类型会加快。
-- 通过 `timeout` 参数为 [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API 指定更长的超时时间。
+- 通过 [ 参数为 ](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync)ProvisionApplicationAsync`timeout` API 指定更长的超时时间。
 
 ### <a name="deploy-application-package-with-many-files"></a>部署包含多个文件的应用程序包
-问题:具有多个文件（上千个）的应用程序包的[ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) 超时。
+问题：具有多个文件（上千个）的应用程序包的[ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) 超时。
 请尝试：
 - 复制到映像存储之前[对包进行压缩](service-fabric-package-apps.md#compress-a-package)。 压缩可以减少文件数量。
-- 通过 `timeout` 参数为 [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) 指定更长的超时时间。
+- 通过 [ 参数为 ](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync)ProvisionApplicationAsync`timeout` 指定更长的超时时间。
 
 ## <a name="code-example"></a>代码示例
 以下示例将应用程序包复制到映像存储区并预配应用程序类型。 然后，该示例创建应用程序实例并创建服务实例。 最后，该示例删除应用程序实例、取消预配应用程序类型，并从映像存储中删除应用程序包。

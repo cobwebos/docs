@@ -3,17 +3,17 @@ title: Azure IoT Central 中的体系结构概念 | Microsoft Docs
 description: 本文介绍与 Azure IoT Central 的体系结构相关的重要概念
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/15/2019
+ms.date: 11/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: cb2ca8fe227abd107daa60a0f7d31ba5dc4e7c1b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 66792d9d0a8b1cd72ef8f22481016a35f37a1597
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895327"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013847"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Azure IoT Central 体系结构（预览功能）
 
@@ -33,6 +33,68 @@ ms.locfileid: "73895327"
 在 Azure IoT Central 中，设备可以与应用程序交换的数据在设备模板中指定。 有关设备模板的详细信息，请参阅[元数据管理](#metadata-management)。
 
 若要详细了解设备如何连接到 Azure IoT Central 应用程序，请参阅[设备连接](overview-iot-central-get-connected.md)。
+
+## <a name="azure-iot-edge-devices"></a>Azure IoT Edge 设备
+
+同时[，还可以将](https://github.com/Azure/azure-iot-sdks) [Azure IoT Edge 设备](../../iot-edge/about-iot-edge.md)连接到 IoT Central 应用程序。 IoT Edge 使你可以直接在 IoT Central 管理的 IoT 设备上运行云智能和自定义逻辑。 IoT Edge 运行时使你能够：
+
+- 在设备上安装和更新工作负荷。
+- 在设备上维护 IoT Edge 安全标准。
+- 确保 IoT Edge 模块始终处于运行状态。
+- 将模块运行状况报告给云以进行远程监视。
+- 管理下游叶设备与 IoT Edge 设备之间、IoT Edge 设备上的模块之间以及 IoT Edge 设备与云之间的通信。
+
+![具有 Azure IoT Edge 的 Azure IoT Central](./media/concepts-architecture/iotedge.png)
+
+IoT Central 为 IoT Edge 设备启用以下功能：
+
+- 用于描述 IoT Edge 设备功能的设备模板，例如：
+  - 部署清单上传功能，可帮助你管理各种设备的清单。
+  - IoT Edge 设备上运行的模块。
+  - 每个模块发送的遥测。
+  - 每个模块报告的属性。
+  - 每个模块响应的命令。
+  - IoT Edge 网关设备功能模型和下游设备功能模型之间的关系。
+  - 未存储在 IoT Edge 设备上的云属性。
+  - 属于 IoT Central 应用程序的自定义、仪表板和窗体。
+
+  有关详细信息，请参阅[创建 IoT Edge 设备模板](./tutorial-define-edge-device-type.md)教程。
+
+- 能够使用 Azure IoT 设备预配服务大规模预配 IoT Edge 设备
+- 规则和操作。
+- 自定义仪表板和分析。
+- 从 IoT Edge 设备连续导出遥测数据。
+
+### <a name="iot-edge-device-types"></a>IoT Edge 设备类型
+
+IoT Central 分类 IoT Edge 设备类型，如下所示：
+
+- 叶设备。 IoT Edge 设备可以具有下游叶设备，但不会在 IoT Central 中设置这些设备。
+- 具有下游设备的网关设备。 网关设备和下游设备在 IoT Central 中进行预配
+
+![IoT Central 与 IoT Edge 概述](./media/concepts-architecture/gatewayedge.png)
+
+### <a name="iot-edge-patterns"></a>IoT Edge 模式
+
+IoT Central 支持以下 IoT Edge 设备模式：
+
+#### <a name="iot-edge-as-leaf-device"></a>IoT Edge 为叶设备
+
+![IoT Edge 为叶设备](./media/concepts-architecture/edgeasleafdevice.png)
+
+IoT Edge 设备在 IoT Central 中预配，任何下游设备及其遥测均表示为来自 IoT Edge 设备。 未在 IoT Central 中预配连接到 IoT Edge 设备的下游设备。
+
+#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity"></a>IoT Edge 网关设备连接到具有标识的下游设备
+
+![带下游设备标识的 IoT Edge](./media/concepts-architecture/edgewithdownstreamdeviceidentity.png)
+
+IoT Edge 设备与连接到 IoT Edge 设备的下游设备一起在 IoT Central 中预配。 当前不支持通过网关预配下游设备的运行时支持。
+
+#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity-provided-by-the-iot-edge-gateway"></a>使用 IoT Edge 网关提供的标识连接到下游设备的 IoT Edge 网关设备
+
+![不带标识的下游设备 IoT Edge](./media/concepts-architecture/edgewithoutdownstreamdeviceidentity.png)
+
+IoT Edge 设备与连接到 IoT Edge 设备的下游设备一起在 IoT Central 中预配。 当前不支持向下游设备提供标识和预配下游设备的网关的运行时支持。 如果你引入自己的标识翻译模块，IoT Central 可以支持此模式。
 
 ## <a name="cloud-gateway"></a>云网关
 

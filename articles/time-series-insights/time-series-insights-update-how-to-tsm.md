@@ -1,5 +1,5 @@
 ---
-title: Azure 时序见解预览版中的数据建模 | Microsoft Docs
+title: 预览版环境中的数据建模-Azure 时序见解 |Microsoft Docs
 description: 了解 Azure 时序见解预览版中的数据建模。
 author: deepakpalled
 ms.author: dpalled
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81c2c2af78f5f066e1b27e14fa774df04d7c5868
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: fb1bfb30d531f8b93489c8fc1dfbc6b8172339a3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063987"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006460"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据建模
 
@@ -31,7 +31,7 @@ ms.locfileid: "73063987"
 
     [!["类型" 窗格](media/v2-update-how-to-tsm/portal-one.png)](media/v2-update-how-to-tsm/portal-one.png#lightbox)
 
-1. 选择“+ 添加”。
+1. 选择 **+ 添加**。
 1. 输入与类型相关的所有详细信息，然后选择 "**创建**"。 此操作在环境中创建类型。
 
     [用于添加类型 ![选择](media/v2-update-how-to-tsm/portal-two.png)](media/v2-update-how-to-tsm/portal-two.png#lightbox)
@@ -66,7 +66,7 @@ ms.locfileid: "73063987"
 
     [!["层次结构" 窗格](media/v2-update-how-to-tsm/portal-six.png)](media/v2-update-how-to-tsm/portal-six.png#lightbox)
 
-1. 选择“+ 添加”。
+1. 选择 **+ 添加**。
 
     [!["添加" 按钮](media/v2-update-how-to-tsm/portal-seven.png)](media/v2-update-how-to-tsm/portal-seven.png#lightbox)
 
@@ -76,7 +76,7 @@ ms.locfileid: "73063987"
 
 1. 输入层次结构详细信息，然后选择“创建”。
 
-    [![Objecttype 的详细信息和 "创建" 按钮](media/v2-update-how-to-tsm/portal-nine.png)](media/v2-update-how-to-tsm/portal-nine.png#lightbox)
+    [![层次结构详细信息和 "创建" 按钮](media/v2-update-how-to-tsm/portal-nine.png)](media/v2-update-how-to-tsm/portal-nine.png#lightbox)
 
 ### <a name="bulk-upload-one-or-more-hierarchies"></a>批量上传一个或多个层次结构
 
@@ -100,7 +100,7 @@ ms.locfileid: "73063987"
 
     [!["删除" 按钮](media/v2-update-how-to-tsm/portal-twelve.png)](media/v2-update-how-to-tsm/portal-twelve.png#lightbox)
 
-## <a name="instances"></a>实例
+## <a name="instances"></a>Instances
 
 ### <a name="create-a-single-instance"></a>创建单个实例
 
@@ -108,7 +108,7 @@ ms.locfileid: "73063987"
 
     [!["实例" 窗格](media/v2-update-how-to-tsm/portal-thirteen.png)](media/v2-update-how-to-tsm/portal-thirteen.png#lightbox)
 
-1. 选择 **添加** 。
+1. 选择“添加”。
 
     [![用于添加实例的选择](media/v2-update-how-to-tsm/portal-fourteen.png)](media/v2-update-how-to-tsm/portal-fourteen.png#lightbox)
 
