@@ -1,17 +1,14 @@
 ---
 title: CIS Microsoft Azure 基础基准蓝图示例 - 概述
 description: CIS Microsoft Azure 基础基准蓝图示例的概述。 此蓝图示例可帮助客户评估特定控制要求。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/09/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: bf4b79dbb3da15605dc4362b5f0578a457886316
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 89b7396b39ed6d308240316bbb5e718922d5e156
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581371"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032408"
 ---
 # <a name="overview-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure 基础基准蓝图示例的概述
 

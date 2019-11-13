@@ -548,16 +548,12 @@
       tocHref: /azure/logic-apps/
       topicHref: /azure/logic-apps/
     - name: 机器学习
-      tocHref: /azure/machine-learning/
+      tocHref: /azure/machine-learning
       topicHref: /azure/machine-learning/
       items:
-        - name: 服务
-          tocHref: /azure/machine-learning/service
-          topicHref: /azure/machine-learning/service/
-          items:
-            - name: 算法和模块参考
-              tocHref: /azure/machine-learning/algorithm-module-reference
-              topicHref: /azure/machine-learning/algorithm-module-reference/module-reference
+        - name: 算法和模块参考
+          tocHref: /azure/machine-learning/algorithm-module-reference
+          topicHref: /azure/machine-learning/algorithm-module-reference/module-reference
         - name: 工作室（经典）
           tocHref: /azure/machine-learning/studio
           topicHref: /azure/machine-learning/studio/
