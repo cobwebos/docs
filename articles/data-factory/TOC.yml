@@ -165,8 +165,8 @@
               href: concepts-data-flow-monitoring.md
             - name: 数据流性能
               href: concepts-data-flow-performance.md
-            - name: 移动节点
-              href: concepts-data-flow-move-nodes.md
+            - name: 管理图
+              href: concepts-data-flow-manage-graph.md
             - name: 表达式生成器
               href: concepts-data-flow-expression-builder.md
             - name: 表达式语言
@@ -648,6 +648,8 @@
           href: scenario-ssis-migration-ssisdb-mi.md
 - name: 引用
   items:
+    - name: 数据流脚本
+      href: data-flow-script.md
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.datafactory
     - name: PowerShell

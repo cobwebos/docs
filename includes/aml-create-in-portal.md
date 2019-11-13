@@ -9,22 +9,22 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 11/04/2019
-ms.openlocfilehash: d49a84f26453a6a7b2ff6d7f419fbc53ad8b98ba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ccd3e6129f4a061eacf83a1f4e70174c697480f
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476050"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73633613"
 ---
 1. 使用 Azure 订阅的凭据登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. 在 Azure 门户的左上角，选择“+ 创建资源”  。
 
-      ![创建新资源](media/aml-create-in-portal/portal-create-resource.png)
+    ![创建新资源](media/aml-create-in-portal/create-workspace.gif)
 
 1. 使用搜索栏查找“机器学习”  。
 
-1. 选择“机器学习”** **。
+1. 选择“机器学习”  。
 
 1. 在“机器学习”窗格中，选择“创建”以开始   。
 

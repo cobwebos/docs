@@ -166,9 +166,7 @@
       items:
         - name: 添加意向
           href: luis-how-to-add-intents.md
-        - name: 将实体添加到话语
-          href: luis-how-to-add-example-utterances.md
-        - name: 在没有话语的情况下添加实体
+        - name: 添加实体以提取数据
           href: luis-how-to-add-entities.md
           displayName: 'roles, import'
         - name: 使用预构建的模型
@@ -306,6 +304,8 @@
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
     - name: 自定义实体引用
       items:
+        - name: 机器学习实体
+          href: reference-entity-machine-learned-entity.md
         - name: 复合实体
           href: reference-entity-composite.md
         - name: 列表实体
@@ -316,6 +316,8 @@
           href: reference-entity-regular-expression.md
         - name: 简单实体
           href: reference-entity-simple.md
+    - name: 模式语法
+      href: reference-pattern-syntax.md
     - name: 情绪
       href: luis-reference-prebuilt-sentiment.md
     - name: 开发人员资源

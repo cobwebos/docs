@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/10/2019
   ms.author: aahi
-  ms.openlocfilehash: d073adfbc1b05bbd4d92f5cfb500184653444f4b
-  ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+  ms.openlocfilehash: 4f7eca51cd4ec6995618b68bd376fa5f4f6268e4
+  ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/18/2019
-  ms.locfileid: "71086783"
+  ms.lasthandoff: 11/13/2019
+  ms.locfileid: "74013602"
 landingContent:
 - title: 关于异常检测器 API
   linkLists:
@@ -39,7 +39,11 @@ landingContent:
       url: https://www.youtube.com/embed/ERTaAnwCarM
   - linkListType: reference
     links:
-    - text: 在异常情况检测中使用的算法（白皮书）
+    - text: Azure 异常检测器 API 简介
+      url: https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162
+    - text: SR-CNN 算法概述
+      url: https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798
+    - text: 在异常情况检测中使用的算法（KDD 论文）
       url: https://arxiv.org/abs/1906.03821
 - title: 检测数据中的异常
   linkLists:
@@ -54,7 +58,7 @@ landingContent:
     - text: 使用批量检测和 Power BI 将异常可视化
       url: tutorials/batch-anomaly-detection-powerbi.md
     - text: 使用 Azure Databricks 检测流数据中的异常
-      url: tutorials/batch-anomaly-detection-powerbi.md
+      url: tutorials/anomaly-detection-streaming-databricks.md
   - linkListType: video
     links:
     - text: 使用 Azure Databricks 针对流数据进行异常情况检测

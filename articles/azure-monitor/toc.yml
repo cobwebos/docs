@@ -1183,19 +1183,17 @@
               href: platform/autoscale-webhook-email.md
         - name: PowerShell
           items:
-            - name: Azure PowerShell 示例
+            - name: 通过 PowerShell 管理
               href: platform/powershell-quickstart-samples.md
-            - name: PowerShell cmdlet
+            - name: 创建警报
+              href: app/powershell-alerts.md
+            - name: 管理 Log Analytics
               href: platform/powershell-workspace-configuration.md
-            - name: 应用程序
+            - name: Application Insights
               items:
-                - name: 创建 Application Insights 资源
+                - name: 管理 Application Insights
                   href: app/powershell.md
-                - name: 创建资源
-                  href: app/powershell-script-create-resource.md
-                - name: 设置警报
-                  href: app/powershell-alerts.md
-                - name: 获取 Azure 诊断
+                - name: 管理 Azure 云服务
                   href: app/powershell-azure-diagnostics.md
         - name: Azure CLI 示例
           href: platform/cli-samples.md

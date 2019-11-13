@@ -154,6 +154,8 @@
         - name: 部署 - REST API
           displayName: deployment
           href: resource-group-template-deploy-rest.md
+        - name: 模拟部署
+          href: template-deploy-what-if.md
         - name: 出错时重新部署
           displayName: rollback
           href: rollback-on-error.md

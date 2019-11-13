@@ -35,6 +35,8 @@
       items:
         - name: HDInsight 上的 Apache Hadoop 组件
           href: ./hdinsight-component-versioning.md
+        - name: 高可用性组件
+          href: ./hdinsight-high-availability-components.md
         - name: HDInsight 中的机器学习
           href: ./hdinsight-machine-learning-overview.md
         - name: HDInsight 中的大规模流式处理
