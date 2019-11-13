@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 数字孪生 API 中导航 | Microsoft Docs
+title: 导航 Api-Azure 数字孪生 |Microsoft Docs
 description: 了解 Azure 数字孪生管理 API 的常用查询模式。
 ms.author: alinast
 author: alinamstanciu
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/27/2019
-ms.openlocfilehash: b0c3d72085e008524811f479ccbdeec013e26c4c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 135c760919f094f7b2d242ad37cc1cadb614e36e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822249"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010005"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>如何使用 Azure 数字孪生管理 API
 
