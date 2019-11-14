@@ -1,17 +1,14 @@
 ---
 title: 了解 Azure Policy for AKS 引擎
 description: 了解 Azure 策略如何使用 CustomResourceDefinitions 并从守卫 v3 打开策略代理，使用 AKS 引擎管理群集。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 71f3f26b9ea7f24d674c911e18c785b0798a072c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 904575680b62233ad5ec7422abbf66cf57dc4e11
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512127"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072061"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>了解 Azure Policy for AKS 引擎
 
@@ -32,7 +29,7 @@ Azure 策略与[AKS 引擎](https://github.com/Azure/aks-engine/blob/master/docs
 - [为 AKS 引擎分配策略定义](#built-in-policies)
 - [等待验证](#validation-and-reporting-frequency)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在安装 Azure 策略外接程序或启用任何服务功能之前，订阅必须启用**PolicyInsights**资源提供程序，并为群集服务主体创建角色分配。 
 
@@ -286,5 +283,5 @@ kubectl logs gatekeeper-controller-manager-0 -n $NAMESPACE
 - 查看[了解策略效果](effects.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
 - 了解如何[获取合规性数据](../how-to/getting-compliance-data.md)。
-- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
+- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

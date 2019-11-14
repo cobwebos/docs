@@ -1,5 +1,5 @@
 ---
-title: Azure 虚拟机代理概述 | Microsoft 文档
+title: Azure 虚拟机代理概述
 description: Azure 虚拟机代理概述
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: 24c7f6c1488d7a78a16aafef88177f7045eb2492
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b1f627668c6bbd1d802eb3a4c11b6171e84887c8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244658"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073242"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 虚拟机代理概述
 Microsoft Azure 虚拟机代理（VM 代理）是受保护的轻型进程，用于管理虚拟机 (VM) 与 Azure 结构控制器的交互。 VM 代理有一个主要角色，目的是启用和执行 Azure 虚拟机扩展。 VM 扩展可用于对 VM 进行部署后配置，例如安装和配置软件。 VM 扩展还可启用恢复功能，例如重置 VM 的管理密码。 没有 Azure VM 代理，VM 扩展将无法运行。
@@ -59,7 +59,7 @@ Windows 来宾代理包分为两个部分：
 如果没有安装代理，则无法使用某些 Azure 服务，例如 Azure 备份或 Azure 安全。 这些服务需要安装扩展。 如果已在没有 WinGA VM 的情况下部署 VM，稍后可以安装最新版本的代理。
 
 ### <a name="manual-installation"></a>手动安装
-可以使用 Windows 安装程序包手动安装 Windows VM 代理。 创建部署到 Azure 的自定义 VM 映像时，可能需要手动安装。 若要手动安装 Windows VM 代理，[下载 VM 代理安装程序](https://go.microsoft.com/fwlink/?LinkID=394789)。 Windows Server 2008 R2 及更高版本支持 VM 代理。
+可以使用 Windows 安装程序包手动安装 Windows VM 代理。 创建部署到 Azure 的自定义 VM 映像时，可能需要手动安装。 若要手动安装 Windows VM 代理，[下载 VM 代理安装程序](https://go.microsoft.com/fwlink/?LinkID=394789)。 VM 代理在 Windows Server 2008 R2 和更高版本上受支持。
 
 双击 Windows 安装程序文件即可安装 VM 代理。 若要以自动或无人参与方式安装 VM 代理，请运行以下命令：
 

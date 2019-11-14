@@ -10,18 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 424007c6bd34c0d582af8cd4df00ce7f5fc7fb0f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 24a9450b63ba4ed68c9c68e5054e6b02ecf7e0d0
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680150"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075574"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 SQL Server 复制数据
 > [!div class="op_single_selector" title1="选择要使用的 Azure 数据工厂的版本："]
-> * [版本 1](v1/data-factory-sqlserver-connector.md)
+> * [第 1 版](v1/data-factory-sqlserver-connector.md)
 > * [当前版本](connector-sql-server.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从/向 SQL Server 数据库复制数据。 本文基于总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文。
@@ -46,7 +46,7 @@ ms.locfileid: "73680150"
 [SQL Server Express LocalDB](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-express-localdb?view=sql-server-2017) 不受支持。
 
 >[!NOTE]
->此连接器目前不支持 SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)。 为了解决此问题，可以使用[通用 ODBC 连接器](connector-odbc.md)和 SQL Server ODBC 驱动程序。 按照[此指南](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=sql-server-2017)完成 ODBC 驱动程序下载和连接字符串配置。
+>此连接器目前不支持 SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)。 为了解决此问题，可以使用[通用 ODBC 连接器](connector-odbc.md)和 SQL Server ODBC 驱动程序。 按[此指南](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=sql-server-2017)完成 ODBC 驱动程序下载和连接字符串配置。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -68,7 +68,7 @@ SQL Server 链接服务支持以下属性：
 | connectionString |指定使用 SQL 身份验证或 Windows 身份验证连接到 SQL Server 数据库时所需的 **connectionString** 信息。 请参阅以下示例。<br/>将此字段标记为 **SecureString**，以便安全地将其存储在 Azure 数据工厂中。 还可以在 Azure Key Vault 中输入密码。 如果使用 SQL 身份验证，请从连接字符串中提取 `password` 配置。 有关详细信息，请参阅表格后面的 JSON 示例，以及[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
 | userName |如果使用 Windows 身份验证，请指定用户名。 例如，**domainname\\username**。 |否 |
 | password |指定为用户名指定的用户帐户的密码。 将此字段标记为 **SecureString**，以便安全地将其存储在 Azure 数据工厂中。 或者，可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 |否 |
-| connectVia | 此[集成运行时](concepts-integration-runtime.md)用于连接到数据存储。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| connectVia | 此[集成运行时](concepts-integration-runtime.md)用于连接到数据存储。 在[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!TIP]
 >如果遇到错误（错误代码为“UserErrorFailedToConnectToSqlServer”，且消息如“数据库的会话限制为 XXX 且已达到。”），请将 `Pooling=false` 添加到连接字符串中，然后重试。
@@ -461,7 +461,7 @@ END
     )
     ```
 
-2. 在数据库中，使用与 **SqlWriterStoredProcedureName** 相同的名称定义存储过程。 它可处理来自指定源的输入数据，并将其合并到输出表中。 存储过程中的表类型的参数名称与数据集中定义的 **tableName** 相同。
+2. 在数据库中，用与**sqlWriterStoredProcedureName**相同的名称定义存储过程。 它可处理来自指定源的输入数据，并将其合并到输出表中。 存储过程中的表类型的参数名称与数据集中定义的 **tableName** 相同。
 
     ```sql
     CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
@@ -483,9 +483,9 @@ END
     ```json
     "sink": {
         "type": "SqlSink",
-        "SqlWriterStoredProcedureName": "spOverwriteMarketing",
+        "sqlWriterStoredProcedureName": "spOverwriteMarketing",
         "storedProcedureTableTypeParameterName": "Marketing",
-        "SqlWriterTableType": "MarketingType",
+        "sqlWriterTableType": "MarketingType",
         "storedProcedureParameters": {
             "category": {
                 "value": "ProductA"
@@ -502,27 +502,27 @@ END
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |布尔值 |
+| bit |Boolean |
 | char |String, Char[] |
 | 日期 |DateTime |
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
+| 小数 |小数 |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | 图像 |Byte[] |
 | int |Int32 |
-| money |Decimal |
+| money |小数 |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
+| numeric |小数 |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
+| smallmoney |小数 |
 | sql_variant |对象 |
 | text |String, Char[] |
 | time |TimeSpan |
@@ -536,7 +536,7 @@ END
 >[!NOTE]
 > 对于映射到十进制临时类型的数据类型，目前 Azure 数据工厂支持的最大精度为 28。 如果数据需要的精度大于 28，请考虑在 SQL 查询中将其转换为字符串。
 
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
+## <a name="lookup-activity-properties"></a>查找活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 

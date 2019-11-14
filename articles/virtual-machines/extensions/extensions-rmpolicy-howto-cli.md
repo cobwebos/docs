@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Policy 限制 VM 扩展安装 | Microsoft Docs
+title: 使用 Azure 策略限制 VM 扩展安装
 description: 使用 Azure Policy 限制 VM 扩展部署。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 20099bb32a1984be0bfbbaaa4e7bc6cd4481a806
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 113736198f40510981c80909c862282fa07ac68d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174033"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073778"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>使用 Azure Policy 限制 Linux VM 上的扩展安装
 
 如果想要阻止在 Linux VM 上使用或安装某些扩展，可以使用 CLI 创建 Azure Policy 以限制资源组中的 VM 扩展。 
 
-本教程在 Azure Cloud Shell 中使用 CLI，后者已不断更新到最新版本。 如果要在本地运行 Azure CLI，则需要安装版本 2.0.26 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
+本教程在 Azure Cloud Shell 中使用 CLI，后者已不断更新到最新版本。 如果要在本地运行 Azure CLI，则需要安装版本 2.0.26 或更高版本。 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 ## <a name="create-a-rules-file"></a>创建规则文件
 

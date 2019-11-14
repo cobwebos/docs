@@ -1,5 +1,5 @@
 ---
-title: Windows VM 扩展故障排除 | Microsoft Docs
+title: Windows VM 扩展故障排除
 description: 了解如何进行 Azure Windows VM 扩展故障排除
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: 6108b3c8d4f4c5c93bc2543042294bc8167d4dd9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bc99a9c9e9ff985730ec97dbacd1d7c1de06a45e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084294"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073655"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM 扩展故障排除
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -61,10 +61,10 @@ Azure PowerShell：
 ## <a name="troubleshooting-extension-failures"></a>扩展故障排除
 ### <a name="rerun-the-extension-on-the-vm"></a>在 VM 上重新运行扩展
 如果使用自定义脚本扩展在 VM 上运行脚本，有时可能会遇到错误：VM 已成功创建但脚本却运行失败。 在这些情况下，从此错误中恢复的建议方法是删除该扩展并再次重新运行该模板。
-注意:未来此功能将得到增强，不再需要卸载该扩展。
+注意：未来此功能将得到增强，不再需要卸载该扩展。
 
 #### <a name="remove-the-extension-from-azure-powershell"></a>从 Azure PowerShell 删除扩展
     Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
 
-删除该扩展后，可以重新执行模板在 VM 上运行脚本。
+删除该扩展后，可以重新执行模板以在 VM 上运行脚本。
 

@@ -1,5 +1,5 @@
 ---
-title: 路由器配置示例 – Azure ExpressRoute | Microsoft Docs
+title: Azure ExpressRoute：路由器配置示例
 description: 本页提供 Cisco 和 Juniper 路由器的路由器配置示例。
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 2d7fb060896de8df266489451a11ba343760c747
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2c37dadeb669fb88f858b5487379828a8dddec6c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367466"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076666"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>用于设置和管理路由的路由器配置示例
 本页提供处理 ExpressRoute 时适用于 Cisco IOS XE 和 Juniper MX 系列路由器的接口与路由配置示例。 这些示例仅供指导，不能按原样使用。 可以与供应商合作，以便为网络指定适当的配置。 
@@ -33,7 +32,7 @@ ms.locfileid: "60367466"
 ## <a name="cisco-ios-xe-based-routers"></a>基于 Cisco IOS-XE 的路由器
 本部分中的示例适用于任何运行 IOS-XE OS 系列的路由器。
 
-### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1.配置接口和子接口
+### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. 配置接口和子接口
 在连接到 Microsoft 的每个路由器中，针对每个对等互连都需要有一个子接口。 子接口可使用 VLAN ID 或一对堆叠的 VLAN ID 和 IP 地址来标识。
 
 **Dot1Q 接口定义**
@@ -52,7 +51,7 @@ ms.locfileid: "60367466"
      encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
      ip address <IPv4_Address><Subnet_Mask>
 
-### <a name="2-setting-up-ebgp-sessions"></a>2.设置 eBGP 会话
+### <a name="2-setting-up-ebgp-sessions"></a>2. 设置 eBGP 会话
 必须针对每个对等互连设置与 Microsoft 的 BGP 会话。 借助以下示例，可设置与 Microsoft 的 BGP 会话。 如果对子接口使用的 IPv4 地址是 a.b.c.d，则 BGP 邻居 (Microsoft) 的 IP 地址将是 a.b.c.d+1。 BGP 邻居的 IPv4 地址的最后一个八位字节将始终是偶数。
 
     router bgp <Customer_ASN>
@@ -64,7 +63,7 @@ ms.locfileid: "60367466"
      exit-address-family
     !
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3.设置要通过 BGP 会话播发的前缀
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. 设置要通过 BGP 会话播发的前缀
 可以配置路由器，以将所选前缀播发给 Microsoft。 可以使用以下示例来执行此操作。
 
     router bgp <Customer_ASN>
@@ -77,7 +76,7 @@ ms.locfileid: "60367466"
      exit-address-family
     !
 
-### <a name="4-route-maps"></a>4.路由映射
+### <a name="4-route-maps"></a>4. 路由映射
 可以使用路由映射和前缀列表来筛选已传播到网络中的前缀。 可以使用以下示例来完成此任务。 确保已设置适当的前缀列表。
 
     router bgp <Customer_ASN>
@@ -98,7 +97,7 @@ ms.locfileid: "60367466"
 ## <a name="juniper-mx-series-routers"></a>Juniper MX 系列路由器
 本部分中的示例适用于所有 Juniper MX 系列路由器。
 
-### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1.配置接口和子接口
+### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. 配置接口和子接口
 
 **Dot1Q 接口定义**
 
@@ -133,7 +132,7 @@ ms.locfileid: "60367466"
         }                                   
     }                           
 
-### <a name="2-setting-up-ebgp-sessions"></a>2.设置 eBGP 会话
+### <a name="2-setting-up-ebgp-sessions"></a>2. 设置 eBGP 会话
 必须针对每个对等互连设置与 Microsoft 的 BGP 会话。 借助以下示例，可设置与 Microsoft 的 BGP 会话。 如果对子接口使用的 IPv4 地址是 a.b.c.d，则 BGP 邻居 (Microsoft) 的 IP 地址将是 a.b.c.d+1。 BGP 邻居的 IPv4 地址的最后一个八位字节将始终是偶数。
 
     routing-options {
@@ -149,7 +148,7 @@ ms.locfileid: "60367466"
         }                                   
     }
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3.设置要通过 BGP 会话播发的前缀
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. 设置要通过 BGP 会话播发的前缀
 可以配置路由器，以将所选前缀播发给 Microsoft。 可以使用以下示例来执行此操作。
 
     policy-options {
@@ -174,7 +173,7 @@ ms.locfileid: "60367466"
     }
 
 
-### <a name="4-route-maps"></a>4.路由映射
+### <a name="4-route-maps"></a>4. 路由映射
 可以使用路由映射和前缀列表来筛选已传播到网络中的前缀。 可以使用以下示例来完成此任务。 确保已设置适当的前缀列表。
 
     policy-options {
@@ -205,5 +204,5 @@ ms.locfileid: "60367466"
     }
 
 ## <a name="next-steps"></a>后续步骤
-有关更多详细信息，请参阅 [ExpressRoute 常见问题解答](expressroute-faqs.md)。
+有关详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md) 。
 

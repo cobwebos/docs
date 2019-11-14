@@ -1,5 +1,5 @@
 ---
-title: 上传通用化 VHD 以在 Azure 中创建多个 VM | Microsoft Docs
+title: 上载通用化 VHD 以在 Azure 中创建多个 Vm
 description: 将通用化 VHD 上传到 Azure 存储帐户，创建一个 Windows VM，将其用于 Resource Manager 部署模型。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 24ed7b75dfa8cb09c530a3f4a896aa9ff9aa92b5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 933b648f15418c4838d3da1ea8379267765c784b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749173"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073326"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>将通用化 VHD 上传到 Azure，创建新 VM
 
@@ -28,7 +28,7 @@ ms.locfileid: "73749173"
 
 如果要基于存储帐户中的专用 VHD 创建 VM，请参阅[从专用 VHD 创建 VM](sa-create-vm-specialized.md)。
 
-本主题介绍如何使用存储帐户，但建议客户转到改用托管磁盘。 有关如何使用托管磁盘准备、上传和创建新 VM 的完整演练，请参阅[使用托管磁盘从上传到 Azure 的通用化 VHD 中创建新的 VM](upload-generalized-managed.md)。
+本主题介绍如何使用存储帐户，但建议客户改用托管磁盘。 有关如何使用托管磁盘准备、上传和创建新 VM 的完整演练，请参阅[使用托管磁盘从上传到 Azure 的通用化 VHD 中创建新的 VM](upload-generalized-managed.md)。
 
  
 
@@ -36,13 +36,13 @@ ms.locfileid: "73749173"
 
 通用 VHD 已使用 Sysprep 删除了所有个人帐户信息。 如果打算使用 VHD 作为映像来创建新 VM，应该：
   
-  * [准备好要上传到 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md)。 
+  * 准备好要上传到 Azure 的 Windows VHD。 
   * 使用 Sysprep 将虚拟机通用化
 
 ### <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>使用 Sysprep 通用化 Windows 虚拟机
 本部分说明如何通用化可用作映像的 Windows 虚拟机。 Sysprep 将删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。 有关 Sysprep 的详细信息，请参阅[如何使用 Sysprep：简介](https://technet.microsoft.com/library/bb457073.aspx)。
 
-确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
 > 如果在首次将 VHD 上载到 Azure 之前运行 Sysprep，请确保先[准备好 VM](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，再运行 Sysprep。 
@@ -53,7 +53,7 @@ ms.locfileid: "73749173"
 2. 以管理员身份打开“命令提示符”窗口。 将目录切换到 **%windir%\system32\sysprep**，并运行 `sysprep.exe`。
 3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。
 4. 在“关机选项”中选择“关机”。
-5. 单击 **“确定”** 。
+5. 单击“确定”。
    
     ![启动 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Sysprep 在完成运行后会关闭虚拟机。 
@@ -81,7 +81,7 @@ ms.locfileid: "73749173"
     ```powershell
     Get-AzSubscription
     ```
-3. 使用订阅 ID 设置正确的订阅。 将 `<subscriptionID>` 替换为正确订阅的 ID。
+3. 使用订阅 ID 设置正确的订阅。 将 `<subscriptionID>` 替换为适当订阅的 ID。
    
     ```powershell
     Select-AzSubscription -SubscriptionId "<subscriptionID>"
@@ -90,7 +90,7 @@ ms.locfileid: "73749173"
 ### <a name="get-the-storage-account"></a>获取存储帐户
 需要在 Azure 中创建一个存储帐户用于存储上传的 VM 映像。 可以使用现有存储帐户，也可以创建新的存储帐户。 
 
-显示可用的存储帐户，请键入：
+若要显示可用的存储帐户，请键入：
 
 ```powershell
 Get-AzStorageAccount
@@ -162,7 +162,7 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
 
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
-创建[虚拟网络](../../virtual-network/virtual-networks-overview.md)的 vNet 和子网。
+创建 [虚拟网络](../../virtual-network/virtual-networks-overview.md)的 vNet 和子网。
 
 1. 创建子网。 以下示例在资源组 **myResourceGroup** 中创建具有 **10.0.0.0/24** 地址前缀的、名为 **mySubnet** 的子网。  
    
@@ -183,14 +183,14 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
 ### <a name="create-a-public-ip-address-and-network-interface"></a>创建公共 IP 地址和网络接口
 若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) 和网络接口。
 
-1. 创建公共 IP 地址。 此示例创建名为 **myPip** 的公共 IP 地址。 
+1. 创建公共 IP 地址。 此示例创建名为 **myPip**的公共 IP 地址。 
    
     ```powershell
     $ipName = "myPip"
     $pip = New-AzPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
-2. 创建 NIC。 此示例创建名为 **myNic** 的 NIC。 
+2. 创建 NIC。 此示例创建名为 **myNic**的 NIC。 
    
     ```powershell
     $nicName = "myNic"

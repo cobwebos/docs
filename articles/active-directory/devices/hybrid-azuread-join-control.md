@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc5c85aaa3c2128b10ba2e6f9c45a66b44593202
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: d67a73ca47811e7275a6f2177573e10a09b230df
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809230"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073613"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>以受控方式验证混合 Azure AD 加入
 
@@ -33,7 +33,7 @@ ms.locfileid: "72809230"
 1. 清除 Active Directory （AD）中的服务连接点（SCP）项（如果存在）
 1. 使用组策略对象（GPO）为已加入域的计算机上的 SCP 配置客户端注册表设置
 1. 如果使用的是 AD FS，还必须在 AD FS 服务器上使用 GPO 配置 SCP 的客户端注册表设置  
-
+1. 你可能还需要在 Azure AD Connect 中[自定义同步选项](../hybrid/how-to-connect-post-installation.md#additional-tasks-available-in-azure-ad-connect)，以实现设备同步。 
 
 
 ### <a name="clear-the-scp-from-ad"></a>清除 AD 中的 SCP
@@ -82,7 +82,7 @@ ms.locfileid: "72809230"
 如果使用的是 AD FS，则首先需要使用上述说明配置客户端 SCP，但将 GPO 链接到 AD FS 服务器。 SCP 对象定义设备对象的授权来源。 它可以是本地的，也可以是 Azure AD。 为 AD FS 配置此配置时，设备对象的源将建立为 Azure AD。
 
 > [!NOTE]
-> 如果你无法在 AD FS 服务器上配置客户端 SCP，则设备标识的源将被视为在本地，并且如果你有设备写回，则 AD FS 会在你的规定时间段。
+> 如果无法在 AD FS 服务器上配置客户端 SCP，则设备标识的源将被视为 "本地"。 然后，在 ADFS 设备注册的属性 "MaximumInactiveDays" 中定义的规定期限后，ADFS 将开始从本地目录中删除设备对象。 可以使用[AdfsDeviceRegistration cmdlet](https://docs.microsoft.com/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)找到 ADFS 设备注册对象。
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Windows 下层设备上的混合 Azure AD 联接的受控验证
 

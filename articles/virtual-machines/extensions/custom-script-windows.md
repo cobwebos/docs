@@ -1,5 +1,5 @@
 ---
-title: 适用于 Windows 的 Azure 自定义脚本扩展 | Microsoft 文档
+title: 适用于 Windows 的 Azure 自定义脚本扩展
 description: 使用自定义脚本扩展自动执行 Windows VM 配置任务
 services: virtual-machines-windows
 manager: carmonm
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: c0c160d9fc2fcfb8da004d02baae1dd410620cbb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b3c355219fcbebc5fda38c33d6eb7f9126b3b2b8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204201"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073822"
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
@@ -63,7 +63,7 @@ ms.locfileid: "71204201"
 
 可将敏感数据存储在受保护的配置中，此配置经过加密，只能在虚拟机内部解密。 当执行命令包含机密（例如密码）时，受保护的配置相当有用。
 
-这些项应视为敏感数据，并且应在扩展保护的设置配置中指定。 Azure VM 扩展保护的设置数据已加密，并且只能在目标虚拟机上解密。
+这些项应视为敏感数据，并且应在扩展保护的设置配置中指定。 Azure VM 扩展的受保护设置数据已加密，并且只能在目标虚拟机上解密。
 
 ```json
 {
@@ -108,15 +108,15 @@ ms.locfileid: "71204201"
 
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Compute | string |
-| type | CustomScriptExtension | string |
+| apiVersion | 2015-06-15 | 日期 |
+| 发布者 | Microsoft.Compute | 字符串 |
+| type | CustomScriptExtension | 字符串 |
 | typeHandlerVersion | 1.9 | int |
-| fileUris（例如） | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
+| fileUris（例如） | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | 数组 |
 | timestamp（示例） | 123456789 | 32 位整数 |
-| commandToExecute（例如） | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | string |
-| storageAccountName（例如） | examplestorageacct | string |
-| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| commandToExecute（例如） | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | 字符串 |
+| storageAccountName（例如） | examplestorageacct | 字符串 |
+| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 字符串 |
 
 >[!NOTE]
 >这些属性名称区分大小写。 要避免部署问题，请使用如下所示的名称。
@@ -135,7 +135,7 @@ ms.locfileid: "71204201"
 
 虽然使用公共设置可能对调试很有用，但建议使用受保护设置。
 
-公共设置会以明文形式发送到将执行脚本的 VM。  受保护设置使用只有 Azure 和 VM 知道的密钥进行加密。 这些设置会在发送时保存到 VM 中，也就是说，如果设置已加密，则会在 VM 上加密保存。 用于对已加密值解密的证书存储在 VM 上，该证书用于在运行时对设置解密（如必要）。
+公共设置会以明文形式发送到将执行脚本的 VM。  受保护设置使用只有 Azure 和 VM 知道的密钥进行加密。 这些设置会在发送时保存到 VM 中，也就是说，如果设置已加密，则会在 VM 上加密保存。 用于对加密值解密的证书存储在 VM 上，运行时使用它对设置解密（如有必要）。
 
 ## <a name="template-deployment"></a>模板部署
 
@@ -161,7 +161,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
 
 ### <a name="using-multiple-scripts"></a>使用多个脚本
 
-在此示例中，有三个用于生成服务器的脚本。 **commandToExecute** 调用第一个脚本，然后你可以选择如何调用其他脚本。 例如，可以使用一个主脚本来控制执行，进行适当的错误处理、日志记录和状态管理。 脚本将下载到本地计算机运行。 例如，在 `1_Add_Tools.ps1` 中，可以通过将 `.\2_Add_Features.ps1` 添加到脚本来调用 `2_Add_Features.ps1`，然后针对 `$settings` 中定义的其他脚本重复此过程。
+在此示例中，有三个用于生成服务器的脚本。 **commandToExecute** 调用第一个脚本，然后你可以选择如何调用其他脚本。 例如，可以使用一个主脚本来控制执行，进行适当的错误处理、日志记录和状态管理。 脚本将下载到本地计算机运行。 例如，在 `1_Add_Tools.ps1` 中，可以通过将 `2_Add_Features.ps1` 添加到脚本来调用 `.\2_Add_Features.ps1`，然后针对 `$settings` 中定义的其他脚本重复此过程。
 
 ```powershell
 $fileUri = @("https://xxxxxxx.blob.core.windows.net/buildServer1/1_Add_Tools.ps1",

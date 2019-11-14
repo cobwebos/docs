@@ -1,10 +1,9 @@
 ---
-title: Azure 负载均衡器的多个前端
-titlesuffix: Azure Load Balancer
-description: Azure 负载均衡器上的多个前端概述
+title: 多前端-Azure 负载均衡器
+description: 使用此学习路径，开始概括了解 Azure 负载均衡器上的多个前端
 services: load-balancer
 documentationcenter: na
-author: chkuhtz
+author: asudbring
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -12,15 +11,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
-ms.author: chkuhtz
-ms.openlocfilehash: b109e87a8fcbef0bfca356c83716509ebc6cecd4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: allensu
+ms.openlocfilehash: 58309133a46e32f409a0414be71791de73db9bed
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884217"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075951"
 ---
-# <a name="multiple-frontends-for-azure-load-balancer"></a>Azure 负载均衡器的多个前端
+# <a name="multiple-frontends-for-azure-load-balancer"></a>用于 Azure 负载均衡器的多个前端
 
 使用 Azure 负载均衡器可对多个端口和/或多个 IP 地址上的服务进行负载均衡。 可以使用公共和内部负载均衡器定义来对一组 VM 之间的流量进行负载均衡。
 
@@ -30,7 +29,7 @@ ms.locfileid: "68884217"
 
 下表包含一些示例前端配置：
 
-| 前端 | IP 地址 | 协议 | 端口 |
+| 前端 | IP 地址 | 协议 | port |
 | --- | --- | --- | --- |
 | 1 |65.52.0.1 |TCP |80 |
 | 2 |65.52.0.1 |TCP |*8080* |
@@ -54,7 +53,7 @@ Azure Load Balancer 允许在相同的负载均衡器配置中混用这两种规
 
 在此方案中，前端的配置如下：
 
-| 前端 | IP 地址 | 协议 | 端口 |
+| 前端 | IP 地址 | 协议 | port |
 | --- | --- | --- | --- |
 | ![绿色前端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![紫色前端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -70,7 +69,7 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 
 现在，Azure 负载均衡器的完整映射如下：
 
-| 规则 | 前端 IP 地址 | protocol | 端口 | 目标 | 端口 |
+| 规则 | 前端 IP 地址 | 协议 | port | 目标 | port |
 | --- | --- | --- | --- | --- | --- |
 | ![绿色规则](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |DIP IP 地址 |80 |
 | ![紫色规则](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |DIP IP 地址 |81 |
@@ -104,7 +103,7 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 
 假设上述方案使用相同的前端配置：
 
-| 前端 | IP 地址 | 协议 | 端口 |
+| 前端 | IP 地址 | 协议 | port |
 | --- | --- | --- | --- |
 | ![绿色前端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![紫色前端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -113,12 +112,12 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 
 | 规则 | 前端 | 映射到后端池 |
 | --- | --- | --- |
-| 1 |![rule](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![后端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80（在 VM1 和 VM2 中） |
-| 2 |![rule](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![后端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80（在 VM1 和 VM2 中） |
+| 1 |![规则](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![后端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80（在 VM1 和 VM2 中） |
+| 2 |![规则](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![后端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80（在 VM1 和 VM2 中） |
 
 下表显示负载均衡器中的完整映射：
 
-| 规则 | 前端 IP 地址 | protocol | 端口 | 目标 | 端口 |
+| 规则 | 前端 IP 地址 | 协议 | port | 目标 | port |
 | --- | --- | --- | --- | --- | --- |
 | ![绿色规则](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |与前端 (65.52.0.1) 相同 |与前端 (80) 相同 |
 | ![紫色规则](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |与前端 (65.52.0.2) 相同 |与前端 (80) 相同 |
@@ -132,7 +131,7 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 ## <a name="limitations"></a>限制
 
 * 只有 IaaS VM 支持多个前端配置。
-* 使用浮点 IP 规则时, 应用程序必须为出站 SNAT 流使用主 IP 配置。 如果应用程序绑定到来宾 OS 中环回接口上配置的前端 IP 地址, 则无法使用 Azure 的出站 SNAT 来重写出站流, 流将失败。  查看[出站方案](load-balancer-outbound-connections.md)。
+* 使用浮动 IP 规则时，应用程序必须对出站 SNAT 流使用主要 IP 配置。 如果应用程序绑定到来宾 OS 中环回接口上配置的前端 IP 地址，则无法使用 Azure 的出站 SNAT 来重写出站流，此时流处理会失败。  查看[出站方案](load-balancer-outbound-connections.md)。
 * 公共 IP 地址会影响计费。 有关详细信息，请参阅 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses/)
 * 订阅有所限制。 有关详细信息，请参阅[服务限制](../azure-subscription-service-limits.md#networking-limits)。
 

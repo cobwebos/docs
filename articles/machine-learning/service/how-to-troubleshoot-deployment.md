@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb0f373000d09cb387fb73eec344997381fe45d1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: dab79f1d63a20e12f148766db5fcc3fc313a1f3a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961661"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076894"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure 机器学习 Azure Kubernetes 服务和 Azure 容器实例部署的故障排除
 
@@ -164,12 +164,12 @@ b\'{"code":"InternalServerError","statusCode":500,"message":"An internal server 
 
 ## <a name="debug-locally"></a>本地调试
 
-如果在将模型部署到 ACI 或 AKS 时遇到问题，请尝试将其部署为本地模式。 使用本地可以更轻松地解决问题。 包含模型的 Docker 映像将下载并在本地系统上启动。
+如果在将模型部署到 ACI 或 AKS 时遇到问题，请尝试将其部署为本地 web 服务。 使用本地 web 服务，可以更轻松地解决问题。 包含模型的 Docker 映像将下载并在本地系统上启动。
 
 > [!WARNING]
-> 生产方案不支持本地部署。
+> 生产方案不支持本地 web 服务部署。
 
-若要在本地部署，请修改代码以使用 `LocalWebservice.deploy_configuration()` 创建部署配置。 然后使用 `Model.deploy()` 部署该服务。 下面的示例将模型（包含在 `model` 变量中）部署为本地：
+若要在本地部署，请修改代码以使用 `LocalWebservice.deploy_configuration()` 创建部署配置。 然后使用 `Model.deploy()` 部署该服务。 下面的示例将模型（包含在 `model` 变量中）部署为本地 web 服务：
 
 ```python
 from azureml.core.model import InferenceConfig, Model
@@ -180,14 +180,14 @@ inference_config = InferenceConfig(runtime="python",
                                    entry_script="score.py",
                                    conda_file="myenv.yml")
 
-# Create a local deployment, using port 8890 for the  endpoint
+# Create a local deployment, using port 8890 for the web service endpoint
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 # Deploy the service
 service = Model.deploy(
     ws, "mymodel", [model], inference_config, deployment_config)
 # Wait for the deployment to complete
 service.wait_for_deployment(True)
-# Display the port that the  is available on
+# Display the port that the web service is available on
 print(service.port)
 ```
 
@@ -297,7 +297,7 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
     > [!IMPORTANT]
     > 此更改不会导致*更快地*创建副本。 而是以较低的利用率阈值创建。 将值更改为30% 会导致在使用率达到30% 时创建副本，而不是等待服务达到70% 的利用率。
     
-    如果已在使用当前的最大副本，但仍看到503状态代码，请增加 `autoscale_max_replicas` 值以增加副本的最大数量。
+    如果 web 服务已在使用当前的最大副本，但仍看到503状态代码，请增加 `autoscale_max_replicas` 值以增加副本的最大数量。
 
 * 更改副本的最小数目。 增加最小副本可提供更大的池来处理传入峰值。
 
@@ -333,7 +333,7 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
 > [!IMPORTANT]
 > 当使用 `Model.deploy()` 和 `LocalWebservice.deploy_configuration` 在本地部署模型时，此调试方法不起作用。 相反，必须使用[save-containerimage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py)类创建映像。 
 
-本地部署需要在你的本地系统上进行工作的 Docker 安装。 有关使用 Docker 的详细信息，请参阅[Docker 文档](https://docs.docker.com/)。
+本地 web 服务部署需要在你的本地系统上进行工作的 Docker 安装。 有关使用 Docker 的详细信息，请参阅[Docker 文档](https://docs.docker.com/)。
 
 ### <a name="configure-development-environment"></a>配置开发环境
 

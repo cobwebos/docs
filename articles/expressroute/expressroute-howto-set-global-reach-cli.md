@@ -1,5 +1,5 @@
 ---
-title: 配置 ExpressRoute Global Reach：Azure CLI | Microsoft Docs
+title: Azure ExpressRoute：配置 ExpressRoute Global Reach： CLI
 description: 本文介绍了如何将 ExpressRoute 线路链接到一起，以在本地网络之间建立专用网络并启用 Global Reach。
 services: expressroute
 author: jaredr80
@@ -7,15 +7,14 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/12/2018
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 89ada41c5f3c9cf1ca7a2ac707363f57080c361d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eda0011ea4d259d0e60cb894c2b42325ddfc2eb7
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869969"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076637"
 ---
-# <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute 全球覆盖
+# <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute Global Reach
 
 本文帮助你使用 Azure CLI 配置 Azure ExpressRoute Global Reach。 有关详细信息，请参阅 [ExpressRoute Global Reach](expressroute-global-reach.md)。
  
@@ -48,7 +47,7 @@ az account set --subscription <your subscription ID>
 
 ### <a name="identify-your-expressroute-circuits-for-configuration"></a>确定用于配置的 ExpressRoute 线路
 
-您可以启用 ExpressRoute 全球覆盖之间任何两个 ExpressRoute 线路，只要它们位于支持的国家/地区和不同对等互连位置创建。 如果你的订阅同时拥有这两条线路，则可以选择其中任一条线路运行配置，如本文稍后所述。 如果两条线路位于不同的 Azure 订阅中，则必须拥有来自一个 Azure 订阅的授权，并且在另一个 Azure 订阅中运行配置命令时必须传入授权密钥。
+可以在任意两个 ExpressRoute 线路之间启用 ExpressRoute Global Reach，只要它们位于受支持的国家/地区并且是在不同的对等位置创建的。 如果你的订阅同时拥有这两条线路，则可以选择其中任一条线路运行配置，如本文稍后所述。 如果两条线路位于不同的 Azure 订阅中，则必须拥有来自一个 Azure 订阅的授权，并且在另一个 Azure 订阅中运行配置命令时必须传入授权密钥。
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>启用本地网络之间的连接
 

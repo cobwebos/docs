@@ -138,6 +138,8 @@
         - name: 时移和直播到 VOD
           displayName: 'archive, dvr'
           href: live-event-cloud-dvr.md
+        - name: 实时听录
+          href: live-transcription.md
         - name: 功能比较
           href: live-event-types-comparison.md
         - name: 状态和计费

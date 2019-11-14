@@ -1,22 +1,23 @@
 ---
-title: 监视 Azure 应用程序网关的访问日志、性能日志、后端运行状况及指标
+title: 后端运行状况和诊断日志
+titleSuffix: Azure Application Gateway
 description: 了解如何启用和管理 Azure 应用程序网关的访问日志和性能日志
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: fa930d4ab420708e6abfdf1765703afbe20fa25e
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 448e5bf798f5b1c3006888f846722e54fec46ef8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958261"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075300"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>应用程序网关的后端运行状况和诊断日志
 
-使用 Azure 应用程序网关，可以通过以下方式监视资源：
+可以通过以下方式监视 Azure 应用程序网关资源：
 
 * [后端运行状况](#back-end-health)：应用程序网关提供通过 Azure 门户和 PowerShell 监视后端池中的服务器运行状况的功能。 还可通过性能诊断日志找到后端池的运行状况。
 

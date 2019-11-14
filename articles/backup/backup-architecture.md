@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: e072923c2c8b1d8e5bb281a5bcff992b25289b4d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d914c2988b5f28940021de24dcfe1183c68b15cc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888490"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074349"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件
 
@@ -134,7 +134,7 @@ Azure VM 需要能够访问 Internet 才能执行控制命令。 如果备份 VM
     - MARS 代理仅使用 Windows 系统写入操作来捕获快照。
     - 该代理不使用任何应用程序 VSS 写入器，因此不会捕获应用一致性快照。
 1. 使用 VSS 创建快照后，MARS 代理将在配置备份时指定的缓存文件夹中创建一个虚拟硬盘 (VHD)。 该代理还会存储每个数据块的校验和。
-1. 除非运行即席备份，否则增量备份会根据指定的计划运行。
+1. 增量备份会根据指定的计划运行，除非你运行按需备份。
 1. 在增量备份中，将会标识已更改的文件，并创建新的 VHD。 该 VHD 经过压缩和加密，然后发送到保管库。
 1. 增量备份完成后，新 VHD 将与初始复制后创建的 VHD 合并。 此合并的 VHD 提供最新状态，用于对现行备份进行比较。
 
@@ -148,7 +148,7 @@ Azure VM 需要能够访问 Internet 才能执行控制命令。 如果备份 VM
     - 使用 DPM/MABS 可以保护备份的卷、共享、文件和文件夹。 还可以保护计算机系统状态/裸机，并使用应用感知的备份设置来保护特定的应用。
 1. 为 DPM/MABS 中的计算机或应用设置保护时，请选择备份到 MABS/DPM 本地磁盘进行短期存储，并备份到 Azure 进行联机保护。 此外，可以指定何时要运行备份到本地 DPM/MABS 存储的操作，以及何时要运行联机备份到 Azure 的操作。
 1. 受保护工作负荷的磁盘将根据指定的计划备份到本地 MABS/DPM 磁盘。
-4. DPM/MABS 磁盘由在 DPM/MABS 服务器上运行的 MARS 代理备份到保管库。
+1. DPM/MABS 磁盘由在 DPM/MABS 服务器上运行的 MARS 代理备份到保管库。
 
 ![备份 DPM 或 MABS 保护的计算机和工作负荷](./media/backup-architecture/architecture-dpm-mabs.png)
 

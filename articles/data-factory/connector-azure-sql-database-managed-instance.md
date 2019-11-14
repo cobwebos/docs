@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 6dadb84b5323568ff736d9e39a1297515f33368c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9a70ecacdf10c985cabca8fa3ddf4314bf266afe
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681164"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075610"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库托管实例复制数据
 
@@ -40,7 +40,7 @@ ms.locfileid: "73681164"
 - 作为接收器，在复制期间将数据追加到目标表，或调用带有自定义逻辑的存储过程。
 
 >[!NOTE]
->目前此连接器不支持 Azure SQL 数据库托管实例 [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current)。 为了解决此问题，可以通过自承载 Integration Runtime 使用[泛型 ODBC 连接器](connector-odbc.md)和 SQL Server ODBC 驱动程序。 按照[此指南](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-mi-current)完成 ODBC 驱动程序下载和连接字符串配置。
+>目前此连接器不支持 Azure SQL 数据库托管实例 [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current)。 为了解决此问题，可以通过自承载 Integration Runtime 使用[泛型 ODBC 连接器](connector-odbc.md)和 SQL Server ODBC 驱动程序。 按[此指南](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-mi-current)完成 ODBC 驱动程序下载和连接字符串配置。
 
 >[!NOTE]
 >此连接器目前不支持服务主体和托管标识身份验证。 若要解决此问题，可以选择 Azure SQL 数据库连接器并手动指定托管实例的服务器。
@@ -548,7 +548,7 @@ END
     )
     ```
 
-2. 在数据库中，使用与 **SqlWriterStoredProcedureName** 相同的名称定义存储过程。 它可处理来自指定源的输入数据，并将其合并到输出表中。 存储过程中的表类型的参数名称与数据集中定义的 **tableName** 相同。
+2. 在数据库中，用与**sqlWriterStoredProcedureName**相同的名称定义存储过程。 它可处理来自指定源的输入数据，并将其合并到输出表中。 存储过程中的表类型的参数名称与数据集中定义的 **tableName** 相同。
 
     ```sql
     CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
@@ -570,9 +570,9 @@ END
     ```json
     "sink": {
         "type": "SqlMISink",
-        "SqlWriterStoredProcedureName": "spOverwriteMarketing",
+        "sqlWriterStoredProcedureName": "spOverwriteMarketing",
         "storedProcedureTableTypeParameterName": "Marketing",
-        "SqlWriterTableType": "MarketingType",
+        "sqlWriterTableType": "MarketingType",
         "storedProcedureParameters": {
             "category": {
                 "value": "ProductA"
@@ -589,27 +589,27 @@ END
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |布尔值 |
+| bit |Boolean |
 | char |String, Char[] |
 | 日期 |DateTime |
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
+| 小数 |小数 |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | 图像 |Byte[] |
 | int |Int32 |
-| money |Decimal |
+| money |小数 |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
+| numeric |小数 |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
+| smallmoney |小数 |
 | sql_variant |对象 |
 | text |String, Char[] |
 | time |TimeSpan |
@@ -623,7 +623,7 @@ END
 >[!NOTE]
 > 对于映射到十进制临时类型的数据类型，目前 Azure 数据工厂支持的最大精度为 28。 如果数据需要的精度大于 28，请考虑在 SQL 查询中将其转换为字符串。
 
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
+## <a name="lookup-activity-properties"></a>查找活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 

@@ -1,5 +1,5 @@
 ---
-title: 适用于 Windows 的 Azure Monitor 虚拟机扩展 |Microsoft Docs
+title: 适用于 Windows 的 Azure Monitor 虚拟机扩展
 description: 使用虚拟机扩展在 Windows 虚拟机上部署 Log Analytics 代理。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2019
 ms.author: akjosh
-ms.openlocfilehash: fe8bafcb63c1a27b905bdc339c07d30c9f0a5982
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: c9fd62e57d131fb21e657c53914f9cd5349107ec
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168928"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073663"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Azure Monitor 虚拟机扩展
 
@@ -57,7 +57,7 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 Log Analytics 代理扩展的架构。 此扩展需要目标 Log Analytics 工作区的工作区 ID 和工作区密钥。 这些数据可在 Azure 门户的工作区设置中找到。 由于工作区密钥应视为敏感数据，因此它应存储在受保护的设置配置。 Azure VM 扩展保护的设置数据已加密，并且只能在目标虚拟机上解密。 请注意，**workspaceId** 和 **workspaceKey** 区分大小写。
+以下 JSON 显示 Log Analytics 代理扩展的架构。 此扩展需要目标 Log Analytics 工作区的工作区 ID 和工作区密钥。 这些数据可在 Azure 门户的工作区设置中找到。 由于工作区密钥应视为敏感数据，因此它应存储在受保护的设置配置。 Azure VM 扩展的受保护设置数据已加密，并且只能在目标虚拟机上解密。 请注意，**workspaceId** 和 **workspaceKey** 区分大小写。
 
 ```json
 {
@@ -87,7 +87,7 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 | 名称 | 值/示例 |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
-| publisher | Microsoft.EnterpriseCloud.Monitoring |
+| 发布者 | Microsoft.EnterpriseCloud.Monitoring |
 | type | MicrosoftMonitoringAgent |
 | typeHandlerVersion | 1.0 |
 | workspaceId (e.g)* | 6f680a37-00c6-41c7-a93f-1437e3462574 |
@@ -186,7 +186,7 @@ Set-AzVMExtension -ExtensionName "MicrosoftMonitoringAgent" `
 Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
-扩展执行输出记录到在以下目录中发现的文件：
+扩展执行输出将记录到在以下目录中发现的文件：
 
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\
@@ -194,4 +194,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonit
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

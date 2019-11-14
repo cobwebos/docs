@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 611b3e608d9b0de9423c861ec70e9fc2e7ad67d5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: cd3efbea7b194da54bc1d9bebd1cc77987bd9dea
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720751"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072355"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>适用于合作伙伴的 Azure 成本管理入门
 
-对于已将客户载入到 Microsoft 客户协议的合作伙伴，Azure 成本管理是本机可用的。 本文介绍合作伙伴如何使用[Azure 成本管理](https://docs.microsoft.com/azure/cost-management/)功能。 还介绍了合作伙伴如何为其客户实现成本管理访问权限。 客户可在其 CSP 合作伙伴启用后使用成本管理功能。
+对于已载入客户到 Microsoft 客户协议并已购买 Azure 计划的合作伙伴，azure 成本管理是本机可用的。 本文介绍合作伙伴如何使用[Azure 成本管理](https://docs.microsoft.com/azure/cost-management/)功能。 还介绍了合作伙伴如何为其客户实现成本管理访问权限。 客户可在其 CSP 合作伙伴启用后使用成本管理功能。
 
 CSP 合作伙伴使用成本管理来：
 
@@ -37,7 +37,7 @@ CSP 合作伙伴使用成本管理来：
 
 还可通过 REST Api 使用 Azure 成本管理中提供的所有功能。 使用 Api 自动执行成本管理任务。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 Azure 成本管理要求对计费帐户或订阅具有 "读取" 权限。 可以在资源的任何级别授予访问权限，将计费帐户或管理组向下授予管理应用的各个资源组。 有关为计费帐户启用和分配对 Azure 成本管理的访问的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。 **全局管理员**和**管理代理**角色可以管理计费帐户的成本。
 
@@ -151,7 +151,7 @@ RBAC 范围内的预留实例的分期查看和实际成本显示零收费。 �
 
 使用情况详细信息文件和成本管理 Api 中有以下字段。 您可以使用 "筛选和分组依据" 成本分析中的功能来按多个字段分析成本。 若要查看字段的完整列表，请参阅[成本管理数据字段](understand-cost-mgt-data.md#cost-management-data-fields)。
 
-| 字段名 | 说明 |
+| 字段名称 | 说明 |
 | --- | --- |
 | CustomerTenantID | 客户&#39;订阅的 Azure Active Directory 租户的标识符。 |
 | CustomerName | 客户&#39;订阅的 Azure Active Directory 租户的名称。 |

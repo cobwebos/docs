@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中的 Linux VM 上运行自定义脚本 | Microsoft 文档
+title: 在 Azure 中的 Linux Vm 上运行自定义脚本
 description: 使用自定义脚本扩展 v2 自动化 Linux VM 配置任务
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: akjosh
-ms.openlocfilehash: 86c05519e7027ec8b7434919bf43f9b4602b0300
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 87826b5bec4294ce45355ab0cfc4df373895563b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789960"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073226"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 2
 自定义脚本扩展版本 2 在 Azure 虚拟机上下载和运行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或其他可访问的 Internet 位置下载脚本，或者将脚本提供给扩展运行时。 
@@ -33,7 +33,7 @@ ms.locfileid: "72789960"
 * 版本 1 - Microsoft.OSTCExtensions.CustomScriptForLinux
 * 版本 2 - Microsoft.Azure.Extensions.CustomScript
 
-请切换新部署和现有部署，改用新的版本 2。 新版本可作为一个简易的替代版本。 因此，迁移时只需更改名称和版本，无需更改扩展配置。
+请切换新部署和现有部署，改用新的版本 2。 新版本的目的是作为一个简易的替代版本。 因此，迁移如同更改名称和版本一样简单，无需更改扩展配置。
 
 
 ### <a name="operating-system"></a>操作系统
@@ -60,7 +60,7 @@ ms.locfileid: "72789960"
 * 如果想要计划脚本何时运行，应使用扩展创建一个 Cron 作业。 
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
 * 自定义脚本扩展本身不支持代理服务器，但可以使用脚本中支持代理服务器的文件传输工具，如 Curl。 
-* 请注意脚本或命令可能依赖的非默认目录位置，请按逻辑对其进行处理。
+* 请注意脚本或命令可能依赖的非默认目录位置，按逻辑对其进行处理。
 
 
 
@@ -70,7 +70,7 @@ ms.locfileid: "72789960"
 
 可将敏感数据存储在受保护的配置中，此配置经过加密，只能在虚拟机内部解密。 当执行命令包含机密（例如密码）时，受保护的配置相当有用。
 
-这些项应视为敏感数据，并且应在扩展保护的设置配置中指定。 Azure VM 扩展保护的设置数据已加密，并且只能在目标虚拟机上解密。
+这些项应视为敏感数据，并且应在扩展保护的设置配置中指定。 Azure VM 扩展的受保护设置数据已加密，并且只能在目标虚拟机上解密。
 
 ```json
 {
@@ -108,12 +108,12 @@ ms.locfileid: "72789960"
 
 | 名称 | 值/示例 | 数据类型 | 
 | ---- | ---- | ---- |
-| apiVersion | 2019-03-01 | date |
+| apiVersion | 2019-03-01 | 日期 |
 | 发布者 | Microsoft.Compute.Extensions | 字符串 |
 | type | CustomScript | 字符串 |
 | typeHandlerVersion | 2.0 | int |
 | fileUris（例如） | https://github.com/MyProject/Archive/MyPythonScript.py | 数组 |
-| commandToExecute（例如） | python MyPythonScript.py \<param1 > | 字符串 |
+| commandToExecute（例如） | python MyPythonScript.py \<my-param1> | 字符串 |
 | 脚本 | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | 字符串 |
 | skipDos2Unix（示例） | false | 布尔值 |
 | timestamp（示例） | 123456789 | 32 位整数 |
@@ -137,7 +137,7 @@ ms.locfileid: "72789960"
 
 虽然使用公共设置可能对调试很有用，但强烈建议使用受保护设置。
 
-公共设置会以明文形式发送到将执行脚本的 VM。  受保护设置使用只有 Azure 和 VM 知道的密钥进行加密。 这些设置会在发送时保存到 VM 中，也就是说，如果设置已加密，则会在 VM 上加密保存。 用于对已加密值解密的证书存储在 VM 上，该证书用于在运行时对设置解密（如必要）。
+公共设置会以明文形式发送到将执行脚本的 VM。  受保护设置使用只有 Azure 和 VM 知道的密钥进行加密。 这些设置会在发送时保存到 VM 中，也就是说，如果设置已加密，则会在 VM 上加密保存。 用于对加密值解密的证书存储在 VM 上，运行时使用它对设置解密（如有必要）。
 
 #### <a name="property-skipdos2unix"></a>属性：skipDos2Unix
 
@@ -363,7 +363,7 @@ Azure 脚本扩展生成一个日志，位置如下：
 /var/log/azure/custom-script/handler.log
 ```
 
-你应该查找单个执行，它将如下所示：
+应该查找如下所示的个别执行：
 ```text
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=start
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=pre-check

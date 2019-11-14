@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: 049b09f7927da2cc841130a0adeaa90768037db8
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 756fd720b468681b8ea31dc867cfdb6e44c0bb0a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903215"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074994"
 ---
 # <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 备份服务管理 Microsoft Azure 恢复服务代理备份
 
@@ -209,4 +209,4 @@ ms.locfileid: "73903215"
 ## <a name="next-steps"></a>后续步骤
 
 - 有关支持的方案和限制的详细信息，请参阅[MARS 的支持矩阵](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)。
-- 了解有关即席[备份策略保留行为](backup-configure-vault.md#ad-hoc-backup-policy-retention-behavior)的详细信息。
+- 了解有关[按需备份策略保留行为的](backup-configure-vault.md#on-demand-backup-policy-retention-behavior)详细信息。

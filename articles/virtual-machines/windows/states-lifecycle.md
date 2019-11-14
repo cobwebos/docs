@@ -1,5 +1,5 @@
 ---
-title: Azure 中的 Windows VM 的生命周期和状态 | Microsoft Docs
+title: Azure 中 Windows VM 的生命周期和状态
 description: 概述了 Azure 中的 Windows VM 的生命周期，并介绍了 VM 在任意时刻可能处于的各种状态。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 12ef055c94c25d27414e910a1ec1f53f6252d623
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f7823d0e34fb6a79e79e9feab8eea77785b3d0da
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101807"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068214"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>虚拟机生命周期和状态
 

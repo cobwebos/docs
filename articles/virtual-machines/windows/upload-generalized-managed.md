@@ -1,5 +1,5 @@
 ---
-title: 在通用化本地 VHD 中创建托管 Azure VM | Microsoft Docs
+title: 从通用本地 VHD 创建托管 Azure VM
 description: 将通用化 VHD 上传到 Azure 并使用它来创建新的 VM（使用 Resource Manager 部署模型）。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: ead44c321ffb7afb69295d1bf8c0e1acd26cb9ce
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: d0995fed61d169cc173ca01767c2e48f4f798b0d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749073"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067431"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>上传通用化 VHD 并使用它在 Azure 中创建新的 VM
 
-本文逐步讲解如何使用 PowerShell 将通用化 VM 的 VHD 上传到 Azure、从该 VHD 创建映像，然后从该映像创建新 VM。 可以上传从本地虚拟化工具或其他云导出的 VHD。 对新的 VM 使用[托管磁盘](managed-disks-overview.md)可简化 VM 管理，并在 VM 放置于可用性集中时提供更好的可用性。 
+本文指导如何使用 PowerShell 将通用 VM 的 VHD 上传到 Azure，从 VHD 创建映像，并从该映像创建新的 VM。 可以上传从本地虚拟化工具或其他云中导出的 VHD。 对新的 VM 使用[托管磁盘](managed-disks-overview.md)可简化 VM 管理，并在 VM 放置于可用性集中时提供更好的可用性。 
 
 有关示例脚本，请参阅[将 VHD 上传到 Azure 并创建新的 VM 的示例脚本](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md)。
 
@@ -37,7 +37,7 @@ ms.locfileid: "73749073"
 
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>使用 Sysprep 通用化源 VM
 
-Sysprep 将删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。 有关 Sysprep 的详细信息，请参阅 [Sysprep 概述](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
+Sysprep 将删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。 有关 Sysprep 的详细信息，请参阅 [Sysprep Overview](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)（Sysprep 概述）。
 
 确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)。
 
@@ -93,7 +93,7 @@ New-AzImage `
 
 ## <a name="create-the-vm"></a>创建 VM
 
-在已有映像之后，可以从该映像创建一个或多个新 VM。 本示例从 *myResourceGroup* 中的 *myImage* 创建名为 *myVM* 的 VM。
+在已有映像之后，可以从该映像创建一个或多个新 VM。 本示例从 myResourceGroup 中的 myImage 创建名为 myVM 的 VM。
 
 
 ```powershell

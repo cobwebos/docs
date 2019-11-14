@@ -1,7 +1,7 @@
 ---
 title: 使用必应图像搜索 API 搜索 .gif 图像
 titleSuffix: Azure Cognitive Services
-description: 使用必应图像搜索 API 在 Web 中搜索 GIF 图像。
+description: 借助必应图像搜索 API，还可以在整个 Web 上搜索最相关的 .gif 图像。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a8c9afa618df468e038c80f72713b12c7f6ee226
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ad33b5a28728a8e7f9c0a70ff81ea5a9e65624bd
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882288"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072643"
 ---
 # <a name="search-for-gif-images"></a>搜索 .gif 图像 
 
-借助必应图像搜索 API，还可以在整个 Web 上搜索最相关的 .gif 图像。  开发人员可以在各种会话场景中集成动人的 GIF。 
+借助必应图像搜索 API，还可以在整个 Web 上搜索最相关的 .gif 图像。  开发人员可以在各种对话方案中集成有吸引力的 gif。 
 
 以下 URL 是对动态 .gif 图像的查询。
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 ```
-[q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) 参数指定搜索词。  前面的查询还使用 [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) 筛选器参数指定 `animatedGif`。
+[q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) 参数指定搜索词。  前面的查询还使用 `animatedGif`imageType[ 筛选器参数指定 ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype)。
 
 若要查看结果的示例，请使用以下 URL 搜索 bing.com。
 ```

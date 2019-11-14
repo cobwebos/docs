@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 5824b835b3debb33386c0d1f86581c6bb91b14ae
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: c7e34b816f33c5286557dfc5d58711128ff68437
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904195"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075881"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -24,7 +24,7 @@ ms.locfileid: "73904195"
 
 ## <a name="whats-new"></a>新增功能
 
-[详细了解](whats-new.md)语言理解中的新增功能。
+[详细了解](whats-new.md)语言理解中的新增功能（LUIS）。
 
 <a name="luis-authoring"></a>
 

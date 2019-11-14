@@ -1,7 +1,7 @@
 ---
 title: 关于语音设备 SDK-语音服务
 titleSuffix: Azure Cognitive Services
-description: 语音设备 SDK 入门。 “语音服务”适用于多种设备和音频源。 现在，可以通过匹配的硬件和软件进一步利用语音应用程序。 语音设备 SDK 是与特制的麦克风阵列开发工具包配对的一个预优化库。
+description: 语音设备 SDK 入门。 “语音服务”适用于多种设备和音频源。 语音设备 SDK 是与特制的麦克风阵列开发工具包配对的一个预优化库。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 243072477c7d249d7066a7a448061c51a0bd2f34
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 31d1a60cc6c1316dcfccb4f9ba2571708fddd991
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468716"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072384"
 ---
 # <a name="about-the-speech-devices-sdk"></a>关于语音设备 SDK
 
@@ -23,9 +23,9 @@ ms.locfileid: "73468716"
 
 语音设备 SDK 有助于：
 
-* 快速测试新的语音方案。
-* 更轻松地将基于云的语音服务集成到设备中。
-* 为客户创建出色的用户体验。
+- 快速测试新的语音方案。
+- 更轻松地将基于云的语音服务集成到设备中。
+- 为客户创建出色的用户体验。
 
 语音设备 SDK 使用[语音 SDK](speech-sdk.md)。 它使用语音 SDK 将我们的高级音频处理算法处理的音频从设备的麦克风阵列发送到[语音服务](overview.md)。 它使用多声道音频，通过噪声抑制、回音消除、波束赋形和残响消除来提供更准确的远场[语音识别](speech-to-text.md)。
 
@@ -53,6 +53,5 @@ ms.locfileid: "73468716"
 
 > [!div class="nextstepaction"]
 > [选择语音设备](get-speech-devices-sdk.md)
->
 > [!div class="nextstepaction"]
 > [免费获取语音服务订阅密钥](get-started.md)

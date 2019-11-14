@@ -1,7 +1,7 @@
 ---
-title: 使用 REST API 创建 Azure 负载均衡器
-titlesuffix: Azure Load Balancer
-description: 了解如何使用 REST API 创建 Azure 负载均衡器。
+title: 使用 REST API 创建负载均衡器
+titleSuffix: Azure Load Balancer
+description: 本文介绍如何使用 REST API 创建 Azure 负载均衡器。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: allensu
-ms.openlocfilehash: ae8fb4494d27d0c145963c9b32757bdb802e0cc7
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b8acf1faff17f657999769216f71cfb5fa6e3181
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275546"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077093"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>使用 REST API 创建 Azure 基本负载均衡器
 
@@ -33,12 +33,12 @@ Azure 负载均衡器根据规则和运行状况探测，将抵达负载均衡�
   ```
 ### <a name="uri-parameters"></a>URI 参数
 
-|名称  |In  |需要 |类型 |描述 |
+|名称  |In  |必选 |类型 |说明 |
 |---------|---------|---------|---------|--------|
-|subscriptionId   |  path       |  True       |   string      |  可以唯一标识 Microsoft Azure 订阅的订阅凭据。 此订阅 ID 是每个服务调用的 URI 的一部分。      |
-|resourceGroupName     |     path    | True        |  string       |   资源组的名称。     |
-|loadBalancerName     |  path       |      True   |    string     |    负载均衡器的名称。    |
-|api-version    |   query     |  True       |     string    |  客户端 API 版本。      |
+|subscriptionId   |  path       |  True       |   字符串      |  可以唯一标识 Microsoft Azure 订阅的订阅凭据。 此订阅 ID 是每个服务调用的 URI 的一部分。      |
+|resourceGroupName     |     path    | True        |  字符串       |   资源组的名称。     |
+|loadBalancerName     |  path       |      True   |    字符串     |    负载均衡器的名称。    |
+|api-version    |   查询     |  True       |     字符串    |  客户端 API 版本。      |
 
 
 
@@ -46,19 +46,19 @@ Azure 负载均衡器根据规则和运行状况探测，将抵达负载均衡�
 
 唯一必需的参数为 `location`。 如果不定义 *SKU* 版本，则会默认创建基本负载均衡器。  请使用[可选参数](https://docs.microsoft.com/rest/api/load-balancer/loadbalancers/createorupdate#request-body)来自定义负载均衡器。
 
-| 名称 | 类型 | 描述 |
+| 名称 | 类型 | 说明 |
 | :--- | :--- | :---------- |
-| location | string | 资源位置。 使用[列出位置](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations)操作获取位置的当前列表。 |
+| location | 字符串 | 资源位置。 使用[列出位置](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations)操作获取位置的当前列表。 |
 
 
-## <a name="example-create-and-update-a-basic-load-balancer"></a>例如：创建和更新基本负载均衡器
+## <a name="example-create-and-update-a-basic-load-balancer"></a>示例：创建和更新基本负载均衡器
 
 在此示例中，请首先创建基本负载均衡器及其资源。 接下来，请配置负载均衡器资源，其中包括前端 IP 配置、后端地址池、负载均衡规则、运行状况探测，以及入站 NAT 规则。
 
-在使用下面的示例创建负载均衡器之前，请在“美国东部”区域名为 *rg1* 的资源组中使用名为 *subnetlb* 的子网创建名为 *vnetlb* 的虚拟网络。 
+在使用下面的示例创建负载均衡器之前，请在“美国东部”区域名为 *rg1* 的资源组中使用名为 *subnetlb* 的子网创建名为 *vnetlb* 的虚拟网络。
 
 ### <a name="step-1-create-a-basic-load-balancer"></a>步骤 1. 创建基本负载均衡器
-在此步骤中，请在“美国东部”位置的 *rg1* 资源组中创建名为 *lb* 的基本负载均衡器。 
+在此步骤中，请在“美国东部”位置的 *rg1* 资源组中创建名为 **lb** 的基本负载均衡器。
 #### <a name="sample-request"></a>示例请求
 
   ```HTTP    

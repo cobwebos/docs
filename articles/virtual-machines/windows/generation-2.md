@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: f17ec7179413bebb8260089abc46856412b78ab5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d6fcbcb7f5d1b6bb25840ad1bddc5327b068c15d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038649"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075468"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>支持 Azure 上的第2代 Vm
 
@@ -92,7 +92,7 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 | OS 磁盘 > 2 TB                    | :x:                | :heavy_check_mark: |
 | 自定义磁盘/映像/交换 OS         | :heavy_check_mark: | :heavy_check_mark: |
 | 虚拟机规模集支持 | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Site Recovery               | :heavy_check_mark: | :x:                |
+| Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | 备份/还原                    | :heavy_check_mark: | :heavy_check_mark: |
 | 共享映像库              | :heavy_check_mark: | :heavy_check_mark: |
 | Azure 磁盘加密             | :heavy_check_mark: | :x:                |

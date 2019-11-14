@@ -1,5 +1,5 @@
 ---
-title: Azure 虚拟机扩展和功能 | Microsoft Docs
+title: Azure 虚拟机扩展和功能
 description: 了解什么是 Azure VM 扩展以及如何将其与 Azure 虚拟机配合使用
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/12/2019
 ms.author: akjosh
-ms.openlocfilehash: deb49267a262705370e48e150cc5ed6c4dc04247
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: bf17f499c1e8339a1e9abb13cffd5e35c390f564
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168881"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072980"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure 虚拟机扩展和功能
 Azure 虚拟机 (VM) 扩展是小型应用程序，可在 Azure VM 上提供部署后配置和自动化任务，用户可以使用现有映像并将其自定义为部署的一部分，摆脱构建自定义映像的麻烦。
@@ -52,26 +52,26 @@ Azure 平台可承载许多扩展，其中包括 VM 配置、监视、安全性�
 
 ## <a name="troubleshoot-extensions"></a>排查扩展问题
 
-可在扩展概述的 "**故障排除和支持**" 部分中找到每个扩展的故障排除信息。 下面列出了可用的疑难解答信息：
+可以在扩展概述的**故障排除和支持**部分中找到每个扩展的故障排除信息。 下面列出了可用的故障排除信息：
 
-| 命名空间 | 疑难解答 |
+| 命名空间 | 故障排除 |
 |-----------|-----------------|
 | dependencyagent. dependencyagentlinux。 | [适用于 Linux 的 Azure Monitor 依赖关系](agent-dependency-linux.md#troubleshoot-and-support) |
 | dependencyagent. dependencyagentwindows。 | [Windows 的 Azure Monitor 依赖关系](agent-dependency-windows.md#troubleshoot-and-support) |
-| azurediskencryptionforlinux。 | [适用于 Linux 的 Azure 磁盘加密](azure-disk-enc-linux.md#troubleshoot-and-support) |
-| azurediskencryption。 | [适用于 Windows 的 Azure 磁盘加密](azure-disk-enc-windows.md#troubleshoot-and-support) |
-| customscriptextension | [适用于 Windows 的自定义脚本](custom-script-windows.md#troubleshoot-and-support) |
-| microsoft.ostcextensions. customscriptforlinux | [适用于 Linux 的 Desired State Configuration](dsc-linux.md#troubleshoot-and-support) |
-| microsoft powershell | [适用于 Windows 的所需状态配置](dsc-windows.md#troubleshoot-and-support) |
-| hpccompute. nvidiagpudriverlinux | [适用于 Linux 的 NVIDIA GPU 驱动程序扩展](hpccompute-gpu-linux.md#troubleshoot-and-support) |
-| hpccompute. nvidiagpudriverwindows | [适用于 Windows 的 NVIDIA GPU 驱动程序扩展](hpccompute-gpu-windows.md#troubleshoot-and-support) |
-| iaasantimalware。 | [适用于 Windows 的反恶意软件扩展](iaas-antimalware-windows.md#troubleshoot-and-support) |
-| enterprisecloud. omsagentforlinux | [适用于 Linux 的 Azure Monitor](oms-linux.md#troubleshoot-and-support)
-| enterprisecloud. microsoftmonitoringagent | [适用于 Windows 的 Azure Monitor](oms-windows.md#troubleshoot-and-support) |
+| microsoft.azure.security.azurediskencryptionforlinux | [适用于 Linux 的 Azure 磁盘加密](azure-disk-enc-linux.md#troubleshoot-and-support) |
+| microsoft.azure.security.azurediskencryption | [适用于 Windows 的 Azure 磁盘加密](azure-disk-enc-windows.md#troubleshoot-and-support) |
+| microsoft.compute.customscriptextension | [适用于 Windows 的自定义脚本](custom-script-windows.md#troubleshoot-and-support) |
+| microsoft.ostcextensions.customscriptforlinux | [适用于 Linux 的 Desired State Configuration](dsc-linux.md#troubleshoot-and-support) |
+| microsoft.powershell.dsc | [适用于 Windows 的 Desired State Configuration](dsc-windows.md#troubleshoot-and-support) |
+| microsoft.hpccompute.nvidiagpudriverlinux | [适用于 Linux 的 NVIDIA GPU 驱动程序扩展](hpccompute-gpu-linux.md#troubleshoot-and-support) |
+| microsoft.hpccompute.nvidiagpudriverwindows | [适用于 Windows 的 NVIDIA GPU 驱动程序扩展](hpccompute-gpu-windows.md#troubleshoot-and-support) |
+| microsoft.azure.security.iaasantimalware | [适用于 Windows 的反恶意软件扩展](iaas-antimalware-windows.md#troubleshoot-and-support) |
+| microsoft.enterprisecloud.monitoring.omsagentforlinux | [用于 Linux 的 Azure Monitor](oms-linux.md#troubleshoot-and-support)
+| microsoft.enterprisecloud.monitoring.microsoftmonitoringagent | [用于 Windows 的 Azure Monitor](oms-windows.md#troubleshoot-and-support) |
 | stackify. linuxagent. stackifylinuxagentextension | [适用于 Linux 的 Stackify 回描](stackify-retrace-linux.md#troubleshoot-and-support) |
-| vmaccessforlinux. microsoft.ostcextensions | [为 Linux 重置密码（VMAccess）](vmaccess.md#troubleshoot-and-support) |
-| microsoft.recoveryservices. vmsnapshot | [适用于 Linux 的快照](vmsnapshot-linux.md#troubleshoot-and-support) |
-| microsoft.recoveryservices. vmsnapshot | [Windows 快照](vmsnapshot-windows.md#troubleshoot-and-support) |
+| vmaccessforlinux.microsoft.ostcextensions | [为 Linux 重置密码 (VMAccess)](vmaccess.md#troubleshoot-and-support) |
+| microsoft.recoveryservices.vmsnapshot | [适用于 Linux 的快照](vmsnapshot-linux.md#troubleshoot-and-support) |
+| microsoft.recoveryservices.vmsnapshot | [适用于 Windows 的快照](vmsnapshot-windows.md#troubleshoot-and-support) |
 
 
 ## <a name="next-steps"></a>后续步骤

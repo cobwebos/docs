@@ -1,5 +1,5 @@
 ---
-title: 适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展 | Microsoft 文档
+title: 适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展
 description: 使用虚拟机扩展在 Windows 虚拟机上部署网络观察程序代理。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 77685fd6549906cfb050e12d53ec151c964fda42
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 998e160edce25b9d466a1db090abcefeb7870172
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084410"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073688"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>适用于 Windows 的网络观察程序代理虚拟机扩展
 
@@ -67,7 +67,7 @@ ms.locfileid: "70084410"
 | 名称 | 值/示例 |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
-| publisher | Microsoft.Azure.NetworkWatcher |
+| 发布者 | Microsoft.Azure.NetworkWatcher |
 | type | NetworkWatcherAgentWindows |
 | typeHandlerVersion | 1.4 |
 
@@ -91,9 +91,9 @@ Set-AzVMExtension `
   -TypeHandlerVersion "1.4"
 ```
 
-## <a name="troubleshooting-and-support"></a>疑难解答和支持
+## <a name="troubleshooting-and-support"></a>故障排除和支持
 
-### <a name="troubleshooting"></a>疑难解答
+### <a name="troubleshooting"></a>故障排除
 
 可以从 Azure 门户和 PowerShell 检索有关扩展部署状态的数据。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 模块运行以下命令：
 

@@ -1,6 +1,6 @@
 ---
-title: 创建使用 IPv6 的面向 Internet 的负载均衡器 - PowerShell
-titlesuffix: Azure Load Balancer
+title: 使用 IPv6 创建面向 Internet 的负载均衡器-Azure PowerShell
+titleSuffix: Azure Load Balancer
 description: 了解如何使用用于 Resource Manager 的 PowerShell 创建具有 IPv6 的面向 Internet 的负载均衡器
 services: load-balancer
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 9f2bd24955cc378deed5dbc0423488645632a958
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: fb697003da8c0604b2ce1e8956fcd434014b5b82
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025801"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077056"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>开始使用用于 Resource Manager 的 PowerShell 创建具有 IPv6 的面向 Internet 的负载均衡器
 
@@ -28,10 +28,10 @@ ms.locfileid: "73025801"
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [模板](load-balancer-ipv6-internet-template.md)
 
->[!注意：针对 IPv6 的最佳实践更改] 本文介绍了一个介绍性的 IPv6 功能，该功能允许基本负载均衡器提供 IPv4 和 IPv6 连接。  更全面的 IPv6 连接现在适用于适用于[Azure vnet 的 ipv6](../virtual-network/ipv6-overview.md) ，这将 ipv6 连接与虚拟网络集成，并包含 Ipv6 网络安全组规则、ipv6 用户定义路由、ipv6 基本和标准负载均衡等。  适用于 azure Vnet 的 IPv6 是适用于 Azure 中的 IPv6 应用程序的最佳做法。 
+>[!注意：针对 IPv6 的最佳实践更改] 本文介绍了一个介绍性的 IPv6 功能，该功能允许基本负载均衡器提供 IPv4 和 IPv6 连接。  更全面的 IPv6 连接现在适用于适用于[Azure vnet](../virtual-network/ipv6-overview.md)的 ipv6，这将 ipv6 连接与虚拟网络集成，并包含 Ipv6 网络安全组规则、ipv6 用户定义路由、ipv6 基本和标准负载平衡等关键功能。  适用于 azure Vnet 的 IPv6 是适用于 Azure 中的 IPv6 应用程序的最佳做法。 
 >请参阅[用于 AZURE VNET Powershell 部署的 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
 
-Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure Load Balancer 还可以在多个端口和/或多个 IP 地址上显示这些服务。
+Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure 负载均衡器还可以在多个端口和/或多个 IP 地址上显示这些服务。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: 使用门户创建适用于 Windows 的共享 Azure 虚拟机映像 |Microsoft Docs
+title: 使用门户创建适用于 Windows 的共享 Azure 虚拟机映像
 description: 了解如何使用 Azure 门户来创建和共享虚拟机映像。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 8dac15a39355f3faf749327431423629fa6ce09b
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 0823942964f2bdb9f943d6eb778a3132574af0f7
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903650"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065530"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>使用 Azure 门户创建共享映像库
 

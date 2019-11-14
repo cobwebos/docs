@@ -1,10 +1,11 @@
 ---
-title: 使用.NET SDK 在 Azure DNS 中创建 DNS 区域和记录集 | Microsoft Docs
+title: 使用 .NET SDK 创建 DNS 区域和记录集
+titleSuffix: Azure DNS
 description: 如何使用 .NET SDK 在 Azure DNS 中创建 DNS 区域和记录集。
 services: dns
 documentationcenter: na
-author: vhorne
-manager: jeconnoc
+author: asudbring
+manager: kumudD
 ms.assetid: eed99b87-f4d4-4fbf-a926-263f7e30b884
 ms.service: dns
 ms.devlang: na
@@ -12,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
-ms.author: victorh
-ms.openlocfilehash: a06d629087e853c2578e6d35a2ea90c5a8eff840
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: b51dd4ea3b36a9d0420a60883ebc29276a7d6b8a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60308937"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076710"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>使用 .NET SDK 创建 DNS 区域和记录集
 
@@ -43,8 +44,8 @@ ms.locfileid: "60308937"
 
 1. 在 **Visual Studio** 中，打开项目或新的项目。
 2. 转到“**工具**” **>** “**NuGet 包管理器**” **>“** **管理解决方案的 NuGet 包...** ”。
-3. 单击“浏览”  ，启用“包括预发行版”  复选框，并在搜索框中键入 **Microsoft.Azure.Management.Dns**。
-4. 选择此包，然后单击“**安装**”将其添加到 Visual Studio 项目中。
+3. 单击“浏览”，启用“包括预发行版”复选框，并在搜索框中键入 **Microsoft.Azure.Management.Dns**。
+4. 选择此包，并单击“**安装**”将其添加到 Visual Studio 项目中。
 5. 重复以上过程，还能安装以下包：**Microsoft.Rest.ClientRuntime.Azure.Authentication** 和 **Microsoft.Azure.Management.ResourceManager**。
 
 ## <a name="add-namespace-declarations"></a>添加命名空间声明
@@ -145,7 +146,7 @@ recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName, zo
 
 ## <a name="list-zones-and-record-sets"></a>列出区域和记录集
 
-若要列出区域，请使用 *DnsManagementClient.Zones.List...* 方法，它支持列出给定资源组中的所有区域或给定 Azure 订阅中的所有区域（跨资源组）。若要列出记录集，请使用 *DnsManagementClient.RecordSets.List...* 方法，它支持列出给定区域中的所有记录集或仅列出特定类型的记录集。
+若要列出区域，请使用*DnsManagementClient* ... 方法，该方法支持列出给定资源组中的所有区域或给定 Azure 订阅中的所有区域（跨资源组）。若要列出记录集，请使用*DnsManagementClient* ... 方法，该方法支持列出给定区域中的所有记录集或仅列出特定类型的记录集。
 
 请注意，列出区域和记录集时，可能会对结果进行分页。  下面的示例演示如何循环访问各页结果。 （人为减小的‘2’页面大小用于强制分页；在实践中，应省略此参数并使用默认页面大小。）
 

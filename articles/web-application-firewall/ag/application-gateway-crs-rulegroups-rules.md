@@ -1,18 +1,19 @@
 ---
-title: Azure 应用程序网关 Web 应用程序防火墙 CRS 规则组和规则
+title: CRS 规则组和规则
+titleSuffix: Azure Web Application Firewall
 description: 本页提供有关 Web 应用程序防火墙 CRS 规则组和规则的信息。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/31/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 59e4203ca219802a95a09761b90c00a039b47631
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0303f09e5e704a18576bf50d1f00007f7f86f320
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516963"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075378"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 应用程序防火墙 CRS 规则组和规则
 
@@ -97,7 +98,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ## <a name="owasp31"></a> 规则集
 
-### <a name="general-31"></a> <p x-ms-format-detection="none">常规</p>
+### <a name="general-31"></a> <p x-ms-format-detection="none">一般信息</p>
 
 |RuleId|说明|
 |---|---|
@@ -139,9 +140,9 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |920201|范围 = pdf 请求的字段在多（35 个或以上）|
 |920202|范围 = pdf 请求的字段在多（6 个或以上）|
 |920210|找到了多个/有冲突的连接标头数据。|
-|920220|URL 编码滥用攻击企图|
+|920220|URL 编码滥用攻击尝试|
 |920230|检测到多个 URL 编码|
-|920240|URL 编码滥用攻击企图|
+|920240|URL 编码滥用攻击尝试|
 |920250|UTF8 编码滥用攻击企图|
 |920260|Unicode 全角/半角滥用攻击企图|
 |920270|请求中的字符无效（null 字符）|
@@ -343,7 +344,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ## <a name="owasp30"></a> 规则集
 
-### <a name="general-30"></a> <p x-ms-format-detection="none">常规</p>
+### <a name="general-30"></a> <p x-ms-format-detection="none">一般信息</p>
 
 |RuleId|说明|
 |---|---|
@@ -378,8 +379,8 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |920180|POST 请求缺少 Content-Length 标头。|
 |920190|范围 = 最后一个字节值无效。|
 |920210|找到了多个/有冲突的连接标头数据。|
-|920220|URL 编码滥用攻击企图|
-|920240|URL 编码滥用攻击企图|
+|920220|URL 编码滥用攻击尝试|
+|920240|URL 编码滥用攻击尝试|
 |920250|UTF8 编码滥用攻击企图|
 |920260|Unicode 全角/半角滥用攻击企图|
 |920270|请求中的字符无效（null 字符）|
@@ -561,9 +562,9 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |958291|范围 = 字段存在并以 0 开始。|
 |958230|范围 = 最后一个字节值无效。|
 |958295|找到了多个/有冲突的连接标头数据。|
-|950107|URL 编码滥用攻击企图|
+|950107|URL 编码滥用攻击尝试|
 |950109|检测到多个 URL 编码|
-|950108|URL 编码滥用攻击企图|
+|950108|URL 编码滥用攻击尝试|
 |950801|UTF8 编码滥用攻击企图|
 |950116|Unicode 全角/半角滥用攻击企图|
 |960901|请求中的字符无效|

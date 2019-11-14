@@ -1,7 +1,6 @@
 ---
-title: Azure 负载均衡器的 IPv6 概述
-titlesuffix: Azure Load Balancer
-description: 了解 Azure 负载均衡器和负载均衡 VM 的 IPv6 支持。
+title: IPv6 概述-Azure 负载均衡器
+description: 利用此学习路径，开始对 Azure 负载均衡器和负载平衡 Vm 进行 IPv6 支持。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: b4c1fcd6a719f341dcebfd9f4efc4423241ca3dd
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 07dd3ee507f31099e32f18143d2beedf76e83c36
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147349"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077023"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure 负载均衡器的 IPv6 概述
 

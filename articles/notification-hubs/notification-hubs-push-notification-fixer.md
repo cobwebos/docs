@@ -16,12 +16,12 @@ ms.date: 04/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: c9754c1d7fee5af13de6176dbf8a1ca6e57a71eb
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 3aaa99caca461d4b8e339cf4c1f7847adef4027a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213154"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076844"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>诊断 Azure 通知中心内删除通知的问题
 
@@ -31,9 +31,9 @@ ms.locfileid: "71213154"
 
 ![通知中心体系结构][0]
 
-在典型的发送通知流中，消息从*应用程序后端*发送到通知中心。 通知中心处理所有注册。 它会考虑配置的标记和标记表达式，以确定目标。 目标是指需要接收推送通知的注册。 这些注册可能跨越所有受支持的平台：Android、百度（中国的 Android 设备）、Fire OS (Amazon) iOS、Windows 和 Windows Phone。
+在典型的发送通知流中，消息从*应用程序后端*发送到通知中心。 通知中心处理所有注册。 它会考虑配置的标记和标记表达式，以确定目标。 目标是指需要接收推送通知的注册。 这些注册可跨越我们支持的任何平台： Android、百度（中国的 Android 设备）、防火 OS （Amazon） iOS、Windows 和 Windows Phone。
 
-确定目标之后，通知中心将通知推送到设备平台的*推送通知服务*。 示例包括适用于 Apple 的 Apple Push Notification 服务 (APNs) 和适用于 Google 的 Firebase Cloud Messaging (FCM)。 通知中心推送跨多批注册拆分的通知。 它通过相应的推送通知服务进行身份验证，具体取决于你在 "**配置通知中心**" 下 Azure 门户中设置的凭据。 然后，推送通知服务将通知转发到各自的*客户端设备*。
+确定目标之后，通知中心将通知推送到设备平台的*推送通知服务*。 例如，适用于 iOS 和 macOS 的 Apple 推送通知服务（APNs）以及适用于 Android 设备的 Firebase Cloud 消息（FCM）。 通知中心推送跨多批注册拆分的通知。 通知中心基于你在 Azure 门户的“配置通知中心”下设置的凭据，向各自的推送通知服务验证身份。 然后，推送通知服务将通知转发到各自的*客户端设备*。
 
 通知传递的最后一步在平台推送通知服务与设备之间进行。 通知传送可能会在推送通知过程的四个阶段（客户端、应用程序后端、通知中心和平台推送通知服务）中的任何一个阶段失败。 有关通知中心体系结构的详细信息，请参阅[通知中心概述]。
 
@@ -43,7 +43,7 @@ ms.locfileid: "71213154"
 
 ## <a name="notification-hubs-misconfiguration"></a>通知中心配置错误 ##
 
-若要将通知发送到相应的推送通知服务，通知中心必须在应用程序的上下文中对其自身进行身份验证。 必须使用目标平台的通知服务（Microsoft、Apple、Google 等）创建开发人员帐户。 然后，你必须将应用程序注册到操作系统，你可以在其中获取用于处理目标 PNS 的令牌或密钥。
+若要将通知发送到各自的推送通知服务，通知中心必须在应用程序环境中对自身进行身份验证。 必须使用目标平台的通知服务（Microsoft、Apple、Google 等）创建开发人员帐户。 然后，必须将应用程序注册到 OS，你在该 OS 中获取与目标 PNS 配合使用的令牌或密钥。
 
 你必须将平台凭据添加到 Azure 门户中。 如果设备未收到任何通知，第一步是确保在通知中心配置正确的凭据。 凭据必须与在平台特定开发人员帐户下创建的应用程序相匹配。
 
@@ -103,7 +103,7 @@ ms.locfileid: "71213154"
 
 在这种情况下，出错的注册会从数据库中删除。 然后，我们针对该批次中的其他设备重试通知传递。
 
-若要获取有关针对注册的失败传递尝试的更多错误信息，可以使用通知中心 REST API [按消息遥测：获取通知消息遥测数据](https://msdn.microsoft.com/library/azure/mt608135.aspx)和 [PNS 反馈](https://msdn.microsoft.com/library/azure/mt705560.aspx)。 有关示例代码，请参阅[发送 REST 示例](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)。
+若要获取有关针对注册的失败传送尝试的更多错误消息，可以将通知中心 REST Api 用于[每条消息遥测：获取通知消息遥测](https://msdn.microsoft.com/library/azure/mt608135.aspx)和[PNS 反馈](https://msdn.microsoft.com/library/azure/mt705560.aspx)。 有关示例代码，请参阅[发送 REST 示例](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)。
 
 ## <a name="push-notification-service-issues"></a>推送通知服务问题
 
@@ -113,7 +113,7 @@ ms.locfileid: "71213154"
 
 如果推送通知服务尝试传递通知，但设备处于脱机状态，则推送通知服务会存储通知。 通知只会存储有限的一段时间。 等设备可用时再将通知传递到设备。
 
-每个应用仅存储一个最近通知。 如果在设备处于脱机状态时发送了多个通知，则每个新通知将导致最后一个通知被放弃。 仅保留最新通知称为 FCM 中的在 APNs 和*折叠*中的*合并*。 （FCM 使用折叠键。）如果设备长时间处于脱机状态，则会放弃为该设备存储的通知。 有关详细信息，请参阅[APNs overview]和[About FCM messages]。
+每个应用仅存储一个最新通知。 如果在设备处于脱机状态时发送了多个通知，则每个新通知将导致上一个通知被放弃。 仅保留最新通知称为 FCM 中的在 APNs 和*折叠*中的*合并*。 （FCM 使用折叠键。）如果设备长时间处于脱机状态，则会放弃为该设备存储的通知。 有关详细信息，请参阅[APNs overview]和[About FCM messages]。
 
 在通知中心，可以使用泛型 SendNotification API 通过 HTTP 标头来传递合并密钥。 例如，对于 .NET SDK，你会使用 `SendNotificationAsync`。 SendNotification API 还会将按原样传递的 HTTP 标头传递到各自的推送通知服务。
 
@@ -125,7 +125,7 @@ ms.locfileid: "71213154"
 
 #### <a name="push-notification-service-developer-portal"></a>推送通知服务开发人员门户 ####
 
-在各自的推送通知服务开发人员门户（APNs、FCM、Windows 通知服务等）中验证凭据。 有关详细信息，请参阅[教程：使用 Azure 通知中心向通用 Windows 平台应用发送通知](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification)创建的解决方案。
+在各自的推送通知服务开发人员门户（APNs、FCM、Windows 通知服务等）中验证凭据。 有关详细信息，请参阅[教程：使用 Azure 通知中心将通知发送到通用 Windows 平台应用](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification)。
 
 #### <a name="azure-portal"></a>Azure 门户 ####
 
@@ -145,11 +145,11 @@ ms.locfileid: "71213154"
 
 在“服务器资源管理器”中右键单击你的通知中心，然后选择“诊断”。 
 
-![Visual Studio 服务器资源管理器：“诊断”菜单](./media/notification-hubs-diagnosing/diagnose-menu.png)
+![Visual Studio 服务器资源管理器：诊断菜单](./media/notification-hubs-diagnosing/diagnose-menu.png)
 
 会看到以下页面：
 
-![Visual Studio：“诊断”页](./media/notification-hubs-diagnosing/diagnose-page.png)
+![Visual Studio：诊断页](./media/notification-hubs-diagnosing/diagnose-page.png)
 
 切换到“设备注册”页：
 
@@ -160,7 +160,7 @@ ms.locfileid: "71213154"
 ![Visual Studio：测试发送](./media/notification-hubs-diagnosing/test-send-vs.png)
 
 > [!NOTE]
-> 用于编辑注册的 Visual Studio 功能只能在开发/测试有限的注册时使用。 如果需要批量编辑注册，请考虑使用以下教程中所述的导出和导入注册功能：[如何：批量导出和修改注册](https://msdn.microsoft.com/library/dn790624.aspx)。
+> 用于编辑注册的 Visual Studio 功能只能在开发/测试有限的注册时使用。 如果需要批量编辑注册，请考虑使用[如何：批量导出和修改注册](https://msdn.microsoft.com/library/dn790624.aspx)中所述的导出和导入注册功能。
 
 #### <a name="service-bus-explorer"></a>服务总线资源管理器 ####
 
@@ -183,7 +183,7 @@ ms.locfileid: "71213154"
 有关将通知中心与 Visual Studio 服务器资源管理器搭配使用的详细信息，请参阅以下文章：
 
 * [如何查看通知中心的设备注册](https://docs.microsoft.com/previous-versions/windows/apps/dn792122(v=win.10))
-* [深入探讨：Visual Studio 2013 Update 2 RC 和 Azure SDK 2.3]
+* [深入了解：Visual Studio 2013 Update 2 RC 和 Azure SDK 2.3]
 * [宣布推出 Visual Studio 2013 Update 3 和 Azure SDK 2.4]
 
 ### <a name="debug-failed-notifications-and-review-notification-outcome"></a>调试失败的通知和查看通知结果
@@ -214,7 +214,7 @@ Console.WriteLine(result.State);
 
 在执行结束时，`result.State` 只表示 `Enqueued`。 结果未深入分析推送通知发生了什么。
 
-接下来，可以使用 `EnableTestSend` 布尔属性。 初始化 `NotificationHubClient` 时，可使用 `EnableTestSend` 属性获取有关发送通知时出现的推送通知服务错误的详细状态。 send 调用需要更多时间才能返回，因为它首先需要通知中心将通知传送到推送通知服务。
+接下来，可以使用 `EnableTestSend` 布尔属性。 初始化 `EnableTestSend` 时，可使用 `NotificationHubClient` 属性获取有关发送通知时出现的推送通知服务错误的详细状态。 send 调用需要更多时间才能返回，因为它首先需要通知中心将通知传送到推送通知服务。
 
 ```csharp
     bool enableTestSend = true;
@@ -263,7 +263,7 @@ The Token obtained from the Token Provider is wrong
 
 #### <a name="programmatic-access"></a>以编程方式访问 ####
 
-有关以编程方式访问的详细信息，请参阅[编程访问](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100))。
+有关编程访问的详细信息，请参阅[以编程方式访问](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100))。
 
 > [!NOTE]
 > 与遥测相关的多项功能（例如，导出和导入注册、通过 API 进行遥测访问）只能在“标准”服务层级使用。 如果尝试从“免费”或“基本”服务层级使用这些功能，则在使用 SDK 时会收到异常消息。 如果直接从 REST API 使用这些功能，将会收到 HTTP 403（已禁止）错误。
@@ -286,12 +286,12 @@ The Token obtained from the Token Provider is wrong
 [通知中心概述]: notification-hubs-push-notification-overview.md
 [Azure 通知中心入门]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [模板]: https://msdn.microsoft.com/library/dn530748.aspx
-[APNs overview]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
-[About FCM messages]: https://firebase.google.com/docs/cloud-messaging/concept-options
+[APNs overview]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html（APNs 概述）
+[About FCM messages]: https://firebase.google.com/docs/cloud-messaging/concept-options（关于 FCM 消息）
 [Export and modify registrations in bulk]: https://msdn.microsoft.com/library/dn790624.aspx
 [Service Bus Explorer code]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a
 [View device registrations for notification hubs]: https://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx
-[深入探讨：Visual Studio 2013 Update 2 RC 和 Azure SDK 2.3]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
+[深入了解：Visual Studio 2013 Update 2 RC 和 Azure SDK 2.3]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
 [宣布推出 Visual Studio 2013 Update 3 和 Azure SDK 2.4]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
 [EnableTestSend]: https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
 [Programmatic telemetry access]: https://msdn.microsoft.com/library/azure/dn458823.aspx

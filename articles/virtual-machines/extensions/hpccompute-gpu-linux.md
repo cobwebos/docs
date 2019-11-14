@@ -1,5 +1,5 @@
 ---
-title: NVIDIA GPU 驱动程序扩展 - Azure Linux VM | Microsoft Docs
+title: NVIDIA GPU 驱动程序扩展-Azure Linux Vm
 description: 用于在运行 Linux 的 N 系列计算 VM 上安装 NVIDIA GPU 驱动程序的 Microsoft Azure 扩展。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 83646c0b11bf558f667b29271a27d31e5489c157
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 6ea61acfc2db3c8f1f5c9c0ac8da8f19897d441e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174001"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073742"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>适用于 Linux 的 NVIDIA GPU 驱动程序扩展
 
@@ -36,7 +36,7 @@ https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)�
 
 此扩展支持以下 OS 发行版，具体取决于特定 OS 版本对驱动程序的支持。
 
-| 分发 | Version |
+| 分发 | 版本 |
 |---|---|
 | Linux：Ubuntu | 16.04 LTS、18.04 LTS |
 | Linux：Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
@@ -72,22 +72,22 @@ https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)�
 
 ### <a name="properties"></a>属性
 
-| 姓名 | 值/示例 | 数据类型 |
+| 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
-| type | NvidiaGpuDriverLinux | string |
+| apiVersion | 2015-06-15 | 日期 |
+| 发布者 | Microsoft.HpcCompute | 字符串 |
+| type | NvidiaGpuDriverLinux | 字符串 |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>设置
 
 所有设置都是可选的。 默认行为是，如果安装驱动程序时不要求更新内核，则不进行更新，请安装最新的受支持驱动程序和 CUDA 工具包（根据情况）。
 
-| 姓名 | 描述 | Default Value | 有效值 | 数据类型 |
+| 名称 | 说明 | 默认值 | 有效值 | 数据类型 |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | 更新内核，即使安装驱动程序时不需要更新 | false | true、false | boolean |
-| driverVersion | NV：GRID 驱动程序版本<br> NC/ND：CUDA 工具包版本。 将自动安装所选 CUDA 的最新驱动程序。 | latest | GRID："430.30"、"418.70"、"410.92"、"410.71"、"390.75"、"390.57"、"390.42"<br> CUDA：“10.0.130”、“9.2.88”、“9.1.85” | string |
-| installCUDA | 安装 CUDA 工具包。 仅适用于 NC/ND 系列 VM。 | true | true、false | boolean |
+| updateOS | 更新内核，即使安装驱动程序时不需要更新 | false | true、false | 布尔值 |
+| driverVersion | NV：GRID 驱动程序版本<br> NC/ND：CUDA 工具包版本。 将自动安装所选 CUDA 的最新驱动程序。 | 最新 | 网格： "430.30"、"418.70"、"410.92"、"410.71"、"390.75"、"390.57"、"390.42"<br> CUDA：“10.0.130”、“9.2.88”、“9.1.85” | 字符串 |
+| installCUDA | 安装 CUDA 工具包。 仅适用于 NC/ND 系列 VM。 | 是 | true、false | 布尔值 |
 
 
 ## <a name="deployment"></a>部署
@@ -188,7 +188,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>后续步骤
 有关扩展的详细信息，请参阅[适用于 Linux 的虚拟机扩展和功能](features-linux.md)。

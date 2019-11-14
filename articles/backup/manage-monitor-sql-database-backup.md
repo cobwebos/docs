@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7440859748a613f7d6af751974e07289175ed7ac
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: b9a292d06ce68d211b5c758e287f2935411c6f12
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968374"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074779"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和监视已备份的 SQL Server 数据库
 
@@ -62,8 +62,8 @@ Azure 备份在**备份作业**门户中显示所有手动触发的作业。 在
 如果选择保留恢复点，请记住以下详细信息：
 
 - 所有恢复点都将永久保持原样，所有修剪都应在停止保护时停止，并保留数据。
-- 将为受保护的实例和使用的存储付费。 有关详细信息，请参阅[Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。
-- 如果在不停止备份的情况下删除数据源，则新的备份将失败。
+- 将为受保护的实例和使用的存储付费。 有关详细信息，请参阅 [Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。
+- 如果在不停止备份的情况下删除数据源，则新备份将会失败。
 
 停止数据库的保护：
 
@@ -117,7 +117,7 @@ Azure 备份在**备份作业**门户中显示所有手动触发的作业。 在
 - 差异备份
 - 日志备份
 
-尽管需要指定仅复制完整备份的保持期，但临时完整备份的保持期将从当前时间自动设置为45天。
+尽管需要指定仅复制完整备份的保持期，但按需完整备份的保持期会自动设置为当前时间45天。
 
 有关详细信息，请参阅[SQL Server 备份类型](backup-architecture.md#sql-server-backup-types)。
 

@@ -7,19 +7,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 486033ef4120d721458add7f23cdf9b78a44a388
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8decf4622c4043cbac0f2e2f6e2ad59f1b5baaae
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928352"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074019"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 GitHub 操作进行持续交付
 
 [GitHub 操作](https://github.com/features/actions)允许您定义一个工作流，以便自动生成函数代码并将其部署到 Azure 中的函数应用。 
-
-> [!IMPORTANT]  
-> GitHub 操作当前为 beta 版本。 必须首先[注册，才能](https://github.com/features/actions)使用 GitHub 帐户加入预览版。
 
 在 GitHub 操作中，[工作流](https://help.github.com/articles/about-github-actions#workflow)是在 github 存储库中定义的自动化过程。 此过程告知 GitHub 如何在 GitHub 上生成和部署函数应用项目。 
 

@@ -1,94 +1,91 @@
 ---
-title: 用 Azure ExpressRoute 设计高可用性 |Microsoft Docs
-description: 本页提供有关使用 Azure ExpressRoute 时的高可用性体系结构建议。
-documentationcenter: na
-services: networking
+title: Azure ExpressRoute：针对高可用性进行设计
+description: 本页提供有关使用 Azure ExpressRoute 实现高可用性的体系结构建议。
+services: expressroute
 author: rambk
-manager: tracsman
 ms.service: expressroute
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 06/28/2019
 ms.author: rambala
-ms.openlocfilehash: 4984b30daf6170873cad9472bfed2d879af57efe
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 4c3c6ae5fbdd91e6e44438be7fef2a3a91564a34
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "67466652"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076681"
 ---
-# <a name="designing-for-high-availability-with-expressroute"></a>通过 ExpressRoute 进行高可用性设计
+# <a name="designing-for-high-availability-with-expressroute"></a>使用 ExpressRoute 进行高可用性设计
 
-ExpressRoute 旨在提供高可用性，以提供与 Microsoft 资源的专用网络连接。 换句话说，Microsoft 网络内 ExpressRoute 路径中没有单点故障。 为了最大限度地提高可用性，还应为 ExpressRoute 线路的客户和服务提供商分段设计高可用性。 在本文中，我们将首先了解网络体系结构注意事项，以便使用 ExpressRoute 构建强大的网络连接，然后查看微调功能，以帮助提高 ExpressRoute 线路的高可用性。
+ExpressRoute 旨在实现高可用性，以便与 Microsoft 资源建立运营商级专用网络连接。 换句话说，Microsoft 网络中的 ExpressRoute 路径不存在单一故障点。 为了最大限度地提高可用性，还应该规划好 ExpressRoute 线路的客户与服务提供商细分。 本文先探讨使用 ExpressRoute 构建可靠网络连接时的网络体系结构注意事项，然后探讨如何微调功能，以帮助改善 ExpressRoute 线路的高可用性。
 
 
 ## <a name="architecture-considerations"></a>体系结构注意事项
 
-下图说明了使用 ExpressRoute 线路进行连接以最大程度地提高 ExpressRoute 线路的可用性的建议方法。
+下图演示了使用 ExpressRoute 线路进行连接，以最大程度提高 ExpressRoute 线路可用性的建议方法。
 
  [![1]][1]
 
-为实现高可用性，在端到端网络中维护 ExpressRoute 线路的冗余至关重要。 换句话说，你需要在本地网络中维护冗余，而不应在服务提供商网络内损害冗余。 以最小值保持冗余意味着避免单点网络故障。 网络设备具有冗余的电源和冷却将进一步提高高可用性。
+为实现高可用性，在整个端到端网络中保持 ExpressRoute 线路的冗余至关重要。 换而言之，需要在本地网络中保持冗余，且不能破坏服务提供商网络中的冗余。 保持最低程度的冗余意味着可以避免网络中出现单一故障点。 为网络设备提供冗余的电源和散热装置可进一步改善高可用性。
 
 ### <a name="first-mile-physical-layer-design-considerations"></a>第一英里物理层设计注意事项
 
- 如果在相同的客户端设备（CPE）上终止 ExpressRoute 线路的主连接和辅助连接，则会危及本地网络中的高可用性。 此外，如果通过一个 CPE 的相同端口配置主连接和辅助连接（通过在不同 subinterfaces 中终止两个连接或通过合并合作伙伴网络中的两个连接），则你将强制实施合作伙伴还会损害其网络网段上的高可用性。 下图说明了此折衷。
+ 如果在同一客户本地设备 (CPE) 上终止 ExpressRoute 线路的主要连接和辅助连接，将会降低你本地网络中的高可用性。 此外，如果你通过 CPE 的同一端口配置主要连接和辅助连接（通过终止不同子接口下的两个连接，或者在合作伙伴网络中合并两个连接），则合作伙伴也会被迫降低其网段中的高可用性。 下图演示了这种损害。
 
 [![2]][2]
 
-另一方面，如果在不同的地理位置终止 ExpressRoute 线路的主要和辅助连接，则可能会危及连接的网络性能。 如果流量在主副本和在不同地理位置终止的辅助连接之间主动进行负载平衡，则这两个路径之间的网络延迟可能会造成很大的影响，从而导致网络不理想性能. 
+另一方面，如果在不同的地理位置终止 ExpressRoute 线路的主要连接和辅助连接，可能会降低连接的网络性能。 如果流量在不同地理位置终止的主要副本与辅助连接之间主动进行负载均衡，这两条路径之间可能存在的明显网络延迟差会导致网络性能不佳。 
 
-有关异地冗余设计注意事项，请参阅[针对 ExpressRoute 进行灾难恢复设计][DR]。
+有关异地冗余设计注意事项，请参阅[使用 ExpressRoute 进行灾难恢复设计][DR]。
 
 ### <a name="active-active-connections"></a>主动-主动连接
 
-Microsoft 网络配置为在主动-主动模式下操作 ExpressRoute 线路的主要和辅助连接。 但是，通过路由播发，可以强制 ExpressRoute 线路的冗余连接在主动-被动模式下运行。 将更具体的路由和 BGP 作为路径预置进行播发是用于使一个路径优先于其他路径的常用方法。
+Microsoft 网络配置为以主动-主动模式运行 ExpressRoute 线路的主要连接和辅助连接。 但是，通过路由播发，可以强制在主动-被动模式下运行 ExpressRoute 线路的冗余连接。 播发更具体的路由和 BGP AS 路径预置是优先使用某一条路径的常用方法。
 
-若要提高高可用性，建议在主动-主动模式下操作 ExpressRoute 线路的连接。 如果让连接在主动-主动模式下运行，则 Microsoft 网络会按流量对流量进行负载均衡。
+为了改善高可用性，建议在主动-主动模式下运行 ExpressRoute 线路的主要连接和辅助连接。 如果让连接以主动-主动模式运行，Microsoft 网络将会基于流对不同连接之间的流量进行负载均衡。
 
-在主动-被动模式下运行 ExpressRoute 线路的主连接和辅助连接，这会导致在活动路径中出现故障后连接失败的风险。 切换失败的常见原因是缺少被动连接的主动管理，并且被动连接公布了陈旧的路由。
+在主动-被动模式下运行 ExpressRoute 线路的主要连接和辅助连接会带来以下风险：连接失败，随后主动路径中发生故障。 切换时发生故障的常见原因是被动连接缺少主动管理，并且被动连接播发过时的路由。
 
-或者，在主动-主动模式下运行 ExpressRoute 线路的主连接和辅助连接时，如果出现 ExpressRoute 连接故障，则只会产生大约一半的流失败和重新路由。 因此，主动-主动模式将明显有助于改进平均恢复时间（MTTR）。
+或者，在主动-主动模式下运行 ExpressRoute 线路的主要连接和辅助连接会导致仅有大约一半的流量失败并重新路由，随后 ExpressRoute 连接也会失败。 因此，主动-主动模式明显有助于改善平均恢复时间 (MTTR)。
 
-### <a name="nat-for-microsoft-peering"></a>用于 Microsoft 对等互连的 NAT 
+### <a name="nat-for-microsoft-peering"></a>Microsoft 对等互连的 NAT 
 
-Microsoft 对等互连旨在实现公共终结点之间的通信。 因此，在通过 Microsoft 对等互连通信之前，本地专用终结点通常是在客户或合作伙伴网络上通过公共 IP 进行的网络地址转换（/Nsg/acl）。 假设你在主动-主动模式下使用主连接和辅助连接，并且 NAT 对你在其中一个 ExpressRoute 连接中出现故障后的恢复速度产生了影响。 下图演示了两种不同的 NAT 选项：
+Microsoft 对等互连旨在实现公共终结点之间的通信。 因此，本地专用终结点在通过 Microsoft 对等互连通信之前，通常会使用客户或合作伙伴网络上的公共 IP 进行网络地址转换 (NAT)。 假设你在主动-主动模式下使用主要连接和辅助连接，执行 NAT 的位置和方式会影响到在某个 ExpressRoute 连接失败后进行恢复的速度。 下图演示了两个不同的 NAT 选项：
 
 [![3]][3]
 
-在选项1中，在拆分 ExpressRoute 的主连接和辅助连接之间的流量后应用 NAT。 为了满足 NAT 的有状态要求，将在主设备和辅助设备之间使用独立的 NAT 池，以便将返回流量发送到流出口的同一边缘设备。
+在选项 1 中，拆分 ExpressRoute 主要连接与辅助连接之间的流量之后应用了 NAT。 为了满足 NAT 的有状态要求，将在主要设备与辅助设备之间使用独立的 NAT 池，使返回流量抵达用于传出流量的同一边缘设备。
 
-在选项2中，在将 ExpressRoute 的主连接与辅助连接拆分之前，将使用一个通用的 NAT 池。 在拆分流量之前，请务必区分常见的 NAT 池，这并不意味着单点故障，进而影响高可用性。
+在选项 2 中，拆分 ExpressRoute 主要连接与辅助连接之间的流量之前使用了一个通用 NAT 池。 必须认识到，在拆分流量之前使用通用 NAT 池并不意味着会造成单一故障点，进而影响高可用性。
 
-如果选择了 "1"，则在 ExpressRoute 连接失败后，能够访问相应的 NAT 池。 因此，所有损坏的流都必须在相应的窗口超时后由 TCP 或应用程序层重新建立。 如果任意一个 NAT 池用于本地服务器的前端，并且相应的连接失败，则在连接固定之前，无法从 Azure 访问本地服务器。
+如果使用选项 1，发生 ExpressRoute 连接失败后，将无法访问相应的 NAT 池。 因此，在相应的期限超时后，TCP 或应用层必须重建所有已中断的流。 如果使用任一 NAT 池作为任何本地服务器的前端，而相应的连接失败，则在修复连接之前，无法从 Azure 访问本地服务器。
 
-使用选项2时，即使在主连接或辅助连接失败后，也可以访问 NAT。 因此，网络层本身可以重路由数据包，并在故障后帮助更快地恢复。 
+而使用选项 2 时，即使主要连接或辅助连接失败，也仍可访问 NAT。 因此，在发生故障后，网络层本身可以重新路由数据包，帮助更快进行恢复。 
 
 > [!NOTE]
-> 如果使用 NAT 选项1（适用于主 ExpressRoute 连接和辅助 ExpressRoute 连接的独立 NAT 池），并将 IP 地址的端口从一个 NAT 池映射到本地服务器，则在相应的连接失败。
+> 如果使用 NAT 选项 1（对 ExpressRoute 主要连接和辅助连接使用独立的 NAT 池），并将 IP 地址的端口从一个 NAT 池映射到本地服务器，则在相应的连接失败时，无法通过 ExpressRoute 线路访问服务器。
 > 
 
-## <a name="fine-tuning-features-for-private-peering"></a>专用对等互连的微调功能
+## <a name="fine-tuning-features-for-private-peering"></a>微调专用对等互连的功能
 
-在本部分中，我们将查看可帮助提高 ExpressRoute 线路高可用性的功能（具体取决于你的 Azure 部署和你对 MTTR 的敏感程度）功能。 具体而言，我们来看一下 ExpressRoute 虚拟网络网关和双向转发检测（BFD）的区域感知部署。
+本部分介绍可帮助改善 ExpressRoute 线路高可用性的可选功能（根据 Azure 部署以及 MTTR 重要性选择使用）。 具体而言，本部分将介绍区域感知的 ExpressRoute 虚拟网络网关部署和双向转发检测 (BFD)。
 
-### <a name="availability-zone-aware-expressroute-virtual-network-gateways"></a>可用性区域感知 ExpressRoute 虚拟网络网关
+### <a name="availability-zone-aware-expressroute-virtual-network-gateways"></a>可用性区域感知的 ExpressRoute 虚拟网络网关
 
-Azure 区域中的可用性区域是容错域和更新域的组合。 如果选择进行区域冗余的 Azure IaaS 部署，则可能还需要配置用于终止 ExpressRoute 专用对等互连的区域冗余虚拟网络网关。 若要进一步了解，请参阅[关于 Azure 可用性区域中的区域冗余虚拟网络网关][zone redundant vgw]。 若要配置区域冗余虚拟网络网关，请参阅[在 Azure 可用性区域中创建区域冗余虚拟网络网关][conf zone redundant vgw]。
+Azure 区域中的可用性区域是容错域和更新域的组合。 如果你选择进行区域冗余的 Azure IaaS 部署，则还可能需要配置用于终止 ExpressRoute 专用对等互连的区域冗余虚拟网络网关。 有关更多信息，请参阅[关于 Azure 可用性区域中的区域冗余虚拟网络网关][zone redundant vgw]。 若要配置区域冗余的虚拟网络网关，请参阅[在 Azure 可用性区域中创建区域冗余的虚拟网络网关][conf zone redundant vgw]。
 
-### <a name="improving-failure-detection-time"></a>提高故障检测时间
+### <a name="improving-failure-detection-time"></a>改善故障检测时间
 
-ExpressRoute 支持通过专用对等互连的 BFD。 BFD 可将 Microsoft 企业边缘（Msee）和其 BGP 邻居在本地端的第2层网络中的故障检测时间减少到3分钟（默认值）到小于一秒。 快速故障检测时间有助于 hastening 故障恢复。 若要进一步了解，请参阅[CONFIGURE BFD Over ExpressRoute][BFD]。
+ExpressRoute 支持通过专用对等互连执行的 BFD。 BFD 可以通过 Microsoft 企业边缘 (MSEE) 及其本地端的 BGP 邻居之间的第 2 层网络，将故障检测时间从大约 3 分钟（默认值）减少到 1 秒以下。 缩减故障检测时间有助于加速故障恢复。 有关更多信息，请参阅[配置基于 ExpressRoute 的 BFD][BFD]。
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何设计 ExpressRoute 线路连接的高可用性。 ExpressRoute 线路对等互连点固定到地理位置，因此可能会受到影响整个位置的灾难性故障的影响。 
+本文介绍了如何设计 ExpressRoute 线路连接的高可用性。 一个 ExpressRoute 线路对等互连点固定为一个地理位置，因此，影响整个位置的灾难性故障可能会影响该连接点。 
 
-有关构建与 Microsoft 骨干的异地冗余网络连接的设计注意事项，这些连接可能会影响整个区域的灾难性故障，请参阅[使用 ExpressRoute 专用对等互连进行灾难恢复设计][DR]。
+有关与 Microsoft 主干网络建立可承受灾难性故障（会影响整个区域）的异地冗余网络连接的设计注意事项，请参阅[使用 ExpressRoute 专用对等互连进行灾难恢复设计][DR]。
 
 <!--Image References-->
-[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png "建议使用 ExpressRoute 进行连接"
-[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png "最近一次英里连接"
+[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png "使用 ExpressRoute 进行连接的建议方法"
+[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png "最后一英里连接欠佳"
 [3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png "NAT 选项"
 
 

@@ -1,30 +1,31 @@
 ---
-title: 通过 Azure PowerShell 使用 KeyVault 证书配置 SSL 终止
+title: 配置 Key Vault 证书的 SSL 终止-PowerShell
+titleSuffix: Azure Application Gateway
 description: 了解如何将 Azure 应用程序网关与 Key Vault 集成，以便存储附加到支持 HTTPS 的侦听器的服务器证书。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/22/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: b7408d6169e1cf42bcda8855a19076c739d086dd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c40c4cf9f25ce17bc7042191324aeb864696995f
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001012"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074584"
 ---
 # <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>通过 Azure PowerShell 使用 KeyVault 证书配置 SSL 终止
 
 [Azure Key Vault](../key-vault/key-vault-overview.md) 是由平台管理的机密存储，可以用来保证机密、密钥和 SSL 证书的安全。 Azure 应用程序网关支持与 Key Vault（公共预览版）集成，以存储附加到支持 HTTPS 的侦听器的服务器证书。 此支持仅限 v2 SKU 版应用程序网关。
 
-有关详细信息，请参阅[使用密钥保管库证书实现 SSL 终止](key-vault-certs.md)。
+有关详细信息，请参阅[使用 Key Vault 证书实现 SSL 终止](key-vault-certs.md)。
 
 本文介绍如何使用 Azure PowerShell 脚本将密钥保管库与应用程序网关集成，以获得 SSL 终止证书。
 
-本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 若要运行本文中的命令，还需要通过运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 若要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要进行升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 若要运行本文中的命令，还需要通过运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 

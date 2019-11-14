@@ -1,7 +1,7 @@
 ---
 title: 方案可用性 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 语音服务区域的参考。
+description: 语音 SDK 在各种编程语言和环境中提供多种方案。 并非所有方案都适用于所有编程语言或所有环境。 下面列出了每个方案的可用性。
 services: cognitive-services
 author: chrisbasoglu
 manager: xdh
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: 6ec31df7cef8391728eae7845f64f55bb1c6466a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 02632e5bc84c7406ce3a42eb4be71cf6aaf75c15
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491345"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075760"
 ---
 # <a name="scenario-availability"></a>方案可用性
 
-语音服务 SDK 在各种编程语言和环境中提供多种方案。  目前，并非所有方案都在所有编程语言或所有环境中可用。  下面列出了每个方案的可用性。
+语音 SDK 在各种编程语言和环境中提供多种方案。 并非所有方案都适用于所有编程语言或所有环境。 下面列出了每个方案的可用性。
 
 - **语音识别（SR）、短语列表、意向、翻译和本地容器**
   - 快速入门表中有箭头链接的所有编程语言/环境 <img src="media/index/link.jpg" height="15" width="15"></img> 请参见[此处](https://aka.ms/csspeech)。

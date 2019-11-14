@@ -1,19 +1,19 @@
 ---
-title: 在 Azure 应用程序网关上配置 SSL 策略 - PowerShell
+title: 使用 PowerShell 配置 SSL 策略
+titleSuffix: Azure Application Gateway
 description: 本文提供有关在 Azure 应用程序网关上配置 SSL 策略的说明
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 12/3/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 5c881a42cdd6fd76c591cf12b341fd777d18baea
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 105b0b3e40e6e9433ee456914cd5babc1d17d036
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018251"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075235"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>在应用程序网关上配置 SSL 策略版本和密码套件
 
@@ -108,7 +108,7 @@ CipherSuites:
 
 ## <a name="configure-a-custom-ssl-policy"></a>配置自定义 SSL 策略
 
-在配置自定义 SSL 策略时，将传递以下参数：PolicyType、MinProtocolVersion、CipherSuite 和 ApplicationGateway。 如果尝试传递其他参数，则会在创建或更新应用程序网关时出错。 
+配置自定义 SSL 策略时，会传递以下参数：PolicyType、MinProtocolVersion、CipherSuite 和 ApplicationGateway。 如果尝试传递其他参数，则会在创建或更新应用程序网关时出错。 
 
 如下示例将在应用程序网关上设置自定义 SSL 策略。 它将最低协议版本设置为 `TLSv1_1`，并启用以下密码套件：
 
@@ -116,7 +116,7 @@ CipherSuites:
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 
 > [!IMPORTANT]
-> 配置自定义 SSL 策略时，必须选择 "TLS_RSA_WITH_AES_256_CBC_SHA256"。 应用程序网关使用此密码套件进行后端管理。 可以将它与任何其他套件结合使用，但也必须选择此选项。 
+> 配置自定义 SSL 策略时，必须选择“TLS_RSA_WITH_AES_256_CBC_SHA256”。 应用程序网关使用此密码套件进行后端管理。 可以将此密码套件与任何其他套件结合使用，但也必须选择此选项。 
 
 ```powershell
 # get an application gateway resource
@@ -134,7 +134,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="create-an-application-gateway-with-a-pre-defined-ssl-policy"></a>使用预定义 SSL 策略创建应用程序网关
 
-配置预定义 SSL 策略时，将传递以下参数：PolicyType、PolicyName 和 ApplicationGateway。 如果尝试传递其他参数，则会在创建或更新应用程序网关时出错。
+配置预定义 SSL 策略时，会传递以下参数：PolicyType、PolicyName 和 ApplicationGateway。 如果尝试传递其他参数，则会在创建或更新应用程序网关时出错。
 
 如下示例会使用预定义 SSL 策略创建一个新的应用程序网关。
 
@@ -191,7 +191,7 @@ $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.Resourc
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-ssl-policy"></a>使用预定义 SSL 策略更新现有应用程序网关
 
-若要设置自定义 SSL 策略，请传递以下参数：PolicyType、MinProtocolVersion、CipherSuite 和 ApplicationGateway。 若要设置预定义 SSL 策略，请传递以下参数：PolicyType、PolicyName 和 ApplicationGateway。 如果尝试传递其他参数，则会在创建或更新应用程序网关时出错。
+要设置自定义 SSL 策略，请传递以下参数：PolicyType、MinProtocolVersion、CipherSuite 和 ApplicationGateway。 要设置预定义 SSL 策略，请传递以下参数：PolicyType、PolicyName 和 ApplicationGateway。 如果尝试传递其他参数，则会在创建或更新应用程序网关时出错。
 
 以下示例中提供了自定义策略和预定义策略的代码示例。 取消注释要使用的策略。
 

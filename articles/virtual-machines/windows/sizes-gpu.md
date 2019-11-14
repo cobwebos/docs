@@ -1,5 +1,5 @@
 ---
-title: Azure Windows VM 大小 - GPU | Microsoft Docs
+title: Azure Windows VM 大小-GPU
 description: 列出 Azure 中适用于 Windows 虚拟机的各种 GPU 优化大小。 针对此系列中的大小列出了 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: 0e809690f0453806402c27773ad0029fc5f64be2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5b2da3076f3970d2f11301b3ea412ce52c257111
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102351"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075349"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 优化虚拟机大小
 

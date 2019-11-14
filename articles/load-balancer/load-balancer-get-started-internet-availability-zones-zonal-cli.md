@@ -1,6 +1,6 @@
 ---
-title: 创建具有区域前端的负载均衡器 - Azure CLI
-titlesuffix: Azure Load Balancer
+title: 创建具有区域性前端 Azure CLI 的负载均衡器
+titleSuffix: Azure Load Balancer
 description: 了解如何使用 Azure CLI 创建带有区域性前端的标准负载均衡器
 services: load-balancer
 documentationcenter: na
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: allensu
-ms.openlocfilehash: 663567f6e3b078c1cb2afc60c3aaa9fcfb7af4dd
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 620e4456e86a8610819495bd490353a3a5681738
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275242"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076083"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>使用 Azure CLI 创建具有区域性前端的标准负载均衡器
 
 本文分步指导你创建具有区域性前端的公用[标准负载均衡器](https://aka.ms/azureloadbalancerstandard)。 具有区域性前端意味着，任何入站或出站流都将由某个地区中的单个区域提供服务。 可以通过在负载均衡器的前端配置中使用区域性的标准公用 IP 地址来创建具有区域性前端的负载均衡器。 若要了解可用性区域如何与标准负载均衡器配合工作，请参阅[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。 
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

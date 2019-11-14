@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: 78b83eb725da09dc98df05865ba4d41c505f0f4c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: bf79957bec4b330ca9acce3f8b92aab1a0944440
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747261"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074860"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
 
@@ -102,7 +102,7 @@ MARSAgentInstaller.exe /q
 
 这以所有默认选项安装代理。 将在后台执行安装几分钟。 如果未指定 */nu*选项，则在安装结束时将打开 " **Windows 更新**" 窗口以检查是否有任何更新。 安装之后，代理会显示在已安装程序列表中。
 
-若要查看已安装的程序列表，请转到“**控制面板** > **程序** > **程序和功能**”。
+若要查看已安装的程序列表，请转到“**控制面板**”“ > **程序** > ”“**程序和功能**”。
 
 ![已安装代理](./media/backup-client-automation/installed-agent-listing.png)
 
@@ -186,7 +186,7 @@ Machine registration succeeded.
 
 ## <a name="networking-settings"></a>网络设置
 
-如果 Windows 计算机通过代理服务器连接到 Internet，则也可以向代理提供代理设置。 此示例未使用代理服务器，因此我们会显式清除任何与代理相关的信息。
+如果 Windows 计算机通过代理服务器连接到 Internet，则也可以向代理提供代理设置。 此示例未使用代理服务器，因此我们要显式清除任何代理相关的信息。
 
 也可以针对给定的一组星期日期，使用 `work hour bandwidth` 和 `non-work hour bandwidth` 选项来控制带宽使用。
 
@@ -547,9 +547,9 @@ IsExclude : True
 IsRecursive : True
 ```
 
-### <a name="performing-an-ad-hoc-backup"></a>执行即席备份
+### <a name="performing-an-on-demand-backup"></a>执行按需备份
 
-设置备份策略后，将根据计划进行备份。 也可以使用 [Start-OBBackup](https://technet.microsoft.com/library/hh770426) cmdlet 来触发即席备份：
+设置备份策略后，将根据计划进行备份。 还可以使用[start-obbackup](https://technet.microsoft.com/library/hh770426) cmdlet 来触发按需备份：
 
 ```powershell
 Get-OBPolicy | Start-OBBackup

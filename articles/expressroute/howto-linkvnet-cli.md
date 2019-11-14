@@ -1,5 +1,5 @@
 ---
-title: 将虚拟网络链接到 ExpressRoute 线路：CLI：Azure | Microsoft Docs
+title: Azure ExpressRoute：将 VNet 链接到线路： CLI
 description: 本文介绍如何使用资源管理器部署模型和 CLI 将虚拟网络 (VNet) 链接到 ExpressRoute 线路。
 services: expressroute
 author: cherylmc
@@ -7,14 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.reviewer: anzaman
-ms.custom: seodec18
-ms.openlocfilehash: d858c83fb6669e5348b4256931e080656be0ebad
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a8814030e6c4345227ec05ea1554104e0b21efbc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621066"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076544"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>使用 CLI 将虚拟网络连接到 ExpressRoute 线路
 
@@ -36,7 +34,7 @@ ms.locfileid: "67621066"
 
 * 必须有一个活动的 ExpressRoute 线路。 
   * 请按说明[创建 ExpressRoute 线路](howto-circuit-cli.md)，并通过连接提供商启用该线路。 
-  * 确保为线路配置 Azure 专用对等互连。 有关路由说明，请参阅[配置路由](howto-routing-cli.md)一文。 
+  * 请确保为线路配置 Azure 专用对等互连。 有关路由说明，请参阅[配置路由](howto-routing-cli.md)一文。 
   * 请确保已配置 Azure 专用对等互连。 必须运行网络和 Microsoft 之间的 BGP 对等互连，使你能够启用端到端的连接。
   * 确保已创建并完全预配一个虚拟网络和一个虚拟网络网关。 请按照说明[为 ExpressRoute 配置虚拟网络网关](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)。 请务必使用 `--gateway-type ExpressRoute`。
 
@@ -58,7 +56,7 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 
 用户可以在多个订阅之间共享 ExpressRoute 线路。 下图是在多个订阅之间共享 ExpressRoute 线路的简单示意图。
 
-大型云中的每个较小云用于表示属于组织中不同部门的订阅。 组织内的每个部门可以使用自己的订阅部署其服务，但可以共享单个 ExpressRoute 线路以连接回本地网络。 一个部门（此示例中为：IT 部门）可以拥有 ExpressRoute 线路。 组织内的其他订阅可以使用 ExpressRoute 线路。
+大型云中的每个较小云用于表示属于组织中不同部门的订阅。 组织内的每个部门可以使用自己的订阅部署其服务，但可以共享单个 ExpressRoute 线路以连接回本地网络。 单个部门（在此示例中为 IT 部门）可以拥有 ExpressRoute 线路。 组织内的其他订阅可以使用 ExpressRoute 线路。
 
 > [!NOTE]
 > 专用线路的连接和带宽费用将应用于 ExpressRoute 线路所有者。 所有虚拟网络共享相同的带宽。
@@ -146,7 +144,7 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 
 **若要更新连接权重**
 
-虚拟网络可以连接到多条 ExpressRoute 线路。 可以从多条 ExpressRoute 线路收到相同的前缀。 若要选择使用哪个连接发送目标为此前缀的流量，可以更改连接的 *RoutingWeight*。 会在具有最高 *RoutingWeight* 的连接上发送流量。
+虚拟网络可以连接到多条 ExpressRoute 线路。 可以从多条 ExpressRoute 线路收到相同的前缀。 若要选择使用哪个连接发送目标为此前缀的流量，可以更改连接的 *RoutingWeight*。 将在具有最高 *RoutingWeight* 的连接上发送流量。
 
 ```azurecli
 az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --routing-weight 100
@@ -154,11 +152,11 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 
 *RoutingWeight* 的范围是 0 到 32000。 默认值为 0。
 
-## <a name="configure-expressroute-fastpath"></a>配置 ExpressRoute 快速 
-可以让[ExpressRoute 快速](expressroute-about-virtual-network-gateways.md)如果你的 ExpressRoute 线路位于[ExpressRoute 直接](expressroute-erdirect-about.md)和虚拟网络网关是超高性能或 ErGw3AZ。 快速提高了数据路径性能，如每秒数据包数和每秒的本地网络与虚拟网络之间的连接。 
+## <a name="configure-expressroute-fastpath"></a>配置 ExpressRoute FastPath 
+如果 ExpressRoute 线路在[Expressroute 直接](expressroute-erdirect-about.md)上且虚拟网络网关是超高性能或 ErGw3AZ，则可以启用[expressroute FastPath](expressroute-about-virtual-network-gateways.md) 。 FastPath 改进了数据路径性能，例如每秒数据包数，以及本地网络与虚拟网络之间每秒的连接数。 
 
 > [!NOTE] 
-> 如果你已有的虚拟网络连接，但尚未为其启用快速需要删除虚拟网络连接，然后创建一个新。 
+> 如果已有虚拟网络连接，但未启用 FastPath，则需要删除虚拟网络连接并创建一个新连接。 
 > 
 >  
 

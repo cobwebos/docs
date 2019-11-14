@@ -1,7 +1,7 @@
 ---
 title: 定义自定义自动建议的建议 - 必应自定义搜索
 titleSuffix: Azure Cognitive Services
-description: 介绍如何为自定义自动建议配置自定义建议
+description: 自定义自动建议可返回与搜索体验相关的建议搜索查询字符串列表。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: b08eb49b0c4f9655326d2ab09ce39210205e28a9
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5b2b8871d868e827532f23c7ef4f14fb00afb5bc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405105"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072807"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>配置自定义自动建议体验
 
@@ -36,7 +36,7 @@ ms.locfileid: "68405105"
 
 ## <a name="add-your-own-suggestions"></a>添加自己的建议
 
-若要添加自己的查询字符串建议，请将它们添加到“用户定义的建议”下的列表中。 在列表中添加建议后，按 Enter 键或单击“+”图标。 可采用任何语言来指定建议。 可以添加最多 5,000 条查询字符串建议。
+若要添加自己的查询字符串建议，请将它们添加到“用户定义的建议”下的列表中。 在列表中添加建议后，按 Enter 键或单击“ **”+** 图标。 可采用任何语言来指定建议。 可以添加最多 5,000 条查询字符串建议。
 
 ## <a name="upload-suggestions"></a>上传建议
 
@@ -48,7 +48,7 @@ ms.locfileid: "68405105"
 
 ## <a name="block-suggestions"></a>阻止建议
 
-如果包括了必应建议，可以添加不想必应返回的搜索查询字符串列表。 要添加阻止的查询字符串，请单击“显示阻止的建议”。 向列表中添加查询字符串后，按 Enter 键或单击“+”图标。 可以添加最多 50 条阻止的查询字符串。
+如果包括了必应建议，可以添加不想必应返回的搜索查询字符串列表。 要添加阻止的查询字符串，请单击“显示阻止的建议”。 向列表中添加查询字符串后，按 Enter 键或单击“ **”+** 图标。 可以添加最多 50 条阻止的查询字符串。
 
 
 
@@ -83,7 +83,7 @@ GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/Suggestions
 
 每个建议都包含 `displayText` 和 `query` 字段。 `displayText` 字段包含用于填充搜索框下拉列表的建议查询字符串。
 
-如果用户从下拉列表中选择建议的查询字符串，请在调用[必应自定义搜索 API](overview.md) 时在 `query` 字段中使用该查询字符串。
+如果用户从下拉列表中选择建议的查询字符串，请在调用`query`必应自定义搜索 API[ 时在 ](overview.md) 字段中使用该查询字符串。
 
 
 ## <a name="next-steps"></a>后续步骤

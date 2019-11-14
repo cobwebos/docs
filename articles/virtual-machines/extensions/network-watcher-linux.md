@@ -1,5 +1,5 @@
 ---
-title: 适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展 | Microsoft 文档
+title: 适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展
 description: 使用虚拟机扩展在 Linux 虚拟机上部署网络观察程序代理。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: b59e4c570032bdd3341dc7d519f23f4cd86984c7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c04b27ab4a8ea53e09ca3a133d6aef6457fe1526
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084445"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073039"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>适用于 Linux 的网络观察程序代理虚拟机扩展
 
@@ -35,7 +35,7 @@ ms.locfileid: "70084445"
 
 可以针对下列 Linux 分发配置网络观察程序代理扩展：
 
-| 分发组 | Version |
+| 分发 | 版本 |
 |---|---|
 | Ubuntu | 12+ |
 | Debian | 7 和 8 |
@@ -78,7 +78,7 @@ ms.locfileid: "70084445"
 | 名称 | 值/示例 |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
-| publisher | Microsoft.Azure.NetworkWatcher |
+| 发布者 | Microsoft.Azure.NetworkWatcher |
 | type | NetworkWatcherAgentLinux |
 | typeHandlerVersion | 1.4 |
 
@@ -103,9 +103,9 @@ azure vm extension set myVM1 NetworkWatcherAgentLinux Microsoft.Azure.NetworkWat
 az vm extension set --resource-group myResourceGroup1 --vm-name myVM1 --name NetworkWatcherAgentLinux --publisher Microsoft.Azure.NetworkWatcher --version 1.4
 ```
 
-## <a name="troubleshooting-and-support"></a>疑难解答和支持
+## <a name="troubleshooting-and-support"></a>故障排除和支持
 
-### <a name="troubleshooting"></a>疑难解答
+### <a name="troubleshooting"></a>故障排除
 
 可以从 Azure 门户或 Azure CLI 检索有关扩展部署状态的数据。
 
@@ -129,4 +129,4 @@ az vm extension show --name NetworkWatcherAgentLinux --resource-group myResource
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容不了解，可以参阅[网络观察程序文档](/azure/network-watcher/)或联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请参阅 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容不了解，可以参阅[网络观察程序文档](/azure/network-watcher/)或联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请参阅 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

@@ -7,30 +7,23 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: d0183e991a3cbc0481aff44b5b0f03eaa9d43103
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4a81cc9887610036007b92e43b8bd44f0a8b7740
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683973"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075536"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure 数据工厂中支持的文件格式和压缩编解码器
 
 *本文适用于以下连接器： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud存储](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和[SFTP](connector-sftp.md)。*
 
-如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 如果要**分析或生成具有特定格式的文件**，Azure 数据工厂支持以下文件格式类型：
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-* [文本格式](#text-format)
-* [JSON 格式](#json-format)
-* [Parquet 格式](#parquet-format)
-* [ORC 格式](#orc-format)
-* [Avro 格式](#avro-format)
-* [二进制格式](#binary-format)
-
-> [!TIP]
-> 了解复制活动如何将源数据映射到[复制活动中的架构映射](copy-activity-schema-and-type-mapping.md)的接收器。
+>[!NOTE]
+>数据工厂引入了新的基于格式的数据集模型，请参阅上面链接的对应格式文章以及详细信息。 本文中提到的基于文件的数据存储数据集上的以下配置仍支持对后 compabitility。 建议你今后使用新模型。 
 
 ## <a name="text-format"></a>文本格式
 
@@ -427,7 +420,7 @@ ms.locfileid: "73683973"
 }
 ```
 
-请注意以下几点：
+注意以下几点：
 
 * 不支持复杂数据类型（MAP、LIST）。
 * 不支持列名称中的空格。
@@ -452,7 +445,7 @@ ms.locfileid: "73683973"
 
 | 数据工厂临时数据类型 | Parquet 基元类型 | Parquet 原始类型（反序列化） | Parquet 原始类型（串行化） |
 |:--- |:--- |:--- |:--- |
-| 布尔值 | 布尔值 | 不适用 | 不适用 |
+| Boolean | Boolean | 不适用 | 不适用 |
 | SByte | Int32 | Int8 | Int8 |
 | Byte | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
@@ -460,10 +453,10 @@ ms.locfileid: "73683973"
 | Int32 | Int32 | Int32 | Int32 |
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
-| UInt64 | Int64/二进制 | UInt64 | Decimal |
+| UInt64 | Int64/二进制 | UInt64 | 小数 |
 | Single | Float | 不适用 | 不适用 |
 | Double | Double | 不适用 | 不适用 |
-| Decimal | 二进制 | Decimal | Decimal |
+| 小数 | 二进制 | 小数 | 小数 |
 | String | 二进制 | Utf8 | Utf8 |
 | DateTime | Int96 | 不适用 | 不适用 |
 | TimeSpan | Int96 | 不适用 | 不适用 |
@@ -487,7 +480,7 @@ ms.locfileid: "73683973"
 }
 ```
 
-请注意以下几点：
+注意以下几点：
 
 * 不支持复杂数据类型（STRUCT、MAP、LIST、UNION）。
 * 不支持列名称中的空格。
@@ -505,18 +498,18 @@ ms.locfileid: "73683973"
 
 | 数据工厂临时数据类型 | ORC 类型 |
 |:--- |:--- |
-| 布尔值 | 布尔值 |
+| Boolean | Boolean |
 | SByte | Byte |
 | Byte | Short |
 | Int16 | Short |
-| UInt16 | Int |
-| Int32 | Int |
+| UInt16 | int |
+| Int32 | int |
 | UInt32 | Long |
 | Int64 | Long |
 | UInt64 | String |
 | Single | Float |
 | Double | Double |
-| Decimal | Decimal |
+| 小数 | 小数 |
 | String | String |
 | DateTime | Timestamp |
 | DateTimeOffset | Timestamp |
@@ -541,7 +534,7 @@ ms.locfileid: "73683973"
 
 若要在 Hive 表中使用 Avro 格式，可以参考 [Apache Hive 教程](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)。
 
-请注意以下几点：
+注意以下几点：
 
 * 不支持[复杂数据类型](https://avro.apache.org/docs/current/spec.html#schema_complex)（记录、枚举、数组、映射、联合与固定值）。
 
@@ -556,7 +549,7 @@ ms.locfileid: "73683973"
 * 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩，并将结果数据写入 Azure SQL 数据库。 使用值为 GZIP 的 `compression` `type` 属性定义输入 Azure Blob 数据集。
 * 从来自本地文件系统的纯文本文件读取数据、使用 GZip 格式进行压缩并将压缩的数据写入到 Azure Blob。 使用值为 GZip 的 `compression` `type` 属性定义输出 Azure Blob 数据集。
 * 从 FTP 服务器读取 .zip 文件，将它解压缩以获取文件内容，然后将这些文件加入 Azure Data Lake Store。 使用值为 ZipDeflate 的 `compression` `type` 属性定义输入 FTP 数据集。
-* 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩、使用 BZIP2 将其压缩，然后将结果数据写入 Azure Blob。 使用设置为 GZIP 的 `compression` `type` 定义输入 Azure Blob 数据集，使用设置为 BZIP2 的 `compression` `type` 定义输出数据集。
+* 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩、使用 BZIP2 将其压缩，并将结果数据写入 Azure Blob。 使用设置为 GZIP 的 `compression` `type` 定义输入 Azure Blob 数据集，使用设置为 BZIP2 的 `compression` `type` 定义输出数据集。
 
 若要为数据集指定压缩，请在数据集 JSON 中使用 **compression** 属性，如以下示例所示：
 

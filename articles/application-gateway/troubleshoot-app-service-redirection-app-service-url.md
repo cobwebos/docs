@@ -1,18 +1,19 @@
 ---
-title: Azure 应用程序通过应用服务的网关进行故障排除–重定向到应用服务 URL
+title: 排查应用服务 URL 重定向问题
+titleSuffix: Azure Application Gateway
 description: 本文介绍如何排查将 Azure 应用程序网关与 Azure 应用服务配合使用时出现的重定向问题
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: ef2bbf8804e96a3e25f053d189c6d85bfa845b0b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d43efd6dbd344f666c23b1ad4414ceb29992e996
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833179"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074483"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>排查应用程序网关中的应用服务问题
 

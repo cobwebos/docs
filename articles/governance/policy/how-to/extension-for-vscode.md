@@ -1,17 +1,14 @@
 ---
 title: 适用于 Visual Studio Code 的 Azure 策略扩展
 description: 了解如何使用适用于 Visual Studio Code 的 Azure 策略扩展查找资源管理器别名。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 20af29c40ec13add90294e28d64f0166acc95319
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cbc0e14ed70fbacc297126aef58cd722d2235a3d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514805"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072040"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用 Azure Policy extension 进行 Visual Studio Code
 
@@ -24,7 +21,7 @@ ms.locfileid: "73514805"
 > [!NOTE]
 > 在 Visual Studio Code 的 Azure 策略扩展中查看的策略所做的更改不会同步到 Azure。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 完成本文中的步骤需要具有以下项：
 
@@ -162,5 +159,5 @@ Azure 策略扩展会列出策略类型和策略分配，作为选择要在 "**�
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
 - 查看[了解策略效果](../concepts/effects.md)。
 - 了解如何[以编程方式创建策略](programmatically-create.md)。
-- 了解如何[修正不符合的资源](remediate-resources.md)。
+- 了解如何[修正不合规的资源](remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

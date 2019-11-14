@@ -1,7 +1,7 @@
 ---
 title: 向必应实体搜索 API 发送搜索请求
 titleSuffix: Azure cognitive Services
-description: 了解如何向必应实体搜索 API 发送搜索请求
+description: 必应实体搜索 API 向必应发送搜索查询，然后获得包含实体和场所的结果。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 0788b220f2612170fdea974a8bb27e8374a0b3be
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f68429a75ddb141c9e42babde3faa9f93fe949cc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879211"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072689"
 ---
 # <a name="sending-search-requests-to-the-bing-entity-search-api"></a>向必应实体搜索 API 发送搜索请求
 
-必应实体搜索 API 向必应发送搜索查询，然后获得包含实体和场所的结果。 位置结果包括餐馆、酒店或其他当地企业。 对于位置，查询可以指定当地企业名称，也可以请求获取列表（例如，我附近的餐馆）。 实体结果包括人员、位置或事物。 在此上下文中，位置是旅游景点、省/自治区/直辖市、国家/地区等。
+必应实体搜索 API 向必应发送搜索查询，然后获得包含实体和场所的结果。 场所结果包括餐馆、酒店或其他本地商业场所。 对于位置，查询可以指定当地企业名称，也可以请求获取列表（例如，我附近的餐馆）。 实体结果包括人员、位置或事物。 在此上下文中，位置是旅游景点、省/自治区/直辖市、国家/地区等。
 
 ## <a name="the-endpoint"></a>终结点
 
@@ -31,7 +31,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/entities
 
 请求必须使用 HTTPS 协议。
 
-建议所有请求都源自服务器。 如果将密钥作为客户端应用的一部分进行分发，会让恶意第三方有更多机会来访问密钥。 另外，从服务器执行调用还会提供未来版本 API 的单一升级点。
+建议所有请求都源自服务器。 如果将密钥作为客户端应用的一部分进行分发，会让恶意第三方有更多机会来访问密钥。 另外，从服务器发出调用可以为未来版本的 API 提供一个单一升级点。
 
 ## <a name="specifying-query-parameters-and-headers"></a>指定查询参数和请求头
 
@@ -46,7 +46,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/entities
 
 客户端 IP 和位置请求头对返回位置感知内容非常重要。  
 
-有关所有请求头和响应头的列表，请参阅[头](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers)。
+对于所有请求和响应头列表，请参阅[标头](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers)。
 
 ## <a name="the-request"></a>请求
 
@@ -62,11 +62,11 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-如果是首次调用任何必应 API，请勿添加客户端 ID 请求头。 只有在以前调用过必应 API，且必应针对用户和设备组合返回了客户端 ID 的情况下，才添加客户端 ID。
+如果是第一次调用任何必应 API，请勿包括客户端 ID 标头。 只有在以前调用过必应 API 且必应针对用户和设备组合返回了客户端 ID 的返回情况下，才包括客户端 ID。
 
 ## <a name="the-response"></a>响应
 
-下面的示例展示了对上一请求的响应。 此示例还展示了必应专用响应头。 若要了解响应对象，请参阅 [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse)。
+以下示例演示对上一请求的响应。 此示例还展示了必应专用响应头。 若要了解响应对象，请参阅 [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse)。
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: 导出包含 VM 扩展的 Azure 资源组 | Microsoft 文档
+title: 导出包含 VM 扩展的 Azure 资源组
 description: 导出包含虚拟机扩展的 Resource Manager 模板。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
-ms.openlocfilehash: 652ed732a7fe8f08e48aba6fc4bd1b52164d1fa0
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 79991dad96742109817d579b951082d1a30e3951
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169060"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073128"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>导出包含 VM 扩展的资源组
 
@@ -33,7 +33,7 @@ ms.locfileid: "71169060"
 
 以下扩展可以使用自动化脚本功能导出。
 
-| 扩展 ||||
+| 分机 ||||
 |---|---|---|---|
 | Acronis 备份 | Datadog Windows 代理 | 针对 Linux 进行的 OS 修补 | VM 快照 Linux
 | Acronis 备份 Linux | Docker 扩展 | Puppet 代理 |

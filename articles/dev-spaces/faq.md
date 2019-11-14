@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.topic: conceptual
 description: 查找有关 Azure Dev Spaces 的一些常见问题的解答
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 317a942f94f3852cc11b8c0f004ed55097d05bc6
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 1f25ccd26aed832c068c04198486e769ec980380
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014210"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072216"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>常见问题 Azure Dev Spaces
 
@@ -44,7 +44,7 @@ ms.locfileid: "74014210"
 
 目前，Azure Dev Spaces 仅在 Linux pod 和节点上运行，但你可以使用[现有的 Windows 容器][windows-containers]在 AKS 群集上运行 Azure Dev Spaces。
 
-### <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>能否在启用 API 服务器授权 IP 地址范围的 AKS 群集上使用 Azure Dev Spaces？
+## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>能否在启用 API 服务器授权 IP 地址范围的 AKS 群集上使用 Azure Dev Spaces？
 
 是的，你可以使用启用了[API 服务器授权 IP 地址范围][aks-auth-range]的 AKS 群集上的 Azure Dev Spaces。 [创建][aks-auth-range-create]群集时，必须[根据区域允许其他范围][aks-auth-range-ranges]。 还可以[更新][aks-auth-range-update]和现有群集以允许这些额外的范围。
 

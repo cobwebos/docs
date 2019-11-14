@@ -1,7 +1,6 @@
 ---
 title: 排查 Azure 负载均衡器问题
-titlesuffix: Azure Load Balancer
-description: 排查 Azure 负载均衡器方面的已知问题
+description: 了解如何对 Azure 负载均衡器的已知问题进行故障排除。
 services: load-balancer
 documentationcenter: na
 author: chadmath
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 4e0e3cf6067467947bcb799a915a93d1bb342ea1
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: d1c10fa8267131f13d3148ace6c97218a18fd494
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154923"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076926"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>排查 Azure 负载均衡器问题
 
@@ -29,7 +28,7 @@ ms.locfileid: "71154923"
 - 负载均衡器后端的 VM 不响应运行状况探测 
 - 负载均衡器后端的 VM 不响应已配置端口上的通信
 
-## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>故障描述：负载均衡器后端的 VM 不响应运行状况探测
+## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>症状：负载均衡器后端的 VM 不响应运行状况探测
 后端服务器必须通过探测检查后，才可加入负载均衡器集。 有关运行状况探测的详细信息，请参阅[了解负载均衡器探测](load-balancer-custom-probe-overview.md)。 
 
 负载均衡器后端池 VM 因下列任意原因而不响应探测： 
@@ -60,10 +59,10 @@ ms.locfileid: "71154923"
 
 验证及解决方法
 
-* 如果启用了防火墙，请检查它是否配置为允许探测端口。 如果没有启用防火墙，请将其配置为允许探测端口上的流量并重新测试。 
-* 在网络安全组列表中，检查探测端口上的传入或传出流量是否受到干扰。 
+* 如果启用了防火墙，请检查它是否配置为允许探测端口。 如果没有，请将其配置为允许探测端口上的流量并重新测试。 
+* 在网络安全组列表中，检查探测端口上的传入或传出流量是否被干扰。 
 * 此外，检查 VM NIC 或子网上是否存在优先级高于允许 LB 探测和流量的默认规则的“全部拒绝”网络安全组规则（网络安全组必须允许负载均衡器 IP 168.63.129.16）。 
-* 如果上述任意规则阻止探测流量，请将其删除并将规则配置为允许探测流量。  
+* 如果上述某规则要阻止探测流量，请将其删除并将规则配置为允许探测流量。  
 * 测试 VM 是否现已开始响应运行状况探测。 
 
 ### <a name="cause-4-other-misconfigurations-in-load-balancer"></a>原因 4：负载均衡器中的其他错误配置
@@ -74,14 +73,14 @@ ms.locfileid: "71154923"
 * 使用来自 VNet 中其他 VM 的 Psping 进行探测端口响应测试（例如 .\psping.exe -t 10.0.0.4:3389）并记录结果。 
 * 使用来自 VNet 中其他 VM 的 TCPing 进行探测端口响应测试（例如 .\tcping.exe 10.0.0.4 3389）并记录结果。 
 * 如果在这些 ping 测试中未收到响应，则
-    - 在目标后端池 VM 中同时运行一个 Netsh 跟踪，再运行一个来自相同 VNet 的测试 VM。 现在，运行一段时间的 PsPing 测试，收集一些网络跟踪信息，然后停止测试。 
+    - 在目标后端池 VM 中同时运行一个 Netsh 跟踪，再运行一个来自相同 VNet 的测试 VM。 现在，运行 PsPing 一段时间，收集一些网络跟踪，并停止测试。 
     - 分析网络捕获，查看是否同时存在与 ping 查询相关的传入和传出数据包。 
         - 如果在后端池 VM 中未观察到传入数据包，可能是某个网络安全组或 UDR 错误配置阻止了流量。 
         - 如果在后端池 VM 中未观察到传出数据包，需检查 VM 是否存在任何不相关的问题（例如，应用程序阻止探测端口）。 
-    - 验证在到达负载均衡器之前，探测数据包是否强制发送到其他目标（可能通过 UDR 设置发送）。 这将使流量永远无法达到后端 VM。 
+    - 验证在到达负载均衡器之前，探测数据包是否强制发送到其他目标（可能通过 UDR 设置发送）。 这会使流量永远无法达到后端 VM。 
 * 更改探测类型（例如从 HTTP 到 TCP），并在网络安全组 ACL 和防火墙中配置相应端口，以验证问题是否与探测响应的配置有关。 有关运行状况探测配置的详细信息，请参阅[终结点负载均衡运行状况探测配置](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/)。
 
-## <a name="symptom-vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>故障描述：负载均衡器后端的 VM 不响应已配置数据端口上的通信
+## <a name="symptom-vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>症状：负载均衡器后端的 VM 不响应已配置数据端口上的通信
 
 如果后端池 VM 被列为正常且响应运行状况探测，但仍未参与负载均衡，或未响应数据流量，可能是由于以下某项原因： 
 * 负载均衡器后端池 VM 未侦听数据端口 
@@ -105,9 +104,9 @@ ms.locfileid: "71154923"
 
 * 列出后端 VM 上配置的网络安全组。 有关详细信息，请参阅[管理网络安全组](../virtual-network/manage-network-security-group.md)。
 * 在网络安全组列表中，检查：
-    - 数据端口上的传入或传出流量是否受到干扰。 
+    - 数据端口上的传入或传出流量是否被干扰。 
     - 检查 VM NIC 或子网上是否存在优先级高于允许负载均衡探测和流量的默认规则的“全部拒绝”网络安全组规则（网络安全组必须允许负载均衡器 IP 168.63.129.16 - 即探测端口） 
-* 如果某规则阻止流量，请将其删除并将规则重新配置为允许数据流量。  
+* 如果某规则要阻止流量，请将其删除并将规则重新配置为允许数据流量。  
 * 测试 VM 是否现已开始响应运行状况探测。
 
 ### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>原因 3：从相同的 VM 和网络接口访问负载均衡器 

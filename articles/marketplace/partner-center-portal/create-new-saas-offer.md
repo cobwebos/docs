@@ -1,19 +1,19 @@
 ---
 title: 在商业应用商店中创建新的 SaaS 产品/服务
 description: 如何创建新的软件即服务（SaaS）产品/服务，以便在 Azure Marketplace、AppSource 或通过云解决方案提供商（CSP）计划的 Microsoft 合作伙伴中心使用商业应用商店门户。
-author: qianw211
+author: ChJenk
 manager: evansma
-ms.author: v-qiwe
+ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: 9eb283f538759f9591add4b04462de151f2cb014
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/13/2019
+ms.openlocfilehash: a6694d094d185ad70cce8c546e12f48afb69f1ae
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825547"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076946"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 产品/服务
 
@@ -34,12 +34,11 @@ ms.locfileid: "73825547"
 
 !["新建产品/服务" 对话框](./media/new-offer-popup.png)
 
-
 ## <a name="offer-id-and-alias"></a>产品/服务 ID 和别名
 
 - **产品/服务 ID**：帐户中每个产品/服务的唯一标识符。 在 marketplace 产品/服务和 Azure 资源管理器模板（如果适用）的 URL 地址中，客户将可以看到此 ID。 产品/服务 ID 必须是小写、字母数字（包括连字符和下划线，但没有空格）。 这限制为50个字符，并且在你选择 "*创建*" 后将无法更改。  
 示例：测试/服务-1
-<br>导致 URL： `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
+<br>生成 URL： `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
 
 - **产品/服务别名**：用于引用合作伙伴中心门户中的产品/服务的名称。 此名称不会在 marketplace 中使用，并且不同于将向客户显示的*产品/服务名称*和其他值。 选择 "*创建*" 后，不能更改此值。
 
@@ -105,16 +104,6 @@ SaaS 使用按流量计费服务，根据固定费用、每用户或消耗费用
 > [!NOTE]
 > **降低 Marketplace 服务费用**：对于在我们的商业市场上发布的某些 SaaS 产品/服务，microsoft 会将其 Marketplace 服务费用从20% 降低到10% （如 Microsoft 发布者协议中所述）。 为了使你的产品/服务符合资格，Microsoft 已将至少一个产品/服务指定为 "IP 共同销售就绪" 或 "IP 共同销售"。  在每个日历月结束之前，必须在每个日历月结束至少五（5）个工作日内获得资格，以便每月获得更少的 Marketplace 服务费用。  降低的 Marketplace 服务费用不适用于 Vm、托管应用或通过我们的商业市场提供的任何其他产品。  降低的 Marketplace 服务费用仅适用于 Microsoft 在5月1日、2019年6月 30 2020 日之间收集的许可费用。  此时间过后，Marketplace 服务费用将恢复为其正常量。 
 
-
-
-
-#### <a name="csp-program-opt-in"></a>CSP 计划选择加入
-通过[云解决方案提供商（CSP）](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)计划，软件产品/服务可以通过最少的市场营销和销售投资达到数百万个合格的 Microsoft 客户。
-
-- **频道：在 CSP 计划中提供我的产品/服务**（复选框）
-
-选拔在 CSP 计划中提供产品/服务，云解决方案提供商可以将产品作为捆绑解决方案的一部分销售给客户。 
-
 ### <a name="list-through-microsoft"></a>通过 Microsoft 列出
 
 通过创建 marketplace 列表，通过 Microsoft 提升你的业务。 选择仅列出你的产品/服务，而不是通过 Microsoft，这意味着 Microsoft 不会直接参与软件许可证交易。 没有关联的事务费用，发布者将保留从客户那里收集的任何软件许可费用的100%。 但是，发布者负责支持软件许可证事务的所有方面，包括但不限于：订单执行、计量、计费、开票、支付和收集。 
@@ -141,7 +130,7 @@ SaaS 使用按流量计费服务，根据固定费用、每用户或消耗费用
 
 通过向客户提供 "在购买前试用" 的选项，测试驱动器是向潜在客户展示你的产品/服务的一种好办法 [了解有关测试驱动器的详细信息。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
-- **启用测试驱动器**（复选框） 
+- **启用测试驱动器**（复选框）
 
 通过启用 "测试驱动器"，系统将要求你配置演示环境，让客户在固定时间段内试用你的产品/服务。 
 
@@ -331,7 +320,6 @@ Azure Marketplace 发布者可以选择在标准合同下提供其软件，而�
 
 - [Marketplace 产品/服务列表的最佳实践](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
-
 ## <a name="preview"></a>预览
 
 使用 "**预览**" 选项卡，可以在将产品/服务发布到更广泛的 marketplace 受众之前，定义用于发布产品/服务的受限**预览版**。
@@ -352,7 +340,7 @@ Azure Marketplace 发布者可以选择在标准合同下提供其软件，而�
 
 - **登陆页面 URL** （必需）：定义客户在从 marketplace 获取产品/服务后将居住在的站点 url。 此 URL 将是在客户路由到页面时接收令牌的终结点。 使用履单完成 Api 中的 resolve，可以交换该令牌以获取预配详细信息。 您收集的这些详细信息以及您收集的任何其他人都可以在您的体验中使用，以完成注册并激活他们的购买体验。
 
-- **连接 webhook** （必需）：对于 Microsoft 需要代表客户发送给你的所有异步事件（例如： SaaS 订阅无效），我们要求你提供连接 webhook。 如果尚未准备好 webhook 系统，最简单的配置是使用 HTTP 终结点逻辑应用，该应用将侦听任何发送给它的事件，并相应地处理这些事件（例如，https： westus： 443/work).\/ 有关详细信息，请参阅[在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint)。
+- **连接 webhook** （必需）：对于 Microsoft 需要代表客户发送给你的所有异步事件（例如： SaaS 订阅无效），我们要求你提供连接 webhook。 如果尚未准备好 webhook 系统，最简单的配置是创建一个 HTTP 终结点逻辑应用，该应用将侦听任何发送给它的事件，并相应地处理这些事件（例如，https：\//prod-1westus.logic.azure.com:443/work）。 有关详细信息，请参阅[在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint)。
 
 - **Azure AD 租户 ID** （必需）：在 Azure 门户内部，我们要求你[创建 Azure Active Directory （AD）应用](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)，以便我们可以验证两个服务之间的连接是否在经过身份验证的通信之后。 若要查找[租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)，请跳到 Azure Active Directory，选择 "**属性**"，然后查找列出的**目录 ID**号（例如50c464d3-4930-494c-963c-1e951d15360e）。
 
@@ -407,7 +395,7 @@ Azure Marketplace 发布者可以选择在标准合同下提供其软件，而�
 >[!Note]
 >使用免费试用版发布事务产品/服务后，将无法为该计划禁用该产品/服务。 请确保首次发布时此设置正确，以避免重新创建该计划。
 
-若要获取有关当前参与免费试用的客户订阅的信息，请使用新的 API 属性 `isFreeTrial`，将其标记为 true 或 false。 有关详细信息，请参阅[SaaS 获取订阅 API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) 。
+若要获取有关当前参与免费试用的客户订阅的信息，请使用 `isFreeTrial`的新 API 属性，该属性将被标记为 true 或 false。 有关详细信息，请参阅[SaaS 获取订阅 API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) 。
 
 >[!Note]
 >利用 marketplace 计量服务的计划不支持免费试用版。
@@ -416,8 +404,7 @@ Azure Marketplace 发布者可以选择在标准合同下提供其软件，而�
 
 - **编辑市场**（可选）
 
-每个计划都必须至少在一个市场中可用。 对于想要使此计划可用的任何市场位置，选中相应的复选框。 用于选择 "已汇款" 国家/地区的搜索框和按钮，其中包含 Microsoft 汇寄的销售和使用条款，其中包含你的帮助。 
-
+每个计划都必须至少在一个市场中可用。 对于想要使此计划可用的任何市场位置，选中相应的复选框。 用于选择 "已汇款" 国家/地区的搜索框和按钮，其中包含 Microsoft 汇寄的销售和使用条款，其中包含你的帮助。
 
 如果已将计划的价格设置为美国美元（USD）并添加另一个市场位置，则将根据当前汇率计算新市场的价格。 在发布前，应始终查看每个市场的价格。 保存更改后，可以通过使用 "导出价格（.xlsx）" 链接来查看定价。
 
@@ -460,7 +447,7 @@ Azure Marketplace 发布者可以选择在标准合同下提供其软件，而�
 
 分配将有权访问此私有计划的受众。 使用租户 Id 分配访问权限，其中包含分配给每个租户 ID 的说明。 如果导入 .csv 电子表格文件，则最多可以添加10个租户 Id 或20000个客户租户 Id。
 
-租户是组织的表示形式，ID 表示为 GUID （全局唯一标识符，是用于标识资源的128位整数）。 它是 Azure AD 专用实例，组织或应用开发人员与 Microsoft 建立关系时（例如注册 Azure、Microsoft Intune 或 Microsoft 365）会收到该实例。 每个 Azure AD 租户都是独特的，独立于其他 Azure AD 租户。 若要检查租户，请使用要用于管理应用程序的帐户登录到 Azure 门户。 如果你有一个租户，则会自动登录到该租户，并且帐户名的正下方会显示租户名称。 将鼠标指针悬停在 Azure 门户右上角的帐户名上，可以查看你的姓名、电子邮件、目录/租户 ID (GUID) 以及域。 如果帐户与多个租户相关联，则可以选择帐户名打开一个菜单，并在其中切换租户。 每个租户都有自己的唯一租户 ID。 你还可以使用域名 URL 查找你组织的租户 ID，网址为： [https://www.whatismytenantid.com](https://www.whatismytenantid.com)。
+租户是组织的表示形式，ID 表示为 GUID （全局唯一标识符，是用于标识资源的128位整数）。 它是 Azure AD 专用实例，组织或应用开发人员与 Microsoft 建立关系时（例如注册 Azure、Microsoft Intune 或 Microsoft 365）会收到该实例。 每个 Azure AD 租户都是独特的，独立于其他 Azure AD 租户。 若要检查租户，请使用要用于管理应用程序的帐户登录到 Azure 门户。 如果你有一个租户，则会自动登录到该租户，并且帐户名的正下方会显示租户名称。 将鼠标指针悬停在 Azure 门户右上角的帐户名上，可以查看你的姓名、电子邮件、目录和租户 ID (GUID) 以及域。 如果帐户与多个租户相关联，则可以选择帐户名打开一个菜单，并在其中切换租户。 每个租户都有自己的唯一租户 ID。 你还可以使用域名 URL 查找你组织的租户 ID，网址为： [https://www.whatismytenantid.com](https://www.whatismytenantid.com)。
 
 尽管 SaaS 提供使用租户 Id 来定义专用受众，但其他产品/服务类型可能使用 Azure 订阅 Id （也表示为 Guid）。
 
@@ -475,11 +462,15 @@ Azure Marketplace 发布者可以选择在标准合同下提供其软件，而�
 
 [!INCLUDE [Test drive content](./includes/commercial-marketplace-test-drive.md)]
 
+## <a name="cloud-solution-provider-csp-reseller-audience"></a>云解决方案提供商（CSP）经销商受众
+
+选拔在 CSP 计划中提供产品/服务，云解决方案提供商可以将产品作为捆绑解决方案的一部分销售给客户。 有关详细信息，请参阅[云解决方案提供商（CSP）](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers.md)。
+
 ## <a name="publish"></a>发布
 
-#### <a name="submit-offer-to-preview"></a>将产品/服务提交到预览版
+完成产品/服务的所有必需部分后，请选择门户右上角的 "**发布**"。 你将被重定向到 "**查看并发布**" 页。
 
-完成产品/服务的所有必需部分后，请选择门户右上角的 "**发布**"。 你将被重定向到 "**查看并发布**" 页。 
+#### <a name="submit-offer-to-preview"></a>将产品/服务提交到预览版
 
 如果这是你首次发布此产品/服务，则可以：
 

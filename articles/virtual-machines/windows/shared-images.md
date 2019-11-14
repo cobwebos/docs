@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 创建共享 VM 映像 | Microsoft Docs
+title: 创建具有 Azure PowerShell 的共享 VM 映像
 description: 了解如何使用 Azure PowerShell 在 Azure 中创建共享虚拟机映像
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,31 +15,31 @@ ms.workload: infrastructure
 ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 01e6d9dff0ea2c2b60d8e2ab42e39e36d998be83
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: db877c96167fc011c1a8bd52cc1d0b63260007c9
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390583"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066242"
 ---
 # <a name="create-a-shared-image-gallery-with-azure-powershell"></a>使用 Azure PowerShell 创建共享映像库 
 
 [共享映像库](shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动部署任务，例如预加载应用程序、应用程序配置和其他 OS 配置。 
 
-使用共享映像库，你可以在 AAD 租户内在同一区域中或跨区域与组织中的其他人共享自定义 VM 映像。 选择要共享哪些映像，要在哪些区域中共享，以及希望与谁共享它们。 你可以创建多个库，以便可以按逻辑方式对共享映像进行分组。 
+使用共享映像库，你可以在 AAD 租户内在同一区域或跨区域与组织中的其他用户共享自定义 VM 映像。 选择要共享哪些映像，要在哪些区域中共享，以及希望与谁共享它们。 你可以创建多个库，以便可以按逻辑方式对共享映像进行分组。 
 
 库是顶级资源，它提供完全基于角色的访问控制 (RBAC)。 你可以控制映像的版本，并且可以选择将每个映像版本复制到一组不同的 Azure 区域。 库仅适用于托管映像。
 
 共享映像库功能具有多种资源类型。 我们将在本文中使用或生成这些资源类型：
 
-| 资源 | 描述|
+| 资源 | 说明|
 |----------|------------|
 | **托管映像** | 这是基本映像，可以单独使用，也可用于在映像库中创建“映像版本”。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
 | **映像定义** | 映像在库中定义，携带有关该映像及其在内部使用的要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 |
 | **映像版本** | 使用库时，将使用**映像版本**来创建 VM。 可根据环境的需要创建多个映像版本。 与托管映像一样，在使用**映像版本**创建 VM 时，将使用映像版本来创建 VM 的新磁盘。 可以多次使用映像版本。 |
 
-对于同时创建的每20个 Vm，我们建议你保留一个副本。 例如，如果使用同一个区域中的同一映像并发创建 120 Vm，我们建议你保留至少6个映像的副本。 有关详细信息，请参阅[缩放](/azure/virtual-machines/windows/shared-image-galleries#scaling)。
+对于并行创建的每 20 个 VM，我们建议保留一个副本。 例如，如果要在区域中使用相同映像并行创建 120 个 VM，我们建议至少保留映像的 6 个副本。 有关详细信息，请参阅[缩放](/azure/virtual-machines/windows/shared-image-galleries#scaling)。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -52,7 +52,7 @@ ms.locfileid: "72390583"
  
 ## <a name="create-vms-from-an-image"></a>根据映像创建 VM
 
-映像版本完成后，可以创建一个或多个新的 VM。 使用[new-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet。 
+映像版本完成后，可以创建一个或多个新的 VM。 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet。 
 
 此示例在*美国中南部*数据中心的*myResourceGroup*中创建名为*myVMfromImage*的 VM。
 

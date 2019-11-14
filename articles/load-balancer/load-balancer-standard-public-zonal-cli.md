@@ -1,5 +1,5 @@
 ---
-title: 具有区域性前端的标准负载均衡器-Azure CLI
+title: 具有区域性公共 IP 地址前端的标准负载均衡器-Azure CLI
 titleSuffix: Azure Load Balancer
 description: 了解如何使用 Azure CLI 通过区域公共 IP 地址前端创建公共标准负载均衡器
 services: load-balancer
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: allensu
-ms.openlocfilehash: 5e6dd06cf43b0eb5389597dcedbc323f4c035333
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: b9c3a88df6801566bc927cfc18fda0adfa05a5ae
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048342"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076036"
 ---
-#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>使用 Azure CLI 创建具有区域性前端的标准负载均衡器
+#  <a name="create-a-standard-load-balancer-with-zonal-public-ip-address-frontend-using-azure-cli"></a>使用 Azure CLI 创建具有区域性公共 IP 地址前端的标准负载均衡器
 
 本文逐步讲解如何使用公共 IP 标准地址创建具有区域性前端的公共[标准负载均衡器](https://aka.ms/azureloadbalancerstandard)。 在此场景中，我们将为前端和后端实例指定一个特定的区域，使数据路径和资源与特定的区域相符。
 

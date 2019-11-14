@@ -1,5 +1,5 @@
 ---
-title: 备份 Azure Stack Vm 中的文件
+title: 备份 Azure Stack Vm 中的文件-Azure 备份
 description: 使用 Azure 备份将 Azure Stack 文件与应用程序备份和恢复到 Azure Stack 环境。
 ms.reviewer: adigan
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dacurwin
-ms.openlocfilehash: d9e7aaca99e551e17e8b4be5ef6146a19e44355f
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: dc498e08509280b0dcd19cb1556a3c5a152f6d97
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210209"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074095"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>在 Azure Stack 上备份文件和应用程序
 
@@ -45,7 +45,7 @@ ms.locfileid: "70210209"
 
     ![“新建保护组”向导打开](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
-3. 在“选择组成员”屏幕中，单击 **+** 展开子项列表。 选中想要保护的所有项对应的复选框。 选择所有项后，单击“下一步”。
+3. 在“选择组成员”屏幕中，单击 **展开子项列表。+** 选中想要保护的所有项对应的复选框。 选择所有项后，单击“下一步”。
 
     ![“新建保护组”向导打开](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
@@ -128,13 +128,13 @@ ms.locfileid: "70210209"
 
 ## <a name="view-azure-backup-server-with-a-vault"></a>使用保管库查看 Azure 备份服务器
 
-若要查看 Azure 门户中 Azure 备份服务器实体, 你可以执行以下步骤:
+若要在 Azure 门户中查看 Azure 备份服务器实体，可以按照下列步骤操作：
 
 1. 打开恢复服务保管库。
 2. 单击“备份基础结构”。
 3. 查看备份管理服务器。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 有关使用 Azure 备份服务器保护其他工作负荷的信息，请参阅以下文章之一：
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 48d58ac303a843c627067c9a0287628c35b65f66
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 15bf955d6055ed91b486d34cf9d805de34e9f8f5
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019069"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074827"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>将存储添加到 Azure 备份服务器
 
@@ -27,13 +27,13 @@ Azure 备份服务器 V2 及更高版本支持新式备份存储，后者可提�
 
 备份服务器 V2 或更高版本可接受存储卷。 添加卷时，备份服务器会将卷格式化为新式备份存储所需的复原文件系统 (ReFS)。 若要添加卷以及以后在需要时扩展它，建议使用以下工作流：
 
-1.  在 VM 上设置备份服务器。
-2.  在存储池中的虚拟磁盘上创建卷：
-    1.  将磁盘添加到存储池，然后使用简单布局创建虚拟磁盘。
-    2.  添加任何其他磁盘，然后扩展虚拟磁盘。
-    3.  在虚拟磁盘上创建卷。
-3.  将卷添加到备份服务器。
-4.  配置可感知工作负载的存储。
+1. 在 VM 上设置备份服务器。
+2. 在存储池中的虚拟磁盘上创建卷：
+    1. 将磁盘添加到存储池，然后使用简单布局创建虚拟磁盘。
+    2. 添加任何其他磁盘，然后扩展虚拟磁盘。
+    3. 在虚拟磁盘上创建卷。
+3. 将卷添加到备份服务器。
+4. 配置可感知工作负载的存储。
 
 ## <a name="create-a-volume-for-modern-backup-storage"></a>为新式备份存储创建卷
 
@@ -75,7 +75,7 @@ Azure 备份服务器 V2 及更高版本支持新式备份存储，后者可提�
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-可以使用 PowerShell cmdlet Update-DPMDiskStorage（它可更新 Azure 备份服务器上存储池中的卷的属性）设置可感知工作负荷的存储。 
+可以使用 PowerShell cmdlet Update-DPMDiskStorage（它可更新 Azure 备份服务器上存储池中的卷的属性）设置可感知工作负荷的存储。
 
 语法：
 
@@ -84,6 +84,7 @@ Azure 备份服务器 V2 及更高版本支持新式备份存储，后者可提�
 ```powershell
 Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-DatasourceType] <VolumeTag[]> ] [-Confirm] [-WhatIf] [ <CommonParameters>]
 ```
+
 下面的屏幕截图显示 PowerShell 窗口中的 Update-DPMDiskStorage cmdlet。
 
 ![PowerShell 窗口中的 Update-DPMDiskStorage 命令](./media/backup-mabs-add-storage/mabs-add-storage-8.png)
@@ -92,8 +93,8 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
 ![管理员控制台中的磁盘和卷](./media/backup-mabs-add-storage/mabs-add-storage-9.png)
 
-
 ## <a name="migrate-legacy-storage-to-modern-backup-storage"></a>将旧存储迁移到 Modern Backup Storage
+
 升级到或安装备份服务器 V2 并将操作系统升级到 Windows Server 2016 之后，可更新保护组以使用新式备份存储。 默认情况下，保护组不会进行更改。 它们会继续按照初始设置运行。
 
 可以选择更新保护组以使用新式备份存储。 若要更新保护组，请使用保留数据选项停止所有数据源的保护。 然后，将数据源添加到新保护组。
@@ -102,9 +103,9 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
    ![停止保护成员](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. 在“从组中删除”对话框中，检查存储池的已用磁盘空间和可用空闲空间。 默认设置是在磁盘上保留恢复点，并让它们可以按照关联保留策略过期。 单击 **“确定”** 。
+2. 在“从组中删除”对话框中，检查存储池的已用磁盘空间和可用空闲空间。 默认设置是在磁盘上保留恢复点，并让它们可以按照关联保留策略过期。 单击“确定”。
 
-   如果你想要立即返回到可用存储池的使用的磁盘空间，选择**埃合盒**复选框以删除备份数据 （和恢复点） 与该成员相关联。
+   如果要立即将已用磁盘空间返回到可用存储池，则选中“删除磁盘上的副本”复选框以删除与成员关联的备份数据（和恢复点）。
 
    ![“从组中删除”对话框](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
@@ -120,11 +121,12 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
     ![“添加磁盘存储”对话框](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
-4. 在“添加磁盘存储”对话框中，选择“添加磁盘”。
+2. 在“添加磁盘存储”对话框中，选择“添加磁盘”。
 
-5. 在可用磁盘的列表中，选择要添加的磁盘，选择“添加”，然后选择“确定”。
+3. 在可用磁盘的列表中，选择要添加的磁盘，选择“添加”，然后选择“确定”。
 
 ## <a name="next-steps"></a>后续步骤
+
 安装备份服务器之后，了解如何准备服务器或开始保护工作负载。
 
 - [准备备份服务器工作负载](backup-azure-microsoft-azure-backup.md)

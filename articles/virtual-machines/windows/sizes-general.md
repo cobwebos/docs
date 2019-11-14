@@ -1,5 +1,5 @@
 ---
-title: Azure Windows VM 大小 - 通用 | Microsoft Docs
+title: Azure Windows VM 大小-常规用途
 description: 列出 Azure 中适用于 Windows 虚拟机的各种通用大小。 针对此系列中的大小列出了 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: jonbeck
-ms.openlocfilehash: 99bd620df0518ec0ed158003589793ca2e6cd31f
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: b9b66d39345b95d135231acfc348faf0a47103a5
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721549"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065460"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>常规用途虚拟机大小
 
@@ -37,4 +37,4 @@ ms.locfileid: "73721549"
 - [前几代](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
+了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。

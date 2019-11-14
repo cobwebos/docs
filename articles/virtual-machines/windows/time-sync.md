@@ -1,5 +1,5 @@
 ---
-title: Azure 中 Windows VM 的时间同步 | Microsoft Docs
+title: Azure 中 Windows VM 的时间同步
 description: Windows 虚拟机的时间同步。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 04b2eb70a9e304fb50f4f6cb94daf0a0dda86d63
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 58824b13cfac264c051de6bea45d2dab3aae8fae
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100261"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068118"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure 中 Windows VM 的时间同步
 
@@ -34,7 +34,7 @@ Azure 现在由运行 Windows Server 2016 的基础结构提供支持。 Windows
 
 ## <a name="overview"></a>概述
 
-计算机时钟的准确性根据计算机时钟与协调世界时 (UTC) 时间标准的接近程度来测量。 UTC 由多国的精确原子钟示例定义，300 年误差仅一秒。 但是，直接读取 UTC 需要专用的硬件。 相反，时间服务器与 UTC 同步，并可从其他计算机访问，以提供可伸缩性和可靠性。 每台计算机都运行时间同步服务，该服务知道要使用什么时间服务器，并定期检查计算机时钟是否需要校正以及在需要时调整时间。 
+计算机时钟的准确度是根据计算机时钟与协调世界时 (UTC) 时间标准的接近程度来衡量的。 UTC 由多国的精确原子钟示例定义，300 年误差仅一秒。 但是，直接读取 UTC 需要专用的硬件。 相反，时间服务器与 UTC 同步，并可从其他计算机访问，以提供可伸缩性和可靠性。 每台计算机都运行时间同步服务，该服务知道要使用什么时间服务器，并定期检查计算机时钟是否需要校正以及在需要时调整时间。 
 
 Azure 主机与内部 Microsoft 时间服务器同步，这些服务器从 Microsoft 拥有的带 GPS 天线的 Stratum 1 设备获取时间。 Azure 中的虚拟机可以依赖其主机将准确时间（主机时间）传递给 VM，也可以直接从时间服务器中获取时间，或结合使用这两种方式。 
 
@@ -48,11 +48,11 @@ VMICTimeSync 服务以采样或同步模式运行，只会影响时钟前进。 
 - 如果日志（或其他数据）在时间上不一致，则很难弄清楚系统中发生了什么。 同一事件看起来好像发生在不同的时间，这使关联变得困难。
 - 如果时钟关闭，则可能无法正确计费。
 
-可以将 Windows Server 2016 用作来宾操作系统，这样可确保使用时间同步方面的最新改进，获得 Windows 部署的最佳结果。
+通过将 Windows Server 2016 用作来宾操作系统，可以实现 Windows 部署的最佳结果，从而确保可以使用时间同步的最新改进。
 
 ## <a name="configuration-options"></a>配置选项
 
-可以通过三个选项来配置托管在 Azure 中的 Windows VM 的时间同步：
+为 Azure 中托管的 Windows VM 配置时间同步有三个选项：
 
 - 主机时间和 time.windows.com。 这是 Azure 市场映像中使用的默认配置。
 - 仅限主机。
@@ -73,7 +73,7 @@ w32time 将按以下优先级顺序选择时间提供程序：层级、根延迟
 
 ### <a name="host-only"></a>仅限主机 
 
-由于 time.windows.com 是公共 NTP 服务器，因此与其同步时间需要通过 Internet 发送流量，不同的数据包延迟会对时间同步的质量产生负面影响。通过切换到仅限主机同步来删除 time.windows.com 有时可以改善时间同步结果。
+由于 time.windows.com 是公共 NTP 服务器，因此与它同步时间需要通过 internet 发送流量，因此，不同的数据包延迟可能会对时间同步的质量产生负面影响。通过切换到仅限主机同步来删除 time.windows.com 有时会缩短时间同步结果。
 
 如果使用默认配置时遇到时间同步问题，切换到仅限主机时间同步可解决问题。 请尝试仅限主机同步，看看是否会改善 VM 上的时间同步。 
 
@@ -153,7 +153,7 @@ net stop w32time && net start w32time
 
 ## <a name="windows-server-2012-and-r2-vms"></a>Windows Server 2012 和 R2 VM 
 
-Windows Server 2012 和 Windows Server 2012 R2 具有不同的时间同步默认设置。默认情况下，w32time 的配置方式更倾向于服务的低开销而非精确的时间。 
+Windows Server 2012 和 Windows Server 2012 R2 具有不同的时间同步默认设置。默认情况下，w32time 的配置方式是更方便地将服务的开销降至最低。 
 
 如果要将 Windows Server 2012 和 2012 R2 部署移动到使用更倾向于精确时间的较新默认设置，则可以应用以下设置。
 
@@ -168,7 +168,7 @@ w32tm /config /update
 
 为了使 w32time 能够使用新的轮询间隔，请将 NtpServers 标记为使用它们。 如果服务器使用 0x1 位标记掩码进行注释，则会覆盖此机制，并且 w32time 将改用 SpecialPollInterval。 确保指定的 NTP 服务器使用 0x8 标志或根本不使用标志：
 
-检查哪些标志正用于已使用的 NTP 服务器。
+检查所使用的 NTP 服务器正在使用的标志。
 
 ```
 w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
@@ -176,7 +176,7 @@ w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 
 ## <a name="next-steps"></a>后续步骤
 
-下面是有关时间同步的更多详细信息的链接：
+以下是有关时间同步的更多详细信息的链接：
 
 - [Windows 时间服务工具和设置](https://docs.microsoft.com/windows-server/networking/windows-time-service/Windows-Time-Service-Tools-and-Settings)
 - [Windows Server 2016 的改进](https://docs.microsoft.com/windows-server/networking/windows-time-service/windows-server-2016-improvements)

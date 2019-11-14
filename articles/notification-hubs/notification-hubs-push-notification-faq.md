@@ -17,12 +17,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: ee1bd413894ff5c12883279ccd8a9e9eac3c1790
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: c84a4472789430524cbf5ff3f1ae24ea10d342b9
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048784"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066878"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题解答
 
@@ -30,9 +30,7 @@ ms.locfileid: "74048784"
 
 ### <a name="what-is-the-resource-structure-of-notification-hubs"></a>通知中心的资源结构是怎样的？
 
-Azure 通知中心有两个资源级别：中心和命名空间。 中心是单个推送资源，可以保存一个应用的跨平台推送信息。 命名空间是一个区域中所有中心的集合。
-
-建议的映射将一个命名空间与一个应用相匹配。 在命名空间内，可以创建适用于生产应用的生产中心、适用于测试应用的测试中心，等等。
+Azure 通知中心有两个资源级别：中心和命名空间。 中心是单个推送资源，可以保存一个应用的跨平台推送信息。 命名空间是一个区域中所有中心的集合。 建议的映射将一个命名空间与一个应用相匹配。 在命名空间内，可以创建适用于生产应用的生产中心、适用于测试应用的测试中心，等等。
 
 ### <a name="what-is-the-price-model-for-notification-hubs"></a>通知中心的价格模型有哪些？
 
@@ -45,7 +43,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 标准层功能：
 
 * **丰富的遥测功能**：可以使用通知中心的消息遥测来跟踪所有推送请求和用于调试的平台通知系统反馈。
-* **多租户**：可在命名空间级别与平台通知系统凭据一起使用。 此选项可让你轻松地将租户拆分到相同命名空间内的中心。
+* **多租户**：可在命名空间级别使用平台通知系统凭据。 此选项可让你轻松地将租户拆分到相同命名空间内的中心。
 * **计划推送**：可以计划随时发出通知。
 * **大容量操作**：允许注册导出/导入功能，如[注册导出/导入]文档中所述。
 
@@ -54,7 +52,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 对于基本和标准通知中心层，正确配置的应用程序可在 99.9% 的时间发送推送通知或执行注册管理操作。 若要详细了解 SLA，请访问[通知中心 SLA](https://azure.microsoft.com/support/legal/sla/notification-hubs/) 页。
 
 > [!NOTE]
-> 由于推送通知取决于第三方平台通知系统（例如 Apple APNS、Google FCM 等），所以这些消息的发送不具有 SLA 保证。 在通知中心将批处理发送到平台通知系统（有 SLA 保证）后，平台通知系统将负责执行推送（无 SLA 保证）。
+> 由于推送通知依赖于第三方平台通知系统（如 Apple 的推送通知服务（APNs）和 Google 的 Firebase 云消息传送（FCM）），因此不会提供这些消息的 SLA 保证。 在通知中心将批处理发送到平台通知系统（有 SLA 保证）后，平台通知系统将负责执行推送（无 SLA 保证）。
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>如何将中心升级或降级到不同层的命名空间？
 
@@ -75,13 +73,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>是否支持短信、电子邮件或 Web 通知？
 
-通知中心主用于将通知发送到移动应用。 它不提供电子邮件或短信功能。 但是，提供这些功能的第三方平台可与通知中心集成，使用[移动应用]发送原生推送通知。
-
-通知中心也不提供现成的浏览器内推送通知传递服务。 客户可以在支持的服务器端平台上使用 SignalR 实现此功能。 
-
-### <a name="how-are-mobile-apps-and-azure-notification-hubs-related-and-when-do-i-use-them"></a>移动应用与 Azure 通知中心之间的关系如何？它们各自适用于什么场合？
-
-如果有现成的移动应用后端并且只想添加发送推送通知的功能，则可以使用 Azure 通知中心。 如果想要从头开始安装移动应用后端，请考虑使用 Azure 应用服务的移动应用功能。 移动应用会自动预配通知中心，方便从移动应用后端发送推送通知。 移动应用的定价包括通知中心的基本费用。 只需在超出附送的推送套餐时支付费用。 有关费用的详细信息，请转到[应用服务定价]页。
+通知中心将通知发送到运行移动应用的设备。 它不提供电子邮件或短信功能。 通知中心也不提供现成的浏览器内推送通知传递服务。 客户可以在支持的服务器端平台上使用 SignalR 实现此功能。 
 
 ### <a name="how-many-devices-can-i-support-if-i-send-push-notifications-via-notification-hubs"></a>如果通过通知中心发送推送通知，可以支持多少个设备？
 
@@ -94,7 +86,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 Azure 通知中心根据系统中通过的通知数量自动向上扩展，具体取决于所选的层。
 
 > [!NOTE]
-> 整体使用成本可能会根据目前提供的推送通知数量而增加。 请务必留意[通知中心定价]页上概述的层限制。
+> 总体使用成本可能会根据发送的推送通知数量而增加。 请务必留意[通知中心定价]页上概述的层限制。
 
 我们的客户每天使用通知中心发送数百万条推送通知。 只要使用 Azure 通知中心，就不需要执行任何特别的操作来调整推送通知可及范围。
 
@@ -135,7 +127,7 @@ PNS 对于传递通知不提供任何 SLA 保证。 但是，大多数推送通�
 
 #### <a name="geo-distribution"></a>地理分布
 
-在推送通知方案中，地理分布并非总是关键所在。 用于向设备传递推送通知的各个 PNS（例如 APNS 或 FCM）不会均匀分布。
+在推送通知方案中，地理分布并非总是关键所在。 将推送通知传递到设备的各种 Pns （例如 APNs 或 FCM）不会均匀分布。
 
 如果有一个在全球范围内使用的应用程序，可以在全球不同的 Azure 区域使用通知中心服务在命名空间中创建中心。
 
@@ -157,7 +149,7 @@ Azure 通知中心使用基于[共享访问签名](../storage/common/storage-dot
 从发送方到 Azure 通知中心、再到 PNS 的所有连接都使用 HTTPS。
 
 > [!NOTE]
-> Azure 通知中心不会以任何方式记录消息的有效负载。
+> Azure 通知中心不记录消息的负载。
 
 若要发送敏感有效负载，我们建议使用安全推送模式。 发送方将带有消息标识符的 ping 通知传递到设备，其中不包含敏感有效负载。 当设备上的应用收到该有效负载后，可直接调用安全 API 来提取消息详细信息。 有关如何实现此模式的指导，请转到[通知中心安全推送教程]页。
 
@@ -207,9 +199,8 @@ Azure 通知中心支持在 [Azure 门户]中查看遥测数据。 可以在[通
 - [获取资源的指标和活动日志](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
 - [Azure 监视 REST API 演练](../azure-monitor/platform/rest-api-walkthrough.md)
 
-
 > [!NOTE]
-> 成功的通知仅意味着推送通知已传递到外部 PNS（例如 Apple 的 APNS，或 Google 的 FCM）。 PNS 负责将通知传递到目标设备。 PNS 通常不会向第三方公开传递指标。  
+> 成功的通知仅意味着推送通知已传递到外部 PNS （例如，Apn 用于 iOS，macOS 或 FCM 适用于 Android 设备）。 PNS 负责将通知传递到目标设备。 PNS 通常不会向第三方公开传递指标。  
 
 [Azure 门户]: https://portal.azure.com
 [通知中心定价]: https://azure.microsoft.com/pricing/details/notification-hubs/
@@ -226,5 +217,4 @@ Azure 通知中心支持在 [Azure 门户]中查看遥测数据。 可以在[通
 [注册导出/导入]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
 [Azure 门户]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
-[移动应用]: https://azure.microsoft.com/services/app-service/mobile/
-[应用服务定价]: https://azure.microsoft.com/pricing/details/app-service/
+[App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

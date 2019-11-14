@@ -1,5 +1,5 @@
 ---
-title: 在 Windows VM 上使用 Azure PowerShell 启用诊断 | Microsoft Docs
+title: 使用 Azure PowerShell 在 Windows VM 上启用诊断
 services: virtual-machines-windows
 documentationcenter: ''
 description: 了解如何使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 547de4862081b56bf627c3a00564ce6564f2ad09
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: d43859de71b6e41d5df444716b5504ca6b78400b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750098"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073142"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断
 
@@ -52,7 +52,7 @@ Azure 诊断是 Azure 中可对部署的应用程序启用诊断数据收集的�
 
     Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
 
-该 cmdlet 返回 PublicSettings，其中包含诊断配置。 支持两种类型的配置：WadCfg 和 xmlCfg。 WadCfg 是 JSON 配置，而 xmlCfg 是 Base64 编码格式的 XML 配置。 要读取该 XML，需将其解码。
+该 cmdlet 返回 *PublicSettings*，其中包含诊断配置。 支持两种类型的配置：WadCfg 和 xmlCfg。 WadCfg 是 JSON 配置，而 xmlCfg 是 Base64 编码格式的 XML 配置。 要读取该 XML，需将其解码。
 
     $publicsettings = (Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name).PublicSettings
     $encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg

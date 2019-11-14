@@ -1,5 +1,5 @@
 ---
-title: 从 GitHub 更新 Azure Linux 代理 | Microsoft Docs
+title: 从 GitHub 更新 Azure Linux 代理
 description: 了解如何为 Azure 中的 Linux VM 更新 Azure Linux 代理
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: akjosh
-ms.openlocfilehash: 1ae3c3a74d1a46a98fa6676e18ffe71a4d6937a1
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 2215136c02d9cf967e0184af7588ce8d48362009
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168776"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072933"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>如何更新 VM 上的 Azure Linux 代理
 
-若要更新 Azure 中 Linux VM 上的 [Azure Linux 代理](https://github.com/Azure/WALinuxAgent)，则必须已具备以下条件：
+若要更新 Azure 中 Linux VM 上的 [Azure Linux 代理](https://github.com/Azure/WALinuxAgent) ，则必须已具备以下条件：
 
 - 在 Azure 中具有运行的 Linux VM。
 - 使用 SHH 连接到该 Linux VM。
@@ -351,7 +351,7 @@ sudo systemctl restart waagent.service
 
 ## <a name="oracle-6-and-7"></a>Oracle 6 和 7
 
-对于 Oracle Linux，请确保已启用 `Addons` 存储库。 选择编辑文件 `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) 或 `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux)，并在此文件中 **[ol6_addons]** 或 **[ol7_addons]** 下将行 `enabled=0` 更改为 `enabled=1`。
+对于 Oracle Linux，请确保已启用 `Addons` 存储库。 选择编辑文件 `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) 或 `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux)，并在此文件中 `enabled=0`[ol6_addons]`enabled=1` 或 **[ol7_addons]** 下将行 **更改为**。
 
 然后，若要安装最新版本的 Azure Linux 代理，请键入：
 
@@ -396,7 +396,7 @@ sudo yum update WALinuxAgent
 
 通过在命令行上键入 `sudo yum install wget` 来安装 wget（某些发行版在默认情况下未安装它，如 Red Hat、CentOS 和 Oracle Linux 6.4 和 6.5 版）。
 
-### <a name="1-download-the-latest-version"></a>1.下载最新版本
+### <a name="1-download-the-latest-version"></a>1. 下载最新版本
 在网页中打开 [GitHub 中的 Azure Linux 代理版本](https://github.com/Azure/WALinuxAgent/releases)，并找到最新的版本号。 （可以通过键入 `waagent --version` 查明当前版本。）
 
 #### <a name="for-version-22x-or-later-type"></a>对于 2.2.x 或更高版本，请键入：
@@ -414,10 +414,10 @@ unzip v2.2.14.zip
 cd WALinuxAgent-2.2.14
 ```
 
-### <a name="2-install-the-azure-linux-agent"></a>2.安装 Azure Linux 代理
+### <a name="2-install-the-azure-linux-agent"></a>2. 安装 Azure Linux 代理
 
 #### <a name="for-version-22x-use"></a>对于版本 2.2.x，请使用：
-可能需要先安装程序包 `setuptools` -- 详情请参阅[此处](https://pypi.python.org/pypi/setuptools)。 然后运行：
+可能需要先安装程序包 `setuptools` -- 详情请参阅 [此处](https://pypi.python.org/pypi/setuptools)。 然后运行：
 
 ```bash
 sudo python setup.py install
@@ -444,7 +444,7 @@ AutoUpdate.Enabled=y
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="3-restart-the-waagent-service"></a>3.重新启动 waagent 服务
+### <a name="3-restart-the-waagent-service"></a>3. 重启 waagent 服务
 对于大多数 linux 发行版：
 
 ```bash
@@ -463,7 +463,7 @@ sudo service walinuxagent restart
 sudo systemctl restart waagent
 ```
 
-### <a name="4-confirm-the-azure-linux-agent-version"></a>4.确认 Azure Linux 代理版本
+### <a name="4-confirm-the-azure-linux-agent-version"></a>4. 确认 Azure Linux 代理版本
     
 ```bash
 waagent -version

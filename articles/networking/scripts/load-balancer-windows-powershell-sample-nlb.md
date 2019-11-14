@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell 脚本示例：对传入 VM 的流量进行负载均衡以实现高可用性 | Microsoft Docs
+title: 将流量负载均衡到 Vm 以实现 HA-Azure PowerShell
 description: Azure PowerShell 脚本示例：对传入 VM 的流量进行负载均衡以实现高可用性
 services: load-balancer
 documentationcenter: load-balancer
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: allensu
-ms.openlocfilehash: 73fe1b57f3f1d8bef388901f19438daff4110469
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1f0ff6cad90a4e5578a4f0c578a7da5cbbb75457
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890284"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067071"
 ---
 # <a name="load-balance-traffic-to-vms-for-high-availability"></a>对传入 VM 的流量进行负载均衡以实现高可用性
 
@@ -59,7 +59,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) | 创建 NSG 规则以允许入站流量。 在此示例中，将为 SSH 流量打开端口 22。 |
 | [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) | 创建虚拟网卡并将其连接到虚拟网络、子网和 NSG。 |
 | [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) | 创建可用性集。 可用性集通过将虚拟机分布到各个物理资源上（以便发生故障时，不会影响整个集）来确保应用程序运行时间。 |
-| [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | 创建 VM 配置。 此配置包括 VM 名称、操作系统和管理凭据等信息。 在创建 VM 期间将使用此配置。 |
+| [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | 创建 VM 配置。 此配置包括 VM 名称、操作系统和管理凭据等信息。 在创建 VM 期间使用此配置。 |
 | [New-AzVM](/powershell/module/az.compute/new-azvm)  | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 

@@ -1,24 +1,25 @@
 ---
-title: 使用 Azure PowerShell 在应用程序网关上配置 Web 应用程序防火墙 v2 自定义规则
+title: 使用 PowerShell 配置 v2 自定义规则
+titleSuffix: Azure Web Application Firewall
 description: 了解如何使用 Azure PowerShell 配置 WAF v2 自定义规则
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 8c307ac5553c2c333425b6c14b9b4da4a6582f62
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 48f45629b82e63dfc3f098b68e1be2523a3a0e5c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516794"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075383"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>使用自定义规则在应用程序网关上配置 Web 应用程序防火墙 v2 Azure PowerShell
 
 <!--- If you make any changes to the PowerShell in this article, also make the change in the corresponding Sample file: azure-docs-powershell-samples/application-gateway/waf-rules/waf-custom-rules.ps1 --->
 
-自定义规则允许你创建自己的规则，对通过 Web 应用程序防火墙 (WAF) v2 进行传递的每个请求进行评估。 这些规则的优先级高于托管规则集中的其他规则。 自定义规则具有一个操作（允许或阻止）、一个匹配条件和一个运算符以允许完全自定义。
+自定义规则允许你创建自己的规则，对通过 Web 应用程序防火墙 (WAF) v2 进行传递的每个请求进行评估。 这些规则的优先级高于托管规则集中的其余规则。 自定义规则具有一个操作（允许或阻止）、一个匹配条件和一个运算符以允许完全自定义。
 
 本文创建使用自定义规则的应用程序网关 WAF v2。 如果请求标头包含用户代理 *evilbot*，该自定义规则会阻止流量。
 
@@ -26,13 +27,13 @@ ms.locfileid: "73516794"
 
 如果你想在一个可以复制、粘贴和运行的连续脚本中运行本文中的 Azure PowerShell，请参见 [Azure 应用程序网关 PowerShell 示例](powershell-samples.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="azure-powershell-module"></a>Azure PowerShell 模块
 
 如果选择在本地安装并使用 Azure PowerShell，则此脚本需要安装 Azure PowerShell 模块 2.1.0 或更高版本。
 
-1. 若要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
+1. 若要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要进行升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 2. 若要创建与 Azure 的连接，请运行 `Connect-AzAccount`。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

@@ -1,6 +1,6 @@
 ---
-title: 使用数据工厂将数据复制到 Azure SQL 数据库，或从 Azure SQL 数据库复制数据
-description: 了解如何使用数据工厂将数据从支持的源数据存储复制到 Azure SQL 数据库，或从 SQL 数据库复制到支持的接收器数据存储。
+title: 使用数据工厂在 Azure SQL 数据库中复制和转换数据
+description: 了解如何使用 Azure 数据工厂将数据复制到 Azure SQL 数据库，以及如何转换 Azure SQL 数据库中的数据。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,21 +10,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 4ef47bc1064c095792a90ed69880106af77e9dfd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b899d9884a80a882ca03d3d970421227a48a3803
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681121"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075591"
 ---
-# <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库复制数据
+# <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure SQL 数据库中复制和转换数据
 > [!div class="op_single_selector" title1="选择要使用的 Azure 数据工厂的版本："]
-> * [版本 1](v1/data-factory-azure-sql-connector.md)
+> * [第 1 版](v1/data-factory-azure-sql-connector.md)
 > * [当前版本](connector-azure-sql-database.md)
 
-本文概述了如何将数据复制到 Azure SQL 数据库和从 Azure SQL 数据库复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
+本文概述如何使用 Azure 数据工厂中的复制活动将数据从和复制到 Azure SQL 数据库，并使用数据流转换 Azure SQL 数据库中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -35,14 +35,14 @@ ms.locfileid: "73681121"
 - [Lookup 活动](control-flow-lookup-activity.md)
 - [GetMetadata 活动](control-flow-get-metadata-activity.md)
 
-具体而言，此 Azure SQL 数据库连接器支持以下函数：
+对于复制活动，此 Azure SQL 数据库连接器支持以下功能：
 
 - 将 SQL 身份验证和 Azure Active Directory (Azure AD) 应用程序令牌身份验证与服务主体或 Azure 资源的托管标识配合使用来复制数据。
 - 作为源，使用 SQL 查询或存储过程检索数据。
 - 作为接收器，在复制期间将数据追加到目标表，或调用带有自定义逻辑的存储过程。
 
 >[!NOTE]
->目前此连接器不支持 Azure SQL 数据库 [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-current)。 为了解决此问题，可以通过自承载 Integration Runtime 使用[泛型 ODBC 连接器](connector-odbc.md)和 SQL Server ODBC 驱动程序。 按照[此指南](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-current)完成 ODBC 驱动程序下载和连接字符串配置。
+>目前此连接器不支持 Azure SQL 数据库 [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-current)。 为了解决此问题，可以通过自承载 Integration Runtime 使用[泛型 ODBC 连接器](connector-odbc.md)和 SQL Server ODBC 驱动程序。 按[此指南](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-current)完成 ODBC 驱动程序下载和连接字符串配置。
 
 > [!IMPORTANT]
 > 如果使用 Azure 数据工厂 Integration Runtime 复制数据，请将 [Azure SQL Server 防火墙](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)配置为允许 Azure 服务访问服务器。
@@ -227,9 +227,9 @@ Azure SQL 数据库链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各个节和属性的完整列表，请参阅[数据集](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services)。 本部分提供 Azure SQL 数据库数据集支持的属性列表。
+有关可用于定义数据集的各个节和属性的完整列表，请参阅[数据集](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services)。 
 
-若要从 Azure SQL 数据库复制数据或将数据复制到 Azure SQL 数据库，需要支持以下属性：
+Azure SQL 数据库数据集支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -377,8 +377,8 @@ GO
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为 **AzureSqlSink**。 为了向后兼容，仍然支持“SqlSink”类型。 | 是 |
 | writeBatchSize | 每批要插入到 SQL 表中的行数。<br/> 允许的值为 integer（行数）。 默认情况下，Azure 数据工厂会根据行大小动态确定适当的批大小。 | 否 |
-| writeBatchTimeout | 超时前等待批插入操作完成的时间。<br/> 允许的值为 **timespan**。 例如“00:30:00”（30 分钟）。 | 否 |
-| preCopyScript | 将数据写入到 Azure SQL 数据库之前，指定复制活动要运行的 SQL 查询。 每次运行复制仅调用该查询一次。 使用此属性清理预加载的数据。 | 否 |
+| writeBatchTimeout | 超时前等待批插入操作完成的时间。<br/> 允许的值为 timespan。 例如“00:30:00”（30 分钟）。 | 否 |
+| preCopyScript | 将数据写入到 Azure SQL 数据库之前，指定复制活动要运行的 SQL 查询。 每次运行复制仅调用该查询一次。 使用此属性清除预加载的数据。 | 否 |
 | sqlWriterStoredProcedureName | 定义如何将源数据应用于目标表的存储过程的名称。 <br/>此存储过程由每个批处理调用。 若要执行仅运行一次且与源数据无关的操作（例如删除或截断），请使用 `preCopyScript` 属性。 | 否 |
 | storedProcedureTableTypeParameterName |存储过程中指定的表类型的参数名称。  |否 |
 | sqlWriterTableType |要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |否 |
@@ -538,7 +538,7 @@ END
     )
     ```
 
-2. 在数据库中，使用与 **SqlWriterStoredProcedureName** 相同的名称定义存储过程。 它可处理来自指定源的输入数据，并将其合并到输出表中。 存储过程中的表类型的参数名称与数据集中定义的 **tableName** 相同。
+2. 在数据库中，用与**sqlWriterStoredProcedureName**相同的名称定义存储过程。 它可处理来自指定源的输入数据，并将其合并到输出表中。 存储过程中的表类型的参数名称与数据集中定义的 **tableName** 相同。
 
     ```sql
     CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
@@ -560,9 +560,9 @@ END
     ```json
     "sink": {
         "type": "AzureSqlSink",
-        "SqlWriterStoredProcedureName": "spOverwriteMarketing",
+        "sqlWriterStoredProcedureName": "spOverwriteMarketing",
         "storedProcedureTableTypeParameterName": "Marketing",
-        "SqlWriterTableType": "MarketingType",
+        "sqlWriterTableType": "MarketingType",
         "storedProcedureParameters": {
             "category": {
                 "value": "ProductA"
@@ -583,27 +583,27 @@ END
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |布尔值 |
+| bit |Boolean |
 | char |String, Char[] |
 | 日期 |DateTime |
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
+| 小数 |小数 |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | 图像 |Byte[] |
 | int |Int32 |
-| money |Decimal |
+| money |小数 |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
+| numeric |小数 |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
+| smallmoney |小数 |
 | sql_variant |对象 |
 | text |String, Char[] |
 | time |TimeSpan |
@@ -617,7 +617,7 @@ END
 >[!NOTE]
 > 对于映射到十进制临时类型的数据类型，目前 Azure 数据工厂支持的最大精度为 28。 如果有精度大于 28 的数据，请考虑在 SQL 查询中将其转换为字符串。
 
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
+## <a name="lookup-activity-properties"></a>查找活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 

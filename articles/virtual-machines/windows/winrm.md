@@ -1,5 +1,5 @@
 ---
-title: 为 Azure VM 设置 WinRM 访问 | Microsoft Docs
+title: 为 Azure VM 设置 WinRM 访问权限
 description: 设置 WinRM 访问，与 Resource Manager 部署模型中创建的 Azure 虚拟机一起使用。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 25091e8e58fbdba908fb00ece3cd2d3d296c5ab1
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ca52a458104b4de0f7b3ed2aa3f76109a5623c97
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749053"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067311"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>为 Azure 资源管理器中的虚拟机设置 WinRM 访问权限
 
@@ -56,7 +56,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $
 ```
 
 ## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>步骤 3：获将自签名证书上传到密钥保管库
-将证书上传到在步骤 1 中创建的密钥保管库之前，需将其转换为 Microsoft.Compute 资源提供程序可识别的格式。 以下 PowerShell 脚本允许你执行该操作
+将证书上传到在步骤 1 中创建的密钥保管库之前，需将其转换为 Microsoft.Compute 资源提供程序可识别的格式。 以下 PowerShell 脚本将允许执行该操作
 
 ```
 $fileName = "<Path to the .pfx file>"
@@ -149,10 +149,10 @@ Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValu
     Enable-PSRemoting -Force
 
 > [!NOTE]
-> 如果以上命令无效，可能需要确保 WinRM 服务正在运行。 可使用 `Get-Service WinRM` 完成此操作
+> 如果以上命令无效，可能需要确保 WinRM 服务正在运行。 可使用 `Get-Service WinRM`
 > 
 > 
 
-安装完成后，即可使用以下命令连接到 VM
+设置完成后，即可使用以下命令连接到 VM
 
     Enter-PSSession -ConnectionUri https://<public-ip-dns-of-the-vm>:5986 -Credential $cred -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck) -Authentication Negotiate

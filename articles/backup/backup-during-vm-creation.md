@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 90f69371457bbfe37789b12971343f738ff35e8e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e873980ce7aab1c5454a28e88df24bdb189c4860
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639712"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074850"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>在创建 Azure VM 时启用备份
 
@@ -24,7 +24,7 @@ ms.locfileid: "68639712"
 
 - 如果在创建 VM 时启用备份，请[检查](backup-support-matrix-iaas.md#supported-backup-actions)支持哪些操作系统。
 
-## <a name="sign-in-to-azure"></a>登录  Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
 如果尚未登录到你的帐户，请先登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -52,11 +52,8 @@ ms.locfileid: "68639712"
 
       ![默认备份策略](./media/backup-during-vm-creation/daily-policy.png)
 
-
 > [!NOTE]
-> Azure 备份服务会创建一个单独的资源组（而非 VM 资源组）来存储快照，采用的命名格式为 **AzureBackupRG_geography_number**（例如：AzureBackupRG_northeurope_1）。 此资源组中的数据将按 Azure 虚拟机备份策略的“保留即时恢复快照”部分中指定的天数保留。  对此资源组应用锁定可能会导致备份失败。<br>
-此资源组还应排除在任何名称/标记限制之外，因为限制策略会阻止在其中再次创建资源点集合，从而导致备份失败。
-
+> Azure 备份服务会创建一个单独的资源组（而不是 VM 资源组）来存储快照，命名格式**AzureBackupRG_geography_number** （例如： AzureBackupRG_northeurope_1）。 此资源组中的数据将按 Azure 虚拟机备份策略的“保留即时恢复快照”部分中指定的天数保留。  对此资源组应用锁定可能会导致备份失败。 <br> 此资源组还应排除在任何名称/标记限制之外，因为限制策略会阻止在其中再次创建“资源点”集合，从而导致备份失败。
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>在创建 VM 后启动备份
 
@@ -72,8 +69,6 @@ ms.locfileid: "68639712"
 ## <a name="use-a-resource-manager-template-to-deploy-a-protected-vm"></a>使用资源管理器模板部署一个受保护的 VM
 
 前面的步骤说明了如何使用 Azure 门户来创建虚拟机，以及使用恢复服务保管库来保护该虚拟机。 若要快速部署一台或多台虚拟机并在恢复服务保管库中保护它们，请参阅模板[部署 Windows VM 并启用备份](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/)。
-
-
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 2b1d3167828f2c2c49bb22580222fbd0e54d31d8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 53d7cb125f59491190aadb07755954ade78356fa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813192"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075526"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>合作伙伴中心的商业市场分析
 
-了解如何在 Microsoft 合作伙伴中心访问分析报表，以在 marketplace 中监视销售情况、评估性能和优化产品/服务。 作为合作伙伴，你可以使用合作伙伴中心支持的数据可视化和见解图来监视你的产品/服务列表，并找到最大化销售的方式。 改进的分析工具使你可以处理性能结果，并与你的客户和经销商保持更好的关系。 
+了解如何在 Microsoft 合作伙伴中心访问分析报表，以在 marketplace 中监视销售情况、评估性能和优化产品/服务。 作为合作伙伴，你可以使用合作伙伴中心支持的数据可视化和见解图来监视你的产品/服务列表，并找到最大化销售的方式。 改进的分析工具使你可以处理性能结果，并与你的客户和经销商保持更好的关系。
 
 若要访问合作伙伴中心分析工具，请在商业市场下打开 " **[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** " 仪表板。
 
@@ -141,7 +141,7 @@ ms.locfileid: "73813192"
 - **通过 Azure 计费**：你选择使用此许可证类型[出售你的产品/服务](./create-new-saas-offer.md#sell-through-microsoft)时，会代表你向 microsoft 计费客户。 支付类型包括即用即付-通过信用卡或企业开具发票。
 - **自带许可**： Microsoft 不会向客户收取此类 marketplace 产品/服务的使用费用。 列为 marketplace 中的 " **[立即获取" （免费）](./create-new-saas-offer.md#get-it-now-free)** 。
 - **免费**： Microsoft 不会向客户收取此类 marketplace 产品/服务的使用费用。 在 marketplace 中列出为 **[免费试用版](./create-new-saas-offer.md##free-trial-listing)** 。
-- **Microsoft as 经销商**：代表 microsoft 经销商作为 **[云解决方案提供商（CSP）计划](./create-new-saas-offer.md#csp-program-opt-in)** 的一部分销售的产品/服务。
+- **Microsoft as 经销商**：代表 microsoft 经销商作为 **[云解决方案提供商（CSP）计划](./create-new-saas-offer.md)** 的一部分销售的产品/服务。
 
 ![合作伙伴中心按许可证类型分析订单](./media/analyze-license-type.png)
 

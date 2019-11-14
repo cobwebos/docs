@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3c451d1bd77fa1cec85a9d42b5d4d3d819b2d19a
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 7339ef136639ceaaacb1c416c147155c7ce659f8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210345"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074165"
 ---
 # <a name="recovery-services-vaults-overview"></a>恢复服务保管库概述
 
@@ -37,6 +37,7 @@ ms.locfileid: "70210345"
 - **适用于 IaaS VM 的即时还原**：使用恢复服务保管库时，可以从 IaaS VM 还原文件和文件夹，不需还原整个 VM，从而缩短还原时间。 适用于 IaaS VM 的即时还原可供 Windows 和 Linux VM 使用。 [了解详细信息](https://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>在门户中管理恢复服务保管库
+
 在 Azure 门户中创建和管理恢复服务保管库很容易，因为备份服务可集成到其他 Azure 服务中。 这种集成意味着，可以在目标服务上下文中创建和管理恢复服务保管库。 例如，若要查看 VM 的恢复点，请选中该 VM，并在“操作”菜单中单击“备份”。
 
 ![VM 中的恢复服务保管库详细信息](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
@@ -55,25 +56,28 @@ ms.locfileid: "70210345"
 > 如果恢复服务保管库在 24 小时内被删除，则无法以相同的名称创建它。 请使用其他资源名称或选择其他资源组，或者在 24 小时后重试。
 
 ### <a name="back-up-data"></a>备份数据
+
 - [备份 Azure VM](backup-azure-vms-first-look-arm.md)
 - [备份 Windows Server 或 Windows 工作站](backup-try-azure-backup-in-10-mins.md)
 - [将 DPM 工作负荷备份到 Azure](backup-azure-dpm-introduction.md)
 - [准备使用 Azure 备份服务器来备份工作负荷](backup-azure-microsoft-azure-backup.md)
 
 ### <a name="manage-recovery-points"></a>管理恢复点
+
 - [管理 Azure VM 备份](backup-azure-manage-vms.md)
 - [管理文件和文件夹](backup-azure-manage-windows-server.md)
 
 ### <a name="restore-data-from-the-vault"></a>从保管库还原数据
+
 - [从 Azure VM 恢复单个文件](backup-azure-restore-files-from-vm.md)
 - [还原 Azure VM](backup-azure-arm-restore-vms.md)
 
 ### <a name="secure-the-vault"></a>保护保管库
+
 - [保护恢复服务保管库中的云备份数据](backup-azure-security-feature.md)
 
-
-
 ## <a name="next-steps"></a>后续步骤
+
 使用以下文章了解相关操作：</br>
 [备份 IaaS VM](backup-azure-arm-vms-prepare.md)</br>
 [备份 Azure 备份服务器](backup-azure-microsoft-azure-backup.md)</br>

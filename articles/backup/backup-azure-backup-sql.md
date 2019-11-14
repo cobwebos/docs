@@ -8,17 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: d564cc16a1261cdf71d783ce9f40e577177ff74c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 069d1e7cb81fe8d3528b27e676886710f57ea5f1
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954792"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074269"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>将 SQL Server 备份到 Azure 作为 DPM 工作负荷
+
 本文将引导使用 Azure 备份来完成 SQL Server 数据库的备份配置步骤。
 
-要将 SQL Server 数据库备份到 Azure，需要一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+要将 SQL Server 数据库备份到 Azure，需要一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
 向 Azure 备份以及从 Azure 恢复 SQL Server 数据库的管理工作涉及三个步骤：
 
@@ -27,9 +28,11 @@ ms.locfileid: "68954792"
 3. 从 Azure 恢复数据库。
 
 ## <a name="before-you-start"></a>开始之前
+
 在开始之前，请确保符合使用 Microsoft Azure 备份保护工作负荷的所有[先决条件](backup-azure-dpm-introduction.md#prerequisites-and-limitations)。 先决条件包括如下任务：创建备份保管库、下载保管库凭据、安装 Azure 备份代理，以及向保管库注册服务器。
 
 ## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>创建备份策略以保护要备份到 Azure 的 SQL Server 数据库
+
 1. 单击“**保护**”工作区。
 2. 单击“**新建**”创建新的保护组。
 
@@ -46,7 +49,7 @@ ms.locfileid: "68954792"
     ![数据保护方法 - 短期磁盘和在线 Azure](./media/backup-azure-backup-sql/pg-name.png)
 7. 在“**指定短期目标**”屏幕中，提供创建磁盘备份点所需的输入。
 
-    在这里, 我们看到 "**保持期**" 设置为 " *5 天*", "**同步频率**" 设置为每*15 分钟*一次, 这是执行备份的频率。 “**快速完整备份**”设置为“*晚上 8:00*”。
+    在这里，我们看到 "**保持期**" 设置为 " *5 天*"，"**同步频率**" 设置为每*15 分钟*一次，这是执行备份的频率。 “**快速完整备份**”设置为“*晚上 8:00*”。
 
     ![短期目标](./media/backup-azure-backup-sql/pg-shortterm.png)
 
@@ -55,7 +58,7 @@ ms.locfileid: "68954792"
    >
    >
 
-8. 点击“下一步”
+8. 单击“下一步”
 
     DPM 会显示可用的总存储空间以及能够使用的磁盘空间。
 
@@ -68,7 +71,7 @@ ms.locfileid: "68954792"
 
     ![初始复制方法](./media/backup-azure-backup-sql/pg-manual.png)
 
-    初始备份副本需要将整个数据源（SQL Server 数据库）从生产服务器（SQL Server 计算机）传输到 DPM 服务器。 此类数据可能会非常大，通过网络传输此类数据可能会超过带宽限制。 因此，管理员可以选择通过以下方式传输初始备份：“手动”（使用可移动媒体），以免网络出现带宽拥塞现象；或“自动通过网络”（于指定时间）。
+    初始备份副本需要将整个数据源（SQL Server 数据库）从生产服务器（SQL Server 计算机）传输到 DPM 服务器。 此类数据可能会非常大，通过网络传输此类数据可能会超过带宽限制。 出于这个原因，管理员可以选择通过以下方式传输初始备份：“**手动**”（使用可移动媒体），以免网络出现带宽拥塞现象；或“**自动通过网络**”（于指定时间）。
 
     初始备份完成后，其余的备份都是初始备份副本的增量备份。 增量备份往往比较小，能轻松地通过网络传输。
 10. 选择需要运行一致性检查的时间，并单击“**下一步**”。
@@ -76,7 +79,7 @@ ms.locfileid: "68954792"
     ![一致性检查](./media/backup-azure-backup-sql/pg-consistent.png)
 
     DPM 可以通过执行一致性检查来检查备份点的完整性。 它会计算生产服务器（在本方案中为 SQL Server 计算机）上的备份文件和 DPM 上该文件的已备份数据的校验和。 如果发生冲突，则会假定 DPM 上的备份文件受损。 DPM 会发送与校验和不匹配部分相对应的块以纠正备份的数据。 由于一致性检查是对性能影响很大的操作，因此管理员可以选择是按计划来运行还是自动运行一致性检查。
-11. 要指定对数据源进行在线保护，请选择要通过 Azure 进行保护的数据库，并单击“**下一步**”。
+11. 如果要指定对数据源进行在线保护，请选择要通过 Azure 进行保护的数据库，并单击“**下一步**”。
 
     ![选择数据源](./media/backup-azure-backup-sql/pg-sqldatabases.png)
 12. 管理员可以选择适合组织策略的备份计划和保留策略。
@@ -90,7 +93,7 @@ ms.locfileid: "68954792"
     >
     >
 
-    **最佳做法**：确保在使用 DPM 完成本地磁盘备份后安排好 Azure 备份。 这样就可以将最新磁盘备份复制到 Azure。
+    **最佳实践**：确保在使用 DPM 完成本地磁盘备份后安排好 Azure 备份。 这样就可以将最新磁盘备份复制到 Azure。
 
 13. 选择保留策略计划。 有关保留策略工作原理的详细信息，请参阅[使用 Azure 备份来取代磁带基础结构文章](backup-azure-backup-cloud-as-tape.md)。
 
@@ -107,12 +110,13 @@ ms.locfileid: "68954792"
     * “**自动通过网络**”会根据为备份选择的计划将备份数据传输到 Azure。
     * “**脱机备份**”的工作原理详见 [Azure 备份中的脱机备份工作流](backup-azure-backup-import-export.md)。
 
-    选择将初始备份副本发送到 Azure 的相关传输机制，然后单击“**下一步**”。
+    选择将初始备份副本发送到 Azure 的相关传输机制，并单击“**下一步**”。
 15. 在“**摘要**”屏幕中查看策略详细信息以后，单击“**创建组**”按钮即可完成工作流的操作。 可以单击“**关闭**”按钮，然后即可在“监视”工作区中监视作业进度。
 
     ![保护组创建进度](./media/backup-azure-backup-sql/pg-summary.png)
 
 ## <a name="on-demand-backup-of-a-sql-server-database"></a>SQL Server 数据库的按需备份
+
 虽然前述步骤创建了备份策略，但“恢复点”仅在进行首个备份的时候创建。 如果不想等待计划程序进行计划，则以下步骤可触发手动创建恢复点。
 
 1. 在创建恢复点之前，请等待数据库的保护组状态显示为“**正常**”。
@@ -129,6 +133,7 @@ ms.locfileid: "68954792"
     ![监视控制台](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
 
 ## <a name="recover-a-sql-server-database-from-azure"></a>从 Azure 恢复 SQL Server 数据库
+
 若要从 Azure 中恢复受保护的实体（SQL Server 数据库），必须执行以下步骤。
 
 1. 打开 DPM 服务器管理控制台。 导航到“**恢复**”工作区，可以在其中查看通过 DPM 备份的服务器。 浏览所需的数据库（在本示例中为 ReportServer$MSDPM2012）。 选择以**联机状态**结束的时间的**恢复**。
@@ -151,5 +156,6 @@ ms.locfileid: "68954792"
 
     完成恢复操作后，还原的数据库在应用程序级别将是一致的。
 
-### <a name="next-steps"></a>后续步骤：
-•    [Azure 备份常见问题解答](backup-azure-backup-faq.md)
+## <a name="next-steps"></a>后续步骤
+
+* [Azure 备份常见问题](backup-azure-backup-faq.md)

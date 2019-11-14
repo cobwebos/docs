@@ -1,5 +1,5 @@
 ---
-title: 重置对 Azure Linux VM 的访问 | Microsoft Docs
+title: 重置对 Azure Linux VM 的访问
 description: 如何使用 VMAccess 扩展和 Azure CLI 在 Linux VM 上管理管理员用户和重置访问权限
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: akjosh
-ms.openlocfilehash: 447c10037503c627092bb23e23b4fe1ee88ca45d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: bd9dc05a84a4ee54fce40e6c88e87ac90bfee8a5
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173954"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073608"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>配合使用 VMAccess 扩展和 Azure CLI 管理管理用户、SSH，并检查或修复 Linux VM 上的磁盘
 ## <a name="overview"></a>概述
-Linux VM 上的磁盘显示错误。 不知道怎样重置 Linux VM 的 root 密码，或者不小心删除了 SSH 私钥。 如果在数据中心的时代发生这种情况，则需要开车到那里，并打开 KVM 访问服务器控制台。 请将 Azure VMAccess 扩展想像成该 KVM 交换机，它允许访问控制台以重置 Linux 访问或执行磁盘级维护。
+Linux VM 上的磁盘显示错误。 不知道怎样重置 Linux VM 的根密码，或者不小心删除了 SSH 私钥。 如果在数据中心的时代发生这种情况，则需要开车到那里，并打开 KVM 访问服务器控制台。 请将 Azure VMAccess 扩展想像成该 KVM 交换机，它允许访问控制台以重置 Linux 访问或执行磁盘级维护。
 
 本文介绍：如何在 Azure VMAccess Extension 作为 Azure Resource Manager 虚拟机运行时，检查或修复磁盘、重置用户访问权限、管理行政性用户帐户，或更新 Linux 上的 SSH 配置。 如果你需要管理经典虚拟机，可以按照[经典 VM 文档](../linux/classic/reset-access-classic.md)中的说明进行操作。 
  
@@ -36,7 +36,7 @@ Linux VM 上的磁盘显示错误。 不知道怎样重置 Linux VM 的 root 密
 
 VM 访问扩展可以针对这些 Linux 分发运行：
 
-| 分发 | Version |
+| 分发 | 版本 |
 |---|---|
 | Ubuntu | 16.04 LTS、14.04 LTS 和 12.04 LTS |
 | Debian | Debian 7.9+、8.2+ |
@@ -56,7 +56,7 @@ VM 访问扩展可以针对这些 Linux 分发运行：
 下面的示例使用 [az vm user](/cli/azure/vm/user) 命令。 若要执行这些步骤，需要安装最新的 [Azure CLI](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。
 
 ## <a name="update-ssh-key"></a>更新 SSH 密钥
-以下示例更新名为 `myVM` 的 VM 上用户 `azureuser` 的 SSH 密钥：
+以下示例更新名为 `azureuser` 的 VM 上用户 `myVM` 的 SSH 密钥：
 
 ```azurecli-interactive
 az vm user update \
@@ -66,10 +66,10 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-> **注意：** `az vm user update` 命令将新公钥文本追加​​到 VM 上管理员用户的 `~/.ssh/authorized_keys` 文件。 此操作不会替换或删除任何现有的 SSH 密钥。 这不会删除在部署时设置的先前密钥或通过 VMAccess 扩展进行的后续更新。
+> 注意：**命令将新公钥文本附加到 VM 上管理员用户的** 文件`az vm user update``~/.ssh/authorized_keys`。 此操作不会替换或删除任何现有的 SSH 密钥。 这不会删除在部署时设置的先前密钥或通过 VMAccess 扩展进行的后续更新。
 
-## <a name="reset-password"></a>重新设置密码
-以下示例重置名为 `myVM` 的 VM 上用户 `azureuser` 的密码：
+## <a name="reset-password"></a>重置密码
+以下示例重置名为 `azureuser` 的 VM 上用户 `myVM` 的密码：
 
 ```azurecli-interactive
 az vm user update \
@@ -100,7 +100,7 @@ az vm user update \
 ```
 
 ## <a name="delete-a-user"></a>删除用户
-以下示例将删除名为 `myVM` 的 VM 上名为 `myNewUser` 的用户：
+以下示例将删除名为 `myNewUser` 的 VM 上名为 `myVM` 的用户：
 
 ```azurecli-interactive
 az vm user delete \
@@ -110,7 +110,7 @@ az vm user delete \
 ```
 
 ## <a name="use-json-files-and-the-vmaccess-extension"></a>使用 JSON 文件和 VMAccess 扩展
-以下示例使用原始 JSON 文件。 然后使用 [az vm extension set](/cli/azure/vm/extension) 调用 JSON 文件。 从 Azure 模板也可以调用这些 JSON 文件。 
+以下示例使用原始 JSON 文件。 然后使用 [az vm extension set](/cli/azure/vm/extension) 调用 JSON 文件。 也可以从 Azure 模板调用这些 JSON 文件。 
 
 ### <a name="reset-user-access"></a>重置用户访问权限
 如果已失去 Linux VM 的 root 访问权限，可以启动 VMAccess 脚本更新用户的 SSH 密钥或密码。
@@ -180,7 +180,7 @@ az vm extension set \
 
 ### <a name="manage-administrative-users"></a>管理管理用户
 
-若要创建具有 sudo 权限且使用 SSH 密钥进行身份验证的用户，请创建名为 `create_new_user.json` 的文件并添加以下格式的设置。 用你自己的值替换 `username` 和 `ssh_key` 参数的值。 丢失或忘记当前凭据时，此方法有助于重新获取对 VM 的访问权限。 作为最佳做法，应限制具有 sudo 权限的帐户。
+若要创建具有 sudo 权限且使用 SSH 密钥进行身份验证的用户，请创建名为  **的文件并添加以下格式的设置**`create_new_user.json`。 用你自己的值替换 `username` 和 `ssh_key` 参数的值。 丢失或忘记当前凭据时，此方法有助于重新获取对 VM 的访问权限。 作为最佳做法，应限制具有 sudo 权限的帐户。
 
 ```json
 {
@@ -257,4 +257,4 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

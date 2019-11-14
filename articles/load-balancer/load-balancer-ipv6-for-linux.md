@@ -1,7 +1,7 @@
 ---
 title: 为 Linux VM 配置 DHCPv6
 titlesuffix: Azure Load Balancer
-description: 如何为 Linux VM 配置 DHCPv6。
+description: 本文介绍如何为 Linux Vm 配置 DHCPv6。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
-ms.openlocfilehash: 3e987b6718ead6b7014ec302d1a186dabef11126
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 1eea6d71b06bac47dcc4fdca9302ee937e0fd54d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274918"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077035"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>为 Linux VM 配置 DHCPv6
 
@@ -36,14 +36,14 @@ Azure 市场中的某些 Linux 虚拟机映像默认未配置动态主机配置�
 
 ## <a name="ubuntu"></a>Ubuntu
 
-1. 编辑 /etc/dhcp/dhclient6.conf 文件，并添加以下行  ：
+1. 编辑 /etc/dhcp/dhclient6.conf 文件，并添加以下行：
 
         timeout 10;
 
 2. 编辑使用以下配置的 eth0 接口的网络配置：
 
-   * 在 Ubuntu 12.04 和 14.04 上编辑 /etc/network/interfaces.d/eth0.cfg 文件   。 
-   * 在 Ubuntu 16.04 上编辑 /etc/network/interfaces.d/50-cloud-init.cfg 文件   。
+   * 在 Ubuntu 12.04 和 14.04 上编辑 /etc/network/interfaces.d/eth0.cfg 文件。 
+   * 在 Ubuntu 16.04 上编辑 /etc/network/interfaces.d/50-cloud-init.cfg 文件。
 
          iface eth0 inet6 auto
              up sleep 5
@@ -54,9 +54,9 @@ Azure 市场中的某些 Linux 虚拟机映像默认未配置动态主机配置�
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
-从 Ubuntu 17.10 开始, 默认网络配置机制是[NETPLAN]( https://netplan.io)。  在安装/实例化时, NETPLAN 从 YAML 配置文件中的以下位置读取网络配置:/{lib、etc、run}/netplan/*. YAML。
+从 Ubuntu 17.10 开始，默认网络配置机制是[NETPLAN]( https://netplan.io)。  在安装/实例化时，NETPLAN 从 YAML 配置文件中的以下位置读取网络配置：/{lib、etc、run}/netplan/*. YAML。
 
-请在配置中为每个以太网接口包含*dhcp6: true*语句。  例如：
+请在配置中为每个以太网接口包含*dhcp6： true*语句。  例如：
   
         network:
           version: 2
@@ -64,15 +64,15 @@ Azure 市场中的某些 Linux 虚拟机映像默认未配置动态主机配置�
             eno1:
               dhcp6: true
 
-在早期启动过程中, netplan "网络呈现器" 将配置写入/run, 以将设备的控制移交给指定的网络守护程序, 以获取 https://netplan.io/reference 有关 netplan 的参考信息, 请参阅。
+在早期启动过程中，netplan "网络呈现器" 将配置写入/run，以将设备的控制移交给指定的网络守护程序，以获取有关 NETPLAN 的参考信息，请参阅 https://netplan.io/reference。
  
 ## <a name="debian"></a>Debian
 
-1. 编辑 /etc/dhcp/dhclient6.conf 文件，并添加以下行  ：
+1. 编辑 /etc/dhcp/dhclient6.conf 文件，并添加以下行：
 
         timeout 10;
 
-2. 编辑 /etc/network/interfaces 文件，添加以下配置  ：
+2. 编辑 /etc/network/interfaces 文件，添加以下配置：
 
         iface eth0 inet6 auto
             up sleep 5
@@ -86,11 +86,11 @@ Azure 市场中的某些 Linux 虚拟机映像默认未配置动态主机配置�
 
 ## <a name="rhel-centos-and-oracle-linux"></a>RHEL、CentOS 和 Oracle Linux
 
-1. 编辑 /etc/sysconfig/network 文件，添加以下参数  ：
+1. 编辑 /etc/sysconfig/network 文件，添加以下参数：
 
         NETWORKING_IPV6=yes
 
-2. 编辑 /etc/sysconfig/network-scripts/ifcfg-eth0 文件，添加以下两个参数  ：
+2. 编辑 /etc/sysconfig/network-scripts/ifcfg-eth0 文件，添加以下两个参数：
 
         IPV6INIT=yes
         DHCPV6C=yes
@@ -111,7 +111,7 @@ Azure 中最新的 SUSE Linux Enterprise Server (SLES) 和 openSUSE 映像已预
     sudo zypper install dhcp-client
     ```
 
-2. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，添加以下参数  ：
+2. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，添加以下参数：
 
         DHCLIENT6_MODE='managed'
 
@@ -125,11 +125,11 @@ Azure 中最新的 SUSE Linux Enterprise Server (SLES) 和 openSUSE 映像已预
 
 Azure 中最新的 SLES 和 openSUSE 映像已预先配置 DHCPv6。 使用这些映像不需要进行额外的更改。 如果 VM 基于旧版或自定义的 SUSE 映像，请执行以下步骤：
 
-1. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，并使用以下值替换 `#BOOTPROTO='dhcp4'` 参数  ：
+1. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，并使用以下值替换  *参数*`#BOOTPROTO='dhcp4'`：
 
         BOOTPROTO='dhcp'
 
-2. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，添加以下参数  ：
+2. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，添加以下参数：
 
         DHCLIENT6_MODE='managed'
 
@@ -143,7 +143,7 @@ Azure 中最新的 SLES 和 openSUSE 映像已预先配置 DHCPv6。 使用这�
 
 Azure 中最新的 CoreOS 映像已预先配置 DHCPv6。 使用这些映像不需要进行额外的更改。 如果 VM 基于旧版或自定义的 CoreOS 映像，请执行以下步骤：
 
-1. 编辑 /etc/systemd/network/10_dhcp.network 文件  ：
+1. 编辑 /etc/systemd/network/10_dhcp.network 文件：
 
         [Match]
         eth0

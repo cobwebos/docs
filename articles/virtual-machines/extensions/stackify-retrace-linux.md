@@ -1,5 +1,5 @@
 ---
-title: Stackify Retrace Azure Linux 代理扩展 | Microsoft Docs
+title: Stackify 回顾 Azure Linux 代理扩展
 description: 在 Linux 虚拟机上部署 Stackify Retrace Linux 代理。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
-ms.openlocfilehash: 2278f1bef3a72408b097f9a2d676931fd07369f4
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173974"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073640"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify Retrace Linux 代理扩展
 
@@ -43,7 +43,7 @@ Retrace 是唯一可以在单一平台中的所有环境下提供以下所有功
 
 Retrace 代理可以针对这些 Linux 分发运行
 
-| 分发 | Version |
+| 分发 | 版本 |
 |---|---|
 | Ubuntu | 16.04 LTS、14.04 LTS、16.10 和 17.04 |
 | Debian | 7.9+ 和 8.2+、9 |
@@ -54,7 +54,7 @@ Retrace 代理可以针对这些 Linux 分发运行
 
 适用于 Linux 的 Stackify 代理扩展要求目标虚拟机已连接到 Internet。 
 
-可能需要调整网络配置才可连接到 Stackify，请参阅 https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall 。 
+可能需要调整网络配置才可连接到 Stackify，请参阅 https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall。 
 
 
 ## <a name="extension-schema"></a>扩展架构
