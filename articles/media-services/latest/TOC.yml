@@ -109,7 +109,7 @@
     - name: 内容保护
       items:
         - name: 动态加密和密钥传送
-          displayName: 'content protection, streaming protocols, encryption types, content protection, PlayReady, Widevine, FairPlay'
+          displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'
           href: content-protection-overview.md
         - name: 多 DRM 系统的设计
           displayName: 'drm, access control'
