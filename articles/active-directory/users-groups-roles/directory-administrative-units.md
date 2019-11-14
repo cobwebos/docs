@@ -1,26 +1,25 @@
 ---
-title: 管理单元管理（预览版）- Azure Active Directory | Microsoft Docs
+title: 管理单元管理（预览）-Azure AD |Microsoft Docs
 description: 在 Azure Active Directory 中使用管理单元获得更精细的委派权限
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.topic: article
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 08/01/2019
+ms.date: 11/13/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58b61186a876af90c812ec7faf41fa9f5b14bf4e
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 3c4958975a080a98fb900bf317229ba9eda795d5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336920"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028414"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Azure Active Directory （预览版）中的管理单元管理
 
@@ -34,13 +33,13 @@ ms.locfileid: "71336920"
 
 ## <a name="license-requirements"></a>许可要求
 
-若要使用管理单元，需要为每个管理单元管理员 Azure Active Directory Premium 许可证。有关详细信息，请参阅 [Azure AD Premium 入门](../fundamentals/active-directory-get-started-premium.md)。
+若要使用管理单元，需要为每个管理单元管理员 Azure Active Directory Premium 许可证。有关详细信息，请参阅[Azure AD Premium](../fundamentals/active-directory-get-started-premium.md)入门。
 
 ## <a name="managing-administrative-units"></a>管理管理单元
 
 在此预览版本中，创建和管理管理单元的唯一方式是使用 Windows PowerShell cmdlet 的 Azure Active Directory 模块，如使用[管理单元](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)中所述。
 
-有关软件要求和安装 Azure AD 模块的详细信息，以及有关用于管理管理单元的 Azure AD 模块 cmdlet 的参考信息（包括语法、参数说明和示例），请参阅[Azure Active目录 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)。
+有关软件要求和安装 Azure AD 模块的详细信息，以及有关用于管理管理单元的 Azure AD 模块 cmdlet 的参考信息（包括语法、参数说明和示例），请参阅[Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)。
 
 ## <a name="next-steps"></a>后续步骤
 

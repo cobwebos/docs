@@ -1,6 +1,6 @@
 ---
-title: 从 AWS 和其他平台迁移到 Azure 中的托管磁盘 | Microsoft Docs
-description: 使用从 AWS 等其他云或其他虚拟化平台上传的 VHD 在 Azure 中创建 VM，并利用 Azure 托管磁盘。
+title: 从 AWS 和其他平台迁移到 Azure 中的托管磁盘
+description: 在 Azure 中使用从其他云（如 AWS 或其他虚拟化平台）上传的 VHD 并利用 Azure 托管磁盘创建 VM。
 services: virtual-machines-windows
 documentationcenter: ''
 author: roygara
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4611efa8767094ea8f92dac584a5610811947620
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: dbce2969ccb508c2bf3ee33730d0b112caa45c9e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102590"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033050"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>从 Amazon Web Services (AWS) 和其他平台迁移到 Azure 中的托管磁盘
 
@@ -36,7 +36,7 @@ ms.locfileid: "70102590"
 >
 
 
-| 应用场景                                                                                                                         | 文档                                                                                                                       |
+| 方案                                                                                                                         | 文档                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | 拥有要使用托管磁盘迁移至 Azure VM 的现有 AWS EC2 实例。                              | [将 VM 从 Amazon Web Services (AWS) 移动到 Azure](aws-to-azure.md)                           |
 | 拥有要用作映像的来自其他虚拟化平台的 VM，以创建多个 Azure VM。 | [上传通用 VHD 并用其在 Azure 中新建 VM](upload-generalized-managed.md) |
@@ -48,15 +48,15 @@ ms.locfileid: "70102590"
 Azure 托管磁盘无需管理存储帐户，从而简化 VM 管理。 可用性集中 VM 的更高可靠性使托管磁盘受益。 这可确保将可用性集中不同 VM 的磁盘最大限度地彼此独立，以避免单点故障。 它会自动将可用性集中不同 VM 的磁盘置于不同的存储缩放单元（戳），限制由于硬件和软件故障引起的单个存储缩放单元故障影响。
 可根据需要，从存储选项的四种类型中进行选择。 若要了解可用的磁盘类型，请参阅[选择磁盘类型](disks-types.md)一文。
 
-## <a name="plan-for-the-migration-to-managed-disks"></a>计划迁移到托管磁盘
+## <a name="plan-for-the-migration-to-managed-disks"></a>规划迁移到托管磁盘
 
-本部分有助于在 VM 和磁盘类型方面做出最佳决策。
+本部分可帮助你针对 VM 和磁盘类型做出最佳决策。
 
 如果打算从非托管磁盘迁移到托管磁盘，则应注意具有[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色的用户不能更改 VM 大小（因为它们可以预转换）。 这是因为包含托管磁盘的 VM 要求用户对 OS 磁盘具有 Microsoft.Compute/disks/write 权限。
 
-### <a name="location"></a>Location
+### <a name="location"></a>位置
 
-选择 Azure 托管磁盘的可用位置。 如果要迁移到高级托管磁盘，还应确保高级存储在计划迁移到的区域中可用。 有关可用位置的最新信息，请参阅 [Azure 服务（按区域）](https://azure.microsoft.com/regions/#services) 。
+选择 Azure 托管磁盘的可用位置。 如果要迁移到高级托管磁盘，还请确保高级存储在计划迁移到的目标区域中可用。 有关可用位置的最新信息，请参阅 [Azure 服务（按区域）](https://azure.microsoft.com/regions/#services)。
 
 ### <a name="vm-sizes"></a>VM 大小
 

@@ -1,18 +1,14 @@
 ---
 title: PCI-DSS v2.0 版蓝图示例-部署步骤
 description: 支付卡行业数据安全标准 v2.0 蓝图蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: b765782adfa5fd63bc270ad28b74cf3bd1ca1d4a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b29a1a66b7407558769e506deed5e65f7ecb064c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163032"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037259"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>部署 PCI-X 3.2.1 蓝图蓝图示例
 
@@ -23,7 +19,7 @@ ms.locfileid: "73163032"
 > - 将示例副本标记为“已发布”
 > - 将蓝图副本分配到现有的订阅
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free)。
 
 ## <a name="create-blueprint-from-sample"></a>基于示例创建蓝图
 
@@ -66,7 +62,7 @@ ms.locfileid: "73163032"
 
 1. 提供蓝图分配的参数值：
 
-   - 基础
+   - Basics
 
      - **订阅**：选择要在其中保存蓝图示例副本的管理组中的一个或多个订阅。 如果选择多个订阅，将使用输入的参数为每个订阅创建一个分配。
      - **分配名称**：根据蓝图的名称预先填充名称。
@@ -84,7 +80,7 @@ ms.locfileid: "73163032"
 
    - 项目参数
 
-     在本部分定义的参数将应用到定义了这些参数的项目。 这些参数属于[动态参数](../../concepts/parameters.md#dynamic-parameters) ，因为它们是在分配蓝图期间定义的。 有关完整列表或项目参数及其说明，请参阅[项目参数表](#artifact-parameters-table) 。
+     在本部分定义的参数将应用到定义了这些参数的项目。 这些参数属于[动态参数](../../concepts/parameters.md#dynamic-parameters)，因为它们是在分配蓝图期间定义的。 有关完整列表或项目参数及其说明，请参阅[项目参数表](#artifact-parameters-table) 。
 
 1. 输入所有参数后，选择页面底部的“分配”。 随后将创建蓝图分配，并开始部署项目。 部署过程大约需要一小时。 若要检查部署状态，请打开蓝图分配。
 
@@ -95,7 +91,7 @@ ms.locfileid: "73163032"
 
 下表提供了蓝图项目参数的列表：
 
-|项目名称|项目类型|参数名称|描述|
+|项目名称|项目类型|参数名称|说明|
 |-|-|-|-|
 |\[预览\] 审核 PCI v2.0 3.2.1：2018控制和部署特定 VM 扩展以支持审核要求|策略分配|资源类型列表 | 所选资源类型的审核诊断设置。 默认值为 "所有资源"| 
 |允许的位置|策略分配|允许的位置列表|允许部署到其中的任何资源的数据中心位置的列表。 此列表可在全球范围内自定义到所需的 Azure 位置。 选择要允许的位置。| 
@@ -111,7 +107,7 @@ ms.locfileid: "73163032"
 > [Pci-dss v2.0 3.2.1 蓝图-概述](./index.md)
 > [PCI-dss V2.0 蓝图-控件映射](./control-mapping.md)
 
-有关蓝图以及如何使用它们的其他文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

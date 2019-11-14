@@ -1,6 +1,6 @@
 ---
-title: 使用 Microsoft Graph API Azure Active Directory 来分配和删除自定义管理员角色 |Microsoft Docs
-description: 分配和删除 Azure Active Directory 中图形 API 的 Azure AD 管理员角色
+title: 向 Microsoft Graph API 分配 Azure AD 管理员角色 |Microsoft Docs
+description: 在 Azure Active Directory 中使用 Graph API 分配和删除 Azure AD 管理员角色
 services: active-directory
 author: curtand
 manager: daveba
@@ -8,37 +8,37 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 898f444e868a469aed5358f49f48f5bcbfab4450
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 2f5be5829843e9857239ca5ea9a7395f569f563a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707573"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025346"
 ---
-# <a name="assign-custom-admin-roles-using-graph-api-in-azure-active-directory"></a>使用 Azure Active Directory 中的图形 API 分配自定义管理员角色 
+# <a name="assign-custom-admin-roles-using-graph-api-in-azure-active-directory"></a>在 Azure Active Directory 中使用 Graph API 分配自定义管理员角色 
 
-你可以自动 Microsoft Graph API 将角色分配给用户帐户的方式。 本文介绍了 roleAssignments 上的 POST、GET 和 DELETE 操作。
+可以自动使用 Microsoft Graph API 将角色分配给用户帐户。 本文介绍在 roleAssignments 上进行的 POST、GET 和 DELETE 操作。
 
-## <a name="required-permissions"></a>所需权限
+## <a name="required-permissions"></a>所需的权限
 
-使用全局管理员帐户或特权标识管理员连接到 Azure AD 租户, 以分配或删除角色。
+连接到 Azure AD 租户，使用全局管理员帐户或特权标识管理员分配或删除角色。
 
-## <a name="post-operations-on-roleassignment"></a>RoleAssignment 上的 POST 操作
+## <a name="post-operations-on-roleassignment"></a>在 RoleAssignment 上进行的 POST 操作
 
-用于在用户和角色定义之间创建角色分配的 HTTP 请求。
+HTTP 请求，用于创建在用户和角色定义之间的角色分配。
 
-发布
+POST
 
 ``` HTTP
 https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
 ```
 
-Body
+正文
 
 ``` HTTP
 {
@@ -54,15 +54,15 @@ Body
 HTTP/1.1 201 Created
 ```
 
-用于创建不存在主体或角色定义的角色分配的 HTTP 请求
+HTTP 请求，用于创建在其中不存在主体或角色定义的角色分配
 
-发布
+POST
 
 ``` HTTP
 https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
 ```
 
-Body
+正文
 
 ``` HTTP
 {
@@ -78,18 +78,18 @@ Body
 HTTP/1.1 404 Not Found
 ```
 
-用于在内置角色定义上创建单个资源范围内角色分配的 HTTP 请求。
+HTTP 请求，用于在内置角色定义上创建单资源范围的角色分配。
 
 > [!NOTE] 
-> 目前, 内置角色的限制仅限于 "/" 组织范围范围或 "/AU/*" 范围。 单个资源范围不适用于内置角色, 但适用于自定义角色。
+> 内置角色目前有一个限制，即，它们只能局限于“/”组织范围或“/AU/*”范围。 单资源范围不适用于内置角色，但适用于自定义角色。
 
-发布
+POST
 
 ``` HTTP
 https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
 ```
 
-Body
+正文
 
 ``` HTTP
 {
@@ -123,9 +123,9 @@ HTTP/1.1 400 Bad Request
 }
 ```
 
-## <a name="get-operations-on-roleassignment"></a>RoleAssignment 上的 GET 操作
+## <a name="get-operations-on-roleassignment"></a>在 RoleAssignment 上进行的 GET 操作
 
-用于获取给定主体的角色分配的 HTTP 请求
+HTTP 请求，用于获取给定主体的角色分配。
 
 GET
 
@@ -151,7 +151,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-用于获取给定角色定义的角色分配的 HTTP 请求。
+HTTP 请求，用于获取给定角色定义的角色分配。
 
 GET
 
@@ -171,7 +171,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-按 ID 获取角色分配的 HTTP 请求。
+HTTP 请求，用于按 ID 获取角色分配。
 
 GET
 
@@ -191,11 +191,11 @@ HTTP/1.1 200 OK
 }
 ```
 
-## <a name="delete-operations-on-roleassignment"></a>RoleAssignment 上的 DELETE 操作
+## <a name="delete-operations-on-roleassignment"></a>在 RoleAssignment 上进行的 DELETE 操作
 
-用于删除用户和角色定义之间的角色分配的 HTTP 请求。
+HTTP 请求，用于删除在用户和角色定义之间的角色分配。
 
-DELETE
+删除
 
 ``` HTTP
 https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
@@ -206,9 +206,9 @@ https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role
 HTTP/1.1 204 No Content
 ```
 
-删除不再存在的角色分配的 HTTP 请求
+HTTP 请求，用于删除不再存在的角色分配
 
-DELETE
+删除
 
 ``` HTTP
 https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
@@ -220,9 +220,9 @@ https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role
 HTTP/1.1 404 Not Found
 ```
 
-用于删除自助和内置角色定义之间的角色分配的 HTTP 请求
+HTTP 请求，用于删除在自身和内置角色定义之间的角色分配
 
-DELETE
+删除
 
 ``` HTTP
 https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal

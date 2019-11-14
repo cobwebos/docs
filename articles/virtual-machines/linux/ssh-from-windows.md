@@ -1,5 +1,5 @@
 ---
-title: 针对 Linux VM 将 SSH 密钥与 Windows 配合使用 | Microsoft Docs
+title: 在 Windows 中对 Linux VM 使用 SSH 密钥
 description: 了解如何在 Windows 计算机上生成和使用 SSH 密钥连接到 Azure 上的 Linux 虚拟机。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: e8e63f2c916153b5d43267869d7bc5be8fa646c0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e01fb23bbf1720f7d8df9c269373c1b8dc3ec75c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081981"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034806"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>如何在 Azure 上将 SSH 密钥与 Windows 配合使用
 
@@ -47,7 +47,7 @@ Windows 计算机并不总是装有类似的 SSH 命令。 最新版本的 Windo
 * 通过安装 [Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)，从 Visual Studio Code 内访问作为终端的 Cloud Shell。
 
 ## <a name="create-an-ssh-key-pair"></a>创建 SSH 密钥对
-以下各部分介绍了在 Windows 上创建 SSH 密钥对的两种选项。 可以使用 shell 命令 (`ssh-keygen`) 或 GUI 工具 (PuTTYgen)。 另请注意, 在使用 Powershell 创建密钥时, 请将公钥上传为 ssh (SECSH) 格式。 使用 CLI 时, 在上传之前, 将密钥转换为 OpenSSH 格式。 
+以下各部分介绍了在 Windows 上创建 SSH 密钥对的两种选项。 可以使用 shell 命令 (`ssh-keygen`) 或 GUI 工具 (PuTTYgen)。 另请注意，使用 Powershell 创建密钥时，请以 ssh.com(SECSH) 格式上传公钥。 使用 CLI 时，请在上传前将密钥转换为 OpenSSH 格式。 
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>使用 ssh-keygen 创建 SSH 密钥
 
@@ -57,7 +57,7 @@ Windows 计算机并不总是装有类似的 SSH 命令。 最新版本的 Windo
 ssh-keygen -t rsa -b 2048
 ```
 
-有关详细背景和信息，请参阅使用 `ssh-keygen` 创建 SSH 密钥的[快速](mac-create-ssh-keys.md)或[详细](create-ssh-keys-detailed.md)步骤。
+有关详细背景和信息，请参阅使用 [ 创建 SSH 密钥的](mac-create-ssh-keys.md)快速[或](create-ssh-keys-detailed.md)详细`ssh-keygen`步骤。
 
 ### <a name="create-ssh-keys-with-puttygen"></a>使用 PuTTYgen 创建 SSH 密钥
 
@@ -71,7 +71,7 @@ ssh-keygen -t rsa -b 2048
 
 4. 在空白区域中四处移动鼠标指针来为密钥提供随机性。
 
-5. 生成公钥后，可选择输入并确认通行短语。 使用 SSH 私钥面向 VM 进行身份验证时，系统会提示输入通行短语。 没有通行短语，如果有人获取了私钥，他们可以登录到使用该密钥的任何 VM 或服务。 建议创建一个通行短语。 但是，如果忘记了通行短语，将没有办法恢复它。
+5. 生成公钥后，可选择输入并确认通行短语。 使用 SSH 私钥面向 VM 进行身份验证时，系统会提示输入通行短语。 没有通行短语，如果有人获取了私钥，他们可以登录到使用该密钥的任何 VM 或服务。 我们建议创建一个通行短语。 但是，如果忘记了通行短语，将没有办法恢复它。
 
 6. 公钥会显示在窗口的顶部。 创建 Linux VM 时，可以复制此完整公钥并将其粘贴到 Azure 门户或 Azure 资源管理器模板中。 也可以选择“保存公钥”将副本保存到计算机中：
 
@@ -81,7 +81,7 @@ ssh-keygen -t rsa -b 2048
 
     ![保存 PuTTY 私钥文件](./media/ssh-from-windows/save-ppk-file.png)
 
-    如果要将私钥以 OpenSSH 格式（许多 SSH 客户端使用的私钥格式）保存，请选择“转换” > “导出 OpenSSH 密钥”。
+    如果要将私钥以 OpenSSH 格式（许多 SSH 客户端使用的私钥格式）保存，请选择“转换” **“导出 OpenSSH 密钥”**  > 。
 
 ## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>在部署 VM 时提供 SSH 公钥
 
@@ -117,7 +117,7 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 
     ![打开新的 PuTTY 连接](./media/ssh-from-windows/putty-new-connection.png)
 
-3. 选择“连接” > “SSH” > “身份验证”类别。 浏览并选择 PuTTY 私钥（.ppk 文件）：
+3. 选择“连接” **“SSH”** “身份验证”类别。 >  >  浏览并选择 PuTTY 私钥（.ppk 文件）：
 
     ![选择用于身份验证的 PuTTY 私钥](./media/ssh-from-windows/putty-auth-dialog.png)
 

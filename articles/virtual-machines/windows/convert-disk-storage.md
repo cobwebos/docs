@@ -1,5 +1,5 @@
 ---
-title: 将 Azure 托管磁盘存储从标准到高级或高级转换为标准 |Microsoft Docs
+title: 将 Azure 托管磁盘存储从标准类型转换为高级类型，或者从高级类型转换为标准类型
 description: 如何使用 Azure PowerShell 将 Azure 托管磁盘从标准类型转换为高级类型，或者从高级类型转换为标准类型。
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 274697d555974f286c2c71f26280640077c11f81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b63d4d0247fd640e961d03d336d6b211473c48fb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749550"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033926"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>更新托管磁盘的存储类型
 
@@ -111,7 +111,7 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 
 ## <a name="convert-managed-disks-from-standard-to-premium-in-the-azure-portal"></a>在 Azure 门户中将托管磁盘从标准类型转换为高级类型
 
-执行以下步骤:
+执行以下步骤：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在门户上的“虚拟机”列表中选择 VM。

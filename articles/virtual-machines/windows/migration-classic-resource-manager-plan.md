@@ -1,5 +1,5 @@
 ---
-title: 规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器 | Microsoft Docs
+title: 规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 description: 规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 840d7b9534124a4fcc93962e8329dc6ce2bdf1a4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2c0f4924c41b36c306d4e6b9286105662744c4da
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749343"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033227"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 尽管 Azure 资源管理器提供了许多精彩功能，但请务必计划迁移，以确保一切顺利进行。 花时间进行规划可确保执行迁移活动时不会遇到问题。
@@ -105,13 +105,13 @@ ms.locfileid: "73749343"
       - 如果 VM 使用的是 BGInfo 版本 1 扩展，可以按原样保留此扩展。 迁移 API 会跳过此扩展。 迁移后，可以添加此 BGInfo 扩展。
       - 如果 VM 使用的是基于 JSON 的 BGInfo 版本 2 扩展，表明 VM 是使用 Azure 门户创建而成。 迁移 API 会在迁移到 Azure 资源管理器期间添加此扩展，前提是代理可以正常运行且拥有出站 Internet 访问权限（和 DNS）。
 
-  - **补救选项 1**。 如果你知道 VM 不会有出站 Internet 访问权限、正常运行的 DNS 服务和 VM 上正常运行的 Azure 代理，则在准备前在迁移期间卸载所有 VM 扩展，并在迁移后重新安装这些 VM 扩展。
-  - **补救选项 2**。 如果 VM 扩展是个大障碍，另一个方法是在迁移前关闭/解除分配所有 VM。 迁移已解除分配的 VM，并在 Azure Resource Manager 端重新启动它们。 这样做的好处是可迁移 VM 扩展。 缺点是将丢失所有面向公众的虚拟 IP（这可能是非初学者），并且 VM 明显会关闭，从而对正常运行的应用程序产生大得多的影响。
+  - **补救选项 1**。 如果用户知道 VM 不会有出站 Internet 访问权限、正常运行的 DNS 服务和 VM 上正常运行的 Azure 代理，则在准备前在迁移期间卸载所有 VM 扩展，并在迁移后重新安装这些 VM 扩展。
+  - **补救选项 2**。 如果 VM 扩展是个大障碍，另一个方法是在迁移前关闭/解除分配所有 VM。 迁移已解除分配的 VM，并在 Azure 资源管理器端重新启动它们。 这样做的好处是可迁移 VM 扩展。 缺点是将丢失所有面向公众的虚拟 IP（这可能是非初学者），并且 VM 明显会关闭，从而对正常运行的应用程序产生大得多的影响。
 
     > [!NOTE]
     > 如果针对要迁移的正在运行的 VM 配置 Azure 安全中心策略，则在删除扩展前需要停止安全策略，否则会在删除扩展后自动重新安装安全监视扩展。
 
-- **可用性集** - 对于要迁移到 Azure 资源管理器的虚拟网络 (vNet)，经典部署（即云服务）包含的 VM 必须全部位于同一个可用性集中，或者 VM 均不得位于任何可用性集中。 云服务中具有多个可用性集与 Azure Resource Manager 不兼容，并且迁移将暂停。  此外，不能出现一些 VM 位于可用性集，而一些 VM 不位于可用性集的情况。 若要解决此问题，需要修正或重新配置云服务。  请相应地进行规划，因为这可能很耗时。
+- **可用性集** - 对于要迁移到 Azure 资源管理器的虚拟网络 (vNet)，经典部署（即云服务）包含的 VM 必须全部位于同一个可用性集中，或者 VM 均不得位于任何可用性集中。 云服务中具有多个可用性集与 Azure 资源管理器不兼容，并且迁移将暂停。  此外，不能出现一些 VM 位于可用性集，而一些 VM 不位于可用性集的情况。 若要解决此问题，需要修正或重新配置云服务。  请相应地进行规划，因为这可能很耗时。
 
 - **Web/辅助角色部署** - 包含 Web 和辅助角色的云服务无法迁移到 Azure 资源管理器。 若要迁移 Web 角色和辅助角色的内容，需要将代码本身迁移到较新的 PaaS 应用程序服务（此讨论超出了本文档的范围）。 如果希望将 Web/辅助角色保持原样，但将经典 VM 迁移到资源管理器部署模型，则必须先从虚拟网络中删除 Web/辅助角色，然后才能开始迁移。  典型的解决方案是将 Web/辅助角色实例移到也链接到 ExpressRoute 线路的单独的经典虚拟网络。 在前一个重新部署用例中，创建了新的经典虚拟网络，将该 Web/辅助角色移动/重新部署到该新虚拟网络，然后从所移动的虚拟网络中删除部署。 无需更改代码。 新的[虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)功能可以用来使包含 Web/辅助角色的经典虚拟网络和同一 Azure 区域中的其他虚拟网络（如正在迁移的虚拟网络）通力合作（**虚拟网络迁移完成后，对等虚拟网络无法迁移**），从而提供没有性能损失和延迟/带宽损失的相同功能。 鉴于增加了[虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)，现可轻易缓解 Web/辅助角色部署，且不会阻止到 Azure 资源管理器的迁移。
 
@@ -129,7 +129,7 @@ ms.locfileid: "73749343"
   - 网络安全组
   - 路由表
 
-    可通过最新版 Azure PowerShell 使用以下命令查看当前的 Azure Resource Manager 配额。
+    可通过最新版 Azure PowerShell 使用以下命令查看当前的 Azure 资源管理器配额。
     
      
 
@@ -151,7 +151,7 @@ ms.locfileid: "73749343"
     Get-AzStorageUsage
     ```
 
-- **Azure 资源管理器 API 限制** - 如果有足够大的环境（如 在 VNET 中有 > 400 VM），则可能达到 Azure Resource Manager 中的写入的默认 API 限制（当前为 `1200 writes/hour`）。 开始迁移前，应开具支持票证为订阅提高此限制。
+- **Azure 资源管理器 API 限制** - 如果有足够大的环境（如 在 VNET 中有 > 400 VM），则可能达到 Azure 资源管理器中的写入的默认 API 限制（当前为 `1200 writes/hour`）。 开始迁移前，应开具支持票证为订阅提高此限制。
 
 
 - **预配超时 VM 状态** - 如果任何虚拟机具有状态 `provisioning timed out`，则需要在迁移前解决此问题。 执行此操作的唯一方法是通过取消预配/重新预配 VM（删除、保留磁盘并重新创建 VM）来使用停机时间。

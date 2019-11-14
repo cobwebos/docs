@@ -9,14 +9,14 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 11/11/2019
-ms.openlocfilehash: 938286f0dafdeb11473bef1b88f876d7918e76ca
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 21577936f2487313683ac763b0c6c661c6c1f958
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012754"
+ms.locfileid: "74039332"
 ---
-# <a name="algorithm--module-reference"></a>算法和模块参考
+# <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure 机器学习设计器的算法 & 模块引用
 
 此参考内容在 Azure 机器学习设计器（预览版）中提供的每个机器学习算法和模块上都提供了技术背景。
 

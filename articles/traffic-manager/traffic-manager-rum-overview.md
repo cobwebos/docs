@@ -1,6 +1,6 @@
 ---
 title: Azure 流量管理器中的真实用户度量
-description: 流量管理器中的实际用户度量简介
+description: 在本简介中，了解 Azure 流量管理器真实用户度量的工作方式。
 services: traffic-manager
 documentationcenter: traffic-manager
 author: asudbring
@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 4aa2649ba2e49e1fec1b9b124a9b82313280cee9
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 1cb3bd1f4a665da4422d296641b193b1e45e45a2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333724"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037950"
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>流量管理器的实际用户度量概述
 
@@ -49,7 +49,7 @@ ms.locfileid: "68333724"
 
 * [是否可以将真实用户度量用于 web pages 以外的客户端应用程序？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-real-user-measurements-with-client-applications-other-than-web-pages)
 
-* [每次呈现我的真实用户度量启用的网页时, 会进行多少度量？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered)
+* [每次呈现我的真实用户度量启用的网页时，会进行多少度量？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered)
 
 * [在我的网页中运行真实用户度量脚本之前是否有延迟？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage)
 
@@ -67,13 +67,13 @@ ms.locfileid: "68333724"
 
 * [是否需要将度量 JavaScript 放入我的所有网页？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages)
 
-* [如果使用真实用户度量, 可以通过流量管理器识别我的最终用户的相关信息？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements)
+* [如果使用真实用户度量，可以通过流量管理器识别我的最终用户的相关信息？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements)
 
 * [网页是否需要使用流量管理器进行路由真实用户度量？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing)
 
 * [是否需要在 Azure 区域托管任何服务以便与真实用户度量一起使用？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements)
 
-* [使用真实用户度量时, Azure 带宽使用率是否会增加？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements)
+* [使用真实用户度量时，Azure 带宽使用率是否会增加？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements)
 
 ## <a name="next-steps"></a>后续步骤
 - 了解如何[将实际用户度量用于网页](traffic-manager-create-rum-web-pages.md)

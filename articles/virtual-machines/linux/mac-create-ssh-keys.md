@@ -1,5 +1,5 @@
 ---
-title: 创建和使用适用于 Azure 中 Linux VM 的 SSH 密钥对 | Microsoft Docs
+title: 在 Azure 中创建和使用适用于 Linux Vm 的 SSH 密钥对
 description: 如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥-私钥对，提高身份验证过程的安全性。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: cynthn
-ms.openlocfilehash: e66c0d2cf16733b4350366d87e9fd67d7f645b38
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cb3bb6a91c25298535cfba1107b85f200031a7d6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082967"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035916"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>快速步骤：创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥-私钥对
 
@@ -72,7 +72,7 @@ ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z
 
 如果复制和粘贴要在 Azure 门户或 Resource Manager 模板中使用的公钥文件的内容，请确保不复制尾随空格。 要在 macOS 中复制公钥，可以通过管道将公钥文件传递到 pbcopy。 与此类似，要在 Linux 中复制公钥，可以将公钥文件通过管道传递到 xclip 等程序。
 
-放置在 Azure 中 Linux VM 上的公钥默认存储在 ~/.ssh/id_rsa.pub，除非在创建密钥对时指定了其他位置。 要借助现有公钥使用 [Azure CLI 2.0](/cli/azure) 创建 VM，请通过使用具有 `--ssh-key-value` 选项的 [az vm create](/cli/azure/vm#az-vm-create) 命令来指定此公钥的值或位置。 在以下命令中，将 VMname、RGname 和 keyFile 替换为你自己的值：
+放置在 Azure 中 Linux VM 上的公钥默认存储在 ~/.ssh/id_rsa.pub，除非在创建密钥对时指定了其他位置。 要借助现有公钥使用 [Azure CLI 2.0](/cli/azure) 创建 VM，请通过使用具有 [ 选项的 ](/cli/azure/vm#az-vm-create)az vm create`--ssh-key-value` 命令来指定此公钥的值或位置。 在以下命令中，将 VMname、RGname 和 keyFile 替换为你自己的值：
 
 ```azurecli
 az vm create --name VMname --resource-group RGname --ssh-key-value @keyFile

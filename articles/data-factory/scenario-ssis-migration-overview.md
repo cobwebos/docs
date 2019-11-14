@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: e75e6bc78740ffb8aba0faa0ef95f4b13a8c56ef
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 99b7de8c0e24fdbd12742b26394e61c956638525
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684420"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038279"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>将本地 SSIS 工作负荷迁移到 ADF 中的 SSIS
 
@@ -48,7 +48,7 @@ Azure 数据工厂 (ADF) 中 Azure-SSIS Integration Runtime (IR) 支持运行 SS
   - MSDB：SQL Server 中用于存储 SSIS 包的系统数据库。
   - 托管文件系统：SQL Server 安装路径中用于存储 SSIS 包的特定文件夹。
 
-自 **DMA 版本 v4.5** 开始，DMA 支持对“文件系统”存储类型中存储的包进行批量评估。
+自**dma 版本5.0 版**起，dma 目前支持对**文件系统**、**包存储区**和**SSIS 目录**中存储的包进行批评估。
 
 获取 [DMA](https://docs.microsoft.com/sql/dma/dma-overview)，并[使用它来执行包评估](https://docs.microsoft.com/sql/dma/dma-assess-ssis)。
 

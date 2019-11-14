@@ -1,5 +1,5 @@
 ---
-title: Azure 中 Linux VM 的时间同步 | Microsoft Docs
+title: Azure 中 Linux VM 的时间同步
 description: Linux 虚拟机的时间同步。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 7e23b71edd05154f3c19a097ebf92c690426c777
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e5d68a31db3797f9919d044eed284d0d09052390
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100779"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034651"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure 中 Linux VM 的时间同步
 
@@ -33,7 +33,7 @@ Azure 由运行 Windows Server 2016 的基础结构提供支持。 Windows Serve
 
 ## <a name="overview"></a>概述
 
-计算机时钟的准确性根据计算机时钟与协调世界时 (UTC) 时间标准的接近程度来测量。 UTC 由多国的精确原子钟示例定义，300 年误差仅一秒。 但是，直接读取 UTC 需要专用的硬件。 相反，时间服务器与 UTC 同步，并可从其他计算机访问，以提供可伸缩性和可靠性。 每台计算机都运行时间同步服务，该服务知道要使用什么时间服务器，并定期检查计算机时钟是否需要校正以及在需要时调整时间。 
+计算机时钟的准确度是根据计算机时钟与协调世界时 (UTC) 时间标准的接近程度来衡量的。 UTC 由多国的精确原子钟示例定义，300 年误差仅一秒。 但是，直接读取 UTC 需要专用的硬件。 相反，时间服务器与 UTC 同步，并可从其他计算机访问，以提供可伸缩性和可靠性。 每台计算机都运行时间同步服务，该服务知道要使用什么时间服务器，并定期检查计算机时钟是否需要校正以及在需要时调整时间。 
 
 Azure 主机与内部 Microsoft 时间服务器同步，这些服务器从 Microsoft 拥有的带 GPS 天线的 Stratum 1 设备获取时间。 Azure 中的虚拟机可以依赖其主机将准确时间（主机时间）传递给 VM，也可以直接从时间服务器中获取时间，或结合使用这两种方式。 
 
@@ -71,7 +71,7 @@ Azure 主机与内部 Microsoft 时间服务器同步，这些服务器从 Micro
 
 ### <a name="host-only"></a>仅限主机 
 
-由于诸如 time.windows.com 和 ntp.ubuntu.com 等 NTP 服务器是公共服务器，因此与它们同步时间需要通过 Internet 发送流量。 不同的数据包延迟会对时间同步的质量产生负面影响。通过切换到仅限主机同步来删除 NTP 有时可以改善时间同步结果。
+由于诸如 time.windows.com 和 ntp.ubuntu.com 等 NTP 服务器是公共服务器，因此与它们同步时间需要通过 Internet 发送流量。 不同的数据包延迟可能会对时间同步的质量产生负面影响。通过切换到仅限主机的同步来删除 NTP 有时会缩短时间同步结果。
 
 如果使用默认配置时遇到时间同步问题，切换到仅限主机时间同步可解决问题。 请尝试仅限主机同步，看看是否会改善 VM 上的时间同步。 
 

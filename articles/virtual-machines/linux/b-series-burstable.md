@@ -1,5 +1,5 @@
 ---
-title: B 系列 Azure Linux VM 大小 | Microsoft Docs
+title: B 系列 Azure Linux VM 大小
 description: 描述 B 系列可突增 Azure VM 大小。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/25/2019
 ms.author: ayshak
-ms.openlocfilehash: 01da424872cdfde6c7e035cadd2b948117fb996c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b9e55d64636b6ee8bf2cff72d44c73e73bf877c1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084004"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036978"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列可突增虚拟机大小
 

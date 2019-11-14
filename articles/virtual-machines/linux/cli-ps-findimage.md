@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 选择 Linux VM 映像 | Microsoft Docs
+title: 使用 Azure CLI 选择 Linux VM 映像
 description: 了解如何使用 Azure CLI 确定发布服务器、产品/服务、SKU 和市场 VM 映像的版本。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bbe98c4ad3a1b737b9df0d2ea53d53875f26ba54
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: e4dd51640c4eeda2ec99c14812a534ee506faeda
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668370"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036873"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>使用 Azure CLI 在 Azure 市场中查找 Linux VM 映像
 
@@ -41,7 +41,7 @@ ms.locfileid: "67668370"
 az vm image list --output table
 ```
 
-输出包括映像 URN（Urn 列中的值）  。 使用其中一个常用市场映像创建 VM 时，可选择指定 *UrnAlias*（一种简短格式，如 *UbuntuLTS*）。
+输出包括映像 URN（Urn 列中的值）。 使用其中一个常用市场映像创建 VM 时，可选择指定 *UrnAlias*（一种简短格式，如 *UbuntuLTS*）。
 
 ```
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
@@ -213,7 +213,7 @@ westus      UbunturollingSnappy
 westus      UbuntuServer
 westus      Ubuntu_Core
 ```
-你将看到在美国西部区域中，Canonical 在 Azure 上发布 UbuntuServer  产品。 但是，有哪些 SKU 呢？ 要获取这些值，请运行 `azure vm image list-skus`，并对找到的位置、发布者和产品/服务进行设置：
+你将看到在美国西部区域中，Canonical 在 Azure 上发布 UbuntuServer产品。 但是，有哪些 SKU 呢？ 要获取这些值，请运行 `azure vm image list-skus`，并对找到的位置、发布者和产品/服务进行设置：
 
 ```azurecli
 az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer --output table
@@ -244,7 +244,7 @@ westus      18.10-DAILY
 westus      19.04-DAILY
 ```
 
-最后，使用 `az vm image list` 命令查找所需的特定版本的 SKU，例如，18.04-LTS  ：
+最后，使用 `az vm image list` 命令查找所需的特定版本的 SKU，例如，18.04-LTS：
 
 ```azurecli
 az vm image list --location westus --publisher Canonical --offer UbuntuServer --sku 18.04-LTS --all --output table
@@ -278,7 +278,7 @@ UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201
 ...
 ```
 
-现在，可通过记下 URN 值准确地选择想要使用的映像。 通过 [az vm create](/cli/azure/vm) 命令创建 VM 时，可将此值与 `--image` 参数一起传递。 记住，可选择将 URN 中的版本号替换为“latest”。 此版本始终是映像的最新版本。 
+现在，可通过记下 URN 值准确地选择想要使用的映像。 通过 `--image`az vm create[ 命令创建 VM 时，可将此值与 ](/cli/azure/vm) 参数一起传递。 记住，可选择将 URN 中的版本号替换为“latest”。 此版本始终是映像的最新版本。 
 
 如果使用资源管理器模板部署 VM，请在 `imageReference` 属性中单独设置映像参数。 请参阅[模板参考](/azure/templates/microsoft.compute/virtualmachines)。
 
@@ -310,7 +310,7 @@ az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
 }
 ```
 
-对 Bitnami 映像认证的 RabbitMQ 运行类似的命令显示以下 `plan` 属性：`name`、`product` 和 `publisher`。 （某些映像还具有 `promotion code` 属性。）若要部署此映像，请参阅以下部分，以接受条款并启用编程部署。
+对 Bitnami 映像认证的 RabbitMQ 运行类似的命令显示以下 `plan` 属性：`name`、`product` 和 `publisher`。 （某些映像还有一个 `promotion code` 属性。）若要部署此映像，请参阅以下部分以接受条款并启用编程部署。
 
 ```azurecli
 az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest

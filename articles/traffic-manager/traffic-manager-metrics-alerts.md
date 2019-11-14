@@ -1,6 +1,6 @@
 ---
 title: Azure 流量管理器中的指标和警报
-description: 本文介绍了 Azure 中针对流量管理器提供的指标。
+description: 本文介绍适用于 Azure 中的流量管理器的指标和警报。
 services: traffic-manager
 author: asudbring
 ms.service: traffic-manager
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: allensu
-ms.openlocfilehash: e689398a38030a712ec6beb651131d0424e44476
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e374e11053f0a1baabed72fdb240b34e2107b2a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071123"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038069"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>流量管理器指标和警报
 
@@ -33,30 +33,30 @@ ms.locfileid: "67071123"
   
 ![所有查询的聚合视图](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-queries-aggregate-view.png)
 
-图 1：  包含所有查询的聚合视图
+*图 1：包含所有查询的聚合视图*
   
 图 2 显示了同一信息，不过它按终结点进行了拆分。 因此，你可以看到其中返回了某个特定终结点的查询响应的数量。
 
 ![流量管理器指标 - 按终结点的查询量拆分视图](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-query-volume-per-endpoint.png)
 
-图 2：  其中显示了按终结点返回的查询量的拆分视图
+*图 2：其中显示了按终结点返回的查询量的拆分视图*
 
 ## <a name="endpoint-status-by-endpoint"></a>按终结点显示的终结点状态
 使用[此指标](../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles)可以了解配置文件中的终结点的运行状况状态。 它采用两个值：
- - 如果终结点正常运行，则使用 1  。
+ - 如果终结点正常运行，则使用 1。
  - 如果终结点发生故障，则使用 **0**。
 
-此指标可以显示为聚合值，表示所有指标的状态（图 3），也可以拆分（参见图 4）来显示特定终结点的状态。 如果为前者，聚合级别选择为“平均值”时，此指标的值是所有终结点的状态的算术平均值  。 例如，如果某个配置文件具有两个终结点并且只有一个终结点正常，则此指标的值将是 0.50，如图 3 所示  。 
+此指标可以显示为聚合值，表示所有指标的状态（图 3），也可以拆分（参见图 4）来显示特定终结点的状态。 如果为前者，聚合级别选择为“平均值”时，此指标的值是所有终结点的状态的算术平均值。 例如，如果某个配置文件具有两个终结点并且只有一个终结点正常，则此指标的值将是 0.50，如图 3 所示。 
 
 
 ![流量管理器指标 - 终结点状态的复合视图](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-composite-view.png)
 
-图 3：  终结点状态指标的复合视图 - 选择了“平均值”聚合
+*图 3：终结点状态指标的复合视图 – 选择了“平均值”聚合*
 
 
 ![流量管理器指标 - 终结点状态的拆分视图](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-split-view.png)
 
-图 4：  终结点状态指标的拆分视图
+*图 4：终结点状态指标的拆分视图*
 
 可以通过 [Azure Monitor 服务](../azure-monitor/platform/metrics-supported.md)的门户、[REST API](https://docs.microsoft.com/rest/api/monitor/)、[Azure CLI](https://docs.microsoft.com/cli/azure/monitor) 和 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights) 或者通过流量管理器的门户体验的指标部分来使用这些指标。
 

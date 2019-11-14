@@ -1,5 +1,5 @@
 ---
-title: 获取 ARP 表-故障排除-ExpressRoute： Azure |Microsoft Docs
+title: Azure ExpressRoute：获取 ARP 表-疑难解答
 description: 此页说明了如何为 ExpressRoute 线路获取 ARP 表
 services: expressroute
 author: ganesr
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: e35020923405ec072ac9c42093752ec5a9290824
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2410465052bd9ff83090c6f7122ffab2855af1d0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748160"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033434"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>在 Resource Manager 部署模型中获取 ARP 表
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "73748160"
 本文指导完成相关步骤，以便了解 ExpressRoute 线路的 ARP 表。
 
 > [!IMPORTANT]
-> 本文档旨在帮助你诊断和修复简单问题。 它不是为了替代 Microsoft 支持部门。 如果无法通过下述指南解决问题，则必须通过 [Microsoft 支持部门](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)开具支持票证。
+> 本文档旨在帮助你诊断和修复简单问题。 它不是为了替代 Microsoft 支持部门。 如果无法通过下述指南解决问题，则必须通过 [Microsoft 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)开具支持票证。
 > 
 > 
 
@@ -178,5 +178,5 @@ ARP 表示例：
   * 获取路由摘要以确定 BGP 会话的状态 
   * 获取路由表以确定哪些前缀跨 ExpressRoute 播发
 * 通过查看输入/输出中的字节数来验证数据传输
-* 如果仍然存在问题，请通过 [Microsoft 支持部门](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)开具一个支持票证。
+* 如果仍然存在问题，请通过 [Microsoft 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)开具一个支持票证。
 

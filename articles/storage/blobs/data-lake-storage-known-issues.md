@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 95f2dbdbb34ff349d14be430b4e5a4fa84df0f5a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 78693dceaac119279b1c1d06a6c3a18cc4fdb485
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581490"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033943"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -57,7 +57,7 @@ Blob Api 和 Data Lake Storage Gen2 Api 可以对相同的数据执行操作。
 | **Azure Blob 存储生命周期管理策略** | 支持所有访问层。 存档访问层目前处于预览阶段。 尚不支持删除 Blob 快照的功能。 |
 | **Azure 内容分发网络（CDN）** | 尚不支持|
 | **Azure 搜索** |支持（预览）|
-| **Azure 存储资源管理器** | 特定于版本的支持 <br><br>仅使用版本 `1.6.0` 或更高版本。 <br>版本 `1.6.0` 可[免费下载](https://azure.microsoft.com/features/storage-explorer/)。|
+| **Azure 存储资源管理器** | 特定于版本的支持 <br><br>仅使用 `1.10.0``1.6.0` 版本。 <br> 版本 `1.10.0` 可[免费下载](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes)。 尚不支持版本 `1.11.0`。|
 | **Blob 容器 ACL** |尚不支持|
 | **Blobfuse** |尚不支持|
 | **自定义域** |尚不支持|

@@ -1,12 +1,12 @@
 ---
-title: 安全管理访问的最佳做法 - Azure Active Directory | Microsoft Docs
+title: 安全管理员访问的最佳做法-Azure AD |Microsoft Docs
 description: 确保组织的管理访问权限和管理帐户是安全的。 适用于配置 Azure AD、Azure 和 Microsoft Online Services 的系统架构师和 IT 专业人员。
 services: active-directory
 keywords: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.author: curtand
-ms.date: 03/18/2019
+ms.date: 11/13/2019
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d3346c873f88654f75628863a01fda76449ce2d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: e65714f67dde79847bf07efda358a4e1f9ea938d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259412"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028456"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -68,7 +68,7 @@ Microsoft 建议你制定并遵循一个路线图，防止特权访问受到网�
 
 * 阶段 2（2-4 周）：减轻最常用攻击手段的危害
 
-* 阶段 3 （1-3 个月）：构建管理活动的可见性和完全控制
+* 阶段 3（1-3 月）：构建管理活动的可见性和完全控制
 
 * 阶段 4（至少六个月）：继续构建防御措施，进一步强化安全平台
 
@@ -123,7 +123,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>启用多重身份验证，并注册所有其他的特许权限高的单用户非联合管理员帐户
 
-对于永久分配给一个或多个 Azure AD 管理员角色的所有个人用户，要求其在登录时进行多重身份验证 (MFA)：全局管理员、特权角色管理员、Exchange Online 管理员和 SharePoint Online 管理员。 根据指南启用[针对管理员帐户的多重身份验证 (MFA)](../authentication/howto-mfa-userstates.md)，确保所有这些用户都已注册到 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。 有关详细信息，可参阅[保护对 Office 365 中数据和服务的访问权限](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)指南的步骤 2 和步骤 3。 
+对于所有永久分配了一个或多个 Azure AD 管理员角色（全局管理员、特权角色管理员、Exchange Online 管理员和 SharePoint Online 管理员）的单个用户，要求在登录时进行 Azure 多重身份验证 (MFA)。 根据指南启用[针对管理员帐户的多重身份验证 (MFA)](../authentication/howto-mfa-userstates.md)，确保所有这些用户都已注册到 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。 有关详细信息，可参阅[保护对 Office 365 中数据和服务的访问权限](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)指南的步骤 2 和步骤 3。 
 
 ## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>阶段 2：减轻最常用攻击手段的危害
 
@@ -379,7 +379,7 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 5. 查看 [Azure AD 登录报告](../reports-monitoring/overview-reports.md)。 事件发生之后，可能需要一段时间该事件才会出现在报告中。
 
-6. 对于混合环境，如果使用联合身份验证但 AD FS 服务器不可用，则可能需要临时从联合身份验证方式切换出来，改用密码哈希同步。这样就会将域联合身份验证恢复成托管身份验证，直至 AD FS 服务器可用。
+6. 对于混合环境，如果联合和 AD FS 服务器不可用，则可能需要临时从联合身份验证切换为使用密码哈希同步。这会将域联合身份验证回托管身份验证，直至 AD FS 服务器可用。
 
 7. 监视特权帐户的电子邮件。
 
@@ -393,7 +393,7 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 **答：** 定义至少两个“不受限”帐户，指定对特权管理员帐户实施 MFA，并将用户帐户与全局管理员帐户分开。
 
-**问：** 在遭到攻击后，首先需要解决的最重要问题是什么？
+**文：** 在遭到攻击后，首先需要解决的最重要问题是什么？
 
 **答：** 务必要求对身份暴露可能性高的个人进行最强的身份验证。
 

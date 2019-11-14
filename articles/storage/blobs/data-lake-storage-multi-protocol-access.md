@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f782c5abe611086baae5d2ad71bc38516039a231
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 3470e27f64a672db0165b0132996db91a1447c08
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796060"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033982"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Azure Data Lake Storage 上的多协议访问
 
@@ -49,6 +49,7 @@ Data Lake Storage 上的多协议访问使你能够将更多 Blob 存储功能�
 |---|---|
 |[冷访问层](storage-blob-storage-tiers.md)|正式发布|
 |Blob Sdk |正式发布|
+|Blob REST Api|公开|
 |[PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |正式发布|
 |[CLI](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |正式发布|
 |[诊断日志](../common/storage-analytics-logging.md)| 预览|

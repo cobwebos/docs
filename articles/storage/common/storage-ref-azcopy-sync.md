@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8b4ab0e44f2432056c9c94061c59c99c89a6407d
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 9bfe88c34c78d18f2f5aefb8ae6946b9786030ad
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513419"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023500"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -35,6 +35,13 @@ ms.locfileid: "72513419"
 2. 当在虚拟目录之间进行同步时，如果存在与某个虚拟目录同名的 blob，则向路径添加一个尾随斜杠（请参阅示例）。
 3. 如果将 "deleteDestination" 标志设置为 true 或 prompt，则 sync 将删除源中不存在的目标上的文件和 blob。
 
+## <a name="related-conceptual-articles"></a>相关概念文章
+
+- [AzCopy 入门](storage-use-azcopy-v10.md)
+- [用 AzCopy 和 Blob 存储传输数据](storage-use-azcopy-blobs.md)
+- [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
+- [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)
+
 ### <a name="advanced"></a>高级
 
 如果未指定文件扩展名，则在从本地磁盘上传时，AzCopy 会根据文件扩展名或内容（如果未指定扩展名）自动检测文件的内容类型。
@@ -48,7 +55,7 @@ ms.locfileid: "72513419"
 在 Windows 上，MIME 类型是从注册表中提取的。
 
 ```azcopy
-azcopy sync [flags]
+azcopy sync <source> <destination> [flags]
 ```
 
 ## <a name="examples"></a>示例
@@ -147,7 +154,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 ## <a name="options-inherited-from-parent-commands"></a>从父命令继承的选项
 
-|选项|描述|
+|选项|说明|
 |---|---|
 |--cap-mbps uint32|以兆位/秒为单位限制传输速率。 每分钟的吞吐量可能与 cap 略有不同。 如果将此选项设置为零，或省略此选项，则不会限制吞吐量。|
 |--output 类型字符串|命令输出的格式。 选项包括：文本、json。 默认值为 "text"。|

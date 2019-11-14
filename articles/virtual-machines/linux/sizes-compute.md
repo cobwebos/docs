@@ -1,5 +1,5 @@
 ---
-title: Azure Linux VM 大小 - 计算优化 | Microsoft Docs
+title: Azure Linux VM 大小-计算优化
 description: 列出 Azure 中适用于 Linux 虚拟机的各种计算优化大小。 针对此系列中的大小列出了 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: 154209c78746e1a44c7cee51675150e8acca0f0a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe95c6caf608e5746147fa5bc61ab6e7b63e1028
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082094"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034948"
 ---
 # <a name="compute-optimized-virtual-machine-sizes"></a>计算优化虚拟机大小
 

@@ -1,26 +1,26 @@
 ---
-title: 在 Privileged Identity Management Azure Active Directory 中批准或拒绝 Azure 资源角色的请求 |Microsoft Docs
+title: 在 PIM 中批准对 Azure 资源角色的请求-Azure AD |Microsoft Docs
 description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中批准或拒绝 Azure 资源角色的请求。
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c436a529ebaf15a3024f935c1b28327230da0ac0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e779f633efccf7b594c193e165a584d22b1d653b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895900"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021972"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中批准或拒绝 Azure 资源角色的请求
 
@@ -38,7 +38,7 @@ ms.locfileid: "72895900"
 
 1. 选择 "**批准请求**"。
 
-    ![批准请求-显示请求评审的 Azure 资源页面](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
+    ![显示要评审的请求的“审批请求 - Azure 资源”页](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
 
     在“请求激活角色”部分，将看到等待审批的请求列表。
 
@@ -46,19 +46,19 @@ ms.locfileid: "72895900"
 
 1. 查找并选择要批准的请求。 此时将显示 "批准" 或 "拒绝" 页。
 
-    !["批准请求-批准或拒绝" 窗格，其中包含详细信息和理由框](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![“审批请求 - 批准或拒绝”窗格，其中包含详细信息和“理由”框](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
 1. 在 "**对齐**" 框中，输入业务理由。
 
 1. 选择 "**批准**"。 你将收到 Azure 审批通知。
 
-    ![批准显示请求的批准通知](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
+    ![显示请求已批准的批准通知](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
 
 ## <a name="deny-requests"></a>拒绝请求
 
 1. 找到并选择要拒绝的请求。 此时将显示 "批准" 或 "拒绝" 页。
 
-    !["批准请求-批准或拒绝" 窗格，其中包含详细信息和理由框](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![“审批请求 - 批准或拒绝”窗格，其中包含详细信息和“理由”框](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
 1. 在 "**对齐**" 框中，输入业务理由。
 

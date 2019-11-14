@@ -1,18 +1,14 @@
 ---
 title: 英国官方 & 英国 NHS 蓝图示例-控件映射
 description: 控制英国官方和英国 NHS 蓝图示例的映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: e86c7040e94553b032b565e282639047a1ed8750
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5ba7cf481276b236c9299e660acb9668feeea683
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162961"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037765"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>控制英国官方和英国 NHS 蓝图示例的映射
 
@@ -37,7 +33,7 @@ ms.locfileid: "73162961"
 
 - 应在 SQL 数据库上启用透明数据加密
 - 应在虚拟机上启用磁盘加密
-- 自动化帐户变量应加密
+- 自动化帐户变量应进行加密
 - 应该启用安全传输到存储帐户
 - Service Fabric 群集应将 ClusterProtectionLevel 属性设置为 EncryptAndSign
 - 应在 SQL 数据库上启用透明数据加密
@@ -48,7 +44,7 @@ ms.locfileid: "73162961"
 
 ## <a name="52-vulnerability-management"></a>5.2 漏洞管理
 
-此蓝图通过分配用于监视缺少的 endpoint protection、缺少系统更新、操作系统漏洞、SQL 漏洞和虚拟的[Azure 策略](../../../policy/overview.md)定义，帮助你管理信息系统漏洞计算机漏洞。 这些见解提供有关已部署资源的安全状态的实时信息，可帮助你指定补救措施的优先级。
+此蓝图通过分配用于监视缺少的 endpoint protection、缺少系统更新、操作系统漏洞、SQL 漏洞和虚拟机漏洞的[Azure 策略](../../../policy/overview.md)定义，帮助你管理信息系统漏洞。 这些见解提供有关已部署资源的安全状态的实时信息，可帮助你指定补救措施的优先级。
 
 - 监视 Azure 安全中心 Endpoint Protection 的缺失情况
 - 应在计算机上安装系统更新
@@ -67,7 +63,7 @@ ms.locfileid: "73162961"
 
 ## <a name="9-secure-user-management--10-identity-and-authentication"></a>9保护用户管理/10 身份验证和身份验证
 
-Azure 实施基于角色的访问控制（RBAC），以帮助你管理哪些用户有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图通过以下方法来限制和控制访问权限：向所有者和/或读/写[权限指定所有者](../../../policy/overview.md)和/或读/写权限的外部帐户，并使用具有不具有多重身份的 "读取" 和/或 "写入" 权限的帐户身份验证已启用。
+Azure 实施基于角色的访问控制（RBAC），以帮助你管理哪些用户有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图通过以下方法来限制和控制访问权限：向所有者和/或读/写[权限指定所有者](../../../policy/overview.md)和/或读/写权限的外部帐户，以及未启用多重身份验证的拥有所有权、读取和/或写入权限的帐户。
 
 - 应在对订阅拥有所有者权限的帐户上启用 MFA
 - 应为 MFA 启用对订阅具有写入权限的帐户
@@ -124,7 +120,7 @@ Azure 实施基于角色的访问控制（RBAC），以帮助你管理哪些用�
 
 ## <a name="12-secure-service-administration"></a>12安全服务管理
 
-Azure 实施基于角色的访问控制（RBAC），以帮助你管理哪些用户有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图通过以下方法来帮助你限制和控制特权访问权限：分配5个[Azure 策略](../../../policy/overview.md)定义，以审核具有所有者和/或写入权限的外部帐户，以及拥有所有者和/或写入权限的具有以下权限的帐户：已启用多重身份验证。
+Azure 实施基于角色的访问控制（RBAC），以帮助你管理哪些用户有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图通过以下方法来限制和控制特权访问权限：分配5个[Azure 策略](../../../policy/overview.md)定义，以审核具有所有者和/或写入权限的外部帐户以及具有所有者和/或未启用多重身份验证的写入权限的帐户。
 
 用于云服务管理的系统将具有高特权来访问该服务。 其泄露将产生重大影响，包括绕过安全控制、窃取或操纵大量数据的手段。 服务提供商管理员用于管理操作服务的方法应设计为缓解可能破坏服务安全的任何攻击风险。 如果未实现此原则，攻击者可能会绕过安全控制并盗取或处理大量数据。
 
@@ -168,7 +164,7 @@ Azure 实施基于角色的访问控制（RBAC），以帮助你管理哪些用�
 > [英国官方和英国 NHS 蓝图-概述](./index.md)
 > [英国官方和英国 NHS 蓝图-部署步骤](./deploy.md)
 
-有关蓝图以及如何使用它们的其他文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

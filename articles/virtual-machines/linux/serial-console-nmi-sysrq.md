@@ -1,5 +1,5 @@
 ---
-title: 用于 SysRq 和 NMI 调用的 Azure 串行控制台 | Microsoft Docs
+title: 用于 SysRq 和 NMI 调用的 Azure 串行控制台
 description: 在 Azure 虚拟机中使用串行控制台发出 SysRq 和 NMI 调用。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 81fb9f99f4f7e4f77b39855445639369f65f0966
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5eba50e7cfc00c081622972ca09f305b34c19c47
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091313"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034993"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>使用串行控制台发出 SysRq 和 NMI 调用
 
 ## <a name="system-request-sysrq"></a>系统请求 (SysRq)
-SysRq 是 Linux 操作系统内核识别的按键序列，可以触发一组预定义的操作。 当无法通过传统的管理执行虚拟机故障排除或恢复时 (例如, 如果 VM 未响应), 通常使用这些命令。 使用 Azure 串行控制台的 SysRq 功能时，将会模拟 SysRq 按键，以及物理键盘上的字符输入。
+SysRq 是 Linux 操作系统内核识别的按键序列，可以触发一组预定义的操作。 当无法通过传统的管理执行虚拟机故障排除或恢复时（例如，如果 VM 未响应），通常使用这些命令。 使用 Azure 串行控制台的 SysRq 功能时，将会模拟 SysRq 按键，以及物理键盘上的字符输入。
 
 传送 SysRq 序列后，内核配置将控制系统的响应方式。 有关启用和禁用 SysRq 的信息，请参阅 *SysRq 管理员指南* [text](https://aka.ms/kernelorgsysreqdoc) | [markdown](https://aka.ms/linuxsysrq)。  
 
@@ -51,7 +51,7 @@ echo "1" >/proc/sys/kernel/sysrq
 ### <a name="command-keys"></a>命令键 
 在上述 SysRq 管理员指南中：
 
-|Command| 函数
+|命令| 函数
 | ------| ----------- |
 |``b``  |   将立即重新启动系统，且不会同步或卸载磁盘。
 |``c``  |   将通过 NULL 指针取消引用来执行系统崩溃。 将执行故障转储（如果已配置）。
@@ -98,7 +98,7 @@ echo "1" >/proc/sys/kernel/sysrq
 - [收集崩溃日志](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="non-maskable-interrupt-nmi"></a>不可屏蔽的中断 (NMI) 
-不可屏蔽的中断 (NMI) 旨在创建虚拟机上的软件不会忽略的信号。 过去，NMI 用来监视要求实现特定响应时间的系统上的硬件问题。  如今, 程序员和系统管理员通常使用 NMI 作为一种机制来对未响应的系统进行调试或故障排除。
+不可屏蔽的中断 (NMI) 设计用来创建虚拟机上的软件不会忽略的信号。 过去，NMI 用来监视要求实现特定响应时间的系统上的硬件问题。  如今，程序员和系统管理员通常使用 NMI 作为一种机制来对未响应的系统进行调试或故障排除。
 
 可以使用下面显示的命令栏上的键盘图标通过串行控制台向 Azure 虚拟机发送 NMI。 传送 NMI 后，虚拟机配置将控制系统的响应方式。  可将 Linux 操作系统配置为在收到 NMI 时发生崩溃并创建内存转储。
 

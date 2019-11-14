@@ -1,5 +1,5 @@
 ---
-title: Azure 中的 OpenShift 容器平台3.11 部署后任务 |Microsoft Docs
+title: Azure 中的 OpenShift 容器平台3.11 部署后任务
 description: 部署 OpenShift 容器平台3.11 群集后的其他任务。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: c1e04f048c081da4777045e5bee43991c95b4625
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d3008e2e2d720b67fcf0846c27d2fed1ef7db307
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392769"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035513"
 ---
 # <a name="post-deployment-tasks"></a>部署后任务
 
@@ -74,13 +74,13 @@ az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.
 
 在 Azure 门户中：
 
-1. 选择“Azure Active Directory” > “应用注册”。
+1. 选择“Azure Active Directory” **“应用注册”。**  > 
 2. 搜索应用注册（例如 OCPAzureAD）。
 3. 在结果中，单击“应用注册”。
 4. 在“设置”下，选择“所需的权限”。
 5. 在“所需的权限”下，选择“添加”。
 
-   ![应用程序注册](media/openshift-post-deployment/app-registration.png)
+   ![应用注册](media/openshift-post-deployment/app-registration.png)
 
 6. 依次单击“步骤 1: 选择 API”、“Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)”。 单击底部的“选择”。
 
@@ -162,7 +162,7 @@ sudo /usr/local/bin/master-restart controllers
 可通过三种方法将 Log Analytics 代理添加到 OpenShift。
 - 在每个 OpenShift 节点上直接安装适用于 Linux 的 Log Analytics 代理
 - 启用每个 OpenShift 节点上的 Azure Monitor VM 扩展
-- 安装 Log Analytics 代理作为 OpenShift 守护程序集
+- 安装 Log Analytics 代理作为 OpenShift daemon-set
 
 有关更多详细信息，请阅读完整[说明](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift)。
 

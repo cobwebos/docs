@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 7711ebaaddccd68d4322c1d3ebdd049a57bc709b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 76b34e11bba00105792ac5163c5163184c185e09
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686161"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039623"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>将 Hyper-V VM 灾难恢复到辅助站点时的支持矩阵
 
@@ -22,7 +22,7 @@ ms.locfileid: "73686161"
 > Hyper-V 主机在 VMM 云中托管时，只能复制到辅助站点。
 
 > [!WARNING]
-> 请注意，不久将会弃用对使用 SCVMM 配置帐户的 ASR 支持，因此建议你先阅读[弃用](scvmm-site-recovery-deprecation.md)详细信息，然后再继续。
+> 请注意，不久将会弃用对使用 SCVMM 配置帐户的 ASR 支持，因此建议你先阅读[弃用](site-to-site-deprecation.md)详细信息，然后再继续。
 
 
 ## <a name="host-servers"></a>主机服务器
@@ -37,7 +37,7 @@ Windows Server 2016 |  目前不支持混合使用 Windows Server 2016 和 2012 
 
 下表总结了通过 Site Recovery 完成复制的计算机的操作系统支持。 支持的操作系统上可运行任何工作负荷。
 
-**Windows 版本** | Hyper-V（有 VMM）
+**Windows 版本** | **Hyper-V（包含 VMM）**
 --- | ---
 Windows Server 2016 | Windows Server 2016 上的[Hyper-V 支持](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows)的所有来宾操作系统 
 Windows Server 2012 R2 | Windows Server 2012 R2 上的[Hyper-V 支持](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29)的所有来宾操作系统

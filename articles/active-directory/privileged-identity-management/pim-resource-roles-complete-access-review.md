@@ -1,26 +1,26 @@
 ---
-title: 在 Privileged Identity Management-Azure Active Directory | 中完成对 Azure 资源角色的访问评审Microsoft Docs
-description: 了解如何在 Azure AD Privileged Identity Management （PIM）中完成对 Azure 资源角色的访问评审。
+title: 在 PIM 中完成对 Azure 资源角色的访问检查-Azure AD |Microsoft Docs
+description: 了解如何在 Azure Active Directory 中完成对 Azure 资源角色 Privileged Identity Management 的访问评审。
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6761d1d6aea796e0cca708676f69c47328642cc2
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 9e45249245aaab97070b7e774d4b6bab6827bdc9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895816"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021984"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中完成 Azure 资源角色的访问评审
 
@@ -36,13 +36,13 @@ ms.locfileid: "72895816"
 
 3. 选择仪表板的“访问审阅”部分。
 
-    ![Azure 资源-访问评审列表，显示角色、所有者、开始日期、结束日期和状态](media/pim-resource-roles-complete-access-review/rbac-access-review-home-list.png)
+    ![Azure 资源 - 访问评审列表，其中显示角色、所有者、开始日期、结束日期和状态](media/pim-resource-roles-complete-access-review/rbac-access-review-home-list.png)
 
 4. 选择要管理的访问审阅。
 
 在访问评审的详细信息页上，有许多选项可用于管理该评审。 选项如下：
 
-![用于管理评审的选项-停止、重置、应用、删除](media/pim-resource-roles-complete-access-review/rbac-access-review-menu.png)
+![用于管理评审的选项 -“停止”、“重置”、“应用”、“删除”](media/pim-resource-roles-complete-access-review/rbac-access-review-menu.png)
 
 ### <a name="stop"></a>停止
 
@@ -50,7 +50,7 @@ ms.locfileid: "72895816"
 
 ### <a name="reset"></a>重置
 
-可重置访问评审来删除对其所做的所有决策。 重置访问评审后，所有用户都将被重新标记为未审阅。
+可重置访问评审来删除对其所做的所有决策。 重置访问评审后，所有用户都将被标记为未再次查看。
 
 ### <a name="apply"></a>应用
 
@@ -62,15 +62,15 @@ ms.locfileid: "72895816"
 
 ## <a name="results"></a>结果
 
-在 "**结果**" 页上，查看并下载查看结果的列表。
+在“结果”页上查看和下载评审结果列表。
 
-!["结果" 页，其中列出了用户、结果、原因、审核者、应用结果](media/pim-resource-roles-complete-access-review/rbac-access-review-results.png)
+![“结果”页，其中列出用户、结果、原因、评审者、应用者和应用结果](media/pim-resource-roles-complete-access-review/rbac-access-review-results.png)
 
 ## <a name="reviewers"></a>审阅者
 
 查看现有访问审阅的审阅者以及为其添加审阅者。 提醒审阅者完成其审阅。
 
-!["审阅者" 页列出名称和用户主体名称](media/pim-resource-roles-complete-access-review/rbac-access-review-reviewers.png)
+![“评审者”页，其中列出名称和用户主体名称](media/pim-resource-roles-complete-access-review/rbac-access-review-reviewers.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,31 +1,31 @@
 ---
-title: 动态自动组成员资格规则 - Azure Active Directory | Microsoft Docs
+title: 动态组成员身份的规则-Azure AD |Microsoft Docs
 description: 如何创建成员资格规则以自动填充组和规则引用。
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 050bc3cf6b81b9467d9947a4f611477e2fcbcd9a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a6cfad04d9b0dd3537d60f2651ed341d96bd0210
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885863"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027132"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
 在 Azure Active Directory (Azure AD) 中，可以创建基于属性的复杂规则以启用组的动态成员身份。 动态组成员资格可减少添加和删除用户的管理开销。 本文详细介绍了用于为用户或设备创建动态成员资格规则的属性和语法。 可以为安全组或 Office 365 组中的动态成员身份设置规则。
 
-当用户或设备的任何属性发生更改时，系统会评估目录中的所有动态组规则，以查看该更改是否会触发任何组添加或删除。 如果用户或设备满足组的规则，它们将添加为该组的成员。 如果用户或设备不再满足该规则，则会将其删除。 无法手动添加或删除动态组的成员。
+当用户或设备的任何属性发生更改时，系统将评估目录中的所有动态组规则，以查看该更改是否会触发任何组添加或删除。 如果用户或设备满足组的规则，它们将添加为该组的成员。 如果用户或设备不再满足该规则，则会将其删除。 无法手动添加或删除动态组的成员。
 
 - 可以创建设备或用户的动态组，但无法创建同时包含用户和设备的规则。
 - 无法根据设备所有者的属性创建设备组。 设备成员资格规则只能引用设备属性。
@@ -78,7 +78,7 @@ user.department -eq "Sales"
 
 有三种类型的属性可用于构建成员资格规则。
 
-- 布尔值
+- Boolean
 - String
 - 字符串集合
 

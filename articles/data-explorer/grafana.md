@@ -1,24 +1,24 @@
 ---
 title: 使用 Grafana 可视化 Azure 数据资源管理器中的数据
-description: 在本操作指南中，你将了解如何将 Azure 数据资源管理器设置为 Grafana 的数据源，然后将来自示例群集的数据可视化。
+description: 本文介绍如何将 Azure 数据资源管理器设置为 Grafana 的数据源，然后将示例群集中的数据可视化。
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 6/30/2019
-ms.openlocfilehash: f1eb9fb0d81d1e9cdf3dd8628a6d7ad1f0ccce92
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/13/2019
+ms.openlocfilehash: a1c52007ea86ca0812c4a73a92ce81db6ddadc7b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582006"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038041"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>在 Grafana 中可视化 Azure 数据资源管理器中的数据
 
-Grafana 是一个分析平台，可用于查询和可视化数据，然后根据可视化结果创建和共享仪表板。 Grafana 提供一个 Azure 数据资源管理器插件，通过该插件可连接到 Azure 数据资源管理器并可视化数据。 本文介绍如何将 Azure 数据资源管理器设置为 Grafana 的数据源，然后将来自示例群集的数据可视化。
+Grafana 是一个分析平台，可用于查询和可视化数据，然后根据可视化结果创建和共享仪表板。 Grafana 提供一个 Azure 数据资源管理器插件，通过该插件可连接到 Azure 数据资源管理器并可视化数据。 本文介绍如何将 Azure 数据资源管理器设置为 Grafana 的数据源，然后将示例群集中的数据可视化。
 
-使用以下视频，可以了解如何使用 Grafana 的 Azure 数据资源管理器插件，将 Azure 数据资源管理器设置为 Grafana 的数据源，然后将数据可视化。 
+使用以下视频了解如何使用 Grafana 的 Azure 数据资源管理器插件，如何将 Azure 数据资源管理器设置为 Grafana 的数据源，然后将数据可视化。 
 
 > [!VIDEO https://www.youtube.com/embed/fSR_qCIFZSA]
 
@@ -26,7 +26,7 @@ Grafana 是一个分析平台，可用于查询和可视化数据，然后根据
 
 ## <a name="prerequisites"></a>先决条件
 
-需要以下各项来完成这一过程：
+若要完成本文，需要满足以下条件：
 
 * 适用于操作系统的 [Grafana 版本 5.3.0 或更高版本](https://docs.grafana.org/installation/)
 
@@ -66,7 +66,7 @@ Grafana 是一个分析平台，可用于查询和可视化数据，然后根据
 
 1. 选择“保存并测试”。
 
-    如果测试成功，请转到下一部分。 若遇到任何问题，请检查在 Grafana 中指定的值，并查看先前的步骤。
+    如果测试成功，请转到下一部分。 如果遇到任何问题，请检查在 Grafana 中指定的值，并查看前面的步骤。
 
 ## <a name="visualize-data"></a>可视化数据
 
@@ -111,8 +111,26 @@ Grafana 是一个分析平台，可用于查询和可视化数据，然后根据
 
 1. 在顶部菜单上，选择保存图标： ![“保存”图标](media/grafana/save-icon.png)。
 
+## <a name="create-alerts"></a>创建警报
+
+1. 在主仪表板中，选择 "**警报**" > **通知通道**创建新的通知通道
+
+    ![创建通知通道](media/grafana/create-notification-channel.png)
+
+1. 创建新的**通知通道**，并**保存**。
+
+    ![新建通知通道](media/grafana/new-notification-channel-adx.png)
+
+1. 在**仪表板**上，从下拉列表中选择 "**编辑**"。
+
+    ![在仪表板中选择编辑](media/grafana/edit-panel-4-alert.png)
+
+1. 选择 "警报电铃" 图标以打开 "**警报**" 窗格。 选择 "**创建警报**"。 在**警报**窗格中完成以下属性。
+
+    ![警报属性](media/grafana/alert-properties.png)
+
+1. 选择 "**保存仪表板**" 图标以保存所做的更改。
+
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 数据资源管理器的编写查询](write-queries.md)
-
-* [教程：直观显示 Azure 数据资源管理器中的数据 Power BI](visualize-power-bi.md)

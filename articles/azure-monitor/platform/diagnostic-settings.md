@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: c1b7f81c62217d9e113f3293a8f351d908a6a576
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b90e5ccf38e95d33c4b5b6f3b8da0e91a4facb5a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887269"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023739"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>创建诊断设置以在 Azure 中收集平台日志和指标
 Azure 中的[平台日志](resource-logs-overview.md)提供有关 azure 资源及其所依赖的 azure 平台的详细诊断和审核信息。 本文详细介绍了如何创建和配置诊断设置，以便将平台日志收集到不同的目标。
@@ -42,7 +42,8 @@ Azure 中的[平台日志](resource-logs-overview.md)提供有关 azure 资源�
 | [Azure 存储帐户](resource-logs-collect-storage.md) | 将日志存档到 Azure 存储帐户对于审核、静态分析或备份非常有用。 |
 
 
-
+> [!IMPORTANT]
+> Azure Data Lake Storage Gen2 帐户目前不支持作为诊断设置的目标，即使它们可能在 Azure 门户中被列为有效选项。
 
 ## <a name="create-diagnostic-settings-in-azure-portal"></a>在 Azure 门户中创建诊断设置
 你可以从 "Azure Monitor" 菜单或资源的菜单中配置 Azure 门户的诊断设置。
