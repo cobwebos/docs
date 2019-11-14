@@ -114,6 +114,8 @@
           href: key-vault-group-permissions-for-apps.md
     - name: 通过事件网格路由 Key Vault 通知
       href: event-grid-tutorial.md
+    - name: 与 Azure Policy 集成
+      href: azure-policy.md
     - name: Azure Key Vault 日志记录
       href: key-vault-logging.md
     - name: 防火墙背后的访问
