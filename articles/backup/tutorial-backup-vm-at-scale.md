@@ -1,6 +1,6 @@
 ---
 title: 大规模备份 Azure 虚拟机
-description: 同时将多个虚拟机备份到 Azure
+description: 在本教程中，了解如何创建恢复服务保管库、定义备份策略以及同时备份多个虚拟机。
 keywords: 虚拟机备份; 虚拟机备份; 备份 vm; 备份 vm; 备份 Azure vm; 备份和灾难恢复
 author: dcurwin
 manager: carmonm
@@ -9,24 +9,25 @@ ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: fa9f13bf4f4e06973f7b9125897366ad53d06857
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 99a842704325e38cbf1ab9203a56a25bc2273827
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688431"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747018"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>使用 Azure 门户备份多个虚拟机
 
-在 Azure 中备份数据时，数据存储在名为恢复服务保管库的 Azure 资源中。 恢复服务保管库资源位于大多数 Azure 服务的“设置”菜单中。 在大多数 Azure 服务的“设置”菜单中集成恢复服务保管库的好处在于显著简化数据备份。 但是，单独处理公司中的每个数据库或虚拟机非常麻烦。 如果希望将所有虚拟机的数据备份到一个部门或一个位置，应该怎么办？ 通过创建备份策略和将此策略应用到目标虚拟机，可轻松备份多个虚拟机。 本教程介绍了如何完成以下操作：
+在 Azure 中备份数据时，数据存储在名为恢复服务保管库的 Azure 资源中。 恢复服务保管库资源位于大多数 Azure 服务的“设置”菜单中。 在大多数 Azure 服务的“设置”菜单中集成恢复服务保管库的好处在于轻松备份数据。 但是，单独处理公司中的每个数据库或虚拟机非常麻烦。 如果希望将所有虚拟机的数据备份到一个部门或一个位置，应该怎么办？ 通过创建备份策略和将此策略应用到目标虚拟机，可轻松备份多个虚拟机。 本教程介绍了如何完成以下操作：
 
 > [!div class="checklist"]
+>
 > * 创建恢复服务保管库
 > * 定义备份策略
 > * 应用备份策略以保护多个虚拟机
 > * 对保护的虚拟机触发按需备份作业
 
-## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
+## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
 登录到 [Azure 门户](https://portal.azure.com/)。
 
@@ -44,11 +45,11 @@ ms.locfileid: "68688431"
 
 3. 在“恢复服务保管库”菜单中，
 
-    - 在“名称”中键入“myRecoveryServicesVault”   。
-    - 当前订阅 ID 显示在“订阅”中  。 如有其他订阅，可为新保管库选择另一订阅。
-    - 对于“资源组”，请选择“使用现有”，然后选择“myResourceGroup”    。 如果没有“myResourceGroup”，请选择“新建”，然后键入“myResourceGroup”    。
-    - 从“位置”下拉菜单中选择“西欧”   。
-    - 单击“创建”，创建恢复服务保管库  。
+    * 在“名称”中键入“myRecoveryServicesVault”   。
+    * 当前订阅 ID 显示在“订阅”中  。 如有其他订阅，可为新保管库选择另一订阅。
+    * 对于“资源组”，请选择“使用现有”，然后选择“myResourceGroup”    。 如果没有“myResourceGroup”，请选择“新建”，然后键入“myResourceGroup”    。
+    * 从“位置”下拉菜单中选择“西欧”   。
+    * 单击“创建”，创建恢复服务保管库  。
 
 恢复服务保管库必须与受保护的虚拟机处于相同位置。 如果多个区域中有虚拟机，请在每个区域中创建恢复服务保管库。 本教程在西欧创建恢复服务保管库的原因在于，西欧是创建“myVM”（通过快速入门创建的虚拟机）的位置   。
 
@@ -77,12 +78,12 @@ ms.locfileid: "68688431"
     ![选择工作负荷](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
 
 5. 对于“备份策略”菜单中的“策略名称”，请键入“财务”    。 对备份策略输入以下更改：
-   - 对于“备份频率”，请将时区设置为“中部时间”   。 由于此综合体育中心位于德克萨斯，其所有者希望时间为当地时间。 将备份频率设置为每日凌晨 3:30。
-   - 对于“每日备份点的保留期”，请将时间段设置为 90 天  。
-   - 对于“每周备份点的保留期”，请使用“星期一”还原点并将其保留 52 周   。
-   - 对于“每月备份点的保留期”，使用当月第一个星期日作为还原点，并将其保留 36 个月  。
-   - 取消选中“每年备份点的保留期”选项  。 财务主管不希望数据保留期超过 36 个月。
-   - 单击“确定”以创建备份策略。 
+   * 对于“备份频率”，请将时区设置为“中部时间”   。 由于此综合体育中心位于德克萨斯，其所有者希望时间为当地时间。 将备份频率设置为每日凌晨 3:30。
+   * 对于“每日备份点的保留期”，请将时间段设置为 90 天  。
+   * 对于“每周备份点的保留期”，请使用“星期一”还原点并将其保留 52 周   。
+   * 对于“每月备份点的保留期”，使用当月第一个星期日作为还原点，并将其保留 36 个月  。
+   * 取消选中“每年备份点的保留期”选项  。 财务主管不希望数据保留期超过 36 个月。
+   * 单击“确定”以创建备份策略。 
 
      ![选择工作负荷](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
 
@@ -142,7 +143,6 @@ ms.locfileid: "68688431"
 
     ![“设置”图标](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
 
-
 2. 在“备份项”菜单上，单击“Azure 虚拟机”，打开与保管库关联的虚拟机列表   。
 
     ![“设置”图标](./media/tutorial-backup-vm-at-scale/three-virtual-machines.png)
@@ -171,12 +171,12 @@ ms.locfileid: "68688431"
 
     删除此保管库后，将返回恢复服务保管库列表。
 
-
 ## <a name="next-steps"></a>后续步骤
 
 本教程使用 Azure 门户执行了以下操作：
 
 > [!div class="checklist"]
+>
 > * 创建恢复服务保管库
 > * 设置保管库以保护虚拟机
 > * 创建自定义备份和保留策略

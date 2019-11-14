@@ -1,5 +1,5 @@
 ---
-title: 构建第一个数据工厂（Resource Manager 模板）| Microsoft Docs
+title: 构建第一个数据工厂（资源管理器模板）
 description: 本教程使用 Azure 资源管理器模板创建一个示例 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: c4ff0f28f4f0058d388e3b2f9c753737fb6ee0d4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: bc433fbd6117a6aded28e19d2f8b48d594ff5ad6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140497"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683033"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]

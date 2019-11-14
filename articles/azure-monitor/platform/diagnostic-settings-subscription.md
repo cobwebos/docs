@@ -7,12 +7,12 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 10/31/2019
-ms.openlocfilehash: 9f8783dc6d3c14b086364639b60273dbae626cee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 6104a8b01cc9fca5ff8de973e7fc2af77cda8515
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73587974"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048203"
 ---
 # <a name="collect-azure-activity-log-with-diagnostic-settings-preview"></a>通过诊断设置收集 Azure 活动日志（预览）
 [Azure 活动日志](activity-logs-overview.md)是一个[平台日志](platform-logs-overview.md)，可用于深入了解 Azure 中发生的订阅级别事件。 到现在为止，你已经创建了一个日志配置文件，用于将活动日志条目发送到[事件中心或存储帐户](activity-log-export.md)，并使用连接器将它们收集到[Log Analytics 工作区](activity-log-collect.md)中。
@@ -22,6 +22,8 @@ ms.locfileid: "73587974"
 - 用于收集所有平台日志的一致方法。
 - 跨多个订阅和租户收集活动日志。
 - 筛选集合以仅收集特定类别的日志。
+- 收集所有活动日志类别。 某些类别不是使用以前的方法收集的。
+- 日志引入延迟更快。 前一种方法的延迟大约为15分钟，诊断设置仅添加大约1分钟的时间。
 
 ## <a name="considerations"></a>注意事项
 在启用此功能之前，请考虑使用诊断设置的活动日志收集的以下详细信息。

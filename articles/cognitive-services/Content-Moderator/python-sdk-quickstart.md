@@ -1,20 +1,21 @@
 ---
 title: 快速入门：适用于 Python 的内容审查器客户端库 | Microsoft Docs
-description: 适用于 Python 的内容审查器客户端库入门。
+titleSuffix: Azure Cognitive Services
+description: 了解如何从 Azure 认知服务内容审查器的适用于 Python 的客户端库开始操作。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 62407467e3c63b1752ee6816325f097ad9a1f09e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 3978b4ec302bf4dd2390f2390c967ca6e12e67d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755257"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744407"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>快速入门：适用于 Python 的内容审查器客户端库
 
@@ -295,7 +296,7 @@ This text contains the terms "term1" and "term2".
 
 ## <a name="create-a-review"></a>创建评审
 
-可以使用内容审查器 Python SDK 将内容馈送到[评审工具](https://contentmoderator.cognitive.microsoft.com)，使审查人员可以评审该内容。 若要详细了解评审工具，请参阅[概念指南](./review-tool-user-guide/human-in-the-loop.md)。
+可以使用内容审查器 Python SDK 将内容馈送到[评审工具](https://contentmoderator.cognitive.microsoft.com)，使审查人员可以评审该内容。 若要详细了解评审工具，请参阅[评审工具概念指南](./review-tool-user-guide/human-in-the-loop.md)。
 
 以下代码使用 [ReviewsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python) 类创建评审、检索评审 ID，并在通过评审工具的 Web 门户收到人工输入后检查评审详细信息。
 
@@ -312,7 +313,7 @@ This text contains the terms "term1" and "term2".
 
 ### <a name="get-review-details"></a>获取评论详细信息
 
-使用以下代码检查给定评审的详细信息。 创建评审后，可以自行转到评审工具并与内容交互。 完成后，可以再次运行此代码，以检索评审过程的结果。
+使用以下代码检查给定评审的详细信息。 创建评审后，可以自行转到评审工具并与内容交互。 有关如何执行此操作的信息，请参阅[评审操作方法指南](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/review-moderated-images)。 完成后，可以再次运行此代码，以检索评审过程的结果。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagereview_getdetails)]
 

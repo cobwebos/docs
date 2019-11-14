@@ -1,6 +1,7 @@
 ---
-title: 使用 Azure 媒体服务 v3 上传、编码和流式传输 | Microsoft Docs
-description: 按照本教程中的步骤，使用媒体服务 v3 上传文件、编码视频和流式传输内容。
+title: 使用媒体服务 v3 上载、编码和流式传输
+titleSuffix: Azure Media Services
+description: 介绍如何使用 Azure 媒体服务 v3 上载文件、对视频编码和流式传输内容的教程。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,30 +13,30 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: juliako
-ms.openlocfilehash: 5b359b81de694c47151c95254b80f847db828aed
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: f8ff3dc71727abf9e276cccc951c4d1143f4200d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653932"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583096"
 ---
-# <a name="tutorial-upload-encode-and-stream-videos"></a>教程：对视频进行上传、编码和流式处理
+# <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>教程：使用媒体服务 v3 对视频进行上载、编码和流式传输
 
 > [!NOTE]
 > 尽管本教程使用了 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 示例，但 [REST API](https://docs.microsoft.com/rest/api/media/liveevents)、[CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest) 或其他受支持的 [SDK](media-services-apis-overview.md#sdks) 的常规步骤是相同的。
 
-使用 Azure 媒体服务可以将媒体文件编码为可在各种浏览器和设备上播放的格式。 例如，可能需要以 Apple 的 HLS 或 MPEG DASH 格式流式传输内容。 在流式传输之前，应该对高质量的数字媒体文件进行编码。 有关编码指南，请参阅[编码概念](encoding-concept.md)。 本教程上传本地视频文件并对上传的文件进行编码。 还可以对可通过 HTTPS URL 访问的内容进行编码。 有关详细信息，请参阅[从 HTTP URL 创建作业输入](job-input-from-http-how-to.md)。
+使用 Azure 媒体服务可以将媒体文件编码为可在各种浏览器和设备上播放的格式。 例如，可能需要以 Apple 的 HLS 或 MPEG DASH 格式流式传输内容。 在流式传输之前，应该对高质量的数字媒体文件进行编码。 有关编码的帮助，请参阅[编码概念](encoding-concept.md)。 本教程上传本地视频文件并对上传的文件进行编码。 还可以对可通过 HTTPS URL 访问的内容进行编码。 有关详细信息，请参阅[从 HTTP URL 创建作业输入](job-input-from-http-how-to.md)。
 
-![播放视频](./media/stream-files-tutorial-with-api/final-video.png)
+![使用 Azure Media Player 播放视频](./media/stream-files-tutorial-with-api/final-video.png)
 
-本教程演示如何：    
+本教程演示如何：
 
 > [!div class="checklist"]
-> * 下载本主题中所述的示例应用
-> * 检查用于上传、编码和流式传输的代码
-> * 运行应用
-> * 测试流式 URL
-> * 清理资源
+> * 下载本主题中所述的示例应用。
+> * 检查用于上传、编码和流式传输的代码。
+> * 运行应用。
+> * 测试流式处理 URL。
+> * 清理资源。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,11 +44,11 @@ ms.locfileid: "67653932"
 
 - 如果没有安装 Visual Studio，可下载 [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。
 - [创建媒体服务帐户](create-account-cli-how-to.md)。<br/>请务必记住用于资源组名称和媒体服务帐户名称的值。
-- 遵循[使用 Azure CLI 访问 Azure 媒体服务 API](access-api-cli-how-to.md) 中的步骤并保存凭据。 需要使用这些凭据来访问 API。
+- 遵循[使用 Azure CLI 访问 Azure 媒体服务 API](access-api-cli-how-to.md) 中的步骤并保存凭据。 你将需要使用这些凭据来访问 API。
 
-## <a name="download-and-configure-the-sample"></a>下载并配置示例
+## <a name="download-and-set-up-the-sample"></a>下载和设置示例
 
-使用以下命令将包含流式处理 .NET 示例的 GitHub 存储库克隆到计算机：  
+使用以下命令将具有流式处理 .NET 示例的 GitHub 存储库克隆到计算机：  
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
@@ -63,35 +64,35 @@ ms.locfileid: "67653932"
 
 该示例执行以下操作：
 
-1. 创建一个新**转换**（首先检查指定的转换是否存在）。 
-2. 创建一个输出**资产**，用作编码**作业**的输出。
-3. 创建一个输入**资产**并将指定的本地视频文件上传到其中。 该资产用作作业的输入。 
+1. 创建一个新**转换**（首先检查指定的转换是否存在）。
+2. 创建一个输出资产  ，用作编码作业的输出  。
+3. 创建一个输入**资产**并将指定的本地视频文件上传到其中。 该资产用作作业的输入。
 4. 使用创建的输入和输出提交编码作业。
 5. 检查作业的状态。
 6. 创建**流定位符**。
 7. 生成流式处理 URL。
 
-### <a name="a-idstartusingdotnet-start-using-media-services-apis-with-net-sdk"></a><a id="start_using_dotnet" />开始结合使用媒体服务 API 与 .NET SDK
+### <a name="a-idstart_using_dotnet-start-using-media-services-apis-with-net-sdk"></a><a id="start_using_dotnet" />开始结合使用媒体服务 API 与 .NET SDK
 
-若要开始将媒体服务 API 与 .NET 结合使用，需要创建 AzureMediaServicesClient 对象  。 若要创建对象，需要提供客户端所需凭据以使用 Azure AD 连接到 Azure。 在本文开头克隆的代码中，**GetCredentialsAsync** 函数根据本地配置文件中提供的凭据创建 ServiceClientCredentials 对象。 
+若要开始将媒体服务 API 与 .NET 结合使用，需要创建 AzureMediaServicesClient 对象  。 若要创建对象，必须提供客户端所需凭据以使用 Azure AD 连接到 Azure。 在本文开头克隆的代码中，**GetCredentialsAsync** 函数根据本地配置文件中提供的凭据创建 ServiceClientCredentials 对象。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateMediaServicesClient)]
 
-### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>创建输入资产并将本地文件上传到该资产 
+### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>创建输入资产并将本地文件上传到该资产
 
-CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/rest/api/media/assets)并将指定的本地视频文件上传到该资产  。 此**资产**用作编码作业的输入。 在媒体服务 v3 中，**作业**输入可以是**资产**，也可以是可通过 HTTPS URL 使用媒体服务帐户访问的内容。 如果想要了解如何从 HTTPS URL 进行编码，请参阅[此](job-input-from-http-how-to.md)文章。  
+CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/rest/api/media/assets)并将指定的本地视频文件上传到该资产  。 此资产  用作编码作业的输入。 在媒体服务 v3 中，作业  输入可以是资产  ，也可以是可通过 HTTPS URL 使用媒体服务帐户访问的内容。 要了解如何从 HTTPS URL 进行编码，请参阅[此](job-input-from-http-how-to.md)文章。
 
 在媒体服务 v3 中，使用 Azure 存储 API 上传文件。 以下 .NET 片段显示如何上传。
 
 以下函数执行以下操作：
 
-* 创建**资产** 
-* 获取资产的[存储中容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)的可写 [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
-* 使用 SAS URL 将文件上传到存储中的容器中
+* 创建资产  。
+* 获取资产的[存储中容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)的可写 [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)。
+* 使用 SAS URL 将文件上传到存储中的容器中。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
 
-### <a name="create-an-output-asset-to-store-the-result-of-a-job"></a>创建输出资产用于存储作业结果 
+### <a name="create-an-output-asset-to-store-the-result-of-a-job"></a>创建输出资产用于存储作业结果
 
 输出[资产](https://docs.microsoft.com/rest/api/media/assets)会存储作业编码的结果。 项目定义 DownloadResults 函数，该函数将结果从此输出资产中下载到**输出**文件夹中，便于用户查看获取的内容。
 
@@ -99,7 +100,7 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 ### <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>创建转换和一个对上传的文件进行编码的作业
 
-对媒体服务中的内容进行编码或处理时，一种常见的模式是将编码设置设为脚本。 然后，需提交**作业**，将该脚本应用于视频。 为每个新视频提交新作业后，可将该脚本应用到库中的所有视频。 媒体服务中的脚本称为**转换**。 有关详细信息，请参阅[转换和作业](transform-concept.md)。 本教程中的示例定义有关将视频进行编码以将其流式传输到各种 iOS 和 Android 设备的脚本。 
+对媒体服务中的内容进行编码或处理时，一种常见的模式是将编码设置设为脚本。 然后，需提交**作业**，将该脚本应用于视频。 为每个新视频提交新作业后，可将该脚本应用到库中的所有视频。 媒体服务中的脚本称为“转换”  。 有关详细信息，请参阅[转换和作业](transform-concept.md)。 本教程中的示例定义有关将视频进行编码以将其流式传输到各种 iOS 和 Android 设备的脚本。
 
 #### <a name="transform"></a>转换
 
@@ -107,7 +108,7 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 可以使用内置 EncoderNamedPreset 或使用自定义预设。 有关详细信息，请参阅[如何自定义编码器预设](customize-encoder-presets-how-to.md)。
 
-在创建时[转换](https://docs.microsoft.com/rest/api/media/transforms)，首先应检查是否其中一个已存在使用**获取**方法，如下面的代码中所示。  在 Media Services v3**获取**实体上的方法返回**null**如果实体不存在 （不区分大小写的名称检查）。
+在创建时[转换](https://docs.microsoft.com/rest/api/media/transforms)，首先应检查是否其中一个已存在使用**获取**方法，如下面的代码中所示。 在 Media Services v3**获取**实体上的方法返回**null**如果实体不存在 （不区分大小写的名称检查）。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#EnsureTransformExists)]
 
@@ -135,11 +136,11 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 ### <a name="get-a-streaming-locator"></a>获取流定位符
 
-编码完成后，下一步是使输出资产中的视频可供客户端播放。 可通过两个步骤完成此操作：首先创建[流定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)，然后生成客户端可以使用的流 URL。 
+编码完成后，下一步是使输出资产中的视频可供客户端播放。 可通过两个步骤完成此操作：首先创建[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)，然后生成客户端可以使用的流式处理 URL。
 
-创建**流定位符**的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，**流定位符**立即生效，并持续到被删除为止。 
+创建**流定位符**的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，流式处理定位符  立即生效，并持续到被删除为止。
 
-创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) 时，需要指定所需的 StreamingPolicyName  。 在此示例中将流式传输明文（或未加密的内容），因此使用预定义的明文流式传输策略 (**PredefinedStreamingPolicy.ClearStreamingOnly**)。
+创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) 时，需要指定所需的 StreamingPolicyName  。 在此示例中将流式传输明文（或未加密的内容），因此使用预定义的明文流式传输策略 (PredefinedStreamingPolicy.ClearStreamingOnly  )。
 
 > [!IMPORTANT]
 > 使用自定义的[流策略](https://docs.microsoft.com/rest/api/media/streamingpolicies)时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于 StreamingLocators。 媒体服务帐户具有对应于流式处理策略条目数的配额。 不应为每个流式处理定位符创建新的流式处理策略。
@@ -161,31 +162,31 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 ### <a name="clean-up-resources-in-your-media-services-account"></a>清理媒体服务帐户中的资源
 
-通常情况下，除了打算重复使用的对象，用户应清理所有内容（通常将重复使用转换并保留 StreamingLocators 等）。 如果希望帐户在试验后保持干净状态，则应删除不打算重复使用的资源。  例如，以下代码可删除作业。
+通常情况下，除了打算重复使用的对象，用户应清理所有内容（通常将重复使用转换并保留 StreamingLocators 等）。 如果希望帐户在试验后保持干净状态，则删除不打算重复使用的资源。 例如，以下代码可删除作业：
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CleanUp)]
 
 ## <a name="run-the-sample-app"></a>运行示例应用
 
-1. 按 Ctrl+F5 运行 EncodeAndStreamFiles 应用程序  。
+1. 按 Ctrl+F5 运行 EncodeAndStreamFiles 应用  。
 2. 从控制台复制其中一个流式 URL。
 
 此示例显示的 URL 可用于使用不同协议来播放视频：
 
-![输出](./media/stream-files-tutorial-with-api/output.png)
+![显示媒体服务流式处理视频的 URL 的示例输出](./media/stream-files-tutorial-with-api/output.png)
 
 ## <a name="test-the-streaming-url"></a>测试流式 URL
 
-本文使用 Azure Media Player 测试流式传输。 
+本文使用 Azure Media Player 测试流式传输。
 
 > [!NOTE]
 > 如果播放器在 Https 站点上进行托管，请确保将 URL 更新为“https”。
 
 1. 打开 Web 浏览器并导航到 [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)。
-2. 在“URL:”框中，粘贴运行应用程序时获取的某个流式处理 URL 值  。 
-3. 按“更新播放器”  。
+2. 在“URL:”框中，粘贴运行应用时获取的某个流式处理 URL 值  。
+3. 选择“更新播放器”。 
 
-Azure Media Player 可用于测试，但不可在生产环境中使用。 
+Azure Media Player 可用于测试，但不可在生产环境中使用。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -199,7 +200,7 @@ az group delete --name amsResourceGroup
 
 ## <a name="multithreading"></a>多线程处理
 
-Azure 媒体服务 v3 SDK 不是线程安全的。 开发多线程应用程序时，应在每个线程上生成并使用一个新的 AzureMediaServicesClient 对象。
+Azure 媒体服务 v3 SDK 不是线程安全的。 开发多线程应用时，应在每个线程上生成并使用一个新的 AzureMediaServicesClient 对象。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 

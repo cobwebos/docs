@@ -1,5 +1,5 @@
 ---
-title: PowerShell 示例 - 移动 Azure SQL 数据库 - 弹性池 | Microsoft Docs
+title: PowerShell 示例 - 移动 Azure SQL 数据库 - 弹性池
 description: 使用 PowerShell 在弹性池之间移动 SQL 数据库的 Azure PowerShell 示例脚本
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.reviewer: ''
 ms.author: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 3e43a027507a52965dd56bbf6015f18d2b2ebc2c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1f4465201d93f5bd48bda82b1d3b7e1ebcdc950e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569868"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691564"
 ---
 # <a name="use-powershell-to-create-elastic-pools-and-move-databases-between-elastic-pools"></a>使用 PowerShell 创建弹性池，并在弹性池之间移动数据库
 

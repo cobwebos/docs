@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/18/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: 842392ab425628a1c82a39e25a65066064747211
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 315ebfa1460f9d9bc041925cec2451f63ac5be16
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675769"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580227"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>教程：在 Azure 实验室服务中跟踪实验室使用情况
 本教程介绍实验室创建者/所有者如何跟踪实验室使用情况。
@@ -41,6 +41,8 @@ ms.locfileid: "72675769"
 
     ![注册的用户](../media/tutorial-track-usage/registered-users.png)
 
+    有关添加和管理实验室用户的详细信息，请参阅[添加和管理实验室用户](how-to-configure-student-usage.md)。
+
 ## <a name="view-the-usage-of-vms-in-the-lab"></a>查看实验室中 VM 的使用情况 
 
 1. 在左侧菜单中选择“虚拟机”。  
@@ -49,12 +51,11 @@ ms.locfileid: "72675769"
     ![VM 使用情况](../media/tutorial-track-usage/vm-usage.png)
 
 ## <a name="manage-student-vms"></a>管理学生 VM 
-在此页上，可以使用“状态”  列中的下拉列表或工具栏上的按钮来启动、停止或重置学生 VM。 
+在此页上，你可以通过使用“状态”  列或工具栏上的控件来启动、停止或重置学生 VM。
 
 ![VM 控件](../media/tutorial-track-usage/vm-controls.png)
 
-也可使用工具栏按钮来启动、停止或删除 VM。 
-
+有关管理实验室虚拟计算机池的详细信息，请参阅[设置和管理虚拟计算机池](how-to-set-virtual-machine-passwords.md)。
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解教室实验室，请查看[操作方法指南](how-to-manage-lab-accounts.md)中的文件。

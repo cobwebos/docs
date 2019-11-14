@@ -9,24 +9,16 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 09/24/2019
-ms.openlocfilehash: 7e67b9e1c611d14b78db53f8662fb4e1f493a8df
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 1ed57e30273c9ba3feb110e0e5acbd3bcc7ffd40
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990203"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74062853"
 ---
-> [!IMPORTANT]
-> * 新的“Azure Active Directory” > “应用注册”边栏选项卡取代了旧的“Azure Active Directory” > “应用注册(旧版)”边栏选项卡 2019 年 5 月版。
-> * 在旧版边栏选项卡中创建或显示的应用注册将自动显示在新的边栏选项卡中。
-> * 有关迁移到新的 Azure 应用注册体验的全面信息，请阅读 [Azure 应用注册培训指南](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide)和 [Azure Active Directory 快速入门](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)。
-
 1. 在 [Azure 门户](https://ms.portal.azure.com/)中，依次选择“Azure Active Directory” > “应用注册” > “新注册”。
 
    [![Azure Active Directory 中的新应用程序注册](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
-
-   > [!TIP]
-   > 使用新的 Azure Active Directory 应用注册面板，可通过选择“拥有的应用程序”筛选显示的应用。
 
     你的应用在注册后将在此处列出。
 

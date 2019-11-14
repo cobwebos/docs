@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 REST API 创建 Azure 数据工厂管道 | Microsoft Docs
+title: '教程：使用 REST API 创建 Azure 数据工厂管道 '
 description: 本教程使用 REST API 创建带复制活动的 Azure 数据工厂管道，以便将数据从 Azure Blob 存储复制到 Azure SQL 数据库。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1f9cead45066fb7bf4a96332710fdd8f3cd5a094
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 860b2f20b4ffda0a1a588ed5d5893ad2c0521a43
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146200"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682834"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>教程：使用 REST API 创建用于复制数据的 Azure 数据工厂管道 
 > [!div class="op_single_selector"]

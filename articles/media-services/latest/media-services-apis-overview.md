@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 0c263e1353a07ca388ea9a7fb48ebcf99be07fc1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 79f1bd95451709485f92050a882c790f9e281eb5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820640"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049017"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>使用媒体服务 v3 API 进行开发
 
@@ -51,7 +51,7 @@ ms.locfileid: "73820640"
    * Azure AD 租户终结点。
    * 媒体服务资源 URI。
    * REST 媒体服务的资源 URI。
-   * Azure AD 应用程序值：客户端 ID和客户端密码。
+   * Azure AD 应用程序值：客户端 ID和客户端机密。
    
    若要获取所有所需值，请参阅[使用 Azure CLI 访问 Azure 媒体服务 API](access-api-cli-how-to.md)
 
@@ -108,7 +108,7 @@ Azure 媒体服务 v3 资源名称（例如，资产、作业、转换）需遵�
 
 成功提交长时间运行的操作后，你会收到“202 已接受”；必须使用返回的操作 ID 轮询操作的完成状态。
 
-[跟踪异步 azure 操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)一文详细介绍了如何通过响应中返回的值跟踪异步 Azure 操作的状态。
+[跟踪异步 Azure 操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)一文深入说明了如何通过响应中返回的值跟踪异步 Azure 操作的状态。
 
 一个给定的实时事件或其任何关联的实时输出仅支持一个长时间运行的操作。 启动某个长时间运行的操作后，必须先完成该操作，才能针对同一个实时事件或任何关联的实时输出启动后续的长时间运行的操作。 对于包含多个实时输出的实时事件，必须等待针对一个实时输出的长时间运行的操作完成，然后才能对另一个实时输出触发长时间运行的操作。 
 
@@ -117,12 +117,12 @@ Azure 媒体服务 v3 资源名称（例如，资产、作业、转换）需遵�
 > [!NOTE]
 > Azure 媒体服务 v3 SDK 不保证是线程安全的。 在开发多线程应用程序时，应添加自己的线程同步逻辑以保护客户端，或对每个线程使用新的 AzureMediaServicesClient 对象。 你还应该注意由代码提供给客户端的可选对象引入的多线程问题（如 .NET 中的 HttpClient 实例）。
 
-|SDK 中 IsInRole 中的声明|参考|
+|SDK 中 IsInRole 中的声明|引用|
 |---|---|
 |[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET 参考](https://aka.ms/ams-v3-dotnet-ref)|
 |[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java 参考](https://aka.ms/ams-v3-java-ref)|
 |[Python SDK](https://aka.ms/ams-v3-python-sdk)|[Python 参考](https://aka.ms/ams-v3-python-ref)|
-|[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk) |[Node.js 参考](https://aka.ms/ams-v3-nodejs-ref)| 
+|[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk) |[Node.js 参考](/javascript/api/overview/azure/mediaservices/management)| 
 |[Go SDK](https://aka.ms/ams-v3-go-sdk) |[Go 参考](https://aka.ms/ams-v3-go-ref)|
 |[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
 

@@ -1,23 +1,18 @@
 ---
-title: 创建支持外部流量重定向的应用程序网关 - Azure CLI | Microsoft Docs
+title: 使用 CLI Azure 应用程序的外部流量重定向-网关
 description: 了解如何创建应用程序网关，将内部 web 流量重定向到相应的池中使用 Azure CLI。
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/24/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: bf3061509e08648aa63b843a4b1d7b8968f3e88e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45b5dc9c73cc98d049d6eb02776f08f790e708eb
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66133666"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047601"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持外部重定向的应用程序网关
 
@@ -30,11 +25,11 @@ ms.locfileid: "66133666"
 > * 创建侦听器和重定向规则
 > * 创建应用程序网关
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -48,7 +43,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>创建网络资源 
 
-使用 [az network vnet create](/cli/azure/network/vnet) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 使用 [az network public-ip create](/cli/azure/network/public-ip) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
+使用 *az network vnet create* 创建名为 *myVNet* 的虚拟网络和名为 [myAGSubnet](/cli/azure/network/vnet) 的子网。 使用 *az network public-ip create* 创建名为 [myAGPublicIPAddress](/cli/azure/network/public-ip) 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
 
 ```azurecli-interactive
 az network vnet create \
@@ -137,7 +132,7 @@ az network application-gateway rule create \
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+在本教程中，已学习了如何执行以下操作：
 
 > * 设置网络
 > * 创建侦听器和重定向规则

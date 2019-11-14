@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64de004a1d9b3aa011c447fdded51658582586b0
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: f095c962f08ab0207ffc51d1c898570d9be7ea9a
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "68825777"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047239"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>教程：为 Salesforce 配置自动用户预配
 
 本教程旨在介绍为了从 Azure AD 自动将用户帐户预配到 Salesforce 以及取消其预配而需要在 Salesforce 和 Azure AD 中执行的步骤。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定您已具有以下各项：
+在本教程中概述的方案假定已具有以下各项：
 
 * Azure Active Directory 租户
 * Salesforce.com 租户
@@ -119,8 +119,11 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
 
+## <a name="common-issues"></a>常见问题
+* 预配到 Salesforce 的默认属性映射包括 SingleAppRoleAssignments 表达式，可将用户角色预配到 Salesforce。 请确保在应用程序上没有向用户分配多个角色，因为属性映射仅支持预配一个角色。 
+
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-tutorial)

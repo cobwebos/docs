@@ -1,5 +1,5 @@
 ---
-title: 将 BACPAC 文件导入 Azure SQL 数据库的PowerShell 示例 | Microsoft Docs
+title: 将 BACPAC 文件导入 Azure SQL 数据库的 PowerShell 示例
 description: 将 BACPAC 文件导入 SQL 数据库的 Azure PowerShell 示例脚本
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/24/2019
-ms.openlocfilehash: 3c90cd19c5da3d98e894105e21b5e20cf6376c21
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1cd7b94ac2717bbfa06d093d13fc201514cdc575
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569956"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691687"
 ---
 # <a name="use-powershell-to-import-a-bacpac-file-into-an-azure-sql-database"></a>使用 PowerShell 将 BACPAC 文件导入 Azure SQL 数据库
 

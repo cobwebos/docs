@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 87dbd7ab4d75150d09a8c26db50ce2e3b1a085db
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 1ddb947e9bcbdde655b5c83cffb67e8fc13d9d0e
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930239"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048684"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>将泛型客户端应用程序连接到 Azure IoT Central 应用程序 (Node.js)
 
@@ -30,7 +30,9 @@ ms.locfileid: "73930239"
 
 ## <a name="create-a-device-template"></a>创建设备模板
 
-在 Azure IoT Central 应用程序中，需要具有以下度量、设备属性、设置和命令的设备模板：
+在 Azure IoT Central 应用程序中，需要具有以下度量值的设备模板：设备属性、设置和命令。
+
+有关有效属性名称的详细信息，请参阅[标记和属性格式](../../iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format)。
 
 ### <a name="telemetry-measurements"></a>遥测数据度量
 

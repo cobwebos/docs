@@ -1,6 +1,6 @@
 ---
 title: 教程 - 使用 Ansible 在 Azure Redis 缓存中配置缓存
-description: 了解如何使用 Ansible 创建、缩放和重新启动 Azure Redis 缓存
+description: 了解如何使用 Ansible 创建、缩放、重新启动 Azure Redis 缓存以及向其添加防火墙规则
 keywords: ansible, azure, devops, bash, playbook, cache, redis
 ms.topic: tutorial
 ms.service: ansible
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 92592dffb3a9094ae74328e8819cafc9469c2ac7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 95b42bc9539c36a533eb528c3c26ade89e99290b
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241797"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614362"
 ---
 # <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>教程：使用 Ansible 在 Azure Redis 缓存中配置缓存
 

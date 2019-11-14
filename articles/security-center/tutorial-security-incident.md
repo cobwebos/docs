@@ -1,5 +1,5 @@
 ---
-title: Azure 安全中心教程 - 响应安全事件 | Microsoft Docs
+title: 事件响应教程 - Azure 安全中心
 description: Azure 安全中心教程 - 响应安全事件
 services: security-center
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: 11c2543de2b5456d253e7e905065eea14810877a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: cd3f99fe82c9a8e5e760aa3be3bed1ad5d9bd5e9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200606"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663644"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>教程：响应安全事件
 安全中心使用高级分析和威胁智能来持续分析混合云工作负荷，在存在恶意活动时发出警报。 另外，你可以将其他安全产品和服务中的警报集成到安全中心，并根据自己的指示器或智能源创建自定义警报。 生成警报后，需采取快速行动进行调查和修正。 在本教程中，将了解如何：
@@ -66,7 +66,7 @@ Sam 是安全分析师，其职责包括：
 
 1. 在安全中心主菜单的“检测”下，选择“安全警报”   ：
 
-   ![安全警报](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)  
+   ![安全警报](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
 
 2. 在警报列表中单击某个安全事件（警报的集合），详细了解该事件。 此时会打开“检测到的安全事件”  。
 

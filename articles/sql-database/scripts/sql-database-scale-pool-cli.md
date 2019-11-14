@@ -1,5 +1,5 @@
 ---
-title: CLI 示例 - 缩放 SQL 弹性池 - Azure SQL 数据库 | Microsoft Docs
+title: CLI 示例 - 缩放 SQL 弹性池 - Azure SQL 数据库
 description: 在 Azure SQL 数据库中缩放弹性池的 Azure CLI 示例脚本
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: b378bef296f7cf6546887bcf760a4e14ed66a385
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0494ab163e7fb7e8ea93cf255837bfda2d7b1570
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569837"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691531"
 ---
 # <a name="use-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>使用 CLI 在 Azure SQL 数据库中缩放弹性池
 

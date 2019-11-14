@@ -1,28 +1,28 @@
 ---
-title: 登录身份验证期间的用户名查找 - Azure Active Directory | Microsoft Docs
-description: 屏幕上的消息如何反映登录期间的用户名查找
+title: 登录 Azure Active Directory 期间的用户名查找 |Microsoft Docs
+description: 在 Azure Active Directory 中登录时，屏幕消息如何反映用户名查找
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db627359b75aa0ea19e30a8d22bcacaa3409cb4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8b6a65a964016f702fcf75aa4cbdab33a952e3b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66418222"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024254"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Azure Active Directory 登录页的主领域发现
 
-我们正在更改 Azure Active Directory (Azure AD) 登录行为，以便为新的身份验证方法腾出空间，同时提高可用性。 登录期间，Azure AD 确定用户需要进行身份验证的位置。 Azure AD 读取登录页上输入的用户名的组织和用户设置，以做出明智决策。 此技术为将来支持 FIDO 2.0 等附加凭据的无密码登录进一步打下了基础。
+我们正在改变 Azure Active Directory (Azure AD) 的登录行为，以便为新的身份验证方法留出空间并提高可用性。 在登录期间，Azure AD 会确定用户在何种情况下需要进行身份验证。 Azure AD 根据登录页上输入的用户名读取组织和用户设置来做出明智的决策。 此技术为将来支持 FIDO 2.0 等附加凭据的无密码登录进一步打下了基础。
 
 ## <a name="home-realm-discovery-behavior"></a>主领域发现的行为
 
@@ -49,11 +49,11 @@ ms.locfileid: "66418222"
     ![键入错误的密码，但用户名正确](./media/signin-realm-discovery/incorrect-password.png)
   
 > [!IMPORTANT]
-> 此功能可能对依赖于使用旧式域级别主领域发现来强制联合的联合域造成影响。 有关何时将添加联合的域支持的更新，请参阅[期间登录 Microsoft 365 服务的主领域发现](https://azure.microsoft.com/updates/signin-hrd/)。 同时，某些组织已经为其员工提供了培训，让他们使用 Azure Active Directory 中不存在的、但包含正确域名的用户名登录，因为域名目前会将用户路由到其组织的域终结点。 新的登录行为不允许此操作。 系统会告知用户更正用户名，且不允许他们使用 Azure Active Directory 中不存在的用户名登录。
+> 此功能可能会影响联合域，这些域依赖于旧的域级主领域发现来强制联合。 有关何时添加联合域支持的更新，请参阅 [Microsoft 365 服务登录期间的主领域发现](https://azure.microsoft.com/updates/signin-hrd/)。 同时，某些组织已经为其员工提供了培训，让他们使用 Azure Active Directory 中不存在的、但包含正确域名的用户名登录，因为域名目前会将用户路由到其组织的域终结点。 新的登录行为不允许此操作。 系统会告知用户更正用户名，且不允许他们使用 Azure Active Directory 中不存在的用户名登录。
 >
 > 如果你或你的组织在实践中依赖于旧行为，则组织管理员必须更新员工登录与身份验证文档，并为员工提供培训，让他们使用其 Azure Active Directory 用户名登录。
   
-如果你对新的行为存有疑虑，请在本文的“反馈”部分留言。   
+如果你对新的行为存有疑虑，请在本文的“反馈”部分留言。  
 
 ## <a name="next-steps"></a>后续步骤
 

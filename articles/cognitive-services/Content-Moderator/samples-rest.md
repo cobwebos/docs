@@ -1,7 +1,7 @@
 ---
 title: 代码示例 - 内容审查器、C#
 titleSuffix: Azure Cognitive Services
-description: 通过 REST API 调用在应用程序中使用内容审查器。
+description: 通过 REST API 调用，在应用程序中使用基于 Azure 认知服务内容审查器功能的示例。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: sample
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: bfd61e2eef799f1e43d35a5686f022bd89490480
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: df0b17509dfb11fb18a591c70e9060973459a24c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565532"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744294"
 ---
 # <a name="content-moderator-rest-samples-in-c"></a>采用 C# 的内容审查器 REST 示例
 

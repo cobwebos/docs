@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 10/18/2019
-ms.openlocfilehash: e1120abb06ec2c777114703cfe3fc7334477aecc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 11/06/2019
+ms.openlocfilehash: 556fb2c1caf9c763cf5a63b71d3dd1e522104e1d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592943"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646960"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>教程：使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库托管实例
 
@@ -30,11 +30,11 @@ ms.locfileid: "72592943"
 > * 创建 Azure 数据库迁移服务的实例。
 > * 使用 Azure 数据库迁移服务创建迁移项目并开始联机迁移。
 > * 监视迁移。
-> * 准备就绪后交接迁移。
+> * 准备就绪后执行迁移交接。
 
 > [!IMPORTANT]
 > 若要使用 Azure 数据库迁移服务从 SQL Server 联机迁移到 SQL 数据库托管实例，必须在 SMB 网络共享中提供完整的数据库备份和后续日志备份，供服务用来迁移数据库。 Azure 数据库迁移服务不启动任何备份，而是使用现有备份进行迁移。你可能已经在灾难恢复计划中有了这些备份。
-> 确保[使用 WITH CHECKSUM 选项进行备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)。 另外，请确保不要将多个备份（即完整备份和 t-log 备份）追加到单个备份介质中；请在单独的备份文件上进行每一次备份。
+> 确保[使用 WITH CHECKSUM 选项进行备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)。 另外，请确保不要将多个备份（即完整备份和 t-log 备份）追加到单个备份介质中；请在单独的备份文件上进行每一次备份。 最后，可以使用压缩的备份来减少遇到与迁移大型备份相关的潜在问题的可能性。
 
 > [!NOTE]
 > 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级”定价层创建实例。
@@ -44,7 +44,7 @@ ms.locfileid: "72592943"
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-本文介绍如何从 SQL Server 联机迁移到 SQL 数据库托管实例。 有关脱机迁移，请参阅[使用 DMS 将 SQL Server 迁移到 Azure SQL 数据库托管实例](tutorial-sql-server-to-managed-instance.md)。
+本文介绍如何从 SQL Server 联机迁移到 SQL 数据库托管实例。 有关脱机迁移，请参阅[使用 DMS 将 SQL Server 脱机迁移到 SQL 数据库托管实例](tutorial-sql-server-to-managed-instance.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -60,6 +60,8 @@ ms.locfileid: "72592943"
     > * 服务总线终结点
     >
     > Azure 数据库迁移服务缺少 Internet 连接，因此必须提供此配置。
+    >
+    >如果在本地网络与 Azure 之间没有站点到站点连接，或者站点到站点连接带宽有限，请考虑在混合模式下使用 Azure 数据库迁移服务（预览版）。 混合模式利用本地迁移工作线程以及云中运行的 Azure 数据库迁移服务的实例。 若要在混合模式下创建 Azure 数据库迁移服务的实例，请参阅[使用 Azure 门户在混合模式下创建 Azure 数据库迁移服务的实例](https://aka.ms/dms-hybrid-create)一文。
 
     > [!IMPORTANT]
     > 关于在迁移过程中使用的存储帐户，必须执行以下操作之一：
@@ -79,7 +81,7 @@ ms.locfileid: "72592943"
 * 创建一个 Azure Active Directory 应用程序 ID，用于生成可由 Azure 数据库迁移服务用来连接目标 Azure 数据库托管实例和 Azure 存储容器的应用程序 ID 密钥。 有关详细信息，请参阅[使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)一文。
 
   > [!NOTE]
-  > Azure 数据库迁移服务需要对指定的应用程序 ID 的订阅具有参与者权限。 我们正在积极努力减少这些权限要求。
+  > Azure 数据库迁移服务需要对指定的应用程序 ID 的订阅具有参与者权限。 或者，你可以创建自定义角色，以授予 Azure 数据库迁移服务所需的特定权限。 有关使用自定义角色的分步指导，请参阅文章[用于 SQL Server 到 SQL 数据库托管实例联机迁移的自定义角色](https://docs.microsoft.com/azure/dms/resource-custom-roles-sql-db-managed-instance)。
 
 * 创建或记下可让 DMS 服务将数据库备份文件上传到的并可用来迁移数据库的**标准性能层** Azure 存储帐户。  请务必在创建 Azure 数据库迁移服务实例的同一区域创建 Azure 存储帐户。
 

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 事件网格自动调整上传图像的大小 | Microsoft 文档
-description: Azure 事件网格可以触发 Azure 存储中的 blob 上传。 你可以用其将上传到 Azure 存储的图像文件发送到其他服务（如 Azure Functions），以调整大小并进行其他改进。
+title: 教程：使用 Azure 事件网格自动调整上载图像的大小
+description: 教程：Azure 事件网格可以触发 Azure 存储中的 blob 上传。 你可以用其将上传到 Azure 存储的图像文件发送到其他服务（如 Azure Functions），以调整大小并进行其他改进。
 services: event-grid, functions
 author: spelluru
 manager: jpconnoc
@@ -9,15 +9,15 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/29/2019
+ms.date: 11/05/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: c09e2cd812dd34976218ff71036734466943e8cd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4359ce859e3fbe270785c3cf4bbc673e71d19799
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "69623880"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718221"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>教程：使用事件网格自动调整上传图像的大小
 

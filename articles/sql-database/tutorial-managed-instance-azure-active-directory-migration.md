@@ -1,20 +1,21 @@
 ---
-title: 使用 T-SQL DDL 语法将 SQL Server 本地 Windows 用户和组迁移到 Azure SQL 数据库托管实例 | Microsoft Docs
+title: 使用 T-SQL 将 SQL ServerWindows 用户和组迁移到托管实例
 description: 了解如何将 SQL Server 本地 Windows 用户和组迁移到托管实例
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+ms.custom: seo-lt-2019
 ms.topic: tutorial
 author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/22/2019
-ms.openlocfilehash: ca0997010fef40c0927960c04588c031dd85fff8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 10/30/2019
+ms.openlocfilehash: 3ed4e4b1d37a9705378281ca74b53a6b60713d97
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795058"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807175"
 ---
 # <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>教程：使用 T-SQL DDL 语法将 SQL Server 本地 Windows 用户和组迁移到 Azure SQL 数据库托管实例
 
@@ -41,6 +42,8 @@ ms.locfileid: "72795058"
 - 可访问 Active Directory 来创建用户/组。
 - 本地环境中有一个现有的 SQL Server。
 - 现有的托管实例。 请参阅[快速入门：创建 Azure SQL 数据库托管实例](sql-database-managed-instance-get-started.md)。
+  - 必须使用托管实例中的 `sysadmin` 来创建 Azure AD 登录名。
+- [为托管实例创建 Azure AD 管理员](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)。
 - 可以连接到网络中的托管实例。 有关更多信息，请参阅以下文章： 
     - [将应用程序连接到 Azure SQL 数据库托管实例](sql-database-managed-instance-connect-app.md)
     - [快速入门：配置从本地到 Azure SQL 数据库托管实例的点到站点连接](sql-database-managed-instance-configure-p2s.md)
@@ -212,9 +215,12 @@ go
 
 ## <a name="part-4-migrate-users-to-managed-instance"></a>第 4 部分：将用户迁移到托管实例
 
+> [!NOTE]
+> 创建后托管实例功能的 Azure AD 管理员已更改。 有关详细信息，请参阅[适用于 MI 的新 Azure AD 管理员功能](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi)。
+
 执行 ALTER USER 命令在托管实例上完成迁移过程。
 
-1. 使用托管实例的 SQL 管理员帐户登录到托管实例。 然后，使用以下语法在托管实例中创建 Azure AD 登录名：
+1. 使用托管实例的 Azure AD 管理员帐户登录到托管实例。 然后，使用以下语法在托管实例中创建 Azure AD 登录名。 有关详细信息，请参阅[教程：使用 Azure AD 服务器主体（登录名）确保 Azure SQL 数据库中托管实例的安全性](sql-database-managed-instance-aad-security-tutorial.md)。
 
     ```sql
     use master 

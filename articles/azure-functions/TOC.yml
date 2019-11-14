@@ -395,5 +395,5 @@
       href: 'https://feedback.azure.com/forums/355860-azure-functions'
     - name: Azure Functions GitHub 存储库
       href: 'https://github.com/Azure/Azure-Functions/'
-    - name: 服务更新
+    - name: Azure 更新
       href: 'https://azure.microsoft.com/updates/?product=functions&updatetype=&platform='

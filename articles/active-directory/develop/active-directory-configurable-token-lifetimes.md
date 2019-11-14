@@ -19,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23cdf7887d6d0812a9e991580e2095b603a4b4df
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 021d0c19ecc4bf63861bf95d99b6ba6b8e910220
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473949"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046556"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 中可配置的令牌生存期（预览版）
 
@@ -53,11 +53,11 @@ ms.locfileid: "73473949"
 
 ### <a name="saml-tokens"></a>SAML 令牌
 
-SAML 令牌由许多基于 web 的 SAAS 应用程序使用，并使用 Azure Active Directory 的 SAML2 协议终结点获得。  使用 WS 联合身份验证的应用程序也使用它们。    令牌的默认生存期为1小时。 从和应用程序的角度来看，令牌的有效期由 < 条件的 NotOnOrAfter 值指定 。标记中的 > 元素。  令牌有效期过后，客户端必须启动新的身份验证请求，此请求通常在未通过单一登录（SSO）会话令牌的情况下进行交互式登录时得到满足。
+SAML 令牌由许多基于 web 的 SAAS 应用程序使用，并使用 Azure Active Directory 的 SAML2 协议终结点获得。 使用 WS 联合身份验证的应用程序也使用它们。 令牌的默认生存期为1小时。 从应用程序的角度来看，令牌的有效期由令牌中 `<conditions …>` 元素的 NotOnOrAfter 值指定。 令牌的有效期结束后，客户端必须启动新的身份验证请求，此请求通常在未通过单一登录（SSO）会话令牌生成的交互式登录时得到满足。
 
-可以在 TokenLifetimePolicy 中使用 AccessTokenLifetime 参数更改 NotOnOrAfter 的值。  它将设置为策略中配置的生存期（如果有）加上5分钟的时钟偏差系数。
+可以在 `TokenLifetimePolicy`中使用 `AccessTokenLifetime` 参数更改 NotOnOrAfter 的值。 它将设置为策略中配置的生存期（如果有）加上5分钟的时钟偏差系数。
 
-请注意，<SubjectConfirmationData> 元素中指定的主题确认 NotOnOrAfter 不受令牌生存期配置的影响。 
+请注意，`<SubjectConfirmationData>` 元素中指定的主题确认 NotOnOrAfter 不受令牌生存期配置的影响。 
 
 ### <a name="refresh-tokens"></a>刷新令牌
 
@@ -160,9 +160,9 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
 **影响：** 刷新令牌
 
-**摘要：** 此策略控制客户端在尝试访问此资源时，不再可以使用超过多少时间的刷新令牌来检索新的访问/刷新令牌对。 由于使用刷新令牌时通常会返回一个新的刷新令牌，因此，如果客户端在指定的时间段尝试使用当前刷新令牌访问任何资源，此策略会阻止访问。
+**摘要：** 此策略控制在尝试访问资源时，在客户端无法再使用刷新令牌来检索新的访问/刷新令牌对之前的刷新令牌的生存期。 由于使用刷新令牌时通常会返回一个新的刷新令牌，因此，如果客户端在指定的时间段尝试使用当前刷新令牌访问任何资源，此策略会阻止访问。
 
-此策略将强制客户端上处于非活动状态的用户重新进行身份验证，才能检索新的刷新令牌。
+此策略将强制客户端上处于非活动状态的用户重新进行身份验证，然后才能检索新的刷新令牌。
 
 设置的“刷新令牌最大非活动时间”属性必须必须小于“单因素令牌最大期限”和“多因素刷新令牌最大期限”属性。
 
@@ -171,7 +171,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
 **影响：** 刷新令牌
 
-摘要：此策略控制用户在上次仅使用一个因素成功完成身份验证后，可以使用刷新令牌获取新访问/刷新令牌对的时间长短。 用户完成身份验证并收到新刷新令牌后，可在指定的时间段内使用刷新令牌流。 （前提是当前刷新令牌未吊销，并且未使用时间超过非活动时间。）此时，将强制用户重新进行身份验证，以接收新的刷新令牌。
+**摘要：** 此策略控制用户在上次仅使用一个因素成功完成身份验证后，可以使用刷新令牌获取新访问/刷新令牌对的时间长短。 用户完成身份验证并收到新刷新令牌后，可在指定的时间段内使用刷新令牌流。 （前提是当前刷新令牌未吊销，并且未使用时间超过非活动时间。）此时，将强制用户重新进行身份验证，以接收新的刷新令牌。
 
 减少最大期限会强制用户更频繁地进行身份验证。 由于单重身份验证的安全性不如多重身份验证，因此我们建议为此属性设置一个小于“多因素刷新令牌最大期限”属性的值。
 
@@ -198,7 +198,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
 **影响：** 会话令牌（持久性和非持久性）
 
-摘要：此策略控制用户在上次使用多个因素成功完成身份验证后，可以继续使用会话令牌获取新 ID 令牌和会话令牌的时间长短。 用户完成身份验证并收到新会话令牌后，可在指定的时间段内使用会话令牌流。 （前提是当前会话令牌未吊销，并且尚未过期。）在指定的时间段后，将强制用户重新进行身份验证，以接收新的会话令牌。
+**摘要：** 此策略控制用户在上次使用多个因素成功完成身份验证后，可以继续使用会话令牌获取新 ID 令牌和会话令牌的时间长短。 用户完成身份验证并收到新会话令牌后，可在指定的时间段内使用会话令牌流。 （前提是当前会话令牌未吊销，并且尚未过期。）在指定的时间段后，将强制用户重新进行身份验证，以接收新的会话令牌。
 
 减少最大期限会强制用户更频繁地进行身份验证。 由于单重身份验证的安全性不如多重身份验证，因此我们建议为此属性设置一个大于“单因素会话令牌最大期限”属性的值。
 
@@ -216,8 +216,8 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 * 为调用 Web API 的本机应用创建策略
 * 管理高级策略
 
-### <a name="prerequisites"></a>必备组件
-以下示例演示如何创建、更新、链接和删除应用、服务主体和整个组织的策略。 如果是 Azure AD 新手，我们建议在继续学习这些示例之前，先了解[如何获取 Azure AD 租户](quickstart-create-new-tenant.md)。  
+### <a name="prerequisites"></a>先决条件
+以下示例演示如何创建、更新、链接和删除应用、服务主体和整个组织的策略。 如果不熟悉 Azure AD，建议在使用这些示例之前，先了解[如何获取 Azure AD 租户](quickstart-create-new-tenant.md)。  
 
 若要开始，请执行以下步骤：
 
@@ -265,7 +265,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
 2. 更新策略。
 
-    假设在本示例中创建的第一个策略不像服务要求的那样严格。 若要将单因素刷新令牌设置为在两天后过期，请运行以下命令：
+    假设在本示例中创建的第一个策略不像服务要求的那样严格。 要将单因素刷新令牌设置为在两天后过期，请运行以下命令：
 
     ```powershell
     Set-AzureADPolicy -Id $policy.Id -DisplayName $policy.DisplayName -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
@@ -353,7 +353,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
 2. 将策略分配到服务主体。
 
-    现已创建一个要应用到整个组织的策略。 可能想要为特定的服务主体保留这个 30 天策略，但要将组织默认策略更改为上限“直到吊销”。
+    现已创建一个要应用到整个组织的策略。 可能需要为特定的服务主体保留这个 30 天策略，但需要将组织默认策略更改为上限“直到吊销”。
 
     1. 若要查看组织的所有服务主体，请使用[get-azureadserviceprincipal](/powershell/module/azuread/get-azureadserviceprincipal) cmdlet。
 
@@ -395,7 +395,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type>
 ```
 
-| parameters | 说明 | 示例 |
+| Parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Definition</code> |包含所有策略规则的字符串化 JSON 的数组。 | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
 | <code>&#8209;DisplayName</code> |策略名称的字符串。 |`-DisplayName "MyTokenPolicy"` |
@@ -412,7 +412,7 @@ New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -Is
 Get-AzureADPolicy
 ```
 
-| parameters | 说明 | 示例 |
+| Parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> [可选] |所需策略的**ObjectId （ID）** 。 |`-Id <ObjectId of Policy>` |
 
@@ -425,7 +425,7 @@ Get-AzureADPolicy
 Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 ```
 
-| parameters | 说明 | 示例 |
+| Parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |所需策略的**ObjectId （ID）** 。 |`-Id <ObjectId of Policy>` |
 
@@ -438,7 +438,7 @@ Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 ```
 
-| parameters | 说明 | 示例 |
+| Parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |所需策略的**ObjectId （ID）** 。 |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |策略名称的字符串。 |`-DisplayName "MyTokenPolicy"` |
@@ -456,7 +456,7 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
  Remove-AzureADPolicy -Id <ObjectId of Policy>
 ```
 
-| parameters | 说明 | 示例 |
+| Parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |所需策略的**ObjectId （ID）** 。 | `-Id <ObjectId of Policy>` |
 
@@ -472,7 +472,7 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectId of Policy>
 ```
 
-| parameters | 说明 | 示例 |
+| Parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的**ObjectId （ID）** 。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |策略的 **ObjectId**。 | `-RefObjectId <ObjectId of Policy>` |
@@ -486,7 +486,7 @@ Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectI
 Get-AzureADApplicationPolicy -Id <ObjectId of Application>
 ```
 
-| parameters | 说明 | 示例 |
+| Parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的**ObjectId （ID）** 。 | `-Id <ObjectId of Application>` |
 
@@ -499,7 +499,7 @@ Get-AzureADApplicationPolicy -Id <ObjectId of Application>
 Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectId of Policy>
 ```
 
-| parameters | 说明 | 示例 |
+| Parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的**ObjectId （ID）** 。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |策略的 **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |
@@ -516,7 +516,7 @@ Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectI
 Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
 ```
 
-| parameters | 说明 | 示例 |
+| Parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的**ObjectId （ID）** 。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |策略的 **ObjectId**。 | `-RefObjectId <ObjectId of Policy>` |
@@ -530,7 +530,7 @@ Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectI
 Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
 ```
 
-| parameters | 说明 | 示例 |
+| Parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的**ObjectId （ID）** 。 | `-Id <ObjectId of Application>` |
 
@@ -543,7 +543,7 @@ Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
 Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
 ```
 
-| parameters | 说明 | 示例 |
+| Parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的**ObjectId （ID）** 。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |策略的 **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |

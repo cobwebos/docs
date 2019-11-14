@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 0c21271eb19a8fd69cb42e30c6a45bd3af9a5600
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1f5f5f2064baa4b2821ccb7b9a2237e6aeeb86f5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820477"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048761"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 数据库中托管实例的连接体系结构
 
@@ -96,7 +96,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 ### <a name="mandatory-inbound-security-rules"></a>强制性入站安全规则
 
-| 名称       |端口                        |协议|源           |目标|操作|
+| 名称       |端口                        |协议|Source           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |管理  |9000、9003、1438、1440、1452|TCP     |任意              |MI SUBNET  |ALLOW |
 |mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |ALLOW |
@@ -104,13 +104,13 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 ### <a name="mandatory-outbound-security-rules"></a>强制性出站安全规则
 
-| 名称       |端口          |协议|源           |目标|操作|
+| 名称       |端口          |协议|Source           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
 |管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |ALLOW |
 |mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |ALLOW |
 
 > [!IMPORTANT]
-> 确保端口 9000、9003、1438、1440、1452 只有一个入站规则，端口 80、443、12000 只有一个出站规则。 如果单独为每个端口配置入站和出站规则，则无法通过 Azure 资源管理器部署预配托管实例。 如果这些端口在单独的规则中，则部署将会失败并出现错误代码 `VnetSubnetConflictWithIntendedPolicy`
+> 确保端口9000、9003、1438、1440、1452和端口 "443" 的出站规则只有一个入站规则。 如果单独为每个端口配置入站和出站规则，则无法通过 Azure 资源管理器部署预配托管实例。 如果这些端口在单独的规则中，则部署将会失败并出现错误代码 `VnetSubnetConflictWithIntendedPolicy`
 
 \* MI SUBNET 是指子网的 IP 地址范围，采用 10.x.x.x/y 格式。 可以在 Azure 门户上的子网属性中找到此信息。
 
@@ -251,7 +251,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>具有服务辅助子网配置的强制入站安全规则 
 
-| 名称       |端口                        |协议|源           |目标|操作|
+| 名称       |端口                        |协议|Source           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |管理  |9000、9003、1438、1440、1452|TCP     |SqlManagement    |MI SUBNET  |ALLOW |
 |            |9000、9003                  |TCP     |CorpnetSaw       |MI SUBNET  |ALLOW |
@@ -261,7 +261,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>具有服务辅助子网配置的强制出站安全规则 
 
-| 名称       |端口          |协议|源           |目标|操作|
+| 名称       |端口          |协议|Source           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
 |管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |ALLOW |
 |mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |ALLOW |

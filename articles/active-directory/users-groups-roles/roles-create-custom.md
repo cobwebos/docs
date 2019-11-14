@@ -1,24 +1,24 @@
 ---
-title: 在 Azure AD 基于角色的访问控制-Azure Active Directory 中创建和分配自定义角色 |Microsoft Docs
-description: 创建资源范围并将其分配给 Azure Active Directory 资源上的自定义 Azure AD 角色。
+title: 在 Azure AD 基于角色的访问控制中创建自定义角色 |Microsoft Docs
+description: 在 Azure Active Directory 资源上创建和分配具有资源范围的自定义 Azure AD 角色。
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1a5aee1be7580956c32947e9bda7e2928a006c3
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c2cb19c82f8c19bf87eeef755adb5756b2452512
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026397"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025274"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>在 Azure Active Directory 中创建和分配自定义角色
 
@@ -30,8 +30,8 @@ ms.locfileid: "72026397"
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>创建新的自定义角色，授予管理应用注册所需的访问权限
 
-1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com)"@no__t 1with" Azure AD 组织中的特权角色管理员或全局管理员权限。
-1. 选择**Azure Active Directory**@no__t "**角色和管理员**" @no__t "**新建自定义角色**"。
+1. 在 Azure AD 组织中，以特权角色管理员或全局管理员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com) 。
+1. 选择**Azure Active Directory** > **角色和管理员** > **新的自定义角色**。
 
    ![在“角色和管理员”页中创建或编辑角色](./media/roles-create-custom/new-custom-role.png)
 
@@ -116,13 +116,13 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
     用于创建自定义角色定义的 HTTP 请求。
 
-    发布
+    POST
 
     ``` HTTP
     https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions
     ```
 
-    Body
+    正文
 
     ``` HTTP
    {
@@ -145,13 +145,13 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
     用于创建自定义角色定义的 HTTP 请求。
 
-    发布
+    POST
 
     ``` HTTP
     https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
     ```
 
-    Body
+    正文
 
     ``` HTTP
    {
@@ -161,9 +161,9 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
    }
     ```
 
-## <a name="assign-a-custom-role-scoped-to-a-resource"></a>分配作用域为资源的自定义角色
+## <a name="assign-a-custom-role-scoped-to-a-resource"></a>分配资源范围的自定义角色
 
-与内置角色一样，默认情况下，在默认的组织范围内分配自定义角色，以授予对组织中所有应用注册的访问权限。 但与内置角色不同的是，也可以在单个 Azure AD 资源的作用域中分配自定义角色。 这样，就可以向用户授予更新单个应用程序的凭据和基本属性的权限，而无需创建第二个自定义角色。
+与内置角色一样，默认情况下，在默认的组织范围内分配自定义角色，以授予对组织中所有应用注册的访问权限。 但与内置角色不同，自定义角色也可以在单个 Azure AD 资源的范围内分配。 这样你就可以被用户分配权限，使之可以更新单个应用的凭据和基本属性，不需创建另一个自定义角色。
 
 1. 通过 Azure AD 组织中的应用程序开发人员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
 1. 选择“应用注册”。
@@ -174,7 +174,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 1. 在应用注册中，选择“角色和管理员”。 如果尚未创建，请按[上一过程](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations)中的说明操作。
 
 1. 选择角色以打开“分配”页。
-1. 选择“添加分配”以添加用户。 系统仅向用户授予所选应用注册的任何权限。
+1. 选择“添加分配”以添加用户。 用户将仅被授予对所选应用注册的任何权限。
 
 ## <a name="next-steps"></a>后续步骤
 

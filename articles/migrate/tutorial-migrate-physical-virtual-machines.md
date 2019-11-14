@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 11/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 9b1944cdad67f9f1b74c8dae95bc9d8409e56f54
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: ffa072f593a06a38e6e3d121fb76806e41bf568e
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309471"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605545"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>将物理服务器或虚拟化服务器迁移到 Azure 
 
@@ -135,7 +135,7 @@ Azure Migrate 服务器迁移使用复制设备将计算机复制到 Azure。 �
 - **配置服务器**：配置服务器在本地和 Azure 之间协调通信并管理数据复制。
 - **进程服务器**：进程服务器充当复制网关。 它接收复制数据，通过缓存、压缩和加密对其进行优化，然后将其发送到 Azure 中的缓存存储帐户。 
 
-在开始之前，需要准备一台用于托管复制设备的 Windows Server 2016 计算机。 该计算机应符合[这些要求](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements)。
+在开始之前，需要准备一台用于托管复制设备的 Windows Server 2016 计算机。 该计算机应符合[这些要求](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements)。 该设备不应安装在要保护的源计算机上。
 
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>添加 Azure Migration 服务器迁移工具

@@ -1,20 +1,21 @@
 ---
-title: 设计第一个关系数据库 - C# - Azure SQL 数据库 | Microsoft Docs
+title: 设计第一个关系数据库 C#
 description: 了解如何使用 ADO.NET 通过 C# 在 Azure SQL 数据库的单一数据库中设计第一个关系数据库。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
+ms.custom: seo-lt-2019
 ms.topic: tutorial
 author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 ms.date: 07/29/2019
-ms.openlocfilehash: 3359c39b21edad72ce0b9d7feb35d442c842f002
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 201f90ae1ee7309f0271d046f341729c79749421
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640111"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825186"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>教程：在 Azure SQL 数据库 C&#x23; 和 ADO.NET 的单一数据库中设计关系数据库
 

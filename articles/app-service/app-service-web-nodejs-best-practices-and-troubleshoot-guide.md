@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: ranjithr
+ms.author: bwren
 ms.custom: seodec18
-ms.openlocfilehash: 5dae268e2c659bcd39c7b274f2f12c64b4504353
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 5ef0cf691ae3a199ea82cb8cfa23c386d30551dc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719783"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024227"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure 应用服务 Windows 版上节点应用程序的最佳做法和故障排除指南
 
@@ -212,7 +212,7 @@ http.createServer(function (req, res) {
 
 ![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
-请下载此文件，并使用 Chrome F12 工具将其打开。 在 Chrome 中按 F12，并选择“配置文件”选项卡。  单击“加载”按钮。  选择下载的 profile.cpuprofile 文件。 单击刚加载的配置文件。
+请下载此文件，并使用 Chrome F12 工具将其打开。 在 Chrome 上按 F12，然后选择 "**配置文件**" 选项卡。选择 "**加载**" 按钮。 选择下载的 profile.cpuprofile 文件。 单击刚加载的配置文件。
 
 ![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
@@ -285,4 +285,4 @@ NODE.exe 具有名为 `NODE_PENDING_PIPE_INSTANCES` 的设置。 在 Azure 应�
 * [将 Node.js 模块与 Azure 应用程序一起使用](../nodejs-use-node-modules-azure-apps.md)
 * [Azure 应用服务 Web 应用：Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Node.js 开发人员中心](../nodejs-use-node-modules-azure-apps.md)
-* [Kudu 调试控制台探秘](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)
+* [探索神秘无比的 Kudu 调试控制台](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

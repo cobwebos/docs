@@ -1,5 +1,5 @@
 ---
-title: 构建第一个数据工厂 (Visual Studio) | Microsoft Docs
+title: 构建第一个数据工厂 (Visual Studio)
 description: 本教程使用 Visual Studio 创建一个示例 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: 39b640a64cf93a7a9cbb0565084b238891e880c1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 888f3b1a53ba2e31195e3b9d577a475df441e972
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140549"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683009"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>教程：使用 Visual Studio 创建数据工厂
 > [!div class="op_single_selector" title="Tools/SDKs"]

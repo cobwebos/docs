@@ -1,7 +1,7 @@
 ---
 title: 快速入门：发布知识库，REST、Go - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 此基于 Go REST 的快速入门将指导你完成发布知识库的过程，发布操作会将经过测试的知识库的最新版本推送至代表“已发布”知识库的专用 Azure 搜索索引。 还会创建一个终结点，可在应用程序或聊天机器人中调用此终结点。
+description: 此基于 Go REST 的快速入门发布你的知识库，并创建可在应用程序或聊天机器人中调用的终结点。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/02/2019
 ms.author: diberry
-ms.openlocfilehash: 20e48d0c16281d6b1399d46f5ca9a7781cbaeea7
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 45ce9720a840c6bc82487ed574b6577304eff4a8
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840211"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794094"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-go"></a>快速入门：在 QnA Maker 中通过 Go 发布知识库
 
-此基于 REST 的快速入门将指导你完成以编程方式发布知识库 (KB) 的过程。 发布操作会将知识库的最新版本推送到一个专用 Azure 搜索引擎，并创建一个可以在应用程序或聊天机器人中调用的终结点。
+此基于 REST 的快速入门将指导你完成以编程方式发布知识库 (KB) 的过程。 发布操作会将知识库的最新版本推送到一个专用 Azure 认知搜索引擎，并创建一个可以在应用程序或聊天机器人中调用的终结点。
 
 本快速入门调用了 QnA Maker API：
 * [发布](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) - 此 API 不需要请求正文中的任何信息。

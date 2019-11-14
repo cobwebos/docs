@@ -1,18 +1,18 @@
 ---
-title: 将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2
+title: 从 v1 迁移到 v2-Azure 应用程序的网关
 description: 本文介绍如何将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/10/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: e32443e01e8b44ff5a891afc76378a53b13d7ddd
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 75d041f8ef0d6593a5ff1c696777b68c5f513bf5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833326"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047625"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2
 
@@ -166,11 +166,11 @@ ms.locfileid: "73833326"
 
 ### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>用于将配置从 v1 迁移到 v2 的 Azure PowerShell 脚本是否存在任何限制？
 
-是的。 请参阅[注意事项/限制](#caveatslimitations)。
+可以。 请参阅[注意事项/限制](#caveatslimitations)。
 
 ### <a name="is-this-article-and-the-azure-powershell-script-applicable-for-application-gateway-waf-product-as-well"></a>本文和上述 Azure PowerShell 脚本是否也适用于应用程序网关 WAF 产品？ 
 
-是的。
+可以。
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>该 Azure PowerShell 脚本是否还可以将流量从 v1 网关切换到新建的 v2 网关？
 

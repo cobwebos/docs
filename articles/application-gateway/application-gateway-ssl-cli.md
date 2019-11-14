@@ -1,25 +1,22 @@
 ---
-title: 使用 SSL 终端创建应用程序网关 - Azure CLI | Microsoft Docs
+title: 使用 CLI Azure 应用程序的网关进行 SSL 终止
 description: 了解如何使用 Azure CLI 创建应用程序网关并为 SSL 终端添加证书。
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 188c252064028ccecc0fd4fe231cda190d2b4c08
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d1decdda096fb902ff605205d7193e1264e5170
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135147"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048002"
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>通过 Azure CLI 使用 SSL 终端创建应用程序网关
 
-可通过 Azure CLI 使用 [SSL 终端](application-gateway-backend-ssl.md)的证书创建使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)作为后端服务器的[应用程序网关](application-gateway-introduction.md)。 在此示例中，规模集包含两个添加到应用程序网关的默认后端池的虚拟机实例。
+可通过 Azure CLI 使用 [SSL 终端](application-gateway-introduction.md)的证书创建使用[虚拟机规模集](application-gateway-backend-ssl.md)作为后端服务器的[应用程序网关](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。 在此示例中，规模集包含两个添加到应用程序网关的默认后端池的虚拟机实例。
 
 在本文中，学习如何：
 
@@ -29,11 +26,11 @@ ms.locfileid: "66135147"
 > * 使用证书创建应用程序网关
 > * 使用默认后端池创建虚拟机规模集
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
@@ -63,7 +60,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>创建网络资源
 
-使用 [az network vnet create](/cli/azure/network/vnet) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 然后，可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 添加后端服务器所需的名为 *myBackendSubnet* 的子网。 使用 [az network public-ip create](/cli/azure/network/public-ip) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
+使用 *az network vnet create* 创建名为 *myVNet* 的虚拟网络和名为 [myAGSubnet](/cli/azure/network/vnet) 的子网。 然后，可以使用 *az network vnet subnet create* 添加后端服务器所需的名为 [myBackendSubnet](/cli/azure/network/vnet/subnet) 的子网。 使用 *az network public-ip create* 创建名为 [myAGPublicIPAddress](/cli/azure/network/public-ip) 的公共 IP 地址。
 
 ```azurecli-interactive
 az network vnet create \
@@ -165,11 +162,11 @@ az network public-ip show \
 
 若要接受有关使用自签名证书的安全警告，请依次选择“详细信息”和“继续转到网页”。 随即显示受保护的 NGINX 站点，如下例所示：
 
-![在应用程序网关中测试基 URL](./media/application-gateway-ssl-cli/application-gateway-nginx.png)
+![应用程序网关中的测试基 URL](./media/application-gateway-ssl-cli/application-gateway-nginx.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+在本教程中，已学习了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建自签名证书

@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/21/2019
+ms.date: 11/05/2019
 ms.author: juliako
-ms.openlocfilehash: 3f065f77c6843b135554e61f5887655114571b08
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 128513c3af5ce6c0853b63d86959e4c3c35de93c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750252"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685113"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - REST
 
@@ -258,34 +258,36 @@ ms.locfileid: "72750252"
 
 ### <a name="create-a-streaming-locator"></a>创建流式处理定位符
 
-编码作业完成后，下一步是使输出**资产**中的视频可供客户端播放。 可通过两个步骤完成此操作：首先创建[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)，然后生成客户端可以使用的流式处理 URL。 
+编码作业完成后，下一步是使输出**资产**中的视频可供客户端播放。 可通过两个步骤完成此操作：首先，创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators)，然后，生成客户端可以使用的流式 URL。 
 
-创建**流定位符**的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，**流定位符**立即生效，并持续到被删除为止。 
+创建流定位符的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，流定位符立即生效，并持续到被删除为止。 
 
-创建[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)时，需要指定所需的 **StreamingPolicyName**。 在此示例中将流式传输明文（或未加密）内容，因此使用预定义的明文流式传输策略“Predefined_ClearStreamingOnly”。
+创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) 时，需要指定所需的 **StreamingPolicyName**。 在此示例中将流式传输明文（或未加密）内容，因此使用预定义的明文流式传输策略“Predefined_ClearStreamingOnly”。
 
 > [!IMPORTANT]
 > 使用自定义的 [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) 时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于 StreamingLocators。 
 
-媒体服务帐户具有对应于**流式处理策略**条目数的配额。 不应为每个**流式处理定位符**创建新的**流式处理策略**。
+媒体服务帐户具有对应于**流式处理策略**条目数的配额。 不应为每个流式处理定位符创建新的流式处理策略  。
 
-1. 在 Postman 应用的左侧窗口中，选择“流式处理策略”。
-2. 然后选择“创建流式处理定位符”。
+1. 在 Postman 应用的左侧窗口中，选择“流式处理策略和定位符”。
+2. 然后选择“创建流式处理定位符(清除)”。
 3. 按“发送”。 
 
     * 将会发送以下 **PUT** 操作。
 
         ```
-        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingPolicies/:streamingPolicyName?api-version={{api-version}}
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingLocators/:streamingLocatorName?api-version={{api-version}}
         ```
     * 该操作具有以下正文：
 
         ```json
         {
-            "properties":{
-            "assetName": "{{assetName}}",
-            "streamingPolicyName": "{{streamingPolicyName}}"
-            }
+          "properties": {
+            "streamingPolicyName": "Predefined_ClearStreamingOnly",
+            "assetName": "testAsset1",
+            "contentKeys": [],
+            "filters": []
+         }
         }
         ```
 

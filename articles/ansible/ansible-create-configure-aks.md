@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/30/2019
-ms.openlocfilehash: 9b70a9c364768322a3eae6ef5b92c87b6839c540
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 11/04/2019
+ms.openlocfilehash: b0839cf418cd30f62623e046960c32d41537609a
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242092"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614378"
 ---
 # <a name="tutorial-configure-azure-kubernetes-service-aks-clusters-in-azure-using-ansible"></a>教程：使用 Ansible 在 Azure 中配置 Azure Kubernetes 服务 (AKS) 群集
 
@@ -54,7 +54,8 @@ ms.locfileid: "72242092"
     ssh_key: "your_ssh_key"
     client_id: "your_client_id"
     client_secret: "your_client_secret"
-  tasks:
+    aks_version: aks_version
+tasks:
   - name: Create resource group
     azure_rm_resourcegroup:
       name: "{{ resource_group }}"
@@ -65,6 +66,7 @@ ms.locfileid: "72242092"
       location: "{{ location }}"
       resource_group: "{{ resource_group }}"
       dns_prefix: "{{ aks_name }}"
+      kubernetes_version: "{{aks_version}}"
       linux_profile:
         admin_username: "{{ username }}"
         ssh_key: "{{ ssh_key }}"
@@ -84,6 +86,7 @@ ms.locfileid: "72242092"
 - `tasks` 中的第一部分定义了 `eastus` 位置中名为 `myResourceGroup` 的资源组。
 - `tasks` 中的第二部分定义了 `myResourceGroup` 资源组中名为 `myAKSCluster` 的 AKS 群集。
 - 对于 `your_ssh_key` 占位符，请以单行格式输入你的 RSA 公钥 - 以 "ssh-rsa" 开头（不含引号）。
+- 对于 `aks_version` 占位符，请使用 [az aks get-versions](/cli/azure/aks?view=azure-cli-latest#az-aks-get-versions) 命令。
 
 使用 `ansible-playbook` 命令运行 playbook：
 

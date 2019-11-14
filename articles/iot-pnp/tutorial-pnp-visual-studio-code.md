@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: b890fe1a9ef30e18a54ced9f48015bed39298807
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b7b9cd1040accda4d39af4d0a18940b56a45f929
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858878"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569884"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>教程：使用 Visual Studio Code 创建和测试设备功能模型
 
@@ -43,14 +43,9 @@ ms.locfileid: "70858878"
 
 若要生成本教程所述的在 Windows 上生成的 C 代码，需要：
 
-* [Visual Studio（社区版、专业版或企业版）](https://visualstudio.microsoft.com/downloads/)- 安装 Visual Studio 时，请确保包括“NuGet 包管理器”组件和“使用 C++ 的桌面开发”工作负荷。  
+* [适用于 Visual Studio 的生成工具](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16)，其中包含 C++ 生成工具和 NuGet 包管理器组件工作负荷   。 或者，如果 [Visual Studio（Community、Professional 或 Enterprise）](https://visualstudio.microsoft.com/downloads/)2019、2017 或 2015 安装了相同的工作负荷。
 * [Git](https://git-scm.com/download)
 * [CMake](https://cmake.org/download/)
-* Azure IoT C SDK 的本地副本：
-
-    ```cmd
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
-    ```
 
 若要测试本教程所述的设备代码，需要：
 
@@ -176,7 +171,7 @@ ms.locfileid: "70858878"
           "commandType": "synchronous"
         }
       ],
-      "@context": "http://azureiot.com/v1/contexts/Interface.json"
+      "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
     }
     ```
 
@@ -310,9 +305,11 @@ ms.locfileid: "70858878"
 
 1. 选择“ANSI C”作为语言。 
 
-1. 选择“CMake 项目”作为目标。 
-
 1. 选择“通过 IoT 中心设备连接字符串”作为连接方式。 
+
+1. 选择“Windows 上的 CMake 项目”作为项目模板  。
+
+1. 选择“通过 Vcpkg”作为包括设备 SDK 的方式  。
 
 VS Code 将生成主干 C 代码，并将 **sensorbox_app** 文件夹中的文件保存到 **modelcode** 文件夹中。 VS Code 将打开一个新窗口，其中包含生成的代码文件。
 

@@ -1,5 +1,5 @@
 ---
-title: 如何为 Azure AD SSPR 配置密码写回-Azure Active Directory
+title: 如何为 Azure AD SSPR 配置密码写回 - Azure Active Directory
 description: 使用 Azure AD 和 Azure AD Connect 将密码写回本地目录
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71a16ad3c571086a73a2aae192fb2d00bce4d5f9
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 9e12fe38ba69f6ac8f27130e01baff0c358aa409
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808150"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021774"
 ---
 # <a name="how-to-configure-password-writeback"></a>操作说明：配置密码写回
 
@@ -65,8 +65,8 @@ ms.locfileid: "72808150"
 
 * **重置密码** 
 * **更改密码** 
-* 对 `lockoutTime` 的写入权限
-* 对 `pwdLastSet` 的写入权限
+* 对  **的写入权限**`lockoutTime`
+* 对  **的写入权限**`pwdLastSet`
 * 对以下任一项的扩展权限：
    * 相应林中各个域的根对象
    * 要纳入 SSPR 范围的用户组织单位 (OU)
@@ -99,7 +99,7 @@ ms.locfileid: "72808150"
     * **写入 pwdLastSet**
 9. 选择“应用”/“确定”以应用更改，并退出所有打开的对话框。
 
-由于授权来源位于本地，因此，密码复杂性策略将应用于相同的连接数据源。 请确保已更改 "最小密码长度" 的现有组策略。 不应将 "组策略" 设置为 "1"，这意味着密码应至少为一天，然后才能更新。 需要确保将其设置为0。 这些设置可在 "计算机配置" > 策略 "下的 `gpmc.msc` 中找到， **> Windows 设置" > 安全设置 "> 帐户策略**。 运行 `gpupdate /force` 以确保更改生效。 
+由于授权来源位于本地，因此，密码复杂性策略将应用于相同的连接数据源。 请确保已更改 "密码最短期限" 的现有组策略。 不应将 "组策略" 设置为 "1"，这意味着密码应至少为一天，然后才能更新。 需要确保将其设置为0。 这些设置可在 "计算机配置" > 策略 "下的 `gpmc.msc` 中找到， **> Windows 设置" > 安全设置 "> 帐户策略**。 运行 `gpupdate /force` 以确保更改生效。 
 
 ## <a name="next-steps"></a>后续步骤
 

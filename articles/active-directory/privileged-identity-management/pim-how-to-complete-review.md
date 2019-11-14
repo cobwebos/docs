@@ -1,25 +1,25 @@
 ---
-title: 完成对 PIM 中 Azure AD 角色的访问评审-Azure Active Directory |Microsoft Docs
-description: 了解如何在 Azure AD Privileged Identity Management （PIM）中完成 Azure AD 角色的访问评审并查看结果
+title: 完成对 PIM 中 Azure AD 角色的访问评审-Azure AD |Microsoft Docs
+description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中完成 Azure AD 角色的访问评审并查看结果
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 197abc0642d6abf1278a75c2101c195cafeb53b2
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: fe2d85d605b9ee418a5709ddcdb448c56be1d918
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809145"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022284"
 ---
 # <a name="complete-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中完成 Azure AD 角色的访问评审
 

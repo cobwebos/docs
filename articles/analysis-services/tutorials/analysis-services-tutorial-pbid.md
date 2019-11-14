@@ -1,18 +1,18 @@
 ---
-title: 教程 - 使用 Power BI Desktop 连接到 Azure Analysis Services | Microsoft Docs
+title: 教程 - 使用 Power BI Desktop 连接 Azure Analysis Services | Microsoft Docs
 author: minewiskan
-description: 了解如何使用 Power BI Desktop 连接到 Azure Analysis Services。
+description: 了解如何从 Azure 门户获取 Analysis Services 服务器名称，然后使用 Power BI Desktop 连接到服务器。
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 04/25/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: f2123b6d8b11c89735e65cb0f48d93841f49328d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 4d8c753f06e58fd1cce1c55eca213637cb70e436
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294482"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572318"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>教程：使用 Power BI Desktop 进行连接
 

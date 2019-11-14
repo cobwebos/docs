@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 4f06e423c6dcc561ef8e51c33f24cd9f88a681b5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1848f7230ed189f139a223020f08db150295132d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935889"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647489"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>快速入门：适用于 .NET 的人脸客户端库
 
@@ -144,9 +144,17 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.5.0
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
 
-在本例中，`DetectFaceExtract` 方法将在位于给定 URL 处的三个图像中检测人脸，并在程序内存中创建 [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) 对象的列表。 [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) 值列表指定要提取的特征。 有关能够直观输出此数据的帮助器代码，请参阅 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs) 上的示例代码。
+### <a name="get-detected-face-objects"></a>获取检测到的人脸对象
+
+在下一个代码块中，`DetectFaceExtract` 方法将在位于给定 URL 处的三个图像中检测人脸，并在程序内存中创建 [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) 对象的列表。 [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) 值列表指定要提取的特征。 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect)]
+
+### <a name="display-detected-face-data"></a>显示检测到的人脸数据
+
+`DetectFaceExtract` 方法的其余部分将分析和打印每个检测到的人脸的属性数据。 必须在原始人脸检测 API 调用中（在 [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) 列表中）单独指定每个属性。 下面的代码处理每个属性，但你可能只需要使用一个或一些属性。
+
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_parse)]
 
 ## <a name="find-similar-faces"></a>查找相似人脸
 

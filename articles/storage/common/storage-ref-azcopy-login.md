@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 058506110a8ac4b11f272406a854f72062a1c90d
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: e7998ea0753ba7ab5d97142c34dc9e333f8b4f5d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514719"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034077"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -35,6 +35,13 @@ ms.locfileid: "72514719"
 ```azcopy
 azcopy login [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>相关概念文章
+
+- [AzCopy 入门](storage-use-azcopy-v10.md)
+- [用 AzCopy 和 Blob 存储传输数据](storage-use-azcopy-blobs.md)
+- [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
+- [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>示例
 
@@ -80,7 +87,7 @@ azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/
 azcopy login --service-principal
 ```
 
-使用证书和密码以服务主体身份登录。 将环境变量 AZCOPY_SPA_CERT_PASSWORD 设置为证书的密码，以便进行基于证书的服务主体授权。
+使用证书和密码以服务主体身份登录。 为基于证书的服务主体授权将环境变量 AZCOPY_SPA_CERT_PASSWORD 设置为证书的密码。
 
 ```azcopy
 azcopy login --service-principal --certificate-path /path/to/my/cert
@@ -92,7 +99,7 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 
 ## <a name="options"></a>选项
 
-|选项|描述|
+|选项|说明|
 |--|--|
 |--application-id 字符串|用户分配的标识的应用程序 ID。 对于服务主体身份验证是必需的。|
 |--证书-路径字符串|SPN 身份验证的证书路径。 基于证书的服务主体身份验证所必需的。|
@@ -106,7 +113,7 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 
 ## <a name="options-inherited-from-parent-commands"></a>从父命令继承的选项
 
-|选项|描述|
+|选项|说明|
 |---|---|
 |--cap-mbps uint32|以兆位/秒为单位限制传输速率。 每分钟的吞吐量可能与 cap 略有不同。 如果将此选项设置为零，或省略此选项，则不会限制吞吐量。|
 |--output 类型字符串|命令输出的格式。 选项包括：文本、json。 默认值为 "text"。|

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
-ms.date: 04/19/2019
+ms.date: 11/04/2019
 ms.author: nitinme
-ms.openlocfilehash: 5337f2d3df395650c65ae4a12cbdf4f8ba90ca3d
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 081951e2e77c7fdd077dc92fe0368423db85f641
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840396"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606961"
 ---
 # <a name="what-are-azure-cognitive-services"></a>什么是 Azure 认知服务？
 
@@ -26,7 +26,7 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 |服务名称|服务说明|
 |:-----------|:------------------|
 |[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "计算机视觉")|使用计算机视觉服务，你可以访问用于处理图像并返回信息的高级算法。|
-|[自定义视觉服务](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "自定义视觉服务")|通过自定义视觉服务可以生成自定义图像分类器。|
+|[自定义视觉服务](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "自定义影像服务")|通过自定义视觉服务可以生成自定义图像分类器。|
 |[人脸 API](https://docs.microsoft.com/azure/cognitive-services/face/ "人脸 API")|使用人脸 API 可访问高级人脸算法，支持人脸属性检测和识别。|
 |[表单识别器](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "表单识别器")（预览版）|表单识别器从表单文档中识别并提取键值对和表数据；然后输出结构化数据，包括原始文件中的关系。|
 |[墨迹识别器](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "墨迹识别器")（预览版）|使用墨迹识别器可以识别和分析数字墨迹笔划数据、形状和手写内容，并输出包含所有已识别实体的文档结构。|
@@ -39,7 +39,7 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 |[语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "语音服务")|语音服务将语音支持功能添加到应用程序。|
 |[说话人识别 API](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "说话人识别 API")（预览版）|说话人识别 API 为说话人识别和验证提供算法。|
 |[必应语音](https://docs.microsoft.com/azure/cognitive-services/speech/home "必应语音")（即将停用）|必应语音 API 为你提供了一种在应用程序中创建语音支持功能的简便方法。|
-|[语音翻译](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "语音翻译")（即将停用）|语音翻译是一项机器翻译服务。|
+|[语音翻译](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator 语音")（即将停用）|语音翻译是一项机器翻译服务。|
 
 ## <a name="language-apis"></a>语言 API
 
@@ -70,9 +70,9 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 
 |服务名称|服务说明|
 |:-----------|:------------------|
-|[异常检测器](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "异常检测器")（预览版）|使用异常检测器可以监视并检测时序数据中的异常。|
+|[异常探测器](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "异常检测器")（预览版）|使用异常检测器可以监视并检测时序数据中的异常。|
 |[内容审查器](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "内容审查器")|内容审查器监视可能的冒犯性、不可取和危险内容。|
-|[个性化体验创建服务](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "个性化体验创建服务")（预览版）|个性化体验创建服务可让你选择要显示给用户的最佳体验，并从其实时行为中学习信息。|
+|[个性化体验创建服务](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "个性化体验创建服务")|个性化体验创建服务可让你选择要显示给用户的最佳体验，并从其实时行为中学习信息。|
 
 ## <a name="use-free-trials"></a>使用免费试用版
 
@@ -84,7 +84,7 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 
 ## <a name="upgrade-to-unlock-limits"></a>通过升级来解锁限制
 
-所有 API 都有一个免费试用计划，该计划具有使用量和吞吐量限制。  在 Azure 门户中部署服务时，可以通过使用付费产品/服务和选择适当的定价层选项来增加这些限制。 [详细了解产品/服务和定价](https://azure.microsoft.com/pricing/details/cognitive-services/ "产品/服务和定价")。 你将需要使用信用卡和电话号码设置一个 Azure 订阅者帐户。 如果你有特殊要求或者只是想与销售人员交谈，请单击定价页顶部的“联系我们”按钮。
+所有 API 都有一个免费试用计划，该计划具有使用量和吞吐量限制。  在 Azure 门户中部署服务时，可以通过使用付费产品/服务和选择适当的定价层选项来增加这些限制。 [详细了解产品/服务和定价](https://azure.microsoft.com/pricing/details/cognitive-services/ "o产品/服务和定价)。 你将需要使用信用卡和电话号码设置一个 Azure 订阅者帐户。 如果你有特殊要求或者只是想与销售人员交谈，请单击定价页顶部的“联系我们”按钮。
 
 ## <a name="regional-availability"></a>区域可用性
 

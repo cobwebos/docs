@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f05e732e11fb9cd88d4671528d551c68e448a8d7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 025c60485625a4ab4d2e29b1e81d8574f6187b93
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685463"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049117"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>有关如何在 Azure SQL 数据仓库中设计分布式表的指南
 有关如何在 Azure SQL 数据仓库中设计哈希分布式表和轮循机制分布式表的一些建议。
@@ -38,7 +38,7 @@ ms.locfileid: "73685463"
 
 
 ### <a name="hash-distributed"></a>哈希分布
-哈希分布表通过使用确定性的哈希函数将每一行分配给一个[分布区](massively-parallel-processing-mpp-architecture.md#distributions)，实现表行的跨计算节点分布。 
+哈希分布表通过使用确定性的哈希函数将每一行分配给一个[分布区](massively-parallel-processing-mpp-architecture.md#distributions)，来跨计算节点分布表行。 
 
 ![分布式表](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "分布式表")  
 
@@ -60,7 +60,7 @@ ms.locfileid: "73685463"
 
 - 从一个简单的起点入门时，因为该分布是默认选项
 - 没有明显的联接键时
-- 没有合适的候选列可供哈希分布表时
+- 如果没有合适的候选列可对表进行哈希分布
 - 表没有与其他表共享通用的联接键时
 - 该联接比查询中的其他联接更不重要时
 - 表是临时过渡表时

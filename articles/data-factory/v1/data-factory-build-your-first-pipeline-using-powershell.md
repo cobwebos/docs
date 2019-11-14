@@ -1,5 +1,5 @@
 ---
-title: 构建第一个数据工厂 (PowerShell) | Microsoft Docs
+title: 构建第一个数据工厂 (PowerShell)
 description: 本教程使用 Azure PowerShell 创建一个示例 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 3e60e31f62d74a22a87c60f70e62bd5148906607
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 0209b004ba54417a26cd41716687d328ec1431cf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140420"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682982"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>教程：使用 Azure PowerShell 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]

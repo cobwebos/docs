@@ -1,6 +1,6 @@
 ---
-title: 通过区域冗余的前端创建负载均衡器 - Azure PowerShell
-titlesuffix: Azure Load Balancer
+title: 使用区域冗余的前端 Azure PowerShell 创建负载均衡器
+titleSuffix: Azure Load Balancer
 description: 了解如何使用 PowerShell 通过区域冗余的公共 IP 地址前端创建公共标准负载均衡器
 services: load-balancer
 documentationcenter: na
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 3ce14a0d9d5b9d5ef7ca7be34faad3fa60795ab9
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4f7cf5c7600a057a913be28ff4b2a44b241e6be5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275091"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049190"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-powershell"></a>使用 Azure PowerShell 通过区域冗余的前端创建标准负载均衡器
 
 本文指导逐步通过区域冗余前端使用公共 IP 标准地址创建公共[标准负载均衡器](https://aka.ms/azureloadbalancerstandard)。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
 >  选择 Azure 资源、区域和 VM 大小系列时可使用可用性区域支持。 有关如何开始使用以及可以尝试将可用性区域用于哪些 Azure 资源、区域和 VM 大小系列的详细信息，请参阅[可用性区域概述](https://docs.microsoft.com/azure/availability-zones/az-overview)。 若需支持，可以在 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) 上寻求帮助或者 [open an Azure support ticket](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json)（创建 Azure 支持票证）。

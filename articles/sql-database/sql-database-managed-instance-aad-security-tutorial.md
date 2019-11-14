@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure AD 服务器主体（登录名）确保 Azure SQL 数据库托管实例的安全性 | Microsoft Docs
+title: 使用 Azure AD 服务器主体（登录名）实现托管实例安全性
 description: 了解在 Azure SQL 数据库中保护托管实例的技术和功能，以及 Azure AD 服务器主体（登录名）的用法
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.topic: tutorial
-author: VanMSFT
-ms.author: vanto
-ms.reviewer: carlrab
-ms.date: 02/20/2019
-ms.openlocfilehash: 37098411f465c611dc9d2e2443f369e01d6e338c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+author: GitHubMirek
+ms.author: mireks
+ms.reviewer: vanto
+ms.date: 11/06/2019
+ms.openlocfilehash: bd65a21c2aa21643c76966410931949db7d17ad6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70230997"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822787"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>教程：使用 Azure AD 服务器主体（登录名）确保 Azure SQL 数据库中托管实例的安全性
 
@@ -35,9 +35,6 @@ ms.locfileid: "70230997"
 > - 以 Azure AD 用户身份使用模拟
 > - 以 Azure AD 用户身份使用跨数据库查询
 > - 了解安全功能，例如威胁防护、审核、数据掩码和加密
-
-> [!NOTE]
-> 托管实例的 Azure AD 服务器主体（登录名）目前为**公共预览版**。
 
 有关详细信息，请参阅 [Azure SQL 数据库托管实例概述](sql-database-managed-instance-index.yml)和[功能](sql-database-managed-instance.md)文章。
 
@@ -64,15 +61,14 @@ ms.locfileid: "70230997"
 
 ## <a name="create-an-azure-ad-server-principal-login-for-a-managed-instance-using-ssms"></a>使用 SSMS 为托管实例创建 Azure AD 服务器主体（登录名）
 
-必须由充当 `sysadmin` 的标准 SQL Server 帐户（非 Azure AD）创建第一个 Azure AD 服务器主体（登录名）。 有关如何连接到托管实例的示例，请参阅以下文章：
+第一个 Azure AD 服务器主体（登录名）可以由标准 SQL Server 帐户（非 Azure AD）创建，该帐户是 `sysadmin`，或者是在设置过程中创建的托管实例的 Azure AD 管理员。 有关详细信息，请参阅[为托管实例预配 Azure Active Directory 管理员](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)。 自 [Azure AD 服务器主体的 GA](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi) 以来，此功能已更改。
+
+有关如何连接到托管实例的示例，请参阅以下文章：
 
 - [快速入门：将 Azure VM 配置为连接到托管实例](sql-database-managed-instance-configure-vm.md)
 - [快速入门：配置从本地到托管实例的点到站点连接](sql-database-managed-instance-configure-p2s.md)
 
-> [!IMPORTANT]
-> 用于设置托管实例的 Azure AD 管理员不可用于在托管实例中创建 Azure AD 服务器主体（登录名）。 必须使用充当 `sysadmin` 的 SQL Server 帐户创建第一个 Azure AD 服务器主体（登录名）。 Azure AD 服务器主体（登录名）的正式版推出后，即会去除这种暂时性限制。 如果尝试使用 Azure AD 管理员帐户创建登录名，将会看到以下错误：`Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
-
-1. 在 [SQL Server Management Studio](sql-database-managed-instance-configure-p2s.md#use-ssms-to-connect-to-the-managed-instance) 中使用充当 `sysadmin` 的标准 SQL Server 帐户（非 Azure AD）登录到托管实例。
+1. 在 [SQL Server Management Studio](sql-database-managed-instance-configure-p2s.md#use-ssms-to-connect-to-the-managed-instance) 中使用充当 `sysadmin` 或 MI 的 Azure AD 管理员的标准 SQL Server 帐户（非 Azure AD）登录到托管实例。
 
 2. 在“对象资源管理器”中右键服务器，然后选择“新建查询”。  
 
@@ -125,7 +121,7 @@ ms.locfileid: "70230997"
 
 将登录名添加到 `sysadmin` 服务器角色：
 
-1. 再次登录到托管实例，或通过充当 `sysadmin` 的 SQL 主体使用现有连接。
+1. 再次登录到托管实例，或通过充当 `sysadmin` 的 Azure AD 管理员或 SQL 主体使用现有连接。
 
 1. 在“对象资源管理器”中右键服务器，然后选择“新建查询”。  
 
@@ -425,7 +421,7 @@ ms.locfileid: "70230997"
 
     应会看到 **TestTable2** 的表结果。
 
-## <a name="additional-scenarios-supported-for-azure-ad-server-principals-logins-public-preview"></a>Azure AD 服务器主体（登录名）（公共预览版）支持的其他方案 
+## <a name="additional-scenarios-supported-for-azure-ad-server-principals-logins"></a>Azure AD 服务器主体（登录名）支持的其他方案
 
 - Azure AD 服务器主体（登录名）支持 SQL 代理管理和作业执行。
 - Azure AD 服务器主体（登录名）可以执行数据库备份和还原操作。

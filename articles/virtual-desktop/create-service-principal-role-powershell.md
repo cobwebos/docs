@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 创建 Windows 虚拟桌面服务主体和角色分配 - Azure
+title: Windows 虚拟桌面服务主体角色分配 - Azure
 description: 了解如何使用 PowerShell 在 Windows 虚拟桌面中创建服务主体并分配角色。
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: 87057d29d9d95ac0ebca298e40ca0d8c2aa9b0b1
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 1141731697c9f649a4a8d4052cd550605049b52e
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679622"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606936"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>教程：通过使用 PowerShell 创建服务主体和角色分配
 

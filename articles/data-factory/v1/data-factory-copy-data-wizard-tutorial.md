@@ -1,5 +1,5 @@
 ---
-title: 教程：使用复制向导创建管道 | Microsoft Docs
+title: '教程：使用复制向导创建管道 '
 description: 在本教程中，通过使用数据工厂所支持的复制向导，创建带有复制活动的 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fa5e7735d122dcf06b9b9692abb23441752082fa
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 3afe58baa083ccbfe075476f9a7a8b36c30ca9c8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140358"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682822"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>教程：使用数据工厂复制向导创建包含复制活动的管道
 > [!div class="op_single_selector"]

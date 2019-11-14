@@ -8,20 +8,22 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/08/2019
-ms.openlocfilehash: 17252f6544ee56647315dc44ace4db3e3abe9726
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/13/2019
+ms.openlocfilehash: 4aab699ff0141b648066fae0de445c4467be7509
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821876"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048395"
 ---
 # <a name="azure-hybrid-benefit"></a>Azure 混合权益
 
-在基于 vCore 的购买模型的预配计算机层级中，可以使用[适用于 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)交换现有许可证，以获得 SQL 数据库的折扣价格。 借助这项 Azure 权益，可以使用附带软件保障的本地 SQL Server 许可证，将 Azure SQL 数据库的成本最多节省 30%。
+在基于 vCore 的购买模型的预配计算机层级中，可以使用[适用于 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)交换现有许可证，以获得 SQL 数据库的折扣价格。 借助这项 Azure 权益，可以使用附带软件保障的本地 SQL Server 许可证，将 Azure SQL 数据库的成本最多节省 30%。 
+
+> [!NOTE]
+> 更改为 Azure 混合权益不需要停机。
 
 ![定价](./media/sql-database-service-tiers/pricing.png)
-
 
 ## <a name="choose-a-license-model"></a>选择许可证模型
 
@@ -49,8 +51,6 @@ ms.locfileid: "73821876"
   - [数据库 - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)
   - [托管实例 - 创建或更新](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
   - [托管实例 - 更新](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
-
-
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,20 +3,20 @@ title: 使用 Power BI 查询和可视化 Azure 数据资源管理器数据的�
 description: 本文介绍使用 Power BI 查询和可视化 Azure 数据资源管理器数据的最佳做法。
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 39fab02ebc3a80e0aae34a86a1a6b7f3f46c96f3
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: db1d530c9cab77ae612c83a0d4f52478fb9ee270
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286745"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024035"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>使用 Power BI 查询和可视化 Azure 数据资源管理器数据的最佳做法
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 [Power BI](https://docs.microsoft.com/power-bi/)是一种业务分析解决方案，可让你直观显示数据，并在组织中共享结果。 Azure 数据资源管理器提供三个选项用于连接到 Power BI 中的数据。 使用[内置连接器](power-bi-connector.md)，将[查询从 Azure 数据资源管理器导入 Power BI](power-bi-imported-query.md)或使用[SQL 查询](power-bi-sql-query.md)。 本文提供了有关在 Power BI 中查询和可视化 Azure 数据资源管理器数据的技巧。 
+Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服务，适用于日志和遥测数据。 [Power BI](https://docs.microsoft.com/power-bi/)是一种业务分析解决方案，可让你直观显示数据，并在组织中共享结果。 Azure 数据资源管理器提供三个选项用于连接到 Power BI 中的数据。 使用[内置连接器](power-bi-connector.md)，将[查询从 Azure 数据资源管理器导入 Power BI](power-bi-imported-query.md)或使用[SQL 查询](power-bi-sql-query.md)。 本文提供了有关在 Power BI 中查询和可视化 Azure 数据资源管理器数据的技巧。 
 
 ## <a name="best-practices-for-using-power-bi"></a>使用 Power BI 的最佳实践 
 
@@ -46,12 +46,12 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 ### <a name="complex-queries-in-power-bi"></a>Power BI 中的复杂查询
 
-与 Power Query 相比，复杂查询更容易用 Kusto 表示。 它们应该实现为[Kusto 函数](/azure/kusto/query/functions)，并在 Power BI 中调用。 在 Kusto 查询中对 `let` 语句使用**DirectQuery**时，此方法是必需的。 由于 Power BI 联接两个查询，而 `let` 语句不能与 `join` 运算符一起使用，因此可能会出现语法错误。 因此，将联接的每个部分保存为 Kusto 函数，并允许 Power BI 将这两个函数联接在一起。
+与 Power Query 相比，复杂查询更容易用 Kusto 表示。 它们应该实现为[Kusto 函数](/azure/kusto/query/functions)，并在 Power BI 中调用。 在 Kusto 查询中将**DirectQuery**与 `let` 语句结合使用时，此方法是必需的。 由于 Power BI 联接两个查询，并且 `let` 语句不能与 `join` 运算符一起使用，因此可能会出现语法错误。 因此，将联接的每个部分保存为 Kusto 函数，并允许 Power BI 将这两个函数联接在一起。
 
 ### <a name="how-to-simulate-a-relative-date-time-operator"></a>如何模拟相对日期时间运算符
 
 Power BI 不包含*相对*日期时间运算符，如 `ago()`。
-若要模拟 `ago()`，请结合使用 @no__t 和 @no__t Power BI 函数。
+若要模拟 `ago()`，请结合使用 `DateTime.FixedLocalNow()` 和 `#duration` Power BI 函数。
 
 而不是使用 `ago()` 运算符的查询：
 
@@ -106,7 +106,7 @@ in
 
 1. 用参数替换查询的相关部分。 将查询拆分为多个部分，并使用 "与" 符号（&）以及参数将其连接回去。
 
-   例如，在上面的查询中，我们将获取 @no__t 0 部分，并将其拆分为： `State == '` 和 `'`，并将 `State` 参数放置到其中：
+   例如，在上面的查询中，我们将获取 `State == 'ALABAMA'` 部分，并将其拆分为： `State == '` 和 `'`，并在它们之间放置 `State` 参数：
    
     ```kusto
     "StormEvents | where State == '" & State & "' | take 100"
@@ -140,9 +140,9 @@ in
 
 Power BI 包括可以定期对数据源发出查询的数据刷新计划程序。 此机制不应用于将控制命令计划给 Kusto，因为 Power BI 假设所有查询都是只读的。
 
-### <a name="power-bi-can-send-only-short-lt2000-characters-queries-to-kusto"></a>Power BI 只能向 Kusto 发送 short （&lt;2000 个字符）的查询
+### <a name="power-bi-can-send-only-short-lt2000-characters-queries-to-kusto"></a>Power BI 只能向 Kusto 发送短（&lt;2000 个字符）查询
 
-如果在 Power BI 中运行查询将导致以下错误： _"DataSource。错误："无法从 ..." 中获取内容 "_ 查询的长度可能超过2000个字符。 Power BI 使用**PowerQuery**通过发出 HTTP GET 请求来查询 Kusto，该请求将查询编码为要检索的 URI 的一部分。 因此，Power BI 发出的 Kusto 查询限制为请求 URI 的最大长度（2000个字符，减去小偏移量）。 一种解决方法是，可以在 Kusto 中定义[存储的函数](/azure/kusto/query/schema-entities/stored-functions)，Power BI 并在查询中使用该函数。
+如果在 Power BI 中运行查询会导致出现以下错误： _"DataSource：错误：网站无法从 ... 获取内容 ..."_ 查询的长度可能超过2000个字符。 Power BI 使用**PowerQuery**通过发出 HTTP GET 请求来查询 Kusto，该请求将查询编码为要检索的 URI 的一部分。 因此，Power BI 发出的 Kusto 查询限制为请求 URI 的最大长度（2000个字符，减去小偏移量）。 一种解决方法是，可以在 Kusto 中定义[存储的函数](/azure/kusto/query/schema-entities/stored-functions)，Power BI 并在查询中使用该函数。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,7 +1,6 @@
 ---
-title: Azure PowerShell 示例
-titlesuffix: Azure Load Balancer
-description: Azure PowerShell 示例
+title: Azure PowerShell 示例-Azure 负载均衡器
+description: 在这些示例中，通过 Azure 负载均衡器对 Vm 上的多个网站进行负载均衡，并将流量传输到 Vm 的流量。
 services: virtual-network
 documentationcenter: load-balancer
 author: asudbring
@@ -13,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 12/10/2018
 ms.author: allensu
-ms.openlocfilehash: cf984efdeb8c65f4f9d639e331c2dc07e2910479
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4311c1dca2ad299ac8b064769db5eb928e6a4513
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274077"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048714"
 ---
 # <a name="azure-powershell-samples-for-load-balancer"></a>适用于负载均衡器的 Azure PowerShell 示例
 

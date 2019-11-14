@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 Azure PowerShell 创建移动数据的管道 | Microsoft Docs
+title: '教程：使用 Azure PowerShell 创建移动数据的管道 '
 description: 本教程使用 Azure PowerShell 创建包含复制活动的 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 191840b8f49dad4903af362d1651206adda9eef2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 215ed088b17125e7e41877e3c188a6bf3d77e8bb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140312"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682860"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>教程：使用 Azure PowerShell 创建移动数据的数据工厂管道
 > [!div class="op_single_selector"]

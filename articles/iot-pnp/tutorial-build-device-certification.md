@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 524bc3b2650ad7b435cba6b6b9d4084ffa5cf96c
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: e4dd5215812f0fd1a43afe0923601417bc8e6916
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932674"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569641"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>生成可供认证的 IoT 即插即用预览版设备
 
@@ -111,26 +111,17 @@ ms.locfileid: "70932674"
 
 1. 选择“ANSI C”作为语言。 
 
-1. 选择“CMake 项目”作为项目类型。 
-
 1. 选择“通过 DPS (设备预配服务)对称密钥”作为连接方法。 
+
+1. 选择“Windows 上的 CMake 项目”  或“Linux 上的 CMake 项目”  作为项目模板，具体取决于设备的操作系统。
 
 1. VS Code 将打开一个新窗口，其中包含生成的设备代码存根文件。
 
-1. 打开 `main.c`，填写已准备好的 **dpsIdScope**、**sasKey** 和 **registrationId**。 可以从认证门户获取此信息。 有关详细信息，请参阅[连接和测试 IoT 即插即用设备](tutorial-certification-test.md#connect-and-discover-interfaces)。
+1. 生成代码后，输入 DPS 凭据（**DPS ID 范围**、**DPS 对称密钥**、**设备 Id**）作为应用程序的参数。 若要从证书门户获取凭据，请参阅[连接并测试 IoT 即插即用设备](tutorial-certification-test.md#connect-and-discover-interfaces)。
 
-    ```c
-    // TODO: Specify DPS scope ID if you intend on using DPS / IoT Central.
-    static const char *dpsIdScope = "[DPS Id Scope]";
-    
-    // TODO: Specify symmetric keys if you intend on using DPS / IoT Central and symmetric key based auth.
-    static const char *sasKey = "[DPS symmetric key]";
-    
-    // TODO: specify your device registration ID
-    static const char *registrationId = "[device registration Id]";
+    ```cmd/sh
+    .\your_pnp_app.exe [DPS ID Scope] [DPS symmetric key] [device ID]
     ```
-
-1. 保存文件。
 
 ### <a name="implement-standard-interfaces"></a>实现标准接口
 

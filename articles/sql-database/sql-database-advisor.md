@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik
-ms.date: 12/19/2018
-ms.openlocfilehash: fb7ba90724a98a34adf4aa279eefc8e3d7a63bf3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/12/2019
+ms.openlocfilehash: a113ea3fd4828a498d1f53ea7604df7bc8588eb5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811384"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048411"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>SQL 数据库性能建议
 
@@ -25,6 +25,17 @@ Azure SQL 数据库与应用程序一起自行学习和进行适应性调整。 
 > [!TIP]
 > [自动调整](sql-database-automatic-tuning.md)是自动调整一些最常见的数据库性能问题的推荐方法。 [查询性能见解](sql-database-query-performance.md)是基本 Azure SQL 数据库性能监控需求的推荐方法。 [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) 是针对大规模高级数据库性能监控的推荐方法，具有内置智能功能，可自动执行性能故障排除。
 >
+
+## <a name="performance-recommendations-options"></a>性能建议选项
+
+可用的性能建议选项 Azure SQL 数据库包括：
+
+| 性能建议 | 单一数据库和共用数据库支持 | 实例数据库支持 |
+| :----------------------------- | ----- | ----- |
+| **创建索引建议**-建议创建可提高工作负荷性能的索引。 | 是 | 否 | 
+| **删除索引建议**-建议每天删除冗余索引和重复索引（唯一索引除外）以及长时间未使用的索引（> 90 天）。 请注意，此选项与使用分区切换和索引提示的应用程序不兼容。 高级和业务关键服务层不支持删除未使用的索引。 | 是 | 否 |
+| **参数化查询建议（预览版）** -如果有一个或多个不断重新编译但最终使用相同的查询执行计划的查询，则建议使用强制之内。 | 是 | 否 |
+| **修复架构问题建议（预览版）** -当 sql 数据库服务发现 sql 数据库上发生的架构相关 SQL 错误的数量发生异常时，将显示架构更正建议。 Microsoft 当前正在弃用“修复架构问题”建议。 | 是 | 否 |
 
 ## <a name="create-index-recommendations"></a>“创建索引”建议
 SQL 数据库持续监视正在运行的查询，并发现可以提升性能的索引。 确信缺少特定索引后，便会新建“创建索引”建议。
@@ -44,14 +55,13 @@ SQL 数据库持续监视正在运行的查询，并发现可以提升性能的�
 此过程不断重复，直到没有足够的可用存储来创建索引或不再认为索引有益。
 
 ## <a name="drop-index-recommendations"></a>“删除索引”建议
-除了检测缺少的索引外，SQL 数据库还会持续分析现有索引的性能。 Azure SQL 数据库会建议删除未使用的索引。 在两种情况下会建议删除索引：
+除了检测缺少的索引外，SQL 数据库还会持续分析现有索引的性能。 Azure SQL 数据库会建议删除未使用的索引。 在以下两种情况下，建议删除索引：
 * 索引是另一索引的副本（已编入索引且包含的列、分区架构和筛选器都相同）。
 * 长时间（93 天）未使用索引。
 
 也会验证已实现的“删除索引”建议。 如果性能得到提升，则会生成影响力报表。 如果性能下降，则会还原建议。
 
-
-## <a name="parameterize-queries-recommendations"></a>参数化查询建议
+## <a name="parameterize-queries-recommendations-preview"></a>参数化查询建议（预览）
 当具有一个或多个正在持续被重新编译但都以相同的查询执行计划结束的查询时，就会出现*参数化查询*建议。 这种状态提供了一个应用强制参数化的机会。 而强制参数化允许缓存并在将来重复使用查询计划，从而改善性能和减少资源使用。 
 
 对 SQL Server 发出的每个查询一开始需要进行编译，生成执行计划。 每个生成的计划添加到计划缓存中。 相同查询的后续执行可以重复使用该缓存中的此计划，而无需进一步编译。 

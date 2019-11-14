@@ -1,19 +1,19 @@
 ---
-title: 创建 Azure HPC 缓存（预览）
+title: 创建 Azure HPC 缓存
 description: 如何创建 Azure HPC 缓存实例
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 7052b88a24ff5353656a71a7bfb044922ae1415c
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 1b9d2d3c46aab2096dd9208e0bea7f7776c0e429
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709984"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582709"
 ---
-# <a name="create-an-azure-hpc-cache-preview"></a>创建 Azure HPC 缓存（预览）
+# <a name="create-an-azure-hpc-cache"></a>创建 Azure HPC 缓存
 
 使用 Azure 门户创建缓存。
 
@@ -23,7 +23,7 @@ ms.locfileid: "71709984"
 
 ![Azure 门户中的“项目详细信息”页的屏幕截图](media/hpc-cache-create-basics.png)
 
-在“项目详细信息”  中，选择将托管缓存的订阅和资源组。 请确保订阅位于[预览访问](hpc-cache-prereqs.md#azure-subscription)列表中。
+在“项目详细信息”  中，选择将托管缓存的订阅和资源组。 请确保订阅位于[访问](hpc-cache-prereqs.md#azure-subscription)列表中。
 
 在“服务详细信息”  中，设置缓存名称和其他属性：
 

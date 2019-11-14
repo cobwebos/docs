@@ -3,20 +3,20 @@ title: 使用 Power BI 的 Azure 数据资源管理器连接器直观显示数�
 description: 本文介绍如何使用三个选项中的一个选项在 Power BI 中直观显示数据：Azure 数据资源管理器的 Power BI 连接器。
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: a2ec179321c5d9cb6e9627e397fcb6ae09dc82ed
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 361ea6ed76207e8e9721f64df61738b6cd9631dc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349143"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024214"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>使用 Power BI 的 Azure 数据资源管理器连接器直观显示数据
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Power BI 是一种业务分析解决方案，可以用来可视化数据，并在组织内共享结果。 Azure 数据资源管理器提供三个可以在 Power BI 中连接到数据的选项：使用内置连接器、从 Azure 数据资源管理器导入查询，或者使用 SQL 查询。 本文介绍如何使用内置连接器获取数据并在 Power BI 报表中直观显示这些数据。 使用 Azure 数据资源管理器本机连接器创建 Power BI 仪表板非常简单。 Power BI 连接器支持[导入和直接查询连接模式](https://docs.microsoft.com/power-bi/desktop-directquery-about)。 您可以使用**导入**模式或**DirectQuery**模式来构建面板，具体取决于方案、规模和性能要求。 
+Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服务，适用于日志和遥测数据。 Power BI 是一种业务分析解决方案，可以用来可视化数据，并在组织内共享结果。 Azure 数据资源管理器提供三个可以在 Power BI 中连接到数据的选项：使用内置连接器、从 Azure 数据资源管理器导入查询，或者使用 SQL 查询。 本文介绍如何使用内置连接器获取数据并在 Power BI 报表中直观显示这些数据。 使用 Azure 数据资源管理器本机连接器创建 Power BI 仪表板非常简单。 Power BI 连接器支持[导入和直接查询连接模式](https://docs.microsoft.com/power-bi/desktop-directquery-about)。 您可以使用**导入**模式或**DirectQuery**模式来构建面板，具体取决于方案、规模和性能要求。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,11 +42,11 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
     ![群集、数据库、表选项](media/power-bi-connector/cluster-database-table.png)
 
-    **设置** | **ReplTest1** | **字段说明**
+    **设置** | **值** | 字段说明
     |---|---|---|
     | 群集 | *https://help.kusto.windows.net* | 帮助群集的 URL。 其他群集的 URL 采用 *https://\<ClusterName\>.\<区域\>.kusto.windows.net* 格式。 |
     | 数据库 | 留空 | 托管在要连接到的群集上的数据库。 我们会在后面的步骤中选择此项。 |
-    | 表单名称 | 留空 | 数据库中的一个表，或者类似 <code>StormEvents \| take 1000</code> 的查询。 我们会在后面的步骤中选择此项。 |
+    | 表名称 | 留空 | 数据库中的一个表，或者类似 <code>StormEvents \| take 1000</code> 的查询。 我们会在后面的步骤中选择此项。 |
     | 高级选项 | 留空 | 查询选项，例如结果集大小。 |
     | 数据连接模式 | *DirectQuery* | 确定 Power BI 是导入数据还是直接连接到数据源。 可以对此连接器使用任一选项。 |
     | | | |

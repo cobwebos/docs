@@ -1,18 +1,18 @@
 ---
-title: 在 Azure 应用程序网关上自定义 Web 应用程序防火墙规则-Azure CLI
+title: 使用 CLI 自定义规则-Azure Web 应用程序防火墙
 description: 本文提供了有关如何在应用程序网关上利用 Azure CLI 自定义 Web 应用程序防火墙规则的信息。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/23/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: 58cc339e8f849a71fb01973e99dba936f6b53a8c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8e8aaa9458619bc937c5bb11c450f3197b92f451
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516937"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048530"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-cli"></a>使用 Azure CLI 自定义 Web 应用程序防火墙规则
 

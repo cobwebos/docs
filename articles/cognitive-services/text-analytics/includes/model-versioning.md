@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/25/2019
 ms.author: aahi
-ms.openlocfilehash: 5a06e26e5f1640024e343c714db3df134422115c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 29850cb9cb40eae0829b5d8c2b58b5f9518f18d5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488655"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021039"
 ---
 可以通过第 3 版文本分析 API 选择在数据上使用的文本分析模型。 在请求中使用可选的 `model-version` 参数选择一个模型版本。 如果未指定此参数，API 会默认使用 `latest`（最新的稳定模型版本）。
 
@@ -25,8 +25,8 @@ ms.locfileid: "73488655"
 
 ```json
 {
-    “documents”: […]
-    “errors”: []
-    “model-version”: “2019-10-01”
+    "documents": […]
+    "errors": []
+    "model-version": "2019-10-01"
 }
 ```

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/01/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 64af398ec4829a0336294b33fef102392b9a4099
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 6549cf030772d805b063510b9931968027639511
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163873"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583142"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark 蓝图示例的建议映射
 
@@ -356,11 +356,11 @@ ms.locfileid: "73163873"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 CIS Microsoft Azure Foundations Benchmark 蓝图的控制映射后，接下来请阅读以下文章了解该蓝图，或者在 Azure 门户中访问 Azure Policy 以分配计划：
+了解 CIS Microsoft Azure 基础基准蓝图的控制映射后，接下来请阅读以下文章了解该蓝图，或者在 Azure 门户中访问 Azure Policy 以分配计划：
 
 > [!div class="nextstepaction"]
-> [CIS Microsoft Azure Foundations Benchmark 蓝图 - 概述](./index.md)
-> [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions)
+> [CIS Microsoft Azure 基础基准蓝图 - 概述](./index.md)
+> [CIS Microsoft Azure 基础基准蓝图 - 部署步骤](./deploy.md)
 
 有关蓝图及其使用方式的更多文章：
 

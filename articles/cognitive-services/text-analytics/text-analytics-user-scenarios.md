@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 04/04/2019
 ms.author: aahi
-ms.openlocfilehash: d8d2aed16b5af60c44501e6d72332783a164ff91
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 19421788eea59ea250efbaa656266da49dc3b42f
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478390"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742733"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>文本分析 API 的示例用户方案
 
@@ -48,4 +48,4 @@ ms.locfileid: "67478390"
 ## <a name="next-steps"></a>后续步骤
 
 * [什么是文本分析 API？](overview.md)
-* [使用 C# 将请求发送到文本分析 API](quickstarts/csharp.md)
+* [使用客户端库将请求发送到文本分析 API](quickstarts/text-analytics-sdk.md)

@@ -1,11 +1,10 @@
 ---
-title: 按管理员任务委托最小特权角色 - Azure Active Directory | Microsoft Docs
+title: 按管理任务委托角色-Azure Active Directory |Microsoft Docs
 description: 在 Azure Active Directory 中为标识任务委托角色
 services: active-directory
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
@@ -15,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5933fdd9932bd8c13ab0f231d677ce06112662ed
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: b8ccd98553b06ef3fcd2241c8223889c0a86e331
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169771"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024651"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -167,7 +166,7 @@ ms.locfileid: "72169771"
 更新组所有者 | 组所有者（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 用户管理员
 更新组属性 | 组所有者（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 用户管理员
 
-## <a name="identity-protection"></a>Identity Protection
+## <a name="identity-protection"></a>标识保护
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
@@ -212,7 +211,7 @@ ms.locfileid: "72169771"
 禁用 MFA | 全局管理员角色 | 
 启用 MFA | 全局管理员角色 | 
 管理 MFA 服务设置 | 全局管理员角色 | 
-要求选定用户重新提供联系方式 | 身份验证管理员 | 
+要求选定的用户再次提供联系方法 | 身份验证管理员 | 
 在所有记住的设备上还原多重身份验证  | 身份验证管理员 | 
 
 ## <a name="mfa-server"></a>MFA 服务器
@@ -259,8 +258,8 @@ ms.locfileid: "72169771"
 ---- | --------------------- | ----------------
 将用户分配到角色 | 特权角色管理员 | 
 配置角色设置 | 特权角色管理员 | 
-查看审核活动 | 安全读者 | 
-查看角色成员身份 | 安全读者 | 
+查看审核活动 | 安全读取者 | 
+查看角色成员身份 | 安全读取者 | 
 
 ## <a name="roles-and-administrators"></a>角色和管理员
 
@@ -294,15 +293,15 @@ ms.locfileid: "72169771"
 管理自定义控件 | 条件访问管理员 | 安全管理员
 管理命名位置 | 条件访问管理员 | 安全管理员
 管理使用条款 | 条件访问管理员 | 安全管理员
-读取所有配置 | 安全读者 | 安全管理员
-读取命名位置 | 安全读者 | 条件访问管理员、安全管理员
+读取所有配置 | 安全读取者 | 安全管理员
+读取命名位置 | 安全读取者 | 条件访问管理员、安全管理员
 
 ## <a name="security---identity-security-score"></a>安全性 - 标识安全分数
 
 任务 | 最小特权角色 | 其他角色 | 
 ---- | --------------------- | ----------------
-读取所有配置 | 安全读者 | 安全管理员
-读取安全分数 | 安全读者 | 安全管理员
+读取所有配置 | 安全读取者 | 安全管理员
+读取安全分数 | 安全读取者 | 安全管理员
 更新事件状态 | 安全管理员 | 
 
 ## <a name="security---risky-sign-ins"></a>安全性 - 风险登录

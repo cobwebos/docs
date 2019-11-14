@@ -1,6 +1,6 @@
 ---
 title: 使用 IPv6 部署面向 Internet 的负载均衡器 - Azure 模板
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: 如何为 Azure 负载均衡器和负载均衡的 VM 部署 IPv6 支持。
 services: load-balancer
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: bfecb2a57cf5f086b6c9f99c50b857c8c1183e3e
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: e5cfc980387b63701fb3ff36e7fa8ac43800ecce
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025591"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048448"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>使用模板部署分配了 IPv6 的面向 Internet 的负载均衡器解决方案
 
@@ -29,10 +29,10 @@ ms.locfileid: "73025591"
 > * [模板](load-balancer-ipv6-internet-template.md)
 
 
->[!注意：针对 IPv6 的最佳实践更改] 本文介绍了一个介绍性的 IPv6 功能，该功能允许基本负载均衡器提供 IPv4 和 IPv6 连接。  更全面的 IPv6 连接现在适用于适用于[Azure vnet 的 ipv6](../virtual-network/ipv6-overview.md) ，这将 ipv6 连接与虚拟网络集成，并包含 Ipv6 网络安全组规则、ipv6 用户定义路由、ipv6 基本和标准负载均衡等。  适用于 azure Vnet 的 IPv6 是适用于 Azure 中的 IPv6 应用程序的最佳做法。 
+>[!注意：针对 IPv6 的最佳实践更改] 本文介绍了一个介绍性的 IPv6 功能，该功能允许基本负载均衡器提供 IPv4 和 IPv6 连接。  更全面的 IPv6 连接现在适用于适用于[Azure vnet](../virtual-network/ipv6-overview.md)的 ipv6，这将 ipv6 连接与虚拟网络集成，并包含 Ipv6 网络安全组规则、ipv6 用户定义路由、ipv6 基本和标准负载平衡等关键功能。  适用于 azure Vnet 的 IPv6 是适用于 Azure 中的 IPv6 应用程序的最佳做法。 
 >请参阅[用于 AZURE VNET 模板部署的 IPv6](../virtual-network/ipv6-configure-standard-load-balancer-template-json.md)
 
-Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure Load Balancer 还可以在多个端口和/或多个 IP 地址上显示这些服务。
+Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure 负载均衡器还可以在多个端口和/或多个 IP 地址上显示这些服务。
 
 ## <a name="example-deployment-scenario"></a>示例部署方案
 

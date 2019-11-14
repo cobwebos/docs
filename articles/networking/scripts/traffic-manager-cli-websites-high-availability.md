@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 06/26/2018
 ms.author: allensu
-ms.openlocfilehash: fdd54039cd3e039439c70e02b962e56d72efa715
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 2a083520a0da324d7033d4597a6b734b43c025b7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890262"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049254"
 ---
-# <a name="route-traffic-for-high-availability-of-applications"></a>为实现应用程序的高可用性路由流量
+# <a name="route-traffic-for-high-availability-of-applications---azure-cli"></a>路由流量以实现应用程序的高可用性-Azure CLI
 
 此脚本将创建一个资源组、两个应用服务计划、两个 Web 应用、一个流量管理器配置文件和两个流量管理器终结点。 流量管理器将流量引导到一个区域（作为主要区域）中的应用程序；主要区域中的应用程序不可用时，引导到次要区域。 执行脚本前，必须将 MyWebApp、MyWebAppL1 和 MyWebAppL2 值更改为 Azure 内的唯一值。 运行脚本后，可以使用 URL mywebapp.trafficmanager.net 访问主要区域中的应用。
 

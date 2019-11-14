@@ -1,5 +1,5 @@
 ---
-title: 多重身份验证（MFA）和 Privileged Identity Management Azure Active Directory |Microsoft Docs
+title: MFA 或2FA 和 Privileged Identity Management Azure AD |Microsoft Docs
 description: 了解 Azure AD Privileged Identity Management (PIM) 如何验证多重身份验证 (MFA)。
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/31/2018
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aa58c354198e648227b9b0b43d1f60546f87d32
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 6df593909c3ae5962e413eb84e64196fade0326b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063066"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022138"
 ---
 # <a name="multi-factor-authentication-and-privileged-identity-management"></a>多重身份验证和 Privileged Identity Management
 

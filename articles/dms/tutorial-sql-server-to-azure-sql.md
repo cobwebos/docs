@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 09/22/2019
-ms.openlocfilehash: 7e5b4a3cb04215504c4fd4fd1ebfcbcbe8c3f9f8
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.date: 11/05/2019
+ms.openlocfilehash: 46d5754d046284ae42da91c2eb08bfe709e7e372
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179101"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582355"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-offline-using-dms"></a>教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或共用数据库
 
@@ -58,6 +58,8 @@ ms.locfileid: "71179101"
     > - 服务总线终结点
     >
     > Azure 数据库迁移服务缺少 Internet 连接，因此必须提供此配置。
+    >
+    >如果在本地网络与 Azure 之间没有站点到站点连接，或者站点到站点连接带宽有限，请考虑在混合模式下使用 Azure 数据库迁移服务（预览版）。 混合模式利用本地迁移工作线程以及云中运行的 Azure 数据库迁移服务的实例。 若要在混合模式下创建 Azure 数据库迁移服务的实例，请参阅[使用 Azure 门户在混合模式下创建 Azure 数据库迁移服务的实例](https://aka.ms/dms-hybrid-create)一文。
 
 - 请确保 VNet 网络安全组规则未阻止到 Azure 数据库迁移服务以下入站通信端口：443、53、9354、445、12000。 有关 Azure VNet NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
 - 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
@@ -125,7 +127,7 @@ ms.locfileid: "71179101"
 
     ![数据迁移助手源连接详细信息](media/tutorial-sql-server-to-azure-sql/dma-source-connect.png)
 
-6. 在“连接到目标服务器”  下选择“下一步”  ，指定 Azure SQL 数据库的目标连接详细信息，选择“连接”  ，然后选择在 Azure SQL 数据库中已预配的“AdventureWorksAzure”  数据库。
+6. 在“连接到目标服务器”  下选择“下一步”  ，指定 Azure SQL 数据库的目标连接详细信息，选择“连接”  ，然后选择已在 Azure SQL 数据库中预配的“AdventureWorksAzure”  数据库。
 
     ![数据迁移助手目标连接详细信息](media/tutorial-sql-server-to-azure-sql/dma-target-connect.png)
 
@@ -230,7 +232,7 @@ ms.locfileid: "71179101"
 
 2. 选择“保存”，然后在“映射到目标数据库”屏幕上，映射源和目标数据库以进行迁移。  
 
-    如果目标数据库包含的数据库名称与源数据库的相同，则 Azure 数据库迁移服务会默认选择目标数据库。
+    如果目标数据库包含的数据库名称与源数据库的相同，则 Azure 数据库迁移服务默认会选择目标数据库。
 
     ![映射到目标数据库](media/tutorial-sql-server-to-azure-sql/dms-map-targets-activity2.png)
 
@@ -270,7 +272,7 @@ ms.locfileid: "71179101"
 
 ### <a name="additional-resources"></a>其他资源
 
-- [使用 Azure 数据迁移服务 (DMS) 进行 SQL 迁移](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=3b671509-c3cd-4495-8e8f-354acfa09587)练习实验室。
+- [使用 Azure 数据迁移服务进行 SQL 迁移](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=3b671509-c3cd-4495-8e8f-354acfa09587)练习实验室。
 - 若要了解联机迁移到 Azure SQL 数据库时的已知问题和限制，请参阅 [Azure SQL 数据库联机迁移的已知问题和解决方法](known-issues-azure-sql-online.md)一文。
 - 若要了解 Azure 数据库迁移服务，请参阅[什么是 Azure 数据库迁移服务？](https://docs.microsoft.com/azure/dms/dms-overview)一文。
 - 若要了解 Azure SQL 数据库，请参阅[什么是 Azure SQL 数据库服务？](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)一文。

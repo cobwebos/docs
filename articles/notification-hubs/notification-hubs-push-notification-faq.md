@@ -13,20 +13,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
-ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 5de8c9523e05411a4751766c836b8e99ebb977c1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.lastreviewed: 11/13/2019
+ms.openlocfilehash: ee1bd413894ff5c12883279ccd8a9e9eac3c1790
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213145"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048784"
 ---
-# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题
+# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题解答
 
-## <a name="general"></a>常规
+## <a name="general"></a>一般信息
 
 ### <a name="what-is-the-resource-structure-of-notification-hubs"></a>通知中心的资源结构是怎样的？
 
@@ -40,14 +40,14 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 
 * **免费**：此层是探索推送功能的极佳起点。 不建议对生产应用使用此层。 在每个命名空间中，每个月可以预配 500 个设备和执行 100 万次推送，但无法享受服务级别协议 (SLA) 保证。
 * **基本**：建议将此层（或标准层）用于较小型的生产应用。 在每个命名空间中，每个月可以预配 200,000 个设备和执行 1000 万次推送（基准）。
-* **标准**：建议将此层用于中型到大型生产应用。 在每个命名空间中，每个月可以预配 1000 万个设备和执行 1000 万次推送（基准）。 包含丰富的遥测数据（提供有关推送状态的其他数据）。
+* **标准：** 建议将此层用于中型、大型生产应用。 在每个命名空间中，每个月可以预配 1000 万个设备和执行 1000 万次推送（基准）。 包含丰富的遥测数据（提供有关推送状态的其他数据）。
 
 标准层功能：
 
-* **丰富的遥测功能**：可以根据消息遥测使用通知中心来跟踪任何推送请求和平台通知系统反馈，以便进行调试。
-* **多租户**：可在命名空间级别使用平台通知系统凭据。 此选项可让你轻松地将租户拆分到相同命名空间内的中心。
+* **丰富的遥测功能**：可以使用通知中心的消息遥测来跟踪所有推送请求和用于调试的平台通知系统反馈。
+* **多租户**：可在命名空间级别与平台通知系统凭据一起使用。 此选项可让你轻松地将租户拆分到相同命名空间内的中心。
 * **计划推送**：可以计划随时发出通知。
-* **批量操作**：如[注册信息导出/导入]文档中所述启用注册信息导出/导入功能。
+* **大容量操作**：允许注册导出/导入功能，如[注册导出/导入]文档中所述。
 
 ### <a name="what-is-the-notification-hubs-sla"></a>什么是通知中心 SLA？
 
@@ -165,7 +165,7 @@ Azure 通知中心使用基于[共享访问签名](../storage/common/storage-dot
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>为灾难恢复提供哪种支持？
 
-我们提供元数据灾难恢复范围（通知中心名称、连接字符串和其他重要信息）。 触发灾难恢复方案后，注册数据是通知中心基础结构中丢失的*唯一片段*。 需要实施某种解决方案，将此数据重新填充到恢复后的新中心。
+我们提供元数据灾难恢复范围（通知中心名称、连接字符串和其他重要信息）。 触发灾难恢复方案后，注册数据是通知中心基础结构中丢失的*唯一片段*。 你必须实施解决方案，将此数据重新填充到新的中心后恢复中：
 
 1. 在另一个数据中心创建辅助通知中心。 我们建议一开始就创建一个辅助通知中心，以便在发生影响管理功能的灾难恢复事件时保护自己。 也可以在发生灾难恢复事件时创建一个辅助通知中心。
 
@@ -177,15 +177,19 @@ Azure 通知中心使用基于[共享访问签名](../storage/common/storage-dot
 * 使用一个应用后端从主通知中心获取注册信息的常规转储作为备份。 然后，通知中心可以将这些信息批量插入辅助通知中心。
 
 > [!NOTE]
-> [注册信息导出/导入]文档中介绍了标准层中可用的注册信息导出/导入功能。
+> [注册导出/导入]文档中介绍了标准层中可用的注册信息导出/导入功能。
 
 如果没有后端，当应用在目标设备上启动时，它们会在辅助通知中心执行新注册。 辅助通知中心最终将拥有所有已注册的活动设备。
 
 在一段时间内，包含未打开的应用的设备将收不到通知。
 
+### <a name="is-all-of-my-data-stored-in-encrypted-form"></a>所有数据是否都以加密形式存储？
+
+Azure 通知中心会对静态的所有客户数据进行加密，但注册标记除外。 出于此原因，不应使用标记存储个人数据或机密数据。
+
 ### <a name="is-there-audit-log-capability"></a>是否有审核日志功能？
 
-是。 所有通知中心管理操作都会更新 [Azure 门户]中公开的 Azure 活动日志。 Azure 活动日志可使用户了解对订阅中的资源执行的操作。 通过活动日志，可确定对订阅中的资源进行的任何写入操作（PUT、POST、DELETE）的内容、执行者和时间。 还可以了解操作和其他相关属性的状态。 但是， 活动日志不包括读取 (GET) 操作。
+可以。 所有通知中心管理操作都会更新 [Azure 门户]中公开的 Azure 活动日志。 Azure 活动日志可使用户了解对订阅中的资源执行的操作。 通过活动日志，可确定对订阅中的资源进行的任何写入操作（PUT、POST、DELETE）的内容、执行者和时间。 还可以了解操作和其他相关属性的状态。 但是， 活动日志不包括读取 (GET) 操作。
 
 ## <a name="monitoring-and-troubleshooting"></a>监视和故障排除
 
@@ -197,9 +201,9 @@ Azure 通知中心提供多项可用于故障排除的功能，尤其是针对�
 
 Azure 通知中心支持在 [Azure 门户]中查看遥测数据。 可以在[通知中心指标]页上找到有关可用指标的详细信息。
 
-您还可以通过编程方式访问度量值。 有关详细信息，请参阅以下文章：
+还可以通过编程方式访问指标。 有关详细信息，请参阅以下文章：
 
-- [通过 .Net 检索 Azure Monitor 指标](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)。 此示例使用用户名和密码。 若要使用证书，请重载 FromServicePrincipal 方法以提供证书，如[本示例](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)中所示。 
+- [使用 .NET 检索 Azure Monitor 指标](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)。 此示例使用用户名和密码。 若要使用证书，请重载 FromServicePrincipal 方法以提供[此示例](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)中所示的证书。 
 - [获取资源的指标和活动日志](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
 - [Azure 监视 REST API 演练](../azure-monitor/platform/rest-api-walkthrough.md)
 
@@ -219,7 +223,7 @@ Azure 通知中心支持在 [Azure 门户]中查看遥测数据。 可以在[通
 [通知中心安全推送教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
 [通知中心故障排除]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [通知中心指标]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
-[注册信息导出/导入]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
+[注册导出/导入]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
 [Azure 门户]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [移动应用]: https://azure.microsoft.com/services/app-service/mobile/

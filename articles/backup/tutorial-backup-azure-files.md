@@ -1,44 +1,49 @@
 ---
 title: 使用 Azure 备份服务备份 Azure 文件存储文件共享
-description: 本教程介绍如何备份 Azure 文件共享。
+description: 在本教程中，了解如何使用 Azure 门户配置恢复服务保管库并备份 Azure 文件共享。
 author: dcurwin
 ms.author: dacurwin
 ms.date: 06/10/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: e63ad75effb03cf9dd5eb5c66b142cce629ea290
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a8b08f87441f9b4c67f718dfe9f0c894d0730a5f
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736236"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747049"
 ---
 # <a name="back-up-azure-file-shares-in-the-azure-portal"></a>在 Azure 门户中备份 Azure 文件共享
+
 本教程介绍如何使用 Azure 门户备份 [Azure 文件共享](../storage/files/storage-files-introduction.md)。
 
 本指南介绍如何：
 > [!div class="checklist"]
+>
 > * 将恢复服务保管库配置为备份 Azure 文件
 > * 运行按需备份作业，以创建还原点
 
-
 ## <a name="prerequisites"></a>先决条件
+
 在备份 Azure 文件共享之前，请确保其类型为[支持的存储帐户类型](tutorial-backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview)。 验证这个之后，即可对文件共享进行保护。
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>预览期间对 Azure 文件共享备份的限制
+
 Azure 文件共享备份处于预览状态。 常规用途 v1 和常规用途 v2 存储帐户中的 Azure 文件共享均受支持。 Azure 文件共享不支持以下备份场景：
-- 不能保护已启用虚拟网络或防火墙的存储帐户中的 Azure 文件共享。
-- 无法使用 CLI 通过 Azure 备份来保护 Azure 文件。
-- 每天的计划备份数上限为 1。
-- 每天的按需备份数上限为 4。
-- 在存储帐户上使用[资源锁定](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)，防止意外删除恢复服务保管库中的备份。
-- 请勿删除由 Azure 备份创建的快照。 删除快照可能导致恢复点丢失和/或还原失败。
-- 请勿删除受 Azure 备份保护的文件共享。 当前的解决方案会在文件共享删除后删除 Azure 备份创建的所有快照，因此会失去所有还原点。
+
+* 不能保护已启用虚拟网络或防火墙的存储帐户中的 Azure 文件共享。
+* 无法使用 CLI 通过 Azure 备份来保护 Azure 文件。
+* 每天的计划备份数上限为 1。
+* 每天的按需备份数上限为 4。
+* 在存储帐户上使用[资源锁定](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)，防止意外删除恢复服务保管库中的备份。
+* 请勿删除由 Azure 备份创建的快照。 删除快照可能导致恢复点丢失和/或还原失败。
+* 请勿删除受 Azure 备份保护的文件共享。 当前的解决方案会在文件共享删除后删除 Azure 备份创建的所有快照，因此会失去所有还原点。
 
 使用[区域冗余存储](../storage/common/storage-redundancy-zrs.md) (ZRS) 复制对存储帐户中的 Azure 文件共享进行备份，目前只能在美国中部 (CUS)、美国东部 (EUS)、美国东部 2 (EUS2)、北欧 (NE)、东南亚 (SEA)、西欧 (WE) 和美国西部 2 (WUS2) 使用。
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>为 Azure 文件共享配置备份
+
 本教程假定你已建立 Azure 文件共享。 若要备份 Azure 文件共享，请执行以下操作：
 
 1. 在文件共享所在区域创建恢复服务保管库。 如果已有一个保管库，请打开保管库的“概览”页，然后单击“备份”  。
@@ -70,8 +75,8 @@ Azure 文件共享备份处于预览状态。 常规用途 v1 和常规用途 v2
     建立备份策略以后，系统会在计划的时间拍摄文件共享的快照，并会将恢复点保留选定的一段时间。
 
 ## <a name="create-an-on-demand-backup"></a>创建按需备份
-配置备份策略后，你将需要创建按需备份，以确保你的数据在下一次计划备份之前受到保护。
 
+配置备份策略后，你将需要创建按需备份，以确保你的数据在下一次计划备份之前受到保护。
 
 ### <a name="to-create-an-on-demand-backup"></a>创建按需备份的步骤
 
@@ -91,12 +96,12 @@ Azure 文件共享备份处于预览状态。 常规用途 v1 和常规用途 v2
 
    ![选择恢复点保留期的日期](./media/backup-file-shares/backup-now-menu.png)
 
-
 ## <a name="next-steps"></a>后续步骤
 
 本教程使用 Azure 门户执行了以下操作：
 
 > [!div class="checklist"]
+>
 > * 将恢复服务保管库配置为备份 Azure 文件
 > * 运行按需备份作业，以创建还原点
 
@@ -104,4 +109,3 @@ Azure 文件共享备份处于预览状态。 常规用途 v1 和常规用途 v2
 
 > [!div class="nextstepaction"]
 > [从 Azure 文件共享的备份还原](./backup-azure-files.md#restore-from-backup-of-azure-file-share)
- 

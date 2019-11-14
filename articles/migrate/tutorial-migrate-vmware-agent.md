@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: aecbaab1ed29a1acfdcb4eec53b88fc266bbab09
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 07e91abc1130505abc84f6687be7edd04522fa76
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309412"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720173"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>将 VMware VM 迁移到 Azure（使用基于代理的方法）
 
@@ -424,7 +424,19 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以便：
 
 ## <a name="post-migration-best-practices"></a>迁移后的最佳做法
 
-- 为提高恢复能力，请执行以下操作：
+- 本地
+    - 将应用流量转移到在已迁移的 Azure VM 实例上运行的应用。
+    - 从本地 VM 清单中删除本地 VM。
+    - 从本地备份中删除本地 VM。
+    - 更新所有内部文档，以显示新的位置和 Azure VM 的 IP 地址。
+- 迁移后调整 Azure VM 设置：
+    - [Azure VM 代理](../virtual-machines/extensions/agent-windows.md)可管理 VM 与 Azure 结构控制器之间的交互。 某些 Azure 服务（例如 Azure 备份、Site Recovery 和 Azure 安全）需要 Azure VM 代理。 使用基于代理的迁移进行 VMare VM 迁移时，移动服务安装程序会在 Windows 计算机上安装 Azure VM 代理。 在 Linux VM 上，我们建议在迁移后安装代理。
+    - 迁移后从 Azure VM 中手动卸载移动服务。
+    - 迁移后手动卸载 VMware 工具。
+- 在 Azure 中：
+    - 执行任何迁移后的应用调整，例如更新数据库连接字符串和 Web 服务器配置。
+    - 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。
+- 业务连续性/灾难恢复
     - 使用 Azure 备份服务备份 Azure VM 以保证数据安全。 [了解详细信息](../backup/quick-backup-vm-portal.md)。
     - 使用 Site Recovery 将 Azure VM 复制到次要区域以保证工作负荷运行且持续可用。 [了解详细信息](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - 为提高安全性，请执行以下操作：
@@ -433,9 +445,11 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以便：
     - 部署[Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview)以帮助保护磁盘，并保护数据以防被盗和未经授权的访问。
     - 详细了解[保护 IaaS 资源的安全](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)，并访问[Azure 安全中心](https://azure.microsoft.com/services/security-center/)。
 - 为了便于监视和管理，请执行以下操作：
--  考虑部署[Azure 成本管理](https://docs.microsoft.com/azure/cost-management/overview)以监视资源使用率和支出。
+    - 考虑部署[Azure 成本管理](https://docs.microsoft.com/azure/cost-management/overview)以监视资源使用率和支出。
 
 
-## <a name="next-steps"></a>后续步骤
+
+
+ ## <a name="next-steps"></a>后续步骤
 
 在 Azure 云采用框架中调查[云迁移旅程](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate)。

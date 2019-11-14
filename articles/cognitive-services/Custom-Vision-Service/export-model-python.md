@@ -1,7 +1,7 @@
 ---
 title: 教程：运行以 Python 编写的 TensorFlow 模型 - 自定义视觉服务
 titleSuffix: Azure Cognitive Services
-description: 运行以 Python 编写的 TensorFlow 模型。
+description: 运行以 Python 编写的 TensorFlow 模型。 本文仅适用于从自定义视觉服务中的图像分类项目导出的模型。
 services: cognitive-services
 author: areddish
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: 43fbf7b13c75b9bdbaa810905ed9a25e8faa664f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 00d3b1dce9bacc01c8319c678ab27a3d4cc8da88
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898361"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718419"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>教程：运行以 Python 编写的 TensorFlow 模型
 

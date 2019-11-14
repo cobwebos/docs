@@ -1,25 +1,25 @@
 ---
-title: 在 Privileged Identity Management Azure Active Directory 中配置 Azure AD 角色设置 |Microsoft Docs
-description: 了解如何在 Azure AD Privileged Identity Management （PIM）中配置 Azure AD 角色设置。
+title: 在 PIM-Azure AD 中配置 Azure AD 角色设置 |Microsoft Docs
+description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中配置 Azure AD 角色设置。
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cff298e24ac185767e6290e396818ccece7b9b55
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: ee99a8e75fe8da85b1cf82623ed110991db24b66
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809151"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021801"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure AD 角色设置
 
@@ -35,13 +35,13 @@ ms.locfileid: "72809151"
 
 1. 单击“设置”。
 
-    ![Azure AD 角色-设置](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
+    ![Azure AD 角色 - 设置](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
 1. 单击“角色”。
 
 1. 单击要配置其设置的角色。
 
-    ![Azure AD 角色-设置角色](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
+    ![Azure AD 角色 - 设置角色](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
 
     在每个角色的设置页上，有多个可以配置的设置。 这些设置只影响作为**合格**分配（不是**永久**分配）的用户。
 
@@ -98,13 +98,13 @@ ms.locfileid: "72809151"
 
 1. 将“要求批准”设置为“启用”。 该窗格扩展选项以选择审批者。
 
-    ![Azure AD 角色-设置-需要批准](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
+    ![Azure AD 角色 - 设置 - 需要审批](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 
     如果未指定任何审批者，特权角色管理员将成为默认审批者，并需要审批此角色的所有激活请求。
 
 1. 若要指定审批者，请单击“选择审批者”。
 
-    ![Azure AD 角色-设置-需要批准](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
+    ![Azure AD 角色 - 设置 - 需要审批](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
 
 1. 选择 "特权角色管理员" 之外的一个或多个审批者，然后单击 "**选择**"。 可以选择用户或组。 建议至少有两个审批者。 即使将自己添加为审批者，也无法自行批准角色激活。 所选项将出现在所选审批者列表中。
 

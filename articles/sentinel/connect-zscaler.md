@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: rkarlin
-ms.openlocfilehash: fe7ba0f6daec0b85ec73611ba4e48d72f16146e3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 45351cc29b2b7028863aff06ab5a511674604d6f
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515130"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048956"
 ---
 # <a name="connect-zscaler-internet-access-to-azure-sentinel"></a>连接 Zscaler Internet 访问 Azure Sentinel
 
@@ -48,7 +48,7 @@ ms.locfileid: "73515130"
 若要在安全解决方案和 Syslog 计算机之间使用 TLS 通信，需要将 Syslog 守护程序（rsyslog 或 syslog-ng）配置为在 TLS 中进行通信：[使用 tls Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)，[使用 tls 加密日志消息–syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
 
  
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 请确保用作代理的 Linux 计算机运行的是以下操作系统之一：
 
 - 64 位
@@ -106,7 +106,7 @@ ms.locfileid: "73515130"
     - 端口 = 514
     - Format = CEF
     - IP 地址-请确保将 CEF 消息发送到专用于此目的的虚拟机的 IP 地址。
- 有关详细信息，请参阅[Zscaler Azure Sentinel 集成指南](https://aka.ms/ZscalerCEFInstructions)。
+ 有关详细信息，请参阅[Zscaler 和 Azure Sentinel 部署指南](https://aka.ms/ZscalerCEFInstructions)。
  
    > [!NOTE]
    > 此解决方案支持 Syslog RFC 3164 或 RFC 5424。

@@ -1,5 +1,5 @@
 ---
-title: 适用于 SQL 数据库的 Azure CLI 脚本示例 | Microsoft Docs
+title: Azure CLI 脚本示例
 description: 创建和管理 Azure SQL 数据库服务器、弹性池、数据库和防火墙的 Azure CLI 脚本示例。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: 5366fb1d32020bfbcfaba36c60c0eb5441e92070
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 023651d61f891c5a73eee234a14306add838bf98
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71055246"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821847"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 Azure CLI 示例
 

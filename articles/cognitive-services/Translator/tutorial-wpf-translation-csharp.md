@@ -1,7 +1,7 @@
 ---
 title: 教程：在 C# 中使用 WPF 创建翻译应用 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
-description: 在本教程中，你将创建一个使用认知服务 API 通过单个订阅密钥进行文本翻译、语言检测和拼写检查的 Windows Presentation Foundation (WPF) 应用。 本练习将演示如何使用文本翻译 API 和必应拼写检查 API 的功能。
+description: 在本教程中，你将创建一个 WPF 应用，通过单个订阅密钥来执行文本翻译、语言检测和拼写检查。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 286b75166e6216513afc46e5779b8a2f969aeaf6
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 6f8196c276b4f8ef5c8a49f6f83f59f9f505a6be
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858906"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647709"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>教程：使用 WPF 创建翻译应用
 

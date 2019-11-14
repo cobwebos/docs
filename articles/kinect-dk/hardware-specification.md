@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: azure, kinect, 规格, 硬件, DK, 功能, 深度, 颜色, RGB, IMU, 麦克风, 阵列
-ms.openlocfilehash: affdcf61350e4844295375dd621afc24c5138d44
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: fc7da5d81a448cbe202155feda57294f95aab2fc
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907697"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583127"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Azure Kinect DK 硬件规格 
 
@@ -63,7 +63,7 @@ Azure Kinect DK 集成了 Microsoft 设计的 1 兆像素时差测距 (ToF) 深�
 | WFOV 非装箱   | 1024x1024  | 120°x120° | 0、5、15           | 0.25 - 2.21 米      | 20.3 毫秒        |
 | 被动 IR      | 1024x1024  | 不适用       | 0、5、15、30       | 不适用              | 1.6 毫秒         |
 
-\*15% 到 95% 的反射率，2.2 μW/cm<sup>2</sup>/nm，随机误差标准偏差 ≤ 17 mm，典型系统误差 < 11 mm + 0.1% 的距离（无多路径干扰）。 超出指示范围的深度取决于对象反射率。
+\*850nm 时 15% 到 95% 的反射率，2.2 μW/cm<sup>2</sup>/nm，随机误差标准偏差 ≤ 17 mm，典型系统误差 < 11 mm + 0.1% 的距离（无多路径干扰）。 超出指示范围的深度取决于对象反射率。
 
 ## <a name="color-camera-supported-operating-modes"></a>彩色相机支持的工作模式
 

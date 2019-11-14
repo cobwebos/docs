@@ -1,5 +1,5 @@
 ---
-title: 什么是计算机视觉 API？ - 计算机视觉
+title: 什么是计算机视觉？ - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 使用计算机视觉服务，开发人员可以访问用于处理图像并返回信息的高级算法。
 services: cognitive-services
@@ -8,21 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 10/01/2019
+ms.date: 11/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: db62f003f7eb8dd272305b86712cf1d721797114
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 703e750c0d2515484cd9f1d2cb046096dfd1800d
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719546"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794966"
 ---
 # <a name="what-is-computer-vision"></a>什么是计算机视觉？
 
-使用 Azure 的计算机视觉服务，开发人员可以访问用于处理图像并返回信息的高级算法。 若要分析图像，可以上传图像，也可以指定图像 URL。 图像处理算法可以通过多种不同的方式分析内容，具体取决于你感兴趣的视觉功能。 例如，计算机视觉可以确定图像是否包含成人内容，或者查找图像中的所有人脸。
+使用 Azure 的计算机视觉服务，开发人员可以访问用于处理图像并返回信息的高级算法，具体取决于你感兴趣的视觉功能。 例如，计算机视觉可以确定图像是否包含成人内容，或者查找图像中的所有人脸。
 
 可以在应用程序中使用计算机视觉，方法是：使用本机 SDK，或者直接调用 REST API。 此页广泛地介绍了计算机视觉的功能。
+
+## <a name="computer-vision-for-digital-asset-management"></a>用于数字资产管理的计算机视觉
+
+计算机视觉可以支持许多数字资产管理 (DAM) 方案。 DAM 是组织、存储和检索富媒体资产以及管理数字权利和权限的业务流程。 例如，公司可能希望基于可见徽标、面部、物体、颜色等来分组和标识图像。 或者，你可能希望自动[生成图像的标题](./Tutorials/storage-lab-tutorial.md)，并附加关键字，使其可供搜索。 有关使用认知服务、Azure 认知搜索和智能报表的一体式 DAM 解决方案，请参阅 GitHub 上的[知识挖掘解决方案加速器指南](https://github.com/Azure-Samples/azure-search-knowledge-mining)。 有关其他 DAM 示例，请参阅[计算机视觉解决方案模板](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates)存储库。
 
 ## <a name="analyze-images-for-insight"></a>通过分析图像来获取见解
 
@@ -47,8 +51,6 @@ ms.locfileid: "71719546"
 可以使用计算机视觉[读取 API](concept-recognizing-text.md#read-api) 将印刷文本和手写文本从图像中提取到计算机可读的字符流。 该读取 API 使用最新的模型，适用于各种表面和背景（如收据、海报、名片、信件和白板）上的文本。 目前，英语是唯一受支持的语言。
 
 还可以使用[光学字符识别 (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) API 提取多种语言的印刷文本。 如果需要，OCR 会校正已识别文本的旋转角度并提供每个词的帧坐标。 OCR 支持 25 种语言，并会自动检测已识别文本的语言。
-
-
 
 ## <a name="moderate-content-in-images"></a>管理图像中的内容
 

@@ -1,32 +1,32 @@
 ---
-title: 使用组来管理对 SaaS 应用程序的访问 - Azure Active Directory | Microsoft Docs
+title: 使用组管理对 SaaS 应用的访问-Azure AD |Microsoft Docs
 description: 如何在 Azure Active Directory 中使用组来分配与 Azure Active Directory 集成的 SaaS 应用程序的访问权限。
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/01/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75fdd0fcd4ceeeb0f680b2cbdb743d30d236c93d
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 51375f057543c86fe021822eb9722ffd1be16804
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736506"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026857"
 ---
 # <a name="using-a-group-to-manage-access-to-saas-applications"></a>使用组来管理对 SaaS 应用程序的访问
 
-将 Azure Active Directory (Azure AD) 与 Azure AD Premium 许可证计划结合使用, 可以使用组分配对与 Azure AD 集成的 SaaS 应用程序的访问权限。 例如，如果要为营销部分配使用五个不同 SaaS 应用程序所需的访问权限，则可以创建一个包含销售部用户的组，然后将该组分配给营销部所需的这五个 SaaS 应用程序。 这样就可以在一个位置管理营销部的成员身份，从而节省了时间。 之后，当将用户添加为营销组的成员时，这些用户将分配到应用程序；当将用户从营销组中删除时，也会从应用程序中删除为其分配的权限。 此功能适用于可从 Azure AD 应用程序库中添加的数百个应用程序。
+将 Azure Active Directory （Azure AD）与 Azure AD Premium 许可证计划结合使用，可以使用组分配对与 Azure AD 集成的 SaaS 应用程序的访问权限。 例如，如果要为营销部分配使用五个不同 SaaS 应用程序所需的访问权限，则可以创建一个包含销售部用户的组，并将该组分配给营销部所需的这五个 SaaS 应用程序。 这样就可以在一个位置管理营销部的成员身份，从而节省了时间。 之后，当将用户添加为营销组的成员时，这些用户将分配到应用程序；当将用户从营销组中删除时，也会从应用程序中删除为其分配的权限。 此功能适用于可从 Azure AD 应用程序库中添加的数百个应用程序。
 
 > [!IMPORTANT]
-> 只有开始 Azure AD Premium 试用或购买 Azure AD Premium 许可计划后, 才能使用此功能。
+> 只有开始 Azure AD Premium 试用或购买 Azure AD Premium 许可计划后，才能使用此功能。
 > 仅安全组支持基于组的分配。
 > 目前应用程序的基于组的分配不支持嵌套的组成员身份。
 

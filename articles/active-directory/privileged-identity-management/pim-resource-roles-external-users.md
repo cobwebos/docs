@@ -1,33 +1,33 @@
 ---
-title: 邀请来宾并将 Azure 资源角色分配到 Privileged Identity Management Azure Active Directory |Microsoft Docs
+title: 在 PIM 中将 Azure 资源角色分配给来宾-Azure AD |Microsoft Docs
 description: 了解如何在 Azure AD Privileged Identity Management （PIM）中邀请外部来宾用户和分配 Azure 资源角色。
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08c2ef1695d118c248abfc500025479d1186eb05
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 2efcf77d65fa2f9e203ed805cd7d78b9802ee3aa
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895651"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021942"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>邀请来宾用户并将 Azure 资源角色分配到 Privileged Identity Management
 
 Azure Active Directory （Azure AD）来宾用户是 Azure AD 中企业到企业（B2B）协作功能的一部分，因此你可以在 Azure AD 中将外部来宾用户和供应商作为来宾进行管理。 将 B2B 协作与 Azure AD Privileged Identity Management （PIM）相结合时，可以将相容性和监管要求扩展到来宾。 例如，可以将以下 Privileged Identity Management 功能用于与来宾一起使用 Azure 标识任务：
 
 - 分配对特定 Azure 资源的访问权限
-- 启用实时 VM 访问
+- 启用实时访问
 - 指定分配持续时间和结束日期
 - 活动分配或激活时需要多重身份验证
 - 执行访问评审

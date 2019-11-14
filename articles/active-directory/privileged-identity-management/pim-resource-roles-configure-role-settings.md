@@ -1,30 +1,30 @@
 ---
-title: 在 Privileged Identity Management-Azure Active Directory 中配置 Azure 资源角色设置 |Microsoft Docs
+title: 在 PIM 中配置 Azure 资源角色设置-Azure AD |Microsoft Docs
 description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中配置 Azure 资源角色设置。
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f322fed83f89fea64c8d834dd0c72ab9c279c11
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a302e723aa898a62bc43ecb38343bcf026dc769e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895800"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022944"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure 资源角色设置
 
-配置 Azure 资源角色设置时，将在 Azure Active Directory （Azure AD） Privileged Identity Management （PIM）中定义应用于 Azure 资源角色分配的默认设置。 使用以下步骤配置审批工作流并指定谁可以批准或拒绝请求。
+配置 Azure 资源角色设置时，可定义应用于 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 中的 Azure 资源角色分配的默认设置。 使用以下步骤配置审批工作流并指定谁可以批准或拒绝请求。
 
 ## <a name="open-role-settings"></a>打开角色设置
 
@@ -38,19 +38,19 @@ ms.locfileid: "72895800"
 
 1. 选择要管理的资源，例如订阅或管理组。
 
-    ![列出可以管理的资源的 Azure 资源页](./media/pim-resource-roles-configure-role-settings/resources-list.png)
+    ![列出可以管理的资源的“Azure 资源”页](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
 1. 选择 "**角色设置**"。
 
-    ![列出 Azure 资源角色的角色设置页](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![列出 Azure 资源角色的“角色设置”页](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
 1. 选择要配置其设置的角色。
 
-    ![列出多个分配和激活设置的角色设置详细信息页](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![列出多个分配和激活设置的“角色设置详细信息”页](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
 1. 选择 "**编辑**" 以打开 "角色设置" 窗格。
 
-    !["编辑角色设置" 页，其中包含用于更新分配和激活设置的选项](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![“编辑角色设置”页，其中包含用于更新分配和激活设置的选项](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
 
     在每个角色的“角色设置”窗格上，有多个可以配置的设置。
 

@@ -1,20 +1,17 @@
 ---
 title: 如何将 Azure Redis 缓存绑定到 Azure Spring Cloud 应用程序 | Microsoft Docs
 description: 了解如何将 Azure Redis 缓存绑定到 Azure Spring Cloud 应用程序
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: d8fa31207baecc80674fb11b492927800676b8a2
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.topic: tutorial
+ms.date: 10/31/2019
+ms.author: jeconnoc
+ms.openlocfilehash: a901e4194909df85f53799d5937515e42ea87a69
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038236"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607572"
 ---
 # <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-cache-for-redis"></a>教程：将 Azure 服务绑定到 Azure Spring Cloud 应用程序：用于 Redis 的 Azure 缓存
 
@@ -26,14 +23,7 @@ ms.locfileid: "72038236"
 * Azure Redis 缓存服务实例
 * 用于 Azure CLI 的 Azure Spring Cloud 扩展
 
-必要时，使用以下命令安装用于 Azure CLI 的 Azure Spring Cloud 扩展：
-
-```azurecli
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
-```
-
->[!TIP]
-> Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。  它预安装有常用 Azure 工具，其中包括最新版的 Git、JDK、Maven 和 Azure CLI。 如果已登录到 Azure 订阅，请从 shell.azure.com 启动 [Azure Cloud Shell](https://shell.azure.com)。  若要详细了解 Azure Cloud Shell，可[阅读我们的文档](../cloud-shell/overview.md)
+如果没有已部署的 Azure Spring Cloud 实例，请按照此[快速入门](spring-cloud-quickstart-launch-app-portal.md)中的步骤部署第一个 Spring Cloud 应用。
 
 ## <a name="bind-azure-cache-for-redis"></a>绑定 Azure Redis 缓存
 

@@ -1,18 +1,14 @@
 ---
 title: 加拿大联邦 PBMM 蓝图示例-部署步骤
 description: 加拿大联邦 PBMM 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/05/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 22806f497283c1885446eadd5f444dacf3769c12
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 788c52ee9a2bf9a0a2c506c2a34d221ff08bd0af
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163328"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038418"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>部署加拿大联邦 PBMM 蓝图示例
 
@@ -23,7 +19,7 @@ ms.locfileid: "73163328"
 > - 将示例副本标记为“已发布”
 > - 将蓝图副本分配到现有的订阅
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free)。
 
 ## <a name="create-blueprint-from-sample"></a>基于示例创建蓝图
 
@@ -66,7 +62,7 @@ ms.locfileid: "73163328"
 
 1. 提供蓝图分配的参数值：
 
-   - 基础
+   - Basics
 
      - **订阅**：选择要在其中保存蓝图示例副本的管理组中的一个或多个订阅。 如果选择多个订阅，将使用输入的参数为每个订阅创建一个分配。
      - **分配名称**：根据蓝图的名称预先填充名称。
@@ -84,7 +80,7 @@ ms.locfileid: "73163328"
 
    - 项目参数
 
-     在本部分定义的参数将应用到定义了这些参数的项目。 这些参数属于[动态参数](../../concepts/parameters.md#dynamic-parameters) ，因为它们是在分配蓝图期间定义的。 有关完整列表或项目参数及其说明，请参阅[项目参数表](#artifact-parameters-table) 。
+     在本部分定义的参数将应用到定义了这些参数的项目。 这些参数属于[动态参数](../../concepts/parameters.md#dynamic-parameters)，因为它们是在分配蓝图期间定义的。 有关完整列表或项目参数及其说明，请参阅[项目参数表](#artifact-parameters-table) 。
 
 1. 输入所有参数后，选择页面底部的“分配”。 随后将创建蓝图分配，并开始部署项目。 部署过程大约需要一小时。 若要检查部署状态，请打开蓝图分配。
 
@@ -95,7 +91,7 @@ ms.locfileid: "73163328"
 
 下表提供了蓝图项目参数的列表：
 
-项目名称|项目类型|参数名称|描述|
+项目名称|项目类型|参数名称|说明|
 |-|-|-|-|
 |\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |Linux VM 的 Log Analytics 工作区 |有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
 |\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |可选：支持添加到作用域的 Linux OS 的 VM 映像列表 |空数组可用于指示没有可选参数： `[]` |
@@ -103,9 +99,9 @@ ms.locfileid: "73163328"
 |\[预览\]：为 Windows VM 部署 Log Analytics 代理 |策略分配 |Windows VM 的 Log Analytics 工作区 |有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
 |\[预览\]：审核加拿大联邦 PBMM 控件并部署特定的 VM 扩展以支持审核要求 |策略分配 |应为 VM 配置的 Log Analytics 工作区 ID |这是应为 VM 配置的 Log Analytics 工作区的 ID (GUID)。 |
 |\[预览\]：审核加拿大联邦 PBMM 控件并部署特定的 VM 扩展以支持审核要求 |策略分配 |应启用诊断日志的资源类型列表 |如果未启用诊断日志设置，则为要审核的资源类型的列表。 [Azure Monitor 诊断日志架构](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)中提供了可接受的值。 |
-|\[预览\]：审核加拿大联邦 PBMM 控件并部署特定的 VM 扩展以支持审核要求 |策略分配 |Administrators 组 |组. 示例： `Administrator; myUser1; myUser2` |
-|\[预览\]：审核加拿大联邦 PBMM 控件并部署特定的 VM 扩展以支持审核要求 |策略分配 |应该包括在 Windows VM 管理员组中的用户的列表 |以分号分隔的应包括在管理员本地组中的成员列表。 示例： `Administrator; myUser1; myUser2` |
-|在存储帐户上部署高级威胁防护 |策略分配 |作用 |有关策略效果的信息，请参阅[了解 Azure 策略影响](../../../policy/concepts/effects.md)。 |
+|\[预览\]：审核加拿大联邦 PBMM 控件并部署特定的 VM 扩展以支持审核要求 |策略分配 |Administrators 组 |组. 示例：`Administrator; myUser1; myUser2` |
+|\[预览\]：审核加拿大联邦 PBMM 控件并部署特定的 VM 扩展以支持审核要求 |策略分配 |应该包括在 Windows VM 管理员组中的用户的列表 |以分号分隔的应包括在管理员本地组中的成员列表。 示例：`Administrator; myUser1; myUser2` |
+|在存储帐户上部署高级威胁防护 |策略分配 |效果 |有关策略效果的信息，请参阅[了解 Azure 策略影响](../../../policy/concepts/effects.md)。 |
 |对 SQL 服务器部署审核 |策略分配 |保持期的值（天数，0 表示保持期无限制） |保留天数（可选，如果未指定，则为_180_天） |
 |对 SQL 服务器部署审核 |策略分配 |要进行 SQL Server 审核的存储帐户的资源组名称 |审核将数据库事件写入 Azure 存储帐户中的审核日志（在创建 SQL Server 的每个区域中创建存储帐户，该区域由该区域中的所有服务器共享）。 重要提示：对于正确的审核操作，请不要删除或重命名资源组或存储帐户。 |
 |为网络安全组部署诊断设置 |策略分配 |适用于网络安全组诊断的存储帐户前缀 |此前缀与网络安全组位置组合在一起以形成创建的存储帐户名称。 |
@@ -119,7 +115,7 @@ ms.locfileid: "73163328"
 > [加拿大联邦 PBMM 蓝图-概述](./index.md)
 > [加拿大联邦 PBMM 蓝图-控件映射](./control-mapping.md)
 
-有关蓝图以及如何使用它们的其他文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

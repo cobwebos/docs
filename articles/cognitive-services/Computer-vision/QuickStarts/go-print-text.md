@@ -11,14 +11,17 @@ ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 97ef0464655e55a84f4e5cc51171d00debd294d3
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: c501e153649796ab8735935a3475b5a13f6016fa
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177258"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73613490"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-with-go"></a>快速入门：使用计算机视觉 REST API 和 Go 提取印刷体文本 (OCR)
+
+> [!NOTE]
+> 如果要提取英语文本，请考虑使用新的[读取操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)。 [Go 快速入门](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts-sdk/go-sdk#call-the-read-api)可用。
 
 在本快速入门中，你将使用计算机视觉的 REST API，通过光学字符识别 (OCR) 从图像中提取印刷体文本。 借助 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法，可检测图像中的印刷体文本，并将识别的字符提取到计算机可用的字符流中。
 

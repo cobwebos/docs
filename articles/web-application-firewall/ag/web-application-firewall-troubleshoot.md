@@ -1,18 +1,18 @@
 ---
-title: 排查 Azure 应用程序网关的 Web 应用程序防火墙问题
+title: 故障排除-Azure Web 应用程序防火墙
 description: 本文提供 Azure 应用程序网关的 Web 应用程序防火墙 (WAF) 的故障排除信息
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/22/2019
+ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: fff50417bd7944e125ce1d7c1e1ae52ec22f806f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 33c85752903edd618044ccbab06aff7df9a791da
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516560"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046189"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>排查 Azure 应用程序网关的 Web 应用程序防火墙 (WAF) 问题
 
@@ -322,7 +322,7 @@ WAF 日志用于显示 WAF 匹配或阻止的每个请求。 它是匹配或阻�
    > [!NOTE]
    > 如果你知道你的应用永远不需要上传超过给定大小的任何文件，可以通过设置一个限制来控制风险。
 
-## <a name="firewall-metrics-waf_v1-only"></a>防火墙指标（仅限 WAF_v1）
+## <a name="firewall-metrics-waf_v1-only"></a>防火墙指标（仅 WAF_v1）
 
 对于 v1 Web 应用程序防火墙，门户中现提供以下指标： 
 

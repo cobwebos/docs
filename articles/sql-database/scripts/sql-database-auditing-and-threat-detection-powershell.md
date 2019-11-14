@@ -1,5 +1,5 @@
 ---
-title: PowerShell 审核和高级威胁防护示例 - Azure SQL 数据库 | Microsoft Docs
+title: PowerShell 审核和高级威胁防护示例 - Azure SQL 数据库
 description: 在 Azure SQL 数据库中配置审核和高级威胁防护的 Azure PowerShell 示例脚本
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: carlrab, vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: f9ef894f4c4d1d0ad0ab43b538c984f9cf5b2d01
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 1dee8031b00e7d291844790fb86efd4d00075d87
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816688"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691745"
 ---
 # <a name="use-powershell-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>使用 PowerShell 配置 SQL 数据库审核和高级威胁防护
 

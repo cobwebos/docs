@@ -6,15 +6,15 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 11/13/2019
 ms.author: dkshir
 ms.custom: security-recommendations
-ms.openlocfilehash: 9c8891eca87444c2be43294f208ad5257ffce889
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 0ada9a520a5be56444a1c3e746a68dbcf9275686
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177176"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048462"
 ---
 # <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Azure 物联网（IoT）部署的安全建议
 
@@ -25,23 +25,43 @@ Azure 安全中心会自动监视本文中包含的一些建议。 Azure 安全�
 - 有关 Azure 安全中心建议的详细信息，请参阅[Azure 安全中心中的安全建议](../security-center/security-center-recommendations.md)。
 - 有关 Azure 安全中心的信息，请参阅[什么是 Azure 安全中心？](../security-center/security-center-intro.md)
 
-## <a name="recommendations"></a>建议
+## <a name="general"></a>一般信息
 
-| 类别 | 建议 | 注释 | 由 ASC 支持 |
-|-|-|----|--|
-| 一般信息 | 保持最新状态 | 使用支持的平台、编程语言、协议和框架的最新版本。 | - |
-| 一般信息 | 保持身份验证密钥安全 | 部署后，请确保设备 Id 及其身份验证密钥的物理安全。 这将避免恶意设备伪装为注册设备。 | - |
-| 一般信息 | 尽可能使用设备 Sdk | 设备 Sdk 实现多种安全功能（如、加密、身份验证等），以帮助你开发强大的安全设备应用程序。 有关详细信息，请参阅[了解和使用 Azure IoT 中心 sdk](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) 。 | - |
-| 身份和访问管理 | 定义中心的访问控制 | [了解并定义](iot-security-deployment.md#securing-the-cloud)每个组件在 IoT 中心解决方案中将具有的访问类型（基于功能）。 允许的权限包括*注册表读取*、 *RegistryReadWrite*、 *ServiceConnect*和*DeviceConnect*。 [IoT 中心中的默认共享访问策略](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#access-control-and-permissions)还有助于根据组件的角色定义每个组件的权限。 | - |
-| 身份和访问管理 | 定义后端服务的访问控制 | IoT 中心解决方案引入的数据可供其他 Azure 服务（例如[Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)、[流分析](https://docs.microsoft.com/azure/stream-analytics/)、[应用服务](https://docs.microsoft.com/azure/app-service/)、[逻辑应用](https://docs.microsoft.com/azure/logic-apps/)和[Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)）使用。 对于这些服务，请务必了解并允许相应的访问权限。 | - |
-| 数据保护 | 安全设备身份验证 | 使用[唯一的标识密钥或安全令牌](iot-security-deployment.md#iot-hub-security-tokens)或每个设备的[设备 x.509 证书](iot-security-deployment.md#x509-certificate-based-device-authentication)，确保设备与 IoT 中心之间的通信安全。 使用适当的方法，根据所[选的协议（MQTT、AMQP 或 HTTPS）使用安全令牌](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security)。 | - |
-| 数据保护 | 安全设备通信 | IoT 中心使用传输层安全性（TLS）标准来保护与设备的连接，支持1.2 和1.0 版本。 使用[TLS 1.2](https://tools.ietf.org/html/rfc5246)确保最大安全性。 | - |
-| 数据保护 | 保护服务通信 | IoT 中心提供终结点，以便仅使用 TLS 协议连接到后端服务（如[Azure 存储](/azure/storage/)或[事件中心](/azure/event-hubs)），并且不会在未加密的通道上公开任何终结点。 一旦此数据达到这些后端服务进行存储或分析，请确保为该服务使用适当的安全和加密方法，并在后端保护敏感信息。 | - |
-| 网络 | 保护对设备的访问 | 将设备中的硬件端口保持在最低限度，以避免不需要的访问。 此外，还构建了阻止或检测设备物理篡改的机制。 有关详细信息，请参阅[IoT 安全最佳实践](iot-security-best-practices.md)。 | - |
-| 网络 | 构建安全的硬件 | 合并了安全功能（如加密存储）或受信任的平台模块（TPM），以使设备和基础结构更安全。 让设备操作系统和驱动程序升级到最新版本，如果空间允许，请安装防病毒和反恶意软件功能。 阅读[IoT 安全体系结构](iot-security-architecture.md)，了解这可以如何帮助减轻几个安全威胁。 | - |
-| 监视 | 监视对你的设备的未经授权的访问 |  使用设备操作系统的日志记录功能来监视设备或其端口的任何安全漏洞或物理篡改。 | - |
-| 监视 | 从云中监视 IoT 解决方案 | 使用[Azure Monitor 中的度量值](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics)监视 IoT 中心解决方案的总体运行状况。 | - |
-| 监视 | 设置诊断 | 通过在解决方案中记录事件，然后将诊断日志发送到 Azure Monitor 来密切监视操作，以了解性能。 有关详细信息，请阅读[监视和诊断 IoT 中心中的问题](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health)。 | - |
+| 建议 | 注释 | 由 ASC 支持 |
+|-|----|--|
+| 保持最新状态 | 使用最新版的受支持平台、编程语言、协议和框架。 | - |
+| 保持身份验证密钥安全 | 部署后，请确保设备 Id 及其身份验证密钥的物理安全。 这将避免恶意设备伪装为注册设备。 | - |
+| 尽可能使用设备 Sdk | 设备 Sdk 实现多种安全功能（如、加密、身份验证等），以帮助你开发强大的安全设备应用程序。 有关详细信息，请参阅[了解和使用 Azure IoT 中心 sdk](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) 。 | - |
+
+## <a name="identity-and-access-management"></a>标识和访问管理 
+
+| 建议 | 注释 | 由 ASC 支持 |
+|-|----|--|
+| 定义中心的访问控制 | [了解并定义](iot-security-deployment.md#securing-the-cloud)每个组件在 IoT 中心解决方案中将具有的访问类型（基于功能）。 允许的权限包括*注册表读取*、 *RegistryReadWrite*、 *ServiceConnect*和*DeviceConnect*。 [IoT 中心中的默认共享访问策略](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#access-control-and-permissions)还有助于根据组件的角色定义每个组件的权限。 | - |
+| 定义后端服务的访问控制 | IoT 中心解决方案引入的数据可供其他 Azure 服务（例如[Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)、[流分析](https://docs.microsoft.com/azure/stream-analytics/)、[应用服务](https://docs.microsoft.com/azure/app-service/)、[逻辑应用](https://docs.microsoft.com/azure/logic-apps/)和[Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)）使用。 对于这些服务，请务必了解并允许相应的访问权限。 | - |
+
+## <a name="data-protection"></a>数据保护
+
+| 建议 | 注释 | 由 ASC 支持 |
+|-|----|--|
+| 安全设备身份验证 | 使用[唯一的标识密钥或安全令牌](iot-security-deployment.md#iot-hub-security-tokens)或每个设备的[设备 x.509 证书](iot-security-deployment.md#x509-certificate-based-device-authentication)，确保设备与 IoT 中心之间的通信安全。 使用适当的方法，根据所[选的协议（MQTT、AMQP 或 HTTPS）使用安全令牌](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security)。 | - |
+| 安全设备通信 | IoT 中心使用传输层安全性（TLS）标准来保护与设备的连接，支持1.2 和1.0 版本。 使用[TLS 1.2](https://tools.ietf.org/html/rfc5246)确保最大安全性。 | - |
+| 保护服务通信 | IoT 中心提供终结点，以便仅使用 TLS 协议连接到后端服务（如[Azure 存储](/azure/storage/)或[事件中心](/azure/event-hubs)），并且不会在未加密的通道上公开任何终结点。 一旦此数据达到这些后端服务进行存储或分析，请确保为该服务使用适当的安全和加密方法，并在后端保护敏感信息。 | - |
+
+## <a name="networking"></a>联网
+
+| 建议 | 注释 | 由 ASC 支持 |
+|-|----|--|
+| 保护对设备的访问 | 将设备中的硬件端口保持在最低限度，以避免不需要的访问。 此外，还构建了阻止或检测设备物理篡改的机制。 有关详细信息，请参阅[IoT 安全最佳实践](iot-security-best-practices.md)。 | - |
+| 构建安全的硬件 | 合并了安全功能（如加密存储）或受信任的平台模块（TPM），以使设备和基础结构更安全。 让设备操作系统和驱动程序升级到最新版本，如果空间允许，请安装防病毒和反恶意软件功能。 阅读[IoT 安全体系结构](iot-security-architecture.md)，了解这可以如何帮助减轻几个安全威胁。 | - |
+
+## <a name="monitoring"></a>监视
+
+| 建议 | 注释 | 由 ASC 支持 |
+|-|----|--|
+| 监视对你的设备的未经授权的访问 |  使用设备操作系统的日志记录功能来监视设备或其端口的任何安全漏洞或物理篡改。 | - |
+| 从云中监视 IoT 解决方案 | 使用[Azure Monitor 中的度量值](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics)监视 IoT 中心解决方案的总体运行状况。 | - |
+| 设置诊断 | 通过在解决方案中记录事件，然后将诊断日志发送到 Azure Monitor 来密切监视操作，以了解性能。 有关详细信息，请阅读[监视和诊断 IoT 中心中的问题](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health)。 | - |
 
 ## <a name="next-steps"></a>后续步骤
 
