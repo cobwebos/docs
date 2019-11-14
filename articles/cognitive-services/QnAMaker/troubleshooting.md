@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 51d21dca1d8a5223e67cb7ea8489800989cff55c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7e98fd089ce8ec1285232840a40bb42ac5b81446
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026027"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795446"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker 疑难解答
 
@@ -26,7 +26,7 @@ ms.locfileid: "72026027"
 
 ## <a name="how-to-get-the-qnamaker-service-endpoint"></a>如何获取 QnAMaker 服务终结点
 
-当你联系 QnAMaker 支持部门或 UserVoice 时，QnAMaker service 终结点对于调试很有用。 此终结点是如下格式的 URL： https://your-resource-name.azurewebsites.net 。
+当你联系 QnAMaker 支持部门或 UserVoice 时，QnAMaker service 终结点对于调试很有用。 此终结点是如下格式的 URL： https://your-resource-name.azurewebsites.net。
     
 1. 在 [Azure 门户](https://portal.azure.com)中转到 QnAMaker 服务（资源组）
 
@@ -45,7 +45,7 @@ ms.locfileid: "72026027"
 
 QnA Maker 在 QnA Maker 门户中提供**帮助**机器人来帮助你。 每个网页上都提供了帮助机器人。 机器人使用 QnA Maker 来提供答案，并向机器人提供[ C#机器人框架代码项目](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support)，以便你可以快速启动并运行你自己的应答机器人。 
 
-![![QnA Maker 提供了 * * 帮助 * * 智能机器人应用程序以帮助您在 QnA Maker 门户中的。](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
+![![QnA Maker 在 QnA Maker 门户中提供了一个 * * 帮助 * * 机器人来帮助你。](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
 ## <a name="manage-the-knowledge-base"></a>管理知识库
 
@@ -117,13 +117,13 @@ QnA Maker 可能无法从有效的常见问题解答 URL 中自动提取某些�
 
 ### <a name="when-should-i-restart-my-app-service"></a>我何时应该重启应用服务？ 
 
-当警告图标位于“用户设置”[页](https://www.qnamaker.ai/UserSettings)上“终结点密钥”表中知识库版本值旁边时，请刷新应用服务。
+当警告图标位于“用户设置”**页**上“终结点密钥”[](https://www.qnamaker.ai/UserSettings)表中知识库版本值旁边时，请刷新应用服务。
 
 ### <a name="i-deleted-my-existing-search-service-how-can-i-fix-this"></a>我删除了现有搜索服务。 如何解决此问题？
 
-如果删除 Azure 搜索索引，则该操作是最终的，无法恢复索引。 
+如果删除 Azure 认知搜索索引，则该操作为最终状态，无法恢复索引。 
 
-### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>我删除了搜索服务中的 @no__t 0 索引。 如何解决此问题？ 
+### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>我删除了搜索服务中的 `testkb` 索引。 如何解决此问题？ 
 
 无法恢复你的旧数据。 创建新的 QnA Maker 资源并再次创建知识库。
 
@@ -131,13 +131,13 @@ QnA Maker 可能无法从有效的常见问题解答 URL 中自动提取某些�
 
 如果怀疑终结点密钥已被泄漏，请刷新终结点密钥。
 
-### <a name="can-i-use-the-same-azure-search-resource-for-knowledge-bases-using-multiple-languages"></a>是否可以将同一 Azure 搜索资源用于使用多种语言的知识库？
+### <a name="can-i-use-the-same-azure-cognitive-search-resource-for-knowledge-bases-using-multiple-languages"></a>是否可以将同一 Azure 认知搜索资源用于使用多种语言的知识库？
 
 若要使用多种语言和多个知识库，用户必须为每种语言创建一个 QnA Maker 资源。 这会为每种语言创建单独的 Azure 搜索服务。 在单个 Azure 搜索服务中混合使用不同语言的知识库会导致结果相关性下降。
 
-### <a name="how-can-i-change-the-name-of-the-azure-search-resource-used-by-qna-maker"></a>如何更改 QnA Maker 使用的 Azure 搜索资源的名称？
+### <a name="how-can-i-change-the-name-of-the-azure-cognitive-search-resource-used-by-qna-maker"></a>如何更改 QnA Maker 使用的 Azure 认知搜索资源的名称？
 
-Azure 搜索资源的名称是 QnA Maker 资源名称加上在末尾追加的一些随机字母。 这使得 QnA Maker 难以区分多个搜索资源。 请创建一个单独的 Azure 搜索服务（以你喜欢的方式对其进行命名）并将其连接到你的 QnA 服务。 步骤与[升级 Azure 搜索](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-search-service)所需执行的步骤类似。
+Azure 认知搜索资源的名称是在末尾追加了一些随机字母的 QnA Maker 资源名称。 这使得 QnA Maker 难以区分多个搜索资源。 创建单独的搜索服务（按你喜欢的方式对其进行命名），并将其连接到你的 QnA 服务。 步骤与[升级 Azure 搜索](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service)所需执行的步骤类似。
 
 ### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>当 QnA Maker 返回 `Runtime core is not initialized,` 时如何修复此问题？
 
@@ -174,7 +174,7 @@ Azure 搜索资源的名称是 QnA Maker 资源名称加上在末尾追加的一
 你需要了解有关知识库的以下信息：
 
 * 知识库 ID。
-* 发布后在 "设置" 页上的 "**设置**" 页上，知识库的已发布终结点自定义子域名称称为 `host`。
+* 发布之后，在 "**设置**" 页上找到知识库的已发布终结点自定义子域名称，称为 `host`。
 * 知识库的已发布终结点项-发布后在 "**设置**" 页上找到。 
 
 有关此信息，请在 Azure 门户中转到机器人的应用服务。 在**设置-> 配置-> 应用程序设置**中，更改这些值。  
