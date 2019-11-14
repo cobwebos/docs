@@ -1,11 +1,11 @@
 ---
-title: 使用 Azure 负载均衡器运行状况探测来缩放服务并为其提供高可用性
-titlesuffix: Azure Load Balancer
-description: 了解如何使用运行状况探测来监视负载均衡器后的实例
+title: 运行状况探测可进行缩放，并为服务提供高可用性
+titleSuffix: Azure Load Balancer
+description: 本文介绍如何使用运行状况探测来监视 Azure 负载均衡器后面的实例
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: twooley
+manager: kumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: d9873c4d8d4ca2b74532706f079c7384bf38db42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fdc7254b4c6e798c0f32f5fac3575474ed6ec1d0
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033824"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077078"
 ---
 # <a name="load-balancer-health-probes"></a>负载均衡器运行状况探测
 

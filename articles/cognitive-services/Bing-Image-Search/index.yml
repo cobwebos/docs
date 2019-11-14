@@ -5,7 +5,7 @@ metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
   title: 必应图像搜索 API 文档 - 教程、快速入门和 API 参考
   titleSuffix: Azure Cognitive Services
-  description: 了解如何使用必应图像搜索 API 在 Web 中搜索图像。
+  description: 必应图像搜索 API 可用于将必应的图像搜索功能集成到应用程序中。
   services: cognitive-services
   author: nitinme
   manager: nitinme

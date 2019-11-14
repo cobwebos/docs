@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中的 Windows VM 上安装 Symantec Endpoint Protection | Microsoft Docs
+title: 在 Azure 中的 Windows VM 上安装 Symantec Endpoint Protection
 description: 了解如何在使用经典部署模型创建的新的或现有的 Azure VM 上安装和配置 Symantec Endpoint Protection 安全扩展。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
-ms.openlocfilehash: 315cb5f22a3667db93c2421b924ac0d988e56164
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 143a697e509b96787ad3f52567f5a70fb7e5f4a4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168850"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072960"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>如何在 Windows VM 上安装和配置 Symantec Endpoint Protection
 > [!IMPORTANT] 
-> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
 
 本文介绍如何在运行 Windows Server 的现有虚拟机 (VM) 上安装和配置 Symantec Endpoint Protection 客户端。 这是完整的客户端，其中包括病毒和间谍软件防护、防火墙和入侵防御等服务。 该客户端通过 VM 代理作为安全扩展插件进行安装。
 

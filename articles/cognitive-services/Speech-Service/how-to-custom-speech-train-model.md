@@ -1,7 +1,7 @@
 ---
 title: 训练自定义语音语音服务的模型
 titleSuffix: Azure Cognitive Services
-description: 若要改善 Microsoft 的基线模型或计划创建的自定义模型的识别准确性，必须训练语音到文本。 使用带有人标记的转录和相关文本对模型进行训练。 这些数据集以及以前上传的音频数据用于优化和训练语音到文本模型，以识别单词、短语、缩写词、名称和其他特定于产品的术语。
+description: 训练语音到文本模型可以提高 Microsoft 的基线模型或自定义模型的识别准确性。 使用带有人标记的转录和相关文本对模型进行训练。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,26 +10,27 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 21a0cd5e257f57a9371a30c6fe57afb88e174b53
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 7630659deeece7fbf8d0ca1fd00b539a8de83b0e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801450"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072498"
 ---
 # <a name="train-a-model-for-custom-speech"></a>为自定义语音定型模型
 
-若要改善 Microsoft 的基线模型或计划创建的自定义模型的识别准确性，必须训练语音到文本。 使用带有人标记的转录和相关文本对模型进行训练。 这些数据集以及以前上传的音频数据用于优化和训练语音到文本模型，以识别单词、短语、缩写词、名称和其他特定于产品的术语。 您提供的域中的数据集越多（与用户将显示的内容以及您希望识别的内容相关的数据），您的模型就越精确，这会使识别改进。 请记住，通过将不相关的数据放入您的培训中，可以降低或损害模型的准确性。
+训练语音到文本模型可以提高 Microsoft 的基线模型或计划创建的自定义模型的识别准确性。 使用带有人标记的转录和相关文本对模型进行训练。 这些数据集以及以前上传的音频数据用于优化和训练语音到文本模型，以识别单词、短语、缩写词、名称和其他特定于产品的术语。 您提供的域中的数据集越多（与用户将显示的内容以及您希望识别的内容相关的数据），您的模型就越精确，这会使识别改进。 请记住，通过将不相关的数据放入您的培训中，可以降低或损害模型的准确性。
 
 ## <a name="use-training-to-resolve-accuracy-issues"></a>使用培训解决准确性问题
 
 如果你遇到与模型有关的识别问题，则使用带标签的脚本和相关数据进行其他训练有助于提高准确性。 使用此表来确定用于解决问题的数据集：
 
 | 使用案例 | 数据类型 |
-|----------|-----------|
-| 提高特定于行业的词汇和语法的识别准确性，如医疗术语或 IT 术语 | 相关文本（句子/最谈话） |
+| -------- | --------- |
+| 提高特定于行业的词汇和语法的识别准确性，如医疗术语或 IT 术语。 | 相关文本（句子/最谈话） |
 | 定义包含非标准发音（如产品名称或首字母缩写词）的单词或字词的拼音和显示形式。 | 相关文本（发音） |
-| 提高对讲话风格、强调或特定背景噪音的识别准确性 | 音频和人为标记的脚本 |
+| 提高对讲话风格、强调或特定背景噪音的识别准确性。 | 音频和人为标记的脚本 |
+
 > [!IMPORTANT]
 > 如果尚未上传数据集，请参阅[准备和测试数据](how-to-custom-speech-test-data.md)。 本文档提供有关如何上传数据的说明，以及用于创建高质量数据集的准则。
 
@@ -46,25 +47,24 @@ ms.locfileid: "70801450"
 7. 完成培训后，您可以选择对新训练的模型执行准确性测试。 此步骤是可选的。
 8. 选择 "**创建**" 以生成自定义模型。
 
-“训练”表将显示对应于此新建模型的新条目。 该表还会显示以下状态：“正在处理”、“成功”、“失败”。
+“训练”表将显示对应于此新建模型的新条目。 该表还显示状态： "正在处理"、"已成功" 和 "失败"。
 
 ## <a name="evaluate-the-accuracy-of-a-trained-model"></a>评估定型模型的准确性
 
 您可以使用以下文档检查数据并评估模型准确性：
 
-* [检查数据](how-to-custom-speech-inspect-data.md)
-* [评估数据](how-to-custom-speech-evaluate-data.md)
-
+- [检查数据](how-to-custom-speech-inspect-data.md)
+- [评估数据](how-to-custom-speech-evaluate-data.md)
 
 如果选择测试准确性，请务必选择与模型中使用的数据集不同的声音数据集，以获得模型性能的真实认识。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [部署模型](how-to-custom-speech-deploy-model.md)
+- [部署模型](how-to-custom-speech-deploy-model.md)
 
 ## <a name="additional-resources"></a>其他资源
 
-* [准备和测试数据](how-to-custom-speech-test-data.md)
-* [检查数据](how-to-custom-speech-inspect-data.md)
-* [评估数据](how-to-custom-speech-evaluate-data.md)
-* [训练模型](how-to-custom-speech-train-model.md)
+- [准备和测试数据](how-to-custom-speech-test-data.md)
+- [检查数据](how-to-custom-speech-inspect-data.md)
+- [评估数据](how-to-custom-speech-evaluate-data.md)
+- [训练模型](how-to-custom-speech-train-model.md)

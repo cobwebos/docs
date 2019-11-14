@@ -1,7 +1,7 @@
 ---
 title: 什么是 Azure 标准负载均衡器？
 titlesuffix: Azure Load Balancer
-description: Azure 标准负载均衡器功能概述
+description: 使用此学习路径，开始了解 Azure 标准负载均衡器功能的概述。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2019
 ms.author: allensu
-ms.openlocfilehash: 8eb8134452685add53b9dc339437ac262ecc8a9f
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c14cf572410d02892aa8a2b3e9f0f42fce46d411
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274401"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068785"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Azure 标准负载均衡器概述
 
@@ -40,7 +40,7 @@ ms.locfileid: "68274401"
 负载均衡器资源是一些对象，可在其中表述 Azure 应如何设定其多租户基础结构，以实现想要创建的场景。  负载均衡器资源与实际基础结构之间不存在直接的关系，创建负载均衡器不会创建实例，可始终使用容量，且无需考虑启动或缩放延迟。 
 
 >[!NOTE]
-> Azure 为方案提供了一套完全托管的负载均衡解决方案。  若要寻求 TLS 终止（“SSL 卸载”）或每个 HTTP/HTTPS 请求的应用层处理，请查看[应用程序网关](../application-gateway/application-gateway-introduction.md)。  若要寻求全局 DNS 负载均衡，请查看[流量管理器](../traffic-manager/traffic-manager-overview.md)。  端到端方案可从结合所需的解决方案中受益。
+> Azure 为方案提供了一套完全托管的负载均衡解决方案。  若要寻求 TLS 终止（“SSL 卸载”）或每个 HTTP/HTTPS 请求的应用层处理，请查看[应用程序网关](../application-gateway/application-gateway-introduction.md)。  若要寻求全局 DNS 负载均衡，请查看[流量管理器](../traffic-manager/traffic-manager-overview.md)。  端到端场景可从结合所需的解决方案中受益。
 
 ## <a name="why-use-standard-load-balancer"></a>为何使用标准负载均衡器？
 
@@ -75,7 +75,7 @@ ms.locfileid: "68274401"
 ### <a name="az"></a>可用性区域
 
 >[!IMPORTANT]
->查看[可用性区域](../availability-zones/az-overview.md)相关主题, 包括任何特定于区域的信息。
+>查看[可用性区域](../availability-zones/az-overview.md)相关主题，包括任何特定于区域的信息。
 
 标准负载均衡器在提供可用性区域的区域中支持其他功能。  这些功能可增量到所有标准负载均衡器提供的内容。  可用性区域配置可用于公共和内部标准负载均衡器。
 
@@ -91,7 +91,7 @@ ms.locfileid: "68274401"
 
 标准负载均衡器通过 Azure Monitor 提供多维度指标。  可以就给定维度对这些指标进行筛选、分组和细分。  可便于深入了解服务的当前及历史性能和运行状况。  还支持资源运行状况。  以下是支持的诊断的简要概述：
 
-| 指标 | 描述 |
+| 度量值 | 说明 |
 | --- | --- |
 | VIP 可用性 | 标准负载均衡器持续运用从区域内部到负载均衡器前端，直到支持 VM 的 SDN 堆栈的数据路径。 只要保留正常实例，这种度量就会遵循应用程序负载均衡的流量所用的相同路径。 此外，还会验证客户使用的数据路径。 度量对于应用程序不可见，且不会干扰其他操作。|
 | DIP 可用性 | 标准负载均衡器使用分布式运行状况探测服务，根据配置设置监视应用程序终结点的运行状况。 此指标提供负载均衡器池中每个实例终结点的聚合视图或按终结点筛选的视图。  可以查看负载均衡器如何根据运行状况探测配置的指示了解应用程序的运行状况。
@@ -150,7 +150,7 @@ ms.locfileid: "68274401"
 
 上述两个选项均允许通过出站连接从虚拟网络访问虚拟网络的外部。 
 
-如果只有  一个内部标准负载均衡器与虚拟机资源所在的后端池关联，虚拟机仅可以访问虚拟网络资源和 [VNet 终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。  可以按照上一段描述的步骤创建出站连接。
+如果只有一个内部标准负载均衡器与虚拟机资源所在的后端池关联，虚拟机仅可以访问虚拟网络资源和 [VNet 终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。  可以按照上一段描述的步骤创建出站连接。
 
 未与标准 SKU 关联的虚拟机资源的出站连接保持不变。
 
@@ -227,9 +227,9 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 - 独立的虚拟机资源、可用性集资源或虚拟机规模集资源可以引用一个 SKU，绝不能同时引用两个。
 - 负载均衡器规则不能跨越两个虚拟网络。  前端及其相关的后端实例必须位于相同的虚拟网络中。  
 - 标准 SKU LB 和 PIP 资源不支持[移动订阅操作](../azure-resource-manager/resource-group-move-resources.md)。
-- 由于 VNet 之前的服务和其他平台服务功能的副作用，如果仅使用内部标准负载均衡器，则可以访问没有 VNet 和其他 Microsoft 平台服务的辅助角色。 请勿依赖此服务，因为相应的服务本身或底层平台可能会在不通知的情况下进行更改。 在仅使用内部标准负载均衡器时，必须始终假定需要明确创建[出站连接](load-balancer-outbound-connections.md)。
-- 负载均衡器属于 TCP 或 UDP 产品，用于对这些特定的 IP 协议进行负载均衡和端口转发。  负载均衡规则和入站 NAT 规则支持 TCP 和 UDP，但不支持其他 IP 协议（包括 ICMP）。 负载均衡器不会终止、响应 UDP 或 TCP 流的有效负载，也不与之交互。 它不是一个代理。 必须使用负载均衡或入站 NAT 规则（TCP 或 UDP）中所用的同一协议在带内成功验证与前端的连接，并且必须至少有一个虚拟机为客户端生成了响应，这样才能看到前端发出的响应。   未从前端负载均衡器收到带内响应表明没有任何虚拟机能够做出响应。  在虚拟机都不能做出响应的情况下，无法与负载均衡器前端交互。  这一点也适用于出站连接，其中的[端口伪装 SNAT](load-balancer-outbound-connections.md#snat) 仅支持 TCP 和 UDP；其他任何 IP 协议（包括 ICMP）也会失败。  分配实例级公共 IP 地址即可缓解问题。
-- 公共负载均衡器在将虚拟网络中的专用 IP 地址转换为公共 IP 地址时提供[出站连接](load-balancer-outbound-connections.md)，而内部负载均衡器则与此不同，它不会将出站发起连接转换为内部负载均衡器的前端，因为两者都位于专用的 IP 地址空间中。  这可以避免不需要转换的唯一内部 IP 地址空间内发生 SNAT 耗尽。  负面影响是，如果来自后端池中 VM 的出站流尝试流向该 VM 所在池中内部负载均衡器的前端，并映射回到自身，则这两个流的分支不会匹配，并且该流将会失败。   如果该流未映射回到后端池中的同一 VM（在前端中创建了流的 VM），则该流将会成功。   如果流映射回到自身，则出站流显示为源自 VM 并发往前端，并且相应的入站流显示为源自 VM 并发往自身。 从来宾 OS 的角度看，同一流的入站和出站部分在虚拟机内部不匹配。 TCP 堆栈不会将同一流的这两半看作是同一流的组成部分，因为源和目标不匹配。  当流映射到后端池中的任何其他 VM 时，流的两半将会匹配，且 VM 可以成功响应流。  此方案的症状是间歇性的连接超时。 可通过几种常用解决方法来可靠地实现此方案（从后端池发起流，并将其传送到后端池的相应内部负载均衡器前端），包括在内部负载均衡器的后面插入第三方代理，或[使用 DSR 式规则](load-balancer-multivip-overview.md)。  尽管可以使用公共负载均衡器来缓解问题，但最终的方案很容易导致 [SNAT 耗尽](load-balancer-outbound-connections.md#snat)，除非有精心的管理，否则应避免这种做法。
+- 如果仅使用内部标准负载均衡器，由于 VNet 之前的服务和其他平台服务功能的副作用，则可以访问没有 VNet 和其他 Microsoft 平台服务的辅助角色。 请勿依赖此服务，因为相应的服务本身或底层平台可能会在不通知的情况下进行更改。 在仅使用内部标准负载均衡器时，必须始终假定需要明确创建[出站连接](load-balancer-outbound-connections.md)。
+- 负载均衡器属于 TCP 或 UDP 产品，用于对这些特定的 IP 协议进行负载均衡和端口转发。  负载均衡规则和入站 NAT 规则支持 TCP 和 UDP，但不支持其他 IP 协议（包括 ICMP）。 负载均衡器不会终止、响应 UDP 或 TCP 流的有效负载，也不与之交互。 它不是一个代理。 必须使用负载均衡或入站 NAT 规则（TCP 或 UDP）中所用的同一协议在带内成功验证与前端的连接，并且必须至少有一个虚拟机为客户端生成了响应，这样才能看到前端发出的响应。  未从前端负载均衡器收到带内响应表明没有任何虚拟机能够做出响应。  在虚拟机都不能做出响应的情况下，无法与负载均衡器前端交互。  这一点也适用于出站连接，其中的[端口伪装 SNAT](load-balancer-outbound-connections.md#snat) 仅支持 TCP 和 UDP；其他任何 IP 协议（包括 ICMP）也会失败。  分配实例级公共 IP 地址即可缓解问题。
+- 公共负载均衡器在将虚拟网络中的专用 IP 地址转换为公共 IP 地址时提供[出站连接](load-balancer-outbound-connections.md)，而内部负载均衡器则与此不同，它不会将出站发起连接转换为内部负载均衡器的前端，因为两者都位于专用的 IP 地址空间中。  这可以避免不需要转换的唯一内部 IP 地址空间内发生 SNAT 耗尽。  负面影响是，如果来自后端池中 VM 的出站流尝试流向该 VM 所在池中内部负载均衡器的前端，并映射回到自身，则这两个流的分支不会匹配，并且该流将会失败。  如果该流未映射回到后端池中的同一 VM（在前端中创建了流的 VM），则该流将会成功。   如果流映射回到自身，则出站流显示为源自 VM 并发往前端，并且相应的入站流显示为源自 VM 并发往自身。 从来宾 OS 的角度看，同一流的入站和出站部分在虚拟机内部不匹配。 TCP 堆栈不会将同一流的这两半看作是同一流的组成部分，因为源和目标不匹配。  当流映射到后端池中的任何其他 VM 时，流的两半将会匹配，且 VM 可以成功响应流。  此方案的症状是间歇性的连接超时。 可通过几种常用解决方法来可靠地实现此方案（从后端池发起流，并将其传送到后端池的相应内部负载均衡器前端），包括在内部负载均衡器的后面插入第三方代理，或[使用 DSR 式规则](load-balancer-multivip-overview.md)。  尽管可以使用公共负载均衡器来缓解问题，但最终的方案很容易导致 [SNAT 耗尽](load-balancer-outbound-connections.md#snat)，除非有精心的管理，否则应避免这种做法。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -237,7 +237,7 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 - 了解[运行状况探测](load-balancer-custom-probe-overview.md)。
 - 详细了解[可用性区域](../availability-zones/az-overview.md)。
 - 了解有关[标准负载均衡器诊断](load-balancer-standard-diagnostics.md)的信息。
-- 在 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 中了解用于诊断的[支持的多维度指标](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers)。
+- 在 [Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) 中了解用于诊断的[支持的多维度指标](../monitoring-and-diagnostics/monitoring-overview.md)。
 - 了解如何[对出站连接使用负载均衡器](load-balancer-outbound-connections.md)。
 - 了解[出站规则](load-balancer-outbound-rules-overview.md)。
 - 了解如何[在空闲时重置 TCP](load-balancer-tcp-reset.md)。

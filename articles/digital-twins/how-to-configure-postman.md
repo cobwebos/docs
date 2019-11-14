@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 5a357a246f2ba6c294b107e447218f386623f5c5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/13/2019
+ms.openlocfilehash: 8967b61115d2e2e644dea93cb236f8a7cdfcfcbd
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014181"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072263"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>如何为 Azure 数字孪生配置 Postman
 
@@ -58,14 +58,9 @@ ms.locfileid: "74014181"
 
     [![管理员同意批准](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
+1. 配置要 `https://www.getpostman.com/oauth2/callback`的第二个**重定向 URI** 。
 
-1. 选择 "**清单**" 打开应用程序的应用程序清单。 将“oauth2AllowImplicitFlow”设置为`true`。
-
-    [![Azure Active Directory 隐式流](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
-
-1. 将“回复 URL”配置为`https://www.getpostman.com/oauth2/callback`。
-
-    [![Azure Active Directory 回复 URL](media/how-to-configure-postman/reply-url.png)](media/how-to-configure-postman/reply-url.png#lightbox)
+    [![添加 Postman 的重定向 URI](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
 1. 复制并保留 Azure Active Directory 应用的“应用程序 ID”。 它在后续步骤中会用到。
 
@@ -106,10 +101,6 @@ ms.locfileid: "74014181"
     [![Postman 客户端示例](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
 
 1. 选择“请求令牌”。
-
-    >[!TIP]
-    >如果收到错误消息“无法完成 OAuth 2”，请尝试以下操作：
-    > * 关闭并重新打开 Postman，然后重试。
   
 1. 向下滚动并选择“使用令牌”。
 
@@ -117,13 +108,13 @@ ms.locfileid: "74014181"
 
 完成上述步骤后，请将 Postman 配置为发出已经过身份验证的 HTTP 多部分 POST 请求：
 
-1. 在“标头”选项卡下，添加值为  **的 HTTP 请求标头键 Content-Type**`multipart/mixed`。
+1. 在 "**标头**" 选项卡下，添加值为 `multipart/mixed`的 HTTP 请求标头密钥**内容类型**。
 
    [![内容类型多部分/混合](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. 将非文本数据序列化为文件。 JSON 数据将另存为 JSON 文件。
 1. 在 "**正文**" 选项卡下，选择 `form-data`。 
-1. 通过分配**密钥**名称来添加每个文件，并选择 "`file`"。
+1. 通过分配**密钥**名称来添加每个文件，并选择 "`File`"。
 1. 然后，通过“选择文件”按钮选择每个文件。
 
    [![Postman 客户端示例](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
@@ -133,7 +124,7 @@ ms.locfileid: "74014181"
    > * 对于每个部分，不需要指定这些标头。
    > * 对于整个请求，必须选择 `multipart/mixed` 或其他相应的 **Content-Type**。
 
-1. 最后，选择 "**发送**" 以提交多部分 HTTP POST 请求。
+1. 最后，选择 "**发送**" 以提交多部分 HTTP POST 请求。 `200` 或 `201` 的状态代码指示请求成功。 你还将看到相应的响应消息。
 
 ## <a name="next-steps"></a>后续步骤
 

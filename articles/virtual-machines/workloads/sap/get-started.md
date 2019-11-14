@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/08/2019
+ms.date: 11/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d092dcf6fa9942f7b3283d1d77157b1f291a5062
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 7f9d1198a0faca8eed2ca5d3f3ee89ac9019d657
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905050"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073910"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -120,6 +120,7 @@ Azure for SAP HANA 的唯一性是将 Azure 分开的一个产品/服务。 为�
 
 
 ## <a name="change-log"></a>更改日志
+- 11/12/2019：[在 Windows 上发布 SAP NetWeaver On Azure NetApp 文件（SMB）的高可用性](high-availability-guide-windows-netapp-files-smb.md)
 - 11/08/2019：在[SUSE Linux Enterprise Server 上的 Azure vm 上 SAP HANA 的高可用性](sap-hana-high-availability.md)变化，在[azure 虚拟机（vm）上设置 SAP HANA 系统复制](sap-hana-high-availability-rhel.md)，azure[虚拟机高可用性适用于 sap 应用程序的 SUSE Linux Enterprise Server](high-availability-guide-suse.md)，适用于 sap NetWeaver 的 Azure 虚拟机高可用性， [azure NetApp 文件](high-availability-guide-suse-netapp-files.md)，azure 虚拟机高可用性，适用于 SUSE Linux Enterprise Server[上的 sap NetWeaver](high-availability-guide-rhel.md)， [Azure 虚拟机 Red Hat Enterprise Linux 上的 sap NetWeaver 高可用性 Azure NetApp 文件](high-availability-guide-rhel-netapp-files.md)，azure vm 上的 azure 虚拟机[高可用性 SUSE Linux Enterprise Server](high-availability-guide-suse-nfs.md)上，azure Vm 上的 azure [Red Hat Enterprise Linux vm GlusterFS](high-availability-guide-rhel-glusterfs.md) ）建议 azure 标准负载均衡器  
 - 11/08/2019： [SAP 工作负荷规划和部署核对清单](sap-deployment-checklist.md)中的更改阐明了加密建议  
 - 11/04/2019：在 Azure 中的[SUSE Linux Enterprise Server 上设置 Pacemaker](high-availability-guide-suse-pacemaker.md) ，以直接通过单播配置创建群集  

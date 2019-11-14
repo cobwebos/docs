@@ -1,5 +1,5 @@
 ---
-title: Azure Windows 虚拟机大小 - 前几代 | Microsoft Docs
+title: Azure Windows VM 大小-上一代
 description: 列出 Azure 中适用于 Windows 虚拟机的前几代大小。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: 43fecfcdbb381588f0c717b7ca771c23c19f367d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b5d1483082b319c5668fba41a7adfec8ba45d25c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088478"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066160"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前几代虚拟机大小
 

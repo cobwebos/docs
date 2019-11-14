@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: b05473fd9868821285853b089fe711aa48f347fc
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: a24f670314d2f6679e37b438a74421e0e84604e2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973440"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075489"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>管理 Service Fabric 应用程序中的已加密机密
 本指南逐步讲解管理 Service Fabric 应用程序中的机密的步骤。 机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。
@@ -37,7 +37,7 @@ ms.locfileid: "71973440"
 ## <a name="specify-encrypted-secrets-in-an-application"></a>在应用程序中指定加密的机密
 上一步骤介绍了如何使用证书来加密机密，并生成要在应用程序中使用的 base-64 编码的字符串。 此64编码字符串可在服务的 Settings .xml 中指定为加密[参数][parameters-link]，或在服务的 servicemanifest.xml 中指定为加密的[环境变量][environment-variables-link]。
 
-请在服务的 Settings .xml 配置文件中指定一个加密[参数][parameters-link]，将 `IsEncrypted` 特性设置为 `true`：
+在服务的 Settings .xml 配置文件中指定加密[参数][parameters-link]，将 `IsEncrypted` 特性设置为 `true`：
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -103,15 +103,15 @@ Settings.xml 配置文件允许使用可在创建应用程序时提供的可重�
   </ServiceManifestImport>
  ```
 
-现在，可以在创建应用程序实例时将值指定为*应用程序参数* 。 可以使用 PowerShell 或 C# 编写用于创建应用程序实例的脚本，方便在生成过程中轻松集成。
+现在，可以在创建应用程序实例时会值指定为*应用程序参数*。 可以使用 PowerShell 或 C# 编写用于创建应用程序实例的脚本，方便在生成过程中轻松集成。
 
-使用 PowerShell 时，参数将以[哈希表](https://technet.microsoft.com/library/ee692803.aspx)的形式提供给 `New-ServiceFabricApplication`：
+使用 PowerShell 时，参数以`New-ServiceFabricApplication`哈希表[的形式提供给 ](https://technet.microsoft.com/library/ee692803.aspx)：
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
 ```
 
-使用 C# 时，应用程序参数以 `NameValueCollection` 的形式在 `ApplicationDescription` 中指定：
+使用 C# 时，应用程序参数以 `ApplicationDescription` 的形式在 `NameValueCollection` 中指定：
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -147,10 +147,12 @@ string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
 ## <a name="next-steps"></a>后续步骤
-深入了解[应用程序和服务安全性](service-fabric-application-and-service-security.md)
+* Service Fabric[密钥存储](service-fabric-application-secret-store.md) 
+* 深入了解[应用程序和服务安全性](service-fabric-application-and-service-security.md)
 
 <!-- Links -->
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md
 [environment-variables-link]: service-fabric-how-to-specify-environment-variables.md
 [secret-management-windows-specific-link]: service-fabric-application-secret-management-windows.md
 [secret-management-linux-specific-link]: service-fabric-application-secret-management-linux.md
+[service fabric secrets store]: service-fabric-application-secret-store.md

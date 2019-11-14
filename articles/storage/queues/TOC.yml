@@ -206,12 +206,16 @@
       items:
         - name: 队列（版本 11.x）
           href: /dotnet/api/microsoft.azure.storage.queue
+        - name: 队列（版本 12.x）
+          href: /dotnet/api/azure.storage.queues
         - name: 存储资源提供程序
           href: /dotnet/api/overview/azure/storage/management
     - name: Java
       items:
         - name: 队列（版本 8.x）
           href: /java/api/com.microsoft.azure.storage.queue
+        - name: 队列（版本 12.x）
+          href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html'
         - name: 存储资源提供程序
           href: /java/api/overview/azure/storage/management
     - name: JavaScript（版本 12.x）
@@ -267,11 +271,11 @@
       items:
         - name: Microsoft.Azure.Storage.Common（版本 11.x）
           href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/'
-        - name: Azure.Storage.Common（版本 12.x - 预览版）
+        - name: Azure.Storage.Common（版本 12.x）
           href: 'https://www.nuget.org/packages/Azure.Storage.Common/'
         - name: Microsoft.Azure.Storage.Queue（版本 11.x）
           href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/'
-        - name: Azure.Storage.Queue（版本 12.x - 预览版）
+        - name: Azure.Storage.Queue（版本 12.x）
           href: 'https://www.nuget.org/packages/Azure.Storage.Queues/'
         - name: Azure 配置管理器
           href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
@@ -283,7 +287,7 @@
           items:
             - name: Azure 存储客户端库
               items:
-                - name: 版本 12.x（预览版）
+                - name: 版本 12.x
                   href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage'
                 - name: 版本 11.x 和更早版本
                   href: 'https://github.com/Azure/azure-storage-net'
@@ -293,7 +297,7 @@
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.Management.Storage'
         - name: Java
           items:
-            - name: Azure 存储客户端库版本 12.x（预览版）
+            - name: Azure 存储客户端库版本 12.x
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
             - name: Blob、队列和文件（版本 8）
               href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
@@ -301,13 +305,13 @@
               href: 'https://github.com/Azure/azure-storage-java'
         - name: Node.js
           items:
-            - name: Azure 存储客户端库版本 12.x（预览版）
+            - name: Azure 存储客户端库版本 12.x
               href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage'
             - name: Azure 存储客户端库版本 10.x
               href: 'https://github.com/Azure/azure-storage-node'
         - name: Python
           items:
-            - name: Azure 存储客户端库版本 12.x（预览版）
+            - name: Azure 存储客户端库版本 12.x
               href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage'
             - name: Azure 存储客户端库版本 2.1
               href: 'https://github.com/Azure/azure-storage-python'

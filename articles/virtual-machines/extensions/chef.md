@@ -1,5 +1,5 @@
 ---
-title: 适用于 Azure VM 的 Chef 扩展 | Microsoft Docs
+title: 适用于 Azure Vm 的 Chef 扩展
 description: 使用 Chef VM 扩展将 Chef 客户端部署到虚拟机。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: e82a5fefcc7f582df65d945735d9840fc3e49829
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 2b69a17c7f9de62187d9dc99f7c1d5c5b74c25ad
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169149"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073189"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Chef VM 扩展
 
@@ -36,7 +36,7 @@ Chef VM 扩展要求目标虚拟机连接到 Internet 以便从内容分发网�
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示了 Chef VM 扩展的架构。 此扩展至少需要 Chef 服务器 URL、验证客户端名称以及 Chef 服务器的验证密钥，可以从安装 [Chef Automate](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) 或独立的 [Chef 服务器](https://downloads.chef.io/chef-server)时下载的 starter-kit.zip 中的 `knife.rb` 文件中找到这些值。 因为验证密钥被视为敏感数据，因此应当将其配置在 **protectedSettings** 元素下，这意味着它只能在目标虚拟机上解密。
+以下 JSON 显示了 Chef VM 扩展的架构。 此扩展至少需要 Chef 服务器 URL、验证客户端名称以及 Chef 服务器的验证密钥，可以从安装 `knife.rb`Chef Automate[ 或独立的 ](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate)Chef 服务器[时下载的 starter-kit.zip 中的 ](https://downloads.chef.io/chef-server) 文件中找到这些值。 因为验证密钥被视为敏感数据，因此应当将其配置在 **protectedSettings** 元素下，这意味着它只能在目标虚拟机上解密。
 
 ```json
 {
@@ -67,26 +67,26 @@ Chef VM 扩展要求目标虚拟机连接到 Internet 以便从内容分发网�
 
 ### <a name="core-property-values"></a>核心属性值
 
-| 姓名 | 值/示例 | 数据类型
+| 名称 | 值/示例 | 数据类型
 | ---- | ---- | ----
-| apiVersion | `2017-12-01` | string （date） |
-| publisher | `Chef.Bootstrap.WindowsAzure` | string |
-| type | `LinuxChefClient` (Linux)、`ChefClient` (Windows) | string |
-| typeHandlerVersion | `1210.12` | string （double） |
+| apiVersion | `2017-12-01` | 字符串（日期） |
+| 发布者 | `Chef.Bootstrap.WindowsAzure` | 字符串 |
+| type | `LinuxChefClient` (Linux)、`ChefClient` (Windows) | 字符串 |
+| typeHandlerVersion | `1210.12` | 字符串（双精度） |
 
 ### <a name="settings"></a>设置
 
-| 姓名 | 值/示例 | 数据类型 | 必需？
+| 名称 | 值/示例 | 数据类型 | 必需？
 | ---- | ---- | ---- | ----
-| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | Y |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Y |
-| settings/runlist | `recipe[mycookbook::default]` | string | Y |
+| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | 字符串 (url) | Y |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | 字符串 | Y |
+| settings/runlist | `recipe[mycookbook::default]` | 字符串 | Y |
 
 ### <a name="protected-settings"></a>受保护的设置
 
-| 姓名 | 示例 | 数据类型 | 必需？
+| 名称 | 示例 | 数据类型 | 必需？
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Y |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | 字符串 | Y |
 
 <!--
 ### Linux-specific settings
@@ -122,7 +122,7 @@ az vm extension set \
   --settings '{ "bootstrap_options": { "chef_server_url": "<chef_server_url>", "validation_client_name": "<validation_client_name>" }, "runlist": "<run_list>" }'
 ```
 
-## <a name="troubleshooting-and-support"></a>疑难解答和支持
+## <a name="troubleshooting-and-support"></a>故障排除和支持
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令。
 
@@ -154,4 +154,4 @@ C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 
 ## <a name="next-steps"></a>后续步骤
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

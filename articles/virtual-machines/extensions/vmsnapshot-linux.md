@@ -1,5 +1,5 @@
 ---
-title: Azure 备份的 VM 快照 Linux 扩展 | Microsoft 文档
+title: Azure 备份的 VM 快照 Linux 扩展
 description: 使用 VM 快照扩展从 Azure 备份获取虚拟机的应用程序一致性备份
 services: backup, virtual-machines-linux
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: e0e959647231fb87c023dcb5c4c48a205259de74
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 186468119fb5b630b56a91b38026f202b98630d6
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705853"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072927"
 ---
 # <a name="vm-snapshot-linux-extension-for-azure-backup"></a>Azure 备份的 VM 快照 Linux 扩展
 
@@ -34,7 +34,7 @@ VM 快照扩展要求在我们获取虚拟机的备份时，目标虚拟机已�
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 VM 快照扩展的架构。 该扩展需要任务 ID（它标识了在 VM 上已触发快照的备份作业）、状态 Blob URI（其中写入快照操作状态）、快照的计划开始时间、日志 Blob URI（写入与快照任务对应的日志），以及表示 VM 磁盘和元数据的 objstr。  由于应将这些设置视为敏感数据，因此它应存储在受保护的设置配置中。 Azure VM 扩展保护的设置数据已加密，并且只能在目标虚拟机上解密。 请注意，建议仅将这些设置作为备份作业的一部分从 Azure 备份服务传递。
+以下 JSON 显示 VM 快照扩展的架构。 该扩展需要任务 ID（它标识了在 VM 上已触发快照的备份作业）、状态 Blob URI（其中写入快照操作状态）、快照的计划开始时间、日志 Blob URI（写入与快照任务对应的日志），以及表示 VM 磁盘和元数据的 objstr。  由于应将这些设置视为敏感数据，因此它应存储在受保护的设置配置中。 Azure VM 扩展的受保护设置数据已加密，并且只能在目标虚拟机上解密。 请注意，建议仅将这些设置作为备份作业的一部分从 Azure 备份服务传递。
 
 ```json
 {
@@ -115,4 +115,4 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

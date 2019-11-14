@@ -11,39 +11,39 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 00731d3520c98c3fd770dc411f6c5c940555fbe5
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: f6a6f50a86dc58299a1c1b5994dd1d19cc915e6c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048601"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076882"
 ---
-# <a name="use-ssl-to-secure-a--through-azure-machine-learning"></a>使用 SSL 通过 Azure 机器学习保护
+# <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>通过 SSL 使用 SSL 来保护 web 服务 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何保护通过 Azure 机器学习部署的。
+本文介绍如何保护通过 Azure 机器学习部署的 web 服务。
 
-使用[HTTPS](https://en.wikipedia.org/wiki/HTTPS)限制对的访问，并保护客户端提交的数据。 HTTPS 通过对两者之间的通信进行加密来帮助保护客户端和之间的通信。 加密使用[传输层安全性（TLS）](https://en.wikipedia.org/wiki/Transport_Layer_Security)。 TLS 有时仍称为*安全套接字层*（SSL），这是 tls 的前身。
+使用[HTTPS](https://en.wikipedia.org/wiki/HTTPS)限制对 web 服务的访问并保护客户端提交的数据。 HTTPS 通过对两者之间的通信进行加密来帮助保护客户端和 web 服务之间的通信。 加密使用[传输层安全性（TLS）](https://en.wikipedia.org/wiki/Transport_Layer_Security)。 TLS 有时仍称为*安全套接字层*（SSL），这是 tls 的前身。
 
 > [!TIP]
-> Azure 机器学习 SDK 对与安全通信相关的属性使用术语 "SSL"。 这并不意味着您不使用*TLS*。 SSL 只是一种更常见的公认术语。
+> Azure 机器学习 SDK 对与安全通信相关的属性使用术语 "SSL"。 这并不意味着 web 服务不使用*TLS*。 SSL 只是一种更常见的公认术语。
 
 TLS 和 SSL 均依赖于*数字证书*，这有助于加密和身份验证。 有关数字证书工作方式的详细信息，请参阅维基百科主题[公钥基础结构](https://en.wikipedia.org/wiki/Public_key_infrastructure)。
 
 > [!WARNING]
-> 如果不使用 HTTPS，则发送到服务或从服务发送的数据可能对 internet 上的其他人可见。
+> 如果没有为 web 服务使用 HTTPS，则发送到服务或从服务发送的数据可能对 internet 上的其他人可见。
 >
 > HTTPS 还允许客户端验证它连接到的服务器的真实性。 此功能保护客户端免受[中间人](https://en.wikipedia.org/wiki/Man-in-the-middle_attack)攻击。
 
-这是保护的一般过程：
+这是保护 web 服务的一般过程：
 
 1. 获取域名。
 
 2. 获取数字证书。
 
-3. 部署或更新已启用 SSL。
+3. 部署或更新启用了 SSL 的 web 服务。
 
-4. 将 DNS 更新为指向。
+4. 更新 DNS，使其指向该 Web 服务。
 
 > [!IMPORTANT]
 > 如果要部署到 Azure Kubernetes Service （AKS），可以购买自己的证书或使用 Microsoft 提供的证书。 如果使用 Microsoft 的证书，则无需获取域名或 SSL 证书。 有关详细信息，请参阅本文的[启用 SSL 和部署](#enable)部分。
@@ -52,7 +52,7 @@ TLS 和 SSL 均依赖于*数字证书*，这有助于加密和身份验证。 �
 
 ## <a name="get-a-domain-name"></a>获取域名
 
-如果还没有域名，请从*域名注册机构*购买一个。 此过程和价格在注册机构之间有所不同。 注册机构提供管理域名的工具。 使用这些工具可以将完全限定的域名（FQDN）（例如 www\.contoso.com）映射到承载的 IP 地址。
+如果还没有域名，请从*域名注册机构*购买一个。 此过程和价格在注册机构之间有所不同。 注册机构提供管理域名的工具。 使用这些工具可以将完全限定的域名（FQDN）（例如 www\.contoso.com）映射到托管 web 服务的 IP 地址。
 
 ## <a name="get-an-ssl-certificate"></a>获取 SSL 证书
 
@@ -61,7 +61,7 @@ TLS 和 SSL 均依赖于*数字证书*，这有助于加密和身份验证。 �
 * 证书。 证书必须包含完整的证书链，并且必须是 "PEM 编码的"。
 * 密钥。 此密钥还必须为 PEM 编码。
 
-请求证书时，必须提供你计划用于的地址的 FQDN （例如，www\.contoso.com）。 与客户端使用的地址进行比较，以验证的身份。 " 如果这些地址不匹配，则客户端将收到一条错误消息。
+请求证书时，必须提供你计划用于 web 服务的地址的 FQDN （例如，www\.contoso.com）。 与客户端使用的地址相比较的地址与客户端使用的地址相比较，以验证 web 服务的身份。 如果这些地址不匹配，则客户端将收到一条错误消息。
 
 > [!TIP]
 > 如果证书颁发机构无法提供作为 PEM 编码文件的证书和密钥，则可以使用[OpenSSL](https://www.openssl.org/)之类的实用工具来更改格式。
@@ -76,7 +76,7 @@ TLS 和 SSL 均依赖于*数字证书*，这有助于加密和身份验证。 �
 ### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>在 AKS 和现场可编程入口阵列（FPGA）上部署
 
   > [!NOTE]
-  > 当你为设计器部署安全时，本节中的信息也适用。 如果不熟悉如何使用 Python SDK，请参阅[适用于 python 的 AZURE 机器学习 SDK 是什么？](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
+  > 此部分中的信息也适用于为设计器部署安全的 web 服务。 如果不熟悉如何使用 Python SDK，请参阅[适用于 python 的 AZURE 机器学习 SDK 是什么？](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
 
 部署到 AKS 时，可以创建新的 AKS 群集或附加现有群集。 有关创建或附加群集的详细信息，请参阅[将模型部署到 Azure Kubernetes 服务群集](how-to-deploy-azure-kubernetes-service.md)。
   
@@ -145,7 +145,7 @@ aci_config = AciWebservice.deploy_configuration(
 
 ## <a name="update-your-dns"></a>更新 DNS
 
-接下来，必须将 DNS 更新为指向。
+接下来，必须更新 DNS，使其指向该 Web 服务。
 
 + **对于容器实例：**
 
@@ -160,7 +160,7 @@ aci_config = AciWebservice.deploy_configuration(
 
   在左侧窗格中的 "**设置**" 下的 "**配置**" 选项卡上，更新 AKS 群集的公共 IP 地址的 DNS。 （请参阅下图。）公共 IP 地址是一种资源类型，它是在包含 AKS 代理节点和其他网络资源的资源组下创建的。
 
-  [![Azure 机器学习：通过 SSL 保护](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure 机器学习：通过 SSL 保护 web 服务](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>更新 SSL 证书
 
@@ -257,5 +257,5 @@ aks_target.update(update_config)
 
 ## <a name="next-steps"></a>后续步骤
 了解如何：
-+ [使用部署为的机器学习模型](how-to-consume-web-service.md)
++ [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
 + [安全地在 Azure 虚拟网络中运行试验和推理](how-to-enable-virtual-network.md)

@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.topic: conceptual
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 0afdc0ac246e4cacbd4f45cca36c3c57b1c26e02
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5d327dd1041172bc546b2e0cb5ec3a140f401d84
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005990"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072187"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
@@ -94,9 +94,13 @@ azure-cli                         2.0.60 *
 
 若要解决此问题，请将[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)安装更新到2.0.63 或更高版本。 此更新将解决在 `az aks use-dev-spaces`运行时收到的错误消息。 或者，你可以继续使用当前版本的 Azure CLI 和 Azure Dev Spaces CLI。
 
-### <a name="aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>已启用 API 服务器授权 IP 地址范围的 AKS 群集
+### <a name="error-unable-to-reach-kube-apiserver"></a>"无法访问 kube-apiserver" 错误
 
-如果已为 AKS 群集启用[API 服务器授权的 IP 地址范围](../aks/api-server-authorized-ip-ranges.md)，则还必须[创建](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled)或[更新](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges)群集，以[允许基于你的区域的其他范围](https://github.com/Azure/dev-spaces/tree/master/public-ips)。
+当 Azure Dev Spaces 无法连接到 AKS 群集的 API 服务器时，可能会看到此错误。 
+
+如果已锁定对 AKS 群集 API 服务器的访问，或者如果已为 AKS 群集启用[API 服务器授权的 IP 地址范围](../aks/api-server-authorized-ip-ranges.md)，则还必须[创建](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled)或[更新](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges)群集，以[允许基于你的区域的其他范围](https://github.com/Azure/dev-spaces/tree/master/public-ips)。
+
+通过运行 kubectl 命令确保 API 服务器可用。 如果 API 服务器不可用，请联系 AKS 支持部门，然后在 API 服务器正常工作时重试。
 
 ## <a name="common-issues-when-preparing-your-project-for-azure-dev-spaces"></a>为 Azure Dev Spaces 准备项目时遇到的常见问题
 

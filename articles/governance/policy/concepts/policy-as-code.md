@@ -1,20 +1,16 @@
 ---
-title: 作为代码工作流的设计策略
+title: 将策略设计为代码工作流
 description: 了解如何设计工作流以将 Azure 策略定义部署为代码并自动验证资源。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: e3fcb9996266af7e952538c7c92c665929bb9492
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 935616145ee32bea8c3b514c495690ce4105cb80
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518692"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072076"
 ---
-# <a name="design-policy-as-code-workflows"></a>作为代码工作流的设计策略
+# <a name="design-policy-as-code-workflows"></a>将策略设计为代码工作流
 
 当你使用云监管进行旅程时，需要从手动管理 Azure 门户中的每个策略定义，或通过各种 Sdk 进行切换，以便在企业范围内更易于管理和重复使用。 在云中大规模管理系统的两个主要方法是：
 
@@ -133,5 +129,5 @@ ms.locfileid: "73518692"
 - 了解[策略分配结构](./assignment-structure.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
 - 了解如何[获取合规性数据](../how-to/getting-compliance-data.md)。
-- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
+- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

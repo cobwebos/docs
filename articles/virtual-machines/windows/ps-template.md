@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中使用模板创建 Windows VM | Microsoft 文档
+title: 在 Azure 中从模板创建 Windows VM
 description: 将 Resource Manager 模板与 PowerShell 配合使用，轻松创建新的 Windows VM。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7e1f50753f155d1583de3a1e8426975e1b0d6aee
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 99e292930414ae027c9cbbf3a901d550041899d2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102514"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065547"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>通过 Resource Manager 模板创建 Windows 虚拟机
 
-了解如何使用 Azure 资源管理器模板创建 Windows 虚拟机, 以及如何从 Azure Cloud shell 中 Azure PowerShell。 本文中使用的模板会在包含单个子网的新虚拟网络上部署运行 Windows Server 的单个虚拟机。 若要创建 Linux 虚拟机，请参阅[如何使用 Azure 资源管理器模板创建 Linux 虚拟机](../linux/create-ssh-secured-vm-from-template.md)。
+了解如何使用 Azure 资源管理器模板创建 Windows 虚拟机，以及如何从 Azure Cloud shell 中 Azure PowerShell。 本文中使用的模板会在包含单个子网的新虚拟网络上部署运行 Windows Server 的单个虚拟机。 若要创建 Linux 虚拟机，请参阅[如何使用 Azure 资源管理器模板创建 Linux 虚拟机](../linux/create-ssh-secured-vm-from-template.md)。
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
@@ -37,7 +37,7 @@ ms.locfileid: "70102514"
 
 [!code-json[create-windows-vm](~/quickstart-templates/101-vm-simple-windows/azuredeploy.json)]
 
-若要运行 PowerShell 脚本, 请选择 "**尝试**" 以打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+若要运行 PowerShell 脚本，请选择 "**尝试**" 以打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -58,14 +58,14 @@ New-AzResourceGroupDeployment `
 
 ```
 
-如果选择在本地安装并使用 PowerShell 而不是 Azure Cloud shell, 则本教程需要 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell 而不是 Azure Cloud shell，则本教程需要 Azure PowerShell 模块。 可以运行 `Get-Module -ListAvailable Az` 来查找版本。 如果需要进行升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 在前面的示例中，指定了 GitHub 中存储的一个模板。 还可以下载或创建模板并使用 `--template-file` 参数指定本地路径。
 
-下面是一些其他资源：
+下面是其他一些资源：
 
 - 若要了解如何开发资源管理器模板，请参阅 [Azure 资源管理器文档](/azure/azure-resource-manager/)。
-- 若要查看 Azure 虚拟机架构, 请参阅[azure 模板参考](/azure/templates/microsoft.compute/allversions)。
+- 若要查看 Azure 虚拟机架构，请参阅[azure 模板参考](/azure/templates/microsoft.compute/allversions)。
 - 若要查看更多的虚拟机模板示例，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)。
 
 ## <a name="connect-to-the-virtual-machine"></a>连接到虚拟机

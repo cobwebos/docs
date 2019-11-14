@@ -1,5 +1,5 @@
 ---
-title: 适用于 Windows 的 Azure 磁盘加密 | Microsoft Docs
+title: 适用于 Windows 的 Azure 磁盘加密
 description: 使用虚拟机扩展将 Azure 磁盘加密部署到 Windows 虚拟机。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 056bd1293e0593a7fb7f9909cfd85043577686c4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8435663dcf92e2617ea2fe9218649e94243272d2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901332"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073207"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>适用于 Windows 的 Azure 磁盘加密 (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -26,7 +26,7 @@ ms.locfileid: "72901332"
 
 Azure 磁盘加密利用 BitLocker 在运行 Windows 的 Azure 虚拟机上提供完全磁盘加密。  此解决方案与 Azure Key Vault 集成，以管理 Key Vault 订阅中的磁盘加密密钥和机密。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 有关先决条件的完整列表，请参阅[适用于 Linux vm 的 Azure 磁盘加密](../linux/disk-encryption-overview.md)，具体如下部分：
 
@@ -136,7 +136,7 @@ Windows AzureDiskEncryption 扩展有两个架构：版本2.2，一种更新的�
 
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
+| apiVersion | 2015-06-15 | 日期 |
 | 发布者 | Microsoft.Azure.Security | 字符串 |
 | type | AzureDiskEncryptionForLinux | 字符串 |
 | typeHandlerVersion | 1.1、2。2 | 字符串 |
@@ -148,7 +148,7 @@ Windows AzureDiskEncryption 扩展有两个架构：版本2.2，一种更新的�
 | KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | 字符串 |
 | KeyEncryptionKeyURL | url | 字符串 |
 | KeyVaultURL | url | 字符串 |
-| 可有可无密码 | password | 字符串 | 
+| （可选）Passphrase | password | 字符串 | 
 | SequenceVersion | uniqueidentifier | 字符串 |
 | VolumeType | OS, Data, All | 字符串 |
 
@@ -167,7 +167,7 @@ Windows AzureDiskEncryption 扩展有两个架构：版本2.2，一种更新的�
 
 ### <a name="support"></a>支持
 
-如果你对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>后续步骤
 有关扩展的详细信息，请参阅[适用于 Windows 的虚拟机扩展和功能](features-windows.md)。

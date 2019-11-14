@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: dacurwin
-ms.openlocfilehash: a77227aca70a48d625f9e20fff9c9fe7df87c000
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c65c04a67b92642d3664293dd666236919142f12
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012140"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074201"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>与对文件和文件夹进行备份相关的常见问题
 
@@ -45,11 +45,11 @@ ms.locfileid: "74012140"
 
 ### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-an-azure-vm"></a>是否可以使用 MARS 代理在 Azure VM 上备份文件和文件夹？  
 
-是。 Azure 备份使用 Azure VM 代理的 VM 扩展为 Azure VM 提供 VM 级备份。 如果你希望在 VM 的来宾 Windows 操作系统上备份文件和文件夹，可以安装 MARS 代理来执行该操作。
+可以。 Azure 备份使用 Azure VM 代理的 VM 扩展为 Azure VM 提供 VM 级备份。 如果你希望在 VM 的来宾 Windows 操作系统上备份文件和文件夹，可以安装 MARS 代理来执行该操作。
 
 ### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-temporary-storage-for-the-azure-vm"></a>是否可以使用 MARS 代理在 Azure VM 的临时存储上备份文件和文件夹？
 
-是。 安装 MARS 代理，将来宾 Windows 操作系统上的文件和文件夹备份到临时存储。
+可以。 安装 MARS 代理，将来宾 Windows 操作系统上的文件和文件夹备份到临时存储。
 
 * 擦除临时存储数据后，备份作业将失败。
 * 如果临时存储数据被删除，则你只能还原到非易失性存储。
@@ -60,7 +60,7 @@ ms.locfileid: "74012140"
 
 ### <a name="does-the-mars-agent-support-windows-server-2012-deduplication"></a>MARS 代理是否支持 Windows Server 2012 重复数据删除？
 
-是。 MARS 代理在准备备份操作时会将消除了重复的数据转换为常规数据。 然后，它将对数据进行优化以便备份、对数据进行加密，然后将已加密的数据发送到保管库。
+可以。 MARS 代理在准备备份操作时会将消除了重复的数据转换为常规数据。 然后，它将对数据进行优化以便备份、对数据进行加密，然后将已加密的数据发送到保管库。
 
 ## <a name="manage-backups"></a>管理备份
 
@@ -130,11 +130,11 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
   Net start obengine
   ```
 
-6. 运行即席备份。 在使用新位置成功完成备份后，可以删除原始缓存文件夹。
+6. 运行按需备份。 在使用新位置成功完成备份后，可以删除原始缓存文件夹。
 
 ### <a name="where-should-the-cache-folder-be-located"></a>缓存文件夹应当位于何处？
 
-建议不要将缓存文件夹放在以下位置：
+不建议将缓存文件夹放在以下位置：
 
 * 网络共享/可移动媒体：缓存文件夹必须位于需要使用联机备份进行备份的服务器本地。 不支持网络位置或可移动媒体，例如 U 盘
 * 脱机卷：缓存文件夹必须联机才能使用 Azure 备份代理执行预期的备份

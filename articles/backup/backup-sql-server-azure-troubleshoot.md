@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: e4683547a7c305da3d3a3bc7a7d6a50f21ad46f2
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: e600fdb882294d14bb9f9216ac8d621ba5254170
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614404"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074729"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>使用 Azure 备份排查 SQL Server 数据库备份问题
 
@@ -29,9 +29,9 @@ ms.locfileid: "73614404"
 
 ### <a name="backup-type-unsupported"></a>不受支持的备份类型
 
-| Severity | 说明 | 可能的原因 | 建议的操作 |
+| 严重性 | 说明 | 可能的原因 | 建议的操作 |
 |---|---|---|---|
-| 警告 | 此数据库的当前设置不支持关联策略中存在特定的备份类型。 | <li>只能对 master 数据库执行完整数据库备份操作。 不能进行差异备份和事务日志备份。 </li> <li>简单恢复模式中的任何数据库都不允许备份事务日志。</li> | 将数据库设置修改为支持策略中的所有备份类型。 或者，将当前策略更改为仅包括支持的备份类型。 否则，在计划的备份过程中将跳过不支持的备份类型，否则，将无法进行即席备份。
+| 警告 | 此数据库的当前设置不支持关联策略中存在特定的备份类型。 | <li>只能对 master 数据库执行完整数据库备份操作。 不能进行差异备份和事务日志备份。 </li> <li>简单恢复模式中的任何数据库都不允许备份事务日志。</li> | 将数据库设置修改为支持策略中的所有备份类型。 或者，将当前策略更改为仅包括支持的备份类型。 否则，在计划的备份过程中将跳过不支持的备份类型，否则备份作业将失败。
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
@@ -50,7 +50,7 @@ ms.locfileid: "73614404"
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-| 日志链已中断。 | 数据库或 VM 通过其他备份解决方案进行备份，该解决方案将截断日志链。|<ul><li>检查是否正在使用其他备份解决方案或脚本。 如果是，请停止其他备份解决方案。 </li><li>如果备份是即席日志备份，请触发完整备份以启动新的日志链。 对于计划日志备份，无需执行任何操作，因为 Azure 备份服务会自动触发完整备份以解决此问题。</li>|
+| 日志链已中断。 | 数据库或 VM 通过其他备份解决方案进行备份，该解决方案将截断日志链。|<ul><li>检查是否正在使用其他备份解决方案或脚本。 如果是，请停止其他备份解决方案。 </li><li>如果备份是按需日志备份，请触发完整备份以启动新的日志链。 对于计划日志备份，无需执行任何操作，因为 Azure 备份服务会自动触发完整备份以解决此问题。</li>|
 
 ### <a name="usererroropeningsqlconnection"></a>UserErrorOpeningSQLConnection
 
@@ -62,7 +62,7 @@ ms.locfileid: "73614404"
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-| 此数据源缺少首次完整备份。 | 数据库缺少首次完整备份。 日志备份和差异备份是完整备份的父项，因此请确保在触发差异备份或日志备份之前执行完整备份。 | 触发临时完整备份。   |
+| 此数据源缺少首次完整备份。 | 数据库缺少首次完整备份。 日志备份和差异备份是完整备份的父项，因此请确保在触发差异备份或日志备份之前执行完整备份。 | 触发按需完整备份。   |
 
 ### <a name="usererrorbackupfailedastransactionlogisfull"></a>UserErrorBackupFailedAsTransactionLogIsFull
 
