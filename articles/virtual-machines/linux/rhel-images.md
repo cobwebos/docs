@@ -1,5 +1,5 @@
 ---
-title: Azure 中的 Red Hat Enterprise Linux 映像 | Microsoft Docs
+title: Azure 中的 Red Hat Enterprise Linux 映像
 description: 了解 Microsoft Azure 中的 Red Hat Enterprise Linux 映像
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: c11ce31913baa8c638e94bdf92ef622cd8899e03
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: eaabe9da20c22dd3e4d924887adcbc7081857e91
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764305"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035115"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Azure 中的 Red Hat Enterprise Linux 映像
 本文介绍 Azure 市场中可用的 Red Hat Enterprise Linux (RHEL) 映像以及与其命名和保留相关的策略。
@@ -64,7 +64,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:lat
 ### <a name="current-naming-convention"></a>当前的命名约定
 当前发布的所有 RHEL 映像均使用即用即付模型，并连接到 [Azure 中的 Red Hat 更新基础结构 (RHUI)](https://aka.ms/rhui-update)。 RHEL 7 系列映像采用了新的命名约定，其中在 SKU 而不是版本中指定了磁盘分区方案（原始、LVM）。 RHEL 映像版本包含 7-RAW 或 7-LVM。 RHEL 6 系列的命名目前尚未更改。
 
-此命名约定中将有2种类型的 RHEL 7 映像 Sku：列出次要版本和 Sku 的 Sku。 如果要使用 7-RAW 或 7-LVM SKU，可以指定要在版本中部署的 RHEL 次要版本。 如果选择 "最新版本"，则将预配 RHEL 的最新次要版本。
+此命名约定中将有2种类型的 RHEL 7 映像 Sku：列出次要版本的 Sku 和未列出的 Sku。 如果要使用 7-RAW 或 7-LVM SKU，可以指定要在版本中部署的 RHEL 次要版本。 如果选择 "最新版本"，则将预配 RHEL 的最新次要版本。
 
 >[!NOTE]
 > 在 RHEL for SAP 映像集中，RHEL 版本保持不变。 因此，它们的命名约定在 SKU 中包含特定版本。
@@ -88,7 +88,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:lat
 RedHat:RHEL:7-RAW:7.4.2018010506
 RedHat:RHEL:7.4:7.4.2019041718
 ```
-在这种情况`RedHat:RHEL:7.4:7.4.2019041718`下，默认情况下将附加到 EUS 存储`RedHat:RHEL:7-RAW:7.4.2018010506`库，并且默认情况下将附加到非 EUS 存储库。
+在这种情况下，默认情况下 `RedHat:RHEL:7.4:7.4.2019041718` 会附加到 EUS 存储库，默认情况下 `RedHat:RHEL:7-RAW:7.4.2018010506` 会附加到非 EUS 存储库。
 
 ### <a name="for-customers-that-dont-want-to-use-eus-images"></a>对于不希望使用 EUS 映像的客户：
 如果不想使用默认情况下连接到 EUS 的映像，请使用不包含 SKU 中的次要版本号的映像进行部署。
@@ -106,13 +106,13 @@ RedHat:RHEL:7.4:7.4.2019041718
 RHEL 7。4      |RedHat： RHEL：7.4：7.4.2019041718 | 默认情况下，将 EUS 2019 年4月版和更高版本发布的映像|
 RHEL 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | 默认情况下，将 EUS 2019 年6月发布的映像 |
 RHEL 7.6      |RedHat:RHEL:7.6:7.6.2019052206 | 默认情况下，发布的映像可能为2019，以后将 EUS  |
-RHEL 8。0      |不可用                            | Red Hat 中没有可用的 EUS                               |
+RHEL 8。0      |不适用                            | Red Hat 中没有可用的 EUS                               |
 
 
 ## <a name="list-of-rhel-images-available"></a>可用的 RHEL 映像列表
 以下产品/服务和 SKU 目前可用于一般用途：
 
-套餐| SKU | 分区 | 预配 | 说明
+产品/服务| SKU | 分区 | 设置 | 说明
 :----|:----|:-------------|:-------------|:-----
 RHEL          | 7-RAW    | RAW    | Linux 代理 | RHEL 7. x 映像系列。 <br> 默认情况下未附加到 EUS 存储库。
 |             | 7-LVM    | LVM    | Linux 代理 | RHEL 7. x 映像系列。 <br> 默认情况下未附加到 EUS 存储库。

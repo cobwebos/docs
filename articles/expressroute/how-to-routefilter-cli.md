@@ -1,5 +1,5 @@
 ---
-title: 配置用于 Microsoft 对等互连的路由筛选器 - ExpressRoute：Azure CLI | Microsoft Docs
+title: ExpressRoute：路由筛选器-Microsoft 对等互连： Azure CLI
 description: 本文介绍如何使用 Azure CLI 配置用于 Microsoft 对等互连的路由筛选器
 services: expressroute
 author: anzaman
@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman
-ms.openlocfilehash: f60bf8de33cd9552bf7c903f4c8921d50e911643
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: c3c50a005e119890fb17fcf7b3114a747bbe34bf
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123337"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033412"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>配置用于 Microsoft 对等互连的路由筛选器：Azure CLI
 
@@ -26,7 +26,7 @@ ms.locfileid: "71123337"
 
 Office 365 服务（如 Exchange Online、SharePoint Online 和 Skype for Business）可通过 Microsoft 对等互连进行访问。 如果在 ExpressRoute 线路中配置 Microsoft 对等互连，则会通过建立的 BGP 会话播发与这些服务相关的所有前缀。 每个前缀附加有 BGP 团体值，以标识通过该前缀提供的服务。 有关 BGP 团体值及其映射到的服务的列表，请参阅 [BGP 团体](expressroute-routing.md#bgp)。
 
-如需连接所有服务，则应通过 BGP 播发大量前缀。 这会显著增加网络中路由器所维护路由表的大小。 如果打算仅使用通过 Microsoft 对等互连提供的一部分服务，可通过两种方式减少路由表大小。 你可以：
+如需连接所有服务，则应通过 BGP 播发大量前缀。 这会显著增加网络中路由器所维护路由表的大小。 如果打算仅使用通过 Microsoft 对等互连提供的一部分服务，可通过两种方式减少路由表大小。 可以：
 
 * 通过在 BGP 团体上应用路由筛选器，筛选出不需要的前缀。 这是标准的网络做法，通常在多个网络中使用。
 
@@ -70,7 +70,7 @@ Office 365 服务（如 Exchange Online、SharePoint Online 和 Skype for Busine
 
 * 必须有活动的 Microsoft 对等互连。 按照[创建和修改对等互连配置](howto-routing-cli.md)中的说明操作
 
-### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>登录到 Azure 帐户，然后选择订阅
+### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>登录到 Azure 帐户，并选择订阅
 
 要开始配置，请登录到 Azure 帐户。 若选择“试用”，则会自动登录且可以跳过登录步骤。 使用以下示例来帮助连接：
 
@@ -92,30 +92,30 @@ az account set --subscription "<subscription ID>"
 
 ## <a name="prefixes"></a>步骤 1：获取前缀和 BGP 团体值的列表
 
-### <a name="1-get-a-list-of-bgp-community-values"></a>1.获取 BGP 团体值列表
+### <a name="1-get-a-list-of-bgp-community-values"></a>1. 获取 BGP 团体值的列表
 
 使用以下 cmdlet 获取与通过 Microsoft 对等互连可访问服务相关联的 BGP 团体值列表，以及与之关联的前缀列表：
 
 ```azurecli-interactive
 az network route-filter rule list-service-communities
 ```
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2.列出要使用的值
+### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. 创建要使用的值的列表
 
 列出要在路由筛选器中使用的 BGP 团体值列表。
 
-## <a name="filter"></a>步骤 2：创建路由筛选器和筛选器规则
+## <a name="filter"></a>步骤 2：创建路由筛选器和筛选规则
 
 1 个路由筛选器只能有 1 个规则，并且规则类型必须是“允许”。 此规则可以有与之关联的 BGP 团体值列表。
 
-### <a name="1-create-a-route-filter"></a>1.创建路由筛选器
+### <a name="1-create-a-route-filter"></a>1. 创建路由筛选器
 
-首先，创建路由筛选器。 命令`az network route-filter create`仅创建路由筛选器资源。 创建资源后，必须创建规则并将其附加到路由筛选器对象。 运行以下命令来创建路由筛选器资源：
+首先，创建路由筛选器。 命令 `az network route-filter create` 只创建路由筛选器资源。 创建资源后，必须创建规则并将其附加到路由筛选器对象。 运行以下命令来创建路由筛选器资源：
 
 ```azurecli-interactive
 az network route-filter create -n MyRouteFilter -g MyResourceGroup
 ```
 
-### <a name="2-create-a-filter-rule"></a>2.创建筛选器规则
+### <a name="2-create-a-filter-rule"></a>2. 创建筛选规则
 
 运行以下命令来创建新规则：
  

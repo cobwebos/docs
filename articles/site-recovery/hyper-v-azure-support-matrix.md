@@ -7,20 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 594534f64c984f4afb986d3366f388e412bde27c
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 9c0ed5a28f865d5dd53b01f22eb69c7d1b332ecf
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961467"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74030096"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
 
 本文汇总了使用 [Azure Site Recovery](site-recovery-overview.md) 执行本地 Hyper-V VM 到 Azure 的灾难恢复时支持的组件和设置。
 
-> [!WARNING]
-> 请注意，不久将会弃用对使用 SCVMM 配置帐户的 ASR 支持，因此建议你先阅读[弃用](scvmm-site-recovery-deprecation.md)详细信息，然后再继续。
 
 
 ## <a name="supported-scenarios"></a>支持的方案
@@ -45,7 +43,7 @@ Hyper-V（使用 Virtual Machine Manager 运行） | Virtual Machine Manager 201
 
  **组件** | **详细信息**
 --- | ---
-VM 配置 | 复制到 Azure 的 VM 必须满足 [Azure 要求](#azure-vm-requirements)。
+VM 配置 | 复制到 Azure 的 VM 必须满足[Azure 要求](#azure-vm-requirements)。
 来宾操作系统 | [Azure 支持](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases)的任何来宾 OS。<br/><br/> 不支持 Windows Server 2016 Nano Server。
 
 
@@ -121,7 +119,7 @@ RDM | 不可用 | 不可用
 排除磁盘 | 是 | 是
 多路径 (MPIO) | 是 | 是
 
-## <a name="azure-storage"></a>Azure 存储
+## <a name="azure-storage"></a>Azure 存储空间
 
 **组件** | **使用 Virtual Machine Manager 的 Hyper-V** | **不使用 Virtual Machine Manager 的 Hyper-V**
 --- | --- | ---
@@ -135,7 +133,7 @@ RDM | 不可用 | 不可用
 静态加密（CMK）| 否 | 否
 高级存储 | 是 | 是
 导入/导出服务 | 否 | 否
-启用了防火墙的 Azure 存储帐户 | 是。 适用于目标存储和缓存。 | 是。 适用于目标存储和缓存。
+启用了防火墙的 Azure 存储帐户 | 可以。 适用于目标存储和缓存。 | 可以。 适用于目标存储和缓存。
 修改存储帐户 | 不能。 启用复制后，无法修改目标 Azure 存储帐户。 若要修改，请禁用然后重新启用灾难恢复。 | 否
 
 
@@ -156,7 +154,7 @@ HUB | 是 | 是
 来宾操作系统 | Site Recovery 支持 [Azure 支持的](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)所有操作系统。  | 如果不支持，先决条件检查会失败。
 来宾操作系统体系结构 | 32 位 (Windows Server 2008)/64 位 | 如果不支持，先决条件检查会失败。
 操作系统磁盘大小 | 第 1 代 VM 最大 2,048 GB。<br/><br/> 第 2 代 VM 最大 300 GB。  | 如果不支持，先决条件检查会失败。
-操作系统磁盘计数 | 1 个 | 如果不支持，先决条件检查会失败。
+操作系统磁盘计数 | 1 | 如果不支持，先决条件检查会失败。
 数据磁盘计数 | 16 个或更少  | 如果不支持，先决条件检查会失败。
 数据磁盘 VHD 大小 | 最大 4,095 GB | 如果不支持，先决条件检查会失败。
 网络适配器 | 支持多个适配器 |
@@ -164,7 +162,7 @@ HUB | 是 | 是
 FC 磁盘 | 不支持 | 如果不支持，先决条件检查会失败。
 硬盘格式 | VHD <br/><br/> VHDX | 故障转移到 Azure 时，Site Recovery 自动将 VHDX 转换为 VHD。 故障回复到本地时，虚拟机将继续使用 VHDX 格式。
 BitLocker | 不支持 | 为 VM 启用复制之前，必须先禁用 BitLocker。
-VM 名称 | 介于 1 和 63 个字符之间。 限制为字母、数字和连字符。 VM 名称必须以字母或数字开头和结尾。 | 在 Site Recovery 中更新 VM 属性中的值。
+VM 名称 | 介于 1 和 63 个字符之间。 限制为字母、数字和连字符。 VM 名称必须以字母或数字开始或结尾。 | 在 Site Recovery 中更新 VM 属性中的值。
 VM 类型 | 第 1 代<br/><br/> 第 2 代 - Windows | OS 磁盘类型为“基本”的第 2 代 VM（其中包括一个或两个格式化为 VHDX 的数据卷），并且支持的磁盘空间大小小于 300 GB。<br></br>不支持 Linux 第 2 代 VM。 [了解详细信息](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)。|
 
 ## <a name="recovery-services-vault-actions"></a>恢复服务保管库操作
@@ -180,7 +178,7 @@ VM 类型 | 第 1 代<br/><br/> 第 2 代 - Windows | OS 磁盘类型为“基�
 
 ## <a name="provider-and-agent"></a>提供程序和代理
 
-若要确保部署与本文的设置兼容，请确保运行的是最新的提供程序和代理版本。
+要确保部署与本文的设置兼容，请确保正在运行最新的提供程序和代理版本。
 
 **名称** | **说明** | **详细信息**
 --- | --- | --- 

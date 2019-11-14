@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 部署 Azure 专用主机 |Microsoft Docs
+title: 使用 Azure PowerShell 部署 Azure 专用主机
 description: 使用 Azure PowerShell 将 Vm 部署到专用主机。
 services: virtual-machines-windows
 author: cynthn
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 1dcea4f56d778b0e6320634286a25d478c78a5bc
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 92dca6f4f41ff426aebcb8e580653afaa71afff8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261699"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033367"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>预览版：使用 Azure PowerShell 将 Vm 部署到专用主机
+# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>预览：使用 Azure PowerShell 将 Vm 部署到专用主机
 
 本文介绍如何创建 Azure[专用主机](dedicated-hosts.md)来托管虚拟机（vm）。 
 
-请确保已安装 Azure PowerShell 版本 2.4.2 sections 或更高版本，并且已使用`Connect-AzAccount`登录到 Azure 帐户。 若要安装版本 2.4.2 sections，请打开 PowerShell 提示符，然后键入：
+请确保已安装 Azure PowerShell 版本 2.4.2 sections 或更高版本，并且已使用 `Connect-AzAccount`登录到 Azure 帐户。 若要安装版本 2.4.2 sections，请打开 PowerShell 提示符，然后键入：
 
 ```powershell
 Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrerelease
@@ -42,7 +42,7 @@ Install-Module -Name PowerShellGet -Repository PSGallery -Force
 >
 > **已知预览版限制**
 > - 虚拟机规模集目前在专用主机上不受支持。
-> - 预览版初始版本支持以下 VM 系列：DSv3 和 ESv3。 
+> - 预览版初始版本支持以下 VM 系列： DSv3 和 ESv3。 
 
 
 
@@ -72,7 +72,7 @@ $hostGroup = New-AzHostGroup `
 
 ## <a name="create-a-host"></a>创建主机
 
-现在，让我们在主机组中创建一个专用主机。 除了主机名称外，还需要提供主机的 SKU。 主机 SKU 捕获受支持的 VM 系列以及专用主机的硬件生成。  在预览期间，我们将支持以下主机 SKU 值：DSv3_Type1 和 ESv3_Type1。
+现在，让我们在主机组中创建一个专用主机。 除了主机名称外，还需要提供主机的 SKU。 主机 SKU 捕获受支持的 VM 系列以及专用主机的硬件生成。  在预览期间，我们将支持以下主机 SKU 值： DSv3_Type1 和 ESv3_Type1。
 
 
 有关主机 Sku 和定价的详细信息，请参阅[Azure 专用主机定价](https://aka.ms/ADHPricing)。
@@ -115,7 +115,7 @@ New-AzVM `
 
 ## <a name="check-the-status-of-the-host"></a>检查主机的状态
 
-你可以使用[GetAzHost](/powershell/module/az.compute/get-azhost) `-InstanceView`和参数检查主机运行状况状态，以及你仍可以将多个虚拟机部署到主机。
+你可以使用[GetAzHost](/powershell/module/az.compute/get-azhost)和 `-InstanceView` 参数检查主机运行状况状态，以及你仍可以将多个虚拟机部署到主机。
 
 ```
 Get-AzHost `

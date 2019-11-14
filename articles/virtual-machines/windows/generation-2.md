@@ -1,5 +1,5 @@
 ---
-title: 适用于第2代 Vm 的 Azure 支持 |Microsoft Docs
+title: 适用于第2代 Vm 的 Azure 支持
 description: 第 2 代 VM 的 Azure 支持概述
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: 4cb6d684171ac6e7e9e1cb7da556250f857cf2af
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f17ec7179413bebb8260089abc46856412b78ab5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891483"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038649"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>支持 Azure 上的第2代 Vm
 
@@ -79,7 +79,7 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 
 ### <a name="generation-1-vs-generation-2-features"></a>第 1 代和第 2 代的特性
 
-| Feature | 第 1 代 | 第 2 代 |
+| 功能 | 第 1 代 | 第 2 代 |
 |---------|--------------|--------------|
 | 启动             | PCAT                      | UEFI                               |
 | 磁盘控制器 | IDE                       | SCSI                               |
@@ -148,7 +148,7 @@ Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer 
 ## <a name="frequently-asked-questions"></a>常见问题
 
 * **第 2 代 VM 是否已在所有 Azure 区域中推出？**  
-    是的。 但是，并非所有[第 2 代 VM 大小](#generation-2-vm-sizes)都已在每个区域中推出。 第 2 代 VM 的可用性取决于 VM 大小的可用性。
+    可以。 但是，并非所有[第 2 代 VM 大小](#generation-2-vm-sizes)都已在每个区域中推出。 第 2 代 VM 的可用性取决于 VM 大小的可用性。
 
 * **第 1 代与第 2 代 VM 的价格是否有差别？**  
    不能。
@@ -182,13 +182,13 @@ Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer 
   你可能会看到一条警告，指出 OS 磁盘大于 2 TB。 该警告不适用于第 2 代 VM。 但是，不建议使用大于 4 TB 的 OS 磁盘大小。
 
 * **第 2 代 VM 是否支持加速网络？**  
-    是的。 有关详细信息，请参阅[创建具有加速网络的 VM](../../virtual-network/create-vm-accelerated-networking-cli.md)。
+    可以。 有关详细信息，请参阅[创建具有加速网络的 VM](../../virtual-network/create-vm-accelerated-networking-cli.md)。
 
 * **第 2 代是否支持 VHDX？**  
     否，第 2 代 VM 仅支持 VHD。
 
 * **第2代 VM 是否支持 Azure 超级磁盘存储？**  
-    是的。
+    可以。
 
 * **是否可将 VM 从第 1 代迁移到第 2 代？**  
     否，创建 VM 后无法更改其代系。 如果需要在 VM 代系之间切换，请创建一个不同代系的新 VM。

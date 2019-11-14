@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cijothomas
 ms.author: cithomas
 ms.date: 09/15/2019
-ms.openlocfilehash: 8dd46d8224567e1883fd2a397d5ba2b00a0fd43d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a599a7cbb1ceff165d7bde77ba4bf797d66b5026
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887282"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048235"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>辅助角色服务应用程序的 Application Insights （非 HTTP 应用程序）
 
@@ -24,14 +24,14 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
 
 [辅助角色服务的 APPLICATION INSIGHTS SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)最适用于非 HTTP 应用程序，无论它们在何处运行，都是如此。 如果应用程序正在运行并与 Azure 建立了网络连接，则可以收集遥测数据。 只要支持 .NET Core，就能支持 Application Insights 监视。 此包可用于新引入的[.Net Core 3.0 辅助服务](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances)、 [Asp.Net Core 2.1/2.2](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2)、控制台应用（.net Core/.NET Framework）等中的后台任务。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 有效的 Application Insights 检测密钥。 将任何遥测数据发送到 Application Insights 都需要使用此密钥。 如果需要创建新的 Application Insights 资源来获取检测密钥，请参阅[创建 Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。
 
 ## <a name="using-application-insights-sdk-for-worker-services"></a>使用辅助角色服务 Application Insights SDK
 
 1. 将[applicationinsights.config. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)包安装到应用程序。
-   以下代码片段显示了需要添加到项目 `.csproj` 文件的更改。
+   以下代码片段显示了需要添加到项目的 `.csproj` 文件的更改。
 
 ```xml
     <ItemGroup>
@@ -39,7 +39,7 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
     </ItemGroup>
 ```
 
-1. 在 `IServiceCollection` 上调用 `AddApplicationInsightsTelemetryWorkerService(string instrumentationKey)` 扩展方法，同时提供检测密钥。 应在应用程序的开头调用此方法。 具体位置取决于应用程序的类型。
+1. `IServiceCollection`提供检测密钥，对调用 `AddApplicationInsightsTelemetryWorkerService(string instrumentationKey)` 扩展方法。 应在应用程序的开头调用此方法。 具体位置取决于应用程序的类型。
 
 1. 通过调用 `serviceProvider.GetRequiredService<TelemetryClient>();` 或使用构造函数注入，从依赖关系注入（DI）容器中检索 `ILogger` 实例或 `TelemetryClient` 实例。 此步骤将触发 `TelemetryConfiguration` 和自动收集模块的设置。
 
@@ -65,7 +65,7 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
             });
 ```
 
-5. 根据下面的示例修改 `Worker.cs`。
+5. 按照下面的示例修改 `Worker.cs`。
 
 ```csharp
     using Microsoft.ApplicationInsights;
@@ -290,13 +290,13 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
     }
 ```
 
-此控制台应用程序还使用相同的默认 `TelemetryConfiguration`，可采用与之前部分中的示例相同的方式对其进行自定义。
+此控制台应用程序还使用相同的默认 `TelemetryConfiguration`，可以使用与之前部分中的示例相同的方式对其进行自定义。
 
 ## <a name="run-your-application"></a>运行应用程序
 
 运行应用程序。 上述所有上述示例中的示例工作人员均可每秒从 http 调用到 bing.com，并使用 ILogger 发出几个日志。 这些行将包装在 `TelemetryClient`的 `StartOperation` 调用中，用于创建操作（在此示例中，`RequestTelemetry` 名为 "操作"）。 Application Insights 将收集这些 ILogger 日志（默认警告或更高版本）和依赖项，并将它们与具有父子关系的 `RequestTelemetry` 相关联。 相关也能跨进程/网络边界。 例如，如果调用了另一个监视的组件，则它也将与此父组件相关联。
 
-在典型的 Web 应用程序中，可以将 `RequestTelemetry` 的自定义操作视为等效于传入的 web 请求。 虽然不需要使用操作，但它最适合与[Application Insights 相关数据模型](https://docs.microsoft.com/azure/azure-monitor/app/correlation)（具有作为父操作的 `RequestTelemetry`），并且在工作线程迭代中生成的每个遥测将被视为逻辑上属于同一操作。 此方法还可确保生成的所有遥测（自动和手动）都具有相同的 `operation_id`。 由于采样基于 `operation_id`，因此采样算法会保留或删除单个迭代中的所有遥测数据。
+在典型的 Web 应用程序中，可以将 `RequestTelemetry` 的此自定义操作视为等效于传入的 web 请求。 虽然不需要使用操作，但它最适合与[Application Insights 相关数据模型](https://docs.microsoft.com/azure/azure-monitor/app/correlation)（具有作为父操作的 `RequestTelemetry`），并且在工作线程迭代中生成的每个遥测将被视为逻辑上属于同一操作。 此方法还可确保生成的所有遥测（自动和手动）都具有相同的 `operation_id`。 由于采样基于 `operation_id`，因此采样算法会保留或删除单个迭代中的所有遥测数据。
 
 下面列出了 Application Insights 自动收集的全部遥测数据。
 
@@ -306,7 +306,7 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
 
 ### <a name="ilogger-logs"></a>ILogger 日志
 
-自动捕获通过 `ILogger` 严重性 `Warning` 或更高版本发出的日志。 按照[ILogger 文档](ilogger.md#control-logging-level)来自定义 Application Insights 捕获的日志级别。
+自动捕获通过严重性 `Warning` `ILogger` 或更高版本发出的日志。 按照[ILogger 文档](ilogger.md#control-logging-level)来自定义 Application Insights 捕获的日志级别。
 
 ### <a name="dependencies"></a>依赖项
 
@@ -355,12 +355,12 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
 
 |设置 | 说明 | 默认
 |---------------|-------|-------
-|EnableQuickPulseMetricStream | 启用/禁用 LiveMetrics 功能 | true
-|EnableAdaptiveSampling | 启用/禁用自适应采样 | true
-|EnableHeartbeat | 启用/禁用检测信号功能，该功能定期（15分钟默认值）发送名为 "HeartBeatState" 的自定义指标，其中包含有关运行时（如 .NET 版本、Azure 环境信息，如果适用）等的信息。 | true
-|AddAutoCollectedMetricExtractor | 启用/禁用 AutoCollectedMetrics 提取程序，它是一种 TelemetryProcessor，它在采样发生之前发送有关请求/依赖项的预聚合度量值。 | true
+|EnableQuickPulseMetricStream | 启用/禁用 LiveMetrics 功能 | 是
+|EnableAdaptiveSampling | 启用/禁用自适应采样 | 是
+|EnableHeartbeat | 启用/禁用检测信号功能，该功能定期（15分钟默认值）发送名为 "HeartBeatState" 的自定义指标，其中包含有关运行时（如 .NET 版本、Azure 环境信息，如果适用）等的信息。 | 是
+|AddAutoCollectedMetricExtractor | 启用/禁用 AutoCollectedMetrics 提取程序，它是一种 TelemetryProcessor，它在采样发生之前发送有关请求/依赖项的预聚合度量值。 | 是
 
-有关最新列表，请参阅[`ApplicationInsightsServiceOptions`中的可配置设置](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)。
+有关最新列表，请参阅[`ApplicationInsightsServiceOptions`中的可配置设置](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)。
 
 ### <a name="sampling"></a>采样
 
@@ -508,7 +508,7 @@ using Microsoft.ApplicationInsights.Channel;
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果在 Linux 中运行应用程序，是否支持所有功能？
 
-是的。 此 SDK 的功能支持在所有平台中都是相同的，但有以下例外：
+可以。 此 SDK 的功能支持在所有平台中都是相同的，但有以下例外：
 
 * 性能计数器仅在 Windows 中受支持，但在实时指标中显示的进程 CPU/内存除外。
 * 尽管默认已启用 `ServerTelemetryChannel`，但如果应用程序在 Linux 或 MacOS 中运行，出现网络问题时，通道不会自动创建本地存储文件夹来暂时保留遥测数据。 由于这种限制，在出现暂时性的网络或服务器时，遥测数据将会丢失。 若要解决此问题，请为通道配置一个本地文件夹：

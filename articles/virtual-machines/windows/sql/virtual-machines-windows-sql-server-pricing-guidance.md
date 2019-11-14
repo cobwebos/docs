@@ -1,10 +1,9 @@
 ---
-title: 有效管理 Azure 虚拟机上 SQL Server 的成本 | Microsoft Docs
+title: '& 管理成本的价格指南'
 description: 提供选择适当 SQL Server 虚拟机定价模型的最佳做法。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -15,14 +14,15 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 604f18fe2fbf4d8b4f3778817455d92a2811620b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 076d6fc387aaee85a1cd407fa48e7347ff185ef4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028624"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038875"
 ---
-# <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM 的定价指南
+# <a name="pricing-guidance-for-azure-sql-server-vms"></a>Azure SQL Server Vm 的定价指南
 
 本文提供 Azure 中 [SQL Server 虚拟机](virtual-machines-windows-sql-server-iaas-overview.md)的定价指南。 有几个选项会影响成本，请务必选取适当的映像来平衡成本与业务需求。
 
@@ -54,10 +54,10 @@ ms.locfileid: "72028624"
 
 若拥有非轻型生产工作负荷，请使用以下 SQL Server 版本之一：
 
-| SQL Server 版本 | 工作负荷 |
+| SQL Server 版本 | 工作负载 |
 |-----|-----|
 | Web | 小型网站 |
-| Standard | 中小型工作负荷 |
+| 标准 | 中小型工作负荷 |
 | Enterprise | 大型或任务关键型工作负荷|
 
 可按两种方法为这些版本的 SQL Server 许可付费：“按使用情况付费”或“自带许可证 (BYOL)”。
@@ -111,7 +111,7 @@ ms.locfileid: "72028624"
 
 若要对 SQL Server VM 使用 BYOL，必须拥有 SQL Server Standard 或 Enterprise 的许可证以及[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1)，这是通过某些批量许可计划的必需选项，而对其他计划而言为可选购买项。 根据协议类型以及 SQL Server 的数量和/或对其的承诺，批量许可计划提供的定价级别各不相同。 但一般而言，针对连续生产工作负荷自带许可证具有以下优点：
 
-| BYOL 权益 | 描述 |
+| BYOL 权益 | 说明 |
 |-----|-----|
 | 节省费用 | [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)可节省高达 55% 的成本。 有关详细信息，请参阅[切换授权模型](virtual-machines-windows-sql-ahb.md) |
 | 免费的被动辅助副本 | 自带许可证的另一项好处是每个 SQL Server [免费许可 1 个被动辅助副本](https://azure.microsoft.com/pricing/licensing-faq/)以实现高可用性。 这会高度可用的 SQL Server 部署（例如使用 Always On 可用性组）的许可成本减少了一半。 通过故障转移服务器软件保障权益，可享用被动辅助副本的运行权限。 |

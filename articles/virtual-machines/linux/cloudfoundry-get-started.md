@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure 上的 Cloud Foundry 入门 | Microsoft Docs
+title: Microsoft Azure 上的 Cloud Foundry 入门
 description: 在 Microsoft Azure 上运行 OSS 或 Pivotal Cloud Foundry
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: d91ad0bea7f79dd67edd4f0bb9e06a37a0f86bea
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 447550d2f6bca570869c9fa93724e4dbaba02132
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091926"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036810"
 ---
 # <a name="cloud-foundry-on-azure"></a>Azure 上的 Cloud Foundry
 
@@ -28,7 +28,7 @@ Cloud Foundry 是一种开源平台即服务 (PaaS)，用于生成、部署和�
 
 ## <a name="cloud-foundry-offerings"></a>Cloud Foundry 产品
 
-有两种形式的 Cloud Foundry 可在 Azure 上运行：开源 Cloud Foundry (OSS CF) 和 Pivotal Cloud Foundry (PCF)。 OSS CF 是完全[开源](https://github.com/cloudfoundry)版的 Cloud Foundry，由 Cloud Foundry Foundation 管理。 Pivotal Cloud Foundry 是 Pivotal Software Inc. 开发的 Cloud Foundry 的企业分发版我们来看一下这两个产品之间的一些差异。
+有两种形式的 Cloud Foundry 可在 Azure 上运行：开源 Cloud Foundry (OSS CF) 和 Pivotal Cloud Foundry (PCF)。 OSS CF 是完全[开源](https://github.com/cloudfoundry)版的 Cloud Foundrydation，由 Cloud Foundry Foundation 管理。 Pivotal Cloud Foundry 是来自 Pivotal Software Inc. 的 Cloud Foundry 的企业分发。我们来看看两个产品间的一些差异。
 
 ### <a name="open-source-cloud-foundry"></a>开源 Cloud Foundry
 

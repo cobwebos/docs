@@ -11,16 +11,16 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 605dfadaf4cd1686b124b120151e6a88a43f1a68
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 34172e313b537d59287a424683ea1555cbba9b99
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693087"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049164"
 ---
 # <a name="column-level-security"></a>列级别安全性
 借助列级别安全性 (CLS)，客户可以根据用户的执行上下文或其组成员身份，控制对数据库表列的访问。
-
+更新到下面的视频-由于此视频已发布，因此在 SQL 数据仓库中也提供了[行级安全性](https://docs.microsoft.com/en-us/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017)。 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
 
 CLS 简化了应用程序中的安全性设计和编程。 借助 CLS，可以实现列访问限制，从而保护敏感数据。 例如，确保具体用户只能访问表中与其部门相关的特定列。 访问限制逻辑位于数据库层，而不会脱离另一应用程序层中的数据。 每当有任何一层的数据访问请求，数据库就会应用访问限制。 此限制会减少整个安全系统的外围应用，从而提高安全系统的可靠性。 此外，使用 CLS 还无需引入用于筛选掉列的视图以限制用户访问。

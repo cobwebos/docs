@@ -1,18 +1,14 @@
 ---
 title: 英国官方 & 英国 NHS 蓝图示例-部署步骤
 description: 部署英国官方和英国 NHS 蓝图示例的步骤，包括蓝图项目参数详细信息。
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 1898820276d1906a49a95bc513a6689fce177f7d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1905e5fee894575d5ee85ce1bffb536813d34287
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162930"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037750"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>部署英国官方和英国 NHS 蓝图示例
 
@@ -23,7 +19,7 @@ ms.locfileid: "73162930"
 > - 将示例副本标记为“已发布”
 > - 将蓝图副本分配到现有的订阅
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free)。
 
 ## <a name="create-blueprint-from-sample"></a>基于示例创建蓝图
 
@@ -66,7 +62,7 @@ ms.locfileid: "73162930"
 
 1. 提供蓝图分配的参数值：
 
-   - 基础
+   - Basics
 
      - **订阅**：选择要在其中保存蓝图示例副本的管理组中的一个或多个订阅。 如果选择多个订阅，将使用输入的参数为每个订阅创建一个分配。
      - **分配名称**：根据蓝图的名称预先填充名称。
@@ -84,7 +80,7 @@ ms.locfileid: "73162930"
 
    - 项目参数
 
-     在本部分定义的参数将应用到定义了这些参数的项目。 这些参数属于[动态参数](../../concepts/parameters.md#dynamic-parameters) ，因为它们是在分配蓝图期间定义的。 有关完整列表或项目参数及其说明，请参阅[项目参数表](#artifact-parameters-table) 。
+     在本部分定义的参数将应用到定义了这些参数的项目。 这些参数属于[动态参数](../../concepts/parameters.md#dynamic-parameters)，因为它们是在分配蓝图期间定义的。 有关完整列表或项目参数及其说明，请参阅[项目参数表](#artifact-parameters-table) 。
 
 1. 输入所有参数后，选择页面底部的“分配”。 随后将创建蓝图分配，并开始部署项目。 部署过程大约需要一小时。 若要检查部署状态，请打开蓝图分配。
 
@@ -95,7 +91,7 @@ ms.locfileid: "73162930"
 
 下表提供了蓝图项目参数的列表：
 
-项目名称|项目类型|参数名称|描述|
+项目名称|项目类型|参数名称|说明|
 |-|-|-|-|
 |英国官方或英国 NHS 蓝图计划|策略分配 |用于审核诊断日志的资源类型（策略：用于英国官方的蓝图计划或英国 NHS） |"诊断日志" 设置为 "已启用" 时要审核的资源类型的列表。  有关可接受的值，请参阅[Azure 诊断日志支持的服务、架构和类别](../../../../azure-monitor/platform/diagnostic-logs-schema.md)。 |
 |\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |可选：支持添加到作用域的 Linux OS 的 VM 映像列表（策略： \[预览版\]：部署适用于 Linux Vm 的 Log Analytics 代理） |可有可无默认值为_none_。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
@@ -109,7 +105,7 @@ ms.locfileid: "73162930"
 > [英国官方和英国 NHS 蓝图-概述](./index.md)
 > [英国官方和英国 NHS 蓝图-控件映射](./control-mapping.md)
 
-有关蓝图以及如何使用它们的其他文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

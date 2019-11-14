@@ -1,5 +1,5 @@
 ---
-title: Azure 中 Linux VM 的维护和更新 | Microsoft Docs
+title: Azure 中 Linux Vm 的维护和更新
 description: 概述 Azure 中运行的 Linux 虚拟机的维护和更新。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: shants
-ms.openlocfilehash: 5fe63650caec57d0cde21f83e1183ddcde1a8c64
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 339ee953263e09300851e3d4d0cd3b6164a47195
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082874"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035846"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure 中虚拟机的维护 
 

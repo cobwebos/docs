@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Active Directory 凭据登录到 Linux VM | Microsoft Docs
+title: 使用 Azure Active Directory 凭据登录到 Linux VM
 description: 了解如何创建和配置 Linux VM，以使用 Azure Active Directory 身份验证进行登录。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: b473844f1507285e0052ca1f8de00f6ca3207e6f
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: a67d3a9fb74b1a4f07fc4995c268bb40a84834f7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327096"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035928"
 ---
-# <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>预览版：使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机
+# <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>预览：使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机
 
 若要改进 Azure 中 Linux 虚拟机 (VM) 的安全性，可以与 Azure Active Directory (AD) 身份验证集成。 将 Azure AD 身份验证用于 Linux VM 时，可以通过集中控制和强制实施策略来允许或拒绝对 VM 的访问。 本文介绍如何创建和配置 Linux VM，以便使用 Azure AD 身份验证。
 
@@ -48,14 +48,14 @@ ms.locfileid: "71327096"
 
 下面是目前（此功能的预览期间）受支持的 Linux 发行版：
 
-| 分发 | Version |
+| 分发 | 版本 |
 | --- | --- |
 | CentOS | CentOS 6，CentOS 7 |
 | Debian | Debian 9 |
 | openSUSE | openSUSE Leap 42.3 |
 | RedHat Enterprise Linux | RHEL 6 和 RHEL 7 | 
 | SUSE Linux Enterprise Server | SLES 12 |
-| Ubuntu 服务器 | Ubuntu 14.04 LTS、Ubuntu Server 16.04 和 Ubuntu Server 18.04 |
+| Ubuntu Server | Ubuntu 14.04 LTS、Ubuntu Server 16.04 和 Ubuntu Server 18.04 |
 
 
 下面是目前（此功能的预览期间）受支持的 Azure 区域：
@@ -66,7 +66,7 @@ ms.locfileid: "71327096"
 > 若要使用此预览版功能，请只部署受支持的 Linux 发行版，并且只在受支持的 Azure 区域部署。 此功能在 Azure 政府版或主权云中不受支持。
 
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.31 或更高版本。 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-linux-virtual-machine"></a>创建 Linux 虚拟机
 
@@ -83,7 +83,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-创建 VM 和支持资源需要几分钟时间。
+创建 VM 和支持的资源需要几分钟时间。
 
 ## <a name="install-the-azure-ad-login-vm-extension"></a>安装 Azure AD 登录 VM 扩展
 
@@ -106,8 +106,8 @@ az vm extension set \
 
 Azure 基于角色的访问控制 (RBAC) 策略决定了谁能登录到 VM。 使用两个 RBAC 角色来授权 VM 登录：
 
-- **虚拟机管理员登录**：分配了此角色的用户可以使用 Windows 管理员或 Linux 根用户权限登录到 Azure 虚拟机。
-- **虚拟机用户登录**：分配了此角色的用户可以使用常规用户权限登录到 Azure 虚拟机。
+- **虚拟机管理员登录名**：分配了此角色的用户可以使用 Windows 管理员或 Linux root 用户权限登录到 Azure 虚拟机。
+- **虚拟机用户登录名**：分配了此角色的用户可以使用常规用户权限登录到 Azure 虚拟机。
 
 > [!NOTE]
 > 若要允许用户通过 SSH 登录到 VM，必须分配“虚拟机管理员登录名”或“虚拟机用户登录名”角色。 分配了 VM“所有者”或“参与者”角色的 Azure 用户不会自动获得通过 SSH 登录到 VM 的权限。
@@ -149,11 +149,11 @@ ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 
 出现提示时，请在登录页中输入 Azure AD 登录凭据。 
 
-成功通过身份验证后，web 浏览器中会显示以下消息：`You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
+成功通过身份验证后，web 浏览器中会显示以下消息： `You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
 
 关闭浏览器窗口，返回到 SSH 提示符窗口，然后按 **Enter** 键。 
 
-现在，你已使用分配的角色权限（例如“VM 用户”或“VM 管理员”）登录到 Azure Linux 虚拟机。 如果为用户帐户分配了*虚拟机管理员登录*角色，则可以使用`sudo`来运行需要 root 权限的命令。
+现在，你已使用分配的角色权限（例如“VM 用户”或“VM 管理员”）登录到 Azure Linux 虚拟机。 如果为用户帐户分配了*虚拟机管理员登录*角色，则可以使用 `sudo` 来运行需要 root 权限的命令。
 
 ## <a name="sudo-and-aad-login"></a>Sudo 和 AAD 登录名
 
@@ -190,7 +190,7 @@ Access denied
 
 如果你在 Web 浏览器中成功完成了身份验证步骤，系统会立即提示你使用新的代码再次登录。 出现此错误通常是由于在 SSH 提示符窗口中指定的登录名称与登录到 Azure AD 时使用的帐户不符。 若要纠正此问题，请执行以下操作：
 
-- 验证在 SSH 提示符窗口中指定的登录名是否正确。 登录名拼写错误可能导致在 SSH 提示符窗口中指定的登录名称与登录到 Azure AD 时使用的帐户不符。 例如，你键入了*azuresuer\@contoso.onmicrosoft.com*而不*是\@azureuser contoso.onmicrosoft.com*。
+- 验证在 SSH 提示符窗口中指定的登录名是否正确。 登录名拼写错误可能导致在 SSH 提示符窗口中指定的登录名称与登录到 Azure AD 时使用的帐户不符。 例如，你键入了*azuresuer\@contoso.onmicrosoft.com*而不是*azureuser\@contoso.onmicrosoft.com*。
 - 如果有多个用户帐户，请确保登录到 Azure AD 时在浏览器窗口中提供的用户帐户是相同的。
 - Linux 是区分大小写的操作系统。 “Azureuser@contoso.onmicrosoft.com”和“azureuser@contoso.onmicrosoft.com”是不同的，会导致不匹配。 请确保在 SSH 提示符窗口中使用正确的大小写指定 UPN。
 

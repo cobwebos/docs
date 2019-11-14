@@ -1,5 +1,5 @@
 ---
-title: 配置 ExpressRoute 和站点到站点 VPN 连接-共存：经典： Azure |Microsoft Docs
+title: 配置 ExpressRoute 和 S2S VPN 共存连接：经典
 description: 本文指导配置可在经典部署模型中并存的 ExpressRoute 连接和站点到站点 VPN 连接。
 documentationcenter: na
 services: expressroute
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: b8eb1d7da9c588aedaedb37dc50c69970fe79ac2
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0643ce99ce4ba9328abc3f7a8c8e7061026611b9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162712"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031776"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>配置 ExpressRoute 和站点到站点并存连接（经典）
 > [!div class="op_single_selector"]
-> * [PowerShell - 资源管理器](expressroute-howto-coexist-resource-manager.md)
+> * [PowerShell - Resource Manager](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell - 经典](expressroute-howto-coexist-classic.md)
 > 
 > 
@@ -32,7 +32,7 @@ ms.locfileid: "73162712"
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 > [!IMPORTANT]
-> 按以下说明进行操作之前，必须预先配置 ExpressRoute 线路。 在按以下步骤操作之前，请务必遵循相关指南来[创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)和[配置路由](expressroute-howto-routing-classic.md)。
+> 按以下说明进行操作之前，必须预先配置ExpressRoute 线路。 在按以下步骤操作之前，请务必遵循相关指南来[创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)和[配置路由](expressroute-howto-routing-classic.md)。
 > 
 > 
 
@@ -71,7 +71,7 @@ ms.locfileid: "73162712"
 
 * 我没有 VNet，需要创建一个。
   
-    如果还没有虚拟网络，此过程指导使用经典部署模型创建新的虚拟网络，然后创建新的 ExpressRoute 和站点到站点 VPN 连接。 若要配置，请遵循本文中 [创建新的虚拟网络和并存连接](#new)部分中的步骤。
+    如果用户还没有虚拟网络，此过程将指导用户使用经典部署模型创建新的虚拟网络，并创建新的 ExpressRoute 和站点到站点 VPN 连接。 若要配置，请遵循本文中 [创建新的虚拟网络和并存连接](#new)部分中的步骤。
 * 我已有一个经典部署模型 VNet。
   
     可能已在具有现有站点到站点 VPN 连接或 ExpressRoute 连接的位置拥有虚拟网络。 [为现有的 VNet 配置并存连接](#add)部分介绍如何删除网关，然后如何创建新的 ExpressRoute 连接和站点到站点 VPN 连接。 请注意，在创建新连接时，必须按照非常特定的顺序完成步骤。 不要按照其他文章中的说明来创建网关和连接。
@@ -220,7 +220,7 @@ ms.locfileid: "73162712"
                     </LocalNetworkSiteRef>
                   </ConnectionsToLocalNetwork>
                 </Gateway>
-6. 此时，将拥有不带网关的虚拟网络。 若要创建新网关并完成连接，可以转到 [步骤 4 - 创建 ExpressRoute 网关](#gw)（可在前一组步骤中找到）。
+6. 此时，将拥有不带网关的虚拟网络。 若要创建新网关并完成连接，可以转到 [步骤 4 - 创建 ExpressRoute 网关](#gw)（可以在前一组步骤中找到）。
 
 ## <a name="next-steps"></a>后续步骤
 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)

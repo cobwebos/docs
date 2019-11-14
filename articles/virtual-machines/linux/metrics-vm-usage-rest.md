@@ -1,5 +1,5 @@
 ---
-title: 使用 REST API 获取 Azure 虚拟机使用情况数据 | Microsoft Docs
+title: 使用 REST API 获取 Azure 虚拟机使用情况数据
 description: 使用 Azure REST API 收集虚拟机的使用情况指标。
 services: virtual-machines
 author: rloutlaw
@@ -10,16 +10,16 @@ ms.custom: REST
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 53e93d20f4a8c4877374d8242521ca97d481e15d
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 523b81e53f2b0622b237993dbd88fb9492079c86
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667451"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035813"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>使用 REST API 获取虚拟机使用情况指标
 
-此示例演示如何使用 [Azure REST API](/rest/api/azure/) 检索 [Linux 虚拟机](https://docs.microsoft.com/azure/virtual-machines/linux/monitor)的 CPU 使用情况。
+此示例演示如何使用 [Azure REST API](https://docs.microsoft.com/azure/virtual-machines/linux/monitor) 检索 [Linux 虚拟机](/rest/api/azure/)的 CPU 使用情况。
 
 [Azure Monitor REST 参考](/rest/api/monitor)中提供了完整的参考文档和 REST API 的其他示例。 
 
@@ -35,14 +35,14 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 以下标头是必需的： 
 
-|请求标头|描述|  
+|请求标头|说明|  
 |--------------------|-----------------|  
-|Content-Type： |必需。 设置为 `application/json`。|  
-|Authorization： |必需。 设置为有效的 `Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
+|Content-Type：|必需。 设置为 `application/json`。|  
+|Authorization：|必需。 设置为有效的 `Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
 
 ### <a name="uri-parameters"></a>URI 参数
 
-| 名称 | 描述 |
+| 名称 | 说明 |
 | :--- | :---------- |
 | subscriptionId | 用于标识 Azure 订阅的订阅 ID。 如果拥有多个订阅，请参阅[使用多个订阅](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
 | resourceGroupName | 与资源相关的 Azure 资源组的名称。 可以从 Azure 资源管理器 API、CLI 或门户获取此值。 |
@@ -58,7 +58,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="handle-the-response"></a>处理响应
 
-成功返回指标值列表以后，会返回状态代码 200。 [参考文档](/rest/api/monitor/metrics/list#errorresponse)中提供了错误代码的完整列表。
+成功返回指标值列表时，返回状态代码 200。 [参考文档](/rest/api/monitor/metrics/list#errorresponse)中提供了错误代码的完整列表。
 
 ## <a name="example-response"></a>示例响应 
 

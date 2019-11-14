@@ -1,5 +1,5 @@
 ---
-title: 使用 CLI 交换 Azure VM 的 OS 磁盘 | Microsoft 文档
+title: 使用 CLI 交换 Azure VM 的 OS 磁盘
 description: 使用 CLI 更改由 Azure 虚拟机使用的操作系统磁盘。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 7b5f8a47b2b9c3692698b2ec6a7e5bc470b86a18
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bfbe47fb68ffe7cee1ee2f9f7b94b418d8da2a1d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091674"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035333"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>使用 CLI 更改由 Azure VM 使用的 OS 磁盘
 
@@ -30,7 +30,7 @@ ms.locfileid: "70091674"
 
 请确保 VM 大小和存储类型与要附加的磁盘兼容。 例如，如果要使用的磁盘位于高级存储中，则 VM 需要能使用高级存储（如 DS 系列大小）。
 
-本文需要 Azure CLI 2.0.25 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
+本文需要 Azure CLI 2.0.25 或更高版本。 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 
 使用 [az disk list](/cli/azure/disk) 获取资源组中的磁盘列表。

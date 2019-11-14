@@ -1,5 +1,5 @@
 ---
-title: Azure Linux VM 的计算基准测试分数 | Microsoft Docs
+title: Azure Linux Vm 的计算基准测试分数
 description: 比较运行 Linux 的 Azure VM 的 CoreMark 计算基准测试分数。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: d91535c6f0daeac58a3005d94e19cbba3e781ebf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 234c4b0493a4f03ed89162318090d57621740cb0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083858"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036695"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux VM 的计算基准测试分数
 以下 CoreMark 基准测试分数显示运行 Ubuntu 的 Azure 高性能 VM 产品阵容的计算性能。 此外，还提供了 [Windows VM](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 的计算基准测试分数。
@@ -268,7 +268,7 @@ ms.locfileid: "70083858"
 | Standard_F16 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 16 | 1 | 31.4 | 228,592 | 2,371 | 1.04% | 392 |
 
 ## <a name="gs---storage-optimized"></a>GS - 存储优化
-(3/12/2019 10:22:33 PM pbi 3897709)
+（3/12/2019 10:22:33 PM pbi 3897709）
 
 | VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -283,7 +283,7 @@ ms.locfileid: "70083858"
 | Standard_GS5-16 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 16 | 2 | 440.9 | 210,984 | 2,995 | 1.42% | 287 |
 
 ## <a name="g---compute-optimized"></a>G - 计算优化
-(3/12/2019 10:23:51 PM pbi 3897709)
+（3/12/2019 10:23:51 PM pbi 3897709）
 
 | VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -294,7 +294,7 @@ ms.locfileid: "70083858"
 | Standard_G5 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 32 | 2 | 440.9 | 403,315 | 6,947 | 1.72% | 273 |
 
 ## <a name="h---high-performance-compute-hpc"></a>H - 高性能计算 (HPC)
-(3/12/2019 10:50:51 PM pbi 3897709)
+（3/12/2019 10:50:51 PM pbi 3897709）
 
 | VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -306,7 +306,7 @@ ms.locfileid: "70083858"
 | Standard_H16r | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 16 | 2 | 110.2 | 280,837 | 6,587 | 2.35% | 84 |
 
 ## <a name="lv2---storage-optimized"></a>Lv2-优化存储
-(3/14/2019 5:49:04 PM pbi 3897709)
+（3/14/2019 5:49:04 PM pbi 3897709）
 
 | VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -317,7 +317,7 @@ ms.locfileid: "70083858"
 | Standard_L80s_v2 | AMD EPYC 7551 32-核处理器 | 80 | 10 | 629.9 | 773,171 | 19,559 | 2.53% | 119 |
 
 ## <a name="ls---storage-optimized"></a>Ls - 存储优化
-(3/12/2019 10:22:29 PM pbi 3897709)
+（3/12/2019 10:22:29 PM pbi 3897709）
 
 | VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -368,7 +368,7 @@ ms.locfileid: "70083858"
 | Standard_NC24s_v3 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 24 | 2 | 440.9 | 403,874 | 7,603 | 1.88% | 42 |
 
 ## <a name="ncsv2---gpu-enabled"></a>NCSv2-已启用 GPU
-(3/12/2019 11:19:19 PM pbi 3897709)
+（3/12/2019 11:19:19 PM pbi 3897709）
 
 | VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -378,17 +378,17 @@ ms.locfileid: "70083858"
 | Standard_NC24s_v2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 24 | 2 | 440.9 | 402,808 | 7923 | 1.97% | 63 |
 
 ## <a name="nc---gpu-enabled"></a>NC-已启用 GPU
-(3/12/2019 11:08:03 PM pbi 3897709)
+（3/12/2019 11:08:03 PM pbi 3897709）
 
 | VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_NC6 | Intel (R) 强® CPU E5-2690 v3 @ 2.60 GHz | 6 | 1 | 55.0 | 102,211 | 658 | 0.64% | 259 |
-| Standard_NC12 | Intel (R) 强® CPU E5-2690 v3 @ 2.60 GHz | 12 | 1 | 110.2 | 203,523 | 2,293 | 1.13% | 259 |
-| Standard_NC24 | Intel (R) 强® CPU E5-2690 v3 @ 2.60 GHz | 24 | 2 | 220.4 | 382,897 | 8712 | 2.28% | 259 |
-| Standard_NC24r | Intel (R) 强® CPU E5-2690 v3 @ 2.60 GHz | 24 | 2 | 220.4 | 383,171 | 9,166 | 2.39% | 259 |
+| Standard_NC6 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 6 | 1 | 55.0 | 102,211 | 658 | 0.64% | 259 |
+| Standard_NC12 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 12 | 1 | 110.2 | 203,523 | 2,293 | 1.13% | 259 |
+| Standard_NC24 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 24 | 2 | 220.4 | 382,897 | 8712 | 2.28% | 259 |
+| Standard_NC24r | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 24 | 2 | 220.4 | 383,171 | 9,166 | 2.39% | 259 |
 
 ## <a name="nds--gpu-enabled"></a>已启用 NDs-GPU
-(3/12/2019 11:19:10 PM pbi 3897709)
+（3/12/2019 11:19:10 PM pbi 3897709）
 
 | VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -398,13 +398,13 @@ ms.locfileid: "70083858"
 | Standard_ND24s | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 24 | 2 | 440.9 | 401,822 | 7,776 | 1.94% | 63 |
 
 ## <a name="nv---gpu-enabled"></a>NV-已启用 GPU
-(3/12/2019 11:08:13 PM pbi 3897709)
+（3/12/2019 11:08:13 PM pbi 3897709）
 
 | VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_NV6 | Intel (R) 强® CPU E5-2690 v3 @ 2.60 GHz | 6 | 1 | 55.0 | 101,728 | 2,094 | 2.06% | 259 |
-| Standard_NV12 | Intel (R) 强® CPU E5-2690 v3 @ 2.60 GHz | 12 | 1 | 110.2 | 203,903 | 1,724 | 0.85% | 252 |
-| Standard_NV24 | Intel (R) 强® CPU E5-2690 v3 @ 2.60 GHz | 24 | 2 | 220.4 | 379,879 | 8,737 | 2.30% | 259 |
+| Standard_NV6 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 6 | 1 | 55.0 | 101,728 | 2,094 | 2.06% | 259 |
+| Standard_NV12 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 12 | 1 | 110.2 | 203,903 | 1,724 | 0.85% | 252 |
+| Standard_NV24 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 24 | 2 | 220.4 | 379,879 | 8,737 | 2.30% | 259 |
 
 
 ## <a name="about-coremark"></a>关于 CoreMark

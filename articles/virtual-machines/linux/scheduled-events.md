@@ -1,5 +1,5 @@
 ---
-title: Azure 中 Linux VM 的计划事件 | Microsoft Docs
+title: Azure 中 Linux Vm 的 Scheduled Events
 description: 通过为 Linux 虚拟机使用 Azure 元数据服务来计划事件。
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: d427544ab9396211e4cbb247527a0eb848f42926
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1e348adc06a970fcd7222ce612c13f0ff3e01585
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091280"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035101"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure 元数据服务：适用于 Linux VM 的计划事件
 
@@ -54,7 +54,7 @@ ms.locfileid: "70091280"
 
   元数据服务使用可从 VM 内访问的 REST 终结点公开有关正在运行的虚拟机的信息。 该信息通过不可路由的 IP 提供，因此不会在 VM 外部公开。
 
-### <a name="scope"></a>范围
+### <a name="scope"></a>作用域
 计划的事件传送到：
 
 - 独立虚拟机。
@@ -74,11 +74,11 @@ ms.locfileid: "70091280"
 ### <a name="version-and-region-availability"></a>版本和区域可用性
 计划事件服务受版本控制。 版本是必需的，当前版本为 `2017-11-01`。
 
-| Version | 发布类型 | Regions | 发行说明 | 
+| 版本 | 发布类型 | 区域 | 发行说明 | 
 | - | - | - | - | 
-| 2017-11-01 | 正式版 | 全部 | <li> 添加了对低优先级 VM 逐出 EventType“Preempt”<br> | 
-| 2017-08-01 | 正式版 | 全部 | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
-| 2017-03-01 | 预览 | 全部 | <li>初始版本
+| 2017-11-01 | 正式版 | All | <li> 添加了对低优先级 VM 逐出 EventType“Preempt”<br> | 
+| 2017-08-01 | 正式版 | All | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
+| 2017-03-01 | 预览 | All | <li>初始版本
 
 
 > [!NOTE] 
@@ -126,28 +126,28 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 ```
 
 ### <a name="event-properties"></a>事件属性
-|属性  |  描述 |
+|属性  |  说明 |
 | - | - |
-| EventId | 此事件的全局唯一标识符。 <br><br> 例如： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：虚拟机计划暂停数秒。 CPU 和网络连接可能会暂停，但对内存或打开的文件没有影响。<li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘将丢失）。 <li>`Preempt`：正在删除低优先级虚拟机（临时磁盘将丢失）。|
+| EventId | 此事件的全局唯一标识符。 <br><br> 示例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
+| EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：虚拟机计划暂停几秒。 CPU 和网络连接可能会暂停，但对内存或打开的文件没有影响。<li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘丢失）。 <li>`Preempt`：正在删除低优先级虚拟机（临时磁盘将丢失）。|
 | ResourceType | 此事件影响的资源的类型。 <br><br> 值： <ul><li>`VirtualMachine`|
-| 资源| 此事件影响的资源的列表。 此列表确保包含来自最多一个[更新域](manage-availability.md)的计算机，但可能不包含 UD 中的所有计算机。 <br><br> 例如： <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
-| EventStatus | 此事件的状态。 <br><br> 值： <ul><li>`Scheduled`：此事件计划在 `NotBefore` 属性指定的时间之后启动。<li>`Started`：此事件已启动。</ul> 从不提供 `Completed` 或类似状态。 事件完成后不再返回事件。
-| NotBefore| 一个时间，此事件可在该时间之后启动。 <br><br> 例如： <br><ul><li> 2016 年 9 月 19 日星期一 18:29:47 GMT  |
+| 资源| 此事件影响的资源的列表。 此列表确保包含来自最多一个[更新域](manage-availability.md)的计算机，但可能不包含 UD 中的所有计算机。 <br><br> 示例： <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| EventStatus | 此事件的状态。 <br><br> 值： <ul><li>`Scheduled`：事件计划在 `NotBefore` 属性指定的时间之后启动。<li>`Started`：此事件已启动。</ul> 从不提供 `Completed` 或类似状态。 事件完成后不再返回事件。
+| NotBefore| 一个时间，此事件可在该时间之后启动。 <br><br> 示例： <br><ul><li> 2016 年 9 月 19 日星期一 18:29:47 GMT  |
 
 ### <a name="event-scheduling"></a>事件计划
 将根据事件类型为每个事件计划将来的最小量时间。 此时间将反映在事件的 `NotBefore` 属性中。 
 
-|事件类型  | 最小值通知 |
+|EventType  | 最小值通知 |
 | - | - |
 | 冻结| 15 分钟 |
-| 重启 | 15 分钟 |
+| 重新启动 | 15 分钟 |
 | 重新部署 | 10 分钟 |
 | Preempt | 30 秒 |
 
 ### <a name="start-an-event"></a>启动事件 
 
-了解即将发生的事件并完成正常关闭的逻辑后，可通过使用 `EventId` 对元数据服务进行 `POST` 调用，批准未完成事件。 此调用向 Azure 指示可缩短最短通知时间（如有可能）。 
+了解即将发生的事件并完成正常关闭的逻辑后，可通过使用 `POST` 对元数据服务进行 `EventId` 调用，批准未完成事件。 此调用向 Azure 指示可缩短最短通知时间（如有可能）。 
 
 下面是 `POST` 请求正文中所需的 JSON 示例。 请求应包含 `StartRequests` 列表。 每个 `StartRequest` 包含想要加速的事件的 `EventId`：
 ```

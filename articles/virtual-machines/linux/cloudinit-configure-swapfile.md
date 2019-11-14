@@ -1,6 +1,6 @@
 ---
-title: 使用 cloud init 在 Linux VM 上配置交换分区 |Microsoft Docs
-description: 如何在创建时使用 cloud init 在 Linux VM 中配置交换分区, Azure CLI
+title: 在 Linux VM 上使用 cloud-init 配置交换分区
+description: 如何在通过 Azure CLI 进行创建时使用 cloud-init 在 Linux VM 中配置交换分区
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
@@ -14,22 +14,22 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: d8ce12b931b6a30fa375588b73a1140ed4697c2f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: fad73a7dbed9351d684ef2464cf2fa6fa3489290
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640765"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036759"
 ---
-# <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>使用 cloud init 在 Linux VM 上配置交换分区
-本文介绍如何使用[云初始化](https://cloudinit.readthedocs.io)在各种 Linux 发行版上配置交换分区。 交换分区传统上由 Linux 代理 (WALA) 根据所需的发行版进行配置。  本文档概述了如何在预配期间使用云初始化按需生成交换分区。  有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
+# <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>在 Linux VM 上使用 cloud-init 配置交换分区
+本文介绍如何使用 [cloud-init](https://cloudinit.readthedocs.io) 在各种 Linux 分发版中配置交换分区。 在传统上，交换分区由 Linux 代理 (WALA) 根据分发版的需要进行配置。  本文档概述在预配期间，使用 cloud-init 按需生成交换分区的过程。  有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
 
-## <a name="create-swap-partition-for-ubuntu-based-images"></a>创建基于 Ubuntu 的映像的交换分区
-默认情况下, 在 Azure 上, Ubuntu 库映像不创建交换分区。 若要在 VM 预配期间使用 cloud init 启用交换分区配置, 请参阅 Ubuntu wiki 上的[AzureSwapPartitions 文档](https://wiki.ubuntu.com/AzureSwapPartitions)。
+## <a name="create-swap-partition-for-ubuntu-based-images"></a>为基于 Ubuntu 的映像创建交换分区
+在 Azure 上，Ubuntu 库映像默认不会创建交换分区。 若要在预配 VM 期间使用 cloud-init 启用交换分区配置，请参阅 Ubuntu wiki 中的 [AzureSwapPartitions 文档](https://wiki.ubuntu.com/AzureSwapPartitions)。
 
 ## <a name="create-swap-partition-for-red-hat-and-centos-based-images"></a>为基于 Red Hat 和 CentOS 的图像创建交换分区
 
-在当前 shell 中创建一个名为*cloud_init_swappart*的文件并粘贴以下配置。 对于此示例，请在不处于本地计算机上的 Cloud Shell 中创建文件。 可使用任何想要使用的编辑器。 输入 `sensible-editor cloud_init_swappart.txt` 以创建文件并查看可用编辑器的列表。 选择 #1 以使用 nano 编辑器。 请确保已正确复制整个 cloud-init 文件，尤其是第一行。  
+在当前 shell 中，创建名为 cloud_init_swappart.txt 的文件并粘贴以下配置。 对于此示例，请在不处于本地计算机上的 Cloud Shell 中创建文件。 可使用任何想要使用的编辑器。 输入 `sensible-editor cloud_init_swappart.txt` 以创建文件并查看可用编辑器的列表。 选择 #1 以使用 nano 编辑器。 请确保已正确复制整个 cloud-init 文件，尤其是第一行。  
 
 ```yaml
 #cloud-config
@@ -72,7 +72,7 @@ az vm create \
 ssh <publicIpAddress>
 ```
 
-SSH'ed 到 vm 后, 请检查是否已创建交换分区
+通过 SSH 连接到 VM 后，请验证是否已创建交换分区
 
 ```bash
 swapon -s
@@ -86,10 +86,10 @@ Filename                Type        Size    Used    Priority
 ```
 
 > [!NOTE] 
-> 如果现有的 Azure 映像已配置交换分区, 并且要更改新映像的交换分区配置, 则应删除现有的交换分区。 有关更多详细信息，请参阅“自定义 cloud-init 预配的映像”文档。
+> 如果在现有的 Azure 映像中配置了交换分区，而你想要更改新映像的交换分区配置，则应删除现有的交换分区。 有关更多详细信息，请参阅“自定义 cloud-init 预配的映像”文档。
 
 ## <a name="next-steps"></a>后续步骤
-有关配置更改的其他 cloud-init 示例，请参阅以下文章：
+有关配置更改的其他 cloud-init 示例，请参阅以下内容：
  
 - [向 VM 添加其他 Linux 用户](cloudinit-add-user.md)
 - [运行包管理器以在首次启动时更新现有包](cloudinit-update-vm.md)

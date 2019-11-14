@@ -1,5 +1,5 @@
 ---
-title: 使用 Java 创建和管理 Azure 虚拟机 |Microsoft Docs
+title: 使用 Java 创建和管理 Azure 虚拟机
 description: 使用 Java 和 Azure 资源管理器部署虚拟机及其所有支持资源。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: fa6c5115663d770f561764356129448af878668b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bf0f2928bd7cbac08a2a887481f19b3acb99f6fa
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103020"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039719"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>使用 Java 创建和管理 Azure 中的 Windows VM
 
@@ -112,7 +112,7 @@ ms.locfileid: "70103020"
     </dependency>
     ```
 
-3. 保存该文件。
+3. 保存文件。
 
 ## <a name="create-credentials"></a>创建凭据
 
@@ -133,14 +133,14 @@ ms.locfileid: "70103020"
     graphURL=https://graph.windows.net/
     ```
 
-    将 &lt;subscription-id&gt; 替换为订阅标识符，&lt;application-id&gt; 替换为 Active Directory 应用程序标识符，&lt;authentication-key&gt; 替换为授权密钥，&lt;tenant-id&gt; 替换为租户标识符。
+    将 **subscription-id&lt; 替换为订阅标识符，&gt;application-id** 替换为 Active Directory 应用程序标识符，**authentication-key&lt; 替换为授权密钥，&gt;tenant-id** 替换为租户标识符 **&lt;&gt;** **&lt;&gt;** 。
 
-2. 保存该文件。
+2. 保存文件。
 3. 在 shell 中将包含完整路径的环境变量 AZURE_AUTH_LOCATION 设置为身份验证文件。
 
 ### <a name="create-the-management-client"></a>创建管理客户端
 
-1. 打开 `src\main\java\com\fabrikam` 下的 `App.java` 文件，确保此包语句处于顶部：
+1. 打开 `App.java` 下的 `src\main\java\com\fabrikam` 文件，确保此包语句处于顶部：
 
     ```java
     package com.fabrikam.testAzureApp;
@@ -269,7 +269,7 @@ NetworkInterface networkInterface = azure.networkInterfaces()
 
 ### <a name="create-the-virtual-machine"></a>创建虚拟机
 
-创建所有支持的资源后，可以创建虚拟机。
+创建所有支持资源后，即可创建虚拟机。
 
 若要创建虚拟机，请将此代码添加到 main 方法的 try 块：
 
@@ -293,7 +293,7 @@ input.nextLine();
 ```
 
 > [!NOTE]
-> 本教程创建运行 Windows Server 操作系统版本的虚拟机。 若要详细了解如何选择其他映像，请参阅[使用 Windows PowerShell 和 Azure CLI 来导航和选择 Azure 虚拟机映像](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+> 本教程创建运行 Windows Server 操作系统版本的虚拟机。 若要详细了解如何选择其他映像，请参阅 [Navigate and select Azure virtual machine images with Windows PowerShell and the Azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（使用 Windows PowerShell 和 Azure CLI 来导航和选择 Azure 虚拟机映像）。
 > 
 >
 

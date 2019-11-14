@@ -1,5 +1,5 @@
 ---
-title: Linux 上的 VM 磁盘的可伸缩性和性能目标 - Microsoft Azure | Microsoft Docs
+title: 适用于 Linux 上的 VM 磁盘的可伸缩性和性能目标-Microsoft Azure
 description: 了解附加到运行 Linux 的 VM 的虚拟机磁盘的可伸缩性和性能目标。
 author: roygara
 ms.author: rogarana
@@ -7,12 +7,12 @@ ms.date: 11/15/2017
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 5c1bdecdfc755db530be71a09b18542ade4519c5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 8bc355c4658ae3f410fb8852008752cf4497751d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695881"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036340"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>Linux 上的 VM 磁盘的可伸缩性和性能目标
 
@@ -31,6 +31,6 @@ ms.locfileid: "68695881"
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../../../includes/azure-storage-limits-vm-disks-premium.md)]
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [Azure 订阅和服务限制、配额和约束](https://docs.microsoft.com/azure/azure-subscription-service-limits)

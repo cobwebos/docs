@@ -1,5 +1,5 @@
 ---
-title: 扩展 Azure Linux VM 上的虚拟硬盘 | Microsoft Docs
+title: 在 Azure 中扩展 Linux VM 上的虚拟硬盘
 description: 了解如何使用 Azure CLI 在 Linux VM 上扩展虚拟硬盘
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 19e1a5f1534d09246ca85029f45ee918ec57e51f
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 3bd85048cf12760d5918544ed6aac803e9fe120a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828413"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036204"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>使用 Azure CLI 扩展 Linux VM 上的虚拟硬盘
 
@@ -68,7 +68,7 @@ ms.locfileid: "71828413"
 ## <a name="expand-a-disk-partition-and-filesystem"></a>扩展磁盘分区和文件系统
 若要使用扩展的磁盘，请扩展基础分区和文件系统。
 
-1. 使用适当的凭据，通过 SSH 登录到 VM。 可以使用 [az vm show](/cli/azure/vm#az-vm-show) 查看 VM 的 公共 IP 地址：
+1. 使用相应的凭据通过 SSH 连接到 VM。 可以使用 [az vm show](/cli/azure/vm#az-vm-show) 查看 VM 的 公共 IP 地址：
 
     ```azurecli
     az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
@@ -76,7 +76,7 @@ ms.locfileid: "71828413"
 
 1. 扩展基础分区和文件系统。
 
-    a. 如果磁盘已装载，请将其卸载：
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 如果磁盘已装载，请将其卸载：
 
     ```bash
     sudo umount /dev/sdc1

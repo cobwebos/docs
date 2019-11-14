@@ -1,5 +1,5 @@
 ---
-title: 排查 Azure 中的 OpenShift 容器平台3.11 部署问题 |Microsoft Docs
+title: 排查 Azure 中的 OpenShift 容器平台3.11 部署问题
 description: 排查 Azure 中的 OpenShift 容器平台3.11 部署问题。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 4301d81a4d14c36c34d29a54bc146bc8985dfc00
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 1915cce1878b9b7ec058c13167e03c3c318f3668
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392756"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035491"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>排查 Azure 中的 OpenShift 容器平台3.11 部署问题
 
@@ -41,9 +41,9 @@ ms.locfileid: "72392756"
 
 ## <a name="log-files"></a>日志文件
 
-主机准备脚本的日志文件（stderr 和 stdout）位于所有主机上 `/var/lib/waagent/custom-script/download/0`。 如果在准备主机期间出错，请查看这些日志文件以确定错误。
+主机准备脚本的日志文件（stderr 和 stdout）位于所有主机上的 `/var/lib/waagent/custom-script/download/0` 中。 如果在准备主机期间出错，请查看这些日志文件以确定错误。
 
-如果准备脚本已成功运行，则需要检查 ansible 操作手册宿主的 `/var/lib/waagent/custom-script/download/1` 目录中的日志文件。 如果在实际安装 OpenShift 期间出错，stdout 文件将显示错误。 使用此信息来联系支持人员，以获得进一步的帮助。
+如果准备脚本已成功运行，则需要检查 ansible 操作手册宿主 `/var/lib/waagent/custom-script/download/1` 目录中的日志文件。 如果在实际安装 OpenShift 期间出错，stdout 文件将显示错误。 使用此信息来联系支持人员，以获得进一步的帮助。
 
 示例输出
 
@@ -118,5 +118,5 @@ az group update -g <openshift resource group> --set tags.sptest=test
 
 对于某些错误，还可以使用以下命令获取详细信息：
 
-1. systemctl 状态 \<service >
+1. service > \<systemctl 状态
 2. journalctl -xe

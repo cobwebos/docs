@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0772446b0259b12d3f76b2020eeed4c9c2de1119
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 5da3a2e5d003a191bff66af6599cae4d34ab60c6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882221"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038090"
 ---
 # <a name="azcopy"></a>azcopy
 
@@ -24,6 +24,13 @@ AzCopy 是一个命令行工具，用于将数据移入和移出 Azure 存储。
 命令的常规格式为： `azcopy [command] [arguments] --[flag-name]=[flag-value]`。
 
 若要报告问题或了解有关该工具的详细信息，请参阅[https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy)。
+
+## <a name="related-conceptual-articles"></a>相关概念文章
+
+- [AzCopy 入门](storage-use-azcopy-v10.md)
+- [用 AzCopy 和 Blob 存储传输数据](storage-use-azcopy-blobs.md)
+- [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
+- [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>选项
 

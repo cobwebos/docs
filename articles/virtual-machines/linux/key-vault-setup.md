@@ -1,5 +1,5 @@
 ---
-title: 为 Linux VM 设置 Azure Key Vault | Microsoft 文档
+title: 为 Linux Vm 设置 Azure Key Vault
 description: 如何使用 Azure CLI 设置用于 Azure 资源管理器虚拟机的 Key Vault。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: kasing
-ms.openlocfilehash: cbc8b6be09fcf4232636b580dc0c62482b83bd60
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 25ef1d43af9d37cebde4a28479010776cc148b6d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002164"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035950"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>如何使用 Azure CLI 为虚拟机设置 Key Vault
 
@@ -29,14 +29,14 @@ ms.locfileid: "71002164"
 若要执行这些步骤，需要安装最新的 [Azure CLI](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。
 
 ## <a name="create-a-key-vault"></a>创建密钥保管库
-使用 [az keyvault create](/cli/azure/keyvault) 创建密钥保管库并分配部署策略。 以下示例在 `myResourceGroup` 资源组中创建名为 `myKeyVault` 的密钥保管库：
+使用 [az keyvault create](/cli/azure/keyvault) 创建密钥保管库并分配部署策略。 以下示例在 `myKeyVault` 资源组中创建名为 `myResourceGroup` 的密钥保管库：
 
 ```azurecli
 az keyvault create -l westus -n myKeyVault -g myResourceGroup --enabled-for-deployment true
 ```
 
 ## <a name="update-a-key-vault-for-use-with-vms"></a>更新用于 VM 的 Key Vault
-使用 [az keyvault update](/cli/azure/keyvault) 在现有的密钥保管库上设置部署策略。 以下命令在 `myResourceGroup` 资源组中更新名为 `myKeyVault` 的密钥保管库：
+使用 [az keyvault update](/cli/azure/keyvault) 在现有的密钥保管库上设置部署策略。 以下命令在 `myKeyVault` 资源组中更新名为 `myResourceGroup` 的密钥保管库：
 
 ```azurecli
 az keyvault update -n myKeyVault -g myResourceGroup --set properties.enabledForDeployment=true

@@ -1,24 +1,24 @@
 ---
-title: 如何确定某个 Azure AD 登录页是否接受 Microsoft 帐户 | Microsoft Docs
+title: 我的 Azure AD 登录页是否接受 Microsoft 帐户 |Microsoft Docs
 description: 屏幕上的消息如何反映登录期间的用户名查找
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d26ff0f9259e3531259673f94fe477444cc786b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 221ab7c50a84650f1b2adf3fdb2b284365795f42
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60468194"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024287"
 ---
 # <a name="sign-in-options-for-microsoft-accounts-in-azure-active-directory"></a>Azure Active Directory 中的 Microsoft 帐户的登录选项
 

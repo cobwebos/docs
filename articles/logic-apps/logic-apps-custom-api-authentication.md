@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: ecec237eab42cf434ab8627ebdf9b1e34f3ab3f1
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fb9f986c2711e0cbc8ac3facd073f1a72f46043d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838131"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039129"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>通过 Azure 逻辑应用保护对自定义 API 的调用
 
@@ -126,7 +126,7 @@ ms.locfileid: "73838131"
 
    ![为 Web 应用或 API 应用创建应用程序标识](./media/logic-apps-custom-api-authentication/custom-api-application-identity.png)
 
-4. 在“身份验证/授权”页面，选择“保存”。
+4. 在“身份验证/授权”页上，选择“保存”。
 
 现在必须找到与 Web 应用或 API 应用关联的应用程序标识的客户端 ID 和租户 ID。 第 3 部分需使用这些 ID。 因此，请对 Azure 门户继续执行这些步骤。
 
@@ -203,7 +203,7 @@ ms.locfileid: "73838131"
 | 属性 | 必选 | 说明 | 
 | -------- | -------- | ----------- | 
 | tenant | 是 | Azure AD 租户的 GUID | 
-| 受众 | 是 | 想要访问的目标资源的 GUID - Web 应用或 API 应用的应用程序标识中的客户端 ID | 
+| audience | 是 | 想要访问的目标资源的 GUID - Web 应用或 API 应用的应用程序标识中的客户端 ID | 
 | clientId | 是 | 请求访问权限的客户端的 GUID - 逻辑应用的应用程序标识中的客户端 ID | 
 | secret | 是 | 请求访问令牌的客户端的应用程序标识中的密钥或密码 | 
 | type | 是 | 身份验证类型。 对于 ActiveDirectoryOAuth 身份验证，该值为 `ActiveDirectoryOAuth`。 | 
@@ -251,12 +251,12 @@ ms.locfileid: "73838131"
 } 
 ```
 
-| 属性 | 必选 | 说明 | 
-| -------- | -------- | ----------- | 
-| type | 是 | 身份验证类型。 对于 SSL 客户端证书，该值必须为 `ClientCertificate`。 | 
-| password | 是 | 用于访问客户端证书（PFX 文件）的密码 | 
-| pfx | 是 | 客户端证书（PFX 文件）的 base64 编码内容 | 
-|||| 
+| 属性 | 必选 | 说明 |
+| -------- | -------- | ----------- |
+| `type` | 是 | 身份验证类型。 对于 SSL 客户端证书，该值必须为 `ClientCertificate`。 |
+| `password` | 否 | 用于访问客户端证书（PFX 文件）的密码 |
+| `pfx` | 是 | 客户端证书（PFX 文件）的 base64 编码内容 |
+||||
 
 <a name="basic"></a>
 

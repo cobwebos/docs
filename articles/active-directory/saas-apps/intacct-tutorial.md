@@ -1,6 +1,6 @@
 ---
-title: 教程：Azure Active Directory 与 Intacct 的集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 Intacct 之间配置单一登录。
+title: 教程：Azure Active Directory 与 Sage Intacct 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Sage Intacct 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,124 +13,144 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/14/2019
+ms.date: 08/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 4a80d354e0aed1d12bc64c99242e818787e93344
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b28390dba009226d493f5bfc6a5270b067f5bba0
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67099958"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "73570474"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-intacct"></a>教程：Azure Active Directory 与 Intacct 的集成
+# <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>教程：将 Sansan Intacct 与 Azure Active Directory 集成
 
-在本教程中，了解如何将 Intacct 与 Azure Active Directory (Azure AD) 集成。
-将 Intacct 与 Azure AD 集成可提供以下优势：
+在本教程中，将了解如何将 Sage Intacct 与 Azure Active Directory (Azure AD) 集成。 将 Sage Intacct 与 Azure AD 集成后，可以：
 
-* 可在 Azure AD 中控制谁有权访问 Intacct。
-* 可让用户使用其 Azure AD 帐户自动登录到 Intacct（单一登录）。
-* 可在中心位置（即 Azure 门户）管理帐户。
+* 在 Azure AD 中控制谁有权访问 Sage Intacct。
+* 让用户使用其 Azure AD 帐户自动登录到 Sage Intacct。
+* 在一个中心位置（Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 Intacct 的集成，需要以下项：
+若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 启用了 Intacct 单一登录的订阅
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用 Sage Intacct 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
-本教程会在测试环境中配置和测试 Azure AD 单一登录。
+本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Intacct 支持 **IDP** 发起的 SSO
+* Sage Intacct 支持 IDP  发起的 SSO
 
-## <a name="adding-intacct-from-the-gallery"></a>从库中添加 Intacct
+## <a name="adding-sage-intacct-from-the-gallery"></a>从库中添加 Sage Intacct
 
-要配置 Intacct 与 Azure AD 的集成，需要从库中将 Intacct 添加到托管 SaaS 应用列表。
+要配置 Sage Intacct 与 Azure AD 的集成，需要从库中将 Sage Intacct 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 Intacct，请执行以下步骤：**
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 若要添加新的应用程序，请选择“新建应用程序”  。
+1. 在“从库中添加”部分的搜索框中，键入“Sage Intacct”   。
+1. 从结果面板中选择“Sage Intacct”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sage-intacct"></a>配置并测试 Sage Intacct 的 Azure AD 单一登录
 
-    ![“Azure Active Directory”按钮](common/select-azuread.png)
+使用名为 B. Simon 的测试用户配置和测试 Sage Intacct 的 Azure AD SSO  。 若要运行 SSO，需要在 Azure AD 用户与 Sage Intacct 相关用户之间建立链接关系。
 
-2. 转到“企业应用”，并选择“所有应用”选项   。
+若要配置和测试 Sage Intacct 的 Azure AD SSO，请完成以下构建基块：
 
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+2. **[配置 Sage Intacct SSO](#configure-sage-intacct-sso)** - 在应用程序端配置单一登录设置。
+    1. **[创建 Sage Intacct 测试用户](#create-sage-intacct-test-user)** - 在 Sage Intacct 中创建 B. Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
+6. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
+### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
-    ![“新增应用程序”按钮](common/add-new-app.png)
+按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-4. 在搜索框中键入“Intacct”，在结果面板中选择“Intacct”，然后单击“添加”按钮添加该应用程序    。
+1. 在 [Azure 门户](https://portal.azure.com/)的“Sage Intacct”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
+1. 在“选择单一登录方法”页上选择“SAML”   。
+1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
 
-     ![结果列表中的 Intacct](common/search-new-app.png)
+   ![编辑基本 SAML 配置](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Intacct 的 Azure AD 单一登录。 
-若要使单一登录有效，需要在 Azure AD 用户与 Intacct 相关用户之间建立链接关系。
+    在“回复 URL”文本框中键入 URL：`https://www.intacct.com/ia/acct/sso_response.phtml` 
 
-若要配置和测试 Intacct 的 Azure AD 单一登录，需要完成以下构建基块：
+1. Sage Intacct 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”  图标以打开“用户属性”对话框..
 
-1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[配置 Intacct 单一登录](#configure-intacct-single-sign-on)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Intacct 测试用户](#create-intacct-test-user)** - 在 Intacct 中创建 Britta Simon 的对应用户，将其链接到其 Azure AD 表示形式。
-6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+    ![image](common/edit-attribute.png)
 
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+1. 除了上述属性，Sage Intacct 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
+    | Name  |  源属性|
+    | ---------------| --------------- |
+    | 公司名称 | **Sage Intacct 公司 ID** |
+    | 名称 | 值应与在“创建 Sage Intact 测试用户部分”  中输入的 Sage Intacct“用户 ID”  相同，本教程的后半部分会对此进行解释 |
+    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier | 值应与在“创建 Sage Intact 测试用户部分”  中输入的 Sage Intacct“联合 SSO 用户 ID”  相同，本教程的后半部分会对此进行解释 |
 
-若要配置 Intacct 的 Azure AD 单一登录，请执行以下步骤：
+    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 Intacct 应用程序集成页上，选择“单一登录”   。
+    b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
-    ![配置单一登录链接](common/select-sso.png)
+    c. 将“命名空间”留空  。
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+    d. 选择“源”作为“属性”  。
 
-    ![单一登录选择模式](common/select-saml-option.png)
+    e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
+    f. 单击“确定” 
 
-    ![编辑基本 SAML 配置](common/edit-urls.png)
+    g. 单击“ **保存**”。
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
-
-    ![Intacct 域和 URL 单一登录信息](common/idp-reply.png)
-
-    在“回复 URL”文本框中，使用以下模式键入 URL： 
-    | |
-    |--|
-    | `https://<companyname>.intacct.com/ia/acct/sso_response.phtml`|
-    | `https://www.intacct.com/ia/acct/sso_response.phtml` |
-
-    > [!NOTE]
-    > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Intacct 客户端支持团队](https://us.intacct.com/support)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
-
-5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Intacct”部分，根据要求复制相应的 URL  。
+1. 在“设置 Sage Intacct”  部分上，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-    a. 登录 URL
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
-    b. Azure AD 标识符
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-    c. 注销 URL
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
+1. 选择屏幕顶部的“新建用户”  。
+1. 在“用户”属性中执行以下步骤  ：
+   1. 在“名称”  字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
+   1. 单击“创建”。 
 
-### <a name="configure-intacct-single-sign-on"></a>配置 Intacct 单一登录
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Intacct 公司站点。
+在本部分中，通过授予 B.Simon 访问 Sage Intacct 的权限，允许她使用 Azure 单一登录。
+
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
+1. 在应用程序列表中，选择“Sage Intacct”  。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+
+   ![“用户和组”链接](common/users-groups-blade.png)
+
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+
+    ![“添加用户”链接](common/add-assign-user.png)
+
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
+1. 在“添加分配”对话框中，单击“分配”按钮。  
+
+## <a name="configure-sage-intacct-sso"></a>配置 Sage Intacct SSO
+
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Sage Intacct 公司站点。
 
 1. 单击“公司”  选项卡，并单击“公司信息”  。
 
@@ -156,64 +176,13 @@ ms.locfileid: "67099958"
 
     f. 单击“ **保存**”。
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-sage-intacct-test-user"></a>创建 Sage Intacct 测试用户
 
-本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
-
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
-
-    ![“用户和组”以及“所有用户”链接](common/users.png)
-
-2. 选择屏幕顶部的“新建用户”  。
-
-    ![“新建用户”按钮](common/new-user.png)
-
-3. 在“用户属性”中，按照以下步骤操作。
-
-    ![“用户”对话框](common/user-properties.png)
-
-    a. 在“名称”  字段中，输入 BrittaSimon  。
-  
-    b. 在“用户名”  字段中键入 brittasimon@yourcompanydomain.extension   
-    例如： BrittaSimon@contoso.com
-
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
-
-    d. 单击“创建”。 
-
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分中，通过授予 Britta Simon 访问 Intacct 的权限，允许其使用 Azure 单一登录。
-
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Intacct”    。
-
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
-
-2. 在应用程序列表中，选择“Intacct”  。
-
-    ![应用程序列表中的 Intacct 链接](common/all-applications.png)
-
-3. 在左侧菜单中，选择“用户和组”  。
-
-    ![“用户和组”链接](common/users-groups-blade.png)
-
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
-
-    ![“添加分配”窗格](common/add-assign-user.png)
-
-5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
-
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
-
-7. 在“添加分配”对话框中，单击“分配”按钮。  
-
-### <a name="create-intacct-test-user"></a>创建 Intacct 测试用户
-
-要设置 Azure AD 用户使其能够登录 Intacct，必须将这些用户预配到 Intacct 中。 对于 Intacct，预配是一项手动任务。
+要设置 Azure AD 用户使其能够登录 Sage Intacct，必须将这些用户预配到 Sage Intacct 中。 对于 Sage Intacct，预配是一项手动任务。
 
 **若要预配用户帐户，请执行以下步骤：**
 
-1. 登录到 **Intacct** 租户。
+1. 登录到 Sage Intacct  租户。
 
 1. 单击“公司”  选项卡，并单击“用户”  。
 
@@ -229,24 +198,33 @@ ms.locfileid: "67099958"
 
     a. 在“用户信息”部分中输入要预配的 Azure AD 帐户的**用户 ID**、**姓氏**、**名字**、**电子邮件地址**、**职务**和**电话**  。
 
+    > [!NOTE]
+    > 确保上述屏幕截图中的“用户 ID”与 Azure 门户中“用户属性”部分的通过“名称”属性映射的“源属性”值是相同的     。
+
     b. 选择要预配的 Azure AD 帐户的**管理员特权**。
 
-    c. 单击“ **保存**”。 Azure AD 帐户持有者将收到一封电子邮件，并打开用于在激活帐户前确认其帐户的链接。
+    c. 单击“ **保存**”。 
+    
+    d. Azure AD 帐户持有者将收到一封电子邮件，并打开用于在激活帐户前确认其帐户的链接。
+
+1. 单击“单一登录”选项卡并确保下方屏幕截图中的“联合 SSO 用户 ID”与 Azure 门户的“用户属性”部分中通过 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` 映射的“源属性”值是相同的     。
+
+    ![用户信息](./media/intacct-tutorial/ic790044.png "User Information")
 
 > [!NOTE]
-> 若要预配 Azure AD 用户帐户，可以使用任何其他 Intacct 用户帐户创建工具或 Intacct 提供的 API。
+> 若要预配 Azure AD 用户帐户，可以使用任何其他 Sage Intacct 用户帐户创建工具或 Sage Intacct 提供的 API。
 
-### <a name="test-single-sign-on"></a>测试单一登录
+## <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Intacct 磁贴时，应当会自动登录到你为其设置了 SSO 的 Intacct。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Sage Intacct 磁贴时，应当会自动登录到你为其设置了 SSO 的 Sage Intacct。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

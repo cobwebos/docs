@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure CLI 使用内部 DNS 进行 VM 名称解析 | Microsoft 文档
+title: 结合使用内部 DNS 进行 VM 名称解析 Azure CLI
 description: 如何创建虚拟网络接口卡，以及如何通过 Azure CLI 在 Azure 上使用内部 DNS 进行 VM 名称解析
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: cynthn
-ms.openlocfilehash: b143a28216d0d8417615ad2c40a3b66c9c5d1be2
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: acfdfd4edf90b90998a913fa0c6479bedf0028b7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173871"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034742"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>创建虚拟网络接口卡，以及在 Azure 上使用内部 DNS 进行 VM 名称解析
 
@@ -49,7 +49,7 @@ az network nic create \
 ```
 
 ### <a name="deploy-a-vm-and-connect-the-vnic"></a>部署 VM 并连接 vNic
-使用 [az vm create](/cli/azure/vm)创建 VM。 在部署到 Azure 期间，`--nics` 标志将 VNic 连接到 VM。 以下示例使用 Azure 托管磁盘创建名为 `myVM` 的 VM，并附加上一步中名为 `myNic` 的 vNic：
+使用 [az vm create](/cli/azure/vm) 创建 VM。 在部署到 Azure 期间，`--nics` 标志将 VNic 连接到 VM。 以下示例使用 Azure 托管磁盘创建名为 `myVM` 的 VM，并附加上一步中名为 `myNic` 的 vNic：
 
 ```azurecli
 az vm create \
@@ -70,7 +70,7 @@ Azure 上的完整持续集成和持续部署 (CiCd) 基础结构需要某些服
 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 `myResourceGroup`、`myNic` 和 `myVM`。
 
 ## <a name="create-the-resource-group"></a>创建资源组
-首先，使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 `westus` 位置创建名为 `myResourceGroup` 的资源组：
+首先，使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 `myResourceGroup` 位置创建名为 `westus` 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -94,7 +94,7 @@ az network vnet create \
 ## <a name="create-the-network-security-group"></a>创建网络安全组
 Azure 网络安全组相当于网络层防火墙。 有关网络安全组的详细信息，请参阅[如何在 Azure CLI 中创建 NSG](../../virtual-network/tutorial-filter-network-traffic-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 
 
-使用 [az network nsg create](/cli/azure/network/nsg) 创建网络安全组。 以下示例创建名为 `myNetworkSecurityGroup` 的网络安全组：
+使用 [az network nsg create](/cli/azure/network/nsg)创建网络安全组。 以下示例创建名为 `myNetworkSecurityGroup` 的网络安全组：
 
 ```azurecli
 az network nsg create \
@@ -103,7 +103,7 @@ az network nsg create \
 ```
 
 ## <a name="add-an-inbound-rule-to-allow-ssh"></a>添加入站规则以允许 SSH
-使用 [az network nsg rule create](/cli/azure/network/nsg/rule)为网络安全组添加入站规则。 以下示例创建名为 `myRuleAllowSSH`的规则：
+使用 [az network nsg rule create](/cli/azure/network/nsg/rule) 为网络安全组添加入站规则。 以下示例创建一个名为 `myRuleAllowSSH` 的规则：
 
 ```azurecli
 az network nsg rule create \
@@ -161,7 +161,7 @@ az vm create \
     --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-使用 CLI 标志调用现有资源是为了指示 Azure 将 VM 部署到现有网络中。 重述一遍，VNet 和子网一经部署，便可在 Azure 区域内保留为静态或永久资源。  
+使用 CLI 标志调用现有资源是为了指示 Azure 将 VM 部署到现有网络中。 再说一遍，部署 VNet 和子网以后，即可将其作为静态资源或永久资源留在 Azure 区域。  
 
 ## <a name="next-steps"></a>后续步骤
 * [直接使用 Azure CLI 命令创建自定义的 Linux VM 环境](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

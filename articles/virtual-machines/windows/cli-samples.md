@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 示例 Windows | Microsoft 文档
+title: Azure CLI 示例 Windows
 description: Azure CLI 示例 Windows
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e8d4cfbb103313d1d13ec0e08a3be82b6a75b331
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8d57220f79f1349937a279e57a17d51a76bcccb3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089393"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033639"
 ---
 # <a name="azure-cli-samples-for-windows-virtual-machines"></a>适用于 Windows 虚拟机的 Azure CLI 示例
 

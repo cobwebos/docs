@@ -1,5 +1,5 @@
 ---
-title: 处理 Azure 中 Windows VM 的维护通知 | Microsoft Docs
+title: 处理 Azure 中 Windows Vm 的维护通知
 description: 查看 Azure 中运行的 Windows 虚拟机的维护通知并开始自助式维护。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/30/2019
 ms.author: shants
-ms.openlocfilehash: 2e7f51ecb948764f6ac4c3e7a52dc14ef5d00741
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6e269e9b21fe16a1d77b4e1f714517f91fa531d4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749369"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039192"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>处理 Windows 虚拟机的计划内维护通知
 
@@ -26,7 +26,7 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 
 - 如果维护不需重启，Azure 会在更新主机时使用就地迁移来暂停 VM。 各容错域将逐一应用这些无需重启的维护操作，如果收到任何警告运行状况信号，则进度停止。 
 
-- 如果维护需重新启动，系统会告知计划维护的时间。 在这些情况下，系统会提供一个时间窗口（通常为 35 天），方便你在适当的时间自行启动维护。
+- 如果维护需重启，你会收到一个通知，其中会说明计划维护的时间。 在这些情况下，系统会提供一个时间窗口（通常为 35 天），方便你在适当的时间自行启动维护。
 
 
 需要重新启动的计划内维护是按批进行计划的。 每个批具有不同的作用域（区域）。
@@ -199,7 +199,7 @@ Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 
 **答：** 有很多原因会导致在 VM 上看不到任何维护信息：
 1.  使用的是标记为“Microsoft 内部”的订阅。
-2.  VM 未计划进行维护。 可能是这次维护已结束、已取消或已改变计划，因此你的 VM 不再受其影响。
+2.  VM 未计划进行维护。 可能是这次维护已结束、已取消或已修改，因此你的 VM 不再受其影响。
 3.  未将“维护”列添加到 VM 列表视图。 虽然我们已向默认视图添加此列，但配置为查看非默认列的客户必须手动将“维护”列添加到其 VM 列表视图。
 
 **问：我的 VM 已计划进行第二次维护。为什么?**

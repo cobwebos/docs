@@ -1,5 +1,5 @@
 ---
-title: 创建并上传 Red Hat Enterprise Linux VHD，以供在 Azure 中使用 | Microsoft Docs
+title: 创建并上传 Red Hat Enterprise Linux VHD，以供在 Azure 中使用
 description: 了解如何创建和上传包含 Red Hat Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: szark
-ms.openlocfilehash: aef25e79d99c6c7434123df76e85e605b22fde51
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7c03271dc5fda5cee0b210370a965a45a6a7ef42
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082251"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035160"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>为 Azure 准备基于 Red Hat 的虚拟机
-在本文中，将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机，以供在 Azure 中使用。 本文介绍的 RHEL 版本为 6.7+ 和 7.1+。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。 有关参与 Red Hat 云访问计划的资格要求的详细信息，请参阅 [Red Hat 的云访问网站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)和[在 Azure 上运行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。 有关自动构建 RHEL 映像的方法, 请参阅[Azure 映像生成器](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)。
+在本文中，将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机，以供在 Azure 中使用。 本文介绍的 RHEL 版本为 6.7+ 和 7.1+。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。 有关参与 Red Hat 云访问计划的资格要求的详细信息，请参阅 [Red Hat 的云访问网站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)和[在 Azure 上运行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。 有关自动构建 RHEL 映像的方法，请参阅[Azure 映像生成器](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)。
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>从 Hyper-V 管理器准备基于 Red Hat 的虚拟机
 
@@ -43,7 +43,7 @@ ms.locfileid: "70082251"
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
-1. 单击“连接”打开该虚拟机的控制台窗口。
+1. 单击“连接” 以打开该虚拟机的控制台窗口。
 
 1. 在 RHEL 6 中，NetworkManager 可能会干扰 Azure Linux 代理。 运行以下命令卸载此包：
    
@@ -121,7 +121,7 @@ ms.locfileid: "70082251"
 
         # sudo subscription-manager unregister
 
-1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
+1. 运行以下命令以取消对虚拟机的设置，并对其进行准备以便在 Azure 上进行设置：
 
         # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
@@ -138,7 +138,7 @@ ms.locfileid: "70082251"
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
-1. 单击“连接”打开该虚拟机的控制台窗口。
+1. 单击“连接” 以打开该虚拟机的控制台窗口。
 
 1. 创建或编辑 `/etc/sysconfig/network` 文件并添加以下文本：
    
@@ -206,7 +206,7 @@ ms.locfileid: "70082251"
 
         # sudo subscription-manager unregister
 
-1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
+1. 运行以下命令以取消对虚拟机的设置，并对其进行准备以便在 Azure 上进行设置：
 
         # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
@@ -330,7 +330,7 @@ ms.locfileid: "70082251"
 
         # subscription-manager unregister
 
-1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
+1. 运行以下命令以取消对虚拟机的设置，并对其进行准备以便在 Azure 上进行设置：
 
         # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
@@ -345,7 +345,7 @@ ms.locfileid: "70082251"
 1. 将 qcow2 映像转换为 VHD 格式。
 
 > [!NOTE]
-> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611 。
+> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611。
 >
 
 
@@ -481,7 +481,7 @@ ms.locfileid: "70082251"
 
         # subscription-manager unregister
 
-1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
+1. 运行以下命令以取消对虚拟机的设置，并对其进行准备以便在 Azure 上进行设置：
 
         # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
@@ -496,7 +496,7 @@ ms.locfileid: "70082251"
 1. 将 qcow2 映像转换为 VHD 格式。
 
 > [!NOTE]
-> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611 。
+> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611。
 >
 
 
@@ -612,7 +612,7 @@ ms.locfileid: "70082251"
 
         # sudo subscription-manager unregister
 
-1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
+1. 运行以下命令以取消对虚拟机的设置，并对其进行准备以便在 Azure 上进行设置：
 
         # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
@@ -625,7 +625,7 @@ ms.locfileid: "70082251"
 1. 关闭虚拟机，并将 VMDK 文件转换为 .vhd 文件。
 
 > [!NOTE]
-> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611 。
+> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611。
 >
 
 
@@ -700,7 +700,7 @@ ms.locfileid: "70082251"
 
         # dracut -f -v
 
-1. 请确保已安装 SSH 服务器且已将其配置为在引导时启动。 此设置通常是默认设置。 修改 `/etc/ssh/sshd_config` 以包含以下行：
+1. 请确保已安装 SSH 服务器且将其配置为在引导时启动。 此设置通常是默认设置。 修改 `/etc/ssh/sshd_config` 以包含以下行：
 
         ClientAliveInterval 180
 
@@ -728,7 +728,7 @@ ms.locfileid: "70082251"
 
         # sudo subscription-manager unregister
 
-1. 运行以下命令可取消对虚拟机的预配并且对其进行准备以便在 Azure 上进行预配：
+1. 运行以下命令以取消对虚拟机的设置，并对其进行准备以便在 Azure 上进行设置：
 
         # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
@@ -741,7 +741,7 @@ ms.locfileid: "70082251"
 1. 关闭虚拟机，将 VMDK 文件转换为 VHD 格式。
 
 > [!NOTE]
-> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611 。
+> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611。
 >
 
 
@@ -897,7 +897,7 @@ ms.locfileid: "70082251"
 
 1. 打开虚拟机设置：
 
-    a.  将新的虚拟硬盘附加到虚拟机。 请务必选择“VHD 格式”和“固定大小”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  将新的虚拟硬盘附加到虚拟机。 请务必选择“VHD 格式”和“固定大小”。
 
     b.  将安装 ISO 附加到 DVD 光驱。
 

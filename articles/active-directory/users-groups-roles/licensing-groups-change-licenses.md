@@ -1,27 +1,27 @@
 ---
-title: 如何更改用户和组的许可证分配-Azure Active Directory |Microsoft Docs
-description: 描述使用组授权将组中的用户迁移到不同服务许可证（Office 365 企业版 E1 和 E3）的建议过程
+title: 更改用户和组的许可计划-Azure AD |Microsoft Docs
+description: 如何使用中的组许可将组内的用户迁移到不同的服务计划 Azure Active Directory
 services: active-directory
 keywords: Azure AD 许可
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 09/27/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7212983470e71ff6d7c1c33de142767ecf38d1f
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: bf2f04e1728f94c89bddcc31c287cc017a79020f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034004"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025907"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>在 Azure Active Directory 中更改用户或组的许可证分配
 
@@ -46,7 +46,7 @@ ms.locfileid: "72034004"
 在 "**更新许可证分配**" 页上，如果你看到某些复选框不可用，则表示无法更改的服务，因为它们继承自组许可证。
 
 1. 使用 Azure AD 组织中的许可证管理员帐户登录到[Azure 门户](https://portal.azure.com/)。
-1. 选择**Azure Active Directory**@no__t**用户**，然后打开用户的**配置文件**页面。
+1. 选择 " **Azure Active Directory** > **用户**"，然后打开用户的**配置文件**页面。
 1. 选择“许可证”。
 1. 选择 "**分配**"，编辑用户或组的许可证分配。 可以在 "**分配**" 页上解决许可证分配冲突。
 1. 选中 Office 366 E3 的复选框，并确保至少选择了分配给该用户的所有 E1 服务。
@@ -61,7 +61,7 @@ Azure AD 会应用新的许可证，并同时删除旧许可证以提供服务�
 ## <a name="change-group-license-assignments"></a>更改组许可证分配
 
 1. 使用 Azure AD 组织中的许可证管理员帐户登录到[Azure 门户](https://portal.azure.com/)。
-1. 选择**Azure Active Directory**@no__t**组**，然后打开组的 "**概述**" 页。
+1. 选择**Azure Active Directory** > **组**，然后打开组的 "**概述**" 页。
 1. 选择“许可证”。
 1. 选择 "**分配**" 命令，编辑用户或组的许可证分配。
 1. 选中 Office 366 E3 的复选框。 若要保持服务的连续性，请确保选择已分配给用户的所有 E1 服务。

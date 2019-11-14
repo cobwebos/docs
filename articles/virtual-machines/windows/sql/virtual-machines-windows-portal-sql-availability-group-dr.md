@@ -1,5 +1,5 @@
 ---
-title: SQL Server 可用性组 - Azure 虚拟机 - 灾难恢复 | Microsoft 文档
+title: 跨不同区域配置可用性组
 description: 本文介绍如何在 Azure 虚拟机上配置副本位于不同区域的 SQL Server 可用性组。
 services: virtual-machines
 documentationCenter: na
@@ -9,20 +9,20 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
-ms.custom: na
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 9949c389ad0511c3ed5923e0451bc96e7063621f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 96b7c3cf59f947d1476ad840ae81695356d869b6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159744"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037542"
 ---
-# <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>在位于不同区域的 Azure 虚拟机上配置 Always On 可用性组
+# <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>在 Azure 上配置可用性组在不同区域中的虚拟机上 SQL Server
 
 本文介绍如何在位于远程 Azure 位置的 Azure 虚拟机上配置 SQL Server Always On 可用性组副本。 使用此配置以支持灾难恢复。
 
@@ -144,7 +144,7 @@ ms.locfileid: "73159744"
 
 最好是通过更新客户端连接字符串来设置 `MultiSubnetFailover=Yes`。 请参阅[使用 MultiSubnetFailover 连接](https://msdn.microsoft.com/library/gg471494#Anchor_0)。
 
-如果无法修改连接字符串，则可以配置名称解析缓存。 请参阅[超时错误，并且无法在多子网环境中连接到 SQL Server 2012 AlwaysOn 可用性组侦听器](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av)。
+如果无法修改连接字符串，则可以配置名称解析缓存。 请参阅[出现超时错误并且在多子网环境中无法连接到 SQL Server 2012 AlwaysOn 可用性组侦听程序](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av)。
 
 ## <a name="fail-over-to-remote-region"></a>故障转移到远程区域
 
@@ -164,7 +164,7 @@ ms.locfileid: "73159744"
 
 测试连接性之后，将主副本移回主数据中心，并将可用性模式设置回其正常运行设置。 下表显示了本文档所述体系结构的正常运行设置：
 
-| Location | 服务器实例 | 角色 | 可用性模式 | 故障转移模式
+| 位置 | 服务器实例 | 角色 | 可用性模式 | 故障转移模式
 | ----- | ----- | ----- | ----- | -----
 | 主数据中心 | SQL-1 | 主要 | 同步 | 自动
 | 主数据中心 | SQL-2 | 辅助 | 同步 | 自动

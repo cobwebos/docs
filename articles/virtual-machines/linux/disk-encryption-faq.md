@@ -1,5 +1,5 @@
 ---
-title: FAQ-适用于 Linux Vm 的 Azure 磁盘加密 |Microsoft Docs
+title: FAQ-适用于 Linux Vm 的 Azure 磁盘加密
 description: 本文提供了有关 Microsoft Azure Linux IaaS Vm 的磁盘加密的常见问题的解答。
 author: msmbaldwin
 ms.service: security
@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: f8d31c8df4d073ccd744e792d1316ce02e4bf387
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 77b092920bff75c806ec78a933d23df546bf636a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828646"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036350"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>适用于 IaaS VM 的 Azure 磁盘加密常见问题解答
 
@@ -80,7 +80,7 @@ Azure 磁盘加密具有先决条件。 请参阅[创建和配置 Azure 磁盘�
 Azure 磁盘加密具有先决条件。 请参阅[包含 Azure AD 内容的 Azure 磁盘加密](disk-encryption-linux-aad.md)，以创建 Azure Active Directory 应用程序、创建新的密钥保管库，或设置现有密钥保管库以进行磁盘加密访问，以启用加密并保护机密和密钥。 有关密钥加密密钥支持方案的详细信息，请参阅[使用 Azure AD 为 Azure 磁盘加密创建和配置密钥保管库](disk-encryption-key-vault-aad.md)。
 
 ## <a name="is-azure-disk-encryption-using-an-azure-ad-app-previous-release-still-supported"></a>是否仍然支持使用 Azure AD 应用（早期版本）进行 Azure 磁盘加密？
-是。 仍然支持使用 Azure AD 应用进行磁盘加密。 不过，当加密新的 VM 时，建议使用新方法而不是使用 Azure AD 应用进行加密。 
+可以。 仍然支持使用 Azure AD 应用进行磁盘加密。 不过，当加密新的 VM 时，建议使用新方法而不是使用 Azure AD 应用进行加密。 
 
 ## <a name="can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app"></a>是否可以在不使用 Azure AD 应用的情况下将通过 Azure AD 应用加密的 VM 迁移到此加密？
   当前，对于通过 Azure AD 应用加密的计算机，没有直接迁移路径可用来在不使用 Azure AD 应用的情况下迁移到此加密。 此外，也没有直接路径用来将未使用 Azure AD 应用的加密迁移到使用 AD 应用的加密。 

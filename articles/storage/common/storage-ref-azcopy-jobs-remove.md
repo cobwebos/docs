@@ -8,14 +8,14 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 82c399580322334e67c0c9c2b88d1edf6f175e0c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: ba403c8d823b7ead0414521ebd51dc6f6601ccd8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72518286"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034160"
 ---
-# <a name="azcopy-jobs-remove"></a>删除作业 azcopy
+# <a name="azcopy-jobs-remove"></a>azcopy jobs remove
 
 删除与给定的作业 ID 关联的所有文件。
 
@@ -25,6 +25,13 @@ ms.locfileid: "72518286"
 ```
 azcopy jobs remove [jobID] [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>相关概念文章
+
+- [AzCopy 入门](storage-use-azcopy-v10.md)
+- [用 AzCopy 和 Blob 存储传输数据](storage-use-azcopy-blobs.md)
+- [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
+- [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>示例
 

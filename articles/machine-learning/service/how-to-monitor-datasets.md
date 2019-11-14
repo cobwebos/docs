@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 6fa7ee6663aae24451af195de4a8225c7a6b351e
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 24b9b120240ffc6f7dd2252d12c9f8af2bcfafbc
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647152"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049175"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>检测数据集上的数据偏移（预览）
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "73647152"
 ## <a name="prerequisites"></a>先决条件
 
 若要创建和使用数据集监视器，需要：
-* Azure 订阅。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 * [Azure 机器学习工作区](how-to-manage-workspace.md)。
 * [安装的适用于 Python 的 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)，其中包含 azureml 数据集包。
 * 结构化（表格）数据，具有在数据的文件路径、文件名或列中指定的时间戳。
@@ -131,7 +131,7 @@ dset = dset.register(ws, 'target')
 
 | 设置 | 说明 | 提示 | 可变 | 
 | ------- | ----------- | ---- | ------- | 
-| Name | 数据集监视器的名称。 | | 否 |
+| 名称 | 数据集监视器的名称。 | | 否 |
 | 基线数据集 | 表格数据集，将用作一段时间内的目标数据集比较基线。 | 基线数据集必须具有与目标数据集共有的功能。 通常，应将基线设置为模型的定型数据集或目标数据集的切片。 | 否 |
 | 目标数据集 | 指定了时间戳列的表格数据集，将分析数据偏移 | 目标数据集必须与基线数据集具有相同的功能，并且应为追加新数据的 `timeseries` 数据集。 可以分析目标数据集中的历史数据，也可以监视新数据。 | 否 | 
 | 频率 | 这是将用于计划管道作业和分析历史数据（如果运行回填）的频率。 选项包括每日、每周或每月。 | 调整此设置以在基线中包含可比较的数据大小。 | 否 | 
@@ -179,7 +179,7 @@ dset = dset.register(ws, 'target')
 
 ### <a name="from-python-sdk"></a>从 Python SDK
 
-有关完整详细信息，请参阅[PYTHON SDK 参考文档有关数据偏移](https://aka.ms/datadriftapi)。 
+有关完整详细信息，请参阅[PYTHON SDK 参考文档有关数据偏移](/python/api/azureml-datadrift/azureml.datadrift)。 
 
 下面的示例使用 Python SDK 创建数据集监视器
 
@@ -239,7 +239,7 @@ monitor = monitor.enable_schedule()
 
 "**偏移概述**" 部分包含有关数据偏移量的顶级信息，以及应对哪些功能进行进一步调查。 
 
-| 指标 | 说明 | 提示 | 
+| 度量值 | 说明 | 提示 | 
 | ------ | ----------- | ---- | 
 | 数据偏移量 | 指定为一段时间内基准数据集和目标数据集之间的百分比。 范围从0到100，其中0表示相同的数据集，100表示 Azure 机器学习数据偏移功能可以完全告诉两个数据集。 | 由于用于生成这种规模的机器学习技术，预期的精确百分比的噪音。 | 
 | 按功能的偏差贡献 | 目标数据集中的每个功能对度量的偏移量的贡献。 |  由于共变数移位，功能的基础分布不一定需要更改为具有相对较高的特征重要性。 | 
@@ -262,7 +262,7 @@ monitor = monitor.enable_schedule()
 
 在每个数据集监视器运行中对数值特征进行分析。 Azure 机器学习 studio 中公开了以下各项。 显示分布的概率密度。
 
-| 指标 | 说明 |  
+| 度量值 | 说明 |  
 | ------ | ----------- |  
 | Wasserstein 距离 | 将基线分布转换为目标分布的最小工作量。 |
 | 均值值 | 功能的平均值。 |
@@ -275,7 +275,7 @@ monitor = monitor.enable_schedule()
 
 在每个数据集监视器运行中对数值特征进行分析。 Azure 机器学习 studio 中公开了以下各项。 为分布显示直方图。
 
-| 指标 | 说明 |  
+| 度量值 | 说明 |  
 | ------ | ----------- |  
 | Euclidian 距离 | 基线与目标分布之间的几何距离。 |
 | 唯一值 | 功能的唯一值（基数）的数目。 |

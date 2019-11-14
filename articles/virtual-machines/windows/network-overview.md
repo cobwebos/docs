@@ -1,5 +1,5 @@
 ---
-title: Azure 中的虚拟网络和 Windows 虚拟机 | Microsoft 文档
+title: Azure 中的虚拟网络和 Windows 虚拟机
 description: 了解网络，因为这是在 Azure 中创建 Windows 虚拟机所要具备的基本知识。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 60ae9796a5e9ac8a15296b5d11099e4a5fe39e6a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 105a91d8bfddeae3ed12c4ebb5b761d5989b91a2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089132"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033098"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Azure 中的虚拟网络和虚拟机 
 

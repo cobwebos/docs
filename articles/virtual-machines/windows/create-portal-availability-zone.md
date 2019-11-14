@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 门户创建分区的 Windows VM | Microsoft Docs
+title: 使用 Azure 门户创建分区的 Windows VM
 description: 使用 Azure 门户在可用性区域中创建 Windows VM
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 90c6f7106cbc885c513d47bf80a7b1ec218d8c6c
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: c6f843693ccfa16f9b31027ba370242e0462b138
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168553"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033894"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>使用 Azure 门户在可用性区域中创建 Windows 虚拟机
 
@@ -52,7 +52,7 @@ ms.locfileid: "71168553"
 
 6. 在摘要页上，单击“创建”以启动虚拟机部署。
 
-7. VM 将固定到 Azure 门户仪表板。 完成部署后，会自动打开 VM 摘要。
+7. VM 将固定到 Azure 门户仪表板。 完成部署后，VM 摘要会自动打开。
 
 ## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>为托管磁盘和 IP 地址确认区域
 
@@ -74,4 +74,4 @@ ms.locfileid: "71168553"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的[可用性](availability.md)。
+在本文中，你已学习了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的[可用性](availability.md)。

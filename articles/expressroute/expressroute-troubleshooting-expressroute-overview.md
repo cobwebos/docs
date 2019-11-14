@@ -1,5 +1,5 @@
 ---
-title: 验证连接性-ExpressRoute 故障排除指南： Azure |Microsoft Docs
+title: Azure ExpressRoute：验证连接-故障排除指南
 description: 本页说明如何对 ExpressRoute 线路的端到端连接进行故障排除和验证。
 services: expressroute
 author: rambk
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: c5001e884047fc6078faf3a8de0e45b7e30e1038
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 833e7788a5b17b12ad883f705d56f660c2f1d832
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580299"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033790"
 ---
 # <a name="verifying-expressroute-connectivity"></a>验证 ExpressRoute 连接
 本文可帮助验证 ExpressRoute 连接并对其进行故障排除。 ExpressRoute 通过专用连接将本地网络扩展到 Microsoft 云，此连接通常由连接提供商提供。 通常，ExpressRoute 连接涉及三个不同的网络区域，如下所示：

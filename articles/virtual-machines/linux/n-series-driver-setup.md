@@ -1,5 +1,5 @@
 ---
-title: 适用于 Linux 的 Azure N 系列 GPU 驱动程序安装 | Microsoft Docs
+title: 适用于 Linux 的 Azure N 系列 GPU 驱动程序设置
 description: 如何为 Azure 中运行 Linux 的 N 系列 VM 安装 NVIDIA GPU 驱动程序
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3abc221295a90dfbf7e46e3bd5bff1c8c0937162
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 6ebc991d54ef902eb653cf2d99b2f74f18551568
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035015"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035628"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在运行 Linux 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序
 
@@ -190,7 +190,7 @@ sudo reboot
    
    sudo apt-get install linux-azure -y
    ```
-3. 禁用 Nouveau 内核驱动程序，该驱动程序与 NVIDIA 驱动程序不兼容。 （只能在 NV 或 NVv2 VM 上使用 NVIDIA 驱动程序。）为此，请使用以下内容在名为 @no__t `/etc/modprobe.d` 中创建一个文件：
+3. 禁用 Nouveau 内核驱动程序，该驱动程序与 NVIDIA 驱动程序不兼容。 （仅在 NV 或 NVv2 Vm 上使用 NVIDIA 驱动程序。）为此，请在 `/etc/modprobe.d` 中创建一个名为 `nouveau.conf` 的文件，其中包含以下内容：
 
    ```
    blacklist nouveau
@@ -230,7 +230,7 @@ sudo reboot
    EnableUI=FALSE
    ```
    
-9. 如果存在以下情况，请从 @no__t 中删除以下内容：
+9. 如果存在以下情况，请从 `/etc/nvidia/gridd.conf` 中删除以下内容：
  
    ```
    FeatureType=0
@@ -254,7 +254,7 @@ sudo reboot
    sudo yum install hyperv-daemons
    ```
 
-2. 禁用 Nouveau 内核驱动程序，该驱动程序与 NVIDIA 驱动程序不兼容。 （只能在 NV 或 NV2 VM 上使用 NVIDIA 驱动程序。）为此，请使用以下内容在名为 @no__t `/etc/modprobe.d` 中创建一个文件：
+2. 禁用 Nouveau 内核驱动程序，该驱动程序与 NVIDIA 驱动程序不兼容。 （仅在 NV 或 NV2 Vm 上使用 NVIDIA 驱动程序。）为此，请在 `/etc/modprobe.d` 中创建一个名为 `nouveau.conf` 的文件，其中包含以下内容：
 
    ```
    blacklist nouveau
@@ -302,7 +302,7 @@ sudo reboot
    IgnoreSP=FALSE
    EnableUI=FALSE 
    ```
-9. 如果存在以下情况，请从 @no__t 中删除以下内容：
+9. 如果存在以下情况，请从 `/etc/nvidia/gridd.conf` 中删除以下内容：
  
    ```
    FeatureType=0
@@ -359,7 +359,7 @@ fi
 
 然后，在 `/etc/rc.d/rc3.d` 中为更新脚本创建一个条目，以便在启动时以 root 身份调用该脚本。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 * 可以使用 `nvidia-smi` 设置持久性模式，以便在需要查询卡时该命令的输出更快。 若要设置持久性模式，请执行 `nvidia-smi -pm 1`。 请注意，如果重启 VM，此模式设置将消失。 你可以始终将该模式设置编写为在启动时执行。
 * 如果已将 NVIDIA CUDA 驱动程序更新到最新版本，并且找不到 RDMA connectivcity，请[重新安装 rdma 驱动程序](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity)以 reistablish 这种连接。 

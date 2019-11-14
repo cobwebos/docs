@@ -1,5 +1,5 @@
 ---
-title: 将首个应用部署到 Microsoft Azure 上的 Cloud Foundry | Microsoft Docs
+title: 将首个应用部署到 Microsoft Azure 上的 Cloud Foundry
 description: 将应用程序部署到 Azure 上的 Cloud Foundry
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: c4088e593ca7d48a3e7a5c1a6699f316b57fff31
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b1f9ab5289a41aacb5514e954f1ca01f6ad66152
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083946"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036824"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>将首个应用部署到 Microsoft Azure 上的 Cloud Foundry
 
@@ -32,14 +32,14 @@ ms.locfileid: "70083946"
 
 - 使用 Azure Marketplace 中的[Pivotal Cloud Foundry 产品/服务][pcf-azuremarketplace]创建一个包含 PCF Ops Manager 和 Azure Service Broker 的标准环境。 可在 Pivotal 文档中找到有关部署 marketplace 产品/服务的[完整说明][pcf-azuremarketplace-pivotaldocs]。
 - 通过[手动部署 Pivotal Cloud Foundry][pcf-custom]创建自定义环境。
-- 通过设置[BOSH](https://bosh.io)控制器 (协调 Cloud Foundry 环境部署的 VM),[直接部署开源 Cloud Foundry 包][oss-cf-bosh]。
+- 通过设置[BOSH](https://bosh.io)控制器（协调 Cloud Foundry 环境部署的 VM），[直接部署开源 Cloud Foundry 包][oss-cf-bosh]。
 
 > [!IMPORTANT] 
 > 如果要从 Azure 市场部署 PCF，请记下访问 Pivotal 应用管理器所需的 SYSTEMDOMAINURL 和管理员凭据，市场部署指南中对两者都有介绍。 完成本教程也需要它们。 在市场部署中，SYSTEMDOMAINURL 的形式为 https://system.*ip-address*.cf.pcfazure.com。
 
 ## <a name="connect-to-the-cloud-controller"></a>连接到云控制器
 
-云控制器是部署和管理应用程序的 Cloud Foundry 环境的主要入口点。 核心云控制器 API (CCAPI) 是一种 REST API，但可通过各种工具访问。 在这种情况下, 我们会通过[CLOUD FOUNDRY CLI][cf-cli]与之进行交互。 你可以在 Linux、MacOS 或 Windows 上安装 CLI, 但如果不想安装它, 则可在[Azure Cloud Shell][cloudshell-docs]中预安装该 CLI。
+云控制器是部署和管理应用程序的 Cloud Foundry 环境的主要入口点。 核心云控制器 API (CCAPI) 是一种 REST API，但可通过各种工具访问。 在这种情况下，我们会通过[CLOUD FOUNDRY CLI][cf-cli]与之进行交互。 你可以在 Linux、MacOS 或 Windows 上安装 CLI，但如果不想安装它，则可在[Azure Cloud Shell][cloudshell-docs]中预安装该 CLI。
 
 若要登录，请将 `api` 追加到从市场部署中获得的 SYSTEMDOMAINURL 中。 由于默认部署使用自签名证书，因此还应设置 `skip-ssl-validation` 开关。
 
@@ -72,7 +72,7 @@ cf target -o testorg -s dev
 现在，部署应用程序时，其会自动创建在新的组织和空间中。 若要确认新的组织/空间中目前没有任何应用，请再次键入 `cf apps`。
 
 > [!NOTE] 
-> 有关组织和空间以及如何将它们用于基于角色的访问控制 (RBAC) 的详细信息, 请参阅[Cloud Foundry 文档][cf-orgs-spaces-docs]。
+> 有关组织和空间以及如何将它们用于基于角色的访问控制（RBAC）的详细信息，请参阅[Cloud Foundry 文档][cf-orgs-spaces-docs]。
 
 ## <a name="deploy-an-application"></a>部署应用程序
 
@@ -112,7 +112,7 @@ cf push
 ![Hello Spring Cloud 的默认 UI][hello-spring-cloud-basic]
 
 > [!NOTE] 
-> 若要详细了解过程中`cf push`发生的情况, 请参阅[应用程序如何暂存][cf-push-docs]在 Cloud Foundry 文档中。
+> 若要详细了解 `cf push`期间发生的情况，请参阅 Cloud Foundry 文档中[应用程序的暂存方式][cf-push-docs]。
 
 ## <a name="view-application-logs"></a>查看应用程序日志
 

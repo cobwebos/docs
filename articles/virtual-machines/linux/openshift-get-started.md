@@ -1,5 +1,5 @@
 ---
-title: Azure 中的 OpenShift 概述 | Microsoft Docs
+title: Azure 中的 OpenShift 概述
 description: Azure 中的 OpenShift 概述。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 2293eac45da6f53b0cd29fda68b0ddc76aea1a6c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 021ebe010a27fa155de861121e1972466c800f4a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390641"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035426"
 ---
 # <a name="openshift-in-azure"></a>Azure 中的 OpenShift
 
@@ -41,7 +41,7 @@ Microsoft Azure Red Hat OpenShift 是在 Azure 中运行的 OpenShift 的完全�
 
 容器平台 是 Red Hat 支持的企业就绪[商业版本](https://www.openshift.com)。 使用此版本时，客户需购买 OpenShift 容器平台的必要权利，并负责安装和管理整个基础结构。
 
-由于客户 "拥有" 整个平台，因此可将其安装在其本地数据中心或公有云（例如 Azure）中。
+由于客户“拥有”整个平台，他们可在本地数据中心或公有云（例如 Azure）位置中进行安装。
 
 ## <a name="okd"></a>OKD
 

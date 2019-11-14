@@ -8,18 +8,23 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 8a1802f0f24ba5ccad3ec1c45f3baa29dfe6909f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 306f6cb0b50b7befcbf51e6164a5da887d35616e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262552"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74030879"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>将 Azure 资源日志存档到存储帐户
 Azure 中的[资源日志](resource-logs-overview.md)提供有关 Azure 资源内部操作的丰富、频繁的数据。 本文介绍如何将资源日志收集到 Azure 存储帐户，以保留用于存档的数据。
 
 ## <a name="prerequisites"></a>先决条件
 如果还没有[Azure 存储帐户](../../storage/common/storage-quickstart-create-account.md)，则需要创建一个。 只要配置设置的用户具有对这两个订阅的相应 RBAC 访问权限，存储帐户就不必与资源发送日志位于同一订阅中。
+
+
+> [!IMPORTANT]
+> Azure Data Lake Storage Gen2 帐户目前不支持作为诊断设置的目标，即使它们可能在 Azure 门户中被列为有效选项。
+
 
 不应使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制监视数据所需的访问权限。 如果还将[活动日志](activity-logs-overview.md)存档到存储帐户，则可以选择使用同一个存储帐户将所有监视数据都保存在一个中央位置。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 实例元数据服务 | Microsoft 文档
+title: Azure 实例元数据服务
 description: 一个 RESTful 接口，用于获取有关 Windows VM 计算、网络和即将发生的维护事件的信息。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 658830e37a453075100cd3aaf132bb1d3aedfaea
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 4e411d986ffe88c0cf498262688afd2ecc71e51c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240398"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038530"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -36,7 +36,7 @@ Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure 资
 
 此服务在所有 Azure 区域中提供有可用的正式版。 并非所有 API 版本在所有 Azure 区域中可用。
 
-Regions                                        | 可用性？                                 | 支持的版本
+区域                                        | 可用性？                                 | 支持的版本
 -----------------------------------------------|-----------------------------------------------|-----------------
 [全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | 正式版 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01、2019-02-01、2019-03-11、2019-04-30、2019-06-01、2019-06-04
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 正式版 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01、2019-02-01、2019-03-11、2019-04-30
@@ -116,12 +116,12 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 > [!NOTE]
 > 对于叶节点，`format=json` 不起作用。 对于这些查询，如果默认格式是 JSON，则需要显式指定 `format=text`。
 
-### <a name="security"></a>安全性
+### <a name="security"></a>“安全”
 
 只能从不可路由的 IP 地址上正在运行的虚拟机实例中访问实例元数据服务终结点。 此外，服务会拒绝任何带有 `X-Forwarded-For` 标头的请求。
 请求必须包含 `Metadata: true` 标头，以确保实际请求是直接计划好的，而不是无意重定向的一部分。
 
-### <a name="error"></a>Error
+### <a name="error"></a>错误
 
 如果找不到某个数据元素，或者请求的格式不正确，则实例元数据服务将返回标准 HTTP 错误。 例如：
 
@@ -341,11 +341,11 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 #### <a name="the-following-apis-are-available-through-the-metadata-endpoint"></a>可以通过元数据终结点使用以下 API：
 
-Data | 描述 | 引入的版本
+数据 | 说明 | 引入的版本
 -----|-------------|-----------------------
 attested | 请参阅[证明数据](#attested-data) | 2018-10-01
 identity | Azure 资源的托管标识。 请参阅[获取访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
-实例 | 请参阅[实例 API](#instance-api) | 2017-04-02
+instance | 请参阅[实例 API](#instance-api) | 2017-04-02
 scheduledevents | 请参阅[计划事件](scheduled-events.md) | 2017-08-01
 
 #### <a name="instance-api"></a>实例 API
@@ -354,21 +354,21 @@ scheduledevents | 请参阅[计划事件](scheduled-events.md) | 2017-08-01
 > [!NOTE]
 > 在元数据终结点中通过实例/计算访问以下类别
 
-Data | 描述 | 引入的版本
+数据 | 说明 | 引入的版本
 -----|-------------|-----------------------
 azEnvironment | VM 运行时所在的 Azure 环境 | 2018-10-01
 customData | 请参阅[自定义数据](#custom-data) | 2019-02-01
 location | 正在运行 VM 的 Azure 区域 | 2017-04-02
 name | VM 的名称 | 2017-04-02
-套餐 | 提供 VM 映像的信息，仅适用于从 Azure 映像库部署的映像 | 2017-04-02
+offer | 提供 VM 映像的信息，仅适用于从 Azure 映像库部署的映像 | 2017-04-02
 osType | Linux 或 Windows | 2017-04-02
 placementGroupId | 虚拟机规模集的[放置组](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 计划 | [计划](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)包含 VM 的名称、产品和发布者（如果是 Azure 市场映像） | 2018-04-02
 platformUpdateDomain |  正在运行 VM 的[更新域](manage-availability.md) | 2017-04-02
 platformFaultDomain | 正在运行 VM 的[容错域](manage-availability.md) | 2017-04-02
-提供程序 | VM 的提供商 | 2018-10-01
+provider | VM 的提供商 | 2018-10-01
 publicKeys | [公钥的集合](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey)，已分配给 VM 和路径 | 2018-04-02
-publisher | VM 映像的发布者 | 2017-04-02
+发布者 | VM 映像的发布者 | 2017-04-02
 resourceGroupName | 虚拟机的[资源组](../../azure-resource-manager/resource-group-overview.md) | 2017-08-01
 resourceId | 资源的[完全限定](https://docs.microsoft.com/rest/api/resources/resources/getbyid) ID | 2019-03-11
 sku | VM 映像的特定 SKU | 2017-04-02
@@ -386,7 +386,7 @@ vmSize | [VM 大小](sizes.md) | 2017-04-02
 > [!NOTE]
 > 在元数据终结点中通过实例/网络/接口访问以下类别
 
-Data | 描述 | 引入的版本
+数据 | 说明 | 引入的版本
 -----|-------------|-----------------------
 ipv4/privateIpAddress | VM 的本地 IPv4 地址 | 2017-04-02
 ipv4/publicIpAddress | VM 的公共 IPv4 地址 | 2017-04-02
@@ -545,7 +545,7 @@ AzurePublicCloud
 
 下面列出了 Azure 环境的区域和值。
 
- Regions | Azure 环境
+ 区域 | Azure 环境
 ---------|-----------------
 [全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
@@ -641,7 +641,7 @@ Verification successful
 }
 ```
 
-Data | 描述
+数据 | 说明
 -----|------------
 nonce | 用户提供了带有请求的可选字符串。 如果请求中未提供 nonce，则返回当前 UTC 时间戳
 计划 | 在 Azure 市场映像中 VM 的[计划](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)，包含名称、产品和发布者
@@ -730,7 +730,7 @@ route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 
 可以通过 REST API、PowerShell Cmdlet、Azure 命令行界面 (CLI) 或 ARM 模板将 Azure 自定义数据插入 VM。
 
-有关 Azure 命令行接口示例, 请参阅[Microsoft Azure 上的自定义数据和云初始化](https://azure.microsoft.com/blog/custom-data-and-cloud-init-on-windows-azure/)。
+有关 Azure 命令行接口示例，请参阅[Microsoft Azure 上的自定义数据和云初始化](https://azure.microsoft.com/blog/custom-data-and-cloud-init-on-windows-azure/)。
 
 如需 ARM 模板示例，请参阅[使用 CustomData 部署虚拟机](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata)。
 
@@ -780,7 +780,7 @@ Puppet | https://github.com/keirans/azuremetadata
 2. 为什么我无法获取我的 VM 的计算信息？
    * 目前，实例元数据服务仅支持使用 Azure 资源管理器创建的实例。 将来可能会添加对云服务 VM 的支持。
 3. 我刚才通过 Azure 资源管理器创建了虚拟机。 为什么我无法看到计算元数据信息？
-   * 对于 2016 年 9 月之后创建的所有 VM，请添加[标记](../../azure-resource-manager/resource-group-using-tags.md)以开始查看计算元数据。 对于早期 VM（创建于 2016 年 9 月前），请在 VM 中添加/删除扩展或数据磁盘，刷新元数据。
+   * 对于 2016 年 9 月之后创建的任何 VM，请添加[标记](../../azure-resource-manager/resource-group-using-tags.md)以开始查看计算元数据。 对于早期 VM（创建于 2016 年 9 月前），请在 VM 中添加/删除扩展或数据磁盘，刷新元数据。
 4. 我看不到为新版本填充的任何数据
    * 对于 2016 年 9 月之后创建的任何 VM，请添加[标记](../../azure-resource-manager/resource-group-using-tags.md)以开始查看计算元数据。 对于早期 VM（创建于 2016 年 9 月前），请在 VM 中添加/删除扩展或数据磁盘，刷新元数据。
 5. 为什么会出现 `500 Internal Server Error` 错误？

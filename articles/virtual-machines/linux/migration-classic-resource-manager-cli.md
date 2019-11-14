@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 将 VM 迁移到 Resource Manager | Microsoft 文档
+title: 使用 Azure CLI 将 Vm 迁移到资源管理器
 description: 本文逐步讲解如何使用 Azure CLI 对资源进行平台支持的从经典部署模型到 Azure 资源管理器部署模型的迁移
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 7af101b036e8e40a14ad5d9931cc897cb1758ea0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 69107052d84f28dfd08f59dec40ea66eca79ecaa
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082784"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035776"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>使用 Azure CLI 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型
 以下步骤演示如何使用 Azure 命令行接口 (CLI) 命令将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Azure 资源管理器部署模型。 本文中的操作需要 [Azure 经典 CLI](../../cli-install-nodejs.md)。 由于 Azure CLI 仅适用于 Azure 资源管理器资源，因此它不能用于此迁移。
@@ -32,7 +32,7 @@ ms.locfileid: "70082784"
 <br>
 下面是一个流程图，用于确定在迁移过程中需要执行步骤的顺序
 
-![Screenshot that shows the migration steps](../windows/media/migration-classic-resource-manager/migration-flow.png)
+![显示迁移步骤的屏幕截图](../windows/media/migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="step-1-prepare-for-migration"></a>步骤 1：准备迁移
 下面是建议在将 IaaS 资源从经典部署模型迁移到 Resource Manager 部署模型时遵循的一些最佳实践：
@@ -41,9 +41,9 @@ ms.locfileid: "70082784"
 * 如果通过自动化脚本来部署目前的基础结构和应用程序，则可尝试使用这些脚本进行迁移，以便创建类似的测试性设置。 也可以使用 Azure 门户设置示例环境。
 
 > [!IMPORTANT]
-> 目前不支持通过应用程序网关从经典部署模型迁移到 Resource Manager 部署模型。 要迁移带应用程序网关的经典虚拟网络，请先删除该网关，然后运行准备操作来移动网络。 完成迁移后，在 Azure 资源管理器中重新连接该网关。 
+> 目前不支持将应用程序网关从经典部署迁移到 Resource Manager。 如果要迁移带应用程序网关的经典虚拟网络，请先删除该网关，然后运行准备操作来移动网络。 完成迁移后，在 Azure 资源管理器中重新连接该网关。 
 >
->无法自动迁移其他订阅中连接到 ExpressRoute 线路的 ExpressRoute 网关。 此类情况下，请删除 ExpressRoute 网关、迁移虚拟网络并重新创建网关。 有关详细信息，请参阅[将 ExpressRoute 线路和关联的虚拟网络从经典部署模型迁移到 Resource Manager 部署模型](../../expressroute/expressroute-migration-classic-resource-manager.md)。
+>无法自动迁移其他订阅中连接到 ExpressRoute 线路的 ExpressRoute 网关。 在这种情况下，请删除 ExpressRoute 网关，迁移虚拟网络并重新创建网关。 有关详细信息，请参阅[将 ExpressRoute 线路和关联的虚拟网络从经典部署模型迁移到 Resource Manager 部署模型](../../expressroute/expressroute-migration-classic-resource-manager.md)。
 > 
 > 
 
@@ -61,7 +61,7 @@ ms.locfileid: "70082784"
 > [!NOTE]
 > 注册是一次性步骤，但必须在尝试迁移之前完成。 如果不注册，会看到以下错误消息 
 > 
-> *BadRequest:Subscription is not registered for migration.* （BadRequest：订阅尚未注册迁移。） 
+> *BadRequest : Subscription is not registered for migration.* 
 > 
 > 
 
@@ -69,7 +69,7 @@ ms.locfileid: "70082784"
 
     azure provider register Microsoft.ClassicInfrastructureMigrate
 
-请等五分钟让注册完成。 可以使用以下命令来检查审批状态。 请确保在继续操作之前，RegistrationState 为 `Registered` 。
+请等五分钟让注册完成。 可以使用以下命令来检查审批状态。 请确保在继续操作之前，RegistrationState 为 `Registered`。
 
     azure provider show Microsoft.ClassicInfrastructureMigrate
 
@@ -96,7 +96,7 @@ azure vm list-usage -l "<Your VNET or Deployment's Azure region"
 
 
 ## <a name="step-4-option-1---migrate-virtual-machines-in-a-cloud-service"></a>步骤 4：选项 1 - 迁移云服务中的虚拟机
-使用以下命令获取云服务列表，并选取要迁移的云服务。 请注意，如果云服务中的 VM 在虚拟网络中或者具有 Web/辅助角色，会收到错误消息。
+使用以下命令获取云服务列表，并选取要迁移的云服务。 请注意，如果云服务中的 VM 在虚拟网络中或者具有 Web/辅助角色，将收到错误消息。
 
     azure service list
 
@@ -135,7 +135,7 @@ azure service deployment validate-migration <serviceName> <deploymentName> new "
 
 
 ## <a name="step-4-option-2----migrate-virtual-machines-in-a-virtual-network"></a>步骤 4：选项 2 - 迁移虚拟网络中的虚拟机
-选取要迁移的虚拟网络。 请注意，如果虚拟网络包含的 Web/辅助角色或 VM 的配置不受支持，会收到验证错误消息。
+选取要迁移的虚拟网络。 请注意，如果虚拟网络包含的 Web/辅助角色或 VM 的配置不受支持，将收到验证错误消息。
 
 使用以下命令获取订阅中的所有虚拟网络。
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Chef 部署 Azure 虚拟机 | Microsoft Docs
+title: 通过 Chef 部署 Azure 虚拟机
 description: 了解如何使用 Chef 在 Microsoft Azure 中自动执行虚拟机的部署和配置
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 07/09/2019
 ms.author: diviso
-ms.openlocfilehash: 5cbf53da5a0af0a511350b9f30153e2fefe72dcf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 58642cdbf164523390d5e4925290b43f6c05549b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080074"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039543"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>使用 Chef 自动部署 Azure 虚拟机
 
@@ -79,7 +79,7 @@ New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName 
 如果尚未使用 Chef 服务器，可以：
 
 * 注册[托管 Chef](https://manage.chef.io/signup)，这是 Chef 的最快入门方法。
-* 遵照 [Chef 文档](https://docs.chef.io/)中的[安装说明](https://docs.chef.io/install_server.html)，在基于 Linux 的计算机上安装独立的 Chef 服务器。
+* 遵照 [Chef 文档](https://docs.chef.io/install_server.html)中的[安装说明](https://docs.chef.io/)，在基于 Linux 的计算机上安装独立的 Chef 服务器。
 
 ### <a name="creating-a-hosted-chef-account"></a>创建托管 Chef 帐户
 
@@ -236,7 +236,7 @@ Chef Workstation: 0.4.2
 
     knife azurerm server list
 
-如果所有项都已正确配置，用户可看到可用 Azure 映像的列表滚动显示。
+如果所有项都已正确配置，会看到可用 Azure 映像的列表滚动显示。
 
 祝贺。 现已设置好工作站！
 
@@ -309,10 +309,10 @@ Chef Workstation: 0.4.2
     -r "recipe[webserver]"
 
 
-上面的示例将创建一个 Standard_DS2_v2 虚拟机, 并在美国西部区域中安装 Windows Server 2016。 替换特定变量并运行。
+上面的示例将创建一个在美国西部区域中安装了 Windows Server 2016 Standard_DS2_v2 虚拟机。 替换特定变量并运行。
 
 > [!NOTE]
-> 通过命令行，还使用 –tcp-endpoints 参数自动执行终结点网络筛选规则。 我已打开端口80和 3389, 以提供对网页和 RDP 会话的访问。
+> 通过命令行，还使用 –tcp-endpoints 参数自动执行终结点网络筛选规则。 我已打开端口80和3389，以提供对网页和 RDP 会话的访问。
 >
 >
 

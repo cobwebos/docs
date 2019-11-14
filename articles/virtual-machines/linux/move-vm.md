@@ -1,5 +1,5 @@
 ---
-title: 移动 Azure 中的 Linux VM | Microsoft 文档
+title: 在 Azure 中移动 Linux VM
 description: 在 Resource Manager 部署模型中将 Linux VM 移到其他 Azure 订阅或资源组。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 7c22fe8beea894bccb311a63a1be70c972188e59
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 8fc04b4689ea8707ac2c605e3e4242a117773151
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667289"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035649"
 ---
 # <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>将 Linux VM 移到其他订阅或资源组
 本文逐步说明如何在资源组或订阅之间移动 Linux 虚拟机 (VM)。 如果在个人订阅中创建了 VM，现在想要将其移到公司的订阅，则在订阅之间移动 VM 会很方便。
@@ -67,7 +67,7 @@ az resource move \
 
 如果要将 VM 及其资源移到其他订阅，请添加 **--destination-subscriptionId** 参数来指定目标订阅。
 
-系统要求确认是否要移动指定的资源时，请输入“Y”进行确认  。
+系统要求确认是否要移动指定的资源时，请输入“Y”进行确认。
 
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 

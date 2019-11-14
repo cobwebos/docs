@@ -1,31 +1,31 @@
 ---
-title: 将单独许可的用户添加到基于组的许可 - Azure Active Directory | Microsoft Docs
+title: 添加具有直接许可证的用户 Azure AD 分组许可-|Microsoft Docs
 description: 如何使用 Azure Active Directory 从单个用户许可证迁移到基于组的许可
 services: active-directory
 keywords: Azure AD 许可
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 09/26/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29ec9c05a7e7d594c64a450fe64e5bb0e0d1b7d0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 6c06d81f2f3f6cee781889d05ae08a1fd125df52
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034763"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025677"
 ---
 # <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>如何将具有单个许可证的用户迁移到组以获取许可
 
-可能已通过“直接分配”将现有的许可证部署到了组织中的用户；也就是说，使用 PowerShell 脚本或其他工具为单个用户分配了许可证。 在开始使用基于组的许可来管理组织中的许可证之前，可以使用此迁移计划将现有解决方案无缝地替换为基于组的许可。
+可以通过直接分配将现有的许可证部署到组织中的用户;也就是说，使用 PowerShell 脚本或其他工具分配各个用户许可证。 在开始使用基于组的许可来管理组织中的许可证之前，可以使用此迁移计划将现有解决方案无缝地替换为基于组的许可。
 
 要记住的最重要的一件事是，应该避免出现迁移到基于组的许可后，导致用户暂时失去其当前分配的许可证的情况。 应该避免可能导致删除许可证的任何过程，以消除用户失去服务及其数据访问权限的风险。
 
@@ -85,5 +85,5 @@ ms.locfileid: "72034763"
 - [将许可证分配到 Azure Active Directory 中的组](licensing-groups-assign.md)
 - [识别和解决 Azure Active Directory 中组的许可问题](licensing-groups-resolve-problems.md)
 - [如何在 Azure Active Directory 中使用基于组的许可在产品许可证之间迁移用户](licensing-groups-change-licenses.md)
-- [Azure Active Directory 基于组的许可的其他方案](licensing-group-advanced.md)
+- [基于 Azure Active Directory 组的许可的其他方案](licensing-group-advanced.md)
 - [Azure Active Directory 中基于组的许可的 PowerShell 示例](licensing-ps-examples.md)

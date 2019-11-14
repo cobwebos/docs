@@ -1,5 +1,5 @@
 ---
-title: 适用于 Linux VM 的超级磁盘 - Azure 托管磁盘 | Microsoft Docs
+title: 适用于 Linux Vm 的 Ultra 磁盘-Azure 托管磁盘
 description: 了解 Azure Vm 的 ultra 磁盘
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d3d2fdf07748038c8821e001e17ce72b1c4a3306
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c09d2c42b2ceeac288f8d6538cdb42df7880cdde
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013749"
+ms.locfileid: "74036320"
 ---
 # <a name="using-azure-ultra-disks"></a>使用 Azure 超磁盘
 [!INCLUDE [virtual-machines-disks-ultra-ssd](../../../includes/virtual-machines-disks-getting-started-ultra-ssd.md)]

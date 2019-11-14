@@ -1,5 +1,5 @@
 ---
-title: 使用 Microsoft Authenticator 应用登录到帐户 - Azure Active Directory | Microsoft Docs
+title: 使用 Microsoft Authenticator 应用登录 Azure AD
 description: 通过 Microsoft Authenticator 应用登录到工作或学校帐户或者个人的 Microsoft 和非 Microsoft 帐户，可以使用双重验证，也可以使用手机登录。
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9af3549984bd29a6e896e498bf4a2e6c67d7e0e2
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4cf9b92793d6c769751590dd0a375cbc8894759c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616018"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028973"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 应用登录到帐户
 
@@ -40,7 +40,7 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 
  2. 将工作/学校帐户、个人帐户以及第三方帐户添加到 Microsoft Authenticator 应用。 有关详细步骤，请参阅[添加工作或学校帐户](user-help-auth-app-add-work-school-account.md)、[添加个人帐户](user-help-auth-app-add-personal-ms-account.md)和[添加非 Microsoft 帐户](user-help-auth-app-add-non-ms-account.md)。
 
-## <a name="turn-on-and-use-phone-sign-in-for-your-work-or-school-account"></a>为工作或学校帐户启用和使用手机登录
+## <a name="turn-on-and-use-phone-sign-in-for-your-work-or-school-account"></a>针对工作或学校帐户启用并使用手机登录
 
 手机登录是一种双重验证。 你仍然必须提供所知道和拥有的事物来验证自己的身份，但使用手机登录时，不需输入帐户密码即可在移动设备上执行所有的身份验证。
 
@@ -112,20 +112,20 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 
 | 问题 | 解决方案 |
 | -------- | -------- |
-| 为什么使用手机登录比键入密码更安全？ | 当今，大多数人在登录网站或应用时，使用用户名和密码。 遗憾的是，密码可能会丢失、被盗或被黑客猜出。<br><br>安装 Microsoft Authenticator 应用后，该应用会在手机上创建一个密钥，用于解锁受手机 PIN 或生物识别锁保护的帐户。 登录时，可以使用此密钥来证明自己的身份。<br><br>**重要说明**<br>你的数据仅用于在本地保护你的密钥。 这些数据永远不会发送到或者存储在云中。 |
+| 为何使用手机登录比键入密码更安全？ | 当今，大部分人都是使用用户名和密码登录到网站或应用。 遗憾的是，密码可能会丢失、被盗或被黑客猜出。<br><br>安装 Microsoft Authenticator 应用后，该应用会在手机上创建一个密钥，用于解锁受手机 PIN 或生物识别锁保护的帐户。 登录时，可以使用此密钥来证明自己的身份。<br><br>**重要说明**<br>你的数据仅用于在本地保护你的密钥。 这些数据永远不会发送到或者存储在云中。 |
 | 电话登录是否替换双重验证？ 我是否应将其关闭？ | 手机登录是一种在移动设备上进行的双重验证。 应该让双重验证保持启用状态，以便为帐户提供额外的安全性。 |
-| 如果为我的帐户启用了双重验证, 是否必须批准两个通知？ | 否。 使用手机登录到 Microsoft 帐户也算作双重验证，因此不需要再次批准。 |
-| 如果我的手机丢失或没有与我联系, 怎么办？ 如何实现访问我的帐户？ | 始终可以在登录页中选择“改用密码”链接，重新改用密码登录。 但是，如果使用双重验证，则仍需要使用第二种方法来验证身份。<br><br>**重要说明**<br>强烈建议确保有多个最新的验证方法与你的帐户相关联。<br><br>可以通过[安全设置](https://account.live.com/proofs/manage)页管理个人帐户的验证方法。 对于工作或学校帐户，如果管理员已启用安全信息，则你可以转到组织的[其他安全验证](https://aka.ms/MFASetup)页或“保护帐户安全”页。 有关安全信息的详细信息, 请参阅[安全信息 (预览版) 概述](user-help-security-info-overview.md)。<br><br>如果无法管理验证方法，则必须与管理员联系。 |
-| 如何实现停止使用此功能并返回到使用我的密码？ | 对于个人帐户，请在登录期间选择“改用密码”链接。 系统会记住你最近的选择，并在下次登录时默认提供此选项。 如果想要改用手机登录，请在登录期间选择“改用应用”链接。<br><br>对于工作或学校帐户, 你必须从 "Microsoft Authenticator" 应用的 "**设置**" 页中注销该设备, 或从配置文件的 "**设备 &" 活动**区域中禁用该设备。 有关从配置文件禁用设备的详细信息, 请参阅[从 "我的应用" 门户更新你的配置文件和帐户信息](my-apps-portal-end-user-update-profile.md#view-your-organization-related-profile-information)。 |
+| 如果为我的帐户启用了双重验证，是否必须批准两个通知？ | 不能。 使用手机登录到 Microsoft 帐户也算作双重验证，因此不需要再次批准。 |
+| 如果我的手机丢失或没有与我联系，怎么办？ 如何实现访问我的帐户？ | 始终可以在登录页中选择“改用密码”链接，重新改用密码登录。 但是，如果使用双重验证，则仍需要使用第二种方法来验证身份。<br><br>**重要说明**<br>强烈建议确保有多个最新的验证方法与你的帐户相关联。<br><br>可以通过[安全设置](https://account.live.com/proofs/manage)页管理个人帐户的验证方法。 对于工作或学校帐户，如果管理员已启用安全信息，则你可以转到组织的[其他安全验证](https://aka.ms/MFASetup)页或“保护帐户安全”页。 有关安全信息的详细信息，请参阅[安全信息（预览版）概述](user-help-security-info-overview.md)。<br><br>如果无法管理验证方法，则必须与管理员联系。 |
+| 如何实现停止使用此功能并返回到使用我的密码？ | 对于个人帐户，请在登录期间选择“改用密码”链接。 系统会记住你最近的选择，并在下次登录时默认提供此选项。 如果想要改用手机登录，请在登录期间选择“改用应用”链接。<br><br>对于工作或学校帐户，你必须从 "Microsoft Authenticator" 应用的 "**设置**" 页中注销该设备，或从配置文件的 "**设备 &" 活动**区域中禁用该设备。 有关从配置文件禁用设备的详细信息，请参阅[从 "我的应用" 门户更新你的配置文件和帐户信息](my-apps-portal-end-user-update-profile.md#view-your-organization-related-profile-information)。 |
 | 为什么不能使用多个工作或学校帐户登录？ | 一部手机只能注册到单个工作或学校帐户。 如果想要为不同的工作或学校帐户启用手机登录，必须先通过“设置”页取消注册旧设备。 |
 | 我是否可以使用我的手机登录到我的计算机？ | 我们建议使用 Windows 10 上的 Windows Hello 登录到电脑。 Windows Hello 允许使用人脸、指纹或 PIN 登录。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果在获取个人 Microsoft 帐户的验证代码时遇到问题, 请参阅[Microsoft 帐户安全信息 & 验证](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)代码一文中的 "**验证代码问题疑难解答**" 一节。
+- 如果在获取个人 Microsoft 帐户的验证代码时遇到问题，请参阅[Microsoft 帐户安全信息 & 验证](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)代码一文中的 "**验证代码问题疑难解答**" 一节。
 
 - 如果对该应用存在其他一般性的问题，请参阅 [Microsoft Authenticator 常见问题解答](user-help-auth-app-faq.md)
 
 - 如需有关双重验证的详细信息，请参阅[为帐户设置双重验证](multi-factor-authentication-end-user-first-time.md)
 
-- 如果需要有关安全信息的详细信息, 请参阅[安全信息 (预览版) 概述](user-help-security-info-overview.md)
+- 如果需要有关安全信息的详细信息，请参阅[安全信息（预览版）概述](user-help-security-info-overview.md)

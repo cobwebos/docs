@@ -1,5 +1,5 @@
 ---
-title: 通过 Microsoft 对等互连配置站点到站点的 VPN - ExpressRoute - Azure | Microsoft Docs
+title: Azure ExpressRoute：通过 Microsoft 对等互连配置 S2S VPN
 description: 使用站点到站点的 VPN 网关，通过 ExpressRoute Microsoft 对等互连线路配置到 Azure 的 IPsec/IKE 连接。
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: d26210ab226f8e907aa845d51dca94f59badd6a3
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 89c7e398e24fb48c1829dbaa2811f440c5485a60
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748068"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038104"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>通过 ExpressRoute Microsoft 对等互连配置站点到站点的 VPN
 

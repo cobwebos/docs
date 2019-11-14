@@ -1,5 +1,5 @@
 ---
-title: 从 Azure 下载 Windows VHD | Microsoft Docs
+title: 从 Azure 下载 Windows VHD
 description: 使用 Azure 门户下载 Windows VHD。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: c1c09382102045dd248b6771d8d0ea1ef090b6eb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c5891d7ea2b53ab3524cfff267e71b4f05779cfc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079624"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033593"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>从 Azure 下载 Windows VHD
 
@@ -31,7 +31,7 @@ ms.locfileid: "70079624"
 
 若要使用 VHD 作为映像创建其他 VM，请完成以下步骤：
 
-1.  登录到 [Azure 门户](https://portal.azure.com/)（如果未登录）。
+1.  如果尚未登录 [Azure 门户](https://portal.azure.com/)，请先登录。
 2.  [连接到 VM](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 3.  在 VM 上，以管理员身份打开“命令提示符”窗口。
 4.  将目录切换到 *%windir%\system32\sysprep*，然后运行 sysprep.exe。
@@ -51,7 +51,7 @@ ms.locfileid: "70079624"
 若要下载 VHD 文件，需要生成[共享访问签名 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL。 生成 URL 时，将为 URL 分配到期时间。
 
 1.  在 VM 的边栏选项卡的菜单上，单击“磁盘”。
-2.  为 VM 选择操作系统磁盘, 并单击 "**磁盘导出**"。
+2.  为 VM 选择操作系统磁盘，然后单击“磁盘导出”。
 3.  将 URL 的到期时间设置为 *36000*。
 4.  单击“生成 URL”。
 

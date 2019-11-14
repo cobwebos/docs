@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中的 Windows VM 上安装 MongoDB | Microsoft Docs
+title: 在 Azure 的 Windows VM 上安装 MongoDB
 description: 了解如何在使用 Resource Manager 部署模型创建的、运行 Windows Server 2012 R2 的 Azure VM 上安装 MongoDB。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 3cf1e6ba574fdafd8150212688475450e4cc2379
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 37c1b58d364e7eadb33803ce7eac1f2b956ec1b6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103134"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038554"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>在 Azure 中的 Windows VM 上安装和配置 MongoDB
 [MongoDB](https://www.mongodb.org) 是一个流行的开源、高性能 NoSQL 数据库。 本文逐步讲解如何在 Azure 中的 Windows Server 2016 虚拟机 (VM) 上安装和配置 MongoDB。 也可以[在 Azure 中的 Linux VM 上安装 MongoDB](../linux/install-mongodb.md)。
@@ -41,11 +41,11 @@ ms.locfileid: "70103134"
 3. 默认情况下已启用 Internet Explorer 增强的安全性配置。 将 MongoDB 网站添加到允许的站点列表：
    
    * 选择右上角的“工具”图标。
-   * 在“Internet 选项”中，选择“安全”选项卡，然后选择“受信任的站点”图标。
+   * 在“Internet 选项”中，选择“安全”选项卡，并选择“可信站点”图标。
    * 单击“站点”按钮。 将 *https://\*.mongodb.com* 添加到受信任的站点列表，然后关闭对话框。
      
      ![配置 Internet Explorer 安全性设置](./media/install-mongodb/configure-internet-explorer-security.png)
-4. 请转到 [MongoDB - 下载](https://www.mongodb.com/downloads)页 (https://www.mongodb.com/downloads) )。
+4. 请转到 [MongoDB - 下载](https://www.mongodb.com/downloads)页 (https://www.mongodb.com/downloads))。
 5. 如有需要，选择“社区服务器”版本，并选择 *Windows Server 2008 R2 64 位及更高版本*的最新稳定版本。 若要下载安装程序，请单击“DOWNLOAD (msi)”。
    
     ![下载 MongoDB 安装程序](./media/install-mongodb/download-mongodb.png)
@@ -85,7 +85,7 @@ ms.locfileid: "70103134"
     mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
     ```
    
-    MongoDB 可能需要几分钟来分配日志文件和开始侦听连接。 当 `mongod.exe` 服务器启动和分配日志文件时，所有日志消息将定向到 *F:\MongoLogs\mongolog.log* 文件。
+    MongoDB 可能需要几分钟来分配日志文件和开始侦听连接。 当 *服务器启动和分配日志文件时，所有日志消息将定向到*F:\MongoLogs\mongolog.log`mongod.exe` 文件。
    
    > [!NOTE]
    > 运行 MongoDB 实例时，命令提示符的焦点放在此任务上。 将命令提示符窗口保持打开状态，以便继续运行 MongoDB。 或者，如下一步骤的详述，将 MongoDB 作为服务安装。
@@ -158,7 +158,7 @@ New-NetFirewallRule `
 如有需要，创建一个网络安全组规则，以允许从现有 Azure 虚拟网络子网外部访问 MongoDB。 可以使用 [Azure 门户](nsg-quickstart-portal.md)或 [Azure PowerShell](nsg-quickstart-powershell.md) 创建网络安全组规则。 与创建 Windows 防火墙规则时一样，允许通过 TCP 端口 27017 连接到 MongoDB VM 的虚拟网络接口。
 
 > [!NOTE]
-> TCP 端口 27017 是 MongoDB 使用的默认端口。 可以在启动时 `mongod.exe` 使用 `--port` 参数手动更改此端口，或者通过某个服务更改此端口。 如果更改了端口，请确保在前面的步骤中更新 Windows 防火墙和网络安全组规则。
+> TCP 端口 27017 是 MongoDB 使用的默认端口。 可以在启动时 `--port` 使用 `mongod.exe` 参数手动更改此端口，或者通过某个服务更改此端口。 如果更改了端口，请确保在前面的步骤中更新 Windows 防火墙和网络安全组规则。
 
 
 ## <a name="next-steps"></a>后续步骤

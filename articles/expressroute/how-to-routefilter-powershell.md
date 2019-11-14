@@ -1,5 +1,5 @@
 ---
-title: 为 Microsoft 对等互连配置路由筛选器-ExpressRoute： PowerShell： Azure |Microsoft Docs
+title: ExpressRoute：路由筛选器-Microsoft 对等互连： Azure PowerShell
 description: 本文介绍如何使用 PowerShell 配置用于 Microsoft 对等互连的路由筛选器
 services: expressroute
 author: ganesr
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 7a830b01bb66f807972b642ad46d54d124d16d8d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: cade33e77eb0d3ddd818a6ce3dbd7c6cf72811d4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748138"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037408"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>配置用于 Microsoft 对等互连的路由筛选器：PowerShell
 > [!div class="op_single_selector"]
@@ -101,7 +101,7 @@ Get-AzSubscription
 Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="prefixes"></a>步骤 1：获取前缀和 BGP 社区值的列表
+## <a name="prefixes"></a>步骤 1：获取前缀和 BGP 团体值的列表
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1. 获取 BGP 团体值的列表
 

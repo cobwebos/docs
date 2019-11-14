@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 创建分区的 Linux VM | Microsoft Docs
+title: 使用 Azure CLI 创建分区 Linux VM
 description: 使用 Azure CLI 在可用性区域中创建 Linux VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: e732693a63b3c866dc767e98bbe298474286f178
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 1cb8222b5e7bf2efee36673f9b80738500345754
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173890"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036561"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>使用 Azure CLI 在可用性区域中创建 Linux 虚拟机
 
@@ -101,7 +101,7 @@ az vm create --resource-group myResourceGroupVM --name myVM --location eastus2 -
 
 当 VM 部署在可用性区域中时，将在同一可用性区域中创建 VM 的托管磁盘。 默认情况下，还会在该区域中创建一个公用 IP 地址。 以下示例可获取有关这些资源的信息。
 
-若要验证 VM 的托管磁盘是否在可用性区域中, 请使用[az VM show](/cli/azure/vm)命令返回磁盘 ID。 在此示例中, 磁盘 ID 存储在稍后的步骤中使用的变量中。 
+若要验证 VM 的托管磁盘是否在可用性区域中，请使用[az VM show](/cli/azure/vm)命令返回磁盘 ID。 在此示例中，磁盘 ID 存储在稍后的步骤中使用的变量中。 
 
 ```azurecli-interactive
 osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)
@@ -197,7 +197,7 @@ az network public-ip show --resource-group myResourceGroupVM --name $ipaddressna
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的[可用性](availability.md)。
+在本文中，你已学习了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的[可用性](availability.md)。
 
 
 

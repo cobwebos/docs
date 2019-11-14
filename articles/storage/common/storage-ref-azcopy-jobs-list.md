@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: a37735fcfec7909e37177140116ebcf7de8a298e
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: e61177c6a216c4a43f17d9725034cbe3000604e2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513666"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037560"
 ---
 # <a name="azcopy-jobs-list"></a>azcopy jobs list
 
@@ -25,15 +25,22 @@ ms.locfileid: "72513666"
 azcopy jobs list [flags]
 ```
 
+## <a name="related-conceptual-articles"></a>相关概念文章
+
+- [AzCopy 入门](storage-use-azcopy-v10.md)
+- [用 AzCopy 和 Blob 存储传输数据](storage-use-azcopy-blobs.md)
+- [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
+- [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)
+
 ## <a name="options"></a>选项
 
-|选项|描述|
+|选项|说明|
 |--|--|
 |-h、--help|显示 list 命令的帮助内容。|
 
 ## <a name="options-inherited-from-parent-commands"></a>从父命令继承的选项
 
-|选项|描述|
+|选项|说明|
 |---|---|
 |--cap-mbps uint32|以兆位/秒为单位限制传输速率。 每分钟的吞吐量可能与 cap 略有不同。 如果将此选项设置为零，或省略此选项，则不会限制吞吐量。|
 |--output 类型字符串|命令输出的格式。 选项包括：文本、json。 默认值为 "text"。|

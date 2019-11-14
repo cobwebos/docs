@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中部署 OpenShift 容器平台 4.x |Microsoft Docs
+title: 在 Azure 中部署 OpenShift 容器平台4。x
 description: 在 Azure 中部署 OpenShift 容器 Platform 4.x。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 9f807823b1d0d8079c43b2ba0e074a1c8a91b458
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 213c02b76f822d134729ebc4c0e6bff40f62089f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392678"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035438"
 ---
 # <a name="deploy-openshift-container-platform-4x-in-azure"></a>在 Azure 中部署 OpenShift 容器平台4。x
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 虚拟机 PowerShell 示例 | Microsoft 文档
+title: Azure 虚拟机 PowerShell 示例
 description: Azure 虚拟机 PowerShell 示例
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 3c897d4f8cef5fe45893b96a565ed9eff7ae0b11
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 903860dfd1e30f7941770efd759227a1349d41ad
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082386"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035255"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure 虚拟机 PowerShell 示例
 

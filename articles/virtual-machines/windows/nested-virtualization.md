@@ -1,5 +1,5 @@
 ---
-title: 如何在 Azure 虚拟机中启用嵌套虚拟化 | Microsoft 文档
+title: 如何在 Azure 虚拟机中启用嵌套虚拟化
 description: 如何在 Azure 虚拟机中启用嵌套虚拟化
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 843dfa64cdf0af3ad6cfd3a9f83c16f0ce85fcd0
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 16f5bed5a2342bb1d120d0d3dc853e0bc44376dc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720211"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033121"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
 
@@ -44,7 +44,7 @@ ms.locfileid: "67720211"
 
 2. 若要连接到 VM，请打开下载的 RDP 文件。 出现提示时，请单击“连接”。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)。
 
-3. 输入在创建虚拟机时指定的用户名和密码，并单击“确定”。
+3. 输入在创建虚拟机时指定的用户名和密码，单击“确定”。
 
 4. 你可能会在登录过程中收到证书警告。 单击“是”或“继续”继续进行连接。
 
@@ -52,7 +52,7 @@ ms.locfileid: "67720211"
 你可以手动配置这些设置，或者使用我们提供的 PowerShell 脚本来自动完成配置。
 
 ### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>选项 1：使用 PowerShell 脚本配置嵌套虚拟化
-在 [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) 上提供了用于在 Windows Server 2016 主机上启用嵌套虚拟化的 PowerShell 脚本。 该脚本将首先检查先决条件，然后在 Azure VM 上配置嵌套虚拟化。 必须重启 Azure VM 才能完成配置。 此脚本在其他环境中也可以运行，但不能保证。 有关在 Azure 上运行嵌套虚拟化的现场视频演示，请查看 Azure 博客文章！ [https://aka.ms/AzureNVblog](https://aka.ms/AzureNVblog )。
+在 [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) 上提供了用于在 Windows Server 2016 主机上启用嵌套虚拟化的 PowerShell 脚本。 该脚本将首先检查先决条件，然后在 Azure VM 上配置嵌套虚拟化。 必须重启 Azure VM 才能完成配置。 此脚本在其他环境中也可以运行，但不能保证。 有关在 Azure 上运行嵌套虚拟化的现场视频演示，请查看 Azure 博客文章！ https://aka.ms/AzureNVblog。
 
 ### <a name="option-2-configure-nested-virtualization-manually"></a>选项 2：手动配置嵌套虚拟化
 
@@ -122,7 +122,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 >[!IMPORTANT] 
 >
->Azure 来宾代理不支持嵌套在 Vm 上，并可能导致上的主机和嵌套的 Vm 问题。 不要在嵌套 Vm 上安装 Azure 代理和不使用映像创建的嵌套的 Vm 已安装了 Azure 来宾代理。
+>Azure 来宾代理在嵌套 VM 上不受支持，并且可能会在主机和嵌套 VM 上导致问题。 不要在嵌套 Vm 上安装 Azure 代理，也不要使用映像来创建已安装 Azure 来宾代理的嵌套 Vm。
 
 1. 打开 Hyper-V 管理器并创建新的虚拟机。 配置虚拟机以使用你创建的新内部网络。
     

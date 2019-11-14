@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 716f8e053ad05ba701b3415946cd8d3a56044e62
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: f7fa5d7ef68613301c30e26d21f69a80559dbcb9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953978"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74030013"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>体系结构 - 从 Hyper-V 复制到辅助站点
 
 本文介绍如何通过 Azure 门户在 System Center Virtual Machine Manager (VMM) 云中使用 [Azure Site Recovery](site-recovery-overview.md) 服务将本地 Hyper-V 虚拟机 (VM) 复制到辅助 VMM 站点时涉及的组件和进程。
 
 > [!WARNING]
-> 请注意，不久将会弃用对使用 SCVMM 配置帐户的 ASR 支持，因此建议你先阅读[弃用](scvmm-site-recovery-deprecation.md)详细信息，然后再继续。
+> 请注意，不久将会弃用对使用 SCVMM 配置帐户的 ASR 支持，因此建议你先阅读[弃用](site-to-site-deprecation.md)详细信息，然后再继续。
 
 ## <a name="architectural-components"></a>体系结构组件
 
@@ -40,17 +40,17 @@ ms.locfileid: "73953978"
 
 1. 当触发初始复制时，系统会拍摄一个 [Hyper-V VM 快照](https://technet.microsoft.com/library/dd560637.aspx)。
 2. VM 上的虚拟硬盘会逐一复制到辅助位置。
-3. 如果在初始复制期间发生磁盘更改，Hyper-V 副本复制跟踪器将跟踪这些更改，并将其记录在 Hyper-V 复制日志 (.hrl) 中。 这些日志文件位于与磁盘相同的文件夹中。 每个磁盘都有一个关联的 .hrl 文件，该文件将发送到辅助位置。 当初始复制正在进行时，快照和日志文件将占用磁盘资源。
+3. 如果在初始复制期间发生磁盘更改，Hyper-V 副本复制跟踪器将跟踪这些更改，并将其记录在 Hyper-V 复制日志 (.hrl) 中。 这些日志文件位于与磁盘相同的文件夹中。 每个磁盘都有一个关联的 .hrl 文件，该文件将发送到辅助位置。 当初始复制正在进行时，快照和日志将占用磁盘资源。
 4. 当初始复制完成时，将删除 VM 快照，并开始增量复制。
-5. 日志中的增量磁盘更改会同步且合并到父磁盘中。
+5. 日志中的增量磁盘更改会进行同步，并合并到父磁盘中。
 
 
 ## <a name="failover-and-failback-process"></a>故障转移和故障回复过程
 
 - 可以故障转移单个虚拟机，或者创建恢复计划来协调多个虚拟机的故障转移。
-- 可以在本地站点之间运行计划内或计划外故障转移。 如果运行计划内故障转移，则源 VM 关闭以确保不会丢失数据。
+- 可以在本地站点之间运行计划内或计划外故障转移。 如果运行计划的故障转移，源 VM 将关闭以确保不会丢失数据。
     - 如果执行了到辅助站点的计划外故障转移，在故障转移后辅助位置中的虚拟机将不受保护。
-    - 如果运行了计划内故障转移，在故障转移后，辅助位置中的计算机将受保护。
+    - 如果执行了计划内故障转移，在故障转移后，辅助位置中的计算机将受保护。
 - 在初始故障转移运行后，可提交它来开始访问副本 VM 中的工作负载。
 - 当主位置再次可用时，可以进行故障回复。
     - 启动反向复制以开始从辅助站点到主站点的复制。 反向复制会使虚拟机进入受保护状态，但辅助数据中心仍是活动位置。
@@ -61,4 +61,4 @@ ms.locfileid: "73953978"
 ## <a name="next-steps"></a>后续步骤
 
 
-根据[此教程](hyper-v-vmm-disaster-recovery.md)启用 VMM 云之间的 Hyper-V 复制。
+按照[此教程](hyper-v-vmm-disaster-recovery.md)启用 VMM 云之间的 Hyper-V 复制。

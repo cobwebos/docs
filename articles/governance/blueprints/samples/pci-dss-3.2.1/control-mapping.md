@@ -1,18 +1,14 @@
 ---
 title: PCI-DSS v2.0 版蓝图示例-控件映射
 description: 控制支付卡行业数据安全标准 v2.0 蓝图示例到 Azure 策略和 RBAC 的映射。
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: c1e04cb2bfd5ae532b556ed53d585aae90c312e6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d3e72f923ea3d752d829731d1f741bda090ae9fd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163061"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037265"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>控制 PCI DSS v 3.2.1 蓝图示例的映射
 
@@ -39,7 +35,7 @@ ms.locfileid: "73163061"
 - 只能通过 HTTPS 访问 API 应用
 - 应在 SQL 数据库上启用透明数据加密
 - 应在虚拟机上启用磁盘加密
-- 自动化帐户变量应加密
+- 自动化帐户变量应进行加密
 - 应该启用只能通过安全方式连接到 Redis 缓存
 - 应该启用安全传输到存储帐户
 - Service Fabric 群集应将 ClusterProtectionLevel 属性设置为 EncryptAndSign
@@ -48,7 +44,7 @@ ms.locfileid: "73163061"
 
 ## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5.1、6.2、6.6 和11.2.1 漏洞扫描和系统更新
 
-此蓝图通过分配用于监视 Azure 中缺少系统更新、操作系统漏洞、SQL 漏洞和虚拟机漏洞的[Azure 策略](../../../policy/overview.md)定义，帮助你管理信息系统漏洞安全中心。 Azure 安全中心提供报告功能，使你能够实时洞察已部署的 Azure 资源的安全状态。
+此蓝图通过分配用于监视 Azure 安全中心中缺少的系统更新、操作系统漏洞、SQL 漏洞和虚拟机漏洞的[Azure 策略](../../../policy/overview.md)定义，帮助你管理信息系统漏洞。 Azure 安全中心提供报告功能，使你能够实时洞察已部署的 Azure 资源的安全状态。
 
 - 监视 Azure 安全中心 Endpoint Protection 的缺失情况
 - 为 Windows Server 部署默认 Microsoft IaaSAntimalware 扩展
@@ -67,7 +63,7 @@ ms.locfileid: "73163061"
 
 ## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3.2、7.2.1、8.3.1 和8.3.1 管理特权访问权限
 
-此蓝图通过以下方式来帮助你限制和控制特权访问权限：将[Azure 策略](../../../policy/overview.md)定义分配给审核外部帐户，其中所有者、写入和/或读取权限以及具有不具有的所有者和/或写入权限的员工帐户已启用多重身份验证。 Azure 实施基于角色的访问控制 (RBAC) 来管理谁有权访问 Azure 资源。 了解实施自定义 RBAC 规则的位置有助于验证需求以及实施是否适当，因为自定义 RBAC 规则容易出错。 此蓝图还会分配[Azure 策略](../../../policy/overview.md)定义，以审核对 SQL server Azure Active Directory 身份验证的使用。 使用 Azure Active Directory 身份验证可简化权限管理，并集中管理数据库用户和其他 Microsoft  
+此蓝图通过以下方法来限制和控制特权访问权限：将[Azure 策略](../../../policy/overview.md)定义分配到使用所有者、写入和/或读取权限的外部帐户以及具有未启用多重身份验证的所有者和/或写入权限的员工帐户。 Azure 实施基于角色的访问控制 (RBAC) 来管理谁有权访问 Azure 资源。 了解实施自定义 RBAC 规则的位置有助于验证需求以及实施是否适当，因为自定义 RBAC 规则容易出错。 此蓝图还会分配[Azure 策略](../../../policy/overview.md)定义，以审核对 SQL server Azure Active Directory 身份验证的使用。 使用 Azure Active Directory 身份验证可简化权限管理，并集中管理数据库用户和其他 Microsoft  
 服务器.
  
 - 应从订阅中删除拥有所有者权限的外部帐户
@@ -134,7 +130,7 @@ Azure 实施基于角色的访问控制（RBAC），以帮助你管理哪些用�
 > [Pci-dss v2.0 3.2.1 蓝图-概述](./index.md)
 > [PCI-dss V1.0 蓝图-部署步骤](./deploy.md)
 
-有关蓝图以及如何使用它们的其他文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

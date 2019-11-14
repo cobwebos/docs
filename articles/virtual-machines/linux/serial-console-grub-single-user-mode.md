@@ -1,5 +1,5 @@
 ---
-title: GRUB 和单用户模式的 Azure 串行控制台 | Microsoft Docs
+title: 适用于 GRUB 和单用户模式的 Azure 串行控制台
 description: 在 Azure 虚拟机中使用 grub 串行控制台。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: cce4e558331cad0045772f53f7fc3c78aeed2bb7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 87f16ec615c8b47c93745b33be12d3acd6d9177a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082201"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035042"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用串行控制台访问 GRUB 和单用户模式
 GRUB 指的是 GRand Unified Bootloader。 从 GRUB 可以修改启动配置以实现启动进入单用户模式等功能。
@@ -35,7 +35,7 @@ GRUB 指的是 GRand Unified Bootloader。 从 GRUB 可以修改启动配置以�
 需要确保 VM 上已启用 GRUB，以便能够访问单用户模式。 根据所用的分发版，可能需要完成一些设置工作才能确保启用 GRUB。 下面提供了特定于发行版的信息。
 
 ### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>重新启动 VM 以在串行控制台中访问 GRUB
-如果启用了 [SysRq](./serial-console-nmi-sysrq.md)，可以使用 SysRq `'b'` 命令在打开串行控制台边栏选项卡的情况下重新启动 VM，或者单击“概述”边栏选项卡中的“重启”按钮（在新浏览器标签页中打开要重启的 VM，无需关闭串行控制台边栏选项卡）。 按照下面的特定于发行版的说明，了解在重新启动时应该从 GRUB 中得到什么。
+如果启用了 `'b'`SysRq[，可以使用 SysRq ](./serial-console-nmi-sysrq.md) 命令在打开串行控制台边栏选项卡的情况下重新启动 VM，或者单击“概述”边栏选项卡中的“重启”按钮（在新浏览器标签页中打开要重启的 VM，无需关闭串行控制台边栏选项卡）。 按照下面的特定于发行版的说明，了解在重新启动时应该从 GRUB 中得到什么。
 
 ## <a name="general-single-user-mode-access"></a>常规单用户模式访问
 在未配置具有密码身份验证的帐户的情况下，可能需要手动访问单用户模式。 需要修改 GRUB 配置以手动进入单用户模式。 完成此操作后，请参阅“使用单用户模式重置或添加密码”以获取进一步说明。
@@ -46,7 +46,7 @@ GRUB 指的是 GRand Unified Bootloader。 从 GRUB 可以修改启动配置以�
 进入单用户模式后，请执行以下操作以添加具有 sudo 权限的新用户：
 1. 运行 `useradd <username>` 来添加用户
 1. 运行 `sudo usermod -a -G sudo <username>` 向新用户授予根权限
-1. 使用 `passwd <username>` 为新用户设置密码。 然后，你将能够以新用户身份登录
+1. 使用 `passwd <username>` 为新用户设置密码。 然后将能够以新用户身份登录
 
 ## <a name="access-for-red-hat-enterprise-linux-rhel"></a>在 Red Hat Enterprise Linux (RHEL) 中访问
 在无法正常启动的情况下，RHEL 会自动将你置于单用户模式。 但是，如果未设置单用户模式的 root 访问权限，则就不会获得 root 密码，因此也就无法登录。 有一种解决方法（请参阅后面的“手动进入单用户模式”），但建议的做法是一开始就设置 root 访问权限。
@@ -54,7 +54,7 @@ GRUB 指的是 GRand Unified Bootloader。 从 GRUB 可以修改启动配置以�
 ### <a name="grub-access-in-rhel"></a>在 RHEL 中访问 GRUB 访问
 RHEL 原本就启用了 GRUB。 若要进入 GRUB，请使用 `sudo reboot` 重新启动 VM，然后按任意键。 此时会显示 GRUB 屏幕。
 
-> 注意:Red Hat 也提供了有关启动进入急救模式、紧急模式、调试模式以及重置 root 密码的文档。 [单击此处访问文档](https://aka.ms/rhel7grubterminal)。
+> 注意：Red Hat 也提供了有关启动进入急救模式、紧急模式、调试模式以及重置 root 密码的文档。 [单击此处访问文档](https://aka.ms/rhel7grubterminal)。
 
 ### <a name="set-up-root-access-for-single-user-mode-in-rhel"></a>在 RHEL 中为单用户模式设置 root 访问权限
 RHEL 中的单用户模式要求启用 root 用户（默认已禁用）。 如果需要启用单用户模式，请遵照以下说明：
@@ -88,13 +88,13 @@ RHEL 中的单用户模式要求启用 root 用户（默认已禁用）。 如�
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>未在 RHEL 中启用 root 帐户的情况下进入单用户模式
 如果未遵循上述步骤启用 root 用户，仍可以重置 root 密码。 请遵照以下说明：
 
-> 注意:如果使用 SELinux，请确保在重置 root 密码时，执行[此处](https://aka.ms/rhel7grubterminal) Red Hat 文档中所述的附加步骤。
+> 注意：如果使用 SELinux，请确保在重置 root 密码时，执行[此处](https://aka.ms/rhel7grubterminal) Red Hat 文档中所述的附加步骤。
 
 1. 在重启 VM 时按“Esc”进入 GRUB
 1. 在 GRUB 中，按“e”编辑你要启动进入的选定 OS（通常是第一行）
 1. 找到内核行 - 在 Azure 中，这是以 `linux16` 开头的行
 1. 将 `rd.break` 添加到行尾，并确保在 `rd.break` 的前面插入一个空格（参阅以下示例）
-    - 根据[此处](https://aka.ms/rhel7rootpassword) Red Hat 文档中所述，这会在将控制权从 `initramfs` 传递给 `systemd` 之前中断启动进程。
+    - 根据`initramfs`此处`systemd` Red Hat 文档中所述，这会在将控制权从 [ 传递给 ](https://aka.ms/rhel7rootpassword) 之前中断启动进程。
 1. 按 Ctrl + X 退出，并使用应用的设置重新启动
 1. 启动后，系统会将你置于紧急模式，此时打开的是只读文件系统。 在 shell 中输入 `mount -o remount,rw /sysroot`，以重新装载具有读/写权限的根文件系统
 1. 启动进入单用户模式后，键入 `chroot /sysroot` 切换到 `sysroot` jail
@@ -102,7 +102,7 @@ RHEL 中的单用户模式要求启用 root 用户（默认已禁用）。 如�
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
-> 注意:遵照上面的整个说明会置于紧急 shell 中，因此还可以执行编辑 `fstab` 之类的任务。 但是，用户普遍接受的建议是重置 root 密码，并使用该密码进入单用户模式。 
+> 注意：遵照上面的整个说明会置于紧急 shell 中，因此还可以执行编辑 `fstab` 之类的任务。 但是，用户普遍接受的建议是重置 root 密码，并使用该密码进入单用户模式。 
 
 
 ## <a name="access-for-centos"></a>在 CentOS 中访问
@@ -132,7 +132,7 @@ Ubuntu 映像不需要 root 密码。 如果系统启动进入单用户模式，
 
 1. 在 GRUB 中，按“e”编辑启动项（Ubuntu 项）
 1. 查找以 `linux` 开头的行，然后查找 `ro`
-1. 在 `ro` 的后面添加 `single`，请确保在 `single` 的前面和后面插入一个空格
+1. 在 `single` 的后面添加 `ro`，请确保在 `single` 的前面和后面插入一个空格
 1. 按 Ctrl + X 使用这些设置重新启动，并进入单用户模式
 
 ## <a name="access-for-coreos"></a>在 CoreOS 中访问
@@ -160,7 +160,7 @@ CoreOS 中的单用户模式要求启用 GRUB。
 
 1. 按 F10 保存设置并退出
 1. 若要进入 GRUB，请重新启动 VM，并在执行启动序列期间按任意键，使 GRUB 保留在屏幕上
-    - GRUB 的默认超时为 1 秒。 可以通过更改 `/etc/default/grub` 中的 `GRUB_TIMEOUT` 变量来修改此超时
+    - GRUB 的默认超时为 1 秒。 可以通过更改 `GRUB_TIMEOUT` 中的 `/etc/default/grub` 变量来修改此超时
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
 

@@ -1,10 +1,11 @@
 ---
-title: 管理紧急访问管理员帐户 - Azure Active Directory | Microsoft Docs
-description: 本文介绍如何使用紧急访问帐户来帮助防止意外锁定 Azure Active Directory （Azure AD）组织。
+title: 管理紧急访问管理帐户-Azure AD |Microsoft Docs
+description: 本文介绍如何借助紧急访问帐户来防止意外地被锁在 Azure Active Directory (Azure AD) 组织之外的情况。
 services: active-directory
 author: markwahl-msft
+manager: daveba
 ms.author: curtand
-ms.date: 09/09/2019
+ms.date: 11/08/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -12,22 +13,22 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04016df86a9bed06f2cbb79d459b10486a9b7d67
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 80ab7e0603f63fb395832b0da887916dc032c3bf
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772436"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028133"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>在 Azure AD 中管理紧急访问帐户
 
-由于不能以管理员身份登录或激活其他用户的帐户，因此请务必避免意外锁定 Azure Active Directory （Azure AD）组织。 你可以通过在组织中创建两个或多个*紧急访问帐户*来减少意外缺乏管理访问权限的影响。
+必须防止意外地被锁在 Azure Active Directory (Azure AD) 组织之外，因为在这种情况下，无法以管理员的身份登录或激活其他用户帐户。 可在组织中创建两个或更多个紧急访问帐户，缓解意外丧失管理访问权限造成的影响。
 
-紧急访问帐户拥有较高的特权，因此请不要将其分配给特定的个人。 紧急访问帐户仅限紧急或 "中断玻璃" 方案，不能使用正常管理帐户。 我们建议你维护一个目标，将紧急帐户的使用限制为仅在绝对必要的情况下使用。
+紧急访问帐户拥有较高的特权，因此请不要将其分配给特定的个人。 紧急访问帐户只能用于“不受限”紧急情况，即不能使用正常管理帐户的情况。 建议你始终以将紧急帐户的使用限于绝对必要情况为目标。
 
 本文提供有关在 Azure AD 中管理紧急访问帐户的指导。
 
-## <a name="why-use-an-emergency-access-account"></a>为什么使用紧急访问帐户
+## <a name="why-use-an-emergency-access-account"></a>为何使用紧急访问帐户
 
 在以下情况下，组织可能需要使用紧急访问帐户：
 
@@ -57,11 +58,11 @@ ms.locfileid: "70772436"
 
 在紧急情况下，你不希望某个策略阻止你进行访问以解决问题。 应从所有条件访问策略中排除至少一个紧急访问帐户。 如果已启用[基准策略](../conditional-access/baseline-protection.md)，应排除紧急访问帐户。
 
-## <a name="federation-guidance"></a>联合指南
+## <a name="federation-guidance"></a>联合身份验证指南
 
 对于使用 AD 域服务和 ADFS 或类似标识提供者联合到 Azure AD 的组织，另一种做法是配置一个可由该标识提供者提供 MFA 声明的紧急访问帐户。  例如，紧急访问帐户可由证书和密钥对（例如，存储在智能卡上）提供安全保障。  当该用户在 AD 中进行身份验证时，ADFS 可向 Azure AD 提供声明，指示该用户满足 MFA 要求。  即使使用此方法，组织也仍需要提供基于云的紧急访问帐户，否则无法建立联合。 
 
-## <a name="store-account-credentials-safely"></a>安全存储帐户凭据
+## <a name="store-account-credentials-safely"></a>安全地存储帐户凭据
 
 组织需要确保紧急访问帐户的凭据始终安全且仅为有权使用它们的用户所知。 有些客户使用智能卡，有些客户使用密码。 紧急访问帐户的密码通常分为两到三个部分，分开写在纸上，存储在安全独立位置中的防火保险柜中。
 
@@ -69,7 +70,7 @@ ms.locfileid: "70772436"
 
 ## <a name="monitor-sign-in-and-audit-logs"></a>监视登录和审核日志
 
-组织应监视紧急帐户的登录和审核日志活动，并触发通知给其他管理员。 当你在中断玻璃帐户上监视活动时，可以验证这些帐户仅用于测试或实际突发。 你可以使用 Azure Log Analytics 来监视登录日志，并在中断玻璃帐户登录时触发电子邮件和短信警报。
+组织应该监视紧急帐户的登录和审核日志活动，并触发目标为其他管理员的通知。 监视不受限帐户的活动时，可以验证这些帐户是仅用于测试，还是用于真实的紧急情况。 可以使用 Azure Log Analytics 监视登录日志，在不受限帐户登录时触发接收人为管理员的电子邮件和短信警报。
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -78,7 +79,7 @@ ms.locfileid: "70772436"
 ### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>获取 break 玻璃帐户的对象 Id
 
 1. 使用分配给 "用户管理员" 角色的帐户登录到[Azure 门户](https://portal.azure.com)。
-1. 选择**Azure Active Directory** > **用户**。
+1. 选择 " **Azure Active Directory** > **用户**"。
 1. 搜索 "中断玻璃" 帐户并选择用户的名称。
 1. 复制并保存 "对象 ID" 属性，以便以后可以使用。
 1. 对第二个中断玻璃帐户重复前面的步骤。
@@ -88,7 +89,7 @@ ms.locfileid: "70772436"
 1. 使用分配给 Azure Monitor 中的 "监视参与者" 角色的帐户登录到[Azure 门户](https://portal.azure.com)。
 1. 选择 "**所有服务**"，在 "搜索" 中输入 "log analytics"，然后选择 " **Log Analytics 工作区**"。
 1. 选择工作区。
-1. 在工作区中，选择 "**警报** > " "**新建警报规则**"。
+1. 在工作区中，选择 "**警报**" > "**新建警报规则**"。
     1. 在 "**资源**" 下，验证订阅是否与警报规则关联。
     1. 在 "**条件**" 下，选择 "**添加**"。
     1. 在 "**信号名称**" 下选择 "**自定义日志搜索**"。
@@ -100,7 +101,7 @@ ms.locfileid: "70772436"
 
     1. 在 "**警报逻辑**" 下，输入以下内容：
 
-        - 依据：结果数
+        - 基于：结果数
         - 运算符：大于
         - 阈值：0
 
@@ -134,7 +135,7 @@ ms.locfileid: "70772436"
 
 ## <a name="validate-accounts-regularly"></a>定期验证帐户
 
-当你训练教职员工成员使用紧急访问帐户并验证紧急访问帐户时，至少需要定期执行以下步骤：
+为员工培训紧急访问帐户的用法和验证紧急访问帐户时，至少应定期执行以下步骤：
 
 - 确保安全监视人员了解正在进行帐户检查活动。
 - 确保使用这些帐户的紧急破窗流程有文档记录，且是最新的流程。

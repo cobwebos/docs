@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure PowerShell 打开指向 VM 的端口 | Microsoft Docs
-description: 了解如何使用 Azure Resource Manager 部署模型和 Azure PowerShell 为 Windows VM 打开端口/创建终结点
+title: 使用 Azure PowerShell 打开 VM 的端口
+description: 了解如何使用 Azure Resource Manager 部署模型和 Azure PowerShell 在 Windows VM 上打开端口/创建终结点
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: cd5aab6934e2f9692411e09046722cd59ad5e6a8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3577c97b55baebe08ca4020b0c570160d551dfd3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089104"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033078"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>如何在 Azure 中使用 PowerShell 打开 VM 的端口和终结点
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -60,7 +60,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $httprule
 ```
 
-现在我们将网络安全组分配给子网。 以下示例使用 [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) 向变量 *$vnet* 分配名为 *myVnet* 的现有虚拟网络：
+现在我们将网络安全组分配给子网。 以下示例使用 *Get-AzVirtualNetwork* 向变量 *$vnet* 分配名为 [myVnet](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) 的现有虚拟网络：
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -93,7 +93,7 @@ Set-AzVirtualNetwork -VirtualNetwork $vnet
 对于高可用性 Web 应用程序，应将 VM 放置在 Azure 负载均衡器后。 当负载均衡器向 VM 分配流量时，网络安全组可以筛选流量。 有关详细信息，请参阅[如何在 Azure 中均衡 Linux 虚拟机负载以创建高可用性应用程序](tutorial-load-balancer.md)。
 
 ## <a name="next-steps"></a>后续步骤
-在本示例中，创建了简单的规则来允许 HTTP 流量。 下列文章更介绍了有关创建更详细环境的信息：
+在本示例中，创建了简单的规则来允许 HTTP 流量。 可以从下列文章中，找到有关创建更详细环境的信息：
 
 * [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)
 * [什么是网络安全组？](../../virtual-network/security-overview.md)

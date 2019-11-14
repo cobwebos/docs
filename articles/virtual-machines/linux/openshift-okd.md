@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中部署 OKD | Microsoft Docs
+title: 在 Azure 中部署 OKD
 description: 在 Azure 中部署 OKD。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: 66d17fb2a96bbb5b1dcb51151242f014b4116b86
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 6ecae09b0efbc0e35e591b31dbb54fb49ce101b3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390531"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035405"
 ---
 # <a name="deploy-okd-in-azure"></a>在 Azure 中部署 OKD
 
@@ -40,7 +40,7 @@ ms.locfileid: "72390531"
 
 [OKD 模板](https://github.com/Microsoft/openshift-origin)具有可用于不同 OKD 版本的多个分支。  根据你的需求，可以直接从存储库进行部署，也可以将存储库进行分支，并在部署前进行自定义更改。
 
-对 `aadClientId` 参数使用前面创建的服务主体中的 `appId` 值。
+对 `appId` 参数使用前面创建的服务主体中的 `aadClientId` 值。
 
 下面是一个名为 azuredeploy.parameters.json 的参数文件示例，其中包含了所有必需的输入。
 

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中部署 OpenShift 容器平台3.11 自托管 Marketplace 产品/服务 |Microsoft Docs
+title: 在 Azure 中部署 OpenShift 容器平台3.11 自托管 Marketplace 产品/服务
 description: 在 Azure 中部署 OpenShift 容器平台3.11 自托管 Marketplace 产品/服务。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: d5028ff6378fec5939aee3218071fe6f4eb1e843
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 20a17e52064c5beb09ce4db5815ddd6faf7cbcba
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791614"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035520"
 ---
 # <a name="configure-prerequisites"></a>配置先决条件
 
@@ -67,9 +67,9 @@ ms.locfileid: "72791614"
 |-----------------------|-----------------|
 | VM 管理员用户名 | 要在所有 VM 实例上创建的管理员用户 |
 | 管理员用户的 SSH 公钥 | 用于登录到 VM 的 SSH 公钥-不得具有密码 |
-| Subscription | 要将群集部署到的 Azure 订阅 |
+| 订阅 | 要将群集部署到的 Azure 订阅 |
 | 资源组 | 为群集资源创建新的资源组或选择现有的空资源组 |
-| Location | 要在其中部署群集的 Azure 区域 |
+| 位置 | 要在其中部署群集的 Azure 区域 |
 
    ![提供基本信息边栏选项卡](media/openshift-marketplace-self-managed/ocp-basics.png)  
 <br>
