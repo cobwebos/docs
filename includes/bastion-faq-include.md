@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4f49220da5d996615c9f8ef7cad2b6c6793866b7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4e479405a9606a8353785828d0c9c94ef8c32ed
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466281"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73850276"
 ---
 ### <a name="regions"></a>面向哪些区域提供？
 
@@ -50,3 +50,8 @@ ms.locfileid: "73466281"
 ### <a name="session"></a>为什么在 Bastion 会话启动前收到了“你的会话已过期”的错误消息？
 
 会话只能从 Azure 门户启动。 登录到 Azure 门户，并重新开始会话。 如果直接从另一个浏览器会话或选项卡转到 URL，则会出现此错误。 它有助于确保会话更安全，并且该会话只能通过 Azure 门户来访问。
+
+### <a name="keyboard"></a>Bastion 远程会话期间支持哪些键盘布局？
+
+Azure Bastion 目前在 VM 内支持 en-us-qwerty 键盘布局。  对其他区域设置的键盘布局的支持尚在开发中。
+

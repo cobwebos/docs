@@ -5,18 +5,18 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: 02a4ccc1bd7c18c36a7203f7d81cce8923ecf59a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a002f5a1657454ff5048ab695e62eccd268a5891
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499241"
+ms.locfileid: "73580094"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
-通过承诺预订一年或三年的虚拟机、SQL 数据库计算容量、Azure Cosmos DB 吞吐量或其他 Azure 资源的费用，Azure 预留项可为你节省资金。 通过承诺预付，能够以折扣价购买所用资源。 预订可将虚拟机、SQL 数据库计算、Azure Cosmos DB 或其他资源的成本大幅减少至即用即付价格的 72%。 预订提供计费折扣，并且不会影响资源的运行时状态。
+Azure 预留承诺预付适用于虚拟机、Azure Blob 存储或 Azure Data Lake Storage Gen2、SQL 数据库计算容量、Azure Cosmos DB 吞吐量或其他 Azure 资源的一年或三年计划，为你节省资金。 通过承诺预付，能够以折扣价购买所用资源。 预留可显著将资源的成本，最多减少至即用即付价格的 72%。 预订提供计费折扣，并且不会影响资源的运行时状态。
 
 可以提前或每月为预留项付费。 预付和每月预订的总费用相同，选择每月支付不会产生额外的费用。 每月付款适用于 Azure 预留项，而不适用于第三方产品。
 
@@ -24,13 +24,14 @@ ms.locfileid: "73499241"
 
 ## <a name="why-buy-a-reservation"></a>为何购买预留项？
 
-如果你有长时间运行的虚拟机、Azure Cosmos DB 或 SQL 数据库，那么购买预留项不失为一项获得最实惠价格的选择。 例如，如果持续运行四个服务实例，在不购买预留项的情况下，需按即用即付价格付费。 如果购买这些资源的预留项，则将立即获得预留折扣。 这些资源不再按即用即付费率收费。
+如果你有使用大容量/高吞吐量或者长时间运行的虚拟机、Blob 存储数据、Azure Cosmos DB 或 SQL 数据库，那么购买预留项不失为一项获得最实惠价格的选择。 例如，如果持续运行四个服务实例，在不购买预留项的情况下，需按即用即付价格付费。 如果购买这些资源的预留项，则将立即获得预留折扣。 这些资源不再按即用即付费率收费。
 
 ## <a name="charges-covered-by-reservation"></a>预留项涵盖的费用
 
 服务计划：
 
 - **虚拟机预留实例** - 预留项仅涵盖虚拟机计算成本。 而不涵盖软件、网络或存储等其他费用。
+- **Azure 存储预留容量** - 该预留项涵盖用于 Blob 存储或 Azure Data Lake Gen2 存储的标准存储帐户的存储容量。 不涵盖带宽或事务费率。
 - **Azure Cosmos DB 预留容量** - 预留项涵盖为资源预配的吞吐量的费用。 但它不涵盖存储和网络费用。
 - **SQL 数据库预留 vCore** - 预留项仅包含计算成本。 许可证单独计费。
 - **SQL 数据仓库** - 预留项涵盖 cDWU 用量。 它不涵盖与 SQL 数据仓库用量相关的存储或网络费用。
@@ -134,6 +135,7 @@ ms.locfileid: "73499241"
 服务计划：
 
 - 虚拟机预留实例：购买预留项时，如果选择“针对实例大小灵活性进行优化”  ，则折扣覆盖范围将取决于所选的 VM 大小。 预订可以应用于同一大小系列组中的虚拟机 (VM) 大小。 有关详细信息，请参阅[预订 VM 实例的虚拟机大小灵活性](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
+- Azure 存储预留容量：你可以购买标准 Azure 存储帐户的预留容量（单位为每月 100 TiB 或 1 PiB）。 适用于任何访问层（热、冷或存档）和任何复制选项（LRS、GRS 或 ZRS）的所有区域中均提供 Azure 存储预留容量。
 - SQL 数据库预留容量：折扣覆盖范围取决于所选的性能层。 有关详细信息，请参阅[了解如何应用 Azure 预订折扣](billing-understand-reservation-charges.md)。
 - Azure Cosmos DB 预留容量：折扣覆盖范围取决于预配的吞吐量。 有关详细信息，请参阅[了解如何应用 Azure Cosmos DB 预订折扣](billing-understand-cosmosdb-reservation-charges.md)。
 

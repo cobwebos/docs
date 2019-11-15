@@ -4,16 +4,16 @@ description: 本文介绍 Azure EA 客户如何使用 Azure EA 门户。
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 11/07/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 1882b283f376a1bb8706132263c83e1a24ec0705
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 567beb9de0c0a8039d774270bdf61a7db437091e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900924"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888379"
 ---
 # <a name="get-started-with-the-azure-ea-portal"></a>Azure EA 门户入门
 
@@ -205,7 +205,8 @@ Azure EA 门户的层次结构包括：
 若要确认帐户所有权：
 
 1. 登录到 Azure EA 门户。
-2. 通过查看状态来确认帐户所有权。 状态应从“挂起”更改为“开始/结束日期”。   开始/结束日期分别是用户首次登录的日期以及协议的结束日期。
+1. 通过查看状态来确认帐户所有权。 状态应从“挂起”更改为“开始/结束日期”。   开始/结束日期分别是用户首次登录的日期以及协议的结束日期。
+1. 首次登录 Azure EA 门户弹出“警告”消息时，帐户所有者需要单击“继续”以激活帐户  。
 
 
 ## <a name="change-account-owner"></a>更改帐户所有者
@@ -220,7 +221,7 @@ Azure EA 门户的层次结构包括：
 - 支持从一个 Microsoft 帐户转移到另一个 Microsoft 帐户。 目标帐户必须是有效的 Azure 商务帐户才能成为有效的转移目标。 对于新帐户，当你登录到 Azure EA 门户时，系统会要求创建一个 Azure 商务帐户。 对于现有帐户，必须先创建新的 Azure 订阅，然后该帐户才符合条件。
 - 完成订阅转移后，Microsoft 会更新帐户所有者。
 
-RBAC 策略：
+基于角色的访问控制策略：
 
 - 只有在同一租户中的两个组织 ID 之间进行的 Azure 订阅转移才会保留现有的 Azure 基于角色的访问控制 (RBAC) 策略、服务管理员角色分配和共同管理员角色分配。 其他订阅转移会导致 RBAC 策略以及服务管理员和共同管理员角色分配丢失。 策略和管理员角色不会在不同的目录之间转移。 服务管理员将更新为目标帐户的所有者。
 - 在同一租户中的两个组织 ID 之间执行订阅转移时，会保留 RBAC 策略以及现有的服务管理员和共同管理员角色。
@@ -284,28 +285,76 @@ RBAC 策略：
 - [编辑订阅详细信息](https://account.azure.com/Subscriptions)
 - [管理订阅服务](https://portal.azure.com/#home)
 
-## <a name="transfer-pay-as-you-go-subscription-to-ea-subscription"></a>将即用即付订阅转移到 EA 订阅
+## <a name="transfer-ea-subscription-to-pay-as-you-go-subscription"></a>将 EA 订阅转换为即用即付订阅
 
-若要将采用即用即付费率的单个订阅转移到 EA 订阅，必须在 Azure 门户中创建新的支持请求。 若要创建支持请求，请在“帮助和支持”区域单击“+ 新建支持请求”。 
+若要将 EA 订阅转换为采用即用即付费率的单个订阅，必须在 Azure EA 门户中创建新的支持请求。 若要创建支持请求，请在“帮助和支持”区域单击“+ 新建支持请求”。 
 
+## <a name="associate-an-existing-account-with-your-pay-as-you-go-subscription"></a>关联现有帐户与即用即付订阅
+
+如果在 Microsoft Azure 门户已拥有 Microsoft Azure 帐户，请输入关联的 Microsoft 帐户或者工作或学校帐户，以将其与企业协议合约相关联。
+
+### <a name="associate-an-existing-account"></a>关联现有帐户
+
+1. 在 Enterprise Portal 中单击“管理”  。
+1. 单击“帐户”选项卡  。
+1. 单击“+添加帐户”  。
+1. 输入与现有帐户关联的 Microsoft 帐户或者工作或学校帐户。
+1. 确认与现有帐户关联的 Microsoft 帐户或者工作或学校帐户。
+1. 提供用于在报表中标识此帐户的名称。
+1. 单击“添加”  。
+1. 再次选择“+添加帐户”选项可添加其他帐户，选择“管理”按钮可返回主页   。
+1. 单击“帐户”页以查看该页时，新添加的帐户将显示为“挂起”状态   。
+
+### <a name="confirm-account-ownership"></a>确认帐户所有权
+
+1. 登录到与你提供的 Microsoft 帐户或者工作或学校帐户关联的电子邮件帐户。
+1. 打开标题为“邀请通过 Microsoft 批量许可激活 Microsoft Azure Service 帐户”的电子邮件通知  。
+1. 单击该邀请邮件中的“登录 Microsoft Azure Enterprise Portal”链接  。
+1. 单击“登录”  。
+1. 输入 Microsoft 帐户或者工作或学校帐户并输入密码，以登录并确认帐户所有权。
+
+### <a name="azure-marketplace"></a>Azure 市场
+
+大多数订阅均从即用即付环境转换到 Azure Enterprise Portal，但 Azure 市场服务不会。 为了能够在一个视图中查看所有订阅和费用，建议你将 Azure 市场服务添加到 Enterprise Portal：
+
+1. 在左侧导航区域中单击“管理”  。
+1. 单击“合约选项卡”  。
+1. 查看“合约详细信息”部分。
+1. 在“Azure 市场”字段的右侧，单击铅笔图标启用，并单击“保存”  。
+
+帐户所有者现可购买之前在即用即付环境中拥有的 Azure 市场订阅。
+
+在合约中激活新的 Azure 市场订阅后，请取消在即用即付环境中创建的市场订阅。 此步骤非常重要，它的意义在于：即用即付这种付款方式失效后，市场订阅不会处于错误状态。
+
+### <a name="msdn"></a>MSDN
+
+MSDN 订阅自动转换为 MSDN 开发/测试套餐，EA 套餐所有现有的货币额度均失效。
+
+### <a name="azure-in-open"></a>Azure 开放许可
+
+将 Azure 开放许可订阅与 EA 相关联会使任何未使用的 Azure 开放许可额度作废。 为避免任何可能发生的额度作废，建议客户在将帐户添加到 EA 之前使用 Azure 开放许可订阅的所有额度。  
+
+### <a name="accounts-with-support-subscriptions"></a>具有支持订阅的帐户
+
+向有支持订阅（但尚无 EA 支持订阅）的 Enterprise Portal 添加现有的帐户时，请注意：MOSA 支持订阅不会自动转换，需要在 EA 中重新购买支持。 我们会提供一个宽限期（截至后一个月的月末），以便客户有时间重新订购支持。
 
 ## <a name="view-usage-summary-and-download-reports"></a>查看使用情况摘要和下载报告
 
 企业管理员可以在 Azure EA 门户中查看其使用情况数据、货币承诺消耗量，以及与其他用途相关的费用的摘要。 费用以摘要形式显示，适用于所有帐户和订阅。
 
-查看特定帐户的详细使用情况
+查看特定帐户的详细使用情况：
 
 下载“使用情况详细信息”报告。 单击“报告”，然后单击“下载使用情况”选项卡。   在报告列表中，单击要获取的月份报告对应的“下载”。 
 
 该报告不包含任何适用的税费。 从使用服务开始算起，最长可能需要在延迟八小时之后，其费用才会反映在报告中。
 
-查看使用情况摘要报告和图表：
+查看使用情况摘要报表和关系图：
 
 1. 在 Azure EA 门户的左侧导航区域中，单击“报告”并查看“使用情况摘要”选项卡。    
-  ![](./media/billing-ea-portal-get-started/create-ea-view usage-summary-and-download-reports.png)
+  ![创建和查看使用情况摘要并下载报表](./media/billing-ea-portal-get-started/create-ea-view-usage-summary-and-download-reports.png)
 2. 选择承诺条款。
 3. 在页面右上角的“M”（每月）和“C”（自定义）之间切换可以根据自定义的开始日期和结束日期查看“使用情况摘要”。     
-  ![](./media/billing-ea-portal-get-started/create-ea-view-usage-summary-and-download-reports-custom-view.png)
+  ![在自定义视图中创建和查看使用情况摘要并下载报表](./media/billing-ea-portal-get-started/create-ea-view-usage-summary-and-download-reports-custom-view.png)
 4. 在图表上选择某个时段或月份可以查看更多详细信息。
 5. 图表显示了每月的使用情况，其中细分了使用量、服务额外费用、单独计收的费用和市场费用。
 6. 对于选定的月份，可在图表下方按部门、帐户和订阅进行筛选。
@@ -336,7 +385,7 @@ RBAC 策略：
 
 从使用日期开始算起，最长可能需要延迟五天，其费用才会显示在报告中。
 
-用户在使用 Safari 将 CSV 文件下载到 Excel 时可能会遇到格式错误。 若要避免错误，请使用文本编辑器打开文件。
+用户在使用 Safari 将 CSV 文件下载到 Excel 时可能会遇到格式错误。 为避免错误，请使用文本编辑器打开文件。
 
 ![显示“下载使用情况”页的示例](./media/billing-ea-portal-get-started/create-ea-download-csv-reports.png)
 
@@ -346,10 +395,151 @@ RBAC 策略：
 
 >[!VIDEO https://www.youtube.com/embed/eY797htT1qg]
 
-## <a name="schedule-an-onboarding-call"></a>安排登记通话
+### <a name="advanced-report-download"></a>高级报表下载
 
-若要与支持人员安排客户登记通话，请通过 [Azure EA 门户支持](https://support.microsoft.com/supportrequestform/e114582c-4e51-af46-10b1-1f0cc141e133)创建支持请求。 选择“登记”作为“问题类别”。  
+如需特定日期范围或特定帐户的报表，可以使用高级报表下载功能。 为了容纳较大的记录集，自 2016 年 8 月 30 日起，输出文件的格式从 .xlsx 变为 .csv。
+
+1. 选择“高级报表下载”  。
+1. 选择适当的日期范围  。
+1. 选择适当的帐户  。
+1. 选择“请求用法数据”  。
+1. 选择“刷新”按钮，直到报表状态更新为“下载”   。
+1. 下载报表。
+
+## <a name="ea-term-glossary"></a>EA 术语表
+
+- **帐户**：Azure EA 门户上用于管理订阅并用于报表的组织单位。
+- **帐户所有者**：标识为管理订阅的人员以及 Microsoft Azure 上的服务管理员。 他们可以查看此帐户及其关联订阅的使用情况数据。
+- **修订订阅**：合约修订条款下的单年订阅或连续订阅。
+- **承诺**：在此预付模式下，Microsoft Azure 服务的年货币额承诺按折扣承诺费率为使用量付款。
+- **部门管理员**：标识为管理部门、新建帐户和帐户所有者、查看所管理部门的使用情况详细信息以及在获得授权时查看费用的用户。
+- **合约编号**：Microsoft 提供的唯一标识符，用于标识与企业协议关联的特定合约。
+- **企业管理员**：标识为管理部门和部门所有者以及 Microsoft Azure 上的帐户和帐户所有者的用户。 他们能够管理企业管理员，查看使用情况数据、已计费数量以及与企业合约相关的所有帐户和订阅中的未计费费用。
+- **企业协议**：一种 Microsoft 许可协议，适用于采用集中购买模式、希望通过 Microsoft 技术实现整个组织的规范化并基于 Microsoft 软件标准维护信息技术基础结构的客户。
+- **企业协议合约**：企业协议计划中的合约，以折扣费率批量提供 Microsoft 产品。
+- **Microsoft 帐户**：一项基于 Web 的服务，使参与的站点能够使用一组凭据对用户进行身份验证。
+- **Microsoft Azure 企业合约修订条款（合约修订条款）** ：企业签署的修订条款，是企业合约的一部分，为其提供对 Microsoft Azure 的访问权限。
+- **Azure EA 门户**：企业客户用于管理 Microsoft Azure 帐户及其相关订阅的门户。
+- **已使用的资源数量**：一个月内使用的某种 Microsoft Azure 服务的数量。
+- **服务管理员**：可以在 Azure EA 门户中访问和管理订阅及开发项目的人员。
+- **订阅**：表示 Azure EA 门户订阅，是同一个服务管理员所管理的 Microsoft Azure 服务的容器。
+- **工作或学校帐户**：适用于已设置与云联合的 Active Directory 且所有帐户都在单个租户上的组织。
+
+### <a name="enrollment-statuses"></a>合约状态：
+
+- **Pending**：合约管理员需要登录到 Azure EA 门户。 登录后，合约将切换为“可用”状态。
+- **活动**：合约处于可用状态，可以在 Azure EA 门户中创建帐户和订阅。 在企业合约的结束日期之前，合约一直有效。
+- **无限延期**：在企业协议结束日期后，会出现无限延期状态。 它使选择延期的 EA 客户能够在企业协议结束后继续无限期地使用 Azure。 在 EA 合约到达企业协议结束日期前，合约管理员应决定是通过添加其他货币承诺的方式续约，切换为新合约，迁移到 Microsoft 在线订阅计划 (MOSP)，还是确定禁用与该合约关联的所有服务。
+- **已过期**：EA 客户选择不延期且 EA 合约已达到企业协议结束日期，则合约将过期，并且所有关联的服务都将遭到禁用。
+- **已转移**：所有关联的帐户和服务均已转移到新合约的合约显示为已转移状态。 如果新合约编号是在续订期间生成的，则合约不会自动转移。 若要自动转移，必须将以前的合约编号包含在客户的续订文书中。
+
+## <a name="get-started-on-azure-ea-faq"></a>Azure EA 入门 FAQ
+
+本文档提供客户在加入过程中所提的典型问题的详细信息。  
+
+### <a name="can-i-associate-my-existing-azure-account-to-enterprise-enrollment"></a>我可以将现有的 Azure 帐户关联到企业合约吗？
+
+可以。 务必注意，你作为帐户所有者的所有 Azure 订阅都将被转换到企业协议。 这包括使用月额度的订阅（例如 Visual Studio、AzurePass、MPN 和 BizSpark 等），也就是说，这样做会导致失去月额度。
+
+### <a name="i-accidentally-associated-my-existing-azure-account-with-enterprise-enrollment-as-a-result-i-lost-my-monthly-credit-is-it-possible-to-get-my-monthly-credit-back"></a>我不小心将现有的 Azure 帐户与企业注册关联起来了。 结果失去了月额度。 可以拿回月额度吗？
+
+验证为 EA 帐户所有者的身份，使用与 Visual Studio 订阅相同的登录名登录 EA 后，若要恢复 Visual Studio 个人订阅的 Azure 权益，必须：
+1. 在删除或移动帐户所有者拥有的所有订阅后，从 EA 门户删除此帐户所有者，并让其重新登录以获得个人的 Visual Studio Azure 权益。
+ 或
+1. 从 VLSC 中的管理站点订阅服务器删除 Visual Studio 订阅者并重新分配订阅，令他们使用不同的登录名，这样他们就可以重新注册个人的 Visual Studio Azure 权益。
+
+### <a name="what-type-of-subscription-should-i-create"></a>我应该创建哪种类型的订阅？
+
+EA 门户为企业客户提供两类订阅：
+
+- Microsoft Azure Enterprise - 适合：
+  - 所有生产使用情况
+  - 基于所用基础设施的最优价格
+  - 可在 https://azure.microsoft.com/pricing/enterprise-agreement/ 找到更多详细信息
+- Enterprise 开发/测试 - 适合：
+  - 所有团队开发/测试工作负载
+  - 中到重量级单个开发/测试工作负载
+  - 访问特殊的 MSDN 映像和优惠服务费率
+  - 可在 https://azure.microsoft.com/offers/ms-azr-0148p/ 找到更多详细信息
+
+### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>能将订阅所有权转让给其他帐户吗？
+
+能，可以将订阅所有权转让给其他帐户的。 例如，如果帐户 A 有三个订阅，企业管理员可以将其中一个订阅转让给帐户 B，一个转让给帐户 C，一个转让给帐户 D；也可以全都转让给帐户 E。
+
+你可以转到 EA 并单击“管理”>“帐户”，将鼠标悬停在“帐户”（最右侧）上，就能看到“转让所有权”（大头照图标）和“转让订阅”（列表图标）选项  。
+
+此选项仅对有效帐户可见。
+
+### <a name="i-see-subscription-name-defaults-to-offer-name-should-i-change-the-subscription-name-to-something-meaningful-to-my-organization"></a>订阅名默认为套餐名，我应该将订阅名更改为对自己的组织而言有意义的名称吗？
+
+创建的任何订阅都默认采用你选择的套餐类型。 建议将订阅名更改为便于你跟踪订阅的名称。
+
+**更改名称：**
+1. 登录到 [https://account.windowsazure.com](https://account.windowsazure.com)。
+1. 单击“订阅列表”。
+1. 选择“订阅”。
+1. 单击“管理订阅”图标  。
+1. 编辑订阅详细信息。
+
+### <a name="how-can-i-track-cost-incurred-by-cost-center"></a>我如何跟踪成本中心所产生的费用？
+
+为了跟踪成本中心产生的费用，你需要在以下任一级别定义成本中心：
+- 部门
+- 帐户
+- Subscription
+
+你可以根据需求使用同一个成本中心来跟踪与特定成本中心相关的使用情况和费用。
+
+例如，为了跟踪涉及多个部分的某个特定项目的费用，你可能希望在订阅级别使用成本中心来跟踪使用情况和费用。
+
+不能在服务级别定义成本中心，而如果你希望在服务级别跟踪使用情况，可以使用服务级别可用的“标记”功能。
+
+### <a name="how-do-i-track-usage-and-spend-by-different-departments-in-my-organization"></a>如何跟踪组织中不同部门的使用情况和支出？
+
+在 EA 合约下，你可以创建的部门数量取决于自己的需求。 为了正确地跟踪使用情况，你需要确保未跨部门共享订阅。
+
+完成部门和订阅的创建后，可以在使用情况报表中看到有助于在部门级别跟踪使用情况和管理成本/支出的信息。
+
+还可以通过 API 访问使用情况，详细信息和示例代码位于 [https://ea.azure.com/helpdocs/reportingAPI](https://ea.azure.com/helpdocs/reportingAPI)。
+
+### <a name="can-i-set-the-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>快要达限制时，我可以设置支出配额并获得警报吗？
+
+可以在部门级别设置支出配额，系统会在支出限制达到你定义的配额的 50%、75%、90% 和 100% 时自动通知你。
+
+要定义支出配额，请单击要添加支出限制的部门，然后单击编辑图标。 单击“保存”保存详细信息  。
+
+### <a name="i-used-resource-groups-rgs-to-implement-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>我使用了资源组 (RG) 来实现 RBAC 和跟踪使用情况，如何查看相关的使用情况详细信息？
+
+在服务级别跟踪“资源组”和“标记”等信息（如果使用了），这些信息位于详细使用情况下载 (CSV) 文件中，可以从 Azure EA 门户 ([https://ea.azure.com/report/downloadusage](https://ea.azure.com/report/downloadusage)) 下载该文件。
+
+还可以通过 API 访问使用情况，详细信息和示例代码位于 [https://ea.azure.com/helpdocs/reportingAPI](https://ea.azure.com/helpdocs/reportingAPI)。
+
+请注意，只能将标记应用于支持资源管理器操作的资源。 如果是通过经典部署模型（如通过经典门户）创建的虚拟机、虚拟网络或存储，则无法向该资源应用标记。 必须通过资源管理器重新部署这些资源才支持标记。 所有其他资源均支持标记。
+
+### <a name="can-i-perform-analyses-using-power-bi"></a>能否使用 Power BI 执行分析？
+
+是的。 借助适用于 Power BI 的 Microsoft Azure Enterprise 内容包，可以快速导入和分析企业合约中的 Azure 使用情况，了解哪个部门、帐户或订阅所占使用量最多，组织使用哪项服务最频繁，或跟踪支出和使用情况趋势。
+
+**导航到 Power BI 网站：**
+
+ 1. 使用有效的工作或学校帐户登录。
+    - 工作或学校帐户可以与用于通过 Azure EA 门户访问合约的帐户相同或不同。
+ 1. 在服务的仪表板中，选择：
+    - Microsoft Azure Enterprise 磁贴。
+    - 单击“连接”  。
+ 1. 在“连接到 Azure Enterprise”屏幕上，选择：
+    - Azure 环境 URL：[https://ea.azure.com](https://ea.azure.com)。
+    - 月数：在 1 到 36 之间选择一个。
+    - 合约编号：输入合约编号。
+    - 单击“下一步”。 
+ 1. 在“身份验证密钥”框中输入 API 密钥。 可以在 Azure EA 门户中获取 API 密钥，方式是在“下载使用情况”选项卡中单击“API 访问密钥”  。
+    - 将该密钥复制并粘贴到“帐户密钥”框中。
+    - 在 Power BI 中加载数据需要大约 5-30 分钟，具体取决于数据集的大小。
+
+Power BI 报表适用于 EA 直接合作伙伴以及能够查看账单信息的间接客户。
 
 ## <a name="next-steps"></a>后续步骤
+
 - Azure EA 门户管理员应阅读 [Azure EA 门户管理](billing-ea-portal-administration.md)来了解常见的管理任务。
 - 在排查 Azure EA 门户问题时如需帮助，请参阅[排查 Azure EA 门户访问问题](billing-ea-portal-troubleshoot.md)。
+- 如需加入 Azure EA 方面的指导，请参阅 [Azure EA 加入指南](https://ea.azure.com/api/v3Help/v2AzureEAOnboardingGuide)。
