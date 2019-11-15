@@ -27,9 +27,9 @@
         - name: 使用 PHP
           href: quickstarts/php.md
         - name: 使用 Go
-          href: quickstarts/php.md
+          href: quickstarts/go.md
         - name: 使用 Ruby
-          href: quickstarts/php.md
+          href: quickstarts/ruby.md
 - name: 教程
   items:
     - name: 集成 Power BI 以分析客户反馈
