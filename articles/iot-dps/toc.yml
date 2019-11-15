@@ -145,6 +145,8 @@
       href: how-to-send-additional-data.md
     - name: 故障排除
       href: how-to-troubleshoot-dps.md
+    - name: 使用 MQTT 协议与 DPS 通信
+      href: iot-dps-mqtt-support.md
 - name: 引用
   items:
     - name: REST API

@@ -5,7 +5,7 @@ metadata:
   document_id: 230494A6-34F9-416D-A6C0-57E69E1C2590
   title: 必应视觉搜索 API 文档 - 教程、快速入门和 API 参考
   titleSuffix: Azure Cognitive Services
-  description: 了解如何使用必应视觉搜索 API 来获取有关图像的见解。
+  description: 上传图像或提供图像 URL，然后此 API 可以识别有关该图像的各种细节，包括外观相似的图像、购物源以及网页。
   services: cognitive-services
   author: swhite-msft
   manager: nitinme

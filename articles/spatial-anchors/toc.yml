@@ -57,6 +57,20 @@
           href: how-tos/create-locate-anchors-cpp-ndk.md
         - name: 在 C++/WinRT 中
           href: how-tos/create-locate-anchors-cpp-winrt.md
+    - name: 使用设备上的传感器发现附近的锚
+      items:
+        - name: '在 C#/Unity 中'
+          href: how-tos/set-up-coarse-reloc-unity.md
+        - name: 在 Objective-C 中
+          href: how-tos/set-up-coarse-reloc-objc.md
+        - name: 在 Swift 中
+          href: how-tos/set-up-coarse-reloc-swift.md
+        - name: 在 Java 中
+          href: how-tos/set-up-coarse-reloc-java.md
+        - name: 在 C ++/NDK 中
+          href: how-tos/set-up-coarse-reloc-cpp-ndk.md
+        - name: 在 C++/WinRT 中
+          href: how-tos/set-up-coarse-reloc-cpp-winrt.md
 - name: 示例
   items:
     - name: Azure 空间定位点示例 (GitHub)
@@ -71,6 +85,8 @@
       href: concepts/guidelines-effective-anchor-experiences.md
     - name: 日志记录和诊断
       href: concepts/logging-diagnostics.md
+    - name: 粗略重新局部化
+      href: concepts/coarse-reloc.md
 - name: 参考
   items:
     - name: 适用于 Unity 的 SDK

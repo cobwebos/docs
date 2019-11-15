@@ -27,6 +27,7 @@ sections:
           - html: <a href="/azure/spatial-anchors/concepts/anchor-relationships-way-finding">定位点关系和路径查找。</a>
           - html: <a href="/azure/spatial-anchors/concepts/guidelines-effective-anchor-experiences">体验指南。</a>
           - html: <a href="/azure/spatial-anchors/concepts/logging-diagnostics">日志记录和诊断。</a>
+          - html: <a href="/azure/spatial-anchors/concepts/coarse-reloc">粗略重新局部化。</a>
   - title: 5 分钟快速入门
     items:
       - type: paragraph

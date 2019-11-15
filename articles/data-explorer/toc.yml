@@ -180,6 +180,8 @@
       items:
         - name: Azure 数据工厂
           items:
+            - name: 与数据工厂集成
+              href: data-factory-integration.md
             - name: 使用 Azure 数据工厂模板批量复制数据
               href: data-factory-template.md
             - name: 使用 Azure 数据工厂运行控制命令
