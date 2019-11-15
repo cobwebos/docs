@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中创建 HTTP 触发的函数
+title: 在 Azure 中创建 HTTP 触发的 Python 函数
 description: 了解如何使用 Azure Functions Core Tools 和 Azure CLI 在 Azure 中创建你的第一个 Python 函数。
 author: ggailey777
 ms.author: glenga
@@ -9,14 +9,14 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: gwallace
-ms.openlocfilehash: f2602e5a13f83090291656e7062c74c245bc6568
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 791348088d909785b36934c3b9a2ae00fc0acbb7
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693352"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622034"
 ---
-# <a name="create-an-http-triggered-function-in-azure"></a>在 Azure 中创建 HTTP 触发的函数
+# <a name="create-an-http-triggered-python-function-in-azure"></a>在 Azure 中创建 HTTP 触发的 Python 函数
 
 本文介绍如何使用命令行工具创建在 Azure Functions 中运行的 Python 项目。 另外还介绍如何创建由 HTTP 请求触发的函数。 最后，发布项目，在 Azure 中作为[无服务器函数](functions-scale.md#consumption-plan)运行。
 

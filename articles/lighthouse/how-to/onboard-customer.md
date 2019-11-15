@@ -4,15 +4,15 @@ description: 了解如何将客户载入到 Azure 委派资源管理，使你能
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 10/17/2019
+ms.date: 11/7/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 882afb83aa2a9bad9633df43b29e00b43162bf87
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 1d5e9c44fe7669a89c52d2ac14299c2687f11dc5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595665"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827249"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>将客户载入到 Azure 委派资源管理
 
@@ -66,12 +66,9 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>定义角色和权限
 
-作为服务提供商，你可能想要对单个客户使用多个产品/服务，这需要针对不同范围的不同访问权限。
+作为服务提供商，你可能想要为单个客户执行多个任务，这需要针对不同范围的不同访问权限。 可以根据需要定义任意数量的授权，以将[基于角色的访问控制 (RBAC) 内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)分配给租户中的用户。
 
-为了简化管理，建议为每个角色使用 Azure AD 用户组，这使你能够向组添加或删除单个用户，而不是直接向此用户分配权限。 你可能还想要将角色分配给服务主体。 请务必遵循最低权限原则，使用户仅具有完成作业所需的权限，从而帮助减少意外错误发生的几率。 有关详细信息，请参阅[建议的安全做法](../concepts/recommended-security-practices.md)。
-
-> [!NOTE]
-> 角色分配必须使用基于角色的访问控制 (RBAC) [内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。 除了所有者和带有 [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) 权限的任何内置角色之外，Azure 委派资源管理当前支持其他所有内置角色。 仅支持将用户访问管理员内置角色用于下述有限用途。 此外，也不支持自定义角色和[经典订阅管理员角色](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators)。
+为了简化管理，建议为每个角色使用 Azure AD 用户组，这使你能够向组添加或删除单个用户，而不是直接向此用户分配权限。 你可能还想要将角色分配给服务主体。 请务必遵循最低权限原则，使用户仅具有完成作业所需的权限。 有关支持角色的建议和信息，请参阅 [Azure Lighthouse 方案中的租户、用户和角色](../concepts/tenants-users-roles.md)。
 
 要定义授权，需要知道要向其授予访问权限的每个用户、用户组或服务主体的 ID 值。 还需知道要分配的每个内置角色的角色定义 ID。 如果没有这些信息，可通过以下方式之一进行检索。
 
@@ -110,6 +107,8 @@ az ad sp list --query "[?displayName == '<spDisplayName>'].objectId" --output ts
 # To retrieve role definition IDs
 az role definition list --name "<roleName>" | grep name
 ```
+> [!TIP]
+> 我们建议在加入客户时分配[托管服务注册分配删除角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role)，这样租户中的用户之后可以[删除对委派的访问权限](#remove-access-to-a-delegation)（如果需要）。 如果未分配此角色，则只能由客户租户中的用户删除委派资源。
 
 ## <a name="create-an-azure-resource-manager-template"></a>创建 Azure 资源管理器模板
 
@@ -124,7 +123,7 @@ az role definition list --name "<roleName>" | grep name
 
 要载入用户的订阅，请使用[示例存储库](https://github.com/Azure/Azure-Lighthouse-samples/)中提供的相应 Azure 资源管理器模板以及相应的参数文件（可修改此文件，使其与你的配置相匹配并定义你的授权）。 提供的单独模板取决于你是要载入整个订阅、一个资源组还是订阅内的多个资源组。 我们还提供了一个模板，可供购买了你发布 Azure 市场的托管服务产品/服务的客户使用；如果你偏向于按此方式载入其资源，则可使用它。
 
-|**载入此内容**  |**使用此 Azure 资源管理器模板**  |**修改此参数文件** |
+|加入此内容  |使用此 Azure 资源管理器模板  |修改此参数文件 |
 |---------|---------|---------|
 |Subscription   |[delegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
 |Resource group   |[rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
@@ -188,15 +187,18 @@ az role definition list --name "<roleName>" | grep name
     }
 }
 ```
-上面示例中的最后一个授权添加了具有用户访问管理员角色 (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) 的 principalId  。 分配此角色时，必须包含 delegatedRoleDefinitionIds 属性和一个/多个内置角色  。 在此授权中创建的用户能够将这些内置角色分配给[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 请注意，通常与用户访问管理员角色关联的其他权限均不适用于此用户。
+上面示例中的最后一个授权添加了具有用户访问管理员角色 (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) 的 principalId  。 分配此角色时，必须包含 delegatedRoleDefinitionIds 属性和一个/多个内置角色  。 在此授权中创建的用户能够将这些内置角色分配给[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)，这是[部署可修正的策略](deploy-policy-remediation.md)所必需的。 通常与用户访问管理员角色关联的其他权限均不适用于此用户。
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>部署 Azure 资源管理器模板
 
-更新参数文件后，客户必须在其客户租户中将资源管理模板部署为订阅级部署。 对于要载入 Azure 委托资源管理的每个订阅（或者包含要载入的资源组的每个订阅），需要单独进行部署。
+更新参数文件后，客户必须在其客户租户中将 Azure 资源管理器模板部署为订阅级部署。 对于要载入 Azure 委托资源管理的每个订阅（或者包含要载入的资源组的每个订阅），需要单独进行部署。
+
+由于这是订阅级部署，因此无法在 Azure 门户中启动。 可以使用 PowerShell 或 Azure CLI 来完成部署，如下所示。
 
 > [!IMPORTANT]
 > 部署必须由客户租户中的非来宾帐户完成，该帐户对于正在载入的订阅（或包含正在载入的资源组的订阅）拥有[所有者内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)。 若要查看所有可以委托订阅的用户，客户租户中的用户可以在 Azure 门户中选择订阅，打开“访问控制(IAM)”  ，然后[查看具有“所有者”角色的所有用户](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions)。
 
+### <a name="powershell"></a>PowerShell
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -248,6 +250,9 @@ az deployment create –-name <deploymentName \
 2. 选择“客户”  。
 3. 确认可使用在资源管理器模板中提供的产品/服务名称查看订阅。
 
+> [!IMPORTANT]
+> 若要在[我的客户](view-manage-customers.md)中查看委派的订阅，在为 Azure 委派资源管理加入订阅时，必须向服务提供商租户中的用户授予[读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)角色（或其他包括读者访问权限的内置角色）。
+
 在客户的租户中：
 
 1. 导航到[服务提供商页面](view-manage-service-providers.md)。
@@ -271,6 +276,70 @@ Get-AzContext
 # Log in first with az login if you're not using Cloud Shell
 
 az account list
+```
+
+## <a name="remove-access-to-a-delegation"></a>删除对委派的访问权限
+
+默认情况下，客户租户中具有相应权限的用户可以删除对已委派给 Azure 门户的[服务提供商页](view-manage-service-providers.md#add-or-remove-service-provider-offers)中的服务提供商的资源的访问权限。
+
+如果在为 Azure 委派资源管理加入客户时包含了具有[托管服务注册分配删除角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role)的用户，则租户中的这些用户也可以删除委派。 执行此操作时，服务提供商租户中的任何用户都无法访问之前委派的资源。
+
+下面的示例显示了授予可包含在参数文件中的“托管服务注册分配删除角色”的分配  ：
+
+```json
+    "authorizations": [ 
+        { 
+            "principalId": "cfa7496e-a619-4a14-a740-85c5ad2063bb", 
+            "principalIdDisplayName": "MSP Operators", 
+            "roleDefinitionId": "91c1777a-f3dc-4fae-b103-61d183457e46" 
+        } 
+    ] 
+```
+
+具有此权限的用户可以通过以下的一种方法删除委托。
+
+### <a name="powershell"></a>PowerShell
+
+```azurepowershell-interactive
+# Log in first with Connect-AzAccount if you're not using Cloud Shell
+
+# Sign in as a user from the managing tenant directory 
+
+Login-AzAccount
+
+# Select the subscription that is delegated - or contains the delegated resource group(s)
+
+Select-AzSubscription -SubscriptionName "<subscriptionName>"
+
+# Get the registration assignment
+
+Get-AzManagedServicesAssignment -Scope "/subscriptions/{delegatedSubscriptionId}"
+
+# Delete the registration assignment
+
+Remove-AzManagedServicesAssignment -ResourceId "/subscriptions/{delegatedSubscriptionId}/providers/Microsoft.ManagedServices/registrationAssignments/{assignmentGuid}"
+```
+
+### <a name="azure-cli"></a>Azure CLI
+
+```azurecli-interactive
+# Log in first with az login if you're not using Cloud Shell
+
+# Sign in as a user from the managing tenant directory
+
+az login
+
+# Select the subscription that is delegated – or contains the delegated resource group(s)
+
+az account set -s <subscriptionId/name>
+
+# List registration assignments
+
+az managedservices assignment list
+
+# Delete the registration assignment
+
+az managedservices assignment delete –assignment <id or full resourceId>
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,6 +1,6 @@
 ---
 title: 运行 OPC 发布服务器 - Azure | Microsoft Docs
-description: 运行 OPC 发布服务器
+description: 本文介绍如何运行和调试 OPC 发布服务器。 它还解决了性能和内存方面的问题。
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3b386171afc7916e5e803c39a9c7b3520752e6fd
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 66e2cb30dcd58b7ad0c6cedbb547f75c8039bc58
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603747"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824137"
 ---
 # <a name="run-opc-publisher"></a>运行 OPC 发布服务器
 

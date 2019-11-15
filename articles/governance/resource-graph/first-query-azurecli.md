@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: b50a21f9c1a4bae7ced8afd9a49c33cc936983ac
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0136b101de870ce669e89e67679719e233343330
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389737"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622587"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>快速入门：使用 Azure CLI 运行你的第一个 Resource Graph 查询
 
@@ -90,9 +90,10 @@ az extension remove -n resource-graph
 
 ## <a name="next-steps"></a>后续步骤
 
-- 获取有关[查询语言](./concepts/query-language.md)的详细信息
-- 了解如何[浏览资源](./concepts/explore-resources.md)
-- 在 [Azure PowerShell](first-query-powershell.md) 中运行你的第一个查询。
-- 查看[初学者查询](./samples/starter.md)的示例
-- 查看[高级查询](./samples/advanced.md)的示例
-- 在 [UserVoice](https://feedback.azure.com/forums/915958-azure-governance) 上提供反馈
+- 获取有关[查询语言](./concepts/query-language.md)的详细信息。
+- 详细了解如何[浏览资源](./concepts/explore-resources.md)。
+- 使用 [Azure 门户](first-query-portal.md)运行第一个查询。
+- 使用 [Azure PowerShell](first-query-powershell.md) 运行第一个查询。
+- 查看[初级查询](./samples/starter.md)的示例。
+- 查看[高级查询](./samples/advanced.md)的示例。
+- 在 [UserVoice](https://feedback.azure.com/forums/915958-azure-governance) 上提供反馈。

@@ -1,19 +1,19 @@
 ---
-title: Azure HPC 缓存预览版概述
+title: Azure HPC 缓存概述
 description: 介绍 Azure HPC 缓存，它是一种用于高性能计算的文件访问加速器解决方案
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 09/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: bfbbcd2d7d1bb44e260bedda54ca38ed6860ea67
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 2a008d22de5df8d091e868153205697b4bb343ee
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254478"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582125"
 ---
-# <a name="what-is-azure-hpc-cache-preview"></a>什么是 Azure HPC 缓存？ （预览版）
+# <a name="what-is-azure-hpc-cache"></a>什么是 Azure HPC 缓存？
 
 Azure HPC 缓存可为高性能计算 (HPC) 任务加快对数据的访问。 通过在 Azure 中缓存文件，Azure HPC 缓存将云计算的可伸缩性带到现有工作流中。 此服务甚至可用于跨 WAN 链路（例如在本地数据中心网络附加存储 (NAS) 环境中）存储数据的工作流。
 
@@ -54,13 +54,17 @@ Azure HPC 缓存在以下 Azure 区域中提供：
 * 北欧
 * 西欧
 * 东南亚
+* 悉尼
 * 美国西部 2
+* 韩国中部
 
 有关最新可用性信息，请查看 [Azure HPC 缓存产品页](https://azure.microsoft.com/services/hpc-cache)。
 
-## <a name="preview-availability"></a>预览版可用性
+## <a name="service-availability"></a>服务可用性
 
-Azure HPC 缓存公共预览版受到限制，以确保服务质量。 通过填写[此表单](https://aka.ms/onboard-hpc-cache)来请求访问权限。 将订阅添加到访问列表后，可以创建测试缓存。
+必须为将用于 Azure HPC 缓存的每个订阅请求访问权限。 此限制有助于在最初几个月内确保通用版的服务质量。
+
+通过填写[此表单](https://aka.ms/onboard-hpc-cache)来请求访问权限。 将订阅添加到访问列表后，可以创建缓存。
 
 ## <a name="next-steps"></a>后续步骤
 

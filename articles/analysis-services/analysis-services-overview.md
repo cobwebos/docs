@@ -1,18 +1,18 @@
 ---
 title: 什么是 Azure Analysis Services | Microsoft Docs
-description: Azure 中的 Analysis Services 简介。
+description: 了解 Azure Analysis Services，它是一种可在云中提供企业级数据模型的完全托管平台即服务 (PaaS)。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/16/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4369f1ce7d6ef90e8489dbec5daa181406c0fecf
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: eb69028a3b5ea232fbafe8286c3067a22f06d455
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512605"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572810"
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 
@@ -200,9 +200,9 @@ Azure Analysis Services 受 [Microsoft 联机服务条款](https://www.microsoft
 
 ### <a name="visual-studio"></a>Visual Studio
 
-使用免费的[适用于 Visual Studio 的 SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) 开发和部署模型。 SSDT 包括适用于快速入门的 Analysis Services 项目模板。 SSDT 现在包括适用于表格 1400 模型的新式“获取数据”数据源查询和混合功能。 如果你熟悉 Power BI Desktop 和 Excel 2016 中的“获取数据”功能，则已知道创建高度自定义的数据源查询很容易。 
+使用带有 Analysis Services 项目的 Visual Studio 开发和部署模型。 Analysis Services 项目扩展包括可帮助你快速入门的模板和向导。 Visual Studio 中的模型创作环境现在包括现代 Get Data 数据源查询和混合功能，可用于创建表格 1400 及更高模型。 如果你熟悉 Power BI Desktop 和 Excel 2016 中的“获取数据”功能，则已知道创建高度自定义的数据源查询很容易。 
 
-如果使用的是 Visual Studio 2017 或更高版本，则会以免费可安装 VSIX 包的形式提供 Microsoft Analysis Services Projects。 [从市场下载](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects)。
+Microsoft Analysis Services 项目作为免费的可安装 VSIX 包提供。 [从市场下载](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects)。 此扩展适用于任何版本的 Visual Studio 2017 及更高版本，包括免费的 Community 版本。
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 

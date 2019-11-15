@@ -8,18 +8,20 @@ manager: jeconnoc
 keywords: azure functions, functions, 事件处理, 计算, 无服务器体系结构
 ms.service: azure-functions
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1579a4dfbab1ec9d9aa6bb3995bd88d948d6d5e2
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 563412fbc5e8d9af3c399b1f75696053549143c4
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933972"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615007"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>使用 C\# 创建你的第一个持久函数
 
 *Durable Functions* 是 [Azure Functions](../functions-overview.md) 的一个扩展，可用于在无服务器环境中编写有状态函数。 该扩展可用于管理状态、检查点和重启。
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 本文介绍了如何使用 Visual Studio 2019 在本地创建并测试“hello world”持久函数。  此函数将协调对其他函数的调用并将其链接在一起。 然后将函数代码发布到 Azure。 Visual Studio 2019 中的 Azure 开发工作负荷已随附这些工具。
 
@@ -53,7 +55,7 @@ Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函
 
     | 设置      | 建议的值  | Description                      |
     | ------------ |  ------- |----------------------------------------- |
-    | **版本** | Azure Functions 2.x <br />(.NET Core) | 创建一个函数项目，并让其使用 Azure Functions 的版本 2.x 运行时（支持 .NET Core）。 Azure Functions 1.x 支持 .NET Framework。 有关详细信息，请参阅[如何指向 Azure Functions 运行时版本](../functions-versions.md)。   |
+    | **版本** | Azure Functions 2.0 <br />(.NET Core) | 创建一个函数项目，并让其使用 Azure Functions 的版本 2.0 运行时（支持 .NET Core）。 Azure Functions 1.0 支持 .NET Framework。 有关详细信息，请参阅[如何指向 Azure Functions 运行时版本](../functions-versions.md)。   |
     | **模板** | 空 | 创建一个空的函数应用。 |
     | **存储帐户**  | 存储模拟器 | 要进行持久函数状态管理，需要一个存储帐户。 |
 
@@ -73,12 +75,15 @@ Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函
 
     ![选择持久模板](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)  
 
+> [!NOTE]
+> 当前，此模板使用更低的 1.x 版本扩展创建持久函数。 有关如何升级到 Durable Functions 的 2.x 更高版本的信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
+
 一个新的持久函数将添加到应用中。  打开新的 .cs 文件以查看内容。 此持久函数是一个简单的函数链接示例，包含以下方法：  
 
 | 方法 | FunctionName | 说明 |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | 管理持久业务流程。 在此示例中，业务流程启动，创建一个列表，并将三个函数调用的结果添加到列表中。  当三个函数调用完成后，它返回该列表。 |
-| **`SayHello`** | `<file-name>_Hello` | 此函数返回一个 hello。 此函数包含要协调的业务逻辑。 |
+| **`SayHello`** | `<file-name>_Hello` | 此函数返回一个 hello。 函数包含要协调的业务逻辑。 |
 | **`HttpStart`** | `<file-name>_HttpStart` | [HTTP 触发的函数](../functions-bindings-http-webhook.md)，用于启动业务流程的实例并返回检查状态响应。 |
 
 现在，你已创建了函数项目和一个持久函数，可以在本地计算机上对其进行测试。
@@ -101,7 +106,7 @@ Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函
 
 4. 复制 `statusQueryGetUri` 的 URL 值，将其粘贴到浏览器的地址栏中并执行请求。
 
-    请求将查询业务流程实例的状态。 应当会得到如下所示的最终响应。  这向我们指明实例已完成，并且包括了持久函数的输出或结果。
+    请求将查询业务流程实例的状态。 应当会得到如下所示的最终响应。  此输出显示实例已完成，并且包括了持久函数的输出或结果。
 
     ```json
     {
@@ -114,8 +119,8 @@ Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函
             "Hello Seattle!",
             "Hello London!"
         ],
-        "createdTime": "2018-11-08T07:07:40Z",
-        "lastUpdatedTime": "2018-11-08T07:07:52Z"
+        "createdTime": "2019-11-02T07:07:40Z",
+        "lastUpdatedTime": "2019-11-02T07:07:52Z"
     }
     ```
 

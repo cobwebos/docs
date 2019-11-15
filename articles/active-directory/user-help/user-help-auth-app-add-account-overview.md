@@ -1,6 +1,6 @@
 ---
-title: 有关将帐户添加到 Microsoft Authenticator 应用的概述 - Azure Active Directory | Microsoft Docs
-description: 概述如何将工作和个人帐户添加到 Microsoft Authenticator 应用以进行双重验证。
+title: 有关将帐户添加到验证器应用的概述 - Azure AD
+description: 执行有关如何将工作和个人帐户添加到 Microsoft Authenticator 应用以进行双重验证的内容的链接。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d16699729e62953cb2369f39ecfe759aab663caf
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 16244be7dee9faaa15105f9dc0ac6c074230d243
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382645"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820274"
 ---
 # <a name="overview-about-adding-accounts-to-the-microsoft-authenticator-app"></a>有关将帐户添加到 Microsoft Authenticator 应用的概述
 
@@ -43,7 +43,7 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 | 工作或学校帐户 | 由工作单位或学校提供给你的帐户，例如 alain@contoso.com。 |
 | 个人帐户 | 个人建立的 Microsoft 和非 Microsoft 帐户，例如，在 Outlook.com、Xbox LIVE、Google、Facebook 等服务中创建的帐户。 |
 
-## <a name="in-this-section"></a>本节内容
+## <a name="articles-about-how-to-add-different-accounts"></a>有关如何添加不同帐户的文章
 
 | 文章 |说明 |
 | ------|------------|

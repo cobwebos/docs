@@ -1,26 +1,25 @@
 ---
 title: 快速入门 - 在 Azure 门户中创建 Linux VM | Microsoft Docs
-description: 本快速入门介绍了如何使用 Azure 门户创建 Linux 虚拟机
+description: 本快速入门介绍了如何使用 Azure 门户创建 Linux 虚拟机。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 8/20/2019
+ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0c05eb59c42700394f755f226405f16a47edc73c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8dbe8e43122fb7fa00129dec0d9961bd70e5a784
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091551"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693300"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Linux 虚拟机
 
@@ -50,15 +49,14 @@ ms.locfileid: "70091551"
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-1. 在 Azure 门户的左上角，选择“创建资源”  。
-
-1. 在“热门”  中，选择 **Ubuntu Server 18.04 LTS**。
-
-1. 在“基本信息”  标签页中的“项目详细信息”  下，确保选择了正确的订阅，然后在“资源组”  下选择“新建”  。 键入 *myResourceGroup* 作为资源组的名称，然后选择“确定”  。 
+1. 在搜索中键入“虚拟机”  。
+1. 在“服务”下，选择“虚拟机”   。
+1. 在“虚拟机”页上，选择“添加”   。 此时将打开“创建虚拟机”页  。
+1. 在“基本信息”  选项卡中的“项目详细信息”  下，确保选择了正确的订阅，然后选择**新建**资源组。 对于名称.*，请键入 myResourceGroup  。 
 
     ![为 VM 新建资源组](./media/quick-create-portal/project-details.png)
 
-1. 在“实例详细信息”  下，对于“虚拟机名称”  键入 *myVM*，对于“区域”  选择“美国东部”  。 保留其他默认值。
+1. 在“实例详细信息”下，键入“myVM”作为“虚拟机名称”，选择“美国东部”作为“区域”，并选择“Ubuntu 18.04 LTS”作为“映像”        。 保留其他默认值。
 
     ![“实例详细信息”部分](./media/quick-create-portal/instance-details.png)
 

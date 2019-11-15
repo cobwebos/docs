@@ -1,5 +1,5 @@
 ---
-title: 将 R 与机器学习服务配合使用来查询 Azure SQL 数据库
+title: 将 R 与机器学习服务配合使用进行查询
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: 本文演示如何将 R 脚本与 Azure SQL 数据库机器学习服务配合使用，以连接到 Azure SQL 数据库并使用 Transact-SQL 语句对其进行查询。
 services: sql-database
@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: ff38346a9b3bd14db51383c116240b030d3ee42a
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: a54b538247f81ea3bb0ea70a2af374158bd9e2ff
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514861"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826969"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>快速入门：将 R 与机器学习服务配合使用来查询 Azure SQL 数据库（预览版）
 
@@ -30,7 +30,7 @@ ms.locfileid: "68514861"
 
 若要完成本快速入门，请确保符合以下条件：
 
-- Azure SQL 数据库。 可以根据下述快速入门中的一个的说明在 Azure SQL 数据库中创建数据库，然后对其进行配置：
+- Azure SQL 数据库。 可以根据下述快速入门之一，在 Azure SQL 数据库中创建数据库，然后对其进行配置：
 
 <!-- Managed instance is not supported during the preview
   || Single database | Managed instance |

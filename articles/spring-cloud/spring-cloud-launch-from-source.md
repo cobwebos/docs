@@ -1,23 +1,23 @@
 ---
-title: 快速入门：从源代码启动春季云应用程序
-description: 了解如何直接从源代码启动 Azure 春季云应用程序
+title: 快速入门：从源代码启动 Spring Cloud 应用程序
+description: 了解如何直接从源代码启动 Azure Spring Cloud 应用程序
 author: jpconnock
 ms.service: spring-cloud
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 573baa242c06868326568a82bc358e136f1ece2c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: MT
+ms.openlocfilehash: 7ca80966ccab83991246f0ed7ea35cf2c9524b1d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177974"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721286"
 ---
-# <a name="launch-your-spring-cloud-application-from-source-code"></a>从源代码启动春季 Cloud 应用程序
+# <a name="launch-your-spring-cloud-application-from-source-code"></a>从源代码启动 Spring Cloud 应用程序
 
 使用 Azure Spring Cloud 可以在 Azure 上轻松运行基于 Spring Cloud 的微服务应用程序。
 
-使用 Azure 弹簧 Cloud，可以直接从 java 源代码或预生成的 JAR 启动应用程序。 本文将指导你完成所需的步骤。
+使用 Azure Spring Cloud，可以直接从 java 源代码或预构建的 JAR 启动应用程序。 本文介绍所需的步骤。
 
 本快速入门介绍如何执行以下操作：
 
@@ -28,12 +28,12 @@ ms.locfileid: "73177974"
 > * 部署每个微服务
 > * 为应用程序分配公共终结点
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 >[!Note]
-> 在开始本快速入门之前，请确保 Azure 订阅可以访问 Azure Spring Cloud。  由于此服务为预览版服务，我们要求用户先与我们联系，然后我们才能将其订阅添加到允许列表中。  若要探索 Azure Spring Cloud 的功能，请[填写此表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u)。  尽管 Azure 春季云处于预览阶段，但 Microsoft 提供的支持不受 SLA 限制。  有关预览过程中的支持的详细信息，请参阅此[支持常见问题](https://azure.microsoft.com/support/faq/)。
+> Azure Spring Cloud 目前以公共预览版的形式提供。 使用公共预览版产品/服务，客户可以在产品/服务正式发布之前体验新功能。  公共预览功能和服务并非供生产使用。  有关预览期间支持的详细信息，请参阅[常见问题解答](https://azure.microsoft.com/support/faq/)或提交[支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。
 
-在开始之前，请确保你的 Azure 订阅具有所需的依赖项：
+在开始之前，请确保 Azure 订阅已安装所需的依赖项：
 
 1. [安装 Git](https://git-scm.com/)
 2. [安装 JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
@@ -42,14 +42,14 @@ ms.locfileid: "73177974"
 5. [注册 Azure 订阅](https://azure.microsoft.com/free/)
 
 > [!TIP]
-> Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。  它预装有常用的 Azure 工具，其中包括最新版的 Git、JDK、Maven 和 Azure CLI。 如果你已登录到 Azure 订阅，请从 shell.azure.com 启动 [Azure Cloud Shell](https://shell.azure.com)。  若要详细了解 Azure Cloud Shell，可[阅读我们的文档](../cloud-shell/overview.md)
+> Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。  它预装有常用的 Azure 工具，其中包括最新版的 Git、JDK、Maven 和 Azure CLI。 如果你已登录到 Azure 订阅，请从 shell.azure.com 启动 [Azure Cloud Shell](https://shell.azure.com)。  若要详细了解 Azure Cloud Shell，请[阅读我们的文档](../cloud-shell/overview.md)
 
 ## <a name="install-the-azure-cli-extension"></a>安装 Azure CLI 扩展
 
-通过以下命令为 Azure CLI 安装 Azure 春季云扩展
+通过以下命令安装用于 Azure CLI 的 Azure Spring Cloud 扩展
 
 ```Azure CLI
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+az extension add --name spring-cloud
 ```
 
 ## <a name="provision-a-service-instance-using-the-azure-cli"></a>使用 Azure CLI 预配服务实例
@@ -62,13 +62,13 @@ az account list -o table
 az account set --subscription
 ```
 
-打开 Azure CLI 窗口，运行以下命令预配 Azure Spring Cloud 的实例。 请注意，我们还会告诉 Azure 春季 Cloud 在此分配公共域。
+打开 Azure CLI 窗口，运行以下命令预配 Azure Spring Cloud 的实例。 请注意，我们还会告知 Azure Spring Cloud 在此处分配公共域。
 
 ```azurecli
     az spring-cloud create -n <resource name> -g <resource group name> --is-public true
 ```
 
-部署服务实例需要大约五分钟。
+部署服务实例需要大约五分钟时间。
 
 使用以下命令设置默认的资源组名称和群集名称：
 
@@ -77,40 +77,40 @@ az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
 ```
 
-## <a name="create-the-spring-cloud-application"></a>创建弹簧 Cloud 应用程序
+## <a name="create-the-spring-cloud-application"></a>创建 Spring Cloud 应用程序
 
-以下命令在你的订阅中创建一个春季云应用程序。  这会创建一个空的弹簧云服务，我们可以将其上传到应用程序。
+以下命令在订阅中创建 Spring Cloud 应用程序。  此操作将创建一个空的 Spring Cloud 服务，我们可以将其上传到应用程序。
 
 ```azurecli
 az spring-cloud app create -n <app-name>
 ```
 
-## <a name="deploy-your-spring-cloud-application"></a>部署春季云应用程序
+## <a name="deploy-your-spring-cloud-application"></a>部署 Spring Cloud 应用程序
 
-你可以从预生成的 JAR 或从 Gradle 或 Maven 存储库部署你的应用程序。  为以下每种情况查找说明。
+可以从预构建的 JAR 或从 Gradle 或 Maven 存储库部署应用程序。  在下面找到每种情况的说明。
 
-### <a name="deploy-a-built-jar"></a>部署生成的 JAR
+### <a name="deploy-a-built-jar"></a>部署预构建的 JAR
 
-若要从在本地计算机上构建的 JAR 进行部署，请确保生成产生[胖 JAR](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-build.html#howto-create-an-executable-jar-with-maven)。
+若要从在本地计算机上构建的 JAR 进行部署，请确保构建生成 [fat-JAR](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-build.html#howto-create-an-executable-jar-with-maven)。
 
-将 fat JAR 部署到活动部署
+将 fat-JAR 部署到活动部署
 
 ```azurecli
 az spring-cloud app deploy -n <app-name> --jar-path <path-to-fat-JAR>
 ```
 
-将 fat JAR 部署到特定部署
+将 fat-JAR 部署到特定部署
 
 ```azurecli
 az spring-cloud app deployment create --app <app-name> -n <deployment-name> --jar-path <path-to-built-jar>
 ```
 
-### <a name="deploy-from-source-code"></a>从源代码部署
+### <a name="deploy-from-source-code"></a>从源代码进行部署
 
-Azure 春季 Cloud 使用[kpack](https://github.com/pivotal/kpack)生成项目。  你可以使用 Azure CLI 上传源代码，使用 kpack 生成项目，并将其部署到目标应用程序。
+Azure Spring Cloud 使用 [kpack](https://github.com/pivotal/kpack) 构建项目。  可以使用 Azure CLI 上传源代码，使用 kpack 构建项目，并将其部署到目标应用程序。
 
 > [!WARNING]
-> 项目只能在 `target` 的 `MANIFEST.MF` 中生成一个具有 `main-class` 条目的 JAR 文件（适用于 Maven 部署或 `build/libs` （适用于 Gradle 部署）。  具有 `main-class` 项的多个 JAR 文件将导致部署失败。
+> 项目只能生成一个 JAR 文件，该文件在 `target`（适用于 Maven 部署）或 `build/libs`（适用于 Gradle 部署）的 `MANIFEST.MF` 中具有 `main-class` 条目。  多个带有 `main-class` 条目的 JAR 文件将导致部署失败。
 
 对于单模块 Maven/Gradle 项目：
 
@@ -119,7 +119,7 @@ cd <path-to-maven-or-gradle-source-root>
 az spring-cloud app deploy -n <app-name>
 ```
 
-对于包含多个模块的 Maven/Gradle 项目，请对每个模块重复以下操作：
+对于包含多个模块的 Maven/Gradle 项目，请对每个模块重复以下步骤：
 
 ```azurecli
 cd <path-to-maven-or-gradle-source-root>
@@ -139,9 +139,9 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 
 ## <a name="assign-a-public-endpoint-to-gateway"></a>将公共终结点分配到网关
 
-1. 打开“应用程序仪表板”页。
-2. 选择 `gateway` 应用程序以显示“应用程序详细信息”页。
-3. 选择“分配域”，将一个公共终结点分配到网关。 这可能需要花费几分钟时间。 
+1. 打开“应用程序仪表板”页。 
+2. 选择 `gateway` 应用程序以显示“应用程序详细信息”页。 
+3. 选择“分配域”，将一个公共终结点分配到网关。  这可能需要花费几分钟时间。 
 4. 在浏览器中输入分配的公共 IP 以查看正在运行的应用程序。
 
 ## <a name="next-steps"></a>后续步骤

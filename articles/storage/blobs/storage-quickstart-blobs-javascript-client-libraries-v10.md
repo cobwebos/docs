@@ -2,19 +2,19 @@
 title: 快速入门 - 在浏览器中使用 JavaScript 和 HTML 在 Azure 存储中创建 Blob
 description: 了解如何在 HTML 页中使用 JavaScript 上传、列出和删除 blob。
 services: storage
-author: KarlErickson
+author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
-ms.author: karler
+ms.author: mhopkins
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: fc6ccaae698043db631c7724c6aabbca16f4328f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 3eb6f68a443e29a7d4c7b4dedad38783f838dee5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172843"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686668"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -168,23 +168,23 @@ npx http-server
 
 ### <a name="add-the-blob-storage-client-library"></a>添加 Blob 存储客户端库
 
-若要调用 Blob 存储 API，请先[下载适用于 JavaScript 的 Azure 存储 SDK - Blob 客户端库](https://aka.ms/downloadazurestoragejsblob)，提取 zip 的内容，并将 *azure-storage.blob.js* 文件放入 *azure-blob-javascript* 文件夹。
+若要调用 Blob 存储 API，请先[下载适用于 JavaScript 的 Azure 存储 SDK - Blob 客户端库](https://aka.ms/downloadazurestoragejsblob)，提取压缩内容，并将 azure-storage.blob.js 文件放入 azure-blob-javascript 文件夹   。
 
 接下来，将以下 HTML 粘贴到 *index.html* 中的 `</body>` 结束标记的后面（请替换占位符注释）。
 
 ```html
-<script src="azure-storage.blob.js" charset="utf-8"></script>
+<script src="azure-storage-blob.js" charset="utf-8"></script>
 
 <script>
 // You'll add code here in the following sections.
 </script>
 ```
 
-此代码添加对脚本文件的引用，并为你自己的 JavaScript 代码提供一个位置。 在本快速入门中，我们将使用 *azure-storage.blob.js* 脚本文件，以便可以在 VS Code 中打开它、读取其内容，并设置断点。 在生产环境中，应使用更精简的 *azure-storage.blob.min.js* 文件，该文件也已在 zip 文件中提供。
+此代码添加对脚本文件的引用，并为你自己的 JavaScript 代码提供一个位置。 在本快速入门中，我们将使用 azure-storage.blob.js 脚本文件，以便可以在 VS Code 中打开它、读取其内容，并设置断点  。 在生产环境中，应使用更精简的 *azure-storage.blob.min.js* 文件，该文件也已在 zip 文件中提供。
 
 可以在[参考文档](https://docs.microsoft.com/javascript/api/%40azure/storage-blob/index)中详细了解每个 Blob 存储函数。 请注意，SDK 中的某些函数只能在 Node.js 中使用，或只能在浏览器中使用。
 
-*azure-storage.blob.js* 中的代码导出名为 `azblob` 的全局变量，你将在 JavaScript 代码中使用该变量来访问 Blob 存储 API。
+azure-storage.blob.js 中的代码导出名为 `azblob` 的全局变量，你将在 JavaScript 代码中使用该变量来访问 Blob 存储 API  。
 
 ### <a name="add-the-initial-javascript-code"></a>添加初始 JavaScript 代码
 

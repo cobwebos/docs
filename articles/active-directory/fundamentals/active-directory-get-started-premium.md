@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 016fbc8808c11f861dd4388ea5fb062c840187ea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1a1f4addf9bb1fff34d99867fb3730a9197c9c05
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561974"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721238"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>注册 Azure Active Directory Premium 版本
 可购买 Azure Active Directory (Azure AD) Premium 版本并将其与 Azure 订阅进行关联。 如果需要创建新的 Azure 订阅，则还需要激活许可计划和 Azure AD 服务访问权限。
@@ -37,7 +37,7 @@ ms.locfileid: "68561974"
 如果注册时使用的 Azure 订阅具有之前购买并激活的 Azure AD 许可证，则会在同一目录中自动激活这些许可证。 如果不是如此，则仍必须激活许可证计划和 Azure AD 访问权限。 要详细了解如何激活许可证计划，请参阅[激活新的许可证计划](#activate-your-new-license-plan)。 要详细了解如何激活 Azure AD 访问权限，请参阅[激活 Azure AD 访问权限](#activate-your-azure-ad-access)。 
 
 ## <a name="sign-up-using-your-existing-azure-or-office-365-subscription"></a>通过现有的 Azure 或 Office 365 订阅进行注册
-Azure 或 Office 365 订阅者可在线购买 Azure Active Directory Premium 版本。 有关详细步骤，请参阅 [How to Purchase Azure Active Directory Premium - Existing Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer)（如何购买 Azure Active Directory Premium - 现有客户）或 [How to Purchase Azure Active Directory Premium - New Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers)（如何购买 Azure Active Directory Premium - 新客户）。
+Azure 或 Office 365 订阅者可在线购买 Azure Active Directory Premium 版本。 有关详细步骤，请参阅[如何购买 Azure Active Directory Premium - 新客户](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers)。
 
 ## <a name="sign-up-using-your-enterprise-mobility--security-licensing-plan"></a>通过企业移动性 + 安全性许可计划进行注册
 “企业移动性 + 安全性”是一个套件，其中包括 Azure AD Premium、Azure 信息保护和 Microsoft Intune。 如果已具有 EMS 许可证，可通过下述许可选项之一开始使用 Azure AD：

@@ -1,6 +1,6 @@
 ---
 title: OPC 孪生体系结构 - Azure | Microsoft Docs
-description: OPC 孪生体系结构
+description: 本文提供 OPC 孪生体系结构体系结构的概述。 它介绍了服务器的发现、激活、浏览和监视。
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 6ce9394f3d454bda5ead51f2c77a47db137a5136
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b8d4424c92ff24c36650e34a5d050bdc5f0f9091
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606185"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819858"
 ---
 # <a name="opc-twin-architecture"></a>OPC 孪生体系结构
 

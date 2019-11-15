@@ -1,19 +1,19 @@
 ---
-title: Blob 存储简介 - Azure 中的对象存储
+title: 关于 Blob（对象）存储 - Azure 存储
 description: Azure Blob 存储可存储巨量的非结构化对象数据，例如文本或二进制数据。 Blob 存储还支持 Azure Data Lake Storage Gen2 进行大数据分析。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: overview
-ms.date: 11/19/2018
+ms.date: 11/04/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 35a428c2ae706d7838778c7590e5378ab5df40f9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8f9c1b1762c4e6028d935e03a630dfc0ca4ee4b9
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258396"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615759"
 ---
 # <a name="what-is-azure-blob-storage"></a>什么是 Azure Blob 存储？ 
 

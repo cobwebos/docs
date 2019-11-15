@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 10/17/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 10105d06e48a727e71ea5cb03f2ffceb589df50a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4b2ce1253fd4421b36105fdbae68c6e89173a3c6
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595259"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615467"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>将托管服务产品发布到 Azure 市场
 
@@ -52,9 +52,11 @@ ms.locfileid: "72595259"
 
 每个产品/服务都必须具有一个或多个计划（有时也称为 SKU）。 可添加多个计划，以不同的价格支持不同的功能集，也可为有限数量的特定客户自定义特定计划。 客户可在父级产品/服务中查看可供其使用的计划。
 
-在“计划”部分中，针对要创建的每个计划选择“新建计划”  。 然后，输入计划 ID  。 此 ID 只能包含小写字母数字字符、短划线和下划线，且不得超过 50 个字符。 客户可能会在产品 URL 和计费报表等位置看到计划 ID。 一旦发布产品/服务，即无法更改此值。
+在“计划”部分中，选择“新建计划”  。 然后，输入计划 ID  。 此 ID 只能包含小写字母数字字符、短划线和下划线，且不得超过 50 个字符。 客户可能会在产品 URL 和计费报表等位置看到计划 ID。 一旦发布产品/服务，即无法更改此值。
 
-接下来，完成“计划详细信息”部分中的以下部分  ：
+### <a name="plan-details"></a>计划详细信息
+
+完成“计划详细信息”部分中的以下部分  ：
 
 |字段  |说明  |
 |---------|---------|
@@ -64,27 +66,36 @@ ms.locfileid: "72595259"
 |**计费模式**     | 此处显示两种计费模式，但必须为托管服务产品选择“自带许可”  。 这意味着你将直接向客户收取与此产品/服务相关的费用，而 Microsoft 不向你收取任何费用。   |
 |**这是专用计划吗？**     | 指示该 SKU 是专用还是公共 SKU。 默认值为“否”（即公共 SKU）  。 如果保留此选择，则你的计划将不仅限于特定客户（或特定数量的客户）；发布公用计划后，无法再将其更改为专用计划。 要使此计划仅对特定客户可用，请选择“是”  。 执行此操作时，需要提供客户的订阅 ID 来确定客户身份。 可逐一输入（最多 10 个订阅），也可上传一个 .csv 文件（最多 20,000 个订阅）。 请确保在此处包含你自己的订阅，以便测试和验证该产品/服务。 有关详细信息，请参阅[专用 SKU 和计划](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus)。  |
 
-最后，完成“清单详细信息”部分  。 这会创建一个清单，其中包含用于管理客户资源的授权信息。 要针对 Azure 委托资源管理载入客户，必须使用你在此处提供的信息。 如上所述，这些权限将应用于购买了计划的每位客户，因此如果想要仅限特定客户访问，需要发布专用计划供其专门使用。
+### <a name="manifest-details"></a>清单详细信息
 
-- 首先，请提供清单的版本  。 使用 n.n.n 格式（例如 1.2.5）  。
-- 然后，输入租户 ID  。 这是与你组织的 Azure Active Directory 租户 ID 关联的 GUID（即你将在其中管理客户资源的租户）。 如果没有此信息，可将鼠标悬停在 Azure 门户右上方的帐户名称上，或者选择“切换目录”来找到它  。 
-- 最后，将一个或多个授权条目添加到计划中  。 授权定义了哪些实体可访问购买计划的客户的资源和订阅。 必须提供此信息才能通过 Azure 委派资源管理代表客户访问资源。
-  对于每个授权，请提供以下信息。 然后，可根据需要多次选择“新授权”，以添加更多用户/角色定义  。
+完成计划的“清单详细信息”部分  。 这会创建一个清单，其中包含用于管理客户资源的授权信息。 若要启用 Azure 委派资源管理，必须使用此信息。
+
+> [!NOTE]
+> 如上所述，“授权”条目中的用户和角色将应用于每个购买了计划的客户  。 如果想要限制特定客户的访问权限，需发布专用计划供其专用。
+
+首先，请提供清单的版本  。 使用 n.n.n 格式（例如 1.2.5）  。
+
+然后，输入租户 ID  。 这是与你组织的 Azure Active Directory 租户 ID 关联的 GUID（即你将在其中管理客户资源的租户）。 如果没有此信息，可将鼠标悬停在 Azure 门户右上方的帐户名称上，或者选择“切换目录”来找到它  。
+
+最后，将一个或多个授权条目添加到计划中  。 授权定义了哪些实体可访问购买计划的客户的资源和订阅，并分配了授予特定访问级别的角色。 有关支持的角色的详细信息，请参阅 [Azure Lighthouse 方案中的租户、角色和用户](../concepts/tenants-users-roles.md)。
+
+对于每个授权，你需要提供以下信息  。 然后，可根据需要多次选择“新授权”，以添加更多用户和角色定义  。
+
   - **Azure AD 对象 ID**：要将客户资源特定权限（如角色定义所述）授予到的用户、用户组或应用程序的 Azure AD 标识符。
   - **Azure AD 对象显示名称**：一个易记名称，可帮助客户了解此授权的目的。 在委派资源时，客户将看到此名称。
-  - **角色定义**：从列表中选择一个可用的 Azure AD 内置角色。 此角色将确定“Azure AD 对象 ID”字段中的用户对客户资源拥有的权限  。 有关这些角色的详细信息，请参阅[内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
-  - **可分配角色**：仅当在“角色定义”  中为此授权选择了“用户访问管理员”时，才需要此操作。 如果是这样，则必须在此处添加一个或多个可分配角色。 “Azure AD 对象 ID”字段中的用户能将这些可分配角色分配给[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)   。 请注意，通常与用户访问管理员角色关联的其他权限均不适用于此用户。 如果未在此处选择一个或多个角色，则你的提交将无法通过认证。 （如果未为此用户的角色定义选择用户访问管理员，则此字段无效。）
+  - **角色定义**：从列表中选择一个可用的 Azure AD 内置角色。 此角色将确定“Azure AD 对象 ID”字段中的用户对客户资源拥有的权限  。 有关这些角色的说明，请参阅[内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)和 [Azure 委派的资源管理的角色支持](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)
+  - **可分配角色**：仅当在“角色定义”  中为此授权选择了“用户访问管理员”时，才需要此操作。 如果是这样，则必须在此处添加一个或多个可分配角色。 “Azure AD 对象 ID”字段中的用户能够将这些“可分配角色”分配给[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)，这是[部署可修正的策略](deploy-policy-remediation.md)所必需的   。 请注意，通常与用户访问管理员角色关联的其他权限均不适用于此用户。 如果未在此处选择一个或多个角色，则你的提交将无法通过认证。 （如果未为此用户的角色定义选择用户访问管理员，则此字段无效。）
 
 > [!TIP]
-> 在大多数情况下，需要将权限分配给 Azure AD 用户组或服务主体，而不是分配给一系列单独的用户帐户。 这样，便可添加或删除单位用户的访问权限，而无需在访问要求更改时更新和重新发布计划。
+> 在大多数情况下，需要将权限分配给 Azure AD 用户组或服务主体，而不是分配给一系列单独的用户帐户。 这样，便可添加或删除单位用户的访问权限，而无需在访问要求更改时更新和重新发布计划。 有关其他建议，请参阅 [Azure Lighthouse 方案中的租户、角色和用户](../concepts/tenants-users-roles.md)。
 
-添加计划后，选择“保存”，然后继续到“市场”部分   。
+完成这些信息后，可以根据需要多次选择“新建计划”以创建其他计划  。 完成后，选择“保存”，然后继续填写“市场”部分   。
 
 ## <a name="provide-marketplace-text-and-images"></a>提供市场文本和图像
 
 可在“市场”部分提供客户要在 Azure 市场和 Azure 门户看到的文本和图像  。
 
-在“概述”部分中提供以下字段的信息  ：
+在“概述”部分中填写以下字段  ：
 
 |字段  |说明  |
 |---------|---------|
@@ -122,13 +133,13 @@ ms.locfileid: "72595259"
 
 ## <a name="add-support-info"></a>添加支持信息
 
-在“支持”部分中，提供工程联系人和客户支持联系人的姓名、电子邮件和电话号码  。 还需要提供支持 URL。 当我们需要就业务和支持问题与你联系时，Microsoft 可能会使用此信息。
+在“支持”部分中，提供工程联系人和客户支持联系人的姓名、电子邮件和电话号码  。 还需要提供支持 URL。 当 Microsoft 需要就业务和支持问题与你联系时，我们可能会使用此信息。
 
 添加此信息后，请选择“保存”  。
 
 ## <a name="publish-your-offer"></a>发布产品/服务
 
-如果你对自己提供的所有信息感到满意，则接下来就是将产品/服务发布到 Azure 市场。 选择“发布”按钮启动产品/服务上线过程  。 有关此过程的更多信息，请参阅[发布 Azure 市场和 AppSource 产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer)。
+完成所有部分后，下一步就是将产品/服务发布到 Azure 市场。 选择“发布”按钮启动产品/服务上线过程  。 有关此过程的详细信息，请参阅[发布 Azure 市场和 AppSource 产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer)。
 
 ## <a name="the-customer-onboarding-process"></a>客户加入过程
 

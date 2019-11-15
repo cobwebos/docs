@@ -1,6 +1,6 @@
 ---
 title: 快速入门：适用于 Python 的人脸客户端库 | Microsoft Docs
-description: 适用于 Python 的人脸客户端库入门...
+description: 本文将帮助你开始使用 Python 用于检测、查找相似、标识、验证等的人脸客户端库。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: b265ec68039f03c09d45c9605965de8ce0baba99
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9728ff86de8561c463886847494ecc4c1c007851
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935876"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73743198"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>快速入门：适用于 Python 的人脸客户端库
 

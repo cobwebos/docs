@@ -1,18 +1,18 @@
 ---
-title: 快速入门 - 使用 Azure 门户创建 Analysis Services 服务器 | Microsoft Docs
-description: 了解如何在 Azure 中创建 Analysis Services 服务器实例。
+title: 快速入门 - 在 Azure 门户中创建 Analysis Services 服务器 | Microsoft Docs
+description: 了解如何使用 Azure 门户快速创建 Azure Analysis Services 服务器实例。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 07/02/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e6973ee311f1d3f5ba19714695f67bd321d953b7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: cfd624ce49add0f8fd04bfccca9d6b7c3f1f71bd
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295036"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573062"
 ---
 # <a name="quickstart-create-a-server---portal"></a>快速入门：创建服务器 - 门户
 
@@ -45,7 +45,7 @@ ms.locfileid: "72295036"
    * **备份存储设置**：可选。 如果已有[存储帐户](../storage/common/storage-introduction.md)，则可将其指定为默认模型数据库备份帐户。 稍后还可指定[备份和还原](analysis-services-backup.md)设置。
    * **存储密钥有效期**：可选。 指定存储密钥的有效期。
 
-创建服务器通常不超过一分钟的时间。 如果选择“添加到门户”  ，请导航到门户查看新服务器。 或者，导航到“所有服务”   > “Analysis Services”  ，查看服务器是否就绪。 服务器支持 1200 和更高兼容级别的表格模型。 模型兼容性级别在 SSDT 或 SSMS 中指定。
+创建服务器通常不超过一分钟的时间。 如果选择“添加到门户”  ，请导航到门户查看新服务器。 或者，导航到“所有服务”   > “Analysis Services”  ，查看服务器是否就绪。 服务器支持 1200 和更高兼容级别的表格模型。 模型兼容性级别在 Visual Studio 或 SSMS 中指定。
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 在 Azure 门户中创建 Windows VM | Microsoft Docs
+title: 快速入门 - 在 Azure 门户中创建 Windows VM
 description: 本快速入门介绍了如何使用 Azure 门户创建 Windows 虚拟机
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -7,24 +7,23 @@ author: cynthn
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/02/2019
+ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 60f74de308938ee155cf61f3360f73d92feaa67c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 002d374f5be606688121ef4a3952383567c43e85
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102497"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685247"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Windows 虚拟机
 
-可以通过 Azure 门户创建 Azure 虚拟机 (VM)。 此方法提供基于浏览器的用户界面来创建 VM 及其相关资源。 本快速入门展示了如何使用 Azure 门户在 Azure 中部署运行 Windows Server 2016 的虚拟机 (VM)。 若要查看运行中的 VM，可以通过 RDP 登录到该 VM 并安装 IIS Web 服务器。
+可以通过 Azure 门户创建 Azure 虚拟机 (VM)。 此方法提供基于浏览器的用户界面来创建 VM 及其相关资源。 本快速入门展示了如何使用 Azure 门户在 Azure 中部署运行 Windows Server 2019 的虚拟机 (VM)。 若要查看运行中的 VM，可以通过 RDP 登录到该 VM 并安装 IIS Web 服务器。
 
 如果没有 Azure 订阅，请在开始之前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -34,15 +33,14 @@ ms.locfileid: "70102497"
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-1. 在 Azure 门户的左上角选择“创建资源”。 
-
-1. 在“新建”  页的“常用”  下，选择“Windows Server 2016 Datacenter”  。
-
+1. 在搜索中键入“虚拟机”  。
+1. 在“服务”下，选择“虚拟机”   。
+1. 在“虚拟机”页上，选择“添加”   。 
 1. 在“基本信息”  选项卡中的“项目详细信息”  下，确保选择了正确的订阅，然后选择**新建**资源组。 对于名称，请键入 *myResourceGroup*。 
 
     ![为 VM 新建资源组](./media/quick-create-portal/project-details.png)
 
-1. 在“实例详细信息”  下，对于“虚拟机名称”  键入 *myVM*，对于“位置”  选择“美国东部”  。 保留其他默认值。
+1. 在“实例详细信息”下，键入“myVM ”为“虚拟机名称”，选择“美国东部”作为“区域”，选择“Windows Server 2019 数据中心”作为“映像”        。 保留其他默认值。
 
     ![“实例详细信息”部分](./media/quick-create-portal/instance-details.png)
 
@@ -50,7 +48,7 @@ ms.locfileid: "70102497"
 
     ![输入用户名和密码](./media/quick-create-portal/administrator-account.png)
 
-1. 在“入站端口规则”  下，选择“允许所选端口”  ，然后从下拉列表中选择“RDP (3389)”  和“HTTP”  。
+1. 在“入站端口规则”下，选择“允许所选端口”，然后从下拉列表中选择“RDP (3389)”和“HTTP (80)”     。
 
     ![打开 RDP 和 HTTP 的端口](./media/quick-create-portal/inbound-port-rules.png)
 
@@ -63,11 +61,11 @@ ms.locfileid: "70102497"
 
 创建到虚拟机的远程桌面连接。 这些说明指明了如何从 Windows 计算机连接到 VM。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)。
 
-1. 单击虚拟机属性页上的“连接”按钮。  
+1. 单击虚拟机概述页上的“连接”按钮  。 
 
     ![从门户连接到 Azure VM](./media/quick-create-portal/portal-quick-start-9.png)
     
-2. 在“连接到虚拟机”  页面中，保留默认选项，以使用 DNS 名称通过端口 3389 进行连接，然后单击“下载 RDP 文件”  。
+2. 在“连接到虚拟机”页面中，保留默认选项，以使用 IP 地址通过端口 3389 进行连接，然后单击“下载 RDP 文件”   。
 
 2. 打开下载的 RDP 文件，然后在出现提示时单击“连接”  。 
 
@@ -94,7 +92,9 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="clean-up-resources"></a>清理资源
 
-当不再需要时，可以删除资源组、虚拟机和所有相关资源。 选择虚拟机的资源组，然后选择“删除”  。 确认资源组名称，以完成资源删除。
+当不再需要时，可以删除资源组、虚拟机和所有相关资源。 
+
+选择虚拟机的资源组，然后选择“删除”  。 确认资源组名称，以完成资源删除。
 
 ## <a name="next-steps"></a>后续步骤
 

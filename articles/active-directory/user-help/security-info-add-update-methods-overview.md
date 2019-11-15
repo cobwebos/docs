@@ -1,6 +1,6 @@
 ---
-title: 概述如何更改安全信息（预览版）的方法和信息 - Azure Active Directory | Microsoft Docs
-description: 概述如何添加、更新和删除用于双重验证和自助式密码重置的安全信息方法。
+title: 有关更改安全信息（预览版）的概述 - Azure AD
+description: 有关如何添加、更新和删除用于双重验证和自助式密码重置的安全信息方法的文章的链接。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bcef64c8bf8c2b52e5cc5d954de933d830ba4c1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 3b781cd30bc5f63199ef9bff45670fa618e2ca17
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382880"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803820"
 ---
 # <a name="overview-about-changing-your-security-info-preview-methods-and-information"></a>概述如何更改安全信息（预览版）的方法和信息
 

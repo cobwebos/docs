@@ -1,5 +1,5 @@
 ---
-title: 使用 Java 查询 Azure SQL 数据库
+title: 使用 Java 进行查询
 description: 介绍如何使用 Java 创建连接到 Azure SQL 数据库的程序并使用 T-SQL 语句对其进行查询。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ ms.author: andrela
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-java-july2019. seo-java-august2019
-ms.openlocfilehash: 8940e13dcc6d6287984ba1cc7c7510768b4e232f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6d4d9353e29a29b0cd6db7575e49a00a213355d3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624082"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827048"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-an-azure-sql-database"></a>快速入门：使用 Java 连接到 Azure SQL 数据库并进行查询
 
@@ -26,7 +26,7 @@ ms.locfileid: "69624082"
 
 若要完成此示例，请确保具备以下先决条件：
 
-- Azure SQL 数据库。 可以根据下述快速入门中的一个的说明在 Azure SQL 数据库中创建数据库，然后对其进行配置：
+- Azure SQL 数据库。 可以根据下述快速入门之一，在 Azure SQL 数据库中创建数据库，然后对其进行配置：
 
   || 单一数据库 | 托管实例 |
   |:--- |:--- |:---|

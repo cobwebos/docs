@@ -1,5 +1,6 @@
 ---
-title: Microsoft 标识平台 JavaScript 快速入门 - Azure
+title: 登录用户并在 JavaScript SPA 中获取访问令牌 | Azure
+titleSuffix: Microsoft identity platform
 description: 了解 JavaScript 应用程序如何使用 Microsoft 标识平台调用需要访问令牌的 API。
 services: active-directory
 documentationcenter: dev-center-name
@@ -8,7 +9,7 @@ manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +17,14 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c41dedf6b4fe52ba3250ada14b0cca6bbeb636af
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 5ca9a8b87713508a581a833f60fbe863fd93919a
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827116"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795614"
 ---
-# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>快速入门：通过 JavaScript 单页应用程序将用户登录并获取访问令牌
+# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：登录用户并在 JavaScript SPA 中获取访问令牌
 
 在本快速入门中，你将使用代码示例了解 JavaScript 单页应用程序 (SPA) 如何登录个人帐户、工作帐户和学校帐户的用户。 JavaScript SPA 还可以获取用于调用 Microsoft Graph API 或任何 Web API 的访问令牌。 （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
 
@@ -79,12 +80,11 @@ ms.locfileid: "71827116"
 
 * （可选）若要使用 IIS 服务器运行项目，请[下载 Visual Studio 项目](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)。 将 zip 文件提取到本地文件夹（例如，C:\Azure-Samples  ）。
 
-#### <a name="step-3-configure-your-javascript-app"></a>步骤 3：配置 JavaScript 应用
-
 > [!div renderon="docs"]
+> #### <a name="step-3-configure-your-javascript-app"></a>步骤 3：配置 JavaScript 应用
 > 编辑 *JavaScriptSPA* 文件夹中的 *index.html*，并设置 `msalConfig` 下的 `clientID` 和 `authority` 值。
 
-> [!div class="sxs-lookup" renderon="portal"]
+> [!div renderon="docs"]
 > 编辑 *JavaScriptSPA* 文件夹中的 *index.html*，将 `msalConfig` 替换为以下代码：
 
 ```javascript
@@ -101,10 +101,6 @@ var msalConfig = {
 };
 
 ```
-> [!div renderon="portal"]
-> > [!NOTE]
-> > 本快速入门支持 Enter_the_Supported_Account_Info_Here。
-
 
 > [!div renderon="docs"]
 >
@@ -119,7 +115,12 @@ var msalConfig = {
 > > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。    
 >
 
-#### <a name="step-4-run-the-project"></a>步骤 4：运行项目
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
+> 我们已经为项目配置了应用属性的值。 
+
+> [!div renderon="docs"]
+> #### <a name="step-4-run-the-project"></a>步骤 4：运行项目
 
 * 如果使用 [Node.js](https://nodejs.org/en/download/)：
 

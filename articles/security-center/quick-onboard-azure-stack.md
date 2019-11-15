@@ -1,5 +1,5 @@
 ---
-title: Azure 安全中心快速入门 - 将 Azure Stack 虚拟机载入安全中心 | Microsoft Docs
+title: 将 Azure Stack 虚拟机载入 Azure 安全中心
 description: 本快速入门介绍如何在 Azure Stack 虚拟机上预配“Azure 监视、更新和配置管理”虚拟机扩展。
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: fiseraci
-ms.openlocfilehash: 1772fd34a2d79b725b2b5ccaa66adb0b251b7e1d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: c186dcb2d7d7d423f5c001bdb4d3f3503beebd9c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202848"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686524"
 ---
-# <a name="quickstart--onboard-your-azure-stack-virtual-machines-to-security-center"></a>快速入门：将 Azure Stack 虚拟机载入安全中心
+# <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>快速入门：将 Azure Stack 虚拟机载入安全中心
 载入 Azure 订阅后，可以通过从 Azure Stack 市场添加“Azure 监视、更新和配置管理”虚拟机扩展，启用安全中心来保护 Azure Stack 上运行的虚拟机。 
 
 本快速入门介绍如何在 Azure Stack中运行的 虚拟机（支持 Linux 和 Windows）上添加“Azure 监视、更新和配置管理”虚拟机扩展。 
@@ -69,7 +69,7 @@ ms.locfileid: "71202848"
 > 如果在市场中没有看到“Azure Monitor、更新和配置管理”扩展，请联系 Azure Stack 操作员以将其列出  。
 
 6. 在“安装扩展”配置边栏选项卡上，粘贴在前面步骤中复制到记事本的“工作区 ID” 和“工作区密钥(主密钥)”。   
-7.  提供所需的配置设置后，请单击“确定”  。
+7. 提供所需的配置设置后，请单击“确定”  。
 8. 扩展安装完成后，其状态将显示为“预配成功”。  最长可能需要经过一小时，该虚拟机才会显示在安全中心门户中。
 
 有关安装和配置 Windows 代理的详细信息，请参阅[连接 Windows 计算机](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)。

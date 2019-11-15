@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: c2a8c60502aeb75173371d40475b5d2875417791
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 7eef353f45d0387a45fbf8180bc49cae7975dfa9
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808633"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622502"
 ---
 # <a name="starter-resource-graph-queries"></a>初学者资源图表查询
 
@@ -534,6 +534,6 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.network/networksecur
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关[查询语言](../concepts/query-language.md)的详细信息
-- 了解如何[浏览资源](../concepts/explore-resources.md)
-- 查看[高级查询](advanced.md)的示例
+- 详细了解[查询语言](../concepts/query-language.md)。
+- 详细了解如何[浏览资源](../concepts/explore-resources.md)。
+- 查看[高级查询](advanced.md)的示例。

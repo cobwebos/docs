@@ -7,22 +7,22 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: overview
-ms.date: 08/31/2019
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: e3a83730e47686e9d4757f057d2e8da4629fdd7a
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 62ca71e1b42e000f7528a2963793f9bf40663bf3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312141"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818506"
 ---
-# <a name="entity-functions-preview"></a>实体函数（预览版）
+# <a name="entity-functions"></a>实体函数
 
 实体函数定义读取和更新较小状态片段（称为“持久实体”）的操作。  与业务流程协调程序函数一样，实体函数是具有特殊触发器类型“实体触发器”的函数。  与业务流程协调程序函数不同，实体函数会显式管理实体状态，而不是通过控制流隐式表示状态。
 实体为横向扩展应用程序提供了一种方式，即，将工作分散到多个实体，而每个实体具有适度大小的状态。
 
 > [!NOTE]
-> 实体函数和相关功能仅在 Durable Functions 2.0 及更高版本中可用。 实体函数目前以公共预览版提供。
+> 实体函数和相关功能仅在 Durable Functions 2.0 及更高版本中可用。
 
 ## <a name="general-concepts"></a>一般概念
 
@@ -58,7 +58,7 @@ ms.locfileid: "72312141"
 
 **基于类的语法**：其中，实体和操作由类和方法表示。 此语法可生成更易于阅读的代码，使操作能够以类型安全的方式调用。 基于类的语法只是建立基于函数的语法基础之上的一个精简层，因此，在同一应用程序中，这两种变体可以换用。
 
-### <a name="example-function-based-syntax"></a>示例：基于函数的语法
+### <a name="example-function-based-syntax---c"></a>示例：基于函数的语法 - C#
 
 以下代码是作为持久函数实现的简单 *Counter* 实体示例。 此函数定义三个操作：`add`、`reset` 和 `get`，每个操作针对整数状态运行。
 
@@ -75,7 +75,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
             ctx.SetState(0);
             break;
         case "get":
-            ctx.Return(ctx.GetState<int>()));
+            ctx.Return(ctx.GetState<int>());
             break;
     }
 }
@@ -83,7 +83,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 
 有关基于函数的语法及其用法的详细信息，请参阅[基于函数的语法](durable-functions-dotnet-entities.md#function-based-syntax)。
 
-### <a name="example-class-based-syntax"></a>示例：基于类的语法
+### <a name="example-class-based-syntax---c"></a>示例：基于类的语法 - C#
 
 以下示例是使用类和方法的 `Counter` 实体的等效实现。
 
@@ -109,6 +109,45 @@ public class Counter
 此实体的状态是 `Counter` 类型的对象，该对象包含存储计数器当前值的字段。 为了将此对象持久保存在存储中，[Json.NET](https://www.newtonsoft.com/json) 库会将其序列化和反序列化。 
 
 有关基于类的语法及其用法的详细信息，请参阅[定义实体类](durable-functions-dotnet-entities.md#defining-entity-classes)。
+
+### <a name="example-javascript-entity"></a>示例：JavaScript 实体
+
+从 `durable-functions` npm 包版本 1.3.0 开始，JavaScript 中提供了持久实体  。 以下代码是作为使用 JavaScript 编写的持久函数实现的计数器实体  。
+
+**function.json**
+```json
+{
+  "bindings": [
+    {
+      "name": "context",
+      "type": "entityTrigger",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+**index.js**
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.entity(function(context) {
+    const currentValue = context.df.getState(() => 0);
+    switch (context.df.operationName) {
+        case "add":
+            const amount = context.df.getInput();
+            context.df.setState(currentValue + amount);
+            break;
+        case "reset":
+            context.df.setState(0);
+            break;
+        case "get":
+            context.df.return(currentValue);
+            break;
+    }
+});
+```
 
 ## <a name="accessing-entities"></a>访问实体
 
@@ -145,6 +184,16 @@ public static Task Run(
 }
 ```
 
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    await context.df.signalEntity(entityId, "add", 1);
+};
+```
+
 术语“信号”是指实体 API 调用是单向、异步的。  客户端函数无法知道实体何时处理了操作。  另外，客户端函数无法观察到任何结果值或异常。 
 
 ### <a name="example-client-reads-an-entity-state"></a>示例：客户端读取实体状态
@@ -163,6 +212,16 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    return context.df.readEntityState(entityId);
+};
+```
+
 实体状态查询将发送到持久跟踪存储，并返回实体的最近持久状态。  此状态始终为“已提交”，即，它永远不会是在执行操作的中途设想的暂时中间状态。 但是，与实体的内存中状态相比，此状态可能已过时。 如下一部分所述，只有业务流程可以读取实体的内存中状态。
 
 ### <a name="example-orchestration-signals-and-calls-an-entity"></a>示例：业务流程向实体发出信号和调用实体
@@ -176,7 +235,7 @@ public static async Task Run(
 {
     var entityId = new EntityId(nameof(Counter), "myCounter");
 
-   // Two-way call to the entity which returns a value - awaits the response
+    // Two-way call to the entity which returns a value - awaits the response
     int currentValue = await context.CallEntityAsync<int>(entityId, "Get");
     if (currentValue < 10)
     {
@@ -184,6 +243,21 @@ public static async Task Run(
         context.SignalEntity(entityId, "Add", 1);
     }
 }
+```
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context){
+    const entityId = new df.EntityId("Counter", "myCounter");
+
+    // Two-way call to the entity which returns a value - awaits the response
+    currentValue = yield context.df.callEntity(entityId, "get");
+    if (currentValue < 10) {
+        // One-way signal to the entity which updates the value - does not await a response
+        yield context.df.signalEntity(entityId, "add", 1);
+    }
+});
 ```
 
 只有业务流程能够调用实体和获取响应，该响应可能是返回值或异常。 使用[客户端绑定](durable-functions-bindings.md#entity-client)的客户端函数只能发送实体的信号。 
@@ -198,82 +272,33 @@ public static async Task Run(
 
 ```csharp
    case "add":
+        var currentValue = ctx.GetState<int>();
         var amount = ctx.GetInput<int>();
         if (currentValue < 100 && currentValue + amount >= 100)
         {
             ctx.SignalEntity(new EntityId("MonitorEntity", ""), "milestone-reached", ctx.EntityKey);
         }
-        currentValue += amount;
+
+        ctx.SetState(currentValue + amount);
         break;
 ```
 
-以下代码片段演示如何将注入的服务合并到实体类中。
-
-```csharp
-public class HttpEntity
-{
-    private readonly HttpClient client;
-
-    public HttpEntity(IHttpClientFactory factory)
-    {
-        this.client = factory.CreateClient();
-    }
-
-    public async Task<int> GetAsync(string url)
-    {
-        using (var response = await this.client.GetAsync(url))
-        {
-            return (int)response.StatusCode;
+```javascript
+    case "add":
+        const amount = context.df.getInput();
+        if (currentValue < 100 && currentValue + amount >= 100) {
+            const entityId = new df.EntityId("MonitorEntity", "");
+            context.df.signalEntity(entityId, "milestone-reached", context.df.instanceId);
         }
-    }
-
-    // The function entry point must be declared static
-    [FunctionName(nameof(HttpEntity))]
-    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
-        => ctx.DispatchAsync<HttpEntity>();
-}
+        context.df.setState(currentValue + amount);
+        break;
 ```
-
-> [!NOTE]
-> 与在常规 .NET Azure Functions 中使用构造函数注入不同，必须将基于类的实体的函数入口点方法声明为 `static`。  声明非静态函数入口点可能导致正常的 Azure Functions 对象初始值设定项与持久实体对象初始值设定项之间发生冲突。
-
-### <a name="bindings-in-entity-classes-net"></a>实体类中的绑定 (.NET)
-
-与普通函数不同，实体类方法不能直接访问输入和输出绑定。 必须在入口点函数声明中捕获绑定数据，然后将其传递给 `DispatchAsync<T>` 方法。 传递给 `DispatchAsync<T>` 的任何对象将作为参数自动传入实体类构造函数。
-
-以下示例演示如何将 [Blob 输入绑定](../functions-bindings-storage-blob.md#input)中的 `CloudBlobContainer` 引用提供给基于类的实体使用。
-
-```csharp
-public class BlobBackedEntity
-{
-    private readonly CloudBlobContainer container;
-
-    public BlobBackedEntity(CloudBlobContainer container)
-    {
-        this.container = container;
-    }
-
-    // ... entity methods can use this.container in their implementations ...
-    
-    [FunctionName(nameof(BlobBackedEntity))]
-    public static Task Run(
-        [EntityTrigger] IDurableEntityContext context,
-        [Blob("my-container", FileAccess.Read)] CloudBlobContainer container)
-    {
-        // passing the binding object as a parameter makes it available to the
-        // entity class constructor
-        return context.DispatchAsync<BlobBackedEntity>(container);
-    }
-}
-```
-
-有关 Azure Functions 中的绑定的详细信息，请参阅 [Azure Functions 触发器和绑定](../functions-triggers-bindings.md)文档。
 
 ## <a name="entity-coordination"></a>实体协调
 
 有时可能需要跨多个实体协调操作。 例如，在银行应用程序中，可能会使用实体来代表不同的银行帐户。 将资金从一个帐户转到另一个帐户时，必须确保源帐户具有足够的资金，并且对源和目标帐户的更新必须以事务一致的方式完成。   
 
-### <a name="example-transfer-funds"></a>示例：转移资金
+### <a name="example-transfer-funds-c"></a>示例：转移资金 (C#)
 
 以下示例代码使用业务流程协调程序函数在两个 _account_ 实体之间转移资金。 协调实体更新需要使用 `LockAsync` 方法在业务流程中创建一个关键的节： 
 
@@ -322,7 +347,7 @@ public static async Task<bool> TransferFundsAsync(
 
 在 .NET 中，`LockAsync` 在释放时会返回一个以关键节结尾的 `IDisposable`。 可将此 `IDisposable` 结果与 `using` 块一起使用，以获取关键节的语法表示形式。
 
-在上面的示例中，业务流程协调程序函数已将资金从源实体转到目标实体。   `LockAsync` 方法同时锁定了源和目标帐户实体。   这种锁定确保在业务流程逻辑退出位于 `using` 语句末尾的关键节之前，其他任何客户端都不能查询或修改任一帐户的状态。  这可以有效地防止从源帐户透支的情况。 
+在上面的示例中，业务流程协调程序函数已将资金从源实体转到目标实体。   `LockAsync` 方法同时锁定了源和目标帐户实体。   这种锁定确保在业务流程逻辑退出位于 `using` 语句末尾的关键节之前，其他任何客户端都不能查询或修改任一帐户的状态。  此行为可防止从源帐户透支的情况  。
 
 > [!NOTE] 
 > 当业务流程终止（正常终止，或终止并出错）时，正在进行的所有关键节都会隐式结束，并释放所有锁。

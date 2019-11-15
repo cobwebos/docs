@@ -1,5 +1,5 @@
 ---
-title: 数据工厂（数据集成服务）简介 | Microsoft 文档
+title: 数据工厂（数据集成服务）简介
 description: 了解什么是 Azure 数据工厂：协调和自动执行数据移动和转换的云数据集成服务。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 2e508839cd343820a36cc715ebde0f47c2ac4ab1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 30578f204ff05443de82015627d67d3d4d357dce
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139510"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666806"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure 数据工厂简介 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]

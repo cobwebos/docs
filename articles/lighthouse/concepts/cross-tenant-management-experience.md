@@ -4,19 +4,19 @@ description: Azure 委派资源管理可实现跨租户管理体验。
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 10/18/2019
+ms.date: 11/7/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 8d7b1f24d5dcf3d66ffd04704c79a284c4810365
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 182970cc39d200c37264a93d5e1b70c8839e5ef7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598454"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825824"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
-本文描述了适用于服务提供商的一些方案，这些方案可与 [Azure 委派资源管理](../concepts/azure-delegated-resource-management.md)配合使用，以便在 [Azure 门户](https://portal.azure.com)中为租户内的多个客户管理 Azure 资源。
+作为服务提供商，可以使用 [Azure 委派资源管理](../concepts/azure-delegated-resource-management.md)，以便在 [Azure 门户](https://portal.azure.com)中为租户内的多个客户管理 Azure 资源。 大多数任务和服务都可以跨托管租户在委派的 Azure 资源上执行。 本文介绍了一些可实现有效 Azure 委托资源管理的增强方案。
 
 > [!NOTE]
 > 还可在拥有多个租户的企业中使用 Azure 委派资源管理，以简化跨租户管理。
@@ -37,9 +37,20 @@ Azure 委派资源管理可更灵活地管理多个客户的资源，而无需�
 
 ![通过一个服务提供商租户管理的客户资源](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
-## <a name="supported-services-and-scenarios"></a>支持的服务和方案
+## <a name="apis-and-management-tool-support"></a>API 和管理工具支持
 
-目前，跨租户管理体验对于委派的客户资源支持以下方案：
+可以直接在门户中对委派资源执行管理任务，也可以使用 API 和管理工具（如 Azure CLI 和 Azure PowerShell）对委派资源执行管理任务。 在处理委托的资源时，只要跨租户管理支持该功能，并且用户具有相应的权限，可以使用所有现有 API。
+
+我们还提供用于执行 Azure 委派资源管理任务的 API。 有关详细信息，请参阅“参考”部分  。
+
+## <a name="enhanced-services-and-scenarios"></a>增强的服务和方案
+
+大多数任务和服务都可对跨托管租户的委托资源执行。 下面是可有效进行跨租户管理的一些关键方案。
+
+[用于服务器的 Azure Arc（预览版）](https://docs.microsoft.com/azure/azure-arc/servers/overview)：
+
+- [将 Azure 外部的 Windows Server 或 Linux 计算机连接](https://docs.microsoft.com/azure/azure-arc/servers/quickstart-onboard-portal)到 Azure 中的委派订阅和/或资源组
+- 使用 Azure 构造（如Azure Policy 和标记）管理连接的计算机
 
 [Azure 自动化](https://docs.microsoft.com/azure/automation/)：
 
@@ -55,7 +66,7 @@ Azure 委派资源管理可更灵活地管理多个客户的资源，而无需�
 
 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)：
 
-- 在 Microsoft Azure 门户中查看委托订阅的警报，或通过 REST API 调用以编程方式查看所有订阅中的警报
+- 查看委派订阅的警报，并能够查看所有订阅的警报
 - 查看委派订阅的活动日志详细信息
 - 日志分析：从多个租户中的远程客户工作区查询数据
 - 通过 Webhook 在服务提供商租户中创建触发自动化（例如 Azure Automation Runbook 或 Azure Functions）的客户租户警报
@@ -121,16 +132,9 @@ Azure 委派资源管理可更灵活地管理多个客户的资源，而无需�
 对于所有方案，都请注意以下当前限制：
 
 - 可以使用 Azure 委派资源管理执行 Azure 资源管理器处理的请求。 这些请求的操作 URI 都以 `https://management.azure.com` 开头。 但是，Azure 委派资源管理不支持由资源类型的实例处理的请求（如 KeyVault 机密访问或存储数据访问）。 这些请求的操作 URI 通常以实例特有的地址开头，例如 `https://myaccount.blob.core.windows.net` 或 `https://mykeyvault.vault.azure.net/`。 后者通常也是数据操作，而不是管理操作。 
-- 角色分配必须使用基于角色的访问控制 (RBAC) [内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。 除所有者、用户访问管理员或具有 [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) 权限的任何内置角色外，Azure 委派资源管理当前支持所有内置角色。 也不支持自定义角色和[经典订阅管理员角色](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators)。
-- 目前，如果订阅使用 Azure Databricks，则无法将订阅（或订阅内的资源组）载入到 Azure 委托资源管理。 同样，如果订阅已注册为通过 Microsoft.ManagedServices 资源提供程序加入，则目前无法为该订阅创建 Databricks 工作区  。
+- 角色分配必须使用基于角色的访问控制 (RBAC) [内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。 除了所有者或具有 [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) 权限的任何内置角色之外，Azure 委派资源管理当前支持其他所有内置角色。 仅在[向托管标识分配角色](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)时才支持使用用户访问管理员角色。  不支持自定义角色和[经典订阅管理员角色](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators)。
+- 目前，如果订阅使用 Azure Databricks，则无法为 Azure 委托资源管理载入订阅（或订阅内的资源组）。 同样，如果订阅已注册为通过 Microsoft.ManagedServices 资源提供程序加入，则目前无法为该订阅创建 Databricks 工作区  。
 - 虽然可以为具有资源锁的 Azure 委托资源管理加入订阅和资源组，但这些锁不会阻止管理租户中的用户执行操作。 用于保护系统管理资源（例如由 Azure 托管应用程序或 Azure 蓝图创建的资源）的[拒绝分配](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments)（系统分配的拒绝分配）会阻止管理租户中的用户对这些资源进行操作；但是，此时客户租户中的用户无法创建自己的拒绝分配（用户分配的拒绝分配）。
-
-## <a name="using-apis-and-management-tools-with-cross-tenant-management"></a>使用 API 和管理工具进行跨租户管理
-
-对于上面列出的支持服务和方案，你可以直接在门户中执行管理任务，也可以使用 API 和管理工具（如 Azure CLI 和 Azure PowerShell）执行管理任务。 处理（受支持服务的）委派资源时，所有现有的 API 都可用。
-
-还有一些特定于执行 Azure 委派资源管理任务的 API。 有关详细信息，请参阅“参考”部分  。
-
 
 ## <a name="next-steps"></a>后续步骤
 

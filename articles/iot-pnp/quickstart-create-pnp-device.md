@@ -8,22 +8,22 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 6e5e08df444f66f2c5500d968c805552d20901c5
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 019dbe8b977932c6a806f7efca8c0724597718d8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861211"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818046"
 ---
-# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>快速入门：使用设备功能模型创建 IoT 即插即用设备
+# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>快速入门：使用设备功能模型创建 IoT 即插即用预览设备 (Windows)
 
-_设备功能模型_ (DCM) 描述 IoT 即插即用设备的功能。 DCM 通常与产品 SKU 相关联。 DCM 中定义的功能组织成可重复使用的接口。 可以基于 DCM 生成主干设备代码。 本快速入门介绍如何在 VS Code 中使用 DCM 创建 IoT 即插即用设备。
+_设备功能模型_ (DCM) 描述 IoT 即插即用设备的功能。 DCM 通常与产品 SKU 相关联。 DCM 中定义的功能组织成可重复使用的接口。 可以基于 DCM 生成主干设备代码。 本快速入门介绍如何在 Windows 上的 VS Code 中使用 DCM 创建 IoT 即插即用设备。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门，需在本地计算机上安装以下软件：
 
-* [Visual Studio（社区版、专业版或企业版）](https://visualstudio.microsoft.com/downloads/)- 安装 Visual Studio 时，请确保包括“NuGet 包管理器”组件和“使用 C++ 的桌面开发”工作负荷。  
+* [适用于 Visual Studio 的生成工具](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16)，其中包含 C++ 生成工具和 NuGet 包管理器组件工作负荷   。 安装了相同工作负荷的 [Visual Studio（Community、Professional 或 Enterprise）](https://visualstudio.microsoft.com/downloads/)2019、2017 或 2015。
 * [Git](https://git-scm.com/download/)。
 * [CMake](https://cmake.org/download/)。
 * [Visual Studio Code](https://code.visualstudio.com/)。
@@ -38,7 +38,7 @@ _设备功能模型_ (DCM) 描述 IoT 即插即用设备的功能。 DCM 通常�
 
 ### <a name="install-the-azure-iot-explorer"></a>安装 Azure IoT 资源管理器
 
-从[最新版本](https://github.com/Azure/azure-iot-explorer/releases)页下载并安装 Azure IoT 资源管理器工具。
+从 Azure IoT 资源管理器的[存储库](https://github.com/Azure/azure-iot-explorer/releases)页面，选择“资产”下的 .msi 文件以查找最近更新，下载并安装该工具的最新版本  。
 
 ### <a name="get-the-connection-string-for-your-company-model-repository"></a>获取公司模型存储库的连接字符串
 
@@ -77,37 +77,53 @@ az iot hub device-identity show-connection-string --hub-name [YourIoTHubName] --
 az iot hub show-connection-string --hub-name [YourIoTHubName] --output table
 ```
 
+记下如下所示的设备连接字符串：
+
+```json
+HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={YourSharedAccessKey}
+```
+
+稍后会在快速入门中用到此值。
+
 ## <a name="prepare-the-development-environment"></a>准备开发环境
 
 ### <a name="get-azure-iot-device-sdk-for-c"></a>获取适用于 C 的 Azure IoT 设备 SDK
 
-在本快速入门中，你将准备一个用于克隆和生成 Azure IoT C 设备 SDK 的开发环境。
+在本快速入门中，你将通过 [Vcpkg](https://github.com/microsoft/vcpkg) 安装 Azure IoT C 设备 SDK 来准备开发环境。
 
-1. 打开命令提示符。 执行以下命令克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库：
+1. 打开命令提示符。 执行以下命令以安装 Vcpkg：
 
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
+    git clone https://github.com/Microsoft/vcpkg.git
+    cd vcpkg
+
+    .\bootstrap-vcpkg.bat
     ```
 
-    应该预料到此操作需要几分钟才能完成。
-
-1. 在存储库本地副本的根目录中创建一个 `pnp_app` 子目录。 使用此文件夹来存储设备模型文件和设备代码存根。
+    然后，若要挂接用户范围的[集成](https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md)，运行以下命令（注意：首次使用时需要管理员）：
 
     ```cmd/sh
-    cd azure-iot-sdk-c
-    mkdir pnp_app
+    .\vcpkg.exe integrate install
+    ```
+
+1. 安装 Azure IoT C 设备 SDK Vcpkg：
+
+    ```cmd/sh
+    .\vcpkg.exe install azure-iot-sdk-c[public-preview,use_prov_client]
     ```
 
 ## <a name="author-your-model"></a>创作模型
 
 在本快速入门中，你将使用现有的示例设备功能模型和关联的接口。
 
+1. 在本地驱动器上创建 `pnp_app` 目录。
+
 1. 下载[设备功能模型](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json)和[接口示例](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json)，并将文件保存到 `pnp_app` 文件夹中。
 
     > [!TIP]
     > 若要从 GitHub 下载某个文件，请导航到该文件，右键单击“原始”，然后选择“链接另存为”。  
 
-1. 使用 VS Code 打开 `pnp_app` 文件夹。 可以使用 Intellisense 查看文件：
+1. 使用 VS Code 打开 `pnp_app` 文件夹。 可以使用 IntelliSense 查看文件：
 
     ![设备功能模型](media/quickstart-create-pnp-device/dcm.png)
 
@@ -120,7 +136,7 @@ az iot hub show-connection-string --hub-name [YourIoTHubName] --output table
 1. 打开包含 DCM 文件的文件夹后，按 **Ctrl+Shift+P** 打开命令面板，输入“IoT 即插即用”，然后选择“生成设备代码存根”。  
 
     > [!NOTE]
-    > 首次使用 IoT 即插即用代码生成器实用工具时，需要花费几秒钟时间来下载组件。
+    > 首次使用 IoT 即插即用 CodeGen CLI 时，需要花费几秒钟时间来自动下载并安装。
 
 1. 选择用于生成设备代码存根的 DCM 文件。
 
@@ -128,47 +144,50 @@ az iot hub show-connection-string --hub-name [YourIoTHubName] --output table
 
 1. 选择“ANSI C”作为语言。 
 
-1. 选择“CMake 项目”作为项目类型。 
-
 1. 选择“通过 IoT 中心设备连接字符串”作为连接方法。 
 
-1. VS Code 将打开一个新窗口，其中包含生成的设备代码存根文件。
+1. 选择“Windows 上的 CMake 项目”作为项目模板  。
+
+1. 选择“通过 Vcpkg”作为包括设备 SDK 的方式  。
+
+1. 会在与 DCM 文件相同的位置创建名为“sample_device”的新文件夹，其中包含生成的设备代码存根文件  。 VS Code 会打开新窗口以显示这些内容。
     ![设备代码](media/quickstart-create-pnp-device/device-code.png)
 
 ## <a name="build-the-code"></a>生成代码
 
-使用设备 SDK 来生成设备代码存根。 生成的应用程序将模拟连接到 IoT 中心的设备。 应用程序将发送遥测数据和属性，并接收命令。
+将生成设备代码存根与设备 SDK 一起生成。 生成的应用程序将模拟连接到 IoT 中心的设备。 应用程序将发送遥测数据和属性，并接收命令。
 
-1. 在 VS Code 中，打开设备 SDK 根文件夹中的 `CMakeLists.txt`。
-
-1. 在 `CMakeLists.txt` 文件的底部添加以下行，以在编译时包含设备代码存根文件夹：
-
-    ```txt
-    add_subdirectory(pnp_app/sample_device)
-    ```
-
-1. 在设备 SDK 根文件夹中创建一个 cmake 子目录，并导航到该文件夹：
+1. 在 `sample_device` 文件夹中创建 `cmake` 子目录，并导航到该文件夹：
 
     ```cmd\sh
     mkdir cmake
     cd cmake
     ```
 
-1. 运行以下命令以生成设备 SDK 和代码存根：
+1. 运行以下命令，构建生成的代码存根（将占位符替换为 Vcpkg 存储库的目录）：
 
     ```cmd\sh
-    cmake .. -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON
-    cmake --build . -- /m /p:Configuration=Release
+    cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+
+    cmake --build .
     ```
+    
+    > [!NOTE]
+    > 如果使用 Visual Studio 2017 或 2015，则需要根据所使用的生成工具指定 CMake 生成器：
+    >```cmd\sh
+    ># Either
+    >cmake .. -G "Visual Studio 15 2017" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    ># or
+    >cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    >```
 
     > [!NOTE]
     > 如果 cmake 找不到 C++ 编译器，则在运行以上命令时会出现生成错误。 如果出现这种情况，请尝试在 [Visual Studio 命令提示符](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)下运行此命令。
 
-1. 成功完成生成后，运行应用程序并传递 IoT 中心设备连接字符串作为参数。
+1. 成功完成生成后，运行应用程序并将 IoT 中心设备连接字符串作为参数传递。
 
     ```cmd\sh
-    cd azure-iot-sdk-c\cmake\pnp_app\sample_device\Release\
-    sample_device.exe "[IoT Hub device connection string]"
+    .\Debug\sample_device.exe "[IoT Hub device connection string]"
     ```
 
 1. 设备应用程序将开始向 IoT 中心发送数据。
@@ -181,7 +200,7 @@ az iot hub show-connection-string --hub-name [YourIoTHubName] --output table
 
 若要使用“Azure IoT 资源管理器”验证设备代码，需将文件发布到模型存储库。 
 
-1. 打开包含 DCM 文件的文件夹后，按 **Ctrl+Shift+P** 打开命令面板，然后键入并选择“IoT 即插即用:  将文件提交到模型存储库”。
+1. 在 VS Code 中打开包含 DCM 文件的文件夹后，按“Ctrl+Shift+P”打开命令面板，然后键入并选择“IoT 即插即用  **：** 将文件提交到模型存储库”。
 
 1. 选择 `SampleDevice.capabilitymodel.json` 和 `EnvironmentalSensor.interface.json` 文件。
 
@@ -203,26 +222,25 @@ az iot hub show-connection-string --hub-name [YourIoTHubName] --output table
 
 1. 连接后，将看到设备概述页。
 
-1. 若要添加公司存储库，请依次选择“设置”、“+ 新建”、“公司存储库”。   
-
-1. 添加公司模型存储库连接字符串。 选择“连接”  。
+1. 若要添加公司存储库，请依次选择“设置”、“+ 添加模块定义源”、“公司存储库”    。 添加公司模型存储库连接字符串，然后选择“保存并连接”  。
 
 1. 在设备概述页上，找到前面创建的设备标识，然后选择该标识以查看更多详细信息。
 
-1. 展开 ID 为 **urn:azureiot:EnvironmentalSensor:1** 的接口，以查看 IoT 即插即用基元 - 属性、命令和遥测。
+1. 展开 ID 为 urn:<YOUR_INTERFACE_NAME>:EnvironmentalSensor:1 的接口，以查看 IoT 即插即用基元 - 属性、命令和遥测  。 将显示的接口名称是在创建模型时输入的名称。
 
-1. 选择“遥测”页查看设备正在发送的遥测数据。 
+1. 选择“遥测”页，点击“开始”，查看设备正在发送的遥测数据   。
 
 1. 选择“属性(不可写)”页查看设备报告的不可写属性。 
 
 1. 选择“属性(可写)”页查看可以更新的可写属性。 
 
-1. 展开属性**名称**，更新为新名称，然后选择“更新可写属性”。  
-2. 若要查看“报告的属性”列中显示的新名称，请单击页面顶部的“刷新”按钮。  
+1. 展开属性“名称”，更新为新名称，然后选择“更新可写属性”   。
+
+1. 若要查看“报告的属性”列中显示的新名称，请单击页面顶部的“刷新”按钮。  
 
 1. 选择“命令”页查看设备支持的所有命令。 
 
-1. 展开 **blink** 命令并设置新的闪烁时间间隔。 选择“发送命令”以调用设备上的命令。 
+1. 展开 **blink** 命令并设置新的闪烁时间间隔。 选择“发送命令”以调用设备上的命令  。
 
 1. 转到模拟设备，验证该命令是否按预期方式执行。
 

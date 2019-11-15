@@ -1,5 +1,5 @@
 ---
-title: 通过 .NET 使用 Visual Studio 和 C# 查询 Azure SQL 数据库 | Microsoft Docs
+title: 使用具有 .NET 和 C# 的 Visual Studio 进行查询
 description: 使用 Visual Studio 创建连接到 Azure SQL 数据库的 C# 应用并使用 Transact-SQL 语句对其进行查询。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 3ed11d2b1628cecc0696e4c37135cfc7d2190de5
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: b9bc7d077acd3e6e3716cf0a012205e6de54a4b7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597922"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827052"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>快速入门：使用 Visual Studio 中的 .NET 和 C# 来连接和查询 Azure SQL 数据库
 

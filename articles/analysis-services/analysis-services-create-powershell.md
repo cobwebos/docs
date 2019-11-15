@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 PowerShell 创建 Azure Analysis Services 服务器 | Microsoft Docs
+title: 快速入门 - 使用 PowerShell Azure Analysis Services 创建 Azure Analysis Services | Microsoft Docs
 description: 了解如何使用 PowerShell 创建 Azure Analysis Services 服务器
 author: minewiskan
 ms.service: azure-analysis-services
@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a5517d62e0fa4070411a087e241cad9d82f379b2
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 073193329950e1d7e6a812da4555ec8ba76f65e3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295091"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573182"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>快速入门：创建服务器 - PowerShell
 

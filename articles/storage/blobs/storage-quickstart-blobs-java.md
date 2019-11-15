@@ -1,213 +1,403 @@
 ---
-title: 快速入门：用于 Java SDK v8 的 Azure Blob 存储客户端库
-description: 在对象 (Blob) 存储中创建存储帐户和容器。 然后，使用适用于 Java SDK v8 的 Azure 存储客户端库将 blob 上传到 Azure 存储，下载一个 blob，然后列出容器中的 blob。
+title: 快速入门：Azure Blob 存储库 v12 - Java
+description: 本快速入门介绍如何使用适用于 Java 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 blob。 接下来，将介绍如何将 blob 下载到本地计算机，以及如何在容器中列出所有 blob。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/05/2019
+ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: c88202c41a7ee6b6d215bd185aeca580bcc88eef
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
-ms.translationtype: MT
+ms.topic: quickstart
+ms.openlocfilehash: a7cd61854176dc702f213211b14c2361b3e433ad
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030462"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825365"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-for-java-sdk-v8"></a>快速入门：用于 Java SDK v8 的 Azure Blob 存储客户端库
+# <a name="quickstart-azure-blob-storage-client-library-v12-for-java"></a>快速入门：适用于 Java 的 Azure Blob 存储客户端库 v12
 
-适用于 Java 的 Azure Blob 存储客户端库入门。 Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 请按照步骤操作，安装程序包并试用基本任务的示例代码。 Blob 存储最适合存储巨量的非结构化数据。
+适用于 Java 的 Azure Blob 存储客户端库 v12 入门。 Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 请按照步骤操作，安装程序包并试用基本任务的示例代码。 Blob 存储最适合存储巨量的非结构化数据。
 
-使用适用于 Java 的 Azure Blob 存储客户端库来执行以下操作：
+> [!NOTE]
+> 若要开始使用以前的 SDK 版本，请参阅[快速入门：适用于 Java 的 Azure Blob 存储客户端库](storage-quickstart-blobs-java-legacy.md)。
+
+使用适用于 Java 的 Azure Blob 存储客户端库 v12 完成以下操作：
 
 * 创建容器
-* 设置容器权限
-* 在 Azure 存储中创建 blob
-* 将 blob 下载到本地计算机
+* 将 blob 上传到 Azure 存储
 * 列出容器中所有的 blob
+* 将 Blob 下载到本地计算机
 * 删除容器
+
+[API 参考文档](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob) | [包 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob?repo=jcenter) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
+* [Java 开发工具包 (JDK)](/java/azure/jdk/?view=azure-java-stable) 8 或更高版本
+* [Apache Maven](https://maven.apache.org/download.cgi)
 * Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 * Azure 存储帐户 - [创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* 具有 Maven 集成的 IDE。
-* 或者，从命令行安装和配置 Maven。
 
-本指南使用具有“适用于 Java 开发者的 Eclipse IDE”配置的 [Eclipse](https://www.eclipse.org/downloads/)。
+## <a name="setting-up"></a>设置
 
-## <a name="download-the-sample-application"></a>下载示例应用程序
+本部分逐步指导如何准备一个项目，使其与适用于 Java 的 Azure Blob 存储客户端库 v12 配合使用。
 
-[示例应用程序](https://github.com/Azure-Samples/storage-blobs-java-quickstart)是基本的控制台应用程序。  
+### <a name="create-the-project"></a>创建项目
 
-使用 [git](https://git-scm.com/) 可将应用程序的副本下载到开发环境。 
+创建名为 blob-quickstart-v12 的 Java Core 应用程序  。
 
-```bash
-git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
+1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 Maven 创建名为 blob-quickstart-v12 的新控制台应用  。 在单个行上键入以下“mvn”命令，创建简单的“Hello World!  ” Java 项目。 为了便于阅读，这里以多行显示该命令。
+
+   ```console
+   mvn archetype:generate -DgroupId=com.blobs.quickstart
+                          -DartifactId=blob-quickstart-v12
+                          -DarchetypeArtifactId=maven-archetype-quickstart
+                          -DarchetypeVersion=1.4
+                          -DinteractiveMode=false
+   ```
+
+1. 生成项目的输出应如下所示：
+
+    ```console
+    [INFO] Scanning for projects...
+    [INFO]
+    [INFO] ------------------< org.apache.maven:standalone-pom >-------------------
+    [INFO] Building Maven Stub Project (No POM) 1
+    [INFO] --------------------------------[ pom ]---------------------------------
+    [INFO]
+    [INFO] >>> maven-archetype-plugin:3.1.2:generate (default-cli) > generate-sources @ standalone-pom >>>
+    [INFO]
+    [INFO] <<< maven-archetype-plugin:3.1.2:generate (default-cli) < generate-sources @ standalone-pom <<<
+    [INFO]
+    [INFO]
+    [INFO] --- maven-archetype-plugin:3.1.2:generate (default-cli) @ standalone-pom ---
+    [INFO] Generating project in Batch mode
+    [INFO] ----------------------------------------------------------------------------
+    [INFO] Using following parameters for creating project from Archetype: maven-archetype-quickstart:1.4
+    [INFO] ----------------------------------------------------------------------------
+    [INFO] Parameter: groupId, Value: com.blobs.quickstart
+    [INFO] Parameter: artifactId, Value: blob-quickstart-v12
+    [INFO] Parameter: version, Value: 1.0-SNAPSHOT
+    [INFO] Parameter: package, Value: com.blobs.quickstart
+    [INFO] Parameter: packageInPathFormat, Value: com/blobs/quickstart
+    [INFO] Parameter: version, Value: 1.0-SNAPSHOT
+    [INFO] Parameter: package, Value: com.blobs.quickstart
+    [INFO] Parameter: groupId, Value: com.blobs.quickstart
+    [INFO] Parameter: artifactId, Value: blob-quickstart-v12
+    [INFO] Project created from Archetype in dir: C:\QuickStarts\blob-quickstart-v12
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time:  7.056 s
+    [INFO] Finished at: 2019-10-23T11:09:21-07:00
+    [INFO] ------------------------------------------------------------------------
+        ```
+
+1. Switch to the newly created *blob-quickstart-v12* folder.
+
+   ```console
+   cd blob-quickstart-v12
+   ```
+
+1. 在 blob-quickstart-v12 目录中，创建名为 data 的另一个目录   。 将在这里创建和存储 blob 数据文件。
+
+    ```console
+    mkdir data
+    ```
+
+### <a name="install-the-package"></a>安装包
+
+在文本编辑器中打开 pom.xml 文件  。 将以下依赖项元素添加到依赖项组。
+
+```xml
+<dependency>
+    <groupId>com.azure</groupId>
+    <artifactId>azure-storage-blob</artifactId>
+    <version>12.0.0</version>
+</dependency>
 ```
 
-此命令会将存储库克隆到本地 git 文件夹。 若要打开项目，请启动 Eclipse 并关闭欢迎屏幕。 选择“文件”，然后选择“从文件系统打开项目”。 请确保已选中“检测并配置项目性质”。 选择“目录”，然后导航到存储克隆存储库的位置。 在克隆的存储库中，选择 **blobAzureApp** 文件夹。 请确保 blobAzureApp 项目显示为 Eclipse 项目，然后选择“完成”。
+### <a name="set-up-the-app-framework"></a>设置应用框架
 
-完成项目导入后，打开 AzureApp.java（位于 src/main/java 内的 blobQuickstart.blobAzureApp 中），并替换 `storageConnectionString` 字符串中的 `accountname` 和 `accountkey`。 然后运行应用程序。 以下部分是有关如何完成这些任务的具体说明。
+从项目目录中执行以下操作：
 
-[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]    
+1. 导航到 /src/main/java/com/blobs/quickstart 目录 
+1. 在编辑器中打开 App.java 文件 
+1. 删除 `System.out.println("Hello world!");` 语句
+1. 添加 `import` 指令
 
-## <a name="configure-your-storage-connection-string"></a>配置存储连接字符串
-    
-在应用程序中，必须为存储帐户提供连接字符串。 打开 AzureApp.Java 文件。 找到 `storageConnectionString` 变量，然后粘贴在上一部分复制的连接字符串值。 `storageConnectionString` 变量看起来应该类似于以下代码示例：
+代码如下：
 
 ```java
-public static final String storageConnectionString =
-"DefaultEndpointsProtocol=https;" +
-"AccountName=<account-name>;" +
-"AccountKey=<account-key>";
+package com.blobs.quickstart;
+
+/**
+ * Azure blob storage v12 SDK quickstart
+ */
+import com.azure.storage.blob.*;
+import com.azure.storage.blob.models.*;
+import java.io.*;
+
+public class App
+{
+    public static void main( String[] args ) throws IOException
+    {
+    }
+}
 ```
 
-## <a name="run-the-sample"></a>运行示例
+### <a name="copy-your-credentials-from-the-azure-portal"></a>从 Azure 门户复制凭据
 
-此示例应用程序在默认目录（对于 Windows 用户，为 *C:\Users\<user>\AppData\Local\Temp*）中创建一个测试文件，将其上传到 Blob 存储，列出容器中的 Blob，然后下载具有新名称的文件，以便比较旧文件和新文件。 
+当示例应用程序向 Azure 存储发出请求时，必须对其进行授权。 若要对请求进行授权，请将存储帐户凭据以连接字符串形式添加到应用程序中。 按照以下步骤查看存储帐户凭据：
 
-使用 Maven 在命令行运行示例。 打开 shell 并导航到已克隆目录中的 blobAzureApp。 然后输入 `mvn compile exec:java`。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 找到自己的存储帐户。
+3. 在存储帐户概述的“设置”部分，选择“访问密钥”。   在这里，可以查看你的帐户访问密钥以及每个密钥的完整连接字符串。
+4. 找到“密钥 1”下面的“连接字符串”值，选择“复制”按钮复制该连接字符串。    下一步需将此连接字符串值添加到某个环境变量。
 
-如果打算在 Windows 上运行应用程序，请参阅以下示例显示的输出。
+    ![显示如何从 Azure 门户复制连接字符串的屏幕截图](../../../includes/media/storage-copy-connection-string-portal/portal-connection-string.png)
 
+### <a name="configure-your-storage-connection-string"></a>配置存储连接字符串
+
+复制连接字符串以后，请将其写入运行应用程序的本地计算机的新环境变量中。 若要设置环境变量，请打开控制台窗口，并遵照适用于操作系统的说明。 将 `<yourconnectionstring>` 替换为实际的连接字符串。
+
+#### <a name="windows"></a>Windows
+
+```cmd
+setx CONNECT_STR "<yourconnectionstring>"
 ```
-Azure Blob storage quick start sample
-Creating container: quickstartcontainer
-Creating a sample file at: C:\Users\<user>\AppData\Local\Temp\sampleFile514658495642546986.txt
-Uploading the sample file 
-URI of blob is: https://myexamplesacct.blob.core.windows.net/quickstartcontainer/sampleFile514658495642546986.txt
-The program has completed successfully.
-Press the 'Enter' key while in the console to delete the sample files, example container, and exit the application.
 
-Deleting the container
-Deleting the source, and downloaded files
+在 Windows 中添加环境变量后，必须启动命令窗口的新实例。
+
+#### <a name="linux"></a>Linux
+
+```bash
+export CONNECT_STR="<yourconnectionstring>"
 ```
 
-检查示例文件的默认目录（对于 Windows 用户，为 *C:\Users\<user>\AppData\Local\Temp*），再继续操作。 从控制台窗口复制 blob 的 URL，将其粘贴到浏览器，查看 Blob 存储中的文件的内容。 如果将目录中的示例文件与 Blob 存储中的内容进行比较，则会发现它们是相同的。 
+#### <a name="macos"></a>macOS
 
-  >[!NOTE]
-  >还可以使用工具（如 [Azure 存储资源管理器](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)）查看 Blob 存储中的文件。 Azure 存储资源管理器是免费的跨平台工具，可用于访问存储帐户信息。
+```bash
+export CONNECT_STR="<yourconnectionstring>"
+```
 
-验证文件后，按 **Enter** 键可完成演示并删除测试文件。 现在已了解此示例的用途，打开 AzureApp.java 文件可查看代码。 
+#### <a name="restart-programs"></a>重新启动程序
 
-## <a name="understand-the-sample-code"></a>了解示例代码
+添加环境变量后，重启需要读取环境变量的任何正在运行的程序。 例如，重启开发环境或编辑器，然后再继续。
 
-接下来逐步介绍示例代码，以便展示其工作方式。
+## <a name="object-model"></a>对象模型
 
-### <a name="get-references-to-the-storage-objects"></a>获取对存储对象的引用
+Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数据是不遵循特定数据模型或定义（如文本或二进制数据）的数据。 Blob 存储提供了三种类型的资源：
 
-首先创建对用于访问和管理 Blob 存储的对象的引用。 这些对象相互关联 - 每个对象被列表中的下一个对象使用。
+* 存储帐户
+* 存储帐户中的容器
+* 容器中的 blob
 
-* 创建指向存储帐户的 [CloudStorageAccount](/java/api/com.microsoft.azure.management.storage.storageaccount) 对象的实例。
+以下图示显示了这些资源之间的关系。
 
-    “CloudStorageAccount”对象是存储帐户的表示形式，允许用户以编程方式设置和访问存储帐户属性。 使用“CloudStorageAccount”对象，可创建访问 blob 服务所需的“CloudBlobClient”实例。
+![Blob 存储体系结构的图示](./media/storage-blob-introduction/blob1.png)
 
-* 创建 CloudBlobClient 对象的实例，该对象指向存储帐户中的 [Blob 服务](/java/api/com.microsoft.azure.storage.blob._cloud_blob_client)。
+使用以下 Java 类与这些资源进行交互：
 
-    “CloudBlobClient”提供对 Blob 服务的访问点，允许用户以编程方式设置和访问 Blob 存储属性。 使用“CloudBlobClient”，可创建“CloudBlobContainer”对象的实例，创建容器需要该实例。
+* [BlobServiceClient](/java/api/com.azure.storage.blob.blobserviceclient)：`BlobServiceClient` 类可用于操纵 Azure 存储资源和 blob 容器。 存储帐户为 Blob 服务提供顶级命名空间。
+* [BlobServiceClientBuilder](/java/api/com.azure.storage.blob.blobserviceclientbuilder)：`BlobServiceClientBuilder` 类提供流畅的生成器 API，以帮助对 `BlobServiceClient` 对象的配置和实例化。
+* [BlobContainerClient](/java/api/com.azure.storage.blob.blobcontainerclient)：`BlobContainerClient` 类可用于操纵 Azure 存储容器及其 blob。
+* [BlobClient](/java/api/com.azure.storage.blob.blobclient)：`BlobClient` 类可用于操纵 Azure 存储 blob。
+* [BlobItem](/java/api/com.azure.storage.blob.blobitem)：`BlobItem` 类表示从对 `listBlobsFlat` 的调用返回的单个 blob。
 
-* 创建 [CloudBlobContainer](/java/api/com.microsoft.azure.storage.blob._cloud_blob_container) 对象的实例，该对象代表所访问的容器。 使用容器来组织 Blob，就像使用计算机上的文件夹组织文件一样。    
+## <a name="code-examples"></a>代码示例
 
-    有了 **CloudBlobContainer** 后，就可以创建 [CloudBlockBlob](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob) 对象（该对象指向你感兴趣的特定 Blob）的实例，然后执行上传、下载、复制等操作。
+这些示例代码片段演示如何使用适用于 Java 的 Azure Blob 存储客户端库执行以下步骤：
 
-> [!IMPORTANT]
-> 容器名称必须为小写。 有关容器的详细信息，请参阅[命名和引用容器、Blob 和元数据](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
+* [获取连接字符串](#get-the-connection-string)
+* [创建容器](#create-a-container)
+* [将 blob 上传到容器中](#upload-blobs-to-a-container)
+* [列出容器中的 blob](#list-the-blobs-in-a-container)
+* [下载 blob](#download-blobs)
+* [删除容器](#delete-a-container)
+
+### <a name="get-the-connection-string"></a>获取连接字符串
+
+下面的代码从[配置存储连接字符串](#configure-your-storage-connection-string)部分中创建的环境变量中检索存储帐户的连接字符串。
+
+在 `Main` 方法内添加此代码：
+
+```java
+System.out.println("Azure Blob storage v12 - Java quickstart sample\n");
+
+// Retrieve the connection string for use with the application. The storage
+// connection string is stored in an environment variable on the machine
+// running the application called CONNECT_STR. If the environment variable
+// is created after the application is launched in a console or with
+// Visual Studio, the shell or application needs to be closed and reloaded
+// to take the environment variable into account.
+String connectStr = System.getenv("CONNECT_STR");
+```
 
 ### <a name="create-a-container"></a>创建容器
 
-在本部分中，将创建对象的实例、创建新容器，并对容器设置权限，使 blob 公开，只需 URL 即可对其进行访问。 容器名为 quickstartcontainer。 
+确定新容器的名称。 以下代码将 UUID 值追加到容器名称，确保其是唯一的。
 
-此示例使用 [CreateIfNotExists](/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.createifnotexists) ，因为我们想要每次运行示例时都创建新容器。 在生产环境中，应用程序从头至尾都使用相同的容器，因此建议仅调用一次 **CreateIfNotExists**。 或者可以提前创建容器，这样就无需在代码中创建它。
+> [!IMPORTANT]
+> 容器名称必须为小写。 有关命名容器和 Blob 的详细信息，请参阅[命名和引用容器、Blob 和元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
-```java
-// Parse the connection string and create a blob client to interact with Blob storage
-storageAccount = CloudStorageAccount.parse(storageConnectionString);
-blobClient = storageAccount.createCloudBlobClient();
-container = blobClient.getContainerReference("quickstartcontainer");
+接下来，创建 [BlobContainerClient](/java/api/com.azure.storage.blob.blobcontainerclient) 类，然后调用 [create](/java/api/com.azure.storage.blob.blobcontainerclient.create) 方法，在存储帐户中实际创建容器。
 
-// Create the container if it does not exist with public access.
-System.out.println("Creating container: " + container.getName());
-container.createIfNotExists(BlobContainerPublicAccessType.CONTAINER, new BlobRequestOptions(), new OperationContext());
-```
-
-### <a name="upload-blobs-to-the-container"></a>将 blob 上传到容器
-
-若要将文件上传到块 Blob，请获取对目标容器中的 Blob 的引用。 有了 blob 引用后，可以通过使用 [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload) 将数据上传到其中。 此操作会创建 Blob（如果尚未存在），或者覆盖 Blob（若已存在）。
-
-示例代码创建一个用于上传和下载的本地文件，存储作为“源”上传的文件和 blob 中的 blob 名称。 以下示例将文件上传到名为“quickstartcontainer”的容器。
+将此代码添加到 `Main` 方法的末尾：
 
 ```java
-//Creating a sample file
-sourceFile = File.createTempFile("sampleFile", ".txt");
-System.out.println("Creating a sample file at: " + sourceFile.toString());
-Writer output = new BufferedWriter(new FileWriter(sourceFile));
-output.write("Hello Azure!");
-output.close();
+// Create a BlobServiceClient object which will be used to create a container client
+BlobServiceClient blobServiceClient = new BlobServiceClientBuilder().connectionString(connectStr).buildClient();
 
-//Getting a blob reference
-CloudBlockBlob blob = container.getBlockBlobReference(sourceFile.getName());
+//Create a unique name for the container
+String containerName = "quickstartblobs" + java.util.UUID.randomUUID();
 
-//Creating blob and uploading file to it
-System.out.println("Uploading the sample file ");
-blob.uploadFromFile(sourceFile.getAbsolutePath());
+// Create the container and return a container client object
+BlobContainerClient containerClient = blobServiceClient.createBlobContainer(containerName);
 ```
 
-有多个可以与 Blob 存储配合使用的 `upload` 方法，其中包括 [upload](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload)、[uploadBlock](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadblock)、[uploadFullBlob](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadfullblob)、[uploadStandardBlobTier](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadstandardblobtier)、[uploadText](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadtext)。 例如，如果有字符串，可以使用 `UploadText` 方法，而不是 `Upload` 方法。 
+### <a name="upload-blobs-to-a-container"></a>将 blob 上传到容器中
 
-块 blob 可以是任何类型的文本或二进制文件。 页 Blob 主要用于支持 IaaS VM 的 VHD 文件。 将追加 Blob 用于日志记录，例如有时需要写入到文件，再继续添加更多信息。 存储在 Blob 存储中的大多数对象都是块 blob。
+以下代码片段：
+
+1. 在本地 data 目录中创建文本文件  。
+1. 对在[创建容器](#create-a-container)部分创建的容器调用 [getBlobClient](/java/api/com.azure.storage.blob.blobcontainerclient.getblobclient) 方法，获取对 [BlobClient](/java/api/com.azure.storage.blob.blobclient) 对象的引用。
+1. 通过调用 [uploadFromFile](/java/api/com.azure.storage.blob.blobclient.uploadfromfile) 方法将本地文本文件上传到 blob。 此方法将创建 Blob（如果该 Blob 尚不存在），或者覆盖 Blob（如果该 Blob 已存在）。
+
+将此代码添加到 `Main` 方法的末尾：
+
+```java
+// Create a local file in the ./data/ directory for uploading and downloading
+String localPath = "./data/";
+String fileName = "quickstart" + java.util.UUID.randomUUID() + ".txt";
+File localFile = new File(localPath + fileName);
+
+// Write text to the file
+FileWriter writer = new FileWriter(localPath + fileName, true);
+writer.write("Hello, World!");
+writer.close();
+
+// Get a reference to a blob
+BlobClient blobClient = containerClient.getBlobClient(fileName);
+
+System.out.println("\nUploading to Blob storage as blob:\n\t" + blobClient.getBlobUrl());
+
+// Upload the blob
+blobClient.uploadFromFile(localPath + fileName);
+```
 
 ### <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
 
-可以使用 [CloudBlobContainer.ListBlobs](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobs) 获取容器中的文件列表。 下面的代码检索 blob 列表，然后循环访问它们，显示找到的 blob 的 URI。 可以从命令窗口中复制 URI，然后将其粘贴到浏览器以查看文件。
+通过调用 [listBlobsFlat](/java/api/com.azure.storage.blob.blobcontainerclient.listblobsflat) 方法，列出容器中的 blob。 在这种情况下，只向容器添加了一个 blob，因此列表操作只返回那个 blob。
+
+将此代码添加到 `Main` 方法的末尾：
 
 ```java
-//Listing contents of container
-for (ListBlobItem blobItem : container.listBlobs()) {
-    System.out.println("URI of blob is: " + blobItem.getUri());
+System.out.println("\nListing blobs...");
+
+// List the blob(s) in the container.
+for (BlobItem blobItem : containerClient.listBlobs()) {
+    System.out.println("\t" + blobItem.getName());
 }
 ```
 
 ### <a name="download-blobs"></a>下载 Blob
 
-使用 [CloudBlob.DownloadToFile](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob.downloadtofile) 将 blob 下载到本地磁盘。
+通过调用 [downloadToFile](/java/api/com.azure.storage.blob.blobclient.downloadtofile) 方法，下载以前创建的 blob。 示例代码将向文件名添加后缀“DOWNLOAD”，这样你就可以在本地文件系统中看到这两个文件。
 
-以下代码下载上一部分上传的 blob，对 blob 名称添加“_DOWNLOADED”后缀，以便可以在本地磁盘上看到两个文件。 
-
-```java
-// Download blob. In most cases, you would have to retrieve the reference
-// to cloudBlockBlob here. However, we created that reference earlier, and 
-// haven't changed the blob we're interested in, so we can reuse it. 
-// Here we are creating a new file to download to. Alternatively you can also pass in the path as a string into downloadToFile method: blob.downloadToFile("/path/to/new/file").
-downloadedFile = new File(sourceFile.getParentFile(), "downloadedFile.txt");
-blob.downloadToFile(downloadedFile.getAbsolutePath());
-```
-
-### <a name="clean-up-resources"></a>清理资源
-
-如果不再需要上传的 Blob，可使用 [CloudBlobContainer.DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.deleteifexists) 删除整个容器。 此方法也会删除容器中的文件。
+将此代码添加到 `Main` 方法的末尾：
 
 ```java
-try {
-if(container != null)
-    container.deleteIfExists();
-} catch (StorageException ex) {
-System.out.println(String.format("Service error. Http code: %d and error code: %s", ex.getHttpStatusCode(), ex.getErrorCode()));
-}
+// Download the blob to a local file
+// Append the string "DOWNLOAD" before the .txt extension so that you can see both files.
+String downloadFileName = fileName.replace(".txt", "DOWNLOAD.txt");
+File downloadedFile = new File(localPath + downloadFileName);
 
-System.out.println("Deleting the source, and downloaded files");
+System.out.println("\nDownloading blob to\n\t " + localPath + downloadFileName);
 
-if(downloadedFile != null)
-downloadedFile.deleteOnExit();
-        
-if(sourceFile != null)
-sourceFile.deleteOnExit();
+blobClient.downloadToFile(localPath + downloadFileName);
 ```
+
+### <a name="delete-a-container"></a>删除容器
+
+以下代码使用 [delete](/java/api/com.azure.storage.blob.blobcontainerclient.delete) 方法删除整个容器，从而清除该应用所创建的资源。 它还会删除由应用创建的本地文件。
+
+在删除 blob、容器和本地文件之前，应用会调用 `System.console().readLine()` 以暂停并等待用户输入。 可以通过这种方式验证是否已正确创建资源，然后再删除该资源。
+
+将此代码添加到 `Main` 方法的末尾：
+
+```java
+// Clean up
+System.out.println("\nPress the Enter key to begin clean up");
+System.console().readLine();
+
+System.out.println("Deleting blob container...");
+containerClient.delete();
+
+System.out.println("Deleting the local source and downloaded files...");
+localFile.delete();
+downloadedFile.delete();
+
+System.out.println("Done");
+```
+
+## <a name="run-the-code"></a>运行代码
+
+此应用在本地文件夹中创建测试文件，并将其上传到 Blob 存储。 然后，该示例会列出容器中的 blob，并使用新名称下载文件，这样便可对旧文件和新文件进行比较。
+
+导航到包含 pom.xml 文件的目录，并使用以下 `mvn` 命令编译该项目  。
+
+```console
+mvn compile
+```
+
+然后，生成包。
+
+```console
+mvn package
+```
+
+运行以下 `mvn` 命令以执行应用。
+
+```console
+mvn exec:java -Dexec.mainClass="com.blobs.quickstart.App" -Dexec.cleanupDaemonThreads=false
+```
+
+应用的输出类似于以下示例：
+
+```output
+Azure Blob storage v12 - Java quickstart sample
+
+Uploading to Blob storage as blob:
+        https://mystorageacct.blob.core.windows.net/quickstartblobsf9aa68a5-260e-47e6-bea2-2dcfcfa1fd9a/quickstarta9c3a53e-ae9d-4863-8b34-f3d807992d65.txt
+
+Listing blobs...
+        quickstarta9c3a53e-ae9d-4863-8b34-f3d807992d65.txt
+
+Downloading blob to
+        ./data/quickstarta9c3a53e-ae9d-4863-8b34-f3d807992d65DOWNLOAD.txt
+
+Press the Enter key to begin clean up
+
+Deleting blob container...
+Deleting the local source and downloaded files...
+Done
+```
+
+在开始清理过程之前，请在“MyDocuments”文件夹中查找这两个文件  。 可以打开它们，然后就会观察到它们完全相同。
+
+验证文件后，按 Enter 键以删除测试文件并完成演示  。
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍如何使用 Java 在本地磁盘和 Azure Blob 存储之间传输文件。 若要详细了解 Java 的用法，请转到 GitHub 源代码存储库。
+本快速入门介绍了如何使用 Java 上传、下载和列出 blob。
+
+若要查看 Blob 存储示例应用，请继续执行以下操作：
 
 > [!div class="nextstepaction"]
-> [JAVA API 参考](https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy)
-> [java 代码示例](../common/storage-samples-java.md)
+> [Azure Blob 存储 SDK v12 Java 示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
+
+* 若要了解详细信息，请参阅 [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md)。
+* 有关教程、示例、快速入门和其他文档，请访问[面向 Java 云开发人员的 Azure](/azure/java/)。

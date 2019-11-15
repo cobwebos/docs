@@ -1,26 +1,23 @@
 ---
-title: 使用 Azure 门户启动 Azure Spring Cloud 应用程序
+title: 快速入门：使用 Azure 门户启动 Azure Spring Cloud 应用程序
 description: 使用 Azure 门户将示例应用程序部署到 Azure Spring Cloud。
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 10/04/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 59770bccec57220560eeb5a5204e574ce172fc80
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 11/4/2019
+ms.author: jeconnoc
+ms.openlocfilehash: bc8b834e0dd128457910c46cc1a62382bbc28ee1
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72296477"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721570"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>快速入门：使用 Azure 门户启动 Azure Spring Cloud 应用程序
 
 使用 Azure Spring Cloud 可以在 Azure 上轻松运行基于 Spring Cloud 的微服务应用程序。
 
-本快速入门介绍如何将现有的 Spring Cloud 应用程序部署到 Azure。 [此处](https://github.com/Azure-Samples/PiggyMetrics)提供了本教程中使用的示例应用程序代码的链接。 完成后，可以在线访问所提供的示例应用程序，并可通过 Azure 门户对其进行管理。
+本快速入门介绍如何将现有的 Spring Cloud 应用程序部署到 Azure。  可以在 [GitHub 示例存储库](https://github.com/Azure-Samples/PiggyMetrics)中找到本教程中使用的示例应用程序代码。 完成后，可以在线访问所提供的示例应用程序，并可通过 Azure 门户对其进行管理。
 
 本快速入门介绍如何执行以下操作：
 
@@ -34,7 +31,7 @@ ms.locfileid: "72296477"
 ## <a name="prerequisites"></a>先决条件
 
 >[!Note]
-> 在开始本快速入门之前，请确保你的 Azure 订阅有权访问 Azure Spring Cloud。  由于此服务为预览版服务，我们要求客户先与我们联系，然后我们才能将其订阅添加到允许列表中。  若要探索 Azure Spring Cloud 的功能，请通过电子邮件 (azure-spring-cloud@service.microsoft.com) 联系我们。
+> Azure Spring Cloud 目前以公共预览版的形式提供。 使用公共预览版产品/服务，客户可以在产品/服务正式发布之前体验新功能。  公共预览功能和服务并非供生产使用。  有关预览期间支持的详细信息，请参阅[常见问题解答](https://azure.microsoft.com/support/faq/)或提交[支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。
 
 >[!TIP]
 > Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。  它预装有常用的 Azure 工具，其中包括最新版的 Git、JDK、Maven 和 Azure CLI。 如果你已登录到 Azure 订阅，请从 shell.azure.com 启动 [Azure Cloud Shell](https://shell.azure.com)。  若要详细了解 Azure Cloud Shell，请[阅读我们的文档](../cloud-shell/overview.md)
@@ -44,7 +41,7 @@ ms.locfileid: "72296477"
 1. [安装 Git](https://git-scm.com/)
 2. [安装 JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
 3. [安装 Maven 3.0 或更高版本](https://maven.apache.org/download.cgi)
-4. [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+4. [安装 Azure CLI 2.0.67 或更高版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 5. [注册 Azure 订阅](https://azure.microsoft.com/free/)
 
 ## <a name="install-the-azure-cli-extension"></a>安装 Azure CLI 扩展
@@ -52,16 +49,14 @@ ms.locfileid: "72296477"
 使用以下命令安装用于 Azure CLI 的 Azure Spring Cloud 扩展
 
 ```Azure CLI
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+az extension add --name spring-cloud
 ```
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>在 Azure 门户中预配服务实例
 
-1. 在 Web 浏览器中，打开[此指向 Azure 门户中 Azure Spring Cloud 的链接](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=AppPlatformExtension#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home/searchQuery/Azure%20Spring%20Cloud)。
+1. 在 Web 浏览器中，打开[此指向 Azure 门户中 Azure Spring Cloud 的链接](https://ms.portal.azure.com/#create/Microsoft.AppPlatform)。
 
-    ![ASC 门户的屏幕截图](media/spring-cloud-quickstart-launch-app-portal/goto-portal.png)
-
-1. 选择“Azure Spring Cloud”  以转到概述页。 然后，选择“创建”按钮以开始预配  。
+1. 选择“Azure Spring Cloud”  以转到概述页。 选择“创建”按钮开始预配。 
 
 1. 根据以下指导填写表单：
     - 服务名称：指定服务实例的名称。  该名称必须为 4 到 32 个字符，只能包含小写字母、数字及连字符。  服务名称的第一个字符必须是字母，最后一个字符必须是字母或数字。
@@ -75,28 +70,30 @@ az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-c
 
 1. 转到服务的“概览”页，选择“配置服务器”。  
 
-1. 在“默认存储库”部分，将“URI”设置为“https://github.com/Azure-Samples/piggymetrics”，将“标签”设置为“config”，然后选择“应用”以保存更改。    
+1. 在“默认存储库”部分，将“URI”设置为“https\://github.com/Azure-Samples/piggymetrics”，将“标签”设置为“config”，然后选择“应用”以保存更改     。
 
-    ![ASC 门户的屏幕截图](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+    ![ASC 门户的屏幕截图](media/spring-cloud-tutorial-config-server/portal-config-server.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>生成并部署微服务应用程序
 
-1. 打开命令窗口，运行以下命令，将示例应用存储库克隆到本地计算机。
+1. 打开 [Azure Cloudshell](https://shell.azure.com)，然后将示例应用存储库克隆到本地计算机。  我们先在此处创建一个名为 `source-code` 的临时目录，然后再克隆应用。
 
-    ```cli
+    ```azurecli
+    mkdir source-code
+    cd source-code
     git clone https://github.com/Azure-Samples/piggymetrics
     ```
 
-1. 运行以下命令来生成项目。
+1. 构建克隆包。
 
-    ```cli
-    cd PiggyMetrics
+    ```azurecli
+    cd piggymetrics
     mvn clean package -DskipTests
     ```
 
 1. 登录到 Azure CLI 并活动的订阅。
 
-    ```cli
+    ```azurecli
     # Login to Azure CLI
     az login
 
@@ -123,7 +120,7 @@ az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-c
 
 1. 遵循相同的模式创建 `account-service` 和 `auth-service` 应用程序，并部署其 JAR 文件。
 
-    ```cli
+    ```azurecli
     az spring-cloud app create -n account-service
     az spring-cloud app deploy -n account-service --jar-path ./account-service/target/account-service.jar
     az spring-cloud app create -n auth-service
@@ -135,8 +132,10 @@ az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-c
 ## <a name="assign-a-public-endpoint-to-gateway"></a>将公共终结点分配到网关
 
 1. 打开左侧菜单中的“应用”  选项卡。
-2. 选择 `gateway` 应用程序以显示“概述”  页。
-3. 选择“分配域”，将一个公共终结点分配到网关。  这可能需要花费几分钟时间。
+
+1. 选择 `gateway` 应用程序以显示“概述”  页。
+
+1. 选择“分配域”，将一个公共终结点分配到网关。  这可能需要花费几分钟时间。
 
     ![ASC 门户的屏幕截图](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 

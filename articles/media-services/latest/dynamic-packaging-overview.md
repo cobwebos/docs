@@ -1,6 +1,7 @@
 ---
-title: Azure 媒体服务动态打包概述 | Microsoft 文档
-description: 本文提供 Azure 媒体服务中的动态打包概述。
+title: 媒体服务中的动态打包
+titleSuffix: Azure Media Services
+description: Azure 媒体服务中动态打包的概述。
 author: Juliako
 manager: femila
 editor: ''
@@ -13,22 +14,22 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 35fd511f2383a09898bcd7e7a5227b750c36125a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 304a6168ee5a4c60369b541d4a8cc7ac961913b6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595520"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73574892"
 ---
-# <a name="dynamic-packaging"></a>动态打包
+# <a name="dynamic-packaging-in-media-services"></a>媒体服务中的动态打包
 
-Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码，并通过不同的流协议（无论是否带内容保护）传送到所有主要设备（例如，iOS 和 Android 设备）。 这些客户端了解不同的协议，例如 iOS 要求以 HTTP Live Streaming (HLS) 格式传送流，Android 设备支持 HLS 以及 MPEG DASH。 
+Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码。 它通过不同的流式处理协议（无论是否提供内容保护）来提供它们，以覆盖所有主要设备（如 iOS 和 Android 设备）。 这些客户端可理解不同的协议。 例如，iOS 要求以 HTTP Live Streaming (HLS) 格式传送流，Android 设备支持 HLS 以及 MPEG DASH。
 
-在媒体服务中，[流式处理终结点](streaming-endpoint-concept.md)表示动态（即时）打包和源服务，该服务可使用以下部分所述的常见流式处理媒体协议直接将你的实时和按需内容发送到客户端播放器应用程序。 动态打包是所有流式处理终结点（标准或高级）的标准功能。 
+在媒体服务中，[流式处理终结点](streaming-endpoint-concept.md)表示动态（即时）打包和源服务，该服务可直接将你的实时和按需内容发送到客户端播放器应用。 它使用下一部分中所述的一种常见流式处理媒体协议。 动态打包是所有流式处理终结点（标准或高级）的标准功能。
 
 ## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>准备源文件供传输
 
-若要利用动态打包，需将夹层（源）文件[编码](encoding-concept.md)为一组自适应比特率 MP4（ISO 基本媒体 14496-12）文件。 你需要具备包含媒体服务动态打包所需的编码 MP4 文件和流式处理配置文件的[资产](assets-concept.md)。 通过此组 MP4 文件，可以使用动态打包通过以下流媒体协议传送视频：
+若要利用动态打包，需将夹层（源）文件[编码](encoding-concept.md)为一组自适应比特率 MP4（ISO 基本媒体 14496-12）文件。 你需要具备包含媒体服务动态打包所需的编码 MP4 和流式处理配置文件的[资产](assets-concept.md)。 通过此组 MP4 文件，可以使用动态打包通过以下流媒体协议传送视频：
 
 |协议|示例|
 |---|---|
@@ -46,14 +47,14 @@ Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码�
 
 要使编码资产中的视频可供客户端播放，必须创建[流式处理定位符](streaming-locators-concept.md)，然后生成流式处理 URL。 然后，根据流式处理客户端清单中指定的格式（HLS、MPEG DASH 或平滑流式处理），使用你选择的协议接收流。
 
-因此，只需以单一存储格式存储文件并为其付费，然后媒体服务服务就会基于客户端的请求构建并提供相应响应。 
+因此，只需以单一存储格式存储文件并为其付费，然后媒体服务服务就会基于客户端的请求构建并提供相应响应。
 
 ## <a name="on-demand-streaming-workflow"></a>按需流式处理工作流
 
-以下是常见的媒体服务流式处理工作流，其中动态打包与 Azure 媒体服务中的标准编码器一起使用。
+以下步骤显示了常见的媒体服务流式处理工作流，其中动态打包与 Azure 媒体服务中的标准编码器一起使用。
 
-1. 上传输入文件，如 QuickTime/MOV 或 MXF 文件（有关支持的格式列表，请参阅 [Media Encoder Standard 支持的格式](media-encoder-standard-formats.md)）。 这也称为夹层文件或源文件。
-1. 将夹层文件[编码](#encode-to-adaptive-bitrate-mp4s)为 H.264/AAC MP4 自适应比特率集。 
+1. 上传输入文件，如 QuickTime/MOV 或 MXF 文件。 此文件也称为夹层文件或源文件。 有关受支持格式的列表，请参阅 [Media Encoder Standard 支持的格式](media-encoder-standard-formats.md)。
+1. 将夹层文件[编码](#encode-to-adaptive-bitrate-mp4s)为 H.264/AAC MP4 自适应比特率集。
 1. 发布包含自适应比特率 MP4 集的输出资产。 通过创建流式处理定位符进行发布。
 1. 生成针对不同格式（HLS、MPEG-DASH 和平滑流式处理）的 URL。 **流式处理终结点**将负责为所有这些不同格式提供正确的清单和请求。
 
@@ -65,9 +66,9 @@ Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码�
 
 以下文章介绍[如何使用媒体服务对视频进行编码](encoding-concept.md)的示例：
 
-* [使用内置预设从 HTTPS URL 进行编码](job-input-from-http-how-to.md)
-* [使用内置预设对本地文件进行编码](job-input-from-local-file-how-to.md)
-* [构建自定义预设，以确定特定方案或设备要求](customize-encoder-presets-how-to.md)
+* [使用内置预设从 HTTPS URL 进行编码](job-input-from-http-how-to.md)。
+* [使用内置预设对本地文件进行编码](job-input-from-local-file-how-to.md)。
+* [构建自定义预设，以确定特定方案或设备要求](customize-encoder-presets-how-to.md)。
 
 请参阅 Media Encoder Standard [格式和编解码器](media-encoder-standard-formats.md)的列表。
 
@@ -124,10 +125,10 @@ Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码�
 动态打包不支持包含 [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) 音频（它是旧编解码器）的文件。
 
 > [!NOTE]
-> [高级编码器](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)支持通过旧版 v2 API 编码为 Dolby Digital Plus。 
+> [高级编码器](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)支持通过旧版 v2 API 编码为 Dolby Digital Plus。
 
-## <a name="manifests"></a>清单 
- 
+## <a name="manifests"></a>清单
+
 在媒体服务动态打包中，HLS、MPEG-DASH 和平滑流式处理的流式处理客户端清单是基于 URL 中的格式选择器动态生成的。  
 
 清单文件包含流元数据，例如轨迹类型（音频、视频或文本）、轨迹名称、开始和结束时间、比特率（质量）、轨迹语言、演播窗口（持续时间固定的滑动窗口）和视频编解码器 (FourCC)。 此文件还会通过提供有关下一个可播放视频片段及其位置的信息，来指示播放器检索下一个片段。 片段（或段）实际上是视频内容的“区块”。
@@ -236,7 +237,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 ### <a name="signaling-audio-description-tracks"></a>发出音频描述轨道的信号
 
-可以向视频中添加旁白轨道，以帮助视力受损的客户通过倾听旁白来跟随视频录制。 需要将音轨批注为清单中的音频描述。 为此，请将“accessibility”和“role”参数添加到 .ism 文件中。 你有责任正确设置这些参数，以将音频轨道作为音频描述发信号。 例如，将 `<param name="accessibility" value="description" />` 和 `<param name="role" value="alternate"` 添加到特定音频轨道的 .ism 文件中。 
+可以向视频中添加旁白轨道，以帮助视力受损的客户通过倾听旁白来跟随视频录制。 需要将音轨批注为清单中的音频描述。 为此，请将“accessibility”和“role”参数添加到 .ism 文件中。 你有责任正确设置这些参数，以将音频轨道作为音频描述发出信号。 例如，将 `<param name="accessibility" value="description" />` 和 `<param name="role" value="alternate"` 添加到特定音频轨道的 .ism 文件中。 
 
 有关详细信息，请参阅[如何发出描述性音轨信号](signal-descriptive-audio-howto.md)示例。
 
@@ -275,7 +276,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 ## <a name="need-help"></a>需要帮助？
 
-可以通过导航到[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来开具支持票证
+可以通过导航到[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来开具支持票证。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -283,4 +284,3 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 > 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
 
 了解如何[对视频进行上传、编码和流式处理](stream-files-tutorial-with-api.md)。
-

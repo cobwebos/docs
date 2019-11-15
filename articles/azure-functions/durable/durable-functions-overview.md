@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: a917a823d47d6a072cf5a3ee5d636b432913df9a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 0b85d6fbe8e66b94bad372ccb29e5489dd81587b
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299447"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614786"
 ---
 # <a name="what-are-durable-functions"></a>什么是 Durable Functions？
 
@@ -57,7 +57,7 @@ Durable Functions 的主要用例是简化无服务器应用程序中出现的�
 ```csharp
 [FunctionName("Chaining")]
 public static async Task<object> Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     try
     {
@@ -73,7 +73,7 @@ public static async Task<object> Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+#### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
 
 ```javascript
 const df = require("durable-functions");
@@ -88,10 +88,10 @@ module.exports = df.orchestrator(function*(context) {
 
 在此示例中，值 `F1`、`F2`、`F3` 和 `F4` 是函数应用中其他函数的名称。 可以使用常规命令性编码构造实现控制流。 代码从上到下执行。 代码可能涉及现有语言控制流语义，如条件语句和循环语句。 可以在 `try`/`catch`/`finally` 块中包含错误处理逻辑。
 
-可以使用 `context` 参数 [DurableOrchestrationContext] \(.NET\) 和 `context.df` 对象 (JavaScript) 按名称调用其他函数、传递参数并返回函数输出。 每当代码调用 `await` (C#) 或 `yield` (JavaScript) 时，Durable Functions 框架都会对当前函数实例的进度执行检查点操作。 如果在执行中途回收进程或 VM，则函数实例从上一个 `await` 或 `yield` 调用继续执行。 有关详细信息，请参阅下一部分“模式 #2：扇出/扇入”。
+可以使用 `context` 参数 [IDurableOrchestrationContext] \(.NET\) 和 `context.df` 对象 (JavaScript) 按名称调用其他函数、传递参数并返回函数输出。 每当代码调用 `await` (C#) 或 `yield` (JavaScript) 时，Durable Functions 框架都会对当前函数实例的进度执行检查点操作。 如果在执行中途回收进程或 VM，则函数实例从上一个 `await` 或 `yield` 调用继续执行。 有关详细信息，请参阅下一部分“模式 #2：扇出/扇入”。
 
 > [!NOTE]
-> JavaScript 中的 `context` 对象表示整个[函数上下文](../functions-reference-node.md#context-object) 而不仅仅是 [DurableOrchestrationContext] 参数。
+> JavaScript 中的 `context` 对象表示整个[函数上下文](../functions-reference-node.md#context-object)，而不是仅表示 [IDurableOrchestrationContext] 参数。
 
 ### <a name="fan-in-out"></a>模式 #2：扇出/扇入
 
@@ -108,7 +108,7 @@ Durable Functions 扩展可使用相对简单的代码处理这种模式：
 ```csharp
 [FunctionName("FanOutFanIn")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     var parallelTasks = new List<Task<int>>();
 
@@ -128,7 +128,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+#### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
 
 ```javascript
 const df = require("durable-functions");
@@ -204,7 +204,7 @@ Durable Functions 扩展公开内置的 HTTP API 用于管理长时间运行的�
 
 ![监视模式示意图](./media/durable-functions-concepts/monitor.png)
 
-只需编写少量的代码行，即可使用 Durable Functions 创建多个监视器来观察任意终结点。 满足某个条件时，监视器可以结束执行；或者，[DurableOrchestrationClient](durable-functions-instance-management.md) 可以终止监视器。 可以根据特定的条件（例如指数退避）更改监视器的 `wait` 间隔。 
+只需编写少量的代码行，即可使用 Durable Functions 创建多个监视器来观察任意终结点。 满足某个条件时，监视器可以结束执行，或者 `IDurableOrchestrationClient` 可以终止监视器。 可以根据特定的条件（例如指数退避）更改监视器的 `wait` 间隔。 
 
 以下代码实现一个基本的监视器：
 
@@ -213,7 +213,7 @@ Durable Functions 扩展公开内置的 HTTP API 用于管理长时间运行的�
 ```csharp
 [FunctionName("MonitorJobStatus")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     int jobId = context.GetInput<int>();
     int pollingInterval = GetPollingInterval();
@@ -238,7 +238,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+#### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
 
 ```javascript
 const df = require("durable-functions");
@@ -285,7 +285,7 @@ module.exports = df.orchestrator(function*(context) {
 ```csharp
 [FunctionName("ApprovalWorkflow")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     await context.CallActivityAsync("RequestApproval", null);
     using (var timeoutCts = new CancellationTokenSource())
@@ -307,7 +307,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+#### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
 
 ```javascript
 const df = require("durable-functions");
@@ -331,13 +331,13 @@ module.exports = df.orchestrator(function*(context) {
 
 若要创建持久计时器，请调用 `context.CreateTimer` (.NET) 或 `context.df.createTimer` (JavaScript)。 通知由 `context.WaitForExternalEvent` (.NET) 或 `context.df.waitForExternalEvent` (JavaScript) 接收。 然后，调用 `Task.WhenAny` (.NET) 或 `context.df.Task.any` (JavaScript) 来确定是上报（首先发生超时）还是处理审批（超时前收到审批）。
 
-外部客户端可以使用[内置 HTTP API](durable-functions-http-api.md#raise-event) 或通过另一个函数使用 [DurableOrchestrationClient.RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) API 将事件通知传递给正在等待的业务流程协调程序函数：
+外部客户端可以使用[内置 HTTP API](durable-functions-http-api.md#raise-event)也可以使用其他函数中的 `RaiseEventAsync` (.NET) 或 `raiseEvent` (JavaScript) 方法将事件通知传递给正在等待的业务流程协调程序函数：
 
 ```csharp
 [FunctionName("RaiseEventToOrchestration")]
 public static async Task Run(
     [HttpTrigger] string instanceId,
-    [OrchestrationClient] DurableOrchestrationClient client)
+    [DurableClient] IDurableOrchestrationClient client)
 {
     bool isApproved = true;
     await client.RaiseEventAsync(instanceId, "ApprovalEvent", isApproved);
@@ -358,7 +358,7 @@ module.exports = async function (context) {
 curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
 ```
 
-### <a name="aggregator"></a>模式 #6：聚合器（预览版）
+### <a name="aggregator"></a>模式 #6：聚合器
 
 第六种模式涉及到将一段时间的事件数据聚合到单个可寻址的实体。  在此模式中，要聚合的数据可来自多个源、可分批传送，也可以分散在较长的时间段。 聚合器可能需要在事件数据抵达时对其执行操作，而外部客户端可能需要查询聚合数据。
 
@@ -366,33 +366,50 @@ curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{ins
 
 使用普通无状态函数尝试实现此模式的棘手之处在于，并发控制会成为一项巨大的挑战。 你不仅需要考虑到多个线程会同时修改相同的数据，而还要考虑如何确保聚合器每次仅在一个 VM 上运行。
 
-使用[持久实体函数](durable-functions-preview.md#entity-functions)可以轻松将此模式实现为单个函数。
+可以使用[持久实体](durable-functions-entities.md)轻松地将此模式实现为单一函数。
 
 ```csharp
 [FunctionName("Counter")]
 public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 {
     int currentValue = ctx.GetState<int>();
-
     switch (ctx.OperationName.ToLowerInvariant())
     {
         case "add":
             int amount = ctx.GetInput<int>();
-            currentValue += amount;
+            ctx.SetState(currentValue + amount);
             break;
         case "reset":
-            currentValue = 0;
+            ctx.SetState(0);
             break;
         case "get":
             ctx.Return(currentValue);
             break;
     }
-
-    ctx.SetState(currentValue);
 }
 ```
 
-持久实体还可建模为 .NET 类。 如果操作列表是固定的或者会变大，则此模型可能很有用。 以下示例是使用 .NET 类和方法的 `Counter` 实体的等效实现。
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.entity(function(context) {
+    const currentValue = context.df.getState(() => 0);
+    switch (context.df.operationName) {
+        case "add":
+            const amount = context.df.getInput();
+            context.df.setState(currentValue + amount);
+            break;
+        case "reset":
+            context.df.setState(0);
+            break;
+        case "get":
+            context.df.return(currentValue);
+            break;
+    }
+});
+```
+
+持久实体也可以在 .NET 中建模为类。 如果操作列表是固定的或者会变大，则此模型可能很有用。 以下示例是使用 .NET 类和方法的 `Counter` 实体的等效实现。
 
 ```csharp
 public class Counter
@@ -418,7 +435,7 @@ public class Counter
 [FunctionName("EventHubTriggerCSharp")]
 public static async Task Run(
     [EventHubTrigger("device-sensor-events")] EventData eventData,
-    [OrchestrationClient] IDurableOrchestrationClient entityClient)
+    [DurableClient] IDurableOrchestrationClient entityClient)
 {
     var metricType = (string)eventData.Properties["metric"];
     var delta = BitConverter.ToInt32(eventData.Body, eventData.Body.Offset);
@@ -429,10 +446,21 @@ public static async Task Run(
 }
 ```
 
-也可以使用动态生成的代理以类型安全的方式发出实体信号。 此外，除了发送信号外，客户端还可以对业务流程客户端绑定使用[类型安全方法](durable-functions-bindings.md#entity-client-usage)来查询实体函数的状态。
-
 > [!NOTE]
-> 实体函数目前仅适用于 [Durable Functions 2.0 预览版](durable-functions-preview.md)中的 .NET。
+> .NET 中也可以使用动态生成的代理以类型安全的方式发信号通知实体。 此外，除了发送信号外，客户端还可以对业务流程客户端绑定使用[类型安全方法](durable-functions-bindings.md#entity-client-usage)来查询实体函数的状态。
+
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    await context.df.signalEntity(entityId, "add", 1);
+};
+```
+
+实体函数在 [Durable Functions 2.0](durable-functions-versions.md) 及更高版本中可用。
 
 ## <a name="the-technology"></a>技术
 

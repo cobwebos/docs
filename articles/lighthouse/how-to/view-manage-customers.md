@@ -4,15 +4,15 @@ description: 作为使用 Azure 委派资源管理的服务提供商，你可以
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 07/11/2019
+ms.date: 10/23/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 53aabc4dc6c0d3fcef28aab16ea598cbbf6dbd55
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: d68ac0a1b6a66482a85f7ab79840099a34c731c2
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302740"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615533"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>查看和管理客户及委派资源
 
@@ -20,7 +20,7 @@ ms.locfileid: "72302740"
 
 若要访问 Azure 门户中“我的客户”页，请选择“所有服务”，然后搜索“我的客户”并选择它    。 还可以通过在 Azure 门户顶部附近的搜索框中输入“我的客户”来找到它。
 
-请记住，“我的客户”页仅显示关于已具有委派订阅或资源组的客户的信息  。 如果你与其他客户（例如[云解决方案提供商](https://docs.microsoft.com/partner-center/csp-overview)）合作，则不会在此看到关于这些客户的信息，除非载入其资源以进行委派资源管理。
+请记住，“我的客户”页顶部仅显示关于已具有委派订阅或资源组的客户的信息  。 如果你与其他客户（例如[云解决方案提供商](https://docs.microsoft.com/partner-center/csp-overview)）合作，则不会在此看到关于这些客户的信息，除非载入其资源以进行委派资源管理。 在页面下方，无论客户是否已加入 Azure 授权资源管理，“云解决方案提供商(预览)”部分都会显示[签署了 Microsoft 客户协议 (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) 并加入了 Azure 计划的 CSP 客户的账单信息和资源  。 有关详细信息，请参阅 [Microsoft 合作伙伴协议计费帐户入门](https://docs.microsoft.com/azure/billing/mpa-overview)。
 
 > [!NOTE]
 > 你的客户可以通过导航到 Azure 门户中的“我的客户”来查看有关服务提供商的信息  。 有关详细信息，请参阅[查看和管理服务提供商](view-manage-service-providers.md)。
@@ -30,6 +30,9 @@ ms.locfileid: "72302740"
 若要查看客户详细信息，请选择“我的客户”页左侧的“客户”   。
 
 对于每位客户，你将看到客户姓名、客户 ID（租户 ID）以及与用户参与相关联的产品/服务。 在“委派”列中，你将看到委派订阅数和/或委派资源组数  。
+
+> [!IMPORTANT]
+> 若要查看委派，必须在加入过程中向用户授予[读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)角色（或其他内置角色，其中包括读者访问权限）。
 
 可通过页面顶部的筛选器对客户信息进行排序和分组，或者按特定的客户、产品/服务或关键字进行筛选。
 

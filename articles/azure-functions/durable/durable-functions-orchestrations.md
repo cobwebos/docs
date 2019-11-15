@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 82c4a27ac2491e668c1d99e2a14b870e82ec5665
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 4e11070f4e766f83b0e7ead7757c675de3fef33f
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935415"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614777"
 ---
 # <a name="durable-orchestrations"></a>持久业务流程
 
@@ -64,7 +64,7 @@ Durable Task Framework 的事件溯源行为与编写的业务流程协调程序
 ```csharp
 [FunctionName("E1_HelloSequence")]
 public static async Task<List<string>> Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     var outputs = new List<string>();
 
@@ -133,7 +133,7 @@ module.exports = df.orchestrator(function*(context) {
 
 * **PartitionKey**：包含业务流程的实例 ID。
 * **EventType**：表示事件的类型。 可为以下类型之一：
-  * **OrchestrationStarted**：业务流程协调程序函数已从等待状态恢复，或者正首次运行。 `Timestamp` 列用于填充 [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) API 的确定性值。
+  * **OrchestrationStarted**：业务流程协调程序函数已从等待状态恢复，或者正首次运行。 `Timestamp` 列用于填充 `CurrentUtcDateTime` (.NET) 和 `currentUtcDateTime` (JavaScript) API 的确定性值。
   * **ExecutionStarted**：业务流程协调程序函数已开始首次执行。 此事件也包含 `Input` 列中输入的函数。
   * **TaskScheduled**：已计划活动函数。 `Name` 列中已捕获该活动函数的名称。
   * **TaskCompleted**：已完成活动函数。 `Result` 列中提供了该函数的结果。
@@ -186,7 +186,7 @@ module.exports = df.orchestrator(function*(context) {
 
 有关详细信息和示例，请参阅[错误处理](durable-functions-error-handling.md)一文。
 
-### <a name="critical-sections"></a>关键节
+### <a name="critical-sections-durable-functions-2x"></a>关键节 (Durable Functions 2.x)
 
 业务流程实例是单线程的，因此无需考虑业务流程内部的争用情况。  但是，当业务流程与外部系统交互时，可能会出现争用情况。 若要在与外部系统交互时缓解争用情况，业务流程协调程序函数可以使用 .NET 中的 `LockAsync` 方法定义关键节。 
 
@@ -212,7 +212,7 @@ public static async Task Synchronize(
 > [!NOTE]
 > 关键节在 Durable Functions 2.0 及更高版本中可用。 目前，只有 .NET 业务流程实现此功能。
 
-### <a name="calling-http-endpoints"></a>调用 HTTP 终结点
+### <a name="calling-http-endpoints-durable-functions-2x"></a>调用 HTTP 终结点 (Durable Functions 2.x)
 
 根据[协调程序函数代码约束](durable-functions-code-constraints.md)中所述，不允许业务流程协调程序函数执行 I/O。 此项限制的典型解决方法是将任何需要执行 I/O 的代码包装在某个活动函数中。 与外部系统交互的业务流程经常使用活动函数发出 HTTP 调用，并将结果返回给业务流程。
 
@@ -236,10 +236,22 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const url = context.df.getInput();
+    var res = yield context.df.callHttp("GET", url);
+    if (res.statusCode >= 400) {
+        // handling of error codes goes here
+    }
+});
+```
+
 有关详细信息和示例，请参阅 [HTTP 功能](durable-functions-http-features.md)一文。
 
 > [!NOTE]
-> 在 Durable Functions 2.0 及更高版本中可以直接从业务流程协调程序函数调用 HTTP 终结点。 目前，只有 .NET 业务流程实现此功能。
+> 在 Durable Functions 2.0 及更高版本中可以直接从业务流程协调程序函数调用 HTTP 终结点。
 
 ### <a name="passing-multiple-parameters"></a>传递多个参数
 
@@ -250,7 +262,7 @@ public static async Task CheckSiteAvailable(
 ```csharp
 [FunctionName("GetCourseRecommendations")]
 public static async Task<object> RunOrchestrator(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     string major = "ComputerScience";
     int universityYear = context.GetInput<int>();
@@ -262,7 +274,7 @@ public static async Task<object> RunOrchestrator(
 }
 
 [FunctionName("CourseRecommendations")]
-public static async Task<object> Mapper([ActivityTrigger] DurableActivityContext inputs)
+public static async Task<object> Mapper([ActivityTrigger] IDurableActivityContext inputs)
 {
     // parse input for student's major and year in university
     (string Major, int UniversityYear) studentInfo = inputs.GetInput<(string, int)>();

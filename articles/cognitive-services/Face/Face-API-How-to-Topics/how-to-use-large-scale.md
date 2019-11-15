@@ -1,7 +1,7 @@
 ---
 title: 示例：使用大规模功能 - 人脸 API
 titleSuffix: Azure Cognitive Services
-description: 使用人脸 API 中的大规模功能。
+description: 本指南是有关如何从现有 PersonGroup 和 FaceList 对象纵向扩展到 LargePersonGroup 和 LargeFaceList 对象的文章。
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
-ms.openlocfilehash: d8ecfb53b78277e4b0e4a85d60fb6712d0bc2292
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 976baaef11251715218ecea71986f08ec5f72996
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114840"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73743727"
 ---
 # <a name="example-use-the-large-scale-feature"></a>示例：使用大规模使用的功能
 

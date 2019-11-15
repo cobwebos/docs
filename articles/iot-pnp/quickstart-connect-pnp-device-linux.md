@@ -1,0 +1,173 @@
+---
+title: 将 IoT 即插即用预览示例设备代码连接到 IoT 中心 (Linux) | Microsoft Docs
+description: 在连接到 IoT 中心的 Linux 上生成并运行 IoT 即插即用预览示例设备代码。 使用 Azure CLI 查看由设备发送到中心的信息。
+author: dominicbetts
+ms.author: dobett
+ms.date: 09/10/2019
+ms.topic: quickstart
+ms.service: iot-pnp
+services: iot-pnp
+ms.custom: mvc
+ms.openlocfilehash: 38a6deb8d021c5e6a20d765cc7aee5b86042f557
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585973"
+---
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-linux-to-iot-hub"></a>快速入门：将 Linux 上运行的示例 IoT 即插即用预览设备应用程序连接到 IoT 中心
+
+本快速入门介绍如何在 Linux 上生成示例 IoT 即插即用设备应用程序，将其连接到 IoT 中心并使用 Azure CLI 查看其发送到中心的信息。 该示例应用程序以 C 编写，包含在适用于 C 的 Azure IoT 设备 SDK 中。解决方案开发人员可以使用 Azure CLI 来了解 IoT 即插即用设备的功能，而无需查看任何设备代码。
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+## <a name="prerequisites"></a>先决条件
+
+本快速入门假设你使用 Ubuntu Linux。 本教程中的步骤已使用 Ubuntu 18.04 进行了测试。
+
+要完成本快速入门，需在本地 Linux 计算机上安装以下软件：
+
+使用 `apt-get` 命令安装“GCC”、“Git”、“cmake”和所有依赖项    ：
+
+```sh
+sudo apt-get update
+sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
+```
+
+验证 `cmake` 的版本是否高于 2.8.12，GCC 的版本是否高于 4.4.7    。
+
+```sh
+cmake --version
+gcc --version
+```
+
+## <a name="prepare-an-iot-hub"></a>准备 IoT 中心
+
+Azure 订阅中还需要有一个 Azure IoT 中心才能完成本快速入门。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+> [!IMPORTANT]
+> 在公共预览版期间，IoT 即插即用功能仅适用于在美国中部、欧洲北部和日本东部区域中创建的 IoT 中心    。
+
+如果在本地使用 Azure CLI，则 `az` 的版本应为 2.0.73 或更高版本，Azure Cloud Shell 使用最新版本  。 使用 `az --version` 命令检查计算机上安装的版本。
+
+添加适用于 Azure CLI 的 Microsoft Azure IoT 扩展：
+
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
+```
+
+本快速入门中的步骤需要 0.8.5 或更高版本的扩展  。 使用 `az extension list` 命令检查已安装的版本，并按需使用 `az extension update` 命令进行更新。
+
+如果在本地使用 CLI，请使用以下命令登录到 Azure 订阅：
+
+```bash
+az login
+```
+
+如果使用 Azure Cloud Shell，则已自动登录。
+
+如果你没有 IoT 中心，请遵照[此处的说明创建一个](../iot-hub/iot-hub-create-using-cli.md)。 在公共预览期，IoT 即插即用可在北欧、美国中部和日本东部区域使用。 请确保在这其中的一个区域创建中心。
+
+运行以下命令，在 IoT 中心创建设备标识。 请将 YourIoTHubName 占位符替换为实际的 IoT 中心名称  ：
+
+```azurecli-interactive
+az iot hub device-identity create --hub-name [YourIoTHubName] --device-id mydevice
+```
+
+运行以下命令，获取刚注册设备的设备连接字符串： 
+
+```azurecli-interactive
+az iot hub device-identity show-connection-string --hub-name [YourIoTHubName] --device-id mydevice --output table
+```
+
+## <a name="prepare-the-development-environment"></a>准备开发环境
+
+在本快速入门中，你将准备一个用于克隆和生成 Azure IoT C 设备 SDK 的开发环境。
+
+打开命令提示符。 执行以下命令克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库：
+
+```bash
+git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
+```
+
+此命令需要几分钟才能完成。
+
+## <a name="build-the-code"></a>生成代码
+
+使用设备 SDK 生成包含的示例代码。 生成的应用程序将模拟连接到 IoT 中心的设备。 应用程序将发送遥测数据和属性，并接收命令。
+
+1. 在设备 SDK 根文件夹中创建一个 `cmake` 子目录，并导航到该文件夹：
+
+    ```bash
+    cd azure-iot-sdk-c
+    mkdir cmake
+    cd cmake
+    ```
+
+1. 运行以下命令以生成设备 SDK 和代码存根：
+
+    ```bash
+    cmake ..
+    cmake --build .
+    ```
+
+## <a name="update-your-model-repository"></a>更新模型存储库
+
+在运行示例之前，请将设备功能模型和接口定义添加到公司模型存储库中：
+
+1. 使用 Microsoft 工作或学校帐户或 Microsoft 合作伙伴 ID（若有）登录 [Azure IoT 认证门户网站](https://preview.catalog.azureiotsolutions.com)。
+
+1. 依次选择“公司存储库”、“功能模型”   。
+
+1. 依次选择“新建”、“上传”   。
+
+1. 在设备 SDK 根文件夹中的 `digitaltwin_client/samples` 文件夹中，选择文件 `SampleDevice.capabilitymodel.json`。 选择“打开”，然后选择“保存”，将模型文件上传到存储库   。
+
+1. 依次选择“公司存储库”、“接口”   。
+
+1. 依次选择“新建”、“上传”   。
+
+1. 在设备 SDK 根文件夹中的 `digitaltwin_client/samples/digitaltwin_sample_environmental_sensor` 文件夹中，选择文件 `EnvironmentalSensor.interface.json`。 选择“打开”，然后选择“保存”，将接口文件上传到存储库   。
+
+1. 依次选择“公司存储库”、“连接字符串”。   请记下第一个公司模型存储库连接字符串，稍后将在本快速入门中使用该字符串。
+
+## <a name="run-the-sample"></a>运行示例
+
+在 SDK 中运行示例应用程序，以模拟将遥测发送到 IoT 中心的 IoT 即插即用设备。 运行示例应用程序：
+
+1. 在 `cmake` 文件夹中，导航到包含可执行文件的文件夹：
+
+    ```bash
+    cd digitaltwin_client/samples/digitaltwin_sample_device
+    ```
+
+1. 运行可执行文件：
+
+    ```bash
+    ./digitaltwin_sample_device "{your device connection string}"
+    ```
+
+模拟设备开始发送遥测、侦听命令和侦听属性更新。
+
+### <a name="use-the-azure-iot-cli-to-validate-the-code"></a>使用 Azure IoT CLI 验证代码
+
+设备客户端示例启动后，请验证是否可通过 Azure CLI 使用它。
+
+使用以下命令查看示例设备正在发送的遥测。 可能需要等待一两分钟，然后才能在输出中看到遥测：
+
+```azurecli-interactive
+az iot dt monitor-events --hub-name {your IoT hub} --device-id mydevice
+```
+
+使用以下命令查看设备发送的属性：
+
+```azurecli-interactive
+az iot dt list-properties --hub-name {your IoT hub} --device-id mydevice --interface sensor --source private --repo-login "{your company model repository connection string}"
+```
+
+## <a name="next-steps"></a>后续步骤
+
+本快速入门已介绍如何将 IoT 即插即用设备连接到 IoT 中心。 若要详细了解如何生成可与 IoT 即插即用设备交互的解决方案，请参阅：
+
+> [!div class="nextstepaction"]
+> [操作说明：连接到设备并与之交互](howto-develop-solution.md)
