@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: ba961547bc46b0746997ea95ddd14f1a6d1d8a23
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1c8717614ec59ef210c7340f70ddedd7f7f86f88
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821208"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091980"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>使用自动数据库备份恢复 Azure SQL 数据库
 
@@ -64,7 +64,7 @@ ms.locfileid: "73821208"
 
 您可以使用 Azure 门户、 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)或[REST API](https://docs.microsoft.com/rest/api/sql/databases)将独立数据库、池数据库或实例数据库还原到较早的时间点。 请求可以指定要还原的数据库的任何服务层级或计算大小。 确保要将数据库还原到的服务器上有足够的资源。 完成后，还原会在与原始数据库相同的服务器上创建一个新数据库。 还原的数据库将根据其服务层和计算大小按标准费率收费。 在数据库还原完成之前，不会产生费用。
 
-为了恢复目的，通常会将数据库还原到一个较早的点。 可以将还原的数据库作为原始数据库的替代，或将其用作数据源来更新原始数据库。
+通常，为恢复目的将数据库还原到较早点。 可以将还原的数据库作为原始数据库的替代，或将其用作数据源来更新原始数据库。
 
 - **数据库替换**
 
@@ -108,11 +108,13 @@ ms.locfileid: "73821208"
 
 若要使用 Azure 门户恢复单个或共用的已删除数据库，请打开 "服务器概述" 页，然后选择 "**已删除的数据库**"。 选择要还原的已删除数据库，然后键入将使用从备份还原的数据创建的新数据库的名称。
 
-  ![已删除数据库选项的屏幕截图](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
+  ![还原已删除的 Azure SQL 数据库的屏幕截图](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
 
 #### <a name="managed-instance-database"></a>托管实例数据库
 
-不能使用 Azure 门户来还原托管实例上的已删除数据库。 可以使用 PowerShell 来实现此目的。 
+若要使用 Azure 门户恢复托管数据库，请打开 "托管实例概述" 页，然后选择 "**已删除的数据库**"。 选择要还原的已删除数据库，然后键入将使用从备份还原的数据创建的新数据库的名称。
+
+  ![还原已删除的 Azure SQL 实例数据库的屏幕截图](./media/sql-database-recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
 
 ### <a name="deleted-database-restore-by-using-powershell"></a>使用 PowerShell 删除数据库还原
 
@@ -156,7 +158,7 @@ ms.locfileid: "73821208"
 
 #### <a name="managed-instance-database"></a>托管实例数据库
 
-若要将托管实例数据库从 Azure 门户异地还原到所选区域中的现有托管实例，请选择要将数据库还原到的托管实例。 执行以下步骤:
+若要将托管实例数据库从 Azure 门户异地还原到所选区域中的现有托管实例，请选择要将数据库还原到的托管实例。 执行以下步骤：
 
 1. 选择 "**新建数据库**"。
 2. 键入所需的数据库名称。

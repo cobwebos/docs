@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 8decf4622c4043cbac0f2e2f6e2ad59f1b5baaae
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 681d7a5eab3306a4067ea49bcf8a038e8627f60e
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074019"
+ms.locfileid: "74091379"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 GitHub 操作进行持续交付
 
@@ -215,7 +215,7 @@ GitHub 现在可以在 Azure 中的函数应用上进行身份验证。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要查看完整的 yaml，请参阅[Azure GitHub 操作工作流](https://github.com/Azure/actions-workflow-samples)中的一个文件 `functionapp` 名称中包含。 您可以使用这些示例作为工作流的起点。
+若要查看完整的 yaml，请参阅[Azure GitHub 操作工作流](https://aka.ms/functions-actions-samples)中的一个文件 `functionapp` 名称中包含。 您可以使用这些示例作为工作流的起点。
 
 > [!div class="nextstepaction"]
 > [了解有关 GitHub 操作的详细信息](https://help.github.com/en/articles/about-github-actions)

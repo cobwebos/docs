@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: e1e1c7f30066197c6420956368a09de69e87e466
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: bd16cefff66c727ad9de6331a311796cf9521192
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747335"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091050"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>使用 Azure 备份服务器将 SQL Server 备份到 Azure
 
@@ -77,7 +77,7 @@ ms.locfileid: "73747335"
     ![一致性检查](./media/backup-azure-backup-sql/pg-consistent.png)
 
     MABS 可以通过执行一致性检查来检查备份点的完整性。 它会计算生产服务器（在本方案中为 SQL Server 计算机）上的备份文件和 MABS 上该文件的已备份数据的校验和。 如果有冲突，则会认为 MABS 上的备份文件已损坏。 MABS 会发送与校验和不匹配部分相对应的块以纠正备份的数据。 由于一致性检查是对性能影响很大的操作，因此管理员可以选择是按计划来运行还是自动运行一致性检查。
-11. 要指定对数据源进行在线保护，请选择要通过 Azure 进行保护的数据库，并单击“**下一步**”。
+11. 如果要指定对数据源进行在线保护，请选择要通过 Azure 进行保护的数据库，并单击“**下一步**”。
 
     ![选择数据源](./media/backup-azure-backup-sql/pg-sqldatabases.png)
 12. 管理员可以选择适合组织策略的备份计划和保留策略。
@@ -103,13 +103,13 @@ ms.locfileid: "73747335"
     * 在星期六中午 12:00 进行的备份 会保留 104 周
     * 在最后一个星期六中午 12:00 进行的备份 会保留 60 个月
     * 在 3 月的最后一个星期六中午 12:00 进行的备份 会保留 10 年
-14. 单击“下一步”，选择相应的选项将初始备份副本传输到 Azure。 可以选择“**自动通过网络**”或“**脱机备份**”。
+14. 单击“**下一步**”，选择相应的选项将初始备份副本传输到 Azure。 可以选择“**自动通过网络**”或“**脱机备份**”。
 
     * “**自动通过网络**”会根据为备份选择的计划将备份数据传输到 Azure。
     * “**脱机备份**”的工作原理详见 [Azure 备份中的脱机备份工作流](backup-azure-backup-import-export.md)。
 
     选择将初始备份副本发送到 Azure 的相关传输机制，并单击“**下一步**”。
-15. 在“**摘要**”屏幕中查看策略详细信息以后，单击“**创建组**”按钮即可完成工作流的操作。 可以单击“**关闭**”按钮，即可在“监视”工作区中监视作业进度。
+15. 在“**摘要**”屏幕中查看策略详细信息以后，单击“**创建组**”按钮即可完成工作流的操作。 可以单击“**关闭**”按钮，然后即可在“监视”工作区中监视作业进度。
 
     ![保护组创建进度](./media/backup-azure-backup-sql/pg-summary.png)
 
@@ -152,8 +152,8 @@ ms.locfileid: "73747335"
 
     ![启动恢复过程](./media/backup-azure-backup-sql/sqlbackup-recoverying.png)
 
-    完成恢复操作后，还原的数据库在应用程序级别是一致的。
+    完成恢复操作后，还原的数据库在应用程序级别将是一致的。
 
 ### <a name="next-steps"></a>后续步骤
 
-•    [Azure 备份常见问题解答](backup-azure-backup-faq.md)
+* [Azure 备份常见问题](backup-azure-backup-faq.md)

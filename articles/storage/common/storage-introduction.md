@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c9dbc24aa93b1f2c89b23120abb018c920835d8d
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 612da322e0d248f9b0000c8f0006893b87b74e44
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69896982"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084641"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure 存储简介
 
@@ -31,8 +31,8 @@ Azure 存储包括以下数据服务：
 
 - [Azure Blob](../blobs/storage-blobs-introduction.md)：适用于文本和二进制数据的可大规模缩放的对象存储。
 - [Azure 文件](../files/storage-files-introduction.md)：适用于云或本地部署的托管文件共享。
-- [Azure 队列](../queues/storage-queues-introduction.md)：用于在应用程序组件之间进行可靠的消息传送的消息存储。 
-- [Azure 表](../tables/table-storage-overview.md)：一种 NoSQL 存储，适合用作结构化数据的无架构存储。
+- [Azure 队列](../queues/storage-queues-introduction.md)：用于在应用程序组件之间进行可靠的消息传送的消息传送存储。 
+- [Azure 表](../tables/table-storage-overview.md)：一种 NoSQL 存储，适合用作结构化数据的无模式存储。
 
 对每个服务的访问都通过存储帐户进行。 若要开始使用，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
 
@@ -101,12 +101,12 @@ Azure 托管磁盘是虚拟硬盘 (VHD)。 可以将其视为本地服务器中�
 对 Azure 存储的每个请求必须获得授权。 Azure 存储支持以下授权方法：
 
 - **用于 Blob 和队列数据的 Azure Active Directory (Azure AD) 集成。** Azure 存储支持通过基于角色的访问控制 (RBAC) 使用 Azure AD 为 Blob 和队列服务进行身份验证和授权。 建议使用 Azure AD 进行授权请求，以确保极高的安全性和易用性。 有关详细信息，请参阅[使用 Azure Active Directory 授予对 Azure Blob 和队列的访问权限](storage-auth-aad.md)。
-- **针对 Azure 文件的 SMB Azure AD 授权 (预览版)。** Azure 文件通过 SMB (服务器消息块) Azure Active Directory 域服务支持基于标识的授权。 已加入域的 Windows 虚拟机 (Vm) 可以使用 Azure AD 凭据访问 Azure 文件共享。 有关详细信息, 请参阅[Azure 文件的通过 SMB Azure Active Directory 授权概述 (预览版)](../files/storage-files-active-directory-overview.md)。
+- **针对 Azure 文件的 SMB Azure AD 授权（预览版）。** Azure 文件通过 SMB （服务器消息块） Azure Active Directory 域服务支持基于标识的授权。 已加入域的 Windows 虚拟机（Vm）可以使用 Azure AD 凭据访问 Azure 文件共享。 有关详细信息，请参阅[Azure 文件的通过 SMB Azure Active Directory 授权概述（预览版）](../files/storage-files-active-directory-overview.md)。
 - **通过共享密钥进行授权。** Azure 存储 Blob、队列和表服务以及 Azure 文件存储支持使用共享密钥进行授权。使用共享密钥授权的客户端会随使用存储帐户访问密钥签名的每个请求传递一个标头。 有关详细信息，请参阅[通过共享密钥进行授权](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)。
 - **使用共享访问签名 (SAS) 进行授权。** 共享访问签名 (SAS) 是一个字符串，其中包含的安全令牌可以追加到存储资源的 URI。 安全令牌封装了各种约束，例如权限、访问时间间隔。 有关详细信息，请参阅[使用共享访问签名 (SAS)](storage-sas-overview.md)。
 - **对容器和 Blob 的匿名访问。** 容器及其 Blob 也许可以公开使用。 指定某个容器或 Blob 为公用的时，任何人都可以匿名读取它，不需要进行身份验证。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)
 
-## <a name="encryption"></a>加密
+## <a name="encryption"></a>Encryption
 
 有两种适用于存储服务的基本加密类型。 若要详细了解安全性和加密，请参阅 [Azure 存储安全指南](storage-security-guide.md)。
 
@@ -143,7 +143,7 @@ Azure 存储资源可以通过任何发出 HTTP/HTTPS 请求的语言来进行�
 - [Azure 存储 REST API](https://docs.microsoft.com/rest/api/storageservices/)
 - [适用于 .NET 的 Azure 存储客户端库](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 - [适用于 Java/Android 的 Azure 存储客户端库](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [适用于 Node.js 的 Azure 存储客户端库](https://docs.microsoft.com/javascript/api/azure-storage)
+- [适用于 Node.js 的 Azure 存储客户端库](https://docs.microsoft.com/javascript/api/overview/azure/storage)
 - [适用于 Python 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-python)
 - [适用于 PHP 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-php)
 - [适用于 Ruby 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-ruby)

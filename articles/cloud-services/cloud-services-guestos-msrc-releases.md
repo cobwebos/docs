@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/1/2019
 ms.author: raiye
-ms.openlocfilehash: e1d27563d2181a8e094e00295f9506d88e694513
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 22e833a1d555057c7e6a2ce46e7a1bb136260851
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500270"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888306"
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
@@ -64,11 +64,11 @@ ms.locfileid: "73500270"
 [4512574]: https://support.microsoft.com/kb/4512574
 [4512577]: https://support.microsoft.com/kb/4512577
 
-[6.12]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5.36]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4.71]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3.78]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2.91]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6.12]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.36]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.71]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.91]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="september-2019-guest-os"></a>2019年9月来宾 OS
@@ -106,11 +106,11 @@ ms.locfileid: "73500270"
 [4512488]: https://support.microsoft.com/kb/4512488
 [4512518]: https://support.microsoft.com/kb/4512518
 [4512506]: https://support.microsoft.com/kb/4512506
-[6.11]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5.35]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4.70]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3.77]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2.90]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6.11]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.35]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.70]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.77]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.90]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="august-2019-guest-os"></a>2019 年 8 月来宾 OS
@@ -163,11 +163,11 @@ ms.locfileid: "73500270"
 [4507001]: https://support.microsoft.com/kb/4507001
 [4507704]: https://support.microsoft.com/kb/4507704
 
-[6.1]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5.34]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4.69]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3.76]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2.89]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6.1]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.34]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.69]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.76]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.89]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="july-2019-guest-os"></a>2019 年 7 月来宾 OS
@@ -993,19 +993,19 @@ ms.locfileid: "73500270"
 ## <a name="september-2016-guest-os"></a>2016 年 9 月来宾 OS
 | 公告 ID | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
 | --- | --- | --- | --- | --- |
-| MS16-104 |[3183038] |Internet Explorer 的累积安全更新 |4.36、3.43 和 2.55 |2016 年 9 月 13 日 |
-| MS16-106 |[3185848] |Microsoft 图形组件的安全更新 |4.36、3.43 和 2.55 |2016 年 9 月 13 日 |
-| MS16-110 |[3178467] |Windows 的安全更新 |4.36、3.43 和 2.55 |2016 年 9 月 13 日 |
-| MS16-111 |[3186973] |Windows 内核的安全更新 |4.36、3.43 和 2.55 |2016 年 9 月 13 日 |
-| MS16-112 |[3178469] |Windows 锁屏的安全更新程序 |4.36 |2016 年 9 月 13 日 |
-| MS16-114 |[3185879] |Windows SMB 服务器的安全更新 |4.36、3.43 和 2.55 |2016 年 9 月 13 日 |
-| MS16-115 |[3188733] |PDF 的安全更新程序 |4.35、3.43 |2016 年 9 月 13 日 |
-| MS16-116 |[3188724] |VBScript 脚本引擎的 OLE 自动化中的安全更新程序 |4.36、3.43 和 2.55 |2016 年 9 月 13 日 |
-| 不适用 |[3174644] |Diffie-hellman 密钥交换的更新支持 |4.36、3.43 和 2.55 |2016 年 9 月 13 日 |
-| 不适用 |[3177723] |时区更新 - 埃及取消 DST |4.36、3.43 和 2.55 |2016 年 9 月 13 日 |
-| 不适用 |[3179573] |适用于 Windows 7 SP1 和 Windows Server 2008 R2 SP1 的 2016 年 8 月更新汇总 |2.55 |2016 年 9 月 13 日 |
-| 不适用 |[3179575] |适用于 Windows Server 2012 的 2016 年 8 月更新汇总 |3.43 |2016 年 9 月 13 日 |
-| 不适用 |[3179574] |适用于 Windows RT 8.1、Windows 8.1 和 Windows Server 2012 R2 的 2016 年 8 月更新汇总 |4.36 |2016 年 9 月 13 日 |
+| MS16-104 |[3183038] |Internet Explorer 的累积安全更新 |4.36、3.43 和 2.55 |2016 年 9 月 13日 |
+| MS16-106 |[3185848] |Microsoft 图形组件的安全更新 |4.36、3.43 和 2.55 |2016 年 9 月 13日 |
+| MS16-110 |[3178467] |Windows 的安全更新 |4.36、3.43 和 2.55 |2016 年 9 月 13日 |
+| MS16-111 |[3186973] |Windows 内核的安全更新 |4.36、3.43 和 2.55 |2016 年 9 月 13日 |
+| MS16-112 |[3178469] |Windows 锁屏的安全更新程序 |4.36 |2016 年 9 月 13日 |
+| MS16-114 |[3185879] |Windows SMB 服务器的安全更新 |4.36、3.43 和 2.55 |2016 年 9 月 13日 |
+| MS16-115 |[3188733] |PDF 的安全更新程序 |4.35、3.43 |2016 年 9 月 13日 |
+| MS16-116 |[3188724] |VBScript 脚本引擎的 OLE 自动化中的安全更新程序 |4.36、3.43 和 2.55 |2016 年 9 月 13日 |
+| 不适用 |[3174644] |Diffie-hellman 密钥交换的更新支持 |4.36、3.43 和 2.55 |2016 年 9 月 13日 |
+| 不适用 |[3177723] |时区更新 - 埃及取消 DST |4.36、3.43 和 2.55 |2016 年 9 月 13日 |
+| 不适用 |[3179573] |适用于 Windows 7 SP1 和 Windows Server 2008 R2 SP1 的 2016 年 8 月更新汇总 |2.55 |2016 年 9 月 13日 |
+| 不适用 |[3179575] |适用于 Windows Server 2012 的 2016 年 8 月更新汇总 |3.43 |2016 年 9 月 13日 |
+| 不适用 |[3179574] |适用于 Windows RT 8.1、Windows 8.1 和 Windows Server 2012 R2 的 2016 年 8 月更新汇总 |4.36 |2016 年 9 月 13日 |
 
 ## <a name="august-2016-guest-os"></a>2016 年 8 月来宾 OS
 | 公告 ID | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
@@ -1277,7 +1277,7 @@ ms.locfileid: "73500270"
 | MS15-014 |[3004361] |SMB 中的漏洞可能导致绕过安全功能 |4.17、3.24、2.36 |不适用 |
 | MS15-015 |[3031432] |Microsoft Windows 中的漏洞可能导致提升权限 |4.17、3.24、2.36 |不适用 |
 | MS15-016 |[3029944] |Microsoft 图形组件中的漏洞可能导致信息泄露 |4.17、3.24、2.36 |不适用 |
-| 不适用 |[3004375] |用于改进 Windows 命令行审核的更新<p/>**注意**：已安装此项更新，但用于启用该更新的注册表项已关闭 |4.17、3.24、2.36 |不适用 |
+| 不适用 |[3004375] |用于改进 Windows 命令行审核的更新<p/>**注意**：会安装此更新，但用来启用它的注册表项处于关闭状态 |4.17、3.24、2.36 |不适用 |
 
 ## <a name="january-2015-guest-os"></a>2015 年 1 月来宾 OS
 | 公告 ID | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |

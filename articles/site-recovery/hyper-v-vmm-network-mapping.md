@@ -1,18 +1,18 @@
 ---
-title: 关于通过 Site Recovery 将 Hyper-v VM （带 VMM）灾难恢复到 Azure 的网络映射
+title: 关于 Hyper-v （带有 VMM）与 Site Recovery 的网络映射
 description: 介绍如何使用 Azure Site Recovery 为 Hyper-V VM（在 VMM 云中托管）到 Azure 的灾难恢复设置网络映射。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 637f327b40341ac04f37baf9e43f136a0315b17f
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813671"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082561"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>为 Hyper-V VM 灾难恢复到 Azure 准备网络映射
 
@@ -53,9 +53,9 @@ ms.locfileid: "70813671"
 
 以下示例演示了此机制。 假设一个组织有两个经营地点：纽约和芝加哥。
 
-**Location** | **VMM 服务器** | **VM 网络** | **映射到**
+**位置** | **VMM 服务器** | **VM 网络** | **映射到**
 ---|---|---|---
-New York | VMM-NewYork| VMNetwork1-NewYork | 映射到 VMNetwork1-Chicago
+纽约 | VMM-NewYork| VMNetwork1-NewYork | 映射到 VMNetwork1-Chicago
  |  | VMNetwork2-NewYork | 未映射
 芝加哥 | VMM-Chicago| VMNetwork1-Chicago | 映射到 VMNetwork1-NewYork
  | | VMNetwork2-Chicago | 未映射
@@ -78,17 +78,17 @@ SilverCloud2 | <p>不可用</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>Logica
 
 ### <a name="logical-and-vm-network-settings"></a>逻辑和 VM 网络设置
 
-**Location** | **逻辑网络** | **关联的 VM 网络**
+**位置** | **逻辑网络** | **关联的 VM 网络**
 ---|---|---
-New York | LogicalNetwork1-NewYork | VMNetwork1-NewYork
+纽约 | LogicalNetwork1-NewYork | VMNetwork1-NewYork
 芝加哥 | LogicalNetwork1-Chicago | VMNetwork1-Chicago
  | LogicalNetwork2Chicago | VMNetwork2-Chicago
 
 ### <a name="target-network-settings"></a>目标网络设置
 
-根据这些设置，选择目标 VM 网络时，下表显示将可用的选项。
+根据这些设置，在选择目标 VM 网络时，下表显示将可用的选项。
 
-**选择** | **受保护的云** | **提供保护的云** | **可用目标网络**
+**Select** | **受保护的云** | **提供保护的云** | **可用目标网络**
 ---|---|---|---
 VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | 可用
  | GoldCloud1 | GoldCloud2 | 可用

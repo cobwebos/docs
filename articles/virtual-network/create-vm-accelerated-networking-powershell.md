@@ -1,5 +1,5 @@
 ---
-title: 创建具有加速网络的 Azure 虚拟机 | Microsoft Docs
+title: 创建具有加速网络的 Azure VM-Azure PowerShell
 description: 了解如何创建具有加速网络的 Linux 虚拟机。
 services: virtual-network
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: f8f4f55f2c2aa4a0f9cce08e10c9f12f81a54dba
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 16837782af2f08e27363091dc21587a100194cd8
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677993"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083700"
 ---
-# <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>创建具有加速网络的 Windows 虚拟机
+# <a name="create-a-windows-virtual-machine-with-accelerated-networking-using-azure-powershell"></a>使用 Azure PowerShell 创建具有加速网络的 Windows 虚拟机
 
 本教程介绍如何创建具有加速网络的 Windows 虚拟机 (VM)。 若要使用加速网络创建 Linux VM，请参阅[使用加速网络创建 Linux VM](create-vm-accelerated-networking-cli.md)。 使用加速网络可以实现对 VM 的单根 I/O 虚拟化 (SR-IOV)，大幅提升其网络性能。 这种高性能路径会绕过数据路径中的主机，降低延迟、抖动，以及受支持 VM 类型上的最苛刻网络工作负荷的 CPU 利用率。 下图显示了具有和没有加速网络的两个 VM 之间的通信：
 
@@ -36,7 +36,7 @@ ms.locfileid: "71677993"
 ## <a name="benefits"></a>优点
 * **更低的延迟/更高的每秒数据包数 (pps)：** 从数据路径中去除虚拟交换机可以消除数据包在主机中进行策略处理所花费的时间，同时增大了 VM 中可处理的数据包数。
 * **减少抖动：** 虚拟交换机处理取决于需要应用的策略数量，以及正在执行处理的 CPU 工作负荷。 将策略实施卸载到硬件消除了这种可变性，因为可以将数据包直接传送到 VM，省去了主机与 VM 之间的通信，以及所有的软件中断和上下文切换。
-* **降低了 CPU 利用率：** 绕过主机中的虚拟交换机可以减少用于处理流量的 CPU 资源。
+* **降低了 CPU 利用率：** 绕过主机中的虚拟交换机可以减少用于处理网络流量的 CPU 资源。
 
 ## <a name="limitations-and-constraints"></a>限制和约束
 
@@ -47,9 +47,9 @@ ms.locfileid: "71677993"
 * **Windows Server 2019 Datacenter**
 
 ### <a name="supported-vm-instances"></a>支持的 VM 实例
-大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。  这些受支持的系列包括：D/DSv2 和 F/Fs
+大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。  这些受支持的系列包括 D/DSv2 和 F/Fs
 
-在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 受支持的系列包括：D/Dsv3、E/Esv3、Fsv2、Lsv2、Ms/Mms 和 Ms/Mmsv2。
+在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 支持的系列为： D/Dsv3、E/Esv3、Fsv2、Lsv2、Ms/Mms 和 Ms/Mmsv2。
 
 有关 VM 实例的详细信息，请参阅[Windows VM 大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
@@ -64,7 +64,7 @@ ms.locfileid: "71677993"
 
 ## <a name="create-a-windows-vm-with-azure-accelerated-networking"></a>创建具有 Azure 加速网络的 Windows VM
 ## <a name="portal-creation"></a>在门户中创建
-尽管本文提供了使用 Azure Powershell 创建具有加速网络的虚拟机的步骤，但也可以[使用 Azure 门户创建具有加速网络的虚拟机](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 在门户中创建虚拟机时，在“创建虚拟机”边栏选项卡中，选择“网络”选项卡。在此选项卡中，有“加速网络”的选项。  如果已选择[支持的操作系统](#supported-operating-systems)和 [VM 大小](#supported-vm-instances)，此选项将自动填充为“打开”。  如果没有选择，它将填充加速网络的“关闭”选项，并为用户提供未启用它的原因。   
+尽管本文提供了使用 Azure Powershell 创建具有加速网络的虚拟机的步骤，但也可以[使用 Azure 门户创建具有加速网络的虚拟机](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 在门户中创建虚拟机时，请在 "**创建虚拟机**" 边栏选项卡中选择 "**网络**" 选项卡。 在此选项卡中，有一个用于**加速网络**的选项。  如果已选择[支持的操作系统](#supported-operating-systems)和 [VM 大小](#supported-vm-instances)，此选项将自动填充为“打开”。  如果没有选择，它将填充加速网络的“关闭”选项，并为用户提供未启用它的原因。   
 * *注意：* 只有受支持的操作系统才能通过门户启用。  如果使用的是自定义映像，并且映像支持加速网络，请使用 CLI 或 Powershell 创建 VM。 
 
 创建虚拟机后，可以按照“确认已启用加速网络”中的说明确认已启用加速网络。
@@ -130,7 +130,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $rdp
 ```
 
-使用 [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.Network/Set-azVirtualNetworkSubnetConfig) 将网络安全组关联到 *mySubnet* 子网。 网络安全组中的规则对子网中部署的所有资源都是有效的。
+使用 *Set-AzVirtualNetworkSubnetConfig* 将网络安全组关联到 [mySubnet](/powershell/module/az.Network/Set-azVirtualNetworkSubnetConfig) 子网。 网络安全组中的规则对子网中部署的所有资源都是有效的。
 
 ```powershell
 Set-AzVirtualNetworkSubnetConfig `
@@ -165,7 +165,7 @@ $nic = New-AzNetworkInterface `
 
 ## <a name="create-the-virtual-machine"></a>创建虚拟机
 
-使用 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) 将 VM 凭据设置为 `$cred` 变量：
+使用 `$cred`Get-Credential[ 将 VM 凭据设置为 ](/powershell/module/microsoft.powershell.security/get-credential) 变量：
 
 ```powershell
 $cred = Get-Credential

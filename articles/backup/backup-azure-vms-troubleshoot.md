@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 78de85cede228f4b1c6ff01388fd7a08f78aa74f
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 0be9973aed1aaf5074c3b61d6249b95e8fd45a64
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747188"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090902"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上出现的备份失败问题
 
@@ -50,7 +50,7 @@ ms.locfileid: "73747188"
 
 发生这种情况可能是因为暂时性的存储错误或存储帐户 IOPS 不足，导致备份服务无法在超时范围内将数据传输到保管库。 请根据这些[最佳做法](backup-azure-vms-introduction.md#best-practices)配置 VM 备份，然后重试备份操作。
 
-## <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState - VM 未处于允许备份的状态。
+## <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState-VM 未处于允许备份的状态
 
 错误代码： UserErrorVmNotInDesirableState <br/>
 错误消息： VM 未处于允许备份的状态。<br/>
@@ -161,7 +161,7 @@ ms.locfileid: "73747188"
   * 确保在 /etc/azure/vmbackup.conf 中将 **isanysnapshotfailed** 的值设置为 false
   * 在另一时间计划 Azure Site Recovery，使之与备份操作不冲突。
 
-## <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive - 快照操作因 VM 资源不足而失败。
+## <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive-由于 VM 资源不足，快照操作失败
 
 错误代码： ExtensionFailedTimeoutVMNetworkUnresponsive<br/>
 错误消息：由于 VM 资源不足，快照操作失败。
@@ -280,7 +280,7 @@ VM 备份依赖于向底层存储发出快照命令。 如果无法访问存储�
 * 如果四个以上的 VM 共享同一云服务，请为 VM 选择多个不同的备份策略。 错开备份时间，使同时开始的 VM 备份不超过四个。 尝试将策略中的开始时间至少隔开一小时。
 * VM 在高 CPU 或内存情况下运行。 如果虚拟机在高内存或 CPU 使用率（超过 90%）情况下运行，则快照任务将排队并延迟。 最终，它会超时。如果发生此问题，请尝试按需备份。
 
-## <a name="networking"></a>网络
+## <a name="networking"></a>联网
 
 与所有扩展一样，备份扩展也需要访问公共 Internet 才能工作。 无法访问公共 Internet 可能会出现以下各种情况：
 

@@ -1,18 +1,19 @@
 ---
-title: 使用 Azure Site Recovery 设置 Azure VM 迁移到 Azure 后的灾难恢复
+title: 通过 Azure Site Recovery 在迁移到 Azure 后设置灾难恢复
 description: 本文介绍如何准备好计算机，以便在迁移到 Azure 后使用 Azure Site Recovery 设置 Azure 区域之间的灾难恢复。
 services: site-recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 081e1db4df0d77fa600e132a5585172d44f1196a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cd15b562c3707a28b54bc59166d54871120909e2
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663029"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084941"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>设置 Azure VM 迁移到 Azure 后的灾难恢复 
 

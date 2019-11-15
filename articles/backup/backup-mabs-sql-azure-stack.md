@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: 28d4ad1a94cea6f21d1fe75483357d8788524b88
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 397de7d1de9acc657fa0fd0cb93bd6e26e5606e2
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747223"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090886"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>在 Azure Stack 上备份 SQL Server
 
@@ -80,7 +80,7 @@ ms.locfileid: "73747223"
 
     Azure 备份服务器可以通过执行一致性检查来检查备份点的完整性。 Azure 备份服务器会计算生产服务器（在本方案中为 SQL Server 计算机）上的备份文件和该文件的已备份数据的校验和。 如果存在冲突，则会认为 Azure 备份服务器上的备份文件已损坏。 Azure 备份服务器 会发送与校验和不匹配部分相对应的块来纠正备份的数据。 由于一致性检查对性能要求较高，因此你可以计划一致性检查或者自动运行它。
 
-10. 要指定对数据源进行在线保护，请选择要通过 Azure 进行保护的数据库，并单击“**下一步**”。
+10. 如果要指定对数据源进行在线保护，请选择要通过 Azure 进行保护的数据库，并单击“**下一步**”。
 
     ![选择数据源](./media/backup-azure-backup-sql/pg-sqldatabases.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "73747223"
     * 在星期六中午 12:00 进行的备份 会保留 104 周
     * 在最后一个星期六中午 12:00 进行的备份 会保留 60 个月
     * 在 3 月的最后一个星期六中午 12:00 进行的备份 会保留 10 年
-13. 单击“下一步”，选择相应的选项将初始备份副本传输到 Azure。 可以选择“自动通过网络”
+13. 单击“**下一步**”，选择相应的选项将初始备份副本传输到 Azure。 可以选择“自动通过网络”
 
 14. 在“摘要”屏幕中复查策略详细信息后，单击“创建组”以完成工作流。 可以单击“关闭”，然后在“监视”工作区中监视作业进度。
 
@@ -154,7 +154,7 @@ ms.locfileid: "73747223"
 
     ![启动恢复过程](./media/backup-azure-backup-sql/sqlbackup-recoverying.png)
 
-    完成恢复操作后，还原的数据库在应用程序级别是一致的。
+    完成恢复操作后，还原的数据库在应用程序级别将是一致的。
 
 ## <a name="next-steps"></a>后续步骤
 

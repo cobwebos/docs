@@ -1,18 +1,18 @@
 ---
-title: 使用 Azure Site Recovery 执行 Hyper-V 到 Azure 灾难恢复的体系结构
+title: Azure Site Recovery 中的 hyper-v 灾难恢复体系结构
 description: 本文概述了使用 Azure Site Recovery 服务将本地 Hyper-V VM（不带 VMM）的灾难恢复部署到 Azure 时使用的组件和体系结构。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 1ce21ea6042bbe1191edede13f80455c8e669f3b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 022d6edad1e907173dfde3481e60d2523be087a1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74030197"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082664"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V 到 Azure 的灾难恢复体系结构
 
@@ -45,7 +45,7 @@ ms.locfileid: "74030197"
 
 **组件** | **要求** | **详细信息**
 --- | --- | ---
-**Azure** | Azure 订阅、Azure 存储帐户和 Azure 网络。 | 从本地 VM 工作负载复制的数据存储在存储帐户中。 从本地站点运行故障转移时，使用复制的数据创建 Azure VM。<br/><br/> 创建 Azure VM 后，它们将连接到 Azure 虚拟网络。
+**Azure** | Azure 订阅、Azure 存储帐户和 Azure 网络。 | 从本地 VM 工作负载复制的数据存储在存储帐户中。 从本地站点进行故障转移时，使用复制的数据创建 Azure VM。<br/><br/> 创建 Azure VM 后，它们将连接到 Azure 虚拟网络。
 **VMM 服务器** | VMM 服务器上有一个或多个包含 Hyper-V 主机的云。 | 在 VMM 服务器上安装 Site Recovery 提供程序，以便协调通过 Site Recovery 进行的复制，并在恢复服务保管库中注册服务器。
 **Hyper-V 主机** | 一个或多个由 VMM 管理的 Hyper-V 主机/群集。 |  在每个 Hyper-V 主机或群集节点上安装恢复服务代理。
 **Hyper-V VM** | 一个或多个在 Hyper-V 主机服务器上运行的 VM。 | 不需在 VM 上显式安装任何内容。

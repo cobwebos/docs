@@ -16,12 +16,12 @@ ms.date: 05/04/2018
 ms.author: mimart
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 598a69593046354e83fe35b7b2ecfb0745e8b637
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 580207bb10680e84cfda7d4b1874f2b460602973
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388336"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082164"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>安装访问面板浏览器扩展
 
@@ -49,10 +49,10 @@ ms.locfileid: "66388336"
 
 2.  选择基于密码的 SSO 应用程序。
 
-3.  出现提示时，选择“立即安装”  。  
+3.  出现提示时，选择“立即安装”。  
     你将被定向到所选浏览器的下载链接。 
     
-4.  选择 **添加** 。
+4.  选择“添加”。
 
 5.  如果出现提示，请**启用**或**允许**扩展。
 
@@ -63,30 +63,30 @@ ms.locfileid: "66388336"
 也可以直接从以下站点下载适用于 Chrome 和 Microsoft Edge 的扩展：
 
 - [Chrome 扩展](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Microsoft Edge 扩展](https://www.microsoft.com/store/apps/9pc9sckkzk84)
+- [Microsoft Edge 扩展](https://www.microsoft.com/en-us/p/my-apps-secure-sign-in-extension/9pc9sckkzk84)
 - [Firefox 扩展](https://addons.mozilla.org/en-US/firefox/addon/access-panel-extension/)
 
-## <a name="use-the-my-apps-secure-sign-in-extension"></a>使用“我的应用”安全登录扩展
+## <a name="use-the-my-apps-secure-sign-in-extension"></a>使用我的应用安全登录扩展
 * 如果使用的我的应用 URL 不是 `https://myapps.microsoft.com`，请通过执行以下操作配置默认 URL：
-   1. 未登录到该扩展时，请右键单击该扩展图标。 
-   2. 在菜单上，选择“我的应用 URL”  。
+   1. 未登录到该扩展时，请右键单击该扩展图标。
+   2. 在菜单上，选择“我的应用 URL”。
    3. 选择默认 URL。
    4. 单击该扩展图标。
-   5. 若要登录到该扩展，请选择“登录以开始使用”  。
+   5. 若要登录到该扩展，请选择“登录以开始使用”。
 
 * 若要从浏览器登录直接到应用，请执行以下操作：
-   1. 安装该扩展后，通过选择“登录以开始使用”  登录到该扩展。
+   1. 安装该扩展后，通过选择“登录以开始使用”登录到该扩展。
    2. 使用登录 URL 登录到应用。  
        登录 URL 通常是显示登录表单的应用的 URL。
       该扩展的状态应会更改，并告知密码可用。
    3. 若要登录，请选择扩展图标。
 
 * 若要从扩展启动应用，请执行以下操作：
-   1. 安装该扩展后，通过选择“登录以开始使用”  登录到该扩展。
+   1. 安装该扩展后，通过选择“登录以开始使用”登录到该扩展。
    2. 选择扩展图标打开其菜单。
    3. 在“我的应用”门户中搜索可用的应用。
    4. 在搜索结果列表中，选择应用。  
-       最近使用的三个应用会显示在“最近使用”  快捷方式列表中。
+       最近使用的三个应用会显示在“最近使用”快捷方式列表中。
        
 * 若要在进行远程操作时使用内部公司 URL，请执行以下操作：
     1. 在租户上[配置应用程序代理](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable)
@@ -105,7 +105,7 @@ ms.locfileid: "66388336"
 
 -   已设置 [Active Directory 域服务](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)，并且已将用户的计算机加入域。
 
--   若要编辑组策略对象 (GPO)，必须具有“编辑设置”  权限。 默认情况下，向以下安全组的成员授予此权限：域管理员、企业管理员和组策略创建者和所有者。
+-   若要编辑组策略对象 (GPO)，必须具有“编辑设置”权限。 默认情况下，向以下安全组的成员授予此权限：域管理员、企业管理员和组策略创建者和所有者。
 
 有关如何配置组策略并将其部署到用户的分步说明，请参阅[使用组策略部署 Internet Explorer 的访问面板扩展](deploy-access-panel-browser-extension.md)。
 

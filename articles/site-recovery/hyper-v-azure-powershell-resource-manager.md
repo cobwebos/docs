@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 和 Azure 资源管理器为 Hyper-V VM 设置到 Azure 的灾难恢复 | Microsoft Docs
+title: 使用 Azure Site Recovery 和 PowerShell 进行 hyper-v VM 灾难恢复
 description: 在 PowerShell 和 Azure 资源管理器中使用 Azure Site Recovery 服务将 Hyper-V VM 自动灾难恢复到 Azure。
 author: sujayt
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: sutalasi
-ms.openlocfilehash: 1779a33e4ac021c1807ce10dc224e0b8c8c53ebb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 73f5f64a64ab28cdb4b57d0904911f62c2020cf0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200537"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082683"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>使用 PowerShell 和 Azure 资源管理器对 Hyper-V VM 设置到 Azure 的灾难恢复
 
@@ -47,9 +47,9 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>步骤 1：登录到 Azure 帐户
 
-1. 打开 PowerShell 控制台，并运行以下命令以登录到 Azure 帐户。 此 cmdlet 打开一个网页，提示输入帐户凭据：**AzAccount**。
+1. 打开 PowerShell 控制台，并运行以下命令以登录到 Azure 帐户。 该 cmdlet 会打开一个网页，提示输入帐户凭据： **AzAccount**。
     - 或者，可以使用 **-Credential** 参数，在 **Connect-AzAccount** cmdlet 中将帐户凭据包含为参数。
-    - 如果是代表租户的 CSP 合作伙伴，则需使用 tenantID 或租户主域名将客户指定为一名租户。 例如：**Connect-AzAccount -Tenant "fabrikam.com"**
+    - 如果是代表租户的 CSP 合作伙伴，则需使用 tenantID 或租户主域名将客户指定为一名租户。 例如： **AzAccount-Tenant "fabrikam.com"**
 2. 由于一个帐户可以有多个订阅，因此请将要使用的订阅与帐户关联在一起：
 
     `Select-AzSubscription -SubscriptionName $SubscriptionName`
@@ -115,8 +115,8 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
         $server =  Get-AsrFabric -Name $siteName | Get-AsrServicesProvider -FriendlyName $server-friendlyname
 
 如果运行的是 Hyper-V 核心服务器，请下载安装程序文件并执行以下操作：
-1. 通过运行以下命令，将文件从 Azuresiterecoveryprovider.exe 解压缩到本地目录：```AzureSiteRecoveryProvider.exe /x:. /q```
-2. 运行```.\setupdr.exe /i```结果记录到%Programdata%\ASRLogs\DRASetupWizard.log。
+1. 通过运行以下命令，将文件从 Azuresiterecoveryprovider.exe 解压缩到本地目录： ```AzureSiteRecoveryProvider.exe /x:. /q```
+2. 运行 ```.\setupdr.exe /i``` 结果记录到%Programdata%\ASRLogs\DRASetupWizard.log。
 
 3. 运行此命令注册服务器：
 

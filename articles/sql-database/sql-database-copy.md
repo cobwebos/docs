@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 09/04/2019
-ms.openlocfilehash: ebf63d14a8fb883158d1ac3e0a8f3d6658920aa7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: 0b8bfff03414dd02360cab1957ea2205e392235d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826656"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082482"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>复制 Azure SQL 数据库的事务一致性副本
 
@@ -24,14 +24,14 @@ ms.locfileid: "73826656"
 
 ## <a name="overview"></a>概述
 
-数据库副本是源数据库截至复制请求发出时的快照。 你可以选择同一服务器或不同的服务器。 另外，你还可以选择保留其服务层级和计算大小，或在同一服务层级中使用不同的计算大小（版本）。 在完成该复制后，副本将成为能够完全行使功能的独立数据库。 此时，可以升级或降级到任意版本。 登录名、用户和权限可单独进行管理。 副本是使用异地复制技术创建的，一旦种子设定完成，异地复制链接就会自动终止。 使用异地复制的所有要求都适用于数据库复制操作。 有关详细信息，请参阅[活动异地复制概述](sql-database-active-geo-replication.md)。
+数据库副本是源数据库截至复制请求发出时的快照。 你可以选择同一服务器或不同的服务器。 另外，你还可以选择保留其服务层级和计算大小，或在同一服务层级中使用不同的计算大小（版本）。 在完成该复制后，副本将成为能够完全行使功能的独立数据库。 此时，可以将其升级或降级为任何版本。 登录名、用户和权限可单独进行管理。 副本是使用异地复制技术创建的，一旦种子设定完成，异地复制链接就会自动终止。 使用异地复制的所有要求都适用于数据库复制操作。 有关详细信息，请参阅[活动异地复制概述](sql-database-active-geo-replication.md)。
 
 > [!NOTE]
 > 在创建数据库副本时，将用到[自动数据库备份](sql-database-automated-backups.md)。
 
 ## <a name="logins-in-the-database-copy"></a>数据库副本中的登录名
 
-将某个数据库复制到同一 SQL 数据库服务器时，可以在这两个数据库上使用相同的登录名。 用于复制该数据库的安全主体将成为新数据库上的数据库所有者。 所有数据库用户、其权限及安全标识符 (SID) 都复制到数据库副本中。  
+将某个数据库复制到同一 SQL 数据库服务器时，可以在这两个数据库上使用相同的登录名。 用于复制该数据库的安全主体将成为新数据库上的数据库所有者。 所有数据库用户、其权限及安全标识符 (SID) 都会复制到数据库副本中。  
 
 将数据库复制到不同的 SQL 数据库服务器时，新服务器上的安全主体将成为新数据库上的数据库所有者。 如果使用[包含的数据库用户](sql-database-manage-logins.md)进行数据访问，请确保主数据库和辅助数据库始终具有相同的用户凭据，这样在复制完成后，便可以使用相同的凭据立即访问。 
 
@@ -62,7 +62,7 @@ New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
 
 如需完整的示例脚本，请参阅[将数据库复制到新的服务器](scripts/sql-database-copy-database-to-new-server-powershell.md)。
 
-数据库复制是一个异步操作，但在接受请求后会立即创建目标数据库。 如果需要取消仍在进行的复制操作，请使用 [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) cmdlet 删除目标数据库。  
+数据库复制是一个异步操作，但在接受请求后会立即创建目标数据库。 如果需要在仍在进行时取消复制操作，请使用[AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) cmdlet 删除目标数据库。  
 
 ## <a name="rbac-roles-to-manage-database-copy"></a>用于管理数据库副本的 RBAC 角色
 
@@ -156,6 +156,26 @@ New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
 新数据库中的所有用户都保持他们在源数据库中已有的权限。 启动数据库复制过程的用户将成为新数据库的数据库所有者，并且会为该用户分配一个新的安全标识符 (SID)。 复制成功之后，重新映射其他用户之前，只有启动复制的登录名，即数据库所有者，才能登录到新数据库。
 
 要了解如何在将数据库复制到其他 SQL 数据库服务器时管理用户和登录名，请参阅[灾难恢复后如何管理 Azure SQL 数据库的安全性](sql-database-geo-replication-security-config.md)。
+
+## <a name="database-copy-errors"></a>数据库复制错误
+
+在 Azure SQL 数据库中复制数据库时，可能会发生以下错误。 有关详细信息，请参阅[复制 Azure SQL 数据库](sql-database-copy.md)。
+
+| 错误代码 | 严重性 | 说明 |
+| ---:| ---:|:--- |
+| 40635 |16 |IP 地址为“%.&#x2a;ls”的客户端已暂时禁用。 |
+| 40637 |16 |创建数据库副本当前处于禁用状态。 |
+| 40561 |16 |数据库复制失败。 源数据库或目标数据库不存在。 |
+| 40562 |16 |数据库复制失败。 源数据库已删除。 |
+| 40563 |16 |数据库复制失败。 目标数据库已删除。 |
+| 40564 |16 |数据库复制由于内部错误而失败。 请删除目标数据库，并重试。 |
+| 40565 |16 |数据库复制失败。 不允许来自同一源的多个并发数据库复制。 请删除目标数据库，并重试。 |
+| 40566 |16 |数据库复制由于内部错误而失败。 请删除目标数据库，并重试。 |
+| 40567 |16 |数据库复制由于内部错误而失败。 请删除目标数据库，并重试。 |
+| 40568 |16 |数据库复制失败。 源数据库已变得不可用。 请删除目标数据库，并重试。 |
+| 40569 |16 |数据库复制失败。 目标数据库已变得不可用。 请删除目标数据库，并重试。 |
+| 40570 |16 |数据库复制由于内部错误而失败。 请删除目标数据库，并重试。 |
+| 40571 |16 |数据库复制由于内部错误而失败。 请删除目标数据库，并重试。 |
 
 ## <a name="next-steps"></a>后续步骤
 

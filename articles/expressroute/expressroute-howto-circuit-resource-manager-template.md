@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 07/05/2019
+ms.date: 11/13/2019
 ms.author: cherylmc
 ms.reviewer: ganesr
-ms.openlocfilehash: d6d9a3b472e2a40bfacf25a0b8fe0accb7d62cb8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 25ed38e72f5a21622a87e36ad811ffd66f6a4c90
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031976"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083515"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 ExpressRoute 线路
 
@@ -64,8 +64,8 @@ ms.locfileid: "74031976"
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * “层”决定是启用 ExpressRoute 标准版外接程序还是 ExpressRoute 高级版外接程序。 可以指定“Standard”以获取标准 SKU，或指定“Premium”以获取高级版外接程序。
-
+   * **SKU 层**确定 ExpressRoute 线路是[本地](expressroute-faqs.md#expressroute-local)、标准还是[高级](expressroute-faqs.md#expressroute-premium)。 您可以指定*本地*、*标准*或*高级*。
+   * **SKU 系列**确定计费类型。 可以指定“Metereddata”以获取数据流量套餐，指定“Unlimiteddata”以获取无限制流量套餐。 可以将计费类型从“Metereddata”更改为“Unlimiteddata”，但不能将类型从“Unlimiteddata”更改为“Metereddata”。 *本地*线路仅*Unlimiteddata* 。
    * “对等互连位置”是与 Microsoft 建立对等互连的实际位置。
 
      > [!IMPORTANT]

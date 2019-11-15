@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: robinsh
-ms.openlocfilehash: 8d071d4cd6ae3f9a52433104075e396d70d5bc57
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4d8771d49f30d94aeb6dfa855f5c2ef107076afb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828690"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083271"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>如何将 Azure IoT 中心克隆到另一个区域
 
@@ -391,7 +391,7 @@ ms.locfileid: "73828690"
 
 既然已启动并运行克隆，接下来需要将所有设备从原始中心复制到克隆。 
 
-可以通过多种方式来实现此目的。 你最初使用的是[设备预配服务（DPS）](/azure/iot-dps/about-iot-dps.md)来预配设备，或者你未使用。 否则，这并不是很困难。 否则，这可能非常复杂。 
+可以通过多种方式来实现此目的。 你最初使用的是[设备预配服务（DPS）](/azure/iot-dps/about-iot-dps)来预配设备，或者你未使用。 否则，这并不是很困难。 否则，这可能非常复杂。 
 
 如果未使用 DPS 来预配设备，则可以跳过下一部分，开始[使用导入/导出将设备移到新中心](#using-import-export-to-move-the-devices-to-the-new-hub)。
 
@@ -491,7 +491,7 @@ ms.locfileid: "73828690"
 
 ### <a name="running-the-sample-application-and-using-command-line-arguments"></a>运行示例应用程序并使用命令行参数
 
-1. 打开命令提示符窗口。 选择 "Windows"，然后键入 `command prompt` 以获取命令提示符窗口。
+1. 打开“命令提示符”窗口。 选择 "Windows"，然后键入 `command prompt` 以获取命令提示符窗口。
 
 1. 复制设置环境变量的命令，并将其粘贴到命令提示符窗口，然后选择 Enter。 完成后，在 "命令提示符" 窗口中键入 `SET` 以查看环境变量及其值。 一旦将这些文件复制到命令提示符窗口中，就不必再次复制它们，除非您打开新的命令提示符窗口。
 

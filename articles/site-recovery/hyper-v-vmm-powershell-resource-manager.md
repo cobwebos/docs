@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 和 PowerShell 设置 VMM 云中的 Hyper-V VM 到辅助站点的灾难恢复 | Microsoft Docs
+title: 使用 Azure Site Recovery/PowerShell 设置 Hyper-v （使用 VMM）灾难恢复到辅助站点
 description: 介绍如何使用 Azure Site Recovery 和 PowerShell 设置 VMM 云中的 Hyper-V VM 到辅助 VMM 站点的灾难恢复。
 services: site-recovery
 author: sujayt
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 78bd077b5491b093510b9c55bf7b5a42ee9cb578
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2fc66514bdf33611f9e6266d35a2d537fe3b9261
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362350"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084911"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>使用 PowerShell（资源管理器）设置 Hyper-V VM 到辅助站点的灾难恢复
 
@@ -21,7 +21,7 @@ ms.locfileid: "60362350"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 查看[方案体系结构和组件](hyper-v-vmm-architecture.md)。
 - 查看所有组件的[支持要求](site-recovery-support-matrix-to-sec-site.md)。
@@ -77,7 +77,7 @@ ms.locfileid: "60362350"
 
         $vault = New-AzRecoveryServicesVault -Name #vaultname -ResourceGroupName #ResourceGroupName -Location #location
    
-    创建使用 Get AzRecoveryServicesVault cmdlet 后，可以检索保管库对象。
+    使用 AzRecoveryServicesVault cmdlet 创建保管库对象后，可以检索该对象。
 
 ## <a name="set-the-vault-context"></a>设置保管库上下文
 1. 检索现有保管库。

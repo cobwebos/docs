@@ -1,5 +1,5 @@
 ---
-title: 关于 ExpressRoute Direct - Azure | Microsoft Docs
+title: 关于 Azure ExpressRoute 直通
 description: 此页提供 ExpressRoute 直通的概述
 services: expressroute
 author: jaredr80
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 916175401cd993392094b2bb16f8fc8746a4d2a8
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: f26fdd75e0a6c6228d329a8b9be4743072ae54c1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123399"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083601"
 ---
 # <a name="about-expressroute-direct"></a>关于 ExpressRoute Direct
 
@@ -21,7 +20,7 @@ ms.locfileid: "71123399"
 
 ExpressRoute Direct 提供的主要功能包括但不限于：
 
-* 大规模数据引入到存储（如存储和 Cosmos DB）
+* 将数据大规模引入存储和 Cosmos DB 之类的服务
 * 针对受监管和需要专用和独立连接的行业的物理隔离，例如：银行、政府和零售
 * 根据业务部门，细化控制线路分布
 
@@ -57,7 +56,7 @@ ExpressRoute Direct 支持将数据大规模引入到 Azure 存储和其他大�
 
 | **100 Gbps ExpressRoute 直接** | **10 Gbps ExpressRoute 直接** | 
 | --- | --- |
-| **订阅的带宽**：200 Gbps | **订阅的带宽**：20 Gbps |
+| **订阅的带宽**： 200 Gbps | **订阅的带宽**： 20 Gbps |
 | <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> | <ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
 
 ## <a name="technical-requirements"></a>技术要求
@@ -74,7 +73,7 @@ ExpressRoute Direct 支持将数据大规模引入到 Azure 存储和其他大�
     * 必须基于 Microsoft 指定的 VLAN ID （*仅适用于 QinQ* ）添加外部 VLAN 标记（STAG）。
     * 必须支持每个端口和设备多个 BGP 会话（Vlan）
     * IPv4 和 IPv6 连接。 *对于 IPv6，将不会创建其他子接口。IPv6 地址将添加到现有子接口*。 
-    * 可选：[双向转发检测（BFD）](https://docs.microsoft.com/azure/expressroute/expressroute-bfd)支持，默认情况下在 ExpressRoute 线路上的所有专用对等互连上配置
+    * 可选：[双向转发检测（BFD）](https://docs.microsoft.com/azure/expressroute/expressroute-bfd)支持，在 ExpressRoute 线路上的所有专用对等互连上默认配置
 
 ## <a name="vlan-tagging"></a>VLAN 标记
 
@@ -86,7 +85,7 @@ ExpressRoute Direct 同时支持 QinQ 和 Dot1Q VLAN 标记。
 
 ## <a name="workflow"></a>工作流
 
-[![workflow](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
+[![工作流](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
 
 ## <a name="sla"></a>SLA
 

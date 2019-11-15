@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: a86af57f49b91615cc453946b0b5d51d22f2d163
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 9e5103fad517e695198602a182574de964a9c504
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747445"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091126"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>监视和管理恢复服务保管库
 
@@ -98,7 +98,7 @@ ms.locfileid: "73747445"
 * 警报
 * 备份项
 * 受保护的服务器
-* Severity
+* 严重性
 * 持续时间
 * 创建时间
 * 状态
@@ -211,7 +211,7 @@ ms.locfileid: "73747445"
 * 所有项类型
 * Azure 虚拟机
 * 文件和文件夹
-* Azure 存储
+* Azure 存储空间
 * Azure 工作负荷
 
 #### <a name="operation"></a>Operation
@@ -258,7 +258,7 @@ ms.locfileid: "73747445"
 * 与保管库关联的 Cloud LRS 存储使用情况
 * 与保管库关联的 Cloud GRS 存储使用情况
 
-## <a name="troubleshooting-monitoring-issues"></a>监视问题疑难解答
+## <a name="troubleshooting-monitoring-issues"></a>排查监视问题
 
 **问题：** Azure 备份代理的作业和/或警报未在门户中出现。
 

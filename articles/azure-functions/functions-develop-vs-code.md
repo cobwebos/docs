@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 77805b15d0061d0ab4b6ef2185c2f7f1c3459f0c
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5aac99dbeb6ebd7c0b131df5027daa352c30f3bd
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172059"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082803"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio 开发 Azure Functions
 
@@ -46,7 +46,7 @@ Azure Functions 扩展提供以下优势：
 
 在安装并运行 [Azure Functions 扩展][适用于 visual studio code 的 azure functions 扩展]之前，必须符合以下要求：
 
-* 已在某个[支持的平台](https://code.visualstudio.com/docs/supporting/requirements#_platforms)上安装 [Visual Studio Code](https://code.visualstudio.com/)。
+* 已在某个[支持的平台](https://code.visualstudio.com/)上安装 [Visual Studio Code](https://code.visualstudio.com/docs/supporting/requirements#_platforms)。
 
 * 一个有效的 Azure 订阅。
 
@@ -63,7 +63,7 @@ Azure Functions 扩展提供以下优势：
 
 使用 Functions 扩展可以创建函数应用项目以及第一个函数。 以下步骤说明如何在新的 Functions 项目中创建 HTTP 触发的函数。 [HTTP 触发器](functions-bindings-http-webhook.md)是用于演示的最简单函数触发器模板。
 
-1. 从 **Azure：Functions** 中，选择“创建函数”图标：
+1. 从 " **Azure：函数**" 中，选择 "**创建函数**" 图标：
 
     ![创建函数](./media/functions-develop-vs-code/create-function.png)
 
@@ -85,7 +85,7 @@ Azure Functions 扩展提供以下优势：
 
 * **host.json**：用于配置 Functions 主机。 在本地和 Azure 中运行函数时，将应用这些设置。 有关详细信息，请参阅 [host.json 参考](functions-host-json.md)。
 
-* **local.settings.json**：维护本地运行函数时使用的设置。 仅当在本地运行函数时，才使用这些设置。 有关详细信息，请参阅[本地设置文件](#local-settings-file)。
+* **local. json**：维护在本地运行函数时使用的设置。 仅当在本地运行函数时，才使用这些设置。 有关详细信息，请参阅[本地设置文件](#local-settings-file)。
 
     >[!IMPORTANT]
     >由于 local.settings.json 文件可能包含机密，因此需要将其从项目源代码管理中排除。
@@ -114,7 +114,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 ## <a name="add-a-function-to-your-project"></a>将函数添加到项目
 
-可以使用某个预定义的函数触发器模板将新函数添加到现有项目。 若要添加新的函数触发器，请按 F1 打开命令面板，然后搜索并运行命令“Azure Functions:创建函数”。 遵照提示选择触发器类型，并定义触发器的所需属性。 如果触发器需要访问密钥或连接字符串才能连接到服务，请在创建函数触发器之前做好准备。
+可以使用某个预定义的函数触发器模板将新函数添加到现有项目。 若要添加新的函数触发器，请选择 F1 打开命令面板，然后搜索并运行命令**Azure Functions： Create function**。 遵照提示选择触发器类型，并定义触发器的所需属性。 如果触发器需要访问密钥或连接字符串才能连接到服务，请在创建函数触发器之前做好准备。
 
 此操作的结果取决于项目语言：
 
@@ -142,7 +142,7 @@ Visual Studio Code 可让你遵照一组方便的提示将绑定添加到 functi
 
 下面是有关定义新的存储输出绑定的示例提示：
 
-| Prompt | ReplTest1 | 描述 |
+| Prompt | 值 | 说明 |
 | -------- | ----- | ----------- |
 | **选择绑定方向** | `out` | 该绑定是输出绑定。 |
 | **选择具有方向的绑定** | `Azure Queue Storage` | 该绑定是 Azure 存储队列绑定。 |
@@ -204,33 +204,33 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 ### <a name="quick-function-app-create"></a>快速函数应用创建
 
-当你**在 Azure 中选择 "+ 新建函数应用 ...** " 时，扩展会自动为函数应用所需的 Azure 资源生成值。 这些值基于所选的函数应用名称。 有关使用默认值将项目发布到 Azure 中的新函数应用的示例，请参阅 [Visual Studio Code 快速入门文章](functions-create-first-function-vs-code.md#publish-the-project-to-azure)。
+当你选择“+ 在 Azure 中创建新的函数应用...”时，扩展会自动为函数应用所需的 Azure 资源生成值。 这些值基于所选的函数应用名称。 有关使用默认值将项目发布到 Azure 中的新函数应用的示例，请参阅 [Visual Studio Code 快速入门文章](functions-create-first-function-vs-code.md#publish-the-project-to-azure)。
 
-如果要为创建的资源提供显式名称，则必须选择 "高级" 创建路径。
+如果要为创建的资源提供显式名称，则必须选择高级创建路径。
 
 ### <a name="enable-publishing-with-advanced-create-options"></a>使用高级选项将项目发布到 Azure 中的新函数应用
 
 以下步骤使用高级创建选项将项目发布到创建的新函数应用：
 
-1. 在“Azure：函数”Functions”区域中，选择“部署到函数应用”图标。
+1. 在 " **Azure：函数**" 区域中，选择 "**部署到 Function App** " 图标。
 
     ![函数应用设置](./media/functions-develop-vs-code/function-app-publish-project.png)
 
 1. 如果你未登录，系统会提示“登录到 Azure”。 还可以**创建免费 Azure 帐户**。 从浏览器登录后，返回到 Visual Studio Code。
 
-1. 如果有多个订阅，请选择 function app 的**订阅**，然后选择 **"+ 在 Azure 中创建新 Function App ..."_Advanced_** 。 此_高级_选项使你可以更好地控制在 Azure 中创建的资源。 
+1. 如果有多个订阅，请选择 function app 的**订阅**，然后选择 " **+ 在 Azure 中创建新 Function App ..."_Advanced_** 。 使用此“高级”选项可以更好地控制在 Azure 中创建的资源。 
 
 1. 按提示操作并提供以下信息：
 
-    | Prompt | ReplTest1 | 描述 |
+    | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
     | 选择 Azure 中的函数应用 | 在 Azure 中创建新的函数应用 | 在下一个提示中，键入用于标识新函数应用的全局唯一名称，然后按 Enter。 函数应用名称的有效字符包括 `a-z`、`0-9` 和 `-`。 |
     | 选择 OS | Windows | 函数应用在 Windows 上运行。 |
     | 选择托管计划 | 消耗计划 | 使用无服务器[消耗计划托管](functions-scale.md#consumption-plan)。 |
     | 选择新应用的运行时 | 项目语言 | 该运行时必须与要发布的项目相匹配。 |
     | 选择新资源的资源组 | 创建新的资源组 | 在下一个提示中，键入资源组名称（例如 `myResourceGroup`），然后按 Enter。 也可以选择现有的资源组。 |
-    | 选择存储帐户 | 创建新存储帐户 | 在下一个提示中，键入函数应用使用的新存储帐户的全局唯一名称，然后按 Enter。 存储帐户名称长度必须为 3 到 24 个字符，只能包含数字和小写字母。 也可以选择现有的帐户。 |
-    | 选择新资源的位置 | 区域 | 在与你靠近或者与函数要访问的其他服务靠近的[区域](https://azure.microsoft.com/regions/)中选择一个位置。 |
+    | 选择存储帐户 | 新建存储帐户 | 在下一个提示中，键入函数应用使用的新存储帐户的全局唯一名称，然后按 Enter。 存储帐户名称长度必须为 3 到 24 个字符，只能包含数字和小写字母。 也可以选择现有的帐户。 |
+    | 选择新资源的位置 | region | 在与你靠近或者与函数要访问的其他服务靠近的[区域](https://azure.microsoft.com/regions/)中选择一个位置。 |
 
     创建函数应用并应用了部署包之后，会显示一个通知。 在此通知中选择“查看输出”以查看创建和部署结果，其中包括你创建的 Azure 资源。
 
@@ -241,7 +241,7 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 > [!IMPORTANT]
 > 发布到现有函数应用将覆盖该应用在 Azure 中的内容。
 
-1. 在 Visual Studio Code 中，按 F1 打开命令面板。 在命令面板中，搜索并选择“Azure Functions:部署到函数应用”。
+1. 在 Visual Studio Code 中，按 F1 打开命令面板。 在命令面板中，搜索并选择 " **Azure Functions：部署到函数应用**"。
 
 1. 如果你未登录，系统会提示“登录到 Azure”。 从浏览器登录后，返回到 Visual Studio Code。 如果你有多个订阅，请选择包含你的函数应用的订阅。
 
@@ -253,7 +253,7 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 为了能够调用 HTTP 触发的函数，需要获取函数在部署到函数应用时的 URL。 此 URL 包含全部所需的[函数密钥](functions-bindings-http-webhook.md#authorization-keys)。 可以使用扩展获取已部署的函数的这些 URL。
 
-1. 按 F1 打开命令面板，然后搜索并运行命令“Azure Functions:**Copy Function URL**。
+1. 选择 F1 打开命令面板，然后搜索并运行命令**Azure Functions：复制函数 URL**。
 
 1. 按提示选择 Azure 中的函数应用，然后选择要调用的特定 HTTP 触发器。
 
@@ -276,7 +276,7 @@ Azure Functions 扩展可让你在本地开发计算机上运行函数项目。 
     | **C#** | [C# 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[.NET Core CLI 工具](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
     | **Java** | [适用于 Java 的调试器扩展](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 或更高版本](https://maven.apache.org/) |
     | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
-    | **Python** | [Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python 3.6 或更高版本](https://www.python.org/downloads/)|
+    | **Python** | [Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>建议使用[Python 3.6.8](https://www.python.org/downloads/)|
 
     <sup>*</sup>活动 LTS 和维护 LTS 版本（建议使用 8.11.1 和 10.14.1）。
 
@@ -288,7 +288,7 @@ Azure Functions 扩展可让你在本地开发计算机上运行函数项目。 
 
 若要设置存储帐户连接字符串，请执行以下操作：
 
-1. 在 Visual Studio 中，打开“Cloud Explorer”，展开“存储帐户” > “你的存储帐户”，然后选择“属性面板”并复制“主连接字符串”值。
+1. 在 Visual Studio 中，打开“Cloud Explorer”，展开“存储帐户” **“你的存储帐户”，然后选择“属性面板”并复制“主连接字符串”值。**  > 
 
 2. 在项目内，打开 local.settings.json 项目文件，并将“AzureWebJobsStorage”键的值设置为复制的连接字符串。
 
@@ -329,20 +329,20 @@ HTTP 触发器的请求 URL 显示在终端输出中。 在本地运行项目时
 
 ![上传应用程序设置](./media/functions-develop-vs-code/upload-app-settings.png)
 
-也可以使用命令面板中的“Azure Functions:上传本地设置”命令来发布设置。 可以使用“Azure Functions:添加新设置”命令将各个设置添加到 Azure 中的应用程序设置。
+你还可以使用 "命令" 面板中的 " **Azure Functions：上传本地设置**" 命令来发布设置。 你可以使用**Azure Functions：添加新设置**命令，将单个设置添加到 Azure 中的应用程序设置。
 
 > [!TIP]
 > 在发布 local.settings.json 文件之前，请务必保存它。
 
 如果本地文件已加密，则会将其解密、发布，然后再次加密。 如果两个位置中的设置使用了有冲突的值，系统会提示你选择如何继续。
 
-在“Azure: Functions”区域中，依次展开你的订阅、函数应用和“应用程序设置”，查看现有的应用设置。
+通过展开你的订阅、函数应用和**应用程序设置**，在**Azure： "功能**" 区域中查看现有的应用设置。
 
 ![在 Visual Studio Code 中查看函数应用设置](./media/functions-develop-vs-code/view-app-settings.png)
 
 ### <a name="download-settings-from-azure"></a>从 Azure 下载设置
 
-如果已在 Azure 中创建应用程序设置，可以使用“Azure Functions:下载远程设置”命令将其下载到 local.settings.json 文件中。
+如果已在 Azure 中创建应用程序设置，则可以使用**Azure Functions：下载远程设置**命令将它们下载到你的本地. json 文件中。
 
 与上传时一样，如果本地文件已加密，则会将其解密、更新，然后再次加密。 如果两个位置中的设置使用了有冲突的值，系统会提示你选择如何继续。
 
@@ -375,11 +375,11 @@ HTTP 触发器的请求 URL 显示在终端输出中。 在本地运行项目时
 
 默认情况下，所有 C# 项目创建为 [C# 编译的类库项目](functions-dotnet-class-library.md)。 如果你偏好使用 C# 脚本项目，则必须在 Azure Functions 扩展设置中选择 C# 脚本作为默认语言。
 
-1. 选择“文件” > “首选项” > “设置”。
+1. 选择“文件” **“首选项”** “设置”。 >  > 
 
-1. 转到“用户设置” > “扩展” > “Azure Functions”。
+1. 转到“用户设置” **“扩展”** “Azure Functions”。 >  > 
 
-1. 选择“C#Script”：“Azure Functions:选择“C# 脚本”。
+1. 从**Azure Function：项目语言**中选择**C # 脚本**。
 
 完成这些步骤后，对底层 Core Tools 发出的调用包含 `--csx` 选项，该选项会生成并发布 C# 脚本 (.csx) 项目文件。 如果指定了此默认语言，创建的所有项目将默认为 C# 脚本项目。 如果设置了默认值，则系统不会提示你选择项目语言。 若要以其他语言创建项目，必须更改此设置，或者将其从用户的 settings.json 文件中删除。 删除此设置后，在创建项目时，系统会再次提示你选择语言。
 
@@ -387,14 +387,14 @@ HTTP 触发器的请求 URL 显示在终端输出中。 在本地运行项目时
 
 Azure Functions 扩展在区域提供一个有用的图形界面，用于与 Azure 中的函数应用交互。 命令面板 (F1) 中的命令也具有相同的功能。 以下 Azure Functions 命令可用：
 
-|Azure Functions 命令  | 描述  |
+|Azure Functions 命令  | 说明  |
 |---------|---------|
 |**添加新设置**  |  在 Azure 中创建新的应用程序设置。 有关详细信息，请参阅[发布应用程序设置](#publish-application-settings)。 可能还需要[将此设置下载到本地设置](#download-settings-from-azure)。 |
 | **配置部署源** | 将 Azure 中的函数应用连接到本地 Git 存储库。 若要了解详细信息，请参阅[Azure Functions 的持续部署](functions-continuous-deployment.md)。 |
 | **连接到 GitHub 存储库** | 将函数应用连接到 GitHub 存储库。 |
 | **复制函数 URL** | 获取 Azure 中运行的 HTTP 触发函数的远程 URL。 有关详细信息，请参阅[获取已部署的函数的 URL](#get-the-url-of-the-deployed-function)。 |
 | **在 Azure 中创建函数应用** | 在 Azure 中的订阅内创建新的函数应用。 有关详细信息，请参阅有关如何[发布到 Azure 中的新函数应用](#publish-to-azure)的部分。        |
-| **解密设置** | 解密已由以下命令加密的[本地设置](#local-settings-file)：“Azure Functions:加密设置”。  |
+| **解密设置** | 对已由**Azure Functions：加密设置**加密的[本地设置](#local-settings-file)进行解密。  |
 | **删除函数应用** | 从 Azure 中的订阅内删除函数应用。 如果应用服务计划中没有其他应用，则系统也会提供用于删除其他应用的选项。 不会删除其他资源，例如存储帐户和资源组。 若要删除所有资源，应[删除资源组](functions-add-output-binding-storage-queue-vs-code.md#clean-up-resources)。 本地项目不受影响。 |
 |**删除函数**  | 从 Azure 中的函数应用内删除现有的函数。 由于此删除操作不会影响本地项目，因此请考虑在本地删除函数，然后[重新发布项目](#republish-project-files)。 |
 | **删除代理** | 从 Azure 中的函数应用内删除 Azure Functions 代理。 有关代理的详细信息，请参阅[使用 Azure Functions 代理](functions-proxies.md)。 |
@@ -402,7 +402,7 @@ Azure Functions 扩展在区域提供一个有用的图形界面，用于与 Azu
 | **从存储库断开连接**  | 删除 Azure 中的函数应用与源代码管理存储库之间的[连续部署](functions-continuous-deployment.md)连接。 |
 | **下载远程设置** | 将 Azure 中所选函数应用的设置下载到 local.settings.json 文件中。 如果本地文件已加密，则会将其解密、更新，然后再次加密。 如果两个位置中的设置使用了有冲突的值，系统会提示你选择如何继续。 在运行此命令之前，请确保已保存对 local.settings.json 文件所做的更改。 |
 | **编辑设置** | 更改 Azure 中现有函数应用设置的值。 此命令不影响 local.settings.json 文件中的设置。  |
-| **加密设置** | 加密[本地设置](#local-settings-file)中 `Values` 数组内的单个项。 在此文件中，`IsEncrypted` 也设置为 `true`，指定本地运行时在使用设置之前先将其解密。 加密本地设置可以减少泄露重要信息的风险。 在 Azure 中，应用程序设置始终以加密的形式进行存储。 |
+| **加密设置** | 加密`Values`本地设置[中 ](#local-settings-file) 数组内的单个项。 在此文件中，`IsEncrypted` 也设置为 `true`，指定本地运行时在使用设置之前先将其解密。 加密本地设置可以减少泄露重要信息的风险。 在 Azure 中，应用程序设置始终以加密的形式进行存储。 |
 | **立即执行函数** | 在 Azure 中手动启动[计时器触发的函数](functions-bindings-timer.md)。 此命令用于测试。 有关在 Azure 中触发非 HTTP 函数的详细信息，请参阅[手动运行非 HTTP 触发的函数](functions-manually-run-non-http.md)。 |
 | **初始化项目以便与 VS Code 配合使用** | 将所需的 Visual Studio Code 项目文件添加到现有的 Functions 项目。 运行此命令可以使用 Core Tools 处理创建的项目。 |
 | **安装或更新 Azure Functions Core Tools** | 安装或更新用于在本地运行函数的 [Azure Functions Core Tools]。 |

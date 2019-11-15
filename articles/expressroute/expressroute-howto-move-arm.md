@@ -1,5 +1,5 @@
 ---
-title: 将线路从经典部署移动到资源管理器-ExpressRoute： PowerShell： Azure |Microsoft Docs
+title: Azure ExpressRoute：将经典线路移动到资源管理器
 description: 本页介绍如何使用 PowerShell 将经典线路转移到 Resource Manager 部署模型。
 services: expressroute
 author: ganesr
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 34dd7ed4c6352ed90793288f918d78b7fb07af80
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 4e49a3bc803733f5e78207fa3573c93395924d6a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748244"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080173"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>使用 PowerShell 将 ExpressRoute 线路从经典部署模型转移到资源管理器部署模型
 
@@ -26,7 +25,7 @@ ms.locfileid: "73748244"
 * 验证是否已在本地计算机上安装经典模块和 Az Azure PowerShell 模块。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 * 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)、[路由要求](expressroute-routing.md)和[工作流](expressroute-workflows.md)。
 * 查看[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](expressroute-move.md)中提供的信息。 请确保完全了解限制和局限性。
-* 验证该线路是否在经典部署模型中完全正常运行。
+* 验证线路在经典部署模型中可完全正常运行。
 * 确保拥有一个在 Resource Manager 部署模型中创建的资源组。
 
 ## <a name="move-an-expressroute-circuit"></a>转移 ExpressRoute 线路
@@ -54,7 +53,7 @@ ms.locfileid: "73748244"
    Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
    ```
 
-4. 使用下面的 cmdlet 获取所有 ExpressRoute 线路的服务密钥。 检索密钥后，请复制要移动到 Resource Manager 部署模型的线路的 **服务密钥** 。
+4. 使用下面的 cmdlet 获取所有 ExpressRoute 线路的服务密钥。 检索密钥后，复制要转移到 Resource Manager 部署模型的线路的**服务密钥**。
 
    ```powershell
    Get-AzureDedicatedCircuit
@@ -86,7 +85,7 @@ ms.locfileid: "73748244"
 
 现在，可以将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型。 在继续下一步之前，请先参阅[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](expressroute-move.md)中提供的信息。
 
-若要移动线路，请修改并运行以下代码片段：
+若要转移线路，请修改并运行以下代码段：
 
 ```powershell
 Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
@@ -102,7 +101,7 @@ Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Locati
 
 ### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>为两种部署模型启用 ExpressRoute 线路访问权限
 
-将经典 ExpressRoute 线路移动到 Resource Manager 部署模型后，可以启用对两种部署模型的访问。 运行以下 cmdlet 启用对两种部署模型的访问权限：
+将经典 ExpressRoute 线路转移到 Resource Manager 部署模型后，可以启用对这两种部署模型的访问权限。 运行以下 cmdlet 启用对两种部署模型的访问权限：
 
 1. 获取线路详细信息。
 
@@ -128,7 +127,7 @@ Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Locati
    get-azurededicatedcircuit
    ```
 
-5. 现在，可以使用适用于经典 VNet 的经典部署模型命令以及适用于 Resource Manager VNet 的 Resource Manager 命令来管理到 ExpressRoute 线路的链接。 以下文章可帮助管理 ExpressRoute 线路的链接：
+5. 现在，可以使用经典 VNet 的经典部署模型命令以及 Resource Manager VNet 的 Resource Manager 命令来管理 ExpressRoute 线路的链接。 以下文章可帮助管理 ExpressRoute 线路的链接：
 
     * [在 Resource Manager 部署模型中将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)
     * [在经典部署模型中将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-classic.md)

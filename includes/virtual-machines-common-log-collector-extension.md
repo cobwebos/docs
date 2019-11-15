@@ -4,17 +4,17 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 072864d565e2edbddd4b7df851ad0e30daf7e5fa
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172974"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74085223"
 ---
 若要诊断 Microsoft Azure 云服务的问题，需要在问题发生时收集虚拟机上该服务的日志文件。 可以使用 AzureLogCollector 扩展按需从一个或多个云服务 VM（通过 Web 角色和辅助角色）执行一次性日志收集，并将收集到的文件传输到 Azure 存储帐户 - 所有这些操作都无需远程登录到任何 VM。
 
 > [!NOTE]
-> 有关大多数记录的信息的说明，请参阅 http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp 。
+> 有关大多数记录的信息的说明，请参阅 https://blogs.msdn.microsoft.com/kwill/2013/08/09/windows-azure-paas-compute-diagnostics-data/
 > 
 > 
 
@@ -31,9 +31,9 @@ ms.locfileid: "67172974"
 
 在两种收集模式下，均可使用以下结构的集合来指定额外的数据收集文件夹：
 
-* **名称**：集合的名称，用作包含已收集文件的 zip 文件中子文件夹的名称。
-* **位置**：要收集的文件所在虚拟机上的文件夹路径。
-* **SearchPattern**：要收集的文件的名称模式。 默认为“\*”
+* **Name**：集合的名称，用作已收集文件所在的 zip 文件中子文件夹的名称。
+* **Location**：要收集文件所在虚拟机上的文件夹路径。
+* **SearchPattern**：要收集的文件名的样式。 默认为“\*”
 * **Recursive**：如果要收集的文件以递归方式列于指定位置下。
 
 ## <a name="prerequisites"></a>先决条件
@@ -48,7 +48,7 @@ ms.locfileid: "67172974"
 
 对于云服务，可以使用现有的 Azure Powershell cmdlet **Set-AzureServiceExtension** 启用云服务角色实例上的扩展。 每次通过此 cmdlet 启用此扩展时，都会在所选角色的所选角色实例上触发日志收集。
 
-对于虚拟机，可以使用现有的 Azure Powershell cmdlet **Set-AzureVMExtension**来启用虚拟机上的扩展。 每次通过 cmdlet 启用此扩展时，都会在每个实例上触发日志收集。
+对于虚拟机，可以使用现有的 Azure Powershell cmdlet **Set-AzureVMExtension** 启用虚拟机上的扩展。 每次通过 cmdlet 启用此扩展时，都会在每个实例上触发日志收集。
 
 在内部，此扩展使用基于 JSON 的 PublicConfiguration 和 PrivateConfiguration。 下面是公共和私有配置的示例 JSON 的布局。
 
@@ -139,7 +139,7 @@ ms.locfileid: "67172974"
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-5. 按如下所示调用 SetAzureServiceLogCollector.ps1（本文末尾提供），以便为云服务启用 AzureLogCollector 扩展。 执行完以后，可以在 `https://YourStorageAccountName.blob.core.windows.net/vmlogs` 下找到上传的文件
+5. 按如下所示调用 SetAzureServiceLogCollector.ps1（本文末尾提供），以便为云服务启用 AzureLogCollector 扩展。 执行完以后，可以在  下找到上传的文件
 
    ```powershell
    .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
@@ -181,7 +181,7 @@ param (
 * **Roles**：角色列表，例如“WebRole1”或“WorkerRole1”。
 * **Instances**：逗号分隔的角色实例名称的列表 -- 使用通配符字符串（“*”）代表所有角色实例。
 * **Slot**：槽名称。 “生产”或“过渡”。
-* **模式**：收集模式。 “完整”或“GA”。
+* **Mode**：收集模式。 “完整”或“GA”。
 * **StorageAccountName**：用于存储所收集数据的 Azure 存储帐户的名称。
 * **StorageAccountKey**：Azure 存储帐户密钥的名称。
 * **AdditionalDataLocationList**：以下结构的列表：
@@ -231,7 +231,7 @@ param (
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-3. 按如下所示调用 SetAzureVMLogCollector.ps1（本文末尾提供），以便为云服务启用 AzureLogCollector 扩展。 执行完以后，可以在 `https://YourStorageAccountName.blob.core.windows.net/vmlogs` 下找到上传的文件
+3. 按如下所示调用 SetAzureVMLogCollector.ps1（本文末尾提供），以便为云服务启用 AzureLogCollector 扩展。 执行完以后，可以在  下找到上传的文件
 
 下面是传递给脚本的参数的定义。 （也在下面复制。）
 
@@ -261,7 +261,7 @@ param (
 
 * **ServiceName**：云服务名称。
 * **VMName**：VM 的名称。
-* **模式**：收集模式。 “完整”或“GA”。
+* **Mode**：收集模式。 “完整”或“GA”。
 * **StorageAccountName**：用于存储所收集数据的 Azure 存储帐户的名称。
 * **StorageAccountKey**：Azure 存储帐户密钥的名称。
 * **AdditionalDataLocationList**：以下结构的列表：

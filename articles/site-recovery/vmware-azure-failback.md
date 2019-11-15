@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 将 VMware VM 灾难恢复到 Azure 期间从 Azure 进行故障回复 | Microsoft Docs
+title: 利用 Azure Site Recovery 从 Azure 故障回复 VMware Vm/物理服务器
 description: 了解如何在将 VMware VM 和物理服务器灾难恢复到 Azure 期间故障转移到 Azure 后，故障回复到本地站点。
 author: mayurigupta13
 manager: rochakm
@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.date: 01/15/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 7773a2f43eb076075be484d92fde31094a2b584b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2ec2a4a91f4de0761f631bec393bb90c3feb82b9
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318115"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084061"
 ---
 # <a name="fail-back-vmware-vms-and-physical-servers-from-azure-to-an-on-premises-site"></a>将 VMware VM 和物理服务器从 Azure 故障回复到本地站点
 
 本文介绍如何将虚拟机从 Azure 虚拟机故障回复到本地 VMware 环境。 根据[在 Azure Site Recovery 中故障转移](site-recovery-failover.md)教程将 VMware 虚拟机或 Windows/Linux 物理服务器从本地站点故障转移到 Azure 以后，请按本文中的说明进行故障回复。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 - 确保你已阅读有关[不同类型的故障回复](concepts-types-of-failback.md)和相应注意事项的详细信息。
 
 > [!WARNING]
@@ -44,7 +44,7 @@ ms.locfileid: "60318115"
 ## <a name="overview-of-failback"></a>故障回复概述
 故障转移到 Azure 以后，可通过执行以下步骤故障回复到本地站点：
 
-1. [重新保护](vmware-azure-reprotect.md)虚拟机，使其开始复制到本地站点中运行的 VMware 虚拟机。 在此过程中，还需要：
+1. [重新保护](vmware-azure-reprotect.md) Azure 中的虚拟机，使其开始复制到本地站点中运行的 VMware 虚拟机。 在此过程中，还需要：
 
     * 设置本地主目标。 对 Windows 虚拟机使用 Windows 主目标，对 Linux 虚拟机使用 [Linux 主目标](vmware-azure-install-linux-master-target.md)。
     * 设置[进程服务器](vmware-azure-set-up-process-server-azure.md)。
@@ -61,15 +61,15 @@ ms.locfileid: "60318115"
 ## <a name="steps-to-fail-back"></a>故障回复的步骤
 
 > [!IMPORTANT]
-> 启动故障回复之前，请确保已完成虚拟机重新保护。 虚拟机在其运行状况为“正常”时应处于受保护状态。  若要重新保护虚拟机，请参阅[如何重新保护](vmware-azure-reprotect.md)。
+> 启动故障回复之前，请确保已完成虚拟机重新保护。 虚拟机在其运行状况为“正常”时应处于受保护状态。 若要重新保护虚拟机，请参阅[如何重新保护](vmware-azure-reprotect.md)。
 
-1. 在“复制的项”页中选择虚拟机。 右键单击该虚拟机并选择“计划外故障转移”。 
-2. 在“确认故障转移”中，确认故障转移方向为从 Azure 转移  。 然后选择用于故障转移的恢复点（最新恢复点，或最新的应用一致性恢复点）。 应用一致性点会在最新的时间点之后，并将导致丢失部分数据。
+1. 在“复制的项”页中选择虚拟机。 右键单击该虚拟机并选择“计划外故障转移”。
+2. 在“确认故障转移”中，确认故障转移方向为从 Azure 转移。 然后选择用于故障转移的恢复点（最新恢复点，或最新的应用一致性恢复点）。 应用一致性点会在最新的时间点之后，并将导致丢失部分数据。
 3. 故障转移期间，Site Recovery 会关闭 Azure 中的虚拟机。 检查故障回复是否按预期完成后，可以检查 Azure 中的虚拟机是否已关闭。
-4. 要从 Azure 删除故障转移的虚拟机，必须进行**提交**。 右键单击受保护的项，并选择“提交”。  某个作业将删除 Azure 中已故障转移的虚拟机。
+4. 要从 Azure 删除故障转移的虚拟机，必须进行**提交**。 右键单击受保护的项，并选择“提交”。 某个作业将删除 Azure 中已故障转移的虚拟机。
 
 
-## <a name="to-what-recovery-point-can-i-fail-back-the-virtual-machines"></a>可以将虚拟机故障回复到哪个恢复点？
+## <a name="to-what-recovery-point-can-i-fail-back-the-virtual-machines"></a>可将虚拟机故障回复到哪个恢复点？
 
 在故障回复期间，可以使用两个选项来故障回复虚拟机/恢复计划。
 
@@ -91,12 +91,12 @@ ms.locfileid: "60318115"
 ## <a name="reprotect-from-on-premises-to-azure"></a>从本地到 Azure 进行重新保护
 故障回复完成并且已启动提交后，会删除 Azure 中的已恢复虚拟机。 现在，虚拟机将回到本地站点，但不受保护。 若要再次开始复制到 Azure，请执行以下操作：
 
-1. 在“保管库” > “设置” > “已复制的项”中，选择已故障回复的虚拟机，然后选择“重新保护”。    
+1. 在“保管库” **“设置”** “已复制的项”中，选择已故障回复的虚拟机，然后选择“重新保护”。 >  > 
 2. 输入用于将数据发送回 Azure 的进程服务器值。
-3. 选择“确定”启动重新保护作业。 
+3. 选择“确定”启动重新保护作业。
 
 > [!NOTE]
-> 本地虚拟机启动后，会留出一段时间让代理重新注册到配置服务器（最多 15 分钟）。 在此期间，重新保护会失败并返回一条错误消息，指出未安装代理。 请等待几分钟，并重试重新保护。
+> 本地虚拟机启动后，会留出一段时间让代理重新注册到配置服务器（最多 15 分钟）。 在此期间，重新保护会失败并返回一条错误消息，指出未安装代理。 等待几分钟，并重试重新保护。
 
 ## <a name="next-steps"></a>后续步骤
 

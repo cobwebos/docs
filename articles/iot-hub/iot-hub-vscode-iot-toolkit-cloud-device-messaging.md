@@ -1,5 +1,5 @@
 ---
-title: 使用适用于 Visual Studio Code 的 Azure IoT 工具管理 Azure IoT 中心云设备消息传送 | Microsoft Docs
+title: 使用用于 VSCode 的 Azure IoT 工具管理 IT 中心消息传送
 description: 了解如何使用适用于 Visual Studio Code 的 Azure IoT 工具来监视设备到云消息，并在 Azure IoT 中心中发送云到设备消息。
 author: formulahendry
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: 1289e9c8f8cfc9360c9b2325507b43bab3a69028
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 785c6f2b36396558cc21ce6c025be59c456ff32d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838513"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083258"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>使用适用于 Visual Studio Code 的 Azure IoT 工具在设备和 IoT 中心之间发送和接收消息
 
@@ -33,11 +33,11 @@ ms.locfileid: "67838513"
 
 * 使用适用于 Visual Studio Code 的 Azure IoT 工具来发送云到设备消息。
 
-## <a name="what-you-need"></a>所需条件
+## <a name="what-you-need"></a>需要什么
 
 * 一个有效的 Azure 订阅。
 
-* 已在订阅中创建一个 Azure IoT 中心。
+* 已订阅中创建一个 Azure IoT 中心。
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 
@@ -45,38 +45,38 @@ ms.locfileid: "67838513"
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>登录以访问 IoT 中心
 
-1. 在 VS Code 的“资源管理器”  视图中，展开左下角的“Azure IoT 中心设备”  部分。
+1. 在 VS Code 的“资源管理器”视图中，展开左下角的“Azure IoT 中心设备”部分。
 
-2. 在上下文菜单中单击“选择 IoT 中心”  。
+2. 在上下文菜单中单击“选择 IoT 中心”。
 
 3. 弹出窗口将显示在右下角，以便让你首次登录 Azure。
 
 4. 登录后，将显示 Azure 订阅列表，然后选择“Azure 订阅和 IoT 中心”。
 
-5. 几秒钟后，设备列表将显示在“Azure IoT 中心设备”  选项卡中。
+5. 几秒钟后，设备列表将显示在“Azure IoT 中心设备”选项卡中。
 
    > [!Note]
-   > 也可以选择“设置 IoT 中心连接字符串”来完成设置。  输入**iothubowner**策略在弹出窗口中，IoT 设备连接到 IoT 中心连接字符串。
+   > 也可以选择“设置 IoT 中心连接字符串”来完成设置。 在弹出窗口中输入 IoT 设备连接到的 IoT 中心的 **iothubowner** 策略连接字符串。
 
 ## <a name="monitor-device-to-cloud-messages"></a>监视设备到云的消息
 
 若要监视设备发送到 IoT 中心的消息，请执行以下步骤：
 
-1. 右键单击你的设备，然后选择**启动监视的内置事件终结点**。
+1. 右键单击设备，然后选择“开始监视内置事件终结点”。
 
-2. 受监视的消息将显示在“输出”   > “Azure IoT 中心工具包”  视图中。
+2. 受监视的消息将显示在“输出” > “Azure IoT 中心工具包”视图中。
 
-3. 若要停止监视，请右键单击**输出**视图，然后选择**停止监视的内置事件终结点**。
+3. 若要停止监视，请右键单击“输出”视图，然后选择“停止监视内置事件终结点”。
 
 ## <a name="send-cloud-to-device-messages"></a>发送“云到设备”消息
 
 要将消息从 IoT 中心发送到设备，请执行以下步骤：
 
-1. 右键单击设备，然后选择“将 C2D 消息发送到设备”  。
+1. 右键单击设备，然后选择“将 C2D 消息发送到设备”。
 
 2. 在输入框中输入消息。
 
-3. 结果将显示在“输出”   > “Azure IoT 中心工具包”  视图中。
+3. 结果将显示在“输出” > “Azure IoT 中心工具包”视图中。
 
 ## <a name="next-steps"></a>后续步骤
 

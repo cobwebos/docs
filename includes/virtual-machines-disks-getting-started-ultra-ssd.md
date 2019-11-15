@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3525edb2a73811254b2a4dce70ce3edb58988492
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 63045bf1b836215b00b9b7c1b46dd208152fa772
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012444"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74100705"
 ---
 Azure ultra 磁盘为 Azure IaaS 虚拟机（Vm）提供高吞吐量、高 IOPS 和一致的低延迟磁盘存储。 此新产品提供出类拔萃的性能，其可用性级别与我们的现有磁盘产品相同。 超磁盘的一个主要优点是能够在不重新启动 Vm 的情况下动态更改 SSD 的性能和工作负荷。 超磁盘适用于数据密集型工作负荷，例如 SAP HANA、顶级数据库和事务密集型工作负荷。
 
@@ -133,7 +133,7 @@ az disk update `
 
 ## <a name="deploy-an-ultra-disk-using-powershell"></a>使用 PowerShell 部署 ultra 磁盘
 
-首先，确定要部署的 VM 大小。 有关支持的 VM 大小的列表，请参阅[GA 范围和限制](#ga-scope-and-limitations)部分。 获取有关这些 VM 大小的其他详细信息。
+首先，确定要部署的 VM 大小。 有关支持的 VM 大小的列表，请参阅[GA 范围和限制](#ga-scope-and-limitations)部分。
 
 若要使用超磁盘，必须创建能够使用超磁盘的 VM。 将 **$resourcegroup**和 **$vmName**变量替换为自己的值。 将 **$zone**设置为从[本文开头](#determine-vm-size-and-region-availability)获取的可用性区域值。 然后运行以下[new-azvm](/powershell/module/az.compute/new-azvm)命令，以创建支持 HYPER-V 的 VM：
 

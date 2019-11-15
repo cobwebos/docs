@@ -8,18 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 11/13/2019
 ms.author: wellsi
-ms.openlocfilehash: 9421f730ea6480c9e4223dd9ddbd15852b1fce8f
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3a74f3eb9aece3535f5505d69833a074c2dd0ed2
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072604"
+ms.locfileid: "74091202"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>发行说明：语音设备 SDK
 
 以下部分列出了最新版本中的更改。
+
+## <a name="speech-devices-sdk-170"></a>语音设备 SDK 1.7.0：
+
+*   现在支持 Linux ARM。
+*   提供了 Roobov2 的初始二进制文件（Linux ARM64）。
+*   Windows 用户可以使用 AudioConfig. fromDefaultMicrophoneInput （）或 AudioConfig （deviceName）来指定要使用的麦克风。
+*   库大小已优化。
+*   支持使用相同的语音/意向识别器对象的多项识别。
+*   修复在停止识别时发生的偶尔挂起。
+*   示例应用现在包含一个示例参与者. properties 文件，用于演示文件的格式。
+*   已将[SPEECH SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference)组件更新为版本1.7.0。 有关详细信息，请参阅其[发行说明](https://aka.ms/csspeech/whatsnew)。
 
 ## <a name="speech-devices-sdk-160"></a>语音设备 SDK 1.6.0：
 

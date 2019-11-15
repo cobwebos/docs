@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: e0e649045e3efe488804fd37c030fe01991ad232
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 01d8560ee2752f21eb52c00f4c337d1dca59b8fb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803612"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082697"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -87,10 +87,10 @@ def main(req: azure.functions.HttpRequest) -> str:
 
 ## <a name="folder-structure"></a>文件夹结构
 
-Python 函数项目的文件夹结构类似于以下示例：
+Python 函数项目的建议文件夹结构类似于以下示例：
 
 ```
- FunctionApp
+ __app__
  | - MyFirstFunction
  | | - __init__.py
  | | - function.json
@@ -103,23 +103,31 @@ Python 函数项目的文件夹结构类似于以下示例：
  | | - mySecondHelperFunction.py
  | - host.json
  | - requirements.txt
+ tests
 ```
+主项目文件夹（\_\_app\_\_）可以包含以下文件：
 
-存在共享的 [host.json](functions-host-json.md) 文件，可用于配置函数应用。 每个函数都有自己的代码文件和绑定配置文件 (function.json)。 
+* *local. json*：用于在本地运行时存储应用设置和连接字符串。 此文件不会被发布到 Azure。 若要了解详细信息，请参阅[本地. settings](functions-run-local.md#local-settings-file)。
+* *要求 .txt*：包含在发布到 Azure 时系统安装的包的列表。
+* *host json*：包含影响函数应用中所有函数的全局配置选项。 此文件会被发布到 Azure。 在本地运行时，并非所有选项都受支持。 若要了解详细信息，请参阅[host。](functions-host-json.md)
+* *funcignore*：（可选）声明不应发布到 Azure 的文件。
+* *.gitignore*：（可选）声明从 git 存储库中排除的文件，如 ""。
 
-共享代码应保留在单独的文件夹中。 若要引用 SharedCode 文件夹中的模块，可以使用以下语法：
+每个函数都有自己的代码文件和绑定配置文件 (function.json)。 
 
-```
+共享代码应保存在 \_\_应用\_\_的单独文件夹中。 若要引用 SharedCode 文件夹中的模块，可以使用以下语法：
+
+```python
 from __app__.SharedCode import myFirstHelperFunction
 ```
 
 若要引用函数的本地模块，可以使用相对导入语法，如下所示：
 
-```
+```python
 from . import example
 ```
 
-在 Azure 中将 Functions 项目部署到函数应用时，*FunctionApp* 文件夹的整个内容应包含在包中，但不包含该文件夹本身。
+将项目部署到 Azure 中的函数应用时， *FunctionApp*文件夹的整个内容应包含在包中，而不是文件夹本身。 建议在与项目文件夹不同的文件夹中维护测试，在此示例中 `tests`。 这使你可以在应用中部署测试代码。 有关详细信息，请参阅[单元测试](#unit-testing)。
 
 ## <a name="triggers-and-inputs"></a>触发器和输入
 
@@ -360,7 +368,7 @@ def main(req):
 
 ## <a name="environment-variables"></a>环境变量
 
-在函数中，[应用程序设置](functions-app-settings.md)（如服务连接字符串）在执行过程中公开为环境变量。 可以通过声明 `import os` 然后使用 `setting = os.environ["setting-name"]` 来访问这些设置。
+在函数中，[应用程序设置](functions-app-settings.md)（如服务连接字符串）在执行过程中公开为环境变量。 可以通过声明 `import os` 然后使用 `setting = os.environ["setting-name"]`来访问这些设置。
 
 以下示例获取[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings)，其键名为 `myAppSetting`：
 
@@ -378,11 +386,13 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 对于本地开发，应用程序设置将[保留在本地的设置文件中](functions-run-local.md#local-settings-file)。  
 
-## <a name="python-version-and-package-management"></a>Python 版本和包管理
+## <a name="python-version"></a>Python 版本 
 
-当前，Azure Functions 仅支持 Python 3.6.x（CPython 正式分发版）。
+目前，Azure Functions 支持 Python 3.6. x 和 3.7. x （官方 CPython 分布）。 在本地运行时，运行时使用可用的 Python 版本。 若要在 Azure 中创建函数应用时请求特定的 Python 版本，请使用[`az functionapp create`](/cli/azure/functionapp#az-functionapp-create)命令的 `--runtime-version` 选项。  
 
-在使用 Azure Functions Core Tools 或 Visual Studio Code 进行本地开发时，将所需包的名称和版本添加到 `requirements.txt` 文件并使用 `pip` 安装它们。
+## <a name="package-management"></a>包管理
+
+在使用 Azure Functions Core Tools 或 Visual Studio Code 进行本地开发时，将所需包的名称和版本添加到 `requirements.txt` 文件并使用 `pip` 安装它们。 
 
 例如，可以使用以下要求文件和 pip 命令从 PyPI 安装 `requests` 包。
 
@@ -396,35 +406,67 @@ pip install -r requirements.txt
 
 ## <a name="publishing-to-azure"></a>发布到 Azure
 
-准备好进行发布时，请确保所有依赖项都已在 *requirements.txt* 文件（位于项目目录的根目录）中列出。 Azure Functions 可以[远程生成](functions-deployment-technologies.md#remote-build)这些依赖项。
+准备好发布时，请确保所有公开发布的依赖项都列在 "要求" .txt 文件中，该文件位于项目目录的根目录下。 
 
-从发布中排除的项目文件和文件夹（包括虚拟环境文件夹）将在 funcignore 文件中列出。 
+从发布中排除的项目文件和文件夹（包括虚拟环境文件夹）将在 funcignore 文件中列出。
 
-默认情况下，VS Code 的[Azure Functions Core Tools](functions-run-local.md#v2)和[Azure Functions 扩展](functions-create-first-function-vs-code.md#publish-the-project-to-azure)将执行远程生成。 例如，使用以下命令：
+有三个生成操作支持将 Python 项目发布到 Azure：
+
++ 远程生成：根据要求 .txt 文件的内容远程获取依赖关系。 [远程生成](functions-deployment-technologies.md#remote-build)是推荐的生成方法。 远程也是 Azure 工具的默认生成选项。 
++ 本地生成：依赖项要求 .txt 文件的内容在本地获取依赖关系。 
++ 自定义依赖项：项目使用的包不可公开用于我们的工具。 （需要 Docker。）
+
+若要构建依赖项并使用持续交付（CD）系统发布，请[使用 Azure Pipelines](functions-how-to-azure-devops.md)。
+
+### <a name="remote-build"></a>远程生成
+
+默认情况下，当你使用以下[func Azure functionapp publish](functions-run-local.md#publish)命令将 Python 项目发布到 Azure 时，Azure Functions Core Tools 会请求远程生成。 
 
 ```bash
-func azure functionapp publish <app name>
+func azure functionapp publish <APP_NAME>
 ```
 
-如果你想要在本地而不是在 Azure 中生成应用，请在本地计算机上[安装 Docker](https://docs.docker.com/install/) ，并运行以下命令以使用[Azure Functions Core Tools](functions-run-local.md#v2) （func）进行发布。 请记住将 `<app name>` 替换为 Azure 中的函数应用名称。 
+请记住将 `<APP_NAME>` 替换为 Azure 中的函数应用名称。
 
-```bash
-func azure functionapp publish <app name> --build-native-deps
+默认情况下， [Visual Studio Code 的 Azure Functions 扩展](functions-create-first-function-vs-code.md#publish-the-project-to-azure)还请求远程生成。 
+
+### <a name="local-build"></a>本地生成
+
+可以通过使用以下[func azure functionapp publish](functions-run-local.md#publish)命令发布本地生成来阻止执行远程生成。 
+
+```command
+func azure functionapp publish <APP_NAME> --build local
 ```
 
-实际上，Core Tools 会使用 docker 将 [mcr.microsoft.com/azure-functions/python](https://hub.docker.com/r/microsoft/azure-functions/) 映像作为本地计算机上的容器来运行。 在此环境中，它随后会构建并安装源分发中所需的模块，然后将它们打包，以便最终部署到 Azure。
+请记住将 `<APP_NAME>` 替换为 Azure 中的函数应用名称。 
 
-若要构建依赖项并使用持续交付（CD）系统发布，请[使用 Azure Pipelines](functions-how-to-azure-devops.md)。 
+使用 `--build local` 选项，从要求 .txt 文件中读取项目依赖项，并在本地下载和安装这些依赖包。 项目文件和依赖项从本地计算机部署到 Azure。 这会导致将较大的部署包上传到 Azure。 如果由于某种原因，核心工具无法获取要求 .txt 文件中的依赖项，则必须使用自定义依赖项选项进行发布。 
+
+### <a name="custom-dependencies"></a>自定义依赖项
+
+如果你的项目使用的包不可公开用于我们的工具，则可以通过将其放入 \_\_应用程序\_\_/python_packages 目录使它们对你的应用程序可用。 在发布之前，运行以下命令以本地安装依赖项：
+
+```command
+pip install  --target="<PROJECT_DIR>/.python_packages/lib/site-packages"  -r requirements.txt
+```
+
+使用自定义依赖项时，应使用 `--no-build` 发布选项，因为已安装了依赖项。  
+
+```command
+func azure functionapp publish <APP_NAME> --no-build
+```
+
+请记住将 `<APP_NAME>` 替换为 Azure 中的函数应用名称。
 
 ## <a name="unit-testing"></a>单元测试
 
-可以使用标准测试框架，像测试其他 Python 代码一样测试以 Python 编写的函数。 对于大多数绑定，可以通过创建 `azure.functions` 包中相应类的实例来创建模拟输入对象。 由于不能直接使用 [`azure.functions`](https://pypi.org/project/azure-functions/) 包，请务必根据前面的 `requirements.txt`Python 版本和包管理[部分中所述，通过 ](#python-version-and-package-management) 文件安装该包。
+可以使用标准测试框架，像测试其他 Python 代码一样测试以 Python 编写的函数。 对于大多数绑定，可以通过创建 `azure.functions` 包中相应类的实例来创建模拟输入对象。 由于[`azure.functions`](https://pypi.org/project/azure-functions/)包不会立即可用，因此请务必通过 `requirements.txt` 文件安装，如[上文所述](#package-management)。 
 
 例如，下面是 HTTP 触发的函数的模拟测试：
 
 ```json
 {
-  "scriptFile": "httpfunc.py",
+  "scriptFile": "__init__.py",
   "entryPoint": "my_function",
   "bindings": [
     {
@@ -447,7 +489,7 @@ func azure functionapp publish <app name> --build-native-deps
 ```
 
 ```python
-# myapp/httpfunc.py
+# __app__/HttpTrigger/__init__.py
 import azure.functions as func
 import logging
 
@@ -473,12 +515,11 @@ def my_function(req: func.HttpRequest) -> func.HttpResponse:
 ```
 
 ```python
-# myapp/test_httpfunc.py
+# tests/test_httptrigger.py
 import unittest
 
 import azure.functions as func
-from httpfunc import my_function
-
+from __app__.HttpTrigger import my_function
 
 class TestFunction(unittest.TestCase):
     def test_my_function(self):
@@ -501,22 +542,36 @@ class TestFunction(unittest.TestCase):
 
 下面是使用队列触发的函数的另一个示例：
 
-```python
-# myapp/__init__.py
-import azure.functions as func
+```json
+{
+  "scriptFile": "__init__.py",
+  "entryPoint": "my_function",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "python-queue-items",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
+```
 
+```python
+# __app__/QueueTrigger/__init__.py
+import azure.functions as func
 
 def my_function(msg: func.QueueMessage) -> str:
     return f'msg body: {msg.get_body().decode()}'
 ```
 
 ```python
-# myapp/test_func.py
+# tests/test_queuetrigger.py
 import unittest
 
 import azure.functions as func
-from . import my_function
-
+from __app__.QueueTrigger import my_function
 
 class TestFunction(unittest.TestCase):
     def test_my_function(self):
@@ -554,6 +609,8 @@ from os import listdir
    fp.write(b'Hello world!')              
    filesDirListInTemp = listdir(tempFilePath)     
 ```   
+
+建议你在独立于项目文件夹的文件夹中维护测试。 这使你可以在应用中部署测试代码。 
 
 ## <a name="known-issues-and-faq"></a>已知问题和常见问题解答
 

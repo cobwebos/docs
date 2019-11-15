@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 11/06/2019
-ms.openlocfilehash: 9055223d1e4ed056ad606533219925972b623f86
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: de746d0b370de2d238c1143c48b75c1505cd9dc0
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682087"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091484"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes Service 群集
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "73682087"
 - __硬件加速__选项，如 GPU 和现场可编程入口阵列（FPGA）。
 
 > [!IMPORTANT]
-> 不是通过 Azure 机器学习 SDK 提供的群集缩放。 有关缩放 AKS 群集中节点的详细信息，请参阅[缩放 AKS 群集中的节点计数](../../aks/scale-cluster.md)。
+> 不通过 Azure 机器学习 SDK 提供群集缩放。 有关缩放 AKS 群集中节点的详细信息，请参阅[缩放 AKS 群集中的节点计数](../../aks/scale-cluster.md)。
 
 部署到 Azure Kubernetes 服务时，部署到__连接到工作区__的 AKS 群集。 可通过两种方式将 AKS 群集连接到工作区：
 
@@ -92,16 +92,16 @@ aks_target.wait_for_completion(show_output = True)
 ```
 
 > [!IMPORTANT]
-> 对于[`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)，如果为 `agent_count` 和 `vm_size`选取了自定义值，并且 `cluster_purpose` 不 `DEV_TEST`，则需要确保 `agent_count` 乘以 `vm_size` 大于或等于12个虚拟 cpu。 例如，如果使用的是具有4个虚拟 Cpu 的 "Standard_D3_v2" `vm_size`，则应选择3个或更多的 `agent_count`。
+> 对于[`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)，如果为 `agent_count` 和 `vm_size`选取了自定义值，并且 `cluster_purpose` 不 `DEV_TEST`，则需要确保 `agent_count` 乘以 `vm_size` 大于或等于12个虚拟 cpu。 例如，如果使用的是具有4个虚拟 Cpu 的 "Standard_D3_v2" `vm_size`，则应选择3个或更高的 `agent_count`。
 >
 > Azure 机器学习 SDK 不支持缩放 AKS 群集。 若要缩放群集中的节点，请在 Azure 机器学习 studio 中使用 AKS 群集的 UI。 只能更改节点计数，而不能更改群集的 VM 大小。
 
 有关此示例中使用的类、方法和参数的详细信息，请参阅以下参考文档：
 
 * [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py)
-* [AksCompute.provisioning_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
+* [AksCompute provisioning_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
 * [ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-)
-* [ComputeTarget.wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#wait-for-completion-show-output-false-)
+* [ComputeTarget wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#wait-for-completion-show-output-false-)
 
 **使用 CLI**
 
@@ -159,13 +159,13 @@ aks_target = ComputeTarget.attach(ws, 'myaks', attach_config)
 
 有关此示例中使用的类、方法和参数的详细信息，请参阅以下参考文档：
 
-* [AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
+* [AksCompute （） attach_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
 * [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py)
 * [AksCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#attach-workspace--name--attach-configuration-)
 
 **使用 CLI**
 
-若要使用 CLI 附加现有群集，需要获取现有群集的资源 ID。 若要获取此值，请使用以下命令。 将 `myexistingcluster` 替换为 AKS 群集的名称。 将 `myresourcegroup` 替换为包含群集的资源组：
+若要使用 CLI 附加现有群集，需要获取现有群集的资源 ID。 若要获取此值，请使用以下命令。 将 `myexistingcluster` 替换为 AKS 群集的名称。 将 `myresourcegroup` 替换为包含该群集的资源组：
 
 ```azurecli
 az aks show -n myexistingcluster -g myresourcegroup --query id
@@ -209,13 +209,13 @@ print(service.get_logs())
 有关此示例中使用的类、方法和参数的详细信息，请参阅以下参考文档：
 
 * [AksCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute?view=azure-ml-py)
-* [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)
+* [AksWebservice deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)
 * [部署模型](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-)
 * [Webservice. wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#wait-for-deployment-show-output-false-)
 
 ### <a name="using-the-cli"></a>使用 CLI
 
-若要使用 CLI 进行部署，请使用以下命令。 将 `myaks` 替换为 AKS 计算目标的名称。 将 `mymodel:1` 替换为已注册的模型的名称和版本。 将 `myservice` 替换为要为此服务提供的名称：
+若要使用 CLI 进行部署，请使用以下命令。 将 `myaks` 替换为 AKS 计算目标的名称。 将 `mymodel:1` 替换为注册的模型的名称和版本。 将 `myservice` 替换为要为此服务提供的名称：
 
 ```azurecli-interactive
 az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json

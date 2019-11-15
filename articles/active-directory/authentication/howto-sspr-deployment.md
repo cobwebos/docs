@@ -11,14 +11,17 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330b02e3db6af90fcfeb962e78b043b04090116e
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: b648d6f914b5e3004ea3b62019bbec33e5a4871d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743244"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081521"
 ---
 # <a name="deploy-azure-ad-self-service-password-reset"></a>部署 Azure AD 自助式密码重置
+
+> [!NOTE]
+> 本指南介绍了自助服务密码重置以及如何部署。 如果你正在寻找自助服务密码重置工具以返回到你的帐户，请转到[https://aka.ms/sspr](https://aka.ms/sspr)。 
 
 自助式密码重置 (SSPR) 是一项 Azure Active Directory 功能，可让员工自行重置其密码，而无需联系 IT 工作人员。 员工必须注册自助式密码重置或者在其中注册才能使用该服务。 在注册期间，员工可以选择其组织启用的一种或多种身份验证方法。
 
@@ -37,7 +40,7 @@ ms.locfileid: "70743244"
 
 ## <a name="licensing-considerations"></a>许可注意事项
 
-Azure Active Directory 按用户授予许可，每个用户都必须拥有所使用的功能的相应许可证。
+Azure Active Directory 按用户许可，这意味着，每个用户必须为其使用的功能购买相应的许可证。
 
 在 [Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory/)上可以找到有关许可的详细信息
 
@@ -53,7 +56,7 @@ Microsoft 建议组织启用 SSPR 和多重身份验证的组合注册体验。 
 
 下面是启用 SSPR 所需的设置及其建议值。
 
-| 区域 | 设置 | ReplTest1 |
+| 区域 | 设置 | 值 |
 | --- | --- | --- |
 | **SSPR 属性** | 已启用自助式密码重置 | 在试运行环境中为“选定组”/在生产环境中为“全部” |
 | **身份验证方法** | 注册所需的身份验证方法数 | 至少比重置所需的数目多 1 个 |
@@ -206,7 +209,7 @@ Microsoft 建议组织启用 SSPR 和多重身份验证的组合注册体验。 
 
 ### <a name="configure-password-writeback"></a>配置密码写回服务
 
-有关为组织配置密码写回的步骤，请参阅文章[如何：配置密码写回](howto-sspr-writeback.md)。
+有关为你的组织配置密码写回的步骤，请参阅文章[操作方法：配置密码写回](howto-sspr-writeback.md)。
 
 ## <a name="manage-sspr"></a>管理 SSPR
 
@@ -222,7 +225,7 @@ Microsoft 建议组织启用 SSPR 和多重身份验证的组合注册体验。 
 
 为使支持团队取得成功，可以基于用户发来的问题创建 FAQ。 下表包含了常见的支持方案。
 
-| 方案 | 描述 |
+| 方案 | 说明 |
 | --- | --- |
 | 用户无法使用任何已注册的身份验证方法 | 用户正在尝试重置其密码，但无法使用他们已注册的任何身份验证方法（例如：他们的手机遗忘在家中，并且无法访问电子邮件） |
 | 用户的办公电话或手机上未收到短信或呼叫 | 用户正在尝试通过短信或呼叫来验证其身份，但未收到短信/呼叫。 |

@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute 线路和对等互连 | Microsoft Docs
+title: Azure ExpressRoute：线路和对等互连
 description: 本页对 ExpressRoute 线路和路由域/对等互连进行了概述。
 services: expressroute
 author: mialdrid
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: mialdrid
-ms.custom: seodec18
-ms.openlocfilehash: 864b834fcc6810b52f067d8e67b4a48febd0f787
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: f6673e114c249cb86c648155b889e925554e9458
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123478"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083632"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute 线路和对等互连
 
@@ -31,7 +30,7 @@ ExpressRoute 线路表示通过连接提供商在本地基础结构与 Microsoft
 
 ExpressRoute 线路不会映射到任何物理实体。 线路由称为服务密钥 (s-key) 的标准 GUID 进行唯一标识。 服务密钥是在 Microsoft、连接提供商与你之间唯一交换的一条信息。 s-key 不是用于保证安全的机密。 ExpressRoute 线路与 s-key 之间存在 1:1 映射。
 
-新的 ExpressRoute 线路可以包含两种独立的对等互连：专用对等互连和 Microsoft 对等互连。 而现有的 ExpressRoute 线路可以包含三种对等互连：Azure 公用对等互连、Azure 专用对等互连和 Microsoft 对等互连。 每个对等互连是一对独立的 BGP 会话，每个会话采用冗余配置以实现高可用性。 ExpressRoute 线路与路由域之间存在 1:N (1 <= N <= 3) 映射。 每条 ExpressRoute 线路可以启用一个、两个或全部三个对等互连。
+新的 ExpressRoute 线路可以包含两种独立的对等互连：专用对等互连和 Microsoft 对等互连。 而现有的 ExpressRoute 线路可能包含三种对等互连：Azure 公共对等互连、Azure 专用对等互连和 Microsoft 对等互连。 每个对等互连是一对独立的 BGP 会话，每个会话采用冗余配置以实现高可用性。 ExpressRoute 线路与路由域之间存在 1:N (1 <= N <= 3) 映射。 每条 ExpressRoute 线路可以启用一个、两个或全部三个对等互连。
 
 每条线路有固定的带宽（50 Mbps、100 Mbps、200 Mbps、500 Mbps、1 Gbps、10 Gbps），并映射到连接提供商和对等互连位置。 所选择的带宽在所有线路对等互连之间共享
 
@@ -41,7 +40,7 @@ ExpressRoute 线路不会映射到任何物理实体。 线路由称为服务密
 
 ## <a name="routingdomains"></a>ExpressRoute 对等互连
 
-一条 ExpressRoute 线路有多个与之关联的路由域/对等互连：Azure 公用对等互连、Azure 专用对等互连和 Microsoft 对等互连。 在一对路由器上（采用主动-主动或负载共享配置），每个对等互连采用相同的配置以实现高可用性。 Azure 服务分类为 Azure 公共和 Azure 专用以表示 IP 寻址方案。
+ExpressRoute 线路有多个与之关联的路由域/对等互连： Azure 公共、Azure 专用和 Microsoft。 在一对路由器上（采用主动-主动或负载共享配置），每个对等互连采用相同的配置以实现高可用性。 Azure 服务分类为 Azure 公共和 Azure 专用以表示 IP 寻址方案。
 
 ![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
@@ -62,7 +61,7 @@ ExpressRoute 线路不会映射到任何物理实体。 线路由称为服务密
 ### <a name="publicpeering"></a>Azure 公共对等互连（新的线路已弃用）
 
 > [!Note]
-> Azure 公共对等互连有1个与每个 BGP 会话关联的 NAT IP 地址。 对于超过2个 NAT IP 地址，请转到 Microsoft 对等互连。 通过 Microsoft 对等互连，可以配置自己的 NAT 分配，并使用路由筛选器进行选择性前缀播发。 有关详细信息，请参阅[移动到 Microsoft 对等互连](https://docs.microsoft.com/azure/expressroute/how-to-move-peering)。
+> Azure 公共对等互连有 1 个 NAT IP 地址与每个 BGP 会话相关联。 对于大于 2 个 NAT IP 地址，请转到 Microsoft 对等互连。 通过 Microsoft 对等互连，可以配置自己的 NAT 分配，并使用路由筛选器进行选择性前缀播发。 有关详细信息，请参阅[转到 Microsoft 对等互连](https://docs.microsoft.com/azure/expressroute/how-to-move-peering)。
 >
 
 Azure 存储、SQL 数据库和网站等服务是通过公共 IP 地址提供的。 可以通过公共对等路由域私下连接到公共 IP 地址（包括云服务的 VIP）上托管的服务。 可以将公共对等域连接到外围网络，并从 WAN 连接到公共 IP 地址上的所有 Azure 服务，而无需通过 Internet 连接。

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 管理配置服务器，以便将本地物理服务器灾难恢复到 Azure | Microsoft Docs
+title: 管理 Azure Site Recovery 中的物理服务器的配置服务器
 description: 本文介绍如何管理 Azure Site Recovery 配置服务器，以便将物理服务器灾难恢复到 Azure。
 services: site-recovery
 author: mayurigupta13
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: f87210cd14570687eebae88896830bb3ee00b74e
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: f443f0362ecad8448895322686a7175b2813141e
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242990"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084601"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>为物理服务器灾难恢复管理配置服务器
 
@@ -20,26 +20,26 @@ ms.locfileid: "73242990"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 此表汇总了用于部署本地配置服务器计算机的先决条件。
 
-| 组件 | 要求 |
+| **组件** | **要求** |
 | --- |---|
-| CPU 内核数| 8 |
+| CPU 核心数| 8 |
 | RAM | 16 GB|
-| 磁盘数 | 3，包括操作系统磁盘、进程服务器缓存磁盘和用于故障回复保留驱动器 |
+| 磁盘数目 | 3，包括操作系统磁盘、进程服务器缓存磁盘和用于故障回复保留驱动器 |
 | 磁盘可用空间（进程服务器缓存） | 600 GB
 | 磁盘可用空间（保留磁盘） | 600 GB|
 | 操作系统  | Windows Server 2012 R2 <br> Windows Server 2016 |
-| 操作系统区域设置 | English (US)|
-| VMware vSphere PowerCLI 版本 | 无需|
+| 操作系统区域设置 | 英语(美国)|
+| VMware vSphere PowerCLI 版本 | 不是必需|
 | Windows Server 角色 | 请勿启用以下角色： <br> - Active Directory 域服务 <br>- Internet Information Services <br> - Hyper-V |
 | 组策略| 请勿启用以下组策略： <br> - 阻止访问命令提示符 <br> - 阻止访问注册表编辑工具 <br> - 信任文件附件的逻辑 <br> - 打开脚本执行 <br> [了解详细信息](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 | IIS | - 无预先存在的默认网站 <br> - 启用[匿名身份验证](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - 启用 [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 设置  <br> - 端口 443 上没有预先存在的网站/应用程序侦听<br>|
 | NIC 类型 | VMXNET3（部署为 VMware VM 时） |
 | IP 地址类型 | 静态 |
-| Internet 访问权限 | 服务器需要以下 URL 的访问权限： <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi （横向扩展进程服务器不需要） <br> - time.nist.gov <br> - time.windows.com |
+| Internet 访问权限 | 服务器需要以下 URL 的访问权限： <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi（横向扩展进程服务器不需要） <br> - time.nist.gov <br> - time.windows.com |
 | 端口 | 443（控制通道协调）<br>9443（数据传输）|
 
 ## <a name="download-the-latest-installation-file"></a>下载最新的安装文件
@@ -71,7 +71,7 @@ Site Recovery 门户中提供了配置服务器安装文件的最新版本。 �
      ![防火墙](./media/physical-manage-configuration-server/combined-wiz4.png)
 6. 在“先决条件检查”设置中运行检查，确保安装可以运行。 如果看到有关**全局时间同步检查**的警告，请检查系统时钟的时间（“日期和时间”设置）是否与时区相同。
 
-    ![必备组件](./media/physical-manage-configuration-server/combined-wiz5.png)
+    ![先决条件](./media/physical-manage-configuration-server/combined-wiz5.png)
 7. 在“MySQL 配置”中，创建用于登录到要安装的 MySQL 服务器实例的凭据。
 
     ![MySQL](./media/physical-manage-configuration-server/combined-wiz6.png)
@@ -106,23 +106,23 @@ Site Recovery 门户中提供了配置服务器安装文件的最新版本。 �
   ```
 
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
-|参数名| Type | 描述| 值|
+|参数名称| 类型 | 说明| 值|
 |-|-|-|-|
-| /ServerMode|需要|指定是要同时安装配置服务器和进程服务器，还是只安装进程服务器|CS<br>PS|
-|/InstallLocation|需要|用于安装组件的文件夹| 计算机上的任意文件夹|
-|/MySQLCredsFilePath|需要|MySQL 服务器凭据存储到的文件路径|文件应采用以下指定格式|
-|/VaultCredsFilePath|需要|保管库凭据文件的路径|有效的文件路径|
-|/EnvType|需要|要保护的环境类型 |VMware<br>NonVMware|
-|/PSIP|需要|要用于复制数据传输的 NIC 的 IP 地址| 任何有效的 IP 地址|
-|/CSIP|需要|配置服务器侦听时所在的 NIC 的 IP 地址| 任何有效的 IP 地址|
-|/PassphraseFilePath|需要|通行短语文件位置的完整路径|有效的文件路径|
+| /ServerMode|必选|指定是要同时安装配置服务器和进程服务器，还是只安装进程服务器|CS<br>PS|
+|/InstallLocation|必选|用于安装组件的文件夹| 计算机上的任意文件夹|
+|/MySQLCredsFilePath|必选|MySQL 服务器凭据存储到的文件路径|文件应采用以下指定格式|
+|/VaultCredsFilePath|必选|保管库凭据文件的路径|有效的文件路径|
+|/EnvType|必选|要保护的环境类型 |VMware<br>NonVMware|
+|/PSIP|必选|要用于复制数据传输的 NIC 的 IP 地址| 任何有效的 IP 地址|
+|/CSIP|必选|配置服务器侦听时所在的 NIC 的 IP 地址| 任何有效的 IP 地址|
+|/PassphraseFilePath|必选|通行短语文件位置的完整路径|有效的文件路径|
 |/BypassProxy|可选|指定配置服务器不使用代理连接到 Azure|若要从 Venu 获取此值|
 |/ProxySettingsFilePath|可选|代理设置（默认代理需要身份验证，或自定义代理）|文件应采用以下指定格式|
 |DataTransferSecurePort|可选|PSIP 上用于复制数据的端口号| 有效端口号（默认值为 9433）|
 |/SkipSpaceCheck|可选|跳过缓存磁盘的空间检查| |
-|/AcceptThirdpartyEULA|需要|该标志表示接受第三方 EULA| |
+|/AcceptThirdpartyEULA|必选|该标志表示接受第三方 EULA| |
 |/ShowThirdpartyEULA|可选|显示第三方 EULA。 如果作为输入提供，将忽略所有其他参数| |
 
 
@@ -242,7 +242,7 @@ ProxyPassword="Password"
 
 
 ### <a name="delete-the-configuration-server-from-azure-portal"></a>从 Azure 门户中删除配置服务器
-1. 在 Azure 门户中，从“保管库”菜单浏览到“Site Recovery 基础结构” > “配置服务器”。
+1. 在 Azure 门户中，从“保管库”菜单浏览到“Site Recovery 基础结构” **“配置服务器”。**  > 
 2. 单击想要解除的配置服务器。
 3. 在配置服务器的详细信息页中，单击“删除”按钮。
 4. 单击“是”确认删除该服务器。

@@ -1,27 +1,25 @@
 ---
-title: 创建和修改 ExpressRoute 线路-PowerShell： Azure |Microsoft Docs
+title: Azure ExpressRoute：修改线路： PowerShell
 description: 创建、预配、验证、更新、删除和取消预配 ExpressRoute 线路。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 02/20/2019
+ms.date: 11/13/2019
 ms.author: cherylmc
-ms.reviewer: ganesr
-ms.custom: seodec18
-ms.openlocfilehash: 9d0df2d9eda861a06e2952ff1623fb4ad5160e81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 3ce1096129d7fb45901d80b0173035dcca47c3ee
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748331"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080363"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>使用 PowerShell 创建和修改 ExpressRoute 线路
 > [!div class="op_single_selector"]
 > * [Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Azure Resource Manager 模板](expressroute-howto-circuit-resource-manager-template.md)
+> * [Azure 资源管理器模板](expressroute-howto-circuit-resource-manager-template.md)
 > * [视频 - Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell（经典）](expressroute-howto-circuit-classic.md)
 >
@@ -75,11 +73,11 @@ New-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 
 请确保指定合适的 SKU 层和 SKU 系列：
 
-* SKU 层决定是否启用 ExpressRoute 标准版或 ExpressRoute 高级版外接程序。 可以指定“Standard”以获取标准 SKU，或指定“Premium”以获取高级版外接程序。
-* SKU 系列确定计费类型。 可以指定“Metereddata”以获取数据流量套餐，指定“Unlimiteddata”以获取无限制流量套餐。 可以将计费类型从“Metereddata”更改为“Unlimiteddata”，但不能将类型从“Unlimiteddata”更改为“Metereddata”。
+* SKU 层确定 ExpressRoute 线路是[本地](expressroute-faqs.md#expressroute-local)、标准还是[高级](expressroute-faqs.md#expressroute-premium)。 您可以指定*本地*、*标准*或*高级*。
+* SKU 系列确定计费类型。 可以指定“Metereddata”以获取数据流量套餐，指定“Unlimiteddata”以获取无限制流量套餐。 可以将计费类型从“Metereddata”更改为“Unlimiteddata”，但不能将类型从“Unlimiteddata”更改为“Metereddata”。 *本地*线路始终是*Unlimiteddata*的。
 
 > [!IMPORTANT]
-> 从发布服务密钥的那一刻起，会对 ExpressRoute 线路进行计费。 确保连接服务提供商准备好预配线路后就执行此操作。
+> 从发布服务密钥的那一刻起，将对 ExpressRoute 线路进行计费。 确保连接服务提供商准备好预配线路后就执行此操作。
 >
 >
 
@@ -224,7 +222,7 @@ Get-AzExpressRouteCircuit
 ```
 
 
-其响应类似于如下示例：
+响应类似于以下示例：
 
     Name                             : ExpressRouteARMCircuit
     ResourceGroupName                : ExpressRouteResourceGroup
@@ -313,7 +311,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 线路现已启用 ExpressRoute 高级版外接程序功能。 该命令成功运行后，我们就会开始对高级版外接程序功能进行计费。
 
-### <a name="to-disable-the-expressroute-premium-add-on"></a>禁用 ExpressRoute 高级版外接程序
+### <a name="to-disable-the-expressroute-premium-add-on"></a>禁用 ExpressRoute 高级外接程序
 > [!IMPORTANT]
 > 如果使用的资源超出了标准线路允许的范围，此操作可能会失败。
 >
@@ -337,7 +335,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ### <a name="to-update-the-expressroute-circuit-bandwidth"></a>更新 ExpressRoute 线路带宽
-有关提供商支持的带宽选项，请查看 [ExpressRoute 常见问题](expressroute-faqs.md)。 可以选取大于现有线路大小的任何大小。
+有关提供商支持的带宽选项，请查看 [ExpressRoute 常见问题解答](expressroute-faqs.md)。 可以选取大于现有线路大小的任何大小。
 
 > [!IMPORTANT]
 > 如果现有端口上的容量不足，可能需要重新创建 ExpressRoute 线路。 如果该位置没有额外的可用容量，则不能升级线路。
@@ -378,7 +376,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 * 必须取消所有虚拟网络与 ExpressRoute 线路的链接。 如果此操作失败，请查看是否有虚拟网络链接到了该线路。
 * 如果 ExpressRoute 线路服务提供商预配状态为“正在预配”或“已预配”，则必须与服务提供商合作，在他们一端取消预配线路。 在服务提供商完成取消设置线路并通知我们之前，我们会继续保留资源并向你收费。
-* 如果服务提供商已取消设置线路（服务提供商预配状态设置为“未预配”），可以删除线路。 这样就会停止对线路的计费。
+* 如果服务提供商已取消预配线路（服务提供商预配状态设置为“未预配”），则可以删除线路。 这样就会停止对线路的计费。
 
 可以通过运行以下命令来删除 ExpressRoute 线路：
 

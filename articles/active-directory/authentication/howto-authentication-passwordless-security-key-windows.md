@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b57fe9241a6a29e6f5ce12b7a1412455df4a001
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7b3aa2add128cfc11a638fe6c7e03cfb25189afc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603475"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081560"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>启用无密码安全密钥登录到 Windows 10 设备（预览）
 
@@ -88,7 +88,7 @@ ms.locfileid: "73603475"
 
 ### <a name="enable-with-a-provisioning-package"></a>使用预配包启用
 
-对于不由 Intune 管理的设备，可以安装预配包以启用该功能。 可以从[Microsoft Store](https://www.microsoft.com/store/apps/9nblggh4tx22)安装 Windows 配置设计器应用。
+对于不由 Intune 管理的设备，可以安装预配包以启用该功能。 可以从[Microsoft Store](https://www.microsoft.com/en-us/p/windows-configuration-designer/9nblggh4tx22)安装 Windows 配置设计器应用。
 
 1. 启动 Windows 配置设计器。
 1. 选择 "**文件**" > "**新建项目**"。

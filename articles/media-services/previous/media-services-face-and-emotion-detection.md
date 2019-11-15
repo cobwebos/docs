@@ -15,19 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: 6fa2495ee580bb8e74a0d026533fa90f20743510
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: b6cbca454d1463ffe6e73d7021ea563e7121b7be
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881769"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084625"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>使用 Azure 媒体分析检测面部和情绪
 
-> [!IMPORTANT]
-> 查看一些媒体处理器的[停用计划](media-services-analytics-overview.md#retirement-plans)。
-
 ## <a name="overview"></a>概述
+
 借助 **Azure Media Face Detector** 媒体处理器 (MP)，可通过面部表情来统计、跟踪动作，甚至计量受众的参与和反应。 此服务包含两项功能： 
 
 * **人脸检测**
@@ -40,7 +38,7 @@ ms.locfileid: "72881769"
   > 
 * **情绪检测**
   
-    情绪检测是人脸检测媒体处理器的可选组件，它根据检测到的面部返回多个情绪属性的分析，包括快乐、悲伤、恐惧、愤怒等等。 
+    情绪检测是面部检测媒体处理器的可选组件，它根据检测到的面部返回多个情绪属性的分析，包括快乐、悲伤、恐惧、愤怒等等。 
 
 **Azure Media Face Detector** MP 目前提供预览版。
 
@@ -68,7 +66,7 @@ ms.locfileid: "72881769"
 [输入视频](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>任务配置（预设）
-使用 **Azure Media Face Detector** 创建任务时，必须指定配置预设。 以下配置预设仅适用于人脸检测。
+使用 **Azure Media Face Detector** 创建任务时，必须指定配置预设。 以下配置预设仅适用于面部检测。
 
 ```json
     {
@@ -80,7 +78,7 @@ ms.locfileid: "72881769"
 ```
 
 #### <a name="attribute-descriptions"></a>属性说明
-| 属性名称 | 描述 |
+| 属性名称 | 说明 |
 | --- | --- |
 | Mode |快速 - 处理速度快，但准确度较低（默认）。|
 
@@ -155,7 +153,7 @@ ms.locfileid: "72881769"
 
 
 #### <a name="attribute-descriptions"></a>属性说明
-| 属性名称 | 描述 |
+| 属性名称 | 说明 |
 | --- | --- |
 | Mode |Faces：仅人脸检测。<br/>PerFaceEmotion：独立返回每个人脸检测的情绪。<br/>AggregateEmotion：返回帧中所有面部的平均情绪值。 |
 | AggregateEmotionWindowMs |在已选择 AggregateEmotion 模式时使用。 指定用于生成每个聚合结果的视频的长度，以毫秒为单位。 |
@@ -167,7 +165,7 @@ ms.locfileid: "72881769"
 || 默认值 | 最大值 | 最小值 |
 |--- | --- | --- | --- |
 | AggregateEmotionWindowMs |0.5 |2 |0.25|
-| AggregateEmotionIntervalMs |0.5 |第 |0.25|
+| AggregateEmotionIntervalMs |0.5 |1 个 |0.25|
 
 ### <a name="json-output"></a>JSON 输出
 聚合情绪的 JSON 输出（已截断）：

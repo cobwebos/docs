@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 8967b61115d2e2e644dea93cb236f8a7cdfcfcbd
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6a001d6b501a22b4b07599792a64af735c5d4d9b
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072263"
+ms.locfileid: "74090474"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>如何为 Azure 数字孪生配置 Postman
 
@@ -61,6 +61,12 @@ ms.locfileid: "74072263"
 1. 配置要 `https://www.getpostman.com/oauth2/callback`的第二个**重定向 URI** 。
 
     [![添加 Postman 的重定向 URI](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
+
+1. 若要确保[将应用注册为**公用客户端**](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)，请打开应用注册的 "**身份验证**" 窗格，并在该窗格中向下滚动。 在 "**默认客户端类型**" 部分中，选择 **"是"** ，将**应用程序视为公共客户端**，然后单击 "**保存**"。
+
+    检查**访问令牌**，以在**oauth2AllowImplicitFlow**中启用 "设置" 设置。
+
+    [![公用客户端配置设置](../../includes/media/digital-twins-permissions/aad-public-client.png)](../../includes/media/digital-twins-permissions/aad-public-client.png#lightbox)
 
 1. 复制并保留 Azure Active Directory 应用的“应用程序 ID”。 它在后续步骤中会用到。
 

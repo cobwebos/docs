@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery 中的新增功能
-description: 提供 Azure Site Recovery 中引入的新功能的摘要
+description: 提供 Azure Site Recovery 服务中的新功能和最新更新。
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 19bf79cdb6bcdc0c20d47c698647383b758338db
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: af1b531ac1b38921a99284aad2108e4027d97f4c
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961320"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091699"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -189,7 +189,7 @@ ms.locfileid: "73961320"
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）
 
 
-### <a name="general"></a>常规
+### <a name="general"></a>一般信息
 
 Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或目标存储。 以前仅支持 v1。
 

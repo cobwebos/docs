@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: a46cf78d902ec8391d7dc3667a6d66daa78927ab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2306b6cbdd347e3be9921b196ae06385ef5ca90a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828560"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083188"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>使用从动数据库在 Azure 中附加数据库数据资源管理器
 
@@ -242,7 +242,7 @@ resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupNam
 
 ### <a name="manage-principals"></a>管理主体
 
-附加数据库时，请指定**默认的主体修改类型**。 默认情况下，保留[授权主体](/azure/kusto/management/access-control/index.md#authorization)的领导数据库集合
+附加数据库时，请指定**默认的主体修改类型**。 默认情况下，保留[授权主体](/azure/kusto/management/access-control/index#authorization)的领导数据库集合
 
 |**种类** |**说明**  |
 |---------|---------|
@@ -250,7 +250,7 @@ resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupNam
 |**Replace**   |    不会从原始数据库继承主体。 必须为附加的数据库创建新的主体。 至少需要将一个主体添加到阻止主体继承。     |
 |**无**   |   附加的数据库主体只包含原始数据库的主体，而没有其他主体。      |
 
-有关使用控制命令配置授权主体的详细信息，请参阅[用于管理使用者群集的控制命令](/azure/kusto/management/cluster-follower.md)。
+有关使用控制命令配置授权主体的详细信息，请参阅[用于管理使用者群集的控制命令](/azure/kusto/management/cluster-follower)。
 
 ### <a name="manage-permissions"></a>管理权限
 
@@ -258,7 +258,7 @@ resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupNam
 
 ### <a name="configure-caching-policy"></a>配置缓存策略
 
-数据库管理员可以在宿主群集上修改附加数据库或其任何表的[缓存策略](/azure/kusto/management/cache-policy)。 默认情况下，保留数据库和表级缓存策略的领导者数据库集合。 例如，你可以在领导者数据库上有一个30天的缓存策略用于运行每月报表，并在一天的数据库中使用三天缓存策略来仅查询最新的数据进行故障排除。 若要详细了解如何使用控制命令来配置对数据库或表的缓存策略，请参阅[控制用于管理从动群集的命令](/azure/kusto/management/cluster-follower.md)。
+数据库管理员可以在宿主群集上修改附加数据库或其任何表的[缓存策略](/azure/kusto/management/cache-policy)。 默认情况下，保留数据库和表级缓存策略的领导者数据库集合。 例如，你可以在领导者数据库上有一个30天的缓存策略用于运行每月报表，并在一天的数据库中使用三天缓存策略来仅查询最新的数据进行故障排除。 若要详细了解如何使用控制命令来配置对数据库或表的缓存策略，请参阅[控制用于管理从动群集的命令](/azure/kusto/management/cluster-follower)。
 
 ## <a name="limitations"></a>限制
 
@@ -270,4 +270,4 @@ resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupNam
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关使用情况群集配置的详细信息，请参阅[用于管理使用情况群集的控制命令](/azure/kusto/management/cluster-follower.md)。
+* 有关使用情况群集配置的详细信息，请参阅[用于管理使用情况群集的控制命令](/azure/kusto/management/cluster-follower)。

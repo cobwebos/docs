@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: 9427b72faf36106602cb59dc271d72402453e81e
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 66edbc872fe5f1d4320107aa21ed2792bdd4fecc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821416"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083893"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>媒体服务平台上的媒体分析 
 
@@ -33,11 +33,7 @@ ms.locfileid: "72821416"
 |---|---|
 |[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| 2020年1月1日|此媒体处理器将替换为[Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)。 有关详细信息，请参阅[从 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。|
 |[Azure Media Indexer](media-services-index-content.md)|2020年10月1日|此媒体处理器将替换为[Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)。 有关详细信息，请参阅[从 Azure Media Indexer 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)
-|[Azure Media Face Detector](media-services-face-and-emotion-detection.md)|2020年2月1日|此媒体分析预览处理器将会停用，并且不会被移到 "公开上市"。 我们将针对未来投资评估其方案和用例。|
-|[Azure Media Motion Detector](media-services-motion-detection.md)|2020年2月1日|此媒体分析预览处理器将会停用，并且不会被移到 "公开上市"。 我们将针对未来投资评估其方案和用例。|
-|[Azure 媒体 OCR](media-services-video-optical-character-recognition.md)|2020年2月1日|此媒体处理器将由[Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)和[azure 媒体服务 V3 API 视频分析器预设](../latest/analyzing-video-audio-files-concept.md)替换。|
-|[Azure Media Video Thumbnails](media-services-video-summarization.md)|2020年2月1日|此媒体处理器将由[Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)和[azure 媒体服务 V3 API 视频分析器预设](../latest/analyzing-video-audio-files-concept.md)替换。|
-
+ 
 ## <a name="overview"></a>概述
 
 越来越多的组织将视频用作首选媒体来培训员工、与客户沟通以及规定业务职能。 云计算提供了一种方法来存储、流式传输和访问这些大型媒体文件。 但随着公司视频内容库的扩大，它需要在从内容中提取见解时具有同样有效的方式。 
@@ -80,7 +76,7 @@ Azure 媒体修订器是一种媒体分析媒体处理器，可用于在云中�
 
 ### <a name="mp-names"></a>MP 名称
 * Azure Media Indexer 2 Preview
-* Azure 媒体索引器
+* Azure Media Indexer
 * Azure 媒体面部检测器
 * Azure Media Motion Detector
 * Azure 媒体视频缩略图

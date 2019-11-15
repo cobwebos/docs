@@ -12,13 +12,13 @@ author: dalechen
 manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
-ms.date: 06/14/2019
-ms.openlocfilehash: a943ade4bfc46083fe84274640d979928357a492
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: c25fa3f378c1e5a0f8bc26e4fb8c6f4ec752b43c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826802"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082493"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>处理 SQL 数据库连接问题和暂时性错误
 
@@ -30,7 +30,7 @@ ms.locfileid: "73826802"
 
 暂时性错误（也称为暂时性故障）的根本原因很快就能自行解决。 当 Azure 系统快速地将硬件资源转移到负载均衡更好的各种工作负荷时，偶尔会发生暂时性错误。 其中的大多数重新配置事件在 60 秒内就能完成。 在进行这种重新配置的过程中，可能会遇到 SQL 数据库的连接问题。 连接到 Azure SQL 数据库的应用程序应当构建为能预见这些暂时性错误。 为了处理这些错误，可应用程序代码中实现重试逻辑，而不是以应用程序错误的形式呈现给用户。
 
-如果客户端程序使用 ADO.NET，系统会引发 **SqlException**，使程序知道已发生暂时性错误。 将 **Number** 属性与 [SQL 数据库客户端应用程序的 SQL 错误代码](sql-database-develop-error-messages.md)一文顶部附近的暂时性错误列表进行比较。
+如果客户端程序使用 ADO.NET，系统会引发 **SqlException**，使程序知道已发生暂时性错误。 
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
@@ -145,7 +145,7 @@ ms.locfileid: "73826802"
 
 ## <a name="connection-vs-command"></a>连接与命令
 
-**ConnectRetryCount** 和 **ConnectRetryInterval** 参数使 **SqlConnection** 对象在重试连接操作时不用通知或麻烦程序（例如，将控制权返还给程序）。 在以下情况下可能会进行重试：
+**ConnectRetryCount** 和 **ConnectRetryInterval** 参数使 **SqlConnection** 对象在重试连接操作时不用通知或麻烦你的程序（例如，将控制权返还给你的程序）。 在以下情况下可能会进行重试：
 
 - mySqlConnection.Open 方法调用
 - mySqlConnection.Execute 方法调用
@@ -267,7 +267,7 @@ TCP port 1433 (ms-sql-s service): LISTENING
 
 客户端可以通过记录其所遇到的所有错误来帮助你进行诊断。 可将日志条目与 SQL 数据库本身内部记录的错误数据相关联。
 
-Enterprise Library 6 (EntLib60) 提供了 .NET 托管类来帮助进行日志记录。 有关详细信息，请参阅：[5 - 与写入日志一样简单：使用日志记录应用程序块](https://msdn.microsoft.com/library/dn440731.aspx)。
+Enterprise Library 6 (EntLib60) 提供了 .NET 托管类来帮助进行日志记录。 有关详细信息，请参阅：[5 - 与写入日志一样简单：使用日志记录应用程序块](https://msdn.microsoft.com/library/dn440731.aspx)
 
 <a id="h-diagnostics-examine-logs-errors" name="h-diagnostics-examine-logs-errors"></a>
 
@@ -368,7 +368,7 @@ Enterprise Library 6 (EntLib60) 是 .NET 类的框架，可帮助你实施云服
   - 收集有助于调试和跟踪的上下文信息，以及用于满足审核和一般日志记录要求的上下文信息。
 - 日志记录块可以从日志目标抽象化日志记录功能，使应用程序代码保持一致，无论目标日志记录存储的位置和类型为何。
 
-有关详细信息，请参阅：[5 - 与写入日志一样简单：使用日志记录应用程序块](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx)。
+有关详细信息，请参阅：[5 - 与写入日志一样简单：使用日志记录应用程序块](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx)
 
 <a id="entlib60-istransient-method-source-code" name="entlib60-istransient-method-source-code"></a>
 

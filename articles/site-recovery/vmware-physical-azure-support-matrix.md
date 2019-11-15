@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵 | Microsoft Docs
+title: Azure Site Recovery 中的 VMware/物理灾难恢复的支持矩阵
 description: 汇总了使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的支持。
 author: rayne-wiselman
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9125c69f9d2f4d7289120f86059ffab3b7f9228a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: b16b6bb8ad39f7f0a5f19a2e2d4280bb73def60a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961299"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082197"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -51,7 +51,7 @@ RAM | 16 GB
 磁盘可用空间 | 提供 600 GB 空间用作进程服务器缓存。
 磁盘可用空间 | 为保留驱动器提供 600 GB 空间。
 操作系统  | Windows Server 2012 R2，或具有桌面体验的 Windows Server 2016 <br/><br> 如果你计划使用此设备的内置主目标来进行故障回复，请确保操作系统版本与复制的项相同或更高。|
-操作系统区域设置 | 英语 (en-us)
+操作系统区域设置 | 美国英语
 [PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | 在配置服务器版本 [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) 或更高版本中不需要。 
 Windows Server 角色 | 不要启用 Active Directory 域服务、Internet Information Services (IIS) 或 Hyper-V。 
 组策略| - 阻止访问命令提示符。 <br/> - 阻止访问注册表编辑工具。 <br/> - 信任文件附件的逻辑。 <br/> - 打开脚本执行。 <br/> - [了解详细信息](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
@@ -155,15 +155,15 @@ BTRFS | 从[更新汇总 34](https://support.microsoft.com/help/4490016)（移�
 **组件** | **支持**
 --- | ---
 主机网络 NIC 组合 | 对于 VMware VM，受支持。 <br/><br/>对于物理计算机复制，不支持。
-主机网络 VLAN | 是。
-主机网络 IPv4 | 是。
+主机网络 VLAN | 可以。
+主机网络 IPv4 | 可以。
 主机网络 IPv6 | 不能。
 来宾/服务器网络 NIC 组合 | 不能。
-来宾/服务器网络 IPv4 | 是。
+来宾/服务器网络 IPv4 | 可以。
 来宾/服务器网络 IPv6 | 不能。
-来宾/服务器网络静态 IP (Windows) | 是。
-来宾/服务器网络静态 IP (Linux) | 是。 <br/><br/>VM 配置为在故障回复时使用 DHCP。
-来宾/服务器网络多个 NIC | 是。
+来宾/服务器网络静态 IP (Windows) | 可以。
+来宾/服务器网络静态 IP (Linux) | 可以。 <br/><br/>VM 配置为在故障回复时使用 DHCP。
+来宾/服务器网络多个 NIC | 可以。
 
 
 ## <a name="azure-vm-network-after-failover"></a>Azure VM 网络（故障转移后）
@@ -186,18 +186,18 @@ Azure 虚拟网络服务终结点<br/> | 是
 --- | ---
 动态磁盘 | OS 磁盘必须是基本磁盘。 <br/><br/>数据磁盘可以是动态磁盘
 Docker 磁盘配置 | 否
-主机 NFS | 在 VMware 上支持<br/><br/> 在物理服务器上不支持
+主机 NFS | VMware 支持<br/><br/> 物理服务器不支持
 主机 SAN (iSCSI/FC) | 是
-主机 vSAN | 在 VMware 上支持<br/><br/> 在物理服务器上不适用
+主机 vSAN | VMware 支持<br/><br/> 不适用于物理服务器
 主机多路径 (MPIO) | 是，针对以下项进行了测试：Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON
-主机虚拟卷 (VVols) | 在 VMware 上支持<br/><br/> 在物理服务器上不适用
+主机虚拟卷 (VVols) | VMware 支持<br/><br/> 不适用于物理服务器
 来宾/服务器 VMDK | 是
 来宾/服务器共享群集磁盘 | 否
 来宾/服务器加密磁盘 | 否
 来宾/服务器 NFS | 否
 来宾/服务器 iSCSI | 对于迁移 - 是<br/>对于灾难恢复 - 否，iSCSI 将作为附加磁盘故障回复到 VM
 来宾/服务器 SMB 3.0 | 否
-来宾/服务器 RDM | 是<br/><br/> 在物理服务器上不适用
+来宾/服务器 RDM | 是<br/><br/> 不适用于物理服务器
 > 1 TB 的来宾/服务器磁盘 | 是，磁盘必须大于 1024 MB<br/><br/>复制到托管磁盘时高达 8,192 GB（9.26 版及更高版本）<br></br> 复制到存储帐户时高达 4,095 GB
 逻辑和物理扇区大小均为 4K 的来宾/服务器磁盘 | 否
 逻辑扇区大小为 4K 且物理扇区大小为 512 字节的来宾/服务器磁盘 | 否
@@ -232,7 +232,7 @@ ReFS | 移动服务版本9.23 或更高版本支持复原文件系统
 静态加密（CMK）| 否
 高级存储 | 是
 导入/导出服务 | 否
-VNet 的 Azure 存储防火墙 | 是。<br/> 在目标存储/缓存存储帐户上配置（用于存储复制的数据）。
+VNet 的 Azure 存储防火墙 | 可以。<br/> 在目标存储/缓存存储帐户上配置（用于存储复制的数据）。
 常规用途 v2 存储帐户（热层和冷层） | 是（与 V1 相比，V2 的事务成本高得多）
 
 ## <a name="azure-compute"></a>Azure 计算

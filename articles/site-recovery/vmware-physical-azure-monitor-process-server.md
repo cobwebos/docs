@@ -1,18 +1,18 @@
 ---
 title: 监视 Azure Site Recovery 进程服务器
-description: 本文介绍如何监视 Azure Site Recovery 进程服务器。
+description: 本文介绍如何监视用于 VMware VM/物理服务器灾难恢复 Azure Site Recovery 进程服务器
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/05/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 00b424672b505a5bb3d576c0ca4d8e334e2a1753
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 54c161c40c881d7626f79fc9bfe1ec1c160480ae
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383205"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082246"
 ---
 # <a name="monitor-the-process-server"></a>监视进程服务器
 
@@ -53,17 +53,17 @@ ms.locfileid: "70383205"
 
 **警报类型** | **详细信息**
 --- | ---
-![状态良好][green] | 进程服务器已连接且正常运行。
+![正常][green] | 进程服务器已连接且正常运行。
 ![警告][yellow] | 过去 15 分钟的 CPU 利用率超过 80%
 ![警告][yellow] | 过去 15 分钟的内存使用率超过 80%
 ![警告][yellow] | 过去 15 分钟的缓存文件夹可用空间小于 30%
-![警告][yellow] | Site Recovery 每五分钟监视挂起/传出数据，并估计在30分钟内无法将进程服务器缓存中的数据上传到 Azure。
+![警告][yellow] | Site Recovery 每五分钟监视一次挂起/传出数据，并估计进程服务器缓存中的数据无法在 30 分钟内上传到 Azure。
 ![警告][yellow] | 进程服务器服务在过去 15 分钟未运行
-![关键][red] | 过去 15 分钟的 CPU 利用率超过 95%
-![关键][red] | 过去 15 分钟的内存使用率超过 95%
-![关键][red] | 过去 15 分钟的缓存文件夹可用空间小于 25%
-![关键][red] | Site Recovery 每五分钟监视挂起/传出数据，并估计在45分钟内无法将进程服务器缓存中的数据上传到 Azure。
-![关键][red] | 进程服务器有 15 分钟未发出检测信号。
+![严重][red] | 过去 15 分钟的 CPU 利用率超过 95%
+![严重][red] | 过去 15 分钟的内存使用率超过 95%
+![严重][red] | 过去 15 分钟的缓存文件夹可用空间小于 25%
+![严重][red] | Site Recovery 每五分钟监视一次挂起/传出数据，并估计进程服务器缓存中的数据无法在 45 分钟内上传到 Azure。
+![严重][red] | 进程服务器有 15 分钟未发出检测信号。
 
 ![表键](./media/vmware-physical-azure-monitor-process-server/table-key.png)
 

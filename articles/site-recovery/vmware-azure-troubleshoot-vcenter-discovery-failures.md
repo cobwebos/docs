@@ -1,20 +1,20 @@
 ---
-title: 排查 Azure Site Recovery 的 VMware VM 灾难恢复到 Azure 过程中故障回复到本地的问题
-description: 本文介绍了在 VMware VM 灾难恢复到 Azure 期间使用 Azure Site Recovery 排查故障回复和重新保护问题的方法。
+title: 解决 Azure Site Recovery 中的 VMware vCenter 发现失败问题
+description: 本文介绍如何在 Azure Site Recovery 中排查 VMware vCenter 发现失败问题。
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
-ms.openlocfilehash: e9213637f45a4761af60de9dfac7add6324f6b96
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053850"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091240"
 ---
-# <a name="troubleshoot-vcenter-discovery-failures"></a>排查 vCenter 发现故障
+# <a name="troubleshoot-vcenter-server-discovery-failures"></a>排查 vCenter Server 发现失败
 
 本文将帮助你排查由于 VMware vCenter 发现失败而发生的问题。
 
@@ -52,7 +52,7 @@ vCenter 发现采用系统用户配置的系统默认代理设置。 DRA 服务�
 
 若要解决问题，请执行以下操作：
 
-下载[PsExec 工具](https://aka.ms/PsExec)。 
+下载 [PsExec 工具](https://aka.ms/PsExec)。 
 
 使用 PsExec 工具来访问系统用户上下文并确定是否配置了代理地址。 然后，可以使用以下过程将 vCenter 添加到跳过列表。
 

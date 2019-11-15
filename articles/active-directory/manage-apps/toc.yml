@@ -24,6 +24,8 @@
 - name: 概念
   expanded: true
   items:
+    - name: 应用管理最佳做法
+      href: application-management-fundamentals.md
     - name: 云应用和单一登录
       items:
         - name: 计划云应用集成

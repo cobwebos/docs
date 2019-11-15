@@ -15,19 +15,17 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: a546df73f316b4eb6c215a6f52d68f87ad09c1a2
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: da397c180b6ccaf91084a0ec22210c7bcc88a5dc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881690"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084802"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>使用 Azure 媒体视频缩略图创建视频摘要  
-
-> [!IMPORTANT]
-> 查看一些媒体处理器的[停用计划](media-services-analytics-overview.md#retirement-plans)。
-
+ 
 ## <a name="overview"></a>概述
+
 通过 **Azure Media Video Thumbnails** 媒体处理器 (MP)，可创建视频摘要，这对于要预览长视频摘要的客户来说很有用。 例如，当客户将鼠标悬停在缩略图上时，他们可能希望看到一小段“摘要视频”。 通过配置预设值稍稍调整 **Azure Media Video Thumbnails** 的参数，即可使用 MP 的强大快照检测和串联技术，以算法形式生成描述性子剪辑。  
 
 **Azure Media Video Thumbnail** MP 目前以预览版提供。
@@ -58,7 +56,7 @@ ms.locfileid: "72881690"
 
 当前你可更改以下参数：
 
-| Param | 描述 |
+| Param | 说明 |
 | --- | --- |
 | outputAudio |指定生成的视频是否包含音频。 <br/>允许的值为：True 或 False。 默认值为 True。 |
 | fadeInFadeOut |指定单独动态缩略图之间是否使用淡入淡出转换。  <br/>允许的值为：True 或 False。  默认值为 True。 |

@@ -11,24 +11,24 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea174de04d0e75bc996c6f692edd474a9396346a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9ae7390afead843fa0784454f7e0374bedf735ad
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474278"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081538"
 ---
-# <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题解答
+# <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题
 
 本“常见问题解答”文章解答有关 Azure 多重身份验证和使用多重身份验证服务的常见问题。 其中的问题已划分为常规服务问题、计费模式问题、用户体验问题和故障排除问题。
 
-## <a name="general"></a>常规
+## <a name="general"></a>一般信息
 
 **问：Azure 多重身份验证服务器如何处理用户数据？**
 
 使用多重身份验证服务器时，用户数据只存储在本地服务器中。 云中不会持久存储任何用户数据。 当用户执行双重验证时，多重身份验证服务器将数据发送到 Azure 多重身份验证云服务执行身份验证。 多重身份验证服务器与多重身份验证云服务之间的通信在出站端口 443 上使用安全套接字层 (SSL) 或传输层安全性 (TLS)。
 
-当身份验证请求发送到云服务时，收集的数据用于身份验证和使用情况报告。 双重验证日志中包含的数据字段如下：
+当身份验证请求发送到云服务时，会收集数据用于身份验证和使用情况报告。 双重验证日志中包含的数据字段如下：
 
 * **唯一 ID**（用户名或本地多重身份验证服务器 ID）
 * **姓名**（可选）
@@ -111,7 +111,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 如果组织使用基于使用量的计费模式，则 Azure Active Directory 是可选而不是必需的。 如果 MFA 提供程序未链接到 Azure AD 租户，只能在本地部署 Azure 多重身份验证服务器。
 
-许可模式需要 Azure Active Directory，因为在购买许可证并将其分配给目录中的用户时，许可证将添加到 Azure AD 租户。
+许可模式需要 Azure Active Directory，因为在购买许可证并将其分配给目录中的用户时，许可证会添加到 Azure AD 租户。
 
 ## <a name="manage-and-support-user-accounts"></a>管理和支持用户帐户
 
@@ -200,9 +200,9 @@ Windows Server 2012 R2 中的安全性更改改变了 Azure 多重身份验证�
 
 ## <a name="errors"></a>错误
 
-**问：如果用户使用移动应用通知时看到“身份验证请求不适用于已激活的帐户”错误消息，该怎么办？**
+**问：如果用户在使用移动应用通知时看到“身份验证请求不适用于已激活的帐户”错误消息，该怎么办？**
 
-告诉他们按照此过程从移动应用中删除帐户，并重新添加：
+告诉他们按照此过程从移动应用中删除其帐户，并重新添加：
 
 1. 转到 [Azure 门户配置文件](https://account.activedirectory.windowsazure.com/profile/)，并使用组织帐户登录。
 2. 选择“其他安全性验证”。
@@ -217,9 +217,9 @@ Windows Server 2012 R2 中的安全性更改改变了 Azure 多重身份验证�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果此处未解答问题，请在页面底部留言。 或者，通过一些其他方法获得帮助：
+如果此处未解答问题，请将其留在页面底部的评论中。 或者，通过一些其他方法获得帮助：
 
-* 在 [Microsoft 支持知识库](https://www.microsoft.com/en-us/search?form=mssupport&q=phonefactor&rtc=1) 中搜索常见技术问题的解决方法。
+* 在 [Microsoft 支持知识库](https://support.microsoft.com)中搜索常见技术问题的解决方法。
 * 在 [Azure Active Directory 论坛](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)中搜索和浏览来自社区的技术问题与解答，或者提出自己的问题。
 * 对于旧版 PhoneFactor 客户，如果有疑问或需要重置密码方面的帮助，请使用[密码重置](mailto:phonefactorsupport@microsoft.com)链接建立支持案例。
 * 通过 [Azure 多重身份验证服务器 (PhoneFactor) 支持](https://support.microsoft.com/oas/default.aspx?prid=14947)联系支持专业人员。 与我们联系时，尽可能包含有关问题的更多信息将很有帮助。 可提供的信息包括看到错误的页面、特定错误代码、特定会话 ID 和看到错误的用户的 ID。

@@ -1,17 +1,17 @@
 ---
-title: 使用 Azure Site Recovery 管理 VMware vCenter 服务器，以便将 VMware VM 灾难恢复到 Azure | Microsoft Docs
+title: 在 Azure Site Recovery 中管理 VMware vCenter 服务器
 description: 本文介绍如何使用 Azure Site Recovery 添加和管理 VMware vCenter，以便将 VMware VM 灾难恢复到 Azure。
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 59088d8351bf89c859312774e3e9e396be8dd532
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 8f339103f67f37d10999ef43fa57a6eb27b60f37
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904258"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083978"
 ---
 # <a name="manage-vmware-vcenter-server"></a>管理 VMware vCenter 服务器
 
@@ -42,7 +42,7 @@ Site Recovery 需要 VMware 的访问权限，以便进程服务器可以自动�
 
 ## <a name="add-vmware-server-to-the-vault"></a>将 VMware 服务器添加到保管库
 
-1. 在 Azure 门户中，打开你的保管库>“Site Recovery 基础结构” > “配置服务器”，然后打开配置服务器。
+1. 在 Azure 门户中，打开你的保管库>“Site Recovery 基础结构” **“配置服务器”，然后打开配置服务器** > 。
 2. 在“详细信息”页上单击“+vCenter”。
 
 [!INCLUDE [site-recovery-add-vcenter](../../includes/site-recovery-add-vcenter.md)]
@@ -56,7 +56,7 @@ Site Recovery 需要 VMware 的访问权限，以便进程服务器可以自动�
 
    ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
 3. 提供新帐户的详细信息并单击“确定”以添加该帐户。 该帐户应具备[上方](#account-permissions)列出的权限。
-4. 在 Azure 门户上，打开保管库>“Site Recovery 基础结构” > “配置服务器”，然后打开配置服务器。
+4. 在 Azure 门户上，打开保管库>“Site Recovery 基础结构” **“配置服务器”，然后打开配置服务器** > 。
 5. 在“详细信息”页上，单击“刷新服务器”。
 6. 刷新服务器作业完成后，选择“vCenter 服务器”以打开 vCenter“摘要”页面。
 7. 在“vCenter 服务器/vSphere 主机帐户”字段选择新添加的帐户，并单击“保存”。
@@ -65,7 +65,7 @@ Site Recovery 需要 VMware 的访问权限，以便进程服务器可以自动�
 
 ## <a name="delete-a-vcenter-server"></a>删除 vCenter 服务器
 
-1. 在 Azure 门户中，打开你的保管库>“Site Recovery 基础结构” > “配置服务器”，然后打开配置服务器。
+1. 在 Azure 门户中，打开你的保管库>“Site Recovery 基础结构” **“配置服务器”，然后打开配置服务器** > 。
 2. 在“详细信息”页上，选择 vCenter 服务器。
 3. 单击“删除”按钮。
 
@@ -74,48 +74,48 @@ Site Recovery 需要 VMware 的访问权限，以便进程服务器可以自动�
 ## <a name="modify-the-vcenter-ip-address-and-port"></a>修改 vCenter IP 地址和端口
 
 1. 登录到 Azure 门户。
-2. 导航到 "**恢复服务保管库** > "**Site Recovery 基础结构** > **配置服务器**。
+2. 导航到“恢复服务保管库” **“Site Recovery 基础结构”** “配置服务器” >  > 。
 3. 单击 vCenter 分配到的配置服务器。
-4. 在 " **vcenter 服务器**" 部分中, 单击要修改的 vCenter。
-5. 在 "vCenter 摘要" 页面上, 更新各个字段中 vCenter 的 IP 地址和端口, 然后保存所做的更改。
+4. 在“vCenter 服务器”部分，单击要修改的 vCenter。
+5. 在 vCenter 摘要页上，更新相应字段中 vCenter 的 IP 地址和端口，然后保存更改。
 
    ![add_ip_new_vcenter](media/vmware-azure-manage-vcenter/add-ip.png)
 
-6. 要使更改生效, 请等待15分钟或[刷新配置服务器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。
+6. 要使更改生效，请等待 15 分钟或[刷新配置服务器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。
 
 ## <a name="migrate-all-protected-virtual-machines-to-a-new-vcenter"></a>将所有受保护的虚拟机迁移到新的 vCenter
 
-若要将所有虚拟机迁移到新的 vCenter, 请不要添加另一个 vCenter 帐户。 这可能会导致重复项。 只需更新新 vCenter 的 IP 地址:
+若要将所有虚拟机迁移到新的 vCenter，请不要添加另一个 vCenter 帐户。 这可能会导致出现重复条目。 只需更新新 vCenter 的 IP 地址即可：
 
 1. 登录到 Azure 门户。
-2. 导航到 "**恢复服务保管库** > "**Site Recovery 基础结构** > **配置服务器**。
+2. 导航到“恢复服务保管库” **“Site Recovery 基础结构”** “配置服务器” >  > 。
 3. 单击旧 vCenter 分配到的配置服务器。
-4. 在 " **vcenter 服务器**" 部分中, 单击要从中进行迁移的 vcenter。
-5. 在 "vCenter 摘要" 页面上, 更新 " **vcenter server/vSphere 主机名" 或 "IP 地址**" 字段中新 VCENTER 的 IP 地址。 保存更改。
+4. 在“vCenter 服务器”部分，单击要从中迁移的 vCenter。
+5. 在 vCenter 摘要页上，更新“vCenter 服务器/vSphere 主机名或 IP 地址”字段中新 vCenter 的 IP 地址。 保存所做更改。
 
-一旦更新 IP 地址, Site Recovery 组件就会开始从新的 vCenter 接收虚拟机的发现信息。 这不会影响正在进行的复制活动。
+更新 IP 地址后，Site Recovery 组件会立即开始从新的 vCenter 接收虚拟机的发现信息。 这不会影响正在进行的复制活动。
 
-## <a name="migrate-few-protected-virtual-machines-to-a-new-vcenter"></a>将几个受保护的虚拟机迁移到新的 vCenter
+## <a name="migrate-few-protected-virtual-machines-to-a-new-vcenter"></a>将少量受保护的虚拟机迁移到新的 vCenter
 
 > [!NOTE]
-> 本部分仅适用于将几个受保护的虚拟机迁移到新 vCenter 的情况。 如果要从新的 vCenter 保护一组新的虚拟机, 请[将新的 vcenter 详细信息添加到配置服务器](#add-vmware-server-to-the-vault), 然后启动 " **[启用保护](vmware-azure-tutorial.md#enable-replication)** "。
+> 本部分仅适用于将少量受保护的虚拟机迁移到新 vCenter 的情况。 若要保护新 vCenter 中的一组新虚拟机，请[将新 vCenter 的详细信息添加到配置服务器](#add-vmware-server-to-the-vault)，并从 **[启用保护](vmware-azure-tutorial.md#enable-replication)** 开始。
 
-将几个虚拟机移动到新的 vCenter:
+将少量的虚拟机移到新的 vCenter：
 
-1. [将新的 vCenter 详细信息添加到配置服务器](#add-vmware-server-to-the-vault)。
-2. 禁用要迁移的[虚拟机的复制](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)。
-3. 完成将所选虚拟机迁移到新 vCenter。
-4. 现在, 在[启用保护时, 通过选择新的 vCenter](vmware-azure-tutorial.md#enable-replication)来保护迁移的虚拟机。
+1. [将新 vCenter 的详细信息添加到配置服务器](#add-vmware-server-to-the-vault)。
+2. [禁用要迁移的虚拟机的复制](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)。
+3. 完成将所选虚拟机迁移到新 vCenter 的过程。
+4. 现在，在[启用保护时选择新的 vCenter](vmware-azure-tutorial.md#enable-replication)，以保护迁移的虚拟机。
 
 > [!TIP]
-> 如果要迁移的虚拟机的数量大于旧 vCenter 中保留的虚拟机数, 请按照此处提供的说明更新新 VCENTER 的 IP 地址。 在旧 vCenter 上保留的几个虚拟机[禁用复制](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure);[将新的 vCenter 详细信息添加到配置服务器](#add-vmware-server-to-the-vault)，并启动 **[启用保护](vmware-azure-tutorial.md#enable-replication)** 。
+> 如果所要迁移的虚拟机数量**大于**旧 vCenter 中保留的虚拟机数量，请按照此处的说明更新新 vCenter 的 IP 地址。 如果旧 vCenter 中保留了少量的虚拟机，请[禁用复制](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)；[将新 vCenter 的详细信息添加到配置服务器](#add-vmware-server-to-the-vault)，然后开始 **[启用保护](vmware-azure-tutorial.md#enable-replication)** 。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-1. 如果将受保护的虚拟机从一个 ESXi 主机移到另一个主机, 会影响复制吗？
+1. 将受保护的虚拟机从一个 ESXi 主机移到另一个主机是否会影响复制？
 
-    不可以, 这不会影响正在进行的复制。 但是, 请[确保部署具有足够权限的主目标服务器](vmware-azure-reprotect.md#deploy-a-separate-master-target-server)
+    否，这不会影响正在进行的复制。 但是，[请务必部署具有足够特权的主目标服务器](vmware-azure-reprotect.md#deploy-a-separate-master-target-server)
 
-2. 用于 vCenter 与其他 Site Recovery 组件之间的通信所使用的端口号是多少？
+2. 哪些端口号用于在 vCenter 与其他 Site Recovery 组件之间进行通信？
 
-    默认端口为443。 配置服务器将通过此端口访问 vCenter/vSphere 主机信息。 如果要更新此信息, 请单击[此处](#modify-the-vcenter-ip-address-and-port)。
+    默认端口为 443。 配置服务器将通过此端口访问 vCenter/vSphere 主机信息。 若要更新此信息，请单击[此处](#modify-the-vcenter-ip-address-and-port)。

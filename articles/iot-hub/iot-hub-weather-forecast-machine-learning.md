@@ -1,5 +1,5 @@
 ---
-title: 使用 IoT 中心的数据通过 Azure 机器学习进行天气预报 | Microsoft Docs
+title: 将 Azure 机器学习与 IoT 中心数据结合使用的天气预报
 description: 使用 Azure 机器学习基于 IoT 中心从传感器收集的温度和湿度数据来预测下雨的可能性。
 author: robinsh
 manager: philmea
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: robinsh
-ms.openlocfilehash: d7b71a6aa17e8eeae55fd6c8c6e9a5aa9e0ce524
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e7114febe85af4acaf94ef7fe64fe47988fd6321
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498892"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74079263"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>在 Azure 机器学习中使用 IoT 中心的传感器数据进行天气预报
 
@@ -39,7 +39,7 @@ ms.locfileid: "73498892"
   - 将结果保存到 Azure Blob 存储中。
 - 使用 Microsoft Azure 存储资源管理器查看天气预报。
 
-## <a name="what-you-need"></a>所需条件
+## <a name="what-you-need"></a>需要什么
 
 - 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这包括以下要求：
   - 一个有效的 Azure 订阅。
@@ -89,7 +89,7 @@ ms.locfileid: "73498892"
 
    ![在 Azure 中创建流分析作业](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
 
-1. 单击“创建”。
+1. 单击“**创建**”。
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>向流分析作业添加输入
 
@@ -105,7 +105,7 @@ ms.locfileid: "73498892"
 
    ![向 Azure 中的流分析作业添加输入](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
 
-1. 单击“创建”。
+1. 单击“**创建**”。
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>向流分析作业添加输出
 
@@ -124,7 +124,7 @@ ms.locfileid: "73498892"
 
    ![向 Azure 中的流分析作业添加输出](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
 
-1. 单击“创建”。
+1. 单击“**创建**”。
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>向流分析作业添加函数以调用你部署的 Web 服务
 
@@ -143,7 +143,7 @@ ms.locfileid: "73498892"
 
    ![向 Azure 中的流分析作业添加函数](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
-1. 单击“创建”。
+1. 单击“**创建**”。
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>配置流分析作业的查询
 
@@ -167,7 +167,7 @@ ms.locfileid: "73498892"
 
 ### <a name="run-the-stream-analytics-job"></a>运行流分析作业
 
-在流分析作业中，单击“启动” > “现在” > “启动”。 成功启动作业后，作业状态将从“已停止”更改为“正在运行”。
+在流分析作业中，单击“启动” > “现在” > “启动”。 成功启动作业以后，作业状态将从“已停止”更改为“正在运行”。
 
 ![运行流分析作业](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
 

@@ -75,6 +75,8 @@
           href: key-vault-access.md
         - name: 使用托管标识进行部署
           href: publish-managed-identity.md
+        - name: 使用通知进行部署
+          href: publish-notifications.md
     - name: 使用者
       items:
         - name: 监视托管应用程序

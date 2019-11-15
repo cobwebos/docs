@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure Site Recovery 部署配置服务器，以便进行 VMware 灾难恢复 | Microsoft Docs
+title: 在 Azure Site Recovery 中部署配置服务器
 description: 本文介绍如何通过 Azure Site Recovery 部署配置服务器，以便进行 VMware 灾难恢复
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 92b51b3955833bac6f87457a19e4d6359600a25a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: f2e9387af3c5922ec5eb0dded3d0d1d4bcee6a01
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747863"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084146"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
@@ -53,7 +53,7 @@ ms.locfileid: "73747863"
 
 ## <a name="download-the-template"></a>下载模板
 
-1. 在保管库中，转到“准备基础结构” **“源”**  > 。
+1. 在保管库中，转到“准备基础结构” **“源”。**  > 
 2. 在“准备源”中，选择“+配置服务器”。
 3. 在“添加服务器”中，检查“VMware 的配置服务器”是否已显示在“服务器类型”中。
 4. 下载配置服务器的 .OVA 模板。
@@ -104,7 +104,7 @@ ms.locfileid: "73747863"
 4. 首次登录时，会在几秒钟内启动 Azure Site Recovery 配置工具。
 5. 输入用于向 Site Recovery 注册配置服务器的名称。 然后，选择“下一步”。
 6. 该工具会检查 VM 是否能够连接到 Azure。 建立连接后，选择“登录”以登录到 Azure 订阅。</br>
-    a. 使用的凭据必须有权访问配置服务器所要注册到的保管库。</br>
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 使用的凭据必须有权访问配置服务器所要注册到的保管库。</br>
     b. 确保所选用户帐户有权在 Azure 中创建应用程序。 若要启用所需的权限，请遵循[Azure Active Directory 权限要求](#azure-active-directory-permission-requirements)一节中的指导原则。
 7. 该工具将执行一些配置任务，然后重新启动。
 8. 再次登录到计算机。 配置服务器管理向导会在几秒钟后自动启动。
@@ -123,8 +123,8 @@ ms.locfileid: "73747863"
 
     |方案   |执行的步骤  |
     |---------|---------|
-    |能否手动下载和安装 MySQL？     |  是的。 下载 MySQL 应用程序，将其放在**C:\Temp\ASRSetup**文件夹中，然后手动安装。 接受条款并选择 "**下载并安装**" 后，门户会显示 "*已安装*"。 可以继续下一步。       |
-    |可以避免联机下载 MySQL 吗？     |   是的。 将 MySQL 安装程序应用程序置于 C:\Temp\ASRSetup 文件夹中。 接受条款，选择 "**下载并安装**"，门户将使用所添加的安装程序安装应用程序。 安装完成后，请继续执行下一步。    |
+    |能否手动下载和安装 MySQL？     |  可以。 下载 MySQL 应用程序，将其放在**C:\Temp\ASRSetup**文件夹中，然后手动安装。 接受条款并选择 "**下载并安装**" 后，门户会显示 "*已安装*"。 可以继续下一步。       |
+    |可以避免联机下载 MySQL 吗？     |   可以。 将 MySQL 安装程序应用程序置于 C:\Temp\ASRSetup 文件夹中。 接受条款，选择 "**下载并安装**"，门户将使用所添加的安装程序安装应用程序。 安装完成后，请继续执行下一步。    |
     |我想通过 Azure Site Recovery 下载并安装 MySQL。    |  接受许可协议，然后选择 "**下载并安装**"。 安装完成后，请继续执行下一步。       |
 
 5. 在 "**验证设备配置**" 中，系统会先验证先决条件，然后再继续。
@@ -156,7 +156,7 @@ ms.locfileid: "73747863"
     不能。 在将保管库注册到配置服务器后，不能对其进行更改。
 * 能否使用同一配置服务器来保护物理计算机和虚拟机？
 
-    是的。 同一配置服务器可用于复制物理机和虚拟机。 但是，物理计算机只能故障回复到 VMware VM。
+    可以。 同一配置服务器可用于复制物理机和虚拟机。 但是，物理计算机只能故障回复到 VMware VM。
 * 配置服务器的用途是什么？
 
     若要了解有关配置服务器及其功能的详细信息，请参阅[VMware 到 Azure 复制体系结构](vmware-azure-architecture.md)。

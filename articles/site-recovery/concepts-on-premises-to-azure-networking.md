@@ -1,5 +1,5 @@
 ---
-title: 在从本地故障转移到 Azure 后，通过 Azure Site Recovery 连接到 Azure Vm
+title: 通过 Azure Site Recovery 连接到 Azure Vm 本地故障转移
 description: 介绍如何使用 Azure Site Recovery 从本地故障转移到 Azure 后连接到 Azure Vm
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: f535a681ac3508aafc2823bcc9b9ae7f22cc2d8e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333045"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084268"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>在从本地故障转移后连接到 Azure Vm 
 

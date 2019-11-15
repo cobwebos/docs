@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 48339addf6020a7a95e1c0b650bfcb43e1898483
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 940ac4d94bf39583fad828545a45cbb033908f15
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747498"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091657"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure 备份服务器和 DPM - 常见问题解答
 
@@ -23,7 +23,7 @@ ms.locfileid: "73747498"
 
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server"></a>是否可以使用 Azure 备份服务器为物理服务器创建裸机恢复 (BMR) 备份？
 
-是的。
+可以。
 
 ### <a name="can-i-register-the-server-to-multiple-vaults"></a>是否可以向多个保管库注册服务器？
 
@@ -35,7 +35,7 @@ ms.locfileid: "73747498"
 
 ### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>如果已经安装 Azure 备份代理来保护我的文件和文件夹，是否可以安装 System Center DPM 将本地工作负载备份到 Azure？
 
-是的。 但应首先设置 DPM，然后再安装 Azure 备份代理。  按此顺序安装组件可以确保 Azure 备份代理能够与 DPM 一起工作。 不建议也不支持在安装 DPM 之前安装代理。
+可以。 但应首先设置 DPM，然后再安装 Azure 备份代理。  按此顺序安装组件可以确保 Azure 备份代理能够与 DPM 一起工作。 不建议也不支持在安装 DPM 之前安装代理。
 
 ### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>在安装 UR7 以及最新 Azure 备份代理之后，为何无法添加外部 DPM 服务器？
 
@@ -45,7 +45,7 @@ ms.locfileid: "73747498"
 
 ### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>是否可以将 VMware vCenter 服务器备份到 Azure？
 
-是的。 可以使用 Azure 备份服务器将 VMware vCenter Server 和 ESXi 主机备份到 Azure。
+可以。 可以使用 Azure 备份服务器将 VMware vCenter Server 和 ESXi 主机备份到 Azure。
 
 - [详细了解](backup-mabs-protection-matrix.md)支持的版本。
 - [请按照下列步骤](backup-azure-backup-server-vmware.md)备份 VMware 服务器。

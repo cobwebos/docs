@@ -1,5 +1,5 @@
 ---
-title: 重置线路对等互连-ExpressRoute： Azure |Microsoft Docs
+title: Azure ExpressRoute：重置线路对等互连
 description: 如何禁用和启用 ExpressRoute 线路的对等互连。
 services: expressroute
 author: charwen
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: charwen
-ms.custom: seodec18
-ms.openlocfilehash: 2258bfbf2a1bf6a8dccf9d274e6e89e4c53a978a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2810dfc4cb41dcf11eb59ce3c87e6f7d6b2d5f65
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748227"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083501"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>重置 ExpressRoute 线路对等互连
 

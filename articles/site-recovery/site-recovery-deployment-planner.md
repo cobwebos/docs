@@ -1,5 +1,5 @@
 ---
-title: 关于用于将 VMware VM 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器 | Microsoft Docs
+title: VMware 灾难恢复 Azure Site Recovery 部署规划器
 description: 了解用于将 VMware VM 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器。
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: mayg
-ms.openlocfilehash: 4e1d27d133b2eb4e0d4d45a5de563e119513c79f
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 50a236154a0340bd49e84a8ca02f656e3cd9994a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620057"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084530"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>关于用于 VMware 到 Azure 部署的 Azure Site Recovery 部署规划器
 本文为适用于 VMware 到 Azure 生产部署的 Azure Site Recovery 部署规划器用户指南。
@@ -41,8 +41,8 @@ ms.locfileid: "68620057"
 
 **Azure 基础结构要求**
 
-* 每个 VM 的存储类型 (标准或高级存储) 要求
-* 要为复制设置的标准和高级存储帐户的总数 (包括缓存存储帐户)
+* 每个 VM 的存储类型（标准或高级存储）要求
+* 要为复制设置的标准和高级存储帐户总数（包括缓存存储帐户）
 * 基于存储指南的存储帐户命名建议
 * 针对订阅执行测试性故障转移或故障转移之前要设置的 Azure 核心数
 * 适用于每个本地 VM 的 Azure VM 建议大小
@@ -74,9 +74,9 @@ ms.locfileid: "68620057"
 ## <a name="prerequisites"></a>先决条件
 该工具的操作分两个主要阶段：分析和报告生成。 此外还有第三个选项，即仅计算吞吐量。 下表提供了可以进行分析和吞吐量测量的服务器的要求。
 
-| 服务器要求 | 描述|
+| 服务器要求 | 说明|
 |---|---|
-|分析和吞吐量测量| <ul><li>操作系统：Windows Server 2016 或 Windows Server 2012 R2<br>（理想情况下，至少符合[配置服务器的建议大小](https://aka.ms/asr-v2a-on-prem-components)）</li><li>计算机配置：8 个 vCPU、16 GB RAM、300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>可在此服务器中通过 Internet 访问 Azure</li><li>Azure 存储帐户</li><li>服务器上的管理员访问权限</li><li>至少 100 GB 的可用磁盘空间（假定有 1,000 个 VM，每个平均包含 3 个磁盘，分析时间为 30 天）</li><li>VMware vCenter 统计信息级别设置可以是 1 或更高级别</li><li>允许 vCenter 端口（默认为 443）：Site Recovery 部署规划器使用此端口连接到 vCenter 服务器/ESXi 主机</ul></ul>|
+|分析和吞吐量测量| <ul><li>操作系统：Windows Server 2016 或 Windows Server 2012 R2<br>（理想情况下，至少符合[配置服务器的建议大小](https://aka.ms/asr-v2a-on-prem-components)）</li><li>计算机配置：8 个 vCPU，16 GB RAM，300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>可在此服务器中通过 Internet 访问 Azure</li><li>Azure 存储帐户</li><li>服务器上的管理员访问权限</li><li>至少 100 GB 的可用磁盘空间（假定有 1,000 个 VM，每个平均包含 3 个磁盘，分析时间为 30 天）</li><li>VMware vCenter 统计信息级别设置可以是 1 或更高级别</li><li>允许 vCenter 端口（默认为 443）：Site Recovery 部署规划器使用此端口连接到 vCenter 服务器/ESXi 主机</ul></ul>|
 | 报告生成 | 装有 Excel 2013 或更高版本的 Windows 电脑或 Windows Server。<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>仅当你在报表生成命令中传递了 -User 选项来获取 VM 的最新 VM 配置信息时才需要 [VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)。 部署规划器连接到 vCenter 服务器。 允许 vCenter 端口（默认为 443）连接到 vCenter 服务器。</li>|
 | 用户权限 | 用于在分析期间访问 VMware vCenter 服务器/VMware vSphere ESXi 主机的用户帐户的只读权限 |
 
@@ -119,7 +119,7 @@ ms.locfileid: "68620057"
 
 
 ## <a name="version-history"></a>版本历史记录
-最新的 Site Recovery 部署规划器工具版本为2.5。
+最新的 Site Recovery 部署规划器工具版本为 2.5。
 请参阅 [Site Recovery 部署规划器版本历史记录](https://docs.microsoft.com/azure/site-recovery/site-recovery-deployment-planner-history)页，了解每个更新中增加的修补程序。
 
 ## <a name="next-steps"></a>后续步骤

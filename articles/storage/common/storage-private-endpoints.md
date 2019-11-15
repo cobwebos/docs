@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 00de95f3b3e6eddd1f45be830202ba3ec8772bfd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: fb1f8a1d1f8e1ebbaf3e0e9fe96e3c1bf0ba9ba6
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176161"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078757"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>使用 Azure 存储的专用终结点（预览）
 
@@ -22,7 +22,7 @@ ms.locfileid: "73176161"
 
 使用存储帐户的专用终结点可以：
 - 通过将存储防火墙配置为阻止存储服务的公共终结点上的所有连接来保护存储帐户。
-- 通过使你能够阻止渗透来自 VNet 的数据，从而提高了虚拟网络（VNet）的安全性。
+- 通过使你能够阻止渗透来自 VNet 的数据，提高虚拟网络（VNet）的安全性。
 - 使用[VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md)或[ExpressRoutes](../../expressroute/expressroute-locations.md)与专用对等互连连接到 VNet，从而安全地连接到存储帐户。
 
 ## <a name="conceptual-overview"></a>概念性概述
@@ -30,11 +30,11 @@ ms.locfileid: "73176161"
 
 专用终结点是[虚拟网络](../../virtual-network/virtual-networks-overview.md)（VNet）中 Azure 服务的特殊网络接口。 当你为存储帐户创建专用终结点时，它会在 VNet 和你的存储中的客户端之间提供安全连接。 专用终结点是从 VNet 的 IP 地址范围分配的 IP 地址。 专用终结点与存储服务之间的连接使用安全的专用链接。
 
-VNet 中的应用程序可以使用相同的连接字符串和要使用的授权机制，以无缝方式通过专用终结点连接到存储服务。 专用终结点可与存储帐户支持的所有协议（包括 REST 和 SMB）结合使用。
+VNet 中的应用程序可以**使用相同的连接字符串和要使用的授权机制**，以无缝方式通过专用终结点连接到存储服务。 专用终结点可与存储帐户支持的所有协议（包括 REST 和 SMB）结合使用。
 
 在 VNet 中创建存储服务的专用终结点时，会向存储帐户所有者发送同意请求。 如果请求创建专用终结点的用户也是存储帐户的所有者，则会自动批准此同意请求。
 
-存储帐户所有者可以通过[Azure 门户](https://portal.azure.com)中存储帐户的 "专用终结点" 选项卡来管理同意请求和专用终结点。
+存储帐户所有者可以通过[Azure 门户](https://portal.azure.com)中存储帐户的 "*专用终结点*" 选项卡来管理同意请求和专用终结点。
 
 > [!TIP]
 > 如果要仅通过专用终结点限制对存储帐户的访问，请将存储防火墙配置为拒绝通过公共终结点进行的所有访问。
@@ -48,7 +48,7 @@ VNet 中的应用程序可以使用相同的连接字符串和要使用的授权
 > [!TIP]
 > 为存储服务的辅助实例创建单独的专用终结点，以在 GRS 帐户中获得更好的读取性能。
 
-对于[读取访问异地冗余存储帐户](storage-redundancy-grs.md#read-access-geo-redundant-storage)的读取可用性，需要为该服务的主要实例和辅助实例使用单独的专用终结点。 无需为**故障转移**的辅助实例创建专用终结点。 故障转移后，专用终结点将自动连接到新的主实例。 git 
+对于[读取访问异地冗余存储帐户](storage-redundancy-grs.md#read-access-geo-redundant-storage)的读取可用性，需要为该服务的主要实例和辅助实例使用单独的专用终结点。 无需为**故障转移**的辅助实例创建专用终结点。 故障转移后，专用终结点将自动连接到新的主实例。
 
 #### <a name="resources"></a>资源
 
@@ -61,7 +61,7 @@ VNet 中的应用程序可以使用相同的连接字符串和要使用的授权
 
 ### <a name="dns-changes-for-private-endpoints"></a>专用终结点的 DNS 更改
 
-即使使用专用终结点，VNet 中的客户端也可以为存储帐户使用相同的连接字符串。
+即使使用专用终结点，VNet 中的客户端也应为存储帐户使用相同的连接字符串。
 
 创建专用终结点时，我们会将该存储终结点的 DNS CNAME 资源记录更新为具有前缀 "*privatelink*" 的子域中的别名。 默认情况下，我们还会创建附加到 VNet 的[专用 DNS 区域](../../dns/private-dns-overview.md)。 此专用 DNS 区域对应于前缀为 "*privatelink*" 的子域，其中包含用于专用终结点的 DNS A 资源记录。
 
@@ -69,7 +69,7 @@ VNet 中的应用程序可以使用相同的连接字符串和要使用的授权
 
 对于上面所示的示例，存储帐户 "StorageAccountA" 的 DNS 资源记录在托管专用终结点的 VNet 之外进行解析时将为：
 
-| 名称                                                  | Type  | Value                                                 |
+| 名称                                                  | 类型  | 值                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<存储服务公共终结点\>                   |
@@ -79,15 +79,18 @@ VNet 中的应用程序可以使用相同的连接字符串和要使用的授权
 
 托管专用终结点的 VNet 中的客户端解析后，StorageAccountA 的 DNS 资源记录将为：
 
-| 名称                                                  | Type  | Value                                                 |
+| 名称                                                  | 类型  | 值                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
 
-此方法可让你使用来自托管专用终结点的 VNet 中的相同连接字符串以及 VNet 外部的客户端来访问存储帐户。 可以使用存储防火墙拒绝对 VNet 之外的所有客户端的访问。
+此方法可让你使用来自托管专用终结点的 VNet 中**的相同连接字符串**以及 vnet 外部的客户端来访问存储帐户。 可以使用存储防火墙拒绝对 VNet 之外的所有客户端的访问。
+
+> [!IMPORTANT]
+> 使用相同的连接字符串通过专用终结点连接到存储帐户，否则你将使用此连接字符串。 请不要使用 "*privatelink*" 子域 URL 连接到存储帐户。
 
 > [!TIP]
-> 如果使用的是自定义或本地 DNS 服务器，则应使用存储服务的 "privatelink" 子域来配置专用终结点的 DNS 资源记录。
+> 使用自定义或本地 DNS 服务器时，应在与存储服务的 "privatelink" 子域相对应的 DNS 区域中为专用终结点配置 DNS 资源记录。
 
 建议用于存储服务的专用终结点的 DNS 区域名称为：
 
@@ -100,18 +103,18 @@ VNet 中的应用程序可以使用相同的连接字符串和要使用的授权
 | 表服务          | `privatelink.table.core.windows.net` |
 | 静态网站        | `privatelink.web.core.windows.net`   |
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 
 有关定价详细信息，请参阅 [Azure 专用链接定价](https://azure.microsoft.com/pricing/details/private-link)。
 
 ## <a name="known-issues"></a>已知问题
 
-### <a name="copy-blob-failures"></a>复制 Blob 失败
+### <a name="copy-blob-support"></a>复制 Blob 支持
 
-目前，如果源存储帐户受防火墙保护，则颁发给通过专用终结点访问的存储帐户的[复制 Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob)命令将失败。
+在预览期间，我们不支持在源存储帐户受防火墙保护时，发布到通过专用终结点访问的存储帐户的 "[复制 Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) " 命令。
 
 ### <a name="subnets-with-service-endpoints"></a>包含服务终结点的子网
-在预览期间，不能在包含服务终结点的子网中创建专用终结点。 可以为服务终结点和专用终结点在同一 VNet 中创建单独的子网。
+目前，无法在具有服务终结点的子网中创建专用终结点。 作为一种解决方法，你可以在服务终结点和专用终结点的同一 VNet 中创建单独的子网。
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>具有专用终结点的 Vnet 中客户端的存储访问约束
 

@@ -4,17 +4,17 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
-keywords: 项级恢复; 从 Azure VM 备份恢复文件; 从 Azure VM 还原文件
+keywords: 项目级恢复; 从 Azure VM 备份恢复文件; 从 Azure VM 还原文件
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 13481788bce22876fa13080d0be34db29e2a72cb
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 07ec5b76756b462e03e9349edd2daff96933588c
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961583"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091629"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -66,17 +66,13 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
     如果在访问受限的计算机上运行该脚本，请确保能够访问：
 
     - download.microsoft.com
-    - 恢复服务 URL（地区名称是指恢复服务保管库的区域）
-        - https：\//pod01-rec2.geo-name.backup.windowsazure.com （适用于 Azure 公共地域）
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn（适用于 Azure 中国世纪互联）
-        - https：\//pod01-rec2.geo-name.backup.windowsazure.us （适用于 Azure 美国政府）
-        - https：\//pod01-rec2.geo-name.backup.windowsazure.de （适用于 Azure 德国）
+    - 恢复服务 Url （域名指的是恢复服务保管库所在的区域） - <https://pod01-rec2.geo-name.backup.windowsazure.com> （适用于 azure） - <https://pod01-rec2.geo-name.backup.windowsazure.cn> （适用于 azure 中国世纪互联） - <https://pod01-rec2.geo-name.backup.windowsazure.us> - （适用于 azure 德国）<https://pod01-rec2.geo-name.backup.windowsazure.de>
     - 出站端口 3260
 
 > [!Note]
 >
-> - 下载的脚本文件名将具有要在 URL 中填充的**地理名称**。 例如：下载的脚本名称以 \'VMname\'开头 \_\'geoname\'_\'GUID\'，如 ContosoVM_wcus_12345678 ... ...。<br><br>
-> - URL 为 "https：\//pod01-rec2.wcus.backup.windowsazure.com"
+> - 下载的脚本文件名将具有要在 URL 中填充的**地理名称**。 例如：下载的脚本名称以 \'VMname\'开头 \_\'geoname\'_\'GUID\'，如 ContosoVM_wcus_12345678
+> - URL 将 <https://pod01-rec2.wcus.backup.windowsazure.com>"
 
    在 Linux 上，该脚本需要“open-iscsi”和“lshw”组件才能连接到恢复点。 如果这些组件不存在于运行脚本的计算机上，该脚本会请求权限以安装组件。 请同意安装必需组件。
 
@@ -94,7 +90,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 #### <a name="for-linux"></a>对于 Linux
 
-在 Linux 中，恢复点的卷会装载到运行脚本的文件夹。 将相应地显示附加的磁盘、卷和对应装载路径。 这些装载路径对于具有根级别访问权限的用户可见。 浏览脚本输出中涉及的卷。
+在 Linux 中，恢复点的卷将装载到运行脚本的文件夹。 将相应地显示附加的磁盘、卷和对应装载路径。 这些装载路径对于具有根级别访问权限的用户可见。 浏览脚本输出中涉及的卷。
 
   ![Linux 文件恢复菜单](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
 
@@ -141,21 +137,21 @@ Windows 存储空间是用于将存储器虚拟化的一种 Windows 技术。 �
 
 ```bash
 #!/bin/bash
-$ pvs <volume name as shown above in the script output>
+pvs <volume name as shown above in the script output>
 ```
 
 列出卷组中所有逻辑卷、名称及其路径。
 
 ```bash
 #!/bin/bash
-$ lvdisplay <volume-group-name from the pvs command’s results>
+lvdisplay <volume-group-name from the pvs command’s results>
 ```
 
 将逻辑卷装载到所选的路径。
 
 ```bash
 #!/bin/bash
-$ mount <LV path> </mountpath>
+mount <LV path> </mountpath>
 ```
 
 #### <a name="for-raid-arrays"></a>对于 RAID 阵列
@@ -164,7 +160,7 @@ $ mount <LV path> </mountpath>
 
 ```bash
 #!/bin/bash
-$ mdadm –detail –scan
+mdadm –detail –scan
 ```
 
  相关 RAID 磁盘显示为 `/dev/mdm/<RAID array name in the protected VM>`
@@ -173,7 +169,7 @@ $ mdadm –detail –scan
 
 ```bash
 #!/bin/bash
-$ mount [RAID Disk Path] [/mountpath]
+mount [RAID Disk Path] [/mountpath]
 ```
 
 如果 RAID 磁盘中配置了另一 LVM，请使用前述 LVM 分区相关过程，但使用卷名称代替 RAID 磁盘名称

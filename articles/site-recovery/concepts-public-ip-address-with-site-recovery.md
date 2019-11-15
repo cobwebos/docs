@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 进行故障转移后使用公共 IP 地址 | Microsoft Docs
+title: 在故障转移后分配公共 IP 地址并 Azure Site Recovery
 description: 介绍如何结合使用 Azure Site Recovery 和 Azure 流量管理器设置公共 IP 地址来实现灾难恢复和迁移
 services: site-recovery
 author: mayurigupta13
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 1f20818f0b899eede9fff05d71e98c8bffb94b0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1f3ffa6fc90fc0cab0217d1b71907342f2dbd0d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101928"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084251"
 ---
 # <a name="set-up-public-ip-addresses-after-failover"></a>设置故障转移后的公共 IP 地址
 
@@ -26,13 +26,13 @@ ms.locfileid: "62101928"
 * 虚拟机网络接口
 * 面向 Internet 的负载均衡器
 * VPN 网关
-* 应用程序网关数
+* 应用程序网关
 
 本文介绍如何将公共 IP 地址与 Site Recovery 配合使用。
 
 ## <a name="public-ip-address-assignment-using-recovery-plan"></a>使用恢复计划分配公共 IP 地址
 
-生产应用程序的公共 IP 地址不能在故障转移中保留  。 作为故障转移过程的一部分启动的工作负载必须向其分配在目标区域可用的 Azure 公共 IP 资源。 此步骤可手动完成或使用恢复计划自动执行。 恢复计划将计算机汇集到恢复组中。 它可以帮助定义一个系统性恢复过程。 可以通过用于故障转移到 Azure 的 Azure 自动化 runbook 或通过脚本使用恢复计划来维持秩序，自动执行每个步骤所需的操作。
+生产应用程序的公共 IP 地址不能在故障转移中保留。 作为故障转移过程的一部分启动的工作负载必须向其分配在目标区域可用的 Azure 公共 IP 资源。 此步骤可手动完成或使用恢复计划自动执行。 恢复计划将计算机汇集到恢复组中。 它可以帮助定义一个系统性恢复过程。 可以通过用于故障转移到 Azure 的 Azure 自动化 runbook 或通过脚本使用恢复计划来维持秩序，自动执行每个步骤所需的操作。
 
 设置如下：
 - 创建[恢复计划](../site-recovery/site-recovery-create-recovery-plans.md#create-a-recovery-plan)并根据需要将工作负载分组到计划中。
@@ -44,14 +44,14 @@ ms.locfileid: "62101928"
 Azure 流量管理器在终结点之间启用 DNS 级别路由，可帮助在灾难恢复方案中[降低 RTO](../site-recovery/concepts-traffic-manager-with-site-recovery.md#recovery-time-objective-rto-considerations)。 
 
 了解有关使用流量管理器的故障转移方案的详细信息：
-1. [本地到 Azure 的故障转移](../site-recovery/concepts-traffic-manager-with-site-recovery.md#on-premises-to-azure-failover)使用流量管理器 
+1. 与流量管理器进行[本地到 Azure 的故障转移](../site-recovery/concepts-traffic-manager-with-site-recovery.md#on-premises-to-azure-failover) 
 2. 使用流量管理器的 [Azure 到 Azure 故障转移](../site-recovery/concepts-traffic-manager-with-site-recovery.md#azure-to-azure-failover) 
 
 设置如下：
 - 创建[流量管理器配置文件](../traffic-manager/traffic-manager-create-profile.md)。
-- 利用“优先级”  路由方法创建两个终结点 – 针对源的“主要”  终结点，针对 Azure 的“故障转移”  终结点。 为**主要**终结点分配优先级 1，为**故障转移**终结点分配优先级 2。
-- “主要”  终结点可以是 [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) 或[外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)终结点，具体取决于源环境在 Azure 内部还是外部。
-- “故障转移”  终结点被创建为“Azure”  终结点。 使用静态公共 IP 地址  ，因为这将是灾难事件中流量管理器的面向外部的终结点。
+- 利用“优先级”路由方法创建两个终结点 – 针对源的“主要”终结点，针对 Azure 的“故障转移”终结点。 为**主要**终结点分配优先级 1，为**故障转移**终结点分配优先级 2。
+- “主要”终结点可以是 [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) 或[外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)终结点，具体取决于源环境在 Azure 内部还是外部。
+- “故障转移”终结点被创建为“Azure”终结点。 使用静态公共 IP 地址，因为这将是灾难事件中流量管理器的面向外部的终结点。
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[将流量管理器与 Azure Site Recovery 配合使用](../site-recovery/concepts-traffic-manager-with-site-recovery.md)

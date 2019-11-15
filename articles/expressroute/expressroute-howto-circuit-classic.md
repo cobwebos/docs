@@ -1,5 +1,5 @@
 ---
-title: 修改 ExpressRoute 线路：PowerShell：Azure 经典 | Microsoft Docs
+title: Azure ExpressRoute：修改线路： PowerShell：经典
 description: 本文逐步讲解检查状态以及更新或删除并预配 ExpressRoute 经典部署模型线路的步骤。
 services: expressroute
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9f1c05b85fac6dd0168d9c2b2944326800e90493
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: a2a3bdeb0ee454185c92c6e49a17bda7e4e5d5f0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643672"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083587"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>使用 PowerShell 修改 ExpressRoute 线路（经典）
 
@@ -20,7 +20,7 @@ ms.locfileid: "73643672"
 > * [Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Azure Resource Manager 模板](expressroute-howto-circuit-resource-manager-template.md)
+> * [Azure 资源管理器模板](expressroute-howto-circuit-resource-manager-template.md)
 > * [视频 - Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell（经典）](expressroute-howto-circuit-classic.md)
 >
@@ -144,7 +144,7 @@ Status                           : Enabled
 
 #### <a name="to-disable-the-premium-add-on"></a>禁用高级外接程序
 
-可以使用以下 PowerShell cmdlet 为现有线路禁用 ExpressRoute 高级版外接程序：
+可以使用以下 PowerShell cmdlet 为现有线路禁用 ExpressRoute 高级外接程序：
 
 ```powershell
 
@@ -173,7 +173,7 @@ Status                           : Enabled
 
 #### <a name="resize-a-circuit"></a>调整线路大小
 
-确定所需的大小后，即可使用以下命令调整线路的大小：
+确定所需的大小后，可以使用以下命令调整线路的大小：
 
 ```powershell
 Set-AzureDedicatedCircuitProperties -ServiceKey ********************************* -Bandwidth 1000

@@ -1,5 +1,5 @@
 ---
-title: 在 Hyper-v VM 发生灾难时运行从 Azure 到本地的故障回复 | Microsoft Docs
+title: 利用 Azure Site Recovery 故障回复 Azure 中的 Hyper-v Vm
 description: 了解在执行到 Azure 的灾难恢复期间如何使用 Azure Site Recovery 服务将 Hyper-V VM 故障回复到本地站点。
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: rajanaki
-ms.openlocfilehash: 07ecc8547ab155600bccfd1ad8f1ecbb58a18fa3
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b924c1424a309fb61f690c21e5665a70356c7a62
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931848"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084228"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>为 Hyper-V VM 运行故障回复
 
@@ -24,7 +24,7 @@ ms.locfileid: "70931848"
 - 确保你已阅读有关[不同类型的故障回复](concepts-types-of-failback.md)和相应注意事项的详细信息。
 - 确保主站点 VMM 服务器或 Hyper-V 主机服务器已连接到 Azure。
 - 应当已在虚拟机上执行了**提交**。
-- 请确保使用存储帐户进行复制，而不是托管磁盘。 不支持使用管理磁盘复制的 Hyper-v Vm 的故障回复。
+- 请确保使用存储帐户进行复制，而不是托管磁盘。 不支持使用托管磁盘故障回复复制的 Hyper-V VM。
 
 ## <a name="perform-failback"></a>执行故障回复
 从主要位置故障转移到辅助位置后，复制的虚拟机不受 Site Recovery 的保护，辅助位置现在充当活动位置。 要在恢复计划中对 VM 进行故障回复，请运行从辅助站点到主站点的计划内故障回复，如下所述。 
@@ -42,9 +42,9 @@ ms.locfileid: "70931848"
 
 4. 如果为云启用了数据加密，请在“加密密钥”中选择你在 VMM 服务器上安装提供者期间启用数据加密时颁发的证书。
 5. 启动故障转移。 可以在“**作业**”选项卡上跟踪故障转移进度。
-6. 如果选择了在故障转移之前同步数据的选项，请在完成初始数据同步并且已准备好在 Azure 中关闭虚拟机后，单击“作业”> 作业名称 >“完成故障转移”。 这会关闭 Azure 计算机，将最新更改传输到本地虚拟机，然后启动本地虚拟机。
+6. 如果选择了在故障转移之前同步数据的选项，请在完成初始数据同步并且已准备好在 Azure 中关闭虚拟机后，单击“作业”> 作业名称 >“完成故障转移”。 这将关闭 Azure 计算机，将最新更改传输到本地虚拟机，并启动本地虚拟机。
 7. 现在，可以登录到虚拟机，以验证是否可以按预期使用它。
-8. 虚拟机处于待提交状态。 单击“提交”提交故障转移。
+8. 虚拟机处于待提交状态。 单击“**提交**”以提交故障转移。
 9. 若要完成故障回复，请单击“反向复制”以开始保护主站点中的虚拟机。
 
 
@@ -56,7 +56,7 @@ ms.locfileid: "70931848"
 
 1. 如果需要设置新的硬件，请在服务器上安装 Windows Server 2012 R2 和 Hyper-V 角色。
 2. 创建与原始服务器上的名称相同的虚拟网络交换机。
-3. 选择 "**受保护的项** -> "**保护组** -> \<ProtectionGroupName >-> \<VirtualMachineName > 要进行故障回复，然后选择 "计划的**故障转移**"。
+3. 选择“受保护的项” -> “保护组” -> \<ProtectionGroupName> -> 要故障回复的 \<VirtualMachineName>，然后选择“计划内故障转移”。
 4. 在“**确认计划的故障转移**”中，选择“**如果本地虚拟机不存在，则创建它**”。
 5. 在“主机名”中，选择要在其上放置虚拟机的新 Hyper-V 主机服务器。
 6. 在“数据同步”中，建议选择“在故障转移之前同步数据”这一选项。 此选项可以最大程度地减少虚拟机的停机时间，因为它可以在不关闭虚拟机的情况下执行同步。 此选项将执行以下操作：
@@ -65,7 +65,7 @@ ms.locfileid: "70931848"
     - 阶段 2：在 Azure 中关闭虚拟机，使其中不会发生任何新的更改。 最终的更改集将传输到本地服务器，本地虚拟机会启动。
     
 7. 单击复选标记开始故障转移（故障回复）。
-8. 初始同步完成并且已准备好在 Azure 中关闭虚拟机后，请单击 "**作业** > \<计划的故障转移作业 > >"**完成故障转移**"。 这会关闭 Azure 计算机，将最新更改传输到本地虚拟机，然后启动虚拟机。
+8. 完成初始同步并准备好在 Azure 中关闭虚拟机后，请单击“作业” > \<计划内故障转移作业> >“完成故障转移”。 这将关闭 Azure 计算机，将最新更改传输到本地虚拟机，并启动虚拟机。
 9. 可以登录到本地虚拟机，以验证一切是否如你所愿。 然后单击“提交”完成故障转移。 提交会删除 Azure 虚拟机及其磁盘，并准备要再次保护的 VM。
 10. 单击“**反向复制**”开始保护本地虚拟机。
 

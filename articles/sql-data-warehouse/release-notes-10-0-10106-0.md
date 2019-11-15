@@ -5,18 +5,18 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 09/18/2019
+ms.date: 11/12/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 967263bde459739482100524e5f85bed96cee6f9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 468a61c83948033905b3727add528520611b8bd4
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824284"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092239"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL 数据仓库发行说明
 
@@ -28,9 +28,23 @@ ms.locfileid: "73824284"
 
 示例输出：
 
-![SQL 数据仓库版本](./media/release-notes/sql_data_warehouse_version.png)
+![SQL 数据仓库版本](./media/release-notes/t47-1-version.png)
 
-使用标识的日期确认已将哪个版本应用到 Azure SQL 数据仓库。
+使用标识的版本来确认哪些版本已应用到 Azure SQL DW。
+
+## <a name="october-2019"></a>2019 年 10 月
+
+| 服务改进 | 详细信息 |
+| --- | --- |
+|**复制（预览版）**|我们非常高兴地宣布使用简单灵活的 COPY 语句来实现数据引入的公共预览版。 只有一条语句，你现在可以无缝引入具有更多灵活性的数据，无需高权限用户。 有关详细信息，请参阅[复制命令文档](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)。|
+|**工作负荷隔离（预览）**|为了在客户变得大众化其数据仓库时为其提供支持，我们宣布推出新的智能工作负荷管理功能。 利用新的[工作负荷隔离](/azure/sql-data-warehouse/sql-data-warehouse-workload-isolation)功能，你可以管理异类工作负荷的执行，同时提供对数据仓库资源的灵活性和控制。 这会提高执行可预测性，并增强满足预定义 Sla 的能力。 </br>除了工作负荷隔离外，现在还可对[工作负荷分类](/azure/sql-data-warehouse/sql-data-warehouse-workload-classification)使用其他选项。  除了登录分类以外， [Create 工作负荷分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest)语法还提供根据查询标签、会话上下文和当天的时间对请求进行分类的功能。|
+|**预测（预览）**|你现在可以对数据仓库中的机器学习模型进行评分，以避免对大型和复杂的数据移动产生需求。 T-sql PREDICT 函数依赖开放式模型框架，并使用数据和机器学习模型作为输入来生成预测。
+|**SSDT CI/CD （GA）**|今天，我们很高兴地宣布 SQL 数据仓库的[最高请求功能](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247--in-preview-database-project-from-visual-studio-t)（SQL SERVER DATA TOOLS （SSDT）数据库项目的公开上市。 此版本包括对 SSDT 与 Visual Studio 2019 的支持，以及与 Azure DevOps 的本机平台集成，为企业级部署提供内置持续集成和部署（CI/CD）功能。 |
+|**具体化视图（GA）**|具体化视图会保留从视图定义查询返回的数据，并在基础表中的数据更改时自动更新。 它提高了复杂查询（通常是使用联接和聚合的查询）的性能，同时提供了简单的维护操作。 有关详细信息，请参阅[对具体化视图进行性能优化](/azure/sql-data-warehouse/performance-tuning-materialized-views)。  安装[SQL Server Management Studio 18.4 或更高版本](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)，用于编写具体化视图的脚本。|
+|**动态数据掩码（GA）**|动态数据掩码 (DDM) 根据你定义的掩码规则即时掩盖查询结果中敏感数据，以阻止对数据仓库中的敏感数据的非授权访问。 有关详细信息，请参阅[SQL 数据库动态数据屏蔽](/azure/sql-database/sql-database-dynamic-data-masking-get-started)。|
+|**已提交读快照隔离（GA）**|您可以使用 ALTER database 来启用或禁用用户数据库的快照隔离。 若要避免对当前工作负荷产生影响，可能需要在数据库维护时段设置此选项，或等待，直到没有其他活动连接到数据库。 有关详细信息，请参阅[Alter database set 选项](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)。|
+|**有序聚集列存储索引（GA）**|若要存储和有效查询大量数据，列存储至关重要。 排序聚集列存储索引支持有效的段消除，从而进一步优化了查询执行。   有关详细信息，请参阅[具有顺序聚集列存储索引的性能优化](/azure/sql-data-warehouse/performance-tuning-ordered-cci)。|
+|**结果集缓存（GA）**|启用结果集缓存后，Azure SQL 数据仓库会自动缓存用户数据库中的查询结果以供重复使用。 这允许后续查询执行直接从持久缓存中获取结果，因此不需要重新计算。 结果集缓存提高了查询性能，并减少了计算资源的使用。 此外，使用缓存的结果集的查询不使用任何并发槽，因此不会对现有并发限制进行计数。 为安全，如果用户具有与创建缓存结果相同的数据访问权限，则用户只能访问缓存的结果。 有关详细信息，请参阅[性能优化和结果集缓存](/azure/sql-data-warehouse/performance-tuning-result-set-caching)。 适用于版本10.0.10783.0 或更高版本。|
 
 ## <a name="september-2019"></a>2019 年 9 月
 
@@ -137,7 +151,7 @@ ms.locfileid: "73824284"
 - [博客 - Azure SQL 数据仓库](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - [客户顾问团队博客](https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/)
 - [客户成功案例](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
-- [Stackoverflow 论坛](https://stackoverflow.com/questions/tagged/azure-sqldw)
+- [堆栈溢出论坛](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)
 - [视频](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [Azure 词汇表](../azure-glossary-cloud-terminology.md)

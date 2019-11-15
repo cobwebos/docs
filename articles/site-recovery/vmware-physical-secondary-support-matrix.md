@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure Site Recovery 将 VMware VM 或物理服务器灾难恢复到辅助 VMware 站点时的支持矩阵 | Microsoft Docs
+title: 支持使用 Azure Site Recovery 的 VMware/物理灾难恢复到辅助站点
 description: 总结了对使用 Azure Site Recovery 将 VMware VM 或物理服务器灾难恢复到辅助站点的支持。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 908d681b271aa8acdb0898676c33d396461d8f9a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255203"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082191"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>将 VMware VM 和物理服务器灾难恢复到辅助站点时的支持矩阵
 
@@ -83,10 +83,10 @@ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6
 
 ### <a name="host-storage"></a>主机存储
 
-**存储（主机）** | **支持** 
+存储（主机） | **支持** 
 --- | --- 
 NFS | 是 
-SMB 3.0 | 不可用 
+SMB 3.0 | 不适用 
 SAN (ISCSI) | 是 
 多路径 (MPIO) | 是 
 
@@ -95,8 +95,8 @@ SAN (ISCSI) | 是
 **配置** | **支持** 
 --- | --- 
 VMDK | 是 
-VHD/VHDX | 不可用 
-第 2 代 VM | 不可用 
+VHD/VHDX | 不适用 
+第 2 代 VM | 不适用 
 共享群集磁盘 | 是 
 加密磁盘 | 否 
 UEFI| 是 
@@ -108,11 +108,11 @@ RDM | 是
 存储空间 | 否 
 热添加/移除磁盘 | 是 
 排除磁盘 | 是 
-多路径 (MPIO) | 不可用 
+多路径 (MPIO) | 不适用 
 
 ## <a name="vaults"></a>保管库
 
-**Action** | **支持** 
+**操作** | **支持** 
 --- | --- 
 跨资源组移动保管库（订阅内或跨订阅移动） | 否 
 跨资源组移动存储、网络和 Azure VM（订阅内或跨订阅移动） | 否 

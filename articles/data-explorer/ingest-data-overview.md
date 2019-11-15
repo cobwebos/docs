@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 35d3451327a0ce7bcaf567f93c48d532842b4f25
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 90387a033a43c627be4ce69a93ee37c5b959732d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285910"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091785"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure 数据资源管理器数据引入
 
@@ -22,13 +22,13 @@ ms.locfileid: "72285910"
 
 Azure 数据资源管理器数据管理服务负责数据引入的，该服务提供以下功能：
 
-1. **数据提取**：从外部源（事件中心）拉取数据或从 Azure 队列中读取引入请求。
+1. **拉取数据**：从外部源（事件中心）拉取数据或从 Azure 队列中读取引入请求。
 
-1. **批处理**：批数据流入相同的数据库和表中，以优化引入吞吐量。
+1. **批处理**：批量数据流入相同的数据库和表中，以优化引入吞吐量。
 
-1. **验证**：初步验证和格式转换（若需要）。
+1. **验证**：初步验证和格式转换（如有必要）。
 
-1. **数据处理**：匹配架构、组织、编制索引、编码和压缩数据。
+1. **数据操作**：匹配架构、组织、编制索引、编码和压缩数据。
 
 1. **引入流中的持久性点**：在暂时性故障时管理引擎上的引入负载并处理重试。
 
@@ -88,7 +88,7 @@ Kusto 提供可与以下项一起用于引入和查询数据的客户端 SDK：
 
 **不同方法的延迟情况**：
 
-| 方法 | 延迟 |
+| 方法 | Latency |
 | --- | --- |
 | **内联引入** | 即时 |
 | **从查询引入** | 查询时间 + 处理时间 |
@@ -117,11 +117,9 @@ Kusto 提供可与以下项一起用于引入和查询数据的客户端 SDK：
 
 ## <a name="supported-data-formats"></a>受支持的数据格式
 
-对于“从查询引入”以外的所有引入方法，请设置适当的数据格式，使 Azure 数据资源管理器能够对其进行分析。 支持的数据格式包括：
-
-* TXT、CSV、TSV、TSVE、PSV、SCSV、SOH
-* JSON（行分隔，多行）、Avro
-* ZIP 和 GZIP 
+对于“从查询引入”以外的所有引入方法，请设置适当的数据格式，使 Azure 数据资源管理器能够对其进行分析。 
+* 支持的数据格式包括： TXT、CSV、TSV、TSVE、PSV、SCSV、SOH、JSON （行分隔、多行）、Avro 和 Parquet。 
+* 支持 ZIP 和 GZIP 压缩。
 
 > [!NOTE]
 > 正在引入数据时，根据目标表列推断数据类型。 如果记录不完整或者无法将字段解析为所需的数据类型，则将使用 NULL 值填充相应的表列。
@@ -136,7 +134,7 @@ Kusto 提供可与以下项一起用于引入和查询数据的客户端 SDK：
 架构映射有助于将源数据字段绑定到目标表列。
 
 * [CSV 映射](/azure/kusto/management/mappings?branch=master#csv-mapping)（可选）适用于所有基于序号的格式。 可以使用引入命令参数执行该功能，或者[在表中预创建](/azure/kusto/management/tables?branch=master#create-ingestion-mapping)并从引入命令参数进行引用。
-* 可以使用引入命令参数执行 [JSON 映射](/azure/kusto/management/mappings?branch=master#json-mapping)（强制）和 [Avro 映射](/azure/kusto/management/mappings?branch=master#avro-mapping)（强制）。 可以在表上预先创建[它们并从](/azure/kusto/management/tables#create-ingestion-mapping)引入命令参数引用。
+* 可以使用引入命令参数执行 [JSON 映射](/azure/kusto/management/mappings?branch=master#json-mapping)（强制）和 [Avro 映射](/azure/kusto/management/mappings?branch=master#avro-mapping)（强制）。 可以[在表上预先创建](/azure/kusto/management/tables#create-ingestion-mapping)它们并从引入命令参数引用。
 
 ## <a name="next-steps"></a>后续步骤
 

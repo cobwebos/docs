@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: e0490913029efc17d12139378369646c286a276c
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: e5988bf1955502d89cc31bcc30672de983a399ec
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145706"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083346"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>使用 Caffe on Azure HDInsight Spark 进行分布式深度学习
 
@@ -21,7 +21,7 @@ ms.locfileid: "71145706"
 
 深度学习正在影响我们生活中的方方面面，从医疗保健到交通运输到生产制造，不一而足。 很多公司都在致力于通过深度学习来解决各种棘手的问题，例如[图像分类](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/)、[语音识别](https://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)、物体识别和机器翻译。
 
-有[许多常用框架](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)，其中包括 [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/)、[Tensorflow](https://www.tensorflow.org/)、[Apache MXNet](https://mxnet.apache.org/)、Theano 等。[Caffe](https://caffe.berkeleyvision.org/) 是最著名的非符号（命令式）神经网络框架之一，广泛用于包括计算机视觉在内的许多领域。 此外，[CaffeOnSpark](https://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) 将 Caffe 与 Apache Spark 相结合，因此，可在现有 Hadoop 集群上轻松使用深度学习。 可将深度学习与 Spark ETL 管道搭配使用，降低系统复杂性和完整解决方案学习中的延迟。
+有[许多常用框架](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)，其中包括[Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/)、 [Tensorflow](https://www.tensorflow.org/)、 [Apache MXNet](https://mxnet.apache.org/)、Theano 等， [Caffe](https://caffe.berkeleyvision.org/)是最著名的非符号（命令式）神经网络框架之一，广泛用于包括计算机视觉在内的许多领域。 此外，[CaffeOnSpark](https://github.com/yahoo/CaffeOnSpark) 将 Caffe 与 Apache Spark 相结合，因此，可在现有 Hadoop 集群上轻松使用深度学习。 可将深度学习与 Spark ETL 管道搭配使用，降低系统复杂性和完整解决方案学习中的延迟。
 
 [HDInsight](https://azure.microsoft.com/services/hdinsight/) 是云 Apache Hadoop 产品/服务，为 Apache Spark、Apache Hive、Apache Hadoop、Apache HBase、Apache Storm、Apache Kafka 和 ML Services 提供优化的开源分析群集。 HDInsight 提供 99.9% SLA 支持。 这些大数据技术和 ISV 应用程序均可轻松部署为受企业保护和监视的托管群集。
 
@@ -68,7 +68,7 @@ HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，�
 
 ## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>步骤 2：在头节点上生成 Caffe on Apache Spark for HDInsight
 
-第二步是在头节点上生成 Caffe，然后将编译的库分发到所有工作节点。 在此步骤中，必须[使用 SSH 连接到头节点](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)。 之后，必须执行 [CaffeOnSpark 生成步骤](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)。 下面是使用其他步骤生成 CaffeOnSpark 的脚本。
+第二步是在头节点上生成 Caffe，并将编译的库分发到所有工作节点。 在此步骤中，必须[使用 SSH 连接到头节点](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)。 之后，必须执行 [CaffeOnSpark 生成步骤](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)。 下面是使用其他步骤生成 CaffeOnSpark 的脚本。
 
     #!/bin/bash
     git clone https://github.com/yahoo/CaffeOnSpark.git --recursive
@@ -112,7 +112,7 @@ HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，�
 - 将数据集置于 BLOB 存储，这是一个共享位置，可供所有工作节点在以后使用时访问。
 - 将编译的 Caffe 库置于 BLOB 存储，以便将来使用脚本操作将这些库复制到所有节点，不再需要编译。
 
-### <a name="troubleshooting-an-ant-buildexception-has-occurred-exec-returned-2"></a>故障排除：出现 Ant BuildException: exec 返回:2
+### <a name="troubleshooting-an-ant-buildexception-has-occurred-exec-returned-2"></a>故障排除：出现 Ant BuildException: exec 返回: 2
 
 首次尝试生成 CaffeOnSpark 时，有时会出现以下错误消息：
 
@@ -164,7 +164,7 @@ Caffe 使用的是“富有表现力的体系结构”，因此若要编写模�
 
 CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具有良好的设计，将网络体系结构（网络拓扑）和优化进行了拆分。 在本示例中，需要两个文件：
 
-“解算器”文件 (${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) 用于监控优化情况和生成参数更新。 例如，它可以定义是使用 CPU 还是 GPU，以及具体的动量和迭代次数等。它还定义程序应使用哪个神经元网络拓扑（即你需要的第二个文件）。 有关解算器的详细信息，请参阅 [Caffe 文档](https://caffe.berkeleyvision.org/tutorial/solver.html)。
+“解算器”文件 (${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) 用于监控优化情况和生成参数更新。 例如，它可以定义是使用 CPU 还是 GPU、动量、迭代次数等。它还定义程序应使用哪个神经元网络拓扑（这是你需要的第二个文件）。 有关解算器的详细信息，请参阅 [Caffe 文档](https://caffe.berkeleyvision.org/tutorial/solver.html)。
 
 就此示例来说，你使用的是 CPU 而不是 GPU，因此应将最后一行更改为：
 
@@ -289,8 +289,8 @@ SampleID 表示 MNIST 数据集中的 ID，标签是模型的标识数字。
 
 ### <a name="scenarios"></a>方案
 
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 来通过 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="manage-resources"></a>管理资源
 

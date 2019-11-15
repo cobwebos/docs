@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
-ms.date: 01/25/2019
-ms.openlocfilehash: 5773ea37585bb5c63736aaa4432243dc1d41f7bc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: e45baba74d7bf752718e5e36a148a91987cd3ffb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811180"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082428"
 ---
 # <a name="how-to-use-azure-sql-database"></a>如何使用 Azure SQL 数据库
 
@@ -72,7 +72,6 @@ ms.locfileid: "73811180"
 - [连接](sql-database-libraries.md)
 - [使用 Spark 连接器](sql-database-spark-connector.md)
 - [对应用进行身份验证](sql-database-client-id-keys.md)
-- [错误消息](sql-database-develop-error-messages.md)
 - [使用批处理提高性能](sql-database-use-batching-to-improve-performance.md)
 - [连接指南](sql-database-connectivity-issues.md)
 - [DNS 别名](dns-alias-overview.md)

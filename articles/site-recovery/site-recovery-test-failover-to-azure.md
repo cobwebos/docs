@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure Site Recovery 运行灾难恢复演练到 Azure
-description: 了解如何使用 Azure Site Recovery 服务运行从本地到 Azure 的灾难恢复演练。
+title: 在 Azure Site Recovery 中运行到 Azure 的测试故障转移（灾难恢复演练）
+description: 了解使用 Azure Site Recovery 服务运行从本地到 Azure 的测试故障转移。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 8342f60d8a0f91cc4807d25307510c1cbe7ee5c8
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 26c734b7a2e9f5592ee6d51dfee4650a3998ab1a
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814372"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091745"
 ---
-# <a name="run-a-disaster-recovery-drill-to-azure"></a>运行 Azure 灾难恢复演练 
+# <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>运行测试故障转移（灾难恢复演练）到 Azure 
 
 
 本文介绍如何使用 Site Recovery 测试故障转移运行到 Azure 的灾难恢复演练。  
@@ -25,16 +25,16 @@ ms.locfileid: "70814372"
 ## <a name="run-a-test-failover"></a>运行测试故障转移
 本过程描述如何对恢复计划运行测试故障转移。 如果要为单个 VM 运行测试故障转移，请按照[此处](tutorial-dr-drill-azure.md#run-a-test-failover-for-a-single-vm)所述的步骤进行操作
 
-![测试故障切换](./media/site-recovery-test-failover-to-azure/TestFailover.png)
+![测试故障转移](./media/site-recovery-test-failover-to-azure/TestFailover.png)
 
 
-1. 在 Azure 门户上的“Site Recovery”中，单击“恢复计划” > “*recoveryplan_name*” > “测试故障转移”。
+1. 在 Azure 门户上的“Site Recovery”中，单击“恢复计划” **“** recoveryplan_name > ” *“测试故障转移”。*  > 
 2. 选择要故障转移到的“恢复点”。 可以使用以下选项之一：
     - **最新处理**：此选项将计划中的所有 VM 故障转移到由 Site Recovery 处理的最新恢复点。 若要查看特定 VM 的最新恢复点，请检查 VM 设置中的“最新恢复点”。 此选项提供低 RTO（恢复时间目标），因为无需费时处理未经处理的数据。
     - **最新的应用一致**：此选项将计划中的所有 VM 故障转移到由 Site Recovery 处理的最新应用程序一致恢复点。 若要查看特定 VM 的最新恢复点，请检查 VM 设置中的“最新恢复点”。
-    - **最新**：此选项首先处理已发送到 Site Recovery 服务的所有数据，为每台 VM 创建恢复点，然后将 VM 故障转移到该恢复点。 此选项提供最低的 RPO（恢复点目标），因为故障转移后创建的 VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
-    - **最新处理的多 VM**：此选项适用于包含一台或多台已启用多 VM 一致性的 VM 的恢复计划。 已启用该设置的 VM 会故障转移到最新的常用多 VM 一致恢复点。 其他 VM 故障转移到最新的已处理恢复点。  
-    - **最新的多 VM 应用一致**：此选项适用于包含一台或多台已启用多 VM 一致性的 VM 的恢复计划。 属于复制组的 VM 会故障转移到最新的常用多 VM 应用程序一致恢复点。 其他 VM 故障转移到其最新的应用程序一致恢复点。
+    - **最新**：此选项首先处理已发送到 Site Recovery 服务的所有数据，为每个 VM 创建恢复点，然后将其故障转移到该恢复点。 此选项提供最低的 RPO（恢复点目标），因为故障转移后创建的 VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
+    - **最新多 VM 已处理**：此选项适用于包含一个或多个已启用多 VM 一致性的 VM 的恢复计划。 已启用该设置的 VM 会故障转移到最新的常用多 VM 一致恢复点。 其他 VM 故障转移到最新的已处理恢复点。  
+    - **最新多 VM 应用一致性**：此选项适用于包含一个或多个已启用多 VM 一致性的 VM 的恢复计划。 属于复制组的 VM 会故障转移到最新的常用多 VM 应用程序一致恢复点。 其他 VM 故障转移到其最新的应用程序一致恢复点。
     - **自定义**：使用此选项可将特定的 VM 故障转移到特定的恢复点。
 3. 选择要在其中创建测试 VM 的 Azure 虚拟网络。
 
@@ -42,20 +42,20 @@ ms.locfileid: "70814372"
     - 如果用于测试故障转移的 Azure 虚拟网络中没有同名的子网，则会按字母顺序在第一个子网中创建测试 VM。
     - 如果该子网中没有相同的 IP 地址，则 VM 会接收该子网中的另一个可用 IP 地址。 [了解详细信息](#create-a-network-for-test-failover)。
 4. 如果要故障转移到 Azure 并且启用了数据加密，请在“加密密钥”中，选择在安装提供程序期间启用加密时颁发的证书。 如果未启用加密，则可以忽略此步骤。
-5. 在“**作业**”选项卡上跟踪故障转移进度。在 Azure 门户中，应当能够看到测试副本计算机。
+5. 在 "**作业**" 选项卡上跟踪故障转移进度。你应该能够在 Azure 门户中看到测试副本计算机。
 6. 若要通过 RDP 与 Azure VM 发起连接，需在故障转移的 VM 的网络接口上[添加公共 IP 地址](https://aka.ms/addpublicip)。
 7. 如果一切符合预期，请单击“清理测试故障转移”。 这会删除在执行测试故障转移期间创建的 VM。
 8. 在“说明”中，记录并保存与测试性故障转移相关联的任何观测结果。
 
 
-![测试故障切换](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
+![测试故障转移](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
 
 触发测试故障转移时，会发生以下情况：
 
 1. **先决条件**：运行先决条件检查，确保符合故障转移所需的所有条件。
 2. **故障转移**：故障转移会处理并准备好数据，以便能够基于这些数据创建 Azure VM。
 3. **最新**：如果选择了最新的恢复点，则会基于发送到服务的数据创建恢复点。
-4. **启动**：此步骤使用上一步骤中处理的数据创建 Azure 虚拟机。
+4. **开始**：此步骤使用上一步骤中处理的数据创建 Azure 虚拟机。
 
 ### <a name="failover-timing"></a>故障转移时间
 
@@ -103,7 +103,7 @@ ms.locfileid: "70814372"
 
 如果想要在故障转移后使用 RDP/SSH 连接到 Azure VM，请遵照表格中汇总的要求。
 
-**故障转移** | **Location** | **操作**
+**故障转移** | **位置** | **操作**
 --- | --- | ---
 **运行 Windows 的 Azure VM** | 故障转移之前的本地计算机 | 若要通过 Internet 访问 Azure VM，请启用 RDP，并确保已针对“公共”添加 TCP 和 UDP 规则，并在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP。<br/><br/> 若要通过站点到站点连接访问 Azure VM，请在计算机上启用 RDP，并确保在“Windows 防火墙” -> “允许的应用和功能”中针对“域和专用”网络允许 RDP。<br/><br/>  确保操作系统 SAN 策略已设置为 **OnlineAll**。 [了解详细信息](https://support.microsoft.com/kb/3031135)。<br/><br/> 在触发故障转移时，请确保 VM 上没有处于挂起状态的 Windows 更新。 Windows 更新可能会在故障转移时启动，在更新完成之前，无法登录到 VM。
 **运行 Windows 的 Azure VM** | 故障转移后的 Azure VM |  为 VM [添加公共 IP 地址](https://aka.ms/addpublicip)。<br/><br/> 已故障转移的 VM（及其连接到的 Azure 子网）上的网络安全组规则需要允许与 RDP 端口建立传入连接。<br/><br/> 选中“启动诊断”可查看 VM 的屏幕截图。<br/><br/> 如果无法连接，请检查 VM 是否正在运行，并查看这些[故障排除提示](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。

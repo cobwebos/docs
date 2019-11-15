@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 7cfe0cf291e8c39a4600234632090c39ab5cd78e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fa6a2fd853673493c93dbe65f889468c8e0c8617
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519320"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082933"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>数据流的接收器转换
 
@@ -28,7 +28,7 @@ ms.locfileid: "73519320"
 ## <a name="output"></a>输出 
 对于 Azure Blob 存储或 Data Lake Storage 接收器类型，将转换后的数据输出到文件夹中。 Spark 根据接收器转换使用的分区方案生成已分区的输出数据文件。 
 
-可以从 "**优化**" 选项卡设置分区方案。如果希望数据工厂将输出合并到单个文件中，请选择 "**单一分区**"。
+可以从 "**优化**" 选项卡设置分区方案。如果希望数据工厂将输出合并到单个文件中，请选择 "**单一分区**"。 如果要维护或创建分区文件夹，请使用**键分区**，并设置要用于分区文件夹结构的键。
 
 !["优化" 选项卡上的选项](media/data-flow/opt001.png "接收器选项")
 
@@ -110,7 +110,7 @@ ms.locfileid: "73519320"
 
 当 CosmosDB 中的登陆数据时，需要考虑以下附加选项：
 
-* 分区键：这是必填字段。 输入一个字符串，该字符串表示集合的分区键。 示例： ```/movies/title```
+* 分区键：这是必填字段。 输入一个字符串，该字符串表示集合的分区键。 示例：```/movies/title```
 * 吞吐量：为此数据流的每次执行，设置要应用于 CosmosDB 集合的 ru 数的可选值。 最小值为400。
 
 ## <a name="next-steps"></a>后续步骤

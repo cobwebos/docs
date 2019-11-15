@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 70673dc7d42a0c7d9b60f3c3f877c1985dac3c98
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 238afdf9e50eaccba51d996ce6e9cfd06ea36899
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73097798"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091999"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以使用 [SMB 内核客户端](https://wiki.samba.org/index.php/LinuxCIFS)在 Linux 分发版中装载 Azure 文件共享。 本文介绍装载 Azure 文件共享的两种方法：使用 `mount` 命令按需装载，以及通过在 `/etc/fstab` 中创建一个条目在启动时装载。
@@ -24,7 +24,7 @@ ms.locfileid: "73097798"
 | Ubuntu | 14.04+ | 16.04+ |
 | Red Hat Enterprise Linux (RHEL) | 7+ | 7.5+ |
 | CentOS | 7+ |  7.5+ |
-| Debian | 8+ | 10 + |
+| Debian | 8+ | 10+ |
 | openSUSE | 13.2+ | 42.3+ |
 | SUSE Linux Enterprise Server | 12+ | 12 SP3+ |
 
@@ -34,7 +34,7 @@ ms.locfileid: "73097798"
 uname -r
 ```
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 <a id="smb-client-reqs"></a>
 
 * <a id="install-cifs-utils"></a>**确保安装了 utils 包。**  
@@ -53,7 +53,7 @@ uname -r
     sudo dnf install cifs-utils
     ```
 
-    在较旧版本的**Red Hat Enterprise Linux**和**CentOS**上，使用 `dnf` 程序包管理器：
+    在较旧版本的**Red Hat Enterprise Linux**和**CentOS**上，使用 `yum` 程序包管理器：
 
     ```bash
     sudo yum install cifs-utils 
@@ -173,7 +173,7 @@ uname -r
     sudo chmod 600 $smbCredentialFile
     ```
 
-1. **使用以下命令将以下行追加到 `/etc/fstab`** ：在下面的示例中，本地 Linux 文件和文件夹权限默认为0755，这意味着所有者的读取、写入和执行（基于文件/目录 Linux 所有者）、读取和对所有者组中的用户执行，并读取和执行系统中的其他用户。 你可以使用 "`uid`" 和 "`gid` 装载选项" 来设置装载的用户 ID 和组 ID。 还可以根据需要使用 `dir_mode` 和 `file_mode` 设置自定义权限。 有关如何设置权限的详细信息，请参阅维基百科上的[UNIX 数值表示法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)。
+1. **使用以下命令将以下行追加到 `/etc/fstab`** ：在下面的示例中，本地 Linux 文件和文件夹权限默认为0755，这意味着所有者的读取、写入和执行（基于文件/目录的 Linux 所有者），对所有者组中的用户进行读取和执行，并读取和执行系统中的其他用户。 你可以使用 "`uid`" 和 "`gid` 装载选项" 来设置装载的用户 ID 和组 ID。 还可以根据需要使用 `dir_mode` 和 `file_mode` 设置自定义权限。 有关如何设置权限的详细信息，请参阅维基百科上的[UNIX 数值表示法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)。
 
     ```bash
     httpEndpoint=$(az storage account show \
@@ -199,24 +199,24 @@ uname -r
 
 从 Linux 内核4.18 开始，作为旧原因被称为 `cifs` 的 SMB 内核模块公开了新的模块参数（通常称为*parm* ），称为 `disable_legacy_dialects`。 尽管在 Linux 内核4.18 中引入，但某些供应商已将此更改向后移植到它们支持的旧内核。 为方便起见，下表详细介绍了常见 Linux 发行版上此模块参数的可用性。
 
-| 分配 | 可以禁用 SMB 1 |
+| 分发 | 可以禁用 SMB 1 |
 |--------------|-------------------|
-| Ubuntu 14.04-16.04 | No |
+| Ubuntu 14.04-16.04 | 否 |
 | Ubuntu 18.04 | 是 |
 | Ubuntu 19.04 + | 是 |
-| Debian 8-9 | No |
+| Debian 8-9 | 否 |
 | Debian 10 + | 是 |
 | Fedora 29 + | 是 |
-| CentOS 7 | No | 
+| CentOS 7 | 否 | 
 | CentOS 8 + | 是 |
-| Red Hat Enterprise Linux 1.x-7. x | No |
+| Red Hat Enterprise Linux 1.x-7. x | 否 |
 | Red Hat Enterprise Linux 8 + | 是 |
-| openSUSE Leap 15。0 | No |
+| openSUSE Leap 15。0 | 否 |
 | openSUSE Leap 15.1 + | 是 |
 | openSUSE Tumbleweed | 是 |
-| SUSE Linux Enterprise 11. x-12. x | No |
-| SUSE Linux Enterprise 15 | No |
-| SUSE Linux Enterprise 15。1 | No |
+| SUSE Linux Enterprise 11. x-12. x | 否 |
+| SUSE Linux Enterprise 15 | 否 |
+| SUSE Linux Enterprise 15。1 | 否 |
 
 可以通过以下命令查看 Linux 发行版是否支持 `disable_legacy_dialects` module 参数。
 

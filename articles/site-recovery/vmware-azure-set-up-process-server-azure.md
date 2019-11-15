@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中设置进程服务器，以便使用 Azure Site Recovery 进行 VMware VM 和物理服务器故障回复 | Microsoft Docs
+title: 在 Azure Site Recovery 中设置进程服务器 VMware/物理故障回复
 description: 本文介绍如何在 Azure 中设置进程服务器，以便将 Azure VM 故障回复到 VMware。
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: ramamill
-ms.openlocfilehash: 080edfc86848bb6c6579c177c72d3fbd3214a06a
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 16214fa07b14c8db2f32fa2c69739b7fa3dc1907
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968836"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083955"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>在 Azure 中设置进程服务器以便进行故障回复
 

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 8f6fb9737d3d8dad93a95f31d566f7cc4706ded3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e63d8f03b26c9039fe4093cf15b13522dbb49af9
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886050"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081477"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>为 Azure App Service 配置 Linux Java 应用
 
@@ -239,9 +239,9 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 
 若要在 Spring 或 Tomcat 配置文件中注入这些机密，请使用环境变量注入语法 (`${MY_ENV_VAR}`)。 有关 Spring 配置文件，请参阅这篇有关[外部化配置](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)的文档。
 
-## <a name="using-the-java-key-store"></a>使用 Java 密钥存储
+### <a name="using-the-java-key-store"></a>使用 Java 密钥存储
 
-默认情况下，当容器启动时，[上传到 App Service Linux](../configure-ssl-certificate.md)的任何公用或私有证书都将加载到 Java 密钥存储中。 这意味着，在建立出站 TLS 连接时，已上传的证书将在连接上下文中可用。
+默认情况下，当容器启动时，[上传到 App Service Linux](../configure-ssl-certificate.md)的任何公用或私有证书都将加载到 Java 密钥存储中。 这意味着，在建立出站 TLS 连接时，已上传的证书将在连接上下文中可用。 上传证书后，需要重新启动应用服务，将其加载到 Java 密钥存储中。
 
 可以通过打开指向应用服务的[SSH 连接](app-service-linux-ssh-support.md)并运行命令 `keytool`来交互或调试 Java 密钥工具。 有关命令列表，请参阅[密钥工具文档](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html)。 证书以 Java 的默认密钥存储文件位置存储，`$JAVA_HOME/jre/lib/security/cacerts`。
 
@@ -251,7 +251,7 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
 
-### <a name="manually-initialize-and-load-the-key-store"></a>手动初始化并加载密钥存储
+#### <a name="manually-initialize-and-load-the-key-store"></a>手动初始化并加载密钥存储
 
 可以初始化密钥存储，并手动添加证书。 创建一个应用设置，`SKIP_JAVA_KEYSTORE_LOAD`，其值为 "`1`" 以禁止应用服务自动将证书加载到密钥存储。 通过 Azure 门户上传到应用服务的所有公共证书都存储在 `/var/ssl/certs/`下。 私有证书存储在 `/var/ssl/private/`下。
 
@@ -730,7 +730,7 @@ Web 应用实例是无状态的，因此在启动时必须配置每个新实例�
 
 8. 更新应用的*pom .xml*文件中的 `azure-webapp-maven-plugin` 配置，以引用你的 Redis 帐户信息。 此文件使用您之前设置的环境变量来保留源文件中的帐户信息。
 
-    如有必要，请将 `1.7.0` 更改为 Azure App Service 的[Maven 插件](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)的当前版本。
+    如有必要，请将 `1.7.0` 更改为[适用于 Azure 应用服务的 Maven 插件](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)的当前版本。
 
     ```xml
     <plugin>
