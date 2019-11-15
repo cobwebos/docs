@@ -1,18 +1,18 @@
 ---
-title: 使用 Azure Site Recovery 创建和自定义灾难恢复的恢复计划
+title: 在 Azure Site Recovery 中创建/自定义恢复计划
 description: 了解如何使用 Azure Site Recovery 服务创建和自定义灾难恢复的恢复计划。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 2ca44ffd26e1b87dd201ed6f274791eadfeb0737
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9bb5a1a3aa0c2a4681ddecb5e20df41d481755ec
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814402"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084509"
 ---
 # <a name="create-and-customize-recovery-plans"></a>创建和自定义恢复计划
 
@@ -20,7 +20,7 @@ ms.locfileid: "70814402"
 
 ## <a name="create-a-recovery-plan"></a>创建恢复计划
 
-1. 在恢复服务保管库中，选择“恢复计划 (Site Recovery)” > “+恢复计划”。
+1. 在恢复服务保管库中，选择“恢复计划 (Site Recovery)” **“+恢复计划”。**  > 
 2. 在“创建恢复计划”中，为计划指定一个名称。
 3. 根据计划中的计算机选择一个源和目标，对于部署模型，选择“资源管理器”。 源位置必须具有已针对故障转移和恢复启用的计算机。 
 

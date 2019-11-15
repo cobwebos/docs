@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 将 VMware VM 灾难恢复到 Azure (CSP) 的多租户支持概述 | Microsoft Docs
+title: VMware VM 多租户灾难恢复与 Azure Site Recovery
 description: 概述了在多租户环境 (CSP) 程序对从 VMWare 灾难恢复到 Azure 的 Azure Site Recovery 支持。
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60718025"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083993"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>使用 CSP 从 VMware 灾难恢复到 Azure 的多租户支持概述
 
@@ -68,11 +68,11 @@ ms.locfileid: "60718025"
 
     ![“传播到子对象”选项](./media/vmware-azure-multi-tenant-overview/assign-permissions-without-propagation.png)
 
-- 替代方法是将用户帐户和角色分配给数据中心对象，再将其传播到子对象。 然后，针对每个不允许特定租户访问的对象（例如属于其他租户的 VM），为帐户分配“无访问权限”角色。  此配置很繁琐。 它会意外公开访问控制，因为系统会自动为每个新建的子对象授予从父对象继承的访问权限。 因此，建议使用第一种方法。
+- 替代方法是将用户帐户和角色分配给数据中心对象，再将其传播到子对象。 然后，针对每个不允许特定租户访问的对象（例如属于其他租户的 VM），为帐户分配“无访问权限”角色。 此配置很繁琐。 它会意外公开访问控制，因为系统会自动为每个新建的子对象授予从父对象继承的访问权限。 因此，建议使用第一种方法。
 
 ### <a name="create-a-vcenter-account"></a>创建 vCenter 帐户
 
-1. 通过克隆预定义的“只读”角色创建新角色，然后为其提供一个方便的名称（例如此示例中显示的 Azure_Site_Recovery）。 
+1. 通过克隆预定义的“只读”角色创建新角色，然后为其提供一个方便的名称（例如此示例中显示的 Azure_Site_Recovery）。
 2. 将以下权限分配给该角色：
 
    * **数据存储**：分配空间、浏览数据存储、降低文件操作级别、删除文件、更新虚拟机文件
@@ -104,7 +104,7 @@ vCenter 帐户访问现已完成。 此步骤可满足完成故障回复操作�
 ### <a name="failover-only"></a>仅故障转移
 要将灾难恢复操作限制到仅故障转移（即没有故障回复功能），可使用之前的过程，但会出现以下异常：
 
-- 仅将 Read-Only 角色分配给该账户，而没有将 Azure_Site_Recovery 角色分配给 vCenter 访问帐户   。 此权限集允许 VM 复制和故障转移，不允许故障回复。
+- 仅将 Read-Only 角色分配给该账户，而没有将 Azure_Site_Recovery 角色分配给 vCenter 访问帐户。 此权限集允许 VM 复制和故障转移，不允许故障回复。
 - 前述进程中的所有其他内容保留原样。 每个权限仍然只在对象级别分配，不传播到子对象，以便确保租户隔离并限制 VM 发现。
 
 ### <a name="deploy-resources-to-the-tenant-subscription"></a>将资源部署到租户订阅
@@ -120,7 +120,7 @@ vCenter 帐户访问现已完成。 此步骤可满足完成故障回复操作�
 
 1. 在 Azure 门户中，在之前创建的保管库中，使用你创建的 vCenter 帐户将 vCenter 服务器注册到配置服务器。
 2. 按照常规过程完成 Site Recovery 的“准备基础结构”过程。
-3. VM 现在可以进行复制了。 在“复制” > “选择虚拟机”中验证是否仅显示了该租户的 VM。  
+3. VM 现在可以进行复制了。 在“复制” **“选择虚拟机”中验证是否仅显示了该租户的 VM。**  > 
 
 ## <a name="dedicated-hosting-solution"></a>专用托管解决方案
 

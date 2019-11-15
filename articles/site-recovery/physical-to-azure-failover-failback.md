@@ -1,18 +1,19 @@
 ---
-title: 使用 Site Recovery 对物理服务器进行故障转移和故障回复以灾难恢复到 Azure | Microsoft Docs
+title: 为物理服务器设置故障转移和故障回复 Site Recovery
 description: 了解如何使用 Azure Site Recovery 将物理服务器故障转移到 Azure 以及故障回复到本地站点以进行灾难恢复
 services: site-recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 49b61423b33282be7f0ace52c2a164d52ba20314
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 2c0d2e57a34286f65be45a95403a32de42c51908
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814413"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084572"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>对复制到 Azure 的物理服务器进行故障转移和故障回复
 
@@ -26,7 +27,7 @@ ms.locfileid: "70814413"
 
 1. **故障转移到 Azure**：将计算机从本地站点故障转移到 Azure。
 2. **重新保护 Azure VM**：重新保护 Azure VM，使之开始复制回本地 VMware VM。
-3. **故障转移到本地**：运行故障转移以从 Azure 进行故障回复。
+3. 故障转移到本地：运行故障转移以从 Azure 进行故障回复。
 4. **重新保护本地 VM**：对数据进行故障回复以后，对故障回复到的本地 VMware VM 进行重新保护，使之开始复制到 Azure。
 
 ## <a name="verify-server-properties"></a>验证服务器属性
@@ -35,7 +36,7 @@ ms.locfileid: "70814413"
 
 1. 在“受保护的项”中，单击“复制的项”，并选择计算机。
 
-2. “复制的项”窗格中具有计算机信息、运行状况状态和最新可用恢复点的摘要。 单击“属性”可查看更多详细信息。
+2. “复制的项”窗格中具有计算机信息、运行状况状态和最新可用恢复点的摘要。 单击“属性”，查看详细信息。
 3. 在“计算和网络”中，可以修改 Azure 名称、资源组、目标大小、[可用性集](../virtual-machines/windows/tutorial-availability-sets.md)和托管磁盘设置
 4. 可查看和修改网络设置，包括在运行故障转移后 Azure VM 所在的网络/子网，以及将分配给它的 IP 地址。
 5. 在“磁盘”中，可以看到有关计算机操作系统和数据磁盘的信息。
@@ -47,7 +48,7 @@ ms.locfileid: "70814413"
    - **最新**：此选项会首先处理发送到 Site Recovery 的所有数据。 它提供最低的 RPO（恢复点对象），因为故障转移后创建的 Azure VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
    - **最新处理**：此选项将计算机故障转移到由 Site Recovery 处理的最新恢复点。 此选项提供低 RTO（恢复时间目标），因为无需费时处理未经处理的数据。
    - **最新的应用一致**：此选项将计算机故障转移到由 Site Recovery 处理的最新应用一致恢复点。
-   - **自定义**：指定恢复点。
+   - 自定义：指定恢复点。
 
 3. 如果希望 Site Recovery 在触发故障转移之前尝试关闭源计算机，请选择“在开始故障转移前关闭计算机”。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。
 4. 如果已准备好连接到 Azure VM，请进行连接，以在故障转移后对其进行验证。
@@ -85,13 +86,13 @@ ms.locfileid: "70814413"
 
 此过程假设本地 VM 不可用，你需要重新保护到另一位置。
 
-1. 在“设置”>“复制的项”中，右键单击已故障转移的 VM，然后单击“重新保护”。
+1. 在“设置” **“复制的项”中，右键单击已故障转移的 VM，然后单击“重新保护”** >。
 2. 在“重新保护”中，确保选择“Azure 到本地”。
 3. 指定本地主目标服务器和进程服务器。
 
 4. 在“数据存储”中，选择要将本地磁盘恢复到的主目标数据存储。 本地 VM 已被删除且你需要创建新磁盘时，请使用此选项。 如果磁盘已存在，请忽略此设置，但你仍然需要指定一个值。
 5. 选择主目标保留驱动器。 将自动选择故障回复策略。
-6. 单击“确定”开始重新保护。 一个作业会开始将虚拟机从 Azure 复制到本地站点。 可以在“**作业**”选项卡上跟踪进度。
+6. 单击“确定”开始重新保护。 一个作业会开始将虚拟机从 Azure 复制到本地站点。 可以在“作业”选项卡上跟踪进度。
 
 > [!NOTE]
 > 如果要将 Azure VM 恢复到现有本地 VM，请使用读/写访问权限将本地虚拟机的数据存储装载在主目标服务器的 ESXi 主机上。
@@ -122,7 +123,7 @@ ms.locfileid: "70814413"
 
 数据现应返回到本地站点，但不会复制到 Azure。 可按如下操作开始再次复制到 Azure：
 
-1. 选择此保管库，单击“设置”>“复制的项”，再选择已故障回复的 VM，然后单击“重新保护”。
+1. 选择此保管库，单击“设置” **“复制的项”，再选择已故障回复的 VM，然后单击“重新保护”** >。
 2. 选择用于将复制数据发送到 Azure 的进程服务器，然后单击“确定”。
 
 重新保护完成后，该 VM 将复制回 Azure，此时可按需运行故障转移。

@@ -7,14 +7,14 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 902e89305aa24e8cbb6d2dd84d6a61c710d11637
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 55ada93e6a77dd7e31640988bad95034f77c90dd
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715371"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091895"
 ---
-# <a name="support-matrix-for-physical-server-assessment-and-migration"></a>物理服务器评估和迁移的支持矩阵
+# <a name="support-matrix-for-physical-server-assessment-and-migration"></a>用于物理服务器评估和迁移的支持矩阵
 
 你可以使用[Azure Migrate 服务](migrate-overview.md)来评估计算机并将其迁移到 Microsoft Azure 云。 本文总结了用于评估和迁移本地物理服务器的支持设置和限制。
 
@@ -28,7 +28,7 @@ ms.locfileid: "73715371"
 
 **部署** | **详细信息***
 --- | ---
-**评估本地物理服务器** | [设置](tutorial-prepare-physical.md)第一次评估。
+**评估本地物理服务器** | [设置](tutorial-prepare-physical.md)第一次评估。<br/><br/> [运行](tutorial-assess-physical.md)评估。
 **将物理服务器迁移到 Azure** | [尝试](tutorial-migrate-physical-virtual-machines.md)迁移到 Azure。
 
 
@@ -37,7 +37,7 @@ ms.locfileid: "73715371"
 **支持** | **详细信息**
 --- | ---
 **Azure 权限** | 你需要订阅中的 "参与者" 或 "所有者" 权限才能创建 Azure Migrate 项目。
-**物理服务器** | 在单个项目中最多评估250个物理服务器。 Azure 订阅中可以有多个项目。 项目可以包括物理服务器、VMware Vm 和 Hyper-v Vm，最高可达评估限制。
+**物理服务器** | 在单个项目中最多评估35000个物理服务器。 Azure 订阅中可以有多个项目。 项目可以包括物理服务器、VMware Vm 和 Hyper-v Vm，最高可达评估限制。
 **地域** | 你可以在多个地理区域中创建 Azure Migrate 项目。 虽然你可以在特定地理区域创建项目，但你可以为其他目标位置评估或迁移计算机。 项目地域仅用于存储已发现的元数据。
 
   **地域** | **元数据存储位置**
@@ -66,7 +66,7 @@ ms.locfileid: "73715371"
 | :-------------------       | :------------------- |
 | **物理服务器部署**       | 物理服务器可以是独立服务器，也可以部署到群集中。 |
 | **权限**           | **Windows：** 在要包括在发现中的所有 Windows 服务器上设置本地用户帐户。需要将用户帐户添加到这些组-远程桌面用户、性能监视器用户和性能日志用户。 <br/> **Linux：** 需要在要发现的 Linux 服务器上使用根帐户。 |
-| **操作系统** | Azure 支持的所有[Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)操作系统。 |
+| **操作系统** | 支持所有[Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)操作系统，但以下情况除外：<br/> Windows Server 2003 <br/> SUSE Linux|
 
 
 ## <a name="assessment-appliance-requirements"></a>评估-设备要求
@@ -77,7 +77,7 @@ ms.locfileid: "73715371"
 | :-------------------       | :------------------- |
 | **设备部署**   |  在物理服务器或虚拟机上部署该设备。<br/>  主计算机必须运行 Windows Server 2012 R2 或更高版本。<br/> 主机需要足够的空间来分配 16 GB RAM、8个 vcpu、大约 80 GB 的存储空间，以及设备 VM 的外部交换机。<br/> 设备需要静态或动态 IP 地址以及 internet 访问。
 | **Azure Migrate 项目**  |  设备可以与单个项目关联。<br/> 可以将任意数量的设备与单个项目相关联。<br/> 你最多可以在一个项目中评估35000台计算机。
-| **发现**              | 单个设备最多可以发现200服务器。
+| **发现**              | 单个设备最多可以发现250服务器。
 | **评估组**       | 最多可以在一个组中添加35000台计算机。
 | **评估**             | 在单个评估中，最多可以评估35000台计算机。
 

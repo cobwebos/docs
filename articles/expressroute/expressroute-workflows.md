@@ -1,5 +1,5 @@
 ---
-title: 线路配置工作流 - ExpressRoute:Azure | Microsoft Docs
+title: Azure ExpressRoute：线路配置工作流
 description: 本页显示配置 ExpressRoute 线路和对等互连的工作流
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 1e0f4d356bb6addf735bf148a80e6be3ca550c8f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: ae6c2b7257ee6a8184f3a5bb002f24cb75a86d67
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123384"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083319"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute 线路预配工作流和线路状态
 本页从较高层面引导完成服务预配和路由配置工作流。
@@ -37,7 +36,7 @@ ms.locfileid: "71123384"
      > 
      
      ![路由工作流](./media/expressroute-workflows/routing-workflow.png)
-5. 将虚拟网络链接到 ExpressRoute 线路 - 可以将虚拟网络链接到 ExpressRoute 线路。 请按照说明[将 VNet 链接](expressroute-howto-linkvnet-arm.md)到你的线路。 这些 VNet 可以位于 ExpressRoute 线路所在的同一 Azure 订阅中，也可以位于不同的订阅中。
+5. 将虚拟网络链接到 ExpressRoute 线路 - 可以将虚拟网络链接到 ExpressRoute 线路。 请按照说明[将 VNet 链接](expressroute-howto-linkvnet-arm.md)到用户的线路。 这些 VNet 可以位于 ExpressRoute 线路所在的同一 Azure 订阅中，也可以位于不同的订阅中。
 
 ## <a name="expressroute-circuit-provisioning-states"></a>ExpressRoute 线路预配状态
 每条 ExpressRoute 线路有两种状态：
@@ -100,7 +99,7 @@ BGP 预配状态可让你知道 Microsoft 边缘是否已启用 BGP 会话。 �
 如果播发的公共前缀状态设置为需要验证状态，则不会启用 BGP 会话，因为播发的前缀不符合任何路由注册表中的 AS 编号。 
 
 > [!IMPORTANT]
-> 如果播发的公共前缀状态是手动验证状态，则必须向 [Microsoft 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)开具支持票证，并提供拥有播发 IP 地址的证明以及相关的自治系统编号。
+> 如果播发的公共前缀状态是 *手动验证* 状态，则你必须向 [Microsoft 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 开具支持票证，并提供拥有播发 IP 地址的证明以及相关的自治系统编号。
 > 
 > 
 

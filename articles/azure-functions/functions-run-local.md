@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 60ef89308eceeb8ae74caba7230f1dc9c6940f47
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 72abfef1f86fe47eb7817241a674741f56817f24
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469066"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082707"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -149,7 +149,7 @@ Functions 项目目录包含文件 [host.json](functions-host-json.md) 和 [loca
 func init MyFunctionProj
 ```
 
-提供项目名称后，系统就会创建并初始化使用该名称的新文件夹， 否则，初始化当前文件夹。  
+提供项目名称时，将创建并初始化具有该名称的新文件夹。 否则，初始化当前文件夹。  
 在版本 2.x 中运行命令时，必须为项目选择一个运行时。 
 
 ```output
@@ -177,12 +177,19 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 | 选项     | 说明                            |
 | ------------ | -------------------------------------- |
-| **`--csx`** | 初始化 C# 脚本 (.csx) 项目。 必须在后续命令中指定 `--csx`。 |
-| **`--docker`** | 使用基于所选 `--worker-runtime` 的基础映像创建容器的 Dockerfile。 如果打算发布到自定义 Linux 容器，请使用此选项。 |
+| **`--csharp`**<br/> **`--dotnet`** | 初始化[ C#类库（.cs）项目](functions-dotnet-class-library.md)。 |
+| **`--csx`** | 初始化[ C#脚本（. run.csx）项目](functions-reference-csharp.md)。 必须在后续命令中指定 `--csx`。 |
+| **`--docker`** | 使用基于所选 `--worker-runtime` 的基础映像创建容器的 Dockerfile。 如果你打算发布到自定义 Linux 容器，请使用此选项。 |
+| **`--docker-only`** |  将 Dockerfile 添加到现有项目。 如果未在本地设置中指定或设置，则会提示输入工作线程运行时。 如果打算将现有项目发布到自定义 Linux 容器，请使用此选项。 |
 | **`--force`** | 即使项目中存在现有的文件，也要初始化该项目。 此设置会覆盖同名的现有文件。 项目文件夹中的其他文件不受影响。 |
-| **`--no-source-control -n`** | 阻止版本 1.x 中默认创建 Git 存储库的行为。 在版本 2.x 中，默认不会创建 git 存储库。 |
+| **`--java`**  | 初始化[Java 项目](functions-reference-java.md)。 |
+| **`--javascript`**<br/>**`--node`**  | 初始化[JavaScript 项目](functions-reference-node.md)。 |
+| **`--no-source-control`**<br/>**`-n`** | 阻止版本 1.x 中默认创建 Git 存储库的行为。 在版本 2.x 中，默认不会创建 git 存储库。 |
+| **`--powershell`**  | 初始化[PowerShell 项目](functions-reference-powershell.md)。 |
+| **`--python`**  | 初始化[Python 项目](functions-reference-python.md)。 |
 | **`--source-control`** | 控制是否创建 git 存储库。 默认不会创建存储库。 如果为 `true`，则会创建存储库。 |
-| **`--worker-runtime`** | 设置项目的语言运行时。 支持的值为 `dotnet`、`node` (JavaScript)、`java` 和 `python`。 如果未设置，则初始化期间系统会提示你选择运行时。 |
+| **`--typescript`**  | 初始化[TypeScript 项目](functions-reference-node.md#typescript)。 |
+| **`--worker-runtime`** | 设置项目的语言运行时。 支持的值包括： `csharp`、`dotnet`、`java`、`javascript`、`node` （JavaScript）、`powershell`、`python`和 `typescript`。 如果未设置，则初始化期间系统会提示你选择运行时。 |
 
 > [!IMPORTANT]
 > 默认情况下，Core Tools 版本 2.x 会为 .NET 运行时创建函数应用项目作为 [C# 类项目](functions-dotnet-class-library.md) (.csproj)。 这些 C# 项目可以与 Visual Studio 或 Visual Studio Code 结合使用，在测试期间以及发布到 Azure 时进行编译。 如果希望创建并使用在版本 1.x 和门户中创建的相同 C# 脚本 (.csx) 文件，则在创建和部署函数时必须包含 `--csx` 参数。
@@ -338,7 +345,7 @@ func host start
 | **`--pause-on-error`** | 退出进程前，暂停增加其他输入。 仅当从集成开发环境 (IDE) 启动 Core Tools 时才使用。|
 | **`--script-root --prefix`** | 用于指定要运行或部署的函数应用的根目录路径。 此选项用于可在子文件夹中生成项目文件的已编译项目。 例如，生成 C# 类库项目时，将在某个根子文件夹中生成 host.json、local.settings.json 和 function.json 文件，其路径类似于 *。* `MyProject/bin/Debug/netstandard2.0` 在这种情况下，请将前缀设置为 `--script-root MyProject/bin/Debug/netstandard2.0`。 这是在 Azure 中运行的函数应用的根目录。 |
 | **`--timeout -t`** | Functions 主机启动的超时时间（以秒为单位）。 默认值：20 秒。|
-| **`--useHttps`** | 绑定到 `https://localhost:{port}` ，而不是绑定到 `http://localhost:{port}` 。 默认情况下，此选项会在计算机上创建可信证书。|
+| **`--useHttps`** | 绑定到 `https://localhost:{port}`，而不是绑定到 `http://localhost:{port}`。 默认情况下，此选项会在计算机上创建可信证书。|
 
 Functions 主机启动时，会输出 HTTP 触发的函数的 URL：
 
@@ -465,11 +472,11 @@ func azure functionapp publish <FunctionAppName>
 | **`--list-included-files`** | 基于 .funcignore 文件显示发布的文件列表。 |
 | **`--nozip`** | 关闭默认的 `Run-From-Package` 模式。 |
 | **`--build-native-deps`** | 发布 python 函数应用时跳过生成 .wheels 文件夹。 |
-| **`--build [-b]`** | 在部署到 Linux 函数应用时执行生成操作。 （接受：远程、本地） |
+| **`--build`**<br/>**`-b`** | 在部署到 Linux 函数应用时执行生成操作。 接受： `remote` 和 `local`。 |
 | **`--additional-packages`** | 构建本机依赖项时要安装的包列表。 例如：`python3-dev libevent-dev`。 |
 | **`--force`** | 在某些情况下会忽略预发布验证。 |
 | **`--csx`** | 发布 C# 脚本 (.csx) 项目。 |
-| **`--no-build`** | 跳过 dotnet 函数的生成。 |
+| **`--no-build`** | 不要生成 .NET 类库函数。 |
 | **`--dotnet-cli-params`** | 发布编译的 C# (.csproj) 函数时，Core Tools 将调用“dotnet build --output bin/publish”。 传递到此选项的任何参数将追加到命令行。 |
 
 ### <a name="deployment-custom-container"></a>部署（自定义容器）
