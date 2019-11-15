@@ -35,7 +35,7 @@ Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 We
 
 ## <a name="autoscaling"></a>自动缩放
 
-Standard_v2 或 WAF_v2 SKU 下的应用程序网关或 WAF 部署支持自动缩放，可根据变化的流量负载模式进行纵向扩展或缩减。 自动缩放还无需在预配期间要求选择部署大小或实例计数。 有关应用程序网关 Standard_v2 和 WAF_v2 功能的详细信息，请参阅[自动缩放 v2 SKU](application-gateway-autoscaling-zone-redundant.md)。
+Standard_v2 或 WAF_v2 SKU 下的应用程序网关或 WAF 部署支持自动缩放，可根据变化的流量负载模式进行扩展或缩减。 自动缩放还无需在预配期间要求选择部署大小或实例计数。 有关应用程序网关 Standard_v2 和 WAF_v2 功能的详细信息，请参阅[自动缩放 v2 SKU](application-gateway-autoscaling-zone-redundant.md)。
 
 ## <a name="zone-redundancy"></a>区域冗余
 
