@@ -1,0 +1,14 @@
+- name: Azure
+  tocHref: /azure
+  topicHref: /azure/index
+  items:
+    - name: 调控
+      tocHref: /azure/governance
+      topicHref: /azure/governance
+      items:
+        - name: 策略
+          tocHref: /azure/lighthouse
+          topicHref: /azure/governance/policy
+        - name: 策略
+          tocHref: /azure/azure-monitor
+          topicHref: /azure/governance/policy
