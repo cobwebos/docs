@@ -1,6 +1,6 @@
 ---
 title: 教程 2：训练信用风险模型
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: 本详细教程介绍如何创建预测分析解决方案，用于在经典版 Azure 机器学习工作室中进行信用风险评估。 本教程是由三个部分构成的系列教程的第二部分， 其中介绍了如何训练和评估模型。
 keywords: 信用风险, 预测分析解决方案, 风险评估
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 375fdf9b64afcce2d521008d353949e650f9df5e
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: b3f0ebe2cad68759e7feeb7a7cc3dadbbd03ee7e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622079"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838657"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>教程 2：训练信用风险模型 - Azure 机器学习工作室（经典版）
 

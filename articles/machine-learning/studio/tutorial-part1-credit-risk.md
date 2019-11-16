@@ -1,6 +1,6 @@
 ---
 title: 教程 1：预测信用风险
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: 本详细教程介绍如何创建预测分析解决方案，用于在经典版 Azure 机器学习工作室中进行信用风险评估。 本教程是由三个部分构成的系列教程的第一部分。  其中演示了如何创建工作区、上传数据和创建试验。
 keywords: 信用风险, 预测分析解决方案, 风险评估
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 78092bd4ad4da896cd2fd36768f181764335ee85
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e8c1eea097fc3ea2704acfae198eb493943b6ccf
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619181"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838857"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>教程 1：预测信用风险 - Azure 机器学习工作室（经典版）
 
@@ -207,7 +207,7 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
    ![其中选择了所有列的列选择器](./media/tutorial-part1-credit-risk/select-columns.png)
 
 
-1. 单击“确定”  复选标记。
+1. 单击**确定**复选标记。
 
 1. 回到“属性”  窗格中，查找“新列名称”  参数。 在此字段中，输入数据集中 21 列的名称列表，以逗号分隔并按列排序。 可以从 UCI 网站上的数据集文档中获取列名称，或为了方便起见，也可以复制并粘贴以下列表：  
 
