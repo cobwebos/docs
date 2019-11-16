@@ -1,17 +1,14 @@
 ---
 title: 示例 - 拒绝混合使用权益
 description: 此示例策略定义禁止使用 Azure 混合使用权益 (AHUB)。
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: 4c573a0c5ef7dd5328379dc9e3dffb029d24f619
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: 441f3bc75dc066684f201deabe34b2dfd962e0ca
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980535"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74070911"
 ---
 # <a name="sample---deny-hybrid-use-benefit"></a>示例 - 拒绝混合使用权益
 

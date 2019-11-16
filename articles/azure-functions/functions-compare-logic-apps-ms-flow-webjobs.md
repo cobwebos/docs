@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: b131a6fd5bb39ee5ec672a8ffb75cb22087a38af
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: e599ff280481549f68822d96f97b85f2516b1593
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597446"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082750"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>什么是 Microsoft Flow、逻辑应用、Functions 和 WebJobs？
 
@@ -123,12 +123,12 @@ Azure Functions 是在 WebJobs SDK 上构建的，因此共享许多相同的事
 * [利用 Azure Functions 和 Azure 应用服务实现集成方案，来自 Christopher Anderson](https://www.biztalk360.com/integrate-2016-resources/leveraging-azure-functions-azure-app-service-integration-scenarios/)
 * [集成简化，来自 Charles Lamanna](https://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
 * [逻辑应用网上直播](https://aka.ms/logicappslive)
-* [Microsoft Flow 常见问题解答](https://flow.microsoft.com/documentation/frequently-asked-questions/)
+* [Microsoft Flow 常见问题解答](/power-automate/frequently-asked-questions)
 
 ## <a name="next-steps"></a>后续步骤
 
 开始创建第一个流、逻辑应用、函数应用。 选择以下任一链接：
 
-* [开始使用 Microsoft Flow](https://flow.microsoft.com/en-us/documentation/getting-started/)
+* [开始使用 Microsoft Flow](/power-automate/getting-started)
 * [创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [创建第一个 Azure 函数](functions-create-first-azure-function.md)

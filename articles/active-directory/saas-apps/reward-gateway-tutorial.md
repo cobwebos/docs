@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 1cdc4420758b67dc3a578b9530fb7039ed53ee66
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fcd12b0c47dc587153df51d4d30eb2abe4cc2657
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092801"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081945"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>教程：Azure Active Directory 与 Reward Gateway 集成
 
@@ -124,7 +124,7 @@ ms.locfileid: "67092801"
     | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>`|
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请在 Reward Manager 门户中启动集成设置。 可以在 https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication 上找到详细信息
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请在 Reward Manager 门户中启动集成设置。 可以在 https://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication 上找到详细信息
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -142,7 +142,7 @@ ms.locfileid: "67092801"
 
 ### <a name="configure-reward-gateway-single-sign-on"></a>配置 Reward Gateway 单一登录
 
-若要在 **Reward Gateway** 端配置单一登录，请在 Reward Manager 门户中启动集成设置。 在配置过程中使用下载的元数据获取签名证书并将其上传。 可以在 https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication 上找到详细信息
+若要在 **Reward Gateway** 端配置单一登录，请在 Reward Manager 门户中启动集成设置。 在配置过程中使用下载的元数据获取签名证书并将其上传。 可以在 https://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication 上找到详细信息
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 

@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 5fc9463d5f5ea15f08378d4a0245174a366fa2b9
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6f1a793432fa6403639726dbe4340bae6804fb9f
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747483"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091093"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>备份和还原 Azure 文件共享
 
@@ -201,7 +201,7 @@ Azure 备份提供在 Azure 门户中浏览还原点的功能。 若要还原所
 
 以下过程假设虚拟机的备份作业已停止。 停止备份作业后，即可在“备份项”仪表板中使用“恢复备份”和“删除备份数据”选项。 请单击“删除备份数据”并键入文件共享的名称来确认删除。 也可提供删除原因或注释。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 有关 Azure 文件共享的详细信息，请参阅
 

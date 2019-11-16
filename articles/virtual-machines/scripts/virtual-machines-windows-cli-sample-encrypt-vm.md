@@ -1,5 +1,5 @@
 ---
-title: Azure CLI Script 示例 - 加密 Windows VM | Microsoft Docs
+title: Azure CLI Script 示例 - 加密 Windows VM
 description: Azure CLI Script 示例 - 加密 Windows VM
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 4b6cf773069582e8164a86b37bdb669b71e2f2da
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f37288cb028a3965dfa5b880f0f8c7de35728ba9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703269"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039862"
 ---
 # <a name="encrypt-a-windows-virtual-machine-in-azure"></a>加密 Azure 中的 Windows 虚拟机
 

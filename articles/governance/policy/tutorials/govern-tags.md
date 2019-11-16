@@ -1,17 +1,14 @@
 ---
 title: 管理标记治理
 description: 使用 Azure Policy 的修改效果来创建和执行新资源和现有资源上的标记治理模型。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: tutorial
-ms.service: azure-policy
-ms.openlocfilehash: 780dbf02fbdb0a607f29c710da9a6320a8626f7b
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: edb74bce5758ae040a6170a8e73be75fc228b001
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643755"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74069657"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>教程：通过 Azure Policy 管理标记治理
 

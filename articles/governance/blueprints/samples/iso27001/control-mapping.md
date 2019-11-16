@@ -1,17 +1,14 @@
 ---
 title: ISO 27001 蓝图示例 - 控制映射
 description: ISO 27001 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 07/22/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: f187bf5a77f756bbc6293a14e1873d13788d3929
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 6d77573a37c27aba96bace1f6d228ac892b0ecd9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162477"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038338"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>ISO 27001 蓝图示例的控制映射
 

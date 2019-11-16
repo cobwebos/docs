@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 1f98e4ac6bdc0a9b7a5982b58677732ede1911f7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d0d1cfee535a04203d9ff995b94fcad5d432ed3e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505673"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961182"
 ---
 ## <a name="prerequisites"></a>先决条件
 
-入门之前，准备工作有：
+在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [创建 Azure 搜索资源](../../../../get-started.md)
+> * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=xamarin)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=xamarin)
 
@@ -53,7 +53,7 @@ ms.locfileid: "73505673"
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
-#### <a name="androidtabandroid"></a>[Android](#tab/android)
+#### <a name="androidtabx-android"></a>[Android](#tab/x-android)
 ## <a name="add-sample-code-for-the-helloworldandroid-project"></a>添加 `helloworld.Android` 项目的示例代码
 
 现在添加 C# 代码，用于定义应用程序的特定于 Android 的部分。

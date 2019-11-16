@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 12df79696033e69abbf48f053c1a594be9409cda
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c0a47e922ae8cdca3c70cb53f9fa2f7dafe191c6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721112"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889228"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能 
 
@@ -110,7 +110,7 @@ CQLSH 命令行实用程序随 Apache Cassandra 3.1.1 一起提供，设置一�
 
 **Windows**：
 
-如果使用 Windows，建议启用[适用于 Linux 的 Windows 文件系统](https://docs.microsoft.com/en-us/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)。 然后即可按照以下 linux 命令进行操作。
+如果使用 Windows，建议启用[适用于 Linux 的 Windows 文件系统](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)。 然后即可按照以下 linux 命令进行操作。
 
 **Unix/Linux/Mac：**
 

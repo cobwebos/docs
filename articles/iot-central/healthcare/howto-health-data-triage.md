@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: b0f3a486edb0c650a4a14e5e60b4459f758a64d4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 88b4df909e2c56f1a60e0f3c737b05ae4c27ca4a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499937"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123243"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>教程：构建 Power BI 提供程序仪表板
 
@@ -91,7 +91,7 @@ ms.locfileid: "73499937"
 ## <a name="stream-data-to-power-bi-from-your-logic-app"></a>将数据从逻辑应用流式传输到 Power BI
 下一步是分析来自事件中心的数据，以将其流式传输到前面创建的 Power BI 数据集。
 
-1. 在执行此操作之前，需要了解从设备发送到事件中心的 JSON 有效负载。 为此，可以查看此[示例架构](https://docs.microsoft.com/azure/iot-central/core/howto-export-data-pnp#telemetry)并根据自己的架构对其进行修改，或使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer)检查消息。 如果使用的是患者持续监视应用程序，则消息将如下所示：
+1. 在执行此操作之前，需要了解从设备发送到事件中心的 JSON 有效负载。 为此，可以查看此[示例架构](https://docs.microsoft.com/azure/iot-central/preview/howto-export-data#telemetry)并根据自己的架构对其进行修改，或使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer)检查消息。 如果使用的是患者持续监视应用程序，则消息将如下所示：
 
 **Smart Vitals Patch 遥测数据**
 

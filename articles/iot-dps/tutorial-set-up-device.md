@@ -1,22 +1,22 @@
 ---
-title: 针对 Azure IoT 中心设备预配服务设置设备
-description: 在设备制造过程中通过 IoT 中心设备预配服务设置设备以进行预配
+title: 教程：针对 Azure IoT 中心设备预配服务设置设备
+description: 教程：在设备制造过程中通过 IoT 中心设备预配服务设置设备以进行预配
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d5a4f6c7d7d19ced4f2cd9ff21b00e58703f795e
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: e7f6151968fb14d44f1e330fb6ddc06fabad3ee6
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65911685"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112754"
 ---
-# <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务设置设备以进行预配
+# <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>教程：使用 Azure IoT 中心设备预配服务设置设备以进行预配
 
 前面的教程介绍了设置 Azure IoT 中心设备预配服务以将设备自动预配到 IoT 中心的方法。 本教程介绍如何在制造过程中设置设备，使之能够通过 IoT 中心进行自动预配。 设备在首先启动并连接到预配服务之后，即可根据其[证明机制](concepts-device.md#attestation-mechanism)进行预配。 本教程涵盖以下任务：
 

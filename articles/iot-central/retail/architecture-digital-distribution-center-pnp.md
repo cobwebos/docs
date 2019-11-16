@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 2ab79cccaafeb1b48100285a5fd495340b545278
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 478ebde1de5624796ebf1dde5cf89f4e1f9d9104
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615344"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890738"
 ---
 # <a name="architecture-of-iot-central-digital-distribution-center-application-template"></a>IoT Central 的数字分发中心应用程序模板体系结构
 
@@ -48,4 +48,4 @@ IoT Central 平台通过连续数据导出 (CDE) 和 API 提供了丰富的扩�
 ## <a name="next-steps"></a>后续步骤
 * 了解如何部署[数字分发中心模板](./tutorial-iot-central-digital-distribution-center-pnp.md)
 * 详细了解 [IoT Central 零售模板](./overview-iot-central-retail-pnp.md)
-* 请参阅 [IoT Central 概述](../core/overview-iot-central-pnp.md)，详细了解 IoT Central
+* 请参阅 [IoT Central 概述](../preview/overview-iot-central.md)，详细了解 IoT Central

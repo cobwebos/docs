@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 1c16368990148406fbacdde2981c10fab0b2d405
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 229b4b9f53ea3866dce1169645f6d6da20827271
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969659"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888905"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>使用 DevOps Projects 部署受 Azure Cosmos DB 支持的 Node.js 应用
 
@@ -169,6 +169,6 @@ DevOps Projects 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 > * 提交对 Git 所做的更改并将其自动部署到 Azure
 > * 清理资源
 
-有关详细信息和后续步骤, 请参阅[定义多阶段持续部署 (CD) 管道](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts)。
+有关详细信息和后续步骤, 请参阅[定义多阶段持续部署 (CD) 管道](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts)。
 
 

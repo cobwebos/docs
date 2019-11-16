@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 8360db3e31899dc7ca0a2b502d0036358f0858d6
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: d72636265ff3ac654faba91d1420b502b35d3192
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615230"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889005"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>教程：部署和演练智能库存管理应用程序模板
 
@@ -109,4 +109,4 @@ ms.locfileid: "73615230"
 ## <a name="next-steps"></a>后续步骤
 * 详细了解智能库存管理[智能库存管理的概念](./architecture-smart-inventory-management-pnp.md)
 * 详细了解其他 [IoT Central 零售模板](./overview-iot-central-retail-pnp.md)
-* 请参阅 [IoT Central 概述](../core/overview-iot-central-pnp.md)，详细了解 IoT Central
+* 请参阅 [IoT Central 概述](../preview/overview-iot-central.md)，详细了解 IoT Central

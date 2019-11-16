@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure Maps 创建店铺定位器 | Microsoft Docs
-description: 使用 Azure Maps 创建店铺定位器。
+title: 教程：使用 Azure Maps 创建商店定位器
+description: 教程：使用 Azure Maps 创建店铺定位器。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/15/2018
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: bf30e805a06222bf8c74429df54565073d7d919b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 52deb1cf872176b69975d550dd89d870b34d9bf0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933070"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107084"
 ---
-# <a name="create-a-store-locator-by-using-azure-maps"></a>使用 Azure Maps 创建店铺定位器
+# <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>教程：使用 Azure Maps 创建店铺定位器
 
 本教程引导你完成使用 Azure Maps 创建简单店铺定位器的过程。 店铺定位器的使用非常普遍。 此类应用程序中使用的许多概念同样适用于许多其他类型的应用程序。 大多数直销型的商家必须能够向客户提供店铺定位器。 本教程介绍如何执行下列操作：
     

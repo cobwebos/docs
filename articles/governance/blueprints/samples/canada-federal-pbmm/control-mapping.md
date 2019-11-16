@@ -1,17 +1,14 @@
 ---
 title: 加拿大联邦 PBMM 蓝图示例 - 控制映射
 description: 加拿大联邦 PBMM 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/04/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: e74d3328e1ed41a7184569d30cc46ae7cd29a5ba
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0be73497de36ac3c11637b80a492ab0a8558206d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163514"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039710"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>加拿大联邦 PBMM 蓝图示例的控制映射
 

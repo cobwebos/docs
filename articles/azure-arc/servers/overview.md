@@ -10,12 +10,12 @@ keywords: azure automation, DSC, powershell, desired state configuration, update
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 57dbfa0c2063c2059955294ccc1337bb76b72614
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7a2e9d39629e4fdb349652c9c48d0084d051f9f8
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606088"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122838"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>什么是用于服务器的 Azure Arc
 
@@ -132,7 +132,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 - 已安装 MMA 代理的计算机，将通过更新的管理包启用 Azure Arc 功能  。
 - 用于服务器的 Azure Arc 的集成需要 [MMA 代理10.20.18011 或更高版本](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows#agent-and-vm-extension-version)。
-- 在 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview#log-queries)中查询日志数据时，返回的数据架构将包含混合的 **ResourceId**，形式如下：`/subscriptions/<SubscriptionId/resourceGroups/<ResourceGroup>/providers/Microsoft.HybridCompute/machines/<MachineName>`。
+- 在 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)中查询日志数据时，返回的数据架构将包含混合的 **ResourceId**，形式如下：`/subscriptions/<SubscriptionId/resourceGroups/<ResourceGroup>/providers/Microsoft.HybridCompute/machines/<MachineName>`。
 
 有关详细信息，请参阅 [Azure Monitor 中的 Log Analytics 入门](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)。
 

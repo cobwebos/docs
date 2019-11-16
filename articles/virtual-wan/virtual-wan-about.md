@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 10/14/2019
+ms.date: 11/13/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 76a82696986f4957e7a5a96a3b93497ed461f0c4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3b33015b3a69372f6783d59b28a111ec279dd860
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491690"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048477"
 ---
 # <a name="about-azure-virtual-wan"></a>关于 Azure 虚拟 WAN
 
@@ -81,7 +81,7 @@ Azure 虚拟 WAN 将许多 Azure 云连接服务（例如，站点到站点 VPN�
 
 ### <a name="uservpn"></a>用户 VPN（点到站点）连接
 
-通过 IPsec/IKE (IKEv2) 或 OpenVPN 连接可以连接到 Azure 中的资源。 此类连接要求在客户端计算机上配置一个 VPN 客户端。 有关详细信息，请参阅[创建点到站点连接](virtual-wan-site-to-site-portal.md)。
+通过 IPsec/IKE (IKEv2) 或 OpenVPN 连接可以连接到 Azure 中的资源。 此类连接要求在客户端计算机上配置一个 VPN 客户端。 有关详细信息，请参阅[创建点到站点连接](virtual-wan-point-to-site-portal.md)。
 
 ### <a name="er"></a>ExpressRoute 连接
 ExpressRoute 允许通过专用连接将本地网络连接到 Azure。 要创建连接，请参阅[使用虚拟 WAN 创建 ExpressRoute 连接](virtual-wan-expressroute-portal.md)。

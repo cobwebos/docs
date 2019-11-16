@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b94607691b662dcfcf0e166cd5c339b00ed0573d
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 6ac464593e14a712cf0f137b5f3522d018d5874d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326684"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884540"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Slack 集成
 
@@ -46,7 +46,7 @@ ms.locfileid: "71326684"
 
 * Slack 支持 SP 发起的 SSO 
 * Slack 支持实时用户预配 
-* Slack 支持[自动用户预配](https://docs.microsoft.com/en-gb/azure/active-directory/saas-apps/slack-provisioning-tutorial) 
+* Slack 支持[自动用户预配](slack-provisioning-tutorial.md) 
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。

@@ -1,17 +1,14 @@
 ---
 title: 示例 - 强制实施标记及其值
 description: 此示例策略定义需要一个标记名称和值，每个标记名称和值都设置为参数。
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: ec92fc13a97b6961d5adcd19603b8c8c3197170a
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: b48bd1e38264bc98a2ec7b4c5b1a6a929babffaf
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980491"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076251"
 ---
 # <a name="sample---enforce-tag-and-its-value"></a>示例 - 强制实施标记及其值
 

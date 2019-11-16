@@ -1,18 +1,19 @@
 ---
-title: Azure 应用程序网关上的 Azure Web 应用程序防火墙简介
+title: Azure Web 应用程序防火墙简介
+titleSuffix: Azure Web Application Firewall
 description: 本文概述了应用程序网关上的 Web 应用程序防火墙 (WAF)
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/05/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 6d073648dc908cbbe40962f7ba079abcfe85ce45
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 4ba2772ffb89809c2262880385207a12c74882cc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607320"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067143"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure 应用程序网关上的 Azure Web 应用程序防火墙
 

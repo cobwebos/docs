@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用必应新闻搜索 REST API 和 Go 获取新闻
 titleSuffix: Azure Cognitive Services
-description: 了解如何从必应新闻搜索 API 获取新闻结果。
+description: 本快速入门使用 Go 语言调用必应新闻搜索 API。 结果包含查询字符串标识的新闻源的名称和 URL。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 2/21/2019
 ms.author: aahi
-ms.openlocfilehash: 79e93e3ba0bbf9ac71a01bad0502b84dfee85297
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c3d18852086e202d9f818f2cac2c90fa4f464211
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798501"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110804"
 ---
 # <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>快速入门：使用必应新闻搜索 REST API 和 Go 获取新闻结果
 

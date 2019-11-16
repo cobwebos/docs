@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 9531e86e63fa8d944aa216fddd0c8215b73038a9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a8021885bf51ab6d44bc8576b9fdd69f1bdd270a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492704"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953714"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>教程：从话语中获取文本完全匹配的数据
 
@@ -49,7 +49,7 @@ ms.locfileid: "73492704"
 
 * 数据值是已知的集。
 * 此集不超出此实体类型的最大 LUIS [边界](luis-boundaries.md)。
-* 话语中的文本是同义项或规范名称的完全匹配。 LUIS 不会使用除文本完全匹配项之外的列表。 仅仅有列表实体无法解析词干、复数形式和其他变体。 若要管理变体，请考虑使用带有可选文本语法的[模式](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance)。 
+* 话语中的文本是同义项或规范名称的完全匹配。 LUIS 不会使用除文本完全匹配项之外的列表。 仅仅有列表实体无法解析词干、复数形式和其他变体。 若要管理变体，请考虑使用带有可选文本语法的[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)。 
 
 ## <a name="create-a-new-app"></a>创建新应用
 

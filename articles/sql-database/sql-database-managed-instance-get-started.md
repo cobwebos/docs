@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: 578ab250d0759aa7216327124417019f2e5f1fc7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2af153e5cf09cf331be016066e9c9210a0d39b03
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825465"
+ms.locfileid: "73838162"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>快速入门：创建 Azure SQL 数据库托管实例
 
@@ -54,10 +54,10 @@ ms.locfileid: "73825465"
    | 设置| 建议的值 | Description |
    | ------ | --------------- | ----------- |
    | **订阅** | 你的订阅。 | 你有权在其中创建新资源的订阅。 |
-   | **资源组** | 新的或现有的资源组。|如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)（命名规则和限制）。|
-   | **托管实例名称** | 任何有效的名称。|请参阅[命名规则和限制](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)，了解什么是有效的名称。|
+   | **资源组** | 新的或现有的资源组。|如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。|
+   | **托管实例名称** | 任何有效的名称。|请参阅[命名规则和限制](/azure/architecture/best-practices/resource-naming)，了解什么是有效的名称。|
    | **区域** |要在其中创建托管实例的区域。|有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。|
-   | **托管实例管理员登录名** | 任何有效的用户名。 | 请参阅[命名规则和限制](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)，了解什么是有效的名称。 不要使用“serveradmin”，因为这是保留的服务器级角色。|
+   | **托管实例管理员登录名** | 任何有效的用户名。 | 请参阅[命名规则和限制](/azure/architecture/best-practices/resource-naming)，了解什么是有效的名称。 不要使用“serveradmin”，因为这是保留的服务器级角色。|
    | **密码** | 任何有效的密码。| 密码必须至少 16 个字符，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。|
 
 - 选择“配置托管实例”，以设置计算和存储资源的大小并查看定价层。  使用滑块或文本框指定存储量和虚拟核心数。 完成后，选择“应用”以保存所做的选择。  
