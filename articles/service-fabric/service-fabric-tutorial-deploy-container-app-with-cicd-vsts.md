@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/29/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: b686ceace3679d1541e8f1a74bca7e99b81ba932
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a2dc6aeb7dc2a62c543a58c322c23c9661c6940a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68598891"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832743"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>教程：通过 CI/CD 将容器应用程序部署到 Service Fabric 群集
 
@@ -147,7 +147,7 @@ Azure DevOps 发布定义描述了将应用程序程序包部署到群集的工�
 
 选择“+ 发布” -> “创建发布” -> “创建”，手动创建发布    。 可以在“发布”  选项卡中监视发布进度。
 
-验证部署是否已成功且应用程序是否正在群集中运行。  打开 Web 浏览器并导航到 [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/)。  记下应用程序版本，在本例中为“1.0.0.20170616.3”。
+验证部署是否已成功且应用程序是否正在群集中运行。  打开 Web 浏览器并导航到 `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`。  记下应用程序版本，在本例中为“1.0.0.20170616.3”。
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>提交并推送更改，触发发布
 
@@ -167,7 +167,7 @@ Azure DevOps 发布定义描述了将应用程序程序包部署到群集的工�
 
 若要检查生成进度，请在 Visual Studio 中切换到“团队资源管理器”中的“生成”选项卡。    在验证生成成功执行后，定义用于将应用程序部署到群集的发布定义。
 
-验证部署是否已成功且应用程序是否正在群集中运行。  打开 Web 浏览器并导航到 [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/)。  记下应用程序版本，在本例中为“1.0.0.20170815.3”。
+验证部署是否已成功且应用程序是否正在群集中运行。  打开 Web 浏览器并导航到 `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`。  记下应用程序版本，在本例中为“1.0.0.20170815.3”。
 
 ![Service Fabric Explorer][sfx1]
 
