@@ -103,7 +103,7 @@
             - name: 管理用户和角色
               href: how-to-assign-roles.md
             - name: 使用虚拟网络
-              displayName: vnet
+              displayName: 'vnet, blob'
               href: how-to-enable-virtual-network.md
             - name: 使用 SSL 保护 Web 服务
               href: how-to-secure-web-service.md

@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 90ef1be4366205b1f655a0b93619a897d6d1f25d
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 2e5a5f2a4de4e01d2e4fa66f819e55839959afd0
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929496"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130693"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>快速入门：适用于 JavaScript 的 Azure Blob 存储客户端库 v12
 
@@ -205,7 +205,7 @@ const CONNECT_STR = process.env.CONNECT_STR;
 > [!IMPORTANT]
 > 容器名称必须为小写。 有关命名容器和 Blob 的详细信息，请参阅[命名和引用容器、Blob 和元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
-调用 [fromConnectionString](/javascript/api/@azure/storage-blob/blobserviceclient#fromconnectionstring-string--newpipelineoptions-) 方法，创建 [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient) 类的实例。 然后，调用 [getContainerClient](/javascript/api/@azure/storage-blob/blobserviceclient#getcontainerclient-string-) 方法以获取对容器的引用。 最后，调用 [create](/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) 方法在存储帐户中实际创建容器。
+调用 [fromConnectionString](/javascript/api/@azure/storage-blob/blobserviceclient#fromconnectionstring-string--storagepipelineoptions-) 方法，创建 [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient) 类的实例。 然后，调用 [getContainerClient](/javascript/api/@azure/storage-blob/blobserviceclient#getcontainerclient-string-) 方法以获取对容器的引用。 最后，调用 [create](/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) 方法在存储帐户中实际创建容器。
 
 将此代码添加到 `main` 函数的末尾：
 

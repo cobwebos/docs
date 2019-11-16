@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 88b4df909e2c56f1a60e0f3c737b05ae4c27ca4a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 40e850bcbd177b15c91e57ec369c6b04963ffb84
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123243"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132287"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>教程：构建 Power BI 提供程序仪表板
 
@@ -51,7 +51,7 @@ ms.locfileid: "74123243"
 * 一个 Power BI 服务帐户。 如果没有该帐户，可以[创建 Power BI 服务的免费试用帐户](https://app.powerbi.com/)。 如果你以前未用过 Power BI，请浏览 [Power BI 入门](https://docs.microsoft.com/power-bi/service-get-started)。
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>设置到 Azure 事件中心的持续数据导出
-首先需要在订阅中设置从 Azure IoT Central 应用程序模板到 Azure 事件中心的持续数据导出。 可以遵循本 Azure IoT Central 教程所述的[导出到事件中心](https://docs.microsoft.com/azure/iot-central/core/howto-export-data-pnp)的步骤来完成此设置。 对于本教程，只需导出遥测数据。
+首先需要在订阅中设置从 Azure IoT Central 应用程序模板到 Azure 事件中心的持续数据导出。 可以遵循本 Azure IoT Central 教程所述的[导出到事件中心](https://docs.microsoft.com/azure/iot-central/preview/howto-export-data)的步骤来完成此设置。 对于本教程，只需导出遥测数据。
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>创建 Power BI 流数据集
 

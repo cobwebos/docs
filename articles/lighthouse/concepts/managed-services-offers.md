@@ -1,18 +1,14 @@
 ---
 title: Azure 市场中的托管服务产品
 description: 服务提供商可借助托管服务产品向 Azure 市场中的客户销售资源管理服务。
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 09/19/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 0a6371a1020182650d83d5e7ec9bb2378b44b557
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 0f1ba749a5477f0c006e6666b841e82f4eeb193f
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155256"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131870"
 ---
 # <a name="managed-services-offers-in-azure-marketplace"></a>Azure 市场中的托管服务产品
 

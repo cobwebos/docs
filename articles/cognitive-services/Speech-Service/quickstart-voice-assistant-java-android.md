@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 1de9283e1ad609a1f81d7e8a6d8171cc8052e3ae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58bc33c54a7bd878d717b2c6e44d9ac8657c245f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506209"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111792"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Java on Android 中创建语音助手
 
@@ -30,9 +30,9 @@ ms.locfileid: "73506209"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 语音服务的 Azure 订阅密钥。 [免费获取一个](get-started.md)或在 [Azure 门户](https://portal.azure.com)上创建它。
-* 先前创建的并使用 [Direct Line 语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)配置的机器人
-* [Android Studio](https://developer.android.com/studio/) v3.3 或更高版本
+- 语音服务的 Azure 订阅密钥。 [免费获取一个](get-started.md)或在 [Azure 门户](https://portal.azure.com)上创建它。
+- 先前创建的并使用 [Direct Line 语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)配置的机器人
+- [Android Studio](https://developer.android.com/studio/) v3.3 或更高版本
 
     > [!NOTE]
     > 请参阅[语音助手支持的区域列表](regions.md#voice-assistants)，确保你的资源部署在其中一个区域中。
@@ -96,9 +96,9 @@ ms.locfileid: "73506209"
 
 此 XML 定义一个用来与机器人交互的简单 UI。
 
-* 单击 `button` 元素后，它会启动交互，并调用 `onBotButtonClicked` 方法。
-* `recoText` 元素将显示你与机器人之间的对话的语音转文本结果。
-* `activityText` 元素将显示机器人中最新 Bot Framework 活动的 JSON 有效负载。
+- 单击 `button` 元素后，它会启动交互，并调用 `onBotButtonClicked` 方法。
+- `recoText` 元素将显示你与机器人之间的对话的语音转文本结果。
+- `activityText` 元素将显示机器人中最新 Bot Framework 活动的 JSON 有效负载。
 
 现在，UI 的文本和图形表示形式应如下所示：
 

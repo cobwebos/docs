@@ -1,7 +1,7 @@
 ---
 title: 向必应新闻搜索 API 发送查询
 titleSuffix: Azure Cognitive Services
-description: 了解向必应新闻搜索 API 发送搜索请求。
+description: 通过必应新闻搜索 API 可以在网上搜索相关的新闻项。 可以使用本文来详细了解向该 API 发送搜索查询。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: cfa9cd23e19788d847fd9177d70ee2af89c69272
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6be3d95c06862529881be2cbf2e4d74b44908e67
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423823"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111515"
 ---
 # <a name="sending-queries-to-the-bing-news-search-api"></a>向必应新闻搜索 API 发送查询
 

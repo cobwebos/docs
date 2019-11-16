@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 3eb6f68a443e29a7d4c7b4dedad38783f838dee5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 018a0405215d084962f6c107a607c8f82fae2500
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686668"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132000"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -254,7 +254,7 @@ createContainerButton.addEventListener("click", createContainer);
 deleteContainerButton.addEventListener("click", deleteContainer);
 ```
 
-此代码在不使用 [Aborter](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) 实例的情况下调用 ContainerURL [create](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#create-aborter--icontainercreateoptions-) 和 [delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#delete-aborter--icontainerdeletemethodoptions-) 函数。 为了简化本快速入门中的操作，此代码假设你的存储帐户已创建且已启用。 在生产代码中，请使用 Aborter 实例来添加超时功能。
+此代码在不使用 [Aborter](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) 实例的情况下调用 ContainerURL [create](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) 和 [delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-) 函数。 为了简化本快速入门中的操作，此代码假设你的存储帐户已创建且已启用。 在生产代码中，请使用 Aborter 实例来添加超时功能。
 
 ### <a name="list-blobs"></a>列出 Blob
 
@@ -290,7 +290,7 @@ const listFiles = async () => {
 listButton.addEventListener("click", listFiles);
 ```
 
-此代码将在循环中调用 [ContainerURL.listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL?view=azure-node-preview#listblobflatsegment-aborter--undefined---string--icontainerlistblobssegmentoptions-) 函数，以确保检索所有段。 对于每个段，它会循环访问它所包含的 Blob 项列表，并更新 **Files** 列表。
+此代码将在循环中调用 [ContainerURL.listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) 函数，以确保检索所有段。 对于每个段，它会循环访问它所包含的 Blob 项列表，并更新 **Files** 列表。
 
 ### <a name="upload-blobs"></a>上传 Blob
 
@@ -318,7 +318,7 @@ selectButton.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", uploadFiles);
 ```
 
-此代码将“Select and upload files”按钮连接到隐藏的 `file-input` 元素。  这样，按钮 `click` 事件便会触发文件输入 `click` 事件，并显示文件选取器。 选择文件并关闭对话框之后，将发生 `input` 事件并调用 `uploadFiles` 函数。 对于选择的每个文件，此函数将调用仅限浏览器的 [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/#uploadbrowserdatatoblockblob-aborter--blob---arraybuffer---arraybufferview--blockbloburl--iuploadtoblockbloboptions-) 函数。 每次调用都会返回一个约定，此约定将添加到某个列表，以便可以等待一次，导致并行上传文件。
+此代码将“Select and upload files”按钮连接到隐藏的 `file-input` 元素。  这样，按钮 `click` 事件便会触发文件输入 `click` 事件，并显示文件选取器。 选择文件并关闭对话框之后，将发生 `input` 事件并调用 `uploadFiles` 函数。 对于选择的每个文件，此函数将调用仅限浏览器的 [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) 函数。 每次调用都会返回一个约定，此约定将添加到某个列表，以便可以等待一次，导致并行上传文件。
 
 ### <a name="delete-blobs"></a>删除 Blob
 

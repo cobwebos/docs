@@ -1,7 +1,7 @@
 ---
 title: 使用 Visual Studio 和 C# 中的连接服务连接到必应新闻搜索 API
 titleSuffix: Azure Cognitive Services
-description: 从 ASP.NET Core Web 应用程序连接到必应新闻搜索。
+description: 通过使用必应新闻搜索，可使应用和服务能够利用作用于 Web 的无广告搜索引擎的强大功能。
 services: cognitive-services
 author: ghogen
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: ghogen
-ms.openlocfilehash: 85afae087b1b1e572759943142412743744ee806
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 0a8a4f69c94f217cb40146b022adf2b2d56c8d42
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203417"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111498"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>教程：使用 Visual Studio 和 C# 中的连接服务连接到必应新闻搜索 API
 

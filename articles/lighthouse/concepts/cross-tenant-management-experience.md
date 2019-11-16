@@ -1,18 +1,14 @@
 ---
 title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 11/7/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 182970cc39d200c37264a93d5e1b70c8839e5ef7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0d04a7a77a3f92cffb185ff829f0d678dac2a9ff
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825824"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131917"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
