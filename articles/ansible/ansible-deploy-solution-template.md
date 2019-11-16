@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 5ababe9eb1f680378e882970df2d0b008287a7c4
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6aa721ee6cf6680518a28d050c22d8649f0f531f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241711"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833171"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>快速入门：将适用于 Azure 的 Ansible 解决方案模板部署到 CentOS
 
@@ -59,7 +59,7 @@ ms.locfileid: "72241711"
        - [VM 的高性能高级存储和托管磁盘](/azure/virtual-machines/windows/premium-storage)
        - [Azure 虚拟机工作负荷的标准 SSD 托管磁盘](/azure/virtual-machines/windows/disks-standard-ssd)
    - **公共 IP 地址** - 如果想要从虚拟机外部与虚拟机通信，请指定此设置。 默认值是名为 `ansible-pip` 的新公共 IP 地址。 若要指定其他 IP 地址，请选择箭头指定该 IP 地址的属性 - 例如名称、SKU 和分配。 
-   - **域名标签** - 输入虚拟机的面向公众的域名。 该名称必须唯一且符合命名要求。 有关为虚拟机指定名称的详细信息，请参阅 [Azure 资源的命名约定](/azure/architecture/best-practices/naming-conventions)。
+   - **域名标签** - 输入虚拟机的面向公众的域名。 该名称必须唯一且符合命名要求。 有关为虚拟机指定名称的详细信息，请参阅 [Azure 资源的命名约定](/azure/architecture/best-practices/resource-naming)。
    - **Ansible 版本** - 指定版本号，或者指定值 `latest` 以部署最新版本。 选择“Ansible 版本”旁边的信息图标可以查看有关可用版本的详细信息。 
 
      ![用于指定 Ansible 其他设置的 Azure 门户选项卡](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-2.png)

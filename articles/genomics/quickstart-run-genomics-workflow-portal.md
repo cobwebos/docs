@@ -8,12 +8,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
-ms.openlocfilehash: 47043b9f4416ec61cf25ea92504c0c653b7d5408
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: eab5714cb43816c617190fc394f6156ab08ff51d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819198"
+ms.locfileid: "73838728"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>快速入门：通过 Microsoft 基因组学服务运行工作流
 
@@ -39,8 +39,8 @@ ms.locfileid: "73819198"
  |**设置**          |  **建议的值**  | **字段说明** |
  |:-------------       |:-------------         |:----------            |
  |Subscription         | 订阅名称|这是 Azure 服务的计费单位 - 有关订阅的详细信息，请参阅[订阅](https://account.azure.com/Subscriptions) |      
- |资源组       | MyResourceGroup       |  可以通过资源组将多个 Azure 资源（存储帐户、基因组学帐户等）分到一个组中，方便管理。 有关详细信息，请参阅[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)。 请参阅[命名规则](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)，了解什么是有效的资源组名称 |
- |帐户名         | MyGenomicsAccount     |选择唯一的帐户标识符。 请参阅[命名规则](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)，了解什么是有效的名称 |
+ |资源组       | MyResourceGroup       |  可以通过资源组将多个 Azure 资源（存储帐户、基因组学帐户等）分到一个组中，方便管理。 有关详细信息，请参阅[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)。 请参阅[命名规则](/azure/architecture/best-practices/resource-naming)，了解什么是有效的资源组名称 |
+ |帐户名         | MyGenomicsAccount     |选择唯一的帐户标识符。 请参阅[命名规则](/azure/architecture/best-practices/resource-naming)，了解什么是有效的名称 |
  |位置                   | 美国西部 2                    |    在美国西部 2、西欧和东南亚提供服务 |
 
 
@@ -118,8 +118,8 @@ Microsoft 基因组学服务要求将输入作为块 Blob 存储在 Azure 存储
  |**设置**          |  **建议的值**  | **字段说明** |
  |:-------------------------       |:-------------         |:----------            |
  |Subscription         | Azure 订阅 |有关订阅的详细信息，请参阅[订阅](https://account.azure.com/Subscriptions) |      
- |资源组       | MyResourceGroup       |  可以选择同一资源组作为基因组学帐户。 请参阅[命名规则](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)，了解什么是有效的资源组名称 |
- |存储帐户名称         | MyStorageAccount     |选择唯一的帐户标识符。 请参阅[命名规则](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)，了解什么是有效的名称 |
+ |资源组       | MyResourceGroup       |  可以选择同一资源组作为基因组学帐户。 请参阅[命名规则](/azure/architecture/best-practices/resource-naming)，了解什么是有效的资源组名称 |
+ |存储帐户名称         | MyStorageAccount     |选择唯一的帐户标识符。 请参阅[命名规则](/azure/architecture/best-practices/resource-naming)，了解什么是有效的名称 |
  |位置                  | 美国西部 2                  | 使用的位置与基因组学帐户的位置相同，目的是降低传出费用和延迟。  | 
  |性能                  | 标准                   | 默认值为“标准”。 有关标准和高级存储帐户的更多详细信息，请参阅 [Microsoft Azure 存储简介](https://docs.microsoft.com/azure/storage/common/storage-introduction)    |
  |帐户类型       | Blob 存储       |  Blob 存储帐户的下载和上传速度可以是常规用途帐户的 2-5 倍。 |

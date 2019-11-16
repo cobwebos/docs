@@ -10,12 +10,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 ms.date: 07/29/2019
-ms.openlocfilehash: 201f90ae1ee7309f0271d046f341729c79749421
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6c4a99367c7fc6a864f6a16bc614e4c10663d0ff
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825186"
+ms.locfileid: "73837180"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>教程：在 Azure SQL 数据库 C&#x23; 和 ADO.NET 的单一数据库中设计关系数据库
 
@@ -55,14 +55,14 @@ Azure SQL 数据库是 Microsoft 云 (Azure) 中的关系型数据库即服务 (
     | ------------ | ------------------ | ------------------------------------------------- |
     | **数据库名称** | yourDatabase  | 如需有效的数据库名称，请参阅[数据库标识符](/sql/relational-databases/databases/database-identifiers)。 |
     | **订阅** | yourSubscription   | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
-    | **资源组** | yourResourceGroup  | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 |
+    | **资源组** | yourResourceGroup  | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
     | **选择源** | 空白数据库 | 指定创建空白数据库。 |
 
 4. 单击“服务器”以使用现有的数据库服务器，或者创建并配置新的数据库服务器  。 选择现有服务器或单击“创建新服务器”，然后在“新建服务器”窗体中填写以下信息   ：
 
     | 设置       | 建议的值 | 说明 |
     | ------------ | ------------------ | ------------------------------------------------- |
-    | **服务器名称** | 任何全局唯一名称 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 |
+    | **服务器名称** | 任何全局唯一名称 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
     | 服务器管理员登录名  | 任何有效的名称 | 如需有效的登录名，请参阅[Database Identifiers](/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 |
     | **密码** | 任何有效的密码 | 密码必须至少有八个字符，且必须使用以下类别中的三个类别的字符：大写字符、小写字符、数字以及非字母数字字符。 |
     | **位置** | 任何有效的位置 | 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。 |
