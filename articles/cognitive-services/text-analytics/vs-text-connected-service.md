@@ -1,7 +1,7 @@
 ---
 title: 教程：使用 Visual Studio 中连接服务连接到文本分析服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何从 ASP.NET Core Web 应用程序连接到文本分析。
+description: 本文及其同类文章详细介绍了如何使用文本分析服务的 Visual Studio 连接服务功能。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: ff4c703070d6a7ebd545de3043e5f59b764fe4c9
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: b094a6917892dfff58c49435de4dc42551be19df
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478460"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837190"
 ---
 # <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>教程：使用 Visual Studio 中连接服务连接到文本分析服务
 

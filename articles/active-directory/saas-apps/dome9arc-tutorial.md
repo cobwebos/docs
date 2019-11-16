@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75f0669a474c24647e71eae8b5e0e0830b7c0bef
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: b46ac34db21576c7e2de2271a468e3e782ff6aa9
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533093"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885354"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Check Point CloudGuard Dome9 Arc 集成
 
@@ -107,7 +107,7 @@ ms.locfileid: "72533093"
     | memberof | user.assignedroles |
 
     >[!NOTE]
-    >单击[此处](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/apptio-tutorial)以了解如何在 Azure AD 中创建角色。
+    >单击[此处](https://docs.microsoft.com/azure/active-directory/saas-apps/apptio-tutorial)以了解如何在 Azure AD 中创建角色。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 

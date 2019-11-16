@@ -1,17 +1,14 @@
 ---
 title: FedRAMP Moderate 蓝图示例 - 控制映射
 description: FedRAMP Moderate 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/31/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 35b2e524298b1b34bae3903c842577b1683b9a93
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1bf87ef1b5116b086797b8521268bd4575970925
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581385"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032346"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>FedRAMP Moderate 蓝图示例的控制映射
 

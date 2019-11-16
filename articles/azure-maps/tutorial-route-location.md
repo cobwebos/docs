@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure Maps 查找路线 | Microsoft Docs
-description: 使用 Azure Maps 查找前往兴趣点的路线
+title: 教程：使用 Azure Maps 查找路线
+description: 教程：使用 Azure Maps 查找前往兴趣点的路线
 author: walsehgal
 ms.author: v-musehg
-ms.date: 03/07/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 52355a8896f4891e99d07e2b4106cede77a1f8df
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: c9e407b271fd77397723ee49f530339847096749
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916210"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106620"
 ---
-# <a name="route-to-a-point-of-interest-using-azure-maps"></a>使用 Azure Maps 查找前往兴趣点的路线
+# <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>教程：使用 Azure Maps 查找前往兴趣点的路线
 
 本教程介绍如何使用 Azure Maps 帐户和路线服务 SDK 来查找前往兴趣点的路线。 本教程介绍如何执行下列操作：
 

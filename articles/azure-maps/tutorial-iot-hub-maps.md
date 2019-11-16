@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure Maps 实现 IoT 空间分析 | Microsoft Docs
-description: 将 IoT 中心与 Azure Maps 服务 API 集成。
+title: 教程：使用 Azure Maps 实现 IoT 空间分析
+description: 教程：将 IoT 中心与 Azure Maps 服务 API 集成。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 08/13/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 618931c3a45fcb25b2a9221ea3f6069e9ff11de5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b876b27d0eb24a9eabcffe0d131ea0ef5bb79bad
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933206"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107056"
 ---
-# <a name="implement-iot-spatial-analytics-using-azure-maps"></a>使用 Azure Maps 实现 IoT 空间分析
+# <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>教程：使用 Azure Maps 实现 IoT 空间分析
 
 跟踪和捕获时空中发生的相关事件是一个常见的 IoT 应用场景。 例如，机群管理、资产跟踪、物流和智能城市应用场景。 本教程逐步讲解使用事件网格提供的事件订阅模型，对 IoT 中心捕获的相关事件使用 Azure Maps API 的解决方案模式。
 

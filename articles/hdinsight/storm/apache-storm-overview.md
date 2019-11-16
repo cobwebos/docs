@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 71ccdb7ac6666cde1841599cdaf95b67bc54e6a5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 73a3359955bf50929f083d542e6a0583b356a280
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800030"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903749"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>什么是 Azure HDInsight 上的 Apache Storm？
 
@@ -116,7 +116,7 @@ Storm on HDInsight 附带完整的企业级持续支持。 Storm on HDInsight �
 * 搜索
 * 移动应用场景
 
-有关实际方案的信息，请参阅文档 [How companies are using Apache Storm](https://storm.apache.org/documentation/Powered-By.html)（公司如何使用 Apache Storm）。
+有关实际方案的信息，请参阅文档 [How companies are using Apache Storm](https://storm.apache.org/Powered-By.html)（公司如何使用 Apache Storm）。
 
 ## <a name="development"></a>开发
 

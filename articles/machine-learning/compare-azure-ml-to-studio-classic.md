@@ -8,23 +8,23 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: 721f730aa78be39b91f7d8368655dbbd5878903b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 00a2268442f94822064f86d95b14160d67e1516c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716689"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084756"
 ---
 # <a name="how-azure-machine-learning-differs-from-ml-studio-classic"></a>Azure 机器学习与机器学习工作室（经典版）的不同之处
 
 本文将 Azure 机器学习与机器学习工作室（经典版）的功能和接口进行了比较。 
 
 ## <a name="about-ml-studio-classic"></a>关于机器学习工作室（经典版）
-[机器学习工作室（经典版）](/studio/what-is-ml-studio.md)是一个协作型拖放式可视工作区，无需编写代码即可在其中生成、测试和部署机器学习解决方案。 它使用预先生成和预先配置的机器学习算法、数据处理模块和专用计算平台。
+[机器学习工作室（经典版）](studio/what-is-ml-studio.md)是一个协作型拖放式可视工作区，无需编写代码即可在其中生成、测试和部署机器学习解决方案。 它使用预先生成和预先配置的机器学习算法、数据处理模块和专用计算平台。
 
 ## <a name="about-azure-machine-learning"></a>关于 Azure 机器学习
 
-同时，[Azure 机器学习](/service/overview-what-is-azure-ml.md)提供称为设计器（预览版）的 Web 界面以及一些 SDK 和 CLI，可以快速准备数据，以及对机器学习模型进行训练和部署  。 通过 Azure 机器学习可以获得缩放性、多个框架支持、高级 ML 功能，如自动机器学习和管道支持。
+同时，[Azure 机器学习](service/overview-what-is-azure-ml.md)提供称为设计器（预览版）的 Web 界面以及一些 SDK 和 CLI，可以快速准备数据，以及对机器学习模型进行训练和部署  。 通过 Azure 机器学习可以获得缩放性、多个框架支持、高级 ML 功能，如自动机器学习和管道支持。
 
 Azure 机器学习设计器提供与工作室（经典版）类似的拖放体验。 但是，不像工作室（经典版）的专用计算平台，此设计器使用你自己的计算资源，可缩放，并且已完全集成到 Azure 机器学习中。  
 

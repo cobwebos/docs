@@ -3,16 +3,16 @@ title: 什么是 Azure Lighthouse？
 description: 借助 Azure Lighthouse，服务提供商可为其客户提供自动化程度更高且更高效的规模级托管服务。
 author: JnHs
 ms.author: jenhayes
-ms.date: 08/22/2019
+ms.date: 11/11/2019
 ms.topic: overview
 ms.service: lighthouse
 manager: carmonm
-ms.openlocfilehash: 05fa16504e25a6bf0f6aa1c0a348284abba6e1ed
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: ae8194e6d5764769019ac803a52cd54497a618c1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011911"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929569"
 ---
 # <a name="what-is-azure-lighthouse"></a>什么是 Azure Lighthouse？
 
@@ -39,9 +39,6 @@ Azure Lighthouse 提供了多种方法来协助客户简化参与和管理：
 - **Azure 资源管理器模板**：执行管理任务更加容易，包括载入 Azure 委托资源管理的客户。 有关详细信息，请参阅我们的[存储库示例](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates)和[将客户载入到 Azure 委派的资源管理](how-to/onboard-customer.md)。
 - **Azure 市场中的托管服务产品**：通过私有或公共产品/服务向客户提供服务，并让他们自动载入 Azure 委派的资源管理，作为使用 Azure 资源管理器模板进行载入的替代方案。 有关详情，请参阅 [Azure 市场中的托管服务产品](./concepts/managed-services-offers.md)。
 - **Azure 托管应用程序**：打包和交付便于客户在自己的订阅中部署和使用的应用程序。 该应用程序部署到可从租户访问的资源组中，以便在整个 Azure Lighthouse 体验中管理该服务。 有关详细信息，请参阅 [Azure 托管应用程序概述](https://docs.microsoft.com/azure/managed-applications/overview)。
-
-> [!NOTE]
-> 上述功能当前在公有云中可用。 有关各个服务的区域可用性，请参阅[按地区提供的产品](https://azure.microsoft.com/global-infrastructure/services/)。
 
 ## <a name="next-steps"></a>后续步骤
 

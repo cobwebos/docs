@@ -1,17 +1,14 @@
 ---
 title: 示例 - 在 Linux VM 上审核缺少的应用程序
 description: 此示例“策略来宾配置”计划和定义会审核是否未在 Linux 虚拟机中安装指定的应用程序。
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 05/02/2019
-ms.author: dacoulte
-ms.openlocfilehash: 5f4d4f4c1102c4409d891bb20b54788dc8ed40ee
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.topic: sample
+ms.openlocfilehash: 0789b7f408c1f3eea000bfb2fc21ddf5feff790c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255742"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076213"
 ---
 # <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>示例 - 审核是否未在 Linux VM 中安装指定的应用程序
 

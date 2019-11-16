@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 499b08dbdc8e798a884b721bcba51be1f6973df6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6386ef775f897ca56d2660adf72a885672c8dfd2
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562391"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092066"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>教程：有关使用 Azure 空间定位点创建新 Android 应用的分步说明
 
@@ -36,7 +36,7 @@ ms.locfileid: "68562391"
 
 若要测试新应用，请使用 USB 线缆将开发人员启用的设备连接到开发计算机。 单击“运行”->“运行‘应用’”。   在“选择部署目标”窗口中选择自己的设备，然后单击“确定”。   Android Studio 将在连接的设备上安装并启动该应用。 现在应会看到“Hello World!” 显示在设备上运行的应用中。 单击“运行”->“停止‘应用’”。  
 
-## <a name="integrating-arcore"></a>集成 _ARCore_
+## <a name="integrating-_arcore_"></a>集成 _ARCore_
 
 <a href="https://developers.google.com/ar/discover/" target="_blank">_ARCore_</a> 是用于构建增强现实体验的 Google 平台，可让设备在移动时跟踪自身的位置，并建立自身对真实世界的理解。
 
@@ -62,12 +62,12 @@ ms.locfileid: "68562391"
 ```
 dependencies {
     ...
-    implementation 'com.google.ar:core:1.8.0'
+    implementation 'com.google.ar:core:1.11.0'
     ...
 }
 ```
 
-## <a name="integrating-sceneform"></a>集成 _Sceneform_
+## <a name="integrating-_sceneform_"></a>集成 _Sceneform_
 
 使用 <a href="https://developers.google.com/ar/develop/java/sceneform/" target="_blank">_Sceneform_</a> 能够轻松地在增强现实应用中渲染逼真的 3D 场景，且无需学习 OpenGL。
 
@@ -85,7 +85,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.8.0'
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.11.0'
     ...
 }
 ```

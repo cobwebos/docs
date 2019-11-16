@@ -1,17 +1,14 @@
 ---
 title: 示例 - 计费标记策略计划
 description: 此示例策略定义集需要成本中心和产品名称的指定标记值。
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: f2190b5759c53d645c1d0150004271ba04669c94
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: e2fc9a7251fbe548b22f24356e555f92a3a6e22f
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981397"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076358"
 ---
 # <a name="sample---billing-tags-policy-initiative"></a>示例 - 计费标记策略计划
 

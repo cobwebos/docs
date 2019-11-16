@@ -1,24 +1,18 @@
 ---
-title: 什么是 Azure Redis 缓存？ | Microsoft Docs
+title: 什么是 Azure Redis 缓存？
 description: 了解什么是 Azure Redis 缓存及其常用方式。
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: martinekuan
-editor: ''
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
 ms.topic: overview
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 1f0c943bed473178dadb09cfb9d355821e5236e8
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 87e7505bddfce431b5e859fbbeee79f75867cfc9
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066851"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122651"
 ---
 # <a name="azure-cache-for-redis-description"></a>Azure Redis 缓存说明
 

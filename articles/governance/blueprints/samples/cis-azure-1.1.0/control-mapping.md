@@ -1,17 +1,14 @@
 ---
 title: CIS Microsoft Azure Foundations Benchmark 蓝图示例 - 建议映射
 description: CIS Microsoft Azure Foundations Benchmark 蓝图示例到 Azure Policy 的建议映射。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/01/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 6549cf030772d805b063510b9931968027639511
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 7974a5f9e5ccca41cdaa838cf05e3861dbae1b8d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583142"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038431"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark 蓝图示例的建议映射
 

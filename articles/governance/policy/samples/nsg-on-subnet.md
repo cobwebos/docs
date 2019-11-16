@@ -1,17 +1,14 @@
 ---
 title: 示例 - 每个子网上的 NSG X
 description: 此示例策略定义要求每个虚拟子网使用特定网络安全组。
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: 977deba4ee083fae5cbf24905cee84a3a0d020c4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: 5e86bb60490fa6f32d3313e7c3fcf751057b3a52
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981335"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74069843"
 ---
 # <a name="sample---network-security-group-x-on-every-subnet"></a>示例 - 每个子网上的网络安全组 x
 

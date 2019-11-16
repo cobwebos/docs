@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例 - 使用 DSC 创建具有 IIS 的 Windows Server 2016 VM | Microsoft 文档
+title: Azure CLI 脚本示例 - 使用 DSC 创建具有 IIS 的 Windows Server 2016 VM
 description: Azure CLI 脚本示例 - 使用 DSC 创建具有 IIS 的 Windows Server 2016 VM
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc
-ms.openlocfilehash: a17bb1fc4f2d297742620dc39756d2f89ec8df1e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 60f4447015e43d02048afd19504be0e758a56e86
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708286"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040056"
 ---
 # <a name="create-a-vm-with-iis-using-dsc"></a>使用 DSC 创建具有 IIS 的 VM
 

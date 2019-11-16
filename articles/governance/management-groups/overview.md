@@ -1,18 +1,15 @@
 ---
 title: 使用管理组来组织资源 - Azure 治理
 description: 了解管理组、其权限的工作方式以及如何使用它们。
-author: rthorn17
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
-ms.service: governance
 ms.date: 04/22/2019
-ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: aa4c5a7bfe7333c02fe79612b828df5680b83b26
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 7e121ed256e04332ca7fd33c9fc48cd2bc7bae03
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254728"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960183"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理组来组织资源
 

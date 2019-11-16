@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例 - 使用 Azure Monitor 创建 Linux VM | Microsoft Docs
+title: Azure CLI 脚本示例 - 使用 Azure Monitor 创建 Linux VM
 description: Azure CLI 脚本示例 - 使用 Azure Monitor 创建 Linux VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b463df00f57d2dd8f00964eaf10bd0d5f2c2eaab
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: af71bc8e0ad793c37084ce3e5cc9f48ef8f55714
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709508"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037698"
 ---
 # <a name="monitor-a-vm-with-azure-monitor"></a>使用 Azure Monitor 监视 VM
 

@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 1940f02fdf9badcf99ef85a2ab02ac9099cc1775
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 797488632f04af9a170f05590154e50310570b28
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615381"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890725"
 ---
 # <a name="architecture-of-iot-central-connected-logistics-application-template"></a>IoT Central 互联物流应用程序模板的体系结构
 
@@ -47,4 +47,4 @@ IoT Central 平台通过连续数据导出 (CDE) 和 API 提供了丰富的扩�
 ## <a name="next-steps"></a>后续步骤
 * 了解如何部署[联接的物流解决方案模板](./tutorial-iot-central-connected-logistics-pnp.md)
 * 详细了解 [IoT Central 零售模板](./overview-iot-central-retail-pnp.md)
-* 请参阅 [IoT Central 概述](../core/overview-iot-central-pnp.md)，详细了解 IoT Central
+* 请参阅 [IoT Central 概述](../preview/overview-iot-central.md)，详细了解 IoT Central
