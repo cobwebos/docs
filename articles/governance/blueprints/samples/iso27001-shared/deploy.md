@@ -1,17 +1,14 @@
 ---
 title: ISO 27001 共享服务蓝图示例 - 部署步骤
 description: ISO 27001 共享服务蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 43b3eb76de4e180f002379198d363a6852ab9e3b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 54f53e13e6d4561cb46f62318203c41c504ee60b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162491"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037333"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>部署 ISO 27001 共享服务蓝图示例
 

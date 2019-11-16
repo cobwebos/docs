@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: bcd1fff61e1612cc3361548527e5ed13affa3ba5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 72ab2717cea479de6150f435398f164c7c9d5937
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73509271"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092264"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>教程：使用 Azure 机器学习在 R 中训练和部署第一个模型
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -167,10 +167,10 @@ upload_files_to_datastore(ds,
 本教程的同一目录中已提供了一个名为 `accidents.R` 的训练脚本。 请注意**训练脚本中**的以下详细信息，这些操作的目的是利用 Azure ML 服务进行训练：
 
 * 训练脚本采用 `-d` 参数来查找包含训练数据的目录。 稍后定义并提交作业时，需要指向数据存储来获取此参数。 Azure ML 会将存储文件夹装载到训练作业的远程群集。
-* 训练脚本使用 `log_metric_to_run()` 将最终准确度作为指标记录到 Azure ML 中的运行记录。 Azure ML SDK 提供一组日志记录 API 用于在训练运行期间记录各种指标。 这些指标将记录到试验运行记录中，并在其中持久保存。 以后随时可以访问这些指标，或者在 [Azure 机器学习工作室](http://ml.azure.com)的运行详细信息页中查看这些指标。 参阅有关整套日志记录方法 `log_*()` 的[参考](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation)。
+* 训练脚本使用 `log_metric_to_run()` 将最终准确度作为指标记录到 Azure ML 中的运行记录。 Azure ML SDK 提供一组日志记录 API 用于在训练运行期间记录各种指标。 这些指标将记录到试验运行记录中，并在其中持久保存。 以后随时可以访问这些指标，或者在 [Azure 机器学习工作室](https://ml.azure.com)的运行详细信息页中查看这些指标。 参阅有关整套日志记录方法 `log_*()` 的[参考](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation)。
 * 训练脚本将模型保存到一个名为**outputs** 的目录中。 Azure ML 将对 `./outputs` 文件夹进行特殊的处理。 在训练期间，Azure ML 会自动将写入到 `./outputs` 的文件上传到运行记录，并将其持久保存为项目。 将训练的模型保存到 `./outputs` 后，你可以访问和检索模型文件（即使是运行结束之后），但不再可以访问远程训练环境。
 
-### <a name="create-an-estimator"></a>创建评估器
+### <a name="create-an-estimator"></a>创建估算器
 
 Azure ML 评估器封装了在计算目标上执行训练脚本所需的运行配置信息。 Azure ML 运行在指定的计算目标上作为容器化作业运行。 默认情况下，为训练作业生成的 Docker 映像将包含 R、Azure ML SDK 和一组通用的 R 包。 查看此处包含的默认包的完整列表。
 
@@ -269,7 +269,7 @@ as.numeric(predict(accident_model,newdata, type="response")*100)
 
 ## <a name="deploy-as-a-web-service"></a>部署为 Web 服务
 
-使用该模型可以预测碰撞时的死亡危险几率。 使用 Azure ML 将模型部署为预测服务。 本教程将在 [Azure 容器实例](https://docs.microsoft.com/en-us/azure/container-instances/) (ACI) 中部署 Web 服务。
+使用该模型可以预测碰撞时的死亡危险几率。 使用 Azure ML 将模型部署为预测服务。 本教程将在 [Azure 容器实例](https://docs.microsoft.com/azure/container-instances/) (ACI) 中部署 Web 服务。
 
 ### <a name="register-the-model"></a>注册模型
 
@@ -353,17 +353,17 @@ aci_service$scoring_uri
 请删除不再需要的资源。 请不要删除将来仍要使用的任何资源。 
 
 删除 Web 服务：
-```{r delete_service, eval=FALSE}
+```R
 delete_webservice(aci_service)
 ```
 
 删除已注册的模型：
-```{r delete_model, eval=FALSE}
+```R
 delete_model(model)
 ```
 
 删除计算群集：
-```{r delete_compute, eval=FALSE}
+```R
 delete_compute(compute)
 ```
 
