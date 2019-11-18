@@ -1,14 +1,14 @@
 ---
 title: 蓝图示例的索引
-description: 使用 Azure 蓝图进行部署的符合性和标准环境示例的索引。
+description: 用于通过 Azure 蓝图部署环境、策略和云采用框架基础的符合性和标准示例的索引。
 ms.date: 09/24/2019
 ms.topic: sample
-ms.openlocfilehash: c32ab4b6b3cc7c16c5198a943ddc2c71ff0d918c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1f3650fe85ac554db5988892cee35ffaa2a47144
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032389"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128749"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 蓝图示例
 

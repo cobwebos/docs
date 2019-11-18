@@ -15,10 +15,6 @@
   items:
     - name: 使用视频索引器 API
       href: video-indexer-use-apis.md
-- name: 示例
-  items:
-    - name: 实时流分析
-      href: live-stream-analysis.md
 - name: 概念
   items:
     - name: 概述
@@ -29,6 +25,8 @@
       href: manage-multiple-tenants.md
     - name: 语言识别模型
       href: language-identification-model.md
+    - name: 实时流分析
+      href: live-stream-analysis.md
     - name: 自定义内容模型
       items:
         - name: 概述

@@ -1,23 +1,18 @@
 ---
-title: “用于 Redis 的 Azure 缓存”文档 - 教程和 API 参考 | Microsoft Docs
+title: Azure Cache for Redis 文档 - 教程和 API 参考
 description: 了解如何使用用于 Redis 的 Azure 缓存（安全的数据缓存和消息传送中转站，可让应用程序快速访问数据）。 教程、API 参考和其他资源。
-services: cache
 author: yegu-ms
-manager: jubbard
 layout: LandingPage
-ms.assetid: ''
 ms.service: cache
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: c5de77f3862f3ca315c586e1ec1cbfc7b5b453a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 02d28874d18debc73054ad47fe1604e21dd44d85
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829843"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122556"
 ---
 # <a name="azure-cache-for-redis-documentation"></a>“用于 Redis 的 Azure 缓存”文档
 

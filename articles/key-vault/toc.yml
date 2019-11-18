@@ -58,8 +58,6 @@
       href: ../azure-resource-manager/resource-manager-keyvault-parameter.md
     - name: 设置密钥轮换和审核
       href: key-vault-key-rotation-log-monitoring.md
-    - name: 使用事件网格监视 Key Vault 事件
-      href: event-grid-overview.md
 - name: 示例
   items:
     - name: 代码示例
@@ -114,6 +112,8 @@
           href: key-vault-group-permissions-for-apps.md
     - name: 通过事件网格路由 Key Vault 通知
       href: event-grid-tutorial.md
+    - name: 通过事件网格和逻辑应用接收通知
+      href: event-grid-logicapps.md
     - name: 与 Azure Policy 集成
       href: azure-policy.md
     - name: Azure Key Vault 日志记录

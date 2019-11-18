@@ -223,8 +223,6 @@
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
         - name: 监视索引器
           href: search-howto-monitor-indexers.md
-        - name: 排查常见问题
-          href: search-indexer-troubleshooting.md
     - name: 使用 AI 扩充
       items:
         - name: 附加认知服务资源
@@ -249,7 +247,7 @@
               href: cognitive-search-create-custom-skill-example.md
             - name: 示例 - 容器
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
-        - name: 故障排除提示
+        - name: 设计提示
           href: cognitive-search-concept-troubleshooting.md
         - name: 文档链接
           href: cognitive-search-resources-documentation.md
@@ -261,8 +259,6 @@
               href: knowledge-store-view-storage-explorer.md
             - name: 使用 Power BI 进行连接
               href: knowledge-store-connect-power-bi.md
-        - name: 排查扩充问题
-          href: cognitive-search-common-errors-warnings.md
     - name: 查询文档
       items:
         - name: 查询类型和组合
@@ -307,6 +303,12 @@
           href: search-manage-powershell.md
         - name: 监视活动和日志记录
           href: search-monitor-usage.md
+    - name: 故障排除
+      items:
+        - name: 索引器问题
+          href: search-indexer-troubleshooting.md
+        - name: 索引器错误和警告
+          href: cognitive-search-common-errors-warnings.md
 - name: 引用
   items:
     - name: Azure CLI

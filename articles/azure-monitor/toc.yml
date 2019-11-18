@@ -806,10 +806,10 @@
                   href: insights/container-insights-hybrid-setup.md
                 - name: 区域映射
                   href: insights/container-insights-region-mapping.md
-            - name: 分析
+            - name: 监视性能
               href: insights/container-insights-analyze.md
-            - name: 禁用监视
-              href: insights/container-insights-optout.md
+            - name: 监视运行状况
+              href: insights/container-insights-health.md
             - name: 查看实时数据
               items:
                 - name: 实时数据（预览版）概述
@@ -832,6 +832,10 @@
               href: insights/container-insights-agent-config.md
             - name: 更新以启用指标
               href: insights/container-insights-update-metrics.md
+            - name: 运行状况监视配置
+              href: insights/container-insights-health-monitors-config.md
+            - name: 禁用监视
+              href: insights/container-insights-optout.md
             - name: 故障排除
               href: insights/container-insights-troubleshoot.md
         - name: Docker 和 Windows 容器监视
@@ -1167,7 +1171,7 @@
               href: platform/autoscale-overview.md
             - name: 演练
               href: platform/autoscale-get-started.md
-            - name: 设置
+            - name: 配置设置
               href: platform/autoscale-understanding-settings.md
             - name: 最佳做法
               href: platform/autoscale-best-practices.md
@@ -1183,6 +1187,10 @@
               href: platform/autoscale-virtual-machine-scale-sets.md
             - name: 使用 Webhook 和电子邮件通知
               href: platform/autoscale-webhook-email.md
+            - name: 故障排除
+              href: platform/autoscale-troubleshoot.md
+            - name: 资源日志架构
+              href: platform/autoscale-resource-log-schema.md
         - name: PowerShell
           items:
             - name: 通过 PowerShell 管理

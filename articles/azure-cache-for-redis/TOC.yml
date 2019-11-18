@@ -7,17 +7,17 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 创建 ASP.NET 应用
+    - name: ASP.NET 应用
       href: cache-web-app-howto.md
-    - name: 创建 .NET 应用
-      href: cache-dotnet-how-to-use-azure-redis-cache.md
-    - name: 创建 .NET Core 应用
+    - name: .NET Core 应用
       href: cache-dotnet-core-quickstart.md
-    - name: 创建 Node.js 应用
-      href: cache-nodejs-get-started.md
-    - name: 创建 Java 应用
+    - name: .NET 应用
+      href: cache-dotnet-how-to-use-azure-redis-cache.md
+    - name: Java 应用
       href: cache-java-get-started.md
-    - name: 创建 Python 应用
+    - name: Node.js 应用
+      href: cache-nodejs-get-started.md
+    - name: Python 应用
       href: cache-python-get-started.md
 - name: 教程
   items:
@@ -33,10 +33,10 @@
       href: cli-samples.md
 - name: 概念
   items:
-    - name: 最佳做法
-      href: cache-best-practices.md
     - name: 故障转移和修补
       href: cache-failover.md
+    - name: 最佳做法
+      href: cache-best-practices.md
     - name: 针对缓存的体系结构最佳做法
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
 - name: 操作指南
@@ -45,12 +45,14 @@
       items:
         - name: 选择缓存层
           href: 'cache-faq.md#what-redis-cache-offering-and-size-should-i-use'
+        - name: 使用群集分布缓存
+          href: cache-how-to-premium-clustering.md
         - name: 使用 Redis 数据持久性保留缓存
           href: cache-how-to-premium-persistence.md
         - name: 使用虚拟网络保护缓存
           href: cache-how-to-premium-vnet.md
-        - name: 使用群集分布缓存
-          href: cache-how-to-premium-clustering.md
+        - name: 设置异地复制
+          href: cache-how-to-geo-replication.md
         - name: 从托管缓存服务迁移
           href: cache-migrate-to-redis.md
     - name: 自动化
@@ -79,8 +81,6 @@
       items:
         - name: 在 Azure 门户中配置
           href: cache-configure.md
-        - name: 配置异地复制
-          href: cache-how-to-geo-replication.md
         - name: 导入/导出数据
           href: cache-how-to-import-export-data.md
         - name: 重新启动

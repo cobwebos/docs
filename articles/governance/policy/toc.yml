@@ -300,9 +300,19 @@
     - name: 修正不符合资源
       displayName: 'managed identity, task, definition, roleDefinitionIds'
       href: ./how-to/remediate-resources.md
-    - name: 启用用于 VM 的 Azure Monitor（预览版）
-      displayName: 'insights, log analytics, builtin'
-      href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json
+    - name: Azure Lighthouse 集成
+      items:
+        - name: 大规模部署策略
+          displayName: 'lighthouse, scale, deploy'
+          href: ../../lighthouse/how-to/policy-at-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+        - name: 部署可修正的策略
+          displayName: 'lighthouse, scale, remediate'
+          href: ../../lighthouse/how-to/deploy-policy-remediation.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+    - name: Azure Monitor 集成
+      items:
+        - name: 启用用于 VM 的 Azure Monitor（预览版）
+          displayName: 'monitor, insights, log analytics, builtin'
+          href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
 - name: 引用
   items:
     - name: Azure CLI

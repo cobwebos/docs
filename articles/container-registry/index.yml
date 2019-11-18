@@ -1,73 +1,89 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 容器注册表文档
+summary: 使用 Azure 容器注册表可以在专用注册表中为所有类型的容器部署生成、存储和管理容器映像与项目。 将 Azure 容器注册表与现有的容器开发和部署管道配合使用。 使用 Azure 容器注册表任务可按需在 Azure 中生成容器映像，或自动执行由源代码更新、容器的基础映像更新或计时器触发的生成。
 metadata:
-  title: Azure 容器注册表文档 - 教程 | Microsoft Docs
-  description: 使用 Azure 容器注册表可以生成、存储和管理所有类型的容器部署的映像。 参考这些快速入门、教程和示例了解如何使用 Azure 容器注册表。
+  title: Azure 容器注册表文档
+  description: 了解用于承载 Docker 容器映像和相关项目的 Azure 专用注册表服务。 Azure 容器注册表服务还支持 ACR 任务（一套用于生成、管理和修补容器映像的服务）。
   services: container-registry
-  author: georgewallace
-  manager: gwallace
   ms.service: container-registry
+  ms.subservice: subservice
   ms.topic: landing-page
-  ms.date: 07/26/2017
-  ms.author: gwallace
-abstract:
-  description: 使用 Azure 容器注册表可以生成、存储和管理所有类型的容器部署的映像。 参考这些快速入门、教程和示例了解如何使用 Azure 容器注册表。
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何部署 Azure 容器注册表。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Azure CLI
-            href: /azure/container-registry/container-registry-get-started-azure-cli
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure 门户
-            href: /azure/container-registry/container-registry-get-started-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
-            text: Azure PowerShell
-            href: /azure/container-registry/container-registry-get-started-powershell
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 参考这些教程来了解如何使用 Azure 容器注册表。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/container-registry/container-registry-tutorial-quick-build">通过 ACR 任务生成容器映像</a>
-          - html: <a href="/azure/container-registry/container-registry-tutorial-prepare-registry">容器注册表异地复制</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Azure 容器实例的容器注册表</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">将容器注册表与 Azure Kubernetes 服务 (AKS) 配合使用</a>
-          - html: <a href="/azure/service-fabric/service-fabric-tutorial-create-container-images">将容器注册表与 Service Fabric 配合使用</a>
-  - title: 利用 Microsoft Learn 掌握技能
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: 使用 Azure 容器注册表生成并存储容器映像
-            href: /learn/modules/build-and-store-container-images/
-            image:
-              src: /learn/achievements/build-and-store-container-images.svg
-              href: /learn/modules/build-and-store-container-images/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-container-registry">更多交互式学习...</a>
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: <p><a href="/cli/azure/acr">Azure CLI</a></p><p><a href="/powershell/module/az.containerregistry">PowerShell</a></p>
-          - title: Languages
-            html: <p><a href="/dotnet/api/overview/azure/containerregistry">.NET</a></p><p><a href="/python/api/overview/azure/container-registry">Python</a></p><p><a href="/java/api/overview/azure/containerregistry">Java</a></p><p><a href="/javascript/api/overview/azure/container-registry">Node.js</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/containerregistry">REST API 参考</a></p><p><a href="/azure/templates/microsoft.containerregistry/registries">资源管理器模板</a></p><p><a href="/azure/container-registry/container-registry-webhook-reference">Webhook 架构</a></p>
+  ms.collection: collection
+  author: dlepow
+  ms.author: danlep
+  ms.date: 11/08/2019
+  ms.openlocfilehash: ace70edef26be143d8e2367818a3c4cc15bd769e
+  ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 11/17/2019
+  ms.locfileid: "74150086"
+landingContent:
+- title: 关于 Azure 容器注册表
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 容器注册表？
+      url: container-registry-intro.md
+    - text: 注册表、存储库和映像
+      url: container-registry-concepts.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 部署容器注册表 - CLI
+      url: container-registry-get-started-azure-cli.md
+    - text: 部署容器注册表 - 门户
+      url: container-registry-get-started-portal.md
+    - text: 通过 Docker 推送和拉取映像
+      url: container-registry-get-started-docker-cli.md
+  - linkListType: concept
+    links:
+    - text: 服务层
+      url: container-registry-skus.md
+  - linkListType: learn
+    links:
+    - text: 使用 Azure 容器注册表生成并存储容器映像
+      url: https://docs.microsoft.com/learn/modules/build-and-store-container-images/
+  - linkListType: video
+    links:
+    - text: Azure 容器注册表视频
+      url: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
+- title: 管理注册表
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 查看存储库和标记
+      url: container-registry-repositories.md
+    - text: 导入图像
+      url: container-registry-import-images.md
+    - text: 锁定图像
+      url: container-registry-image-lock.md
+    - text: 删除映像
+      url: container-registry-delete.md
+  - linkListType: concept
+    links:
+    - text: 异地复制
+      url: container-registry-geo-replication.md
+    - text: Authentication
+      url: container-registry-authentication.md
+    - text: 最佳做法
+      url: container-registry-best-practices.md
+    - text: 常见问题解答
+      url: container-registry-faq.md
+- title: ACR 任务
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 关于 ACR 任务
+      url: container-registry-tasks-overview.md
+    - text: 多步骤任务
+      url: container-registry-tasks-multi-step.md
+  - linkListType: quickstart
+    links:
+    - text: 在云中生成映像 - CLI
+      url: container-registry-quickstart-task-cli.md
+  - linkListType: tutorial
+    links:
+    - text: 自动生成映像
+      url: container-registry-tutorial-quick-task.md
