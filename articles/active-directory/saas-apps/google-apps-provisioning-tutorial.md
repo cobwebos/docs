@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54b158528a67dfe77f33f41f3bb4b4570eb4c508
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4d4c08802b9a19398e7968901974cad86d9d946a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802207"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120314"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教程：为 G Suite 配置自动用户预配
 
@@ -35,7 +35,7 @@ ms.locfileid: "72802207"
 - 已更新 G Suite 目标属性名称以匹配[此处](/azure/active-directory/manage-apps/customize-application-attributes)定义的名称。
 - 已更新默认属性映射。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 G Suite 的集成，需要准备好以下各项：
 
@@ -90,7 +90,7 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 
     ![键入域名][22]
 
-    d.单击“下一步”。 选择“继续验证域所有权”。 然后按步骤验证所拥有的域名。 有关如何通过 Google 验证你的域的全面说明，请参阅[验证站点所有权](https://support.google.com/webmasters/answer/35179)。
+    d. 选择“继续验证域所有权”。 然后按步骤验证你拥有该域名。 有关如何通过 Google 验证你的域的全面说明，请参阅[验证站点所有权](https://support.google.com/webmasters/answer/35179)。
 
     e. 对要添加到 G Suite 的任何其他域重复上述步骤。
 
@@ -116,7 +116,7 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 
 3. 若要添加新应用程序，请选择窗格顶部的 "**新建应用程序**" 按钮。
 
-    ![“新增应用程序”按钮](common/add-new-app.png)
+    ![“新建应用程序”按钮](common/add-new-app.png)
 
 4. 在搜索框中输入 " **g suite**"，在结果面板中选择 " **g suite** "，然后单击 "**添加**" 按钮添加该应用程序。
 
@@ -183,7 +183,7 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 
 14. 若要为 G Suite 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
 
-    ![设置状态切换开启](common/provisioning-toggle-on.png)
+    ![预配状态已打开](common/provisioning-toggle-on.png)
 
 15. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要预配到 G Suite 的用户和/或组。
 
@@ -191,7 +191,7 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 
 16. 已准备好预配时，单击“保存”。
 
-    ![正在保存设置配置](common/provisioning-configuration-save.png)
+    ![保存预配配置](common/provisioning-configuration-save.png)
 
 此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 你可以使用 "**同步详细信息**" 部分监视进度并跟踪指向预配活动报告的链接，该报告描述了在 G Suite 上 Azure AD 预配服务执行的所有操作。
 
@@ -200,10 +200,16 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 > [!NOTE]
 > 自动将用户预配到 G Suite 的另一个可行选项是使用[Google Cloud Directory Sync](https://support.google.com/a/answer/106368?hl=en)。此选项可将本地 Active Directory 标识预配到 G Suite。
 
+## <a name="common-issues"></a>常见问题
+* G Suite 要求所有预配的用户都来自验证域。 确保要预配的任何用户在 G Suite 的已验证域中具有 UPN。 如果未验证域中的用户在预配范围内，则会在[设置日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)中看到一个错误，如 "GoogleAppsInvalidDomain"。 您可以通过使用[范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)来防止这些错误，并确保未验证域中的用户不在作用域内。
+    * 目标属性： userPrincipalName
+    * 运算符： REGEX 匹配或非 REGEX 匹配
+    * 值：. *@domain.com
+
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 

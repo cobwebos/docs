@@ -1,24 +1,14 @@
 ---
-title: Azure 资源提供程序注册错误 | Microsoft Docs
+title: 资源提供程序注册错误
 description: 介绍如何在 Azure 资源管理器中部署资源时解决 Azure 资源提供程序注册错误。
-services: azure-resource-manager
-documentationcenter: ''
-author: tfitzmac
-manager: timlt
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 02/15/2019
-ms.author: tomfitz
-ms.openlocfilehash: fcdcfdfe736f29f18ea2dc240a66fd7fa6bc404b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 96595bab9d0db189911cac4fc1b42c722c2c1515
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390262"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150511"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>解决资源提供程序注册的错误
 
@@ -115,7 +105,7 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
    ![选择所有服务](./media/resource-manager-register-provider-errors/select-all-services.png)
 
-1. 选择 **订阅**。
+1. 选择“订阅”。
 
    ![选择订阅](./media/resource-manager-register-provider-errors/select-subscriptions.png)
 

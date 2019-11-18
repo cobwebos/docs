@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: jenns
-ms.openlocfilehash: 6c2a8fa57bf6e3a552da57588bdbe752ef0d22e2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5f2d23b3fe33691d37dc00b2d4e79036293252d9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609562"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132871"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure 机器学习的 Azure 事件网格事件架构
 
@@ -180,7 +180,7 @@ Azure 机器学习发出以下事件类型：
 | -------- | ---- | ----------- |
 | ServiceName | 字符串 | 已部署的服务的名称。 |
 | ServiceComputeType | 字符串 | 已部署服务的计算类型（如 ACI、AKS）。 |
-| ModelIds | 字符串 | 模型 Id 的通用分隔列表。 服务中部署的模型的 Id。 |
+  | ModelIds | 字符串 | 模型 Id 的逗号分隔列表。 服务中部署的模型的 Id。 |
 | ServiceTags | 对象 | 已部署服务的标记。 |
 | ServiceProperties | 对象 | 已部署服务的属性。 |
 
@@ -189,7 +189,7 @@ Azure 机器学习发出以下事件类型：
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | ExperimentId | 字符串 | 运行所属的实验的 ID。 |
-| experimentName | 字符串 | 运行所属的实验的名称。 |
+| ExperimentName | 字符串 | 运行所属的实验的名称。 |
 | RunId | 字符串 | 已完成的运行的 ID。 |
 | RunType | 字符串 | 已完成的运行的运行类型。 |
 | RunTags | 对象 | 已完成的运行的标记。 |
@@ -214,4 +214,4 @@ Azure 机器学习发出以下事件类型：
 * 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](overview.md)
 * 有关创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)
 * 有关将 Azure 事件网格与 Azure 机器学习一起使用的简介，请参阅使用[Azure 机器学习事件](/azure/machine-learning/service/concept-event-grid-integration)
-* 有关将 Azure 事件网格与 Azure 机器学习结合使用的示例，请参阅[创建事件驱动的机器学习工作流](/azure/machine-learning/service/event-schema-machine-learning)
+* 有关将 Azure 事件网格与 Azure 机器学习结合使用的示例，请参阅[创建事件驱动的机器学习工作流](/azure/machine-learning/service/how-to-use-event-grid)

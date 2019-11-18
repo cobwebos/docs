@@ -1,5 +1,5 @@
 ---
-title: 如何：指定语音转换到文本语音服务的源语言
+title: 如何指定语音转换到文本的源语言
 titleSuffix: Azure Cognitive Services
 description: 语音 SDK 允许在将语音转换为文本时指定源语言。 本文介绍如何使用 FromConfig 和 SourceLanguageConfig 方法让语音服务知道源语言，并提供自定义模型目标。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 3c2503d2f341b4cdf90f7f7690fed897412a9614
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 94b8fb026b61b52e8096cf54e1db30a6c260c04b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506897"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109952"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>指定语音转换到文本的源语言
 

@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c8fc6c552920cf7790bf5c89531fc04ad4c57d36
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e040533acdd8979b7b43358c74d1b729dafa2c66
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333215"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111837"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>使用地理区域冗余存储（GZRS）构建高度可用的 Azure 存储应用程序（预览版）
 
@@ -31,6 +31,7 @@ GZRS 和 RA-GZRS 目前可用于以下区域：
 
 - 北欧
 - 西欧
+- 英国南部
 - 美国东部
 - 美国东部 2
 - 美国中部
@@ -86,7 +87,7 @@ Microsoft 继续在其他 Azure 区域启用 GZRS 和 GZRS。 请定期查看[Az
 
 ### <a name="migrating-from-a-zrs-account"></a>从 ZRS 帐户迁移
 
-若要将现有 ZRS 帐户转换为 GZRS，请使用[AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) cmdlet 更改帐户的 SKU。 请记住将占位符值替换为自己的值：
+若要将现有 ZRS 帐户转换为 GZRS，请使用[AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) cmdlet 更改帐户的 SKU。 请务必将占位符值替换为你自己的值：
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -SkuName "Standard_RAGZRS"
@@ -141,10 +142,10 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
     - **问题类型**：选择“数据迁移”。
     - **类别**：选择 "**迁移到区域内的（RA-） GZRS**"。
     - **标题**：键入描述性标题，例如 **（RA-） GZRS 帐户迁移**。
-    - **详细信息**：在 "**详细**信息" 框中键入其他详细信息，例如，"我想要从 \_ @ no__t-3" 区域中的 [LRS，GRS] 迁移到 GZRS。 " 或 "我想要从 \_ @ no__t-1 区域中的 [LRS，RA-GRS] 迁移到" RA-GZRS "。
+    - **详细信息**：在 "**详细**信息" 框中键入其他详细信息，例如，"我想要从 \_\_ 区域中的 [LRS，GRS] 迁移到 GZRS。" 要从 \_\_ 区域中的 [LRS，RA-GRS] 迁移到 GZRS。 "
 5. 选择“**下一步**”。
 6. 检查“联系信息”边栏选项卡中的联系信息是否正确。
-7. 选择**创建**。
+7. 选择“创建”。
 
 支持代表将与你联系以提供帮助。
 

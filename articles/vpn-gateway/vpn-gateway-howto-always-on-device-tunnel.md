@@ -1,5 +1,6 @@
 ---
-title: 为 VPN 网关配置 Always On VPN 隧道
+title: 配置始终启用的 VPN 隧道
+titleSuffix: Azure VPN Gateway
 description: 为 VPN 网关配置 Always On VPN 隧道的步骤
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: bc2ec2b952b4f0c6e61fc4953559fa882edfff09
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: f22b29cfcaf1d4c4ce28b2b0557d70b281b6891f
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841146"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74146397"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>配置 Always On VPN 设备隧道
 
@@ -28,11 +29,11 @@ Always On VPN 连接包括两种隧道：
 
 设备隧道和用户隧道使用其自身的 VPN 配置文件独立运行。 它们可以同时连接，在适当的情况下可以使用不同的身份验证方法和其他 VPN 配置设置。
 
-## <a name="1-configure-the-gateway"></a>1.配置网关
+## <a name="1-configure-the-gateway"></a>1. 配置网关
 
 使用此[点到站点文章](vpn-gateway-howto-point-to-site-resource-manager-portal.md)将 VPN 网关配置为使用 IKEv2 和基于证书的身份验证。
 
-## <a name="2-configure-the-device-tunnel"></a>2.配置设备隧道
+## <a name="2-configure-the-device-tunnel"></a>2. 配置设备隧道
 
 必须满足以下要求才能成功建立设备隧道：
 
@@ -99,7 +100,7 @@ Always On VPN 连接包括两种隧道：
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. 复制以下文本，并在 **devicecert.ps1** 所在的同一文件夹中将文件保存为 ***VPNProfile.xml***。 编辑以下文本，使之与你的环境相匹配。
+1. 复制以下文本，并在 ***devicecert.ps1*** 所在的同一文件夹中将文件保存为 **VPNProfile.xml**。 编辑以下文本，使之与你的环境相匹配。
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>`
    * `<Address>192.168.3.5</Address>`
@@ -134,7 +135,7 @@ Always On VPN 连接包括两种隧道：
    <RegisterDNS>true</RegisterDNS>
    </VPNProfile>
    ```
-1. 从 [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) 下载 **PsExec**，并将文件解压缩到 **C:\PSTools**。
+1. 从 **Sysinternals** 下载 [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec)，并将文件解压缩到 **C:\PSTools**。
 1. 在管理员命令提示符下，运行以下命令启动 PowerShell：
 
    ```

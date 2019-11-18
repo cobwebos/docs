@@ -1,5 +1,5 @@
 ---
-title: 在扩充管道中处理和提取图像中的文本
+title: 从图像中提取文本
 titleSuffix: Azure Cognitive Search
 description: 在 Azure 认知搜索管道中处理和提取图像中的文本和其他信息。
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5006bf5bc7eafd464861a3570654539386c5f837
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f81bcd84dfb07958f3205f779937b8beac74166f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787741"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113852"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>如何在 AI 扩充方案中处理和提取图像中的信息
 
@@ -27,20 +27,20 @@ Azure 认知搜索具有几个使用图像和图像文件的功能。 在文档�
 
 在文档破解过程中，可以使用新的一组索引器配置参数来处理图像文件或嵌入文件中的图像。 这些参数用于将图像规范化，以便进行进一步的下游处理。 规范化图像可以使图像更统一。 可以根据最大高度和宽度来重设大型图像的大小，使之可用。 对于提供方向元数据的图像，可以调整图像旋转，使之适合垂直加载。 元数据调整项在为每个图像创建的复杂类型中捕获。 
 
-无法关闭图像规范化功能。 循环访问图像的技术需要规范化的图像。 启用索引器上的图像规范化需要将技能组合附加到该索引器。
+无法关闭图像规范化功能。 循环访问图像的技术需要规范化的图像。 在索引器上启用图像规范化需要将技能组附加到该索引器。
 
-| 配置参数 | 描述 |
+| 配置参数 | 说明 |
 |--------------------|-------------|
-| imageAction   | 如果在遇到嵌入图像或图像文件时无需执行任何操作，请将此项设置为 "none"。 <br/>设置为 "generateNormalizedImages" 会在文档破解过程中生成一系列规范化的图像。<br/>设置为 "generateNormalizedImagePerPage" 以生成一组规范化图像，其中，对于数据源中的 Pdf，每个页面呈现到一个输出图像。  对于非 PDF 文件类型，该功能与“generateNormalizedImages”相同。<br/>对于任何不是“none”的选项，这些图像会在 *normalized_images* 字段中公开。 <br/>默认为 "none"。 将 "dataToExtract" 设置为 "contentAndMetadata" 时，此配置仅与 Blob 数据源相关。 <br/>最多可从给定文档中提取1000个图像。 如果文档中的图像超过1000，则将提取第一个1000，并将生成一个警告。 |
-|  normalizedImageMaxWidth | 生成的规范化图像的最大宽度（以像素为单位）。 默认为 2000。 允许的最大值为10000。 | 
-|  normalizedImageMaxHeight | 生成的规范化图像的最大高度（以像素为单位）。 默认为 2000。 允许的最大值为10000。|
+| imageAction   | 如果在遇到嵌入图像或图像文件时无需执行任何操作，请将此项设置为 "none"。 <br/>设置为 "generateNormalizedImages" 会在文档破解过程中生成一系列规范化的图像。<br/>设置为 "generateNormalizedImagePerPage" 以生成一组规范化图像，其中，对于数据源中的 Pdf，每个页面呈现到一个输出图像。  对于非 PDF 文件类型，该功能与“generateNormalizedImages”相同。<br/>对于任何不是“none”的选项，这些图像会在 *normalized_images* 字段中公开。 <br/>默认为 "none"。 将 "dataToExtract" 设置为 "contentAndMetadata" 时，此配置仅与 Blob 数据源相关。 <br/>将从给定文档中提取最多 1000 个图像。 如果在文档中有超过 1000 个图像，则将提取前 1000 个，并将生成警告。 |
+|  normalizedImageMaxWidth | 生成的规范化图像的最大宽度（以像素为单位）。 默认为 2000。 允许的最大值为 10000。 | 
+|  normalizedImageMaxHeight | 生成的规范化图像的最大高度（以像素为单位）。 默认为 2000。 允许的最大值为 10000。|
 
 > [!NOTE]
 > 如果将*imageAction*属性设置为除 "none" 之外的任何值，则无法将*parsingMode*属性设置为 "default" 以外的任何值。  在索引器配置中，只能将这两个属性中的一个设置为非默认值。
 
 将 **parsingMode** 参数设置为 `json`（将每个 Blob 作为单个文档进行索引编制）或 `jsonArray`（如果 Blob 包含 JSON 数组，且需要将数组的每个元素视为单独的文档）。
 
-将规范化图像的最大宽度和高度默认设置为 2000 像素是考虑到 [OCR 技术](cognitive-search-skill-ocr.md)所能够支持的最大大小以及[图像分析技术](cognitive-search-skill-image-analysis.md)。 对于非英语语言， [OCR 技能](cognitive-search-skill-ocr.md)支持最大宽度和高度4200，为英语提供10000。  如果增加最大限制，则根据技能组合的定义和文档的语言，处理可能会对较大的图像失败。 
+将规范化图像的最大宽度和高度默认设置为 2000 像素是考虑到 [OCR 技术](cognitive-search-skill-ocr.md)所能够支持的最大大小以及[图像分析技术](cognitive-search-skill-image-analysis.md)。 [OCR 技能](cognitive-search-skill-ocr.md)支持非英语语言的最大宽度和高度为 4200，支持英语语言的最大宽度和高度为 10000。  如果增加最大限制，则根据技能组定义和文档语言，对较大的图像进行处理可能会失败。 
 
 可以指定[索引器定义](https://docs.microsoft.com/rest/api/searchservice/create-indexer)中所述的 imageAction，如下所示：
 
@@ -60,7 +60,7 @@ Azure 认知搜索具有几个使用图像和图像文件的功能。 在文档�
 
 将 *imageAction* 设置为“none”以外的值后，新的 *normalized_images* 字段会包含一系列图像。 每个图像都是一个包含以下成员的复杂类型：
 
-| 图像成员       | 描述                             |
+| 图像成员       | 说明                             |
 |--------------------|-----------------------------------------|
 | 数据               | JPEG 格式的规范化图像的 BASE64 编码字符串。   |
 | width              | 规范化图像的宽度（以像素为单位）。 |
@@ -69,7 +69,7 @@ Azure 认知搜索具有几个使用图像和图像文件的功能。 在文档�
 | originalHeight      | 图像在规范化之前的原始高度。 |
 | rotationFromOriginal |  在创建规范化图像过程中进行的逆时针旋转（以度为单位）。 值的范围为 0 度到 360 度。 此步骤从图像读取由照相机或扫描仪生成的元数据。 通常为 90 度的倍数。 |
 | contentOffset | 从其提取图像的内容字段中的字符偏移。 此字段仅适用于包含嵌入图像的文件。 |
-| pageNumber | 如果图像是从 PDF 提取或呈现的，则此字段包含从1开始提取或呈现的 PDF 中的页码。  如果图像不是来自 PDF，则此字段将为0。  |
+| pageNumber | 如果图像是从 PDF 提取或呈现的，则此字段包含从中提取或呈现图像的 PDF 中的页码（从 1 开始）。  如果图像不是来自 PDF，则此字段将为 0。  |
 
  *normalized_images* 的示例值：
 ```json
@@ -219,4 +219,4 @@ Azure 认知搜索具有几个使用图像和图像文件的功能。 在文档�
 + [OCR 技术](cognitive-search-skill-ocr.md)
 + [文本合并技术](cognitive-search-skill-textmerger.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
-+ [如何映射扩充的域](cognitive-search-output-field-mapping.md)
++ [如何映射扩充的字段](cognitive-search-output-field-mapping.md)

@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: c4ab9d9cc8007281e0e5729fe883e654107be6fe
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: e3661797ea408f219a67a1862901fee7c27a1d58
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645290"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123914"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure Synapse Analytics （以前称为 SQL DW）容量限制
 
@@ -23,17 +23,17 @@ Azure Synapse 的各种组件允许的最大值。
 
 ## <a name="workload-management"></a>工作负荷管理
 
-| Category | 说明 | 最大值 |
+| 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
 | [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |单个 SQL 池（数据仓库）单元的最大 DWU | 第 1 代：DW6000<br></br>第 2 代：DW30000c |
-| [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |每个服务器的默认 DTU |54,000<br></br>默认情况下，每个 SQL server （例如 myserver.database.windows.net）的 DTU 配额为54000，最多可允许9个 DW6000c。 此配额仅仅只是安全限制。 可以通过[创建支持票证](sql-data-warehouse-get-started-create-support-ticket.md)并选择“配额”作为请求类型来增加配额。  要计算 DTU 需求，请将所需的 DWU 总数乘以 7.5 或将所需的 cDWU 总数乘以 9.0。 例如：<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW6000c x 9.0 = 54,000 DTU。<br></br>可以在门户中的 SQL Server 选项中查看当前 DTU 消耗量。 已暂停和未暂停的数据库都计入 DTU 配额。 |
+| [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |每个服务器的默认 DTU |54,000<br></br>默认情况下，每个 SQL server （例如 myserver.database.windows.net）的 DTU 配额为54000，这允许最多 DW5000c。 此配额仅仅只是安全限制。 可以通过[创建支持票证](sql-data-warehouse-get-started-create-support-ticket.md)并选择“配额”作为请求类型来增加配额。  若要计算 DTU 需求，请将7.5 乘以所需的 DWU 总数，或将9.5 乘以所需的总 cDWU 数。 例如：<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW5000c x 9.5 = 47500 Dtu。<br></br>可以在门户中的 SQL Server 选项中查看当前 DTU 消耗量。 已暂停和未暂停的数据库都计入 DTU 配额。 |
 | 数据库连接 |并发打开的最大会话数 |1024<br/><br/>并发打开的会话数因所选 DWU 而异。 DWU600c 及更高版本支持最多 1024 个打开的会话。 DWU500c 及更低版本支持最多 512 个并发打开的会话。 请注意，可并发执行的查询数量是有限制的。 当超出并发限制时，请求将进入内部队列等待处理。 |
 | 数据库连接 |预处理语句的最大内存 |20 MB |
-| [工作负荷管理](resource-classes-for-workload-management.md) |并发查询数上限 |128<br/><br/>  最多可执行128个并发查询，其余查询将排队。<br/><br/>当用户分配到更高的资源类或 [数据仓库单位] 的 limits.md）设置降低时，并发查询数可能会减少。 某些查询（例如 DMV 查询）始终允许运行，并且不会影响并发查询限制。 有关并发查询执行的详细信息，请参阅 [并发最大内存] limits.md）一文。 |
+| [工作负荷管理](resource-classes-for-workload-management.md) |并发查询数上限 |128<br/><br/>  最多可执行128个并发查询，其余查询将排队。<br/><br/>将用户分配到更高的资源类或当[数据仓库单位](memory-concurrency-limits.md)设置降低时，并发查询数可能会降低。 某些查询（例如 DMV 查询）始终允许运行，并且不会影响并发查询限制。 有关并发查询执行的更多详细信息，请参阅[并发最大值](memory-concurrency-limits.md)一文。 |
 | [tempdb](sql-data-warehouse-tables-temporary.md) |最大 GB |每 DW100 399 GB。 因此，在 DWU1000 的情况下，tempdb 的大小为 3.99 TB。 |
 
 ## <a name="database-objects"></a>数据库对象
-| Category | 说明 | 最大值 |
+| 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
 | 数据库 |最大大小 | 第 1 代：磁盘压缩后为 240TB。 此空间与 tempdb 或日志空间无关，因此，此空间专用于永久表。  聚集列存储压缩率估计为 5 倍。  此压缩率允许数据库在所有表都为聚集列存储（默认表类型）的情况下增长到大约 1 PB。 <br/><br/> 第 2 代：240TB 用于行存储，无限存储空间用于列存储表 |
 | 表 |最大大小 |磁盘上压缩后 60 TB |
@@ -44,7 +44,7 @@ Azure Synapse 的各种组件允许的最大值。
 | 表 |每个表的分区数 |15,000<br/><br/>为了实现高性能，建议在满足业务需求的情况下尽量减少所需的分区数。 随着分区数目的增长，数据定义语言 (DDL) 和数据操作语言 (DML) 操作的开销也会增长，导致性能下降。 |
 | 表 |每个分区边界值的字符数。 |4000 |
 | 索引 |每个表的非聚集索引数。 |50<br/><br/>仅适用于行存储表。 |
-| 索引 |每个表的聚集索引数。 |1<br><br/>适用于行存储表和列存储表。 |
+| 索引 |每个表的聚集索引数。 |1<br><br/>适用于行存储和列存储表。 |
 | 索引 |索引键大小。 |900 字节。<br/><br/>仅适用于行存储索引。<br/><br/>如果创建索引时列中的现有数据未超过 900 字节，那么可以创建最大大小超过 900 字节的 varchar 列上的索引。 但是，以后导致总大小超过 900 字节的对列的 INSERT 或 UPDATE 操作会失败。 |
 | 索引 |每个索引的键列数。 |16<br/><br/>仅适用于行存储索引。 聚集列存储索引包括所有列。 |
 | 统计信息 |组合的列值的大小。 |900 字节。 |
@@ -54,12 +54,12 @@ Azure Synapse 的各种组件允许的最大值。
 | 查看 |每个视图的列数 |1,024 |
 
 ## <a name="loads"></a>加载
-| Category | 说明 | 最大值 |
+| 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
 | Polybase 加载 |每行 MB 数 |1<br/><br/>Polybase 加载小于 1 MB 的行。 不支持将 LOB 数据类型加载到具有聚集列存储索引 (CCI) 的表。<br/><br/> |
 
 ## <a name="queries"></a>查询
-| Category | 说明 | 最大值 |
+| 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
 | 查询 |用户表的排队查询数。 |1000 |
 | 查询 |系统视图的并发查询数。 |100 |
@@ -74,7 +74,7 @@ Azure Synapse 的各种组件允许的最大值。
 | 每个语句的标识符数 |被引用的标识符数 |65,535<br/><br/> 查询的单个表达式中可包含的标识符数量是有限的。 超过此数字将导致 SQL Server 错误 8632。 有关详细信息，请参阅 [Internal error: An expression services limit has been reached](https://support.microsoft.com/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a)（内部错误：已达到表达式服务限制）。 |
 | 字符串文本 | 一个语句中字符串文本的数量 | 20,000 <br/><br/>查询的单个表达式中的字符串常量数量是有限的。 超过此数字将导致 SQL Server 错误 8632。|
 
-## <a name="metadata"></a>Metadata
+## <a name="metadata"></a>元数据
 | 系统视图 | 最大行数 |
 |:--- |:--- |
 | sys.dm_pdw_component_health_alerts |10,000 |

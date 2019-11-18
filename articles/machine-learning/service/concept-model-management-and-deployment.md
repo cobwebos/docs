@@ -1,7 +1,7 @@
 ---
-title: MLOps：管理、部署 & 监视 ML 模型
+title: MLOps： ML 模型管理
 titleSuffix: Azure Machine Learning
-description: 了解如何使用用于 MLOps 的 Azure 机器学习：部署、管理和监视模型，以便不断地改善它们。 可以在本地计算机上部署通过 Azure 机器学习训练的模型，也可从其他源进行部署。
+description: '了解 Azure 机器学习（MLOps）的模型管理。 部署、管理和监视模型，以便不断改善它们。 '
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0d0e567198fd25243b89245d54bbed5a658cc663
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c77e36b5fbeb1ecacd42352c8c52cfd4b617d0e6
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716594"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123602"
 ---
-# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps：管理、部署和监视 Azure 机器学习的模型
+# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：模型管理、部署和监视 Azure 机器学习
 
 本文介绍如何使用 Azure 机器学习来管理模型的生命周期。 Azure 机器学习使用机器学习操作（MLOps）方法，该方法可提高机器学习解决方案的质量和一致性。 
 

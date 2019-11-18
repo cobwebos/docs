@@ -1,19 +1,17 @@
 ---
-title: 授予创建 Azure Enterprise 订阅所需的访问权限 | Microsoft Docs
+title: 授予创建 Azure 企业订阅的访问权限
 description: 了解如何使用户或服务主体能够以编程方式创建 Azure Enterprise 订阅。
-services: azure-resource-manager
 author: jureid
 manager: jureid
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: a7ed7dffd27b51c1314c4293820dc33be4d7e8e0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8f1f7837b6243f1af49d3b5eb0f3632c5e144f6c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206645"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149838"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>授予创建 Azure Enterprise 订阅（预览版）所需的访问权限
 
@@ -23,15 +21,15 @@ ms.locfileid: "67206645"
 
 ## <a name="grant-access"></a>授予访问权限
 
-向[注册帐户下创建订阅](programmatically-create-subscription.md)，用户必须具有[RBAC 所有者角色](../role-based-access-control/built-in-roles.md#owner)该帐户上。 您可以授予用户或一组用户上注册帐户的 RBAC 所有者角色通过执行以下步骤：
+若要[在注册帐户下创建订阅](programmatically-create-subscription.md)，用户必须在该帐户上拥有[RBAC 所有者角色](../role-based-access-control/built-in-roles.md#owner)。 可以通过执行以下步骤，为用户或用户组授予注册帐户上的 RBAC 所有者角色：
 
-1. 获取你想要授予访问权限的注册帐户的对象 ID
+1. 获取要授予访问权限的注册帐户的对象 ID
 
-    若要授予其他人上注册帐户的 RBAC 所有者角色，你必须是帐户所有者或帐户的 RBAC 所有者。
+    若要向其他人授予注册帐户上的 RBAC 所有者角色，你必须是帐户所有者或帐户的 RBAC 所有者。
 
     # <a name="resttabrest"></a>[REST](#tab/rest)
 
-    若要列出有权访问的所有注册帐户的请求：
+    请求列出你有权访问的所有注册帐户：
 
     ```json
     GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts?api-version=2018-03-01-preview
@@ -62,17 +60,17 @@ ms.locfileid: "67206645"
     }
     ```
 
-    使用`principalName`属性来标识你想要授予的 RBAC 所有者访问权限的帐户。 复制`name`的该帐户。 例如，如果你想要授予的 RBAC 所有者访问权限SignUpEngineering@contoso.com注册帐户，会将复制```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```。 这是注册帐户的对象 ID。 将此值粘贴到某个位置，以便可以使用它作为在下一步`enrollmentAccountObjectId`。
+    使用 `principalName` 属性来标识要授予 RBAC 所有者访问权限的帐户。 复制该帐户的 `name`。 例如，如果你想要授予 RBAC 所有者对 SignUpEngineering@contoso.com 注册帐户的访问权限，则可以复制 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```。 这是注册帐户的对象 ID。 将此值粘贴到某个位置，以便在下一步中将其用作 `enrollmentAccountObjectId`。
 
     # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-    使用 [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) cmdlet 列出你可以访问的所有注册帐户。 选择**试试**以打开[Azure Cloud Shell](https://shell.azure.com/)。 若要粘贴代码，右键单击 shell 窗口中，并选择**粘贴**。
+    使用 [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) cmdlet 列出你可以访问的所有注册帐户。 选择 "**尝试**" 以打开[Azure Cloud Shell](https://shell.azure.com/)。 若要粘贴代码，请右键单击 shell 窗口，然后选择 "**粘贴**"。
 
     ```azurepowershell-interactive
     Get-AzEnrollmentAccount
     ```
 
-    Azure 使用有权访问注册帐户列表做出响应：
+    Azure 会使用你有权访问的注册帐户列表进行响应：
 
     ```azurepowershell
     ObjectId                               | PrincipalName
@@ -80,17 +78,17 @@ ms.locfileid: "67206645"
     4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
     ```
 
-    使用`principalName`属性来标识你想要授予的 RBAC 所有者访问权限的帐户。 复制`ObjectId`的该帐户。 例如，如果你想要授予的 RBAC 所有者访问权限SignUpEngineering@contoso.com注册帐户，会将复制```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```。 将某个位置，以便可以使用它作为下一步中粘贴此对象 ID `enrollmentAccountObjectId`。
+    使用 `principalName` 属性来标识要授予 RBAC 所有者访问权限的帐户。 复制该帐户的 `ObjectId`。 例如，如果你想要授予 RBAC 所有者对 SignUpEngineering@contoso.com 注册帐户的访问权限，则可以复制 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```。 将此对象 ID 粘贴到某个位置，以便在下一步中将其用作 `enrollmentAccountObjectId`。
 
     # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-    使用 [az billing enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) 命令列出有访问权限的所有注册帐户。 选择**试试**以打开[Azure Cloud Shell](https://shell.azure.com/)。 若要粘贴代码，右键单击 shell 窗口中，并选择**粘贴**。
+    使用 [az billing enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) 命令列出有访问权限的所有注册帐户。 选择 "**尝试**" 以打开[Azure Cloud Shell](https://shell.azure.com/)。 若要粘贴代码，请右键单击 shell 窗口，然后选择 "**粘贴**"。
 
     ```azurecli-interactive
     az billing enrollment-account list
     ```
 
-    Azure 使用有权访问注册帐户列表做出响应：
+    Azure 会使用你有权访问的注册帐户列表进行响应：
 
     ```json
     [
@@ -111,22 +109,22 @@ ms.locfileid: "67206645"
 
     ---
 
-    使用`principalName`属性来标识你想要授予的 RBAC 所有者访问权限的帐户。 复制`name`的该帐户。 例如，如果你想要授予的 RBAC 所有者访问权限SignUpEngineering@contoso.com注册帐户，会将复制```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```。 这是注册帐户的对象 ID。 将此值粘贴到某个位置，以便可以使用它作为在下一步`enrollmentAccountObjectId`。
+    使用 `principalName` 属性来标识要授予 RBAC 所有者访问权限的帐户。 复制该帐户的 `name`。 例如，如果你想要授予 RBAC 所有者对 SignUpEngineering@contoso.com 注册帐户的访问权限，则可以复制 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```。 这是注册帐户的对象 ID。 将此值粘贴到某个位置，以便在下一步中将其用作 `enrollmentAccountObjectId`。
 
-1. <a id="userObjectId"></a>获取用户或组你想要提供的 RBAC 所有者角色的对象 ID
+1. <a id="userObjectId"></a>获取要向其授予 RBAC 所有者角色的用户或组的对象 ID
 
     1. 在 Azure 门户中，搜索**Azure Active Directory**。
-    1. 如果你想要授予用户访问权限，请单击**用户**在左侧菜单中。 如果你想要向组授予访问权限，请单击**组**。
-    1. 选择用户或组你想要提供的 RBAC 所有者角色。
-    1. 如果所选用户，您会发现的对象 ID 的配置文件页。 如果选择组时，对象 ID 将在概述页中。 复制**ObjectID**单击文本框右侧的图标。 粘贴此位置，这样您可以将其作为下一步`userObjectId`。
+    1. 如果要授予用户访问权限，请单击左侧菜单中的 "**用户**"。 若要授予对组的访问权限，请单击 "**组**"。
+    1. 选择要为其授予 RBAC 所有者角色的用户或组。
+    1. 如果选择了一个用户，则会在 "配置文件" 页中找到对象 ID。 如果选择了组，则对象 ID 将在 "概述" 页中。 通过单击文本框右侧的图标来复制**ObjectID** 。 将此粘贴到某个位置，以便在下一步中将其用作 `userObjectId`。
 
-1. 授予用户或组上注册帐户的 RBAC 所有者角色
+1. 向用户或组授予注册帐户上的 RBAC 所有者角色
 
-    使用在前两个步骤中收集的值，授予用户或组上注册帐户的 RBAC 所有者角色。
+    使用前两个步骤中收集的值向用户或组授予注册帐户上的 RBAC 所有者角色。
 
     # <a name="resttabrest-2"></a>[REST](#tab/rest-2)
 
-    运行以下命令，替换```<enrollmentAccountObjectId>```与`name`第一步中复制 (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```)。 替换为```<userObjectId>```与第二个步骤中复制的对象 ID。
+    运行以下命令，将 ```<enrollmentAccountObjectId>``` 替换为在第一个步骤中复制的 `name` （```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```）。 将 ```<userObjectId>``` 替换为从第二步复制的对象 ID。
 
     ```json
     PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>/providers/Microsoft.Authorization/roleAssignments/<roleAssignmentGuid>?api-version=2015-07-01
@@ -160,7 +158,7 @@ ms.locfileid: "67206645"
 
     # <a name="powershelltabazure-powershell-2"></a>[PowerShell](#tab/azure-powershell-2)
 
-    运行以下[新建 AzRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md)命令，用```<enrollmentAccountObjectId>```与`ObjectId`收集的第一步中 (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```)。 替换为```<userObjectId>```使用的对象 ID 将收集在第二个步骤。
+    运行以下[AzRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md)命令，将 ```<enrollmentAccountObjectId>``` 替换为第一步中收集的 `ObjectId` （```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```）。 将 ```<userObjectId>``` 替换为在第二步中收集的对象 ID。
 
     ```azurepowershell-interactive
     New-AzRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
@@ -168,13 +166,13 @@ ms.locfileid: "67206645"
 
     # <a name="azure-clitabazure-cli-2"></a>[Azure CLI](#tab/azure-cli-2)
 
-    运行以下[创建的 az 角色分配](../active-directory/role-based-access-control-manage-access-azure-cli.md)命令，用```<enrollmentAccountObjectId>```与`name`第一步中复制 (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```)。 替换为```<userObjectId>```使用的对象 ID 将收集在第二个步骤。
+    运行以下[az role 赋值 create](../active-directory/role-based-access-control-manage-access-azure-cli.md)命令，并将 ```<enrollmentAccountObjectId>``` 替换为在第一步中复制的 `name` （```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```）。 将 ```<userObjectId>``` 替换为在第二步中收集的对象 ID。
 
     ```azurecli-interactive
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
     ```
 
-    当用户变得 RBAC 所有者为你的注册帐户时，他们可以[以编程方式创建订阅](programmatically-create-subscription.md)下它。 创建委派的用户的订阅仍具有原始帐户所有者作为服务管理员，但它也有委派的用户作为 RBAC 所有者默认情况下。
+    一旦用户成为注册帐户的 RBAC 所有者，他们就可以在其下[以编程方式创建订阅](programmatically-create-subscription.md)。 委托用户创建的订阅仍具有原始帐户所有者作为服务管理员，但默认情况下，它还将委托用户作为 RBAC 所有者。
 
     ---
 
@@ -196,5 +194,5 @@ ms.locfileid: "67206645"
 * 既然用户或服务主体有权创建订阅，你可以使用该标识[以编程方式创建 Azure Enterprise 订阅](programmatically-create-subscription.md)。
 * 有关使用 .NET 创建订阅的示例，请参阅 [GitHub 上的示例代码](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core)。
 * 若要了解有关 Azure 资源管理器及其 API 的详细信息，请参阅 [Azure 资源管理器概述](resource-group-overview.md)。
-* 要详细了解如何使用管理组管理大量订阅，请参阅[使用 Azure 管理组整理资源](management-groups-overview.md)
+* 若要了解有关使用管理组管理大量订阅的详细信息，请参阅[使用 Azure 管理组组织资源](management-groups-overview.md)
 * 若要查看有关大型组织订阅管理的综合最佳做法指南，请参阅 [Azure 企业基架 - 规范性订阅管理](/azure/architecture/cloud-adoption-guide/subscription-governance)

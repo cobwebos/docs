@@ -1,17 +1,14 @@
 ---
-title: 通过 Azure 资源管理器模板使用 Key Vault 机密 | Microsoft Docs
+title: Key Vault 带有模板的机密
 description: 说明在部署期间如何以参数形式从密钥保管库传递机密。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.author: tomfitz
-ms.openlocfilehash: 489b09d2523393ae67668ed13c651c9b7b0217b4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 37d21e295eca2b40e91f92d65d6e927ee6857d0e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998888"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149486"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署过程中使用 Azure Key Vault 传递安全参数值
 
@@ -124,7 +121,7 @@ Set-AzKeyVaultAccessPolicy `
 
 ![资源管理器密钥保管库集成静态 ID 图](./media/resource-manager-keyvault-parameter/statickeyvault.png)
 
-[教程：在资源管理器模板部署中集成 Azure Key Vault](./resource-manager-tutorial-use-key-vault.md) 使用了此方法。
+[教程：将 Azure Key Vault 资源管理器模板部署](./resource-manager-tutorial-use-key-vault.md)使用此方法。
 
 以下模板部署包含管理员密码的 SQL Server。 密码参数设置为安全字符串。 但是，此模板未指定该值的来源。
 

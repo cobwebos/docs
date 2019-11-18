@@ -1,5 +1,5 @@
 ---
-title: 使用索引器自动创建索引的字段映射
+title: 索引器中的字段映射
 titleSuffix: Azure Cognitive Search
 description: 在索引器中配置字段映射，以考虑字段名称和数据表示形式之间的差异。
 manager: nitinme
@@ -9,28 +9,28 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cc863ee3dc7f2dc8049fcd22189acac94a855352
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 72623787cdb27c568fe2b4ec075010674a3996ef
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786978"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123995"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>使用 Azure 认知搜索索引器进行字段映射和转换
 
-使用 Azure 认知搜索索引器时，有时会发现输入数据与目标索引的架构不完全匹配。 在这些情况下，可以使用**字段映射**在索引过程中调整数据的形状。
+使用 Azure 认知搜索索引器时，有时会发现输入数据与目标索引的架构不完全匹配。 在这种情况下，可以在索引编制过程中使用**字段映射**来调整数据的形状。
 
 在某些情况下，字段映射会很有用：
 
-* 数据源具有一个名为 "`_id`" 的字段，但 Azure 认知搜索不允许以下划线开头的字段名称。 您可以使用字段映射来有效地重命名字段。
-* 您希望从同一数据源数据填充索引中的多个字段。 例如，你可能想要将不同的分析器应用于这些字段。
-* 您希望使用来自多个数据源的数据填充索引字段，并且每个数据源都使用不同的字段名称。
+* 数据源具有一个名为 "`_id`" 的字段，但 Azure 认知搜索不允许以下划线开头的字段名称。 使用字段映射可以有效地为字段重命名。
+* 你希望使用同一数据源数据填充索引中的多个字段。 例如，你可能想要将不同的分析器应用到这些字段。
+* 你希望使用多个数据源中的数据填充索引字段，而每个数据源使用不同的字段名称。
 * 需要对数据进行 Base64 编码或解码。 字段映射支持多个**映射函数**，包括用于 Base64 编码和解码的函数。
 
 > [!NOTE]
-> Azure 认知搜索索引器的字段映射功能提供了一种简单的方法来将数据字段映射到索引字段，并提供用于数据转换的几个选项。 更复杂的数据可能需要预先处理才能将其调整为易于编制索引的形式。
+> Azure 认知搜索索引器的字段映射功能提供了一种简单的方法来将数据字段映射到索引字段，并提供用于数据转换的几个选项。 较复杂的数据可能需要经过预处理，才能将形状调整为易于编制索引的形式。
 >
-> Microsoft Azure 数据工厂是一个功能强大的基于云的解决方案，可用于导入和转换数据。 你还可以编写代码以在编制索引之前转换源数据。 有关代码示例，请参阅[模型关系数据](search-example-adventureworks-modeling.md)和[模型多级小平面](search-example-adventureworks-multilevel-faceting.md)。
+> Microsoft Azure 数据工厂是一个功能强大的基于云的解决方案，可用于导入和转换数据。 你也可以在编制索引之前编写代码来转换源数据。 有关代码示例，请参阅[为关系数据建模](search-example-adventureworks-modeling.md)和[为多级分面建模](search-example-adventureworks-multilevel-faceting.md)。
 >
 
 ## <a name="set-up-field-mappings"></a>设置字段映射
@@ -41,13 +41,13 @@ ms.locfileid: "72786978"
 2. 可选的 `targetFieldName`，它表示搜索索引中的字段。 如果已省略，则使用数据源中相同的名称。
 3. 可选的 `mappingFunction`，它可以使用几个预定义函数中的一个来转换数据。 函数的完整列表[如下](#mappingFunctions)。
 
-字段映射将添加到索引器定义的 `fieldMappings` 数组。
+字段映射将添加到索引器定义的 `fieldMappings` 数组中。
 
 ## <a name="map-fields-using-the-rest-api"></a>使用 REST API 映射字段
 
-使用[Create 索引器](https://docs.microsoft.com/rest/api/searchservice/create-Indexer)API 请求创建新的索引器时，可以添加字段映射。 您可以使用[更新索引器](https://docs.microsoft.com/rest/api/searchservice/update-indexer)API 请求来管理现有索引器的字段映射。
+使用[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-Indexer) API 请求创建新的索引器时，可以添加字段映射。 可以使用[更新索引器](https://docs.microsoft.com/rest/api/searchservice/update-indexer) API 请求来管理现有索引器的字段映射。
 
-例如，下面介绍了如何将源字段映射到具有不同名称的目标字段：
+例如，下面演示了如何将一个源字段映射到具有不同名称的目标字段：
 
 ```JSON
 
@@ -61,7 +61,7 @@ api-key: [admin key]
 }
 ```
 
-源字段可以在多个字段映射中引用。 下面的示例演示如何 "分叉" 字段，将相同的源字段复制到两个不同的索引字段：
+可以在多个字段映射中引用一个源字段。 以下示例演示如何“分叉”字段 - 将同一个源字段复制到两个不同的索引字段：
 
 ```JSON
 
@@ -78,11 +78,11 @@ api-key: [admin key]
 
 ## <a name="map-fields-using-the-net-sdk"></a>使用 .NET SDK 映射字段
 
-你可以使用[FieldMapping](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.fieldmapping)类在 .net SDK 中定义字段映射，该类具有 `SourceFieldName` 和 `TargetFieldName`的属性以及可选的 `MappingFunction` 引用。
+在 .NET SDK 中，使用 [FieldMapping](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.fieldmapping) 类定义字段映射，该类包含属性 `SourceFieldName` 和 `TargetFieldName`，以及可选的 `MappingFunction` 引用。
 
-可以在构造索引器时指定字段映射，或在以后通过直接设置 `Indexer.FieldMappings` 属性来指定。
+可以在构造索引器时指定字段映射，以后也可以通过直接设置 `Indexer.FieldMappings` 属性来指定字段映射。
 
-下面C#的示例在构造索引器时设置字段映射。
+以下 C# 示例在构造索引器时设置字段映射。
 
 ```csharp
   List<FieldMapping> map = new List<FieldMapping> {
@@ -106,7 +106,7 @@ api-key: [admin key]
 
 ## <a name="field-mapping-functions"></a>字段映射函数
 
-字段映射函数在字段存储到索引中之前，转换该字段的内容。 目前支持以下映射函数：
+字段映射函数在将字段存储到索引中之前转换该字段的内容。 目前支持以下映射函数：
 
 * [base64Encode](#base64EncodeFunction)
 * [base64Decode](#base64DecodeFunction)
@@ -117,15 +117,15 @@ api-key: [admin key]
 
 <a name="base64EncodeFunction"></a>
 
-### <a name="base64encode-function"></a>进行 base64encode 处理函数
+### <a name="base64encode-function"></a>base64Encode 函数
 
 执行输入字符串的 *URL 安全* Base64 编码。 假定输入采用 UTF-8 进行编码。
 
-#### <a name="example---document-key-lookup"></a>示例-文档键查找
+#### <a name="example---document-key-lookup"></a>示例 - 文档键查找
 
-只有 URL 安全字符才能出现在 Azure 认知搜索文档密钥中（因为客户必须能够使用[查找 API](https://docs.microsoft.com/rest/api/searchservice/lookup-document)来处理文档）。 如果键的源字段包含 URL 不安全字符，则可以使用 `base64Encode` 函数在索引时对其进行转换。
+只有 URL 安全字符才能出现在 Azure 认知搜索文档密钥中（因为客户必须能够使用[查找 API](https://docs.microsoft.com/rest/api/searchservice/lookup-document)来处理文档）。 如果键的源字段包含 URL 不安全的字符，在编制索引时，你可以使用 `base64Encode` 函数来转换该字段。
 
-在搜索时检索编码的密钥时，可以使用 `base64Decode` 函数获取原始密钥值，并使用它来检索源文档。
+在搜索时检索编码的键时，可以使用 `base64Decode` 函数获取原始键值，然后使用该值来检索源文档。
 
 ```JSON
 
@@ -140,19 +140,19 @@ api-key: [admin key]
   }]
  ```
 
-如果没有为映射函数包含 parameters 属性，则默认为 `{"useHttpServerUtilityUrlTokenEncode" : true}`值。
+如果未包含映射函数的 parameters 属性，该属性的默认值为 `{"useHttpServerUtilityUrlTokenEncode" : true}`。
 
-Azure 认知搜索支持两个不同的 Base64 编码。 编码和解码同一字段时，应使用相同的参数。 有关详细信息，请参阅[base64 编码选项](#base64details)以决定要使用哪些参数。
+Azure 认知搜索支持两个不同的 Base64 编码。 在编码和解码同一字段时，应使用相同的参数。 在决定要使用哪些参数时，请参阅 [base64 编码选项](#base64details)了解详细信息。
 
 <a name="base64DecodeFunction"></a>
 
 ### <a name="base64decode-function"></a>base64Decode 函数
 
-执行输入字符串的 Base64 解码。 输入假定为*URL 安全*Base64 编码的字符串。
+执行输入字符串的 Base64 解码。 假设输入是 URL 安全的 Base64 编码字符串。
 
-#### <a name="example---decode-blob-metadata-or-urls"></a>示例-解码 blob 元数据或 Url
+#### <a name="example---decode-blob-metadata-or-urls"></a>示例 - 解码 Blob 元数据或 URL
 
-源数据中可能包含 Base64 编码的字符串，如 blob 元数据字符串或 web Url，您希望将这些字符串作为纯文本进行搜索。 填充搜索索引时，可以使用 `base64Decode` 函数将编码的数据转换回常规字符串。
+源数据可能包含 Base64 编码的字符串（例如 Blob 元数据字符串或 Web URL），你希望这些字符串可作为纯文本进行搜索。 可以在填充搜索索引时，使用 `base64Decode` 函数将编码的数据转换回到常规字符串。
 
 ```JSON
 
@@ -167,19 +167,22 @@ Azure 认知搜索支持两个不同的 Base64 编码。 编码和解码同一�
   }]
 ```
 
-如果不包括 parameters 属性，则默认为 `{"useHttpServerUtilityUrlTokenEncode" : true}`值。
+如果未包含 parameters 属性，该属性的默认值为 `{"useHttpServerUtilityUrlTokenEncode" : true}`。
 
-Azure 认知搜索支持两个不同的 Base64 编码。 编码和解码同一字段时，应使用相同的参数。 有关更多详细信息，请参阅[base64 编码选项](#base64details)以决定要使用哪些参数。
+Azure 认知搜索支持两个不同的 Base64 编码。 在编码和解码同一字段时，应使用相同的参数。 在决定要使用哪些参数时，请参阅 [base64 编码选项](#base64details)了解更多详细信息。
 
 <a name="base64details"></a>
 
 #### <a name="base64-encoding-options"></a>base64 编码选项
 
-Azure 认知搜索支持两种不同的 Base64 编码： **HTTPSERVERUTILITY url 标记**和**不带填充的 url 安全 base64 编码**。 以后应使用相同的编码选项对在索引过程中采用 base64 编码的字符串进行解码，否则结果与原始的结果不匹配。
+Azure 认知搜索支持 URL 安全 base64 编码和常规 base64 编码。 应在以后使用相同的编码选项对在索引过程中进行 base64 编码的字符串进行解码，否则结果与原始的结果不匹配。
 
-如果分别将编码和解码的 `useHttpServerUtilityUrlTokenEncode` 或 `useHttpServerUtilityUrlTokenDecode` 参数设置为 `true`，则[`base64Encode` 的行为 `base64Decode` 类似于](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) [HttpServerUtility UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx)。
+如果将用于编码或解码的 `useHttpServerUtilityUrlTokenEncode` 或 `useHttpServerUtilityUrlTokenDecode` 参数分别设置为 `true`，则 `base64Encode` 的行为与 [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) 类似，`base64Decode` 的行为与 [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx) 类似。
 
-如果未使用完整 .NET Framework （即使用 .NET Core 或其他框架）来生成用于模拟 Azure 认知搜索行为的密钥值，则应将 `useHttpServerUtilityUrlTokenEncode` 和 `useHttpServerUtilityUrlTokenDecode` 设置为 `false`。 根据所使用的库，base64 编码和解码函数可能不同于 Azure 认知搜索所使用的库。
+> [!WARNING]
+> 如果 `base64Encode` 用于生成键值，则 `useHttpServerUtilityUrlTokenEncode` 必须设置为 true。 只有 URL 安全 base64 编码可用于键值。 请参阅[命名&#40;规则 Azure&#41;认知搜索](https://docs.microsoft.com/rest/api/searchservice/naming-rules)以获取对键值中字符的完整限制集。
+
+Azure 认知搜索中的 .NET 库采用 .NET Framework 提供内置编码的完整。 `useHttpServerUtilityUrlTokenEncode` 和 `useHttpServerUtilityUrlTokenDecode` 选项利用此内置 functionaity。 如果你使用的是 .NET Core 或其他框架，我们建议将这些选项设置为 `false` 并直接调用框架的编码和解码函数。
 
 下表比较了对字符串 `00>00?00` 进行不同的 base64 编码的结果。 若要确定 base64 函数所需的其他处理（如有），请对字符串 `00>00?00` 应用库编码函数，然后比较输出和预期的输出 `MDA-MDA_MDA`。
 
@@ -188,7 +191,7 @@ Azure 认知搜索支持两种不同的 Base64 编码： **HTTPSERVERUTILITY url
 | 带填充的 Base64 | `MDA+MDA/MDA=` | 使用 URL 安全字符并删除填充 | 使用标准 base64 字符并添加填充 |
 | 不带填充的 Base64 | `MDA+MDA/MDA` | 使用 URL 安全字符 | 使用标准 base64 字符 |
 | 带填充的 URL 安全 Base64 | `MDA-MDA_MDA=` | 删除填充 | 添加填充 |
-| 不带填充的 URL 安全 Base64 | `MDA-MDA_MDA` | None | None |
+| 不带填充的 URL 安全 Base64 | `MDA-MDA_MDA` | 无 | 无 |
 
 <a name="extractTokenAtPositionFunction"></a>
 
@@ -203,7 +206,7 @@ Azure 认知搜索支持两种不同的 Base64 编码： **HTTPSERVERUTILITY url
 
 例如，如果输入是 `Jane Doe`，`delimiter` 是 `" "`（空格）并且 `position` 是 0，则结果为 `Jane`；如果 `position` 是 1，则结果是 `Doe`。 如果位置引用的令牌不存在，则会返回错误。
 
-#### <a name="example---extract-a-name"></a>示例-提取名称
+#### <a name="example---extract-a-name"></a>示例 - 提取名称
 
 数据源包含 `PersonName` 字段，并且想要为其编制索引作为两个单独的 `FirstName` 和 `LastName` 字段。 可以使用此函数来拆分将空格字符用作分隔符的输入。
 
@@ -230,9 +233,9 @@ Azure 认知搜索支持两种不同的 Base64 编码： **HTTPSERVERUTILITY url
 
 例如，如果输入字符串是 `["red", "white", "blue"]`，类型 `Collection(Edm.String)` 的目标字段由 `red`、`white` 和 `blue` 这三个值填充。 对于无法分析为 JSON 字符串数组的输入值，则会返回错误。
 
-#### <a name="example---populate-collection-from-relational-data"></a>示例-填充关系数据中的集合
+#### <a name="example---populate-collection-from-relational-data"></a>示例 - 使用关系数据填充集合
 
-Azure SQL 数据库没有内置的数据类型，该数据类型自然映射到 Azure 认知搜索中 `Collection(Edm.String)` 字段。 若要填充字符串集合字段，可以将源数据预处理为 JSON 字符串数组，然后使用 `jsonArrayToStringCollection` 映射函数。
+Azure SQL 数据库没有内置的数据类型，该数据类型自然映射到 Azure 认知搜索中 `Collection(Edm.String)` 字段。 若要填充字符串集合字段，可将源数据预处理成 JSON 字符串数组，然后使用 `jsonArrayToStringCollection` 映射函数。
 
 ```JSON
 
@@ -243,21 +246,21 @@ Azure SQL 数据库没有内置的数据类型，该数据类型自然映射到 
   }]
 ```
 
-有关将关系数据转换为索引集合字段的详细示例，请参阅[模型关系数据](search-example-adventureworks-modeling.md)。
+有关将关系数据转换为索引集合字段的详细示例，请参阅[为关系数据建模](search-example-adventureworks-modeling.md)。
 
 <a name="urlEncodeFunction"></a>
 
 ### <a name="urlencode-function"></a>urlEncode 函数
 
-此函数可用于对字符串进行编码，使其为 "URL 安全"。 与包含 URL 中不允许的字符的字符串一起使用时，此函数会将这些 "不安全" 字符转换为等效的字符实体。 此函数使用 UTF-8 编码格式。
+此函数可用于对字符串进行编码，使其是“URL 安全的”。 与包含 URL 中不允许的字符的字符串一起使用时，此函数会将这些“不安全”字符转换为字符实体等效项。 此函数使用 UTF-8 编码格式。
 
-#### <a name="example---document-key-lookup"></a>示例-文档键查找
+#### <a name="example---document-key-lookup"></a>示例 - 文档键查找
 
-如果只转换 URL 不安全字符，则可以使用 `urlEncode` 函数作为 `base64Encode` 函数的替代项，同时将其他字符保留原样。
+如果只转换 URL 不安全字符，而将其他字符保留原样，则可以使用 `urlEncode` 函数来代替 `base64Encode` 函数。
 
-例如，输入字符串 `<hello>`，则类型 `(Edm.String)` 的目标字段将填充值 `%3chello%3e`
+例如，如果输入字符串是 `<hello>` - 则 `(Edm.String)` 类型的目标字段中将填充值 `%3chello%3e`
 
-在搜索时检索编码的密钥时，可以使用 `urlDecode` 函数获取原始密钥值，并使用它来检索源文档。
+在搜索时检索编码的键时，可以使用 `urlDecode` 函数获取原始键值，然后使用该值来检索源文档。
 
 ```JSON
 
@@ -275,11 +278,11 @@ Azure SQL 数据库没有内置的数据类型，该数据类型自然映射到 
 
  ### <a name="urldecode-function"></a>urlDecode 函数
 
- 此函数使用 UTF-8 编码格式将 URL 编码的字符串转换为已解码的字符串。
+ 此函数使用 UTF-8 编码格式将 URL 编码的字符串转换为解码的字符串。
 
- ### <a name="example---decode-blob-metadata"></a>示例-解码 blob 元数据
+ ### <a name="example---decode-blob-metadata"></a>示例 - 解码 Blob 元数据
 
- 某些 Azure 存储客户端会自动对 blob 元数据进行 url 编码（如果它包含非 ASCII 字符）。 但是，如果要使此类元数据可搜索（纯文本），则在填充搜索索引时，可以使用 `urlDecode` 函数将编码的数据转换回常规字符串。
+ 如果 Blob 元数据包含非 ASCII 字符，某些 Azure 存储客户端会自动对这些元数据进行 URL 编码。 但是，若要使此类元数据可搜索（作为纯文本），可以在填充搜索索引时，使用 `urlDecode` 函数将编码的数据转换回到常规字符串。
 
  ```JSON
 

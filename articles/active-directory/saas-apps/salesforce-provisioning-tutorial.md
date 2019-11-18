@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f095c962f08ab0207ffc51d1c898570d9be7ea9a
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: d87f935f503098757e4efe402b37958283431b6e
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74047239"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120546"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>教程：为 Salesforce 配置自动用户预配
 
@@ -55,7 +55,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ## <a name="enable-automated-user-provisioning"></a>启用自动化用户预配
 
-本部分将指导完成将 Azure AD 连接到 Salesforce 的用户帐户预配 API 和配置预配服务，以便在 Salesforce 中根据 Azure AD 中的用户和组分配创建、更新和禁用分配的用户帐户。
+本部分将指导你完成以下过程：将 Azure AD 连接到[salesforce 的用户帐户预配 API v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api.meta/api/implementation_considerations.htm)，并配置预配服务，以便基于 Azure AD 中的用户和组分配创建、更新和禁用 Salesforce 中分配的用户帐户。
 
 > [!Tip]
 > 还可选择按照 [Azure 门户](https://portal.azure.com)中提供的说明为 Salesforce 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。
@@ -120,7 +120,16 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
 
 ## <a name="common-issues"></a>常见问题
-* 预配到 Salesforce 的默认属性映射包括 SingleAppRoleAssignments 表达式，可将用户角色预配到 Salesforce。 请确保在应用程序上没有向用户分配多个角色，因为属性映射仅支持预配一个角色。 
+* 如果在授权访问 Salesforce 时遇到问题，请确保以下各项：
+    * 使用的凭据具有对 Salesforce 的管理员访问权限。
+    * 你使用的 Salesforce 版本支持 Web 访问（例如，开发人员、企业、沙箱和无限制的 Salesforce 版本）。
+    * 为用户启用了 Web API 访问权限。
+* Azure AD 预配服务支持设置语言、区域设置和用户的时区。 这些属性位于默认属性映射中，但没有默认的源属性。 请确保选择默认的源属性，并且源属性的格式为 SalesForce 预期的格式。 例如，localeSidKey for 英语（美国） en_US。 查看[此处](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)提供的指南，以确定正确的 localeSidKey 格式。 可在[此处](https://help.salesforce.com/articleView?id=faq_getstart_what_languages_does.htm&type=5)找到 languageLocaleKey 格式。 除了确保格式正确以外，可能还需要确保为用户启用语言，如[此处](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)所述。 
+* **SalesforceLicenseLimitExceeded：** 无法在目标应用程序中创建用户，因为没有此用户的可用许可证。 为目标应用程序购买其他许可证，或查看用户分配和属性映射配置，以确保为正确的属性分配正确的用户。
+* **SalesforceDuplicateUserName：** 无法设置用户，因为它具有在其他 Salesforce.com 租户中重复的 Salesforce.com "Username"。  在 Salesforce.com 中，"Username" 特性的值在所有 Salesforce.com 租户中必须是唯一的。  默认情况下，用户在 Salesforce.com 中的 userPrincipalName Azure Active Directory 成为其 "Username"。   您有两种选择。  一种选择是在其他 Salesforce.com 租户中查找和重命名具有重复 "Username" 的用户（如果也管理该其他租户）。  另一种方法是删除 Azure Active Directory 用户对你的目录集成到的 Salesforce.com 租户的访问权限。 我们将在下一次同步尝试时重试此操作。 
+* **SalesforceRequiredFieldMissing：** Salesforce 要求用户提供某些属性，已成功创建或更新用户。 此用户缺少所需的属性之一。 确保在要预配到 Salesforce 的所有用户上填充了电子邮件和别名等属性。 你可以使用[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)来确定不具有这些属性的用户的作用域。 
+* 预配到 Salesforce 的默认属性映射包括 SingleAppRoleAssignments 表达式，以将 Azure AD 中的 appRoleAssignments 映射到 Salesforce 中的 ProfileName。 确保用户在 Azure AD 中没有多个应用角色分配，因为属性映射仅支持预配一个角色。 
+
 
 ## <a name="additional-resources"></a>其他资源
 

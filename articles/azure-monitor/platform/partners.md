@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: 04dcdbe6854a386f7edaa04aa9c2912789122a31
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8e04369e3e070054c5095abde29ecca99d071cb8
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827456"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144471"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 
@@ -35,12 +35,6 @@ Alert Logic Log Manager 收集 VM、应用程序和 Azure 平台日志以进行�
 AppDynamics Application Performance Management (APM) 可让应用程序所有者快速针对性能瓶颈进行故障排除，优化 Azure 环境中运行的应用程序的性能。 它可以监视 Azure 云服务 (PaaS)、Web 角色和辅助角色、虚拟机 (IaaS)、远程服务检测（Microsoft Azure 服务总线）、Microsoft Azure 队列、Microsoft Azure 远程服务 (Azure Blob)、Azure 队列（Microsoft 服务总线）、数据存储和 Microsoft Azure Blob 存储。 AppDynamics APM 在 Azure 市场中提供。
 
 [查看相关文档。][appdynamics-doc]
-
-## <a name="microfocus-arcsight"></a>Microfocus ArcSight
-
-ArcSight 为 Azure Monitor 事件中心提供了一个智能连接器。
-
-[了解详细信息。][arcsight-doc]
 
 ## <a name="atlassian-jira"></a>Atlassian JIRA
 
@@ -69,7 +63,7 @@ Circonus 是一个微服务监视和分析平台，专为本地或 SaaS 部署�
 
 借助专为省时省钱而构建的平台整合云并实现云的自动化。 CloudHealth 提供适用于云管理的可视性、直观的优化和可靠的管理做法。 CloudHealth 平台使企业和 Msp 能够最大程度地提高云投资回报。 围绕成本、使用情况、性能和安全性进行自信的决策。
 
-[了解详细信息。][cloudhealth-doc]
+[了解详细信息][cloudhealth-doc]
 
 ## <a name="cloudmonix"></a>CloudMonix
 
@@ -127,6 +121,31 @@ InfluxDB 是 InfluxDB 的创建者，它提供了一个从头开始构建的新�
 LogicMonitor® 是适用于复杂 IT 基础结构的、基于 SaaS 的领先性能监视平台。 LogicMonitor 集数千种技术于一身，提供基础结构和应用程序性能的精细洞察数据。 LM Cloud 的综合性 Azure 监视功能可让用户通过单个平台来关联 Azure 云、本地资源和混合云资源的性能。 自动资源发现、内置监视模板、预配置的警报阈值和可自定义的仪表板相辅相成，可为 IT 人员带来速度优势、灵活性和可见性，让他们获得成功。
 
 [查看相关文档。][logicmonitor-doc]
+
+## <a name="logrhythm"></a>LogRhythm
+
+![LogRhythm 徽标](./media/partners/logrhythm.png)
+
+LogRhythm 是 NextGen SIEM 的领导者，通过快速检测、响应和 neutralizing 以来自2200，使六个大洲的组织能够显著降低风险。 LogRhythm 的威胁生命周期管理（TLM）工作流是安全运营中心的基础，帮助客户保护其云、物理和虚拟基础结构，使其适用于环境。 如果你是 LogRhythm 客户，并且已准备好开始 Azure 旅程，则需要安装并配置 LogRhythm 开放收集器和 EventHub 集成。 可在[此处](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)找到更多详细信息，包括配置 Azure Monitor 和开放收集器的文档。 
+
+
+
+## <a name="microfocus"></a>Microfocus
+
+![Microfocus 徽标](./media/partners/microfocus.png)     
+
+Microfocus **ArcSight**具有智能连接器，适用于 Azure Monitor 事件中心。
+
+[了解详细信息](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "ArcSight 文档。")
+
+Microfocus**操作桥**会自动监视所有混合 IT 资源（任何设备、操作系统、数据库、应用程序或服务），而不考虑其运行位置，并将 AIOps 应用于所有数据类型-事件、指标、日志和依赖项。 它提供服务监视质量的独特组合，与深层应用程序运行状况分析相结合，并包括对 Microsoft Azure 服务的全面性能和可用性监视。 使用操作桥，客户可以在任何设备上使用浏览器提供单一界面，在任何设备上都能理解。
+
+了解详细信息
+- [OB 套件概述](https://www.microfocus.com/products/operations-bridge-suite/overview)
+- [下载](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
+- [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope 是操作桥套件中的一个组件。
+
+
 
 ## <a name="moogsoft"></a>Moogsoft
 
@@ -243,7 +262,6 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 <!--Partner Documentation-->
 [alertlogic-doc]: https://legacy.docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "AlertLogic 文档。"
 [appdynamics-doc]: https://www.appdynamics.com/net/azure/ "AppDynamics 文档。"
-[arcsight-doc]: https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "ArcSight 文档。"
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
 [botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Botmetric 简介。"
 [circonus-doc]: https://support.circonus.com/support/solutions/articles/24000013515-azure-integration 

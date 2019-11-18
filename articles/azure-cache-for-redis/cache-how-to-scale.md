@@ -1,25 +1,17 @@
 ---
-title: 如何缩放 Azure Redis 缓存 | Microsoft Docs
+title: 如何缩放 Azure Redis 缓存
 description: 了解如何缩放 Azure Redis 缓存实例
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 350db214-3b7c-4877-bd43-fef6df2db96c
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/11/2017
 ms.author: yegu
-ms.openlocfilehash: 21c93cac8b4126a46e4c3dc396db9857f6b62de9
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0fe4092a93e34d6e6b4bb4c4441609f696518b86
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755433"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122124"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>如何缩放 Azure Redis 缓存
 Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能的选择更加灵活。 如果创建缓存后，应用程序的要求发生更改，可以更改缓存的大小和定价层。 本文演示如何使用 Azure 门户以及 Azure PowerShell 和 Azure CLI 等工具来缩放缓存。
@@ -37,9 +29,9 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 如果确定缓存不再满足应用程序的要求，可以更改到应用程序所需的更大或更小缓存定价层。 有关确定应使用哪个缓存定价层的详细信息，请参阅 [我应当使用哪些 Azure Redis 缓存套餐和大小](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)。
 
 ## <a name="scale-a-cache"></a>缩放缓存
-要缩放缓存，请在 [Azure 门户](https://portal.azure.com)中[浏览到缓存](cache-configure.md#configure-azure-cache-for-redis-settings)，并从“资源菜单”单击“缩放”。
+要缩放缓存，请在 [Azure 门户](cache-configure.md#configure-azure-cache-for-redis-settings)中[浏览到缓存](https://portal.azure.com)，并从“资源菜单”单击“缩放”。
 
-![调整规模](./media/cache-how-to-scale/redis-cache-scale-menu.png)
+![缩放](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
 从“选择定价层”边栏选项卡选择所需的定价层，并单击“选择”。
 
@@ -57,7 +49,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
  
 当缓存缩放到新的定价层，会在“Azure Redis 缓存”边栏选项卡中显示**缩放**状态。
 
-![缩放][redis-cache-scaling]
+![扩展][redis-cache-scaling]
 
 缩放完成后，状态将从**正在缩放**更改为**正在运行**。
 
@@ -72,7 +64,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-修改 `Size`、`Sku` 或 `ShardCount` 属性后，可以在 PowerShell 中使用 [Set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) cmdlet 缩放 Azure Redis 缓存实例。 以下示例演示了如何将名为 `myCache` 的缓存缩放为 2.5 GB 缓存。 
+修改 [、](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) 或 `Size` 属性后，可以在 PowerShell 中使用 `Sku`Set-AzRedisCache`ShardCount` cmdlet 缩放 Azure Redis 缓存实例。 以下示例演示了如何将名为 `myCache` 的缓存缩放为 2.5 GB 缓存。 
 
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
@@ -132,7 +124,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 不需要，在缩放操作期间缓存名称和密钥不变。
 
 ### <a name="how-does-scaling-work"></a>缩放的工作原理？
-* 将**基本**缓存缩放为不同大小时，将关闭该缓存，同时使用新的大小预配一个新缓存。 在此期间，缓存不可用，且缓存中的所有数据都将丢失。
+* 将**基本**缓存缩放为不同大小时，将关闭该缓存，同时使用新的大小预配一个新缓存。 在此期间，缓存不可用，且缓存中的所有数据都会丢失。
 * 将**基本**缓存缩放为**标准**缓存时，将预配副本缓存并将主缓存中的数据复制到副本缓存。 在缩放过程中，缓存仍然可用。
 * 将**标准**缓存缩放为不同大小或缩放到**高级**缓存时，将关闭其中一个副本，同时将其重新预配为新的大小，将数据转移，然后，在重新预配另一个副本之前，另一个副本将执行一次故障转移，类似于一个缓存节点发生故障时所发生的过程。
 

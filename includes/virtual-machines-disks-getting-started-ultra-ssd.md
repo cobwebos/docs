@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 11/14/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 63045bf1b836215b00b9b7c1b46dd208152fa772
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 5751ed33673ca859ba1aed54cfc7c2e7ecc8e495
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74100705"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74124087"
 ---
 Azure ultra 磁盘为 Azure IaaS 虚拟机（Vm）提供高吞吐量、高 IOPS 和一致的低延迟磁盘存储。 此新产品提供出类拔萃的性能，其可用性级别与我们的现有磁盘产品相同。 超磁盘的一个主要优点是能够在不重新启动 Vm 的情况下动态更改 SSD 的性能和工作负荷。 超磁盘适用于数据密集型工作负荷，例如 SAP HANA、顶级数据库和事务密集型工作负荷。
 
@@ -23,7 +23,7 @@ Azure ultra 磁盘为 Azure IaaS 虚拟机（Vm）提供高吞吐量、高 IOPS 
 
 ## <a name="determine-vm-size-and-region-availability"></a>确定 VM 大小和区域可用性
 
-若要利用超磁盘，需要确定你所在的可用性区域。 并非每个区域都支持任何 VM 大小和超磁盘。 若要确定你的区域、区域和 VM 大小是否支持 ultra 磁盘，请运行以下命令之一，确保首先替换**region**、 **vmSize**和**订阅**值：
+若要利用超磁盘，需要确定你所在的可用性区域。 并非每个区域都支持任何虚拟磁盘的 VM 大小。 若要确定你的区域、区域和 VM 大小是否支持 ultra 磁盘，请运行以下命令之一，确保首先替换**region**、 **vmSize**和**订阅**值：
 
 CLI：
 
@@ -67,6 +67,75 @@ $vmSize = "Standard_E64s_v3"
 将磁盘 sku 设置为**UltraSSD_LRS**，然后设置磁盘容量、IOPS、可用性区域和吞吐量（以 MBps 为单位），以创建一个超小型磁盘
 
 在预配 VM 后，可以对数据磁盘进行分区和格式设置并为工作负荷配置这些磁盘。
+
+
+## <a name="deploy-an-ultra-disk-using-the-azure-portal"></a>使用 Azure 门户部署超磁盘
+
+本部分介绍如何部署一个虚拟机，并将其作为数据磁盘。 本教程假定你已熟悉如何部署虚拟机，如果不这样做，请参阅[快速入门：在 Azure 门户中创建 Windows 虚拟机](../articles/virtual-machines/windows/quick-create-portal.md)。
+
+- 登录到[Azure 门户](https://portal.azure.com/)，导航到 "部署虚拟机（VM）"。
+- 请确保选择支持的[VM 大小和区域](#ga-scope-and-limitations)。
+- 选择**可用性选项**中的**可用性区域**。
+- 填写所选选择的其余条目。
+- 选择“磁盘”。
+
+![create-ultra-disk-enabled-vm .png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk-enabled-vm.png)
+
+- 在 "磁盘" 边栏选项卡中，选择 **"是"** **启用超高磁盘兼容性**。
+- 选择 "**创建并附加新磁盘**"，立即附加一个超磁盘。
+
+![enable-and-attach-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/enable-and-attach-ultra-disk.png)
+
+- 在 "**创建新磁盘**" 边栏选项卡上，输入名称，然后选择 "**更改大小**"。
+- 将**帐户类型**更改为 "**超小型磁盘**"。
+- 将 "**自定义磁盘大小（GiB）** "、"**磁盘 IOPS**" 和 "**磁盘吞吐量**" 的值更改为你选择的值。
+- 在两个边栏选项卡中选择 **"确定"** 。
+- 继续执行 VM 部署，该部署将与部署任何其他 VM 的部署相同。
+
+![create-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk.png)
+
+## <a name="attach-an-ultra-disk-using-the-azure-portal"></a>使用 Azure 门户附加一个超磁盘
+
+或者，如果你的现有 VM 位于能够使用超磁盘的区域/可用性区域中，则可以使用超磁盘，而不必创建新的 VM。 在现有 VM 上启用 ultra 磁盘，并将其附加为数据磁盘。
+
+- 导航到 VM，然后选择 "**磁盘**"。
+- 选择“编辑”。
+
+![options-selector-ultra-disks .png](media/virtual-machines-disks-getting-started-ultra-ssd/options-selector-ultra-disks.png)
+
+- 选择 **"是"** **启用超高磁盘兼容性**。
+
+![ultra-options-yes-enable .png](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
+
+- 选择“保存”。
+- 选择 "**添加数据磁盘**"，然后在 "**名称**" 下拉列表中选择 "**创建磁盘**"。
+
+![create-and-attach-new-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
+
+- 填写新磁盘的名称，并选择 "**更改大小**"。
+- 将**帐户类型**更改为 "**超小型磁盘**"。
+- 将 "**自定义磁盘大小（GiB）** "、"**磁盘 IOPS**" 和 "**磁盘吞吐量**" 的值更改为你选择的值。
+- 选择 **"确定"** ，然后选择 "**创建**"。
+
+![making-a-new-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/making-a-new-ultra-disk.png)
+
+- 返回到磁盘的边栏选项卡后，选择 "**保存**"。
+
+![saving-and-attaching-new-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
+
+### <a name="adjust-the-performance-of-an-ultra-disk-using-the-azure-portal"></a>使用 Azure 门户调整超磁盘的性能
+
+超磁盘提供了独特的功能，使你能够调整其性能。 你可以在磁盘本身上从 Azure 门户进行这些调整。
+
+- 导航到 VM，然后选择 "**磁盘**"。
+- 选择要修改其性能的超磁盘。
+
+![selecting-ultra-disk-to-modify .png](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
+
+- 选择 "**配置**"，然后进行修改。
+- 选择“保存”。
+
+![configuring-ultra-disk-performance-and-size .png](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
 
 ## <a name="deploy-an-ultra-disk-using-cli"></a>使用 CLI 部署 ultra 磁盘
 

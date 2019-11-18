@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: b0d7286d96d2fbfa35eb7ce9079413dfd186288c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 52c65bced1d78a4fdad1fbfd59c7a8d6d99d0c4a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496972"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123285"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>将机器学习模型部署到 Azure App Service （预览版）
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "73496972"
 > [!IMPORTANT]
 > 如果需要能够记录已部署的模型所使用的计分数据或评分结果，应改为部署到 Azure Kubernetes 服务。 有关详细信息，请参阅[收集生产模型上的数据](how-to-enable-data-collection.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区一](how-to-manage-workspace.md)文。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
@@ -97,7 +97,7 @@ ms.locfileid: "73496972"
 
 ## <a name="create-the-image"></a>创建映像
 
-若要创建部署到 Azure App Service 的 Docker 映像，请使用[模型类](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config--generate-dockerfile-false-)。 下面的代码段演示如何从模型和推理配置生成新的图像：
+若要创建部署到 Azure App Service 的 Docker 映像，请使用[模型类](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-)。 下面的代码段演示如何从模型和推理配置生成新的图像：
 
 > [!NOTE]
 > 代码段假定 `model` 包含已注册的模型，并且 `inference_config` 包含推理环境的配置。 有关详细信息，请参阅[部署模型与 Azure 机器学习](how-to-deploy-and-where.md)。

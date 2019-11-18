@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: d9b7a433dd7392e83719f09815f736dbd85f9c7f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0a28292ac95dca7b46d9f82c32b9881c18d74b87
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582894"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123544"
 ---
 # <a name="monitoring-azure-machine-learning"></a>监视 Azure 机器学习
 
@@ -28,7 +28,7 @@ ms.locfileid: "73582894"
 > * [跟踪 eexperiments 与 MLflow](how-to-use-mlflow.md)
 > * [用 TensorBoard 进行可视化运行](how-to-monitor-tensorboard.md)
 
-## <a name="azure-monitor"></a>Azure Monitor
+## <a name="azure-monitor"></a>Azure 监视器
 
 Azure 机器学习使用 Azure Monitor 来记录监视数据，这是 Azure 中的一个完整 stack 监视服务。 Azure Monitor 提供了一组完整的功能来监视 Azure 资源。 它还可以监视其他云和本地的资源。
 
@@ -38,7 +38,7 @@ Azure 机器学习使用 Azure Monitor 来记录监视数据，这是 Azure 中�
 
 ## <a name="monitoring-data-from-azure-machine-learning"></a>监视 Azure 机器学习中的数据
 
-Azure 机器学习会收集与其他 Azure 资源相同的监视数据，如[监视 Azure 资源的数据](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data-from-Azure-resources)中所述。 有关 Azure 机器学习创建的日志和指标的详细参考信息，请参阅[Azure 机器学习监视数据参考](monitor-resource-reference.md)。
+Azure 机器学习会收集与其他 Azure 资源相同的监视数据，如[监视 Azure 资源的数据](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data)中所述。 有关 Azure 机器学习创建的日志和指标的详细参考信息，请参阅[Azure 机器学习监视数据参考](monitor-resource-reference.md)。
 
 ## <a name="analyzing-metric-data"></a>分析指标数据
 
@@ -85,7 +85,7 @@ Azure 机器学习的所有指标位于命名空间**机器学习服务工作区
 
 你可以配置以下 Azure 机器学习的日志：
 
-| Category | 说明 |
+| 类别 | 说明 |
 |:---|:---|
 | AmlComputeClusterEvent | Azure 机器学习计算群集中的事件。 |
 | AmlComputeClusterNodeEvent | Azure 机器学习计算群集中的节点的事件。 |
@@ -131,7 +131,7 @@ Azure Monitor 日志中的数据存储在表中，每个表都具有自己的唯
     | project  TimeGenerated , ClusterId , EventType , ExecutionState , ToolType
     ```
 
-+ 对于 VM 大小为 Standard_D1_V2 的群集，在过去五天内获取群集事件：
++ 对于 VM 大小 Standard_D1_V2 的群集，请在过去五天内获取群集事件：
 
     ```Kusto
     AmlComputeClusterEvent

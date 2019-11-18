@@ -1,5 +1,5 @@
 ---
-title: 对 Azure Blob 存储内容编制索引以进行全文搜索
+title: 搜索 Azure Blob 存储内容
 titleSuffix: Azure Cognitive Search
 description: 了解如何为 Azure Blob 存储编制索引，以及如何利用 Azure 认知搜索从文档中提取文本。
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b093525fcabc31074b398444a2fceffd0f6d3493
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4f662df6692e03cf3eb948b0d8e2ae51002e815d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791792"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113022"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何在 azure Blob 存储中用 Azure 认知搜索索引文档
 
@@ -70,7 +70,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 可通过以下一种方式提供 blob 容器的凭据：
 
-- **完全访问存储帐户连接字符串**： `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 可以通过导航到 "存储帐户" 边栏选项卡 > "> 密钥" （对于经典存储帐户）或 "设置" > 访问密钥（适用于 Azure）从 Azure 门户获取连接字符串资源管理器存储帐户）。
+- **完全访问存储帐户连接字符串**： `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 可以通过导航到 "存储帐户" 边栏选项卡 > "> 密钥" （对于经典存储帐户）或 "设置 > 访问密钥" （对于 Azure 资源管理器存储帐户），从 Azure 门户中获取连接字符串。
 - **存储帐户共享访问签名** (SAS) 连接字符串：`BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`SAS 应当对容器和对象（在本例中为 blob）具有列出和读取权限。
 -  **容器共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`SAS 应当对容器具有列出和读取权限。
 
@@ -127,7 +127,7 @@ Blob 索引器可从以下文档格式提取文本：
 根据具体的[索引器配置](#PartsOfBlobToIndex)，Blob 索引器可以仅为存储元数据编制索引（如果只关注元数据，而无需为 Blob 的内容编制索引，则此功能非常有用）、为存储元数据和内容元数据编制索引，或者同时为元数据和文本内容编制索引。 默认情况下，索引器提取元数据和内容。
 
 > [!NOTE]
-> 默认情况下，包含结构化内容（例如 JSON 或 CSV）的 lob 以单一文本区块的形式编制索引。 如果要以结构化的方式为 JSON 和 CSV blob 编制索引，请参阅为[json Blob 编制](search-howto-index-json-blobs.md)索引和为[csv blob 编制](search-howto-index-csv-blobs.md)索引以获取详细信息。
+> 默认情况下，包含结构化内容（例如 JSON 或 CSV）的 lob 以单一文本区块的形式编制索引。 如果想要以结构化方法为 JSON 和 CSV Blob 编制索引，请参阅[为 JSON Blob 编制索引](search-howto-index-json-blobs.md)和[为 CSV Blob 编制索引](search-howto-index-csv-blobs.md)来了解详细信息。
 >
 > 复合或嵌入式文档（例如 ZIP 存档，或者嵌入了带附件 Outlook 电子邮件的 Word 文档）也以单一文档的形式编制索引。
 
@@ -140,8 +140,8 @@ Blob 索引器可从以下文档格式提取文本：
 * 标准 Blob 元数据属性将提取到以下字段中：
 
   * **metadata\_storage\_name** (Edm.String) - Blob 的文件名。 例如，对于 Blob /my-container/my-folder/subfolder/resume.pdf 而言，此字段的值是 `resume.pdf`。
-  * **metadata\_storage\_path** (Edm.String) - Blob 的完整 URI（包括存储帐户）。 例如： `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
-  * **metadata\_storage\_content\_type** (Edm.String) - 用于上传 Blob 的代码指定的内容类型。 例如，`application/octet-stream` 。
+  * **metadata\_storage\_path** (Edm.String) - Blob 的完整 URI（包括存储帐户）。 例如 `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
+  * **metadata\_storage\_content\_type** (Edm.String) - 用于上传 Blob 的代码指定的内容类型。 例如，`application/octet-stream`。
   * **metadata\_storage\_last\_modified** (Edm.DateTimeOffset) - 上次修改 Blob 的时间戳。 Azure 认知搜索使用此时间戳来识别已更改的 blob，以避免在初始索引后对所有内容进行索引。
   * **metadata\_storage\_size** (Edm.Int64) - Blob 大小，以字节为单位。
   * **metadata\_storage\_content\_md5** (Edm.String) - Blob 内容的 MD5 哈希（如果有）。
@@ -256,7 +256,7 @@ Blob 索引器可从以下文档格式提取文本：
 | 属性名称 | 属性值 | 说明 |
 | --- | --- | --- |
 | AzureSearch_Skip |"true" |指示 Blob 索引器完全跳过该 Blob， 既不尝试提取元数据，也不提取内容。 如果特定的 Blob 反复失败并且中断编制索引过程，此属性非常有用。 |
-| AzureSearch_SkipContent |"true" |此属性等效于[上面](#PartsOfBlobToIndex)所述的与特定 Blob 相关的 `"dataToExtract" : "allMetadata"` 设置。 |
+| AzureSearch_SkipContent |"true" |此属性等效于`"dataToExtract" : "allMetadata"`上面[所述的与特定 Blob 相关的 ](#PartsOfBlobToIndex) 设置。 |
 
 <a name="DealingWithErrors"></a>
 ## <a name="dealing-with-errors"></a>处理错误
@@ -299,7 +299,7 @@ Azure 认知搜索限制已编制索引的 blob 的大小。 [Azure 认知搜索
 2. 在数据源上配置软删除检测策略
 3. 索引器处理 Blob 后（如索引器状态 API 所示），可以使用物理方式删除该 Blob
 
-例如，如果某个 Blob 具有值为 `true` 的元数据属性 `IsDeleted`，以下策略会将该 Blob 视为已删除：
+例如，如果某个 Blob 具有值为 `IsDeleted` 的元数据属性 `true`，以下策略会将该 Blob 视为已删除：
 
     PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2019-05-06
     Content-Type: application/json

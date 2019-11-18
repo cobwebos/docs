@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 567110b2e0429930720abf6af5f2727e4ad9d3bb
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: ad1cb3b08f92923ef45b48d79ad8bbdc3277d370
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048281"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131975"
 ---
 # <a name="troubleshooting"></a>故障排除
 
@@ -251,7 +251,7 @@ ms.locfileid: "74048281"
 
 **意思**： Azure AD 应用注册配置未正确进行。  
 
-**纠正操作**：向 IT 管理员（具有租户读取访问权限）询问如何使用我们的[脚本](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts)生成创建 Azure AD 应用注册。 此脚本还会自动执行配置步骤。
+**纠正操作**：向 IT 管理员（具有租户读取访问权限）咨询用于创建 Azure AD 应用注册的[脚本](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts)。 此脚本还会自动执行配置步骤。
 
 **错误**：无法在此租户中创建新的 Active Directory 应用程序 "dummyname"：已存在另一个具有相同的属性标识符 uri 值的对象
 

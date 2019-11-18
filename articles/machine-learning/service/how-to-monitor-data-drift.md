@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: 9ac1c5cb25d6b2ad396c2caed74942988a723a0e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bf82714011754ba516fa38444b1019b9cc1aa732
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824254"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111882"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>在部署到 Azure Kubernetes Service （AKS）的模型上检测数据偏差（预览）
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "73824254"
 + 通过电子邮件将警报发送到数据偏移。
 
 > [!Note]
-> 此服务处于 "（预览版）" 和 "配置选项限制"。 有关详细信息和更新，请参阅我们的[API 文档](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py)和[发行说明](azure-machine-learning-release-notes.md)。 
+> 此服务处于 "（预览版）" 和 "配置选项限制"。 有关详细信息和更新，请参阅我们的[API 文档](https://docs.microsoft.com/python/api/azureml-datadrift/)和[发行说明](azure-machine-learning-release-notes.md)。 
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning"></a>如何监视数据偏移 Azure 机器学习
 
@@ -45,7 +45,7 @@ ms.locfileid: "73824254"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。 如果没有，请在开始之前创建一个免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+- Azure 订阅。 如果没有，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 - 安装了适用于 Python 的 Azure 机器学习 SDK。 按照 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) 中的说明执行以下操作：
 
@@ -98,7 +98,7 @@ print('Details of Datadrift Object:\n{}'.format(datadrift))
 
 ## <a name="submit-a-datadriftdetector-run"></a>提交 DataDriftDetector 运行
 
-配置 `DataDriftDetector` 对象后，可以在给定日期为模型提交[数据偏移](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-)。 在运行过程中，通过设置 `drift_threshold` 参数启用 DataDriftDetector 警报。 如果[datadrift_coefficient](#metrics)高于给定的 `drift_threshold`，则发送电子邮件。
+配置 `DataDriftDetector` 对象后，可以在给定日期为模型提交[数据偏移](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#run-target-date--services-none--compute-target-none--create-compute-target-false--feature-list-none--drift-threshold-none-)。 在运行过程中，通过设置 `drift_threshold` 参数启用 DataDriftDetector 警报。 如果[datadrift_coefficient](#visualize-drift-metrics)高于给定的 `drift_threshold`，则发送电子邮件。
 
 ```python
 # adhoc run today
@@ -123,7 +123,7 @@ RunDetails(dd_run).show()
 提交 DataDriftDetector 运行后，可以在每次运行迭代中看到为数据偏差任务保存的偏差度量值：
 
 
-|指标|说明|
+|度量值|说明|
 --|--|
 wasserstein_distance|为一维数值分布定义的统计距离。|
 energy_distance|为一维数值分布定义的统计距离。|

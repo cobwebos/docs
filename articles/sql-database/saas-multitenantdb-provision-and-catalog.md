@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 ms.date: 09/24/2018
-ms.openlocfilehash: cae0b2730a9426b183dc330a18a76122ac87cc66
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4ea18ee23d845b2d16209b23de14dc3cd70aaa59
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817928"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133146"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>在使用分片多租户 Azure SQL 数据库的 SaaS 应用程序中预配和编录新租户
 
@@ -63,11 +63,11 @@ ms.locfileid: "73817928"
 - 数据库的服务层级或版本。
 - 数据库架构的版本。
 - 租户名称及其 SLA（服务级别协议）。
-- 用于实现应用程序管理、客户支持或 devops 流程的信息。  
+- 用于实现应用程序管理、客户支持或 devops 流程的信息。
 
-目录还可用于实现跨租户报告、架构管理和数据提取以用于分析。 
+目录还可用于实现跨租户报告、架构管理和数据提取以用于分析。
 
-### <a name="elastic-database-client-library"></a>弹性数据库客户端库 
+### <a name="elastic-database-client-library"></a>弹性数据库客户端库
 
 在 Wingtip 中，目录是在 *tenantcatalog* 数据库中实现的。 *tenantcatalog* 是使用[弹性数据库客户端库 (EDCL)](sql-database-elastic-database-client-library.md) 的“分片管理”功能创建的。 该库允许应用程序创建、管理和使用存储在数据库中的分片映射。 分片映射交叉引用租户密钥及其分片（即其分片数据库）。
 
@@ -108,7 +108,7 @@ ms.locfileid: "73817928"
 - 在与其他租户共享的现有数据库中预配租户。
 - 在租户自身的数据库中预配该租户。
 
-随后在目录分片映射中初始化和注册租户数据。 在示例应用中，为包含多个租户的数据库指定一个通用名称，例如 *tenants1* 或 *tenants2*。 为包含单个租户的数据库指定租户的名称。 示例中使用的特定命名约定不是模式的主要部分，因为使用目录可以将任何名称分配给数据库。  
+随后在目录分片映射中初始化和注册租户数据。 在示例应用中，为包含多个租户的数据库指定一个通用名称，例如 *tenants1* 或 *tenants2*。 为包含单个租户的数据库指定租户的名称。 示例中使用的特定命名约定不是模式的主要部分，因为使用目录可以将任何名称分配给数据库。
 
 <a name="goto_1_tutorial"/>
 
@@ -124,7 +124,7 @@ ms.locfileid: "73817928"
 
 #### <a name="prerequisites"></a>先决条件
 
-若要完成本教程，请确保已完成以下先决条件：
+若要完成本教程，请确保已完成了以下先决条件：
 
 - Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
@@ -132,7 +132,7 @@ ms.locfileid: "73817928"
 
 - 获取 Wingtip 脚本和源代码：
     - 在 [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub 存储库中提供了 Wingtip Tickets SaaS 多租户数据库脚本和应用程序源代码。
-    - 有关下载和取消阻止 Wingtip 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。 
+    - 有关下载和取消阻止 Wingtip 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
 
 ## <a name="provision-a-tenant-into-a-database-shared-with-other-tenants"></a>在与其他租户共享的数据库中预配租户
 
@@ -144,12 +144,12 @@ ms.locfileid: "73817928"
 
 - **计算新租户密钥**：哈希函数用于从租户名称创建租户密钥。
 - **检查租户密钥是否已存在**：检查目录，确保尚未注册密钥。
-- **初始化默认租户数据库中的租户**：更新租户数据库，以添加新租户信息。  
-- **在目录中注册租户**：新租户密钥和现有 tenants1 数据库之间的映射将添加到目录中。 
+- **初始化默认租户数据库中的租户**：更新租户数据库，以添加新租户信息。
+- **在目录中注册租户**：新租户密钥和现有 tenants1 数据库之间的映射将添加到目录中。
 - **将租户的名称添加到目录扩展表**：将地点名称添加到目录中的“租户”表。  此项添加内容说明如何扩展目录数据库来支持其他特定于应用程序的数据。
 - **打开新租户的“事件”页**：在浏览器中打开 *Bushwillow Blues* 事件页。
 
-   ![活动](media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
+   ![events](media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
 
 #### <a name="debugger-steps"></a>调试程序步骤
 
@@ -172,7 +172,7 @@ ms.locfileid: "73817928"
 
 5. 使用“调试”菜单选项（F10 和 F11）逐过程或单步执行调用的函数，跟踪脚本的执行。
 
-有关调试 PowerShell 脚本的详细信息，请参阅[有关使用和调试 PowerShell 脚本的提示](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)。
+有关调试 PowerShell 脚本的详细信息，请参阅[有关使用和调试 PowerShell 脚本的提示](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)。
 
 ## <a name="provision-a-tenant-in-its-own-database"></a>在租户自身的数据库中预配该租户
 
@@ -184,12 +184,12 @@ ms.locfileid: "73817928"
 - **检查租户密钥是否已存在**：检查目录，确保尚未注册密钥。
 - **创建新租户数据库**：通过使用资源管理器模板复制 *basetenantdb* 数据库来创建此数据库。  新数据库名称取决于租户名称。
 - **将数据库添加到目录**：新租户数据库在目录中注册为分片。
-- **初始化默认租户数据库中的租户**：更新租户数据库，以添加新租户信息。  
+- **初始化默认租户数据库中的租户**：更新租户数据库，以添加新租户信息。
 - **在目录中注册租户**：新的租户密钥和 *sequoiasoccer* 数据库之间的映射添加到目录中。
 - **将租户名称添加到目录**：将地点名称添加到目录的“租户”扩展表中。
 - **打开新租户的“事件”页**：在浏览器中打开 *Sequoia Soccer* 事件页。
 
-   ![活动](media/saas-multitenantdb-provision-and-catalog/sequoiasoccer.png)
+   ![events](media/saas-multitenantdb-provision-and-catalog/sequoiasoccer.png)
 
 #### <a name="debugger-steps"></a>调试程序步骤
 
@@ -217,7 +217,7 @@ ms.locfileid: "73817928"
 
 2. 按 **F5** 运行脚本。
 
-### <a name="verify-the-deployed-set-of-tenants"></a>验证部署的一组租户 
+### <a name="verify-the-deployed-set-of-tenants"></a>验证部署的一组租户
 
 在此阶段，将混合的租户部署到共享数据库中，并将租户部署到各自的数据库中。 Azure 门户可用于检查创建的数据库。 在 [Azure 门户](https://portal.azure.com)中，通过浏览到 SQL Server 列表来打开 tenants1-mt-**USER\< 服务器\>** 。  SQL 数据库列表应包含共享的 tenants1数据库和各自数据库中的租户的数据库：
 
@@ -227,7 +227,7 @@ ms.locfileid: "73817928"
 
 #### <a name="using-wingtip-tickets-events-hub-page"></a>使用 Wingtip Tickets 事件中心页
 
-在浏览器中打开事件中心页 (http:events.wingtip-mt.\<USER\>.trafficmanager.net)  
+在浏览器中打开事件中心页 (http:events.wingtip-mt.\<USER\>.trafficmanager.net)
 
 #### <a name="using-catalog-database"></a>使用目录数据库
 
@@ -245,7 +245,7 @@ ms.locfileid: "73817928"
 3. 右键单击“TenantsExtended”视图，然后选择“选中前 1000 行”。 注意租户名称和不同租户的数据库之间的映射。
 
     ![SSMS 中的“ExtendedTenants”视图](media/saas-multitenantdb-provision-and-catalog/extendedtenantsview.png)
-      
+
 ## <a name="other-provisioning-patterns"></a>其他预配模式
 
 本部分介绍其他相关预配模式。
@@ -264,7 +264,7 @@ ms.locfileid: "73817928"
 
 <!-- - Additional [tutorials that build upon the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
 - [弹性数据库客户端库](sql-database-elastic-database-client-library.md)
-- [如何在 Windows PowerShell ISE 中调试脚本](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)
+- [如何在 Windows PowerShell ISE 中调试脚本](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: f1a5d0d98a442fab80744636eea05d4c2d26f919
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8bb3ac1905167989e27d47304ae539e49a1412e8
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478872"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132351"
 ---
 # <a name="understand-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>了解 Azure Monitor 容器的 Kubernetes 群集性能
 
@@ -53,7 +53,7 @@ Azure Monitor 提供了一个多群集视图，其中显示了在订阅中跨资
 
 ![环境欣然选择器示例](./media/container-insights-analyze/clusters-multiview-environment-pill.png)
 
-在 "**监视的群集**" 选项卡上，你将了解以下内容：
+在“受监视的群集”选项卡上，了解以下情况：
 
 - 多少群集处于严重或不正常状态，以及有多少群集处于正常状态或未进行报告（称为未知状态）。
 - 所有 [Azure Kubernetes 引擎（AKS 引擎）](https://github.com/Azure/aks-engine)部署是否都正常。
@@ -79,20 +79,20 @@ Azure Monitor 提供了一个多群集视图，其中显示了在订阅中跨资
 | |状态 |可用性 |  
 |-------|-------|-----------------|  
 |**用户 Pod**| | |  
-| |Healthy |100% |  
+| |正常 |100% |  
 | |警告 |90 - 99% |  
 | |严重 |<90% |  
-| |Unknown |如果未在过去 30 分钟报告 |  
+| |未知 |如果未在过去 30 分钟报告 |  
 |**系统 Pod**| | |  
-| |Healthy |100% |
+| |正常 |100% |
 | |警告 |不适用 |
 | |严重 |<100% |
-| |Unknown |如果未在过去 30 分钟报告 |
+| |未知 |如果未在过去 30 分钟报告 |
 |**Node** | | |
-| |Healthy |>85% |
+| |正常 |>85% |
 | |警告 |60 - 84% |
 | |严重 |<60% |
-| |Unknown |如果未在过去 30 分钟报告 |
+| |未知 |如果未在过去 30 分钟报告 |
 
 在群集列表中，可以通过选择群集名称向下钻取到“群集”页。 然后选择该特定群集的“节点”列中的节点汇总转到“节点”性能页。 或者，可以通过选择“用户 Pod”或“系统 Pod”列的汇总向下钻取到“控制器”性能页。
 
@@ -127,7 +127,7 @@ Azure Monitor 提供了一个多群集视图，其中显示了在订阅中跨资
 
 在指标资源管理器中，可以通过适用于容器的 Azure Monitor 查看聚合的节点和 Pod 利用率指标。 下表汇总了详细信息，这些信息有助于你了解如何使用指标图表来可视化容器指标。
 
-|命名空间 | 指标 | 说明 | 
+|命名空间 | 度量值 | 说明 | 
 |----------|--------|-------------|
 | insights.container/nodes | |
 | | cpuUsageMillicores | 整个群集的 CPU 利用率的聚合计量值。 一个 CPU 核心拆分为 1000 个单位（milli 表示 1000）。 用于确定某个容器中的核心使用率，该容器中可能有许多应用程序使用一个核心。| 
@@ -199,7 +199,7 @@ Azure Monitor 提供了一个多群集视图，其中显示了在订阅中跨资
 
 下表描述了查看“节点”选项卡时显示的信息。
 
-| 柱形图​​ | 说明 | 
+| 列 | 说明 | 
 |--------|-------------|
 | 名称 | 主机的名称。 |
 | 状态 | 节点状态的 Kubernetes 视图。 |
@@ -228,7 +228,7 @@ Azure Monitor 提供了一个多群集视图，其中显示了在订阅中跨资
 
 下表描述了查看控制器时显示的信息：
 
-| 柱形图​​ | 说明 | 
+| 列 | 说明 | 
 |--------|-------------|
 | 名称 | 控制器的名称。|
 | 状态 | 容器完成运行并处于“正常”、“已终止”、“已失败”、“已停止”或“已暂停”等状态时的汇总状态。 如果容器仍在运行，但是状态未正确显示或者未被代理选择并且超出 30 分钟后仍未响应，则状态为“未知”。 下表提供了状态图标的更多详细信息。|
@@ -265,7 +265,7 @@ Azure Monitor 提供了一个多群集视图，其中显示了在订阅中跨资
 
 下表描述了查看容器时显示的信息。
 
-| 柱形图​​ | 说明 | 
+| 列 | 说明 | 
 |--------|-------------|
 | 名称 | 控制器的名称。|
 | 状态 | 容器状态（如果有）。 接下来的表格提供状态图标的更多详细信息。|
@@ -320,3 +320,5 @@ Azure Monitor 提供了一个多群集视图，其中显示了在订阅中跨资
 - 请查看[使用用于容器的 Azure Monitor 创建性能警报](container-insights-alerts.md)，了解如何针对高 CPU 和内存利用率创建警报以支持 DevOps 或操作流程和过程。
 
 - 请参阅[日志查询示例](container-insights-log-search.md#search-logs-to-analyze-data)，以查看预定义的查询，以及有关群集警报、可视化或分析的评估或自定义示例。
+
+- 查看[监视群集运行状况](container-insights-health.md)，了解如何查看 Kubernetes 群集的运行状况状态。

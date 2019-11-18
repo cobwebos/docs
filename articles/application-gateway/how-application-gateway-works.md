@@ -1,18 +1,18 @@
 ---
 title: 应用程序网关的工作原理
-description: 本文提供有关应用程序网关工作原理的信息
+description: 本文提供了有关应用程序网关如何接受传入请求并将其路由到后端的信息。
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/20/2019
+ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: 5cb7473b309e1aefe6237671fac73c042b33f2cf
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: d9d7ae3bc321f1f000fac1a875589df352077f33
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326871"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129809"
 ---
 # <a name="how-an-application-gateway-works"></a>应用程序网关的工作原理
 
@@ -28,7 +28,7 @@ ms.locfileid: "71326871"
 
 3. 应用程序网关接受一个或多个侦听器上的传入流量。 侦听器是检查连接请求的逻辑实体。 侦听器上为客户端到应用程序网关的连接配置了前端 IP 地址、协议和端口号。
 
-4. 如果正在使用 Web 应用程序防火墙 (WAF)，则应用程序网关会根据 WAF 规则检查请求标头和正文（如果有）。 此操作确定请求是有效的请求还是安全威胁。 如果请求有效，则将请求路由到后端。 如果请求无效并且 WAF 处于预防模式，则会被阻止为安全威胁。 如果它处于检测模式，则会评估并记录请求，但仍会将其转发到后端服务器。
+4. 如果正在使用 Web 应用程序防火墙 (WAF)，则应用程序网关会根据 WAF 规则检查请求标头和正文（如果有）。 此操作确定请求是有效的请求还是安全威胁。 如果请求有效，则将请求路由到后端。 如果请求无效，并且 WAF 处于预防模式，则会将其作为安全威胁予以阻止。 如果 WAF 处于检测模式，则将评估并记录请求，但仍将其转发到后端服务器。
 
 可以使用 Azure 应用程序网关作为内部应用程序负载均衡器或面向 Internet 的应用程序负载均衡器。 面向 Internet 的应用程序网关使用公共 IP 地址。 面向 Internet 的应用程序网关的 DNS 名称可公开解析为其公共 IP 地址。 因此，面向 Internet 的应用程序网关可将客户端请求路由到 Internet。
 
@@ -40,7 +40,7 @@ ms.locfileid: "71326871"
 
 根据请求路由规则，应用程序网关确定是要将侦听器上的所有请求路由到特定的后端池、根据 URL 路径将请求路由到不同的后端池，还是将请求重定向到另一个端口或外部站点。
 >[!NOTE]
->规则按它们在 v1 SKU 的门户中列出的顺序进行处理。 
+>v1 SKU 规则按照在门户中列出的顺序进行处理。 
 
 当应用程序网关选择后端池时，会将请求发送到该池中的正常后端服务器之一 (y.y.y.y)。 服务器的运行状况由运行状况探测决定。 如果后端池包含多个服务器，应用程序网关将使用轮循机制算法在正常运行的服务器之间路由请求。 这会对服务器上的请求进行负载均衡。
 
@@ -62,7 +62,7 @@ HTTP 设置中使用的端口和协议确定应用程序网关与后端服务器
 
 x-forwarded-proto 的有效值为 HTTP 或 HTTPS。 x-forwarded-port 指定请求抵达应用程序网关时所在的端口。 x-original-host 标头包含随请求一起抵达的原始主机标头。 此标头在 Azure 网站集成中非常有用，其中，传入的主机标头在流量路由到后端之前会修改。 如果已启用会话相关性作为一个选项，则会添加网关管理的相关性 Cookie。
 
-可以配置应用程序网关，通过使用[重写 HTTP 标头](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)来修改标头，或使用路径重写设置修改 URI 路径。 但是，除非配置为执行此操作，否则所有传入请求都将代理到后端。
+可以将应用程序网关配置为使用[重写 HTTP 标头](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)修改标头，或使用路径替代设置修改 URI 路径。 但是，除非配置为这样做，否则所有传入的请求都会代理到后端。
 
 ## <a name="next-steps"></a>后续步骤
 

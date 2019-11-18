@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a302e723aa898a62bc43ecb38343bcf026dc769e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: abb6c2212549c3d92f9c1dbc42c31f838a704af2
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74022944"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144308"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure 资源角色设置
 
@@ -48,11 +48,19 @@ ms.locfileid: "74022944"
 
     ![列出多个分配和激活设置的“角色设置详细信息”页](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
-1. 选择 "**编辑**" 以打开 "角色设置" 窗格。
+1. 选择 "**编辑**" 以打开 "**角色设置**" 窗格。 第一个选项卡允许您在 Privileged Identity Management 中更新角色激活的配置。
 
-    ![“编辑角色设置”页，其中包含用于更新分配和激活设置的选项](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![打开 "激活" 选项卡的 "编辑角色设置" 页](./media/pim-resource-roles-configure-role-settings/role-settings-activation-tab.png)
 
-    在每个角色的“角色设置”窗格上，有多个可以配置的设置。
+1. 选择页面底部的 "**分配**" 选项卡或 "**下一步：分配**" 按钮，以打开 "分配设置" 选项卡。这些设置控制在 Privileged Identity Management 接口内进行的角色分配。
+
+    !["角色设置" 页中的 "角色分配" 选项卡](./media/pim-resource-roles-configure-role-settings/role-settings-assignment-tab.png)
+
+1. 使用页面底部的 "**通知**" 选项卡或 "**下一步：激活**" 按钮，转到此角色的 "通知设置" 选项卡。 这些设置控制与此角色相关的所有电子邮件通知。
+
+    ![角色 "设置" 页中的角色通知选项卡](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
+
+1. 随时选择 "**更新**" 按钮以更新角色设置。
 
 ## <a name="assignment-duration"></a>分配持续时间
 

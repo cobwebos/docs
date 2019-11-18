@@ -1,25 +1,17 @@
 ---
-title: 将托管缓存服务应用程序迁移到 Redis - Azure | Microsoft 文档
+title: 将托管缓存服务应用程序迁移到 Redis-Azure
 description: 了解如何将托管缓存服务和角色中缓存应用程序迁移到 Azure Redis 缓存
-services: cache
-documentationcenter: na
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: 041f077b-8c8e-4d7c-a3fc-89d334ed70d6
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 05/30/2017
 ms.author: yegu
-ms.openlocfilehash: 05638e17c2f41806a5c8aa3e0c3020eae82bdb60
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 9596b8cb771f114cb09c5d6c6ae33b4fc4a8cada
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315956"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122689"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>从托管缓存服务迁移到 Azure Redis 缓存
 在将使用 Azure 托管缓存服务的应用程序迁移到 Azure Redis 缓存时，只需对应用程序略做更改，具体情况取决于缓存应用程序所使用的托管缓存服务功能。 API 虽非完全相同，但却极为类似，而且使用托管缓存服务来访问缓存的多数现有代码，只需略做更改即可重复使用。 本文介绍了为迁移托管缓存服务应用程序以使用 Azure Redis 缓存，如何进行必要的配置和应用程序更改；还介绍了如何使用 Azure Redis 缓存的某些功能实现托管缓存服务缓存功能。
@@ -86,7 +78,7 @@ Microsoft Azure Redis 缓存在下述层中提供：
 
 卸载托管缓存服务 NuGet 包时，会删除客户端应用程序的 app.config 或 web.config 中的托管缓存服务组件和托管缓存服务条目。 卸载 NuGet 包时可能不会删除部分自定义设置，因此请打开 web.config 或 app.config，确保已删除以下元素。
 
-确保已从 `configSections` 元素中删除 `dataCacheClients` 条目。 请勿删除整个 `configSections` 元素，只需删除 `dataCacheClients` 条目（如果存在）。
+确保已从 `dataCacheClients` 元素中删除 `configSections` 条目。 请勿删除整个 `configSections` 元素，只需删除 `dataCacheClients` 条目（如果存在）。
 
 ```xml
 <configSections>
@@ -130,7 +122,7 @@ StackExchange.Azure Redis 缓存客户端的 API 与托管缓存服务类似。 
 using StackExchange.Redis
 ```
 
-如果此命名空间并未解析，请确保已如[快速入门：将 Azure Redis 缓存用于 .NET 应用程序](cache-dotnet-how-to-use-azure-redis-cache.md)中所述添加了 StackExchange.Redis NuGet 包。
+如果此命名空间未解析，请确保已添加 Stackexchange.redis NuGet 包，如[快速入门：将 Azure Cache For Redis 用于 .net 应用程序](cache-dotnet-how-to-use-azure-redis-cache.md)中所述。
 
 > [!NOTE]
 > 请注意，StackExchange.Redis 客户端需要 .NET Framework 4 或更高版本。
@@ -177,7 +169,7 @@ StackExchange.Redis 客户端使用 `RedisKey` 和 `RedisValue` 类型在缓存�
 
 调用 `StringGet` 时，如果该对象存在，则返回它，如果该对象不存在，则返回 null。 在这种情况下，可以从所需的数据源检索值，并将其存储在缓存中供后续使用。 此模式称为缓存端模式。
 
-要在缓存中指定项的过期时间，请使用 `StringSet` 的 `TimeSpan` 参数。
+要在缓存中指定项的过期时间，请使用 `TimeSpan` 的 `StringSet` 参数。
 
 ```csharp
 cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));

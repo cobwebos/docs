@@ -1,14 +1,14 @@
 ---
 title: 策略定义结构的详细信息
-description: 介绍 Azure Policy 如何使用资源策略定义，通过描述何时强制实施策略和要实现的效果为组织中的资源建立约定。
+description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 50edf2941aeb24d800752eec1e93f69abf4211ea
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 6288a7d013256c39e83ee433e867d15f67c81e57
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959999"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132820"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -19,10 +19,10 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 使用 JSON 创建策略定义。 策略定义包含以下项的元素：
 
-- 模式
+- mode
 - 参数
 - 显示名称
-- description
+- 说明
 - 策略规则
   - 逻辑评估
   - 效果
@@ -454,7 +454,7 @@ Azure Policy 支持以下类型的效果：
 
 ## <a name="aliases"></a>别名
 
-使用属性别名来访问资源类型的特定属性。 通过别名，可限制允许用于资源属性的值和条件。 每个别名会映射到给定资源类型不同 API 版本的路径。 在策略评估期间，策略引擎会获取该 API 版本的属性路径。
+可以使用属性别名来访问资源类型的特定属性。 通过别名，可限制允许用于资源属性的值和条件。 每个别名会映射到给定资源类型不同 API 版本的路径。 在策略评估期间，策略引擎会获取该 API 版本的属性路径。
 
 别名列表始终不断增长。 若要找出 Azure Policy 当前支持哪些别名，请使用以下方法之一：
 

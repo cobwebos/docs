@@ -11,22 +11,22 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3589310ff93aca3cec735d6b2f1609ee3d1d2e68
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 162d1f269c65ad98afa30e8e96370bbdceca99bd
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825781"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132294"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>使用 Wingtip Tickets 示例 SaaS 应用的一般指南
 
-本文包含运行使用 Azure SQL 数据库的 Wingtip Tickets 示例 SaaS 应用的一般指南。 
+本文包含运行使用 Azure SQL 数据库的 Wingtip Tickets 示例 SaaS 应用的一般指南。
 
 ## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>下载和取消阻止 Wingtip Tickets SaaS 脚本
 
 从外部源下载和提取 zip 文件时，可执行内容（脚本、ddl）可能受 Windows 阻止。 从 zip 文件提取脚本时，在提取前请按以下步骤取消阻止 .zip 文件。 这可确保允许运行该脚本。
 
-1. 浏览到 Wingtip Tickets SaaS GitHub 存储库，查看想要了解的数据租户模式： 
+1. 浏览到 Wingtip Tickets SaaS GitHub 存储库，查看想要了解的数据租户模式：
     - [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
     - [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
@@ -34,7 +34,7 @@ ms.locfileid: "73825781"
 3. 单击“下载 zip”并保存文件。
 4. 右键单击 zip 文件并选择“属性”。 zip 文件名与存储库名称对应。 （例如： WingtipTicketsSaaS-DbPerTenant-master.zip）
 5. 在“常规”选项卡上，选择“取消阻止”。
-6. 单击 **“确定”** 。
+6. 单击“确定”。
 7. 解压缩文件。
 
 脚本位于 ..*Learning Modules 文件夹中\\* 。
@@ -42,13 +42,13 @@ ms.locfileid: "73825781"
 
 ## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>使用 Wingtip Tickets PowerShell 脚本
 
-若要充分利用示例，需深入了解提供的脚本。 使用断点并分步执行脚本，并检查不同 SaaS 模式的实现方式。 为了轻松地分步执行提供的脚本和模块，获得最佳理解，建议使用 [PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise)。
+若要充分利用示例，需深入了解提供的脚本。 使用断点并分步执行脚本，并检查不同 SaaS 模式的实现方式。 为了轻松地分步执行提供的脚本和模块，获得最佳理解，建议使用 [PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise)。
 
 ### <a name="update-the-configuration-file-for-your-deployment"></a>为部署更新配置文件
 
 使用在部署期间设置的资源组和用户值编辑 UserConfig.psm1 文件：
 
-1. 打开 PowerShell ISE，并加载 ...*Learning Modules*UserConfig.psm1\\\\ 
+1. 打开 PowerShell ISE，并加载 ...*Learning Modules*UserConfig.psm1\\\\
 2. 使用部署（仅限 10 和 11 行）的特定值，更新 ResourceGroupName 和 Name。
 3. 保存更改！
 
@@ -76,7 +76,7 @@ ms.locfileid: "73825781"
 
 使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 连接和浏览应用程序服务器和数据库。
 
-该部署最初具有要连接到的租户和目录 SQL 数据库服务器。 服务器的命名取决于数据库租户模式（请参阅下文了解详细信息）。 
+该部署最初具有要连接到的租户和目录 SQL 数据库服务器。 服务器的命名取决于数据库租户模式（请参阅下文了解详细信息）。
 
    - **独立的应用程序：** 每个租户的服务器（例如： contosoconcerthall-*User&lt; 服务器&gt;* ）和 catalog-sa-*User&lt;&gt;*
    - **每个租户一个数据库：** tenants1-dpt-*User&lt;&gt;* 和 catalog-dpt-*User&lt;&gt;* 服务器
@@ -86,19 +86,19 @@ ms.locfileid: "73825781"
 
 
 1. 打开 SSMS 并连接到租户。 服务器名称取决于所选数据库租户模式（请参阅下文了解详细信息）：
-    - **独立的应用程序：** 各个租户的服务器（例如： contosoconcerthall-*User&lt;.database.windows.net&gt;* ） 
+    - **独立的应用程序：** 各个租户的服务器（例如： contosoconcerthall-*User&lt;.database.windows.net&gt;* ）
     - **每个租户一个数据库：** tenants1-dpt-*User&lt;.database.windows.net&gt;*
-    - **多租户数据库：** tenants1-mt-*User&lt;.database.windows.net&gt;* 
+    - **多租户数据库：** tenants1-mt-*User&lt;.database.windows.net&gt;*
 2. 单击“连接” > “数据库引擎...”：
 
    ![编录服务器](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
 3. 演示凭据为：登录名 = *developer*，Password = *P\@ssword1*
 
-    下图显示“每个租户一个数据库”模式的登录。 
+    下图显示“每个租户一个数据库”模式的登录。
     ![连接](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
-    
-   
+
+
 
 4. 重复步骤 2-3，并连接到目录服务器（请参阅下文，了解基于所选数据库租户模式的特定服务器名称）
     - **独立的应用程序：** catalog-sa-*User&lt;.database.windows.net&gt;*

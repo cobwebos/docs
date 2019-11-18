@@ -1,19 +1,19 @@
 ---
 title: 使用 PowerShell 配置 v2 自定义规则
 titleSuffix: Azure Web Application Firewall
-description: 了解如何使用 Azure PowerShell 配置 WAF v2 自定义规则
+description: 了解如何使用 Azure PowerShell 配置 WAF v2 自定义规则。 您可以为通过防火墙传递的每个请求创建自己的规则。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 48f45629b82e63dfc3f098b68e1be2523a3a0e5c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1641b74e3b9e59253b2674b22dfd8cd1b6ca2c2c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075383"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133038"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>使用自定义规则在应用程序网关上配置 Web 应用程序防火墙 v2 Azure PowerShell
 

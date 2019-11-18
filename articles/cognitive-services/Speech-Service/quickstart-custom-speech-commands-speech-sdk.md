@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 Speech SDK （预览版）连接到自定义命令应用程序
+title: 快速入门：使用语音 SDK 连接到自定义命令应用-语音服务
 titleSuffix: Azure Cognitive Services
 description: 在本文中，你将使用自定义命令创建一个语音 SDK 客户端应用程序。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 5f395d37e0133a081a6fcb2e03821a97e4012316
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 890d2200a8047bc12c99eed97277e11776806def
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507491"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111153"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>快速入门：使用 Speech SDK （预览版）连接到自定义命令应用程序
 
@@ -26,7 +26,7 @@ ms.locfileid: "73507491"
 - 发布自定义命令应用程序并获取应用程序标识符（应用程序 id）
 - 使用语音 SDK 创建一个客户端应用，以允许你与自定义命令应用程序对话
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 需要自定义命令应用程序才能完成本文。 如果尚未创建自定义命令应用程序，可以在前面的快速入门中执行此操作：
 
@@ -46,7 +46,7 @@ ms.locfileid: "73507491"
 
 1. 打开[之前创建的自定义命令应用程序](./quickstart-custom-speech-commands-create-new.md)并选择 "**发布**"
 
-   > [!div class="mx-imgBorder"]
+   > [!div class="mx-imgBorder"] 
    > ![发布应用程序](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
 1. 复制发布通知中的应用 id 供以后使用
@@ -112,9 +112,9 @@ ms.locfileid: "73507491"
    </Page>
    ```
 
-更新设计视图以显示应用程序的用户界面。
+更新“设计”视图以显示应用程序的用户界面。
 
-### <a name="c-code-behind-source"></a>C#代码隐藏源
+### <a name="c-code-behind-source"></a>C# 代码隐藏源
 
 添加代码隐藏源，以便应用程序按预期方式工作。 代码隐藏源包括：
 
@@ -320,7 +320,7 @@ ms.locfileid: "73507491"
 
    ```csharp
    //
-   // This code sets up handlers for events relied on by `DialogServiceConnector` to communicate its activities, 
+   // This code sets up handlers for events relied on by `DialogServiceConnector` to communicate its activities,
    // speech recognition results, and other information.
    //
    // ActivityReceived is the main way your client will receive messages, audio, and events
@@ -377,7 +377,7 @@ ms.locfileid: "73507491"
 1. 将以下代码片段添加到 `MainPage` 类中 `ListenButton_ButtonClicked` 方法的正文
 
    ```csharp
-   // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and 
+   // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
    // registered the event handlers.
    if (connector == null)
    {
@@ -402,20 +402,20 @@ ms.locfileid: "73507491"
 
 ## <a name="build-and-run-the-application"></a>构建并运行应用程序
 
-1. 从菜单栏中，选择 "**生成** > **生成解决方案**" 以生成应用程序。 编译代码时应不会出错。
+1. 从菜单栏中，选择“构建” > “构建解决方案”以构建应用程序。 编译代码时应不会出错。
 
-1. 选择 "**调试**" > "**启动调试**" （或按**F5**）以启动应用程序。 此时将显示 " **helloworld** " 窗口。
+1. 选择“调试” > “开始调试”（或按 F5）以启动应用程序。 此时将显示“helloworld”窗口。
 
-   ![快速入门中C#的示例 UWP 虚拟助手应用程序](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
+   ![C# 中的示例 UWP 虚拟助手应用程序 - 快速入门](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
-1. 选择 "**启用麦克风**"。 如果弹出了访问权限请求，请选择 **"是"** 。
+1. 选择“启用麦克风”。 如果弹出了访问权限请求，请选择 **"是"** 。
 
    ![麦克风访问权限请求](media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
 1. 选择 "**对话**"，并将英文短语或句子说入设备的麦克风。 你的语音将传输到 Direct Line 语音通道并转录为文本，该文本会显示在窗口中。
 
 ## <a name="next-steps"></a>后续步骤
+
 > [!div class="nextstepaction"]
 > [如何：通过语音 SDK （预览版）在客户端上完成命令](./how-to-custom-speech-commands-fulfill-sdk.md)
 > [如何：向自定义命令参数添加验证（预览版）](./how-to-custom-speech-commands-validations.md)
-

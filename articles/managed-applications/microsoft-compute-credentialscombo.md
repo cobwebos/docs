@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3036e5882e236dbbb9cf4f9aae17617822422a82
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: c1b4791f2ec80eba25a00e22cb4298b4c97da4de
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742110"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151077"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI 元素
+
 一组控件，其中包含针对 Windows 和 Linux 密码及 SSH 公钥的内置验证。
 
 ## <a name="ui-sample"></a>UI 示例
@@ -38,6 +39,7 @@ ms.locfileid: "68742110"
 ![Microsoft.Compute.CredentialsCombo Linux 密钥](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>架构
+
 对于 Windows，请使用以下架构：
 
 ```json
@@ -95,14 +97,8 @@ ms.locfileid: "68742110"
 }
 ```
 
-## <a name="remarks"></a>备注
-- 必须指定 `osPlatform`，它可以是 **Windows** 或 **Linux**。
-- 如果 `constraints.required` 设置为 **true**，则密码或 SSH 公钥文本框中必须有值才能成功通过验证。 默认值为 **true**。
-- 如果 `options.hideConfirmation` 设置为 **true**，则用于确认用户密码的第二个文本框会被隐藏。 默认值为 **false**。
-- 如果 `options.hidePassword` 设置为 **true**，则使用密码身份验证这一选项会被隐藏。 只有当 `osPlatform` 为 **Linux** 时才能使用它。 默认值为 **false**。
-- 可以使用 `customPasswordRegex` 属性实现对允许的密码的其他约束。 当密码没有通过自定义验证时，会显示 `customValidationMessage` 中的字符串。 两个属性的默认值都是 **null**。
-
 ## <a name="sample-output"></a>示例输出
+
 如果 `osPlatform` 为 **Windows** 或者 `osPlatform` 为 **Linux**，并且用户提供了密码而非 SSH 公钥，则控件将返回以下输出：
 
 ```json
@@ -121,6 +117,15 @@ ms.locfileid: "68742110"
 }
 ```
 
+## <a name="remarks"></a>备注
+
+- 必须指定 `osPlatform`，它可以是 **Windows** 或 **Linux**。
+- 如果 `constraints.required` 设置为 **true**，则密码或 SSH 公钥文本框中必须有值才能成功通过验证。 默认值为 **true**。
+- 如果 `options.hideConfirmation` 设置为 **true**，则用于确认用户密码的第二个文本框会被隐藏。 默认值为 **false**。
+- 如果 `options.hidePassword` 设置为 **true**，则使用密码身份验证这一选项会被隐藏。 只有当 `osPlatform` 为 **Linux** 时才能使用它。 默认值为 **false**。
+- 可以使用 `customPasswordRegex` 属性实现对允许的密码的其他约束。 当密码没有通过自定义验证时，会显示 `customValidationMessage` 中的字符串。 两个属性的默认值都是 **null**。
+
 ## <a name="next-steps"></a>后续步骤
+
 * 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。
 * 有关 UI 元素中的公用属性的说明，请参阅 [CreateUiDefinition 元素](create-uidefinition-elements.md)。

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: ed100c27d482065e244bb3dc2cca3b66dfc11986
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 7de1a1e24c2863b90fe5f1f3ff19124318912cff
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013480"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132687"
 ---
 # <a name="add-entities-to-extract-data"></a>添加实体以提取数据 
 
@@ -26,15 +26,26 @@ ms.locfileid: "74013480"
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="creating-an-entity-is-different-from-labeling-an-entity"></a>创建实体不同于标记实体
+## <a name="plan-entities-then-create-and-label"></a>规划实体，然后创建并标记
 
-首先需要创建实体，然后才能标记示例查询文本中的实体。 
+可以从示例最谈话创建计算机学习的实体，也可以从 "**实体**" 页创建。 
+
+通常，最佳做法是在门户中创建计算机学习实体之前，花费时间规划实体。 然后，在查询文本示例中创建计算机学习的实体，在子组件和描述符中提供详细信息，如您所知。 [可以分解实体教程](tutorial-machine-learned-entity.md)演示了如何使用此方法。 
+
+在规划实体的过程中，您可能会知道您需要文本匹配实体（例如预生成实体、正则表达式实体或列表实体）。 你可以从 "**实体**" 页创建它们，然后将它们标记为示例最谈话。 
+
+进行标记时，可以标记各个实体，然后生成到父计算机学习的实体。 或者，你可以从一个由计算机学习的父实体开始，然后分解为子实体。 
+
+> [!TIP] 
+>标记可能指示实体的所有单词，即使在客户端应用程序中提取的单词不会使用。 
+
+## <a name="creating-an-entity-before-or-with-labeling"></a>在标记之前创建实体
 
 使用下表来了解将每个实体创建或添加到应用中的实体。 
 
 |实体类型|在 LUIS 门户中的何处创建实体|
 |--|--|
-|计算机学习的实体|实体或意向详细信息|
+|机器学习实体|实体或意向详细信息|
 |列表实体|实体或意向详细信息|
 |正则表达式实体|实体|
 |Pattern.any 实体|实体|

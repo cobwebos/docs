@@ -1,17 +1,14 @@
 ---
-title: 跨租户进行身份验证 - Azure 资源管理器
+title: 跨租户进行身份验证
 description: 介绍了 Azure 资源管理器如何跨租户处理身份验证请求。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.author: tomfitz
-ms.openlocfilehash: b85ed32ac333402caeca4901e4d91bbe4d1d112c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1dccfc522179cd88e69bc5a58307b343aaef8f9e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300346"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149977"
 ---
 # <a name="authenticate-requests-across-tenants"></a>跨租户对请求进行身份验证
 
@@ -21,9 +18,9 @@ ms.locfileid: "72300346"
 
 请求具有以下身份验证标头值：
 
-| 标头名称 | 描述 | 示例值 |
+| 标头名称 | 说明 | 示例值 |
 | ----------- | ----------- | ------------ |
-| Authorization | 主令牌 | Bearer &lt;primary-token&gt; |
+| 授权 | 主令牌 | Bearer &lt;primary-token&gt; |
 | x-ms-authorization-auxiliary | 辅助令牌 | Bearer &lt;auxiliary-token1&gt;、EncryptedBearer &lt;auxiliary-token2&gt;、Bearer &lt;auxiliary-token3&gt; |
 
 辅助标头最多可以容纳三个辅助令牌。 

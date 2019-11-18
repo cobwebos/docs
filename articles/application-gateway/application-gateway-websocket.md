@@ -1,18 +1,18 @@
 ---
-title: Azure 应用程序网关中的 WebSocket 支持 | Microsoft Docs
-description: 此页概述了应用程序网关的 WebSocket 支持。
+title: Azure 应用程序网关中的 WebSocket 支持
+description: 应用程序网关跨所有网关大小为 WebSocket 提供本机支持。 无用户可配置的设置。
 author: vhorne
 ms.author: amsriva
 ms.service: application-gateway
+services: application-gateway
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 03/18/2019
-ms.openlocfilehash: a48f1b6e4410820d40ba6563d431c690ab791ff0
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.date: 11/16/2019
+ms.openlocfilehash: baa02c4d946a121f26f421af99835ae2bea18847
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097243"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130330"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>应用程序网关中的 WebSocket 支持概述
 
@@ -68,7 +68,7 @@ ms.locfileid: "71097243"
 
 ## <a name="backendaddresspool-backendhttpsetting-and-routing-rule-configuration"></a>BackendAddressPool、BackendHttpSetting 和路由规则配置
 
-如果后端池具有已启用 WebSocket 的服务器，那么使用 BackendAddressPool 对其进行定义。 使用后端端口 80 和 443 定义 BackendHttpSetting。 HTTP 设置中的请求超时值还适用于 WebSocket 会话。 路由规则中不需要进行任何更改，这种规则用于将相应的侦听器绑定到相应的后端地址池。 
+如果后端池具有已启用 WebSocket 的服务器，那么使用 BackendAddressPool 对其进行定义。 使用后端端口 80 和 443 定义 BackendHttpSetting。 HTTP 设置中的请求超时值也适用于 WebSocket 会话。 不需要对路由规则进行更改，可使用路由规则将适当的侦听器绑定到相应的后端地址池。 
 
 ```json
 "requestRoutingRules": [{

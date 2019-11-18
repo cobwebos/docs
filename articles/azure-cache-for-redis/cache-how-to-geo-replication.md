@@ -1,29 +1,21 @@
 ---
-title: 如何为 Azure Redis 缓存配置异地复制 | Microsoft Docs
+title: 如何为 Redis 的 Azure 缓存设置异地复制 |Microsoft Docs
 description: 了解如何跨地理区域复制 Azure Redis 缓存实例。
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 375643dc-dbac-4bab-8004-d9ae9570440d
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 4254175955c3560c7bd0fdd08c6b60c318238b76
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ce50c665fa79c361f638fda4ec373d5215c407f8
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60552289"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129427"
 ---
-# <a name="how-to-configure-geo-replication-for-azure-cache-for-redis"></a>如何为 Azure Redis 缓存配置异地复制
+# <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>如何为 Redis 的 Azure 缓存设置异地复制
 
-“异地复制”提供一种用于链接两个高级层 Azure Redis 缓存实例的机制。 一个缓存选作主链接缓存，另一个缓存指定为辅助链接缓存。 辅助链接缓存将变为只读，写入主缓存的数据将复制到辅助链接缓存。 此功能可用于跨 Azure 区域复制缓存。 本文提供了为高级层 Azure Redis 缓存实例配置异地复制的指南。
+“异地复制”提供一种用于链接两个高级层 Azure Redis 缓存实例的机制。 一个缓存选作主链接缓存，另一个缓存指定为辅助链接缓存。 辅助链接缓存将变为只读，写入主缓存的数据将复制到辅助链接缓存。 此功能可用于跨 Azure 区域复制缓存。 本文介绍如何为高级层 Azure Cache for Redis 实例配置异地复制。
 
 ## <a name="geo-replication-prerequisites"></a>异地复制先决条件
 
@@ -39,12 +31,12 @@ ms.locfileid: "60552289"
 - 异地复制不支持持久性。
 - 如果这两个缓存都启用了群集功能并且具有相同数目的分片，则支持群集。
 - 支持同一 VNET 中的缓存。
-- 也支持不同 VNET 中的缓存，但需要注意一些问题。 有关详细信息，请参阅[当缓存位于 VNET 中时是否可以使用异地复制？](#can-i-use-geo-replication-with-my-caches-in-a-vnet)。
+- 也支持不同 VNET 中的缓存，但需要注意一些问题。 有关详细信息，请参阅是否[可以对 VNET 中的缓存使用异地复制？](#can-i-use-geo-replication-with-my-caches-in-a-vnet) 。
 
-完成异地复制配置后，链接缓存对会有以下限制：
+配置异地复制后，以下限制适用于你的链接缓存对：
 
 - 辅助链接缓存为只读状态；这意味着只能从中读取，但不能向其写入任何数据。 
-- 添加链接前辅助链接缓存中的任何数据都会被删除。 但如果以后删除了异地复制，复制的数据则会保留在辅助链接缓存中。
+- 添加链接前辅助链接缓存中的任何数据都会被删除。 如果以后删除异地复制，则复制的数据将保留在辅助链接缓存中。
 - 链接缓存时无法[缩放](cache-how-to-scale.md)任一缓存。
 - 如果缓存已启用群集功能，则无法[更改分片数目](cache-how-to-premium-clustering.md)。
 - 无法在任一缓存上启用暂存。
@@ -56,11 +48,11 @@ ms.locfileid: "60552289"
 
 ## <a name="add-a-geo-replication-link"></a>添加异地复制链接
 
-1. 若要将两个缓存链接到一起以进行异地复制，请先在要用作主链接缓存的缓存的“资源”菜单中单击“异地复制”。  接下来，在“异地复制”边栏选项卡中单击“添加缓存复制链接”。  
+1. 若要将两个缓存链接到一起以进行异地复制，请先在要用作主链接缓存的缓存的“资源”菜单中单击“异地复制”。 接下来，在“异地复制”边栏选项卡中单击“添加缓存复制链接”。
 
     ![添加链接](./media/cache-how-to-geo-replication/cache-geo-location-menu.png)
 
-2. 在“兼容的缓存”列表中，单击所需辅助缓存的名称。  如果列表中未显示辅助缓存，请确认是否符合辅助缓存的[异地复制先决条件](#geo-replication-prerequisites)。 若要按区域筛选缓存，请在地图中单击相应的区域，以便仅显示“兼容的缓存”列表中的缓存。 
+2. 在“兼容的缓存”列表中，单击所需辅助缓存的名称。 如果列表中未显示辅助缓存，请确认是否符合辅助缓存的[异地复制先决条件](#geo-replication-prerequisites)。 若要按区域筛选缓存，请在地图中单击相应的区域，以便仅显示“兼容的缓存”列表中的缓存。
 
     ![异地复制兼容缓存](./media/cache-how-to-geo-replication/cache-geo-location-select-link.png)
     
@@ -68,19 +60,19 @@ ms.locfileid: "60552289"
 
     ![异地复制上下文菜单](./media/cache-how-to-geo-replication/cache-geo-location-select-link-context-menu.png)
 
-3. 单击“链接”将两个缓存链接在一起并开始复制过程。 
+3. 单击“链接”将两个缓存链接在一起并开始复制过程。
 
     ![链接缓存](./media/cache-how-to-geo-replication/cache-geo-location-confirm-link.png)
 
-4. 可以在“异地复制”边栏选项卡上查看复制过程的进度。 
+4. 可以在“异地复制”边栏选项卡上查看复制过程的进度。
 
     ![链接状态](./media/cache-how-to-geo-replication/cache-geo-location-linking.png)
 
-    还可以在主缓存和辅助缓存的“概述”边栏选项卡上查看链接状态。 
+    还可以在主缓存和辅助缓存的“概述”边栏选项卡上查看链接状态。
 
     ![缓存状态](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
-    复制过程完成后，“链接状态”改为“成功”。  
+    复制过程完成后，“链接状态”改为“成功”。
 
     ![缓存状态](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
 
@@ -88,38 +80,38 @@ ms.locfileid: "60552289"
 
 ## <a name="remove-a-geo-replication-link"></a>删除异地复制链接
 
-1. 若要删除两个缓存之间的链接并停止异地复制，请在“异地复制”边栏选项卡中，单击“取消链接缓存”。  
+1. 若要删除两个缓存之间的链接并停止异地复制，请在 "**异地复制**" 边栏选项卡中单击 "**取消缓存**连接"。
     
     ![取消链接缓存](./media/cache-how-to-geo-replication/cache-geo-location-unlink.png)
 
     取消链接过程完成后，辅助缓存可用于读取和写入。
 
 >[!NOTE]
->在删除异地复制链接后，从主链接缓存复制的数据保留在辅助缓存中。
+>删除异地复制链接后，从主链接缓存复制的数据将保留在辅助缓存中。
 >
 >
 
 ## <a name="geo-replication-faq"></a>异地复制常见问题解答
 
-- [是否可以通过标准层或基本层缓存使用异地复制？](#can-i-use-geo-replication-with-a-standard-or-basic-tier-cache)
+- [是否可以对标准或基本层缓存使用异地复制？](#can-i-use-geo-replication-with-a-standard-or-basic-tier-cache)
 - [在链接或取消链接过程中是否可以使用缓存？](#is-my-cache-available-for-use-during-the-linking-or-unlinking-process)
 - [是否可以链接两个以上的缓存？](#can-i-link-more-than-two-caches-together)
 - [是否可以链接来自不同 Azure 订阅的两个缓存？](#can-i-link-two-caches-from-different-azure-subscriptions)
 - [是否可以链接不同大小的两个缓存？](#can-i-link-two-caches-with-different-sizes)
 - [是否可以在启用群集时使用异地复制？](#can-i-use-geo-replication-with-clustering-enabled)
-- [当缓存位于 VNET 中时是否可以使用异地复制？](#can-i-use-geo-replication-with-my-caches-in-a-vnet)
+- [能否对 VNET 中的缓存使用异地复制？](#can-i-use-geo-replication-with-my-caches-in-a-vnet)
 - [什么是 Redis 异地复制的复制计划？](#what-is-the-replication-schedule-for-redis-geo-replication)
 - [异地复制需要多长时间？](#how-long-does-geo-replication-replication-take)
 - [复制恢复点是否受保证？](#is-the-replication-recovery-point-guaranteed)
-- [是否可以使用 PowerShell 或 Azure CLI 管理异地复制？](#can-i-use-powershell-or-azure-cli-to-manage-geo-replication)
+- [是否可以使用 PowerShell 或 Azure CLI 来管理异地复制？](#can-i-use-powershell-or-azure-cli-to-manage-geo-replication)
 - [跨 Azure 区域复制数据的费用是多少？](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
 - [尝试删除链接缓存时为何操作会失败？](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
 - [应为辅助链接缓存选择哪个区域？](#what-region-should-i-use-for-my-secondary-linked-cache)
 - [辅助链接缓存如何进行故障转移？](#how-does-failing-over-to-the-secondary-linked-cache-work)
 
-### <a name="can-i-use-geo-replication-with-a-standard-or-basic-tier-cache"></a>是否可以通过标准层或基本层缓存使用异地复制？
+### <a name="can-i-use-geo-replication-with-a-standard-or-basic-tier-cache"></a>是否可以对标准或基本层缓存使用异地复制？
 
-不可以，异地复制仅适用于高级层缓存。
+不可以，地域复制仅适用于高级层缓存。
 
 ### <a name="is-my-cache-available-for-use-during-the-linking-or-unlinking-process"></a>在链接或取消链接过程中是否可以使用缓存？
 
@@ -143,9 +135,9 @@ ms.locfileid: "60552289"
 
 可以，但两个缓存的分片数必须相同。
 
-### <a name="can-i-use-geo-replication-with-my-caches-in-a-vnet"></a>当缓存位于 VNET 中时是否可以使用异地复制？
+### <a name="can-i-use-geo-replication-with-my-caches-in-a-vnet"></a>能否对 VNET 中的缓存使用异地复制？
 
-可以，支持对 VNET 中的缓存进行异地复制，但需要注意以下问题：
+是的，支持对 Vnet 中的缓存进行异地复制，但有一些注意事项：
 
 - 支持在同一 VNET 中的缓存间进行异地复制。
 - 也支持在不同 VNET 中的缓存之间进行异地复制。
@@ -168,17 +160,17 @@ ms.locfileid: "60552289"
 
 若要获取某个恢复点，请从任一缓存[导出](cache-how-to-import-export-data.md#export)。 以后可以[导入](cache-how-to-import-export-data.md#import)到主链接缓存。
 
-### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>是否可以使用 PowerShell 或 Azure CLI管理异地复制？
+### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>是否可以使用 PowerShell 或 Azure CLI 来管理异地复制？
 
 是的，可以使用 Azure 门户、PowerShell 或 Azure CLI 管理异地复制。 有关详细信息，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache)或 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/redis/server-link?view=azure-cli-latest)。
 
 ### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-regions"></a>跨 Azure 区域复制数据的费用是多少？
 
-使用异地复制时，主链接缓存中的数据会被复制到辅助链接缓存中。 如果两个链接缓存位于同一区域，则数据传输不会产生费用。 如果两个链接缓存位于不同的区域，则数据传输费用是跨任一区域移动数据所产生的网络传出费用。 有关详细信息，请参阅[带宽定价详细信息](https://azure.microsoft.com/pricing/details/bandwidth/)。
+使用异地复制时，主链接缓存中的数据将复制到辅助链接缓存。 如果两个链接缓存位于同一区域，则数据传输不会产生费用。 如果两个链接缓存位于不同的区域，则数据传输费用是跨任一区域移动数据所产生的网络传出费用。 有关详细信息，请参阅[带宽定价详细信息](https://azure.microsoft.com/pricing/details/bandwidth/)。
 
 ### <a name="why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache"></a>尝试删除链接缓存时为何操作会失败？
 
-在删除异地复制链接之前，无法删除已链接的异地复制缓存及其资源组。 如果尝试删除包含一个或两个链接缓存的资源组，则会删除该资源组中的其他资源，但该资源组保持 `deleting` 状态，而资源组中的任意链接缓存则保持 `running` 状态。 若要完全删除资源组及其包含的链接缓存，请根据[删除异地复制链接](#remove-a-geo-replication-link)中所述取消链接这些缓存。
+在删除异地复制链接之前，无法删除已链接的异地复制缓存及其资源组。 如果尝试删除包含一个或两个链接缓存的资源组，则会删除该资源组中的其他资源，但该资源组保持 `deleting` 状态，而资源组中的任意链接缓存则保持 `running` 状态。 若要完全删除资源组及其中的链接缓存，请将缓存取消链接，如[删除异地复制链接](#remove-a-geo-replication-link)中所述。
 
 ### <a name="what-region-should-i-use-for-my-secondary-linked-cache"></a>应为辅助链接缓存选择哪个区域？
 

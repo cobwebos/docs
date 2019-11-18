@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: cd5b45093be6d7cc8745013f18c897251f89f454
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6ec8f8835e925663fc6ac21a6eb1df09d6927109
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822193"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132110"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>了解如何预配新租户并将其注册到目录中
 
@@ -25,12 +25,12 @@ ms.locfileid: "73822193"
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> 
+>
 > * 预配单个新租户。
 > * 预配一批其他租户。
 
 
-若要完成本教程，请确保已完成以下先决条件：
+若要完成本教程，请确保已完成了以下先决条件：
 
 * 已部署了 Wingtip Tickets SaaS“每租户一个数据库”应用。 若要在五分钟内完成部署，请参阅[部署和浏览 Wingtip Tickets SaaS database-per-tenant 应用程序](saas-dbpertenant-get-started-deploy.md)
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
@@ -39,17 +39,17 @@ ms.locfileid: "73822193"
 
 在支持数据库的多租户 SaaS 应用程序中，了解每个租户的信息存储位置非常重要。 在 SaaS 目录模式下，目录数据库用来保存每个租户与存储其数据的数据库之间的映射。 此模式适用于租户数据分布在多个数据库的情况。
 
-每个租户由目录中的密钥标识，该密钥映射到其数据库的位置。 在 Wingtip Tickets 应用中，该密钥根据租户名称的哈希构成。 此方案允许应用从应用程序 URL 中包含的租户名构造键。 可使用其他租户密钥方案。  
+每个租户由目录中的密钥标识，该密钥映射到其数据库的位置。 在 Wingtip Tickets 应用中，该密钥根据租户名称的哈希构成。 此方案允许应用从应用程序 URL 中包含的租户名构造键。 可使用其他租户密钥方案。
 
 目录允许更改数据库的名称或位置，而对应用程序产生极小影响。 在多租户数据库模型中，此功能也适合于在数据库之间移动租户。 目录还可用于指示租户或数据库是否处于脱机状态，以便进行维护或其他操作。 [还原单个租户教程](saas-dbpertenant-restore-single-tenant.md)中对此功能进行了探讨。
 
-该目录还存储其他租户或数据库元数据，如架构版本、服务计划或提供给租户的 SLA。 该目录可以存储其他在进行应用程序管理、客户支持或 DevOps 时所需的信息。 
+该目录还存储其他租户或数据库元数据，如架构版本、服务计划或提供给租户的 SLA。 该目录可以存储其他在进行应用程序管理、客户支持或 DevOps 时所需的信息。
 
-除了 SaaS 应用程序，该目录还可以启用数据库工具。 在 Wingtip 票证 SaaS 每个租户的数据库示例中，目录用于启用跨租户查询，这在[即席报表教程](saas-tenancy-cross-tenant-reporting.md)中进行了介绍。 [架构管理](saas-tenancy-schema-management.md)和[租户分析](saas-tenancy-tenant-analytics.md)教程中探讨了跨数据库作业管理。 
+除了 SaaS 应用程序，该目录还可以启用数据库工具。 在 Wingtip 票证 SaaS 每个租户的数据库示例中，目录用于启用跨租户查询，这在[即席报表教程](saas-tenancy-cross-tenant-reporting.md)中进行了介绍。 [架构管理](saas-tenancy-schema-management.md)和[租户分析](saas-tenancy-tenant-analytics.md)教程中探讨了跨数据库作业管理。
 
-在 Wingtip Tickets SaaS 示例中，目录通过使用[弹性数据库客户端库 (EDCL)](sql-database-elastic-database-client-library.md) 的“分片管理”功能来实现。 EDCL 在 Java 和 .NET Framework 中可用。 EDCL 允许应用程序创建、管理和使用支持数据库的分片映射。 
+在 Wingtip Tickets SaaS 示例中，目录通过使用[弹性数据库客户端库 (EDCL)](sql-database-elastic-database-client-library.md) 的“分片管理”功能来实现。 EDCL 在 Java 和 .NET Framework 中可用。 EDCL 允许应用程序创建、管理和使用支持数据库的分片映射。
 
-分片映射包含分片（数据库）列表和密钥（租户）与分片之间的映射。 EDCL 函数用于在预配租户的过程中在分片映射中创建条目。 在运行时，应用程序使用这些函数连接到正确的数据库。 EDCL 会缓存连接信息以尽量减少到达目录数据库的流量并提高应用程序速度。 
+分片映射包含分片（数据库）列表和密钥（租户）与分片之间的映射。 EDCL 函数用于在预配租户的过程中在分片映射中创建条目。 在运行时，应用程序使用这些函数连接到正确的数据库。 EDCL 会缓存连接信息以尽量减少到达目录数据库的流量并提高应用程序速度。
 
 > [!IMPORTANT]
 > 可在目录数据库中访问映射数据，但请勿编辑这些数据。 请仅使用弹性数据库客户端库 API 编辑映射数据。 直接操作映射数据有损坏目录的风险，不受支持。
@@ -57,15 +57,15 @@ ms.locfileid: "73822193"
 
 ## <a name="introduction-to-the-saas-provisioning-pattern"></a>SaaS 预配模式简介
 
-在使用单个租户数据库模型的 SaaS 应用程序中添加新租户时，必须预配新租户数据库。 该数据库必须在正确的位置和服务层级创建。 它还必须使用适当的架构和参考数据初始化。 它必须在相应租户密钥下的目录中进行注册。 
+在使用单个租户数据库模型的 SaaS 应用程序中添加新租户时，必须预配新租户数据库。 该数据库必须在正确的位置和服务层级创建。 它还必须使用适当的架构和参考数据初始化。 它必须在相应租户密钥下的目录中进行注册。
 
-可以使用不同方法预配数据库。 可以执行 SQL 脚本、部署 bacpac 或复制模板数据库。 
+可以使用不同方法预配数据库。 可以执行 SQL 脚本、部署 bacpac 或复制模板数据库。
 
-数据库预配需成为架构管理策略的一部分。 必须确保使用最新架构预配新数据库。 [架构管理教程](saas-tenancy-schema-management.md)中对此要求进行了探讨。 
+数据库预配需成为架构管理策略的一部分。 必须确保使用最新架构预配新数据库。 [架构管理教程](saas-tenancy-schema-management.md)中对此要求进行了探讨。
 
-Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服务器上部署的名为 _basetenantdb_ 的模板数据库来预配新租户。 可使用脚本将预配集成到应用程序作为注册体验的一部分。 也可以使用脚本对它进行脱机支持。 本教程将探讨如何使用 PowerShell 进行预配。 
+Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服务器上部署的名为 _basetenantdb_ 的模板数据库来预配新租户。 可使用脚本将预配集成到应用程序作为注册体验的一部分。 也可以使用脚本对它进行脱机支持。 本教程将探讨如何使用 PowerShell 进行预配。
 
-预配脚本将复制 _basetenantdb_ 数据库，以在弹性池中创建新的租户数据库。 将在映射到 _newtenant_ DNS 别名的租户服务器中创建租户数据库。 此别名维持对用于预配新租户的服务器的引用，并且已更新以指向灾难恢复教程（[使用异地还原进行灾难恢复](saas-dbpertenant-dr-geo-restore.md)，[使用 异地复制进行灾难恢复](saas-dbpertenant-dr-geo-replication.md)）中的恢复租户服务器。 然后通过特定于租户的信息初始化该数据库，并在目录分片映射中注册该数据库。 租户数据库的名称基于租户名称。 此命名方案不是该模式的关键部分。 目录会将租户密钥映射到数据库名，因此可以使用任何命名约定。 
+预配脚本将复制 _basetenantdb_ 数据库，以在弹性池中创建新的租户数据库。 将在映射到 _newtenant_ DNS 别名的租户服务器中创建租户数据库。 此别名维持对用于预配新租户的服务器的引用，并且已更新以指向灾难恢复教程（[使用异地还原进行灾难恢复](saas-dbpertenant-dr-geo-restore.md)，[使用 异地复制进行灾难恢复](saas-dbpertenant-dr-geo-replication.md)）中的恢复租户服务器。 然后通过特定于租户的信息初始化该数据库，并在目录分片映射中注册该数据库。 租户数据库的名称基于租户名称。 此命名方案不是该模式的关键部分。 目录会将租户密钥映射到数据库名，因此可以使用任何命名约定。
 
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>获取 Wingtip Tickets SaaS“每租户一个数据库”应用程序脚本
@@ -95,7 +95,7 @@ Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服�
 
 
 
-使用“调试”菜单选项跟踪脚本的执行。 按 F10 和 F11 逐步执行调用的函数， 有关调试 PowerShell 脚本的详细信息，请参阅[有关使用和调试 PowerShell 脚本的提示](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)。
+使用“调试”菜单选项跟踪脚本的执行。 按 F10 和 F11 逐步执行调用的函数， 有关调试 PowerShell 脚本的详细信息，请参阅[有关使用和调试 PowerShell 脚本的提示](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)。
 
 
 无需显式遵循此工作流。 此文档解释了如何调试脚本。
@@ -156,7 +156,7 @@ Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服�
 
 **预先预配数据库**：预配模式利用了“弹性池中的数据库不会添加额外费用”这一事实。 计费针对弹性池而不是数据库。 空闲数据库不使用任何资源。 通过在池中预先预配数据库，然后在需要时分配它们，可以显著降低租户加入时间。 可以根据需要调整预先预配数据库的数目，以保留适合预期预配率的缓冲区。
 
-**自动预配**：在自动预配模式下，某个预配服务会自动根据需要预配服务器、池和数据库。 如果需要，可以包括弹性池中的预先预配数据库。 如果数据库已停用并已删除，则可以通过预配服务来填充弹性池中的间隙。 此类服务可简单，也可复杂（例如，处理跨多个地理区域的预配），并且可以设置异地复制以用于灾难恢复。 
+**自动预配**：在自动预配模式下，某个预配服务会自动根据需要预配服务器、池和数据库。 如果需要，可以包括弹性池中的预先预配数据库。 如果数据库已停用并已删除，则可以通过预配服务来填充弹性池中的间隙。 此类服务可简单，也可复杂（例如，处理跨多个地理区域的预配），并且可以设置异地复制以用于灾难恢复。
 
 使用自动预配模式时，客户端应用程序或脚本会将预配请求提交到要由预配服务处理的队列。 然后它会轮询该服务以确定完成。 如果使用预先预配，则请求将能够快速得到处理。 服务会在后台预配替换数据库。
 
@@ -166,7 +166,7 @@ Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服�
 本教程介绍了如何：
 
 > [!div class="checklist"]
-> 
+>
 > * 预配单个新租户。
 > * 预配一批其他租户。
 > * 逐步了解预配租户以及将它们注册到目录的详细信息。
@@ -177,4 +177,4 @@ Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服�
 
 * 其他[基于 Wingtip Tickets SaaS database-per-tenant 应用程序制作的教程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [弹性数据库客户端库](sql-database-elastic-database-client-library.md)
-* [在 Windows PowerShell ISE 中调试脚本](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)
+* [在 Windows PowerShell ISE 中调试脚本](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)

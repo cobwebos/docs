@@ -1,19 +1,16 @@
 ---
 title: 运行状况集成部署-Azure 部署管理器
 description: 介绍如何使用 Azure 部署管理器在多个区域部署服务。 其中介绍了安全部署实践，可在部署到所有区域前验证部署的稳定性。
-services: azure-resource-manager
-documentationcenter: na
 author: mumian
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: jgao
-ms.openlocfilehash: 72ddc900a892e6391d6b54046ac6f3a42358526f
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 6cc21837ff08822a9eae6ae7c326142ca873df74
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528565"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149961"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>介绍 Azure 部署管理器的运行状况集成推出（公共预览版）
 
@@ -141,7 +138,7 @@ Azure 部署管理器中的新*healthCheck*步骤使你可以声明指示正常�
 
     1. 部署操作完成后，Vm 可能会重新启动、基于新数据重新配置，甚至首次启动。 运行状况监视提供程序将运行状况信号聚合为有用的内容时，服务还需要花费时间。 在此 tumultuous 过程中，检查服务运行状况可能并不合理，因为更新尚未达到稳定状态。 事实上，当资源结算时，服务在正常和不正常状态之间可能会变得不稳定。 
     1. 在等待阶段，不会监视服务运行状况。 这用于在开始运行状况检查过程之前，允许已部署的资源制作时间。 
-1. 灵活
+1. Elastic
 
     1. 由于在所有情况下都不可能知道资源在变得稳定之前需要多长时间才能制作，因此，弹性阶段允许在资源可能不稳定以及需要维持正常稳定状态.
     1. 当弹性阶段开始时，Azure 部署管理器会定期轮询为服务运行状况提供的 REST 终结点。 轮询间隔是可配置的。 

@@ -18,16 +18,16 @@ ms.author: sagonzal
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bd8cb07d30aa5223cf3d78d636f0d593fefbecf
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 7274a1b6b5ebf5b55c2cad4b52dfe4c997e26314
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905493"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145900"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-java-msal4j"></a>MSAL for Java 中的自定义令牌缓存序列化（MSAL4J）
 
-若要使用永久性令牌缓存应用程序，你将需要自定义序列化。 标记缓存序列化中涉及的 Java 类和接口如下所示：
+若要在你的应用程序的实例之间保存令牌缓存，你将需要自定义序列化。 标记缓存序列化中涉及的 Java 类和接口如下所示：
 
 - [ITokenCache](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCache.html)：代表安全令牌缓存的接口。
 - [ITokenCacheAccessAspect](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessAspect.html)：表示执行访问前后代码的操作的接口。 你应 @Override *beforeCacheAccess*和*afterCacheAccess*与用于序列化和反序列化缓存的逻辑。

@@ -1,5 +1,5 @@
 ---
-title: 如何：在客户端上通过语音 SDK 完成自定义命令（预览）
+title: 如何在客户端上通过语音 SDK 完成自定义命令
 titleSuffix: Azure Cognitive Services
 description: 本文介绍了如何在客户端上利用语音 SDK 处理自定义命令活动
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: a986da74a668075457e28a9a37b6a11fd04a84e4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2da8ef2c29bd6afdaf49e000bf964d119f1e99f1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507018"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110073"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>如何：在客户端上通过语音 SDK 完成命令（预览）
 
@@ -26,15 +26,15 @@ ms.locfileid: "73507018"
 - 从自定义命令应用程序定义并发送自定义 JSON 有效负载
 - 从C# UWP Speech SDK 客户端应用程序接收和可视化自定义 JSON 负载内容
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 - 用于语音服务的 Azure 订阅密钥
-   - [免费获取一个](get-started.md)或创建一个[Azure 门户](https://portal.azure.com)
+  - [免费获取一个](get-started.md)或创建一个[Azure 门户](https://portal.azure.com)
 - 以前创建的自定义命令应用
-   - [快速入门：使用参数创建自定义命令（预览）](./quickstart-custom-speech-commands-create-parameters.md)
+  - [快速入门：使用参数创建自定义命令（预览）](./quickstart-custom-speech-commands-create-parameters.md)
 - 启用了语音 SDK 的客户端应用程序
-   - [快速入门：使用 Speech SDK （预览版）连接到自定义命令应用程序](./quickstart-custom-speech-commands-speech-sdk.md)
+  - [快速入门：使用 Speech SDK （预览版）连接到自定义命令应用程序](./quickstart-custom-speech-commands-speech-sdk.md)
 
 ## <a name="optional-get-started-fast"></a>可选：快速入门
 
@@ -45,14 +45,15 @@ ms.locfileid: "73507018"
 1. 从[Speech Studio](https://speech.microsoft.com/)打开之前创建的自定义命令应用程序
 1. 检查 "**完成规则**" 部分，确保你有以前创建的用于响应用户的规则
 1. 若要将负载直接发送到客户端，请创建具有 Send 活动操作的新规则
+
    > [!div class="mx-imgBorder"]
    > ![发送活动完成规则](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
 
-   | 设置    | 建议的值                                  | 说明                                        |
-   | ---------- | ------------------------------------------------ | -------------------------------------------------- |
-   | 规则名称  | UpdateDeviceState                                | 描述规则用途的名称          |
-   | 条件 | 必需参数-`OnOff` 和 `SubjectDevice` | 确定何时可以运行规则的条件    |
-   | 操作    | `SendActivity` （请参阅下文）                        | 规则条件为 true 时要执行的操作 |
+   | 设置 | 建议的值 | 说明 |
+   | ------- | --------------- | ----------- |
+   | 规则名称 | UpdateDeviceState | 描述规则用途的名称 |
+   | 条件 | 必需参数-`OnOff` 和 `SubjectDevice` | 确定何时可以运行规则的条件 |
+   | 操作 | `SendActivity` （请参阅下文） | 规则条件为 true 时要执行的操作 |
 
    > [!div class="mx-imgBorder"]
    > ![Send 活动负载](media/custom-speech-commands/fulfill-sdk-send-activity-action.png)
@@ -139,6 +140,6 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 1. 电视的视觉状态应更改为 "开启"
 
 ## <a name="next-steps"></a>后续步骤
+
 > [!div class="nextstepaction"]
 > [如何：向自定义命令参数添加验证（预览）](./how-to-custom-speech-commands-validations.md)
-

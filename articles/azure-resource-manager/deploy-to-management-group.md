@@ -1,17 +1,14 @@
 ---
-title: 在管理组中创建资源-Azure 资源管理器模板
+title: 将资源部署到管理组
 description: 介绍如何在 Azure 资源管理器模板中的管理组范围内部署资源。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.author: tomfitz
-ms.openlocfilehash: 82990ab7baa8ea9f2dfc3c2d2b346e348e6bd490
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c8ed8ae20192599ff7cda691429230d8c2a104fc
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73840153"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149907"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理组级别创建资源
 

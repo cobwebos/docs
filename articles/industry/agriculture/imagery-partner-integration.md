@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 232ade55350ad1ac85612cf8c69117c19cb20d0c
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 788ffd9e7036996f6ac1bc7fcbc33137aca40ee2
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927797"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132021"
 ---
 # <a name="imagery-partner-integration"></a>图像合作伙伴集成
 
@@ -42,7 +42,7 @@ Api 包含 Swagger 技术文档。 查看[Swagger](https://aka.ms/FarmBeatsDatah
 
 ## <a name="authentication"></a>身份验证
 
-FarmBeats 利用 Microsoft Azure 的[Active Directory]((https://docs.microsoft.com/azure/app-service/overview-authentication-authorization))。 身份验证 Azure App Service 提供内置的身份验证和授权支持。 
+FarmBeats 利用 Microsoft Azure 的[Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)。 Azure App Service 提供内置身份验证和授权支持。 
 
 有关的详细信息，请参阅[Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)。   
 

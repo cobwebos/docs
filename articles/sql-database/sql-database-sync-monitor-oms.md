@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 031482fc0b87e095fcb19046564e15642050f261
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0ed0bd3544fff89c8230267e3d6d8826c5ae3c7c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820797"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114618"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>利用 Azure Monitor 日志监视 SQL 数据同步 
 
@@ -137,7 +137,7 @@ ms.locfileid: "73820797"
 
 2.  创建查询，以便在所选的间隔内按同步组选择错误和警告。 例如：
 
-    `DataSyncLog_CL | where TimeGenerated > ago(60m) | where LogLevel_s != "Success" | summarize count() by SyncGroupName_s`
+    `DataSyncLog_CL | where LogLevel_s != "Success" | summarize AggregatedValue = count() by bin(TimeGenerated,60m),SyncGroupName_s`
 
 3.  运行查询之后，请选择指示“警报”的钟形图标。
 

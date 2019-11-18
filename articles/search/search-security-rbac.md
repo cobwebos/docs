@@ -1,5 +1,5 @@
 ---
-title: 在门户中为 Azure 管理访问权限设置 RBAC 角色
+title: 为 Azure 管理访问权限设置 RBAC 角色
 titleSuffix: Azure Cognitive Search
 description: Azure 门户中基于角色的管理控制（RBAC），用于控制和委派 Azure 认知搜索管理的管理任务。
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 321aabb26d5929f7587dd61e7d4059701f7ad526
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9262d01e35bd03a9116a30b070b023f578f0b15a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794328"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112557"
 ---
 # <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>设置用于管理 Azure 认知搜索的 RBAC 角色
 
@@ -37,6 +37,6 @@ ms.locfileid: "72794328"
 
 ## <a name="see-also"></a>另请参阅
 
-+ [使用 PowerShell 进行管理](search-manage-powershell.md) 
++ [使用 PowerShell 管理](search-manage-powershell.md) 
 + [Azure 认知搜索中的性能和优化](search-performance-optimization.md)
 + [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。

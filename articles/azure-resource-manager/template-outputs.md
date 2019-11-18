@@ -1,17 +1,14 @@
 ---
-title: Azure 资源管理器模板中的输出
+title: 模板中的输出
 description: 介绍如何在 Azure 资源管理器模板中定义输出值。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.author: tomfitz
-ms.openlocfilehash: 0ff1e3cb71bd1bf5ee947eb5204839d48103628b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b4c652d71436202b9b6e551f9c582e5c98508259
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827928"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149185"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Azure 资源管理器模板中的输出
 
@@ -64,7 +61,7 @@ ms.locfileid: "71827928"
 }
 ```
 
-不能在[嵌套模板](resource-group-linked-templates.md#nested-template)的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请将嵌套模板转换为链接模板。
+不能在`reference`嵌套模板[的 outputs 节中使用 ](resource-group-linked-templates.md#nested-template) 函数。 若要返回嵌套模板中部署的资源的值，请将嵌套模板转换为链接模板。
 
 ## <a name="get-output-values"></a>获取输出值
 
@@ -95,7 +92,7 @@ az group deployment show \
 
 以下示例演示了使用输出的方案。
 
-|模板  |描述  |
+|模板  |说明  |
 |---------|---------|
 |[复制变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | 创建复杂变量，并输出这些值。 不部署任何资源。 |
 |[公共 IP 地址](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | 创建公共 IP 地址并输出资源 ID。 |

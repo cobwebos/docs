@@ -1,7 +1,7 @@
 ---
 title: 必应新闻搜索终结点
 titleSuffix: Azure Cognitive Services
-description: 新闻搜索 API 终结点摘要。
+description: 本文提供新闻搜索 API 终结点的摘要;新闻、热门资讯和趋势新闻。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: 82e37e8fa47b467e7c2fe98f801482675809a266
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: dc7d16fe809e3e324f384b0d9e088dd7e6ab261c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423782"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111485"
 ---
 # <a name="bing-news-search-api-endpoints"></a>必应新闻搜索 API 终结点
 
@@ -31,7 +31,7 @@ ms.locfileid: "68423782"
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search
 ```
 
-基于搜索查询返回的新闻项。 如果搜索查询为空，API 将返回不同类别的热门资讯文章。 通过 URL 编码搜索术语发送查询并将其附加到 `q=""` 参数。 有关可用性, 请参阅[支持的国家/地区和市场](language-support.md#supported-markets-for-news-search-endpoint)。
+基于搜索查询返回的新闻项。 如果搜索查询为空，API 将返回不同类别的热门资讯文章。 通过 URL 编码搜索术语发送查询并将其附加到 `q=""` 参数。 有关可用性，请参阅[支持的国家/地区和市场](language-support.md#supported-markets-for-news-search-endpoint)。
 
 ### <a name="top-news-items-by-category"></a>类别的热门新闻项
 
@@ -39,7 +39,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/news/search
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-按类别返回热门新闻项。 可以使用 `category=business`、`category=sports` 或 `category=entertainment` 专门请求热门商业、体育或娱乐文章。  `category` 参数只能与 `/news` URL 结合使用。 指定类别有一些正式要求；请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters)文档中的 `category`。 通过 URL 编码搜索术语发送查询并将其附加到 `q=""` 参数。 有关可用性, 请参阅[支持的国家/地区和市场](language-support.md#supported-markets-for-news-endpoint)。
+按类别返回热门新闻项。 可以使用 `category=business`、`category=sports` 或 `category=entertainment` 专门请求热门商业、体育或娱乐文章。  `category` 参数只能与 `/news` URL 一起使用。 指定类别有一些正式要求；请参阅`category`查询参数[文档中的 ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters)。 通过 URL 编码搜索术语发送查询并将其附加到 `q=""` 参数。 有关可用性，请参阅[支持的国家/地区和市场](language-support.md#supported-markets-for-news-endpoint)。
 
 ### <a name="trending-news-topics"></a>热门新闻主题 
 
@@ -47,7 +47,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/news
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics
 ```
 
-返回当前社交网络上热门的新闻主题。 当包含 `/trendingtopics` 选项时，必应搜索会忽略其他几个参数，例如 `freshness` 和 `?q=""`。 有关可用性, 请参阅[支持的国家/地区和市场](language-support.md#supported-markets-for-news-trending-endpoint)。
+返回当前社交网络上热门的新闻主题。 当包含 `/trendingtopics` 选项时，必应搜索会忽略其他几个参数，例如 `freshness` 和 `?q=""`。 有关可用性，请参阅[支持的国家/地区和市场](language-support.md#supported-markets-for-news-trending-endpoint)。
 
 ## <a name="next-steps"></a>后续步骤
 

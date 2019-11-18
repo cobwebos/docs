@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 177d8e6e9d4393df785f2caf55bf6cbe895bc640
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6209d899131a91754c200da831b3739833ade22c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73667913"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132220"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -25,11 +25,11 @@ ms.locfileid: "73667913"
 1. 首先需要一个 Application Insights 资源。 如果你尚未获得资源和检测密钥，请遵照[有关创建新资源的说明](create-new-resource.md)。
 2. 从你要将 JavaScript 遥测数据发送到的资源复制检测密钥。
 3. 通过以下两个选项之一，将 Application Insights JavaScript SDK 添加到网页或应用：
-    * [npm 安装程序](#npm-based-setup)
+    * [npm 设置](#npm-based-setup)
     * [JavaScript 代码片段](#snippet-based-setup)
 
 > [!IMPORTANT]
-> 只需使用下述方法之一即可将 Application Insights JavaScript SDK 添加到应用程序。 如果使用基于 npm 的安装程序，请不要使用基于代码段的设置。 相反，使用基于代码段的方法时，这一点也同样适用于基于 npm 的设置。 
+> 只需使用下述方法之一即可将 Application Insights JavaScript SDK 添加到应用程序。 如果使用基于 npm 的设置，请不要使用基于代码片段的设置。 反之亦然，在使用基于代码片段的方法时，请不要使用基于 npm 的设置。 
 
 ### <a name="npm-based-setup"></a>基于 npm 的设置
 
@@ -41,11 +41,12 @@ const appInsights = new ApplicationInsights({ config: {
   /* ...Other Configuration Options... */
 } });
 appInsights.loadAppInsights();
+appInsights.trackPageView(); // Manually call trackPageView to establish the current user/session/pageview
 ```
 
 ### <a name="snippet-based-setup"></a>基于代码片段的设置
 
-如果你的应用程序不使用 npm，则可以通过将此代码片段粘贴到每个页面的顶部，直接使用 Application Insights 来检测网页。 最好是将它用作 `<head>` 节中的第一个脚本，以便它可以监视所有依赖项存在的任何潜在问题。 如果使用的是 Blazor 服务器应用，请在 "`<head>`" 部分的文件 `_Host.cshtml` 顶部添加代码片段。
+如果应用不使用 npm，则可以通过直接使用 Application Insights 来检测网页：只需将此代码片段粘贴到每个页面的顶部即可。 最好是将它用作 `<head>` 节中的第一个脚本，以便它可以监视所有依赖项存在的任何潜在问题。 如果使用的是 Blazor Server 应用，请在文件 `_Host.cshtml` 的顶部 `<head>` 部分中添加代码片段。
 
 ```html
 <script type="text/javascript">
@@ -96,7 +97,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>配置
 大多数配置字段的命名都可默认为 false。 除 `instrumentationKey` 以外的所有字段都是可选的。
 
-| Name | 默认 | 说明 |
+| 名称 | 默认 | 说明 |
 |------|---------|-------------|
 | instrumentationKey | Null | **必需**<br>从 Azure 门户获取的检测密钥。 |
 | accountId | Null | 可选的帐户 ID（如果应用将用户分组到帐户中）。 不允许使用空格、逗号、分号、等于或竖线 |
@@ -113,20 +114,20 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | samplingPercentage | 100 | 要发送的事件百分比。 默认值为 100，表示发送所有事件。 如果你希望避免大型应用程序达到数据上限，请设置此项。 |
 | autoTrackPageVisitTime | false | 如果为 true，则对于页面视图，将跟踪前一个检测的页面的查看时间并将其作为遥测数据发送，同时，为当前的页面视图启动新的计时器。 默认值为 false。 |
 | disableAjaxTracking | false | 如果为 true，则不自动收集 Ajax 调用。 默认值为 false。 |
-| disableFetchTracking | true | 如果为 true，则不自动收集 Fetch 请求。 默认值为 true |
+| disableFetchTracking | 是 | 如果为 true，则不自动收集 Fetch 请求。 默认值为 true |
 | overridePageViewDuration | false | 如果为 true，则在调用 trackPageView 时，trackPageView 的默认行为将更改为记录页面视图持续时间间隔的结束时间。 如果为 false 且未为 trackPageView 提供自定义持续时间，则会使用导航计时 API 计算页面视图性能。 默认值为 false。 |
 | maxAjaxCallsPerView | 500 | 默认 500-控制每个页面视图将监视的 Ajax 调用数。 设置为-1 可监视页面上所有（无限制） Ajax 调用。 |
-| disableDataLossAnalysis | true | 如果为 false，则对于尚未发送的项，启动时将检查内部遥测发送方缓冲区。 |
+| disableDataLossAnalysis | 是 | 如果为 false，则对于尚未发送的项，启动时将检查内部遥测发送方缓冲区。 |
 | disableCorrelationHeaders | false | 如果为 false，则 SDK 会将两个标头（“Request-Id”和“Request-Context”）添加到所有依赖项请求，以将其关联到服务器端上的对应请求。 默认值为 false。 |
 | correlationHeaderExcludedDomains |  | 禁用特定域的关联标头 |
 | correlationHeaderDomains |  | 启用特定域的关联标头 |
 | disableFlushOnBeforeUnload | false | 默认值为 false。 如果为 true，则触发 onBeforeUnload 事件时不会调用 flush 方法 |
-| enableSessionStorageBuffer | true | 默认值为 true。 如果为 true，则会将包含所有未发送的遥测数据的缓冲区存储在会话存储中。 加载页面时会还原该缓冲区 |
+| enableSessionStorageBuffer | 是 | 默认值为 true。 如果为 true，则会将包含所有未发送的遥测数据的缓冲区存储在会话存储中。 加载页面时会还原该缓冲区 |
 | isCookieUseDisabled | false | 默认值为 false。 如果为 true，则 SDK 不会存储或读取 Cookie 中的任何数据。|
 | cookieDomain | Null | 自定义 Cookie 域。 若要跨子域共享 Application Insights Cookie，此字段会有帮助。 |
 | isRetryDisabled | false | 默认值为 false。 如果为 false，则出现代码 206（部分成功）、408（超时）、429（请求过多）、500（内部服务器错误）、503（服务不可用）和 0（脱机，仅当已检测到此状态时）时会重试 |
 | isStorageUseDisabled | false | 如果为 true，则 SDK 不会存储或读取本地和会话存储中的任何数据。 默认值为 false。 |
-| isBeaconApiDisabled | true | 如果为 false，则 SDK 将使用[信标 API](https://www.w3.org/TR/beacon) 发送所有遥测数据 |
+| isBeaconApiDisabled | 是 | 如果为 false，则 SDK 将使用[信标 API](https://www.w3.org/TR/beacon) 发送所有遥测数据 |
 | onunloadDisableBeacon | false | 默认值为 false。 当选项卡关闭时，SDK 将使用[信标 API](https://www.w3.org/TR/beacon)发送所有剩余的遥测数据 |
 | sdkExtension | Null | 设置 SDK 扩展名。 仅允许使用字母字符。 扩展名将添加为“ai.internal.sdkVersion”标记的前缀（例如“ext_javascript:2.0.0”）。 默认值为 null。 |
 | isBrowserLinkTrackingEnabled | false | 默认值为 false。 如果为 true，则 SDK 将跟踪所有[浏览器链接](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink)请求。 |
@@ -136,7 +137,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | enableAutoRouteTracking | false | 自动跟踪单页应用程序 (SPA) 中的路由更改。 如果为 true，则每次更改路由都会将一个新的页面视图发送到 Application Insights。 哈希路由更改 (`example.com/foo#bar`) 也会记录为新的页面视图。
 | enableRequestHeaderTracking | false | 如果为 true，则跟踪 AJAX & 提取请求标头，默认值为 false。
 | enableResponseHeaderTracking | false | 如果为 true，则跟踪 AJAX & 提取请求的响应标头，默认值为 false。
-| distributedTracingMode | `DistributedTracingModes.AI` | 设置分布式跟踪模式。 如果设置了 AI_AND_W3C 模式或 W3C 模式，则将生成 W3C 跟踪上下文标头（traceparent/tracestate），并将其包含在所有传出请求中。 提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测的服务进行后向兼容。
+| distributedTracingMode | `DistributedTracingModes.AI` | 设置分布式跟踪模式。 如果设置了 AI_AND_W3C 模式或 W3C 模式，则将生成 W3C 跟踪上下文标头（traceparent/tracestate），并将其包含在所有传出请求中。 提供 AI_AND_W3C 是为了与任何旧式 Application Insights 检测服务的后向兼容性。
 
 ## <a name="single-page-applications"></a>单页应用程序
 
@@ -256,7 +257,7 @@ SDK V2 版本中的重大更改：
 
 Application Insights JavaScript SDK 是开源的，用户可查看其源代码；若要对该项目做贡献，请访问[官方 GitHub 存储库](https://github.com/Microsoft/ApplicationInsights-JS)。
 
-## <a name="next"></a> 后续步骤
+## <a name="next"></a>后续步骤
 * [跟踪使用情况](usage-overview.md)
 * [自定义事件和指标](api-custom-events-metrics.md)
 * [Build-measure-learn](usage-overview.md)

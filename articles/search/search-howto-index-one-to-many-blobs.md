@@ -1,7 +1,7 @@
 ---
-title: 为全文搜索从 Azure Blob 索引器中索引一个 blob 到多个搜索索引文档
+title: 包含多个文档的索引 blob
 titleSuffix: Azure Cognitive Search
-description: 使用 Azure 认知搜索 Blob 索引器对用于文本内容的 Azure blob 爬网。 每个 blob 可能会生成一个或多个搜索索引文档。
+description: 使用 Azure 认知搜索 Blob 索引器对用于文本内容的 Azure blob 进行爬网，其中每个 blob 可能会生成一个或多个搜索索引文档。
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 127354e55a81e379825b41759f2b6150ba554a12
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1840bda0ecc9462a5d8f796b616d728d0bb412f7
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818540"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112264"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>为生成多个搜索文档的 blob 编制索引
 默认情况下，Blob 索引器将一个 Blob 的内容视为单个搜索文档。 某些 **parsingMode** 值支持单个 Blob 导致多个搜索文档的方案。 允许索引器从一个 Blob 提取多个搜索文档的不同类型的 **parsingMode** 包括：
@@ -60,7 +60,7 @@ _Blob2.json_
 
 此设置将导致 Azure 认知搜索索引包含以下信息（为简洁起见，将 base64 编码的 id 缩短）
 
-| id | 温度 | 压力 | timestamp |
+| id | 温度 | 压强 | timestamp |
 |----|-------------|----------|-----------|
 | aHR0 ...YjEuanNvbjsx | 100 | 100 | 2019-02-13T00:00:00Z |
 | aHR0 ...YjEuanNvbjsy | 33 | 30 | 2019-02-14T00:00:00Z |

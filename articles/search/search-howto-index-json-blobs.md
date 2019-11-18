@@ -1,5 +1,5 @@
 ---
-title: 用于全文搜索的 Azure Blob 索引器中的 JSON blob 索引
+title: 搜索 JSON blob
 titleSuffix: Azure Cognitive Search
 description: 使用 Azure 认知搜索 Blob 索引器爬行文本内容的 Azure JSON blob。 索引器可自动为所选数据源（如 Azure Blob 存储）引入数据。
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 81e652b90831af0e1e20e716842b4e79f5606d05
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 18f3ed9cb2ef0f700e33e8b643b5e7d167d656a5
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889877"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112727"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>如何在 Azure 中使用 Blob 索引器为 JSON blob 编制索引认知搜索
 

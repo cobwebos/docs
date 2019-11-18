@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/31/2019
+ms.date: 11/11/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9045fd6c1f5dcc4587b6ff85d567584f02421ba
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 97ea1c5260d1082619d59a2b8614a0ba7e9181a8
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73902904"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145167"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL 应用程序中的日志记录
 
@@ -41,6 +41,10 @@ MSAL 提供了多个级别的日志记录详细信息：
 ## <a name="personal-and-organizational-data"></a>个人和组织数据
 
 默认情况下，MSAL 记录器不会捕获任何高度敏感的个人或组织数据。 如果你决定这样做，库将提供启用个人和组织数据日志记录的选项。
+
+有关特定语言的 MSAL 日志记录的详细信息，请选择与你的语言相匹配的选项卡：
+
+## <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ## <a name="logging-in-msalnet"></a>在 MSAL.NET 中进行日志记录
 
@@ -80,6 +84,8 @@ class Program
   }
  }
  ```
+
+## <a name="androidtabandroid"></a>[Android](#tab/android)
 
 ## <a name="logging-in-msal-for-android-using-java"></a>使用 Java 登录 MSAL for Android
 
@@ -123,9 +129,9 @@ Logger.getInstance().setEnablePII(false);
 Logger.getInstance().setEnableLogcatLog(true);
 ```
 
-## <a name="logging-in-msaljs"></a>MSAL.js 中的日志记录
+## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
- 通过在用于创建 `UserAgentApplication` 实例的配置期间传递记录器对象，在 MSAL （Javascript）中启用日志记录。 此记录器对象具有以下属性：
+ 通过在用于创建 `UserAgentApplication` 实例的配置期间传递记录器对象，在 MSAL （JavaScript）中启用日志记录。 此记录器对象具有以下属性：
 
 - `localCallback`：开发人员可提供的回调实例，用于以自定义方式使用和发布日志。 根据所需要的重定向日志的方式，实现 localCallback 方法。
 - `level` （可选）：可配置的日志级别。 支持的日志级别为： `Error`、`Warning`、`Info`和 `Verbose`。 默认为 `Info`。
@@ -155,7 +161,9 @@ var msalConfig = {
 var UserAgentApplication = new Msal.UserAgentApplication(msalConfig);
 ```
 
-## <a name="logging-in-msal-for-ios-and-macos"></a>适用于 iOS 和 macOS 的 MSAL 中的日志记录
+## <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+
+## <a name="msal-for-ios-and-macos-logging-objc"></a>MSAL for iOS 和 macOS 日志记录-ObjC
 
 设置一个回调来捕获 MSAL 日志记录，并将其合并到你自己的应用程序的日志记录中。 回调的签名如下所示：
 
@@ -176,7 +184,6 @@ typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL cont
 
 例如：
 
-Objective-C
 ```objc
 [MSALGlobalConfig.loggerConfig setLogCallback:^(MSALLogLevel level, NSString *message, BOOL containsPII)
     {
@@ -190,7 +197,71 @@ Objective-C
     }];
 ```
 
-Swift
+### <a name="personal-data"></a>个人数据
+
+默认情况下，MSAL 不会捕获或记录任何个人数据（PII）。 库允许应用程序开发人员通过 MSALLogger 类中的属性来启用此功能。 通过打开 `pii.Enabled`，应用程序负责安全地处理高度敏感的数据和遵守法规要求。
+
+```objc
+// By default, the `MSALLogger` doesn't capture any PII
+
+// PII will be logged
+MSALGlobalConfig.loggerConfig.piiEnabled = YES;
+
+// PII will NOT be logged
+MSALGlobalConfig.loggerConfig.piiEnabled = NO;
+```
+
+### <a name="logging-levels"></a>日志记录级别
+
+若要在使用 MSAL for iOS 和 macOS 进行记录时设置日志记录级别，请使用以下值之一：
+
+|级别  |说明 |
+|---------|---------|
+| `MSALLogLevelNothing`| 禁用所有日志记录 |
+| `MSALLogLevelError` | 默认级别，仅在发生错误时输出信息 |
+| `MSALLogLevelWarning` | 列出 |
+| `MSALLogLevelInfo` |  库入口点，其中包含参数和各种密钥链操作 |
+|`MSALLogLevelVerbose`     |  API 跟踪 |
+
+例如：
+
+```objc
+MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
+ ```
+
+ ### <a name="log-message-format"></a>日志消息格式
+
+MSAL 日志消息的消息部分的格式为 `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
+
+例如：
+
+`TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
+
+提供相关 Id 和时间戳有助于跟踪问题。 时间戳和相关 ID 信息在日志消息中可用。 唯一要检索它们的位置是从 MSAL 记录消息。
+
+## <a name="swifttabswift"></a>[Swift](#tab/swift)
+
+## <a name="msal-for-ios-and-macos-logging-swift"></a>MSAL for iOS 和 macOS 日志记录-Swift
+
+设置一个回调来捕获 MSAL 日志记录，并将其合并到你自己的应用程序的日志记录中。 回调的签名（以目标-C 表示）如下所示：
+
+```objc
+/*!
+    The LogCallback block for the MSAL logger
+ 
+    @param  level           The level of the log message
+    @param  message         The message being logged
+    @param  containsPII     If the message might contain Personally Identifiable Information (PII)
+                            this will be true. Log messages possibly containing PII will not be
+                            sent to the callback unless PIllLoggingEnabled is set to YES on the
+                            logger.
+
+ */
+typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
+```
+
+例如：
+
 ```swift
 MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
     if let message = message, !containsPII
@@ -207,18 +278,6 @@ MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
 
 默认情况下，MSAL 不会捕获或记录任何个人数据（PII）。 库允许应用程序开发人员通过 MSALLogger 类中的属性来启用此功能。 通过打开 `pii.Enabled`，应用程序负责安全地处理高度敏感的数据和遵守法规要求。
 
-Objective-C
-```objc
-// By default, the `MSALLogger` doesn't capture any PII
-
-// PII will be logged
-MSALGlobalConfig.loggerConfig.piiEnabled = YES;
-
-// PII will NOT be logged
-MSALGlobalConfig.loggerConfig.piiEnabled = NO;
-```
-
-Swift
 ```swift
 // By default, the `MSALLogger` doesn't capture any PII
 
@@ -243,12 +302,6 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 例如：
 
-Objective-C
-```objc
-MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
- ```
- 
- Swift
 ```swift
 MSALGlobalConfig.loggerConfig.logLevel = .verbose
  ```
@@ -263,9 +316,11 @@ MSAL 日志消息的消息部分的格式为 `TID = <thread_id> MSAL <sdk_ver> <
 
 提供相关 Id 和时间戳有助于跟踪问题。 时间戳和相关 ID 信息在日志消息中可用。 唯一要检索它们的位置是从 MSAL 记录消息。
 
-## <a name="logging-in-msal-for-java"></a>MSAL for Java 中的日志记录
+## <a name="javatabjava"></a>[Java](#tab/java)
 
-MSAL for Java （MSAL4J）允许你使用已在应用中使用的日志记录库，前提是它与 SLF4J 兼容。 MSAL4j 使用 Java （SLF4J）的[简单日志记录外观](http://www.slf4j.org/)作为各种日志记录框架（如[util](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html)、 [Logback](http://logback.qos.ch/)和[Log4j](https://logging.apache.org/log4j/2.x/)）的简单的外观或抽象。 SLF4J 允许最终用户在部署时插入所需的日志记录框架。
+## <a name="msal-for-java-logging"></a>用于 Java 日志记录的 MSAL
+
+MSAL for Java （MSAL4J）允许你使用已在应用中使用的日志记录库，前提是它与 SLF4J 兼容。 MSAL4j 使用 Java （SLF4J）的[简单日志记录外观](http://www.slf4j.org/)作为各种日志记录框架（如[util](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html)、 [Logback](http://logback.qos.ch/)和[Log4j](https://logging.apache.org/log4j/2.x/)）的简单的外观或抽象。 SLF4J 允许用户在部署时插入所需的日志记录框架。
 
 例如，若要使用 Logback 作为应用程序中的日志记录框架，请将 Logback 依赖项添加到应用程序的 Maven pom 文件中：
 
@@ -310,3 +365,35 @@ PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
         .logPii(true)
         .build();
 ```
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+## <a name="msal-for-python-logging"></a>用于 Python 日志记录的 MSAL
+
+MSAL Python 中的日志记录使用标准 Python 日志记录机制，例如 `logging.info("msg")` 可以按如下所示配置 MSAL 日志记录（并在[username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32)中的操作中查看）：
+
+### <a name="enable-debug-logging-for-all-modules"></a>为所有模块启用调试日志记录
+
+默认情况下，将关闭任何 Python 脚本中的日志记录。 如果要对整个 Python 脚本中的所有模块启用调试日志记录，请使用：
+
+```python
+logging.basicConfig(level=logging.DEBUG)
+```
+
+### <a name="silence-only-msal-logging"></a>仅静默 MSAL 日志记录
+
+若要无提示 MSAL 库日志记录，同时在 Python 脚本的所有其他模块中启用调试日志记录，请关闭 MSAL Python 使用的记录器：
+
+```Python
+logging.getLogger("msal").setLevel(logging.WARN)
+```
+
+### <a name="personal-and-organizational-data-in-python"></a>Python 中的个人和组织数据
+
+用于 Python 的 MSAL 不会记录个人数据或组织数据。 没有用于启用或禁用个人或组织数据记录的属性。
+
+你可以使用标准 Python 日志记录来记录你想要的任何内容，但你有责任安全地处理敏感数据和遵循法规要求。
+
+有关 Python 中的日志记录的详细信息，请参阅 Python 的[日志记录如何](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)。
+
+---

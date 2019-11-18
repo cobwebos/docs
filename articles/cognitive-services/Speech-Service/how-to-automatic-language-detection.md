@@ -1,5 +1,5 @@
 ---
-title: 操作说明：对语音到文本语音服务使用自动语言检测
+title: 如何将自动语言检测用于语音转换到文本
 titleSuffix: Azure Cognitive Services
 description: 语音 SDK 支持语音到文本的自动语言检测。 使用此功能时，所提供的音频将与提供的语言列表进行比较，并确定最可能的匹配项。 然后，可以使用返回的值来选择用于语音转换到文本的语言模型。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: qiohu
-ms.openlocfilehash: e156704d3ad54c3437f921fae536a497e1d94868
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a72f477e64c856c545801533c131c397de627c00
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506963"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110179"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>语音到文本的自动语言检测
 
@@ -30,7 +30,7 @@ ms.locfileid: "73506963"
 
 自动语言检测当前在每次检测中都有两种语言的服务端限制。 构造 `AudoDetectSourceLanguageConfig` 对象时，请记住此限制。 在下面的示例中，你将创建一个 `AutoDetectSourceLanguageConfig`，然后使用它来构造 `SpeechRecognizer`。
 
->[!TIP]
+> [!TIP]
 > 您还可以指定在执行语音转换到文本时要使用的自定义模型。 有关详细信息，请参阅[将自定义模型用于自动语言检测](#use-a-custom-model-for-automatic-language-detection)。
 
 以下代码片段演示如何在应用中使用自动语言检测：
@@ -80,4 +80,4 @@ AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig = AutoDetectSource
 
 ## <a name="next-steps"></a>后续步骤
 
-* [语音 SDK 参考文档](speech-sdk.md)
+- [语音 SDK 参考文档](speech-sdk.md)

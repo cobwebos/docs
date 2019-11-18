@@ -1,5 +1,5 @@
 ---
-title: 为点到站点 VPN 客户端播发自定义路由 |Azure |Microsoft Docs
+title: Azure VPN 网关：播发 P2S VPN 客户端的自定义路由
 description: 将自定义路由播发到点到站点客户端的步骤
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6678efd04125e6ae0e0b66e8bcc011c0f319c0fb
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 7a904857b8aa0ed2aa18fc2a1b81fe31541e6f9e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954311"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151906"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>播发 P2S VPN 客户端的自定义路由
 

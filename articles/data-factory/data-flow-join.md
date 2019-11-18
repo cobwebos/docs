@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: aae502b350f2cf2e98849b2b6e25543516a0c547
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 1e9315195ceae435447739055105a66ee81e2a6a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961841"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122923"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>映射数据流中的联接转换
 
@@ -48,7 +48,7 @@ ms.locfileid: "73961841"
 1. 选择**联接类型**
 1. 选择要在其上匹配的键列作为联接条件。 默认情况下，数据流在每个流中的一列之间查找相等性。 若要通过计算值进行比较，请将鼠标悬停在列下拉列表中，然后选择 "**计算列**"。
 
-![联接转换](media/data-flow/join.png "联接")
+![联接转换](media/data-flow/join.png "Join")
 
 ## <a name="optimizing-join-performance"></a>优化联接性能
 
@@ -105,7 +105,7 @@ TripData, TripFare
 
 ### <a name="cross-join-example"></a>交叉联接示例
 
-下面的示例是一个名为 `CartesianProduct` 的联接转换，它采用 `TripData` 和右流 `TripFare`的左流。 此转换采用两个流，并返回其行的笛卡尔积。 联接条件是 `true()` 的，因为它会输出完整的笛卡尔积。 `cross`中的 `joinType`。 我们只启用左侧流中的广播，因此 `broadcast` 的值 `'left'`。
+下面的示例是一个名为 `CartesianProduct` 的联接转换，它采用 `TripData` 和右流 `TripFare`的左流。 此转换采用两个流，并返回其行的笛卡尔积。 联接条件是 `true()` 的，因为它会输出完整的笛卡尔积。 `joinType` 为 `cross`。 我们只启用左侧流中的广播，因此 `broadcast` 的值 `'left'`。
 
 在数据工厂 UX 中，此转换如下图所示：
 

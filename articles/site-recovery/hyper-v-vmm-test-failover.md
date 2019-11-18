@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 4a1b5f804986d2bda85980d01cdaaa130d86b50d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039731"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132943"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>运行将 Hyper-V VM 灾难恢复到辅助站点的演练
 
@@ -20,10 +20,6 @@ ms.locfileid: "74039731"
 本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md)，执行将 System Center Virtual Machine Manager V(MM) 云中管理的 Hyper-V VM 灾难恢复 (DR) 到辅助本地站点的演练。
 
 需要运行测试故障转移，在不丢失任何数据或造成停机的情况下，验证复制策略或执行灾难恢复演练。 测试故障转移不会对进行中的复制或生产环境造成任何影响。 
-
-> [!WARNING]
-> 请注意，不久将会弃用对使用 SCVMM 配置帐户的 ASR 支持，因此建议你先阅读[弃用](site-to-site-deprecation.md)详细信息，然后再继续。
-
 
 ## <a name="how-do-test-failovers-work"></a>测试故障转移的工作原理
 

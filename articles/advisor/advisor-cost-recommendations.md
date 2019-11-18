@@ -3,29 +3,29 @@ title: 使用 Azure 顾问降低服务成本 | Microsoft Docs
 description: 使用 Azure 顾问优化 Azure 部署的成本。
 services: advisor
 documentationcenter: NA
-author: kasparks
+author: saket-ms
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: kasparks
-ms.openlocfilehash: 78429001b855e3347e72fbb0f0d4d3171731a8e2
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.author: sagupt
+ms.openlocfilehash: cae16430ce933b8d071696377b22f10c15b5eae5
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703038"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145390"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>使用 Azure 顾问降低服务成本
 
-通过识别闲置和未充分利用的资源，顾问有助于优化和降低 Azure 总支出。 可在顾问仪表板的“成本”选项卡获取成本建议。
+通过识别闲置和未充分利用的资源，顾问有助于优化和降低 Azure 总支出。 可以从顾问仪表板上的 "**成本**" 选项卡获取成本建议。
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>通过调整或关闭未充分利用的实例来优化虚拟机花费 
 
-虽然某些应用程序方案有意使虚拟机利用率较低，但通过管理虚拟机大小和数量通常可降低成本。 当最大 CPU 使用率的最大值为 3% 且网络使用率低于7天的 2% 时，顾问高级评估模型会将虚拟机 P95th。 如果可以在较小的 SKU （位于同一 SKU 系列中）或更小的实例数中容纳当前负载，使虚拟机可用于适当大小，以便在非用户工作负荷下当前负载不超过 80% 的利用率面向用户的工作负荷时，超过 40%。 此处的工作负荷类型通过分析工作负荷的 CPU 利用率特征来确定。
+虽然某些应用程序方案有意使虚拟机利用率较低，但通过管理虚拟机大小和数量通常可降低成本。 当最大 CPU 使用率的最大值为3% 且网络使用率低于7天的2% 时，顾问高级评估模型会将虚拟机 P95th。 当可以在较小的 SKU （位于同一 SKU 系列中）或较小的实例数中容纳当前负载时，会将虚拟机视为适当大小，以便在面向用户的工作负荷时，当前负载不超过80% 的使用率（在非用户工作负荷下，不超过40%）。 此处的工作负荷类型通过分析工作负荷的 CPU 利用率特征来确定。
 
 建议的操作为 "关闭" 或 "大小调整"，特定于建议使用的资源。 顾问会针对建议的操作（重设大小或关机）显示估计的成本节约。 而且，若要调整大小建议的操作，顾问提供当前和目标 SKU 信息。 
 
-如果你想要更积极地识别使用不足的虚拟机, 你可以基于每个订阅调整 CPU 使用率规则。
+如果你想要更积极地识别使用不足的虚拟机，你可以基于每个订阅调整 CPU 使用率规则。
 
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>通过消除未设置的 ExpressRoute 线路来降低成本
 
@@ -47,10 +47,10 @@ ms.locfileid: "71703038"
 
 ## <a name="delete-azure-data-factory-pipelines-that-are-failing"></a>删除失败的 Azure 数据工厂管道
 
-Azure 顾问将检测重复失败的 Azure 数据工厂管道, 并建议解决这些问题, 或在不再需要时删除失败的管道。 即使这些管道发生故障, 也会对这些管道进行计费。 
+Azure 顾问将检测重复失败的 Azure 数据工厂管道，并建议解决这些问题，或在不再需要时删除失败的管道。 即使这些管道发生故障，也会对这些管道进行计费。 
 
 ## <a name="use-standard-snapshots-for-managed-disks"></a>使用托管磁盘的标准快照
-为了节省 60% 的成本，我们建议将快照存储在标准存储中，而不考虑父磁盘的存储类型。 这是托管磁盘快照的默认选项。 Azure 顾问会识别存储高级存储的快照, 并建议将快照从高级存储迁移到标准存储。 [了解有关托管磁盘定价的详细信息](https://aka.ms/aa_manageddisksnapshot_learnmore)
+为了节省60% 的成本，我们建议将快照存储在标准存储中，而不考虑父磁盘的存储类型。 这是托管磁盘快照的默认选项。 Azure 顾问会识别存储高级存储的快照，并建议将快照从高级存储迁移到标准存储。 [了解有关托管磁盘定价的详细信息](https://aka.ms/aa_manageddisksnapshot_learnmore)
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>如何访问 Azure 顾问中的成本建议
 
@@ -66,3 +66,4 @@ Azure 顾问将检测重复失败的 Azure 数据工厂管道, 并建议解决�
 * [顾问性能建议](advisor-cost-recommendations.md)
 * [顾问高可用性建议](advisor-cost-recommendations.md)
 * [顾问安全性建议](advisor-cost-recommendations.md)
+* [顾问操作优秀建议](advisor-operational-excellence-recommendations.md)

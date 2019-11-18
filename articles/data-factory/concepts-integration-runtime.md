@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: abnarain
-ms.openlocfilehash: 7475d660fd2fa64ce69e7c23e0bad518fffddd26
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 2b90d95d41bb30226d870a74a47327d6492bbd1e
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681511"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122943"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供以下数据集成功能的计算基础结构：
@@ -78,6 +78,9 @@ Azure 集成运行时提供了使用安全、可靠和高性能的方式在云�
 
 > [!NOTE] 
 > 使用自承载集成运行时支持需要自带驱动程序的数据存储，如 SAP Hana、MySQL 等。 有关详细信息，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+
+> [!NOTE] 
+> Java Runtime Environment （JRE）是自承载 IR 的依赖项。 请确保在同一主机上安装了 JRE。
 
 ### <a name="self-hosted-ir-network-environment"></a>自承载 IR 网络环境
 如果想要在专用网络环境中安全地执行数据集成（不在公有云环境中建立直通连接），可以在企业防火墙后的本地环境中或虚拟专用网络内安装自承载 IR。  自承载集成运行时仅进行基于出站 HTTP 的连接，以打开 Internet。

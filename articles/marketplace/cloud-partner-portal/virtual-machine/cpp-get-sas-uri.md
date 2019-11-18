@@ -8,16 +8,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: dda074d81857247a922eb7a179b33aa2593e5bf8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cb6f1772c7c6f9abd268a8cb58550b253f095dbf
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824469"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132444"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>获取 VM 映像的共享访问签名 URI
 
-在发布过程中，必须为 SKU 关联的每个虚拟硬盘 (VHD) 提供统一资源标识符 (URI)。 Microsoft 需要在认证过程中访问这些 VHD。 本文介绍如何生成每个 VHD 的共享访问签名 (SAS) URI。 将在云合作伙伴门户上的“SKU”选项卡中输入此 URI。 
+在发布过程中，必须为 SKU 关联的每个虚拟硬盘 (VHD) 提供统一资源标识符 (URI)。 Microsoft 需要在认证过程中访问这些 VHD。 本文介绍如何生成每个 VHD 的共享访问签名 (SAS) URI。 将在云合作伙伴门户上的“SKU”选项卡中输入此 URI。
 
 生成 VHD 的 SAS URI 时，请遵循以下要求：
 
@@ -38,35 +38,35 @@ ms.locfileid: "73824469"
 
 在 Azure CLI 中使用以下步骤生成 SAS URI。
 
-1. 下载并安装 [Microsoft Azure CLI](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)。  版本适用于 Windows、macOS，以及 Linux 的各种分发版。 
+1. 下载并安装 [Microsoft Azure CLI](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)。  版本适用于 Windows、macOS，以及 Linux 的各种分发版。
 2. 创建一个 PowerShell 文件（扩展名为 `.ps1`），在其中复制以下代码，然后在本地保存该文件。
 
    ``` powershell
    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
    ```
-    
+
 3. 编辑该文件以提供以下参数值。  应以 UTC 日期时间格式提供日期，例如 `2016-10-25T00:00:00Z`。
    - `<account-name>` - Azure 存储帐户名称
    - `<account-key>` - Azure 存储帐户密钥
    - `<vhd-name>` - VHD 名称
-   - `<start-date>` - VHD 访问权限的开始日期。 请提供当前日期的前一天的日期。 
-   - `<expiry-date>` - VHD 访问权限的过期日期。  请提供自当前日期开始算起的至少三周后的日期。 
- 
+   - `<start-date>` - VHD 访问权限的开始日期。 请提供当前日期的前一天的日期。
+   - `<expiry-date>` - VHD 访问权限的过期日期。  请提供自当前日期开始算起的至少三周后的日期。
+
    以下示例显示了（在撰写本文时）正确的参数值。
 
    ``` powershell
        az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ONc+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net' --name vhds --permissions rl --start '2017-11-06T00:00:00Z' --expiry '2018-08-20T00:00:00Z'
    ```
- 
+
 4. 保存对此 PowerShell 脚本所做的更改。
 5. 使用管理特权运行此脚本，以生成容器级访问权限的 SAS 连接字符串。  可以使用两种基本方法：
    - 从控制台运行脚本。  例如，在 Windows 中，右键单击该脚本并选择“以管理员身份运行”。
-   - 使用管理特权从某个 PowerShell 脚本编辑器（例如 [Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise)）运行脚本。 
-     以下示例演示了在此编辑器中生成的 SAS 连接字符串。 
+   - 使用管理特权从某个 PowerShell 脚本编辑器（例如 [Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise)）运行脚本。
+     以下示例演示了在此编辑器中生成的 SAS 连接字符串。
 
      ![在 PowerShell ISE 中生成 SAS URI](./media/publishvm_032.png)
 
-6. 复制生成的 SAS 连接字符串，并将其保存到位于安全位置的某个文本文件。  稍后将要编辑此字符串，以便在其中添加关联的 VHD 位置信息来创建最终的 SAS URI。 
+6. 复制生成的 SAS 连接字符串，并将其保存到位于安全位置的某个文本文件。  稍后将要编辑此字符串，以便在其中添加关联的 VHD 位置信息来创建最终的 SAS URI。
 7. 在 Azure 门户中，导航到包含与新生成 URI 关联的 VHD 的 Blob 存储。
 8. 复制“Blob 服务终结点”的 URL 值，如下所示。
 
@@ -91,19 +91,19 @@ ms.locfileid: "73824469"
 2. 打开资源管理器，在左侧菜单栏中单击“添加帐户”图标。  此时会显示“连接到 Azure 存储”对话框。
 3. 选择“添加 Azure 帐户”，然后单击“登录”。  继续执行所需的步骤以登录到 Azure 帐户。
 4. 在左侧的“资源管理器”窗格中，导航到“存储帐户”并展开此节点。
-5. 右键单击你的 VHD，并从上下文菜单中选择“获取共享访问签名”。 
+5. 右键单击你的 VHD，并从上下文菜单中选择“获取共享访问签名”。
 
     ![在 Azure 资源管理器中获取 SAS 项](./media/publishvm_034.png)
 
 6. 此时会显示“共享访问签名”对话框。 输入以下字段的值：
    - **开始时间** - VHD 访问权限的开始日期。 请提供当前日期的前一天的日期。
    - **过期时间** - VHD 访问权限的过期日期。  请提供自当前日期开始算起的至少三周后的日期。
-   - **权限** - 选择 `Read` 和 `List` 权限。 
+   - **权限** - 选择 `Read` 和 `List` 权限。
 
      ![Azure 资源管理器中的 SAS 对话框](./media/publishvm_035.png)
 
-7. 单击“创建”以创建与此 VHD 关联的 SAS URI。  现在，该对话框会显示有关此操作的详细信息。 
-8. 复制“URL”值，并将其保存到位于安全位置的某个文本文件。 
+7. 单击“创建”以创建与此 VHD 关联的 SAS URI。  现在，该对话框会显示有关此操作的详细信息。
+8. 复制“URL”值，并将其保存到位于安全位置的某个文本文件。
 
     ![在 Azure 资源管理器中创建 SAS URI](./media/publishvm_036.png)
 

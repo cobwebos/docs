@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 77587d007d9bfcdc1461201f676c79880bd89d6b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1daff431fc217c08f3bc3c5aeb3b4711691909c0
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676178"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132535"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>映射数据流中的筛选转换
 
@@ -37,7 +37,7 @@ ms.locfileid: "73676178"
 
 ### <a name="example"></a>示例
 
-下面的示例是一个名为 `FilterBefore1960` 的有条件拆分转换，它采用传入流 `CleanData`。 筛选条件是 `year <= 1960`的表达式。
+下面的示例是一个名为 `FilterBefore1960` 的筛选器转换，它采用传入流 `CleanData`。 筛选条件是 `year <= 1960`的表达式。
 
 在数据工厂 UX 中，此转换如下图所示：
 

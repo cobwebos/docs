@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 288ea7e887a170c8560b0126fa53c9132da35db6
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f3a8426856e1345306acff69946beb4860d5f905
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332673"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151533"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft.Compute.SizeSelector UI 元素
+
 一个用于为一个或多个虚拟机实例选择大小的控件。
 
 ## <a name="ui-sample"></a>UI 示例
@@ -34,6 +35,7 @@ ms.locfileid: "72332673"
 ![展开的 Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector-expanded.png)
 
 ## <a name="schema"></a>架构
+
 ```json
 {
   "name": "element1",
@@ -65,7 +67,14 @@ ms.locfileid: "72332673"
 }
 ```
 
+## <a name="sample-output"></a>示例输出
+
+```json
+"Standard_D1"
+```
+
 ## <a name="remarks"></a>备注
+
 - `recommendedSizes` 应至少有一个大小。 第一个建议的大小将用作默认值。 可用大小列表未按建议状态排序。 用户可以选择要按建议状态排序的列。
 - 如果某个建议的大小在所选位置中不可用，则会自动跳过该大小。 而且将使用下一个建议的大小。
 - `constraints.allowedSizes` 和 `constraints.excludedSizes` 都是可选的，并且不能同时使用。 可以通过调用[为订阅列出可用虚拟机大小](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region)来确定可用大小的列表。 将隐藏未在 `constraints.allowedSizes` 中指定的任何大小，会显示未在 `constraints.excludedSizes` 中指定的任何大小。
@@ -75,11 +84,7 @@ ms.locfileid: "72332673"
 - `numAvailabilityZonesRequired` 可以是 1、2 或 3。
 - 默认情况下，`hideDiskTypeFilter` 为 **false**。 磁盘类型筛选器允许用户查看所有磁盘类型，或者只查看 SSD。
 
-## <a name="sample-output"></a>示例输出
-```json
-"Standard_D1"
-```
-
 ## <a name="next-steps"></a>后续步骤
+
 * 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。
 * 有关 UI 元素中的公用属性的说明，请参阅 [CreateUiDefinition 元素](create-uidefinition-elements.md)。

@@ -1,7 +1,7 @@
 ---
 title: 必应 Web 搜索 API 响应结构和答案类型
 titleSuffix: Azure Cognitive Services
-description: 了解必应 Web 搜索 API 使用的应答类型和响应。
+description: 在发送必应 Web 搜索搜索请求时，它将在响应正文中返回一个 `SearchResponse` 对象。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f19454868ad7be21777d725f61e09a84f6c7a313
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 95ebfaef863a1fa05e8a5d3b46fca9659c61f6b7
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854728"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110614"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>必应 Web 搜索 API 响应结构和答案类型  
 
@@ -290,31 +290,31 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 数学表达式可包含以下符号：
 
-|符号|描述|
+|符号|说明|
 |------------|-----------------|
-|+|添加|
+|+|加|
 |-|减|
 |/|除|
 |*|乘|
 |^|幂|
 |!|阶乘|
-|.|Decimal|
+|。|小数|
 |()|优先级分组|
 |[]|函数|
 
 数学表达式可包含以下常量：
 
-|符号|描述|
+|符号|说明|
 |------------|-----------------|
 |Pi|3.14159...|
-|Degree|度|
+|Degree|Degree|
 |i|虚数|
 |e|e，2.71828...|
 |GoldenRatio|黄金比率，1.61803...|
 
 数学表达式可包含以下函数：
 
-|符号|描述|
+|符号|说明|
 |------------|-----------------|
 |排序|平方根|
 |Sin[x]、Cos[x]、Tan[x]<br />Csc[x]、Sec[x]、Cot[x]|三角函数（以弧度为单位的参数）|
@@ -332,7 +332,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 `timeZone` 应答提供位置的名称、指定位置的当前 UTC 日期和时间，以及 UTC 时差。 如果位置边界处于多个时区内，则该应答包含该边界内所有时区的当前 UTC 日期和时间。 例如，由于佛罗里达州跨两个时区，因此该应答包含这两个时区的本地日期和时间。  
 
-如果查询请求省/市/自治区或国家/地区的时间, 必应确定该位置的地理边界内的主要城市, 并将`primaryCityTime`其返回到字段中。 如果边界包含多个时区，则在 `otherCityTimes` 字段中返回剩余的时区。
+如果查询请求省/市/自治区或国家/地区的时间，必应确定该位置的地理边界内的主要城市，并将其返回 `primaryCityTime` 字段。 如果边界包含多个时区，则在 `otherCityTimes` 字段中返回剩余的时区。
 
 下面显示了返回 `timeZone` 应答的示例查询。
 
@@ -431,7 +431,7 @@ Query: What time is it in the U.S.
 }, ...
 ```
 
-## <a name="response-headers"></a>响应头
+## <a name="response-headers"></a>响应标头
 
 来自必应 Web 搜索 API 的响应可能包含以下标头：
 
@@ -445,9 +445,9 @@ Query: What time is it in the U.S.
 
 不过，通过 JavaScript 调用必应 Web 搜索 API 时，浏览器内置的安全功能 (CORS) 可能会阻止访问这些响应头的值。
 
-若要访问响应头，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 此类代理的响应中有 `Access-Control-Expose-Headers` 头，可以将响应头列入允许列表，让响应头可供 JavaScript 访问。
+若要访问响应头，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 此类代理的响应中有 `Access-Control-Expose-Headers` 标头，可以将响应头列入白名单，让其可供 JavaScript 访问。
 
-CORS 代理安装起来很简单，可便于[教程应用](tutorial-bing-web-search-single-page-app.md)访问可选的客户端标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令提示符处输入以下命令。
+可以轻松安装 CORS 代理，使我们的[教程应用](tutorial-bing-web-search-single-page-app.md)可以访问可选的客户端标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令提示符处输入以下命令。
 
     npm install -g cors-proxy-server
 
@@ -477,6 +477,6 @@ CORS 代理安装起来很简单，可便于[教程应用](tutorial-bing-web-sea
 
 * 查看[请求限制](throttling-requests.md)文档。  
 
-## <a name="see-also"></a>请参阅  
+## <a name="see-also"></a>另请参阅  
 
 * [必应 Web 搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

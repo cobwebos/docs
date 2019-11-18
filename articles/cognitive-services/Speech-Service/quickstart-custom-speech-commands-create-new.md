@@ -1,5 +1,5 @@
 ---
-title: 快速入门：创建自定义命令（预览）
+title: 快速入门：创建自定义命令（预览）-语音服务
 titleSuffix: Azure Cognitive Services
 description: 本文介绍如何创建和测试托管自定义命令应用程序。
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: bfe871ce6f7cd2fbd6ada4b825e41ebdf5ac3f12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 80eb0a2018ece23de80e8eb9c4a68c149b590440
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507557"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111369"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>快速入门：创建自定义命令（预览）
 
 本文介绍如何创建和测试托管自定义命令应用程序。
 该应用程序将识别查询文本，例如 "打开电视"，并使用简单消息 "正常，打开电视" 来做出响应。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 语音订阅。 [免费试用语音服务](~/articles/cognitive-services/speech-service/get-started.md)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "73507557"
 
 - [语言理解](https://www.luis.ai/home)（LUIS）创作密钥：
   1. 打开 web 浏览器并导航到[Azure 门户](https://portal.azure.com)
-  1. 选择 "创建资源"
+  1. 选择“创建资源”
   1. 搜索并选择[语言理解](https://aka.ms/sc-luis-all)
   1. 选择创建选项中的创作
   1. 部署资源后，请从 "快速启动" 或 "密钥" 部分中转到资源并复制该密钥。
@@ -81,7 +81,7 @@ ms.locfileid: "73507557"
 | 组            | 说明                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | 例句 | 示例最谈话用户可以说触发此命令                                                                 |
-| parameters       | 完成命令所需的信息                                                                                |
+| Parameters       | 完成命令所需的信息                                                                                |
 | 完成规则 | 要执行以执行命令的操作。 例如，要响应用户或与其他 web 服务通信 |
 | 高级规则   | 用于处理更为具体或复杂的情况的其他规则                                                              |
 

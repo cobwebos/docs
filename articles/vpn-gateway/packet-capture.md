@@ -1,5 +1,5 @@
 ---
-title: Azure VPN 网关数据包捕获 |Microsoft Docs
+title: Azure VPN 网关：配置数据包捕获
 description: 了解可在 VPN 网关上使用的数据包捕获功能。
 services: vpn-gateway
 author: radwiv
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: radwiv
-ms.openlocfilehash: 0957fabf58a68efe9e215b390d28dbf160574963
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 41c36d302605bb619899131a8ace649b0f1439b2
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517431"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151853"
 ---
 # <a name="configure-packet-captures-for-vpn-gateways"></a>为 VPN 网关配置数据包捕获
 

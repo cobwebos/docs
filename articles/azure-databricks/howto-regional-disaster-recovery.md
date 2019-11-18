@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 410b945f1a9a8d659f55668e272e2d9d08482bde
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: b9a5dbd8e24659493bbbefd50c3e234dca3dbdd9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601762"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129345"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks 群集的区域性灾难恢复
 
@@ -286,7 +286,7 @@ Databricks 控制平面管理并监视 Databricks 工作区环境。 任何管�
 
 8. **迁移 Azure blob 存储和 Azure Data Lake Storage 装载**
 
-   使用基于笔记本的解决方案手动重新装载所有[Azure Blob 存储](/azure/databricks/data/data-sources/azure/azure-storage.html)和[Azure Data Lake Storage （第2代）](/azure/databricks/data/data-sources/azure/azure-datalake-gen2.html)装入点。 存储资源应已装载到主要工作区，必须在辅助工作区中重复该操作。 无法使用外部 API 进行装载。
+   使用基于笔记本的解决方案手动重新装载所有[Azure Blob 存储](/azure/databricks/data/data-sources/azure/azure-storage)和[Azure Data Lake Storage （第2代）](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)装入点。 存储资源应已装载到主要工作区，必须在辅助工作区中重复该操作。 无法使用外部 API 进行装载。
 
 9. **迁移群集初始化脚本**
 

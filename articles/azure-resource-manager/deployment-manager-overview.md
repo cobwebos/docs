@@ -1,18 +1,15 @@
 ---
 title: 跨区域安全部署-Azure 部署管理器
 description: 介绍如何使用 Azure 部署管理器在多个区域部署服务。 其中介绍了安全部署实践，可在部署到所有区域前验证部署的稳定性。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 6cbbd2aef1911bdfe64e781a7cad64a64722192d
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 0a0d13150086b393e10bc16c5c2cef173ab0abab
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532319"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147187"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>使用 Azure 部署管理器启用安全部署实践（公共预览版）
 
@@ -194,7 +191,7 @@ Azure 部署管理器处于预览阶段。 提供[反馈](https://aka.ms/admfeed
 
 在推出模板中，为需要部署到服务的二进制文件创建项目源。 此项目源类似于[模板的项目源](#artifact-source-for-templates)，但它包含脚本、网页、编译代码或服务所需的其他文件。
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 可以定义在部署操作之前或之后执行的步骤。 目前，只有 `wait` 步骤和 "healthCheck" 步骤可用。
 

@@ -1,5 +1,5 @@
 ---
-title: 门户中 Azure 认知搜索的服务管理
+title: 门户中的服务管理
 titleSuffix: Azure Cognitive Search
 description: 使用 Azure 门户在 Microsoft Azure 上管理 Azure 认知搜索服务（托管云搜索服务）。
 manager: nitinme
@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 052d772c8ef885d594146d456ebb3cdcbbc0e383
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e00a810e7977e1c45c1833e0b901ff6804f7fb32
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793507"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113287"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure 门户中 Azure 认知搜索的服务管理
 > [!div class="op_single_selector"]
@@ -58,7 +58,7 @@ Azure 认知搜索不会通过门户或编程接口公开单个服务的日志�
 <a id="sub-5"></a>
 
 ## <a name="monitor-resource-usage"></a>监视资源使用情况
-在仪表板中，资源监视仅限于服务仪表板中显示的信息，以及一些可通过查询服务获得的度量值。 在服务仪表板的“使用量”部分中，可以快速确定分区资源级别是否适合应用程序。 如果要捕获并保存记录的事件，可以预配 Azure 监视等外部资源。 有关详细信息，请参阅[监视 Azure 认知搜索](search-monitor-usage.md)。
+在仪表板中，资源监视仅限于服务仪表板中显示的信息，以及一些可通过查询服务获得的度量值。 在服务仪表板的“使用量”部分中，可以快速确定分区资源级别是否适合应用程序。 如果你希望捕获并持久保存所记录的事件，可以预配外部资源，例如 Azure 监视。 有关详细信息，请参阅[监视 Azure 认知搜索](search-monitor-usage.md)。
 
 使用搜索服务 REST API，可以通过编程方式获取文档和索引的计数： 
 

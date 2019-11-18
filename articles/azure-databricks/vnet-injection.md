@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: 5eded3217e96ccc45951acae004d1424e16cb098
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3894904575d545aed0dbfce470247afb145b7590
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605668"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129301"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network"></a>在虚拟网络中部署 Azure Databricks
 
@@ -119,9 +119,9 @@ Azure Databricks 的默认部署是 Azure 上完全托管的服务：所有数�
 
 ## <a name="whitelisting-subnet-traffic"></a>允许列表子网流量
 
-如果不使用[Azure 门户](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-portal)或[Azure 资源管理器模板](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced)来创建网络安全组，则必须在子网上手动将以下流量列入允许列表。
+如果不使用[Azure 门户](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-portal)或[Azure 资源管理器模板](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-advanced)来创建网络安全组，则必须在子网上手动将以下流量列入允许列表。
 
-|Direction|协议|源|Source Port|目标|Destination Port|
+|Direction|协议|Source|Source Port|目标|Destination Port|
 |---------|--------|------|-----------|-----------|----------------|
 |入站|\*|VirtualNetwork|\*|\*|\*|
 |入站|\*|控制平面 NAT IP|\*|\*|22|
@@ -146,7 +146,7 @@ Azure Databricks 的默认部署是 Azure 上完全托管的服务：所有数�
 |加拿大东部|控制平面 NAT </br></br>Webapp|40.85.223.25/32 </br></br>13.71.184.74/32|
 |英国西部|控制平面 NAT </br></br>Webapp|51.140.203.27/32 </br></br>51.140.204.4/32|
 |英国南部|控制平面 NAT </br></br>Webapp|51.140.203.27/32 </br></br>51.140.204.4/32|
-|欧洲西部|控制平面 NAT </br></br>Webapp|23.100.0.135/32 </br></br>52.232.19.246/32|
+|西欧|控制平面 NAT </br></br>Webapp|23.100.0.135/32 </br></br>52.232.19.246/32|
 |北欧|控制平面 NAT </br></br>Webapp|23.100.0.135/32 </br></br>52.232.19.246/32|
 |印度中部|控制平面 NAT </br></br>Webapp|104.211.89.81/32 </br></br>104.211.101.14/32|
 |印度南部|控制平面 NAT </br></br>Webapp|104.211.89.81/32 </br></br>104.211.101.14/32|

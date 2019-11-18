@@ -7,12 +7,12 @@ ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 1ff06afd363745ae465a8f5b625c27a4a9e4a222
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 90402dd6fbe19811b5bb6d5ac0fbdd984b71fd33
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609601"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123179"
 ---
 # <a name="how-to-transfer-additional-data-between-device-and-dps"></a>如何在设备和 DPS 之间传输其他数据
 有时，DPS 需要获得设备发送的更多数据才能将设备妥善预配到正确的 IoT 中心，并且这些数据需要由该设备提供。 反之亦然，DPS 可以将数据返回到设备以便于客户端逻辑。 
@@ -21,7 +21,7 @@ ms.locfileid: "73609601"
 此功能可用作[自定义分配](https://docs.microsoft.com/azure/iot-dps/how-to-use-custom-allocation-policies)的增强功能。 例如，你想要根据设备型号分配设备，而无需人工干预。 在这种情况下，将使用[自定义分配](https://docs.microsoft.com/azure/iot-dps/how-to-use-custom-allocation-policies)。 你可以将设备配置为在[注册设备呼叫](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice)过程中报告模型信息。 DPS 会将设备的信息传递到自定义分配 webhook。 当你的函数接收设备型号信息时，它可以决定此设备将到达的 IoT 中心。 同样，如果 Webhook 要将数据返回设备，它将在 Webhook 响应中以字符串形式将数据传递回设备。  
 
 ## <a name="device-sends-data-to-dps"></a>设备将数据发送到 DPS
-当设备向 DPS 发送[注册设备调用](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice)时。 可以增强注册调用以获取正文中的其他字段。 正文如下所示： 
+当你的设备向 DPS 发送[注册设备调用](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice)时，可以增强注册调用以获取正文中的其他字段。 正文如下所示： 
    ```
    { 
        “registrationId”: “mydevice”, 

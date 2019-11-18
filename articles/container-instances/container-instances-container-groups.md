@@ -1,6 +1,6 @@
 ---
 title: Azure 容器实例容器组
-description: 了解多容器组在 Azure 容器实例中的工作方式
+description: 了解 Azure 容器实例中的容器组，它是共享生命周期和资源（如存储和网络）的实例集合。
 services: container-instances
 author: dlepow
 manager: gwallace
@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a785ecbfa09c54d3affa97c220d4808f9fe8d90b
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: ef6745e18a0df3ee0a572f106d1507d0fca32ac2
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904450"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150209"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure 容器实例中的容器组
 
 Azure 容器实例中的顶层资源是容器组。 本文介绍容器组的定义和它们支持的方案类型。
 
-## <a name="how-a-container-group-works"></a>容器组工作原理
+## <a name="what-is-a-container-group"></a>什么是容器组？
 
 容器组是安排在同一主机上的容器集合。 容器组中的容器共享生命周期、资源、本地网络和存储卷。 它在概念上类似于[Kubernetes][kubernetes-pod]中的*pod* 。
 

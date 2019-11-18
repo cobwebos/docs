@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/07/2019
 ms.author: radeltch
-ms.openlocfilehash: 910ffc1a94b78fec259dcf30a3c7284716809355
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e8205497262c2c7a500769f32a473d628974220c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832586"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151797"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Azure Vm 上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 SUSE Linux Enterprise Server
 
@@ -66,7 +66,7 @@ ms.locfileid: "73832586"
 
 * [Azure NetApp 文件文档][anf-azure-doc] 
 * SAP 说明 [1928533][1928533]，其中包含：  
-  * SAP 软件部署支持的 Azure VM 大小列表
+  * SAP 软件部署支持的 Azure VM 大小的列表
   * Azure VM 大小的重要容量信息
   * 支持的 SAP 软件、操作系统 (OS) 和数据库组合
   * Microsoft Azure 上 Windows 和 Linux 所需的 SAP 内核版本
@@ -172,11 +172,10 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
 
 考虑在 SUSE 高可用性体系结构上用于 SAP Netweaver 的 Azure NetApp 文件时，请注意以下重要事项：
 
-- 最小容量池为 4 TiB。 容量池大小必须为 4 TiB 的倍数。
+- 最小容量池为 4 TiB。 容量池大小可以增加1个 TiB。
 - 最小卷为 100 GiB
 - Azure NetApp 文件以及将在其中装入 Azure NetApp 文件的所有虚拟机都必须位于同一个 Azure 虚拟网络中，或位于同一区域中的[对等互连虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。 现在支持通过同一区域中的 VNET 对等互连进行 Azure NetApp 文件访问。 目前尚不支持通过全局对等互连进行 Azure NetApp 访问。
 - 所选虚拟网络必须具有子网，并委托给 Azure NetApp 文件。
-- Azure NetApp 文件目前仅支持 NFSv3 
 - Azure NetApp 文件提供[导出策略](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)：可控制允许的客户端、访问类型（读取 & 写入、只读等）。 
 - Azure NetApp 文件功能尚不能识别区域。 目前，azure NetApp 文件功能未部署在 Azure 区域中的所有可用性区域中。 请注意某些 Azure 区域中潜在的延迟影响。 
 
@@ -403,7 +402,7 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
    </code></pre>
    
    > [!NOTE]
-   > 目前，Azure NetApp 文件仅支持 NFSv3。 请勿省略 nfsvers = 3 开关。
+   > 装载卷时，请确保匹配 Azure NetApp 文件卷的 NFS 协议版本。 在此示例中，Azure NetApp 文件卷创建为 NFSv3 卷。  
    
    重新启动 `autofs` 以装载新共享
     <pre><code>

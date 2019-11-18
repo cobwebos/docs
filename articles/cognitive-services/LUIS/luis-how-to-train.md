@@ -9,39 +9,32 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: 259ea23c05f0c0a138ad54b6efd11aad2061cf7a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1da8ab3015730c6b3e1962301a34b1ad43b1aad6
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500222"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143692"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>训练 LUIS 应用的有效版本 
 
 训练是向语言理解 (LUIS) 应用进行教学以提高其自然语言理解能力的过程。 对模型进行更新（例如添加、编辑、标记或删除实体、意向或陈述）后，请对 LUIS 应用进行训练。 
 
-对应用进行训练和[测试](luis-concept-test.md)是一个迭代过程。 训练 LUIS 应用后，采用示例陈述来对应用进行测试，查看是否能准确地识别意向和实体。 如果未能准确识别，请对 LUIS 应用进行更新，然后重新进行训练和测试。 
+对应用进行训练和[测试](luis-concept-test.md)是一个迭代过程。 训练 LUIS 应用后，采用示例陈述来对应用进行测试，查看是否能准确地识别意向和实体。 如果未能准确识别，请对 LUIS 应用进行更新和训练，然后再次测试。 
 
 训练将应用于 LUIS 门户中的活动版本。 
-
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="how-to-train-interactively"></a>如何以交互方式训练
 
 若要在 [LUIS 门户中](https://www.luis.ai)启动迭代过程，首先需要将 LUIS 应用训练至少一次。 在训练之前，请确保每个意向具有至少一个陈述。
 
-1. 在“我的应用”页面上选择应用名称以访问应用。 
+1. 在“我的应用”页面选择应用的名字以访问应用。 
 
-2. 在应用中，在顶部的面板中选择“训练”。 
+1. 在应用中，在顶部的面板中选择“训练”。 
 
-3. 训练完成后，浏览器顶部会显示一个绿色的通知栏。
-
-<!-- The following note refers to what might cause the error message "Training failed: FewLabels for model: <ModelName>" -->
-
->[!NOTE]
->如果应用中有一个或多个意向未包含陈述示例，则无法训练应用。 请为所有意向添加陈述。 有关详细信息，请参阅[添加陈述示例](luis-how-to-add-example-utterances.md)。
+1. 训练完成后，浏览器顶部会出现一个通知。
 
 ## <a name="training-date-and-time"></a>训练日期和时间
 
@@ -49,20 +42,7 @@ ms.locfileid: "73500222"
 
 ## <a name="train-with-all-data"></a>使用所有数据进行训练
 
-训练使用一小部分负采样。 
-
-如果要使用所有数据而不是小型否定采样，请使用[API](#version-settings-api-use-of-usealltrainingdata)。
-
-<!--
-
- or the [LUIS portal setting](#luis-portal-setting-to-use-all-training-data)
-
-### LUIS portal setting to use all training data
-
-!!!IGNITE
-
-
--->
+训练使用一小部分负采样。 如果要使用所有数据而不是小型否定采样，请使用[API](#version-settings-api-use-of-usealltrainingdata)。
 
 ### <a name="version-settings-api-use-of-usealltrainingdata"></a>版本设置 API 使用 UseAllTrainingData
 
@@ -80,5 +60,5 @@ ms.locfileid: "73500222"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 LUIS 标记建议的陈述](luis-how-to-review-endpoint-utterances.md) 
-* [使用相关功能来改进 LUIS 应用的性能](luis-how-to-add-features.md) 
+* [交互式测试](luis-interactive-test.md)
+* [批处理测试](luis-how-to-batch-test.md)

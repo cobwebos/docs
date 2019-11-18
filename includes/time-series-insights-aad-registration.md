@@ -8,13 +8,13 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 09/24/2019
-ms.openlocfilehash: 1ed57e30273c9ba3feb110e0e5acbd3bcc7ffd40
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.date: 11/14/2019
+ms.openlocfilehash: fa6921f8c4309f17cbd63e242a5416e7e81bb6c3
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74062853"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133614"
 ---
 1. 在 [Azure 门户](https://ms.portal.azure.com/)中，依次选择“Azure Active Directory” > “应用注册” > “新注册”。
 
@@ -39,7 +39,7 @@ ms.locfileid: "74062853"
         * 对于本地开发环境中托管的应用，请选择“公共客户端(移动和桌面)”。 确保将“默认客户端类型”设置为“是”。
         * 对于 Azure 应用服务上托管的单页应用，请选择“Web”。
 
-    1. 检查“ID 令牌”以启用隐式授权流。
+    1. 通过检查**访问令牌**或**ID 令牌**来启用隐式授权流。
 
    [![创建新客户端机密](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
 

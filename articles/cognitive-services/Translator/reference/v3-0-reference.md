@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 11/14/2019
 ms.author: swmachan
-ms.openlocfilehash: c07673e7b170170de4723a1232d2e7281feaaf99
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 172bf452cc5197db95e0e1e55c7c687971194899
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888083"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123060"
 ---
 # <a name="translator-text-api-v30"></a>文本翻译 API v3.0
 
@@ -57,7 +57,7 @@ Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 
 |标头|说明|
 |:----|:----|
 |Ocp-Apim-Subscription-Key|如果要传递密钥，请与认知服务订阅一起使用。<br/>该值是文本翻译 API 订阅的 Azure 密钥。|
-|授权|*如果要身份验证令牌，请与认知服务订阅一起使用*。<br/>该值是持有者令牌：`Bearer <token>`。|
+|授权|如果要传递身份验证令牌，请与认知服务订阅一起使用。<br/>该值是持有者令牌：`Bearer <token>`。|
 |Ocp-Apim-Subscription-Region|*如果要传递多服务机密密钥，请将用于认知服务多服务订阅。*<br/>值是多服务订阅的区域。 如果不使用多服务订阅，此值是可选的。|
 
 ###  <a name="secret-key"></a>密钥
@@ -165,3 +165,21 @@ Authorization: Bearer <Base64-access_token>
 | 500000| 发生了意外错误。 如果该错误持续出现，请报告发生错误的日期/时间、响应标头 X-RequestId 中的请求标识符，以及请求标头 X-ClientTraceId 中的客户端标识符。|
 | 503000| 服务暂时不可用。 请重试。 如果该错误持续出现，请报告发生错误的日期/时间、响应标头 X-RequestId 中的请求标识符，以及请求标头 X-ClientTraceId 中的客户端标识符。|
 
+## <a name="metrics"></a>度量值 
+利用指标，你可以在 "指标" 部分下的 Azure 门户中查看转换器使用情况和可用性信息，如以下屏幕截图所示。 有关详细信息，请参阅[数据和平台指标](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)。
+
+![转换器指标](../media/translatormetrics.png)
+
+此表列出了可用的指标，并说明了如何使用它们来监视转换 API 调用。
+
+| 度量值 | 说明 |
+|:----|:-----|
+| TotalCalls| API 调用总数。|
+| TotalTokenCalls| 使用身份验证令牌通过令牌服务进行 API 调用的总数。|
+| SuccessfulCalls| 成功调用数。|
+| TotalErrors| 具有错误响应的调用数。|
+| BlockedCalls| 超过速率或配额限制的调用数。|
+| ServerErrors| 服务器内部错误（5XX）的调用次数。|
+| ClientErrors| 与客户端错误（4XX）的调用次数。|
+| Latency| 完成请求的持续时间（毫秒）。|
+| CharactersTranslated| 传入的文本请求中的字符总数。|

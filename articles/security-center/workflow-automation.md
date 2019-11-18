@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 74a33edb358f9b9bf9322c652c0696ef87182725
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 1abfd8af7e0ef18d4e7bcf05b4726c5d0bcb0a84
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521574"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151694"
 ---
 # <a name="workflow-automation-preview"></a>工作流自动化（预览）
 
@@ -76,7 +76,7 @@ ms.locfileid: "73521574"
 
     ![刷新](media/workflow-automation/refresh-the-list-of-logic-apps.png)
 
-1. 选择逻辑应用并保存自动化。
+1. 选择逻辑应用并保存自动化。 请注意，"逻辑应用" 下拉列表仅显示具有上述支持的安全中心连接器的逻辑应用。
 
 
 ## <a name="manually-trigger-a-logic-app"></a>手动触发逻辑应用

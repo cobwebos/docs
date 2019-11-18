@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1ae2f87a3719853f4a91cb8ba801be6d578597d3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 602dca105e91c55c591388a833a36e71f951da8b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825685"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108591"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>缩小 CloudSimple 私有云
 
@@ -24,7 +24,8 @@ CloudSimple 提供动态收缩私有云的灵活性。  私有云由一个或多
 若要压缩私有云，必须满足以下条件。  无法删除创建私有云时创建的管理群集（第一个群集）。
 
 * VSphere 群集必须具有三个节点。  只有三个节点的群集无法收缩。
-* 使用的总存储空间不应超过群集缩小后的总容量。 
+* 使用的总存储空间不应超过群集缩小后的总容量。
+* 检查是否有任何分布式资源计划程序（DRS）规则阻止了虚拟机的 vMotion。  如果有规则，请禁用或删除规则。  DRS 规则包括用于主机关联规则的虚拟机。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -55,7 +56,8 @@ CloudSimple 提供动态收缩私有云的灵活性。  私有云由一个或多
 启动私有云的压缩。  可以在任务中监视进度。  收缩过程可能需要几个小时，具体取决于数据（需要在 vSAN 上 resynced）。
 
 > [!NOTE]
-> 如果通过删除数据中心中的最后一个或唯一一个群集来收缩私有云，则不会删除该数据中心。  
+> 1. 如果通过删除数据中心中的最后一个或唯一一个群集来收缩私有云，则不会删除该数据中心。
+> 2. 如果发生任何 DRS 规则冲突，则不会从群集中删除节点，任务说明显示删除节点将违反群集上的 DRS 规则。    
 
 
 ## <a name="next-steps"></a>后续步骤

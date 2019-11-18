@@ -1,18 +1,15 @@
 ---
-title: 请求限制 - Azure 资源管理器 | Microsoft Azure
+title: 请求限制和限制
 description: 介绍在达到订阅限制时，如何对 Azure 资源管理器请求使用限制。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/26/2019
-ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 7d53e5749385499113d0dc5261398561d82347a0
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: b47943d69d209f5a0406c293b5a24c6ac0ad0c10
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965565"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150471"
 ---
 # <a name="throttling-resource-manager-requests"></a>限制 Resource Manager 请求
 
@@ -24,15 +21,15 @@ ms.locfileid: "72965565"
 
 ## <a name="subscription-and-tenant-limits"></a>订阅和租户限制
 
-每个订阅级别和租户级别操作都受到限制。 订阅请求涉及到传递订阅 ID，例如，检索订阅中的资源组。 租户请求（例如，检索有效的 Azure 位置）不包括订阅 ID。
+每个订阅级别和租户级别操作都受到限制。 订阅请求是需要传递订阅 ID 的请求，例如在订阅中检索资源组。 租户请求（例如，检索有效的 Azure 位置）不包括订阅 ID。
 
 下表显示了每小时的默认限制限制。
 
-| 范围 | Operations | Limit |
+| 作用域 | 操作 | 限制 |
 | ----- | ---------- | ------- |
-| Subscription | 内容 | 12000 |
-| Subscription | 清除 | 15000 |
-| Subscription | 写 | 1200 |
+| 订阅 | 内容 | 12000 |
+| 订阅 | 清除 | 15000 |
+| 订阅 | 写 | 1200 |
 | 租户 | 内容 | 12000 |
 | 租户 | 写 | 1200 |
 
@@ -54,7 +51,7 @@ ms.locfileid: "72965565"
 
 Microsoft 网络资源提供程序应用以下限制：
 
-| Operation | Limit |
+| Operation | 限制 |
 | --------- | ----- |
 | 写入/删除（PUT） | 每5分钟1000 |
 | 读取（GET） | 每5分钟10000 |
@@ -85,9 +82,9 @@ Azure 资源图限制对其操作的请求数。 本文中的步骤确定剩余�
 
 ## <a name="remaining-requests"></a>剩余的请求数
 
-可以通过检查响应标头来确定剩余的请求数。 读取请求会在标头中返回剩余读取请求数的值。 写入请求包含剩余写入请求数的值。 下表描述了可在其中检查这些值的标头：
+可以通过检查响应标头来确定剩余的请求数。 读取请求在标头中返回一个值，表示剩余读取请求的数目。 写入请求包含的值表示剩余写入请求的数目。 下表描述了可在其中检查这些值的标头：
 
-| 响应标头 | 描述 |
+| 响应标头 | 说明 |
 | --- | --- |
 | x-ms-ratelimit-remaining-subscription-reads |划归到订阅的剩余读取数。 执行读取操作时返回此值。 |
 | x-ms-ratelimit-remaining-subscription-writes |划归到订阅的剩余写入数。 执行写入操作时返回此值。 |

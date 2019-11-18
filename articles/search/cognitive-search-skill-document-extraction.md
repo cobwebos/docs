@@ -1,5 +1,5 @@
 ---
-title: 文档提取认知搜索技能（预览）
+title: 文档提取认知技能（预览版）
 titleSuffix: Azure Cognitive Search
 description: 从扩充管道内的文件中提取内容。 此技能目前为公共预览版。
 manager: nitinme
@@ -8,17 +8,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: chalton
-ms.openlocfilehash: e4274f1cb2eacaf78ab83bfb9d637d044d2290bd
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a79b0476fccbd2e2b9d3cf47ecfdc99c17c2862d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720126"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113341"
 ---
 # <a name="document-extraction-cognitive-skill"></a>文档提取认知技能
 
 > [!IMPORTANT] 
-> 此技能目前为公共预览版。 提供的预览功能不带服务级别协议，不建议用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-preview](search-api-preview.md)提供了预览功能。 目前没有门户或 .NET SDK 支持。
+> 此技能目前为公共预览版。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前没有门户或 .NET SDK 支持。
 
 **文档提取**技能从扩充管道内的文件中提取内容。 这使您可以利用通常在技能组合执行之前发生的文档提取步骤，而这些文件可能会由其他技能生成。
 
@@ -33,13 +33,13 @@ Util. DocumentExtractionSkill
 
 参数区分大小写。
 
-| 输入            | 允许值 | 说明 |
+| 输入            | 允许的值 | 说明 |
 |-----------------|----------------|-------------|
 | `parsingMode`   | `default` <br/> `text` <br/> `json`  | 设置为从非纯文本或 json 文件提取文档 `default`。 设置为 `text` 以提高纯文本文件的性能。 设置为 `json` 从 json 文件中提取结构化内容。 如果未显式定义 `parsingMode`，则将其设置为 `default`。 |
 | `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | 设置为 "`contentAndMetadata`" 可从每个文件提取所有元数据和文本内容。 设置为 "`allMetadata`" 以仅提取[特定于内容类型的元数据](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata)（例如，仅对 .png 文件唯一的元数据）。 如果未显式定义 `dataToExtract`，则将其设置为 `contentAndMetadata`。 |
 | `configuration` | 请参阅下文。 | 用于调整文档提取执行方式的可选参数的字典。 请参阅下表以了解支持的配置属性的说明。 |
 
-| 配置参数   | 允许值 | 说明 |
+| 配置参数   | 允许的值 | 说明 |
 |-------------------------|----------------|-------------|
 | `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | 设置为 "`none`" 可忽略数据集中的嵌入图像或图像文件。 这是默认值。 <br/>对于[使用认知技能的图像分析](cognitive-search-concept-image-scenarios.md)，设置为 "`generateNormalizedImages`"，以使技能在文档破解过程中创建一组规范化图像。 此操作要求将 `parsingMode` 设置为 `default` 并将 `dataToExtract` 设置为 `contentAndMetadata`。 规范化的图像是指在视觉搜索结果中包含图像时，对图像进行额外的处理，使图像的输出一致，并通过调整大小和旋转方向使图像在呈现时更一致（例如，使图像控件中的照片大小一致，如 [JFK 演示](https://github.com/Microsoft/AzureSearch_JFK_Files)中所示）。 使用此选项时，将为每个映像生成此信息。  <br/>如果将设置为 `generateNormalizedImagePerPage`，PDF 文件将以不同方式处理，而不是提取嵌入图像，每个页面都将呈现为图像并相应地规范化。  非 PDF 文件类型将被视为与 `generateNormalizedImages` 设置相同。
 | `normalizedImageMaxWidth` | 介于50-10000 之间的任何整数 | 生成的规范化图像的最大宽度（以像素为单位）。 默认为 2000。 | 
@@ -75,7 +75,7 @@ Util. DocumentExtractionSkill
 | 输出名称    | 说明 |
 |--------------|-------------|
 | 内容 | 文档的文本内容。 |
-| normalized_images | 如果将 `imageAction` 设置为其他值，然后 `none`，则新的*normalized_images*字段将包含一组图像。 有关每个映像的输出格式的详细信息，请参阅[图像提取的文档](cognitive-search-concept-image-scenarios.md)。 |
+| normalized_images | 将 `imageAction` 设置为其他值，然后 `none`时，新*normalized_images*字段将包含一组图像。 有关每个映像的输出格式的详细信息，请参阅[图像提取的文档](cognitive-search-concept-image-scenarios.md)。 |
 
 ##  <a name="sample-definition"></a>示例定义
 

@@ -1,5 +1,5 @@
 ---
-title: 设置基于内容的更改跟踪的增量索引（预览）
+title: 添加增量索引（预览）
 titleSuffix: Azure Cognitive Search
 description: 对于认知技能组合中的受控处理，启用更改跟踪并保留丰富内容的状态。 此功能目前处于公开预览状态。
 author: vkurpad
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 74631ee3167c65e59fbd05f53fe5327d1b532dba
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 09defe9648208e2300594169add990d4bcbd7a39
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719941"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112571"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>如何在 Azure 中设置增强的文档的增量索引认知搜索
 

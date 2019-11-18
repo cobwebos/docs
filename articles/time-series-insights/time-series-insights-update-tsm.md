@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: a550643640afeefeb4cf79e35265f13557b6ffb0
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5c045a4b5ccda47b786d86f1c004e9da4c8d85f3
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014699"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112306"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的时序模型
 
@@ -100,10 +100,10 @@ ms.locfileid: "74014699"
 | --- | ---|
 | timeSeriesId | 与实例关联的时序的 UUID。 |
 | typeId | 实例与之关联的时序模型类型的 UUID。 默认情况下，所有发现的新实例都关联到默认类型。
-| name | **name** 属性可选，并且区分大小写。 如果 "**名称**" 不可用，则默认为 " **timeSeriesId**"。 如果提供了名称， **timeSeriesId** [仍将可用。](time-series-insights-update-explorer.md#preview-well) |
-| description | 实例的文本说明。 |
+| name | **name** 属性可选，并且区分大小写。 如果 "**名称**" 不可用，则默认为 " **timeSeriesId**"。 如果提供了名称， **timeSeriesId** [仍将可用。](time-series-insights-update-explorer.md#4-time-series-well) |
+| 说明 | 实例的文本说明。 |
 | hierarchyIds | 定义实例所属的层次结构。 |
-| instanceFields | **instanceFields** 是实例的属性，并且是定义实例的任何静态数据。 它们定义层次结构或非层次结构属性的值，同时还支持索引，以便能够执行搜索操作。 |
+| instanceFields | 实例的属性和定义实例的任何静态数据。 它们定义层次结构或非层次结构属性的值，同时还支持索引，以便能够执行搜索操作。 |
 
 > [!NOTE]
 > 层次结构是使用实例字段生成的。 可以为进一步的实例属性定义添加其他**instanceFields** 。
@@ -148,7 +148,7 @@ ms.locfileid: "74014699"
 | ---| ---|
 | id | 层次结构的唯一标识符，例如在定义实例时使用。 |
 | name | 用于提供层次结构的名称的字符串。 |
-| source | 指定组织层次结构或路径，它是用户要创建的层次结构的自顶向下父子顺序。 父子属性映射实例字段。 |
+| 源 | 指定组织层次结构或路径，它是用户要创建的层次结构的自顶向下父子顺序。 父子属性映射实例字段。 |
 
 层次结构以 JSON 表示，如下所示：
 
@@ -240,7 +240,7 @@ ms.locfileid: "74014699"
 | ---| ---|
 | id | 类型的 UUID。 |
 | name | 用于为类型提供名称的字符串。 |
-| description | 类型的字符串说明。 |
+| 说明 | 类型的字符串说明。 |
 | variables | 指定与类型关联的变量。 |
 
 类型符合以下 JSON 示例：

@@ -8,23 +8,20 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: c4669809f1efa1f69081da17bf5ccbeddc39a716
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f48c8712a2f4fbd69db7de5247e3293ad57ae1e6
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077132"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112823"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob 存储中的更改源支持（预览）
 
 更改源的目的是提供存储帐户中 blob 和 blob 元数据发生的所有更改的事务日志。 更改源提供了这些更改的**有序、有** **保证**、**持久**、**不可变**的**只读**日志。 客户端应用程序可以在流式传输或批处理模式下随时读取这些日志。 利用更改源，你可以构建高效且可缩放的解决方案，以较低的成本处理在 Blob 存储帐户中发生的更改事件。
 
-> [!NOTE]
-> 更改源以公共预览版提供，并在**westcentralus**和**westus2**区域中提供。 请参阅本文的 "[条件](#conditions)" 一节。 若要注册预览版，请参阅本文的[注册订阅](#register)部分。
-
 更改源将以[blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)的形式存储在存储帐户的特殊容器中，其[价格](https://azure.microsoft.com/pricing/details/storage/blobs/)为标准 blob。 您可以根据您的需求来控制这些文件的保留期（请参阅当前版本的[条件](#conditions)）。 更改事件将作为[Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html)格式规范中的记录追加到更改源：采用简洁、快速、二进制格式，该格式可通过内联架构提供丰富的数据结构。 这种格式广泛用于 Hadoop 生态系统、流分析和 Azure 数据工厂。
 
-您可以以增量或完整方式异步处理这些日志。 任意数量的客户端应用程序都可以独立地并行读取更改源，并按自己的节奏进行。 [Apache 钻取](https://drill.apache.org/docs/querying-avro-files/)或[Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html)之类的分析应用程序可将日志直接用作 Avro 文件，这使你能够以较低的成本处理这些文件，具有高带宽，无需编写自定义应用程序。
+您可以以增量或完整方式异步处理这些日志。 任意数量的客户端应用程序都可以独立地并行读取更改源，并按自己的节奏进行。 [Apache 钻取](https://drill.apache.org/docs/querying-avro-files/)或[Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html)之类的分析应用程序可以直接将日志用作 Avro 文件，这使你可以使用较低的成本（具有高带宽）处理它们，而无需编写自定义应用程序。
 
 更改源支持非常适合于基于已更改对象处理数据的方案。 例如，应用程序可以：
 
@@ -36,7 +33,7 @@ ms.locfileid: "74077132"
 
   - 构建解决方案来备份、镜像或复制帐户中的对象状态，以便进行灾难管理或符合性。
 
-  - 生成已连接的应用程序管道，它们根据创建或更改的对象对更改事件或计划执行做出反应。
+  - 基于创建的或已更改的对象，生成响应更改事件或计划执行的已连接应用程序管道。
 
 > [!NOTE]
 > [Blob 存储事件](storage-blob-event-overview.md)提供实时的一次性事件，这些事件使你的 Azure Functions 或应用程序能够对 Blob 发生的更改做出反应。 更改源提供了更改的持久、有序的日志模型。 更改源的更改会在更改源中以几分钟的顺序提供。 如果你的应用程序必须比此更快地响应事件，请考虑改用[Blob 存储事件](storage-blob-event-overview.md)。 Blob 存储事件使你的 Azure Functions 或应用程序能够实时响应各个事件。
@@ -54,6 +51,9 @@ ms.locfileid: "74077132"
 - 更改源捕获帐户上发生的所有可用事件的*所有*更改。 客户端应用程序可以根据需要筛选出事件类型。 （请参阅当前版本的[条件](#conditions)）。
 
 - 只有 GPv2 和 Blob 存储帐户可以启用更改源。 当前不支持 GPv1 存储帐户、高级 BlockBlobStorage 帐户和已启用分层命名空间的帐户。
+
+> [!IMPORTANT]
+> 更改源以公共预览版提供，并在**westcentralus**和**westus2**区域中提供。 请参阅本文的 "[条件](#conditions)" 一节。 若要注册预览版，请参阅本文的[注册订阅](#register)部分。 必须先注册你的订阅，然后才能在存储帐户上启用更改源。
 
 ### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
@@ -244,11 +244,11 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 - `storageDiagnonstics` 属性包中的值仅供内部使用，而不是由应用程序使用。 您的应用程序不应对该数据具有合同相关性。 您可以放心地忽略这些属性。
 
-- 段所代表的时间是**大致**与15分钟的界限。 因此，若要确保在指定时间内的所有记录消耗，请使用连续的前一小时和下一小时段。
+- 段所代表的时间是**大致**与15分钟的界限。 因此，若要确保在指定时间内所有记录的消耗，请使用连续的前一小时和后个小时段。
 
 - 每个段可以有不同数量的 `chunkFilePaths`。 这是因为日志流的内部分区管理发布吞吐量。 每个 `chunkFilePath` 中的日志文件都保证包含互斥的 blob，并且可以并行使用和处理，而不会违反迭代期间每个 blob 的修改顺序。
 
-- 段 `Publishing` 状态中开始。 将记录追加到段完成后，该记录将被 `Finalized`。 应用程序不应使用日期在 `$blobchangefeed/meta/Segments.json` 文件中 `LastConsumable` 属性日期之后的任何段中的日志文件。 下面是一个 `$blobchangefeed/meta/Segments.json` 文件中 `LastConsumable`属性的示例：
+- 段 `Publishing` 状态中开始。 将记录追加到段完成后，它将被 `Finalized`。 应用程序不应使用日期在 `$blobchangefeed/meta/Segments.json` 文件中 `LastConsumable` 属性日期之后的任何段中的日志文件。 下面是一个 `$blobchangefeed/meta/Segments.json` 文件中 `LastConsumable`属性的示例：
 
 ```json
 {
@@ -302,7 +302,16 @@ az provider register --namespace 'Microsoft.Storage'
 - 日志文件的 `url` 属性始终为空。
 - 段 json 文件的 `LastConsumable` 属性不列出更改源所终结的第一段。 仅在第一段完成后才会出现此问题。 第一小时之后的所有后续段都将在 `LastConsumable` 属性中精确捕获。
 
+## <a name="faq"></a>常见问题
+
+### <a name="what-is-the-difference-between-change-feed-and-storage-analytics-logging"></a>更改源和存储分析日志记录之间的区别是什么？
+更改源已针对应用程序开发进行了优化，因为更改源日志中仅记录成功创建、修改和删除事件。 分析日志记录所有操作的成功和失败的请求，包括读取和列出操作。 利用更改源，无需担心对事务繁重的帐户筛选出日志噪音，只关注 blob 更改事件。
+
+### <a name="should-i-use-change-feed-or-storage-events"></a>是否应使用更改源或存储事件？
+你可以利用这两种功能，因为更改源和[Blob 存储事件](storage-blob-event-overview.md)在本质上是相似的，主要区别是事件记录的延迟、排序和存储。 更改源每隔几分钟就会将记录成批写入更改源日志，同时确保 blob 更改操作的顺序。 存储事件将实时推送，并且可能不会进行排序。 更改源事件将持久存储在存储帐户中，而存储事件是暂时性的，由事件处理程序使用，除非你显式存储它们。
+
 ## <a name="next-steps"></a>后续步骤
 
 - 请参阅如何使用 .NET 客户端应用程序读取更改源的示例。 请参阅[处理 Azure Blob 存储中的更改源日志](storage-blob-change-feed-how-to.md)。
 - 了解如何实时响应事件。 请参阅[响应 Blob 存储事件](storage-blob-event-overview.md)
+- 详细了解所有请求的成功和失败操作的详细日志记录信息。 请参阅[Azure 存储分析日志记录](../common/storage-analytics-logging.md)

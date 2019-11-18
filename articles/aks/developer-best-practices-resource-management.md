@@ -5,20 +5,20 @@ services: container-service
 author: zr-msft
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 69f60036bd718264174bf1befe832305e250e77c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bfce7d77f214762a69857e74f0bb533ad1ce0f1b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073956"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107639"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>有关管理 Azure Kubernetes 服务 (AKS) 中的资源的应用程序开发人员最佳做法
 
 在 Azure Kubernetes 服务 (AKS) 中开发和运行应用程序时，需要考虑到几个重要方面。 如何应对应用程序部署可能对所提供服务的最终用户体验造成的负面影响。 为帮助获得成功，在 AKS 中开发和运行应用程序时，请遵循一些最佳做法。
 
-本最佳做法文章从应用程序开发人员的角度重点介绍如何运行群集和工作负荷。 有关管理最佳做法的信息，请参阅[有关 Azure Kubernetes 服务 (AKS) 中的隔离和资源管理的群集操作员最佳做法][operator-best-practices-isolation]。 本文内容：
+本最佳做法文章从应用程序开发人员的角度重点介绍如何运行群集和工作负荷。 有关管理最佳做法的信息，请参阅[Azure Kubernetes 服务中的隔离和资源管理的群集运营商最佳实践（AKS）][operator-best-practices-isolation]。 本文内容：
 
 > [!div class="checklist"]
 > * pod 资源请求和限制是什么
@@ -27,20 +27,28 @@ ms.locfileid: "65073956"
 
 ## <a name="define-pod-resource-requests-and-limits"></a>定义 pod 资源请求和限制
 
-**最佳做法指导** - 在 YAML 清单中针对所有 pod 设置 pod 请求和限制。 如果 AKS 群集使用资源配额，而你未定义这些值，则可能会拒绝你的部署。 
+**最佳做法指导** - 在 YAML 清单中针对所有 pod 设置 pod 请求和限制。 如果 AKS 群集使用资源配额，而你未定义这些值，则可能会拒绝你的部署。
 
 管理 AKS 群集中的计算资源的主要方法是使用 pod 请求和限制。 这些请求和限制可让 Kubernetes 计划程序知道应该为 pod 分配哪些计算资源。
 
-* **pod 请求**定义 pod 所需的 CPU 和内存量。 这些请求应该是 pod 提供可接受的性能级别所需的计算资源量。
-    * 当 Kubernetes 计划程序尝试在节点上放置 pod 时，将使用 pod 请求来确定哪个节点具有足够的可用资源。
-    * 监视应用程序的性能并调整这些请求，以确保定义的资源不会少于保持可接受性能级别所需的资源。
-* **pod 限制**是 pod 可以使用的最大 CPU 和内存量。 这些限制有助于防止一个或两个失控 pod 在节点中占用过多的 CPU 和内存。 这种情况会降低节点的性能，以及其上运行的其他 pod 的性能。
+* **POD cpu/内存请求**可定义 pod 定期需要的 cpu 和内存量集。
+    * 当 Kubernetes 计划程序尝试将 pod 置于节点上时，pod 请求用于确定哪个节点有足够的资源可用于计划。
+    * 如果未设置 pod 请求，则默认情况下会将其设置为定义的限制。
+    * 监视应用程序的性能以调整这些请求是非常重要的。 如果发出的请求不足，应用程序可能会因计划节点而导致性能下降。 如果请求是 overestimated 的，则应用程序可能会在计划的难度增加。
+* **POD cpu/内存限制**是 pod 可以使用的最大 cpu 和内存量。 这些限制有助于定义因资源不足而发生节点不稳定时应终止的 pod。 如果没有适当的限制，将会终止设置箱，直到提升资源压力。
+    * Pod 限制有助于定义 pod 何时失去对资源消耗的控制。 超出限制时，会优先使用 pod 来确定节点运行状况，并最大程度地减少对节点共享节点的影响。
+    * 如果未设置 pod 限制，则默认情况下将其设置为给定节点上的最高可用值。
     * 设置的 pod 限制不应超过节点可以支持的限制。 每个 AKS 节点将为核心 Kubernetes 组件保留一定的 CPU 和内存量。 应用程序可能会尝试消耗节点上的大量资源，使其他 pod 能够成功运行。
-    * 同样，请在一天或一周的不同时间监视应用程序的性能。 确定峰值需求是什么，并根据满足应用程序需求所需的资源来调整 pod 限制。
+    * 同样，在一天或一周内的不同时间监视应用程序的性能非常重要。 确定高峰需求为，并将 pod 限制调整为满足应用程序最大需求所需的资源。
 
-最佳做法是在 pod 规范中定义这些请求和限制。 如果不包含这些值，Kubernetes 计划程序将不知道需要哪些资源。 计划程序可能会在资源不足的节点上计划 pod，从而无法提供可接受的应用程序性能。 群集管理员可以针对需要设置资源请求和限制的命名空间设置资源配额。  有关详细信息，请参阅[ AKS 群集中的资源配额][resource-quotas]。
+在 pod 规范中，最佳做法是根据以上信息定义这些请求和限制，这一点**非常重要**。 如果不包含这些值，则 Kubernetes 计划程序无法考虑应用程序在制定决策时所需的资源。
 
-定义 CPU 请求或限制时，值以 CPU 单位计量。 *1.0* CPU 相当于节点上的一个基础虚拟 CPU 核心。 GPU 使用与此相同的计量方法。 还可以定义小数请求或限制，通常以 millicpu 为单位。 例如，*100m* 表示 *0.1* 个基础虚拟 CPU 核心。
+如果计划程序在资源不足的节点上放置一个 pod，应用程序性能会下降。 强烈建议群集管理员在需要设置资源请求和限制的命名空间上设置*资源配额*。 有关详细信息，请参阅[AKS 群集上的资源配额][resource-quotas]。
+
+定义 CPU 请求或限制时，值以 CPU 单位计量。 
+* *1.0* CPU 相当于节点上的一个基础虚拟 CPU 核心。 
+* GPU 使用与此相同的计量方法。
+* 您可以定义 millicores 中的分数。 例如， *100m*是基础 vCPU 核心的*0.1* 。
 
 在以下单个 NGINX pod 的基本示例中，pod 请求 *100m* 的 CPU 时间和 *128 Mi* 的内存。 pod 的资源限制设置为 *250m* CPU 和 *256Mi* 内存：
 
@@ -62,7 +70,7 @@ spec:
         memory: 256Mi
 ```
 
-有关资源计量和分配的详细信息，请参阅[管理容器的计算资源][k8s-resource-limits]。
+有关资源度量和分配的详细信息，请参阅[管理容器的计算资源][k8s-resource-limits]。
 
 ## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>针对 AKS 群集开发和调试应用程序
 
@@ -72,15 +80,15 @@ spec:
 
 ![使用 Dev Spaces 在 AKS 群集中调试应用程序](media/developer-best-practices-resource-management/dev-spaces-debug.png)
 
-这种使用 Dev Spaces 的集成式开发和测试过程减少了 [minikube][minikube] 等本地测试环境的需求。 可以针对 AKS 群集进行开发和测试。 可根据前面有关使用命名空间逻辑隔离群集的部分中所述保护和隔离此群集。 当准备好将应用部署到生产环境时，可以放心地进行部署，因为针对真正 AKS 群集的所有开发工作均已完成。
+此集成的开发和测试过程与开发人员共享空间减少了本地测试环境（如[minikube][minikube]）的需求。 可以针对 AKS 群集进行开发和测试。 可根据前面有关使用命名空间逻辑隔离群集的部分中所述保护和隔离此群集。 当准备好将应用部署到生产环境时，可以放心地进行部署，因为针对真正 AKS 群集的所有开发工作均已完成。
 
-Azure 开发人员空间用于在 Linux pod 和节点运行的应用程序。
+Azure Dev Spaces 适用于在 Linux pod 和节点上运行的应用程序。
 
 ## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>使用适用于 Kubernetes 的 Visual Studio Code 扩展
 
 **最佳做法指导** - 编写 YAML 清单时安装并使用适用于 Kubernetes 的 VS Code 扩展。 还可将该扩展用于集成式部署解决方案，不经常与 AKS 群集交互的应用程序所有者也许可从中获得帮助。
 
-[适用于 Kubernetes 的 Visual Studio Code 扩展][vscode-kubernetes]可帮助你开发应用程序并将其部署到 AKS。 该扩展为 Kubernetes 资源以及 Helm 图表和模板提供 intellisense 功能。 还可以从 VS Code 内部浏览、部署和编辑 Kubernetes 资源。 该扩展还针对 pod 规范中设置的资源请求或限制提供 intellisense 检查：
+[Kubernetes 的 Visual Studio Code 扩展][vscode-kubernetes]可帮助你开发应用程序并将其部署到 AKS。 该扩展为 Kubernetes 资源以及 Helm 图表和模板提供 intellisense 功能。 还可以从 VS Code 内部浏览、部署和编辑 Kubernetes 资源。 该扩展还针对 pod 规范中设置的资源请求或限制提供 intellisense 检查：
 
 ![适用于 Kubernetes 的 VS Code 扩展中有关缺少内存限制的警告](media/developer-best-practices-resource-management/vs-code-kubernetes-extension.png)
 
@@ -90,18 +98,18 @@ Azure 开发人员空间用于在 Linux pod 和节点运行的应用程序。
 
 [kube-advisor][kube-advisor] 工具是一个关联的 AKS 开放源代码项目，它将扫描 Kubernetes 群集，并报告它找到的问题。 一项有用的检查是识别未应用资源请求和限制的 pod。
 
-Kube 顾问工具可报告资源请求和 PodSpecs 的 Windows 应用程序，以及 Linux 应用程序中缺少的限制，但 kube 顾问工具本身必须安排在 Linux pod。 您可以计划在特定 OS 使用的节点池上运行的 pod[节点选择器][ k8s-node-selector] pod 的配置中。
+kube-advisor 工具可以报告 PodSpecs for Windows 应用程序以及 Linux 应用程序中缺少的资源请求和限制，但 kube-advisor 工具本身必须在 Linux Pod 上进行计划。 可以使用 pod 配置中的[节点选择器][k8s-node-selector]，将 pod 计划为使用特定 OS 在节点池上运行。
 
 在托管许多开发团队和应用程序的 AKS 群集中，可能很难跟踪未设置这些资源请求和限制的 pod。 最佳做法是定期针对 AKS 群集运行 `kube-advisor`。
 
 ## <a name="next-steps"></a>后续步骤
 
-本最佳做法文章从群集操作员的角度重点介绍了如何运行群集和工作负荷。 有关管理最佳做法的信息，请参阅[有关 Azure Kubernetes 服务 (AKS) 中的隔离和资源管理的群集操作员最佳做法][operator-best-practices-isolation]。
+本最佳做法文章从群集操作员的角度重点介绍了如何运行群集和工作负荷。 有关管理最佳做法的信息，请参阅[Azure Kubernetes 服务中的隔离和资源管理的群集运营商最佳实践（AKS）][operator-best-practices-isolation]。
 
 若要实施其中的某些最佳做法，请参阅以下文章：
 
 * [使用 Dev Spaces 进行开发][dev-spaces]
-* [使用 kube-advisor 检查问题][aks-kubeadvisor]
+* [检查 kube-advisor 的问题][aks-kubeadvisor]
 
 <!-- EXTERNAL LINKS -->
 [k8s-resource-limits]: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/

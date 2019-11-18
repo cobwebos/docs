@@ -1,5 +1,5 @@
 ---
-title: 语音设备 SDK 麦克风阵列建议 - 语音服务
+title: 语音设备 SDK 麦克风阵列建议
 titleSuffix: Azure Cognitive Services
 description: 语音设备 SDK 麦克风阵列建议。 建议将这些数组几何图形用于 Microsoft 音频堆栈。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: 0a0bbbb59d09d35d0153f56f65b2ee1d9438e49d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e39056d6ed1ced85e3f953bcbd7f04dd6311942c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072395"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111659"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>语音设备 SDK 麦克风阵列建议
 
@@ -41,16 +41,16 @@ ms.locfileid: "74072395"
 
 选择麦克风时建议的属性如下：
 
-| 参数                     | 建议                                         |
-| ----------------------------- | --------------------------------------------------- |
-| 信噪比                           | \>= 65 dB（1 kHz 信号，94 dBSPL，A 加权噪声） |
-| 振幅匹配            | ± 1 dB @ 1 kHz                                      |
-| 相位匹配                | ± 2° @ 1 kHz                                        |
-| 声学过载点 (AOP) | \>= 120 dBSPL (THD = 10%)                           |
-| 比特率                      | 最小 24 位                                      |
-| 采样率                 | 最小 16 kHz\*                                    |
-| 频率响应            | ± 3 dB，200-8000 Hz 浮动掩码\*                 |
-| 可靠性                   | 存储温度范围-40 ° C 到70° C<br />工作温度范围：-20°C 到 55°C |
+| 参数 | 建议 |
+| --------- | ----------- |
+| 信噪比 | \>= 65 dB（1 kHz 信号，94 dBSPL，A 加权噪声） |
+| 振幅匹配 | ± 1 dB @ 1 kHz |
+| 相位匹配 | ± 2° @ 1 kHz |
+| 声学过载点 (AOP) | \>= 120 dBSPL (THD = 10%) |
+| 比特率 | 最小 24 位 |
+| 采样率 | 最小 16 kHz\* |
+| 频率响应 | ± 3 dB，200-8000 Hz 浮动掩码\* |
+| 可靠性 | 存储温度范围-40 ° C 到70° C<br />工作温度范围：-20°C 到 55°C |
 
 _高质量通信（VoIP）应用程序可能需要 \*更高的采样率或 "更宽" 频率范围_
 
@@ -68,7 +68,7 @@ _高质量通信（VoIP）应用程序可能需要 \*更高的采样率或 "更�
 | 总谐波失真率\*             | ≤ 1%，200-8000 Hz，94 dBSPL，5 阶             |
 | 频率响应 | ± 6 dB，200-8000 Hz 浮动掩码\*\*              |
 
-_要测量 THD （例如 NEUMANN KH120），需要较低的扭曲音箱_\*
+\*\*_需要较低的扭曲音箱来度量 THD （例如 NEUMANN KH120）_
 
 _高质量通信（VoIP）应用程序可能需要 \*\*"更宽" 频率范围_
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 62f298e0efb5c54efdcd15cf470ed4640f720058
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: b9b58c9b5f32d6ca714ac3ac940b91643fa8020c
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73957840"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123552"
 ---
 # <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>重复使用 Azure 机器学习的培训 & 部署环境。
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -333,7 +333,7 @@ run = experiment.submit(sk_est)
 
 在将模型部署为 web 服务时，可以使用环境。 这可以实现可重复连接的工作流，在此工作流中，你可以在定型和推理计算中使用完全相同的库定型、测试和部署模型。
 
-若要部署 web 服务，请在部署对象[（）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-)中合并环境、推理计算、计分脚本和已注册的模型。 了解有关[部署 web 服务](how-to-deploy-and-where.md)的详细信息。
+若要部署 web 服务，请在部署对象[（）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)中合并环境、推理计算、计分脚本和已注册的模型。 了解有关[部署 web 服务](how-to-deploy-and-where.md)的详细信息。
 
 在此示例中，假设已完成训练运行，并且想要将该模型部署到 Azure 容器实例（ACI）中。 生成 web 服务时，模型和评分文件会装载到映像上，并将 Azure 机器学习推理堆栈添加到映像。
 

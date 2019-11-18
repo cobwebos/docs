@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 424df8ac7145129dd70a9a5791648730189b528b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 33fd2221d3f3a0562abf83f014a7b84df972eebc
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889660"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128840"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>从传感器合作伙伴获取传感器数据
 
@@ -86,7 +86,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入数�
 当前 FarmBeats 支持以下设备：
 
 - **Node**：一个或多个传感器连接到的设备。
-- **网关**：一个或多个传感器连接到的设备。
+- **网关**：将一个或多个节点附加到的设备。
 
 请执行以下步骤：
 
@@ -136,7 +136,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入数�
 
 ## <a name="delete-sensor"></a>删除传感器
 
-执行以下步骤:
+执行以下步骤：
 
 1. 在 "主页" 页上，从菜单中选择 "**传感器**" 以查看**传感器**页面。  
 2. 选择要删除的设备，然后从确认窗口中选择 "**删除**"。
@@ -147,7 +147,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入数�
 
 ## <a name="delete-devices"></a>删除设备
 
-执行以下步骤:
+执行以下步骤：
 
 1. 在主页上，从菜单中选择 "**设备**" 以查看 "设备" 页。  
 2. 选择要删除的设备，然后从确认窗口中选择 "**删除**"。

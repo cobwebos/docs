@@ -1,5 +1,6 @@
 ---
-title: 为 VPN 网关配置 Always On VPN 用户隧道
+title: 配置 Always On VPN 用户隧道
+titleSuffix: Azure VPN Gateway
 description: 本文介绍如何为 VPN 网关配置 Always On VPN 用户隧道
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9aa1f951add5b79eab12f4957be05a42bbdd4434
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 099ed3c3c0ac2abe034388849385a45b44b32b34
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299923"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145950"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel"></a>配置 Always On VPN 用户隧道
 
@@ -30,11 +31,11 @@ Always On VPN 连接包括两种类型的隧道：
 
 以下部分介绍了如何配置 VPN 网关和用户隧道。
 
-## <a name="step-1-configure-a-vpn-gateway"></a>步骤 1：配置 VPN 网关
+## <a name="step-1-configure-a-vpn-gateway"></a>步骤1：配置 VPN 网关
 
 按照此[点到站点一](vpn-gateway-howto-point-to-site-resource-manager-portal.md)文中的说明，将 VPN 网关配置为使用 IKEv2 和基于证书的身份验证。
 
-## <a name="step-2-configure-a-user-tunnel"></a>步骤 2：配置用户隧道
+## <a name="step-2-configure-a-user-tunnel"></a>步骤2：配置用户隧道
 
 1. 在 Windows 10 客户端上安装客户端证书，如此[点到站点 VPN 客户端一](point-to-site-how-to-vpn-client-install-azure-cert.md)文中所示。 证书必须位于当前用户存储区中。
 
@@ -156,7 +157,7 @@ Always On VPN 连接包括两种类型的隧道：
 
 若要删除配置文件，请执行以下操作：
 
-1. 运行下面的命令：
+1. 运行以下命令：
 
    ```powershell
    C:\> Remove-VpnConnection UserTest  

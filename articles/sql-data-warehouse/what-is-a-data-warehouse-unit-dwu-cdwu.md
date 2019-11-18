@@ -11,12 +11,12 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f3415522a6ae80723500ba2d38867322fdef0dd7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: caa23d3e86fba86aa45e677f7ab85859cda6ddce
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685341"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133161"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>数据仓库单位 (DWU) 和计算数据仓库单位 (cDWU)
 
@@ -128,7 +128,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 2. 在“缩放”下，向左或向右移动滑块，以更改 DWU 设置。
 
-3. 单击“保存”。 此时会显示确认消息。 单击“是”以确认或“否”以取消。
+3. 单击“保存”。 此时会显示确认消息。 单击“是”确认，或者单击“否”取消。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -204,7 +204,7 @@ DWU 更改可能需要几分钟才能完成。 如果要自动缩放，建议实
     ;
     ```
     
-此 DMV 返回有关 SQL 池上各种管理操作的信息，如操作和操作的状态（即 IN_PROGRESS 或已完成）。
+此 DMV 返回有关 SQL 池上各种管理操作的信息，如操作和操作的状态（IN_PROGRESS 或已完成）。
 
 ## <a name="the-scaling-workflow"></a>缩放工作流
 
@@ -215,4 +215,4 @@ DWU 更改可能需要几分钟才能完成。 如果要自动缩放，建议实
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关管理性能的详细信息，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)和 [内存和并发限制] 内存-limits.md）。
+若要了解有关如何管理性能的详细信息，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)和[内存和并发限制](memory-concurrency-limits.md)。

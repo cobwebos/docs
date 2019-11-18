@@ -1,21 +1,18 @@
 ---
-title: Azure 资源管理器模板资源位置
+title: 模板资源位置
 description: 介绍如何在 Azure 资源管理器模板中设置资源位置。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.author: tomfitz
-ms.openlocfilehash: 6af5d82766533ef7bbacab04381db9a37502923e
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 1e711b2cfeb42c33dbfa68b1fbdabd42cbd46d10
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70294199"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150621"
 ---
 # <a name="set-resource-location-in-resource-manager-template"></a>在资源管理器模板中设置资源位置
 
-部署模板时，必须提供每个资源的位置。 此位置不需要与资源组位置相同。
+部署模板时，必须提供每个资源的位置。 该位置不必与资源组位置相同。
 
 ## <a name="get-available-locations"></a>获取可用位置
 
@@ -41,7 +38,7 @@ az provider show \
 
 ## <a name="use-location-parameter"></a>使用 location 参数
 
-若要在部署模板时实现灵活性，请使用参数指定资源的位置。 将参数的默认值设置为`resourceGroup().location`。
+若要在部署模板时实现灵活性，请使用参数指定资源的位置。 将参数的默认值设置为 `resourceGroup().location`。
 
 以下示例显示了部署到作为参数指定的位置的存储帐户：
 

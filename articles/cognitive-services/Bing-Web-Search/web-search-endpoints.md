@@ -1,7 +1,7 @@
 ---
 title: Web 搜索终结点
 titleSuffix: Azure Cognitive Services
-description: Web 搜索 API 终结点摘要。
+description: 若要获取 web 搜索结果，请将 `GET` 请求发送到以下终结点。 标头和 URL 参数定义了更多规范。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: aahi
-ms.openlocfilehash: be622c5636c253c48bec4d67fba58319262c2603
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 2edc6a4cf4d4fb174c1b2067d8b3fb3b6f31859f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883562"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111340"
 ---
 # <a name="web-search-endpoint"></a>Web 搜索终结点
 
@@ -25,7 +25,7 @@ ms.locfileid: "68883562"
 
 若要使用必应 API 获取 Web 搜索结果，请向以下终结点发送 `GET` 请求。 标头和 URL 参数定义了更多规范。
 
-**终结点**：返回与 `?q=""` 定义的用户搜索查询相关的 Web 结果。
+终结点：返回与 `?q=""` 定义的用户搜索查询相关的 Web 结果。
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/search
@@ -39,7 +39,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/search
 
 ## <a name="next-steps"></a>后续步骤
 
-必应 API 支持根据其类型返回结果的搜索操作。 所有搜索终结点均将结果作为 JSON 响应对象返回。  所有终结点均支持按经度、纬度和搜索半径返回特定语言和位置的查询。
+必应 API 支持根据其类型返回结果的搜索操作。 所有搜索终结点都将结果作为 JSON 响应对象返回。  所有终结点都支持按经度、纬度和搜索 radius 返回特定语言和位置的查询。
 
 若要完整了解每个终结点支持的参数，请参阅每种类型对应的参考页面。
 有关使用 Web 搜索 API 的基本请求的示例，请参阅[搜索 Web 快速入门](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/search-the-web)。

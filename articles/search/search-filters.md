@@ -1,5 +1,5 @@
 ---
-title: 索引中用于限定搜索结果的范围的筛选器
+title: 搜索结果筛选器
 titleSuffix: Azure Cognitive Search
 description: 按用户安全标识、语言、地理位置或数字值进行筛选，以减少 Azure 认知搜索中托管云搜索服务 Microsoft Azure 的搜索结果。
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7dd289005e91323010cfa2a0298c351b3e757d1d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 960f6f0de94c6bb4fc6b03c31740b63270cf9e14
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792863"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132922"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure 认知搜索中的筛选器 
 
@@ -49,24 +49,24 @@ ms.locfileid: "72792863"
 
  + `searchFields` 查询参数将搜索范围限定为特定的字段。 例如，如果索引分别为英语和西班牙语说明提供了单独的字段，则可以使用 searchFields 来限定要用于全文搜索的字段。 
 
-+ `$select` 参数用于指定要在结果集中包含哪些字段，在将响应发送到调用方应用程序之前能够有效地修剪响应。 此参数不会优化查询或减少文档集合，但如果你的目标是较小的响应，则此参数是要考虑的选项。 
++ `$select` 参数用于指定要在结果集中包含哪些字段，在将响应发送到调用方应用程序之前能够有效地修剪响应。 此参数不会具体化查询或缩小文档集合，但如果目标是获取更小的响应，则可以考虑使用此参数。 
 
 有关上述任一参数的详细信息，请参阅[搜索文档 > 请求 > 查询参数](https://docs.microsoft.com/rest/api/searchservice/search-documents#request)。
 
 
 ## <a name="how-filters-are-executed"></a>如何执行筛选器
 
-在查询时，筛选器分析器接受作为输入的条件，将表达式转换为表示为树的原子布尔表达式，然后对索引中的可筛选字段计算筛选器树。
+在查询时，筛选器分析器会接受作为输入提供的条件、将表达式转换为树状表示的原子布尔表达式，然后基于索引中的可筛选字段评估筛选器树。
 
-筛选与搜索一起进行，可为文档检索和关联计分限定要包含在下游处理中的文档。 如果与搜索字符串配对，筛选器将有效地减少后续搜索操作的回调集。 如果单独使用（例如，在 `search=*` 中查询字符串为空时），筛选条件是唯一的输入。 
+筛选是配合搜索发生的，限定要将哪些文档包含在下游处理流程中进行文档检索和相关性评分。 与搜索字符串搭配使用时，筛选器能够有效减小后续搜索操作的重调集。 如果单独使用（例如，在 `search=*` 中查询字符串为空时），筛选条件是唯一的输入。 
 
 ## <a name="defining-filters"></a>定义筛选器
 
 筛选器为 OData 表达式，使用[Azure 认知搜索中支持的 Odata V4 语法子集](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)进行了表述。 
 
-您可以为每个**搜索**操作指定一个筛选器，但筛选器本身可以包含多个字段和多个条件，如果使用**ismatch**函数，则可以使用多个全文搜索表达式。 在多部分筛选器表达式中，可以按任意顺序指定谓词（根据运算符优先级规则）。 如果尝试按特定的顺序重新排列谓词，性能不会有明显的提升。
+可为每个**搜索**操作指定一个筛选器，但筛选器本身可以包含多个字段和多个条件，如果使用 **ismatch** 函数，则还可以包含多个全文搜索表达式。 在多部分筛选表达式中，可按任意顺序指定谓词（受运算符优先顺序规则的约束）。 如果尝试按特定的顺序重新排列谓词，性能不会有明显的提升。
 
-筛选器表达式的一个限制是请求的最大大小限制。 整个 POST 请求（包括筛选器）最大可为 16 MB；对于 GET 请求，最大可为 8 KB。 筛选器表达式中的子句数也有限制。 根据经验，如果有数百个子句，则就存在达到限制的风险。 我们建议正确设计应用程序，使之不会生成大小不受限制的筛选器。
+筛选表达式的限制之一是请求的最大大小限制。 整个 POST 请求（包括筛选器）最大可为 16 MB；对于 GET 请求，最大可为 8 KB。 筛选表达式中的子句数也有限制。 根据经验，如果有数百个子句，则就存在达到限制的风险。 我们建议正确设计应用程序，使之不会生成大小不受限制的筛选器。
 
 以下示例显示了多个 API 中的原型筛选器定义。
 
@@ -94,23 +94,23 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
     var results = searchIndexClient.Documents.Search("*", parameters);
 ```
 
-## <a name="filter-usage-patterns"></a>筛选使用模式
+## <a name="filter-usage-patterns"></a>筛选器使用模式
 
-下面的示例演示了多个筛选器方案的使用模式。 有关更多思路，请参阅 [OData 表达式语法 > 示例](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples)。
+以下示例演示了筛选器方案的多种使用模式。 有关更多思路，请参阅 [OData 表达式语法 > 示例](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples)。
 
-+ 单独使用 **$filter** 而不使用查询字符串：如果筛选表达式能够完全限定所需的文档，则此模式很有效。 不使用查询字符串也就不会执行词法或语言分析、评分和排名。 请注意，搜索字符串只是一个星号，这表示 "匹配所有文档"。
++ 单独使用 **$filter** 而不使用查询字符串：如果筛选表达式能够完全限定所需的文档，则此模式很有效。 不使用查询字符串也就不会执行词法或语言分析、评分和排名。 请注意，搜索字符串只是一个星号，表示“匹配所有文档”。
 
    ```
    search=*&$filter=(baseRate ge 60 and baseRate lt 300) and accommodation eq 'Hotel' and city eq 'Nogales'
    ```
 
-+ 将查询字符串与 **$filter** 结合使用：让筛选器创建子集，让查询字符串提供字词输入，用于对筛选的子集进行全文搜索。 使用带有查询字符串的筛选器是最常用的模式。
++ 将查询字符串与 **$filter** 结合使用：让筛选器创建子集，让查询字符串提供字词输入，用于对筛选的子集进行全文搜索。 将筛选器与查询字符串结合使用是最常见的使用模式。
 
    ```
    search=hotels ocean$filter=(baseRate ge 60 and baseRate lt 300) and city eq 'Los Angeles'
    ```
 
-+ 复合查询：使用“or”分隔查询，每个查询有自身的筛选条件（例如，'beagles' in 'dog' or 'siamese' in 'cat'）。 与 `or` 组合在一起的表达式分别进行计算，并将与每个表达式相匹配的文档的并送回响应。 此使用模式是通过 `search.ismatchscoring` 函数实现的。 你还可以使用非计分版本 `search.ismatch`。
++ 复合查询：使用“or”分隔查询，每个查询有自身的筛选条件（例如，'beagles' in 'dog' or 'siamese' in 'cat'）。 以 `or` 合并的表达式将单独求值，响应中会发回与每个表达式匹配的文档的联合。 此使用模式是通过 `search.ismatchscoring` 函数实现的。 也可以使用无评分版本 `search.ismatch`。
 
    ```
    # Match on hostels rated higher than 4 OR 5-star motels.
@@ -120,7 +120,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
    $filter=search.ismatchscoring('luxury | high-end', 'description') or category eq 'Luxury'
    ```
 
-  还可以 `search.ismatchscoring` 通过使用 `and` 而不是 `or`的筛选器将全文搜索与筛选器组合在一起，但这在功能上等效于在搜索请求中使用 `search` 和 `$filter` 参数。 例如，以下两个查询生成相同的结果：
+  还可以使用 `search.ismatchscoring`（而不是 `and`）通过包含筛选器的 `or` 来合并全文搜索，但此功能相当于在搜索请求中使用 `search` 和 `$filter` 参数。 例如，以下两个查询生成相同的结果：
 
   ```
   $filter=search.ismatchscoring('pool') and rating ge 4
@@ -136,9 +136,9 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="field-requirements-for-filtering"></a>与筛选相关的字段要求
 
-在 REST API 中，默认情况下，对于简单字段*启用 "* 可筛选"。 可筛选字段会增大索引大小；对于不打算真正在筛选器中使用的字段，请务必设置 `"filterable": false`。 有关字段定义设置的详细信息，请参阅[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)。
+在 REST API 中，默认为简单字段启用了可筛选性。 可筛选字段会增大索引大小；对于不打算真正在筛选器中使用的字段，请务必设置 `"filterable": false`。 有关字段定义设置的详细信息，请参阅[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)。
 
-在 .NET SDK 中，可筛选性默认为“关”。 可以通过将相应[字段](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet)对象的[IsFilterable 属性](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet)设置为 `true`来使字段可筛选。 还可以使用[IsFilterable 属性](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute)以声明方式执行此操作。 在下面的示例中，在映射到索引定义的模型类的 `BaseRate` 属性上设置属性。
+在 .NET SDK 中，可筛选性默认为“关”。 可以通过将相应 [Field](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) 对象的 [IsFilterable 属性](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet)设置为 `true`，使某个字段可筛选。 也可以使用 [IsFilterable 特性](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute)以声明方式实现此目的。 在以下示例中，该特性已在一个映射到索引定义的模型类的 `BaseRate` 属性中设置。
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
@@ -147,21 +147,21 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ### <a name="making-an-existing-field-filterable"></a>使现有字段可筛选
 
-不能修改现有字段以使其可筛选。 相反，您需要添加新字段或重新生成索引。 有关重新生成索引或重新填充字段的详细信息，请参阅[如何重新生成 Azure 认知搜索索引](search-howto-reindex.md)。
+无法通过修改现有字段来使其可筛选。 为此需要添加新字段或重建索引。 有关重新生成索引或重新填充字段的详细信息，请参阅[如何重新生成 Azure 认知搜索索引](search-howto-reindex.md)。
 
 ## <a name="text-filter-fundamentals"></a>文本筛选器基础知识
 
-文本筛选器将字符串字段与您在筛选器中提供的文本字符串匹配。 与全文搜索不同，文本筛选器没有词法分析或断字，因此比较仅用于精确匹配。 例如，假定字段*f*包含 "sunny day"，`$filter=f eq 'Sunny'` 不匹配，但 `$filter=f eq 'sunny day'` 会。 
+文本筛选器根据筛选器中提供的文本字符串匹配字符串字段。 与全文搜索不同，对于文本筛选器，不会执行词法分析或分词，因此，比较操作仅用于精确匹配。 例如，假设字段 *f* 包含“sunny day”，则 `$filter=f eq 'Sunny'` 与条件不匹配，但 `$filter=f eq 'sunny day'` 匹配。 
 
-文本字符串区分大小写。 大小写字不能小写： `$filter=f eq 'Sunny day'` 将找不到 "sunny day"。
+文本字符串区分大小写。 大写的单词不会转换成小写：`$filter=f eq 'Sunny day'` 不会查找“sunny day”。
 
-### <a name="approaches-for-filtering-on-text"></a>文本筛选方法
+### <a name="approaches-for-filtering-on-text"></a>基于文本进行筛选的方法
 
-| 方法 | 描述 | 何时使用 |
+| 方法 | 说明 | 何时使用 |
 |----------|-------------|-------------|
-| [`search.in`](search-query-odata-search-in-function.md) | 一个函数，它将一个字段与一个字符串列表分隔开。 | 建议用于[安全筛选器](search-security-trimming-for-azure-search.md)和任何筛选器，其中许多原始文本值需要与字符串字段匹配。 **Search.in**函数的设计速度非常快，并且比使用 `eq` 和 `or`对每个字符串显式比较字段的速度要快得多。 | 
-| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | 用于在同一个筛选表达式中将全文搜索操作与严格的布尔筛选操作混合使用的函数。 | 如果需要在一个请求中使用多个搜索筛选器组合，请使用**ismatch** （或其计分等效项**ismatchscoring**）。 还可以使用该函数来构建 *contains* 筛选器，以根据较大字符串中的部分字符串进行筛选。 |
-| [`$filter=field operator string`](search-query-odata-comparison-operators.md) | 由字段、运算符和值组成的用户定义的表达式。 | 如果要查找字符串字段和字符串值之间的完全匹配项，请使用此项。 |
+| [`search.in`](search-query-odata-search-in-function.md) | 根据字符串分隔列表匹配字段的函数。 | 建议用于[安全筛选器](search-security-trimming-for-azure-search.md)，以及其中的许多原始文本值需要与某个字符串字段匹配的任何筛选器。 **search.in** 函数旨在提高速度，相比于显式使用 `eq` 和 `or` 将字段与每个字符串进行比较，其速度要快得多。 | 
+| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | 用于在同一个筛选表达式中将全文搜索操作与严格的布尔筛选操作混合使用的函数。 | 想要在一个请求中使用多种搜索-筛选组合时，请使用 **search.ismatch**（或其等效的评分函数 **search.ismatchscoring**）。 还可以使用该函数来构建 *contains* 筛选器，以根据较大字符串中的部分字符串进行筛选。 |
+| [`$filter=field operator string`](search-query-odata-comparison-operators.md) | 由字段、运算符和值组成的用户定义的表达式。 | 想要在字符串字段与字符串值之间查找完全匹配项时，请使用此函数。 |
 
 ## <a name="numeric-filter-fundamentals"></a>数字筛选器基础知识
 

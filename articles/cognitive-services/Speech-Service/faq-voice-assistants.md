@@ -1,5 +1,5 @@
 ---
-title: 有关语音助手的常见问题
+title: 语音助手常见问题
 titleSuffix: Azure Cognitive Services
 description: 获取有关使用自定义命令（预览版）或直接连线语音通道的语音助手的最常见问题的解答。
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: eccf2a7a1b9c7ea7a21cd5d0cf0f60728284c05d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8480299c2c889a243150028ac9651f4b62656aec
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579670"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110340"
 ---
-# <a name="voice-assistants-frequently-asked-questions"></a>语音助手：常见问题
+# <a name="voice-assistants-frequently-asked-questions"></a>语音助手常见问题
 
 如果在本文档中找不到问题的答案，请查看[其他支持选项](support.md)。
 
-## <a name="general"></a>常规
+## <a name="general"></a>一般信息
 
 **问：什么是语音助手？**
 
@@ -35,9 +35,9 @@ ms.locfileid: "73579670"
 
 **答：** 开始创建自定义命令（预览版）应用程序或基本机器人框架机器人的最佳方式。
 
-* [创建自定义命令（预览版）应用程序](quickstart-custom-speech-commands-create-new.md)
-* [创建基本机器人框架机器人](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-* [将机器人连接到直接连线语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [创建自定义命令（预览版）应用程序](quickstart-custom-speech-commands-create-new.md)
+- [创建基本机器人框架机器人](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [将机器人连接到直接连线语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>调试
 
@@ -47,14 +47,13 @@ ms.locfileid: "73579670"
 
 最新版本的直接连线语音简化了从设备联系机器人的过程。 在 "通道注册" 页上，顶部的下拉箭头会将你的直接线路语音频道注册与语音资源相关联。 关联后，v2.0 Speech SDK 包含一种 `BotFrameworkConfig::FromSubscription` 工厂方法，该方法将配置 `DialogServiceConnector`，以联系与订阅关联的机器人。
 
-如果仍要将客户端应用程序从版本1.7 升级到5v，`DialogServiceConfig::FromBotSecret` 可能会继续使用其通道机密参数的非空、非 null 值（例如，使用的上一个机密）。 使用与较新的频道注册相关联的语音订阅时，将直接忽略此功能。 请注意，该值*必须*为非 null 和非空，因为在服务端关联之前，将在设备上检查这些值。
-
+如果仍要将客户端应用程序从版本1.7 升级到5v，`DialogServiceConfig::FromBotSecret` 可能会继续使用其通道机密参数的非空、非 null 值（例如，使用的上一个机密）。 使用与较新的频道注册相关联的语音订阅时，将直接忽略此功能。 请注意，该值_必须_为非 null 和非空，因为在服务端关联之前，将在设备上检查这些值。
 
 有关更详细的指南，请参阅[教程部分](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel)，该部分介绍了渠道注册。
 
 **问：在连接时收到401错误，无任何工作。我知道我的语音订阅密钥有效。这是怎么回事？**
 
-**答：** 在 Azure 门户上管理你的订阅时，请确保使用**语音**资源（CognitiveServicesSpeechServices、"语音"）而*不*是**认知服务**资源（CognitiveServicesAllInOne "所有认知服务"）。 另外，请查看[语音助手的语音服务区域支持](regions.md#voice-assistants)。
+**答：** 在 Azure 门户上管理你的订阅时，请确保使用**语音**资源（CognitiveServicesSpeechServices、"语音"）而_不_是**认知服务**资源（CognitiveServicesAllInOne "所有认知服务"）。 另外，请查看[语音助手的语音服务区域支持](regions.md#voice-assistants)。
 
 ![正确订阅直接行语音](media/voice-assistants/faq-supported-subscription.png "兼容的语音订阅示例")
 
@@ -62,8 +61,8 @@ ms.locfileid: "73579670"
 
 **答：** 此错误表示助手和语音助手服务之间存在通信问题。
 
-* 对于自定义命令（预览版），请确保已发布自定义命令（预览版）应用程序
-* 对于直接线路语音，请确保已将[机器人连接到直接线路语音频道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)，并将[流式处理协议支持添加](https://aka.ms/botframework/addstreamingprotocolsupport)到机器人（带有相关的 Web 套接字支持），然后检查机器人是否响应传入的请求通道。
+- 对于自定义命令（预览版），请确保已发布自定义命令（预览版）应用程序
+- 对于直接线路语音，请确保已将[机器人连接到直接线路语音频道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)，并将[流式处理协议支持添加](https://aka.ms/botframework/addstreamingprotocolsupport)到机器人（带有相关的 Web 套接字支持），然后检查机器人是否响应传入的请求通道。
 
 **问：此代码仍不起作用，并且/或者在使用 `DialogServiceConnector`时，我收到了不同的错误。我该怎么办？**
 
@@ -71,5 +70,5 @@ ms.locfileid: "73579670"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [故障排除](troubleshooting.md)
-* [发行说明](releasenotes.md)
+- [故障排除](troubleshooting.md)
+- [发行说明](releasenotes.md)

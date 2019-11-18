@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Key Vault 中使用客户托管密钥进行静态加密（预览版）
+title: 使用客户托管密钥进行静态加密（预览）
 titleSuffix: Azure Cognitive Search
 description: 通过在 Azure Key Vault 中创建和管理的密钥，对 Azure 认知搜索中的索引和同义词映射进行服务器端加密补充。 此功能目前处于公开预览状态。
 manager: nitinme
@@ -8,17 +8,17 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 1521abfa327c69648b38f02d1d6313baa369f304
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 4f78b4b7b38c6e67aa8aebf04e3a8ef0fdbd000f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721750"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112936"
 ---
-# <a name="content-encryption-of-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>使用 Azure Key Vault 中客户托管的密钥对 Azure 认知搜索进行内容加密
+# <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Azure 中的内容的静态加密认知搜索在 Azure Key Vault 中使用客户托管的密钥
 
 > [!IMPORTANT] 
-> 目前提供了公共预览版支持。 提供的预览功能不带服务级别协议，不建议用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-预览版](search-api-preview.md)和[.net SDK 版本 8.0-preview](search-dotnet-sdk-migration-version-9.md)提供此功能。 目前没有门户支持。
+> 目前提供了公共预览版支持。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-预览版](search-api-preview.md)和[.net SDK 版本 8.0-preview](search-dotnet-sdk-migration-version-9.md)提供此功能。 目前没有门户支持。
 
 默认情况下，Azure 认知搜索使用[服务托管密钥](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models)来加密静态用户内容。 可以使用在 Azure Key Vault 中创建和管理的密钥，通过一个附加的加密层来补充默认加密。 本文将会讲解这些步骤。
 
@@ -28,11 +28,11 @@ ms.locfileid: "73721750"
 
 可以使用不同 Key Vault 中的不同密钥。 这意味着，单个搜索服务可以托管多个已加密的索引/同义词映射（可能已使用不同的客户托管密钥加密每个索引/同义词映射），以及未使用客户托管密钥加密的索引/同义词映射。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本示例使用以下服务： 
 
-+ [创建 Azure 认知搜索服务](search-create-service-portal.md)或查找当前订阅下[的现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本教程中使用免费服务。
++ [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本教程中使用免费服务。
 
 + [创建 Azure Key Vault 资源](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault)，或者在订阅下找到一个现有的保管库。
 

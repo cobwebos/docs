@@ -4,15 +4,15 @@ description: 介绍 Azure Analysis Services 中表格1200和更高版本数据�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5539d290ea182e24a50a103a762f011202ebf33a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 038773b41d84a7b2b4f845a8bf70e9eed849bc80
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572962"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120017"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -35,7 +35,7 @@ ms.locfileid: "73572962"
 <a name="tab1400a">1</a> - 仅限表格 1400 和更高模型。   
 <a name="azsqlmanaged">2</a> - 支持 Azure SQL 数据库托管实例。 由于托管实例使用专用 IP 地址在 Azure VNet 中运行，因此必须在实例上启用公共终结点。 如果未启用，则需要本地数据网关。    
 <a name="databricks">3</a> - 目前不支持使用 Spark 连接器的 Azure Databricks。   
-<a name="gen2">4</a> - 目前不支持 ADLS Gen2。
+<a name="gen2">4</a> ADLS Gen2 连接器目前不受支持，但 Blob 存储连接器可以与 ADLS Gen2 数据源一起使用。
 
 
 **提供程序**   
@@ -43,16 +43,16 @@ ms.locfileid: "73572962"
 
 ## <a name="other-data-sources"></a>其他数据源
 
-从 Azure AS 服务器连接到本地数据源需要使用本地网关。 使用网关时，需要 64 位提供程序。
+从 Azure Analysis Services 服务器连接到本地数据源需要使用本地网关。 使用网关时，需要 64 位提供程序。
 
 ### <a name="in-memory-and-directquery"></a>内存中和 DirectQuery
 
 |数据源 | 内存中提供程序 | DirectQuery 提供程序 |
 |  --- | --- | --- |
-| SQL Server |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据提供程序 |
-| SQL Server 数据仓库 |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据提供程序 |
+| SQL Server |Microsoft OLE DB Driver for SQL Server MSOLEDBSQL （推荐），SQL Server Native Client 11.0，.NET Framework 用于 SQL Server 的数据提供程序 | 用于 SQL Server 的 .NET Framework 数据提供程序 |
+| SQL Server 数据仓库 |Microsoft OLE DB Driver for SQL Server MSOLEDBSQL （推荐），SQL Server Native Client 11.0，.NET Framework 用于 SQL Server 的数据提供程序 | 用于 SQL Server 的 .NET Framework 数据提供程序 |
 | Oracle | 用于 Oracle 的 OLE DB 提供程序、用于 .NET 的 Oracle 数据提供程序 |用于 .Net 的 Oracle 数据提供程序 |
-| Teradata |用于 Teradata 的 OLE DB 提供程序、用于 .NET 的 Teradata 数据提供程序 |用于 .NET 的 Teradata 数据提供程序 |
+| Teradata |用于 Teradata 的 OLE DB 提供程序、用于 .NET 的 Teradata 数据提供程序 |用于 .Net 的 Teradata 数据提供程序 |
 | | | |
 
 ### <a name="in-memory-only"></a>仅限内存中

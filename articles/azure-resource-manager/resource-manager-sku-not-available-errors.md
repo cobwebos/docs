@@ -1,24 +1,14 @@
 ---
-title: Azure SKU 不可用错误 | Microsoft Docs
+title: SKU 不可用错误
 description: 介绍如何在使用 Azure 资源管理器部署资源时排除 "SKU 不可用" 错误。
-services: azure-resource-manager
-documentationcenter: ''
-author: tfitzmac
-manager: timlt
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/19/2018
-ms.author: tomfitz
-ms.openlocfilehash: fca028412052a9a1520e1178f5d182a9987a9a85
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 56afca6b6a59ca08f3fd59c4d9b3ebf12bda415a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390218"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150493"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>解决 SKU 不可用的错误
 

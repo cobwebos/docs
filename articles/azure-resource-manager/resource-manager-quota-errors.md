@@ -1,24 +1,14 @@
 ---
-title: Azure 配额错误 | Microsoft Docs
+title: 配额错误
 description: 介绍如何在 Azure 资源管理器中部署资源时解决资源配额错误。
-services: azure-resource-manager
-documentationcenter: ''
-author: tfitzmac
-manager: timlt
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.author: tomfitz
-ms.openlocfilehash: 201ddf69f9c28b5b3a4197f91768f749152094de
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 8760b027d815dfc70000db5aea534bf10f60b759
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390313"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149435"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>解决资源配额错误
 
@@ -103,9 +93,9 @@ Virtual Machines                             0 10000 Count
 >
 >
 
-1. 选择 **订阅**。
+1. 选择“订阅”。
 
-   ![Subscriptions](./media/resource-manager-quota-errors/subscriptions.png)
+   ![订阅](./media/resource-manager-quota-errors/subscriptions.png)
 
 2. 选择需要增加配额的订阅。
 

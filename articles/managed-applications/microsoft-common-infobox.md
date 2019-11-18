@@ -13,21 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 67ae05c2ec7b36d76e49f26d5765bbc68b952292
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3a72aaaa15b55b2f0fbc0a227c36a4b2f624d43b
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331692"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151327"
 ---
 # <a name="microsoftcommoninfobox-ui-element"></a>Microsoft.Common.InfoBox UI 元素
+
 可添加信息框的控件。 该框包含重要文本或警告，可帮助用户了解他们提供的值。 它还可以链接到详细信息的 URI。
 
 ## <a name="ui-sample"></a>UI 示例
+
 ![Microsoft.Common.InfoBox](./media/managed-application-elements/microsoft.common.infobox.png)
 
 
 ## <a name="schema"></a>架构
+
 ```json
 {
   "name": "text1",
@@ -41,17 +44,18 @@ ms.locfileid: "72331692"
 }
 ```
 
-## <a name="remarks"></a>备注
-
-* 对于 `icon`，请使用“无”、“信息”、“警告”或“错误”。
-* `uri` 属性为可选。
-
 ## <a name="sample-output"></a>示例输出
 
 ```json
 "Nullam eros mi, mollis in sollicitudin non, tincidunt sed enim. Sed et felis metus, rhoncus ornare nibh. Ut at magna leo."
 ```
 
+## <a name="remarks"></a>备注
+
+* 对于 `icon`，请使用“无”、“信息”、“警告”或“错误”。
+* `uri` 属性为可选。
+
 ## <a name="next-steps"></a>后续步骤
+
 * 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。
 * 有关 UI 元素中的公用属性的说明，请参阅 [CreateUiDefinition 元素](create-uidefinition-elements.md)。
