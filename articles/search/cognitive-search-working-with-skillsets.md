@@ -1,5 +1,5 @@
 ---
-title: 使用技能集
+title: 技能组合概念和工作流
 titleSuffix: Azure Cognitive Search
 description: 技能集是在 Azure 认知搜索中创作 AI 扩充管道的位置。 了解有关技能组合组合的重要概念和详细信息。
 manager: nitinme
@@ -8,18 +8,18 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8fa20608f09b4e3006dad685d2fc52bcc9207b5a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: acf7305a46e9fc3d19f96f88cf2e9ab5eacddd7c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890158"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113643"
 ---
-# <a name="working-with-skillsets-in-azure-cognitive-search"></a>在 Azure 认知搜索中使用技能集
+# <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure 认知搜索中的技能组合概念和组合
 
 本文面向需要更深入地了解扩充管道工作方式的开发人员，并假设您对 AI 扩充过程有一个概念了解。 如果你是新的概念，请从开始：
 + [Azure 认知搜索中的 AI 扩充](cognitive-search-concept-intro.md)
-+ [知识 store （预览版）](knowledge-store-concept-intro.md)
++ [知识存储（预览版）](knowledge-store-concept-intro.md)
 
 ## <a name="specify-the-skillset"></a>指定技能集
 技能组合是 Azure 认知搜索中可重复使用的资源，它指定在索引期间用于分析、转换和浓缩文本或图像内容的认知技能的集合。 通过创建技能集，可以在数据引入阶段附加文本和图像扩充，并从原始内容提取和创建新的信息与结构。
@@ -37,7 +37,7 @@ ms.locfileid: "73890158"
 ### <a name="enrichment-tree"></a>扩充树
 
 为了构想技能集如何逐步扩充文档，让我们先从文档在扩充之前的外观着手。 文档破解的输出取决于数据源以及所选的特定分析模式。 这也是在将数据添加到搜索索引时，[字段映射](search-indexer-field-mappings.md)可从中探寻内容来源的文档的状态。
-![管道关系图中的知识存储](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "K管道关系图中的 nowledge 存储区 ")
+![管道中的知识存储示意图](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "K管道关系图中的 nowledge 存储区 ")
 
 将文档放入扩充管道后，它将表示为内容和关联扩充内容的树。 此树实例化为文档破解的输出。 扩充管道可以使用扩充树格式将元数据附加到平整基元数据类型。扩充树格式不是有效的 JSON 对象，但可以投影为有效的 JSON 格式。 下表显示了进入扩充管道的文档的状态：
 

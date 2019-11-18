@@ -1,5 +1,5 @@
 ---
-title: 为一个服务中的内容隔离建模多租户
+title: 多租户和内容隔离
 titleSuffix: Azure Cognitive Search
 description: 了解使用 Azure 认知搜索时多租户 SaaS 应用程序的常见设计模式。
 manager: nitinme
@@ -8,18 +8,18 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0332443997fbc58781f99e3b4e6d9776dd23926b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d37abd1b5d212c3d920cb68b6236029b2112ae24
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793515"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113272"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>多租户 SaaS 应用程序和 Azure 认知搜索的设计模式
 多租户应用程序可以为无法看到或共享任何其他租户数据的任意数量的租户，提供相同服务和功能。 本文档讨论了用 Azure 认知搜索构建的多租户应用程序的租户隔离策略。
 
 ## <a name="azure-cognitive-search-concepts"></a>Azure 认知搜索概念
-作为一种搜索即服务解决方案，Azure 认知搜索允许开发人员将丰富的搜索体验添加到应用程序，而无需管理任何基础结构或成为信息检索的专家。 数据上传到服务，然后存储在云中。 使用对 Azure 认知搜索 API 的简单请求，可以修改和搜索数据。 [此文](https://aka.ms/whatisazsearch)提供了服务概述。 在讨论设计模式之前，请务必了解 Azure 认知搜索中的一些概念。
+作为一种搜索即服务解决方案，Azure 认知搜索允许开发人员将丰富的搜索体验添加到应用程序，而无需管理任何基础结构或成为信息检索的专家。 数据上载到服务，并存储在云中。 使用对 Azure 认知搜索 API 的简单请求，可以修改和搜索数据。 [此文](https://aka.ms/whatisazsearch)提供了服务概述。 在讨论设计模式之前，请务必了解 Azure 认知搜索中的一些概念。
 
 ### <a name="search-services-indexes-fields-and-documents"></a>搜索服务、索引、字段和文档
 使用 Azure 认知搜索时，会订阅*搜索服务*。 将数据上传到 Azure 认知搜索时，它将存储在搜索服务中的*索引*内。 单个服务中可能有大量索引。 若要利用熟悉的数据库概念，搜索服务可以比作一个数据库，而服务中的索引可以比作数据库中的表。
@@ -40,10 +40,10 @@ Azure 认知搜索中有几个不同的[定价层](https://azure.microsoft.com/p
 |  | 基本 | 标准 1 | 标准 2 | 标准 3 | 标准 3 HD |
 | --- | --- | --- | --- | --- | --- |
 | 每个服务的副本数上限 |3 |12 |12 |12 |12 |
-| 每个服务的分区数上限 |第 |12 |12 |12 |3 |
+| 每个服务的分区数上限 |1 |12 |12 |12 |3 |
 | 每个服务的搜索单位数上限（副本*分区） |3 |36 |36 |36 |36（最多 3 个分区） |
-| 每个服务的存储上限 |2GB |300 GB |1.2 TB |2.4 TB |600 GB |
-| 每个分区的存储上限 |2GB |25 GB |100 GB |200 GB |200 GB |
+| 每个服务的存储上限 |2 GB |300 GB |1.2 TB |2.4 TB |600 GB |
+| 每个分区的存储上限 |2 GB |25 GB |100 GB |200 GB |200 GB |
 | 每个服务的索引数上限 |5 |50 |200 |200 |3000（最多 1000 个索引/分区） |
 
 #### <a name="s3-high-density"></a>S3 高密度
@@ -125,7 +125,7 @@ Azure 认知搜索允许对单个索引和索引总数进行缩放。 如果选�
 > 
 
 ## <a name="next-steps"></a>后续步骤
-对于许多应用程序而言，Azure 认知搜索是一种极具吸引力的选择。 为多租户应用程序评估各种设计模式时，请考虑[各种定价层](https://azure.microsoft.com/pricing/details/search/)和各自的[服务限制](search-limits-quotas-capacity.md)，以便最佳地定制 Azure 认知搜索以适应所有规模的应用程序工作负荷和体系结构.
+对于许多应用程序而言，Azure 认知搜索是一种极具吸引力的选择。 为多租户应用程序评估各种设计模式时，请考虑[各种定价层](https://azure.microsoft.com/pricing/details/search/)和各自的[服务限制](search-limits-quotas-capacity.md)，以便最佳地定制 Azure 认知搜索以适应所有规模的应用程序工作负荷和体系结构。
 
 可以将有关 Azure 认知搜索和多租户方案的任何问题定向到 azuresearch_contact@microsoft.com。
 

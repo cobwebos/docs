@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: ca9b4b337eed54f02f42cad53d22387eace6b76c
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 4aa9e93831b902ff9f0a0659c650cd2ca123b1a3
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694700"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74124007"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器疑难解答指南
 
-Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。 应用可连接到托管在 Azure、National Clouds 和 Azure Stack 上的存储帐户。
+Microsoft Azure 存储资源管理器是一个独立的应用，使用它可在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。 应用可连接到托管在 Azure、National Clouds 和 Azure Stack 上的存储帐户。
 
 本指南汇总了存储资源管理器中常见问题的解决方法。
 
@@ -29,7 +29,7 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 
 如果你在通过 RBAC 访问存储资源时遇到问题，原因可能是你尚未获得相应的角色。 以下部分介绍了存储资源管理器目前要求提供哪些权限来访问存储资源。 如果你不确定自己是否拥有相应的角色或权限，请联系 Azure 帐户管理员。
 
-#### <a name="read-listget-storage-accounts-permissions-issue"></a>“读取：列出/获取存储帐户”权限问题
+#### <a name="read-listget-storage-accounts-permissions-issue"></a>"读取：列出/获取存储帐户" 权限问题
 
 必须有权列出存储帐户。 若要获取此权限，必须具有“读取者”角色。
 
@@ -58,7 +58,7 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>如果我无法从管理员获取管理层权限，该怎么办？
 
-目前，对于此问题，我们尚未制定 RBAC 相关的解决方法。 一种解决方法是请求一个 SAS URI 并将其[附加到资源](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-sas-uri)。
+目前，对于此问题，我们尚未制定 RBAC 相关的解决方法。 一种解决方法是请求一个 SAS URI 并将其[附加到资源](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)。
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>错误：证书链中的自签名证书（和类似错误）
 
@@ -70,17 +70,17 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 当存储资源管理器看到自签名或不受信任的证书时，无法再判断收到的 HTTPS 消息是否被更改。 如果拥有自签名证书的副本，可通过执行以下步骤，让存储资源管理器信任它：
 
 1. 获取证书的 Base-64 编码 X.509 (.cer) 副本。
-2. 转到“编辑” > “SSL 证书” > “导入证书”，然后使用文件选取器查找、选择和打开 .cer 文件
+2. 转到“编辑” **“SSL 证书”** “导入证书”，然后使用文件选取器查找、选择和打开 .cer 文件 >  > 
 
 此问题还有可能是由于存在多个证书（根证书和中间证书）造成的。 若要修复此错误，必须同时添加这两个证书。
 
 如果你不确定该证书来源于何处，可以执行以下步骤来找到它：
 
 1. 安装 OpenSSL。
-    * [Windows](https://slproweb.com/products/Win32OpenSSL.html)：任何精简版本均可。
+    * [Windows](https://slproweb.com/products/Win32OpenSSL.html)：任何光线版本都应该足以满足需要。
     * Mac 和 Linux：应包含在操作系统中。
 2. 运行 OpenSSL。
-    * Windows:打开安装目录，选择“/bin/”，然后双击“openssl.exe”。
+    * Windows：打开安装目录，选择 " **/bin/** "，然后双击 " **openssl**"。
     * Mac 和 Linux：从终端运行 `openssl`。
 3. 运行 `s_client -showcerts -connect microsoft.com:443`。
 4. 查找自签名证书。 如果不确定哪些证书是自签名证书，请记下使用者 `("s:")` 和证书颁发者 `("i:")` 相同的任意位置。
@@ -216,7 +216,7 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 如果看到了帐户密钥，请在 GitHub 上提出问题，使我们能够帮助你解决问题。
 
-## <a name="error-occurred-while-adding-new-connection-typeerror-cannot-read-property-version-of-undefined"></a>添加新连接时出错：TypeError:无法读取未定义的属性 'version'
+## <a name="error-occurred-while-adding-new-connection-typeerror-cannot-read-property-version-of-undefined"></a>添加新连接时出错： TypeError：无法读取未定义的属性 "version"
 
 如果你在尝试添加自定义连接时收到此错误消息，则可能是本地凭据管理器中存储的连接数据已损坏。 若要解决此问题，请尝试删除已损坏的本地连接，然后重新添加它们：
 
@@ -248,7 +248,7 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 1. 在“开始”菜单中，搜索“凭据管理器”并将其打开。
 2. 转到“Windows 凭据”。
-3. 在“一般凭据”下，找到具有 `<connection_type_key>/<corrupted_connection_name>` 键的条目（例如 `StorageExplorer_CustomConnections_Accounts_v1/account1`）。
+3. 在“一般凭据”下，找到具有 **键的条目（例如**）。`<connection_type_key>/<corrupted_connection_name>``StorageExplorer_CustomConnections_Accounts_v1/account1`
 4. 删除这些条目并重新添加连接。
 
 # <a name="macostabmacos"></a>[macOS](#tab/macOS)
@@ -279,7 +279,7 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 如果意外附加了无效的 SAS URL，并且现在无法分离，请执行以下步骤：
 
 1. 运行存储资源管理器时，按 F12 打开“开发人员工具”窗口。
-2. 在“应用程序”选项卡上，选择左侧树中的“本地存储” > “file://”。
+2. 在“应用程序”选项卡上，选择左侧树中的“本地存储” **“file://”。**  > 
 3. 查找与有问题的 SAS URI 服务类型关联的键。 例如，如果用于 blob 容器的 SAS URI 错误，请查找名为 `StorageExplorer_AddStorageServiceSAS_v1_blob` 的键。
 4. 键的值应为 JSON 数组。 找到与错误 URI 关联的对象，并将其删除。
 5. 按 Ctrl+R 重新加载存储资源管理器。
@@ -313,7 +313,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 1. 下载存储资源管理器。
 2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current)。
-3. 运行下面的命令：
+3. 运行以下命令：
    ```bash
    sudo apt-get install libgconf-2-4 libgnome-keyring0
    ```
@@ -322,7 +322,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 1. 下载存储资源管理器。
 2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current)。
-3. 运行下面的命令：
+3. 运行以下命令：
    ```bash
    sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
    ```
@@ -331,7 +331,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 1. 下载存储资源管理器。
 2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current)。
-3. 运行下面的命令：
+3. 运行以下命令：
    ```bash
    sudo apt install libgnome-keyring-dev
    ```
@@ -340,7 +340,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 1. 下载存储资源管理器。
 2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current)。
-3. 运行下面的命令：
+3. 运行以下命令：
    ```bash
    sudo apt install libgnome-keyring-dev
    ```

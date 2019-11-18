@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/04/2019
+ms.date: 11/15/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: cd3efbea7b194da54bc1d9bebd1cc77987bd9dea
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b7ae388488de32bb106ae29f975302953cfcb2e9
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072355"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123024"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>适用于合作伙伴的 Azure 成本管理入门
 
-对于已载入客户到 Microsoft 客户协议并已购买 Azure 计划的合作伙伴，azure 成本管理是本机可用的。 本文介绍合作伙伴如何使用[Azure 成本管理](https://docs.microsoft.com/azure/cost-management/)功能。 还介绍了合作伙伴如何为其客户实现成本管理访问权限。 客户可在其 CSP 合作伙伴启用后使用成本管理功能。
+对于已载入客户到 Microsoft 客户协议并已[购买 Azure 计划](/partner-center/purchase-azure-plan)的合作伙伴，Azure 成本管理是本机可用的。 本文介绍合作伙伴如何使用[Azure 成本管理](index.yml)功能在 azure 计划中查看订阅成本。 还介绍了合作伙伴如何为其客户实现成本管理访问权限。 客户可在其 CSP 合作伙伴启用后使用成本管理功能。
 
 CSP 合作伙伴使用成本管理来：
 
@@ -147,25 +147,81 @@ RBAC 范围内的预留实例的分期查看和实际成本显示零收费。 �
 
 ## <a name="analyze-costs-in-cost-analysis"></a>分析成本分析中的成本
 
-合作伙伴可以探索和分析客户对于特定客户或发票的成本分析成本。
+合作伙伴可以探索和分析客户对于特定客户或发票的成本分析成本。 在 "[成本分析](quick-acm-cost-analysis.md)" 视图中，还可以[保存视图](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)并将数据导出到[CSV 和 PNG 文件](quick-acm-cost-analysis.md#automation-and-offline-analysis)。
 
-使用情况详细信息文件和成本管理 Api 中有以下字段。 您可以使用 "筛选和分组依据" 成本分析中的功能来按多个字段分析成本。 若要查看字段的完整列表，请参阅[成本管理数据字段](understand-cost-mgt-data.md#cost-management-data-fields)。
+您可以使用 "筛选和分组依据" 成本分析中的功能来按多个字段分析成本。 下一节将显示特定于合作伙伴的字段。
 
-| 字段名称 | 说明 |
-| --- | --- |
-| CustomerTenantID | 客户&#39;订阅的 Azure Active Directory 租户的标识符。 |
-| CustomerName | 客户&#39;订阅的 Azure Active Directory 租户的名称。 |
-| CustomerTenantDomainName | 客户&#39;订阅的 Azure Active Directory 租户的域名。 |
-| PartnerTenantID | 合作伙伴&#39;Azure Active Directory 租户的标识符。 |
-| PartnerName | Azure Active Directory 租户的合作伙伴的名称。 |
-| ResellerMPNID | 与订阅关联的分销商的 MPNID。 |
-| costinUSD | 以 USD 为单位的估计 ExtendedCost 或混合成本。 |
-| paygCostInBillingCurrency | 如果定价价格为零售价格，则显示成本。 以计费币种显示即用即付价格。 仅在 RBAC 范围内可用。 |
-| paygCostInUSD | 如果定价价格为零售价格，则显示成本。 显示即用即付价格（美元）。 仅在 RBAC 范围内可用。 |
-| partnerEarnedCreditRate | 基于合作伙伴管理员链接访问权限的合作伙伴获得的信用额度（PEC）时应用的折扣率。 |
-| partnerEarnedCreditApplied | 指示是否已应用合作伙伴获得的信用额度。 |
+## <a name="data-fields"></a>数据字段
 
-在 "[成本分析](quick-acm-cost-analysis.md)" 视图中，还可以[保存视图](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)并将数据导出到[CSV 和 PNG 文件](quick-acm-cost-analysis.md#automation-and-offline-analysis)。
+在使用情况详细信息文件和成本管理 Api 中可以找到以下数据字段。 在可用的情况下，会显示合作伙伴中心的等效信息。 对于下面的加粗字段，合作伙伴可以使用筛选器并分组按成本分析中的功能来按多个字段对成本进行分析。 粗体字段仅适用于合作伙伴支持的 Microsoft 客户协议。
+
+| **字段名称** | **说明** | **合作伙伴中心等效项** |
+| --- | --- | --- |
+| invoiceId | 发票上显示的特定交易记录的发票 ID。 | 显示交易记录的发票号。 |
+| previousInvoiceID | 引用原始发票时有退款（负成本）。 只有退款时才填充。 | 不适用 |
+| billingAccountName | 表示合作伙伴的计费帐户的名称。 它在已载入 Microsoft 客户协议的客户和已进行授权购买的 CSP 客户（如 SaaS、Azure Marketplace 和预订）中，向客户收取费用。 | 不适用 |
+| billingAccountID | 表示合作伙伴的计费帐户的标识符。 | MCAPI 合作伙伴 Commerce 根 ID。 用于请求，但不包括在响应中。|
+| billingProfileID | 计费配置文件的标识符，它在载入到 Microsoft 客户协议的客户和已进行权利购买的 CSP 客户（如 SaaS、Azure Marketplace 和预订. | MCAPI 合作伙伴计费组 ID。 用于请求，但不包括在响应中。 |
+| billingProfileName | 计费配置文件的名称，该配置文件在已载入 Microsoft 客户协议的客户和 CSP 客户（如 SaaS、Azure Marketplace 和）中将成本按单一计费币种分组预订. | 不适用 |
+| invoiceSectionName | 在发票中计费的项目的名称。 不适用于合作伙伴载入的 Microsoft 客户协议。 | 不适用 |
+| invoiceSectionID | 发票中正在进行计费的项目的标识符。 不适用于合作伙伴载入的 Microsoft 客户协议。 | 不适用 |
+| **CustomerTenantID** | 客户订阅的 Azure Active Directory 租户的标识符。 | 客户的组织 ID-客户 Azure Active Directory TenantID。 |
+| **CustomerName** | 客户订阅的 Azure Active Directory 租户的名称。 | 客户的组织名称，如合作伙伴中心中所示。 重要的是要使发票与系统信息进行协调。 |
+| **CustomerTenantDomainName** | 客户订阅的 Azure Active Directory 租户的域名。 | 客户 Azure Active Directory 租户域。 |
+| **PartnerTenantID** | 合作伙伴的 Azure Active Directory 租户的标识符。 | 作为合作伙伴 ID 的合作伙伴 Azure Active Directory 租户 ID，采用 GUID 格式。 |
+| **PartnerName** | Azure Active Directory 租户的合作伙伴的名称。 | 合作伙伴名称。 |
+| **ResellerMPNID** | 与订阅关联的分销商的 MPNID。 | 订阅的 MPN 的经销商 ID。 对当前活动不可用。 |
+| costCenter | 与订阅关联的成本中心。 | 不适用 |
+| billingPeriodStartDate | 计费周期开始日期，如发票中所示。 | 不适用 |
+| billingPeriodEndDate | 计费期间结束日期，如发票中所示。 | 不适用 |
+| servicePeriodStartDate | 评估服务使用情况的评估期的开始日期。 Azure 服务的价格是针对评级周期确定的。 | 合作伙伴中心中的 ChargeStartDate。 计费周期开始日期，除非在以前的计费周期内提供以前 uncharged 的潜在使用情况数据的日期。 该时间始终为0:00 的开始时间。 |
+| servicePeriodEndDate | 评估服务使用情况的时间段的结束日期。 Azure 服务的价格取决于分级期限。 | 不适用 |
+| 日期 | 对于 Azure 消耗数据，它会将 "使用日期" 显示为 "分级"。 对于预订实例，它显示购买日期。 对于定期收费和一次收费（如 Marketplace 和支持），它会显示购买日期。 | 不适用 |
+| productID | 按消耗或购买将计费的产品标识符。 它是 productID 和 SKuID 的连接键，如合作伙伴中心中所示。 | 产品的 ID。 |
+| product | 按消耗或购买将计费的产品的名称，如发票中所示。 | 目录中的产品名称。 |
+| serviceFamily | 显示购买或收费的产品的服务系列。 例如，存储或计算。 | 不适用 |
+| productOrderID | 订阅所属的资产或 Azure 计划名称的标识符。 例如，Azure 计划。 | 不适用 |
+| productOrderName | 订阅所属的 Azure 计划的名称。 例如，Azure 计划。 | 不适用|
+| consumedService | 旧 EA 使用情况详细信息中使用的已使用服务（旧分类）。 | 在合作伙伴中心显示的服务。 例如，"microsoft.operationalinsights"、"microsoft"、"microsoft"。 |
+| meterID | 度量的消耗的计量标识符。 | 已使用计量的 ID。 |
+| meterName | 标识度量消耗的计量的名称。 | 已使用指示器的名称。 |
+| meterCategory | 标识使用的顶级服务。 | 使用的顶级服务。 |
+| meterSubCategory | 定义 Azure 服务的类型或子类别，它们可能会影响速度。 | 可能影响速度的 Azure 服务类型。|
+| meterRegion | 指明某些服务的数据中心的位置，这些服务根据数据中心位置进行定价。 | 用于服务的数据中心的区域位置，其中适用并已填充。 |
+| 订阅 ID | Microsoft 为 Azure 订阅生成的唯一标识符。 | 不适用 |
+| subscriptionName | Azure 订阅的名称。 | 不适用 |
+| 术语 | 显示套餐的有效期限。 例如，预订实例显示预订实例的每年12个月。 对于一次性购买或定期购买，术语针对 SaaS、Azure Marketplace 和支持显示一个月。 不适用于 Azure。 | 不适用 |
+| publisherType （firstParty，thirdPartyReseller，thirdPartyAgency） | 将发布服务器标识为第一方、第三方经销商或第三方代理商的出版商类型。 | 不适用 |
+| partNumber | 未使用的保留实例和 Azure Marketplace 服务的部件号。 | 不适用 |
+| publisherName | 服务发布者的名称，包括 Microsoft 或第三方发布者。 | 产品发布者的名称。|
+| reservationId | 采购预订实例的标识符。 | 不适用 |
+| reservationName | 预订实例的名称。 | 不适用 |
+| reservationOrderId | 预订实例的订单 Id。 | 不适用 |
+| frequency | 预订实例的付款频率。 | 不适用 |
+| resourceGroup | 用于生命周期资源管理的 Azure 资源组的名称。 | 资源组的名称。 |
+| instanceID （或） ResourceID | 资源实例的标识符。 | 显示为包含完整资源属性的 ResourceURI。 |
+| resourceLocation | 资源位置的名称。 | 资源的位置。 |
+| 位置 | 资源的规范化位置。 | 不适用 |
+| effectivePrice | 服务的有效单价（定价货币）。 产品、服务系列、计量和产品/服务的独特之处。 与计费帐户的价目表中的定价一起使用。 如果有分层定价或包含数量，则会显示消耗的混合价格。 | 进行调整后的单位价格。 |
+| 数量 | 购买或消耗的度量数量。 计费期间使用的计量量。 | 单位数。 确保在协调期间它与计费系统中的信息相匹配。 |
+| unitOfMeasure | 指明服务的计价单位。 例如，GB 和小时。 | 指明服务的计价单位。 例如，GB、小时和10，计。 |
+| pricingCurrency | 定义单位价格的货币。 | Pricelist 中的货币。|
+| billingCurrency | 定义计费成本的货币。 | 客户的地理区域的货币。 |
+| chargeType | 定义成本在 Azure 成本管理中代表的费用类型，如购买和退款。 | 费用或调整的类型。 对当前活动不可用。 |
+| costinBillingCurrency | 按计费货币表示的税收之前的 ExtendedCost 或混合成本。 | 不适用 |
+| costinPricingCurrency | 与价格关联的税收之前的 ExtendedCost 或混合成本。 | 不适用 |
+| **costinUSD** | 以 USD 为单位的估计 ExtendedCost 或混合成本。 | 不适用 |
+| **paygCostInBillingCurrency** | 如果定价价格为零售价格，则显示成本。 以计费币种显示即用即付价格。 仅在 RBAC 范围内可用。 | 不适用 |
+| **paygCostInUSD** | 如果定价价格为零售价格，则显示成本。 显示即用即付价格（美元）。 仅在 RBAC 范围内可用。 | 不适用 |
+| exchangeRate | 用于从定价货币转换为计费货币的汇率。 | 在合作伙伴中心中称为 PCToBCExchangeRate。 定价货币与计费货币汇率。|
+| exchangeRateDate | 用于从定价货币转换为计费货币的汇率的日期。 | 在合作伙伴中心中称为 PCToBCExchangeRateDat。 定价货币与计费货币汇率日期。|
+| isAzureCreditEligible | 指示成本是否适合由 Azure 额度支付。 | 不适用 |
+| serviceInfo1 | 旧字段，用于捕获可选的服务特定元数据。 | 内部 Azure 服务元数据。 |
+| serviceInfo2 | 旧字段，用于捕获可选的服务特定元数据。 | 服务信息。 例如，虚拟机的映像类型和 ExpressRoute 的 ISP 名称。|
+| additionalInfo | 服务特定的元数据。 例如，虚拟机的映像类型。 | 其他列中未涵盖的任何其他信息。 服务特定的元数据。 例如，虚拟机的映像类型。|
+| 标记 | 分配给计量器的标记。 使用标记对计费记录进行分组。 例如，可以使用标记按使用测定仪的部门分配费用。 | 客户添加的标记。|
+| **partnerEarnedCreditRate** | 基于合作伙伴管理员链接访问权限的合作伙伴获得的信用额度（PEC）时应用的折扣率。 | 合作伙伴获得的信用额度（PEC）的速率。 例如，0% 或15%。 |
+| **partnerEarnedCreditApplied** | 指示是否已应用合作伙伴获得的信用额度。 | 不适用 |
 
 ## <a name="view-partner-earned-credit-pec-resource-costs"></a>查看合作伙伴获得的信用（PEC）资源成本
 

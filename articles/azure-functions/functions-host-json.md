@@ -7,17 +7,17 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 584fb7b97b8342289d7ca2f23b0479eb1169867a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 222ca8781ae9532f10ed7d113b93eac78c6a3bba
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575891"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129063"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x 的 host.json 参考  
 
 > [!div class="op_single_selector" title1="选择要使用的 Azure Functions 运行时的版本： "]
-> * [版本 1](functions-host-json-v1.md)
+> * [第 1 版](functions-host-json-v1.md)
 > * [第 2 版](functions-host-json.md)
 
 *host.json* 元数据文件包含对函数应用的所有函数产生影响的全局配置选项。 本文列出了可用于 v2 运行时的设置。  
@@ -48,6 +48,10 @@ ms.locfileid: "73575891"
         "queues": {},
         "sendGrid": {},
         "serviceBus": {}
+    },
+    "extensionBundle": {
+        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+        "version": "[1.*, 2.0.0)"
     },
     "functions": [ "QueueProcessor", "GitHubWebHook" ],
     "functionTimeout": "00:05:00",
@@ -113,11 +117,11 @@ ms.locfileid: "73575891"
 
 |属性  |默认 | 说明 |
 |---------|---------|---------| 
-|isEnabled|true|启用或禁用采样。| 
+|isEnabled|是|启用或禁用采样。| 
 |maxTelemetryItemsPerSecond|20|开始采样所要达到的阈值。| 
-|EnableLiveMetrics |true|启用实时指标收集。|
-|EnableDependencyTracking|true|启用依赖项跟踪。|
-|EnablePerformanceCountersCollection|true|启用 Kudu 性能计数器集合。|
+|EnableLiveMetrics |是|启用实时指标收集。|
+|EnableDependencyTracking|是|启用依赖项跟踪。|
+|EnablePerformanceCountersCollection|是|启用 Kudu 性能计数器集合。|
 
 ## <a name="cosmosdb"></a>CosmosDB
 
@@ -134,6 +138,12 @@ ms.locfileid: "73575891"
 ## <a name="extensions"></a>扩展
 
 该属性返回一个对象，其中包含所有特定于绑定的设置，例如 [http](#http) 和 [eventHub](#eventhub)。
+
+## <a name="extensionbundle"></a>extensionBundle 
+
+扩展捆绑允许向函数应用添加一组兼容的函数绑定扩展。 若要了解详细信息，请参阅[用于本地开发的扩展捆绑](functions-bindings-register.md#extension-bundles)。
+
+[!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
 ## <a name="functions"></a>functions
 
@@ -174,7 +184,7 @@ ms.locfileid: "73575891"
 
 |属性  |默认 | 说明 |
 |---------|---------|---------| 
-|已启用|true|指定是否已启用该功能。 | 
+|已启用|是|指定是否启用此功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
 |healthCheckWindow|2 分钟|与 `healthCheckThreshold` 设置结合使用的滑动时间窗口。| 
 |healthCheckThreshold|6|在启动主机回收之前，运行状况检查可以失败的最大次数。| 

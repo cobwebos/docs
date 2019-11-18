@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用参数创建自定义命令（预览）
+title: 快速入门：使用参数创建自定义命令（预览）-语音服务
 titleSuffix: Azure Cognitive Services
 description: 在本文中，你将向自定义命令应用程序添加参数。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 010a9331bb4533bc84957261f312993c4cc7ffe8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: caa1959ec64bb3a123c60763750267b107685b82
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507513"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111252"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>快速入门：使用参数创建自定义命令（预览）
 
@@ -38,7 +38,7 @@ ms.locfileid: "73507513"
    | ------------------ | --------------- | --------------------------------------------------------------------------------------------------------- |
    | 名称               | 麦克风           | 参数的描述性名称                                                                     |
    | 为全局          | 无       | 指示此参数的值是否全局应用于项目中的所有命令的复选框 |
-   | 需要           | checked         | 一个复选框，该复选框指示在完成命令之前是否需要此参数的值          |
+   | 必选           | checked         | 一个复选框，该复选框指示在完成命令之前是否需要此参数的值          |
    | 响应模板  | 启用还是禁用？      | 在未知情况下询问此参数值的提示                                       |
    | 类型               | String          | 参数的类型，例如数字、字符串或日期时间                                               |
    | 配置      | 字符串列表     | 对于字符串，字符串列表将输入限制为一组可能值                                      |
@@ -50,7 +50,7 @@ ms.locfileid: "73507513"
    | ------------------ | ----------------- | --------------------------------------------------------------------------------------------------------- |
    | 名称               | SubjectDevice     | 参数的描述性名称                                                                     |
    | 为全局          | 无         | 指示此参数的值是否全局应用于项目中的所有命令的复选框 |
-   | 需要           | checked           | 一个复选框，该复选框指示在完成命令之前是否需要此参数的值          |
+   | 必选           | checked           | 一个复选框，该复选框指示在完成命令之前是否需要此参数的值          |
    | 响应模板  | 哪个设备？     | 在未知情况下询问此参数值的提示                                       |
    | 类型               | String            | 参数的类型，例如数字、字符串或日期时间                                               |
    | 配置      | 字符串列表       | 对于字符串，字符串列表将输入限制为一组可能值                                      |

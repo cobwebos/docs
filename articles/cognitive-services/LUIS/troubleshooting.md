@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: c7e34b816f33c5286557dfc5d58711128ff68437
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a2472064720af0a25568a2f173b971898b1f2e25
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075881"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123116"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -50,7 +50,7 @@ ms.locfileid: "74075881"
 请参阅[必应拼写检查 API V7](luis-tutorial-bing-spellcheck.md) 教程。 LUIS 强制实施必应拼写检查 API V7 施加的限制。
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>如何以编程方式编辑 LUIS 应用？
-若要以编程方式编辑 LUIS 应用，请使用[创作 API](https://go.microsoft.com/fwlink/?linkid=2092087)。 请参阅[调用 LUIS 创作 API](./luis-quickstart-node-add-utterance.md) 和[使用 Node.js 以编程方式生成 LUIS 应用](./luis-tutorial-node-import-utterances-csv.md)，通过示例了解如何调用创作 API。 创作 API 要求使用[创作密钥](luis-concept-keys.md#azure-resources-for-luis)而不是终结点密钥。 编程创作最多允许每个月进行 1,000,000 次调用，每秒处理五个事务。 若要详细了解可与 LUIS 配合使用的密钥，请参阅[管理密钥](./luis-concept-keys.md)。
+若要以编程方式编辑 LUIS 应用，请使用[创作 API](https://go.microsoft.com/fwlink/?linkid=2092087)。 请参阅[调用 LUIS 创作 API](./get-started-get-model-rest-apis.md) 和[使用 Node.js 以编程方式生成 LUIS 应用](./luis-tutorial-node-import-utterances-csv.md)，通过示例了解如何调用创作 API。 创作 API 要求使用[创作密钥](luis-concept-keys.md#azure-resources-for-luis)而不是终结点密钥。 编程创作最多允许每个月进行 1,000,000 次调用，每秒处理五个事务。 若要详细了解可与 LUIS 配合使用的密钥，请参阅[管理密钥](./luis-concept-keys.md)。
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>提供了正则表达式匹配的“模式”功能位于何处？
 以前的 **“模式”功能**目前已弃用，代之以现在的 **[模式](luis-concept-patterns.md)** 功能。
@@ -90,28 +90,28 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 
 ### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>我收到了一个 HTTP 403 错误状态代码。 如何解决问题？
 
-当你的定价层超出每秒的事务数或每月的事务数时，将获得403和429错误状态代码。 增加定价层，或使用语言理解[容器](luis-container-howto.md)。
+当你超过你所在定价层的每秒事务数或每月事务数时，将收到 403 和 429 错误状态代码。 请提高你的定价层，或者使用语言理解[容器](luis-container-howto.md)。
 
-使用所有这些免费1000终结点查询或超出定价层的每月事务配额时，会收到 HTTP 403 错误状态代码。 
+当你使用了所有这些免费的 1000 个终结点查询或超出定价层的每月事务配额时，将收到 HTTP 403 错误状态代码。 
 
-若要修复此错误，需要[将定价层更改](luis-how-to-azure-subscription.md#change-pricing-tier)为较高的层，或者[创建新资源](get-started-portal-deploy-app.md#create-the-endpoint-resource)并[将其分配给应用](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)。
+若要修复此错误，需要[将定价层更改](luis-how-to-azure-subscription.md#change-pricing-tier)为更高层，或者[创建新资源](get-started-portal-deploy-app.md#create-the-endpoint-resource)并[将其分配给应用](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)。
 
-此错误的解决方案包括：
+此错误的解决方法包括：
 
-* 在[Azure 门户](https://portal.azure.com)的语言理解资源上，在**资源管理-> 定价层**上，将定价层更改为更高的 TPS 层。 如果资源已分配给语言理解应用，则无需在语言理解门户中执行任何操作。
-*  如果你的使用量超过了最高定价层，请在其前面添加更多语言理解资源和负载均衡器。 具有 Kubernetes 或 Docker Compose 的[语言理解容器](luis-container-howto.md)有助于此。
+* 在 [Azure 门户](https://portal.azure.com)中你的语言理解资源的“资源管理”->“定价层”上，将定价层更改为更高的 TPS 层。 如果资源已分配给语言理解应用，则无需在语言理解门户中执行任何操作。
+*  如果使用量超过了最高定价层相应的使用量，请添加更多的语言理解资源，并在这些资源前面放置一个负载均衡器。 带有 Kubernetes 或 Docker Compose 的[“语言理解”容器](luis-container-howto.md)可以帮助解决此问题。
 
 ### <a name="i-received-an-http-429-error-status-code-how-do-i-fix-it"></a>我收到了一个 HTTP 429 错误状态代码。 如何解决问题？
 
-当你的定价层超出每秒的事务数或每月的事务数时，将获得403和429错误状态代码。 增加定价层，或使用语言理解[容器](luis-container-howto.md)。
+当你超过你所在定价层的每秒事务数或每月事务数时，将收到 403 和 429 错误状态代码。 请提高你的定价层，或者使用语言理解[容器](luis-container-howto.md)。
 
-每秒的事务数超过定价层时，将返回此状态代码。  
+当你的每秒事务数超过你的定价层的每秒事务数时，将返回此状态代码。  
 
-解决方案包括：
+解决方法包括：
 
-* 如果你不在最高层，可以[增加定价层](luis-how-to-azure-subscription.md#change-pricing-tier)。
-* 如果你的使用量超过了最高定价层，请在其前面添加更多语言理解资源和负载均衡器。 具有 Kubernetes 或 Docker Compose 的[语言理解容器](luis-container-howto.md)有助于此。
-* 你可以通过在收到此状态代码时自行实现的[重试策略来设置](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines)客户端应用程序请求。 
+* 如果不在最高层，可以[提高定价层](luis-how-to-azure-subscription.md#change-pricing-tier)。
+* 如果使用量超过了最高定价层相应的使用量，请添加更多的语言理解资源，并在这些资源前面放置一个负载均衡器。 带有 Kubernetes 或 Docker Compose 的[“语言理解”容器](luis-container-howto.md)可以帮助解决此问题。
+* 收到此状态代码时，可以使用你自己实现的[重试策略](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines)来限制客户端应用程序请求。 
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>我的终结点查询返回了意外的结果。 我该怎么办？
 

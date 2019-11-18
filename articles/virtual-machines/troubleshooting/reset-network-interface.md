@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: afb8335d3206a76b8f9bc47733e9816126e80af0
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 1c49c6221e9b310a1b14a4e06a296befc7f6da4d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058463"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111723"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>如何为 Azure Windows VM 重置网络接口 
 
@@ -41,11 +41,11 @@ ms.locfileid: "71058463"
     ![网络接口位置](./media/reset-network-interface/select-network-interface-vm.png)
     
 4.  选择“IP 配置”。
-5.  选择该 IP。 
+5.  选择 IP。 
 6.  如果“专用 IP 分配”不是“静态”，则将其更改为“静态”。
 7.  将“IP 地址”更改为子网中可用的其他 IP 地址。
 8. 虚拟机将重新启动以将新的 NIC 初始化到系统。
-9.  尝试通过远程桌面协议连接到计算机。 如果成功，可以根据需要将专用 IP 地址更改回原始 IP 地址。 否则，可以保留它。 
+9.  尝试通过 RDP 连接到计算机。 如果成功，可以根据需要将专用 IP 地址更改回原始 IP 地址。 否则，可以保留它。 
 
 #### <a name="use-azure-powershell"></a>使用 Azure PowerShell
 
@@ -68,9 +68,9 @@ ms.locfileid: "71058463"
     Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
 
     #Add/Change static IP. This process will not change MAC address
-    Get-AzVM -ServiceName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
+    Get-AzVM -ResourceGroupName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
     ```
-3. 尝试通过远程桌面协议连接到计算机。  如果成功，可以根据需要将专用 IP 地址更改回原始 IP 地址。 否则，可以保留它。
+3. 尝试通过 RDP 连接到计算机。  如果成功，可以根据需要将专用 IP 地址更改回原始 IP 地址。 否则，可以保留它。
 
 ### <a name="for-classic-vms"></a>对于经典 VM
 
@@ -84,9 +84,9 @@ ms.locfileid: "71058463"
 4.  选择“IP 地址”。
 5.  如果“专用 IP 分配”不是“静态”，则将其更改为“静态”。
 6.  将“IP 地址”更改为子网中可用的其他 IP 地址。
-7.  选择**保存**。
+7.  选择“保存”。
 8.  虚拟机将重新启动以将新的 NIC 初始化到系统。
-9.  尝试通过远程桌面协议连接到计算机。 如果成功，可以选择将专用 IP 地址重新还原为原始 IP 地址。  
+9.  尝试通过 RDP 连接到计算机。 如果成功，可以选择将专用 IP 地址重新还原为原始 IP 地址。  
 
 #### <a name="use-azure-powershell"></a>使用 Azure PowerShell
 
@@ -109,9 +109,9 @@ ms.locfileid: "71058463"
     Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
     
     #Add/Change static IP. This process will not change MAC address
-    Get-AzureVM -ServiceName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
+    Get-AzureVM -ResourceGroupName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
     ```
-3. 尝试通过远程桌面协议连接到计算机。 如果成功，可以根据需要将专用 IP 地址更改回原始 IP 地址。 否则，可以保留它。 
+3. 尝试通过 RDP 连接到计算机。 如果成功，可以根据需要将专用 IP 地址更改回原始 IP 地址。 否则，可以保留它。 
 
 ## <a name="delete-the-unavailable-nics"></a>删除不可用的 NIC
 通过远程桌面连接到计算机后，必须删除旧的 NIC 以避免出现潜在问题：
@@ -120,7 +120,7 @@ ms.locfileid: "71058463"
 2.  选择“视图” > “显示隐藏的设备”。
 3.  选择“网络适配器”。 
 4.  找到名为“Microsoft Hyper-V 网络适配器”的适配器。
-5.  你会看到灰显的不可用适配器。右键单击该适配器，然后选择“卸载”。
+5.  你可能会看到一个灰显的不可用适配器。右键单击该适配器，然后选择 "卸载"。
 
     ![NIC 图像](media/reset-network-interface/nicpage.png)
 

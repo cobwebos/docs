@@ -1,5 +1,5 @@
 ---
-title: 使用搜索资源管理器工具在 Azure 门户中查询数据
+title: Azure 门户中的搜索资源管理器查询工具
 titleSuffix: Azure Cognitive Search
 description: 搜索资源管理器内置于 Azure 门户中，可用于在 Azure 认知搜索中浏览内容和验证查询。 输入用于术语或短语搜索的字符串，或者为高级语法输入完全限定的搜索表达式。
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0bb50bd50c58b85f1d5de100c34d00d114a9ed77
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ff2986c4e90cb997df250d647bdfbd068d70e51f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792967"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112096"
 ---
 # <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-cognitive-search"></a>使用 Azure 门户中的搜索资源管理器在 Azure 中查询文档认知搜索 
 
@@ -66,7 +66,7 @@ ms.locfileid: "72792967"
 
 ### <a name="example-4---restrict-fields-in-search-results"></a>示例 4 - 限制搜索结果中的字段
 
-添加“$select”将结果限制为显式命名的字段，以便在“搜索资源管理器”中获得可读性更强的输出。 若要保留搜索字符串“$count=true”，请在参数前面加上 &。 
+添加“$select”将结果限制为显式命名的字段，以便在“搜索资源管理器”中获得可读性更强的输出。 若要保留搜索字符串“$count=true”，请在参数前面加上 **&** 。 
 
    ```Input
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true
@@ -90,7 +90,7 @@ Azure 认知搜索根据搜索排名返回前50个匹配项。 若要获取下�
 
 ## <a name="filter-expressions-greater-than-less-than-equal-to"></a>筛选表达式（大于、小于、等于）
 
-如果要指定精确条件搜索，而不是进行自定义文本搜索，请使用“$filter”参数。 此示例搜索大于3的间卧室：
+如果要指定精确条件搜索，而不是进行自定义文本搜索，请使用“$filter”参数。 此示例搜索大于 3 间的卧室：
 
    ```Input
    search=seattle condo&$filter=beds gt 3&$count=true
@@ -102,7 +102,7 @@ Azure 认知搜索根据搜索排名返回前50个匹配项。 若要获取下�
 
 ## <a name="order-by-expressions"></a>Order-by 表达式
 
-添加“$orderby”按搜索分数之外的其他字段对结果进行排序。 可以用来对此进行测试的示例表达式是：
+添加“$orderby”按搜索分数之外的其他字段对结果进行排序。 可用于测试此功能的示例表达式是：
 
    ```Input
    search=seattle condo&$select=listingId,beds,price&$filter=beds gt 3&$count=true&$orderby=price asc

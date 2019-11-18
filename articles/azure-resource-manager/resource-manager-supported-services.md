@@ -1,27 +1,18 @@
 ---
-title: Azure 资源提供程序和资资源类型 | Microsoft Docs
+title: 资源提供程序和资源类型
 description: 介绍支持 Resource Manager 的资源提供程序及其架构和可用 API 版本，以及可托管资源的区域。
-services: azure-resource-manager
-documentationcenter: na
-author: tfitzmac
-ms.assetid: 3c7a6fe4-371a-40da-9ebe-b574f583305b
-ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/29/2019
-ms.author: tomfitz
-ms.openlocfilehash: 2cbc8843d41b760c52b9ca5ccfb6d940bd454136
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 01550adbce51e3498f1167f6a4ebfd846ec316f3
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164819"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149399"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 资源提供程序和类型
 
-部署资源时，经常需要检索有关资源提供程序和类型的信息。 例如, 如果要存储密钥和机密, 请使用 KeyVault 资源提供程序。 此资源提供程序提供名为保管库的资源类型, 用于创建密钥保管库。
+部署资源时，经常需要检索有关资源提供程序和类型的信息。 例如，若要存储密钥和机密，请使用 Microsoft.KeyVault 资源提供程序。 此资源提供程序提供名为“保管库”的资源类型，用于创建密钥保管库。
 
 资源类型的名称采用以下格式：{resource-provider}/{resource-type}。 Key Vault 的资源类型为 **Microsoft.KeyVault/vaults**。
 

@@ -1,19 +1,18 @@
 ---
 title: Azure 应用程序网关的运行状况监视概述
-description: 了解 Azure 应用程序网关中的监视功能
+description: Azure 应用程序网关监视其后端池中所有资源的运行状况，并自动从池中删除任何被视为不正常的资源。
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
-ms.date: 8/6/2018
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: d0c425bcb9961fde9fb319991148c18c6a9ff57b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2938665aa0c0a3df66b6ddcfd1c8c5fbc4598319
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135195"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130679"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>应用程序网关运行状况监视概述
 
@@ -27,9 +26,9 @@ ms.locfileid: "66135195"
 
 ## <a name="default-health-probe"></a>默认的运行状况探测
 
-如果未设置任何自定义探测配置，应用程序网关自动配置默认运行状况探测。 监视行为是向针对后端池配置的 IP 地址发出 HTTP 请求。 对于默认探测，如果后端 http 设置是针对 HTTPS 配置的，则探测也会使用 HTTPS 测试后端的运行状况。
+如果未设置任何自定义探测配置，应用程序网关会自动配置默认运行状况探测。 监视行为是向针对后端池配置的 IP 地址发出 HTTP 请求。 对于默认探测，如果后端 http 设置是针对 HTTPS 配置的，则探测也会使用 HTTPS 测试后端的运行状况。
 
-例如：将应用程序网关配置为使用 A、B 和 C 后端服务器来接收端口 80 上的 HTTP 网络流量。 默认运行状况监视每隔 30 秒对三台服务器进行测试，以获取正常的 HTTP 响应。 正常的 HTTP 响应具有 200 到 399 的[状态代码](https://msdn.microsoft.com/library/aa287675.aspx)。
+例如：将应用程序网关配置为使用 A、B 和 C 后端服务器来接收端口 80 上的 HTTP 网络流量。 默认运行状况监视每隔 30 秒对三台服务器进行测试，以获取正常的 HTTP 响应。 正常的 HTTP 响应的 [状态代码](https://msdn.microsoft.com/library/aa287675.aspx) 在 200 到 399 之间。
 
 如果服务器 A 的默认探测检查失败，应用程序网关会从后端池删除该服务器，并且网络流量不再流向此服务器。 默认探测仍继续每隔 30 秒检查服务器 A。 当服务器 A 成功响应默认运行状况探测发出的请求时，将变为正常状态并重新加回到后端池，而流量也开始再次流向该服务器。
 
@@ -54,12 +53,12 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 ### <a name="default-health-probe-settings"></a>默认的运行状况探测设置
 
-| 探测属性 | 值 | 描述 |
+| 探测属性 | 值 | 说明 |
 | --- | --- | --- |
 | 探测 URL |http://127.0.0.1:\<port\>/ |URL 路径 |
 | 时间间隔 |30 |发送下一个运行状况探测前需要等待的时间（以秒为单位）。|
 | 超时 |30 |将探测标记为不正常前，应用程序网关等待探测响应的时间（以秒为单位）。 如果探测返回为正常，则相应的后端立即被标记为正常。|
-| 不正常阈值 |3 |控制在定期运行状况探测出现故障的情况下要发送的探测数。 快速连续发送这些额外的运行状况探测，以快速确定后端的运行状况，并且无需等待探测时间间隔。 连续探测失败计数达到不正常阈值后，将后端服务器标记为故障。 |
+| 不正常阈值 |3 |控制在定期运行状况探测出现故障的情况下要发送的探测数。 快速连续发送这些额外的运行状况探测，以快速确定后端的运行状况，并且无需等待探测时间间隔。 连续探测失败计数达到不正常阈值后，后端服务器标记为故障。 |
 
 > [!NOTE]
 > 该端口与后端 HTTP 设置的端口相同。
@@ -74,21 +73,21 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 ## <a name="custom-health-probe"></a>自定义的运行状况探测
 
-使用自定义探测可以更精细地控制运行状况监视。 使用自定义探测时，可以配置探测间隔、要测试的 URL 和路径，以及在将后端池实例标记为不正常之前可接受的失败响应次数。
+自定义探测可让你更精细地控制运行状况监视。 使用自定义探测时，可以配置探测间隔、要测试的 URL 和路径，以及在将后端池实例标记为不正常之前可接受的失败响应次数。
 
 ### <a name="custom-health-probe-settings"></a>自定义的运行状况探测设置
 
 下表提供自定义运行状况探测的属性的定义。
 
-| 探测属性 | 描述 |
+| 探测属性 | 说明 |
 | --- | --- |
-| Name |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
-| Protocol |用于发送探测的协议。 探测使用后端 HTTP 设置中定义的协议 |
+| 名称 |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
+| 协议 |用于发送探测的协议。 探测使用后端 HTTP 设置中定义的协议 |
 | 主机 |用于发送探测的主机名。 仅在应用程序网关上配置了多站点的情况下适用，否则使用“127.0.0.1”。 此值与 VM 主机名不同。 |
 | 路径 |探测的相对路径。 有效路径以“/”开头。 |
-| Interval |探测间隔（秒）。 此值是每两次连续探测之间的时间间隔。 |
+| 时间间隔 |探测间隔（秒）。 此值是每两次连续探测之间的时间间隔。 |
 | 超时 |探测超时（秒）。 如果在此超时期间内未收到有效响应，则将探测标记为失败。  |
-| 不正常阈值 |探测重试计数。 连续探测失败计数达到不正常阈值后，将后端服务器标记为故障。 |
+| 不正常阈值 |探测重试计数。 连续探测失败计数达到不正常阈值后，后端服务器标记为故障。 |
 
 > [!IMPORTANT]
 > 如果在应用程序网关中设置了单站点，则默认情况下，除非已在自定义探测中进行配置，否则应将主机名指定为“127.0.0.1”。

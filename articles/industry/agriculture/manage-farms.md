@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c83ac8a42a91c9db06726e917ed142e20995b987
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 929672dceabc7d9b591f05ef3f4f716f2117e09c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797967"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128674"
 ---
 # <a name="manage-farms"></a>管理场
 
@@ -58,7 +58,7 @@ ms.locfileid: "73797967"
 "**服务器场**" 页显示已创建的场的列表。
 
 1.  选择场以查看和编辑场。
-2.  选择 "**编辑场**" 以编辑场信息。 在 "**服务器场详细信息**" 窗口中，可以编辑**名称**、**裁剪**、**地址**和**场边界**字段。
+2.  选择 "**编辑场**" 以编辑场信息。 在 "**服务器场详细信息**" 窗口中，您可以编辑**名称**、**裁剪**、**地址**和定义**场边界**字段。
 
     ![项目场节拍](./media/create-farms/edit-farm-1.png)
 

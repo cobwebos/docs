@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/14/2019
-ms.openlocfilehash: c710e2b7c4376fc1725032c86cd02d9a6c8cafac
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 474c2f4f00374ce785b81fe048e11cb353b3078a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090351"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151200"
 ---
 # <a name="monitor-and-improve-performance"></a>监视和提高性能
 
@@ -27,16 +27,16 @@ Azure SQL 数据库确定数据库中的潜在问题，并通过提供智能优�
 
 | 性能优化选项 | 单一数据库和共用数据库支持 | 实例数据库支持 |
 | :----------------------------- | ----- | ----- |
-| **[性能概述](#performance-overview)** -监视数据库的所有性能活动。 | 是 | 否 | 
-| **[性能建议](#performance-recommendations)** -显示可提高工作负荷性能的性能建议。 | 是 | 否 | 
-| **[Query Performance Insight](#query-performance-insight)** -显示数据库上排名靠前的查询的性能。 | 是 | 否 | 
-| **[自动优化](#automatic-tuning)** -使用 Azure SQL 数据库自动优化数据库性能。 | 是 | 否 | 
+| **性能概述**-监视数据库的所有性能活动。 | 是 | 否 | 
+| **性能建议**-显示可提高工作负荷性能的性能建议。 | 是 | 否 | 
+| **Query Performance Insight** -显示数据库上排名靠前的查询的性能。 | 是 | 否 | 
+| **自动优化**-使用 Azure SQL 数据库自动优化数据库性能。 | 是 | 否 | 
 
 ## <a name="performance-overview"></a>性能概述
 
 此视图提供了数据库性能摘要，有助于进行性能优化和故障排除。 
 
-![性能](./media/sql-database-performance/performance.png)
+![Azure SQL Database 性能概述](./media/sql-database-performance/performance-overview-annotated.png)
 
 * “建议”磁贴提供数据库的优化建议明细（如果建议超出 3 条，则将显示前 3 条）。 单击此磁贴可转到 **[性能建议](#performance-recommendations)** 。 
 * “**优化活动**”磁贴提供正在进行的和已完成的数据库优化操作摘要，可快速查看优化活动的历史记录。 单击此磁贴可转到数据库的完整优化历史记录视图。
@@ -51,7 +51,7 @@ Azure SQL 数据库确定数据库中的潜在问题，并通过提供智能优�
 * 数据库中发现架构问题时提供的建议。
 * 查询可从参数化查询中获益时提供的建议。
 
-![性能](./media/sql-database-performance/recommendations.png)
+![适用于 Azure SQL 数据库的性能建议](./media/sql-database-performance/performance-recommendations-annotated.png)
 
 还可找到过去应用的优化操作的完整历史记录。
 
@@ -65,13 +65,17 @@ Azure SQL 数据库确定数据库中的潜在问题，并通过提供智能优�
 * 排名靠前的 CPU 消耗查询，经过优化后可能会改善性能。 
 * 可以向下钻取查询的详细信息。 
 
-  ![性能仪表板](./media/sql-database-query-performance/performance.png)
+  ![查询 Azure SQL 数据库的性能见解](./media/sql-database-performance/query-performance-insights-annotated.png)
 
 在 **[如何使用 Query Performance Insight](sql-database-query-performance.md)** 一文中找到有关此页的详细信息。
 
 ## <a name="automatic-tuning"></a>自动优化
 
-Azure SQL 数据库可以通过应用[性能建议](sql-database-advisor.md)自动优化数据库性能。 若要了解详细信息，请阅读[自动优化文章](sql-database-automatic-tuning.md)。 若要启用它，请阅读[如何启用自动优化](sql-database-automatic-tuning-enable.md)。
+Azure SQL 数据库可以通过应用[性能建议](sql-database-advisor.md)自动优化数据库性能。 若要启用它，请阅读[如何启用自动优化](sql-database-automatic-tuning-enable.md)。
+
+  ![自动优化 Azure SQL 数据库](./media/sql-database-performance/automatic-tuning-annotated.png)
+
+若要了解详细信息，请阅读[自动优化文章](sql-database-automatic-tuning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

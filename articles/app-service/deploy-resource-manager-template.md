@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 196aeb69a1948a44afb8170fa5f48d42b978854d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2af3ec61537dc28ab652b669ff46500db19ab307
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070459"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130605"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板部署 Web 应用的指南
 
@@ -46,7 +46,7 @@ ms.locfileid: "70070459"
 **第 3 层**
 * 源代码管理 - 依赖于 Web 应用。
 * MSDeploy 站点扩展 - 依赖于 Web 应用。
-* 以服务器场为目标的 Application Insights 实例 - 依赖于 Web 应用。
+* 针对 web 应用的 Azure 应用程序 Insights 实例-依赖于 web 应用。
 
 **第 4 层**
 * 应用服务证书 - 依赖于存在的源代码管理或 MSDeploy； 若都不存在，则依赖于 Web 应用。

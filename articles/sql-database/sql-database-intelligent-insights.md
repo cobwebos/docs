@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: bd42117b384b9e384d59f9f4298c937135cafd34
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f17c588d28d0904041970eee8e9aa2201f905836
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810181"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151430"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>智能见解：使用 AI 监视数据库性能并对其进行故障排除
 
@@ -55,7 +55,7 @@ Intelligent Insights 可分析数据库性能，方法是比较前一个小时�
 | 受影响的指标 | 导致生成某个见解的指标： <ul><li>查询持续时间增加 [秒]。</li><li>过长等待 [秒]。</li><li>超时的请求 [百分比]。</li><li>出错的请求 [百分比]。</li></ul>|
 | 影响值 | 某个指标测量出的值。 |
 | 受影响的查询和错误代码 | 查询哈希或错误代码。 这些属性可用于轻松关联到受影响的查询。 提供包括查询持续时间增加、等待时间、超时计数或错误代码的指标。 |
-| 检测 | 在数据库中发生事件时确定的检测。 有 15 种检测模式。 有关详细信息，请参阅[使用 Intelligent Insights 解决数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。 |
+| 检测 | 在数据库中发生事件时确定的检测。 有 15 种检测模式。 有关详细信息，请参阅[使用 Intelligent Insights 排查数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。 |
 | 根本原因分析 | 对已识别问题的根本原因分析采用人类可读的格式。 一些见解可能包含可行的性能改进建议。 |
 |||
 
@@ -65,6 +65,17 @@ Intelligent Insights 可分析数据库性能，方法是比较前一个小时�
 >
 
 Intelligent Insights 在发现和排查 SQL 数据库性能问题方面出类拔萃。 若要使用智能见解排查 SQL 数据库和托管实例数据库的性能问题，请参阅[使用智能见解解决 Azure SQL 数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
+
+## <a name="intelligent-insights-options"></a>智能见解选项
+
+可在 Azure SQL 数据库中使用智能见解选项包括：
+
+| 智能见解选项 | 单一数据库和共用数据库支持 | 实例数据库支持 |
+| :----------------------------- | ----- | ----- |
+| **配置智能见解**-配置数据库智能见解分析。 | 是 | 是 | 
+| **将见解流式处理到 Azure SQL Analytics** --流式处理深入了解 Azure SQL 数据库的 Azure SQL Analytics 监视解决方案。 | 是 | 是 | 
+| **将见解流式传输到事件中心**-将见解流式处理到事件中心，以便进行进一步的自定义集成。 | 是 | 是 | 
+| **将见解流式传输到 Azure 存储**-将见解流式传输到 azure 存储，以便进行进一步分析和长期存档。 | 是 | 是 |
 
 ## <a name="configure-intelligent-insights"></a>配置智能见解
 

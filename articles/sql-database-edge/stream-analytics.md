@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 1b6b3f4e4be9d056bc53fac2eb2f1f3fcd768085
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c3ed84e06f693925ed8b484070616e223929e401
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514987"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108745"
 ---
 # <a name="using-sql-database-dac-package-and-stream-analytics-job-with-sql-database-edge"></a>在 SQL 数据库边缘中使用 SQL 数据库 DAC 包和流分析作业
 
@@ -37,7 +37,7 @@ Azure SQL 数据库边缘通过 IoT Edge 模块的模块克隆*的所需属性*�
 |字段 | 说明 |
 |------|-------------|
 | SQLPackage | 包含 SQL 数据库 DAC 包的 * .zip 文件的 Azure Blob 存储 URI。
-| ASAJobInfo | ASA Edge 作业的 Azure Blob 存储 URI。 有关发布 ASA Edge 作业的详细信息，请参阅[为 SQL 数据库边缘发布 Asa edge 作业]()。
+| ASAJobInfo | ASA Edge 作业的 Azure Blob 存储 URI。 有关发布 ASA Edge 作业的详细信息，请参阅[为 SQL 数据库边缘发布 Asa edge 作业](/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge)。
 
 ## <a name="using-sql-database-dac-packages-with-sql-database-edge"></a>结合使用 SQL 数据库 DAC 包和 SQL 数据库边缘
 

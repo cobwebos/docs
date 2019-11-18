@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: 9c8babac8450bdfd170d3d18b338ba3d64383a67
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 238b76040559148c48aa67b99e856a5987b71a7e
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499027"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123156"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>使用必应拼写检查更正拼写错误的字词
 
 在 LUIS 预测表述的分数和实体前，可将 LUIS 应用与[必应拼写检查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) 集成，以更正表述中拼写错误的字词。 
-
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
@@ -32,7 +30,8 @@ ms.locfileid: "73499027"
 
 ![创建免费密钥](./media/luis-tutorial-bing-spellcheck/free-key.png)
 
-<a name"create-subscription-key"></a>
+<a name="create-subscription-key"></a>
+
 ## <a name="create-endpoint-key"></a>创建终结点密钥
 如果免费密钥已过期，请创建一个终结点密钥。
 
@@ -106,4 +105,4 @@ LUIS 中有两个位置需使用该密钥。 第一个位置是[测试面板](lu
 [发布](luis-how-to-publish-app.md)页面包含一个“启用必应拼写检查器”复选框。 这便于创建密钥和了解终结点 URL 的更改。 为更正每个表述中的拼写，则仍必须使用正确的终结点参数。 
 
 > [!div class="nextstepaction"]
-> [详细了解示例陈述](luis-how-to-add-example-utterances.md)
+> [详细了解示例表述](luis-how-to-add-example-utterances.md)

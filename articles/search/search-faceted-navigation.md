@@ -1,19 +1,19 @@
 ---
-title: 如何在类别层次结构中实现分面导航
+title: 添加分面导航类别层次结构
 titleSuffix: Azure Cognitive Search
-description: 将分面导航添加到与 Azure 认知搜索的应用程序（Microsoft Azure 上的云托管搜索服务）。
+description: 在与 Azure 认知搜索集成的搜索应用程序中为自定向筛选添加分面导航。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d10a049f7a4c7da7a75054acd442269adc74b948
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 927f57ae3ca90f5701791022b68c4bf0d91d4e7d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496523"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112082"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>如何在 Azure 中实现分面导航认知搜索
 

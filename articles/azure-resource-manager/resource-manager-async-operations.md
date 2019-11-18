@@ -1,18 +1,15 @@
 ---
-title: 异步操作的状态 - Azure 资源管理器
+title: 异步操作的状态
 description: 介绍如何在 Azure 中跟踪异步操作。 它显示用于获取长时间运行操作的状态的值。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/09/2018
-ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 56d55365a243a9e51e96985ee0035c43404f82f0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 39174010e5d5c71e1b9f09827f92a2c540d98e78
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206302"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149540"
 ---
 # <a name="track-asynchronous-azure-operations"></a>跟踪异步 Azure 操作
 某些 Azure REST 操作以异步方式运行，因为操作无法快速完成。 本文介绍如何通过响应中返回的值跟踪异步操作的状态。  
@@ -39,7 +36,7 @@ ms.locfileid: "67206302"
 
 但是，并非每个异步操作都会返回所有这些值。 例如，可能需要对一个操作计算 Azure-AsyncOperation 标头值，对另一个操作计算 Location 标头值。 
 
-检索这些标头值与检索请求的任何标头值一样。 例如，在 C# 中，可以使用以下代码从名为 `response` 的 `HttpWebResponse` 对象检索标头值：
+检索这些标头值与检索请求的任何标头值一样。 例如，在 C# 中，可以使用以下代码从名为 `HttpWebResponse` 的 `response` 对象检索标头值：
 
 ```cs
 response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
@@ -79,12 +76,12 @@ response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 * 已失败
 * 已取消
 
-所有其他值表示该操作仍在运行。 资源提供程序可以返回自定义的值，用于指示其状态。 例如，当请求已收到且正在运行时，用户会收到“已接受”  。
+所有其他值表示该操作仍在运行。 资源提供程序可以返回自定义的值，用于指示其状态。 例如，当请求已收到且正在运行时，用户会收到“已接受”。
 
 ## <a name="example-requests-and-responses"></a>示例请求和响应
 
 ### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>启动虚拟机（Azure-AsyncOperation 标头出现 202 响应）
-此示例演示如何确定虚拟机的“启动”  操作的状态。 初始请求采用以下格式：
+此示例演示如何确定虚拟机的“启动”操作的状态。 初始请求采用以下格式：
 
 ```HTTP
 POST 
@@ -116,7 +113,7 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 
 ### <a name="deploy-resources-201-with-azure-asyncoperation"></a>部署资源（Azure-AsyncOperation 标头出现 201 响应）
 
-此示例演示将资源部署到 Azure 时，如何确定“部署”  操作的状态。 初始请求采用以下格式：
+此示例演示将资源部署到 Azure 时，如何确定“部署”操作的状态。 初始请求采用以下格式：
 
 ```HTTP
 PUT
@@ -156,7 +153,7 @@ https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{res
 
 ### <a name="create-storage-account-202-with-location-and-retry-after"></a>创建存储帐户（Location 和 Retry-After 标头出现 202 响应）
 
-此示例演示如何确定存储帐户的“创建”  操作的状态。 初始请求采用以下格式：
+此示例演示如何确定存储帐户的“创建”操作的状态。 初始请求采用以下格式：
 
 ```HTTP
 PUT

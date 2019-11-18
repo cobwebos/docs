@@ -1,24 +1,24 @@
 ---
-title: 跨界 Azure 连接的 VPN 网关设置 | Microsoft Docs
-description: 了解 Azure 虚拟网络网关的 VPN 网关设置。
+title: Azure VPN 网关：配置设置
+description: 了解用于 Azure 虚拟网络网关的 VPN 网关设置。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 64a162b9d2f83b4bc703f5912116fd302fcb601c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c72b85bc978191744c55afb73973caa6d3b45db6
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495716"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150943"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>关于 VPN 网关配置设置
 
-VPN 网关是一种虚拟网络网关，可跨公共连接在虚拟网络和本地位置发送加密的流量。 还可使用 VPN 网关跨 Azure 主干网在虚拟网络间发送流量。
+VPN 网关是一种虚拟网络网关，它通过公共连接在虚拟网络和本地位置之间发送加密流量。 还可使用 VPN 网关跨 Azure 主干网在虚拟网络间发送流量。
 
-VPN 网关连接依赖于多个资源配置，其中每个资源包含可配置的设置。 本文的各部分介绍了与在 Resource Manager 部署模型中创建的虚拟网络的 VPN 网关相关的资源和设置。 可在 [关于 VPN 网关](vpn-gateway-about-vpngateways.md)一文中找到每种连接解决方案的介绍和拓扑图。
+VPN 网关连接依赖于多个资源的配置，每个资源都包含可配置的设置。 本文的各部分介绍了与在 Resource Manager 部署模型中创建的虚拟网络的 VPN 网关相关的资源和设置。 可在 [关于 VPN 网关](vpn-gateway-about-vpngateways.md)一文中找到每种连接解决方案的介绍和拓扑图。
 
 本文中的值适用于 VPN 网关（使用 -GatewayType Vpn 的虚拟网络网关）。 本文未涵盖所有网关类型或区域冗余网关。
 
@@ -138,7 +138,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 >[!INCLUDE [vpn-gateway-gwudr-warning.md](../../includes/vpn-gateway-gwudr-warning.md)]
 >
 
-创建网关子网时，请指定子网包含的 IP 地址数。 将网关子网中的 IP 地址分配到网关 VM 和网关服务。 有些配置需要具有比其他配置更多的 IP 地址。 
+创建网关子网时，需指定子网包含的 IP 地址数。 将网关子网中的 IP 地址分配到网关 VM 和网关服务。 有些配置需要具有比其他配置更多的 IP 地址。 
 
 规划网关子网大小时，请参阅你计划创建的配置的相关文档。 例如，ExpressRoute/VPN 网关共存配置所需的网关子网比大多数其他配置要大。 此外，可能需要确保网关子网包含足够多的 IP 地址，以便应对将来可能会添加的配置。 虽然你可以创建小到/29 的网关子网，但如果你有可用的地址空间，则建议你创建/27 或更大（/27、/26 等）的网关子网。 这将适合大多数配置。
 
