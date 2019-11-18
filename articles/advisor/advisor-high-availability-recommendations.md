@@ -3,21 +3,21 @@ title: 使用 Azure 顾问提高应用程序的可用性 | Microsoft Docs
 description: 使用 Azure 顾问提高 Azure 部署的高可用性。
 services: advisor
 documentationcenter: NA
-author: kasparks
-ms.author: kasparks
+author: saket-ms
+ms.author: sagupt
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: d78d8a689b860162a742e85c155205f072a3667c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: dd1b898adf4c4cdff45e05427757d90d5f80bf25
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446776"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145346"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>使用 Azure 顾问提高应用程序的可用性
 
-Azure 顾问可帮助确保并提高业务关键应用程序的连续性。 可以通过顾问仪表板的“高可用性”  选项卡获取顾问的高可用性建议。
+Azure 顾问可帮助确保并提高业务关键应用程序的连续性。 可以通过顾问仪表板的“高可用性”选项卡获取顾问的高可用性建议。
 
 ## <a name="ensure-virtual-machine-fault-tolerance"></a>确保虚拟机容错
 
@@ -28,7 +28,7 @@ Azure 顾问可帮助确保并提高业务关键应用程序的连续性。 可�
 
 ## <a name="ensure-availability-set-fault-tolerance"></a>确保可用性集容错
 
-要为应用程序提供冗余，建议将两个或更多虚拟机组合到一个可用性集中。 顾问标识包含单个虚拟机的可用性集，并建议向其中添加一个或多个虚拟机。 这种配置可以确保在计划内或计划外维护事件期间，至少有一个虚拟机可用，并满足 Azure 虚拟机 SLA 要求。 可以选择创建虚拟机，或将现有的虚拟机添加到可用性集。  
+要为应用程序提供冗余，建议将两个或更多虚拟机组合到一个可用性集中。 顾问标识包含单个虚拟机的可用性集，并建议向其中添加一个或多个虚拟机。 此配置可确保在计划内或计划外维护事件期间，至少有一个虚拟机可用，并满足 Azure 虚拟机 SLA 要求。 你可以选择创建虚拟机或将现有虚拟机添加到可用性集。  
 
 ## <a name="use-managed-disks-to-improve-data-reliability"></a>使用托管磁盘提高数据可靠性
 
@@ -64,44 +64,44 @@ Azure 顾问可帮助确保并提高业务关键应用程序的连续性。 可�
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>配置 VPN 网关为主动-主动以进行连接复原
 
-在主动-主动配置中，VPN 网关的两个实例将建立 S2S VPN 隧道与本地 VPN 设备。 当一个网关实例上发生计划内维护事件或计划外事件时，流量将自动切换到其他活动 IPsec 隧道。 Azure 顾问将识别未配置为主动-主动的 VPN 网关并建议将它们配置为高可用性。
+在主动-主动配置中，VPN 网关的两个实例都将为你的本地 VPN 设备建立 S2S VPN 隧道。 当一个网关实例上发生计划内维护事件或计划外事件时，流量将自动切换到其他活动 IPsec 隧道。 Azure 顾问将识别未配置为主动-主动的 VPN 网关并建议将它们配置为高可用性。
 
 ## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>使用生产 VPN 网关运行生产工作负荷
 
-Azure 顾问将检查任何 VPN 网关的基本 SKU，并建议您改为使用生产 SKU。 基本 SKU 专为开发和测试目的。 生产 Sku 提供更多的隧道、 BGP 支持、 主动-主动配置选项、 自定义 Ipsec/IKE 策略和更高版本稳定性和可用性。
+Azure Advisor 将检查是否为基本 SKU 的任何 VPN 网关，并建议改为使用生产 SKU。 基本 SKU 设计用于开发和测试目的。 生产 Sku 提供更多的隧道、BGP 支持、主动-主动配置选项、自定义 Ipsec/IKE 策略以及更高的稳定性和可用性。
 
 ## <a name="repair-invalid-log-alert-rules"></a>修复无效的日志警报规则
 
-Azure 顾问将检测到具有无效的查询在其条件部分中指定的警报规则。 日志警报规则在 Azure Monitor 中创建，用于按指定时间间隔运行分析查询。 查询结果决定了是否需要触发警报。 随着时间的推移，分析查询可能会因所引用资源、表或命令的变化而变得无效。 顾问建议你先纠正警报规则，以防止获取自动禁用它，并确保在 Azure 中资源的监视范围中的查询。 [了解有关故障排除警报规则的详细信息](https://aka.ms/aa_logalerts_queryrepair)
+Azure 顾问将检测到其条件部分中指定了无效查询的警报规则。 日志警报规则在 Azure Monitor 中创建，用于按指定时间间隔运行分析查询。 查询结果决定了是否需要触发警报。 随着时间的推移，分析查询可能会因所引用资源、表或命令的变化而变得无效。 顾问建议你更正警报规则中的查询，以防止它自动禁用，并确保监视 Azure 中的资源。 [详细了解警报规则疑难解答](https://aka.ms/aa_logalerts_queryrepair)
 
-## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>Cosmos DB 集合上配置一致索引模式
+## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>在 Cosmos DB 集合中配置一致的索引模式
 
-使用延迟索引模式配置的 azure Cosmos DB 容器可能会影响查询结果的新鲜度。 顾问将检测到这种方式配置的容器，并且建议切换到一致的模式。 [了解有关索引 Cosmos DB 中的策略的详细信息](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
+配置了延迟索引模式 Azure Cosmos DB 容器可能会影响查询结果的新鲜度。 顾问将检测以这种方式配置的容器，并建议切换到一致模式。 [在 Cosmos DB 中了解有关索引策略的详细信息](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
 
 ## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>为 Azure Cosmos DB 容器配置分区键
 
-Azure 顾问会标识 Azure Cosmos DB 未分区的集合已接近其预配的存储配额。 它将建议迁移到新集合与分区键定义这些集合，以便它们可以自动进行横向扩展服务。 [了解有关选择分区键的详细信息](https://aka.ms/cosmosdb/choose-partitionkey)
+Azure Advisor 将识别接近其预配存储配额 Azure Cosmos DB 非分区集合。 建议将这些集合迁移到具有分区键定义的新集合，以便服务能够自动向外扩展它们。 [了解有关选择分区键的详细信息](https://aka.ms/cosmosdb/choose-partitionkey)
 
 ## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>将 Azure Cosmos DB .NET SDK 升级到 Nuget 提供的最新版本
 
-Azure 顾问会标识 Azure Cosmos DB 帐户，使用的旧版本的.NET SDK 并建议升级到最新版本从 Nuget 的最新修补程序、 性能改进和新功能。 [了解有关 Cosmos DB.NET SDK 的详细信息](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor 将识别使用旧版本的 .NET SDK Azure Cosmos DB 帐户，并建议从 Nuget 升级到最新版本，以获取最新的修补程序、性能改进和新功能。 [了解有关 Cosmos DB .NET SDK 的详细信息](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>将 Azure Cosmos DB Java SDK 升级到 Maven 提供的最新版本
 
-Azure 顾问会标识 Azure Cosmos DB 帐户，使用的旧版本的 Java SDK 并建议升级到最新版本从 Maven 为最新修补程序、 性能改进和新功能。 [了解有关 Cosmos DB Java SDK 的详细信息](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor 将识别使用旧版本 Java SDK Azure Cosmos DB 帐户，并建议升级到 Maven 的最新版本，以获取最新的修补程序、性能改进和新功能。 [了解有关 Cosmos DB Java SDK 的详细信息](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>将 Azure Cosmos DB Spark 连接器升级到 Maven 提供的最新版本
 
-Azure 顾问会标识 Azure Cosmos DB 帐户，正在使用旧版本的 Cosmos DB Spark 连接器并建议升级到最新版本从 Maven 为最新修补程序、 性能改进和新功能。 [了解有关 Cosmos DB Spark 连接器的详细信息](https://aka.ms/cosmosdb/spark-connector)
+Azure Advisor 将识别使用旧版本的 Cosmos DB Spark 连接器 Azure Cosmos DB 帐户，并建议升级到 Maven 的最新版本，以获取最新的修补程序、性能改进和新功能。 [了解有关 Cosmos DB Spark 连接器的详细信息](https://aka.ms/cosmosdb/spark-connector)
 
 ## <a name="enable-virtual-machine-replication"></a>启用虚拟机复制
-没有启用到另一个区域复制的虚拟机不是能够弹性应对区域性故障。 将虚拟机复制的 Azure 区域服务中断期间减少任何不利的业务影响。 顾问将检测到不具有复制的 Vm 启用和建议，以便在发生中断，您可以快速打开你的虚拟机的远程 Azure 区域中启用复制。 [了解有关虚拟机复制的详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
+未启用到另一个区域的复制的虚拟机不能灵活应对区域性中断。 在 Azure 区域中断期间，复制虚拟机可降低任何不利的业务影响。 Advisor 将检测未启用复制的 Vm，并建议启用复制，以便在发生服务中断时，可以快速地将虚拟机带入远程 Azure 区域。 [了解有关虚拟机复制的详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>如何访问顾问中的高可用性建议
 
 1. 登录 [Azure 门户](https://portal.azure.com)，并打开[顾问](https://aka.ms/azureadvisordashboard)。
 
-2.  在顾问仪表板中，单击“高可用性”选项卡  。
+2.  在顾问仪表板中，单击“高可用性”选项卡。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -111,4 +111,4 @@ Azure 顾问会标识 Azure Cosmos DB 帐户，正在使用旧版本的 Cosmos D
 * [顾问成本建议](advisor-cost-recommendations.md)
 * [顾问性能建议](advisor-performance-recommendations.md)
 * [顾问安全性建议](advisor-security-recommendations.md)
-
+* [顾问操作优秀建议](advisor-operational-excellence-recommendations.md)

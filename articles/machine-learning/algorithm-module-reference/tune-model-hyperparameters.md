@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: fd796297bafeb437b55eca7f38cbd7ae55e19b93
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 834907528e4062de583197cf91e98372b96451d7
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716720"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131225"
 ---
 # <a name="tune-model-hyperparameters"></a>优化模型超参数
 
@@ -69,7 +69,7 @@ ms.locfileid: "73716720"
 
 8.  对于 "**排名**"，请选择要用于对模型进行排名的单个度量值。
 
-    运行参数扫描时，该模块将计算模型类型的所有适用指标，并将其返回到 "**扫描结果**报告" 中。 模块对回归和分类模型使用不同的度量值。
+    运行参数扫描时，该模块将计算该模型类型的所有适用指标，并将其返回到**扫描结果**报告中。 模块对回归和分类模型使用不同的度量值。
 
     但是，所选的度量值决定了模型的排序方式。 只有最顶层的模型（按照所选的指标）将输出为要用于计分的定型模型。
 

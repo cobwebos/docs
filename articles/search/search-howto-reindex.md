@@ -1,5 +1,5 @@
 ---
-title: 重新生成 Azure 认知搜索索引
+title: 重新生成搜索索引
 titleSuffix: Azure Cognitive Search
 description: 在完全重新生成或部分增量索引中添加新元素、更新现有元素或文档，或删除过时文档以刷新 Azure 认知搜索索引。
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1301ee2494aa24720905b9e3e68edce04fb17e72
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b14c153f52e0427e289afeccdfd22d6510e4ace1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466442"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112964"
 ---
-# <a name="how-to-rebuild-an-azure-cognitive-search-index"></a>如何重建 Azure 认知搜索索引
+# <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>如何在 Azure 中重新生成索引认知搜索
 
 本文介绍了如何重建 Azure 认知搜索索引、需要重新生成的环境，以及如何缓解重建对正在进行的查询请求所造成的影响。
 

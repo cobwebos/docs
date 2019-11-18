@@ -1,19 +1,15 @@
 ---
-title: 排查常见的 Azure 部署错误 | Microsoft Docs
+title: 排查常见部署错误
 description: 说明如何解决使用 Azure 资源管理器将资源部署到 Azure 时的常见错误。
 tags: top-support-issue
-author: tfitzmac
-keywords: 部署错误, azure 部署, 部署到 azure
-ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 10/04/2019
-ms.author: tomfitz
-ms.openlocfilehash: bba59d024e253c8d05aa75123be5e3f13699f72e
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 27f3b9db40e00ea0a00e50333fe86248906d8560
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263040"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150649"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure 资源管理器时的常见 Azure 部署错误
 
@@ -157,7 +153,7 @@ New-AzResourceGroupDeployment `
 | ConvertTo-Json
 ```
 
-或者，使用以下命令检查响应内容：
+或者，使用以下信息检查响应内容：
 
 ```powershell
 (Get-AzResourceGroupDeploymentOperation `
@@ -252,6 +248,6 @@ az group deployment operation list \
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要完成故障排除教程，请参阅[教程：对资源管理器模板部署进行故障排除](./resource-manager-tutorial-troubleshoot.md)
+* 若要浏览疑难解答教程，请参阅[教程：排查资源管理器模板部署问题](./resource-manager-tutorial-troubleshoot.md)
 * 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](resource-group-audit.md)。
 * 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](resource-manager-deployment-operations.md)。

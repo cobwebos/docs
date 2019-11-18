@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 11/06/2019
-ms.openlocfilehash: 4e82d52428195797fb5cdc7a54e900fff7d37655
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b25189eb63961056c7966722dccb6857736d0c35
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671444"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123230"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>将现有模型用于 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,7 @@ model = Model.register(model_path = "./models",
                        workspace = ws)
 ```
 
-有关详细信息，请参阅[Model （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py#register-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none-)引用。
+有关详细信息，请参阅[Model （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py#register-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none-)引用。
 
 ```azurecli
 az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
@@ -225,7 +225,7 @@ def predict(text, include_neutral=True):
 
 ## <a name="define-deployment"></a>定义部署
 
-[Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py)包包含用于部署的类。 使用的类确定模型的部署位置。 例如，若要在 Azure Kubernetes Service 上部署为 web 服务，请使用[AksWebService （）](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-)来创建部署配置。
+[Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py)包包含用于部署的类。 使用的类确定模型的部署位置。 例如，若要在 Azure Kubernetes Service 上部署为 web 服务，请使用[Deploy_configuration AksWebService （）](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-)来创建部署配置。
 
 以下 Python 代码定义了本地部署的部署配置。 此配置将模型作为 web 服务部署到你的本地计算机。
 
@@ -238,7 +238,7 @@ from azureml.core.webservice import LocalWebservice
 deployment_config = LocalWebservice.deploy_configuration()
 ```
 
-有关详细信息，请参阅[LocalWebservice. deploy_configuration （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.localwebservice?view=azure-ml-py#deploy-configuration-port-none-)引用。
+有关详细信息，请参阅[Deploy_configuration LocalWebservice （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.localwebservice?view=azure-ml-py#deploy-configuration-port-none-)引用。
 
 CLI 从 YAML 文件加载部署配置：
 
@@ -265,7 +265,7 @@ print(service.state)
 print("scoring URI: " + service.scoring_uri)
 ```
 
-有关详细信息，请参阅[Model （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-)引用。
+有关详细信息，请参阅[Model （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)引用。
 
 若要从 CLI 部署模型，请使用以下命令。 此命令使用存储在 `inferenceConfig.json` 和 `deploymentConfig.json` 文件中的推理和部署配置来部署已注册模型的版本1（`sentiment:1`）：
 

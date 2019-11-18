@@ -7,12 +7,12 @@ ms.date: 06/19/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 278e9ff68fa20a0a99a6447bb4cf7ac7fddbfb7b
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 5cadd0479a6ddc97cc7ee7d9b5aee1bbffba02bb
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249117"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120964"
 ---
 # <a name="networking-limit-increase"></a>网络限制提高
 
@@ -20,11 +20,14 @@ ms.locfileid: "72249117"
 
 可以通过 "**帮助 + 支持**" 边栏选项卡或门户中的 "**使用情况 + 配额**" 边栏选项卡请求增加。
 
+> [!Note]
+> 若要更改公共 IP 前缀的默认大小，请从下拉列表中选择 "最小公共 IP 网际网络前缀长度"。
+
 ## <a name="request-networking-quota-increase-at-subscription-level-using-the-help--support-blade"></a>使用 "**帮助 + 支持**" 边栏选项卡在订阅级别增加请求网络配额
 
 按照下面的说明通过 Azure 的 "帮助 + 支持" 边栏选项卡，在 Azure 门户中创建支持请求。 
 
-1. 从 https://portal.azure.com 中，选择 "**帮助 + 支持**"。
+1. 在 https://portal.azure.com中，选择 "**帮助 + 支持**"。
 
     ![帮助 + 支持](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -63,7 +66,7 @@ ms.locfileid: "72249117"
 
 1. 从 https://portal.azure.com 中选择“订阅”。
 
-    ![Subscriptions](./media/resource-manager-core-quotas-request/subscriptions.png)
+    ![订阅](./media/resource-manager-core-quotas-request/subscriptions.png)
 
 2. 选择需要增加配额的订阅。
 

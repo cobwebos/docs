@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 9c11d4648635e62ebc2e68734e14dd2bdc028a7c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2b600edc4c360a2b2990be34e44bb8fbd1c8f721
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330669"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133176"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>设置实验室来讲授道德攻击类 
 本文介绍如何设置一个侧重于道德攻击辩论方的类。 渗透测试是道德黑客社区使用的一种做法，当某人试图获得对系统或网络的访问权限以证明恶意攻击者可能利用的漏洞时，就会进行渗透测试。 
 
-在道德黑客课程中，学生可以学习抵御漏洞的新式技术。 每个学生都获得一个 Windows Server 主机虚拟机，它包含两个嵌套虚拟机 - 一个是带有 **Metaspoiltable** 映像的虚拟机，另一个是带有 [Kali Linux](https://www.kali.org/) 映像的虚拟机。 Metasploitable 虚拟机用于开发目的，Kali 虚拟机提供对执行取证任务所需的工具的访问。
+在道德黑客课程中，学生可以学习抵御漏洞的新式技术。 每个学生获取一个 Windows Server 主机虚拟机，该虚拟机具有两个嵌套虚拟机–一台虚拟机具有[Metasploitable3](https://github.com/rapid7/metasploitable3)映像，另一台计算机具有[Kali Linux](https://www.kali.org/)映像。 Metasploitable 虚拟机用于开发目的，Kali 虚拟机提供对执行取证任务所需的工具的访问。
 
 本文包含两个主要部分。 第一部分介绍如何创建教室实验室。 第二部分介绍如何创建启用了嵌套虚拟化的模板计算机以及所需的工具和映像。 在这种情况下，计算机上的 Metasploitable 映像和 Kali Linux 映像已启用 Hyper-v 以承载映像。
 
 ## <a name="lab-configuration"></a>实验室配置
-若要设置此实验室，需要一个 Azure 订阅才能开始使用。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 获取 Azure 订阅后，可以在 Azure 实验室服务中创建新的实验室帐户或使用现有帐户。 请参阅以下教程，了解如何创建新的实验室帐户：[设置实验室帐户教程](tutorial-setup-lab-account.md)。
+若要设置此实验室，需要一个 Azure 订阅才能开始使用。 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。 获取 Azure 订阅后，可以在 Azure 实验室服务中创建新的实验室帐户或使用现有帐户。 请参阅以下教程，了解如何创建新的实验室帐户：[设置实验室帐户教程](tutorial-setup-lab-account.md)。
 
 按照[本教程](tutorial-setup-classroom-lab.md)创建新的实验室，然后应用以下设置：
 
@@ -44,13 +44,15 @@ ms.locfileid: "72330669"
 2. 设置[Kali](https://www.kali.org/) Linux 映像。 Kali 是一个 Linux 分发版，其中包含用于渗透测试和安全审核的工具。
 3. 设置 Metasploitable 映像。 在此示例中，将使用[Metasploitable3](https://github.com/rapid7/metasploitable3)图像。 将创建此映像以故意产生安全漏洞。
 
+[实验室服务道德黑客脚本](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/EthicalHacking)中提供了可自动执行上述任务的脚本。
+
 ### <a name="prepare-template-machine-for-nested-virtualization"></a>准备用于嵌套虚拟化的模板计算机
 按照[本文](how-to-enable-nested-virtualization-template-vm.md)中的说明准备模板虚拟机以进行嵌套虚拟化。 
 
 ### <a name="set-up-a-nested-virtual-machine-with-kali-linux-image"></a>使用 Kali Linux 映像设置嵌套虚拟机
 Kali 是一个 Linux 分发版，其中包含用于渗透测试和安全审核的工具。
 
-1. 从[@no__t](https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/)下载映像。  
+1. 从[https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/](https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/)下载映像。  
     1. 下载适用于 Hyper-v 的**Kali Linux hyper-v 64 位**。
     1. 提取7z 文件。  如果还没有 7 zip，请从[https://www.7-zip.org/download.html](https://www.7-zip.org/download.html)下载。 记住提取文件夹的位置，因为稍后需要用到它。
 2. 从 "管理工具" 打开**Hyper-v 管理器**。
@@ -69,26 +71,26 @@ Kali 是一个 Linux 分发版，其中包含用于渗透测试和安全审核�
 
     ![连接网络页](../media/class-type-ethical-hacking/connect-network.png)
 1. 在 "**摘要**" 页上选择 "**完成**"。 等待复制和导入操作完成。 现在，Hyper-v 中会提供 Kali Linux 虚拟机。
-1. 从**Hyper-v 管理器**中，选择 "**操作** -> **启动**"，然后选择 "**操作**"  ->  "**连接**" 以连接到虚拟机。  
+1. 从**Hyper-v 管理器**中，选择 "**操作**" -> **启动**"，然后选择"**操作**" -> "**连接**"以连接到虚拟机。  
 12. 默认用户名是 `root`，密码是 `toor`。 
 
     > [!NOTE]
     > 如果需要解锁图像，请按 CTRL 键并向上拖动鼠标。
 
 ## <a name="set-up-a-nested-vm-with-metasploitable-image"></a>使用 Metasploitable 映像设置嵌套 VM  
-Rapid7 Metasploitable 映像是特意配置了安全漏洞的映像。 将使用此映像来测试和查找问题。 以下说明介绍了如何使用预先创建的 Metasploitable 映像。 但是，如果需要 Metasploitable 映像的更新版本，请参阅[https://github.com/rapid7/metasploitable3](https://github.com/rapid7/metasploitable3)。
+Rapid7 Metasploitable 映像是特意配置了安全漏洞的映像。 将使用此映像来测试和查找问题。 以下说明介绍了如何使用预先创建的 Metasploitable 映像。 但是，如果需要更新版本的 Metasploitable 映像，请参阅[https://github.com/rapid7/metasploitable3](https://github.com/rapid7/metasploitable3)。
 
 1. 导航到 [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html)。 填写表单以下载图像，然后选择 "**提交**" 按钮。
 1. 选择 "**立即下载 Metasploitable** " 按钮。
 1. 下载 zip 文件时，提取 zip 文件，并记住该位置。
 1. 将提取的 vmdk 文件转换为 vhdx 文件，以便可以使用 Hyper-v。 为此，请打开具有管理权限的 PowerShell，导航到 vmdk 文件所在的文件夹，然后按照以下说明进行操作：
-    1. 下载[Microsoft 虚拟机转换器](https://www.microsoft.com/download/details.aspx?id=42497)，并在出现提示时运行 mvmc_setup 文件。
+    1. 下载[Microsoft 虚拟机转换器](https://www.microsoft.com/download/details.aspx?id=42497)，并在出现提示时运行 mvmc_setup .msi 文件。
     1. 导入 PowerShell 模块。  安装模块的默认位置为 C:\Program Files\Microsoft Virtual Machine 转换器 \
 
         ```powershell
         Import-Module 'C:\Program Files\Microsoft Virtual Machine Converter\MvmcCmdlet.psd1'
         ```
-    1. 将 vmdk 转换为可由 Hyper-v 使用的 vhd 文件。 此操作可能需要几分钟的时间。
+    1. 将 vmdk 转换为可由 Hyper-v 使用的 vhd 文件。 此操作可能需要几分钟。
     
         ```powershell
         ConvertTo-MvmcVirtualHardDisk -SourceLiteralPath .\Metasploitable.vmdk -DestinationLiteralPath .\Metasploitable.vhdx -VhdType DynamicHardDisk -VhdFormat vhdx
@@ -96,7 +98,7 @@ Rapid7 Metasploitable 映像是特意配置了安全漏洞的映像。 将使用
     1. 将新创建的 metasploitable 复制到 C:\Users\Public\Documents\Hyper-V\Virtual Hard Disks\。 
 1. 创建新的 Hyper-v 虚拟机。
     1. 打开**Hyper-v 管理器**。
-    1. 选择**操作** -> **New** ->  "**虚拟机**"。
+    1. 选择 "**操作**" -> "**新建** -> "**虚拟机**。
     1. 在**新建虚拟机向导**的 "**开始之前**" 页上，单击 "**下一步**"。
     1. 在 "**指定名称和位置**" 页上，输入**Metasploitable**作为**名称**，然后选择 "**下一步**"。
 
@@ -119,13 +121,13 @@ Rapid7 Metasploitable 映像是特意配置了安全漏洞的映像。 将使用
     1. 在 "**旧版网络适配器**" 页上，选择 " **LabServicesSwitch** " 作为 "**虚拟交换机**" 设置，然后选择 **"确定"** 。 为 "**嵌套虚拟化的准备模板**" 部分中的 hyper-v 准备模板计算机时创建了 LabServicesSwitch。
 
         ![旧版网络适配器页](../media/class-type-ethical-hacking/legacy-network-adapter-page.png)
-    1. Metasploitable 映像现在已可供使用。 从**Hyper-v 管理器**中，选择 "**操作** -> **启动**"，然后选择 "**操作**"  ->  "**连接**" 以连接到虚拟机。  默认用户名为**msfadmin** ，密码为**msfadmin**。 
+    1. Metasploitable 映像现在已可供使用。 从**Hyper-v 管理器**中，选择 "**操作**" -> **启动**"，然后选择"**操作**" -> "**连接**"以连接到虚拟机。  默认用户名为**msfadmin** ，密码为**msfadmin**。 
 
 
 该模板现已更新，并具有符合道德的黑客渗透测试类所需的图像、包含用于执行渗透测试的工具的映像，以及另一个包含安全漏洞的映像。 现在可以将模板映像发布到类。 选择 "模板" 页上的 "**发布**" 按钮，将模板发布到实验室。
   
 
-## <a name="cost"></a>费用  
+## <a name="cost"></a>成本  
 如果要估计此实验室的成本，可以使用以下示例： 
  
 对于具有20个小时的计划类时间和10小时配额（适用于家庭或分配）的25名学生，实验室的价格为： 

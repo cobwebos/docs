@@ -1,34 +1,31 @@
 ---
 title: 将 Azure Vm 移到新的订阅或资源组
-description: 使用 Azure 资源管理器将虚拟机移动到新的资源组或订阅。
-author: tfitzmac
-ms.service: azure-resource-manager
+description: 使用 Azure 资源管理器将虚拟机移到新的资源组或订阅。
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.author: tomfitz
-ms.openlocfilehash: faeba1c0d7342a4c00f19d4cee8d67b8dbde8e6a
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: b03e9618e621216f74cb02828183df7ee6b502ea
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528427"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150932"
 ---
-# <a name="move-guidance-for-virtual-machines"></a>适用于虚拟机的移动指南
+# <a name="move-guidance-for-virtual-machines"></a>针对虚拟机的移动指南
 
-本文介绍目前尚不支持的方案以及将虚拟机与备份一起移动的步骤。
+本文介绍当前不支持的方案以及移动使用备份的虚拟机的步骤。
 
 ## <a name="scenarios-not-supported"></a>不支持的方案
 
 以下方案尚不受支持：
 
 * 可用性区域中的托管磁盘不能移动到其他订阅。
-* 不能移动标准 SKU 负载均衡器或标准 SKU 公共 IP 的虚拟机规模集。
-* 无法跨资源组或订阅移动基于附加了计划的市场资源创建的虚拟机。 取消预配当前订阅中的虚拟机，并在新订阅中再次部署。
+* 无法移动具有标准 SKU 负载均衡器或标准 SKU 公共 IP 的虚拟机规模集。
+* 无法跨资源组或订阅移动基于附加了计划的市场资源创建的虚拟机。 在当前订阅中取消预配虚拟机，并在新的订阅中重新部署虚拟机。
 * 不移动虚拟网络中的所有资源时，无法将现有虚拟网络中的虚拟机移动到新的订阅。
 * 低优先级虚拟机和低优先级虚拟机规模集不能在资源组或订阅之间移动。
 * 可用性集中的虚拟机不能单独移动。
 
-## <a name="virtual-machines-with-azure-backup"></a>具有 Azure 备份的虚拟机
+## <a name="virtual-machines-with-azure-backup"></a>使用 Azure 备份的虚拟机
 
 若要移动使用 Azure 备份配置的虚拟机，请使用以下解决方法：
 

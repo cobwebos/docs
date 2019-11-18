@@ -1,17 +1,14 @@
 ---
-title: Azure 资源管理器模板函数 - 字符串 | Microsoft Docs
+title: 模板函数-字符串
 description: 介绍可在 Azure 资源管理器模板中用来处理字符串的函数。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.author: tomfitz
-ms.openlocfilehash: d5c95e964740978af0db8db233c65adb7eb074f0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: af972bac39890402cf75e83d10806e9a830c1d4a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834340"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149607"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的字符串函数
 
@@ -57,7 +54,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 返回输入字符串的 base64 表示形式。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -122,7 +119,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 将 base64 表示形式转换为 JSON 对象。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -187,7 +184,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 将 base64 表示形式转换为字符串。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -252,7 +249,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 合并多个字符串值并返回串联的字符串，或合并多个数组并返回串联的数组。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -339,7 +336,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 检查数组是否包含某个值、某个对象是否包含某个键，或者某个字符串是否包含某个子字符串。 字符串比较区分大小写。 但在测试某个对象是否包含某个键时，该比较不区分大小写。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -408,11 +405,11 @@ Resource Manager 提供以下用于处理字符串的函数：
 | 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
-| stringFalse | Bool | 错误 |
+| stringFalse | Bool | False |
 | objectTrue | Bool | True |
-| objectFalse | Bool | 错误 |
+| objectFalse | Bool | False |
 | arrayTrue | Bool | True |
-| arrayFalse | Bool | 错误 |
+| arrayFalse | Bool | False |
 
 ## <a name="datauri"></a>dataUri
 
@@ -420,7 +417,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 将值转换为数据 URI。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -475,7 +472,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 将采用数据 URI 格式的值转换为字符串。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -530,7 +527,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 确定数组、对象或字符串是否为空。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -595,7 +592,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 确定某个字符串是否以某个值结尾。 比较不区分大小写。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -650,10 +647,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
-| startsFalse | Bool | 错误 |
+| startsFalse | Bool | False |
 | endsTrue | Bool | True |
 | endsCapTrue | Bool | True |
-| endsFalse | Bool | 错误 |
+| endsFalse | Bool | False |
 
 ## <a name="first"></a>first
 
@@ -661,7 +658,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 返回字符串的第一个字符，或数组的第一个元素。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -713,7 +710,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 基于输入值创建带格式的字符串。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -770,7 +767,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 基于以参数形式提供的值创建一个采用全局唯一标识符格式的值。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -841,7 +838,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 返回字符串中某个值的第一个位置。 比较不区分大小写。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -890,11 +887,11 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 | 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| firstT | Int | 0 |
-| lastT | Int | 3 |
-| firstString | Int | 2 |
-| lastString | Int | 0 |
-| notFound | Int | -1 |
+| firstT | int | 0 |
+| lastT | int | 3 |
+| firstString | int | 2 |
+| lastString | int | 0 |
+| notFound | int | -1 |
 
 ## <a name="last"></a>last
 
@@ -902,7 +899,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 返回字符串的最后一个字符，或数组的最后一个元素。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -954,7 +951,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 返回字符串中某个值的最后一个位置。 比较不区分大小写。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1003,11 +1000,11 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 | 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| firstT | Int | 0 |
-| lastT | Int | 3 |
-| firstString | Int | 2 |
-| lastString | Int | 0 |
-| notFound | Int | -1 |
+| firstT | int | 0 |
+| lastT | int | 3 |
+| firstString | int | 2 |
+| lastString | int | 0 |
+| notFound | int | -1 |
 
 ## <a name="length"></a>length
 
@@ -1015,7 +1012,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 返回字符串中的字符数、数组中的元素数或对象中的根级属性数。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1081,9 +1078,9 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 | 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| arrayLength | Int | 3 |
-| stringLength | Int | 13 |
-| objectLength | Int | 4 |
+| arrayLength | int | 3 |
+| stringLength | int | 13 |
+| objectLength | int | 4 |
 
 ## <a name="newguid"></a>newGuid
 
@@ -1188,7 +1185,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 通过向左侧添加字符直至到达指定的总长度返回右对齐的字符串。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1238,7 +1235,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 返回其中某个字符串的所有实例均替换为另一个字符串的新字符串。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1291,12 +1288,12 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 返回一个字符串，其中包含指定字符数后面的所有字符；或者返回一个数组，其中包含指定元素数后面的所有元素。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |用于跳过的数组或字符串。 |
-| numberToSkip |是 |int |要跳过的元素数或字符数。 如果此值小于或等于 0，则返回值中的所有元素或字符。 如果此值大于数组或字符串的长度，则返回空数组或字符串。 |
+| numberToSkip |是 |int |要跳过的元素或字符数。 如果此值小于或等于 0，则返回值中的所有元素或字符。 如果此值大于数组或字符串的长度，则返回空数组或字符串。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -1359,7 +1356,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 返回包含输入字符串的子字符串的字符串数组，其中的子字符串使用指定的分隔符进行分隔。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1418,7 +1415,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 确定某个字符串是否以某个值开头。 比较不区分大小写。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1473,10 +1470,10 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
-| startsFalse | Bool | 错误 |
+| startsFalse | Bool | False |
 | endsTrue | Bool | True |
 | endsCapTrue | Bool | True |
-| endsFalse | Bool | 错误 |
+| endsFalse | Bool | False |
 
 ## <a name="string"></a>字符串
 
@@ -1484,7 +1481,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 将指定的值转换为字符串。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1555,7 +1552,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 返回从指定的字符位置开始且包含指定数量的字符的子字符串。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1616,7 +1613,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 返回一个字符串，其中包含从字符串开头位置算起的指定数目的字符；或返回一个数组，其中包含从数组开头位置算起的指定数目的元素。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1684,7 +1681,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 将指定的字符串转换为小写。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1735,7 +1732,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 将指定的字符串转换为大写。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1786,7 +1783,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 从指定的字符串中删除所有前导和尾随空白字符。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1832,7 +1829,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 根据作为参数提供的值创建确定性哈希字符串。 
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1910,7 +1907,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 通过组合 baseUri 和 relativeUri 字符串来创建绝对 URI。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1990,7 +1987,7 @@ uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://c
 
 将 URI 编码。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -2045,7 +2042,7 @@ URI 编码值的字符串。
 
 返回 URI 编码值的字符串。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -2100,7 +2097,7 @@ URI 编码值的解码字符串。
 
 以指定的格式返回当前的 (UTC) 日期时间值。 如果未提供格式，则使用 ISO 8601 (yyyyMMddTHHmmssZ) 格式。 **此函数只能在参数的默认值中使用。**
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -2204,7 +2201,7 @@ URI 编码值的解码字符串。
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 有关 Azure Resource Manager 模板中各部分的说明，请参阅[创作 Azure Resource Manager 模板](resource-group-authoring-templates.md)。
+* 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。
 * 要合并多个模板，请参阅[将链接的模板与 Azure 资源管理器配合使用](resource-group-linked-templates.md)。
 * 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](resource-group-create-multiple.md)。
 * 要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](resource-group-template-deploy.md)。

@@ -1,21 +1,21 @@
 ---
-title: 使用 Azure Monitor 日志进行容器实例日志记录
-description: 了解如何将日志从 Azure 容器实例发送到 Azure Monitor 日志。
+title: 容器组的资源日志-Azure 容器实例
+description: 了解如何从 Azure 容器实例中的容器组将资源日志和事件数据发送到 Azure Monitor 日志
 services: container-instances
 author: dlepow
 manager: gwallace
 ms.service: container-instances
-ms.topic: overview
+ms.topic: article
 ms.date: 09/02/2019
 ms.author: danlep
-ms.openlocfilehash: 1c4846414036e86d460d9abe0bd93e785e710395
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
-ms.translationtype: HT
+ms.openlocfilehash: c9b986376884bf1536567d7b5211d93191ec7cc0
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258457"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150171"
 ---
-# <a name="container-instance-logging-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行容器实例日志记录
+# <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>用 Azure Monitor 日志记录容器组和实例
 
 Log Analytics 工作区提供了一个集中的位置，用于存储和查询来自 Azure 资源、本地资源以及其他云中的资源的日志数据。 Azure 容器实例提供内置支持，支持将日志和事件数据发送到 Azure Monitor 日志。
 
@@ -40,8 +40,8 @@ Azure 容器实例需要权限才能向 Log Analytics 工作区发送数据。 �
 若要获取 Log Analytics 工作区 ID 和主密钥，请执行以下操作：
 
 1. 在 Azure 门户中导航到 Log Analytics 工作区
-1. 在“设置”下，选择“高级设置”  
-1. 选择“连接的源”   >   “Windows 服务器”（或“Linux 服务器”  --二者的 ID 和密钥相同）
+1. 在“设置”下，选择“高级设置”
+1. 选择“连接的源” > “Windows 服务器”（或“Linux 服务器”--二者的 ID 和密钥相同）
 1. 记下以下内容：
    * **工作区 ID**
    * **主密钥**
@@ -50,11 +50,11 @@ Azure 容器实例需要权限才能向 Log Analytics 工作区发送数据。 �
 
 有了 Log Analytics 工作区 ID 和主密钥以后，即可创建启用日志记录的容器组。
 
-下面的示例演示了使用单个 [fluentd][fluentd] 容器创建容器组的两种方式：Azure CLI 和带有 YAML 模板的 Azure CLI。 Fluentd 容器在其默认配置中生成多行输出。 由于该输出发送到 Log Analytics 工作区，因此适用于演示如何查看和查询日志。
+下面的示例演示了两种创建具有单个[fluentd][fluentd]容器的容器组的方法： Azure CLI，以及使用 YAML 模板 Azure CLI。 Fluentd 容器在其默认配置中生成多行输出。 由于该输出发送到 Log Analytics 工作区，因此适用于演示如何查看和查询日志。
 
 ### <a name="deploy-with-azure-cli"></a>使用 Azure CLI 进行部署
 
-若要使用 Azure CLI 进行部署，请在 [az container create][az-container-create] 命令中指定 `--log-analytics-workspace` 和 `--log-analytics-workspace-key` 参数。 在运行下面的命令之前，请将两个工作区值替换为在前面的步骤中获得的值（并更新资源组名称）。
+若要使用 Azure CLI 进行部署，请在 `--log-analytics-workspace`az container create`--log-analytics-workspace-key` 命令中指定 [ 和 ][az-container-create] 参数。 在运行下面的命令之前，请将两个工作区值替换为在前面的步骤中获得的值（并更新资源组名称）。
 
 ```azurecli-interactive
 az container create \
@@ -107,11 +107,11 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 部署容器组以后，可能需要等待数分钟（最多 10 分钟），第一个日志条目才会显示在 Azure 门户中。 若要查看 `ContainerInstanceLog_CL` 表中的容器组日志，请执行以下操作：
 
 1. 在 Azure 门户中导航到 Log Analytics 工作区
-1. 在“常规”  下，选择“日志”   
+1. 在“常规”下，选择“日志”  
 1. 键入以下查询：`ContainerInstanceLog_CL | limit 50`
-1. 选择“运行” 
+1. 选择“运行”
 
-此时应看到查询显示了多个结果。 如果起初没有看到任何结果，请等待几分钟，然后选择“运行”按钮，再次执行查询  。 默认情况下会以“表”的形式显示日志条目  。 然后即可展开某一行来查看单个日志条目的内容。
+此时应看到查询显示了多个结果。 如果起初没有看到任何结果，请等待几分钟，然后选择“运行”按钮，再次执行查询。 默认情况下会以“表”的形式显示日志条目。 然后即可展开某一行来查看单个日志条目的内容。
 
 ![Azure 门户中的“日志搜索”结果][log-search-01]
 
@@ -120,11 +120,11 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 还可以在 Azure 门户中查看容器实例的事件。 事件包括实例的创建时间和启动时间。 若要查看 `ContainerEvent_CL` 表中的事件数据，请执行以下操作：
 
 1. 在 Azure 门户中导航到 Log Analytics 工作区
-1. 在“常规”  下，选择“日志”   
+1. 在“常规”下，选择“日志”  
 1. 键入以下查询：`ContainerEvent_CL | limit 50`
-1. 选择“运行” 
+1. 选择“运行”
 
-此时应看到查询显示了多个结果。 如果起初没有看到任何结果，请等待几分钟，然后选择“运行”按钮，再次执行查询  。 默认情况下会以“表”的形式显示条目  。 然后即可展开某一行来查看单个条目的内容。
+此时应看到查询显示了多个结果。 如果起初没有看到任何结果，请等待几分钟，然后选择“运行”按钮，再次执行查询。 默认情况下会以“表”的形式显示条目。 然后即可展开某一行来查看单个条目的内容。
 
 ![Azure 门户中的“事件搜索”结果][log-search-02]
 
@@ -134,7 +134,7 @@ Azure Monitor 日志包含全面的[查询语言][query_lang]，用于从可能�
 
 查询的基本结构是一个源表（在本文中为 `ContainerInstanceLog_CL` 或 `ContainerEvent_CL`），后跟一系列以竖线字符 (`|`) 分隔的运算符。 可以将多个运算符链接起来以优化结果和执行高级函数。
 
-若要查看示例查询结果，请将以下查询粘贴到查询文本框中，然后选择“运行”按钮以执行该查询。  此查询显示其“消息”字段包含“warn”一词的所有日志条目：
+若要查看示例查询结果，请将以下查询粘贴到查询文本框中，然后选择“运行”按钮以执行该查询。 此查询显示其“消息”字段包含“warn”一词的所有日志条目：
 
 ```query
 ContainerInstanceLog_CL

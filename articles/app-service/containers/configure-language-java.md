@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: e63d8f03b26c9039fe4093cf15b13522dbb49af9
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 9625870132d088bf1de6df06f05f0cac41a1e7fa
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081477"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144232"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>为 Azure App Service 配置 Linux Java 应用
 
@@ -363,40 +363,79 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 
 #### <a name="shared-server-level-resources"></a>共享服务器级别资源
 
-1. 如果没有配置，请使用 SSH 将 */usr/local/tomcat/conf*的内容复制到应用服务 Linux 实例上的 */home/tomcat/conf*中。
+添加共享的服务器级数据源将需要你编辑 Tomcat 的服务器 .xml。 首先，上传[启动脚本](app-service-linux-faq.md#built-in-images)，并在**Configuration** > **startup 命令**中设置脚本的路径。 您可以使用[FTP](../deploy-ftp.md)上传启动脚本。
 
-    ```bash
-    mkdir -p /home/tomcat
-    cp -a /usr/local/tomcat/conf /home/tomcat/conf
-    ```
+启动脚本将对服务器 .xml 文件进行[xsl 转换](https://www.w3schools.com/xml/xsl_intro.asp)，并将生成的 xml 文件输出到 `/usr/local/tomcat/conf/server.xml`。 启动脚本应通过 apk 安装 libxslt。 你的 xsl 文件和启动脚本可以通过 FTP 上传。 下面是一个示例启动脚本。
 
-2. 在 `<Server>` 元素内的*服务器 .xml*中添加一个上下文元素。
+```sh
+# Install libxslt. Also copy the transform file to /home/tomcat/conf/
+apk add --update libxslt
 
-    ```xml
-    <Server>
-    ...
-    <Context>
-        <Resource
-            name="jdbc/dbconnection"
-            type="javax.sql.DataSource"
-            url="${dbuser}"
-            driverClassName="<insert your driver class name>"
-            username="${dbpassword}"
-            password="${connURL}"
-        />
-    </Context>
-    ...
-    </Server>
-    ```
+# Usage: xsltproc --output output.xml style.xsl input.xml
+xsltproc --output /usr/local/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /home/tomcat/conf/server.xml
+```
 
-3. 更新应用程序的 *web.xml*，以便在应用程序中使用该数据源。
+下面提供了一个示例 xsl 文件。 示例 xsl 文件将新的连接器节点添加到 Tomcat 服务器。
 
-    ```xml
-    <resource-env-ref>
-        <resource-env-ref-name>jdbc/dbconnection</resource-env-ref-name>
-        <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
-    </resource-env-ref>
-    ```
+```xml
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+
+  <xsl:template match="@* | node()" name="Copy">
+    <xsl:copy>
+      <xsl:apply-templates select="@* | node()"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="@* | node()" mode="insertConnector">
+    <xsl:call-template name="Copy" />
+  </xsl:template>
+
+  <xsl:template match="comment()[not(../Connector[@scheme = 'https']) and
+                                 contains(., '&lt;Connector') and
+                                 (contains(., 'scheme=&quot;https&quot;') or
+                                  contains(., &quot;scheme='https'&quot;))]">
+    <xsl:value-of select="." disable-output-escaping="yes" />
+  </xsl:template>
+
+  <xsl:template match="Service[not(Connector[@scheme = 'https'] or
+                                   comment()[contains(., '&lt;Connector') and
+                                             (contains(., 'scheme=&quot;https&quot;') or
+                                              contains(., &quot;scheme='https'&quot;))]
+                                  )]
+                      ">
+    <xsl:copy>
+      <xsl:apply-templates select="@* | node()" mode="insertConnector" />
+    </xsl:copy>
+  </xsl:template>
+
+  <!-- Add the new connector after the last existing Connnector if there is one -->
+  <xsl:template match="Connector[last()]" mode="insertConnector">
+    <xsl:call-template name="Copy" />
+
+    <xsl:call-template name="AddConnector" />
+  </xsl:template>
+
+  <!-- ... or before the first Engine if there is no existing Connector -->
+  <xsl:template match="Engine[1][not(preceding-sibling::Connector)]"
+                mode="insertConnector">
+    <xsl:call-template name="AddConnector" />
+
+    <xsl:call-template name="Copy" />
+  </xsl:template>
+
+  <xsl:template name="AddConnector">
+    <!-- Add new line -->
+    <xsl:text>&#xa;</xsl:text>
+    <!-- This is the new connector -->
+    <Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true" 
+               maxThreads="150" scheme="https" secure="true" 
+               keystroreFile="${{user.home}}/.keystore" keystorePass="changeit"
+               clientAuth="false" sslProtocol="TLS" />
+  </xsl:template>
+  
+</xsl:stylesheet>
+```
 
 #### <a name="finalize-configuration"></a>完成配置
 

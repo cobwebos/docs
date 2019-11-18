@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: c6d4ef50645902aecd57ceb9fc48b7d99bf22d53
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1f96b42e58bcb09cfc2836c993626a889669fc0
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104846"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151455"
 ---
 # <a name="microsoftstoragestorageaccountselector-ui-element"></a>Microsoft.Storage.StorageAccountSelector UI 元素
+
 一个用于选择新的或现有存储帐户的控件。
 
 ## <a name="ui-sample"></a>UI 示例
@@ -56,12 +57,6 @@ ms.locfileid: "62104846"
 }
 ```
 
-## <a name="remarks"></a>备注
-- 如果指定，则会自动验证 `defaultValue.name` 的唯一性。 如果存储帐户名称不唯一，则用户必须指定一个不同的名称或选择现有存储帐户。
-- `defaultValue.type` 的默认值为 **Premium_LRS**。
-- 将隐藏未在 `constraints.allowedTypes` 中指定的任何类型，会显示未在 `constraints.excludedTypes` 中指定的任何类型。 `constraints.allowedTypes` 和 `constraints.excludedTypes` 都是可选的，并且不能同时使用。
-- 如果 `options.hideExisting` 为 **true**，则用户无法选择现有存储帐户。 默认值为 **false**。
-
 ## <a name="sample-output"></a>示例输出
 
 ```json
@@ -72,6 +67,13 @@ ms.locfileid: "62104846"
   "newOrExisting": "new"
 }
 ```
+
+## <a name="remarks"></a>备注
+
+- 如果指定，则会自动验证 `defaultValue.name` 的唯一性。 如果存储帐户名称不唯一，则用户必须指定一个不同的名称或选择现有存储帐户。
+- `defaultValue.type` 的默认值为 **Premium_LRS**。
+- 将隐藏未在 `constraints.allowedTypes` 中指定的任何类型，会显示未在 `constraints.excludedTypes` 中指定的任何类型。 `constraints.allowedTypes` 和 `constraints.excludedTypes` 都是可选的，并且不能同时使用。
+- 如果 `options.hideExisting` 为 **true**，则用户无法选择现有存储帐户。 默认值为 **false**。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。

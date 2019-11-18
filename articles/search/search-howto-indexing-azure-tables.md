@@ -1,5 +1,5 @@
 ---
-title: 从 Azure 表存储编制内容的索引以进行全文搜索
+title: 搜索 Azure 表存储内容
 titleSuffix: Azure Cognitive Search
 description: 了解如何使用 Azure 认知搜索索引器索引存储在 Azure 表存储中的数据。
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ae99145178fba8e204267546dc1cedf42df412eb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e8f6c0454497b1cb1d62417e566e9662469c56d0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793739"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113000"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>如何通过 Azure 认知搜索索引 Azure 表存储中的表
 
@@ -67,7 +67,7 @@ ms.locfileid: "72793739"
 
 可通过以下一种方式提供表的凭据： 
 
-- **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`可通过导航到“存储帐户”边栏选项卡  > “设置” > “密钥”（对于经典存储帐户）或“设置” > “访问密钥”（对于 Azure 资源管理器存储帐户），从 Azure 门户获取连接字符串。
+- **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`可通过导航到“存储帐户”边栏选项卡 **“设置”** “密钥”（对于经典存储帐户）或“设置” > “访问密钥”（对于 Azure 资源管理器存储帐户），从 Azure 门户获取连接字符串。 >  > 
 - **存储帐户共享访问签名连接字符串：** `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl`共享访问签名应具有容器（本例中为表）和对象（表行）的列出和读取权限。
 -  **表共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r`共享访问签名应具有表的查询（读取）权限。
 
@@ -133,7 +133,7 @@ ms.locfileid: "72793739"
 ## <a name="incremental-indexing-and-deletion-detection"></a>增量索引和删除检测
 当将表索引器设置为按计划运行时，它仅对由行的 `Timestamp` 值确定的新行或更新行重新编制索引。 无需指定更改检测策略。 系统会自动启用增量索引。
 
-若要指示必须从索引中删除某些文档，可使用软删除策略。 不删除行，而是添加一个属性来指示删除行，并对数据源设置软删除检测策略。 例如，如果某行具有值为 `"true"` 的属性 `IsDeleted`，以下策略会将该行视为已删除：
+若要指示必须从索引中删除某些文档，可使用软删除策略。 不删除行，而是添加一个属性来指示删除行，并对数据源设置软删除检测策略。 例如，如果某行具有值为 `IsDeleted` 的属性 `"true"`，以下策略会将该行视为已删除：
 
     PUT https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
@@ -148,7 +148,7 @@ ms.locfileid: "72793739"
     }   
 
 <a name="Performance"></a>
-## <a name="performance-considerations"></a>性能考虑
+## <a name="performance-considerations"></a>性能注意事项
 
 默认情况下，Azure 认知搜索使用以下查询筛选器： "`Timestamp >= HighWaterMarkValue`"。 由于 Azure 表在 `Timestamp` 字段上没有辅助索引，因此该类型的查询需要执行全表扫描，导致大型表查询速度慢。
 

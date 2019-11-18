@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 08/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: 1322b8eb14205ff29e109fae82466270f7507781
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fc47b18dd51bbaa48d950515cccfe618d9e58426
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094023"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132750"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>将大量的任务提交到 Batch 作业
 
@@ -37,7 +37,7 @@ Batch API 提供所需的方法用于高效地将任务作为集合添加到作�
 
     * [REST API](/rest/api/batchservice/task/addcollection)
     * [Python API](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python)
-    * [Node.js API](/javascript/api/azure-batch/task?view=azure-node-latest)
+    * [Node.js API](/javascript/api/@azure/batch/task?view=azure-node-latest)
 
   使用这些 API 时，需要提供逻辑来分割任务数目以符合集合限制，以及在添加任务失败时处理错误并重试。 如果任务集合太大，以致无法添加，则请求会生成错误，并在减少任务后重试。
 
@@ -54,17 +54,17 @@ Batch API 提供所需的方法用于高效地将任务作为集合添加到作�
 
 * **任务大小** - 添加大型任务所需的时间比添加小型任务更长。 若要减小集合中每个任务的大小，可以简化任务命令行、减少环境变量的数目，或者更有效地处理任务执行要求。 例如，不要使用大量的资源文件，而是使用池中的[启动任务](batch-api-basics.md#start-task)来安装任务依赖项，或使用[应用程序包](batch-application-packages.md)或 [Docker 容器](batch-docker-container-workloads.md)。
 
-* **并行操作数目** - 根据具体的 Batch API，通过增加 Batch 客户端的最大并发操作数目来提高吞吐量。 在 .NET API 中使用 [BatchClientParallelOptions.MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) 属性，或者在 Batch Python SDK 扩展中使用 [TaskOperations.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) 等方法的 `threads` 参数来配置此项设置。 （此属性在本机 Batch Python SDK 中不可用。）此属性默认设置为 1，但将其设置为更大的值可提高操作吞吐量。 提高吞吐量的代价是会消耗网络带宽，并在一定程度上降低 CPU 的性能。 最高可按 `MaxDegreeOfParallelism` 或 `threads` 的 100 倍提高任务吞吐量。 在实践中，应将并发操作数目设置为 100 以下。 
+* **并行操作数目** - 根据具体的 Batch API，通过增加 Batch 客户端的最大并发操作数目来提高吞吐量。 在 .NET API 中使用 [BatchClientParallelOptions.MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) 属性，或者在 Batch Python SDK 扩展中使用 `threads`TaskOperations.add_collection[ 等方法的 ](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) 参数来配置此项设置。 （此属性在本机 Batch Python SDK 中不可用。）默认情况下，此属性设置为1，但将其设置得更高以提高操作的吞吐量。 提高吞吐量的代价是会消耗网络带宽，并在一定程度上降低 CPU 的性能。 最高可按 `MaxDegreeOfParallelism` 或 `threads` 的 100 倍提高任务吞吐量。 在实践中，应将并发操作数目设置为 100 以下。 
  
   包含 Batch 模板的 Azure Batch CLI 扩展会根据可用核心数自动增加并发操作数目，但无法在 CLI 中配置此属性。 
 
 * **HTTP 连接限制** - 当 Batch 客户端添加大量的任务时，并发 HTTP 连接数可能会限制该客户端的性能。 可以使用某些 API 限制 HTTP 连接数。 例如，使用 .NET API 进行开发时，[ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) 属性默认设置为 2。 我们建议将该值增大到接近或大于并行操作数目。
 
-## <a name="example-batch-net"></a>例如：批处理 .NET
+## <a name="example-batch-net"></a>示例：Batch .NET
 
 以下 C# 代码片段演示了在使用 Batch .NET API 添加大量任务时要配置的设置。
 
-若要提高任务吞吐量，请增大 [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient?view=azure-dotnet) 的 [MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) 属性值。 例如：
+若要提高任务吞吐量，请增大 [BatchClient](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) 的 [MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclient?view=azure-dotnet) 属性值。 例如：
 
 ```csharp
 BatchClientParallelOptions parallelOptions = new BatchClientParallelOptions()
@@ -84,7 +84,7 @@ await batchClient.JobOperations.AddTaskAsync(jobId, tasksToAdd, parallelOptions)
 ```
 
 
-## <a name="example-batch-cli-extension"></a>例如：Batch CLI 扩展
+## <a name="example-batch-cli-extension"></a>示例：Batch CLI 扩展
 
 使用包含 [Batch CLI 模板](batch-cli-templates.md)的 Azure Batch CLI 扩展，创建包含[任务工厂](https://github.com/Azure/azure-batch-cli-extensions/blob/master/doc/taskFactories.md)的作业模板 JSON 文件。 任务工厂为单个任务定义中的某个作业配置相关任务的集合。  
 
@@ -127,7 +127,7 @@ await batchClient.JobOperations.AddTaskAsync(jobId, tasksToAdd, parallelOptions)
 ```
 若要使用模板运行作业，请参阅[使用 Azure Batch CLI 模板和文件传输](batch-cli-templates.md)。
 
-## <a name="example-batch-python-sdk-extension"></a>例如：Batch Python SDK 扩展
+## <a name="example-batch-python-sdk-extension"></a>示例：Batch Python SDK 扩展
 
 若要使用 Azure Batch Python SDK 扩展，请先安装 Python SDK 和扩展：
 

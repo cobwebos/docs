@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 05/21/2019
-ms.openlocfilehash: d51acaff89c2a8589b6b524c112c11f9c4f18220
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/15/2019
+ms.openlocfilehash: ab3667d79827e9548338b5beda00c9992f100deb
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821775"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132419"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录
 
@@ -51,7 +51,7 @@ ms.locfileid: "73821775"
 
 - Azure SQL 分析
 - Azure 事件中心
-- Azure 存储
+- Azure 存储空间
 
 可预配新的 Azure 资源或选择现有资源。 使用“诊断设置”选项选择资源之后，指定要收集的数据。
 
@@ -64,6 +64,7 @@ ms.locfileid: "73821775"
 | 数据库的监视遥测 | 单一数据库和共用数据库支持 | 实例数据库支持 |
 | :------------------- | ----- | ----- |
 | [基本指标](#basic-metrics)：包含 DTU/cpu 百分比、DTU/cpu 限制、物理数据读取百分比、日志写入百分比、成功/失败/阻止的防火墙连接、会话百分比、辅助角色百分比、存储、存储百分比和 XTP存储百分比。 | 是 | 否 |
+| [实例和应用高级](#advanced-metrics)：包含 tempdb 系统数据库数据、日志文件大小和使用的 tempdb 百分比日志文件。 | 是 | 否 |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics)：包含有关查询运行时统计信息（如 CPU 使用率和查询持续时间统计）的信息。 | 是 | 是 |
 | [QueryStoreWaitStatistics](#query-store-wait-statistics)：包含有关查询等待统计信息（查询的等待统计信息）的信息，例如 CPU、日志和锁定。 | 是 | 是 |
 | [错误](#errors-dataset)：包含有关数据库上的 SQL 错误的信息。 | 是 | 是 |
@@ -75,14 +76,14 @@ ms.locfileid: "73821775"
 | [SQLInsights](#intelligent-insights-dataset)：包含数据库的性能智能见解。 有关详细信息，请参阅[智能见解](sql-database-intelligent-insights.md)。 | 是 | 是 |
 
 > [!IMPORTANT]
-> 弹性池和托管实例具有其自己所包含的数据库的单独诊断遥测。 这是必须注意的，因为诊断遥测数据是为每个这样的资源单独配置的，如下所述。
+> 弹性池和托管实例具有自己单独的诊断遥测数据（独立于它们包含的数据库）。 这是必须注意的，因为诊断遥测数据是为每个这样的资源单独配置的，如下所述。
 
 > [!NOTE]
 > 无法从数据库诊断设置启用安全审核和 SQLSecurityAuditEvents 日志（虽然显示在屏幕上）。 若要启用审核日志流式处理，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)和[审核日志 Azure Monitor 日志和 Azure 事件中心](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)。
 
 ## <a name="azure-portal"></a>Azure 门户
 
-你可以使用 "**诊断设置**" 菜单来查看 Azure 门户中的每个单一数据库、池数据库或实例数据库，以配置诊断遥测流。 此外，还可以为数据库容器单独配置诊断遥测：弹性池和托管实例。 你可以设置以下目标以流式传输诊断遥测： Azure 存储、Azure 事件中心和 Azure Monitor 日志。
+可以在 Azure 门户中使用每个单一数据库、共用数据库或实例数据库的“诊断设置”菜单，配置诊断遥测数据的流式传输。 另外，也可为数据库容器（弹性池和托管实例）单独配置诊断遥测数据。 你可以设置以下目标以流式传输诊断遥测： Azure 存储、Azure 事件中心和 Azure Monitor 日志。
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-elastic-pools"></a>配置弹性池的诊断遥测流
 
@@ -92,18 +93,18 @@ ms.locfileid: "73821775"
 
 | 资源 | 监视遥测数据 |
 | :------------------- | ------------------- |
-| **弹性池** | [基本指标](sql-database-metrics-diag-logging.md#basic-metrics)包含 EDTU/cpu 百分比、EDTU/cpu 限制、物理数据读取百分比、日志写入百分比、会话百分比、辅助角色百分比、存储、存储百分比、存储限制和 XTP 存储百分比。 |
+| **弹性池** | [基本指标](sql-database-metrics-diag-logging.md#basic-metrics)包含 eDTU/CPU 百分比、eDTU/CPU 限制、物理数据读取百分比、日志写入百分比、会话百分比、辅助角色百分比、存储、存储百分比、存储限制，以及 XTP 存储百分比。 |
 
-若要为弹性池中的弹性池和数据库配置诊断遥测流，需要单独配置以下**两项**：
+若要为弹性池和弹性池中的数据库配置诊断遥测数据的流式传输，需单独配置下面这**两项**：
 
-- 为弹性池启用诊断遥测流式处理，**并**
-- 为弹性池中的每个数据库启用诊断遥测流式处理
+- 为弹性池启用诊断遥测数据的流式传输，**以及**
+- 为弹性池中的每个数据库启用诊断遥测数据的流式传输
 
-这是因为，弹性池是自己的遥测独立于单个数据库遥测的数据库容器。
+这是因为，弹性池是一个数据库容器，其自己的遥测数据独立于单个数据库遥测数据。
 
 若要为弹性池资源启用诊断遥测流，请执行以下步骤：
 
-1. 在 Azure 门户中，请参阅**弹性池**资源。
+1. 在 Azure 门户中转到**弹性池**资源。
 1. 选择“诊断设置”。
 1. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置
 
@@ -111,14 +112,14 @@ ms.locfileid: "73821775"
 
 1. 输入设置名称供自己参考。
 1. 选择流式处理诊断数据的目标资源：**存档到存储帐户**、**流式传输到事件中心**或**发送到 Log Analytics**。
-1. 对于 log analytics，请选择 "**配置**" 并通过选择 " **+ 创建新工作区**" 创建新的工作区，或选择现有的工作区。
+1. 对于 Log Analytics，请选择“配置”，并通过选择“+创建新工作区”来创建新工作区；或者选择现有的工作区。
 1. 选中 "弹性池诊断遥测：**基本**指标" 对应的复选框。
    ![为弹性池配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 1. 选择“保存”。
-1. 此外，请按照下一节中所述的步骤，为你想要监视的弹性池中的每个数据库配置诊断遥测流。
+1. 另外，请为弹性池中需要监视的每个数据库配置诊断遥测数据的流式传输，只需按下一部分所述的步骤操作即可。
 
 > [!IMPORTANT]
-> 除了为弹性池配置诊断遥测以外，还需要为弹性池中的每个数据库配置诊断遥测，如下所述。
+> 除了为弹性池配置诊断遥测数据，还需为弹性池中的每个数据库配置诊断遥测数据，如下所述。
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-single-database-or-database-in-elastic-pool"></a>为单一数据库或弹性池中的数据库配置诊断遥测数据的流式传输
 
@@ -136,7 +137,7 @@ ms.locfileid: "73821775"
 1. 输入设置名称供自己参考。
 1. 选择流式处理诊断数据的目标资源：**存档到存储帐户**、**流式传输到事件中心**或**发送到 Log Analytics**。
 1. 对于基于事件的标准监视体验，请为数据库诊断日志遥测选中以下复选框： **SQLInsights**、 **AutomaticTuning**、 **QueryStoreRuntimeStatistics**、 **QueryStoreWaitStatistics**、**错误**、 **DatabaseWaitStatistics**、**超时**、**块**和**死锁**。
-1. 对于基于一分钟的高级监视体验，请选中 "**基本**指标" 复选框。
+1. 对于高级的一分钟间隔监视体验，请选中“基本”指标对应的复选框。
    ![为单一数据库、共用数据库或实例数据库配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 1. 选择“保存”。
 1. 针对要监视的每个数据库重复上述步骤。
@@ -173,7 +174,7 @@ ms.locfileid: "73821775"
 
 1. 输入设置名称供自己参考。
 1. 选择流式处理诊断数据的目标资源：**存档到存储帐户**、**流式传输到事件中心**或**发送到 Log Analytics**。
-1. 对于 log analytics，请选择 "**配置**" 并创建新的工作区，方法是选择 " **+ 创建新工作区**" 或使用现有工作区。
+1. 对于 Log Analytics，请选择“配置”，并通过选择“+创建新工作区”来创建新工作区；或者使用现有的工作区。
 1. 选中 "实例诊断遥测： **ResourceUsageStats**" 复选框。
    ![为托管实例配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 1. 选择“保存”。
@@ -408,14 +409,14 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ## <a name="metrics-and-logs-available"></a>可用的指标和日志
 
-下面介绍了适用于 Azure SQL 数据库、弹性池和托管实例的监视遥测。 可以使用 [Azure Monitor 日志查询](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)语言将在 SQL Analytics 内收集的监视遥测数据用于你自己的自定义分析和应用程序开发。
+下面记录了可用于 Azure SQL 数据库、弹性池和托管实例的监视遥测。 可以使用 [Azure Monitor 日志查询](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)语言将在 SQL Analytics 内收集的监视遥测数据用于你自己的自定义分析和应用程序开发。
 
 ## <a name="basic-metrics"></a>基本指标
 
-有关资源的基本指标的详细信息，请参阅下表。
+请参阅下表来详细了解按资源列出的基本指标。
 
 > [!NOTE]
-> 基本度量值选项以前称为 "所有指标"。 所做的更改仅限于命名，不会更改所监视的指标。 此更改已启动，以后可以引入其他指标类别。
+> 基本指标选项以前称为“所有指标”。 所做的更改仅限于命名，并未更改所监视的指标。 启动此更改是为了允许将来引入更多的指标类别。
 
 ### <a name="basic-metrics-for-elastic-pools"></a>弹性池的基本指标
 
@@ -423,15 +424,25 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |---|---|
 |弹性池|eDTU 百分比、已用 eDTU、eDTU 限制、CPU 百分比、物理数据读取百分比、日志写入百分比、会话百分比、辅助角色百分比、存储、存储百分比、存储限制、XTP存储百分比 |
 
-### <a name="basic-metrics-for-azure-sql-databases"></a>适用于 Azure SQL 数据库的基本指标
+### <a name="basic-metrics-for-azure-sql-databases"></a>Azure SQL 数据库的基本指标
 
 |**资源**|**指标**|
 |---|---|
 |Azure SQL 数据库|DTU 百分比、已用 DTU、DTU 限制、CPU 百分比、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比、XTP 存储百分比和死锁 |
 
+## <a name="advanced-metrics"></a>高级指标
+
+有关高级度量值的详细信息，请参阅下表。
+
+|**指标**|**指标显示名称**|**说明**|
+|---|---|---|
+|tempdb_data_size| Tempdb 数据文件大小（Kb） |Tempdb 数据文件大小（Kb）。 不适用于数据仓库。 对于基于 DTU 的购买模型，此指标适用于使用 vCore 购买模型的数据库或 100 DTU 和更高版本。 |
+|tempdb_log_size| Tempdb 日志文件大小（Kb） |Tempdb 日志文件大小（Kb）。 不适用于数据仓库。 对于基于 DTU 的购买模型，此指标适用于使用 vCore 购买模型的数据库或 100 DTU 和更高版本。 |
+|tempdb_log_used_percent| 使用的 Tempdb 百分比日志 |使用的 Tempdb 百分比日志。 不适用于数据仓库。 对于基于 DTU 的购买模型，此指标适用于使用 vCore 购买模型的数据库或 100 DTU 和更高版本。 |
+
 ## <a name="basic-logs"></a>基本日志
 
-下面的表中记录了适用于所有日志的遥测数据的详细信息。 请参阅[支持的诊断日志记录](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases)，以了解特定数据库风格支持哪些日志-Azure SQL 单一数据库、共用数据库或实例数据库。
+下面的表中记录了适用于所有日志的遥测数据的详细信息。 请参阅[支持的诊断日志记录](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases)，了解特定的数据库类型（Azure SQL 单一数据库、共用数据库或实例数据库）支持哪些日志。
 
 ### <a name="resource-usage-stats-for-managed-instance"></a>托管实例的资源使用情况统计信息
 
@@ -569,7 +580,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |消息|纯文本格式的错误消息 |
 |user_defined_b|是否是用户定义位错误 |
 |error_number_d|错误代码 |
-|Severity|错误的严重性 |
+|严重性|错误的严重性 |
 |state_d|错误的状态 |
 |query_hash_s|失败查询的查询哈希（如果有） |
 |query_plan_hash_s|失败查询的查询计划哈希（如果有） |

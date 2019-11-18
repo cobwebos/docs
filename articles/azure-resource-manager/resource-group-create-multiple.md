@@ -1,18 +1,14 @@
 ---
-title: 部署 Azure 资源的多个实例 | Microsoft Docs
+title: 部署多个资源实例
 description: 在部署资源时使用 Azure 资源管理器模板中的复制操作和数组执行多次迭代。
-services: azure-resource-manager
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: tomfitz
-ms.openlocfilehash: f97f9dac76ac29cf295b5cedc08f916e85c4e317
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3ee4b47dd6cb9043a4100d114c483d1feadbde38
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675087"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150801"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的资源、属性或变量迭代
 
@@ -143,7 +139,7 @@ count 不能为负数。 如果部署 Azure PowerShell 2.6 或更高版本的模
 
 默认情况下，资源管理器将并行创建资源。 除了模板中 800 个资源的总限制外，它对并行部署的资源数量没有限制。 不会保证它们的创建顺序。
 
-但是，可能需要指定按顺序部署资源。 例如，在更新生产环境时，可能需要错开更新，使得任何一次仅更新一定数量。 若要按顺序部署多个资源实例，请将 `mode` 设置为“串行”，并将 `batchSize` 设置为一次要部署的实例数量。 在串行模式下，资源管理器会在循环中创建早前实例的依赖项，以便在前一个批处理完成之前它不会启动一个批处理。
+但是，可能需要指定按顺序部署资源。 例如，在更新生产环境时，可能需要错开更新，使得任何一次仅更新一定数量。 若要按顺序部署多个资源实例，请将 `mode` 设置为“串行”，并将  **设置为一次要部署的实例数量**`batchSize`。 在串行模式下，资源管理器会在循环中创建早前实例的依赖项，以便在前一个批处理完成之前它不会启动一个批处理。
 
 例如，若要按顺序一次部署两个存储帐户，请使用：
 
@@ -426,7 +422,7 @@ copy 元素是一个数组，因此，可以为资源指定多个属性。 为�
 
 ## <a name="depend-on-resources-in-a-loop"></a>依赖于循环中的资源
 
-可以使用 `dependsOn` 元素指定一个资源在另一个资源之后部署。 若要部署的资源依赖于循环中的资源集合，请在 dependsOn 元素中提供 copy 循环的名称。 以下示例演示了如何在部署虚拟机之前部署 3 个存储帐户。 此处并未显示完整的虚拟机定义。 请注意，copy 元素的名称设置为 `storagecopy`，而虚拟机的 dependsOn 元素也设置为 `storagecopy`。
+然后使用 `dependsOn` 元素指定部署一个资源后再部署另一个资源。 若要部署的资源依赖于循环中的资源集合，请在 dependsOn 元素中提供 copy 循环的名称。 以下示例演示了如何在部署虚拟机之前部署 3 个存储帐户。 此处并未显示完整的虚拟机定义。 请注意，copy 元素的名称设置为 `storagecopy`，而虚拟机的 dependsOn 元素也设置为 `storagecopy`。
 
 ```json
 {
@@ -490,7 +486,7 @@ copy 元素是一个数组，因此，可以为资源指定多个属性。 为�
 
 若要与数据工厂的实例建立父/子关系，提供的数据集的名称应包含父资源名称。 使用以下格式：`{parent-resource-name}/{child-resource-name}`。
 
-以下示例演示了如何实现：
+以下示例演示实现过程：
 
 ```json
 "resources": [
@@ -517,7 +513,7 @@ copy 元素是一个数组，因此，可以为资源指定多个属性。 为�
 
 以下示例展示了创建资源或属性的多个实例的常见方案。
 
-|模板  |描述  |
+|模板  |说明  |
 |---------|---------|
 |[复制存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |部署名称中带索引号的多个存储帐户。 |
 |[串行的复制存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |一次部署多个存储帐户。 名称中包含索引号。 |
@@ -531,5 +527,5 @@ copy 元素是一个数组，因此，可以为资源指定多个属性。 为�
 * 要查看教程，请参阅[教程：使用资源管理器模板创建多个资源实例](./resource-manager-tutorial-create-multiple-instances.md)。
 
 * 若要了解有关模板区段的信息，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。
-* 若要了解如何部署模板，请参阅 [使用 Azure Resource Manager 模板部署应用程序](resource-group-template-deploy.md)。
+* 若要了解如何部署模板，请参阅[使用 Azure 资源管理器模板部署应用程序](resource-group-template-deploy.md)。
 

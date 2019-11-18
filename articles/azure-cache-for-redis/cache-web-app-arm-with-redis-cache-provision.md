@@ -2,23 +2,17 @@
 title: 预配包含 Azure Redis 缓存的 Web 应用
 description: 使用 Azure 资源管理器模板部署包含 Azure Redis 缓存的 Web 应用。
 services: app-service
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 6e99c71f-ef8e-4570-a307-e4c059e60c35
 ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: yegu
-ms.openlocfilehash: b28ed58159545bca10ec89375b82b9c97ae38630
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8e15d51062993bc6e9913d49d3fe67c1a8b9cd03
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098244"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122636"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>使用模板创建 Web 应用和 Azure Redis 缓存
 
@@ -61,7 +55,7 @@ ms.locfileid: "70098244"
 ### <a name="azure-cache-for-redis"></a>用于 Redis 的 Azure 缓存
 创建用于 Web 应用的 Azure Redis 缓存。 缓存的名称在 **cacheName** 变量中指定。
 
-该模板在资源组所在的同一位置中创建缓存。
+该模板会在资源组所在的同一位置中创建缓存。
 
     {
       "name": "[variables('cacheName')]",

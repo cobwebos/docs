@@ -1,5 +1,6 @@
 ---
-title: 适用于 Java 的 ADAL 到 MSAL 迁移指南-Microsoft 标识平台 |Microsoft
+title: 适用于 Java 的 ADAL 到 MSAL 迁移指南 |Microsoft
+titleSuffix: Microsoft identity platform
 description: 了解如何将 Azure Active Directory 身份验证库（ADAL） Java 应用迁移到 Microsoft 身份验证库（MSAL）。
 services: active-directory
 author: sangonzal
@@ -16,12 +17,12 @@ ms.author: sagonzal
 ms.reviewer: navyari.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bddf787ce2c654da99b16387ae347f51600c8dd
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 158cbe4f2598722abe3b2ed3a0dd179a21dc1e1c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905519"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145269"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>适用于 Java 的 ADAL 到 MSAL 迁移指南
 
@@ -67,7 +68,7 @@ ADAL4J 获取资源的令牌，而 MSAL4J 获取作用域的令牌。 许多 MSA
 
 ADAL4J 操作用户。 尽管用户代表单个人员或软件代理，但它可以在 Microsoft 标识系统中有一个或多个帐户。 例如，用户可能有多个 Azure AD、Azure AD B2C 或 Microsoft 个人帐户。
 
-MSAL4J 通过 `IAccount` 接口定义帐户的概念。 这是 ADAL4J 的一项重大更改，但这是一项很好的更改，因为它可以捕获同一个用户可以拥有多个帐户的事实，甚至可能在不同 Azure AD 目录中。 MSAL4J 提供更好的来宾方案信息，因为提供了 home 帐户信息。
+MSAL4J 通过 `IAccount` 接口定义帐户的概念。 这是 ADAL4J 的一项重大更改，但这是一项很好的更改，因为它可以捕获同一个用户可以拥有多个帐户的事实，甚至在不同 Azure AD 目录中。 MSAL4J 提供更好的来宾方案信息，因为提供了 home 帐户信息。
 
 ## <a name="cache-persistence"></a>缓存持久性
 

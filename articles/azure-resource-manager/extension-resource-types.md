@@ -1,17 +1,14 @@
 ---
-title: Azure 扩展资源类型
+title: 扩展资源类型
 description: 列出了用于扩展其他资源类型功能的 Azure 资源类型。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/24/2019
-ms.author: tomfitz
-ms.openlocfilehash: 00e8efaaa81ec0ce189d8cfe8a78285ded445c68
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 16dcd4cccea4445b6839ac639094d18e29ed49a9
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901919"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147040"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>扩展其他资源功能的资源类型
 
@@ -74,7 +71,7 @@ ms.locfileid: "72901919"
 - CostManagement/报表
 - CostManagement/Views
 - CostManagement/showbackRules
-- CustomProviders/关联
+- Microsoft.CustomProviders/associations
 - Microsoft.EventGrid/eventSubscriptions
 - Microsoft.EventGrid/extensionTopics
 - GuestConfiguration/configurationProfileAssignments

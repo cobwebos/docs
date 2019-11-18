@@ -1,5 +1,5 @@
 ---
-title: 使用 AzCopy v10 将数据复制或移动到 Azure 存储 |Microsoft Docs
+title: 使用 AzCopy v10 将数据复制或移到 Azure 存储 | Microsoft Docs
 description: AzCopy 是一个命令行实用工具，可用于在存储帐户之间复制数据。 本文将帮助你下载 AzCopy，连接到你的存储帐户，然后传输文件。
 author: normesta
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 812daaf42a987e9dd63bbc39b60c517d8f0cc761
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: af24a6b6d165ba60a0d88a4ddf74a4f18836e813
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882495"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111757"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -98,8 +98,8 @@ tar -xf azcopy.tar.gz
 
 - 容器（文件系统）
 - 存储帐户
-- Resource group
-- Subscription
+- 资源组
+- 订阅
 
 若要了解如何验证和分配角色，请参阅[在 Azure 门户中使用 RBAC 授予对 Azure blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
@@ -305,16 +305,9 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 /usr/bin/keyctl new_session
 ```
 
-## <a name="use-azcopy-in-storage-explorer"></a>在存储资源管理器中使用 AzCopy
+## <a name="use-azcopy-in-azure-storage-explorer"></a>在 Azure 存储资源管理器中使用 AzCopy
 
-如果要利用 AzCopy 的性能优势，但更喜欢使用存储资源管理器而不是命令行来与文件交互，请在存储资源管理器中启用 AzCopy。
-
-在存储资源管理器中，选择 "**预览**" ->**使用 AzCopy 改进 Blob 上传和下载**。
-
-![在 Azure 存储资源管理器中将 AzCopy 作为传输引擎启用](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
-
-> [!NOTE]
-> 如果在存储帐户上启用了分层命名空间，则不需要启用此设置。 这是因为存储资源管理器会在具有分层命名空间的存储帐户上自动使用 AzCopy。  
+[存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)使用 AzCopy 来执行它的所有数据传输操作。 如果要利用 AzCopy 的性能优势，则可使用[存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)，但更喜欢使用图形用户界面，而不是使用命令行与文件进行交互。
 
 存储资源管理器使用帐户密钥来执行操作，因此登录到存储资源管理器后，无需提供其他授权凭据。
 

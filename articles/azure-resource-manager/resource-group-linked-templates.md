@@ -1,17 +1,14 @@
 ---
-title: 链接 Azure 部署的模板 | Microsoft 文档
+title: 部署的链接模板
 description: 介绍如何使用 Azure 资源管理器模板中的链接模板创建一个模块化的模板的解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.author: tomfitz
-ms.openlocfilehash: 59af553f4080ca86e964b75234e4d812297d8541
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 985520963ba9fab1a7f71e1af76bba4390c751ad
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827332"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149706"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -129,7 +126,7 @@ ms.locfileid: "71827332"
 
 无需为模板或参数提供 `contentVersion` 属性。 如果未提供内容版本值，将部署模板的当前版本。 如果提供内容版本值，它必须与链接的模板中的版本相匹配；否则，部署失败并产生错误。
 
-### <a name="inline-parameters"></a>内联参数。
+### <a name="inline-parameters"></a>内联参数
 
 或者，可以提供内联参数。 不能同时使用内联参数和指向参数文件的链接。 同时指定 `parametersLink` 和 `parameters` 时，部署将失败，并出现错误。
 
@@ -484,7 +481,7 @@ done
 
 ## <a name="securing-an-external-template"></a>保护外部模板
 
-尽管链接模板必须可从外部使用，但它无需向公众正式发布。 可以将模板添加到只有存储帐户所有者可以访问的专用存储帐户。 然后，在部署期间创建共享访问签名 (SAS) 令牌来启用访问。 将该 SAS 令牌添加到链接模板的 URI。 即使令牌作为安全字符串传入，链接模板的 URI（包括 SAS 令牌）也将记录在部署操作中。 若要限制公开，请设置令牌的到期时间。
+尽管链接模板必须可从外部使用，但它无需向公众正式发布。 可以将模板添加到只有存储帐户所有者可以访问的专用存储帐户。 然后，在部署期间创建共享访问签名 (SAS) 令牌，用于启用访问。 将该 SAS 令牌添加到链接模板的 URI。 即使令牌作为安全字符串传入，链接模板的 URI（包括 SAS 令牌）也将记录在部署操作中。 若要限制公开，请设置令牌的到期时间。
 
 也可将参数文件限制为通过 SAS 令牌进行访问。
 
@@ -556,7 +553,7 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 以下示例演示了链接模板的常见用法。
 
-|主模板  |链接模板 |描述  |
+|主模板  |链接模板 |说明  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[链接模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | 从链接模板返回字符串。 |
 |[使用公共 IP 地址的负载均衡器](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[链接模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |从链接模板返回公共 IP 地址，并在负载均衡器中设置该值。 |

@@ -6,22 +6,22 @@ manager: nitinme
 description: 表示所有认知服务产品的容器注册表、存储库和映像名称的两个表。
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/11/2019
+ms.date: 11/15/2019
 ms.author: dapine
-ms.openlocfilehash: ae11fe785237a02652af1f16aaba1f1bac5ecd62
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2058dd6e52ddb417e24368b27384df9a222c378e
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961908"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74142183"
 ---
 ### <a name="container-repositories-and-images"></a>容器存储库和映像
 
-下表是 Azure 认知服务提供的可用容器映像的综合列表。
+下表列出了 Azure 认知服务提供的可用容器映像。 有关所有可用容器映像名称及其可用标记的完整列表，请参阅[认知服务容器映像标记](../container-image-tags.md)。
 
 #### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>公共“非封闭”（容器注册表：`mcr.microsoft.com`）
 
-Microsoft 容器注册表托管了认知服务的所有公共可用的“非封闭”容器。
+Microsoft 容器注册表（MCR） syndicates 了用于认知服务的所有公开发布的 "无选通" 容器。 它们也可以直接从[Docker 中心](https://hub.docker.com/_/microsoft-azure-cognitive-services)获得。
 
 | 服务 | 容器 | 容器注册表/存储库/映像名称 |
 |--|--|--|

@@ -1,28 +1,22 @@
 ---
 title: Azure 应用程序网关的重定向概述
-description: 了解 Azure 应用程序网关中的重定向功能
+description: 了解 Azure 应用程序网关中的重定向功能，将一个侦听器上收到的流量重定向到另一个侦听器或外部站点。
 services: application-gateway
-documentationcenter: na
 author: amsriva
-manager: jpconnock
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 3/19/2018
+ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 8e88e0e11b3ccab7cc2c68b2617df2d588680780
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5943d8aad4d5dd0d981fae9b2325dd3fc75b31e8
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60715788"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129883"
 ---
 # <a name="application-gateway-redirect-overview"></a>应用程序网关重定向概述
 
-可以使用应用程序网关来重定向流量。  它有一种泛型重定向机制，用于将一个侦听器上接收到的流量重定向到另一个侦听器或外部站点。 这样可以简化应用程序配置、优化资源使用情况，并支持全局重定向和基于路径的重定向等新的重定向方案。
+可以使用应用程序网关来重定向流量。  它有一种泛型重定向机制，可以将一个侦听器上接收的流量重定向到另一个侦听器或外部站点。 这样可以简化应用程序配置、优化资源使用情况，并支持全局重定向和基于路径的重定向等新的重定向方案。
 
 为确保应用程序及其用户之间的所有通信都通过加密路径进行，适用于许多 Web 应用的常见重定向方案是支持 HTTP 到 HTTPS 自动重定向。 过去用户曾使用创建专用的后端池等技术，其唯一目的在于将通过 HTTP 接收的请求重定向到 HTTPS。 由于应用程序网关提供重定向支持，因此你可以很容易地完成此操作，只需向路由规则添加一个新的重定向配置，然后将使用 HTTPS 协议的另一个侦听器指定为目标侦听器即可。
 

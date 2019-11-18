@@ -1,23 +1,17 @@
 ---
-title: 跨云重复使用模板 - Azure 资源管理器
+title: 跨云重用模板
 description: 开发可针对不同的云环境一致地工作的 Azure 资源管理器模板。 创建适用于 Azure Stack 的新模板或更新现有模板。
-services: azure-resource-manager
-documentationcenter: na
 author: marcvaneijk
-ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 38da6d39d095ce27cdd26719d9b8b752d2921bc0
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 2964bb4365a2c153e7bc82c3292545ad4de985eb
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164772"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143773"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>开发用于实现云一致性的 Azure 资源管理器模板
 
@@ -301,7 +295,7 @@ Get-AzureRmResourceProvider | select-object ProviderNamespace -ExpandProperty Re
 
 ### <a name="track-versions-using-api-profiles"></a>使用 API 配置文件跟踪版本
 
-跟踪所有可用资源提供程序和 Azure Stack 中存在的相关 API 版本非常具有挑战性。 例如，在撰写本文时，Azure 中 Microsoft.Compute/availabilitySets 的最新 API 版本为 `2018-04-01`，而 Azure 和 Azure Stack 的通用 API 版本为 `2016-03-30`。 在所有 Azure 和 Azure Stack 位置之间共享的 Microsoft.Storage/storageAccounts 的通用 API 版本为 `2016-01-01`，而在 Azure 中的最新 API 版本为 `2018-02-01`。
+跟踪所有可用资源提供程序和 Azure Stack 中存在的相关 API 版本非常具有挑战性。 例如，在撰写本文时，Azure 中 Microsoft.Compute/availabilitySets 的最新 API 版本为 **，而 Azure 和 Azure Stack 的通用 API 版本为** `2018-04-01``2016-03-30`。 在所有 Azure 和 Azure Stack 位置之间共享的 Microsoft.Storage/storageAccounts 的通用 API 版本为 **，而在 Azure 中的最新 API 版本为** `2016-01-01``2018-02-01`。
 
 为此，资源管理器在模板中引入了 API 配置文件的概念。 使用 API 配置文件，模板中的每个资源都配置了 `apiVersion` 元素，用于描述该特定资源的 API 版本。
 
@@ -443,7 +437,7 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
 
 * 存储帐户（blob、队列、表和文件）
 * 连接字符串（MySql、SQLServer、SQLAzure、Custom、NotificationHub、ServiceBus、EventHub、ApiHub、DocDb、RedisCache、PostgreSQL）
-* 通信管理器
+* 流量管理器
 * 公共 IP 地址的 domainNameLabel
 * 云服务
 
@@ -473,7 +467,7 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
 }
 ```
 
-然后，可以使用 `reference` 模板函数中的 `resourceId` 函数检索数据库的属性。 返回对象包含保留完整终结点值的 `fullyQualifiedDomainName` 属性。 该值在运行时检索，并提供特定于云环境的终结点命名空间。 若要在不对终结点命名空间硬编码的情况下定义连接字符串，可以直接引用连接字符串中返回对象的属性，如下所示：
+然后，可以使用 `resourceId` 模板函数中的 `reference` 函数检索数据库的属性。 返回对象包含保留完整终结点值的 `fullyQualifiedDomainName` 属性。 该值在运行时检索，并提供特定于云环境的终结点命名空间。 若要在不对终结点命名空间硬编码的情况下定义连接字符串，可以直接引用连接字符串中返回对象的属性，如下所示：
 
 ```json
 "[concat('Server=tcp:', reference(resourceId('sql', 'Microsoft.Sql/servers', parameters('test')), '2015-05-01-preview').fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('database'),';User ID=', parameters('username'), ';Password=', parameters('pass'), ';Encrypt=True;')]"

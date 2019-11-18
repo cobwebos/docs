@@ -1,17 +1,14 @@
 ---
-title: Azure 资源管理器模板语法和表达式
+title: 模板语法和表达式
 description: 介绍 Azure 资源管理器模板的声明性 JSON 语法。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/03/2019
-ms.author: tomfitz
-ms.openlocfilehash: 1e7288da19e2e81d609b952e03d5143b03a65c63
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 046f7f4866e9b5933c55bc5a9d0ee96c945bff0e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259478"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149194"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的语法和表达式
 
@@ -32,9 +29,9 @@ ms.locfileid: "70259478"
 },
 ```
 
-在该表达式中，语法 `resourceGroup()` 调用资源管理器提供的、在模板中使用的某个函数。 在这种情况下，它是[资源](resource-group-template-functions-resource.md#resourcegroup)组函数。 如同在 JavaScript 中一样，函数调用的格式为 `functionName(arg1,arg2,arg3)`。 语法 `.location` 从该函数返回的对象中检索一个属性。
+在该表达式中，语法 `resourceGroup()` 调用资源管理器提供的、在模板中使用的某个函数。 在本例中，它是 [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) 函数。 如同在 JavaScript 中一样，函数调用的格式为 `functionName(arg1,arg2,arg3)`。 语法 `.location` 从该函数返回的对象中检索一个属性。
 
-模板函数及其参数不区分大小写。 例如，Resource Manager 将 **variables('var1')** 和 **VARIABLES('VAR1')** 视为相同。 在求值时，除非函数明确修改大小写（例如，使用 toUpper 或 toLower 进行修改），否则函数将保留大小写。 某些资源类型可能有与计算函数不同的大小写要求。
+模板函数及其参数不区分大小写。 例如，Resource Manager 将 **variables('var1')** 和 **VARIABLES('VAR1')** 视为相同。 在求值时，除非函数明确修改大小写（例如，使用 toUpper 或 toLower 进行修改），否则函数将保留大小写。 某些资源类型可能有独立于函数求值方式的大小写要求。
 
 若要将字符串值作为参数传递给函数，请使用单引号。
 

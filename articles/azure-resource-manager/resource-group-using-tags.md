@@ -1,17 +1,14 @@
 ---
-title: 标记 Azure 资源实现逻辑布局 | Microsoft Docs
+title: 逻辑组织的标记资源
 description: 演示如何应用标记来整理 Azure 资源以便进行计费和管理。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.author: tomfitz
-ms.openlocfilehash: e7763889ecf69231b7a4daf31e6899b33f3e2b36
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: b332ae86e714d4b642f921d217d80e802fa60572
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199148"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149586"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>使用标记整理 Azure 资源
 
@@ -107,7 +104,7 @@ $r.Tags.Add("Status", "Approved")
 Set-AzResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
 ```
 
-若要将资源组中的所有标记应用于其资源，并且*不保留资源上的现有标记*，请使用以下脚本：
+若要将资源组中的所有标记应用于其资源，并且不保留资源上的现有标记，请使用以下脚本：
 
 ```azurepowershell-interactive
 $groups = Get-AzResourceGroup
@@ -117,7 +114,7 @@ foreach ($g in $groups)
 }
 ```
 
-若要将资源组中的所有标记应用于其资源，并*将现有标记保留在不重复的资源上*，请使用以下脚本：
+若要将资源组中的所有标记应用于其资源，并且保留资源上不重复的现有标记，请使用以下脚本：
 
 ```azurepowershell-interactive
 $group = Get-AzResourceGroup "examplegroup"
@@ -214,7 +211,7 @@ rt=$(echo $jsonrtag | tr -d '"{},' | sed 's/: /=/g')
 az resource tag --tags $rt Project=Redesign -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-若要将资源组中的所有标记应用于其资源，并且*不保留资源上的现有标记*，请使用以下脚本：
+若要将资源组中的所有标记应用于其资源，并且不保留资源上的现有标记，请使用以下脚本：
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -230,7 +227,7 @@ do
 done
 ```
 
-若要将资源组中的所有标记应用于其资源，并且*保留资源上的现有标记*，请使用以下脚本：
+若要将资源组中的所有标记应用于其资源，并且保留资源上的现有标记，请使用以下脚本：
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -250,7 +247,7 @@ done
 
 ## <a name="templates"></a>模板
 
-若要在部署过程中标记资源，请将 `tags` 元素添加到正在部署的资源。 提供标记名称和值。
+若要在部署过程中标记资源，请将 `tags` 元素添加到要部署的资源。 提供标记名称和值。
 
 ### <a name="apply-a-literal-value-to-the-tag-name"></a>将文本值应用到标记名称
 
@@ -286,11 +283,11 @@ done
 }
 ```
 
-若要将标记设置为 datetime 值，请使用[utcNow 函数](resource-group-template-functions-string.md#utcnow)。
+若要设置日期/时间值的标记，请使用 [utcNow 函数](resource-group-template-functions-string.md#utcnow)。
 
 ### <a name="apply-an-object-to-the-tag-element"></a>将对象应用到标记元素
 
-可以定义一个对象参数，用于存储多个标记，并将该对象应用于标记元素。 对象中的每个属性将成为该资源的单独标记。 以下示例有一个名为 `tagValues` 的参数，应用于标记元素。
+可以定义一个对象参数，用于存储多个标记，并将该对象应用于标记元素。 对象中的每个属性将成为该资源的单独标记。 以下示例有一个名为 `tagValues` 的参数，该标记应用于标记元素。
 
 ```json
 {
@@ -328,7 +325,7 @@ done
 
 ### <a name="apply-a-json-string-to-the-tag-name"></a>将 JSON 字符串应用到标记名称
 
-要将多个值存储在单个标记中，请应用表示值的 JSON 字符串。 整个 JSON 字符串存储为一个不能超过256个字符的标记。 以下示例有一个名为 `CostCenter` 的标记，其中包含 JSON 字符串中的几个值：  
+要将多个值存储在单个标记中，请应用表示值的 JSON 字符串。 整个 JSON 字符串存储为一个标记，该标记不能超过 256 个字符。 以下示例有一个名为 `CostCenter` 的标记，其中包含 JSON 字符串中的几个值：  
 
 ```json
 {
@@ -359,9 +356,9 @@ done
 }
 ```
 
-### <a name="apply-tags-from-resource-group"></a>从资源组应用标记
+### <a name="apply-tags-from-resource-group"></a>应用资源组中的标记
 
-若要将资源组中的标记应用于资源，请使用[resourceGroup](resource-group-template-functions-resource.md#resourcegroup)函数。 获取标记值时，请使用 `tags.[tag-name]` 语法而不是 `tags.tag-name` 语法，因为在点表示法中某些字符不能正确解析。
+若要将资源组中的标记应用于资源，请使用 [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) 函数。 获取标记值时，请使用 `tags.[tag-name]` 语法而不是 `tags.tag-name` 语法，因为有些字符在点表示法中无法正确解析。
 
 ```json
 {

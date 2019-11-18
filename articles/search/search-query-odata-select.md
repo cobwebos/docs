@@ -1,7 +1,7 @@
 ---
 title: OData 选择引用
 titleSuffix: Azure Cognitive Search
-description: Azure 认知搜索查询中的 select 语法的 OData 语言参考。
+description: 用于在 Azure 认知搜索查询的搜索结果中返回的显式字段选择的语法和语言参考。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,20 +19,20 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 7786974f3d39f9cbc81e1ffea955156d623f1476
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 64f15bf3d262249cdda2760c7ddf768be2590419
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793249"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113101"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>Azure 中的 OData $select 语法认知搜索
 
- 可以使用[OData **$select**参数](query-odata-filter-orderby-syntax.md)选择要包含在 Azure 认知搜索的搜索结果中的字段。 本文详细介绍 **$select**的语法。 有关如何在显示搜索结果时使用 **$select**的更多常规信息，请参阅[如何使用 Azure 认知搜索中的搜索结果](search-pagination-page-layout.md)。
+ 可以使用[OData **$select**参数](query-odata-filter-orderby-syntax.md)选择要包含在 Azure 认知搜索的搜索结果中的字段。 本文详细介绍 **$select** 的语法。 有关如何在显示搜索结果时使用 **$select**的更多常规信息，请参阅[如何使用 Azure 认知搜索中的搜索结果](search-pagination-page-layout.md)。
 
 ## <a name="syntax"></a>语法
 
-**$Select**参数确定在查询结果集中返回每个文档的哪些字段。 以下 EBNF （[扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义 **$select**参数的语法：
+**$select** 参数确定在查询结果集中返回每个文档的哪些字段。 以下 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义 **$select** 参数的语法：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -42,7 +42,7 @@ select_expression ::= '*' | field_path(',' field_path)*
 field_path ::= identifier('/'identifier)*
 ```
 
-还提供交互式语法关系图：
+下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
 > [适用于 Azure 认知搜索的 OData 语法关系图](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
@@ -50,18 +50,18 @@ field_path ::= identifier('/'identifier)*
 > [!NOTE]
 > 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)，了解完整的 EBNF。
 
-**$Select**参数分为两种形式：
+**$select** 参数有两种形式：
 
-1. 单个星号（`*`），指示应返回所有可检索字段，或
-1. 以逗号分隔的字段路径列表，用于标识应返回哪些字段。
+1. 单个星 (`*`)，指示应返回所有可检索字段，或
+1. 以逗号分隔的字段路径列表，标识应返回的字段。
 
-使用第二种形式时，只能在列表中指定可检索的字段。
+使用第二种形式时，只能在列表中指定可检索字段。
 
-如果您在未显式指定其子字段的情况下列出了复杂字段，则所有可检索的子字段都将包含在查询结果集中。 例如，假设您的索引具有一个 `Address` 字段，其中 `Street`、`City`和 `Country` 子字段均可检索。 如果在 **$select**中指定 `Address`，则查询结果将包括所有三个子字段。
+如果列出一个复杂字段而未显式指定其子字段，则所有可检索的子字段都将包含在查询结果集中。 例如，假设索引有一个 `Address` 字段，其中 `Street`、`City` 和 `Country` 子字段都是可检索的。 如果在 `Address`$select**中指定**，查询结果将包括所有三个子字段。
 
 ## <a name="examples"></a>示例
 
-在结果中包含 `HotelId`、`HotelName`和 `Rating` 顶级字段，以及 `Address`的 `City` 子字段：
+在结果中包括 `HotelId`、`HotelName` 和 `Rating` 顶级字段，以及 `City` 的 `Address` 子字段：
 
     $select=HotelId, HotelName, Rating, Address/City
 
@@ -78,7 +78,7 @@ field_path ::= identifier('/'identifier)*
 }
 ```
 
-在结果中包括 `HotelName` 的顶级字段，以及 `Address`的所有子字段，以及 `Rooms` 集合中每个对象的 `Type` 和 `BaseRate` 子字段：
+在结果中包括 `HotelName` 顶级字段，以及 `Address` 的所有子字段，以及 `Type` 集合中每个对象的 `BaseRate` 和 `Rooms` 子字段：
 
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
 

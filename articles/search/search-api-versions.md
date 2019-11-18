@@ -1,5 +1,5 @@
 ---
-title: 适用于 .NET SDK 和 REST Api 的 API 版本管理
+title: 适用于 .NET 和 REST 的 API 版本管理
 titleSuffix: Azure Cognitive Search
 description: Azure 认知搜索 REST Api 和 .NET SDK 中的客户端库的版本策略。
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a976655d0f634c7026f008d64516a629947e90c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 03dbb679c25ea692d2c52f80b9493889e367823d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793066"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112147"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure 认知搜索中的 API 版本
 
@@ -32,10 +32,10 @@ Azure 认知搜索会定期推出功能更新。 这些更新有时（但并非�
 
 | 接口 | 最新的主要版本 | 状态 |
 | --- | --- | --- |
-| [.NET SDK](https://aka.ms/search-sdk) |9.0 |公开发布，可能为2019 |
-| [.NET SDK 预览版](https://aka.ms/search-sdk-preview) |8.0-预览 |预览版，2019年4月发布 |
+| [.NET SDK](https://aka.ms/search-sdk) |9.0 |正式版，2019 年 5 月发布 |
+| [.NET SDK 预览版](https://aka.ms/search-sdk-preview) |8.0-preview |预览版，2019 年 4 月发布 |
 | [服务 REST API](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |正式版 |
-| [Service REST API 2019-05-06-预览版](search-api-preview.md) |2019-05-06-预览 |预览 |
+| [服务 REST API 2019-05-06-Preview](search-api-preview.md) |2019-05-06-Preview |预览 |
 | [.NET 管理 SDK](https://aka.ms/search-mgmt-sdk) |3.0 |正式版 |
 | [管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |正式版 |
 

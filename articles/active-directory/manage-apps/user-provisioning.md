@@ -11,46 +11,69 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/12/2019
+ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef2ce1ce7a754868a1adc2e78b4c0a83fc84f071
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1f661aa67f04de23c7b4871e78d3628c639e7567
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641451"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144545"
 ---
-# <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配
+# <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>通过 Azure Active Directory 自动执行用户预配和取消预配
 
-Azure Active Directory （Azure AD）可让你在云 SaaS 应用程序（如[Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial)、 [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial)、 [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)等）中自动创建、维护和删除用户标识。 这称为 SaaS 应用的自动化用户预配。
+在 Azure Active Directory （Azure AD）中，术语 "**应用设置**" 是指在用户需要访问的云（[SaaS](https://azure.microsoft.com/overview/what-is-saas/)）应用程序中自动创建用户标识和角色。 除了创建用户身份外，自动预配还包括在状态或角色发生更改时维护和删除用户标识。 常见的方案包括将 Azure AD 用户预配到[Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial)、 [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial)、 [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)等应用程序中。
 
-> [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
+![预配概述关系图](media/user-provisioning/provisioning-overview.png)
 
 此功能可让你：
 
-- 在新人加入团队或组织时，在适当的系统中为他们自动创建新帐户。
-- 在新人离开团队或组织时，在适当的系统中自动停用其帐户。
-- 确保应用和系统中的标识基于目录中的更改或人力资源系统保持最新。
-- 将非用户对象（例如组）预配到支持它们的应用程序。
+- **自动预配**：当新用户加入你的团队或组织时，在适当的系统中自动创建新帐户。
+- **自动**取消预配：当用户离开团队或组织时，自动停用适当系统中的帐户。
+- **同步系统之间的数据：** 确保你的应用和系统中的标识基于目录或人力资源系统中的更改保持最新。
+- **预配组：** 将组预配到支持它们的应用程序。
+- **控制访问权限：** 监视和审核已预配到应用程序中的人员。
+- **无缝部署于棕色现场方案：** 与系统之间的现有标识匹配，并允许轻松集成，即使目标系统中已存在用户也是如此。
+- **使用丰富的自定义：** 利用可自定义的属性映射来定义哪些用户数据应从源系统流向目标系统。
+- **获取关键事件的警报：** 预配服务针对关键事件提供警报，并允许 Log Analytics 集成，以便你可以在其中定义自定义警报来满足你的业务需求。
 
-自动用户预配还包括以下功能：
+## <a name="benefits-of-automatic-provisioning"></a>自动预配的优点
 
-- 能够匹配源系统和目标系统之间的现有标识。
-- 可自定义的属性映射，定义应将哪些用户数据从源系统流向目标系统。
-- 可选电子邮件警报，用于设置错误。
-- 报告和活动日志，用于帮助进行监视和故障排除。
+随着现代组织使用的应用程序数量不断增长，IT 管理员可以大规模地进行访问管理。 安全断言标记语言（SAML）或 Open ID Connect （OIDC）等标准允许管理员快速设置单一登录（SSO），但 access 还需要将用户预配到应用程序中。 对于很多管理员而言，设置意味着每周手动创建每个用户帐户或上传 CSV 文件，但这些过程非常耗时、昂贵且容易出错。 已采用 SAML 实时（JIT）等解决方案来自动进行预配，但企业还需要一个解决方案，以便在用户离开组织或不再需要基于角色更改访问某些应用时对其进行取消设置。
 
-## <a name="why-use-automated-provisioning"></a>为何要使用自动化预配？
+使用自动预配的一些常见动机包括：
 
-使用此功能的一些常见动机包括：
-
-- 避免与手动预配过程相关的成本、低效和人为错误。
-- 避免产生与托管和维护定制开发的预配解决方案和脚本相关的成本。
+- 最大程度地提高预配过程的效率和准确性。
+- 节省与托管和维护定制开发的预配解决方案和脚本相关的成本。
 - 通过在用户离开组织时立即从关键 SaaS 应用中删除用户的标识来保护组织的安全。
 - 轻松将大量用户导入特定的 SaaS 应用程序或系统。
 - 使用一组策略来确定已预配的用户以及可登录到应用程序的用户。
+
+Azure AD 用户预配可帮助解决这些难题。 若要了解有关客户如何使用 Azure AD 用户预配的详细信息，可以阅读[ASOS 案例研究](https://aka.ms/asoscasestudy)。 以下视频概述了 Azure AD 中的用户预配：
+
+> [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
+
+## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>可在哪些应用程序和系统中使用 Azure AD 自动用户预配？
+
+Azure AD 功能为许多常用 SaaS 应用和人力资源系统预集成的支持，以及对实现[SCIM 2.0 标准](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)的特定部分的应用的一般性支持。
+
+* **预先集成的应用程序（库 SaaS 应用）** 。 可以在[用户预配的应用程序教程列表](../saas-apps/tutorial-list.md)中找到 Azure AD 支持预集成预配连接器的所有应用程序。 库中列出的预先集成的应用程序通常使用基于 SCIM 2.0 的用户管理 Api 进行设置。 
+
+   ![Salesforce 徽标](media/user-provisioning/gallery-app-logos.png)
+
+   如果要请求新的预配应用程序，可以[请求将应用程序与应用程序库集成](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)。 对于用户设置请求，我们要求应用程序具有与 SCIM 兼容的终结点。 请请求应用程序供应商遵循 SCIM 标准，以便可以将应用程序快速加入我们的平台。
+
+* **支持 SCIM 2.0 的应用程序**。 有关如何一般连接实现基于 SCIM 2.0 的用户管理 Api 的应用程序的信息，请参阅[使用 SCIM 自动将用户和组从 Azure Active Directory 设置到应用程序](use-scim-to-provision-users-and-groups.md)。
+
+## <a name="what-is-scim"></a>什么是 SCIM？
+
+为了帮助自动进行预配和取消预配，应用公开了专有的用户和组 Api。 不过，尝试在多个应用程序中管理用户的任何人都将会告诉你，每个应用都尝试执行相同的简单操作，例如创建或更新用户、将用户添加到组或取消预配用户。 不过，所有这些简单的操作都是以不同的方式实现的，使用不同的终结点路径、指定用户信息的不同方法和不同的架构来表示信息的每个元素。
+
+为了解决这些难题，SCIM 规范提供了一个常见的用户架构，可帮助用户进入、传出和绕过应用。 SCIM 正在成为预配的实际标准，并且与 SAML 或 OpenID Connect 等联合标准结合使用时，为管理员提供了一个用于访问管理的端到端基于标准的解决方案。
+
+有关使用 SCIM 自动将用户和组预配和取消预配到应用程序的详细指南，请参阅[使用 Azure Active Directory 进行 SCIM 用户预配](use-scim-to-provision-users-and-groups.md)。
 
 ## <a name="how-does-automatic-provisioning-work"></a>自动化预配的工作原理
 
@@ -65,54 +88,13 @@ Azure Active Directory （Azure AD）可让你在云 SaaS 应用程序（如[Dro
 ![入站用户预配工作流](./media/user-provisioning/provisioning2.PNG)
 *图3： "入站" 用户预配工作流从常用的人力资本管理（HCM）应用程序到 Azure Active Directory 和 Windows Server Active Directory*
 
-## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>可在哪些应用程序和系统中使用 Azure AD 自动用户预配？
-
-Azure AD 功能为许多常用 SaaS 应用和人力资源系统预集成的支持，以及对实现[SCIM 2.0 标准](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)的特定部分的应用的一般性支持。
-
-### <a name="pre-integrated-applications"></a>预先集成的应用程序
-
-有关 Azure AD 中支持预先集成预配连接器的所有应用程序的列表，请参阅[支持用户预配的应用程序列表教程](../saas-apps/tutorial-list.md)。
-
-如需联系 Azure AD 工程团队以请求其他应用程序的预配支持，请通过 [Azure Active Directory 反馈论坛](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035)提交消息。
-
-> [!NOTE]
-> 为了使应用程序支持自动化用户预配，它必须首先提供必要的、允许外部程序自动执行创建、维护和删除用户操作的用户管理 API。 因此，不是所有的 SaaS 应用都能兼容此功能。 对于支持用户管理 Api 的应用程序，Azure AD 工程团队可以构建一个到这些应用的设置连接器，并按当前和潜在客户需求设置优先级。
-
-### <a name="connecting-applications-that-support-scim-20"></a>连接支持 SCIM 2.0 的应用程序
-
-若要了解如何常规连接实现基于 SCIM. 2.0 的用户管理 API 的应用程序，请参阅[使用 SCIM 自动将用户和组从 Azure Active Directory 预配到应用程序](use-scim-to-provision-users-and-groups.md)。
-
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>如何设置为自动预配到应用程序？
+
+对于库中列出的预先集成的应用程序，可以使用分步指南设置自动预配。 请参阅[集成库应用的教程列表](https://docs.microsoft.com/azure/active-directory/saas-apps/)。 以下视频演示了如何设置 SalesForce 的自动用户预配。
 
 > [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
-使用 Azure Active Directory 门户为所选应用程序配置 Azure AD 预配服务。
-
-1. 打开 **[Azure Active Directory 门户](https://aad.portal.azure.com)** 。
-1. 从左窗格中选择 "**企业应用程序**"。 将显示所有已配置应用的列表。
-1. 选择 " **+ 新建应用程序**" 以添加应用程序。 
-1. 提供任何详细信息，然后选择 "**添加**"。 新应用将添加到企业应用程序列表中，并打开到其 "应用程序管理" 屏幕。
-1. 选择 "**预配**"，管理应用的用户帐户预配设置。
-
-   ![显示 "配置设置" 屏幕](./media/user-provisioning/provisioning_settings0.PNG)
-
-1. 为设置**模式**选择 "自动" 选项，以指定管理凭据、映射、启动和停止以及同步的设置。
-
-   - 展开 "**管理员凭据**" 以输入 Azure AD 连接到应用程序的用户管理 API 所需的凭据。 此部分还使你可以在凭据失败或预配作业进入[隔离](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)时启用电子邮件通知。
-   - 展开 "**映射**" 可查看和编辑设置或更新用户帐户时在 Azure AD 和目标应用程序之间流动的用户属性。 如果目标应用程序支持它，则可以选择配置组和用户帐户的预配。 在表中选择一个映射，以打开右侧的映射编辑器，您可以在其中查看和自定义用户属性。
-
-     **范围筛选器**告知预配服务应将源系统中的哪些用户和组设置为或取消预配到目标系统。 在 "**属性映射**" 窗格中，选择 "**源对象范围**" 以根据特定属性值进行筛选。 例如，可以指定只能将“Department”属性为“Sales”的用户列入预配范围。 有关详细信息，请参阅[使用范围筛选器](define-conditional-rules-for-provisioning-user-accounts.md)。
-
-     有关详细信息，请参阅[自定义属性映射](customize-application-attributes.md)。
-
-   - **设置**控制应用程序的预配服务的操作，包括当前是否正在运行。 "**作用域**" 菜单允许您指定是否只有分配的用户和组应处于预配范围内，或者是否应预配 Azure AD 目录中的所有用户。 有关“分配的”用户和组的信息，请参阅[在 Azure Active Directory 中将用户或组分配到企业应用](assign-user-or-group-access-portal.md)。
-
-在 "应用管理" 屏幕中，选择 "**设置日志（预览版）** " 以查看 Azure AD 预配服务运行的每个操作的记录。 有关详细信息，请参阅[预配报告指南](check-status-user-account-provisioning.md)。
-
-![示例-设置应用的日志屏幕](./media/user-provisioning/audit_logs.PNG)
-
-> [!NOTE]
-> 还可以使用 [Microsoft 图形 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) 配置和管理 Azure AD 用户预配服务。
+对于支持 SCIM 2.0 的其他应用程序，请按照[SCIM 用户预配 Azure Active Directory](use-scim-to-provision-users-and-groups.md)一文中的步骤进行操作。
 
 ## <a name="what-happens-during-provisioning"></a>预配期间会发生什么情况？
 

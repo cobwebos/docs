@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 11/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7a616e7c088548f287581b183ab86ff14d0a3933
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 60b5035506b8852c379f2e2617cdf918f09df010
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73901667"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150063"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -82,10 +82,10 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **亚特兰大** | [Equinix AT2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at2/) | 1 | 不适用 | 不适用 | Equinix、Megaport |
 | **奥克兰** | [Vocus Group NZ Albany](https://www.vocus.co.nz/business/cloud-data-centres) | 2 | 不适用 | 10G | Devoli、Kordia、Megaport、Spark NZ、Vocus Group NZ |
 | **釜山** | [LG CNS](https://www.lgcns.com/datacenter) | 2 | 韩国南部 | 不适用 | LG CNS |
-| **堪培拉** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | 澳大利亚中部 | 不适用 | CDC |
+| **堪培拉** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | 澳大利亚中部 | 10G | CDC |
 | **堪培拉 2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | 澳大利亚中部 2| 不适用 | CDC |
 | **开普敦** | [Teraco CT1](https://www.teraco.co.za/data-centre-locations/cape-town/) | 3 | 南非西部 | 10G | Internet Solutions - Cloud Connect、Liquid Telecom、Teraco |
-| **金奈** | Tata Communications | 2 | 印度南部 | 不适用 | Global CloudXchange (GCX)、SIFY、Tata Communications |
+| **金奈** | Tata Communications | 2 | 印度南部 | 10G | Global CloudXchange (GCX)、SIFY、Tata Communications |
 | **金奈 2** | Airtel | 2 | 印度南部 | 不适用 | Airtel |
 | **芝加哥** | [Equinix CH1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/chicago-data-centers/ch1/) | 1 | 美国中北部 | 10G，100G | Aryaka networks、网络，在 & T NetBond，CenturyLink Cloud Connect，Cologix，Comcast，Coresite，Equinix，InterCloud，Internet2，Level 3 通信，Megaport，PacketFabric，PCCW 全局受限，冲刺（Sprint），Telia，Verizon，Zayo |
 | **哥本哈根** | [Interxion CPH1](https://www.interxion.com/Locations/copenhagen/) | 1 | 不适用 | 10G | Interxion |
@@ -106,16 +106,16 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **洛杉矶** | [CoreSite LA1](https://www.coresite.com/data-centers/locations/los-angeles/one-wilshire) | 1 | 不适用 | 不适用 | CoreSite、Equinix、Megaport、Neutrona Networks、NTT、Transtelco、Zayo |
 | **马赛** |[Interxion MRS1](https://www.interxion.com/Locations/marseille/) | 1 | 法国南部 | 不适用 | CIX、Interxion、Jaguar 网络 |
 | **墨尔本** | [NextDC M1](https://www.nextdc.com/data-centres/m1-melbourne-data-centre) | 2 | 澳大利亚东南部 | 10G，100G | AARNet、Devoli、Equinix、Megaport、NEXTDC、Optus、Telstra Corporation、TPG 电信 |
-| **迈阿密** | [Equinix MI1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/miami-data-centers/mi1/) | 1 | 不适用 | 10G | C3ntro+、Equinix、Megaport、Neutrona Networks |
+| **迈阿密** | [Equinix MI1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/miami-data-centers/mi1/) | 1 | 不适用 | 10G | C3ntro、Equinix、Megaport、Neutrona 网络 |
 | **Milan** | [IRIDEOS](https://irideos.it/en/data-centers/) | 1 | 不适用 | 10G | |
 | **Montreal** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | 不适用 | 不适用 | 铃加拿大、Cologix、Megaport、Telus、Zayo |
 | **Mumbai** | Tata Communications | 2 | 印度西部 | 不适用 | Global CloudXchange （GCX），依赖 Jio，Sify，Tata 通信，Verizon |
 | **孟买 2** | Airtel | 2 | 印度西部 | 不适用 | Airtel、Sify、Vodafone Idea |
 | **慕尼黑工厂** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/) | 1 | 不适用 | 10G，100G | |
 | **纽约** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | 1 | 不适用 | 不适用 | CenturyLink Cloud Connect、Colt、Coresite、Equinix、InterCloud、Megaport、Packet、Zayo |
-| **Newport(Wales)** | [Next Generation Data](https://www.nextgenerationdata.co.uk) | 1 | 英国西部 | 不适用 | 英国电信，Colt，级别3通信，下一代数据 |
+| 纽波特（威尔士） | [Next Generation Data](https://www.nextgenerationdata.co.uk) | 1 | 英国西部 | 不适用 | 英国电信，Colt，级别3通信，下一代数据 |
 | **大阪** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | 2 | 日本西部 | 不适用 | Colt，Equinix，Internet 倡议日本 Inc.-IIJ，NTT 通信，NTT SmartConnect，Softbank |
-| **Oslo** | [DigiPlex Ulven](https://www.digiplex.com/locations/oslo-datacentre) | 1 | 挪威东部 | 10G，100G | |
+| **Oslo** | [DigiPlex Ulven](https://www.digiplex.com/locations/oslo-datacentre) | 1 | 挪威东部 | 10G，100G | Telenor |
 | **巴黎** | [Interxion PAR5](https://www.interxion.com/Locations/paris/) | 1 | 法国中部 | 不适用 | CenturyLink Cloud Connect、Colt、Equinix、Intercloud、Interxion、橙色、Telia 承运商、Zayo |
 | **珀斯** | [NextDC P1](https://www.nextdc.com/data-centres/p1-perth-data-centre) | 2 | 不适用 | 10G | Megaport、NextDC |
 | **魁北克市** | [Vantage](https://vantage-dc.com/data_centers/quebec-city-data-center-campus/) | 1 | 加拿大东部 | 不适用 | Bell Canada、Megaport |

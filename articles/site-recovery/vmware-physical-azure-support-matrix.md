@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: b16b6bb8ad39f7f0a5f19a2e2d4280bb73def60a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 5c20c280fdc9097692f98c83dcb3d310e9914ecf
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082197"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133360"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -208,7 +208,7 @@ Docker 磁盘配置 | 否
 来宾/服务器多路径 (MPIO) | 否
 来宾/服务器 GPT 分区 | 从[更新汇总 37](https://support.microsoft.com/help/4508614/)（移动服务版本 9.25）开始支持五个分区。 以前支持四个。
 ReFS | 移动服务版本9.23 或更高版本支持复原文件系统
-来宾/服务器 EFI/UEFI 启动 | -支持 Windows Server 2012 或更高版本、SLES SP4 和 RHEL 8。0 <br/> - 不支持安全 UEFI 启动类型。 
+来宾/服务器 EFI/UEFI 启动 | -支持 Windows Server 2012 或更高版本，具有移动代理版本9.30 的 SLES 12 SP4 和 RHEL 8。0<br/> - 不支持安全 UEFI 启动类型。 
 
 ## <a name="replication-channels"></a>复制通道
 
@@ -253,7 +253,7 @@ HUB | 是
 来宾操作系统 | 验证复制的计算机[支持的操作系统](#replicated-machines)。 | 如果不支持，检查会失败。
 来宾操作系统体系结构 | 64 位。 | 如果不支持，检查会失败。
 操作系统磁盘大小 | 最大 2,048 GB。 | 如果不支持，检查会失败。
-操作系统磁盘计数 | 1 个 | 如果不支持，检查会失败。
+操作系统磁盘计数 | 1 | 如果不支持，检查会失败。
 数据磁盘计数 | 64 或更少。 | 如果不支持，检查会失败。
 数据磁盘大小 | 复制到托管磁盘时高达 8,192 GB（9.26 版及更高版本）<br></br>复制到存储帐户时高达 4,095 GB| 如果不支持，检查会失败。
 网络适配器 | 支持多个适配器。 |

@@ -1,7 +1,7 @@
 ---
 title: OData 集合运算符引用
 titleSuffix: Azure Cognitive Search
-description: Azure 中的 OData 集合运算符、any 和 all 以及 lambda 表达式认知搜索查询。
+description: 在 Azure 认知搜索查询中创建筛选表达式时，如果筛选器位于集合或复杂集合字段，请使用 lambda 表达式中的 "any" 和 "all" 运算符。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,20 +19,20 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fdb250a844b70cef4f6941debbb1fa7450874932
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 54ddc8222816831b5b436297bbb1b40d03230f0c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793406"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113232"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Azure 认知搜索中的 OData 集合运算符-`any` 和 `all`
 
-编写要用于 Azure 认知搜索的[OData 筛选器表达式](query-odata-filter-orderby-syntax.md)时，对集合字段进行筛选通常很有用。 您可以使用 `any` 和 `all` 运算符来实现此目的。
+编写要用于 Azure 认知搜索的[OData 筛选器表达式](query-odata-filter-orderby-syntax.md)时，对集合字段进行筛选通常很有用。 可以使用 `any` 和 `all` 运算符实现这一点。
 
 ## <a name="syntax"></a>语法
 
-以下 EBNF （[扩展巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义使用 `any` 或 `all`的 OData 表达式的语法。
+以下 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义了使用 `any` 或 `all` 的 OData 表达式的语法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -45,7 +45,7 @@ collection_filter_expression ::=
 lambda_expression ::= identifier ':' boolean_expression
 ```
 
-还提供交互式语法关系图：
+下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
 > [适用于 Azure 认知搜索的 OData 语法关系图](https://azuresearch.github.io/odata-syntax-diagram/#collection_filter_expression)
@@ -53,40 +53,40 @@ lambda_expression ::= identifier ':' boolean_expression
 > [!NOTE]
 > 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)，了解完整的 EBNF。
 
-有三种形式的表达式可用于筛选集合。
+有三种形式的表达式可以筛选集合。
 
-- 前两个循环访问集合字段，将 lambda 表达式形式的谓词应用于集合的每个元素。
-  - 如果该集合中的每个元素都为 true，则使用 `all` 的表达式将返回 `true`。
-  - 如果谓词对于集合中的至少一个元素为 true，则使用 `any` 的表达式将返回 `true`。
-- 第三种形式的集合筛选器使用没有 lambda 表达式的 `any` 来测试集合字段是否为空。 如果集合中有任何元素，则它将返回 `true`。 如果集合为空，它将返回 `false`。
+- 前两个表达式遍历集合字段，将以 lambda 表达式形式给定的谓词应用于集合的每个元素。
+  - 如果集合的每个元素的谓词都为 true，则使用 `all` 的表达式将返回 `true`。
+  - 如果集合的至少一个元素的谓词为 true，则使用 `any` 的表达式将返回 `true`。
+- 第三种形式的集合筛选器使用不带 lambda 表达式的 `any` 来测试集合字段是否为空。 如果集合有任何元素，则返回 `true`。 如果集合为空，则返回 `false`。
 
-集合筛选器中的**lambda 表达式**类似于编程语言中的循环体。 它定义了一个名为**范围变量**的变量，该变量在迭代期间保存集合的当前元素。 它还定义了另一个布尔表达式，该表达式是要应用于集合的每个元素的范围变量的筛选条件。
+集合筛选器中的 **lambda 表达式**类似于编程语言中的循环体。 它定义了一个变量，称为**范围变量**，它在迭代期间保存集合的当前元素。 它还定义了另一个布尔表达式，该表达式是应用于集合的每个元素的范围变量的筛选条件。
 
 ## <a name="examples"></a>示例
 
-匹配 `tags` 字段完全包含字符串 "wifi" 的文档：
+匹配 `tags` 字段恰好包含字符串“wifi”的文档：
 
     tags/any(t: t eq 'wifi')
 
-匹配 `ratings` 字段的每个元素介于3和5（含）之间的文档：
+匹配其中 `ratings` 字段的每个元素介于 3 和 5 之间（包括 3 和 5）的文档：
 
     ratings/all(r: r ge 3 and r le 5)
 
-匹配 `locations` 字段中任意地理坐标位于给定多边形内的文档：
+匹配其中 `locations` 字段中任何地理坐标在给定多边形内的文档：
 
     locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
 
-匹配 `rooms` 字段为空的文档：
+匹配其中 `rooms` 字段为空的文档：
 
     not rooms/any()
 
-匹配所有房间的文档，`rooms/amenities` 字段包含 "电视"，`rooms/baseRate` 小于100：
+匹配对于所有房间 `rooms/amenities` 字段包含“tv”且 `rooms/baseRate` 小于 100 的文档：
 
     rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
 
 ## <a name="limitations"></a>限制
 
-并非每个筛选器表达式功能都可在 lambda 表达式的主体中使用。 此限制因你要筛选的集合字段的数据类型而异。 下表总结了这些限制。
+并非每个筛选器表达式功能都可在 Lambda 表达式主体中使用。 根据要筛选的集合字段的数据类型，限制会有所不同。 下表总结了这些限制。
 
 [!INCLUDE [Limitations on OData lambda expressions in Azure Cognitive Search](../../includes/search-query-odata-lambda-limitations.md)]
 

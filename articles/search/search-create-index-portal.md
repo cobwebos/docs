@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 门户中创建 Azure 认知搜索索引
+title: 在 Azure 门户中创建搜索索引
 titleSuffix: Azure Cognitive Search
 description: 了解如何使用内置门户索引设计器为 Azure 认知搜索创建索引。
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a9340b9c058ba780b8d74587f21c1b9fbe59576d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f2e875c625431867e6e83cfd1e0b2c6d7a2781f7
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792460"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112845"
 ---
 # <a name="create-an-azure-cognitive-search-index-in-the-portal"></a>在门户中创建 Azure 认知搜索索引
 
@@ -65,14 +65,14 @@ Azure 认知搜索在门户中包含内置索引设计器，可用于原型或�
 
 字段属性决定了字段的使用方式，例如，是否用于全文搜索、分面导航和排序等操作中。 下表介绍了每个属性。
 
-|属性|描述|  
+|属性|说明|  
 |---------------|-----------------|  
 |**可搜索**|可全文搜索，在编制索引期间遵从语法分析，例如分词。 如果将某个可搜索字段设置为“sunny day”之类的值，在内部它将拆分为单独的标记“sunny”和“day”。 有关详细信息，请参阅[全文搜索工作原理](search-lucene-query-architecture.md)。|  
 |**可筛选**|在 **$filter** 查询中引用。 `Edm.String` 或 `Collection(Edm.String)` 类型的可筛选字段不进行分词，因此，比较仅用于查找完全匹配项。 例如，如果将此类字段 f 设置为“sunny day”，则 `$filter=f eq 'sunny'` 将找不到任何匹配项，但 `$filter=f eq 'sunny day'` 可找到。 |  
 |**可排序**|默认情况下，系统按分数对结果进行排序，但可以配置基于文档中字段的排序。 `Collection(Edm.String)` 类型的字段不能为“可排序”。 |  
 |**可查找**|通常用于包括了按类别（例如特定城市中的宾馆）的命中次数的搜索结果呈现中。 此选项无法与 `Edm.GeographyPoint` 类型的字段一起使用。 `Edm.String` 类型的**可筛选**、**可排序**或**可查找**字段的长度最多可以是 32 千字节。 有关详细信息，请参阅[创建索引 (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index)。|  
 |**key**|文档在索引内的唯一标识符。 必须仅选择单个字段作为键字段，并且它必须是 `Edm.String` 类型的。|  
-|**可检索**|决定了是否可以在搜索结果中返回此字段。 当希望将某个字段（例如“利润”）用作筛选器、排序或评分机制，但不希望该字段显示给最终用户时，这很有用。 对于 `key` 字段，此属性必须为 `true`。|  
+|**可检索**|决定了是否可以在搜索结果中返回此字段。 当希望将某个字段（例如“利润”）用作筛选器、排序或评分机制，但不希望该字段显示给最终用户时，这很有用。 对于 `true` 字段，此属性必须为 `key`。|  
 
 ## <a name="next-steps"></a>后续步骤
 

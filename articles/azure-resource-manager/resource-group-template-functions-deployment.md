@@ -1,17 +1,14 @@
 ---
-title: Azure 资源管理器模板函数 - 部署 | Microsoft Docs
+title: 模板函数-部署
 description: 介绍可在 Azure 资源管理器模板中使用的用于检索部署信息的函数。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.author: tomfitz
-ms.openlocfilehash: 12698d1655c414b1ee3b9866cc975dc53e4ef095
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 17caf78fb77e330685bb45ab03aaeed611900ba0
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983995"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149640"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的部署函数 
 
@@ -25,7 +22,7 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 
 <a id="deployment" />
 
-## <a name="deployment"></a>deployment
+## <a name="deployment"></a>部署
 `deployment()`
 
 返回有关当前部署操作的信息。
@@ -145,9 +142,9 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| parameterName |是 |string |要返回的参数名称。 |
+| parameterName |是 |字符串 |要返回的参数名称。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -232,15 +229,15 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 
 上面具有默认值的示例的输出为：
 
-| 姓名 | 类型 | ReplTest1 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringOutput | String | option 1 |
-| intOutput | Int | 1 |
-| objectOutput | Object | {"one": "a", "two": "b"} |
-| arrayOutput | 阵列 | [1, 2, 3] |
+| intOutput | int | 1 |
+| objectOutput | 对象 | {"one": "a", "two": "b"} |
+| arrayOutput | Array | [1, 2, 3] |
 | crossOutput | String | option 1 |
 
-有关使用参数的详细信息，请参阅[Azure 资源管理器模板中的参数](template-parameters.md)。
+如需详细了解如何使用参数，请参阅 [Azure 资源管理器模板中的参数](template-parameters.md)。
 
 <a id="variables" />
 
@@ -251,7 +248,7 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | type | 描述 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | variableName |是 |String |要返回的变量名称。 |
 
@@ -325,14 +322,14 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 
 上面具有默认值的示例的输出为：
 
-| 姓名 | 类型 | ReplTest1 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | exampleOutput1 | String | myVariable |
-| exampleOutput2 | 阵列 | [1, 2, 3, 4] |
+| exampleOutput2 | Array | [1, 2, 3, 4] |
 | exampleOutput3 | String | myVariable |
-| exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
+| exampleOutput4 |  对象 | {"property1": "value1", "property2": "value2"} |
 
-有关使用变量的详细信息，请参阅[Azure 资源管理器模板中的变量](template-variables.md)。
+如需详细了解如何使用变量，请参阅 [Azure 资源管理器模板中的变量](template-variables.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。

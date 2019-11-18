@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/15/2019
 ms.author: dapine
-ms.openlocfilehash: efb2fd8fd6b77a27130b834c2b192c1e88eec97c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4170db596d3d4f4b197120770afa2f6e8b0f8a1c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578385"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132595"
 ---
 # <a name="install-and-run-speech-service-containers"></a>安装和运行语音服务容器
 
@@ -33,7 +33,7 @@ ms.locfileid: "73578385"
 | 文本转语音 | 用纯文本输入或语音合成标记语言（SSML）将文本转换为自然声音语音。 | 1.3.0 |
 | 自定义文本到语音转换 | 使用[自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言（SSML）将文本转换为自然声音声音。 | 1.3.0 |
 
-如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -151,7 +151,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 ```
 
 > [!IMPORTANT]
-> `latest` 标记提取 `en-US` 区域设置和 `jessarus` 语音。 有关其他区域设置，请参阅[语音到文本区域设置](#speech-to-text-locales)。
+> `latest` 标记将提取 `en-US` 区域设置。 有关其他区域设置，请参阅[语音到文本区域设置](#speech-to-text-locales)。
 
 #### <a name="speech-to-text-locales"></a>语音到文本区域设置
 
@@ -167,7 +167,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 2.0.0-amd64-en-us-preview
 ```
 
-对于 "**语音到文本**" 容器的2.0.0 版本中的所有受支持的区域设置，租约请参阅[语音到文本语言支持](language-support.md#speech-to-text)表的**容器支持**列。
+对于 "**语音到文本**" 容器的所有受支持的区域设置，请参阅[语音到文本图像标记](../containers/container-image-tags.md#speech-to-text)。
 
 # <a name="custom-speech-to-texttabcstt"></a>[自定义语音到文本](#tab/cstt)
 
@@ -209,7 +209,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 1.3.0-amd64-en-us-jessarus-preview
 ```
 
-对于**文本到语音转换**容器的1.3.0 版本中的所有受支持的区域设置和相应的声音，请参阅[标准语音语言支持](language-support.md#standard-voices)表的**容器支持**列。
+对于支持的**文本到语音转换**容器的所有区域设置和相应声音，请参阅[文本到语音图像标记](../containers/container-image-tags.md#text-to-speech)。
 
 > [!IMPORTANT]
 > 构造*标准文本到语音转换*HTTP POST 时，[语音合成标记语言（SSML）](speech-synthesis-markup.md)消息需要具有 `name` 属性的 `voice` 元素。 该值是对应的容器区域设置和语音，也称为["短名称"](language-support.md#standard-voices)。 例如，`latest` 标记的语音名称应为 `en-US-JessaRUS`。
@@ -238,7 +238,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 
 ## <a name="run-the-container-with-docker-run"></a>通过 `docker run` 运行容器
 
-使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 有关如何获取 `{Endpoint_URI}` 和 `{API_Key}` 值的详细信息，请参阅[收集必需的参数](#gathering-required-parameters)。 还提供了 `docker run` 命令的其他[示例](speech-container-configuration.md#example-docker-run-commands)。
+使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 有关如何获取 [ 和 ](#gathering-required-parameters) 值的详细信息，请参阅`{Endpoint_URI}`收集所需的参数`{API_Key}`。 还提供了 `docker run` 命令的其他[示例](speech-container-configuration.md#example-docker-run-commands)。
 
 # <a name="speech-to-texttabstt"></a>[语音转文本](#tab/stt)
 

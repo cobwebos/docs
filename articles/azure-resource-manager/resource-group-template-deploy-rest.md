@@ -1,17 +1,14 @@
 ---
-title: 使用 REST API 和模板部署资源 | Microsoft Docs
+title: 部署具有 REST API 和模板的资源
 description: 使用 Azure Resource Manager 和 Resource Manager REST API 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.author: tomfitz
-ms.openlocfilehash: 0472510801f5827327ac06a3927ca597b6caa612
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3b4242e1fec98b583d5204904bc1adbd388f7955
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834357"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149656"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>使用 Resource Manager 模板和 Resource Manager REST API 部署资源
 
@@ -51,7 +48,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 1. 设置[常见参数和标头](/rest/api/azure/)，包括身份验证令牌。
 
-1. 如果目前没有资源组，请创建资源组。 提供订阅 ID、新资源组的名称，以及解决方案所需的位置。 有关详细信息，请参阅 [创建资源组](/rest/api/resources/resourcegroups/createorupdate)。
+1. 如果目前没有资源组，请创建资源组。 提供订阅 ID、新资源组的名称，以及解决方案所需的位置。 有关详细信息，请参阅[创建资源组](/rest/api/resources/resourcegroups/createorupdate)。
 
    ```HTTP
    PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2019-05-01

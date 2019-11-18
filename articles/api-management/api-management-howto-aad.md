@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 5d2b43599c1e1f95f505d7987675e5fd40810fa4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: b0c3487bb77f32483d6d65cd0a4b1f637267eabf
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012962"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144355"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>在 Azure API 管理中使用 Azure Active Directory 授权开发人员帐户
 
@@ -33,7 +33,7 @@ ms.locfileid: "74012962"
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>使用 Azure AD 为开发人员帐户授权
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
-2. 选择 ![箭头](./media/api-management-howto-aad/arrow.png)。
+2. Select ![箭头](./media/api-management-howto-aad/arrow.png)。
 3. 在搜索框中键入 **api**。
 4. 选择“API 管理服务”。
 5. 选择自己的 API 管理服务实例。
@@ -81,12 +81,16 @@ ms.locfileid: "74012962"
 
 ## <a name="add-an-external-azure-ad-group"></a>添加外部 Azure AD 组
 
-在为 Azure AD 实例中的用户启用访问之后，可将 Azure AD 组添加到 API 管理中。 然后，可以更轻松地管理具有所需产品的组中的开发人员关联。
+为 Azure AD 租户中的用户启用访问权限后，可以将 Azure AD 组添加到 API 管理中。 因此，你可以使用 Azure AD 组控制产品可见性。
 
- > [!IMPORTANT]
- > 若要添加外部 Azure AD 组，必须先按照之前部分中的过程在“标识”选项卡中配置 Azure AD 实例。 另外，必须通过 `Directory.Read.All` 权限为应用程序授予范围 Azure AD 图形 API 的权限。 
+若要将外部 Azure AD 组添加到 APIM 中，必须先完成上一部分。 此外，必须通过执行以下步骤，向已注册的应用程序授予 `Directory.ReadAll` 权限图形 API 对 Azure Active Directory 的访问权限： 
 
-可从 API 管理实例的“组”选项卡添加外部 Azure AD 组。
+1. 返回到在上一部分中创建的应用注册
+2. 单击 " **API 权限**" 选项卡，然后单击 " **+ 添加权限**" 按钮 
+3. 在 "**请求 API 权限**" 窗格中，选择 " **Microsoft api** " 选项卡，然后滚动到底部，找到 "支持的旧版 api" 部分下的 " **Azure Active Directory 图形**" 磁贴，然后单击它。 然后单击 "**应用程序权限**" 按钮，然后选择 " **ReadAll** " 权限，然后使用底部的按钮添加该权限。 
+4. 单击 "**授予对 {tenantname} 的管理员许可**" 按钮，以便为该目录中的所有用户授予访问权限。 
+
+现在，你可以通过 API 管理实例的 "**组**" 选项卡添加外部 Azure AD 组。
 
 1. 选择“组”选项卡。
 2. 选择“添加 AAD 组”按钮。

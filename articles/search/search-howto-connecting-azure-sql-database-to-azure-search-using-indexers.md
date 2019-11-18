@@ -1,5 +1,5 @@
 ---
-title: 使用索引器连接并编制 Azure SQL 数据库内容的索引
+title: 在 Azure SQL 数据上搜索
 titleSuffix: Azure Cognitive Search
 description: 使用索引器从 Azure SQL 数据库导入数据，以便在 Azure 认知搜索中进行全文搜索。 本文介绍连接、索引器配置和数据引入。
 manager: nitinme
@@ -9,14 +9,14 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 012f555f3837086946eb4581dadc74011a3acc09
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792189"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113306"
 ---
-# <a name="connect-to-and-index-azure-sql-database-content-using-azure-cognitive-search-indexers"></a>使用 Azure 认知搜索索引器连接到 Azure SQL 数据库内容并为其编制索引
+# <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>使用 Azure 认知搜索索引器连接到 Azure SQL 数据库内容并为其编制索引
 
 必须先使用数据填充[Azure 认知搜索索引](search-what-is-an-index.md)，然后才能对其进行查询。 如果数据驻留在 Azure SQL 数据库中，则**适用于 AZURE Sql 数据库的 azure 认知搜索索引器**（或 Short 的**azure sql 索引器**）可自动执行索引过程，这意味着编写的代码更少，但要注意的基础结构更少。
 
@@ -280,13 +280,13 @@ Azure 认知搜索使用**增量索引**，以避免每次索引器运行时都�
 | smalldatetime、datetime、datetime2、date、datetimeoffset |Edm.DateTimeOffset、Edm.String | |
 | uniqueidentifer |Edm.String | |
 | geography |Edm.GeographyPoint |仅支持具有 SRID 4326（这是默认值）的类型 POINT 的地理实例 |
-| rowversion |N/A |行版本列不能存储在搜索索引中，但可用于更改跟踪 |
-| time、timespan、binary、varbinary、image、xml、geometry、CLR 类型 |N/A |不支持 |
+| rowversion |不适用 |行版本列不能存储在搜索索引中，但可用于更改跟踪 |
+| time、timespan、binary、varbinary、image、xml、geometry、CLR 类型 |不适用 |不支持 |
 
 ## <a name="configuration-settings"></a>配置设置
 SQL 索引器公开多个配置设置：
 
-| 设置 | 数据类型 | 用途 | 默认值 |
+| 设置 | 数据类型 | 目的 | 默认值 |
 | --- | --- | --- | --- |
 | queryTimeout |字符串 |设置 SQL 查询执行的超时 |5 分钟（“00:05:00”） |
 | disableOrderByHighWaterMarkColumn |bool |导致高使用标记策略使用的 SQL 查询省略 ORDER BY 子句。 请参阅[高使用标记策略](#HighWaterMarkPolicy) |false |
@@ -299,7 +299,7 @@ SQL 索引器公开多个配置设置：
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 **问：是否可以将 Azure SQL 索引器与在 Azure 中的 IaaS VM 上运行的 SQL 数据库配合使用？**
 
@@ -311,7 +311,7 @@ SQL 索引器公开多个配置设置：
 
 **问：是否可以将 Azure SQL 索引器与在 Azure 上的 IaaS 中运行的除 SQL Server 之外的其他数据库配合使用？**
 
-不。 我们不支持此方案，因为我们尚未使用除 SQL Server 以外的任何数据库测试该索引器。  
+不能。 我们不支持此方案，因为我们尚未使用除 SQL Server 以外的任何数据库测试该索引器。  
 
 **问：是否可以创建多个按计划运行的索引器？**
 

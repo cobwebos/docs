@@ -1,5 +1,5 @@
 ---
-title: 在 Android 语音服务上通过语音 SDK 流编解码器压缩音频
+title: 在 Android 上通过语音 SDK 流式处理编解码器压缩音频
 titleSuffix: Azure Cognitive Services
 description: 了解如何通过适用于 Android 的语音 SDK 将压缩音频流式传输到 Azure Speech Services。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 2e741e8a8df2cebff167a381cef41351ead4c6cf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 76a4b010dd54a9cc6224432adf615814520ef4fd
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464370"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109904"
 ---
-# <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>在 Android 上将编解码器压缩的音频输入与 Speech SDK 一起使用
+# <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>如何：在 Android 上将编解码器压缩的音频输入与 Speech SDK 一起使用
 
 语音 SDK 的**压缩音频输入流** API 提供了一种使用 PullStream 或 PushStream 将压缩音频流式传输到语音服务的方法。
 
@@ -25,7 +25,7 @@ ms.locfileid: "73464370"
 > 目前[ C++，Linux （ubuntu 16.04、ubuntu 18.04 C#、Debian 9）上的、和 Java](how-to-use-codec-compressed-audio-input-streams.md)支持流式传输的输入音频。 它在 Android 和[iOS 平台中](how-to-use-codec-compressed-audio-input-streams-ios.md)的适用于 Java 的 Java 也是支持的。
 > 需要语音 SDK 版本1.7.0 或更高版本。
 
-有关 wav/PCM，请参阅主线语音文档。  在 wav/PCM 之外，支持以下编解码器压缩的输入格式：
+有关 wav/PCM，请参阅主线语音文档。 在 wav/PCM 之外，支持以下编解码器压缩的输入格式：
 
 - MP3
 - OPUS/OGG
@@ -35,9 +35,9 @@ ms.locfileid: "73464370"
 
 ## <a name="prerequisites-to-using-codec-compressed-audio-input-on-android"></a>在 Android 上使用编解码器压缩的音频输入的先决条件
 
-编解码器压缩的音频是使用[适用 gstreamer](https://gstreamer.freedesktop.org)实现的。 出于许可原因，不会用 SDK 编译适用 gstreamer 二进制文件。 需要使用适用于 Android 的预生成的二进制文件。 若要下载预构建的库，请参阅[安装 Android 开发](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)。 
+编解码器压缩的音频是使用[适用 gstreamer](https://gstreamer.freedesktop.org)实现的。 出于许可原因，不会用 SDK 编译适用 gstreamer 二进制文件。 需要使用适用于 Android 的预生成的二进制文件。 若要下载预构建的库，请参阅[安装 Android 开发](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)。
 
-需要 `libgstreamer_android.so`。 请确保适用 gstreamer 插件链接 `libgstreamer_android.so`。
+`libgstreamer_android.so` 是必需的。 请确保适用 gstreamer 插件链接 `libgstreamer_android.so`。
 
 ```make
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 audioresample audioparsers ogg opusparse opus wavparse alaw mulaw flac
@@ -160,4 +160,4 @@ String text = result.getText();
 ## <a name="next-steps"></a>后续步骤
 
 - [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-* [请参阅如何在 Java 中识别语音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)
+- [请参阅如何在 Java 中识别语音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

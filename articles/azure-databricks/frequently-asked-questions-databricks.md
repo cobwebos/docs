@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 0436a0898f27d3059069ce2df1fdfb143a98f325
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3febdbc8f55f6ccd65eba97de984a9a38ddf214e
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601806"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129318"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>有关 Azure Databricks 的常见问题解答
 
@@ -29,12 +29,12 @@ ms.locfileid: "73601806"
 
 ## <a name="how-do-i-access-azure-data-lake-storage-from-a-notebook"></a>从笔记本如何实现访问 Azure Data Lake Storage？ 
 
-执行以下步骤:
+执行以下步骤：
 1. 在 Azure Active Directory (Azure AD) 中预配服务主体并记录其密钥。
 1. 在 Data Lake Storage 中，将所需的权限分配给服务主体。
 1. 若要在 Data Lake Storage 中访问文件，请使用笔记本中的服务主体凭据。
 
-有关详细信息，请参阅[将 Azure Data Lake Storage 与 Azure Databricks 配合使用](/azure/databricks/data/data-sources/azure/azure-datalake.html)。
+有关详细信息，请参阅[将 Azure Data Lake Storage 与 Azure Databricks 配合使用](/azure/databricks/data/data-sources/azure/azure-datalake)。
 
 ## <a name="fix-common-problems"></a>解决常见问题
 
@@ -67,7 +67,7 @@ ms.locfileid: "73601806"
 
 * 如果电子邮件域名在 Azure AD 中被分配给多个目录，也可能会发生此错误。 若要解决此问题，可在包含订阅和 Databricks 工作区的目录中创建新用户。
 
-    a. 在 Azure 门户中，转到 Azure AD。 依次选择“用户和组” > “添加用户”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 Azure 门户中，转到 Azure AD。 依次选择“用户和组” > “添加用户”。
 
     b. 使用 `@<tenant_name>.onmicrosoft.com` 电子邮件而非 `@<your_domain>` 电子邮件添加用户。 可在 Azure 门户中 Azure AD 下的“自定义域”中找到此选项。
     

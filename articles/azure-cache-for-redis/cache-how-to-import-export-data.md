@@ -1,25 +1,17 @@
 ---
-title: 在 Azure Redis 缓存中导入和导出数据 | Microsoft Docs
+title: 在 Azure Redis 缓存中导入和导出数据
 description: 了解如何使用高级 Azure Redis 缓存实例在 blob 存储中导入和导出数据
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 4a68ac38-87af-4075-adab-569d37d7cc9e
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: fda366f631e392379bd52b4bba728d0373f3e75e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: e4265cf3f9c211a19fe05bc18cf47a273165c3c3
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756733"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122776"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>在 Azure Redis 缓存中导入和导出数据
 导入/导出是一种 Azure Redis 缓存数据管理操作，可用于通过从高级缓存导入 Azure Redis 缓存数据库 (RDB) 快照以及将 Azure Redis 缓存数据库 (RDB) 快照导出到 Azure 存储帐户中的 blob 来相应地将数据导入到 Azure Redis 缓存以及从 Azure Redis 缓存导出数据。 
@@ -40,20 +32,20 @@ ms.locfileid: "72756733"
 导入可用于从任何云或环境中运行的任何 Redis 服务器引入与 Redis 兼容的 RDB 文件，包括在 Linux、Windows 上运行的 Redis 或任何云提供程序（如 Amazon Web Services 等）。 导入数据是使用预先填充的数据创建缓存的简单方式。 在导入过程中，Azure Redis 缓存从 Azure 存储将 RDB 文件加载到内存中，再将密钥插入到缓存中。
 
 > [!NOTE]
-> 在开始导入操作之前，请确保 Redis 数据库 (RDB) 文件已上传到 Azure 存储的页 blob 或块 blob 中，并与 Azure Redis 缓存实例在同一区域和订阅中。 有关详细信息，请参阅 [Azure Blob 存储入门](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 如果已使用 [Azure Redis 缓存导出](#export)功能导出 RDB 文件，则 RDB 文件已存储在页 blob 中并已准备好进行导入。
+> 在开始导入操作之前，请确保 Redis 数据库 (RDB) 文件已上传到 Azure 存储的页 blob 或块 blob 中，并与 Azure Redis 缓存实例在同一区域和订阅中。 有关详细信息，请参阅 [Get started with Azure Blob storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md)（Azure Blob 存储入门）。 如果已使用 [Azure Redis 缓存导出](#export)功能导出 RDB 文件，则 RDB 文件已存储在页 blob 中并已准备好进行导入。
 >
 >
 
-1. 若要导入一个或多个导出的缓存 blob，请在 Azure 门户中[浏览到你的缓存](cache-configure.md#configure-azure-cache-for-redis-settings)，并在“资源菜单”中单击“导入数据”。
+1. 要导入一个或多个导出的缓存 blob，请在 Azure 门户中[浏览到你的缓存](cache-configure.md#configure-azure-cache-for-redis-settings)，并在“资源菜单”中单击“导入数据”。
 
     ![导入数据](./media/cache-how-to-import-export-data/cache-import-data.png)
-2. 单击“选择 Blob”，并选择包含要导入数据的存储帐户。
+2. 单击“选择 Blob”，选择包含要导入的数据的存储帐户。
 
     ![选择存储帐户](./media/cache-how-to-import-export-data/cache-import-choose-storage-account.png)
 3. 单击包含要导入数据的容器。
 
     ![选择容器](./media/cache-how-to-import-export-data/cache-import-choose-container.png)
-4. 通过单击 blob 名称的左侧区域选择要导入的一个或多个 blob，并单击“选择”。
+4. 通过单击 blob 名称左侧的区域选择要导入的一个或多个 blob，并单击“选择”。
 
     ![选择 blob](./media/cache-how-to-import-export-data/cache-import-choose-blobs.png)
 5. 单击“导入”以开始导入过程。
@@ -72,7 +64,7 @@ ms.locfileid: "72756733"
 ## <a name="export"></a>导出
 使用导出可以将 Azure Redis 缓存中存储的数据导出到与 Redis 兼容的 RDB 文件。 可以使用此功能将一个 Azure Redis 缓存实例中的数据移到另一个 Azure Redis 缓存实例或另一个 Redis 服务器。 在导出过程中，会在托管 Azure Redis 缓存服务器实例的 VM 上创建临时文件，并将该文件上传到指定的存储帐户。 导出操作完成后，无论状态为成功还是失败，都会删除临时文件。
 
-1. 要将缓存的当前内容导出到存储，请在 Azure 门户中[浏览到缓存](cache-configure.md#configure-azure-cache-for-redis-settings)，然后在“资源菜单”中单击“导出数据”。
+1. 要将缓存的当前内容导出到存储，请在 Azure 门户中[浏览到你的缓存](cache-configure.md#configure-azure-cache-for-redis-settings)，并在“资源菜单”中单击“导出数据”。
 
     ![选择存储容器](./media/cache-how-to-import-export-data/cache-export-data-choose-storage-container.png)
 2. 单击“选择存储容器”并选择所需的存储帐户。 存储帐户必须与缓存在同一订阅和区域中。
@@ -85,7 +77,7 @@ ms.locfileid: "72756733"
 3. 选择所需的 blob 容器，并单击“选择”。 要使用新容器，请单击“添加容器”，先添加容器，再从列表中选择容器。
 
     ![选择存储容器](./media/cache-how-to-import-export-data/cache-export-data-container.png)
-4. 键入 Blob 名称前缀，并单击“导出”以开始导出过程。 blob 名称前缀用作此导出操作生成的文件名的前缀。
+4. 键入 **Blob 名称前缀**，并单击“导出”以开始导出过程。 blob 名称前缀用作此导出操作生成的文件名的前缀。
 
     ![导出](./media/cache-how-to-import-export-data/cache-export-data.png)
 
@@ -103,17 +95,17 @@ ms.locfileid: "72756733"
 * [可以导入哪些 RDB 版本？](#what-rdb-versions-can-i-import)
 * [导入/导出操作期间缓存是否可用？](#is-my-cache-available-during-an-importexport-operation)
 * [能否对 Redis 群集使用导入/导出？](#can-i-use-importexport-with-redis-cluster)
-* [导入/导出如何与自定义数据库设置结合使用？](#how-does-importexport-work-with-a-custom-databases-setting)
+* [导入/导出如何可用于自定义数据库设置？](#how-does-importexport-work-with-a-custom-databases-setting)
 * [导入/导出与 Redis 持久性有何区别？](#how-is-importexport-different-from-redis-persistence)
 * [能否使用 PowerShell、CLI 或其他管理客户端自动执行导入/导出？](#can-i-automate-importexport-using-powershell-cli-or-other-management-clients)
-* [我在导入/导出操作期间收到超时错误。这是什么意思？](#i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean)
-* [将数据导出到 Azure Blob 存储时出错。发生了什么事？](#i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened)
+* [我在导入/导出操作期间收到超时错误。它意味着什么？](#i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean)
+* [在将我的数据导出到 Azure Blob 存储时收到错误。发生了什么情况？](#i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened)
 
 ### <a name="what-pricing-tiers-can-use-importexport"></a>哪些定价层可以使用导入/导出？
 导入/导出仅在高级定价层中可用。
 
 ### <a name="can-i-import-data-from-any-redis-server"></a>能否从任何 Redis 服务器导入数据？
-能，除了导入从 Azure Redis 缓存实例导出的数据外，还可以从任何云或环境中运行的任何 Redis 服务器导入 RDB 文件，如 Linux、Windows 或云提供程序（如 Amazon Web Services）。 为此，请从所需的 Redis 服务器将 RDB 文件上传到 Azure 存储帐户中的页 blob 或块 blob，然后将其导入到高级 Azure Redis 缓存实例中。 例如，你可能想要从生产缓存导出数据，然后将其导入到用作过渡环境一部分的缓存，用于测试或迁移。
+能，除了导入从 Azure Redis 缓存实例导出的数据外，还可以从任何云或环境中运行的任何 Redis 服务器导入 RDB 文件，如 Linux、Windows 或云提供程序（如 Amazon Web Services）。 为此，请从所需的 Redis 服务器将 RDB 文件上传到 Azure 存储帐户中的页 blob 或块 blob，然后将其导入到高级 Azure Redis 缓存实例中。 例如，建议从生产缓存导出数据，并将其导入到用作过渡环境的一部分的缓存，用于测试或迁移。
 
 > [!IMPORTANT]
 > 使用页 blob 时，要成功导入从非 Azure Redis 缓存的 Redis 服务器导出的数据，页 blob 大小必须在 512 字节边界上对齐。 有关用于执行任何所需的字节填充的示例代码，请参阅[示例页 blob 上传](https://github.com/JimRoberts-MS/SamplePageBlobUpload)。
@@ -125,7 +117,7 @@ ms.locfileid: "72756733"
 对于 RDB 版本 7，Azure Redis 缓存支持 RDB 导入。
 
 ### <a name="is-my-cache-available-during-an-importexport-operation"></a>导入/导出操作期间缓存是否可用？
-* **导出** - 缓存保持可用，可在导出操作过程中继续使用缓存。
+* **导出** - 缓存保持可用，可以在导出操作过程中继续使用缓存。
 * **导入** - 在导入操作开始时，缓存即变为不可用，在导入操作完成后，缓存变为可供使用。
 
 ### <a name="can-i-use-importexport-with-redis-cluster"></a>能否对 Redis 群集使用导入/导出？
@@ -154,7 +146,7 @@ Azure Redis 缓存暂留能够将 Redis 中存储的数据长期保存在 Azure 
 
 若要解决此问题，请在经过 15 分钟前发起导入或导出操作。
 
-### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>在将数据导出到 Azure Blob 存储时遇到错误。 发生了什么情况？
+### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>在将我的数据导出到 Azure Blob 存储时收到错误。 发生了什么情况？
 导出仅适用于以页 blob 形式存储的 RDB 文件。 目前不支持其他 blob 类型，包括带有热层和冷层的 Blob 存储帐户。 有关详细信息，请参阅 [Azure 存储帐户概述](../storage/common/storage-account-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤

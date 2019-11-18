@@ -1,5 +1,5 @@
 ---
-title: '将 Azure VPN 网关连接到多个基于策略的本地 VPN 设备: Azure 资源管理器: PowerShell | Microsoft Docs'
+title: Azure VPN 网关：将网关连接到多个基于策略的本地 VPN 设备
 description: 使用 Azure 资源管理器和 PowerShell 将基于路由的 Azure VPN 网关配置到多个基于策略的 VPN 设备。
 services: vpn-gateway
 documentationcenter: na
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: yushwang
-ms.openlocfilehash: c753320b8d525e0c3ac031777bee15ba2050fcc0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f307e37debe47d2d352b1a375259fe7a0d6dd3cd
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495673"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74146712"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>使用 PowerShell 将 Azure VPN 网关连接到多个基于策略的本地 VPN 设备
 
@@ -28,7 +28,7 @@ ms.locfileid: "73495673"
 * 基于策略的 VPN 设备结合使用两个网络的前缀组合来定义流量通过 IPsec 隧道加密/解密的方式。 它通常基于执行包筛选的防火墙设备。 包筛选和处理引擎添加了 IPsec 隧道加密和解密。
 * 基于路由的 VPN 设备使用任意到任意（通配符）流量选择器，并让路由/转发表将流量直接导向不同 IPsec 隧道。 它通常基于路由器平台，在此平台中，每个 IPsec 隧道建模为网络接口或 VTI（虚拟隧道接口）。
 
-下图突出显示了这两种模型：
+下图突出显示了以下两种模型：
 
 ### <a name="policy-based-vpn-example"></a>基于策略的 VPN 示例
 ![基于策略](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedmultisite.png)
@@ -39,7 +39,7 @@ ms.locfileid: "73495673"
 ### <a name="azure-support-for-policy-based-vpn"></a>Azure 对基于策略的 VPN 的支持情况
 目前，Azure 支持两种 VPN 网关模式：基于路由的 VPN 网关和基于策略的 VPN 网关。 两者基于不同的内部平台，因而规格也不同：
 
-|                          | 基于策略的 VPN 网关 | **RouteBased VPN 网关**       |**RouteBased VPN 网关**                          |
+|                          | 基于策略的 VPN 网关 | 基于路由的 VPN 网关       |基于路由的 VPN 网关                          |
 | ---                      | ---                         | ---                              |---                                                 |
 | Azure 网关 SKU    | 基本                       | 基本                            | Standard、高性能、VpnGw1、VpnGw2、VpnGw3  |
 | IKE 版本          | IKEv1                       | IKEv2                            | IKEv1 和 IKEv2                                    |
@@ -146,7 +146,7 @@ New-AzLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location $Loc
 #### <a name="1-create-an-ipsecike-policy"></a>1. 创建 IPsec/IKE 策略
 
 > [!IMPORTANT]
-> 需要创建一个 IPsec/IKE 策略才能在连接上启用“UsePolicyBasedTrafficSelectors”选项。
+> 需创建 IPsec/IKE 策略，才能对连接启用“UsePolicyBasedTrafficSelectors”选项。
 
 下面的示例使用以下算法和参数创建 IPsec/IKE 策略：
 * IKEv2：AES256、SHA384、DHGroup24

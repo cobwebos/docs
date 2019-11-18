@@ -1,5 +1,6 @@
 ---
-title: 使用点到站点 VPN 和本机 Azure 证书身份验证从计算机连接到 Azure 虚拟网络： Azure 门户 |Microsoft Docs
+title: 使用 P2S VPN 连接到 VNet & 证书身份验证：门户
+titleSuffix: Azure VPN Gateway
 description: 使用 P2S 和自签名证书或 CA 颁发的证书将 Windows、Mac OS X 和 Linux 客户端安全地连接到 Azure 虚拟网络。 本文使用 Azure 门户。
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7d6941c347f1121654084c8d71ba7c0a293bf558
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: c1435a2295804a0ad43f640d7317a6e1d3f56aea
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72333248"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150099"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>使用本机 Azure 证书身份验证配置与 VNet 的点到站点 VPN 连接： Azure 门户
 
@@ -55,7 +56,7 @@ ms.locfileid: "72333248"
 
 ## <a name="creategw"></a>2. 创建虚拟网络网关
 
-在此步骤中，为 VNet 创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选网关 SKU。
+在此步骤中为 VNet 创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选网关 SKU。
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
@@ -87,7 +88,7 @@ Azure 使用证书对通过点到站点 VPN 连接连接到 VNet 的客户端进
 2. 单击“立即配置”，打开配置页。
 
    ![立即配置](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
-3. 在“点到站点”配置页的“地址池”框中，添加要使用的专用 IP 地址范围。 VPN 客户端动态接收指定范围内的 IP 地址。 对于主动/被动或主动/主动配置，最小子网掩码为29位。 单击“保存”验证和保存设置。
+3. 在“点到站点”配置页的“地址池”框中，添加要使用的专用 IP 地址范围。 VPN 客户端动态接收指定范围内的 IP 地址。 主动/被动配置的最小子网掩码为 29 位，主动/主动配置的最小子网掩码为 28 位。 单击“保存”验证和保存设置。
 
    ![客户端地址池](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
 
@@ -116,7 +117,7 @@ Azure 使用证书对通过点到站点 VPN 连接连接到 VNet 的客户端进
 3. 使用记事本之类的文本编辑器打开该证书。 复制证书数据时，请确保将文本复制为一个无回车符或换行符的连续行。 可能需要在文本编辑器中将视图修改为“显示符号/显示所有字符”以查看回车符和换行符。 仅将以下部分复制为一个连续行：
 
    ![证书数据](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png)
-4. 将证书数据粘贴到“公共证书数据”字段中。 “命名”该证书，并单击“保存”。 最多可以添加 20 个受信任的根证书。
+4. 将证书数据粘贴到“公共证书数据”字段中。 **命名**该证书，然后单击“保存”。 最多可以添加 20 个受信任的根证书。
 
    ![证书上传](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png)
 5. 单击页面顶部的“保存”来保存所有配置设置。
@@ -144,7 +145,7 @@ VPN 客户端配置文件包含的设置用来对设备进行配置以通过 P2S
 >
 >
 
-1. 若要连接到 VNet，请在客户端计算机上导航到 VPN 连接，找到创建的 VPN 连接。 其名称与虚拟网络的名称相同。 单击“连接”。 可能会出现与使用证书相关的弹出消息。 单击“继续”使用提升的权限。
+1. 要连接到 VNet，请在客户端计算机上，导航到 VPN 连接，找到创建的 VPN 连接。 其名称与虚拟网络的名称相同。 单击“连接”。 可能会出现与使用证书相关的弹出消息。 单击“继续”使用提升的权限。
 
 2. 在“连接”状态页上，单击“连接”以启动连接。 如果看到“选择证书”屏幕，请确保所显示的客户端证书是要用来连接的证书。 如果不是，请使用下拉箭头选择正确的证书，并单击“确定”。
 

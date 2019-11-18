@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 986e146e2129d26aa6accd747c89e12462d46667
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: cf9a57b58740d1a759e00f10f6f327d605e91148
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931144"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123638"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -228,7 +228,7 @@ SDK 的主要功能包括：
     + 添加了 psutil 作为 `automl` 的依赖项，作为 amlcompute 中的 conda 依赖项包含在 psutil 中。
     + 修复了预测数据集上启发式滞后和滚动窗口大小的问题，这可能会导致线性代数错误
       + 为预测运行中的试探性地确定参数添加了打印输出。
-  + **[contrib-datadrift](https://docs.microsoft.com/python/api/azureml-contrib-datadrift)**
+  + **contrib-datadrift**
     + 如果数据集级别偏移不在第一部分中，则在创建输出指标时添加了保护。
   + **contrib-解释**
     + contrib-说明-模型包已重命名为 contrib-解释
@@ -280,16 +280,16 @@ SDK 的主要功能包括：
         experiment2 = Experiment(workspace, "Active Experiment")
         experiment1.reactivate(new_name="Previous Active Experiment")
         ```
-        试验中的静态方法[列表（）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment#list-workspace--experiment-name-none--view-type--activeonly--)可以采用名称筛选器和 ViewType 筛选器。 ViewType 值为 "ACTIVE_ONLY"、"ARCHIVED_ONLY" 和 "ALL"。 示例： 
+        试验中的静态方法[列表（）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment#list-workspace--experiment-name-none--view-type--activeonly---tags-none-)可以采用名称筛选器和 ViewType 筛选器。 ViewType 值为 "ACTIVE_ONLY"、"ARCHIVED_ONLY" 和 "ALL"。 示例： 
         
         ```py
         archived_experiments = Experiment.list(workspace, view_type="ARCHIVED_ONLY")
         all_first_experiments = Experiment.list(workspace, name="First Experiment", view_type="ALL")
         ```
     + 支持使用模型部署和服务更新的环境。
-  + **[azureml-datadrift](https://docs.microsoft.com/python/api/azureml-contrib-datadrift)**
-    + [DataDriftDetector](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector)类的 show 属性不支持可选参数 "with_details"。 Show 特性只显示特征列的数据偏移系数和数据偏移量。
-    + DataDriftDetector 函数[get_output](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector#get-output-start-time--end-time--run-id-none--daily-latest-only-true-)行为更改：
+  + **[azureml-datadrift](https://docs.microsoft.com/python/api/azureml-datadrift)**
+    + [DataDriftDetector](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector)类的 show 属性不支持可选参数 "with_details"。 Show 特性只显示特征列的数据偏移系数和数据偏移量。
+    + DataDriftDetector 函数 [get_output]https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#get-output-start-time-none--end-time-none--run-id-none-) 行为更改：
       + 输入参数 start_time，end_time 是可选的，而不是必需的;
       + 对于同一调用中具有特定 run_id 的输入特定 start_time 和/或 end_time，将导致值错误异常，因为它们相互排斥; 
       + 按输入特定 start_time 和/或 end_time，将只返回计划运行的结果; 
@@ -909,7 +909,7 @@ SDK 的主要功能包括：
 + **预览功能**
     + 通过 MLflow 包（[例如笔记本](https://aka.ms/azureml-mlflow-examples)）与[MLflow](https://mlflow.org) 1.0.0 跟踪进行集成。
     + 提交 Jupyter 笔记本作为运行。 [API 参考文档](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
-    + 公共预览版通过 contrib-datadrift 包（[示例笔记本](https://aka.ms/azureml-datadrift-example)）的[数据偏移检测](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift?view=azure-ml-py)程序。 数据偏移是模型准确性随时间推移而降低的主要原因之一。 在生产环境中为模型提供的数据不同于对模型进行定型的数据时，会发生这种情况。 AML 数据偏移检测探测器可帮助客户监视数据偏移并在检测到偏差时发送警报。 
+    + 公共预览版通过 contrib-datadrift 包（[示例笔记本](https://aka.ms/azureml-datadrift-example)）的[数据偏移检测](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class))程序。 数据偏移是模型准确性随时间推移而降低的主要原因之一。 在生产环境中为模型提供的数据不同于对模型进行定型的数据时，会发生这种情况。 AML 数据偏移检测探测器可帮助客户监视数据偏移并在检测到偏差时发送警报。 
 
 + **重大更改**
 
@@ -1050,7 +1050,7 @@ SDK 的主要功能包括：
 ### <a name="mlops"></a>MLOps
 + **用于计分容器 & 调试的本地部署**<br/> 现在，你可以在本地部署 ML 模型并快速循环访问评分文件和依赖项，以确保它们按预期方式运行。
 
-+ **引入了 InferenceConfig & Model （）**<br/> 模型部署现在支持使用条目脚本指定源文件夹，与 .Runconfig 相同。  此外，模型部署已简化为单个命令。
++ **Introduced InferenceConfig & Model.deploy()**<br/> 模型部署现在支持使用条目脚本指定源文件夹，与 .Runconfig 相同。  此外，模型部署已简化为单个命令。
 
 + **Git 引用跟踪**<br/> 客户已请求使用基本 Git 集成功能，因为它有助于维持端到端的审核线索。 我们已经跨 Azure ML 中的主要实体实现了跨 Git 相关元数据（存储库、提交、清理状态）的跟踪。 此信息将由 SDK 和 CLI 自动收集。
 

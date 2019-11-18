@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 4a2323212d2112e17dc613040434d54516aad9d3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 03351e964fc7247f87d0b823fae06fc03ff18de7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073702"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74152100"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Key Vault 虚拟机扩展
 
@@ -40,7 +40,7 @@ Key Vault VM 扩展支持以下版本的 Windows：
           "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
       ],
       "properties": {
-            "publisher": "Microsoft.Azure.KeyVault.Edp",
+            "publisher": "Microsoft.Azure.KeyVault",
             "type": "KeyVaultForWindows",
             "typeHandlerVersion": "1.0",
             "autoUpgradeMinorVersion": true,
@@ -68,7 +68,7 @@ Key Vault VM 扩展支持以下版本的 Windows：
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | 日期 |
-| 发布者 | Microsoft.Azure.KeyVault.Edp | 字符串 |
+| 发布者 | Microsoft.Azure.KeyVault| 字符串 |
 | type | KeyVaultForWindows | 字符串 |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | 字符串 |
@@ -95,7 +95,7 @@ Key Vault VM 扩展支持以下版本的 Windows：
           "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
       ],
       "properties": {
-            "publisher": "Microsoft.Azure.KeyVault.Edp",
+            "publisher": "Microsoft.Azure.KeyVault",
             "type": "KeyVaultForWindows",
             "typeHandlerVersion": "1.0",
             "autoUpgradeMinorVersion": true,
@@ -125,7 +125,7 @@ Key Vault VM 扩展支持以下版本的 Windows：
             '", "certificateStoreLocation": "' + <certStoreLoc> + 
             '", "observedCertificates": ["' + <observedCerts> + '"] } }'
         $extName =  "KeyVaultForWindows"
-        $extPublisher = "Microsoft.Azure.KeyVault.Edp"
+        $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForWindows"
        
     
@@ -145,7 +145,7 @@ Key Vault VM 扩展支持以下版本的 Windows：
             '", "certificateStoreLocation": "' + <certStoreLoc> + 
             '", "observedCertificates": ["' + <observedCerts> + '"] } }'
         $extName = "KeyVaultForWindows"
-        $extPublisher = "Microsoft.Azure.KeyVault.Edp"
+        $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForWindows"
         
         # Add Extension to VMSS

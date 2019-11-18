@@ -12,12 +12,12 @@ ms.subservice: development
 ms.date: 11/06/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 96d66e6190732d88ba9a33094b6c27bbadfd4aae
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 758c9b323e78e7e86312555f5fabdcc9c4c28330
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747804"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123727"
 ---
 # <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>适用于 SQL 数据仓库的 Visual Studio 2019 入门
 Visual Studio **2019** SQL Server Data Tools (SSDT) 是一个工具，可用于执行以下操作：
@@ -32,7 +32,22 @@ Visual Studio **2019** SQL Server Data Tools (SSDT) 是一个工具，可用于�
 ## <a name="install-visual-studio-2019"></a>安装 Visual Studio 2019
 请参阅[下载 Visual studio 2019][]下载并安装 visual studio **16.3 及更高**版本。 在安装过程中，选择“数据存储和处理”工作负载。 Visual Studio 2019 不再需要单独安装 SSDT。
 
+## <a name="unsupported-features-in-ssdt"></a>SSDT 中不支持的功能
+
+有时，SQL 数据仓库的功能版本可能不包括对 SSDT 的支持。 当前不支持以下功能：
+
+- [具体化视图](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)（正在进行）
+- [有序聚集列存储索引](https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest#examples--and-)（进行中）
+- [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)（进行中）
+- [工作负荷管理](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-management)-工作负荷组和分类器（进行中）
+- [行级安全](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?view=sql-server-ver15)
+  - 提交支持票证或[在此处](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security)投票以获取支持的功能。
+- [动态数据屏蔽](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc.json&view=sql-server-2017#defining-a-dynamic-data-mask)
+  - 提交支持票证或[在此处](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking)投票以获取支持的功能。 
+- [PREDICT](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=sql-server-ver15&viewFallbackFrom=azure-sqldw-latest)函数 
+
 ## <a name="next-steps"></a>后续步骤
+
 安装最新版本的 SSDT 后，便可以[连接][connect]到 SQL 数据仓库。
 
 <!--Anchors-->
