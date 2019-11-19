@@ -1,18 +1,14 @@
 ---
-title: 使用 Azure 备份将 SAP HANA 数据库备份到 Azure |Microsoft Docs
+title: 将 SAP HANA 数据库备份到 Azure
 description: 本教程介绍如何使用 Azure 备份服务将 SAP HANA 数据库备份到 Azure。
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.author: dacurwin
-ms.openlocfilehash: 8d99ff6f2d8a21a501631a3a062be6b05130c05b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 519e47c6b6793c638e64c4e4bcc4fafdb678c9fb
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931803"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172729"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>将 SAP HANA 数据库备份到 Azure
 
@@ -25,7 +21,7 @@ ms.locfileid: "72931803"
 
 **支持** | **详细信息**
 --- | ---
-**支持的地理区域** | 澳大利亚东南部、澳大利亚东部 <br> 巴西南部 <br> 加拿大中部、加拿大东部 <br> 南东亚，东亚 <br> 美国东部、美国东部2、美国中部、美国西部、美国西部2、美国中北部、美国中部、美国中南部<br> 印度中部、印度南部 <br> 日本东部、日本西部<br> 韩国中部、韩国南部 <br> 北欧、西欧 <br> 英国南部，英国西部
+**支持的地理区域** | 澳大利亚东南部、澳大利亚东部 <br> 巴西南部 <br> 加拿大中部、加拿大东部 <br> 南东亚，东亚 <br> 美国东部、美国东部2、美国中部、美国西部、美国西部2、美国中北部、美国中部、美国中南部<br> 印度中部、印度南部 <br> 日本东部、日本西部<br> 韩国中部、韩国南部 <br> 欧洲北部、欧洲西部 <br> 英国南部，英国西部
 **支持的 VM 操作系统** | SLES 12 SP2、SP3 或 SP4。
 **支持的 HANA 版本** | Hana 1.x 上的 SDC，HANA 2.x 上的 MDC < = SPS04 Rev 43
 
@@ -43,7 +39,7 @@ ms.locfileid: "72931803"
   - 若要创建新策略，请在保管库中单击 "**策略**" > "**备份策略**" >  **+** **在 Azure VM 中**添加 > SAP HANA，并指定策略设置。
   - 若要分配不同的策略，请在运行数据库的 VM 的属性中，单击 "当前策略名称"。 然后，在 "**备份策略**" 页上，可以选择用于备份的其他策略。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在配置备份之前，请确保执行以下操作：
 
@@ -161,7 +157,7 @@ ms.locfileid: "72931803"
 
 1. 在保管库菜单中，单击“备份项”。
 2. 在 "**备份项目**" 中，选择运行 SAP HANA 数据库的 VM，然后单击 "**立即备份**"。
-3. 现在，在 "**备份**" 中使用 "日历" 控件选择应该保留恢复点的最后一天。 然后单击“确定”。
+3. 在“立即备份”中，使用日历控件选择恢复点的最后保留日期。 然后单击“确定”。
 4. 监视门户通知。 你可以在保管库仪表板中监视作业进度 >**备份作业**> 正在进行。 创建初始备份可能需要一些时间，具体取决于数据库的大小。
 
 ## <a name="run-sap-hana-studio-backup-on-a-database-with-azure-backup-enabled"></a>在启用了 Azure 备份的数据库上运行 SAP HANA Studio 备份
@@ -171,7 +167,7 @@ ms.locfileid: "72931803"
 1. 等待数据库的所有完整备份或日志备份完成。 在 SAP HANA Studio 中检查状态。
 2. 禁用日志备份，并将备份目录设置为相关数据库的文件系统。
 3. 为此，请双击 " **systemdb** > **配置** > **选择" 数据库** > **筛选器（日志）** "。
-4. 将**enable_auto_log_backup**设置为**No**。
+4. 将**enable_auto_log_backup**设置为 "**否**"。
 5. 将**log_backup_using_backint**设置为**False**。
 6. 对数据库进行临时完整备份。
 7. 等待完整备份和目录备份完成。

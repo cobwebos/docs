@@ -1,21 +1,17 @@
 ---
-title: 管理 & 监视 Microsoft Azure 恢复服务代理备份
-description: 了解如何使用 Azure 备份服务管理和监视 Microsoft Azure 恢复服务代理备份。
+title: 管理和监视 MARS 代理备份
+description: 了解如何使用 Azure 备份服务管理和监视 Microsoft Azure 恢复服务（MARS）代理备份。
 ms.reviewer: srinathv
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.author: dacurwin
-ms.openlocfilehash: 756fd720b468681b8ea31dc867cfdb6e44c0bb0a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: edb672f97f467378176bf6cdf04fe8e22cc5e51b
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074994"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173067"
 ---
-# <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 备份服务管理 Microsoft Azure 恢复服务代理备份
+# <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 备份服务管理 Microsoft Azure 恢复服务（MARS）代理备份
 
 本文介绍如何管理 Microsoft Azure 恢复服务代理备份的文件和文件夹。
 

@@ -8,22 +8,22 @@ manager: jeconnoc
 keywords: azure 函数，函数，事件处理，动态计算，无服务器体系结构，kubernetes
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 8e07032f84ead4bb003176af84cb4c731819ffa4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 0b77946b24bcc2e329a5c4480e9bd5ef055ef82b
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900065"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173690"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>在 Kubernetes 上通过 KEDA Azure Functions
 
-Azure Functions 运行时可在托管位置和所需的位置提供灵活性。  [KEDA](https://github.com/kedacore/kore) （基于 Kubernetes 的事件驱动自动缩放），可与 Azure Functions 运行时和工具无缝结合，以提供 Kubernetes 中的事件驱动规模。
+Azure Functions 运行时可在托管位置和所需的位置提供灵活性。  [KEDA](https://keda.sh) （基于 Kubernetes 的事件驱动自动缩放），可与 Azure Functions 运行时和工具无缝结合，以提供 Kubernetes 中的事件驱动规模。
 
 ## <a name="how-kubernetes-based-functions-work"></a>基于 Kubernetes 的函数的工作原理
 
-Azure Functions 服务由两个关键组件组成：运行时和缩放控制器。  函数运行时运行并执行您的代码。  运行时包括如何触发、记录和管理函数执行的逻辑。  另一个组件是缩放控制器。  缩放控制器监视以函数为目标的事件的速率，并主动调整运行应用程序的实例数。  若要了解更多信息，请参阅 [Azure Functions 的缩放和托管](functions-scale.md)。
+Azure Functions 服务由两个关键组件组成：运行时和缩放控制器。  函数运行时运行并执行您的代码。  运行时包括如何触发、记录和管理函数执行的逻辑。  Azure Functions 运行时可以在*任何位置*运行。  另一个组件是缩放控制器。  缩放控制器监视以函数为目标的事件的速率，并主动调整运行应用程序的实例数。  若要了解更多信息，请参阅 [Azure Functions 的缩放和托管](functions-scale.md)。
 
 基于 Kubernetes 的函数在[Docker 容器](functions-create-function-linux-custom-image.md)中提供函数运行时，并通过 KEDA 进行事件驱动缩放。  KEDA 可以向下扩展到0个实例（没有事件发生时）和多达*n*个实例。 它通过公开 Kubernetes 自动缩放程序的自定义指标（水平 Pod 自动缩放程序）来实现此功能。  将函数容器与 KEDA 结合使用，可以在任何 Kubernetes 群集中复制无服务器函数功能。  还可以使用[Azure Kubernetes Services （AKS）虚拟节点](../aks/virtual-nodes-cli.md)功能为无服务器基础结构部署这些函数。
 
@@ -86,12 +86,17 @@ func kubernetes remove --namespace keda
 
 ## <a name="supported-triggers-in-keda"></a>KEDA 中支持的触发器
 
-KEDA 目前处于 beta 阶段，支持以下 Azure 函数触发器：
+KEDA 支持以下 Azure 函数触发器：
 
 * [Azure 存储队列](functions-bindings-storage-queue.md)
 * [Azure 服务总线队列](functions-bindings-service-bus.md)
-* [HTTP](functions-bindings-http-webhook.md)
+* [Azure 事件/IoT 中心](functions-bindings-event-hubs.md)
 * [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension)
+* [RabbitMQ 队列](https://github.com/azure/azure-functions-rabbitmq-extension)
+
+### <a name="http-trigger-support"></a>HTTP 触发器支持
+
+可以使用公开 HTTP 触发器的 Azure Functions，但 KEDA 不会直接对其进行管理。  Azure Functions Core Tools 将安装相关项目 Osiris，该项目可将 HTTP 终结点从0缩放到1。  从1扩展到*n*会依赖于传统的 Kubernetes 缩放策略。
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅以下资源：

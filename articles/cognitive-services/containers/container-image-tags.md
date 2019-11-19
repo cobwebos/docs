@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 11/15/2019
+ms.date: 11/18/2019
 ms.author: dapine
-ms.openlocfilehash: 8a8c49089d5c0554c4636e98b5820ef206010207
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 0d8c7a36582c30975f3a408a2ea6e95d39e560ef
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134174"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173754"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure 认知服务容器图像标记
 
@@ -127,124 +127,121 @@ Azure 认知服务提供许多容器映像。 容器注册表和相应的存储�
 | 图像标记 | 说明 |
 |------------|:------|
 | `latest` | 具有 `en-US` 区域设置的容器映像。 |
-| `2.0.0-amd64-zh-tw-preview` | |
-| `2.0.0-amd64-zh-hk-preview` | |
-| `2.0.0-amd64-zh-cn-preview` | |
-| `2.0.0-amd64-tr-tr-preview` | |
-| `2.0.0-amd64-th-th-preview` | |
-| `2.0.0-amd64-sv-se-preview` | |
-| `2.0.0-amd64-ru-ru-preview` | |
-| `2.0.0-amd64-pt-pt-preview` | |
-| `2.0.0-amd64-pt-br-preview` | |
-| `2.0.0-amd64-pl-pl-preview` | |
-| `2.0.0-amd64-nl-nl-preview` | |
-| `2.0.0-amd64-nb-no-preview` | |
-| `2.0.0-amd64-ko-kr-preview` | |
-| `2.0.0-amd64-ja-jp-preview` | |
-| `2.0.0-amd64-it-it-preview` | |
-| `2.0.0-amd64-hi-in-preview` | |
-| `2.0.0-amd64-fr-fr-preview` | |
-| `2.0.0-amd64-fr-ca-preview` | |
-| `2.0.0-amd64-fi-fi-preview` | |
-| `2.0.0-amd64-es-mx-preview` | |
-| `2.0.0-amd64-es-es-preview` | |
-| `2.0.0-amd64-en-us-preview` | |
-| `2.0.0-amd64-en-nz-preview` | |
-| `2.0.0-amd64-en-in-preview` | |
-| `2.0.0-amd64-en-gb-preview` | |
-| `2.0.0-amd64-en-ca-preview` | |
-| `2.0.0-amd64-en-au-preview` | |
-| `2.0.0-amd64-de-de-preview` | |
-| `2.0.0-amd64-da-dk-preview` | |
-| `2.0.0-amd64-ca-es-preview` | |
-| `2.0.0-amd64-ar-eg-preview` | |
-| `1.2.0-amd64-zh-cn-preview` | |
-| `1.2.0-amd64-pt-br-preview` | |
-| `1.2.0-amd64-preview` | |
-| `1.2.0-amd64-ja-jp-preview` | |
-| `1.2.0-amd64-it-it-preview` | |
-| `1.2.0-amd64-fr-fr-preview` | |
-| `1.2.0-amd64-fr-ca-preview` | |
-| `1.2.0-amd64-es-mx-preview` | |
-| `1.2.0-amd64-es-es-preview` | |
-| `1.2.0-amd64-en-us-preview` | |
-| `1.2.0-amd64-en-in-preview` | |
-| `1.2.0-amd64-en-gb-preview` | |
-| `1.2.0-amd64-en-ca-preview` | |
-| `1.2.0-amd64-en-au-preview` | |
-| `1.2.0-amd64-de-de-preview` | |
-| `1.1.3-amd64-zh-cn-preview` | |
-| `1.1.3-amd64-pt-br-preview` | |
-| `1.1.3-amd64-preview` | |
-| `1.1.3-amd64-ja-jp-preview` | |
-| `1.1.3-amd64-it-it-preview` | |
-| `1.1.3-amd64-fr-fr-preview` | |
-| `1.1.3-amd64-fr-ca-preview` | |
-| `1.1.3-amd64-es-mx-preview` | |
-| `1.1.3-amd64-es-es-preview` | |
-| `1.1.3-amd64-en-us-preview` | |
-| `1.1.3-amd64-en-in-preview` | |
-| `1.1.3-amd64-en-gb-preview` | |
-| `1.1.3-amd64-en-ca-preview` | |
-| `1.1.3-amd64-en-au-preview` | |
-| `1.1.3-amd64-de-de-preview` | |
-| `1.1.2-amd64-zh-cn-preview` | |
-| `1.1.2-amd64-pt-br-preview` | |
-| `1.1.2-amd64-preview` | |
-| `1.1.2-amd64-ja-jp-preview` | |
-| `1.1.2-amd64-it-it-preview` | |
-| `1.1.2-amd64-fr-fr-preview` | |
-| `1.1.2-amd64-fr-ca-preview` | |
-| `1.1.2-amd64-es-mx-preview` | |
-| `1.1.2-amd64-es-es-preview` | |
-| `1.1.2-amd64-en-us-preview` | |
-| `1.1.2-amd64-en-in-preview` | |
-| `1.1.2-amd64-en-gb-preview` | |
-| `1.1.2-amd64-en-ca-preview` | |
-| `1.1.2-amd64-en-au-preview` | |
-| `1.1.2-amd64-de-de-preview` | |
-| `1.1.1-amd64-zh-cn-preview` | |
-| `1.1.1-amd64-pt-br-preview` | |
-| `1.1.1-amd64-ja-jp-preview` | |
-| `1.1.1-amd64-it-it-preview` | |
-| `1.1.1-amd64-fr-fr-preview` | |
-| `1.1.1-amd64-fr-ca-preview` | |
-| `1.1.1-amd64-es-mx-preview` | |
-| `1.1.1-amd64-es-es-preview` | |
-| `1.1.1-amd64-en-us-preview` | |
-| `1.1.1-amd64-en-in-preview` | |
-| `1.1.1-amd64-en-gb-preview` | |
-| `1.1.1-amd64-en-ca-preview` | |
-| `1.1.1-amd64-en-au-preview` | |
-| `1.1.1-amd64-de-de-preview` | |
-| `1.1.0-amd64-zh-cn-preview` | |
-| `1.1.0-amd64-pt-br-preview` | |
-| `1.1.0-amd64-ja-jp-preview` | |
-| `1.1.0-amd64-it-it-preview` | |
-| `1.1.0-amd64-fr-fr-preview` | |
-| `1.1.0-amd64-fr-ca-preview` | |
-| `1.1.0-amd64-es-mx-preview` | |
-| `1.1.0-amd64-es-es-preview` | |
-| `1.1.0-amd64-en-us-preview` | |
-| `1.1.0-amd64-en-in-preview` | |
-| `1.1.0-amd64-en-gb-preview` | |
-| `1.1.0-amd64-en-ca-preview` | |
-| `1.1.0-amd64-en-au-preview` | |
-| `1.1.0-amd64-de-de-preview` | |
-| `1.0.0-amd64-zh-cn-preview` | |
-| `1.0.0-amd64-pt-br-preview` | |
-| `1.0.0-amd64-ja-jp-preview` | |
-| `1.0.0-amd64-it-it-preview` | |
-| `1.0.0-amd64-fr-fr-preview` | |
-| `1.0.0-amd64-fr-ca-preview` | |
-| `1.0.0-amd64-es-mx-preview` | |
-| `1.0.0-amd64-es-es-preview` | |
-| `1.0.0-amd64-en-us-preview` | |
-| `1.0.0-amd64-en-in-preview` | |
-| `1.0.0-amd64-en-gb-preview` | |
-| `1.0.0-amd64-en-ca-preview` | |
-| `1.0.0-amd64-en-au-preview` | |
-| `1.0.0-amd64-de-de-preview` | |
+| `2.0.0-amd64-ar-eg-preview` | 具有 `ar-EG` 区域设置的容器映像。 |
+| `2.0.0-amd64-ca-es-preview` | 具有 `ca-ES` 区域设置的容器映像。 |
+| `2.0.0-amd64-da-dk-preview` | 具有 `da-DK` 区域设置的容器映像。 |
+| `2.0.0-amd64-de-de-preview` | 具有 `de-DE` 区域设置的容器映像。 |
+| `2.0.0-amd64-en-au-preview` | 具有 `en-AU` 区域设置的容器映像。 |
+| `2.0.0-amd64-en-ca-preview` | 具有 `en-CA` 区域设置的容器映像。 |
+| `2.0.0-amd64-en-gb-preview` | 具有 `en-GB` 区域设置的容器映像。 |
+| `2.0.0-amd64-en-in-preview` | 具有 `en-IN` 区域设置的容器映像。 |
+| `2.0.0-amd64-en-nz-preview` | 具有 `en-NZ` 区域设置的容器映像。 |
+| `2.0.0-amd64-en-us-preview` | 具有 `en-US` 区域设置的容器映像。 |
+| `2.0.0-amd64-es-es-preview` | 具有 `es-ES` 区域设置的容器映像。 |
+| `2.0.0-amd64-es-mx-preview` | 具有 `es-MX` 区域设置的容器映像。 |
+| `2.0.0-amd64-fi-fi-preview` | 具有 `fi-FI` 区域设置的容器映像。 |
+| `2.0.0-amd64-fr-ca-preview` | 具有 `fr-CA` 区域设置的容器映像。 |
+| `2.0.0-amd64-fr-fr-preview` | 具有 `fr-FR` 区域设置的容器映像。 |
+| `2.0.0-amd64-hi-in-preview` | 具有 `hi-IN` 区域设置的容器映像。 |
+| `2.0.0-amd64-it-it-preview` | 具有 `it-IT` 区域设置的容器映像。 |
+| `2.0.0-amd64-ja-jp-preview` | 具有 `ja-JP` 区域设置的容器映像。 |
+| `2.0.0-amd64-ko-kr-preview` | 具有 `ko-KR` 区域设置的容器映像。 |
+| `2.0.0-amd64-nb-no-preview` | 具有 `nb-NO` 区域设置的容器映像。 |
+| `2.0.0-amd64-nl-nl-preview` | 具有 `nl-NL` 区域设置的容器映像。 |
+| `2.0.0-amd64-pl-pl-preview` | 具有 `pl-PL` 区域设置的容器映像。 |
+| `2.0.0-amd64-pt-br-preview` | 具有 `pt-BR` 区域设置的容器映像。 |
+| `2.0.0-amd64-pt-pt-preview` | 具有 `pt-PT` 区域设置的容器映像。 |
+| `2.0.0-amd64-ru-ru-preview` | 具有 `ru-RU` 区域设置的容器映像。 |
+| `2.0.0-amd64-sv-se-preview` | 具有 `sv-SE` 区域设置的容器映像。 |
+| `2.0.0-amd64-th-th-preview` | 具有 `th-TH` 区域设置的容器映像。 |
+| `2.0.0-amd64-tr-tr-preview` | 具有 `tr-TR` 区域设置的容器映像。 |
+| `2.0.0-amd64-zh-cn-preview` | 具有 `zh-CN` 区域设置的容器映像。 |
+| `2.0.0-amd64-zh-hk-preview` | 具有 `zh-HK` 区域设置的容器映像。 |
+| `2.0.0-amd64-zh-tw-preview` | 具有 `zh-TW` 区域设置的容器映像。 |
+| `1.2.0-amd64-de-de-preview` | 具有 `de-DE` 区域设置的容器映像。 |
+| `1.2.0-amd64-en-au-preview` | 具有 `en-AU` 区域设置的容器映像。 |
+| `1.2.0-amd64-en-ca-preview` | 具有 `en-CA` 区域设置的容器映像。 |
+| `1.2.0-amd64-en-gb-preview` | 具有 `en-GB` 区域设置的容器映像。 |
+| `1.2.0-amd64-en-in-preview` | 具有 `en-IN` 区域设置的容器映像。 |
+| `1.2.0-amd64-en-us-preview` | 具有 `en-US` 区域设置的容器映像。 |
+| `1.2.0-amd64-es-es-preview` | 具有 `es-ES` 区域设置的容器映像。 |
+| `1.2.0-amd64-es-mx-preview` | 具有 `es-MX` 区域设置的容器映像。 |
+| `1.2.0-amd64-fr-ca-preview` | 具有 `fr-CA` 区域设置的容器映像。 |
+| `1.2.0-amd64-fr-fr-preview` | 具有 `fr-FR` 区域设置的容器映像。 |
+| `1.2.0-amd64-it-it-preview` | 具有 `it-IT` 区域设置的容器映像。 |
+| `1.2.0-amd64-ja-jp-preview` | 具有 `ja-JP` 区域设置的容器映像。 |
+| `1.2.0-amd64-pt-br-preview` | 具有 `pt-BR` 区域设置的容器映像。 |
+| `1.2.0-amd64-zh-cn-preview` | 具有 `zh-CN` 区域设置的容器映像。 |
+| `1.1.3-amd64-de-de-preview` | 具有 `de-DE` 区域设置的容器映像。 |
+| `1.1.3-amd64-en-au-preview` | 具有 `en-AU` 区域设置的容器映像。 |
+| `1.1.3-amd64-en-ca-preview` | 具有 `en-CA` 区域设置的容器映像。 |
+| `1.1.3-amd64-en-gb-preview` | 具有 `en-GB` 区域设置的容器映像。 |
+| `1.1.3-amd64-en-in-preview` | 具有 `en-IN` 区域设置的容器映像。 |
+| `1.1.3-amd64-en-us-preview` | 具有 `en-US` 区域设置的容器映像。 |
+| `1.1.3-amd64-es-es-preview` | 具有 `es-ES` 区域设置的容器映像。 |
+| `1.1.3-amd64-es-mx-preview` | 具有 `es-MX` 区域设置的容器映像。 |
+| `1.1.3-amd64-fr-ca-preview` | 具有 `fr-CA` 区域设置的容器映像。 |
+| `1.1.3-amd64-fr-fr-preview` | 具有 `fr-FR` 区域设置的容器映像。 |
+| `1.1.3-amd64-it-it-preview` | 具有 `it-IT` 区域设置的容器映像。 |
+| `1.1.3-amd64-ja-jp-preview` | 具有 `ja-JP` 区域设置的容器映像。 |
+| `1.1.3-amd64-pt-br-preview` | 具有 `pt-BR` 区域设置的容器映像。 |
+| `1.1.3-amd64-zh-cn-preview` | 具有 `zh-CN` 区域设置的容器映像。 |
+| `1.1.2-amd64-de-de-preview` | 具有 `de-DE` 区域设置的容器映像。 |
+| `1.1.2-amd64-en-au-preview` | 具有 `en-AU` 区域设置的容器映像。 |
+| `1.1.2-amd64-en-ca-preview` | 具有 `en-CA` 区域设置的容器映像。 |
+| `1.1.2-amd64-en-gb-preview` | 具有 `en-GB` 区域设置的容器映像。 |
+| `1.1.2-amd64-en-in-preview` | 具有 `en-IN` 区域设置的容器映像。 |
+| `1.1.2-amd64-en-us-preview` | 具有 `en-US` 区域设置的容器映像。 |
+| `1.1.2-amd64-es-es-preview` | 具有 `es-ES` 区域设置的容器映像。 |
+| `1.1.2-amd64-es-mx-preview` | 具有 `es-MX` 区域设置的容器映像。 |
+| `1.1.2-amd64-fr-ca-preview` | 具有 `fr-CA` 区域设置的容器映像。 |
+| `1.1.2-amd64-fr-fr-preview` | 具有 `fr-FR` 区域设置的容器映像。 |
+| `1.1.2-amd64-it-it-preview` | 具有 `it-IT` 区域设置的容器映像。 |
+| `1.1.2-amd64-ja-jp-preview` | 具有 `ja-JP` 区域设置的容器映像。 |
+| `1.1.2-amd64-pt-br-preview` | 具有 `pt-BR` 区域设置的容器映像。 |
+| `1.1.2-amd64-zh-cn-preview` | 具有 `zh-CN` 区域设置的容器映像。 |
+| `1.1.1-amd64-de-de-preview` | 具有 `de-DE` 区域设置的容器映像。 |
+| `1.1.1-amd64-en-au-preview` | 具有 `en-AU` 区域设置的容器映像。 |
+| `1.1.1-amd64-en-ca-preview` | 具有 `en-CA` 区域设置的容器映像。 |
+| `1.1.1-amd64-en-gb-preview` | 具有 `en-GB` 区域设置的容器映像。 |
+| `1.1.1-amd64-en-in-preview` | 具有 `en-IN` 区域设置的容器映像。 |
+| `1.1.1-amd64-en-us-preview` | 具有 `en-US` 区域设置的容器映像。 |
+| `1.1.1-amd64-es-es-preview` | 具有 `es-ES` 区域设置的容器映像。 |
+| `1.1.1-amd64-es-mx-preview` | 具有 `es-MX` 区域设置的容器映像。 |
+| `1.1.1-amd64-fr-ca-preview` | 具有 `fr-CA` 区域设置的容器映像。 |
+| `1.1.1-amd64-fr-fr-preview` | 具有 `fr-FR` 区域设置的容器映像。 |
+| `1.1.1-amd64-it-it-preview` | 具有 `it-IT` 区域设置的容器映像。 |
+| `1.1.1-amd64-ja-jp-preview` | 具有 `ja-JP` 区域设置的容器映像。 |
+| `1.1.1-amd64-pt-br-preview` | 具有 `pt-BR` 区域设置的容器映像。 |
+| `1.1.1-amd64-zh-cn-preview` | 具有 `zh-CN` 区域设置的容器映像。 |
+| `1.1.0-amd64-de-de-preview` | 具有 `de-DE` 区域设置的容器映像。 |
+| `1.1.0-amd64-en-au-preview` | 具有 `en-AU` 区域设置的容器映像。 |
+| `1.1.0-amd64-en-ca-preview` | 具有 `en-CA` 区域设置的容器映像。 |
+| `1.1.0-amd64-en-gb-preview` | 具有 `en-GB` 区域设置的容器映像。 |
+| `1.1.0-amd64-en-in-preview` | 具有 `en-IN` 区域设置的容器映像。 |
+| `1.1.0-amd64-en-us-preview` | 具有 `en-US` 区域设置的容器映像。 |
+| `1.1.0-amd64-es-es-preview` | 具有 `es-ES` 区域设置的容器映像。 |
+| `1.1.0-amd64-es-mx-preview` | 具有 `es-MX` 区域设置的容器映像。 |
+| `1.1.0-amd64-fr-ca-preview` | 具有 `fr-CA` 区域设置的容器映像。 |
+| `1.1.0-amd64-fr-fr-preview` | 具有 `fr-FR` 区域设置的容器映像。 |
+| `1.1.0-amd64-it-it-preview` | 具有 `it-IT` 区域设置的容器映像。 |
+| `1.1.0-amd64-ja-jp-preview` | 具有 `ja-JP` 区域设置的容器映像。 |
+| `1.1.0-amd64-pt-br-preview` | 具有 `pt-BR` 区域设置的容器映像。 |
+| `1.1.0-amd64-zh-cn-preview` | 具有 `zh-CN` 区域设置的容器映像。 |
+| `1.0.0-amd64-de-de-preview` | 具有 `de-DE` 区域设置的容器映像。 |
+| `1.0.0-amd64-en-au-preview` | 具有 `en-AU` 区域设置的容器映像。 |
+| `1.0.0-amd64-en-ca-preview` | 具有 `en-CA` 区域设置的容器映像。 |
+| `1.0.0-amd64-en-gb-preview` | 具有 `en-GB` 区域设置的容器映像。 |
+| `1.0.0-amd64-en-in-preview` | 具有 `en-IN` 区域设置的容器映像。 |
+| `1.0.0-amd64-en-us-preview` | 具有 `en-US` 区域设置的容器映像。 |
+| `1.0.0-amd64-es-es-preview` | 具有 `es-ES` 区域设置的容器映像。 |
+| `1.0.0-amd64-es-mx-preview` | 具有 `es-MX` 区域设置的容器映像。 |
+| `1.0.0-amd64-fr-ca-preview` | 具有 `fr-CA` 区域设置的容器映像。 |
+| `1.0.0-amd64-fr-fr-preview` | 具有 `fr-FR` 区域设置的容器映像。 |
+| `1.0.0-amd64-it-it-preview` | 具有 `it-IT` 区域设置的容器映像。 |
+| `1.0.0-amd64-ja-jp-preview` | 具有 `ja-JP` 区域设置的容器映像。 |
+| `1.0.0-amd64-pt-br-preview` | 具有 `pt-BR` 区域设置的容器映像。 |
+| `1.0.0-amd64-zh-cn-preview` | 具有 `zh-CN` 区域设置的容器映像。 |
 
 ## <a name="text-to-speech"></a>文本转语音
 
@@ -254,169 +251,173 @@ Azure 认知服务提供许多容器映像。 容器注册表和相应的存储�
 
 | 图像标记 | 说明 |
 |------------|:------|
-| `latest` | 具有 `en-US` 区域设置和 `JessaRUS` 语音的容器映像。 |
-| `1.3.0-amd64-zh-tw-zhiwei-apollo-preview` | |
-| `1.3.0-amd64-zh-tw-yating-apollo-preview` | |
-| `1.3.0-amd64-zh-tw-hanhanrus-preview` | |
-| `1.3.0-amd64-zh-hk-tracyrus-preview` | |
-| `1.3.0-amd64-zh-hk-tracy-apollo-preview` | |
-| `1.3.0-amd64-zh-hk-danny-apollo-preview` | |
-| `1.3.0-amd64-zh-cn-yaoyao-apollo-preview` | |
-| `1.3.0-amd64-zh-cn-kangkang-apollo-preview` | |
-| `1.3.0-amd64-zh-cn-huihuirus-preview` | |
-| `1.3.0-amd64-vi-vn-an-preview` | |
-| `1.3.0-amd64-tr-tr-sedarus-preview` | |
-| `1.3.0-amd64-th-th-pattara-preview` | |
-| `1.3.0-amd64-te-in-chitra-preview` | |
-| `1.3.0-amd64-ta-in-valluvar-preview` | |
-| `1.3.0-amd64-sv-se-hedvigrus-preview` | |
-| `1.3.0-amd64-sl-si-lado-preview` | |
-| `1.3.0-amd64-sk-sk-filip-preview` | |
-| `1.3.0-amd64-ru-ru-pavel-apollo-preview` | |
-| `1.3.0-amd64-ru-ru-irina-apollo-preview` | |
-| `1.3.0-amd64-ru-ru-ekaterinarus-preview` | |
-| `1.3.0-amd64-ro-ro-andrei-preview` | |
-| `1.3.0-amd64-pt-pt-heliarus-preview` | |
-| `1.3.0-amd64-pt-br-heloisarus-preview` | |
-| `1.3.0-amd64-pt-br-daniel-apollo-preview` | |
-| `1.3.0-amd64-pl-pl-paulinarus-preview` | |
-| `1.3.0-amd64-nl-nl-hannarus-preview` | |
-| `1.3.0-amd64-nb-no-huldarus-preview` | |
-| `1.3.0-amd64-ms-my-rizwan-preview` | |
-| `1.3.0-amd64-ko-kr-heamirus-preview` | |
-| `1.3.0-amd64-ja-jp-ichiro-apollo-preview` | |
-| `1.3.0-amd64-ja-jp-harukarus-preview` | |
-| `1.3.0-amd64-ja-jp-ayumi-apollo-preview` | |
-| `1.3.0-amd64-it-it-luciarus-preview` | |
-| `1.3.0-amd64-it-it-cosimo-apollo-preview` | |
-| `1.3.0-amd64-id-id-andika-preview` | |
-| `1.3.0-amd64-hu-hu-szabolcs-preview` | |
-| `1.3.0-amd64-hr-hr-matej-preview` | |
-| `1.3.0-amd64-hi-in-kalpana-preview` | |
-| `1.3.0-amd64-hi-in-kalpana-apollo-preview` | |
-| `1.3.0-amd64-hi-in-hemant-preview` | |
-| `1.3.0-amd64-he-il-asaf-preview` | |
-| `1.3.0-amd64-fr-fr-paul-apollo-preview` | |
-| `1.3.0-amd64-fr-fr-julie-apollo-preview` | |
-| `1.3.0-amd64-fr-fr-hortenserus-preview` | |
-| `1.3.0-amd64-fr-ch-guillaume-preview` | |
-| `1.3.0-amd64-fr-ca-harmonierus-preview` | |
-| `1.3.0-amd64-fr-ca-caroline-preview` | |
-| `1.3.0-amd64-fi-fi-heidirus-preview` | |
-| `1.3.0-amd64-es-mx-raul-apollo-preview` | |
-| `1.3.0-amd64-es-mx-hildarus-preview` | |
-| `1.3.0-amd64-es-es-pablo-apollo-preview` | |
-| `1.3.0-amd64-es-es-laura-apollo-preview` | |
-| `1.3.0-amd64-es-es-helenarus-preview` | |
-| `1.3.0-amd64-en-us-zirarus-preview` | |
-| `1.3.0-amd64-en-us-jessarus-preview` | |
-| `1.3.0-amd64-en-us-jessa24krus-preview` | |
-| `1.3.0-amd64-en-us-guy24krus-preview` | |
-| `1.3.0-amd64-en-us-benjaminrus-preview` | |
-| `1.3.0-amd64-en-in-ravi-apollo-preview` | |
-| `1.3.0-amd64-en-in-priyarus-preview` | |
-| `1.3.0-amd64-en-in-heera-apollo-preview` | |
-| `1.3.0-amd64-en-ie-sean-preview` | |
-| `1.3.0-amd64-en-gb-susan-apollo-preview` | |
-| `1.3.0-amd64-en-gb-hazelrus-preview` | |
-| `1.3.0-amd64-en-gb-george-apollo-preview` | |
-| `1.3.0-amd64-en-ca-linda-preview` | |
-| `1.3.0-amd64-en-ca-heatherrus-preview` | |
-| `1.3.0-amd64-en-au-hayleyrus-preview` | |
-| `1.3.0-amd64-en-au-catherine-preview` | |
-| `1.3.0-amd64-el-gr-stefanos-preview` | |
-| `1.3.0-amd64-de-de-stefan-apollo-preview` | |
-| `1.3.0-amd64-de-de-heddarus-preview` | |
-| `1.3.0-amd64-de-de-hedda-preview` | |
-| `1.3.0-amd64-de-ch-karsten-preview` | |
-| `1.3.0-amd64-de-at-michael-preview` | |
-| `1.3.0-amd64-da-dk-hellerus-preview` | |
-| `1.3.0-amd64-cs-cz-jakub-preview` | |
-| `1.3.0-amd64-ca-es-herenarus-preview` | |
-| `1.3.0-amd64-bg-bg-ivan-preview` | |
-| `1.3.0-amd64-ar-sa-naayf-preview` | |
-| `1.3.0-amd64-ar-eg-hoda-preview` | |
-| `1.2.0-amd64-zh-cn-yaoyao-apollo-preview` | |
-| `1.2.0-amd64-zh-cn-kangkang-apollo-preview` | |
-| `1.2.0-amd64-zh-cn-huihuirus-preview` | |
-| `1.2.0-amd64-pt-br-heloisarus-preview` | |
-| `1.2.0-amd64-pt-br-daniel-apollo-preview` | |
-| `1.2.0-amd64-ko-kr-heamirus-preview` | |
-| `1.2.0-amd64-ja-jp-ichiro-apollo-preview` | |
-| `1.2.0-amd64-ja-jp-harukarus-preview` | |
-| `1.2.0-amd64-ja-jp-ayumi-apollo-preview` | |
-| `1.2.0-amd64-it-it-luciarus-preview` | |
-| `1.2.0-amd64-it-it-cosimo-apollo-preview` | |
-| `1.2.0-amd64-fr-fr-paul-apollo-preview` | |
-| `1.2.0-amd64-fr-fr-julie-apollo-preview` | |
-| `1.2.0-amd64-fr-fr-hortenserus-preview` | |
-| `1.2.0-amd64-fr-ca-harmonierus-preview` | |
-| `1.2.0-amd64-fr-ca-caroline-preview` | |
-| `1.2.0-amd64-es-mx-raul-apollo-preview` | |
-| `1.2.0-amd64-es-mx-hildarus-preview` | |
-| `1.2.0-amd64-es-es-pablo-apollo-preview` | |
-| `1.2.0-amd64-es-es-laura-apollo-preview` | |
-| `1.2.0-amd64-es-es-helenarus-preview` | |
-| `1.2.0-amd64-en-us-zirarus-preview` | |
-| `1.2.0-amd64-en-us-jessarus-preview` | |
-| `1.2.0-amd64-en-us-jessa24krus-preview` | |
-| `1.2.0-amd64-en-us-guy24krus-preview` | |
-| `1.2.0-amd64-en-us-benjaminrus-preview` | |
-| `1.2.0-amd64-en-in-ravi-apollo-preview` | |
-| `1.2.0-amd64-en-in-priyarus-preview` | |
-| `1.2.0-amd64-en-in-heera-apollo-preview` | |
-| `1.2.0-amd64-en-gb-susan-apollo-preview` | |
-| `1.2.0-amd64-en-gb-hazelrus-preview` | |
-| `1.2.0-amd64-en-gb-george-apollo-preview` | |
-| `1.2.0-amd64-en-au-hayleyrus-preview` | |
-| `1.2.0-amd64-en-au-catherine-preview` | |
-| `1.2.0-amd64-de-de-stefan-apollo-preview` | |
-| `1.2.0-amd64-de-de-heddarus-preview` | |
-| `1.1.0-amd64-zh-cn-yaoyao-apollo-preview` | |
-| `1.1.0-amd64-zh-cn-kangkang-apollo-preview` | |
-| `1.1.0-amd64-zh-cn-huihuirus-preview` | |
-| `1.1.0-amd64-pt-br-heloisarus-preview` | |
-| `1.1.0-amd64-pt-br-daniel-apollo-preview` | |
-| `1.1.0-amd64-ko-kr-heamirus-preview` | |
-| `1.1.0-amd64-ja-jp-ichiro-apollo-preview` | |
-| `1.1.0-amd64-ja-jp-harukarus-preview` | |
-| `1.1.0-amd64-ja-jp-ayumi-apollo-preview` | |
-| `1.1.0-amd64-it-it-luciarus-preview` | |
-| `1.1.0-amd64-it-it-cosimo-apollo-preview` | |
-| `1.1.0-amd64-fr-fr-paul-apollo-preview` | |
-| `1.1.0-amd64-fr-fr-julie-apollo-preview` | |
-| `1.1.0-amd64-fr-fr-hortenserus-preview` | |
-| `1.1.0-amd64-fr-ca-harmonierus-preview` | |
-| `1.1.0-amd64-fr-ca-caroline-preview` | |
-| `1.1.0-amd64-es-mx-raul-apollo-preview` | |
-| `1.1.0-amd64-es-mx-hildarus-preview` | |
-| `1.1.0-amd64-es-es-pablo-apollo-preview` | |
-| `1.1.0-amd64-es-es-laura-apollo-preview` | |
-| `1.1.0-amd64-es-es-helenarus-preview` | |
-| `1.1.0-amd64-en-us-zirarus-preview` | |
-| `1.1.0-amd64-en-us-jessarus-preview` | |
-| `1.1.0-amd64-en-us-jessa24krus-preview` | |
-| `1.1.0-amd64-en-us-guy24krus-preview` | |
-| `1.1.0-amd64-en-us-benjaminrus-preview` | |
-| `1.1.0-amd64-en-in-ravi-apollo-preview` | |
-| `1.1.0-amd64-en-in-priyarus-preview` | |
-| `1.1.0-amd64-en-in-heera-apollo-preview` | |
-| `1.1.0-amd64-en-gb-susan-apollo-preview` | |
-| `1.1.0-amd64-en-gb-hazelrus-preview` | |
-| `1.1.0-amd64-en-gb-george-apollo-preview` | |
-| `1.1.0-amd64-en-au-hayleyrus-preview` | |
-| `1.1.0-amd64-en-au-catherine-preview` | |
-| `1.1.0-amd64-de-de-stefan-apollo-preview` | |
-| `1.1.0-amd64-de-de-heddarus-preview` | |
-| `1.1.0-amd64-de-de-hedda-preview` | |
-| `1.0.0-amd64-zh-cn-yaoyao-apollo-preview` | |
-| `1.0.0-amd64-zh-cn-kangkang-apollo-preview` | |
-| `1.0.0-amd64-zh-cn-huihuirus-preview` | |
-| `1.0.0-amd64-en-us-zirarus-preview` | |
-| `1.0.0-amd64-en-us-jessarus-preview` | |
-| `1.0.0-amd64-en-us-jessa24krus-preview` | |
-| `1.0.0-amd64-en-us-guy24krus-preview` | |
-| `1.0.0-amd64-en-us-benjaminrus-preview` | |
+| `latest` | 具有 `en-US` 区域设置和 `en-US-JessaRUS` 语音的容器映像。 |
+| `1.3.0-amd64-ar-eg-hoda-preview` | 具有 `ar-EG` 区域设置和 `ar-EG-Hoda` 语音的容器映像。 |
+| `1.3.0-amd64-ar-sa-naayf-preview` | 具有 `ar-SA` 区域设置和 `ar-SA-Naayf` 语音的容器映像。 |
+| `1.3.0-amd64-bg-bg-ivan-preview` | 具有 `bg-BG` 区域设置和 `bg-BG-Ivan` 语音的容器映像。 |
+| `1.3.0-amd64-ca-es-herenarus-preview` | 具有 `ca-ES` 区域设置和 `ca-ES-HerenaRUS` 语音的容器映像。 |
+| `1.3.0-amd64-cs-cz-jakub-preview` | 具有 `cs-CZ` 区域设置和 `cs-CZ-Jakub` 语音的容器映像。 |
+| `1.3.0-amd64-da-dk-hellerus-preview` | 具有 `da-DK` 区域设置和 `da-DK-HelleRUS` 语音的容器映像。 |
+| `1.3.0-amd64-de-at-michael-preview` | 具有 `de-AT` 区域设置和 `de-AT-Michael` 语音的容器映像。 |
+| `1.3.0-amd64-de-ch-karsten-preview` | 具有 `de-CH` 区域设置和 `de-CH-Karsten` 语音的容器映像。 |
+| `1.3.0-amd64-de-de-hedda-preview` | 具有 `de-DE` 区域设置和 `de-DE-Hedda` 语音的容器映像。 |
+| `1.3.0-amd64-de-de-heddarus-preview` | 具有 `de-DE` 区域设置和 `de-DE-Hedda` 语音的容器映像。 |
+| `1.3.0-amd64-de-de-heddarus-preview` | 具有 `de-DE` 区域设置和 `de-DE-HeddaRUS` 语音的容器映像。 |
+| `1.3.0-amd64-de-de-stefan-apollo-preview` | 具有 `de-DE` 区域设置和 `de-DE-Stefan-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-el-gr-stefanos-preview` | 具有 `el-GR` 区域设置和 `el-GR-Stefanos` 语音的容器映像。 |
+| `1.3.0-amd64-en-au-catherine-preview` | 具有 `en-AU` 区域设置和 `en-AU-Catherine` 语音的容器映像。 |
+| `1.3.0-amd64-en-au-hayleyrus-preview` | 具有 `en-AU` 区域设置和 `en-AU-HayleyRUS` 语音的容器映像。 |
+| `1.3.0-amd64-en-ca-heatherrus-preview` | 具有 `en-CA` 区域设置和 `en-CA-HeatherRUS` 语音的容器映像。 |
+| `1.3.0-amd64-en-ca-linda-preview` | 具有 `en-CA` 区域设置和 `en-CA-Linda` 语音的容器映像。 |
+| `1.3.0-amd64-en-gb-george-apollo-preview` | 具有 `en-GB` 区域设置和 `en-GB-George-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-en-gb-hazelrus-preview` | 具有 `en-GB` 区域设置和 `en-GB-HazelRUS` 语音的容器映像。 |
+| `1.3.0-amd64-en-gb-susan-apollo-preview` | 具有 `en-GB` 区域设置和 `en-GB-Susan-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-en-ie-sean-preview` | 具有 `en-IE` 区域设置和 `en-IE-Sean` 语音的容器映像。 |
+| `1.3.0-amd64-en-in-heera-apollo-preview` | 具有 `en-IN` 区域设置和 `en-IN-Heera-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-en-in-priyarus-preview` | 具有 `en-IN` 区域设置和 `en-IN-PriyaRUS` 语音的容器映像。 |
+| `1.3.0-amd64-en-in-ravi-apollo-preview` | 具有 `en-IN` 区域设置和 `en-IN-Ravi-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-en-us-benjaminrus-preview` | 具有 `en-US` 区域设置和 `en-US-BenjaminRUS` 语音的容器映像。 |
+| `1.3.0-amd64-en-us-guy24krus-preview` | 具有 `en-US` 区域设置和 `en-US-Guy24kRUS` 语音的容器映像。 |
+| `1.3.0-amd64-en-us-jessa24krus-preview` | 具有 `en-US` 区域设置和 `en-US-Jessa24kRUS` 语音的容器映像。 |
+| `1.3.0-amd64-en-us-jessarus-preview` | 具有 `en-US` 区域设置和 `en-US-JessaRUS` 语音的容器映像。 |
+| `1.3.0-amd64-en-us-zirarus-preview` | 具有 `en-US` 区域设置和 `en-US-ZiraRUS` 语音的容器映像。 |
+| `1.3.0-amd64-es-es-helenarus-preview` | 具有 `es-ES` 区域设置和 `es-ES-HelenaRUS` 语音的容器映像。 |
+| `1.3.0-amd64-es-es-laura-apollo-preview` | 具有 `es-ES` 区域设置和 `es-ES-Laura-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-es-es-pablo-apollo-preview` | 具有 `es-ES` 区域设置和 `es-ES-Pablo-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-es-mx-hildarus-preview` | 具有 `es-MX` 区域设置和 `es-MX-HildaRUS` 语音的容器映像。 |
+| `1.3.0-amd64-es-mx-raul-apollo-preview` | 具有 `es-MX` 区域设置和 `es-MX-Raul-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-fi-fi-heidirus-preview` | 具有 `fi-FI` 区域设置和 `fi-FI-HeidiRUS` 语音的容器映像。 |
+| `1.3.0-amd64-fr-ca-caroline-preview` | 具有 `fr-CA` 区域设置和 `fr-CA-Caroline` 语音的容器映像。 |
+| `1.3.0-amd64-fr-ca-harmonierus-preview` | 具有 `fr-CA` 区域设置和 `fr-CA-HarmonieRUS` 语音的容器映像。 |
+| `1.3.0-amd64-fr-ch-guillaume-preview` | 具有 `fr-CH` 区域设置和 `fr-CH-Guillaume` 语音的容器映像。 |
+| `1.3.0-amd64-fr-fr-hortenserus-preview` | 具有 `fr-FR` 区域设置和 `fr-FR-HortenseRUS` 语音的容器映像。 |
+| `1.3.0-amd64-fr-fr-julie-apollo-preview` | 具有 `fr-FR` 区域设置和 `fr-FR-Julie-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-fr-fr-paul-apollo-preview` | 具有 `fr-FR` 区域设置和 `fr-FR-Paul-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-he-il-asaf-preview` | 具有 `he-IL` 区域设置和 `he-IL-Asaf` 语音的容器映像。 |
+| `1.3.0-amd64-hi-in-hemant-preview` | 具有 `hi-IN` 区域设置和 `hi-IN-Hemant` 语音的容器映像。 |
+| `1.3.0-amd64-hi-in-kalpana-apollo-preview` | 具有 `hi-IN` 区域设置和 `hi-IN-Kalpana-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-hi-in-kalpana-apollo-preview` | 具有 `hi-IN` 区域设置和 `hi-IN-Kalpana` 语音的容器映像。 |
+| `1.3.0-amd64-hi-in-kalpana-preview` | 具有 `hi-IN` 区域设置和 `hi-IN-Kalpana` 语音的容器映像。 |
+| `1.3.0-amd64-hr-hr-matej-preview` | 具有 `hr-HR` 区域设置和 `hr-HR-Matej` 语音的容器映像。 |
+| `1.3.0-amd64-hu-hu-szabolcs-preview` | 具有 `hu-HU` 区域设置和 `hu-HU-Szabolcs` 语音的容器映像。 |
+| `1.3.0-amd64-id-id-andika-preview` | 具有 `id-ID` 区域设置和 `id-ID-Andika` 语音的容器映像。 |
+| `1.3.0-amd64-it-it-cosimo-apollo-preview` | 具有 `it-IT` 区域设置和 `it-IT-Cosimo-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-it-it-luciarus-preview` | 具有 `it-IT` 区域设置和 `it-IT-LuciaRUS` 语音的容器映像。 |
+| `1.3.0-amd64-ja-jp-ayumi-apollo-preview` | 具有 `ja-JP` 区域设置和 `ja-JP-Ayumi-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-ja-jp-harukarus-preview` | 具有 `ja-JP` 区域设置和 `ja-JP-HarukaRUS` 语音的容器映像。 |
+| `1.3.0-amd64-ja-jp-ichiro-apollo-preview` | 具有 `ja-JP` 区域设置和 `ja-JP-Ichiro-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-ko-kr-heamirus-preview` | 具有 `ko-KR` 区域设置和 `ko-KR-HeamiRUS` 语音的容器映像。 |
+| `1.3.0-amd64-ms-my-rizwan-preview` | 具有 `ms-MY` 区域设置和 `ms-MY-Rizwan` 语音的容器映像。 |
+| `1.3.0-amd64-nb-no-huldarus-preview` | 具有 `nb-NO` 区域设置和 `nb-NO-HuldaRUS` 语音的容器映像。 |
+| `1.3.0-amd64-nl-nl-hannarus-preview` | 具有 `nl-NL` 区域设置和 `nl-NL-HannaRUS` 语音的容器映像。 |
+| `1.3.0-amd64-pl-pl-paulinarus-preview` | 具有 `pl-PL` 区域设置和 `pl-PL-PaulinaRUS` 语音的容器映像。 |
+| `1.3.0-amd64-pt-br-daniel-apollo-preview` | 具有 `pt-BR` 区域设置和 `pt-BR-Daniel-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-pt-br-heloisarus-preview` | 具有 `pt-BR` 区域设置和 `pt-BR-HeloisaRUS` 语音的容器映像。 |
+| `1.3.0-amd64-pt-pt-heliarus-preview` | 具有 `pt-PT` 区域设置和 `pt-PT-HeliaRUS` 语音的容器映像。 |
+| `1.3.0-amd64-ro-ro-andrei-preview` | 具有 `ro-RO` 区域设置和 `ro-RO-Andrei` 语音的容器映像。 |
+| `1.3.0-amd64-ru-ru-ekaterinarus-preview` | 具有 `ru-RU` 区域设置和 `ru-RU-EkaterinaRUS` 语音的容器映像。 |
+| `1.3.0-amd64-ru-ru-irina-apollo-preview` | 具有 `ru-RU` 区域设置和 `ru-RU-Irina-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-ru-ru-pavel-apollo-preview` | 具有 `ru-RU` 区域设置和 `ru-RU-Pavel-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-sk-sk-filip-preview` | 具有 `sk-SK` 区域设置和 `sk-SK-Filip` 语音的容器映像。 |
+| `1.3.0-amd64-sl-si-lado-preview` | 具有 `sl-SI` 区域设置和 `sl-SI-Lado` 语音的容器映像。 |
+| `1.3.0-amd64-sv-se-hedvigrus-preview` | 具有 `sv-SE` 区域设置和 `sv-SE-HedvigRUS` 语音的容器映像。 |
+| `1.3.0-amd64-ta-in-valluvar-preview` | 具有 `ta-IN` 区域设置和 `ta-IN-Valluvar` 语音的容器映像。 |
+| `1.3.0-amd64-te-in-chitra-preview` | 具有 `te-IN` 区域设置和 `te-IN-Chitra` 语音的容器映像。 |
+| `1.3.0-amd64-th-th-pattara-preview` | 具有 `th-TH` 区域设置和 `th-TH-Pattara` 语音的容器映像。 |
+| `1.3.0-amd64-tr-tr-sedarus-preview` | 具有 `tr-TR` 区域设置和 `tr-TR-SedaRUS` 语音的容器映像。 |
+| `1.3.0-amd64-vi-vn-an-preview` | 具有 `vi-VN` 区域设置和 `vi-VN-An` 语音的容器映像。 |
+| `1.3.0-amd64-zh-cn-huihuirus-preview` | 具有 `zh-CN` 区域设置和 `zh-CN-HuihuiRUS` 语音的容器映像。 |
+| `1.3.0-amd64-zh-cn-kangkang-apollo-preview` | 具有 `zh-CN` 区域设置和 `zh-CN-Kangkang-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-zh-cn-yaoyao-apollo-preview` | 具有 `zh-CN` 区域设置和 `zh-CN-Yaoyao-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-zh-hk-danny-apollo-preview` | 具有 `zh-HK` 区域设置和 `zh-HK-Danny-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-zh-hk-tracy-apollo-preview` | 具有 `zh-HK` 区域设置和 `zh-HK-Tracy-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-zh-hk-tracyrus-preview` | 具有 `zh-HK` 区域设置和 `zh-HK-TracyRUS` 语音的容器映像。 |
+| `1.3.0-amd64-zh-tw-hanhanrus-preview` | 具有 `zh-TW` 区域设置和 `zh-TW-HanHanRUS` 语音的容器映像。 |
+| `1.3.0-amd64-zh-tw-yating-apollo-preview` | 具有 `zh-TW` 区域设置和 `zh-TW-Yating-Apollo` 语音的容器映像。 |
+| `1.3.0-amd64-zh-tw-zhiwei-apollo-preview` | 具有 `zh-TW` 区域设置和 `zh-TW-Zhiwei-Apollo` 语音的容器映像。 |
+| `1.2.0-amd64-de-de-heddarus-preview` | 具有 `de-DE` 区域设置和 `de-DE-Hedda` 语音的容器映像。 |
+| `1.2.0-amd64-de-de-heddarus-preview` | 具有 `de-DE` 区域设置和 `de-DE-HeddaRUS` 语音的容器映像。 |
+| `1.2.0-amd64-de-de-stefan-apollo-preview` | 具有 `de-DE` 区域设置和 `de-DE-Stefan-Apollo` 语音的容器映像。 |
+| `1.2.0-amd64-en-au-catherine-preview` | 具有 `en-AU` 区域设置和 `en-AU-Catherine` 语音的容器映像。 |
+| `1.2.0-amd64-en-au-hayleyrus-preview` | 具有 `en-AU` 区域设置和 `en-AU-HayleyRUS` 语音的容器映像。 |
+| `1.2.0-amd64-en-gb-george-apollo-preview` | 具有 `en-GB` 区域设置和 `en-GB-George-Apollo` 语音的容器映像。 |
+| `1.2.0-amd64-en-gb-hazelrus-preview` | 具有 `en-GB` 区域设置和 `en-GB-HazelRUS` 语音的容器映像。 |
+| `1.2.0-amd64-en-gb-susan-apollo-preview` | 具有 `en-GB` 区域设置和 `en-GB-Susan-Apollo` 语音的容器映像。 |
+| `1.2.0-amd64-en-in-heera-apollo-preview` | 具有 `en-IN` 区域设置和 `en-IN-Heera-Apollo` 语音的容器映像。 |
+| `1.2.0-amd64-en-in-priyarus-preview` | 具有 `en-IN` 区域设置和 `en-IN-PriyaRUS` 语音的容器映像。 |
+| `1.2.0-amd64-en-in-ravi-apollo-preview` | 具有 `en-IN` 区域设置和 `en-IN-Ravi-Apollo` 语音的容器映像。 |
+| `1.2.0-amd64-en-us-benjaminrus-preview` | 具有 `en-US` 区域设置和 `en-US-BenjaminRUS` 语音的容器映像。 |
+| `1.2.0-amd64-en-us-guy24krus-preview` | 具有 `en-US` 区域设置和 `en-US-Guy24kRUS` 语音的容器映像。 |
+| `1.2.0-amd64-en-us-jessa24krus-preview` | 具有 `en-US` 区域设置和 `en-US-Jessa24kRUS` 语音的容器映像。 |
+| `1.2.0-amd64-en-us-jessarus-preview` | 具有 `en-US` 区域设置和 `en-US-JessaRUS` 语音的容器映像。 |
+| `1.2.0-amd64-en-us-zirarus-preview` | 具有 `en-US` 区域设置和 `en-US-ZiraRUS` 语音的容器映像。 |
+| `1.2.0-amd64-es-es-helenarus-preview` | 具有 `es-ES` 区域设置和 `es-ES-HelenaRUS` 语音的容器映像。 |
+| `1.2.0-amd64-es-es-laura-apollo-preview` | 具有 `es-ES` 区域设置和 `es-ES-Laura-Apollo` 语音的容器映像。 |
+| `1.2.0-amd64-es-es-pablo-apollo-preview` | 具有 `es-ES` 区域设置和 `es-ES-Pablo-Apollo` 语音的容器映像。 |
+| `1.2.0-amd64-es-mx-hildarus-preview` | 具有 `es-MX` 区域设置和 `es-MX-HildaRUS` 语音的容器映像。 |
+| `1.2.0-amd64-es-mx-raul-apollo-preview` | 具有 `es-MX` 区域设置和 `es-MX-Raul-Apollo` 语音的容器映像。 |
+| `1.2.0-amd64-fr-ca-caroline-preview` | 具有 `fr-CA` 区域设置和 `fr-CA-Caroline` 语音的容器映像。 |
+| `1.2.0-amd64-fr-ca-harmonierus-preview` | 具有 `fr-CA` 区域设置和 `fr-CA-HarmonieRUS` 语音的容器映像。 |
+| `1.2.0-amd64-fr-fr-hortenserus-preview` | 具有 `fr-FR` 区域设置和 `fr-FR-HortenseRUS` 语音的容器映像。 |
+| `1.2.0-amd64-fr-fr-julie-apollo-preview` | 具有 `fr-FR` 区域设置和 `fr-FR-Julie-Apollo` 语音的容器映像。 |
+| `1.2.0-amd64-fr-fr-paul-apollo-preview` | 具有 `fr-FR` 区域设置和 `fr-FR-Paul-Apollo` 语音的容器映像。 |
+| `1.2.0-amd64-it-it-cosimo-apollo-preview` | 具有 `it-IT` 区域设置和 `it-IT-Cosimo-Apollo` 语音的容器映像。 |
+| `1.2.0-amd64-it-it-luciarus-preview` | 具有 `it-IT` 区域设置和 `it-IT-LuciaRUS` 语音的容器映像。 |
+| `1.2.0-amd64-ja-jp-ayumi-apollo-preview` | 具有 `ja-JP` 区域设置和 `ja-JP-Ayumi-Apollo` 语音的容器映像。 |
+| `1.2.0-amd64-ja-jp-harukarus-preview` | 具有 `ja-JP` 区域设置和 `ja-JP-HarukaRUS` 语音的容器映像。 |
+| `1.2.0-amd64-ja-jp-ichiro-apollo-preview` | 具有 `ja-JP` 区域设置和 `ja-JP-Ichiro-Apollo` 语音的容器映像。 |
+| `1.2.0-amd64-ko-kr-heamirus-preview` | 具有 `ko-KR` 区域设置和 `ko-KR-HeamiRUS` 语音的容器映像。 |
+| `1.2.0-amd64-pt-br-daniel-apollo-preview` | 具有 `pt-BR` 区域设置和 `pt-BR-Daniel-Apollo` 语音的容器映像。 |
+| `1.2.0-amd64-pt-br-heloisarus-preview` | 具有 `pt-BR` 区域设置和 `pt-BR-HeloisaRUS` 语音的容器映像。 |
+| `1.2.0-amd64-zh-cn-huihuirus-preview` | 具有 `zh-CN` 区域设置和 `zh-CN-HuihuiRUS` 语音的容器映像。 |
+| `1.2.0-amd64-zh-cn-kangkang-apollo-preview` | 具有 `zh-CN` 区域设置和 `zh-CN-Kangkang-Apollo` 语音的容器映像。 |
+| `1.2.0-amd64-zh-cn-yaoyao-apollo-preview` | 具有 `zh-CN` 区域设置和 `zh-CN-Yaoyao-Apollo` 语音的容器映像。 |
+| `1.1.0-amd64-de-de-hedda-preview` | 具有 `de-DE` 区域设置和 `de-DE-Hedda` 语音的容器映像。 |
+| `1.1.0-amd64-de-de-heddarus-preview` | 具有 `de-DE` 区域设置和 `de-DE-Hedda` 语音的容器映像。 |
+| `1.1.0-amd64-de-de-heddarus-preview` | 具有 `de-DE` 区域设置和 `de-DE-HeddaRUS` 语音的容器映像。 |
+| `1.1.0-amd64-de-de-stefan-apollo-preview` | 具有 `de-DE` 区域设置和 `de-DE-Stefan-Apollo` 语音的容器映像。 |
+| `1.1.0-amd64-en-au-catherine-preview` | 具有 `en-AU` 区域设置和 `en-AU-Catherine` 语音的容器映像。 |
+| `1.1.0-amd64-en-au-hayleyrus-preview` | 具有 `en-AU` 区域设置和 `en-AU-HayleyRUS` 语音的容器映像。 |
+| `1.1.0-amd64-en-gb-george-apollo-preview` | 具有 `en-GB` 区域设置和 `en-GB-George-Apollo` 语音的容器映像。 |
+| `1.1.0-amd64-en-gb-hazelrus-preview` | 具有 `en-GB` 区域设置和 `en-GB-HazelRUS` 语音的容器映像。 |
+| `1.1.0-amd64-en-gb-susan-apollo-preview` | 具有 `en-GB` 区域设置和 `en-GB-Susan-Apollo` 语音的容器映像。 |
+| `1.1.0-amd64-en-in-heera-apollo-preview` | 具有 `en-IN` 区域设置和 `en-IN-Heera-Apollo` 语音的容器映像。 |
+| `1.1.0-amd64-en-in-priyarus-preview` | 具有 `en-IN` 区域设置和 `en-IN-PriyaRUS` 语音的容器映像。 |
+| `1.1.0-amd64-en-in-ravi-apollo-preview` | 具有 `en-IN` 区域设置和 `en-IN-Ravi-Apollo` 语音的容器映像。 |
+| `1.1.0-amd64-en-us-benjaminrus-preview` | 具有 `en-US` 区域设置和 `en-US-BenjaminRUS` 语音的容器映像。 |
+| `1.1.0-amd64-en-us-guy24krus-preview` | 具有 `en-US` 区域设置和 `en-US-Guy24kRUS` 语音的容器映像。 |
+| `1.1.0-amd64-en-us-jessa24krus-preview` | 具有 `en-US` 区域设置和 `en-US-Jessa24kRUS` 语音的容器映像。 |
+| `1.1.0-amd64-en-us-jessarus-preview` | 具有 `en-US` 区域设置和 `en-US-JessaRUS` 语音的容器映像。 |
+| `1.1.0-amd64-en-us-zirarus-preview` | 具有 `en-US` 区域设置和 `en-US-ZiraRUS` 语音的容器映像。 |
+| `1.1.0-amd64-es-es-helenarus-preview` | 具有 `es-ES` 区域设置和 `es-ES-HelenaRUS` 语音的容器映像。 |
+| `1.1.0-amd64-es-es-laura-apollo-preview` | 具有 `es-ES` 区域设置和 `es-ES-Laura-Apollo` 语音的容器映像。 |
+| `1.1.0-amd64-es-es-pablo-apollo-preview` | 具有 `es-ES` 区域设置和 `es-ES-Pablo-Apollo` 语音的容器映像。 |
+| `1.1.0-amd64-es-mx-hildarus-preview` | 具有 `es-MX` 区域设置和 `es-MX-HildaRUS` 语音的容器映像。 |
+| `1.1.0-amd64-es-mx-raul-apollo-preview` | 具有 `es-MX` 区域设置和 `es-MX-Raul-Apollo` 语音的容器映像。 |
+| `1.1.0-amd64-fr-ca-caroline-preview` | 具有 `fr-CA` 区域设置和 `fr-CA-Caroline` 语音的容器映像。 |
+| `1.1.0-amd64-fr-ca-harmonierus-preview` | 具有 `fr-CA` 区域设置和 `fr-CA-HarmonieRUS` 语音的容器映像。 |
+| `1.1.0-amd64-fr-fr-hortenserus-preview` | 具有 `fr-FR` 区域设置和 `fr-FR-HortenseRUS` 语音的容器映像。 |
+| `1.1.0-amd64-fr-fr-julie-apollo-preview` | 具有 `fr-FR` 区域设置和 `fr-FR-Julie-Apollo` 语音的容器映像。 |
+| `1.1.0-amd64-fr-fr-paul-apollo-preview` | 具有 `fr-FR` 区域设置和 `fr-FR-Paul-Apollo` 语音的容器映像。 |
+| `1.1.0-amd64-it-it-cosimo-apollo-preview` | 具有 `it-IT` 区域设置和 `it-IT-Cosimo-Apollo` 语音的容器映像。 |
+| `1.1.0-amd64-it-it-luciarus-preview` | 具有 `it-IT` 区域设置和 `it-IT-LuciaRUS` 语音的容器映像。 |
+| `1.1.0-amd64-ja-jp-ayumi-apollo-preview` | 具有 `ja-JP` 区域设置和 `ja-JP-Ayumi-Apollo` 语音的容器映像。 |
+| `1.1.0-amd64-ja-jp-harukarus-preview` | 具有 `ja-JP` 区域设置和 `ja-JP-HarukaRUS` 语音的容器映像。 |
+| `1.1.0-amd64-ja-jp-ichiro-apollo-preview` | 具有 `ja-JP` 区域设置和 `ja-JP-Ichiro-Apollo` 语音的容器映像。 |
+| `1.1.0-amd64-ko-kr-heamirus-preview` | 具有 `ko-KR` 区域设置和 `ko-KR-HeamiRUS` 语音的容器映像。 |
+| `1.1.0-amd64-pt-br-daniel-apollo-preview` | 具有 `pt-BR` 区域设置和 `pt-BR-Daniel-Apollo` 语音的容器映像。 |
+| `1.1.0-amd64-pt-br-heloisarus-preview` | 具有 `pt-BR` 区域设置和 `pt-BR-HeloisaRUS` 语音的容器映像。 |
+| `1.1.0-amd64-zh-cn-huihuirus-preview` | 具有 `zh-CN` 区域设置和 `zh-CN-HuihuiRUS` 语音的容器映像。 |
+| `1.1.0-amd64-zh-cn-kangkang-apollo-preview` | 具有 `zh-CN` 区域设置和 `zh-CN-Kangkang-Apollo` 语音的容器映像。 |
+| `1.1.0-amd64-zh-cn-yaoyao-apollo-preview` | 具有 `zh-CN` 区域设置和 `zh-CN-Yaoyao-Apollo` 语音的容器映像。 |
+| `1.0.0-amd64-en-us-benjaminrus-preview` | 具有 `en-US` 区域设置和 `en-US-BenjaminRUS` 语音的容器映像。 |
+| `1.0.0-amd64-en-us-guy24krus-preview` | 具有 `en-US` 区域设置和 `en-US-Guy24kRUS` 语音的容器映像。 |
+| `1.0.0-amd64-en-us-jessa24krus-preview` | 具有 `en-US` 区域设置和 `en-US-Jessa24kRUS` 语音的容器映像。 |
+| `1.0.0-amd64-en-us-jessarus-preview` | 具有 `en-US` 区域设置和 `en-US-JessaRUS` 语音的容器映像。 |
+| `1.0.0-amd64-en-us-zirarus-preview` | 具有 `en-US` 区域设置和 `en-US-ZiraRUS` 语音的容器映像。 |
+| `1.0.0-amd64-zh-cn-huihuirus-preview` | 具有 `zh-CN` 区域设置和 `zh-CN-HuihuiRUS` 语音的容器映像。 |
+| `1.0.0-amd64-zh-cn-kangkang-apollo-preview` | 具有 `zh-CN` 区域设置和 `zh-CN-Kangkang-Apollo` 语音的容器映像。 |
+| `1.0.0-amd64-zh-cn-yaoyao-apollo-preview` | 具有 `zh-CN` 区域设置和 `zh-CN-Yaoyao-Apollo` 语音的容器映像。 |
 
 ## <a name="key-phrase-extraction"></a>关键短语提取
 

@@ -1,19 +1,15 @@
 ---
-title: Azure 备份 - DPM 和 Azure 备份服务器的脱机备份
+title: DPM 和 Azure 备份服务器的脱机备份
 description: Azure 备份允许使用 Azure 导入/导出服务从网络中发送数据。 本文介绍 DPM 和 Azure 备份服务器（MABS）的脱机备份工作流。
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.author: dacurwin
-ms.openlocfilehash: 0763cbd4345dca39f37b77a0f3d991a7d77e30c4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 4c62fed98a37a821907a889e45d582c452961203
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074304"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173252"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>DPM 和 Azure 备份服务器的脱机备份工作流
 
@@ -108,7 +104,7 @@ Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/comm
 
 *AzureOfflineBackupDiskPrep*实用程序用于准备送到最近的 Azure 数据中心的 SATA 驱动器。 在以下路径的恢复服务代理安装目录中可获得此实用工具：
 
-*\\Microsoft Azure 恢复服务代理\\实用工具\\*
+    *\\Microsoft Azure Recovery Services Agent\\Utils\\*
 
 1. 转到该目录，将“AzureOfflineBackupDiskPrep”目录复制到 SATA 驱动器准备连接的副本计算机上。 确保满足以下与副本计算机相关的要求：
 

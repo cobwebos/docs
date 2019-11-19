@@ -1,17 +1,17 @@
 ---
 title: Azure Database for MariaDB 中的只读副本
-description: 了解 Azure Database for MariaDB 中的读取副本：选择区域、创建副本、连接到副本、监视复制和停止复制。
+description: 了解 Azure Database for MariaDB 中的只读副本：选择区域、创建副本、连接到副本、监视复制和停止复制。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.openlocfilehash: 29725c302887448689f4aafd86f1f834d81c23ed
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 11/17/2019
+ms.openlocfilehash: f761cb1c4e895cd0960a0a07033e609acf9ef601
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973590"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158410"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的只读副本
 
@@ -19,7 +19,7 @@ ms.locfileid: "71973590"
 
 副本是新的服务器，可以像管理普通的 Azure Database for MariaDB 服务器一样对其进行管理。 每个只读副本按照预配计算资源的 vCore 数量以及每月 GB 存储量计费。
 
-若要了解有关 GTID 复制的详细信息，请参阅[MariaDB 复制文档](https://mariadb.com/kb/en/library/gtid/)。
+若要详细了解 GTID 复制，请参阅 [MariaDB 复制文档](https://mariadb.com/kb/en/library/gtid/)。
 
 ## <a name="when-to-use-a-read-replica"></a>何时使用只读副本
 
@@ -36,11 +36,11 @@ ms.locfileid: "71973590"
 可以在与主服务器不同的区域中创建只读副本。 跨区域复制对于灾难恢复规划或使数据更接近用户等方案非常有用。
 
 > [!NOTE]
-> 跨区域复制处于预览阶段。
+> 跨区域复制处于预览状态。
 
 可以在任何 [Azure Database for MariaDB 区域](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)中设置主服务器。  主服务器可以在其配对区域或通用副本区域中有一个副本。 下图显示了哪些副本区域可用，具体取决于你的主区域。
 
-[@no__t 1Read 副本区域](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[![读取副本区域](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>通用副本区域
 您可以在以下任何区域中创建读取副本，而不管您的主服务器位于何处。 支持的通用副本区域包括：
@@ -55,7 +55,7 @@ ms.locfileid: "71973590"
 
 但是，有一些限制： 
 
-* 区域可用性：Azure Database for MariaDB 在美国西部2、法国中部、阿拉伯联合酋长国北部和德国中部提供。 但是，它们的配对区域不可用。
+* 区域可用性：在美国西部2、法国中部、阿拉伯联合酋长国北部和德国中部提供 Azure Database for MariaDB。 但是，它们的配对区域不可用。
     
 * 单向对：某些 Azure 区域仅在一个方向上配对。 这些区域包括印度西部、巴西南部和 US Gov 弗吉尼亚州。 
    这意味着印度西部的主服务器可以在印度南部创建副本。 但是，印度南部的主服务器无法在印度西部创建副本。 这是因为西部印度的次要区域是印度南部地区，而印度南部的次要区域不是西印度。
@@ -74,7 +74,7 @@ ms.locfileid: "71973590"
 
 ## <a name="connect-to-a-replica"></a>连接到副本
 
-创建副本时，该副本不会继承主服务器的防火墙规则或 VNet 服务终结点。 必须单独为副本设置这些规则。
+在创建时，副本将继承主服务器的防火墙规则或 VNet 服务终结点。 之后，这些规则与主服务器无关。
 
 副本从主服务器继承其管理员帐户。 主服务器上的所有用户帐户将复制到只读副本。 只能使用主服务器上可用的用户帐户连接到只读副本。
 
@@ -90,7 +90,7 @@ mysql -h myreplica.mariadb.database.azure.com -u myadmin@myreplica -p
 
 Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)”指标。 此指标仅适用于副本。
 
-此指标是使用 MariaDB 的 `SHOW SLAVE STATUS` 命令中提供的 `seconds_behind_master` 指标计算得出的。
+此指标是使用 MariaDB 的 `seconds_behind_master` 命令中提供的 `SHOW SLAVE STATUS` 指标计算得出的。
 
 请设置警报，以便在复制滞后时间达到工作负荷不可接受的值时收到通知。
 
@@ -114,7 +114,7 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 
 ### <a name="master-server-restart"></a>主服务器重启
 
-如果为没有现有副本的主服务器创建副本，主服务器将首先重启以便为复制准备自身。 请考虑这一点，并在非高峰期执行这些操作。
+如果为没有现有副本的主服务器创建副本，主服务器将首先重启以便为复制准备自身。 请考虑这一点并在非高峰期执行这些操作。
 
 ### <a name="new-replicas"></a>新副本
 
@@ -126,6 +126,8 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 
 > [!IMPORTANT]
 > 将主服务器的配置更新为新值之前，请将副本配置更新为与这些新值相等或更大的值。 此操作可确保副本与主服务器发生的任何更改保持同步。
+
+创建副本时，防火墙规则、虚拟网络规则和参数设置将从主服务器继承到副本。 之后，副本的规则是独立的。
 
 ### <a name="stopped-replicas"></a>停止的副本
 
@@ -141,7 +143,7 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 
 ### <a name="server-parameters"></a>服务器参数
 
-为了防止数据不同步并避免潜在的数据丢失或损坏，使用读取副本时，会锁定某些服务器参数以防止其更新。
+为了防止数据变得不同步，以及为了避免可能发生的数据丢失或损坏情况，在使用只读副本时，某些服务器参数因为锁定而无法更新。
 
 将在主服务器和副本服务器上锁定以下的服务器参数：
 - [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
@@ -152,10 +154,10 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 ### <a name="other"></a>其他
 
 - 不支持创建副本服务器的副本。
-- 内存中的表可能会导致副本服务器变得不同步。这是 MariaDB 复制技术的限制。
+- 内存中表可能会导致副本不同步。这是 MariaDB 复制技术的限制。
 - 确保主服务器表具有主键。 缺少主键可能会导致主服务器与副本服务器之间的复制延迟。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[使用 Azure 门户创建和管理只读副本](howto-read-replicas-portal.md)
-- 了解如何[使用 Azure CLI 和 REST API 创建和管理读取副本](howto-read-replicas-cli.md)
+- 了解如何[通过 Azure CLI 和 REST API 创建和管理只读副本](howto-read-replicas-cli.md)

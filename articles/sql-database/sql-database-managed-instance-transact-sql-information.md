@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 3518404b76625e2557aaefdc6ab5ad7353683984
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: 3283cfe9455ba29679d7c741941aa8863c47b1c0
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823321"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158293"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>托管实例的 T-SQL 差异、限制和已知问题
 
@@ -82,7 +82,7 @@ ms.locfileid: "73823321"
 
 ### <a name="auditing"></a>审核
 
-在 Azure SQL 数据库中的数据库中审核与在 SQL Server 中的数据库中审核的主要差异为：
+在审核 Azure SQL 数据库和 SQL Server 中的数据库方面，主要差异是：
 
 - 使用 Azure SQL 数据库中的托管实例部署选项时，审核将在服务器级别执行。 在 Azure Blob 存储中存储 `.xel` 日志文件。
 - 使用 Azure SQL 数据库中的单一数据库和弹性池部署选项，审核是在数据库一级执行。
@@ -325,13 +325,13 @@ WITH PRIVATE KEY (<private_key_options>)
 
 - 从 Azure Blob 存储导入文件时，必须在 `DATASOURCE` 命令中指定 `BULK INSERT`。 请参阅 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql)。
 - 从 Azure Blob 存储中读取文件内容时，必须在 `DATASOURCE` 函数中指定 `OPENROWSET`。 请参阅 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql)。
-- `OPENROWSET` 可用于读取其他 Azure SQL 单一数据库、托管实例或 SQL Server 实例中的数据。 其他源（如 Oracle 数据库或 Excel 文件）不受支持。
+- `OPENROWSET` 可以用来从其他 Azure SQL 单一数据库、托管实例或 SQL Server 实例读取数据。 其他资源（例如 Oracle 数据库或 Excel 文件）不受支持。
 
 ### <a name="clr"></a>CLR
 
 由于托管实例无法访问文件共享和 Windows 文件夹，因此存在以下约束：
 
-- 仅支持 `CREATE ASSEMBLY FROM BINARY`。 请参阅[CREATE ASSEM 通过 FROM BINARY](/sql/t-sql/statements/create-assembly-transact-sql)。 
+- 仅支持 `CREATE ASSEMBLY FROM BINARY`。 请参阅 [CREATE ASSEM BLY FROM BINARY](/sql/t-sql/statements/create-assembly-transact-sql)。 
 - 不支持 `CREATE ASSEMBLY FROM FILE`。 请参阅 [CREATE ASSEMBLY FROM FILE](/sql/t-sql/statements/create-assembly-transact-sql)。
 - `ALTER ASSEMBLY` 不能引用文件。 请参阅 [ALTER ASSEMBLY](/sql/t-sql/statements/alter-assembly-transact-sql)。
 
@@ -405,7 +405,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 - 支持快照和双向复制类型。 不支持合并复制、对等复制和可更新订阅。
 - [事务复制](sql-database-managed-instance-transactional-replication.md)在托管实例上为公共预览版，但存在一些约束：
-    - 所有类型的复制参与者（发布服务器、分发服务器、请求订阅服务器和推送订阅服务器）都可放置在托管实例上，但发布服务器和分发服务器必须都在云中或同时位于本地。
+    - 所有类型的复制参与者（发布服务器、分发服务器、拉取订阅服务器和推送订阅服务器）都可以放置在托管实例上，但发布服务器和分发服务器必须同时在云中或同时在本地。
     - 托管实例可以与最新版 SQL Server 通信。 请在[此处](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)查看支持的版本。
     - 事务复制有一些[其他的网络要求](sql-database-managed-instance-transactional-replication.md#requirements)。
 
@@ -533,7 +533,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="tempdb"></a>TEMPDB
 
-在“常规用途”层级上，`tempdb` 的最大文件大小不能超过 24 GB 每核心。 在“业务关键”层级上，最大 `tempdb` 大小根据实例存储大小受到限制。 常规用途层上 `Tempdb` 日志文件大小限制为 120 GB。 如果某些查询需要在 `tempdb` 中为每个核心提供 24 GB 以上的空间，或者生成 120 GB 以上的日志数据，则这些查询可能会返回错误。
+在“常规用途”层级上，`tempdb` 的最大文件大小不能超过 24 GB 每核心。 在“业务关键”层级上，最大 `tempdb` 大小根据实例存储大小受到限制。 在“常规用途”层级上，`Tempdb` 日志文件大小限制为 120 GB。 如果某些查询需要在 `tempdb` 中为每个核心提供 24 GB 以上的空间，或者生成 120 GB 以上的日志数据，则这些查询可能会返回错误。
 
 ### <a name="error-logs"></a>错误日志
 
@@ -541,39 +541,29 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ## <a name="Issues"></a> 已知问题
 
-### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>不应用内存中 OLTP 内存限制
+### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>内存中 OLTP 内存限制不适用
 
 **日期：** Oct 2019
 
-在某些情况下，业务关键服务层将无法正确应用[内存优化对象的最大内存限制](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space)。 托管实例可使工作负荷对内存中 OLTP 操作使用更多内存，这可能会影响实例的可用性和稳定性。 达到限制的内存中 OLTP 查询可能不会立即失败。 此问题即将解决。 如果使用内存中 OLTP 内存更多的查询达到[限制](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space)，则会更快地失败。
+在某些情况下，业务关键型服务层级不会正确应用[内存优化对象的最大内存限制](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space)。 托管实例可使工作负荷对内存中 OLTP 操作使用更多内存，这可能会影响实例的可用性和稳定性。 达到限制的内存中 OLTP 查询可能不会立即失败。 此问题即将得到解决。 使用较多内存中 OLTP 内存的查询在达到[限制](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space)的情况下会更快地失败。
 
-**解决方法：** 使用[SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) [监视内存中 OLTP 存储使用情况](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring)，确保工作负荷不会使用超过可用内存。 增加依赖于 Vcore 数量的内存限制，或优化工作负荷以使用更少的内存。
+**解决方法：** 使用[SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) [监视内存中 OLTP 存储使用情况](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring)，确保工作负荷不会使用超过可用内存。 提高基于 vCore 数的内存限制，或者优化工作负荷，让其使用较少的内存。
 
-### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>尝试删除不为空的文件时返回错误错误
+### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>尝试删除不为空的文件时，返回了错误的错误
 
 **日期：** Oct 2019
 
-SQL Server/托管实例[不允许用户删除不为空的文件](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites)。 如果尝试使用 `ALTER DATABASE REMOVE FILE` 语句删除非空的数据文件，则不会立即返回 `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` 错误。 托管实例将继续尝试删除该文件，并在与 `Internal server error`30 分钟后，操作将失败。
+SQL Server/托管实例[不允许用户删除不为空的文件](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites)。 如果尝试使用 `ALTER DATABASE REMOVE FILE` 语句删除非空数据文件，系统会立即返回 `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` 错误。 托管实例会继续尝试删除该文件，操作会在 30 分钟后失败并显示`Internal server error`。
 
-**解决方法**：使用 `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` 命令删除文件内容。 如果这是文件组中的唯一文件，则需要在收缩文件之前删除与此文件组关联的表或分区中的数据，并选择性地将这些数据加载到另一个表/分区。
+**解决方法**：使用 `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` 命令删除文件内容。 如果这是文件组中的唯一文件，则需从与此文件组关联的表或分区中删除数据，然后才能收缩文件并选择将该数据加载到另一表/分区中。
 
-### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>更改服务层和创建实例操作被正在进行的数据库还原操作阻止
+### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>更改服务层级和创建实例的操作会被正在进行的数据库还原操作阻止
 
 **日期：** 09月2019
 
-正在进行的 `RESTORE` 语句、数据迁移服务迁移过程和内置时间点还原将阻止更新服务层或调整现有实例的大小，并创建新实例，直到还原过程完成。 还原过程将在运行还原过程的同一子网中阻止这些操作。 实例池中的实例不受影响。 创建或更改服务层操作不会失败或超时-还原过程完成或取消后，它们将继续。
+正在运行的 `RESTORE` 语句、数据迁移服务的迁移过程以及内置的时间点还原都会阻止对服务层的更新操作或者对现有实例的重设大小操作以及创建新实例的操作，直至还原过程完成为止。 还原过程会阻止其运行时所在的子网的托管实例和实例池中的这些操作。 实例池中的实例不受影响。 创建或更改服务层级的操作不会失败或超时 - 一旦还原过程完成或取消，它们就会继续。
 
 **解决方法**：等待还原过程完成，如果创建或更新服务层操作的优先级较高，则取消还原过程。
-
-### <a name="missing-validations-in-restore-process"></a>还原过程中缺少验证
-
-**日期：** 09月2019
-
-`RESTORE` 语句和内置时间点还原不会对已还原的数据库执行某些必要的检查：
-- **DBCC CHECKDB** - `RESTORE` 语句不会对已还原的数据库执行 `DBCC CHECKDB`。 如果原始数据库已损坏，或者备份文件在复制到 Azure Blob 存储时已损坏，则不会执行自动备份，并且 Azure 支持人员将会联系客户。 
-- 内置的时间点还原过程不会检查“业务关键”实例中的自动备份是否包含[内存中 OLTP 对象](sql-database-in-memory.md#in-memory-oltp)。 
-
-**解决方法**：在执行备份之前，请确保在源数据库上执行 `DBCC CHECKDB`，并使用备份中的 `WITH CHECKSUM` 选项，以避免在托管实例上可能会还原可能会损坏。 如果要在“常规用途”层上还原源数据库，请确保源数据库不包含[内存中 OLTP 对象](sql-database-in-memory.md#in-memory-oltp)。
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>故障转移后，可能需要重新配置“业务关键”服务层级上的 Resource Governor
 

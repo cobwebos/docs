@@ -1,18 +1,14 @@
 ---
-title: Microsoft Azure 备份 server & System Center DPM 支持矩阵
-description: 本文汇总了使用 Microsoft Azure 备份服务器或 System Center DPM 备份本地和 Azure VM 资源时的 Azure 备份支持。
-author: dcurwin
-ms.service: backup
+title: MABS & System Center DPM 支持矩阵
+description: 本文汇总了使用 Microsoft Azure 备份 Server （MABS）或 System Center DPM 备份本地和 Azure 虚拟机资源时的 Azure 备份支持。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.author: dacurwin
-manager: carmonm
-ms.openlocfilehash: d9c55773772b4f331de95bd98b1973225357c0cd
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 2bec2818eaabaa2d2d74ab7181db0eabcba092ec
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012788"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172044"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 备份服务器或 System Center DPM 进行备份时的支持矩阵
 
@@ -54,7 +50,7 @@ DPM 和 MABS 支持备份各种应用、服务器和客户端操作系统。 它
 
 ## <a name="supported-scenarios"></a>支持的方案
 
-**方案** | **代理** | **位置**
+**方案** | **代理** | **Location**
 --- | --- | ---
 **备份本地计算机/工作负荷** | DPM/MABS 保护代理在要备份的计算机上运行。<br/><br/> DPM/MABS 服务器上的 MARS 代理。<br/> 启用此功能所需的 Microsoft Azure 恢复服务代理或 Azure 备份代理的最低版本为 2.0.8719.0。  | DPM/MABS 必须在本地运行。
 

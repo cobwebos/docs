@@ -1,18 +1,18 @@
 ---
 title: Azure 防火墙的 FQDN 标记概述
-description: 了解 Azure 防火墙中的 FQDN 标记
+description: FQDN 标记表示与已知的 Microsoft 服务关联的一组完全限定的域名 (FQDN)。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 4/23/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: d78f67b96776fa3fb1d13fbf7b385e41ca3aa59a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6396f8292a4c54f7fce237439f37c3e8156d59e8
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665557"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74169040"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN 标记概述
 

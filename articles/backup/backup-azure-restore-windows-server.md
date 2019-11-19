@@ -1,19 +1,15 @@
 ---
-title: 将 Azure 中的数据还原到 Windows server-Azure 备份
+title: 将 Azure 中的数据还原到 Windows server
 description: 本文介绍如何将 Azure 中存储的数据还原到带有 Microsoft Azure 恢复服务（MARS）代理的 Windows server 或 Windows 计算机。
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.author: dacurwin
-ms.openlocfilehash: 4d9ab47d83caadda9046481c15dfb6af18aee146
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 4d663739f25762723fc3a8f566c4b5ef3f957338
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012194"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172790"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>使用 Azure 资源管理器部署模型将文件还原到 Windows
 
@@ -28,11 +24,11 @@ ms.locfileid: "74012194"
 > 如果想要使用“即时还原”来还原数据，请安装 [Azure 备份更新（2017 年 1 月）](https://support.microsoft.com/help/3216528?preview)。 此外，必须在支持文章所列的区域中的保管库内保护备份数据。 请查阅 [Azure 备份更新（2017 年 1 月）](https://support.microsoft.com/help/3216528?preview)以获取支持“即时还原”的区域的最新列表。
 >
 
-在 Azure 门户中将“即时还原”与恢复服务保管库配合使用。 如果在备份保管库中存储了数据，则这些保管库已转换为恢复服务保管库。 如果要使用“即时还原”，请下载 MARS 更新，并按照提及“即时还原”的过程进行操作。
+在 Azure 门户中将“即时还原”与恢复服务保管库配合使用。 如果在备份保管库中存储了数据，则这些保管库已转换为恢复服务保管库。 如果要使用“即时还原”，请下载 MARS 更新，并按照提及即时还原的过程进行操作。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="use-instant-restore-to-recover-data-to-the-same-machine"></a>使用“即时还原”将数据恢复到同一台计算机
+## <a name="use-instant-restore-to-recover-data-to-the-same-machine"></a>使用即时还原将数据恢复到同一台计算机
 
 如果意外删除了某个文件并想要在同一台计算机（备份位置）中还原文件，以下步骤可帮助你恢复数据。
 
@@ -59,7 +55,7 @@ ms.locfileid: "74012194"
 
 5. 在“选择卷和日期”页上，选择包含想要还原的文件和文件夹的卷。
 
-    在日历中选择恢复点。 以**粗体**显示的日期指示至少有一个可用的恢复点。 如果单个日期有多个可用的恢复点，请从“时间”下拉菜单中选择特定的恢复点。
+    在日历中选择一个恢复点。 以**粗体**显示的日期指示至少有一个可用的恢复点。 如果单个日期有多个可用的恢复点，请从“时间”下拉菜单中选择特定的恢复点。
 
     ![恢复数据向导“选择卷和日期”页的屏幕截图](./media/backup-azure-restore-windows-server/samemachine_selectvolumedate_instantrestore.png)
 
@@ -124,7 +120,7 @@ ms.locfileid: "74012194"
 
 8. 在“选择卷和日期”页上，选择包含想要还原的文件和文件夹的卷。
 
-    在日历中选择恢复点。 以**粗体**显示的日期指示至少有一个可用的恢复点。 如果单个日期有多个可用的恢复点，请从“时间”下拉菜单中选择特定的恢复点。
+    在日历中选择一个恢复点。 以**粗体**显示的日期指示至少有一个可用的恢复点。 如果单个日期有多个可用的恢复点，请从“时间”下拉菜单中选择特定的恢复点。
 
     ![恢复数据向导“选择卷和日期”页的屏幕截图](./media/backup-azure-restore-windows-server/alternatemachine_selectvolumedate_instantrestore.png)
 

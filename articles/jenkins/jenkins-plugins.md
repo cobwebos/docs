@@ -1,36 +1,32 @@
 ---
 title: 适用于 Azure 的 Jenkins 插件
 description: 了解可用于 Azure 的 Jenkins 插件
-ms.service: jenkins
-keywords: jenkins，plugis，azure devops
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
+keywords: jenkins、plugis、azure、devops
 ms.date: 03/22/2019
 ms.topic: article
-ms.openlocfilehash: c103bc0a314f1e5a4a0afef3f7969f53b6a0dccd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ecc8f7f7435cbb0dbc80f334f27aaca7f4cd1ed7
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60640956"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158794"
 ---
 # <a name="jenkins-plugins-for-azure"></a>适用于 Azure 的 Jenkins 插件
 
-以下的 Jenkins 插件支持与 Azure 配合使用的各种功能。
+以下 Jenkins 插件支持用于 Azure 的各种功能。
   
-| Jenkins 插件 | 描述                                   |
+| Jenkins 插件 | 说明                                   |
 |------------------------------------------------------------------------------|
-| [Azure 应用服务插件](https://plugins.jenkins.io/azure-app-service)     | Jenkins 插件部署 Azure 应用服务 （目前支持仅 Web 应用）。 | 
-| [Azure AD 插件](https://plugins.jenkins.io/azure-ad)                       | 支持身份验证和授权通过 Azure Active Directory 的 Jenkins 插件。 | 
-| [Azure 项目管理器插件](https://plugins.jenkins.io/azure-artifact-manager) | Azure 项目管理器插件是一名项目经理，允许将项目存储到 Azure Blob 存储。 Azure 项目管理器插件以透明方式对 Jenkins 和你的作业的工作原理，就像默认项目管理器。 | 
-| [Azure 容器代理插件](https://plugins.jenkins.io/azure-container-agents) | Azure 容器代理插件可帮助你在 Jenkins 中代理以运行容器 | 
-| [Azure 容器注册表任务插件](https://plugins.jenkins.io/azure-container-registry-tasks)       | 若要发送到 docker 生成请求的 Jenkins 插件[Azure 容器注册表](/azure/container-registry/container-registry-tasks-overview)。 |
-| [Azure Container Service plugin](https://plugins.jenkins.io/azure-acs)（Azure 容器服务插件）       | 若要部署到 Azure 容器服务 (AKS) 的配置的 Jenkins 插件。 | 
-| [Azure 凭据插件](https://plugins.jenkins.io/azure-credentials)      | 若要管理的 Azure 凭据的 Jenkins 插件。 | 
-| [Azure Function 插件](https://plugins.jenkins.io/azure-function)           | 若要部署 Azure Function 的 Jenkins 插件。 | 
-| [Azure IoT Edge 插件](https://plugins.jenkins.io/azure-iot-edge)           | Azure IoT Edge 插件，可以轻松设置开发 IoT Edge 解决方案上 Jenkins CI/CD 管道。 | 
-| [Azure Service Fabric 插件](https://plugins.jenkins.io/service-fabric)     | Linux Azure Service Fabric 项目的 Jenkins 插件。 |
-| [Azure 存储插件](https://plugins.jenkins.io/windows-azure-storage)     | 插件用于上传生成项目，或下载生成依赖项从 Microsoft Azure Blob 存储。 | 
-| [Azure VM 代理插件](https://plugins.jenkins.io/azure-vm-agents)         | 若要在 Azure 虚拟机上 （通过 Azure 资源管理器模板） 中创建 Jenkins 代理的 Jenkins 插件。 | 
-| [Azure 虚拟机规模集插件](https://plugins.jenkins.io/azure-vmss)           | Jenkins 插件将 VM 映像部署到 Azure 虚拟机规模设置。 | 
+| [Azure App Service 插件](https://plugins.jenkins.io/azure-app-service)     | 用于部署 Azure App Service 的 Jenkins 插件（目前仅支持 Web 应用）。 | 
+| [Azure AD 插件](https://plugins.jenkins.io/azure-ad)                       | 支持 & 通过 Azure Active Directory 进行身份验证的 Jenkins 插件。 | 
+| [Azure 项目管理器插件](https://plugins.jenkins.io/azure-artifact-manager) | Azure 项目管理器插件是一种项目经理，可用于将项目存储到 Azure Blob 存储中。 对于 Jenkins 和作业，Azure 项目管理器插件可以透明地工作，这类似于默认的项目管理器。 | 
+| [Azure 容器代理插件](https://plugins.jenkins.io/azure-container-agents) | Azure 容器代理插件可帮助你在 Jenkins 中以代理身份运行容器 | 
+| [Azure 容器注册表任务插件](https://plugins.jenkins.io/azure-container-registry-tasks)       | 用于将 docker 生成请求发送到[Azure 容器注册表](/azure/container-registry/container-registry-tasks-overview)的 Jenkins 插件。 |
+| [Azure Container Service plugin](https://plugins.jenkins.io/azure-acs)（Azure 容器服务插件）       | 用于将配置部署到 Azure 容器服务的 Jenkins 插件（AKS）。 | 
+| [Azure 凭据插件](https://plugins.jenkins.io/azure-credentials)      | 用于管理 Azure 凭据的 Jenkins 插件。 | 
+| [Azure Function 插件](https://plugins.jenkins.io/azure-function)           | 用于部署 Azure 函数的 Jenkins 插件。 | 
+| [Azure IoT Edge 插件](https://plugins.jenkins.io/azure-iot-edge)           | Azure IoT Edge 插件可以轻松设置 CI/CD 管道，用于在 Jenkins 上开发 IoT Edge 解决方案。 | 
+| [Azure Service Fabric 插件](https://plugins.jenkins.io/service-fabric)     | 适用于 Linux Azure Service Fabric 项目的 Jenkins 插件。 |
+| [Azure 存储插件](https://plugins.jenkins.io/windows-azure-storage)     | 用于上传生成项目的插件，或从 Microsoft Azure Blob 存储下载生成依赖项。 | 
+| [Azure VM 代理插件](https://plugins.jenkins.io/azure-vm-agents)         | 用于在 Azure 虚拟机（通过 Azure 资源管理器模板）中创建 Jenkins 代理的 Jenkins 插件。 | 
+| [Azure 虚拟机规模集插件](https://plugins.jenkins.io/azure-vmss)           | 用于将 VM 映像部署到 Azure 虚拟机规模集的 Jenkins 插件。 | 

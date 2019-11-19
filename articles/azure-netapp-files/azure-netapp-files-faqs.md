@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: eefa54806d9f5ec9ef3a0c02e4abbaf6b4bf22e2
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 815ac261a29f710914347443f7882b9fe682229f
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298476"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173606"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -29,7 +29,7 @@ ms.locfileid: "72298476"
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS 数据路径是否通过 Internet？  
 
-否。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是部署到 Azure 虚拟网络（VNet）中的 azure 本机服务，该服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
+不能。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是部署到 Azure 虚拟网络（VNet）中的 azure 本机服务，该服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
 
 有关详细信息，请参阅[Azure NetApp 文件的准则网络规划](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)。  
 
@@ -103,16 +103,9 @@ Azure NetApp 文件提供了卷性能指标。 你还可以使用 Azure Monitor 
 
 ### <a name="i-want-to-have-a-volume-mounted-automatically-when-an-azure-vm-is-started-or-rebooted--how-do-i-configure-my-host-for-persistent-nfs-volumes"></a>我希望在启动或重新启动 Azure VM 时自动装载卷。  如何实现为持久性 NFS 卷配置主机？
 
-要使 NFS 卷在 VM 启动或重新启动时自动装载，请将条目添加到主机上的 @no__t 0 文件中。 
+要使 NFS 卷在 VM 启动或重新启动时自动装载，请将条目添加到主机上的 `/etc/fstab` 文件中。 
 
-例如： `$ANFIP:/$FILEPATH      /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
-
-- $ANFIP  
-    在卷属性边栏选项卡中找到的 Azure NetApp 文件卷的 IP 地址
-- $FILEPATH  
-    Azure NetApp 文件卷的导出路径
-- $MOUNTPOINT  
-    用于装载 NFS 导出的 Linux 主机上创建的目录
+有关详细信息，请参阅[装入或卸载适用于 Windows 或 Linux 虚拟机的卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)。  
 
 ### <a name="why-does-the-df-command-on-nfs-client-not-show-the-provisioned-volume-size"></a>为什么 NFS 客户端上的 DF 命令不显示预配的卷大小？
 
@@ -123,7 +116,7 @@ DF 中报告的卷大小是 Azure NetApp 文件量可以增长到的最大大小
 Azure NetApp 文件支持 NFSv3 和 NFSv 4.1。 可以使用任一 NFS 版本创建卷。 
 
 > [!IMPORTANT] 
-> 对 NFSv 4.1 功能的访问需要允许列表。  若要请求允许列表，请将请求提交到 <anffeedback@microsoft.com>。 
+> 访问 NFSv4.1 功能需要加入允许列表。  若要请求加入允许列表，请将请求提交到 <anffeedback@microsoft.com>。 
 
 
 ### <a name="how-do-i-enable-root-squashing"></a>如何实现启用根 squashing？
@@ -144,7 +137,7 @@ Azure NetApp 文件目前支持每个订阅一个 Active Directory 连接。 此
 
 支持[Azure Active Directory （AD）域服务](https://docs.microsoft.com/azure/active-directory-domain-services/overview)和[Active Directory 域服务（AD DS）](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) 。 可以将现有 Active Directory 域控制器与 Azure NetApp 文件一起使用。 域控制器可以作为虚拟机或本地通过 ExpressRoute 或 S2S VPN 驻留在 Azure 中。 目前，Azure NetApp 文件不支持[Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/)的 AD join。
 
-如果将 Azure NetApp 文件与 Azure Active Directory 域服务一起使用，则在为 NetApp 帐户配置 Active Directory 时，组织单位路径 @no__t 为0。
+如果将 Azure NetApp 文件与 Azure Active Directory 域服务一起使用，则在为 NetApp 帐户配置 Active Directory 时，将 `OU=AADDC Computers` 组织单位路径。
 
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>支持哪些版本的 Windows Server Active Directory？
 
@@ -158,14 +151,14 @@ Azure NetApp 文件提供容量池和卷使用情况指标。 你还可以使用
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>是否可以通过 Azure 存储资源管理器管理 Azure NetApp 文件？
 
-否。 Azure 存储资源管理器不支持 Azure NetApp 文件。
+不能。 Azure 存储资源管理器不支持 Azure NetApp 文件。
 
 ## <a name="data-migration-and-protection-faqs"></a>数据迁移和保护常见问题解答
 
 ### <a name="how-do-i-migrate-data-to-azure-netapp-files"></a>如何实现将数据迁移到 Azure NetApp 文件？
 Azure NetApp 文件提供 NFS 和 SMB 卷。  你可以使用任何基于文件的复制工具将数据迁移到服务。 
 
-NetApp 提供基于 SaaS 的解决方案，即[Netapp 云同步](https://cloud.netapp.com/cloud-sync-service)。解决方案使你能够将 NFS 或 SMB 数据复制到 Azure NetApp 文件 NFS 导出或 SMB 共享。 
+NetApp 提供基于 SaaS 的解决方案，即[Netapp 云同步](https://cloud.netapp.com/cloud-sync-service)。 解决方案使你能够将 NFS 或 SMB 数据复制到 Azure NetApp 文件 NFS 导出或 SMB 共享。 
 
 你还可以使用广泛的免费工具来复制数据。 对于 NFS，可以使用工作负荷工具（如[rsync](https://rsync.samba.org/examples.html) ）将源数据复制和同步到 Azure NetApp 文件量。 对于 SMB，可以采用相同的方式使用工作负荷[robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) 。  这些工具还可以复制文件或文件夹的权限。 
 
@@ -180,7 +173,7 @@ NetApp 提供基于 SaaS 的解决方案，即[Netapp 云同步](https://cloud.n
     
 Azure NetApp 文件提供 NFS 和 SMB 卷。  可以使用任何基于文件的复制工具在 Azure 区域之间复制数据。 
 
-NetApp 提供基于 SaaS 的解决方案，即[Netapp 云同步](https://cloud.netapp.com/cloud-sync-service)。解决方案使你能够将 NFS 或 SMB 数据复制到 Azure NetApp 文件 NFS 导出或 SMB 共享。 
+NetApp 提供基于 SaaS 的解决方案，即[Netapp 云同步](https://cloud.netapp.com/cloud-sync-service)。 解决方案使你能够将 NFS 或 SMB 数据复制到 Azure NetApp 文件 NFS 导出或 SMB 共享。 
 
 你还可以使用广泛的免费工具来复制数据。 对于 NFS，可以使用工作负荷工具（如[rsync](https://rsync.samba.org/examples.html) ）将源数据复制和同步到 Azure NetApp 文件量。 对于 SMB，可以采用相同的方式使用工作负荷[robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) 。  这些工具还可以复制文件或文件夹的权限。 
 
@@ -192,11 +185,11 @@ NetApp 提供基于 SaaS 的解决方案，即[Netapp 云同步](https://cloud.n
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>Azure Data Box 是否支持迁移？
 
-否。 Azure Data Box 目前不支持 Azure NetApp 文件。 
+不能。 Azure Data Box 目前不支持 Azure NetApp 文件。 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>是否支持通过 Azure 导入/导出服务进行迁移？
 
-否。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
+不能。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
 
 ## <a name="next-steps"></a>后续步骤  
 

@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: 56830e20b190958c1c411f5daa1d2a7e928f0f3d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5c70d1d7d62b41965d4c81e8bbe0e5b2dc3cbb92
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821196"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166254"
 ---
 # <a name="sql-database-release-notes"></a>SQL 数据库发行说明
 
@@ -24,7 +24,7 @@ ms.locfileid: "73821196"
 
 ### <a name="single-databasetabsingle-database"></a>[单个数据库](#tab/single-database)
 
-| Feature | 详细信息 |
+| 功能 | 详细信息 |
 | ---| --- |
 | 新的 Fsv2 系列和 M 系列硬件代| 有关信息，请参阅[硬件代](sql-database-service-tiers-vcore.md#hardware-generations)。|
 | [Azure 专用链接](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| 专用链接简化了网络架构，并通过将数据保留在 Azure 网络中来消除向 Internet 暴露数据的风险，从而保护 Azure 中终结点间的连接。 专用链接让你能够在 Azure 中创建和呈现自己的服务。 |
@@ -44,7 +44,7 @@ ms.locfileid: "73821196"
 
 ### <a name="managed-instancetabmanaged-instance"></a>[托管实例](#tab/managed-instance)
 
-| Feature | 详细信息 |
+| 功能 | 详细信息 |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-managed-instance-connectivity-architecture#service-aided-subnet-configuration-public-preview-in-east-us-and-west-us">服务辅助子网配置</a> | 管理子网配置的一种安全且方便的方式。 |
 | <a href="/azure/sql-database/sql-database-instance-pools">实例池</a> | 将较小的 SQL 实例迁移到云的方便且经济高效的方式。 |
@@ -62,23 +62,25 @@ ms.locfileid: "73821196"
 ### <a name="managed-instance-h2-2019-updates"></a>托管实例 H2 2019 更新
 
 - 使用[自动故障转移组](https://azure.microsoft.com/updates/azure-sql-database-auto-failover-groups-feature-now-available-in-all-regions/)可以将主实例中的所有数据库复制到另一个区域中的辅助实例。
-- 用[全局跟踪标志](https://azure.microsoft.com/updates/global-trace-flags-are-now-available-in-azure-sql-database-managed-instance/)配置托管实例行为。
+- 使用[全局跟踪标志](https://azure.microsoft.com/updates/global-trace-flags-are-now-available-in-azure-sql-database-managed-instance/)配置托管实例行为。
 
 ### <a name="managed-instance-h1-2019-updates"></a>托管实例 H1 2019 更新
 
-在 H1 2019 的托管实例部署模型中启用了以下功能：
-  - 支持具有<a href="https://aka.ms/sql-mi-visual-studio-subscribers">Azure 每月信用额度的订阅，适用于 Visual Studio 订户</a>和增加的[区域限制](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)。
+2019 年上半年在托管实例部署模型中启用了以下功能：
+  - 支持具有 <a href="https://aka.ms/sql-mi-visual-studio-subscribers">Visual Studio 订阅者的 Azure 每月额度</a>和增加的[区域限制](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)的订阅。
   - 支持 <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019">SharePoint 2016 和 sharepoint 2019</a> 以及 <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance">Dynamics 365 Business Central</a>
-  - 创建具有所选<a href="https://aka.ms/managed-instance-collation">服务器级排序规则</a>和<a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">时区</a>的实例。
-  - 托管实例现在通过<a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">内置防火墙</a>进行保护。
-  - 将实例配置为使用[公用终结点](sql-database-managed-instance-public-endpoint-configure.md)、[代理替代](sql-database-connectivity-architecture.md#connection-policy)连接以获得更好的网络性能、<a href="https://aka.ms/four-cores-sql-mi-update">在 Gen5 硬件生成上有4个 Vcore</a> ，或针对时间点还原<a href="https://aka.ms/managed-instance-configurable-backup-retention">将备份保留配置为35天</a>。 仍未启用长期备份保留（长达10年），因此你可以使用<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">只复制备份</a>作为替代方法。
-  - 利用新功能，你可以<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">使用 PowerShell 将数据库异地还原到另一个数据中心</a>，[重命名数据库](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/)，[删除虚拟群集](sql-database-managed-instance-delete-virtual-cluster.md)。
-  - 新的内置[实例参与者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor)允许将职责分离（SoD）与安全原则区分开来，并符合企业标准。
+  - 使用所选<a href="https://aka.ms/managed-instance-collation">服务器级排序规则</a>和<a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">时区</a>创建实例。
+  - 托管实例现在使用<a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">内置防火墙</a>进行保护。
+  - 配置实例以使用[公共终结点](sql-database-managed-instance-public-endpoint-configure.md)、[代理覆盖](sql-database-connectivity-architecture.md#connection-policy)连接以获得更好的网络性能，<a href="https://aka.ms/four-cores-sql-mi-update">Gen5 硬件代次上有 4 个 vCore</a> 或<a href="https://aka.ms/managed-instance-configurable-backup-retention">将备份保留期配置为最多 35 天</a>以便进行时间点还原。 长期备份保留（最长 10 年）仍未启用，因此可以使用<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">仅复制备份</a>作为替代方法。
+  - 利用新功能，可以<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">使用 PowerShell 将数据库异地还原到另一个数据中心</a>、[重命名数据库](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/)、[删除虚拟群集](sql-database-managed-instance-delete-virtual-cluster.md)。
+  - 新的内置[实例参与者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor)使职责分离 (SoD) 遵从安全原则并符合企业标准。
   - 托管实例在以下 Azure 政府版区域中提供（US Gov 德克萨斯州、US Gov 亚利桑那州）以及中国北部2和中国东部2。 它还在以下公共区域中提供：澳大利亚中部、澳大利亚中部2、巴西南部、法国南部、阿拉伯联合酋长国中部、阿拉伯联合酋长国北部、南非北部、南非西北部。
 
 ## <a name="fixed-known-issues"></a>修复了已知问题
 
 - **2019 年 8 月** - 托管实例完全支持包含的数据库。
+- **10 月 2019** -如果源数据库包含内存中 OLTP 对象，则在业务关键层到常规用途层的内置时间点数据库还原不会成功。
+- **11 月 2019** -从 Azure Blob 存储还原数据库后，使用 `DBCC CHECKDB` 验证数据库一致性。
 
 ## <a name="updates"></a>更新
 

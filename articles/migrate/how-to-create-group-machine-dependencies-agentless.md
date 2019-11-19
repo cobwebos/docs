@@ -4,27 +4,25 @@ description: 描述如何使用计算机依赖项以无代理方式创建组。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 10/23/2019
+ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: e9f9e812d5463f0a503b100780f9b988e43f748d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d0e002f0f1e620c108b23790dfc81574bee23795
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720266"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158432"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>设置无代理依赖项可视化以进行评估
-
-> [!NOTE]
-> 如果你尚未在 Azure Migrate 门户中看到此功能，请稍候。 它将在下周显示。
 
 本文介绍如何在 Azure Migrate：服务器评估中设置无代理依赖项映射。 此功能目前以预览版提供，可使用 Azure Migrate 设备发现的 VMware 计算机。 
 
 > [!IMPORTANT]
 > 对于使用 Azure Migrate 设备发现的 Azure VMware Vm，无代理依赖项可视化目前处于预览阶段。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="about-dependency-mapping"></a>关于依赖项映射 
+## <a name="about-dependency-mapping"></a>关于依赖项映射
 
 依赖关系映射有助于可视化要评估和迁移的计算机之间的依赖关系。 当您想要评估具有更高置信度的计算机时，通常使用依赖关系映射。
 
@@ -46,7 +44,7 @@ ms.locfileid: "73720266"
 ## <a name="current-limitations"></a>当前限制
 
 - 无代理依赖项可视化目前仅适用于 VMware Vm。
-- 现在，你无法在 "依赖关系分析" 视图中添加或删除组中的服务器。 
+- 现在，你无法在 "依赖关系分析" 视图中添加或删除组中的服务器。
 - 一组服务器的依赖关系图当前不可用。
 - 目前，无法以表格格式下载依赖关系数据。
 
@@ -60,12 +58,12 @@ ms.locfileid: "73720266"
 
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
- 
+
 无代理依赖项可视化支持的操作系统如下所示。
 
 **类型** | **受支持的操作系统**
---- | --- 
-**Windows** | Microsoft Windows Server 2016 <br/> Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 （64） 
+--- | ---
+**Windows** | Microsoft Windows Server 2016 <br/> Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 （64）
 **Linux** | Red Hat Enterprise Linux 7、6、5 <br/> Ubuntu Linux 14.04、16.04 <br/> Debian 7、8 <br/> Oracle Linux 6、7 <br/> CentOS 5、6、7  
 
 
@@ -84,7 +82,7 @@ ms.locfileid: "73720266"
 
 1. 打开 "设备管理" 应用。 导航到 "**提供 vCenter 详细信息**" 面板。
 2. 在 "**发现应用程序和 vm 依赖关系**" 部分中，单击 "**添加凭据**"
-3. 选择**操作系统**。 
+3. 选择**操作系统**。
 4. 提供帐户的友好名称。
 5. 提供**用户名**和**密码**
 6. 单击“保存”。
@@ -113,8 +111,8 @@ ms.locfileid: "73720266"
 2. 搜索要查看其依赖关系映射的计算机。
 3. 单击 "**依赖关系**" 列中的 "**查看依赖关系**"。
 4. 使用 "**持续时间**" 下拉列表更改要查看其地图的时间段。
-5. 展开**客户端**组以列出依赖于所选计算机的计算机。 
-6. 展开**端口**组以列出与所选计算机具有依赖关系的计算机。 
+5. 展开**客户端**组以列出依赖于所选计算机的计算机。
+6. 展开**端口**组以列出与所选计算机具有依赖关系的计算机。
 7. 若要导航到任何依赖计算机的映射视图，请单击计算机名称，然后单击 "**加载服务器映射**"。
 
     ![展开服务器端口组和加载服务器映射](./media/how-to-create-group-machine-dependencies-agentless/load-server-map.png)

@@ -1,18 +1,14 @@
 ---
-title: Azure 备份体系结构
+title: 体系结构概述
 description: 概述 Azure 备份服务使用的体系结构、组件和流程。
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: dacurwin
-ms.openlocfilehash: d914c2988b5f28940021de24dcfe1183c68b15cc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: ae7b0c2b81bd3d393b7e749e077a6f5fa0379562
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074349"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173518"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件
 
@@ -96,7 +92,7 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 
 下表汇总了不同备份类型支持的功能：
 
-**功能** | **本地 Windows Server 计算机（直接备份）** | **Azure VM** | **DPM/MABS 中的计算机或应用**
+**功能** | **直接备份文件和文件夹（使用 MARS Agent）** | **Azure VM 备份** | **DPM/MABS 中的计算机或应用**
 --- | --- | --- | ---
 备份到保管库 | ![是][green] | ![是][green] | ![是][green]
 依次备份到 DPM/MABS 磁盘和 Azure | | | ![是][green]
@@ -106,7 +102,7 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 
 ![表键](./media/backup-architecture/table-key.png)
 
-## <a name="architecture-direct-backup-of-azure-vms"></a>体系结构：直接备份 Azure Vm
+## <a name="architecture-built-in-azure-vm-backup"></a>体系结构：内置 Azure VM 备份
 
 1. 为 Azure VM 启用备份时，将会根据指定的计划运行备份。
 1. 首次备份期间，如果 VM 已运行，则会在 VM 上安装备份扩展。

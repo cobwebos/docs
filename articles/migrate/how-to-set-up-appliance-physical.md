@@ -6,19 +6,19 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: raynew
-ms.openlocfilehash: a3212e4dac6856a5fd032c731d877453965584ae
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
-ms.translationtype: MT
+ms.openlocfilehash: 1e67c36753239940b15e3cb47b5b75820ea43689
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907165"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158350"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>为物理服务器设置设备
 
 本文介绍了如何设置 Azure Migrate 设备，前提是你要用 Azure Migrate： Server 评估工具评估物理服务器。
 
 > [!NOTE]
-> 如果此处提到的功能在 Azure Migrate 门户中尚未显示，请稍候。 它们将在下周显示。
+> 如果此处提到的功能在 Azure Migrate 门户中尚未显示，请稍候。 大约在一周后，它们就会出现。
 
 Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用于执行以下操作：
 
@@ -55,14 +55,15 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 2. 运行以下命令以生成 VHD 的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3.  对于设备版本 1.19.05.10，生成的哈希应与这些设置匹配。
+3.  对于最新的设备版本，生成的哈希应与这些设置相符。
 
   **算法** | **哈希值**
   --- | ---
-  SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
+  MD5 | 5b98cf68dad495696c789bdad8f0d91b
+  SHA256 | c2364887738875a31634eb0cf5defd0398f813d41069875976ca076297071e6f
 
 
-  
+
 ## <a name="run-the-azure-migrate-installer-script"></a>运行 Azure Migrate 安装程序脚本
 = 此安装程序脚本执行以下操作：
 
@@ -110,7 +111,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 ### <a name="register-the-appliance-with-azure-migrate"></a>将设备注册到 Azure Migrate
 
 1. 单击“登录”。 如果未显示该按钮，请确保已在浏览器中禁用弹出窗口阻止程序。
-2. 在新的标签页中，使用 Azure 凭据登录。 
+2. 在新的标签页中，使用 Azure 凭据登录。
     - 使用用户名和密码登录。
     - 不支持使用 PIN 登录。
 3. 成功登录后，返回到 Web 应用。
@@ -132,14 +133,14 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
     - 若要删除服务器，请选择 >“删除”。
 4. 验证之后，单击“保存并启动发现”以启动发现过程。
 
-随即会启动发现。 大约 15 分钟后，已发现的 VM 的元数据将显示在 Azure 门户中。 
+随即会启动发现。 大约 15 分钟后，已发现的 VM 的元数据将显示在 Azure 门户中。
 
 ## <a name="verify-servers-in-the-portal"></a>验证门户中的服务器
 
 发现完成后，可以验证服务器是否显示在门户中。
 
 1. 打开 Azure Migrate 仪表板。
-2. 在**Azure Migrate-服务器** > **Azure Migrate：服务器评估**"页上，单击显示**发现的服务器**的计数的图标。 
+2. 在**Azure Migrate-服务器** > **Azure Migrate：服务器评估**"页上，单击显示**发现的服务器**的计数的图标。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 7d0fec56791c0d3e7ae60d78da83cf286532b9ab
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 13f86f0156299619d8bf8d92eb92bbcf8b4cb76c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124001"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173800"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>使用诊断日志监视 Azure 数据资源管理器引入操作（预览版）
 
@@ -30,7 +30,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 ## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>设置 Azure 数据资源管理器群集的诊断日志
 
 诊断日志可用于配置以下日志数据的集合：
-* 成功引入操作：这些日志包含已成功完成引入操作的相关信息。
+* 成功引入操作：这些日志包含有关成功完成引入操作的信息。
 * 引入操作失败：这些日志包含有关失败引入操作的详细信息，包括错误详细信息。 
 
 然后将数据存档到存储帐户中，将其流式传输到事件中心，或根据你的规范发送到 Log Analytics。
@@ -51,7 +51,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
     1. 选择诊断设置的 "**名称**"。
     1. 选择一个或多个目标：存储帐户、事件中心或 Log Analytics。
-    1. 选择要收集的日志： `SucceededIngestion`或`FailedIngestion`。
+    1. 选择要收集的日志： `SucceededIngestion` 或 `FailedIngestion`。
     1. 选择要收集的[指标](using-metrics.md)（可选）。   
     1. 选择 "**保存**" 以保存新的诊断日志设置和指标。
     1. 在 Azure 门户中创建**新的支持请求**以请求激活诊断日志。
@@ -66,12 +66,12 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
 日志 JSON 字符串包括下表中列出的元素：
 
-|姓名               |描述
+|名称               |说明
 |---                |---
 |time               |报表时间
 |resourceId         |Azure 资源管理器资源 ID
-|operationName      |操作的名称：微软.KUSTO/集群/摄取/ACTION '
-|operationVersion   |架构版本：'1.0' 
+|operationName      |操作的名称： "MICROSOFT"。KUSTO/集群/摄取/ACTION '
+|operationVersion   |架构版本： "1.0" 
 |category           |操作的类别。 `SucceededIngestion` 或 `FailedIngestion`。 属性对于[成功操作](#successful-ingestion-operation-log)或[失败操作](#failed-ingestion-operation-log)是不同的。
 |properties         |操作的详细信息。
 
@@ -100,15 +100,15 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 ```
 **成功操作诊断日志的属性**
 
-|姓名               |描述
+|名称               |说明
 |---                |---
 |succeededOn        |摄取完成时间
 |operationId        |Azure 数据资源管理器摄取操作 ID
 |database           |目标数据库的名称
-|table              |目标表的名称
-|ingestionSourceId  |引入数据源的 ID
+|表              |目标表的名称
+|IngestionSourceId  |引入数据源的 ID
 |IngestionSourcePath|引入数据源或 blob URI 的路径
-|rootActivityId     |活动 ID
+|RootActivityId     |活动 ID
 
 #### <a name="failed-ingestion-operation-log"></a>引入操作日志失败
 
@@ -141,21 +141,23 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
 **失败的操作诊断日志的属性**
 
-|姓名               |描述
+|名称               |说明
 |---                |---
 |FailedOn           |摄取完成时间
 |operationId        |Azure 数据资源管理器摄取操作 ID
 |database           |目标数据库的名称
-|table              |目标表的名称
-|ingestionSourceId  |引入数据源的 ID
+|表              |目标表的名称
+|IngestionSourceId  |引入数据源的 ID
 |IngestionSourcePath|引入数据源或 blob URI 的路径
-|rootActivityId     |活动 ID
-|details            |失败和错误消息的详细说明
+|RootActivityId     |活动 ID
+|详细信息            |失败和错误消息的详细说明
 |errorCode          |错误代码 
 |FailureStatus      |`Permanent` 或 `Transient`。 暂时性故障的重试可能会成功。
-|originatesFromUpdatePolicy|如果故障源自更新策略，则为 True
-|shouldRetry        |如果重试成功，则为 True
+|OriginatesFromUpdatePolicy|如果故障源自更新策略，则为 True
+|ShouldRetry        |如果重试成功，则为 True
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用度量值监视群集运行状况](using-metrics.md)
+* [教程：在 Azure 数据资源管理器中引入和查询监视数据](ingest-data-no-code.md)
+* [使用度量值监视群集运行状况](using-metrics.md)
+

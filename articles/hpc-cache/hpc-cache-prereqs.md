@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: ca7a12f45f8d907ee65df85e349883e4c14af47a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 406b77a428ec725a3d8d070bd60fcd4440a5cb92
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582150"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166467"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 缓存的先决条件
 
@@ -48,7 +48,9 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 * 若要访问 Azure Blob 存储终结点和其他内部资源，需要基于 Azure 的 DNS 服务器。
 * 若要访问本地存储，需配置可解析存储主机名的自定义 DNS 服务器。
 
-如果只需要访问 Blob 存储，则可以使用 Azure 提供的默认 DNS 服务器作为缓存。 但是，如果需要访问其他资源，则应创建自定义 DNS 服务器并将其配置为将任何特定于 Azure 的解析请求转发到 Azure DNS 服务器。 （也可以使用简单的 DNS 服务器对所有可用缓存装载点之间的客户端连接进行负载平衡。）
+如果只需要访问 Blob 存储，则可以使用 Azure 提供的默认 DNS 服务器作为缓存。 但是，如果需要访问其他资源，则应创建自定义 DNS 服务器并将其配置为将任何特定于 Azure 的解析请求转发到 Azure DNS 服务器。
+
+简单的 DNS 服务器还可用于对所有可用缓存装入点中的客户端连接进行负载均衡。
 
 若要详细了解 azure 虚拟网络中的资源，请参阅[名称解析中的](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)azure 虚拟网络和 DNS 服务器配置。
 
@@ -58,7 +60,9 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 
 * 缓存实例需要能够创建虚拟网络接口（Nic）。 创建缓存的用户必须在订阅中具有足够的权限才能创建 Nic。
 
-* 如果使用 Blob 存储，Azure HPC 缓存需要授权才能访问存储帐户。 你可以使用基于角色的访问控制（RBAC）来授予缓存对 Blob 存储的访问权限。 需要两个角色：存储帐户参与者和存储 Blob 数据参与者。 按照[添加存储目标](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)中的说明添加角色。
+* 如果使用 Blob 存储，Azure HPC 缓存需要授权才能访问存储帐户。 使用基于角色的访问控制（RBAC）授予缓存对 Blob 存储的访问权限。 需要两个角色：存储帐户参与者和存储 Blob 数据参与者。
+
+  按照[添加存储目标](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)中的说明添加角色。
 
 ## <a name="storage-infrastructure"></a>存储基础结构
 
@@ -88,7 +92,7 @@ NFS 后端存储必须是兼容的硬件/软件平台。 有关详细信息，�
 最好使用与缓存位于同一位置的存储帐户。
 <!-- clarify location - same region or same resource group or same virtual network? -->
 
-还必须为缓存应用程序授予对 Azure 存储帐户的访问权限。 按照[添加存储目标](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)中的说明，为缓存授予访问角色存储帐户参与者和存储 Blob 数据参与者的缓存。 如果你不是存储帐户所有者，请让所有者执行此步骤。
+还必须为缓存应用程序授予对 Azure 存储帐户的访问[权限](#permissions)，如上文所述。 按照[添加存储目标](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)中的过程为缓存提供所需的访问角色。 如果你不是存储帐户所有者，请让所有者执行此步骤。
 
 ## <a name="next-steps"></a>后续步骤
 

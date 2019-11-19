@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4c08802b9a19398e7968901974cad86d9d946a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: beaa8561028a9e21d0623c0eb8e19592f3cad055
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120314"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167863"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教程：为 G Suite 配置自动用户预配
 
@@ -32,7 +32,7 @@ ms.locfileid: "74120314"
 > [!NOTE]
 > G Suite 连接器最近于10月2019更新。 对 G Suite 连接器所做的更改包括：
 - 添加了对其他 G Suite 用户和组属性的支持。 
-- 已更新 G Suite 目标属性名称以匹配[此处](/azure/active-directory/manage-apps/customize-application-attributes)定义的名称。
+- 已更新 G Suite 目标属性名称以匹配[此处](https://developers.google.com/admin-sdk/directory)定义的名称。
 - 已更新默认属性映射。
 
 ## <a name="prerequisites"></a>先决条件
@@ -129,6 +129,9 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 > [!TIP]
 > 你还可以选择根据[g Suite 单一登录教程](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-tutorial)中提供的说明为 g suite 启用基于 SAML 的单一登录。 可以独立于自动用户预配配置单一登录，尽管这两个功能互相补充。
 
+> [!NOTE]
+> 若要详细了解 G Suite 的目录 API 终结点，请参阅[目录 api](https://developers.google.com/admin-sdk/directory)。
+
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>若要在 Azure AD 中配置 G Suite 的自动用户预配：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**"，并选择 "**所有应用程序**"。
@@ -196,15 +199,6 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 你可以使用 "**同步详细信息**" 部分监视进度并跟踪指向预配活动报告的链接，该报告描述了在 G Suite 上 Azure AD 预配服务执行的所有操作。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
-
-> [!NOTE]
-> 自动将用户预配到 G Suite 的另一个可行选项是使用[Google Cloud Directory Sync](https://support.google.com/a/answer/106368?hl=en)。此选项可将本地 Active Directory 标识预配到 G Suite。
-
-## <a name="common-issues"></a>常见问题
-* G Suite 要求所有预配的用户都来自验证域。 确保要预配的任何用户在 G Suite 的已验证域中具有 UPN。 如果未验证域中的用户在预配范围内，则会在[设置日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)中看到一个错误，如 "GoogleAppsInvalidDomain"。 您可以通过使用[范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)来防止这些错误，并确保未验证域中的用户不在作用域内。
-    * 目标属性： userPrincipalName
-    * 运算符： REGEX 匹配或非 REGEX 匹配
-    * 值：. *@domain.com
 
 ## <a name="additional-resources"></a>其他资源
 

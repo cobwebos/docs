@@ -1,68 +1,70 @@
 ---
-title: Azure CDN 标准规则引擎参考 |Microsoft Docs
-description: Azure CDN 标准规则引擎匹配条件和操作的参考文档。
+title: Azure CDN 的标准规则引擎参考 |Microsoft Docs
+description: Azure 内容分发网络（Azure CDN）的标准规则引擎中匹配条件和操作的参考文档。
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
-ms.openlocfilehash: 6fb7e704f3d33cff8c29386b8aba9d8289037cbb
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: aa401150ee7a0f02e809ad702b8247e18081c8a3
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615931"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171566"
 ---
-# <a name="azure-cdn-from-microsoft-rules-engine-reference"></a>Microsoft 规则引擎参考中的 Azure CDN
+# <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN 的标准规则引擎参考
 
-本文列出了 Azure 内容分发网络（CDN）[标准规则引擎](cdn-standard-rules-engine.md)的可用匹配条件和功能的详细说明。
+在 Azure 内容分发网络（Azure CDN）的[标准规则引擎](cdn-standard-rules-engine.md)中，规则由一个或多个匹配条件和操作组成。 本文详细说明了适用于 Azure CDN 的标准规则引擎中的匹配条件和功能。
 
-设计规则引擎的目的，是让其充当一个最终授权机构，控制 CDN 处理特定类型请求的方式。
+规则引擎旨在作为 Azure CDN 标准请求处理特定类型的请求的最终颁发机构。
 
-**常见用途**：
+**规则的常见用途**：
 
 - 重写或定义自定义缓存策略。
 - 将请求重定向。
-- 修改 HTTP 请求和响应标头
+- 修改 HTTP 请求和响应标头。
 
 ## <a name="terminology"></a>术语
 
-通过使用[**匹配条件**](cdn-standard-rules-engine-match-conditions.md)和[**操作**](cdn-standard-rules-engine-actions.md)来定义规则。 下图突出显示了这些元素：
+若要在规则引擎中定义规则，请设置[match 条件](cdn-standard-rules-engine-match-conditions.md)和[操作](cdn-standard-rules-engine-actions.md)：
 
- ![CDN 规则结构](./media/cdn-standard-rules-engine-reference/cdn-rules-structure.png)
+ ![Azure CDN 规则结构](./media/cdn-standard-rules-engine-reference/cdn-rules-structure.png)
 
-每个规则最多可以有4个匹配条件和三个操作。 每个 CDN 终结点最多有5个规则。 此外，默认情况下有一个称为**全局规则**的规则。 这是一个没有匹配条件的规则，其中定义的操作将始终触发。 此规则包含在当前的5个规则限制中。
+每个规则最多可以有四个匹配条件和三个操作。 每个 Azure CDN 端点最多可以有五个规则。 
+
+Azure CDN 终结点的当前五规则限制中包含默认*全局规则*。 全局规则不具有匹配条件，并且全局规则中定义的操作始终触发。
 
 ## <a name="syntax"></a>语法
 
-处理特殊字符的方式因 match 条件或 actopm 处理文本值的方式而异。 匹配条件或功能可能会以下述某种方式解释文本：
+规则中特殊字符的处理方式取决于不同的匹配条件和操作处理文本值的方式。 匹配条件或操作可以通过以下方式之一来解释文本：
 
-1. [**文本值**](#literal-values)
-2. [**通配符值**](#wildcard-values)
+- [文本值](#literal-values)
+- [通配符值](#wildcard-values)
 
 
 ### <a name="literal-values"></a>文本值
 
-可解释为文本值的文本会将所有特殊字符（% 字符除外）视为必须匹配的值的一部分。 换言之，仅当找到精确值（即 `\'*'\`）时才满足设置为 `\'*'\` 的文本匹配条件。
+解释为文本值的文本会*将除% 符号之外*的所有特殊字符视为必须在规则中匹配的值的一部分。 例如，仅当找到准确的值 `'*'` 时，才满足设置为 `'*'` 的文本匹配条件。
 
 百分比符号用于指示 URL 编码（例如 `%20`）。
 
 ### <a name="wildcard-values"></a>通配符值
 
-可以解释为通配符值的文本会为特殊字符赋予其他意义。 下表说明了如何解释以下字符集：
+解释为通配符值的文本会为特殊字符赋予其他意义。 下表说明了标准规则引擎中特定特殊字符的解释方式：
 
 Character | 说明
 ----------|------------
-\ | 反斜杠用于对此表中指定的任何字符进行转义操作。 必须直接在应该进行转义的特殊字符之前指定一个反斜杠。<br/>例如，以下语法会对星号进行转义：`\*`
+\ | 反斜杠用于对此表中指定的任何字符进行转义操作。 必须直接在应该进行转义的特殊字符之前指定一个反斜杠。 例如，以下语法会对星号进行转义：`\*`
 % | 百分比符号用于指示 URL 编码（例如 `%20`）。
 \* | 星号是通配符，代表一个或多个字符。
-空格 | 空格字符表示某个匹配条件可以由指定的值或模式满足。
-'值' | 一个单引号没有特殊含义， 但是，可以使用一组单引号来指示应将其中的值视为文本值。 可以通过以下方式使用单引号：<br><br/>- 使用单引号时，只要指定的值与比较值的任何部分匹配，即表示满足匹配条件。  例如，`'ma'` 与以下任何字符串都匹配： <br/><br/>/business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/business/template.**ma**p<br /><br />- 使用单引号时，可以将特殊字符指定为文本字符。 例如，可以通过将空格字符括在一组单引号中（即 `' '` 或 `'sample value'`）来指定文本空格字符。<br/>- 使用单引号时，可以指定空值。 通过指定一组单引号（即 ''）来指定空值。<br /><br/>**重要提示：**<br/>- 如果指定的值不包含通配符，则会自动将其视为文本值，这意味着不需要指定一组单引号。<br/>- 如果反斜杠不对此表中的其他字符进行转义操作，则会忽略在一组单引号中指定的反斜杠。<br/>- 要将特殊字符指定为文本字符，另一种方式是使用反斜杠（即 `\`）对其进行转义操作。
+空间 | 空格字符指示可以通过任一指定的值或模式满足匹配条件。
+单引号 | 单引号没有特殊含义。 不过，一组单引号指示应将值视为文本值。 可以通过以下方式使用单引号：<ul><li>如果指定的值与比较值的任何部分匹配，则允许满足匹配条件。  例如，`'ma'` 与以下任何字符串都匹配： <ul><li>/business/**ma**rathon/asset.htm</li><li>**ma**p.gif</li><li>/business/template.**ma**p</li></ul><li>允许将特殊字符指定为文本字符。 例如，可以通过将空格字符括在一组单引号（`' '` 或 `'<sample value>'`）来指定文本空格字符。</li><li>如果允许指定空白值，则为。 通过指定一组单引号（ **' '** ）来指定空值。</li></ul>**重要说明：**<br /><ul><li>如果指定的值不包含通配符，则该值将被自动视为文本值。 不需要为文本值指定一组单引号。</li><li>如果不使用反斜杠来对此表中的其他字符进行转义，则当在一组单引号中指定反斜杠时，将忽略它。</li><li>将特殊字符指定为文本字符的另一种方法是使用反斜杠（`\`）对其进行转义。</li></ul>
 
 ## <a name="next-steps"></a>后续步骤
 
-- [标准规则引擎匹配条件](cdn-standard-rules-engine-match-conditions.md)
-- [标准规则引擎操作](cdn-standard-rules-engine-actions.md)
+- [标准规则引擎中的匹配条件](cdn-standard-rules-engine-match-conditions.md)
+- [标准规则引擎中的操作](cdn-standard-rules-engine-actions.md)
 - [使用标准规则引擎强制执行 HTTPS](cdn-standard-rules-engine.md)
 - [Azure CDN 概述](cdn-overview.md)

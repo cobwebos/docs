@@ -1,25 +1,20 @@
 ---
-title: 排查 SAP HANA 数据库备份错误-Azure 备份
+title: 排查 SAP HANA 数据库备份错误
 description: 介绍如何对使用 Azure 备份来备份 SAP HANA 数据库时可能发生的常见错误进行故障排除。
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2019
-ms.author: dacurwin
-ms.openlocfilehash: 004d10b794c6eca2e078e437880f44d91ca30acb
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: cbffa7415f315fd396e57afa355d2415c4612eb5
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968455"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172750"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>排查 Azure 上 SAP HANA 数据库的备份问题
 
 本文提供了有关在 Azure 虚拟机上备份 SAP HANA 数据库的疑难解答信息。 以下部分介绍了诊断 SAP HANA 备份中常见错误时所需的重要概念数据。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 作为[先决条件](backup-azure-sap-hana-database.md#prerequisites)的一部分，请确保预先注册脚本已在安装了 HANA 的虚拟机上运行。
 
@@ -30,7 +25,7 @@ ms.locfileid: "72968455"
 1. 在 HANA 系统中创建 AZUREWLBACKUPHANAUSER，并添加以下必需的角色和权限：
     - 数据库管理员：在还原期间创建新数据库。
     - 目录读取：读取备份目录。
-    - SAP_INTERNAL_HANA_SUPPORT：用于访问一些私有表。
+    - SAP_INTERNAL_HANA_SUPPORT：访问一些私有表。
 2. 为 HANA 插件添加用于处理所有操作（数据库查询、还原操作、配置和运行备份）的 Hdbuserstore 的键。
 
    若要确认密钥创建，请在 HANA 计算机上运行 HDBSQL 命令，并在其中包含 SIDADM 凭据：
@@ -48,11 +43,11 @@ ms.locfileid: "72968455"
 
 选择用于备份的数据库后，Azure 备份服务将在数据库级别配置 backInt 参数：
 
-- [catalog_backup_using_backint： true]
-- [enable_accumulated_catalog_backup： false]
-- [parallel_data_backup_backint_channels： 1]
-- [log_backup_timeout_s：900）]
-- [backint_response_timeout： 7200]
+- [catalog_backup_using_backint:true]
+- [enable_accumulated_catalog_backup:false]
+- [parallel_data_backup_backint_channels:1]
+- [log_backup_timeout_s:900)]
+- [backint_response_timeout:7200]
 
 > [!NOTE]
 > 请确保这些参数*不*存在于主机级别。 主机级别参数将重写这些参数，并可能导致意外的行为。

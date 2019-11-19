@@ -6,18 +6,18 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 3e5937a036763fab57f9e37494ace33e8452b1f2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4f8863d706d623d613ac156cf202c3b7b12f2ae0
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582275"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168424"
 ---
 # <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC 缓存数据引入-msrsync 方法
 
-本文详细说明了如何使用 ``msrsync`` 实用工具将数据复制到 Azure Blob 存储容器，以便与 Azure HPC 缓存一起使用。
+本文提供了有关使用 ``msrsync`` 实用程序将数据复制到 Azure Blob 存储容器以用于 Azure HPC 缓存的详细说明。
 
-若要详细了解如何将数据移到 Azure HPC 缓存的 Blob 存储，请参阅[将数据移到 AZURE Hpc 缓存的 Azure blob 存储](hpc-cache-ingest.md)。
+若要详细了解如何将数据移到 Azure HPC 缓存的 Blob 存储，请参阅[将数据移到 Azure blob 存储](hpc-cache-ingest.md)。
 
 ``msrsync`` 工具可用于将数据移到 Azure HPC 缓存的后端存储目标。 此工具旨在通过运行多个并行 ``rsync`` 进程来优化带宽的使用。 可从 GitHub 获取此工具： https://github.com/jbd/msrsync。
 
@@ -27,14 +27,14 @@ ms.locfileid: "73582275"
 
 请注意，``msrsync`` 只能与本地卷相互写入。 源和目标必须可作为用于发出命令的工作站上的本地装载。
 
-按照以下说明使用 ``msrsync`` 来使用 Azure HPC 缓存填充 Azure Blob 存储：
+按照这些说明操作，使用 ``msrsync`` 使用 Azure HPC 缓存填充 Azure Blob 存储：
 
 1. 安装 ``msrsync`` 及其必备组件（``rsync`` 和 Python 2.6 或更高版本）
 1. 确定要复制的文件和目录总数。
 
-   例如，使用实用程序 ``prime.py``，参数 ```prime.py --directory /path/to/some/directory``` （可通过下载 <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>）使用。
+   例如，将实用工具 ``prime.py`` 与参数 ```prime.py --directory /path/to/some/directory``` （可通过下载 <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>）使用。
 
-   如果不使用 ``prime.py``，则可按如下所示计算 GNU ``find`` 工具的项的数目：
+   如果不使用 ``prime.py``，则可以使用 GNU ``find`` 工具计算项的数目，如下所示：
 
    ```bash
    find <path> -type f |wc -l         # (counts files)

@@ -8,18 +8,16 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: glenga
-ms.openlocfilehash: 0d398e9848559e70883c07498057d1807651a867
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: ae3b8294c7bd91bcd6a2e0e533f5903f44e8aaea
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515668"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173665"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 开发人员指南
 
 本文详细介绍如何使用 PowerShell 编写 Azure Functions。
-
-[!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
 PowerShell Azure function （函数）表示为触发时执行的 PowerShell 脚本。 每个函数脚本都有一个相关的 `function.json` 文件，用于定义该函数的行为方式，如其触发方式及其输入和输出参数。 若要了解详细信息，请参阅[触发器和绑定一文](functions-triggers-bindings.md)。 
 
@@ -73,19 +71,19 @@ param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 
 ### <a name="triggermetadata-parameter"></a>TriggerMetadata 参数
 
-@No__t_0 参数用于提供有关触发器的附加信息。 其他元数据的不同之处在于绑定到绑定，但是它们都包含包含以下数据的 `sys` 属性：
+`TriggerMetadata` 参数用于提供有关触发器的附加信息。 其他元数据的不同之处在于绑定到绑定，但是它们都包含包含以下数据的 `sys` 属性：
 
 ```powershell
 $TriggerMetadata.sys
 ```
 
-| properties   | 描述                                     | Type     |
+| 属性   | 说明                                     | 类型     |
 |------------|-------------------------------------------------|----------|
-| UtcNow     | 当触发函数时，采用 UTC 格式        | 日期/时间 |
+| UtcNow     | 当触发函数时，采用 UTC 格式        | DateTime |
 | 名称 | 触发的函数的名称     | 字符串   |
 | RandGuid   | 此函数执行的唯一 guid | 字符串   |
 
-每个触发器类型都有一组不同的元数据。 例如，`QueueTrigger` 的 `$TriggerMetadata` 包含 `InsertionTime`、`Id`、`DequeueCount` 和其他项。 有关队列触发器的元数据的详细信息，请参阅[队列触发器的官方文档](functions-bindings-storage-queue.md#trigger---message-metadata)。 查看正在处理的[触发器](functions-triggers-bindings.md)的相关文档，了解触发器元数据内部的内容。
+每个触发器类型都有一组不同的元数据。 例如，`QueueTrigger` 的 `$TriggerMetadata` 包含 `InsertionTime`、`Id`、`DequeueCount`和其他项。 有关队列触发器的元数据的详细信息，请参阅[队列触发器的官方文档](functions-bindings-storage-queue.md#trigger---message-metadata)。 查看正在处理的[触发器](functions-triggers-bindings.md)的相关文档，了解触发器元数据内部的内容。
 
 ## <a name="bindings"></a>绑定
 
@@ -93,7 +91,7 @@ $TriggerMetadata.sys
 
 ### <a name="reading-trigger-and-input-data"></a>读取触发器和输入数据
 
-触发器和输入绑定作为传递到函数的参数读取。 输入绑定的 `direction` 设置为 `in`。 在 `function.json` 中定义的 `name` 属性是 `param` 块中参数的名称。 由于 PowerShell 使用命名参数进行绑定，因此参数的顺序并不重要。 不过，最佳做法是遵循 `function.json` 中定义的绑定的顺序。
+触发器和输入绑定作为传递到函数的参数读取。 输入绑定的 `direction` 设置为 `in`。 在 `function.json` 中定义的 `name` 属性是 `param` 块中参数的名称。 由于 PowerShell 使用命名参数进行绑定，因此参数的顺序并不重要。 不过，最佳做法是遵循 `function.json`中定义的绑定的顺序。
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
@@ -119,7 +117,7 @@ param($MyFirstInputBinding, $MySecondInputBinding)
 Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 ```
 
-根据为 `-Name` 指定的值 `Push-OutputBinding` 行为有所不同：
+根据为 `-Name`指定的值 `Push-OutputBinding` 行为有所不同：
 
 * 当指定的名称无法解析为有效的输出绑定时，将引发错误。
 
@@ -129,11 +127,11 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 #### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding` 语法
 
-下面是用于调用 `Push-OutputBinding` 的有效参数：
+下面是用于调用 `Push-OutputBinding`的有效参数：
 
-| 名称 | Type | 位置 | 描述 |
+| 名称 | 类型 | 位置 | 说明 |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | 字符串 | 第 | 要设置的输出绑定的名称。 |
+| **`-Name`** | String | 1 个 | 要设置的输出绑定的名称。 |
 | **`-Value`** | 对象 | 2 | 要设置的输出绑定的值，它从管道 ByValue 接受。 |
 | **`-Clobber`** | SwitchParameter | 名为 | 可有可无指定时，将强制为指定的输出绑定设置值。 | 
 
@@ -152,7 +150,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 #### <a name="push-outputbinding-example-http-responses"></a>OutputBinding 示例： HTTP 响应
 
-HTTP 触发器使用名为 `response` 的输出绑定返回响应。 在下面的示例中，`response` 的输出绑定具有 "output #1" 的值：
+HTTP 触发器使用名为 `response`的输出绑定返回响应。 在下面的示例中，`response` 的输出绑定具有 "output #1" 的值：
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -218,7 +216,7 @@ MyQueue                        myData
 MyOtherQueue                   myData
 ```
 
-`Get-OutputBinding` 还包含一个名为 `-Name` 的参数，该参数可用于筛选返回的绑定，如以下示例中所示：
+`Get-OutputBinding` 还包含一个名为 `-Name`的参数，该参数可用于筛选返回的绑定，如以下示例中所示：
 
 ```powershell
 Get-OutputBinding -Name MyQ*
@@ -230,7 +228,7 @@ Name                           Value
 MyQueue                        myData
 ```
 
-@No__t_0 中支持通配符（*）。
+`Get-OutputBinding`中支持通配符（*）。
 
 ## <a name="logging"></a>日志记录
 
@@ -253,7 +251,7 @@ PowerShell 函数中的日志记录类似于常规的 PowerShell 日志记录。
 
 Azure Functions 允许您定义阈值级别，以便轻松控制函数写入日志的方式。 若要为写入控制台的所有跟踪设置阈值，请使用[`host.json` 文件][host.json 参考]中的 `logging.logLevel.default` 属性。 此设置应用于 Function App 中的所有函数。
 
-下面的示例将阈值设置为对所有函数启用详细日志记录，但将阈值设置为对名为 `MyFunction` 的函数启用调试日志记录：
+下面的示例将阈值设置为对所有函数启用详细日志记录，但将阈值设置为对名为 `MyFunction`的函数启用调试日志记录：
 
 ```json
 {
@@ -280,7 +278,7 @@ Azure Functions 允许您定义阈值级别，以便轻松控制函数写入日�
 
 所有触发器和绑定在代码中表示为一些真实的数据类型：
 
-* 散
+* Hashtable
 * 字符串
 * byte[]
 * int
@@ -300,13 +298,13 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 传入脚本的请求对象的类型为 `HttpRequestContext`，该类型具有以下属性：
 
-| properties  | 描述                                                    | Type                      |
+| 属性  | 说明                                                    | 类型                      |
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | 一个包含请求正文的对象。 `Body` 根据数据序列化为最佳类型。 例如，如果数据是 JSON，则以哈希表形式传递。 如果数据是字符串，则以字符串的形式传递。 | 对象 |
-| **`Headers`** | 包含请求标头的字典。                | 字典 < 字符串，string ><sup> *</sup> |
+| **`Headers`** | 包含请求标头的字典。                | 字典 < 字符串，string ><sup>*</sup> |
 | **`Method`** | 请求的 HTTP 方法。                                | 字符串                    |
-| **`Params`**  | 一个包含请求的路由参数的对象。 | 字典 < 字符串，string ><sup> *</sup> |
-| **`Query`** | 一个包含查询参数的对象。                  | 字典 < 字符串，string ><sup> *</sup> |
+| **`Params`**  | 一个包含请求的路由参数的对象。 | 字典 < 字符串，string ><sup>*</sup> |
+| **`Query`** | 一个包含查询参数的对象。                  | 字典 < 字符串，string ><sup>*</sup> |
 | **`Url`** | 请求的 URL。                                        | 字符串                    |
 
 <sup>*</sup>所有 `Dictionary<string,string>` 键都不区分大小写。
@@ -315,12 +313,12 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 应发送回的响应对象的类型为 `HttpResponseContext`，该对象具有以下属性：
 
-| properties      | 描述                                                 | Type                      |
+| 属性      | 说明                                                 | 类型                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | 一个包含响应正文的对象。           | 对象                    |
 | **`ContentType`** | 用于设置响应的内容类型的简短内容。 | 字符串                    |
 | **`Headers`** | 一个包含响应标头的对象。               | 字典或哈希表   |
-| **`StatusCode`**  | 响应的 HTTP 状态代码。                       | 字符串或整数             |
+| **`StatusCode`**  | 响应的 HTTP 状态代码。                       | string 或 int             |
 
 #### <a name="accessing-the-request-and-response"></a>访问请求和响应
 
@@ -424,17 +422,17 @@ param([string] $myBlob)
 > [!NOTE]
 > 托管依赖项需要对 www.powershellgallery.com 的访问权限才能下载模块。 在本地运行时，请确保运行时可以通过添加任何所需的防火墙规则来访问此 URL。 
 
-以下应用程序设置可用于更改如何下载和安装托管依赖项。 应用升级在 `MDMaxBackgroundUpgradePeriod` 中启动，升级过程将在大约 `MDNewSnapshotCheckPeriod` 内完成。
+以下应用程序设置可用于更改如何下载和安装托管依赖项。 应用升级在 `MDMaxBackgroundUpgradePeriod`中启动，升级过程将在大约 `MDNewSnapshotCheckPeriod`内完成。
 
-| Function App 设置              | 默认值             | 描述                                         |
+| Function App 设置              | 默认值             | 说明                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
 | **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` （7天）     | 每个 PowerShell 工作进程启动 PowerShell 库的进程启动时检查模块升级，并在之后每 `MDMaxBackgroundUpgradePeriod`。 当 PowerShell 库中有新的模块版本时，它将安装到文件系统，并提供给 PowerShell 辅助角色。 减小此值后，函数应用可以更快地获取较新的模块版本，但它还会增加应用资源使用情况（网络 i/o、CPU、存储）。 增加此值会减少应用的资源使用情况，但也可能会延迟将新的模块版本传递给你的应用。 | 
-| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` （1小时）       | 将新模块版本安装到文件系统后，必须重新启动每个 PowerShell 工作进程。 重新启动 PowerShell 辅助角色会影响应用可用性，因为它可以中断当前函数执行。 在重新启动所有 PowerShell 工作进程之前，函数调用可能会使用旧的或新的模块版本。 在 `MDNewSnapshotCheckPeriod` 内重新启动所有 PowerShell 辅助角色。 增大此值可降低中断的频率，但也可能增加函数调用使用旧模块版本或新模块版本不确定的时间段。 |
-| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` （1天）     | 若要避免频繁的工作线程重新启动时进行过多的模块升级，则当任何工作线程已经启动了上次 `MDMinBackgroundUpgradePeriod` 中的检查时，不会执行模块升级检查。 |
+| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` （1小时）       | 将新模块版本安装到文件系统后，必须重新启动每个 PowerShell 工作进程。 重新启动 PowerShell 辅助角色会影响应用可用性，因为它可以中断当前函数执行。 在重新启动所有 PowerShell 工作进程之前，函数调用可能会使用旧的或新的模块版本。 在 `MDNewSnapshotCheckPeriod`内重新启动所有 PowerShell 辅助角色。 增大此值可降低中断的频率，但也可能增加函数调用使用旧模块版本或新模块版本不确定的时间段。 |
+| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` （1天）     | 若要避免频繁的工作线程重新启动时进行过多的模块升级，则当任何工作线程已经启动了上次 `MDMinBackgroundUpgradePeriod`中的检查时，不会执行模块升级检查。 |
 
 利用您自己的自定义模块与通常的方式不同。
 
-在本地计算机上，该模块将安装在 `$env:PSModulePath` 中的一个全局可用文件夹中。 在 Azure 中运行时，无法访问计算机上安装的模块。 这意味着 PowerShell 函数应用的 `$env:PSModulePath` 与常规 PowerShell 脚本中的 `$env:PSModulePath` 不同。
+在本地计算机上，该模块将安装在 `$env:PSModulePath`中的一个全局可用文件夹中。 在 Azure 中运行时，无法访问计算机上安装的模块。 这意味着 PowerShell 函数应用的 `$env:PSModulePath` 与常规 PowerShell 脚本中的 `$env:PSModulePath` 不同。
 
 在函数中，`PSModulePath` 包含两个路径：
 
@@ -473,20 +471,20 @@ PSFunctionApp
 
 启动函数应用时，PowerShell 语言辅助角色会将此 `Modules` 文件夹添加到 `$env:PSModulePath` 中，以便你可以依赖于常规 PowerShell 脚本中的模块自动加载。
 
-### <a name="language-worker-level-modules-folder"></a>@No__t_0 文件夹的语言辅助角色级别
+### <a name="language-worker-level-modules-folder"></a>`Modules` 文件夹的语言辅助角色级别
 
-PowerShell 语言辅助角色通常使用几个模块。 在 `PSModulePath` 的最后一个位置定义这些模块。 
+PowerShell 语言辅助角色通常使用几个模块。 在 `PSModulePath`的最后一个位置定义这些模块。 
 
 模块的当前列表如下所示：
 
-* 用于处理存档的[Microsoft PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive)： module，如 `.zip`、`.nupkg` 和其他。
+* 用于处理存档的[Microsoft PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive)： module，如 `.zip`、`.nupkg`和其他。
 * **ThreadJob**：一种基于线程的 PowerShell 作业 api 实现。
 
 默认情况下，函数使用这些模块的最新版本。 若要使用特定模块版本，请将该特定版本放置在 function app 的 `Modules` 文件夹中。
 
 ## <a name="environment-variables"></a>环境变量
 
-在 Functions 中，服务连接字符串等[应用设置](functions-app-settings.md)在执行过程中将公开为环境变量。 您可以使用 `$env:NAME_OF_ENV_VAR` 访问这些设置，如以下示例中所示：
+在 Functions 中，服务连接字符串等[应用设置](functions-app-settings.md)在执行过程中将公开为环境变量。 您可以使用 `$env:NAME_OF_ENV_VAR`访问这些设置，如以下示例中所示：
 
 ```powershell
 param($myTimer)
@@ -525,9 +523,9 @@ Azure PowerShell 的并发性存在巨大的价值，因为某些操作可能需
 
 ## <a name="configure-function-scriptfile"></a>配置函数 `scriptFile`
 
-默认情况下，PowerShell 函数从 `run.ps1` 执行，该文件与对应的 `function.json` 共享相同的父目录。
+默认情况下，PowerShell 函数从 `run.ps1`执行，该文件与对应的 `function.json`共享相同的父目录。
 
-@No__t_1 中的 `scriptFile` 属性可用于获取类似于以下示例的文件夹结构：
+`function.json` 中的 `scriptFile` 属性可用于获取类似于以下示例的文件夹结构：
 
 ```
 FunctionApp
@@ -554,7 +552,7 @@ FunctionApp
 本文显示了模板生成的默认 `run.ps1` 脚本文件中的 PowerShell 函数。
 但是，还可以在 PowerShell 模块中包含函数。 您可以通过使用函数 `scriptFile` 中的特定函数代码，并在函数 json "配置文件中 `entryPoint` 字段。
 
-在这种情况下，`entryPoint` 是 `scriptFile` 中引用的 PowerShell 模块中的函数或 cmdlet 的名称。
+在这种情况下，`entryPoint` 是 `scriptFile`中引用的 PowerShell 模块中的函数或 cmdlet 的名称。
 
 请考虑以下文件夹结构：
 
@@ -579,7 +577,7 @@ function Invoke-PSTestFunc {
 Export-ModuleMember -Function "Invoke-PSTestFunc"
 ```
 
-在此示例中，`myFunction` 的配置包含一个 `scriptFile` 属性，该属性引用 `PSFunction.psm1`，这是另一个文件夹中的 PowerShell 模块。  @No__t_0 属性引用 `Invoke-PSTestFunc` 函数，该函数是模块中的入口点。
+在此示例中，`myFunction` 的配置包含一个 `scriptFile` 属性，该属性引用 `PSFunction.psm1`，这是另一个文件夹中的 PowerShell 模块。  `entryPoint` 属性引用 `Invoke-PSTestFunc` 函数，该函数是模块中的入口点。
 
 ```json
 {

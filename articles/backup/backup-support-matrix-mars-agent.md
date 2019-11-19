@@ -1,18 +1,14 @@
 ---
-title: Microsoft Azure 恢复服务代理的支持矩阵
+title: MARS 代理的支持矩阵
 description: 本文汇总了备份运行 Microsoft Azure 恢复服务 (MARS) 代理的计算机时的 Azure 备份支持。
-author: dcurwin
-ms.service: backup
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.author: dacurwin
-manager: carmonm
-ms.openlocfilehash: a4372a66caaa8af807980a2f58f344cbf8fb1be9
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 6e37951dd00b999f59a1b3c08a6852cbc1929630
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090553"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172061"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
 
@@ -54,7 +50,7 @@ Azure 备份使用 MARS 代理将本地计算机和 Azure VM 中的数据备份�
 
 ## <a name="networking-and-access-support"></a>网络和访问支持
 
-### <a name="url-access"></a>URL 访问
+### <a name="url-and-ip-access"></a>URL 和 IP 访问
 
 MARS 代理需要以下 URL 的访问权限：
 
@@ -63,6 +59,11 @@ MARS 代理需要以下 URL 的访问权限：
 - *.WindowsAzure.com
 - *.MicrosoftOnline.com
 - *.Windows.net
+
+以下 IP 地址：
+
+- 20.190.128.0/18
+- 40.126.0.0/18
 
 ### <a name="throttling-support"></a>限制支持
 
@@ -76,7 +77,12 @@ MARS 代理需要以下 URL 的访问权限：
 >[!NOTE]
 > MARS 代理不支持 Windows Server Core Sku。
 
-在本地计算机和 Azure VM 上运行的某些操作系统中，可以使用 MARS 代理直接备份到 Azure。 所有操作系统必须是 64 位，并且应该运行最新的服务包和更新。 下表汇总了这些操作系统：
+可以在运行的以下操作系统上，使用 MARS 代理直接备份到 Azure：
+
+1. 本地 Windows 服务器
+2. 运行 Windows 的 Azure VM
+
+所有操作系统必须是 64 位，并且应该运行最新的服务包和更新。 下表汇总了这些操作系统：
 
 **操作系统** | **文件/文件夹** | **系统状态** | **软件/模块要求**
 --- | --- | --- | ---
@@ -128,7 +134,7 @@ OneDrive（同步的文件是稀疏流）| 不支持。
 只读卷| 不支持 | 卷必须可写才能正常使用卷影复制服务 (VSS)。
 脱机卷| 不支持 |卷必须联机才能正常使用 VSS。
 网络共享| 不支持 |卷必须位于服务器本地。
-BitLocker 保护的卷| 不支持 |必须先解锁卷才能开始备份。
+BitLocker 锁定的卷| 不支持 |必须先解锁卷才能开始备份。
 文件系统标识| 不支持 |仅支持 NTFS。
 可移动媒体| 不支持 |所有备份项源必须处于固定状态。
 已删除重复数据的驱动器 | 支持 | Azure 备份将删除了重复项的数据转换为正常数据。 它可以优化、加密、存储数据并将其发送到保管库。

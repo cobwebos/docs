@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
-ms.openlocfilehash: 0f34aad4a8590c71f926d12d201f9a614afaa127
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4766d48a748fedd82532f2ac49223ab0460b9ef7
+ms.sourcegitcommit: fa41a56357de487b10e54711fbbdbd4a373fa67c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114924"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74153552"
 ---
 # <a name="live-stream-analysis-with-video-indexer"></a>视频索引器的实时流分析
 
-Azure 媒体服务视频索引器是一种 Azure 服务，旨在从视频和音频文件脱机提取深入了解。 这是为了分析预先创建的给定媒体文件。 但是，对于某些用例，很重要的一点是，尽可能快地从实时源中获取媒体见解，以解锁按时间使用的操作和其他用例。 例如，内容生成者可以使用实时流上的此类元数据来自动进行电视生产。 例如，Endemol 的 "[闪光" 组](https://customers.microsoft.com/story/esg-media-telecommunications-azure)，其中记者的媒介在实时馈送中搜索，以基于内容构建通知服务。
+Azure 媒体服务视频索引器是一种 Azure 服务，旨在从视频和音频文件脱机提取深入了解。 这是为了分析预先创建的给定媒体文件。 但是，对于某些用例，很重要的一点是，尽可能快地从实时源中获取媒体见解，以解锁按时间使用的操作和其他用例。 例如，内容生成者可以使用实时流上的此类元数据来自动进行电视生产。
 
 本文中所述的解决方案允许客户在实时源的近乎实时的解决方案中使用视频索引器。 根据要编制索引的数据块、输入分辨率、内容类型和用于此过程的计算，索引的延迟时间最短为四分钟。
 

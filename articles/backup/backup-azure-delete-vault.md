@@ -1,18 +1,14 @@
 ---
-title: 删除 Microsoft Azure 备份恢复服务保管库
+title: 删除 Microsoft Azure 恢复服务保管库
 description: 本文介绍如何删除依赖项，然后删除 Microsoft Azure 备份恢复服务（MARS）保管库。
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.author: dacurwin
-ms.openlocfilehash: 469d6532449df8327389b8117904b078d9340e5b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 23e0d2874229616037c44800639411f66bc4d1b6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747574"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173175"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>删除 Azure 备份恢复服务保管库
 

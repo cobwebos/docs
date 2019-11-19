@@ -1,24 +1,24 @@
 ---
 title: 将 Azure 防火墙与 Azure 标准负载均衡器相集成
-description: 了解如何将 Azure 防火墙与 Azure 标准负载均衡器相集成
+description: 可将 Azure 防火墙集成到使用 Azure 标准负载均衡器（公共或内部）的虚拟网络中。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 4/1/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 7ee92a7508918635849caafab4632bbba81ee628
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 91f34d06532b2d7f56d293df40939212a4f3d68c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60193745"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167074"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>将 Azure 防火墙与 Azure 标准负载均衡器相集成
 
 可将 Azure 防火墙集成到使用 Azure 标准负载均衡器（公共或内部）的虚拟网络中。 
 
-首选的设计是将内部负载均衡器集成与 Azure 防火墙中，因为这是要简单得多的设计。 如果已经有了一个部署，并且你想要将它保存在位置，可以使用公共负载均衡器。 但需要注意，非对称路由问题可能会破坏公共负载均衡器方案的功能。
+首选设计是将内部负载均衡器与 Azure 防火墙集成，因为这是一个简单得多的设计。 如果已部署了一个公共负载均衡器，并且想要将其保留，则可以使用该负载均衡器。 但需要注意，非对称路由问题可能会破坏公共负载均衡器方案的功能。
 
 有关 Azure 负载均衡器的详细信息，请参阅[什么是 Azure 负载均衡器？](../load-balancer/load-balancer-overview.md)
 
@@ -43,7 +43,7 @@ ms.locfileid: "60193745"
 
 ![路由表](media/integrate-lb/route-table.png)
 
-## <a name="internal-load-balancer"></a>内部负载均衡器
+## <a name="internal-load-balancer"></a>Internal 负载均衡器
 
 使用内部负载均衡器时，部署的负载均衡器使用专用前端 IP 地址。
 

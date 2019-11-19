@@ -3,17 +3,13 @@ title: 适用于 Azure 的 Ansible 模块和版本矩阵 |Microsoft Docs
 description: 适用于 Azure 的 Ansible 模块和版本矩阵
 keywords: ansible, 角色, 矩阵, 版本, azure, devops
 ms.topic: reference
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 10/14/2019
-ms.openlocfilehash: 275dca40ab20c222da2b9115f9a5dc141228c766
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 54e27c7570ba1cdbce7355740181d68a2f3efbac
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72385468"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155985"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Ansible 模块和版本矩阵
 
@@ -26,7 +22,7 @@ Ansible 包括一套用于预配和配置 Azure 资源的模块。 这些资源�
 可从 Ansible 官方版本和以下 Microsoft 操作手册角色获取这些模块。
 
 > [!NOTE]
-> 从 Ansible 2.9 开始，我们已将所有 * _facts 模块重命名为 * _info，遵循 Ansible 命名约定。 旧的和已重命名的模块会被链接起来，因为看不到弃用警告，所有模块都将像以前一样工作。
+> 从 Ansible 2.9 开始，我们将所有 * _facts 模块重命名为 * _info，以遵守 Ansible 命名约定。 旧的和已重命名的模块会被链接起来，因为看不到弃用警告，所有模块都将像以前一样工作。
 
 | 适用于 Azure 的 Ansible 模块                   |  Ansible 2.4 |  Ansible 2.5 |  Ansible 2.6 | Ansible 2.7 | Ansible 2。8 | Ansible 2。9 | Ansible 角色 | 
 |---------------------------------------------|--------------|--------------|-----------------------------|-------------------------------------|--------------|--------------|--------------|  
@@ -171,7 +167,7 @@ Ansible 包括一套用于预配和配置 Azure 资源的模块。 这些资源�
 | azure_rm_servicebussaspolicy                | -            | -                           | -            | -            | 是          | 是          | 是          |
 | azure_rm_servicebustopic                    | -            | -                           | -            | -            | 是          | 是          | 是          |
 | azure_rm_servicebustopicsubscription        | -            | -                           | -            | -            | 是          | 是          | 是          |
-| **安全性**                    |           |                          |                          |                             |           |           |           |
+| 安全性                    |           |                          |                          |                             |           |           |           |
 | azure_rm_keyvault                           | -            | 是                         | 是          | 是          | 是          | 是          | 是          |
 | azure_rm_keyvault_info                     | -            | -                           | -              | -          | 是          | 是          | 是          |
 | azure_rm_keyvaultkey                        | -            | 是                         | 是          | 是          | 是          | 是          | 是          |
@@ -221,9 +217,9 @@ Ansible 包括一套用于预配和配置 Azure 资源的模块。 这些资源�
 
 ## <a name="introduction-to-playbook-role-for-azure"></a>Azure 的 playbook 角色简介
 
-[Azure_preview_module 操作手册角色](https://galaxy.ansible.com/Azure/azure_preview_modules/)包括所有最新的 azure 模块。 更新和 Bug 修补程序比正式 Ansible 发布更及时完成。 如果使用 Ansible 进行 Azure 资源预配，则建议安装 `azure_preview_module` 操作手册角色。
+[Azure_preview_module 操作手册角色](https://galaxy.ansible.com/Azure/azure_preview_modules/)包括所有最新的 azure 模块。 更新和 Bug 修补程序比正式 Ansible 发布更及时完成。 如果出于 Azure 资源预配目的使用 Ansible，则建议安装 `azure_preview_module` 操作手册角色。
 
-每三周发布一次 `azure_preview_module` 操作手册角色。
+`azure_preview_module` 的操作手册角色每三周发布一次。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,7 +1,7 @@
 ---
 title: 适用于 .NET 的 Microsoft 身份验证库中的客户端断言
 titleSuffix: Microsoft identity platform
-description: 了解适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）中的机密客户端应用程序的签名客户端断言支持。
+description: 了解针对适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 中的机密客户端应用程序的签名客户端断言支持。
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -13,34 +13,38 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 11/18/2019
 ms.author: jmprieur
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcf11ac8dc39dcb1d70b932dbe870687f5446a52
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 66ff02e4c95594f0155ab31e3c99a0eb269626d9
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802851"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168122"
 ---
 # <a name="confidential-client-assertions"></a>机密客户端断言
-为了证明其身份，机密客户端应用程序使用 Azure AD 交换密码。 机密可以是：
-- 客户端密钥（应用程序密码）。
-- 证书，用于生成包含标准声明的签名断言。
 
-此机密还可以是直接的签名断言。
+为了证明身份，机密客户端应用程序会与 Azure AD 交换机密。 机密可以是：
+- 客户端机密（应用程序密码）。
+- 证书，用于构建包含标准声明的签名断言。
 
-MSAL.NET 有四种方法可向机密客户端应用提供凭据或断言：
+此机密也可以直接是签名断言。
+
+MSAL.NET 可以通过四种方法将凭据或断言提供给机密客户端应用：
 - `.WithClientSecret()`
 - `.WithCertificate()`
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
+> [!NOTE]
+> 尽管可以使用 `WithClientAssertion()` API 获取机密客户端的令牌，但我们不建议在默认情况下使用它，因为它更高级，旨在处理并非常见情况的特定情况。 使用 `.WithCertificate()` API 将允许 MSAL.NET 为您处理此情况。 此 api 提供了根据需要自定义身份验证请求的功能，但 `.WithCertificate()` 创建的默认断言足以满足大多数身份验证方案。 在某些情况下，如果 MSAL.NET 无法在内部执行签名操作，也可以使用此 API 作为一种解决方法。
+
 ### <a name="signed-assertions"></a>签名断言
 
-已签名的客户端断言采用带签名的 JWT 的格式，其中包含 Azure AD、Base64 编码的所需的身份验证声明。 使用方式：
+签名客户端断言采用签名 JWT 形式，其有效负载包含 Azure AD 强制要求的、Base64 编码的身份验证声明。 使用方式：
 
 ```CSharp
 string signedClientAssertion = ComputeAssertion();
@@ -49,26 +53,26 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-Azure AD 所需的声明如下：
+Azure AD 预期的声明为：
 
-声明类型 | Value | 描述
+声明类型 | 值 | 说明
 ---------- | ---------- | ----------
-aud | https://login.microsoftonline.com/{tenantId}/v2.0 | "Aud" （受众）声明标识 JWT 适用的收件人（此处 Azure AD），请参阅 [RFC 7519，Section 4.1.3]
-exp | Thu 六月 27 2019 15:04:17 GMT + 0200 （罗马夏令时） | “exp”（过期时间）声明指定只能在哪个时间（含）之前接受 JWT 的处理。 请参阅 [RFC 7519，Section 4.1.4]
-iss | ClientID | "Iss" （颁发者）声明标识颁发 JWT 的主体。 此声明的处理是特定于应用程序的。 "Iss" 值是包含 StringOrURI 值的区分大小写的字符串。 [RFC 7519，Section 4.1.1]
-jti | （Guid） | "Jti" （JWT ID）声明为 JWT 提供唯一的标识符。 必须以确保将同一值意外分配给不同数据对象的概率的方式来分配标识符值;如果应用程序使用多个颁发者，则必须阻止不同颁发者生成的值之间的冲突。 可以使用 "jti" 声明来防止 JWT 被重播。 "Jti" 值是区分大小写的字符串。 [RFC 7519，Section 4.1.7]
-nbf | Thu 六月 27 2019 14:54:17 GMT + 0200 （罗马夏令时） | “nbf”（不早于）声明指定只能在哪个时间之后接受 JWT 的处理。 [RFC 7519，Section 4.1.5]
-sub | ClientID | "Sub" （subject）声明标识 JWT 的使用者。 JWT 中的声明通常是有关主题的语句。 使用者值的范围必须在颁发者的上下文中是唯一的，或者是全局唯一的。 请参阅 [RFC 7519，Section 4.1.2]
+aud | https://login.microsoftonline.com/{tenantId}/v2.0 | “aud”（受众）声明标识 JWT 预期的接收者（在这里为 Azure AD）。请参阅 [RFC 7519 的 4.1.3 部分]
+exp | 2019 年 6 月 27 日，周四 15:04:17 GMT+0200（罗马夏令时） | “exp”（过期时间）声明指定只能在哪个时间（含）之前接受 JWT 的处理。 请参阅 [RFC 7519 的 4.1.4 部分]
+iss | {ClientID} | “iss”（颁发者）声明标识颁发了 JWT 的主体。 此声明的处理取决于应用程序。 “iss”值是一个区分大小写的字符串，其中包含 StringOrURI 值。 [RFC 7519 的 4.1.1 部分]
+jti | （一个 GUID） | “jti”(JWT ID) 声明为 JWT 提供唯一标识符。 分配标识符值时，所用方式必须确保几乎不可能将同一值意外分配给不同的数据对象；如果应用程序使用多个颁发者，还必须防止在不同的颁发者生成的值之间发生冲突。 可以使用“jti”声明防止重播 JWT。 “jti”值是一个区分大小写的字符串。 [RFC 7519 的 4.1.7 部分]
+nbf | 2019 年 6 月 27 日，周四 14:54:17 GMT+0200（罗马夏令时） | “nbf”（不早于）声明指定只能在哪个时间之后接受 JWT 的处理。 [RFC 7519 的 4.1.5 部分]
+sub | {ClientID} | “sub”（使用者）声明标识 JWT 的使用者。 JWT 中的声明通常是有关使用者的语句。 使用者值必须本地唯一（局限于颁发者上下文）或全局唯一。 请参阅 [RFC 7519 的 4.1.2 部分]
 
-下面是如何创建这些声明的示例：
+下面是一个示例，演示如何创建这些声明：
 
 ```CSharp
 private static IDictionary<string, string> GetClaims()
 {
       //aud = https://login.microsoftonline.com/ + Tenant ID + /v2.0
-      string aud = "https://login.microsoftonline.com/72f988bf-86f1-41af-hd4m-2d7cd011db47/v2.0";
+      string aud = $"https://login.microsoftonline.com/{tenantId}/v2.0";
 
-      string ConfidentialClientID = "61dab2ba-145d-4b1b-8569-bf4b9aed5dhb" //client id
+      string ConfidentialClientID = "00000000-0000-0000-0000-000000000000" //client id
       const uint JwtToAadLifetimeInSeconds = 60 * 10; // Ten minutes
       DateTime validFrom = DateTime.UtcNow;
       var nbf = ConvertToTimeT(validFrom);
@@ -86,7 +90,7 @@ private static IDictionary<string, string> GetClaims()
 }
 ```
 
-下面介绍如何创建签名的客户端断言：
+下面演示如何创建签名客户端断言：
 
 ```CSharp
 string Encode(byte[] arg)
@@ -105,11 +109,11 @@ string Encode(byte[] arg)
     return s;
 }
 
-string GetAssertion()
+string GetSignedClientAssertion()
 {
     //Signing with SHA-256
     string rsaSha256Signature = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256";
-    X509Certificate2 certificate = ReadCertificate(config.CertificateName);
+     X509Certificate2 certificate = new X509Certificate2("Certificate.pfx", "Password", X509KeyStorageFlags.EphemeralKeySet);
 
     //Create RSACryptoServiceProvider
     var x509Key = new X509AsymmetricSecurityKey(certificate);
@@ -129,14 +133,60 @@ string GetAssertion()
     string token = Encode(Encoding.UTF8.GetBytes(JObject.FromObject(header).ToString())) + "." + Encode(Encoding.UTF8.GetBytes(JObject.FromObject(GetClaims())));
 
     string signature = Encode(rsa.SignData(Encoding.UTF8.GetBytes(token), new SHA256Cng()));
-    string SignedAssertion = string.Concat(token, ".", signature);
-    return SignedAssertion;
+    string signedClientAssertion = string.Concat(token, ".", signature);
+    return signedClientAssertion;
 }
+```
+
+### <a name="alternative-method"></a>替代方法
+
+你还可以选择使用[system.identitymodel](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/)为你创建断言。 此代码将更优雅，如以下示例中所示：
+
+```CSharp
+        string GetSignedClientAssertion()
+        {
+            var cert = new X509Certificate2("Certificate.pfx", "Password", X509KeyStorageFlags.EphemeralKeySet);
+
+            //aud = https://login.microsoftonline.com/ + Tenant ID + /v2.0
+            string aud = $"https://login.microsoftonline.com/{tenantID}/v2.0";
+
+            // client_id
+            string confidentialClientID = "00000000-0000-0000-0000-000000000000";
+
+            // no need to add exp, nbf as JsonWebTokenHandler will add them by default.
+            var claims = new Dictionary<string, object>()
+            {
+                { "aud", aud },
+                { "iss", confidentialClientID },
+                { "jti", Guid.NewGuid().ToString() },
+                { "sub", confidentialClientID }
+            };
+
+            var securityTokenDescriptor = new SecurityTokenDescriptor
+            {
+                Claims = claims,
+                SigningCredentials = new X509SigningCredentials(cert)
+            };
+
+            var handler = new JsonWebTokenHandler();
+            var signedClientAssertion = handler.CreateToken(securityTokenDescriptor);
+        }
+```
+
+获得签名的客户端断言后，可以将其与 MSAL api 一起使用，如下所示。
+
+```CSharp
+            string signedClientAssertion = GetSignedClientAssertion();
+
+            var confidentialApp = ConfidentialClientApplicationBuilder
+                .Create(ConfidentialClientID)
+                .WithClientAssertion(signedClientAssertion)
+                .Build();
 ```
 
 ### <a name="withclientclaims"></a>WithClientClaims
 
-默认情况下，`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)` 将生成一个包含 Azure AD 所需声明的签名断言以及要发送的其他客户端声明。 下面是有关如何执行此操作的代码片段。
+`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)` 默认情况下会生成一个签名断言，其中包含 Azure AD 预期的声明，以及你想要发送的其他客户端声明。 下面是演示如何这样做的代码片段。
 
 ```CSharp
 string ipAddress = "192.168.1.2";
@@ -149,6 +199,6 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 ```
 
-如果传入字典中的一个声明与某个必需的声明相同，则将考虑附加声明的值。 它将覆盖由 MSAL.NET 计算的声明。
+如果传入的目录中的某个声明与某个必需声明相同，则会考虑其他声明的值。 它会重写 MSAL.NET 计算的声明。
 
-如果要提供自己的声明，包括 Azure AD 所需的必需声明，请传入 `mergeWithDefaultClaims` 参数 `false`。
+若要提供你自己的声明（包括 Azure AD 预期的必需声明），请针对 `false` 参数传入 `mergeWithDefaultClaims`。

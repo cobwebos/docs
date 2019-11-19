@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3f20c3c6d6821b5a8bbdb74101095431f6f7f18f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad15342e6d35a5c6101beb1ddc09d4ce1f2089d5
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511911"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167565"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 的自定义策略的验证技术配置文件
 
@@ -33,47 +33,50 @@ ms.locfileid: "66511911"
 
 从验证技术配置文件返回的声明会添加回声明包。 可以在后续验证技术配置文件中使用这些声明。
 
-验证技术配置文件按它们在 ValidationTechnicalProfiles  元素中出现的顺序进行执行。 可以在验证技术配置文件中配置在验证技术配置文件引发错误或成功时，任何后续验证技术配置文件是否应继续执行。
+验证技术配置文件按它们在 ValidationTechnicalProfiles 元素中出现的顺序进行执行。 可以在验证技术配置文件中配置在验证技术配置文件引发错误或成功时，任何后续验证技术配置文件是否应继续执行。
 
-验证技术配置文件可以基于 ValidationTechnicalProfile  元素中定义的前置条件有条件地执行。 例如，可以检查是否存在特定声明，或声明是否等于指定值。
+验证技术配置文件可以基于 ValidationTechnicalProfile 元素中定义的前置条件有条件地执行。 例如，可以检查是否存在特定声明，或声明是否等于指定值。
 
 自断言技术配置文件可以定义要用于验证其部分或所有输出声明的验证技术配置文件。 被引用技术配置文件的所有输入声明都必须出现在引用验证技术配置文件的输出声明中。
 
+> [!NOTE]
+> 只有自断言技术配置文件才能使用验证技术配置文件。 如果需要验证非自断言技术配置文件的输出声明，请考虑在用户旅程中使用额外的业务流程步骤，以适应验证的技术配置文件。    
+
 ## <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 
-ValidationTechnicalProfiles  元素包含下列元素：
+ValidationTechnicalProfiles 元素包含下列元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1:n | 要用于验证引用技术配置文件的部分或所有输出声明的技术配置文件。 |
 
-**ValidationTechnicalProfile** 元素包含以下属性：
+ValidationTechnicalProfile 元素包含以下属性：
 
-| 特性 | 必选 | 描述 |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略或父策略中定义的技术配置文件的标识符。 |
 |ContinueOnError|否| 指示在此验证技术配置文件引发错误时，任何后续验证技术配置文件是否应继续进行验证。 可能的值：`true` 或 `false`（默认值，进一步验证配置文件的处理会停止，并且返回错误）。 |
 |ContinueOnSuccess | 否 | 指示在此验证技术配置文件成功时，任何后续验证配置文件是否应继续进行验证。 可能的值：`true` 或 `false`。 默认值是 `true`，表示进一步验证配置文件的处理会继续进行。 |
 
-ValidationTechnicalProfile  元素包含以下元素：
+ValidationTechnicalProfile 元素包含以下元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | Preconditions | 0:1 | 为执行验证技术配置文件而必须满足执行的前置条件的列表。 |
 
-Precondition  元素包含以下属性：
+Precondition 元素包含以下属性：
 
-| 特性 | 必选 | 描述 |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | `Type` | 是 | 要对前置条件执行的检查或查询的类型。 指定 `ClaimsExist` 以确保在用户当前声明集中存在指定声明时应执行操作，或指定 `ClaimEquals` 以便仅当指定声明存在且其值等于指定值时才应执行操作。 |
 | `ExecuteActionsIf` | 是 | 指示在测试为 true 或 false 时是否应执行前置条件中的操作。 |
 
-Precondition  元素包含以下元素：
+Precondition 元素包含以下元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | 值 | 1:n | 检查使用的数据。 如果此检查的类型是 `ClaimsExist`，则此字段指定要进行查询的 ClaimTypeReferenceId。 如果检查的类型是 `ClaimEquals`，则此字段指定要进行查询的 ClaimTypeReferenceId。 而另一个值元素包含要检查的值。|
-| 操作 | 1:1 | 在业务流程步骤中的前置条件检查为 true 时应执行的操作。 Action  的值设置为 `SkipThisValidationTechnicalProfile`。 指定不应执行关联的验证技术配置文件。 |
+| 操作 | 1:1 | 在业务流程步骤中的前置条件检查为 true 时应执行的操作。 Action 的值设置为 `SkipThisValidationTechnicalProfile`。 指定不应执行关联的验证技术配置文件。 |
 
 ### <a name="example"></a>示例
 

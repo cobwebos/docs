@@ -1,18 +1,14 @@
 ---
 title: 使用 Azure 备份服务器备份 VMware VM
 description: 本文介绍如何使用 Azure 备份服务器来备份 VMware vCenter/ESXi 服务器上运行的 VMware Vm。
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.author: dacurwin
-ms.openlocfilehash: df41907ee10b54ab3bfaeb548e085617f7d79084
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: d1c8ec249e010d75bbe96f5c70072f41b9738370
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903230"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173360"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
 
@@ -38,7 +34,7 @@ ms.locfileid: "73903230"
 ### <a name="before-you-begin"></a>开始之前
 
 - 如果不想使用 HTTPS，可以[对所有 VMware 服务器禁用 HTTPS 证书验证](backup-azure-backup-server-vmware.md#disable-https-certificate-validation)。
-- 通常，你会使用 vSphere Web 客户端从 Azure 备份服务器计算机上的浏览器连接到 vCenter/ESXi 服务器。 首次执行此操作时，连接不安全，将显示以下各项。
+- 通常，你会使用 vSphere Web 客户端从 Azure 备份服务器计算机上的浏览器连接到 vCenter/ESXi 服务器。 首次执行此操作时，连接并不安全，会显示以下消息。
 - 必须了解 Azure 备份服务器处理备份的方式。
   - Azure 备份服务器首先将数据备份到本地磁盘存储。 对于保护的数据，Azure 备份服务器将使用存储池，即，Azure 备份服务器用来存储磁盘恢复点的一组磁盘和卷。 该存储池可以是直接附加存储 (DAS)、光纤通道 SAN，或者 iSCSI 存储设备或 SAN。 必须确保为 VMware VM 数据的本地备份提供足够的存储空间。
   - 然后，Azure 备份服务器会从本地磁盘存储备份到 Azure。
@@ -74,7 +70,7 @@ ms.locfileid: "73903230"
 
 7. 将根证书的扩展名更改为 .crt，并确认。 文件图标将更改为表示根证书的图标。
 
-8. 在弹出菜单中右键单击根证书，并选择“安装证书”。
+8. 右键单击根证书，然后在弹出菜单中选择“安装证书”。
 
 9. 在“证书导入向导”中，选择“本地计算机”作为证书的目标，然后单击“下一步”。 如果系统询问是否要允许对计算机所做的更改，请确认。
 

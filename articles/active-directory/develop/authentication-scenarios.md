@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0a73f5257bf763633052aab89f92ea0e5d5c000
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 317efa17b294e859ef8a092451aca70b5b836fe7
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927116"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167792"
 ---
 # <a name="authentication-basics"></a>身份验证基础知识
 
@@ -148,7 +148,7 @@ Web 应用开发人员可以指示是所有页面还是仅某些页面都要求�
 ### <a name="how-a-web-app-delegates-sign-in-to-azure-ad-and-obtains-a-token"></a>Web 应用如何委托登录 Azure AD 和获取令牌
 
 用户身份验证通过浏览器进行。 OpenID 协议使用标准 HTTP 协议消息。
-- Web 应用将 HTTP 202 （重定向）发送到浏览器以使用 Azure AD。
+- Web 应用将 HTTP 302 （重定向）发送到浏览器以使用 Azure AD。
 - 对用户进行身份验证时，Azure AD 通过浏览器使用重定向将令牌发送到 web 应用。
 - 重定向由 web 应用以重定向 URI 的形式提供。 此重定向 URI 已注册到 Azure AD 应用程序对象。 可能有多个重定向 Uri，因为应用程序可能会部署到多个 Url。 因此，web 应用还需要指定要使用的重定向 URi。
 - Azure AD 验证 web 应用发送的重定向 URI 是否是应用的已注册重定向 Uri 之一。
@@ -159,7 +159,7 @@ Web 应用开发人员可以指示是所有页面还是仅某些页面都要求�
 
 桌面和移动应用程序可使用嵌入的 Web 控件或系统浏览器进行身份验证。 下图显示桌面或移动应用如何使用 Microsoft 身份验证库（MSAL）获取访问令牌和调用 web Api。
 
-![桌面应用程序的外观](media/authentication-scenarios/web-app-how-it-appears-to-be.png)
+![桌面应用程序的外观](media/authentication-scenarios/desktop-app-how-it-appears-to-be.png)
 
 MSAL 使用浏览器获取令牌，对于 web 应用，将身份验证委托给 Azure AD。
 

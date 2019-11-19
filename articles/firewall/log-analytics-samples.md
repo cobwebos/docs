@@ -1,18 +1,18 @@
 ---
 title: Azure 防火墙日志分析示例
-description: Azure 防火墙日志分析示例
+description: Azure Monitor 日志可用于分析 Azure 防火墙。 示例文件是 Azure Monitor 中的视图设计器生成的。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: a4ab1263abac67714357594e5bd87a4b910953b1
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 714054b8e538b2fb1bfb3fb4f2293636802f3bc4
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033984"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168885"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Azure 防火墙日志分析示例
 
@@ -26,7 +26,7 @@ ms.locfileid: "71033984"
 
 执行以下步骤以将视图添加到 Log Analytics 工作区中：
 
-1. 在 Azure 门户中打开 Log Analytics 工作区。
+1. 打开 Azure 门户中的 "Log Analytics" 工作区。
 2. 打开“常规”下的“视图设计器”。
 3. 单击“导入”。
 4. 浏览并选择之前下载的“AzureFirewall.omsview”文件。

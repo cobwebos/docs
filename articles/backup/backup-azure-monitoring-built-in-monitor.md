@@ -1,21 +1,15 @@
 ---
-title: Azure 备份：监视 Azure 备份保护的工作负荷
+title: 监视 Azure 备份保护的工作负荷
 description: 本文介绍如何使用 Azure 门户的 Azure 备份工作负荷的监视和通知功能。
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: Azure 备份; 警报
-ms.service: backup
 ms.topic: conceptual
 ms.date: 03/05/2019
-ms.author: dacurwin
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: cd9e4e14771744b6275bb1dfe0a96bbef475a123
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: ea5102a95a9bef17f25219e00dec4654bf7f06d6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090957"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172862"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>监视 Azure 备份工作负荷
 
@@ -63,7 +57,7 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 
 之所以设计上述异常，是因为我们知道，这些操作的结果（主要是用户触发的操作）会立即显示在门户/PS/CLI 客户端中。 因此，用户会立即了解相关情况，无需向他们发送通知。
 
-### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>此处会显示以下 Azure 备份解决方案中的警报：
+### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>以下 Azure 备份解决方案中显示的警报如下所示
 
 - Azure VM 备份
 - Azure 文件备份

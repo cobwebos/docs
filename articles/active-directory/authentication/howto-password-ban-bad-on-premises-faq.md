@@ -4,19 +4,19 @@ description: 本地 Azure AD 密码保护常见问题解答
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c2e737360d6b1eeb8df28a95b8c36d4cca80ee4
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 473fe43bb4cf18c61f30d9b7e057da888dc6da62
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71268653"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167902"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>本地 Azure AD 密码保护 - 常见问题解答
 
@@ -95,13 +95,13 @@ FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windo
 
 **问：是否有任何方法可将 DC 代理配置为使用特定的代理服务器？**
 
-不。 由于代理服务器是无状态的，具体使用哪种代理服务器并不重要。
+不能。 由于代理服务器是无状态的，具体使用哪种代理服务器并不重要。
 
 **问：是否可以与其他服务（如 Azure AD Connect）并行部署 Azure AD 密码保护代理服务？**
 
 可以。 Azure AD 密码保护代理服务和 Azure AD Connect 永远不会直接相互冲突。
 
-遗憾的是，在 Azure AD 密码保护代理软件安装的 Microsoft Azure AD 连接代理更新程序服务的版本与 Azure Active 提供的服务版本之间发现不兼容性[目录应用程序代理](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)软件。 这种不兼容性可能会导致代理更新服务无法联系 Azure 获取软件更新。 不建议在同一台计算机上安装 Azure AD 密码保护代理和 Azure Active Directory 应用程序代理。
+遗憾的是，在 Azure AD 密码保护代理软件安装的 Microsoft Azure AD 连接代理更新程序服务的版本与[Azure Active Directory 应用程序代理](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)软件安装的服务版本之间发现不兼容性。 这种不兼容性可能会导致代理更新服务无法联系 Azure 获取软件更新。 不建议在同一台计算机上安装 Azure AD 密码保护代理和 Azure Active Directory 应用程序代理。
 
 **问： DC 代理和代理的安装和注册顺序是什么？**
 
@@ -117,13 +117,13 @@ FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windo
 
 **问：我只想在域中的几个 Dc 上测试 Azure AD 密码保护。是否可以强制更改用户密码以使用这些特定 Dc？**
 
-不。 当用户更改其密码时，Windows 客户端 OS 会控制要使用的域控制器。 基于诸如 Active Directory 站点和子网分配、特定于环境的网络配置等因素来选择域控制器。Azure AD 密码保护不会控制这些因素，并且不会影响选择哪个域控制器来更改用户的密码。
+不能。 当用户更改其密码时，Windows 客户端 OS 会控制要使用的域控制器。 基于诸如 Active Directory 站点和子网分配、特定于环境的网络配置等因素来选择域控制器。Azure AD 密码保护不会控制这些因素，并且不会影响选择哪个域控制器来更改用户的密码。
 
 在一定程度上实现此目标的方法之一是在给定 Active Directory 站点中的所有域控制器上部署 Azure AD 密码保护。 这种方法能够合理覆盖分配到该站点的 Windows 客户端，因此，也会合理覆盖登录到这些客户端并更改其密码的用户。
 
 **问：如果只在主域控制器（PDC）上安装 Azure AD 密码保护 DC 代理服务，该域中的所有其他域控制器也会受到保护吗？**
 
-不。 如果在给定的非 PDC 域控制器上更改用户密码时，则明文密码永远不会发送到 PDC（这种想法是常见的错误认知）。 一旦在给定的 DC 上接受新密码，该 DC 将使用该密码来为该密码创建各种特定于身份验证协议的哈希，然后在目录中保存这些哈希。 不会保存明文密码。 然后，更新的哈希将复制到 PDC。 在某些情况下，用户密码可以直接在 PDC 上更改，同样，这取决于网络拓扑和 Active Directory 站点设计等多种因素。 （请参阅前面的问题。）
+不能。 如果在给定的非 PDC 域控制器上更改用户密码时，则明文密码永远不会发送到 PDC（这种想法是常见的错误认知）。 一旦在给定的 DC 上接受新密码，该 DC 将使用该密码来为该密码创建各种特定于身份验证协议的哈希，然后在目录中保存这些哈希。 不会保存明文密码。 然后，更新的哈希将复制到 PDC。 在某些情况下，用户密码可以直接在 PDC 上更改，同样，这取决于网络拓扑和 Active Directory 站点设计等多种因素。 （请参阅前面的问题。）
 
 总而言之，在 PDC 上部署 Azure AD 密码保护 DC 代理服务需要对整个跨中的功能实现 100% 的安全覆盖。 仅在 PDC 上部署该功能不能为域中的其他任何 DC 提供 Azure AD 密码保护安全优势。
 
@@ -133,7 +133,7 @@ FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windo
 
 **问： System Center Operations Manager 管理包是否可用于 Azure AD 密码保护？**
 
-不。
+不能。
 
 **问：为什么在将策略配置为处于审核模式时，为什么 Azure AD 仍拒绝弱密码？**
 
@@ -141,7 +141,7 @@ FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windo
 
 **问：我的用户在 Azure AD 密码保护拒绝密码时，会看到传统的 Windows 错误消息。是否可以自定义此错误消息，以便用户知道实际发生的情况？**
 
-不。 当域控制器拒绝密码时，用户所见到的错误消息由客户端计算机控制，而不是由域控制器控制。 不管密码是否被默认 Active Directory 密码策略或基于密码筛选器的解决方案（如 Azure AD 密码保护）拒绝，都会发生此行为。
+不能。 当域控制器拒绝密码时，用户所见到的错误消息由客户端计算机控制，而不是由域控制器控制。 不管密码是否被默认 Active Directory 密码策略或基于密码筛选器的解决方案（如 Azure AD 密码保护）拒绝，都会发生此行为。
 
 ## <a name="additional-content"></a>其他内容
 

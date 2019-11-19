@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3f5e01a0ceebac092084e339994161763a11c49b
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c5f4bd079fa215e3fbd4241f603aa29d19f7aad7
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240423"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158855"
 ---
 # <a name="tutorial-monitor-your-data"></a>教程：监视数据
 
 
 
-将 [数据源](quickstart-onboard.md) 连接到 Azure sentinel 后，可以使用 Azure sentinel 与 Azure Monitor 工作簿集成来监视数据，这在创建自定义仪表板中提供了丰富的支持。 尽管工作簿在 Azure Sentinel 中以不同的方式显示，但你可以查看如何[通过 Azure Monitor 工作簿创建交互式报表](../azure-monitor/app/usage-workbooks.md)。 使用 Azure Sentinel，可以在数据中创建自定义工作簿，此外还附带内置的工作簿模板，使你能够在连接数据源时立即快速获取数据的见解。
+将 [数据源连接](quickstart-onboard.md)到 azure sentinel 后，可以使用 azure sentinel 与 Azure Monitor 工作簿集成来监视数据，这在创建自定义仪表板的同时提供了丰富的 。 尽管工作簿在 Azure Sentinel 中以不同的方式显示，但你可以查看如何[通过 Azure Monitor 工作簿创建交互式报表](../azure-monitor/app/usage-workbooks.md)。 Azure Sentinel 可让你跨数据创建自定义工作簿，并且还附带了内置的工作簿模板，使你可以在连接数据源后快速获得对数据的见解。
 
 
 本教程可帮助你在 Azure Sentinel 中监视数据。
@@ -56,7 +56,7 @@ ms.locfileid: "71240423"
 ![查看工作簿](./media/tutorial-monitor-data/workbook-graph.png)
 1. 进行更改后，可以保存工作簿。 
 
-1. 还可以克隆工作簿：选择 "**编辑**"，然后选择 "**另存为**"，并确保在同一订阅和资源组下将其另存为其他名称。 这些工作簿显示在 "**我的工作簿**" 选项卡下。
+1. 你还可以克隆工作簿：选择 "**编辑**"，然后单击 "**另存为**"，确保在同一订阅和资源组下将其另存为其他名称。 这些工作簿显示在 "**我的工作簿**" 选项卡下。
 
 
 ## <a name="create-new-workbook"></a>创建新的工作簿
@@ -72,7 +72,7 @@ ms.locfileid: "71240423"
 
 1. 如果希望让组织中的其他人使用该工作簿，请在 "**保存**" 下选择 "**共享报表**"。 如果希望此工作簿仅供用户使用，请选择 **"我的报表**"。
 
-1. 若要在工作区中切换工作簿，可以在任何工作](./media/tutorial-monitor-data/switch.png)簿的顶部窗格中选择 "**打开** ![切换工作簿"。 在右侧打开的窗口中，在工作簿之间切换。
+1. 若要在工作区中切换工作簿，可以在任何工作簿的顶部窗格中选择 "**打开**![切换工作簿"](./media/tutorial-monitor-data/switch.png)。 在右侧打开的窗口中，在工作簿之间切换。
 
    ![切换工作簿](./media/tutorial-monitor-data/switch-workbooks.png)
 
@@ -81,10 +81,7 @@ ms.locfileid: "71240423"
 
 可以删除从 Azure Sentinel 模板创建的工作簿。 
 
-删除自定义工作簿：
-1.  选择 "**查看工作簿**"。
-2.  选择顶部的 "**打开**"。
-3.  在列出工作簿的表中，在要删除的工作簿的行中，选择行末尾的三个点 .。。打开该菜单，然后选择 "**删除**"。 这将删除已保存的工作簿。
+若要删除自定义工作簿，请在 "工作簿" 页中选择要删除的已保存工作簿，然后选择 "**删除**"。 这将删除已保存的工作簿。
 
 > [!NOTE]
 > 这会删除资源以及对模板所做的任何更改。 原始模板仍可用。

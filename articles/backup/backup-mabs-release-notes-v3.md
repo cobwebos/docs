@@ -1,20 +1,15 @@
 ---
 title: Microsoft Azure 备份服务器 v3 发行说明
 description: 本文提供了有关 Microsoft Azure 备份 Server （MABS） v3 的已知问题和解决方法的信息。
-ms.reviewer: v-jysur
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 11/22/2018
-ms.author: dacurwin
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 6f00b51cc5ac23aa8d1d39202ca79a9f5d762cbc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b47d83e0e3714f3f035397acaadeac9cda39d12a
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074808"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172282"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure 备份服务器发行说明
 

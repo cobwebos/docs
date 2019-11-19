@@ -1,19 +1,14 @@
 ---
-title: 保护系统状态 & 裸机还原-Azure 备份服务器
+title: 系统状态和裸机恢复保护
 description: 使用 Azure 备份服务器可备份系统状态并提供裸机恢复 (BMR) 保护。
-author: dcurwin
-manager: carmonm
-keywords: ''
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: dacurwin
-ms.openlocfilehash: 50f534a5a682cd9e4f6aeb040b897e7aae48dddd
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 2940ef5b8c0c2a7d751c46209253d4f4dbe6d13f
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969029"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172263"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>使用 Azure 备份服务器备份系统状态并还原为裸机
 
@@ -33,7 +28,7 @@ Azure 备份服务器可备份系统状态并提供裸机恢复 (BMR) 保护。
 |**文件数据**<br /><br />常规数据备份<br /><br />BMR/系统状态备份|文件数据丢失|Y|N|N|
 |**文件数据**<br /><br />文件数据的 Azure 备份服务器备份<br /><br />BMR/系统状态备份|操作系统丢失或损坏|N|Y|Y|
 |**文件数据**<br /><br />文件数据的 Azure 备份服务器备份<br /><br />BMR/系统状态备份|服务器丢失（数据卷完整）|N|N|Y|
-|**文件数据**<br /><br />文件数据的 Azure 备份服务器备份<br /><br />BMR/系统状态备份|服务器丢失（数据卷丢失）|Y|No|是（BMR，接下来是备份文件数据的常规恢复）|
+|**文件数据**<br /><br />文件数据的 Azure 备份服务器备份<br /><br />BMR/系统状态备份|服务器丢失（数据卷丢失）|Y|否|是（BMR，接下来是备份文件数据的常规恢复）|
 |**SharePoint 数据**：<br /><br />场数据的 Azure 备份服务器备份<br /><br />BMR/系统状态备份|站点、列表、列表项、文档丢失|Y|N|N|
 |**SharePoint 数据**：<br /><br />场数据的 Azure 备份服务器备份<br /><br />BMR/系统状态备份|操作系统丢失或损坏|N|Y|Y|
 |**SharePoint 数据**：<br /><br />场数据的 Azure 备份服务器备份<br /><br />BMR/系统状态备份|灾难恢复|N|N|N|

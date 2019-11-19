@@ -1,19 +1,15 @@
 ---
-title: 通过 System Center DPM 将 Exchange server 备份到 Azure 备份
+title: 通过 System Center DPM 备份 Exchange server
 description: 了解如何使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份
 ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: dacurwin
-ms.openlocfilehash: 21f38105913e03adfbf400e82d3572e6e5084538
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: b2231fcadc3e0cb591302ba47572627ae3a17e58
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968506"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173285"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份
 
@@ -28,7 +24,7 @@ ms.locfileid: "72968506"
 >
 >
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在继续下一步之前，请确保符合使用 Microsoft Azure 备份保护工作负荷的所有[先决条件](backup-azure-dpm-introduction.md#prerequisites-and-limitations)。 这些先决条件包括：
 
@@ -42,7 +38,7 @@ ms.locfileid: "72968506"
 
 若要在 Exchange Server 上安装 DPM 保护代理，请遵循以下步骤：
 
-1. 确保已正确配置防火墙。 请参阅[配置代理的防火墙异常](https://technet.microsoft.com/library/Hh758204.aspx)。
+1. 确保已正确配置防火墙。 请参阅 [配置代理的防火墙异常](https://technet.microsoft.com/library/Hh758204.aspx)。
 2. 在 DPM 管理员控制台中单击“**管理 > 代理 > 安装**”，在 Exchange Server 上安装代理。 有关详细步骤，请参阅[安装 DPM 保护代理](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396)。
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>为 Exchange Server 创建保护组
@@ -95,7 +91,7 @@ ms.locfileid: "72968506"
     ![指定联机备份计划](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > 请注意，在线恢复点基于快速完全恢复点。 因此，必须会在线恢复点安排在针对快速完全恢复点指定的时间之后。
+    > 请注意，在线恢复点基于快速完全恢复点。 因此，必须将在线恢复点安排在针对快速完全恢复点指定的时间之后。
     >
     >
 16. 配置“**Azure 备份**”的保留策略，并单击“**下一步**”。

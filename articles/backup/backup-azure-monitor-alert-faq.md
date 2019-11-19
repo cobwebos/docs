@@ -1,19 +1,15 @@
 ---
-title: Azure 备份监视警报常见问题解答
+title: 监视警报和报告常见问题
 description: 本文介绍有关 Azure 备份监视警报和 Azure 备份报表的常见问题的解答。
 ms.reviewer: srinathv
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.author: dacurwin
-ms.openlocfilehash: dc0225092d23371ca97dfedd48a2d3ffcf85a9be
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 9cf7bf49d29b5faa9811a591b45179fe83c1d483
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747394"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172915"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure 备份监视警报 - 常见问题解答
 
@@ -63,7 +59,7 @@ Azure 备份失败后，会在 20 分钟内引发警报。
 
 ### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>是否存在配置了通知却不发送电子邮件的情况？
 
-是的。 在以下情况下，不会发送通知：
+可以。 在以下情况下，不会发送通知：
 
 * 已将通知配置为每小时发送，并且在一小时内引发并解决了警报
 * 取消了作业
@@ -81,7 +77,7 @@ Azure 备份失败后，会在 20 分钟内引发警报。
 
 ### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>是否存在配置了通知却不发送电子邮件的情况？
 
-是的。 在以下情况下，不发送通知：
+可以。 在以下情况下，不发送通知：
 
 * 已将通知配置为每小时发送，并且在一小时内引发并解决了警报
 * 取消了作业

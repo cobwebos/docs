@@ -10,20 +10,26 @@ ms.assetid: ''
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 11/14/2019
+ms.date: 11/18/2019
 ms.author: magoedte
-ms.openlocfilehash: e369067a3ff61ffefe1758f6fa8b4acdce4bb2e2
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: f748399b6b356e5f8655f59221e78acd0d98f51e
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134432"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173633"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>了解 Azure Monitor 容器的 Kubernetes 群集运行状况
 
 对于容器 Azure Monitor，它会监视和报告托管基础结构组件的运行状况状态，以及在 Azure Monitor for 容器支持的任何 Kubernetes 群集上运行的所有节点的运行状况状态。 此体验超出了在[多群集视图](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)上计算和报告的群集运行状况状态，现在你可以了解群集中的一个或多个节点是否受资源约束，或者节点或 pod 是否不可用，可能会影响群集中正在运行的应用程序（基于特选指标）。 
 
 若要了解如何启用适用于容器的 Azure Monitor，请参阅[载入适用于容器的 Azure Monitor](container-insights-onboard.md)。
+
+>[!NOTE]
+>若要支持 AKS 引擎群集，请验证它是否满足以下各项：
+>- 它使用的是最新版本的[HELM 客户端](https://helm.sh/docs/using_helm/)。
+>- 容器化代理版本为*microsoft/oms： ciprod11012019*。 若要升级代理，请参阅[升级 Kubernetes 群集上的代理](container-insights-manage-agent.md#upgrading-agent-on-monitored-kubernetes-cluster)。
+>
 
 ## <a name="overview"></a>概述
 

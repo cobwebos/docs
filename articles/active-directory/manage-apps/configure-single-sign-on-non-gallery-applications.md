@@ -12,12 +12,12 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e993ad17a07ff741ff33073304ed774dcf30203d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2dcc2d6fc252f288f15e2583012798b4d0e9cee6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961646"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74169440"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>为非库应用程序配置基于 SAML 的单一登录
 
@@ -52,7 +52,7 @@ ms.locfileid: "73961646"
 
     | 基本 SAML 配置设置 | SP 启动 | idP 启动 | 说明 |
     |:--|:--|:--|:--|
-    | **标识符（实体 ID）** | 某些应用所需 | 某些应用所需 | 唯一标识该应用程序。 Azure AD 将该标识符作为 SAML 令牌的 Audience 参数发送回应用程序。 应用程序应当对其进行验证。 该值也在应用程序提供的任何 SAML 元数据中显示为实体 ID。 可以在应用程序发送的 *AuthnRequest **（SAML 请求）中找到此值（** Issuer **元素）。*** |
+    | **标识符（实体 ID）** | 某些应用所需 | 某些应用所需 | 唯一标识该应用程序。 Azure AD 将该标识符作为 SAML 令牌的 Audience 参数发送回应用程序。 应用程序应当对其进行验证。 该值也在应用程序提供的任何 SAML 元数据中显示为实体 ID。 输入使用以下模式的 URL： "https://<subdomain>. contoso.com"。*可以在应用程序发送的**AuthnRequest** （SAML 请求）中找到此值作为**颁发者**元素。* |
     | 回复 URL | 必选 | 必选 | 指定应用程序应在何处接收 SAML 令牌。 回复 URL 也称断言使用者服务 (ACS) URL。 您可以使用 "其他回复 URL" 字段指定多个答复 Url。 例如，你可能需要多个子域的其他回复 Url。 或者，出于测试目的，可以一次指定多个回复 Url （本地主机和公共 Url）。 |
     | **登录 URL** | 必选 | 不指定 | 当用户打开此 URL 时，服务提供程序会将用户重定向到 Azure AD 进行身份验证和登录。 Azure AD 使用此 URL 从 Office 365 或 Azure AD 访问面板启动应用程序。 如果为空，当用户从 Office 365、Azure AD 访问面板或 Azure AD SSO URL 启动应用程序时，Azure AD 会执行 IdP 启动的登录。|
     | **中继状态** | 可选 | 可选 | 指定应用程序在完成身份验证以后将用户重定向到何处。 通常，该值是应用程序的有效 URL。 但是，某些应用程序以不同的方式使用此字段。 有关详细信息，请询问应用程序供应商。

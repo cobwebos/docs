@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/26/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 31a5ad92942b40e42b66e404df2d09cd8158f7a2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3f7d213aed82d1cb94bb96b9e212d3b255851afd
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606487"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171223"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>创建应用程序网关的 Web 应用程序防火墙策略
 
@@ -52,7 +52,7 @@ ms.locfileid: "73606487"
 
    > [!NOTE]
    > 如果已将策略分配到已有策略的应用程序网关（或侦听器），则会覆盖原始策略，并将其替换为新策略。
-4. 依次选择 "**查看**" 和 "创建"，然后选择 "**创建**"。
+4. 依次选择“查看 + 创建”、“创建”。
 
    ![WAF 策略基础知识](../media/create-waf-policy-ag/waf-policy-basics.png)
 
@@ -64,13 +64,13 @@ ms.locfileid: "73606487"
 
 默认情况下启用 Azure 托管的 OWASP 规则。 若要禁用规则组中的单个规则，请展开该规则组中的规则，选中规则编号前面的复选框，并在上面的选项卡上选择 "**禁用**"。
 
-![托管规则](../media/create-waf-policy-ag/managed-rules.png)
+[![托管规则](../media/create-waf-policy-ag/managed-rules.png)](../media/create-waf-policy-ag/managed-rules-lrg.png#lightbox)
 
 ## <a name="custom-rules"></a>自定义规则
 
 若要创建自定义规则，请在 "**自定义规则**" 选项卡下选择 "**添加自定义规则**"。这将打开 "自定义规则配置" 页。 以下屏幕截图显示了一个示例自定义规则，该规则配置为在查询字符串包含文本*blockme*时阻止请求。
 
-![编辑自定义规则](../media/create-waf-policy-ag/edit-custom-rule.png)
+[![编辑自定义规则](../media/create-waf-policy-ag/edit-custom-rule.png)](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
 
 ## <a name="migrate"></a>将 WAF 配置迁移到 WAF 策略
 
@@ -82,7 +82,7 @@ ms.locfileid: "73606487"
 
 可以通过在门户中查看 WAF，来确定你的的状态。 如果 WAF 设置可见，并且可在应用程序网关视图中更改，则 WAF 处于状态1。
 
-![WAF 配置](../media/create-waf-policy-ag/waf-configure.png)
+[![WAF 配置](../media/create-waf-policy-ag/waf-configure.png)](../media/create-waf-policy-ag/waf-configure-lrg.png#lightbox)
 
 如果选择 " **Web 应用程序防火墙**" 并显示关联的策略，则 WAF 的状态为 "2" 或 "状态 3"。 导航到策略后，如果它**仅**显示自定义规则和关联的应用程序网关，则它是自定义规则 "仅限" 策略。
 
@@ -98,9 +98,9 @@ ms.locfileid: "73606487"
 
 仅禁用对自定义规则的编辑 WAF 策略。 若要编辑任何 WAF 设置（例如禁用规则、添加排除项等），必须迁移到新的顶级防火墙策略资源。
 
-为此，请创建一个*Web 应用程序防火墙策略*，并将其关联到所选的应用程序网关和侦听器。 此新策略**必须**与当前 WAF config 完全相同，这意味着每个自定义规则、排除、禁用的规则等都必须复制到您要创建的新策略中。 一旦你有与应用程序网关关联的策略，你就可以继续更改 WAF 规则和设置。 
+为此，请创建一个*Web 应用程序防火墙策略*，并将其关联到所选的应用程序网关和侦听器。 此新策略**必须**与当前 WAF config 完全相同，这意味着每个自定义规则、排除、禁用的规则等都必须复制到您要创建的新策略中。 一旦你有与应用程序网关关联的策略，你就可以继续更改 WAF 规则和设置。 还可以通过 Azure PowerShell 执行此操作。 有关详细信息，请参阅[将 WAF 策略与现有的应用程序网关相关联](associate-waf-policy-existing-gateway.md)。
 
-还可以通过 Azure PowerShell 执行此操作。 有关详细信息，请参阅[将 WAF 策略与现有的应用程序网关相关联](associate-waf-policy-existing-gateway.md)。
+或者，你可以使用迁移脚本迁移到 WAF 策略。 有关详细信息，请参阅[使用 Azure PowerShell 迁移 Web 应用程序防火墙策略](migrate-policy.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

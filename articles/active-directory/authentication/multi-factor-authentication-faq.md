@@ -4,19 +4,19 @@ description: 与 Azure 多重身份验证相关的常见问题与解答。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 07/11/2018
+ms.topic: troubleshooting
+ms.date: 11/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ae7390afead843fa0784454f7e0374bedf735ad
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 37f375b6d4284b4728b2337dc5ab5186ce22772c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081538"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167772"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题
 
@@ -61,7 +61,7 @@ ms.locfileid: "74081538"
 
 Microsoft 不保证相同号码传送的短信或基于语音的多重身份验证提示一致。 为了用户的利益，Microsoft 在做出路线调整期间可能随时添加或删除简短代码，以提高短信传送能力。 除美国和加拿大以外，Microsoft 不支持国家/地区的短代码。
 
-## <a name="billing"></a>计费
+## <a name="billing"></a>账单
 
 可以参考多[重身份验证定价页](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)或者有关[如何获取 Azure 多重身份验证](concept-mfa-licensing.md)的文档解答大多数计费问题。
 
@@ -142,13 +142,11 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 >
 > 只有不支持新式身份验证的应用才需要应用密码。 Office 2013 客户端支持新式身份验证协议，但需要进行配置。 现在，对于运行三月2015或更高版本的 Office 2013 的任何客户都可以使用新式身份验证。 有关详细信息，请参阅博客文章[更新的 Office 365 新式身份验证](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/)。
 
-**问：我的用户指出，有时他们收不到短信，或者回复了双向短信但验证超时。**
+**问：我的用户指出，有时他们不会收到短信或验证超时。**
 
-发送短信和接收双向短信回复无法得到保障，因为它们属于可能影响服务可靠性的不可控因素。 这些因素包括目标国家/地区、移动电话运营商和信号强度。
+不保证 SMS 消息的传递，因为存在可能影响服务可靠性的不可控因素。 这些因素包括目标国家/地区、移动电话运营商和信号强度。
 
 如果用户经常无法可靠地接收短信，请告诉他们改用移动应用或电话验证方法。 移动应用可以同时通过手机网络和 Wi-Fi 连接接收通知。 此外，即使设备根本没有信号，也可以生成验证码。 Microsoft 验证器应用适用于 [Android](https://go.microsoft.com/fwlink/?Linkid=825072)、[iOS](https://go.microsoft.com/fwlink/?Linkid=825073) 和 [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)。
-
-如果必须使用短信，建议尽可能使用单向短信，而不要使用双向短信。 单向短信更加可靠，并可以防止用户由于回复从其他国家/地区发来的短信而产生的全球短信费用。
 
 **问：是否可以更改在系统超时之前，用户必须输入短信中验证代码的时限？**
 
@@ -162,7 +160,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 >[!TIP] 
 >如果有多个 MFA 服务器，只有处理原始身份验证请求的服务器才知道发送给用户的验证码。 在用户输入验证码后，必须将用于验证的身份验证请求发送到相同的服务器。 如果将验证码验证请求发送到不同的服务器，身份验证将遭拒。 
 
-对于使用 Azure MFA 服务器的双向短信，可以在 MFA 管理门户中配置超时设置。 如果用户未在定义的超时期内回复短信，身份验证将遭拒。 
+如果用户未在定义的超时期内回复短信，身份验证将遭拒。 
 
 对于在云中使用 Azure MFA（包括 AD FS 适配器或网络策略服务器扩展）的单向短信，无法配置超时设置。 Azure AD 存储验证码 180 秒。 
 

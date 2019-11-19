@@ -1,18 +1,14 @@
 ---
-title: 备份具有 Azure 备份服务器的 Hyper-v 虚拟机
-description: 本文包含使用 Microsoft Azure 备份 Server 备份和恢复虚拟机的过程。
-author: dcurwin
-manager: carmonm
-ms.service: backup
+title: 通过 MABS 备份 Hyper-v 虚拟机
+description: 本文包含使用 Microsoft Azure 备份 Server （MABS）对虚拟机进行备份和恢复的过程。
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.author: dacurwin
-ms.openlocfilehash: f15606c83c221e4591a2a1f6a71fc7141bdf3daf
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3bca1b46a867c2967dfcebe4bc8477d5f9c9447d
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074967"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173538"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>备份具有 Azure 备份服务器的 Hyper-v 虚拟机
 

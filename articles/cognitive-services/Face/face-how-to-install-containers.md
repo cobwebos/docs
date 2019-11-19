@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 11/18/2019
 ms.author: dapine
-ms.openlocfilehash: b3c064ae2dbc37858ca6fe89742161e0dda1784f
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 97b1fd27e91823594d972bdd49184d2b0f5d320b
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743285"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171701"
 ---
 # <a name="install-and-run-face-containers"></a>安装并运行人脸容器
 
@@ -82,7 +82,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 
 ## <a name="run-the-container-with-docker-run"></a>运行包含 docker 的容器
 
-使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 有关如何获取 `{ENDPOINT_URI}` 和 `{API_KEY}` 值的详细信息，请参阅[收集必需的参数](#gathering-required-parameters)。
+使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 有关如何获取 [ 和 ](#gathering-required-parameters) 值的详细信息，请参阅`{ENDPOINT_URI}`收集所需的参数`{API_KEY}`。
 
 [ 命令的](face-resource-container-config.md#example-docker-run-commands)示例`docker run`可用。
 
@@ -130,7 +130,7 @@ ApiKey={API_KEY}
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>计费
+## <a name="billing"></a>账单
 
 人脸 API 容器使用 Azure 帐户上的人脸 API 资源将计费信息发送到 Azure。 
 

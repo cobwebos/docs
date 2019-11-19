@@ -2,18 +2,14 @@
 title: 使用 Habitat 将应用程序部署到 Azure
 description: 了解如何以一致的方式将应用程序部署到 Azure 虚拟机和容器
 keywords: azure, chef, devops, 虚拟机, 概述, 自动化, habitat
-ms.service: virtual-machines-linux
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 2bdcd4c504822a2e60156b0ac565465e0cf23a85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: de444836c04d1d37a19a006ce4eafdcae867ca5a
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60388805"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158059"
 ---
 # <a name="use-habitat-to-deploy-your-application-to-azure"></a>使用 Habitat 将应用程序部署到 Azure
 [Habitat](https://www.habitat.sh/) 是一种应用程序打包和运行时系统，用于将应用程序及其自动化功能捆绑在一起，作为部署单元。 这将实现应用程序的终极可移植性，使其在不执行重写或重新打包操作的情况下，即可部署到容器、虚拟机、祼机或 PaaS。

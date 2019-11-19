@@ -1,17 +1,17 @@
 ---
-title: Azure SignalR 服务客户端进行身份验证的指南
-description: 在本指南介绍了如何进行 Azure SignalR 服务客户端身份验证
+title: Azure SignalR 服务客户端身份验证指南
+description: 按照 e2e 示例，了解如何实现自己的身份验证并将其与 Azure SignalR 服务集成。
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 7660e1405598676599cab30467d22ac979438deb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc955adffbe7df5809f9c4c860877ad22df3e99b
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128313"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158282"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR 服务身份验证
 
@@ -40,7 +40,7 @@ ms.locfileid: "66128313"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，必须满意以下先决条件：
 
@@ -54,7 +54,7 @@ ms.locfileid: "66128313"
 
 1. 打开 web 浏览器，导航到 `https://github.com` 并登录帐户。
 
-2. 对于帐户，导航到“设置” > “开发人员设置”，然后单击“注册新应用程序”或“OAuth 应用”下的“新建 OAuth 应用”。
+2. 对于帐户，导航到“设置” **“开发人员设置”，然后单击“注册新应用程序”或“OAuth 应用”下的“新建 OAuth 应用”**  > 。
 
 3. 为新 OAuth 应用使用以下设置，然后单击“注册应用程序”：
 
@@ -80,7 +80,7 @@ ms.locfileid: "66128313"
         dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
         dotnet restore
 
-1. 打开 Startup.cs，并为以下命名空间添加 `using` 语句：
+1. 打开 Startup.cs，并为以下命名空间添加  *语句*`using`：
 
     ```csharp
     using System.Net.Http;
@@ -318,7 +318,7 @@ ms.locfileid: "66128313"
     }
     ```
 
-4. 在 index.html 底部，更新 `connection.start()` 的错误处理程序（如下所示），提示用户进行登录。
+4. 在 index.html 底部，更新  *的错误处理程序（如下所示），提示用户进行登录*`connection.start()`。
 
     ```javascript
     connection.start()
@@ -377,7 +377,7 @@ ms.locfileid: "66128313"
 
 ## <a name="deploy-the-app-to-azure"></a>将应用部署到 Azure
 
-在本部分中，您将使用 Azure 命令行接口 (CLI) 从 Azure Cloud Shell 创建中的新 web 应用[Azure 应用服务](https://docs.microsoft.com/azure/app-service/)来承载 ASP.NET 应用程序在 Azure 中的。 Web 应用将配置为使用本地 Git 部署。 还将使用 SignalR 连接字符串、GitHub OAuth 应用密码和部署用户配置 Web 应用。
+在本部分中，将使用 Azure Cloud Shell 中的 Azure 命令行接口（CLI）在[Azure App Service](https://docs.microsoft.com/azure/app-service/)中创建新的 web 应用，以便在 Azure 中托管 ASP.NET 应用程序。 Web 应用将配置为使用本地 Git 部署。 还将使用 SignalR 连接字符串、GitHub OAuth 应用密码和部署用户配置 Web 应用。
 
 本部分中的步骤使用 Azure CLI 的 signalr 扩展。 执行以下命令，安装 Azure CLI 的 signalr 扩展：
 
@@ -463,7 +463,7 @@ az webapp config appsettings set --name $WebAppName \
 | 参数 | 说明 |
 | -------------------- | --------------- |
 | GitHubClientId | 为此变量分配 GitHub OAuth 应用的机密客户端 ID。 |
-| GitHubClientSecret | 为此变量分配 GitHub OAuth 应用的机密密码。 |
+| GitHubClientSecret | 为此变量分配 GitHub OAuth 应用的密码。 |
 | ResourceGroupName | 将此变量更新为在上一部分中使用的相同资源组名称。 |
 | SignalRServiceResource | 使用快速入门中创建的 SignalR 服务资源名称更新此变量。 例如，signalrtestsvc48778624。 |
 | WebAppName | 使用上一部分中创建的新 Web 应用名称更新此变量。 |
@@ -539,7 +539,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 需要执行的最后一步是更新 GitHub OAuth 应用的“主页 URL”和“授权回调 URL”，指向新的托管应用。
 
-1. 在浏览器中打开 [https://github.com](https://github.com) 并导航到帐户的“设置” > “开发人员设置” > “Oauth 应用”。
+1. 在浏览器中打开 [https://github.com](https://github.com) 并导航到帐户的“设置” **“开发人员设置”** “Oauth 应用” >  > 。
 
 2. 单击身份验证应用并更新“主页 URL”和“授权回调 URL”，如下所示：
 
@@ -561,7 +561,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 > [!IMPORTANT]
 > 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从各自的边栏选项卡逐个删除这些资源，而不要删除资源组。
 
-登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
+登录到 [Azure 门户](https://portal.azure.com)，然后单击“资源组”。
 
 在“按名称筛选...”文本框中键入资源组的名称。 本文的说明使用名为“SignalRTestResources”的资源组。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”。
 

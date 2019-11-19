@@ -1,20 +1,14 @@
 ---
-title: Azure 备份：从 Azure VM 备份恢复文件和文件夹
+title: 从 Azure VM 备份恢复文件和文件夹
 description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件夹。
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: 项目级恢复; 从 Azure VM 备份恢复文件; 从 Azure VM 还原文件
-ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.author: dacurwin
-ms.openlocfilehash: 07ec5b76756b462e03e9349edd2daff96933588c
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 3fff957e542a039fcc5121f13c062f710f9292c9
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091629"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172849"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 

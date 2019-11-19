@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: cd15b562c3707a28b54bc59166d54871120909e2
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 874c282ff878126297dc46ca0e7a4c19910e40a1
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084941"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159113"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>设置 Azure VM 迁移到 Azure 后的灾难恢复 
 
@@ -30,7 +30,7 @@ ms.locfileid: "74084941"
 
 每个 Azure VM 都必须安装 [Azure VM 代理](../virtual-machines/extensions/agent-windows.md)。 为了复制 Azure VM，Site Recovery 会在代理上安装一个扩展。
 
-- 如果计算机运行 9.7.0.0 或更高版本的 Site Recovery 移动服务，则移动服务会将 Azure VM 代理自动安装在 Windows VM 上。 在移动服务的早期版本上，你需要手动安装该代理。
+- 如果计算机运行 9.7.0.0 或更高版本的 Site Recovery 移动服务，则移动服务会将 Azure VM 代理自动安装在 Windows VM 上。 在早期版本的移动服务中，你将手动安装该代理。
 - 对于 Linux Vm，必须手动安装 Azure VM 代理。 仅当迁移计算机上安装的移动服务为 9.6 版或更早版本时，才需要安装 Azure VM 代理。
 
 

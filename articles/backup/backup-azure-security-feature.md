@@ -1,19 +1,15 @@
 ---
-title: 使用 Azure 备份保护混合备份的安全功能
+title: 保护混合备份的安全功能
 description: 了解如何在 Azure 备份中使用安全功能，使备份更加安全
 ms.reviewer: utraghuv
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.author: dacurwin
-ms.openlocfilehash: a72e43d068f9fc6cf06a4786d511bbc6c25e85d4
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: c3c62f8ea7813c14fa6e19d825a5253de18f6639
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968438"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172678"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>有助于保护使用 Azure 备份的混合备份的安全功能
 
@@ -84,7 +80,7 @@ ms.locfileid: "72968438"
 
 ### <a name="authentication-to-perform-critical-operations"></a>执行关键操作的身份验证
 
-在为关键操作添加额外身份验证层的过程中，在执行**停止保护并删除数据**和**更改密码**操作时，系统会提示输入安全 PIN。
+在为关键操作添加额外身份验证层的过程中，在执行“停止保护并删除数据”和“更改密码”操作时，系统会提示输入安全 PIN。
 
 > [!NOTE]
 >
@@ -114,7 +110,7 @@ ms.locfileid: "72968438"
 
 ## <a name="troubleshooting-errors"></a>排查错误
 
-| Operation | 错误详细信息 | 分辨率 |
+| Operation | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
 | 策略更改 |无法修改备份策略。 错误：由于内部服务错误 [0x29834]，当前操作失败。 请稍后重试操作。 如果该问题仍然存在，请联系 Microsoft 支持部门。 |原因：<br/>当启用安全设置、尝试缩短保留期范围至低于以上指定的最小值和使用不受支持的版本时，将出现此错误（本文第一条注释已指定所支持的版本）。 <br/>建议的操作<br/> 在这种情况下，应将保留期时段设置为高于指定保留期时段的最小值（以日计为七天、以周记为四周、以月计为三个月或以年计为一年），以进行策略相关的更新。 （可选）首选更新备份代理、Azure 备份服务器和/或 DPM UR 来利用所有的安全性更新。 |
 | 更改通行短语 |输入的安全 PIN 不正确。 (ID: 100130) 请提供正确的安全 PIN 来完成此操作。 |原因：<br/> 当执行关键操作（如更改通行短语）时输入无效或已过期的安全 PIN 将出现此错误。 <br/>建议的操作<br/> 若要完成该操作，必须输入有效的安全 PIN。 若要获取 PIN，请登录到 Azure 门户，导航到 "恢复服务保管库" > "设置" > 属性 > "生成安全 PIN"。 使用此 PIN 更改通行短语。 |

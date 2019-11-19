@@ -1,19 +1,15 @@
 ---
-title: Azure 备份服务器和 DPM （Data Protection Manager）常见问题
-description: 本文介绍有关 Microsoft Azure 备份服务器（MABS）和 DPM 的常见问题的解答。
+title: Azure 备份服务器和 DPM 常见问题解答
+description: 本文介绍有关 Microsoft Azure 备份服务器（MABS）和 DPM （Data Protection Manager）的常见问题的解答。
 ms.reviewer: srinathv
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: dacurwin
-ms.openlocfilehash: 940ac4d94bf39583fad828545a45cbb033908f15
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 35957a1e8a3d6c3d9be06d9d44dbcd47efa0e6ee
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091657"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173157"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure 备份服务器和 DPM - 常见问题解答
 

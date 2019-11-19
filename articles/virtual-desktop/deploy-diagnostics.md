@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 4718ee7943b4130bb977d5eefeb82bb385c71835
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 27231dc25604e9031f0456d787530bf2a29616f7
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332837"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167432"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>部署诊断工具
 
@@ -25,7 +25,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 - 向特定会话主机上的活动用户发送消息。
 - 将用户登录到会话主机。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 你需要创建 Azure Active Directory 应用注册和 Log Analytics 工作区，然后才能部署该工具的 Azure 资源管理器模板。 你或管理员需要这些权限才能执行此操作：
 
@@ -108,11 +108,11 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 3. 在 "**设置**" 部分，选择 "**高级设置**"。
 4. 然后，导航到 " **Data** > **Windows 性能计数器**"，并添加以下计数器：
 
-    -   逻辑磁盘（\*） \%Free Space
-    -   逻辑磁盘（C：） \\Avg Queue Length
-    -   内存（\*） \\Available Mb
-    -   处理器信息（\*） \\Processor 时间
-    -   每个会话的用户输入延迟（\*） \\Max 输入延迟
+    -   逻辑磁盘（\*）\\可用空间（%）
+    -   逻辑磁盘（C：）\\平均磁盘队列长度
+    -   内存（\*）\\可用兆字节
+    -   处理器信息（\*）\\处理器时间
+    -   每个会话的用户输入延迟（\*）\\最大输入延迟
 
 [在 Azure Monitor 中了解有关 Windows 和 Linux 性能数据源](/azure/azure-monitor/platform/data-sources-performance-counters)的性能计数器的详细信息。
 
@@ -139,14 +139,14 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
 1. 在[Azure 门户](https://portal.azure.com/)中转到**Log Analytics 工作区**以查看配置的 Windows 性能计数器。
 2. 在 "**设置**" 下，选择 "**高级设置**"。
-3. 之后，请跳到**Data** > **Windows 性能计数器**。
+3. 之后，请参阅**Data** > **Windows 性能计数器**。
 4. 请确保预配置了以下计数器：
 
-   - 逻辑磁盘（@no__t） \%Free Space：将磁盘上总可用空间的可用空间量显示为百分比。
-   - 逻辑磁盘（C：） \\Avg 队列长度： C 驱动器的磁盘传输请求的长度。 该值不应超过一小段时间的2。
-   - 内存（\*） \\Available Mb：系统的可用内存（以 mb 为单位）。
-   - 处理器信息（\*） \\Processor Time：处理器执行非空闲线程所用时间的百分比。
-   - 每个会话的用户输入延迟（\*） \\Max 输入延迟
+   - 逻辑磁盘（\*）\\% 可用空间：显示磁盘上总可用空间的可用空间量（以百分比表示）。
+   - 逻辑磁盘（C：）\\Avg. Disk Queue Length： C 驱动器的磁盘传输请求的长度。 该值不应超过一小段时间的2。
+   - 内存（\*）\\可用 Mb：系统的可用内存（mb）。
+   - 处理器信息（\*）\\处理器时间：处理器执行非空闲线程所用时间的百分比。
+   - 每个会话的用户输入延迟（\*）\\最大输入延迟
 
 ### <a name="connect-to-vms-in-your-log-analytics-workspace"></a>连接到 Log Analytics 工作区中的 Vm
 
@@ -189,7 +189,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
    !["重定向 URI" 页](media/redirect-uri-page.png)
 
-8. 现在，请转到 Azure 资源，选择具有你在模板中提供的名称的 "Azure 应用服务" 资源，并导航到与其关联的 URL。 （例如，如果在模板中使用的应用名称为 `contosoapp45`，则关联的 URL 为 <https://contosoapp45.azurewebsites.net>）。
+8. 现在，请转到 Azure 资源，选择具有你在模板中提供的名称的 "Azure 应用服务" 资源，并导航到与其关联的 URL。 （例如，如果在模板中使用的应用名称是 `contosoapp45`，则关联的 URL 将 <https://contosoapp45.azurewebsites.net>）。
 9. 使用相应的 Azure Active Directory 用户帐户登录。
 10.   选择“接受”。
 
@@ -234,25 +234,25 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
 ### <a name="windows-performance-counter-thresholds"></a>Windows 性能计数器阈值
 
-- 逻辑磁盘（\*） \|% 可用空间：
+- 逻辑磁盘（\*）\\% 可用空间：
 
     - 显示逻辑磁盘上可用的总可用空间的百分比。
     - 阈值：小于20% 被标记为不正常。
 
-- 逻辑磁盘（C：） \\Avg 队列长度：
+- 逻辑磁盘（C：）\\平均磁盘队列长度：
 
     - 表示存储系统条件。
     - 阈值：大于5会被标记为不正常。
 
-- 内存（\*） \\Available Mb：
+- 内存（\*）\\可用 Mb：
 
     - 系统的可用内存。
     - 阈值：标记为不正常的小于 500 mb。
 
-- 处理器信息（\*） \\Processor Time：
+- 处理器信息（\*）\\处理器时间：
 
     - 阈值：大于80% 将被标记为不正常。
 
-- [每个会话的用户输入延迟（\*） @no__t 2Max 输入延迟](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters)：
+- [每个会话的用户输入延迟（\*）\\最大输入延迟](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters)：
 
     - 阈值：大于 2000 ms 被标记为不正常。

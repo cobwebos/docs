@@ -4,25 +4,22 @@ description: 介绍如何使用 Azure Migrate Server 评估发现本地服务器
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 10/16/2019
+ms.date: 11/18/2019
 ms.author: snehaa
-ms.openlocfilehash: 40cb73848bab97ef9030cb0c4f3f17c984a1e0ec
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 14ecc6454c3d0f167c671532dd8e659e767cda66
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715786"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158633"
 ---
-# <a name="discover-machine-apps-roles-and-features"></a>发现计算机应用、角色和功能 
-
-> [!NOTE]
-> 如果你尚未在 Azure Migrate 门户中看到此功能，请稍候。 它将在下周显示。
+# <a name="discover-machine-apps-roles-and-features"></a>发现计算机应用、角色和功能
 
 本文介绍如何使用 Azure Migrate：服务器评估来发现本地服务器上的应用程序、角色和功能。
 
-发现应用的清单，以及在本地计算机上运行的角色/功能，可帮助您识别和计划针对您的工作负荷定制的 Azure 迁移路径。 
+发现应用的清单，以及在本地计算机上运行的角色/功能，可帮助您识别和计划针对您的工作负荷定制的 Azure 迁移路径。
 
-使用 Azure Migrate 的应用程序发现：服务器评估是无代理的。 不需要在计算机和 Vm 上安装任何内容。 服务器评估使用 Azure Migrate 设备，同时使用计算机来宾凭据执行发现。 设备使用 WMI 和 SSH 调用远程访问计算机。 
+使用 Azure Migrate 的应用程序发现：服务器评估是无代理的。 不需要在计算机和 Vm 上安装任何内容。 服务器评估使用 Azure Migrate 设备，同时使用计算机来宾凭据执行发现。 设备使用 WMI 和 SSH 调用远程访问计算机。
 
 > [!NOTE]
 > 目前仅 VMware Vm 支持应用程序发现，仅限发现。 我们尚未提供基于应用的评估。  现在，服务器评估当前评估计算机级别的本地 VMware Vm、Hyper-v Vm 和物理服务器，以便进行直接迁移。
@@ -50,7 +47,7 @@ ms.locfileid: "73715786"
 
 ## <a name="review-and-export-the-inventory"></a>查看并导出清单
 
-发现完成后，如果为应用发现提供凭据，则可以查看和导出 Azure 门户中的应用清单。 
+发现完成后，如果为应用发现提供凭据，则可以查看和导出 Azure 门户中的应用清单。
 
 1. 在**Azure Migrate-服务器** > **Azure Migrate：服务器评估**中，单击显示的计数打开 "**发现的服务器**" 页。
 
