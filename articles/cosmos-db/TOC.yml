@@ -672,6 +672,8 @@
               href: mongodb-readpreference.md
             - name: 生存时间 - MongoDB
               href: mongodb-time-to-live.md
+            - name: 更改流
+              href: mongodb-change-streams.md
             - name: 管理数据索引编制
               href: mongodb-indexing.md
             - name: 存储和管理 Spring Data

@@ -1,18 +1,14 @@
 ---
 title: 备份 Azure 文件常见问题解答
 description: 本文介绍有关如何使用 Azure 备份服务保护 Azure 文件共享的常见问题解答。
-author: dcurwin
-ms.author: dacurwin
 ms.date: 07/29/2019
-ms.topic: tutorial
-ms.service: backup
-manager: carmonm
-ms.openlocfilehash: 9cb5d3ae02cb0d4a6e293207a736dced56ed8538
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: bf04458d859601de7ca0e9d07f6a3dbf506a51e6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747453"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173108"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有关如何备份 Azure 文件的问题
 
@@ -127,9 +123,9 @@ Azure 文件共享的备份提供了配置保留期最多为 180 天的策略的
 
 在文件共享上应用新策略时，将遵循新策略的计划和保留期。 如果延长保留期，则会对现有的恢复点进行标记，按新策略要求保留它们。 如果缩短保留期，则会将其标记为在下一清理作业中删除，然后就会将其删除。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
-本文的信息只是讲述如何备份 Azure 文件，若要详细了解 Azure 备份的其他领域，请选择性地参阅下面的其他备份常见问题解答：
+若要详细了解 Azure 备份的其他领域，请选择性地参阅下面的其他备份常见问题解答：
 
 - [恢复服务保管库常见问题解答](backup-azure-backup-faq.md)
 - [Azure VM 备份常见问题解答](backup-azure-vm-backup-faq.md)

@@ -714,7 +714,7 @@
             - name: 高级 MLlib 示例
               href: /azure/databricks/applications/machine-learning/mllib/advanced-mllib
               maintainContext: true
-        - name: 自动 ML
+        - name: 自动化 ML
           items:
             - name: 自动化 ML 概述
               href: /azure/databricks/applications/machine-learning/automl/index
@@ -1609,6 +1609,12 @@
               items:
                 - name: 支持的运行时版本
                   href: /azure/databricks/release-notes/runtime/supported
+                  maintainContext: true
+                - name: Databricks Runtime 6.2
+                  href: /azure/databricks/release-notes/runtime/6.2
+                  maintainContext: true
+                - name: Databricks Runtime 6.2 ML
+                  href: /azure/databricks/release-notes/runtime/6.2ml
                   maintainContext: true
                 - name: Databricks Runtime 6.1
                   href: /azure/databricks/release-notes/runtime/6.1

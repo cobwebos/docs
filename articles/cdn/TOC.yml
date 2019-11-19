@@ -1,8 +1,8 @@
-- name: CDN 文档
+- name: 内容分发网络文档
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是 Azure CDN？
+    - name: 什么是 Azure 内容分发网络 (Azure CDN)？
       href: cdn-overview.md
     - name: 比较产品功能
       href: cdn-features.md
@@ -18,7 +18,7 @@
   items:
     - name: 将 Azure CDN 添加到 Web 应用
       href: cdn-add-to-web-app.md
-    - name: 通过 HTTPS 使用自定义域访问 Blob
+    - name: 通过使用基于 HTTPS 的自定义域访问 Blob
       href: cdn-storage-custom-domain-https.md
     - name: 添加自定义域
       href: cdn-map-content-to-custom-domain.md
@@ -63,7 +63,7 @@
           href: cdn-create-endpoint-how-to.md
         - name: 使用 Azure PowerShell 进行管理
           href: cdn-manage-powershell.md
-        - name: 按国家/地区限制访问
+        - name: 按国家或地区限制访问
           href: cdn-restrict-access-by-country.md
         - name: 通过压缩文件来提高性能
           href: cdn-improve-performance.md
@@ -81,7 +81,7 @@
               href: cdn-purge-endpoint.md
             - name: 预加载缓存资产
               href: cdn-preload-endpoint.md
-        - name: 配置生存时间
+        - name: 配置生存时间 (TTL)
           items:
             - name: Azure Web 内容
               href: cdn-manage-expiration-of-cloud-service-content.md
@@ -89,13 +89,13 @@
               href: cdn-manage-expiration-of-blob-content.md
         - name: 令牌身份验证
           href: cdn-token-auth.md
-        - name: SAS 存储支持
+        - name: 共享访问签名存储支持
           href: cdn-sas-storage-support.md
         - name: 跨域资源共享
           href: cdn-cors.md
         - name: 监视资源
           href: cdn-resource-health.md
-        - name: 用规则覆盖行为
+        - name: 使用规则重写行为
           href: cdn-verizon-premium-rules-engine.md
         - name: 使用流量管理器
           href: cdn-traffic-manager.md
@@ -110,7 +110,7 @@
               href: cdn-analyze-usage-patterns.md
             - name: Verizon 中的自定义报表
               href: cdn-verizon-custom-reports.md
-        - name: Verizon 提供的适用于 Azure CDN 高级版的分析工具
+        - name: Verizon 中的高级 Azure CDN 分析工具
           items:
             - name: 生成高级 HTTP 报告
               href: cdn-advanced-http-reports.md
@@ -136,7 +136,7 @@
           href: cdn-troubleshoot-allowed-ca.md
 - name: 引用
   items:
-    - name: Microsoft 标准规则引擎参考
+    - name: 标准规则引擎参考
       href: cdn-standard-rules-engine-reference.md
       items:
         - name: 标准规则引擎匹配条件
@@ -177,7 +177,7 @@
           href: cdn-pop-locations.md
         - name: 按缩写列出的 POP 位置
           href: cdn-pop-abbreviations.md
-    - name: 了解 Azure CDN 计费
+    - name: Azure 内容分发网络计费
       href: cdn-billing.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'

@@ -27,6 +27,8 @@
           href: custom-event-quickstart-powershell.md
         - name: 门户
           href: custom-event-quickstart-portal.md
+    - name: 作为事件处理程序的 Azure Functions
+      href: custom-event-to-function.md
     - name: 充当事件处理程序的队列存储
       href: custom-event-to-queue-storage.md
     - name: 充当事件处理程序的事件中心
@@ -111,6 +113,8 @@
       href: post-to-custom-topic.md
     - name: 在 HTTP 终结点接收事件
       href: receive-events.md
+    - name: 通过 AAD 保护 WebHook
+      href: secure-webhook-delivery.md
     - name: 死信与重试
       href: manage-event-delivery.md
     - name: 筛选事件

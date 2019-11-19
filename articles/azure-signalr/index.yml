@@ -3,8 +3,8 @@ documentType: LandingData
 title: Azure SignalR 服务文档
 metadata:
   document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275f
-  title: Azure SignalR 服务文档 - 教程和 API 参考
-  meta.description: Azure SignalR Service is an Azure managed service that helps developers easily build web applications with real-time features. This service is based on ASP.NET Core SignalR which is an open source library that simplifies adding real-time web functionality to applications.
+  title: 文档 - Azure SignalR 服务
+  description: 在无服务器模式或服务器模式下轻松构建和缩放实时 Web 应用。 基于支持各种语言和框架的 WebSocket。
   services: azure-signalr
   author: v-chmccl
   manager: wesmc

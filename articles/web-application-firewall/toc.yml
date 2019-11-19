@@ -62,6 +62,8 @@
               href: ./ag/tutorial-restrict-web-traffic-powershell.md
             - name: Azure CLI
               href: ./ag/tutorial-restrict-web-traffic-cli.md
+        - name: 迁移 WAF 策略
+          href: ./ag/migrate-policy.md
         - name: 自定义 WAF 规则
           items:
             - name: Azure 门户

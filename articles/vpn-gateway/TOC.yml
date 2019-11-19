@@ -133,11 +133,13 @@
             - name: 创建和安装 VPN 客户端配置文件
               href: point-to-site-vpn-client-configuration-radius.md
             - name: 将 P2S VPN RADIUS 身份验证与 NPS 服务器集成
-              href: vpn-gateway-radiuis-mfa-nsp.md
+              href: vpn-gateway-radius-mfa-nsp.md
         - name: Azure AD 身份验证
           items:
             - name: 配置租户
               href: openvpn-azure-ad-tenant.md
+            - name: 配置多重身份验证 (MFA)
+              href: openvpn-azure-ad-mfa.md
             - name: 配置 VPN 客户端
               href: openvpn-azure-ad-client.md
         - name: OpenVPN
