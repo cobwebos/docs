@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 11/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1411d64a6adc6f340b3ad49ca38ca30136bdef47
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 984fd0c7946a50922315269c87e08b1c35b74348
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104554"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074757"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>教程：Azure Active Directory 单一登录 (SSO) 与 F5 的集成
 
@@ -248,13 +248,20 @@ ms.locfileid: "71104554"
 
 * **步骤 1：创建委托帐户**
 
-    * 示例域名：superdemo.live，Sam 帐户名：big-ipuser
+    * 示例
+    ```
+    Domain Name : superdemo.live
+    Sam Account Name : big-ipuser
 
-    * New-ADUser -Name "APM Delegation Account" -UserPrincipalName host/big-ipuser.superdemo.live@superdemo.live -SamAccountName "big-ipuser" -PasswordNeverExpires $true -Enabled $true -AccountPassword (Read-Host -AsSecureString "Password!1234")
+    New-ADUser -Name "APM Delegation Account" -UserPrincipalName host/big-ipuser.superdemo.live@superdemo.live -SamAccountName "big-ipuser" -PasswordNeverExpires $true -Enabled $true -AccountPassword (Read-Host -AsSecureString "Password!1234")
+    ```
 
 * **步骤 2：设置 SPN（在 APM 委托帐户中）**
 
-    *  Example setspn –A host/big-ipuser.superdemo.live big-ipuser
+    *  示例
+    ```
+    setspn –A host/big-ipuser.superdemo.live big-ipuser
+    ```
 
 * **步骤 3：SPN 委托（针对应用服务帐户）**
 
@@ -276,38 +283,38 @@ ms.locfileid: "71104554"
 
 | | |
 | -- | -- |
-| eb46b6b6.session.saml.last.assertionID | _9a4e4ddd-148f-45c4-b959-f4d148172e00 |
-| eb46b6b6.session.saml.last.assertionIssueInstant  | 2019-06-16T19:18:03.054Z |
+| eb46b6b6.session.saml.last.assertionID | `<TENANT ID>` |
+| eb46b6b6.session.saml.last.assertionIssueInstant  | `<ID>` |
 | eb46b6b6.session.saml.last.assertionIssuer | `https://sts.windows.net/<TENANT ID>`/ |
 | eb46b6b6.session.saml.last.attr.name.http:\//schemas.microsoft.com/claims/authnmethodsreferences | `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password` |
 | eb46b6b6.session.saml.last.attr.name.http:\//schemas.microsoft.com/identity/claims/displayname | user0 |
 | eb46b6b6.session.saml.last.attr.name.http:\//schemas.microsoft.com/identity/claims/identityprovider | `https://sts.windows.net/<TENANT ID>/` |
-| eb46b6b6.session.saml.last.attr.name.http:\//schemas.microsoft.com/identity/claims/objectidentifier | 90d5f0e5-8f46-4bfd-b40f-ec973d00fcb7 |
-| eb46b6b6.session.saml.last.attr.name.http:\//schemas.microsoft.com/identity/claims/tenantid | e6abffcf-4d23-4388-91c2-bfdfcbb1530c |
-| eb46b6b6.session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress | user0@superdemo.live |
+| eb46b6b6.session.saml.last.attr.name.http:\//schemas.microsoft.com/identity/claims/objectidentifier | `<TENANT ID>` |
+| eb46b6b6.session.saml.last.attr.name.http:\//schemas.microsoft.com/identity/claims/tenantid | `<TENANT ID>` |
+| eb46b6b6.session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress | `user0@superdemo.live` |
 | eb46b6b6.session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname | user0 |
-| eb46b6b6.session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/name | user0@superdemo.live |
+| eb46b6b6.session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/name | `user0@superdemo.live` |
 | eb46b6b6.session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/surname | 0 |
 | eb46b6b6.session.saml.last.audience | `https://kerbapp.superdemo.live` |
 | eb46b6b6.session.saml.last.authNContextClassRef | urn:oasis:names:tc:SAML:2.0:ac:classes:Password |
-| eb46b6b6.session.saml.last.authNInstant | 2019-06-16T19:18:00.318Z |
-| eb46b6b6.session.saml.last.identity | user0@superdemo.live |
-| eb46b6b6.session.saml.last.inResponseTo | _b9c67faa63a224d7a63f4f3cbb09f78dc05fab |
-| eb46b6b6.session.saml.last.nameIDValue | user0@superdemo.live |
+| eb46b6b6.session.saml.last.authNInstant | `<ID>` |
+| eb46b6b6.session.saml.last.identity | `user0@superdemo.live` |
+| eb46b6b6.session.saml.last.inResponseTo | `<TENANT ID>` |
+| eb46b6b6.session.saml.last.nameIDValue | `user0@superdemo.live` |
 | eb46b6b6.session.saml.last.nameIdFormat | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress |
 | eb46b6b6.session.saml.last.responseDestination | `https://kerbapp.superdemo.live/saml/sp/profile/post/acs` |
-| eb46b6b6.session.saml.last.responseId | _a1eca95a-6c41-449e-bb53-1477ba106470 |
-| eb46b6b6.session.saml.last.responseIssueInstant | 2019-06-16T19:18:03.070Z |
+| eb46b6b6.session.saml.last.responseId | `<TENANT ID>` |
+| eb46b6b6.session.saml.last.responseIssueInstant | `<ID>` |
 | eb46b6b6.session.saml.last.responseIssuer | `https://sts.windows.net/<TENANT ID>/` |
 | eb46b6b6.session.saml.last.result | 1 |
 | eb46b6b6.session.saml.last.samlVersion | 2.0 |
-| eb46b6b6.session.saml.last.sessionIndex | _9a4e4ddd-148f-45c4-b959-f4d148172e00 |
+| eb46b6b6.session.saml.last.sessionIndex | `<TENANT ID>` |
 | eb46b6b6.session.saml.last.statusValue | urn:oasis:names:tc:SAML:2.0:status:Success |
-| eb46b6b6.session.saml.last.subjectConfirmDataNotOnOrAfter | 2019-06-16T19:23:03.054Z |
+| eb46b6b6.session.saml.last.subjectConfirmDataNotOnOrAfter | `<ID>` |
 | eb46b6b6.session.saml.last.subjectConfirmDataRecipient | `https://kerbapp.superdemo.live/saml/sp/profile/post/acs` |
 | eb46b6b6.session.saml.last.subjectConfirmMethod | urn:oasis:names:tc:SAML:2.0:cm:bearer |
-| eb46b6b6.session.saml.last.validityNotBefore | 2019-06-16T19:13:03.054Z |
-| eb46b6b6.session.saml.last.validityNotOnOrAfter | 2019-06-16T20:13:03.054Z |
+| eb46b6b6.session.saml.last.validityNotBefore | `<ID>` |
+| eb46b6b6.session.saml.last.validityNotOnOrAfter | `<ID>` |
 
 ### <a name="create-f5-test-user"></a>创建 F5 测试用户
 
