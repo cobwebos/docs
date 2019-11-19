@@ -3326,8 +3326,8 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 
 | 方案 | 链接服务定义中的主机 | 数据集定义中的 folderPath |
 | --- | --- | --- |
-| 数据管理网关计算机上的本地文件夹： <br/><br/>示例：D:\\\* 或 D:\folder\subfolder\\* |D:\\\\（适用于数据管理网关 2.0 以及更高版本） <br/><br/> localhost（适用于数据管理网关 2.0 之前的版本） |.\\\\ 或 folder\\\\subfolder（适用于数据管理网关 2.0 以及更高版本） <br/><br/>D:\\\\ 或 D:\\\\folder\\\\subfolder（适用于低于 2.0 的网关版本） |
-| 远程共享文件夹： <br/><br/>示例：\\\\myserver\\share\\\* 或 \\\\myserver\\share\\folder\\subfolder\\* |\\\\\\\\myserver\\\\share |.\\\\ 或 folder\\\\subfolder |
+| 数据管理网关计算机上的本地文件夹： <br/><br/>示例：D:\\\* 或 D:\folder\subfolder\\\* |D:\\\\（适用于数据管理网关 2.0 以及更高版本） <br/><br/> localhost（适用于数据管理网关 2.0 之前的版本） |.\\\\ 或 folder\\\\subfolder（适用于数据管理网关 2.0 以及更高版本） <br/><br/>D:\\\\ 或 D:\\\\folder\\\\subfolder（适用于低于 2.0 的网关版本） |
+| 远程共享文件夹： <br/><br/>示例：\\\\myserver\\share\\\* 或 \\\\myserver\\share\\folder\\subfolder\\\* |\\\\\\\\myserver\\\\share |.\\\\ 或 folder\\\\subfolder |
 
 
 #### <a name="example-using-username-and-password-in-plain-text"></a>示例：使用纯文本格式的用户名和密码

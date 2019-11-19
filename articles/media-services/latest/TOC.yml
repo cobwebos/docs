@@ -164,7 +164,7 @@
       items:
         - name: 概述
           href: media-services-apis-overview.md
-          displayName: 'accessing, long-running, invalid character, name, naming, file name'
+          displayName: 'accessing, long-running, sdk, invalid character, name, naming, file name'
         - name: 对实体进行分页、筛选、排序
           href: entities-overview.md
         - name: RBAC

@@ -392,7 +392,7 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 
 ## <a name="manage-your-azure-app"></a>管理 Azure 应用
 
-转到 [Azure 门户](https://portal.azure.com)管理 Web 应用。 搜索并选择“应用服务”** **。 
+转到 [Azure 门户](https://portal.azure.com)管理 Web 应用。 搜索并选择“应用服务”。  
 
 ![搜索 Azure 应用服务](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-portal-navigate-app-services.png)
 

@@ -1,24 +1,24 @@
 ---
 title: 如何将 Azure SignalR 服务事件发送到事件网格
-description: 本指南介绍如何为 SignalR 服务启用事件网格事件, 然后将客户端连接连接/断开连接的事件发送到示例应用程序。
+description: 本指南介绍如何为 SignalR 服务启用事件网格事件，然后将客户端连接连接/断开连接的事件发送到示例应用程序。
 services: signalr
 author: chenyl
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 11/13/2019
 ms.author: chenyl
-ms.openlocfilehash: 100c7120889f88c1bab3418822835e8d4ece9826
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f89fcdd50d958269b5c79c41ebabd69331c905aa
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839295"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158214"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>如何将事件从 Azure SignalR Service 发送到事件网格
 
-Azure 事件网格是一种完全托管的事件路由服务, 它使用 pub 子模型提供统一的事件消耗。 在本指南中, 将使用 Azure CLI 创建 Azure SignalR 服务、订阅连接事件, 并部署一个示例 web 应用程序来接收事件。 最后, 你可以连接和断开连接, 并在示例应用程序中查看事件负载。
+Azure 事件网格是一种完全托管的事件路由服务，它使用 pub 子模型提供统一的事件消耗。 在本指南中，将使用 Azure CLI 创建 Azure SignalR 服务、订阅连接事件，并部署一个示例 web 应用程序来接收事件。 最后，你可以连接和断开连接，并在示例应用程序中查看事件负载。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][azure-account]。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户][azure-account]。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -36,14 +36,14 @@ az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 ## <a name="create-a-signalr-service"></a>创建 SignalR 服务
 
-接下来, 使用以下命令将 Azure Signalr 服务部署到资源组。
+接下来，使用以下命令将 Azure Signalr 服务部署到资源组。
 ```azurecli-interactive
 SIGNALR_NAME=SignalRTestSvc
 
 az signalr create --resource-group $RESOURCE_GROUP_NAME --name $SIGNALR_NAME --sku Free_F1
 ```
 
-创建 SignalR 服务后, Azure CLI 将返回类似于下面的输出:
+创建 SignalR 服务后，Azure CLI 将返回类似于下面的输出：
 
 ```json
 {
@@ -86,7 +86,7 @@ az group deployment create \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
 ```
 
-部署成功后 (可能需要几分钟的时间), 打开浏览器并导航到 web 应用, 确保其正在运行:
+部署成功后（可能需要几分钟的时间），打开浏览器并导航到 web 应用，确保其正在运行：
 
 `http://<your-site-name>.azurewebsites.net`
 
@@ -94,7 +94,7 @@ az group deployment create \
 
 ## <a name="subscribe-to-registry-events"></a>订阅注册表事件
 
-在事件网格中订阅一个主题，以告知你要跟踪哪些事件，以及要将事件发送到何处。 以下[az eventgrid event-subscription create][az-eventgrid-event-subscription-create]命令订阅你创建的 Azure SignalR 服务, 并将你的 web 应用的 URL 指定为它应将事件发送到的终结点。 此处可以重复使用在前面几个部分填充的环境变量，因此无需进行编辑。
+在事件网格中订阅一个主题，以告知你要跟踪哪些事件，以及要将事件发送到何处。 以下[az eventgrid event-订阅 create][az-eventgrid-event-subscription-create]命令订阅你创建的 Azure SignalR 服务，并将你的 web 应用的 URL 指定为它应将事件发送到的终结点。 此处可以重复使用在前面几个部分填充的环境变量，因此无需进行编辑。
 
 ```azurecli-interactive
 SIGNALR_SERVICE_ID=$(az signalr show --resource-group $RESOURCE_GROUP_NAME --name $SIGNALR_NAME --query id --output tsv)
@@ -141,7 +141,7 @@ az eventgrid event-subscription create \
 
 ## <a name="trigger-registry-events"></a>触发注册表事件
 
-切换到服务模式`Serverless Mode` , 并设置与 SignalR 服务的客户端连接。 您可以采用[无服务器示例](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless)作为参考。
+切换到服务模式以 `Serverless Mode` 并设置与 SignalR 服务建立的客户端连接。 您可以采用[无服务器示例](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless)作为参考。
 
 ```bash
 git clone git@github.com:aspnet/AzureSignalR-samples.git
@@ -162,7 +162,7 @@ dotnet run
 
 ## <a name="view-registry-events"></a>查看注册表事件
 
-现已将客户端连接到 SignalR 服务。 导航到事件网格查看器 web 应用, 应会看到一个`ClientConnectionConnected`事件。 如果终止该客户端, 则还会看到一个`ClientConnectionDisconnected`事件。
+现已将客户端连接到 SignalR 服务。 导航到事件网格查看器 web 应用，应会看到 `ClientConnectionConnected` 事件。 如果终止该客户端，则还会看到 `ClientConnectionDisconnected` 事件。
 
 <!-- LINKS - External -->
 [azure-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F

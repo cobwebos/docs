@@ -234,7 +234,7 @@ ms.locfileid: "73683479"
 ### <a name="create-azure-sql-database-linked-service"></a>创建 Azure SQL 数据库链接服务
 在此步骤中，将 Azure SQL 数据库链接到数据工厂。
 
-1. 在 **C:\ADFTutorials\IncCopyChangeTrackingTutorial** 文件夹中，创建包含以下内容的名为 **AzureSQLDatabaseLinkedService.json** 的 JSON 文件：将 **&lt;server&gt;、&lt;database name **、&lt;user id&gt; 和 &lt;password&gt;** 分别替换为自己的 Azure SQL Server 名称、数据库名称、用户 ID 和密码，然后保存文件。 
+1. 在 **C:\ADFTutorials\IncCopyChangeTrackingTutorial** 文件夹中，创建包含以下内容的名为 **AzureSQLDatabaseLinkedService.json** 的 JSON 文件：将 **&lt;server&gt;、&lt;database name&gt;、&lt;user id&gt; 和 &lt;password&gt;** 分别替换为自己的 Azure SQL Server 名称、数据库名称、用户 ID 和密码，然后保存文件。 
 
     ```json
     {

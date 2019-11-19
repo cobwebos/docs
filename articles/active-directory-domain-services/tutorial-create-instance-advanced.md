@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/18/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 2ed488f5f4380c44772d63d208e2c7a68934aca8
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7bafcb1508cdb01c4fe27a9d02db63c4f00efd74
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757643"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172559"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>教程：使用高级配置选项创建和配置 Azure Active Directory 域服务实例
 
@@ -88,7 +88,11 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 填写 Azure 门户的“基本信息”窗口中的字段，以创建 Azure AD DS 实例： 
 
 1. 输入托管域的 **DNS 域名**，并注意前面所述的问题。
-1. 选择应在其中创建托管域的 Azure“位置”  。
+1. 选择应在其中创建托管域的 Azure“位置”  。 如果选择支持可用性区域的区域，则 Azure AD DS 资源会跨区域分布以实现额外的冗余。
+
+    可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。
+
+    对于要跨区域分布 Azure AD DS，无需进行任何配置。 Azure 平台会自动处理资源的区域分配。 若要查看区域可用性的详细信息，请参阅[Azure 中的可用性区域是什么？][availability-zones]
 
     ![为 Azure AD 域服务实例配置基本设置](./media/tutorial-create-instance-advanced/basics-window.png)
 
@@ -167,7 +171,7 @@ Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围�
 
     ![成功预配后的域服务状态](./media/tutorial-create-instance-advanced/successfully-provisioned.png)
 
-在预配过程中，Azure AD DS 会在目录中创建名为 *Domain Controller Services* 和 *AzureActiveDirectoryDomainControllerServices* 的两个企业应用程序。 需要这些企业应用程序来为托管域提供服务。 无论何时，都不得删除这些应用程序。
+托管域与 Azure AD 租户相关联。 在预配过程中，Azure AD DS 会在 Azure AD 租户中创建名为 Domain Controller Services  和 AzureActiveDirectoryDomainControllerServices  的两个企业应用程序。 需要这些企业应用程序来为托管域提供服务。 不要删除这些应用程序。
 
 ## <a name="update-dns-settings-for-the-azure-virtual-network"></a>更新 Azure 虚拟网络的 DNS 设置
 
@@ -238,6 +242,7 @@ Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围�
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+[availability-zones]: ../availability-zones/az-overview.md
 
 <!-- EXTERNAL LINKS -->
 [naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix
