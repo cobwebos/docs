@@ -173,6 +173,9 @@
           href: howto-add-prebuilt-models.md
         - name: 标记言语中的实体
           href: label-entity-example-utterance.md
+        - name: 添加描述符
+          displayName: 'synonym, interchange, phrase list, descriptor'
+          href: luis-how-to-add-features.md
         - name: 使用 REST API
           items:
             - name: 使用 Node.js 以编程方式构建应用
@@ -190,9 +193,6 @@
         - name: 使用仪表板
           displayName: 'dashboard, analytics, charts, data, unclear predictions, incorrect predictions, imbalance, endpoint hits, status, evaluation, accuracy, active version, problematic intents, nearest rival, usage'
           href: luis-how-to-use-dashboard.md
-        - name: 添加描述符
-          displayName: 'synonym, interchange, phrase list, descriptor'
-          href: luis-how-to-add-features.md
         - name: 查看终结点话语
           displayName: active learning
           href: luis-how-to-review-endpoint-utterances.md
