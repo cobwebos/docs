@@ -71,6 +71,9 @@
         - name: 控制映射
           displayName: 'standards, irs, 1075'
           href: ./samples/irs-1075/control-mapping.md
+        - name: 部署步骤
+          displayName: 'standards, irs, 1075'
+          href: ./samples/irs-1075/deploy.md
     - name: ISO 27001
       items:
         - name: 概述
