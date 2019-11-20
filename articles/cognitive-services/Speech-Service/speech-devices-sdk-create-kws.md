@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/18/2019
 ms.author: erhopf
-ms.openlocfilehash: bf9afb66163532b4095e0d30b1167010320abbf8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9a5b5de71ee290b39603968cf4309171689e22e4
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490943"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184830"
 ---
 # <a name="create-a-custom-keyword-by-using-the-speech-service"></a>使用语音服务创建自定义关键字
 
@@ -46,7 +46,7 @@ ms.locfileid: "73490943"
 
 ## <a name="create-your-keyword"></a>创建关键字
 
-在你的设备上使用自定义关键字之前，你需要使用 Microsoft 自定义关键字生成服务创建关键字。 提供关键字后，服务将生成一个文件，该文件将部署到开发工具包以在设备上启用关键字。
+在可以使用自定义关键字之前，需要使用[Speech Studio](https://aka.ms/sdsdk-speechportal)上的 "[自定义关键字](https://aka.ms/sdsdk-wakewordportal)" 页创建关键字。 提供关键字后，它会生成一个部署到设备上的文件。
 
 1. 转到[Speech Studio](https://aka.ms/sdsdk-speechportal)并**登录**，如果还没有语音订阅，请选择 "[**创建订阅**](https://go.microsoft.com/fwlink/?linkid=2086754)"。
 
@@ -62,7 +62,7 @@ ms.locfileid: "73490943"
 
     ![下载关键字](media/speech-devices-sdk/custom-kws-portal-download-keyword.png)
 
-1. 将 .zip 文件保存到计算机。 需要此文件将自定义关键字部署到开发工具包。
+1. 将 .zip 文件保存到计算机。 需要此文件将自定义关键字部署到设备。
 
 ## <a name="next-steps"></a>后续步骤
 

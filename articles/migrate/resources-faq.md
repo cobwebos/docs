@@ -1,23 +1,23 @@
 ---
 title: 有关 Azure Migrate 的常见问题
-description: 解决有关 Azure Migrate 的常见问题和常见问题
+description: 获取有关 Azure Migrate 服务的常见问题解答。
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 11/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 1663e1d418610bcfa2ada28770944bfc8cbf908f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a622a5793e817be2445e60d925354ab37bb8e331
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480069"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185780"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate：常见问题
 
 本文解答了有关 Azure Migrate 的常见问题。 阅读本文后，如果你有更多的查询，请将其发布到[Azure Migrate 论坛](https://aka.ms/AzureMigrateForum)。
 
-## <a name="general"></a>常规
+## <a name="general"></a>一般信息
 
 ### <a name="which-azure-geographies-are-supported"></a>支持哪些 Azure 区域？
 

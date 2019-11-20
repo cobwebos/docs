@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec7730dc1143586eb4c5c05fd475b8412546b7a6
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
-ms.translationtype: MT
+ms.openlocfilehash: f593d5ea621ad450eb82388416534e40df36e2d5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809251"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184191"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
@@ -69,7 +69,7 @@ ms.locfileid: "72809251"
 
 ---
 
-### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>问：我在 Azure 门户或使用 Windows PowerShell 中禁用或删除了我的设备。 但设备上的本地状态指出它仍处于注册状态。 我应该怎么做？
+### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>问：我在 Azure 门户或使用 Windows PowerShell 中禁用或删除了我的设备。 但设备上的本地状态指出它仍处于注册状态。 我该怎么办？
 
 **答：** 此操作是由设计决定的。 在这种情况下，设备无法访问云中的资源。 管理员可以对过时的、丢失或被盗的设备执行此操作，以防止未经授权的访问。 如果无意中执行了此操作，则需要重新启用或重新注册设备，如下所述
 
@@ -82,14 +82,14 @@ ms.locfileid: "72809251"
       若要重新注册混合 Azure AD 连接的 Windows 10 和 Windows Server 2016/2019 设备，请执行以下步骤：
 
       1. 以管理员身份打开命令提示符。
-      1. 输入 `dsregcmd.exe /debug /leave` 。
+      1. 输入 `dsregcmd.exe /debug /leave`。
       1. 注销并再次登录，以触发可以将设备注册到 Azure AD 的计划任务。 
 
       对于已加入混合 Azure AD 的下层 Windows OS 版本，请执行以下步骤：
 
       1. 以管理员身份打开命令提示符。
-      1. 输入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"` 。
-      1. 输入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"` 。
+      1. 输入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`。
+      1. 输入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`。
 
       对于已加入 Azure AD Windows 10 设备的设备，请执行以下步骤：
 
@@ -108,7 +108,7 @@ ms.locfileid: "72809251"
 
 ### <a name="q-why-do-i-see-duplicate-device-entries-in-the-azure-portal"></a>问：为什么在 Azure 门户中看不到重复的设备条目？
 
-**答:**
+**答：**
 
 - 对于 Windows 10 和 Windows Server 2016，如果反复尝试分离再重新加入同一个设备，则可能会出现重复条目。 
 - 使用“添加工作或学校帐户”的每个 Windows 用户将创建具有相同设备名称的新设备记录。
@@ -119,7 +119,7 @@ ms.locfileid: "72809251"
 
 ### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>问：在 FIPS 模式下 Azure AD 中的 Windows 10 设备注册是否支持 Tpm？
 
-**答：** 否，当前设备在 Windows 10 上注册用于所有设备状态-混合 Azure AD 联接、Azure AD 联接和注册 Azure AD，它们在 FIPS 模式下不支持 Tpm。 若要成功加入或注册到 Azure AD，需要为这些设备上的 Tpm 关闭 FIPS 模式
+**答：** Windows 10 设备注册仅支持符合 FIPS 标准的 TPM 2.0，不支持 TPM 1.2。 如果设备具有符合 FIPS 标准的 TPM 1.2，则必须先将其禁用，然后才能继续 Azure AD 联接或混合 Azure AD 加入。 请注意，Microsoft 不提供任何工具来为 Tpm 禁用 FIPS 模式，因为它依赖于 TPM 制造商。 请联系你的硬件 OEM 以获得支持。 
 
 ---
 
@@ -154,7 +154,7 @@ ms.locfileid: "72809251"
 
 ### <a name="q-can-my-users-sign-in-to-azure-ad-joined-devices-that-are-deleted-or-disabled-in-azure-ad"></a>问：我的用户是否可以登录到 Azure AD 中删除或禁用的 Azure AD 联接设备？
 
-**答：** 是。 Windows 具有缓存用户名和密码功能，该功能允许先前登录的用户即使没有网络连接也能快速访问桌面。 
+**答：** 可以。 Windows 具有缓存用户名和密码功能，该功能允许先前登录的用户即使没有网络连接也能快速访问桌面。 
 
 设备在 Azure AD 中已删除或禁用时，Windows 设备不会知道此情况。 因此，先前登录的用户继续使用缓存的用户名和密码访问桌面。 但在删除或禁用设备后，用户将无法访问受基于设备的条件访问保护的任何资源。 
 
@@ -285,7 +285,7 @@ ms.locfileid: "72809251"
 
 ### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>问：如何实现删除设备在本地 Azure AD 注册状态吗？
 
-**答:** 
+**答：** 
 - 对于 Windows 10 Azure AD 注册的设备，请**访问 > 访问工作或学校** > **帐户**的**设置**。 选择帐户，然后选择“断开连接”。 设备注册为 Windows 10 上的每个用户配置文件。
 - 对于 iOS 和 Android，你可以使用 "Microsoft Authenticator 应用程序**设置** > **设备注册**"，然后选择 "**注销设备**"。
 - 对于 macOS，可以使用 Microsoft Intune 公司门户应用程序从管理中取消注册设备，并删除任何注册。 

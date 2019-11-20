@@ -7,18 +7,19 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: alzam
-ms.openlocfilehash: 3f407ecfcbfdff72b79bfe6b5bc3e6b7606b1cf0
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1b506f8439deabd110daaefab36442140e20d0d4
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174624"
+ms.locfileid: "74185355"
 ---
 # <a name="enable-multi-factor-authentication-mfa-for-vpn-users"></a>为 VPN 用户启用多重身份验证（MFA）
 
 可以为 Azure AD 租户中的用户启用 MFA，以便在授予访问权限之前提示用户进行第二因素身份验证。
 
-> [!先决条件] 已按照 "配置租户" 文档中所述配置了 Azure AD 租户。
+> [!NOTE]
+> 先决条件：已根据 "配置租户" 文档中所述配置了 Azure AD 租户。
 >
 
 ### <a name="tenant"></a>1. 登录到 Azure 门户，导航到**Azure Active Directory** ，**所有用户**，然后单击**多重身份验证**

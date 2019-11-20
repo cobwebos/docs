@@ -1,25 +1,23 @@
 ---
-title: 用于物理服务器评估和迁移的 Azure Migrate 支持矩阵
-description: 概述使用 Azure Migrate 服务进行物理服务器评估和迁移的设置和限制。
+title: 支持 Azure Migrate 的物理服务器评估/迁移
+description: 汇总了对 Azure Migrate 的物理服务器评估/迁移的支持。
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 55ada93e6a77dd7e31640988bad95034f77c90dd
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: b5b5da6282b1df6c70fd58dcf8c417250de81b73
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091895"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196340"
 ---
 # <a name="support-matrix-for-physical-server-assessment-and-migration"></a>用于物理服务器评估和迁移的支持矩阵
 
 你可以使用[Azure Migrate 服务](migrate-overview.md)来评估计算机并将其迁移到 Microsoft Azure 云。 本文总结了用于评估和迁移本地物理服务器的支持设置和限制。
 
-> [!NOTE]
-> 如果此处提到的功能在 Azure Migrate 门户中尚未显示，请稍候。 它们将在下周显示。
 
 
 ## <a name="physical-server-scenarios"></a>物理服务器方案

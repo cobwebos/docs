@@ -1,6 +1,6 @@
 ---
 title: 自动异地冗余备份
-description: SQL 数据库每隔几分钟会自动创建一个本地数据库备份，使用 Azure 读取访问异地冗余存储来提供异地冗余。
+description: SQL 数据库每隔几分钟会自动创建一个本地数据库备份，并使用 Azure 读取访问异地冗余存储来提供异地冗余。
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: 114a5bbfd71fc0847c2b1bc65a8ba0bfa0df1add
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1cdd8fdac03c25bf28db94867891fef4c2846fcd
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821947"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196557"
 ---
 # <a name="automated-backups"></a>自动备份
 
@@ -46,7 +46,7 @@ SQL 数据库使用 SQL Server 技术，每周创建[完整备份](https://docs.
 
 | | Azure 门户 | Azure PowerShell |
 |---|---|---|
-| 更改备份保留 | [单一数据库](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-azure-portal) <br/> [托管实例](sql-database-automated-backups.md#managed-instance-database) | [单一数据库](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[托管实例](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| 更改备份保留 | [单一数据库](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) <br/> [托管实例](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) | [单一数据库](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[托管实例](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | 更改长期备份保留 | [单个数据库](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>托管实例 - 不可用  | [单一数据库](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)<br/>托管实例 - 不可用  |
 | 从时间点还原数据库 | [单个数据库](sql-database-recovery-using-backups.md#point-in-time-restore) | [单个数据库](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [托管实例](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
 | 还原已删除的数据库 | [单个数据库](sql-database-recovery-using-backups.md) | [单个数据库](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [托管实例](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
@@ -84,6 +84,15 @@ PITR 备份异地冗余且受 [Azure 存储跨区域复制](../storage/common/st
 ## <a name="storage-costs"></a>存储成本
 对于单一数据库和托管实例，提供了等于100% 的数据库大小的最小备份存储量，无需额外付费。 对于弹性池，提供与 100% 该池已分配数据存储量相等的最小备份存储量，不收取额外的费用。 超出此部分的其他备份存储用量将以 GB 为单位每月进行收费。 此额外用量将取决于各个数据库的工作负荷和大小。
 
+你可以使用 Azure 订阅成本分析来确定你当前在备份存储上的支出。
+
+![备份存储成本分析](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
+
+如果你访问你的订阅并打开 "成本分析" 边栏选项卡，则可以选择 "计量子类别" **mi pitr 备份存储**来查看当前的备份成本和费用预测。 还可以包括其他计量子类别，如**托管实例常规用途存储**或**托管实例常规用途-存储**，将备份存储成本与其他成本类别进行比较。
+
+> [!Note]
+> 你可以[将保留期更改为7天](#change-pitr-backup-retention-period-using-azure-portal)，以降低备份存储的成本。
+
 有关存储价格的详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/sql-database/single/)页。 
 
 ## <a name="are-backups-encrypted"></a>备份是否已加密
@@ -114,21 +123,23 @@ Azure SQL 数据库工程团队持续不断地自动测试放置在逻辑服务�
 > [!NOTE]
 > 这些 API 将只影响 PITR 保留期。 如果为数据库配置了 LTR，它将不受影响。 有关如何更改 LTR 保持期的详细信息，请参阅[长期保留](sql-database-long-term-retention.md)。
 
-### <a name="change-pitr-backup-retention-period-using-azure-portal"></a>使用 Azure 门户更改 PITR 备份保持期
+### <a name="change-pitr-backup-retention-period-using-azure-portal"></a>使用 Azure 门户更改 PITR 备份保留期
 
 若要使用 Azure 门户更改 PITR 备份保留期，请导航到要在门户中更改其保留期的服务器对象，然后根据要修改的服务器对象选择适当的选项。
 
-#### <a name="single-azure-sql-database"></a>单个 Azure SQL 数据库
+#### <a name="single-database--elastic-poolstabsingle-database"></a>[单一数据库和弹性池](#tab/single-database)
 
-在服务器级别执行单个 Azure SQL 数据库的 PITR 备份保留。 在服务器级别所做的更改适用于该服务器上的数据库。 若要从 Azure 门户更改 Azure SQL 数据库服务器的 PITR，请导航到 "服务器概述" 边栏选项卡，在导航菜单上单击 "管理备份"，然后单击导航栏中的 "配置保留"。
+在服务器级别更改单个 Azure SQL 数据库的 PITR 备份保留期。 在服务器级别所做的更改适用于该服务器上的数据库。 若要从 Azure 门户更改 Azure SQL 数据库服务器的 PITR，请导航到“服务器概述”边栏选项卡，单击导航菜单上的“管理备份”，然后单击导航栏上的“配置保留期”。
 
 ![更改 PITR Azure 门户](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="managed-instance-database"></a>托管实例数据库
+#### <a name="managed-instancetabmanaged-instance"></a>[托管实例](#tab/managed-instance)
 
-SQL 数据库托管实例的 PITR 备份保留更改是在单个数据库级别执行的。 若要从 Azure 门户更改实例数据库的 PITR 备份保留，请导航到 "单个数据库概述" 边栏选项卡，然后在导航栏上单击 "配置备份保留"。
+在单个数据库级别更改 SQL 数据库托管实例的 PITR 备份保留期。 若要从 Azure 门户更改实例数据库的 PITR 备份保留期，请导航到单个数据库概述边栏选项卡，然后单击导航栏上的“配置备份保留期”。
 
 ![更改 PITR Azure 门户](./media/sql-database-automated-backup/configure-backup-retention-sqlmi.png)
+
+---
 
 ### <a name="change-pitr-backup-retention-period-using-powershell"></a>使用 PowerShell 更改 PITR 备份保留期
 

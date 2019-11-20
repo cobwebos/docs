@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: sagupt
-ms.openlocfilehash: 08af119e7f9e72de4a8ae4a1842289a4fd5d925e
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 82c77568a2c62a0e02bf00c164f4600e221376da
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144152"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183121"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
@@ -122,7 +122,7 @@ Azure 顾问将识别使用查询页面大小100的 Azure Cosmos DB 容器，并
 
 * [顾问简介](advisor-overview.md)
 * [顾问入门](advisor-get-started.md)
-* [顾问成本建议](advisor-performance-recommendations.md)
+* [顾问成本建议](advisor-cost-recommendations.md)
 * [顾问高可用性建议](advisor-high-availability-recommendations.md)
 * [顾问安全性建议](advisor-security-recommendations.md)
 * [顾问操作优秀建议](advisor-operational-excellence-recommendations.md)

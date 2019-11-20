@@ -6,15 +6,15 @@ keywords: 编码;编码器;媒体
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 10/10/2019
+ms.date: 11/18/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: aa5eae3e40b8578f826b1b275995bbb3d346e586
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 32ff975aa200e51e6a555f892a53b0ab9c73a84e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300944"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186035"
 ---
 # <a name="recommended-live-streaming-encoders"></a>建议的实时传送视频流编码器
 
@@ -25,7 +25,7 @@ ms.locfileid: "72300944"
   > [!NOTE]
   > 实时传送视频流时，使用直通方法是最经济的。
  
-* 本地实时编码器采用以下格式之一将单比特率流发送至能够使用媒体服务执行实时编码的直播活动：RTMP 或平滑流式处理（分片 MP4）。 然后，直播活动将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。
+* 本地实时编码器使用以下格式之一将单比特率流发送到使用媒体服务执行实时编码的实时事件： RTMP 或平滑流式处理（零碎的）。 然后，直播活动将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。
 
 若要详细了解如何使用媒体服务进行实时编码，请参阅[使用媒体服务 v3 的实时传送视频流](live-streaming-overview.md)。
 
@@ -37,7 +37,7 @@ ms.locfileid: "72300944"
 > 通过 RTMP 流式处理时，检查防火墙和/或代理设置，确认出站 TCP 端口 1935 和 1936 已打开。
 
 - Adobe Flash 媒体实时编码器 3.2
-- [Cambria Live 4。3](https://www.capellasystems.net/products/cambria-live/)
+- [Cambria Live 4.3](https://www.capellasystems.net/products/cambria-live/)
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
@@ -49,6 +49,9 @@ ms.locfileid: "72300944"
 - Tricaster Mini HD-4
 - VMIX
 - xStream
+- [Ffmpeg](https://www.ffmpeg.org)
+- [GoPro](https://gopro.com/help/articles/block/getting-started-with-live-streaming)英雄7和英雄8
+- [Restream.io](https://restream.io/)
 
 ## <a name="live-encoders-that-output-fragmented-mp4"></a>输出分片 MP4 的实时编码器
 
@@ -60,9 +63,11 @@ ms.locfileid: "72300944"
 - Envivio 4Caster C4 Gen III
 - Imagine Communications Selenio MCP3
 - Media Excel Hero Live 和 Hero 4K (UHD/HEVC)
+- [Ffmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
 >  如果要以多种语言（例如，一个英语音频轨道和一个西班牙语音频轨道）流式传输直播活动，则可以将 Media Excel 实时编码器配置为将实时源发送到直通直播活动，以实现此目的。
+
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>配置本地实时编码器设置
 
@@ -92,7 +97,7 @@ ms.locfileid: "72300944"
 4. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
 5. 创建新的**资产**对象。
 6. 创建**实时输出**并使用创建的资产名称。
-7. 使用内置的流式处理策略类型创建流式处理定位符。
+7. 使用内置的**流式处理策略**类型创建**流式处理定位符**。
 8. 列出流式处理定位器的路径，以取回要使用的 URL。
 9. 获取要从中流式传输的**流式处理终结点**的主机名。
 10. 将步骤 8 中的 URL 与步骤 9 中的主机名合并，获取完整的 URL。
@@ -111,7 +116,7 @@ ms.locfileid: "72300944"
 4. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
 5. 创建新的**资产**对象。
 6. 创建**实时输出**并使用创建的资产名称。
-7. 使用内置的流式处理策略类型创建流式处理定位符。
+7. 使用内置的**流式处理策略**类型创建**流式处理定位符**。
 8. 列出流式处理定位器的路径，以取回要使用的 URL。
 9. 获取要从中流式传输的**流式处理终结点**的主机名。
 10. 将步骤 8 中的 URL 与步骤 9 中的主机名合并，获取完整的 URL。

@@ -1,19 +1,18 @@
 ---
-title: VMware 评估和迁移 Azure Migrate 支持矩阵
-description: 汇总了使用 Azure Migrate 服务评估和迁移 VMware Vm 到 Azure 的支持设置和限制。
-services: backup
+title: Azure Migrate 中的 VMware 评估和迁移支持
+description: 了解 Azure Migrate 中对 VMware VM 评估/迁移的支持。
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 4b07252aed2205917f6b43e3e09a2877663e5bab
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 135680a9b0b6c8b5520958c884d99a83f1f87c88
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838917"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196273"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>用于 VMware 评估和迁移的支持矩阵
 
@@ -79,7 +78,13 @@ Azure Migrate：服务器评估可以发现应用、角色和功能。 发现您
 
 ## <a name="assessment-vcenter-server-permissions"></a>评估-vCenter Server 权限
 
-对于评估，需要 vCenter Server 的只读帐户。
+Azure Migrate 需访问 vCenter Server 来发现用于评估和无代理迁移的 VM。
+
+- 如果计划发现应用程序或以无代理方式可视化依赖项，请创建一个具有只读访问权限的 vCenter Server 帐户，以及为**虚拟机**启用 > **来宾操作**的特权。
+
+  ![vCenter Server 帐户权限](./media/tutorial-prepare-vmware/vcenter-server-permissions.png)
+
+- 如果未计划执行应用程序发现和无代理依赖项可视化，请为 vCenter Server 设置一个只读帐户。
 
 ## <a name="assessment-appliance-requirements"></a>评估-设备要求
 
@@ -111,7 +116,7 @@ dc.services.visualstudio.com | 上传用于内部监视的应用日志。
 *.vault.azure.net | 管理 Azure Key Vault 中的机密。
 *.servicebus.windows.net | 设备与 Azure Migrate 服务之间的通信。
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | 连接到 Azure Migrate 服务 Url。
-*.blob.core.windows.net | 将数据上传到存储帐户。
+\* .blob.core.windows.net | 将数据上传到存储帐户。
 https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | 用于 Azure Migrate 设备更新。
 
 ## <a name="assessment-port-requirements"></a>评估-端口要求
@@ -138,7 +143,7 @@ vCenter 服务器 | TCP 端口443上的入站连接，使设备能够收集配�
     - 此外，如果计算机未连接到 Internet，则需要在计算机上下载并安装 Log Analytics 网关。
 
 ## <a name="migration---limitations"></a>迁移-限制
-对于复制，最多可以选择10个 Vm。 如果要迁移更多计算机，请在10个组中进行复制。 对于 VMware 无代理迁移，可以同时运行多达100的复制。
+对于复制，最多可以选择10个 Vm。 如果要迁移更多计算机，请在10个组中进行复制。 对于 VMware 无代理迁移，最多可以同时运行 100 项复制。
 
 ## <a name="agentless-migration-vmware-server-requirements"></a>无代理迁移-VMware 服务器要求
 
@@ -168,7 +173,7 @@ VirtualMachine.SnapshotManagement.* | 允许创建和管理用于复制的 VM �
 **支持** | **详细信息**
 --- | ---
 **受支持的操作系统** | Azure 支持的[Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)操作系统可以使用无代理迁移进行迁移。
-**Azure 所需的更改** | 某些 Vm 可能需要更改才能在 Azure 中运行。 Azure Migrate 会自动对以下操作系统进行这些更改：<br/> -Red Hat Enterprise Linux 6.5 +、7.0 +<br/> -CentOS 6.5 +、7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8<br/><br/> 对于其他操作系统，需要在迁移之前手动进行调整。 相关文章包含有关如何执行此操作的说明。
+**Azure 所需的更改** | 某些 VM 可能需要经过更改才能在 Azure 中运行。 Azure Migrate 会自动对以下操作系统进行这些更改：<br/> -Red Hat Enterprise Linux 6.5 +、7.0 +<br/> -CentOS 6.5 +、7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8<br/><br/> 对于其他操作系统，需要在迁移之前手动进行调整。 相关文章包含有关如何执行此操作的说明。
 **Linux 启动** | 如果/boot 位于专用分区上，则它应驻留在 OS 磁盘上，而不会分布在多个磁盘上。<br/> 如果/boot 是根（/）分区的一部分，则 "/" 分区应在 OS 磁盘上，而不是在其他磁盘上。
 **UEFI 启动** | 迁移不支持具有 UEFI 引导的 Vm。
 **磁盘大小** | 2 TB 操作系统磁盘;对于数据磁盘为 4 TB。
@@ -214,7 +219,7 @@ dc.services.visualstudio.com | 上传用于内部监视的应用日志。
 *.vault.azure.net | 管理 Azure Key Vault 中的机密。
 *.servicebus.windows.net | 设备与 Azure Migrate 服务之间的通信。
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | 连接到 Azure Migrate 服务 Url。
-*.blob.core.windows.net | 将数据上传到存储帐户。
+\* .blob.core.windows.net | 将数据上传到存储帐户。
 https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | 用于 Azure Migrate 设备更新。
 
 
@@ -289,7 +294,7 @@ https:\//management.azure.com | 用于复制管理操作和协调
 *.services.visualstudio.com | 用于遥测数据（可选）
 time.nist.gov | 用于检查系统时间与全球时间之间的时间同步。
 time.windows.com | 用于检查系统时间与全球时间之间的时间同步。
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https：\//login.live.com <br/> https：\//graph.windows.net <br/> https:\//login.windows.net <br/> https：\//www.live.com <br/> https：\//www.microsoft.com  | OVF 安装程序需要对这些 Url 的访问权限。 它们由 Azure Active Directory 用于访问控制和标识管理
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | OVF 安装程序需要对这些 Url 的访问权限。 它们由 Azure Active Directory 用于访问控制和标识管理
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成 MySQL 下载
 
 
@@ -324,7 +329,7 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 **独立磁盘** | 。
 **传递磁盘** | 。
 **NFS** | 不会复制装载为 Vm 上的卷的 NFS 卷。
-iSCSI 目标 | 具有 iSCSI 目标的 Vm 不支持无代理迁移。
+**iSCSI 目标** | 具有 iSCSI 目标的 Vm 不支持无代理迁移。
 **多路径 IO** | 不支持。
 **存储 vMotion** | 支持
 **成组 Nic** | 不支持。
@@ -350,7 +355,7 @@ dc.services.visualstudio.com | 上传用于内部监视的应用日志。
 *.vault.azure.net | 管理 Azure Key Vault 中的机密。
 *.servicebus.windows.net | 设备与 Azure Migrate 服务之间的通信。
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | 连接到 Azure Migrate 服务 Url。
-*.blob.core.windows.net | 将数据上传到存储帐户。
+\* .blob.core.windows.net | 将数据上传到存储帐户。
 
 ## <a name="agent-based-migration-port-requirements"></a>基于代理的迁移-端口要求
 
@@ -369,7 +374,7 @@ VM | Vm 上运行的移动服务与用于复制管理的端口 HTTPS 443 入站�
 来宾操作系统 | 使用[无代理复制](#agentless-migration-vmware-vm-requirements)为 vmware vm 和[使用基于代理的复制的 vmware vm](#agent-based-migration-vmware-vm-requirements)验证支持的操作系统。<br/> 你可以迁移在受支持的操作系统上运行的任何工作负荷。 | 如果不支持，检查会失败。
 来宾操作系统体系结构 | 64 位。 | 如果不支持，检查会失败。
 操作系统磁盘大小 | 最大 2,048 GB。 | 如果不支持，检查会失败。
-操作系统磁盘计数 | 1 | 如果不支持，检查会失败。
+操作系统磁盘计数 | 1 个 | 如果不支持，检查会失败。
 数据磁盘计数 | 64 或更少。 | 如果不支持，检查会失败。
 数据磁盘大小 | 最大 4,095 GB | 如果不支持，检查会失败。
 网络适配器 | 支持多个适配器。 |

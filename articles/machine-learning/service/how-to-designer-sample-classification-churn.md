@@ -1,7 +1,7 @@
 ---
-title: 设计器：分类、预测改动
+title: 设计器：预测改动示例
 titleSuffix: Azure Machine Learning
-description: 此设计器（预览）示例管道显示了更改的二元分类器预测，这是客户关系管理（CRM）的常见任务。
+description: 按照此分类示例预测 Azure 机器学习设计器 & 提升决策树的变动。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: a09060e16b877df4412b785edbb60930cb4122bc
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 5cf61d3446f960b65eb85538be9ea020671cced2
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647176"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196039"
 ---
-# <a name="sample-5---classification-predict-churn"></a>示例 5-分类：预测改动
+# <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>使用提升决策树预测 Azure 机器学习设计器的变动
+
+**设计器（预览）示例5**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 了解如何在不编写代码的情况下使用设计器（预览）生成复杂的机器学习管道。

@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 12/26/2018
+ms.date: 11/18/2019
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 3955b84df401e5832668fa091274caea9af2466e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: be3fd42f33fd66fe2bf5a773eafafba5d6982706
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876612"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184781"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>将 Node.js Mongoose 应用程序连接到 Azure Cosmos DB
 
@@ -61,21 +61,25 @@ Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可�
 
 1. 导入 index.js 文件中的依赖项。
     ```JavaScript
-    var mongoose = require('mongoose');
-    var env = require('dotenv').load();    //Use the .env file to load the variables
+   var mongoose = require('mongoose');
+   var env = require('dotenv').config();   //Use the .env file to load the variables
     ```
 
-1. 将 Cosmos DB 连接字符串和 Cosmos DB 名称添加到 ```.env``` 文件。 将占位符 {cosmos} 和 {dbname} 替换为你自己的 Cosmos 帐户名称和数据库名称, 而不包含大括号符号。
+1. 将 Cosmos DB 连接字符串和 Cosmos DB 名称添加到 ```.env``` 文件。 将占位符 {cosmos-account-name} 和 {dbname} 替换为你自己的 Cosmos 帐户名称和数据库名称，不要带大括号符号。
 
     ```JavaScript
-    COSMOSDB_CONNSTR=mongodb://{cosmos-account-name}.documents.azure.com:10255/{dbname}
-    COSMODDB_USER=cosmos-account-name
-    COSMOSDB_PASSWORD=cosmos-secret
+   # You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
+
+   COSMODDB_USER = "<Azure Cosmos account's user name>"
+   COSMOSDB_PASSWORD = "<Azure Cosmos account passowrd>"
+   COSMOSDB_DBNAME = "<Azure Cosmos database name>"
+   COSMOSDB_HOST= "<Azure Cosmos Host name>"
+   COSMOSDB_PORT=10255
     ```
 
 1. 将以下代码添加到 index.js 末尾，以使用 Mongoose 框架连接到 Cosmos DB。
     ```JavaScript
-    mongoose.connect(process.env.COSMOSDB_CONNSTR+"?ssl=true&replicaSet=globaldb", {
+   mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB_PORT+"/"+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb", {
       auth: {
         user: process.env.COSMODDB_USER,
         password: process.env.COSMOSDB_PASSWORD
@@ -308,8 +312,8 @@ Mongoose 还存在称作[鉴别器](https://mongoosejs.com/docs/discriminators.h
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何将 [Studio 3T](mongodb-mongochef.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
-- 了解如何将 [Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
+- 了解如何配合[使用 Studio 3T](mongodb-mongochef.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API。
+- 了解如何配合[使用 Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API。
 - 使用 Azure Cosmos DB 的用于 MongoDB 的 API 浏览 MongoDB [示例](mongodb-samples.md)。
 
 [alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png

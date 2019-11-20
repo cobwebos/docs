@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/03/2019
+ms.date: 11/18/2019
 ms.author: atsenthi
-ms.openlocfilehash: cc77995e12d756c5878ee62ef6dd0f0229506d4c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 1eb8e5893d93ef0261d68df4629b072876096711
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333074"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185675"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上准备开发环境
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "72333074"
 
 若要在 Windows 开发计算机上生成并运行[Azure Service Fabric 应用程序][1]，请安装 Service Fabric 运行时、SDK 和工具。 此外，还需要启用 SDK 中包含的 [Windows PowerShell 脚本执行](#enable-powershell-script-execution)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 ### <a name="supported-operating-system-versions"></a>支持的操作系统版本
 支持使用以下操作系统版本进行开发：
 
@@ -53,8 +53,8 @@ Web 平台安装程序 (WebPI) 是安装 SDK 和工具的建议方法。 如果�
 > [!NOTE]
 > 不支持本地 Service Fabric 开发群集升级。
 
-### <a name="to-use-visual-studio-2017-or-2019"></a>使用 Visual Studio 2017 或2019
-Service Fabric 工具是 Visual Studio 2017 和2019中的 Azure 开发工作负荷的一部分。 在 Visual Studio 安装过程中启用此工作负荷。
+### <a name="to-use-visual-studio-2017-or-2019"></a>使用 Visual Studio 2017 或 2019
+Service Fabric 工具是 Visual Studio 2017 和 2019 中 Azure 开发工作负荷的一部分。 在 Visual Studio 安装过程中启用此工作负荷。
 此外还需使用 Web 平台安装程序安装 Microsoft Azure Service Fabric SDK 和运行时。
 
 * [安装 Microsoft Azure Service Fabric SDK][core-sdk]
@@ -69,11 +69,8 @@ Service Fabric 工具是 Visual Studio 2017 和2019中的 Azure 开发工作负�
 * [安装 Microsoft Azure Service Fabric SDK][core-sdk]
 
 当前版本包括：
-* Service Fabric SDK 和工具3.4.676
-* Service Fabric 运行时6.5.676
-* Visual Studio 2015 2.5.20615.1 的 Service Fabric 工具
-* Visual Studio 2017 15.9 包括适用于 Visual Studio 的 Service Fabric 工具 2.4.11024.1 
-* Visual Studio 2019 16.1 包括 Visual Studio 2.5.20423.3 的 Service Fabric 工具
+* Service Fabric SDK 和工具4.0.457
+* Service Fabric 运行时7.0.457
 
 有关支持版本的列表，请参阅 [Service Fabric 版本](service-fabric-versions.md)
 

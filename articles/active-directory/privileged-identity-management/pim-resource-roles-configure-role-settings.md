@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abb6c2212549c3d92f9c1dbc42c31f838a704af2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 8c9acc1487fcbf8398b7a556c63f97963b264451
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144308"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74182703"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure 资源角色设置
 
@@ -57,6 +57,9 @@ ms.locfileid: "74144308"
     !["角色设置" 页中的 "角色分配" 选项卡](./media/pim-resource-roles-configure-role-settings/role-settings-assignment-tab.png)
 
 1. 使用页面底部的 "**通知**" 选项卡或 "**下一步：激活**" 按钮，转到此角色的 "通知设置" 选项卡。 这些设置控制与此角色相关的所有电子邮件通知。
+
+    > [!NOTE]
+    > 此通知 UI 当前在 Azure 区域和订阅中滚动。 如果无法配置这些粒度通知，请在一天或两天内回来查看。
 
     ![角色 "设置" 页中的角色通知选项卡](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
 

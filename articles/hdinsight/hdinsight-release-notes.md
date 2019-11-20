@@ -8,135 +8,86 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 7c31520efd881e8e0b5ed309f62d273bac59c0e3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 54e28a9d434500915aa8cc8e07ade3592e5aa96c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945032"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185603"
 ---
 # <a name="release-notes"></a>发行说明
 
 本文提供有关**最新** Azure HDInsight 版本更新的信息。 有关较早版本的信息，请参阅 [HDInsight 发行说明存档](hdinsight-release-notes-archive.md)。
 
-> [!IMPORTANT]  
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 版本控制文章](hdinsight-component-versioning.md)。
-
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和 Apache Spark 分析服务之一。
 
+## <a name="release-date-11072019"></a>发布日期：11/07/2019
+
+此版本适用于 HDInsight 3.6 和4.0。
+
+> [!IMPORTANT]  
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 版本控制文章](hdinsight-component-versioning.md)。
+
+
 ## <a name="new-features"></a>新增功能
 
-有关 HDInsight 4.0 的重要更改的详细信息。，请参阅 [HDI 4.0 中有哪些新增功能？](../hdinsight/hdinsight-version-release.md)。
+### <a name="hdinsight-identity-broker-hib-preview"></a>HDInsight 标识代理（HIB）（预览版）
 
-## <a name="component-versions"></a>组件版本
+HDInsight 标识代理（HIB）可让用户使用多重身份验证（MFA）登录到 Apache Ambari，并获取所需的 Kerberos 票证，而不需要 Azure Active Directory 域服务（AAD-DS）中的密码哈希。 当前 HIB 仅适用于通过 ARM 模板部署的群集。
 
-下面提供了所有 HDInsight 4.0 组件的正式 Apache 版本。 列出的组件是可用的最新稳定版本。
+### <a name="kafka-rest-api-proxy-preview"></a>Kafka Rest API 代理（预览）
 
-- Apache Ambari 2.7.1
-- Apache Hadoop 3.1.1
-- Apache HBase 2.0.0
-- Apache Hive 3.1.0
-- Apache Kafka 1.1.1, 2.1。0
-- Apache Mahout 0.9.0+
-- Apache Oozie 4.2.0
-- Apache Phoenix 4.7.0
-- Apache Pig 0.16.0
-- Apache Ranger 0.7.0
-- Apache Slider 0.92.0
-- Apache Spark 2.3.1, 2.4。0
-- Apache Sqoop 1.4.7
-- Apache TEZ 0.9.1
-- Apache Zeppelin 0.8.0
-- Apache ZooKeeper 3.4.6
+Kafka Rest API 代理通过安全 AAD 授权和 OAuth 协议，通过 Kafka 群集提供一次单击部署高可用性 REST 代理。 
 
-除了上面所列的版本以外，Apache 组件的较高版本有时也会捆绑在 HDP 分发版中。 在这种情况下，这些较高版本会列在“技术预览”表中，并且在生产环境中不应替换为上述列表中的 Apache 组件版本。
+### <a name="auto-scale"></a>自动缩放
 
-## <a name="apache-patch-information"></a>Apache 修补程序信息
+Azure HDInsight 的自动缩放现已在适用于 Apache Spark 和 Hadoop 群集类型的所有区域公开提供。 此功能可让你以更具成本效益和高效的方式管理大数据分析工作负荷。 现在，你可以优化 HDInsight 群集的使用，并且仅为所需的部分付费。
 
-有关 HDInsight 4.0 中可用的修补程序的详细信息，请参阅下表中适用于每个产品的修补程序列表。
+根据你的要求，你可以选择基于负载和计划的自动缩放。 基于负载的自动缩放可根据当前资源需求，根据当前资源需求调整群集大小，而基于计划的自动缩放可以根据预定义的计划更改群集大小。 
 
-| 产品名称 | 修补程序信息 |
-|---|---|
-| Ambari | [Ambari 修补程序信息](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ambari_relnotes-2.7.1.0-patch-information.html) |
-| Hadoop | [Hadoop 修补程序信息](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hadoop.html) |
-| Hbase | [HBase 修补程序信息](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
-| Hive  | 此版本提供 Hive 3.1.0，但不提供其他 Apache 修补程序。  |
-| Kafka | 此版本提供 Kafka 1.1.1，但不提供其他 Apache 修补程序。 |
-| Oozie | [Oozie 修补程序信息](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_oozie.html) |
-| Phoenix | [Phoenix 修补程序信息](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_phoenix.html) |
-| Pig | [Pig 修补程序信息](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_pig.html) |
-| Ranger | [Ranger 修补程序信息](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_ranger.html) |
-| Spark | [Spark 修补程序信息](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_spark.html) |
-| Sqoop | 此版本提供 Sqoop 1.4.7，但不提供其他 Apache 修补程序。 |
-| Tez | 此版本提供 Tez 0.9.1，但不提供其他 Apache 修补程序。 |
-| Zeppelin | 此版本提供 Zeppelin 0.8.0，但不提供其他 Apache 修补程序。 |
-| Zookeeper | [Zookeeper 修补程序信息](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_zookeeper.html) |
+HBase 和 LLAP 工作负荷的自动缩放支持也是公共预览。 有关详细信息，请参阅[自动缩放 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-autoscale-clusters)。
 
-## <a name="fixed-common-vulnerabilities-and-exposures"></a>修复了常见漏洞和透露
+### <a name="hdinsight-accelerated-writes-for-apache-hbase"></a>Apache HBase 的 HDInsight 加速写入 
 
-有关此版本中已解决的安全问题的详细信息，请参阅 Hortonworks 编写的[修复了 HDP 3.0.1 的常见漏洞和透露](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/cve.html)。
+加速写入使用 Azure 高级 SSD 托管磁盘，可以改善 Apache HBase 预写日志 (WAL) 的性能。 有关详细信息，请参阅[适用于 Apache HBase 的 Azure HDInsight 加速写入](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes)。
 
-## <a name="known-issues"></a>已知问题
+### <a name="custom-ambari-db"></a>自定义 Ambari DB
 
-### <a name="replication-is-broken-for-secure-hbase-with-default-installation"></a>使用默认安装选项时 Secure HBase 的复制中断
+HDInsight 现在提供了新容量，使客户能够使用自己的 SQL DB 进行 Ambari。 现在，客户可以选择合适的 SQL DB 进行 Ambari，并根据自己的业务增长要求轻松地对其进行升级。 部署是使用 Azure 资源管理器模板来完成的。 有关详细信息，请参阅[设置具有自定义 AMBARI DB 的 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db)。
 
-对于 HDInsight 4.0，请执行以下步骤：
+### <a name="f-series-virtual-machines-are-now-available-with-hdinsight"></a>现在，HDInsight 提供了 F 系列虚拟机
 
-1. 启用群集间通信。
-1. 登录到活动的头节点。
-1. 使用以下命令下载一个脚本以启用复制：
-
-    ```
-    sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
-    ```
-1. 键入命令 `sudo kinit <domainuser>`。
-1. 键入以下命令以运行该脚本：
-
-    ```
-    sudo bash hdi_enable_replication.sh -m <hn0> -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
-    ```
-对于 HDInsight 3.6，请执行以下步骤：
-
-1. 登录到活动的 HMaster ZK。
-1. 使用以下命令下载一个脚本以启用复制：
-    ```
-    sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
-    ```
-1. 键入命令 `sudo kinit -k -t /etc/security/keytabs/hbase.service.keytab hbase/<FQDN>@<DOMAIN>`。
-1. 输入以下命令：
-
-    ```bash
-    sudo bash hdi_enable_replication.sh -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
-    ```
-
-### <a name="phoenix-sqlline-stops-working-after-migrating-hbase-cluster-to-hdinsight-40"></a>将 HBase 群集迁移到 HDInsight 4.0 后，Phoenix Sqlline 停止工作
-
-请执行以下步骤：
-
-1. 删除以下 Phoenix 表：
-    1. `SYSTEM.FUNCTION`
-    1. `SYSTEM.SEQUENCE`
-    1. `SYSTEM.STATS`
-    1. `SYSTEM.MUTEX`
-    1. `SYSTEM.CATALOG`
-1. 如果无法删除其中的任何表，请重启 HBase 以清除与表建立的任何连接。
-1. 再次运行 `sqlline.py`。 Phoenix 将重新创建在步骤 1 中删除的所有表。
-1. 重新生成 HBase 数据的 Phoenix 表和视图。
-
-### <a name="phoenix-sqlline-stops-working-after-replicating-hbase-phoenix-metadata-from-hdinsight-36-to-40"></a>将 HBase Phoenix 元数据从 HDInsight 3.6 复制到 4.0 之后，Phoenix Sqlline 停止工作
-
-请执行以下步骤：
-
-1. 在执行复制之前，请转到目标 4.0 群集并执行 `sqlline.py`。 此命令将生成类似于 `SYSTEM.MUTEX` 和 `SYSTEM.LOG` 且只存在于 4.0 中的 Phoenix 表。
-1. 删除以下表：
-    1. `SYSTEM.FUNCTION`
-    1. `SYSTEM.SEQUENCE`
-    1. `SYSTEM.STATS`
-    1. `SYSTEM.CATALOG`
-1. 启动 HBase 复制
+F 系列虚拟机（Vm）非常适合用于满足轻型处理要求的 HDInsight。 根据每个 vCPU 的 Azure 计算单位 (ACU)，在较低的小时价列表中，F 系列在 Azure 产品组合中具有最高性价比。 有关详细信息，请参阅[为 Azure HDInsight 群集选择正确的 VM 大小](https://docs.microsoft.com/azure/hdinsight/hdinsight-selecting-vm-size)。
 
 ## <a name="deprecation"></a>弃用
 
-Apache Storm 和机器学习服务在 HDInsight 4.0 中不可用。
+### <a name="g-series-virtual-machine-deprecation"></a>G 系列虚拟机弃用
+在此版本中，HDInsight 中不再提供 G 系列 Vm。
+
+### <a name="dv1-virtual-machine-deprecation"></a>Dv1 虚拟机弃用
+在此版本中，已弃用将 Dv1 Vm 与 HDInsight 配合使用。 将自动为 Dv1 的任何客户请求提供 Dv2。 Dv1 和 Dv2 Vm 之间没有价格差别。
+
+## <a name="behavior-changes"></a>行为更改
+
+### <a name="cluster-managed-disk-size-change"></a>群集托管磁盘大小更改
+HDInsight 通过群集提供托管磁盘空间。 在此版本中，新创建的群集中每个节点的托管磁盘大小更改为 128 GB。
+
+## <a name="upcoming-changes"></a>即将推出的更改
+即将发布的版本中将发生以下更改。 
+
+### <a name="moving-to-azure-virtual-machine-scale-sets"></a>迁移到 Azure 虚拟机规模集
+HDInsight 现在使用 Azure 虚拟机来设置群集。 从12月开始，HDInsight 将改为使用 Azure 虚拟机规模集。 详细了解[Azure 虚拟机规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)。
+
+### <a name="hbase-20-to-21"></a>HBase 2.0 到2。1
+在即将推出的 HDInsight 4.0 版本中，HBase 版本将从版本2.0 升级到2.1。
+
+### <a name="a-series-virtual-machine-deprecation-for-esp-cluster"></a>ESP 群集的 A 系列虚拟机弃用
+A 系列 Vm 可能会导致 ESP 群集出现问题，因为 CPU 和内存容量相对较低。 在即将发布的版本中，将不推荐使用 A 系列 Vm 来创建新的 ESP 群集。
+
+## <a name="bug-fixes"></a>Bug 修复
+HDInsight 继续提高群集的可靠性和性能。 
+
+## <a name="component-version-change"></a>组件版本更改
+此版本没有更改组件版本。 可在[此处](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)找到 HDInsight 4.0 ad HDInsight 3.6 的当前组件版本。

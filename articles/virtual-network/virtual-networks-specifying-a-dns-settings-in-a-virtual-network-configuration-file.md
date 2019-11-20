@@ -1,5 +1,5 @@
 ---
-title: 在虚拟网络配置文件中指定 DNS 设置 | Microsoft 文档
+title: 指定 Azure VNet 配置文件中的 DNS 设置
 description: 在经典部署模型中，如何使用虚拟网络配置文件更改虚拟网络中的 DNS 服务器设置
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: genli
-ms.openlocfilehash: c15d73673c19383deabe15ef30026990dfd138b9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: db8b1817bb14d293632d16fe02792dbb85766559
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059090"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196658"
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>在虚拟网络配置文件中指定 DNS 设置
 网络配置文件有两个可用于指定域名系统 (DNS) 设置的元素：**DnsServers** 和 **DnsServerRef**。 可以通过指定服务器的 IP 地址和 **DnsServers** 元素的引用名添加 DNS 服务器列表。 然后可以使用 **DnsServerRef** 元素指定 DnsServers 元素中的哪些 DNS 服务器条目用于虚拟网络中的不同网络站点。

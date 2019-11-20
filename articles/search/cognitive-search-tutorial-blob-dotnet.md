@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 84b98b637236213cdd5b87c6b0a38d87c110c21b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: beea911c9bb938458d8bd12e091e6c908ebb1566
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111744"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185694"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-c-and-the-net-sdk"></a>教程：使用C#和 .Net SDK 创建 AI 扩充管道
 
@@ -103,7 +103,7 @@ ms.locfileid: "74111744"
 
 必须将搜索服务信息添加到项目中，才能连接到 Azure 认知搜索服务。 在“解决方案资源管理器”中，右键单击项目，并依次选择“添加” > “新项...”。 将文件命名为“`appsettings.json`”，并选择“添加”。 
 
-必须将此文件添加到输出目录中。 为此，请右键单击“`appsettings.json`”，并选择“属性”。 将“复制到输出目录”的值更改为“复制较新文件”。
+必须将此文件添加到输出目录中。 为此，请右键单击“`appsettings.json`”，并选择“属性”。 将 "**复制到输出目录**" 的值更改为 "**如果较新则复制**"。
 
 将以下 JSON 复制到新 JSON 文件中。
 

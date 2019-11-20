@@ -1,5 +1,5 @@
 ---
-title: 为 VM（经典）配置专用 IP 地址 - Azure 经典 CLI
+title: 为 Vm 配置专用 IP 地址（经典）-CLI
 titlesuffix: Azure Virtual Network
 description: 了解如何使用 Azure 经典命令行接口 (CLI) 为虚拟机（经典）配置专用 IP 地址。
 services: virtual-network
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 64342c6dcf4c9a052442a6f4b0afb7a56994f496
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 9deaf4b1d80ad4e55e7c971998e8b1f5ea562257
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059221"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196585"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-classic-cli"></a>使用 Azure 经典 CLI 为虚拟机（经典）配置专用 IP 地址
 
@@ -72,7 +72,7 @@ ms.locfileid: "71059221"
    * **TestService**。 将在其中创建 VM 的云服务的名称。
    * **bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v14.2**。 用于创建 VM 的映像。
    * **adminuser**。 Windows VM 的本地管理员。
-   * <strong>AdminP@ssw0rd</strong>. Windows VM 的本地管理员密码。
+   * <strong>AdminP@ssw0rd</strong>： Windows VM 的本地管理员密码。
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>如何检索 VM 的静态专用 IP 地址信息
 若要查看使用上述脚本创建的 VM 的静态专用 IP 地址信息，请运行以下 Azure CLI 命令并观察 *Network StaticIP* 的值：

@@ -1,7 +1,7 @@
 ---
-title: 设计器：预测车载价格（回归）
+title: 设计器：预测车载价格（高级）示例
 titleSuffix: Azure Machine Learning
-description: 本文介绍如何使用设计器（预览）生成复杂的机器学习管道，无需编写单行代码。 了解如何定型和比较多个回归模型，以根据技术特征预测汽车的价格
+description: 生成 & 比较多个 ML 回归模型，以根据技术功能 Azure 机器学习设计器预测汽车的价格。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: d73f6d67afff13696de78d026ff65228fd68fb28
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 5eb701af90125e2654d6f908b28512aba3ad37aa
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647953"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196064"
 ---
-# <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>示例 2-回归：预测价格和比较算法
+# <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>定型 & 比较多个回归模型，通过 Azure 机器学习设计器预测车载价格
+
+**设计器（预览）示例2**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 了解如何在不编写代码的情况下使用设计器（预览）生成机器学习管道。 本示例训练和比较多个回归模型，以根据其技术特征预测汽车的价格。 我们将为在此管道中做出的选择提供基本原理，以便您能够应对自己的机器学习问题。

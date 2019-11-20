@@ -7,15 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/19/2019
-ms.openlocfilehash: 3f0b31cd3d37c3040ff99a89c1a5201b413fd3fc
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 10/22/2019
+ms.openlocfilehash: 9caf0a41096a22e94aeb80ccfd0e6e6f70954a3d
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076637"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185655"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight 管理 IP 地址
+
+> [!Important]
+> 使用网络安全组的[服务标记](hdinsight-service-tags.md)功能。 将仅为服务标记添加新区域，并且最终将不推荐使用静态 IP 地址。
 
 如果使用网络安全组 (NSG) 或用户定义的路由 (UDR) 来控制流向 HDInsight 群集的入站流量，则必须确保群集能够与关键的 Azure 运行状况和管理服务通信。  这些服务的有些 IP 地址特定于区域，而有些则适用于所有 Azure 区域。 如果不使用自定义 DNS，则可能还需要允许来自 Azure DNS 服务的流量。
 
@@ -29,21 +32,21 @@ ms.locfileid: "71076637"
 
 对于适用于所有 Azure 区域的 Azure HDInsight 运行状况和管理服务，允许来自其以下 IP 地址的流量：
 
-| 源 IP 地址 | Destination  | Direction |
+| 源 IP 地址 | 目标  | Direction |
 | ---- | ----- | ----- |
 | 168.61.49.99 | \*:443 | 入站 |
 | 23.99.5.239 | \*:443 | 入站 |
 | 168.61.48.131 | \*:443 | 入站 |
 | 138.91.141.162 | \*:443 | 入站 |
 
-## <a name="health-and-management-services-specific-regions"></a>运行状况和管理服务：特定的区域
+## <a name="health-and-management-services-specific-regions"></a>运行状况和管理服务：特定区域
 
 对于位于资源所在特定 Azure 区域中的 Azure HDInsight 运行状况和管理服务，允许来自以下 IP 地址的流量：
 
 > [!IMPORTANT]  
-> 如果未列出所用的 Azure 区域，则仅使用前面部分所列的四个 IP 地址。
+> 如果你使用的 Azure 区域未列出，请使用网络安全组的[服务标记](hdinsight-service-tags.md)功能。
 
-| Country | 地区 | 允许的源 IP 地址 | 允许的目标 | Direction |
+| 国家/地区 | 区域 | 允许的源 IP 地址 | 允许的目标 | Direction |
 | ---- | ---- | ---- | ---- | ----- |
 | 亚洲 | 东亚 | 23.102.235.122</br>52.175.38.134 | \*:443 | 入站 |
 | &nbsp; | 东南亚 | 13.76.245.160</br>13.76.136.249 | \*:443 | 入站 |
@@ -70,7 +73,7 @@ ms.locfileid: "71076637"
 | 英国 | 英国西部 | 51.141.13.110</br>51.141.7.20 | \*:443 | 入站 |
 | &nbsp; | 英国南部 | 51.140.47.39</br>51.140.52.16 | \*:443 | 入站 |
 | 美国 | 美国中部 | 13.89.171.122</br>13.89.171.124 | \*:443 | 入站 |
-| &nbsp; | East US | 13.82.225.233</br>40.71.175.99 | \*:443 | 入站 |
+| &nbsp; | 美国东部 | 13.82.225.233</br>40.71.175.99 | \*:443 | 入站 |
 | &nbsp; | 美国中北部 | 157.56.8.38</br>157.55.213.99 | \*:443 | 入站 |
 | &nbsp; | 美国中西部 | 52.161.23.15</br>52.161.10.167 | \*:443 | 入站 |
 | &nbsp; | 美国西部 | 13.64.254.98</br>23.101.196.19 | \*:443 | 入站 |

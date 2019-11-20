@@ -1,18 +1,18 @@
 ---
-title: Hyper-v 评估和迁移 Azure Migrate 支持矩阵
-description: 使用 Azure Migrate 服务汇总 Hyper-v 评估和迁移的设置和限制。
+title: Azure Migrate 中的 Hyper-v 评估/迁移支持
+description: 了解支持 Azure Migrate 的 Hyper-v 评估/迁移。
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: dd100e2390cdd2731df498379e376bde4cf2b87d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6562d3f15d080a3bbc54a9985c12eae5908a9980
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498700"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186661"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>用于 Hyper-V 评估和迁移的支持矩阵
 
@@ -44,7 +44,7 @@ Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。 Azure 订阅�
 | :-------------------       | :------------------- |
 | **主机部署**       | Hyper-v 主机可以是独立的，也可以部署到群集中。 |
 | **权限**           | 你需要在 Hyper-v 主机上具有管理员权限。 <br/> 或者，如果不想分配管理员权限，请创建本地或域用户帐户，并将用户添加到这些组-远程管理用户、Hyper-v 管理员和性能监视器用户。 |
-| **主机操作系统** | Windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2。<br/> 无法评估位于运行 Windows Server 2012 的 Hyper-v 主机上的 Vm。 |
+| **主机操作系统** | Windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2。<br/> 不能访问运行 Windows Server 2012 的 Hyper-V 主机上的 VM。 |
 | **PowerShell 远程处理**   | 必须在每个主机上启用。 |
 | **Hyper-v 副本**       | 如果使用 Hyper-v 副本（或具有具有相同 VM 标识符的多个 Vm），并使用 Azure Migrate 发现原始 Vm 和复制的 Vm，则 Azure Migrate 生成的评估可能不准确。 |
 
@@ -122,7 +122,7 @@ https://download.microsoft.com/download/* | 允许从 Microsoft 下载站点下�
 | **操作系统** | Azure 支持的所有[Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)操作系统。 |
 | **权限**           | 需要在要评估的每个 Hyper-v VM 上都有管理员权限。 |
 | **Integration Services**       | [Hyper-v Integration Services](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services)必须在你评估的 vm 上运行，才能捕获操作系统信息。 |
-| **Azure 所需的更改** | 某些 Vm 可能需要更改才能在 Azure 中运行。 Azure Migrate 会自动对以下操作系统进行这些更改：<br/> -Red Hat Enterprise Linux 6.5 +、7.0 +<br/> -CentOS 6.5 +、7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8<br/><br/> 对于其他操作系统，需要在迁移之前手动进行调整。 相关文章包含有关如何执行此操作的说明。 |
+| **Azure 所需的更改** | 某些 VM 可能需要经过更改才能在 Azure 中运行。 Azure Migrate 会自动对以下操作系统进行这些更改：<br/> -Red Hat Enterprise Linux 6.5 +、7.0 +<br/> -CentOS 6.5 +、7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8<br/><br/> 对于其他操作系统，需要在迁移之前手动进行调整。 相关文章包含有关如何执行此操作的说明。 |
 | **Linux 启动**                 | 如果/boot 位于专用分区上，则它应驻留在 OS 磁盘上，而不会分布在多个磁盘上。<br/> 如果/boot 是根（/）分区的一部分，则 "/" 分区应在 OS 磁盘上，而不是在其他磁盘上。 |
 | **UEFI 启动**                  | Azure 中迁移的 VM 将自动转换为 BIOS 启动 VM。 VM 应仅运行 Windows Server 2012 和更高版本。 OS 磁盘最多可以有5个分区或更少，操作系统磁盘的大小应小于 300 GB。
   |
@@ -151,7 +151,7 @@ https://download.microsoft.com/download/* | 允许从 Microsoft 下载站点下�
 login.microsoftonline.com | 使用 Active Directory 进行访问控制和标识管理。
 *.backup.windowsazure.com | 复制数据传输和协调。
 *.hypervrecoverymanager.windowsazure.com | 连接到 Azure Migrate 服务 Url。
-*.blob.core.windows.net | 将数据上传到存储帐户。
+\* .blob.core.windows.net | 将数据上传到存储帐户。
 dc.services.visualstudio.com | 上传用于内部监视的应用日志。
 time.windows.com | 验证系统与全局时间之间的时间同步。
 
@@ -168,4 +168,4 @@ Hyper-v 主机/Vm | HTTPS 端口443上的出站连接，用于将 VM 复制数�
 
 ## <a name="next-steps"></a>后续步骤
 
-[准备用于迁移的 HYPER-V VM 评估](tutorial-prepare-hyper-v.md)。
+[准备用于迁移的 HYPER-V VM](tutorial-prepare-hyper-v.md) 迁移。

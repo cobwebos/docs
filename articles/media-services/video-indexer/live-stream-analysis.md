@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
-ms.openlocfilehash: 4766d48a748fedd82532f2ac49223ab0460b9ef7
-ms.sourcegitcommit: fa41a56357de487b10e54711fbbdbd4a373fa67c
-ms.translationtype: HT
+ms.openlocfilehash: 89d0254fc758834c437f347e6ecb7bcafc1fe467
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74153552"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185999"
 ---
 # <a name="live-stream-analysis-with-video-indexer"></a>视频索引器的实时流分析
 
@@ -27,7 +27,7 @@ Azure 媒体服务视频索引器是一种 Azure 服务，旨在从视频和音�
 
 *图 1-在实时流上显示视频索引器元数据的示例播放机*
 
-目前的[流分析解决方案](https://github.com/Azure-Samples/media-services-dotnet-functions-integration/blob/master/media-functions-for-logic-app/LiveStreamAnalysis.md)使用 Azure Functions 和两个逻辑应用从 Azure 媒体服务中的实时通道使用视频索引器处理实时程序，并显示包含近乎实时生成的流的 Azure Media Player 的结果。
+目前的[流分析解决方案](https://aka.ms/livestreamanalysis)使用 Azure Functions 和两个逻辑应用从 Azure 媒体服务中的实时通道使用视频索引器处理实时程序，并显示包含近乎实时生成的流的 Azure Media Player 的结果。
 
 在高级别中，它由两个主要步骤组成。 第一步每60秒运行一次，并在最近60秒播放子剪辑，通过视频索引器创建资产并对其进行索引。 然后，在索引完成后调用第二个步骤。 捕获的 insights 将处理并发送到 Azure Cosmos DB，并删除子剪辑索引。
 

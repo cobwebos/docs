@@ -8,18 +8,20 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: d5432c794c26e350b23fe47aa1574422143ca4b2
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: d1ef8852916e598373c104fb98a1c09ab656fbaf
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521951"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196206"
 ---
 # <a name="using-custom-security-policies-preview"></a>使用自定义安全策略（预览）
 
 为了帮助保护你的系统和环境，Azure 安全中心会生成安全建议。 这些建议基于行业最佳实践，该方案合并到为所有客户提供的通用默认安全策略中。 它们还可以来自安全中心的行业和法规标准知识。
 
-通过此预览功能，你可以添加自己的*自定义*计划。 如果你的计算机不遵循你所创建的策略，则会收到建议。
+通过此预览功能，你可以添加自己的*自定义*计划。 如果你的环境不遵循你所创建的策略，则会收到建议。
+
+如 Azure 策略文档中[所述，](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location)当你为自定义计划指定位置时，它必须是管理组或订阅。 
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>向订阅中添加自定义计划 
 
@@ -55,7 +57,7 @@ ms.locfileid: "73521951"
     > [!NOTE]
     > 创建新的计划需要订阅所有者凭据。 有关 Azure 角色的详细信息，请参阅[Azure 安全中心中的权限](security-center-permissions.md)。
 
-1. 若要查看策略的结果建议，请单击边栏中的 "**建议**" 以打开 "建议" 页。 建议将显示 "自定义" 标签，最长可达30分钟。
+1. 若要查看策略的结果建议，请单击边栏中的 "**建议**" 以打开 "建议" 页。 建议将显示 "自定义" 标签，在大约一小时内可用。
 
     [![自定义建议](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 

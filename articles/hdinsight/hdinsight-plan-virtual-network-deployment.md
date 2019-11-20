@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 61b929756cbc4cf13103faa67a667128eaffeec8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: MT
+ms.openlocfilehash: 8d89031a3b27742149d450ab79c9febf0aaef1ff
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498168"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185625"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>规划 Azure HDInsight 的虚拟网络
 
@@ -59,13 +59,13 @@ ms.locfileid: "73498168"
 
     如果你的现有网络是经典虚拟网络，则必须创建资源管理器虚拟网络，然后连接这两者。 [将经典 VNet 连接到新 VNet](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)。
 
-    连接后，安装在 Resource Manager 网络中的 HDInsight 即可与经典网络中的资源交互。
+    加入后，资源管理器网络中安装的 HDInsight 就可以与经典网络中的资源进行交互了。
 
 2. 是否使用网络安全组、用户定义路由或虚拟网络设备来限制流量进出虚拟网络？
 
     作为托管服务，HDInsight 需要无限制访问 Azure 数据中心中的若干个 IP 地址。 若要允许与这些 IP 地址进行通信，请更新任何现有网络安全组或用户定义的路由。
     
-    HDInsight 托管多个服务，这些服务使用不同的端口。 不要阻止流向这些端口的流量。 有关虚拟设备防火墙的允许端口列表，请参阅“安全”一节。
+    HDInsight 托管多个服务，这些服务使用不同的端口。 请勿阻止发往这些端口的流量。 有关虚拟设备防火墙的允许端口列表，请参阅“安全”一节。
     
     若要查找你现有的安全配置，请使用以下 Azure PowerShell 或 Azure CLI 命令：
 
@@ -81,7 +81,7 @@ ms.locfileid: "73498168"
         az network nsg list --resource-group RESOURCEGROUP
         ```
 
-        有关详细信息，请参阅[排查网络安全组问题](../virtual-network/diagnose-network-traffic-filter-problem.md)文档。
+        有关详细信息，请参阅[排查网络安全组问题](../virtual-network/diagnose-network-traffic-filter-problem.md)一文。
 
         > [!IMPORTANT]  
         > 已根据规则优先级按顺序应用网络安全组规则。 应用与流量模式匹配的第一个规则，不会对该流量应用其他规则。 从最高权限到最低权限排序规则。 有关详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/security-overview.md)文档。
@@ -114,9 +114,9 @@ ms.locfileid: "73498168"
 
 多网络配置的最大挑战是网络之间的名称解析。
 
-Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置的名称解析功能允许 HDInsight 使用完全限定的域名 (FQDN) 连接到以下资源：
+Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置名称解析允许 HDInsight 使用完全限定的域名 (FQDN) 连接到以下资源：
 
-* 在 Internet 上提供的任何资源。 例如，microsoft.com、windowsupdate.com。
+* Internet 上的任何可用资源。 例如，microsoft.com、windowsupdate.com。
 
 * 位于同一 Azure 虚拟网络中的任何资源（通过使用资源的内部 DNS 名称）。 例如，在使用默认的名称解析时，下面是分配给 HDInsight 工作器节点的内部 DNS 名称示例：
 
@@ -125,7 +125,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
     这两个节点通过使用内部 DNS 名称可以直接彼此通信，以及与 HDInsight 中的其他节点进行通信。
 
-默认名称解析不允许 HDInsight 解析连接到虚拟网络的网络中的资源的名称。 例如，将本地网络加入到虚拟网络是很常见的。 仅通过默认名称解析，HDInsight 无法按名称访问本地网络中的资源。 反过来也是如此，本地网络中的资源也不能按名称访问虚拟网络中的资源。
+默认名称解析不允许 HDInsight 解析加入到虚拟网络的网络中的资源名称。 例如，将本地网络加入到虚拟网络是很常见的。 仅通过默认名称解析，HDInsight 无法按名称访问本地网络中的资源。 反过来也是如此，本地网络中的资源也不能按名称访问虚拟网络中的资源。
 
 > [!WARNING]  
 > 必须创建自定义 DNS 服务器并配置虚拟网络以在创建 HDInsight 群集前使用它。
@@ -150,7 +150,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
      * __本地 DNS__： 将虚拟网络 DNS 后缀的请求转发到自定义 DNS 服务器。 然后，自定义 DNS 服务器转发给 Azure 递归解析程序。
 
-       此配置将包含虚拟网络 DNS 后缀的完全限定的域名请求路由至自定义 DNS 服务器。 所有其他请求（甚至包括对公共 Internet 地址的请求）由本地 DNS 服务器处理。
+       此配置将包含虚拟网络 DNS 后缀的完全限定的域名请求路由至自定义 DNS 服务器。 其他所有请求（即使是公共 Internet 地址） 都由本地 DNS 服务器处理。
 
    * 如果远程网络是其他 Azure 虚拟网络，请按如下所示配置 DNS：
 
@@ -197,7 +197,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
     在返回的节点列表中，查找头节点的 FQDN，并使用这些 FQDN 连接到 Ambari 和其他 Web 服务。 例如，使用 `http://<headnode-fqdn>:8080` 访问 Ambari。
 
     > [!IMPORTANT]  
-    > 在头节点上托管的一些服务一次只能在一个节点上处于活动状态。 如果尝试在一个头节点上访问服务并且它返回 404 错误，请切换到其他头节点。
+    > 一些在头节点上托管的服务一次只能在一个节点上处于活动状态。 如果尝试在一个头节点上访问服务并且它返回 404 错误，请切换到其他头节点。
 
 2. 若要确定服务可用的节点和端口，请参阅 [HDInsight 的 Hadoop 服务所用的端口](./hdinsight-hadoop-port-settings-for-services.md)一文。
 
@@ -219,9 +219,9 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 如果计划使用**网络安全组**来控制网络流量，请在安装 HDInsight 之前执行以下操作：
 
-1. 确定计划用于 HDInsight 的 Azure 区域。
+1. 标识你计划用于 HDInsight 的 Azure 区域。
 
-2. 标识 HDInsight 所需的 IP 地址。 有关详细信息，请参阅 [HDInsight 管理 IP 地址](hdinsight-management-ip-addresses.md)。
+2. 确定 HDInsight 为你所在的区域所需的服务标记。 有关详细信息，请参阅[Azure HDInsight 的网络安全组（NSG）服务标记](hdinsight-service-tags.md)。
 
 3. 为计划将 HDInsight 安装到其中的子网创建或修改网络安全组。
 
@@ -235,7 +235,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 #### <a name="forced-tunneling-to-on-premise"></a>到本地的强制隧道
 
-强制隧道是用户定义的路由配置，用于将子网中的所有流量强制流向特定的网络或位置，例如本地网络。 HDInsight 不支持将流量通过强制隧道传输到本地网络。 
+强制隧道是用户定义的路由配置，其中来自子网的所有流量都强制发往特定网络或位置，例如你的本地网络。 HDInsight 不支持将流量通过强制隧道传输到本地网络。 
 
 ## <a id="hdinsight-ip"></a>需要的 IP 地址
 

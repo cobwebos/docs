@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: ad359a19cb42bf115189aca7905d1908d0dc5284
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4565eb86727e768ba894d701cbc5e0073c07ee01
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087055"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185526"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>使用 Azure 中的嵌套虚拟化排查问题 Azure VM
 
@@ -40,7 +40,7 @@ ms.locfileid: "71087055"
 
     -  操作系统：Windows Server 2016 Datacenter
 
-    -  大小：任何支持嵌套虚拟化且至少具有双核的 V3 系列。 有关详细信息，请参阅[引入新的 Dv3 和 Ev3 VM 大小](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)。
+    -  大小：任何支持嵌套虚拟化的 V3 系列至少具有双核。 有关详细信息，请参阅[引入新的 Dv3 和 Ev3 VM 大小](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)。
 
     -  与问题 VM 相同的位置、存储帐户和资源组。
 
@@ -48,13 +48,13 @@ ms.locfileid: "71087055"
 
 2.  创建救援 VM 后，通过远程桌面连接到救援 VM。
 
-3.  在服务器管理器中，选择“管理” > “添加角色和功能”。
+3.  在服务器管理器中，选择“管理” **“添加角色和功能”**  > 。
 
 4.  在“安装类型”部分，选择“基于角色或基于功能的安装”。
 
 5.  在“选择目标服务器”部分中，请确保已选择“救援 VM”。
 
-6.  选择“HYPER-V 角色” > “添加功能”。
+6.  选择“HYPER-V 角色” **“添加功能”**  > 。
 
 7.  选择“功能”部分上的“下一步”。
 
@@ -70,72 +70,57 @@ ms.locfileid: "71087055"
 
 13. 允许服务器安装 Hyper-V 角色。 这需要几分钟的时间，服务器将自动重新启动。
 
-## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>步骤 2：在修复 VM 的 Hyper-v 服务器上创建问题 VM
+## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>步骤 2：在救援 VM 的 Hyper-V 服务器上创建问题 VM
 
-1.  记录问题 VM 中的磁盘名称，然后删除问题 VM。 请确保已保留所有附加磁盘。 
+1.  为发生问题的 VM 的 OS 磁盘[创建快照磁盘](troubleshoot-recovery-disks-portal-windows.md#take-a-snapshot-of-the-os-disk)，然后将该快照磁盘附加到 recuse VM。
 
-2.  将问题 VM 的 OS 磁盘附加为救援 VM 的数据磁盘。
+2.  远程桌面到 "修复 VM"。
 
-    1.  删除问题 VM 后，转到“救援 VM”。
+3.  打开磁盘管理 (diskmgmt.msc)。 请确保将问题 VM 的磁盘设置为“离线”。
 
-    2.  选择“磁盘”，并“添加数据磁盘”。
+4.  打开 Hyper-V 管理器：在“服务器管理器”中，选择“Hyper-V 角色”。 右键单击服务器，然后选择“Hyper-V 管理器”。
 
-    3.  选择问题 VM 的磁盘，然后选择“保存”。
+5.  在 HYPER-V 管理器中，右键单击救援 VM，然后选择“新建” **“虚拟机”** “下一步” >  > 。
 
-3.  在磁盘成功附加后，通过远程桌面连接到救援 VM。
+6.  键入 VM 的名称，然后选择“下一步”。
 
-4.  打开磁盘管理 (diskmgmt.msc)。 请确保将问题 VM 的磁盘设置为“离线”。
+7.  选择“第 1 代”。
 
-5.  打开 Hyper-V 管理器：在“服务器管理器”中，选择“Hyper-V 角色”。 右键单击服务器，然后选择“Hyper-V 管理器”。
+8.  设置启动内存为 1024 MB 或以上。
 
-6.  在 HYPER-V 管理器中，右键单击救援 VM，然后选择“新建” > “虚拟机” > “下一步”。
+9. 如果适用，请选择已创建的 Hyper-V 网络交换机。 否则请转到下一页。
 
-7.  键入 VM 的名称，然后选择“下一步”。
-
-8.  选择“第 1 代”。
-
-9.  设置启动内存为 1024 MB 或以上。
-
-10. 如果适用，请选择已创建的 Hyper-V 网络交换机。 否则请转到下一页。
-
-11. 选择“稍后附加虚拟硬盘”。
+10. 选择“稍后附加虚拟硬盘”。
 
     ![有关“稍后附加虚拟硬盘”选项的图像](media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
 
-12. 创建 VM 后，选择“完成”。
+11. 创建 VM 后，选择“完成”。
 
-13. 右键单击创建的 VM，然后选择“设置”。
+12. 右键单击创建的 VM，然后选择“设置”。
 
-14. 依次选择“IDE Controller 0”、“硬盘”，然后单击“添加”。
+13. 依次选择“IDE Controller 0”、“硬盘”，然后单击“添加”。
 
     ![有关添加新硬盘的图像](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
-15. 在“物理硬盘”中，选择已附加到 Azure VM 的问题 VM 的磁盘。 如果没有看到任何列出的磁盘，请使用磁盘管理检查是否将磁盘设置为离线。
+14. 在“物理硬盘”中，选择已附加到 Azure VM 的问题 VM 的磁盘。 如果没有看到任何列出的磁盘，请使用磁盘管理检查是否将磁盘设置为离线。
 
     ![有关安装磁盘的图像](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
 
-17. 依次选择“应用”、“确定”。
+15. 依次选择“应用”、“确定”。
 
-18. 双击 VM，然后启动它。
+16. 双击 VM，然后启动它。
 
-19. 现在你可以将此 VM 作为本地 VM 进行操作。 你可以按照所需的任何故障排除步骤操作。
+17. 现在你可以将此 VM 作为本地 VM 进行操作。 你可以按照所需的任何故障排除步骤操作。
 
-## <a name="step-3-re-create-your-azure-vm-in-azure"></a>步骤 3：在 Azure 中重新创建 Azure VM
+## <a name="step-3-replace-the-os-disk-used-by-the-problem-vm"></a>步骤3：替换问题 VM 使用的 OS 磁盘
 
 1.  重新在线获得 VM 后，关闭 Hyper-V 管理器中的 VM。
 
-2.  转到 [Azure 门户](https://portal.azure.com)并选择“救援 VM”>“磁盘”，复制磁盘名称。 你会在下一步中使用名称。 将已修复的磁盘从救援 VM 拆离。
-
-3.  转到“所有资源”，搜索磁盘名称，然后选择该磁盘。
-
-     ![有关搜索磁盘的图像](media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
-
-4. 单击“创建 VM”。
-
-     ![有关从磁盘创建 VM 的图像](media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
-
-此外也可以使用 Azure PowerShell 从磁盘创建 VM。 有关详细信息，请参阅[使用 PowerShell 从现有磁盘创建新的 VM](../windows/create-vm-specialized.md#create-the-new-vm)。 
+2.  [卸载并分离已修复的 OS 磁盘](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk
+)。
+3.  将[虚拟机使用的 os 磁盘替换为已修复的 os 磁盘](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm
+)。
 
 ## <a name="next-steps"></a>后续步骤
 

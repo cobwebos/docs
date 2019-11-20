@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 11/18/2019
 ms.author: swmachan
-ms.openlocfilehash: f3bf784898f7f51beea890d8d2a8401af1403fbc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: dd3684cbd7c03851bfcc75293a9690f77b4652b2
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888119"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184818"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>如何使用文本翻译 API 阻止翻译内容
 
 通过文本翻译 API 可以标记内容，以便不对其进行翻译。 例如，你可能想要标记本地化后没有意义的代码、品牌名称或单词/短语。
 
 ## <a name="methods-for-preventing-translation"></a>阻止翻译的方法
-1. 转义为 Twitter 标记 @somethingtopassthrough 或 #somethingtopassthrough。 翻译后取消转义。
+1. 转义为 Twitter 标记 @somethingtopassthrough 或 #somethingtopassthrough。 翻译后取消转义。 这是有效 twitter 标记的正则表达式： `\B@[A-Za-z]+[A-Za-z0-9_]+)`。 标记应以 "@" 符号开头，后跟一个字符，然后后跟一个或多个字符、数字或下划线。 建议保留标记简短，并且开始标记前面必须有一个空格。
 
 2. 使用 `notranslate` 标记内容。
 

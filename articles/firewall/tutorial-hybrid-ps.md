@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙
+title: 使用 PowerShell 部署 & 在混合网络中配置 Azure 防火墙
 description: 本文介绍如何使用 Azure PowerShell 部署和配置 Azure 防火墙。
 services: firewall
 author: vhorne
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: a5a008a795b88dbcb72ed9fba869e5251fd93567
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d198ee2e1fa8d3afeacda53c2ad6b91d69abca2a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163535"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195766"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙
 
@@ -21,11 +21,11 @@ ms.locfileid: "73163535"
 
 可以使用 Azure 防火墙通过规则来定义允许的和拒绝的网络流量，以便控制混合网络中的网络访问。
 
-本文将创建三个虚拟网络：
+在本文中，将创建三个虚拟网络：
 
 - **VNet-Hub** - 防火墙在此虚拟网络中。
 - **VNet-Spoke** - 分支虚拟网络代表 Azure 中的工作负荷。
-- **VNet-Onprem** - 本地虚拟网络代表本地网络。 在实际部署中，可以使用 VPN 或 ExpressRoute 来连接它。 为简单起见，本文使用 VPN 网关连接，而使用 Azure 的虚拟网络表示本地网络。
+- **VNet-Onprem** - 本地虚拟网络代表本地网络。 在实际部署中，可以使用 VPN 或 ExpressRoute 来连接它。 为简单起见，本文将使用 VPN 网关连接，并使用 Azure 中的某个虚拟网络来代表本地网络。
 
 ![混合网络中的防火墙](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
@@ -47,9 +47,9 @@ ms.locfileid: "73163535"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-本文要求在本地运行 PowerShell。 必须安装 Azure PowerShell 模块。 可以运行 `Get-Module -ListAvailable Az` 来查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 验证 PowerShell 版本以后，请运行 `Login-AzAccount`，以便创建与 Azure 的连接。
+本文要求在本地运行 PowerShell。 必须安装 Azure PowerShell 模块。 可以运行 `Get-Module -ListAvailable Az` 来查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 验证 PowerShell 版本以后，请运行 `Login-AzAccount`，以便创建与 Azure 的连接。
 
 若要正常开展此方案，必须符合三项关键要求：
 
@@ -59,7 +59,7 @@ ms.locfileid: "73163535"
    无需在 Azure 防火墙子网中创建 UDR，因为它会从 BGP 探测路由。
 - 在 VNet-Hub 与 VNet-Spoke 之间建立对等互连时，请务必设置 **AllowGatewayTransit**；在 VNet-Spoke 与 VNet-Hub 之间建立对等互连时，请务必设置 **UseRemoteGateways**。
 
-请参阅本文中的[创建路由](#create-the-routes)部分，了解如何创建这些路由。
+请参阅本文的[创建路由](#create-the-routes)部分来了解如何创建这些路由。
 
 >[!NOTE]
 >Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubnet 知道通过 BGP 的本地网络的默认路由，则必须将其替代为 0.0.0.0/0 UDR，将 NextHopType 值设置为 Internet 以保持 Internet 直接连接。
@@ -71,11 +71,11 @@ ms.locfileid: "73163535"
 
 若要查看相关的 Azure PowerShell 参考文档，请访问 [Azure PowerShell 参考](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall)。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="declare-the-variables"></a>声明变量
 
-下面的示例使用此项目的值来声明变量。 在某些情况下，可能需要根据订阅情况将某些值替换为你自己的值。 根据需要修改变量，将变量复制并粘贴到 PowerShell 控制台中。
+以下示例使用本文中的值来声明变量。 在某些情况下，可能需要根据订阅情况将某些值替换为你自己的值。 根据需要修改变量，然后将变量复制并粘贴到 PowerShell 控制台中。
 
 ```azurepowershell
 $RG1 = "FW-Hybrid-Test"
@@ -119,7 +119,7 @@ $SNnameGW = "GatewaySubnet"
 
 ## <a name="create-the-firewall-hub-virtual-network"></a>创建防火墙中心虚拟网络
 
-首先，创建资源组以包含本文所述的资源：
+首先，创建资源组以包含本文的资源：
 
 ```azurepowershell
   New-AzResourceGroup -Name $RG1 -Location $Location1

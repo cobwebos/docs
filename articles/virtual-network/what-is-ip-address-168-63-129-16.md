@@ -1,5 +1,5 @@
 ---
-title: IP 地址 168.63.129.16 是什么？ | Microsoft Docs
+title: IP 地址 168.63.129.16 是什么？ | Microsoft 文档
 description: 了解 IP 地址 168.63.129.16 以及它如何与资源一起工作。
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: 0ea8a8ec1a92a7dbc01dddc175f7116825ba00f9
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e061d503254ba7aa7735a97a060fc63f96b3fb61
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067781"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196674"
 ---
 # <a name="what-is-ip-address-1686312916"></a>IP 地址 168.63.129.16 是什么？
 
@@ -35,6 +35,7 @@ IP 地址 168.63.129.16 是虚拟公共 IP 地址，用于简化 Azure 平台资
 ## <a name="scope-of-ip-address-1686312916"></a>IP 地址 168.63.129.16 的作用域
 
 公共 IP 地址 168.63.129.16 用于所有区域和所有国家云。 此特殊的公共 IP 地址由 Microsoft 拥有，不会更改。 默认网络安全组规则允许此 IP 地址。 建议在入站和出站方向的任何本地防火墙策略中允许此 IP 地址。 此特殊 IP 地址和资源之间的通信是安全的，因为只有内部 Azure 平台才能从此 IP 地址获得消息。 如果阻止此地址，可能会在各种场景中出现意外行为。
+必须至少打开以下端口才能允许与 WireServer：80、443和32526通信。
 
 [Azure 负载均衡器运行状况探测](../load-balancer/load-balancer-custom-probe-overview.md)源自此 IP 地址。 如果阻止此 IP 地址，探测将失败。
 

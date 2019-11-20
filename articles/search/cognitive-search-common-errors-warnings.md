@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6b51581b5a8f94419dba60eee72669a3e1261b24
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 4a0a005d096702b864c770675a427184547a2b44
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151575"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185708"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>排查 Azure 中的常见索引器错误和警告认知搜索
 
@@ -29,6 +29,16 @@ ms.locfileid: "74151575"
 本文中的错误信息可帮助你解决错误，允许继续进行索引。
 
 警告不会停止索引，但它们会指示可能导致意外结果的条件。 你是否采取措施取决于数据和你的方案。
+
+从 API 版本 `2019-05-06`开始，会构建项级索引器错误和警告，使其更清晰地围绕原因和后续步骤。 它们包含以下属性：
+
+| 属性 | 说明 | 示例 |
+| --- | --- | --- |
+| key | 受错误或警告影响的文档的文档 id。 | https://coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
+| name | 描述错误或警告出现位置的操作名称。 这是由以下结构生成的： [category]。[子类别]。[resourceType]。ResourceName | DocumentExtraction myBlobContainerName 扩充. WebApiSkill mySkillName SearchIndex OutputFieldMapping myOutputFieldName SearchIndex MergeOrUpload myIndexName.KnowledgeStore. myTableName |
+| message | 错误或警告的高级说明。 | 无法执行技能，因为 Web Api 请求失败。 |
+| 详细信息 | 可能有助于诊断问题的任何其他详细信息，例如，在执行自定义技能失败时的 WebApi 响应。 | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 source，Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` 。堆栈跟踪的其余部分 。 |
+| documentationLink | 指向相关文档的链接，其中包含用于调试和解决问题的详细信息。 此链接通常指向本页的下列部分之一。 | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
 <a name="could-not-read-document"/>
 
@@ -73,8 +83,6 @@ ms.locfileid: "74151575"
 
 | 原因 | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
-| 字段包含的字词太大 | 文档中的术语大于[32 KB 的限制](search-limits-quotas-capacity.md#api-request-limits) | 可以确保字段未配置为可筛选、可查找或可排序，从而避免此限制。
-| 文档太大，无法建立索引 | 文档大于[最大 api 请求大小](search-limits-quotas-capacity.md#api-request-limits) | [如何为大型数据集编制索引](search-howto-large-index.md)
 | 暂时性连接问题 | 发生暂时性错误。 请稍后重试。 | 偶尔会出现意外的连接问题。 稍后再次尝试通过索引器运行文档。 |
 | 潜在的产品 bug | 发生了意外错误。 | 这表示未知的失败类别，并可能表示存在产品错误。 请提交[支持票证](https://ms.portal.azure.com/#create/Microsoft.Support)以获得帮助。 |
 | 技能在执行过程中遇到错误 | （从合并技能）一个或多个偏移值无效，无法对其进行分析。 项已插入到文本的末尾 | 使用错误消息中的信息解决此问题。 这种类型的故障将需要采取措施来解决问题。 |
@@ -96,6 +104,8 @@ ms.locfileid: "74151575"
 
 ### <a name="built-in-cognitive-service-skills"></a>内置认知服务技能
 许多内置认知技巧，如语言检测、实体识别或 OCR，都由认知服务 API 终结点支持。 有时，这些终结点存在暂时性问题，请求将超时。对于暂时性问题，没有任何补救措施，请等待，然后重试。 作为缓解措施，请考虑将索引器设置为按[计划运行](search-howto-schedule-indexers.md)。 计划索引从中断的位置继续进行。 假设已解决暂时性问题，则在下一次计划运行时，索引和认知技能处理应能继续。
+
+如果对内置认知技能的相同文档继续看到此错误，请提交[支持票证](https://ms.portal.azure.com/#create/Microsoft.Support)以获取帮助，因为这不是预期的。
 
 ### <a name="custom-skills"></a>自定义技能
 如果遇到与已创建的自定义技能有关的超时错误，可以尝试以下几个事项。 首先，请查看您的自定义技能，并确保它不会陷入无限循环，并且它将以一致的方式返回结果。 一旦您确认了这种情况，就会确定您的技能执行时间。 如果未在自定义技能定义上显式设置 `timeout` 值，则默认 `timeout` 为30秒。 如果要执行的技能不够长30秒，可以在自定义技能定义上指定较高的 `timeout` 值。 下面是一个自定义技能定义的示例，其中超时设置为90秒：
@@ -132,8 +142,8 @@ ms.locfileid: "74151575"
 
 | 原因 | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
-| 文档中的术语大于[32 KB 的限制](search-limits-quotas-capacity.md#api-request-limits) | 字段包含的字词太大 | 可以确保字段未配置为可筛选、可查找或可排序，从而避免此限制。
-| 文档大于[最大 api 请求大小](search-limits-quotas-capacity.md#api-request-limits) | 文档太大，无法建立索引 | [如何为大型数据集编制索引](search-howto-large-index.md)
+| 字段包含的字词太大 | 文档中的术语大于[32 KB 的限制](search-limits-quotas-capacity.md#api-request-limits) | 可以确保字段未配置为可筛选、可查找或可排序，从而避免此限制。
+| 文档太大，无法建立索引 | 文档大于[最大 api 请求大小](search-limits-quotas-capacity.md#api-request-limits) | [如何为大型数据集编制索引](search-howto-large-index.md)
 | 文档包含集合中的对象太多 | 文档中的集合超出了[所有复杂集合限制的最大元素数](search-limits-quotas-capacity.md#index-limits) | 建议将文档中的复杂集合大小减小到低于限制，并避免高存储利用率。
 | 连接到目标索引时出现问题（重试后仍存在），因为该服务处于其他负载下，如查询或索引。 | 未能建立与更新索引的连接。 搜索服务负载过重。 | [向上缩放搜索服务](search-capacity-planning.md)
 | 搜索服务正在为服务更新进行修补，或者正在重新配置拓扑。 | 未能建立与更新索引的连接。 搜索服务当前处于关闭状态，搜索服务正在进行转换。 | 为服务配置至少3个副本，每个[SLA 文档](https://azure.microsoft.com/support/legal/sla/search/v1_0/)99.9% 的可用性

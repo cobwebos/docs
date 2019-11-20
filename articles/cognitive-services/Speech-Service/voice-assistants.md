@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: bd808c0c71e02483b4c4b06e612720c1802869a0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 403768bc81b476dd144d5e4496f3501a3001da8a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577982"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195937"
 ---
 # <a name="about-voice-assistants"></a>关于语音助手
 
-使用 Azure 语音服务的语音助手使开发人员可以为其应用程序和体验创建自然、人为的对话接口。
+语音助手使用 Azure 语音服务为开发人员助力，使开发人员可以为其应用程序和体验创建自然的、类似于人类的对话界面。
 
 语音助手服务在设备和助手实现之间提供快速、可靠的交互，使用（1）机器人框架的直接线路语音通道或（2）用于任务完成的集成自定义命令（预览版）服务。
 
@@ -39,13 +39,14 @@ ms.locfileid: "73577982"
 如果你还不确定希望你的助手处理哪种情况，我们建议将[Line Speech](direct-line-speech.md)作为最佳的默认选择。 它与一组丰富的工具和创作辅助工具（例如[虚拟助手解决方案和企业模板](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)）以及用于基于常见模式构建并使用现有知识源的[QnA Maker 服务](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview)相集成。
 
 [自定义命令（预览版）](custom-commands.md)提供专门为自然语言命令和控制方案量身打造的创作和托管体验。
-   ![助手解决方案的比较](media/voice-assistants/assistant-solution-comparison.png "Comp助手解决方案的 arison）
+
+   ![助手解决方案的比较](media/voice-assistants/assistant-solution-comparison.png "助手解决方案的比较")
 
 ## <a name="core-features"></a>核心功能
 
 无论你选择 "[直接行语音](direct-line-speech.md)" 还是 "[自定义命令" （预览版）](custom-commands.md)来创建助手交互，你都可以使用一组丰富的自定义功能来自定义你的助理、产品和个性。
 
-| Category | 功能 |
+| 类别 | 功能 |
 |----------|----------|
 |[Custom 关键字](speech-devices-sdk-create-kws.md) | 用户可以使用 "你好 Contoso" 等自定义关键字开始与助手对话。 应用使用 Speech SDK 中的自定义关键字引擎来完成此工作，可以使用[可在此处生成](speech-devices-sdk-create-kws.md)的自定义关键字对其进行配置。 语音助手可以使用服务端关键字验证来提高关键字激活的准确性（与设备独立）。
 |[语音到文本](speech-to-text.md) | 语音助手使用 Azure 语音服务的[语音到文本](speech-to-text.md)将实时音频转换为可识别的文本。 此文本在助手实现和客户端应用程序中转录。
@@ -65,7 +66,7 @@ ms.locfileid: "73577982"
 
 GitHub 上提供了用于创建语音助手的示例代码。 这些示例涵盖了用几种常用编程语言连接到助手的客户端应用程序。
 
-* [语音助手示例（SDK）](https://aka.ms/csspeech/samples)
+* [语音助手示例 (SDK)](https://aka.ms/csspeech/samples)
 * [教程：通过语音 SDK 使用语音启用助手，C#](tutorial-voice-enable-your-bot-speech-sdk.md)
 
 ## <a name="tutorial"></a>教程

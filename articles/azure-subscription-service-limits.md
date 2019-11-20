@@ -6,16 +6,16 @@ author: rothja
 manager: jeffreyg
 tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
-ms.service: billing
+ms.service: azure-policy
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: f9fe540611b1b773867e1f92439e13df91ad4bd3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: b6ce20196b6ffdcd6699611998260dc981cc4f44
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818363"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185045"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，此列表将进行扩展和更新，以涵盖更多服务。
@@ -67,7 +67,7 @@ ms.locfileid: "73818363"
 * [BizTalk 服务](#biztalk-services-limits)
 * [容器实例](#container-instances-limits)
 * [容器注册表](#container-registry-limits)
-* [内容交付网络](#content-delivery-network-limits)
+* [内容分发网络](#content-delivery-network-limits)
 * [Data Factory](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
@@ -82,7 +82,7 @@ ms.locfileid: "73818363"
 * [媒体服务](#media-services-limits)
 * [移动服务](#mobile-services-limits)
 * [多重身份验证](#multi-factor-authentication-limits)
-* [联网](#networking-limits)
+* [网络](#networking-limits)
   * [应用程序网关](#application-gateway-limits)
   * [Azure 堡垒](#azure-bastion-limits)
   * [Azure DNS](#azure-dns-limits)

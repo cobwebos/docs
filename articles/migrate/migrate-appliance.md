@@ -1,17 +1,17 @@
 ---
-title: Azure Migrate 设备体系结构 |Microsoft Docs
-description: 提供 Azure Migrate 设备的概述
+title: Azure Migrate 设备体系结构
+description: 提供服务器评估和迁移中所使用的 Azure Migrate 设备的概述。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 249cbea173afe1671118446e0714b721b8c7f72b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: MT
+ms.openlocfilehash: bdc81820b1ac9867d45fd26e26d24c65e20641e4
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685094"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185823"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -112,7 +112,7 @@ IPv6 地址 | vm.Guest.Net
 读取吞吐量（MB/秒） | net.received.average
 写入吞吐量（MB/秒） | net.transmitted.average
 **清单路径详细信息** | 
-Name | container.GetType().Name
+名称 | container.GetType().Name
 子对象类型 | container.ChildType
 引用详细信息 | container.MoRef
 父级详细信息 | Container.Parent
@@ -151,7 +151,7 @@ Hyper-v 虚拟网络适配器 | 发送的字节数/秒 | VM 大小的计算
 **数据** | **WMI 类** | **WMI 类属性**
 --- | --- | ---
 **计算机详细信息** | 
-BIOS 的序列号 _ Msvm_BIOSElement | BIOSSerialNumber
+BIOS Msvm_BIOSElement 的序列号 | BIOSSerialNumber
 VM 类型（第1代或第2代） | Msvm_VirtualSystemSettingData | VirtualSystemSubType
 VM 显示名称 | Msvm_VirtualSystemSettingData | ElementName
 VM 版本 | Msvm_ProcessorSettingData | VirtualQuantity
@@ -206,7 +206,7 @@ NIC MAC ID （旧 Nic） | MsvmEmulatedEthernetPortSetting 数据 | 地址
 
 - 这会自动发生，因为默认情况下在设备上启用了自动更新。
 - 您可以更改此默认设置以手动更新代理。
-- 若要禁用自动更新，请在注册表编辑器 > HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance，并将注册表项 "自动更新" 设置为0（DWORD）。
+- 若要禁用自动更新，请在 "注册表编辑器" > HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance "，并将注册表项" 自动更新 "设置为0（DWORD）。
  
 ### <a name="set-agent-updates-to-manual"></a>将代理更新设置为手动
 

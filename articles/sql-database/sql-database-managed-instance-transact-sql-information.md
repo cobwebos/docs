@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 3283cfe9455ba29679d7c741941aa8863c47b1c0
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
-ms.translationtype: HT
+ms.openlocfilehash: 636fd5fd17838c729cdbc9e2a322c1f991d93948
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158293"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186430"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>托管实例的 T-SQL 差异、限制和已知问题
 
@@ -572,14 +572,6 @@ SQL Server/托管实例[不允许用户删除不为空的文件](/sql/relational
 [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) 功能可让你限制分配给用户工作负荷的资源。在故障转移或者完成用户发起的服务层级更改（例如，更改最大 vCore 数或最大实例存储大小）后，Resource Governor 可能会错误地分类某些用户工作负荷。
 
 **解决方法**：如果你使用的是[Resource Governor](/sql/relational-databases/resource-governor/resource-governor)，则在启动实例时，定期或作为 sql 代理作业的一部分运行 `ALTER RESOURCE GOVERNOR RECONFIGURE`。
-
-### <a name="cannot-authenticate-to-external-mail-servers-using-secure-connection-ssl"></a>无法使用安全连接 (SSL) 对外部邮件服务器进行身份验证
-
-**日期：** 2019年8月
-
-[使用安全连接 (SSL) 配置](/sql/relational-databases/database-mail/configure-database-mail)的数据库邮件无法对 Azure 外部的某些电子邮件服务器进行身份验证。 此安全配置问题即将得到解决。
-
-**解决方法：** 暂时从数据库邮件配置中删除安全连接（SSL），直到问题得到解决。 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>升级服务层级后必须重新初始化跨数据库 Service Broker 对话
 

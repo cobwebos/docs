@@ -1,7 +1,7 @@
 ---
-title: 设计器：分类、预测收入
+title: 设计器：分类，预测收入示例
 titleSuffix: Azure Machine Learning
-description: 了解如何在不编写代码的情况下使用设计器（预览）生成机器学习分类器。
+description: 按照此示例生成一个无代码分类器，使用 Azure 机器学习设计器预测收入。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 383cbc11955598505730a4613c50536afac75f95
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 527db89be85cc5b095d33ba89c776a077119f08a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647962"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196057"
 ---
-# <a name="sample-3---classification-with-feature-selection-income-prediction"></a>示例 3-通过功能选择进行分类：收入预测
+# <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>生成分类器 & 使用功能选择通过 Azure 机器学习设计器预测收入
+
+**设计器（预览）示例3**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 了解如何在不编写代码的情况下使用设计器（预览）生成机器学习分类器。 本示例训练一个**双类提升决策树**，以预测成人人口收益（> = 50K 或 < = 50K）。

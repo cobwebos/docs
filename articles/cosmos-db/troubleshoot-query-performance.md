@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: d0dd9a371c4912cae0e74b214c673c629fc1ff55
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: fd8e80c7cd7cb71e4e0418d970cf2f328f1a3d79
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515814"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184716"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>排查 Azure Cosmos DB 的查询性能问题
 本文介绍如何识别、诊断和排查 Azure Cosmos DB SQL 查询问题。 若要实现 Azure Cosmos DB 查询的最佳性能，请执行以下故障排除步骤。 
@@ -26,7 +26,7 @@ ms.locfileid: "69515814"
 
 ## <a name="log-the-executed-sql-query"></a>记录已执行的 SQL 查询 
 
-可以在存储帐户或诊断日志表中记录已执行的 SQL 查询。 [利用诊断日志中的 SQL 查询日志](logging.md#turn-on-logging-in-the-azure-portal), 可以在所选的存储帐户中记录模糊查询。 这使你可以查看使用更多 ru 的日志和查找查询。 稍后, 您可以使用活动 id 来匹配 QueryRuntimeStatistics 中的实际查询。 对于安全用途和查询参数名称, 将对查询进行模糊处理, 其中, where 子句中的值与实际名称和值不同。 你可以使用日志记录到存储帐户来保留所执行查询的长期保留。  
+可以在存储帐户或诊断日志表中记录已执行的 SQL 查询。 [通过诊断日志记录 SQL 查询](monitor-cosmos-db.md#diagnostic-settings)时，可以在所选的存储帐户中记录模糊化的查询。 这样，便可以在日志中查找 RU 消耗量较高的查询。 稍后，您可以使用活动 ID 来匹配 QueryRuntimeStatistics 中的实际查询。 出于安全考虑，查询已经过模糊处理，查询参数名称及其在 where 子句中的值与实际的名称和值不同。 你可以使用日志记录到存储帐户来保留所执行查询的长期保留。  
 
 ## <a name="log-query-metrics"></a>日志查询指标
 
@@ -48,7 +48,7 @@ ms.locfileid: "69515814"
           * 如果返回的文档数比加载的文档数小得多，则表示正在分析误报。
           * 使用范围更窄的筛选器限制检索的文档数。  
 
-      * 各个往返行程的开销如何（查看 `QueryMetrics` 字符串表示形式中的 `Partition Execution Timeline`）。 
+      * 各个往返行程的开销如何（查看 `Partition Execution Timeline` 字符串表示形式中的 `QueryMetrics`）。 
       * 查询是否消耗了较多的请求单位。 
 
 有关更多详细信息，请参阅[如何获取 SQL 查询执行指标](profile-sql-api-query.md)一文。
@@ -147,13 +147,13 @@ ms.locfileid: "69515814"
 
 有关更多详细信息，请参阅[如何管理索引策略](how-to-manage-indexing-policy.md)一文。
 
-## <a name="spatial-data-check-ordering-of-points"></a>空间数据：检查点顺序
+## <a name="spatial-data-check-ordering-of-points"></a>空间数据：检查点排序
 多边形内的点必须以逆时针顺序指定。 以顺时针顺序指定的多边形表示其中的区域倒转。
 
 ## <a name="optimize-join-expressions"></a>优化 JOIN 表达式
 `JOIN` 表达式可扩展成大型叉积。 如果可能，请通过范围更窄的筛选器针对较小的搜索空间进行查询。
 
-多值子查询可以通过在 `WHERE` 子句中的每个 select-many 表达式后面（而不是所有 cross-join 后面）推送谓词，来优化 `JOIN` 表达式。 有关详细示例，请参阅[优化 Join 表达式](https://docs.microsoft.com/azure/cosmos-db/sql-query-subquery#optimize-join-expressions)一文。
+多值子查询可以通过在 `JOIN` 子句中的每个 select-many 表达式后面（而不是所有 cross-join 后面）推送谓词，来优化 `WHERE` 表达式。 有关详细示例，请参阅[优化 Join 表达式](https://docs.microsoft.com/azure/cosmos-db/sql-query-subquery#optimize-join-expressions)一文。
 
 ## <a name="optimize-order-by-expressions"></a>优化 ORDER BY 表达式 
 如果字段是稀疏的或未包含在索引策略中，则 `ORDER BY` 查询性能可能会降低。

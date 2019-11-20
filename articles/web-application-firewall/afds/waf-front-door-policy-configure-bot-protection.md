@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure 前门为 Web 应用程序防火墙配置机器人保护（预览版）
+title: 用 Azure 前门为 WAF 配置机器人保护（预览版）
 description: 了解 Web 应用程序防火墙（WAF）。
 author: vhorne
 ms.service: web-application-firewall
@@ -7,22 +7,22 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: 9a8901e3763b10b7ee00c10f4eec08a8325d7dec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 95660f764d28172ecb55a4952b785fea5f2aa4bb
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512465"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186701"
 ---
 # <a name="configure-bot-protection-for-web-application-firewall-preview"></a>为 Web 应用程序防火墙配置机器人保护（预览版）
 本文介绍如何使用 Azure CLI、Azure PowerShell 或 Azure 资源管理器模板为前门配置 Azure Web 应用程序防火墙（WAF）中的机器人保护规则。
 
-可以为 WAF 启用托管机器人保护规则集，以对来自已知恶意 IP 地址的请求执行自定义操作。 IP 地址源自 Microsoft 威胁情报源。 [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence)为 Microsoft 威胁智能提供技术支持，由多种服务（包括 Azure 安全中心）使用。
+可为 WAF 启用托管机器人防护规则集，以便针对来自已知恶意 IP 地址的请求采取自定义操作。 IP 地址源自 Microsoft 威胁智能源。 [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) 为 Microsoft 威胁智能助力，它已得到 Azure 安全中心等多项服务的运用。
 
 > [!IMPORTANT]
-> 机器人保护规则集当前以公共预览版提供，并随预览版服务级别协议一起提供。 某些功能可能不受支持或者受限。  有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 机器人防护规则集当前以公共预览版提供，并随预览版服务级别协议一起提供。 某些功能可能不受支持或者受限。  有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 按照[使用 Azure 门户为 Azure 前门创建 WAF 策略](waf-front-door-create-portal.md)中所述的说明，为前门创建基本的 WAF 策略。
 

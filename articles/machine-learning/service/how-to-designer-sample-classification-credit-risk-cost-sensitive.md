@@ -1,7 +1,7 @@
 ---
-title: 设计器：预测信用风险（区分成本）
+title: 设计器：预测信用风险示例
 titleSuffix: Azure Machine Learning
-description: 本文介绍如何使用设计器（预览）生成复杂的机器学习管道。 你将了解如何实现自定义 Python 脚本并比较多个模型，以选择最佳选项。
+description: 生成分类器并使用自定义 Python 脚本，使用 Azure 机器学习设计器预测信用风险。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 7af0ee31c7d7e5dae4a38db7f6c74ff3e5f964bb
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 0bf69683fc5afe24e0e7977b05892c3c10b0cd46
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647987"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196090"
 ---
-# <a name="sample-4---classification-with-custom-python-script-predict-credit-risk"></a>示例 4-具有自定义 Python 脚本的分类：预测信用风险
+# <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器生成分类器 & 使用 Python 脚本预测信用风险
+
+**设计器（预览）示例4**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 本文介绍如何使用设计器（预览）生成复杂的机器学习管道。 你将了解如何使用 Python 脚本实现自定义逻辑，并比较多个模型以选择最佳选项。

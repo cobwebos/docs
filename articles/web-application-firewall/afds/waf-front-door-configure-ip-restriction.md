@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 前门服务的 Web 应用程序防火墙规则配置 IP 限制规则
+title: 为 Azure 前门服务配置 IP 限制 WAF 规则
 description: 了解如何配置 Web 应用程序防火墙规则，以限制现有 Azure 前门服务终结点的 IP 地址。
 services: web-application-firewall
 author: vhorne
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: d0a32c4d59d580cb82ad6174c57ebbf677ac75b3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2917b2f04e7c5a4896c52861ab7eab4e0eb00b5d
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517158"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186682"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>使用 Azure 前门服务的 Web 应用程序防火墙配置 IP 限制规则
 本文介绍如何使用 Azure CLI、Azure PowerShell 或 Azure 资源管理器模板在 Web 应用程序防火墙（WAF）中为 Azure 前门服务配置 IP 限制规则。
@@ -24,7 +24,7 @@ ms.locfileid: "73517158"
 
 ## <a name="configure-a-waf-policy-with-the-azure-cli"></a>使用 Azure CLI 配置 WAF 策略
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 在开始配置 IP 限制策略之前，请设置 CLI 环境并创建 Azure 前门服务配置文件。
 
 #### <a name="set-up-the-azure-cli-environment"></a>设置 Azure CLI 环境
@@ -101,7 +101,7 @@ az network front-door waf-policy rule match-condition add\
 
 ## <a name="configure-a-waf-policy-with-azure-powershell"></a>使用 Azure PowerShell 配置 WAF 策略
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 在开始配置 IP 限制策略之前，请设置 PowerShell 环境，并创建 Azure 前门服务配置文件。
 
 #### <a name="set-up-your-powershell-environment"></a>设置 PowerShell 环境

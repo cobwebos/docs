@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13a24ebd8aca3cebab7898689b00e590298a8d1e
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: d8bb9b507763c935ab244c42584120a279063954
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144754"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195456"
 ---
 # <a name="scim-user-provisioning-with-azure-active-directory-azure-ad"></a>SCIM 用户预配 Azure Active Directory （Azure AD）
 
@@ -1306,6 +1306,24 @@ Microsoft 提供的用于实现 SCIM 服务的 CLI 库将该请求转换为对�
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>步骤5：将应用程序发布到 Azure AD 应用程序库
 
 如果要构建的应用程序将由多个租户使用，则可以将其提供给 Azure AD 应用程序库。 这样，组织就可以轻松发现应用程序并配置设置。 在 Azure AD 库中发布你的应用程序并使其可供其他人使用非常简单。 在 [此处](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing) 查看步骤。 Microsoft 将与你合作，将你的应用程序集成到我们的库、测试终结点，并发布载入[文档](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)供客户使用。 
+
+
+### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>在应用程序库中预配连接器的授权
+SCIM 规范未定义用于身份验证和授权的特定于 SCIM 的方案。 它依赖于现有的行业标准。 Azure AD 预配客户端支持库中应用程序的两种授权方法。 
+
+**OAuth 授权代码授予流：** 预配服务支持[授权代码授予](https://tools.ietf.org/html/rfc6749#page-24)。 提交你的应用程序在库中发布的请求后，我们的团队将与你一起收集以下信息：
+*  授权 URL：客户端的 URL，通过用户代理重定向从资源所有者获取授权。 用户被重定向到此 URL 以授权访问。 
+*  令牌交换 URL：客户端用于交换访问令牌授权的 URL，通常使用客户端身份验证。
+*  客户端 ID：授权服务器向注册的客户端颁发客户端标识符，该标识符是表示客户端提供的注册信息的唯一字符串。  客户端标识符不是机密;它向资源所有者公开，**不得**单独用于客户端身份验证。  
+*  客户端密码：客户端密码是由授权服务器生成的机密。 它应该是唯一的唯一值，只是授权服务器。 
+
+最佳做法（建议但不需要）：
+* 支持多个重定向 Url。 管理员可以配置 "portal.azure.com" 和 "aad.portal.azure.com" 中的预配。 支持多个重定向 Url 将确保用户可以从任一门户授予访问权限。
+* 支持多个机密，以确保顺利地续订密钥，而无需停机。 
+
+**生存期较长的 OAuth 持有者令牌：** 如果你的应用程序不支持 OAuth 授权代码授予流，你还可以生成一个长期的 OAuth 持有者令牌，而不是管理员可用于设置预配集成。 令牌应为永久标记，否则在令牌过期时将[隔离](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)设置作业。 此令牌的大小必须小于 1 KB。  
+
+有关其他身份验证和授权方法，请在[UserVoice](https://aka.ms/appprovisioningfeaturerequest)上告诉我们。
 
 ### <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>允许 Azure AD 预配服务使用的 IP 地址发出 SCIM 请求
 

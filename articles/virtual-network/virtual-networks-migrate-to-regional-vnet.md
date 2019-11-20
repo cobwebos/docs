@@ -1,5 +1,5 @@
 ---
-title: 将 Azure 虚拟网络（经典）从地缘组迁移到区域 | Microsoft Docs
+title: 将 Azure 虚拟网络（经典）从地缘组迁移到区域
 description: 了解如何将虚拟网络（经典）从地缘组迁移到区域。
 services: virtual-network
 documentationcenter: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: d33d9ec4eadeaa3a082103f1ad699e2fc3010e3b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 57e6c551e1377425dab5509a886a0454b9410a32
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058402"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196698"
 ---
 # <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>将虚拟网络（经典）从地缘组迁移到区域
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 部署模型。
+> Azure 具有用于创建和处理资源的两个不同的部署模型： [Resource Manager 和经典](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 部署模型。
 
 地缘组确保在相同地缘组中创建的资源由彼此靠近的服务器实际托管，从而加快这些资源的通信速度。 过去，地缘组是创建虚拟网络（经典）的必要条件。 当时，托管虚拟网络（经典）的网络管理器服务只能在一组物理服务器或缩放单元内工作。 体系结构改进已将网络管理的范畴扩大到了区域。
 
@@ -41,7 +41,7 @@ ms.locfileid: "71058402"
 ## <a name="edit-the-network-configuration-file"></a>编辑网络配置文件
 
 1. 导出网络配置文件。 若要了解如何使用 PowerShell 或 Azure 命令行接口 (CLI) 1.0 导出网络配置文件，请参阅[使用网络配置文件配置虚拟网络](virtual-networks-using-network-configuration-file.md#export)。
-2. 编辑网络配置文件，并将 **AffinityGroup** 替换为 **Location**。 为 **Location** 指定一个 Azure [区域](https://azure.microsoft.com/regions)。
+2. 编辑网络配置文件，并将 **AffinityGroup** 替换为 **Location**。 为 [Location](https://azure.microsoft.com/regions) 指定一个 Azure **区域**。
    
    > [!NOTE]
    > **Location** 是已为与虚拟网络（经典）关联的地缘组指定的区域。 例如，如果虚拟网络（经典）与位于美国西部的地缘组关联，则在迁移时，**Location** 必须指向美国西部。 
@@ -50,9 +50,9 @@ ms.locfileid: "71058402"
    
     编辑网络配置文件中的以下行，将相应值替换成自己的值： 
    
-    **旧值：** \<VirtualNetworkSitename = "VNetUSWest" AffinityGroup = "VNetDemoAG"\> 
+    **旧值：** \<VirtualNetworkSitename="VNetUSWest" AffinityGroup="VNetDemoAG"\> 
    
-    **新值：** \<VirtualNetworkSitename = "VNetUSWest" Location = "美国西部"\>
+    **新值：** \<VirtualNetworkSitename="VNetUSWest" Location="West US"\>
 3. 保存所做的更改，并将网络配置[导入](virtual-networks-using-network-configuration-file.md#import)到 Azure。
 
 > [!NOTE]

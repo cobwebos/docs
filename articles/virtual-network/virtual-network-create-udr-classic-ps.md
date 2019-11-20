@@ -1,5 +1,5 @@
 ---
-title: 控制 Azure 虚拟网络中的路由 - PowerShell - 经典 | Microsoft 文档
+title: 控制 Azure VNet 中的路由-PowerShell-经典
 description: 了解如何使用 PowerShell 控制 Vnet 中的路由 | 经典
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: f2f2c17740bd94629209c2bffb82689ecc931fc8
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 4170418b4f53277a8f4306fe2835286c8ac99dee
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058772"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186357"
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>使用 PowerShell 控制路由和使用虚拟设备（经典）
 
@@ -33,7 +33,7 @@ ms.locfileid: "71058772"
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 > [!IMPORTANT]
-> 在使用 Azure 资源之前，请务必了解 Azure 当前具有的两种部署模型：Azure 资源管理器和经典。 在使用任何 Azure 资源之前，请确保了解 [部署模型和工具](../azure-resource-manager/resource-manager-deployment-model.md) 。 可以通过选择本文顶部的选项来查看不同工具的文档。 本文介绍经典部署模型。
+> 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：Azure 资源管理器部署模型和经典部署模型。 在使用任何 Azure 资源之前，请确保了解 [部署模型和工具](../azure-resource-manager/resource-manager-deployment-model.md) 。 可以通过选择本文顶部的选项来查看不同工具的文档。 本文介绍经典部署模型。
 > 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "71058772"
 ## <a name="create-the-udr-for-the-front-end-subnet"></a>为前端子网创建 UDR
 若要根据上述方案为前端子网创建所需的路由表和路由，请按照下面的步骤操作。
 
-1. 运行以下命令为前端子网创建路由表：
+1. 运行以下命令，为前端子网创建路由表：
 
     ```powershell
     New-AzureRouteTable -Name UDR-FrontEnd -Location uswest `
@@ -103,7 +103,7 @@ ms.locfileid: "71058772"
 
 若要在 FW1 VM 中启用 IP 转发，请完成以下步骤：
 
-1. 可运行以下命令检查 IP 转发的状态：
+1. 运行以下命令，检查 IP 转发的状态：
 
     ```powershell
     Get-AzureVM -Name FW1 -ServiceName TestRGFW `

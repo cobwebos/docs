@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/09/2018
+ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: d1c10fa8267131f13d3148ace6c97218a18fd494
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
-ms.translationtype: MT
+ms.openlocfilehash: b6647c1b850b7678944edbc899f0727f8e10db08
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076926"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184346"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>排查 Azure 负载均衡器问题
 
@@ -27,6 +27,8 @@ ms.locfileid: "74076926"
 此页介绍有关 Azure 负载均衡器常见问题的疑难解答信息。 当负载均衡器连接不可用时，最常见的症状如下： 
 - 负载均衡器后端的 VM 不响应运行状况探测 
 - 负载均衡器后端的 VM 不响应已配置端口上的通信
+
+当后端 Vm 的外部客户端通过负载平衡器时，将使用客户端的 IP 地址进行通信。 请确保将客户端的 IP 地址添加到 NSG 允许列表中。 
 
 ## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>症状：负载均衡器后端的 VM 不响应运行状况探测
 后端服务器必须通过探测检查后，才可加入负载均衡器集。 有关运行状况探测的详细信息，请参阅[了解负载均衡器探测](load-balancer-custom-probe-overview.md)。 
@@ -96,18 +98,20 @@ ms.locfileid: "74076926"
 1. 登录到后端 VM。 
 2. 打开命令提示符并运行下列命令，以验证是否有应用程序在侦听数据端口：  netstat -an 
 3. 如果端口状态未被列为“正在侦听”，请配置适当的侦听端口 
-4. 如果端口被标记为“正在侦听”，请检查该端口的目标应用程序是否存在问题。 
+4. 如果端口被标记为“正在侦听”，请检查该端口的目标应用程序是否存在问题。
 
 ### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>原因 2：网络安全组要阻止负载均衡器后端池 VM 上的端口  
 
 如果子网或 VM 上配置的一个或多个网络安全组要阻止源 IP 或端口，则此 VM 无法响应。
 
-* 列出后端 VM 上配置的网络安全组。 有关详细信息，请参阅[管理网络安全组](../virtual-network/manage-network-security-group.md)。
-* 在网络安全组列表中，检查：
+对于公共负载均衡器，将使用 Internet 客户端的 IP 地址在客户端与负载均衡器后端 Vm 之间进行通信。 请确保后端 VM 的网络安全组中允许使用客户端的 IP 地址。
+
+1. 列出后端 VM 上配置的网络安全组。 有关详细信息，请参阅[管理网络安全组](../virtual-network/manage-network-security-group.md)
+1. 在网络安全组列表中，检查：
     - 数据端口上的传入或传出流量是否被干扰。 
-    - 检查 VM NIC 或子网上是否存在优先级高于允许负载均衡探测和流量的默认规则的“全部拒绝”网络安全组规则（网络安全组必须允许负载均衡器 IP 168.63.129.16 - 即探测端口） 
-* 如果某规则要阻止流量，请将其删除并将规则重新配置为允许数据流量。  
-* 测试 VM 是否现已开始响应运行状况探测。
+    - 检查 VM NIC 或子网上是否存在优先级高于允许负载均衡探测和流量的默认规则的“全部拒绝”网络安全组规则（网络安全组必须允许负载均衡器 IP 168.63.129.16 - 即探测端口）
+1. 如果某规则要阻止流量，请将其删除并将规则重新配置为允许数据流量。  
+1. 测试 VM 是否现已开始响应运行状况探测。
 
 ### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>原因 3：从相同的 VM 和网络接口访问负载均衡器 
 
@@ -126,7 +130,7 @@ ms.locfileid: "74076926"
 ## <a name="additional-network-captures"></a>附加网络捕获
 如果决定打开支持案例，请收集下列信息，以更快获得解决方案。 选择单个后端 VM 执行下列测试：
 - 使用来自 VNet 中后端 VM 的 Psping 进行探测端口响应测试（例如 psping 10.0.0.4:3389）并记录结果。 
-- 如果这些 ping 测试未收到响应，请在运行 PsPing 时，在后端 VM 和 VNet 测试 VM 上同时运行 Netsh 跟踪，并停止 Netsh 跟踪。 
+- 如果这些 ping 测试未收到响应，请在运行 PsPing 时，在后端 VM 和 VNet 测试 VM 上同时运行 Netsh 跟踪，然后停止 Netsh 跟踪。 
   
 ## <a name="next-steps"></a>后续步骤
 

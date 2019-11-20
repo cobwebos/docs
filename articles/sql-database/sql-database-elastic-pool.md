@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 1b3ee75d1b24cab8211337cf1cdbd053327e16b8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ba309b864056b10fe6540e85ffbc4c013af00455
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823836"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186467"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>弹性池有助于管理和缩放多个 Azure SQL 数据库
 
@@ -50,7 +50,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 可以加入池的数据库越多，实现的节省就越大。 但根据应用程序使用模式，可能会看到与使用两个 S3 数据库一样少的节约。
 
-以下各部分有助于了解如何评估特定的数据库集合是否会因使用池而受益。 这些示例使用标准池，但同样的原理也适用于基本和高级池。
+以下各部分将帮助用户了解如何评估特定的数据库集合是否会因使用池而受益。 这些示例使用标准池，但同样的原理也适用于基本和高级池。
 
 ### <a name="assessing-database-utilization-patterns"></a>评估数据库使用模式
 
@@ -68,7 +68,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
    ![使用模式适用于池的 20 个数据库](./media/sql-database-elastic-pool/twenty-databases.png)
 
-在上图中，黑线表示跨所有 20 个数据库的聚合 DTU 使用量。 其中表明聚合 DTU 使用量永远不会超过 100 个 DTU，并指出 20 个数据库可以在这段期间共享 100 个 eDTU。 相比于将每个数据库放入单一数据库的 S3 计算大小，这会导致 DTU 减少 20 倍和价格降低 13 倍。
+在上图中，黑线表示跨所有 20 个数据库的聚合 DTU 使用量。 其中表明聚合 DTU 使用量永远不会超过 100 个 DTU，并指出 20 个数据库可以在此时间段内共享 100 个 eDTU。 相比于将每个数据库放入单一数据库的 S3 计算大小，这会导致 DTU 减少 20 倍和价格降低 13 倍。
 
 由于以下原因，此示例很理想：
 
@@ -131,7 +131,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 ### <a name="elastic-jobs-and-elastic-pools"></a>弹性作业和弹性池
 
-借助池，可以通过在 **[elastic jobs](elastic-jobs-overview.md)** 。 弹性作业可消除与大量数据库有关的大部分麻烦。
+借助池，可以通过在 **[弹性作业](elastic-jobs-overview.md)** 中运行脚本来简化管理任务。 弹性作业可消除与大量数据库有关的大部分麻烦。
 
 有关用于操作多个数据库的其他数据库工具的详细信息，请参阅[使用 Azure SQL 数据库进行扩展](sql-database-elastic-scale-introduction.md)。
 
@@ -226,3 +226,4 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 - 有关视频，请参阅[有关 Azure SQL 数据库弹性功能的 Microsoft 虚拟大学视频课程](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 - 若要深入了解如何通过弹性池设计 SaaS 应用程序的模式，请参阅 [具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。
 - 有关使用弹性池的 SaaS 教程，请参阅 [Wingtip SaaS 应用程序简介](sql-database-wtp-overview.md)。
+- 若要了解具有多个数据库的弹性池中的资源管理，请参阅[密集弹性池中的资源管理](sql-database-elastic-pool-resource-management.md)。

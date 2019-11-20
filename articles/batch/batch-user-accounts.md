@@ -11,18 +11,18 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 05/22/2017
+ms.date: 11/18/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 820e979c41ddc1c1cf14456ed77a4a55e353ab12
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 866f2e5e1ba9df9e8e63b77250d6c94635bbc009
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094283"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74194973"
 ---
 > [!NOTE] 
-> 出于安全原因, 本文中所述的用户帐户不同于用于远程桌面协议 (RDP) 或安全外壳 (SSH) 的用户帐户。 
+> 出于安全原因，本文中所述的用户帐户与用于远程桌面协议 (RDP) 或安全外壳 (SSH) 的用户帐户不同。 
 >
 > 若要通过 SSH 连接到运行 Linux 虚拟机配置的节点，请参阅[使用远程桌面连接到 Azure 中的 Linux VM](../virtual-machines/virtual-machines-linux-use-remote-desktop.md)。 若要通过 RDP 连接到运行 Windows 的节点，请参阅[连接到 Windows Server VM](../virtual-machines/windows/connect-logon.md)。<br /><br />
 > 若要通过 RDP 连接到运行云服务配置的节点，请参阅[为 Azure 云服务中的角色启用远程桌面连接](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)。
@@ -128,9 +128,9 @@ batch_client.task.add(job_id=jobid, task=task)
 
 ### <a name="run-a-task-as-an-auto-user-with-pool-scope"></a>以具有池范围的自动用户身份运行任务
 
-预配节点后，将在池中的每个节点上创建两个池范围的自动用户帐户，其中一个帐户拥有提升的访问权限，另一个帐户没有提升的访问权限。 如果将给定任务的自动用户范围设置为池范围，将在这两个池范围自动用户帐户中的一个帐户下运行该任务。 
+预配节点后，会在池中的每个节点上创建两个池范围的自动用户帐户，其中一个帐户拥有提升的访问权限，另一个帐户没有提升的访问权限。 如果将给定任务的自动用户范围设置为池范围，会在这两个池范围自动用户帐户中的一个帐户下运行该任务。 
 
-为自动用户指定池范围时，使用管理员访问权限运行的所有任务将在同一个池范围自动用户帐户下运行。 同样，不使用管理员权限运行的任务也在单个池范围自动用户帐户下运行。 
+为自动用户指定池范围时，使用管理员访问权限运行的所有任务会在同一个池范围自动用户帐户下运行。 同样，不使用管理员权限运行的任务也在单个池范围自动用户帐户下运行。 
 
 > [!NOTE] 
 > 两个池范围自动用户帐户是独立的帐户。 在池范围管理帐户下运行的任务不能与标准帐户下运行的任务共享数据，反之亦然。 
@@ -143,7 +143,7 @@ batch_client.task.add(job_id=jobid, task=task)
 
 你可能想要在具有池范围的自动用户帐户下运行任务的另一种情景是实现消息传递接口 (MPI) 文件共享。 如果 MPI 任务中的节点需要处理相同的文件数据，MPI 文件共享将非常有用。 如果头节点和子节点在同一个自动用户帐户下运行，则头节点将创建可由子节点访问的文件共享。 
 
-以下代码片段在 Batch .NET 中将自动用户的范围设置为任务的池范围。 已省略提升级别，因此，任务将在标准池范围自动用户帐户下运行。
+以下代码片段在批处理 .NET 中会自动用户的范围设置为任务的池范围。 已省略提升级别，因此，任务会在标准池范围自动用户帐户下运行。
 
 ```csharp
 task.UserIdentity = new UserIdentity(new AutoUserSpecification(scope: AutoUserScope.Pool));
@@ -151,7 +151,7 @@ task.UserIdentity = new UserIdentity(new AutoUserSpecification(scope: AutoUserSc
 
 ## <a name="named-user-accounts"></a>命名用户帐户
 
-创建池时，可以定义命名用户帐户。 命名用户帐户具有你提供的名称和密码。 可为命名用户帐户指定提升级别。 对于 Linux 节点，还可以提供 SSH 私钥。
+创建池时，可以定义命名用户帐户。 命名用户帐户具有所提供的名称和密码。 可为命名用户帐户指定提升级别。 对于 Linux 节点，还可以提供 SSH 私钥。
 
 命名用户帐户在池中的所有节点上存在，可供这些节点上运行的所有任务使用。 可为一个池定义任意数目的命名用户。 添加任务或任务集合时，可以指定任务需在池中定义的某个命名用户帐户下运行。
 
@@ -159,11 +159,11 @@ task.UserIdentity = new UserIdentity(new AutoUserSpecification(scope: AutoUserSc
 
 还可以使用命名用户帐户来运行可在外部资源（例如文件共享）上设置权限的任务。 使用命名用户帐户可以控制用户标识，并使用该用户标识来设置权限。  
 
-命名用户帐户可在 Linux 节点之间启用无密码 SSH。 可以在需要运行多实例任务的 Linux 节点中使用命名用户帐户。 池中的每个节点可以在整个池中定义的用户帐户下运行任务。 有关多实例任务的详细信息，请参阅[使用多实例任务运行 MPI 应用程序](batch-mpi.md)。
+命名用户帐户可在 Linux 节点之间启用无密码 SSH。 可以在需要运行多实例任务的 Linux 节点中使用命名用户帐户。 池中的每个节点可以在整个池中定义的用户帐户下运行任务。 有关多实例任务的详细信息，请参阅[使用多实例任务运行 MPI 应用程序\-。
 
 ### <a name="create-named-user-accounts"></a>创建命名用户帐户
 
-若要在批处理中创建命名用户帐户，请在池中添加一个用户帐户集合。 以下代码片段演示如何在 .NET、Java 和 Python 中创建命名用户帐户。 这些代码片段演示如何在池中创建管理员和非管理员命名帐户。 这些示例使用云服务配置创建池，但你在使用虚拟机配置创建 Windows 或 Linux 池时，可以使用相同的方法。
+若要在批处理中创建命名用户帐户，请在池中添加一个用户帐户集合。 以下代码片段演示如何在 .NET、Java 和 Python 中创建命名用户帐户。 这些代码片段演示如何在池中创建管理员和非管理员命名帐户。 这些示例使用云服务配置创建池，但在使用虚拟机配置创建 Windows 或 Linux 池时，可以使用相同的方法。
 
 #### <a name="batch-net-example-windows"></a>Batch .NET 示例 (Windows)
 
@@ -254,7 +254,7 @@ await pool.CommitAsync();
 ```
 
 
-#### <a name="batch-java-example"></a>Batch Java 示例
+#### <a name="batch-java-example"></a>批处理 Java 示例
 
 ```java
 List<UserAccount> userList = new ArrayList<>();
@@ -280,7 +280,7 @@ users = [
     batchmodels.UserAccount(
         name='pool-nonadmin',
         password='******',
-        elevation_level=batchmodels.ElevationLevel.nonadmin)
+        elevation_level=batchmodels.ElevationLevel.non_admin)
 ]
 pool = batchmodels.PoolAddParameter(
     id=pool_id,
@@ -295,7 +295,7 @@ batch_client.pool.add(pool)
 
 ### <a name="run-a-task-under-a-named-user-account-with-elevated-access"></a>在拥有提升的访问权限的命名用户帐户下运行任务
 
-若要以提升权限的用户身份运行某个任务，请将该任务的 **UserIdentity** 属性设置为创建的命名用户帐户（该帐户的 **ElevationLevel** 属性已设置为 `Admin`）。
+要以提升权限的用户身份运行某个任务，请将该任务的 **UserIdentity** 属性设置为创建的命名用户帐户（该帐户的 **ElevationLevel** 属性已设置为 `Admin`）。
 
 此代码片段指定任务应在命名用户帐户下运行。 此命名用户帐户是在创建池时定义的。 在本例中，创建的命名用户帐户拥有管理员权限：
 
@@ -306,9 +306,9 @@ task.UserIdentity = new UserIdentity(AdminUserAccountName);
 
 ## <a name="update-your-code-to-the-latest-batch-client-library"></a>将代码更新到最新的批处理客户端库
 
-Batch 服务版本 2017-01-01.4.0 引入了一项重大更改，已将早期版本中的 **runElevated** 属性替换为 **userIdentity** 属性。 下表提供了从早期版本的客户端库更新代码时可以参考的简单更改对照。
+批处理服务版本 2017-01-01.4.0 引入了一项重大更改，已将早期版本中的 **runElevated** 属性替换为 **userIdentity** 属性。 下表提供了从早期版本的客户端库更新代码时可以参考的简单更改对照。
 
-### <a name="batch-net"></a>Batch .NET
+### <a name="batch-net"></a>批处理 .NET
 
 | 如果代码使用...                  | 请更新为...                                                                                                 |
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------|
@@ -324,12 +324,12 @@ Batch 服务版本 2017-01-01.4.0 引入了一项重大更改，已将早期版�
 | `CloudTask.withRunElevated(false);`       | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.NONADMIN));` |
 | `CloudTask.withRunElevated` 未指定 | 无需更新                                                                                                                     |
 
-### <a name="batch-python"></a>Batch Python
+### <a name="batch-python"></a>批处理 Python
 
 | 如果代码使用...                      | 请更新为...                                                                                                                       |
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `run_elevated=True`                       | `user_identity=user`，其中 <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin))`                |
-| `run_elevated=False`                      | `user_identity=user`，其中 <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.nonadmin))`             |
+| `run_elevated=False`                      | `user_identity=user`，其中 <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.non_admin))`             |
 | `run_elevated` 未指定 | 无需更新                                                                                                                                  |
 
 

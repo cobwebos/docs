@@ -1,5 +1,5 @@
 ---
-title: 故障排除 - 使用 Azure Front Door 服务配置排查问题 | Microsoft Docs
+title: 排查 Azure 前门服务配置问题
 description: 本教程介绍如何自我排查在使用 Front Door 时可能会遇到的一些常见问题。
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 420d7afe0d825da9149f2cb2ae1540a2805b357c
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c0d6303620b92368e422b54beab4f9c346d022a5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335878"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184563"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>排查常见的路由问题
 本文介绍如何排查在使用 Azure Front Door 服务配置时可能会遇到的一些常见路由问题。 
@@ -62,7 +62,7 @@ ms.locfileid: "68335878"
 
 
 3. 检查路由规则设置
-     - 导航到应该从相关前端主机名路由到后端池的路由规则。 确保接受的协议已正确配置，否则，请确保 Front Door 在转发请求时使用的协议已正确配置。 _接受的协议_确定前门应接受的请求,_转发协议_确定应该使用哪种协议前门将请求转发到后端。
+     - 导航到应该从相关前端主机名路由到后端池的路由规则。 确保接受的协议已正确配置，否则，请确保 Front Door 在转发请求时使用的协议已正确配置。 _接受的协议_确定前门应接受的请求，_转发协议_确定应该使用哪种协议前门将请求转发到后端。
           - 例如，如果后端仅接受 HTTP 请求，则以下配置有效：
                - 接受的协议是 HTTP 和 HTTPS。 转发协议是 HTTP。 匹配请求不起作用，因为 HTTPS 是允许的协议，如果请求作为 HTTPS 传入，则 Front Door 会尝试使用 HTTPS 将其转发。
 

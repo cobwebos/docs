@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 0196e6fb4b2cd52fd66a26e07e8d4ce71983bc16
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 53441f5fedb4fa5e68cd1d8230ffe3ee6122e55b
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013195"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186681"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>用于构建高度可用的 Azure 存储应用程序的区域冗余存储（ZRS）
 
@@ -29,8 +29,8 @@ ZRS 适用于块 blob、非磁盘页 blob、标准文件共享、表和队列。
 对于常规用途 v2 帐户，ZRS 已在以下区域公开发布：
 
 - 亚洲东南部
-- 西欧
 - 北欧
+- 西欧
 - 法国中部
 - 日本东部
 - 英国南部

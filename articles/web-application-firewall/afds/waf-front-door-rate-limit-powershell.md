@@ -1,5 +1,5 @@
 ---
-title: 为前门配置 Web 应用程序防火墙速率限制规则-Azure PowerShell
+title: 为前门配置 WAF rate 限制规则-Azure PowerShell
 description: 了解如何为现有前门终结点配置速率限制规则。
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: ce9ace445d87479da4047da205b59e79402ece07
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 831d0876c67aa36248a54f3935e5ce7884c736ef
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517132"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186629"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>使用 Azure PowerShell 配置 Web 应用程序防火墙速率限制规则
 Azure 前门的 Azure Web 应用程序防火墙（WAF）速率限制规则控制单个客户端 IP 在一分钟的时间内允许的请求数。
@@ -20,7 +20,7 @@ Azure 前门的 Azure Web 应用程序防火墙（WAF）速率限制规则控制
 
 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 在开始设置速率限制策略之前，请设置 PowerShell 环境，并创建前门配置文件。
 ### <a name="set-up-your-powershell-environment"></a>设置 PowerShell 环境
 Azure PowerShell 提供一组可以使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)模型管理 Azure 资源的 cmdlet。 

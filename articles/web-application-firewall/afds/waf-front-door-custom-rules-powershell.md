@@ -1,5 +1,5 @@
 ---
-title: 使用自定义规则配置 Web 应用程序防火墙（WAF）策略，并为前门 Azure PowerShell 设置默认 Ruse
+title: 为 Azure 前门 & 默认规则集配置 WAF 自定义规则
 description: 了解如何配置 WAF 策略，同时包含现有前门终结点的自定义和托管规则。
 services: web-application-firewall
 author: vhorne
@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: fec1ed5d51c4afe43df513b54595b4ce1e2f4bbb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 493ed1a31a23366a90b80d3ab510218c8dce0e9c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512543"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186635"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>使用 Azure PowerShell 配置 Web 应用程序防火墙策略
 
@@ -21,7 +21,7 @@ Azure Web 应用程序防火墙（WAF）策略定义请求到达前门时所需�
 
 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在开始设置速率限制策略之前，请设置 PowerShell 环境，并创建前门配置文件。
 

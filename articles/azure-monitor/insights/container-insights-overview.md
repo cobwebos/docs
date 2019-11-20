@@ -6,17 +6,24 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: 906ae92b0018430bdda02639642dd66ae2231dce
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/18/2019
+ms.openlocfilehash: 97aad6f3853de07a3c4d2fc694c1dcefbd0e82a4
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73477062"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195119"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>用于容器的 Azure Monitor 概述
 
-容器 Azure Monitor 是一项功能，用于监视部署到 Azure 容器实例的容器工作负荷的性能、托管在 Azure Kubernetes 服务（AKS）的托管 Kubernetes 群集或托管的自托管 Kubernetes 群集Azure Stack 上。 监视容器至关重要，特别是在大规模运行包含多个应用程序的生产群集时。
+容器 Azure Monitor 是一项功能，用于监视部署到的容器工作负荷的性能：
+
+- 托管在 Azure Kubernetes 服务（AKS）上的托管 Kubernetes 群集
+- Azure 容器实例
+- 托管在 Azure Stack 或本地的自行管理的 Kubernetes 群集
+- Azure Red Hat OpenShift
+
+监视容器至关重要，特别是在大规模运行包含多个应用程序的生产群集时。
 
 用于容器的 Azure Monitor 通过 Metrics API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标，来提供性能可见性。 容器日志也会被收集。  从 Kubernetes 群集启用监视后，将通过适用于 Linux 的 Log Analytics 代理的容器化版本自动收集指标和日志。 指标将写入指标存储区，日志数据将写入与 [Log Analytics](../log-query/log-query-overview.md) 工作区关联的日志存储区。 
 
@@ -31,7 +38,7 @@ ms.locfileid: "73477062"
 * 确定容器在控制器或 Pod 中的驻留位置。 此信息可帮助了解控制器或 Pod 的整体性能。 
 * 查看在主机上运行的与支持 Pod 的标准过程无关的工作负荷的资源利用率。
 * 了解群集在平均负载和最重负载下的行为。 此信息可帮助识别容量需求及确定群集可承受的最大负载。 
-* 配置警报，以便在节点或容器上的 CPU 和内存使用率超过阈值时，或者当群集中的基础结构、节点或工作负载运行状况汇总发生状态更改时，主动通知你或记录此警报。
+* 配置警报，以便在节点或容器上的 CPU 和内存使用率超过阈值时，或者当群集中的基础结构或节点运行状况汇总发生状态更改时，主动通知你或记录此警报。
 * 与 [Prometheus](https://prometheus.io/docs/introduction/overview/) 集成，以使用[查询](container-insights-log-search.md)查看从节点和 Kubernetes 收集的应用程序和工作负荷指标，以创建自定义警报、仪表板和详细的执行详细分析。
 
     >[!NOTE]
@@ -39,6 +46,7 @@ ms.locfileid: "73477062"
     >
 
 * 监视部署到 Azure Stack 上的[AKS engine](https://github.com/microsoft/OMS-docker/tree/aks-engine)和[AKS engine](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)的容器工作负荷。
+* 监视[部署到 Azure Red Hat OpenShift](../../openshift/intro-openshift.md)的容器工作负荷。
 
 请观看以下视频，提供中级深入探讨，帮助你了解如何使用容器 Azure Monitor 来监视 AKS 群集。
 
@@ -54,6 +62,4 @@ ms.locfileid: "73477062"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要开始监视 AKS 群集，请查看[如何为容器启用 Azure Monitor](container-insights-onboard.md) 以了解启用监视的要求和可用方法。 
-
-- 若要开始监视本地部署的 Azure Stack 或 Kubernetes 上的 AKS 引擎，请查看[Azure Monitor 为容器配置混合 Kubernetes 群集](container-insights-hybrid-setup.md)。  
+若要开始监视 Kubernetes 群集，请查看[如何启用容器 Azure Monitor](container-insights-onboard.md)以了解启用监视的要求和可用方法。 

@@ -1,6 +1,6 @@
 ---
 title: 使用 Power BI 可视化远程监视数据 - Azure | Microsoft Docs
-description: 本教程使用 Power BI Desktop 和 Cosmos DB 将来自远程监视解决方案的数据集成到自定义的可视化效果。 这样，用户便可以生成其自己的自定义仪表板，并将其与解决方案外部的用户共享。
+description: 本教程使用 Power BI Desktop 和 Cosmos DB 将远程监视解决方案中的数据集成到自定义可视化效果中。 这样，用户便可以生成其自己的自定义仪表板，并将其与解决方案外部的用户共享。
 author: dominicbetts
 manager: hegate
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 13b10aa4f40b7c4b62b35e8580c2826c10e6683f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
-ms.translationtype: HT
+ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166296"
+ms.locfileid: "74184244"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>使用 Power BI 可视化远程监视数据
 
@@ -22,13 +22,13 @@ ms.locfileid: "74166296"
 ## <a name="prerequisites"></a>先决条件
 
 - 当前必须有一个远程监视解决方案正在运行
-- 必须对 [Azure 门户](https://portal.azure.com)以及运行 IoT 中心和解决方案的订阅拥有访问权限
+- 你必须有权访问在其上运行 IoT 中心和解决方案的[Azure 门户](https://portal.azure.com)和订阅
 - 必须安装 [Power BI Desktop](https://powerbi.microsoft.com)（任何版本都可以）
 
 
-## <a name="information-needed-from-azure-portal"></a>Azure 门户中的所需信息
+## <a name="information-needed-from-azure-portal"></a>Azure 门户所需的信息
 
-1. 导航到 [Azure 门户](https://portal.azure.com)并根据需要登录
+1. 导航到[Azure 门户](https://portal.azure.com)并根据需要登录
 
 2. 在左侧面板中单击“资源组”
 

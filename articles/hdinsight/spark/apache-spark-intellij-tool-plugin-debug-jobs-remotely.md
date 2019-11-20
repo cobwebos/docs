@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: ac8ef620948048ae26ef6f408b4bc86b2a2bfbdc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5fede76fbc97b31cbbcdaec1b17f838100d35511
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494583"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195841"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>使用 Azure Toolkit for IntelliJ 通过 VPN 在 HDInsight 中远程调试 Apache Spark 应用程序
 
@@ -27,13 +27,13 @@ ms.locfileid: "73494583"
 1. 在 IntelliJ IDEA 中创建 Scala 应用程序，并对它进行配置以进行远程调试。
 1. 运行和调试应用程序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * **一个 Azure 订阅**。 有关详细信息，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * **HDInsight 中的 Apache Spark 群集**。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 * **Oracle Java 开发工具包**。 可以从 [Oracle 网站](https://aka.ms/azure-jdks)安装它。
 * **IntelliJ IDEA**。 本文使用版本 2017.1。 可以从 [JetBrains 网站](https://www.jetbrains.com/idea/download/)安装它。
-* **用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具**。 用于 IntelliJ 的 Azure 工具包随附了用于 IntelliJ 的 HDInsight 工具。 有关 Azure 工具包的安装方法说明，请参阅[安装用于 IntelliJ 的 Azure 工具包](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation)。
+* **Azure Toolkit for IntelliJ 中的 HDInsight 工具**。 用于 IntelliJ 的 Azure 工具包随附了用于 IntelliJ 的 HDInsight 工具。 有关 Azure 工具包的安装方法说明，请参阅[安装用于 IntelliJ 的 Azure 工具包](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation)。
 * **从 IntelliJ IDEA 登录到 Azure 订阅**。 遵照[使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序](apache-spark-intellij-tool-plugin.md)中的说明操作。
 * **异常解决方法**。 在 Windows 计算机上运行 Spark Scala 应用程序进行远程调试时，可能会出现异常。 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中解释了此异常，其原因是 Windows 中缺少 WinUtils.exe 文件。 若要解决此错误，必须[下载该可执行文件](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)到某个位置（例如 **C:\WinUtils\bin**）。 添加环境变量 **HADOOP_HOME**，并将其值设置为 **C\WinUtils**。
 
@@ -69,7 +69,7 @@ ms.locfileid: "73494583"
 
 1. 将头节点的 IP 地址和主机名添加到要从中运行和远程调试 Spark 作业的计算机上的 **hosts** 文件中。 这样，便可以使用 IP 地址和主机名来与头节点通信。
 
-   a. 以提升的权限打开一个记事本文件。 在“文件”菜单中选择“打开”，并找到 hosts 文件的位置。 在 Windows 计算机上，该位置为 **C:\Windows\System32\Drivers\etc\hosts**。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 以提升的权限打开一个记事本文件。 在“文件”菜单中选择“打开”，并找到 hosts 文件的位置。 在 Windows 计算机上，该位置为 **C:\Windows\System32\Drivers\etc\hosts**。
 
    b. 将以下信息添加到 **hosts** 文件：
 
@@ -98,7 +98,7 @@ ms.locfileid: "73494583"
 
     ![在于 IntelliJ IDEA 中选择新建项目模板](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png)
 
-    a. 选择“HDInsight” > “Spark on HDInsight (Scala)”
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“HDInsight” > “Spark on HDInsight (Scala)”
 
     b. 选择“**下一步**”。
 1. 在接下来显示的“新建项目”对话框中执行以下操作，并选择“完成”：
@@ -111,9 +111,9 @@ ms.locfileid: "73494583"
   
    ![选择项目 SDK 和 Spark 版本](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-project-details.png)
   
-1. Spark 项目会自动创建一个项目。 若要查看项目，请执行以下操作：
+1. Spark 项目将自动创建一个项目。 若要查看项目，请执行以下操作：
 
-    a. 在“文件”菜单中，选择“项目结构”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“文件”菜单中，选择“项目结构”。
 
     b. 在“项目结构”对话框中，选择“项目”查看创建的默认项目。 也可以选择加号 ( **+** ) 图标创建自己的项目。
 
@@ -121,7 +121,7 @@ ms.locfileid: "73494583"
 
 1. 将库添加到项目。 若要添加库，请执行以下操作：
 
-    a. 在项目树中右键单击项目名称，并单击“打开模块设置”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在项目树中右键单击项目名称，并单击“打开模块设置”。
 
     b. 在“项目结构”对话框中选择“库”，选择 ( **) 符号，并选择“从 Maven”。** **+**
 
@@ -149,7 +149,7 @@ ms.locfileid: "73494583"
 
 1. 更新 `core-site.xml` 文件以进行以下更改：
 
-   a. 替换加密的密钥。 `core-site.xml` 文件包含与群集关联的存储帐户的已加密密钥。 在已添加到项目的 `core-site.xml` 文件中，将已加密密钥替换为与默认存储帐户关联的实际存储密钥。 有关详细信息，请参阅[管理存储访问密钥](../../storage/common/storage-account-manage.md#access-keys)。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 替换加密的密钥。 `core-site.xml` 文件包含与群集关联的存储帐户的已加密密钥。 在已添加到项目的 `core-site.xml` 文件中，将已加密密钥替换为与默认存储帐户关联的实际存储密钥。 有关详细信息，请参阅[管理存储访问密钥](../../storage/common/storage-account-manage.md#access-keys)。
 
     ```xml
     <property>
@@ -203,9 +203,9 @@ ms.locfileid: "73494583"
                             "wasb:///HVACOut")
         }
     }
-        ```
+    ```
 
-1. Repeat steps 8 and 9 to add a new Scala object called `*SparkSample`. Add the following code to this class. This code reads the data from the HVAC.csv (available in all HDInsight Spark clusters). It retrieves the rows that only have one digit in the seventh column in the CSV file, and then writes the output to **/HVACOut** under the default storage container for the cluster.
+1. 重复步骤 8 和 9，添加名为 `*SparkSample` 的新 Scala 对象。 将以下代码添加到此类。 此代码从 HVAC.csv（用于所有 HDInsight Spark 群集）中读取数据。 它会检索在 CSV 文件的第七列中只有一个数字的行，并将输出写入群集的默认存储容器下的 **/HVACOut**。
 
     ```scala
     import org.apache.spark.SparkContext
@@ -305,7 +305,7 @@ ms.locfileid: "73494583"
 
 ### <a name="demo"></a>演示
 
-* 创建 Scala 项目（视频）：[创建 Apache Spark Scala 应用程序](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
+* 创建 Scala 项目（视频）：[Create Apache Spark Scala Applications](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)（创建 Apache Spark Scala 应用程序）
 * 远程调试（视频）：[使用 Azure Toolkit for IntelliJ 远程调试 HDInsight 群集上的 Apache Spark 应用程序](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>方案

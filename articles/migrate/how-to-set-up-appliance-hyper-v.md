@@ -1,17 +1,17 @@
 ---
-title: 为 Hyper-v Vm 设置用于 Azure Migrate 服务器评估/迁移的设备 |Microsoft Docs
-description: 介绍如何使用 Azure Migrate Server 评估/迁移为 Hyper-v Vm 的发现、评估和无代理迁移设置设备。
+title: 为 Hyper-v 设置 Azure Migrate 设备
+description: 了解如何设置 Azure Migrate 设备来评估和迁移 Hyper-v Vm。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 00473519ad324d34d1fd595b2fb08408ad991f4c
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
-ms.translationtype: HT
+ms.openlocfilehash: 1676ad3dde5a97d2afdb64595d51f5502f9dcc3d
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158627"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185931"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>为 Hyper-v Vm 设置设备
 

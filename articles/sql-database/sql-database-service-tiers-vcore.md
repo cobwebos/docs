@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/04/2019
-ms.openlocfilehash: b9de02bf0836727ac88b78194641238621e87a79
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1bdd14841fc1c537046ee8dc3d0d6dc63b88ea25
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821055"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196535"
 ---
 # <a name="vcore-model-overview"></a>vCore 模型概述
 
@@ -33,7 +33,7 @@ VCore 模型中的服务层选项包括常规用途、业务关键和超大规�
 |---|---|---|---|
 |最适用于|大多数业务工作负荷。 提供预算导向的、均衡且可缩放的计算和存储选项。 |通过使用多个独立副本，为业务应用程序提供故障的最高复原能力，并为每个数据库副本提供最高的 i/o 性能。|具有很高的可缩放存储和读取缩放要求的大多数业务工作负荷。  允许配置多个独立的数据库副本，从而提供更高的故障恢复能力。 |
 |存储|使用远程存储。<br/>**单一数据库和弹性池预配计算**：<br/>5 GB – 4 TB<br/>**无服务器计算**<br/>5 GB - 3 TB<br/>**托管实例**： 32 GB-8 TB |使用本地 SSD 存储。<br/>**单一数据库和弹性池预配计算**：<br/>5 GB – 8 TB<br/>**托管实例**：<br/>32 GB - 4 TB |可以根据需要灵活地自动扩展存储。 最多支持 100 TB 存储空间。 使用本地 SSD 存储作为本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终的长期数据存储。 |
-|I/O 吞吐量（近似值）|**单一数据库和弹性池**：每个 VCORE 500 iops，最大 iops 为40000。<br/>**托管实例**：依赖于[文件的大小](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)。|每 vCore 5000 IOPS，最大 IOPS 为320000|超大规模是具有多个级别缓存的多层体系结构。 有效 IOPs 将取决于工作负荷。|
+|I/O 吞吐量（近似值）|**单一数据库和弹性池**：每个 VCORE 500 iops，最大 iops 为40000。<br/>**托管实例**：依赖于[文件的大小](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)。|每 vCore 5000 IOPS，最大 IOPS 为320000|超大规模是具有多个级别缓存的多层体系结构。 有效 IOPS 将取决于工作负荷。|
 |可用性|1 个副本，无读取缩放副本|3 个副本，1 个[读取缩放副本](sql-database-read-scale-out.md)，<br/>区域冗余高可用性 (HA)|1 个读写副本加 0-4 个[读取缩放副本](sql-database-read-scale-out.md)|
 |备份|[读取访问异地冗余存储 (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为 7 天）|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为 7 天）|Azure 远程存储中基于快照的备份。 还原使用这些快照进行快速恢复。 备份瞬间完成，不会影响计算 I/O 性能。 还原速度很快，不基于数据操作的大小（需要几分钟，而不是几小时或几天）。|
 |内存中|不支持|支持|不支持|
@@ -134,7 +134,7 @@ VCore 模型中的硬件生成选项包括 Gen 4/5、M 系列（预览版）和 
 
 ### <a name="hardware-availability"></a>硬件可用性
 
-#### <a name="gen4gen5"></a>Gen4/Gen5
+#### <a name="gen4gen5-1"></a>Gen4/Gen5
 
 澳大利亚东部或巴西南部区域不再支持新的 Gen4 数据库。 
 

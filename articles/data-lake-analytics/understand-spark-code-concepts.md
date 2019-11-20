@@ -8,12 +8,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: 4ed23beae6edb13efabf034c1e87b9cb76048f82
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 3d15afc26c876c6e4d2d7244e26f0b13ced59a58
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648462"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184746"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>了解适用于 SQL 开发人员的 Apache Spark 代码
 
@@ -143,13 +143,13 @@ Spark 分别提供自己的 Python 和 R 集成、pySpark 和 SparkR，并提供
 
 此行为不同于 U SQL，后者遵循C#语义，其中 `null` 不同于任何值，但等于其自身。  
 
-因此，使用 `WHERE column_name = NULL` 的 SparkSQL `SELECT` 语句将返回零行，即使 `column_name`中存在 NULL 值，在 U SQL 中，它也会返回 `column_name` 设置为 `null`的行。 同样，如果 `column_name`中存在非 null 值，则使用 `WHERE column_name != NULL` 的 Spark `SELECT` 语句将返回零行，而在 U SQL 中，它将返回具有非 null 值的行。 因此，如果你想要使用双 SQL null 检查语义，请分别使用[isnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull)）和[isnotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) （或其 DSL 等效项）。
+因此，使用 `WHERE column_name = NULL` 的 SparkSQL `SELECT` 语句将返回零行，即使 `column_name`中存在 NULL 值，在 U SQL 中，它也会返回 `column_name` 设置为 `null`的行。 同样，如果 `column_name`中存在非 null 值，则使用 `WHERE column_name != NULL` 的 Spark `SELECT` 语句将返回零行，而在 U SQL 中，它将返回具有非 null 值的行。 因此，如果你想要使用 U-SQL null check 语义，则应该分别使用[isnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull)和[isnotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) （或其 DSL 等效项）。
 
 ## <a name="transform-u-sql-catalog-objects"></a>转换 U SQL 目录对象
 
 一个主要区别是，可以使用多个 SQL 脚本来利用它的目录对象，其中许多对象没有直接的 Spark 等效项。
 
-Spark 为 Hive 元存储概念（主要是数据库和表）提供支持，因此，你可以将 U SQL 数据库和架构映射到 Hive 数据库，将 U SQL 表映射到 Spark 表（请参阅[移动在 U sql 表中存储的数据](understand-spark-data-formats.md#move-data-stored-in-u-sql-tables)），但它不支持视图，表值函数（Tvf）、存储过程、U SQL 程序集、外部数据源等。
+Spark 为 Hive 元存储概念提供支持，主要是数据库和表，因此你可以将 U SQL 数据库和架构映射到 Hive 数据库，将 u SQL 表映射到 Spark 表（请参阅[移动在 U SQL 表中存储的数据](understand-spark-data-formats.md#move-data-stored-in-u-sql-tables)，但它不支持视图、表值函数（tvf）、存储过程、U SQL 程序集、外部数据源等。
 
 可以通过 Spark 中的代码函数和库对 U SQL 代码对象（如视图、Tvf、存储过程和程序集）进行建模，并使用宿主语言的函数和过程抽象机制（例如通过导入Python 模块或引用 Scala 函数）。
 

@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 250d470e2450820f57720e0e1a6d274291cf162c
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
-ms.translationtype: MT
+ms.openlocfilehash: 3c826cd32b38676bcbfe1bec79f580e17a509145
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809622"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195975"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中测试代码的策略
 
@@ -43,8 +43,8 @@ ms.locfileid: "72809622"
 2. [从模板创建 HTTP 函数](./functions-create-first-azure-function.md)并将其命名为 *HttpTrigger*。
 3. [从模板创建计时器函数](./functions-create-scheduled-function.md)并将其命名为 *TimerTrigger*。
 4. 单击“文件”>“新建”>“项目”>“Visual C#”>“.NET Core”>“xUnit 测试项目”，在 Visual Studio 中[创建 xUnit 测试应用](https://xunit.github.io/docs/getting-started-dotnet-core)，并将其命名为“Functions.Test”。 
-5. 使用 Nuget 从测试应用[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)添加引用
-6. [从 *Functions.Test* 应用引用 *Functions* 应用](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017)。
+5. 使用 Nuget 从测试应用 [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 添加引用
+6. [从 *Functions.Test* 应用引用 ](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017)Functions *应用*。
 
 ### <a name="create-test-classes"></a>创建测试类
 
@@ -54,7 +54,7 @@ ms.locfileid: "72809622"
 
 `ListLogger` 类用于实现 `ILogger` 接口并保存在消息的内部列表中，以便在测试期间用于评估。
 
-**右键单击**"*函数*"，然后选择 "**添加 > 类，将**其命名为**NullScope.cs** ，然后输入以下代码：
+**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 *NullScope.cs*，然后输入以下代码：
 
 ```csharp
 using System;
@@ -72,7 +72,7 @@ namespace Functions.Tests
 }
 ```
 
-接下来，**右键单击**"*函数*"，然后选择 "**添加 > 类**"，将其命名为**ListLogger.cs** ，然后输入以下代码：
+接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 *ListLogger.cs*，然后输入以下代码：
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -110,7 +110,7 @@ namespace Functions.Tests
 
 `ListLogger` 类实现 `ILogger` 接口收缩的以下成员：
 
-- **BeginScope**：作用域将上下文添加到日志记录。 在这种情况下，测试只指向 `NullScope` 类上的静态实例，以允许测试正常运行。
+- **BeginScope**：作用域将上下文添加到日志记录。 在本例中，测试只是指向 `NullScope` 类中的静态实例，使测试能够正常运行。
 
 - **IsEnabled**：提供默认值 `false`。
 
@@ -118,7 +118,7 @@ namespace Functions.Tests
 
 `Logs` 集合是 `List<string>` 的实例，在构造函数中初始化。
 
-接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **LoggerTypes.cs**，然后输入以下代码：
+接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 *LoggerTypes.cs*，然后输入以下代码：
 
 ```csharp
 namespace Functions.Tests
@@ -132,7 +132,7 @@ namespace Functions.Tests
 ```
 此枚举指定测试使用的记录器类型。 
 
-接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **TestFactory.cs**，然后输入以下代码：
+接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 *TestFactory.cs*，然后输入以下代码：
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -203,7 +203,7 @@ namespace Functions.Tests
 
 - **CreateLogger**：根据记录器类型，此方法返回用于测试的记录器类。 `ListLogger` 跟踪可在测试中评估的记录消息。
 
-接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **FunctionsTests.cs**，然后输入以下代码：
+接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 *FunctionsTests.cs*，然后输入以下代码：
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
@@ -220,7 +220,7 @@ namespace Functions.Tests
         public async void Http_trigger_should_return_known_string()
         {
             var request = TestFactory.CreateHttpRequest("name", "Bill");
-            var response = (OkObjectResult)await HttpFunction.Run(request, logger);
+            var response = (OkObjectResult)await HttpTrigger.Run(request, logger);
             Assert.Equal("Hello, Bill", response.Value);
         }
 
@@ -229,7 +229,7 @@ namespace Functions.Tests
         public async void Http_trigger_should_return_known_string_from_member_data(string queryStringKey, string queryStringValue)
         {
             var request = TestFactory.CreateHttpRequest(queryStringKey, queryStringValue);
-            var response = (OkObjectResult)await HttpFunction.Run(request, logger);
+            var response = (OkObjectResult)await HttpTrigger.Run(request, logger);
             Assert.Equal($"Hello, {queryStringValue}", response.Value);
         }
 
@@ -246,13 +246,13 @@ namespace Functions.Tests
 ```
 在此类中实现的成员包括：
 
-- **Http_trigger_should_return_known_string**：此测试使用查询字符串值 `name=Bill` 向 Http 函数创建请求，并检查是否返回了预期的响应。
+- **Http_trigger_should_return_known_string**：此测试使用 `name=Bill` 的查询字符串值向 Http 函数创建请求，并检查是否返回了预期的响应。
 
-- **Http_trigger_should_return_string_from_member_data**：此测试使用 xUnit 特性向 Http 函数提供示例数据。
+- **Http_trigger_should_return_string_from_member_data**：此测试使用 xUnit 属性向 Http 函数提供示例数据。
 
-- **Timer_should_log_message**：此测试创建 `ListLogger` 实例，并将其传递给计时器函数。 运行该函数后，将检查日志以确保存在预期的消息。
+- **Timer_should_log_message**：此测试创建 `ListLogger` 的实例，并将其传递给计时器函数。 运行该函数后，将检查日志以确保存在预期的消息。
 
-如果要在测试中访问应用程序设置，可以使用[GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)。
+如果要在测试中访问应用程序设置，可以使用 [System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)。
 
 ### <a name="run-tests"></a>运行测试
 

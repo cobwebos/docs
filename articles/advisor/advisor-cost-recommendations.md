@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: sagupt
-ms.openlocfilehash: cae16430ce933b8d071696377b22f10c15b5eae5
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 9f074c8077f41392fa9d45022a6a7a537964afa9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74145390"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74180581"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>使用 Azure 顾问降低服务成本
 
@@ -63,7 +63,7 @@ Azure 顾问将检测重复失败的 Azure 数据工厂管道，并建议解决�
 若要了解有关顾问建议的详细信息，请参阅以下资源：
 * [顾问简介](advisor-overview.md)
 * [入门](advisor-get-started.md)
-* [顾问性能建议](advisor-cost-recommendations.md)
-* [顾问高可用性建议](advisor-cost-recommendations.md)
-* [顾问安全性建议](advisor-cost-recommendations.md)
+* [顾问性能建议](advisor-performance-recommendations.md)
+* [顾问高可用性建议](advisor-high-availability-recommendations.md)
+* [顾问安全性建议](advisor-security-recommendations.md)
 * [顾问操作优秀建议](advisor-operational-excellence-recommendations.md)

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: 8d7db428d7f71383abf5425d7cc1ddbbab3b7a52
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7e3d0f4ba178ef2cf44b9c5c3dd5b8c212f1c133
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037876"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186180"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -33,7 +33,7 @@ ms.locfileid: "74037876"
 本文提供有关使用媒体服务实时传送视频流的概述和指导，并提供其他相关文章的链接。
  
 > [!NOTE]
-> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
+> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
 
 ## <a name="dynamic-packaging"></a>动态打包
 
@@ -63,7 +63,7 @@ ms.locfileid: "74037876"
 
 将云编码与媒体服务配合使用时，需配置本地实时编码器，以便将单比特率视频作为贡献源（最大聚合比特率为 32Mbps）发送到实时事件（使用 RTMP 或分段 MP4 输入协议）。 实时事件会将传入的单比特率流转码为不同分辨率的[多比特率视频流](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)，以改善传输性能，并使其可通过 MPEG-DASH、Apple HTTP Live Streaming (HLS) 和 Microsoft 平滑流式处理等行业标准协议传送到播放设备。 
 
-### <a name="live-transcription"></a>实时脚本
+### <a name="live-transcription-preview"></a>实时脚本（预览）
 
 Live 脚本是一项功能，可将其用于传递或实时编码的实时事件。 有关详细信息，请参阅[实时](live-transcription.md)脚本。 启用此功能后，服务将使用认知服务的[语音到文本](../../cognitive-services/speech-service/speech-to-text.md)功能将传入音频中的朗读字词转录为文本。 然后，可以在 MPEG-短线和 HLS 协议中将此文本连同视频和音频一起送达。
 

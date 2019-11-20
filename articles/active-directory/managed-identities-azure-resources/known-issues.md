@@ -1,5 +1,5 @@
 ---
-title: Azure 资源托管标识的 FAQ 和已知问题
+title: 托管标识的常见问题和已知问题-Azure AD
 description: Azure 资源托管标识的已知问题。
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d882b34bc4f057035a16b7916249cfe8f0b8d0b
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: f0f0c678f2426d9de58d2ab337c56243394b4d0f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983439"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183885"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 资源托管标识的 FAQ 和已知问题
 
@@ -64,28 +64,28 @@ ms.locfileid: "70983439"
 Azure 资源托管标识 VM 扩展目前仍可使用，但我们再也不会在其上开发新功能。 建议改用 IMDS 终结点。 
 
 使用 VM 扩展终结点的部分限制如下：
-- 对以下 Linux 发行版提供有限支持：CoreOS Stable、CentOS 7.1、Red Hat 7.2、Ubuntu 15.04、Ubuntu 16.04
+- 对 Linux 分发的有限支持： CoreOS 稳定，CentOS 7.1，Red Hat 7.2，Ubuntu 15.04，Ubuntu 16.04
 - 只能为 VM 分配 32 个用户分配的托管标识。
 
 
-注意:将于 2019 年 1 月停止为 Azure 资源托管标识 VM 扩展提供支持。 
+注意： Azure 资源 VM 扩展的托管标识将不受2019年1月的支持。 
 
 有关 Azure 实例元数据服务的详细信息，请参阅 [IMDS 文档](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>如果我将订阅移动到另一个目录中，是否会自动重新创建托管标识？
 
-否。 如果你将订阅移动到另一个目录中，则必须手动重新创建标识并重新向它们授予 Azure RBAC 角色分配。
+不能。 如果你将订阅移动到另一个目录中，则必须手动重新创建标识并重新向它们授予 Azure RBAC 角色分配。
 - 对于系统分配的托管标识：禁用并重新启用。 
 - 对于用户分配的托管标识：删除、重新创建并重新将其附加到所需的资源（例如虚拟机）
 
 ### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>是否可以使用托管标识来访问不同目录/租户中的资源？
 
-否。 托管标识当前不支持跨目录方案。 
+不能。 托管标识当前不支持跨目录方案。 
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>在资源上进行标识托管需要什么 Azure RBAC 权限？ 
 
-- 系统分配的托管标识：需要对资源的写入权限。 例如，对于虚拟机，你需要 Microsoft.Compute/virtualMachines/write。 此操作包括在特定于资源的内置角色（例如[虚拟机参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)）中。
-- 用户分配的托管标识：需要对资源的写入权限。 例如，对于虚拟机，你需要 Microsoft.Compute/virtualMachines/write。 此外还需要针对托管标识的[托管标识操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色分配。
+- 系统分配的托管标识：需要对资源具有写入权限。 例如，对于虚拟机，你需要 Microsoft.Compute/virtualMachines/write。 此操作包括在特定于资源的内置角色（例如[虚拟机参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)）中。
+- 用户分配的托管标识：需要对资源具有写入权限。 例如，对于虚拟机，你需要 Microsoft.Compute/virtualMachines/write。 此外还需要针对托管标识的[托管标识操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色分配。
 
 ### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>如何重启 Azure 资源托管标识扩展？
 在 Windows 和某些 Linux 版本中，如果该扩展停止，可使用以下 cmdlet 手动重启该扩展：

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 11/12/2019
 ms.author: swmachan
-ms.openlocfilehash: b4daa04a4dbf87006147fb0d44d7b128a6d8ecf4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d58383b20e4311f8ab9490dc241722eee2e44ad6
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835790"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184809"
 ---
 # <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：翻译
 
@@ -33,6 +33,8 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 查询字符串上传递的请求参数如下：
 
+### <a name="required-parameters"></a>必需的参数
+
 <table width="100%">
   <th width="20%">查询参数</th>
   <th>说明</th>
@@ -41,13 +43,20 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
     <td>必需参数。<br/>客户端所请求的 API 的版本。 值必须是 <code>3.0</code>。</td>
   </tr>
   <tr>
-    <td>from</td>
-    <td>可选参数。<br/>指定输入文本的语言。 可以使用 <a href="./v3-0-languages.md"> 范围来查找</a>支持的语言<code>translation</code>，了解哪些语言可以翻译。 如果未指定 <code>from</code> 参数，则会应用自动语言检测来确定源语言。 <br/><br/>使用<code>from</code>动态字典<a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">功能时，必须使用 </a> 参数而不是自动检测。</td>
-  </tr>
-  <tr>
     <td>to</td>
     <td>必需参数。<br/>指定输出文本的语言。 目标语言必须是 <a href="./v3-0-languages.md"> 范围中包含的</a>支持的语言<code>translation</code>之一。 例如，若要翻译为德语，请使用 <code>to=de</code>。<br/>可以在查询字符串中重复使用此参数，这样就可以同时翻译为多种语言。 例如，若要翻译为德语和意大利语，请使用 <code>to=de&to=it</code>。</td>
   </tr>
+</table>
+
+### <a name="optional-parameters"></a>可选参数
+
+<table width="100%">
+  <th width="20%">查询参数</th>
+  <th>说明</th>
+  <tr>
+    <td>from</td>
+    <td>可选参数。<br/>指定输入文本的语言。 可以使用 <a href="./v3-0-languages.md"> 范围来查找</a>支持的语言<code>translation</code>，了解哪些语言可以翻译。 如果未指定 <code>from</code> 参数，则会应用自动语言检测来确定源语言。 <br/><br/>使用<code>from</code>动态字典<a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">功能时，必须使用 </a> 参数而不是自动检测。</td>
+  </tr>  
   <tr>
     <td>textType</td>
     <td>可选参数。<br/>定义要翻译的文本是纯文本还是 HTML 文本。 HTML 必须是格式正确的完整元素。 可能的值为 <code>plain</code>（默认）<code>html</code>。</td>
@@ -86,7 +95,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td>可选参数。<br/>指定当自定义系统不存在时允许服务回退到一个常规系统。 可能的值为 <code>true</code>（默认）<code>false</code>。<br/><br/><code>allowFallback=false</code> 指定翻译应仅使用针对由此请求指定的 <code>category</code> 而训练的系统。 如果将语言 X 翻译成语言 Y 需要通过枢轴语言 E 进行链接，那么此链中的所有系统（X->E 和 E->Y）需要进行自定义并且需要具有相同的类别。 如果未通过特定类别找到任何系统，此请求将返回 400 状态代码。 <code>allowFallback=true</code> 指定当自定义系统不存在时允许服务回退到一个常规系统。
+    <td>可选参数。<br/>指定当自定义系统不存在时允许服务回退到一个常规系统。 可能的值为 <code>true</code>（默认）<code>false</code>。<br/><br/><code>allowFallback=false</code> 指定翻译应仅使用针对由此请求指定的 <code>category</code> 而训练的系统。 如果将语言 X 翻译成语言 Y 需要通过枢轴语言 E 进行链接，那么此链中的所有系统（X->E 和 E->Y）将需要进行自定义并且具有相同的类别。 如果未通过特定类别找到任何系统，此请求将返回 400 状态代码。 <code>allowFallback=true</code> 指定当自定义系统不存在时允许服务回退到一个常规系统。
 </td>
   </tr>
 </table> 
@@ -110,7 +119,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td><em>可选</em>。<br/>客户端生成的 GUID，用于唯一地标识请求。 如果在查询字符串中使用名为 <code>ClientTraceId</code> 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
+    <td>可选。<br/>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 <code>ClientTraceId</code> 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
   </tr>
 </table> 
 
@@ -155,7 +164,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
     如果不进行音译，则不包括 `transliteration` 对象。
 
-    * `alignment`：一个对象，包含的名为 `proj` 的单个字符串属性可以将输入文本映射到翻译文本。 只有在请求参数 `includeAlignment` 为 `true` 时，才提供比对信息。 将以 `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]` 格式的字符串值返回比对内容。  冒号分隔开始和结束索引，连字符分隔语言，空格分隔单词。 一个词可能与另一种语言中的 0 个、1 个或多个词对齐，而对齐的词可能是非连续的。 当没有可用的比对信息时，Alignment 元素会为空。 请参阅[获取比对信息](#obtain-alignment-information)，了解示例和限制。
+    * `alignment`：一个对象，包含的名为 `proj` 的单个字符串属性可以将输入文本映射到翻译文本。 只有在请求参数 `includeAlignment` 为 `true` 时，才提供比对信息。 将以 `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]` 格式的字符串值返回比对内容。  冒号分隔开始和结束索引，连字符分隔语言，空格分隔单词。 一个单词可能与另一种语言中的 0 个、1 个或多个单词比对，而比对的词可能是不连续的。 当没有可用的比对信息时，Alignment 元素会为空。 请参阅[获取比对信息](#obtain-alignment-information)，了解示例和限制。
 
     * `sentLen`：一个对象，返回输入和输出文本中的句子边界。
 
@@ -205,7 +214,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>403</td>
-    <td>请求未经授权。 请检查详细错误消息。 这通常表示试用订阅提供的所有可用翻译已用完。</td>
+    <td>未对请求授权。 请检查详细错误消息。 这通常表示试用订阅提供的所有可用翻译已用完。</td>
   </tr>
   <tr>
     <td>408</td>
@@ -217,11 +226,11 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>500</td>
-    <td>发生了意外错误。 如果错误仍然存在，请报告相关信息：发生故障的日期和时间、响应标头 <code>X-RequestId</code> 中的请求标识符、请求标头 <code>X-ClientTraceId</code> 中的客户端标识符。</td>
+    <td>发生了意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 <code>X-RequestId</code> 中的请求标识符、请求标头 <code>X-ClientTraceId</code> 中的客户端标识符。</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>服务器暂不可用。 重试请求。 如果错误仍然存在，请报告相关信息：发生故障的日期和时间、响应标头 <code>X-RequestId</code> 中的请求标识符、请求标头 <code>X-ClientTraceId</code> 中的客户端标识符。</td>
+    <td>服务器暂不可用。 重试请求。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 <code>X-RequestId</code> 中的请求标识符、请求标头 <code>X-ClientTraceId</code> 中的客户端标识符。</td>
   </tr>
 </table> 
 
@@ -505,7 +514,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ### <a name="translate-with-dynamic-dictionary"></a>使用动态词典进行翻译
 
-如果你已知道要应用于某个单词或短语的翻译，可以在请求中将其提供为标记。 动态词典仅适用于复合名词，例如专有名称和产品名称。
+若已知道要应用于某个单词或短语的翻译，可以在请求中将其作为标记提供。 动态词典仅适用于复合名词，例如专有名称和产品名称。
 
 要提供的标记使用以下语法。
 
@@ -531,4 +540,4 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 ]
 ```
 
-不管使用 `textType=text` 还是使用 `textType=html`，此功能都以相同的方式工作。 应尽量少使用此功能。 对翻译进行自定义时，一个合适且要好得多的方法是使用自定义翻译工具。 自定义翻译工具能够充分利用上下文和统计概率。 如果你必须或者有能力创建在上下文中显示你的工作或短语的训练数据，则会得到更好的结果。 [详细了解自定义翻译工具](../customization.md)。
+不管使用 `textType=text` 还是使用 `textType=html`，此功能都以相同的方式工作。 应尽量少使用此功能。 对翻译进行自定义时，一个合适且要好得多的方法是使用自定义翻译工具。 自定义翻译工具能够充分利用上下文和统计概率。 如果你必须或者有能力创建在上下文中显示你的工作或短语的训练数据，则会得到好得多的结果。 [详细了解自定义翻译工具](../customization.md)。

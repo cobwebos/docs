@@ -1,17 +1,17 @@
 ---
-title: 为 VMware Vm 设置用于 Azure Migrate 服务器评估/迁移的设备 |Microsoft Docs
-description: 介绍如何使用 Azure Migrate Server 评估/迁移为 VMware Vm 设置发现、评估和无代理迁移的设备。
+title: 为 VMware 设置 Azure Migrate 设备
+description: 了解如何设置 Azure Migrate 设备来评估和迁移 VMware Vm。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: raynew
-ms.openlocfilehash: 086d5bf2e0e2bd1e4c1db5960d402a8e1b129e94
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
-ms.translationtype: HT
+ms.openlocfilehash: 1489d29f854b02cf493493fe022c73dc050e2615
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158599"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185852"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>为 VMware Vm 设置设备
 

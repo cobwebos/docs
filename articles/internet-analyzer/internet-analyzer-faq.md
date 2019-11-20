@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 61cb6003549530f381b9cbbed74c1cb62c91431c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512894"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184258"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Azure Internet 分析器常见问题解答（预览版）
 
@@ -41,19 +41,19 @@ ms.locfileid: "73512894"
 
 ## <a name="what-scenarios-is-internet-analyzer-designed-to-address"></a>Internet 分析器旨在解决哪些方案？
 
-Internet 分析器旨在基于用户群体为你的网络性能见解。 为了帮助用户做出最佳的性能决策，Internet 分析器使用不同的用户群体来比较两个 Internet 终结点的性能。 虽然 Internet 分析器可以回答许多问题，但其中一些最常见的问题是：
+Internet 分析器旨在基于用户群体为你的网络性能见解。 为了帮助用户做出最佳的性能决策，Internet 分析器使用不同的用户群体来比较两个 Internet 终结点的性能。 虽然 Internet 分析器可以回答许多问题，但最常见的问题有：
 
-* 迁移到云的性能影响是多少？ 
+* 迁移到云对性能有什么影响？ 
     * *建议的测试：自定义（当前的本地基础结构）与 Azure （任何预配置的终结点）*
-* 将我的数据放置在边缘与数据中心中的值是什么？ 
+* 将数据放在边缘与数据中心的价值是什么？ 
     *  *建议的测试： Azure 与 Azure 前门、Azure 与 Microsoft Azure CDN*
-* Azure 前门的性能优势是什么？
+* Azure Front Door 的性能优势是什么？
     *  *建议的测试：自定义/Azure/CDN 与 Azure 前门*
-* Azure CDN Microsoft 的性能好处是什么？ 
+* Microsoft 推出的 Azure CDN 的性能优势是什么？ 
     *  *建议的测试：自定义/Azure/AFD 与 Microsoft Azure CDN*
-* 如何从 Microsoft stack 向上 Azure CDN？ 
+* Microsoft 推出的 Azure CDN 如何堆叠？ 
     *  *建议的测试：自定义（其他 CDN 终结点）与 Microsoft Azure CDN*
-* 对于每个区域中的最终用户群体，最佳做法是什么？ 
+* 对于每个地区的最终用户群来说，最好的云是什么？ 
     *  *建议的测试：自定义（其他云服务）与 Azure （任何预配置的终结点）*
 
 ## <a name="which-tests-can-i-run-in-preview"></a>可以在预览中运行哪些测试？
@@ -74,30 +74,34 @@ Internet 分析器旨在基于用户群体为你的网络性能见解。 为了�
     * 北欧
     * 南非北部
     * 东南亚
-    * 阿拉伯联合酋长国北部
+    * 阿联酋北部
     * 英国西部  
-    * 欧洲西部
+    * 西欧
     * 美国西部
     * 美国西部 2
 * **多个 Azure 区域组合**
     * 美国东部、巴西南部
-    * 美国东部，东亚
-    * 西欧，巴西南部
-    * 西欧，东南亚
-    * 西欧，阿拉伯联合酋长国北部
+    * 美国东部、东亚
+    * 欧洲西部、巴西南部
+    * 欧洲西部、东南亚
+    * 欧洲西部、阿联酋北部
     * 美国西部、美国东部
-    * 美国西部，西欧
-    * 美国西部，阿拉伯联合酋长国北部
-    * 西欧，阿拉伯联合酋长国北部，东南亚
-    * 美国西部、西欧、东亚
-    * 美国西部、北欧、东南亚、阿拉伯联合酋长国北部、南非北部 
-* **Azure + Azure 前端**-部署在上面列出的任何单个或多个 Azure 区域组合上
-* **来自 Microsoft 的 azure + Azure CDN** -部署于上面列出的任何单个 Azure 区域组合上
-* **Azure + Azure 流量管理器**-部署在上面列出的任意多个 Azure 区域组合上
+    * 美国西部、欧洲西部
+    * 美国西部、阿联酋北部
+    * 欧洲西部、阿联酋北部、东南亚
+    * 美国西部、欧洲西部、东亚
+    * 美国西部、欧洲北部、东南亚、阿联酋北部、南非北部 
+* **Azure + Azure Front Door** - 部署在上面列出的任何单个或多个 Azure 区域组合上
+* **Azure + Microsoft 推出的 Azure CDN** - 部署在上面列出的任何单一 Azure 区域组合上
+* **Azure + Azure 流量管理器** - 部署在上面列出的任何多个 Azure 区域组合上
 
 ## <a name="how-is-internet-analyzer-different-from-other-monitoring-services-provided-by-azure"></a>Internet 分析器与其他 Azure 提供的监视服务有何不同？
 
 Internet 分析器可帮助您了解最终用户的性能，并帮助做出决定以提高其性能。 虽然其他 Azure 监视工具可深入了解 Azure 服务，但 Internet 分析器侧重于度量用户的端到端 Internet 性能。
+
+## <a name="how-is-measurement-data-handled-by-internet-analyzer"></a>Internet 分析器如何处理度量数据？
+
+Azure 有[严格的安全过程，并符合各种法规标准](https://azure.microsoft.com/support/trust-center/)。 只有你和指定的团队可以访问数据。 Microsoft 工作人员只会在知情的情况下和受限的具体情况下，才对数据拥有受限的访问权限。 将对传输中的静态数据加密。
 
 ## <a name="next-steps"></a>后续步骤
 

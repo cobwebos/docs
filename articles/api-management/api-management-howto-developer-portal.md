@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 6bf8c8690977ef1036c853d8c1c01a3a366b50df
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 377ed8f17cfcf67f10cbdec77199c69c606afa3e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74011482"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74180691"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理开发人员门户概述
 
@@ -142,6 +142,14 @@ ms.locfileid: "74011482"
     </expose-headers>
 </cors>
 ```
+
+> [!NOTE]
+> 
+> 如果你在产品范围内应用 CORS 策略，而不是在 API 范围内应用，并且你的 API 通过标头使用订阅密钥身份验证，则你的控制台将无法工作。
+>
+> 浏览器自动发出 HTTP 请求选项，该请求不包含带有订阅密钥的标头。 由于缺少订阅密钥，API 管理无法将选项调用与产品相关联，因此不能应用 CORS 策略。
+>
+> 一种解决方法是，可以在查询参数中传递订阅密钥。
 
 ## <a name="next-steps"></a>后续步骤
 

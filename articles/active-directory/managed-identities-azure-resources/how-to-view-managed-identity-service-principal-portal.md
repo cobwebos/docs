@@ -1,5 +1,5 @@
 ---
-title: 如何在 Azure 门户中查看托管标识的服务主体
+title: 在 Azure 门户中查看托管标识的服务主体-Azure AD
 description: 在 Azure 门户中查看托管标识的服务主体的分步说明。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/29/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a8db0254f85980022115cab5d73f7f329b57001
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b51aeabaa4bb7fa9884c95cf0da2dc68ba5b64b0
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827556"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184101"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>在 Azure 门户中查看托管标识的服务主体
 

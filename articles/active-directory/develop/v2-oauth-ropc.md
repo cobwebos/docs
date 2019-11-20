@@ -17,16 +17,19 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fb475a5d88547cc5f39cb269cc1cbf72fcd25b3
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
-ms.translationtype: MT
+ms.openlocfilehash: 322e0e5f740bd416c7831f32e0d74f9290335fe3
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295392"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195746"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Microsoft 标识平台和 OAuth 2.0 资源所有者密码凭据
+# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credentials"></a>Microsoft 标识平台和 OAuth 2.0 资源所有者密码凭据
 
-Microsoft 标识平台支持[资源所有者密码凭据 (ROPC) 授予](https://tools.ietf.org/html/rfc6749#section-4.3)，后者允许应用程序通过直接处理用户的密码来登录用户。 ROPC 流需要的信任和用户公开程度很高，只有不能使用其他更安全的流时，才应使用此流。
+Microsoft 标识平台支持[OAuth 2.0 资源所有者密码凭据（ROPC） grant](https://tools.ietf.org/html/rfc6749#section-4.3)，这允许应用程序通过直接处理密码来登录用户。
+
+> [!WARNING]
+> Microsoft 建议您不要_使用 ROPC_流。 在大多数情况下，提供更安全的替代项。 在应用程序中，此流需要非常高的信任度，并携带其他流中不存在的风险。 仅当不能使用其他更安全的流时，才应使用此流。
 
 > [!IMPORTANT]
 >
@@ -44,7 +47,7 @@ Microsoft 标识平台支持[资源所有者密码凭据 (ROPC) 授予](https://
 
 ## <a name="authorization-request"></a>授权请求
 
-ROPC 流是单个请求：将客户端标识和用户的凭据发送到 IDP，然后接收返回的令牌。 在这样做之前，客户端必须请求用户的电子邮件地址 (UPN) 和密码。 在成功进行请求之后，客户端应立即以安全方式释放内存中的用户凭据， 而不得保存这些凭据。
+ROPC 流是单一请求：它将客户端标识和用户的凭据发送到 IDP，然后接收返回的令牌。 在这样做之前，客户端必须请求用户的电子邮件地址 (UPN) 和密码。 在成功进行请求之后，客户端应立即以安全方式释放内存中的用户凭据， 而不得保存这些凭据。
 
 > [!TIP]
 > 尝试在 Postman 中执行此请求！
@@ -65,16 +68,16 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &grant_type=password
 ```
 
-| 参数 | 条件 | 描述 |
+| 参数 | 条件 | 说明 |
 | --- | --- | --- |
-| `tenant` | 需要 | 一个目录租户，用户需登录到其中。 这可采用 GUID 或友好名称格式。 此参数不能设置为 `common` 或 `consumers`，但可以设置为 `organizations`。 |
-| `client_id` | 需要 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端）ID。 | 
-| `grant_type` | 需要 | 必须设置为 `password`。 |
-| `username` | 需要 | 用户的电子邮件地址。 |
-| `password` | 需要 | 用户的密码。 |
+| `tenant` | 必选 | 一个目录租户，用户需登录到其中。 这可采用 GUID 或友好名称格式。 此参数不能设置为 `common` 或 `consumers`，但可以设置为 `organizations`。 |
+| `client_id` | 必选 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端）ID。 | 
+| `grant_type` | 必选 | 必须设置为 `password`。 |
+| `username` | 必选 | 用户的电子邮件地址。 |
+| `password` | 必选 | 用户的密码。 |
 | `scope` | 建议 | 以空格分隔的[范围](v2-permissions-and-consent.md)或权限的列表，这是应用需要的。 在交互式流中，管理员或用户必须提前同意这些范围。 |
-| `client_secret`| 有时需要 | 如果你的应用程序是公用客户端，则不能包含 `client_secret` 或 `client_assertion`。  如果应用是机密客户端，则必须将其包含在内。 | 
-| `client_assertion` | 有时需要 | 使用证书生成的不同形式 `client_secret`。  有关更多详细信息，请参阅[证书凭据](active-directory-certificate-credentials.md)。 | 
+| `client_secret`| 有时必需 | 如果应用是公共客户端，则无法包括 `client_secret` 或 `client_assertion`。  如果应用是机密客户端，则它必须包括在内。 | 
+| `client_assertion` | 有时必需 | 使用证书生成的不同形式的 `client_secret`。  有关更多详细信息，请参阅[证书凭据](active-directory-certificate-credentials.md)。 | 
 
 ### <a name="successful-authentication-response"></a>成功的身份验证响应
 
@@ -91,7 +94,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-| 参数 | 格式 | 描述 |
+| 参数 | 格式 | 说明 |
 | --------- | ------ | ----------- |
 | `token_type` | String | 始终设置为 `Bearer`。 |
 | `scope` | 空格分隔的字符串 | 如果返回了访问令牌，则此参数会列出该访问令牌的有效范围。 |
@@ -106,7 +109,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 如果用户未提供正确的用户名或密码，或者客户端未收到请求的许可，则身份验证会失败。
 
-| Error | 描述 | 客户端操作 |
+| 错误 | 说明 | 客户端操作 |
 |------ | ----------- | -------------|
 | `invalid_grant` | 身份验证失败 | 凭据不正确，或者客户端没有所请求范围的许可。 如果没有授予范围，则会返回 `consent_required` 错误。 如果发生这种情况，客户端应通过 Webview 或浏览器向用户发送交互式提示。 |
 | `invalid_request` | 请求的构造方式不正确 | 授予类型在 `/common` 或 `/consumers` 身份验证上下文中不受支持。  请改用 `/organizations` 或租户 ID。 |

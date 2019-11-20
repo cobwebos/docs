@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e040533acdd8979b7b43358c74d1b729dafa2c66
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b47c80f3c23c26828037954c01608cc502c017c9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111837"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186601"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>使用地理区域冗余存储（GZRS）构建高度可用的 Azure 存储应用程序（预览版）
 
@@ -29,6 +29,7 @@ Microsoft 建议为需要一致性、持续性、高可用性、优秀性能和�
 
 GZRS 和 RA-GZRS 目前可用于以下区域：
 
+- 亚洲东南部
 - 北欧
 - 西欧
 - 英国南部

@@ -1,5 +1,5 @@
 ---
-title: 为 VM 配置专用 IP 地址 - Azure CLI | Microsoft Docs
+title: 为 Vm 配置专用 IP 地址-Azure CLI
 description: 了解如何使用 Azure 命令行接口 (CLI) 为虚拟机配置专用 IP 地址。
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: kumud
-ms.openlocfilehash: 1b39196c489927474c0912b316de5ff3b3dbb956
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5734b96466801efaa991a971bd87f60aafc9df32
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681408"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196611"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>使用 Azure CLI 为虚拟机配置专用 IP 地址
 
@@ -46,7 +46,7 @@ ms.locfileid: "64681408"
 2. 使用 [az network public-ip create](/cli/azure/network/public-ip) 命令，为该 VM 创建公共 IP。 在输出后显示的列表说明了所用的参数。
 
     > [!NOTE]
-    > 可能想要或需要根据环境对此步骤和后续步骤中的变量使用不同的值。
+    > 根据环境，可能需在该步骤及后续步骤中使用不同的参数值。
 
     ```azurecli
     az network public-ip create \
@@ -72,7 +72,7 @@ ms.locfileid: "64681408"
 
    * `--resource-group`：要在其中创建公共 IP 的资源组的名称。
    * `--name`：公共 IP 的名称。
-   * `--location`：要在其中创建公共 IP 的 Azure 区域。
+   * `--location`：在其中创建公共 IP 的 Azure 区域。
 
 3. 运行 [az network nic create](/cli/azure/network/nic) 命令，以创建具有静态专用 IP 的 NIC。 在输出后显示的列表说明了所用的参数。 
    
@@ -197,13 +197,13 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 
 ## <a name="remove-a-static-private-ip-address-from-a-vm"></a>从 VM 中删除静态专用 IP 地址
 
-无法在用于Azure 资源管理器部署的 Azure CLI 中删除 NIC 的静态专用 IP 地址。 必须：
+无法在用于Azure 资源管理器部署的 Azure CLI 中删除 NIC 的静态专用 IP 地址。 必须具备以下条件：
 - 创建使用动态 IP 的新 NIC
 - 将 VM 上的 NIC 设置为新创建的 NIC。 
 
 若要更改上述命令中使用的 VM 的 NIC，请完成以下步骤：
 
-1. 运行 **azure network nic create** 命令，以使用新 IP 地址通过动态 IP 分配创建新 NIC。 由于未指定任何 IP 地址，因此分配方法为“动态”  。
+1. 运行 **azure network nic create** 命令，以使用新 IP 地址通过动态 IP 分配创建新 NIC。 由于未指定任何 IP 地址，因此分配方法为“动态”。
 
     ```azurecli
     az network nic create     \

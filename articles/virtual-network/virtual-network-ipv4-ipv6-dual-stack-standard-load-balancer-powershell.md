@@ -1,11 +1,11 @@
 ---
-title: 在 Azure 虚拟网络中部署 IPv6 双重堆栈应用程序-PowerShell
+title: 部署 IPv6 双堆栈应用程序-标准负载均衡器-PowerShell
 titlesuffix: Azure Virtual Network
 description: 本文介绍如何使用 Azure Powershell 在 Azure 虚拟网络中部署具有标准负载均衡器的 IPv6 双重堆栈应用程序。
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: c924e59a50994827eb2e9be40caa7021c7e4ac3c
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b1506c40d83e1483980c368db1659c9470b9a46a
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174462"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185473"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell-preview"></a>在 Azure 中部署 IPv6 双重堆栈应用程序-PowerShell （预览版）
 
@@ -29,7 +29,7 @@ ms.locfileid: "72174462"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块版本6.9.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块版本6.9.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="prerequisites"></a>先决条件
 在 Azure 中部署双堆栈应用程序之前，必须使用以下 Azure PowerShell 来配置此预览功能的订阅：
@@ -39,7 +39,7 @@ ms.locfileid: "72174462"
 Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
-功能注册最多需要 30 分钟才能完成。 可以通过运行以下 Azure PowerShell 命令来检查注册状态：检查注册，如下所示：
+功能注册最多需要 30 分钟才能完成。 可以通过运行以下 Azure PowerShell 命令来检查注册状态：按如下所示检查注册：
 ```azurepowershell
 Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace 
@@ -106,7 +106,7 @@ $PublicIP_v6 = New-AzPublicIpAddress `
 
 ### <a name="create-front-end-ip"></a>创建前端 IP
 
-使用 [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) 创建一个前端 IP。 以下示例创建名为 " *dsLbFrontEnd_v4* " 和 " *DsLbFrontEnd_v6*" 的 IPV4 和 IPv6 前端 IP 配置：
+使用 [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) 创建一个前端 IP。 以下示例创建名为*dsLbFrontEnd_v4*和*dsLbFrontEnd_v6*的 IPV4 和 IPv6 前端 IP 配置：
 
 ```azurepowershell-interactive
 $frontendIPv4 = New-AzLoadBalancerFrontendIpConfig `
@@ -121,7 +121,7 @@ $frontendIPv6 = New-AzLoadBalancerFrontendIpConfig `
 
 ### <a name="configure-back-end-address-pool"></a>配置后端地址池
 
-使用 [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) 创建一个后端地址池。 在剩余步骤中，VM 将连接到此后端池。 以下示例创建名为*dsLbBackEndPool_v4*的后端地址池和*dsLbBackEndPool_v6* ，以包括同时具有 IPV4 和 IPv6 NIC 配置的 vm：
+使用 [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) 创建一个后端地址池。 在剩余步骤中，VM 将连接到此后端池。 以下示例创建名为*dsLbBackEndPool_v4*的后端地址池，并将其*dsLbBackEndPool_v6*为包括同时具有 IPV4 和 IPv6 NIC 配置的 vm：
 
 ```azurepowershell-interactive
 $backendPoolv4 = New-AzLoadBalancerBackendAddressPoolConfig `
@@ -135,7 +135,7 @@ $backendPoolv6 = New-AzLoadBalancerBackendAddressPoolConfig `
 
 负载均衡器规则用于定义将流量分配给 VM 的方式。 定义传入流量的前端 IP 配置和后端 IP 池以接收流量，同时定义所需的源端口和目标端口。 若要确保仅正常运行的 Vm 接收流量，可以选择定义运行状况探测。 基本负载均衡器使用 IPv4 探测来评估 Vm 上 IPv4 和 IPv6 终结点的运行状况。 标准负载均衡器支持显式 IPv6 运行状况探测。
 
-使用 [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) 创建一个负载均衡器规则。 以下示例创建名为 " *dsLBrule_v4* " 和 " *dsLBrule_v6* " 的负载均衡器规则，并将*TCP*端口*80*上的流量平衡到 IPv4 和 IPv6 前端 IP 配置：
+使用 [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) 创建一个负载均衡器规则。 以下示例创建名为*dsLBrule_v4*和*dsLBrule_v6*的负载均衡器规则，并将*TCP*端口*80*上的流量平衡到 IPv4 和 IPv6 前端 IP 配置：
 
 ```azurepowershell-interactive
 $lbrule_v4 = New-AzLoadBalancerRuleConfig `
@@ -323,7 +323,7 @@ $VM2 = New-AzVM -ResourceGroupName $rg.ResourceGroupName  -Location $rg.Location
 ```
 
 ## <a name="determine-ip-addresses-of-the-ipv4-and-ipv6-endpoints"></a>确定 IPv4 和 IPv6 终结点的 IP 地址
-获取资源组中的所有网络接口对象，以使用 `get-AzNetworkInterface` 汇总此部署中使用的 IP。 此外，还可获取负载均衡器的 IPv4 和 IPv6 终结点的前端地址，`get-AzpublicIpAddress`。
+获取资源组中的所有网络接口对象，以使用 `get-AzNetworkInterface`汇总此部署中使用的 IP。 此外，通过 `get-AzpublicIpAddress`获取 IPv4 和 IPv6 终结点的负载均衡器的前端地址。
 
 ```azurepowershell-interactive
 $rgName= "dsRG1"

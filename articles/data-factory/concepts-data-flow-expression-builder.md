@@ -5,13 +5,13 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 872c7ce6a0c39ab19165a5f16ea3e4f6ef8bd6a5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 11/17/2019
+ms.openlocfilehash: 3664a7c311e15ce3aa61fc71f98a46e3f2618143
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388055"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184679"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>映射数据流表达式生成器
 
@@ -53,7 +53,7 @@ ms.locfileid: "72388055"
 
 ## <a name="regular-expressions"></a>正则表达式
 
-Azure 数据工厂数据流表达式语言（[此处提供了完整参考文档](https://aka.ms/dataflowexpressions)）支持包含正则表达式语法的函数。 使用正则表达式函数时，表达式生成器将尝试将反斜杠（\\）解释为转义字符序列。 在正则表达式中使用反斜杠时，请将整个正则表达式括在刻度（\`）中，或使用双反斜杠。
+Azure 数据工厂数据流表达式语言（[此处提供了完整参考文档](https://aka.ms/dataflowexpressions)）支持包含正则表达式语法的函数。 使用正则表达式函数时，表达式生成器将尝试将反斜杠（\\）解释为转义字符序列。 在正则表达式中使用反斜杠时，请将整个正则表达式括在计时周期（\`）或使用双反斜杠。
 
 使用居中圆点符号的示例
 
@@ -77,6 +77,40 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 
 如果列名称包含特殊字符或空格，请使用大括号将该名称括起来。
 * ```{[dbo].this_is my complex name$$$}```
+
+## <a name="keyboard-shortcuts"></a>键盘快捷方式
+
+* ```Ctrl-K Ctrl-C```：注释整行
+* ```Ctrl-K Ctrl-U```：取消注释
+* ```F1```：提供编辑器帮助命令
+* ```Alt-Down Arrow```：向下移动当前行
+* ```Alt-Up Arrow```：向上移动当前行
+* ```Cntrl-Space```：显示上下文帮助
+
+## <a name="manual-comments"></a>手动注释
+
+* ```/* This is my comment */```
+
+* ```/* This is a```
+*   ```multi-line comment */```
+   
+* ```// This is a single line comment```
+
+如果在表达式的顶部放置注释，它将显示在 "转换" 文本框中以记录转换表达式：
+
+![注释](media/data-flow/comments2.png "注释")
+
+## <a name="convert-to-dates-or-timestamps"></a>转换为日期或时间戳
+
+```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
+
+请注意，若要在时间戳输出中包含字符串文本，则需要在 toString （）内包装转换
+
+## <a name="handling-column-names-with-special-characters"></a>处理带有特殊字符的列名称
+
+如果列名称包含特殊字符或空格，请使用大括号将该名称括起来。
+
+```{[dbo].this_is my complex name$$$}```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,19 +4,22 @@ description: 使用 Azure 存储分析日志来识别和解决延迟问题，并
 author: v-miegge
 ms.topic: troubleshooting
 ms.author: kartup
+manager: dcscontentpm
 ms.date: 10/21/2019
 ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: f8ec8e3f27e74f442f314d4c812908888598244c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+services: storage
+tags: ''
+ms.openlocfilehash: 2197a149235c0dca98a24a57549538b2a4cbb1c8
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180623"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196511"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>使用存储分析日志排查延迟问题
 
-诊断和故障排除是使用 Azure 存储构建和支持客户端应用程序的关键技能。
+诊断和故障排除是生成和支持使用 Azure 存储的客户端应用程序的关键技能。
 
 由于 Azure 应用程序的分布式特性，诊断和排查错误与性能问题可能会比在传统环境中更复杂。
 
@@ -94,12 +97,12 @@ ms.locfileid: "73180623"
 
    下表提供了 OperationType 和 RequestStatus 结果的高延迟的相关信息：
 
-   |   |RequestStatus =<br>Success|RequestStatus =<br>块NetworkError|建议|
+   |   |RequestStatus =<br>成功|RequestStatus =<br>块NetworkError|建议|
    |---|---|---|---|
-   |GetBlob|是|No|[**GetBlob 操作：** RequestStatus = Success](#getblob-operation-requeststatus--success)|
-   |GetBlob|No|是|[**GetBlob 操作：** RequestStatus = （SAS） NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
-   |PutBlob|是|No|[**Put 操作：** RequestStatus = Success](#put-operation-requeststatus--success)|
-   |PutBlob|No|是|[**Put 操作：** RequestStatus = （SAS） NetworkError](#put-operation-requeststatus--sasnetworkerror)|
+   |GetBlob|是|否|[**GetBlob 操作：** RequestStatus = Success](#getblob-operation-requeststatus--success)|
+   |GetBlob|否|是|[**GetBlob 操作：** RequestStatus = （SAS） NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
+   |PutBlob|是|否|[**Put 操作：** RequestStatus = Success](#put-operation-requeststatus--success)|
+   |PutBlob|否|是|[**Put 操作：** RequestStatus = （SAS） NetworkError](#put-operation-requeststatus--sasnetworkerror)|
 
 ## <a name="status-results"></a>状态结果
 
