@@ -278,6 +278,8 @@
                   href: sql-database-xevent-code-ring-buffer.md
         - name: 超大规模性能诊断
           href: sql-database-hyperscale-performance-diagnostics.md
+        - name: 密集弹性池中的资源管理
+          href: sql-database-elastic-pool-resource-management.md
     - name: 可伸缩性
       items:
         - name: 可伸缩性文档

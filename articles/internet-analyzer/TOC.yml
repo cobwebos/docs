@@ -22,6 +22,8 @@
   items:
     - name: Internet 分析器常见问题解答
       href: internet-analyzer-faq.md
+    - name: Internet 分析器 CLI 参考
+      href: 'https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: 博客

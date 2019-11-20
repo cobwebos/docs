@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Azure Site Recovery 文档
-summary: 使用 Azure Site Recovery 进行灾难恢复，将本地计算机和工作负荷恢复到 Azure，将 Azure VM 恢复到辅助 Azure 区域。 在复制到 Azure 功能就位后，可以在发生中断时安排故障转移，并继续在 Azure 中访问工作负荷和应用。 当主位置再次可用时，可以根据需要进行故障回复。
+summary: 使用 Azure Site Recovery 实现本地工作负荷和 Azure VM 的灾难恢复。
 metadata:
   title: Azure Site Recovery 文档
-  description: 使用 Azure Site Recovery 进行灾难恢复，将本地计算机和工作负荷恢复到 Azure，将 Azure VM 恢复到辅助 Azure 区域。 在复制到 Azure 功能就位后，可以在发生中断时安排故障转移，并继续在 Azure 中访问工作负荷和应用。 当主位置再次可用时，可以根据需要进行故障回复。
+  description: 为本地负荷和 VMware VM 设置到 Azure 的灾难恢复。
   ms.service: site-recovery
   ms.topic: landing-page
   ms.collection: collection
   author: rayne-wiselman
   ms.author: raynew
-  ms.date: 10/07/2019
-  ms.openlocfilehash: 0d4405e447c7624e4d6cc714209ffc86451a74bd
-  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.date: 11/19/2019
+  ms.openlocfilehash: ccbc4c92a6d0db9d5baf8a226ba79405a2b824ff
+  ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/07/2019
-  ms.locfileid: "72001092"
+  ms.lasthandoff: 11/19/2019
+  ms.locfileid: "74186584"
 landingContent:
 - title: 关于 Site Recovery
   linkLists:

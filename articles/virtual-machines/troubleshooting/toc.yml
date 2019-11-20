@@ -125,6 +125,8 @@
       href: serial-console-power-options.md
     - name: 常见串行控制台错误
       href: serial-console-errors.md
+    - name: 串行控制台 grub 主动配置
+      href: serial-console-grub-proactive-configuration.md
 - name: 删除存储资源时出错
   href: storage-resource-deletion-errors.md
 - name: 删除经典存储资源时出错

@@ -225,9 +225,9 @@
           items:
             - name: HDInsight 4.0 中的新功能
               href: ./hdinsight-version-release.md
-            - name: HDInsight 4.0 完整发行说明
+            - name: 发行说明
               href: ./hdinsight-release-notes.md
-            - name: HDInsight 3.6 完整发行说明
+            - name: Azure HDInsight 发行说明存档
               href: ./hdinsight-release-notes-archive.md
         - name: 常见问题 (FAQ)
           href: ./hdinsight-faq.md
@@ -837,6 +837,8 @@
           href: ./hdinsight-plan-virtual-network-deployment.md
         - name: NSG 和 UDR 所需的 IP 地址
           href: ./hdinsight-management-ip-addresses.md
+        - name: Azure 防火墙的服务标记
+          href: ./hdinsight-service-tags.md
     - name: 如何
       items:
         - name: 创建 ESP 群集并与本地同步

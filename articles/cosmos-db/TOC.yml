@@ -974,21 +974,19 @@
       items:
         - name: 从备份还原数据
           href: how-to-backup-and-restore.md
-    - name: 日志记录
+    - name: 监视
       items:
-        - name: 诊断日志记录
-          href: logging.md
+        - name: 监视 Cosmos DB
+          href: monitor-cosmos-db.md
+        - name: 用于 Cosmos 的 Azure Monitor（预览版）
+          href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json
+        - name: 从 Cosmos DB 帐户中查看指标
+          href: use-metrics.md
         - name: 使用逻辑应用进行应用程序日志记录
           href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
           maintainContext: true
-    - name: 使用指标进行监视
-      items:
-        - name: 从 Cosmos DB 帐户中查看指标
-          href: use-metrics.md
-        - name: 从 Azure Monitor 中查看指标
-          href: cosmos-db-azure-monitor-metrics.md
-        - name: 监视 SLA
-          href: monitor-accounts.md
+        - name: 监视数据参考
+          href: monitor-cosmos-db-reference.md
     - name: 本地开发
       items:
         - name: 使用模拟器

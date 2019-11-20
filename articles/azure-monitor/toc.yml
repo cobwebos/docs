@@ -798,12 +798,14 @@
               items:
                 - name: 启用监视概述
                   href: insights/container-insights-onboard.md
-                - name: 针对新群集启用
+                - name: 为新的 AKS 群集启用
                   href: insights/container-insights-enable-new-cluster.md
-                - name: 针对现有群集启用
+                - name: 为现有的 AKS 群集启用
                   href: insights/container-insights-enable-existing-clusters.md
                 - name: 针对混合群集启用
                   href: insights/container-insights-hybrid-setup.md
+                - name: 为 Azure Red Hat OpenShift 启用
+                  href: insights/container-insights-azure-redhat-setup.md
                 - name: 区域映射
                   href: insights/container-insights-region-mapping.md
             - name: 监视性能

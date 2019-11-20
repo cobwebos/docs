@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Azure Migrate 文档
-summary: 使用 Azure Migrate 可迁移到 Azure 云。 Azure Migrate 提供了一个中心，用于发现、评估本地工作负荷以及将本地工作负荷迁移到 Azure。 该中心提供 Azure Migrate 工具，以及来自独立软件供应商 (ISV) 的集成工具。
+summary: Azure Migrate 提供了一个工具中心，用于发现、评估本地工作负荷以及将本地工作负荷迁移到 Azure。
 metadata:
   title: Azure Migrate 文档
-  description: 使用 Azure Migrate 可迁移到 Azure 云。 Azure Migrate 提供了一个中心，用于发现、评估本地工作负荷以及将本地工作负荷迁移到 Azure。 该中心提供 Azure Migrate 工具，以及来自独立软件供应商 (ISV) 的集成工具。
+  description: 使用 Azure Migrate 将本地工作负荷迁移到 Azure。
   ms.service: azure-migrate
   ms.topic: landing-page
   ms.collection: collection
   author: rayne-wiselman
   ms.author: raynew
-  ms.date: 10/07/2019
-  ms.openlocfilehash: 494bb2f7ec6076bbc7b3b891cd0cb525ae53c5d1
-  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.date: 11/19/2019
+  ms.openlocfilehash: e49bfdefe08b3a8f4598e809fd44b57f3f93de67
+  ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/07/2019
-  ms.locfileid: "72001140"
+  ms.lasthandoff: 11/19/2019
+  ms.locfileid: "74185838"
 landingContent:
 - title: 关于 Azure Migrate
   linkLists:
@@ -35,6 +35,10 @@ landingContent:
       url: ./tutorial-prepare-vmware.md
     - text: 使用“服务器评估”功能评估 Hyper-V VM
       url: ./tutorial-prepare-hyper-v.md
+    - text: 使用“服务器评估”功能评估物理服务器
+      url: ./tutorial-prepare-physical.md
+    - text: 使用导入的数据评估服务器
+      url: tutorial-assess-import.md
     - text: 使用“服务器迁移”功能迁移 VMware VM
       url: ./server-migrate-overview.md
     - text: 使用“服务器迁移”功能迁移 Hyper-V VM
@@ -52,13 +56,19 @@ landingContent:
     - text: 查看 Azure Migrate 支持矩阵
       url: migrate-support-matrix.md
     - text: 查看 VMware 支持矩阵
-      url: migrate-support-matrix-vmware.md
+      url: ./migrate-support-matrix-vmware.md
     - text: 查看 Hyper-V 支持矩阵
-      url: migrate-support-matrix-hyper-v.md
+      url: ./migrate-support-matrix-hyper-v.md
+    - text: 查看物理服务器支持矩阵
+      url: ./migrate-support-matrix-physical.md
 - title: 管理
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: 添加评估工具
+      url: ./how-to-assess.md
+    - text: 发现应用程序清单
+      url: ./how-to-discover-applications.md
     - text: 添加迁移工具
       url: ./how-to-migrate.md
     - text: 大规模 VMware 评估
@@ -71,9 +81,9 @@ landingContent:
   linkLists:
   - linkListType: learn
     links:
-    - text: 基于 VMware 代理的迁移体系结构
+    - text: 了解 VMware/物理服务器基于代理的迁移
       url: ./agent-based-migration-architecture.md
-    - text: Hyper-V 迁移体系结构
+    - text: 了解 Hyper-V 迁移
       url: ./hyper-v-migration-architecture.md
     - text: 了解评估
       url: ./concepts-assessment-calculation.md
