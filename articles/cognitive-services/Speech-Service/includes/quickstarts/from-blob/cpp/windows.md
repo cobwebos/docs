@@ -91,7 +91,8 @@ vcpkg install nlohmann-json
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=246-284)]
 
 ## <a name="check-your-code"></a>查看代码
-此时，代码应如下所示：（我们已向此版本添加了一些注释）[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=7-308)]
+此时，代码应如下所示：（我们已向此版本添加了一些注释）
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=7-308)]
 
 ## <a name="build-and-run-your-app"></a>生成并运行应用
 
